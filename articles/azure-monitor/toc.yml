@@ -1078,7 +1078,7 @@
           href: insights/container-insights-reports.md
         - name: Élő adatok megtekintése
           items:
-            - name: Élő adatok (előzetes verzió) áttekintése
+            - name: Élő adatkezelés – áttekintés
               href: containers/container-insights-livedata-overview.md
             - name: Telepítés
               href: containers/container-insights-livedata-setup.md

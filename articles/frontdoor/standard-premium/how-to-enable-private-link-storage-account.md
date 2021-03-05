@@ -8,12 +8,12 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 03/04/2021
 ms.author: tyao
-ms.openlocfilehash: 885582481e3783bdd4fbad40a24499f42a40ce24
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 885b4d132208ab6f8b470d147438e26a5fd4bab7
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102193448"
+ms.locfileid: "102201668"
 ---
 # <a name="connect-azure-front-door-premium-to-a-storage-account-origin-with-private-link"></a>Az Azure bejárati prémium csatlakoztatása a Storage-fiók forrásához privát hivatkozással
 
@@ -23,7 +23,7 @@ Ebből a cikkből megtudhatja, hogyan konfigurálhatja az Azure-beli bevezető p
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-## <a name="enable-private-link-to-a-storage-account-in-azure-front-door-premium"></a>Privát hivatkozás engedélyezése a Storage-fiókhoz az Azure bejárati Premiumban
+## <a name="enable-private-link-to-a-storage-account"></a>Privát hivatkozás engedélyezése egy Storage-fiókhoz
  
 Ebben a szakaszban a Private link Service-t egy Azure-beli bejárati ajtó magánhálózaton létrehozott privát végpontra képezi le. 
 
@@ -47,7 +47,7 @@ Ebben a szakaszban a Private link Service-t egy Azure-beli bejárati ajtó magá
 
 1. Ezután válassza a **Hozzáadás** lehetőséget a konfiguráció mentéséhez.
 
-## <a name="approve-azure-front-door-premium-private-endpoint-connection-from-the-storage-account"></a>Az Azure bejárati ajtó Premium Private Endpoint-kapcsolatainak jóváhagyása a Storage-fiókból
+## <a name="approve-private-endpoint-connection-from-the-storage-account"></a>Privát végponti kapcsolatok jóváhagyása a Storage-fiókból
 
 1. Nyissa meg azt a Storage-fiókot, amelyet az utolsó szakaszban a privát hivatkozással konfigurál. Válassza a **hálózatkezelés** lehetőséget a **Beállítások** területen.
 

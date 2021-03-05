@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 7753c6c118d763163e6bc8f69f5b4eee13fe2393
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 53b5add7526b0c20487e8fe3adb0b8ebe207a2ce
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588794"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200038"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Valós idejű érzékelők adatainak megjelenítése az Azure IoT hub-ban egy webalkalmazásban
 
@@ -153,7 +153,7 @@ Azt is meg kell jelennie a konzolon, hogy a webalkalmazás által a böngésző 
 
 A [Azure App Service Web Apps szolgáltatása](../app-service/overview.md) a webalkalmazások üzemeltetésére szolgáló platformként szolgál (a Pásti). A Azure App Serviceban üzemeltetett webalkalmazások kihasználhatják a hatékony Azure-funkciókat, például a további biztonságot, a terheléselosztást és a méretezhetőséget, valamint az Azure-és partneri DevOps-megoldásokat, például a folyamatos üzembe helyezést, a csomagok felügyeletét stb. Azure App Service támogatja a számos népszerű nyelven fejlesztett és Windows-vagy Linux-infrastruktúrán üzembe helyezett webalkalmazást.
 
-Ebben a szakaszban egy webalkalmazást hoz létre a App Serviceban, és üzembe helyezi a kódját az Azure CLI-parancsok használatával. Az az [WebApp](/cli/azure/webapp?view=azure-cli-latest) dokumentációjában használt parancsok részleteit megtekintheti. Mielőtt elkezdené, győződjön meg arról, hogy elvégezte az [erőforráscsoport hozzáadásának](#add-a-consumer-group-to-your-iot-hub)lépéseit az IoT hub-hoz, [szerezzen be egy szolgáltatás-kapcsolati karakterláncot az IoT hub számára](#get-a-service-connection-string-for-your-iot-hub), és [töltse le a webalkalmazást a githubról](#download-the-web-app-from-github).
+Ebben a szakaszban egy webalkalmazást hoz létre a App Serviceban, és üzembe helyezi a kódját az Azure CLI-parancsok használatával. Az az [WebApp](/cli/azure/webapp) dokumentációjában használt parancsok részleteit megtekintheti. Mielőtt elkezdené, győződjön meg arról, hogy elvégezte az [erőforráscsoport hozzáadásának](#add-a-consumer-group-to-your-iot-hub)lépéseit az IoT hub-hoz, [szerezzen be egy szolgáltatás-kapcsolati karakterláncot az IoT hub számára](#get-a-service-connection-string-for-your-iot-hub), és [töltse le a webalkalmazást a githubról](#download-the-web-app-from-github).
 
 1. Az [app Service-csomag](../app-service/overview-hosting-plans.md) számítási erőforrásokat határoz meg app Service által futtatott alkalmazáshoz. Ebben az oktatóanyagban a fejlesztő/ingyenes szintet használjuk a webalkalmazás üzemeltetéséhez. Az ingyenes szinten a webalkalmazás a megosztott Windows-erőforrásokon fut más App Service alkalmazásokkal, többek között más ügyfelek alkalmazásaival. Az Azure App Service terveket is kínál a webalkalmazások Linux számítási erőforrásokon való üzembe helyezéséhez. Ezt a lépést kihagyhatja, ha már rendelkezik a használni kívánt App Service-csomaggal.
 

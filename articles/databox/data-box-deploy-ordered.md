@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/13/2021
 ms.author: alkohli
-ms.openlocfilehash: 26e8f08d4b901a9ea57da826d9441d23508c4a4c
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: f2bad214045710fe861040514beb3c536664d684
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797619"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201889"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Oktatóanyag: Az Azure Data Box megrendelése
 
@@ -437,7 +437,7 @@ Az alábbi lépéseket követve rendeljen egy eszközt az Azure CLI használatá
    |lekérdezés| A JMESPath lekérdezési karakterlánca. További információ: [JMESPath](http://jmespath.org/). | – lekérdezés <string>|
    |részletes| Adja meg a részletes naplózást. | --verbose |
 
-2. A parancssorban válassza a választás vagy a terminál lehetőséget, futtassa az [Az adatmező-feladatok létrehozása](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-create&preserve-view=true) parancsot a Azure Data Box rendelés létrehozásához.
+2. A parancssorban válassza a választás vagy a terminál lehetőséget, futtassa az [Az adatmező-feladatok létrehozása](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-create) parancsot a Azure Data Box rendelés létrehozásához.
 
    ```azurecli
    az databox job create --resource-group <resource-group> --name <order-name> --location <azure-location> --sku <databox-device-type> --contact-name <contact-name> --phone <phone-number> --email-list <email-list> --street-address1 <street-address-1> --street-address2 <street-address-2> --city "contact-city" --state-or-province <state-province> --country <country> --postal-code <postal-code> --company-name <company-name> --storage-account "storage-account"
@@ -605,7 +605,7 @@ A Microsoft ezután előkészíti, majd feladja a csomagot egy regionális fuvar
 
 ### <a name="track-a-single-order"></a>Egyetlen megrendelés nyomon követése
 
-Egy meglévő Azure Data Box-rendelés nyomkövetési információinak lekéréséhez futtassa a parancsot [`az databox job show`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show&preserve-view=true) . A parancs információkat jelenít meg a rendeléssel kapcsolatban, például: név, Erőforráscsoport, követési információ, előfizetés-azonosító, kapcsolattartási adatok, szállítási típus és eszköz SKU.
+Egy meglévő Azure Data Box-rendelés nyomkövetési információinak lekéréséhez futtassa a parancsot [`az databox job show`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-show) . A parancs információkat jelenít meg a rendeléssel kapcsolatban, például: név, Erőforráscsoport, követési információ, előfizetés-azonosító, kapcsolattartási adatok, szállítási típus és eszköz SKU.
 
    ```azurecli
    az databox job show --resource-group <resource-group> --name <order-name>
@@ -646,7 +646,7 @@ Egy meglévő Azure Data Box-rendelés nyomkövetési információinak lekérés
 
 ### <a name="list-all-orders"></a>Az összes megrendelés listázása
 
-Ha több eszközt is megrendelt, a futtatásával [`az databox job list`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list&preserve-view=true) megtekintheti az összes Azure Data Box megrendelését. A parancs felsorolja az adott erőforráscsoporthoz tartozó összes rendelést. Emellett a kimenet: megrendelés neve, a szállítási állapot, az Azure-régió, a kézbesítés típusa és a rendelés állapota is látható. A megszakított megrendelések is szerepelnek a listában.
+Ha több eszközt is megrendelt, a futtatásával [`az databox job list`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-list) megtekintheti az összes Azure Data Box megrendelését. A parancs felsorolja az adott erőforráscsoporthoz tartozó összes rendelést. Emellett a kimenet: megrendelés neve, a szállítási állapot, az Azure-régió, a kézbesítés típusa és a rendelés állapota is látható. A megszakított megrendelések is szerepelnek a listában.
 A parancs az egyes sorrendek időbélyegeit is megjeleníti.
 
 ```azurecli
@@ -765,7 +765,7 @@ Egy megszakított megrendelés törléséhez lépjen az **Áttekintés** elemre,
 
 ### <a name="cancel-an-order"></a>Rendelés visszavonása
 
-Azure Data Box rendelés megszakításához futtassa a parancsot [`az databox job cancel`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel&preserve-view=true) . Meg kell adnia a megrendelés megszakításának okát.
+Azure Data Box rendelés megszakításához futtassa a parancsot [`az databox job cancel`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-cancel) . Meg kell adnia a megrendelés megszakításának okát.
 
    ```azurecli
    az databox job cancel --resource-group <resource-group> --name <order-name> --reason <cancel-description>
@@ -802,7 +802,7 @@ Azure Data Box rendelés megszakításához futtassa a parancsot [`az databox jo
 
 ### <a name="delete-an-order"></a>Megrendelés törlése
 
-Ha megszakította Azure Data Box rendelést, a futtatásával [`az databox job delete`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete&preserve-view=true) törölheti a sorrendet.
+Ha megszakította Azure Data Box rendelést, a futtatásával [`az databox job delete`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-delete) törölheti a sorrendet.
 
    ```azurecli
    az databox job delete --name [-n] <order-name> --resource-group <resource-group> [--yes] [--verbose]
@@ -907,7 +907,7 @@ PS C:\Windows>
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte a Azure Data Box cikkeket, például a következőket:
 

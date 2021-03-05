@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d46a20079919f052ed343c9702ba02ce7f109b5c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3395dc3010f7ae3aabadda8105c1765a9c300988
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "102036170"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201260"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Oktatóanyag: végpontok közötti megoldás kiépítése
 
@@ -408,9 +408,9 @@ Az oktatóanyag elvégzése után kiválaszthatja, hogy mely erőforrásokat sze
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-* **Ha továbbra is az ebben a cikkben beállított Azure Digital Twins-példányt szeretné használni, de a modell, az ikrek és a kapcsolatok némelyikének vagy mindegyikének törlésével** törölheti az eltávolítani kívánt elemeket az [Azure Cloud Shell](https://shell.azure.com) ablakban található az [DT](/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true) CLI-parancsokkal.
+* **Ha továbbra is az ebben a cikkben beállított Azure Digital Twins-példányt szeretné használni, de a modell, az ikrek és a kapcsolatok némelyikének vagy mindegyikének törlésével** törölheti az eltávolítani kívánt elemeket az [Azure Cloud Shell](https://shell.azure.com) ablakban található az [DT](/cli/azure/ext/azure-iot/dt) CLI-parancsokkal.
 
-    Ez a beállítás nem távolítja el az oktatóanyagban létrehozott többi Azure-erőforrást (IoT Hub, Azure Functions alkalmazást stb.). Ezeket egyenként törölheti az egyes erőforrástípusok számára megfelelő [DT-parancsok](/cli/azure/reference-index?view=azure-cli-latest&preserve-view=true) használatával.
+    Ez a beállítás nem távolítja el az oktatóanyagban létrehozott többi Azure-erőforrást (IoT Hub, Azure Functions alkalmazást stb.). Ezeket egyenként törölheti az egyes erőforrástípusok számára megfelelő [DT-parancsok](/cli/azure/reference-index) használatával.
 
 Érdemes törölni a Project mappát is a helyi gépről.
 

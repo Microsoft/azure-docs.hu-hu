@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: e69e5d9b94a47bf7db21ef3732a4ddcba7c2cf5c
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 5d78299c4583251180b3fb9a902561406b849b4a
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181550"
+ms.locfileid: "102201175"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>Oktatóanyag: Azure Key Vault használata virtuális géppel a .NET-ben
 
@@ -42,7 +42,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 Windows, Mac és Linux rendszerekhez:
   * [Git](https://git-scm.com/downloads)
   * A [.net Core 3,1 SDK vagy újabb verzió](https://dotnet.microsoft.com/download/dotnet-core/3.1).
-  * [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)-vel.
+  * [Azure CLI](/cli/azure/install-azure-cli)-vel.
 
 ## <a name="create-resources-and-assign-permissions"></a>Erőforrások létrehozása és engedélyek kiosztása
 
@@ -74,7 +74,7 @@ Hozzon létre egy Windows vagy Linux rendszerű virtuális gépet az alábbi mó
 | [Azure Portal](../../virtual-machines/windows/quick-create-portal.md) | [Azure Portal](../../virtual-machines/linux/quick-create-portal.md) |
 
 ## <a name="assign-an-identity-to-the-vm"></a>Identitás kiosztása a virtuális géphez
-Hozzon létre egy rendszerhez rendelt identitást a virtuális géphez az az [VM Identity assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) paranccsal:
+Hozzon létre egy rendszerhez rendelt identitást a virtuális géphez az az [VM Identity assign](/cli/azure/vm/identity#az-vm-identity-assign) paranccsal:
 
 ```azurecli
 az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
@@ -90,7 +90,7 @@ Jegyezze fel a rendszer által hozzárendelt identitást, amely a következő k�
 ```
 
 ## <a name="assign-permissions-to-the-vm-identity"></a>Engedélyek kiosztása a virtuális gép identitásához
-Rendelje hozzá a korábban létrehozott identitási engedélyeket a kulcstartóhoz az az Key [Vault set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) paranccsal:
+Rendelje hozzá a korábban létrehozott identitási engedélyeket a kulcstartóhoz az az Key [Vault set-Policy](/cli/azure/keyvault#az-keyvault-set-policy) paranccsal:
 
 ```azurecli
 az keyvault set-policy --name '<your-unique-key-vault-name>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list

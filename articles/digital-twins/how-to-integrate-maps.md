@@ -8,12 +8,12 @@ ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 6a654f74ff6a32ad37646021d504359c84942c12
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 990a0ee73bd91ccb748c948b5fcf0e6124d84a03
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573037"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201430"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure Maps beltéri Térkép frissítése az Azure digitális Twins használatával
 
@@ -64,7 +64,7 @@ Ez a minta közvetlenül a IoT-eszköz helyett a Twin szobaból olvassa be, amel
     >[!NOTE]
     >A Cloud Shellben jelenleg egy **ismert probléma** akadályozza az alábbi parancscsoportokat: `az dt route`, `az dt model`, `az dt twin`.
     >
-    >Ennek feloldásához futtassa az `az login` parancsot a parancs előtt a Cloud Shellben, vagy használja a [helyi CLI-t](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) a Cloud Shell helyett. Erről további részleteket a [*Hibaelhárítás: az Azure digitális Twins ismert problémái*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)című témakörben talál.
+    >Ennek feloldásához futtassa az `az login` parancsot a parancs előtt a Cloud Shellben, vagy használja a [helyi CLI-t](/cli/azure/install-azure-cli) a Cloud Shell helyett. Erről további részleteket a [*Hibaelhárítás: az Azure digitális Twins ismert problémái*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)című témakörben talál.
 
     ```azurecli-interactive
     az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
@@ -109,7 +109,7 @@ Az adott példához tartozó megoldás a legfelső szintű helyek frissítését
 
 A topológia konfigurációjától függően a három attribútumot a Térkép részletességéhez képest különböző szinteken fogja tudni tárolni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi hivatkozásokat követve további információkat olvashat az ikrek gráf információinak kezelésével, frissítésével és lekérésével kapcsolatban:
 

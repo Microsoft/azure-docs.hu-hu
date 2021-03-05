@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: e75786c42b54882c249b5ed7100ebd12f3f78e78
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 78ec0af0acbb74436af16abba75d64de061d5268
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99254359"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202165"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>Azure Key Vault-tanúsítványok importálása – gyakori kérdések
 
@@ -43,7 +43,7 @@ Nem, Azure Resource Manager-(ARM-) sablon használatával nem lehet végrehajtan
 
 ### <a name="when-i-import-a-certificate-via-the-azure-portal-i-get-a-something-went-wrong-error-how-can-i-investigate-further"></a>Ha a Azure Portal keresztül importálok egy tanúsítványt, "hiba történt" hibaüzenetet kapok. Hogyan lehet további vizsgálatot végezni?
     
-Ha részletesebben szeretne megtekinteni egy leíró hibát, importálja a tanúsítványt [Az Azure CLI vagy a](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import) [PowerShell](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0)használatával.
+Ha részletesebben szeretne megtekinteni egy leíró hibát, importálja a tanúsítványt [Az Azure CLI vagy a](/cli/azure/keyvault/certificate#az-keyvault-certificate-import) [PowerShell](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0)használatával.
 
 ### <a name="how-can-i-resolve-error-type-access-denied-or-user-is-unauthorized-to-import-certificate"></a>Hogyan oldható fel a "hiba típusa: hozzáférés megtagadva, vagy a felhasználó nem jogosult a tanúsítvány importálására"?
     

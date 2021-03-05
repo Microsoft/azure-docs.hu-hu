@@ -1,161 +1,387 @@
 ---
-title: Azure Functions integrálása Azure-beli virtuális hálózattal
-description: Lépésenkénti oktatóanyag, amely bemutatja, hogyan csatlakoztatható egy függvény egy Azure-beli virtuális hálózathoz
+title: Azure Functions integrálása virtuális hálózattal a privát végpontok használatával
+description: Lépésenkénti oktatóanyag, amely bemutatja, hogyan csatlakoztatható egy függvény egy Azure-beli virtuális hálózathoz, és hogyan zárható le saját végpontokkal.
 ms.topic: article
-ms.date: 4/23/2020
-ms.openlocfilehash: efc936111d162d73b1cc5465ae6b677c9006ab32
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 2/22/2021
+ms.openlocfilehash: a7bad58167009b4089724165813eb061996f1e6b
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937016"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200206"
 ---
-# <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Oktatóanyag: függvények integrálása Azure-beli virtuális hálózattal
+# <a name="tutorial-integrate-azure-functions-with-an-azure-virtual-network-using-private-endpoints"></a>Oktatóanyag: Azure Functions integrálása Azure-beli virtuális hálózattal privát végpontok használatával
 
-Ez az oktatóanyag bemutatja, hogyan használható a Azure Functions az Azure-beli virtuális hálózatok erőforrásaihoz való kapcsolódáshoz. létrehozhat egy olyan függvényt, amely hozzáférést biztosít az internethez és a virtuális hálózatban WordPress-t futtató virtuális gépekhez.
+Ez az oktatóanyag azt mutatja be, hogyan használható a Azure Functions az Azure-beli virtuális hálózatban található erőforrásokhoz privát végpontokkal való kapcsolódáshoz. Egy olyan függvényt hoz létre, amely egy Service Bus-várólista-triggert használó virtuális hálózat mögött található Storage-fiókkal rendelkezik.
 
 > [!div class="checklist"]
 > * Function-alkalmazás létrehozása a prémium csomaggal
-> * WordPress-webhelyek üzembe helyezése virtuális hálózaton
-> * A Function alkalmazás összekötése a virtuális hálózattal
-> * Function proxy létrehozása a WordPress-erőforrások eléréséhez
-> * A WordPress-fájl igénylése a virtuális hálózaton belül
-
-## <a name="topology"></a>Topológia
-
-A következő ábra a létrehozott megoldás architektúráját mutatja be:
-
- ![Virtuális hálózati integráció felhasználói felülete](./media/functions-create-vnet/topology.png)
-
-A prémium szintű csomagban futó függvények ugyanazok az üzemeltetési képességek, mint a Azure App Service webalkalmazásai, beleértve a VNet-integrációs funkciót is. További információ a VNet-integrációról, beleértve a hibaelhárítást és a speciális konfigurációt: [az alkalmazás integrálása Azure-beli virtuális hálózattal](../app-service/web-sites-integrate-with-vnet.md).
-
-## <a name="prerequisites"></a>Előfeltételek
-
-Ebben az oktatóanyagban fontos megérteni az IP-címzést és alhálózatokat. Ebből a cikkből megtudhatja, hogyan kezelheti [a címzési és alhálók alapjait](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics). Számos további cikk és videó elérhető online állapotban.
-
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+> * Azure-erőforrások létrehozása (Service Bus, Storage-fiók, Virtual Network)
+> * A Storage-fiók zárolása privát végpont mögött
+> * Service Bus zárolása privát végpont mögött
+> * Service Bus-és HTTP-eseményindítókkal is üzembe helyezhet egy Function alkalmazást.
+> * A Function alkalmazás zárolása privát végpont mögött
+> * Ellenőrizze, hogy a Function alkalmazás biztonságos-e a virtuális hálózat mögött
+> * Az erőforrások eltávolítása
 
 ## <a name="create-a-function-app-in-a-premium-plan"></a>Function-alkalmazás létrehozása prémium csomaggal
 
-Először létre kell hoznia egy Function alkalmazást a [prémium]csomagban. Ez a csomag kiszolgáló nélküli skálázást biztosít a virtuális hálózatok integrálásának támogatása mellett.
+Először hozzon létre egy .NET-függvény alkalmazást a [prémium] csomagban, mivel ez az oktatóanyag a C# nyelvet fogja használni. A Windows más nyelveket is támogat. Ez a csomag kiszolgáló nélküli skálázást biztosít a virtuális hálózatok integrálásának támogatása mellett.
 
-[!INCLUDE [functions-premium-create](../../includes/functions-premium-create.md)]  
+1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
 
-A Function alkalmazást a jobb felső sarokban található rögzítés ikonra kattintva rögzítheti az irányítópulton. A rögzítéssel a virtuális gép létrehozása után könnyebben térhet vissza ehhez a Function alkalmazáshoz.
+1. Az **új** lapon válassza a **számítási**  >  **függvényalkalmazás** elemet.
 
-## <a name="create-a-vm-inside-a-virtual-network"></a>Virtuális gép létrehozása virtuális hálózaton belül
+1. Az **alapvető** beállítások lapon használja az alábbi táblázatban megadott Function App-beállításokat:
 
-Következő lépésként hozzon létre egy előre konfigurált virtuális GÉPET, amely a WordPress-t futtatja egy virtuális hálózaton belül (a[WordPress LEMP7 Max Performance](https://jetware.io/appliances/jetware/wordpress4_lemp7-170526/profile?us=azure) by Jetware). A WordPress virtuális gépeket a szolgáltatás alacsony díja és kényelme miatt használják. Ugyanez a forgatókönyv a virtuális hálózatok bármely erőforrásával, például a REST API-kkal, App Service környezetekkel és egyéb Azure-szolgáltatásokkal is működik. 
+    | Beállítás      | Ajánlott érték  | Leírás |
+    | ------------ | ---------------- | ----------- |
+    | **Előfizetés** | Az Ön előfizetése | Az előfizetés, amelyben létrehozta az új függvényalkalmazást. |
+    | **[Erőforráscsoport](../azure-resource-manager/management/overview.md)** |  *myResourceGroup* | Az új erőforráscsoport neve, amelyben létrehozza a függvényalkalmazást. |
+    | **Függvényalkalmazás neve** | Globálisan egyedi név | Az új függvényalkalmazást azonosító név. Az érvényes karakterek az `a-z` (kis- és nagybetűk megkülönböztetése nélkül) `0-9`és az `-`.  |
+    |**Közzététel**| Kód | Kódfájlok közzétételét teszi lehetővé egy Docker-tárolóban. |
+    | **Futtatókörnyezet verme** | .NET | Ez az oktatóanyag a .NET-et használja |
+    |**Régió**| Előnyben részesített régió | Válasszon egy Önhöz közeli [régiót](https://azure.microsoft.com/regions/) vagy a funkciókhoz tartozó egyéb szolgáltatások közelében. |
 
-1. A portálon válassza az **+ erőforrás létrehozása** lehetőséget a bal oldali navigációs ablaktáblán, a keresőmezőbe írja be a kifejezést `WordPress LEMP7 Max Performance` , majd nyomja le az ENTER billentyűt.
+1. Válassza a **Tovább: üzemeltetés** lehetőséget. Az **üzemeltetés** lapon adja meg a következő beállításokat:
 
-1. Válassza a **WordPress LEMP max teljesítmény** lehetőséget a keresési eredmények között. Válassza ki a **WordPress LEMP Max teljesítményének** a **szoftver csomagját** , és válassza a **Létrehozás** lehetőséget.
+    | Beállítás      | Ajánlott érték  | Leírás |
+    | ------------ | ---------------- | ----------- |
+    | **[Storage-fiók](../storage/common/storage-account-create.md)** |  Globálisan egyedi név |  Hozzon létre egy tárfiókot a függvényalkalmazás számára. A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat. Meglévő fiókot is használhat, amelynek meg kell felelnie a [Storage-fiókra vonatkozó követelményeknek](./storage-considerations.md#storage-account-requirements). |
+    |**Operációs rendszer**| Windows | Ez az oktatóanyag a Windowst használja |
+    | **[Felkészülés](./functions-scale.md)** | Prémium | Szolgáltatási csomag, amely meghatározza az erőforrások lefoglalását a függvényalkalmazáshoz. Válassza a **prémium** lehetőséget. Alapértelmezés szerint a rendszer új App Service tervet hoz létre. Az alapértelmezett **SKU és size** érték a **EP1**, ahol az EP a _rugalmas prémium szintű támogatást_ nyújtja. További információért lásd a [prémium SKU-ket tartalmazó listát](./functions-premium-plan.md#available-instance-skus).<br/>A JavaScript-függvények prémium csomagon való futtatásakor olyan példányt válasszon, amelynek kevesebb vCPU van. További információ: az [egymagos prémium csomagok kiválasztása](./functions-reference-node.md#considerations-for-javascript-functions).  |
 
-1. Az **alapvető** beállítások lapon használja a virtuális gép beállításait az alábbi táblázatban megadott módon:
+1. Válassza a **Tovább: figyelés** lehetőséget. A **figyelés** lapon adja meg a következő beállításokat:
 
-    ![Alapismeretek lap virtuális gép létrehozásához](./media/functions-create-vnet/create-vm-1.png)
+    | Beállítás      | Ajánlott érték  | Leírás |
+    | ------------ | ---------------- | ----------- |
+    | **[Application Insights](./functions-monitoring.md)** | Alapértelmezett | Létrehoz egy Application Insights erőforrást ugyanahhoz az *alkalmazáshoz* a legközelebbi támogatott régióban. A beállítás kibontásával módosíthatja az **új erőforrás nevét** , vagy kiválaszthat egy másik **helyet** az [Azure-földrajzban](https://azure.microsoft.com/global-infrastructure/geographies/) az adatai tárolásához. |
+
+1. Válassza a **felülvizsgálat + létrehozás** lehetőséget az alkalmazás-konfiguráció kiválasztásának áttekintéséhez.
+
+1. A **felülvizsgálat + létrehozás** oldalon tekintse át a beállításokat, majd válassza a **Létrehozás** lehetőséget a Function alkalmazás kiépítéséhez és üzembe helyezéséhez.
+
+1. Válassza az **értesítések** ikont a portál jobb felső sarkában, és figyelje meg az **üzembe helyezés sikeres** üzenetét.
+
+1. Az új függvényalkalmazás megtekintéséhez válassza az **Erőforrás megnyitása** lehetőséget. Kiválaszthatja **a rögzítés az irányítópulton** lehetőséget is. A rögzítéssel egyszerűbbé válik a Function app-erőforráshoz való visszatérés az irányítópultról.
+
+1. Gratulálunk! Sikeresen létrehozta a Premium Function alkalmazást!
+
+## <a name="create-azure-resources"></a>Azure-erőforrások létrehozása
+
+### <a name="create-a-storage-account"></a>Tárfiók létrehozása
+
+A virtuális hálózatok esetében egy különálló Storage-fiók szükséges a Function app kezdeti létrehozásához.
+
+1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
+
+1. Az új lapon keresse meg a **Storage-fiók** elemet, és válassza a **Létrehozás** lehetőséget.
+
+1. Az **alapvető** beállítások lapon adja meg az alábbi táblázatban megadott beállításokat. A REST lehet alapértelmezett:
 
     | Beállítás      | Ajánlott érték  | Leírás      |
     | ------------ | ---------------- | ---------------- |
     | **Előfizetés** | Az Ön előfizetése | Az az előfizetés, amelyben az erőforrások létrejöttek. | 
-    | **[Erőforráscsoport](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Válassza ki `myResourceGroup` vagy a Function alkalmazással létrehozott erőforráscsoportot. A Function app, a WordPress VM és a üzemeltetési csomag azonos erőforráscsoport használatával könnyebben törölheti az erőforrásokat, amikor elkészült ezzel az Oktatóanyaggal. |
-    | **Virtuális gép neve** | VNET-Wordpress | A virtuális gép nevének egyedinek kell lennie az erőforráscsoporthoz |
-    | **[Region](https://azure.microsoft.com/regions/)** | Európa Nyugat-Európa | Válasszon egy Önhöz közeli régiót vagy a virtuális gépet elérő függvények közelében. |
-    | **Méret** | B1s | Válassza a **méret módosítása** lehetőséget, majd válassza ki a B1s standard rendszerképet, amely 1 vCPU és 1 GB memóriát tartalmaz. |
-    | **Hitelesítés típusa** | Jelszó | A jelszó-hitelesítés használatához meg kell adnia egy **felhasználónevet** és egy biztonságos **jelszót** is, majd **meg kell erősítenie a jelszót**. Ebben az oktatóanyagban nem kell bejelentkeznie a virtuális gépre, hacsak nem kell a hibakeresést végeznie. |
+    | **[Erőforráscsoport](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Válassza ki a Function alkalmazással létrehozott erőforráscsoportot. |
+    | **Név** | mysecurestorage| Annak a Storage-fióknak a neve, amelyre a magánhálózati végpontot alkalmazni fogja. |
+    | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Válassza ki azt a régiót, amelyben a Function alkalmazást létrehozta. |
 
-1. Válassza a **hálózatkezelés** fület, majd a virtuális hálózatok konfigurálása területen válassza az **új létrehozása** lehetőséget.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. Az érvényesítés befejezése után válassza a **Létrehozás** lehetőséget.
 
-1. A **virtuális hálózat létrehozása** területen használja az alábbi táblázatban található beállításokat a rendszerkép alatt:
+### <a name="create-a-service-bus"></a>Service Bus létrehozása
 
-    ![Hálózatkezelés lap a virtuális gép létrehozásakor](./media/functions-create-vnet/create-vm-2.png)
+1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
 
-    | Beállítás      | Ajánlott érték  | Leírás      |
-    | ------------ | ---------------- | ---------------- |
-    | **Név** | myResourceGroup – vnet | A virtuális hálózathoz generált alapértelmezett nevet használhatja. |
-    | **Címtartomány** | 10.10.0.0/16 | Használjon egyetlen címtartományt a virtuális hálózathoz. |
-    | **Alhálózat neve** | Tutorial-Net | Az alhálózat neve. |
-    | **Címtartomány** (alhálózat) | 10.10.1.0/24   | Az alhálózat mérete határozza meg, hogy hány csatolót lehet hozzáadni az alhálózathoz. Ezt az alhálózatot a WordPress webhely használja.  Az `/24` alhálózat 254 gazdagép-címet biztosít. |
+1. Az új lapon keressen rá **Service Bus** és válassza a **Létrehozás** lehetőséget.
 
-1. A virtuális hálózat létrehozásához kattintson **az OK gombra** .
-
-1. A **hálózatkezelés** lapon válassza a **nincs lehetőséget** a **nyilvános IP-címeknél**.
-
-1. Válassza a **felügyelet** fület, majd a **diagnosztika Storage-fiók** területen válassza ki a Function alkalmazással létrehozott Storage-fiókot.
-
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. Az érvényesítés befejezése után válassza a **Létrehozás** lehetőséget. A virtuális gép létrehozási folyamata néhány percet vesz igénybe. A létrehozott virtuális gép csak a virtuális hálózat elérésére használható.
-
-1. A virtuális gép létrehozása után válassza az **erőforrás keresése** lehetőséget az új virtuális gép oldalának megtekintéséhez, majd válassza a **hálózatkezelés** lehetőséget a **Beállítások** területen.
-
-1. Ellenőrizze, hogy nincs **-e nyilvános IP-cím**. Jegyezze fel a **magánhálózati IP-címet**, amelyet a Function alkalmazásból a virtuális géphez való kapcsolódáshoz használ.
-
-    ![Hálózati beállítások a virtuális gépen](./media/functions-create-vnet/vm-networking.png)
-
-Most már rendelkezik egy, a virtuális hálózaton belül üzembe helyezett WordPress-webhellyel. Ez a hely nem érhető el a nyilvános internetről.
-
-## <a name="connect-your-function-app-to-the-virtual-network"></a>A Function alkalmazás összekötése a virtuális hálózattal
-
-A virtuális hálózatban lévő virtuális gépeken futó WordPress-webhelyekhez mostantól csatlakozhat a Function alkalmazáshoz a virtuális hálózathoz.
-
-1. Az új függvény alkalmazásban válassza a bal oldali menü **hálózatkezelés** elemét.
-
-1. A **VNet-integráció** területen válassza **a kattintson ide a konfiguráláshoz** lehetőséget.
-
-    :::image type="content" source="./media/functions-create-vnet/networking-0.png" alt-text="A Function alkalmazásban válassza a hálózatkezelés lehetőséget.":::
-
-1. A **VNET-integráció** lapon válassza a **VNET hozzáadása** elemet.
-
-    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="A VNet-integráció előzetes verziójának hozzáadása":::
-
-1. A **hálózati szolgáltatások állapota** területen használja az alábbi táblázatban található beállításokat a rendszerkép alatt:
-
-    ![A Function app virtuális hálózat megadása](./media/functions-create-vnet/networking-3.png)
+1. Az **alapvető** beállítások lapon adja meg az alábbi táblázatban megadott beállításokat. A REST lehet alapértelmezett:
 
     | Beállítás      | Ajánlott érték  | Leírás      |
     | ------------ | ---------------- | ---------------- |
-    | **Virtual Network** | MyResourceGroup – vnet | Ez a virtuális hálózat a korábban létrehozott. |
-    | **Alhálózat** | Új alhálózat létrehozása | Hozzon létre egy alhálózatot a virtuális hálózatban a Function alkalmazás használatára. A VNet-integrációt üres alhálózat használatára kell konfigurálni. Nem számít, hogy a függvények más alhálózatot használnak, mint a virtuális gép. A virtuális hálózat automatikusan átirányítja a forgalmat a két alhálózat között. |
-    | **Alhálózat neve** | Function-Net | Az új alhálózat neve. |
-    | **Virtuális hálózati címterület** | 10.10.0.0/16 | Válassza ki ugyanazt a Címterület-blokkot, amelyet a WordPress-webhely használ. Csak egy címterület van definiálva. |
-    | **Címtartomány** | 10.10.2.0/24   | Az alhálózat mérete korlátozza azon példányok számát, amelyeket a prémium szintű csomag funkciójának alkalmazásával fel lehet méretezni. Ez a példa egy `/24` alhálózatot használ, amely 254 elérhető gazdagép-címmel rendelkezik. Ez az alhálózat túl van kiépítve, de könnyen kiszámítható. |
+    | **Előfizetés** | Az Ön előfizetése | Az az előfizetés, amelyben az erőforrások létrejöttek. |
+    | **[Erőforráscsoport](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Válassza ki a Function alkalmazással létrehozott erőforráscsoportot. |
+    | **Név** | myServiceBus| Annak a szolgáltatás-busznak a neve, amelyre a magánhálózati végpontot alkalmazni fogja. |
+    | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Válassza ki azt a régiót, amelyben a Function alkalmazást létrehozta. |
+    | **Tarifacsomag** | Prémium | Válassza ezt a szintet, ha Service Buskal rendelkező privát végpontokat szeretne használni. |
 
-1. Az alhálózat hozzáadásához kattintson **az OK gombra** . Az **VNet-integráció** és a **hálózati szolgáltatás állapota** lapok bezárásával térjen vissza a Function app-oldalára.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. Az érvényesítés befejezése után válassza a **Létrehozás** lehetőséget.
 
-A Function alkalmazás mostantól elérheti azt a virtuális hálózatot, ahol a WordPress-webhely fut. Ezután a [Azure functions-proxyk](functions-proxies.md) használatával egy fájlt ad vissza a WordPress webhelyről.
+### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-## <a name="create-a-proxy-to-access-vm-resources"></a>Proxy létrehozása a virtuális gépek erőforrásainak eléréséhez
+Az oktatóanyagban szereplő Azure-erőforrások vagy egy virtuális hálózaton belül vannak integrálva. A virtuális hálózatban lévő hálózati forgalom megőrzéséhez privát végpontokat kell használnia.
 
-Ha a VNet-integráció engedélyezve van, létrehozhat egy proxyt a Function alkalmazásban, hogy továbbítsa a kéréseket a virtuális hálózaton futó virtuális GÉPHEZ.
+Az oktatóanyag két alhálózatot hoz létre:
+- **alapértelmezett**: alhálózat magánhálózati végpontokhoz. A magánhálózati IP-címek ezen az alhálózaton vannak megadva.
+- **functions**: alhálózat Azure functions virtuális hálózati integrációhoz. Ez az alhálózat delegálva van a Function alkalmazásnak.
 
-1. A Function alkalmazásban válassza a bal oldali menü  **proxyk** elemét, majd válassza a **Hozzáadás** lehetőséget. Használja az alábbi táblázatban található proxybeállítások közül a rendszerképet:
+Most hozza létre azt a virtuális hálózatot, amelyhez a Function app integrálva van.
 
-    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="Proxybeállítások megadása":::
+1. Az Azure Portal menüjében vagy a Kezdőlapon válassza az **Erőforrás létrehozása** elemet.
 
-    | Beállítás  | Ajánlott érték  | Leírás      |
-    | -------- | ---------------- | ---------------- |
-    | **Név** | Üzem | A név tetszőleges érték lehet. A proxy azonosítására szolgál. |
-    | **Útvonal sablonja** | /plant | Egy VM-erőforráshoz hozzárendelt útvonal. |
-    | **Háttér-URL** | http://<YOUR_VM_IP>/wp-content/themes/twentyseventeen/assets/images/header.jpg | Cserélje le a helyére `<YOUR_VM_IP>` a korábban létrehozott WordPress-virtuális gép IP-címét. Ez a leképezés egyetlen fájlt ad vissza a helyről. |
+1. Az új lapon keressen rá **Virtual Network** és válassza a **Létrehozás** lehetőséget.
 
-1. Válassza a **Létrehozás** lehetőséget, hogy hozzáadja a proxyt a Function alkalmazáshoz.
+1. Az **alapvető** beállítások lapon használja a virtuális hálózati beállításokat az alábbiakban megadott módon:
 
-## <a name="try-it-out"></a>Próbálja ki
+    | Beállítás      | Ajánlott érték  | Leírás      |
+    | ------------ | ---------------- | ---------------- |
+    | **Előfizetés** | Az Ön előfizetése | Az az előfizetés, amelyben az erőforrások létrejöttek. | 
+    | **[Erőforráscsoport](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Válassza ki a Function alkalmazással létrehozott erőforráscsoportot. |
+    | **Név** | myVirtualNet| Annak a virtuális hálózatnak a neve, amelyhez a Function alkalmazás csatlakozni fog. |
+    | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Válassza ki azt a régiót, amelyben a Function alkalmazást létrehozta. |
 
-1. A böngészőben próbálja meg elérni a **háttérbeli URL-címként** használt URL-címet. A várt módon a kérelem időtúllépést mutat. Időtúllépés történik, mert a WordPress-webhely csak a virtuális hálózathoz csatlakozik, és nem az internethez.
+1. Az **IP-címek** lapon válassza az **alhálózat hozzáadása** elemet. Alhálózat hozzáadásakor használja az alább megadott beállításokat:
 
-1. Másolja a **proxy URL-címét** az új proxyból, és illessze be a böngésző címsorába. A visszaadott rendszerkép a virtuális hálózaton belül futó WordPress-webhelyről származik.
+    :::image type="content" source="./media/functions-create-vnet/1-create-vnet-ip-address.png" alt-text="Képernyőkép a virtuális hálózat létrehozása nézetről.":::
 
-    ![A WordPress webhelyről visszaadott növényi képfájl](./media/functions-create-vnet/plant.png)
+    | Beállítás      | Ajánlott érték  | Leírás      |
+    | ------------ | ---------------- | ---------------- |
+    | **Alhálózat neve** | funkciók | Annak az alhálózatnak a neve, amelyhez a Function alkalmazás csatlakozni fog. | 
+    | **Alhálózati címtartomány** | 10.0.1.0/24 | Figyelje meg, hogy a fenti képen az IPv4-címterület 10.0.0.0/16. Ha a fentiek 10.1.0.0/16, a javasolt *alhálózati címtartomány* a 10.1.1.0/24 lenne. |
 
-A Function alkalmazás csatlakozik az internethez és a virtuális hálózathoz is. A proxy kérést kap a nyilvános interneten keresztül, majd egyszerű HTTP-proxyként viselkedik a kérésnek a csatlakoztatott virtuális hálózatra való továbbításához. A proxy ezután az interneten keresztül továbbítja a választ az Ön számára nyilvánosan.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. Az érvényesítés befejezése után válassza a **Létrehozás** lehetőséget.
+
+## <a name="lock-down-your-storage-account-with-private-endpoints"></a>A Storage-fiók zárolása privát végpontokkal
+
+Az Azure Private-végpontok adott Azure-erőforrásokhoz való kapcsolódásra szolgálnak magánhálózati IP-címmel. Ez a kapcsolat biztosítja, hogy a hálózati forgalom a kiválasztott virtuális hálózaton belül maradjon, és a hozzáférés csak adott erőforrásokhoz érhető el. Most hozza létre az Azure file Storage és az Azure Blob Storage privát végpontját a Storage-fiókjával.
+
+1. Az új Storage-fiókban a bal oldali menüben válassza a **hálózatkezelés** lehetőséget.
+
+1. Válassza a **privát végponti kapcsolatok** fület, és válassza a **privát végpont** lehetőséget.
+
+    :::image type="content" source="./media/functions-create-vnet/2-navigate-private-endpoint-store.png" alt-text="Képernyőfelvétel: privát végpontok létrehozása a Storage-fiókhoz.":::
+
+1. Az **alapvető** beállítások lapon használja a magánhálózati végpont beállításait az alább megadott módon:
+
+    | Beállítás      | Ajánlott érték  | Leírás      |
+    | ------------ | ---------------- | ---------------- |
+    | **Előfizetés** | Az Ön előfizetése | Az az előfizetés, amelyben az erőforrások létrejöttek. | 
+    | **[Erőforráscsoport](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Válassza ki a Function alkalmazással létrehozott erőforráscsoportot. | |
+    | **Név** | fájl – végpont | A Storage-fiókból származó fájlokhoz tartozó magánhálózati végpont neve. |
+    | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Válassza ki azt a régiót, amelyben a Storage-fiókot létrehozta. |
+
+1. Az **erőforrás** lapon használja a magánhálózati végpont beállításait az alább megadott módon:
+
+    | Beállítás      | Ajánlott érték  | Leírás      |
+    | ------------ | ---------------- | ---------------- |
+    | **Előfizetés** | Az Ön előfizetése | Az az előfizetés, amelyben az erőforrások létrejöttek. | 
+    | **Erőforrás típusa**  | Microsoft. Storage/storageAccounts | Ez a Storage-fiókok erőforrás-típusa. |
+    | **Erőforrás** | mysecurestorage | Az imént létrehozott Storage-fiók |
+    | **Célzott alerőforrás** | file | Ezt a magánhálózati végpontot fogja használni a rendszer a Storage-fiókból származó fájlokhoz. |
+
+1. A **konfiguráció** lapon válassza az **alapértelmezett** lehetőséget az alhálózat beállításnál.
+
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. Az érvényesítés befejezése után válassza a **Létrehozás** lehetőséget. A virtuális hálózat erőforrásai mostantól megadhatják a tárolási fájlokat.
+
+1. Hozzon létre egy másik privát végpontot a Blobok számára. A **Resources (erőforrások** ) lapon használja az alábbi beállításokat. Az összes többi beállítás esetében ugyanazokat a beállításokat használja, mint a fájlhoz tartozó privát végpontok létrehozási lépései.
+
+    | Beállítás      | Ajánlott érték  | Leírás      |
+    | ------------ | ---------------- | ---------------- |
+    | **Előfizetés** | Az Ön előfizetése | Az az előfizetés, amelyben az erőforrások létrejöttek. | 
+    | **Erőforrás típusa**  | Microsoft. Storage/storageAccounts | Ez a Storage-fiókok erőforrás-típusa. |
+    | **Erőforrás** | mysecurestorage | Az imént létrehozott Storage-fiók |
+    | **Célzott alerőforrás** | blob | Ezt a magánhálózati végpontot fogja használni a rendszer a Storage-fiókban lévő blobokhoz. |
+
+## <a name="lock-down-your-service-bus-with-a-private-endpoint"></a>A Service Bus zárolása privát végponttal
+
+Most hozza létre a Azure Service Bus saját végpontját.
+
+1. A bal oldali menüben válassza a **hálózatkezelés** lehetőséget az új Service Bus-ben.
+
+1. Válassza a **privát végponti kapcsolatok** fület, és válassza a **privát végpont** lehetőséget.
+
+    :::image type="content" source="./media/functions-create-vnet/3-navigate-private-endpoint-service-bus.png" alt-text="Képernyőkép arról, hogyan lehet navigálni a Service Bus privát végpontokhoz.":::
+
+1. Az **alapvető** beállítások lapon használja a magánhálózati végpont beállításait az alább megadott módon:
+
+    | Beállítás      | Ajánlott érték  | Leírás      |
+    | ------------ | ---------------- | ---------------- |
+    | **Előfizetés** | Az Ön előfizetése | Az az előfizetés, amelyben az erőforrások létrejöttek. | 
+    | **[Erőforráscsoport](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Válassza ki a Function alkalmazással létrehozott erőforráscsoportot. |
+    | **Név** | SB – végpont | A Storage-fiókból származó fájlokhoz tartozó magánhálózati végpont neve. |
+    | **[Region](https://azure.microsoft.com/regions/)** | myFunctionRegion | Válassza ki azt a régiót, amelyben a Storage-fiókot létrehozta. |
+
+1. Az **erőforrás** lapon használja a magánhálózati végpont beállításait az alább megadott módon:
+
+    | Beállítás      | Ajánlott érték  | Leírás      |
+    | ------------ | ---------------- | ---------------- |
+    | **Előfizetés** | Az Ön előfizetése | Az az előfizetés, amelyben az erőforrások létrejöttek. | 
+    | **Erőforrás típusa**  | Microsoft. ServiceBus/névterek | Ez a Service Bus erőforrás-típusa. |
+    | **Erőforrás** | myServiceBus | Az oktatóanyagban korábban létrehozott Service Bus. |
+    | **Cél alerőforrás** | névtér | Ezt a privát végpontot fogja használni a rendszer a Service Bus-névtérhez. |
+
+1. A **konfiguráció** lapon válassza az **alapértelmezett** lehetőséget az alhálózat beállításnál.
+
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. Az érvényesítés befejezése után válassza a **Létrehozás** lehetőséget. A virtuális hálózat erőforrásai mostantól a Service Bus szolgáltatással is beszélgethet.
+
+## <a name="create-a-file-share"></a>Fájlmegosztás létrehozása
+
+1. A létrehozott Storage-fiókban válassza a **fájlmegosztás** lehetőséget a bal oldali menüben.
+
+1. Válassza a **+ fájlmegosztás** lehetőséget. Adja meg a **fájlokat** a fájlmegosztás neveként az oktatóanyag szempontjából.
+
+    :::image type="content" source="./media/functions-create-vnet/4-create-file-share.png" alt-text="Képernyőkép a fájlmegosztás létrehozásáról a Storage-fiókban.":::
+
+## <a name="get-storage-account-connection-string"></a>Storage-fiókhoz tartozó kapcsolatok karakterláncának beolvasása
+
+1. A létrehozott Storage-fiókban a bal oldali menüben válassza a **hozzáférési kulcsok** elemet.
+
+1. Válassza a **kulcsok megjelenítése** lehetőséget. Másolja a key1-beli kapcsolatok karakterláncát, és mentse azt. Az Alkalmazásbeállítások konfigurálásakor később erre a kapcsolódási sztringre lesz szükség.
+
+    :::image type="content" source="./media/functions-create-vnet/5-get-store-connection-string.png" alt-text="Képernyőfelvétel a Storage-fiók kapcsolódási karakterláncának beszerzéséről.":::
+
+## <a name="create-a-queue"></a>Üzenetsor létrehozása
+
+Ez lesz az a várólista, amelyre a Azure Functions Service Bus trigger beolvassa az eseményeket.
+
+1. A Service Bus-ben válassza a bal oldali menüben a **várólisták** elemet.
+
+1. Válassza a **megosztott hozzáférési szabályzatok** lehetőséget. Adja **meg a várólista nevét** a várólista számára az oktatóanyag szempontjából.
+
+    :::image type="content" source="./media/functions-create-vnet/6-create-queue.png" alt-text="A Service Bus-várólista létrehozásának képernyőképe.":::
+
+## <a name="get-service-bus-connection-string"></a>Service Bus-kapcsolatok karakterláncának beolvasása
+
+1. A Service Bus-ben válassza a bal oldali menüben a **megosztott hozzáférési házirendek** elemet.
+
+1. Válassza a **RootManageSharedAccessKey** lehetőséget. Másolja ki az **elsődleges kapcsolatok karakterláncát**, és mentse. Az Alkalmazásbeállítások konfigurálásakor később erre a kapcsolódási sztringre lesz szükség.
+
+    :::image type="content" source="./media/functions-create-vnet/7-get-service-bus-connection-string.png" alt-text="A Service Bus-kapcsolatok karakterláncának beszerzését bemutató képernyőkép.":::
+
+## <a name="integrate-function-app-with-your-virtual-network"></a>A Function app integrálása a virtuális hálózattal
+
+Ha a Function alkalmazást virtuális hálózatokkal szeretné használni, csatlakoztatnia kell azt egy alhálózathoz. Egy adott alhálózatot használunk a Azure Functions virtuális hálózati integrációhoz és az alapértelmezett alhálóhoz az oktatóanyagban létrehozott összes többi privát végponthoz.
+
+1. A Function alkalmazásban válassza a bal oldali menü **hálózatkezelés** elemét.
+
+1. Válassza **a kattintson ide a VNet-integráció alatt beállításhoz** .
+
+    :::image type="content" source="./media/functions-create-vnet/8-connect-app-vnet.png" alt-text="Képernyőkép a virtuális hálózatok integrálásáról.":::
+
+1. Válassza a **VNet hozzáadása** lehetőséget
+
+1. A **Virtual Network** alatt megnyíló panelen válassza ki a korábban létrehozott virtuális hálózatot.
+
+1. Válassza ki azt az **alhálózatot** , amelyet korábban a **functions** néven hoztunk létre. A Function alkalmazás most már integrálva van a virtuális hálózattal.
+
+    :::image type="content" source="./media/functions-create-vnet/9-connect-app-subnet.png" alt-text="Képernyőkép egy Function-alkalmazás alhálózathoz való összekapcsolásáról.":::
+
+## <a name="configure-your-function-app-settings-for-private-endpoints"></a>A Function alkalmazás beállításainak konfigurálása privát végpontokhoz
+
+1. A Function alkalmazásban válassza a bal oldali menü **konfiguráció** elemét.
+
+1. Ha a Function alkalmazást virtuális hálózatokkal szeretné használni, a következő Alkalmazásbeállítások frissítésére lesz szükség. Válassza az **+ új Alkalmazásbeállítás** vagy a ceruza lehetőséget az Alkalmazásbeállítások tábla jobb szélső oszlopában **, ha** szükséges. Ha elkészült, kattintson a **Mentés** elemre.
+
+    :::image type="content" source="./media/functions-create-vnet/10-configure-app-settings.png" alt-text="Képernyőkép a Function app-beállítások privát végpontok számára történő konfigurálásáról.":::
+
+    | Beállítás      | Ajánlott érték  | Leírás      |
+    | ------------ | ---------------- | ---------------- |
+    | **AzureWebJobsStorage** | mysecurestorageConnectionString | A létrehozott Storage-fiókhoz tartozó kapcsolatok karakterlánca. A Storage- [fiókhoz tartozó kapcsolatok karakterláncának beolvasása](#get-storage-account-connection-string). A beállítás módosításával a Function alkalmazás mostantól a biztonságos Storage-fiókot fogja használni a normál működéshez futásidőben. | 
+    | **WEBSITE_CONTENTAZUREFILECONNECTIONSTRING**  | mysecurestorageConnectionString | A létrehozott Storage-fiókhoz tartozó kapcsolatok karakterlánca. Ennek a beállításnak a megváltoztatásával a Function alkalmazás mostantól a biztonságos Storage-fiókot fogja használni a Azure Files számára, amelyet a telepítésekor használ a rendszer. |
+    | **WEBSITE_CONTENTSHARE** | fájlok | A Storage-fiókban létrehozott fájlmegosztás neve. Ez az Alkalmazásbeállítások a WEBSITE_CONTENTAZUREFILECONNECTIONSTRINGsal együtt használható. |
+    | **SERVICEBUS_CONNECTION** | myServiceBusConnectionString | Hozzon létre egy alkalmazás-beállítást a Service Bus-beli kapcsolatok karakterláncához. Ez a Storage-kapcsolatok karakterlánca a [Service Bus-kapcsolatok karakterláncának lekérése](#get-service-bus-connection-string)során.|
+    | **WEBSITE_CONTENTOVERVNET** | 1 | Hozza létre ezt az alkalmazás-beállítást. Az 1 érték lehetővé teszi a Function alkalmazás méretezését, ha a Storage-fiókja egy virtuális hálózatra van korlátozva. Ezt a beállítást akkor érdemes engedélyezni, ha a Storage-fiókot egy virtuális hálózatra korlátozza. |
+    | **WEBSITE_DNS_SERVER** | 168.63.129.16 | Hozza létre ezt az alkalmazás-beállítást. Ha az alkalmazás integrálva van egy virtuális hálózattal, akkor ugyanazt a DNS-kiszolgálót fogja használni, mint a virtuális hálózatot. Ez a két beállítás egyike, amelyekhez a Function alkalmazásnak Azure DNS privát zónával kell rendelkeznie, és a magánhálózati végpontok használatakor szükséges. Ezek a beállítások az alkalmazásból érkező összes kimenő hívást elküldik a virtuális hálózatnak. |
+    | **WEBSITE_VNET_ROUTE_ALL** | 1 | Hozza létre ezt az alkalmazás-beállítást. Ha az alkalmazás integrálva van egy virtuális hálózattal, akkor ugyanazt a DNS-kiszolgálót fogja használni, mint a virtuális hálózatot. Ez a két beállítás egyike, amelyekhez a Function alkalmazásnak Azure DNS privát zónával kell rendelkeznie, és a magánhálózati végpontok használatakor szükséges. Ezek a beállítások az alkalmazásból érkező összes kimenő hívást elküldik a virtuális hálózatnak. |
+
+1. Maradjon a **konfiguráció** nézetben, és válassza a **Function Runtime Settings (függvény futtatókörnyezet beállításai** ) lapot.
+
+1. Állítsa be a **futásidejű méretezés figyelését** a be értékre, majd válassza **a** **Mentés** lehetőséget. A futásidejű vezérelt skálázás lehetővé teszi a nem HTTP-trigger függvények összekapcsolását a virtuális hálózaton belül futó szolgáltatásokhoz.
+
+    :::image type="content" source="./media/functions-create-vnet/11-enable-runtime-scaling.png" alt-text="Képernyőfelvétel: a futásidejű vezérelt skálázás engedélyezése Azure Functions számára.":::
+
+## <a name="deploy-a-service-bus-trigger-and-http-trigger-to-your-function-app"></a>Service Bus-trigger és http-trigger üzembe helyezése a Function alkalmazásban
+
+1. A GitHubon keresse meg a következő minta-tárházat, amely két függvényt tartalmazó Function alkalmazást, egy HTTP-triggert és egy Service Bus üzenetsor-triggert tartalmaz.
+
+    <https://github.com/Azure-Samples/functions-vnet-tutorial>
+
+1. A lap tetején kattintson az **elágazás** gombra, és hozzon létre egy elágazást a saját GitHub-fiókjában vagy-szervezetében.
+
+1. A Function alkalmazásban válassza a bal oldali menü **központi telepítési központ** elemét. Ezután válassza a **Beállítások** lehetőséget.
+
+1. A **Beállítások** lapon adja meg a központi telepítési beállításokat az alábbi módon:
+
+    | Beállítás      | Ajánlott érték  | Leírás      |
+    | ------------ | ---------------- | ---------------- |
+    | **Forrás** | GitHub | Létre kell hoznia egy GitHub-tárházat a 2. lépésben szereplő mintakód-kóddal. | 
+    | **Szervezet**  | myOrganization | Ez az a szervezet, amelybe a tárház be van jelölve, általában a fiókja. |
+    | **Adattár** | myRepo | A mintakód által létrehozott tárház. |
+    | **Ág** | main | Ez az imént létrehozott tárház, ezért használja a fő ágat. |
+    | **Futtatókörnyezet verme** | .NET | A mintakód a C# nyelven érhető el. |
+
+1. Kattintson a **Mentés** gombra. 
+
+    :::image type="content" source="./media/functions-create-vnet/12-deploy-portal.png" alt-text="Képernyőkép: Azure Functions kód üzembe helyezése a portálon keresztül.":::
+
+1. A kezdeti üzembe helyezés néhány percet is igénybe vehet. Az alkalmazás sikeres üzembe helyezése után a **naplók** lapon megjelenik a **sikeres (aktív)** állapotjelző üzenet. Ha szükséges, frissítse az oldalt. 
+
+1. Gratulálunk! Sikeresen telepítette a minta Function alkalmazást.
+
+## <a name="lock-down-your-function-app-with-a-private-endpoint"></a>A Function alkalmazás zárolása privát végponttal
+
+Most hozzon létre egy privát végpontot a Function alkalmazáshoz. Ez a privát végpont privát IP-cím használatával csatlakozik a Function alkalmazáshoz, és biztonságosan csatlakozik a virtuális hálózathoz. A privát végpontokkal kapcsolatos további információkért nyissa meg a [privát végpontok dokumentációját](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
+
+1. A Function alkalmazásban válassza a bal oldali menü **hálózatkezelés** elemét.
+
+1. Válassza **a kattintson ide a** privát végponti kapcsolatok alatt történő konfiguráláshoz.
+
+    :::image type="content" source="./media/functions-create-vnet/14-navigate-app-private-endpoint.png" alt-text="Képernyőkép a függvényalkalmazás privát végpontjának megnyitásáról.":::
+
+1. Válassza a **Hozzáadás** lehetőséget.
+
+1. A megnyíló menüben használja a magánhálózati végpont beállításait az alább megadott módon:
+
+    :::image type="content" source="./media/functions-create-vnet/15-create-app-private-endpoint.png" alt-text="Képernyőkép függvényalkalmazás privát végpont létrehozásáról.":::
+
+1. A privát végpont hozzáadásához kattintson **az OK gombra** . Gratulálunk! A Function app, a Service Bus és a Storage-fiók privát végpontokkal való biztonságossá tétele sikeresen megtörtént.
+
+### <a name="test-your-locked-down-function-app"></a>A zárolt funkció alkalmazásának tesztelése
+
+1. A Function alkalmazásban válassza a bal oldali menü **függvények** elemét.
+
+1. Válassza ki a **ServiceBusQueueTrigger**.
+
+1. A bal oldali menüben válassza a **figyelő** lehetőséget. láthatja, hogy nem tudja figyelni az alkalmazást. Ennek az az oka, hogy a böngésző nem fér hozzá a virtuális hálózathoz, így nem tud közvetlenül hozzáférni a virtuális hálózaton belüli erőforrásokhoz. Most bemutatjuk egy másik módszert, amellyel továbbra is figyelheti a függvényt, Application Insights.
+
+1. A Function alkalmazásban válassza a bal oldali menüben a **Application Insights** lehetőséget, majd válassza az **Application Insights adatok megtekintése** lehetőséget.
+
+    :::image type="content" source="./media/functions-create-vnet/16-app-insights.png" alt-text="Képernyőkép arról, hogyan lehet megtekinteni az Application bepillantást egy függvényalkalmazás.":::
+
+1. Válassza a bal oldali menü **élő metrikák** elemét.
+
+1. Nyisson meg egy új lapot. A Service Bus a bal oldali menüben válassza a **várólisták** elemet.
+
+1. Válassza ki a várólistát.
+
+1. Válassza a bal oldali menü **Service Bus Explorer** elemét. A **Küldés** területen válassza a **szöveg/egyszerű** lehetőséget a **tartalom típusaként** , és adjon meg egy üzenetet. 
+
+1. Az üzenet elküldéséhez válassza a **Küldés** lehetőséget.
+
+    :::image type="content" source="./media/functions-create-vnet/17-send-service-bus-message.png" alt-text="Képernyőkép Service Bus üzenetek küldéséről a portál használatával.":::
+
+1. Az **élő metrikákat** tartalmazó lapon meg kell jelennie, hogy az Service Bus üzenetsor-trigger aktiválva lett. Ha nem, küldje el újra az üzenetet a **Service Bus Explorerben**
+
+    :::image type="content" source="./media/functions-create-vnet/18-hello-world.png" alt-text="Képernyőkép arról, hogyan lehet üzeneteket megtekinteni a Function apps élő metrikái használatával.":::
+
+1. Gratulálunk! Sikeresen tesztelte a Function alkalmazást a saját végpontok beállításával!
+
+### <a name="private-dns-zones"></a>saját DNS zónák
+Ha privát végpontot használ az Azure-erőforrásokhoz való csatlakozáshoz, az azt jelenti, hogy a nyilvános végpont helyett magánhálózati IP-címhez csatlakozik. A meglévő Azure-szolgáltatások úgy vannak konfigurálva, hogy a meglévő DNS-t használják a nyilvános végponthoz való kapcsolódáshoz. A DNS-konfigurációt felül kell bírálni a magánhálózati végponthoz való kapcsolódáshoz.
+
+A rendszer létrehoz egy magánhálózati DNS-zónát minden olyan Azure-erőforráshoz, amely privát végponttal van konfigurálva. A rendszer egy DNS-rekordot hoz létre a magánhálózati végponthoz társított minden magánhálózati IP-címhez.
+
+Ebben az oktatóanyagban a következő DNS-zónák jöttek létre:
+
+- privatelink.file.core.windows.net
+- privatelink.blob.core.windows.net
+- privatelink.servicebus.windows.net
+- privatelink.azurewebsites.net
 
 [!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban a WordPress-webhely olyan API-ként szolgál, amely a Function alkalmazásban proxy használatával lett meghívva. Ez a forgatókönyv jó oktatóanyagot tesz lehetővé, hiszen egyszerűen beállítható és megjeleníthető. Bármely más, a virtuális hálózaton belül üzembe helyezett API-t használhat. Létrehozhat egy olyan kóddal rendelkező függvényt is, amely meghívja a virtuális hálózaton belül üzembe helyezett API-kat. A reálisabb forgatókönyv egy olyan függvény, amely adatügyfél-API-kat használ a virtuális hálózatban üzembe helyezett SQL Server példány meghívásához.
-
-A prémium csomagokban futó függvények ugyanazokat a mögöttes App Service infrastruktúrát használják, mint a PremiumV2-csomagokban lévő webalkalmazások. A [Azure app Service webalkalmazásaihoz](../app-service/overview.md) tartozó összes dokumentáció a Prémium csomag funkcióival kapcsolatos.
+Ebben az oktatóanyagban létrehozta a Premium Function alkalmazást, a Storage-fiókot és a Service Bust, és a privát végpontok mögött biztosította azokat. További információ az alábbi, különböző hálózatkezelési funkciókról:
 
 > [!div class="nextstepaction"]
 > [További tudnivalók a függvények hálózati beállításairól](./functions-networking-options.md)

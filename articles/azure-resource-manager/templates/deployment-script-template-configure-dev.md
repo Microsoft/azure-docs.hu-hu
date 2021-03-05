@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: f731236b235883f019c74ef0b32f5066ca5b7514
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: b2e1ffb3cbd513766945864e33589c46284bf942
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179367"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200937"
 ---
 # <a name="configure-development-environment-for-deployment-scripts-in-arm-templates"></a>Fejlesztési környezet konfigurálása az ARM-sablonok üzembe helyezési parancsfájljaihoz
 
@@ -357,7 +357,7 @@ A csatlakoztatási útvonal alapértelmezett értéke a következő: `/mnt/azscr
 A sablonban megadott alapértelmezett **MCR.microsoft.com/Azure-CLI:2.9.1**. Tekintse meg a [támogatott Azure CLI-verziók](https://mcr.microsoft.com/v2/azure-cli/tags/list)listáját.
 
 > [!IMPORTANT]
-> Az üzembehelyezési parancsfájl a Microsoft Container Registry (MCR) által elérhető CLI-rendszerképeket használja. Egy hónapot vesz igénybe egy telepítési parancsfájl CLI-rendszerképének igazolásához. Ne használja a 30 napon belül kiadott CLI-verziókat. A képek kiadási dátumait az [Azure CLI kibocsátási megjegyzései](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true)című témakörben találja. Ha nem támogatott verziót használ, a hibaüzenet felsorolja a támogatott verziókat.
+> Az üzembehelyezési parancsfájl a Microsoft Container Registry (MCR) által elérhető CLI-rendszerképeket használja. Egy hónapot vesz igénybe egy telepítési parancsfájl CLI-rendszerképének igazolásához. Ne használja a 30 napon belül kiadott CLI-verziókat. A képek kiadási dátumait az [Azure CLI kibocsátási megjegyzései](/cli/azure/release-notes-azure-cli)című témakörben találja. Ha nem támogatott verziót használ, a hibaüzenet felsorolja a támogatott verziókat.
 
 A sablon 1 800 másodperc után felfüggeszti a tároló példányát. 30 perccel azelőtt, hogy a tároló példánya terminál állapotba kerül, és a munkamenet véget ér.
 

@@ -3,12 +3,12 @@ title: Virtuális gépek létrehozása és kezelése a DevTest Labs szolgáltat�
 description: Ismerje meg, hogyan hozhat létre és kezelhet virtuális gépeket az Azure CLI-vel a Azure DevTest Labs használatával
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 57510a722ab6a34b9d498e74a140d6f350c8fc02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22ee6bf607fe1b66cece0e7ddb25a2da2830258b
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85482836"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201464"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Virtuális gépek létrehozása és kezelése az Azure CLI-vel a DevTest Labs használatával
 Ez a rövid útmutató végigvezeti a fejlesztői gépek tesztkörnyezetben való létrehozásával, indításával, csatlakoztatásával, frissítésével és tisztításával. 
@@ -48,7 +48,7 @@ A következő parancs létrehoz egy virtuális gépet egy, az SSH-hitelesítéss
 az lab vm create --lab-name sampleLabName --resource-group sampleLabResourceGroup --name sampleVMName --image "Ubuntu Server 16.04 LTS" --image-type gallery --size Standard_DS1_v2 --authentication-type  ssh --generate-ssh-keys --ip-configuration public 
 ```
 
-A képletek alapján is létrehozhat virtuális gépeket, ha a **rendszerkép-típus** paramétert **képletre**állítja. Ha ki kell választania egy adott virtuális hálózatot a virtuális géphez, használja a **vnet** és az **alhálózati** paramétereket. További információ: [az Lab VM Create](/cli/azure/lab/vm#az-lab-vm-create).
+A képletek alapján is létrehozhat virtuális gépeket, ha a **rendszerkép-típus** paramétert **képletre** állítja. Ha ki kell választania egy adott virtuális hálózatot a virtuális géphez, használja a **vnet** és az **alhálózati** paramétereket. További információ: [az Lab VM Create](/cli/azure/lab/vm#az-lab-vm-create).
 
 ## <a name="verify-that-the-vm-is-available"></a>Ellenőrizze, hogy a virtuális gép elérhető-e.
 A `az lab vm show` parancs használatával ellenőrizze, hogy a virtuális gép elérhető-e, mielőtt elkezdi és csatlakozik hozzá. 
@@ -152,5 +152,5 @@ Virtuális gép törlése.
 az lab vm delete --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
-Tekintse meg az alábbi tartalmat: [Azure DevTest Labs Azure CLI-dokumentációja](/cli/azure/lab?view=azure-cli-latest). 
+## <a name="next-steps"></a>Következő lépések
+Tekintse meg az alábbi tartalmat: [Azure DevTest Labs Azure CLI-dokumentációja](/cli/azure/lab). 

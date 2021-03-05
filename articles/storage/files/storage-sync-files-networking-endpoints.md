@@ -8,12 +8,12 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 64d66e1b9eab225b38ee21306fea6f9534a708f3
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f307380114acd4f98d68b580333c4dccc2a7340b
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98673848"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201600"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Az Azure File Sync hálózati végpontjainak konfigurálása
 Azure Files és Azure File Sync két fő típusú végpontot biztosít az Azure-fájlmegosztás eléréséhez: 
@@ -125,7 +125,7 @@ Address: 192.168.0.5
 
 ---
 
-### <a name="create-the-storage-sync-private-endpoint"></a>A Storage Sync privát végpontjának létrehozása
+### <a name="create-the-storage-sync-service-private-endpoint"></a>A Storage Sync szolgáltatás magánhálózati végpontjának létrehozása
 > [!Important]  
 > Ha privát végpontokat szeretne használni a Storage Sync Service-erőforráson, akkor a Azure File Sync Agent 10,1-es vagy újabb verzióját kell használnia. A 10,1 előtti ügynök-verziók nem támogatják a Storage Sync szolgáltatás magánhálózati végpontját. Az összes korábbi ügynök-verzió támogatja a Storage-fiók erőforrásához tartozó magánhálózati végpontokat.
 
@@ -597,13 +597,10 @@ Ha le szeretné tiltani a Storage Sync szolgáltatás nyilvános végpontjának 
 $storageSyncServiceResourceGroupName = "<storage-sync-service-resource-group>"
 $storageSyncServiceName = "<storage-sync-service>"
 
-$storageSyncService = Get-AzResource `
-        -ResourceGroupName $storageSyncServiceResourceGroupName `
-        -ResourceName $storageSyncServiceName `
-        -ResourceType "Microsoft.StorageSync/storageSyncServices"
-
-$storageSyncService.Properties.incomingTrafficPolicy = "AllowVirtualNetworksOnly"
-$storageSyncService = $storageSyncService | Set-AzResource -Confirm:$false -Force -UsePatchSemantics
+Set-AzStorageSyncService `
+    -ResourceGroupName $storageSyncServiceResourceGroupName `
+    -Name $storageSyncServiceName `
+    -IncomingTrafficPolicy AllowVirtualNetworksOnly
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -611,6 +608,34 @@ Az Azure CLI nem támogatja a tulajdonság beállítását `incomingTrafficPolic
 
 ---
 
-## <a name="see-also"></a>További információ
+## <a name="azure-policy"></a>Azure Policy
+Azure Policy segíti a szervezeti szabványok betartatását és a szabványok megfelelőségének értékelését a nagy méretekben. Azure Files és Azure File Sync számos hasznos naplózási és szervizelési hálózati házirendet tesz elérhetővé, amelyek segítségével figyelheti és automatizálhatja az üzembe helyezést.
+
+A szabályzatok naplózzák a környezetet, és riasztást küldenek arról, ha a Storage-fiókok vagy a Storage Sync Services a definiált viselkedéstől eltérnek. Ha például egy nyilvános végpont engedélyezve van, ha a házirend úgy van beállítva, hogy a nyilvános végpontok le legyenek tiltva. A házirendek módosítása/üzembe helyezése további lépéseket hajt végre, és proaktív módon módosítja egy erőforrást (például a Storage Sync szolgáltatást), vagy üzembe helyezi az erőforrásokat (például privát végpontokat) a szabályzatokhoz való igazításhoz.
+
+A következő, előre meghatározott házirendek érhetők el Azure Files és Azure File Sync számára:
+
+| Művelet | Szolgáltatás | Feltétel | Házirend neve |
+|-|-|-|-|
+| Naplózás | Azure Files | A Storage-fiók nyilvános végpontja engedélyezve van. További információért lásd: [hozzáférés letiltása a Storage-fiók nyilvános végpontja](#disable-access-to-the-storage-account-public-endpoint) számára. | A Storage-fiókoknak korlátoznia kell a hálózati hozzáférést |
+| Naplózás | Azure File Sync | A Storage Sync szolgáltatás nyilvános végpontja engedélyezve van. További információért lásd: [hozzáférés letiltása a Storage Sync szolgáltatás nyilvános végpontja](#disable-access-to-the-storage-sync-service-public-endpoint) számára. | A nyilvános hálózati hozzáférést le kell tiltani Azure File Sync |
+| Naplózás | Azure Files | A Storage-fióknak legalább egy privát végpontra szüksége van. További információért lásd [a Storage-fiók magánhálózati végpontjának létrehozása](#create-the-storage-account-private-endpoint) című témakört. | A Storage-fióknak magánhálózati kapcsolatot kell használnia |
+| Naplózás | Azure File Sync | A Storage Sync szolgáltatásnak legalább egy magánhálózati végpontra van szüksége. További információért lásd [a Storage Sync szolgáltatás privát végpontjának létrehozása](#create-the-storage-sync-service-private-endpoint) című témakört. | Azure File Sync a magánhálózati hivatkozást kell használnia |
+| Módosítás | Azure File Sync | Tiltsa le a Storage Sync szolgáltatás nyilvános végpontját. | Módosítás – Azure File Sync konfigurálása a nyilvános hálózati hozzáférés letiltásához |
+| Üzembe helyezés | Azure File Sync | Helyezzen üzembe egy magánhálózati végpontot a Storage Sync szolgáltatáshoz. | Azure File Sync konfigurálása magánhálózati végpontokkal |
+| Üzembe helyezés | Azure File Sync | Helyezzen üzembe egy rekordot a privatelink.afs.azure.net DNS-zónában. | Azure File Sync konfigurálása privát DNS-zónák használatára |
+
+### <a name="set-up-a-private-endpoint-deployment-policy"></a>Privát végpont telepítési szabályzatának beállítása
+A privát végpontok központi telepítési szabályzatának beállításához lépjen a [Azure Portalra](https://portal.azure.com/), és keressen rá **a szabályzat kifejezésre.** A Azure Policy központnak legfelső szintű eredménynek kell lennie. A szabályzati központ tartalomjegyzékében navigáljon az **authoring**  >  -**definíciók** elemre. Az eredményül kapott **definíciók** ablaktábla az összes Azure-szolgáltatáson belül tartalmazza az előre meghatározott szabályzatokat. Az adott házirend megkereséséhez válassza ki a **tárolási** kategóriát a kategória szűrőben, vagy keressen rá a **Azure file Sync konfigurálása magánhálózati végpontokkal** lehetőségre. Válassza a **...** és a **hozzárendelés** lehetőséget, hogy új szabályzatot hozzon létre a definícióból.
+
+A **házirend kiosztása** varázsló **alapjai** panelje lehetővé teszi a hatókör, az erőforrás vagy az erőforráscsoport kizárási listájának beállítását, valamint egy felhasználóbarát név megadását, amely megkönnyíti a szabályzatok megkülönböztetését. Ezeket nem kell módosítania a szabályzat működéséhez, de ha módosításokat kíván végezni. Kattintson a **tovább** gombra a **Paraméterek** lapra való továbblépés előtt. 
+
+A **Parameters (paraméterek** ) panelen kattintson a **...** elemre a **privateEndpointSubnetId** legördülő lista mellett, és válassza ki azt a virtuális hálózatot és alhálózatot, ahol a Storage Sync szolgáltatás erőforrásaihoz tartozó magánhálózati végpontokat telepíteni kell. Az eredményül kapott varázsló több másodpercig is eltarthat a rendelkezésre álló virtuális hálózatok betöltéséhez az előfizetésben. Válassza ki a környezetének megfelelő virtuális hálózatot/alhálózatot, majd kattintson a **kiválasztás** gombra. Kattintson a **Next (tovább** ) gombra a **szervizelési** panelre való továbblépés előtt.
+
+Ahhoz, hogy a magánhálózati végpont telepítve legyen, ha a Storage Sync szolgáltatás magánhálózati végpont nélkül van azonosítva **, a szervizelés lapon be** kell jelölnie a **szervizelés létrehozása feladatot** . Végül válassza a **felülvizsgálat + létrehozás** lehetőséget a szabályzat-hozzárendelés áttekintéséhez és **létrehozásához** .
+
+Az eredményül kapott szabályzat-hozzárendelést rendszeres időközönként végrehajtja a rendszer, és előfordulhat, hogy a létrehozása után nem azonnal fut.
+
+## <a name="see-also"></a>Lásd még
 - [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)
-- [Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md)
+- [Az Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md)

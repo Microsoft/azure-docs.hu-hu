@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 4c76b2c0109637ce34681d2fa5c8b29e1ff800a1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 60c5ddcc67db6e4a0649458cfbd5c2949aa9a32a
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364371"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202042"
 ---
 # <a name="delete-resources-from-azure"></a>Erőforrások törlése az Azure-ból
 
@@ -44,7 +44,7 @@ A Azure Portal az alábbi módon törölheti az erőforráscsoportot:
 
 - Keresse meg az erőforráscsoportot azon a Azure Portalon, ahol az Azure arc-kompatibilis adatszolgáltatások erőforrásai létrejöttek.
 - Kattintson az **erőforráscsoport törlése** gombra.
-- Erősítse meg a törlést az erőforráscsoport nevének megadásával, majd kattintson a **Törlés**gombra.
+- Erősítse meg a törlést az erőforráscsoport nevének megadásával, majd kattintson a **Törlés** gombra.
 
 ## <a name="delete-specific-resources-in-the-resource-group"></a>Az erőforráscsoport adott erőforrásainak törlése
 
@@ -53,7 +53,7 @@ Az Azure arc-kompatibilis adatszolgáltatás-erőforrásait a Azure Portal egy e
 - Keresse meg az erőforráscsoportot azon a Azure Portalon, ahol az Azure arc-kompatibilis adatszolgáltatások erőforrásai létrejöttek.
 - Válassza ki az összes törölni kívánt erőforrást.
 - Kattintson a Törlés gombra.
-- Erősítse meg a törlést az "igen" beírásával, és kattintson a **Törlés**gombra.
+- Erősítse meg a törlést az "igen" beírásával, és kattintson a **Törlés** gombra.
 
 ## <a name="delete-resources-using-the-azure-cli"></a>Erőforrások törlése az Azure CLI használatával
 
@@ -64,10 +64,10 @@ Az Azure parancssori felületének használatával törölheti az Azure arc-komp
 Ha az Azure CLI használatával szeretné törölni az SQL felügyelt példányának erőforrásait az Azure-ból, cserélje le az alábbi parancs helyőrző értékeit, és futtassa azt.
 
 ```azurecli
-az resource delete --name <sql instance name> --resource-type Microsoft.AzureData/sqlManagedInstances --resource-group <resource group name>
+az resource delete --name <sql instance name> --resource-type Microsoft.AzureArcData/sqlManagedInstances --resource-group <resource group name>
 
 #Example
-#az resource delete --name sql1 --resource-type Microsoft.AzureData/sqlManagedInstances --resource-group rg1
+#az resource delete --name sql1 --resource-type Microsoft.AzureArcData/sqlManagedInstances --resource-group rg1
 ```
 
 ### <a name="delete-postgresql-hyperscale-server-group-resources-using-the-azure-cli"></a>A PostgreSQL nagy kapacitású-kiszolgáló csoport erőforrásainak törlése az Azure CLI használatával
@@ -75,10 +75,10 @@ az resource delete --name <sql instance name> --resource-type Microsoft.AzureDat
 Ha törölni szeretne egy PostgreSQL nagy kapacitású Server Group-erőforrást az Azure-ból az Azure CLI használatával, cserélje le az alábbi parancs helyőrző értékeit, és futtassa azt.
 
 ```azurecli
-az resource delete --name <postgresql instance name> --resource-type Microsoft.AzureData/postgresInstances --resource-group <resource group name>
+az resource delete --name <postgresql instance name> --resource-type Microsoft.AzureArcData/postgresInstances --resource-group <resource group name>
 
 #Example
-#az resource delete --name pg1 --resource-type Microsoft.AzureData/postgresInstances --resource-group rg1
+#az resource delete --name pg1 --resource-type Microsoft.AzureArcData/postgresInstances --resource-group rg1
 ```
 
 ### <a name="delete-azure-arc-data-controller-resources-using-the-azure-cli"></a>Azure arc-adatvezérlő erőforrásainak törlése az Azure CLI használatával
@@ -89,10 +89,10 @@ az resource delete --name <postgresql instance name> --resource-type Microsoft.A
 Ha törölni szeretne egy Azure arc-adatkezelőt az Azure-ból az Azure CLI használatával, cserélje le az alábbi parancs helyőrző értékeit, és futtassa azt.
 
 ```azurecli
-az resource delete --name <data controller name> --resource-type Microsoft.AzureData/dataControllers --resource-group <resource group name>
+az resource delete --name <data controller name> --resource-type Microsoft.AzureArcData/dataControllers --resource-group <resource group name>
 
 #Example
-#az resource delete --name dc1 --resource-type Microsoft.AzureData/dataControllers --resource-group rg1
+#az resource delete --name dc1 --resource-type Microsoft.AzureArcData/dataControllers --resource-group rg1
 ```
 
 ### <a name="delete-a-resource-group-using-the-azure-cli"></a>Erőforráscsoport törlése az Azure CLI használatával

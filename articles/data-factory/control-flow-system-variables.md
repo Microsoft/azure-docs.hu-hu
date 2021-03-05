@@ -7,14 +7,15 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: 3da450ce1130b693fa346b4a6f4b42f6a0fd60a3
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 119ecb3ec9c208340f09f513bf10b3ad24312cb5
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102174206"
+ms.locfileid: "102201226"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Azure Data Factory által támogatott rendszerváltozók
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk a Azure Data Factory által támogatott rendszerváltozókat ismerteti. Ezeket a változókat kifejezésekben használhatja Data Factory entitások definiálásához.
@@ -68,4 +69,5 @@ Ezeket a rendszerváltozókat az eseményindító JSON-ban bárhol lehet hivatko
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a változók kifejezésekben való használatáról: [Expression language & functions](control-flow-expression-language-functions.md).
+* További információ a változók kifejezésekben való használatáról: [Expression language & functions](control-flow-expression-language-functions.md).
+* A folyamat trigger-hatóköri rendszerváltozóinak használatához tekintse meg a [folyamat trigger-metaadatainak hivatkozása](how-to-use-trigger-parameterization.md) című témakört.

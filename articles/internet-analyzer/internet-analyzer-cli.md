@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 23a76e4007965c263671554bbcd937dbf3b4b0a6
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a9a9fe93ebe302a76d69249dc56933e1bcc924d1
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676217"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200087"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>Internet Analyzer-teszt létrehozása a parancssori felület használatával (előzetes verzió)
 
@@ -37,7 +37,7 @@ Az Internet Analyzer CLI a következő típusú erőforrásokat teszi elérhető
 
 ## <a name="profile-and-test-creation"></a>Profil és tesztelés létrehozása
 1. Az Internet Analyzer előnézeti hozzáférésének beszerzése a **hogyan az előzetes** verzióban való részvétel után? az [Azure Internet Analyzer – gyakori kérdések](internet-analyzer-faq.md)című témakörben olvashat.
-2. [Telepítse az Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)-t.
+2. [Telepítse az Azure CLI](/cli/azure/install-azure-cli)-t.
 3. Futtassa a `login` parancsot egy CLI-munkamenet elindításához:
     ```azurecli-interactive
     az login
@@ -50,9 +50,9 @@ Az Internet Analyzer CLI a következő típusú erőforrásokat teszi elérhető
 
 5. Válassza ki az előfizetési azonosítót, amely hozzáférést kapott az Internet Analyzer nyilvános előzetes verziójához.
 
-    A bejelentkezést követően megjelenik az Azure-fiókjához társított előfizetések listája. Az előfizetési információ az a `isDefault: true` jelenleg aktivált előfizetés a bejelentkezés után. Egy másik előfizetés kiválasztásához használja az az [Account set](/cli/azure/account#az-account-set) parancsot az előfizetés-azonosítóval a következőre való váltáshoz:. További információ az előfizetés kiválasztásáról: [több Azure-előfizetés használata](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest).
+    A bejelentkezést követően megjelenik az Azure-fiókjához társított előfizetések listája. Az előfizetési információ az a `isDefault: true` jelenleg aktivált előfizetés a bejelentkezés után. Egy másik előfizetés kiválasztásához használja az az [Account set](/cli/azure/account#az-account-set) parancsot az előfizetés-azonosítóval a következőre való váltáshoz:. További információ az előfizetés kiválasztásáról: [több Azure-előfizetés használata](/cli/azure/manage-azure-subscriptions-azure-cli).
 
-    Nem interaktív módok is rendelkezésre állnak a bejelentkezéshez, amelyekről részletesen [az Azure CLI-vel történő bejelentkezést](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) ismertető részben olvashat.
+    Nem interaktív módok is rendelkezésre állnak a bejelentkezéshez, amelyekről részletesen [az Azure CLI-vel történő bejelentkezést](/cli/azure/authenticate-azure-cli) ismertető részben olvashat.
 
 6. **[Nem kötelező]** Hozzon létre egy új Azure-erőforráscsoportot:
     ```azurecli-interactive
@@ -132,6 +132,6 @@ Az Internet Analyzer CLI a következő típusú erőforrásokat teszi elérhető
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A támogatott parancsok és használati példák teljes listájáért keresse fel az [Internet Analyzer CLI-referenciáját](/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest) .
+* A támogatott parancsok és használati példák teljes listájáért keresse fel az [Internet Analyzer CLI-referenciáját](/cli/azure/ext/internet-analyzer/internet-analyzer) .
 * Olvassa el az [Internet Analyzer – gyakori kérdések](internet-analyzer-faq.md)című részt.
 * További információ az [Internet Analyzer-ügyfél](internet-analyzer-embed-client.md) beágyazásáról és az [Egyéni végpontok](internet-analyzer-custom-endpoint.md)létrehozásáról.

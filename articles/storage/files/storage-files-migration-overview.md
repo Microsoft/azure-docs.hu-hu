@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 995ae176a8eec58f8dc9522e6fac6fd78170014d
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 4a874e6f1e026a1888b9039799be71c95f040ac6
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628917"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202348"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrálás Azure-fájlmegosztásokba
 
@@ -35,7 +35,7 @@ A Migrálás kulcsa a fájloknak az aktuális tárolási helyről az Azure-ba va
 Íme a fájl két alapvető összetevője:
 
 - **Adatfolyam: egy** fájl adatfolyama tárolja a fájl tartalmát.
-- **Fájl metaadatai** : a fájl metaadatai rendelkeznek a következő alösszetevőkkel:
+- **Fájl metaadatai**: a fájl metaadatai rendelkeznek a következő alösszetevőkkel:
    * Fájlattribútumok, például írásvédett
    * Fájlengedélyek, amelyek *NTFS-engedélyekként* , illetve *fájl-és mappa-ACL* -ként hívhatók.
    * Időbélyegek, a legtöbb esetben a létrehozás és az utolsó módosítás időbélyege
@@ -144,7 +144,7 @@ Az eszköz használatával perspektívát hozhat létre [Azure file Sync közpon
 
 Az eszköz tesztelt verziója a 4.4.1-es verzió. Kompatibilis a Felhőbeli rétegbeli fájlokkal. Az eszköz a normál működés közben nem idézi elő a rétegekből származó fájlok felidézését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 1. Hozzon létre egy tervet, amely az Azure-fájlmegosztás (csak felhőalapú vagy hibrid) telepítését kívánja használni.
 1. Tekintse át az elérhető áttelepítési útmutatók listáját, és keresse meg az Azure-fájlmegosztás forrására és üzembe helyezésére vonatkozó részletes útmutatót.
@@ -153,4 +153,4 @@ További információ a jelen cikkben említett Azure Files technológiákról:
 
 * [Az Azure file share áttekintése](storage-files-introduction.md)
 * [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)
-* [Azure File Sync: felhőalapú rétegek](storage-sync-cloud-tiering.md)
+* [Azure File Sync: felhőalapú rétegek](storage-sync-cloud-tiering-overview.md)

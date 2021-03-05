@@ -9,12 +9,12 @@ ms.service: industrial-iot
 ms.custom: devx-track-azurecli
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 1c12b1c7fd393227cb22d011f8b88f914cfded59
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 38235f9b01b321e27664ee837763732971f0b85c
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445496"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201498"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>OPC Twin modul és függőségek üzembe helyezése a semmiből
 
@@ -182,7 +182,7 @@ A modulok Azure IoT Edge átjáró eszközre történő központi telepítésén
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-1. Telepítse az [Azure Command Line Interface (az)](/cli/azure/?view=azure-cli-latest) legújabb verzióját [innen.](/cli/azure/install-azure-cli?view=azure-cli-latest)
+1. Telepítse az [Azure Command Line Interface (az)](/cli/azure/) legújabb verzióját [innen.](/cli/azure/install-azure-cli)
 
 ### <a name="quickstart"></a>Gyorsútmutató
 
@@ -205,7 +205,7 @@ A modulok Azure IoT Edge átjáró eszközre történő központi telepítésén
 
    A Device ID paraméter megkülönbözteti a kis-és nagybetűket. ![az IOT hub modul-Identity List output](/azure/iot-edge/media/how-to-deploy-cli/list-modules.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megtanulta, hogyan helyezhet üzembe az OPC Twin-et, itt látható a következő lépés:
 

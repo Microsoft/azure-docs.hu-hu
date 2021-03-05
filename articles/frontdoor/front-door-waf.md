@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: a5d51a77b1da0ae44c76d0187113105c4e53c9b4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f894fd5ca7bb98c48b106c13b8fe6130b2c76c6e
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279222"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201056"
 ---
 # <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Oktatóanyag: webalkalmazások gyors méretezése és biztosítása az Azure-beli előtérben és az Azure webalkalmazási tűzfal (WAF) használatával
 
@@ -36,7 +36,7 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az oktatóanyagban szereplő utasítások az Azure CLI-t használják. [Tekintse meg ezt az útmutatót](/cli/azure/get-started-with-azure-cli?preserve-view=true&view=azure-cli-latest) az Azure CLI-vel való ismerkedéshez.
+- Az oktatóanyagban szereplő utasítások az Azure CLI-t használják. [Tekintse meg ezt az útmutatót](/cli/azure/get-started-with-azure-cli) az Azure CLI-vel való ismerkedéshez.
 
   > [!TIP] 
   > Az Azure CLI első lépéseinek egyszerű és gyors módja a [Bash Azure Cloud Shell](../cloud-shell/quickstart.md).
@@ -48,7 +48,7 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
    ```
 
 > [!NOTE] 
-> Az oktatóanyagban használt parancsokkal kapcsolatos további információkért tekintse meg az [Azure CLI-referenciát az](/cli/azure/ext/front-door/?preserve-view=true&view=azure-cli-latest)előtérben.
+> Az oktatóanyagban használt parancsokkal kapcsolatos további információkért tekintse meg az [Azure CLI-referenciát az](/cli/azure/ext/front-door)előtérben.
 
 ## <a name="create-an-azure-front-door-resource"></a>Azure-beli előtérben lévő erőforrás létrehozása
 
@@ -144,7 +144,7 @@ Javasoljuk, hogy csak az Azure-előtérben lévő élek kommunikáljanak a webal
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége az oktatóanyagban használt erőforrásokra, az az [Group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) paranccsal távolítsa el az erőforráscsoportot, a bejárati ajtót és a WAF szabályzatot:
+Ha már nincs szüksége az oktatóanyagban használt erőforrásokra, az az [Group delete](/cli/azure/group#az-group-delete) paranccsal távolítsa el az erőforráscsoportot, a bejárati ajtót és a WAF szabályzatot:
 
 ```azurecli-interactive
   az group delete \

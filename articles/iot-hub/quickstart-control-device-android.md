@@ -14,12 +14,12 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: 6b5df6d6eaedd4d7d1793c35db37e06b4478f2b8
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 361317729ecf868465d498cf3fcedd45d8c979db
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072068"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201005"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Gyors útmutató: IoT hub-hoz csatlakoztatott eszköz vezérlése (Android)
 
@@ -133,7 +133,7 @@ Ezt az alkalmazást fizikai eszközön vagy emulátoron kell futtatni, amikor a 
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Telemetriai adatok kiolvasása a központból
 
-Ebben a szakaszban a Azure Cloud Shellt a [IoT bővítménnyel](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true) fogja használni az Android-eszköz által küldött üzenetek figyeléséhez.
+Ebben a szakaszban a Azure Cloud Shellt a [IoT bővítménnyel](/cli/azure/ext/azure-iot/iot) fogja használni az Android-eszköz által küldött üzenetek figyeléséhez.
 
 1. Az Azure Cloud Shell használatával futtassa a következő parancsot az IoT Hubhoz történő csatlakozáshoz és az üzenetek olvasásához:
 

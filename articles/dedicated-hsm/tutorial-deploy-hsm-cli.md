@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b6f4610887092b1dac5cdc85622739318d5921d7
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 1ca8bc5c82540b0dc02959d26b452554ef294368
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852234"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200529"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-the-azure-cli"></a>Oktatóanyag: a HSM üzembe helyezése meglévő virtuális hálózaton az Azure CLI használatával
 
@@ -38,7 +38,7 @@ Ez az oktatóanyag egy HSM és kötelező ExpressRoute-átjáróra koncentrál (
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure dedikált HSM jelenleg nem érhető el a Azure Portalban. A szolgáltatással való interakció a parancssoron keresztül vagy a PowerShell használatával történik. Ez az oktatóanyag a parancssori (CLI) felületet fogja használni a Azure Cloud Shell. Ha még nem ismeri az Azure CLI-t, kövesse az első lépéseket ismertető útmutatót itt: [Azure cli 2,0 első lépések](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest&preserve-view=true).
+Az Azure dedikált HSM jelenleg nem érhető el a Azure Portalban. A szolgáltatással való interakció a parancssoron keresztül vagy a PowerShell használatával történik. Ez az oktatóanyag a parancssori (CLI) felületet fogja használni a Azure Cloud Shell. Ha még nem ismeri az Azure CLI-t, kövesse az első lépéseket ismertető útmutatót itt: [Azure cli 2,0 első lépések](/cli/azure/get-started-with-azure-cli).
 
 Előfeltételek:
 

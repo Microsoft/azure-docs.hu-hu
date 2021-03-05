@@ -7,14 +7,14 @@ ms.reviewer: cynthn
 ms.service: virtual-machines
 ms.subservice: security
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: f8a6758cdf0a6da709a564c1e17c56a2fe5625b0
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: fca11ce1cfa09fb680c2b288e40fa5f51337bdb8
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124652"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200784"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>Megbízható indítást engedélyező virtuális gép üzembe helyezése (előzetes verzió)
 
@@ -37,7 +37,7 @@ Hozzon létre egy virtuális gépet, amelyen engedélyezve van a megbízható in
 1. A **virtuális gépek** lapon válassza a **Hozzáadás**, majd a **virtuális gép** lehetőséget.
 1. A **projekt részletei** területen ellenőrizze, hogy a megfelelő előfizetés van-e kiválasztva.
 1. Az **erőforráscsoport** területen válassza az **új létrehozása** elemet, és adja meg az erőforráscsoport nevét, vagy válasszon ki egy meglévő erőforráscsoportot a legördülő listából.
-1. A **példány részletei** területen adja meg a virtuális gép nevét, és válasszon egy olyan régiót, amely támogatja a megbízható indítást.
+1. A **példány részletei** területen adja meg a virtuális gép nevét, és válasszon egy olyan régiót, amely támogatja a [megbízható indítást](trusted-launch.md#public-preview-limitations).
 1. A **rendszerkép** területen válasszon ki egy olyan [rendszerképet, amely támogatja a megbízható indítást](trusted-launch.md#public-preview-limitations). Előfordulhat, hogy csak a rendszerkép 1. generációs verzióját látja, ami nem minden rendben van, folytassa a következő lépéssel.
 1. Váltson át a **speciális** lapra úgy, hogy kiválasztja az oldal tetején.
 1. Görgessen le a virtuálisgép- **generáció** szakaszhoz, majd válassza a **2**. generációs elemet.
@@ -140,7 +140,7 @@ A megbízható indítási virtuális gépek vTPM és biztonságos rendszerindít
 
 Bizonyos esetekben előfordulhat, hogy alá kell írnia az UEFI biztonságos rendszerindításhoz szükséges dolgokat.  Előfordulhat például, hogy át kell lépnie [az Ubuntu biztonságos rendszerindításához szükséges dolgokkal](https://ubuntu.com/blog/how-to-sign-things-for-secure-boot) . Ezekben az esetekben meg kell adnia a virtuális géphez tartozó MOK-regisztráció kulcsait. Ehhez az Azure soros konzolt kell használnia az MOK segédprogram eléréséhez.
 
-1. A Linux rendszerhez készült Azure soros konzol engedélyezése.
+1. A Linux rendszerhez készült Azure soros konzol engedélyezése. További információ: [soros konzol Linux rendszerhez](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/serial-console-linux).
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 1. Keressen rá a **virtuális gépekre** , és válassza ki a virtuális gépet a listából.
 1. A bal oldali menüben a **támogatás + hibaelhárítás** területen válassza a **Serial Console** lehetőséget. Egy oldal jobbra, a soros konzollal fog megnyílni.

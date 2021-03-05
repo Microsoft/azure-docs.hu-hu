@@ -3,12 +3,12 @@ title: Virtuális gépek indítása és leállítása parancssori eszközök has
 description: Megtudhatja, hogyan indíthatja el és állíthatja le a virtuális gépeket a Azure DevTest Labsban a parancssori eszközök használatával.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: e5a42658f2b83f101271f158c9af70833601b56d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b9be3d09c488fdae211d81daf88e8807bc7b4dc
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85476416"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201192"
 ---
 # <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>Azure DevTest Labs virtuális gépek indítása és leállítása parancssori eszközök használatával
 Ez a cikk bemutatja, hogyan indíthatja el vagy állíthatja le a virtuális gépeket a Azure PowerShell vagy az Azure CLI használatával a Azure DevTest Labs tesztkörnyezetben. A műveletek automatizálásához létrehozhat PowerShell-vagy CLI-parancsfájlokat is. 
@@ -66,7 +66,7 @@ else {
 
 
 ## <a name="azure-cli"></a>Azure CLI
-Az [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) egy másik módszer a DevTest Labs-beli virtuális gépek indításának és leállításának automatizálására. Az Azure CLI különböző operációs rendszerekre [telepíthető](/cli/azure/install-azure-cli?view=azure-cli-latest) . A következő szkript egy virtuális gép elindítására és leállítására szolgáló parancsokat biztosít a laborban. 
+Az [Azure CLI](/cli/azure/get-started-with-azure-cli) egy másik módszer a DevTest Labs-beli virtuális gépek indításának és leállításának automatizálására. Az Azure CLI különböző operációs rendszerekre [telepíthető](/cli/azure/install-azure-cli) . A következő szkript egy virtuális gép elindítására és leállítására szolgáló parancsokat biztosít a laborban. 
 
 ```azurecli
 # Sign in to Azure
@@ -83,5 +83,5 @@ az lab vm stop --lab-name yourlabname --name vmname --resource-group labResource
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az alábbi cikkből megtudhatja, hogyan használhatja a Azure Portal a következő műveletek elvégzéséhez: [indítsa újra a virtuális gépet](devtest-lab-restart-vm.md).

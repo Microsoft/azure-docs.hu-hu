@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/21/2020
 ms.author: duau
-ms.openlocfilehash: e01b56f88270348167ef1eef9d913e65074d9247
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 0b82c11dcd615dfbdcfd70f5f90edd7ba41b4562
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327253"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201617"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-cli"></a>Rövid útmutató: a globális webalkalmazások Azure CLI-vel való létrehozásának első lépései
 
@@ -40,13 +40,13 @@ az extension add --name front-door
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.28 verziójára vagy újabb verziójára van szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure-ban kapcsolódó erőforrásokat oszt ki egy erőforráscsoporthoz. Használhat meglévő erőforráscsoportot, vagy létrehozhat egy újat.
 
 Ebben a rövid útmutatóban két erőforráscsoport szükséges. Egy az *USA középső* régiójában, a második pedig az *USA déli középső* régiójában.
 
-Hozzon létre egy erőforráscsoportot az [az Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create&preserve-view=true)paranccsal:
+Hozzon létre egy erőforráscsoportot az [az Group Create](/cli/azure/group#az-group-create)paranccsal:
 
 ```azurecli-interactive
 az group create \
@@ -68,7 +68,7 @@ Ha még nem rendelkezik webalkalmazással, a következő parancsfájl használat
 
 A webalkalmazások létrehozása előtt két app Service-csomagra lesz szüksége, egyet az *USA középső* régiójában, a második pedig az *USA déli középső* régiójában.
 
-App Service-csomagok létrehozása az [az appservice Plan Create](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create&preserve-view=true)paranccsal:
+App Service-csomagok létrehozása az [az appservice Plan Create](/cli/azure/appservice/plan#az_appservice_plan_create&preserve-view=true)paranccsal:
 
 ```azurecli-interactive
 az appservice plan create \
@@ -84,7 +84,7 @@ az appservice plan create \
 
 Az alábbi parancsok futtatásával egy webalkalmazás jön létre az előző lépésben az App Service-csomagokban. A webalkalmazások nevének globálisan egyedinek kell lennie.
 
-Webalkalmazás létrehozása az [az WebApp Create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create&preserve-view=true):
+Webalkalmazás létrehozása az [az WebApp Create](/cli/azure/webapp#az_webapp_create&preserve-view=true):
 
 ```azurecli-interactive
 az webapp create \
@@ -104,7 +104,7 @@ Jegyezze fel az egyes webalkalmazások alapértelmezett állomásnevét, hogy me
 
 A következő lépésekkel hozhat létre alapszintű bejárati ajtót alapértelmezett terheléselosztási beállításokkal, állapot-mintavételi és útválasztási szabályokkal:
 
-Bejárati ajtó létrehozása az [az Network](/cli/azure/ext/front-door/network/front-door?view=azure-cli-latest#ext_front_door_az_network_front_door_create&preserve-view=true)előtérben Create:
+Bejárati ajtó létrehozása az [az Network](/cli/azure/ext/front-door/network/front-door#ext_front_door_az_network_front_door_create&preserve-view=true)előtérben Create:
 
 ```azurecli-interactive
 az network front-door create \
@@ -134,7 +134,7 @@ Nyisson meg egy webböngészőt, és adja meg az állomásnév beszerzését a p
 
 Ha már nincs szüksége a bejárati ajtóval létrehozott erőforrásokra, törölje mindkét erőforráscsoportot. Az erőforráscsoport törlésekor a bejárati ajtót és az ahhoz kapcsolódó összes erőforrást is törli. 
 
-Az erőforráscsoport törléséhez használja az [az Group delete](/cli/azure/group?view=azure-cli-latest#az_group_delete&preserve-view=true):
+Az erőforráscsoport törléséhez használja az [az Group delete](/cli/azure/group#az_group_delete&preserve-view=true):
 
 ```azurecli-interactive
 az group delete \
@@ -144,7 +144,7 @@ az group delete \
 --name myRGFDSouthCentral
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozta a következőket:
 * Front Door

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ec746a5c347db8cb92c95b1d76f3622498f0039f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bec5cafaf7d506d9ab25228c680d00af91dbf3d0
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742381"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200138"
 ---
 # <a name="azure-security-baseline-for-azure-firewall-manager"></a>Az Azure biztonsági alapterve Azure Firewall Managerhez
 
@@ -338,7 +338,7 @@ Címkéket alkalmazhat az Azure-erőforrások,-erőforráscsoportok és-előfize
 
 **Útmutató**: távolítsa el Azure Firewall Manager erőforrásait, ha már nincs szükségük a támadási felület minimalizálására. A felhasználók a Azure Portal, a CLI vagy a REST API-k segítségével kezelhetik Azure Firewall Manager-erőforrásait.
 
-- [Azure Firewall szabályzat parancssori felület](/cli/azure/ext/azure-firewall/network/firewall/policy?preserve-view=true&view=azure-cli-latest)
+- [Azure Firewall szabályzat parancssori felület](/cli/azure/ext/azure-firewall/network/firewall/policy)
 
 - [Azure hálózati CLI](/powershell/module/az.network/?preserve-view=true&view=azps-5.1.0#networking)
 
@@ -557,7 +557,7 @@ Emellett a címkék használatával megjelölheti az erőforrásokat, és létre
 
 - [Azure Firewall házirend-sablon referenciája](/azure/templates/microsoft.network/firewallpolicies)
 
-- [Azure Firewall szabályzat parancssori felület](/cli/azure/ext/azure-firewall/network/firewall/policy?preserve-view=true&view=azure-cli-latest)
+- [Azure Firewall szabályzat parancssori felület](/cli/azure/ext/azure-firewall/network/firewall/policy)
 
 - [A guardrails megvalósításának szemléltetése a nagyvállalati szintű kirakodási zónában](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture#landing-zone-expanded-definition)
 

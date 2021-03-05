@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 5a2540aeb36cfcb2048ec994bbb486badc8a68d1
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 4ab4e40e1dd4bbaf9ae73ab545285f5ae6261e27
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358809"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201770"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>A fürtkonfiguráció ajánlott eljárásai (SQL Server Azure-beli virtuális gépeken)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,7 +28,7 @@ A magas rendelkezésre állást és a vész-helyreállítást (HADR) használó 
 Ez a cikk a [Feladatátvevőfürt-példányok (FCIs-EK)](failover-cluster-instance-overview.md) és a [rendelkezésre állási csoportok](availability-group-overview.md) számára ajánlott, az Azure-beli virtuális gépeken való használattal SQL Server. 
 
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 Egyetlen NIC-kiszolgálót (fürtcsomópont) és egyetlen alhálózatot használjon. Az Azure hálózatkezelésének fizikai redundancia van, így a további hálózati adapterek és alhálózatok szükségtelenek az Azure-beli virtuális gépek vendég fürtjében. A fürt ellenőrzési jelentése figyelmezteti, hogy a csomópontok csak egyetlen hálózaton érhetők el. Ezt a figyelmeztetést figyelmen kívül hagyhatja az Azure-beli virtuális gépek vendég feladatátvevő fürtökön.
 
@@ -76,9 +76,7 @@ Első lépésként tekintse meg [a Felhőbeli tanúsító konfigurálása](/wind
 
 ### <a name="file-share-witness"></a>Tanúsító fájlmegosztás
 
-A tanúsító fájlmegosztás egy SMB-fájlmegosztás, amely általában Windows Server rendszert futtató fájlkiszolgálón van konfigurálva. Egy tanúsító. log fájlban tárolja a fürtszolgáltatási információkat, de nem tárolja a fürt adatbázisának másolatát. Az Azure-ban beállíthat egy [Azure-fájlmegosztást](../../../storage/files/storage-how-to-create-file-share.md) , amelyet tanúsító fájlmegosztásként használhat, vagy a fájlmegosztást külön virtuális gépen is használhatja.
-
-Ha Azure-fájlmegosztást fog használni, csatlakoztathatja a [prémium fájlmegosztás csatlakoztatásához](failover-cluster-instance-premium-file-share-manually-configure.md#mount-premium-file-share)használt folyamattal. 
+A tanúsító fájlmegosztás egy SMB-fájlmegosztás, amely általában Windows Server rendszert futtató fájlkiszolgálón van konfigurálva. Egy tanúsító. log fájlban tárolja a fürtszolgáltatási információkat, de nem tárolja a fürt adatbázisának másolatát. Az Azure-ban a fájlmegosztás külön virtuális gépen is konfigurálható.
 
 Első lépésként tekintse [meg a tanúsító fájlmegosztás konfigurálása](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)című témakört.
 
@@ -140,7 +138,7 @@ A következő korlátozásokat érdemes figyelembe venni, ha az Azure-ban vagy r
 
 ### <a name="msdtc"></a>MSDTC 
 
-Az Azure Virtual Machines támogatja a Microsoft Elosztott tranzakciók koordinátora (MSDTC) szolgáltatást a Windows Server 2019 rendszeren a fürtözött megosztott kötetek (CSV) és az [azure standard Load Balancer](../../../load-balancer/load-balancer-overview.md) , illetve az Azure-beli megosztott lemezeket használó SQL Server virtuális gépeken. 
+Az Azure Virtual Machines támogatja a Microsoft Distributed Transaction Coordinator (MSDTC) szolgáltatást a Windows Server 2019 rendszeren a fürtözött megosztott kötetek (CSV) és az [azure standard Load Balancer](../../../load-balancer/load-balancer-overview.md) , illetve az Azure-beli megosztott lemezeket használó SQL Server virtuális gépeken. 
 
 Az Azure Virtual Machines az MSDTC nem támogatott a Windows Server 2016-es vagy korábbi verzióiban fürtözött megosztott kötetekkel, mert:
 

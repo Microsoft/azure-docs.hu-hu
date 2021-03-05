@@ -3,12 +3,12 @@ title: Azure Event Grid előfizetési séma
 description: Ez a cikk a Azure Event Gridval való eseményre való feliratkozás tulajdonságait ismerteti. Event Grid előfizetési séma.
 ms.topic: reference
 ms.date: 07/07/2020
-ms.openlocfilehash: 21016627e545cc4935b4ac213df675e894c12d95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6e33171cbba65cfeaca49ab6a8954be8bb89acb
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119072"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199951"
 ---
 # <a name="event-grid-subscription-schema"></a>Event Grid előfizetési séma
 
@@ -25,7 +25,7 @@ PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Micro
 ``` 
 
 Az esemény-előfizetés nevének 3-64 karakter hosszúnak kell lennie, és csak a-z, A-Z, 0-9 és a "-" karaktereket tartalmazhat. A cikk a kérelem törzsének tulajdonságait és sémáját ismerteti.
- 
+ 
 ## <a name="event-subscription-properties"></a>Esemény-előfizetés tulajdonságai
 
 | Tulajdonság | Típus | Leírás |
@@ -48,6 +48,7 @@ Az esemény-előfizetés nevének 3-64 karakter hosszúnak kell lennie, és csak
 | subjectBeginsWith | sztring | Előtag – az üzenet tárgy mezőjének megfelelő szűrő. Az alapértelmezett vagy az üres karakterlánc mindennek megfelel. | 
 | subjectEndsWith | sztring | Utótag – az esemény üzenet tárgy mezőjének megfelelő szűrő. Az alapértelmezett vagy az üres karakterlánc mindennek megfelel. |
 | isSubjectCaseSensitive | sztring | A kis-és nagybetűk megkülönböztetését szabályozza a szűrőkhöz. |
+| enableAdvancedFilteringOnArrays | boolean | Lehetővé teszi a tömbök használatát a speciális szűrési kulcsokhoz. További információ: [speciális szűrés](event-filtering.md#advanced-filtering). |
 
 
 ## <a name="example-subscription-schema"></a>Példa előfizetési sémára
@@ -71,6 +72,6 @@ Az esemény-előfizetés nevének 3-64 karakter hosszúnak kell lennie, és csak
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Event Grid bemutatása: [Mi az Event Grid?](overview.md)

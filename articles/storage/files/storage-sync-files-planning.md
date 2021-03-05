@@ -1,6 +1,6 @@
 ---
 title: Azure File Sync központi telepítésének tervezése | Microsoft Docs
-description: Tervezze meg a Azure File Sync-vel történő telepítést, amely lehetővé teszi egy számú Azure-fájlmegosztás gyorsítótárba helyezését egy helyszíni Windows Server-vagy felhőalapú virtuális gépen.
+description: Tervezze meg a Azure File Sync-vel történő telepítést, amely lehetővé teszi több Azure-fájlmegosztás gyorsítótárazását egy helyszíni Windows Server-vagy felhőalapú virtuális gépen.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
@@ -8,12 +8,12 @@ ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 65293df5fae523bff36240273afb93c4dd8485df
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 197bd1ab63093a18bd7838349acb3aed11a98e16
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219476"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202382"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 
@@ -22,7 +22,7 @@ ms.locfileid: "99219476"
         [![Interjú és bemutató bemutató Azure File Sync – kattintson a lejátszáshoz!](./media/storage-sync-files-planning/azure-file-sync-interview-video-snapshot.png)](https://www.youtube.com/watch?v=nfWLO7F52-s)
     :::column-end:::
     :::column:::
-        Azure File Sync egy olyan szolgáltatás, amely lehetővé teszi számos Azure-fájlmegosztás gyorsítótárazását egy helyszíni Windows Server-vagy felhőalapú virtuális gépen. 
+        Azure File Sync egy olyan szolgáltatás, amely lehetővé teszi több Azure-fájlmegosztás gyorsítótárazását egy helyszíni Windows Server-vagy felhőalapú virtuális gépen. 
         
         Ez a cikk bemutatja, hogyan Azure File Sync fogalmakat és szolgáltatásokat. Ha már ismeri a Azure File Synct, vegye figyelembe a [Azure file Sync üzembe helyezési útmutatót](storage-sync-files-deployment-guide.md) a szolgáltatás kipróbálásához.        
     :::column-end:::
@@ -52,16 +52,19 @@ Ahhoz, hogy szinkronizált csoportot hozzon létre egy Storage Sync szolgáltat�
 A szinkronizálási csoport egy Felhőbeli végpontot, vagy egy Azure-fájlmegosztást, valamint legalább egy kiszolgálói végpontot tartalmaz. A kiszolgálói végpont objektum azokat a beállításokat tartalmazza, amelyek az Azure File Sync gyorsítótárazási funkcióját biztosítják a **felhő** -előállítók számára. Az Azure-fájlmegosztás használatával történő szinkronizáláshoz az Azure-fájlmegosztást tartalmazó Storage-fióknak ugyanabban az Azure-régióban kell lennie, mint a Storage Sync szolgáltatásnak.
 
 > [!Important]  
-> A szinkronizálási csoportban bármilyen Felhőbeli végpontot vagy kiszolgálói végpontot módosíthat, és a fájlok szinkronizálva vannak a szinkronizálási csoport többi végpontján. Ha közvetlenül módosítja a Felhőbeli végpontot (Azure-fájlmegosztás), a módosításokat először egy Azure File Sync változás-észlelési feladatokkal kell felderíteni. A változás-észlelési feladatok csak 24 óránként egyszer indíthatók el egy Felhőbeli végponton. További információ: [Azure Files gyakori kérdések](storage-files-faq.md#afs-change-detection).
+> Módosíthatja a szinkronizálási csoport bármely Felhőbeli végpontjának vagy kiszolgálói végpontjának névterét, és a fájlok szinkronizálva vannak a szinkronizálási csoport többi végpontján. Ha közvetlenül módosítja a Felhőbeli végpontot (Azure-fájlmegosztás), a módosításokat először egy Azure File Sync változás-észlelési feladatokkal kell felderíteni. A változás-észlelési feladatok csak 24 óránként egyszer indíthatók el egy Felhőbeli végponton. További információ: [Azure Files gyakori kérdések](storage-files-faq.md#afs-change-detection).
 
-### <a name="management-guidance"></a>Kezelési útmutató
-Azure File Sync telepítésekor a következőket javasoljuk:
+### <a name="consider-the-count-of-storage-sync-services-needed"></a>Vegye figyelembe a Storage Sync Services szükséges számát
+Az előző szakasz a Azure File Sync konfigurálásához szükséges alapvető erőforrást ismerteti: a *Storage Sync szolgáltatáshoz*. Egy Windows-kiszolgáló csak egy Storage Sync szolgáltatásban regisztrálható. Ezért a legjobb megoldás, ha csak egyetlen Storage Sync szolgáltatást helyez üzembe, és regisztrálja az összes kiszolgálót. 
 
-- Azure-fájlmegosztás 1:1-es telepítése Windows-fájlmegosztás esetén. A kiszolgálói végpont objektum nagyszerű rugalmasságot biztosít a szinkronizálási topológia beállításához a szinkronizálási kapcsolat kiszolgálóoldali oldalán. A felügyelet egyszerűbbé tételéhez adja meg a kiszolgálói végpont elérési útját a Windows-fájlmegosztás elérési útjának megfelelően. 
+Csak akkor hozzon létre több Storage Sync Services szolgáltatást, ha rendelkezik a következővel:
+* azon kiszolgálók különböző csoportjai, amelyeknek soha nem kell egymással cserélniük az adatcserét. Ebben az esetben úgy tervezze meg a rendszerét, hogy kizárjon bizonyos kiszolgálókat egy olyan Azure-fájlmegosztás használatával történő szinkronizáláshoz, amely már használatban van egy másik Storage Sync-szolgáltatásban lévő szinkronizálási csoportban lévő, Felhőbeli végpontként. A másik lehetőség, hogy megnézze, hogy a különböző Storage Sync szolgáltatásban regisztrált Windows-kiszolgálók nem tudnak szinkronizálni ugyanazzal az Azure-fájlmegosztás használatával.
+* több regisztrált kiszolgálónak vagy szinkronizálási csoportnak kell lennie, mint amennyit egyetlen Storage Sync szolgáltatás támogat. További részletekért tekintse át a [Azure file Sync méretezési célokat](storage-files-scale-targets.md#azure-file-sync-scale-targets) .
 
-- A lehető legkevesebb tárolási szinkronizációs szolgáltatást használja. Ez leegyszerűsíti a felügyeletet, ha olyan szinkronizálási csoportokkal rendelkezik, amelyek több kiszolgálói végpontot tartalmaznak, mivel a Windows Servert egyszerre csak egy Storage Sync szolgáltatásban lehet regisztrálni. 
+## <a name="plan-for-balanced-sync-topologies"></a>A kiegyensúlyozott szinkronizálási topológiák tervezése
+Az erőforrások üzembe helyezése előtt fontos megtervezni, hogy mit fog szinkronizálni egy helyi kiszolgálón, amely az Azure-fájlmegosztást használja. A terv készítése segít meghatározni, hogy hány Storage-fiók, Azure-fájlmegosztás és szinkronizálási erőforrás szükséges. Ezek a szempontok még mindig relevánsak, még akkor is, ha az adatai jelenleg nem egy Windows-kiszolgálón vagy a kiszolgálón, amelyet hosszú távon szeretne használni. Az [áttelepítési szakasz](#migration) segítségével meghatározhatja a megfelelő áttelepítési útvonalakat a helyzethez.
 
-- Ügyeljen arra, hogy a Storage-fiók IOPS korlátozásait az Azure-fájlmegosztás telepítésekor. Ideális esetben a Storage-fiókokkal rendelkező 1:1-es fájlmegosztás leképezhető, azonban a különböző korlátok és korlátozások miatt a szervezettől és az Azure-tól is nem mindig lehetséges. Ha egyetlen Storage-fiókban nem lehet egyetlen fájlmegosztást telepíteni, gondolja át, hogy mely megosztások lesznek aktívak, és hogy mely megosztások kevésbé lesznek aktívak, hogy a legforróbb fájlmegosztás ne legyen ugyanazon a Storage-fiókban.
+[!INCLUDE [storage-files-migration-namespace-mapping](../../../includes/storage-files-migration-namespace-mapping.md)]
 
 ## <a name="windows-file-server-considerations"></a>Windows-fájlkiszolgáló szempontjai
 A Windows Server szinkronizálási funkciójának engedélyezéséhez telepítenie kell a Azure File Sync letölthető ügynököt. A Azure File Sync ügynök két fő összetevőt biztosít: `FileSyncSvc.exe` a háttérben futó Windows-szolgáltatást, amely a kiszolgáló-végpontok változásainak figyelésére és a szinkronizálási munkamenetek kezdeményezésére, valamint `StorageSync.sys` a felhőalapú rétegek és a gyors vész-helyreállítást lehetővé tevő fájlrendszer-szűrőre szolgál.  
@@ -203,7 +206,7 @@ A Azure file Sync nem támogatja az deduplikálás és a felhőalapú rétegek h
 - Ha az adatok deduplikálása engedélyezve van egy köteten a felhőalapú rétegek engedélyezése után, a kezdeti deduplikálás optimalizálási feladata optimalizálja a köteten még nem használt fájlokat, és a következő hatással lesz a Felhőbeli rétegek használatára:
     - A szabad terület házirendje a hő használatával továbbra is a köteten lévő szabad területtel rendelkező fájlokat fogja használni.
     - A Date Policy kihagyja a fájlokhoz hozzáférő, a deduplikálás optimalizálási feladata miatt esetlegesen felhasználható fájlok leválasztását.
-- A folyamatban lévő deduplikálás optimalizációs feladatokhoz a dátummal ellátott felhő-előfizetések késleltetve lesznek az adatok deduplikálása [MinimumFileAgeDays](/powershell/module/deduplication/set-dedupvolume?view=win10-ps) beállítással, ha a fájl még nincs feltömörítve. 
+- A folyamatban lévő deduplikálás optimalizációs feladatokhoz a dátummal ellátott felhő-előfizetések késleltetve lesznek az adatok deduplikálása [MinimumFileAgeDays](/powershell/module/deduplication/set-dedupvolume?view=win10-ps&preserve-view=true) beállítással, ha a fájl még nincs feltömörítve. 
     - Példa: Ha a MinimumFileAgeDays-beállítás hét nap, a felhő-előállítási dátum házirendje pedig 30 nap, a dátum-és 37 nap után a rendszer a fájlokat is felveszi.
     - Megjegyzés: Ha egy fájlt Azure File Sync, akkor a deduplikálás optimalizálási feladata kihagyja a fájlt.
 - Ha a telepített Azure file Sync ügynökkel rendelkező Windows Server 2012 R2 rendszert futtató kiszolgáló a Windows Server 2016 vagy a Windows Server 2019 rendszerre frissül, a következő lépéseket kell végrehajtani az deduplikálás és a felhőalapú rétegek egyazon köteten történő támogatásához:  
@@ -320,15 +323,9 @@ Ha hozzáférést szeretne kérni ezeknek a régióknak, kövesse a [jelen dokum
 > A Geo-redundáns és a Geo-zónás redundáns tárolás lehetővé tenné a tárolók manuális feladatátvételét a másodlagos régióba. Azt javasoljuk, hogy az adatvesztés nagyobb valószínűsége miatt ne hajtsa végre ezt a katasztrófán kívül, ha Azure File Sync használ. Abban az esetben, ha a tároló manuális feladatátvételét szeretné elindítani, meg kell nyitnia egy támogatási esetet a Microsofttal, hogy Azure File Sync a másodlagos végponttal való szinkronizálás folytatásához.
 
 ## <a name="migration"></a>Áttelepítés
-Ha van meglévő Windows-fájlkiszolgáló, Azure File Sync közvetlenül is telepíthető, anélkül, hogy át kellene helyeznie az adatátvitelt egy új kiszolgálóra. Ha a Azure File Sync bevezetésének részeként új Windows-fájlkiszolgálón kíván áttelepítést végezni, több lehetséges módszer áll rendelkezésre az adatáthelyezéshez:
+Ha van meglévő Windows Server-2012R2 vagy újabb, Azure File Sync közvetlenül is telepíthető, anélkül, hogy az új kiszolgálóra kellene áthelyeznie az adatátvitelt. Ha a Azure File Sync bevezetésének részeként egy új Windows-fájlkiszolgálón kíván áttelepítést végezni, vagy ha az adatai jelenleg a hálózati csatlakoztatott tárolóban (NAS) találhatók, akkor a rendszer több lehetséges áttelepítési módszert is használ az ilyen típusú adatAzure File Syncek használatára. Milyen áttelepítési megközelítést kell választania, attól függ, hogy az adatok hol találhatók. 
 
-- Hozzon létre kiszolgálói végpontokat a régi fájlmegosztás és az új fájlmegosztás számára, és hagyja, hogy Azure File Sync szinkronizálja az adatokat a kiszolgálói végpontok között. Ennek a megközelítésnek az az előnye, hogy nagyon egyszerűen előfizethet az új fájlkiszolgálón lévő tárterületre, mivel Azure File Sync a Felhőbeli rétegek számára. Ha elkészült, a végfelhasználókat átvágja az új kiszolgálón található fájlmegosztás fölé, és eltávolíthatja a régi fájlmegosztás kiszolgálói végpontját.
-
-- Csak az új fájlkiszolgálón hozzon létre egy kiszolgálói végpontot, és másolja át az adatait a régi fájlmegosztást a használatával `robocopy` . Attól függően, hogy az új kiszolgálón lévő fájlmegosztás topológiája (hány megosztás van az egyes köteteken, hogyan szabadítható fel az egyes kötetek, stb.), ideiglenesen további tárhelyet kell kiosztania, mivel a `robocopy` régi kiszolgálóról a helyszíni adatközpontban lévő új kiszolgálóra való várakozás során az adatok az Azure-ba való áthelyezésének folyamata gyorsabb lesz, mint Azure file Sync.
-
-A Data Box segítségével áttelepítheti az adatAzure File Sync üzembe helyezési szolgáltatásait is. Az idő nagy részében, amikor az ügyfelek a Data Box az adatok betöltéséhez szeretnék használni, azért, mert úgy gondolják, hogy növeli az üzembe helyezés sebességét, vagy azért, mert ez segít a korlátozott sávszélesség-forgatókönyvek esetén. Habár igaz, hogy a Azure File Sync üzembe helyezése során az adatok betöltésére szolgáló Data Box használata csökkenti a sávszélesség-kihasználtságot, valószínűleg gyorsabb lesz a legtöbb forgatókönyv esetén, hogy online adatfeltöltés történjen a fent ismertetett módszerek egyikével. Ha többet szeretne megtudni arról, hogyan használhatók a Data Box az adatAzure File Sync üzembe helyezéséhez, olvassa el a következő témakört: az [adatáttelepítés a Azure file Syncba Azure Data Box](storage-sync-offline-data-transfer.md).
-
-Gyakori hiba, hogy az ügyfelek az új Azure File Sync üzembe helyezéskor az Adatmásolást közvetlenül az Azure-fájlmegosztásba másolják, nem pedig a Windows-fájlkiszolgálók. Bár a Azure File Sync azonosítja az Azure-fájlmegosztás összes új fájlját, és szinkronizálja azokat a Windows-fájlmegosztás számára, ez általában jóval lassabb, mint a Windows-fájlkiszolgálón való betöltés. Az Azure Copy-eszközök, például a AzCopy használata esetén fontos, hogy a legújabb verziót használja. Tekintse át a fájlmásolás- [eszközök táblázatát](storage-files-migration-overview.md#file-copy-tools) , és tekintse át az Azure másolási eszközeit, és győződjön meg arról, hogy a fájl összes fontos metaadatát, például az időbélyegeket és az ACL-eket is másolja.
+Tekintse meg a [Azure file Sync és az Azure file share áttelepítésének áttekintése című](storage-files-migration-overview.md) cikket, ahol részletes útmutatást talál a forgatókönyvhöz.
 
 ## <a name="antivirus"></a>Vírusvédelem
 Mivel a víruskereső úgy működik, hogy a fájlokat az ismert kártékony kódok vizsgálatával végzi, a víruskereső termék a rétegekből származó fájlok visszahívását okozhatja, ami magas kimenő költségekkel jár. A Azure File Sync ügynök 4,0-es és újabb verzióiban a többplatformos fájlok a biztonságos Windows-attribútumot FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS beállítani. Javasoljuk, hogy a szoftver gyártójával való tanácsadással megtudja, hogyan konfigurálhatja a megoldását úgy, hogy kihagyja a fájlok olvasását ezzel az attribútummal (sok minden automatikusan). 
@@ -343,6 +340,9 @@ Ha a felhő-rétegek engedélyezve vannak, akkor a kiszolgáló-végpontról vag
 
 Ha helyszíni biztonsági mentési megoldást szeretne használni, akkor a biztonsági mentéseket a szinkronizálási csoporton belül olyan kiszolgálón kell végrehajtani, amelyen le van tiltva a Felhőbeli réteg. Ha visszaállítást végez, használja a kötet szintű vagy a fájl szintű visszaállítási lehetőségeket. A fájl szintű visszaállítási lehetőséggel visszaállított fájlok a szinkronizálási csoport összes végpontján szinkronizálva lesznek, és a meglévő fájlok a biztonsági másolatból visszaállított verzióra lesznek lecserélve.  A mennyiségi szintű visszaállítások nem cserélik le az újabb verziójú fájlokat az Azure-fájlmegosztás vagy más kiszolgálói végpontok között.
 
+> [!WARNING]
+> A Robocopy/B kapcsoló nem támogatott a Azure File Sync. A Robocopy/B kapcsoló és egy Azure File Sync kiszolgálói végpont használata esetén a forrás a fájl sérüléséhez vezethet.
+
 > [!Note]  
 > Az operációs rendszer nélküli (BMR) visszaállítás váratlan eredményekhez vezethet, és jelenleg nem támogatott.
 
@@ -356,5 +356,5 @@ Ha helyszíni biztonsági mentési megoldást szeretne használni, akkor a bizto
 * [A tűzfal és a proxy beállításainak megfontolása](storage-sync-files-firewall-and-proxy.md)
 * [Azure Files üzembe helyezésének tervezése](storage-files-planning.md)
 * [Az Azure Files üzembe helyezése](./storage-how-to-create-file-share.md)
-* [Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md)
+* [Az Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md)
 * [Az Azure File Sync monitorozása](storage-sync-files-monitoring.md)

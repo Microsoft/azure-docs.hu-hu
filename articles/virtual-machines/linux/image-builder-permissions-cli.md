@@ -3,21 +3,25 @@ title: Az Azure rendszerkép-készítő szolgáltatás engedélyeinek konfigurá
 description: Az Azure virtuálisgép-rendszerkép-készítő szolgáltatás követelményeinek konfigurálása, beleértve az Azure CLI-vel való jogosultságokat és jogosultságokat
 author: cynthn
 ms.author: danis
-ms.date: 03/02/2021
+ms.date: 04/02/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
-ms.openlocfilehash: f9b60af2c9fe16f834ce3098266c03afe2b99667
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4b6154a18cf4e08bf59dad91350160a1f83c49ed
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695430"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201481"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>Az Azure rendszerkép-készítő szolgáltatás engedélyeinek konfigurálása az Azure CLI használatával
 
-Az Azure rendszerkép-készítő szolgáltatásnak a rendszerkép létrehozása előtt meg kell adni az engedélyek és a jogosultságok konfigurációját. Az alábbi részekből megtudhatja, hogyan konfigurálhat lehetséges forgatókönyveket az Azure CLI használatával.
+A (z) (AIB) regisztrálásakor a AIB szolgáltatás engedélyt ad az átmeneti erőforráscsoport létrehozásához, kezeléséhez és törléséhez (IT_ *), és jogosultsággal rendelkezik ahhoz, hogy erőforrásokat adjon hozzá, amelyek szükségesek a rendszerkép létrehozásához. Ezt egy AIB egyszerű szolgáltatásnév (SPN) hajtja végre, amely a sikeres regisztráció során elérhetővé válik az előfizetésben.
+
+Annak engedélyezéséhez, hogy az Azure VM Image Builder lemezképeket terjesszen a felügyelt lemezképekre vagy egy megosztott képkatalógusba, létre kell hoznia egy Azure-beli felhasználó által hozzárendelt identitást, amely jogosult a képek olvasására és írására. Ha az Azure Storage-hoz fér hozzá, akkor a saját vagy nyilvános tárolók olvasásához engedélyre van szüksége.
+
+A rendszerkép létrehozása előtt be kell állítani az engedélyeket és a jogosultságokat. Az alábbi részekből megtudhatja, hogyan konfigurálhat lehetséges forgatókönyveket az Azure CLI használatával.
 
 > [!IMPORTANT]
 > Az Azure rendszerkép-szerkesztő jelenleg nyilvános előzetes verzióban érhető el.
