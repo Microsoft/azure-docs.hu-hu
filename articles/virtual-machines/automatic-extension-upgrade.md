@@ -3,17 +3,17 @@ title: A virtuális gépek és a méretezési csoportok automatikus bővítmény
 description: Megtudhatja, hogyan engedélyezheti az automatikus bővítmény frissítését a virtuális gépek és a virtuálisgép-méretezési csoportok számára az Azure-ban.
 author: mayanknayar
 ms.service: virtual-machines
-ms.subservice: automatic-extension-upgrades
+ms.subservice: automatic-extension-upgrade
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: manayar
-ms.openlocfilehash: 104eada6dc342c21b8da2f409756e9f34c103936
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: fa4fa1c43ab9d31b879bdec8e724e896bd16e14c
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101668333"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123900"
 ---
 # <a name="preview-automatic-extension-upgrade-for-vms-and-scale-sets-in-azure"></a>Előzetes verzió: az Azure-beli virtuális gépek és méretezési csoportok automatikus bővítményének frissítése
 

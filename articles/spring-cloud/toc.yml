@@ -147,6 +147,8 @@
       items:
         - name: Problémák önálló diagnosztizálása és megoldása
           href: spring-cloud-howto-self-diagnose-solve.md
+        - name: A VNET-ben futó saját diagnosztika
+          href: spring-cloud-howto-self-diagnose-running-in-vnet.md
         - name: Hibaelhárítási útmutató
           href: spring-cloud-troubleshoot.md
     - name: Migrálás

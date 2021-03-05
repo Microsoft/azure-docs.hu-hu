@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - device-developer
 - iot-edge
-ms.openlocfilehash: 91869614aef03b819a5f7fbb355004f6e802d673
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1a464b9e039f256fae52c32d828b1ec39a20a228
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733013"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123275"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge-eszközök csatlakoztatása Azure IoT Central-alkalmazáshoz
 
@@ -87,6 +87,20 @@ IoT Central az [eszközök használatával](concepts-device-templates.md) határ
 * Az eszköz által válaszoló parancsok, így a IoT Central a parancsok meghívásához használható felhasználói felületet jeleníthet meg.
 
 Az IoT Edge-eszközök küldhetnek telemetria, szinkronizálhatják a tulajdonságokat, és ugyanúgy reagálnak a parancsokra, mint a szabványos eszközök. Ezért egy IoT Edge eszköznek szüksége van egy eszköz-sablonra IoT Central.
+
+### <a name="iot-edge-device-templates"></a>IoT Edge-eszközök sablonjai
+
+Az IoT Central-sablonok modellek segítségével írják le az eszközök képességeit. Az alábbi ábrán egy IoT Edge eszköz modellének szerkezete látható:
+
+:::image type="content" source="media/concepts-iot-edge/iot-edge-model.png" alt-text="A modell struktúrája IoT Edge csatlakoztatott eszközhöz IoT Central" border="false":::
+
+A IoT Central IoT Edge eszköz modelljét az alábbiak szerint:
+
+* Minden IoT Edge eszköz sablonja rendelkezik egy képesség modellel.
+* Az üzembe helyezési jegyzékben felsorolt összes egyéni modulhoz létrejön egy modul-képesség modell.
+* Létrejön egy kapcsolat az egyes modulok képességeinek modellje és az eszköz modellje között.
+* A modul-képesség modell egy vagy több modul-felületet valósít meg.
+* Mindegyik modul felülete telemetria, tulajdonságokat és parancsokat tartalmaz.
 
 ### <a name="iot-edge-deployment-manifests-and-iot-central-device-templates"></a>IoT Edge üzembe helyezési jegyzékek és IoT Central-eszközök sablonjai
 

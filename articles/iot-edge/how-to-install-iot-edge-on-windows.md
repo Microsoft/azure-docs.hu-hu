@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: ba1401696092f5a16ffa21859a9b485e94c5d792
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c12dbeb81fd2b3d67863b5b84fa30cf77e165549
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736508"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123190"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>A Linux rendszerhez készült Azure IoT Edge telepítése és üzembe helyezése Windows-eszközön (előzetes verzió)
 
@@ -174,7 +174,7 @@ Ha még nem tette meg, telepítse a Windows rendszerhez készült Linux-IoT Edge
    ```
 
    > [!NOTE]
-   > Ezt a parancsot paraméterek nélkül is futtathatja, vagy opcionálisan testreszabhatja az üzembe helyezést paraméterekkel. A jelentések megjelenítéséhez tekintse meg [a Linux rendszerhez készült IoT Edge a Windows PowerShell parancsfájl-hivatkozását](reference-iot-edge-for-linux-on-windows-scripts.md#Deploy-Eflow) .
+   > Ezt a parancsot paraméterek nélkül is futtathatja, vagy opcionálisan testreszabhatja az üzembe helyezést paraméterekkel. A jelentések megjelenítéséhez tekintse meg [a Linux rendszerhez készült IoT Edge a Windows PowerShell parancsfájl-hivatkozását](reference-iot-edge-for-linux-on-windows-scripts.md#deploy-eflow) .
 
 1. A licencfeltételek elfogadásához írja be az "Y" kifejezést.
 
@@ -340,8 +340,6 @@ Ellenőrizze, hogy a Windows Linux rendszerhez készült IoT Edge telepítése �
        ```bash
        sudo iotedge check
        ```
-
----
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

@@ -9,12 +9,12 @@ ms.date: 03/01/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 76d3bdc8a6eb133daa2d241bdf4c3b73271f0173
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 38826451bbb8ec9303f61db53544cfe8ca2fcd41
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100202"
+ms.locfileid: "102123088"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Apache Spark kódtárainak kezelése az Azure szinapszis Analyticsben
 A tárak újrafelhasználható kódot biztosítanak, amelyet a programok vagy projektek számára érdemes felvenni. 
@@ -38,6 +38,7 @@ Egyéni alkalmazások vagy modellek fejlesztésekor a csapata különböző kód
 A Szinapszisban a munkaterület-csomagok egyéni, illetve saját kerek vagy JAR-fájlok is lehetnek. Ezeket a csomagokat feltöltheti a munkaterületre, majd később hozzárendelheti őket egy adott Spark-készlethez. Hozzárendelés után a rendszer automatikusan telepíti ezeket a munkaterület-csomagokat az összes Spark Pool-munkamenetre.
 
 A munkaterület-kódtárak kezelésével kapcsolatos további információkért tekintse meg a következő útmutatókat:
+
 - [Python-munkaterület csomagjai (előzetes verzió): ](./apache-spark-manage-python-packages.md#install-wheel-files) Töltse fel a Python Wheel-fájlokat munkaterület-csomagként, majd később adja hozzá ezeket a csomagokat adott kiszolgáló nélküli Apache Spark készletekhez.
 - [Scala/Java Workspace-csomagok (előzetes verzió): ](./apache-spark-manage-scala-packages.md#workspace-packages) Töltse fel a Scala és a java jar-fájlokat munkaterület-csomagként, majd később adja hozzá ezeket a csomagokat adott kiszolgáló nélküli Apache Spark készletekhez.
 
@@ -61,6 +62,7 @@ Az interaktív adatelemzés vagy a gépi tanulás során előfordulhat, hogy az 
 A munkamenet-hatókörrel rendelkező csomagok lehetővé teszik a felhasználók számára, hogy a munkamenetük kezdetén definiálják a csomagok függőségeit. Munkamenet-hatókörű csomag telepítésekor csak az aktuális munkamenet fér hozzá a megadott csomagokhoz. Ennek eredményeképpen ezek a munkamenet-hatókörű csomagok nem érintik a többi munkamenetet vagy feladatokat ugyanazzal a Apache Spark készlettel. Emellett ezek a kódtárak az alapszintű futtatókörnyezetre és a készlet szintű csomagokra is telepítve vannak. 
 
 A munkamenet-hatókörű csomagok kezelésével kapcsolatos további információkért tekintse meg a következő útmutatókat:
+
 - [Python-munkamenet csomagjai (előzetes verzió):](./apache-spark-manage-python-packages.md) A munkamenet elején adjon meg egy Conda- *környezetet. a YML* további Python-csomagokat telepíthet a népszerű adattárakból. 
 - [Scala/Java-munkamenetek csomagjai: ](./apache-spark-manage-scala-packages.md) A munkamenet elején adja meg a használatával telepítendő JAR-fájlok listáját ```%%configure``` .
 

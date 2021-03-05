@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 2f43d2979ad9770c63504d46666dffd78f761a73
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: fb7479f7e3b9ac631c164bbddf65ed8be3bab438
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097108"
+ms.locfileid: "102122646"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-an-angular-spa-using-the-auth-code-flow"></a>Gyors útmutató: bejelentkezés és hozzáférési jogkivonat beszerzése egy szögletes FÜRDŐben az Auth Code flow használatával
 
@@ -27,7 +27,8 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 
 Ez a rövid útmutató a MSAL szögletes v2-t használja az engedélyezési kód folyamatával. Ahhoz, hogy egy hasonló gyors üzembe helyezési pont az 1. x MSAL használja az implicit folyamattal, tekintse meg a gyors útmutató [: felhasználói bejelentkezés JavaScript egyoldalas alkalmazásokban](./quickstart-v2-angular.md)című témakört.
 
-Ez a funkció [!INCLUDE [active-directory-develop-preview](../../../includes/active-directory-develop-preview.md)]
+> [!IMPORTANT]
+> MSAL szögletes v2 [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -1,5 +1,5 @@
 ---
-title: Defender IoT Micro Agent hibaelhárítás (előzetes verzió)
+title: Defender IoT Micro Agent – hibaelhárítás
 titleSuffix: Azure Defender for IoT
 description: Megtudhatja, hogyan kezelheti a váratlan vagy megmagyarázhatatlan hibákat.
 author: shhazam-ms
@@ -8,14 +8,14 @@ ms.author: shhazam
 ms.date: 1/24/2021
 ms.topic: reference
 ms.service: azure
-ms.openlocfilehash: 07198a5d0ef5d0a6c9eed97523c61826e451b7f5
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: dade0d0d5dc4d690ea94f20deaf956b1e079bad7
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809749"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124176"
 ---
-# <a name="defender-iot-micro-agent-troubleshooting-preview"></a>Defender IoT Micro Agent hibaelhárítás (előzetes verzió)
+# <a name="defender-iot-micro-agent-troubleshooting"></a>Defender IoT Micro Agent – hibaelhárítás 
 
 Ha nem várt vagy megmagyarázhatatlan hibát észlel, az alábbi hibaelhárítási módszerekkel próbálja megoldani a problémákat. Igény szerint segítséget kaphat az Azure Defender for IoT termékért felelős csapatának is.   
 

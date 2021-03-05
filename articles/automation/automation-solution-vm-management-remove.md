@@ -3,14 +3,14 @@ title: Azure Automation Start/Stop VMs during off-hours áttekintésének eltáv
 description: Ez a cikk bemutatja, hogyan távolíthatja el az Start/Stop VMs during off-hours funkciót, és hogyan törölhet Automation-fiókot a Log Analytics munkaterületről.
 services: automation
 ms.subservice: process-automation
-ms.date: 02/04/2021
+ms.date: 03/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: a201274bf0c06382da790dd051bf5023337970b8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0bab5d8e82ce432e9b3834fe4c003316545eb338
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723843"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122085"
 ---
 # <a name="remove-startstop-vms-during-off-hours-from-automation-account"></a>Start/Stop VMs during off-hours eltávolítása az Automation-fiókból
 
@@ -24,21 +24,7 @@ A szolgáltatás törlésével a rendszer csak a társított runbookok távolít
 
 ## <a name="delete-the-dedicated-resource-group"></a>A dedikált erőforráscsoport törlése
 
-1. Jelentkezzen be az Azure-ba [https://portal.azure.com](https://portal.azure.com) .
-
-2. Navigáljon az Automation-fiókjához, és a **kapcsolódó erőforrások** területen válassza a **csatolt munkaterület** lehetőséget.
-
-3. Válassza **a ugrás munkaterületre** lehetőséget.
-
-4. Kattintson az **általános** területen a **megoldások** elemre.
-
-5. A megoldások lapon válassza a **Start-Stop-VM [munkaterület]** elemet.
-
-6. A **VMManagementSolution [munkaterület]** lapon válassza a **Törlés** lehetőséget a menüből.
-
-    ![Virtuálisgép-felügyeleti szolgáltatás törlése](media/automation-solution-vm-management/vm-management-solution-delete.png)
-
-7. Ha törölni szeretné a létrehozott erőforráscsoportot, hogy csak a Start/Stop VMs during off-hours támogassa, kövesse az [Azure Resource Manager erőforráscsoport és erőforrás-törlés](../azure-resource-manager/management/delete-resource-group.md) című cikkben ismertetett lépéseket.
+Az erőforráscsoport törléséhez kövesse az [Azure Resource Manager erőforráscsoport és az erőforrás-törlés](../azure-resource-manager/management/delete-resource-group.md) című cikkben ismertetett lépéseket.
 
 ## <a name="delete-the-automation-account"></a>Az Automation-fiók törlése
 

@@ -7,30 +7,30 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9d572545f589475dc2b460db90329fe8b0a838c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c262ba87698c04da69728f7a370040c0679ec44e
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904302"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122867"
 ---
 # <a name="how-to-self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Az Azure Spring Cloud szolgáltatásban felmerülő problémák önálló diagnosztizálása és megoldása
 
 **Ez a cikk a következőkre vonatkozik:** ✔️ Java ✔️ C #
 
-Az Azure Spring Cloud Diagnostics egy interaktív felület, amely segítséget nyújt az alkalmazás hibakeresésében. Nem igényel konfigurálást. Ha problémákat tapasztal, az Azure Spring Cloud Diagnostics arra utal, hogy mi a probléma, és útmutatást nyújt a problémák elhárításához és megoldásához.
+Az Azure Spring Cloud Diagnostics egy interaktív megoldás, amely a konfiguráció nélkül elhárítja az alkalmazást. Az Azure Spring Cloud Diagnostics észleli a problémákat, és útmutatást nyújt a problémák elhárításához és megoldásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Egy üzembe helyezett Azure Spring Cloud Service-példány. Az első lépésekhez kövesse [az alkalmazások Azure CLI-n keresztüli üzembe helyezését ismertető](spring-cloud-quickstart.md) útmutatót.
 * Legalább egy alkalmazás már létre van hozva a szolgáltatási példányban.
 
 ## <a name="navigate-to-the-diagnostics-page"></a>Navigáljon a diagnosztika lapra
 1. Jelentkezzen be az Azure portálra.
 2. Nyissa meg az Azure Spring Cloud **Áttekintés** oldalát.
-3. Az oldal bal oldalán található menüben nyissa meg a **problémák diagnosztizálását és megoldását** .
+3. A bal oldali navigációs panelen válassza a **diagnosztizálás és megoldás problémák** elemet.
 
  ![Diagnosztizálás, problémamegoldás párbeszédpanel](media/spring-cloud-diagnose/diagnose-solve-dialog.png)
 
@@ -39,7 +39,7 @@ A probléma megoldásához írjon be egy kulcsszót, vagy kattintson a megoldás
 
  ![Keresési problémák](media/spring-cloud-diagnose/search-detectors.png)
 
-A **konfigurációs kiszolgáló állapotának**, a **konfigurációs kiszolgáló**állapotának vagy a **konfigurációs kiszolgáló frissítési előzményeinek** kiválasztása különböző eredményeket fog megjeleníteni.
+A **konfigurációs kiszolgáló állapotának**, a **konfigurációs kiszolgáló** állapotának vagy a **konfigurációs kiszolgáló frissítési előzményeinek** kiválasztása különböző eredményeket fog megjeleníteni.
 
 ![Problémák beállításai](media/spring-cloud-diagnose/detectors-options.png)
 

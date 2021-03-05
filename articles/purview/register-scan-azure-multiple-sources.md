@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 2/26/2021
-ms.openlocfilehash: c57ac9ddbebcf02cb0118705b63f97fd1880b0f2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 098f62365971fd634001706ab99fd414a6b25056
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695961"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123564"
 ---
 # <a name="register-and-scan-azure-multiple-sources"></a>Azure-beli több forrás regisztrálása és vizsgálata
 
@@ -95,12 +95,12 @@ A **források regisztrálása (Azure Multiple)** képernyőn tegye a következő
     1. A **szülő szintű hitelesítő adatokat** MSI-ként vagy egy adott egyszerű szolgáltatásnév hitelesítő adataival választhatja ki, amelyet az előfizetés vagy az erőforráscsoport alá tartozó összes erőforrástípus esetében használhat.
     1. Azt is megteheti, hogy **kijelöli az erőforrás típusát, és más hitelesítő adatokat alkalmaz** az adott erőforrás típusára.
     1. Minden hitelesítő adat az adott típushoz tartozó összes erőforrás hitelesítési módszerének tekintendő.
-    1. A kiválasztott hitelesítő adatokat az erőforrásokon be kell állítania, hogy sikeresen beolvassa őket a fenti [szakaszban](#Setting-up-authentication-to-scan-resources-under-a-subscription-or-resource-group) leírtak szerint.
+    1. A kiválasztott hitelesítő adatokat az erőforrásokon be kell állítania, hogy sikeresen beolvassa őket a fenti [szakaszban](#setting-up-authentication-to-scan-resources-under-a-subscription-or-resource-group) leírtak szerint.
 1. Az egyes típusokon belül kiválaszthatja, hogy az összes erőforrást vagy egy részhalmazát megkeresi-e név alapján.
     1. Ha ezt a lehetőséget választja, az adott típushoz tartozó **összes** jövőbeli erőforrást a rendszer a következő vizsgálati futtatásokban is megvizsgálja
     1. Ha a megadott Storage-fiókokat vagy SQL-adatbázisokat választja, akkor az ezen az előfizetésen vagy az erőforráscsoporton belül létrehozott jövőbeli erőforrások nem lesznek belefoglalva a vizsgálatokhoz, kivéve, ha a vizsgálatokat a későbbiekben kifejezetten szerkesztik
  
-1.  A folytatáshoz kattintson a **tovább** gombra. Teszteljük a hozzáférést annak ellenőrzéséhez, hogy alkalmazta-e a hatáskörébe MSI-t olvasóként az előfizetésben vagy az erőforráscsoporthoz. Ha a rendszer hibaüzenetet küld, kövesse az [alábbi utasításokat.](#Setting-up-authentication-for-enumerating-resources-under-a-subscription-or-resource-group)
+1.  A folytatáshoz kattintson a **tovább** gombra. Teszteljük a hozzáférést annak ellenőrzéséhez, hogy alkalmazta-e a hatáskörébe MSI-t olvasóként az előfizetésben vagy az erőforráscsoporthoz. Ha a rendszer hibaüzenetet küld, kövesse az [alábbi utasításokat.](#setting-up-authentication-for-enumerating-resources-under-a-subscription-or-resource-group)
 
 1.  Válassza ki az előző lépésben kiválasztott erőforrástípusok **ellenőrzési szabályait** . A betekintő szabálykészlet beágyazottként is létrehozható.
   :::image type="content" source="media/register-scan-azure-multiple-sources/multiple-scan-rule-set.png" alt-text="Azure több vizsgálati szabálykészlet kijelölése":::

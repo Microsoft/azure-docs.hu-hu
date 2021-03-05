@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: fcdccf6701afe73ab0f11a7a907072b01a9d5aa4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b720e98fc83fd12744c289cb99814748b469b15d
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373307"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123683"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata szolgáltatás
 
@@ -42,13 +42,13 @@ Az alábbi mintakód egy példány metaadatainak beolvasására használható. E
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance?api-version=2020-09-01" | ConvertTo-Json -Depth 64
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance?api-version=2020-09-01" | ConvertTo-Json -Depth 64
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
 
 ```bash
-curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2020-09-01"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2020-09-01" | jq
 ```
 
 ---
@@ -88,7 +88,7 @@ A IMDS **nem** használható proxy mögött, ezért nem támogatott. A legtöbb 
 
 Jelenleg a következő HTTP-műveletek támogatottak:
 
-| Művelet | Description |
+| Művelet | Leírás |
 |------|-------------|
 | `GET` | A kért erőforrás beolvasása
 
@@ -196,7 +196,7 @@ A nem alapértelmezett válasz formátumának eléréséhez a kérelemben a kér
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text" | ConvertTo-Json
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -248,9 +248,7 @@ Ha nem ad meg verziót, a rendszer hibaüzenetet kap a legújabb támogatott ver
 - 2020-07-15
 - 2020-09-01
 - 2020-10-01
-
-> [!NOTE]
-> Az 2020-10-01-es verzió jelenleg be van vezetve, és lehetséges, hogy minden régióban még nem érhető el.
+- 2020-12-01
 
 ### <a name="swagger"></a>Swagger
 
@@ -268,11 +266,12 @@ A gyökérszintű végpont `http://169.254.169.254/metadata` .
 
 A IMDS API több végponti kategóriát is tartalmaz, amelyek különböző adatforrásokat tartalmaznak, amelyek mindegyike egy vagy több végpontot tartalmaz. A részletekért tekintse meg az egyes kategóriák részleteit.
 
-| Kategória gyökere | Description | Verzió bevezetése |
+| Kategória gyökere | Leírás | Verzió bevezetése |
 |---------------|-------------|--------------------|
 | `/metadata/attested` | [Igazolt](#attested-data) információ | 2018-10-01
 | `/metadata/identity` | [Felügyelt identitás megjelenítése a IMDS használatával](#managed-identity) | 2018-02-01
 | `/metadata/instance` | Lásd: [példány metaadatainak](#instance-metadata) | 2017-04-02
+| `/metadata/loadbalancer` | Lásd: [Load Balancer metaadatok beolvasása a IMDS használatával](#load-balancer-metadata) | 2020-10-01
 | `/metadata/scheduledevents` | Lásd: [Scheduled Events a IMDS-on keresztül](#scheduled-events) | 2017-08-01
 | `/metadata/versions` | [Verziók](#versions) megjelenítése | N/A
 
@@ -332,10 +331,11 @@ Séma részletezése:
 
 **Számítás**
 
-| Adatok | Description | Verzió bevezetése |
+| Adatok | Leírás | Verzió bevezetése |
 |------|-------------|--------------------|
 | `azEnvironment` | Az Azure-környezet, amelyben a virtuális gép fut | 2018-10-01
 | `customData` | Ez a funkció jelenleg le van tiltva. Ezt a dokumentációt akkor fogjuk frissíteni, amikor elérhetővé válik | 2019-02-01
+| `evictionPolicy` | Beállítja, hogy a rendszer hogyan zárja ki a [helyszíni virtuális](../articles/virtual-machines/spot-vms.md) gépeket. | 2020-12-01
 | `isHostCompatibilityLayerVm` | Annak azonosítása, hogy a virtuális gép a gazdagép kompatibilitási rétegén fut-e | 2020-06-01
 | `licenseType` | A [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit)licencének típusa. Ez csak a AHB-kompatibilis virtuális gépek esetében jelent meg | 2020-09-01
 | `location` | Az Azure-régió, amelyen a virtuális gép fut | 2017-04-02
@@ -349,6 +349,7 @@ Séma részletezése:
 | `plan` | Egy virtuális gép nevét, termékét és közzétevőjét tartalmazó [csomag megtervezése](/rest/api/compute/virtualmachines/createorupdate#plan) , ha az Azure Marketplace-rendszerkép | 2018-04-02
 | `platformUpdateDomain` |  A virtuális gépet futtató [tartomány frissítése](../articles/virtual-machines/manage-availability.md) | 2017-04-02
 | `platformFaultDomain` | A virtuális gép által futtatott tartalék [tartomány](../articles/virtual-machines/manage-availability.md) | 2017-04-02
+| `priority` | A virtuális gép prioritása. További információt a [helyszíni virtuális gépek](../articles/virtual-machines/spot-vms.md) című témakörben talál. | 2020-12-01
 | `provider` | A virtuális gép szolgáltatója | 2018-10-01
 | `publicKeys` | A virtuális géphez és elérési utakhoz rendelt [nyilvános kulcsok gyűjteménye](/rest/api/compute/virtualmachines/createorupdate#sshpublickey) | 2018-04-02
 | `publisher` | A virtuális gép rendszerképének közzétevője | 2017-04-02
@@ -373,7 +374,7 @@ A virtuális gépek tárolási profilja három kategóriára oszlik: képhivatko
 
 A képhivatkozási objektum a következő információkat tartalmazza az operációsrendszer-lemezképpel kapcsolatban:
 
-| Adatok | Description |
+| Adatok | Leírás |
 |------|-------------|
 | `id` | Erőforrás-azonosító
 | `offer` | A platform vagy a piactér rendszerképének ajánlata
@@ -383,7 +384,7 @@ A képhivatkozási objektum a következő információkat tartalmazza az operác
 
 Az operációsrendszer-lemez objektum a következő információkat tartalmazza a virtuális gép által használt operációsrendszer-lemezről:
 
-| Adatok | Description |
+| Adatok | Leírás |
 |------|-------------|
 | `caching` | Gyorsítótárazási követelmények
 | `createOption` | Információk a virtuális gép létrehozásáról
@@ -398,7 +399,7 @@ Az operációsrendszer-lemez objektum a következő információkat tartalmazza 
 
 Az adatlemezek tömb tartalmazza a virtuális géphez csatolt adatlemezek listáját. Minden adatlemez-objektum a következő információkat tartalmazza:
 
-Adatok | Description |
+Adatok | Leírás |
 -----|-------------|
 | `caching` | Gyorsítótárazási követelmények
 | `createOption` | Információk a virtuális gép létrehozásáról
@@ -414,7 +415,7 @@ Adatok | Description |
 
 **Hálózat**
 
-| Adatok | Description | Verzió bevezetése |
+| Adatok | Leírás | Verzió bevezetése |
 |------|-------------|--------------------|
 | `ipv4.privateIpAddress` | A virtuális gép helyi IPv4-címe | 2017-04-02
 | `ipv4.publicIpAddress` | A virtuális gép nyilvános IPv4-címe | 2017-04-02
@@ -422,13 +423,6 @@ Adatok | Description |
 | `subnet.prefix` | Alhálózat előtagja, 24. példa | 2017-04-02
 | `ipv6.ipAddress` | A virtuális gép helyi IPv6-címe | 2017-04-02
 | `macAddress` | VM MAC-címe | 2017-04-02
-
-**VM-Címkék**
-
-A virtuális gépek címkéi a példány/számítás/címkék végpont alatt találhatók a példány API-val.
-Előfordulhat, hogy az Azure-beli virtuális gépen a címkék logikailag rendszerezve lettek. A virtuális géphez rendelt címkék az alábbi kérelem használatával kérhetők le.
-
-A `tags` mező egy olyan karakterlánc, amelynek a címkéi pontosvesszővel vannak elválasztva. Ez a kimenet akkor lehet probléma, ha a címkékben pontosvesszőt használnak. Ha egy elemzőt a címkék programozott kinyeréséhez kell írni, a mezőre kell támaszkodnia `tagsList` . A `tagsList` mező egy olyan JSON-tömb, amely nem határolójeleket, és így könnyebben elemezhető.
 
 
 #### <a name="sample-1-tracking-vm-running-on-azure"></a>1. példa: az Azure-on futó virtuális gép nyomon követése
@@ -440,7 +434,7 @@ Szolgáltatóként szükség lehet a szoftvert futtató virtuális gépek szám�
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"| ConvertTo-Json
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -468,7 +462,7 @@ Ezeket az adatlekérdezéseket közvetlenül a IMDS-on keresztül kérdezheti le
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text" | ConvertTo-Json
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -485,7 +479,98 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 0
 ```
 
-#### <a name="sample-3-get-more-information-about-the-vm-during-support-case"></a>3. példa: további információk a virtuális géppel kapcsolatban a támogatási esetekben
+#### <a name="sample-3-get-vm-tags"></a>3. példa: virtuálisgép-címkék beolvasása
+
+A virtuális gépek címkéi a példány/számítás/címkék végpont alatt találhatók a példány API-val.
+Előfordulhat, hogy az Azure-beli virtuális gépen a címkék logikailag rendszerezve lettek. A virtuális géphez rendelt címkék az alábbi kérelem használatával kérhetők le.
+
+**Kérés**
+
+#### <a name="windows"></a>[Windows](#tab/windows/)
+
+```powershell
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/tags?api-version=2017-08-01&format=text"
+```
+
+#### <a name="linux"></a>[Linux](#tab/linux/)
+
+```bash
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
+```
+
+---
+
+**Válasz**
+
+```
+Department:IT;ReferenceNumber:123456;TestStatus:Pending
+```
+
+A `tags` mező egy olyan karakterlánc, amelynek a címkéi pontosvesszővel vannak elválasztva. Ez a kimenet akkor lehet probléma, ha a címkékben pontosvesszőt használnak. Ha egy elemzőt a címkék programozott kinyeréséhez kell írni, a mezőre kell támaszkodnia `tagsList` . A `tagsList` mező egy olyan JSON-tömb, amely nem határolójeleket, és így könnyebben elemezhető. A virtuális géphez rendelt tagsList az alábbi kérelem használatával kérhető le.
+
+**Kérés**
+
+#### <a name="windows"></a>[Windows](#tab/windows/)
+
+```powershell
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04" | ConvertTo-Json -Depth 64
+```
+
+#### <a name="linux"></a>[Linux](#tab/linux/)
+
+```bash
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04" | jq
+```
+
+---
+
+**Válasz**
+
+#### <a name="windows"></a>[Windows](#tab/windows/)
+
+```json
+{
+    "value":  [
+                  {
+                      "name":  "Department",
+                      "value":  "IT"
+                  },
+                  {
+                      "name":  "ReferenceNumber",
+                      "value":  "123456"
+                  },
+                  {
+                      "name":  "TestStatus",
+                      "value":  "Pending"
+                  }
+              ],
+    "Count":  3
+}
+```
+
+#### <a name="linux"></a>[Linux](#tab/linux/)
+
+```json
+[
+  {
+    "name": "Department",
+    "value": "IT"
+  },
+  {
+    "name": "ReferenceNumber",
+    "value": "123456"
+  },
+  {
+    "name": "TestStatus",
+    "value": "Pending"
+  }
+]
+```
+
+---
+
+
+#### <a name="sample-4-get-more-information-about-the-vm-during-support-case"></a>4. példa: további információk a virtuális géppel kapcsolatban a támogatási esetekben
 
 Szolgáltatóként olyan támogatási hívást kaphat, amelyben további információkat szeretne megtudni a virtuális gépről. Ha arra kéri az ügyfelet, hogy ossza meg a számítási metaadatokat, alapvető információkat biztosíthat a támogatási szakember számára az Azure-beli virtuális gépekről.
 
@@ -494,7 +579,7 @@ Szolgáltatóként olyan támogatási hívást kaphat, amelyben további inform�
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute?api-version=2020-09-01" | ConvertTo-Json -Depth 64
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute?api-version=2020-09-01" | ConvertTo-Json -Depth 64
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -510,6 +595,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 > [!NOTE]
 > A válasz egy JSON-karakterlánc. Az alábbi példában szereplő válasz elég kinyomtatva az olvashatóság érdekében.
 
+#### <a name="windows"></a>[Windows](#tab/windows/)
 ```json
 {
     "azEnvironment": "AZUREPUBLICCLOUD",
@@ -517,13 +603,13 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
     "licenseType":  "Windows_Client",
     "location": "westus",
     "name": "examplevmname",
-    "offer": "Windows",
+    "offer": "WindowsServer",
     "osProfile": {
         "adminUsername": "admin",
         "computerName": "examplevmname",
         "disablePasswordAuthentication": "true"
     },
-    "osType": "linux",
+    "osType": "Windows",
     "placementGroupId": "f67c14ab-e92c-408c-ae2d-da15866ec79a",
     "plan": {
         "name": "planName",
@@ -548,7 +634,108 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
         "secureBootEnabled": "true",
         "virtualTpmEnabled": "false"
     },
-    "sku": "Windows-Server-2012-R2-Datacenter",
+    "sku": "2019-Datacenter",
+    "storageProfile": {
+        "dataDisks": [{
+            "caching": "None",
+            "createOption": "Empty",
+            "diskSizeGB": "1024",
+            "image": {
+                "uri": ""
+            },
+            "lun": "0",
+            "managedDisk": {
+                "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
+                "storageAccountType": "Standard_LRS"
+            },
+            "name": "exampledatadiskname",
+            "vhd": {
+                "uri": ""
+            },
+            "writeAcceleratorEnabled": "false"
+        }],
+        "imageReference": {
+            "id": "",
+            "offer": "WindowsServer",
+            "publisher": "MicrosoftWindowsServer",
+            "sku": "2019-Datacenter",
+            "version": "latest"
+        },
+        "osDisk": {
+            "caching": "ReadWrite",
+            "createOption": "FromImage",
+            "diskSizeGB": "30",
+            "diffDiskSettings": {
+                "option": "Local"
+            },
+            "encryptionSettings": {
+                "enabled": "false"
+            },
+            "image": {
+                "uri": ""
+            },
+            "managedDisk": {
+                "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampleosdiskname",
+                "storageAccountType": "Standard_LRS"
+            },
+            "name": "exampleosdiskname",
+            "osType": "Windows",
+            "vhd": {
+                "uri": ""
+            },
+            "writeAcceleratorEnabled": "false"
+        }
+    },
+    "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+    "tags": "baz:bash;foo:bar",
+    "version": "15.05.22",
+    "vmId": "02aab8a4-74ef-476e-8182-f6d2ba4166a6",
+    "vmScaleSetName": "crpteste9vflji9",
+    "vmSize": "Standard_A3",
+    "zone": ""
+}
+```
+
+#### <a name="linux"></a>[Linux](#tab/linux/)
+```json
+{
+    "azEnvironment": "AZUREPUBLICCLOUD",
+    "isHostCompatibilityLayerVm": "true",
+    "licenseType":  "Windows_Client",
+    "location": "westus",
+    "name": "examplevmname",
+    "offer": "UbuntuServer",
+    "osProfile": {
+        "adminUsername": "admin",
+        "computerName": "examplevmname",
+        "disablePasswordAuthentication": "true"
+    },
+    "osType": "Linux",
+    "placementGroupId": "f67c14ab-e92c-408c-ae2d-da15866ec79a",
+    "plan": {
+        "name": "planName",
+        "product": "planProduct",
+        "publisher": "planPublisher"
+    },
+    "platformFaultDomain": "36",
+    "platformUpdateDomain": "42",
+    "publicKeys": [{
+            "keyData": "ssh-rsa 0",
+            "path": "/home/user/.ssh/authorized_keys0"
+        },
+        {
+            "keyData": "ssh-rsa 1",
+            "path": "/home/user/.ssh/authorized_keys1"
+        }
+    ],
+    "publisher": "Canonical",
+    "resourceGroupName": "macikgo-test-may-23",
+    "resourceId": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/virtualMachines/examplevmname",
+    "securityProfile": {
+        "secureBootEnabled": "true",
+        "virtualTpmEnabled": "false"
+    },
+    "sku": "18.04-LTS",
     "storageProfile": {
         "dataDisks": [{
             "caching": "None",
@@ -593,7 +780,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
                 "storageAccountType": "Standard_LRS"
             },
             "name": "exampleosdiskname",
-            "osType": "Linux",
+            "osType": "linux",
             "vhd": {
                 "uri": ""
             },
@@ -610,7 +797,9 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 }
 ```
 
-#### <a name="sample-4-get-the-azure-environment-where-the-vm-is-running"></a>4. példa: az Azure-környezet beszerzése, amelyen a virtuális gép fut
+---
+
+#### <a name="sample-5-get-the-azure-environment-where-the-vm-is-running"></a>5. példa: az Azure-környezet beszerzése, amelyen a virtuális gép fut
 
 Az Azure számos szuverén felhővel rendelkezik, mint például a [Azure Government](https://azure.microsoft.com/overview/clouds/government/). Időnként szükség van az Azure-környezetre bizonyos futtatókörnyezeti döntések elvégzéséhez. A következő minta bemutatja, hogyan érheti el ezt a viselkedést.
 
@@ -619,7 +808,7 @@ Az Azure számos szuverén felhővel rendelkezik, mint például a [Azure Govern
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text" | ConvertTo-Json
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -646,14 +835,14 @@ A felhő és az Azure-környezet értékei itt láthatók.
 | [Azure Germany](https://azure.microsoft.com/overview/clouds/germany/) | AzureGermanCloud
 
 
-#### <a name="sample-5-retrieve-network-information"></a>5. példa: hálózati információk beolvasása
+#### <a name="sample-6-retrieve-network-information"></a>6. példa: hálózati információk beolvasása
 
 **Kérés**
 
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01" | ConvertTo-Json  -Depth 64
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01" | ConvertTo-Json  -Depth 64
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -693,12 +882,12 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/ne
 }
 ```
 
-#### <a name="sample-6-retrieve-public-ip-address"></a>6. példa: nyilvános IP-cím lekérése
+#### <a name="sample-7-retrieve-public-ip-address"></a>7. minta: nyilvános IP-cím lekérése
 
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text" | ConvertTo-Json
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
@@ -746,7 +935,7 @@ A klasszikus üzemi modellel létrehozott virtuális gépek esetében csak a `vm
 
 A dekódolású dokumentum a következő mezőket tartalmazza:
 
-| Adatok | Description | Verzió bevezetése |
+| Adatok | Leírás | Verzió bevezetése |
 |------|-------------|--------------------|
 | `licenseType` | A [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit)licencének típusa. Ez csak a AHB-kompatibilis virtuális gépek esetében jelent meg. | 2020-09-01
 | `nonce` | Egy karakterlánc, amely opcionálisan megadható a kérelemben. Ha nem `nonce` lett megadva, a rendszer az aktuálisan koordinált világidő-időbélyeget használja. | 2018-10-01
@@ -792,7 +981,7 @@ Az Azure piactéren lévő szállítók biztosítják, hogy a szoftverük csak a
 
 ```powershell
 # Get the signature
-$attestedDoc = Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/attested/document?api-version=2020-09-01
+$attestedDoc = Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri http://169.254.169.254/metadata/attested/document?api-version=2020-09-01
 # Decode the signature
 $signature = [System.Convert]::FromBase64String($attestedDoc.signature)
 ```
@@ -913,8 +1102,12 @@ Ezután jogkivonatokat kérhet a felügyelt identitásokhoz a IMDS-ből. Ezekkel
 
 A szolgáltatás engedélyezésének részletes lépéseiért lásd: [hozzáférési jogkivonat beszerzése](../articles/active-directory/managed-identities-azure-resources/how-to-use-vm-token.md).
 
+## <a name="load-balancer-metadata"></a>Metaadatok Load Balancer
+Ha a virtuális gépet vagy virtuálisgép-készletet állít be egy Azure-standard Load Balancer mögött, a IMDS segítségével lekérheti a terheléselosztó és a példányok metaadatait. További információ: [Load Balancer-információk beolvasása](../articles/load-balancer/instance-metadata-service-load-balancer.md).
+
 ## <a name="scheduled-events"></a>Ütemezett események
 Az ütemezett események állapotát a IMDS használatával szerezheti be. Ezután a felhasználó megadhatja az eseményeken futtatandó műveletek készletét. További információ: [ütemezett események a Linux](../articles/virtual-machines/linux/scheduled-events.md) vagy [a Windows ütemezett eseményeihez](../articles/virtual-machines/windows/scheduled-events.md).
+
 
 ## <a name="sample-code-in-different-languages"></a>Mintakód különböző nyelveken
 

@@ -3,12 +3,12 @@ title: Változók a sablonokban
 description: Leírja, hogyan lehet változókat definiálni egy Azure Resource Manager sablonban (ARM-sablon) és a bicep-fájlban.
 ms.topic: conceptual
 ms.date: 02/19/2021
-ms.openlocfilehash: e00a9e8e1801725707bac2abdc67512477e2cf07
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3ab14c9acfcc2d6c9edd23fb3bc4d876cd5ac756
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101700337"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123377"
 ---
 # <a name="variables-in-arm-templates"></a>Az ARM-sablonokban szereplő változók
 
@@ -20,7 +20,7 @@ A Resource Manager a telepítési műveletek megkezdése előtt feloldja a vált
 
 ## <a name="define-variable"></a>Változó meghatározása
 
-Változó meghatározásakor nem kell megadnia a változó [adattípusát](template-syntax.md#data-types) . Ehelyett adjon meg egy értéket vagy egy sablon kifejezést. A változó típusa a megoldott értékből lett kikövetkeztetve. A következő példa egy változót állít be egy karakterláncra.
+Változó meghatározásakor nem kell megadnia a változó [adattípusát](data-types.md) . Ehelyett adjon meg egy értéket vagy egy sablon kifejezést. A változó típusa a megoldott értékből lett kikövetkeztetve. A következő példa egy változót állít be egy karakterláncra.
 
 # <a name="json"></a>[JSON](#tab/json)
 

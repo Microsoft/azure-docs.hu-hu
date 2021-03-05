@@ -9,22 +9,22 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 03/03/2021
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 6451368baf9c047f0318eb74d53ffac075d4a184
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 8a8aab447007eb574a7a4bc532d8177bd0d8b345
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063450"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122476"
 ---
 # <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>A Univerzális Windows-platform és a MSAL.NET használatának szempontjai
 A MSAL.NET-t (UWP) Univerzális Windows-platform használó alkalmazások fejlesztőinek figyelembe kell venniük a jelen cikkben ismertetett fogalmakat.
 
 ## <a name="the-usecorporatenetwork-property"></a>A UseCorporateNetwork tulajdonság
-A Windows-futtatókörnyezet (WinRT) platformon `PublicClientApplication` a logikai tulajdonság szerepel `UseCorporateNetwork` . Ez a tulajdonság lehetővé teszi a Windows 8,1 alkalmazások és UWP alkalmazások számára az integrált Windows-hitelesítés (IWA) előnyeit, ha a felhasználó olyan fiókba van bejelentkezve, amely összevont Azure Active Directory (Azure AD) Bérlővel rendelkezik. Az operációs rendszerbe bejelentkezett felhasználók használhatnak egyszeri bejelentkezést (SSO) is. A tulajdonság beállításakor a `UseCorporateNetwork` MSAL.net egy webes hitelesítési közvetítőt (WAB) használ.
+A Windows-futtatókörnyezet (WinRT) platformon `PublicClientApplication` a logikai tulajdonság szerepel `UseCorporateNetwork` . Ez a tulajdonság lehetővé teszi a Windows 10-es alkalmazások és UWP alkalmazások számára az integrált Windows-hitelesítés (IWA) előnyeit, ha a felhasználó olyan fiókba van bejelentkezve, amely összevont Azure Active Directory (Azure AD) Bérlővel rendelkezik. Az operációs rendszerbe bejelentkezett felhasználók használhatnak egyszeri bejelentkezést (SSO) is. A tulajdonság beállításakor a `UseCorporateNetwork` MSAL.net egy webes hitelesítési közvetítőt (WAB) használ.
 
 > [!IMPORTANT]
 > Ha a `UseCorporateNetwork` tulajdonságot igaz értékre állítja, feltételezi, hogy az alkalmazás fejlesztője engedélyezte a IWA az alkalmazásban. A IWA engedélyezése:
@@ -61,7 +61,7 @@ További információ: [web Authentication Broker-Hegedűs](/windows/uwp/securit
 ## <a name="next-steps"></a>Következő lépések
 A következő minták további információkat nyújtanak.
 
-Sample | Platform | Description 
+Sample | Platform | Leírás 
 |------ | -------- | -----------|
 |[Active-Directory-DotNet-Native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | A MSAL.NET-t használó UWP ügyfélalkalmazás. A Microsoft Graph egy Azure AD 2,0-végponttal hitelesítő felhasználóhoz fér hozzá. <br>![Topológia](media/msal-net-uwp-considerations/topology-native-uwp.png)|
 |[Active-Directory-xamarin-Native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Xamarin űrlapos alkalmazás, amely bemutatja, hogyan hitelesítheti a Microsoft személyes fiókjait és az Azure AD-t a Microsoft Identity platformon keresztül a MSAL használatával. Azt is bemutatja, hogyan lehet elérni Microsoft Graph és megjeleníti az eredményül kapott jogkivonatot. <br>![Diagram, amely bemutatja, hogyan használható a MSAL a személyes Microsoft-fiókok és az Azure AD hitelesítésére a Microsoft Identity platformon keresztül.](media/msal-net-uwp-considerations/topology-xamarin-native.png)|

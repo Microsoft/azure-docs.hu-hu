@@ -3,12 +3,12 @@ title: Kubernetes-figyelés a Container bepillantásokkal | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan tekintheti meg és elemezheti a Kubernetes-fürtök teljesítményét a Container-elemzésekkel.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 432de02d22a418e92a7487001ae8c128323f3685
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 865a21e8c54d2cf569e04534fab6ec14f5519f34
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101711348"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124312"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-container-insights"></a>A Kubernetes-fürt teljesítményének figyelése a Container bepillantást
 
@@ -20,7 +20,7 @@ További információ a tárolók bevezetésének engedélyezéséről: a [Conta
 
 A Azure Monitor egy több fürtből álló nézetet biztosít, amely a Linux és a Windows Server 2019 operációs rendszert futtató összes figyelt Kubernetes-fürt állapotát megjeleníti az előfizetésekben található erőforráscsoportok között. Megjeleníti a megoldás által nem figyelt környezetekben felderített fürtöket. Azonnal megismerheti a fürt állapotát, és itt megtekintheti a csomópont-és vezérlő teljesítmény lapját, vagy megnyithatja a fürthöz tartozó teljesítménymutatókat. A felderített és nem ellenőrzöttként azonosított AK-fürtök esetében bármikor engedélyezheti a figyelést.
 
-A Windows Server-fürtök egy Linux-fürthöz képest történő figyelésének fő különbségeit [itt](container-insights-overview.md#what-does-azure-monitor-for-containers-provide) találja az áttekintő cikkben.
+A Windows Server-fürtök egy Linux-fürthöz képest történő figyelésének fő különbségeit [itt](container-insights-overview.md#what-does-container-insights-provide) találja az áttekintő cikkben.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 

@@ -10,12 +10,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: avgupta
-ms.openlocfilehash: ee262c0eb2431085e71d8ee0035bcdab9833d1cf
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 19de46bc87b72ada221c63e36e87d0545304d344
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565772"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122153"
 ---
 # <a name="leverage-content-type-to-store-json-key-values-in-app-configuration"></a>A tartalom típusának kihasználása JSON-kulcsok tárolásához az alkalmazás konfigurációjában
 
@@ -25,9 +25,9 @@ Az adatok az alkalmazás konfigurációjában kulcs-értékként tárolódnak, a
 ## <a name="overview"></a>Áttekintés
 
 Az alkalmazás konfigurálásakor a JSON-adathordozó típusát használhatja a kulcs-értékek tartalomtípusa, hogy a következő előnyöket használja:
-- **Egyszerűbb adatkezelés** : a kulcs-értékek, például a tömbök kezelése sokkal egyszerűbb lesz a Azure Portalban.
-- **Bővített adatexportálás** : az adatexportálás során az egyszerű típusok, a tömbök és a JSON-objektumok is megmaradnak.
-- **Natív támogatás az alkalmazás-konfigurációs szolgáltatónál** : a JSON-tartalommal rendelkező kulcs-értékek jól működnek, ha az alkalmazásban az alkalmazás konfigurációs szolgáltatói kódtárai használják azokat.
+- **Egyszerűbb adatkezelés**: a kulcs-értékek, például a tömbök kezelése sokkal egyszerűbb lesz a Azure Portalban.
+- **Bővített adatexportálás**: az adatexportálás során az egyszerű típusok, a tömbök és a JSON-objektumok is megmaradnak.
+- **Natív támogatás az alkalmazás-konfigurációs szolgáltatónál**: a JSON-tartalommal rendelkező kulcs-értékek jól működnek, ha az alkalmazásban az alkalmazás konfigurációs szolgáltatói kódtárai használják azokat.
 
 #### <a name="valid-json-content-type"></a>Érvényes JSON-tartalom – típus
 
@@ -80,7 +80,7 @@ JSON-kulcs – az értékek a Azure Portal, az Azure CLI használatával vagy eg
 
 ### <a name="create-json-key-values-using-azure-portal"></a>JSON-kulcs létrehozása – értékek Azure Portal használatával
 
-Tallózással keresse meg az alkalmazás konfigurációs tárolóját **Configuration Explorer** , és  >  **Create**  >  a következő kulcs-érték párok hozzáadásához válassza a konfigurációs Explorer Create **Key-Value** elemet:
+Tallózással keresse meg az alkalmazás konfigurációs tárolóját , és  >    >  a következő kulcs-érték párok hozzáadásához válassza a konfigurációs Explorer Create **Key-Value** elemet:
 
 | Kulcs | Érték | Tartalom típusa |
 |---|---|---|
@@ -175,12 +175,28 @@ az appconfig kv export -d file --format json --path "~/Export.json" --separator 
 
 ## <a name="consuming-json-key-values-in-applications"></a>JSON-kulcs felhasználása – értékek az alkalmazásokban
 
-Az alkalmazásban a JSON-kulcsok felhasználásának legegyszerűbb módja az alkalmazások konfigurációs szolgáltatói könyvtárain keresztül. A szolgáltatói kódtárak nem szükségesek az alkalmazásban található JSON-kulcsok speciális kezelésére. A rendszer mindig deszerializálja az alkalmazást ugyanúgy, mint más JSON-konfigurációs szolgáltatói könyvtárakat. 
+Az alkalmazásban a JSON-kulcsok felhasználásának legegyszerűbb módja az alkalmazások konfigurációs szolgáltatói könyvtárain keresztül. A szolgáltatói kódtárak nem szükségesek az alkalmazásban található JSON-kulcsok speciális kezelésére. A rendszer elemzi és átalakítja ezeket az alkalmazásokat az alkalmazás natív konfigurációjának megfelelően.
+
+Ha például a következő kulcs-érték szerepel az alkalmazás konfigurációjában:
+
+| Kulcs | Érték | Tartalom típusa |
+|---|---|---|
+| Beállítások | {"FontSize": 24, "UseDefaultRouting": false} | application/json |
+
+A .NET-alkalmazás konfigurációja a következő kulcs-értékekkel fog rendelkezni:
+
+| Kulcs | Érték |
+|---|---|
+| Beállítások: FontSize | 24 |
+| Beállítások: UseDefaultRouting | hamis |
+
+Az új kulcsokat közvetlenül is elérheti, vagy dönthet úgy, hogy a [konfigurációs értékeket .net-objektumok példányaihoz köti](/aspnet/core/fundamentals/configuration/#bind-hierarchical-configuration-data-using-the-options-pattern).
+
 
 > [!Important]
 > Natív támogatás a JSON-kulcsokhoz – az értékek a .NET-konfiguráció szolgáltatójának 4.0.0 (vagy újabb verzió) érhetők el. További részletekért tekintse meg a [*következő lépések*](#next-steps) szakaszt.
 
-Ha az SDK-t vagy REST API használja az alkalmazás konfigurációjában található kulcs-érték olvasására a Content-Type alapján, az alkalmazás felelős a JSON-kulcs értékének deszerializálásához bármely szabványos JSON-deszerializáló használatával.
+Ha az SDK-t vagy REST API használja az alkalmazás konfigurációjában található kulcs-érték olvasására a Content-Type alapján, az alkalmazás felelős a JSON-kulcs értékének elemzéséhez.
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

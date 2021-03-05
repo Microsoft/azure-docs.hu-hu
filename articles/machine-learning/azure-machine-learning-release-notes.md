@@ -9,18 +9,36 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: b19c5e8ca1f7984f33a5cedf37a2774532c79350
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 69313b48b505bd0b53df6f15f636e2903f41ebfd
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661103"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124006"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
 Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hivatkozási tartalomért keresse fel a Azure Machine Learning [**fő SDK for Python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) -referenciát tartalmazó oldalt.
 
 __RSS-hírcsatorna__: értesítést kap az oldal frissítésekor, ha a következő URL-címet másolja és illeszti be a hírcsatorna-olvasóba: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+## <a name="2021-02-28"></a>2021-02-28
+### <a name="azure-machine-learning-studio-notebooks-experience-february-update"></a>Azure Machine Learning Studio notebookok felülete (február Update)
++ **Új funkciók**
+  + [Natív terminál (GA)](https://docs.microsoft.com/azure/machine-learning/how-to-access-terminal). A felhasználók mostantól hozzáférhetnek egy integrált terminálhoz, valamint a git-művelethez az integrált terminálon keresztül is.
+  + [Jegyzetfüzet-kódrészletek (előzetes verzió)](https://azure.github.io/azureml-web/docs/vs-code-snippets/snippets). A Common Azure ML Code-részletek mostantól elérhetők. Navigáljon a kódrészletek panelre, amely az eszköztáron keresztül érhető el, vagy aktiválja a kódban szereplő kódrészleteket a CTRL + szóköz billentyűkombinációval.  
+  + [Billentyűparancsok](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#shortcut-keys). Teljes paritás a Jupyter-ben elérhető billentyűparancsokkal. 
+  + Adja meg a cella paramétereit. Egy jegyzetfüzetben lévő cellával rendelkező felhasználók megjelenítése a paraméter cellája, amely paraméteres jegyzetfüzeteket futtathat a számítási példány [Papermill](https://github.com/nteract/papermill) használatával.
+  + A terminál és a kernel munkamenet-kezelője: a felhasználók a számítási folyamaton futó összes kernelt és terminál-munkamenetet kezelhetik.
+  + Megosztás gomb. A felhasználók mostantól megoszthatnak bármilyen fájlt a jegyzetfüzet fájlkezelőben, ha a jobb gombbal a fájlra kattintanak, és a megosztás gombot használják.
+
+
++ **Hibajavítások és javítások**
+  + Továbbfejlesztett oldal betöltési ideje
+  + Jobb teljesítmény 
+  + Továbbfejlesztett sebesség és kernel megbízhatóság
+  + Az összes folyamatban lévő [számítási példány műveletének](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#status-indicators)előrehaladását a forgó kerék hozzáadásával jeleníti meg.
+  + Kattintson a jobb gombbal a fájlkezelőben. Kattintson a jobb gombbal bármelyik fájlra, majd nyissa meg a fájlok műveleteit. 
 
 ## <a name="2021-02-16"></a>2021-02-16
 

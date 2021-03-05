@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
-ms.openlocfilehash: 1adf8370f55a0f6131eb4140c58fa4618e08127b
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 6c69e46ea3510476089cd932b1cd1bdf14254021
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686021"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122374"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (AKS) alkalmazásainak és fürtjeinek biztonsági fogalmai
 
@@ -40,7 +40,10 @@ Az API-kiszolgáló hozzáférését az Kubernetes szerepköralapú hozzáféré
 
 ## <a name="node-security"></a>Csomópont biztonsága
 
-Az AK-csomópontok az Ön által kezelt és karbantartott Azure-beli virtuális gépek. A Linux-csomópontok optimalizált Ubuntu-disztribúciót futtatnak a Moby Container Runtime használatával. A Windows Server-csomópontok optimalizált Windows Server 2019 kiadást futtatnak, és a Moby Container runtimet is használják. Egy AK-fürt létrehozásakor vagy skálázásakor a rendszer automatikusan telepíti a csomópontokat a legújabb biztonsági frissítésekkel és konfigurációkkal.
+Az AK-csomópontok az Ön által kezelt és karbantartott Azure-beli virtuális gépek. A Linux-csomópontok optimalizált Ubuntu-disztribúciót futtatnak a `containerd` vagy a Moby Container Runtime használatával. A Windows Server-csomópontok optimalizált Windows Server 2019 kiadást futtatnak, és a `containerd` vagy a Moby Container futtatókörnyezetet is használják. Egy AK-fürt létrehozásakor vagy skálázásakor a rendszer automatikusan telepíti a csomópontokat a legújabb biztonsági frissítésekkel és konfigurációkkal.
+
+> [!NOTE]
+> Az Kubernetes 1,19-es verziójú csomópont-készleteket és a tároló futtatókörnyezetének nagyobb használatát használó AK-fürtök `containerd` . Az Kubernetes-t használó, a csomópontok előtt a v 1.19-t használó-fürtök a [Moby](https://mobyproject.org/) (felsőbb rétegbeli Docker) tároló-futtatókörnyezetet használják.
 
 Az Azure platform automatikusan alkalmazza az operációs rendszer biztonsági javításait Linux-csomópontokra. Ha a Linux operációs rendszer biztonsági frissítése a gazdagép újraindítását igényli, a rendszer nem hajtja végre automatikusan az újraindítást. A Linux-csomópontokat manuálisan is újraindíthatja, vagy közös megközelítéssel használhatja a [Kured][kured], egy nyílt forráskódú újraindítási démont a Kubernetes. A Kured [daemonset elemet][aks-daemonsets] fut, és figyeli az egyes csomópontokat egy olyan fájl jelenléte esetén, amely azt jelzi, hogy újraindítás szükséges. A rendszer az újraindításokat a fürtön keresztül felügyeli a fürt frissítésével megegyező [Kordon és kiürítési folyamat](#cordon-and-drain) használatával.
 

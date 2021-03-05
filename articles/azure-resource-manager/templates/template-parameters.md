@@ -3,12 +3,12 @@ title: Sablonokban található paraméterek
 description: Ismerteti, hogyan lehet paramétereket definiálni egy Azure Resource Manager sablonban (ARM-sablon) és a bicep-fájlban.
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: b23417766524204e490450568bb80b8c49e2d328
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a8608e4733960d7f5ba7e5f548c47f16a2b244bb
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043932"
+ms.locfileid: "102123394"
 ---
 # <a name="parameters-in-arm-templates"></a>Paraméterek az ARM-sablonokban
 
@@ -16,7 +16,7 @@ Ez a cikk azt ismerteti, hogyan lehet paramétereket definiálni és használni 
 
 A Resource Manager a telepítési műveletek megkezdése előtt oldja fel a paramétereket. Ha a paramétert használja a sablonban, a Resource Manager lecseréli azt a megoldott értékre.
 
-Minden paramétert az egyik [adattípusra](template-syntax.md#data-types)kell beállítani.
+Minden paramétert az egyik [adattípusra](data-types.md)kell beállítani.
 
 [!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 

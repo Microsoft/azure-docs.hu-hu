@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: c0d153ff8125a6ef16a69aec72a27dd4b234eab5
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 253fce7d47d694c03d470fefdf81318a6bff77b3
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100049"
+ms.locfileid: "102123054"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-azure-powershell-preview"></a>IPv6-támogatás hozzáadása a Azure PowerShell (előzetes verzió) használatával a privát partnerek számára
 
@@ -165,7 +165,7 @@ Kövesse az alábbi lépéseket, ha azt tervezi, hogy új Azure-erőforrás-kés
 
 2. [Hozza létre a kettős verem átjárójának alhálózatát](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-resource-manager#add-a-gateway).
 
-3. [Hozza létre a virtuális hálózati átjárót](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-resource-manager#add-a-gateway) egy zóna – redundáns SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ) használatával. Ha azt tervezi, hogy FastPath használ, használja a ErGw3AZ.
+3. [Hozza létre a virtuális hálózati átjárót](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-resource-manager#add-a-gateway) egy zóna – redundáns SKU (ErGw1AZ, ErGw2AZ, ErGw3AZ) használatával. Ha azt tervezi, hogy FastPath használ, használja a ErGw3AZ (vegye figyelembe, hogy ez csak a ExpressRoute Direct-t használó áramkörök esetén érhető el).
 
 4. [Csatolja a virtuális hálózatot a ExpressRoute-áramkörhöz](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-arm).
 
@@ -176,6 +176,8 @@ Míg az IPv6-támogatás elérhető az Availability Zones-vel rendelkező régi�
 * Kapcsolatok a nem az-régiókban üzemelő példányokhoz
 * ExpressRoute-áramkörök közötti Global Reach kapcsolatok
 * ExpressRoute használata virtuális WAN-kapcsolattal
+* FastPath nem ExpressRoute közvetlen áramkörökkel
+* Együttélés VPN Gateway
 
 ## <a name="next-steps"></a>Következő lépések
 

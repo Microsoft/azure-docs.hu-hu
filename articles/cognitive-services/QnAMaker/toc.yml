@@ -50,6 +50,8 @@
     - name: Azure-erőforrások kezelése
       href: How-To/set-up-qnamaker-service-azure.md
       displayName: 'azure, resource, key, upgrade, pricing, tier,'
+    - name: Az Azure-erőforrások hálózati elkülönítése
+      href: How-To/network-isolation.md
     - name: QnA Maker erőforrás-hozzáférés kezelése
       href: How-To/manage-qna-maker-app.md
     - name: A tudásbázis kezelése

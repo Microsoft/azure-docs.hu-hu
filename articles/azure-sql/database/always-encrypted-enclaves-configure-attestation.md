@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: 664733f3d4c4e4bf17440db0323580c5d2c8c2ce
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: fb42a0428f0439053375027481d38977b068e356
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100555662"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122578"
 ---
 # <a name="configure-azure-attestation-for-your-azure-sql-logical-server"></a>Az Azure-igazolás konfigurálása az Azure SQL logikai kiszolgálóhoz
 
@@ -66,10 +66,14 @@ authorizationrules
 
 A fenti szabályzat a következőket ellenőrzi:
 
-- A Azure SQL Databaseon belüli enklávé nem támogatja a hibakeresést (ami csökkenti az enklávé által biztosított védelem szintjét).
-- Az enklávéban található könyvtár termékazonosítója a biztonságos enklávékkal Always Encryptedhoz rendelt termékazonosító (4639).
-- A könyvtár verziószáma (SVN) nagyobb, mint 0.
+- A Azure SQL Databaseon belüli enklávé nem támogatja a hibakeresést. 
+  > Az enklávék a letiltott vagy engedélyezett hibakereséssel tölthetők be. A hibakeresési támogatás úgy lett kialakítva, hogy lehetővé tegye a fejlesztők számára, hogy elhárítsák az enklávéban futó kódot. Éles rendszerekben a hibakeresés lehetővé teheti a rendszergazdák számára az enklávé tartalmának vizsgálatát, ami csökkenti az enklávé által biztosított védelem szintjét. Az ajánlott szabályzat letiltja a hibakeresést annak érdekében, hogy ha egy rosszindulatú rendszergazda megpróbálja bekapcsolni a hibakeresési támogatást az enklávé gép átvételével, az igazolás sikertelen lesz. 
+- Az enklávé termékazonosítója megegyezik a biztonságos enklávékkal Always Encryptedhoz rendelt termékazonosítóval.
+  > Mindegyik enklávé egyedi termékazonosítóval rendelkezik, amely megkülönbözteti az enklávét más enklávék. Az Always Encrypted enklávéhoz rendelt termékazonosító 4639. 
+- A könyvtár biztonsági verziószáma (SVN) nagyobb, mint 0.
+  > Az SVN lehetővé teszi a Microsoft számára, hogy válaszoljon az enklávé kódjában azonosított esetleges biztonsági hibákra. Ha biztonsági problémát talál és kijavítanak, a Microsoft új (megnövelt) SVN-t helyez üzembe az enklávé új verziójában. A fenti ajánlott szabályzat frissül, hogy tükrözze az új SVN-t. Ha a szabályzatot úgy frissíti, hogy az megfeleljen az ajánlott szabályzatnak, gondoskodhat arról, hogy ha egy rosszindulatú rendszergazda megkísérel betölteni egy régebbi és nem biztonságos enklávét, az igazolás sikertelen lesz.
 - Az enklávéban található függvénytár a Microsoft aláírási kulcsával lett aláírva (az x-MS-SGX enklávéhoz-mrsigner jogcím értéke az aláíró kulcs kivonata).
+  > Az igazolás egyik fő célja, hogy meggyőzze az ügyfeleket arról, hogy az enklávéban futó bináris fájl az a bináris, amelyet futtatni kellene. Az igazolási szabályzatok két mechanizmust biztosítanak erre a célra. Az egyik az a **mrenclave** jogcím, amely az enklávéban futtatandó bináris fájl kivonata. A **mrenclave** problémája, hogy a bináris kivonat a kód triviális változásaival is megváltozik, ami megnehezíti az enklávéban futó kód megváltoztatását. Ezért javasoljuk a **mrsigner** használatát, amely egy olyan kulcs kivonata, amely az enklávé bináris fájljának aláírására szolgál. Ha a Microsoft az enklávét, a **mrsigner** ugyanaz marad, amíg az aláíró kulcs nem változik. Így a frissített bináris fájlok üzembe helyezése az ügyfelek alkalmazásainak megszakítása nélkül valósítható meg. 
 
 > [!IMPORTANT]
 > A rendszer létrehoz egy igazolási szolgáltatót az Intel SGX ENKLÁVÉHOZ enklávés alapértelmezett házirendjével, amely nem ellenőrzi az enklávén belül futó kódot. A Microsoft nyomatékosan javasolja, hogy állítsa be a fenti javasolt szabályzatot, és ne használja az alapértelmezett szabályzatot a biztonságos enklávékkal való Always Encrypted.

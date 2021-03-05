@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 490b9d54aa3b661124699a472b453f80d9c39963
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f9f4476e932df9a5f4c093968b2e7c4840e7ff39
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705364"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122901"
 ---
 # <a name="live-event-low-latency-settings"></a>Élő esemény alacsony késési beállításai
 
@@ -34,9 +34,7 @@ Az új **LowLatency** funkció használatához állítsa be a **StreamOptionsFla
 
 A következő .NET-példa bemutatja, hogyan állíthatja be a **LowLatency** a **liveevent**:
 
-[!code-csharp[Main](../../../media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs#NewLiveEvent)]
-
-        
+[!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#NewLiveEvent)]
 
 Tekintse meg a teljes példát: [élő esemény DVR](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs)-sel.
 

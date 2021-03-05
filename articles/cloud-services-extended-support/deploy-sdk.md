@@ -1,6 +1,6 @@
 ---
-title: Cloud Service üzembe helyezése (bővített támogatás) – SDK
-description: Cloud Service (kiterjesztett támogatás) üzembe helyezése az Azure SDK használatával
+title: Cloud Services üzembe helyezése (bővített támogatás) – SDK
+description: Cloud Services (bővített támogatás) üzembe helyezése az Azure SDK használatával
 ms.topic: tutorial
 ms.service: cloud-services-extended-support
 author: gachandw
@@ -8,25 +8,25 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: cf8d2696732c2947ce86b9509720898fd63c1e16
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: b63f42ccc0a9d8d138e38a262db528fd36ea701a
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98887375"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123037"
 ---
-# <a name="deploy-a-cloud-services-extended-support-using-sdk"></a>Cloud Services (bővített támogatás) üzembe helyezése az SDK-val
+# <a name="deploy-cloud-services-extended-support-by-using-the-azure-sdk"></a>Cloud Services (bővített támogatás) üzembe helyezése az Azure SDK használatával
 
-Ez a cikk bemutatja, hogyan használhatja az [Azure SDK](https://azure.microsoft.com/downloads/) -t több szerepkörrel (webrole és WorkerRole) és a távoli asztali bővítménnyel rendelkező Cloud Services (bővített támogatás) üzembe helyezéséhez. 
+Ez a cikk bemutatja, hogyan használható az [Azure SDK](https://azure.microsoft.com/downloads/) egy olyan Cloud Services (bővített támogatás) példány üzembe helyezéséhez, amely több szerepkörrel (webes szerepkörrel és feldolgozói szerepkörrel) és a távoli asztali bővítménnyel is rendelkezik. A Cloud Services (bővített támogatás) az Azure Cloud Services üzembe helyezési modellje, amely Azure Resource Manageron alapul.
 
 > [!IMPORTANT]
-> A Cloud Services (bővített támogatás) jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> A Cloud Services (bővített támogatás) jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem ajánlott éles környezetben üzemelő számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 Tekintse át a Cloud Services [telepítésének előfeltételeit](deploy-prerequisite.md) (kiterjesztett támogatás), és hozzon létre kapcsolódó erőforrásokat.
 
-## <a name="deploy-a-cloud-services-extended-support"></a>Cloud Services üzembe helyezése (kiterjesztett támogatás)
+## <a name="deploy-cloud-services-extended-support"></a>Cloud Services üzembe helyezése (kiterjesztett támogatás)
 1. Telepítse az [Azure számítási SDK NuGet csomagot](https://www.nuget.org/packages/Microsoft.Azure.Management.Compute/43.0.0-preview) , és inicializálja az ügyfelet egy szabványos hitelesítési mechanizmus használatával.
 
     ```csharp
@@ -73,7 +73,7 @@ Tekintse át a Cloud Services [telepítésének előfeltételeit](deploy-prerequ
     resourceGroup = await resourceGroups.CreateOrUpdateAsync(resourceGroupName, resourceGroup);
     ```
 
-3. Hozzon létre egy Storage-fiókot és-tárolót, amelyet a rendszer a Cloud Service-csomag (. cspkg) és a szolgáltatás-konfigurációs (. cscfg) fájlok tárolására fog használni. Telepítse az [Azure Storage NuGet-csomagot](https://www.nuget.org/packages/Azure.Storage.Common/). Ez a lépés nem kötelező, ha meglévő Storage-fiókot használ. A Storage-fiók nevének egyedinek kell lennie.
+3. Hozzon létre egy Storage-fiókot és egy tárolót, ahol a szolgáltatáscsomag (. cspkg) és a szolgáltatás-konfigurációs (. cscfg) fájlokat fogja tárolni. Telepítse az [Azure Storage NuGet-csomagot](https://www.nuget.org/packages/Azure.Storage.Common/). Ez a lépés nem kötelező, ha meglévő Storage-fiókot használ. A Storage-fiók nevének egyedinek kell lennie.
 
     ```csharp
     string storageAccountName = “ContosoSAS”
@@ -109,7 +109,7 @@ Tekintse át a Cloud Services [telepítésének előfeltételeit](deploy-prerequ
     sasConstraints.Permissions = SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Write;
     ```
 
-4. Töltse fel a Cloud Service Package-(. cspkg) fájlt a Storage-fiókba. A csomag URL-címe lehet megosztott hozzáférés-aláírási (SAS) URI bármely Storage-fiókból.
+4. Töltse fel a szolgáltatáscsomag (. cspkg) fájlját a Storage-fiókba. A csomag URL-címe lehet megosztott hozzáférés-aláírási (SAS) URI bármely Storage-fiókból.
 
     ```csharp
     CloudBlockBlob cspkgblockBlob = container.GetBlockBlobReference(“ContosoApp.cspkg”);
@@ -122,7 +122,7 @@ Tekintse át a Cloud Services [telepítésének előfeltételeit](deploy-prerequ
     string cspkgSASUrl = cspkgblockBlob.Uri + cspkgsasContainerToken;
     ```
 
-5. Töltse fel a Cloud Service-konfigurációt (. cscfg) a Storage-fiókba. A szolgáltatás konfigurációja megadható karakterlánc XML-ként vagy URL-formátumként.
+5. Töltse fel a szolgáltatás konfigurációs (. cscfg) fájlját a Storage-fiókba. Adjon meg a szolgáltatás konfigurációját karakterlánc XML vagy URL-formátumként.
 
     ```csharp
     CloudBlockBlob cscfgblockBlob = container.GetBlockBlobReference(“ContosoApp.cscfg”);
@@ -156,7 +156,7 @@ Tekintse át a Cloud Services [telepítésének előfeltételeit](deploy-prerequ
     m_NrpClient.VirtualNetworks.CreateOrUpdate(resourceGroupName, “ContosoVNet”, vnet);
     ```
 
-7. Hozzon létre egy nyilvános IP-címet, és (opcionálisan) állítsa be a nyilvános IP-cím DNS-címke tulajdonságát. Ha statikus IP-címet használ, akkor a szolgáltatás konfigurációs fájljában Fenntartott IPra kell hivatkoznia.
+7. Hozzon létre egy nyilvános IP-címet, és (opcionálisan) állítsa be a nyilvános IP-cím DNS-címke tulajdonságát. Ha statikus IP-címet használ, azt a szolgáltatás konfigurációs fájljában foglalt IP-címekre kell hivatkoznia.
 
     ```csharp
     PublicIPAddress publicIPAddressParams = new PublicIPAddress(name: “ContosIp”) 
@@ -171,7 +171,7 @@ Tekintse át a Cloud Services [telepítésének előfeltételeit](deploy-prerequ
     PublicIPAddress publicIpAddress = m_NrpClient.PublicIPAddresses.CreateOrUpdate(resourceGroupName, publicIPAddressName, publicIPAddressParams);
     ```
 
-8. Hozzon létre egy hálózati profil objektumot, és rendeljen nyilvános IP-címet a platform létrehozott Load Balancer felületéhez.
+8. Hozzon létre egy hálózati profil objektumot, és rendeljen hozzá egy nyilvános IP-címet a platform által létrehozott terheléselosztó elülső végéhez.
 
     ```csharp
     LoadBalancerFrontendIPConfiguration feipConfiguration = new LoadBalancerFrontendIPConfiguration() 
@@ -206,32 +206,32 @@ Tekintse át a Cloud Services [telepítésének előfeltételeit](deploy-prerequ
     
     ```
 
-9. Key Vault létrehozása. Ez a Key Vault a Cloud Service (bővített támogatás) szerepköreihez társított tanúsítványok tárolására szolgál. A Key Vaultnak ugyanabban a régióban és előfizetésben kell lennie, mint a Cloud Service, és egyedi névvel kell rendelkeznie. További információ: [tanúsítványok használata az Azure Cloud Services (bővített támogatás)](certificates-and-key-vault.md).
+9. Kulcstartó létrehozása. Ezt a kulcstartót fogja használni a Cloud Services (bővített támogatás) szerepkörökhöz társított tanúsítványok tárolására. A Key vaultnak ugyanabban a régióban és előfizetésben kell lennie, mint a Cloud Services (kiterjesztett támogatás) példánynak, és egyedi névvel kell rendelkeznie. További információ: [tanúsítványok használata az Azure Cloud Services (bővített támogatás)](certificates-and-key-vault.md).
 
     ```powershell
     New-AzKeyVault -Name "ContosKeyVault” -ResourceGroupName “ContosoOrg” -Location “East US”
     ```
 
-10. Frissítse a Key Vault hozzáférési szabályzatot, és adja meg a tanúsítvány engedélyeit a felhasználói fiókjához.
+10. Frissítse a Key Vault hozzáférési házirendjét, és adja meg a tanúsítvány engedélyeit a felhasználói fiókjának.
 
     ```powershell
     Set-AzKeyVaultAccessPolicy -VaultName 'ContosKeyVault' -ResourceGroupName 'ContosoOrg'      -UserPrincipalName 'user@domain.com' -PermissionsToCertificates create,get,list,delete
     ```
 
-    Azt is megteheti, hogy hozzáférési szabályzatot állít be a ObjectId használatával (amely a Get-AzADUser futtatásával szerezhető be)
+    Azt is megteheti, hogy a hozzáférési házirendet objektumazonosító alapján állítja be (amelyet a futtatásával érhet el `Get-AzADUser` ).
 
     ```powershell
     Set-AzKeyVaultAccessPolicy -VaultName 'ContosKeyVault' -ResourceGroupName 'ContosOrg' -     ObjectId 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' -PermissionsToCertificates          create,get,list,delete
     ```
 
-11. Ebben a példában egy önaláírt tanúsítványt ad hozzá egy Key Vaulthoz. A tanúsítvány ujjlenyomatát hozzá kell adni a Cloud Service konfigurációs (. cscfg) fájlhoz a Cloud Service-szerepkörökben való üzembe helyezéshez.
+11. Ebben a példában egy önaláírt tanúsítványt fogunk felvenni egy kulcstartóba. A tanúsítvány ujjlenyomatát hozzá kell adni a szolgáltatás konfigurációs (. cscfg) fájljához a Cloud Services (bővített támogatás) szerepkörökön való üzembe helyezéshez.
 
     ```powershell
     $Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -       SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal 
     Add-AzKeyVaultCertificate -VaultName "ContosKeyVault" -Name "ContosCert" -      CertificatePolicy $Policy
     ```
 
-12. Hozzon létre egy operációsrendszer-profil objektumot. Az operációs rendszer profilja a Cloud Service szerepköreihez társított tanúsítványokat határozza meg. Ez lesz az előző lépésben létrehozott tanúsítvány.
+12. Hozzon létre egy operációsrendszer-profil objektumot. Az operációs rendszer profilja a Cloud Services (bővített támogatás) szerepkörökhöz társított tanúsítványokat határozza meg. Itt ugyanaz a tanúsítvány, amelyet az előző lépésben hozott létre.
 
     ```csharp
     CloudServiceOsProfile cloudServiceOsProfile = 
@@ -247,7 +247,9 @@ Tekintse át a Cloud Services [telepítésének előfeltételeit](deploy-prerequ
            };
     ```
 
-13. Hozzon létre egy szerepkör-profil objektumot. A szerepkör-profil egy adott szerepkör SKU-specifikus tulajdonságait definiálja, például a nevet, a kapacitást és a szintet. Ebben a példában két szerepkört definiálunk: frontendRole és backendRole. A szerepkör-profil adatainak meg kell egyezniük a konfigurációs (cscfg) fájl-és szolgáltatás-definíciós (csdef) fájlban megadott szerepkör-konfigurációval.
+13. Hozzon létre egy szerepkör-profil objektumot. A szerepkör-profil definiálja az SKU szerepkör-specifikus tulajdonságait, például a nevet, a kapacitást és a szintet. 
+
+    Ebben a példában két szerepkört definiálunk: ContosoFrontend és ContosoBackend. A szerepkör-profil adatainak meg kell egyezniük a szolgáltatás konfigurációs (. cscfg) fájljában és a Service Definition (. csdef) fájlban meghatározott szerepkör-konfigurációval.
 
     ```csharp
     CloudServiceRoleProfile cloudServiceRoleProfile = new CloudServiceRoleProfile()
@@ -281,7 +283,7 @@ Tekintse át a Cloud Services [telepítésének előfeltételeit](deploy-prerequ
                     }
     ```
 
-14. Választható Hozzon létre egy bővítmény-profil objektumot, amelyet hozzá szeretne adni a felhőalapú szolgáltatáshoz. Ebben a példában az RDP-bővítményt fogjuk hozzáadni.
+14. Választható Hozzon létre egy bővítmény-profil objektumot, amelyet hozzá szeretne adni a Cloud Services (kiterjesztett támogatás) példányhoz. Ebben a példában egy RDP-bővítményt adunk hozzá.
 
     ```csharp
     string rdpExtensionPublicConfig = "<PublicConfig>" +
@@ -313,7 +315,7 @@ Tekintse át a Cloud Services [telepítésének előfeltételeit](deploy-prerequ
         };
     ```
 
-15. Cloud Service-telepítés létrehozása.
+15. Hozza létre a Cloud Services (kiterjesztett támogatás) példány központi telepítését.
 
     ```csharp
     CloudService cloudService = new CloudService
@@ -322,7 +324,7 @@ Tekintse át a Cloud Services [telepítésének előfeltételeit](deploy-prerequ
                 {
                     RoleProfile = cloudServiceRoleProfile
                     Configuration = < Add Cscfg xml content here>,
-                    // ConfigurationUrl = <Add you configuration URL here>,
+                    // ConfigurationUrl = <Add your configuration URL here>,
                     PackageUrl = <Add cspkg SAS url here>,
                     ExtensionProfile = cloudServiceExtensionProfile,
                     OsProfile= cloudServiceOsProfile,
@@ -335,7 +337,7 @@ Tekintse át a Cloud Services [telepítésének előfeltételeit](deploy-prerequ
     CloudService createOrUpdateResponse = m_CrpClient.CloudServices.CreateOrUpdate(“ContosOrg”, “ContosoCS”, cloudService);
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Tekintse át a Cloud Servicesra vonatkozó [gyakori kérdéseket](faq.md) (kiterjesztett támogatás).
-- A [Azure Portal](deploy-portal.md), a [PowerShell](deploy-powershell.md), a [sablon](deploy-template.md) vagy a [Visual Studio](deploy-visual-studio.md)használatával üzembe helyezhet egy felhőalapú szolgáltatást (kiterjesztett támogatás).
-- Látogasson el a [Cloud Services (bővített támogatás) minták tárházára](https://github.com/Azure-Samples/cloud-services-extended-support)
+- Cloud Services (bővített támogatás) üzembe helyezése a [Azure Portal](deploy-portal.md), a [PowerShell](deploy-powershell.md), a [sablon](deploy-template.md)vagy a [Visual Studio](deploy-visual-studio.md)használatával.
+- Látogasson el a [Cloud Serviceshoz készült Samples adattárra (bővített támogatás)](https://github.com/Azure-Samples/cloud-services-extended-support)

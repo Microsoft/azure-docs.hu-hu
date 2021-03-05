@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/3/2020
 ms.author: cynthn
-ms.openlocfilehash: 0f5eb6a2964cdb679c2a83bd9d9b6296e3e962ed
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f8ea2224020e6fa6c5dae135dc575cc77510efd5
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499288"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123938"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Előzetes verzió: az ügyfél által felügyelt kulcsok használata a rendszerképek titkosításához
 
@@ -27,7 +27,7 @@ Az ügyfél által felügyelt kulcsok használatával történő kiszolgálóold
 
 Ez a cikk megköveteli, hogy az egyes régiókban, amelyeken replikálni szeretné a lemezképet, már rendelkezik egy lemezes titkosítási készlettel:
 
-- Ha csak az ügyfél által felügyelt kulcsot szeretné használni, tekintse meg az ügyfél által felügyelt kulcsok kiszolgálóoldali titkosítással való engedélyezését ismertető cikket a [Azure Portal](./disks-enable-customer-managed-keys-portal.md) vagy a [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset)használatával.
+- Ha csak az ügyfél által felügyelt kulcsot szeretné használni, tekintse meg az ügyfél által felügyelt kulcsok kiszolgálóoldali titkosítással való engedélyezését ismertető cikket a [Azure Portal](./disks-enable-customer-managed-keys-portal.md) vagy a [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-an-azure-key-vault-and-diskencryptionset-without-automatic-key-rotation)használatával.
 
 - Ha a platform által felügyelt és az ügyfél által felügyelt kulcsokat is szeretné használni (kettős titkosításhoz), tekintse meg a kettős titkosítás engedélyezése a [Azure Portal](./disks-enable-double-encryption-at-rest-portal.md) vagy a [PowerShell](./windows/disks-enable-double-encryption-at-rest-powershell.md)használatával című cikket.
 
@@ -218,7 +218,7 @@ Amikor létrehozza a rendszerkép verzióját a portálon, a **titkosítás** la
 
 Létrehozhat egy virtuális gépet a rendszerkép verziójának használatával, és az ügyfél által felügyelt kulcsokkal titkosíthatja a lemezeket. Amikor létrehozza a virtuális gépet a portálon, a **lemezek** lapon válassza a **titkosítás az ügyfelek által felügyelt kulcsokkal** vagy a **kettős titkosítás lehetőséget a platform által felügyelt és az ügyfél által felügyelt kulcsokkal** a **titkosítási típushoz**. Ezután kiválaszthatja a titkosítási készletet a legördülő listából.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [kiszolgálóoldali lemezek titkosításáról](./disk-encryption.md).
 
