@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: b-juche
-ms.openlocfilehash: 72c574779d63a3629ea3c99529686b7d3247fe25
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 2e169bb4f7be8b52657d2caf8f05643875a8348c
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931206"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180377"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api-using-powershell"></a>Fejlesztés a REST API a PowerShell használatával történő Azure NetApp Files
 
@@ -34,7 +34,7 @@ A Azure NetApp Files REST API specifikációját a [githubon](https://github.com
 
 ## <a name="access-the-azure-netapp-files-rest-api"></a>Hozzáférés a Azure NetApp Files REST API  
 
-1. Ha még nem tette meg, [telepítse az Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) -t.
+1. Ha még nem tette meg, [telepítse az Azure CLI](/cli/azure/install-azure-cli) -t.
 2. Egyszerű szolgáltatásnév létrehozása a Azure Active Directoryban (Azure AD):
    1. Ellenőrizze, hogy rendelkezik-e [megfelelő engedélyekkel](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: 59e28e4a3d630aac0954802e8777058c00261006
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ee15bfaa1d69e2e5047e7d24986f8e4e7d5b8b31
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791443"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180241"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Ajánlott eljárások az Azure SQL Data Synchez 
 
@@ -41,9 +41,9 @@ Az SQL Data Sync áttekintéséhez tekintse meg a [több felhőalapú és helysz
 
 ### <a name="database-accounts-with-least-required-privileges"></a>A minimálisan szükséges jogosultságokkal rendelkező adatbázis-fiókok
 
--   **Szinkronizálás beállításakor** . Tábla létrehozása/módosítása; Adatbázis módosítása; Eljárás létrehozása; Séma kiválasztása/módosítása; Hozzon létre User-Defined típust.
+-   **Szinkronizálás beállításakor**. Tábla létrehozása/módosítása; Adatbázis módosítása; Eljárás létrehozása; Séma kiválasztása/módosítása; Hozzon létre User-Defined típust.
 
--   **Folyamatos szinkronizáláshoz** . A szinkronizáláshoz kiválasztott táblák kijelölése/beillesztése/frissítése/törlése, valamint a szinkronizálási metaadatok és nyomon követési táblázatok; Végrehajtási engedély a szolgáltatás által létrehozott tárolt eljárásokhoz; Végrehajtási engedély a felhasználó által definiált táblák típusaihoz.
+-   **Folyamatos szinkronizáláshoz**. A szinkronizáláshoz kiválasztott táblák kijelölése/beillesztése/frissítése/törlése, valamint a szinkronizálási metaadatok és nyomon követési táblázatok; Végrehajtási engedély a szolgáltatás által létrehozott tárolt eljárásokhoz; Végrehajtási engedély a felhasználó által definiált táblák típusaihoz.
 
 -   **A** megszüntetéshez. A szinkronizáláshoz a táblázatok részét változtatja; Válassza ki/törölje a szinkronizálási metaadatokat tartalmazó táblákat; A szinkronizálás nyomon követésére szolgáló táblák, tárolt eljárások és felhasználó által definiált típusok vezérlése.
 
@@ -51,6 +51,10 @@ Azure SQL Database csak a hitelesítő adatok egyetlen készletét támogatja. A
 
 -   Módosítsa a különböző fázisokhoz tartozó hitelesítő adatokat (például *credentials1* a telepítéshez és a *credentials2* a folyamatban van).  
 -   Módosítsa a hitelesítő adatok engedélyét (azaz módosítsa az engedélyt a szinkronizálás beállítása után).
+
+### <a name="auditing"></a>Naplózás
+
+Javasoljuk, hogy engedélyezze a naplózást a szinkronizálási csoportok adatbázisainak szintjén. 
 
 ## <a name="setup"></a>Telepítés
 
@@ -195,7 +199,7 @@ Elavult szinkronizálási csoportok megelőzése:
 
 Bizonyos esetekben előfordulhat, hogy az ügyfél ügynökkel való regisztrációjának törlése miatt a szinkronizálás sikertelen lesz.
 
-#### <a name="scenario"></a>Használati eset
+#### <a name="scenario"></a>Eset
 
 1. Az A szinkronizálási csoport egy SQL Database-példány és egy SQL Server-adatbázis használatával lett létrehozva, amely az 1. helyi ügynökhöz van társítva.
 2. Ugyanaz a helyszíni adatbázis regisztrálva van a (z) 2. helyi ügynökkel (ez az ügynök nincs hozzárendelve egyetlen szinkronizálási csoporthoz sem).

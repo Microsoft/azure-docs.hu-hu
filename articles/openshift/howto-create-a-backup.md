@@ -8,12 +8,12 @@ author: troy0820
 ms.author: b-trconn
 keywords: ARO, openshift, az ARO, Red Hat, CLI
 ms.custom: mvc
-ms.openlocfilehash: a05003bfeceb46059ad0301f99befcdceb456e89
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 42ad24e4421b75a3942879bcac8f99b3c8b8138a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633291"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180955"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-cluster-application-backup"></a>Azure Red Hat OpenShift-alkalmazás biztonsági másolatának létrehozása
 
@@ -22,9 +22,6 @@ Ebben a cikkben előkészíti a környezetet egy Azure Red Hat OpenShift 4 clust
 > [!div class="checklist"]
 > * Az előfeltételek beállítása és a szükséges eszközök telepítése
 > * Azure Red Hat OpenShift 4 alkalmazás biztonsági másolatának létrehozása
-
-> [!NOTE] 
-> A Velero nem készít biztonsági mentést az Azure Red Hat OpenShift etcd kulcs-érték tárolására szolgáló adattal. Ha etcd biztonsági mentésre van szüksége, tekintse meg a [Etcd biztonsági mentése](https://docs.openshift.com/container-platform/4.5/backup_and_restore/backing-up-etcd.html)című témakört.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.6.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest).
 

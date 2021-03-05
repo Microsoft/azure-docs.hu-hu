@@ -2,15 +2,15 @@
 author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/15/2020
+ms.date: 03/04/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: a27fba6e426b72d72160a9a238f68cf8cef5c73b
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: cc5e306aa9677c7370d03dbb26ef3fe69293a630
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947768"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180052"
 ---
 A beszédfelismerési szolgáltatás egyik fő funkciója az emberi beszéd (más néven beszéd – szöveg) felismerése és átírása. Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Speech SDK-t az alkalmazásaiban és termékeiben a kiváló minőségű beszéd-szöveg átalakítás elvégzéséhez.
 
@@ -18,40 +18,23 @@ A beszédfelismerési szolgáltatás egyik fő funkciója az emberi beszéd (má
 
 Ha közvetlenül a mintakód kihagyását szeretné kihagyni, tekintse meg a JavaScript gyors üzembe helyezési [mintákat](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node) a githubon.
 
+Azt is megtudhatja, hogyan használhatja a beszédfelismerési SDK [-t egy](https://github.com/Azure-Samples/AzureSpeechReactSample) böngészőalapú környezetben.
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ez a cikk azt feltételezi, hogy rendelkezik Azure-fiókkal és Speech Service-előfizetéssel. Ha nem rendelkezik fiókkal és előfizetéssel, [próbálja ki ingyenesen a Speech szolgáltatást](../../../overview.md#try-the-speech-service-for-free).
 
 ## <a name="install-the-speech-sdk"></a>A Speech SDK telepítése
 
-Mielőtt bármit elvégezhet, telepítenie kell a <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> javascripthez készült Speech SDK </a>-t. A platformtól függően kövesse az alábbi utasításokat:
+Mielőtt bármit elvégezhet, telepítenie kell a Node.js Speech SDK-t. Ha csak a csomag nevét szeretné telepíteni, futtassa a parancsot `npm install microsoft-cognitiveservices-speech-sdk` . Az irányított telepítési utasításokért tekintse meg az [első lépéseket](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=dotnet%2Clinux%2Cjre%2Cnodejs&pivots=programming-language-javascript) ismertető cikket.
 
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js <span 
-class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Webböngésző <span class="docon docon-navigate-external x-hidden-focus"></span></a>
-
-Emellett a cél környezettől függően a következők egyikét használja:
-
-# <a name="script"></a>[parancsfájl](#tab/script)
-
-Töltse le és csomagolja ki a <a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">JavaScript <span class="docon docon-navigate-external x-hidden-focus"></span></a> *microsoft.cognitiveservices.speech.sdk.bundle.js* -fájlhoz készült Speech SDK-t, és helyezze el a HTML-fájl számára elérhető mappába.
-
-```html
-<script src="microsoft.cognitiveservices.speech.sdk.bundle.js"></script>;
-```
-
-> [!TIP]
-> Ha webböngészőt céloz meg, és felhasználja a `<script>` címkét, az `sdk` előtagok nem szükségesek az osztályok hivatkozásakor. Az `sdk` előtag a modul elnevezésére szolgáló alias `require` .
-
-# <a name="require"></a>[igényel](#tab/require)
+`require`Az SDK importálásához használja az alábbi utasítást.
 
 ```javascript
 const sdk = require("microsoft-cognitiveservices-speech-sdk");
 ```
 
-További információ `require` : <a href="https://nodejs.org/en/knowledge/getting-started/what-is-require/" target="_blank">Mi a szükséges <span class="docon docon-navigate-external x-hidden-focus"></span> ? </a>.
-
----
+A szolgáltatással kapcsolatos további információkért `require` tekintse meg a [dokumentáció megkövetelése](https://nodejs.org/en/knowledge/getting-started/what-is-require/)című témakört.
 
 ## <a name="create-a-speech-configuration"></a>Beszédfelismerési konfiguráció létrehozása
 
@@ -72,52 +55,14 @@ Néhány más módon is elvégezhető a következők inicializálása [`SpeechCo
 
 ## <a name="recognize-from-microphone-browser-only"></a>Felismerés mikrofonból (csak böngésző)
 
-Ha az eszköz mikrofonját használva szeretné felismerni a beszédfelismerést, hozzon létre egy `AudioConfig` használatával `fromDefaultMicrophoneInput()` . Ezután inicializálja a t [`SpeechRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer) , és adja át a `speechConfig` és a `audioConfig` .
+A mikrofonból való beszéd felismerése **nem támogatott a Node.jsban**, és csak böngészőalapú JavaScript-környezetekben támogatott. Tekintse [meg a](https://github.com/Azure-Samples/AzureSpeechReactSample/blob/main/src/App.js#L29)megjelenő [példa](https://github.com/Azure-Samples/AzureSpeechReactSample) a githubon című témakört.
 
-```javascript
-const sdk = require("microsoft-cognitiveservices-speech-sdk");
-const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
-
-function fromMic() {
-    let audioConfig = sdk.AudioConfig.fromDefaultMicrophoneInput();
-    let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
-    
-    console.log('Speak into your microphone.');
-    recognizer.recognizeOnceAsync(result => {
-        console.log(`RECOGNIZED: Text=${result.text}`);
-    });
-}
-fromMic();
-```
-
-Ha egy *adott* hangbeviteli eszközt szeretne használni, meg kell adnia az eszköz azonosítóját a következőben: `AudioConfig` . Ismerje meg [, hogyan kérheti le az eszköz azonosítóját](../../../how-to-select-audio-input-devices.md) a hangbemeneti eszközhöz.
+> [!NOTE]
+> Ha egy *adott* hangbeviteli eszközt szeretne használni, meg kell adnia az eszköz azonosítóját a következőben: `AudioConfig` . Ismerje meg [, hogyan kérheti le az eszköz azonosítóját](../../../how-to-select-audio-input-devices.md) a hangbemeneti eszközhöz.
 
 ## <a name="recognize-from-file"></a>Felismerés fájlból 
 
-# <a name="browser"></a>[Böngésző](#tab/browser)
-
-Egy böngészőalapú JavaScript-környezetben lévő hangfájlból származó beszéd felismeréséhez használja a `fromWavFileInput()` függvényt a létrehozásához [`AudioConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig) . A függvény `fromWavFileInput()` egy JavaScript- [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File/File) objektumot vár paraméterként.
-
-```javascript
-const sdk = require("microsoft-cognitiveservices-speech-sdk");
-const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
-
-function fromFile() {
-    // wavByteContent should be a byte array of the raw wav content
-    let file = new File([wavByteContent]);
-    let audioConfig = sdk.AudioConfig.fromWavFileInput(file);
-    let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
-    
-    recognizer.recognizeOnceAsync(result => {
-        console.log(`RECOGNIZED: Text=${result.text}`);
-    });
-}
-fromFile();
-```
-
-# <a name="nodejs"></a>[Node.js](#tab/node)
-
-Ha Node.js hangfájlból szeretné felismerni a beszédet, a leküldéses adatfolyamot használó alternatív kialakítási mintát kell használni, mivel a JavaScript [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File/File) -objektum nem használható Node.js futtatókörnyezetben. A következő kód:
+Ha Node.js hangfájlból szeretné felismerni a beszédet, a leküldéses adatfolyamot használó alternatív kialakítási mintát kell használni, mivel a JavaScript `File` -objektum nem használható Node.js futtatókörnyezetben. A következő kód:
 
 * Leküldéses adatfolyamot hoz létre a `createPushStream()`
 * A `.wav` fájl megnyitása olvasási adatfolyam létrehozásával, majd a leküldéses adatfolyamba való írásával
@@ -149,8 +94,6 @@ fromFile();
 
 A leküldéses adatfolyamok bemenetként való használata azt feltételezi, hogy a hangadatok egy nyers PCM, például a fejlécek kihagyása.
 Az API bizonyos esetekben továbbra is működni fog, ha a fejléc nem lett kihagyva, de a legjobb eredmény érdekében érdemes lehet a fejlécek olvasására kiolvasni a logikát, hogy az a `fs` *hangadatok kezdetekor* induljon el.
-
----
 
 ## <a name="error-handling"></a>Hibakezelés
 
@@ -190,7 +133,7 @@ Ezzel szemben a folyamatos felismerést akkor kell használni, ha meg szeretné 
 Először határozza meg a bemenetet, és inicializálja a [`SpeechRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer) következőket:
 
 ```javascript
-const recognizer = new sdk.SpeechRecognizer(speechConfig);
+const recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
 ```
 
 Ezután fizessen elő a által elküldett eseményekre [`SpeechRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer) .

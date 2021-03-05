@@ -43,10 +43,6 @@
           href: tutorial-sql-server-to-managed-instance.md
         - name: felügyelt Azure SQL-példányra (online)
           href: tutorial-sql-server-managed-instance-online.md
-    - name: RDS SQL Server migrálása
-      items:
-        - name: Azure SQL-adatbázisba vagy felügyelt SQL-példányra
-          href: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
     - name: MySQL migrálása
       items:
         - name: az Azure Database for MySQL-be
@@ -137,9 +133,7 @@
               href: known-issues-dms-hybrid-mode.md
         - name: Ismert migrálási problémák
           items:
-            - name: SQL Database
-              href: known-issues-azure-sql-online.md
-            - name: Felügyelt SQL-példány
+            - name: SQL Managed Instance
               href: known-issues-azure-sql-db-managed-instance-online.md
             - name: MySQL-hez készült Azure DB
               href: known-issues-azure-mysql-online.md

@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan szabhatja testre a hitelesítési és engedély
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 4f2f43b142b290d29a4a90e504422b6c9ba2739c
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 50587feff29e1c02a639d63d0c99156dcec4f68e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630327"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180870"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>A hitelesítés és az engedélyezés speciális használata Azure App Service
 
@@ -648,7 +648,7 @@ Megtekintheti a platform-hitelesítési middleware aktuális verzióját az Azur
 
 ##### <a name="from-the-azure-cli"></a>Az Azure CLI-ből
 
-Az Azure CLI használatával tekintse meg az aktuális middleware-verziót az az [WebApp Auth show](/cli/azure/webapp/auth?view=azure-cli-latest&preserve-view=true#az-webapp-auth-show) paranccsal.
+Az Azure CLI használatával tekintse meg az aktuális middleware-verziót az az [WebApp Auth show](/cli/azure/webapp/auth#az-webapp-auth-show) paranccsal.
 
 ```azurecli-interactive
 az webapp auth show --name <my_app_name> \
@@ -679,7 +679,7 @@ Egy alkalmazás/.auth/Version-végpontját is elérheti, ha meg szeretné tekint
 
 #### <a name="update-the-current-runtime-version"></a>Az aktuális futtatókörnyezet verziójának frissítése
 
-Az Azure CLI használatával az az `runtimeVersion` [WebApp Auth Update](/cli/azure/webapp/auth?view=azure-cli-latest&preserve-view=true#az-webapp-auth-update) paranccsal frissítheti az alkalmazás beállításait.
+Az Azure CLI használatával az az `runtimeVersion` [WebApp Auth Update](/cli/azure/webapp/auth#az-webapp-auth-update) paranccsal frissítheti az alkalmazás beállításait.
 
 ```azurecli-interactive
 az webapp auth update --name <my_app_name> \
