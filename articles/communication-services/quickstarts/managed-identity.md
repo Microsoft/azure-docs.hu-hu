@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 12/04/2020
 ms.author: gistefan
 ms.reviewer: mikben
-ms.openlocfilehash: ee691d4809a68a0ba60f60a2240b76a1e53104bc
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 9571d13537b504b4d48685e879a379b08df3110d
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102171573"
+ms.locfileid: "102211481"
 ---
 # <a name="use-managed-identities-net"></a>Felügyelt identitások használata (.NET)
 
@@ -24,8 +24,9 @@ Ebből a rövid útmutatóból megtudhatja, hogyan engedélyezheti a hozzáfér�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
- - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free)
+ - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free).
  - Aktív kommunikációs szolgáltatások erőforrás-és kapcsolati karakterlánca. [Hozzon létre egy kommunikációs szolgáltatások erőforrást](./create-communication-resource.md?pivots=platform-azp&tabs=windows).
+ -  Felügyelt identitás. [Hozzon létre egy felügyelt identitást](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal).
 
 ## <a name="setting-up"></a>Beállítás
 
@@ -59,10 +60,9 @@ Szerepkörök és engedélyek a PowerShell használatával történő hozzárend
 ### <a name="install-the-client-library-packages"></a>Az ügyféloldali kódtár csomagjainak telepítése
 
 ```console
-dotnet add package Azure.Communication.Identity
-dotnet add package Azure.Communication.Configuration
-dotnet add package Azure.Communication.Sms
 dotnet add package Azure.Identity
+dotnet add package Azure.Communication.Identity
+dotnet add package Azure.Communication.Sms
 ```
 
 ### <a name="use-the-client-library-packages"></a>Az ügyféloldali kódtár csomagjainak használata
@@ -70,9 +70,11 @@ dotnet add package Azure.Identity
 Adja hozzá a következő `using` irányelveket a kódhoz az Azure Identity és az Azure Storage ügyféloldali kódtárainak használatához.
 
 ```csharp
+using Azure;
+using Azure.Core;
 using Azure.Identity;
+using Azure.Communication;
 using Azure.Communication.Identity;
-using Azure.Communication.Configuration;
 using Azure.Communication.Sms;
 ```
 
@@ -89,6 +91,7 @@ A következő mintakód bemutatja, hogyan hozhat létre Azure Active Directory-t
      
           var client = new CommunicationIdentityClient(resourceEndpoint, credential);
           var identityResponse = await client.CreateUserAsync();
+          var identity = identityResponse.Value;
      
           var tokenResponse = await client.IssueTokenAsync(identity, scopes: new [] { CommunicationTokenScope.VoIP });
 
@@ -101,7 +104,6 @@ A következő mintakód bemutatja, hogyan hozhat létre Azure Active Directory-t
 A következő mintakód bemutatja, hogyan hozhat létre Azure Active Directory tokenekkel rendelkező szolgáltatás-ügyfél objektumot, majd az ügyfél használatával SMS-üzenetet küldhet:
 
 ```csharp
-
      public async Task SendSmsAsync(Uri resourceEndpoint, PhoneNumber from, PhoneNumber to, string message)
      {
           TokenCredential credential = new DefaultAzureCredential();

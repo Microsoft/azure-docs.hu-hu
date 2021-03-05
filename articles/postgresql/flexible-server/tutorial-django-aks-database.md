@@ -7,12 +7,12 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 12/10/2020
 ms.custom: mvc
-ms.openlocfilehash: b4aa23079661150f40b39ff65117b7f4229a67e2
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 6e8effee91eed73193319238c2ad2f6eaf6d0473
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880895"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211277"
 ---
 # <a name="tutorial-deploy-django-app-on-aks-with-azure-database-for-postgresql---flexible-server"></a>Oktatóanyag: Django-alkalmazás üzembe helyezése az AK-ban Azure Database for PostgreSQL-rugalmas kiszolgálóval
 
@@ -67,7 +67,7 @@ A következő példa kimenete azt mutatja, hogy az erőforráscsoport sikeresen 
 
 ## <a name="create-aks-cluster"></a>AKS-fürt létrehozása
 
-Használja az [az aks create](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-create) parancsot egy AKS-fürt létrehozásához. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal. A művelet végrehajtása több percet is igénybe vehet.
+Használja az [az aks create](/cli/azure/aks#az-aks-create) parancsot egy AKS-fürt létrehozásához. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal. A művelet végrehajtása több percet is igénybe vehet.
 
 ```azurecli-interactive
 az aks create --resource-group django-project --name djangoappcluster --node-count 1 --generate-ssh-keys
@@ -80,13 +80,13 @@ Néhány perc elteltével a parancs befejeződik, és a fürthöz tartozó JSON-
 
 ## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
 
-A Kubernetes-fürtök kezeléséhez a [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), a Kubernetes parancssori ügyfélprogramot kell használnia. Ha Azure Cloud Shellt használ, `kubectl` már telepítve van. A helyi telepítéshez `kubectl` használja az az [AK install-CLI](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-install-cli) parancsot:
+A Kubernetes-fürtök kezeléséhez a [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), a Kubernetes parancssori ügyfélprogramot kell használnia. Ha Azure Cloud Shellt használ, `kubectl` már telepítve van. A helyi telepítéshez `kubectl` használja az az [AK install-CLI](/cli/azure/aks#az-aks-install-cli) parancsot:
 
 ```azurecli-interactive
 az aks install-cli
 ```
 
-Az [az aks get-credentials](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-get-credentials) paranccsal konfigurálható `kubectl` a Kubernetes-fürthöz való csatlakozásra. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes CLI-t a használatára.
+Az [az aks get-credentials](/cli/azure/aks#az-aks-get-credentials) paranccsal konfigurálható `kubectl` a Kubernetes-fürthöz való csatlakozásra. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes CLI-t a használatára.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group django-project --name djangoappcluster
@@ -109,7 +109,7 @@ aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 ```
 
 ## <a name="create-an-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL rugalmas kiszolgáló létrehozása
-Hozzon létre egy rugalmas kiszolgálót az az [postgreSQL flexibilis-Server Create](./index.yml?preserve-view=true&view=azure-cli-latest)paranccsal. A következő parancs egy kiszolgálót hoz létre az Azure CLI helyi környezetében lévő szolgáltatás-alapértékek és-értékek használatával:
+Hozzon létre egy rugalmas kiszolgálót az az [postgreSQL flexibilis-Server Create](/cli/azure/postgres/flexible-server#az_postgres_flexible_server_create)paranccsal. A következő parancs egy kiszolgálót hoz létre az Azure CLI helyi környezetében lévő szolgáltatás-alapértékek és-értékek használatával:
 
 ```azurecli-interactive
 az postgres flexible-server create --public-access <YOUR-IP-ADDRESS>
@@ -378,7 +378,7 @@ Quit the server with CONTROL-C.
 
 ## <a name="clean-up-the-resources"></a>Az erőforrások eltávolítása
 
-Az Azure-költségek elkerülése érdekében törölje a szükségtelen erőforrásokat.  Ha a fürtre már nincs szükség, az [az group delete](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_delete) paranccsal törölheti az erőforráscsoportot, a tárolószolgáltatást és az összes kapcsolódó erőforrást.
+Az Azure-költségek elkerülése érdekében törölje a szükségtelen erőforrásokat.  Ha a fürtre már nincs szükség, az [az group delete](/cli/azure/group&preserve-view=true#az_group_delete) paranccsal törölheti az erőforráscsoportot, a tárolószolgáltatást és az összes kapcsolódó erőforrást.
 
 ```azurecli-interactive
 az group delete --name django-project --yes --no-wait

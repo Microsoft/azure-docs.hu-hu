@@ -4,23 +4,28 @@ description: Megtudhatja, hogyan hozhat létre titkosítási hatókört a blob-a
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/17/2020
+ms.date: 03/05/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: e77b58f7741af42f00b2a1831157405b12fa24ff
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d5590ff275ce821c81f5751f4d92972c49adaafc
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017406"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209591"
 ---
 # <a name="create-and-manage-encryption-scopes-preview"></a>Titkosítási hatókörök létrehozása és kezelése (előzetes verzió)
 
 A titkosítási hatókörök (előzetes verzió) lehetővé teszik a titkosítás kezelését egy adott blob vagy tároló szintjén. A titkosítási hatókör elkülöníti a blobadatokat egy biztonságos enklávéban a tárfiókon belül. A titkosítási hatókörök használatával biztonságos határokat hozhat létre az azonos Storage-fiókban található, de különböző ügyfelekhez tartozó adategységek között. A titkosítási hatókörökkel kapcsolatos további információkért lásd: [titkosítási hatókörök a blob Storage-hoz (előzetes verzió)](encryption-scope-overview.md).
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre titkosítási hatókört. Azt is bemutatja, hogyan adhat meg titkosítási hatókört Blobok vagy tárolók létrehozásakor.
+
+> [!IMPORTANT]
+> A titkosítási hatókörök jelenleg **előzetes** verzióban érhetők el. Tekintse meg az Azure-szolgáltatásokra vonatkozó, a bétaverzióban, az előzetes verzióban, vagy más módon még nem közzétett, általánosan elérhetővé vált jogi feltételekhez tartozó [Microsoft Azure előzetes verziójának kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) .
+>
+> A váratlan költségek elkerülése érdekében ügyeljen arra, hogy letiltsa a jelenleg nem szükséges titkosítási hatóköröket.
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
@@ -403,7 +408,7 @@ az storage account encryption-scope update \
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Inaktív adatok Azure Storage-titkosítása](../common/storage-service-encryption.md)
 - [BLOB Storage titkosítási hatókörök (előzetes verzió)](encryption-scope-overview.md)

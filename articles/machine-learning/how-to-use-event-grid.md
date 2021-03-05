@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 06b871d29c26241c38be27c4ace8ab7461834fd1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9dc7c0a476f57048c7caefb6001918d314c991ee
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101655717"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209696"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Alkalmazások, folyamatok vagy CI/CD-munkafolyamatok elindítása Azure Machine Learning események alapján (előzetes verzió)
 
@@ -59,7 +59,7 @@ Ezek az események Azure Event Gridon keresztül jelennek meg. A Azure Portal, a
 
 Az események beállításakor szűrőket alkalmazhat, hogy csak adott esemény adatain aktiválja az eseményindítót. Az alábbi példában a Futtatás állapotának megváltozása események esetében a futtatási típusok alapján szűrhet. Az esemény csak akkor aktiválódik, ha a feltételek teljesülnek. Tekintse át az [Azure Machine learning Event Grid-sémát](../event-grid/event-schema-machine-learning.md) , ahol megismerheti azokat az események adatait, amelyeket szűrni tud. 
 
-Az Azure Machine Learning eseményekre vonatkozó előfizetéseket az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) védi. A munkaterületek csak [közreműködői vagy tulajdonosai](how-to-assign-roles.md#default-roles) hozhatnak létre, frissíthetnek és törölhetnek esemény-előfizetéseket.  A szűrők az esemény-előfizetés [létrehozásakor](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest&preserve-view=true) vagy egy későbbi időpontban is alkalmazhatók az események előfizetésére. 
+Az Azure Machine Learning eseményekre vonatkozó előfizetéseket az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) védi. A munkaterületek csak [közreműködői vagy tulajdonosai](how-to-assign-roles.md#default-roles) hozhatnak létre, frissíthetnek és törölhetnek esemény-előfizetéseket.  A szűrők az esemény-előfizetés [létrehozásakor](/cli/azure/eventgrid/event-subscription) vagy egy későbbi időpontban is alkalmazhatók az események előfizetésére. 
 
 
 1. Nyissa meg a Azure Portal, válasszon ki egy új előfizetést, vagy egy meglévőt. 
@@ -130,7 +130,7 @@ Miután megerősítette a kijelölést, kattintson a __Létrehozás__ gombra. A 
 
 ### <a name="set-up-with-the-cli"></a>Beállítás a parancssori felülettel
 
-Telepítheti a legújabb [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)-t, vagy használhatja az Azure-előfizetésének részeként biztosított Azure Cloud Shell is.
+Telepítheti a legújabb [Azure CLI](/cli/azure/install-azure-cli)-t, vagy használhatja az Azure-előfizetésének részeként biztosított Azure Cloud Shell is.
 
 A Event Grid bővítmény telepítéséhez használja az alábbi parancsot a parancssori felületről:
 

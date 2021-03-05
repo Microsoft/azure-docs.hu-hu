@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 11/12/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 85e4b6a4d0ff1c3bd7e634311a36396a74408419
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b4c705e65b5b8c4f9e34dc5ff1474e87da5bee02
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100594437"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209786"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok – tervezett karbantartás értesítései
 
@@ -143,7 +143,7 @@ Set-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -Pe
 
 ## <a name="check-maintenance-status-by-using-the-cli"></a>A karbantartási állapot ellenőrzéséhez használja a CLI-t
 
-A tervezett karbantartási információkat az [az vmss List-instances](/cli/azure/vmss?view=azure-cli-latest#az-vmss-list-instances)paranccsal tekintheti meg.
+A tervezett karbantartási információkat az [az vmss List-instances](/cli/azure/vmss#az-vmss-list-instances)paranccsal tekintheti meg.
  
 A karbantartási adatokat csak akkor adja vissza a rendszer, ha a karbantartást tervezték. Ha a virtuálisgép-példányt érintő karbantartás nincs ütemezve, a parancs nem ad vissza karbantartási információt. 
 

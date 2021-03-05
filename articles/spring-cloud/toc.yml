@@ -123,6 +123,8 @@
           href: spring-cloud-howto-enable-system-assigned-managed-identity.md
         - name: Szerepkörök és engedélyek létrehozása
           href: spring-cloud-howto-permissions.md
+        - name: Adatsíkok elérése az Azure AD RBAC
+          href: spring-cloud-howto-access-data-plane-azure-ad-rbac.md
     - name: Integrálás
       items:
         - name: Alkalmazás kötése az Azure Cosmos DB-hez

@@ -1230,6 +1230,8 @@
               href: virtual-machines/linux/rhel-high-availability-stonith-tutorial.md
             - name: Rendelkezésreállási csoport figyelőjének konfigurálása Azure RHEL-alapú virtuális gépeken futó SQL Serverhez
               href: virtual-machines/linux/rhel-high-availability-listener-tutorial.md
+            - name: Always On rendelkezésre állási csoport beállítása a DH2i DxEnterprise
+              href: virtual-machines/linux/dh2i-high-availability-tutorial.md
         - name: További források
           items:
             - name: GYIK

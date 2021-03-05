@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 11/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: c6b3bd61386cbde0e8de63055eee9218e372dfcd
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: dbcd6d55ee921c7fabd8e746e0fdcd6f1427733c
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547842"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210706"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Időzítő trigger a Azure Functionshoz
 
@@ -256,7 +256,7 @@ A Python nem támogatja az attribútumokat.
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `TimerTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa** | n.a. | "TimerTrigger" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
 |**irányba** | n.a. | "In" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
@@ -342,7 +342,7 @@ Karakterláncként kifejezve a `TimeSpan` formátum a `hh:mm:ss` 24- `hh` nél k
 |--------------|----------------|
 | "01:00:00"   | óránként     |
 | "00:01:00"   | percenként   |
-| "24:00:00"   | minden 24 nap  |
+| "25:00:00"   | 25 naponta  |
 | "1.00:00:00" | minden nap      |
 
 ## <a name="scale-out"></a>Bővítés

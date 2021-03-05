@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 12/22/2020
 ms.author: tyao
-ms.openlocfilehash: 60a4ef47bc30955c918983d54f613cbdb5cbed73
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 65e378c0380804c13e4b42d855aede7781b93592
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746762"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211668"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>IP-korlátozási szabály konfigurálása az Azure-hoz készült webalkalmazási tűzfallal
 
@@ -31,7 +31,7 @@ Hozzon létre egy Azure-beli bejárati profilt a gyors üzembe helyezési útmut
 ### <a name="create-a-waf-policy"></a>WAF szabályzat létrehozása
 
 1. A Azure Portal válassza az **erőforrás létrehozása** elemet, írja be a  **webalkalmazási tűzfal** kifejezést a keresőmezőbe, majd válassza a **webalkalmazási tűzfal (WAF)** lehetőséget.
-2. Kattintson a **Létrehozás** gombra.
+2. Válassza a **Létrehozás** lehetőséget.
 3. A **WAF házirend létrehozása** lapon a következő értékekkel fejezheti be az **alapok** lapot:
    
    |Beállítás  |Érték  |
@@ -64,11 +64,11 @@ Hozzon létre egy Azure-beli bejárati profilt a gyors üzembe helyezési útmut
 
    :::image type="content" source="../media/waf-front-door-configure-ip-restriction/custom-rule.png" alt-text="Egyéni szabály":::
 
-   Válassza a **Hozzáadás** elemet.
+   Válassza a **Hozzáadás** lehetőséget.
 6. Válassza a **Tovább: társítás** lehetőséget.
 7. Válassza a előtér- **gazda hozzáadása** lehetőséget.
 8. A előtér- **gazdagéphez** válassza ki a előtér-gazdagépet, és válassza a **Hozzáadás** lehetőséget.
-9. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
+9. Válassza az **Áttekintés + létrehozás** lehetőséget.
 10. A szabályzat érvényesítése után válassza a **Létrehozás** lehetőséget.
 
 ### <a name="test-your-waf-policy"></a>A WAF szabályzat tesztelése
@@ -95,7 +95,7 @@ Hozzon létre egy Azure-beli bejárati profilt a gyors üzembe helyezési útmut
 
 ### <a name="create-a-waf-policy"></a>WAF szabályzat létrehozása
 
-Hozzon létre egy WAF szabályzatot az az [Network elsőfékes-Door WAF-Policy Create](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-create) parancs használatával. Az alábbi példában cserélje le a szabályzat neve *IPAllowPolicyExampleCLI* egyedi házirend-névre.
+Hozzon létre egy WAF szabályzatot az az [Network elsőfékes-Door WAF-Policy Create](/cli/azure/ext/front-door/network/front-door/waf-policy#ext-front-door-az-network-front-door-waf-policy-create) parancs használatával. Az alábbi példában cserélje le a szabályzat neve *IPAllowPolicyExampleCLI* egyedi házirend-névre.
 
 ```azurecli-interactive 
 az network front-door waf-policy create \
@@ -105,7 +105,7 @@ az network front-door waf-policy create \
   ```
 ### <a name="add-a-custom-ip-access-control-rule"></a>Egyéni IP-hozzáférés-vezérlési szabály hozzáadása
 
-Az az [Network elülső WAF-Policy Custom-Rule Create](/cli/azure/ext/front-door/network/front-door/waf-policy/rule?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-rule-create) paranccsal adhat hozzá egyéni IP-hozzáférés-vezérlési szabályt az IMÉNT létrehozott WAF-szabályzathoz.
+Az az [Network elülső WAF-Policy Custom-Rule Create](/cli/azure/ext/front-door/network/front-door/waf-policy/rule#ext-front-door-az-network-front-door-waf-policy-rule-create) paranccsal adhat hozzá egyéni IP-hozzáférés-vezérlési szabályt az IMÉNT létrehozott WAF-szabályzathoz.
 
 Az alábbi példákban:
 -  Cserélje le a *IPAllowPolicyExampleCLI* -t a korábban létrehozott egyedi szabályzatra.
@@ -138,7 +138,7 @@ az network front-door waf-policy rule match-condition add \
   ```
                                                    
 ### <a name="find-the-id-of-a-waf-policy"></a>WAF szabályzat AZONOSÍTÓjának megkeresése 
-A WAF szabályzat AZONOSÍTÓjának megkereséséhez használja az az [Network elsőfékes-Door WAF-Policy show](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-show) parancsot. Cserélje le a *IPAllowPolicyExampleCLI* a következő példában a korábban létrehozott egyedi szabályzatra.
+A WAF szabályzat AZONOSÍTÓjának megkereséséhez használja az az [Network elsőfékes-Door WAF-Policy show](/cli/azure/ext/front-door/network/front-door/waf-policy#ext-front-door-az-network-front-door-waf-policy-show) parancsot. Cserélje le a *IPAllowPolicyExampleCLI* a következő példában a korábban létrehozott egyedi szabályzatra.
 
    ```azurecli
    az network front-door  waf-policy show \
@@ -148,7 +148,7 @@ A WAF szabályzat AZONOSÍTÓjának megkereséséhez használja az az [Network e
 
 ### <a name="link-a-waf-policy-to-an-azure-front-door-front-end-host"></a>WAF-szabályzat csatolása egy Azure-beli előtér-előtér-gazdagéphez
 
-Állítsa be az Azure bejárati ajtó *WebApplicationFirewallPolicyLink* azonosítóját a házirend-azonosítóra az az [Network elsőfékes-Door Update](/cli/azure/ext/front-door/network/front-door?view=azure-cli-latest#ext-front-door-az-network-front-door-update) paranccsal. Cserélje le a *IPAllowPolicyExampleCLI* -t a korábban létrehozott egyedi szabályzatra.
+Állítsa be az Azure bejárati ajtó *WebApplicationFirewallPolicyLink* azonosítóját a házirend-azonosítóra az az [Network elsőfékes-Door Update](/cli/azure/ext/front-door/network/front-door#ext-front-door-az-network-front-door-update) paranccsal. Cserélje le a *IPAllowPolicyExampleCLI* -t a korábban létrehozott egyedi szabályzatra.
 
    ```azurecli
    az network front-door update \
@@ -243,6 +243,6 @@ WAF házirend-objektum csatolása meglévő előtér-gazdagéphez és az Azure-b
 Ha meg szeretné tekinteni a sablont, amely létrehoz egy Azure-beli bejárati házirendet és egy WAF szabályzatot egyéni IP-korlátozási szabályokkal, lépjen a [githubra](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-waf-clientip).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [hozhat létre Azure-beli bejárati profilt](../../frontdoor/quickstart-create-front-door.md).

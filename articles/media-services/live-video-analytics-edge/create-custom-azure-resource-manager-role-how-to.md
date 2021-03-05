@@ -3,12 +3,12 @@ title: Hozzon létre egyéni Azure Resource Manager szerepkört, és rendelje ho
 description: Ez a cikk bemutatja, hogyan hozhat létre egyéni Azure Resource Manager szerepkört, és hogyan rendelhető hozzá az élő video Analytics szolgáltatáshoz az Azure CLI használatával IoT Edge.
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: 40bf0f60a718d512e02481d977b8208112ed1a55
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 80974c111dd451314635d06334766322bc68e437
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425721"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210444"
 ---
 # <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>Egyéni Azure Resource Manager szerepkör létrehozása és hozzárendelés az egyszerű szolgáltatáshoz
 
@@ -49,7 +49,7 @@ Ha nem rendelkezik Media Service-fiókkal, akkor a következő lépésekkel hozh
     ```
     az account set --subscription " <yourSubscriptionName or yourSubscriptionId>"
     ```
-1. Hozzon létre egy [erőforráscsoportot](/cli/azure/group?view=azure-cli-latest#az-group-create) és egy [Storage-fiókot](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create).
+1. Hozzon létre egy [erőforráscsoportot](/cli/azure/group#az-group-create) és egy [Storage-fiókot](/cli/azure/storage/account#az-storage-account-create).
 1. Most hozzon létre egy Azure Media Service-fiókot a következő parancs használatával Cloud Shellban:
 
     ```
@@ -85,8 +85,8 @@ Ez a parancs a következőhöz hasonló választ hoz létre:
 ```
 1. A jelszó-hitelesítéssel rendelkező szolgáltatásnév kimenete tartalmazza azt a jelszót, amely ebben az esetben a "AadSecret" paraméter. 
 
-    Győződjön meg róla, hogy ezt az értéket másolja – nem lehet lekérni. Ha elfelejti a jelszót, [állítsa alaphelyzetbe az egyszerű szolgáltatásnév hitelesítő adatait](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#reset-credentials).
-1. A appId és a bérlői kulcs a kimenetben "AadClientId" és "AadTenantId" néven jelenik meg. Ezek az egyszerű szolgáltatás hitelesítésében használatosak. Jegyezze fel az értékeket, de az az [ad SP listával](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list)bármely pontról lekérhető.
+    Győződjön meg róla, hogy ezt az értéket másolja – nem lehet lekérni. Ha elfelejti a jelszót, [állítsa alaphelyzetbe az egyszerű szolgáltatásnév hitelesítő adatait](/cli/azure/create-an-azure-service-principal-azure-cli#reset-credentials).
+1. A appId és a bérlői kulcs a kimenetben "AadClientId" és "AadTenantId" néven jelenik meg. Ezek az egyszerű szolgáltatás hitelesítésében használatosak. Jegyezze fel az értékeket, de az az [ad SP listával](/cli/azure/ad/sp#az-ad-sp-list)bármely pontról lekérhető.
 
 ### <a name="create-a-custom-role-definition"></a>Egyéni szerepkör-definíció létrehozása  
 
@@ -171,7 +171,7 @@ A fenti parancs kinyomtatja az egyszerű szolgáltatásnév objectId.
 “objectId” : “<yourObjectId>”,
 ```
 
-Használja az az [szerepkör-hozzárendelés létrehozása parancsot](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) az egyéni szerepkör az egyszerű szolgáltatással való összekapcsolásához:
+Használja az az [szerepkör-hozzárendelés létrehozása parancsot](/cli/azure/role/assignment#az-role-assignment-create) az egyéni szerepkör az egyszerű szolgáltatással való összekapcsolásához:
 
 ```
 az role assignment create --role “LVAEdge User” --assignee-object-id < objectId>    
@@ -179,7 +179,7 @@ az role assignment create --role “LVAEdge User” --assignee-object-id < objec
 
 Paraméterek:
 
-|Paraméterek|Leírás| 
+|Paraméterek|Description| 
 |---|---|
 |--role |Egyéni szerepkör neve vagy azonosítója. A mi esetünkben: "LVAEdge user".|
 |--megbízott-Object-ID|A használni kívánt szolgáltatásnév objektumazonosító.|
@@ -253,7 +253,7 @@ Ezzel megerősíti, hogy az egyéni felhasználói szerepkört az alkalmazáshoz
     The client '<AadClientId>' with object id '<AadClientId>' does not have authorization to perform action 'Microsoft.Resources/subscriptions/resourcegroups/write' over scope '/subscriptions/<yourSubscriptionId>/resourcegroups/testresourcegroup' or the scope is invalid. If access was recently granted, please refresh your credentials.
     ```
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 Jegyezze fel a cikk következő értékeit. Ezek az értékek szükségesek ahhoz, hogy konfigurálni tudja az élő videó Analytics IoT Edge moduljának Twin tulajdonságait, lásd: [modul Twin JSON-séma](module-twin-configuration-schema.md).
 

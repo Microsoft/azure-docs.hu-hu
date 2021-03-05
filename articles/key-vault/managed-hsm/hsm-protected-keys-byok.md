@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: 71cc36541b8809d93c84225edf771400d2878b4f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: dd5b38a858ceba12f5d48f1782da5b85228c4b06
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100376054"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212110"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>HSM-védelemmel ellátott kulcsok importálása a felügyelt HSM-be (BYOK)
 
@@ -56,7 +56,7 @@ Ha a parancssori felülettel szeretne bejelentkezni az Azure-ba, írja be a köv
 az login
 ```
 
-Ha további információt szeretne a bejelentkezési lehetőségekről a CLI-n keresztül, tekintse meg az [Azure CLI-vel való bejelentkezést](/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true) ismertető részt.
+Ha további információt szeretne a bejelentkezési lehetőségekről a CLI-n keresztül, tekintse meg az [Azure CLI-vel való bejelentkezést](/cli/azure/authenticate-azure-cli) ismertető részt.
 
 ## <a name="supported-hsms"></a>Támogatott HSM
 
@@ -105,7 +105,7 @@ A KEK-nek a következőket kell tennie:
 > [!NOTE]
 > A KEK-nek az "import" értéknek kell lennie az egyetlen engedélyezett kulcs-műveletként. az "import" kölcsönösen kizárható minden más kulcsfontosságú művelettel.
 
-Az az [kulcstartó kulcs létrehozása](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-create) paranccsal hozzon létre egy KEK-t, amely a következőhöz van beállítva: `import` . Jegyezze fel a `kid` következő parancs által visszaadott kulcs-azonosítót (). (A `kid` [3. lépésben](#step-3-generate-and-prepare-your-key-for-transfer)szereplő értéket fogja használni.)
+Az az [kulcstartó kulcs létrehozása](/cli/azure/keyvault/key#az-keyvault-key-create) paranccsal hozzon létre egy KEK-t, amely a következőhöz van beállítva: `import` . Jegyezze fel a `kid` következő parancs által visszaadott kulcs-azonosítót (). (A `kid` [3. lépésben](#step-3-generate-and-prepare-your-key-for-transfer)szereplő értéket fogja használni.)
 
 ```azurecli-interactive
 az keyvault key create --kty RSA-HSM --size 4096 --name KEKforBYOK --ops import --hsm-name ContosoKeyVaultHSM
@@ -115,7 +115,7 @@ az keyvault key create --kty RSA-HSM --size 4096 --name KEKforBYOK --ops import 
 
 ### <a name="step-2-download-the-kek-public-key"></a>2. lépés: a KEK nyilvános kulcsának letöltése
 
-Az az [kulcstartó kulcs letöltése](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-download) paranccsal töltse le a KEK nyilvános kulcsát egy. PEM-fájlba. Az importált célként megadott kulcsot a KEK nyilvános kulcsával titkosítja a rendszer.
+Az az [kulcstartó kulcs letöltése](/cli/azure/keyvault/key#az-keyvault-key-download) paranccsal töltse le a KEK nyilvános kulcsát egy. PEM-fájlba. Az importált célként megadott kulcsot a KEK nyilvános kulcsával titkosítja a rendszer.
 
 ```azurecli-interactive
 az keyvault key download --name KEKforBYOK --hsm-name ContosoKeyVaultHSM --file KEKforBYOK.publickey.pem
@@ -137,7 +137,7 @@ Vigye át a BYOK-fájlt a csatlakoztatott számítógépre.
 
 ### <a name="step-4-transfer-your-key-to-managed-hsm"></a>4. lépés: a kulcs átvitele a felügyelt HSM-be
 
-A kulcs importálásának befejezéséhez vigye át a kulcs-átviteli csomagot (egy BYOK-fájlt) a leválasztott számítógépről az internethez csatlakozó számítógépre. Az az [kulcstartó kulcs importálása](/cli/azure/keyvault/key?view=azure-cli-latest&preserve-view=true#az-keyvault-key-import) paranccsal töltse fel a BYOK-fájlt a FELÜGYELt HSM-be.
+A kulcs importálásának befejezéséhez vigye át a kulcs-átviteli csomagot (egy BYOK-fájlt) a leválasztott számítógépről az internethez csatlakozó számítógépre. Az az [kulcstartó kulcs importálása](/cli/azure/keyvault/key#az-keyvault-key-import) paranccsal töltse fel a BYOK-fájlt a FELÜGYELt HSM-be.
 
 ```azurecli-interactive
 az keyvault key import --hsm-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file KeyTransferPackage-ContosoFirstHSMkey.byok

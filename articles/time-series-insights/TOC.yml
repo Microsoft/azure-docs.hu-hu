@@ -176,7 +176,7 @@
     - name: Adatreferencia monitorozása
       href: how-to-monitor-tsi-reference.md
     - name: Azure CLI
-      href: /cli/azure/ext/timeseriesinsights/timeseriesinsights?view=azure-cli-latest
+      href: /cli/azure/ext/timeseriesinsights/timeseriesinsights
 - name: További források
   items:
     - name: Támogatási és súgólehetőségek

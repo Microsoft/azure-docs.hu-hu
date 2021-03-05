@@ -9,21 +9,21 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 22abd38ead1257b49eeae98acfcd74349f563811
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7420ffbe5b365c635c1eac2620cfd54ceb649ebf
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91000693"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211804"
 ---
 # <a name="managed-hsm-logging"></a>Felügyelt HSM-naplózás 
 
 Egy vagy több felügyelt HSM létrehozása után valószínűleg figyelnie kell, hogy a HSMss hogyan és mikor legyenek elérhetők, és kinek. Ezt a naplózás engedélyezésével teheti meg, amely az Ön által megadott Azure Storage-fiókban tárolja az adatokat. A megadott Storage-fiókhoz automatikusan létrejön egy elemzések – **naplók – AuditEvent** nevű új tároló. Ugyanezt a Storage-fiókot használhatja a több felügyelt HSM tartozó naplók összegyűjtéséhez.
 
-A naplózási adatokat a felügyelt HSM-művelet után 10 percen belül elérheti. A legtöbb esetben azonban ez nem fog ennyi ideig tartani.  A tárfiók naplófájljait Önnek kell kezelnie:
+A naplózási adatokat a felügyelt HSM-művelet után 10 percen belül elérheti. A legtöbb esetben azonban ez nem fog ennyi ideig tartani.  A naplókat a tárfiókban kezelheti:
 
-* Az Azure szabványos hozzáférés-vezérlési módszereivel korlátozhatja a naplókhoz való hozzáférést, így megvédheti azokat.
-* Törölje azokat a naplókat, amelyeket nem kíván megőrizni a tárfiókban.
+* A standard Azure-beli hozzáférés-vezérlési módszerekkel szabályozhatja, hogy kik férhetnek hozzá a naplókhoz.
+* Ha már nincs szüksége a tárfiókban tárolt naplókra, törölje azokat.
 
 Ez az oktatóanyag segítséget nyújt a felügyelt HSM-naplózás használatának megkezdésében. Hozzon létre egy Storage-fiókot, engedélyezze a naplózást, és értelmezze az összegyűjtött napló adatait.  
 
@@ -48,7 +48,7 @@ A legfontosabb naplózás beállításának első lépése az Azure CLI átirán
 az login
 ```
 
-Ha további információt szeretne a bejelentkezési lehetőségekről a CLI-n keresztül, tekintse meg az [Azure CLI-vel való bejelentkezést](/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true) ismertető részt.
+Ha további információt szeretne a bejelentkezési lehetőségekről a CLI-n keresztül, tekintse meg az [Azure CLI-vel való bejelentkezést](/cli/azure/authenticate-azure-cli) ismertető részt.
 
 Előfordulhat, hogy meg kell adnia a felügyelt HSM létrehozásához használt előfizetést. Adja meg a következő parancsot a fiókhoz tartozó előfizetések megtekintéséhez:
 
@@ -65,7 +65,7 @@ A felügyelt HSM naplózásának engedélyezéséhez használja az az **monitor 
 
 Ez a kimenet megerősíti, hogy a naplózás már engedélyezve van a felügyelt HSM-hez, és az adatokat a Storage-fiókjába menti.
 
-Igény szerint megadhat egy adatmegőrzési házirendet a naplókhoz, így a régebbi naplók automatikusan törlődnek. Például állítsa be az adatmegőrzési házirendet úgy, hogy a **-RetentionEnabled** jelzőt **$true**értékre állítja, és a **-RetentionInDays** paramétert állítsa **90** -re, hogy a 90 napnál régebbi naplók automatikusan törlődjenek.
+Igény szerint megadhat egy adatmegőrzési házirendet a naplókhoz, így a régebbi naplók automatikusan törlődnek. Például állítsa be az adatmegőrzési házirendet úgy, hogy a **-RetentionEnabled** jelzőt **$true** értékre állítja, és a **-RetentionInDays** paramétert állítsa **90** -re, hogy a 90 napnál régebbi naplók automatikusan törlődjenek.
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name ContosoMHSM-Diagnostics --resource $hsmresource --logs '[{"category": "AuditEvent","enabled": true}]' --storage-account $storageresource
@@ -123,7 +123,7 @@ Az egyes Blobok szövegként vannak tárolva, és JSON-ként vannak formázva. N
 
 A következő táblázat a mezőneveket és a leírásokat tartalmazza:
 
-| Mező neve | Leírás |
+| Mező neve | Description |
 | --- | --- |
 | **TenantId** | Azure Active Directory a felügyelt HSM létrehozásához használt előfizetés bérlői AZONOSÍTÓját |
 | **idő** |Dátum és idő (UTC). |
@@ -146,7 +146,7 @@ A következő táblázat a mezőneveket és a leírásokat tartalmazza:
 
 A felügyelt HSM **AuditEvent** -naplók áttekintéséhez használhatja a Azure monitor-naplók Key Vault megoldását is. Azure Monitor naplókban a naplók segítségével elemezheti az adatokat, és lekérheti a szükséges információkat. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg a felügyelt HSM üzembe helyezésének és használatának [ajánlott eljárásait](best-practices.md)
 - Tudnivalók a felügyelt HSM [biztonsági mentéséről és visszaállításáról](backup-restore.md)

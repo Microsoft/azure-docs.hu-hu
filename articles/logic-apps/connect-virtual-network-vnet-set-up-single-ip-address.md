@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 40f4845ecc21d05ca5e8394dccba080f8a1f8936
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: e88c4bf05d88007a6e19b568f1bc1085e24b0325
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049711"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211056"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Egyetlen IP-cím beállítása egy vagy több integrációs szolgáltatási környezethez Azure Logic Apps
 
@@ -53,7 +53,7 @@ Ez a témakör bemutatja, hogyan irányíthatja a kimenő forgalmat egy Azure Fi
    |----------|-------|-------------|
    | **Útvonal neve** | <*egyedi-útvonal-név*> | Az útvonal egyedi neve az útválasztási táblában |
    | **Címelőtag** | <*cél – címe*> | Annak a célhelynek a címe, ahol a kimenő forgalmat el szeretné járni. Ügyeljen arra, hogy ehhez a címnek az [osztály nélküli Inter-Domain útválasztási (CIDR) jelölést](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) használja. Ebben a példában ez a memóriacím egy SFTP-kiszolgálóhoz tartozik, amely a következő szakaszban található: [hálózati szabály beállítása](#set-up-network-rule). |
-   | **Következő ugrás típusa** | **Virtuális berendezés** | A kimenő forgalom által használt [Ugrás típusa](../virtual-network/virtual-networks-udr-overview.md#next-hop-types-across-azure-tools) |
+   | **A következő ugrás típusa** | **Virtuális berendezés** | A kimenő forgalom által használt [Ugrás típusa](../virtual-network/virtual-networks-udr-overview.md#next-hop-types-across-azure-tools) |
    | **A következő ugrás címe** | <*tűzfal – magánhálózati-IP-cím*> | A tűzfal magánhálózati IP-címe |
    |||
 
@@ -97,8 +97,8 @@ Ez a témakör bemutatja, hogyan irányíthatja a kimenő forgalmat egy Azure Fi
    * [Az Azure Firewall szabályfeldolgozási logikája](../firewall/rule-processing.md#network-rules-and-applications-rules)
    * [Azure Firewall – gyakori kérdések](../firewall/firewall-faq.yml)
    * [Azure PowerShell: New-AzFirewallNetworkRule](/powershell/module/az.network/new-azfirewallnetworkrule)
-   * [Azure CLI: az Network Firewall Network-Rule](/cli/azure/ext/azure-firewall/network/firewall/network-rule?view=azure-cli-latest#ext-azure-firewall-az-network-firewall-network-rule-create)
+   * [Azure CLI: az Network Firewall Network-Rule](/cli/azure/ext/azure-firewall/network/firewall/network-rule#ext-azure-firewall-az-network-firewall-network-rule-create)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Kapcsolódás Azure-beli virtuális hálózatokhoz Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)

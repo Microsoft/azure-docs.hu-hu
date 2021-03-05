@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: ba859a0ad8edacfa2e51486b150f94b3dea37a16
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 6fdcedd19c02251035a838d34ba51e786595134b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182893"
+ms.locfileid: "102212450"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Gyakori kérdések az Azure bejárati ajtóról
 
@@ -87,7 +87,8 @@ Az előtérben lévő útvonalak nincsenek megrendezve, és egy adott útvonal v
 
 ### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>Hogyan lezárni a háttérbeli hozzáférést, hogy csak az Azure bejárati ajtót?
 
-> [! FIGYELJE meg, hogy az új SKU-bejárati prémium megoldás az alkalmazások privát végponton keresztüli zárolásának ajánlott módja. [További információ a privát végpontról](./standard-premium/concept-private-link.md)
+> [!NOTE]
+> Az új SKU-előtérben elérhető prémium megoldás az alkalmazások privát végponton keresztüli zárolásának ajánlott módja. [További információ a privát végpontról](./standard-premium/concept-private-link.md)
 
 Ha úgy szeretné zárolni az alkalmazást, hogy csak a megadott bejárati ajtóról fogadja a forgalmat, be kell állítania az IP ACL-eket a háttér számára, majd a háttérbeli forgalmat a "X-Azure-FDID" fejléc adott értékére kell korlátoznia. Ezeket a lépéseket az alábbiak szerint részletezjük:
 

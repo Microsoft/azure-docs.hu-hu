@@ -4,17 +4,17 @@ description: A titkosítási hatókörök lehetővé teszik a titkosítás kezel
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/22/2020
+ms.date: 03/05/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 881a7fc915ab986577599b85f8412fa8107f7902
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 35395a30f7d58b9edb3aa7622a35e8c4a62dc76f
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017389"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211362"
 ---
 # <a name="encryption-scopes-for-blob-storage-preview"></a>BLOB Storage titkosítási hatókörök (előzetes verzió)
 
@@ -26,15 +26,14 @@ Dönthet úgy, hogy a Microsoft által felügyelt kulcsokat vagy az ügyfél ál
 
 Miután létrehozott egy titkosítási hatókört, megadhatja a titkosítási hatókört egy tároló vagy blob létrehozásához szükséges kérelemben. A titkosítási hatókör létrehozásával kapcsolatos további információkért lásd: [titkosítási hatókörök létrehozása és kezelése (előzetes verzió)](encryption-scope-manage.md).
 
-> [!NOTE]
+> [!IMPORTANT]
+> A titkosítási hatókörök jelenleg **előzetes** verzióban érhetők el. Tekintse meg az Azure-szolgáltatásokra vonatkozó, a bétaverzióban, az előzetes verzióban, vagy más módon még nem közzétett, általánosan elérhetővé vált jogi feltételekhez tartozó [Microsoft Azure előzetes verziójának kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) .
+>
+> A váratlan költségek elkerülése érdekében ügyeljen arra, hogy letiltsa a jelenleg nem szükséges titkosítási hatóköröket.
+>
 > A titkosítási hatókörök nem támogatottak olvasási hozzáférésű geo-redundáns tárolással (RA-GRS) vagy olvasási hozzáférésű geo-Zone-redundáns tárolási (RA-GZRS) fiókokkal az előzetes verzió során.
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
-
-> [!IMPORTANT]
-> A titkosítási hatókörök előzetes verziója csak nem éles használatra készült. Az üzemi szolgáltatási szintű szerződések (SLA-kat) jelenleg nem érhetők el.
->
-> A váratlan költségek elkerülése érdekében ügyeljen arra, hogy letiltsa a jelenleg nem szükséges titkosítási hatóköröket.
 
 ## <a name="create-a-container-or-blob-with-an-encryption-scope"></a>Tároló vagy blob létrehozása titkosítási hatókörrel
 
@@ -58,7 +57,7 @@ Ha az ügyfél által felügyelt kulcsokkal védi a titkosítási hatókört, ak
 > [!NOTE]
 > Titkosítási hatókört nem lehet törölni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Inaktív adatok Azure Storage-titkosítása](../common/storage-service-encryption.md)
 - [Titkosítási hatókörök létrehozása és kezelése (előzetes verzió)](encryption-scope-manage.md)

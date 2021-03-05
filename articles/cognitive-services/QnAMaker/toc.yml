@@ -50,6 +50,8 @@
     - name: Azure-erőforrások kezelése
       href: How-To/set-up-qnamaker-service-azure.md
       displayName: 'azure, resource, key, upgrade, pricing, tier,'
+    - name: QnA Maker erőforrások konfigurálása
+      href: How-To/configure-QnA-Maker-resources.md
     - name: Az Azure-erőforrások hálózati elkülönítése
       href: How-To/network-isolation.md
     - name: QnA Maker erőforrás-hozzáférés kezelése
@@ -140,7 +142,7 @@
         - name: JavaScript
           items:
             - name: Referenciadokumentáció
-              href: /javascript/api/%40azure/cognitiveservices-qnamaker/index?view=azure-node-latest
+              href: /javascript/api/%40azure/cognitiveservices-qnamaker/index
             - name: NPM – tartalomkészítés
               href: 'https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker'
             - name: NPM – lekérdezés futtatókörnyezete

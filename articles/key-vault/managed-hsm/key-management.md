@@ -8,12 +8,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 3f054638e09061c652946c9c2db1a32db73c23d9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8d0cbd35b53bc8460ac8a19e5197d1f560657263
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521033"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212042"
 ---
 # <a name="manage-a-managed-hsm-using-the-azure-cli"></a>Felügyelt HSM kezelése az Azure CLI használatával
 
@@ -22,7 +22,7 @@ ms.locfileid: "92521033"
 
 A Managed HSM áttekintését lásd: [Mi a felügyelt HSM?](overview.md)
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -42,7 +42,7 @@ Ha a parancssori felülettel szeretne bejelentkezni az Azure-ba, írja be a köv
 az login
 ```
 
-A parancssori felületről való bejelentkezéssel kapcsolatos további információkért lásd: [Bejelentkezés az Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true) használatával
+A parancssori felületről való bejelentkezéssel kapcsolatos további információkért lásd: [Bejelentkezés az Azure CLI](/cli/azure/authenticate-azure-cli) használatával
 
 > [!NOTE]
 > Az alábbi parancsok két használati módszert mutatnak be. Egy a **--HSM-Name** és **--Name** (a Key Name) paramétereknél és egy másik, a **--ID** paraméterrel, ahol a teljes URL-címet megadhatja, beleértve a kulcs nevét is, ahol szükséges. Az utóbbi módszer akkor hasznos, ha a hívó (felhasználó vagy alkalmazás) nem rendelkezik olvasási hozzáféréssel a vezérlési síkon, és csak korlátozott hozzáférés az adatsíkon.
@@ -69,7 +69,7 @@ Vegye figyelembe, hogy a `get` művelet csak a nyilvános kulcsot és a kulcs at
 
 ### <a name="create-an-ec-key"></a>EK-kulcs létrehozása
 
-Az alábbi példa azt mutatja be, hogyan hozható létre olyan, P-256 görbével rendelkező **EK** -kulcs, amely csak **aláírási és ellenőrzési** műveletekhez használható (--Ops), és két címkével, **használattal** és **AppName**rendelkezik. A címkék segítségével további metaadatokat adhat hozzá a kulcshoz a nyomon követéshez és kezeléshez.
+Az alábbi példa azt mutatja be, hogyan hozható létre olyan, P-256 görbével rendelkező **EK** -kulcs, amely csak **aláírási és ellenőrzési** műveletekhez használható (--Ops), és két címkével, **használattal** és **AppName** rendelkezik. A címkék segítségével további metaadatokat adhat hozzá a kulcshoz a nyomon követéshez és kezeléshez.
 
 ```azurecli-interactive
 az keyvault key create --hsm-name ContosoMHSM --name myec256key --ops sign verify  --tags ‘usage=signing] appname=myapp’ --kty EC-HSM --curve P-256

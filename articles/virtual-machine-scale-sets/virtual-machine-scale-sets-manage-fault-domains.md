@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 12/18/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 4df340fa80ac4b9c4ff2a5e560580e09e01237e1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 5a71a6bce6d0e1a41201e0d7395110a6ac64db8c
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745932"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209747"
 ---
 # <a name="choosing-the-right-number-of-fault-domains-for-virtual-machine-scale-set"></a>A tartalék tartományok számának megválasztása a virtuálisgép-méretezési csoportnak megfelelően
 A virtuálisgép-méretezési csoportok alapértelmezés szerint öt tartalék tartománnyal jönnek létre a zónák nélküli Azure-régiókban. A virtuálisgép-méretezési csoportok zónákra épülő telepítését támogató régiók esetén a tartalék tartomány alapértelmezett értéke 1 az egyes zónák esetében. Ebben az esetben az FD = 1 érték azt jelenti, hogy a méretezési csoportba tartozó virtuálisgép-példányok számos rackben lesznek elosztva a legjobb erőfeszítés alapján.
@@ -25,7 +25,7 @@ Azt is megteheti, hogy összehangolja a méretezési csoport tartalék tartomán
 A tulajdonságot `properties.platformFaultDomainCount` 1, 2 vagy 3 értékre állíthatja (ha nincs megadva az alapértelmezett 3). Tekintse [meg REST API](/rest/api/compute/virtualmachinescalesets/createorupdate)dokumentációját.
 
 ## <a name="azure-cli"></a>Azure CLI
-A paramétert beállíthatja `--platform-fault-domain-count` 1, 2 vagy 3 (alapértelmezés szerint 3, ha nincs megadva). Tekintse meg az Azure CLI dokumentációját [itt](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create).
+A paramétert beállíthatja `--platform-fault-domain-count` 1, 2 vagy 3 (alapértelmezés szerint 3, ha nincs megadva). Tekintse meg az Azure CLI dokumentációját [itt](/cli/azure/vmss#az-vmss-create).
 
 ```azurecli-interactive
 az vmss create \

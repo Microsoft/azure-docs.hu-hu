@@ -215,7 +215,7 @@
     - name: Útmutató a virtuális gépek méretezéséhez
       href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
     - name: Azure parancssori felület (CLI)
-      href: /cli/azure/ext/desktopvirtualization/?view=azure-cli-latest
+      href: /cli/azure/ext/desktopvirtualization/
     - name: Azure-példaforgatókönyvek
       href: /azure/architecture/example-scenario/wvd/windows-virtual-desktop
     - name: E-mail felderítése

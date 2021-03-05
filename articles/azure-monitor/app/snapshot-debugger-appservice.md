@@ -6,18 +6,19 @@ author: cweining
 ms.author: cweining
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 291f06bea0744c991c71640272ee341b7273472b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5a637a6f355be32f82878a52a30c77d020190651
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728994"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211617"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>.NET-alkalmazások Snapshot Debuggerának engedélyezése Azure App Service
 
 A Snapshot Debugger jelenleg a Windows-ASP.NET Azure App Service operációs rendszert futtató alkalmazásokat és ASP.NET Coreeket támogatja.
 
 Javasoljuk, hogy az alkalmazást az alapszintű szolgáltatási szinten vagy magasabb szinten futtassa a Snapshot Debugger használatakor.
+
 A legtöbb alkalmazás esetében az ingyenes és a közös szolgáltatási rétegek nem rendelkeznek elegendő memóriával vagy lemezterülettel a pillanatképek mentéséhez.
 
 ## <a name="enable-snapshot-debugger"></a><a id="installation"></a> Snapshot Debugger engedélyezése
@@ -52,6 +53,16 @@ Miután telepítette az alkalmazást, kövesse az alábbi lépéseket a Snapshot
 4. A Snapshot Debugger mostantól engedélyezve van egy App Services alkalmazás-beállítás használatával.
 
     ![Alkalmazás-beállítás a Snapshot Debugger][snapshot-debugger-app-setting]
+
+## <a name="enable-snapshot-debugger-for-other-clouds"></a>Snapshot Debugger engedélyezése más felhők számára
+
+Jelenleg az egyetlen régió, amely a végpontok módosítását igényli [Azure Government](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights) és az [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide) -t a Application Insights-kapcsolatok karakterláncán keresztül.
+
+|A kapcsolatok karakterláncának tulajdonsága    | Egyesült államokbeli kormányzati felhő | Kínai felhő |   
+|---------------|---------------------|-------------|
+|SnapshotEndpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
+
+További információ az egyéb kapcsolatok felülbírálásáról: [Application Insights dokumentáció](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net#connection-string-with-explicit-endpoint-overrides).
 
 ## <a name="disable-snapshot-debugger"></a>Snapshot Debugger letiltása
 

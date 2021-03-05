@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to, deploy
-ms.openlocfilehash: 71f393897dff266f1b0922a19eefd70cffea133d
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 8f22f1af04d59b4c1fb7f19a3d6815b61cac5fbd
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600353"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211227"
 ---
 # <a name="deploy-models-trained-with-azure-machine-learning-on-your-local-machines"></a>Helyi gépeken Azure Machine Learning betanított modellek üzembe helyezése 
 
@@ -185,8 +185,8 @@ A Docker használatával a modellt webszolgáltatásként helyezheti üzembe a l
 A modellt a következőket töltheti le:  
 
 - A portálon válassza a **modellek** fület, válassza ki a kívánt modellt, majd a **részletek** lapon válassza a **Letöltés** lehetőséget.
-- A parancssorból a használatával `az ml model download` . (Lásd a [modell letöltését.](/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext_azure_cli_ml_az_ml_model_download&preserve-view=false))
-- A Python SDK módszer használatával `Model.download()` . (Lásd a [Model osztályt.](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#download-target-dir------exist-ok-false--exists-ok-none-&preserve-view=false))
+- A parancssorból a használatával `az ml model download` . (Lásd a [modell letöltését.](/cli/azure/ext/azure-cli-ml/ml/model#ext_azure_cli_ml_az_ml_model_download))
+- A Python SDK módszer használatával `Model.download()` . (Lásd a [Model osztályt.](/python/api/azureml-core/azureml.core.model.model#download-target-dir------exist-ok-false--exists-ok-none-))
 
 Az Azure-modell egy vagy több szerializált Python-objektum, amely Python-lé-fájlként (. PKL kiterjesztéssel) van csomagolva. A lé-fájl tartalma a gépi tanulási könyvtártól vagy a modell betanításához használt technikától függ. Ha például az oktatóanyagban használja a modellt, a modellt a következővel töltheti be:
 
@@ -248,7 +248,7 @@ Ezután megkeresheti az újonnan regisztrált modellt a Azure Machine Learning *
 
 A modellek és környezetek feltöltésével és frissítésével kapcsolatos további információkért lásd: [modell regisztrálása és helyi telepítése speciális használattal](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local-advanced.ipynb).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A környezetek kezelésével kapcsolatos további információkért tekintse meg a következő témakört: [Create & Software Environments in Azure Machine learning](how-to-use-environments.md).
 - Az adattárból származó adatok elérésének megismeréséhez lásd: [Kapcsolódás a Storage Services szolgáltatáshoz az Azure](how-to-access-data.md)-ban.

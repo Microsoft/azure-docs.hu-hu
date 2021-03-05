@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: acd2ae54d81fb508d5f8c02262cf8c2f0f071fb5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b8697e64eac69af8b8552f01fb6a03da0488a7cc
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016794"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210094"
 ---
 # <a name="create-and-configure-a-key-vault-for-azure-disk-encryption"></a>Kulcstartó létrehozása és konfigurálása Azure Disk Encryptionhoz
 
@@ -36,7 +36,7 @@ A cikkben ismertetett lépések az [Azure CLI](/cli/azure/)-vel, az Azure PowerS
 
 ### <a name="connect-to-your-azure-account"></a>Csatlakozás az Azure-fiókhoz
 
-Az Azure CLI vagy a Azure PowerShell használata előtt először csatlakoznia kell az Azure-előfizetéséhez. Ehhez [Jelentkezzen be az Azure CLI-vel](/cli/azure/authenticate-azure-cli?view=azure-cli-latest), [jelentkezzen be Azure PowerShellkal](/powershell/azure/authenticate-azureps?view=azps-2.5.0), vagy adja meg a hitelesítő adatait a Azure Portalhoz, amikor a rendszer kéri.
+Az Azure CLI vagy a Azure PowerShell használata előtt először csatlakoznia kell az Azure-előfizetéséhez. Ehhez [Jelentkezzen be az Azure CLI-vel](/cli/azure/authenticate-azure-cli), [jelentkezzen be Azure PowerShellkal](/powershell/azure/authenticate-azureps?view=azps-2.5.0), vagy adja meg a hitelesítő adatait a Azure Portalhoz, amikor a rendszer kéri.
 
 ```azurecli-interactive
 az login
@@ -48,7 +48,7 @@ Connect-AzAccount
 
 [!INCLUDE [disk-encryption-key-vault](../../includes/disk-encryption-key-vault.md)]
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Disk Encryption áttekintése](disk-encryption-overview.md)
 - [Virtuálisgép-méretezési csoportok titkosítása az Azure CLI használatával](disk-encryption-cli.md)

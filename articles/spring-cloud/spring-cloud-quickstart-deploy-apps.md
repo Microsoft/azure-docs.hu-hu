@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 7c37fbead3f7b87da16e77caeda8286d05ca628b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 727354593488cd5af77408eaa7c8d9e747a0b071
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102035135"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210308"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Gyors útmutató: alkalmazások létrehozása és üzembe helyezése az Azure Spring Cloud-ban
 
@@ -187,9 +187,9 @@ Az Azure CLI vagy Maven használatával történő üzembe helyezés előtt vég
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [A JDK 8 telepítése](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
+* [A JDK 8 telepítése](/java/azure/jdk/)
 * [Feliratkozás Azure-előfizetésre](https://azure.microsoft.com/free/)
-* Választható [Telepítse az Azure CLI 2.0.67 vagy újabb verzióját](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) , és telepítse az Azure Spring Cloud bővítményt a paranccsal: `az extension add --name spring-cloud`
+* Választható [Telepítse az Azure CLI 2.0.67 vagy újabb verzióját](/cli/azure/install-azure-cli) , és telepítse az Azure Spring Cloud bővítményt a paranccsal: `az extension add --name spring-cloud`
 * Választható [A Azure Toolkit for IntelliJ telepítése](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) és [Bejelentkezés](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
 
 ## <a name="deployment-procedures"></a>Üzembe helyezési eljárások

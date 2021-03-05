@@ -7,12 +7,12 @@ ms.author: tilee
 ms.date: 01/17/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: 26b551b5e3c21dcd77a5656a6f8a18c5de4feaf1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ee187c2713ea0150a6bcf99906fde76e60dd06c1
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723469"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209951"
 ---
 # <a name="connection-strings"></a>Kapcsolati sztringek
 
@@ -67,8 +67,8 @@ A kapcsolatok karakterlánca a kulcs-érték párokat tartalmazó, pontosvessző
   Bármely szolgáltatás explicit módon felülbírálható a kapcsolatok karakterláncában.
    - `IngestionEndpoint` (pl.: `https://dc.applicationinsights.azure.com` )
    - `LiveEndpoint` (pl.: `https://live.applicationinsights.azure.com` )
-   - `ProfilerEndpoint` (pl.: `https://profiler.applicationinsights.azure.com` )
-   - `SnapshotEndpoint` (pl.: `https://snapshot.applicationinsights.azure.com` )
+   - `ProfilerEndpoint` (pl.: `https://profiler.monitor.azure.com` )
+   - `SnapshotEndpoint` (pl.: `https://snapshot.monitor.azure.com` )
 
 #### <a name="endpoint-schema"></a>Végpont sémája
 

@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: msmbaldwin
 ms.service: virtual-machines
@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 3fe622d2ff4f6f8aff546452db0f475cfd44eb1b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 26a9e931c42822218e7935f50c1f222ac33c34f2
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015374"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210095"
 ---
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 *Ha már rendelkezik erőforráscsoporthoz, ugorjon a [kulcstartó létrehozása](#create-a-key-vault)lehetőségre.*
 
 Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
 
-Hozzon létre egy erőforráscsoportot az az [Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) Azure CLI paranccsal, a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) Azure PowerShell paranccsal vagy a [Azure Portal](https://portal.azure.com).
+Hozzon létre egy erőforráscsoportot az az [Group Create](/cli/azure/group#az-group-create) Azure CLI paranccsal, a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) Azure PowerShell paranccsal vagy a [Azure Portal](https://portal.azure.com).
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -37,7 +37,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 
 *Ha már rendelkezik kulcstartóval, ugorjon a [Key Vault speciális hozzáférési házirendjeinek beállítása](#set-key-vault-advanced-access-policies)lehetőségre.*
 
-Hozzon létre egy Key vaultot az az kulcstartó [create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) Azure CLI parancs, a [New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) Azure PowerShell-parancs, a [Azure Portal](https://portal.azure.com)vagy egy [Resource Manager-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)használatával.
+Hozzon létre egy Key vaultot az az kulcstartó [create](/cli/azure/keyvault#az-keyvault-create) Azure CLI parancs, a [New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) Azure PowerShell-parancs, a [Azure Portal](https://portal.azure.com)vagy egy [Resource Manager-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)használatával.
 
 >[!WARNING]
 > A Key vaultnak és a virtuális gépeknek ugyanahhoz az előfizetéshez kell tartoznia. Továbbá annak érdekében, hogy a titkosítási titkok ne haladják meg a regionális határokat, Azure Disk Encryption megköveteli, hogy a Key Vault és a virtuális gépek ugyanabban a régióban legyenek. Hozzon létre és használjon olyan Key Vault, amely ugyanabban az előfizetésben és régióban található, mint a titkosítani kívánt virtuális gépek. 
@@ -129,7 +129,7 @@ A Key Vault lemezes titkosításának engedélyezéséhez használja az [az kulc
 
 Ha a titkosítási kulcsok további biztonsági rétegéhez kulcs titkosítási kulcsot (KEK) szeretne használni, vegyen fel egy KEK-t a kulcstartóba. Ha a kulcs titkosítási kulcsa meg van adva, Azure Disk Encryption ezt a kulcsot használja a titkosítási titok becsomagolásához a Key Vaultba való írás előtt.
 
-Létrehozhat egy új KEK-t az Azure CLI az [kulcstartó kulcs létrehozása](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) parancs, a Azure PowerShell [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) parancsmag vagy a [Azure Portal](https://portal.azure.com/)használatával. RSA-kulcs típusát kell előállítania; Azure Disk Encryption még nem támogatja az elliptikus görbe kulcsait.
+Létrehozhat egy új KEK-t az Azure CLI az [kulcstartó kulcs létrehozása](/cli/azure/keyvault/key#az-keyvault-key-create) parancs, a Azure PowerShell [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) parancsmag vagy a [Azure Portal](https://portal.azure.com/)használatával. RSA-kulcs típusát kell előállítania; Azure Disk Encryption még nem támogatja az elliptikus görbe kulcsait.
 
 Ehelyett egy KEK-t is importálhat a helyszíni kulcskezelő HSM-ből. További információ: [Key Vault dokumentáció](../articles/key-vault/keys/hsm-protected-keys.md).
 
@@ -145,15 +145,15 @@ A Azure Disk Encryption nem támogatja a portszámok megadását a Key Vault Sec
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az Azure CLI az kulcstartó [kulcs létrehozása](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) paranccsal létrehozhat egy új KEK-t, és tárolhatja azt a kulcstartóban.
+Az Azure CLI az kulcstartó [kulcs létrehozása](/cli/azure/keyvault/key#az-keyvault-key-create) paranccsal létrehozhat egy új KEK-t, és tárolhatja azt a kulcstartóban.
 
 ```azurecli-interactive
 az keyvault key create --name "myKEK" --vault-name "<your-unique-keyvault-name>" --kty RSA
 ```
 
-Ehelyett egy titkos kulcsot is importálhat az Azure CLI az [kulcstartó kulcs importálása](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) paranccsal:
+Ehelyett egy titkos kulcsot is importálhat az Azure CLI az [kulcstartó kulcs importálása](/cli/azure/keyvault/key#az-keyvault-key-import) paranccsal:
 
-Mindkét esetben meg kell adnia a KEK nevét az Azure CLI-hez az [VM encryption Enable](/cli/azure/vm/encryption?view=azure-cli-latest#az-vm-encryption-enable) --Key-encryption-Key paraméterrel. 
+Mindkét esetben meg kell adnia a KEK nevét az Azure CLI-hez az [VM encryption Enable](/cli/azure/vm/encryption#az-vm-encryption-enable) --Key-encryption-Key paraméterrel. 
 
 ```azurecli-interactive
 az vm encryption enable -g "MyResourceGroup" --name "myVM" --disk-encryption-keyvault "<your-unique-keyvault-name>" --key-encryption-key "myKEK"
@@ -167,7 +167,7 @@ Egy új KEK létrehozásához használja a Azure PowerShell [Add-AzKeyVaultKey](
 Add-AzKeyVaultKey -Name "myKEK" -VaultName "<your-unique-keyvault-name>" -Destination "HSM"
 ```
 
-Ehelyett egy titkos kulcsot is importálhat az Azure PowerShell az [kulcstartó kulcs importálása](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) paranccsal.
+Ehelyett egy titkos kulcsot is importálhat az Azure PowerShell az [kulcstartó kulcs importálása](/cli/azure/keyvault/key#az-keyvault-key-import) paranccsal.
 
 Mindkét esetben meg kell adnia a KEK Key Vault AZONOSÍTÓját és a KEK URL-címét a Azure PowerShell [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-2.5.0) -KeyEncryptionKeyVaultId és-KeyEncryptionKeyUrl paraméterekben. Vegye figyelembe, hogy ez a példa feltételezi, hogy ugyanazt a kulcstartót használja, mint a lemez-titkosítási kulcs és a KEK.
 

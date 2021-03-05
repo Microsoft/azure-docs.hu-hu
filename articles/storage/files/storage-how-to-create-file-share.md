@@ -9,12 +9,12 @@ ms.date: 1/20/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 5a27f38e92955c0aa240f6be394aacd187c3a8b8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 24bee926d84c7a5be3f19c39d39285c2cd486824
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370903"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211022"
 ---
 # <a name="create-an-azure-file-share"></a>Azure-fájlmegosztás létrehozása
 Azure-fájlmegosztás létrehozásához három kérdést kell megválaszolnia, hogy miként fogja használni:
@@ -35,7 +35,7 @@ A három lehetőségről további információt a [Azure Files központi telepí
 ## <a name="prerequisites"></a>Előfeltételek
 - Ez a cikk azt feltételezi, hogy már létrehozott egy Azure-előfizetést. Ha még nem rendelkezik előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a Kezdés előtt.
 - Ha Azure PowerShell szeretne használni, [telepítse a legújabb verziót](/powershell/azure/install-az-ps).
-- Ha az Azure CLI-t szeretné használni, [telepítse a legújabb verziót](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
+- Ha az Azure CLI-t szeretné használni, [telepítse a legújabb verziót](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 Az Azure-fájlmegosztás *tárolási fiókokra* van telepítve, amelyek a tárolók megosztott készletét képviselő legfelső szintű objektumok. Ez a tárterület több fájlmegosztás üzembe helyezésére is használható. 
@@ -51,7 +51,7 @@ Ha Storage-fiókot szeretne létrehozni a Azure Portalon keresztül, válassza a
 
 ![A Storage-fiók gyors létrehozási lehetőségének képernyőképe egy böngészőben](media/storage-how-to-create-file-share/create-storage-account-0.png)
 
-#### <a name="basics"></a>Alapbeállítások
+#### <a name="basics"></a>Alapvető beállítások
 A Storage-fiók létrehozásához szükséges első szakasz az **alapok** címkéje. Ez tartalmazza az összes kötelező mezőt a Storage-fiók létrehozásához. GPv2-fiók létrehozásához győződjön meg arról, hogy a **teljesítmény** választógomb a *standard* értékre van beállítva, és a **Fiók típusa** legördülő lista *StorageV2 (általános célú v2)* van kiválasztva.
 
 ![Képernyőfelvétel a teljesítmény választógombról a szabványos kiválasztott és a StorageV2 kiválasztott fiókkal](media/storage-how-to-create-file-share/create-storage-account-1.png)
@@ -213,7 +213,7 @@ New-AzRmStorageShare `
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Létrehozhat egy Azure-fájlmegosztást a [`az storage share-rm create`](/cli/azure/storage/share-rm?preserve-view=true&view=azure-cli-latest#az_storage_share_rm_create) paranccsal. A következő Azure CLI-parancsok feltételezik, hogy a `$resourceGroupName` `$storageAccountName` Storage-fiók létrehozása az Azure CLI-vel című szakaszban leírt változókat beállította, és a fentiek szerint van megadva.
+Létrehozhat egy Azure-fájlmegosztást a [`az storage share-rm create`](/cli/azure/storage/share-rm#az_storage_share_rm_create) paranccsal. A következő Azure CLI-parancsok feltételezik, hogy a `$resourceGroupName` `$storageAccountName` Storage-fiók létrehozása az Azure CLI-vel című szakaszban leírt változókat beállította, és a fentiek szerint van megadva.
 
 > [!Important]  
 > A prémium fájlmegosztás esetén a `--quota` paraméter a fájlmegosztás kiépített méretére hivatkozik. A fájlmegosztás kiosztott mérete az a mennyiség, amelyet a rendszer a használattól függetlenül számláz. A standard fájlmegosztás számlázása a használat alapján történik, nem pedig kiosztott méret.

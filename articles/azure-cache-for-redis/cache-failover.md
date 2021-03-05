@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: 7cfa7257e64421c30c359bb34044988bbb5af1dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc7c70fa2e7131f09f621e992d537e0b120061ef
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87093085"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210733"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Feladatátvétel és javítás a Redis készült Azure cache-hez
 
@@ -73,6 +73,10 @@ Mivel nem tudja teljesen elkerülni a feladatátvételt, megírhatja az ügyfél
 
 Az ügyfélalkalmazás rugalmasságának teszteléséhez használjon [újraindítást](cache-administration.md#reboot) manuális triggerként a kapcsolódási szünetekhez. Javasoljuk továbbá, hogy a frissítéseket a gyorsítótárban [ütemezze](cache-administration.md#schedule-updates) . Adja meg a kezelési szolgáltatást, hogy Redis-futtatókörnyezeti javításokat alkalmazzon a megadott heti Windows rendszerben. Ezek a Windows-alkalmazások jellemzően olyan időszakok, amikor az ügyfélalkalmazások forgalma alacsony, így elkerülhetők a lehetséges incidensek.
 
+### <a name="can-i-be-notified-in-advance-of-a-planned-maintenance"></a>Előre értesítést kaphatok a tervezett karbantartásról?
+
+A Redis-hez készült Azure cache mostantól a tervezett frissítések előtt 30 másodpercen belül közzéteszi az [AzureRedisEvents](https://github.com/Azure/AzureCacheForRedis/blob/main/AzureRedisEvents.md) nevű közzétételi és előfizetési csatornán beérkező értesítéseket. Ezek a futásidejű értesítések, és főleg olyan alkalmazások számára készültek, amelyek áramkör-megszakítók használatával megkerülhetik a gyorsítótár-és a puffer parancsait, például a tervezett frissítések során. Ez nem egy olyan mechanizmus, amely nem tud értesíteni a napokat vagy órákat előre.
+
 ### <a name="client-network-configuration-changes"></a>Ügyfél hálózata – konfigurációs változások
 
 Bizonyos ügyféloldali hálózat – a konfigurációs változások "nincs elérhető elérhetőség" hibaüzenetet válthatnak ki. Ilyen változások például a következők lehetnek:
@@ -82,7 +86,7 @@ Bizonyos ügyféloldali hálózat – a konfigurációs változások "nincs elé
 
 Ezek a változások olyan kapcsolódási problémát okozhatnak, amely egy percnél rövidebb ideig tart. Az ügyfélalkalmazás valószínűleg elveszti a kapcsolatát más külső hálózati erőforrásokkal, a Redis szolgáltatáshoz készült Azure cache mellett.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A gyorsítótár [frissítéseinek ütemezett időpontja](cache-administration.md#schedule-updates) .
 - Az alkalmazások rugalmasságának tesztelése [Újraindítás](cache-administration.md#reboot)használatával.

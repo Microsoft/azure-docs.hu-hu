@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: msmbaldwin
 ms.service: virtual-machines
@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 1c1d438f0322942a1e68c0af74de8d5e2d77c77a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: be6de283ed230a6e6a6b4986abb0a36386e36925
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95554660"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211991"
 ---
 Azure Disk Encryption engedélyezhető és felügyelhető az [Azure CLI](/cli/azure) -n és [Azure PowerShellon](/powershell/azure/new-azureps-module-az)keresztül. Ehhez telepítenie kell az eszközöket helyileg, és csatlakoznia kell az Azure-előfizetéséhez.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az [Azure CLI 2,0](/cli/azure) egy parancssori eszköz az Azure-erőforrások kezeléséhez. A CLI rugalmas lekérdezési adatokra lett tervezve, támogatja a hosszan futó műveleteket a nem blokkoló folyamatokban, és megkönnyíti a parancsfájlok futtatását. Az [Azure CLI telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest)című témakör lépéseit követve helyileg is telepítheti.
+Az [Azure CLI 2,0](/cli/azure) egy parancssori eszköz az Azure-erőforrások kezeléséhez. A CLI rugalmas lekérdezési adatokra lett tervezve, támogatja a hosszan futó műveleteket a nem blokkoló folyamatokban, és megkönnyíti a parancsfájlok futtatását. Az [Azure CLI telepítése](/cli/azure/install-azure-cli)című témakör lépéseit követve helyileg is telepítheti.
 
-Ha be [szeretné jelentkezni az Azure-fiókjába az Azure CLI-vel](/cli/azure/authenticate-azure-cli), használja az az [login](/cli/azure/reference-index?view=azure-cli-latest#az-login) parancsot.
+Ha be [szeretné jelentkezni az Azure-fiókjába az Azure CLI-vel](/cli/azure/authenticate-azure-cli), használja az az [login](/cli/azure/reference-index#az-login) parancsot.
 
 ```azurecli
 az login

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/08/2021
+ms.date: 03/05/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 674a336e79f118d543590fb7514b6bebef72cf47
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f157b44e92289d0e9c5b88108550c144344c5206
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390181"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211141"
 ---
 # <a name="soft-delete-for-containers-preview"></a>Tárolók törlése (előzetes verzió)
 
@@ -27,8 +27,8 @@ A blob-adatai teljes körű védelme érdekében a Microsoft a következő adatv
 - BLOB verziószámozása, hogy automatikusan fenntartsa a blob korábbi verzióit. Ha a blob verziószámozása engedélyezve van, visszaállíthatja a blob egy korábbi verzióját az adatok helyreállításához, ha az hibásan van módosítva vagy törölve. A blob verziószámozásának engedélyezéséről a [blob verziószámozásának engedélyezése és kezelése](versioning-enable.md)című témakörben olvashat bővebben.
 - BLOB törölje a törlést, hogy visszaállítsa a törölt blobot vagy verziót. Ha szeretné megtudni, hogyan engedélyezheti a Blobok törlését, olvassa el a következőt: Blobok eltávolításának [engedélyezése és kezelése](soft-delete-blob-enable.md).
 
-> [!WARNING]
-> A Storage-fiók törlése nem vonható vissza. A tároló-helyreállító törlés nem véd a Storage-fiók törlésével, csak a tárolók törlésével szemben. A Storage-fiók törlésével szembeni védelemhez állítson be egy zárolást a Storage-fiók erőforrásán. A Azure Resource Manager erőforrásainak zárolásával kapcsolatos további információkért lásd: [erőforrások zárolása a váratlan változások megelőzése érdekében](../../azure-resource-manager/management/lock-resources.md).
+> [!IMPORTANT]
+> A tároló Soft delete jelenleg **előzetes** verzióban érhető el. Tekintse meg az Azure-szolgáltatásokra vonatkozó, a bétaverzióban, az előzetes verzióban, vagy más módon még nem közzétett, általánosan elérhetővé vált jogi feltételekhez tartozó [Microsoft Azure előzetes verziójának kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) .
 
 ## <a name="how-container-soft-delete-works"></a>A tárolók törlésének működése
 
@@ -46,14 +46,14 @@ A megőrzési időszak lejárta után a tároló véglegesen törlődik az Azure
 
 A tárolók törlésének letiltása nem eredményezi végleges törlését a korábban törölt tárolók számára. A rendszer véglegesen törli a törölt tárolókat a tároló törlésének időpontjában érvényben lévő megőrzési időszak lejártakor.
 
+> [!IMPORTANT]
+> A tároló-helyreállító törlés nem véd a Storage-fiók törlésével, csak a tárolók törlésével szemben. A Storage-fiók törlésével szembeni védelemhez állítson be egy zárolást a Storage-fiók erőforrásán. A Azure Resource Manager erőforrásainak zárolásával kapcsolatos további információkért lásd: [erőforrások zárolása a váratlan változások megelőzése érdekében](../../azure-resource-manager/management/lock-resources.md).
+
 ## <a name="about-the-preview"></a>Az előzetes verzió ismertetése
 
 A tárolók Soft DELETE az összes Azure-régióban előzetes verzióban érhető el.
 
-> [!IMPORTANT]
-> A tároló Soft delete előzetes verziója csak nem éles használatra készült. Az üzemi szolgáltatási szintű szerződések (SLA-kat) jelenleg nem érhetők el.
-
-Az Azure Storage REST API 2019-12-12-es és újabb verziója támogatja a tárolók törlését.
+Az Azure Storage REST API 2019-12-12-es vagy újabb verziója támogatja a tárolók törlését.
 
 ### <a name="storage-account-support"></a>A Storage-fiók támogatása
 

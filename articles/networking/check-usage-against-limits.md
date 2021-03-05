@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
-ms.openlocfilehash: 5c53eb65f31e32d3edebcbf31d48d166f5464a92
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 31eeb31fb78a4e9552e64121e0e85b5fd8d9b773
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233355"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210632"
 ---
 # <a name="check-resource-usage-against-limits"></a>Erőforrás-használat összevetése a korlátokkal
 
@@ -73,7 +73,7 @@ Network Watchers                   1     1
 
 Ha az Azure parancssori felület (CLI) parancsait használja a jelen cikkben található feladatok elvégzéséhez, futtassa a [Azure Cloud Shell](https://shell.azure.com/bash)parancsait, vagy a CLI-t a számítógépről futtatva. Ehhez a cikkhez az Azure CLI 2.0.32 vagy újabb verziójára van szükség. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. Ha helyileg futtatja az Azure CLI-t, az Azure-ba való bejelentkezéshez is futnia kell `az login` .
 
-Az az [Network List-](/cli/azure/network?view=azure-cli-latest#az-network-list-usages)relimits használatával megtekintheti a korlátozásokat. Az alábbi példa az USA keleti régiójában található erőforrások használatát kéri le:
+Az az [Network List-](/cli/azure/network#az-network-list-usages)relimits használatával megtekintheti a korlátozásokat. Az alábbi példa az USA keleti régiójában található erőforrások használatát kéri le:
 
 ```azurecli-interactive
 az network list-usages \

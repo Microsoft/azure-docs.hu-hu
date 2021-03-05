@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 4af29df27a109a9e1e26a720c190ab9d119fc4d1
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 825a336b5ad07f50d96b19036d70c759b907bd07
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033795"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209679"
 ---
 # <a name="azure-table-storage-output-bindings-for-azure-functions"></a>Azure Table Storage – kimeneti kötések Azure Functions
 
@@ -390,12 +390,12 @@ A Python nem támogatja az attribútumokat.
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `Table` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa** | n.a. | Értékre kell állítani `table` . A rendszer automatikusan beállítja ezt a tulajdonságot, amikor létrehozza a kötést a Azure Portalban.|
 |**irányba** | n.a. | Értékre kell állítani `out` . A rendszer automatikusan beállítja ezt a tulajdonságot, amikor létrehozza a kötést a Azure Portalban. |
 |**név** | n.a. | A táblát vagy entitást jelölő függvény kódjában használt változó neve. Állítsa a értékre `$return` a függvény visszatérési értékének hivatkozásához.| 
-|**tableName** |**Táblanév** | A tábla neve.| 
+|**Táblanév** |**TableName** | A tábla neve.| 
 |**partitionKey** |**PartitionKey** | Az írni kívánt tábla entitás partíciós kulcsa. Tekintse meg a [használat című szakaszt](#usage) , amely útmutatást nyújt ennek a tulajdonságnak a használatáról.| 
 |**rowKey** |**RowKey** | Az írni kívánt tábla entitáshoz tartozó sor kulcsa. Tekintse meg a [használat című szakaszt](#usage) , amely útmutatást nyújt ennek a tulajdonságnak a használatáról.| 
 |**kapcsolat** |**Kapcsolat** | Egy olyan Alkalmazásbeállítás neve, amely a kötéshez használandó tárolási kapcsolati karakterláncot tartalmazza. Ha az Alkalmazásbeállítások neve "AzureWebJobs" előtaggal kezdődik, akkor itt csak a nevet adja meg. Ha például a "MyStorage" értékre van állítva `connection` , a functions futtatókörnyezet egy "MyStorage" nevű alkalmazás-beállítást keres. Ha `connection` üresen hagyja, a functions futtatókörnyezet az alapértelmezett tárolási kapcsolatok karakterláncát használja a nevű alkalmazás-beállításban `AzureWebJobsStorage` .|
@@ -418,7 +418,7 @@ Azt is megteheti, `CloudTable` hogy az Azure Storage SDK használatával metódu
 
 # <a name="java"></a>[Java](#tab/java)
 
-Két lehetőség áll rendelkezésre a Table Storage-sorok függvényből történő kiosztására a [TableStorageOutput](/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet&preserve-view=true) -jegyzet használatával:
+Két lehetőség áll rendelkezésre a Table Storage-sorok függvényből történő kiosztására a [TableStorageOutput](/java/api/com.microsoft.azure.functions.annotation.tableoutput) -jegyzet használatával:
 
 - Visszaadott **érték**: a jegyzetnek a függvényhez való alkalmazásával a függvény visszatérési értéke Table Storage-sorként marad.
 
@@ -446,11 +446,11 @@ Két lehetőség áll rendelkezésre a táblázatos tárolási sor üzenetének 
 
 | Kötés | Referencia |
 |---|---|
-| Táblázat | [Tábla Hibakódai](/rest/api/storageservices/fileservices/table-service-error-codes) |
+| Tábla | [Tábla Hibakódai](/rest/api/storageservices/fileservices/table-service-error-codes) |
 | BLOB, tábla, üzenetsor | [Tárolási hibakódok](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
 | BLOB, tábla, üzenetsor | [Hibaelhárítás](/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ az Azure functions-eseményindítók és-kötésekről](functions-triggers-bindings.md)

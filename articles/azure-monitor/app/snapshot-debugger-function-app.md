@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 12/18/2020
-ms.openlocfilehash: d86455eae0834f29099c7d5c96f8326408daf519
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: ac25962cac36a149807b67a44b3b88a4f40c954a
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675529"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211940"
 ---
 # <a name="enable-snapshot-debugger-for-net-and-net-core-apps-in-azure-functions"></a>.NET-és .NET Core-alkalmazások Snapshot Debuggerének engedélyezése Azure Functions
 
@@ -123,6 +123,35 @@ Gazda fájl
   }
 }
 ```
+
+## <a name="enable-snapshot-debugger-for-other-clouds"></a>Snapshot Debugger engedélyezése más felhők számára
+
+Jelenleg csak a végpontok módosítását igénylő régiók [Azure Government](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights) és az [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide).
+
+Alább látható egy példa az `host.json` Egyesült államokbeli kormányzati Felhőbeli ügynök végpontjának frissítésére:
+```json
+{
+  "version": "2.0",
+  "logging": {
+    "applicationInsights": {
+      "samplingExcludedTypes": "Request",
+      "samplingSettings": {
+        "isEnabled": true
+      },
+      "snapshotConfiguration": {
+        "isEnabled": true,
+        "agentEndpoint": "https://snapshot.monitor.azure.us"
+      }
+    }
+  }
+}
+```
+
+Alább láthatók a Snapshot Debugger ügynök végpontjának támogatott felülbírálásai:
+
+|Tulajdonság    | Egyesült államokbeli kormányzati felhő | Kínai felhő |   
+|---------------|---------------------|-------------|
+|AgentEndpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
 
 ## <a name="disable-snapshot-debugger"></a>Snapshot Debugger letiltása
 

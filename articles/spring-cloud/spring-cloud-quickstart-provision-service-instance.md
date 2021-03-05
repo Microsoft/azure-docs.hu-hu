@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 22abdb64a2349045923e148db57f683b4be87636
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 6f25c4172b384abd487d2084f31981d16e73ee93
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742705"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209883"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-service"></a>Gyors útmutató: Azure Spring Cloud Service kiépítése
 
@@ -24,7 +24,7 @@ Ebben a rövid útmutatóban az Azure CLI használatával kiépítheti az Azure 
 
 * Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [.Net Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1). Az Azure Spring Cloud Service a .NET Core 3,1-as és újabb verzióit támogatja.
-* [Az Azure CLI verziója 2.0.67 vagy újabb](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
+* [Az Azure CLI verziója 2.0.67 vagy újabb](/cli/azure/install-azure-cli).
 * [Git](https://git-scm.com/).
 
 ## <a name="install-azure-cli-extension"></a>Az Azure CLI-bővítmény telepítése
@@ -90,9 +90,9 @@ az extension add --name spring-cloud
 Az Azure Spring Cloud a Azure Portal vagy az Azure CLI használatával hozható létre.  Mindkét módszert az alábbi eljárásokban ismertetjük.
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [A JDK 8 telepítése](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
+* [A JDK 8 telepítése](/java/azure/jdk/)
 * [Feliratkozás Azure-előfizetésre](https://azure.microsoft.com/free/)
-* Választható [Telepítse az Azure CLI 2.0.67 vagy újabb verzióját](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) , és telepítse az Azure Spring Cloud bővítményt a paranccsal: `az extension add --name spring-cloud`
+* Választható [Telepítse az Azure CLI 2.0.67 vagy újabb verzióját](/cli/azure/install-azure-cli) , és telepítse az Azure Spring Cloud bővítményt a paranccsal: `az extension add --name spring-cloud`
 * Választható [A Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) és a [Bejelentkezés](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in) telepítése
 
 ## <a name="provision-an-instance-of-azure-spring-cloud"></a>Azure Spring Cloud-példány kiépítése
@@ -113,11 +113,11 @@ Az alábbi eljárás az Azure Spring Cloud egy példányát hozza létre a Azure
 
     ![ASC ikon hozzáadása](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
 
-5. Töltse ki az űrlapot az Azure Spring Cloud **create** oldalon.  Vegye figyelembe a következő irányelveket:
-    - **Előfizetés** : válassza ki azt az előfizetést, amelyet számlázni szeretne az erőforráshoz.
-    - **Erőforráscsoport** : új erőforráscsoportok létrehozása új erőforrásokhoz az ajánlott eljárás. Vegye figyelembe, hogy ezt a későbbi lépések során fogjuk használni **\<resource group name\>** .
-    - **Szolgáltatás adatai/neve** : adja meg a **\<service instance name\>** .  A névnek 4 – 32 karakter hosszúnak kell lennie, és csak kisbetűket, számokat és kötőjeleket tartalmazhat.  A szolgáltatás nevének első karakterének betűnek kell lennie, és az utolsó karakternek betűnek vagy számnak kell lennie.
-    - **Hely** : válassza ki a szolgáltatás példányának helyét.
+5. Töltse ki az űrlapot az Azure Spring Cloud **create** oldalon.  Tekintse meg a következő útmutatót:
+    - **Előfizetés**: válassza ki azt az előfizetést, amelyet számlázni szeretne az erőforráshoz.
+    - **Erőforráscsoport**: új erőforráscsoportok létrehozása új erőforrásokhoz az ajánlott eljárás. Vegye figyelembe, hogy ezt a későbbi lépések során fogjuk használni **\<resource group name\>** .
+    - **Szolgáltatás adatai/neve**: adja meg a **\<service instance name\>** .  A névnek 4 – 32 karakter hosszúnak kell lennie, és csak kisbetűket, számokat és kötőjeleket tartalmazhat.  A szolgáltatás nevének első karakterének betűnek kell lennie, és az utolsó karakternek betűnek vagy számnak kell lennie.
+    - **Hely**: válassza ki a szolgáltatás példányának helyét.
 
     ![ASC-portál indítása](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 

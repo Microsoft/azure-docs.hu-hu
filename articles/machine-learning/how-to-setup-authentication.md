@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: 27c8a0b80068124613af15565f387f15ac6b8e57
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 30e4fede72df8eaf922745e7781c9e0d11f7ddb4
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027254"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210818"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Hitelesítés beállítása az Azure Machine Learning-erőforrásokhoz és -munkafolyamatokhoz
 
@@ -54,7 +54,7 @@ Egyszerű szolgáltatásnév (SP) használatához először létre kell hoznia a
 >
 > A legkevesebb hozzáférés megadásának oka az, hogy egy egyszerű szolgáltatásnév jelszót használ a hitelesítéshez, és a jelszót egy Automation-parancsfájl részeként lehet tárolni. Ha a jelszó kiszivárgott, az adott feladatokhoz szükséges minimális hozzáférés minimálisra csökken az SP rosszindulatú használata esetén.
 
-Az [Azure parancssori](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)felületének használatával a legkönnyebben hozhat létre egy SP-t, és hozzáférést biztosíthat a munkaterületéhez. Egyszerű szolgáltatásnév létrehozásához és a munkaterülethez való hozzáférés biztosításához kövesse az alábbi lépéseket:
+Az [Azure parancssori](/cli/azure/install-azure-cli)felületének használatával a legkönnyebben hozhat létre egy SP-t, és hozzáférést biztosíthat a munkaterületéhez. Egyszerű szolgáltatásnév létrehozásához és a munkaterülethez való hozzáférés biztosításához kövesse az alábbi lépéseket:
 
 > [!NOTE]
 > Ezen lépések végrehajtásához rendszergazdai jogosultsággal kell rendelkeznie az előfizetésben.
@@ -67,9 +67,9 @@ Az [Azure parancssori](/cli/azure/install-azure-cli?preserve-view=true&view=azur
 
     Ha a CLI megnyithatja az alapértelmezett böngészőt, akkor megnyitja, és betölti a bejelentkezési oldalt. Ellenkező esetben meg kell nyitnia egy böngészőt, és követnie kell a parancssor utasításait. Az utasítások [https://aka.ms/devicelogin](https://aka.ms/devicelogin) egy engedélyezési kód böngészését és beírását foglalják magukban.
 
-    Ha több Azure-előfizetéssel rendelkezik, akkor a `az account set -s <subscription name or ID>` paranccsal állíthatja be az előfizetést. További információ: [több Azure-előfizetés használata](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest).
+    Ha több Azure-előfizetéssel rendelkezik, akkor a `az account set -s <subscription name or ID>` paranccsal állíthatja be az előfizetést. További információ: [több Azure-előfizetés használata](/cli/azure/manage-azure-subscriptions-azure-cli).
 
-    A hitelesítés egyéb módszereivel kapcsolatban lásd: [Bejelentkezés az Azure CLI-vel](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest).
+    A hitelesítés egyéb módszereivel kapcsolatban lásd: [Bejelentkezés az Azure CLI-vel](/cli/azure/authenticate-azure-cli).
 
 1. Telepítse a Azure Machine Learning bővítményt:
 
@@ -236,7 +236,7 @@ ws.get_details()
 
 ### <a name="use-a-service-principal-from-the-azure-cli"></a>Egyszerű szolgáltatásnév használata az Azure CLI-vel
 
-Az Azure CLI-parancsokhoz használhat egyszerű szolgáltatást. További információ: [Bejelentkezés egyszerű szolgáltatásnév használatával](/cli/azure/create-an-azure-service-principal-azure-cli?preserve-view=true&view=azure-cli-latest#sign-in-using-a-service-principal).
+Az Azure CLI-parancsokhoz használhat egyszerű szolgáltatást. További információ: [Bejelentkezés egyszerű szolgáltatásnév használatával](/cli/azure/create-an-azure-service-principal-azure-cli#sign-in-using-a-service-principal).
 
 ### <a name="use-a-service-principal-with-the-rest-api-preview"></a>Egyszerű szolgáltatásnév használata a REST API (előzetes verzió)
 

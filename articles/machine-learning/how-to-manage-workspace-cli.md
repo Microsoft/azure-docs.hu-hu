@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 4c457ef2c4957308735c222488ad04dac80235df
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 8ea3f36d4e63b3439691772c25e7b3af77dcdb02
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740385"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102210036"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Munkaterület létrehozása Azure Machine Learninghoz az Azure CLI-vel
 
@@ -26,7 +26,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre Azure Machine Learning munka
 
 * Egy **Azure-előfizetés**. Ha még nem rendelkezik ilyennel, próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
-* Ha a jelen dokumentumban a CLI-parancsokat a **helyi környezetből** szeretné használni, szüksége lesz az [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)-re.
+* Ha a jelen dokumentumban a CLI-parancsokat a **helyi környezetből** szeretné használni, szüksége lesz az [Azure CLI](/cli/azure/install-azure-cli)-re.
 
     Ha a [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/)használja, a CLI a böngészőn keresztül érhető el, és a felhőben él.
 
@@ -49,7 +49,7 @@ Ha a CLI megnyithatja az alapértelmezett böngészőt, akkor megnyitja, és bet
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
-A hitelesítés egyéb módszereivel kapcsolatban lásd: [Bejelentkezés az Azure CLI-vel](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest).
+A hitelesítés egyéb módszereivel kapcsolatban lásd: [Bejelentkezés az Azure CLI-vel](/cli/azure/authenticate-azure-cli).
 
 ## <a name="install-the-machine-learning-extension"></a>A Machine learning-bővítmény telepítése
 
@@ -75,16 +75,16 @@ A Azure Machine Learning munkaterület a következő Azure-szolgáltatásokra va
 | Szolgáltatás | Paraméter egy meglévő példány megadásához |
 | ---- | ---- |
 | **Azure-erőforráscsoport** | `-g <resource-group-name>`
-| **Azure Storage-tárfiók neve** | `--storage-account <service-id>` |
+| **Azure Storage-fiók** | `--storage-account <service-id>` |
 | **Azure Application Insights** | `--application-insights <service-id>` |
 | **Azure Key Vault** | `--keyvault <service-id>` |
 | **Azure Container Registry** | `--container-registry <service-id>` |
 
 A Azure Container Registry (ACR) jelenleg nem támogatja a Unicode-karaktereket az erőforráscsoport-nevekben. A probléma megoldásához használjon olyan erőforráscsoportot, amely nem tartalmazza ezeket a karaktereket.
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Az Azure Machine Learning munkaterületet egy erőforráscsoport belsejében kell létrehozni. Használhat meglévő erőforráscsoportot, vagy létrehozhat egy újat. __Új erőforráscsoport létrehozásához__ használja a következő parancsot. Cserélje le az `<resource-group-name>` -t az erőforráscsoporthoz használni kívánt névre. Cserélje le `<location>` az az Azure-régiót az erőforráscsoport használatára:
+Az Azure Machine Learning munkaterületet egy erőforráscsoport belsejében kell létrehozni. Használhat egy meglévő erőforráscsoportot, vagy hozzon létre egy újat. __Új erőforráscsoport létrehozásához__ használja a következő parancsot. Cserélje le az `<resource-group-name>` -t az erőforráscsoporthoz használni kívánt névre. Cserélje le `<location>` az az Azure-régiót az erőforráscsoport használatára:
 
 > [!TIP]
 > Ki kell választania egy régiót, ahol a Azure Machine Learning elérhető. További információ: [régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
@@ -109,7 +109,7 @@ A parancs válasza hasonló a következő JSON-fájlhoz:
 }
 ```
 
-További információ az erőforráscsoportok használatáról: [az Group](/cli/azure/group?preserve-view=true&view=azure-cli-latest).
+További információ az erőforráscsoportok használatáról: [az Group](/cli/azure/group).
 
 ### <a name="automatically-create-required-resources"></a>Szükséges erőforrások automatikus létrehozása
 
@@ -291,7 +291,7 @@ A parancs kimenete a következő JSON-hoz hasonló:
 ]
 ```
 
-További információ: az [ml Workspace List](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-list) dokumentációja.
+További információ: az [ml Workspace List](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-list) dokumentációja.
 
 ## <a name="get-workspace-information"></a>Munkaterület adatainak beolvasása
 
@@ -324,7 +324,7 @@ A parancs kimenete a következő JSON-hoz hasonló:
 }
 ```
 
-További információ: az [ml Workspace show](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-show) dokumentációja.
+További információ: az [ml Workspace show](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-show) dokumentációja.
 
 ## <a name="update-a-workspace"></a>Munkaterület frissítése
 
@@ -357,7 +357,7 @@ A parancs kimenete a következő JSON-hoz hasonló:
 }
 ```
 
-További információt az az [ml Workspace Update](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-update) dokumentációjában talál.
+További információt az az [ml Workspace Update](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-update) dokumentációjában talál.
 
 ## <a name="share-a-workspace-with-another-user"></a>Munkaterület megosztása egy másik felhasználóval
 
@@ -369,7 +369,7 @@ az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user>
 
 További információ az Azure szerepköralapú hozzáférés-vezérléséről (Azure RBAC) a Azure Machine Learningával: [felhasználók és szerepkörök kezelése](how-to-assign-roles.md).
 
-További információ: az [ml Workspace Share](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-share) dokumentáció.
+További információ: az [ml Workspace Share](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-share) dokumentáció.
 
 ## <a name="sync-keys-for-dependent-resources"></a>Függő erőforrások szinkronizálási kulcsai
 
@@ -381,7 +381,7 @@ az ml workspace sync-keys -w <workspace-name> -g <resource-group-name>
 
 A kulcsok módosításával kapcsolatos további információkért lásd: [tároló-hozzáférési kulcsok újragenerálása](how-to-change-storage-access-key.md).
 
-További információ: az [ml Workspace Sync-Keys](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-sync-keys) dokumentáció.
+További információ: az [ml Workspace Sync-Keys](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-sync-keys) dokumentáció.
 
 ## <a name="delete-a-workspace"></a>Munkaterület törlése
 
@@ -400,7 +400,7 @@ Törölheti az erőforráscsoportot is, amely törli a munkaterületet és az er
 az group delete -g <resource-group-name>
 ```
 
-További információ: az [ml Workspace delete](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-delete) dokumentációja.
+További információ: az [ml Workspace delete](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-delete) dokumentációja.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -419,6 +419,6 @@ A Azure Machine Learning munkaterület egyes műveletekhez Azure Container Regis
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A gépi tanuláshoz készült Azure CLI bővítménnyel kapcsolatos további információkért tekintse meg az az [ml](/cli/azure/ext/azure-cli-ml/ml?preserve-view=true&view=azure-cli-latest) dokumentációt.
+A gépi tanuláshoz készült Azure CLI bővítménnyel kapcsolatos további információkért tekintse meg az az [ml](/cli/azure/ext/azure-cli-ml/ml) dokumentációt.
