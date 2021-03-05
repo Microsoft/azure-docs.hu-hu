@@ -8,12 +8,12 @@ ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 5acb8e347046780c84f0aa324b997abb5e2aa840
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 118c08c8ede369eecd86fe8e6db24473b67ff306
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629223"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214439"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Nagyméretű fájlmegosztás engedélyezése és létrehozása
 
@@ -22,7 +22,7 @@ Ha engedélyezi a nagyméretű fájlmegosztást a Storage-fiókjában, a fájlme
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-- Ha az Azure CLI-t szeretné használni, [telepítse a legújabb verziót](/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Ha az Azure CLI-t szeretné használni, [telepítse a legújabb verziót](/cli/azure/install-azure-cli).
 - Ha a Azure PowerShell modult szeretné használni, [telepítse a legújabb verziót](/powershell/azure/install-az-ps?view=azps-4.6.0).
 
 ## <a name="restrictions"></a>Korlátozások
@@ -61,11 +61,11 @@ A nagyméretű fájlmegosztás egy fiókban való engedélyezése visszafordíth
 
     ![Képernyőfelvétel az "enabled" (engedélyezve) gombra a Azure Portal új Storage-fiókjában](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Először [telepítse az Azure CLI legújabb verzióját](/cli/azure/install-azure-cli?view=azure-cli-latest) , hogy lehetővé váljon a nagyméretű fájlmegosztás engedélyezése.
+Először [telepítse az Azure CLI legújabb verzióját](/cli/azure/install-azure-cli) , hogy lehetővé váljon a nagyméretű fájlmegosztás engedélyezése.
 
 Nagyméretű fájlmegosztást engedélyező Storage-fiók létrehozásához használja a következő parancsot. Cserélje `<yourStorageAccountName>` le `<yourResourceGroup>` a, a és `<yourDesiredRegion>` az adatait az adataira.
 
@@ -133,7 +133,7 @@ A nagyméretű fájlmegosztás létrehozása majdnem azonos a szabványos fájlm
 
 1. A Storage-fiókban válassza a **fájlmegosztás** lehetőséget.
 1. Válassza a **+ Fájlmegosztás** lehetőséget.
-1. Adja meg a fájlmegosztás nevét. Azt is megteheti, hogy a kvóta mérete (akár 100 TiB) is megadható. Ezután válassza a **Létrehozás** elemet. 
+1. Adja meg a fájlmegosztás nevét. Azt is megteheti, hogy a kvóta mérete (akár 100 TiB) is megadható. Ezután kattintson a **Létrehozás** elemre. 
 
 ![A név és a kvóta mezőket megjelenítő Azure Portal felhasználói felület](media/storage-files-how-to-create-large-file-share/large-file-shares-create-share.png)
 
@@ -194,7 +194,7 @@ Set-AzStorageShareQuota -ShareName $shareName -Context $ctx -Quota 102400
 ```
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Fájlmegosztás csatlakoztatása és csatlakoztatása Windows rendszeren](storage-how-to-use-files-windows.md)
 * [Fájlmegosztás csatlakoztatása és csatlakoztatása Linux rendszeren](storage-how-to-use-files-linux.md)

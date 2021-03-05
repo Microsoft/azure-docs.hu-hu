@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 46b8f153e65f436fa1062a0606e0fb0136d972a5
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 0a536781f3218807c36f6eefe738b9a375de8d4b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97824614"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213130"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>A meglévő modell üzembe helyezése Azure Machine Learning
 
@@ -34,7 +34,7 @@ A cikkben szereplő fogalmakkal és kifejezésekkel kapcsolatos további inform�
 
 * A [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)-t.  
 
-* Az [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) és a [Machine learning CLI bővítmény](reference-azure-machine-learning-cli.md).
+* Az [Azure CLI](/cli/azure/install-azure-cli) és a [Machine learning CLI bővítmény](reference-azure-machine-learning-cli.md).
 
 * Egy betanított modell. A modellt a fejlesztői környezet egy vagy több fájljába kell megőrizni. <br><br>A betanított modell regisztrálásának bemutatásához a cikkben szereplő példa kód a [Paolo Ripamonti Twitter hangulat-elemzési projekt](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis)modelljeit használja.
 
@@ -61,7 +61,7 @@ az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
 > [!TIP]
 > `tags` `properties` A regisztrált modellhez a Hozzáadás és a szótár objektumok is megadhatók. Ezek az értékek később is használhatók egy adott modell azonosításához. Például a használt keretrendszer, a betanítási paraméterek stb.
 
-További információ: az [ml Model Register](/cli/azure/ext/azure-cli-ml/ml/model?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-register) Reference.
+További információ: az [ml Model Register](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-register) Reference.
 
 
 A modell-regisztrációval kapcsolatos további információkért lásd: [gépi tanulási modellek kezelése, üzembe helyezése és figyelése](concept-model-management-and-deployment.md).
@@ -268,7 +268,7 @@ A modell parancssori felületről történő üzembe helyezéséhez használja a
 az ml model deploy -n myservice -m sentiment:1 --ic inferenceConfig.json --dc deploymentConfig.json
 ```
 
-További információ: az [ml Model Deploy](/cli/azure/ext/azure-cli-ml/ml/model?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) Reference.
+További információ: az [ml Model Deploy](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy) Reference.
 
 A telepítéssel kapcsolatos további információkért lásd a [modellek üzembe helyezésének módját és helyét](how-to-deploy-and-where.md)ismertető témakört.
 
@@ -293,7 +293,7 @@ print(response.json())
 
 Az üzembe helyezett szolgáltatás használatáról további információt az [ügyfél létrehozása](how-to-consume-web-service.md)című témakörben talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Azure Machine Learning modellek monitorozása a Application Insights](how-to-enable-app-insights.md)
 * [Adatok gyűjtése a termelési modellekhez](how-to-enable-data-collection.md)

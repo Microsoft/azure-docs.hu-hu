@@ -11,12 +11,12 @@ author: jpe316
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, devx-track-python, deploy
-ms.openlocfilehash: 9e43291325510f92f2e5fd6c07cdb9257fdede9d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 39c7d980bf9a90e5f72dfc9366d0ec44204b1ed2
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033068"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212790"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>ML modellek üzembe helyezése programozható Gate-tömbökben (FPGA) Azure Machine Learning 
 
@@ -31,7 +31,7 @@ A FPGA újrakonfigurálhatja különböző típusú gépi tanulási modellekhez.
 
 ![Azure Machine Learning FPGA összehasonlításának ábrája](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
 
-|Processzor| Rövidítés |Leírás|
+|Processzor| Rövidítés |Description|
 |---|:-------:|------|
 |Alkalmazásspecifikus integrált áramkörök|ASICs|Az egyéni áramkörök, például a Google tenser processzor-egységei (TPU) a lehető legnagyobb hatékonyságot biztosítják. Az igények változása miatt nem konfigurálhatók újra.|
 |Mező – programozható Gate-tömbök|FPGA-k|A FPGA, például az Azure-on elérhetők, az ASICs-hoz hasonló teljesítményt biztosítanak. Az új logika megvalósításához az idő múlásával rugalmasan és újrakonfigurálható is.|
@@ -68,7 +68,7 @@ Ebben a példában egy TensorFlow gráfot hoz létre a bemeneti rendszerkép el�
  
 - A hardveres gyorsítású modellek csomagja:  `pip install --upgrade azureml-accel-models[cpu]`    
     
-- Az [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
+- Az [Azure CLI](/cli/azure/install-azure-cli)
 
 - FPGA kvóta. Küldje el a [kvótára vonatkozó kérelmet](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2nac9-PZhBDnNSV2ITz0LNUN0U5S0hXRkNITk85QURTWk9ZUUFUWkkyTC4u), vagy futtassa ezt a CLI-parancsot a kvóta vizsgálatához: 
 

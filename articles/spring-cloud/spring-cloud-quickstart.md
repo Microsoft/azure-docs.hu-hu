@@ -8,12 +8,12 @@ ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 123be57566a31d9831bfd0172373d571be2bf294
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: c2121f429b928d58a2df7b4e4663341cf600da3e
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102035169"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214473"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Rövid útmutató: az első Azure Spring Cloud-alkalmazás üzembe helyezése
 
@@ -37,7 +37,7 @@ Az ebben a rövid útmutatóban használt alkalmazás kódja egy .NET Core web A
 
 * Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [.Net Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1). Az Azure Spring Cloud Service a .NET Core 3,1-as és újabb verzióit támogatja.
-* Az [Azure CLI verziója 2.0.67 vagy újabb verzió](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
+* Az [Azure CLI verziója 2.0.67 vagy újabb verzió](/cli/azure/install-azure-cli).
 * [Git](https://git-scm.com/).
 
 ## <a name="install-azure-cli-extension"></a>Az Azure CLI-bővítmény telepítése
@@ -338,9 +338,9 @@ Ez a rövid útmutató a következőket ismerteti:
 
 Az oktatóanyag elvégzéséhez:
 
-* [A JDK 8 telepítése](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
+* [A JDK 8 telepítése](/java/azure/jdk/)
 * [Feliratkozás Azure-előfizetésre](https://azure.microsoft.com/free/)
-* Választható [Telepítse az Azure CLI 2.0.67 vagy újabb verzióját](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) , és az Azure Spring Cloud bővítményt a paranccsal: `az extension add --name spring-cloud`
+* Választható [Telepítse az Azure CLI 2.0.67 vagy újabb verzióját](/cli/azure/install-azure-cli) , és az Azure Spring Cloud bővítményt a paranccsal: `az extension add --name spring-cloud`
 * Választható [A Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) és a [Bejelentkezés](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in) telepítése
 
 ## <a name="generate-a-spring-cloud-project"></a>Spring Cloud-projekt létrehozása

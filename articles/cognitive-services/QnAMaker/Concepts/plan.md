@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: bf5582016f74e67926c38111a3d8d2f468f3ac79
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: e20679c3999f7ece1f6d3ed47a241cfd9dab9236
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987984"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214745"
 ---
 # <a name="plan-your-qna-maker-app"></a>A QnA Maker alkalmazás megtervezése
 
@@ -177,7 +177,7 @@ A pontszám több tényező alapján is változhat:
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
 
-Alkalmazza a [legújabb futtatókörnyezeti frissítéseket](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) a szolgáltatás frissítéseinek automatikus kezelésére.
+Alkalmazza a [legújabb futtatókörnyezeti frissítéseket](../how-to/configure-QnA-Maker-resources.md#get-the-latest-runtime-updates) a szolgáltatás frissítéseinek automatikus kezelésére.
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
 
@@ -187,7 +187,7 @@ QnA Maker felügyelt (előzetes verzió) esetén a futtatókörnyezetet maga a Q
 
 ### <a name="scaling-throughput-and-resiliency"></a>Skálázás, átviteli sebesség és rugalmasság
 
-A skálázást, az átviteli sebességet és a rugalmasságot az [Azure-erőforrások](../how-to/set-up-qnamaker-service-azure.md), a díjszabási szintek, valamint a környező architektúrák, például a [Traffic Manager](../how-to/set-up-qnamaker-service-azure.md#business-continuity-with-traffic-manager)határozzák meg.
+A skálázást, az átviteli sebességet és a rugalmasságot az [Azure-erőforrások](../how-to/set-up-qnamaker-service-azure.md), a díjszabási szintek, valamint a környező architektúrák, például a [Traffic Manager](../how-to/configure-QnA-Maker-resources.md#business-continuity-with-traffic-manager)határozzák meg.
 
 ### <a name="analytics-with-application-insights"></a>Analitika Application Insights
 

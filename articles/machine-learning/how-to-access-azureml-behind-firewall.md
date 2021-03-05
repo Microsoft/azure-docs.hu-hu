@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 0fcea6a44f5379ff3da5b348ae45486be6c2516a
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 295228e9eaa3529b05055869bd46f9aefc938a6f
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831314"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212773"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Munkaterület használata tűzfal mögött Azure Machine Learning
 
@@ -41,7 +41,7 @@ A Batch szolgáltatás és a Azure Machine Learning szolgáltatás IP-címeinek 
 
 * Töltse le az [Azure IP-címtartományok és a szolgáltatás címkéit](https://www.microsoft.com/download/details.aspx?id=56519) , és keresse meg a és a fájlt `BatchNodeManagement.<region>` `AzureMachineLearning.<region>` , ahol `<region>` az az Azure-régió.
 
-* Az adatok letöltéséhez használja az [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) -t. Az alábbi példa letölti az IP-cím adatait, és kiszűri az USA 2. keleti régiójában (elsődleges) és az USA középső régiójában (másodlagos) található adatokat:
+* Az adatok letöltéséhez használja az [Azure CLI](/cli/azure/install-azure-cli) -t. Az alábbi példa letölti az IP-cím adatait, és kiszűri az USA 2. keleti régiójában (elsődleges) és az USA középső régiójában (másodlagos) található adatokat:
 
     ```azurecli-interactive
     az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"

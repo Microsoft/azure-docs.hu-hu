@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 8d10562c1499b9e6e8f287029173e1728abb75a0
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 7e02bfb295460797edf46eac57afa628cd1544be
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034098"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212926"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-spring-cloud-app"></a>Oktatóanyag: felügyelt identitás használata a Key Vault Azure Spring Cloud-alkalmazáshoz való összekapcsolásához
 
@@ -25,18 +25,18 @@ Azure Key Vault a tokenekhez, jelszavakhoz, tanúsítványokhoz, API-kulcsokhoz 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Feliratkozás Azure-előfizetésre](https://azure.microsoft.com/free/)
-* [Az Azure CLI 2.0.67 vagy újabb verziójának telepítése](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
+* [Az Azure CLI 2.0.67 vagy újabb verziójának telepítése](/cli/azure/install-azure-cli)
 * [A Maven 3,0-es vagy újabb verziójának telepítése](https://maven.apache.org/download.cgi)
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
-Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy erőforráscsoportot, amely a Key Vault és a Spring Cloud karaktert is tartalmazza az az [Group Create](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-create): paranccsal.
+Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy erőforráscsoportot, amely a Key Vault és a Spring Cloud karaktert is tartalmazza az az [Group Create](/cli/azure/group#az-group-create): paranccsal.
 
 ```azurecli-interactive
 az group create --name "myResourceGroup" -l "EastUS"
 ```
 
 ## <a name="set-up-your-key-vault"></a>A Key Vault beállítása
-Key Vault létrehozásához használja a parancsot az a Key [Vault Create](/cli/azure/keyvault?view=azure-cli-latest&preserve-view=true#az-keyvault-create):
+Key Vault létrehozásához használja a parancsot az a Key [Vault Create](/cli/azure/keyvault#az-keyvault-create):
 
 > [!Important]
 > Minden Key Vault egyedi névvel kell rendelkeznie. A következő példákban cserélje le <a-kulcstartó-Name> a Key Vault nevére.
@@ -47,7 +47,7 @@ az keyvault create --name "<your-keyvault-name>" -g "myResourceGroup"
 
 Jegyezze fel a visszaadott értéket `vaultUri` , amely a "https://<Your-kulcstartó-name>. Vault.Azure.net" formátumban jelenik meg. Ezt a következő lépésben fogjuk használni.
 
-Most már elhelyezheti a titkos kulcsot a Key Vault a parancs az kulcstartó [Secret set](/cli/azure/keyvault/secret?view=azure-cli-latest&preserve-view=true#az-keyvault-secret-set):
+Most már elhelyezheti a titkos kulcsot a Key Vault a parancs az kulcstartó [Secret set](/cli/azure/keyvault/secret#az-keyvault-secret-set):
 
 ```azurecli-interactive
 az keyvault secret set --vault-name "<your-keyvault-name>" \
@@ -169,7 +169,7 @@ Ez az alkalmazás hozzáférhet a Azure Key Vault titkainak beszerzéséhez. Has
 
 ## <a name="build-sample-spring-boot-app-with-java-sdk"></a>Minta tavaszi rendszerindítási alkalmazás létrehozása Java SDK-val
 
-Ez a minta beállíthatók és beszerezhetik a titkokat Azure Key Vaultból. A Java-hoz készült [Azure Key Vault titkos ügyféloldali kódtár](/java/api/overview/azure/security-keyvault-secrets-readme?preserve-view=true&view=azure-java-stablelibrary) Azure Active Directory jogkivonat-hitelesítési támogatást biztosít az Azure SDK-ban. Olyan **TokenCredential** -implementációkat biztosít, amelyek segítségével az Azure SDK-ügyfelek az HRE-tokenek hitelesítésének támogatásához használhatók.
+Ez a minta beállíthatók és beszerezhetik a titkokat Azure Key Vaultból. A Java-hoz készült [Azure Key Vault titkos ügyféloldali kódtár](/java/api/overview/azure/security-keyvault-secrets-readme) Azure Active Directory jogkivonat-hitelesítési támogatást biztosít az Azure SDK-ban. Olyan **TokenCredential** -implementációkat biztosít, amelyek segítségével az Azure SDK-ügyfelek az HRE-tokenek hitelesítésének támogatásához használhatók.
 
 A Azure Key Vault titkos ügyféloldali kódtár lehetővé teszi a tokenekhez, jelszavakhoz, API-kulcsokhoz és egyéb titkokhoz való hozzáférés biztonságos tárolását és szabályozását. A függvénytár a titkok és a hozzájuk tartozó verziók létrehozására, lekérésére, frissítésére, törlésére, törlésére, biztonsági mentésére, visszatöltésére és listázására szolgáló műveleteket biztosít.
 
@@ -193,7 +193,7 @@ A Azure Key Vault titkos ügyféloldali kódtár lehetővé teszi a tokenekhez, 
     azure.keyvault.uri=https://<your-keyvault-name>.vault.azure.net
     ```
 
-3. Vegyen fel [ManagedIdentityCredentialBuilder](/java/api/com.azure.identity.managedidentitycredentialbuilder?preserve-view=true&view=azure-java-stable) , hogy Azure Active Directory és [SecretClientBuilder](/java/api/com.azure.security.keyvault.secrets.secretclientbuilder?preserve-view=true&view=azure-java-stable) jogkivonatot szerezzen be, vagy beolvassa a titkokat a kódban Key Vault.
+3. Vegyen fel [ManagedIdentityCredentialBuilder](/java/api/com.azure.identity.managedidentitycredentialbuilder) , hogy Azure Active Directory és [SecretClientBuilder](/java/api/com.azure.security.keyvault.secrets.secretclientbuilder) jogkivonatot szerezzen be, vagy beolvassa a titkokat a kódban Key Vault.
 
     Szerezze be a példát a klónozott minta projekt [MainController. Java](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/blob/master/managed-identity-keyvault/src/main/java/com/microsoft/azure/MainController.java#L28) -ból.
 

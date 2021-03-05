@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: cli,portal, devx-track-azurecli
-ms.openlocfilehash: 07088ebfa5fde4c3c790bd554c1eba8d6844b7d1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f16cc83257dbf6419fc794f34e4cd6df033d3f8b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736075"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213963"
 ---
 # <a name="find-your-azure-subscription"></a>Saját Azure-előfizetés megkeresése
 
@@ -31,7 +31,7 @@ ms.locfileid: "92736075"
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Az Azure-szolgáltatások fejléc alatt válassza az előfizetések lehetőséget. (Ha nincsenek felsorolva előfizetések, lehetséges, hogy váltania kell az Azure AD-bérlőket.) Az előfizetési azonosítók a második oszlopban szerepelnek.
 1. Másolja az előfizetés-azonosítót, és illessze be azt egy tetszés szerinti szöveges dokumentumba, amelyet később használhat.
 
@@ -47,7 +47,7 @@ ms.locfileid: "92736075"
 
 ### <a name="see-also"></a>Lásd még
 
-* [Azure CLI](/cli/azure/ams?view=azure-cli-latest)
+* [Azure CLI](/cli/azure/ams)
 
 ---
 

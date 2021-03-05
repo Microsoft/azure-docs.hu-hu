@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.topic: conceptual
 ms.custom: how-to, racking-python, devx-track-azurecli
-ms.openlocfilehash: 901e4d458cc2d77d4e7f13c1782b86c8532ca499
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 88408c4d1c1936d364029f73d9e7b2be0bcf9d84
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327168"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213113"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Gépi tanulási modell üzembe helyezése Azure Functions (előzetes verzió)
 
@@ -31,7 +31,7 @@ A Azure Machine Learning segítségével Docker-rendszerképeket hozhat létre a
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy Azure Machine Learning-munkaterület. További információt a [Munkaterület létrehozása](how-to-manage-workspace.md) című cikkben talál.
-* Az [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)-vel.
+* Az [Azure CLI](/cli/azure/install-azure-cli)-vel.
 * A munkaterületen regisztrált, betanított gépi tanulási modell. Ha nem rendelkezik modellel, használja a [képbesorolási oktatóanyagot: a betanítási modell](tutorial-train-models-with-aml.md) betanítása és regisztrálása.
 
     > [!IMPORTANT]
@@ -295,7 +295,7 @@ Miután betöltötte a rendszerképet, és az alkalmazás elérhetővé válik, 
 
 A blob-eseményindítók használatával kapcsolatos további információkért tekintse meg az [Azure Blob Storage által aktivált függvények létrehozását](../azure-functions/functions-create-storage-blob-triggered-function.md) ismertető cikket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan konfigurálhatja a functions alkalmazást a [functions](../azure-functions/functions-create-function-linux-custom-image.md) dokumentációjában.
 * További információ a blob Storage eseményindítók [Azure Blob Storage-kötésekről](../azure-functions/functions-bindings-storage-blob.md).

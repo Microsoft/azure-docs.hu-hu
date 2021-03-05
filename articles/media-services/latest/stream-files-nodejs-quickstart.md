@@ -11,12 +11,12 @@ ms.workload: media
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 566a7a978a08bf7e37b6c4ab8b0609222b34e549
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b7efa37747e6d116b4cf26b4cf54377037f22cdd
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724523"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212756"
 ---
 # <a name="how-to-encode-and-stream-video-files-with-nodejs"></a>Videofájlok kódolása és továbbítása Node.JS
 
@@ -128,15 +128,15 @@ az group delete --name amsResourceGroup
 
 ## <a name="more-developer-documentation-for-nodejs-on-azure"></a>További fejlesztői dokumentáció az Azure-beli Node.js
 
-- [Azure for JavaScript & Node.js fejlesztők számára](https://docs.microsoft.com/azure/developer/javascript/?view=azure-node-latest)
+- [Azure for JavaScript & Node.js fejlesztők számára](/azure/developer/javascript/)
 - [Media Services forráskód a git hub-tárházban @azure/azure-sdk-for-js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/mediaservices/arm-mediaservices)
-- [Az Azure Package dokumentációja Node.js-fejlesztőknek](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest)
+- [Az Azure Package dokumentációja Node.js-fejlesztőknek](/javascript/api/overview/azure/)
 
 ## <a name="see-also"></a>Lásd még
 
 - [Feladattípus](/rest/api/media/jobs/get#joberrorcode)-hibakódok.
 - [NPM telepítése @azure/arm-mediaservices](https://www.npmjs.com/package/@azure/arm-mediaservices)
-- [Azure for JavaScript & Node.js fejlesztők számára](https://docs.microsoft.com/azure/developer/javascript/?view=azure-node-latest)
+- [Azure for JavaScript & Node.js fejlesztők számára](/azure/developer/javascript/)
 - [Forráskód Media Services a tárházban @azure/azure-sdk-for-js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/mediaservices/arm-mediaservices)
 
 ## <a name="next-steps"></a>Következő lépések

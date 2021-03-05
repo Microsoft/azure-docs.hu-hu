@@ -7,12 +7,12 @@ ms.date: 11/23/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperf-fy21q1
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 4e2e34d73bc3048c587d7c0505f4978dd638370a
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 2a789b4ca1261c79e8e6eb93a4ed44e7e8e9272e
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180275"
+ms.locfileid: "102214235"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Rövid útmutató: ASP.NET Core Webalkalmazás létrehozása az Azure-ban
 
@@ -31,10 +31,12 @@ Ha elkészült, Azure-beli <abbr title="Logikai tároló a kapcsolódó Azure-er
 
 <details>
 <summary>Már rendelkezik Visual Studio 2019-rel?</summary>
-  Ha már telepítette a Visual Studio 2019-et:
+Ha már telepítette a Visual Studio 2019-et:
 
-  - A frissítések keresése lehetőség **kiválasztásával** **telepítse a legújabb frissítéseket** a Visual Studióban  >  . A legújabb frissítések tartalmazzák a .NET 5,0 SDK-t.
-  - **A számítási feladat hozzáadásához válassza az** **eszközök**  >  **beolvasása eszközök és szolgáltatások** lehetőséget.
+<ul>
+<li>A frissítések keresése lehetőség <strong>kiválasztásával</strong> <strong>telepítse a legújabb frissítéseket</strong> a Visual Studióban &gt; <strong></strong>. A legújabb frissítések tartalmazzák a .NET 5,0 SDK-t.</li>
+<li><strong>A számítási feladat hozzáadásához válassza az</strong> <strong>eszközök</strong> &gt; <strong>beolvasása eszközök és szolgáltatások</strong>lehetőséget.</li>
+</ul>
 </details>
 
 <hr/> 
@@ -314,19 +316,19 @@ http://<app_name>.azurewebsites.net
 
 1. **Futtatás** `az webapp up` az újbóli üzembe helyezéshez:
 
-```azurecli
-az webapp up --os-type linux
-```
-
-<details>
-<summary>Mi <code>az webapp up</code> Ez az idő?</summary>
-Amikor először futtatta a parancsot, a projekt gyökeréből mentette az alkalmazás nevét, az erőforráscsoportot és a App Service tervet <i>.</i> Amikor újra futtatja a projekt gyökeréből, a a <i>. Azure/config fájlban</i>mentett értékeket használja, észleli, hogy a app Service-erőforrások már léteznek, és újra végrehajtja a zip-telepítést.
-</details>
-
+    ```azurecli
+    az webapp up --os-type linux
+    ```
+    
+    <details>
+    <summary>Mi <code>az webapp up</code> Ez az idő?</summary>
+    Amikor először futtatta a parancsot, a projekt gyökeréből mentette az alkalmazás nevét, az erőforráscsoportot és a App Service tervet <i>.</i> Amikor újra futtatja a projekt gyökeréből, a a <i>. Azure/config fájlban</i>mentett értékeket használja, észleli, hogy a app Service-erőforrások már léteznek, és újra végrehajtja a zip-telepítést.
+    </details>
+    
 1. Az üzembe helyezés befejezése után **kattintson a frissítés** elemre a korábban megnyitott böngészőablakban.
 
-![Az Azure-ban futó frissített mintaalkalmazás](media/quickstart-dotnetcore/dotnet-browse-azure-updated.png)
-
+    ![Az Azure-ban futó frissített mintaalkalmazás](media/quickstart-dotnetcore/dotnet-browse-azure-updated.png)
+    
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
 <hr/> 
@@ -341,8 +343,8 @@ Amikor először futtatta a parancsot, a projekt gyökeréből mentette az alkal
 
 1. Az Áttekintés oldalon olyan alapszintű felügyeleti feladatokat hajthat végre, mint a Tallózás, Leállítás, indítás, újraindítás és törlés. A bal oldali menü az alkalmazás konfigurálásához biztosít különböző oldalakat. 
 
-![Az App Service lap az Azure Portalon](media/quickstart-dotnetcore/portal-app-overview-up.png)
-
+    ![Az App Service lap az Azure Portalon](media/quickstart-dotnetcore/portal-app-overview-up.png)
+    
 <hr/> 
 
 ## <a name="9-clean-up-resources"></a>9. erőforrások törlése

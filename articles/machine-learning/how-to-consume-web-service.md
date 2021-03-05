@@ -11,14 +11,14 @@ ms.reviewer: larryfr
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: dddecb3dba6d707e16241731a25df3b3749be103
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: d23d6cb5a43de4ccf0d10287b8cf8f597797b893
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825410"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214983"
 ---
-# <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Webszolgáltatásként üzembe helyezett Azure Machine Learning-modell felhasználása
+# <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Azure Machine Learning-modell felhasználása webszolgáltatásként
 
 
 Ha egy Azure Machine Learning-modellt webszolgáltatásként helyez üzembe, létrejön egy REST API-végpont. Adatokat küldhet ennek a végpontnak, és megkaphatja a modell által visszaküldött előrejelzést. Ebből a dokumentumból megtudhatja, hogyan hozhat létre ügyfeleket a webszolgáltatáshoz a C#, a go, a Java és a Python használatával.
@@ -77,7 +77,7 @@ Ezen információk több módon is beolvashatók az üzembe helyezett webszolgá
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Ha ismeri a telepített szolgáltatás nevét, használja az az [ml Service show](/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) parancsot:
+Ha ismeri a telepített szolgáltatás nevét, használja az az [ml Service show](/cli/azure/ext/azure-cli-ml/ml/service#ext_azure_cli_ml_az_ml_service_show) parancsot:
 
 ```azurecli
 az ml service show -n <service-name>
@@ -677,8 +677,8 @@ A Power BI támogatja a Azure Machine Learning webszolgáltatások felhasználá
 
 Ha olyan webszolgáltatást szeretne előállítani, amelyet a Power BIban való használathoz támogat, a sémának támogatnia kell a Power BI számára szükséges formátumot. [Megtudhatja, hogyan hozhat létre Power bi által támogatott sémát](./how-to-deploy-advanced-entry-script.md#power-bi-compatible-endpoint).
 
-A webszolgáltatás az üzembe helyezése után a Power BI-adatfolyamokból használható. [Megtudhatja, hogyan használhat Azure Machine learning webszolgáltatást Power BIból](/power-bi/service-machine-learning-integration).
+A webszolgáltatás az üzembe helyezése után a Power BI-adatfolyamokból használható. [Ismerje meg, hogyan használható Azure Machine Learning webszolgáltatás a Power BI-ból](/power-bi/service-machine-learning-integration).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Python és a Deep learning modellek valós idejű pontozására szolgáló hivatkozási architektúra megtekintéséhez nyissa meg az [Azure Architecture centert](/azure/architecture/reference-architectures/ai/realtime-scoring-python).

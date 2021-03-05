@@ -10,7 +10,7 @@ MS. Service: Media-Services MS. munkaterhelés: MS. topic: oktatóanyag MS. Cust
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 > [!NOTE]
-> Bár ez az oktatóanyag [.net SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) -példákat használ, az általános lépések megegyeznek [a REST API](/rest/api/media/liveevents), a [CLI](/cli/azure/ams/live-event?view=azure-cli-latest)vagy más támogatott [SDK](media-services-apis-overview.md#sdks)-k esetében.
+> Bár ez az oktatóanyag [.net SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) -példákat használ, az általános lépések megegyeznek [a REST API](/rest/api/media/liveevents), a [CLI](/cli/azure/ams/live-event)vagy más támogatott [SDK](media-services-apis-overview.md#sdks)-k esetében.
 
 Azure Media Services lehetővé teszi, hogy a médiafájlokat a különböző böngészőkön és eszközökön lejátszani kívánt formátumokba kódolja. Például előfordulhat, hogy az Apple HLS vagy MPEG DASH formátumában szeretné streamelni a tartalmakat. A streamelés előtt érdemes kódolni a jó minőségű digitális médiafájlokat. A kódolással kapcsolatos segítségért lásd a [kódolási koncepciót](encoding-concept.md). Ez az oktatóanyag feltölt egy helyi videofájlt, és kódolja a feltöltött fájlt. Egy HTTPS URL-címen keresztül elérhetővé tehető tartalmat is kódolhat. További információ: [Feladatbemenet létrehozása HTTP(s) URL-címből](job-input-from-http-how-to.md).
 

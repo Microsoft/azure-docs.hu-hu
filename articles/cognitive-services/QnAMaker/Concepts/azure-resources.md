@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: f5a248b8701c71b2dcf0415c6656b9b565535232
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 2427fbdaa497ccb6d9a46330dcc6eb872e1d28ac
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096548"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214167"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Azure-erőforrások a QnA Makerhoz
 
@@ -126,7 +126,7 @@ QnA Maker felügyelt egy ingyenes szolgáltatás, és az átviteli sebesség jel
 |[Frissítés](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service) App Service SKU-t, és Cognitive Searchi szintet, és [hozzon létre Cognitive Search replikákat](../../../search/search-capacity-planning.md)|A Tudásbázisnak több kérést kell kiszolgálnia az ügyfélalkalmazástól, például egy csevegési robottól.|
 |[Frissítés](../How-to/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service) Azure Cognitive Search szolgáltatás|Számos tudásbázist tervez.|
 
-Szerezze be a legújabb futtatókörnyezeti frissítéseket a [app Service frissítésével a Azure Portal](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates).
+Szerezze be a legújabb futtatókörnyezeti frissítéseket a [app Service frissítésével a Azure Portal](../how-to/configure-QnA-Maker-resources.md#get-the-latest-runtime-updates).
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
 
@@ -307,7 +307,7 @@ A QnA Maker erőforrásban létrehozott első Tudásbázis a Cognitive Search er
 
 Ha létrehoz egy QnA szolgáltatást és annak függőségeit (például a keresést) a portálon keresztül, akkor létrejön egy keresési szolgáltatás, amely a QnA Maker szolgáltatáshoz van csatolva. Az erőforrások létrehozása után frissítheti az App Service beállítást egy korábban meglévő keresési szolgáltatás használatára, és eltávolíthatja az imént létrehozott szolgáltatást.
 
-Megtudhatja, [hogyan konfigurálhatja](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource) a QnA Makert úgy, hogy az QnA Maker erőforrás-létrehozási folyamat részeként létrehozott egy másik kognitív szolgáltatási erőforrást használjon.
+Megtudhatja, [hogyan konfigurálhatja](../How-To/configure-QnA-Maker-resources.md#configure-qna-maker-to-use-different-cognitive-search-resource) a QnA Makert úgy, hogy az QnA Maker erőforrás-létrehozási folyamat részeként létrehozott egy másik kognitív szolgáltatási erőforrást használjon.
 
 ### <a name="app-service-and-app-service-plan"></a>App Service-és app Service-csomag
 

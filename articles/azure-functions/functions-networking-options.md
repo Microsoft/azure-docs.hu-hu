@@ -5,12 +5,12 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 1/21/2021
 ms.author: cachai
-ms.openlocfilehash: ceef827f7406f8915d205349372a43626c917e4b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f826c947b1e47c1c996a8e9102492e85adafa326
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101729232"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215153"
 ---
 # <a name="azure-functions-networking-options"></a>Az Azure Functions hálózatkezelési lehetőségei
 
@@ -87,7 +87,7 @@ További információ: [Virtual Network szolgáltatás-végpontok](../virtual-ne
 
 ## <a name="restrict-your-storage-account-to-a-virtual-network"></a>A Storage-fiók korlátozása virtuális hálózatra 
 
-Egy Function-alkalmazás létrehozásakor létre kell hoznia egy általános célú Azure Storage-fiókot, amely támogatja a blobot, a várólistát és a Table Storage-t.  Ezt a Storage-fiókot lecserélheti egy, a szolgáltatási végpontokkal vagy privát végponttal védett tárolóval.  Ez a funkció jelenleg csak a standard és a prémium szintű összes támogatott SKU-vnet működik, kivéve a Flex-bélyegzőket, ahol a vnet csak a prémium SKU esetében érhető el. Egy privát hálózatra korlátozódó Storage-fiókkal rendelkező függvény beállítása:
+Egy Function-alkalmazás létrehozásakor létre kell hoznia egy általános célú Azure Storage-fiókot, amely támogatja a blobot, a várólistát és a Table Storage-t. Ezt a Storage-fiókot lecserélheti egy, a szolgáltatási végpontokkal vagy privát végponttal védett tárolóval. Ez a funkció jelenleg az összes olyan virtuális hálózat támogatott SKU-jának része, amely standard és prémium szintű, kivéve azokat a Flex-bélyegeket, amelyekben a virtuális hálózatok csak prémium SKU-hoz érhetők el. Egy privát hálózatra korlátozódó Storage-fiókkal rendelkező függvény beállítása:
 
 1. Hozzon létre egy olyan függvényt, amely nem rendelkezik engedélyezett szolgáltatási végpontokkal.
 1. Konfigurálja a függvényt a virtuális hálózathoz való kapcsolódáshoz.
@@ -96,7 +96,7 @@ Egy Function-alkalmazás létrehozásakor létre kell hoznia egy általános cé
 1. Engedélyezze a szolgáltatási végpontokat vagy a magánhálózati végpontot a Storage-fiókhoz.  
     * Privát végponti kapcsolatok használata esetén a Storage-fióknak szüksége lesz egy privát végpontra a `file` és az `blob` alerőforrásokhoz.  Ha bizonyos képességeket (például Durable Functions) használ, `queue` `table` egy privát végponti kapcsolaton keresztül is szüksége lesz rá, és elérhetővé válik.
     * Ha szolgáltatási végpontokat használ, engedélyezze a Function apps számára dedikált alhálózatot a Storage-fiókokhoz.
-1. Választható Másolja a fájl és a blob tartalmát a Function app Storage-fiókból a biztonságos Storage-fiókba és a fájlmegosztásba.
+1. Másolja a fájl és a blob tartalmát a Function app Storage-fiókból a biztonságos Storage-fiókba és a fájlmegosztásba.
 1. Másolja ki a Storage-fiókhoz tartozó kapcsolatok karakterláncát.
 1. Frissítse az **alkalmazás beállításait** a Function alkalmazás **konfigurációjában** a következőre:
     - `AzureWebJobsStorage` a biztonságos Storage-fiókhoz tartozó kapcsolódási karakterláncra.

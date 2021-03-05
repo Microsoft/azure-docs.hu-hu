@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 489592fcbc779685728b120f18e5e923ee34d655
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: fcfc70f7bfb9e2bb1b1a0edbffdc1282056e5fa7
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96346375"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214048"
 ---
 # <a name="the-confidence-score-of-an-answer"></a>A válasz megbízhatósági pontszáma
 Ha egy Tudásbázisban egy felhasználói lekérdezés egyezik, a QnA Maker a megfelelő válaszokat adja vissza, és egy megbízhatósági pontszámmal együtt. Ez a pontszám azt jelzi, hogy a válasz a megfelelő egyezés az adott felhasználói lekérdezés esetében.
@@ -53,7 +53,7 @@ A küszöbérték kiválasztásakor tartsa szem előtt a pontosság és a lefede
 - Ha a **lefedettség** (vagy visszahívás) fontosabb, és a lehető legtöbb kérdésre szeretne választ adni, akkor is, ha csak részleges kapcsolatban áll a felhasználó kérdésével – akkor csökkentse a küszöbértéket. Ez azt jelenti, hogy több eset is lehetséges, ha a válasz nem válaszol a felhasználó tényleges lekérdezésére, de más, némileg kapcsolódó választ ad. *Például:* ha a **30**. küszöbértéket adja meg, választ kaphat a lekérdezésekre, például "hol szerkeszthetem a kb-ot?"
 
 > [!NOTE]
-> A QnA Maker újabb verziói között szerepelnek a pontozási logikával kapcsolatos tökéletesítések, és befolyásolhatják a küszöbértéket. Minden alkalommal, amikor frissíti a szolgáltatást, győződjön meg arról, hogy szükség esetén tesztelje és csípése a küszöbértéket. [Itt](https://www.qnamaker.ai/UserSettings)megtekintheti a QnA szolgáltatás verzióját, és megtudhatja, hogyan kérheti le a [legújabb frissítéseket.](../How-To/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)
+> A QnA Maker újabb verziói között szerepelnek a pontozási logikával kapcsolatos tökéletesítések, és befolyásolhatják a küszöbértéket. Minden alkalommal, amikor frissíti a szolgáltatást, győződjön meg arról, hogy szükség esetén tesztelje és csípése a küszöbértéket. [Itt](https://www.qnamaker.ai/UserSettings)megtekintheti a QnA szolgáltatás verzióját, és megtudhatja, hogyan kérheti le a [legújabb frissítéseket.](../How-To/configure-QnA-Maker-resources.md#get-the-latest-runtime-updates)
 
 ## <a name="set-threshold"></a>Küszöbérték megadása
 
@@ -86,6 +86,6 @@ Ha a Tudásbázis különböző régiókban található, az egyes régiók sajá
 ## <a name="no-match-found"></a>Nem található egyezés
 Ha a rangsor nem találja a megfelelő egyezést, a rendszer visszaadja a 0,0-as vagy a "None" megbízhatósági pontszámot, és az alapértelmezett Válasz: "nem található megfelelő találat a KB-ban". Ezt az [alapértelmezett választ](../How-To/metadata-generateanswer-usage.md) felül lehet bírálni a végpontot meghívó robot vagy alkalmazás kódjában. Másik lehetőségként beállíthatja a felülbírálási választ is az Azure-ban, és ez megváltoztatja az alapértelmezett értéket az adott QnA Maker szolgáltatásban telepített összes Tudásbázis esetében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Ajánlott eljárások](./best-practices.md)

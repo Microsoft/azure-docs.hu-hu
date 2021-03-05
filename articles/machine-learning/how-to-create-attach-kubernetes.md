@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: 97042479419cbc9d634a06e2dcbcccf9c8fde62b
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: a4536f0dd40e1d0ee3a5ca75db9b111dcfa0ad6f
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99560469"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214898"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service-fürt létrehozása és csatolása
 
@@ -93,7 +93,7 @@ Meglévő AK-fürt **csatolásakor** az összes jelenleg támogatott AK-verziót
 
 ### <a name="available-and-default-versions"></a>Elérhető és alapértelmezett verziók
 
-Az elérhető és az alapértelmezett AK-verziók megkereséséhez használja az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) -parancsot az [AK Get-Versions](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_get_versions)paranccsal. A következő parancs például az USA nyugati régiójában elérhető verziókat adja vissza:
+Az elérhető és az alapértelmezett AK-verziók megkereséséhez használja az [Azure CLI](/cli/azure/install-azure-cli) -parancsot az [AK Get-Versions](/cli/azure/aks#az_aks_get_versions)paranccsal. A következő parancs például az USA nyugati régiójában elérhető verziókat adja vissza:
 
 ```azurecli-interactive
 az aks get-versions -l westus -o table
@@ -198,7 +198,7 @@ Az ebben a példában használt osztályokkal, metódusokkal és paraméterekkel
 az ml computetarget create aks -n myaks
 ```
 
-További információ: az [ml computetarget Create AK](/cli/azure/ext/azure-cli-ml/ml/computetarget/create?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-aks) Reference.
+További információ: az [ml computetarget Create AK](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-aks) Reference.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -223,8 +223,8 @@ Ha már rendelkezik AK-fürttel az Azure-előfizetésében, használhatja azt a 
 
 A következő cikkekből megtudhatja, hogyan hozhat létre egy AK-fürtöt az Azure CLI vagy a portál használatával:
 
-* [AKS-fürt létrehozása (parancssori felület)](/cli/azure/aks?bc=%2fazure%2fbread%2ftoc.json&preserve-view=true&toc=%2fazure%2faks%2fTOC.json&view=azure-cli-latest#az-aks-create)
-* [AK-fürt létrehozása (portál)](../aks/kubernetes-walkthrough-portal.md?preserve-view=true&view=azure-cli-latest)
+* [AKS-fürt létrehozása (parancssori felület)](/cli/azure/aks?bc=%2fazure%2fbread%2ftoc.json&toc=%2fazure%2faks%2fTOC.json#az-aks-create)
+* [AK-fürt létrehozása (portál)](../aks/kubernetes-walkthrough-portal.md)
 * [AK-fürt létrehozása (ARM-sablon az Azure Gyorsindítás sablonjain)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aks-azml-targetcompute)
 
 Az alábbi példa bemutatja, hogyan csatolhat egy meglévő AK-fürtöt a munkaterülethez:
@@ -275,7 +275,7 @@ Ha a meglévő fürtöt a munkaterülethez szeretné csatolni, használja a köv
 az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w myworkspace
 ```
 
-További információ: az [ml computetarget Attach AK](/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-attach-aks) -referenciája.
+További információ: az [ml computetarget Attach AK](/cli/azure/ext/azure-cli-ml/ml/computetarget/attach#ext-azure-cli-ml-az-ml-computetarget-attach-aks) -referenciája.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 

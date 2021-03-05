@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-java
-ms.openlocfilehash: fe452f61d17f0b2014957e3b458ef1ad1b3c539d
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: ca1fdbd9aa2c98358489d91fe0839c98adec293b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357629"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212705"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Oktatóanyag: Cassandra API-fiók létrehozása a Azure Cosmos DBban Java-alkalmazás használatával a kulcs/érték típusú adattároláshoz
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -34,7 +34,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a virtuális gép létrehozásának megkezdése előtt. 
 
-* Szerezze be a [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)legújabb verzióját. 
+* Szerezze be a [Java Development Kit (JDK)](/java/azure/jdk/)legújabb verzióját. 
 
 * [Töltse le](https://maven.apache.org/download.cgi) és [telepítse](https://maven.apache.org/install.html) a [Maven](https://maven.apache.org/) bináris archívumát. 
   - Ubuntu rendszeren futtathatja az `apt-get install maven` parancsot a Maven telepítéséhez. 
@@ -57,7 +57,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
    :::image type="content" source="./media/create-cassandra-api-account-java/create-account.png" alt-text="Fiók létrehozása a portál használatával":::
 
-4. Kattintson a **Létrehozás** gombra. <br/>A fiók létrehozása eltarthat néhány percig. Az erőforrás létrehozása után az **üzembe helyezés sikeres** értesítése látható a portál jobb oldalán.
+4. Válassza a **Létrehozás** lehetőséget. <br/>A fiók létrehozása eltarthat néhány percig. Az erőforrás létrehozása után az **üzembe helyezés sikeres** értesítése látható a portál jobb oldalán.
 
 ## <a name="get-the-connection-details-of-your-account"></a>A fiók kapcsolati adatainak lekérése  
 

@@ -9,14 +9,14 @@ ms.topic: reference
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
-ms.date: 1/12/2021
+ms.date: 3/5/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: a182ca3ba70b9faa1ba67fdb6c91a4eaf8e766ef
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 014140b9b9832bab3de4f71c0b5f164b564b3fe5
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691195"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212722"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL felügyelt példányának T-SQL-különbségei
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -252,7 +252,7 @@ Bizonyos fájltulajdonságok nem állíthatók be és nem módosíthatók:
 Alapértelmezés szerint a következő beállítások vannak beállítva, és nem módosíthatók:
 
 - `MULTI_USER`
-- `ENABLE_BROKER ON`
+- `ENABLE_BROKER`
 - `AUTO_CLOSE OFF`
 
 A következő beállítások nem módosíthatók:
@@ -471,6 +471,10 @@ A több példányban elérhető Service Broker nem támogatott:
 - `sys.routes`: Előfeltételként ki kell választania a-címeket a sys. Routes elemből. A címnek minden útvonalon HELYInek kell lennie. Lásd: [sys. Routes](/sql/relational-databases/system-catalog-views/sys-routes-transact-sql).
 - `CREATE ROUTE`: A (z `CREATE ROUTE` `ADDRESS` ) helyett nem használható `LOCAL` . Lásd: [útvonal létrehozása](/sql/t-sql/statements/create-route-transact-sql).
 - `ALTER ROUTE`: A (z `ALTER ROUTE` `ADDRESS` ) helyett nem használható `LOCAL` . Lásd: [útvonal módosítása](/sql/t-sql/statements/alter-route-transact-sql). 
+
+A Service Broker alapértelmezés szerint engedélyezve van, és nem tiltható le. A következő ALTER DATABASE lehetőségek nem támogatottak:
+- `ENABLE_BROKER`
+- `DISABLE_BROKER`
 
 ### <a name="stored-procedures-functions-and-triggers"></a>Tárolt eljárások, függvények és eseményindítók
 

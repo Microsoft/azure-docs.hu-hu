@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d47935f76347b2d5272b386942a85643a732e643
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d9fb9e0221ad6a5749899c89bbd9dc5631e7a91c
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831752"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213266"
 ---
 # <a name="quickstart-create-an-key-vault-managed-hsm-using-an-azure-resource-manager-template"></a>Gyors útmutató: Key Vault felügyelt HSM létrehozása Azure Resource Manager sablon használatával
 
@@ -43,7 +43,7 @@ Ha a parancssori felülettel szeretne bejelentkezni az Azure-ba, írja be a köv
 az login
 ```
 
-A parancssori felületről való bejelentkezéssel kapcsolatos további információkért lásd: [Bejelentkezés az Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true) használatával
+A parancssori felületről való bejelentkezéssel kapcsolatos további információkért lásd: [Bejelentkezés az Azure CLI](/cli/azure/authenticate-azure-cli) használatával
 
 ## <a name="create-a-manage-hsm"></a>Kezelő HSM létrehozása
 
@@ -55,13 +55,13 @@ A sablonban definiált Azure-erőforrás:
 
 [Itt](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault)több Azure Key Vault sablon is található.
 
-A sablonhoz a fiókhoz társított objektumazonosító szükséges. A kereséshez használja az Azure CLI az [ad User show](/cli/azure/ad/user?view=azure-cli-latest&preserve-view=true#az_ad_user_show) parancsot, és adja át az e-mail-címét a `--id` paraméternek. A kimenetet csak a (z) paraméterrel lehet az objektumazonosító alapján korlátozni `--query` .
+A sablonhoz a fiókhoz társított objektumazonosító szükséges. A kereséshez használja az Azure CLI az [ad User show](/cli/azure/ad/user#az_ad_user_show) parancsot, és adja át az e-mail-címét a `--id` paraméternek. A kimenetet csak a (z) paraméterrel lehet az objektumazonosító alapján korlátozni `--query` .
 
 ```azurecli-interactive
 az ad user show --id <your-email-address> --query "objectId"
 ```
 
-Szüksége lehet a bérlői AZONOSÍTÓra is. A kereséshez használja az Azure CLI az [ad User show](/cli/azure/account?view=azure-cli-latest&preserve-view=true#az_account_show) parancsot. A kimenetet csak a (z) paraméterrel lehet a bérlői AZONOSÍTÓra korlátozni `--query` .
+Szüksége lehet a bérlői AZONOSÍTÓra is. A kereséshez használja az Azure CLI az [ad User show](/cli/azure/account#az_account_show) parancsot. A kimenetet csak a (z) paraméterrel lehet a bérlői AZONOSÍTÓra korlátozni `--query` .
 
  ```azurecli-interactive
  az account show --query "tenantId"
@@ -82,7 +82,7 @@ Szüksége lehet a bérlői AZONOSÍTÓra is. A kereséshez használja az Azure 
     - **Bérlő azonosítója**: a sablon függvény automatikusan lekéri a bérlői azonosítót; Ne módosítsa az alapértelmezett értéket.  Ha nincs érték, adja meg az [Előfeltételekben](#prerequisites)lekért bérlői azonosítót.
     * **initialAdminObjectIds**: adja meg az [előfeltételekben](#prerequisites)lekért objektumazonosító-azonosítót.
 
-3. Válassza a **Vásárlás** lehetőséget. A Key Vault sikeres üzembe helyezését követően értesítést kap:
+3. Válassza a **Beszerzés** lehetőséget. A Key Vault sikeres üzembe helyezését követően értesítést kap:
 
 Az Azure Portalon helyezhető üzembe a sablon. A Azure Portalon kívül használhatja a Azure PowerShell, az Azure CLI és a REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../../azure-resource-manager/templates/deploy-powershell.md).
 

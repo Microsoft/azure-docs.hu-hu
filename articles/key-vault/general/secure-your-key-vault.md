@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: 552aad3e3b41bcfd55d1b57a53d8dff2080a6210
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.openlocfilehash: 94034edfa1a5c6ffccd022b4cbf7bae42cc0bae3
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100534702"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212467"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Biztonságos hozzáférés egy kulcstartóhoz
 
@@ -36,7 +36,7 @@ A rendszerbiztonsági tag egy olyan objektum, amely az Azure-erőforrásokhoz ho
 
 * A **csoport** rendszerbiztonsági tagja a Azure Active Directoryban létrehozott felhasználók készletét azonosítja. A csoportba tartozó összes szerepkör vagy engedély a csoport összes felhasználója számára elérhető.
 
-* Az **egyszerű szolgáltatásnév** olyan rendszerbiztonsági tag, amely egy alkalmazás vagy szolgáltatás identitását jelenti, azaz egy kódrészletet, amely nem felhasználó vagy csoport. Egy egyszerű szolgáltatásnév AZONOSÍTÓjának neve **ügyfél-azonosítóként** működik, és a neve, mint a felhasználóneve. A szolgáltatáshoz tartozó **ügyfél titka** vagy **tanúsítványa** úgy viselkedik, mint a jelszava. Számos Azure-szolgáltatás támogatja a [felügyelt identitások](../../active-directory/managed-identities-azure-resources/overview.md) hozzárendelését az **ügyfél-azonosító** és a **tanúsítvány** automatikus kezelésével. A felügyelt identitás a legbiztonságosabb és ajánlott megoldás az Azure-ban történő hitelesítéshez.
+* Az **egyszerű szolgáltatásnév** olyan rendszerbiztonsági tag, amely egy alkalmazás vagy szolgáltatás azonosítására szolgál, azaz egy kódrészletet, amely nem felhasználó vagy csoport. Egy egyszerű szolgáltatásnév AZONOSÍTÓjának neve **ügyfél-azonosítóként** működik, és a neve, mint a felhasználóneve. A szolgáltatáshoz tartozó **ügyfél titka** vagy **tanúsítványa** úgy viselkedik, mint a jelszava. Számos Azure-szolgáltatás támogatja a [felügyelt identitások](../../active-directory/managed-identities-azure-resources/overview.md) hozzárendelését az **ügyfél-azonosító** és a **tanúsítvány** automatikus kezelésével. A felügyelt identitás a legbiztonságosabb és ajánlott megoldás az Azure-ban történő hitelesítéshez.
 
 További információ a Key Vault hitelesítéséről: [hitelesítés Azure Key Vault](authentication.md)
 

@@ -16,12 +16,12 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
 ms.custom: devx-track-java
-ms.openlocfilehash: 57daf9170a7f97c6c141532dafe759cde9d1c77b
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 7a857b887b53ccb2288507742ca52d72d90ff548
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519064"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214354"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>E-mailek küldése a SendGrid a Java használatával Azure-beli üzemelő példányban
 Az alábbi példa bemutatja, hogyan küldhet e-maileket az Azure-ban üzemeltetett weblapokról a SendGrid használatával. Az eredményül kapott alkalmazás felszólítja a felhasználót az e-mail-értékekre, ahogy az alábbi képernyőképen is látható.
@@ -40,7 +40,7 @@ A jelen témakörben található kód használatához a következőket kell tenn
 
 Az e-mail elküldéséhez saját SendGrid-felhasználónevét és jelszavát is meg kell adnia. A SendGrid használatának megkezdéséhez tekintse meg az [e-mailek küldése a SendGrid használatával Java-ból](store-sendgrid-java-how-to-send-email.md)című témakört.
 
-Ezen kívül az [Azure-hoz készült „Helló világ!” alkalmazás alkalmazás létrehozása az Eclipse-ben](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app?view=azure-java-stable), illetve a Java-alkalmazások Azure-ban való üzemeltetésének egyéb módszereivel, ha nem az Eclipse-t használja, kifejezetten ajánlott.
+Ezen kívül az [Azure-hoz készült Hello World alkalmazás létrehozása az Eclipse-ben](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app), illetve a Java-alkalmazások Azure-ban való üzemeltetésének egyéb módszereivel, ha nem az Eclipse-t használja, kifejezetten ajánlott.
 
 ## <a name="create-a-web-form-for-sending-email"></a>Webes űrlap létrehozása e-mailek küldéséhez
 A következő kód bemutatja, hogyan hozhat létre webes űrlapot az e-mailek küldéséhez szükséges felhasználói adatok lekéréséhez. A tartalom szempontjából a JSP-fájl neve **emailform.jsp**.

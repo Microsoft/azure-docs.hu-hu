@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 03/30/2020
 ms.author: prtyag
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4a9b3d534e74ccd44dfaa35ec5bf3b65f50641c7
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e4b06cbcbef79e243116bddb33adbcf6476fac8a
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666646"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213368"
 ---
 # <a name="kdump-for-sap-hana-on-azure-large-instances-hli"></a>SAP HANA on Azure Large Instances Kdump (HLI)
 
@@ -67,7 +67,7 @@ Ez a dokumentum ismerteti a Kdump szolgáltatás Azure HANA nagyméretű példá
 
 ## <a name="setup-details"></a>Telepítés részletei
 
-- A Kdump engedélyezéséhez szükséges parancsfájl [itt](https://github.com/Azure/sap-hana/blob/master/tools/enable-kdump.sh) található.
+- A Kdump engedélyezéséhez szükséges parancsfájl [itt](https://github.com/Azure/sap-hana-tools/blob/master/tools/enable-kdump.sh) található.
 > [!NOTE]
 > Ez a szkript a tesztkörnyezet beállításán alapul, és az ügyfélnek várhatóan kapcsolatba kell lépnie az operációs rendszer gyártójával a további hangolás érdekében.
 > Külön LUN-t kell kiépíteni az új és a meglévő kiszolgálók számára a memóriaképek és szkriptek mentéséhez, és gondoskodni fog arról, hogy a fájlrendszert a LUN-ban konfigurálja.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2021
 ms.author: inhenkel
-ms.openlocfilehash: 779a52b44a5dc4e81dc7910da12c5cfb91c1c3ca
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1f3be34c6488b977a0b03237025ba0f0ab1af7ec
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705381"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214456"
 ---
 # <a name="step-3---set-up-to-migrate-to-the-v3-rest-api-or-client-sdk"></a>3. lépés – áttelepítés beállítása a v3 REST API vagy az ügyféloldali SDK-ra
 
@@ -50,8 +50,8 @@ Kövesse a rövid útmutató lépéseit a [környezet beállításához](how-to-
 
 ## <a name="download-client-sdk-of-your-choice-and-set-up-your-environment"></a>Az Ön által választott ügyféloldali SDK letöltése és a környezet beállítása
 
-- A [.net](/dotnet/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-dotnet), a .net Core, a [Node.js](/javascript/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-node-latest), a [Python](/python/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-python), a [Java](/java/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-java-stable), a [Go](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/mediaservices/mgmt/2018-07-01/media)és a [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md)esetében elérhető SDK-k.
-- [Azure CLI](/cli/azure/ams?preserve-view=true&view=azure-cli-latest)   integráció az egyszerű parancsfájlok támogatásához.
+- A [.net](/dotnet/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-dotnet), a .net Core, a [Node.js](/javascript/api/overview/azure/mediaservices/management), a [Python](/python/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-python), a [Java](/java/api/overview/azure/mediaservices/management), a [Go](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/mediaservices/mgmt/2018-07-01/media)és a [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md)esetében elérhető SDK-k.
+- [Azure CLI](/cli/azure/ams)   integráció az egyszerű parancsfájlok támogatásához.
 
 > [!NOTE]
 > A közösségi PHP SDK már nem érhető el a (z) v3 Azure Media Serviceshoz. Ha a PHP-t használja a v2-ben, akkor közvetlenül a kódban kell áttérnie a REST APIra.

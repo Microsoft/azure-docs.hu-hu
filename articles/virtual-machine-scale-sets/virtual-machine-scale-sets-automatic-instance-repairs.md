@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 02/28/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: ae508754775d4eb622d8e91ef58eb0d6e1c45692
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 080666c9857c1a3dc509ca980bc85b1dc11b5975
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94889014"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214286"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Példányok automatikus javítása az Azure-beli virtuális gépek méretezési csoportjaiban
 
@@ -141,7 +141,7 @@ New-AzVmssConfig `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Az alábbi példa lehetővé teszi az automatikus javítási szabályzatot az új méretezési csoport létrehozásakor az *[az vmss Create](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create)* paranccsal. Először hozzon létre egy erőforráscsoportot, majd hozzon létre egy új méretezési csoportot, amely az automatikus javítási házirend türelmi időszaka 30 percre van beállítva.
+Az alábbi példa lehetővé teszi az automatikus javítási szabályzatot az új méretezési csoport létrehozásakor az *[az vmss Create](/cli/azure/vmss#az-vmss-create)* paranccsal. Először hozzon létre egy erőforráscsoportot, majd hozzon létre egy új méretezési csoportot, amely az automatikus javítási házirend türelmi időszaka 30 percre van beállítva.
 
 ```azurecli-interactive
 az group create --name <myResourceGroup> --location <VMSSLocation>
@@ -209,7 +209,7 @@ Update-AzVmss `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Az alábbi példa egy meglévő méretezési csoport automatikus példányának javítási szabályzatának frissítését szemlélteti az *[az vmss Update](/cli/azure/vmss?view=azure-cli-latest#az-vmss-update)* használatával.
+Az alábbi példa egy meglévő méretezési csoport automatikus példányának javítási szabályzatának frissítését szemlélteti az *[az vmss Update](/cli/azure/vmss#az-vmss-update)* használatával.
 
 ```azurecli-interactive
 az vmss update \  
@@ -259,7 +259,7 @@ Az automatikus javítás állapotának beállításához használja a *setOrches
 
 ### <a name="azure-cli"></a>Azure CLI 
 
-A [Get-instance-View](/cli/azure/vmss?view=azure-cli-latest#az-vmss-get-instance-view) parancsmag használatával megtekintheti az automatikus példányok javításának *serviceState* . 
+A [Get-instance-View](/cli/azure/vmss#az-vmss-get-instance-view) parancsmag használatával megtekintheti az automatikus példányok javításának *serviceState* . 
 
 ```azurecli-interactive
 az vmss get-instance-view \
@@ -267,7 +267,7 @@ az vmss get-instance-view \
     --resource-group MyResourceGroup
 ```
 
-A [set-vezényel-Service-State](/cli/azure/vmss?view=azure-cli-latest#az-vmss-set-orchestration-service-state) parancsmag használatával frissítse a *serviceState* az automatikus példányok javításához. Ha a méretezési csoport az automatikus javítási szolgáltatásban van, akkor ezzel a parancsmaggal felfüggesztheti vagy folytathatja a méretezési csoport automatikus javításait. 
+A [set-vezényel-Service-State](/cli/azure/vmss#az-vmss-set-orchestration-service-state) parancsmag használatával frissítse a *serviceState* az automatikus példányok javításához. Ha a méretezési csoport az automatikus javítási szolgáltatásban van, akkor ezzel a parancsmaggal felfüggesztheti vagy folytathatja a méretezési csoport automatikus javításait. 
 
 ```azurecli-interactive
 az vmss set-orchestration-service-state \

@@ -7,12 +7,12 @@ ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 10/30/2020
 keywords: Java, jakartaee, JavaEE, profil, Open-Liberty, WebSphere-Liberty, ARO, openshift, Red Hat
-ms.openlocfilehash: acb448a9662daa58b5d2ff42861e238e23586b33
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 08fd3ab112498a983b438d5ba1f1f100816cbf5d
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633886"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212994"
 ---
 # <a name="deploy-a-java-application-with-open-libertywebsphere-liberty-on-an-azure-red-hat-openshift-4-cluster"></a>Java-alkalmazás üzembe helyezése Open Liberty/WebSphere Liberty-vel egy Azure Red Hat OpenShift 4 fürtön
 
@@ -31,7 +31,7 @@ Az útmutató lépéseinek végrehajtásához hajtsa végre az alábbi előfelt�
 1. Telepítsen Java SE-implementációt (például [AdoptOpenJDK OpenJDK 8 LTS/OpenJ9](https://adoptopenjdk.net/?variant=openjdk8&jvmVariant=openj9)).
 1. Telepítse a [Maven](https://maven.apache.org/download.cgi) 3.5.0 vagy újabb verzióját.
 1. Telepítse a [Docker](https://docs.docker.com/get-docker/) -t az operációs rendszeréhez.
-1. Telepítse az [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) -2.0.75 vagy újabb verzióját.
+1. Telepítse az [Azure CLI](/cli/azure/install-azure-cli) -2.0.75 vagy újabb verzióját.
 1. Ellenőrizze és telepítse, [`envsubst`](https://command-not-found.com/envsubst) Ha nem az operációs rendszer előre telepítve van.
 1. A minta kódjának klónozása a helyi rendszeren. A minta a [githubon](https://github.com/Azure-Samples/open-liberty-on-aro)található.
 1. Kövesse az [Azure Red Hat OpenShift 4-fürt létrehozása](./tutorial-create-cluster.md)című témakör utasításait.
@@ -40,7 +40,7 @@ Az útmutató lépéseinek végrehajtásához hajtsa végre az alábbi előfelt�
 
    Ha memória-igényű alkalmazásokat szeretne futtatni a fürtön, a paraméter használatával adja meg a munkavégző csomópontok megfelelő virtuálisgép-méretét `--worker-vm-size` . Például `Standard_E4s_v3` a virtuális gép minimális mérete, hogy a Elasticsearch-kezelőt egy fürtön telepítse. További információkért lásd:
 
-   * [Azure CLI fürt létrehozásához](/cli/azure/aro?preserve-view=true&view=azure-cli-latest#az-aro-create)
+   * [Azure CLI fürt létrehozásához](/cli/azure/aro#az-aro-create)
    * [A virtuális gépek támogatott méretei a memória optimalizálása esetén](./support-policies-v4.md#memory-optimized)
    * [A Elasticsearch operátor telepítésének előfeltételei](https://docs.openshift.com/container-platform/4.3/logging/cluster-logging-deploying.html#cluster-logging-deploy-eo-cli_cluster-logging-deploying)
 
