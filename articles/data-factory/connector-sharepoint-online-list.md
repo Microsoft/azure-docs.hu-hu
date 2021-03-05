@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 3f05c90ba3c7e6b47009cbb597c56dac8a01427a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f8074b69b97a6ef96837e73a1082d2deb67084d9
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393428"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177861"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Adatok másolása a SharePoint Online-listáról Azure Data Factory használatával
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -76,12 +76,12 @@ A SharePoint Online-listák társított szolgáltatásai a következő tulajdons
 
 | **Tulajdonság**        | **Leírás**                                              | **Kötelező** |
 | ------------------- | ------------------------------------------------------------ | ------------ |
-| típus                | A Type tulajdonságot a következőre kell beállítani: **SharePointOnlineList**.  | Yes          |
-| siteUrl             | A SharePoint Online-webhely URL-címe, például: `https://contoso.sharepoint.com/sites/siteName` . | Yes          |
-| servicePrincipalId  | A Azure Active Directoryban regisztrált alkalmazás alkalmazás-(ügyfél-) azonosítója. | Yes          |
-| servicePrincipalKey | Az alkalmazás kulcsa. Megjelöli ezt a mezőt **SecureString** , hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Yes          |
-| tenantId            | A bérlő azonosítója, amely alatt az alkalmazás található.          | Yes          |
-| Connectvia tulajdonsággal          | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További információ az [Előfeltételek](#prerequisites)közül, a cikk korábbi részében. Ha nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime használja. | No           |
+| típus                | A Type tulajdonságot a következőre kell beállítani: **SharePointOnlineList**.  | Igen          |
+| siteUrl             | A SharePoint Online-webhely URL-címe, például: `https://contoso.sharepoint.com/sites/siteName` . | Igen          |
+| servicePrincipalId  | A Azure Active Directoryban regisztrált alkalmazás alkalmazás-(ügyfél-) azonosítója. | Igen          |
+| servicePrincipalKey | Az alkalmazás kulcsa. Megjelöli ezt a mezőt **SecureString** , hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen          |
+| tenantId            | A bérlő azonosítója, amely alatt az alkalmazás található.          | Igen          |
+| Connectvia tulajdonsággal          | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További információ az [Előfeltételek](#prerequisites)közül, a cikk korábbi részében. Ha nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime használja. | Nem           |
 
 **Példa**
 
@@ -109,8 +109,8 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet **Type** tulajdonságát **SharePointOnlineLResource** értékre kell állítani. | Yes |
-| listName | A SharePoint Online-lista neve. | Yes |
+| típus | Az adatkészlet **Type** tulajdonságát **SharePointOnlineLResource** értékre kell állítani. | Igen |
+| listName | A SharePoint Online-lista neve. | Igen |
 
 **Példa**
 
@@ -142,9 +142,9 @@ Az adatok SharePoint Online-listáról történő másolásához a másolási te
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának **Type** tulajdonságát **SharePointOnlineListSource** értékre kell állítani. | Yes |
-| lekérdezés | Egyéni OData-lekérdezési beállítások az adatszűréshez. Példa: `"$top=10&$select=Title,Number"`. | No |
-| httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időtúllépése (másodpercben). Az alapértelmezett érték 300 (5 perc). | No |
+| típus | A másolási tevékenység forrásának **Type** tulajdonságát **SharePointOnlineListSource** értékre kell állítani. | Igen |
+| lekérdezés | Egyéni OData-lekérdezési beállítások az adatszűréshez. Példa: `"$top=10&$select=Title,Number"`. | Nem |
+| httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időtúllépése (másodpercben). Az alapértelmezett érték 300 (5 perc). | Nem |
 
 **Példa**
 
@@ -232,6 +232,9 @@ A SharePoint Online-ból **webes tevékenység** használatával másolhatja a f
         - **Kérelem metódusa**: Get
         - **További fejléc**: használja az alábbi kifejezést `@{concat('Authorization: Bearer ', activity('<Web-activity-name>').output.access_token)}` , amely a felsőbb rétegbeli webes tevékenység által generált tulajdonosi jogkivonatot használja engedélyezési fejlécként. Cserélje le a webes tevékenység nevét.
     - Konfigurálja a másolási tevékenység fogadóját a szokásos módon.
+
+> [!NOTE]
+> Még ha egy Azure AD-alkalmazás is rendelkezik `FullControl` engedélyekkel a SharePoint Online-ban, a fájlok nem másolhatók a tartalomvédelmi szolgáltatással rendelkező dokumentumtárakban.
 
 ## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
 

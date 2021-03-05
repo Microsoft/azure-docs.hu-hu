@@ -2,13 +2,13 @@
 title: Azure Service Bus – üzenetkezelési egységek automatikus frissítése
 description: Ebből a cikkből megtudhatja, hogyan használhatja automatikusan a Service Bus-névtér üzenetkezelési egységeit.
 ms.topic: how-to
-ms.date: 09/15/2020
-ms.openlocfilehash: 594f9987bfa5a7a439fb862a0345d0004785b189
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/03/2021
+ms.openlocfilehash: 7fc3aca82b8f01d70dec4fc2dac7842895417ec9
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720596"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177955"
 ---
 # <a name="automatically-update-messaging-units-of-an-azure-service-bus-namespace"></a>Azure Service Bus névtér üzenetkezelési egységeinek automatikus frissítése 
 Az automatikus méretezés lehetővé teszi, hogy az alkalmazás terhelésének kezeléséhez megfelelő mennyiségű erőforrást futtasson. Lehetővé teszi az erőforrások hozzáadását a terhelés növekedésének kezeléséhez, és pénzt takarít meg a tétlenül ülő erőforrások eltávolításával. További információ a Azure Monitor autoskálázási funkciójának [áttekintéséről: Microsoft Azure](../azure-monitor/autoscale/autoscale-overview.md) . 
@@ -136,8 +136,14 @@ Az előző szakaszban megtudhatja, hogyan adhat hozzá alapértelmezett feltéte
     
     :::image type="content" source="./media/automate-update-messaging-units/repeat-specific-days-2.png" alt-text="méretezés adott üzenetkezelési egységekre – adott napok ismétlése":::
 
-> [!IMPORTANT]
-> Ha többet szeretne megtudni az autoskálázási beállítások működéséről, különösen arról, hogy miként lehet profilt vagy feltételt kiértékelni, és több szabályt is kiértékel, tekintse meg az az [autoskálázási beállítások ismertetése](../azure-monitor/autoscale/autoscale-understanding-settings.md)          
+    
+    Ha többet szeretne megtudni az autoskálázási beállítások működéséről, különösen arról, hogy miként lehet profilt vagy feltételt kiértékelni, és több szabályt is kiértékel, tekintse meg az az [autoskálázási beállítások ismertetése](../azure-monitor/autoscale/autoscale-understanding-settings.md)          
+
+    > [!NOTE]
+    > - Az automatikus skálázással kapcsolatos döntések elvégzéséhez szükséges mérőszámok 5-10 percen belül lehetnek. A tüskés munkaterhelések kezelésekor azt javasoljuk, hogy rövidebb időtartamokkal rendelkezzen a méretezéshez (> 10 perc) való méretezéshez és a hosszabb időtartamokhoz, hogy elegendő üzenetküldési egység legyen a tüskés munkaterhelések feldolgozásához. 
+    > 
+    > - Ha nem rendelkezik a kapacitás hiánya miatti hibákkal (nem érhető el üzenetküldési egység), egy támogatási jegyet is felvehet velünk.  
+
 
 ## <a name="next-steps"></a>Következő lépések
 Az üzenetkezelési egységekről a prémium szintű [üzenetkezelés](service-bus-premium-messaging.md) című témakörben olvashat bővebben.

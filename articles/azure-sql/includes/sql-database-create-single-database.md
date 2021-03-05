@@ -6,12 +6,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: sstein
 ms.reviewer: vanto
-ms.openlocfilehash: 57f504b15c0a9c72a2cb0f17b486846f44171a25
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c7bd942b427bdbd2d8184f712f97dd2a0a57fa90
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101682431"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178072"
 ---
 Ebben a lépésben létrehoz egy [logikai SQL-kiszolgálót](../database/logical-servers.md) és egy AdventureWorksLT-mintát használó [önálló adatbázist](../database/single-database-overview.md) . Az adatbázist Azure Portal menük és képernyők használatával, vagy az Azure Cloud Shell Azure CLI-vagy PowerShell-parancsfájllal is létrehozhatja.
 
@@ -151,11 +151,11 @@ Az előző kód az alábbi Azure CLI-parancsokat használja:
 
 | Parancs | Leírás |
 |---|---|
-| [az Account set](/cli/azure/account?view=azure-cli-latest#az-account-set&preserve-view=true) | Egy előfizetést állít be az aktuális aktív előfizetésre. |
+| [az Account set](/cli/azure/account#az-account-set) | Egy előfizetést állít be az aktuális aktív előfizetésre. |
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Adatbázisokat és rugalmas készleteket futtató kiszolgálót hoz létre. |
 | [az SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-create) | Létrehoz egy kiszolgálói szintű tűzfalszabály-szabályt. |
-| [az sql db create](/cli/azure/sql/db#az-sql-db-create?view=azure-cli-latest&preserve-view=true) | Létrehoz egy adatbázist. |
+| [az sql db create](/cli/azure/sql/db#az-sql-db-create) | Létrehoz egy adatbázist. |
 
 További Azure SQL Database Azure CLI-mintákhoz lásd: [Azure CLI-minták](../database/az-cli-script-samples-content-guide.md).
 

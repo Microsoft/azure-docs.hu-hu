@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/05/2021
 author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: 6276527230cf889b471887fdb3da70e06a2fc8d6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: dcfe12b30e336863c8e112d9ad675a2f57fe48f4
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582342"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179136"
 ---
 # <a name="azure-monitor-for-azure-data-explorer-preview"></a>Azure Adatkezelő Azure Monitor (előzetes verzió)
 
@@ -103,10 +103,10 @@ A **fő mérőszámok** lap a fürt egyes metrikáinak egységes nézetét jelen
 
 A **használat** lapon a felhasználók mélyen megismerhetik a fürt parancsainak és lekérdezésének teljesítményét. Ezen az oldalon a következőket teheti:
  
- - Megtudhatja, hogy mely felhasználók és alkalmazások küldik a legtöbb lekérdezést, vagy a legtöbb PROCESSZORt és memóriát használják (így megtudhatja, hogy mely felhasználók küldik el a legsúlyosabb lekérdezéseket a fürtnek a feldolgozáshoz).
- - Azonosítsa a leggyakoribb felhasználókat és alkalmazásokat a sikertelen lekérdezések alapján.
- - Azonosítsa a lekérdezések számának legutóbbi változásait a felhasználók és alkalmazások által az elmúlt 16 napban megadott korábbi napi átlaghoz képest.
- - A felhasználók, az alkalmazások és a parancsok típusa alapján azonosíthatja a lekérdezéseket, a memóriát és a CPU-használatot érintő trendeket és csúcsokat.
+ - Megtudhatja, hogy mely munkaterhelési csoportok, felhasználók és alkalmazások küldik a legtöbb lekérdezést, vagy a legtöbb PROCESSZORt és memóriát használják (így megtudhatja, hogy mely munkaterhelések küldik el a fürt legsúlyosabb lekérdezéseit a feldolgozáshoz).
+ - Azonosítsa a leggyakoribb munkaterhelés-csoportokat, a felhasználókat és az alkalmazásokat a sikertelen lekérdezések alapján.
+ - Azonosítsa a lekérdezések számának legutóbbi változásait az átlagos napi átlag (az elmúlt 16 nap során), a munkaterhelés-csoport, a felhasználó és az alkalmazás alapján.
+ - Azonosíthatja a trendek és a csúcsok számát a lekérdezések, a memória és a CPU-felhasználás alapján a munkaterhelés csoport, a felhasználó, az alkalmazás és a parancs típusa szerint.
 
 [![Képernyőkép az Operations nézetről, amely a leggyakoribb alkalmazási diagramokat és lekérdezéseket, valamint a parancsok és lekérdezések számát, valamint a parancs típusa szerint a leggyakoribb parancsokat jeleníti meg.](./media/data-explorer/usage.png)](./media/data-explorer/usage.png#lightbox)
 

@@ -7,16 +7,16 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: d850b47078f504b8ccb23d8c0a43811e99dc71d8
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 7650e80273567a693c3566fede068678b3cc5b17
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098349"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179408"
 ---
 # <a name="azure-percept-studio-overview"></a>Az Azure Percept Studio áttekintése
 
-Az Azure Percept Studio egy kiindulási pont az Edge AI-modellek és-megoldások létrehozásához. Az Azure Percept Studio lehetővé teszi olyan interaktív munkafolyamatok felderítését és betöltését, amelyek megkönnyítik az Edge AI-kompatibilis hardverek és a hatékony Azure AI-és IoT felhőalapú szolgáltatások integrálását.
+Az [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) egy kiindulási pont az Edge AI-modellek és-megoldások létrehozásához. Az Azure Percept Studio lehetővé teszi olyan interaktív munkafolyamatok felderítését és betöltését, amelyek megkönnyítik az Edge AI-kompatibilis hardverek és a hatékony Azure AI-és IoT felhőalapú szolgáltatások integrálását.
 
 A Studióban megtekintheti az Edge AI-kompatibilis eszközöket a kezdeti és folyamatos betanítási adatok gyűjtéséhez, valamint a modell-iterációk üzembe helyezési céljaihoz. Az eszközökhöz való hozzáférés és a betanítási adatok lehetővé teszik a gyors prototípus-készítést és az iterációs Edge AI-modell fejlesztését mind a [víziós](./tutorial-nocode-vision.md) , mind a [beszédes](./tutorial-no-code-speech.md)
 
@@ -32,8 +32,7 @@ Függetlenül attól, hogy Ön kezdő vagy fejlettebb AI-modell-és megoldás-fe
 
 ## <a name="next-steps"></a>Következő lépések
 
-<!-- [here](https://go.microsoft.com/fwlink/?linkid=2135819). -->
-
+- Tekintse meg az Azure Percept studiót [itt](https://go.microsoft.com/fwlink/?linkid=2135819)
 - Az Azure Percept DK és az Azure Percept audio kellék beszerzése a [Microsoft online áruházban](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 - Az Azure Percept DK telepítési [gyors üzembe helyezési útmutatójának](./quickstart-percept-dk-set-up.md) befejezése
 - Próbálja ki az oktatóanyagokat a kód nélküli [jövőkép](./tutorial-nocode-vision.md) és a [beszédfelismerési](./tutorial-no-code-speech.md) megoldások létrehozásához

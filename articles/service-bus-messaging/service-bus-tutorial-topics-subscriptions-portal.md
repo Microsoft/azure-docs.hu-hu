@@ -6,18 +6,18 @@ ms.author: spelluru
 ms.date: 10/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f2c8d107c6de4965472c3fb04ff626841fb1f6ea
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: d0a94f346f9d3cf7a05a1ca6e1b37d4d008f3e75
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95810726"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179663"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Oktatóanyag: Leltár frissítése az Azure Portal és témakörök/előfizetések használatával
 
 A Microsoft Azure Service Bus egy több-bérlős felhőalapú üzenetkezelési szolgáltatás, amely információkat küld alkalmazások és szolgáltatók között. Az aszinkron műveletek rugalmas, közvetítőalapú üzenettovábbítást, valamint strukturált, érkezési sorrendben történő üzenetkiküldést tesznek lehetővé. Emellett közzétételi vagy előfizetési lehetőségeket is biztosítanak. Ebből az oktatóanyagból megtudhatja, hogyan használhatók a Service Bus-témakörök és -előfizetések kereskedelmi leltárazási forgatókönyvekben az Azure Portalt és a .NET-et használó közzétételi/feliratkozási csatornákkal.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Service Bus-témakör és egy vagy több hozzá tartozó előfizetés létrehozása az Azure Portal használatával
 > * Témakörszűrők hozzáadása .NET-kód használatával
@@ -97,7 +97,7 @@ A kód futtatásához tegye a következőt:
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rájuk szükség, törölje a névteret és az üzenetsort. Ehhez válassza ki az erőforrásokat a portálon, majd kattintson a **Törlés** elemre.
+Ha már nincs rá szükség, törölje a névteret és a témakört. Ehhez válassza ki az erőforrásokat a portálon, majd kattintson a **Törlés** elemre.
 
 ## <a name="understand-the-sample-code"></a>A mintakód értelmezése
 
@@ -398,7 +398,7 @@ private async Task ReceiveMessages(string subscription)
 > [!NOTE]
 > [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban erőforrásokat osztott ki az Azure Portal használatával, majd üzeneteket küldött és fogadott egy Service Bus-témakörtől és a hozzá tartozó előfizetésektől. Megtanulta végrehajtani az alábbi műveleteket:
 

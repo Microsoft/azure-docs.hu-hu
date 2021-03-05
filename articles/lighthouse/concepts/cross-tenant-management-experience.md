@@ -1,14 +1,14 @@
 ---
 title: Bérlők közötti felügyeleti megoldások
 description: Az Azure-beli delegált erőforrás-kezelés lehetővé teszi a több-bérlős felügyeleti élményt.
-ms.date: 03/02/2021
+ms.date: 03/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: 844ac637f9fcaed5d78520923e5f7184fcde0d25
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 4a20f6efde9c3b01b4a2d7a1f111de23aec87647
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050392"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177919"
 ---
 # <a name="cross-tenant-management-experiences"></a>Bérlők közötti felügyeleti megoldások
 
@@ -67,6 +67,7 @@ A legtöbb feladat és szolgáltatás a felügyelt bérlők delegált erőforrá
 [Azure Backup](../../backup/index.yml):
 
 - A helyszíni számítási feladatokból [, Azure-beli virtuális gépekből, Azure-fájlmegosztásból és egyebekből származó](../..//backup/backup-overview.md#what-can-i-back-up) ügyféladatok biztonsági mentése és visszaállítása
+- Az összes delegált ügyfél-erőforrásra vonatkozó információk megtekintése a [Backup Centerben](../../backup/backup-center-overview.md)
 - A [Backup Explorer](../../backup/monitor-azure-backup-with-backup-explorer.md) segítségével megtekintheti a biztonsági másolati elemek működési információit (beleértve a biztonsági mentéshez még nem konfigurált Azure-erőforrásokat), valamint a delegált előfizetések figyelési információit (feladatok és riasztások). A Backup Explorer jelenleg csak az Azure-beli virtuálisgép-szolgáltatásokhoz érhető el.
 - [Készítsen biztonsági mentési jelentéseket](../../backup/configure-reports.md) a delegált előfizetések között a korábbi trendek nyomon követéséhez, a biztonsági mentési tárolók felhasználásának elemzéséhez, valamint a biztonsági másolatok és visszaállítások ellenőrzéséhez
 

@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: f58811411a447eae4ff9a5c0fd2a9888b4a39a34
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 9e8ef5bf9d5d8000bfdd581cd7e9ae1a1a775fc9
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428673"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178133"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Felügyelt Azure SQL-példányra vonatkozó gyakori kérdések (GYIK)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -94,7 +94,7 @@ Ez az alapul szolgáló összetevő aktuális korlátozása, amely ellenőrzi az
 
 **Hogyan lehet méretezni a felügyelt példányt?**
 
-Felügyelt példányát [Azure Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), a [PowerShell](/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), az [Azure CLI](/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update&preserve-view=true) vagy az [ARM sablonok](/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)segítségével méretezheti.
+Felügyelt példányát [Azure Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), a [PowerShell](/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), az [Azure CLI](/cli/azure/sql/mi#az-sql-mi-update) vagy az [ARM sablonok](/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)segítségével méretezheti.
 
 **Áthelyezhetem a felügyelt példányt az egyik régióból a másikba?**
 
@@ -102,7 +102,7 @@ Igen, írhat. Útmutatásért lásd: [erőforrások áthelyezése régiók köz�
 
 **Hogyan törölhetem a felügyelt példányt?**
 
-A felügyelt példányok a Azure Portal, a [PowerShell](/powershell/module/az.sql/remove-azsqlinstance?preserve-view=true&view=azps-4.3.0), az [Azure CLI](/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete&preserve-view=true) vagy a [Resource Manager REST API](/rest/api/sql/managedinstances/delete)-k használatával törölhetők.
+A felügyelt példányok a Azure Portal, a [PowerShell](/powershell/module/az.sql/remove-azsqlinstance?preserve-view=true&view=azps-4.3.0), az [Azure CLI](/cli/azure/sql/mi#az-sql-mi-delete) vagy a [Resource Manager REST API](/rest/api/sql/managedinstances/delete)-k használatával törölhetők.
 
 **Mennyi ideig tart egy példány létrehozása vagy frissítése, vagy egy adatbázis visszaállítása?**
 

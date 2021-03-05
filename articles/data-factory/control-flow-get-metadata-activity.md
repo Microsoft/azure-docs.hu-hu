@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/25/2021
 ms.author: jingwang
-ms.openlocfilehash: 151f4352ce7c845050c899792fd7285c97f844bc
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: bd8fc3383d6d9a0afb7733cb94643623e6879d23
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049984"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178541"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Metaadatok beolvasása tevékenység Azure Data Factory
 
@@ -83,8 +83,14 @@ A következő metaadatokat adhatja meg a metaadatok beolvasása tevékenység me
 | columnCount | A fájl vagy a rokon tábla oszlopainak száma. |
 | létezik| Azt határozza meg, hogy létezik-e fájl, mappa vagy tábla. Ha `exists` meg van adva a metaadatok beolvasása mező listában, a tevékenység nem fog működni, még akkor sem, ha a fájl, mappa vagy tábla nem létezik. Ehelyett `exists: false` a rendszer visszaadja a kimenetet. |
 
->[!TIP]
->Ha szeretné ellenőrizni, hogy egy fájl, mappa vagy tábla létezik-e, `exists` a metaadatok beolvasása tevékenység mezők listájában adhatja meg. Ezt követően a tevékenység kimenetében is megtekintheti az `exists: true/false` eredményt. Ha `exists` nincs megadva a mezőlista, a metaadatok beolvasása tevékenység sikertelen lesz, ha az objektum nem található.
+> [!TIP]
+> Ha szeretné ellenőrizni, hogy egy fájl, mappa vagy tábla létezik-e, `exists` a metaadatok beolvasása tevékenység mezők listájában adhatja meg. Ezt követően a tevékenység kimenetében is megtekintheti az `exists: true/false` eredményt. Ha `exists` nincs megadva a mezőlista, a metaadatok beolvasása tevékenység sikertelen lesz, ha az objektum nem található.
+
+> [!NOTE]
+> Ha a fájl tárolja a metaadatokat, és `modifiedDatetimeStart` konfigurálja `modifiedDatetimeEnd` a vagy a értéket, a `childItems` kimenetben csak a megadott elérési úton lévő, a megadott tartományon belüli utolsó módosítási idővel rendelkező fájlok szerepelnek. Az almappákban található elemek nincsenek belefoglalva.
+
+> [!NOTE]
+> Ahhoz, hogy a **struktúra** mezőlista a tagolt szöveg-és Excel-formátumú adatkészletek tényleges adatstruktúráját adja meg, engedélyeznie kell a `First Row as Header` tulajdonságot, amely csak ezen adatforrások esetében támogatott.
 
 ## <a name="syntax"></a>Syntax
 

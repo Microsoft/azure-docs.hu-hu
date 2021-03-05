@@ -2,13 +2,13 @@
 title: Hibaelhárítási útmutató a Azure Service Bushoz | Microsoft Docs
 description: Ismerkedjen meg a hibaelhárítási tippekkel és javaslatokkal néhány olyan problémával kapcsolatban, amelyet a Azure Service Bus használatakor láthat.
 ms.topic: article
-ms.date: 09/16/2020
-ms.openlocfilehash: c5813f901f31f96633e11c2ed8162338bdd9bbf7
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 03/03/2021
+ms.openlocfilehash: 7de39e5a3a7b6cbb8e5fa504f073023853e18366
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881214"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179697"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>A Azure Service Bus hibaelhárítási útmutatója
 Ez a cikk hibaelhárítási tippeket és javaslatokat tartalmaz a Azure Service Bus használatakor esetlegesen előforduló problémákkal kapcsolatban. 
@@ -52,6 +52,8 @@ A következő lépések segítséget nyújthatnak a kapcsolat/tanúsítvány/id�
     ```
     Ha más eszközöket (például `tnc` , stb.) használ, használhatja az egyenértékű parancsokat `ping` . 
 - Szerezze be a hálózati nyomkövetést, ha az előző lépések nem segítenek és nem elemzik olyan eszközökkel, mint például a [Wireshark](https://www.wireshark.org/). Ha szükséges, forduljon a [Microsoft ügyfélszolgálatahoz](https://support.microsoft.com/) . 
+- Ha szeretné megkeresni a kapcsolatok listájához hozzáadandó megfelelő IP-címeket, tekintse meg az [engedélyezési listához hozzáadni kívánt IP-címeket](service-bus-faq.md#what-ip-addresses-do-i-need-to-add-to-allow-list). 
+
 
 ## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>A szolgáltatás verziófrissítése/újraindítása esetén felmerülő problémák
 
@@ -97,7 +99,7 @@ Az üzenetek küldésére és fogadására használt tokenek száma korlátozott
 ### <a name="resolution"></a>Feloldás
 További üzenetek küldéséhez nyisson meg egy új kapcsolódást a Service Bus névtérhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket: 
 
 - [Azure Resource Manager kivételek](service-bus-resource-manager-exceptions.md). A Azure Service Bus a Azure Resource Manager használatával (sablonok vagy közvetlen hívások segítségével) való interakció során keletkező kivételeket sorolja fel.

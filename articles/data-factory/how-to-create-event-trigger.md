@@ -7,12 +7,12 @@ ms.author: chez
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: 7dde05e02421ef8d2ea46fd0d50687ede6e5d884
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ff8c549f74b59706de5203f2d2e46867d6cb1d0a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727803"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177784"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>Egy folyamatot futtató eseményindító létrehozása tárolási eseményre válaszként
 
@@ -26,7 +26,6 @@ A szolgáltatás tíz percen belüli bevezetéséhez és bemutatásához tekints
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Event-based-data-integration-with-Azure-Data-Factory/player]
 
-
 > [!NOTE]
 > A cikkben ismertetett integráció a [Azure Event Gridtól](https://azure.microsoft.com/services/event-grid/)függ. Győződjön meg arról, hogy az előfizetés regisztrálva van a Event Grid erőforrás-szolgáltatónál. További információ: erőforrás- [szolgáltatók és típusok](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). A *Microsoft. EventGrid/eventSubscriptions/** művelet végrehajtásához képesnek kell lennie. Ez a művelet a EventGrid EventSubscription közreműködő beépített szerepkörének részét képezi.
 
@@ -34,11 +33,11 @@ A szolgáltatás tíz percen belüli bevezetéséhez és bemutatásához tekints
 
 Ebből a szakaszból megtudhatja, hogyan hozhat létre tárolási esemény-eseményindítókat a Azure Data Factory felhasználói felületen belül.
 
-1. Ugrás a **szerzői vászonra**
+1. Váltson a **Szerkesztés** lapra, amely egy ceruza szimbólummal jelenik meg. 
 
-1. A bal alsó sarokban kattintson az **Eseményindítók** gombra.
+1. Válassza az **aktiválás** lehetőséget a menüben, majd válassza az **új/szerkesztés** lehetőséget. 
 
-1. Kattintson az **+ új** elemre, amely megnyitja a trigger oldal létrehozása NAV-t
+1. Az **Eseményindítók hozzáadása** lapon válassza az **eseményindító kiválasztása...**, majd az **+ új** lehetőséget. 
 
 1. Eseményindító típusú **tárolási esemény** kiválasztása
 
@@ -107,4 +106,5 @@ Ez a szakasz példákat tartalmaz a tárolási események eseményindítójának
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az eseményindítókkal kapcsolatos részletes információkért lásd: [folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md#trigger-execution).
+* Az eseményindítókkal kapcsolatos részletes információkért lásd: [folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md#trigger-execution).
+* Megtudhatja, hogyan hivatkozhat az trigger-metaadatok a folyamat során: [hivatkozás trigger metaadatainak a folyamat futtatása során](how-to-use-trigger-parameterization.md)

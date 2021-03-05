@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: e23318684294a833c59fd5666db8c0a14efde890
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f18d1850cb6ccf28ff70f826e3d4bfe74ae05c40
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101658503"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178728"
 ---
 # <a name="monitor-azure-cosmos-db"></a>Az Azure Cosmos DB monitorozása
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -125,7 +125,7 @@ A metrikákat a **felosztás alkalmazása** lehetőség használatával csoporto
 
 ## <a name="analyzing-logs"></a><a id="analyze-log-data"></a> Naplók elemzése
 
-Azure Monitor naplókban található adatkészletek olyan táblákban tárolódnak, amelyekben az egyes táblák egyedi tulajdonságokkal rendelkeznek.
+Azure Monitor naplókban lévő, az egyes táblákban található, egyedi tulajdonságokkal rendelkező táblázatokban tárolt adathalmazok.
 
 Azure Monitor összes erőforrás-naplója ugyanazokkal a mezőkkel rendelkezik, amelyeket a szolgáltatás-specifikus mezők követnek. Az általános séma [Azure monitor erőforrás-naplózási sémában](../azure-monitor/essentials/resource-logs-schema.md#top-level-common-schema)szerepel. A Azure Cosmos DBhoz gyűjtött erőforrás-naplók típusai listáját az [adatAzure Cosmos DB monitorozása](monitor-cosmos-db-reference.md#resource-logs)című témakörben találhatja meg.
 

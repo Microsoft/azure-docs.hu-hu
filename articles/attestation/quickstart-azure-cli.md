@@ -7,16 +7,16 @@ ms.service: attestation
 ms.topic: quickstart
 ms.date: 11/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4fc799c1c6dcaaa3ed4bc41c93bd6b786f51591c
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: ae283785b4d4dc80c6b9b6c3997aaf82c9ff0f2f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429245"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178711"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-cli"></a>Gyors útmutató: Azure-igazolás beállítása az Azure CLI-vel
 
-Az Azure- [igazolások használatának első lépései az Azure CLI használatával](/cli/azure/ext/attestation/attestation?view=azure-cli-latest).
+Az Azure- [igazolások használatának első lépései az Azure CLI használatával](/cli/azure/ext/attestation/attestation).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -69,13 +69,13 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Az alábbi parancsok segítségével hozhatja létre és kezelheti az igazolási szolgáltatót:
 
-1. Futtassa az az [igazolás létrehozása](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_create) parancsot egy igazolási szolgáltató létrehozásához házirend-aláírási követelmény nélkül:
+1. Futtassa az az [igazolás létrehozása](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_create) parancsot egy igazolási szolgáltató létrehozásához házirend-aláírási követelmény nélkül:
 
    ```azurecli
    az attestation create --name "myattestationprovider" --resource-group "MyResourceGroup" --location westus
    ```
    
-1. Futtassa az az [igazolás megjelenítése](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_show) parancsot az igazolási szolgáltató tulajdonságainak, például az állapot-és AttestURI lekéréséhez:
+1. Futtassa az az [igazolás megjelenítése](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_show) parancsot az igazolási szolgáltató tulajdonságainak, például az állapot-és AttestURI lekéréséhez:
 
    ```azurecli
    az attestation show --name "myattestationprovider" --resource-group "MyResourceGroup"
@@ -95,7 +95,7 @@ Az alábbi parancsok segítségével hozhatja létre és kezelheti az igazolási
    TagsTable:
    ```
 
-A tanúsítvány-szolgáltató törléséhez használja az az [igazolás törlése](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_delete) parancsot:
+A tanúsítvány-szolgáltató törléséhez használja az az [igazolás törlése](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_delete) parancsot:
 
 ```azurecli
 az attestation delete --name "myattestationprovider" --resource-group "sample-resource-group"
@@ -105,7 +105,7 @@ az attestation delete --name "myattestationprovider" --resource-group "sample-re
 
 Az itt ismertetett parancsokkal biztosíthatja a házirendek kezelését egy igazolási szolgáltatóhoz, egyszerre egy igazolási típust.
 
-Az az [igazolási házirend megjelenítése](/cli/azure/ext/attestation/attestation/policy?view=azure-cli-latest#ext_attestation_az_attestation_policy_show) parancs a megadott Tee aktuális szabályzatát adja vissza:
+Az az [igazolási házirend megjelenítése](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_show) parancs a megadott Tee aktuális szabályzatát adja vissza:
 
 ```azurecli
 az attestation policy show --name "myattestationprovider" --resource-group "MyResourceGroup" --attestation-type SGX-IntelSDK
@@ -120,7 +120,7 @@ A következők a támogatott TEE-típusok:
 - `SGX-OpenEnclaveSDK`
 - `TPM`
 
-Az az [igazolási szabályzat beállítása](/cli/azure/ext/attestation/attestation/policy?view=azure-cli-latest#ext_attestation_az_attestation_policy_set) paranccsal állítson be egy új házirendet a megadott igazolási típushoz.
+Az az [igazolási szabályzat beállítása](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_set) paranccsal állítson be egy új házirendet a megadott igazolási típushoz.
 
 Házirend beállítása szöveges formátumban az adott típusú igazolási típushoz a fájl elérési útja használatával:
 

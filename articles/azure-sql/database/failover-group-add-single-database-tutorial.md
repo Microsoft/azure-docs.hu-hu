@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/19/2019
-ms.openlocfilehash: 8298c673ddc707130d0873f686e1baed3677a46f
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 68fa089713c3dd89b4699011ded7d667bca6f73f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593967"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178073"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>Oktatóanyag: Azure SQL Database hozzáadása egy autofeladatátvételi csoporthoz
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -49,7 +49,7 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik az al�
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbi elemekkel:
 
 - Azure-előfizetés. Ha még nem rendelkezik ilyennel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
-- Az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)legújabb verziója.
+- Az [Azure CLI](/cli/azure/install-azure-cli)legújabb verziója.
 
 ---
 
@@ -77,19 +77,19 @@ Hozza létre a feladatátvételi csoportot, és adja hozzá az adatbázist a Azu
 
 1. A **feladatátvételi csoport** lapon adja meg vagy válassza ki a következő értékeket, majd válassza a **Létrehozás** lehetőséget:
 
-   - **Feladatátvételi csoport neve** : adjon meg egy egyedi feladatátvételi csoport nevét (például `failovergrouptutorial` ).
-   - **Másodlagos kiszolgáló** : válassza a *szükséges beállítások konfigurálását* , majd válassza az **új kiszolgáló létrehozása** lehetőséget. Másik lehetőségként már meglévő kiszolgálót is választhat másodlagos kiszolgálóként. A következő értékek beírása után válassza a **kiválasztás** lehetőséget.
-      - **Kiszolgáló neve** : írjon be egy egyedi nevet a másodlagos kiszolgálónak, például: `mysqlsecondary` .
-      - **Kiszolgáló-rendszergazdai bejelentkezés** : típus `azureuser`
-      - **Password (jelszó** ): írjon be egy olyan összetett jelszót, amely megfelel a jelszó követelményeinek.
-      - **Hely** : válasszon ki egy helyet a legördülő menüből, például: `East US` . Ez a hely nem lehet ugyanazon a helyen, mint az elsődleges kiszolgáló.
+   - **Feladatátvételi csoport neve**: adjon meg egy egyedi feladatátvételi csoport nevét (például `failovergrouptutorial` ).
+   - **Másodlagos kiszolgáló**: válassza a *szükséges beállítások konfigurálását* , majd válassza az **új kiszolgáló létrehozása** lehetőséget. Másik lehetőségként már meglévő kiszolgálót is választhat másodlagos kiszolgálóként. A következő értékek beírása után válassza a **kiválasztás** lehetőséget.
+      - **Kiszolgáló neve**: írjon be egy egyedi nevet a másodlagos kiszolgálónak, például: `mysqlsecondary` .
+      - **Kiszolgáló-rendszergazdai bejelentkezés**: típus `azureuser`
+      - **Password (jelszó**): írjon be egy olyan összetett jelszót, amely megfelel a jelszó követelményeinek.
+      - **Hely**: válasszon ki egy helyet a legördülő menüből, például: `East US` . Ez a hely nem lehet ugyanazon a helyen, mint az elsődleges kiszolgáló.
 
      > [!NOTE]
      > A kiszolgáló bejelentkezési és tűzfalbeállítások meg kell egyeznie az elsődleges kiszolgálóval.
 
      ![Másodlagos kiszolgáló létrehozása a feladatátvételi csoport számára](./media/failover-group-add-single-database-tutorial/create-secondary-failover-server.png)
 
-   - **Adatbázisok a csoporton belül** : Ha egy másodlagos kiszolgáló van kiválasztva, akkor ez a beállítás fel lesz oldva. Válassza ki a **hozzáadni kívánt adatbázisokat** , majd válassza ki az 1. szakaszban létrehozott adatbázist. Ha hozzáadja az adatbázist a feladatátvételi csoporthoz, a automatikusan elindítja a Geo-replikálási folyamatot.
+   - **Adatbázisok a csoporton belül**: Ha egy másodlagos kiszolgáló van kiválasztva, akkor ez a beállítás fel lesz oldva. Válassza ki a **hozzáadni kívánt adatbázisokat** , majd válassza ki az 1. szakaszban létrehozott adatbázist. Ha hozzáadja az adatbázist a feladatátvételi csoporthoz, a automatikusan elindítja a Geo-replikálási folyamatot.
 
    ![SQL Database hozzáadása a feladatátvételi csoporthoz](./media/failover-group-add-single-database-tutorial/add-sqldb-to-failover-group.png)
 
@@ -199,7 +199,7 @@ Az oktatóanyag ezen része a következő Azure CLI-parancsmagokat használja:
 |---|---|
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Adatbázisokat és rugalmas készleteket futtató kiszolgálót hoz létre. |
 | [az SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule) | Létrehoz egy kiszolgáló tűzfalszabály-szabályait. |
-| [az SQL feladatátvétel-csoport létrehozása](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create&preserve-view=true) | Létrehoz egy feladatátvételi csoportot. |
+| [az SQL feladatátvétel-csoport létrehozása](/cli/azure/sql/failover-group#az-sql-failover-group-create) | Létrehoz egy feladatátvételi csoportot. |
 
 ---
 
@@ -322,8 +322,8 @@ Az oktatóanyag ezen része a következő Azure CLI-parancsmagokat használja:
 
 | Parancs | Jegyzetek |
 |---|---|
-| [az SQL feladatátvételi csoport listája](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list&preserve-view=true) | Felsorolja a kiszolgálók feladatátvételi csoportjait. |
-| [az SQL feladatátvétel-csoport beállítása – elsődleges](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary&preserve-view=true) | Állítsa be a feladatátvételi csoport elsődlegesét úgy, hogy az a jelenlegi elsődleges kiszolgáló összes adatbázisát elvégzi. |
+| [az SQL feladatátvételi csoport listája](/cli/azure/sql/failover-group#az-sql-failover-group-list) | Felsorolja a kiszolgálók feladatátvételi csoportjait. |
+| [az SQL feladatátvétel-csoport beállítása – elsődleges](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | Állítsa be a feladatátvételi csoport elsődlegesét úgy, hogy az a jelenlegi elsődleges kiszolgáló összes adatbázisát elvégzi. |
 
 ---
 
@@ -409,14 +409,14 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Jegyzetek |
 |---|---|
-| [az Account set](/cli/azure/account?view=azure-cli-latest#az-account-set&preserve-view=true) | Egy előfizetést állít be az aktuális aktív előfizetésre. |
+| [az Account set](/cli/azure/account#az-account-set) | Egy előfizetést állít be az aktuális aktív előfizetésre. |
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Létrehoz egy kiszolgálót, amely önálló adatbázisokat és rugalmas készleteket üzemeltet Azure SQL Databaseban. |
 | [az SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule) | Létrehozza a kiszolgálói szintű IP-tűzfalszabályok szabályait a Azure SQL Databaseban. |
-| [az sql db create](/cli/azure/sql/db?view=azure-cli-latest&preserve-view=true) | Létrehoz egy adatbázist a Azure SQL Databaseban. |
-| [az SQL feladatátvétel-csoport létrehozása](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create&preserve-view=true) | Létrehoz egy feladatátvételi csoportot a Azure SQL Databaseban. |
-| [az SQL feladatátvételi csoport listája](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list&preserve-view=true) | A Azure SQL Database kiszolgálójában lévő feladatátvételi csoportok felsorolása. |
-| [az SQL feladatátvétel-csoport beállítása – elsődleges](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary&preserve-view=true) | Állítsa be a feladatátvételi csoport elsődlegesét úgy, hogy az a jelenlegi elsődleges kiszolgáló összes adatbázisát elvégzi. |
+| [az sql db create](/cli/azure/sql/db) | Létrehoz egy adatbázist a Azure SQL Databaseban. |
+| [az SQL feladatátvétel-csoport létrehozása](/cli/azure/sql/failover-group#az-sql-failover-group-create) | Létrehoz egy feladatátvételi csoportot a Azure SQL Databaseban. |
+| [az SQL feladatátvételi csoport listája](/cli/azure/sql/failover-group#az-sql-failover-group-list) | A Azure SQL Database kiszolgálójában lévő feladatátvételi csoportok felsorolása. |
+| [az SQL feladatátvétel-csoport beállítása – elsődleges](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | Állítsa be a feladatátvételi csoport elsődlegesét úgy, hogy az a jelenlegi elsődleges kiszolgáló összes adatbázisát elvégzi. |
 | [az group delete](/cli/azure/vm/extension#az-vm-extension-set) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 # <a name="the-portal"></a>[A portál](#tab/azure-portal)

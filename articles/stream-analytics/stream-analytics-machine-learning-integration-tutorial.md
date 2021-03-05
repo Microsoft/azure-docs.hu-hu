@@ -1,18 +1,18 @@
 ---
 title: Azure Stream Analytics integráció Azure Machine Learning Studio (klasszikus)
 description: Ez a cikk azt ismerteti, hogyan lehet gyorsan beállítani egy egyszerű Azure Stream Analytics feladatot, amely egy felhasználó által definiált függvény használatával integrálja Azure Machine Learning Studio (klasszikus).
-author: krishna0815
-ms.author: krishmam
 ms.service: stream-analytics
+author: jasonwhowell
+ms.author: jasonh
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: d7d74887b4b4e205645a45fa7e07768a1af73940
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 89b1b91270d1fe30ffcb5ae0caa5f319aa616683
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015300"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178524"
 ---
 # <a name="do-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Azure Stream Analytics és Azure Machine Learning Studio (klasszikus) a hangulat elemzése
 
@@ -56,7 +56,7 @@ Ebben a lépésben egy CSV-fájlt tölt fel a Storage-tárolóba.
 
    ![adja meg a Storage-fiók adatait](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account1.png)
 
-3. Válassza a **felülvizsgálat + létrehozás** lehetőséget. Ezután válassza a **Létrehozás** lehetőséget a Storage-fiók telepítéséhez.
+3. Válassza a **Felülvizsgálat és létrehozás** lehetőséget. Ezután válassza a **Létrehozás** lehetőséget a Storage-fiók telepítéséhez.
 
 4. Az üzembe helyezés befejezésekor navigáljon a Storage-fiókhoz. A **Blob Service** szakaszban válassza a **Tárolók** lehetőséget. Ezután a **+ tároló** lehetőségre kattintva hozzon létre egy új tárolót.
 
@@ -122,11 +122,11 @@ A feladatot a rendszer a blob Storage-ba korábban feltöltött CSV-fájlból ol
    |---------|---------|
    |Bemeneti alias|Adja meg a bemenet nevét. Jegyezze fel ezt az aliast a lekérdezés írásakor.|
    |Előfizetés|Válassza ki előfizetését.|
-   |Tárfiók|Válassza ki az előző lépésben létrehozott Storage-fiókot.|
+   |A(z)|Válassza ki az előző lépésben létrehozott Storage-fiókot.|
    |Tároló|Válassza ki az előző lépésben létrehozott tárolót.|
    |Eseményszerializációs formátum|CSV|
 
-3. Válassza a **Mentés** lehetőséget.
+3. Kattintson a **Mentés** gombra.
 
 ### <a name="configure-the-job-output"></a>A feladatok kimenetének konfigurálása
 
@@ -140,11 +140,11 @@ A művelet az eredményeket ugyanarra a blob-tárolóra küldi, ahol a bemenet b
    |---------|---------|
    |Bemeneti alias|Adja meg a bemenet nevét. Jegyezze fel ezt az aliast a lekérdezés írásakor.|
    |Előfizetés|Válassza ki előfizetését.|
-   |Tárfiók|Válassza ki az előző lépésben létrehozott Storage-fiókot.|
+   |A(z)|Válassza ki az előző lépésben létrehozott Storage-fiókot.|
    |Tároló|Válassza ki az előző lépésben létrehozott tárolót.|
    |Eseményszerializációs formátum|CSV|
 
-3. Válassza a **Mentés** lehetőséget.
+3. Kattintson a **Mentés** gombra.
 
 ### <a name="add-the-studio-classic-function"></a>A Studio (klasszikus) függvény hozzáadása
 
@@ -223,7 +223,7 @@ Emellett megtekintheti a Studio (klasszikus) függvényekkel kapcsolatos metrik�
 * A **függvények kérései** a Studio (klasszikus) webszolgáltatás számára küldött kérések számát jelzik.  
 * A **függvény eseményei** a kérelemben szereplő események számát jelzik. Alapértelmezés szerint a Studio (klasszikus) webszolgáltatás minden kérése legfeljebb 1 000 eseményt tartalmaz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](/stream-analytics-query/stream-analytics-query-language-reference)

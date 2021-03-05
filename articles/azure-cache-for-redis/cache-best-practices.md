@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 1b62777ec647efc6d5aded573e681cadd6475b47
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 9754a043c90c01f889be9639d2d045fb1929de17
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654795"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178116"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Ajánlott eljárások az Azure Cache for Redis használatához 
 Az ajánlott eljárások követésével maximalizálhatja az Azure cache teljesítményének és költséghatékony felhasználásának hatékonyságát a Redis-példány esetében.
@@ -51,7 +51,7 @@ A Redis Server-példányon belül számos olyan dolgot kell megfontolni, amelyet
 ## <a name="client-library-specific-guidance"></a>Ügyféloldali függvénytár-specifikus útmutató
  * [StackExchange. Redis (.NET)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-stackexchange-redis-md)
  * [Java – melyik ügyfelet kell használnia?](https://gist.github.com/warrenzhu25/1beb02a09b6afd41dff2c27c53918ce7#file-azure-redis-java-best-practices-md)
- * [Saláta (Java)](https://gist.github.com/warrenzhu25/181ccac7fa70411f7eb72aff23aa8a6a#file-azure-redis-lettuce-best-practices-md)
+ * [Saláta (Java)](https://github.com/Azure/AzureCacheForRedis/blob/main/Lettuce%20Best%20Practices.md)
  * [Jedis (Java)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-java-jedis-md)
  * [Node.js](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-node-js-md)
  * [PHP](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-php-md)
@@ -73,6 +73,8 @@ Ha szeretné tesztelni, hogyan működik a kód a hibák között, érdemes lehe
  * A teszteléshez használt ügyfél virtuális gépnek **ugyanabban a régióban** kell lennie, mint a Redis cache-példánynak.
  * **Azt javasoljuk** , hogy a Dv2 virtuálisgép-sorozatokat az ügyfélhez hasonlóan használja, mivel ezek a hardverek jobbak, és a lehető legjobb eredményeket fogják biztosítani.
  * Győződjön meg arról, hogy az ügyfél által használt virtuális gép rendelkezik **legalább annyi számítási és sávszélességgel* , mint a tesztelt gyorsítótár. 
+ * **Tesztelés feladatátvételi feltételek** alapján a gyorsítótárban. Fontos, hogy ne a teljesítmény tesztelése a gyorsítótárban legyen stabil állapotú körülmények között. Tesztelje is a feladatátvételi feltételek alatt, és mérje fel a CPU/kiszolgáló terhelését a gyorsítótárban az idő alatt. A feladatátvételt [az elsődleges csomópont újraindításával](cache-administration.md#reboot)indíthatja el. Ez lehetővé teszi, hogy megtudja, hogyan viselkedik az alkalmazása az átviteli sebesség és a késés tekintetében a feladatátvételi feltételek során (a frissítések során történik, és egy nem tervezett esemény során fordulhat elő). Ideális esetben a CPU/kiszolgáló betöltési csúcsát több mint 80%-ra szeretné megtekinteni a feladatátvétel során még don't't, mivel ez hatással lehet a teljesítményre.
+ * A **prémium P2 és újabb** verziók 4 vagy több magot tartalmazó virtuális gépeken futnak. Ez akkor hasznos, ha a TLS titkosítási/visszafejtési munkaterhelést több mag között terjeszti le, hogy a teljes CPU-használatot használja.  [A VM-méretek és a magok részletes ismertetését itt találja:](cache-planning-faq.md#azure-cache-for-redis-performance)
  * **Engedélyezze a VRSS** az ügyfélszámítógépen, ha Windows rendszeren van.  [Részletekért lásd itt](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn383582(v=ws.11)).  Példa a PowerShell parancsprogramra:
      >PowerShell-ExecutionPolicy korlátlan Enable-NetAdapterRSS-Name (Get-NetAdapter). név 
 

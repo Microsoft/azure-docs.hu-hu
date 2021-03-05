@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 7bca683ea075710aa6fc677fcf457ceb2e0e5098
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 2cca8a93330e5ddd965d27532895ed1d6702c123
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881011"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179646"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>Adatok átvitele az AzCopy használatával és fájltárolás 
 
@@ -125,7 +125,7 @@ Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-p
 
 A fájlokat a lehetőség használatával is kizárhatja `--exclude-pattern` . További információért lásd: [azcopy másolási](storage-ref-azcopy-copy.md) dokumentáció.
 
-A `--include-pattern` és a `--exclude-pattern` beállítások csak a fájlnevekre érvényesek, és nem az elérési útra.  Ha egy címtár fájában található összes szövegfájlt szeretné átmásolni, használja a `–recursive` teljes könyvtár fájának beolvasására szolgáló lehetőséget, majd a `–include-pattern` és a érték megadásával töltse le az `*.txt` összes szövegfájlt.
+A `--include-pattern` és a `--exclude-pattern` beállítások csak a fájlnevekre érvényesek, és nem az elérési útra.  Ha egy címtár fájában található összes szövegfájlt szeretné átmásolni, használja a `--recursive` teljes könyvtár fájának beolvasására szolgáló lehetőséget, majd a `--include-pattern` és a érték megadásával töltse le az `*.txt` összes szövegfájlt.
 
 #### <a name="upload-files-that-were-modified-after-a-date-and-time"></a>A dátum és idő után módosított fájlok feltöltése 
 
@@ -220,7 +220,7 @@ Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-p
 
 A fájlokat a lehetőség használatával is kizárhatja `--exclude-pattern` . További információért lásd: [azcopy másolási](storage-ref-azcopy-copy.md) dokumentáció.
 
-A `--include-pattern` és a `--exclude-pattern` beállítások csak a fájlnevekre érvényesek, és nem az elérési útra.  Ha egy címtár fájában található összes szövegfájlt szeretné átmásolni, használja a `–recursive` teljes könyvtár fájának beolvasására szolgáló lehetőséget, majd a `–include-pattern` és a érték megadásával töltse le az `*.txt` összes szövegfájlt.
+A `--include-pattern` és a `--exclude-pattern` beállítások csak a fájlnevekre érvényesek, és nem az elérési útra.  Ha egy címtár fájában található összes szövegfájlt szeretné átmásolni, használja a `--recursive` teljes könyvtár fájának beolvasására szolgáló lehetőséget, majd a `--include-pattern` és a érték megadásával töltse le az `*.txt` összes szövegfájlt.
 
 #### <a name="download-files-that-were-modified-after-a-date-and-time"></a>A dátum és idő után módosított fájlok letöltése 
 
@@ -358,7 +358,7 @@ Az ebben a parancsban megjelenő első fájlmegosztás a forrás. Az URI végén
 
 További információ a megosztási pillanatképekről: [Azure Files-megosztási Pillanatképek áttekintése](../files/storage-snapshots-files.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További példákat a következő cikkekben talál:
 

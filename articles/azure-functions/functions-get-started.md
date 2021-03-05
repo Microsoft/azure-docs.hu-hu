@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 11/19/2020
 ms.author: cshoe
 zone_pivot_groups: programming-languages-set-functions-lang-workers
-ms.openlocfilehash: e969cc4bee9f09f4279d137abb33b75ca0672ffc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 77d370b895c777278d3136c7d2c511e7f9e23b36
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364715"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179255"
 ---
 # <a name="getting-started-with-azure-functions"></a>Bevezetés az Azure Functions használatába
 
@@ -46,7 +46,7 @@ Az első lépésekhez használja az alábbi forrásokat.
 ::: zone pivot="programming-language-javascript"
 | Művelet | Források |
 | --- | --- |
-| **Az első függvény létrehozása** | A következő eszközök egyikének használata:<br><br><li>[Visual Studio Code](./create-first-function-vs-code-node.md)<li>[Node.js terminál/parancssor](./create-first-function-cli-java.md) |
+| **Az első függvény létrehozása** | A következő eszközök egyikének használata:<br><br><li>[Visual Studio Code](./create-first-function-vs-code-node.md)<li>[Node.js terminál/parancssor](./create-first-function-cli-node.md) |
 | **Futó függvény megjelenítése** | <li>[Azure-minták böngésző](/samples/browse/?expanded=azure&languages=javascript%2ctypescript&products=azure-functions)<li>[Azure közösségi könyvtár](https://www.serverlesslibrary.net/?technology=Functions%202.x&language=JavaScript%2CTypeScript) |
 | **Ismerkedés egy interaktív oktatóanyaggal** | <li>[Az üzleti felhasználási helyzethez legmegfelelőbb kiszolgáló nélküli Azure-technológia kiválasztása](/learn/modules/serverless-fundamentals/)<li>[Jól összeállítható keretrendszer – teljesítmény-hatékonyság](/learn/modules/azure-well-architected-performance-efficiency/)<li>[Kiszolgáló nélküli API-k készítése az Azure Functions használatával](/learn/modules/build-api-azure-functions/)<li>[Kiszolgáló nélküli logika létrehozása az Azure Functions használatával](/learn/modules/create-serverless-logic-with-azure-functions/)<li>[Node.js és Express API-k újrabontása kiszolgáló nélküli API-kra az Azure Functions szolgáltatással](/learn/modules/shift-nodejs-express-apis-serverless/) <br><br>Az [interaktív oktatóanyagok teljes listáját](/learn/browse/?expanded=azure&products=azure-functions)Microsoft Learn tekintheti meg.|
 | **Az ajánlott eljárások áttekintése** |<li>[Teljesítmény és megbízhatóság](./functions-best-practices.md)<li>[Kapcsolatok kezelése](./manage-connections.md)<li>[Hibakezelés és a függvények újrapróbálkozásai](./functions-bindings-error-pages.md?tabs=javascript)<li>[Biztonság](./security-concepts.md)|

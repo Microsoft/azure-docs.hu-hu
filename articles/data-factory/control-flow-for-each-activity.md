@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: c59108752677fc33e28578c3c679be24108806d5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: aeabd74117f99c7cac9bde0eda02b9627caf0804
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385608"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177783"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>ForEach-tevékenység Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -68,12 +68,12 @@ A tulajdonságokat a cikk későbbi részében ismertetjük. Az Items tulajdons�
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-name | A for-each tevékenység neve. | Sztring | Yes
-típus | **Foreach** értékre kell állítani | Sztring | Yes
+name | A for-each tevékenység neve. | Sztring | Igen
+típus | **Foreach** értékre kell állítani | Sztring | Igen
 isSequential | Meghatározza, hogy a hurkot egymás után vagy párhuzamosan kell-e végrehajtani.  Egyidejűleg legfeljebb 20 hurok-iteráció hajtható végre. Ha például egy ForEach-tevékenység egy másolási tevékenységhez képest 10 különböző forrás-és fogadó adatkészlettel rendelkezik, és a **isSequential** értéke hamis, akkor az összes másolat egyszerre lesz végrehajtva. Az alapértelmezett érték a false. <br/><br/> Ha a "isSequential" értéke false (hamis), akkor ellenőrizze, hogy van-e megfelelő konfiguráció több végrehajtható fájl futtatásához. Ellenkező esetben ezt a tulajdonságot körültekintően kell használni az írási ütközések elkerülése érdekében. További információ: [párhuzamos végrehajtás](#parallel-execution) szakasz. | Logikai | Nem. Az alapértelmezett érték a false.
 batchCount | A párhuzamos végrehajtások számának szabályozásához használandó kötegek száma (ha a isSequential hamis értékre van állítva). Ez a felső egyidejűségi korlát, de a for-each tevékenység nem mindig lesz végrehajtva ennél a számnál | Egész szám (legfeljebb 50) | Nem. Az alapértelmezett érték 20.
-Elemek | Egy kifejezés, amely egy JSON-tömböt ad vissza, amelyet a rendszer megismétel. | Kifejezés (amely egy JSON-tömböt ad vissza) | Yes
-Tevékenységek | A végrehajtandó tevékenységek. | Tevékenységek listája | Yes
+Elemek | Egy kifejezés, amely egy JSON-tömböt ad vissza, amelyet a rendszer megismétel. | Kifejezés (amely egy JSON-tömböt ad vissza) | Igen
+Tevékenységek | A végrehajtandó tevékenységek. | Tevékenységek listája | Igen
 
 ## <a name="parallel-execution"></a>Párhuzamos végrehajtás
 Ha a **isSequential** hamis értékre van állítva, a tevékenység párhuzamosan, legfeljebb 20 egyidejű ismétléssel közelíthető meg. Ezt a beállítást körültekintően kell használni. Ha az egyidejű ismétlések ugyanarra a mappára, de különböző fájlokra is érvényesek, ez a megközelítés rendben van. Ha az egyidejű ismétlések egyidejű, ugyanazon a fájlon vannak írva, ez a megközelítés valószínűleg hibát okoz. 
@@ -483,6 +483,7 @@ Először deklaráljon egy `array` _változót_ a folyamatban. Ezután hívja me
 |---|---|
 | Egy ForEach hurok nem ágyazható be egy másik ForEach hurokba (vagy egy ciklusig). | Tervezzen olyan kétszintű folyamatot, amelyben a külső ForEach hurok külső folyamata egy belső folyamaton keresztül ismétli a beágyazott hurkot. |
 | A ForEach tevékenység legfeljebb `batchCount` 50 párhuzamos feldolgozásra és legfeljebb 100 000 elemet tartalmaz. | Tervezzen olyan kétszintű folyamatot, amelyben a külső folyamat ForEach tevékenysége egy belső folyamaton keresztül megismétli a folyamatokat. |
+| A SetVariable nem használható olyan ForEach-tevékenységen belül, amely párhuzamosan fut, mivel a változók globálisak a teljes folyamathoz, nem tartoznak a ForEach vagy más tevékenységekhez. | Érdemes lehet szekvenciális ForEach használni, vagy a ForEach belüli végrehajtási folyamatot (változó/paraméterrel kezelt).|
 | | |
 
 ## <a name="next-steps"></a>Következő lépések

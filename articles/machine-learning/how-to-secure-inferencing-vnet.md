@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 80abe036ef4a08f7ed6f0f19cffc2abde70a6ea9
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 190f44e95c96a2aee60e1b28f8817a74d3e06e3f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981306"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178660"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Azure Machine Learning következtetési környezet biztonságossá tétele virtuális hálózatokkal
 
@@ -34,7 +34,6 @@ Ebből a cikkből megtudhatja, hogyan védheti meg a következő, a virtuális h
 > - Privát AK-fürt
 > - AK-fürt magánhálózati kapcsolattal
 > - Azure Container Instances (ACI)
-
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -58,7 +57,6 @@ Ha AK-fürtöt szeretne használni egy virtuális hálózaton, a következő há
 > [!div class="checklist"]
 > * Kövesse az előfeltételeket a [speciális hálózatkezelés konfigurálása az Azure Kubernetes szolgáltatásban (ak)](../aks/configure-azure-cni.md#prerequisites).
 > * Az AK-példánynak és a virtuális hálózatnak ugyanabban a régióban kell lennie. Ha a virtuális hálózatban a munkaterület által használt Azure Storage-fiók (oka) t védi, azoknak ugyanabban a virtuális hálózatban kell lenniük, mint az AK-példány.
-
 
 A következő lépésekkel adhatja hozzá az AK-t egy virtuális hálózathoz a munkaterületéhez:
 
@@ -274,7 +272,7 @@ Ha nem szeretné az alapértelmezett kimenő szabályokat használni, és korlá
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ez a cikk egy négy részből álló virtuális hálózati sorozat harmadik része. A virtuális hálózatok biztonságossá tételéhez tekintse meg a cikkek további részeit:
+Ez a cikk egy öt részből álló virtuális hálózati sorozat negyedik része. A virtuális hálózatok biztonságossá tételéhez tekintse meg a cikkek további részeit:
 
 * [1. rész: a Virtual Network áttekintése](how-to-network-security-overview.md)
 * [2. rész: a munkaterület erőforrásainak védelme](how-to-secure-workspace-vnet.md)

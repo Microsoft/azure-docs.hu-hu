@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 4c2ace609d67cc48d1b73bdb044e7048ebda21e7
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: c93ecdc138e757f84e995a69a6c3d7f1b5460abe
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098332"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179374"
 ---
 # <a name="azure-percept-dk-overview"></a>Az Azure Percept DK áttekintése
 
@@ -24,7 +24,7 @@ Az Azure Percept DK egy élvonalbeli AI-és IoT-fejlesztési csomag, amely a fog
 
 - **Lehetőség a mesterséges intelligencia futtatására az Edge-** ben. A beépített hardveres gyorsítás lehetővé teszi, hogy a felhőhöz való kapcsolódás nélkül is futtasson látási AI-modelleket.
 - A **megbízhatósági kapcsolat biztonságának beépített hardveres gyökere**. További részletekért tekintse meg az [Azure Percept Security](./overview-percept-security.md) áttekintését.
-- **Zökkenőmentes integráció az [Azure Percept Studióval](./overview-azure-percept-studio.md)** és más Azure-szolgáltatásokkal. Például az Azure IoT Hub, az Azure Cognitive Services és az [élő videó Analytics](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/overview)
+- **Zökkenőmentes integráció az [Azure Percept Studióval](https://go.microsoft.com/fwlink/?linkid=2135819)** és más Azure-szolgáltatásokkal. Például az Azure IoT Hub, az Azure Cognitive Services és az [élő videó Analytics](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/overview)
 - **Zökkenőmentes integráció opcionális [Azure Percept hanggal](./overview-azure-percept-audio.md)**
 - **Támogatás a legfontosabb AI-platformokhoz**. Ilyenek például a ONNX és a TensorFlow.
 - **Integráció az 80/20 railing rendszerrel**. Így könnyebben hozhat létre prototípusokat éles környezetekben. További információ az [80/20-integrációról](./overview-8020-integration.md).

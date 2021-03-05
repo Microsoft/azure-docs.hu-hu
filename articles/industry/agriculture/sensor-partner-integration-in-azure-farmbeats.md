@@ -4,13 +4,13 @@ description: Ez a cikk az érzékelő partner integrációját ismerteti.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: ef74c4b799c3a24636f88a8e704bf726104b034f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.author: v-ummehabiba
+ms.openlocfilehash: 8d1b8203fa50609daf59431c2cfecba68eba52b1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001592"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179748"
 ---
 # <a name="sensor-partner-integration"></a>Érzékelői partner integrációja
 
@@ -137,7 +137,7 @@ A FarmBeats Datahub a következő API-kkal rendelkezik, amelyek lehetővé teszi
   Gyártó  | A gyártó neve |
   ProductCode  | Eszköz Termékkód vagy modell neve vagy száma. Például: EnviroMonitor # 6800. |
   Portok  | A port neve és típusa, amely digitális vagy analóg.  |
-  Név  | Az erőforrást azonosító név. Például a modell neve vagy a terméknév. |
+  Name  | Az erőforrást azonosító név. Például a modell neve vagy a terméknév. |
   Leírás  | Adjon meg egy értelmes leírást a modellről. |
   Tulajdonságok  | További tulajdonságok a gyártótól. |
   **Eszköz** | **Leírás** |
@@ -146,7 +146,7 @@ A FarmBeats Datahub a következő API-kkal rendelkezik, amelyek lehetővé teszi
   ReportingInterval |Jelentéskészítési időköz (másodperc). |
   Hely    |Az eszköz földrajzi szélessége (-90 és + 90), a hosszúság (-180 – 180) és a Jogosultságszint-emelés (méterben). |
   ParentDeviceId | Annak a fölérendelt eszköznek az azonosítója, amelyhez az eszköz csatlakoztatva van. Ha például egy csomópont átjáróhoz csatlakozik, a csomópont parentDeviceID van. |
-  Név  | Az erőforrást azonosító név. Az eszköz partnereinek olyan nevet kell küldeniük, amely konzisztens az eszköz nevével az erőforráspartner oldalán. Ha az eszköz neve felhasználó által definiálva van az eszköz partner oldalán, a felhasználó által definiált nevet is propagálni kell a FarmBeats.  |
+  Name  | Az erőforrást azonosító név. Az eszköz partnereinek olyan nevet kell küldeniük, amely konzisztens az eszköz nevével az erőforráspartner oldalán. Ha az eszköz neve felhasználó által definiálva van az eszköz partner oldalán, a felhasználó által definiált nevet is propagálni kell a FarmBeats.  |
   Leírás  | Adjon meg egy értelmes leírást.  |
   Tulajdonságok  |További tulajdonságok a gyártótól.  |
   **SensorModel** | **Leírás** |
@@ -160,7 +160,7 @@ A FarmBeats Datahub a következő API-kkal rendelkezik, amelyek lehetővé teszi
   SensorMeasures > AggregationType  | Egyik sem, átlagos, maximális, minimum vagy StandardDeviation.
   SensorMeasures > mélység  | Az érzékelő mélysége centiméterben. Például a nedvesség 10 cm-es méretének mérése a terepen.
   SensorMeasures > leírása  | Adjon meg egy értelmes leírást a mérésről.
-  Név  | Az erőforrást azonosító név. Például a modell neve vagy a termék neve.
+  Name  | Az erőforrást azonosító név. Például a modell neve vagy a termék neve.
   Leírás  | Adjon meg egy értelmes leírást a modellről.
   Tulajdonságok  | További tulajdonságok a gyártótól.
   **Érzékelő**  | **Leírás** |
@@ -169,7 +169,7 @@ A FarmBeats Datahub a következő API-kkal rendelkezik, amelyek lehetővé teszi
   Hely  | Érzékelő szélesség (-90 és + 90), hosszúság (-180 – 180) és Jogosultságszint-emelés (méterben).
   Port > neve  |Annak a portnak a neve és típusa, amelyhez az érzékelő csatlakozik az eszközhöz. Ennek a névnek meg kell egyeznie az eszköz modelljében megadott névvel.
   DeviceId  | Annak az eszköznek az azonosítója, amelyhez az érzékelő csatlakozik.
-  Név  | Az erőforrást azonosító név. Például az érzékelő neve, a terméknév és a modell száma vagy a termékkód.
+  Name  | Az erőforrást azonosító név. Például az érzékelő neve, a terméknév és a modell száma vagy a termékkód.
   Leírás  | Adjon meg egy értelmes leírást.
   Tulajdonságok  | További tulajdonságok a gyártótól.
 
@@ -348,6 +348,6 @@ Az eszközök gyártói vagy partnerei az alábbi ellenőrzőlista segítségév
    - Ellenőrizze, hogy az API-hívás sikeres-e a kapott hozzáférési jogkivonattal.
    - Ellenőrizze, hogy létrejött-e a EventHub-ügyfélkapcsolat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a REST APIről: [REST API](rest-api-in-azure-farmbeats.md).

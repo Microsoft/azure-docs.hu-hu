@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Azure, Kinect, SDK, frissítés letöltése, legújabb, elérhető, telepítés
-ms.openlocfilehash: 2fd14781c42192c713d826729f8fab6c698d6321
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 591fcba4c887e298cf667c5d95c19184bc213ffe
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505477"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179629"
 ---
 # <a name="azure-kinect-sensor-sdk-download"></a>Azure Kinect Sensor SDK letöltése
 
@@ -41,18 +41,23 @@ Jelenleg az egyetlen támogatott disztribúció az Ubuntu 18,04. További terjes
 
 Először konfigurálnia kell a [Microsoft Package repositoryját](https://packages.microsoft.com/), az [itt](/windows-server/administration/linux-package-repository-for-microsoft-software)található utasításokat követve.
 
-Most már telepítheti a szükséges csomagokat. A `k4a-tools` csomag tartalmazza az [Azure Kinect Viewert](azure-kinect-viewer.md), az [Azure Kinect Recorder](record-sensor-streams-file.md)és az [Azure Kinect belső vezérlőprogram eszközét](azure-kinect-firmware-tool.md). A telepítéséhez futtassa a következőt
+Most már telepítheti a szükséges csomagokat. A `k4a-tools` csomag tartalmazza az [Azure Kinect Viewert](azure-kinect-viewer.md), az [Azure Kinect Recorder](record-sensor-streams-file.md)és az [Azure Kinect belső vezérlőprogram eszközét](azure-kinect-firmware-tool.md). A csomag telepítéséhez futtassa a következőt:
 
- `sudo apt install k4a-tools`
+`sudo apt install k4a-tools`
+ 
+Ez a parancs telepíti azokat a függőségi csomagokat, amelyek szükségesek ahhoz, hogy az eszközök megfelelően működjenek, beleértve a legújabb verzióját is `libk4a<major>.<minor>` . A root felhasználó nélkül hozzá kell adnia a udev-szabályokat az Azure Kinect DK eléréséhez. Útmutatásért lásd: [Linux-eszköz beállítása](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/blob/develop/docs/usage.md#linux-device-setup). Alternatív megoldásként olyan alkalmazásokat is indíthat, amelyek root-ként használják az eszközt.
 
- A `libk4a<major>.<minor>-dev` csomag tartalmazza a felépíteni kívánt fejléceket és CMAK-fájlokat `libk4a` .
-A `libk4a<major>.<minor>` csomag tartalmazza a függőben lévő végrehajtható fájlok futtatásához szükséges megosztott objektumokat `libk4a` .
+A `libk4a<major>.<minor>-dev` csomag tartalmazza a fejléceket és a CMAK-fájlokat, amelyekkel az alkalmazásait/végrehajtható fájljait felépítheti `libk4a` .
 
- Az alapszintű oktatóanyagokhoz szükség van a `libk4a<major>.<minor>-dev` csomagra. A telepítéséhez futtassa a következőt
+A `libk4a<major>.<minor>` csomag tartalmazza azokat a megosztott objektumokat, amelyek a-től függő alkalmazások vagy végrehajtható fájlok futtatásához szükségesek `libk4a` .
 
- `sudo apt install libk4a1.1-dev`
+Az alapszintű oktatóanyagokhoz szükség van a `libk4a<major>.<minor>-dev` csomagra. A csomag telepítéséhez futtassa a következőt:
+
+`sudo apt install libk4a<major>.<minor>-dev` 
 
 Ha a parancs sikeres, az SDK készen áll a használatra.
+
+Ügyeljen arra, hogy a megfelelő verzióját telepítse a alkalmazással `libk4a<major>.<minor>` `libk4a<major>.<minor>-dev` . Ha például telepíti a `libk4a4.1-dev` csomagot, telepítse a megfelelő `libk4a4.1` csomagot, amely tartalmazza a megosztott objektumok egyező verzióját. A legújabb verziójával `libk4a` kapcsolatban tekintse meg a következő szakaszban található hivatkozásokat.
 
 ## <a name="change-log-and-older-versions"></a>A napló és a régebbi verziók módosítása
 

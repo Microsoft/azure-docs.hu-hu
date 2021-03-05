@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: 824308b66803d2dfa05383ff06ce97c48626619d
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 6146676121bac0089d5f520d60a97d74567a32bc
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100557589"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179340"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Az Azure IoT Central kibővítése egyéni szabályokkal a Stream Analytics, az Azure Functions és a SendGrid használatával
 
@@ -119,26 +119,28 @@ IoT Central alkalmazást úgy konfigurálhatja, hogy folyamatosan exportálja a 
 
 A Event Hubs névtere a következő képernyőképre hasonlít: 
 
-```:::image type="content" source="media/howto-create-custom-rules/event-hubs-namespace.png" alt-text="Screenshot of Event Hubs namespace." border="false":::
+:::image type="content" source="media/howto-create-custom-rules/event-hubs-namespace.png" alt-text="Képernyőkép Event Hubs névtérről." border="false":::
 
-## Define the function
 
-This solution uses an Azure Functions app to send an email notification when the Stream Analytics job detects a stopped device. To create your function app:
+## <a name="define-the-function"></a>A függvény megadása
 
-1. In the Azure portal, navigate to the **App Service** instance in the **DetectStoppedDevices** resource group.
-1. Select **+** to create a new function.
-1. Select **HTTP Trigger**.
-1. Select **Add**.
+Ez a megoldás egy Azure Functions alkalmazást használ e-mail-értesítés küldéséhez, ha a Stream Analytics feladatokban leállított eszköz észlelve. A Function-alkalmazás létrehozása:
 
-    :::image type="content" source="media/howto-create-custom-rules/add-function.png" alt-text="Image of the Default HTTP trigger function"::: 
+1. A Azure Portal navigáljon a **DetectStoppedDevices** erőforráscsoport **app Service** példányához.
+1. **+** Új függvény létrehozásához válassza a lehetőséget.
+1. Válassza a **http-trigger** lehetőséget.
+1. Válassza a **Hozzáadás** lehetőséget.
 
-## Edit code for HTTP Trigger
+    :::image type="content" source="media/howto-create-custom-rules/add-function.png" alt-text="Az alapértelmezett HTTP-trigger függvény képe"::: 
 
-The portal creates a default function called **HttpTrigger1**:
+## <a name="edit-code-for-http-trigger"></a>Kód szerkesztése HTTP-triggerhez
 
-```:::image type="content" source="media/howto-create-custom-rules/default-function.png" alt-text="Screenshot of Edit HTTP trigger function.":::
+A portál létrehoz egy **HttpTrigger1** nevű alapértelmezett függvényt:
 
-1. Replace the C# code with the following code:
+:::image type="content" source="media/howto-create-custom-rules/default-function.png" alt-text="Képernyőkép a HTTP-trigger funkciójának szerkesztéséről.":::
+
+
+1. Cserélje le a C#-kódot a következő kódra:
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -177,50 +179,50 @@ The portal creates a default function called **HttpTrigger1**:
     }
     ```
 
-    You may see an error message until you save the new code.
-1. Select **Save** to save the function.
+    Előfordulhat, hogy az új kód mentésekor hibaüzenet jelenik meg.
+1. A függvény mentéséhez válassza a **Mentés** lehetőséget.
 
-## Add SendGrid Key
+## <a name="add-sendgrid-key"></a>SendGrid kulcs hozzáadása
 
-To add your SendGrid API Key, you need to add it to your **Function Keys** as follows:
+A SendGrid API-kulcs hozzáadásához hozzá kell adnia azt a **funkcióbillentyűk** számára a következő módon:
 
-1. Select **Function Keys**.
-1. Choose **+ New Function Key**.
-1. Enter the *Name* and *Value* of the API Key you created before.
-1. Click **OK.**
+1. Válassza a **funkcióbillentyűk** lehetőséget.
+1. Válassza az **+ új funkcióbillentyű** lehetőséget.
+1. Adja meg a korábban létrehozott API-kulcs *nevét* és *értékét* .
+1. Kattintson **az OK gombra.**
 
-    :::image type="content" source="media/howto-create-custom-rules/add-key.png" alt-text="Screenshot of Add Sangrid Key.":::
+    :::image type="content" source="media/howto-create-custom-rules/add-key.png" alt-text="Képernyőkép a Sangrid-kulcs hozzáadásáról.":::
 
 
-## Configure HttpTrigger function to use SendGrid
+## <a name="configure-httptrigger-function-to-use-sendgrid"></a>A HttpTrigger függvény konfigurálása a SendGrid használatára
 
-To send emails with SendGrid, you need to configure the bindings for your function as follows:
+Az e-mailek SendGrid való elküldéséhez a következő módon kell konfigurálnia a függvény kötéseit:
 
-1. Select **Integrate**.
-1. Choose **Add Output** under **HTTP ($return)**.
-1. Select **Delete.**
-1. Choose **+ New Output**.
-1. For Binding Type, then choose **SendGrid**.
-1. For SendGrid API Key Setting Type, click New.
-1. Enter the *Name* and *Value* of your SendGrid API key.
-1. Add the following information:
+1. Válassza az **Integrálás** lehetőséget.
+1. Válassza a **kimenet hozzáadása** **http-ben ($Return)** lehetőséget.
+1. Válassza a **Törlés lehetőséget.**
+1. Válassza az **+ új kimenet** lehetőséget.
+1. A kötés típusa beállításnál válassza a **SendGrid** lehetőséget.
+1. A SendGrid API-kulcs beállításának típusa területen kattintson az új elemre.
+1. Adja meg a SendGrid API-kulcs *nevét* és *értékét* .
+1. Adja meg a következő információkat:
 
-| Setting | Value |
+| Beállítás | Érték |
 | ------- | ----- |
-| Message parameter name | Choose your name |
-| To address | Choose the name of your To Address |
-| From address | Choose the name of your From Address |
-| Message subject | Enter your subject header |
-| Message text | Enter the message from your integration |
+| Üzenet-paraméter neve | Válassza ki a nevét |
+| A címe | Válassza ki a címnek a nevét |
+| Feladó címe | Válassza ki a feladó címe nevet |
+| Üzenet tárgya | Adja meg a tárgy fejlécét |
+| Szöveges üzenet | Adja meg az integrációs üzenetet |
 
-1. Select **OK**.
+1. Válassza az **OK** lehetőséget.
 
-    :::image type="content" source="media/howto-create-custom-rules/add-output.png" alt-text="Screenshot of Add SandGrid Output.":::
+    :::image type="content" source="media/howto-create-custom-rules/add-output.png" alt-text="Képernyőkép a SandGrid-kimenet hozzáadásáról.":::
 
 
-### Test the function works
+### <a name="test-the-function-works"></a>A függvény működésének tesztelése
 
-To test the function in the portal, first choose **Logs** at the bottom of the code editor. Then choose **Test** to the right of the code editor. Use the following JSON as the **Request body**:
+A függvénynek a portálon való teszteléséhez először a Kódszerkesztő alján válassza a **naplók** lehetőséget. Ezután válassza a **teszt** elemet a Kódszerkesztő jobb oldalán. A következő JSON-t használja a **kérelem törzse**:
 
 ```json
 [{"deviceid":"test-device-1","time":"2019-05-02T14:23:39.527Z"},{"deviceid":"test-device-2","time":"2019-05-02T14:23:50.717Z"},{"deviceid":"test-device-3","time":"2019-05-02T14:24:28.919Z"}]
@@ -228,9 +230,9 @@ To test the function in the portal, first choose **Logs** at the bottom of the c
 
 A függvények naplójának üzenetei a **naplók** panelen jelennek meg:
 
-```:::image type="content" source="media/howto-create-custom-rules/function-app-logs.png" alt-text="Function log output":::
+:::image type="content" source="media/howto-create-custom-rules/function-app-logs.png" alt-text="Függvény naplójának kimenete":::
 
-After a few minutes, the **To** email address receives an email with the following content:
+Néhány perc elteltével az e- **mail-címe** megkapja az alábbi tartalommal ellátott e-mailt:
 
 ```txt
 The following device(s) have stopped sending telemetry:

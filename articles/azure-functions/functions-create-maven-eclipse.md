@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter, devx-track-java
-ms.openlocfilehash: a4e240837dd3c95efc4dc83a7491f2ad9163435a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7dd881d130b9df19335ac64be501553af99d58d8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373317"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179544"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Az első függvény létrehozása a Java és az Eclipse használatával 
 
@@ -37,10 +37,10 @@ Javasoljuk, hogy a [Azure functions Core Tools, 2-es verziójú verziót](functi
 
 ## <a name="create-a-functions-project"></a>Functions-projekt létrehozása
 
-1. Az Eclipse-ben válassza a **fájl** menüt, majd az **új- &gt; Maven projekt**elemet. 
+1. Az Eclipse-ben válassza a **fájl** menüt, majd az **új- &gt; Maven projekt** elemet. 
 1. Fogadja el az alapértelmezett értékeket az **új Maven-projekt** dialógusban, és kattintson a **Tovább gombra**.
-1. Keresse meg és válassza ki az [Azure-functions-archetípus](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) elemet, és kattintson a **tovább**gombra.
-1. Ügyeljen arra, hogy az összes mező értékeit kitöltse, például:, `resourceGroup` `appName` és `appRegion` (használjon más appName, mint a **fabrikam-Function-20170920120101928**), és végül **fejezze**be a műveletet.
+1. Keresse meg és válassza ki az [Azure-functions-archetípus](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) elemet, és kattintson a **tovább** gombra.
+1. Ügyeljen arra, hogy az összes mező értékeit kitöltse, például:, `resourceGroup` `appName` és `appRegion` (használjon más appName, mint a **fabrikam-Function-20170920120101928**), és végül **fejezze** be a műveletet.
     ![Az Eclipse Maven create2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
 A Maven egy _artifactId_ nevű új mappában hozza létre a projektfájlokat. A projektben létrehozott kód egy egyszerű http- [triggert](./functions-bindings-http-webhook.md) használó függvény, amely a kiváltó HTTP-kérelem törzsét visszhangzik.
@@ -50,8 +50,8 @@ A Maven egy _artifactId_ nevű új mappában hozza létre a projektfájlokat. A 
 > [!NOTE]
 > A ( [Azure functions Core Tools) 2. verziójának](functions-run-local.md#v2) telepítve kell lennie a függvények helyi futtatásához és hibakereséséhez.
 
-1. Kattintson a jobb gombbal a generált projektre, majd válassza a **Futtatás as** és **Maven Build**lehetőséget.
-1. A **konfiguráció szerkesztése** párbeszédpanelen adja meg `package` a **célok** és **név** mezőket, majd válassza a **Futtatás**lehetőséget. Ezzel létrehozza és becsomagolja a függvény kódját.
+1. Kattintson a jobb gombbal a generált projektre, majd válassza a **Futtatás as** és **Maven Build** lehetőséget.
+1. A **konfiguráció szerkesztése** párbeszédpanelen adja meg `package` a **célok** és **név** mezőket, majd válassza a **Futtatás** lehetőséget. Ezzel létrehozza és becsomagolja a függvény kódját.
 1. A Build befejezése után hozzon létre egy másik futtatási konfigurációt a fentieknek megfelelően, `azure-functions:run` a célt és a nevet használva. Válassza a **Futtatás** lehetőséget a függvény futtatásához az ide-ben.
 
 Ha végzett a függvény tesztelésével, szakítsa meg a futtatókörnyezetet a konzol ablakban. Egyszerre csak egy Function Host lehet aktív és helyileg futni.
@@ -68,7 +68,7 @@ Az IDE használatával töréspontokat állíthat be, és megvizsgálhatja a fü
 
 ## <a name="deploy-the-function-to-azure"></a>A függvény üzembe helyezése az Azure-ban
 
-Az Azure Functions üzembehelyezési folyamata az Azure parancssori felületről származó fiókhitelesítő-adatokat használja. A számítógép parancssorának folytatása előtt [Jelentkezzen be az Azure CLI-vel](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) .
+Az Azure Functions üzembehelyezési folyamata az Azure parancssori felületről származó fiókhitelesítő-adatokat használja. A számítógép parancssorának folytatása előtt [Jelentkezzen be az Azure CLI-vel](/cli/azure/authenticate-azure-cli) .
 
 ```azurecli
 az login
@@ -86,7 +86,7 @@ Az üzembe helyezés végén megjelenik az URL-cím, amellyel bejelentkezhet az 
 [INFO] ------------------------------------------------------------------------
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha további információra van szüksége a Java-függvények létrehozásával kapcsolatban, tekintse át a [Java-függvények fejlesztői útmutatóját](functions-reference-java.md).
 - Adjon hozzá különböző triggereket használó további funkciókat a projekthez az `azure-functions:add` Maven-cél használatával.

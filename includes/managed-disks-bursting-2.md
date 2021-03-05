@@ -5,15 +5,15 @@ services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/12/2021
+ms.date: 03/04/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 54c29d76757916a8eea54af16babdae21b809a19
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a2f6a3fd8d36bb54773db21e3d36dab0060bae57
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101751023"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178370"
 ---
 ## <a name="disk-level-bursting"></a>Lemez szintű burst
 
@@ -63,15 +63,14 @@ A számítási feladatok értékeléséhez tekintse meg a [Managed Disks díjsza
 
 A kredit-alapú adatmennyiség az Azure nyilvános, kormányzati és kínai felhőkben található összes régióban P20 és kisebb méretekben érhető el. Alapértelmezés szerint a lemezes kitörés engedélyezve van a támogatott lemezterületek összes új és meglévő központi telepítésén. A VM-szintű kitörés csak a kredit alapú kitörést használja.
 
-### <a name="virtual-machine-level-bursting"></a>Virtuális gépek – szintű kitörés
-A virtuális gépek szintjének feltört támogatása a nyilvános felhőben lévő összes régióban elérhető a következő támogatott méreteken: 
-- [Lsv2 sorozat](../articles/virtual-machines/lsv2-series.md)
+## <a name="virtual-machine-level-bursting"></a>Virtuális gépek – szintű kitörés
 
-Az USA nyugati középső régiójában a következő támogatott méretek esetében is elérhető a virtuális gépek szintjének kitörése:
+A virtuálisgép-szint kitörése csak a kredit alapú modellt használja a kitöréshez, alapértelmezés szerint engedélyezve van minden olyan virtuális gép esetében, amely támogatja azt.
+
+A virtuális gépek szintjének kitörése az Azure nyilvános felhő összes régiójában engedélyezett a következő támogatott méreteken: 
+- [Lsv2 sorozat](../articles/virtual-machines/lsv2-series.md)
 - [Dv3 és DSv3 sorozat](../articles/virtual-machines/dv3-dsv3-series.md)
 - [Ev3 és Esv3 sorozat](../articles/virtual-machines/ev3-esv3-series.md)
-
-Alapértelmezés szerint a kitörés engedélyezve van az azt támogató virtuális gépeken.
 
 ## <a name="bursting-flow"></a>Feltört folyamat
 
