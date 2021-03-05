@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: d5c85095e767c0e92c22410054ac4f8fc5267660
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1f78d7185415b66445c78f3b4cdb54ed0d63cb0a
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097141"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216615"
 ---
 # <a name="spring-data-azure-cosmos-db-v2-for-core-sql-api-release-notes-and-resources"></a>Spring-adatAzure Cosmos DB v2 for Core (SQL) API: kibocsátási megjegyzések és erőforrások
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -55,14 +55,14 @@ Az [Azure Spring Cloud](https://azure.microsoft.com/services/spring-cloud/) -alk
 > * [Spring-adatGremlin Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
 >
 > Szeretne gyorsan eljutni?
-> 1. Telepítse a [minimális támogatott Java-futtatókörnyezetet (JDK 8](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)), így használhatja az SDK-t is.
+> 1. Telepítse a [minimális támogatott Java-futtatókörnyezetet (JDK 8](/java/azure/jdk/)), így használhatja az SDK-t is.
 > 2. Hozzon létre egy Spring-adatAzure Cosmos DB alkalmazást a [Starter](/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db)használatával. Egyszerű!
 > 3. A Spring- [adatokon keresztül Azure Cosmos db Fejlesztői útmutatóban](/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb)dolgozhat, amely az alapszintű Azure Cosmos db kérelmeken keresztül halad.
 >
 > A Spring [inicializáló](https://start.spring.io/)használatával gyorsan üzembe helyezheti a Spring boot Starter-alkalmazásokat.
 >
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Források
 
 | Erőforrás | Hivatkozás |
 |---|---|

@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/21/2021
+ms.date: 03/05/2021
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 944e233fafc4cf5c8c90041e18f94d0e53b7bb46
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2ed6c0c20869e31c0ef664d15305c5aa85ca4c6c
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591540"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215578"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Azure Storage-fiókhoz tartozó megosztott kulcs engedélyezésének tiltása (előzetes verzió)
 
@@ -22,12 +22,8 @@ Az Azure Storage-fiókokra vonatkozó minden biztonságos kérelemnek engedélye
 
 Ha egy Storage-fiókhoz nem engedélyezi a megosztott kulcs engedélyezését, az Azure Storage elutasítja az adott fiókhoz tartozó minden további kérelmet, amely jogosult a fiók hozzáférési kulcsaira. Csak az Azure AD-vel rendelkező biztonságos kérelmek sikeresek lesznek. Az Azure AD használatával kapcsolatos további információkért lásd: a [blobok és várólisták hozzáférésének engedélyezése Azure Active Directory használatával](storage-auth-aad.md).
 
-> [!WARNING]
-> Az Azure Storage csak a blob-és üzenetsor-tárolásra vonatkozó kérelmek esetében támogatja az Azure AD-hitelesítést. Ha nem engedélyezi a megosztott kulccsal való engedélyezést egy Storage-fiók esetében, akkor a megosztott kulcs-engedélyezést használó Azure Files vagy table Storage-kérelmek sikertelenek lesznek. Mivel a Azure Portal mindig megosztott kulcsos hitelesítést használ a fájl-és Table-adateléréshez, ha a Storage-fiókhoz nem engedélyezi a megosztott kulccsal való engedélyezést, akkor nem fog tudni hozzáférni a fájlhoz vagy a táblához a Azure Portal.
->
-> A Microsoft azt javasolja, hogy a megosztott kulccsal való hozzáférés letiltása előtt telepítse át a Azure Files vagy a Table Storage-adatok egy külön Storage-fiókba való áttelepítését, vagy ne alkalmazza ezt a beállítást olyan Storage-fiókokra, amelyek támogatják a Azure Files vagy a Table Storage munkaterheléseket.
->
-> Ha nem engedélyezi a megosztott kulcs elérését egy Storage-fiókhoz, az nem érinti a Azure Files SMB-kapcsolatait.
+> [!IMPORTANT]
+> A megosztott kulcs engedélyezésének letiltása jelenleg **előzetes** verzióban érhető el. Tekintse meg az Azure-szolgáltatásokra vonatkozó, a bétaverzióban, az előzetes verzióban, vagy más módon még nem közzétett, általánosan elérhetővé vált jogi feltételekhez tartozó [Microsoft Azure előzetes verziójának kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) .
 
 Ez a cikk azt ismerteti, hogyan lehet megállapítani a megosztott kulcsos hitelesítéssel küldött kéréseket, és hogyan javíthatja a megosztott kulcsokat a Storage-fiókhoz. Ha szeretné megtudni, hogyan regisztrálhat az előzetes verzióra, tekintse meg [az előzetes](#about-the-preview)verzióról szóló témakört.
 
@@ -133,11 +129,23 @@ Az alábbi lépéseket követve engedélyezheti a megosztott kulcs engedélyezé
 
     :::image type="content" source="media/shared-key-authorization-prevent/shared-key-access-portal.png" alt-text="A fiók megosztott kulcshoz való hozzáférésének tiltását bemutató képernyőkép":::
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Ha nem szeretné engedélyezni a megosztott kulcs engedélyezését egy olyan Storage-fiókhoz, amely PowerShell-lel rendelkezik, telepítse az az [. Storage PowerShell-modult](https://www.powershellgallery.com/packages/Az.Storage)3.4.0 vagy újabb verzióra. Ezután konfigurálja a **AllowSharedKeyAccess** tulajdonságot egy új vagy meglévő Storage-fiókhoz.
+
+Az alábbi példa bemutatja, hogyan lehet letiltani a megosztott kulccsal való hozzáférést egy meglévő Storage-fiókhoz a PowerShell használatával. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
+
+```powershell
+Set-AzStorageAccount -ResourceGroupName <resource-group> `
+    -AccountName <storage-account> `
+    -AllowSharedKeyAccess $false
+```
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Ha egy Storage-fiókhoz az Azure CLI-vel szeretné engedélyezni a megosztott kulcs engedélyezését, telepítse az Azure CLI 2.9.1 vagy újabb verzióját. További információ: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Ezután konfigurálja a **allowSharedKeyAccess** tulajdonságot egy új vagy meglévő Storage-fiókhoz.
 
-Az alábbi példa bemutatja, hogyan állíthatja be az **allowSharedKeyAccess** tulajdonságot az Azure CLI-vel. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
+Az alábbi példa bemutatja, hogyan lehet letiltani a megosztott kulccsal való hozzáférést egy meglévő Storage-fiókhoz az Azure CLI-vel. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
 
 ```azurecli-interactive
 $storage_account_id=$(az resource show \
@@ -236,12 +244,17 @@ Néhány Azure-eszköz lehetővé teszi az Azure AD-hitelesítés használatát 
 | Azure IoT Hub | Támogatott. További információ: [IoT hub virtuális hálózatok támogatása](../../iot-hub/virtual-network-support.md). |
 | Azure Cloud Shell | A Azure Cloud Shell a Azure Portal integrált rendszerhéja. Azure Cloud Shell a fájlok megőrzését a Storage-fiókban lévő Azure-fájlmegosztás tárolja. Ezek a fájlok elérhetetlenné válnak, ha a megosztott kulcs engedélyezése nem engedélyezett a Storage-fiók esetében. További információ: [a Microsoft Azure Files Storage összekötése](../../cloud-shell/overview.md#connect-your-microsoft-azure-files-storage). <br /><br /> Ha a Azure Cloud Shell parancsainak futtatásával szeretné felügyelni azokat a Storage-fiókokat, amelyekhez a megosztott kulcsokhoz való hozzáférés nem engedélyezett, először győződjön meg arról, hogy a szükséges engedélyeket megadta a fiókoknak az Azure RBAC-on keresztül. További információ: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../../role-based-access-control/overview.md). |
 
+## <a name="transition-azure-files-and-table-storage-workloads"></a>Áttérési Azure Files és táblázatos tárolási számítási feladatok
+
+Az Azure Storage csak a blob-és üzenetsor-tárolásra vonatkozó kérelmek esetében támogatja az Azure AD-hitelesítést. Ha nem engedélyezi a megosztott kulccsal való engedélyezést egy Storage-fiók esetében, akkor a megosztott kulcs-engedélyezést használó Azure Files vagy table Storage-kérelmek sikertelenek lesznek. Mivel a Azure Portal mindig megosztott kulcsos hitelesítést használ a fájl-és Table-adateléréshez, ha a Storage-fiókhoz nem engedélyezi a megosztott kulccsal való engedélyezést, akkor nem fog tudni hozzáférni a fájlhoz vagy a táblához a Azure Portal.
+
+A Microsoft azt javasolja, hogy a megosztott kulccsal való hozzáférés letiltása előtt telepítse át a Azure Files vagy a Table Storage-adatok egy külön Storage-fiókba való áttelepítését, vagy ne alkalmazza ezt a beállítást olyan Storage-fiókokra, amelyek támogatják a Azure Files vagy a Table Storage munkaterheléseket.
+
+Ha nem engedélyezi a megosztott kulcs elérését egy Storage-fiókhoz, az nem érinti a Azure Files SMB-kapcsolatait.
+
 ## <a name="about-the-preview"></a>Az előzetes verzió ismertetése
 
 A megosztott kulcs engedélyezésének előzetes verziója az Azure nyilvános felhőben érhető el. A szolgáltatás csak a Azure Resource Manager telepítési modellt használó Storage-fiókok esetében támogatott. További információ arról, hogy mely tárolási fiókok használják a Azure Resource Manager telepítési modellt: a [Storage-fiókok típusai](storage-account-overview.md#types-of-storage-accounts).
-
-> [!IMPORTANT]
-> Ez az előzetes verzió csak a nem éles használatra készült.
 
 Az előzetes verzió az alábbi szakaszokban ismertetett korlátozásokat tartalmazza.
 

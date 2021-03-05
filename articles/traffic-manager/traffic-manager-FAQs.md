@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/03/2021
 ms.author: duau
-ms.openlocfilehash: 163436ad82ea6f5067ad41b7fdd7e315db6dc29a
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 0d4f1ed6bab5775c44b2a745e1edc5fc07e0c06d
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102095017"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215459"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager gyakori kérdések (GYIK)
 
@@ -306,7 +306,7 @@ A forgalomáttekintő díjszabás a kimenet létrehozásához használt adatpont
 
 A több előfizetésből származó végpontok használata nem lehetséges az Azure Web Apps. Az Azure Web Apps megköveteli, hogy a Web Apps használt egyéni tartománynevek csak egyetlen előfizetésben legyenek használatban. Nem lehet több előfizetésből Web Appst használni ugyanazzal a tartománynévvel.
 
-Más végpontok esetében az Traffic Manager több előfizetésből származó végpontokkal is használható. A Resource Managerben bármely előfizetésből származó végpontok Traffic Managerhoz adhatók hozzá, feltéve, hogy a Traffic Manager profilt konfiguráló személy olvasási hozzáféréssel rendelkezik a végponthoz. Ezek az engedélyek az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/role-assignments-portal.md)használatával is megadhatók. Más előfizetésből származó végpontokat [Azure PowerShell](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) vagy az [Azure CLI](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create)használatával lehet felvenni.
+Más végpontok esetében az Traffic Manager több előfizetésből származó végpontokkal is használható. A Resource Managerben bármely előfizetésből származó végpontok Traffic Managerhoz adhatók hozzá, feltéve, hogy a Traffic Manager profilt konfiguráló személy olvasási hozzáféréssel rendelkezik a végponthoz. Ezek az engedélyek az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/role-assignments-portal.md)használatával is megadhatók. Más előfizetésből származó végpontokat [Azure PowerShell](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) vagy az [Azure CLI](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-create)használatával lehet felvenni.
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>Használhatom Traffic Manager a Cloud Service átmeneti tárolóhelyeit?
 

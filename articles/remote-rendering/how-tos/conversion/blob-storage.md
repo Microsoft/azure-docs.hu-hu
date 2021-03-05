@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: cfc10658463888e43ea1a24dfefd3f8939ec8ef7
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 889c25fd1402c4438ff648afce64905de112c8db
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762784"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215544"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>Modellek átalakítása az Azure Blob Storage használatával
 
@@ -28,7 +28,7 @@ A [modell-átalakítási](model-conversion.md) szolgáltatáshoz hozzáférésse
 A Storage-fiók és a blob-tárolók létrehozása a következő eszközök egyikével végezhető el:
 
 - [Azure Portal](https://portal.azure.com)
-- [az Command Line](/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [az Command Line](/cli/azure/install-azure-cli)
 - [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
 - SDK-k (C#, Python...)
 
@@ -52,7 +52,7 @@ SAS URI-t az alábbiak egyikével lehet létrehozni:
 
 - az PowerShell-modul
   - lásd a [PowerShell-parancsfájlok példáit](../../samples/powershell-example-scripts.md)
-- [az Command Line](/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [az Command Line](/cli/azure/install-azure-cli)
 - [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
   - kattintson a jobb gombbal a tároló "közös hozzáférési aláírás beolvasása" elemre (olvasás, hozzáférés listázása beviteli tárolóhoz, írási hozzáférés a kimeneti tárolóhoz)
 - SDK-k (C#, Python...)
@@ -80,7 +80,7 @@ Ha például SAS URI-t szeretne beolvasni a [Azure Storage Exploreron](https://a
 
 Ha nem csatlakoztatta a Storage-fiókot az Azure távoli megjelenítési fiókjához, a modell betöltéséhez közös hozzáférésű aláírás (SAS) szükséges. Megtudhatja, hogyan csatlakozhat a fiókhoz a fiók [létrehozása](../create-an-account.md#link-storage-accounts)című témakörben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A modell átalakításának konfigurálása](configure-model-conversion.md)
 - [A modell átalakítási REST API](conversion-rest-api.md)

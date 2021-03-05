@@ -3,12 +3,12 @@ title: Azure Active Directory beállítása az ügyfél-hitelesítéshez
 description: Megtudhatja, hogyan állíthatja be Azure Active Directory (Azure AD) a Service Fabric-fürtökhöz tartozó ügyfelek hitelesítéséhez.
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: 537a81a090828d3fcc9dde6032f1d4eb2df9b4e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1f89e144f9cef12c5bff87befb00a88bad8d7d9
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258766"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215969"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Azure Active Directory beállítása az ügyfél-hitelesítéshez
 
@@ -104,7 +104,7 @@ Amikor Service Fabric Explorerban próbál bejelentkezni az Azure AD-be, a lap e
 A fürt (web) alkalmazás, amely Service Fabric Explorer az Azure AD-vel való hitelesítésre irányuló kísérleteket jelképezi, és a kérelem részeként az átirányítási visszaküldési URL-címet adja meg. Az URL-cím azonban nem szerepel az Azure AD **-alkalmazás válaszának URL-címe** listán.
 
 #### <a name="solution"></a>Megoldás
-A fürthöz tartozó Azure AD-alkalmazás regisztrálása lapon válassza a **hitelesítés**lehetőséget, majd az URI-k **átirányítása** szakaszban adja meg a lista Service Fabric Explorer URL-címét. Mentse a változást.
+A fürthöz tartozó Azure AD-alkalmazás regisztrálása lapon válassza a **hitelesítés** lehetőséget, majd az URI-k **átirányítása** szakaszban adja meg a lista Service Fabric Explorer URL-címét. Mentse a változást.
 
 ![Webalkalmazás válaszának URL-címe][web-application-reply-url]
 
@@ -133,12 +133,12 @@ Igen. Azonban ne felejtse el felvenni a Service Fabric Explorer URL-címét a f�
 ### <a name="why-do-i-still-need-a-server-certificate-while-azure-ad-is-enabled"></a>Miért van szükség a kiszolgálói tanúsítványra, amíg az Azure AD engedélyezve van?
 A FabricClient és a FabricGateway kölcsönös hitelesítést hajt végre. Az Azure AD-hitelesítés során az Azure AD-integráció ügyfél-identitást biztosít a kiszolgálónak, és a kiszolgáló tanúsítványát az ügyfél használja a kiszolgáló identitásának ellenőrzéséhez. További információ a Service Fabric tanúsítványokról: [X. 509 tanúsítványok és Service Fabric][x509-certificates-and-service-fabric].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Azure Active Directory alkalmazások beállítása és szerepkörök beállítása a felhasználók számára, [a fürt konfigurálása és üzembe helyezése](service-fabric-cluster-creation-via-arm.md).
 
 
 <!-- Links -->
-[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
+[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli
 [azure-portal]: https://portal.azure.com/
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [active-directory-howto-tenant]:../active-directory/develop/quickstart-create-new-tenant.md

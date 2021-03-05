@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 225cb8d7bc35491ceefe444664afe175c7f7ea01
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: ebd984ad6fd91aa29af9766042a03bc56efe17eb
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954935"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215748"
 ---
 # <a name="troubleshooting-with-a-local-model-deployment"></a>Hibaelhárítás helyi modell-telepítéssel
 
@@ -29,7 +29,7 @@ Próbálja ki a helyi modell központi telepítését az Azure Container Instanc
    * Egy Azure Machine Learning-munkaterülett futtató [számítási példány](how-to-deploy-local-container-notebook-vm.md)
 * B lehetőség – helyi hibakeresés a számítási feladatokban
    * A [Azure Machine learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
-   * Az [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)-vel.
+   * Az [Azure CLI](/cli/azure/install-azure-cli)-vel.
    * A [Azure Machine learning CLI-bővítménye](reference-azure-machine-learning-cli.md).
    * Van egy működő Docker-telepítés a helyi rendszeren. 
    * A Docker-telepítés ellenőrzéséhez használja a parancsot `docker run hello-world` egy terminálról vagy parancssorból. A Docker telepítésével vagy a Docker-hibák elhárításával kapcsolatos információkért tekintse meg a [Docker dokumentációját](https://docs.docker.com/).

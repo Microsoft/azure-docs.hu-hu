@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: dbf2331dc6bcd3187175554b61d347e8bb2c04a4
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 5e7f38e4bbc95e04bf54f8f7a2dd80e21891e8df
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624999"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215493"
 ---
 # <a name="tutorial-find-and-display-routes-for-different-modes-of-travel-using-azure-maps"></a>Oktatóanyag: útvonalak keresése és megjelenítése különböző utazási módokhoz Azure Maps használatával
 
-Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Azure Maps [Route Service](/rest/api/maps/route) -t és a [Térkép vezérlőelemet](./how-to-use-map-control.md) a személygépkocsik és a kereskedelmi gépjárművek (kamionok) útvonali irányának megjelenítésére a `USHazmatClass2` rakomány típusával. Emellett végigvezeti Önt a valós idejű adatforgalmi adatok térképeken való megjelenítésének módján. Az oktatóanyag a következőket ismerteti:
+Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Azure Maps [Route Service](/rest/api/maps/route) -t és a [Térkép vezérlőelemet](./how-to-use-map-control.md) a személygépkocsik és a kereskedelmi gépjárművek (kamionok) útvonali irányának megjelenítésére a `USHazmatClass2` rakomány típusával. Emellett végigvezeti Önt a valós idejű adatforgalmi adatok térképeken való megjelenítésének módján. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * A Térkép vezérlőelem létrehozása és megjelenítése egy weblapon
@@ -117,7 +117,7 @@ A következő lépések bemutatják, hogyan hozhatja létre és jelenítheti meg
     });
     ```
 
-    A térképi eseménykezelőben a térképen a forgalmi folyamat beállítása a (z) értékre `ready` van állítva `relative` , amely az út sebessége a szabad folyamathoz képest. További forgalmi lehetőségekért lásd: [TrafficOptions Interface](/javascript/api/azure-maps-control/atlas.trafficoptions?preserve-view=false&view=azure-maps-typescript-latest).
+    A térképi eseménykezelőben a térképen a forgalmi folyamat beállítása a (z) értékre `ready` van állítva `relative` , amely az út sebessége a szabad folyamathoz képest. További forgalmi lehetőségekért lásd: [TrafficOptions Interface](/javascript/api/azure-maps-control/atlas.trafficoptions).
 
 2. Mentse a **MapTruckRoute.html** fájlt, és frissítse a lapot a böngészőben. Ha bármely városba, például a Los Angeles-be nagyítja, látni fogja, hogy az utcák a jelenlegi forgalmi flow-adatokkal jelennek meg.
 
@@ -193,7 +193,7 @@ Ebben az oktatóanyagban két útvonalat számítunk ki és jelenítünk meg a t
 
     Ez a kód két [GeoJSON pontot](https://en.wikipedia.org/wiki/GeoJSON) hoz létre a kezdő és a végpontok jelölésére, amelyek ezután hozzáadódnak az adatforráshoz.
 
-    A kód utolsó blokkja beállítja a kamera nézetét a kezdő és a végpont szélességi és hosszúsági értékének használatával. Az indulási és célpontokat a rendszer hozzáadja az adatforráshoz. Az indulási és célpontokhoz tartozó határolókeret kiszámítása az `atlas.data.BoundingBox.fromData` függvénnyel történik. Ezzel a határolókeret használatával állíthatja be a térképes kamerák nézetét a teljes útvonalon a `map.setCamera` függvénnyel. A kitöltés bekerül a szimbólum ikonjainak pixel dimenzióinak kompenzálására. A Map Control setCamera tulajdonságával kapcsolatos további információkért lásd: [setCamera (CameraOptions | CameraBoundsOptions & AnimationOptions)](/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-&preserve-view=false) tulajdonság.
+    A kód utolsó blokkja beállítja a kamera nézetét a kezdő és a végpont szélességi és hosszúsági értékének használatával. Az indulási és célpontokat a rendszer hozzáadja az adatforráshoz. Az indulási és célpontokhoz tartozó határolókeret kiszámítása az `atlas.data.BoundingBox.fromData` függvénnyel történik. Ezzel a határolókeret használatával állíthatja be a térképes kamerák nézetét a teljes útvonalon a `map.setCamera` függvénnyel. A kitöltés bekerül a szimbólum ikonjainak pixel dimenzióinak kompenzálására. A Map Control setCamera tulajdonságával kapcsolatos további információkért lásd: [setCamera (CameraOptions | CameraBoundsOptions & AnimationOptions)](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) tulajdonság.
 
 3. Mentse **TruckRoute.html** -t, és frissítse a böngészőt. A Térkép most már a Seattle-i középpontban van. A könnycsepp kék PIN-kód a kezdőpontot jelöli. A kerek kék PIN-kód a végpontot jelöli.
 

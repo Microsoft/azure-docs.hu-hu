@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: ab0113823bb5751828a71a9afd8c474091272e16
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 33d84ca86ac3cd4696dce3797b015b861884182a
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724625"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216428"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Kapcsolódás Media Services V3 API-hoz – Node.js
 
@@ -224,13 +224,13 @@ A [tárházban](https://github.com/Azure-Samples/media-services-v3-node-tutorial
 
 ## <a name="see-also"></a>Lásd még
 
-- [A Node.jsAzure Media Services moduljainak dokumentációja ](https://docs.microsoft.com/javascript/api/overview/azure/media-services?view=azure-node-latest)
-- [Azure for JavaScript & Node.js fejlesztők számára](https://docs.microsoft.com/azure/developer/javascript/?view=azure-node-latest)
+- [A Node.jsAzure Media Services moduljainak dokumentációja ](/javascript/api/overview/azure/media-services)
+- [Azure for JavaScript & Node.js fejlesztők számára](/azure/developer/javascript/)
 - [Media Services forráskód a git hub-tárházban @azure/azure-sdk-for-js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/mediaservices/arm-mediaservices)
-- [Az Azure Package dokumentációja Node.js-fejlesztőknek](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest)
+- [Az Azure Package dokumentációja Node.js-fejlesztőknek](/javascript/api/overview/azure/)
 - [Media Services fogalmak](concepts-overview.md)
 - [NPM telepítése @azure/arm-mediaservices](https://www.npmjs.com/package/@azure/arm-mediaservices)
-- [Azure for JavaScript & Node.js fejlesztők számára](https://docs.microsoft.com/azure/developer/javascript/?view=azure-node-latest)
+- [Azure for JavaScript & Node.js fejlesztők számára](/azure/developer/javascript/)
 - [Forráskód Media Services a tárházban @azure/azure-sdk-for-js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/mediaservices/arm-mediaservices)
 
 ## <a name="next-steps"></a>Következő lépések

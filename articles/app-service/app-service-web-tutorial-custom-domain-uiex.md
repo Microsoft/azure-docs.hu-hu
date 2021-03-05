@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 476a88e41382842d91859d319a571784bd6e9b49
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ca1308c969227336bfb4970f7c5c77b9f2e0cc22
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748200"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216530"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Oktatóanyag: meglévő egyéni DNS-név leképezése Azure App Service
 
@@ -27,6 +27,8 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 > * Helyettesítő karakteres tartomány hozzárendelése CNAME rekord használatával.
 > * Átirányítja az alapértelmezett URL-címet egy egyéni könyvtárba.
 
+<hr/> 
+
 ## <a name="1-prepare-your-environment"></a>1. a környezet előkészítése
 
 * [Hozzon létre egy App Service-alkalmazást](./index.yml), vagy használjon egy másik oktatóanyaghoz létrehozott alkalmazást.
@@ -34,18 +36,20 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 
     <details>
         <summary>Mi szükséges a DNS-rekordok szerkesztéséhez?</summary>
-        Hozzáférést igényel a tartományi szolgáltató (például a GoDaddy) DNS-beállításjegyzékéhez. Például a contoso.com és a www.contoso.com DNS-bejegyzéseinek hozzáadásához konfigurálnia kell a contoso.com DNS-beállításait.
+        Hozzáférést igényel a tartományi szolgáltató (például a GoDaddy) DNS-beállításjegyzékéhez. Például a <code>contoso.com</code> és a <code>www.contoso.com</code> DNS-bejegyzéseinek hozzáadásához képesnek kell lennie a <code>contoso.com</code> gyökértartomány DNS-beállításainak konfigurálására.
     </details>
+
+<hr/> 
 
 ## <a name="2-prepare-the-app"></a>2. az alkalmazás előkészítése
 
 Ha egyéni DNS-nevet szeretne hozzárendelni egy alkalmazáshoz, az alkalmazás <abbr title="Megadja az alkalmazást futtató webkiszolgáló-Farm helyét, méretét és funkcióit.">App Service-csomag</abbr> fizetős szintűnek kell lennie (nem <abbr title="Egy Azure App Service szinten, amelyben az alkalmazás ugyanazon a virtuális gépeken fut, mint a többi alkalmazás, beleértve a többi ügyfél alkalmazást is. Ez a platform fejlesztési és tesztelési célokra szolgál.">**Ingyenes (F1)**</abbr>). További információ: [Azure app Service terv áttekintése](overview-hosting-plans.md).
 
-### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+#### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
 Nyissa meg a [Azure Portal](https://portal.azure.com), és jelentkezzen be az Azure-fiókjával.
 
-### <a name="select-the-app-in-the-azure-portal"></a>Válassza ki az alkalmazást a Azure Portal
+#### <a name="select-the-app-in-the-azure-portal"></a>Válassza ki az alkalmazást a Azure Portal
 
 1. Keresse meg és válassza ki a **app Services**.
 
@@ -59,7 +63,7 @@ Nyissa meg a [Azure Portal](https://portal.azure.com), és jelentkezzen be az Az
 
 <a name="checkpricing" aria-hidden="true"></a>
 
-### <a name="check-the-pricing-tier"></a>A tarifacsomag ellenőrzése
+#### <a name="check-the-pricing-tier"></a>A tarifacsomag ellenőrzése
 
 1. Az alkalmazás lap bal oldali paneljén görgessen a **Beállítások** szakaszhoz, és válassza a vertikális **felskálázás (App Service terv)** lehetőséget.
 
@@ -73,7 +77,7 @@ Nyissa meg a [Azure Portal](https://portal.azure.com), és jelentkezzen be az Az
 
 <a name="scaleup" aria-hidden="true"></a>
 
-### <a name="scale-up-the-app-service-plan"></a>Az App Service-csomag vertikális felskálázása
+#### <a name="scale-up-the-app-service-plan"></a>Az App Service-csomag vertikális felskálázása
 
 1. Válassza ki bármelyik nem ingyenes szintet (**D1**, **B1**, **B2**, **B3**, vagy a **Production** kategória bármelyik szintje). További beállításokért válassza a **További beállítások megjelenítése** lehetőséget.
 
@@ -84,6 +88,8 @@ Nyissa meg a [Azure Portal](https://portal.azure.com), és jelentkezzen be az Az
    Amikor megjelenik a következő értesítés, a skálázási művelet befejeződött.
 
    ![A skálázási művelet megerősítését bemutató képernyőkép.](./media/app-service-web-tutorial-custom-domain/scale-notification.png)
+
+<hr/> 
 
 <a name="cname" aria-hidden="true"></a>
 
@@ -98,14 +104,16 @@ Ha egyéni tartományt szeretne felvenni az alkalmazásba, ellenőriznie kell a 
 
     <details>
         <summary>Miért van erre szükség?</summary>
-        Ha tartomány-ellenőrzési azonosítókat ad hozzá az egyéni tartományhoz, meggátolhatja a DNS-bejegyzések kihelyezését és az altartományon belüli átvétel elkerülését. Az ellenőrző azonosító nélkül korábban konfigurált egyéni tartományok esetében az ellenőrző AZONOSÍTÓnak a DNS-rekordhoz való hozzáadásával ugyanezt a kockázatot kell biztosítania. A gyakori, nagy súlyosságú fenyegetésekkel kapcsolatos további információkért lásd: [altartomány átvétele](../security/fundamentals/subdomain-takeover.md).
+        Ha tartomány-ellenőrzési azonosítókat ad hozzá az egyéni tartományhoz, meggátolhatja a DNS-bejegyzések kihelyezését és az altartományon belüli átvétel elkerülését. Az ellenőrző azonosító nélkül korábban konfigurált egyéni tartományok esetében az ellenőrző AZONOSÍTÓnak a DNS-rekordhoz való hozzáadásával ugyanezt a kockázatot kell biztosítania. A gyakori, nagy súlyosságú fenyegetésekkel kapcsolatos további információkért lásd: <a href="/azure/security/fundamentals/subdomain-takeover">altartomány átvétele</a>.
     </details>
     
 <a name="info"></a>
 
-3. * * (Csak rekord) * * a leképezéshez <abbr title="A DNS-beli címtartomány egy állomásnevet rendel egy IP-címhez.">A-rekord</abbr>, szüksége lesz az alkalmazás külső IP-címére. Az **Egyéni tartományok** lapon másolja ki az **IP-cím** értékét.
+3. **(Csak rekord)** Hozzárendelés <abbr title="A DNS-beli címtartomány egy állomásnevet rendel egy IP-címhez.">A-rekord</abbr>, szüksége lesz az alkalmazás külső IP-címére. Az **Egyéni tartományok** lapon másolja ki az **IP-cím** értékét.
 
    ![Képernyőkép, amely egy Azure-alkalmazás portáljának navigálását mutatja be.](./media/app-service-web-tutorial-custom-domain/mapping-information.png)
+
+<hr/> 
 
 ## <a name="4-create-the-dns-records"></a>4. a DNS-rekordok létrehozása
 
@@ -148,52 +156,71 @@ Ha egyéni tartományt szeretne felvenni az alkalmazásba, ellenőriznie kell a 
 
 Az `www` `www.contoso.com` alábbi táblázat szerint hozzon létre két rekordot az-ban található altartományhoz:
 
-    | Rekordtípus | Gazdagép | Érték | Megjegyzések |
-    | - | - | - |
-    | CNAME | `<subdomain>` (például: `www` ) | `<app-name>.azurewebsites.net` | Maga a tartomány-hozzárendelés. |
-    | TXT | `asuid.<subdomain>` (például: `asuid.www` ) | [A korábban kapott ellenőrző azonosító](#3-get-a-domain-verification-id) | App Service hozzáfér a `asuid.<subdomain>` txt-rekordhoz az egyéni tartomány tulajdonjogának ellenőrzéséhez. |
-    
-    ![Screenshot that shows the portal navigation to an Azure app.](./media/app-service-web-tutorial-custom-domain/cname-record.png)
+| Rekordtípus | Gazdagép | Érték | Megjegyzések |
+| - | - | - |
+| CNAME | `<subdomain>` (például: `www` ) | `<app-name>.azurewebsites.net` | Maga a tartomány-hozzárendelés. |
+| TXT | `asuid.<subdomain>` (például: `asuid.www` ) | [A korábban kapott ellenőrző azonosító](#3-get-a-domain-verification-id) | App Service hozzáfér a `asuid.<subdomain>` txt-rekordhoz az egyéni tartomány tulajdonjogának ellenőrzéséhez. |
+
+![Képernyőkép, amely megjeleníti a portál navigációs felületét egy Azure-alkalmazáshoz.](./media/app-service-web-tutorial-custom-domain/cname-record.png)
     
 # <a name="a"></a>[A](#tab/a)
 
 Az `contoso.com` alábbi táblázat alapján hozzon létre két rekordot a gyökértartomány számára:
 
-    | Rekordtípus | Gazdagép | Érték | Megjegyzések |
-    | - | - | - |
-    | A | `@` | [Az alkalmazás IP-címének másolása](#3-get-a-domain-verification-id) szakaszból származó IP-cím | Maga a tartomány-hozzárendelés ( `@` általában a legfelső szintű tartományt jelenti). |
-    | TXT | `asuid` | [A korábban kapott ellenőrző azonosító](#3-get-a-domain-verification-id) | App Service hozzáfér a `asuid.<subdomain>` txt-rekordhoz az egyéni tartomány tulajdonjogának ellenőrzéséhez. A gyökérszintű tartományhoz használja a következőt: `asuid` . |
-    
-    ![Screenshot that shows a DNS records page.](./media/app-service-web-tutorial-custom-domain/a-record.png)
+| Rekordtípus | Gazdagép | Érték | Megjegyzések |
+| - | - | - |
+| A | `@` | [Az alkalmazás IP-címének másolása](#3-get-a-domain-verification-id) szakaszból származó IP-cím | Maga a tartomány-hozzárendelés ( `@` általában a legfelső szintű tartományt jelenti). |
+| TXT | `asuid` | [A korábban kapott ellenőrző azonosító](#3-get-a-domain-verification-id) | App Service hozzáfér a `asuid.<subdomain>` txt-rekordhoz az egyéni tartomány tulajdonjogának ellenőrzéséhez. A gyökérszintű tartományhoz használja a következőt: `asuid` . |
 
-    <details>
-    <summary>What if I want to map a subdomain with an A record?</summary>
-    To map a subdomain like `www.contoso.com` with an A record instead of a recommended CNAME record, your A record and TXT record should look like the following table instead:
+![A DNS-rekordok lapot megjelenítő képernyőkép.](./media/app-service-web-tutorial-custom-domain/a-record.png)
 
-    | Rekordtípus | Gazdagép | Érték |
-    | - | - | - |
-    | A | `<subdomain>` (például: `www` ) | [Az alkalmazás IP-címének másolása](#info) szakaszból származó IP-cím |
-    | TXT | `asuid.<subdomain>` (például: `asuid.www` ) | [A korábban kapott ellenőrző azonosító](#3-get-a-domain-verification-id) |
-    </details>
-    
+<details>
+<summary>Mi a teendő, ha egy altartományt szeretnék leképezni egy rekorddal?</summary>
+Ha olyan altartományt szeretne leképezni, mint egy `www.contoso.com` rekord egy javasolt CNAME-rekord helyett, akkor a rekordnak és a txt-rekordnak a következő táblázathoz hasonlóan kell kinéznie:
+
+<div class="table-scroll-wrapper"><table class="table"><caption class="visually-hidden">3. táblázat</caption>
+<thead>
+<tr>
+<th>Rekordtípus</th>
+<th>Gazdagép</th>
+<th>Érték</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td><code>&lt;subdomain&gt;</code> (például: <code>www</code> )</td>
+<td><a href="#info" data-linktype="self-bookmark">Az alkalmazás IP-címének másolása</a> szakaszból származó IP-cím</td>
+</tr>
+<tr>
+<td>TXT</td>
+<td><code>asuid.&lt;subdomain&gt;</code> (például: <code>asuid.www</code> )</td>
+<td><a href="#3-get-a-domain-verification-id" data-linktype="self-bookmark">A korábban kapott ellenőrző azonosító</a></td>
+</tr>
+</tbody>
+</table></div>
+</details>
+
 # <a name="wildcard-cname"></a>[Helyettesítő karakter (CNAME)](#tab/wildcard)
 
 A (z) rendszerbeli helyettesítő karakterekhez hasonlóan `*` `*.contoso.com` hozzon létre két rekordot az alábbi táblázat szerint:
 
-    | Rekordtípus | Gazdagép | Érték | Megjegyzések |
-    | - | - | - |
-    | CNAME | `*` | `<app-name>.azurewebsites.net` | Maga a tartomány-hozzárendelés. |
-    | TXT | `asuid` | [A korábban kapott ellenőrző azonosító](#3-get-a-domain-verification-id) | App Service hozzáfér a `asuid` txt-rekordhoz az egyéni tartomány tulajdonjogának ellenőrzéséhez. |
-    
-    ![Screenshot that shows the navigation to an Azure app.](./media/app-service-web-tutorial-custom-domain/cname-record-wildcard.png)
-    
----
+| Rekordtípus | Gazdagép | Érték | Megjegyzések |
+| - | - | - |
+| CNAME | `*` | `<app-name>.azurewebsites.net` | Maga a tartomány-hozzárendelés. |
+| TXT | `asuid` | [A korábban kapott ellenőrző azonosító](#3-get-a-domain-verification-id) | App Service hozzáfér a `asuid` txt-rekordhoz az egyéni tartomány tulajdonjogának ellenőrzéséhez. |
 
-    <details>
-        <summary>My changes are erased after I leave the page.</summary>
-        For certain providers, such as GoDaddy, changes to DNS records don't become effective until you select a separate **Save Changes** link.
-    </details>
+![Képernyőkép, amely egy Azure-alkalmazás navigálását mutatja be.](./media/app-service-web-tutorial-custom-domain/cname-record-wildcard.png)
     
+-----
+
+<details>
+<summary>A módosítások törlődnek az oldal elhagyása után.</summary>
+<p>Bizonyos szolgáltatók (például a GoDaddy) esetében a DNS-rekordok módosításai csak a külön <strong>Módosítások mentése</strong> hivatkozás kiválasztása után lépnek életbe.</p>
+</details>
+
+<hr/>
+
 ## <a name="5-enable-the-mapping-in-your-app"></a>5. a leképezés engedélyezése az alkalmazásban
 
 1. A Azure Portal alkalmazás lap bal oldali ablaktábláján válassza az **Egyéni tartományok** elemet.
@@ -273,8 +300,10 @@ A (z) rendszerbeli helyettesítő karakterekhez hasonlóan `*` `*.contoso.com` h
         Az egyéni tartományra vonatkozó figyelmeztetési címke azt jelenti, hogy még nem kötődik TLS/SSL-tanúsítványhoz. A böngészőtől az egyéni tartományba érkező HTTPS-kérések a böngészőtől függően hibaüzenetet vagy figyelmeztetést kapnak. TLS-kötés hozzáadásával kapcsolatban lásd: <a href="https://docs.microsoft.com/azure/app-service/configure-ssl-bindings">Egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel Azure app Serviceban</a>.
     </details>
 
----
-    
+-----
+
+<hr/> 
+
 ## <a name="6-test-in-a-browser"></a>6. tesztelés böngészőben
 
 Tallózással keresse meg a korábban konfigurált DNS-neveket.
@@ -290,9 +319,13 @@ Tallózással keresse meg a korábban konfigurált DNS-neveket.
 </ul>
 </details>
 
+<hr/> 
+
 ## <a name="migrate-an-active-domain"></a>Aktív tartomány migrálása
 
 Élő webhely és hozzá tartozó DNS-tartománynév migrálása leállás nélkül az App Service-be: [Aktív DNS-név migrálása az Azure App Service-be](manage-custom-dns-migrate-domain.md).
+
+<hr/> 
 
 <a name="virtualdir" aria-hidden="true"></a>
 
@@ -313,11 +346,13 @@ Bár ez egy gyakori forgatókönyv, valójában nem magában foglalja az egyéni
 
 1. A művelet befejeződése után az alkalmazás gyökérkönyvtárában navigáljon a böngészőben (például `http://contoso.com` vagy `http://<app-name>.azurewebsites.net` ).
 
+<hr/> 
+
 ## <a name="automate-with-scripts"></a>Automatizálás szkriptekkel
 
 Az [Azure CLI](/cli/azure/install-azure-cli) vagy a [Azure PowerShell](/powershell/azure/)segítségével automatizálhatja az egyéni tartományok parancsfájlokkal történő kezelését.
 
-### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure CLI
 
 A következő parancs konfigurált egyéni DNS-nevet ad hozzá egy App Service-alkalmazáshoz.
 
@@ -330,7 +365,7 @@ az webapp config hostname add \
 
 További információ: [Egyéni tartomány leképezése egy webalkalmazásra](scripts/cli-configure-custom-domain.md).
 
-### <a name="azure-powershell"></a>Azure PowerShell
+#### <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -344,6 +379,8 @@ Set-AzWebApp `
 ```
 
 További információ: [Egyéni tartomány hozzárendelése egy webalkalmazáshoz](scripts/powershell-configure-custom-domain.md).
+
+<hr/> 
 
 ## <a name="next-steps"></a>Következő lépések
 

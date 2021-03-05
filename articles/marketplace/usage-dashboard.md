@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 9f798751065d4889569f4b798ac864342f3e54ef
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: d898efb44bb92151a5d044a6699a4efb70fa9390
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98934402"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215731"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>A Használat irányítópult a kereskedelmi piactér-elemzésekben
 
@@ -154,9 +154,9 @@ _**1. táblázat: az adatszótár kifejezése**_
 | NormalizedUsage | Normalizált használat | Az eszköz által az ügyfél által üzembe helyezett összes normalizált használati egység.<br>A normalizált használati idő a virtuálisgép-magok számának ([virtuálisgép-magok száma] x [órányi nyers használat]) fiókban normalizált használati órákat határozza meg. A "SHAREDCORE" jelölésű virtuális gépek a 1/6 (vagy 0,1666) értéket használják [virtuálisgép-magok száma] szorzóként. |
 | MeteredUsage | Mért használat | Az ügyfél által üzembe helyezett ajánlattal konfigurált mérőszámok által felhasznált összes használati egység. |
 | RawUsage | Nyers használat | Az eszköz által az ügyfél által üzembe helyezett összes nyers használati egység.<br>A nyers használati órák határozzák meg, hogy mennyi idő alatt futnak a virtuális gépek a használati egységekben. |
-| Becsült kiterjesztett díj (CC) | Becsült kiterjesztett díj az ügyfél pénznemében | A használattal kapcsolatos díjakat jelzi. Az oszlop az ár (CC) és a használati mennyiség szorzata. |
-| Becsült kiterjesztett díj (PC) | Becsült meghosszabbított díj a kifizetési pénznemben | A használattal kapcsolatos díjakat jelzi. Az oszlop a becsült ár (számítógép) és a használati mennyiség szorzata. |
-||||
+| Becsült kiterjesztett díj (CC) | Becsült kiterjesztett díj az ügyfél pénznemében | A használattal kapcsolatos díjakat jelzi. Az oszlop az ár (CC) és a nyers használat szorzata. |
+| Becsült kiterjesztett díj (PC) | Becsült meghosszabbított díj a kifizetési pénznemben | A használattal kapcsolatos díjakat jelzi. Az oszlop a becsült ár (számítógép) és a nyers használat szorzata. |
+|
 
 ### <a name="usage-page-filters"></a>Használati oldal szűrői
 

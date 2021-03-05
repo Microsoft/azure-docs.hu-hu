@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: d51de526205e8ef663dcfd682ec5858e4bc2f645
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 719dcecf3091e03fbcbe6a82d4c618f54243c4e1
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183981"
+ms.locfileid: "102215340"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>A Azure Database Migration Service által támogatott áttelepítési forgatókönyvek állapota
 
@@ -83,9 +83,12 @@ Az alábbi táblázat az online áttelepítések Azure Database Migration Servic
 | **Azure-adatbázis PostgreSQL-hez – egyetlen kiszolgáló** | PostgreSQL | ✔ | FE |
 |   | Azure-adatbázis PostgreSQL-hez – egyetlen kiszolgáló | ✔ | FE |
 |   | RDS PostgreSQL | ✔ | FE |
-|   | Oracle | ✔ | Nyilvános előzetes verzió |
+|   | Oracle | ✔ | Nyilvános előzetes verzió (a 2021. május 1-től elavulttá válik) |
 | **Azure-adatbázis PostgreSQL-hez – nagy kapacitású (Citus)** | PostgreSQL | ✔ | FE |
 |   | RDS PostgreSQL | ✔ | FE |
+
+> [!IMPORTANT]
+> Az "Oracle to Azure Database for PostgreSQL" áttelepítési forgatókönyv (jelenleg előzetes verzióban érhető el) az 2021. május 1. után már nem lesz elérhető. Továbbra is biztosítunk támogatást az alternatív eszközök (például a Ora2pg) segítségével, és a lehető legjobb migrációs élményt nyújtják az Oracle és a PostgreSQL közötti áttelepítéshez. Az áttelepítéssel kapcsolatos ajánlott eljárásokért lásd: [Oracle Azure Database for PostgreSQL áttelepítési Útmutató] ( https://aka.ms/OracletoPGguide) .
 
 
 ## <a name="next-steps"></a>Következő lépések

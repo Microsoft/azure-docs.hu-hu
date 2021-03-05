@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: Operations'
-ms.openlocfilehash: bd016fcfe377dc610d5918ad8128fff4f6473fe5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: e786a323cfb1ebacdf7e6693e3ca4299f10aadb3
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538459"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216037"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Egy adott megoldáshoz leginkább megfelelő IoT Hub-szint kiválasztása
 
@@ -42,17 +42,17 @@ Egy adott rétegen belül csak egy [kiadást](https://azure.microsoft.com/pricin
 
 | Képesség | Alapszint | Ingyenes/standard szint |
 | ---------- | ---------- | ------------- |
-| [Eszközről a felhőbe irányuló telemetria](iot-hub-devguide-messaging.md) | Igen | Igen |
-| [Eszközönkénti azonosító](iot-hub-devguide-identity-registry.md) | Igen | Igen |
-| [Üzenetek útválasztása](iot-hub-devguide-messages-read-custom.md), [üzenetek gazdagítása](iot-hub-message-enrichments-overview.md)és [Event Grid integráció](iot-hub-event-grid.md) | Igen | Igen |
-| [HTTP-, AMQP-és MQTT-protokollok](iot-hub-devguide-protocols.md) | Igen | Igen |
-| [Device Provisioning Service](../iot-dps/about-iot-dps.md) | Igen | Igen |
-| [Monitorozás és diagnosztika](monitor-iot-hub.md) | Igen | Igen |
-| [A felhőből az eszközre irányuló üzenetküldés](iot-hub-devguide-c2d-guidance.md) |   | Igen |
-| [Eszközök](iot-hub-devguide-device-twins.md), ikrek, [modulok](iot-hub-devguide-module-twins.md) [és eszközkezelés](iot-hub-device-management-overview.md) |   | Igen |
-| [Eszköz streamek (előzetes verzió)](iot-hub-device-streams-overview.md) |   | Igen |
-| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Igen |
-| [IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) |   | Igen |
+| [Eszközről a felhőbe irányuló telemetria](iot-hub-devguide-messaging.md) | Igen | Yes |
+| [Eszközönkénti azonosító](iot-hub-devguide-identity-registry.md) | Igen | Yes |
+| [Üzenetek útválasztása](iot-hub-devguide-messages-read-custom.md), [üzenetek gazdagítása](iot-hub-message-enrichments-overview.md)és [Event Grid integráció](iot-hub-event-grid.md) | Igen | Yes |
+| [HTTP-, AMQP-és MQTT-protokollok](iot-hub-devguide-protocols.md) | Igen | Yes |
+| [Device Provisioning Service](../iot-dps/about-iot-dps.md) | Igen | Yes |
+| [Monitorozás és diagnosztika](monitor-iot-hub.md) | Igen | Yes |
+| [A felhőből az eszközre irányuló üzenetküldés](iot-hub-devguide-c2d-guidance.md) |   | Yes |
+| [Eszközök](iot-hub-devguide-device-twins.md), ikrek, [modulok](iot-hub-devguide-module-twins.md) [és eszközkezelés](iot-hub-device-management-overview.md) |   | Yes |
+| [Eszköz streamek (előzetes verzió)](iot-hub-device-streams-overview.md) |   | Yes |
+| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Yes |
+| [IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) |   | Yes |
 
 A IoT Hub ingyenes szintet is biztosít teszteléshez és értékeléshez. Rendelkezik a standard csomag összes képességével, de korlátozott üzenetküldési támogatással. Az ingyenes szintről nem lehet alapszintű vagy standard szintűre frissíteni.
 
@@ -77,37 +77,37 @@ Az alapszintű és a standard szintű IoT Hub által támogatott képességek k�
 
 | API | Alapszint | Ingyenes/standard szint |
 | --- | ---------- | ------------- |
-| [Eszköz törlése](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#deletedevice-string--models-registrymanagerdeletedeviceoptionalparams-) | Igen | Igen |
-| [Eszköz beolvasása](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-getdevice) | Igen | Igen |
-| [Modul törlése](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-deletemodule) | Igen | Igen |
-| [Modul beolvasása](/java/api/com.microsoft.azure.sdk.iot.service.registrymanager.getmodule?view=azure-java-stable) | Igen | Igen |
-| [Regisztrációs statisztika beolvasása](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#getdevicestatistics-msrest-requestoptionsbase-) | Igen | Igen |
-| [Szolgáltatások statisztikáinak beolvasása](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#getservicestatistics-msrest-requestoptionsbase-) | Igen | Igen |
-| [Eszköz létrehozása vagy frissítése](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#createorupdatedevice-string--device--servicecallback-device--) | Igen | Igen |
-| [Modul létrehozása vagy frissítése](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#createorupdatemodule-string--string--module--models-registrymanagercreateorupdatemoduleoptionalparams-) | Igen | Igen |
-| [Lekérdezés IoT Hub](/dotnet/api/microsoft.azure.devices.registrymanager?view=azure-dotnet) | Igen | Igen |
-| [Fájlfeltöltés SAS URI-ja létrehozása](/rest/api/iothub/device/createfileuploadsasuri) | Igen | Igen |
-| [Eszköz kötött értesítésének fogadása](/rest/api/iothub/device/receivedeviceboundnotification) | Igen | Igen |
-| [Eszköz eseményének küldése](/rest/api/iothub/device/senddeviceevent) | Igen | Igen |
+| [Eszköz törlése](/javascript/api/azure-iot-digitaltwins-service/registrymanager#deletedevice-string--models-registrymanagerdeletedeviceoptionalparams-) | Igen | Yes |
+| [Eszköz beolvasása](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-getdevice) | Igen | Yes |
+| [Modul törlése](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-deletemodule) | Igen | Yes |
+| [Modul beolvasása](/java/api/com.microsoft.azure.sdk.iot.service.registrymanager.getmodule) | Igen | Yes |
+| [Regisztrációs statisztika beolvasása](/javascript/api/azure-iot-digitaltwins-service/registrymanager#getdevicestatistics-msrest-requestoptionsbase-) | Igen | Yes |
+| [Szolgáltatások statisztikáinak beolvasása](/javascript/api/azure-iot-digitaltwins-service/registrymanager#getservicestatistics-msrest-requestoptionsbase-) | Igen | Yes |
+| [Eszköz létrehozása vagy frissítése](/javascript/api/azure-iot-digitaltwins-service/registrymanager#createorupdatedevice-string--device--servicecallback-device--) | Igen | Yes |
+| [Modul létrehozása vagy frissítése](/javascript/api/azure-iot-digitaltwins-service/registrymanager#createorupdatemodule-string--string--module--models-registrymanagercreateorupdatemoduleoptionalparams-) | Igen | Yes |
+| [Lekérdezés IoT Hub](/dotnet/api/microsoft.azure.devices.registrymanager?view=azure-dotnet) | Igen | Yes |
+| [Fájlfeltöltés SAS URI-ja létrehozása](/rest/api/iothub/device/createfileuploadsasuri) | Igen | Yes |
+| [Eszköz kötött értesítésének fogadása](/rest/api/iothub/device/receivedeviceboundnotification) | Igen | Yes |
+| [Eszköz eseményének küldése](/rest/api/iothub/device/senddeviceevent) | Igen | Yes |
 | Modul küldése esemény | Csak AMQP és MQTT | Csak AMQP és MQTT |
-| [Fájlfeltöltés állapotának frissítése](/rest/api/iothub/device/updatefileuploadstatus) | Igen | Igen |
-| [Tömeges eszköz művelete](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#bulkdevicecrud-exportimportdevice----msrest-requestoptionsbase-) | Igen, a IoT Edge képességek kivételével | Igen |
-| [Importálási exportálási feladat megszakítása](/rest/api/iothub/service/jobs/cancelimportexportjob) | Igen | Igen |
-| [Importálási exportálási feladatok létrehozása](/rest/api/iothub/service/jobs/createimportexportjob) | Igen | Igen |
-| [Importálási exportálási feladatok beolvasása](/rest/api/iothub/service/jobs/getimportexportjob) | Igen | Igen |
-| [Importálási exportálási feladatok beolvasása](/rest/api/iothub/service/jobs/getimportexportjobs) | Igen | Igen |
-| [Parancssori várólista kiürítése](/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#purgecommandqueue-string--msrest-requestoptionsbase-) |   | Igen |
-| [Eszköz dupla beolvasása](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable) |   | Igen |
-| [Dupla modul beolvasása](/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-getmoduletwin) |   | Igen |
-| [Eszköz metódusának meghívása](./iot-hub-devguide-direct-methods.md) |   | Igen |
-| [Eszköz dupla frissítése](./iot-hub-devguide-device-twins.md) |   | Igen |
-| [Modul frissítése – Twin](/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-updatemoduletwin) |   | Igen |
-| [Eszköz kötött értesítésének elhagyása](/rest/api/iothub/device/abandondeviceboundnotification) |   | Igen |
-| [Eszköz kötött értesítésének befejezése](/rest/api/iothub/device/completedeviceboundnotification) |   | Igen |
-| [Feladat megszakítása](/rest/api/media/jobs/canceljob) |   | Igen |
-| [Feladat létrehozása](/rest/api/media/jobs/create) |   | Igen |
-| [Feladatok beolvasása](/java/api/com.microsoft.azure.sdk.iot.service.jobs.jobclient.getjob?view=azure-java-stable) |   | Igen |
-| [Lekérdezési feladatok](/javascript/api/azure-iot-digitaltwins-service/jobclient?view=azure-node-latest#queryjobs-jobclientqueryjobsoptionalparams--servicecallback-queryresult--) |   | Igen |
+| [Fájlfeltöltés állapotának frissítése](/rest/api/iothub/device/updatefileuploadstatus) | Igen | Yes |
+| [Tömeges eszköz művelete](/javascript/api/azure-iot-digitaltwins-service/registrymanager#bulkdevicecrud-exportimportdevice----msrest-requestoptionsbase-) | Igen, a IoT Edge képességek kivételével | Yes |
+| [Importálási exportálási feladat megszakítása](/rest/api/iothub/service/jobs/cancelimportexportjob) | Igen | Yes |
+| [Importálási exportálási feladatok létrehozása](/rest/api/iothub/service/jobs/createimportexportjob) | Igen | Yes |
+| [Importálási exportálási feladatok beolvasása](/rest/api/iothub/service/jobs/getimportexportjob) | Igen | Yes |
+| [Importálási exportálási feladatok beolvasása](/rest/api/iothub/service/jobs/getimportexportjobs) | Igen | Yes |
+| [Parancssori várólista kiürítése](/javascript/api/azure-iot-digitaltwins-service/registrymanager#purgecommandqueue-string--msrest-requestoptionsbase-) |   | Yes |
+| [Eszköz dupla beolvasása](/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin) |   | Yes |
+| [Dupla modul beolvasása](/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-getmoduletwin) |   | Yes |
+| [Eszköz metódusának meghívása](./iot-hub-devguide-direct-methods.md) |   | Yes |
+| [Eszköz dupla frissítése](./iot-hub-devguide-device-twins.md) |   | Yes |
+| [Modul frissítése – Twin](/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-updatemoduletwin) |   | Yes |
+| [Eszköz kötött értesítésének elhagyása](/rest/api/iothub/device/abandondeviceboundnotification) |   | Yes |
+| [Eszköz kötött értesítésének befejezése](/rest/api/iothub/device/completedeviceboundnotification) |   | Yes |
+| [Feladat megszakítása](/rest/api/media/jobs/canceljob) |   | Yes |
+| [Feladat létrehozása](/rest/api/media/jobs/create) |   | Yes |
+| [Feladatok beolvasása](/java/api/com.microsoft.azure.sdk.iot.service.jobs.jobclient.getjob) |   | Yes |
+| [Lekérdezési feladatok](/javascript/api/azure-iot-digitaltwins-service/jobclient#queryjobs-jobclientqueryjobsoptionalparams--servicecallback-queryresult--) |   | Yes |
 
 ## <a name="message-throughput"></a>Üzenet átviteli sebessége
 

@@ -10,18 +10,20 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: kgremban
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: ebe0ac1151f3a1f43072f2832e2f433182ccc82d
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 9d6bb9da67f66f46e5c72d5d64b8b6c111c98e08
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98634181"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102215357"
 ---
-# <a name="what-is-azure-iot-edge-for-linux-on-windows-preview"></a>Mi az Azure IoT Edge for Linux on Windows (előzetes verzió)
+# <a name="what-is-azure-iot-edge-for-linux-on-windows-preview"></a>A Windowson futtatott Linux rendszerhez készült Azure IoT Edge bemutatása (előzetes verzió)
 
 A Windows rendszerhez készült Linux-Azure IoT Edge lehetővé teszi, hogy a Windows IoT üzemelő példányokon a Windows-alkalmazások mellett is futtasson tárolós Linux-feladatokat. Azok a vállalatok, amelyek a Windows IoT használják a peremhálózat-eszközeiket, mostantól kihasználhatják a Linux rendszerbe épített felhőalapú elemzési megoldások előnyeit.
 
 A Windows operációs rendszerhez készült Linux rendszerű virtuális gépek Windows-eszközökön való futtatásával IoT Edge. A Linux rendszerű virtuális gép előre telepítve van a IoT Edge futtatókörnyezettel. Az eszközön üzembe helyezett összes IoT Edge modul a virtuális gépen belül fut. Eközben a Windows-gazdagépen futó Windows-alkalmazások kommunikálhatnak a linuxos virtuális gépen futó modulok használatával.
+
+[Ismerkedjen](how-to-install-iot-edge-on-windows.md) meg még ma az előzetes verzióval.
 
 >[!NOTE]
 >Vegye fontolóra a [termék felmérését](https://aka.ms/AzEFLOW-Registration) , hogy a IoT Edge hátterének és céljainak megfelelően fejlesszen a Linux rendszerhez Azure IoT Edge. Ezt a kérdőívet arra is használhatja, hogy regisztráljon a Linux rendszerhez készült jövőbeli Azure IoT Edge Windows-hirdetményekben.
