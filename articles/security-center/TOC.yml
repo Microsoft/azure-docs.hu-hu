@@ -112,7 +112,7 @@
           href: exempt-resource.md
         - name: Egyéni biztonsági kezdeményezések és szabályzatok létrehozása
           href: custom-security-policies.md
-    - name: A gépek megóvása az Azure Defender for Servers szolgáltatással
+    - name: A gépek elleni védelem a Defender for Servers szolgáltatással
       displayName: 'hybrid, arc, Azure Defender for machines'
       items:
         - name: Az Azure Defender for Servers szolgáltatás áttekintése
@@ -143,10 +143,10 @@
         - name: Végponthoz készült Microsoft Defender-licenc használata
           displayName: 'ATP, mdatp, wdatp'
           href: security-center-wdatp.md
-        - name: A gépek biztonságos alkalmazásainak listáját határozza meg
+        - name: A gépek biztonságos alkalmazásainak listáját definiálja
           displayName: 'aac, whitelist, allowlist, reviewgroup, adaptive application controls'
           href: security-center-adaptive-application.md
-        - name: Fájlok és beállításjegyzékek változásainak követése a fájlok integritásának figyelésével
+        - name: Fájlok és nyilvántartások változásainak követése
           items:
             - name: A fájlintegritási monitorozás áttekintése
               displayName: 'fim, change'
@@ -154,8 +154,8 @@
             - name: Alaptervek összehasonlítása a fájlok integritásának figyelésével
               displayName: 'fim, change'
               href: security-center-file-integrity-monitoring-baselines.md
-        - name: A hálózati biztonság helyzetének javítása adaptív hálózati megerősítéssel
-          displayName: anh
+        - name: A hálózat biztonsági helyzetének javítása
+          displayName: 'anh, adaptive network hardening'
           href: security-center-adaptive-network-hardening.md
         - name: A Docker-gazdagépek megerősítése
           displayName: containers
@@ -209,7 +209,7 @@
         - name: Az Key Vault Azure Defender áttekintése
           displayName: 'KV, akv'
           href: defender-for-key-vault-introduction.md
-        - name: Válaszadás Key Vaulthoz készült Azure Defender-riasztásokra
+        - name: A Defender Key Vault riasztások kezelése
           displayName: 'akv, kv'
           href: defender-for-key-vault-usage.md
     - name: Az erőforrás-kezelési műveletek figyelése
@@ -217,7 +217,7 @@
         - name: A Resource Managerhez készült Azure Defender áttekintése
           displayName: ARM
           href: defender-for-resource-manager-introduction.md
-        - name: Válaszadás a Resource Managerhez készült Azure Defender-riasztásokra
+        - name: A Defender kezelése Resource Manager-riasztásokhoz
           displayName: arm
           href: defender-for-resource-manager-usage.md
     - name: DNS-lekérdezések figyelése az Azure-erőforrásokból

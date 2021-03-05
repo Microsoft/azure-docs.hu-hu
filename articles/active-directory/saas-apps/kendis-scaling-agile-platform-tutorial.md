@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/12/2021
+ms.date: 03/04/2021
 ms.author: jeedes
-ms.openlocfilehash: 9a7e02955d7784feb57d7e9ccc7e337b6a939380
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8409a4d897ea9b20528a5b30273819e6962774cb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651552"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184491"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kendis---azure-ad-integration"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Kendis-vel – Azure AD-integráció
 
@@ -123,13 +123,21 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 ## <a name="configure-kendis-azure-ad-integration-sso"></a>Kendis-Azure AD Integration SSO konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be a Kendis-be rendszergazdaként az Azure AD Integration vállalati webhelyre.
+1. A Kendis-Azure AD-integráción belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése** lehetőségre kattintva.
 
-1. Lépjen a **beállítások > SAML-konfigurációk menüpontra**.
+    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
+
+2. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **Kendis beállítása – az Azure ad-integráció** a Kendis-Azure ad integrációs alkalmazásra irányítja majd. Itt adja meg a rendszergazdai hitelesítő adatokat a Kendis való bejelentkezéshez – Azure AD-integráció. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-5-es lépést.
+
+    ![Telepítési konfiguráció](common/setup-sso.png)
+
+3. Ha manuálisan szeretné beállítani a Kendis-Azure AD-integrációt, egy másik böngészőablakban jelentkezzen be a Kendis – Azure AD Integration vállalati webhelyre rendszergazdaként.
+
+4. Lépjen a **beállítások > SAML-konfigurációk menüpontra**.
 
     ![az SAML-konfigurációk beállításai](./media/kendis-scaling-agile-platform-tutorial/settings.png)
 
-1. Kattintson a lap alján található **Szerkesztés** gombra, és hajtsa végre az alábbi lépéseket.
+5. Kattintson a lap alján található **Szerkesztés** gombra, és hajtsa végre az alábbi lépéseket.
 
     ![SAML-konfigurációk](./media/kendis-scaling-agile-platform-tutorial/saml-configuration-settings.png)
 

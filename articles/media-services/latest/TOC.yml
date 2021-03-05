@@ -23,12 +23,10 @@
           href: access-api-howto.md
         - name: Az Azure Cloud Shell beállítása
           href: ../../cloud-shell/overview.md
-        - name: Fejlesztés REST-tel
+        - name: Kapcsolódás a Media Services szolgáltatáshoz
           items:
-            - name: Kapcsolódás Postmannel
+            - name: Kapcsolódás a REST és a Poster között
               href: media-rest-apis-with-postman.md
-        - name: Fejlesztés SDK-kkal
-          items:
             - name: Csatlakozás Javával
               href: configure-connect-java-howto.md
             - name: Kapcsolódás .NET-tel
@@ -51,6 +49,8 @@
       items:
         - name: Fiók létrehozása az ARM használatával
           href: quickstart-arm-template-account.md
+    - name: Python alapszintű kódolási útmutató
+      href: quickstart-basic-encoding-python.md
 - name: Oktatóanyagok
   items:
     - name: .NET

@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: c8435d250f95f861f2a84e91d673eb59c3a6d44b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 59f7d40d64e10266937aab8dacb39bd6c647ce07
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750679"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102193911"
 ---
 <a name="HOLTop"></a>
 
@@ -90,7 +90,13 @@ Navigáljon az új mappára, és hozzon létre egy *ComputerVisionQuickstarts. J
 > [!TIP]
 > Egyszerre szeretné megtekinteni a teljes rövid útmutató kódját? Megtalálhatja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java), amely a jelen rövid útmutatóban szereplő példákat tartalmazza.
 
-Az alkalmazás **ComputerVisionQuickstarts** osztályában hozzon létre változókat az erőforrás kulcsa és végpontja számára.
+Adja meg a **ComputerVisionQuickstarts** osztályt.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_classdef_1)]
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_classdef_2)]
+
+A **ComputerVisionQuickstarts** osztályban hozzon létre változókat az erőforrás kulcsa és végpontja számára.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_creds)]
 
@@ -154,7 +160,7 @@ Ezután adja meg, hogy mely vizuális funkciókat szeretné kibontani az elemzé
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_features)]
 
 ### <a name="analyze"></a>Elemzés
-Ez a metódus részletes eredményeket jelenít meg a konzolon a képelemzés egyes hatókörei esetében. Javasoljuk, hogy ezt a metódust a try/catch blokkban hívja meg. A **analyzeImageInStream** metódus egy **ImageAnalysis** objektumot ad vissza, amely az összes kinyert információt tartalmazza.
+Ez a blokk részletes eredményeket jelenít meg a konzolon a képelemzés minden egyes hatóköre tekintetében. A **analyzeImageInStream** metódus egy **ImageAnalysis** objektumot ad vissza, amely az összes kinyert információt tartalmazza.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_analyze)]
 
@@ -183,6 +189,21 @@ A következő kód beolvassa az észlelt címkék készletét a képen. További
 A következő kód az észlelt arcokat adja vissza a képen a téglalap koordinátáival, és kijelöli a Face attribútumok elemet. További információ: [Arcfelismerés](../../concept-detecting-faces.md).
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_faces)]
+
+### <a name="detect-objects"></a>Objektumok észlelése
+
+A következő kód a képen szereplő észlelt objektumokat adja vissza a koordinátáival együtt. További információ: [objektumok észlelése](../../concept-object-detection.md).
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_objects)]
+
+
+### <a name="detect-brands"></a>Márkák észlelése
+
+A következő kód az észlelt márka emblémáit adja vissza a képen a koordinátákkal együtt. További információkért lásd a [márka észlelését](../../concept-brand-detection.md)ismertető témakört.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_brands)]
+
+
 
 ### <a name="detect-adult-racy-or-gory-content"></a>Felnőtt, zamatos vagy véres tartalom észlelése
 
@@ -216,6 +237,13 @@ A következő kód a képtípussal kapcsolatos információkat jeleníti &mdash;
 
 > [!div class="nextstepaction"]
 > [Elemeztem egy olyan képet](?success=analyze-image#read-printed-and-handwritten-text) [, amelyet egy hibába ütközött](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Java&Section=analyze-image)
+
+### <a name="close-out-the-method"></a>A metódus lezárása
+
+Fejezze be a try/catch blokkot, és zárjuk be a metódust.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyze_catch)]
+
 
 ## <a name="read-printed-and-handwritten-text"></a>Nyomtatott és kézzel írt szöveg olvasása
 
