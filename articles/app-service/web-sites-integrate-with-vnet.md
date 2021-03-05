@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 077d200dcaf957f636acecebb441ff99a68eb96f
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 4666f03e529c568177ff56a2db84e226bc906132
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963587"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182910"
 ---
-# <a name="integrate-your-app-with-an-azure-virtual-network"></a>Alkalmazás integrálása egy Azure-beli virtuális hálózattal
+# <a name="integrate-your-app-with-an-azure-virtual-network"></a>Alkalmazás integrálása Azure-beli virtuális hálózattal
 
 Ez a cikk ismerteti a Azure App Service VNet integrációs funkciót, valamint azt, hogyan állíthatja be a [Azure app Service](./overview.md)alkalmazásokkal. Az [azure Virtual Network][VNETOverview] (virtuális hálózatok) használatával számos Azure-erőforrást elhelyezhet egy nem internetre irányítható hálózaton. A VNet integrációs funkciója lehetővé teszi, hogy alkalmazásai hozzáférjenek az erőforrásokhoz a vagy a VNet keresztül. A VNet-integráció nem teszi lehetővé, hogy az alkalmazások magánjellegű módon férhessenek hozzá.
 
@@ -243,5 +243,5 @@ Az átjárók számára szükséges VNet-integrációhoz a PowerShell használat
 [creategateway]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#creategw
 [setp2saddresses]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#addresspool
 [VNETRouteTables]: ../virtual-network/manage-route-table.md
-[installCLI]: /cli/azure/install-azure-cli?view=azure-cli-latest%2f
+[installCLI]: /cli/azure/install-azure-cli
 [privateendpoints]: networking/private-endpoint.md

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 9557ada8001022d460c35a091fdac7699ac5e5ec
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: e69e5d9b94a47bf7db21ef3732a4ddcba7c2cf5c
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289391"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181550"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>Oktatóanyag: Azure Key Vault használata virtuális géppel a .NET-ben
 
@@ -112,7 +112,7 @@ A .NET Core telepítéséhez nyissa meg a [.net-letöltések](https://www.micros
 
 Nyisson meg egy parancssort.
 
-A következő parancsok futtatásával kinyomtathatja a konzolon a "„Helló világ!” alkalmazás" parancsot:
+A következő parancsok futtatásával kinyomtathatja a konzolon a "Hello World" parancsot:
 
 ```console
 dotnet new console -n keyvault-console-app
@@ -140,6 +140,7 @@ Nyissa meg a *program.cs* fájlt, és adja hozzá a következő csomagokat:
 
 ```csharp
 using System;
+using Azure.Core;
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
 ```

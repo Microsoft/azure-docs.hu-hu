@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 12/07/2020
-ms.openlocfilehash: 445810d5873bb935ded180a969e4612542bde5ed
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.date: 3/04/2021
+ms.openlocfilehash: 92702f38b6143c5dac2111c57fadeba7d9142992
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120181"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181057"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>A OCP GTM közös értékesítési megoldásainak áttelepítése a kereskedelmi piactérre
 
@@ -136,7 +136,7 @@ Az ajánlat közzétételéhez szükséges információkkal kapcsolatos részlet
 
     :::image type="content" source="media/co-sell-migrate/offer-setup.png" alt-text="Az ajánlat áttekintése telepítési lapok a partner Centerben.":::
 
-3. A Microsoft Seller szolgáltatással kapcsolatos néhány részlet a OCP GTM-megoldásból lett másolva. Fejezze be a többi szükséges információt a **közös értékesítés a Microsoft** lapon, hogy az ajánlat közös értékesítésre készen álljon. Ha elkészült, válassza **a felülvizsgálat és közzététel** lehetőséget. További információ: a [közös értékesítéssel kapcsolatos anyagok beküldése a partner Centerben](marketplace-co-sell.md).
+3. A Microsoft Seller szolgáltatással kapcsolatos néhány részlet a OCP GTM-megoldásból lett másolva. Fejezze be a többi szükséges információt a **közös értékesítés a Microsoft** lapon, hogy az ajánlat közös értékesítésre készen álljon. Ha elkészült, válassza **a felülvizsgálat és közzététel** lehetőséget. További információ: a [közös értékesítés konfigurálása kereskedelmi Marketplace-ajánlathoz](commercial-marketplace-co-sell.md).
 
     :::image type="content" source="media/co-sell-migrate/co-sell-page.png" alt-text="Az ajánlat közös értékesítésének lapja a partner Centerben.":::
 
@@ -154,5 +154,5 @@ Az ajánlat közzétételéhez szükséges információkkal kapcsolatos részlet
 ## <a name="next-steps"></a>Következő lépések
 
 - [Viszonteladás CSP-partnereken keresztül](cloud-solution-providers.md)
-- [Közös értékesítésű anyagok beküldése a partner Centerben](marketplace-co-sell.md)
+- [Közös értékesítés konfigurálása kereskedelmi Piactéri ajánlathoz](commercial-marketplace-co-sell.md)
 - A [Gyakori kérdések](https://partner.microsoft.com/resources/detail/co-sell-requirements-publish-commercial-marketplace-faq-pdf) megtekintése (PDF)

@@ -3,12 +3,12 @@ title: Az Azure Service Fabric-fürt beállításainak módosítása
 description: Ez a cikk a háló beállításait és a testre szabható háló-frissítési szabályzatokat ismerteti.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 34a63a86bc10a787ef077b9067c3fba5a9e4da25
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: fed66c1a1908977fbe9769c1aec77945bc38c3dc
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919782"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183403"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric-fürt beállításainak testreszabása
 Ez a cikk a Service Fabric-fürthöz testreszabható különböző háló-beállításokat ismerteti. Az Azure-ban üzemeltetett fürtök esetében a beállításokat a [Azure Portal](https://portal.azure.com) vagy egy Azure Resource Manager sablon segítségével szabhatja testre. További információ: Azure- [fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md). Önálló fürtök esetén testreszabhatja a beállításokat, ha frissíti a *ClusterConfig.js* fájlt, és végrehajtja a fürtön a konfiguráció frissítését. További információ: [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -130,7 +130,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |EnableTelemetry |Bool, az alapértelmezett érték TRUE (igaz) | Dinamikus |A telemetria engedélyezése vagy letiltása folyamatban van. |
 |FailuresOnlyHttpTelemetry | Bool, az alapértelmezett érték false | Dinamikus | Ha engedélyezve van a HTTP-telemetria rögzítése; csak a sikertelen kérelmek rögzítése. Ez segít csökkenteni a telemetria által generált események számát. |
 |HttpTelemetryCapturePercentage | int, alapértelmezett érték 50 | Dinamikus | Ha engedélyezve van a HTTP-telemetria rögzítése; csak a kérések véletlenszerű százalékos arányának rögzítése. Ez segít csökkenteni a telemetria által generált események számát. |
-|MaxDiskQuotaInMB |Int, alapértelmezett érték 65536 | Dinamikus |Windows Fabric naplófájlok esetében a lemezkvóta MB-ban. |
+|MaxDiskQuotaInMB |Int, alapértelmezett érték 65536 | Dinamikus |Windows-és linuxos háló-naplófájlok esetén a lemezkvóta MB-ban. |
 |ProducerInstances |Sztring | Dinamikus |A DCA-előállító példányainak listája. |
 
 ## <a name="dnsservice"></a>DnsService
@@ -321,7 +321,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |MaxPercentDeltaUnhealthyNodes|int, az alapértelmezett érték 10|Statikus|A fürt frissítése állapotának kiértékelésére szolgáló házirend: a fürt kifogástalan állapotának megfelelő különbözeti csomópontok maximális százaléka |
 |MaxPercentUpgradeDomainDeltaUnhealthyNodes|int, az alapértelmezett érték 15|Statikus|A fürt frissítése állapotának kiértékelésére szolgáló házirend: a nem kifogástalan állapotú csomópontok különbözetének maximális százaléka egy frissítési tartományban, amely lehetővé teszi, hogy a fürt állapota Kifogástalan legyen. |
 
-## <a name="hosting"></a>Hosting
+## <a name="hosting"></a>Üzemeltetés
 
 | **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |

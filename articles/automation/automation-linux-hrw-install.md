@@ -3,14 +3,14 @@ title: Linuxos hibrid Runbook-feldolgozó üzembe helyezése Azure Automation
 description: Ez a cikk azt ismerteti, hogyan telepíthet egy Azure Automation hibrid Runbook-feldolgozót a runbookok Linux-alapú gépeken való futtatásához a helyi adatközpontban vagy a felhőalapú környezetben.
 services: automation
 ms.subservice: process-automation
-ms.date: 02/18/2021
+ms.date: 02/26/2021
 ms.topic: conceptual
-ms.openlocfilehash: 543ae640871699c7e1fffda46463752483ff6a4e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d4d9bcd16e36e76808f19f7fbd43dd0d3e7550c3
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708917"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182332"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker üzembe helyezése
 
@@ -48,7 +48,7 @@ A hibrid Runbook Worker szolgáltatás a következő disztribúciókat támogatj
 * Red Hat Enterprise Linux Server 5, 6, 7 és 8
 * Debian GNU/Linux 6, 7 és 8
 * Ubuntu 12,04 LTS, 14,04 LTS, 16,04 LTS és 18,04 LTS
-* 12 és 15 SUSE Linux Enterprise Server
+* SUSE Linux Enterprise Server 12 és 15 (a SUSE nem adta meg a 13. vagy 14. számú verziót)
 
 > [!IMPORTANT]
 > A Update Management funkció engedélyezése előtt, amely a rendszer hibrid Runbook feldolgozói szerepkörtől függ, erősítse meg az [itt](update-management/overview.md#supported-operating-systems)támogatott disztribúciókat.
@@ -66,7 +66,7 @@ A Linux rendszer és a felhasználói hibrid Runbook-feldolgozó minimális köv
 |Glibc |GNU C könyvtár| 2.5-12 |
 |Openssl| OpenSSL-kódtárak | 1,0 (a TLS 1,1 és a TLS 1,2 támogatott)|
 |Curl | cURL webes ügyfél | 7.15.5|
-|Python – ctypes | A Python 2. x megadása kötelező |
+|Python – ctypes | Python 2. x vagy Python 3. x szükséges |
 |PAM | Cserélhető hitelesítési modulok|
 | **Választható csomag** | **Leírás** | **Minimális verzió**|
 | PowerShell Core | A PowerShell-runbookok futtatásához telepíteni kell a PowerShell Core-t. A telepítésének megismeréséhez lásd: [a PowerShell Core telepítése Linux rendszeren](/powershell/scripting/install/installing-powershell-core-on-linux) . | 6.0.0 |
@@ -90,13 +90,16 @@ A linuxos hibrid Runbook-feldolgozók korlátozott számú Runbook-típust támo
 
 |Runbook típusa | Támogatott |
 |-------------|-----------|
-|Python 2 |Igen |
-|PowerShell |Igen<sup>1</sup> |
+|Python 3 (előzetes verzió)|Igen, csak a következő disztribúciók esetében szükséges: SUSE LES 15, RHEL 8 és CentOS 8|
+|Python 2 |Igen, minden olyan disztribúció esetében, amelyhez nem szükséges a Python 3<sup>1</sup> |
+|PowerShell |Igen<sup>2</sup> |
 |PowerShell-munkafolyamat |Nem |
 |Grafikus |Nem |
 |Grafikus PowerShell-munkafolyamat |Nem |
 
-<sup>1</sup> A PowerShell-runbookok a PowerShell Core-t kell telepíteni a Linux rendszerű gépen. A telepítésének megismeréséhez lásd: [a PowerShell Core telepítése Linux rendszeren](/powershell/scripting/install/installing-powershell-core-on-linux) .
+<sup>1</sup> Lásd: [támogatott Linux operációs rendszerek](#supported-linux-operating-systems).
+
+<sup>2</sup> A PowerShell-runbookok a PowerShell Core-t kell telepíteni a Linux rendszerű gépen. A telepítésének megismeréséhez lásd: [a PowerShell Core telepítése Linux rendszeren](/powershell/scripting/install/installing-powershell-core-on-linux) .
 
 ### <a name="network-configuration"></a>Hálózati konfiguráció
 

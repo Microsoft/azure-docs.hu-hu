@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 1a3f2ae4829c7f4ae41d31e2a2fc35d79adf3d4c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 772602a11878276da3b81b84e7f4016997375077
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596712"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183063"
 ---
 # <a name="set-up-dependency-visualization"></a>Függőségi vizualizáció beállítása
 
@@ -22,14 +22,14 @@ Ez a cikk azt ismerteti, hogyan állítható be az ügynök-alapú függőségi 
 - Tekintse át az ügynök-alapú függőségek elemzésének támogatási és telepítési követelményeit a következőhöz:
     - [VMware virtuális gépek](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agent-based)
     - [Fizikai kiszolgálók](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)
-    - [Hyper-V virtuális gépek](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements).
+    - [Hyper-V virtuális gépek](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements)
 - Győződjön meg róla, hogy:
     - Azure Migrate projekttel rendelkezik. Ha nem, [hozzon létre](./create-manage-projects.md) egyet most.
     - Győződjön meg arról, hogy [hozzáadta](how-to-assess.md) a Azure Migrate: Server Assessment eszközt a projekthez.
     - [Azure Migrate berendezés](migrate-appliance.md) beállítása a helyszíni gépek felderítéséhez. A készülék felfedi a helyszíni gépeket, és metaadatokat és teljesítményadatokat küld Azure Migratenak: a kiszolgáló értékelését. Készülék beállítása a következőhöz:
-        - [VMware](how-to-set-up-appliance-vmware.md) Virtuális gépek.
-        - [Hyper-V](how-to-set-up-appliance-hyper-v.md) Virtuális gépek.
-        - [Fizikai kiszolgálók](how-to-set-up-appliance-physical.md).
+        - [VMware](how-to-set-up-appliance-vmware.md) Virtuális gépek
+        - [Hyper-V](how-to-set-up-appliance-hyper-v.md) Virtuális gépek
+        - [Fizikai kiszolgálók](how-to-set-up-appliance-physical.md)
 - A függőségi vizualizáció használatához egy [log Analytics munkaterületet](../azure-monitor/logs/manage-access.md) társít egy Azure Migrate projekthez:
     - Munkaterületet csak a Azure Migrate berendezés beállítása után csatolhat, és felkeresheti a Azure Migrate projektben található gépeket.
     - Győződjön meg arról, hogy rendelkezik az előfizetésben a Azure Migrate projektet tartalmazó munkaterülettel.

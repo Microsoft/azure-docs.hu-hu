@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2021
 ms.author: duau
-ms.openlocfilehash: 09b82eed5ad6a9ad121ca56d197eb9c003d027f5
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 8c8897218b153c8584c89abab98934268ccd555d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624909"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182162"
 ---
 # <a name="what-is-traffic-manager"></a>Mi az a Traffic Manager?
 Az Azure Traffic Manager egy DNS-alapú forgalom terheléselosztó. Ez a szolgáltatás lehetővé teszi, hogy a globális Azure-régiókon keresztül továbbítsa a forgalmat a nyilvánosan elérhető alkalmazásokra. A Traffic Manager magas rendelkezésre állású és gyors reagálású nyilvános végpontokat is biztosít.
@@ -24,8 +24,12 @@ Az Azure Traffic Manager egy DNS-alapú forgalom terheléselosztó. Ez a szolgá
 A Traffic Manager a DNS használatával irányítja az ügyfelek kéréseit a megfelelő szolgáltatási végpontra egy forgalom-útválasztási módszer alapján. A Traffic Manager az összes végpont állapotának figyelését is biztosítja. A végpont bármely, az Azure-on belüli vagy kívül üzemeltetett internetes szolgáltatás lehet. A Traffic Manager különböző [forgalom-útválasztási módszereket](traffic-manager-routing-methods.md) és [végpont-monitorozási lehetőségeket](traffic-manager-monitoring.md) biztosít, hogy megfeleljen a különböző alkalmazások igényeinek és az automatikus feladatátvételi modelleknek. A Traffic Manager ellenáll a meghibásodásoknak, beleértve akár egy egész Azure-régió meghibásodását is.
 
 >[!NOTE]
-> Az Azure teljeskörűen felügyelt terheléselosztási megoldások együttesét biztosítja a különböző forgatókönyvekre. Ha Transport Layer Security (TLS) protokoll-lezárást („SSL-kiszervezés”) vagy per-HTTP/HTTPS kérelmeket vagy alkalmazásréteg-feldolgozást keres, tekintse át az [Application Gatewayt](../application-gateway/overview.md) ismertető cikket. Ha regionális terheléselosztást keres, tekintse át [Load Balancer](../load-balancer/load-balancer-overview.md). A végpontok közötti forgatókönyvek esetében előnyt jelenthet ezen megoldások igény szerinti kombinációja.
->
+> Az Azure teljeskörűen felügyelt terheléselosztási megoldások együttesét biztosítja a különböző forgatókönyvekre. 
+> * Ha terheléselosztást szeretne betölteni a kiszolgálók között az alkalmazási réteg egyik régiójában, tekintse át [Application Gateway](../application-gateway/overview.md).
+> * Ha optimalizálni szeretné a webes forgalom globális útválasztását, és a gyors globális feladatátvételsel optimalizálja a legfelső szintű végfelhasználói teljesítményt és megbízhatóságot, tekintse meg a [bejárati ajtót](../frontdoor/front-door-overview.md).
+> * A hálózati réteg terheléselosztásának elvégzéséhez tekintse át [Load Balancer](../load-balancer/load-balancer-overview.md). 
+> 
+> A végpontok közötti forgatókönyvek igény szerint összekapcsolják ezeket a megoldásokat.
 > Az Azure terheléselosztási lehetőségeinek összehasonlítását lásd: [Az Azure terheléselosztási lehetőségeinek áttekintése](/azure/architecture/guide/technology-choices/load-balancing-overview).
 
 Traffic Manager a következő funkciókat kínálja:

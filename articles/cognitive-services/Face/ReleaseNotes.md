@@ -10,16 +10,23 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 12/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 49d8eeaa8d1160659a456f147a6a5e27f923af33
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a66f65d48a14853ec1da08f5d83b777f4fdac846
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733465"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183317"
 ---
 # <a name="whats-new-in-face-service"></a>A Face szolgáltatás újdonságai
 
 Az Azure Face szolgáltatás folyamatosan frissül. Ebből a cikkből megtudhatja, hogyan maradhat naprakészen a funkciók fejlesztései, a javítások és a dokumentációs frissítések segítségével.
+
+## <a name="february-2021"></a>2021. február
+
+* Új Face API észlelési modell: az új észlelési 03 modell a jelenleg elérhető legpontosabb észlelési modell. Ha Ön új ügyfél, javasoljuk, hogy használja ezt a modellt. Az észlelési 03 a képeken (64x64 képpontokban) található kisebb arcokon is javítja a visszahívást és a pontosságot. A további fejlesztések közé tartozik a hamis pozitív és az elforgatott arc-tájolások jobb észlelése. Az észlelési 03 és az új felismerési 04 együttes kombinációja jobb felismerési pontosságot biztosít. További részletekért tekintse [meg a Arcfelismerés modell megadása](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model) című témakört.
+* Face Mask attribútum: a Face Mask attribútum a legújabb észlelési 03 modellel érhető el, valamint a további attribútummal, `"noseAndMouthCovered"` amely észleli, hogy az álarc a kívánt módon van-e felhasználva, amely az orrát és a száját is tartalmazza. A legújabb maszk-észlelési képesség használatához a felhasználóknak meg kell adniuk az észlelési modellt az API-kérelemben: a modell verziójának a _detectionModel_ paraméterrel való hozzárendelésével `detection_03` . További részletekért tekintse [meg a Arcfelismerés modell megadása](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model) című témakört.
+* Új Face API-felismerési modell: az új felismerési 04 modell a jelenleg elérhető legpontosabb felismerési modell. Ha Ön új ügyfél, javasoljuk, hogy ezt a modellt használja az ellenőrzéshez és az azonosításhoz. Javítja az elismerési 03 pontosságát, beleértve a bejelentkezett felhasználók (Sebészeti maszkok, N95-maszkok, ruha-maszkok) jobb felismerését. Az ügyfelek mostantól olyan biztonságos és zökkenőmentes felhasználói élményeket hozhatnak létre, amelyek észlelik, hogy egy regisztrált felhasználó visel-e a legújabb észlelési 03 modellt, és ismeri fel, kik a legújabb felismerési 04-es modellel rendelkeznek. További részletekért tekintse [meg a Arcfelismerés modell megadása](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-recognition-model) című témakört.
+
 
 ## <a name="january-2021"></a>2021. január
 * A Face API használatakor felhasználható késés csökkentése: a Face csapata közzétett egy új cikket, amely részletezi a késés lehetséges okait a szolgáltatás és a lehetséges kockázatcsökkentő stratégiák használata során. Lásd: [az arc szolgáltatás használata esetén a késés csökkentése](./face-api-how-to-topics/how-to-mitigate-latency.md).

@@ -4,13 +4,13 @@ description: Az Azure FarmBeats architektúráját ismerteti
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: d64c2175072d9979cfda2ea5f75beb34d3ad0d6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: v-ummehabiba
+ms.openlocfilehash: ebc1cdc7c762117851072037624f11e9fa98b6f1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75482373"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182604"
 ---
 # <a name="integration-patterns"></a>Integrációs minták
 
@@ -30,6 +30,6 @@ Az Azure FarmBeats rendelkező adatpartnerek révén szélesebb körű bevezeté
 
 Ha az adatai elérhetők az ügyfelek Azure FarmBeats-példányán belül, az ügyfelek gazdagabb elemzéseket és eszközöket hozhatnak létre az adataik felett.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az érzékelői adatok integrálásával kapcsolatos további információkért [lásd: az](imagery-partner-integration-in-azure-farmbeats.md) [érzékelő adatintegrációja](sensor-partner-integration-in-azure-farmbeats.md) és a képekkel kapcsolatos partneri integráció.

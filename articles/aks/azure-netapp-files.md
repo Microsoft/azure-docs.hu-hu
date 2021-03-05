@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan integrálható Azure NetApp Files az Azure Kube
 services: container-service
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: 19727d3c3322b05f340463d94a2bc3884e5d9d93
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 1d5aa8232b5d0aaa68e6d7e3dcbb9a7d70d0e8f8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196010"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182145"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Azure NetApp Files integrálása az Azure Kubernetes szolgáltatással
 
@@ -145,7 +145,7 @@ az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $ANF_
 }
 ```
 
-Hozzon létre egy `pv-nfs.yaml` definiált PersistentVolume. Cserélje le a `path` elemet a *creationToken* és az `server` *IP* -cím elemre az előző parancsban. Példa:
+Hozzon létre egy `pv-nfs.yaml` definiált PersistentVolume. Cserélje le a `path` elemet a *creationToken* és az `server` *IP* -cím elemre az előző parancsban. Például:
 
 ```yaml
 ---
@@ -179,7 +179,7 @@ kubectl describe pv pv-nfs
 
 ## <a name="create-the-persistentvolumeclaim"></a>A PersistentVolumeClaim létrehozása
 
-Hozzon létre egy `pvc-nfs.yaml` definiált PersistentVolume. Példa:
+Hozzon létre egy `pvc-nfs.yaml` definiált PersistentVolume. Például:
 
 ```yaml
 apiVersion: v1
@@ -209,7 +209,7 @@ kubectl describe pvc pvc-nfs
 
 ## <a name="mount-with-a-pod"></a>Csatlakoztatás Pod-mel
 
-Hozzon létre egy olyan `nginx-nfs.yaml` Pod-definíciót, amely a PersistentVolumeClaim használja. Példa:
+Hozzon létre egy olyan `nginx-nfs.yaml` Pod-definíciót, amely a PersistentVolumeClaim használja. Például:
 
 ```yaml
 kind: Pod
@@ -273,11 +273,11 @@ További információ a Azure NetApp Filesről: [Mi az Azure NetApp Files][anf].
 [anf-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all
 [anf-waitlist]: https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u
 [az-aks-show]: /cli/azure/aks#az-aks-show
-[az-netappfiles-account-create]: /cli/azure/netappfiles/account?view=azure-cli-latest#az-netappfiles-account-create
-[az-netappfiles-pool-create]: /cli/azure/netappfiles/pool?view=azure-cli-latest#az-netappfiles-pool-create
-[az-netappfiles-volume-create]: /cli/azure/netappfiles/volume?view=azure-cli-latest#az-netappfiles-volume-create
-[az-netappfiles-volume-show]: /cli/azure/netappfiles/volume?view=azure-cli-latest#az-netappfiles-volume-show
-[az-network-vnet-subnet-create]: /cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-create
+[az-netappfiles-account-create]: /cli/azure/netappfiles/account#az-netappfiles-account-create
+[az-netappfiles-pool-create]: /cli/azure/netappfiles/pool#az-netappfiles-pool-create
+[az-netappfiles-volume-create]: /cli/azure/netappfiles/volume#az-netappfiles-volume-create
+[az-netappfiles-volume-show]: /cli/azure/netappfiles/volume#az-netappfiles-volume-show
+[az-network-vnet-subnet-create]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-create
 [install-azure-cli]: /cli/azure/install-azure-cli
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe

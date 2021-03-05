@@ -4,14 +4,14 @@ description: Ez a cikk a képekkel való partner-integrációt ismerteti.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
+ms.author: v-ummehabiba
 ms.custom: has-adal-ref
-ms.openlocfilehash: 40e17a9f73d98f24c6c7fbb55ef38cc2bc088861
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 1bc723892e29ccc24a7612cfbe50d4b274cdacdf
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675943"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183794"
 ---
 # <a name="imagery-partner-integration"></a>Képalkotási partner integrációja
 
@@ -138,10 +138,10 @@ Miután a partner rendelkezik hitelesítő adatokkal a FarmBeats-Datahub való k
 
 1.  Hozzon létre egy új kiterjesztett típust a következő mezőkhöz a feltölteni kívánt képtípusnak megfelelően:
 
-    - **Jelenet forrása** : például drone_partner_name
-    - **Jelenet típusa** : például a drone
-    - **Jelenet fájltípusa** : például a klorofill indexe
-    - **Jelenet tartalmának típusa** : például rendszerkép/TIFF
+    - **Jelenet forrása**: például drone_partner_name
+    - **Jelenet típusa**: például a drone
+    - **Jelenet fájltípusa**: például a klorofill indexe
+    - **Jelenet tartalmának típusa**: például rendszerkép/TIFF
 
 2.  Hívja meg a/Farms API-t, hogy lekérje a farmok listáját az Azure FarmBeats rendszerből.
 3.  Adja meg az ügyfél számára, hogy egyetlen farmot válasszon a farmok listájáról.

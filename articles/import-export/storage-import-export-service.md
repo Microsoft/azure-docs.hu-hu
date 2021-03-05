@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/14/2021
+ms.date: 03/04/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 6dd2c7fcef6860cb5a2eaf88d141f8567955ed25
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: b1f1560fc1a00577e1e4b30d922fc7d4cae0ab92
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706474"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181842"
 ---
 # <a name="what-is-azure-importexport-service"></a>Mi az az Azure import/export szolgáltatás?
 
@@ -79,7 +79,7 @@ Magas szinten az importálási feladatok az alábbi lépéseket foglalják maguk
 >
 > Külföldön (az adatközpont országa/régióján kívül) beszállítások esetén ossza meg a nemzetközi szolgáltatói fiókokat.
 
- ![1. ábra: a feladathoz tartozó folyamat importálása](./media/storage-import-export-service/importjob.png)
+ ![1. ábra: a feladathoz tartozó folyamat importálása](./media/storage-import-export-service/import-job.png)
 
 Az adatimportálás részletes utasításait a következő témakörben találhatja meg:
 
@@ -108,7 +108,7 @@ Az exportálási feladatok magas szinten az alábbi lépéseket foglalják maguk
 >
 > Külföldön (az adatközpont országa/régióján kívül) beszállítások esetén ossza meg a nemzetközi szolgáltatói fiókokat.
   
- ![2. ábra: a feladatok folyamatának exportálása](./media/storage-import-export-service/exportjob.png)
+ ![2. ábra: a feladatok folyamatának exportálása](./media/storage-import-export-service/export-job.png)
 
 Az adatok exportálásának lépésenkénti utasításait az [adatok exportálása Azure-blobokból](storage-import-export-data-from-blobs.md)című témakörben találhatja meg.
 
@@ -158,7 +158,7 @@ Ha meghajtókat szállít az Azure-ba, a szállítási költséget a szállítá
 
 A [standard szintű tárolási tranzakciós díj](https://azure.microsoft.com/pricing/details/storage/) az importálás során és az adatexportálás során is érvényes. Az Azure Storage-ból származó adatok exportálásakor a standard szintű kimenő költségek is érvényesek a tárolási tranzakciós költségekkel együtt. A kimenő költségekkel kapcsolatos további információkért lásd az [adatátviteli díjszabást.](https://azure.microsoft.com/pricing/details/data-transfers/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan használhatja az import/export szolgáltatást a következőhöz:
 

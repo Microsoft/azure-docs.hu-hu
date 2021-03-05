@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/04/2021
 ms.author: b-juche
-ms.openlocfilehash: 566cc3b1192d632bbffb8f9ef091f291b4bcc6e6
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 1c20190ba1a997ef85f4023a54ecea3c2a77ae53
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581149"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183828"
 ---
 # <a name="manage-a-manual-qos-capacity-pool"></a>Manuális QoS-kapacitáskészlet kezelése
 
@@ -44,7 +44,7 @@ A manuális QoS-típus funkció jelenleg előzetes verzióban érhető el. Ha el
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFFlexPool
     ```
-Használhatja az [Azure CLI-parancsokat](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) is, `az feature register` és `az feature show` regisztrálhatja a funkciót, és megjelenítheti a regisztrációs állapotot. 
+Használhatja az [Azure CLI-parancsokat](/cli/azure/feature) is, `az feature register` és `az feature show` regisztrálhatja a funkciót, és megjelenítheti a regisztrációs állapotot. 
 
 ## <a name="set-up-a-new-manual-qos-capacity-pool"></a>Új manuális QoS-kapacitás készletének beállítása 
 

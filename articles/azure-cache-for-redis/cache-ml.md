@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: c2241d738a43c6891ee4bea0829400fdc51a664b
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 83fc88a57a1cdbec35a8f939a81698799d290d70
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734232"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183624"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>Gépi tanulási modell üzembe helyezése az Azure cache for Redis Azure Functions 
 
@@ -26,7 +26,7 @@ Az Azure cache for Redis rendkívül nagy teljesítményű és skálázható –
 ## <a name="prerequisites"></a>Előfeltételek
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/).
 * Egy Azure Machine Learning-munkaterület. További információt a [Munkaterület létrehozása](../machine-learning/how-to-manage-workspace.md) című cikkben talál.
-* [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)-vel.
+* [Azure CLI](/cli/azure/install-azure-cli)-vel.
 * A munkaterületen regisztrált, betanított gépi tanulási modell. Ha nem rendelkezik modellel, használja a [képbesorolási oktatóanyagot: a betanítási modell](../machine-learning/tutorial-train-models-with-aml.md) betanítása és regisztrálása.
 
 > [!IMPORTANT]
@@ -71,7 +71,7 @@ Az alapszintű, standard vagy prémium szintű gyorsítótár-példánnyal Azure
 
 1. Szükség esetén a **címkék** lapon adja meg a nevet és az értéket, ha az erőforrást kategorizálni szeretné. 
 
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. A felülvizsgálat + létrehozás lapon az Azure ellenőrzi a konfigurációt.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. A felülvizsgálat + létrehozás lapon az Azure ellenőrzi a konfigurációt.
 
 1. Ha megjelenik az átadott zöld érvényesítés üzenet, válassza a **Létrehozás** lehetőséget.
 
@@ -313,7 +313,7 @@ A rendszer az erőforráscsoport törlésének megerősítését kéri. A meger�
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és annak erőforrásait.
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 * További információ a [Redis készült Azure cache](./cache-overview.md) -ről
 * Ismerje meg, hogyan konfigurálhatja a Function alkalmazást [a functions dokumentációjában](../azure-functions/functions-create-function-linux-custom-image.md) .

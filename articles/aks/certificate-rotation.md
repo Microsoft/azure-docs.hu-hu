@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan forgathatja el a tanúsítványokat egy Azure K
 services: container-service
 ms.topic: article
 ms.date: 11/15/2019
-ms.openlocfilehash: 90526b78e65c335f07a2a9d2d152b54b47233082
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1871a8deed4d189534915a9b46b6ace071c1126c
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88211041"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181771"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Tanúsítványok elforgatása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -62,7 +62,7 @@ az aks rotate-certs -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 > [!IMPORTANT]
 > A befejezésig akár 30 percet is igénybe vehet `az aks rotate-certs` . Ha a parancs végrehajtása nem sikerül, a használatával `az aks show` ellenőrizheti, hogy a fürt állapota a *tanúsítvány elforgatása*-e. Ha a fürt hibás állapotban van, futtassa újra a `az aks rotate-certs` tanúsítványokat újra.
 
-A parancs futtatásával ellenőrizze, hogy a régi tanúsítványok már nem érvényesek-e `kubectl` . Mivel nem frissítette a által használt tanúsítványokat `kubectl` , hibaüzenet jelenik meg.  Példa:
+A parancs futtatásával ellenőrizze, hogy a régi tanúsítványok már nem érvényesek-e `kubectl` . Mivel nem frissítette a által használt tanúsítványokat `kubectl` , hibaüzenet jelenik meg.  Például:
 
 ```console
 $ kubectl get no
@@ -75,7 +75,7 @@ Frissítse a által használt tanúsítványt a `kubectl` futtatásával `az aks
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME --overwrite-existing
 ```
 
-Ellenőrizze, hogy a tanúsítványok frissítve lettek-e egy parancs futtatásával `kubectl` , amely mostantól sikeres lesz. Példa:
+Ellenőrizze, hogy a tanúsítványok frissítve lettek-e egy parancs futtatásával `kubectl` , amely mostantól sikeres lesz. Például:
 
 ```console
 kubectl get no
@@ -90,7 +90,7 @@ Ez a cikk azt mutatja be, hogyan lehet automatikusan elforgatni a fürt tanúsí
 
 
 [azure-cli-install]: /cli/azure/install-azure-cli
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [aks-best-practices-security-upgrades]: operator-best-practices-cluster-security.md

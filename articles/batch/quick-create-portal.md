@@ -4,12 +4,12 @@ description: Ez a rövid útmutató bemutatja, hogyan használható a Azure Port
 ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: mvc
-ms.openlocfilehash: d8584ecea8ddd5934771dbe5945a6172a28c801c
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 1234a932a732cdb6fda1c412a423ae0b1ea089e9
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106475"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184015"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Rövid útmutató: Az első Batch-feladat futtatása az Azure Portalon
 
@@ -69,7 +69,7 @@ Néhány perc elteltével a kiosztási állapot **állandóra** változik, és a
 
 ## <a name="create-a-job"></a>Feladat létrehozása
 
-Most, hogy már rendelkezik készlettel, hozzon létre egy feladatot, amelyet azon futtat. A Batch-feladat egy vagy több tevékenység logikai csoportja. Egy Batch-feladat magában foglalja a tevékenységek közös beállításait, mint a prioritást, illetve a készletet, amelyeken a tevékenységeket futtatni szeretné. A feladat kezdetben nem tartalmaz tevékenységeket.
+Most, hogy már rendelkezik készlettel, hozzon létre egy feladatot, amelyet azon futtat. A Batch-feladatok egy vagy több feladat logikai csoportjai. Egy Batch-feladat magában foglalja a tevékenységek közös beállításait, mint a prioritást, illetve a készletet, amelyeken a tevékenységeket futtatni szeretné. A feladat kezdetben nem tartalmaz tevékenységeket.
 
 1. A Batch-fiók nézetben válassza a **feladatok**  >  **Hozzáadás** lehetőséget.
 
@@ -83,7 +83,7 @@ Batch használata esetén a parancssorban adhatja meg az alkalmazást vagy szkri
 
 Az első tevékenység létrehozása:
 
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 1. Adja meg a következő **tevékenységazonosítót**: *mytask*.
 

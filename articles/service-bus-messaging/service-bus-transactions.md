@@ -2,14 +2,14 @@
 title: A tranzakciók feldolgozásának áttekintése Azure Service Bus
 description: Ez a cikk áttekintést nyújt a tranzakciók feldolgozásáról és a Azure Service Buson keresztüli küldés szolgáltatásról.
 ms.topic: article
-ms.date: 10/28/2020
+ms.date: 03/03/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9a95a200b57d348109884a319b5433f0ffd5dde1
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e2848f41d5557584b0f1a197b548a00a4aef1564
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684791"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183743"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>A tranzakciók feldolgozásának Service Bus áttekintése
 
@@ -42,6 +42,8 @@ Az üzenet (teljes, lemondás, kézbesítetlen levél, elhalasztás) a (z) és a
 Ha engedélyezni szeretné az adatok tranzakciós *átadását* egy várólistáról vagy témakörből egy processzorra, majd egy másik várólistára vagy témakörre, Service Bus támogatja az átvitelt. Az átviteli műveletekben a küldő először üzenetet küld egy *adatátviteli várólistába vagy témakörbe*, és az átviteli várólista vagy a témakör azonnal áthelyezi az üzenetet a kívánt célhelyre vagy témakörre ugyanazzal a robusztus átvitel-megvalósítással, amelyet az autoforward funkció támaszkodik. Az üzenet soha nem lett véglegesítve az adatátviteli várólista vagy a témakör naplójában, így láthatóvá válik az átviteli várólista vagy a témakör felhasználói számára.
 
 A tranzakciós képesség ereje nyilvánvalóvá válik, ha az átviteli várólista vagy a témakör maga a küldő bemeneti üzeneteinek forrása. Más szóval, Service Bus átviheti az üzenetet a célhelyre vagy a (z) "on" üzenetbe az átviteli várólistán vagy témakörön keresztül, miközben teljes (vagy késleltetett) műveletet végez a bemeneti üzenetben, egyetlen atomi művelettel. 
+
+Ha egy témakör-előfizetésből kell bejelentkeznie, majd egy várólistába vagy témakörbe kell küldenie ugyanabban a tranzakcióban, az átvitel entitásának témakörnek kell lennie. Ebben a forgatókönyvben a tranzakció hatókörének megkezdése a témakörben, az előfizetés és a tranzakció hatókörének fogadása, majd az átvitel témakör használatával egy üzenetsor vagy témakör célhelye. 
 
 ### <a name="see-it-in-code"></a>Megtekintés a kódban
 

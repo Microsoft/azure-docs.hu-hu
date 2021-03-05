@@ -11,12 +11,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./app-service-web-tutorial-custom-domain-uiex
-ms.openlocfilehash: b3ff1b344852d57f0effbd978c06aa617682ea4f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 79599ce04b93409c67342be73cf88d5e20621c1d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720315"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182587"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Oktatóanyag: meglévő egyéni DNS-név leképezése Azure App Service
 
@@ -308,10 +308,7 @@ Tallózással keresse meg a korábban konfigurált DNS-neveket (például,,, `co
 
 ## <a name="resolve-404-not-found"></a>A 404 feloldása nem található
 
-Ha HTTP 404 (nem található) hibaüzenet jelenik meg, amikor megkeresi az egyéni tartomány URL-címét, ellenőrizze, hogy a tartomány az alkalmazás IP-címére oldódik-e az <a href="https://www.whatsmydns.net/" target="_blank">WhatsmyDNS.net</a>használatával. Ha nem, akkor az a következő okok egyike miatt lehet:
-
-- A konfigurált egyéni tartományból hiányzik egy rekord vagy egy CNAME rekord.
-- A böngészőügyfél gyorsítótárazta a tartomány régi IP-címét. Törölje a gyorsítótárat, és ismételje meg a DNS-feloldási tesztet. Windows-gépen az `ipconfig /flushdns` paranccsal törölheti a gyorsítótárat.
+Ha HTTP 404 (nem található) hibaüzenet jelenik meg, amikor megkeresi az egyéni tartomány URL-címét, ellenőrizze, hogy a tartomány az alkalmazás IP-címére oldódik-e az <a href="https://www.nslookup.io/" target="_blank">nslookup.IO</a>használatával. Ha nem, ellenőrizze, hogy az a és a CNAME rekord megfelelően van-e konfigurálva ugyanazon a helyen. Ha az IP-címet helyesen oldja fel, de még mindig 404-t kap, akkor előfordulhat, hogy a böngészője gyorsítótárazta a tartomány régi IP-címét. Törölje a gyorsítótárat, és ismételje meg a DNS-feloldási tesztet. Windows-gépen az `ipconfig /flushdns` paranccsal törölheti a gyorsítótárat.
 
 ## <a name="migrate-an-active-domain"></a>Aktív tartomány migrálása
 

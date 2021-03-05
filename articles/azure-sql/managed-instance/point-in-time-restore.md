@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: d3414cb31192211c1663a84e1541f56b63674660
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 0a56cfc147d4fb5cbdccf13363ad28bc602d8216
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525381"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182757"
 ---
 # <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>Adatbázis visszaállítása az Azure SQL felügyelt példányában egy korábbi időpontra
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -110,7 +110,7 @@ Részletekért lásd: [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Ha még nem telepítette az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](/cli/azure/install-azure-cli?view=azure-cli-latest)ismertető témakört.
+Ha még nem telepítette az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört.
 
 Az adatbázis Azure CLI használatával történő visszaállításához adja meg a paraméterek értékét a következő parancsban. Ezután futtassa a parancsot:
 
@@ -128,7 +128,7 @@ az sql midb restore -g mygroupname --mi myinstancename -n mymanageddbname |
        --dest-mi mytargetinstancename
 ```
 
-Az elérhető paraméterek részletes ismertetését lásd a [CLI dokumentációjában, amely az adatbázisok SQL felügyelt példányban történő visszaállítását](/cli/azure/sql/midb?view=azure-cli-latest#az-sql-midb-restore)ismerteti.
+Az elérhető paraméterek részletes ismertetését lásd a [CLI dokumentációjában, amely az adatbázisok SQL felügyelt példányban történő visszaállítását](/cli/azure/sql/midb#az-sql-midb-restore)ismerteti.
 
 ---
 

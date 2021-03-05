@@ -3,12 +3,12 @@ title: Hibrid gépek összekötése az Azure-ba a Azure Portal
 description: Ebből a cikkből megtudhatja, hogyan telepítheti az ügynököt, és hogyan csatlakoztathatók a gépek az Azure-ba az Azure arc-kompatibilis kiszolgálók használatával a Azure Portal.
 ms.date: 11/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 97962f7fd9816e398f017555d7043cf65db00ed8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d7a89db7b8a42476a312a8f9a96c5ad230b140a2
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584959"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183148"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Hibrid gépek összekötése az Azure-ba a Azure Portal
 
@@ -22,7 +22,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 ## <a name="generate-the-installation-script-from-the-azure-portal"></a>A telepítési parancsfájl létrehozása a Azure Portal
 
-A letöltés és telepítés automatizálására szolgáló parancsfájl, valamint az Azure arc-kapcsolat létesítése a Azure Portal érhető el. A folyamat befejezéséhez tegye a következőket:
+A letöltés és telepítés automatizálására szolgáló parancsfájl, valamint az Azure arc-kapcsolat létesítése a Azure Portal érhető el. A folyamat befejezéséhez hajtsa végre a következő lépéseket:
 
 1. A böngészőben nyissa meg a [Azure Portal](https://portal.azure.com).
 
@@ -38,7 +38,7 @@ A letöltés és telepítés automatizálására szolgáló parancsfájl, valami
 
     1. Az **erőforráscsoport** legördülő listában válassza ki azt az erőforráscsoportot, amelyből a gépet felügyelni kívánja.
     1. A **régió** legördülő listában válassza ki az Azure-régiót a kiszolgálók metaadatainak tárolásához.
-    1. Az **operációs rendszer** legördülő listában válassza ki azt az operációs rendszert, amelyre a parancsfájlt konfigurálni kívánja.
+    1. Az **operációs rendszer** legördülő listában válassza ki azt az operációs rendszert, amelyen a parancsfájl konfigurálva van.
     1. Ha a gép egy proxykiszolgálón keresztül kommunikál az internethez, adja meg a proxykiszolgáló IP-címét, vagy azt a nevet és portszámot, amelyet a gép használni fog a proxykiszolgálóhoz való kommunikációhoz. Adja meg az értéket a formátumban `http://<proxyURL>:<proxyport>` .
     1. Kattintson a **Tovább gombra: címkék**.
 
@@ -164,8 +164,8 @@ Miután telepítette az ügynököt, és konfigurálta az Azure arc-kompatibilis
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A hibaelhárítási információ a [csatlakoztatott gép ügynökének hibaelhárítása című útmutatóban](troubleshoot-agent-onboard.md)található.
+- A hibaelhárítási információ a [csatlakoztatott gép ügynökének hibaelhárítása című útmutatóban](troubleshoot-agent-onboard.md)található.
 
-* Megtudhatja, hogyan kezelheti a gépet [Azure Policy](../../governance/policy/overview.md)használatával, például a virtuális gép [vendég konfigurációjában](../../governance/policy/concepts/guest-configuration.md), ellenőrizheti, hogy a gép a várt log Analytics munkaterületről jelent-e jelentést, lehetővé teszi a figyelést a virtuális [gépekkel Azure monitor](../../azure-monitor/vm/vminsights-enable-policy.md)és sok más további műveletet.
+- Megtudhatja, hogyan kezelheti a gépet a [Azure Policy](../../governance/policy/overview.md)használatával, például a virtuális gép [vendég konfigurációjában](../../governance/policy/concepts/guest-configuration.md), ellenőrizheti, hogy a gép a várt log Analytics munkaterületről jelent-e jelentést, lehetővé teszi a figyelést a [virtuális gépekkel Azure monitor](../../azure-monitor/vm/vminsights-enable-policy.md)és még sok minden más.
 
-* További információ a [log Analytics-ügynökről](../../azure-monitor/agents/log-analytics-agent.md). A Windows és Linux rendszerhez készült Log Analytics ügynökre akkor van szükség, ha az operációs rendszer és a számítási feladatok figyelésére szolgáló adatokat szeretné összegyűjteni, az Automation-runbookok vagy-szolgáltatásokkal, például a Update Managementekkel, vagy más Azure-szolgáltatások, például a [Azure Security Center](../../security-center/security-center-introduction.md)használatával
+- További információ a [log Analytics-ügynökről](../../azure-monitor/agents/log-analytics-agent.md). A Windows és a Linux rendszerhez készült Log Analytics ügynökre akkor van szükség, ha az operációs rendszer és a számítási feladatok figyelésére szolgáló adatokat Azure Monitor for VMs használatával szeretné összegyűjteni, az Automation-runbookok vagy-szolgáltatásokkal, például a Update Managementekkel, vagy más Azure-szolgáltatásokkal (például [Azure Security Center](../../security-center/security-center-introduction.md)

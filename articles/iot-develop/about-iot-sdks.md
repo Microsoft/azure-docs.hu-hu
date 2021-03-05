@@ -6,12 +6,12 @@ ms.author: elhorton
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/11/2021
-ms.openlocfilehash: 4d9546c8a912176117e42f2a6bbef3058331383b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e85cc9cdbb14c419e4bddb5ee659aa657b49a8c1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702674"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183539"
 ---
 # <a name="overview-of-azure-iot-device-sdks"></a>Az Azure IoT Device SDK-k áttekintése
 
@@ -60,7 +60,7 @@ Az első lépésekhez szükséges lehetőségek attól függnek, hogy milyen tí
 Ezek az SDK-k korlátozott számítási vagy memória-erőforrásokkal rendelkező eszközökön futnak. További információ a gyakori eszközök típusairól: [Az Azure IoT-eszközök típusának áttekintése](concepts-iot-device-types.md).
 
 #### <a name="embedded-c-sdk"></a>Beágyazott C SDK
-* [GitHub-adattár](https://github.com/Azure/azure-sdk-for-c/tree/1.0.0/sdk/docs/iot)
+* [GitHub-adattár](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot)
 * [Példák](https://github.com/Azure/azure-sdk-for-c/blob/master/sdk/samples/iot/README.md)
 * [Referenciadokumentáció](https://azure.github.io/azure-sdk-for-c/)
 * [A beágyazott C SDK létrehozása](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot#build)
@@ -68,7 +68,7 @@ Ezek az SDK-k korlátozott számítási vagy memória-erőforrásokkal rendelkez
 
 #### <a name="azure-rtos-middleware"></a>Azure RTOS middleware
 
-* [GitHub-adattár](https://github.com/azure-rtos/threadx)
+* [GitHub-adattár](https://github.com/azure-rtos/netxduo/tree/master/addons/azure_iot)
 * [Első lépések útmutatók](https://github.com/azure-rtos/getting-started) és [további minták](https://github.com/azure-rtos/samples)
 * [Referenciadokumentáció](/azure/rtos/threadx/)
 

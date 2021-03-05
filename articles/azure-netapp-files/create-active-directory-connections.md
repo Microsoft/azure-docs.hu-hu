@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/16/2021
 ms.author: b-juche
-ms.openlocfilehash: 756bf1cd7a7e9435130a3ad2d3b530b7f2e5b1b4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 44959b2f60f9aafd7d9430c9c19baea72344293f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100608961"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183879"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>Active Directory kapcsolatok létrehozása és kezelése Azure NetApp Files
 
@@ -183,7 +183,7 @@ Ez a beállítás a **NetApp-fiókhoz** tartozó **Active Directory-kapcsolatokb
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFAesEncryption
         ```
         
-        Használhatja az [Azure CLI-parancsokat](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) is, `az feature register` és `az feature show` regisztrálhatja a funkciót, és megjelenítheti a regisztrációs állapotot. 
+        Használhatja az [Azure CLI-parancsokat](/cli/azure/feature) is, `az feature register` és `az feature show` regisztrálhatja a funkciót, és megjelenítheti a regisztrációs állapotot. 
 
     * **LDAP-aláírás**   
         Jelölje be ezt a jelölőnégyzetet az LDAP-aláírás engedélyezéséhez. Ez a funkció lehetővé teszi a biztonságos LDAP-kereséseket a Azure NetApp Files szolgáltatás és a felhasználó által megadott [Active Directory Domain Services-tartományvezérlők](/windows/win32/ad/active-directory-domain-services)között. További információ: [ADV190023 | Microsoft-útmutató az LDAP-csatornák kötésének és az LDAP-aláírás engedélyezéséhez](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).  
@@ -205,7 +205,7 @@ Ez a beállítás a **NetApp-fiókhoz** tartozó **Active Directory-kapcsolatokb
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFLdapSigning
         ```
         
-        Használhatja az [Azure CLI-parancsokat](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) is, `az feature register` és `az feature show` regisztrálhatja a funkciót, és megjelenítheti a regisztrációs állapotot. 
+        Használhatja az [Azure CLI-parancsokat](/cli/azure/feature) is, `az feature register` és `az feature show` regisztrálhatja a funkciót, és megjelenítheti a regisztrációs állapotot. 
 
      * **Biztonsági mentési szabályzat felhasználói**  
         Olyan további fiókokat is hozzáadhat, amelyekhez emelt szintű jogosultságok szükségesek a Azure NetApp Fileshoz való használatra létrehozott számítógépfiók számára. A megadott fiókok a fájl vagy mappa szintjén módosíthatják az NTFS-engedélyeket. Megadhat például egy nem Kiemelt szolgáltatásfiók-fiókot, amely az adatáttelepítés során az SMB-fájlmegosztás Azure NetApp Files-ben való áttelepítésére szolgál.  
@@ -227,7 +227,7 @@ Ez a beállítás a **NetApp-fiókhoz** tartozó **Active Directory-kapcsolatokb
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
         ```
         
-        Használhatja az [Azure CLI-parancsokat](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) is, `az feature register` és `az feature show` regisztrálhatja a funkciót, és megjelenítheti a regisztrációs állapotot. 
+        Használhatja az [Azure CLI-parancsokat](/cli/azure/feature) is, `az feature register` és `az feature show` regisztrálhatja a funkciót, és megjelenítheti a regisztrációs állapotot. 
 
     * Hitelesítő adatok, beleértve a **felhasználónevet** és a **jelszót** is
 

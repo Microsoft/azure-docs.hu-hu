@@ -3,12 +3,12 @@ title: Csomópontok és készletek a Azure Batchban
 description: Ismerje meg a számítási csomópontokat és készleteket, valamint azt, hogyan használják őket egy Azure Batch munkafolyamatban fejlesztési szempontból.
 ms.topic: conceptual
 ms.date: 11/20/2020
-ms.openlocfilehash: e55be57968eae2a371a21b214dbd15921641e31f
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: be38d4f91afcaa1ac31e9b9bbc6d2547da2ee99e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741774"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183658"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Csomópontok és készletek a Azure Batchban
 
@@ -74,6 +74,9 @@ A **virtuális gép konfigurációja** megadja, hogy a készlet Azure-beli virtu
 A [Batch-csomóponti ügynök](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md) egy olyan program, amely a készlet minden egyes csomópontján fut, és a parancs-és vezérlési felületet biztosítja a csomópont és a Batch szolgáltatás között. A csomópont-ügynök különböző implementációkat mutat be különböző operációs rendszerekhez. Ha a virtuálisgép-konfiguráción alapuló készletet hoz létre, a csomópontok mérete és a létrehozásukhoz használt rendszerképek forrása mellett a **virtuális gép képhivatkozását** és a csomópontokra telepítendő **Batch-csomóponti ügynök SKU-ját** is meg kell adnia. A készlet e tulajdonságainak megadásával kapcsolatos további információk: [Provision Linux compute nodes in Azure Batch pools](batch-linux-nodes.md) (Linuxos számítási csomópontok kiépítése Azure Batch-készletekben). Csatolhat egy vagy több üres adatlemezt a Marketplace-ről származó lemezképekből létrehozott virtuális gépek készletté alakításához, vagy adatlemezeket foglalhat az egyéni rendszerképekbe a virtuális gépek létrehozásához. Az adatlemezek belefoglalásakor a lemezeket csatlakoztatnia kell a virtuális gépről, és formázni kell őket a használatuk során.
 
 ### <a name="cloud-services-configuration"></a>Cloud Services konfiguráció
+
+> [!WARNING]
+> A Cloud Service-konfigurációs készletek elavultak. Használja helyette a virtuális gépek konfigurációs készleteit.
 
 A **Cloud Services konfiguráció** azt adja meg, hogy a készlet az Azure Cloud Services-csomópontokból tevődik össze. Cloud Services csak Windows számítási csomópontokat biztosít.
 
@@ -202,6 +205,6 @@ Amikor egy tanúsítvány egy készlethez van társítva, a Batch szolgáltatás
 
 Ha meglévő készlethez ad hozzá tanúsítványt, újra kell indítania a számítási csomópontokat ahhoz, hogy a tanúsítványt alkalmazni lehessen a csomópontokra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [feladatok és a feladatok](jobs-and-tasks.md)megismerése.

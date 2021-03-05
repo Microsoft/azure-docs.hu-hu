@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: makromer
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8818d4db489cef8203ae515c18c61e215d577033
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 9cd3fc9353c684ec6617761616b958477ca83ee3
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387615"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183641"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Adatintegráció az Azure szinapszis Analyticsben és Azure Data Factory
 
@@ -24,7 +24,7 @@ Az Azure szinapszis Analyticsben az adatintegrációs képességek, például a 
 
 Tekintse meg az alábbi táblázatot a funkciók rendelkezésre állásához:
 
-| Kategória                 | Funkció    |  Azure Data Factory  | Azure Synapse Analytics |
+| Kategória                 | Szolgáltatás    |  Azure Data Factory  | Azure Synapse Analytics |
 | ------------------------ | ---------- | :------------------: | :---------------------: |
 | **Integration Runtime**  | A SSIS és a SSIS Integration Runtime használata | ✓ | ✗ |
 |                          | Régiók közötti Integration Runtime támogatása (adatfolyamatok) | ✓ | ✗ |
@@ -36,6 +36,7 @@ Tekintse meg az alábbi táblázatot a funkciók rendelkezésre állásához:
 | **GIT-tárház integrációja** | GIT-integráció | ✓ | ✓ |
 | **Figyelés**           | Spark-feladatok figyelése adatfolyamként | ✗ | ✓<br><small>*A szinapszis Spark-készletek kihasználása* |
 |                          | Integráció a Azure Monitor | ✓ | ✗ |
+| **Lineage** | Támogatja a kifelé irányuló közzétételi folyamat törzsét  | ✓ | ✗ |  
 
 > [!Note]
 > Az **élő élettartam** egy olyan Azure Integration Runtime-beállítás, amely lehetővé teszi, hogy a Spark-fürt az adatfolyamok végrehajtása után egy ideig *melegen maradjon* .

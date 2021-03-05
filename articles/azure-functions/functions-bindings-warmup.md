@@ -10,12 +10,12 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 11/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 7cefe75eefb746c150b051a7bd1f4513c103d205
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: ea418576ab8fe06964a61e48f16393e1a0566ce8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655858"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182247"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions bemelegítő trigger
 
@@ -28,7 +28,7 @@ Ez a cikk azt ismerteti, hogyan használható a bemelegedési trigger a Azure Fu
 
 ## <a name="packages---functions-2x-and-higher"></a>Csomagok – 2. x és újabb függvények
 
-A [Microsoft. Azure. webjobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet-csomag **3.0.5 vagy újabb** verziója szükséges. A csomag forráskódja az [Azure-webjobs-SDK-Extensions GitHub-](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) tárházban található. 
+A [Microsoft. Azure. webjobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet-csomag **3.0.5 vagy újabb** verziója szükséges. A csomag forráskódja az [Azure-webjobs-SDK-Extensions GitHub-](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/main/src/WebJobs.Extensions/Extensions/Warmup) tárházban található. 
 
 [!INCLUDE [functions-package](../../includes/functions-package-auto.md)]
 
@@ -228,11 +228,11 @@ A bemelegedési trigger nem támogatott a Javaban attribútumként.
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `WarmupTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-| **típusa** | n/a| Kötelező – a következőre kell beállítani: `warmupTrigger` . |
-| **irányba** | n/a| Kötelező – a következőre kell beállítani: `in` . |
-| **név** | n/a| Kötelező – a függvény kódjában használt változó neve.|
+| **típusa** | n.a.| Kötelező – a következőre kell beállítani: `warmupTrigger` . |
+| **irányba** | n.a.| Kötelező – a következőre kell beállítani: `in` . |
+| **név** | n.a.| Kötelező – a függvény kódjában használt változó neve.|
 
 ## <a name="trigger---usage"></a>Trigger – használat
 

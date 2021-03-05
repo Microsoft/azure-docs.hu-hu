@@ -4,15 +4,15 @@ description: Ez a cikk azt ismerteti, hogyan lehet az újraparticionálással op
 ms.service: stream-analytics
 author: sidramadoss
 ms.author: sidram
-ms.date: 09/19/2019
+ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 72f81a0eac81acdca71c8ed81695789c417898ca
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 95749f2acea6b605cfdba5a4f3d4f5526e751c5a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014195"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182536"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>Az újraparticionálással optimalizálja a feldolgozást Azure Stream Analytics
 
@@ -23,25 +23,47 @@ Előfordulhat, hogy nem tudja használni a [párhuzamos](stream-analytics-parall
 * A bemeneti adatfolyamhoz tartozó partíciós kulcs nem szabályozható.
 * A forrás "spray" bemenete több partíción keresztül történik, amelyeket később egyesíteni kell.
 
-Az újraparticionálás vagy az újrakeverés szükséges, ha olyan adatfolyamon dolgoz fel adatokat, amely nem egy természetes bemeneti séma alapján van felosztva, például Event Hubs **PartitionID** . Az újraparticionáláskor az egyes szegmensek egymástól függetlenül dolgozhatók fel, ami lehetővé teszi a folyamatos átviteli folyamat lineáris felskálázását.
+Az újraparticionálás vagy az újrakeverés szükséges, ha olyan adatfolyamon dolgoz fel adatokat, amely nem egy természetes bemeneti séma alapján van felosztva, például Event Hubs **PartitionID** . Az újraparticionáláskor az egyes szegmensek egymástól függetlenül dolgozhatók fel, ami lehetővé teszi a folyamatos átviteli folyamat lineáris felskálázását. 
 
 ## <a name="how-to-repartition"></a>Újraparticionálás
+A bemenet 2 módon particionálható:
+1. Használjon egy külön Stream Analytics feladatot, amely az újraparticionálást végzi
+2. Egyetlen feladatot használjon, de először az egyéni elemzési logika előtt végezze el az újraparticionálást.
 
-Az újraparticionáláshoz használja a kulcsszót egy **Partition by** **utasítás után a** lekérdezésben. Az alábbi példa az adatmennyiséget az **DeviceID** értékre particionálja egy 10. számú partíción. A **DeviceID** kivonatolása annak meghatározására szolgál, hogy melyik partíciónak kell elfogadnia az alstreamet. Az adatokat az egyes particionált adatfolyamok egymástól függetlenül ürítik, feltéve, hogy a kimenet támogatja a particionált írásokat, és 10 partíciót tartalmaz.
-
+### <a name="creating-a-separate-stream-analytics-job-to-repartition-input"></a>Külön Stream Analytics feladatok létrehozása a bemenet újraparticionálásához
+Létrehozhat egy feladatot, amely beolvassa a bemeneteket, és az Event hub kimenetére ír egy partíciós kulcs használatával. Az Event hub ezután bemenetként szolgálhat egy másik Stream Analytics feladathoz, ahol megvalósíthatja az elemzési logikát. Az Event hub kimenetének a feladatokban való konfigurálásakor meg kell adnia azt a partíciós kulcsot, amellyel a Stream Analytics az adatok újraparticionálását végzi. 
 ```sql
+-- For compat level 1.2 or higher
 SELECT * 
 INTO output
 FROM input
-PARTITION BY DeviceID 
-INTO 10
+
+--For compat level 1.1 or lower
+SELECT *
+INTO output
+FROM input PARTITION BY PartitionId
+```
+
+### <a name="repartition-input-within-a-single-stream-analytics-job"></a>A bemenet újraparticionálása egyetlen Stream Analytics-feladaton belül
+Olyan lépést is bevezet a lekérdezésben, amely először újraparticionálja a bemenetet, és ezt a lekérdezés más lépései is használhatják. Ha például a (z) **DeviceID** alapján szeretné újraparticionálni a bemenetet, a lekérdezés a következő lesz:
+```sql
+WITH RepartitionedInput AS 
+( 
+SELECT * 
+FROM input PARTITION BY DeviceID
+)
+
+SELECT DeviceID, AVG(Reading) as AvgNormalReading  
+INTO output
+FROM RepartitionedInput  
+GROUP BY DeviceId, TumblingWindow(minute, 1)  
 ```
 
 A következő példa két újraparticionált adatstreamet egyesít. Két újraparticionált adatstream csatlakoztatásakor a streameknek ugyanazzal a partíciós kulccsal és számmal kell rendelkezniük. Az eredmény egy olyan adatfolyam, amely ugyanazzal a partíciós sémával rendelkezik.
 
 ```sql
-WITH step1 AS (SELECT * FROM input1 PARTITION BY DeviceID INTO 10),
-step2 AS (SELECT * FROM input2 PARTITION BY DeviceID INTO 10)
+WITH step1 AS (SELECT * FROM input1 PARTITION BY DeviceID),
+step2 AS (SELECT * FROM input2 PARTITION BY DeviceID)
 
 SELECT * INTO output FROM step1 PARTITION BY DeviceID UNION step2 PARTITION BY DeviceID
 ```
@@ -67,7 +89,7 @@ SELECT * INTO [output] FROM [input] PARTITION BY DeviceID INTO 10
 További információ: [Azure stream Analytics kimenet Azure SQL Database](stream-analytics-sql-output-perf.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerkedés a Azure Stream Analytics](stream-analytics-introduction.md)
 * [A lekérdezési párhuzamos kihasználása Azure Stream Analytics](stream-analytics-parallelization.md)

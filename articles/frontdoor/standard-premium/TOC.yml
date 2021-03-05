@@ -57,8 +57,12 @@
       href: how-to-cache-purge.md
     - name: Tömörítés
       href: how-to-compression.md
-    - name: Privát hivatkozás engedélyezése a webalkalmazáshoz
-      href: how-to-enable-private-link-web-app.md
+    - name: Privát hivatkozás engedélyezése
+      items:
+        - name: Csatlakozás egy tárfiókhoz
+          href: how-to-enable-private-link-storage-account.md
+        - name: Csatlakozás webalkalmazáshoz
+          href: how-to-enable-private-link-web-app.md
     - name: Naplózás
       href: how-to-logs.md
     - name: Monitorozás és riasztások

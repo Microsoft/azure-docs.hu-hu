@@ -1,22 +1,22 @@
 ---
 title: 'Gyors útmutató: rendszerképek besorolása Custom Vision ügyféloldali kódtár vagy REST API'
 titleSuffix: Azure Cognitive Services
-description: 'Gyors útmutató: rendszerkép-besorolási projekt létrehozása, Címkék hozzáadása, lemezképek feltöltése, a projekt betanítása és előrejelzés készítése az Custom Vision ügyféloldali kódtár vagy az REST API a cURL használatával'
+description: 'Gyors útmutató: rendszerkép-besorolási projekt létrehozása, Címkék hozzáadása, képek feltöltése, a projekt betanítása és előrejelzés készítése a Custom Vision ügyféloldali kódtár vagy a REST API használatával'
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 10/25/2020
+ms.date: 02/25/2021
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 keywords: Egyéni megjelenítés, képfelismerés, képfelismerési alkalmazás, képelemzés, képfelismerési szoftver
 zone_pivot_groups: programming-languages-set-cusvis
-ms.openlocfilehash: 30ed0afe258b0952a7ff312e48c24027d1fc4b93
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: e99d15a48946706585879e9a1eaaf24bb2edfdef
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813734"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184313"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-client-library-or-rest-api"></a>Gyors útmutató: rendszerkép-besorolási projekt létrehozása az Custom Vision ügyféloldali kódtár vagy REST API
 

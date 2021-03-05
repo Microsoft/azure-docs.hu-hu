@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/20/2020
-ms.openlocfilehash: ac93d835b8dbdd5a12d031825dcb879160df5e95
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: b9a207ffa14a18a5f4421fd21cebed28290b5ea6
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575346"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183080"
 ---
 # <a name="asset-insights-on-your-data-in-azure-purview"></a>Az Azure-beli adatain alapuló adatelemzések
 
@@ -40,7 +40,7 @@ További információ: [adatforrások kezelése az Azure hatáskörébe (előzet
 Az Azure-ban a források regisztrálása és bevizsgálása végezhető el. Miután a vizsgálat befejeződött, megtekintheti az adategység eloszlását az Asset-elemzésekben, amely a besorolás és az erőforrás-készletek alapján mutatja be az adatbirtok állapotát. Azt is megadja, hogy van-e változás az adatméretben.
 
 > [!NOTE]
-> A forrástípus beolvasása után akár egy órát is megadhat az eszköznek, hogy tükrözze az új eszközöket.
+> Miután beolvasta a forrás típusait, a 3-8 órát adja az eszköznek, hogy tükrözze az új eszközöket. A késleltetés oka lehet a nagy forgalom a telepítési régióban vagy a munkaterhelés mérete. További információért forduljon a mező támogatási csapatához.
 
 1. Navigáljon az Azure-beli hatáskörébe erőforráshoz a Azure Portal.
 
@@ -48,15 +48,15 @@ Az Azure-ban a források regisztrálása és bevizsgálása végezhető el. Miut
 
    :::image type="content" source="./media/asset-insights/portal-access.png" alt-text="A hatáskörébe tartozó Azure Portal elindítása":::
 
-1. A hatáskörébe tartozó **kezdőlapon** válassza az eredmények **megtekintése** csempét az információhoz való hozzáféréshez **Insights** :::image type="icon" source="media/asset-insights/ico-insights.png" border="false"::: .
+1. A hatáskörébe tartozó **kezdőlapon** válassza az eredmények **megtekintése** csempét az információhoz való hozzáféréshez  :::image type="icon" source="media/asset-insights/ico-insights.png" border="false"::: .
 
    :::image type="content" source="./media/asset-insights/view-insights.png" alt-text="Tekintse meg az Azure Portal":::
 
-1. Az **áttekintések** :::image type="icon" source="media/asset-insights/ico-insights.png" border="false"::: területen válassza az **eszközök** lehetőséget a hatáskörébe tartozó adatellenőrzési jelentés megjelenítéséhez. **Asset insights**
+1. Az **áttekintések** :::image type="icon" source="media/asset-insights/ico-insights.png" border="false"::: területen válassza az **eszközök** lehetőséget a hatáskörébe tartozó adatellenőrzési jelentés megjelenítéséhez. 
 
 ### <a name="view-asset-insights"></a>Asset-áttekintések megtekintése
 
-1. A fő **Asset Insights** adatforrások oldal a következő területeket jeleníti meg:
+1. A fő  adatforrások oldal a következő területeket jeleníti meg:
 
 2. Magas szintű KPI-k a források, a besorolási eszközök és a felderített eszközök megjelenítéséhez
  
@@ -94,10 +94,10 @@ Az Asset bepillantást a következő néhány gráf a fájl alapú források elo
 
 1. Az eszközök listájának megtekintéséhez válassza ki az elérési utat.
 
-A fájl alapú Forrástípus második gráfja olyan fájlok, amelyek **_nincsenek társítva az erőforrás-készlethez_**. Ha azt várta, hogy az összes fájlnak egy erőforrás-készletbe kell tartoznia, ez a diagram segít megérteni, hogy mely eszközök nem lettek összesítve. A hiányzó eszközök jelezhetik a mappában található helytelen fájl-mintát. A fájlokkal kapcsolatos további részletek megtekintéséhez kövesse a többi gráftal megegyező lépéseket.
+A fájl alapú Forrástípus második gráfja olyan fájlok, amelyek ***nincsenek társítva az erőforrás-készlethez***. Ha azt várta, hogy az összes fájlnak egy erőforrás-készletbe kell tartoznia, ez a diagram segít megérteni, hogy mely eszközök nem lettek összesítve. A hiányzó eszközök jelezhetik a mappában található helytelen fájl-mintát. A fájlokkal kapcsolatos további részletek megtekintéséhez kövesse a többi gráftal megegyező lépéseket.
 
    :::image type="content" source="./media/asset-insights/file-based-assets.png" alt-text="Fájl alapú eszközök megtekintése":::  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure-beli felügyeleti jelentésekről és a [vizsgálati](./scan-insights.md) eredményekről

@@ -5,12 +5,12 @@ services: container-service
 ms.service: container-service
 ms.topic: article
 ms.date: 10/19/2020
-ms.openlocfilehash: 5fd97560c3a6e41b49beb957c7b8d79369799c21
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7f838b2a78f1c6993aa247f2944d4f2a9b1e9556
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078951"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181125"
 ---
 # <a name="add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>Helyszíni csomópontkészlet hozzáadása egy Azure Kubernetes Service (AKS) szolgáltatásbeli fürthöz
 
@@ -37,12 +37,12 @@ Ehhez a cikkhez az Azure CLI 2,14-es vagy újabb verzióját kell futtatnia. A v
 Az alábbi korlátozások érvényesek az AK-fürtök helyszíni csomópont-készlettel való létrehozásakor és kezelésekor:
 
 * A helyszíni csomópont-készlet nem lehet a fürt alapértelmezett csomópont-készlete. Egy helyszíni csomópont-készletet csak másodlagos készlethez lehet használni.
-* Nem lehet frissíteni egy direktszín-készletet, mert a Direktszínű csomópontok készletei nem garantálják a Kordon és a kiürítést. A meglévő helyszíni csomópont-készletet egy újat kell cserélnie a műveletekhez, például a Kubernetes verziójának frissítéséhez. A direktszínek készletének lecseréléséhez hozzon létre egy új, a Kubernetes eltérő verzióját tartalmazó helyszíni csomópont-készletet, várjon, amíg az állapota *elkészült* , majd távolítsa el a régi csomópont-készletet.
+* Nem lehet frissíteni egy direktszín-készletet, mert a Direktszínű csomópontok készletei nem garantálják a Kordon és a kiürítést. A meglévő helyszíni csomópont-készletet egy újat kell cserélnie a műveletekhez, például a Kubernetes verziójának frissítéséhez. A direktszínek készletének lecseréléséhez hozzon létre egy új, a Kubernetes eltérő verzióját tartalmazó helyszíni csomópont-készletet, várjon, amíg az állapota *elkészült*, majd távolítsa el a régi csomópont-készletet.
 * A vezérlő sík és a csomópont-készletek nem frissíthetők egyszerre. Ezeket külön kell frissítenie, vagy el kell távolítania a direktszín-készletet a vezérlő síkja és a többi csomópont-készlet egyidejű frissítéséhez.
 * A helyhez tartozó csomópont-készletnek Virtual Machine Scale Setst kell használnia.
 * A létrehozás után nem módosítható a ScaleSetPriority vagy a SpotMaxPrice.
 * A SpotMaxPrice beállításakor az értéknek-1 vagy pozitív értéknek kell lennie, legfeljebb öt tizedesjegyre.
-* Egy helyszíni csomópont-készletben a címke *kubernetes.Azure.com/scalesetpriority:spot* , a szennyező *kubernetes.Azure.com/scalesetpriority=spot:NoSchedule* és a rendszer-hüvelyek is affinitással lesznek ellátva.
+* Egy helyszíni csomópont-készletben a címke *kubernetes.Azure.com/scalesetpriority:spot*, a szennyező *kubernetes.Azure.com/scalesetpriority=spot:NoSchedule* és a rendszer-hüvelyek is affinitással lesznek ellátva.
 * Hozzá kell adnia egy [megfelelő tolerancia][spot-toleration] a számítási feladatok ütemezett csomópont-készleten való beosztásához.
 
 ## <a name="add-a-spot-node-pool-to-an-aks-cluster"></a>Kihasználatlan csomópontkészlet hozzáadása egy AKS-fürthöz
@@ -64,7 +64,7 @@ az aks nodepool add \
     --no-wait
 ```
 
-Alapértelmezés szerint létre kell hoznia egy olyan csomópont-készletet, amelynek *prioritása* *normál* az AK-fürtben, amikor több csomópontos készlettel rendelkező fürtöt hoz létre. A fenti parancs egy kiegészítő csomópont-készletet hoz létre egy meglévő AK-fürthöz, amelynek *prioritása* a *spot* . A *spot* *prioritása* lehetővé teszi a csomópontok számára a direktszínek készletét. A *kizárás – házirend* paraméter a *delete* értékre van állítva a fenti példában, amely az alapértelmezett érték. Amikor beállítja a *törlési* [szabályzatot][eviction-policy] , a rendszer törli a csomópont mögöttes méretezési készletben lévő csomópontokat a kizáráskor. Megadhatja a kizárási házirendet a *felszabadításhoz* is. Ha a kizárási házirendet *felszabadítja* , a rendszer az alapul szolgáló méretezési csoport csomópontjait leállított állapotra állítja a kizárás után. A leállított kiosztott állapotú csomópontok száma a számítási kvótán belül van, és problémákat okozhat a fürtök skálázásával vagy frissítésével kapcsolatban. A *prioritás* és a *kizárás – a házirend* értékei csak a csomópont-készlet létrehozásakor állíthatók be. Ezek az értékek később nem frissíthetők.
+Alapértelmezés szerint létre kell hoznia egy olyan csomópont-készletet, amelynek *prioritása* *normál* az AK-fürtben, amikor több csomópontos készlettel rendelkező fürtöt hoz létre. A fenti parancs egy kiegészítő csomópont-készletet hoz létre egy meglévő AK-fürthöz, amelynek *prioritása* a *spot*. A *spot* *prioritása* lehetővé teszi a csomópontok számára a direktszínek készletét. A *kizárás – házirend* paraméter a *delete* értékre van állítva a fenti példában, amely az alapértelmezett érték. Amikor beállítja a *törlési* [szabályzatot][eviction-policy] , a rendszer törli a csomópont mögöttes méretezési készletben lévő csomópontokat a kizáráskor. Megadhatja a kizárási házirendet a *felszabadításhoz* is. Ha a kizárási házirendet *felszabadítja*, a rendszer az alapul szolgáló méretezési csoport csomópontjait leállított állapotra állítja a kizárás után. A leállított kiosztott állapotú csomópontok száma a számítási kvótán belül van, és problémákat okozhat a fürtök skálázásával vagy frissítésével kapcsolatban. A *prioritás* és a *kizárás – a házirend* értékei csak a csomópont-készlet létrehozásakor állíthatók be. Ezek az értékek később nem frissíthetők.
 
 A parancs a [fürt automéretezőjét][cluster-autoscaler]is engedélyezi, amelyet a helyszíni csomópont-készletekkel való használatra ajánlott használni. A fürtben futó munkaterhelések alapján a fürt autoskálázása méretezi és méretezi a csomópontok számát. A helyszíni csomópont-készletek esetében a fürt automatikusan méretezhető, ha további csomópontok is szükségesek. Ha módosítja a csomópontok maximális számát, akkor a `maxCount` fürthöz tartozó automéretezőhöz társított értéket is módosítania kell. Ha nem használ a fürt automatikus méretezését, a kizáráskor a helyszíni készlet végül nullára csökken, és manuális műveletre van szükség a további hely-csomópontok fogadásához.
 
@@ -113,7 +113,7 @@ Ebből a cikkből megtudhatta, hogyan adhat hozzá egy helyszíni csomópont-ké
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
 [azure-cli-install]: /cli/azure/install-azure-cli
-[az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-add
+[az-aks-nodepool-add]: /cli/azure/aks/nodepool#az-aks-nodepool-add
 [cluster-autoscaler]: cluster-autoscaler.md
 [eviction-policy]: ../virtual-machine-scale-sets/use-spot.md#eviction-policy
 [kubernetes-concepts]: concepts-clusters-workloads.md

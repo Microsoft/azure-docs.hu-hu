@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: a42601b696f292e9d2a9da90070fea3662acae87
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 6f6d71dec9726f009ab9a56e0a49ba21f5d218fd
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101099110"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181023"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-standardpremium-preview"></a>Gyakori kérdések az Azure-beli előtérben standard/prémium (előzetes verzió)
 
 Ez a cikk az Azure-előtérben elérhető funkciókkal és funkciókkal kapcsolatos gyakori kérdésekre ad választ.
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="what-is-azure-front-door"></a>Mi az az Azure Front Door?
 
@@ -85,7 +85,11 @@ Igen. Valójában az Azure bejárati ajtó támogatja a gazdagépet, az elérés
 
 ### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>Hogyan lezárni a háttérbeli hozzáférést, hogy csak az Azure bejárati ajtót?
 
-Ha le szeretné zárni az alkalmazást, hogy csak a megadott bejárati ajtóról fogadjon forgalmat, be kell állítania a háttér IP-ACL-jeit. Ezután korlátozza a háttér forgalmát a bejárati ajtó által eljuttatott X-Azure-FDID fejléc adott értékére. Ezeket a lépéseket az alábbiak szerint részletezjük:
+Az alkalmazás zárolásának legjobb módja az, hogy csak az adott előtérben lévő példány forgalmát fogadja el, ha az alkalmazást privát végponton keresztül teszi közzé. A bejárati ajtó és az alkalmazás közötti hálózati forgalom a VNet és a Microsoft gerinc hálózatán található privát kapcsolaton keresztül halad, ami kiküszöböli a nyilvános internetről való kitettséget.
+
+További információ a [személyes kapcsolattal rendelkező bejárati forrásról](concept-private-link.md).  
+
+Az alkalmazás zárolásának másik módja, ha csak a megadott bejárati ajtóról fogad forgalmat, be kell állítania a háttér IP-ACL-jeit. Ezután korlátozza a háttér forgalmát a bejárati ajtó által eljuttatott X-Azure-FDID fejléc adott értékére. Ezeket a lépéseket az alábbiak szerint részletezjük:
 
 * Konfigurálja az IP-hozzáférés a háttérrendszer számára, hogy fogadja a forgalmat az Azure bejárati ajtó háttérbeli IP-címe és az Azure infrastruktúra-szolgáltatásai között. Az alábbi IP-címen tájékozódhat a háttérrendszer hozzáférés:
  

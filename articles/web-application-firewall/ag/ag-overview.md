@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 12/04/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 48d4fe254f51dde932f04ef791e1109a0ced07ff
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: fb7d49459b4eae8c3c7b3b1e6ad5bc5d44a089d3
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101701620"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183352"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Mi az Azure webalkalmazási tűzfal az Azure Application Gateway?
 
@@ -173,7 +173,7 @@ A beépített Azure WAF Firewall Events munkafüzettel áttekintést kaphat a WA
 
 #### <a name="azure-monitor-workbook-for-waf"></a>WAF Azure Monitor munkafüzet
 
-Ez a munkafüzet lehetővé teszi a biztonsággal kapcsolatos WAF események egyéni vizualizációját több szűrhető panelen. Minden WAF-típussal működik, beleértve a Application Gateway, a bejárati ajtót és a CDN-t, és a WAF típusa vagy egy adott WAF-példány alapján szűrhető. Importálás ARM-sablon vagy katalógus-sablon használatával. A munkafüzet üzembe helyezéséhez lásd: [WAF-munkafüzet](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20Firewall/Workbook%20-%20Azure%20Firewall%20Monitor%20Workbook).
+Ez a munkafüzet lehetővé teszi a biztonsággal kapcsolatos WAF események egyéni vizualizációját több szűrhető panelen. Minden WAF-típussal működik, beleértve a Application Gateway, a bejárati ajtót és a CDN-t, és a WAF típusa vagy egy adott WAF-példány alapján szűrhető. Importálás ARM-sablon vagy katalógus-sablon használatával. A munkafüzet üzembe helyezéséhez lásd: [WAF-munkafüzet](https://aka.ms/AzWAFworkbook).
 
 #### <a name="logging"></a>Naplózás
 

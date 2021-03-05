@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 34c70f4305ebb2c45757d982ab558aea6450003f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82108ae0b2cabaab6dfa47c8bb5e893a44df38af
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86506366"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182060"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Örök összeszerelések Durable Functionsban (Azure Functions)
 
@@ -22,7 +22,7 @@ Ahogy az a előkészítési [Előzmények](durable-functions-orchestrations.md#o
 
 ## <a name="resetting-and-restarting"></a>Alaphelyzetbe állítás és újraindítás
 
-A végtelen hurkok használata helyett a Orchestrator functions a `ContinueAsNew` (.net), `continueAsNew` (JavaScript) vagy `continue_as_new` ( [orchestration trigger binding](durable-functions-bindings.md#orchestration-trigger)Python) metódus meghívásával állítja vissza az állapotukat. Ez a metódus egy JSON-szerializálható paramétert használ, amely a következő Orchestrator-függvény új bemenete lesz.
+A végtelen hurkok használata helyett a Orchestrator functions a `ContinueAsNew` (.net), `continueAsNew` (JavaScript) vagy `continue_as_new` ( [](durable-functions-bindings.md#orchestration-trigger)Python) metódus meghívásával állítja vissza az állapotukat. Ez a metódus egy JSON-szerializálható paramétert használ, amely a következő Orchestrator-függvény új bemenete lesz.
 
 Ha `ContinueAsNew` a hívása megtörténik, a példány enqueues egy üzenetet, mielőtt kilép. Az üzenet újraindítja a példányt az új bemeneti értékkel. A rendszer megőrzi a példány AZONOSÍTÓját, de a Orchestrator függvény előzményeit a rendszer gyakorlatilag csonkolja.
 
@@ -66,7 +66,7 @@ module.exports = df.orchestrator(function*(context) {
     const nextCleanup = moment.utc(context.df.currentUtcDateTime).add(1, "h");
     yield context.df.createTimer(nextCleanup.toDate());
 
-    context.df.continueAsNew(undefined);
+    yield context.df.continueAsNew(undefined);
 });
 ```
 
@@ -154,9 +154,9 @@ async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
 
 Ha egy Orchestrator függvénynek végül végre kell hajtania a műveletet, akkor mindössze annyit kell tennie, hogy *nem* hívja meg `ContinueAsNew` a függvényt, és hagyja ki a funkciót.
 
-Ha egy Orchestrator-függvény végtelen ciklusban van, és le kell állítani, a `TerminateAsync` beállítás leállításához használja a (.net), `terminate` (JavaScript) vagy `terminate` a ( [orchestration client binding](durable-functions-bindings.md#orchestration-client) Python) metódust. További információ: [példányok kezelése](durable-functions-instance-management.md).
+Ha egy Orchestrator-függvény végtelen ciklusban van, és le kell állítani, a `TerminateAsync` beállítás leállításához használja a (.net), `terminate` (JavaScript) vagy `terminate` a ( [](durable-functions-bindings.md#orchestration-client) Python) metódust. További információ: [példányok kezelése](durable-functions-instance-management.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ismerje meg, hogyan valósítható meg az Egypéldányos előkészítés](durable-functions-singletons.md)

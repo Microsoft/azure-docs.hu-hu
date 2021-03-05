@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: eb2356451c349f894c9ca74b1359f6a02d0e002a
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 2d7a2dcbbd0b6e9a10ca8af93798bfddbee94ee3
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562514"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182655"
 ---
 # <a name="quickstart-building-your-first-static-site-with-azure-static-web-apps"></a>Rövid útmutató: az első statikus hely felépítése az Azure statikus Web Apps
 
@@ -25,7 +25,8 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes próbaverz
 - [GitHub](https://github.com)-fiók
 - [Azure](https://portal.azure.com) -fiók
 - [Visual Studio Code](https://code.visualstudio.com)
-- [Azure statikus Web Apps-bővítmény a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestaticwebapps)
+- [A Visual Studio Code Azure Static Web Apps-bővítménye](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestaticwebapps)
+- [A Git telepítése](https://www.git-scm.com/downloads)
 
 [!INCLUDE [create repository from template](../../includes/static-web-apps-get-started-create-repo.md)]
 
@@ -116,7 +117,7 @@ A Visual Studio Code Explorer ablakban térjen vissza a _statikus Web Apps_ szak
 
 :::image type="content" source="media/getting-started/extension-delete.png" alt-text="Alkalmazás törlése":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [API hozzáadása](add-api.md)

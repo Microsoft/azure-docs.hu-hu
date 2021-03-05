@@ -2,34 +2,34 @@
 title: Tároló rendszerképének tárolója
 description: A tároló rendszerképeinek és egyéb összetevőinek Azure Container Registry, például a biztonsággal, a redundanciával és a kapacitással való tárolásának részletei.
 ms.topic: article
-ms.date: 03/02/2021
+ms.date: 03/03/2021
 ms.custom: references_regions
-ms.openlocfilehash: 4bdffd111273e00b796e45f4e09bfac9ba6713e4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: ec4328b44d5493b8d765fa30c548adc3d747d446
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036010"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183267"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Tároló képtárolója Azure Container Registry
 
-Minden [alapszintű, standard és prémium](container-registry-skus.md) szintű Azure Container Registry előnyt élvez az Azure Storage fejlett szolgáltatásait, például a titkosítást, a képadatok biztonságát és a Geo-redundanciát a képadatok védelme érdekében. A következő szakaszok a Azure Container Registry (ACR) képtára funkcióit és korlátait ismertetik.
+Minden [alapszintű, standard és prémium](container-registry-skus.md) szintű Azure Container Registry előnyt élvez a fejlett Azure Storage-funkciókkal, többek között a titkosítással. A következő szakaszok ismertetik a Azure Container Registryban (ACR) található képtárolás funkcióit és korlátait.
 
 ## <a name="encryption-at-rest"></a>Titkosítás – Rest
 
 A beállításjegyzékben található összes tároló-lemezkép és egyéb összetevő inaktív állapotban van titkosítva. Az Azure automatikusan titkosítja a rendszerképet a tárolás előtt, és visszafejti azt menet közben, amikor az alkalmazások és szolgáltatások lekérik a rendszerképet. Opcionálisan egy [ügyfél által felügyelt kulccsal](container-registry-customer-managed-keys.md)rendelkező extra titkosítási réteget is alkalmazhat.
 
-## <a name="geo-redundant-storage"></a>Georedundáns tárolás
+## <a name="regional-storage"></a>Regionális tárterület
 
-A legtöbb régióban üzembe helyezett tároló-nyilvántartások esetében az Azure egy geo-redundáns tárolási sémát használ a tároló-lemezképek és más összetevők elvesztésének biztosításához. A Azure Container Registry automatikusan replikálja a tároló lemezképeit több földrajzilag távoli adatközpontba, így megakadályozva a helyi tárolási hibák elvesztését.
+Azure Container Registry tárolja az adatait abban a régióban, ahol a beállításjegyzék létre lett hozva, hogy az ügyfelek megfeleljenek az adattárolási és megfelelőségi követelményeknek.
 
-> [!IMPORTANT]
-> * Ha regionális tárolási hiba történik, a beállításjegyzék-adatait csak az Azure ügyfélszolgálatával lehet helyreállítani. 
-> * A Dél-Brazíliában és Délkelet-Ázsiában található adattárolási követelmények miatt az ezekben a régiókban található Azure Container Registry-beli adat [csak a helyi geo](https://azure.microsoft.com/global-infrastructure/geographies/)-ben tárolódik. Délkelet-Ázsiában a rendszer az összes adattárolást Szingapúrban tárolja. Dél-Brazília esetében az összes adattal Brazíliában van tárolva. Ha egy jelentős katasztrófa miatt a régió elvész, a Microsoft nem fogja tudni helyreállítani Azure Container Registry adatait.
+Az adatközpont-kimaradások elleni védelem érdekében egyes régiókban a [zónák redundancia](zone-redundancy.md)áll fenn, ahol az adatok replikálása egy adott régió több adatközpontjában történik.
+
+Azok az ügyfelek, akik több régióban szeretnék tárolni az adataikat a különböző földrajzi területeken való jobb teljesítmény érdekében, vagy ha regionális kimaradás esetén rugalmasságot kívánnak biztosítani, a [földrajzi replikálást](container-registry-geo-replication.md)engedélyezni kell.
 
 ## <a name="geo-replication"></a>Georeplikáció
 
-A még nagyobb rendelkezésre állást biztosító forgatókönyvek esetében érdemes lehet a prémium szintű kibocsátásiegység-forgalmi jegyzékek [geo-replikálás](container-registry-geo-replication.md) funkcióját használni. A Geo-replikáció a *teljes* regionális meghibásodás esetén megakadályozza a beállításjegyzékhez való hozzáférés elvesztését, nem csak a tárolási hibát. A Geo-replikáció más előnyöket is biztosít, például a hálózati bezárást, amely gyorsabb leküldést és lekérést tesz lehetővé elosztott fejlesztési vagy üzembe helyezési forgatókönyvekben.
+Magas rendelkezésre állású garanciát igénylő forgatókönyvek esetén érdemes lehet a prémium szintű kibocsátásiegység-forgalmi jegyzékek [geo-replikációs](container-registry-geo-replication.md) funkcióját használni. A Geo-replikáció segít megvédeni a beállításjegyzékhez való hozzáférés elvesztését regionális meghibásodás esetén. A Geo-replikáció más előnyöket is biztosít, például a hálózati bezárást, amely gyorsabb leküldést és lekérést tesz lehetővé elosztott fejlesztési vagy üzembe helyezési forgatókönyvekben.
 
 ## <a name="zone-redundancy"></a>Zónaredundancia
 

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e0a45bde32fed651c4b38d203b3c75a6d928e7c5
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: f2a33b4011b0bb89ca17010fc787aebe8c17fc92
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327083"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183930"
 ---
 # <a name="azure-key-vault-keys-secrets-and-certificates-overview"></a>Azure Key Vault kulcsok, titkok és tanúsítványok áttekintése
 
@@ -42,9 +42,9 @@ Objektumtípus|URL-utótag|Kulcstartók|Felügyelt HSM-készletek
 HSM-védett kulcsok|/keys|Támogatott|Támogatott
 Szoftveres védelemmel ellátott kulcsok|/keys|Támogatott|Nem támogatott
 **Egyéb objektumtípusok**||
-Titkos kódok|/secrets|Támogatott|Nem támogatott
+Titkos kulcsok|/secrets|Támogatott|Nem támogatott
 Tanúsítványok|/certificates|Támogatott|Nem támogatott
-Tárfiókkulcsok|/storageaccount|Támogatott|Nem támogatott
+Tárfiókkulcsok|/storage|Támogatott|Nem támogatott
 |||
 - **Titkosítási kulcsok**: több kulcs típust és algoritmust is támogat, valamint lehetővé teszi a szoftveres védelemmel ellátott és HSM által védett kulcsok használatát. További információ: [a kulcsok ismertetése](../keys/about-keys.md).
 - **Titkok**: biztonságos tárhelyet biztosít a titkos kulcsokhoz, például jelszavakhoz és adatbázis-kapcsolatok karakterláncokhoz. További információ: [About Secrets](../secrets/about-secrets.md).
@@ -89,7 +89,7 @@ Az objektumazonosító a következő általános formátumú (a tároló típus�
 > [!NOTE]
 > Lásd: [objektumtípus támogatása](#object-types) az egyes típusú objektumok által támogatott objektumtípusok számára.
 
-Kimenet:  
+Ahol:  
 
 | Elem | Leírás |  
 |-|-|  
@@ -98,7 +98,7 @@ Kimenet:
 |`object-name`|Az a `object-name` felhasználó által megadott név, és egyedinek kell lennie egy Key Vaulton belül. A névnek 1-127 karakterből álló karakterláncnak kell lennie, betűvel kell kezdődnie, és csak 0-9, a-z, A-Z és-.|  
 |`object-version`|Az egy `object-version` rendszer által generált, 32 karakterből álló karakterlánc-azonosító, amely egy objektum egyedi verziójának kezelésére szolgál.|  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Információ a kulcsokról](../keys/about-keys.md)
 - [Információ a titkos kulcsokról](../secrets/about-secrets.md)
