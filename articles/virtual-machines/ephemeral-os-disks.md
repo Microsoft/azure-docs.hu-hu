@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 62f89106538ab7f57047e211fc8715878f889af1
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 9c13a914a002f63f3c0d5bd988b0d76b951586dd
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684559"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124686"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Ideiglenes operációsrendszer-lemezek Azure-beli virtuális gépekhez
 
@@ -244,6 +244,11 @@ A: az ideiglenes lemezek nem támogatják A következőket:
 - Azure Backup
 - Azure Site Recovery  
 - OPERÁCIÓSRENDSZER-lemez cseréje 
+
+> [!NOTE]
+> 
+> Az ideiglenes lemez nem lesz elérhető a portálon keresztül. Előfordulhat, hogy "az erőforrás nem található" vagy "404" hibaüzenet jelenik meg az ideiglenes lemez elérésekor.
+> 
  
 ## <a name="next-steps"></a>Következő lépések
 Az [Azure CLI](/cli/azure/vm#az-vm-create)használatával létrehozhat egy ideiglenes operációsrendszer-lemezzel ellátott virtuális gépet.

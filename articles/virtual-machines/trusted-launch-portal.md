@@ -9,12 +9,12 @@ ms.subservice: security
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 4c4ad2a1350632d381cc258049ee85c87766f9b5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f8a6758cdf0a6da709a564c1e17c56a2fe5625b0
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694121"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124652"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>Megbízható indítást engedélyező virtuális gép üzembe helyezése (előzetes verzió)
 
@@ -140,7 +140,7 @@ A megbízható indítási virtuális gépek vTPM és biztonságos rendszerindít
 
 Bizonyos esetekben előfordulhat, hogy alá kell írnia az UEFI biztonságos rendszerindításhoz szükséges dolgokat.  Előfordulhat például, hogy át kell lépnie [az Ubuntu biztonságos rendszerindításához szükséges dolgokkal](https://ubuntu.com/blog/how-to-sign-things-for-secure-boot) . Ezekben az esetekben meg kell adnia a virtuális géphez tartozó MOK-regisztráció kulcsait. Ehhez az Azure soros konzolt kell használnia az MOK segédprogram eléréséhez.
 
-1. A Linux rendszerhez készült Azure soros konzol engedélyezése. További információ: [soros konzol Linux rendszerhez](serial-console-linux.md).
+1. A Linux rendszerhez készült Azure soros konzol engedélyezése.
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 1. Keressen rá a **virtuális gépekre** , és válassza ki a virtuális gépet a listából.
 1. A bal oldali menüben a **támogatás + hibaelhárítás** területen válassza a **Serial Console** lehetőséget. Egy oldal jobbra, a soros konzollal fog megnyílni.

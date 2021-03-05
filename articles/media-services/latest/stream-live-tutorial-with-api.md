@@ -9,7 +9,7 @@ MS. Service: Media-Services MS. munkaterhelés: Media ms.tgt_pltfrm: na MS. devl
 # <a name="tutorial-stream-live-with-media-services"></a>Oktatóanyag: élő közvetítés Media Services
 
 > [!NOTE]
-> Annak ellenére, hogy az oktatóanyag [.net SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) -példákat használ, az általános lépések ugyanazok a [REST API](/rest/api/media/liveevents), a [CLI](/cli/azure/ams/live-event?view=azure-cli-latest)vagy más támogatott [SDK](media-services-apis-overview.md#sdks)-k esetén. 
+> Annak ellenére, hogy az oktatóanyag [.net SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent) -példákat használ, az általános lépések ugyanazok a [REST API](/rest/api/media/liveevents), a [CLI](/cli/azure/ams/live-event)vagy más támogatott [SDK](media-services-apis-overview.md#sdks)-k esetén. 
 
 Azure Media Services az élő adatfolyam-tartalmak feldolgozásához az [élő események](/rest/api/media/liveevents) felelősek. Az élő esemény egy bemeneti végpontot (betöltési URL-címet) biztosít, amelyet aztán egy élő kódolóhoz biztosít. Az élő esemény fogadja az élő kódoló élő bemeneti streamjét, és egy vagy több [folyamatos átviteli végponton](/rest/api/media/streamingendpoints)keresztül teszi elérhetővé a folyamatos átvitelt. Az élő események egy előzetes verziójú végpontot (előzetes verziójú URL-címet) is biztosítanak, amelyet a további feldolgozás és a továbbítás előtt a stream előzetes verziójának megtekintéséhez és ellenőrzéséhez használhat. Ez az oktatóprogram bemutatja, hogyan hozhat létre **átmenő** típusú élő eseményt a .NET Core használatával.
 
@@ -66,7 +66,7 @@ A minta egyedi utótagot hoz létre minden erőforráshoz, hogy ne legyenek a ne
 
 Ha szeretné megkezdeni a Media Services API-k használatát a .NET-tel, létre kell hoznia egy **AzureMediaServicesClient** objektumot. Az objektum létrehozásához meg kell adnia a hitelesítő adatokat, amelyekkel az ügyfél csatlakozhat az Azure-hoz az Azure AD használatával. A cikk elején klónozott kódban a **GetCredentialsAsync** függvény létrehozza a ServiceClientCredentials objektumot a helyi konfigurációs fájlban szereplő hitelesítési adatok alapján. 
 
-[!code-csharp[Main](../../../media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs#CreateMediaServicesClient)]
+[!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateMediaServicesClient)]
 
 ### <a name="create-a-live-event"></a>Élő esemény létrehozása
 
@@ -80,13 +80,13 @@ Néhány dolog, amit érdemes megadnia az élő esemény létrehozásakor:
 * Az esemény létrehozásakor megadhatja az automatikus indítást. <br/>Ha az autostart értéke TRUE (igaz), a rendszer az élő eseményt a létrehozás után indítja el. Ez azt jelenti, hogy a számlázás azonnal elindul, amint az élő esemény fut. A további számlázás leállításához explicit módon hívnia kell az élő esemény erőforrásának leállítását. További információ: [élő események állapota és számlázása](live-event-states-billing.md).
 * Ahhoz, hogy a betöltési URL-cím prediktív, állítsa a "Vanity" módot. Részletes információk: élő események betöltésének [URL-címei](live-events-outputs-concept.md#live-event-ingest-urls).
 
-[!code-csharp[Main](../../../media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs#CreateLiveEvent)]
+[!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateLiveEvent)]
 
 ### <a name="get-ingest-urls"></a>A betöltési URL-címek beolvasása
 
 Az élő esemény létrehozása után betöltheti a betöltési URL-címeket, amelyeket az élő kódolóhoz fog adni. A kódoló ezekre az URL-címekre küldi a bemeneti élő streamet.
 
-[!code-csharp[Main](../../../media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs#GetIngestURL)]
+[!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#GetIngestURL)]
 
 ### <a name="get-the-preview-url"></a>Az előnézeti URL-cím lekérése
 
@@ -95,7 +95,7 @@ A previewEndpoint segítségével tekintse meg az előnézetet, és győződjön
 > [!IMPORTANT]
 > A folytatás előtt győződjön meg arról, hogy a videó az előnézet URL-címére áramlik.
 
-[!code-csharp[Main](../../../media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs#GetPreviewURLs)]
+[!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#GetPreviewURLs)]
 
 ### <a name="create-and-manage-live-events-and-live-outputs"></a>Élő események és élő kimenetek létrehozása és kezelése
 
@@ -105,13 +105,13 @@ Ha a stream az élő eseménybe áramlik, megkezdheti a folyamatos átviteli ese
 
 Hozzon létre egy eszközt a használni kívánt élő kimenethez.
 
-[!code-csharp[Main](../../../media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs#CreateAsset)]
+[!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateAsset)]
 
 #### <a name="create-a-live-output"></a>Élő kimenet létrehozása
 
 Az élő kimenetek a létrehozás után kezdődnek, és a törléskor leállnak. Ha törli az élő kimenetet, nem törli az objektum mögöttes eszközét és tartalmát.
 
-[!code-csharp[Main](../../../media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs#CreateLiveOutput)]
+[!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateLiveOutput)]
 
 #### <a name="create-a-streaming-locator"></a>Adatfolyam-kereső létrehozása
 
@@ -120,7 +120,7 @@ Az élő kimenetek a létrehozás után kezdődnek, és a törléskor leállnak.
 
 Ha az élő kimeneti eszközt egy folyamatos átviteli lokátor használatával teszi közzé, az élő esemény (a DVR-ablak hosszára számítva) továbbra is megtekinthető marad, amíg a streaming-kereső lejárata vagy törlése nem történik meg.
 
-[!code-csharp[Main](../../../media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs#CreateStreamingLocator)]
+[!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateStreamingLocator)]
 
 ```csharp
 
@@ -146,9 +146,9 @@ Ha végzett a folyamatos átviteli eseményekkel, és törölni szeretné a kor�
 * Állítsa le az élő eseményt. Az élő esemény leállítása után nem számítunk fel díjat. A betöltési URL-cím nem módosul, ezért a csatorna ismételt elindításához nem szükséges újrakonfigurálni a kódolót.
 * A streamvégpontot is leállíthatja, kivéve, ha szeretné elérhetővé tenni az élő esemény archívumát igényalapú streamingre. Ha az élő esemény leállított állapotban van, nem számítunk fel díjat.
 
-[!code-csharp[Main](../../../media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs#CleanupLiveEventAndOutput)]
+[!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CleanupLiveEventAndOutput)]
 
-[!code-csharp[Main](../../../media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs#CleanupLocatorAssetAndStreamingEndpoint)]
+[!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CleanupLocatorAssetAndStreamingEndpoint)]
 
 ## <a name="watch-the-event"></a>Esemény megtekintése
 
