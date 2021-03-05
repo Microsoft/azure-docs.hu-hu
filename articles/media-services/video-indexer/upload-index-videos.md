@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 11/12/2020
+ms.date: 03/04/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a0b7330485d3152a588d43added7d9feaa5c2a14
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 3a3c2812a4ecfa1a80539804122042bc2dc2f3a2
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "95994492"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199186"
 ---
 # <a name="upload-and-index-your-videos"></a>Videók feltöltése és indexelése  
 
@@ -83,18 +83,22 @@ Ezzel a paraméterrel megadhat egy azonosítót, amely társítva lesz a videóh
 
 #### <a name="indexingpreset"></a>indexingPreset
 
-Akkor használja ezt a paramétert, ha a nyers vagy külső felvételek háttérzajt tartalmaznak. Ez a paraméter az indexelési folyamat konfigurálására szolgál. A következő értékeket adhatja meg:
+Ezzel a paraméterrel határozhatja meg, hogy melyik AI-csomagot kívánja alkalmazni a hang-vagy videofájl használatával. Ez a paraméter az indexelési folyamat konfigurálására szolgál. A következő értékeket adhatja meg:
 
-- `AudioOnly` – Indexelés és elemzések kinyerése csak audiotartalmak használatával (videotartalmak figyelmen kívül hagyása)
-- `VideoOnly` -Az elemzések indexelése és kinyerése csak videó használatával (hang figyelmen kívül hagyása)
-- `Default` – Indexelés és elemzések kinyerése audio- és videotartalmak használatával
-- `DefaultWithNoiseReduction` – Indexelés és elemzések kinyerése audio- és videotartalmakból, és zajcsökkentő algoritmusok alkalmazása az audiostreamen
+- `AudioOnly` – Az elemzések indexelése és kinyerése csak hangfelismeréssel (videó figyelmen kívül hagyása).
+- `VideoOnly` -Az elemzések indexelése és kinyerése csak videó használatával (hang figyelmen kívül hagyása).
+- `Default` – Indexelheti és kinyerheti az elemzéseket hang és videó használatával.
+- `DefaultWithNoiseReduction` – Indexelheti és kinyerheti a hang-és video-elemzéseket, és alkalmazhatja a zaj-csökkentési algoritmusokat az audio streamen.
+
+    Az `DefaultWithNoiseReduction` érték mostantól az alapértelmezett beállításkészletre van leképezve (elavult).
+- `BasicAudio` – Az elemzések indexelése és kinyerése csak hang használatával (a videó figyelmen kívül hagyásával), beleértve az alapszintű hangfunkciókat (átirat, fordítás, kimeneti feliratok formázása és feliratok).
+ - `AdvancedAudio` – Az elemzések indexelése és kinyerése csak hangfelismeréssel (videó figyelmen kívül hagyva), beleértve a speciális hangfunkciókat (Hangesemények észlelése) a szabványos hang elemzése mellett.
 
 > [!NOTE]
 > A Video Indexer akár két hangsávot is magában foglalhat. Ha a fájlban további hangsávok szerepelnek, a rendszer egyetlen számként kezeli őket.<br/>
 Ha a sávokat külön szeretné indexelni, ki kell bontania a megfelelő hangfájlt, és indexelni kell azt `AudioOnly` .
 
-Az árat a kiválasztott indexelési lehetőség határozza meg.  
+Az árat a kiválasztott indexelési lehetőség határozza meg. További információkért tekintse meg a [Media Services díjszabását](https://azure.microsoft.com/pricing/details/media-services/).
 
 #### <a name="priority"></a>prioritású
 
@@ -345,6 +349,6 @@ A Feltöltés művelet által visszaadott lehetséges állapotkódok az alábbi 
 >
 > Ha régebbi verziót kell használnia, adjon hozzá egy sort a kódban a REST API-hívás indítása előtt:  <br/> System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az API által létrehozott Azure Video Indexer-kimenet vizsgálata](video-indexer-output-json-v2.md)

@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d25a429873ccf8b546c0919456c97e64445f184c
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 40cf83b0ca9e4c794979f2b20ddb73360758abc5
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071698"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198540"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Végpontok és útvonalak kezelése az Azure Digital Twinsban (API-k és parancssori felület)
 
@@ -48,7 +48,7 @@ Ez a szakasz ismerteti, hogyan hozhatja létre ezeket a végpontokat az Azure CL
 
 ### <a name="create-the-endpoint"></a>A végpont létrehozása
 
-Miután létrehozta a végponti erőforrásokat, használhatja őket egy Azure digitális Twins-végponthoz. Az alábbi példák azt mutatják be, hogyan hozhatók létre végpontok az [Azure Digital Twins CLI](how-to-use-cli.md)-hez készült az [DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create?view=azure-cli-latest&preserve-view=true) paranccsal. Cserélje le a parancsokban szereplő helyőrzőket a saját erőforrásainak részleteire.
+Miután létrehozta a végponti erőforrásokat, használhatja őket egy Azure digitális Twins-végponthoz. Az alábbi példák azt mutatják be, hogyan hozhatók létre végpontok az [Azure Digital Twins CLI](how-to-use-cli.md)-hez készült az [DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create) paranccsal. Cserélje le a parancsokban szereplő helyőrzőket a saját erőforrásainak részleteire.
 
 Event Grid végpont létrehozása:
 
@@ -119,7 +119,7 @@ Az alábbi lépéseket követve állíthatja be ezeket a tárolási erőforráso
     
 #### <a name="create-the-dead-letter-endpoint"></a>A kézbesítetlen levél végpontjának létrehozása
 
-Ha olyan végpontot szeretne létrehozni, amelynél engedélyezve van a kézbesítetlen üzenetek használata, adja hozzá a következő kézbesítetlen levelek paramétert az az [DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create?view=azure-cli-latest&preserve-view=true) parancshoz az [Azure Digital Twins CLI](how-to-use-cli.md)-hez.
+Ha olyan végpontot szeretne létrehozni, amelynél engedélyezve van a kézbesítetlen üzenetek használata, adja hozzá a következő kézbesítetlen levelek paramétert az az [DT Endpoint Create](/cli/azure/ext/azure-iot/dt/endpoint/create) parancshoz az [Azure Digital Twins CLI](how-to-use-cli.md)-hez.
 
 A paraméter értéke a **Kézbesítetlen levél sas URI-ja** , amely a Storage-fiók neve, a tároló neve és az [előző szakaszban](#set-up-storage-resources)összegyűjtött sas-token. Ez a paraméter létrehozza a végpontot a kulcs alapú hitelesítéssel.
 
@@ -204,7 +204,7 @@ Ha nincs útvonal neve, az Azure digitális Ikreken kívül egyetlen üzenet sem
 
 Az egyik útvonalnak engedélyezni kell több értesítés és eseménytípus kijelölését. 
 
-Az esemény-útvonalak az Azure Digital Twins [ **EventRoutes** adatsík API](/rest/api/digital-twins/dataplane/eventroutes) -k vagy [ **az DT Route** CLI-parancsok](/cli/azure/ext/azure-iot/dt/route?view=azure-cli-latest&preserve-view=true)segítségével hozhatók létre. A szakasz további részében a létrehozás folyamata látható.
+Az esemény-útvonalak az Azure Digital Twins [ **EventRoutes** adatsík API](/rest/api/digital-twins/dataplane/eventroutes) -k vagy [ **az DT Route** CLI-parancsok](/cli/azure/ext/azure-iot/dt/route)segítségével hozhatók létre. A szakasz további részében a létrehozás folyamata látható.
 
 ### <a name="create-routes-with-the-apis-and-c-sdk"></a>Útvonalak létrehozása az API-kkal és a C# SDK-val
 
@@ -225,7 +225,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre, listázhat és törölhet egy
 
 ### <a name="create-routes-with-the-cli"></a>Útvonalak létrehozása a parancssori felülettel
 
-Az útvonalakat az az [DT Route](/cli/azure/ext/azure-iot/dt/route?view=azure-cli-latest&preserve-view=true) paranccsal is kezelheti az Azure Digital Twins CLI-hez. 
+Az útvonalakat az az [DT Route](/cli/azure/ext/azure-iot/dt/route) paranccsal is kezelheti az Azure Digital Twins CLI-hez. 
 
 További információ a parancssori felület használatáról és a rendelkezésre álló parancsokról [*: útmutató: az Azure digitális Twins parancssori*](how-to-use-cli.md)felületének használata.
 

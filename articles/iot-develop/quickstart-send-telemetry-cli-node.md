@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: node
 ms.topic: quickstart
 ms.date: 01/11/2021
-ms.openlocfilehash: 6e0264bc0d1bea91a6094f90c4cb41f071e17dfc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 97fcff4706d6da968c93426f85569fed9af95aac
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712579"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197809"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-nodejs"></a>Gyors útmutató: telemetria küldése az eszközről egy IoT hubhoz (Node.js)
 
@@ -73,7 +73,7 @@ Ebben a szakaszban a Node.js SDK használatával küld üzeneteket a szimulált 
     export DEVICE_CONNECTION_STRING="<your connection string here>"
     ```
 
-1. A megnyitott CLI-rendszerhéjban futtassa az az [IOT hub monitor-Events](/cli/azure/ext/azure-iot/iot/hub?preserve-view=true&view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) parancsot a szimulált IOT-eszközön lévő események figyelésének megkezdéséhez.  Az események a terminálon lesznek kinyomtatva, ahogy érkeznek.
+1. A megnyitott CLI-rendszerhéjban futtassa az az [IOT hub monitor-Events](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-monitor-events) parancsot a szimulált IOT-eszközön lévő események figyelésének megkezdéséhez.  Az események a terminálon lesznek kinyomtatva, ahogy érkeznek.
 
     ```azurecli
     az iot hub monitor-events --output table --hub-name {YourIoTHubName}
@@ -191,12 +191,12 @@ Ha már nincs szüksége az ebben a rövid útmutatóban létrehozott Azure-erő
 > Az erőforráscsoport törlése nem vonható vissza. Az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. 
 
 Erőforráscsoport törlése név alapján:
-1. Futtassa az az [Group delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-delete) parancsot. Ezzel a paranccsal eltávolítható az erőforráscsoport, a IoT Hub és a létrehozott eszköz regisztrálása.
+1. Futtassa az az [Group delete](/cli/azure/group#az-group-delete) parancsot. Ezzel a paranccsal eltávolítható az erőforráscsoport, a IoT Hub és a létrehozott eszköz regisztrálása.
 
     ```azurecli
     az group delete --name MyResourceGroup
     ```
-1. Futtassa az az [Group List](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-list) parancsot az erőforráscsoport törlésének megerősítéséhez.  
+1. Futtassa az az [Group List](/cli/azure/group#az-group-list) parancsot az erőforráscsoport törlésének megerősítéséhez.  
 
     ```azurecli
     az group list

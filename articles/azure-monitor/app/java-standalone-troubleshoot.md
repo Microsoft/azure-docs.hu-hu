@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan lehet elhárítani a Java-ügynököt a Azure M
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 286354ecf508dec7b9ba7633bf3b5c7ddc6bfd91
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 45f45e71546909b71c71c66303c1459edd74548f
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737057"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199611"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Hibaelhárítási útmutató: Azure Monitor Application Insights Javához
 
@@ -45,7 +45,7 @@ A rendszer csak akkor rögzíti a naplózást, ha először megfelel a naplózá
 
 A legjobb módszer annak megállapítására, hogy egy adott naplózási utasítás megfelel-e a naplózási keretrendszerek konfigurált küszöbértékének, annak ellenőrzéséhez, hogy megjelenik-e a normál alkalmazási naplóban (például fájl vagy konzol).
 
-Azt is vegye figyelembe, hogy ha kivételt ad át a naplózó, akkor a rendszer a tábla helyett a Azure Portal megjeleníti a naplófájlt (és kivételt) `exceptions` `traces` .
+Azt is vegye figyelembe, hogy ha egy kivétel objektumot ad át a naplózó, akkor a rendszer megjeleníti a napló üzenetét (és a kivétel-objektum részleteit) a tábla helyett a Azure Portal táblázatban `exceptions` `traces` .
 
 További részletekért tekintse meg az [automatikusan összegyűjtött naplózási konfigurációt](./java-standalone-config.md#auto-collected-logging) .
 

@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/05/2020
+ms.date: 03/04/2021
 ms.author: kenwith
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 8f5a4d3695722aae14b73bf6bba5f2e38593e08d
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 0334f52b87071c8f363a0dfcc793170316747096
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99255797"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198506"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-ad"></a>Az Azure AD-beli attribútum-hozzárendelésekhez tartozó kifejezések írásához való hivatkozás
 
@@ -38,7 +38,7 @@ Az attribútum-hozzárendelések kifejezések szintaxisa Visual Basic for Applic
 
 ## <a name="list-of-functions"></a>Függvények listája
 
-[](#append) &nbsp; &nbsp; Hozzáfűzés &nbsp; &nbsp; [](#bitand) &nbsp; &nbsp; BitAnd &nbsp; &nbsp; [](#cbool) &nbsp; &nbsp; CBool &nbsp; &nbsp; [](#coalesce) &nbsp; &nbsp; Egyesítés &nbsp; &nbsp; [](#converttobase64) &nbsp; &nbsp; ConvertToBase64 &nbsp; &nbsp; [](#converttoutf8hex) &nbsp; &nbsp; ConvertToUTF8Hex &nbsp; &nbsp; [](#count) &nbsp; &nbsp; Darabszám &nbsp; &nbsp; [](#cstr) &nbsp; &nbsp; CStr &nbsp; &nbsp; [DateFromNum](#datefromnum) &nbsp; [](#formatdatetime) &nbsp; &nbsp; FormatDateTime &nbsp; &nbsp; [GUID](#guid) &nbsp; &nbsp; azonosító &nbsp; &nbsp; [](#iif) &nbsp; &nbsp; IIf &nbsp; &nbsp; A bejelentkező [](#instr) &nbsp; &nbsp; &nbsp; &nbsp; [](#isnull) &nbsp; &nbsp; IsNull &nbsp; &nbsp; [](#isnullorempty) &nbsp; &nbsp; IsNullOrEmpty &nbsp; &nbsp; [](#ispresent) &nbsp; &nbsp; IsPresent &nbsp; &nbsp; [](#isstring) &nbsp; &nbsp; IsString &nbsp; &nbsp; [](#item) &nbsp; &nbsp; Elemek &nbsp; &nbsp; [](#join) &nbsp; &nbsp; Csatlakozás &nbsp; &nbsp; [Bal](#left) &nbsp; &nbsp; oldali &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [not](#not) &nbsp; &nbsp; &nbsp; &nbsp; [RemoveDuplicates](#removeduplicates) &nbsp; &nbsp; &nbsp; &nbsp; [replace](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [Split](#split) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [switch](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper) &nbsp; &nbsp; &nbsp; &nbsp; [Word](#word)
+[](#append) &nbsp; &nbsp; Hozzáfűzés &nbsp; &nbsp; [](#bitand) &nbsp; &nbsp; BitAnd &nbsp; &nbsp; [](#cbool) &nbsp; &nbsp; CBool &nbsp; &nbsp; [](#coalesce) &nbsp; &nbsp; Egyesítés &nbsp; &nbsp; [](#converttobase64) &nbsp; &nbsp; ConvertToBase64 &nbsp; &nbsp; [](#converttoutf8hex) &nbsp; &nbsp; ConvertToUTF8Hex &nbsp; &nbsp; [](#count) &nbsp; &nbsp; Darabszám &nbsp; &nbsp; [](#cstr) &nbsp; &nbsp; CStr &nbsp; &nbsp; [DateFromNum](#datefromnum) &nbsp; [](#formatdatetime) &nbsp; &nbsp; FormatDateTime &nbsp; &nbsp; [GUID](#guid) &nbsp; &nbsp; azonosító &nbsp; &nbsp; [](#iif) &nbsp; &nbsp; IIf &nbsp; &nbsp; A bejelentkező [](#instr) &nbsp; &nbsp; &nbsp; &nbsp; [](#isnull) &nbsp; &nbsp; IsNull &nbsp; &nbsp; [](#isnullorempty) &nbsp; &nbsp; IsNullOrEmpty &nbsp; &nbsp; [](#ispresent) &nbsp; &nbsp; IsPresent &nbsp; &nbsp; [](#isstring) &nbsp; &nbsp; IsString &nbsp; &nbsp; [](#item) &nbsp; &nbsp; Elemek &nbsp; &nbsp; [](#join) &nbsp; &nbsp; Csatlakozás &nbsp; &nbsp; [Bal](#left) &nbsp; &nbsp; oldali &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [not](#not) &nbsp; &nbsp; &nbsp; &nbsp; [NumFromDate](#numfromdate) &nbsp; &nbsp; &nbsp; &nbsp; [RemoveDuplicates](#removeduplicates) &nbsp; &nbsp; &nbsp; &nbsp; [replace](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [Split](#split) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [switch](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper) &nbsp; &nbsp; &nbsp; &nbsp; [Word](#word)
 
 ---
 ### <a name="append"></a>Append (Hozzáfűzés)
@@ -53,6 +53,19 @@ Az attribútum-hozzárendelések kifejezések szintaxisa Visual Basic for Applic
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring |Az attribútum neve általában a forrásoldali objektumban. |
 | **utótag** |Kötelező |Sztring |A forrás érték végéhez hozzáfűzni kívánt karakterlánc. |
+
+
+### <a name="append-constant-suffix-to-user-name"></a>Állandó utótag hozzáfűzése a felhasználónévhez
+Példa: Ha Salesforce-homokozót használ, előfordulhat, hogy a szinkronizálás előtt hozzá kell fűzni egy további utótagot az összes felhasználónevehöz.
+
+**Kifejezés** 
+`Append([userPrincipalName], ".test")`
+
+**Minta bemenet/kimenet:** 
+
+* **Bemenet**: (userPrincipalName): " John.Doe@contoso.com "
+* **Kimenet**: " John.Doe@contoso.com.test "
+
 
 ---
 ### <a name="bitand"></a>BitAnd
@@ -107,6 +120,19 @@ Igaz értéket ad vissza, ha mindkét attribútum ugyanazzal az értékkel rende
 | --- | --- | --- | --- |
 | **source1 ... sourceN** | Kötelező | Sztring |Kötelező, változó számú alkalommal. Az attribútum neve általában a forrásoldali objektumban. |
 | **defaultValue** | Választható | Sztring | Az alapértelmezett érték, amelyet akkor kell használni, ha az összes forrás értéke NULL. Üres karakterlánc ("") lehet.
+
+### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>A flow e-mail-értéke, ha nem NULL értékű, máskülönben flow userPrincipalName
+Példa: ha jelen van, a mail attribútumot szeretné átvezetni. Ha nem, akkor inkább a userPrincipalName értékét kell átvennie.
+
+**Kifejezés** 
+`Coalesce([mail],[userPrincipalName])`
+
+**Minta bemenet/kimenet:** 
+
+* **Bemenet** (e-mail): NULL
+* **Bemenet** (userPrincipalName): " John.Doe@contoso.com "
+* **Kimenet**: " John.Doe@contoso.com "
+
 
 ---
 ### <a name="converttobase64"></a>ConvertToBase64
@@ -192,7 +218,7 @@ Egy DateTime értéket ad vissza, amely 2012 január 1-től 11:00-kor.
 
 ---
 ### <a name="formatdatetime"></a>FormatDateTime
-**Függvény:** FormatDateTime (forrás, inputFormat, outputFormat)
+**Függvény:** FormatDateTime (forrás, DateTimeStyles paraméter, inputFormat, outputFormat)
 
 **Leírás:** Egy dátum sztringet vesz fel az egyik formátumból, és átalakítja azt más formátumra.
 
@@ -201,8 +227,24 @@ Egy DateTime értéket ad vissza, amely 2012 január 1-től 11:00-kor.
 | Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring |Az attribútum neve általában a forrásoldali objektumban. |
+| **DateTimeStyles paraméter** | Választható | Sztring | Ezzel a beállítással megadhatja a formázási beállításokat, amelyekkel testre szabhatja a karakterlánc-elemzést a dátum-és időelemzési módszerekhez. A támogatott értékekért lásd: [DateTimeStyles paraméter doc](/dotnet/api/system.globalization.datetimestyles). Ha üresen hagyja, a rendszer az alapértelmezett értéket használja DateTimeStyles paraméter. RoundtripKind, DateTimeStyles paraméter. AllowLeadingWhite, DateTimeStyles paraméter. AllowTrailingWhite  |
 | **inputFormat** |Kötelező |Sztring |A forrás értékének várt formátuma. Támogatott formátumok: [/DotNet/standard/Base-types/Custom-Date-and-Time-Format-Strings](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 | **outputFormat** |Kötelező |Sztring |A kimeneti dátum formátuma. |
+
+
+
+### <a name="output-date-as-a-string-in-a-certain-format"></a>Kimeneti dátum karakterláncként egy adott formátumban
+Példa: szeretné elküldeni a dátumokat egy SaaS-alkalmazásba, például a ServiceNow egy bizonyos formátumban. A következő kifejezést érdemes használni. 
+
+**Kifejezés** 
+
+`FormatDateTime([extensionAttribute1], , "yyyyMMddHHmmss.fZ", "yyyy-MM-dd")`
+
+**Minta bemenet/kimenet:**
+
+* **Bemenet** (extensionAttribute1): "20150123105347.1 z"
+* **Kimenet**: "2015-01-23"
+
 
 ---
 ### <a name="guid"></a>Guid
@@ -391,6 +433,18 @@ A "Joh" értéket adja vissza.
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring | Általában utónév vagy vezetéknév attribútum. |
 
+
+### <a name="remove-diacritics-from-a-string"></a>Mellékjelek eltávolítása egy sztringből
+Példa: az ékezetes jeleket tartalmazó karaktereket olyan karakterekkel kell helyettesíteni, amelyek nem tartalmaznak ékezetes jeleket.
+
+**Kifejezés:** NormalizeDiacritics ([givenName])
+
+**Minta bemenet/kimenet:** 
+
+* **Bemenet** (givenName): "Zoë"
+* **Kimenet**: "Zoe"
+
+
 ---
 ### <a name="not"></a>Not
 **Függvény:** Nem (forrás)
@@ -417,10 +471,10 @@ A "Joh" értéket adja vissza.
 
 **Példa**
 * A munkanap példája, amely azt feltételezi, hogy a *ContractEndDate* attribútumot szeretné leképezni, amely az ad-ben a *2020-12-31-08:00* érték *accountExpires* mezőjében szerepel, itt látható, hogyan használhatja ezt a függvényt, és módosíthatja az időzóna-eltolást a területi beállításnak megfelelően. 
-  `NumFromDate(Join("", FormatDateTime([ContractEndDate], "yyyy-MM-ddzzz", "yyyy-MM-dd"), "T23:59:59-08:00"))`
+  `NumFromDate(Join("", FormatDateTime([ContractEndDate], ,"yyyy-MM-ddzzz", "yyyy-MM-dd"), "T23:59:59-08:00"))`
 
 * SuccessFactors példa arra, hogy a *endDate* attribútumot szeretné leképezni a SuccessFactors-ből, amely a következő formátumban van *: M/d/éééé óó: PP: SS tt* to *accountExpires* mező az ad-ben, a függvény használata és az időzóna eltolásának módosítása a területi beállításnak megfelelően.
-  `NumFromDate(Join("",FormatDateTime([endDate],"M/d/yyyy hh:mm:ss tt","yyyy-MM-dd"),"T23:59:59-08:00"))`
+  `NumFromDate(Join("",FormatDateTime([endDate], ,"M/d/yyyy hh:mm:ss tt","yyyy-MM-dd"),"T23:59:59-08:00"))`
 
 
 ---
@@ -473,6 +527,19 @@ A "Joh" értéket adja vissza.
 | **replacementAttributeName** |Választható |Sztring |A helyettesítő értékhez használandó attribútum neve |
 | **sablon** |Választható |Sztring |Ha meg van adni a **sablon** értéke, megkeresjük a **OldValue** a sablonon belül, és lecseréljük a **forrás** értékre. |
 
+### <a name="replace-characters-using-a-regular-expression"></a>Karakterek cseréje reguláris kifejezés használatával
+Példa: meg kell keresnie a reguláris kifejezés értékének megfelelő karaktereket, és el kell távolítani őket.
+
+**Kifejezés** 
+
+Replace ([mailNickname],, "[a-zA-Z_] *",, "",,)
+
+**Minta bemenet/kimenet:**
+
+* **Bemenet** (mailNickname: "john_doe72"
+* **Kimenet**: "72"
+
+
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
 **Függvény:** SelectUniqueValue(uniqueValueRule1, uniqueValueRule2, uniqueValueRule3, ...)
@@ -481,7 +548,7 @@ A "Joh" értéket adja vissza.
 
 
  - Ez egy legfelső szintű függvény, nem ágyazható be.
- - Ez a függvény nem alkalmazható olyan attribútumokra, amelyek egyező elsőbbséggel rendelkeznek.   
+ - Ez a függvény nem alkalmazható olyan attribútumokra, amelyek egyező elsőbbséggel rendelkeznek.     
  - Ez a függvény csak a bejegyzések létrehozásához használható. Ha attribútummal használja, állítsa a **leképezés alkalmazása** tulajdonságot csak az **objektum létrehozása során**.
  - Ez a függvény jelenleg csak a "munkanap Active Directory a felhasználók kiosztása" és a "SuccessFactors Active Directory a felhasználó kiosztása" esetén támogatott. Más kiépítési alkalmazásokkal nem használható. 
 
@@ -491,6 +558,28 @@ A "Joh" értéket adja vissza.
 | Name | Szükséges/ismétlődő | Típus | Jegyzetek |
 | --- | --- | --- | --- |
 | **uniqueValueRule1 ... uniqueValueRuleN** |Legalább 2 szükséges, nincs felső korlát |Sztring | A kiértékelni kívánt egyedi érték-létrehozási szabályok listája. |
+
+### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>Egyedi érték előállítása a userPrincipalName (UPN) attribútumhoz
+Példa: a felhasználó keresztneve, középső neve és vezetékneve alapján értéket kell létrehoznia az UPN-attribútumhoz, és meg kell adnia annak egyediségét a cél AD-címtárban, mielőtt hozzárendeli az értéket az UPN-attribútumhoz.
+
+**Kifejezés** 
+
+```ad-attr-mapping-expr
+    SelectUniqueValue( 
+        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"), 
+        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 1), [PreferredLastName]))), "contoso.com"),
+        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 2), [PreferredLastName]))), "contoso.com")
+    )
+```
+
+**Minta bemenet/kimenet:**
+
+* **Bemenet** (PreferredFirstName): "John"
+* **Bemenet** (PreferredLastName): "Kovács"
+* **Output**: " John.Smith@contoso.com ", ha John.Smith@contoso.com még nem létezik UPN-érték a címtárban
+* **Output**: " J.Smith@contoso.com ", ha John.Smith@contoso.com a címtárban már létezik UPN-érték
+* **Kimenet**: " Jo.Smith@contoso.com ", ha a fenti két UPN-érték már létezik a címtárban
+
 
 
 ---
@@ -517,6 +606,17 @@ A "Joh" értéket adja vissza.
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring |a frissítendő **forrás** értéke. |
 | **elválasztó** |Kötelező |Sztring |Meghatározza a karakterlánc felosztására szolgáló karaktert (példa: ",") |
+
+### <a name="split-a-string-into-a-multi-valued-array"></a>Sztring felosztása többértékű tömbbe
+Példa: a karakterláncok vesszővel tagolt listáját kell megadnia, és azokat egy olyan tömbbe kell bontani, amely egy többértékű attribútumhoz, például a Salesforce PermissionSets attribútumához csatlakoztatható. Ebben a példában az extensionAttribute5 az Azure AD-ben az engedélyezési készletek listája lett feltöltve.
+
+**Kifejezés:** Split ([extensionAttribute5], ",")
+
+**Minta bemenet/kimenet:** 
+
+* **Bemenet** (extensionAttribute5): "PermissionSetOne, PermissionSetTwo"
+* **Kimenet**: ["PermissionSetOne", "PermissionSetTwo"]
+
 
 ---
 ### <a name="stripspaces"></a>StripSpaces
@@ -545,6 +645,18 @@ A "Joh" értéket adja vissza.
 | **kulcs** |Kötelező |Sztring |A **kulcs** a **forrás** értékének összehasonlításához a következővel:. |
 | **value** |Kötelező |Sztring |A kulcsnak megfelelő **forrás** helyettesítő értéke. |
 
+### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Érték cseréje előre megadott beállítások alapján
+Példa: meg kell határoznia a felhasználó időzónáját az Azure AD-ben tárolt állapot kódja alapján. Ha az állapotkód nem egyezik az előre definiált beállításokkal, használja az "Australia/Sydney" alapértelmezett értékét.
+
+**Kifejezés** 
+`Switch([state], "Australia/Sydney", "NSW", "Australia/Sydney","QLD", "Australia/Brisbane", "SA", "Australia/Adelaide")`
+
+**Minta bemenet/kimenet:**
+
+* **Bemenet** (állapot): "QLD"
+* **Kimenet**: "Ausztrália/Brisbane"
+
+
 ---
 ### <a name="tolower"></a>ToLower
 **Függvény:** ToLower (forrás, kulturális környezet)
@@ -557,6 +669,18 @@ A "Joh" értéket adja vissza.
 | --- | --- | --- | --- |
 | **forrás** |Kötelező |Sztring |Az attribútum neve általában a forrásoldali objektumból |
 | **kulturális környezet** |Választható |Sztring |Az RFC 4646 alapján a kulturális név formátuma *languagecode2-ország/regioncode2*, ahol a *languagecode2* a kétbetűs nyelvi kód, az *ország/regioncode2* pedig a kétbetűs alkulturális kód. Ilyenek például a japán (Japán) és az en-US angol (Egyesült Államok). Azokban az esetekben, amikor a kétbetűs nyelvi kód nem érhető el, az ISO 639-2-ből származtatott hárombetűs kód van használatban.|
+
+### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>Generált userPrincipalName (UPN) értékének kisbetűvé alakítása
+Példa: az UPN-értéket az PreferredFirstName és a PreferredLastName forrás mezőinek összefűzésével, valamint az összes karakter kisbetűvé alakításával szeretné előállítani. 
+
+`ToLower(Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"))`
+
+**Minta bemenet/kimenet:**
+
+* **Bemenet** (PreferredFirstName): "John"
+* **Bemenet** (PreferredLastName): "Kovács"
+* **Kimenet**: " john.smith@contoso.com "
+
 
 ---
 ### <a name="toupper"></a>ToUpper
@@ -601,6 +725,8 @@ A "has" értéket adja vissza.
 ---
 
 ## <a name="examples"></a>Példák
+Ez a szakasz további kifejezéseket tartalmaz a függvények használati példái között. 
+
 ### <a name="strip-known-domain-name"></a>Szalag ismert tartományneve
 A Felhasználónév beszerzéséhez a felhasználó e-mail-címéből egy ismert tartománynevet kell megadnia. Ha például a tartomány "contoso.com", akkor a következő kifejezést használhatja:
 
@@ -612,16 +738,6 @@ A Felhasználónév beszerzéséhez a felhasználó e-mail-címéből egy ismert
 * **Bemenet** (e-mail): " john.doe@contoso.com "
 * **Kimenet**: "John. DOE"
 
-### <a name="append-constant-suffix-to-user-name"></a>Állandó utótag hozzáfűzése a felhasználónévhez
-Ha Salesforce-munkaterületet használ, előfordulhat, hogy a szinkronizálás előtt hozzá kell fűzni egy további utótagot az összes felhasználónevehöz.
-
-**Kifejezés** 
-`Append([userPrincipalName], ".test")`
-
-**Minta bemenet/kimenet:** 
-
-* **Bemenet**: (userPrincipalName): " John.Doe@contoso.com "
-* **Kimenet**: " John.Doe@contoso.com.test "
 
 ### <a name="generate-user-alias-by-concatenating-parts-of-first-and-last-name"></a>Felhasználói alias előállítása az utónév és a vezetéknév összefűzésével
 Felhasználói aliast kell létrehoznia úgy, hogy az első 3 betűt a felhasználó utónevét és az első 5 betűt adja meg.
@@ -635,105 +751,6 @@ Felhasználói aliast kell létrehoznia úgy, hogy az első 3 betűt a felhaszn�
 * **Bemenet** (vezetéknév): "DOE"
 * **Kimenet**: "JohDoe"
 
-### <a name="remove-diacritics-from-a-string"></a>Mellékjelek eltávolítása egy sztringből
-Az ékezetes jeleket tartalmazó karaktereket olyan karakterekkel kell helyettesíteni, amelyek nem tartalmaznak ékezetes jeleket.
-
-**Kifejezés:** NormalizeDiacritics ([givenName])
-
-**Minta bemenet/kimenet:** 
-
-* **Bemenet** (givenName): "Zoë"
-* **Kimenet**: "Zoe"
-
-### <a name="split-a-string-into-a-multi-valued-array"></a>Sztring felosztása többértékű tömbbe
-A karakterláncok vesszővel tagolt listáját kell megadnia, és azokat egy olyan tömbbe kell bontani, amely egy többértékű attribútumhoz, például a Salesforce PermissionSets attribútumához csatlakoztatható. Ebben a példában az extensionAttribute5 az Azure AD-ben az engedélyezési készletek listája lett feltöltve.
-
-**Kifejezés:** Split ([extensionAttribute5], ",")
-
-**Minta bemenet/kimenet:** 
-
-* **Bemenet** (extensionAttribute5): "PermissionSetOne, PermissionSetTwo"
-* **Kimenet**: ["PermissionSetOne", "PermissionSetTwo"]
-
-### <a name="output-date-as-a-string-in-a-certain-format"></a>Kimeneti dátum karakterláncként egy adott formátumban
-Bizonyos formátumban szeretné elküldeni a dátumokat egy SaaS-alkalmazásnak. Például a ServiceNow dátumát szeretné formázni.
-
-**Kifejezés** 
-
-`FormatDateTime([extensionAttribute1], "yyyyMMddHHmmss.fZ", "yyyy-MM-dd")`
-
-**Minta bemenet/kimenet:**
-
-* **Bemenet** (extensionAttribute1): "20150123105347.1 z"
-* **Kimenet**: "2015-01-23"
-
-### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Érték cseréje előre megadott beállítások alapján
-
-Meg kell határoznia a felhasználó időzónáját az Azure AD-ben tárolt állapot kódja alapján. Ha az állapotkód nem egyezik az előre definiált beállításokkal, használja az "Australia/Sydney" alapértelmezett értékét.
-
-**Kifejezés** 
-`Switch([state], "Australia/Sydney", "NSW", "Australia/Sydney","QLD", "Australia/Brisbane", "SA", "Australia/Adelaide")`
-
-**Minta bemenet/kimenet:**
-
-* **Bemenet** (állapot): "QLD"
-* **Kimenet**: "Ausztrália/Brisbane"
-
-### <a name="replace-characters-using-a-regular-expression"></a>Karakterek cseréje reguláris kifejezés használatával
-Meg kell keresnie a reguláris kifejezés értékének megfelelő karaktereket, és el kell távolítani őket.
-
-**Kifejezés** 
-
-Replace ([mailNickname],, "[a-zA-Z_] *",, "",,)
-
-**Minta bemenet/kimenet:**
-
-* **Bemenet** (mailNickname: "john_doe72"
-* **Kimenet**: "72"
-
-### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>Generált userPrincipalName (UPN) értékének kisbetűvé alakítása
-Az alábbi példában az UPN-érték a PreferredFirstName és a PreferredLastName forrás mezőinek összefűzésével jön létre, és a ToLower függvény a generált karakterláncon működik, hogy az összes karaktert kisbetűvé alakítsa. 
-
-`ToLower(Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"))`
-
-**Minta bemenet/kimenet:**
-
-* **Bemenet** (PreferredFirstName): "John"
-* **Bemenet** (PreferredLastName): "Kovács"
-* **Kimenet**: " john.smith@contoso.com "
-
-### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>Egyedi érték előállítása a userPrincipalName (UPN) attribútumhoz
-A felhasználó utóneve, középső neve és vezetékneve alapján értéket kell létrehoznia az UPN-attribútumhoz, és meg kell adnia annak egyediségét a cél AD-címtárban, mielőtt az értéket az UPN-attribútumhoz rendeli.
-
-**Kifejezés** 
-
-```ad-attr-mapping-expr
-    SelectUniqueValue( 
-        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"), 
-        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 1), [PreferredLastName]))), "contoso.com"),
-        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 2), [PreferredLastName]))), "contoso.com")
-    )
-```
-
-**Minta bemenet/kimenet:**
-
-* **Bemenet** (PreferredFirstName): "John"
-* **Bemenet** (PreferredLastName): "Kovács"
-* **Output**: " John.Smith@contoso.com ", ha John.Smith@contoso.com még nem létezik UPN-érték a címtárban
-* **Output**: " J.Smith@contoso.com ", ha John.Smith@contoso.com a címtárban már létezik UPN-érték
-* **Kimenet**: " Jo.Smith@contoso.com ", ha a fenti két UPN-érték már létezik a címtárban
-
-### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>A flow e-mail-értéke, ha nem NULL értékű, máskülönben flow userPrincipalName
-Ha megtalálható a mail attribútuma. Ha nem, akkor inkább a userPrincipalName értékét kell átvennie.
-
-**Kifejezés** 
-`Coalesce([mail],[userPrincipalName])`
-
-**Minta bemenet/kimenet:** 
-
-* **Bemenet** (e-mail): NULL
-* **Bemenet** (userPrincipalName): " John.Doe@contoso.com "
-* **Kimenet**: " John.Doe@contoso.com "
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 * [A felhasználók üzembe helyezésének és megszüntetésének automatizálása az SaaS-alkalmazásokban](../app-provisioning/user-provisioning.md)

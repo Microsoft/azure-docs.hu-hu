@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Az Azure dev Spaces engedélyezése és használata során felmerülő gyakori problémák elhárítása és megoldása
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
-ms.openlocfilehash: bf8c4d2040445fa3417fce02fb4b66216b21f3b5
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 14ced0c66b42b6f18c946d0c75091be1af5598f5
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548868"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197792"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Az Azure dev Spaces hibaelhárítása
 
@@ -26,7 +26,7 @@ Ha hatékonyabban szeretné elhárítani a problémákat, érdemes lehet részle
 
 A Visual Studióban állítsa a `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` környezeti változót 1-re. A környezeti változó érvénybe léptetéséhez indítsa újra a Visual studiót. Ha engedélyezve van, a részletes naplók a `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` címtárba íródnak.
 
-A CLI-ben további információkat adhat meg a parancs végrehajtása során a kapcsoló használatával `--verbose` . További részletes naplókat is megkereshet a alkalmazásban `%TEMP%\Azure Dev Spaces` . Mac gépen a *temp* könyvtár `echo $TMPDIR` egy terminál-ablakból futtatható. Linux rendszerű számítógépeken általában a *temp* könyvtár `/tmp` . Továbbá ellenőrizze, hogy a naplózás engedélyezve van-e az [Azure CLI konfigurációs fájljában](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables).
+A CLI-ben további információkat adhat meg a parancs végrehajtása során a kapcsoló használatával `--verbose` . További részletes naplókat is megkereshet a alkalmazásban `%TEMP%\Azure Dev Spaces` . Mac gépen a *temp* könyvtár `echo $TMPDIR` egy terminál-ablakból futtatható. Linux rendszerű számítógépeken általában a *temp* könyvtár `/tmp` . Továbbá ellenőrizze, hogy a naplózás engedélyezve van-e az [Azure CLI konfigurációs fájljában](/cli/azure/azure-cli-configuration#cli-configuration-values-and-environment-variables).
 
 Az Azure dev Spaces is működik a legjobban, ha egyetlen példányt vagy Pod-t tesz elérhetővé. A `azds.yaml` fájl tartalmaz egy *replicaCount*-beállítást, amely megadja, hogy a Kubernetes hány hüvelyt futtat a szolgáltatásban. Ha úgy módosítja a *replicaCount* , hogy úgy konfigurálja az alkalmazást, hogy több hüvelyt futtasson egy adott szolgáltatáshoz, akkor a hibakereső az első hüvelyhez csatlakozik, amikor betűrendbe van sorolva. A hibakereső egy másik Pod-hoz csatlakozik, amikor az eredeti Pod újrahasznosítja, ami valószínűleg váratlan viselkedést eredményez.
 
@@ -91,7 +91,7 @@ azure-cli                         2.0.60 *
 
 Annak ellenére, hogy a `az aks use-dev-spaces` 2.0.63 előtt az Azure CLI egy verziójával fut, a telepítés sikeres lesz. Továbbra is `azds` problémák nélkül használhatja tovább.
 
-A probléma megoldásához frissítse az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) telepítését 2.0.63 vagy újabb verzióra. Ez a frissítés fogja megoldani a futtatásakor kapott hibaüzenetet `az aks use-dev-spaces` . Másik lehetőségként továbbra is használhatja az Azure CLI aktuális verzióját és az Azure dev Spaces CLI-t.
+A probléma megoldásához frissítse az [Azure CLI](/cli/azure/install-azure-cli) telepítését 2.0.63 vagy újabb verzióra. Ez a frissítés fogja megoldani a futtatásakor kapott hibaüzenetet `az aks use-dev-spaces` . Másik lehetőségként továbbra is használhatja az Azure CLI aktuális verzióját és az Azure dev Spaces CLI-t.
 
 ### <a name="error-unable-to-reach-kube-apiserver"></a>Hiba: "nem sikerült elérni a Kube-apiserver"
 

@@ -91,7 +91,7 @@
 - name: Referencia
   items:
     - name: Parancssori felülettel kapcsolatos referencia
-      href: /cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
+      href: /cli/azure/cognitiveservices#az_cognitiveservices_list
     - name: PowerShell-referencia
       href: /powershell/module/azurerm.cognitiveservices/
     - name: Szövegelemzések API

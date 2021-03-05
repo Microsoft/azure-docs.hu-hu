@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 4970cacb0995678bdad87f14ba971b8fb88ffa09
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 44554434eee51c11e7f89007c532f1a142fc998c
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593638"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199339"
 ---
 # <a name="react-plugin-for-application-insights-javascript-sdk"></a>Az Application Insights JavaScript SDK beépülő moduljának reagálása
 
@@ -77,7 +77,7 @@ export default withAITracking(reactPlugin, MyComponent);
 
 ## <a name="configuration"></a>Konfiguráció
 
-| Name    | Alapértelmezett | Description                                                                                                    |
+| Name    | Alapértelmezett | Leírás                                                                                                    |
 |---------|---------|----------------------------------------------------------------------------------------------------------------|
 | előzmények | null    | Az útválasztó előzményeinek megválaszolása. További információ: [reakciós útválasztó csomag dokumentációja](https://reactrouter.com/web/api/history). Ha meg szeretné tudni, hogyan érheti el az előzmények objektumot az összetevőkön kívül, tekintse meg a [reakciós útválasztó – gyakori kérdések](https://github.com/ReactTraining/react-router/blob/master/FAQ.md#how-do-i-access-the-history-object-outside-of-components)    |
 
@@ -161,7 +161,11 @@ Ugyanúgy működik, mint a magasabb rendű összetevő, de az életciklus-élet
 
 ### `useTrackEvent`
 
-A `useTrackEvent` Hook segítségével nyomon követheti az alkalmazás által nyomon követett egyéni eseményeket, például egy kattintással vagy más API-hívással. Két argumentumot vesz igénybe, az első a Application Insights-példány (amely a `useAppInsightsContext` horogtól szerezhető be), valamint az esemény neve.
+A `useTrackEvent` Hook segítségével nyomon követheti az alkalmazás által nyomon követett egyéni eseményeket, például egy kattintással vagy más API-hívással. Négy argumentumot vesz igénybe:
+-   Application Insights példány (amely a hookból szerezhető be `useAppInsightsContext` ).
+-   Az esemény neve.
+-   A nyomon követett módosításokat tartalmazó esemény-adatobjektum.
+-   skipFirstRun (nem kötelező) jelző a hívás inicializálási hívásának kihagyásához `trackEvent` . Az alapértelmezett érték `true`.
 
 ```javascript
 import React, { useState, useEffect } from "react";

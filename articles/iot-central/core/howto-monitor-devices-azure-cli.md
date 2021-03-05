@@ -9,12 +9,12 @@ ms.service: iot-central
 ms.custom: devx-track-azurecli, device-developer
 services: iot-central
 manager: corywink
-ms.openlocfilehash: b266def0dbe81542714fc6d47986f3cde8235dd0
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 62981686c7aadc713c4abc78075be8613fe0af45
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122960"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199306"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Eszközkapcsolatok monitorozása az Azure CLI-vel
 
@@ -22,7 +22,7 @@ ms.locfileid: "92122960"
 
 Az Azure CLI IoT bővítmény használatával megtekintheti, hogy az eszközök milyen üzeneteket küldenek IoT Centralnek, és megfigyelik a Twin eszközök változásait. Ezt az eszközt használhatja az eszközök kapcsolatának hibakeresésére és figyelésére, valamint a felhőbe nem lépő eszközök üzeneteinek diagnosztizálására, illetve a kettős módosításokra nem válaszoló eszközökre.
 
-[További részletekért tekintse meg az Azure CLI-bővítmények referenciáját](/cli/azure/ext/azure-iot/iot/central?view=azure-cli-latest)
+[További részletekért tekintse meg az Azure CLI-bővítmények referenciáját](/cli/azure/ext/azure-iot/iot/central)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -62,7 +62,7 @@ az login
 ```
 
 ### <a name="get-the-application-id-of-your-iot-central-app"></a>A IoT Central-alkalmazás alkalmazás-AZONOSÍTÓjának beolvasása
-Az **Adminisztráció/alkalmazás beállításaiban**másolja az **alkalmazás azonosítóját**. Ezt az értéket a későbbi lépésekben használhatja.
+Az **Adminisztráció/alkalmazás beállításaiban** másolja az **alkalmazás azonosítóját**. Ezt az értéket a későbbi lépésekben használhatja.
 
 ### <a name="monitor-messages"></a>Üzenetek figyelése
 A IoT Central alkalmazásnak az eszközökről küldött üzeneteinek figyelése. A kimenet tartalmazza az összes fejlécet és megjegyzést.

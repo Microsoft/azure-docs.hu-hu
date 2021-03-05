@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 951c52cdba191aa291061259e1c15b9190513770
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 6aeb7489b455840eeca0a8e1967c7e6e2ed50b7a
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092720"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199900"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Az Azure Digital Twins integrálása Azure Time Series Insights
 
@@ -56,7 +56,7 @@ Az Azure Digital Twins [*oktatóanyaga: egy végpontok közötti megoldás össz
     az eventhubs eventhub create --name <name for your Twins event hub> --resource-group <resource group name> --namespace-name <Event Hubs namespace from above>
     ```
 
-3. Hozzon létre egy [engedélyezési szabályt](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az-eventhubs-eventhub-authorization-rule-create) a küldési és fogadási engedélyekkel. Adja meg a szabály nevét.
+3. Hozzon létre egy [engedélyezési szabályt](/cli/azure/eventhubs/eventhub/authorization-rule#az-eventhubs-eventhub-authorization-rule-create) a küldési és fogadási engedélyekkel. Adja meg a szabály nevét.
 
     ```azurecli-interactive
         az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from above> --eventhub-name <Twins event hub name from above> --name <name for your Twins auth rule>
@@ -73,7 +73,7 @@ Az Azure Digital Twins [*oktatóanyaga: egy végpontok közötti megoldás össz
     >[!NOTE]
     >A Cloud Shellben jelenleg egy **ismert probléma** akadályozza az alábbi parancscsoportokat: `az dt route`, `az dt model`, `az dt twin`.
     >
-    >Ennek feloldásához futtassa az `az login` parancsot a parancs előtt a Cloud Shellben, vagy használja a [helyi CLI-t](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) a Cloud Shell helyett. Erről további részleteket a [*Hibaelhárítás: az Azure digitális Twins ismert problémái*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)című témakörben talál.
+    >Ennek feloldásához futtassa az `az login` parancsot a parancs előtt a Cloud Shellben, vagy használja a [helyi CLI-t](/cli/azure/install-azure-cli) a Cloud Shell helyett. Erről további részleteket a [*Hibaelhárítás: az Azure digitális Twins ismert problémái*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)című témakörben talál.
 
     ```azurecli-interactive
     az dt route create -n <your Azure Digital Twins instance name> --endpoint-name <Event Hub endpoint from above> --route-name <name for your route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
@@ -117,7 +117,7 @@ A második Event hub létrehozásához használhatja az alábbi Azure CLI-utasí
     ```azurecli-interactive
     az eventhubs eventhub create --name <name for your TSI event hub> --resource-group <resource group name from earlier> --namespace-name <Event Hubs namespace from earlier>
     ```
-3. Hozzon létre egy [engedélyezési szabályt](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az-eventhubs-eventhub-authorization-rule-create) a küldési és fogadási engedélyekkel. Adja meg a szabály nevét.
+3. Hozzon létre egy [engedélyezési szabályt](/cli/azure/eventhubs/eventhub/authorization-rule#az-eventhubs-eventhub-authorization-rule-create) a küldési és fogadási engedélyekkel. Adja meg a szabály nevét.
 
     ```azurecli-interactive
     az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from earlier> --eventhub-name <TSI event hub name from above> --name <name for your TSI auth rule>
@@ -173,7 +173,7 @@ Ezután állítson be egy Time Series Insights-példányt, amely a második (ÁM
 
 ## <a name="begin-sending-iot-data-to-azure-digital-twins"></a>IoT-adatok küldésének megkezdése az Azure Digital Twinsba
 
-Az adatok Time Series Insightsba való küldésének megkezdéséhez meg kell kezdenie a digitális Twin-tulajdonságok frissítését az Azure Digital Twins-ban az adatértékek módosításával. Használja az az [DT Twin Update](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext-azure-iot-az-dt-twin-update) parancsot.
+Az adatok Time Series Insightsba való küldésének megkezdéséhez meg kell kezdenie a digitális Twin-tulajdonságok frissítését az Azure Digital Twins-ban az adatértékek módosításával. Használja az az [DT Twin Update](/cli/azure/ext/azure-iot/dt/twin#ext-azure-iot-az-dt-twin-update) parancsot.
 
 Ha teljes körű oktatóanyagot használ ([*oktatóanyag: végpontok közötti megoldás összekapcsolásával*](tutorial-end-to-end.md)) a környezet beállításának elősegítése érdekében, megkezdheti a szimulált IoT-adatok küldését a minta *DeviceSimulator* -projekt futtatásával. Az útmutató az oktatóanyag [*konfigurálása és futtatása a szimuláció*](tutorial-end-to-end.md#configure-and-run-the-simulation) szakaszban található.
 

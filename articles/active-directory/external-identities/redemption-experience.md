@@ -5,18 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/04/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95c7ca826eaf7d72cb35985b154458f149ef4a0e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: df867059a7d4020952f71ca8d663a644ee2428fd
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101649315"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199628"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B-együttműködésre irányuló meghívás beváltása
 
@@ -35,6 +34,7 @@ A vendég felhasználók mostantól egy közös végponton (URL) keresztül jele
 ![Gyakori végpont-bejelentkezés](media/redemption-experience/common-endpoint-flow-small.png)
 
 Ezt követően a rendszer átirányítja a felhasználót a bérlői végpontra, ahol bejelentkezhet az e-mail-címükkel, vagy kijelölhet egy Ön által konfigurált identitás-szolgáltatót.
+
 ## <a name="redemption-through-a-direct-link"></a>Váltás közvetlen kapcsolaton keresztül
 
 A meghívót tartalmazó e-mail-cím vagy egy alkalmazás közös URL-címének alternatívájaként a vendég közvetlen hivatkozást adhat az alkalmazáshoz vagy a portálhoz. Először hozzá kell adnia a vendég felhasználót a címtárhoz a [Azure Portal](./b2b-quickstart-add-guest-users-portal.md) vagy a [PowerShell](./b2b-quickstart-invite-powershell.md)használatával. Ezután bármilyen [testreszabható módszert használhat az alkalmazások felhasználók számára történő központi telepítéséhez](../manage-apps/end-user-experiences.md), beleértve a közvetlen bejelentkezési hivatkozásokat is. Ha egy vendég közvetlen hivatkozást használ a meghívó e-mail-címe helyett, a rendszer továbbra is az első belefoglalási élményt fogja követni.
@@ -73,7 +73,7 @@ Ha a felhasználó a meghívás **elfogadása** hivatkozásra kattint egy [megh�
 
 3. Ha egy rendszergazda engedélyezte a [Google-összevonást](./google-federation.md), az Azure ad ellenőrzi, hogy a felhasználó tartományának utótagja gmail.com vagy googlemail.com, és átirányítja a felhasználót a Google-ba.
 
-4. A beváltási folyamat ellenőrzi, hogy a felhasználó rendelkezik-e meglévő személyes [Microsoft-fiókával (MSA)](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create).
+4. A beváltási folyamat ellenőrzi, hogy a felhasználó rendelkezik-e meglévő személyes [Microsoft-fiók (MSA)](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) az igény szerinti (JIT) beváltáshoz, de a meghívó e-mail-hivatkozásának beváltásához nem. Ha a felhasználó már rendelkezik meglévő MSA, akkor bejelentkeznek a meglévő MSA.
 
 5. A felhasználó **kezdőkönyvtárának** azonosítása után a rendszer elküldi a felhasználót a megfelelő identitás-szolgáltatónak a bejelentkezéshez.  
 

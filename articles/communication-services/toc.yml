@@ -38,6 +38,8 @@
       items:
         - name: Hanghívás hozzáadása az alkalmazáshoz
           href: quickstarts/voice-video-calling/getting-started-with-calling.md
+        - name: Videohívás hozzáadása az alkalmazáshoz (JavaScript)
+          href: quickstarts/voice-video-calling/get-started-with-video-calling.md
         - name: A hívási ügyfélkódtár használata
           href: quickstarts/voice-video-calling/calling-client-samples.md
         - name: Hívási alkalmazás csatlakoztatása Teams-értekezlethez

@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt, devx-track-azurecli
-ms.openlocfilehash: ba58f7897827cf7ce7f6156df1434733d89d7f42
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5515d1084b28091cf7d20958cfca8af3f2664563
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844454"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199492"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Felhőből az eszközre irányuló üzenetek küldése IoT-hubhoz
 
@@ -74,7 +74,7 @@ Az üzenetek lejárati idejének kihasználása, valamint az üzenetek leválasz
 
 A felhőből az eszközre küldött üzenetek küldésekor a szolgáltatás az üzenet végleges állapotára vonatkozó üzenet-visszajelzések kézbesítését is kérheti. Ezt úgy teheti meg, hogy a **iothub-ACK** Application tulajdonságot a következő négy érték egyikére küldi a felhőből az eszközre:
 
-| ACK tulajdonság értéke | Viselkedés |
+| ACK tulajdonság értéke | Működés |
 | ------------ | -------- |
 | Nincs     | Az IoT hub nem állít elő visszajelzési üzenetet (az alapértelmezett viselkedés). |
 | pozitív | Ha a felhőből az eszközre irányuló üzenet eléri a *befejezett* állapotot, a IoT hub visszajelzési üzenetet hoz létre. |
@@ -97,7 +97,7 @@ A törzs a rekordok JSON-szerializált tömbje, amelyek mindegyike a következő
 | ------------------ | ----------- |
 | EnqueuedTimeUtc    | Egy időbélyeg, amely azt jelzi, hogy mikor történt az üzenet eredménye (például a hub megkapta a visszajelzési üzenetet, vagy lejárt az eredeti üzenet) |
 | OriginalMessageId  | A *MessageID* üzenet, amelyre ez a visszajelzési információ vonatkozik |
-| StatusCode         | Egy kötelező karakterlánc, amelyet az IoT hub által generált visszajelzési üzenetekben használ: <br/> *Sikeres* <br/> *Lejárt* <br/> *DeliveryCountExceeded* <br/> *Elutasítva* <br/> *Törlődnek* |
+| StatusCode         | Egy kötelező karakterlánc, amelyet az IoT hub által generált visszajelzési üzenetekben használ: <br/> *Siker* <br/> *Lejárt* <br/> *DeliveryCountExceeded* <br/> *Elutasítva* <br/> *Törlődnek* |
 | Leírás        | *Statuscode* karakterlánc-értékei |
 | DeviceId           | A felhőből az eszközre irányuló üzenet megcélzott eszközének *DeviceID* eleme, amelyre ez a visszajelzés vonatkozik |
 | DeviceGenerationId | A felhőből az eszközre irányuló üzenet *DeviceGenerationId* , amelyre ez a visszajelzés vonatkozik |
@@ -147,7 +147,7 @@ A konfigurációs beállításokat a következő módszerek egyikével állítha
 
     ![A felhőből az eszközre irányuló üzenetküldés konfigurációs beállításainak megadása a portálon](./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png)
 
-* **Azure CLI**: használja az az [IOT hub Update](/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-update) parancsot:
+* **Azure CLI**: használja az az [IOT hub Update](/cli/azure/iot/hub#az-iot-hub-update) parancsot:
 
     ```azurecli
     az iot hub update --name {your IoT hub name} \

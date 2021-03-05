@@ -15,12 +15,12 @@ ms.custom:
 - contperf-fy21q1
 - fasttrack-edit
 - iot
-ms.openlocfilehash: df706a83c4892c15140e5d5c827a248156b66069
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 728014c53ab019f25bdc9b097c8b493411833aaa
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095689"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198846"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikáció az IoT hub használatával a MQTT protokollal
 
@@ -81,11 +81,11 @@ Annak biztosítása érdekében, hogy az ügyfél/IoT Hub-kapcsolatok életben m
 
 |Nyelv  |Alapértelmezett életben tartási időköz  |Konfigurálható  |
 |---------|---------|---------|
-|Node.js     |   180 másodperc      |     No    |
-|Java     |    230 másodperc     |     No    |
+|Node.js     |   180 másodperc      |     Nem    |
+|Java     |    230 másodperc     |     Nem    |
 |C     | 240 másodperc |  [Igen](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
 |C#     | 300 másodperc |  [Igen](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
-|Python   | 60 másodperc |  No   |
+|Python   | 60 másodperc |  Nem   |
 
 Az [MQTT specifikáció](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081)után a IoT hub életben tartási pingelési intervalluma 1,5 alkalommal az ügyfél életben tartási értéke. A IoT Hub azonban korlátozza a kiszolgálóoldali időtúllépési korlátot 29,45 percre (1767 másodpercre), mert az összes Azure-szolgáltatás az Azure Load Balancer TCP üresjárati időkorlátjának (29,45 perc) van kötve. 
 
@@ -160,7 +160,7 @@ Ha egy eszköz nem tudja használni az eszköz SDK-kat, akkor továbbra is csatl
 
   Az SAS-tokenek létrehozásával kapcsolatos további információkért tekintse meg a [IoT hub biztonsági jogkivonatok használata](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)című témakör eszközét.
 
-  A tesztelés során a Visual Studio Code-hoz készült platformfüggetlen [Azure IoT-eszközöket](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) vagy a CLI-bővítmény parancsát is használhatja az [IoT hub generált-sas-token](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-generate-sas-token&preserve-view=true) használatával, amellyel gyorsan létrehozhat egy sas-tokent, amelyet másolhat és beilleszthet a saját kódjába.
+  A tesztelés során a Visual Studio Code-hoz készült platformfüggetlen [Azure IoT-eszközöket](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) vagy a CLI-bővítmény parancsát is használhatja az [IoT hub generált-sas-token](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-generate-sas-token) használatával, amellyel gyorsan létrehozhat egy sas-tokent, amelyet másolhat és beilleszthet a saját kódjába.
 
 ### <a name="for-azure-iot-tools"></a>Azure IoT-eszközökhöz
 
@@ -317,7 +317,7 @@ IoT Hub kézbesíti az üzeneteket a **témakör nevével** `devices/{device_id}
 
 A felhőből az eszközre irányuló üzenetekben a tulajdonságok táskájában lévő értékek a következő táblázatban látható módon jelennek meg:
 
-| Tulajdonság értéke | Képviselet | Description |
+| Tulajdonság értéke | Képviselet | Leírás |
 |----|----|----|
 | `null` | `key` | Csak a kulcs jelenik meg a tulajdonság táskájában |
 | üres karakterlánc | `key=` | A kulcsot, és nem értékkel rendelkező egyenlőségjelet kell írni |

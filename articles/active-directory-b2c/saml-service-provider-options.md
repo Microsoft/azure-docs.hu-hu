@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: b9a491b639cd1b960ffe3b7164a0940770792148
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: adfe5318949ffa624ebe3548944b558bd0dda9e1
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107521"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198472"
 ---
 # <a name="options-for-registering-a-saml-application-in-azure-ad-b2c"></a>Az SAML-alkalmazások Azure AD B2C-ben való regisztrálásának lehetőségei
 
@@ -60,6 +60,54 @@ Ha engedélyezni szeretné a Azure AD B2C számára a titkosított kijelentések
     <Protocol Name="SAML2"/>
     <Metadata>
       <Item Key="WantsEncryptedAssertions">true</Item>
+    </Metadata>
+   ..
+  </TechnicalProfile>
+</RelyingParty>
+```
+
+### <a name="encryption-method"></a>Titkosítási módszer
+
+Az SAML-kikötési adatok titkosításához használt titkosítási módszer konfigurálásához állítsa be a `DataEncryptionMethod` metaadat-kulcsot a függő entitáson belül. A lehetséges értékek a következők: `Aes256` (default), `Aes192` , `Sha512` , vagy `Aes128` . A metaadatok az `<EncryptedData>` SAML-válasz elemének értékét vezérlik.
+
+A kulcs másolatának titkosításához használt titkosítási módszer konfigurálásához, amely az SAML-kikötések adatainak titkosítására szolgál, állítsa be a `KeyEncryptionMethod` metaadat-kulcsot a függő entitáson belül. A lehetséges értékek a következők: `Rsa15` (alapértelmezett) – RSA nyilvánoskulcs-titkosítási szabvány (PKCS) 1,5 algoritmus, és `RsaOaep` -RSA optimális aszimmetrikus titkosítási kitöltés (OAEP) titkosítási algoritmus.  A metaadatok az  `<EncryptedKey>` SAML-válasz elemének értékét vezérlik.
+
+Az alábbi példa `EncryptedAssertion` egy SAML-állítás szakaszát mutatja be. A titkosított adatmódszer a `Aes128` , a titkosított kulcs módszere pedig `Rsa15` .
+
+```xml
+<saml:EncryptedAssertion>
+  <xenc:EncryptedData xmlns:xenc="http://www.w3.org/2001/04/xmlenc#"
+    xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" Type="http://www.w3.org/2001/04/xmlenc#Element">
+    <xenc:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes128-cbc" />
+    <dsig:KeyInfo>
+      <xenc:EncryptedKey>
+        <xenc:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#rsa-1_5" />
+        <xenc:CipherData>
+          <xenc:CipherValue>...</xenc:CipherValue>
+        </xenc:CipherData>
+      </xenc:EncryptedKey>
+    </dsig:KeyInfo>
+    <xenc:CipherData>
+      <xenc:CipherValue>...</xenc:CipherValue>
+    </xenc:CipherData>
+  </xenc:EncryptedData>
+</saml:EncryptedAssertion>
+```
+
+Módosíthatja a titkosított állítások formátumát. A titkosítási formátum konfigurálásához állítsa a `UseDetachedKeys` metaadat-kulcsot a függő entitáson belül. Lehetséges értékek: `true` , vagy `false` (alapértelmezett). Ha a érték van beállítva `true` , a leválasztott kulcsok hozzáadja a titkosított kijelentést a ( `EncrytedAssertion` szemben) helyett `EncryptedData` .
+
+Konfigurálja a titkosítási módszert és a formátumot, használja a metaadatok kulcsait a [függő entitások technikai profilján](relyingparty.md#technicalprofile)belül:
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="SAML2"/>
+    <Metadata>
+      <Item Key="DataEncryptionMethod">Aes128</Item>
+      <Item Key="KeyEncryptionMethod">Rsa15</Item>
+      <Item Key="UseDetachedKeys">false</Item>
     </Metadata>
    ..
   </TechnicalProfile>
@@ -114,7 +162,7 @@ Egy teljes minta szabályzatot biztosítunk, amely az SAML-teszt alkalmazással 
 
 Beállíthatja az SAML-állítás aláírásához használt aláírási algoritmust. A lehetséges értékek:,, `Sha256` `Sha384` `Sha512` vagy `Sha1` . Győződjön meg arról, hogy a technikai profil és az alkalmazás ugyanazt az aláírási algoritmust használja. Csak a tanúsítvány által támogatott algoritmust használja.
 
-Konfigurálja az aláírási algoritmust a `XmlSignatureAlgorithm` metaadat-kulccsal a RelyingParty metadata csomóponton belül.
+Konfigurálja az aláírási algoritmust a `XmlSignatureAlgorithm` függő entitás metaadatainak elemében található metaadatok használatával.
 
 ```xml
 <RelyingParty>
@@ -132,7 +180,7 @@ Konfigurálja az aláírási algoritmust a `XmlSignatureAlgorithm` metaadat-kulc
 
 ## <a name="saml-response-lifetime"></a>SAML-válasz élettartama
 
-Beállíthatja azt az időtartamot, ameddig az SAML-válasz érvényes marad. Állítsa be az élettartamot az `TokenLifeTimeInSeconds` SAML-jogkivonat kiállítói technikai profiljában található metaadatok elem használatával. Ez az érték azon másodpercek száma, amelyek eltérhetnek a `NotBefore` jogkivonat-kiállítási idő alapján kiszámított időbélyegtől. Automatikusan megtörténik az aktuális időponthoz választott idő. Az alapértelmezett élettartam 300 másodperc (5 perc).
+Beállíthatja azt az időtartamot, ameddig az SAML-válasz érvényes marad. Állítsa be az élettartamot az `TokenLifeTimeInSeconds` SAML-jogkivonat kiállítói technikai profiljában található metaadatok elem használatával. Ez az érték azon másodpercek száma, amelyek eltérhetnek a `NotBefore` jogkivonat-kiállítási idő alapján kiszámított időbélyegtől. Az alapértelmezett élettartam 300 másodperc (5 perc).
 
 ```xml
 <ClaimsProvider>
@@ -170,6 +218,26 @@ Például ha a `TokenNotBeforeSkewInSeconds` értéke másodpercre van állítva
       <OutputTokenFormat>SAML2</OutputTokenFormat>
       <Metadata>
         <Item Key="TokenNotBeforeSkewInSeconds">120</Item>
+      </Metadata>
+      ...
+    </TechnicalProfile>
+```
+
+## <a name="remove-milliseconds-from-date-and-time"></a>Ezredmásodpercek eltávolítása a dátumtól és az időponttól
+
+Megadhatja, hogy az ezredmásodpercek el legyenek-e távolítva az SAML-válasz datetime értékeiből (ezek közé tartozik az IssueInstant, a NotBefore, a NotOnOrAfter és a AuthnInstant). Az ezredmásodpercek eltávolításához állítsa a `RemoveMillisecondsFromDateTime
+` metaadat-kulcsot a függő entitáson belül. Lehetséges értékek: `false` (alapértelmezett) vagy `true` .
+
+```xml
+<ClaimsProvider>
+  <DisplayName>Token Issuer</DisplayName>
+  <TechnicalProfiles>
+    <TechnicalProfile Id="Saml2AssertionIssuer">
+      <DisplayName>Token Issuer</DisplayName>
+      <Protocol Name="SAML2"/>
+      <OutputTokenFormat>SAML2</OutputTokenFormat>
+      <Metadata>
+        <Item Key="RemoveMillisecondsFromDateTime">true</Item>
       </Metadata>
       ...
     </TechnicalProfile>

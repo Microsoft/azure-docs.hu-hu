@@ -3,12 +3,12 @@ title: Felügyelt identitás engedélyezése a tároló csoportban
 description: Megtudhatja, hogyan engedélyezheti a felügyelt identitást olyan Azure Container Instancesban, amelyek más Azure-szolgáltatásokkal is hitelesíthetők
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 67ef17b77a9db92e539dd860a3083760fe1160db
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: a0d029e39122ca7bb858103f4d7f88e2536850d5
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558946"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198319"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Felügyelt identitások használata az Azure Container Instancesszel
 
@@ -53,13 +53,13 @@ Felügyelt identitás használatához az identitásnak hozzáférést kell bizto
 
 A cikkben szereplő példák felügyelt identitást használnak Azure Container Instances egy Azure Key Vault-titok eléréséhez. 
 
-Először hozzon létre egy erőforráscsoportot *myResourceGroup* néven az *eastus* helyen az alábbi [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) paranccsal:
+Először hozzon létre egy erőforráscsoportot *myResourceGroup* néven az *eastus* helyen az alábbi [az group create](/cli/azure/group#az-group-create) paranccsal:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-A Key Vault létrehozásához használja az az kulcstartó [létrehozása](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) parancsot. Ügyeljen arra, hogy egyedi kulcstároló-nevet adjon meg. 
+A Key Vault létrehozásához használja az az kulcstartó [létrehozása](/cli/azure/keyvault#az-keyvault-create) parancsot. Ügyeljen arra, hogy egyedi kulcstároló-nevet adjon meg. 
 
 ```azurecli-interactive
 az keyvault create \
@@ -68,7 +68,7 @@ az keyvault create \
   --location eastus
 ```
 
-Hozzon létre egy minta titkos kulcsot a kulcstartóban az az Key [Vault Secret set](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set) paranccsal:
+Hozzon létre egy minta titkos kulcsot a kulcstartóban az az Key [Vault Secret set](/cli/azure/keyvault/secret#az-keyvault-secret-set) paranccsal:
 
 ```azurecli-interactive
 az keyvault secret set \
@@ -83,7 +83,7 @@ Folytassa a következő példákkal a Key Vault elérését egy felhasználó á
 
 ### <a name="create-an-identity"></a>Identitás létrehozása
 
-Először hozzon létre egy identitást az előfizetésben az az [Identity Create](/cli/azure/identity?view=azure-cli-latest#az-identity-create) paranccsal. Használhatja ugyanazt az erőforráscsoportot, amely a kulcstartó létrehozásához használatos, vagy egy másikat is használhat.
+Először hozzon létre egy identitást az előfizetésben az az [Identity Create](/cli/azure/identity#az-identity-create) paranccsal. Használhatja ugyanazt az erőforráscsoportot, amely a kulcstartó létrehozásához használatos, vagy egy másikat is használhat.
 
 ```azurecli-interactive
 az identity create \
@@ -91,7 +91,7 @@ az identity create \
   --name myACIId
 ```
 
-Ha az identitást a következő lépésekben szeretné használni, használja az az [Identity show](/cli/azure/identity?view=azure-cli-latest#az-identity-show) parancsot az identitás egyszerű szolgáltatásnév és erőforrás-azonosítójának a változókban való tárolásához.
+Ha az identitást a következő lépésekben szeretné használni, használja az az [Identity show](/cli/azure/identity#az-identity-show) parancsot az identitás egyszerű szolgáltatásnév és erőforrás-azonosítójának a változókban való tárolásához.
 
 ```azurecli-interactive
 # Get service principal ID of the user-assigned identity
@@ -109,7 +109,7 @@ resourceID=$(az identity show \
 
 ### <a name="grant-user-assigned-identity-access-to-the-key-vault"></a>Felhasználó által hozzárendelt identitás elérésének engedélyezése a kulcstartóhoz
 
-A Key vaultra vonatkozó hozzáférési szabályzat beállításához futtassa a következőt az kulcstartó [set-Policy](/cli/azure/keyvault?view=azure-cli-latest) paranccsal. A következő példa lehetővé teszi, hogy a felhasználó által hozzárendelt identitás a Key vaultból kapjon titkos kódokat:
+A Key vaultra vonatkozó hozzáférési szabályzat beállításához futtassa a következőt az kulcstartó [set-Policy](/cli/azure/keyvault) paranccsal. A következő példa lehetővé teszi, hogy a felhasználó által hozzárendelt identitás a Key vaultból kapjon titkos kódokat:
 
 ```azurecli-interactive
  az keyvault set-policy \
@@ -121,7 +121,7 @@ A Key vaultra vonatkozó hozzáférési szabályzat beállításához futtassa a
 
 ### <a name="enable-user-assigned-identity-on-a-container-group"></a>Felhasználó által hozzárendelt identitás engedélyezése egy tároló csoporton
 
-A Microsoft rendszerképe alapján hozzon létre egy tároló példányt a következő az [Container Create](/cli/azure/container?view=azure-cli-latest#az-container-create) paranccsal `azure-cli` . Ez a példa egy egytárolós csoportot biztosít, amelyet interaktív módon használhat az Azure CLI-vel más Azure-szolgáltatásokhoz való hozzáféréshez. Ebben a szakaszban csak az alap operációs rendszer van használatban. Ha például az Azure CLI-t a tárolóban szeretné használni, tekintse [meg a rendszer által hozzárendelt identitás engedélyezése egy tároló csoporton](#enable-system-assigned-identity-on-a-container-group)című témakört. 
+A Microsoft rendszerképe alapján hozzon létre egy tároló példányt a következő az [Container Create](/cli/azure/container#az-container-create) paranccsal `azure-cli` . Ez a példa egy egytárolós csoportot biztosít, amelyet interaktív módon használhat az Azure CLI-vel más Azure-szolgáltatásokhoz való hozzáféréshez. Ebben a szakaszban csak az alap operációs rendszer van használatban. Ha például az Azure CLI-t a tárolóban szeretné használni, tekintse [meg a rendszer által hozzárendelt identitás engedélyezése egy tároló csoporton](#enable-system-assigned-identity-on-a-container-group)című témakört. 
 
 A `--assign-identity` paraméter a felhasználó által hozzárendelt felügyelt identitást továbbítja a csoportnak. A hosszan futó parancs megtartja a tárolót. Ez a példa ugyanazt az erőforráscsoportot használja, amelyet a kulcstartó létrehozásához használtak, de megadhat egy másikat is.
 
@@ -134,7 +134,7 @@ az container create \
   --command-line "tail -f /dev/null"
 ```
 
-Pár másodpercen belül az üzembe helyezés befejezéséről tájékoztató választ kell kapnia az Azure CLI-ről. Az az [Container show](/cli/azure/container?view=azure-cli-latest#az-container-show) paranccsal tekintse meg az állapotát.
+Pár másodpercen belül az üzembe helyezés befejezéséről tájékoztató választ kell kapnia az Azure CLI-ről. Az az [Container show](/cli/azure/container#az-container-show) paranccsal tekintse meg az állapotát.
 
 ```azurecli-interactive
 az container show \
@@ -206,7 +206,7 @@ A válasz a következőhöz hasonlóan néz ki, amely a titkos kulcsot mutatja. 
 
 ### <a name="enable-system-assigned-identity-on-a-container-group"></a>Rendszer által hozzárendelt identitás engedélyezése egy tároló csoporton
 
-A Microsoft rendszerképe alapján hozzon létre egy tároló példányt a következő az [Container Create](/cli/azure/container?view=azure-cli-latest#az-container-create) paranccsal `azure-cli` . Ez a példa egy egytárolós csoportot biztosít, amelyet interaktív módon használhat az Azure CLI-vel más Azure-szolgáltatásokhoz való hozzáféréshez. 
+A Microsoft rendszerképe alapján hozzon létre egy tároló példányt a következő az [Container Create](/cli/azure/container#az-container-create) paranccsal `azure-cli` . Ez a példa egy egytárolós csoportot biztosít, amelyet interaktív módon használhat az Azure CLI-vel más Azure-szolgáltatásokhoz való hozzáféréshez. 
 
 A `--assign-identity` további érték nélküli paraméter lehetővé teszi a rendszer által hozzárendelt felügyelt identitást a csoporton. Az identitás hatóköre a tároló csoport erőforráscsoporthoz tartozik. A hosszan futó parancs megtartja a tárolót. Ez a példa ugyanazt az erőforráscsoportot használja, amely a Key Vault létrehozásához használatos, amely az identitás hatókörében található.
 
@@ -255,7 +255,7 @@ spID=$(az container show \
 
 ### <a name="grant-container-group-access-to-the-key-vault"></a>Tároló csoport hozzáférésének engedélyezése a kulcstartóhoz
 
-A Key vaultra vonatkozó hozzáférési szabályzat beállításához futtassa a következőt az kulcstartó [set-Policy](/cli/azure/keyvault?view=azure-cli-latest) paranccsal. A következő példa lehetővé teszi, hogy a rendszer által felügyelt identitás a Key vaultból beszerezze a titkos kulcsokat:
+A Key vaultra vonatkozó hozzáférési szabályzat beállításához futtassa a következőt az kulcstartó [set-Policy](/cli/azure/keyvault) paranccsal. A következő példa lehetővé teszi, hogy a rendszer által felügyelt identitás a Key vaultból beszerezze a titkos kulcsokat:
 
 ```azurecli-interactive
  az keyvault set-policy \
@@ -383,7 +383,7 @@ identity:
    {'myResourceID1':{}}
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta a felügyelt identitásokat a Azure Container Instancesban, és a következőket:
 

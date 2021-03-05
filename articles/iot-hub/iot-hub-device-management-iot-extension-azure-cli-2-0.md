@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: aded49b5b9509a75e61612e44ffa19ff377d1712
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 499c0c065cb38313c98ed9412ab1f08d70dbc654
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148323"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199526"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Az Azure CLI-hez készült IoT-bővítmény használata az Azure IoT Hub-eszközök felügyeletéhez
 
@@ -23,7 +23,7 @@ ms.locfileid: "92148323"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[Az Azure CLI-hez készült IoT-bővítmény](https://github.com/Azure/azure-iot-cli-extension) egy nyílt forráskódú IoT-bővítmény, amely az [Azure CLI](/cli/azure/overview?view=azure-cli-latest)képességeihez járul hozzá. Az Azure CLI a Azure Resource Manager és a felügyeleti végpontokkal való interakcióra szolgáló parancsokat tartalmaz. Használhatja például az Azure CLI-t egy Azure-beli virtuális gép vagy egy IoT hub létrehozásához. A CLI-bővítmény lehetővé teszi, hogy egy Azure-szolgáltatás kibővítse az Azure CLI-t, így további szolgáltatás-specifikus funkciókhoz férhet hozzá. Az IoT bővítmény a IoT-fejlesztők számára biztosít parancssori hozzáférést az összes IoT Hub, IoT Edge és IoT Hub Device Provisioning Service képességhez.
+[Az Azure CLI-hez készült IoT-bővítmény](https://github.com/Azure/azure-iot-cli-extension) egy nyílt forráskódú IoT-bővítmény, amely az [Azure CLI](/cli/azure/overview)képességeihez járul hozzá. Az Azure CLI a Azure Resource Manager és a felügyeleti végpontokkal való interakcióra szolgáló parancsokat tartalmaz. Használhatja például az Azure CLI-t egy Azure-beli virtuális gép vagy egy IoT hub létrehozásához. A CLI-bővítmény lehetővé teszi, hogy egy Azure-szolgáltatás kibővítse az Azure CLI-t, így további szolgáltatás-specifikus funkciókhoz férhet hozzá. Az IoT bővítmény a IoT-fejlesztők számára biztosít parancssori hozzáférést az összes IoT Hub, IoT Edge és IoT Hub Device Provisioning Service képességhez.
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -61,7 +61,7 @@ Futtassa az Azure CLI-t és a IoT-bővítményt az Azure CLI-hez különböző f
 
 * [Python 2.7 x vagy Python 3. x](https://www.python.org/downloads/)
 
-* Az Azure CLI-vel. Ha telepítenie kell, tekintse meg [Az Azure CLI telepítését](/cli/azure/install-azure-cli?view=azure-cli-latest)ismertető témakört. Legalább az Azure CLI-verziójának 2.0.70 vagy újabbnak kell lennie. A verziószámot az `az –version` paranccsal ellenőrizheti.
+* Az Azure CLI-vel. Ha telepítenie kell, tekintse meg [Az Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört. Legalább az Azure CLI-verziójának 2.0.70 vagy újabbnak kell lennie. A verziószámot az `az –version` paranccsal ellenőrizheti.
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 

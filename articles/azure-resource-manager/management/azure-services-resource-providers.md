@@ -3,12 +3,12 @@ title: Erőforrás-szolgáltatók az Azure-szolgáltatások által
 description: Felsorolja a Azure Resource Manager összes erőforrás-szolgáltatói névterét, és megjeleníti az adott névtérhez tartozó Azure-szolgáltatást.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 581c25b384bf6e2865a21f083ba12eef2e5e8bcd
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: cc9793bfc0ca6cc0afbede241534453209685d94
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733787"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198931"
 ---
 # <a name="resource-providers-for-azure-services"></a>Erőforrás-szolgáltatók az Azure-szolgáltatásokhoz
 
@@ -35,7 +35,7 @@ Az előfizetéshez tartozó, **regisztráltként** megjelölt erőforrás-szolg�
 | Microsoft. AutonomousSystems | [Autonóm rendszerek](https://www.microsoft.com/ai/autonomous-systems) |
 | Microsoft. AVS | [Azure VMware Solution](../../azure-vmware/index.yml) |
 | Microsoft. AzureActiveDirectory | [Azure Active Directory B2C](../../active-directory-b2c/index.yml) |
-| Microsoft. AzureArcData | Az Azure arc-kompatibilis adatszolgáltatások beállításjegyzéke |
+| Microsoft. AzureArcData | Azure Arc-kompatibilis adatszolgáltatások |
 | Microsoft. AzureData | SQL Server beállításjegyzék |
 | Microsoft. AzureStack | Core |
 | Microsoft. AzureStackHCI | [Azure Stack HCI](/azure-stack/hci/overview) |
@@ -59,12 +59,12 @@ Az előfizetéshez tartozó, **regisztráltként** megjelölt erőforrás-szolg�
 | Microsoft. CognitiveServices | [Cognitive Services](../../cognitive-services/index.yml) |
 | Microsoft. Commerce – [regisztrált](#registration) | Core |
 | Microsoft.Compute | [Virtual Machines](../../virtual-machines/index.yml)<br />[Virtual Machine Scale Sets](../../virtual-machine-scale-sets/index.yml) |
-| Microsoft. fogyasztás – [regisztrált](#registration) | [Cost Management](/azure/cost-management/) |
+| Microsoft. fogyasztás – [regisztrált](#registration) | [Költségkezelés](/azure/cost-management/) |
 | Microsoft. ContainerInstance | [Tárolópéldányok](../../container-instances/index.yml) |
 | Microsoft. ContainerRegistry | [Container Registry](../../container-registry/index.yml) |
 | Microsoft. Tárolószolgáltatás | [Azure Kubernetes Service (AKS)](../../aks/index.yml) |
-| Microsoft. CostManagement – [regisztrált](#registration) | [Cost Management](/azure/cost-management/) |
-| Microsoft. CostManagementExports | [Cost Management](/azure/cost-management/) |
+| Microsoft. CostManagement – [regisztrált](#registration) | [Költségkezelés](/azure/cost-management/) |
+| Microsoft. CostManagementExports | [Költségkezelés](/azure/cost-management/) |
 | Microsoft. CustomerLockbox | [Ügyfélszéf a Microsoft Azure-hoz](../../security/fundamentals/customer-lockbox-overview.md) |
 | Microsoft. CustomProviders | [Azure Custom Providers](../custom-providers/overview.md) |
 | Microsoft. DataBox | [Azure Data Box](../../databox/index.yml) |
@@ -81,7 +81,7 @@ Az előfizetéshez tartozó, **regisztráltként** megjelölt erőforrás-szolg�
 | Microsoft. DBforMySQL | [Azure Database for MySQL](../../mysql/index.yml) |
 | Microsoft. DBforPostgreSQL | [Azure Database for PostgreSQL](../../postgresql/index.yml) |
 | Microsoft. DeploymentManager | [Azure-Deployment Manager](../templates/deployment-manager-overview.md) |
-| Microsoft. DesktopVirtualization | [Windows Virtual Desktop](../../virtual-desktop/index.yml) |
+| Microsoft. DesktopVirtualization | [Windows virtuális asztal](../../virtual-desktop/index.yml) |
 | Microsoft.Devices | [Azure IoT Hub](../../iot-hub/index.yml)<br />[Azure IoT Hub Device Provisioning Service](../../iot-dps/index.yml) |
 | Microsoft. DevOps | [Azure DevOps](/azure/devops/) |
 | Microsoft. DevSpaces | [Azure Dev Spaces](../../dev-spaces/index.yml) |
@@ -129,7 +129,7 @@ Az előfizetéshez tartozó, **regisztráltként** megjelölt erőforrás-szolg�
 | Microsoft. Migrálás | [Azure Migrate](../../migrate/migrate-services-overview.md) |
 | Microsoft. MixedReality | [Azure Spatial Anchors](../../spatial-anchors/index.yml) |
 | Microsoft. NetApp | [Azure NetApp Files](../../azure-netapp-files/index.yml) |
-| Microsoft.Network | [Application Gateway](../../application-gateway/index.yml)<br />[Azure Bastion](../../bastion/index.yml)<br />[Azure DDoS Protection](../../ddos-protection/ddos-protection-overview.md)<br />[Azure DNS](../../dns/index.yml)<br />[Azure ExpressRoute](../../expressroute/index.yml)<br />[Azure Firewall](../../firewall/index.yml)<br />[Azure Front Door Service](../../frontdoor/index.yml)<br />[Azure Private Link](../../private-link/index.yml)<br />[Load Balancer](../../load-balancer/index.yml)<br />[Network Watcher](../../network-watcher/index.yml)<br />[Traffic Manager](../../traffic-manager/index.yml)<br />[Virtual Network](../../virtual-network/index.yml)<br />[Virtual WAN](../../virtual-wan/index.yml)<br />[VPN Gateway](../../vpn-gateway/index.yml)<br /> |
+| Microsoft.Network | [Application Gateway](../../application-gateway/index.yml)<br />[Azure Bastion](../../bastion/index.yml)<br />[Azure DDoS Protection](../../ddos-protection/ddos-protection-overview.md)<br />[Azure DNS](../../dns/index.yml)<br />[Azure ExpressRoute](../../expressroute/index.yml)<br />[Azure Firewall](../../firewall/index.yml)<br />[Azure Front Door Service](../../frontdoor/index.yml)<br />[Azure Private Link](../../private-link/index.yml)<br />[Load Balancer](../../load-balancer/index.yml)<br />[Network Watcher](../../network-watcher/index.yml)<br />[Traffic Manager](../../traffic-manager/index.yml)<br />[Virtual Network](../../virtual-network/index.yml)<br />[Virtuális WAN](../../virtual-wan/index.yml)<br />[VPN Gateway](../../vpn-gateway/index.yml)<br /> |
 | Microsoft. notebookok | [Azure Notebooks](https://notebooks.azure.com/help/introduction) |
 | Microsoft. NotificationHubs | [Notification Hubs](../../notification-hubs/index.yml) |
 | Microsoft. ObjectStore | Objektum tárolója |
@@ -193,6 +193,6 @@ Az előfizetéséhez tartozó, **regisztráltként** megjelölt erőforrások sz
 > [!IMPORTANT]
 > Csak akkor regisztrálja az erőforrás-szolgáltatót, amikor készen áll a használatra. A regisztrációs lépés lehetővé teszi a legalacsonyabb jogosultságok fenntartását az előfizetésen belül. Egy rosszindulatú felhasználó nem használhat olyan erőforrás-szolgáltatót, amely nincs regisztrálva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az erőforrás-szolgáltatókkal kapcsolatos további információkért, beleértve az erőforrás-szolgáltatók regisztrálásának módját, tekintse meg az [Azure erőforrás-szolgáltatók és típusok](resource-providers-and-types.md)című témakört.

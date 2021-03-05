@@ -2,13 +2,13 @@
 title: Azure Event Grid eseményeinek szűrése
 description: Ismerteti, hogyan szűrhetők az események Azure Event Grid előfizetés létrehozásakor.
 ms.topic: conceptual
-ms.date: 02/26/2021
-ms.openlocfilehash: 7253c4a38660b0041f27918309efae21675fdc8f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/04/2021
+ms.openlocfilehash: 94445341891149d5d02c7f33caef20bf45123e9b
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721956"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197775"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Event Grid-előfizetések esemény-szűrésének ismertetése
 
@@ -58,13 +58,27 @@ Az adatmezőkben lévő értékek alapján történő szűréshez és az összeh
 * értékek – a kulcshoz összehasonlítandó érték vagy értékek.
 
 ## <a name="key"></a>Kulcs
-A kulcs a szűréshez használt esemény adatai mezője. Ez lehet egy szám, egy logikai, egy karakterlánc vagy egy tömb. A **Event Grid sémában** lévő eseményekhez használja a következő értékeket a kulcshoz:,,,, `ID` `Topic` `Subject` `EventType` `DataVersion` vagy eseményvezérelt adatok (például `data.key1` ).
+A kulcs a szűréshez használt esemény adatai mezője. A következő típusok egyike lehet:
+
+- Szám
+- Logikai érték
+- Sztring
+- Tömb. A `enableAdvancedFilteringOnArrays` funkció használatához a tulajdonságot True értékre kell állítani. A Azure Portal jelenleg nem támogatja a funkció engedélyezését. 
+
+    ```json
+    "filter":
+    {
+        "subjectBeginsWith": "/blobServices/default/containers/mycontainer/log",
+        "subjectEndsWith": ".jpg",
+        "enableAdvancedFilteringOnArrays": true
+    }
+    ```
+
+A **Event Grid sémában** lévő eseményekhez használja a következő értékeket a kulcshoz:,,,, `ID` `Topic` `Subject` `EventType` `DataVersion` vagy eseményvezérelt adatok (például `data.key1` ).
 
 A **Felhőbeli események sémájában** lévő eseményekhez használja a következő értékeket a kulcshoz:,,, `eventid` `source` `eventtype` `eventtypeversion` vagy eseményvezérelt adatok (például `data.key1` ).
 
-**Egyéni bemeneti séma** esetén használja az esemény adatmezőit (például `data.key1` ).
-
-Az adat szakasz mezőinek eléréséhez használja a `.` (dot) jelölést. Például a `data.sitename` `data.appEventTypeDetail.action` `sitename` `action` következő minta eseményhez való hozzáféréshez vagy az alkalmazáshoz.
+**Egyéni bemeneti séma** esetén használja az esemény adatmezőit (például `data.key1` ). Az adat szakasz mezőinek eléréséhez használja a `.` (dot) jelölést. Például a `data.sitename` `data.appEventTypeDetail.action` `sitename` `action` következő minta eseményhez való hozzáféréshez vagy az alkalmazáshoz.
 
 ```json
     "data": {
@@ -80,10 +94,8 @@ Az adat szakasz mezőinek eléréséhez használja a `.` (dot) jelölést. Péld
     },
 ```
 
-
 ## <a name="values"></a>Értékek
 Az értékek a következőket okozhatják: number, string, Boolean vagy Array.
-
 
 ## <a name="operators"></a>Operátorok
 

@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: e6acea560c3a02420b15aff84475ab58e642116c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c6a695030d399cb1609c63ef5652419a9bef1bbf
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995964"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198982"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Gyakori kérdések a csatlakoztatott Factory megoldás-gyorsító szolgáltatásról
 
@@ -59,7 +59,7 @@ Az IP-cím eltávolítására két lehetőség áll rendelkezésre:
 
 ### <a name="how-do-i-sign-in-to-the-simulation-vm"></a>Hogyan bejelentkezni a szimulációs virtuális gépre?
 
-A szimulációs virtuális gépre való bejelentkezés csak akkor támogatott, ha a tárházban lévő PowerShell-parancsfájl használatával telepítette a megoldást `build.ps1` . [repository](https://github.com/Azure/azure-iot-connected-factory)
+A szimulációs virtuális gépre való bejelentkezés csak akkor támogatott, ha a tárházban lévő PowerShell-parancsfájl használatával telepítette a megoldást `build.ps1` . [](https://github.com/Azure/azure-iot-connected-factory)
 
 Ha a www.azureiotsolutions.com-ből telepítette a megoldást, nem tud bejelentkezni a virtuális gépre. Nem lehet bejelentkezni, mert a jelszó véletlenszerűen lett létrehozva, és nem állítható vissza.
 
@@ -82,11 +82,11 @@ Ha a www.azureiotsolutions.com-ből telepítette a megoldást, nem tud bejelentk
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
         ```
 
-    * Futtassa az `./startsimulation` parancsot.
+    * Futtassa a `./startsimulation` parancsot.
 
 ### <a name="how-do-i-update-the-simulation-in-the-vm"></a>Hogyan frissíteni a szimulációt a virtuális gépen?
 
-Ha módosította a szimulációt, az paranccsal használhatja az adattár PowerShell-parancsfájlját `build.ps1` [repository](https://github.com/Azure/azure-iot-connected-factory) `updatedimulation` . Ez a szkript létrehozza az összes szimulációs összetevőt, leállítja a szimulációt a virtuális gépen, feltölti, telepíti és elindítja azokat.
+Ha módosította a szimulációt, az paranccsal használhatja az adattár PowerShell-parancsfájlját `build.ps1` [](https://github.com/Azure/azure-iot-connected-factory) `updatedimulation` . Ez a szkript létrehozza az összes szimulációs összetevőt, leállítja a szimulációt a virtuális gépen, feltölti, telepíti és elindítja azokat.
 
 ### <a name="how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution"></a>Hogyan a megoldás által használt IoT hub-beli kapcsolatok sztringjét?
 
@@ -125,7 +125,7 @@ Másik lehetőségként jelentkezzen be a virtuális gépre SSH-n keresztül, é
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>Hogyan ellenőrizhető, hogy a szimuláció adatokat küld a felhőbe?
 
-Az [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer) vagy az [Azure IoT CLI-figyelő-Events](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) paranccsal ellenőrizheti, hogy az egyes eszközökről IoT hub küldött adatok megtekinthetők-e. Ezeknek az eszközöknek a használatához ismernie kell a IoT hub kapcsolódási karakterláncát az üzemelő példányban. Lásd: [hogyan a saját megoldás által használt IoT hub-beli kapcsolatok karakterláncának megkeresése?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+Az [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer) vagy az [Azure IoT CLI-figyelő-Events](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-monitor-events) paranccsal ellenőrizheti, hogy az egyes eszközökről IoT hub küldött adatok megtekinthetők-e. Ezeknek az eszközöknek a használatához ismernie kell a IoT hub kapcsolódási karakterláncát az üzemelő példányban. Lásd: [hogyan a saját megoldás által használt IoT hub-beli kapcsolatok karakterláncának megkeresése?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
 Vizsgálja meg az egyik közzétevő eszköz által továbbított adatmennyiséget:
 
@@ -190,10 +190,9 @@ Telemetria-adatok küldése nem OPC UA-eszközökről a csatlakoztatott gyárba:
 
 1. Indítsa újra a csatlakoztatott gyári App Service.
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
 Megismerheti az IoT-megoldásgyorsítók egyéb szolgáltatásait és funkcióit is:
 
-* [A prediktív karbantartási megoldásgyorsító áttekintése](./iot-accelerators-predictive-walkthrough.md)
 * [Csatlakoztatott gyári megoldás-gyorsító üzembe helyezése](quickstart-connected-factory-deploy.md)
 * [IoT-biztonság létrehozása az alapoktól](../iot-fundamentals/iot-security-ground-up.md)

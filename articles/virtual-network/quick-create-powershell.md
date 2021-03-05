@@ -2,38 +2,32 @@
 title: Virtuális hálózat létrehozása – rövid útmutató – Azure PowerShell
 titlesuffix: Azure Virtual Network
 description: Ebben a rövid útmutatóban egy virtuális hálózatot hoz létre a Azure Portal használatával. A virtuális hálózatok lehetővé teszik az Azure-erőforrások kommunikációját egymással és az internettel.
-services: virtual-network
-documentationcenter: virtual-network
 author: KumudD
-tags: azure-resource-manager
 Customer intent: I want to create a virtual network so that virtual machines can communicate with privately with each other and with the internet.
 ms.service: virtual-network
-ms.devlang: ''
 ms.topic: quickstart
-ms.tgt_pltfrm: virtual-network
-ms.workload: infrastructure
-ms.date: 12/04/2018
+ms.date: 03/06/2021
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 93e459df96d444e71f4b6a15668f80e9d77db5fd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b27f050d3d37daab05e8c5125d6b75a6bb4dea50
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89077874"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199033"
 ---
 # <a name="quickstart-create-a-virtual-network-using-powershell"></a>Gyors útmutató: Virtuális hálózat létrehozása a PowerShell használatával
 
-A virtuális hálózatok lehetővé teszik az Azure-erőforrások, például a virtuális gépek (VM-EK), a magánjellegű kommunikációt és az internetet. Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre virtuális hálózatokat. A létrehozott virtuális hálózatban két virtuális gépet fog üzembe helyezni. Ezután csatlakozhat a virtuális gépekhez az internetről, és privát kommunikációt végez a virtuális hálózaton keresztül.
+A virtuális hálózatok lehetővé teszik az Azure-erőforrások, például a virtuális gépek (VM-EK), a magánjellegű kommunikációt és az internetet. 
+
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre virtuális hálózatokat. A létrehozott virtuális hálózatban két virtuális gépet fog üzembe helyezni. Ezután csatlakozhat a virtuális gépekhez az internetről, és privát kommunikációt végez a virtuális hálózaton keresztül.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Helyileg telepített Azure PowerShell vagy Azure Cloud Shell
 
-Ha ehelyett a PowerShell helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz Azure PowerShell-modul 1.0.0-es vagy újabb verzióját kell használnia. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Lásd: [Azure PowerShell modul telepítése](/powershell/azure/install-az-ps) a telepítéshez és a frissítéshez.
-
-Végül, ha helyileg futtatja a PowerShellt, a parancsot is futtatnia kell `Connect-AzAccount` . Ez a parancs létrehozza az Azure-hoz való hozzáférést.
+Ha a PowerShell helyi telepítése és használata mellett dönt, ehhez a cikkhez az Azure PowerShell-modul 5.4.1-es vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor azt is futtatnia kell, `Connect-AzAccount` hogy létrehozza az Azure-hoz való kapcsolódást.
 
 ## <a name="create-a-resource-group-and-a-virtual-network"></a>Erőforráscsoport és virtuális hálózat létrehozása
 
@@ -41,33 +35,41 @@ Néhány lépésből megtudhatja, hogy az erőforráscsoport és a virtuális h�
 
 ### <a name="create-the-resource-group"></a>Az erőforráscsoport létrehozása
 
-A virtuális hálózat létrehozása előtt létre kell hoznia egy erőforráscsoportot a virtuális hálózat üzemeltetéséhez. Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup). Ez a példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
+A virtuális hálózat létrehozása előtt létre kell hoznia egy erőforráscsoportot a virtuális hálózat üzemeltetéséhez. Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup). Ez a példa létrehoz egy **CreateVNetQS-RG** nevű erőforráscsoportot a **Eastus** helyen:
 
 ```azurepowershell-interactive
-New-AzResourceGroup -Name myResourceGroup -Location EastUS
+$rg = @{
+    Name = 'CreateVNetQS-rg'
+    Location = 'EastUS'
+}
+New-AzResourceGroup @rg
 ```
 
 ### <a name="create-the-virtual-network"></a>A virtuális hálózat létrehozása
 
-Hozzon létre egy új virtuális hálózatot a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Ez a példa létrehoz egy *myVirtualNetwork* nevű alapértelmezett virtuális hálózatot a *EastUS* helyen:
+Hozzon létre egy új virtuális hálózatot a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Ez a példa létrehoz egy **myVNet** nevű alapértelmezett virtuális hálózatot a **EastUS** helyen:
 
 ```azurepowershell-interactive
-$virtualNetwork = New-AzVirtualNetwork `
-  -ResourceGroupName myResourceGroup `
-  -Location EastUS `
-  -Name myVirtualNetwork `
-  -AddressPrefix 10.0.0.0/16
+$vnet = @{
+    Name = 'myVNet'
+    ResourceGroupName = 'CreateVNetQS-rg'
+    Location = 'EastUS'
+    AddressPrefix = '10.0.0.0/16'    
+}
+$virtualNetwork = New-AzVirtualNetwork @vnet
 ```
 
 ### <a name="add-a-subnet"></a>Alhálózat hozzáadása
 
-Az Azure üzembe helyezi az erőforrásokat egy virtuális hálózaton belüli alhálózaton, ezért létre kell hoznia egy alhálózatot. Hozzon létre egy *alapértelmezett* nevű alhálózati konfigurációt az [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig):
+Az Azure üzembe helyezi az erőforrásokat egy virtuális hálózaton belüli alhálózaton, ezért létre kell hoznia egy alhálózatot. Hozzon létre egy **alapértelmezett** nevű alhálózati konfigurációt az [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig):
 
 ```azurepowershell-interactive
-$subnetConfig = Add-AzVirtualNetworkSubnetConfig `
-  -Name default `
-  -AddressPrefix 10.0.0.0/24 `
-  -VirtualNetwork $virtualNetwork
+$subnet = @{
+    Name = 'default'
+    VirtualNetwork = $virtualNetwork
+    AddressPrefix = '10.0.0.0/24'
+}
+$subnetConfig = Add-AzVirtualNetworkSubnetConfig @subnet
 ```
 
 ### <a name="associate-the-subnet-to-the-virtual-network"></a>Az alhálózat hozzárendelése a virtuális hálózathoz
@@ -87,13 +89,14 @@ Hozzon létre két virtuális gépet a virtuális hálózaton.
 Hozza létre az első virtuális gépet a [New-AzVM](/powershell/module/az.compute/new-azvm). A következő parancs futtatásakor a rendszer kéri a hitelesítő adatokat. Adja meg a virtuális gép felhasználónevét és jelszavát:
 
 ```azurepowershell-interactive
-New-AzVm `
-    -ResourceGroupName "myResourceGroup" `
-    -Location "East US" `
-    -VirtualNetworkName "myVirtualNetwork" `
-    -SubnetName "default" `
-    -Name "myVm1" `
-    -AsJob
+$vm1 = @{
+    ResourceGroupName = 'CreateVNetQS-rg'
+    Location = 'EastUS'
+    Name = 'myVM1'
+    VirtualNetworkName = 'myVNet'
+    SubnetName = 'default'
+}
+New-AzVM @vm1 -AsJob
 ```
 
 A `-AsJob` beállítás a háttérben hozza létre a virtuális gépet. Folytassa a következő lépéssel.
@@ -111,11 +114,14 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 Hozza létre a második virtuális gépet a következő paranccsal:
 
 ```azurepowershell-interactive
-New-AzVm `
-  -ResourceGroupName "myResourceGroup" `
-  -VirtualNetworkName "myVirtualNetwork" `
-  -SubnetName "default" `
-  -Name "myVm2"
+$vm2 = @{
+    ResourceGroupName = 'CreateVNetQS-rg'
+    Location = 'EastUS'
+    Name = 'myVM2'
+    VirtualNetworkName = 'myVNet'
+    SubnetName = 'default'
+}
+New-AzVM @vm2
 ```
 
 Létre kell hoznia egy másik felhasználót és jelszót. Az Azure-ban a virtuális gép létrehozása eltarthat néhány percig.
@@ -125,13 +131,16 @@ Létre kell hoznia egy másik felhasználót és jelszót. Az Azure-ban a virtu�
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Kapcsolódás virtuális géphez az internetről
 
-A [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) használatával visszaállíthatja egy virtuális gép nyilvános IP-címét. Ez a példa a *myVm1* virtuális gép nyilvános IP-címét adja vissza:
+A virtuális gép nyilvános IP-címének lekéréséhez használja a [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress).
+
+Ez a példa a **myVm1** virtuális gép nyilvános IP-címét adja vissza:
 
 ```azurepowershell-interactive
-Get-AzPublicIpAddress `
-  -Name myVm1 `
-  -ResourceGroupName myResourceGroup `
-  | Select IpAddress
+$ip = @{
+    Name = 'myVM1'
+    ResourceGroupName = 'CreateVNetQS-rg'
+}
+Get-AzPublicIpAddress @ip | select IpAddress
 ```
 
 Nyisson meg egy parancssort a helyi számítógépen. Futtassa a következő parancsot: `mstsc`. Cserélje le az `<publicIpAddress>` elemet az utolsó lépésből visszaadott nyilvános IP-címhez:
@@ -147,15 +156,15 @@ mstsc /v:<publicIpAddress>
 1. Írja be a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
     > [!NOTE]
-    > Előfordulhat, hogy a **More choices**  >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania**egy másik fiók használatával**.
+    > Előfordulhat, hogy a   >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania **egy másik fiók használatával**.
 
 1. Válassza az **OK** lehetőséget.
 
-1. A tanúsítványra vonatkozó figyelmeztetés jelenhet meg. Ha így tesz, válassza az **Igen** vagy a **Folytatás**lehetőséget.
+1. A tanúsítványra vonatkozó figyelmeztetés jelenhet meg. Ha így tesz, válassza az **Igen** vagy a **Folytatás** lehetőséget.
 
 ## <a name="communicate-between-vms"></a>Virtuális gépek közötti kommunikáció
 
-1. A *myVm1*távoli asztal nyissa meg a PowerShellt.
+1. A **myVm1** távoli asztal nyissa meg a PowerShellt.
 
 1. Írja be a következő szöveget: `ping myVm2`.
 
@@ -176,7 +185,7 @@ mstsc /v:<publicIpAddress>
 
     A pingelés sikertelen, mert a Internet Control Message Protocol (ICMP) protokollt használja. Alapértelmezés szerint az ICMP nem engedélyezett a Windows tűzfalon keresztül.
 
-1. Ha engedélyezni szeretné a *myVm2* számára a *myVm1* pingelését egy későbbi lépésben, írja be a következő parancsot:
+1. Ha engedélyezni szeretné a **myVm2** számára a **myVm1** pingelését egy későbbi lépésben, írja be a következő parancsot:
 
     ```powershell
     New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
@@ -184,11 +193,11 @@ mstsc /v:<publicIpAddress>
 
     Ezzel a paranccsal a Windows tűzfalon keresztül küldhet ICMP-t.
 
-1. Zárja be a *myVm1* virtuális géppel létesített távoli asztali kapcsolatot.
+1. Zárja be a **myVm1** virtuális géppel létesített távoli asztali kapcsolatot.
 
-1. Ismételje meg a [Kapcsolódás virtuális géphez az internetről](#connect-to-a-vm-from-the-internet)című témakör lépéseit. Ezúttal kapcsolódjon a *myVm2*.
+1. Ismételje meg a [Kapcsolódás virtuális géphez az internetről](#connect-to-a-vm-from-the-internet)című témakör lépéseit. Ezúttal kapcsolódjon a **myVm2**.
 
-1. A *myVm2* virtuális gépen írja be a `ping myvm1` parancsot egy parancssorba.
+1. A **myVm2** virtuális gépen írja be a `ping myvm1` parancsot egy parancssorba.
 
     A következőhöz hasonló lesz:
 
@@ -207,21 +216,27 @@ mstsc /v:<publicIpAddress>
         Minimum = 0ms, Maximum = 2ms, Average = 0ms
     ```
 
-    Mivel az előző lépésben átengedte az ICMP-t a Windows tűzfalon a *myVm1* virtuális gép esetében, válaszokat fog kapni a *myVm1* virtuális géptől.
+    Mivel az előző lépésben átengedte az ICMP-t a Windows tűzfalon a **myVm1** virtuális gép esetében, válaszokat fog kapni a **myVm1** virtuális géptől.
 
-1. Zárja be a *myVm2* virtuális géppel létesített távoli asztali kapcsolatot.
+1. Zárja be a **myVm2** virtuális géppel létesített távoli asztali kapcsolatot.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha végzett a virtuális hálózattal és a virtuális gépekkel, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával távolítsa el az erőforráscsoportot és a hozzá tartozó összes erőforrást:
 
 ```azurepowershell-interactive
-Remove-AzResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name 'CreateVNetQS-rg' -Force
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy alapértelmezett virtuális hálózatot és két virtuális gépet. Egy virtuális géphez kapcsolódott az internetről, és a két virtuális gép között magántulajdonban kommunikál.
-Az Azure lehetővé teszi, hogy korlátlan privát kommunikációt biztosítson a virtuális gépek között. Alapértelmezés szerint az Azure csak a Windows rendszerű virtuális gépekről bejövő távoli asztali kapcsolatokat teszi lehetővé az internetről. A következő cikkből megtudhatja, hogyan konfigurálhat különböző típusú virtuálisgép-hálózati kommunikációt:
+Ebben a rövid útmutatóban: 
+
+* Létrehozott egy alapértelmezett virtuális hálózatot és két virtuális gépet. 
+* Egy virtuális géphez kapcsolódott az internetről, és a két virtuális gép között magántulajdonban kommunikál.
+
+A virtuális gépek közötti magánhálózati kommunikáció nem korlátozott a virtuális hálózatokban. 
+
+A következő cikkből megtudhatja, hogyan konfigurálhat különböző típusú virtuálisgép-hálózati kommunikációt:
 > [!div class="nextstepaction"]
 > [Hálózati forgalom szűrése](tutorial-filter-network-traffic.md)

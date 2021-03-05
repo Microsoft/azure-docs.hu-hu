@@ -5,13 +5,13 @@ ms.service: data-factory
 ms.topic: conceptual
 author: dcstwh
 ms.author: weetok
-ms.date: 08/31/2020
-ms.openlocfilehash: fb9439bc37fcecf1cb5299a09916ebe21c5bc1cb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/04/2021
+ms.openlocfilehash: 06d04eb8679b4484f330b69a8cffb263d353bdcd
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393819"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102197875"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Globális paraméterek a Azure Data Factory
 
@@ -21,7 +21,7 @@ A globális paraméterek állandók egy olyan adatelőállítón keresztül, ame
 
 ## <a name="creating-global-parameters"></a>Globális paraméterek létrehozása
 
-Globális paraméter létrehozásához nyissa meg a *kezelés* szakasz *globális paraméterek* lapját. Válassza az **új** lehetőséget a létrehozási oldal megnyitásához – NAV.
+Globális paraméter létrehozásához nyissa meg a **kezelés** szakasz *globális paraméterek* lapját. Válassza az **új** lehetőséget a létrehozási oldal megnyitásához – NAV.
 
 ![Képernyőfelvétel: a globális paraméterek létrehozásához kiválasztott új gomb kiemelése.](media/author-global-parameters/create-global-parameter-1.png)
 
@@ -46,7 +46,10 @@ A globális paraméterek kétféleképpen integrálhatók a folyamatos integrác
 * Globális paraméterek belefoglalása az ARM-sablonba
 * Globális paraméterek üzembe helyezése PowerShell-parancsfájl használatával
 
-A legtöbb felhasználási eset esetében javasoljuk, hogy globális paramétereket tartalmazzon az ARM-sablonban. Ez natív módon integrálható a [CI/CD doc](continuous-integration-deployment.md)-ban ismertetett megoldással. Alapértelmezés szerint a globális paraméterek az ARM-sablon paraméterként lesznek hozzáadva, mivel azok gyakran változnak a környezetből a környezetbe. A felügyeleti központban engedélyezheti a globális paraméterek felvételét az ARM-sablonban.
+A legtöbb felhasználási eset esetében javasoljuk, hogy globális paramétereket tartalmazzon az ARM-sablonban. Ez natív módon integrálható a [CI/CD doc](continuous-integration-deployment.md)-ban ismertetett megoldással. Alapértelmezés szerint a globális paraméterek az ARM-sablon paraméterként lesznek hozzáadva, mivel azok gyakran változnak a környezetből a környezetbe. A globális paraméterek felvételét az ARM-sablonban engedélyezheti a **kezelés** központban.
+
+> [!NOTE]
+> Az **ARM-sablon konfigurációjának belefoglalása** csak "git módban" lehetséges. Jelenleg le van tiltva "élő mód" vagy "Data Factory" módban.
 
 ![Belefoglalás az ARM-sablonba](media/author-global-parameters/include-arm-template.png)
 

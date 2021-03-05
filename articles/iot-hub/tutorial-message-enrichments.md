@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: ddc212e99c0e55156f56df6bf77e122408a727f9
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 7ae85fa2559b8313bd35a761945bff946563e935
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624055"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199781"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Oktatóanyag: az Azure IoT Hub üzenet-gazdagítás használata
 
@@ -310,7 +310,7 @@ A Resource Manager-sablonok segítségével létrehozhatja és konfigurálhatja 
    | útvonal neve 1 | ContosoStorageRouteOriginal |
    | útvonal neve 2 | ContosoStorageRouteEnriched |
 
-1. Válassza a **Mentés** lehetőséget. Megjelenik az **Egyéni telepítés** panel, és megjeleníti a sablon által használt összes paramétert. Az egyetlen mező, amelyet meg kell adni az **erőforráscsoport** számára. Hozzon létre egy újat, vagy válasszon ki egyet a legördülő listából.
+1. Kattintson a **Mentés** gombra. Megjelenik az **Egyéni telepítés** panel, és megjeleníti a sablon által használt összes paramétert. Az egyetlen mező, amelyet meg kell adni az **erőforráscsoport** számára. Hozzon létre egy újat, vagy válasszon ki egyet a legördülő listából.
 
    Itt látható az **Egyéni telepítés** panel felső fele. Láthatja, hogy hol tölti ki az erőforráscsoportot.
 
@@ -386,7 +386,7 @@ Az oktatóanyagban létrehozott összes erőforrás eltávolításához törölj
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Erőforrások törlése az Azure CLI használatával
 
-Az erőforráscsoport az [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) paranccsal távolítható el. Visszahívás, amely az `$resourceGroup` oktatóanyag elején **ContosoResourcesMsgEn** értékre lett állítva.
+Az erőforráscsoport az [az group delete](/cli/azure/group#az-group-delete) paranccsal távolítható el. Visszahívás, amely az `$resourceGroup` oktatóanyag elején **ContosoResourcesMsgEn** értékre lett állítva.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

@@ -3,12 +3,12 @@ title: Azure Event Grid található esemény-tartományok
 description: Ez a cikk azt ismerteti, hogyan használhatók az események a különböző üzleti szervezetekhez, ügyfelekhez vagy alkalmazásokhoz tartozó egyéni események forgalmának kezeléséhez.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 9b313784cd006087f3c2f1354053540cc9224782
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 46a50a8ecc50bd1b80efcba41228564df1c36c9f
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328827"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198659"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Az Event Grid témakörök kezeléséhez kapcsolódó események tartományának ismertetése
 
@@ -25,15 +25,8 @@ Az Event domain egy felügyeleti eszköz nagy számú Event Grid témakörhöz, 
 
 Az esemény-tartományok az Azure-szolgáltatások (például a Storage és a IoT Hub) által használt architektúrát teszik elérhetővé az események közzétételéhez. Lehetővé teszik az események több ezer témakörbe való közzétételét. A tartományok lehetővé teszik az egyes témakörök engedélyezési és hitelesítési szabályozását is, így a bérlők particionálása is megtörténik.
 
-### <a name="example-use-case"></a>Példa használati esetre
-
-Egy példa használatával a rendszer a legkönnyebben ismerteti az események tartományait. Tegyük fel, hogy a contoso építőipari gépeket futtatja, ahol a traktorokat, a kiásási berendezéseket és más nehéz gépeket gyárt. A vállalkozás működtetésének részeként valós idejű információkat küldhet az ügyfeleknek a berendezések karbantartásával, a rendszer állapotával és a szerződések frissítéseivel kapcsolatban. Mindezen információk különböző végpontokra mutatnak, beleértve az alkalmazást, az ügyfél-végpontokat és az ügyfelek által beállított egyéb infrastruktúrát.
-
-Az esemény-tartományok lehetővé teszik a contoso építőipari gépek egyetlen eseményként való modellezését. Minden ügyfelünk a tartományon belüli témakörként jelenik meg. A hitelesítés és az engedélyezés Azure Active Directory használatával kezelhetők. Az ügyfelek előfizethetnek a témára, és megkapják a nekik küldött eseményeket. A felügyelt hozzáférés az esemény-tartományon keresztül biztosítja, hogy csak a témához férhessenek hozzá.
-
-Emellett egyetlen végpontot is biztosít, amely az összes ügyfél-eseményt közzéteheti. Event Grid gondoskodni fog arról, hogy az egyes témakörök csak a bérlőre vonatkozó eseményekről tájékoztassanak.
-
-![Contoso építési példa](./media/event-domains/contoso-construction-example.png)
+## <a name="example-use-case"></a>Példa használati esetre
+[!INCLUDE [event-grid-domain-example-use-case.md](../../includes/event-grid-domain-example-use-case.md)]
 
 ## <a name="access-management"></a>Hozzáférés-kezelés
 
@@ -108,6 +101,8 @@ Az esemény-tartományok ugyanazokat az [üzemeltetési díjszabást](https://az
 
 A műveletek ugyanúgy működnek az esemény-tartományokban, mint az egyéni témakörökben. Az események egy adott esemény tartományba való beáramlása egy művelet, és az eseményekhez tartozó minden kézbesítési kísérlet egy művelet.
 
-## <a name="next-steps"></a>További lépések
+
+
+## <a name="next-steps"></a>Következő lépések
 
 * Az események tartományának beállításával, a témakörök létrehozásával, az esemény-előfizetések létrehozásával és az események közzétételével kapcsolatos további tudnivalókért lásd: események [tartományának kezelése](./how-to-event-domains.md).

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 488065b0a1865484e96ea574b3031f2bf61869dd
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: bcdc8c448a348bf067995bf92615ceab1ac19fb4
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120589"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198438"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -109,7 +109,7 @@ Az alábbi példa egy függő entitást mutat be a [UserInfo-végponttal](userin
 
 ## <a name="defaultuserjourney"></a>DefaultUserJourney
 
-Az `DefaultUserJourney` elem az alap-vagy a kiterjesztési szabályzatban általában meghatározott felhasználói út azonosítójának hivatkozását adja meg. Az alábbi példák a **RelyingParty** elemben megadott regisztrációs vagy bejelentkezési felhasználói utat mutatják be:
+Az `DefaultUserJourney` elem az alap-vagy kiterjesztési házirendben definiált felhasználói út azonosítójának hivatkozását adja meg. Az alábbi példák a **RelyingParty** elemben megadott regisztrációs vagy bejelentkezési felhasználói utat mutatják be:
 
 *B2C_1A_signup_signin* házirend:
 
@@ -219,6 +219,21 @@ A **protokoll** elem a következő attribútumot tartalmazza:
 | --------- | -------- | ----------- |
 | Név | Igen | A technikai profil részeként használt Azure AD B2C által támogatott érvényes protokoll neve. Lehetséges értékek: `OpenIdConnect` vagy `SAML2` . Az `OpenIdConnect` érték az OpenID Connect 1,0 protokoll standard értékét jelöli az OpenID Foundation-specifikációnak megfelelően. A az `SAML2` SAML 2,0 protokoll szabványát jelöli az Oasis-specifikációnak megfelelően. |
 
+### <a name="metadata"></a>Metaadatok
+
+Ha a protokoll `SAML` , a metaadat elem a következő elemeket tartalmazza. További információ: [SAML-alkalmazások Azure ad B2C-ben való regisztrálásának lehetőségei](saml-service-provider-options.md).
+
+| Attribútum | Kötelező | Leírás |
+| --------- | -------- | ----------- |
+| IdpInitiatedProfileEnabled | Nem | Azt jelzi, hogy támogatott-e a IDENTITÁSSZOLGÁLTATÓ által kezdeményezett folyamat. Lehetséges értékek: `true` vagy `false` (alapértelmezett). | 
+| XmlSignatureAlgorithm | Nem | Az a módszer, amelyet a Azure AD B2C az SAML-válasz aláírására használ. Lehetséges értékek: `Sha256` ,,, `Sha384` `Sha512` vagy `Sha1` . Győződjön meg arról, hogy az aláírási algoritmus mindkét oldalon ugyanazzal az értékkel van konfigurálva. Csak a tanúsítvány által támogatott algoritmust használja. Az SAML-állítás konfigurálásához tekintse meg a [SAML-kibocsátó technikai profiljának metaadatait](saml-issuer-technical-profile.md#metadata)ismertető témakört. |
+| DataEncryptionMethod | Nem | Azt a metódust jelzi, amelyet a Azure AD B2C az Advanced Encryption Standard (AES) algoritmus használatával titkosítja az adattitkosítást. A metaadatok az `<EncryptedData>` SAML-válasz elemének értékét vezérlik. Lehetséges értékek: `Aes256` (alapértelmezett), `Aes192` , `Sha512` , vagy ` Aes128` . |
+| KeyEncryptionMethod| Nem | Azt a metódust jelzi, amelyet a Azure AD B2C az adattitkosításhoz használt kulcs másolatának titkosítására használ. A metaadatok az  `<EncryptedKey>` SAML-válasz elemének értékét vezérlik. Lehetséges értékek: ` Rsa15` (alapértelmezett) – RSA nyilvános kulcsú kriptográfiai standard (PKCS) Version 1,5 algoritmus, ` RsaOaep` -RSA optimális aszimmetrikus titkosítási kitöltés (OAEP) titkosítási algoritmus. |
+| UseDetachedKeys | Nem |  Lehetséges értékek: `true` , vagy `false` (alapértelmezett). Ha a értékre van állítva `true` , Azure ad B2C módosítja a titkosított érvényesítések formátumát. A leválasztott kulcsok használata a titkosított állítást a EncrytedAssertion gyermekének adja hozzá a EncryptedData szemben. |
+| WantsSignedResponses| Nem | Azt jelzi, hogy Azure AD B2C aláírja-e az `Response` SAML-válasz szakaszát. Lehetséges értékek: `true` (alapértelmezett) vagy `false` .  |
+| RemoveMillisecondsFromDateTime| Nem | Azt jelzi, hogy az ezredmásodpercek el lesznek-e távolítva az SAML-válasz datetime értékeiből (ilyenek például az IssueInstant, a NotBefore, a NotOnOrAfter és a AuthnInstant). Lehetséges értékek: `false` (alapértelmezett) vagy `true` .  |
+
+
 ### <a name="outputclaims"></a>OutputClaims
 
 A **OutputClaims** elem a következő elemet tartalmazza:
@@ -238,6 +253,7 @@ A **OutputClaim** elem a következő attribútumokat tartalmazza:
 ### <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
 A **SubjectNameingInfo** elemmel szabályozhatja a jogkivonat tulajdonosának értékét:
+
 - **JWT-jogkivonat** – a `sub` jogcím. Ez az a rendszerbiztonsági tag, amelyről a jogkivonat adatokat, például egy alkalmazás felhasználóját érvényesíti. Ez az érték nem módosítható, és nem rendelhető hozzá újra, és nem használható újra. Felhasználható a biztonságos engedélyezési ellenőrzések elvégzésére, például ha a jogkivonat egy erőforrás elérésére szolgál. Alapértelmezés szerint a tulajdonos jogcímet a rendszer a címtárban lévő felhasználó objektumazonosító alapján tölti fel. További információ: [jogkivonat, munkamenet és egyszeri bejelentkezés konfigurálása](session-behavior.md).
 - **SAML-jogkivonat** – a `<Subject><NameID>` Tárgy elemet azonosító elem. A NameId formátum módosítható.
 

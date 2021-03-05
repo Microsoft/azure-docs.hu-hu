@@ -13,7 +13,7 @@
   items:
     - name: Adat-előállító létrehozása – felhasználói felület (UI)
       href: quickstart-create-data-factory-portal.md
-    - name: Adat-előállító létrehozása – Adatok másolása eszköz
+    - name: Adatfeldolgozó létrehozása – az Adatmásolás eszköz
       href: quickstart-create-data-factory-copy-data-tool.md
     - name: Adat-előállító létrehozása – Azure PowerShell
       href: quickstart-create-data-factory-powershell.md
@@ -26,8 +26,6 @@
     - name: Adat-előállító létrehozása – ARM-sablon
       displayName: Resource Manager
       href: quickstart-create-data-factory-resource-manager-template.md
-    - name: Biztonság – Felhasználó által kezelt kulcstitkosítás engedélyezése
-      href: enable-customer-managed-key.md
     - name: Adatfolyam létrehozása
       href: data-flow-create.md
 - name: Oktatóanyagok
@@ -36,7 +34,7 @@
       items:
         - name: Az Azure Blob Storage-ból az Azure SQL Database-be
           items:
-            - name: Adatok másolása eszköz
+            - name: Adatmásolás eszköz
               href: tutorial-copy-data-tool.md
             - name: Felhasználói felület (UI)
               href: tutorial-copy-data-portal.md
@@ -44,7 +42,7 @@
               href: tutorial-copy-data-dot-net.md
         - name: SQL Server-adatbázisból az Azure Blob Storage-ba
           items:
-            - name: Adatok másolása eszköz
+            - name: Adatmásolás eszköz
               href: tutorial-hybrid-copy-data-tool.md
             - name: Felhasználói felület (UI)
               href: tutorial-hybrid-copy-portal.md
@@ -173,10 +171,6 @@
       href: concepts-pipeline-execution-triggers.md
     - name: Integrációs modul
       href: concepts-integration-runtime.md
-    - name: Biztonság
-      items:
-        - name: Biztonsági alapkonfiguráció
-          href: security-baseline.md
     - name: Adatfolyamok
       items:
         - name: Adatok átalakítása leképezési adatfolyamokkal
@@ -433,13 +427,13 @@
           href: connector-zoho.md
     - name: Adatok áthelyezése
       items:
-        - name: Adatok másolása Másolási tevékenységgel
+        - name: Adatmásolás a másolási tevékenység használatával
           href: copy-activity-overview.md
         - name: Másolási tevékenység figyelése
           href: copy-activity-monitoring.md
-        - name: Fájlok törlése a Törlés tevékenységgel
+        - name: Fájlok törlése törlési tevékenység használatával
           href: delete-activity.md
-        - name: Adatok másolása eszköz
+        - name: Adatmásolás eszköz
           href: copy-data-tool.md
         - name: Formátum- és tömörítéstámogatás
           href: supported-file-formats-and-compression-codecs.md
@@ -466,25 +460,25 @@
     - name: Adatok átalakítása
       href: transform-data.md
       items:
-        - name: Data Flow-tevékenység végrehajtása
+        - name: Adatfolyam-tevékenység végrehajtása
           href: control-flow-execute-data-flow-activity.md
         - name: Power Query tevékenység végrehajtása
           href: control-flow-power-query-activity.md
-        - name: Azure-függvények tevékenységei
+        - name: Azure Function tevékenység
           href: control-flow-azure-function-activity.md
         - name: Egyéni tevékenység
           href: transform-data-using-dotnet-custom-activity.md
-        - name: Databricks Jar-tevékenysége
+        - name: Databricks jar-tevékenység
           href: transform-data-databricks-jar.md
-        - name: Databricks-jegyzetfüzetek tevékenységei
+        - name: Databricks-jegyzetfüzet tevékenység
           href: transform-data-databricks-notebook.md
-        - name: Databricks Python-tevékenységei
+        - name: Databricks Python-tevékenység
           href: transform-data-databricks-python.md
-        - name: Adatkezelő parancstevékenységei
+        - name: Adatkezelő parancs tevékenység
           href: /azure/data-explorer/data-factory-command-activity?toc=/azure/data-factory/toc.json
-        - name: Data Lake U-SQL-tevékenység
+        - name: U-SQL-Data Lake tevékenység
           href: transform-data-using-data-lake-analytics.md
-        - name: HDInsight Hive-tevékenység
+        - name: HDInsight-struktúra tevékenység
           href: transform-data-using-hadoop-hive.md
         - name: HDInsight MapReduce-tevékenység
           href: transform-data-using-hadoop-map-reduce.md
@@ -492,13 +486,13 @@
           href: transform-data-using-hadoop-pig.md
         - name: HDInsight Spark-tevékenység
           href: transform-data-using-spark.md
-        - name: HDInsight Streaming-tevékenység
+        - name: HDInsight streaming-tevékenység
           href: transform-data-using-hadoop-streaming.md
-        - name: Machine Learning folyamat-végrehajtási tevékenység
+        - name: Machine Learning folyamat végrehajtása tevékenység
           href: transform-data-machine-learning-service.md
-        - name: Machine Learning Studio (klasszikus) kötegelt végrehajtási tevékenysége
+        - name: Machine Learning Studio (klasszikus) kötegelt végrehajtási tevékenység
           href: transform-data-using-machine-learning.md
-        - name: Machine Learning Studio (klasszikus) erőforrás-frissítési tevékenysége
+        - name: Machine Learning Studio (klasszikus) erőforrás-frissítési tevékenység
           href: update-machine-learning-models.md
         - name: Tárolt eljárási tevékenység
           href: transform-data-using-stored-procedure.md
@@ -506,29 +500,29 @@
           href: compute-linked-services.md
     - name: Átvitelvezérlés
       items:
-        - name: Változó tevékenység hozzáfűzése
+        - name: Változó tevékenységének hozzáfűzése
           href: control-flow-append-variable-activity.md
         - name: Folyamat végrehajtása tevékenység
           href: control-flow-execute-pipeline-activity.md
-        - name: Tevékenységszűrés
+        - name: Szűrési tevékenység
           href: control-flow-filter-activity.md
-        - name: Minden egyes tevékenységhez
+        - name: Minden tevékenységhez
           href: control-flow-for-each-activity.md
         - name: Metaadatok beolvasása tevékenység
           href: control-flow-get-metadata-activity.md
-        - name: If Condition tevékenység
+        - name: Ha a feltétel tevékenység
           href: control-flow-if-condition-activity.md
         - name: Keresési tevékenység
           href: control-flow-lookup-activity.md
         - name: Változó tevékenység beállítása
           href: control-flow-set-variable-activity.md
-        - name: Tevékenységváltás
+        - name: Váltási tevékenység
           href: control-flow-switch-activity.md
-        - name: Until tevékenység
+        - name: Tevékenységig
           href: control-flow-until-activity.md
         - name: Érvényesítési tevékenység
           href: control-flow-validation-activity.md
-        - name: Wait tevékenység
+        - name: Várakozási tevékenység
           href: control-flow-wait-activity.md
         - name: Webes tevékenység
           href: control-flow-web-activity.md
@@ -598,7 +592,7 @@
           href: data-movement-security-considerations.md
         - name: Adathozzáférési stratégiák
           href: data-access-strategies.md
-        - name: Azure Integration Runtime – IP-címek
+        - name: Azure Integration Runtime IP-címei
           href: azure-integration-runtime-ip-addresses.md
         - name: Hitelesítő adatok tárolása az Azure Key Vaultban
           href: store-credentials-in-key-vault.md
@@ -608,12 +602,14 @@
           href: encrypt-credentials-self-hosted-integration-runtime.md
         - name: Felügyelt identitás Data Factoryhoz
           href: data-factory-service-identity.md
-        - name: Ügyfél által felügyelt kulcstitkosítás
+        - name: Az adatgyár titkosítása az ügyfél által felügyelt kulccsal
           href: enable-customer-managed-key.md
         - name: Felügyelt virtuális hálózat
           href: managed-virtual-network-private-endpoint.md
-        - name: Azure Private Link a Data Factory-hoz
+        - name: Azure-beli privát hivatkozás Data Factory
           href: data-factory-private-link.md
+        - name: Az Azure biztonsági alapkonfigurációja
+          href: security-baseline.md
     - name: Monitorozás és kezelés
       items:
         - name: Vizuális megfigyelés

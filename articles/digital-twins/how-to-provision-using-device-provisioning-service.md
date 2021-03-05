@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 24dac044982d59e93da17ee75190f378d5e3cdea
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: c2e7c9c96f237512d7f28f7243707b097c034aab
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050919"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198455"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Eszközök automatikus felügyelete az Azure Digital Twins-ben a Device kiépítési szolgáltatás (DPS) használatával
 
@@ -69,7 +69,7 @@ Ha egy új eszközt kiépítenek az eszköz kiépítési szolgáltatásával, az
 
 Hozzon létre egy eszköz-kiépítési szolgáltatási példányt, amely a IoT-eszközök kiépítésére szolgál majd. Használhatja az alábbi Azure CLI-utasításokat, vagy használhatja a Azure Portal: gyors útmutató [*: a IoT hub Device Provisioning Service beállítása a Azure Portal*](../iot-dps/quick-setup-auto-provision.md).
 
-A következő Azure CLI-parancs létrehoz egy eszköz-kiépítési szolgáltatást. Meg kell adnia egy nevet, egy erőforráscsoportot és egy régiót. A parancs [Cloud Shell](https://shell.azure.com)vagy helyileg is futtatható, ha telepítve van az Azure CLI a [gépen](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
+A következő Azure CLI-parancs létrehoz egy eszköz-kiépítési szolgáltatást. Meg kell adnia egy nevet, egy erőforráscsoportot és egy régiót. A parancs [Cloud Shell](https://shell.azure.com)vagy helyileg is futtatható, ha telepítve van az Azure CLI a [gépen](/cli/azure/install-azure-cli).
 
 ```azurecli-interactive
 az iot dps create --name <Device Provisioning Service name> --resource-group <resource group name> --location <region; for example, eastus>
@@ -190,7 +190,7 @@ Mentse a projektet, majd tegye közzé újra a Function alkalmazást. A Function
 
 A következő lépésben környezeti változókat kell beállítania a Function alkalmazásban, amely tartalmazza a létrehozott Azure digitális Twins-példányra és az Event hub-ra mutató hivatkozást. Ha a teljes körű oktatóanyagot használta ([*oktatóanyag: végpontok közötti megoldás összekötése*](./tutorial-end-to-end.md)), az első beállítás már konfigurálva lesz.
 
-Adja hozzá a beállítást az Azure CLI-paranccsal. A parancs [Cloud Shell](https://shell.azure.com)vagy helyileg is futtatható, ha telepítve van az Azure CLI a [gépen](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
+Adja hozzá a beállítást az Azure CLI-paranccsal. A parancs [Cloud Shell](https://shell.azure.com)vagy helyileg is futtatható, ha telepítve van az Azure CLI a [gépen](/cli/azure/install-azure-cli).
 
 ```azurecli-interactive
 az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
@@ -223,7 +223,7 @@ A kivonási folyamat elindításához kézzel kell törölnie az eszközt IoT Hu
 
 A [cikk első felében](#auto-provision-device-using-device-provisioning-service)létrehozott egy eszközt IoT hub és egy megfelelő digitális Twin-ben. 
 
-Most nyissa meg a IoT Hub és törölje az eszközt (ezt megteheti egy [Azure CLI-paranccsal](/cli/azure/ext/azure-iot/iot/hub/module-identity?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_iot_hub_module_identity_delete) vagy a [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)). 
+Most nyissa meg a IoT Hub és törölje az eszközt (ezt megteheti egy [Azure CLI-paranccsal](/cli/azure/ext/azure-iot/iot/hub/module-identity#ext_azure_iot_az_iot_hub_module_identity_delete) vagy a [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs)). 
 
 Az eszköz automatikusan el lesz távolítva az Azure digitális Twins-ból. 
 
@@ -240,7 +240,7 @@ Látnia kell, hogy az eszköz két része nem található az Azure Digital Twins
 
 Ha már nincs szüksége az ebben a cikkben létrehozott erőforrásokra, a következő lépésekkel törölheti őket.
 
-Az Azure Cloud Shell vagy a helyi Azure CLI használatával törölheti az erőforráscsoport összes Azure-erőforrását az az [Group delete](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-delete) paranccsal. Ezzel eltávolítja az erőforráscsoportot; Az Azure Digital Twins-példány; az IoT hub és a hub-eszköz regisztrációja; az Event Grid-témakör és a hozzá tartozó előfizetések; az Event hub-névtér és mindkét Azure Functions alkalmazás, beleértve a kapcsolódó erőforrásokat, például a tárolást.
+Az Azure Cloud Shell vagy a helyi Azure CLI használatával törölheti az erőforráscsoport összes Azure-erőforrását az az [Group delete](/cli/azure/group#az-group-delete) paranccsal. Ezzel eltávolítja az erőforráscsoportot; Az Azure Digital Twins-példány; az IoT hub és a hub-eszköz regisztrációja; az Event Grid-témakör és a hozzá tartozó előfizetések; az Event hub-névtér és mindkét Azure Functions alkalmazás, beleértve a kapcsolódó erőforrásokat, például a tárolást.
 
 > [!IMPORTANT]
 > Az erőforráscsoport törlése nem vonható vissza. Az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. 

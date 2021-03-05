@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: d99ec80308152ce9e4870da809acaa25c663d98d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c6b9cfab4256c72118a65f7fb0c8e672e2082ffe
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715700"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199662"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>A Poster használata a kérelmek Azure digitális Twins API-khoz való küldéséhez
 
@@ -21,7 +21,7 @@ A [Poster](https://www.getpostman.com/) egy REST-alapú tesztelési eszköz, ame
 
 Ez a cikk azt ismerteti, hogyan konfigurálhatja a [Poster Rest-ügyfelet](https://www.getpostman.com/) az Azure digitális Twins API-kkal való interakcióhoz az alábbi lépések végrehajtásával:
 
-1. Az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) használatával beszerezhet egy tulajdonosi jogkivonatot, amelyet a Poster API-kérések készítéséhez fog használni.
+1. Az [Azure CLI](/cli/azure/install-azure-cli) használatával beszerezhet egy tulajdonosi jogkivonatot, amelyet a Poster API-kérések készítéséhez fog használni.
 1. Állítson be egy Poster-gyűjteményt, és konfigurálja a Poster REST-ügyfelet, hogy a tulajdonosi jogkivonatot használja a hitelesítéshez.
 1. A konfigurált Poster használatával hozzon létre és küldjön egy kérést az Azure Digital Twins API-khoz.
 
@@ -41,9 +41,9 @@ Ezután töltse le a Poster-ügyfél asztali verzióját. Navigáljon a [*www.ge
 
 Most, hogy beállította a Poster és az Azure Digital Twins-példányát, be kell szereznie egy tulajdonosi jogkivonatot, amelyet a Poster-kérések az Azure Digital Twins API-k engedélyezésére használhatnak.
 
-A token beszerzésének számos lehetséges módja van. Ez a cikk az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) használatával jelentkezik be az Azure-fiókjába, és beszerezhet egy jogkivonatot.
+A token beszerzésének számos lehetséges módja van. Ez a cikk az [Azure CLI](/cli/azure/install-azure-cli) használatával jelentkezik be az Azure-fiókjába, és beszerezhet egy jogkivonatot.
 
-Ha [helyileg telepítette](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)az Azure CLI-t, a következő parancsok futtatásához indítson el egy parancssort a gépen.
+Ha [helyileg telepítette](/cli/azure/install-azure-cli)az Azure CLI-t, a következő parancsok futtatásához indítson el egy parancssort a gépen.
 Ellenkező esetben megnyithat egy [Azure Cloud Shell](https://shell.azure.com) ablakot a böngészőben, és futtathatja a parancsokat.
 
 1. Először is győződjön meg arról, hogy a megfelelő hitelesítő adatokkal jelentkezett be az Azure-ba a következő parancs futtatásával:
@@ -52,7 +52,7 @@ Ellenkező esetben megnyithat egy [Azure Cloud Shell](https://shell.azure.com) a
     az login
     ```
 
-1. Ezután az az [Account Get-Access-Token](/cli/azure/account?preserve-view=true&view=azure-cli-latest#az_account_get_access_token) paranccsal szerezzen be egy tulajdonosi jogkivonatot, amely hozzáfér az Azure Digital Twins szolgáltatáshoz.
+1. Ezután az az [Account Get-Access-Token](/cli/azure/account#az_account_get_access_token) paranccsal szerezzen be egy tulajdonosi jogkivonatot, amely hozzáfér az Azure Digital Twins szolgáltatáshoz.
 
     ```azurecli-interactive
     az account get-access-token --resource 0b07f429-9f4b-4714-9392-cc5e8e80c8b0

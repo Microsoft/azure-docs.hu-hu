@@ -3,12 +3,12 @@ title: Tároló csoport manuális leállítása vagy elindítása
 description: Megtudhatja, hogyan állíthatja be manuálisan a tárolók csoportját a Azure Container Instancesban.
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: f697f18459959cf40e71d3ca90cd8b42aaa74239
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1801dad463d478c754e621dad0ae9406899ae7e3
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88799077"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198115"
 ---
 # <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Tárolók manuális leállítása vagy indítása az Azure Container Instancesben
 
@@ -46,7 +46,7 @@ Ez a művelet újraindítja a tárolók csoportjának összes tárolóját. A cs
 
 A tároló csoport manuális újraindítása után a tároló csoport a beállított újraindítási szabályzatnak megfelelően fut.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Container Instances [Újraindítási házirend-beállításairól](container-instances-restart-policy.md) .
 
@@ -55,6 +55,6 @@ A meglévő konfigurációval rendelkező tárolók manuális leállítása és 
 <!-- LINKS - External -->
 
 <!-- LINKS - Internal -->
-[az-container-restart]: /cli/azure/container?view=azure-cli-latest#az-container-restart
-[az-container-start]: /cli/azure/container?view=azure-cli-latest#az-container-start
-[az-container-stop]: /cli/azure/container?view=azure-cli-latest#az-container-stop
+[az-container-restart]: /cli/azure/container#az-container-restart
+[az-container-start]: /cli/azure/container#az-container-start
+[az-container-stop]: /cli/azure/container#az-container-stop

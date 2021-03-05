@@ -6,12 +6,12 @@ ms.topic: overview
 description: Ismerje meg, hogy az Azure dev Spaces hogyan nyújt gyors, ismétlődő Kubernetes-fejlesztési élményt az Azure Kubernetes Service-fürtökben található csapatok számára
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 9bdd6f48a8f48266b8a9aad003fe6ea43715036c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: fd6f52c71c81f253f3f40f05408e45b6a6c0dbce
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978441"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199475"
 ---
 # <a name="what-is-azure-dev-spaces"></a>Mi az Azure Dev Spaces?
 
@@ -40,7 +40,7 @@ Az Azure dev Spaces működésével kapcsolatos további információkért lásd
 
 ## <a name="supported-regions-and-configurations"></a>Támogatott régiók és konfigurációk
 
-Az Azure dev-helyeket csak [bizonyos régiókban][supported-regions]található AK-fürtök támogatják. Az Azure dev Spaces támogatja az Azure [CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) vagy a [Visual Studio Code](https://code.visualstudio.com/download) használatát a Linux, MacOS vagy Windows 8 vagy újabb rendszereken telepített [Azure dev Spaces bővítménnyel](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) , hogy az alkalmazásait az AK-ban hozza létre és futtassa. Emellett támogatja a Windows rendszeren telepített [Visual Studio 2019](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) Azure-fejlesztési számítási feladattal való használatát is.
+Az Azure dev-helyeket csak [bizonyos régiókban][supported-regions]található AK-fürtök támogatják. Az Azure dev Spaces támogatja az Azure [CLI](/cli/azure/install-azure-cli) vagy a [Visual Studio Code](https://code.visualstudio.com/download) használatát a Linux, MacOS vagy Windows 8 vagy újabb rendszereken telepített [Azure dev Spaces bővítménnyel](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) , hogy az alkalmazásait az AK-ban hozza létre és futtassa. Emellett támogatja a Windows rendszeren telepített [Visual Studio 2019](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) Azure-fejlesztési számítási feladattal való használatát is.
 
 ## <a name="next-steps"></a>Következő lépések
 
