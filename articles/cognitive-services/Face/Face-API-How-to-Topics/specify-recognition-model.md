@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: longl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ea6b567d7b48e504d9b79dad568da7170ada5326
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 58e910a721bea95e74a004ae306f1bbc3ade62f2
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101706826"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174155"
 ---
 # <a name="specify-a-face-recognition-model"></a>Arcfelismerési modell megadása
 
@@ -24,11 +24,11 @@ Ez az útmutató bemutatja, hogyan határozhatja meg az Arcfelismerés, az azono
 
 A Face szolgáltatás gépi tanulási modelleket használ a képeken található emberi arcokon végzett műveletek végrehajtásához. Folyamatosan fejlesztjük modelljeink pontosságát az ügyfelek visszajelzései és a kutatás előrehaladása alapján, és ezeket a fejlesztéseket a modell frissítéseiként tesszük elérhetővé. A fejlesztők megadhatják, hogy az Arcfelismerés modell melyik verzióját szeretné használni; kiválaszthatják azt a modellt, amelyik a legjobban megfelel a használati esetnek.
 
-Az Azure Face szolgáltatás három felismerési modellel rendelkezik. A _recognition_01_ (közzétett 2017) és _recognition_02_ (közzétett 2019) modellek folyamatosan támogatottak, így biztosítva a visszamenőleges kompatibilitást a FaceLists-t vagy **PersonGroup**-t használó ügyfelek számára ezekkel a modellekkel. A **FaceList** vagy a **Persongroup** mindig a által létrehozott felismerési modellt fogja használni, és az új arcok társítva lesznek ehhez a modellhez, amikor hozzáadják őket. Ez a létrehozás után nem módosítható, és az ügyfeleknek a megfelelő **FaceList** vagy **PersonGroup** kell használniuk a megfelelő felismerési modellt.
+Az Azure Face szolgáltatás négy felismerési modellel rendelkezik. A modellek _recognition_01_ (közzétett 2017), _recognition_02_ (közzétett 2019) és _recognition_03_ (közzétett 2020) folyamatosan támogatottak, így biztosítva a visszamenőleges kompatibilitást a FaceLists-t vagy **PersonGroup**-t használó ügyfelek számára ezekkel a modellekkel. A **FaceList** vagy a **Persongroup** mindig a által létrehozott felismerési modellt fogja használni, és az új arcok társítva lesznek ehhez a modellhez, amikor hozzáadják őket. Ez a létrehozás után nem módosítható, és az ügyfeleknek a megfelelő **FaceList** vagy **PersonGroup** kell használniuk a megfelelő felismerési modellt.
 
 A későbbi felismerési modelleket a saját kényelmében helyezheti át. azonban új FaceLists és PersonGroups kell létrehoznia az Ön által választott felismerési modellel.
 
-A _recognition_03_ modell (közzétett 2020) a jelenleg elérhető legpontosabb modell. Ha Ön új ügyfél, javasoljuk, hogy használja ezt a modellt. _Recognition_03_ nagyobb pontosságot biztosít a hasonlósági összehasonlításokhoz és a személyekre vonatkozó összehasonlításokhoz. Vegye figyelembe, hogy az egyes modellek a többitől függetlenül működnek, és az egyik modellhez beállított megbízhatósági küszöbértéket nem hasonlítjuk össze a többi felismerő modellben.
+A _recognition_04_ modell (közzétett 2021) a jelenleg elérhető legpontosabb modell. Ha Ön új ügyfél, javasoljuk, hogy használja ezt a modellt. _Recognition_04_ nagyobb pontosságot biztosít a hasonlósági összehasonlításokhoz és a személyekre vonatkozó összehasonlításokhoz. _Recognition_04_ javítja a bejelentkezett felhasználók számára a Face Covers (Sebészeti maszkok, N95-maszkok, maszkok) megjelenítését. Most létrehozhat olyan biztonságos és zökkenőmentes felhasználói élményt, amely a legújabb _detection_03_ modell használatával észleli, hogy a regisztrált felhasználók viselnek-e szembenéző fedelet, majd elismerik, kik a legújabb _recognition_04_ -modellel rendelkeznek. Vegye figyelembe, hogy az egyes modellek a többitől függetlenül működnek, és az egyik modellhez beállított megbízhatósági küszöbértéket nem hasonlítjuk össze a többi felismerő modellben.
 
 Olvassa el, hogy megtudja, hogyan határozhat meg egy kiválasztott modellt különböző arc-műveletekben a modellek ütközésének elkerülése érdekében. Ha Ön fejlett felhasználó, és szeretné meghatározni, hogy a legújabb modellre kell váltania, ugorjon a [különböző modellek kiértékelése](#evaluate-different-models) szakaszra, és értékelje ki az új modellt, és hasonlítsa össze az eredményeket az aktuális adatkészlettel.
 
@@ -51,6 +51,7 @@ Az [arc-észlelési] API használatakor rendelje hozzá a modell verzióját a (
 * recognition_01
 * recognition_02
 * recognition_03
+* recognition_04
 
 
 Opcionálisan megadhatja a _returnRecognitionModel_ paramétert (az alapértelmezett **Hamis értéket**) annak jelzésére, hogy a _recognitionModel_ válaszként kell-e visszaadni. Ezért a REST API [Arcfelismerés URL-] címe a következőképpen fog kinézni:
@@ -91,10 +92,10 @@ A hasonlósági kereséshez is megadhat egy felismerési modellt. A modell verzi
 Tekintse meg a .NET-ügyfél függvénytárának következő kódrészletét.
 
 ```csharp
-await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_03");
+await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_04");
 ```
 
-Ez a kód egy nevű arc listát hoz létre `My face collection` a _recognition_03_ modell használatával a szolgáltatások kinyeréséhez. Ha egy új észlelt arc fölé keres hasonló arcokat, az adott arcot a _recognition_03_ modell használatával kell észlelni ([Arcfelismerés]). Az előző szakaszban leírtaknak megfelelően a modellnek konzisztensnek kell lennie.
+Ez a kód egy nevű arc listát hoz létre `My face collection` a _recognition_04_ modell használatával a szolgáltatások kinyeréséhez. Ha egy új észlelt arc fölé keres hasonló arcokat, az adott arcot a _recognition_04_ modell használatával kell észlelni ([Arcfelismerés]). Az előző szakaszban leírtaknak megfelelően a modellnek konzisztensnek kell lennie.
 
 Az [arc-Find hasonló API-] ban nincs változás. az észleléshez csak a modell verzióját kell megadnia.
 
@@ -105,10 +106,10 @@ Az [arc-ellenőrzés] API ellenőrzi, hogy két arc ugyanahhoz a személyhez tar
 ## <a name="evaluate-different-models"></a>Különböző modellek kiértékelése
 
 Ha a különböző felismerési modellek teljesítményét össze szeretné hasonlítani a saját adataival, a következőkre lesz szüksége:
-1. Hozzon létre három PersonGroups _recognition_01_, _recognition_02_ és _recognition_03_ használatával.
-1. A képadatokkal felderítheti az arcokat, és regisztrálhatja őket a következő három **PersonGroup** található **személyekhez**. 
+1. Hozzon létre négy PersonGroups _recognition_01_, _recognition_02_, _recognition_03_ és _recognition_04_ használatával.
+1. A képadatokkal felderítheti az arcokat, és regisztrálhatja őket a következő négy **PersonGroup** található **személyekhez**. 
 1. A PersonGroups a PersonGroup-Train API használatával taníthatja.
-1. Tesztelje a Face-azonosulni mindhárom **PersonGroup**, és hasonlítsa össze az eredményeket.
+1. Tesztelje a Face-azonosítást mind a négy **PersonGroup**, és hasonlítsa össze az eredményeket.
 
 
 Ha általában a megbízhatósági küszöbértéket adja meg (a nulla és az egyik közötti érték, amely meghatározza, hogy a modellnek milyen mértékben kell azonosítania egy arcot), előfordulhat, hogy különböző küszöbértékeket kell használnia a különböző modellekhez. Az egyik modell küszöbértéke nem osztható meg egy másikhoz, és nem feltétlenül ugyanazt az eredményt fogja eredményezni.

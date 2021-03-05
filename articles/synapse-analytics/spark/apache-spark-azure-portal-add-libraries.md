@@ -9,12 +9,12 @@ ms.date: 03/01/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 38826451bbb8ec9303f61db53544cfe8ca2fcd41
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: c6d720c3feec29eb32b1cfa9c31ea45839c98ec7
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123088"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176416"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Apache Spark kódtárainak kezelése az Azure szinapszis Analyticsben
 A tárak újrafelhasználható kódot biztosítanak, amelyet a programok vagy projektek számára érdemes felvenni. 
@@ -61,10 +61,14 @@ Az interaktív adatelemzés vagy a gépi tanulás során előfordulhat, hogy az 
 
 A munkamenet-hatókörrel rendelkező csomagok lehetővé teszik a felhasználók számára, hogy a munkamenetük kezdetén definiálják a csomagok függőségeit. Munkamenet-hatókörű csomag telepítésekor csak az aktuális munkamenet fér hozzá a megadott csomagokhoz. Ennek eredményeképpen ezek a munkamenet-hatókörű csomagok nem érintik a többi munkamenetet vagy feladatokat ugyanazzal a Apache Spark készlettel. Emellett ezek a kódtárak az alapszintű futtatókörnyezetre és a készlet szintű csomagokra is telepítve vannak. 
 
+Ezeket a csomagokat a rendszer automatikusan hozzáadja a Python-környezethez. A csomagokat nem szabad megemlíteni a *requirements.txt* fájlban.
+
+Vegye figyelembe, hogy ez a metódus jelenleg csak a `*.whl` fájlokra mutat. Ne adjon hozzá `*.tar.gz` fájlokat a tárolóhoz.
+
 A munkamenet-hatókörű csomagok kezelésével kapcsolatos további információkért tekintse meg a következő útmutatókat:
 
 - [Python-munkamenet csomagjai (előzetes verzió):](./apache-spark-manage-python-packages.md) A munkamenet elején adjon meg egy Conda- *környezetet. a YML* további Python-csomagokat telepíthet a népszerű adattárakból. 
-- [Scala/Java-munkamenetek csomagjai: ](./apache-spark-manage-scala-packages.md) A munkamenet elején adja meg a használatával telepítendő JAR-fájlok listáját ```%%configure``` .
+- [Scala/Java-munkamenetek csomagjai: ](./apache-spark-manage-scala-packages.md) A munkamenet elején adja meg a használatával telepítendő JAR-fájlok listáját `%%configure` .
 
 ## <a name="next-steps"></a>Következő lépések
 - Az alapértelmezett könyvtárak megtekintése: [Apache Spark verzió támogatása](apache-spark-version-support.md)

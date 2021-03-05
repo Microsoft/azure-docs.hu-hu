@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 1ff20ab19390dcdadb9a4aa79822f7ace3d31989
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: bd83ccc4f834d6b52e1c2db15000eb695be85f30
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791172"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177198"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Mik a számítási célok az Azure Machine Learningben?
 
@@ -101,15 +101,21 @@ A támogatott adatsorozatokkal és korlátozásokkal kapcsolatos további inform
 | **Támogatott VM-sorozat**  | **Korlátozások** |
 |------------|------------|
 | T | Nincsenek. |
+| DDSv4 | Nincsenek. |
 | Dv2 | Nincsenek. |  
 | Dv3 | Nincsenek.|
 | DSv2 | Nincsenek. | 
 | DSv3 | Nincsenek.|
+| EAv4 | Nincsenek. |
+| Ev3 | Nincsenek. |
 | FSv2 | Nincsenek. | 
+| H | Nincsenek. |
+| HB | Jóváhagyást igényel. |
 | HBv2 | Jóváhagyást igényel. |  
 | HCS FRISSÍTŐÜGYNÖK | Jóváhagyást igényel. |  
 | M | Jóváhagyást igényel. |
-| NC | Nincsenek. |    
+| NC | Nincsenek. |  
+| NC – promo | Nincsenek. |
 | NCsv2 | Jóváhagyást igényel. |
 | NCsv3 | Jóváhagyást igényel. |  
 | NDs | Jóváhagyást igényel. |
@@ -145,7 +151,7 @@ További információ az elkülönítésről: [elkülönítés az Azure nyilván
 
 A nem felügyelt számítási célt *nem* a Azure Machine learning felügyeli. Ezt a számítási célt a Azure Machine Learningon kívül hozza létre, majd csatolja a munkaterülethez. A nem felügyelt számítási erőforrások további lépéseket igényelhetnek a gépi tanulási feladatok teljesítményének fenntartása vagy javítása érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 * [Számítási cél használata a modell betanításához](how-to-set-up-training-targets.md)

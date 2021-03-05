@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 891991fa938ad3dcfacae6d02e40efd6d6e9689e
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: eb6d82019cccd1da327461cb0a0635aea4f3647f
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97386850"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174971"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>REST-technikai profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -225,6 +225,9 @@ Ha a hitelesítés típusa értékre van állítva `ApiKeyHeader` , a **Cryptogr
 | --------- | -------- | ----------- |
 | A HTTP-fejléc neve, például `x-functions-key` , vagy `x-api-key` . | Igen | A hitelesítéshez használt kulcs. |
 
+> [!NOTE]
+> Jelenleg a Azure AD B2C csak egy HTTP-fejlécet támogat a hitelesítéshez. Ha a REST-hívás több fejlécet is igényel, például egy ügyfél-azonosítót és egy ügyfél-titkot, valamilyen módon kell a kérést a proxyhoz adni.
+
 ```xml
 <TechnicalProfile Id="REST-API-SignUp">
   <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
@@ -290,4 +293,3 @@ Tekintse meg a következő cikkeket a REST-technikai profil használatának pél
 - [Bemutató: REST API jogcím-cserék integrálása a Azure AD B2C felhasználói úton a felhasználói bevitel ellenőrzésekor](custom-policy-rest-api-claims-validation.md)
 - [Forgatókönyv: REST API-jogcímek hozzáadása egyéni házirendekhez Azure Active Directory B2C](custom-policy-rest-api-claims-validation.md)
 - [A REST API szolgáltatásainak védelme](secure-rest-api.md)
-

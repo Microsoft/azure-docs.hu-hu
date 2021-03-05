@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 11/13/2020
 ms.author: matjazl
-ms.openlocfilehash: 386003d7dae80e086f523b2cebe61aa0eee7b89e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 3b51a07281c7d6d9307cc802dfc9f149442e88b7
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95527819"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177487"
 ---
 # <a name="what-is-azure-api-for-fhirreg"></a>Mi az a FHIR készült Azure API &reg; ?
 
@@ -22,7 +22,7 @@ A FHIR készült Azure API gyors adatcserét tesz lehetővé a gyors egészség�
 - Felügyelt FHIR szolgáltatás, amely percek alatt kiépítve a felhőben 
 - Nagyvállalati szintű, FHIR®-alapú végpont az Azure-ban adathozzáféréshez és tárolás FHIR® formátumban
 - Nagy teljesítményű, kis késleltetésű
-- A védett egészségügyi adatokat (PHI) biztonságos kezelése a megfelelő felhőalapú környezetben
+- A védett egészségügyi információk (PHI) biztonságos kezelése megfelelő felhőalapú környezetben
 - INTELLIGENS on FHIR mobil-és webes megvalósításokhoz
 - Saját adatai méretezése a szerepköralapú hozzáférés-vezérléssel (RBAC)
 - Naplózási naplók nyomon követése az egyes adattárokban való hozzáféréshez, létrehozáshoz, módosításhoz és olvasáshoz

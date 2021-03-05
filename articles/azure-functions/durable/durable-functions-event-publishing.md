@@ -3,12 +3,12 @@ title: Durable Functions Publishing to Azure Event Grid (előzetes verzió)
 description: Ismerje meg, hogyan konfigurálhatja a Durable Functions automatikus Azure Event Grid közzétételét.
 ms.topic: conceptual
 ms.date: 04/25/2020
-ms.openlocfilehash: e4651dd7548ba76380bfc2d1b314e67d7abe63d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44df100a5c794abf918a09dea0f94d30ddf916d3
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081746"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175957"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions Publishing to Azure Event Grid (előzetes verzió)
 
@@ -26,7 +26,7 @@ Az alábbiakban néhány olyan forgatókönyvet ismertetünk, amelyekben ez a fu
 
 * Telepítse a [Microsoft. Azure. webjobs. Extensions. DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) programot a Durable functions-projektbe.
 * Telepítse az [Azure Storage emulatort](../../storage/common/storage-use-emulator.md) (csak Windows), vagy használjon egy meglévő Azure Storage-fiókot.
-* Az [Azure CLI](/cli/azure/?view=azure-cli-latest) telepítése vagy a [Azure Cloud Shell](../../cloud-shell/overview.md) használata
+* Az [Azure CLI](/cli/azure/) telepítése vagy a [Azure Cloud Shell](../../cloud-shell/overview.md) használata
 
 ## <a name="create-a-custom-event-grid-topic"></a>Egyéni Event Grid-témakör létrehozása
 
@@ -132,11 +132,11 @@ A Azure Portal használatával hozzon létre egy másik Function alkalmazást a 
 
 1. Keresse meg **Event Grid**, majd válassza ki a **Azure Event Grid trigger** sablont. 
 
-    :::image type="content" source="./media/durable-functions-event-publishing/function-select-event-grid-trigger.png" alt-text="Adjon hozzá egy függvényt a Azure Portal." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/function-select-event-grid-trigger.png" alt-text="Válassza ki az Event Grid eseményindító sablont a Azure Portal." border="true":::
 
 1. Nevezze el az új triggert, majd válassza a **create Function (függvény létrehozása**) lehetőséget.
 
-    :::image type="content" source="./media/durable-functions-event-publishing/function-name-event-grid-trigger.png" alt-text="Adjon hozzá egy függvényt a Azure Portal." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/function-name-event-grid-trigger.png" alt-text="Nevezze el az Event Grid eseményindítót a Azure Portal." border="true":::
 
 
     A rendszer létrehoz egy függvényt a következő kóddal:
@@ -172,19 +172,19 @@ Mostantól hozzáadhat egy Event Grid-előfizetést a létrehozott Event Grid t�
 
 1. Az új függvényben válassza az **integráció** , majd a **Event Grid trigger (eventGridEvent)** lehetőséget. 
 
-    :::image type="content" source="./media/durable-functions-event-publishing/eventgrid-trigger-link.png" alt-text="Adjon hozzá egy függvényt a Azure Portal." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/eventgrid-trigger-link.png" alt-text="Válassza ki a Event Grid trigger hivatkozást." border="true":::
 
-1. Válassza a **létrehozás Event Grid Leírás**lehetőséget.
+1. Válassza a **létrehozás Event Grid Leírás** lehetőséget.
 
-    :::image type="content" source="./media/durable-functions-event-publishing/create-event-grid-subscription.png" alt-text="Adjon hozzá egy függvényt a Azure Portal." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/create-event-grid-subscription.png" alt-text="Hozza létre a Event Grid-előfizetést." border="true":::
 
 1. Nevezze el az esemény-előfizetést, és válassza ki a **Event Grid témakörök** típust. 
 
 1. Válassza ki az előfizetést. Ezután válassza ki az Event Grid témakörhöz létrehozott erőforráscsoportot és erőforrást. 
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
-    :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="Adjon hozzá egy függvényt a Azure Portal." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="Event Grid-előfizetés létrehozása." border="true":::
 
 Most már készen áll az életciklus-események fogadására.
 
@@ -254,7 +254,7 @@ Az alábbi lista az életciklus-események sémáját mutatja be:
 
 A helyi teszteléshez olvassa el az [Azure Function Event Grid a helyi hibakeresés elindítása](../functions-debug-event-grid-trigger-local.md)című cikkét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A példányok kezelésének megismerése Durable Functions](durable-functions-instance-management.md)

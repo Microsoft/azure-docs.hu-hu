@@ -5,24 +5,24 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 6037ef9c539c3c57f2ba5a19f371237159d1bf69
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 3bba9dbf40fe6893a06c21d7f6b5475cfa8552cb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030885"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176654"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Naplóadatok feldolgozási ideje az Azure Monitorban
 A Azure Monitor egy nagy léptékű adatszolgáltatás, amely több ezer ügyfelet szolgál ki havonta több, mint havi terabájt adatküldéssel. A naplózási adatok begyűjtése után elérhetővé tételével kapcsolatban gyakran merül fel kérdések. Ez a cikk a késést befolyásoló különféle tényezőket ismerteti.
 
 ## <a name="typical-latency"></a>Jellemző késés
-A késés azt az időpontot jelenti, amikor az adatgyűjtés a figyelt rendszeren történik, valamint a Azure Monitor elemzéshez elérhetővé tételének időpontja. A naplózási adatgyűjtési gyakoriság átlagos késése 2 és 5 perc között lehet. Az egyes adatok késése az alábbiakban ismertetett különböző tényezőktől függően változhat.
+A késés azt az időpontot jelenti, amikor az adatgyűjtés a figyelt rendszeren történik, valamint a Azure Monitor elemzéshez elérhetővé tételének időpontja. A naplózási adatmennyiség betöltésének tipikus késése 20 másodperc és 3 perc között lehet. Egy adott adat késése azonban az alábbiakban ismertetett különféle tényezőktől függően változhat.
 
 
 ## <a name="factors-affecting-latency"></a>Késést befolyásoló tényezők
 Egy adott adathalmaz teljes betöltési ideje a következő magas szintű területekre osztható fel. 
 
-- Ügynök időpontja – az esemény felderítésének ideje, összegyűjtése, majd elküldése Azure Monitor betöltési pontnak a naplófájlba. A legtöbb esetben ezt a folyamatot egy ügynök kezeli.
+- Ügynök időpontja – az események felderítésének ideje, összegyűjtése, majd elküldése Azure Monitor naplók betöltési pontjának naplójába. A legtöbb esetben ezt a folyamatot egy ügynök kezeli. A hálózat további késleltetést eredményezhet.
 - Folyamatidő – Az az idő, amely alatt a feldolgozási folyamat feldolgozza a naplóbejegyzést. Ez magában foglalja az esemény tulajdonságainak elemzését és a számított információk esetleges hozzáadását.
 - Indexelési idő – a naplófájl betöltésére fordított idő Azure Monitor big data-tárolóba.
 
@@ -36,16 +36,17 @@ Az ügynökök és a felügyeleti megoldások különböző stratégiák haszná
 - Active Directory replikációs megoldás ötévente végzi el az értékelést, míg a Active Directory Assessment megoldás hetente értékeli az Active Directory-infrastruktúrát. Az ügynök csak az értékelés befejezésekor fogja gyűjteni ezeket a naplókat.
 
 ### <a name="agent-upload-frequency"></a>Az ügynök feltöltési gyakorisága
-Annak biztosítása érdekében, hogy az Log Analytics-ügynök könnyű legyen, az ügynök pufferei naplózzák és rendszeresen feltöltik őket a Azure Monitorba. A feltöltés gyakorisága 30 másodperc és 2 perc között változik az adatok típusától függően. A legtöbb adat 1 percenként van feltöltve. Előfordulhat, hogy a hálózati feltételek negatív hatással vannak az adatmennyiség késésére Azure Monitor a betöltési pont eléréséhez.
+Annak biztosítása érdekében, hogy az Log Analytics-ügynök könnyű legyen, az ügynök pufferei naplózzák és rendszeresen feltöltik őket a Azure Monitorba. A feltöltés gyakorisága 30 másodperc és 2 perc között változik az adatok típusától függően. A legtöbb adat 1 percenként van feltöltve. 
+
+### <a name="network"></a>Network (Hálózat)
+Előfordulhat, hogy a hálózati feltételek negatív hatással vannak az adatmennyiség késésére Azure Monitor naplók betöltési pontjának eléréséhez.
 
 ### <a name="azure-activity-logs-resource-logs-and-metrics"></a>Azure-tevékenységek naplói, erőforrás-naplók és metrikák
-Az Azure-beli adatmennyiség további időt vehet igénybe, hogy a feldolgozás során Log Analytics betöltési ponton elérhetővé váljon:
+Az Azure-beli adatmennyiség további időt vehet igénybe, hogy elérhetővé váljon Azure Monitor naplók betöltési pontja feldolgozásra:
 
-- Az erőforrás-naplókból származó adatok az Azure-szolgáltatástól függően 2-15 percet vesznek igénybe. Tekintse meg az [alábbi lekérdezést](#checking-ingestion-time) a késésnek a környezetben való vizsgálatához
-- Az Azure platform metrikái 3 percet vesznek igénybe Log Analytics betöltési pontra.
-- A tevékenység naplójának adatait a rendszer körülbelül 10-15 percet vesz igénybe Log Analytics betöltési pontra.
-
-Ha a betöltési ponton elérhető, az adatmennyiség további 2-5 percet vesz igénybe a lekérdezéshez.
+- Az erőforrás-naplók jellemzően 30-90 másodpercet vesznek fel az Azure-szolgáltatástól függően. Néhány Azure-szolgáltatás (pontosabban Azure SQL Database és az Azure Virtual Network) jelenleg 5 perces időközönként jelentést készít a naplókról. Ez a folyamat tovább fejleszthető. Tekintse meg az [alábbi lekérdezést](#checking-ingestion-time) a késésnek a környezetben való vizsgálatához
+- Az Azure platform metrikái további 3 percet is igénybe vehetnek, hogy Azure Monitor naplók betöltési pontján legyenek exportálva.
+- A műveletnapló-információk további 10-15 percet is igénybe vehetnek, ha a rendszer örökölt integrációt használ. Javasoljuk, hogy az előfizetési szintű diagnosztikai beállítások használatával beolvassa a tevékenység naplóit Azure Monitor naplókba, amelyek további 30 másodperces késést okoznak.
 
 ### <a name="management-solutions-collection"></a>Felügyeleti megoldások gyűjteménye
 Egyes megoldások nem gyűjtik az adatokat az ügynöktől, és olyan gyűjteményi módszert használnak, amely további késleltetést mutat be. Egyes megoldások rendszeres időközönként gyűjtenek adatokat a közel valós idejű gyűjtés megkísérlése nélkül. Bizonyos példák a következők:
@@ -56,6 +57,9 @@ Egyes megoldások nem gyűjtik az adatokat az ügynöktől, és olyan gyűjtemé
 A gyűjtemény gyakoriságának meghatározásához tekintse meg az egyes megoldások dokumentációját.
 
 ### <a name="pipeline-process-time"></a>Folyamat – feldolgozási idő
+
+Ha a betöltési ponton elérhető, az adatmennyiség további 30-60 másodpercet vesz igénybe a lekérdezéshez.
+
 Miután betöltötte a naplóbejegyzések betöltését a Azure Monitori folyamatba (ahogy az a [_TimeReceived](./log-standard-columns.md#_timereceived) tulajdonságban van meghatározva), a bérlők elkülönítésének biztosításához, valamint az adatok nem elvesztésének megtételéhez a rendszer az ideiglenes tárhelyre írja őket. Ez a folyamat általában 5-15 másodpercet vesz igénybe. Egyes felügyeleti megoldások súlyosabb algoritmusokat implementálnak az adatösszesítéshez és az elemzések kinyeréséhez, mivel az adatátviteli szolgáltatás a ben. A hálózati teljesítmény figyelése például 3 perces intervallumokban összesíti a bejövő adatokat, ami gyakorlatilag 3 perces késéssel jár. Egy másik folyamat, amely a késést adja meg, az egyéni naplókat kezelő folyamat. Bizonyos esetekben előfordulhat, hogy a folyamat néhány percet vesz igénybe az ügynök által a fájlokból gyűjtött naplók számára.
 
 ### <a name="new-custom-data-types-provisioning"></a>Új egyéni adattípusok kiépítés

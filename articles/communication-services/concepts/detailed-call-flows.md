@@ -8,12 +8,12 @@ ms.author: nmurav
 ms.date: 12/11/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d2df7255980ca00d405cf80a9fff69ff0511bd17
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5ffc655cebb19b755b990171ab662576ac541793
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659307"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174291"
 ---
 # <a name="call-flow-topologies"></a>Folyamat-topológiák hívása
 Ez a cikk az Azure kommunikációs szolgáltatások hívási folyamat topológiáit ismerteti. Ez egy nagyszerű cikk, amelyből megtudhatja, hogy a vállalati ügyfelek hogyan integrálják a kommunikációs szolgáltatásokat a felügyelt hálózaton belül. A kommunikációs szolgáltatások hívási folyamatainak bevezetéséhez tekintse meg a [folyamatok fogalmi dokumentációját](./call-flows.md).
@@ -152,7 +152,7 @@ A VPN és az ügyfél közötti adatforgalom a 2. folyamatot használja. Az ügy
 
 ### <a name="vpn-user-to-internal-user-direct-media"></a>VPN-felhasználó és belső felhasználó (közvetlen adathordozó)
 
-:::image type="content" source="./media/call-flows/vpn-to-internal-direct-media.png" alt-text="Egy-egy hívási folyamat közvetlen adathordozóval rendelkező VPN-sel":::
+:::image type="content" source="./media/call-flows/vpn-to-internal-direct-media.png" alt-text="Egy, egy-egy hívási folyamat (belső felhasználó) VPN-sel közvetlen adathordozóval":::
 
 *6. ábra – VPN-felhasználó és belső felhasználó (közvetlen adathordozó)*
 
@@ -162,7 +162,7 @@ Ez a médiaadatfolyam-továbbítás kétirányú. A 2. folyamat iránya a távol
 
 ### <a name="vpn-user-to-external-user-direct-media"></a>VPN-felhasználó és külső felhasználó (közvetlen adathordozó)
 
-:::image type="content" source="./media/call-flows/vpn-user-to-external-user.png" alt-text="Egy-egy hívási folyamat közvetlen adathordozóval rendelkező VPN-sel":::
+:::image type="content" source="./media/call-flows/vpn-user-to-external-user.png" alt-text="Egy-egy hívási folyamat (külső felhasználó) VPN-sel közvetlen adathordozóval":::
 
 *7. ábra – VPN-felhasználó és külső felhasználó (közvetlen adathordozó)*
 

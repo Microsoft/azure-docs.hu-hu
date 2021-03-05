@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 272fb0a27cf57483af6c07373e35a30f7f6e1c4b
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: b0e51d11797bc5767f19b25a92a2d29a66ea1bb2
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102101375"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176722"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Régiók közötti Load Balancer (előzetes verzió)
 
@@ -28,7 +28,7 @@ Az Azure standard Load Balancer támogatja a régiók közötti terheléseloszt�
 
 * Több régióból származó bejövő forgalom.
 * [Azonnali globális feladatátvétel](#regional-redundancy) a következő optimális regionális üzembe helyezéshez.
-* A régiókban lévő eloszlás elosztása a legközelebbi Azure-régióba [rendkívül késleltetéssel](#ultra-low-latency).
+* A régiókban lévő elosztást a legközelebbi Azure-régióba is betöltheti, [rendkívül alacsony késéssel](#ultra-low-latency).
 * Egyetlen végpont mögötti vertikális [Felskálázási](#ability-to-scale-updown-behind-a-single-endpoint) képesség.
 * [Statikus IP-cím](#static-ip)
 * [Ügyfél IP-címének megőrzése](#client-ip-preservation)

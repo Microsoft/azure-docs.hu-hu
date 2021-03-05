@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: 6287215233ae9baa220df37c6b820c1d1bec7720
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: ee6b0e1b745e86c72843af88c0f6d17f91512e15
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032517"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176756"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-the-azure-cli"></a>Azure Cognitive Search szolgáltatás kezelése az Azure CLI-vel
 > [!div class="op_single_selector"]
@@ -41,48 +41,7 @@ Alkalmanként a fenti listán *nem* szereplő feladatokkal kapcsolatos kérdése
 
 A szolgáltatáson belül a tartalom létrehozása és kezelése [Search Service REST API](/rest/api/searchservice/) vagy [.net SDK](/dotnet/api/overview/azure/search.documents-readme)-n keresztül történik. Noha nincsenek a tartalomhoz dedikált PowerShell-parancsok, olyan parancsfájlokat írhat, amelyek REST vagy .NET API-kat hívhatnak indexek létrehozásához és betöltéséhez.
 
-<a name="check-versions-and-load"></a>
-
-## <a name="check-versions-and-upgrade"></a>Verziók és verziófrissítések keresése
-
-A cikkben szereplő példák interaktívak, és emelt szintű engedélyeket igényelnek. Telepíteni kell az Azure CLI-t. További információ: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
-
-Most már futtathatja az Azure CLI-t a `az` paranccsal a Windows parancssorból, a powershellből vagy a [Azure Cloud Shellból](../cloud-shell/overview.md)is. A PowerShell néhány olyan parancssori kiegészítési funkciót is biztosít, amely nem érhető el a Windows-parancssorból. 
-
-### <a name="check-the-azure-cli-version"></a>Az Azure CLI verziójának keresése
-
-Ha nem biztos abban, hogy az Azure CLI telepítve van-e, futtassa a következő parancsot ellenőrzési lépésként. 
-
-```azurecli-interactive
-az --version
-```
-Ha ez a parancs nem működik, tekintse meg az Azure CLI [telepítését](/cli/azure/install-azure-cli) az Azure CLI telepítésének beszerzéséhez című témakört.
-
-Ha a 2.11.0 vagy újabb verziója van telepítve, a parancs futtatásával `az upgrade` frissítheti a CLI-t a legújabb verzióra.
-
-```azurecli-interactive
-az upgrade
-```
-
-### <a name="connect-to-azure-with-a-browser-sign-in-token"></a>Kapcsolódás az Azure-hoz egy böngésző bejelentkezési jogkivonattal
-
-A portál bejelentkezési hitelesítő adatait használhatja az Azure CLI-előfizetéshez való kapcsolódáshoz. Azt is megteheti, hogy [nem interaktív módon tud hitelesítést végezni egy egyszerű szolgáltatással](/cli/azure/authenticate-azure-cli#sign-in-with-a-service-principal).
-
-```azurecli-interactive
-az login
-```
-
-Ha több Azure-előfizetéssel rendelkezik, állítsa be az Azure-előfizetését. A jelenlegi előfizetések listájának megtekintéséhez futtassa ezt a parancsot.
-
-```azurecli-interactive
-az account list --output table
-```
-
-Az előfizetés megadásához futtassa a következő parancsot. A következő példában az előfizetés neve: `ContosoSubscription` .
-
-```azurecli-interactive
-az account set --subscription "ContosoSubscription"
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 <a name="list-search-services"></a>
 
@@ -262,7 +221,7 @@ az network vnet subnet update \
 id=$(az search service show \
     --resource-group <resource-group-name> \
     --name <service-name> \
-    --query [id]' \
+    --query [id] \
     --output tsv)
 
 # Create the private endpoint

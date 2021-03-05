@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/24/2021
+ms.date: 03/03/2021
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 2acc3d104786be330e3e799ad7bd96d703587581
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
+ms.openlocfilehash: 77a1c02c1ec59778521104e57f3bf3de8e52fa44
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738990"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177414"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Az Azure import/export szolgáltatás használata az Azure-ba való adatimportálásra Blob Storage
 
@@ -104,46 +104,57 @@ Az alábbi lépések végrehajtásával hozzon létre egy importálási feladato
 1. Jelentkezzen be a következőre: https://portal.azure.com/ .
 2. **Importálási/exportálási feladatok** keresése.
 
-    ![Importálási/exportálási feladatok keresése](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
+   ![Importálási/exportálási feladatok keresése](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
 
 3. Válassza a **+ Új** lehetőséget.
 
-    ![Új létrehozásához válassza az új lehetőséget. ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
+   ![Új létrehozásához válassza az új lehetőséget. ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
 
 4. Az **alapjaiban**:
 
-   * Válassza **az Importálás az Azure-ba** lehetőséget.
-   * Adjon meg egy leíró nevet az importálási feladatokhoz. A név használatával követheti nyomon a feladatok állapotát.
-       * A név csak kisbetűket, számokat és kötőjeleket tartalmazhat.
-       * A névnek betűvel kell kezdődnie, és nem tartalmazhat szóközt.
-   * Válasszon egy előfizetést.
-   * Adjon meg vagy válasszon ki egy erőforráscsoportot.
+   1. Válasszon egy előfizetést.
+   1. Válasszon ki egy erőforráscsoportot, vagy válassza az **új létrehozása** elemet, és hozzon létre egy újat.
+   1. Adjon meg egy leíró nevet az importálási feladatokhoz. A név használatával követheti nyomon a feladatok állapotát.
+      * A név csak kisbetűket, számokat és kötőjeleket tartalmazhat.
+      * A névnek betűvel kell kezdődnie, és nem tartalmazhat szóközt.
 
-     ![Importálási feladatok létrehozása – 1. lépés](./media/storage-import-export-data-to-blobs/import-to-blob-3.png)
+   1. Válassza **az Importálás az Azure-ba** lehetőséget.
+
+    ![Importálási feladatok létrehozása – 1. lépés](./media/storage-import-export-data-to-blobs/import-to-blob-3.png)
+
+    Válassza a **Next (tovább): feladatok részletei >** a folytatáshoz.
 
 5. A **feladatok részletei**:
 
-   * Töltse fel a meghajtó-előkészítési lépés során beszerzett meghajtó-napló fájljait. Ha `waimportexport.exe version1` használta, töltsön fel egy fájlt minden előkészített meghajtóra. Ha a naplófájl mérete meghaladja a 2 MB-ot, akkor használhatja a `<Journal file name>_DriveInfo_<Drive serial ID>.xml` fájlt is a Journal-fájllal.
-   * Válassza ki a cél Storage-fiókot, ahol az adat található.
-   * A lemorzsolódási helye automatikusan kitöltődik a kiválasztott Storage-fiók régiója alapján.
+   1. Töltse fel az előző 1. lépésben létrehozott naplófájlokat [: Készítse elő a meghajtókat](#step-1-prepare-the-drives). Ha `waimportexport.exe version1` használta, töltsön fel egy fájlt minden előkészített meghajtóra. Ha a naplófájl mérete meghaladja a 2 MB-ot, akkor használhatja a `<Journal file name>_DriveInfo_<Drive serial ID>.xml` fájlt is a Journal-fájllal.
+   1. Válassza ki a cél Azure-régiót a rendeléshez.
+   1. Válassza ki az importáláshoz használandó Storage-fiókot.
+      
+      A lemorzsolódási helye automatikusan kitöltődik a kiválasztott Storage-fiók régiója alapján.
+   1. Ha nem szeretné menteni a részletes naplót, törölje a **részletes napló mentése a "waimportexport" blob-tárolóban** lehetőséget.
 
-   ![Importálási feladatok létrehozása – 2. lépés](./media/storage-import-export-data-to-blobs/import-to-blob-4.png)
+   ![Importálási feladatok létrehozása – 2. lépés](./media/storage-import-export-data-to-blobs/import-to-blob-4.png).
 
-6. **Visszaszállítási adatok**:
+   Válassza a **Tovább: szállítás >** a folytatáshoz.
 
-   * Válassza ki a szolgáltatót a legördülő listából. Ha a FedEx/DHL-től eltérő szolgáltatót szeretne használni, válasszon ki egy meglévő lehetőséget a legördülő menüből. Lépjen kapcsolatba Azure Data Box operatív csapatával a `adbops@microsoft.com`  használni kívánt szolgáltatóra vonatkozó információkkal.
-   * Adjon meg egy érvényes, a szállítóval létrehozott számlaszámot. A Microsoft ezt a fiókot használja a meghajtók visszaszállításához az importálási feladatok befejezését követően. Ha nem rendelkezik fiókkal, hozzon létre egy [FedEx](https://www.fedex.com/us/oadr/) vagy [DHL](https://www.dhl.com/) Carrier-fiókot.
-   * Adjon meg egy teljes és érvényes nevet, telefont, e-mailt, házszámot, várost, irányítószámot, államot/régiót és országot/régiót.
+6. A **szállításban**:
+
+   1. Válassza ki a szolgáltatót a legördülő listából. Ha a FedEx/DHL-től eltérő szolgáltatót szeretne használni, válasszon ki egy meglévő lehetőséget a legördülő menüből. Lépjen kapcsolatba Azure Data Box operatív csapatával a `adbops@microsoft.com`  használni kívánt szolgáltatóra vonatkozó információkkal.
+   1. Adjon meg egy érvényes, a szállítóval létrehozott számlaszámot. A Microsoft ezt a fiókot használja a meghajtók visszaszállításához az importálási feladatok befejezését követően. Ha nem rendelkezik fiókkal, hozzon létre egy [FedEx](https://www.fedex.com/us/oadr/) vagy [DHL](https://www.dhl.com/) Carrier-fiókot.
+   1.  Adjon meg egy teljes és érvényes nevet, telefont, e-mailt, utcanév-címet, várost, irányítószámot, államot/régiót és országot/régiót.
 
        > [!TIP]
        > E-mail-cím egyetlen felhasználóhoz való megadása helyett adjon meg egy csoportos e-mailt. Ez biztosítja, hogy értesítést kapjon, még akkor is, ha a rendszergazda elhagyja.
 
-     ![Importálási feladatok létrehozása – 3. lépés](./media/storage-import-export-data-to-blobs/import-to-blob-5.png)
+   ![Importálási feladatok létrehozása – 3. lépés](./media/storage-import-export-data-to-blobs/import-to-blob-5.png)
 
-7. Az **összegzésben**:
+   A folytatáshoz válassza a **felülvizsgálat + létrehozás** lehetőséget.
 
-   * Tekintse át az összegzésben megadott feladattal kapcsolatos információkat. Jegyezze fel a feladatok nevét és az Azure-adatközpontok szállítási címeit, hogy a lemezeket vissza lehessen szállítani az Azure-ba. Ezeket az információkat később a szállítási címkén lehet használni.
-   * Az importálási feladatok létrehozásához kattintson **az OK** gombra.
+7. A sorrend összegzése:
+
+   1. Tekintse át a **feltételeket**, majd válassza az "Elfogadom, hogy a megadott információk helyesek, és fogadja el a feltételeket és a kikötéseket" lehetőséget. Az érvényesítés Ekkor megtörténik.
+   1. Tekintse át az összegzésben megadott feladattal kapcsolatos információkat. Jegyezze fel a feladatok nevét és az Azure-adatközpontok szállítási címeit, hogy a lemezeket vissza lehessen szállítani az Azure-ba. Ezeket az információkat később a szállítási címkén lehet használni.
+   1. Válassza a **Létrehozás** lehetőséget.
 
      ![Importálási feladatok létrehozása – 4. lépés](./media/storage-import-export-data-to-blobs/import-to-blob-6.png)
 

@@ -12,12 +12,12 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-java
-ms.openlocfilehash: 51b7f6e814a9fad286a934466daeb1ffced225c1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cbe4942b63389faab00861438a0149b68c0e89c0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968060"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177300"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>Oktatóanyag: Java-IoT Edge modul létrehozása Linux-eszközökhöz
 
@@ -56,7 +56,7 @@ Az oktatóanyag megkezdése előtt el kellett volna végeznie az előző oktató
 IoT Edge modul javában történő fejlesztéséhez telepítse a következő további előfeltételeket a fejlesztői gépre: 
 
 * A Visual Studio Code-hoz készült [Java-bővítménycsomag](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack).
-* A [Java SE Development Kit 10](/azure/developer/java/fundamentals/java-jdk-long-term-support), valamint úgy [állítsa be a `JAVA_HOME` környezeti változót](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/), hogy a JDK-telepítésre mutasson.
+* [Java SE Development Kit 11](/azure/developer/java/fundamentals/java-jdk-long-term-support), és [állítsa be a `JAVA_HOME` környezeti változót](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) , hogy a JDK-telepítésre mutasson.
 * [Maven](https://maven.apache.org/)
 
    >[!TIP]
@@ -70,7 +70,7 @@ Az alábbi lépések egy IoT Edge modul-projektet hoznak létre, amely a Azure I
 
 Létrehozhat egy Java-megoldást, amelyet a saját kódjával testreszabhat.
 
-1. A Visual Studio Code-ban **View** kattintson  >  a **parancs paletta** megtekintése elemre a vs Code parancs paletta megnyitásához.
+1. A Visual Studio Code-ban kattintson  >  a **parancs paletta** megtekintése elemre a vs Code parancs paletta megnyitásához.
 
 2. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** parancsot. Kövesse a parancskatalógusban található utasításokat a megoldás létrehozásához.
 
@@ -238,7 +238,7 @@ A Visual Studio Code jelenleg a Linux AMD64 és Linux ARM32v7-eszközökhöz has
 
 Az előző szakaszban létrehozott egy IoT Edge megoldást, és hozzáadta a kódot a **JavaModule** , hogy kiszűrje azokat az üzeneteket, amelyekben a jelentett gép hőmérséklete az elfogadható határérték alá esik. Most hozza létre a megoldást tároló képként, és küldje el a tároló-beállításjegyzékbe.
 
-1. Nyissa meg a vs Code integrált terminált a terminál **megtekintése** lehetőség kiválasztásával  >  **Terminal**.
+1. Nyissa meg a vs Code integrált terminált a terminál **megtekintése** lehetőség kiválasztásával  >  .
 
 2. Jelentkezzen be a Docker-be a következő parancs beírásával a terminálon. Jelentkezzen be a felhasználónévvel, a jelszóval és a bejelentkezési kiszolgálóval az Azure Container registryből. Ezeket az értékeket a beállításjegyzék **hozzáférési kulcsok** részéből kérheti le a Azure Portal.
 

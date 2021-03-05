@@ -6,13 +6,13 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 02/28/2021
-ms.openlocfilehash: a5aae4013067ba37334e3e85a9e7ef882efd1dd2
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.date: 03/04/2021
+ms.openlocfilehash: 4dc29c8b52a3d0953445666672a716af013ee408
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107676"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176433"
 ---
 # <a name="what-are-security-policies-initiatives-and-recommendations"></a>Mik azok a biztonsági szabályzatok, kezdeményezések és javaslatok?
 
@@ -25,6 +25,7 @@ Az Azure Policy-ben létrehozott Azure Policy-definíció egy szabály az ellen�
 
 A szabályzat-definíciók (beépített vagy egyéni) megvalósításához hozzá kell rendelnie őket. Ezen szabályzatok bármelyike hozzárendelhető az Azure Portalon, a PowerShellben vagy az Azure CLI-n.
 
+A Azure Policy különböző típusú házirendekkel rendelkezik. Security Center főleg olyan "naplózási" házirendeket használ, amelyek bizonyos feltételeket és konfigurációkat ellenőriznek, majd jelentést tesznek a megfelelőségről. Léteznek olyan "kényszerítő" szabályzatok is, amelyek a biztonságos beállítások alkalmazására használhatók.
 
 ## <a name="what-is-a-security-initiative"></a>Mi az a biztonsági kezdeményezés?
 
@@ -38,7 +39,7 @@ Az alapértelmezett kezdeményezés automatikusan hozzá van rendelve a Azure Se
 
 Security Center a következő lehetőségeket kínálja a biztonsági kezdeményezésekkel és házirendekkel való munkavégzéshez:
 
-- **A beépített alapértelmezett kezdeményezés megtekintése és szerkesztése** – a Security Center engedélyezésekor az "Azure biztonsági teljesítményteszt" nevű kezdeményezés automatikusan hozzá van rendelve az összes Security Center regisztrált előfizetéshez. A kezdeményezés testreszabásához engedélyezheti vagy letilthatja az egyes házirendeket. Tekintse meg a [beépített biztonsági szabályzatok](./policy-reference.md) listáját, amelyből megismerheti a rendelkezésre álló lehetőségeket.
+- **A beépített alapértelmezett kezdeményezés megtekintése és szerkesztése** – a Security Center engedélyezésekor az "Azure biztonsági teljesítményteszt" nevű kezdeményezés automatikusan hozzá van rendelve az összes Security Center regisztrált előfizetéshez. A kezdeményezés testreszabásához a szabályzat paramétereinek szerkesztésével engedélyezheti vagy letilthatja az egyéni házirendeket. Tekintse meg a [beépített biztonsági szabályzatok](./policy-reference.md) listáját, amelyből megismerheti a rendelkezésre álló lehetőségeket.
 
 - **Saját egyéni kezdeményezések hozzáadása** – Ha testre szeretné szabni az előfizetésre alkalmazott biztonsági kezdeményezéseket, akkor a Security Centeron belül megteheti. Ezután javaslatokat fog kapni, ha a gépek nem követik a létrehozott házirendeket. Az egyéni szabályzatok létrehozásával és hozzárendelésével kapcsolatos utasításokért lásd: [egyéni biztonsági kezdeményezések és házirendek használata](custom-security-policies.md).
 
@@ -46,9 +47,9 @@ Security Center a következő lehetőségeket kínálja a biztonsági kezdemény
 
 ## <a name="what-is-a-security-recommendation"></a>Mi az a biztonsági javaslat?
 
-Azure Security Center rendszeresen elemzi az Azure-erőforrások biztonsági állapotát az esetleges biztonsági rések azonosítása érdekében. Ezután javaslatokat tesz a biztonsági rések megoldására. A javaslat azt eredményezi, hogy az erőforrásokat a vonatkozó szabályzatok alapján állapítja meg, és azonosítja azokat az erőforrásokat, amelyek nem felelnek meg a megadott követelményeknek.
+A szabályzatok használatával Security Center rendszeresen elemzi az erőforrások megfelelőségi állapotát, hogy azonosítsa a lehetséges biztonsági hibás konfigurációkat és gyengeségeket. Ezután javaslatokat ad a problémák megoldására. A javaslatok az erőforrások a vonatkozó házirendekkel való értékelésének, valamint a meghatározott követelményeknek nem megfelelő erőforrások azonosításának eredményei.
 
-A Azure Security Center a választott kezdeményezéseken alapuló biztonsági javaslatokat tesz. 
+A Security Center a választott kezdeményezéseken alapuló biztonsági javaslatokat tesz. Ha a kezdeményezés szabályzata össze van hasonlítva az erőforrásokkal, és egy vagy több nem megfelelőnek minősül, akkor a Security Center.
 
 A javaslatok olyan műveletek, amelyekkel biztonságossá teheti és megerősítheti az erőforrásait. Minden javaslat a következő információkat tartalmazza:
 

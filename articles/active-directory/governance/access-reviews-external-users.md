@@ -3,7 +3,7 @@ title: A Azure AD Identity Governance használatával áttekintheti és eltávol
 description: Hozzáférési felülvizsgálatok használata a partnerszervezetek tagjaiból való hozzáférés megszüntetéséhez
 services: active-directory
 documentationcenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 09/06/2020
-ms.author: barclayn
-ms.openlocfilehash: 19f88da6a678221cde66bf61668d16ba9ab998a4
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.author: ajburnle
+ms.openlocfilehash: fe68ec498d17ec20778c8f34fc6ffa1f0964c44e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677310"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176960"
 ---
 # <a name="use-azure-active-directory-azure-ad-identity-governance-to-review-and-remove-external-users-who-no-longer-have-resource-access"></a>Az Azure Active Directory (Azure AD) identitás-szabályozás használatával áttekintheti és eltávolíthatja azokat a külső felhasználókat, akik már nem rendelkeznek erőforrás-hozzáféréssel
 
@@ -65,14 +65,15 @@ Azok a felhasználók, akik már nem férnek hozzá a bérlő összes erőforrá
 
 A felülvizsgálat befejeződése után a **Results (eredmények** ) oldalon látható az egyes külső identitások által adott válasz áttekintése. Dönthet úgy, hogy automatikusan alkalmazza az eredményeket, és lehetővé teszi a hozzáférési felülvizsgálatok letiltását és törlését. Azt is megteheti, hogy áttekinti a megadott válaszokat, és eldönti, hogy szeretné-e eltávolítani a felhasználó hozzáférését, vagy ha további információkat szeretne kapni a döntés meghozatala előtt. Ha egyes felhasználók továbbra is hozzáférhetnek az olyan erőforrásokhoz, amelyeket még nem vizsgált meg, használhatja a felülvizsgálatot a felderítés részeként, és gazdagíthatja a következő felülvizsgálati és igazolási ciklust.
 
-## <a name="disable-and-delete-external-identities-with-azure-ad-access-reviews-preview"></a>Külső identitások letiltása és törlése az Azure AD hozzáférési felülvizsgálatokkal (előzetes verzió)
+## <a name="disable-and-delete-external-identities-with-azure-ad-access-reviews"></a>Külső identitások letiltása és törlése az Azure AD hozzáférési felülvizsgálatokkal
 
-A nem kívánt külső identitások más erőforrásokból, például csoportokból vagy alkalmazásokból való eltávolításának lehetősége mellett az Azure AD hozzáférési felülvizsgálatai letilthatják a külső identitásokat a bérlőbe való bejelentkezéstől, és 30 nap elteltével törölhetik a bérlő külső identitásait. Miután kiválasztotta a **felhasználó letiltását 30 napig, majd eltávolítja a felhasználót a bérlőből** , a felülvizsgálat 30 napig a "alkalmazás" állapotban marad. Ezen időszak alatt a beállítások, eredmények, felülvizsgálók vagy naplók az aktuális felülvizsgálat alatt nem tekinthetők meg és nem konfigurálhatók. 
+A nem kívánt külső identitások más erőforrásokból, például csoportokból vagy alkalmazásokból való eltávolításának lehetősége mellett az Azure AD hozzáférési felülvizsgálatai letilthatják a külső identitásokat a bérlőbe való bejelentkezéstől, és 30 nap elteltével törölhetik a bérlő külső identitásait. Miután kiválasztotta a **felhasználó letiltását 30 napig, majd eltávolítja a felhasználót a bérlőből**, a felülvizsgálat 30 napig a "alkalmazás" állapotban marad. Ezen időszak alatt a beállítások, eredmények, felülvizsgálók vagy naplók az aktuális felülvizsgálat alatt nem tekinthetők meg és nem konfigurálhatók. 
 
 ![befejezési beállítások](media/access-reviews-external-users/upon-completion-settings.png)
 
-Új hozzáférési felülvizsgálat létrehozásakor a "befejezési beállítások" szakaszban a **megtagadott felhasználókra vonatkozó művelet** megadásával megadható, hogy a **felhasználók 30 napig jelentkezzenek be, majd a bérlőből távolítsák el a felhasználót** .
-Ez a beállítás, amely jelenleg előzetes verzióban érhető el, lehetővé teszi külső identitások azonosítását, blokkolását és törlését az Azure AD-bérlőből. A felülvizsgáló által áttekintett és megtagadott külső identitások le lesznek tiltva és törlődnek, az erőforrás-hozzáféréstől vagy a csoporttagságtól függetlenül. Ez a beállítás a legutóbb Utolsó lépésként használatos, miután ellenőrizte, hogy a külső felhasználók – áttekintés többé nem hordozzák az erőforrás-hozzáférést, és biztonságosan eltávolíthatók a bérlőtől, vagy ha meg szeretné győződni arról, hogy azok el lesznek távolítva, függetlenül attól, hogy azok állandó hozzáféréssel rendelkeznek. A "letiltás és törlés" funkció először blokkolja a külső felhasználót, így elkerülheti a bérlőbe való bejelentkezés és az erőforrások elérésének lehetőségét. Ebben a szakaszban nem vonja vissza az erőforrás-hozzáférést, és ha újra szeretné létrehozni a külső felhasználót, a bejelentkezést újra lehet konfigurálni. Ha további műveletre nincs szükség, a rendszer 30 nap elteltével törli a letiltott külső identitást, eltávolítja a fiókot és a hozzáférését.
+Új hozzáférési felülvizsgálat létrehozásakor a "befejezési beállítások" szakaszban a **megtagadott felhasználókra vonatkozó művelet** megadásával megadható, hogy a **felhasználók 30 napig jelentkezzenek be, majd a bérlőből távolítsák el a felhasználót**.
+
+Ezzel a beállítással azonosíthatja, letilthatja és törölheti az Azure AD-bérlő külső identitásait. A felülvizsgáló által áttekintett és megtagadott külső identitások le lesznek tiltva és törlődnek, az erőforrás-hozzáféréstől vagy a csoporttagságtól függetlenül. Ez a beállítás a legutóbb Utolsó lépésként használatos, miután ellenőrizte, hogy a külső felhasználók – áttekintés többé nem hordozzák az erőforrás-hozzáférést, és biztonságosan eltávolíthatók a bérlőtől, vagy ha meg szeretné győződni arról, hogy azok el lesznek távolítva, függetlenül attól, hogy azok állandó hozzáféréssel rendelkeznek. A "letiltás és törlés" funkció először blokkolja a külső felhasználót, így elkerülheti a bérlőbe való bejelentkezés és az erőforrások elérésének lehetőségét. Ebben a szakaszban nem vonja vissza az erőforrás-hozzáférést, és ha újra szeretné létrehozni a külső felhasználót, a bejelentkezést újra lehet konfigurálni. Ha további műveletre nincs szükség, a rendszer 30 nap elteltével törli a letiltott külső identitást, eltávolítja a fiókot és a hozzáférését.
 
 ## <a name="next-steps"></a>Következő lépések
 

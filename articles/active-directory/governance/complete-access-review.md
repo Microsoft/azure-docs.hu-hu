@@ -16,12 +16,12 @@ ms.date: 02/08/2021
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f1abbabb9197011b826e58d518ddff4364edab7
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: e31b9ce115ebe0723a9d082aaddd8056e486ed27
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008199"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176977"
 ---
 # <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>A csoportok és alkalmazások hozzáférési felülvizsgálatának befejezése az Azure AD hozzáférési felülvizsgálatokban
 
@@ -59,7 +59,7 @@ Nyomon követheti a folyamat előrehaladását, mivel a véleményezők befejezi
     ![Vendég hozzáférésének áttekintése Microsoft 365 csoportok között](./media/complete-access-review/all-company-group-results.png)
 
 
-    Ha olyan hozzáférési felülvizsgálatot tekint meg, amely Microsoft 365 csoportokban (előzetes verzió) keresztül ellenőrzi a vendég hozzáférését, az áttekintő panel felsorolja az egyes csoportokat a felülvizsgálatban. 
+    Ha olyan hozzáférési felülvizsgálatot tekint meg, amely a vendég Microsoft 365 csoportok közötti hozzáférését tekinti át, az Áttekintés panelen a felülvizsgálatban szereplő egyes csoportok szerepelnek. 
    
     ![vendég hozzáférésének áttekintése Microsoft 365 csoportok között](./media/complete-access-review/review-guest-access-across-365-groups.png)
 

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla, rarayudu
 ms.topic: conceptual
-ms.date: 02/18/2021
-ms.openlocfilehash: 642fa044b3272e311769ddbcc5462cb396563652
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 02/22/2021
+ms.openlocfilehash: 21edde3eba76b565332acb9c67225f3bbb0fe803
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702555"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177283"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Biztonságos hozzáférés és az adatAzure Logic Apps
 
@@ -210,13 +210,17 @@ A [Azure Portal](https://portal.azure.com)adjon hozzá egy vagy több engedélye
 
    * Másik jogcím típusának hozzáadásához válassza a **standard jogcím hozzáadása** lehetőséget, válassza ki a jogcím típusát, és adja meg a jogcím értékét.
 
-   * Saját Jogcím hozzáadásához válassza az **egyéni jogcím hozzáadása** lehetőséget, és adja meg az egyéni jogcím értékét.
+   * Saját Jogcím hozzáadásához válassza az **egyéni jogcím hozzáadása** lehetőséget. További információkért lásd: [választható jogcímek megadása az alkalmazáshoz](../active-directory/develop/active-directory-optional-claims.md). A rendszer ezután az egyéni jogcímet a JWT AZONOSÍTÓjának részeként tárolja; például: `"tid": "72f988bf-86f1-41af-91ab-2d7cd011db47"` . 
 
 1. Másik engedélyezési házirend hozzáadásához válassza a **házirend hozzáadása** lehetőséget. Az előző lépések megismétlésével állítsa be a szabályzatot.
 
 1. Amikor elkészült, válassza a **Mentés** lehetőséget.
 
 1. Ha a `Authorization` hozzáférési jogkivonat fejlécét szeretné felvenni a kérelmeken alapuló triggerek kimenetében, tekintse meg az ["engedélyezés" fejléc belefoglalása a kérelem-trigger kimenetei közé](#include-auth-header).
+
+
+A munkafolyamat-tulajdonságok, például a szabályzatok nem jelennek meg a logikai alkalmazás kódjának nézetében a Azure Portal. Ha programozott módon szeretné elérni a szabályzatokat, hívja meg a következő API-t Azure Resource Manager (ARM) használatával: `https://management.azure.com/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group-name}/providers/Microsoft.Logic/workflows/{your-workflow-name}?api-version=2016-10-01&_=1612212851820` . Győződjön meg arról, hogy az Azure-előfizetési azonosító, az erőforráscsoport neve és a munkafolyamat neve helyőrző értékeket cseréli ki.
+
 
 <a name="define-authorization-policy-template"></a>
 

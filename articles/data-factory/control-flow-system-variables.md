@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: cb19b7e8c5271e1106e69c98d5bd17a1bcb822bf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3da450ce1130b693fa346b4a6f4b42f6a0fd60a3
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385285"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174206"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Azure Data Factory által támogatott rendszerváltozók
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -20,9 +20,10 @@ ms.locfileid: "100385285"
 Ez a cikk a Azure Data Factory által támogatott rendszerváltozókat ismerteti. Ezeket a változókat kifejezésekben használhatja Data Factory entitások definiálásához.
 
 ## <a name="pipeline-scope"></a>Folyamat hatóköre
+
 Ezeket a rendszerváltozókat a folyamat JSON-ban bárhol lehet hivatkozni.
 
-| Változó neve | Description |
+| Változó neve | Leírás |
 | --- | --- |
 | @pipeline(). DataFactory |Annak az adatelőállítónak a neve, amelyen a folyamat fut |
 | @pipeline(). Folyamat |A folyamat neve |
@@ -36,31 +37,35 @@ Ezeket a rendszerváltozókat a folyamat JSON-ban bárhol lehet hivatkozni.
 >Az triggerrel kapcsolatos dátum/idő rendszerváltozók (a folyamat és az aktiválási hatókörök esetében) az UTC dátumokat ISO 8601 formátumban adják vissza, például: `2017-06-01T22:20:00.4061448Z` .
 
 ## <a name="schedule-trigger-scope"></a>Trigger hatókörének ütemterve
+
 Ezeket a rendszerváltozókat az eseményindító JSON-ban bárhol lehet hivatkozni [ScheduleTrigger](concepts-pipeline-execution-triggers.md#schedule-trigger)típusú eseményindítók esetén.
 
-| Változó neve | Description |
+| Változó neve | Leírás |
 | --- | --- |
 | @trigger().scheduledTime |Az az idő, amikor az eseményindító ütemezve lett a folyamat futásának meghívására. |
 | @trigger(). kezdő időpont |Az az idő, amikor az eseményindító **ténylegesen** elindította a folyamat futtatását. Ez kis mértékben eltérhet a trigger ütemezett idejétől. |
 
 ## <a name="tumbling-window-trigger-scope"></a>Kiesési ablak triggerének hatóköre
+
 Ezeket a rendszerváltozókat az eseményindító JSON-ban bárhol lehet hivatkozni [TumblingWindowTrigger](concepts-pipeline-execution-triggers.md#tumbling-window-trigger)típusú eseményindítók esetén.
 
-| Változó neve | Description |
+| Változó neve | Leírás |
 | --- | --- |
 | @trigger(). outputs. windowStartTime |Az trigger futtatásához társított ablak kezdete. |
 | @trigger(). outputs. windowEndTime |Az trigger futtatásához társított ablak vége. |
 | @trigger().scheduledTime |Az az idő, amikor az eseményindító ütemezve lett a folyamat futásának meghívására. |
 | @trigger(). kezdő időpont |Az az idő, amikor az eseményindító **ténylegesen** elindította a folyamat futtatását. Ez kis mértékben eltérhet a trigger ütemezett idejétől. |
 
-## <a name="event-based-trigger-scope"></a>Eseményvezérelt eseményindító hatóköre
+## <a name="storage-event-trigger-scope"></a>Tárolási esemény eseményindítójának hatóköre
+
 Ezeket a rendszerváltozókat az eseményindító JSON-ban bárhol lehet hivatkozni [BlobEventsTrigger](concepts-pipeline-execution-triggers.md#event-based-trigger)típusú eseményindítók esetén.
 
-| Változó neve | Description |
+| Változó neve | Leírás |
 | --- | --- |
 | @triggerBody(). fájlnév  |Annak a fájlnak a neve, amelynek létrehozása vagy törlése miatt a trigger tüzet okozott.   |
 | @triggerBody(). mappanév  |A által megadott fájlt tartalmazó mappa elérési útja `@triggerBody().fileName` . A mappa elérési útjának első szegmense az Azure Blob Storage tároló neve.  |
 | @trigger(). kezdő időpont |Az az idő, amikor a trigger kezdeményezte a folyamat futtatását. |
 
 ## <a name="next-steps"></a>Következő lépések
+
 További információ a változók kifejezésekben való használatáról: [Expression language & functions](control-flow-expression-language-functions.md).

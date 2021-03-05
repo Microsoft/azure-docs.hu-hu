@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 10/16/2020
-ms.openlocfilehash: 3f1e3fd360197310a89a67d43053649d904aeb18
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d125bca5ed67476897eec7cd32a586776d8b1ea8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677609"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176620"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Oktatóanyag: Apache Spark feladatdefiníció létrehozása a szinapszis Studióban
 
@@ -34,7 +34,7 @@ Mielőtt nekilát az oktatóanyagnak, ellenőrizze, hogy megfelel-e a következ�
 
 * Egy Azure szinapszis Analytics-munkaterület. Útmutatásért lásd: [Azure szinapszis Analytics-munkaterület létrehozása](../../machine-learning/how-to-manage-workspace.md).
 * Kiszolgáló nélküli Apache Spark készlet.
-* Egy ADLS Gen2 Storage-fiók. A használni kívánt ADLS Gen2 fájlrendszer **Storage blob-Adattulajdonosának** kell lennie. Ha nem, manuálisan kell hozzáadnia az engedélyt.
+* Egy ADLS Gen2 Storage-fiók. A szolgáltatáshoz használni kívánt ADLS Gen2 fájlrendszer **tárolási blob-Adatközreműködőinek** kell lennie. Ha nem, manuálisan kell hozzáadnia az engedélyt.
 * Ha nem szeretné használni a munkaterület alapértelmezett tárolóját, kapcsolja össze a szükséges ADLS Gen2 Storage-fiókot a szinapszis Studióban. 
 
 ## <a name="create-an-apache-spark-job-definition-for-pyspark-python"></a>Apache Spark feladatdefiníció létrehozása a PySpark (Python)
@@ -162,7 +162,7 @@ Ebben a szakaszban létre fog hozni egy Apache Spark feladatdefiníció a .NET S
 
 ## <a name="submit-an-apache-spark-job-definition-as-a-batch-job"></a>Apache Spark feladatdefiníció beküldése batch-feladatokként
 
-Apache Spark feladatdefiníció létrehozása után elküldheti azt egy Apache Spark készletbe. Győződjön meg arról, hogy a ADLS Gen2 fájlrendszer **Storage blob-Adattulajdonosa** , amellyel dolgozni szeretne. Ha nem, manuálisan kell hozzáadnia az engedélyt.
+Apache Spark feladatdefiníció létrehozása után elküldheti azt egy Apache Spark készletbe. Győződjön meg arról, hogy a **tároló blob-Adatközreműködője** a használni kívánt ADLS Gen2 fájlrendszer. Ha nem, manuálisan kell hozzáadnia az engedélyt.
 
 ### <a name="scenario-1-submit-apache-spark-job-definition"></a>1. forgatókönyv: Apache Spark feladatdefiníció elküldése
  1. A kiválasztásával nyisson meg egy Apache Spark Job definition-ablakot.

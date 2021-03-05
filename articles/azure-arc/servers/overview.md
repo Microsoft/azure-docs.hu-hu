@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan használhatja az Azure arc-kompatibilis kiszolg
 keywords: Azure Automation, DSC, PowerShell, a kívánt állapot konfigurálása, frissítés kezelése, változások követése, leltár, runbookok, Python, grafikus, hibrid
 ms.date: 02/18/2021
 ms.topic: overview
-ms.openlocfilehash: 5692dfaceb15086b04ee951b8ecdf88f73c7d122
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 92de3b1a9cf07c25b13e2d038534e93318882bb1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101686223"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175974"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Mi azok az Azure Arc-kompatibilis kiszolgálók?
 
@@ -23,7 +23,7 @@ Ha a gépet az Azure arc-kompatibilis kiszolgálókhoz kapcsolja, lehetővé tes
 
 - Az Azure Virtual Machines szolgáltatáshoz tartozó szabályzat-hozzárendeléssel megegyező módon rendeljen hozzá [Azure Policy vendég konfigurációkat](../../governance/policy/concepts/guest-configuration.md) . Napjainkban a legtöbb vendég konfigurációs házirend nem alkalmaz konfigurációkat, csak a számítógépen lévő beállításokat naplózzák. Az arc-kompatibilis kiszolgálókkal Azure Policy vendég konfigurációs szabályzatok használatának költségét az Azure Policy [díjszabási útmutatójában](https://azure.microsoft.com/pricing/details/azure-policy/)találja.
 
-- A felügyelt kiszolgálókon a telepített szoftverekkel, a Microsoft-szolgáltatásokkal, a Windows-beállításjegyzékkel és-fájlokkal, valamint a Linux-démonokkal kapcsolatos konfigurációs változások a Azure Automation [change Tracking és a leltár](../../automation/change-tracking/overview.md)használatával.
+- A telepített szoftverekkel, a Microsoft-szolgáltatásokkal, a Windows-beállításjegyzékkel és-fájlokkal, valamint a felügyelt kiszolgálókon futó Linux-démonokkal kapcsolatos konfigurációs változásokat a Azure Automation [change Tracking és a leltár](../../automation/change-tracking/overview.md) és a [Azure Security Center fájl integritásának figyelése](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)használatával végezheti el a kiszolgálókon az [Azure Defender](https://docs.microsoft.com/azure/security-center/defender-for-servers-introduction)
 
 - Figyelheti a csatlakoztatott számítógép vendég operációs rendszerének teljesítményét, és felderítheti az alkalmazás-összetevőket, hogy a folyamatait és függőségeit a [Azure monitor for VMS](../../azure-monitor/vm/vminsights-overview.md)használatával kommunikáló más erőforrásokkal figyelje.
 

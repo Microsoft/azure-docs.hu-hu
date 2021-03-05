@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9e0a645bc580ab3a0794ca6ded1e60159df7d92
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 2038587aebe8fe98bd1adcccef6b895ec7370656
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100090598"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176858"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrálás felhőalapú hitelesítésre előkészített bevezetéssel (előzetes verzió)
 
@@ -184,7 +184,7 @@ Tegye a következőket:
 
    >[!NOTE]
    >A csoport tagjai automatikusan engedélyezve vannak az előkészített bevezetéshez. A beágyazott és a dinamikus csoportok nem támogatottak a szakaszos bevezetéshez.
-   >Új csoport hozzáadásakor a csoportba tartozó felhasználók (egy új csoport számára legfeljebb 200 felhasználó) frissülni fognak a felügyelt Auth immidiatly. A csoportok szerkesztésével (felhasználók hozzáadásával vagy eltávolításával) akár 24 óráig is eltarthat, amíg a módosítások érvénybe lépnek.
+   >Új csoport hozzáadásakor a csoportba tartozó felhasználók (egy új csoport számára legfeljebb 200 felhasználó) frissülni fognak a felügyelt hitelesítés azonnali használatára. A csoportok szerkesztésével (felhasználók hozzáadásával vagy eltávolításával) akár 24 óráig is eltarthat, amíg a módosítások érvénybe lépnek.
    >A zökkenőmentes egyszeri bejelentkezés csak akkor érvényes, ha a felhasználók a zökkenőmentes SSO-csoportban, valamint egy PTA vagy PHS csoportban is szerepelnek.
 
 ## <a name="auditing"></a>Naplózás

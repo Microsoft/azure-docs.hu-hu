@@ -11,17 +11,16 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 07b8c130a2a22554e4cd5b33996d5a5ee967d47f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 083d750db0db050265c93cc658d4f3b6556b850d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029532"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176212"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Azure Machine Learning munkaterület biztonságossá tétele virtuális hálózatokkal
 
 Ebből a cikkből megtudhatja, hogyan védheti meg egy Azure Machine Learning munkaterületet és a hozzá tartozó erőforrásokat egy virtuális hálózatban.
-
 
 Ez a cikk egy öt részes sorozat második része, amely végigvezeti egy Azure Machine Learning munkafolyamat biztonságossá tételének lépésein. Javasoljuk, hogy először olvassa el az első [részt: VNet – áttekintés](how-to-network-security-overview.md) az általános architektúra megismeréséhez. 
 
@@ -296,7 +295,7 @@ A követelmények teljesítése után a következő lépésekkel engedélyezheti
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ez a cikk egy négy részből álló virtuális hálózati sorozat első része. A virtuális hálózatok biztonságossá tételéhez tekintse meg a cikkek további részeit:
+Ez a cikk egy öt részből álló virtuális hálózati sorozat második része. A virtuális hálózatok biztonságossá tételéhez tekintse meg a cikkek további részeit:
 
 * [1. rész: a Virtual Network áttekintése](how-to-network-security-overview.md)
 * [3. rész: a képzési környezet biztonságossá tétele](how-to-secure-training-vnet.md)

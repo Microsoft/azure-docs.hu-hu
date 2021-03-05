@@ -2,7 +2,7 @@
 title: Csoportok hozzáférési felülvizsgálatának létrehozása &-alkalmazásokhoz – Azure AD
 description: Megtudhatja, hogyan hozhat létre hozzáférési felülvizsgálatot a csoporttagokról vagy az alkalmazás-hozzáférésről Azure Active Directory hozzáférési felülvizsgálatokban.
 services: active-directory
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 12/07/2020
-ms.author: barclayn
+ms.date: 3/3/2021
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b12eb95a7840bdbb902701fc644eee30ffe9900f
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 7143c3f9786d41c32ae954ab219197a9cfaa1050
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778589"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176875"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Csoportok és alkalmazások hozzáférési felülvizsgálatának létrehozása az Azure AD hozzáférési felülvizsgálatokban
 
@@ -80,7 +80,7 @@ További információkért lásd a [licencekre vonatkozó követelményeket](acc
     - **Csoport tulajdonosa (k)** (csak akkor érhető el, ha egy csapatra vagy csoportra vonatkozó felülvizsgálatot kell végrehajtani)
     - **Kijelölt felhasználó (k) vagy csoportok**
     - **A felhasználók saját hozzáférést tekinthetnek meg**
-    - **Előnézet A felhasználók felettesei.**
+    - **A felhasználók felettesei.**
     Ha a felhasználók vagy **a** **csoportok tulajdonosainak**  bármelyikét választja, lehetősége van tartalék felülvizsgáló megadására is. A tartalék felülvizsgálók akkor is megtalálhatók, ha a felhasználó nem rendelkezik a címtárban megadott Felettessel, vagy ha a csoport nem rendelkezik tulajdonossal.
 
     ![új hozzáférési felülvizsgálat](./media/create-access-review/new-access-review.png)
@@ -161,7 +161,7 @@ Ha a vendégek felülvizsgálók vannak hozzárendelve, és nem fogadták el a m
 
 Az API-k használatával hozzáférési felülvizsgálatokat is létrehozhat. A csoportok és alkalmazás-felhasználók hozzáférési felülvizsgálatának kezelése a Azure Portalban Microsoft Graph API-k használatával is elvégezhető. További információt az [Azure ad hozzáférési felülvizsgálatok API-referenciája](/graph/api/resources/accessreviews-root?view=graph-rest-beta)című témakörben talál. A mintakód esetében tekintse meg [Az Azure ad hozzáférési felülvizsgálatok Microsoft Graph használatával történő beolvasásának példáját](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Csoportok vagy alkalmazások hozzáférésének ellenőrzése](perform-access-review.md)
 - [Csoportok vagy alkalmazások hozzáférésének áttekintése](review-your-access.md)

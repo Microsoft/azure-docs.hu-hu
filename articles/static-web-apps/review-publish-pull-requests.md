@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: yolasors
-ms.openlocfilehash: 78d2f3b399e26ca0c6036fd74fa1fba49d1f21f4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 1cb5f2f9ac941001efb18301f4a54bd0092920ba
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042776"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172740"
 ---
 # <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps-preview"></a>Lekéréses kérelmek áttekintése éles üzem előtti környezetekben az Azure Static Web Apps előzetes verziójában
 
@@ -109,7 +109,7 @@ Az alkalmazás szakaszos verziói jelenleg nyilvánosan elérhetők az URL-címm
 > [!WARNING]
 > Ügyeljen arra, hogy a bizalmas tartalmat a szakaszos verzióra tegye közzé, mert az üzem előtti környezetekhez való hozzáférés nem korlátozott.
 
-A statikus Web Apps üzembe helyezett alkalmazások számára elérhető üzem előtti környezetek száma a használt SKU-szinttől függ. Az ingyenes szinten például az éles környezet mellett 1 üzem előtti környezet is lehet.
+A statikus Web Apps üzembe helyezett alkalmazások számára elérhető üzem előtti környezetek száma a használt SKU-szinttől függ. Az ingyenes szinten például az éles környezet mellett 3 üzem előtti környezet is lehet.
 
 ## <a name="next-steps"></a>Következő lépések
 

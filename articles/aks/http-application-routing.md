@@ -6,12 +6,12 @@ author: lachie83
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: laevenso
-ms.openlocfilehash: bbedb20d9e5c75fd49c08950bbf5d459130206ce
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 25fc021a48e8936f242df35f7485fc59a93bba13
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125869"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172800"
 ---
 # <a name="http-application-routing"></a>HTTP-alkalmazások útválasztása
 
@@ -26,8 +26,8 @@ Ha a bővítmény engedélyezve van, létrehoz egy DNS-zónát az előfizetésbe
 
 A bővítmény két összetevőt helyez üzembe: egy [Kubernetes bejövő vezérlőt][ingress] és egy [külső DNS-][external-dns] vezérlőt.
 
-- **Beáramló vezérlő** : a bejövő vezérlő a terheléselosztó típusú Kubernetes szolgáltatás használatával érhető el az interneten. A bejövő vezérlő figyeli és megvalósítja a Kubernetes beáramlási [erőforrásait][ingress-resource], amely útvonalakat hoz létre az alkalmazás-végpontokhoz.
-- **Külső DNS-vezérlő** : figyeli a Kubernetes bejövő erőforrásait, és DNS-rekordokat hoz létre a fürthöz tartozó DNS-zónában.
+- **Beáramló vezérlő**: a bejövő vezérlő a terheléselosztó típusú Kubernetes szolgáltatás használatával érhető el az interneten. A bejövő vezérlő figyeli és megvalósítja a Kubernetes beáramlási [erőforrásait][ingress-resource], amely útvonalakat hoz létre az alkalmazás-végpontokhoz.
+- **Külső DNS-vezérlő**: figyeli a Kubernetes bejövő erőforrásait, és DNS-rekordokat hoz létre a fürthöz tartozó DNS-zónában.
 
 ## <a name="deploy-http-routing-cli"></a>HTTP-útválasztás üzembe helyezése: parancssori felület
 
@@ -78,7 +78,7 @@ Ha az Azure Cloud Shellt használja, a `kubectl` már telepítve van. Helyben is
 az aks install-cli
 ```
 
-Az [aks get-credentials][] paranccsal konfigurálható`kubectl` a Kubernetes-fürthöz való csatlakozásra. A következő példa a *MyAKSCluster* nevű AK-fürt hitelesítő adatait kéri le a *MyResourceGroup* :
+Az [az aks get-credentials][] paranccsal konfigurálható `kubectl` a Kubernetes-fürthöz való csatlakozásra. A következő példa a *MyAKSCluster* nevű AK-fürt hitelesítő adatait kéri le a *MyResourceGroup*:
 
 ```azurecli
 az aks get-credentials --resource-group MyResourceGroup --name MyAKSCluster
@@ -163,7 +163,7 @@ service/aks-helloworld created
 ingress.networking.k8s.io/aks-helloworld created
 ```
 
-Nyisson meg egy webböngészőt az *AK- \<CLUSTER_SPECIFIC_DNS_ZONE\> HelloWorld.* , például a *AKS-HelloWorld.9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.IO* , és ellenőrizze, hogy megjelenik-e a bemutató alkalmazás. Az alkalmazás néhány percet is igénybe vehet.
+Nyisson meg egy webböngészőt az *AK- \<CLUSTER_SPECIFIC_DNS_ZONE\> HelloWorld.*, például a *AKS-HelloWorld.9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.IO* , és ellenőrizze, hogy megjelenik-e a bemutató alkalmazás. Az alkalmazás néhány percet is igénybe vehet.
 
 ## <a name="remove-http-routing"></a>HTTP-útválasztás eltávolítása
 
@@ -257,7 +257,7 @@ I0426 21:51:58.042932       9 controller.go:179] ingress backend successfully re
 167.220.24.46 - [167.220.24.46] - - [26/Apr/2018:21:53:20 +0000] "GET / HTTP/1.1" 200 234 "" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)" 197 0.001 [default-aks-helloworld-80] 10.244.0.13:8080 234 0.004 200
 ```
 
-## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
 Távolítsa el a cikkben létrehozott társított Kubernetes-objektumokat a következő használatával: `kubectl delete` .
 
@@ -280,8 +280,8 @@ ingress "aks-helloworld" deleted
 További információ arról, hogyan telepíthet egy HTTPS-védelemmel ellátott bejövő vezérlőt az AK-ban: [https-bejövő forgalom az Azure Kubernetes szolgáltatásban (ak)][ingress-https].
 
 <!-- LINKS - internal -->
-[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
-[az-aks-show]: /cli/azure/aks?view=azure-cli-latest#az-aks-show
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-show]: /cli/azure/aks#az-aks-show
 [ingress-https]: ./ingress-tls.md
 [az-aks-enable-addons]: /cli/azure/aks#az-aks-enable-addons
 [az aks install-cli]: /cli/azure/aks#az-aks-install-cli

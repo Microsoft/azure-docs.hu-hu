@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 03/03/2021
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 8ccc7b641e2bfcb4ea8733b9d4f793229c430bc0
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
+ms.openlocfilehash: e878be5351362923e163c0a6f617b96ab72a36d8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652873"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177553"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Az Azure Import/Export szolgáltatás használata adatok Azure Blob-tárolóból való exportálására
 
@@ -53,38 +53,56 @@ Az alábbi lépések végrehajtásával hozzon létre egy exportálási feladato
 
 4. Az **alapjaiban**:
 
-    - Válassza **az Exportálás az Azure-ból** lehetőséget.
-    - Adjon meg egy leíró nevet az exportálási feladatokhoz. Használja az Ön által választott nevet a feladatok előrehaladásának nyomon követéséhez.
-        - A név csak kisbetűket, számokat, kötőjeleket és aláhúzást tartalmazhat.
-        - A névnek betűvel kell kezdődnie, és nem tartalmazhat szóközt.
-    - Válasszon egy előfizetést.
-    - Adjon meg vagy válasszon ki egy erőforráscsoportot.
+   1. Válasszon egy előfizetést.
+   1. Válasszon ki egy erőforráscsoportot, vagy válassza az **új létrehozása** elemet, és hozzon létre egy újat.
+   1. Adjon meg egy leíró nevet az importálási feladatokhoz. A név használatával követheti nyomon a feladatok állapotát.
+       * A név csak kisbetűket, számokat és kötőjeleket tartalmazhat.
+       * A névnek betűvel kell kezdődnie, és nem tartalmazhat szóközt.
 
-        ![Alapbeállítások](./media/storage-import-export-data-from-blobs/export-from-blob-3.png)
+   1. Válassza **az Exportálás az Azure-ból** lehetőséget.
+
+    ![Az exportálási sorrend alapvető beállításai](./media/storage-import-export-data-from-blobs/export-from-blob-3.png)
+
+    Válassza a **Next (tovább): feladatok részletei >** a folytatáshoz.
 
 5. A **feladatok részletei**:
 
-    - Válassza ki azt a Storage-fiókot, ahol az exportálandó adat található. Használjon egy olyan Storage-fiókot, amely közel van a helyhez.
-    - A lemorzsolódási helye automatikusan kitöltődik a kiválasztott Storage-fiók régiója alapján.
-    - Adja meg a Storage-fiókból az üres meghajtóra vagy meghajtókra exportálni kívánt blob-adatok számát.
-    - Válassza ki a Storage-fiókban lévő összes blob-érték **exportálását** .
+   1. Válassza ki azt az Azure-régiót, ahol az adatai jelenleg vannak.
+   1. Válassza ki azt a Storage-fiókot, amelyről az adatok exportálását szeretné. A helyhez közel lévő Storage-fiókot használjon.
 
-         ![Összes exportálása](./media/storage-import-export-data-from-blobs/export-from-blob-4.png)
+      A rendszer automatikusan kitölti a legördülő helyet a kiválasztott Storage-fiók régiója alapján.
 
-    - Megadhatja, hogy mely tárolók és Blobok exportálhatók.
-        - Az **exportálandó blob megadásához** használja a következőt: **egyenlő** a választóval. Adja meg a blob relatív elérési útját, amely a tároló nevével kezdődik. A legfelső szintű tároló megadásához használja a *$root* .
-        - Az **összes olyan blob megadása**, amelyik előtaggal kezdődik: használja a **Start with** választót. Itt adhatja meg az előtagot, amely a továbbítási perjel (/) kezdetű. Az előtag lehet a tároló nevének előtagja, a teljes tároló neve vagy a teljes tároló neve, amelyet a blob nevének előtagja követ. A hibák elkerülése érdekében érvényes formátumban kell megadnia a blob elérési útját, ahogy az a képernyőképen is látható. További információ: [az érvényes blob-elérési utakra vonatkozó példák](#examples-of-valid-blob-paths).
+   1. Adja meg a Storage-fiókból az üres meghajtóra vagy meghajtókra exportálandó blob-adatok számát. Válasszon egyet a következő három módszer közül:
 
-           ![Kiválasztott tárolók és Blobok exportálása](./media/storage-import-export-data-from-blobs/export-from-blob-5.png)
+      - Válassza ki a Storage-fiókban lévő összes blob-érték **exportálását** .
 
-    - Exportálhatja a blob-lista fájlját.
+        ![Összes exportálása](./media/storage-import-export-data-from-blobs/export-from-blob-4.png)
 
-        ![Exportálás a blob-lista fájljából](./media/storage-import-export-data-from-blobs/export-from-blob-6.png)
+      - Válassza a **kiválasztott tárolók és Blobok** lehetőséget, és adja meg az exportálandó tárolókat és blobokat. A kiválasztási módszerek közül egynél több is használható. A **Hozzáadás** lehetőség kiválasztásával megnyílik egy panel a jobb oldalon, ahol felveheti a kiválasztási karakterláncokat.
+
+        |Beállítás|Leírás|
+        |------|-----------|      
+        |**Tárolók hozzáadása**|Egy tároló összes blobjának exportálása.<br>Válassza a **tárolók hozzáadása** lehetőséget, és adja meg az egyes tárolók nevét.|
+        |**Blobok hozzáadása**|Az exportálandó Blobok egyedi meghatározása.<br>Válassza a **Blobok hozzáadása** lehetőséget. Ezután adja meg a blob relatív elérési útját, amely a tároló nevével kezdődik. A legfelső szintű tároló megadásához használja a *$root* .<br>A hibák elkerülése érdekében érvényes formátumban kell megadnia a blob elérési útját, ahogy az a képernyőképen is látható. További információ: [az érvényes blob-elérési utakra vonatkozó példák](#examples-of-valid-blob-paths).|
+        |**Előtagok hozzáadása**|Egy előtaggal kiválaszthatja a hasonló névvel ellátott tárolók vagy hasonló névvel ellátott Blobok készletét egy tárolóban. Az előtag lehet a tároló neve, a teljes tároló neve vagy egy teljes tároló neve, amelyet a blob nevének előtagja követ. |
+
+        ![Kiválasztott tárolók és Blobok exportálása](./media/storage-import-export-data-from-blobs/export-from-blob-5.png)
+
+    - Válassza az **Exportálás blob-lista fájlból (XML-formátum)** lehetőséget, és válasszon ki egy XML-fájlt, amely tartalmazza a Storage-fiókból exportálandó Blobok elérési útját és előtagjait tartalmazó listát. Az XML-fájlt létre kell majd vennie egy tárolóban a Storage-fiókhoz. A fájl nem lehet üres.
+
+      > [!IMPORTANT]
+      > Ha XML-fájlt használ az exportálandó Blobok kiválasztásához, akkor győződjön meg arról, hogy az XML érvényes elérési utakat és/vagy előtagokat tartalmaz. Ha a fájl érvénytelen, vagy a megadott elérési utak nem felelnek meg, a megrendelés a részleges vagy a nem exportált adatértékekkel végződik.
+
+       Ha szeretné megtudni, hogyan adhat hozzá XML-fájlt egy tárolóhoz, olvassa el az [Exportálás az XML-fájllal](../databox/data-box-deploy-export-ordered.md#export-order-using-xml-file)című témakört.
+
+      ![Exportálás a blob-lista fájljából](./media/storage-import-export-data-from-blobs/export-from-blob-6.png)
 
    > [!NOTE]
-   > Ha az exportálandó blob az adatok másolása során használatban van, az Azure import/export szolgáltatás pillanatképet készít a blobról, és átmásolja a pillanatképet.
+   > Ha az exportálni kívánt blob az adatok másolása során használatban van, az Azure import/export szolgáltatás pillanatképet készít a blobról, és átmásolja a pillanatképet.
 
-6. **Visszaszállítási adatok**:
+   Válassza a **Tovább: szállítás >** a folytatáshoz.
+
+6. A **szállításban**:
 
     - Válassza ki a szolgáltatót a legördülő listából. Ha a FedEx/DHL-től eltérő szolgáltatót szeretne használni, válasszon ki egy meglévő lehetőséget a legördülő menüből. Lépjen kapcsolatba Azure Data Box operatív csapatával a `adbops@microsoft.com`  használni kívánt szolgáltatóra vonatkozó információkkal.
     - Adjon meg egy érvényes, a szállítóval létrehozott számlaszámot. A Microsoft ezt a fiókot használja a meghajtók visszaszállításához az exportálási feladatok befejezése után.
@@ -93,15 +111,76 @@ Az alábbi lépések végrehajtásával hozzon létre egy exportálási feladato
         > [!TIP]
         > E-mail-cím egyetlen felhasználóhoz való megadása helyett adjon meg egy csoportos e-mailt. Ez biztosítja, hogy értesítést kapjon, még akkor is, ha a rendszergazda elhagyja.
 
-7. **Összefoglalás**:
+    A folytatáshoz válassza a **felülvizsgálat + létrehozás** lehetőséget.
 
-    - Tekintse át a feladatok részleteit.
-    - Jegyezze fel a feladatok nevét, és adja meg az Azure Datacenter szállítási címet az Azure-ba történő szállításhoz.
+7. A **felülvizsgálat + létrehozás**:
+
+   1. Tekintse át a feladatok részleteit.
+   1. Jegyezze fel a feladatok nevét, és adja meg az Azure Datacenter szállítási címet az Azure-ba történő szállításhoz.
+
+      > [!NOTE]
+      > Mindig küldje el a lemezeket az adatközpontba a Azure Portal feltüntetve. Ha a lemezeket nem megfelelő adatközpontba szállítják, a rendszer nem dolgozza fel a feladatot.
+
+   1. Tekintse át az adatvédelemre és a forrásadatok törlésére vonatkozó **feltételeket** . Ha elfogadja a feltételeket, jelölje be a feltételek alatt látható jelölőnégyzetet. A megrendelés érvényesítése megkezdődik.
+
+   ![Az exportálási sorrend áttekintése és létrehozása](./media/storage-import-export-data-from-blobs/export-from-blob-6-a.png)
+
+ 1. Az érvényesítési fázisok után válassza a **Létrehozás** lehetőséget.
+
+<!--Replaced text: Steps 4 - end of "Create an export job." Wizard design changes required both screen and text updates.
+
+4. In **Basics**:
+
+    - Select **Export from Azure**.
+    - Enter a descriptive name for the export job. Use the name you choose to track the progress of your jobs.
+        - The name may contain only lowercase letters, numbers, hyphens, and underscores.
+        - The name must start with a letter, and may not contain spaces.
+    - Select a subscription.
+    - Enter or select a resource group.
+
+        ![Basics](./media/storage-import-export-data-from-blobs/export-from-blob-3.png)
+
+5. In **Job details**:
+
+    - Select the storage account where the data to be exported resides. Use a storage account close to where you are located.
+    - The dropoff location is automatically populated based on the region of the storage account selected.
+    - Specify the blob data you wish to export from your storage account to your blank drive or drives.
+    - Choose to **Export all** blob data in the storage account.
+
+         ![Export all](./media/storage-import-export-data-from-blobs/export-from-blob-4.png)
+
+    - You can specify which containers and blobs to export.
+        - **To specify a blob to export**: Use the **Equal To** selector. Specify the relative path to the blob, beginning with the container name. Use *$root* to specify the root container.
+        - **To specify all blobs starting with a prefix**: Use the **Starts With** selector. Specify the prefix, beginning with a forward slash '/'. The prefix may be the prefix of the container name, the complete container name, or the complete container name followed by the prefix of the blob name. You must provide the blob paths in valid format to avoid errors during processing, as shown in this screenshot. For more information, see [Examples of valid blob paths](#examples-of-valid-blob-paths).
+
+           ![Export selected containers and blobs](./media/storage-import-export-data-from-blobs/export-from-blob-5.png)
+
+    - You can export from  the blob list file.
+
+        ![Export from blob list file](./media/storage-import-export-data-from-blobs/export-from-blob-6.png)
+
+   > [!NOTE]
+   > If the blob to be exported is in use during data copy, Azure Import/Export service takes a snapshot of the blob and copies the snapshot.
+
+6. In **Return shipping info**:
+
+    - Select the carrier from the dropdown list. If you want to use a carrier other than FedEx/DHL, choose an existing option from the dropdown. Contact Azure Data Box Operations team at `adbops@microsoft.com`  with the information regarding the carrier you plan to use.
+    - Enter a valid carrier account number that you have created with that carrier. Microsoft uses this account to ship the drives back to you once your export job is complete.
+    - Provide a complete and valid contact name, phone, email, street address, city, zip, state/province, and country/region.
+
+        > [!TIP]
+        > Instead of specifying an email address for a single user, provide a group email. This ensures that you receive notifications even if an admin leaves.
+
+7. In **Summary**:
+
+    - Review the details of the job.
+    - Make a note of the job name and provided Azure datacenter shipping address for shipping disks to Azure.
 
         > [!NOTE]
-        > Mindig küldje el a lemezeket az adatközpontba a Azure Portal feltüntetve. Ha a lemezeket nem megfelelő adatközpontba szállítják, a rendszer nem dolgozza fel a feladatot.
+        > Always send the disks to the datacenter noted in the Azure portal. If the disks are shipped to the wrong datacenter, the job will not be processed.
 
-    - Az exportálási feladatok létrehozásának befejezéséhez kattintson **az OK** gombra.
+    - Click **OK** to complete export job creation.
+-->
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -306,7 +385,7 @@ Ekkor törölheti a feladatot, vagy meghagyhatja. A feladatok 90 nap után autom
 
 ## <a name="check-the-number-of-drives"></a>Meghajtók számának ellenőrzése
 
-Ez a *választható* lépés segít megszabni az exportálási feladatokhoz szükséges meghajtók számát. Ezt a lépést a [támogatott operációsrendszer-verziókat](storage-import-export-requirements.md#supported-operating-systems)futtató Windows rendszereken hajtsa végre.
+Ez a *választható* lépés segít meghatározni az exportálási feladatokhoz szükséges meghajtók számát. Ezt a lépést a [támogatott operációsrendszer-verziókat](storage-import-export-requirements.md#supported-operating-systems)futtató Windows rendszereken hajtsa végre.
 
 1. [Töltse le a WAImportExport 1-es verzióját](https://www.microsoft.com/download/details.aspx?id=42659) a Windows rendszerre.
 2. Bontsa ki az alapértelmezett mappát `waimportexportv1` . Például: `C:\WaImportExportV1`.
@@ -320,7 +399,7 @@ Ez a *választható* lépés segít megszabni az exportálási feladatokhoz szü
 
     A paramétereket a következő táblázat ismerteti:
 
-    |Parancssori paraméter|Description|
+    |Parancssori paraméter|Leírás|
     |--------------------------|-----------------|
     |**/logdir:**|Választható. A naplózási könyvtár. A részletes naplófájlokat a rendszer erre a könyvtárba írja. Ha nincs megadva, a rendszer az aktuális könyvtárat használja a napló könyvtáraként.|
     |**SN**|Kötelező. Az exportálási feladatokhoz tartozó Storage-fiók neve.|
@@ -374,7 +453,7 @@ Number of drives needed:        3
 
 A következő táblázat példákat mutat be a Blobok érvényes elérési útjaira:
 
-   | Szelektor | BLOB elérési útja | Description |
+   | Szelektor | BLOB elérési útja | Leírás |
    | --- | --- | --- |
    | Kezdete |/ |A Storage-fiókban lévő összes blob exportálása |
    | Kezdete |/$root/ |A gyökér tárolóban lévő összes blob exportálása |

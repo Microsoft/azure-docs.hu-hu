@@ -1,17 +1,17 @@
 ---
 title: Geokerítések és térinformatikai összesítés Azure Stream Analytics
 description: Ez a cikk azt ismerteti, hogyan használható a Azure Stream Analytics a geokerítések és a térinformatikai összesítéshez.
-author: krishna0815
-ms.author: krishmam
 ms.service: stream-analytics
+author: jasonwhowell
+ms.author: jasonh
 ms.topic: how-to
 ms.date: 04/02/2019
-ms.openlocfilehash: 7f83fe3a8443ac1b9339a0ddb91ee95414eef437
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: fc9442b01685deb710c49adf6be84af740a11805
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016303"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174988"
 ---
 # <a name="geofencing-and-geospatial-aggregation-scenarios-with-azure-stream-analytics"></a>Geokerítések és térinformatikai összesítési forgatókönyvek Azure Stream Analytics
 
@@ -122,7 +122,7 @@ Az alábbi képen látható a lekérdezés kimenete Power BI irányítópultra.
 ![Eredmény kimenet Power BI irányítópulton](./media/geospatial-scenarios/power-bi-output.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Stream Analytics térinformatikai függvények bemutatása](stream-analytics-geospatial-functions.md)
 * [Térinformatikai függvények (Azure Stream Analytics)](/stream-analytics-query/geospatial-functions)

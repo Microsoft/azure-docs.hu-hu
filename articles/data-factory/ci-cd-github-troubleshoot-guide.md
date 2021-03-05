@@ -7,12 +7,12 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 12/03/2020
-ms.openlocfilehash: 5c33ef9559d9ce67eea62ee7f78425d18010c1cb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d96c467807af868c07be12f52d913f881b82f732
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727957"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175872"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>A CI-CD-k, az Azure DevOps és a GitHub-problémák hibaelhárítása Az ADF-ben 
 
@@ -190,7 +190,7 @@ Nem konfigurálta a OAuth az ADF-hez. Az URL-cím helytelenül van konfigurálva
 
 ##### <a name="resolution"></a>Feloldás
 
-Először a OAuth-hozzáférést kell megadnia az ADF-hez. Ezután a GIT Enterprise-hoz való kapcsolódáshoz a helyes URL-címet kell használnia. A konfigurációt az ügyfél-szervezet (ek) ra kell beállítani, mert az ADF szolgáltatás először próbálkozik. https://hostname/api/v3/search/repositories?q=user%3 <customer credential> .. és sikertelen. Ezután megpróbálja https://hostname/api/v3/orgs/ <vaorg> / <repo> és sikeres lesz. 
+Először a OAuth-hozzáférést kell megadnia az ADF-hez. Ezután a GIT Enterprise-hoz való kapcsolódáshoz a helyes URL-címet kell használnia. A konfigurációt az ügyfél Szervezete (ke) t kell beállítani. Az ADF például először próbálkozik. *https://hostname/api/v3/search/repositories?q=user%3 <customer credential> ...* és sikertelen lesz. Ezután megpróbálja *https://hostname/api/v3/orgs/ <org> / <repo> ...* és sikeres lesz. 
  
 ### <a name="recover-from-a-deleted-data-factory"></a>Helyreállítás a törölt adatok gyárból
 
@@ -203,7 +203,8 @@ A Data Factory csak akkor állítható helyre, ha az ügyfélen van konfigurálv
 
 Ha nincs verziókövetés, nem lehet helyreállítani egy törölt Data Factory a háttérből, mert a szolgáltatás a törölt parancsot fogadja, a példány törlődik, és a biztonsági mentés nem lett tárolva.
 
-#### <a name="resoloution"></a>Resoloution
+#### <a name="resolution"></a>Feloldás
+
 A következő lépésekkel állíthatja helyre a törölt Data Factory, amely a verziókövetés:
 
  * Hozzon létre egy új Azure Data Factory.

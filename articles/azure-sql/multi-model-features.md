@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
-ms.openlocfilehash: d5a067272caf9b072117ba57b7b16f8d78a8b456
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: b16a2fc9f107a8420fb7d05667807a869fa3e00a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791647"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172757"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database--sql-managed-instance"></a>Azure SQL Database & SQL felügyelt példányának többmodelles képességei
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -87,7 +87,7 @@ A [JSON](/sql/relational-databases/json/json-data-sql-server) egy alapszintű SQ
 
 A kapcsolódó modellek helyett a dokumentumok modelljei is használhatók a különböző helyzetekben:
 
-- A séma nagy mértékű normalizálása nem jelent jelentős előnyöket, mert egyszerre fér hozzá az összes mezőhöz, vagy ha soha nem frissíti az objektumok normalizált részeit. A normalizált modell azonban növeli a lekérdezések összetettségét, mert a nagy számú tábla, amelyhez az adatgyűjtéshez csatlakoznia kell.
+- A séma nagy mértékű normalizálása nem jelent jelentős előnyöket, mert az objektumok összes mezőjét egyszerre éri el, vagy nem frissíti az objektumok normalizált részeit. A normalizált modell azonban növeli a lekérdezések összetettségét, mert a nagy számú tábla, amelyhez az adatgyűjtéshez csatlakoznia kell.
 - A JSON-dokumentumokat natív módon használó alkalmazásokkal dolgozik a kommunikációs vagy adatmodellekben, és nem szeretne olyan további réteget bevezetni, amely átalakítja a kapcsolati adatforgalmat a JSON-ba, és fordítva.
 - Egyszerűsíteni kell az adatmodellt a gyermektábla vagy az entitás-érték mintázatok normalizálása révén.
 - JSON formátumban tárolt adatterhelést kell betöltenia vagy exportálnia anélkül, hogy további eszközt kellene elemezni.
@@ -124,7 +124,7 @@ Az XML egy alapszintű SQL Server adatbázismotor [-](/sql/relational-databases/
 
 A kapcsolódó modellek helyett a dokumentumok modelljei is használhatók a különböző helyzetekben:
 
-- A séma nagy mértékű normalizálása nem jelent jelentős előnyöket, mert egyszerre fér hozzá az összes mezőhöz, vagy ha soha nem frissíti az objektumok normalizált részeit. A normalizált modell azonban növeli a lekérdezések összetettségét, mert a nagy számú tábla, amelyhez az adatgyűjtéshez csatlakoznia kell.
+- A séma nagy mértékű normalizálása nem jelent jelentős előnyöket, mert az objektumok összes mezőjét egyszerre éri el, vagy nem frissíti az objektumok normalizált részeit. A normalizált modell azonban növeli a lekérdezések összetettségét, mert a nagy számú tábla, amelyhez az adatgyűjtéshez csatlakoznia kell.
 - Az XML-dokumentumokat natív módon használó alkalmazásokkal folytatott kommunikációt és adatmodelleket használ, és nem szeretne olyan további réteget bevezetni, amely átalakítja a kapcsolati adattípusokat az XML-be, és fordítva.
 - Egyszerűsíteni kell az adatmodellt a gyermektábla vagy az entitás-érték mintázatok normalizálása révén.
 - XML formátumban tárolt adatgyűjtést vagy-exportálást kell végeznie az adatelemzést elvégező további eszköz nélkül.
