@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 87d7d4676c604ca7219b7580eb3ce585282a7f11
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 2dbf7c31e6b0b40fa9dc2d59e86c0ecc731657e1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327240"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172409"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions üzembe helyezési pontok
 
@@ -114,7 +114,7 @@ A központi telepítési beállítás létrehozásához kövesse az alábbi lép
 
     :::image type="content" source="./media/functions-deployment-slots/functions-save-deployment-slot-setting.png" alt-text="Mentse az üzembe helyezési tárolóhely beállítását." border="true":::
 
-## <a name="deployment"></a>Környezet
+## <a name="deployment"></a>Üzembe helyezés
 
 Tárolóhelyek létrehozásakor a tárolóhelyek üresek. A [támogatott üzembe helyezési technológiák](./functions-deployment-technologies.md) bármelyikével üzembe helyezheti az alkalmazást egy tárolóhelyen.
 
@@ -127,7 +127,7 @@ Az összes tárolóhely az üzemi tárolóhelytel azonos számú feldolgozóra m
 
 ## <a name="add-a-slot"></a>Pont felvétele
 
-Hozzáadhat egy tárolóhelyet a [CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create) -n keresztül, vagy a portálon keresztül is. A következő lépések bemutatják, hogyan hozhat létre egy új tárolóhelyet a portálon:
+Hozzáadhat egy tárolóhelyet a [CLI](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-create) -n keresztül, vagy a portálon keresztül is. A következő lépések bemutatják, hogyan hozhat létre egy új tárolóhelyet a portálon:
 
 1. Navigáljon a Function alkalmazáshoz.
 
@@ -141,7 +141,7 @@ Hozzáadhat egy tárolóhelyet a [CLI](/cli/azure/functionapp/deployment/slot?vi
 
 ## <a name="swap-slots"></a>Tárolóhelyek cseréje
 
-A tárolóhelyeket a [CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap) -n keresztül vagy a portálon keresztül lehet cserélni. A következő lépések bemutatják, hogyan lehet felcserélni a tárolóhelyeket a portálon:
+A tárolóhelyeket a [CLI](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-swap) -n keresztül vagy a portálon keresztül lehet cserélni. A következő lépések bemutatják, hogyan lehet felcserélni a tárolóhelyeket a portálon:
 
 1. Navigáljon a Function alkalmazáshoz.
 1. Válassza az **üzembe helyezési** pontok lehetőséget, majd kattintson a **Csere** elemre.
@@ -160,7 +160,7 @@ Ha a swap hibát jelez, vagy egyszerűen vissza kívánja állítani a cserét, 
 
 ## <a name="remove-a-slot"></a>Tárolóhely eltávolítása
 
-Egy tárolóhelyet a [CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete) -n keresztül vagy a portálon lehet eltávolítani. A következő lépések bemutatják, hogyan távolíthat el egy tárolóhelyet a portálon:
+Egy tárolóhelyet a [CLI](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-delete) -n keresztül vagy a portálon lehet eltávolítani. A következő lépések bemutatják, hogyan távolíthat el egy tárolóhelyet a portálon:
 
 1. Navigáljon az **üzembe helyezési** pontokhoz a Function alkalmazásban, majd válassza ki a tárolóhely nevét.
 
@@ -180,13 +180,13 @@ Egy tárolóhelyet a [CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli
 
 ## <a name="automate-slot-management"></a>A tárolóhelyek kezelésének automatizálása
 
-Az [Azure CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest)használatával automatizálhatja a következő műveleteket egy tárolóhelyen:
+Az [Azure CLI](/cli/azure/functionapp/deployment/slot)használatával automatizálhatja a következő műveleteket egy tárolóhelyen:
 
-- [létrehozása](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)
-- [törlése](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)
-- [list](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
-- [swap](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
-- [automatikus felcserélés](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
+- [létrehozása](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-create)
+- [delete](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-delete)
+- [listáját](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-list)
+- [swap](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-swap)
+- [automatikus felcserélés](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-auto-swap)
 
 ## <a name="change-app-service-plan"></a>App Service terv módosítása
 
@@ -207,7 +207,7 @@ A tárolóhelyek App Service tervének módosításához kövesse az alábbi lé
 
     :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-apply.png" alt-text="Módosítsa a Azure Portal App Service tervét." border="true":::
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -233,6 +233,6 @@ Az üzembe helyezési pontok két szinten támogatottak:
 | Linux Premium             | Általános elérhetőség  |
 | Linux dedikált           | Általános elérhetőség |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Üzembe helyezési technológiák Azure Functions](./functions-deployment-technologies.md)

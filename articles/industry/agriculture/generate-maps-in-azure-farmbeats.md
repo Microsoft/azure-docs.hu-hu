@@ -4,20 +4,20 @@ description: Ez a cikk bemutatja, hogyan hozhatja ki a térképeket az Azure Far
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 92228c691c323bc0b9621dfc7413d86c5c2669e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: v-ummehabiba
+ms.openlocfilehash: d0176fd337abd37f97a6dbe5cf7c68ccf94114d0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84709062"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102173864"
 ---
 # <a name="generate-maps"></a>Térképek létrehozása
 
 Az Azure FarmBeats használatával a következő térképeket hozhatja ki a műholdképek és az érzékelő adatbemenetek használatával. A Maps segítségével megtekintheti a farm földrajzi helyét, és azonosíthatja az eszközök megfelelő helyét.
 
   - **Szenzor-elhelyezési Térkép**: ajánlásokat biztosít a használatban lévő érzékelők számának és a farmon való elhelyezésének módjáról.
-  - **Satellite**indexek térképe: a farm vegetációs indexét és a víz indexét jeleníti meg.
+  - **Satellite** indexek térképe: a farm vegetációs indexét és a víz indexét jeleníti meg.
   - A **talaj nedvességtartalmának hő**: a talaj nedvességtartalmának eloszlását mutatja be a műholdon tárolt adatforgalom és az érzékelői adatforgalom
 
 ## <a name="sensor-placement-map"></a>Érzékelő elhelyezési leképezése
@@ -54,22 +54,22 @@ Ez a szakasz az érzékelő elhelyezési leképezések létrehozási eljárásai
 Hajtsa végre az alábbi lépéseket.
 
 1. A kezdőlapon válassza a **Maps** elemet a bal oldali navigációs menüből.
-2. Válassza a **térképek létrehozása**lehetőséget, majd a legördülő menüben válassza az **érzékelő elhelyezése** lehetőséget.
+2. Válassza a **térképek létrehozása** lehetőséget, majd a legördülő menüben válassza az **érzékelő elhelyezése** lehetőséget.
 
     ![Az érzékelő elhelyezésének kiválasztása](./media/get-sensor-data-from-sensor-partner/create-maps-drop-down-1.png)
 
-3. Az **érzékelő elhelyezésének**kiválasztása után megjelenik az **érzékelő elhelyezése** ablak.
+3. Az **érzékelő elhelyezésének** kiválasztása után megjelenik az **érzékelő elhelyezése** ablak.
 
     ![Érzékelő elhelyezése ablak](./media/get-sensor-data-from-sensor-partner/sensor-placement-1.png)
 
 4. Válasszon ki egy farmot a **Farm** legördülő menüből.
    A farm kereséséhez és kiválasztásához görgessen a legördülő listából, vagy írja be a farm nevét a szövegmezőbe.
-5. Az előző évhez tartozó Térkép létrehozásához válassza az **ajánlott**lehetőséget.
-6. Ha térképet szeretne készíteni egy egyéni dátumtartomány számára, válassza a **Dátumtartomány kiválasztása**lehetőséget. Adja meg azt a kezdő és záró dátumot, amelyhez az érzékelő elhelyezési leképezését elő szeretné állítani.
-7. Válassza a **leképezések előállítása**lehetőséget.
+5. Az előző évhez tartozó Térkép létrehozásához válassza az **ajánlott** lehetőséget.
+6. Ha térképet szeretne készíteni egy egyéni dátumtartomány számára, válassza a **Dátumtartomány kiválasztása** lehetőséget. Adja meg azt a kezdő és záró dátumot, amelyhez az érzékelő elhelyezési leképezését elő szeretné állítani.
+7. Válassza a **leképezések előállítása** lehetőséget.
  Megjelenik egy megerősítő üzenet a feladatok részleteivel.
 
-  A feladat állapotáról további információt a **feladatok megtekintése**című szakaszban talál. Ha a feladatok állapota *nem sikerül*, a rendszer részletes hibaüzenetet jelenít meg a *sikertelen* állapot elemleírásában. Ebben az esetben ismételje meg az előző lépéseket, és próbálkozzon újra.
+  A feladat állapotáról további információt a **feladatok megtekintése** című szakaszban talál. Ha a feladatok állapota *nem sikerül*, a rendszer részletes hibaüzenetet jelenít meg a *sikertelen* állapot elemleírásában. Ebben az esetben ismételje meg az előző lépéseket, és próbálkozzon újra.
 
   Ha a probléma továbbra is fennáll, tekintse meg a [hibakeresés](troubleshoot-azure-farmbeats.md) szakaszt, vagy lépjen kapcsolatba az [Azure FarmBeats Fórumával a kapcsolódó naplók támogatásához](https://aka.ms/FarmBeatsMSDN) .
 
@@ -86,11 +86,11 @@ Hajtsa végre az alábbi lépéseket.
 
     ![Szűrő ablak](./media/get-sensor-data-from-sensor-partner/view-download-filter-1.png)
 
-3. Válassza ki a **típus**, a **dátum**és a **név** értékeket a legördülő menükből. Ezután az **alkalmaz** gombra kattintva megkeresheti a megtekinteni kívánt térképet.
+3. Válassza ki a **típus**, a **dátum** és a **név** értékeket a legördülő menükből. Ezután az **alkalmaz** gombra kattintva megkeresheti a megtekinteni kívánt térképet.
   A feladatok létrehozásának dátuma type_farmname_YYYY-hh-nn formátumban jelenik meg.
 4. Görgessen végig az elérhető térképek listáján az oldal végén lévő navigációs sávok használatával.
 5. Válassza ki a megtekinteni kívánt térképet. Megjelenik egy előugró ablak, amely a kiválasztott Térkép előnézetét jeleníti meg.
-6. Válassza a **Letöltés**lehetőséget, majd töltse le az érzékelő koordinátáinak GeoJSON-fájlját.
+6. Válassza a **Letöltés** lehetőséget, majd töltse le az érzékelő koordinátáinak GeoJSON-fájlját.
 
     ![Érzékelő elhelyezési térképének előnézete](./media/get-sensor-data-from-sensor-partner/download-sensor-placement-map-1.png)
 
@@ -113,24 +113,24 @@ A FarmBeats lehetővé teszi a NDVI, a továbbfejlesztett vegetációs index (EV
 Hajtsa végre az alábbi lépéseket.
 
 1. A kezdőlapon válassza a **Maps** elemet a bal oldali navigációs menüből.
-2. Válassza a **térképek létrehozása**lehetőséget, majd a legördülő menüben válassza a **Satellite indexek** lehetőséget.
+2. Válassza a **térképek létrehozása** lehetőséget, majd a legördülő menüben válassza a **Satellite indexek** lehetőséget.
 
     ![Válassza ki a Satellite indexeket a legördülő menüből](./media/get-sensor-data-from-sensor-partner/create-maps-drop-down-satellite-indices-1.png)
 
-3. A **szatellit**indexek kiválasztása után megjelenik a **Satellite indexek** ablak.
+3. A **szatellit** indexek kiválasztása után megjelenik a **Satellite indexek** ablak.
 
     ![Satellite indexek ablak](./media/get-sensor-data-from-sensor-partner/satellitte-indices-1.png)
 
 4. Válasszon ki egy farmot a legördülő menüből.
    A farm kereséséhez vagy kiválasztásához görgessen a legördülő listából, vagy adja meg a farm nevét.   
 5. Az elmúlt hét térképének létrehozásához válassza ki **ezt a hetet**.
-6. Ha térképet szeretne készíteni egy egyéni dátumtartomány számára, válassza a **Dátumtartomány kiválasztása**lehetőséget. Adja meg azt a kezdő és záró dátumot, amelynek a műhold-indexek leképezését elő szeretné állítani.
-7. Válassza a **leképezések előállítása**lehetőséget.
+6. Ha térképet szeretne készíteni egy egyéni dátumtartomány számára, válassza a **Dátumtartomány kiválasztása** lehetőséget. Adja meg azt a kezdő és záró dátumot, amelynek a műhold-indexek leképezését elő szeretné állítani.
+7. Válassza a **leképezések előállítása** lehetőséget.
     Megjelenik egy megerősítő üzenet a feladatok részleteivel.
 
     ![Satellite indexek Térkép megerősítő üzenet](./media/get-sensor-data-from-sensor-partner/successful-satellitte-indices-1.png)
 
-    A feladat állapotáról további információt a **feladatok megtekintése**című szakaszban talál. Ha a feladatok állapota *nem sikerül*, a rendszer részletes hibaüzenetet jelenít meg a *sikertelen* állapot elemleírásában. Ebben az esetben ismételje meg az előző lépéseket, és próbálkozzon újra.
+    A feladat állapotáról további információt a **feladatok megtekintése** című szakaszban talál. Ha a feladatok állapota *nem sikerül*, a rendszer részletes hibaüzenetet jelenít meg a *sikertelen* állapot elemleírásában. Ebben az esetben ismételje meg az előző lépéseket, és próbálkozzon újra.
 
     Ha a probléma továbbra is fennáll, tekintse meg a [hibakeresés](troubleshoot-azure-farmbeats.md) szakaszt, vagy lépjen kapcsolatba az [Azure FarmBeats Fórumával a kapcsolódó naplók támogatásához](https://aka.ms/FarmBeatsMSDN) .
 
@@ -146,11 +146,11 @@ Hajtsa végre az alábbi lépéseket.
 
     ![A szűrő ablak a keresési feltételeket jeleníti meg](./media/get-sensor-data-from-sensor-partner/view-download-filter-1.png)
 
-3. Válassza ki a **típus**, a **dátum**és a **név** értékeket a legördülő menükből. Ezután az **alkalmaz** gombra kattintva megkeresheti a megtekinteni kívánt térképet.
+3. Válassza ki a **típus**, a **dátum** és a **név** értékeket a legördülő menükből. Ezután az **alkalmaz** gombra kattintva megkeresheti a megtekinteni kívánt térképet.
   A feladatok létrehozásának dátuma type_farmname_YYYY-hh-nn formátumban jelenik meg.
 
 4. Görgessen végig az elérhető térképek listáján az oldal végén lévő navigációs sávok használatával.
-5. A **farm nevének** és **dátumának**minden kombinációja esetében a következő három Térkép érhető el:
+5. A **farm nevének** és **dátumának** minden kombinációja esetében a következő három Térkép érhető el:
     - NDVI
     - EVI
     - NDWI
@@ -178,26 +178,26 @@ A következő előfeltételeknek kell megfelelnie, mielőtt megkísérli a talaj
 Hajtsa végre az alábbi lépéseket.
 
 1. A kezdőlapon kattintson a Maps ( **térképek** ) elemre a bal oldali navigációs menüben a **Maps** oldal megtekintéséhez.
-2. Válassza a **térképek létrehozása**lehetőséget, majd a legördülő menüből válassza a **talaj nedvesség** lehetőséget.
+2. Válassza a **térképek létrehozása** lehetőséget, majd a legördülő menüből válassza a **talaj nedvesség** lehetőséget.
 
     ![Válassza ki a talaj nedvességtartalmát a legördülő menüből](./media/get-sensor-data-from-sensor-partner/create-maps-drop-down-soil-moisture-1.png)
 
-3. A **talaj nedvességének**kiválasztása után megjelenik a **talaj nedvességtartalma** ablak.
+3. A **talaj nedvességének** kiválasztása után megjelenik a **talaj nedvességtartalma** ablak.
 
     ![A talaj nedvességtartalmának ablaka](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
 
 4. Válasszon ki egy farmot a **Farm** legördülő menüből.
    A farm kereséséhez és kiválasztásához görgessen a legördülő listából, vagy adja meg a farm nevét a **Farm kiválasztása** legördülő menüben.
 5. A **felszín nedvesség-érzékelői mértékének kiválasztása** legördülő menüben válassza ki a talaj nedvességtartalmának érzékelő mértékét (mélységét), amelyhez a térképet elő szeretné állítani.
-Az érzékelő mértékének megkereséséhez nyissa meg az **érzékelők**elemet, és válassza ki a talaj nedvességtartalmának érzékelőjét. Ezután az **érzékelő tulajdonságai** szakaszban használja a **mérték neve**értéket.
-6. Ha **ma** vagy **ezen a héten**szeretne térképet készíteni, válassza ki az egyik lehetőséget.
-7. Ha térképet szeretne készíteni egy egyéni dátumtartomány számára, válassza a **Dátumtartomány kiválasztása**lehetőséget. Adja meg azt a kezdő és záró dátumot, amelynek a talaj-nedvesség hő elő kívánja állítani.
-8. Válassza a **leképezések előállítása**lehetőséget.
+Az érzékelő mértékének megkereséséhez nyissa meg az **érzékelők** elemet, és válassza ki a talaj nedvességtartalmának érzékelőjét. Ezután az **érzékelő tulajdonságai** szakaszban használja a **mérték neve** értéket.
+6. Ha **ma** vagy **ezen a héten** szeretne térképet készíteni, válassza ki az egyik lehetőséget.
+7. Ha térképet szeretne készíteni egy egyéni dátumtartomány számára, válassza a **Dátumtartomány kiválasztása** lehetőséget. Adja meg azt a kezdő és záró dátumot, amelynek a talaj-nedvesség hő elő kívánja állítani.
+8. Válassza a **leképezések előállítása** lehetőséget.
  Megjelenik egy megerősítő üzenet a feladatok részleteivel.
 
    ![A talaj nedvességtartalmának leképezését kérő üzenet](./media/get-sensor-data-from-sensor-partner/successful-soil-moisture-1.png)
 
-    A feladat állapotáról további információt a **feladatok megtekintése**című szakaszban talál. Ha a feladatok állapota *nem sikerül*, a rendszer részletes hibaüzenetet jelenít meg a *sikertelen* állapot elemleírásában. Ebben az esetben ismételje meg az előző lépéseket, és próbálkozzon újra.
+    A feladat állapotáról további információt a **feladatok megtekintése** című szakaszban talál. Ha a feladatok állapota *nem sikerül*, a rendszer részletes hibaüzenetet jelenít meg a *sikertelen* állapot elemleírásában. Ebben az esetben ismételje meg az előző lépéseket, és próbálkozzon újra.
 
     Ha a probléma továbbra is fennáll, tekintse meg a [hibakeresés](troubleshoot-azure-farmbeats.md) szakaszt, vagy lépjen kapcsolatba az [Azure FarmBeats Fórumával a kapcsolódó naplók támogatásához](https://aka.ms/FarmBeatsMSDN) .
 
@@ -213,8 +213,8 @@ Hajtsa végre az alábbi lépéseket.
 
     ![Szűrő kiválasztása a bal oldali navigációs sávon](./media/get-sensor-data-from-sensor-partner/view-download-filter-1.png)
 
-3.  Válassza ki a **típus**, a **dátum**és a **név** értékeket a legördülő menükből. Ezután az **alkalmaz** gombra kattintva megkeresheti a megtekinteni kívánt térképet. A feladatok létrehozásának dátuma type_farmname_YYYY-hh-nn formátumban jelenik meg.
-4. Válassza a tábla fejlécek melletti **Rendezés** ikont a **Farm**, a **dátum**, **a létrehozás, a**feladat **azonosítója**és a **feladattípus**alapján történő rendezéshez.
+3.  Válassza ki a **típus**, a **dátum** és a **név** értékeket a legördülő menükből. Ezután az **alkalmaz** gombra kattintva megkeresheti a megtekinteni kívánt térképet. A feladatok létrehozásának dátuma type_farmname_YYYY-hh-nn formátumban jelenik meg.
+4. Válassza a tábla fejlécek melletti **Rendezés** ikont a **Farm**, a **dátum**, **a létrehozás, a** feladat **azonosítója** és a **feladattípus** alapján történő rendezéshez.
 5. Görgessen végig az elérhető térképek listáján az oldal végén található navigációs gombok használatával.
 6. Válassza ki a megtekinteni kívánt térképet. Megjelenik egy előugró ablak, amely a kiválasztott Térkép előnézetét jeleníti meg.
 7. A letöltési formátum kiválasztásához válassza a **Letöltés** lehetőséget a legördülő menüből. A rendszer letölti és tárolja a térképet a megadott mappában.

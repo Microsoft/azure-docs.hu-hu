@@ -4,12 +4,12 @@ description: Az Azure Kubernetes szolgáltatás beépített szabályzat-definíc
 ms.date: 02/09/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 749ceb1c6388607bb854548278522092c39881e5
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: d7e25069c373592168e5482f79567b29665251b0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100096020"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175260"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-kubernetes-service"></a>Az Azure Kubernetes Service beépített definíciói Azure Policy
 
@@ -17,11 +17,17 @@ Ez az oldal az Azure Kubernetes szolgáltatás beépített szabályzat-definíci
 
 Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **verzió** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
 
-## <a name="microsoftcontainerservice"></a>Microsoft. Tárolószolgáltatás
+## <a name="initiatives"></a>Kezdeményezések
+
+[!INCLUDE [azure-policy-reference-policysets-kubernetes](../../includes/policy/reference/bycat/policysets-kubernetes.md)]
+
+## <a name="policy-definitions"></a>Szabályzatdefiníciók
+
+### <a name="microsoftcontainerservice"></a>Microsoft. Tárolószolgáltatás
 
 [!INCLUDE [azure-policy-reference-rp-aks-containerservice](../../includes/policy/reference/byrp/microsoft.containerservice.md)]
 
-## <a name="aks-engine"></a>AKS-motor
+### <a name="aks-engine"></a>AKS-motor
 
 [!INCLUDE [azure-policy-reference-rp-aks-aksengine](../../includes/policy/reference/byrp/aks-engine.md)]
 

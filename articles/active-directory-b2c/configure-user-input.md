@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 03/04/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: eb7cba1de280793a1ca98687c71355c1ea702d4c
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e76fe1c26f428403a79a3605b7a41f761fe2a4bb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585224"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102171620"
 ---
 #  <a name="add-user-attributes-and-customize-user-input-in-azure-active-directory-b2c"></a>Felhasználói attribútumok hozzáadása és felhasználói bevitel testreszabása Azure Active Directory B2C
 
@@ -43,7 +43,7 @@ Ebben a cikkben egy új attribútumot gyűjt a regisztráció során Azure Activ
 1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok** lehetőséget.
 1. Válassza ki a szabályzatot (például "B2C_1_SignupSignin") a megnyitásához.
 1. Válassza ki a **felhasználói attribútumok** elemet, majd válassza ki a felhasználói attribútumot (például "város"). 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="provide-optional-claims-to-your-app"></a>Opcionális jogcímek megadása az alkalmazás számára
 
@@ -52,7 +52,7 @@ Az alkalmazás jogcímei az alkalmazásnak visszaadott értékek. Frissítse a f
 1. Válassza ki a szabályzatot (például "B2C_1_SignupSignin") a megnyitásához.
 1. Válassza az **Alkalmazásjogcímek** lehetőséget.
 1. Válassza ki azokat az attribútumokat, amelyeket vissza szeretne küldeni az alkalmazásnak (például "város").
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
  
 ## <a name="configure-user-attributes-input-type"></a>Felhasználói attribútumok bemeneti típusának konfigurálása
 
@@ -62,7 +62,7 @@ Az alkalmazás jogcímei az alkalmazásnak visszaadott értékek. Frissítse a f
 1. A **felhasználói attribútumok** területen válassza a **város** lehetőséget.
     1. A **felhasználói bevitel típusa** legördülő menüben válassza a **DropdownSingleSelect** lehetőséget.
     1. A nem **kötelező** legördülő menüben válassza a **nem** lehetőséget.
-1. Válassza a **Mentés** lehetőséget. 
+1. Kattintson a **Mentés** gombra. 
 
 ### <a name="provide-a-list-of-values-by-using-localized-collections"></a>Értékek listájának megadása honosított gyűjtemények használatával
 
@@ -198,7 +198,7 @@ Ahhoz, hogy regisztrálni lehessen a városi jogcímet a regisztráció során, 
 </ClaimsProvider>
 ```
 
-A városi jogcímek összevont fiókkal való első bejelentkezés után történő összegyűjtéséhez hozzá kell adni a technikai profil kimeneti jogcímeként `SelfAsserted-Social` . Ahhoz, hogy a helyi és összevont fiókok a felhasználók később szerkesszék a profiljaikat, adja hozzá a kimeneti jogcímet a `SelfAsserted-ProfileUpdate` technikai profilhoz. Bírálja felül ezeket a technikai profilokat a kiterjesztési fájlban. Adja meg a kimeneti jogcímek teljes listáját, hogy szabályozni lehessen a jogcímek megjelenítésének sorrendjét a képernyőn. Keresse meg a **ClaimsProviders** elemet. Vegyen fel egy új ClaimsProviders a következőképpen:
+A városi jogcímek összevont fiókkal való első bejelentkezés után történő összegyűjtéséhez hozzá kell adni a technikai profil kimeneti jogcímeként `SelfAsserted-Social` . Ahhoz, hogy a helyi és összevont fiókok a felhasználók később szerkesszék a profiljaikat, adja hozzá a bemeneti és a kimeneti jogcímeket a `SelfAsserted-ProfileUpdate` technikai profilhoz. Bírálja felül ezeket a technikai profilokat a kiterjesztési fájlban. Adja meg a kimeneti jogcímek teljes listáját, hogy szabályozni lehessen a jogcímek megjelenítésének sorrendjét a képernyőn. Keresse meg a **ClaimsProviders** elemet. Vegyen fel egy új ClaimsProviders a következőképpen:
 
 ```xml
 <ClaimsProvider>
@@ -206,6 +206,9 @@ A városi jogcímek összevont fiókkal való első bejelentkezés után törté
   <TechnicalProfiles>
     <!--Federated account first-time sign-in page-->
     <TechnicalProfile Id="SelfAsserted-Social">
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="city" />
+      </InputClaims>
       <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="displayName"/>
         <OutputClaim ClaimTypeReferenceId="givenName"/>
@@ -215,6 +218,9 @@ A városi jogcímek összevont fiókkal való első bejelentkezés után törté
     </TechnicalProfile>
     <!--Edit profile page-->
     <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="city" />
+      </InputClaims>
       <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="displayName"/>
         <OutputClaim ClaimTypeReferenceId="givenName" />

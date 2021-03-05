@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: ecf0f54913f980d879b562eb4aa8063acf6c4772
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 6f42f712ecca77c00020304b63f5a1b0dbd77ad0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320254"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172320"
 ---
 # <a name="install-client-tools-for-deploying-and-managing-azure-arc-enabled-data-services"></a>Ügyféleszközök telepítése az Azure Arc-kompatibilis adatszolgáltatások üzembe helyezéséhez és felügyeletéhez
 
@@ -36,7 +36,7 @@ Az alábbi táblázat az Azure arc-kompatibilis adatszolgáltatások létrehozá
 | [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] Azure Data Studio bővítmény | Igen | Azure Data Studio-bővítmény, amely akkor lesz telepítve, [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] Ha még nem tette meg.| Telepítés a bővítmények katalógusában Azure Data Studio.|
 | Azure arc-bővítmény a Azure Data Studiohoz | Igen | Az Azure arc-kompatibilis adatszolgáltatások kezelési élményét biztosító Azure Data Studio bővítménye. A Azure Data Studio bővítményének függősége van [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] . | Telepítés a bővítmények katalógusában Azure Data Studio.|
 | PostgreSQL-bővítmény Azure Data Studio | Nem | PostgreSQL-bővítmény Azure Data Studio számára, amely felügyeleti funkciókat biztosít a PostgreSQL-hez. | <!--{need link} [Install](../azure-data-studio/data-virtualization-extension.md) --> Telepítés a bővítmények katalógusában Azure Data Studio.|
-| Azure CLI (az)<sup>1</sup> | Igen | Modern parancssori felület az Azure-szolgáltatások kezeléséhez. AK-alapú üzemelő példányokkal és az Azure arc-kompatibilis adatszolgáltatások leltárának és számlázási adatoknak az Azure-ba való feltöltésére használható. ([További információ](/cli/azure/?view=azure-cli-latest&preserve-view=true)). | [Telepítse](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) |
+| Azure CLI (az)<sup>1</sup> | Igen | Modern parancssori felület az Azure-szolgáltatások kezeléséhez. AK-alapú üzemelő példányokkal és az Azure arc-kompatibilis adatszolgáltatások leltárának és számlázási adatoknak az Azure-ba való feltöltésére használható. ([További információ](/cli/azure/)). | [Telepítse](/cli/azure/install-azure-cli) |
 | Kubernetes CLI (kubectl)<sup>2</sup> | Igen | Parancssori eszköz a Kubernetes-fürt kezeléséhez ([További információ](https://kubernetes.io/docs/tasks/tools/install-kubectl/)). | [Windows](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-with-powershell-from-psgallery) \| [Linuxos](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-using-native-package-management) |
 | <sup>3</sup> . curl | Néhány minta parancsfájlhoz szükséges. | Parancssori eszköz az adatátvitelhez URL-címekkel. | [Windows](https://curl.haxx.se/windows/) \| Linux: a curl-csomag telepítése |
 | oC | A Red Hat OpenShift és az Azure RedHat OpenShift üzemelő példányokhoz szükséges. |`oc` a megnyitott SHIFT parancssori felület (CLI). | [A parancssori felület telepítése](https://docs.openshift.com/container-platform/4.4/cli_reference/openshift_cli/getting-started-cli.html#installing-the-cli)

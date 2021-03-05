@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 03/04/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 5552c93c1c65f08f70ed8929d81126035aa2a357
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: c9453f2fc5803fb6ce09d8749cbf7fa1c7c2ec46
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661204"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174820"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Egyéni attribútumok definiálása a Azure Active Directory B2Cban
 
@@ -25,7 +25,7 @@ ms.locfileid: "98661204"
 
 A [jogcímek hozzáadása és a felhasználói bevitel testreszabása Egyéni szabályzatok használatával](configure-user-input.md) című cikkből megtudhatja, hogyan használhatja a beépített [felhasználói profilok attribútumait](user-profile-attributes.md). Ebben a cikkben egy egyéni attribútumot engedélyez a Azure Active Directory B2C (Azure AD B2C) címtárban. Később az új attribútumot egyéni jogcímként használhatja [felhasználói folyamatokban](user-flow-overview.md) vagy [Egyéni szabályzatokban](custom-policy-get-started.md) .
 
-A Azure AD B2C könyvtára egy [beépített attribútumokkal](user-profile-attributes.md)rendelkezik. Azonban gyakran kell létrehoznia saját attribútumokat az adott forgatókönyv kezeléséhez, például a következő esetekben:
+Az Azure AD B2C-címtár [beépített attribútumkészletet](user-profile-attributes.md) tartalmaz. Azonban gyakran kell létrehoznia saját attribútumokat az adott forgatókönyv kezeléséhez, például a következő esetekben:
 
 * Egy ügyfél felé irányuló alkalmazásnak meg kell őriznie egy **LoyaltyId** attribútumot.
 * Az identitás-szolgáltató egyedi felhasználói azonosítóval rendelkezik, amelyet **uniqueUserGUID** kell megőrizni.
@@ -97,22 +97,27 @@ A házirendben szereplő egyéni attribútumok engedélyezéséhez adja meg az *
 
 1. Nyissa meg a szabályzat Extensions (bővítmények) fájlját. Például: <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 1. Keresse meg a ClaimsProviders elemet. Adjon hozzá egy új ClaimsProvider a ClaimsProviders elemhez.
-1. Cserélje le `ApplicationObjectId` a helyére a korábban rögzített objektumazonosító értékét. Ezután cserélje le `ClientId` az alkalmazást az alábbi kódrészletben korábban rögzített alkalmazás-azonosítóra.
+1. Szúrja be a korábban rögzített **alkalmazás-azonosítót** a nyitó `<Item Key="ClientId">` és a záró `</Item>` elemek között.
+1. Szúrja be a korábban rögzített **alkalmazás-ObjectId** a nyitó `<Item Key="ApplicationObjectId">` és a záró `</Item>` elemek között.
 
     ```xml
-    <ClaimsProvider>
-      <DisplayName>Azure Active Directory</DisplayName>
-      <TechnicalProfiles>
-        <TechnicalProfile Id="AAD-Common">
-          <Metadata>
-            <!--Insert b2c-extensions-app application ID here, for example: 11111111-1111-1111-1111-111111111111-->  
-            <Item Key="ClientId"></Item>
-            <!--Insert b2c-extensions-app application ObjectId here, for example: 22222222-2222-2222-2222-222222222222-->
-            <Item Key="ApplicationObjectId"></Item>
-          </Metadata>
-        </TechnicalProfile>
-      </TechnicalProfiles> 
-    </ClaimsProvider>
+    <!-- 
+    <ClaimsProviders> -->
+      <ClaimsProvider>
+        <DisplayName>Azure Active Directory</DisplayName>
+        <TechnicalProfiles>
+          <TechnicalProfile Id="AAD-Common">
+            <Metadata>
+              <!--Insert b2c-extensions-app application ID here, for example: 11111111-1111-1111-1111-111111111111-->  
+              <Item Key="ClientId"></Item>
+              <!--Insert b2c-extensions-app application ObjectId here, for example: 22222222-2222-2222-2222-222222222222-->
+              <Item Key="ApplicationObjectId"></Item>
+            </Metadata>
+          </TechnicalProfile>
+        </TechnicalProfiles> 
+      </ClaimsProvider>
+    <!-- 
+    </ClaimsProviders> -->
     ```
 
 ## <a name="upload-your-custom-policy"></a>Egyéni szabályzat feltöltése

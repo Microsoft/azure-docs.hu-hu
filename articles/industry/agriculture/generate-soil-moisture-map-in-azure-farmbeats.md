@@ -4,13 +4,13 @@ description: A cikk bemutatja, hogyan hozhatja ki a hő a talaj nedvességtartal
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 2887e7c5fd875942c3d19391267ddbb9b73ccfec
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.author: v-ummehabiba
+ms.openlocfilehash: dd8d688355e0f71ce77cdbc6012d788c7b16d825
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165553"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102173783"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>Talaj nedvesség-hő előállítása
 
@@ -51,29 +51,29 @@ Miután megadta a hitelesítő adatait, és kiválasztja a **beküldés** lehet�
 Miután összekapcsolta a Sensor-fiókját az Azure FarmBeats, hozzá kell rendelnie a talajhoz tartozó nedvesség-érzékelőket a farmhoz.
 
 1.  A kezdőlapon válassza a **farmok** lehetőséget a menüből, a **farmok** listája lap jelenik meg.
-2.  Válassza a **MyFarm**  >  **eszközök hozzáadása**elemet.
+2.  Válassza a **MyFarm**  >  **eszközök hozzáadása** elemet.
 3.  Megjelenik az **eszközök hozzáadása** ablak. Válassza ki a farm nedvesség-érzékelőkhöz kapcsolódó összes eszközt.
 
     ![Képernyőkép, amely az eszközök hozzáadása képernyőt jeleníti meg.](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
 
-4. Válassza az **eszközök hozzáadása**lehetőséget.     
+4. Válassza az **eszközök hozzáadása** lehetőséget.     
 
 ## <a name="generate-soil-moisture-heatmap"></a>Talaj nedvesség-hő előállítása
 
 Ez a lépés egy olyan feladatot vagy hosszan futó műveletet hoz létre, amely a farmhoz tartozó hő fog létrehozni.
 
 1.  A kezdőlapon kattintson a **farmok** elemre a bal oldali navigációs menüből a farmok oldal megtekintéséhez.
-2.  Válassza a **MyFarm**lehetőséget.
-3.  A **Farm részletei** lapon válassza a **pontos leképezés készítése**lehetőséget.
-4.  A legördülő menüben válassza a **talaj nedvesség**elemet.
+2.  Válassza a **MyFarm** lehetőséget.
+3.  A **Farm részletei** lapon válassza a **pontos leképezés készítése** lehetőséget.
+4.  A legördülő menüben válassza a **talaj nedvesség** elemet.
 5.  A **talaj nedvességtartalma** ablakban válassza ki **ezt a hetet**.
-6.  A **felszín nedvesség** - **érzékelő kiválasztása mértéke**mezőben adja meg a térképhez használni kívánt mértéket.
-    Az érzékelő mértékének megkereséséhez a **szenzorokban**válassza ki a talaj nedvességtartalmának érzékelőjét. Az **érzékelő tulajdonságainál**használja a **mérték neve** értéket.
+6.  A **felszín nedvesség** - **érzékelő kiválasztása mértéke** mezőben adja meg a térképhez használni kívánt mértéket.
+    Az érzékelő mértékének megkereséséhez a **szenzorokban** válassza ki a talaj nedvességtartalmának érzékelőjét. Az **érzékelő tulajdonságainál** használja a **mérték neve** értéket.
 
     ![Képernyőkép, amely a talaj nedvességtartalmának képernyőjét mutatja.](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
 
 
-7.  Válassza a **leképezések előállítása**lehetőséget.
+7.  Válassza a **leképezések előállítása** lehetőséget.
     Megjelenik egy megerősítő üzenet, amely a feladatok részleteit jeleníti meg. További információ: feladat állapota a feladatokban.
 
     >[!NOTE]
@@ -91,6 +91,6 @@ Ehhez a következő lépések szükségesek:
 
     ![A Project Farm veri](./media/get-sensor-data-from-sensor-partner/download-soil-moisture-map-1.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Most, hogy sikeresen létrehozta a talaj nedvességtartalmának hő, megtudhatja, hogyan [hozhatja létre az érzékelő elhelyezését](generate-maps-in-azure-farmbeats.md#sensor-placement-map) és hogyan végezheti el a [korábbi telemetria-információkat](ingest-historical-telemetry-data-in-azure-farmbeats.md) 
+Most, hogy sikeresen létrehozta a talaj nedvességtartalmának hő, megtudhatja, hogyan [hozhatja létre az érzékelő elhelyezését](generate-maps-in-azure-farmbeats.md#sensor-placement-map) és hogyan végezheti el a [korábbi telemetria-információkat](ingest-historical-telemetry-data-in-azure-farmbeats.md) 

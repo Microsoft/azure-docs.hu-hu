@@ -14,12 +14,12 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 6a1f4a02ebf42c0f181b595aae0a5fa0bcc9b41d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 21e0b800e06b7a5ad0351ff53d26a5e2cd2ba71c
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755904"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175388"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity platform azonosító tokenek
 
@@ -55,7 +55,7 @@ Tekintse meg ezt a v 2.0 minta tokent a [JWT.MS](https://jwt.ms/#id_token=eyJ0eX
 |-----|--------|-------------|
 |`typ` | String – mindig "JWT" | Azt jelzi, hogy a token egy JWT token.|
 |`alg` | Sztring | Meghatározza a jogkivonat aláírásához használt algoritmust. Példa: "RS256" |
-|`kid` | Sztring | A jogkivonat aláírásához használt nyilvános kulcs ujjlenyomata. Az 1.0-s és a v 2.0-s verzióban is kibocsátva `id_tokens` . |
+|`kid` | Sztring | A jogkivonat ellenőrzéséhez használt nyilvános kulcs ujjlenyomata. Az 1.0-s és a v 2.0-s verzióban is kibocsátva `id_tokens` . |
 |`x5t` | Sztring | Ugyanaz (használatban és értékben), mint `kid` . Ez azonban egy örökölt jogcím, amely csak a v 1.0-s verzióban, kompatibilitási célból lett kibocsátva `id_tokens` . |
 
 ### <a name="payload-claims"></a>Hasznos adatokhoz tartozó jogcímek
@@ -135,7 +135,7 @@ A jogkivonat manuális érvényesítéséhez tekintse meg a [hozzáférési toke
 * Célközönség: a `aud` jogcímnek meg kell egyeznie az alkalmazáshoz tartozó alkalmazás-azonosítóval.
 * Alkalom: az `nonce` adattartalomban szereplő jogcímnek meg kell egyeznie a/Authorize-végpontnak a kezdeti kérelem során átadott egyszeres paraméterrel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók a [hozzáférési tokenekről](access-tokens.md)
 * A JWT jogcímek testreszabása a id_token [választható jogcímek](active-directory-optional-claims.md)használatával.

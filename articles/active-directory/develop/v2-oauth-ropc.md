@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: d0282e4f52db8557364cdabe197fa0da63204e42
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: bf469b79fa532978e904a54f32c80280706ee7cb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752641"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174580"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft Identity platform és OAuth 2,0 erőforrás-tulajdonosi jelszó hitelesítő adatai
 
@@ -34,6 +34,7 @@ A Microsoft Identity platform támogatja a [OAuth 2,0 erőforrás-tulajdonosi je
 > * Azok a fiókok, amelyeknek nincsenek jelszavai, nem jelentkezhetnek be a ROPC-on keresztül. Ennél a forgatókönyvnél azt javasoljuk, hogy ehelyett használjon egy másik folyamatot az alkalmazáshoz.
 > * Ha a felhasználóknak [többtényezős hitelesítést (MFA)](../authentication/concept-mfa-howitworks.md) kell használniuk az alkalmazásba való bejelentkezéshez, a rendszer letiltja a helyet.
 > * A ROPC nem támogatott [hibrid identitás-összevonási](../hybrid/whatis-fed.md) forgatókönyvekben (például az Azure ad és a helyszíni fiókok hitelesítéséhez használt ADFS). Ha a felhasználók teljes körűen átirányítják a helyszíni identitás-szolgáltatókat, az Azure AD nem tudja tesztelni a felhasználónevet és a jelszót az identitás-szolgáltatón. Az [átmenő hitelesítés](../hybrid/how-to-connect-pta.md) a ROPC esetében is támogatott.
+> * A hibrid identitás-összevonási forgatókönyvek alól kivételt képeznek a következők: a AllowCloudPasswordValidation TRUE értékkel rendelkező Home Realm Discovery-házirend lehetővé teszi, hogy a ROPC folyamat az összevont felhasználók számára is elérhető legyen, amikor a helyszíni jelszó szinkronizálva van a felhőbe. További információ: az [összevont felhasználók közvetlen ROPC hitelesítésének engedélyezése örökölt alkalmazásokhoz](../manage-apps/configure-authentication-for-federated-users-portal.md#enable-direct-ropc-authentication-of-federated-users-for-legacy-applications).
 
 ## <a name="protocol-diagram"></a>Protokoll diagramja
 
@@ -110,6 +111,6 @@ Ha a felhasználó nem adta meg a helyes felhasználónevet vagy jelszót, vagy 
 | `invalid_grant` | A hitelesítés sikertelen | A hitelesítő adatok helytelenek voltak, vagy az ügyfél nem rendelkezik beleegyezik a kért hatókörökkel. Ha a hatókörök nem lettek megadva, a rendszer `consent_required` hibaüzenetet küld. Ha ez történik, az ügyfélnek egy interaktív üzenetbe kell küldenie a felhasználót egy webnézet vagy egy böngésző használatával. |
 | `invalid_request` | A kérés nem megfelelően lett kiépítve | A támogatás típusa nem támogatott a `/common` vagy a `/consumers` hitelesítési környezetekben.  `/organizations`Ehelyett használjon vagy egy bérlői azonosítót. |
 
-## <a name="learn-more"></a>Részletek
+## <a name="learn-more"></a>Tudjon meg többet
 
 A ROPC használatára vonatkozó példát a következő témakörben talál: a [.net Core Console alkalmazás](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) kódjának mintája a githubon.

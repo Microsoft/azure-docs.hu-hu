@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperf-fy20q4, tracking-python
-ms.openlocfilehash: 3f128b7ee7fa8f690c2097a5d27e274ec1eb2a8a
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: ca3957563f7c7a7021ad994cc323823763c2936e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559539"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102171545"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure Machine Learning Studio használata Azure-beli virtuális hálózaton
 
@@ -38,7 +38,6 @@ Tekintse meg a sorozat egyéb cikkeit:
 
 > [!IMPORTANT]
 > Ha a munkaterület __szuverén felhőben__ van, például Azure Government vagy az Azure China 21Vianet, az integrált jegyzetfüzetek _nem_ támogatják a virtuális hálózatban lévő tárolók használatát. Ehelyett használhatja egy számítási példány Jupyter-notebookjait. További információkért tekintse meg a [hozzáférési adatokat egy számítási példányú jegyzetfüzet](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook) szakaszban.
-
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -95,7 +94,7 @@ Minden Azure Machine Learning munkaterület két alapértelmezett Storage-fiókk
 
 A következő táblázat azt ismerteti, hogy miért kell engedélyeznie a felügyelt identitások hitelesítését a munkaterület alapértelmezett tárolási fiókjaihoz.
 
-|Tárfiók  | Jegyzetek  |
+|A(z)  | Jegyzetek  |
 |---------|---------|
 |Munkaterület alapértelmezett blob Storage| Modell típusú eszközöket tárol a tervezőtől. A tervezőben a modellek üzembe helyezéséhez engedélyeznie kell a felügyelt identitás hitelesítését ezen a Storage-fiókon. <br> <br> Ha olyan nem alapértelmezett adattárat használ, amely felügyelt identitás használatára lett konfigurálva, megjelenítheti és futtathatja a tervezői folyamatokat. Ha azonban olyan betanított modellt próbál telepíteni, amely nem engedélyezte a felügyelt identitást az alapértelmezett adattáron, akkor a telepítés a használatban lévő többi adattártól függetlenül meghiúsul.|
 |Munkaterület alapértelmezett fájljának tárolója| A AutoML-kísérleti eszközöket tárolja. A AutoML kísérletek elküldéséhez engedélyeznie kell a felügyelt identitások hitelesítését ezen a Storage-fiókon. |
@@ -106,7 +105,6 @@ A következő táblázat azt ismerteti, hogy miért kell engedélyeznie a felüg
 > A probléma elkerüléséhez két lehetőség közül választhat: 1) használja az alapértelmezett Filestore, amelyet a rendszer automatikusan hoz létre a munkaterület létrehozásához. 2) Ha saját Filestore szeretne létrehozni, győződjön meg róla, hogy a Filestore kívül esik a VNet a munkaterület létrehozása során. A munkaterület létrehozása után adja hozzá a Storage-fiókot a virtuális hálózathoz.
 >
 > A probléma megoldásához távolítsa el a Filestore fiókot a virtuális hálózatról, majd adja hozzá újra a virtuális hálózathoz.
-
 
 ### <a name="grant-workspace-managed-identity-__reader__-access-to-storage-private-link"></a>Munkaterület felügyelt identitás- __olvasó__ hozzáférésének engedélyezése a Storage privát hivatkozásához
 
@@ -160,9 +158,9 @@ Győződjön meg arról, hogy rendelkezik hozzáféréssel a virtuális hálóza
 
 A kimeneti adatok megjelenítéséhez engedélyeznie kell a [felügyelt identitások hitelesítését](#configure-datastores-to-use-workspace-managed-identity) is a köztes Storage-fiókok számára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ez a cikk egy négy részből álló virtuális hálózati sorozat választható részét képezi. A virtuális hálózatok biztonságossá tételéhez tekintse meg a cikkek további részeit:
+Ez a cikk egy öt részből álló virtuális hálózati sorozat ötödik része. A virtuális hálózatok biztonságossá tételéhez tekintse meg a cikkek további részeit:
 
 * [1. rész: a Virtual Network áttekintése](how-to-network-security-overview.md)
 * [2. rész: a munkaterület erőforrásainak védelme](how-to-secure-workspace-vnet.md)

@@ -1,6 +1,6 @@
 ---
 title: Active Directory-alapú szolgáltatások összehasonlítása az Azure-ban | Microsoft Docs
-description: Ebben az áttekintésben összehasonlítjuk a Active Directory tartományi szolgáltatások, Azure Active Directory és Azure Active Directory Domain Services különböző identitás-ajánlatait.
+description: Ebben az áttekintésben összehasonlítjuk a Active Directory Domain Services, Azure Active Directory és Azure Active Directory Domain Services különböző identitás-ajánlatait.
 services: active-directory-ds
 author: justinha
 manager: daveba
@@ -10,22 +10,22 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
 ms.author: justinha
-ms.openlocfilehash: 479cc036ed3231d970d46eef9d89daa39a0b0876
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 48ce982a6d6d7a3ed12d6e3b4711d111dec4d6f8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620188"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174631"
 ---
-# <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Az önállóan felügyelt Active Directory tartományi szolgáltatások, Azure Active Directory és felügyelt Azure Active Directory Domain Services összehasonlítása
+# <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Az önállóan felügyelt Active Directory Domain Services, Azure Active Directory és felügyelt Azure Active Directory Domain Services összehasonlítása
 
-Az alkalmazások, szolgáltatások vagy eszközök központi identitáshoz való hozzáférésének három gyakori módja van az Azure-ban Active Directory-alapú szolgáltatások használatának. Ez a választási lehetőség az Identity Solutions szolgáltatásban rugalmasságot biztosít a szervezet igényeinek legmegfelelőbb címtár használatához. Ha például többnyire csak a csak felhőalapú felhasználókat felügyeli, akkor előfordulhat, hogy nem érdemes saját Active Directory tartományi szolgáltatások (AD DS) identitás-megoldást létrehoznia és futtatnia. Ehelyett egyszerűen használhatja a Azure Active Directory.
+Az alkalmazások, szolgáltatások vagy eszközök központi identitáshoz való hozzáférésének három gyakori módja van az Azure-ban Active Directory-alapú szolgáltatások használatának. Ez a választási lehetőség az Identity Solutions szolgáltatásban rugalmasságot biztosít a szervezet igényeinek legmegfelelőbb címtár használatához. Ha például többnyire csak a csak felhőalapú felhasználókat felügyeli, akkor előfordulhat, hogy nem érdemes saját Active Directory Domain Services (AD DS) identitás-megoldást létrehoznia és futtatnia. Ehelyett egyszerűen használhatja a Azure Active Directory.
 
 Habár a három Active Directory-alapú identitási megoldás közös nevet és technológiát használ, úgy tervezték, hogy olyan szolgáltatásokat nyújtsanak, amelyek megfelelnek a különböző felhasználói igényeknek. Ezek az identitás-megoldások és-funkciók magas szinten a következők:
 
-* **Active Directory tartományi szolgáltatások (AD DS)** – nagyvállalati használatra kész Lightweight Directory Access Protocol (LDAP) kiszolgáló, amely olyan kulcsfontosságú funkciókat biztosít, mint például az identitás és a hitelesítés, a számítógép-objektumok kezelése, a csoportházirend és a megbízhatósági kapcsolatok.
+* **Active Directory Domain Services (AD DS)** – nagyvállalati használatra kész Lightweight Directory Access Protocol (LDAP) kiszolgáló, amely olyan kulcsfontosságú funkciókat biztosít, mint például az identitás és a hitelesítés, a számítógép-objektumok kezelése, a csoportházirend és a megbízhatósági kapcsolatok.
     * AD DS a helyszíni informatikai környezettel rendelkező számos szervezet központi összetevője, amely a felhasználói fiókok hitelesítését és a számítógép-felügyeleti funkciókat biztosítja.
-    * További információ: [Active Directory tartományi szolgáltatások áttekintése a Windows Server dokumentációjában][overview-adds].
+    * További információ: [Active Directory Domain Services áttekintése a Windows Server dokumentációjában][overview-adds].
 * **Azure Active Directory (Azure ad)** – felhőalapú identitás-és mobileszköz-kezelés, amely felhasználói fiókokat és hitelesítési szolgáltatásokat biztosít olyan erőforrásokhoz, mint például a Microsoft 365, a Azure Portal vagy az SaaS-alkalmazás.
     * Az Azure AD szinkronizálható helyszíni AD DS környezettel, így egyetlen identitást biztosíthat a felhőben natív módon működő felhasználóknak.
     * További információ az Azure AD-ről: [Mi az Azure Active Directory?][whatis-azuread]
@@ -40,10 +40,10 @@ Ez az áttekintő cikk összehasonlítja, hogy ezek az identitás-megoldások ho
 
 ## <a name="azure-ad-ds-and-self-managed-ad-ds"></a>Azure AD DS és önállóan felügyelt AD DS
 
-Ha olyan alkalmazásokkal és szolgáltatásokkal rendelkezik, amelyek olyan hagyományos hitelesítési mechanizmusokhoz férnek hozzá, mint például a Kerberos vagy az NTLM, kétféleképpen biztosíthat Active Directory tartományi szolgáltatások a felhőben:
+Ha olyan alkalmazásokkal és szolgáltatásokkal rendelkezik, amelyek olyan hagyományos hitelesítési mechanizmusokhoz férnek hozzá, mint például a Kerberos vagy az NTLM, kétféleképpen biztosíthat Active Directory Domain Services a felhőben:
 
 * Azure Active Directory Domain Services (Azure AD DS) használatával létrehozott *felügyelt tartomány* . A Microsoft létrehozza és kezeli a szükséges erőforrásokat.
-* Olyan *önállóan felügyelt* tartomány, amelyet a hagyományos erőforrások, például a virtuális gépek (VM), a Windows Server vendég operációs rendszer és a Active Directory tartományi szolgáltatások (AD DS) használatával hozhat létre és konfigurálhat. Ezután továbbra is felügyelheti ezeket az erőforrásokat.
+* Olyan *önállóan felügyelt* tartomány, amelyet a hagyományos erőforrások, például a virtuális gépek (VM), a Windows Server vendég operációs rendszer és a Active Directory Domain Services (AD DS) használatával hozhat létre és konfigurálhat. Ezután továbbra is felügyelheti ezeket az erőforrásokat.
 
 Az Azure AD DS az alapvető szolgáltatási összetevőket a Microsoft *felügyelt* tartományi felhasználói felületként telepíti és tartja karban. Nem kell telepítenie, felügyelni, javítani és biztonságossá tenni a AD DS infrastruktúrát olyan összetevőkhöz, mint a virtuális gépek, a Windows Server operációs rendszer vagy a tartományvezérlők.
 
@@ -62,7 +62,7 @@ Közös üzembe helyezési modellek olyan önfelügyelt AD DS környezetekhez, a
 
 Az alábbi táblázat néhány olyan funkciót vázol fel, amelyek a szervezet számára szükségesek, valamint a felügyelt Azure AD DS tartomány vagy egy önállóan felügyelt AD DS tartomány közötti különbségek:
 
-| **Jellemző** | **Azure AD DS** | **Önállóan felügyelt AD DS** |
+| **Szolgáltatás** | **Azure AD DS** | **Önállóan felügyelt AD DS** |
 | ----------- |:---------------:|:----------------------:|
 | **Felügyelt szolgáltatás**                               | **&#x2713;** | **&#x2715;** |
 | **Biztonságos központi telepítések**                            | **&#x2713;** | A rendszergazda gondoskodik az üzemelő példányról |
@@ -78,7 +78,7 @@ Az alábbi táblázat néhány olyan funkciót vázol fel, amelyek a szervezet s
 | **Biztonságos LDAP (LDAPS)**                           | **&#x2713;** | **&#x2713;** |
 | **LDAP-olvasás**                                     | **&#x2713;** | **&#x2713;** |
 | **LDAP-írás**                                    | **&#x2713;** (a felügyelt tartományon belül) | **&#x2713;** |
-| **Földrajzilag elosztott üzemelő példányok**                   | **&#x2715;** | **&#x2713;** |
+| **Földrajzilag elosztott üzemelő példányok**                   | **&#x2713;** | **&#x2713;** |
 
 ## <a name="azure-ad-ds-and-azure-ad"></a>Azure AD DS és Azure AD
 
@@ -112,13 +112,13 @@ Az Azure AD DS csatlakoztatott eszközeivel az alkalmazások a Kerberos és az N
 | Képviselet a címtárban | Eszközök objektumai az Azure AD-címtárban            | Számítógép-objektumok az Azure AD DS felügyelt tartományban                        |
 | Hitelesítés                  | OAuth/OpenID Connect-alapú protokollok              | Kerberos és NTLM protokollok                                               |
 | Kezelés                      | Mobileszköz-felügyeleti (MDM) szoftverek, például az Intune | Csoportházirend                                                              |
-| Hálózat                      | Az interneten működik                             | Csatlakoznia kell ahhoz a virtuális hálózathoz, amelyhez a felügyelt tartományt telepíteni kell |
+| Hálózatkezelés                      | Az interneten működik                             | Csatlakoznia kell ahhoz a virtuális hálózathoz, amelyhez a felügyelt tartományt telepíteni kell |
 | Nagyszerű...                    | Végfelhasználói mobil-vagy asztali eszközök                  | Az Azure-ban üzembe helyezett kiszolgálói virtuális gépek                                              |
 
 
 Ha a helyszíni AD DS és az Azure AD az ADFS használatával összevont hitelesítésre van konfigurálva, akkor az Azure DS-ben nem érhető el (aktuális/érvényes) jelszó-kivonat. A Fed-hitelesítés végrehajtása előtt létrehozott Azure AD-felhasználói fiókok esetében előfordulhat, hogy régi jelszó kivonata van, de ez valószínűleg nem egyezik meg a helyszíni jelszavuk kivonatával. Ezért az Azure AD DS nem fogja tudni érvényesíteni a felhasználók hitelesítő adatait
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure AD DS használatának megkezdéséhez [hozzon létre egy azure AD DS felügyelt tartományt a Azure Portal használatával][tutorial-create].
 

@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 02/15/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 78c5d2d03ebca45bcf1602b35453914d033db5c8
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 49bf89d38edef6a9186cbdb5bb89a763339385b4
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098247"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175821"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>Az Azure Percept DK beállítása és az első AI-modell üzembe helyezése
 
@@ -182,7 +182,7 @@ Ha új előfizetést szeretne létrehozni, kövesse [az alábbi lépéseket](htt
 
 ## <a name="view-your-device-in-the-azure-percept-studio-and-deploy-common-prebuilt-sample-apps"></a>Megtekintheti az eszközt az Azure Percept Studióban, és üzembe helyezheti a közös előre elkészített minta alkalmazásokat
 
-1. Az eszközök listájának megtekintése az Azure Percept – áttekintés oldalon. Az Azure Percept áttekintő oldala az indítási pont, amellyel számos különböző munkafolyamathoz férhet hozzá a kezdő és a speciális AI Edge-modellhez és a megoldások fejlesztéséhez
+1. Az eszközök listájának megtekintése az [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) – áttekintés oldalon. Az Azure Percept áttekintő oldala az indítási pont, amellyel számos különböző munkafolyamathoz férhet hozzá a kezdő és a speciális AI Edge-modellhez és a megoldások fejlesztéséhez
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/portal-01-get-device-list.png" alt-text="Az eszközök listájának megtekintése.":::
     

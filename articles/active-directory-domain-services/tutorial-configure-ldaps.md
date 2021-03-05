@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/06/2020
+ms.date: 03/04/2021
 ms.author: justinha
-ms.openlocfilehash: 6da1d285440daa5d1d5a230905a77057728d4ae6
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: fd93635e7087d6f4a3590ec7bcb25482dc8382da
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256542"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174723"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: biztonságos LDAP konfigurálása Azure Active Directory Domain Services felügyelt tartományhoz
 
@@ -110,7 +110,7 @@ A biztonságos LDAP használatához a hálózati forgalom a nyilvános kulcsokra
 * A rendszer a felügyelt tartományra alkalmazza a **titkos** kulcsot.
     * Ez a titkos kulcs a biztonságos LDAP-forgalom *visszafejtésére* szolgál. A titkos kulcsot csak a felügyelt tartományra kell alkalmazni, és nem kell széles körben terjeszteni az ügyfélszámítógépekre.
     * A titkos kulcsot tartalmazó tanúsítvány a-t használja *. PFX* -fájlformátum.
-    * A tanúsítvány titkosítási algoritmusának *TripleDES-SHA1* értékűnek kell lennie.
+    * A tanúsítvány exportálásakor meg kell adnia a *TripleDES-SHA1* titkosítási algoritmust. Ez csak a. pfx-fájlra vonatkozik, és nem befolyásolja a tanúsítvány által használt algoritmust. Vegye figyelembe, hogy a *TripleDES-SHA1* beállítás csak a Windows Server 2016-es verziójától kezdődően érhető el.
 * A rendszer egy **nyilvános** kulcsot alkalmaz az ügyfélszámítógépekre.
     * Ez a nyilvános kulcs a biztonságos LDAP-forgalom *titkosítására* szolgál. A nyilvános kulcs terjeszthető az ügyfélszámítógépekre.
     * A titkos kulcs nélküli tanúsítványok a-t használják *. CER* -fájlformátum.
@@ -151,6 +151,11 @@ Ahhoz, hogy az előző lépésben létrehozott digitális tanúsítványt a fel�
 1. Mivel ez a tanúsítvány az adatvisszafejtéshez használatos, alaposan meg kell határoznia a hozzáférést. A tanúsítvány használatához jelszó használható. A megfelelő jelszó nélkül nem alkalmazható a tanúsítvány a szolgáltatásra.
 
     A **Biztonság** lapon válassza a **jelszó megadását** a védelméhez *. PFX* -tanúsítványfájl. A titkosítási algoritmusnak *TripleDES-SHA1* értékűnek kell lennie. Adja meg és erősítse meg a jelszót, majd kattintson a **tovább** gombra. Ezt a jelszót a következő szakaszban lehet használni a felügyelt tartomány biztonságos LDAP-szolgáltatásának engedélyezéséhez.
+
+    Ha a [PowerShell export-pfxcertificate parancsmag](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate?view=win10-ps)használatával exportál, a *-CryptoAlgorithmOption* jelzőt kell átadnia a TripleDES_SHA1 használatával.
+
+    ![Képernyőkép a jelszó titkosításáról](./media/tutorial-configure-ldaps/encrypt.png)
+
 1. Az **exportálandó fájl** lapon adja meg a fájl nevét és helyét, ahová exportálni szeretné a tanúsítványt, például *C:\Users\accountname\azure-AD-DS.pfx*. Jegyezze fel a jelszavát és helyét *.* A következő lépésekben a pfx-fájlnak ezt az információt kell megadnia.
 1. Az Áttekintés lapon válassza a **Befejezés** lehetőséget a tanúsítvány exportálásához *. PFX* -tanúsítványfájl. A tanúsítvány sikeres exportálását megerősítő párbeszédpanel jelenik meg.
 1. Hagyja nyitva az MMC-t a következő szakaszban való használatra.

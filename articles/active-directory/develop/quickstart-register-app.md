@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 027d1bf005ac052bf48e2c0aa3a4a71fc29f36f2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c72ae2a2e6dbd2278bdd78f26c145386be22764e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101647438"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175430"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Gyors útmutató: alkalmazás regisztrálása a Microsoft Identity platformmal
 
@@ -40,7 +40,8 @@ Az alkalmazás regisztrációjának létrehozásához kövesse az alábbi lépé
 1. Ha több bérlőhöz fér hozzá, a felső menüben a **címtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. A **kezelés** területen válassza a **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.
-1. Adja meg az alkalmazás **nevét** . Előfordulhat, hogy az alkalmazás felhasználói láthatják ezt a nevet. Később is megváltoztathatja.
+1. Adja meg az alkalmazás megjelenítendő **nevét** . Az alkalmazás felhasználói láthatják a megjelenítendő nevet az alkalmazás használatakor, például a bejelentkezés során.
+    Bármikor módosíthatja a megjelenítendő nevet, és több alkalmazás-regisztráció is megosztható. Az alkalmazás regisztrációjának automatikusan generált alkalmazása (ügyfél) azonosítója, nem a megjelenítendő neve, a rendszer egyedileg azonosítja az alkalmazást az Identity platformon belül.
 1. Itt adhatja meg, hogy ki használhatja ki az alkalmazást, más néven a *bejelentkezési közönségnek*.
 
     | Támogatott fióktípusok | Leírás |

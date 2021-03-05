@@ -1,7 +1,7 @@
 ---
-title: Adat-előkészítés Spark-készletekkel (előzetes verzió)
+title: Adat-előkészítés Apache Spark-készletekkel (előzetes verzió)
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan csatolhat Spark-készleteket adatelőkészítéshez az Azure szinapszis és a Azure Machine Learning használatával
+description: Ismerje meg, hogyan csatolhatja Apache Spark készleteket adatelőkészítéshez az Azure szinapszis Analytics és a Azure Machine Learning használatával
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,29 +11,29 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 87e03b6aee122c5a26d4388ca8b570aa6cdf7b55
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 7eeb7b82d9c3bfe21019d5d68f82c2e6d7a2bf68
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662306"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102171513"
 ---
-# <a name="attach-synapse-spark-pools-for-data-preparation-with-azure-synapse-preview"></a>Szinapszis Spark-készletek csatlakoztatása adatelőkészítéshez az Azure szinapszis (előzetes verzió) szolgáltatással
+# <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-preparation-preview"></a>Az Azure szinapszis Analytics szolgáltatással rendelkező Apache Spark-készletek csatolása az adatelőkészítéshez (előzetes verzió)
 
-Ebből a cikkből megtudhatja, hogyan csatolhat és indíthat el egy [Azure szinapszis](/synapse-analytics/overview-what-is.md) által támogatott Apache Spark-készletet az adatelőkészítéshez. 
+Ebből a cikkből megtudhatja, hogyan csatolhat és indíthat el egy olyan Apache Spark-készletet, amely az [Azure szinapszis Analytics](/synapse-analytics/overview-what-is.md) használatával végzi az adatelőkészítést. 
 
 >[!IMPORTANT]
-> A Azure Machine Learning és az Azure szinapszis-integráció előzetes verzióban érhető el. A cikkben bemutatott képességek olyan csomagot alkalmaznak `azureml-synapse` , amely a [kísérleti](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) előzetes verzió funkcióit tartalmazza, amelyek bármikor megváltozhatnak.
+> A Azure Machine Learning és az Azure szinapszis Analytics-integráció előzetes verzióban érhető el. A cikkben bemutatott képességek olyan csomagot alkalmaznak `azureml-synapse` , amely a [kísérleti](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) előzetes verzió funkcióit tartalmazza, amelyek bármikor megváltozhatnak.
 
-## <a name="azure-machine-learning-and-azure-synapse-integration-preview"></a>Azure Machine Learning és az Azure szinapszis integrációja (előzetes verzió)
+## <a name="azure-machine-learning-and-azure-synapse-analytics-integration-preview"></a>Azure Machine Learning és az Azure szinapszis Analytics-integrációja (előzetes verzió)
 
-Az Azure szinapszis Azure Machine Learning (előzetes verzió) szolgáltatással való integrációja lehetővé teszi, hogy az Azure szinapszis által támogatott Apache Spark-készletet az interaktív adatelemzéshez és-előkészítéshez csatolja. Ezzel az integrációval dedikált számítási feladattal rendelkezhet az adatok előkészítéséhez a skálán, mindezt a gépi tanulási modellek betanításához használt Python-jegyzetfüzetben.
+Az Azure szinapszis Analytics Azure Machine Learning (előzetes verzió) szolgáltatással való integrációja lehetővé teszi, hogy az Azure szinapszis által támogatott Apache Spark-készletet az interaktív adatelemzéshez és-előkészítéshez csatolja. Ezzel az integrációval dedikált számítási feladattal rendelkezhet az adatok előkészítéséhez a skálán, mindezt a gépi tanulási modellek betanításához használt Python-jegyzetfüzetben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Hozzon létre egy Azure Machine learning munkaterületet](how-to-manage-workspace.md?tabs=python).
 
-* [Hozzon létre egy szinapszis-munkaterületet Azure Portal](../synapse-analytics/quickstart-create-workspace.md).
+* [Hozzon létre egy Azure szinapszis Analytics-munkaterületet Azure Portal](../synapse-analytics/quickstart-create-workspace.md).
 
 * [Apache Spark-készlet létrehozása a Azure Portal, a web Tools vagy a szinapszis Studio használatával](../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
 
@@ -43,16 +43,16 @@ Az Azure szinapszis Azure Machine Learning (előzetes verzió) szolgáltatással
         pip install azureml-synapse
         ```
 
-## <a name="link-machine-learning-workspace-and-synapse-assets"></a>A Machine learning-munkaterület és a szinapszis-eszközök összekapcsolása
+## <a name="link-machine-learning-workspace-and-synapse-analytics-assets"></a>A Machine learning-munkaterület és a szinapszis Analytics-eszközök összekapcsolása
 
-Mielőtt a szinapszis Spark-készletet csatolja az adatelőkészítéshez, az Azure Machine Learning-munkaterületnek kapcsolódnia kell az Azure szinapszis-munkaterületéhez. 
+Az Apache szinapszis Spark-készletnek az adatelőkészítéshez való csatlakoztatásához az Azure Machine Learning-munkaterületnek kapcsolódnia kell az Azure szinapszis Analytics-munkaterülethez. 
 
-A ML-munkaterületet és a szinapszis-munkaterületet a [PYTHON SDK](#link-sdk) -val vagy a [Azure Machine learning Studióval](#link-studio)is összekapcsolhatja. 
+A Machine Learning munkaterületet és a szinapszis Analytics-munkaterületet a [PYTHON SDK](#link-sdk) vagy a [Azure Machine learning Studio](#link-studio)segítségével kapcsolhatja össze. 
 
 > [!IMPORTANT]
-> A szinapszis munkaterülethez való sikeres hivatkozáshoz a szinapszis munkaterület **tulajdonosi** szerepkörét kell megadnia. Győződjön meg arról, hogy a [Azure Portal](https://ms.portal.azure.com/)a hozzáférését.
+> Az Azure szinapszis Analytics-munkaterülethez való csatlakozáshoz az Azure szinapszis Analytics-munkaterület **tulajdonosi** szerepkörét kell megadnia. Győződjön meg arról, hogy a [Azure Portal](https://ms.portal.azure.com/)a hozzáférését.
 >
-> Ha nem **tulajdonosa** a szinapszis munkaterületnek, de meglévő társított szolgáltatást szeretne használni, tekintse meg [a meglévő társított szolgáltatás beszerzése](#get-an-existing-linked-service)című témakört.
+> Ha nem **tulajdonosa** az Azure szinapszis Analytics-munkaterületnek, de meglévő társított szolgáltatást szeretne használni, tekintse meg a [meglévő társított szolgáltatás beszerzése](#get-an-existing-linked-service)című témakört.
 
 
 <a name="link-sdk"></a>
@@ -60,8 +60,8 @@ A ML-munkaterületet és a szinapszis-munkaterületet a [PYTHON SDK](#link-sdk) 
 
 A következő kód a [`LinkedService`](/python/api/azureml-core/azureml.core.linked_service.linkedservice?preserve-view=true&view=azure-ml-py) és osztályokat alkalmazza a alkalmazásra [`SynapseWorkspaceLinkedServiceConfiguration`](/python/api/azureml-core/azureml.core.linked_service.synapseworkspacelinkedserviceconfiguration?preserve-view=true&view=azure-ml-py) , 
 
-* Kapcsolja össze a Machine learning-munkaterületet az Azure szinapszis-munkaterülettel `ws` . 
-* A szinapszis-munkaterület regisztrálása a Azure Machine Learning társított szolgáltatásként.
+* Azure Machine Learning munkaterület összekapcsolása az `ws` Azure szinapszis Analytics-munkaterülettel. 
+* Regisztrálja az Azure szinapszis Analytics-munkaterületet a Azure Machine Learning társított szolgáltatásként.
 
 ``` python
 import datetime  
@@ -82,14 +82,14 @@ linked_service = LinkedService.register(workspace = ws,
                                             linked_service_config = synapse_link_config)
 ```
 > [!IMPORTANT] 
-> Felügyelt identitás `system_assigned_identity_principal_id` jön létre az egyes társított szolgáltatásokhoz. Ezt a felügyelt identitást meg kell adni a szinapszis munkaterülethez tartozó **szinapszis Apache Spark rendszergazdai** szerepkörnek, mielőtt elkezdené a szinapszis-munkamenetet. [Rendelje hozzá a szinapszis Apache Spark rendszergazdai szerepkört a kezelt identitáshoz a szinapszis Studióban](../synapse-analytics/security/how-to-manage-synapse-rbac-role-assignments.md).
+> Felügyelt identitás `system_assigned_identity_principal_id` jön létre az egyes társított szolgáltatásokhoz. A felügyelt identitásnak meg kell adni az Azure szinapszis Analytics-munkaterület **szinapszis Apache Spark rendszergazdai** szerepkörét, mielőtt megkezdené a Apache Spark-munkamenetet. [Rendelje hozzá a szinapszis Apache Spark rendszergazdai szerepkört a kezelt identitáshoz a szinapszis Studióban](../synapse-analytics/security/how-to-manage-synapse-rbac-role-assignments.md).
 >
 > Egy adott társított szolgáltatás megkereséséhez használja a következőt: `system_assigned_identity_principal_id` `LinkedService.get('<your-mlworkspace-name>', '<linked-service-name>')` .
 
 <a name="link-studio"></a>
 ### <a name="link-workspaces-via-studio"></a>Munkaterületek összekapcsolása a Studio használatával
 
-Kapcsolja össze a Machine learning-munkaterületet és a szinapszis-munkaterületet a Azure Machine Learning Studio használatával a következő lépésekkel: 
+A következő lépésekkel összekapcsolhatja Azure Machine Learning-munkaterületét és az Azure szinapszis Analytics-munkaterületet a Azure Machine Learning Studióban: 
 
 1. Jelentkezzen be a [Azure Machine learning studióba](https://ml.azure.com/).
 1. A bal oldali ablaktábla **kezelés** szakaszában válassza a **társított szolgáltatások** elemet.
@@ -102,14 +102,14 @@ Kapcsolja össze a Machine learning-munkaterületet és a szinapszis-munkaterül
    |Előfizetés neve | Válassza ki a Machine learning-munkaterülethez társított előfizetés nevét. 
    |Szinapszis-munkaterület | Válassza ki azt a szinapszis-munkaterületet, amelyhez hivatkozni kíván. 
    
-1. Kattintson a **tovább** gombra a **Spark-készletek kiválasztása (opcionális)** űrlap megnyitásához. Ezen az űrlapon kiválaszthatja, hogy melyik szinapszis Spark-készletet szeretné csatolni a munkaterülethez
+1. Kattintson a **tovább** gombra a **Spark-készletek kiválasztása (opcionális)** űrlap megnyitásához. Ezen az űrlapon kiválaszthatja, hogy melyik szinapszis Apache Spark-készletet kívánja csatolni a munkaterülethez
 
 1. A **tovább** gombra kattintva nyissa meg a **felülvizsgálati** űrlapot, és jelölje ki a kívánt beállításokat. 
 1. Válassza a **Létrehozás** lehetőséget a társított szolgáltatás-létrehozási folyamat befejezéséhez.
 
 ## <a name="get-an-existing-linked-service"></a>Meglévő társított szolgáltatás beszerzése
 
-Meglévő társított szolgáltatás lekéréséhez és használatához **felhasználói vagy közreműködői** engedély szükséges a szinapszis munkaterülethez.
+Meglévő társított szolgáltatás lekéréséhez és használatához **felhasználói vagy közreműködői** engedélyek szükségesek az Azure szinapszis Analytics-munkaterülethez.
 
 Ez a példa egy meglévő társított szolgáltatást kér le a `synapselink1` munkaterületről a `ws` [`get()`](/python/api/azureml-core/azureml.core.linkedservice?preserve-view=true&view=azure-ml-py#get-workspace--name-) metódussal.
 ```python
@@ -132,39 +132,39 @@ LinkedService.list(ws)
  
 ## <a name="attach-synapse-spark-pool-as-a-compute"></a>Szinapszis Spark-készlet csatlakoztatása számítási feladatokhoz
 
-A munkaterületek összekapcsolását követően csatoljon egy szinapszis Spark-készletet dedikált számítási erőforrásként az adat-előkészítési feladatokhoz. 
+Ha a munkaterületei össze vannak kapcsolva, csatoljon egy szinapszis Apache Spark készletet dedikált számítási erőforrásként az adatelőkészítési feladatokhoz. 
 
-Szinapszis Spark-készleteket a-n keresztül csatolhat,
+Apache Spark-készleteket csatlakoztathat a használatával,
 * Azure Machine Learning Studio
 * [Azure Resource Manager- (ARM-) sablonok](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json)
 * A Python SDK 
 
-Az alábbi lépéseket követve csatolhat egy szinapszis Spark-készletet a studióhoz. 
+Az alábbi lépéseket követve csatlakoztathat egy Apache Spark-készletet a Studióval. 
 
 1. Jelentkezzen be a [Azure Machine learning studióba](https://ml.azure.com/).
 1. A bal oldali ablaktábla **kezelés** szakaszában válassza a **társított szolgáltatások** elemet.
 1. Válassza ki a szinapszis munkaterületet.
 1. Kattintson a bal felső sarokban található **csatolt Spark-készletek** elemre. 
 1. Válassza a **csatolás** lehetőséget. 
-1. Válassza ki a szinapszis Spark-készletet a listából, és adjon meg egy nevet.  
+1. Válassza ki a listából a Apache Spark készletet, és adjon meg egy nevet.  
     1. Ez a lista azonosítja az elérhető szinapszis Spark-készleteket, amelyek a számítási feladatokhoz csatlakoztathatók. 
     1. Új szinapszis Spark-készlet létrehozásával kapcsolatban lásd: [Apache Spark készlet létrehozása a szinapszis Studióval](../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
 1. Válassza a **kijelölt csatolás** lehetőséget. 
 
 
-A **PYTHON SDK** -t is használhatja a szinapszis Spark-készlet csatolásához. 
+A **PYTHON SDK** -t a Apache Spark készlet csatlakoztatására is használhatja. 
 
 A kód követése, 
 1. A SynapseCompute konfigurálja a rel,
 
    1. Az `linked_service` előző lépésben létrehozott vagy beolvasott LinkedService. 
    1. A csatolni kívánt számítási cél típusa `SynapseSpark`
-   1. A szinapszis Spark-készlet neve. Ennek egyeznie kell egy meglévő, a szinapszis-munkaterületen található Apache Spark-készlettel.
+   1. Az Apache Spark-készlet neve. Ennek egyeznie kell egy, az Azure szinapszis Analytics-munkaterületen található meglévő Apache Spark-készlettel.
    
 1. Egy gépi tanulási ComputeTarget hoz létre a beadásával, 
    1. A használni kívánt Machine learning-munkaterület `ws`
-   1. A Machine learning-munkaterületen belüli számításra hivatkozó név. 
-   1. A SynapseCompute konfigurálásakor megadott attach_configuration.
+   1. A Azure Machine Learning munkaterületen belüli számításra hivatkozó név. 
+   1. A szinapszis számítási beállításainak konfigurálásakor megadott attach_configuration.
        1. A ComputeTarget. Attach () hívása aszinkron módon történik, ezért a rendszer a hívás befejeződéséig blokkolja a mintákat.
 
 ```python
@@ -182,7 +182,7 @@ synapse_compute = ComputeTarget.attach(workspace= ws,
 synapse_compute.wait_for_completion()
 ```
 
-Ellenőrizze, hogy a szinapszis Spark-készlet csatolva van-e.
+Ellenőrizze, hogy a Apache Spark készlet csatolva van-e.
 
 ```python
 ws.compute_targets['Synapse Spark pool alias']
@@ -190,12 +190,12 @@ ws.compute_targets['Synapse Spark pool alias']
 
 ## <a name="launch-synapse-spark-pool-for-data-preparation-tasks"></a>A szinapszis Spark-készlet elindítása adatelőkészítési feladatokhoz
 
-Megadhat egy [Azure Machine learning környezetet](concept-environments.md) , amelyet a szinapszis-munkamenet során használhat. Csak a környezetben megadott Conda-függőségek lépnek életbe. A Docker-rendszerkép nem támogatott.
+Megadhat egy [Azure Machine learning környezetet](concept-environments.md) , amelyet a Apache Spark-munkamenet során használhat. Csak a környezetben megadott Conda-függőségek lépnek életbe. A Docker-rendszerkép nem támogatott.
 
 >[!WARNING]
->  A környezeti Conda-függőségekben megadott Python-függőségek nem támogatottak a szinapszis Spark-készletekben. Jelenleg csak a rögzített Python-verziók támogatottak. A Python-verzió ellenőrzéséhez  `sys.version_info` adja meg a szkriptjét is.
+>  A környezeti Conda-függőségekben megadott Python-függőségek Apache Spark készletekben nem támogatottak. Jelenleg csak a rögzített Python-verziók támogatottak. A Python-verzió ellenőrzéséhez  `sys.version_info` adja meg a szkriptjét is.
 
-A következő kód létrehozza a környezetet, `myenv` amely a munkamenet megkezdése előtt telepíti a `azureml-core` 1.20.0 és `numpy` a Version 1.17.0 verziót. Ezt a környezetet ezután felveheti a szinapszis munkamenet- `start` utasításba.
+A következő kód létrehozza a környezetet, `myenv` amely a munkamenet megkezdése előtt telepíti a `azureml-core` 1.20.0 és `numpy` a Version 1.17.0 verziót. Ezt a környezetet a Apache Spark munkamenet-utasításban is felveheti `start` .
 
 ```python
 
@@ -209,10 +209,10 @@ env.python.conda_dependencies.add_conda_package("numpy==1.17.0")
 env.register(workspace=ws)
 ```
 
-Az adatelőkészítés a szinapszis Spark-készlettel való megkezdéséhez adja meg a szinapszis Spark-készlet nevét, és adja meg az előfizetés AZONOSÍTÓját, a Machine learning-munkaterület erőforráscsoportot, a Machine learning-munkaterület nevét, valamint azt, hogy melyik környezetet kell használni a szinapszis-munkamenet során. 
+Az Apache Spark Spark-készlettel való adatelőkészítés megkezdéséhez adja meg a Apache Spark készlet nevét, adja meg az előfizetés AZONOSÍTÓját, a Machine learning-munkaterület erőforráscsoportot, a Machine learning-munkaterület nevét, valamint azt, hogy melyik környezetet kell használnia a Apache Spark-munkamenet során. 
 
 > [!IMPORTANT]
-> A szinapszis Spark-készlet használatának folytatásához jeleznie kell, hogy melyik számítási erőforrást kell használnia az adatelőkészítési feladatokban az `%synapse` egyetlen sornyi kóddal és `%%synapse` több sorba. 
+> A Apache Spark készlet használatának folytatásához jeleznie kell, hogy melyik számítási erőforrást kell használnia az adatelőkészítési feladatokban az `%synapse` egyetlen sornyi kóddal és `%%synapse` több sorba. 
 
 ```python
 %synapse start -c SynapseSparkPoolAlias -s AzureMLworkspaceSubscriptionID -r AzureMLworkspaceResourceGroupName -w AzureMLworkspaceName -e myenv
@@ -226,7 +226,7 @@ A munkamenet megkezdése után megtekintheti a munkamenet metaadatait.
 
 ## <a name="load-data-from-storage"></a>Adatok betöltése a tárolóból
 
-A szinapszis Spark-munkamenetének megkezdése után olvassa el az előkészíteni kívánt adatait. Az Azure Blob Storage és a Azure Data Lake Storage Generations 1. és 2. generációja támogatja az betöltést.
+A Apache Spark-munkamenet elindítása után olvassa el az előkészíteni kívánt adatait. Az Azure Blob Storage és a Azure Data Lake Storage Generations 1. és 2. generációja támogatja az betöltést.
 
 A tárolási szolgáltatásokból kétféleképpen tölthetők be adatok: 
 
@@ -330,7 +330,7 @@ A következő példában az előkészített adatlemez visszakerül az Azure Blob
 df.write.format("csv").mode("overwrite").save("wasbs://demo@dprepdata.blob.core.windows.net/training_data/Titanic.csv")
 ```
 
-Amikor befejezte az adatelőkészítést, és mentette az előkészített adatait a Storage-ba, ne használja a szinapszis Spark-készletet a következő paranccsal.
+Amikor befejezte az adatelőkészítést, és mentette az előkészített adatait a Storage-ba, ne használja a Apache Spark készletet a következő paranccsal.
 
 ```python
 %synapse stop
@@ -360,11 +360,10 @@ input1 = train_ds.as_mount()
 
 ## <a name="example-notebook"></a>Példajegyzetfüzet
 
-Tekintse [meg ezt a végpontok közötti jegyzetfüzetet](../synapse-analytics/overview-what-is.md) , amelyből megtudhatja, hogyan végezheti el az adatok előkészítését és a modell betanítását egyetlen jegyzetfüzetből az Azure szinapszis és a Azure Machine learning használatával.
+Tekintse [meg ezt a végpontok közötti jegyzetfüzetet](../synapse-analytics/overview-what-is.md) , amelyből megtudhatja, hogyan végezheti el az adatok előkészítését és a modell betanítását egyetlen jegyzetfüzetből az Azure szinapszis Analytics és a Azure Machine learning használatával.
 
 ## <a name="next-steps"></a>Következő lépések
 
 * [Modell betanítása](how-to-set-up-training-targets.md).
 * [Betanítás Azure Machine Learning adatkészlettel](how-to-train-with-datasets.md)
 * [Hozzon létre egy Azure Machine learning-adatkészletet](how-to-create-register-datasets.md).
-

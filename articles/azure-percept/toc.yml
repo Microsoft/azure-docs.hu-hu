@@ -90,6 +90,8 @@
           href: vision-solution-troubleshooting.md
         - name: Azure Percept – hanghibák elhárítása
           href: troubleshoot-audio-accessory-speech-module.md
+        - name: Ismert problémák
+          href: known-issues.md
 - name: Referencia
   items:
     - name: Azure Percept-eszközök Adatlapja

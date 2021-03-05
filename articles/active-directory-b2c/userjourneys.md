@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: aac75e7876ce59b90e27f9e87c96240755d26235
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 05307fe2ad9e0a59fa11c30f2dc7154ba5076603
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120742"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174665"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -119,18 +119,23 @@ Az **Előfeltételek** elem a következő elemet tartalmazza:
 
 #### <a name="precondition"></a>Előfeltétel
 
+A koordináló lépések feltételesen hajthatók végre a előkészítési lépésben meghatározott előfeltételek alapján. Kétféle előfeltétel létezik:
+ 
+- **Jogcímek léteznek** – megadja, hogy a rendszer végrehajtja a műveleteket, ha a megadott jogcímek a felhasználó aktuális jogcím-táskájában vannak.
+- **Jogcím egyenlő** – meghatározza, hogy a rendszer végrehajtja-e a műveleteket, ha a megadott jogcím létezik, és annak értéke megegyezik a megadott értékkel. Az ellenőrzést a kis-és nagybetűket megkülönböztető sorszámok összehasonlítását hajtja végre. A logikai jogcím típusának ellenőrzésekor használja `True` a vagy a értéket `False` .
+
 Az **előfeltétel** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | `Type` | Igen | Az előfeltételként végrehajtandó ellenőrzés vagy lekérdezés típusa. Az érték lehet **ClaimsExist**, amely megadja, hogy a rendszer végrehajtja a műveleteket, ha a megadott jogcímek a felhasználó aktuális jogcímek készletében vannak, vagy **ClaimEquals**, amely meghatározza, hogy a rendszer végrehajtja a műveleteket, ha a megadott jogcím létezik, és annak értéke megegyezik a megadott értékkel. |
-| `ExecuteActionsIf` | Igen | Használjon igaz vagy hamis tesztet annak eldöntéséhez, hogy az előfeltételben szereplő műveleteket kell-e végrehajtani. |
+| `ExecuteActionsIf` | Igen | A `true` vagy a `false` teszt használatával döntse el, hogy az előfeltételben szereplő műveleteket kell-e végrehajtani. |
 
 Az **előfeltétel** elemek a következő elemeket tartalmazzák:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| Érték | 1: n | Egy ClaimTypeReferenceId, amelyről le kell kérdezni. Egy másik érték elem tartalmazza az ellenőrizendő értéket.</li></ul>|
+| Érték | 1:2 | Jogcím típusának azonosítója A jogcím már definiálva van a jogcímek sémája szakaszban a házirend fájljában vagy a szülő házirend fájljában. Ha az előfeltétel típusa `ClaimEquals` , a második `Value` elem az ellenőrizendő értéket tartalmazza. |
 | Művelet | 1:1 | Az a művelet, amelyet akkor kell végrehajtani, ha az előfeltétel-ellenőrzés egy előkészítési lépésen belül igaz. Ha a értéke a `Action` `SkipThisOrchestrationStep` , a társított `OrchestrationStep` nem hajtható végre. |
 
 #### <a name="preconditions-examples"></a>Példák az előfeltételekre
@@ -189,7 +194,7 @@ Az előfeltételek több előfeltétel ellenőrzését is megadhatják. A követ
 </OrchestrationStep>
 ```
 
-## <a name="identity-provider-selection"></a>Identitás-szolgáltató kiválasztása
+## <a name="claims-provider-selection"></a>Jogcím-szolgáltató kiválasztása
 
 Az identitás-szolgáltató kijelölése lehetővé teszi, hogy a felhasználók a lehetőségek listájából válasszanak ki egy műveletet. Az identitás-szolgáltató kiválasztása két előkészítési lépésből áll: 
 
@@ -215,7 +220,7 @@ A **ClaimsProviderSelection** elem a következő attribútumokat tartalmazza:
 | TargetClaimsExchangeId | Nem | A jogcím-szolgáltató kiválasztásának következő megszervezési lépésében végrehajtott jogcímbarát Exchange azonosítója. Ezt az attribútumot vagy a ValidationClaimsExchangeId attribútumot meg kell adni, de nem mindkettőt. |
 | ValidationClaimsExchangeId | Nem | A jogcímek cseréjének azonosítója, amelyet a rendszer az aktuális előkészítési lépésben hajt végre a jogcím-szolgáltató kijelölésének ellenőrzéséhez. Ezt az attribútumot vagy a TargetClaimsExchangeId attribútumot meg kell adni, de nem mindkettőt. |
 
-### <a name="claimsproviderselection-example"></a>ClaimsProviderSelection példa
+### <a name="claims-provider-selection-example"></a>A jogcím-szolgáltató kiválasztási példája
 
 A következő előkészítési lépésben a felhasználó dönthet úgy, hogy bejelentkezik a Facebook, a LinkedIn, a Twitter, a Google vagy egy helyi fiók használatával. Ha a felhasználó kiválasztja az egyik közösségi identitás-szolgáltatót, a második előkészítési lépés az attribútumban megadott kiválasztott jogcím-Exchange-re van végrehajtva `TargetClaimsExchangeId` . A második előkészítési lépés átirányítja a felhasználót a közösségi identitás-szolgáltatóhoz a bejelentkezési folyamat befejezéséhez. Ha a felhasználó úgy dönt, hogy bejelentkezik a helyi fiókkal, Azure AD B2C marad ugyanazon a előkészítési lépésben (ugyanazon a regisztrációs oldalon vagy bejelentkezési oldalon), és kihagyja a második előkészítési lépést.
 

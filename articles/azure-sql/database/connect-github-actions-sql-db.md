@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 216658b5f5443409e7bd44cbd29bff40cd56c75f
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 335879af93834665985fe2c14ce3cbd827387920
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606980"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172139"
 ---
 # <a name="use-github-actions-to-connect-to-azure-sql-database"></a>A GitHub-műveletek használata a Azure SQL Databasehoz való kapcsolódáshoz
 
-Ismerkedjen meg a [GitHub-műveletekkel](https://docs.github.com/en/free-pro-team@latest/actions) egy munkafolyamattal, amely az adatbázis-frissítések [Azure SQL Database](../azure-sql-iaas-vs-paas-what-is-overview.md)való üzembe helyezésére használható. 
+Ismerkedjen meg a [GitHub-műveletekkel](https://docs.github.com/en/actions) egy munkafolyamattal, amely az adatbázis-frissítések [Azure SQL Database](../azure-sql-iaas-vs-paas-what-is-overview.md)való üzembe helyezésére használható. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +41,7 @@ A fájl két részből áll:
 
 ## <a name="generate-deployment-credentials"></a>Központi telepítési hitelesítő adatok előállítása
 
-Az [Azure CLI](/cli/azure/)-ben létrehozhat egy [egyszerű szolgáltatást](../../active-directory/develop/app-objects-and-service-principals.md) az az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) parancs használatával. Futtassa ezt a parancsot [Azure Cloud Shell](https://shell.azure.com/) a Azure Portalban, vagy kattintson a **TRY IT (kipróbálás** ) gombra.
+Az [Azure CLI](/cli/azure/)-ben létrehozhat egy [egyszerű szolgáltatást](../../active-directory/develop/app-objects-and-service-principals.md) az az [ad SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) parancs használatával. Futtassa ezt a parancsot [Azure Cloud Shell](https://shell.azure.com/) a Azure Portalban, vagy kattintson a **TRY IT (kipróbálás** ) gombra.
 
 Cserélje le a helyőrzőket `server-name` Az Azure-ban üzemeltetett SQL-kiszolgáló nevére. Cserélje le az és az értékét `subscription-id` `resource-group` az SQL Serverhez csatlakoztatott előfizetés-azonosítóval és erőforráscsoporthoz.  
 
@@ -191,7 +191,7 @@ A kapcsolatok sztringjét GitHub-titokként fogja használni.
 
 Ha az Azure SQL Database-adatbázisra és-tárházra már nincs szükség, távolítsa el az üzembe helyezett erőforrásokat az erőforráscsoport és a GitHub-tárház törlésével. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ismerje meg az Azure-t és a GitHub-integrációt](/azure/developer/github/)

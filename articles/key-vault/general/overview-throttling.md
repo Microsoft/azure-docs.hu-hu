@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5b60f290f6d3ca184e25edd2984ad5b2d1ff2bdf
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 7bdc3ac517df6b73fba7231cfe0fdc9855803782
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289672"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175753"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Az Azure Key Vaultra vonatkozó szabályozási irányelvek
 
@@ -24,7 +24,7 @@ A szabályozás korlátai a forgatókönyv alapján változnak. Ha például nag
 
 ## <a name="how-does-key-vault-handle-its-limits"></a>Hogyan kezeli a Key Vault a korlátait?
 
-A szolgáltatás korlátai a Key Vault meggátolják az erőforrások felhasználását, és biztosítják az összes Key Vault ügyfelének minőségi szolgáltatását. Ha túllépi a szolgáltatás küszöbértékét, Key Vault korlátozza az ügyféltől érkező további kérelmeket egy adott időtartamra, a 429-as HTTP-állapotkódot (túl sok kérés) adja vissza, és a kérés meghiúsul. Sikertelen kérelmek, amelyek a 429-es számú korlátozást adnak vissza a Key Vault által követett szabályozási korlátok felé. 
+A szolgáltatás korlátai a Key Vault meggátolják az erőforrások felhasználását, és biztosítják az összes Key Vault ügyfelének minőségi szolgáltatását. Ha túllépi a szolgáltatás küszöbértékét, Key Vault korlátozza az ügyféltől érkező további kérelmeket egy adott időtartamra, a 429-as HTTP-állapotkódot (túl sok kérés) adja vissza, és a kérés meghiúsul. Az 429-et visszaadó sikertelen kérelmek nem számítanak bele a Key Vault által követett szabályozási korlátokba. 
 
 A Key Vault eredetileg a titkok tárolására és lekérésére szolgáltak a központi telepítés ideje alatt.  A világ fejlődött, és a Key Vault futtatáskor használatban van a titkok tárolására és beolvasására, és gyakran az alkalmazások és a szolgáltatások használni szeretnék a Key Vaultt, például az adatbázist.  Az aktuális határértékek nem támogatják a nagy átviteli sebességet.
 
@@ -47,8 +47,8 @@ Ha úgy látja, hogy a fentiek továbbra sem felelnek meg az igényeinek, tölts
 
 Ha további kapacitást hagy jóvá, vegye figyelembe a következőket a kapacitás növekedésének eredményeképpen:
 1. Az adatkonzisztencia-modell módosul. Miután a tár engedélyezve van a további adatátviteli kapacitással, a Key Vault szolgáltatás adatkonzisztencia-garanciája módosul (a nagyobb mennyiségű RPS-vel való megfeleléshez szükséges, mivel a mögöttes Azure Storage szolgáltatás nem tud lépést tartani).  Dióhéjban:
-  1. Az **engedélyezési lista nélkül** : a Key Vault szolgáltatás egy írási művelet eredményét fogja tükrözni (például SecretSet, CreateKey) azonnal a következő hívásokban (például: SecretGet, előjel).
-  1. Az **engedélyezési listával** : a Key Vault szolgáltatás egy írási művelet eredményét fogja tükrözni (például SecretSet, CreateKey) a következő hívásokban (például:) 60 másodpercen belül. SecretGet, előjel).
+  1. Az **engedélyezési lista nélkül**: a Key Vault szolgáltatás egy írási művelet eredményét fogja tükrözni (például SecretSet, CreateKey) azonnal a következő hívásokban (például: SecretGet, előjel).
+  1. Az **engedélyezési listával**: a Key Vault szolgáltatás egy írási művelet eredményét fogja tükrözni (például SecretSet, CreateKey) a következő hívásokban (például:) 60 másodpercen belül. SecretGet, előjel).
 1. Az ügyfél kódjának vissza kell térnie a 429-re vonatkozó újrapróbálkozási szabályzatra. A Key Vault szolgáltatást hívó ügyfélalkalmazás nem tudja azonnal újrapróbálkozni Key Vault kérések esetén, amikor 429-as kódú választ kap.  Az itt közzétett Azure Key Vault-szabályozási útmutató az exponenciális leállítási alkalmazását javasolja a 429 http-válasz kódjának fogadásakor.
 
 Ha érvényes üzleti esettel rendelkezik a magasabb szintű szabályozási korlátokhoz, vegye fel velünk a kapcsolatot.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 1/29/2021
 ms.author: nichola
 ms.custom: aaddev
-ms.openlocfilehash: e7193ee5d076538689078ce634b8170926df20b6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f63d7aed75b14f5f008a639d667d8806b233b9fa
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101653252"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174598"
 ---
 # <a name="support-passwordless-authentication-with-fido2-keys-in-apps-you-develop"></a>Jelszavas hitelesítés támogatása FIDO2-kulcsokkal a fejleszthető alkalmazásokban
 
@@ -52,7 +52,7 @@ A hitelesítés megvalósításának ajánlott lehetőségei a következők:
 
 ### <a name="mobile"></a>Mobil
 
-Február 2020-én a FIDO2 jelenleg nem támogatott natív iOS-vagy Android-alkalmazásokhoz, de fejlesztés alatt áll.
+Február 2021-én a FIDO2 jelenleg nem támogatott natív iOS-vagy Android-alkalmazásokhoz, de fejlesztés alatt áll.
 
 Az alkalmazások a rendelkezésre álláshoz való előkészítéséhez, és általános ajánlott eljárásként az iOS-és Android-alkalmazások esetében a MSAL-t kell használnia a rendszerböngészőben használt alapértelmezett konfigurációval.
 

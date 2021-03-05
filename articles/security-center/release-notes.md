@@ -1,23 +1,18 @@
 ---
 title: A Azure Security Center kibocsátási megjegyzései
 description: A Azure Security Center újdonságait és változásait ismertető Leírás
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/18/2021
+ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 327103df21dd34347439a833d7ac4b8a21dc66b4
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 6c69e5923e2b65bab0feca04d10fa67f49df3616
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099845"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174483"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -29,6 +24,96 @@ Ha szeretne többet megtudni a Security Center hamarosan elérhető *tervezett* 
 
 > [!TIP]
 > Ha hat hónapnál régebbi elemeket keres, az archívumban találhatja meg a [Azure Security Center újdonságait](release-notes-archive.md).
+
+
+
+## <a name="march-2021"></a>Március 2021
+
+A márciusi frissítések a következők:
+
+- [Azure Firewall a Security Centerba integrált felügyelet](#azure-firewall-management-integrated-into-security-center)
+- [Az SQL sebezhetőségi felmérés mostantól tartalmazza a "szabály letiltásának" élményét (előzetes verzió)](#sql-vulnerability-assessment-now-includes-the-disable-rule-experience-preview)
+- [Azure Monitor Security Centerba integrált munkafüzetek és a megadott három sablon](#azure-monitor-workbooks-integrated-into-security-center-and-three-templates-provided)
+- [A szabályozási megfelelőségi irányítópult mostantól tartalmazza az Azure audit-jelentéseket (előzetes verzió)](#regulatory-compliance-dashboard-now-includes-azure-audit-reports-preview)
+- [A Munkafolyamat-automatizálás üzembe helyezésére vonatkozó szabályzatok frissítései](#updates-to-the-policies-for-deploying-workflow-automation)
+
+
+### <a name="azure-firewall-management-integrated-into-security-center"></a>Azure Firewall a Security Centerba integrált felügyelet
+
+A Azure Security Center megnyitásakor az Áttekintés oldalon megjelenik az első lap. 
+
+Ez az interaktív irányítópult egységes nézetet biztosít a hibrid Felhőbeli számítási feladatok biztonsági állapotának kialakításához. Emellett a biztonsági riasztásokat, a lefedettségi adatokat és egyebeket is megjeleníti.
+
+A biztonsági állapot központi felhasználói felületről való megtekintésének részeként a Azure Firewall Managert integráltuk ebbe az irányítópultba. Mostantól megtekintheti a tűzfal lefedettségi állapotát az összes hálózatban, és központilag kezelheti Azure Firewall házirendeket Security Centertól kezdve.
+
+További információ az irányítópultról [Azure Security Center Áttekintés oldalán](overview-page.md).
+
+:::image type="content" source="media/release-notes/overview-dashboard-firewall-manager.png" alt-text="Security Center áttekintő irányítópult a Azure Firewall csempével":::
+
+
+### <a name="sql-vulnerability-assessment-now-includes-the-disable-rule-experience-preview"></a>Az SQL sebezhetőségi felmérés mostantól tartalmazza a "szabály letiltásának" élményét (előzetes verzió)
+
+A Security Center tartalmaz egy beépített sebezhetőségi képolvasót a potenciális adatbázis-sebezhetőségek felderítéséhez, nyomon követéséhez és szervizeléséhez. Az értékelési vizsgálatok eredményei áttekintést nyújtanak az SQL-gépek biztonsági állapotáról, valamint a biztonsági eredmények részleteiről.
+
+Ha a szervezetnek figyelmen kívül kell hagynia egy megállapítást, és nem javítja azt, akkor letilthatja. A letiltott eredmények nem befolyásolják a biztonságos pontszámot, vagy nem eredményeznek nemkívánatos zajt.
+
+További információ az [egyes megállapítások letiltásával](defender-for-sql-on-machines-vulnerability-assessment.md#disable-specific-findings-preview)kapcsolatban.
+
+
+
+### <a name="azure-monitor-workbooks-integrated-into-security-center-and-three-templates-provided"></a>Azure Monitor Security Centerba integrált munkafüzetek és a megadott három sablon
+
+A Ignite Spring 2021-as részeként bejelentettük a Security Center integrált Azure Monitor munkafüzeteit.
+
+Kihasználhatja az új integrációt, hogy megkezdje a beépített sablonok használatát Security Center galériájában. A munkafüzet-sablonok használatával dinamikus és vizuális jelentéseket hozhat létre a szervezet biztonsági helyzetének nyomon követéséhez. Emellett új munkafüzetek is létrehozhatók Security Center adatok vagy bármely más támogatott adattípus alapján, és gyorsan üzembe helyezhetők a közösségi munkafüzetek a Security Center GitHub-Közösségből.
+
+Három sablon jelentés van megadva:
+
+- **Biztonsági pontszám az idő múlásával** – nyomon követheti az előfizetések pontszámait és a javaslatok módosításait az erőforrásokra vonatkozóan
+- **Rendszerfrissítések** – a hiányzó rendszerfrissítések megtekintése erőforrások, operációs rendszer, súlyosság és egyéb beállítások alapján
+- **Sebezhetőségi felmérés eredményei** – megtekintheti az Azure-erőforrások sebezhetőségi vizsgálatának eredményeit
+
+Ismerje meg, hogyan használhatja ezeket a jelentéseket, vagy hogyan [hozhat létre a saját, interaktív jelentések készítése Security Center adatairól](custom-dashboards-azure-workbooks.md).
+
+:::image type="content" source="media/custom-dashboards-azure-workbooks/secure-score-over-time-snip.png" alt-text="Biztonságos pontszám időbeli jelentés":::
+
+
+### <a name="regulatory-compliance-dashboard-now-includes-azure-audit-reports-preview"></a>A szabályozási megfelelőségi irányítópult mostantól tartalmazza az Azure audit-jelentéseket (előzetes verzió)
+
+A szabályozási megfelelőségi irányítópult eszköztárán mostantól letöltheti az Azure-és Dynamics-minősítési jelentéseket. 
+
+:::image type="content" source="media/release-notes/audit-reports-regulatory-compliance-dashboard.png" alt-text="Szabályozási megfelelőségi irányítópult eszköztára":::
+
+Kiválaszthatja a megfelelő jelentések típusát (PCI, SOC, ISO és egyebek), és szűrők használatával megkeresheti a szükséges konkrét jelentéseket.
+
+További információ [a szabványok kezeléséről a szabályozási megfelelőségi irányítópulton](update-regulatory-compliance-packages.md).
+
+:::image type="content" source="media/release-notes/audit-reports-list-regulatory-compliance-dashboard.png" alt-text="Az elérhető Azure-naplózási jelentések listájának szűrése":::
+
+
+
+### <a name="updates-to-the-policies-for-deploying-workflow-automation"></a>A Munkafolyamat-automatizálás üzembe helyezésére vonatkozó szabályzatok frissítései
+
+A szervezet figyelési és incidens-reagálási folyamatainak automatizálása nagy mértékben növelheti a biztonsági incidensek kivizsgálásához és enyhítéséhez szükséges időt.
+
+Három Azure Policy "DeployIfNotExist" szabályzatot biztosítunk, amelyek munkafolyamat-automatizálási eljárásokat hoznak létre és konfigurálnak, így a szervezeten belül üzembe helyezhetők az automatizálások:
+
+|Cél  |Szabályzat  |Házirend-azonosító  |
+|---------|---------|---------|
+|Biztonsági riasztások munkafolyamat-automatizálása|[Azure Security Center-riasztásokat automatizáló munkafolyamat üzembe helyezése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff1525828-9a90-4fcf-be48-268cdd02361e)|f1525828-9a90-4fcf-be48-268cdd02361e|
+|Munkafolyamat-automatizálás biztonsági javaslatokhoz|[Azure Security Center-javaslatokat automatizáló munkafolyamat üzembe helyezése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f73d6ab6c-2475-4850-afd6-43795f3492ef)|73d6ab6c-2475-4850-afd6-43795f3492ef|
+|Munkafolyamatok automatizálása szabályozási megfelelőségi változásokhoz|[Munkafolyamat-automatizálás üzembe helyezése Azure Security Center szabályozási megfelelőséghez](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f73d6ab6c-509122b9-ddd9-47ba-a5f1-d0dac20be63c)|509122b9-ddd9-47ba-a5f1-d0dac20be63c|
+||||
+
+A szabályzatok szolgáltatásainak két frissítése van:
+
+- Ha hozzá van rendelve, a kényszerítéssel továbbra is engedélyezve lesznek.
+- Mostantól testreszabhatja ezeket a házirendeket, és frissítheti a paramétereket még azután is, hogy azok már telepítve lettek. Ha például egy felhasználó hozzá szeretne adni egy másik értékelési kulcsot, vagy szerkeszteni kíván egy meglévő Assessment-kulcsot, azt megteheti.
+
+Ismerkedés a [munkafolyamat-automatizálási sablonokkal](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation).
+
+További információ a [Security Center eseményindítókkal kapcsolatos válaszok automatizálásáról](workflow-automation.md).
+
 
 
 ## <a name="february-2021"></a>2021. február
@@ -777,221 +862,3 @@ extract("^(.+)/providers/Microsoft.Security/assessments/.+$",1,id)))))
 További információt a következő hivatkozásokon talál:
 - [Lekérdezések létrehozása az Azure Resource Graph Explorerrel](../governance/resource-graph/first-query-portal.md)
 - [Kusto lekérdezési nyelv (KQL)](/azure/data-explorer/kusto/query/)
-
-
-## <a name="september-2020"></a>2020. szeptember
-
-A szeptemberben elérhető frissítések a következők:
-- [Security Center új arculatot kap!](#security-center-gets-a-new-look)
-- [Az Azure Defender megjelent](#azure-defender-released)
-- [Általánosan elérhető az Azure Defender for Key Vault](#azure-defender-for-key-vault-is-generally-available)
-- [Általánosan elérhető az Azure Defender a fájlok és ADLS Gen2 tárolásának védelméhez](#azure-defender-for-storage-protection-for-files-and-adls-gen2-is-generally-available)
-- [Az Asset Inventory Tools mostantól általánosan elérhető](#asset-inventory-tools-are-now-generally-available)
-- [A tároló-beállításjegyzék és a virtuális gépek vizsgálatára szolgáló adott sebezhetőség letiltása](#disable-a-specific-vulnerability-finding-for-scans-of-container-registries-and-virtual-machines)
-- [Erőforrás kivonása egy javaslatból](#exempt-a-resource-from-a-recommendation)
-- [A Security Center AWS-és GCP-összekötők több felhős élményt nyújtanak](#aws-and-gcp-connectors-in-security-center-bring-a-multi-cloud-experience)
-- [Kubernetes munkaterhelés-védelmi javaslat csomag](#kubernetes-workload-protection-recommendation-bundle)
-- [A sebezhetőségi felmérés eredményei mostantól folyamatos exportálással érhetők el](#vulnerability-assessment-findings-are-now-available-in-continuous-export)
-- [Biztonsági konfigurációs problémák megakadályozása az új erőforrások létrehozásakor feltett javaslatok végrehajtásakor](#prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources)
-- [A hálózati biztonsági csoport javaslatai javultak](#network-security-group-recommendations-improved)
-- [Elavult előnézeti AK-javaslat: "Pod biztonsági szabályzatokat kell meghatározni a Kubernetes-szolgáltatásokban"](#deprecated-preview-aks-recommendation-pod-security-policies-should-be-defined-on-kubernetes-services)
-- [Azure Security Center továbbfejlesztett e-mail-értesítések](#email-notifications-from-azure-security-center-improved)
-- [A biztonságos pontszám nem tartalmazza az előzetes verzióra vonatkozó javaslatokat](#secure-score-doesnt-include-preview-recommendations)
-- [A javaslatok mostantól a súlyossági mutatót és a frissességi időközt is tartalmazzák](#recommendations-now-include-a-severity-indicator-and-the-freshness-interval)
-
-
-### <a name="security-center-gets-a-new-look"></a>Security Center új arculatot kap!
-
-Megjelent egy frissített felhasználói felület a Security Center portál oldalain. Az új lapok közé tartozik egy új áttekintő oldal és irányítópult a biztonságos pontszám, az eszközök leltározása és az Azure Defender számára.
-
-Az átalakított áttekintő oldal mostantól tartalmaz egy csempét a biztonságos pontszám, a tárgyieszköz-leltár és az Azure Defender-irányítópultok eléréséhez. Emellett egy csempe is kapcsolódik a szabályozási megfelelőségi irányítópulthoz.
-
-További információ az [áttekintő oldalról](overview-page.md).
-
-
-### <a name="azure-defender-released"></a>Az Azure Defender megjelent
-
-Az **Azure Defender** a felhőalapú munkaterhelés-védelmi platform (CWPP), amely a fejlett, intelligens, Azure-és hibrid számítási feladatok védelméhez Security Centeron belül integrált. Lecseréli Security Center Standard díjszabási csomagját. 
-
-Amikor engedélyezi az Azure Defender számára a Azure Security Center **díjszabási és beállítási** területét, a következő Defender-csomagok egyidejűleg engedélyezve vannak, és átfogó védelmet biztosítanak a környezet számítási, adatés szolgáltatási rétegei számára:
-
-- [Azure Defender kiszolgálókhoz](defender-for-servers-introduction.md)
-- [Azure Defender App Service-hez](defender-for-app-service-introduction.md)
-- [Azure Defender tároláshoz](defender-for-storage-introduction.md)
-- [Azure Defender SQL-hez](defender-for-sql-introduction.md)
-- [Azure Defender Key Vaulthoz](defender-for-key-vault-introduction.md)
-- [Azure Defender Kuberneteshez](defender-for-kubernetes-introduction.md)
-- [Azure Defender tárolóregisztrációs adatbázisokhoz](defender-for-container-registries-introduction.md)
-
-Ezeket a csomagokat a Security Center dokumentációjában külön ismertetjük.
-
-A dedikált irányítópulttal az Azure Defender biztonsági riasztásokat és komplex veszélyforrások elleni védelmet biztosít a Virtual Machines, az SQL Database, a containers, a web Applications, a Network és más rendszerekhez.
-
-[További információ az Azure Defenderről](azure-defender.md)
-
-### <a name="azure-defender-for-key-vault-is-generally-available"></a>Általánosan elérhető az Azure Defender for Key Vault
-
-A Azure Key Vault egy felhőalapú szolgáltatás, amely védelmet biztosít a titkosítási kulcsok és a titkok, például a tanúsítványok, a kapcsolatok karakterláncai és a jelszavak számára. 
-
-Az **Azure Defender for Key Vault** biztosítja az Azure-natív, komplex veszélyforrások elleni védelmet a Azure Key Vault számára, amely további biztonsági intelligenciát biztosít. A bővítmények által Key Vault Azure Defender a Key Vault-fiókoktól függő számos erőforrás védelmét is védi.
-
-A választható csomag már a GA. Ez a szolgáltatás előzetes verzióként érhető el, mivel "komplex veszélyforrások elleni védelem Azure Key Vault".
-
-Emellett a Azure Portal Key Vault lapjain szerepel egy dedikált **biztonsági** oldal is **Security Center** javaslatok és riasztások számára.
-
-További információ: [Key Vault Azure Defender](defender-for-key-vault-introduction.md).
-
-
-### <a name="azure-defender-for-storage-protection-for-files-and-adls-gen2-is-generally-available"></a>Általánosan elérhető az Azure Defender a fájlok és ADLS Gen2 tárolásának védelméhez 
-
-Az **Azure Defender for Storage** észleli az Azure Storage-fiókokban potenciálisan ártalmas tevékenységeket. Az Ön adatai védetté tehetik, hogy blob-tárolóként, fájlmegosztásként vagy adattavakként vannak tárolva.
-
-A [Azure Files](../storage/files/storage-files-introduction.md) és [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) támogatása már általánosan elérhető.
-
-2020. október 1-től kezdődően megkezdjük a szolgáltatások erőforrásainak védelmét.
-
-További információ az [Azure Defender for Storage szolgáltatásban](defender-for-storage-introduction.md).
-
-
-### <a name="asset-inventory-tools-are-now-generally-available"></a>Az Asset Inventory Tools mostantól általánosan elérhető
-
-Azure Security Center eszközök leltározási lapja egyetlen oldalt biztosít a Security Centerhoz csatlakoztatott erőforrások biztonsági állapotának megtekintéséhez.
-
-Security Center rendszeresen elemzi az Azure-erőforrások biztonsági állapotát az esetleges biztonsági rések azonosítása érdekében. Ezután javaslatokat tesz a biztonsági rések megoldására.
-
-Ha bármilyen erőforráshoz függőben lévő javaslatok vannak, akkor azok megjelennek a leltárban.
-
-További információ: [erőforrások felderítése és kezelése az eszközök leltározásával](asset-inventory.md).
-
-
-
-### <a name="disable-a-specific-vulnerability-finding-for-scans-of-container-registries-and-virtual-machines"></a>A tároló-beállításjegyzék és a virtuális gépek vizsgálatára szolgáló adott sebezhetőség letiltása
-
-Az Azure Defender biztonsági réseket tartalmazó képolvasók a Azure Container Registry és a virtuális gépek rendszerképeinek vizsgálatára is lehetőséget biztosítanak.
-
-Ha a szervezetnek figyelmen kívül kell hagynia egy megállapítást, és nem javítja azt, akkor letilthatja. A letiltott eredmények nem befolyásolják a biztonságos pontszámot, vagy nem eredményeznek nemkívánatos zajt.
-
-Ha a keresés megfelel a letiltási szabályokban definiált feltételeknek, az nem jelenik meg az eredmények listájában.
-
-Ez a lehetőség a javaslatok részleteinek oldalain érhető el:
-
-- **A Azure Container Registry lemezképek biztonsági réseit szervizelni kell**
-- **A virtuális gépek biztonsági réseit szervizelni kell**
-
-További információ a [tároló-lemezképek konkrét megállapításainak letiltásával](defender-for-container-registries-usage.md#disable-specific-findings-preview) és [a virtuális gépek konkrét megállapításainak letiltásával](remediate-vulnerability-findings-vm.md#disable-specific-findings-preview)kapcsolatban.
-
-
-### <a name="exempt-a-resource-from-a-recommendation"></a>Erőforrás kivonása egy javaslatból
-
-Időnként előfordulhat, hogy egy erőforrás nem megfelelőként jelenik meg egy konkrét javaslatra vonatkozóan (és így csökkenti a biztonságos pontszámát), még akkor is, ha úgy érzi, hogy nem lenne. Lehetséges, hogy a Security Center által nem követett folyamat szervizelte. Vagy lehet, hogy a szervezete úgy döntött, hogy elfogadja az adott erőforrás kockázatát. 
-
-Ilyen esetekben létrehozhat egy kivételi szabályt, és gondoskodhat arról, hogy az erőforrás ne szerepeljen a nem megfelelő állapotú erőforrások között a jövőben. Ezek a szabályok az alább leírtak szerint dokumentált indoklásokat is tartalmazhatnak.
-
-További információ: az erőforrások kizárása a [javaslatokból és a biztonságos pontszámból](exempt-resource.md).
-
-
-### <a name="aws-and-gcp-connectors-in-security-center-bring-a-multi-cloud-experience"></a>A Security Center AWS-és GCP-összekötők több felhős élményt nyújtanak
-
-A Felhőbeli számítási feladatok gyakran több felhőalapú platformra is kiterjednek, a Cloud Security servicesnek ugyanezt kell tennie.
-
-A Azure Security Center mostantól védi a munkaterheléseket az Azure-ban, az Amazon Web Services (AWS) és a Google Cloud Platformban (GCP).
-
-Az AWS-és GCP-fiókok Security Centerba való bevezetésével integrálható az AWS biztonsági központ, a GCP biztonsági parancs és a Azure Security Center. 
-
-További információt az [AWS-fiókok Összekapcsolásával Azure Security Center](quickstart-onboard-aws.md) és [a GCP-fiókok Azure Security Centerhoz való összekapcsolásával](quickstart-onboard-gcp.md)kapcsolatban itt olvashat.
-
-
-### <a name="kubernetes-workload-protection-recommendation-bundle"></a>Kubernetes munkaterhelés-védelmi javaslat csomag
-
-Annak biztosítása érdekében, hogy a Kubernetes-munkaterhelések alapértelmezés szerint biztonságosak legyenek, Security Center Kubernetes-szint megerősítő javaslatokat ad hozzá, beleértve a Kubernetes-belépésvezérlés használatával történő kényszerítési lehetőségeket is.
-
-Ha telepítette a Kubernetes Azure Policy bővítményét az AK-fürtön, a Kubernetes API-kiszolgálónak küldött összes kérést a rendszer a fürtön megőrzött ajánlott eljárások alapján figyeli. Ezután konfigurálhatja az ajánlott eljárások betartatását és a jövőbeli munkaterhelések megadását.
-
-Megadhatja például, hogy az emelt szintű tárolók ne legyenek létrehozva, és minden jövőbeli kérelem le lesz tiltva.
-
-További információ a [munkaterhelések elleni védelemben – ajánlott eljárások a Kubernetes belépésvezérlés használatával](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control).
-
-
-### <a name="vulnerability-assessment-findings-are-now-available-in-continuous-export"></a>A sebezhetőségi felmérés eredményei mostantól folyamatos exportálással érhetők el
-
-A folyamatos exportálással valós időben továbbíthatja a riasztásokat és a javaslatokat az Azure Event Hubsba, Log Analytics munkaterületekre vagy Azure Monitorokra. Innen az adatok integrálása SIEM-ekkel (például Azure Sentinel, Power BI, Azure Adatkezelő stb.) végezhető el.
-
-Security Center integrált sebezhetőségi felmérési eszközei a "szülő" javaslaton belül, például "a virtuális gépek biztonsági rései" javításával kapcsolatos ajánlott ajánlásokat adnak vissza az erőforrásokra vonatkozóan. 
-
-A biztonsági megállapítások mostantól a folyamatos exportálással is elérhetők, amikor kiválasztja az ajánlások lehetőséget, és engedélyezi a **biztonsági megállapítások belefoglalása** lehetőséget.
-
-:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Biztonsági megállapítások bekapcsolása a folyamatos exportálási konfigurációban" :::
-
-Kapcsolódó lapok:
-
-- [Security Center az Azure Virtual Machines szolgáltatáshoz készült integrált sebezhetőségi felmérési megoldás](deploy-vulnerability-assessment-vm.md)
-- [Security Center integrált sebezhetőségi felmérési megoldás Azure Container Registry rendszerképekhez](defender-for-container-registries-usage.md)
-- [Folyamatos exportálás](continuous-export.md)
-
-### <a name="prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources"></a>Biztonsági konfigurációs problémák megakadályozása az új erőforrások létrehozásakor feltett javaslatok végrehajtásakor
-
-A biztonsági incidensek jelentős oka a biztonság. Security Center mostantól lehetővé teszi az új erőforrások helytelen konfigurációjának *megelőzését* az adott javaslatok tekintetében. 
-
-Ez a funkció segít megőrizni a számítási feladatokat, és stabilizálni tudja a biztonságos pontszámot.
-
-A biztonságos konfiguráció egy adott javaslat alapján történő érvényesítése két üzemmódban érhető el:
-
-- A Azure Policy **megtagadásának** hatására leállíthatja a nem megfelelő állapotú erőforrásokat
-
-- A **kikényszerítés** lehetőség használatával kihasználhatja az Azure-szabályzat **DeployIfNotExist** hatását, és a létrehozáskor automatikusan elháríthatja a nem megfelelő erőforrásokat.
- 
-Ez a kiválasztott biztonsági javaslatok esetében elérhető, és az erőforrás részletei lap tetején található.
-
-További információ a [helytelen konfigurációkkal kapcsolatos kényszerítő/megtagadási javaslatok megelőzéséről](prevent-misconfigurations.md).
-
-###  <a name="network-security-group-recommendations-improved"></a>A hálózati biztonsági csoport javaslatai javultak
-
-A hálózati biztonsági csoportokkal kapcsolatos következő biztonsági javaslatok javultak a téves pozitív események egyes példányainak csökkentése érdekében.
-
-- Az összes hálózati portot korlátozni kell a virtuális géphez társított NSG
-- A felügyeleti portokat be kell zárni a virtuális gépeken
-- Az internetre irányuló virtuális gépeket hálózati biztonsági csoportokkal kell védeni
-- Az alhálózatokat hálózati biztonsági csoporttal kell társítani
-
-
-### <a name="deprecated-preview-aks-recommendation-pod-security-policies-should-be-defined-on-kubernetes-services"></a>Elavult előnézeti AK-javaslat: "Pod biztonsági szabályzatokat kell meghatározni a Kubernetes-szolgáltatásokban"
-
-A "Pod biztonsági házirendek meghatározása a Kubernetes-szolgáltatásokban" előzetes javaslat az [Azure Kubernetes szolgáltatás](../aks/use-pod-security-policies.md) dokumentációjában leírtaknak megfelelően elavult.
-
-A pod biztonsági házirend (előzetes verzió) szolgáltatás elavultnak van beállítva, és a továbbiakban nem lesz elérhető 2020. október 15-én, Azure Policy az AK-ban.
-
-Miután a pod biztonsági házirend (előzetes verzió) elavult, le kell tiltania a szolgáltatást minden meglévő fürtön az elavult funkcióval a későbbi fürtök frissítéséhez és az Azure-támogatáson belüli tartózkodáshoz.
-
-
-### <a name="email-notifications-from-azure-security-center-improved"></a>Azure Security Center továbbfejlesztett e-mail-értesítések
-
-A biztonsági riasztásokkal kapcsolatos e-mailek következő területei javultak: 
-
-- Lehetőség van a riasztásokról értesítő e-mailek küldésére az összes súlyossági szinthez.
-- Lehetőség van arra, hogy az előfizetésen keresztül különböző Azure-szerepkörökkel tájékoztassa a felhasználókat
-- Alapértelmezés szerint az előfizetések tulajdonosait proaktívan értesítjük a nagy súlyosságú riasztásokról (amelyek nagy valószínűséggel valódi behatolást okoznak)
-- Eltávolította a telefonszám mezőt az e-mail értesítések konfigurációs oldaláról.
-
-További információt a [biztonsági riasztások e-mail értesítéseinek beállítása](security-center-provide-security-contact-details.md)című témakörben olvashat.
-
-
-### <a name="secure-score-doesnt-include-preview-recommendations"></a>A biztonságos pontszám nem tartalmazza az előzetes verzióra vonatkozó javaslatokat 
-
-Security Center folyamatosan felméri az erőforrásokat, az előfizetéseket és a szervezetet a biztonsági problémákra. Ezután összesíti az összes megállapítást egyetlen pontszámba, így eldöntheti, hogy az aktuális biztonsági helyzet: minél magasabb a pontszám, annál alacsonyabb az azonosított kockázati szint.
-
-Mivel új fenyegetések észlelhetők, új biztonsági tanácsokat Security Center új javaslatok keretében elérhetővé tesznek. Ha el szeretné kerülni, hogy a meglepetések ne legyenek a biztonságos pontszámban, és adjon meg egy türelmi időszakot, amelyben az új ajánlásokat még a pontszámok befolyásolása előtt megtekintheti, az **előzetes** verzióként megjelölt javaslatok már nem szerepelnek a biztonságos pontszám kiszámítása során. Ha lehetséges, még mindig szervizelni kell őket, hogy ha az előzetes verzió időtartama lejár, a pontszáma is hozzájárul.
-
-Emellett az **előzetes** verzióra vonatkozó javaslatok nem teszik lehetővé a "nem megfelelő" erőforrás megjelenítését.
-
-Példa az előzetes verziójú javaslatra:
-
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Javaslat az előnézet jelölővel":::
-
-[További információ a biztonságos pontszámról](secure-score-security-controls.md).
-
-
-### <a name="recommendations-now-include-a-severity-indicator-and-the-freshness-interval"></a>A javaslatok mostantól a súlyossági mutatót és a frissességi időközt is tartalmazzák
-
-A javaslatok részleteit tartalmazó oldal mostantól tartalmazza a frissességi intervallum jelzőjét (ha van ilyen), valamint a javaslat súlyosságának egyértelmű megjelenítését.
-
-:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="A frissességet és súlyosságot mutató javaslat oldal":::

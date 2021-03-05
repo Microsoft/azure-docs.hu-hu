@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 6112247a99c519aad8aadf7946c7707480b3b491
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: a9f8fe10c5ffa787a6c170a29188cba21427b602
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99558425"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175158"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Oktatóanyag: Django-webalkalmazás üzembe helyezése a PostgreSQL-sel Azure App Service
 
@@ -231,7 +231,7 @@ A Django-adatbázis áttelepítése biztosítja, hogy az Azure Database-ben tal�
 
     Cserélje le a `<app-name>` nevet a parancsban korábban használt névre `az webapp up` .
 
-    A paranccsal egy SSH-munkamenethez is csatlakozhat [`az webapp ssh`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_ssh) . Windows rendszeren ehhez a parancshoz az Azure CLI-2.18.0 vagy újabb verzió szükséges.
+    A paranccsal egy SSH-munkamenethez is csatlakozhat [`az webapp ssh`](/cli/azure/webapp#az_webapp_ssh) . Windows rendszeren ehhez a parancshoz az Azure CLI-2.18.0 vagy újabb verzió szükséges.
 
     Ha nem tud csatlakozni az SSH-munkamenethez, akkor maga az alkalmazás nem indult el. [A részletekért olvassa el a diagnosztikai naplókat](#6-stream-diagnostic-logs) . Ha például még nem hozta létre az alkalmazáshoz szükséges beállításokat az előző szakaszban, a naplók jelzik majd `KeyError: 'DBNAME'` .
 

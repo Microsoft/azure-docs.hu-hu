@@ -34,7 +34,13 @@
       href: application-proxy-add-on-premises-application.md
 - name: Példák
   items:
-    - name: Azure PowerShell-minták alkalmazásproxyhoz
+    - name: Az App Management PowerShell-mintái
+      items:
+        - name: Az App Management-minták áttekintése
+          href: app-management-powershell-samples.md
+        - name: 'Az összes alkalmazás regisztrációjának, titkos kulcsának és tanúsítványának exportálása'
+          href: ./scripts/powershell-export-all-app-registrations-secrets-and-certs.md
+    - name: Az App proxy PowerShell-mintái
       href: application-proxy-powershell-samples.md
 - name: Alapelvek
   expanded: true

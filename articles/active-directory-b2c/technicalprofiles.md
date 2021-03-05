@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a70b8be6c034f002f0e387b5d3b4ba5deafa1a5e
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: e3d3a41e4100e36ae2400c8076d4c5b713b899d6
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120504"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174869"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -555,7 +555,7 @@ A **UseTechnicalProfileForSessionManagement** elem hivatkozása az [egyszeri bej
 
 ## <a name="enabled-for-user-journeys"></a>Felhasználói utazások engedélyezése
 
-A felhasználói utazás [ClaimsProviderSelections](userjourneys.md#identity-provider-selection) a jogcím-szolgáltató kiválasztási lehetőségeinek listáját és sorrendjét határozza meg. A szűrő **EnabledForUserJourneys** eleme alapján a felhasználó számára elérhető jogcím-szolgáltató. A **EnabledForUserJourneys** elem a következő értékek egyikét tartalmazza:
+A felhasználói utazás [ClaimsProviderSelections](userjourneys.md#claims-provider-selection) a jogcím-szolgáltató kiválasztási lehetőségeinek listáját és sorrendjét határozza meg. A szűrő **EnabledForUserJourneys** eleme alapján a felhasználó számára elérhető jogcím-szolgáltató. A **EnabledForUserJourneys** elem a következő értékek egyikét tartalmazza:
 
 - **Mindig** hajtsa végre a technikai profilt.
 - **Soha ne** ugorja át a technikai profilt.

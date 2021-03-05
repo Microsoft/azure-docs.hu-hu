@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 0885870497ef3488d78fe899c96ee2a82a5b84fc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2008e014e9f160b643ed5f591fff81c0b215e24a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101696190"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175082"
 ---
 # <a name="register-and-scan-teradata-source-preview"></a>Teradata-forrás regisztrálása és bevizsgálása (előzetes verzió)
 
@@ -94,13 +94,13 @@ A **források regisztrálása (Teradata)** képernyőn tegye a következőket:
 
 6.  **Séma**: az importálandó sémák részhalmazának listázása pontosvesszővel tagolt listaként. például: Schema1; schema2. A rendszer minden felhasználói sémát importál, ha a lista üres. Alapértelmezés szerint a rendszer minden rendszersémát (például SysAdmin) és objektumot figyelmen kívül hagy. Ha a lista üres, a rendszer az összes elérhető sémát importálja.
 
-        Acceptable schema name patterns using SQL LIKE expressions syntax include using %, e.g. A%; %B; %C%; D
-        - start with A or    
-        - end with B or    
-        - contain C or    
-        - equal D
+    Az SQL LIKE Expressions szintaxist használó elfogadható sémák neve például A következőt használja:%, pl. A%; B % C%; D
+    - Kezdés a vagy    
+    - vége B vagy    
+    - C vagy    
+    - egyenlő D
 
-        Usage of NOT and special characters are not acceptable
+    A nem és a speciális karakterek használata nem fogadható el
 
 7.  **Illesztőprogram helye**: adja meg a JDBC-illesztő azon elérési útját a virtuális gépen, amelyen az önkiszolgáló Integration Runtime fut. Ennek a JAR-mappa érvényes helyének kell lennie.
 

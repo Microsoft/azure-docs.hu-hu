@@ -4,13 +4,13 @@ description: A farmok felügyeletének ismertetése
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: dc06f7c75e27d831994b97b97f3d20bb34c3a6c5
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.author: v-ummehabiba
+ms.openlocfilehash: 050b3b4d67eda9b6c9b4621c014e3e6baad34053
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167933"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102173800"
 ---
 # <a name="manage-farms"></a>Farmok kezelése
 
@@ -29,7 +29,7 @@ Ehhez a következő lépések szükségesek:
 
 
 2. Válassza a **farm létrehozása** elemet, és adja meg a **nevet**, a **növényeket** és a **címeket**.
-3. A **Farm határának megadása**(kötelező mező) területen válassza a **megjelölés térképen** vagy a **GeoJSON-kód beillesztése**lehetőséget.
+3. A **Farm határának megadása**(kötelező mező) területen válassza a **megjelölés térképen** vagy a **GeoJSON-kód beillesztése** lehetőséget.
 
 A farm határának definiálásának két módja van:
 
@@ -58,7 +58,7 @@ A farm listája lap a létrehozott farmok listáját jeleníti meg. Válasszon k
 A **Farms** lap a létrehozott farmok listáját jeleníti meg.
 
 1.  Válasszon ki egy farmot a farm megtekintéséhez és szerkesztéséhez.
-2.  Válassza a **Farm szerkesztése** elemet a farm adatainak szerkesztéséhez. A **Farm részleteit** tartalmazó ablakban szerkesztheti a **név**, **a növények**, a **címek**és a **Farm határainak** meghatározása mezőket.
+2.  Válassza a **Farm szerkesztése** elemet a farm adatainak szerkesztéséhez. A **Farm részleteit** tartalmazó ablakban szerkesztheti a **név**, **a növények**, a **címek** és a **Farm határainak** meghatározása mezőket.
 
     ![A Project Farm veri](./media/create-farms-in-azure-farmbeats/edit-farm-1.png)
 
@@ -77,6 +77,6 @@ A **Farms** lap a létrehozott farmok listáját jeleníti meg. Farm törléséh
     > Farm törlésekor a farmhoz társított eszközöket és térképeket nem törli a rendszer. Az eszközhöz és a térképekhez kapcsolódó Farm-információk nem lesznek relevánsak. Továbbra is megtekintheti az eszközöket, a telemetria és a térképeket a FarmBeats szolgáltatásból.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy létrehozta a farmot, megtudhatja, hogyan érheti el a farmján az [érzékelők adatait](get-sensor-data-from-sensor-partner.md) .

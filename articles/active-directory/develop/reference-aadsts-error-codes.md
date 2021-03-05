@@ -12,12 +12,12 @@ ms.date: 02/01/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 78f844295c16d15be65f345881ec92fa15a9734a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b82d3963ed12e0d5dc6acd75555a3a7e8f20eeb0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101649223"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175345"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD-hitelesítési és -engedélyezési hibakódok
 
@@ -187,6 +187,7 @@ Ha például a "AADSTS50058" hibakódot kapta, keressen rá a [https://login.mic
 | AADSTS53002 | ApplicationUsedIsNotAnApprovedApp – a használt alkalmazás nem jóváhagyott alkalmazás a feltételes hozzáféréshez. A felhasználónak az egyik alkalmazást kell használnia a jóváhagyott alkalmazások listájáról, hogy hozzáférjen a szolgáltatáshoz. |
 | AADSTS53003 | A BlockedByConditionalAccess a feltételes hozzáférési házirendek letiltották a hozzáférést. A hozzáférési házirend nem engedélyezi a jogkivonatok kiadását. |
 | AADSTS53004 | ProofUpBlockedDueToRisk – a tartalom elérése előtt a felhasználónak be kell fejeznie a multi-Factor Authentication regisztrációs folyamatát. A felhasználónak regisztrálnia kell többtényezős hitelesítésre. |
+| AADSTS53011 | A felhasználó a Kezdőlap bérlői kockázat miatt blokkolva van. |
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist – a felhasználó vagy a rendszergazda nem egyezett bele az alkalmazás X AZONOSÍTÓval való használatára. küldjön egy interaktív engedélyezési kérést ehhez a felhasználóhoz és erőforráshoz. |
 | AADSTS65004 | UserDeclinedConsent – a felhasználó beleegyezett az alkalmazás elérésére. Kérje meg a felhasználót, hogy jelentkezzen be újra, és hagyja jóvá az alkalmazást|
