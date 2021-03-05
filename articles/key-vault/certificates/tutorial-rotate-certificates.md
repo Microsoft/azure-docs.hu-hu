@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 591d71e8cd6af2801540f5a1a41ad88b1f538e81
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 78cdc0b59fd178049e755cca5e1e909ac24483f2
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844488"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102204048"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>Oktatóanyag: a tanúsítvány automatikus elforgatásának konfigurálása Key Vaultban
 
@@ -84,7 +84,7 @@ Key Vault automatikusan elforgatja a tanúsítványokat a CAs használatával l�
         |-----------|------|
         |Ha kiválasztja ezt a lehetőséget, *bekapcsolja* az autorotációt. | Ha ezt a beállítást választja, *nem* fog automatikusan elforgatni, de csak a névjegyeket fogja riasztani.|
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ![Tanúsítvány életciklusa](../media/certificates/tutorial-rotate-cert/create-cert-lifecycle.png)
 
@@ -104,7 +104,7 @@ Key Vault automatikusan elforgatja a tanúsítványokat a CAs használatával l�
 
    ![Tanúsítvány tulajdonságai](../media/certificates/tutorial-rotate-cert/cert-policy-change.png)
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 > [!IMPORTANT]
 > Ha módosítja egy tanúsítvány élettartamának típusát, a rendszer azonnal rögzíti a meglévő tanúsítványok módosításait.
@@ -134,7 +134,7 @@ Set-AzureKeyVaultCertificatePolicy -VaultName $vaultName
 > }
 >  ```
 > 
-A paraméterekkel kapcsolatos további tudnivalókért tekintse meg az [az Key Vault Certificate](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-set-attributes)című témakört.
+A paraméterekkel kapcsolatos további tudnivalókért tekintse meg az [az Key Vault Certificate](/cli/azure/keyvault/certificate#az-keyvault-certificate-set-attributes)című témakört.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

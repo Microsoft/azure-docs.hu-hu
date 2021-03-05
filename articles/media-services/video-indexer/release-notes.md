@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/16/2021
 ms.author: juliako
-ms.openlocfilehash: 3a64bb261db39efb63b35004f1daa0452b4f0672
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 618617d3602e45ebb15314c7cc5f6898a73bb71f
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715156"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203725"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer kibocsátási megjegyzései
 
@@ -29,6 +29,12 @@ A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő
 * Ismert problémák
 * Hibajavítások
 * Elavult funkciók
+
+## <a name="march-2021"></a>Március 2021
+
+A hangelemzés mostantól további, a különböző díjszabású hangfunkciók új csomagjában érhető el. Az új **alapszintű** hangelemzési beállításkészlet alacsony díjszabású lehetőséget biztosít a beszéd-átírások, a fordítás és a kimeneti feliratok és feliratok kinyerésére. Az **alapszintű** hangkészlet két külön mérőszámot hoz létre a számlán, beleértve az átírási vonalat és egy külön sort a felirat és a felirat formázásához. A díjszabással kapcsolatos további információkért tekintse meg a [Media Services díjszabását](https://azure.microsoft.com/pricing/details/media-services/) ismertető oldalt.
+
+Az újonnan hozzáadott csomag akkor érhető el, ha a fájl indexeléséhez vagy újraindexeléséhez az  ->  **alapszintű** hangbeállítás lehetőséget választja (a **videó + hang indexelése** legördülő lista alatt).
 
 ## <a name="february-2021"></a>2021. február
 

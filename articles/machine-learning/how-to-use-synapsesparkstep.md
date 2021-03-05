@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: f52686f991e3d14a8cde82c602b182874305f27d
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: ea7dc30d0aed1350a8c9275d786ea22fa52c77bf
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102184100"
+ms.locfileid: "102203691"
 ---
 # <a name="how-to-use-apache-spark-powered-by-azure-synapse-analytics-in-your-machine-learning-pipeline-preview"></a>Az Azure szinapszis Analytics által működtetett Apache Spark használata a Machine learning-folyamatban (előzetes verzió)
 
@@ -90,8 +90,6 @@ Első lépésként konfigurálja a következőt: `SynapseCompute` . Az `linked_s
 Miután létrehozta a konfigurációt, létrehoz egy gépi tanulást `ComputeTarget` a (z `Workspace` ), `ComputeTargetAttachConfiguration` , és azt a nevet, amellyel a Machine learning-munkaterületen található számításokra hivatkozik. A hívás `ComputeTarget.attach()` aszinkron, így a minta csak a hívás befejeződése után jelenik meg.
 
 ## <a name="create-a-synapsesparkstep-that-uses-the-linked-apache-spark-pool"></a>`SynapseSparkStep`A csatolt Apache Spark készletet használó a létrehozása
-
-A minta notebook [Spark-feladatok az Apache Spark-készletben](https://github.com/azure/machinelearningnotebooks) egy egyszerű gépi tanulási folyamatot határoznak meg. Először a jegyzetfüzet az előző lépésben meghatározott adat-előkészítési lépést határozza meg `synapse_compute` . Ezt követően a jegyzetfüzet olyan betanítási lépést határoz meg, amely a képzéshez jobban illeszkedő számítási céllal van meghatározva. A minta notebook a Titanic Survival-adatbázist használja az adatok bevitelének és kimenetének bemutatására; valójában nem tisztítja meg az adattípust, vagy nem végez prediktív modellt. Mivel ebben a példában nincs valós képzés, a betanítási lépés egy olcsó, CPU-alapú számítási erőforrást használ.
 
 Az adatfolyamatok egy gépi tanulási folyamatba kerülnek `DatasetConsumptionConfig` , objektumok útján, amely táblázatos adatokat vagy fájlokat tárolhat. Az adatok gyakran a munkaterület adattárában lévő blob Storage-fájlokból származnak. A következő kód néhány tipikus kódot mutat be egy Machine learning-folyamat bemenetének létrehozásához:
 
@@ -228,7 +226,7 @@ Ha szükséges, a fenti kód létrehozza az új számítási erőforrást. Ezt k
 
 Miután meghatározta az összes lépést, létrehozhatja és futtathatja a folyamatát. 
 
-```
+```python
 from azureml.pipeline.core import Pipeline
 
 pipeline = Pipeline(workspace=ws, steps=[step_1, step_2])

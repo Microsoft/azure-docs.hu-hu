@@ -9,17 +9,17 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 16546432c8c0a23d5c9dc471fe8c62ced5eca993
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7ef1cd43d2efbc5ab92cc2b4cba4d237805d8921
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101687532"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202654"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>Számlázási adatok feltöltése az Azure-ba, és megtekintés a Azure Portal
 
 > [!IMPORTANT] 
->  Az előzetes verzió ideje alatt az Azure arc-kompatibilis adatszolgáltatások használata díjmentes. Bár a számlázási rendszer befejezi a teljes számlázási mérőszámot, a $0 értékre van állítva.  Ha ezt a forgatókönyvet követi, a számlázási adatokat a jelenleg **hibrid adatszolgáltatásoknak** és a Microsoft nevű típusú erőforrásoknak is megtekintheti **. AzureData/ `<resource type>`**. Ekkor megtekintheti az egyes adatszolgáltatások rekordjait – az Azure-ívet, amelyet Ön hoz létre, de minden egyes rekordot $0-ra számlázunk.
+>  Az előzetes verzió ideje alatt az Azure arc-kompatibilis adatszolgáltatások használata díjmentes. Bár a számlázási rendszer befejezi a teljes számlázási mérőszámot, a $0 értékre van állítva.  Ha ezt a forgatókönyvet követi, a számlázási adatokat a jelenleg **hibrid adatszolgáltatások** nevű szolgáltatáshoz, illetve a **Microsoft. AzureArcData/ `<resource type>`**. nevű típusú erőforrásokhoz tartozó adatokat fogja látni. Ekkor megtekintheti az egyes adatszolgáltatások rekordjait – az Azure-ívet, amelyet Ön hoz létre, de minden egyes rekordot $0-ra számlázunk.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -119,7 +119,7 @@ A következő lépésekkel tekintheti meg a számlázási adatAzure Portalt:
 1. Győződjön meg arról, hogy a hatóköre arra az előfizetésre van beállítva, amelyben az adatszolgáltatási erőforrásokat létrehozták.
 1. A nézet felső részén a hatókör-választó melletti legördülő listában válassza a **Cost by Resource (erőforrás-erőforrások** ) lehetőséget.
 1. Győződjön meg arról, hogy a Dátum szűrő az adott hónapra van beállítva, vagy egy másik időtartomány, amely az adatszolgáltatási erőforrások létrehozásakor **megjelenő** időzítést biztosítja.
-1. Kattintson a **szűrő hozzáadása** lehetőségre, ha **erőforrás-típussal** szeretne szűrőt felvenni,  =  `microsoft.azuredata/<data service type>` Ha csak egy Azure arc-kompatibilis adatszolgáltatásra kíván szűrni.
+1. Kattintson a **szűrő hozzáadása** lehetőségre, ha **erőforrás-típussal** szeretne szűrőt felvenni,  =  `Microsoft.AzureArcData/<data service type>` Ha csak egy Azure arc-kompatibilis adatszolgáltatásra kíván szűrni.
 1. Ekkor megjelenik a létrehozott és az Azure-ba feltöltött összes erőforrás listája. Mivel a számlázási mérőszám $0, látni fogja, hogy a Cost mindig $0.
 
 ## <a name="download-billing-data"></a>Számlázási információk letöltése
@@ -159,5 +159,5 @@ A Azure Portalban ellenőrizheti a számlázási adatfájlokat.
 7. Bontsa ki a létrehozott mappákat és fájlokat, majd kattintson az egyik létrehozott. csv fájlra.
 8. Kattintson a **Letöltés** gombra, amely menti a fájlt a helyi letöltések mappájába.
 9. Nyissa meg a fájlt egy. csv-fájl megjelenítővel, például az Excel használatával.
-10. Szűrje az eredményeket úgy, hogy csak az **Erőforrás típusú** sorok jelenjenek meg  =  `Microsoft.AzureData/<data service resource type` .
+10. Szűrje az eredményeket úgy, hogy csak az **Erőforrás típusú** sorok jelenjenek meg  =  `Microsoft.AzureArcData/<data service resource type` .
 11. Látni fogja, hogy hány óra elteltével használták a rendszer a példányt a UsageQuantity oszlop aktuális 24 órában.

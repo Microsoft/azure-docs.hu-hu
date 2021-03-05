@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d1e51552acdd869a3f304a6d48e18e9d2aa6c782
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 272a642f70849b85be00d2507109eb97935c0dde
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576781"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202501"
 ---
 # <a name="monitor-azure-file-sync"></a>Az Azure File Sync monitorozása
 
@@ -42,7 +42,7 @@ A Azure File Sync metrikái alapértelmezés szerint engedélyezve vannak, és 1
 
 Az Azure File Sync következő mérőszámai érhetők el Azure Monitorban:
 
-| Metrika neve | Description |
+| Metrika neve | Leírás |
 |-|-|
 | Szinkronizált bájtok száma | Az átvitt adatok mérete (feltöltés és letöltés).<br><br>Egység: bájtok<br>Összesítés típusa: Sum<br>Alkalmazható méretek: kiszolgálói végpont neve, szinkronizálás iránya, szinkronizálási csoport neve |
 | Felhőbeli rétegek felidézése | A visszahívott adatmennyiség.<br><br>**Megjegyzés**: Ez a mérőszám a jövőben el lesz távolítva. A Felhőbeli rétegű visszahívás méretének mérőszámával figyelheti a meghívott adatok méretét.<br><br>Egység: bájtok<br>Összesítés típusa: Sum<br>Alkalmazható dimenzió: kiszolgálónév |
@@ -111,14 +111,14 @@ Egy **kiszolgálói végpont** állapotának megtekintéséhez a portálon navig
 
 - A portál **kiszolgálói végpontjának állapota** és **szinkronizálása tevékenység** a kiszolgálón a telemetria-eseménynaplóban naplózott szinkronizálási ESEMÉNYeken alapul (azonosító: 9102 és 9302). Ha egy szinkronizálási munkamenet átmeneti hiba miatt meghiúsul, például a hiba megszakadt, a kiszolgálói végpont állapota **kifogástalan** marad a portálon mindaddig, amíg az aktuális szinkronizálási munkamenet folyamatban van (a fájlok érvénybe lépnek). A 9302-as AZONOSÍTÓJÚ esemény a szinkronizálási folyamat eseménye, a 9102-es azonosítójú esemény pedig a szinkronizálási munkamenet befejeződése után van naplózva.  További információ: az [állapot szinkronizálása](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#broken-sync) és a [szinkronizálási folyamat](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session). Ha a kiszolgálói végpont állapota **hibát** vagy **semmilyen tevékenységet** jelez, a [hibaelhárítási dokumentációban](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#common-sync-errors) talál útmutatást.
 - A portálon **nem szinkronizált fájlok** száma a-kiszolgálón a telemetria eseménynaplójában naplózott 9121-as azonosítójú eseményen alapul. A szinkronizálási munkamenet befejeződése után ez az esemény minden egyes tételnél hibát naplóz. Az egyes elemekre vonatkozó hibák megoldásához tekintse meg a Hogyan, hogy vannak-e olyan [fájlok vagy mappák, amelyek nem szinkronizálhatók?](./storage-sync-files-troubleshoot.md?tabs=server%252cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing).
-- A **Felhőbeli rétegek hatékonyságának** a portálon való megtekintéséhez lépjen a **kiszolgálói végpont tulajdonságaira** , és keresse meg a **felhőalapú rétegek** szakaszát. A felhő-rétegek hatékonyságára vonatkozó információk a 9071-es azonosítójú eseményen alapulnak, amelyet a rendszer az telemetria eseménynaplóban naplóz a kiszolgálón. További információ: a [felhőalapú rétegek áttekintése](./storage-sync-cloud-tiering.md).
+- A **Felhőbeli rétegek hatékonyságának** a portálon való megtekintéséhez lépjen a **kiszolgálói végpont tulajdonságaira** , és keresse meg a **felhőalapú rétegek** szakaszát. A felhő-rétegek hatékonyságára vonatkozó információk a 9071-es azonosítójú eseményen alapulnak, amelyet a rendszer az telemetria eseménynaplóban naplóz a kiszolgálón. További információ: a [felhőalapú rétegek figyelése](./storage-sync-monitor-cloud-tiering.md).
 - Ha meg szeretné tekinteni a **nem rétegek** és **felidéző hibákat** a portálon, nyissa meg a **kiszolgálói végpont tulajdonságai** szakaszt, és keresse meg a **felhőalapú rétegek** szakaszát. A **nem rétegű fájlok** a 9003-es azonosítójú eseményen alapulnak, amelyet a rendszer a telemetria-eseménynaplóban naplóz a kiszolgálón, és a **visszahívási hibák** a 9006-es azonosítójú eseményen alapulnak. A nem [felhasználható](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#how-to-troubleshoot-files-that-fail-to-be-recalled)vagy feldolgozható fájlok vizsgálatával kapcsolatban tekintse meg a következő témakört: a nem a [rétegek](./storage-sync-files-troubleshoot.md?tabs=portal1%252cazure-portal#how-to-troubleshoot-files-that-fail-to-tier) és a nem visszahívni kívánt fájlok hibáinak megoldása.
 
 ### <a name="metric-charts"></a>Metrikai diagramok
 
 - A következő metrikai diagramok láthatók a Storage Sync szolgáltatás portálon:
 
-  | Metrika neve | Description | Lap neve |
+  | Metrika neve | Leírás | Lap neve |
   |-|-|-|
   | Szinkronizált bájtok száma | Átvitt adatok mérete (feltöltés és letöltés) | Szinkronizálási csoport, kiszolgálói végpont |
   | Felhőbeli rétegek felidézése | Visszahívott adatmennyiség | Regisztrált kiszolgálók |
@@ -178,7 +178,7 @@ A kiszolgáló Azure File Sync teljesítményszámlálók megtekintéséhez nyis
 
 A következő teljesítményszámlálók érhetők el Azure File Sync a Teljesítményfigyelőben:
 
-| Teljesítmény Object\Counter neve | Description |
+| Teljesítmény Object\Counter neve | Leírás |
 |-|-|
 | AFS bájtok Transferred\Downloaded sebessége (bájt/s) | A másodpercenként letöltött bájtok száma. |
 | AFS bájtok Transferred\Uploaded sebessége (bájt/s) | A másodpercenként feltöltött bájtok száma. |

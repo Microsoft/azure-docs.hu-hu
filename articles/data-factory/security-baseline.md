@@ -7,24 +7,23 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ef138210f951fceac21301d37a2805405ed0ecef
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d1cbd314861a4d5079a5c8e5213f45c7164344f0
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736593"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102204167"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure Data Factory Azure biztonsági alapterve
 
 Ez a biztonsági alapkonfiguráció az [Azure biztonsági teljesítményteszt 1,0-es verziójáról](../security/benchmarks/overview-v1.md) Azure Data Factoryre vonatkozó útmutatást alkalmaz. Az Azure Security Benchmark ajánlásokat ad arra nézve, hogy hogyan tehetők biztonságossá a felhőalapú megoldások az Azure-ban.
 A tartalom az Azure biztonsági teljesítményteszt által meghatározott **biztonsági vezérlők** szerint van csoportosítva, valamint a Azure Data Factory vonatkozó kapcsolódó útmutatás. A Azure Data Factory nem alkalmazható **vezérlők** ki vannak zárva.
 
- 
-Ha szeretné megtekinteni, hogyan Azure Data Factory teljes mértékben leképezni az Azure biztonsági Teljesítménytesztét, tekintse meg a [teljes Azure Data Factory biztonsági alapterv-leképezési fájlt](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
+Ha szeretné megtekinteni, hogyan Azure Data Factory teljes mértékben leképezni az Azure biztonsági Teljesítménytesztét, tekintse meg a [teljes Azure Data Factory biztonsági alapterv-leképezési fájl](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)
 
 ## <a name="network-security"></a>Hálózati biztonság
 
-*További információ: [Azure Security Benchmark: Hálózati biztonság](../security/benchmarks/security-control-network-security.md).*
+*További információt az [Azure biztonsági teljesítményteszt: hálózati biztonság](../security/benchmarks/security-control-network-security.md)című témakörben talál.*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-erőforrások biztosítása virtuális hálózatokon belül
 
@@ -42,7 +41,7 @@ Ha a privát hivatkozás elérhető, használja a privát végpontokat a Azure D
 
 - [Biztonsági konfigurációval rendelkező NSG létrehozása](../virtual-network/tutorial-filter-network-traffic.md)
 
-- [Azure-SSIS IR csatlakoztatása egy virtuális hálózathoz](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network#virtual-network-configuration)
+- [Azure-SSIS IR csatlakoztatása egy virtuális hálózathoz](join-azure-ssis-integration-runtime-virtual-network.md#virtual-network-configuration)
 
 - [Az Azure privát hivatkozásának megismerése](../private-link/private-link-overview.md)
 
@@ -491,7 +490,7 @@ Ha a Integration Runtimet egy Azure-beli virtuális gépen (VM) futtatja, akkor 
 
 ## <a name="data-protection"></a>Adatvédelem
 
-*További információ: [Azure Security Benchmark: Adatvédelem](../security/benchmarks/security-control-data-protection.md).*
+*További információt az [Azure biztonsági teljesítményteszt: Adatvédelem](../security/benchmarks/security-control-data-protection.md)című témakörben talál.*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: bizalmas információk leltárának fenntartása
 
@@ -633,7 +632,7 @@ A hitelesítő adatokat vagy a titkos értékeket egy Azure Key Vault tárolhatj
 
 ## <a name="vulnerability-management"></a>Biztonságirés-kezelés
 
-*További információért lásd az [Azure biztonsági teljesítményteszt: biztonsági rés kezelése](../security/benchmarks/security-control-vulnerability-management.md)című témakört.*
+*További információ [: az Azure biztonsági teljesítményteszt kezelése](../security/benchmarks/security-control-vulnerability-management.md).*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatikus biztonsági rések vizsgálatára szolgáló eszközök futtatása
 
@@ -1156,7 +1155,7 @@ Az egyes adattárak esetében a biztonsági mentések érvényesítésére vonat
 
 ## <a name="incident-response"></a>Incidensmegoldás
 
-*További információ: [Azure Security Benchmark: Incidensek kezelése](../security/benchmarks/security-control-incident-response.md).*
+*További információt az [Azure biztonsági teljesítményteszt: incidens válasza](../security/benchmarks/security-control-incident-response.md)című témakörben talál.*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: incidens-válaszi útmutató létrehozása
 
@@ -1228,7 +1227,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Behatolási tesztek és Red Team-gyakorlatok
 
-*További információkért tekintse meg az [Azure biztonsági teljesítményteszt: behatolási tesztek és a Red Team gyakorlatok](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)című témakört.*
+*További információt az [Azure biztonsági teljesítményteszt: behatolási tesztek és a Red Team Exercises](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)című témakörben talál.*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: az Azure-erőforrások rendszeres behatolásának tesztelése, valamint az összes kritikus biztonsági vizsgálat szervizelésének biztosítása
 
@@ -1244,5 +1243,5 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Security Benchmark v2 áttekintésének](/azure/security/benchmarks/overview) megtekintése
+- Lásd: az [Azure Security teljesítményteszt v2 áttekintése](/azure/security/benchmarks/overview)
 - További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)

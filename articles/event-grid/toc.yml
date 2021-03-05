@@ -212,6 +212,10 @@
           href: diagnostic-logs.md
         - name: Mérőszámok
           href: metrics.md
+    - name: Használati esetek
+      items:
+        - name: Tartományok használati esetei
+          href: event-domains-use-cases.md
 - name: Útmutatók
   items:
     - name: 'Rendszertémakörök létrehozása, megtekintése és kezelése'

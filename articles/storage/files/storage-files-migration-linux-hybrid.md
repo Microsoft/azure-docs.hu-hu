@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 0ef4faf14ec01a25419fd22ba8c73a8a033b4172
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f95585237bbee743083b855dd78cc850c4daffe8
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879982"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202688"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migrálás Linuxról hibrid Felhőbeli üzembe helyezésre Azure File Sync
 
@@ -39,7 +39,7 @@ Ha nem futtatja a Samba-t a Linux-kiszolgálón, és inkább a Windows Server hi
 * Hozzon létre egy Windows Server 2019-példányt virtuális géppel vagy fizikai kiszolgálóként. A minimális követelmény a Windows Server 2012 R2. A Windows Server feladatátvevő fürtök is támogatottak.
 * Közvetlenül csatlakoztatott tároló (DAS) kiépítése vagy hozzáadása. A hálózati csatolású tároló (NAS) nem támogatott.
 
-  Az Ön által kiépített tárterület mérete kisebb lehet, mint amit jelenleg a linuxos Samba-kiszolgálón használ, ha a Azure File Sync [Cloud rétegű](storage-sync-cloud-tiering.md) funkciót használja. Ha azonban egy későbbi fázisban másolja a fájlokat a nagyobb Linux Samba-kiszolgáló területéről a kisebb Windows Server-kötetre, akkor a kötegekben kell működnie:
+  Az Ön által kiépített tárterület mérete kisebb lehet, mint amit jelenleg a linuxos Samba-kiszolgálón használ, ha a Azure File Sync [Cloud rétegű](storage-sync-cloud-tiering-overview.md) funkciót használja. Ha azonban egy későbbi fázisban másolja a fájlokat a nagyobb Linux Samba-kiszolgáló területéről a kisebb Windows Server-kötetre, akkor a kötegekben kell működnie:
 
   1. Helyezze át a lemezre illeszkedő fájlok készletét.
   2. A fájlok szinkronizálása és a Felhőbeli rétegek bevonása.
@@ -98,7 +98,7 @@ Futtassa az első helyi másolatot a Windows Server célmappájában:
 
 A következő Robocopy parancs a Linux rendszerű Samba-kiszolgáló tárterületéről másolja a fájlokat a Windows Server célmappába. A Windows Server szinkronizálja az Azure-fájlmegosztást. 
 
-Ha kevesebb tárterületet telepített a Windows Server-példányon, mint amennyit a fájlok felvesznek a Linux Samba-kiszolgálón, akkor konfigurálta a Felhőbeli rétegek létrehozását. Ahogy a helyi Windows Server-kötet betelik, a [Felhőbeli rétegek](storage-sync-cloud-tiering.md) elindulnak, és a már sikeresen szinkronizált fájlokat is elindítják. A Felhőbeli rétegek kiszolgálása elég helyet eredményez a Linux Samba-kiszolgálóról történő másolás folytatásához. A Felhőbeli rétegek ellenőrzése óránként egyszer megtekintheti, hogy mi szinkronizált, és szabadítson fel lemezterületet a kötet 99%-os szabad területére vonatkozó szabályzat eléréséhez.
+Ha kevesebb tárterületet telepített a Windows Server-példányon, mint amennyit a fájlok felvesznek a Linux Samba-kiszolgálón, akkor konfigurálta a Felhőbeli rétegek létrehozását. Ahogy a helyi Windows Server-kötet betelik, a [Felhőbeli rétegek](storage-sync-cloud-tiering-overview.md) elindulnak, és a már sikeresen szinkronizált fájlokat is elindítják. A Felhőbeli rétegek kiszolgálása elég helyet eredményez a Linux Samba-kiszolgálóról történő másolás folytatásához. A Felhőbeli rétegek ellenőrzése óránként egyszer megtekintheti, hogy mi szinkronizált, és szabadítson fel lemezterületet a kötet 99%-os szabad területére vonatkozó szabályzat eléréséhez.
 
 Lehetséges, hogy a Robocopy gyorsabban helyezi át a fájlokat, mint amennyire a felhőbe és a szintjére tud szinkronizálni, így elfogyhat a helyi lemezterület. A Robocopy ekkor sikertelen lesz. Azt javasoljuk, hogy a megosztásokat egy olyan sorozatban hajtsa át, amely megakadályozza a problémát. Tegyük fel például, hogy nem indítja el a Robocopy-feladatokat egyszerre az összes megosztáshoz. Vagy vegye fontolóra a Windows Server-példányon aktuálisan rendelkezésre álló szabad területhez illeszkedő megosztások áthelyezését. Ha a Robocopy feladat meghiúsul, mindig futtassa újra a parancsot, ha a következő tükrözési/kiürítési lehetőséget használja:
 
@@ -215,7 +215,7 @@ Ha a Windows Server-példány elegendő rendelkezésre álló kapacitással rend
 
 A következő szakaszban található hivatkozásra kattintva megtudhatja, hogyan hibaelhárítási Azure File Sync problémákat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure-fájlmegosztás és a Azure File Sync. A következő cikkek speciális beállításokat, ajánlott eljárásokat és hibaelhárítási segítséget tartalmaznak. Ezek a cikkek szükség szerint az [Azure file share-dokumentációra](storage-files-introduction.md) mutató hivatkozást tartalmaznak.
 

@@ -9,12 +9,12 @@ ms.date: 11/17/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 68d890386d53b4115c773b128f8678bac9579e53
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: HT
+ms.openlocfilehash: bc761d0bf4001fb1e3fb757b9be9e1e19689913d
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844335"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202994"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-preview-apis"></a>Azure-előfizetések létrehozása programozott módon, előzetes verziójú API-kkal
 
@@ -198,7 +198,7 @@ A paraméterek teljes listáját lásd a [New-AzSubscription](/powershell/module
 
 Első lépésként telepítse ezt az előzetes verziójú bővítményt az `az extension add --name subscription` parancs futtatásával.
 
-Futtassa az alábbi [az account create](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create&preserve-view=true) parancsot, amelyben cserélje le az `<enrollmentAccountObjectId>` értéket a `name` első lépésben kimásolt értékére (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Tulajdonosok megadásához tekintse meg a [felhasználói objektumazonosítók lekérésének módját](grant-access-to-create-subscription.md#userObjectId).
+Futtassa az alábbi [az account create](/cli/azure/ext/subscription/account#-ext-subscription-az-account-create) parancsot, amelyben cserélje le az `<enrollmentAccountObjectId>` értéket a `name` első lépésben kimásolt értékére (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Tulajdonosok megadásához tekintse meg a [felhasználói objektumazonosítók lekérésének módját](grant-access-to-create-subscription.md#userObjectId).
 
 ```azurecli-interactive
 az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "<enrollmentAccountObjectId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
@@ -213,7 +213,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 | `owner-upn`    | Nem       | Sztring | Annak a felhasználónak az e-mail-címe, akit az előfizetés létrehozásakor Azure RBAC-tulajdonosként szeretne megadni. A paramétert az `owner-object-id` helyett használhatja.|
 | `owner-spn` | Nem       | Sztring | Bármely olyan szolgáltatásnév alkalmazásazonosítója, amelyet az előfizetés létrehozásakor Azure RBAC-tulajdonosként szeretne megadni. A paramétert az `owner-object-id` helyett használhatja. Ha használja ezt a paramétert, a szolgáltatásnévnek [olvasási hozzáféréssel kell rendelkeznie a könyvtárhoz](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole&preserve-view=true).|
 
-A paraméterek teljes listáját lásd az [az account create](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create&preserve-view=true) témakörben.
+A paraméterek teljes listáját lásd az [az account create](/cli/azure/ext/subscription/account#-ext-subscription-az-account-create) témakörben.
 
 ---
 

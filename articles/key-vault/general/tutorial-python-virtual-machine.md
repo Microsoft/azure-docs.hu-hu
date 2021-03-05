@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: ae62bf353f8a92c4408d4a38a91771ad60a13107
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 2fc77d0cdfb6bd8a62555951c0b6dc7e9b732f93
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285312"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203538"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>Oktatóanyag: Azure Key Vault használata virtuális géppel a Pythonban
 
@@ -66,7 +66,7 @@ Hozzon létre egy **myVM** nevű virtuális gépet az alábbi módszerek egyiké
 | [PowerShell](../../virtual-machines/linux/quick-create-powershell.md) | [PowerShell](../../virtual-machines/windows/quick-create-powershell.md) |
 | [Azure Portal](../../virtual-machines/linux/quick-create-portal.md) | [Az Azure Portal](../../virtual-machines/windows/quick-create-portal.md) |
 
-Linuxos virtuális gép Azure CLI használatával történő létrehozásához használja az az [VM Create](/cli/azure/vm) parancsot.  A következő példa egy *azureuser* nevű felhasználói fiókot vesz fel. A `--generate-ssh-keys` paraméter használatával automatikusan létrejön egy SSH-kulcs, és elhelyezhető az alapértelmezett kulcs helyén ( *~/.ssh* ). 
+Linuxos virtuális gép Azure CLI használatával történő létrehozásához használja az az [VM Create](/cli/azure/vm) parancsot.  A következő példa egy *azureuser* nevű felhasználói fiókot vesz fel. A `--generate-ssh-keys` paraméter használatával automatikusan létrejön egy SSH-kulcs, és elhelyezhető az alapértelmezett kulcs helyén (*~/.ssh*). 
 
 ```azurecli-interactive
 az vm create \
@@ -81,7 +81,7 @@ Jegyezze `publicIpAddress` fel a kimenetben lévő értéket.
 
 ## <a name="assign-an-identity-to-the-vm"></a>Identitás kiosztása a virtuális géphez
 
-Hozzon létre egy rendszer által hozzárendelt identitást a virtuális géphez az Azure CLI az [VM Identity assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) parancs használatával:
+Hozzon létre egy rendszer által hozzárendelt identitást a virtuális géphez az Azure CLI az [VM Identity assign](/cli/azure/vm/identity#az-vm-identity-assign) parancs használatával:
 
 ```azurecli
 az vm identity assign --name "myVM" --resource-group "myResourceGroup"

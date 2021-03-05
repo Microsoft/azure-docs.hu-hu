@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 4e9b45c72e5fb4cbd9e548727faf8946e3e5ba8f
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 8fe8c07866b23e5d990b71bfc9cd556c338634d3
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102125057"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203368"
 ---
 # <a name="recommended-settings-for-network-isolation"></a>A hálózati elkülönítés ajánlott beállításai
 
@@ -57,6 +57,8 @@ IP-címeket adhat hozzá az App Service engedélyezési, amelyekkel korlátozhat
    1. Töltse le [az IP-tartományokat az összes szolgáltatás címkéhez](https://www.microsoft.com/download/details.aspx?id=56519).
    2. Válassza ki a "CognitiveServicesManagement" IP-címeit.
    3. Nyissa meg a App Service erőforrás hálózatkezelés szakaszát, és kattintson a "hozzáférési korlátozás konfigurálása" lehetőségre az IP-címek engedélyezési való hozzáadásához.
+
+    ![bejövő portok kivételeinek](../media/inbound-ports.png)
 
 Egy automatikus szkripttel is rendelkezünk, hogy megegyezzenek a App Service. A [engedélyezési konfigurálására szolgáló PowerShell-parancsfájlt](https://github.com/pchoudhari/QnAMakerBackupRestore/blob/master/AddRestrictedIPAzureAppService.ps1) a githubon találhatja meg. Az előfizetés azonosítóját, az erőforráscsoportot és a tényleges App Service nevet kell megadni parancsfájl-paraméterként. A parancsfájl futtatásakor a rendszer automatikusan hozzáadja az IP-címeket App Service engedélyezési.
 

@@ -39,6 +39,8 @@
           href: tutorial-cross-region-portal.md
         - name: Régiók közötti Load Balancer létrehozása – PowerShell
           href: tutorial-cross-region-powershell.md
+        - name: Régiók közötti Load Balancer létrehozása – Azure CLI
+          href: tutorial-cross-region-cli.md
 - name: Példák
   items:
     - name: Azure CLI

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 7b7bc87f83925baed15bc6a411f5b4e4f78df6cc
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f97ff1c20b7edbf24e5a2c58e22097f88883ae4f
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654507"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102204031"
 ---
 # <a name="edit-storage-targets"></a>Céltárolók szerkesztése
 
@@ -161,7 +161,7 @@ Módosítsa a használati modellt a Azure Portal **tárolási célok** lapján. 
 
 [Állítsa be az Azure CLI-t az Azure HPC cache-hez](./az-cli-prerequisites.md).
 
-Használja az az [HPC-cache NFS-Storage-Target Update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target?view=azure-cli-latest#ext-hpc-cache-az-hpc-cache-nfs-storage-target-update) parancsot.
+Használja az az [HPC-cache NFS-Storage-Target Update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-update) parancsot.
 
 A frissítési parancs közel azonos ahhoz a parancshoz, amelyet az NFS-tárolási cél hozzáadásához használ. A részletekért és példákért tekintse meg az [NFS Storage-tároló létrehozása](hpc-cache-add-storage.md#create-an-nfs-storage-target) című témakört.
 

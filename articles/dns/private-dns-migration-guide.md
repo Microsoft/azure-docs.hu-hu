@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 06/18/2019
 ms.author: rohink
-ms.openlocfilehash: 63bd1d01adf66f33a8ee5349f35063473429b007
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: bfc7a851442d6dd70d55c9f00e6d2f18d37e56bf
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964779"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203402"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>Örökölt Azure DNS privát zónák áttelepítése új erőforrás-modellbe
 
@@ -102,13 +102,13 @@ Ha úgy találja, hogy a DNS-lekérdezések nem oldhatók fel, várjon néhány 
 
 Ez a lépés törli a régi DNS-zónákat, és csak azt követően kell végrehajtani, hogy ellenőrizte, hogy a DNS-feloldás a várt módon működik-e. A rendszer felszólítja az egyes privát DNS-zónák törlésére. Ha ellenőrzi, hogy az adott zóna DNS-feloldása megfelelően működik-e, írja be az "Y" értéket minden kérdésnél.
 
-![A feleslegessé vált elemek eltávolítása](./media/private-dns-migration-guide/cleanup-migration-script.png)
+![A fölöslegessé vált elemek eltávolítása](./media/private-dns-migration-guide/cleanup-migration-script.png)
 
 ## <a name="update-your-automation"></a>Az automatizálás frissítése
 
 Ha automatizálást használ, beleértve a sablonokat, a PowerShell-parancsfájlokat vagy az SDK használatával fejlesztett egyéni kódokat, frissítenie kell az automationt, hogy az új erőforrás-modellt használja a magánhálózati DNS-zónákhoz. Alább láthatók az új privát DNS CLI/PS/SDK dokumentációra mutató hivatkozások.
 * [Azure DNS privát zónák REST API](/rest/api/dns/privatedns/privatezones)
-* [Privát zónák Azure DNS parancssori felület](/cli/azure/ext/privatedns/network/private-dns?view=azure-cli-latest)
+* [Privát zónák Azure DNS parancssori felület](/cli/azure/ext/privatedns/network/private-dns)
 * [Privát zónák Azure DNS PowerShell](/powershell/module/az.privatedns/?view=azps-2.3.2)
 * [Azure DNS Private Zones SDK](/dotnet/api/overview/azure/privatedns/management?view=azure-dotnet-preview)
 

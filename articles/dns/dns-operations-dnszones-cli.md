@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: rohink
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 469fdbced4601c6ffb4b6aa35e8f943bcb5dde1b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5d902e0172a048527ce8f2fa9e22c5fc9bf22e0b
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965782"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203623"
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>Azure DNS DNS-zónák kezelése az Azure CLI használatával
 
@@ -31,7 +31,7 @@ Ez az útmutató bemutatja, hogyan kezelheti a DNS-zónákat a platformfüggetle
 
 Ez az útmutató kifejezetten a nyilvános DNS-zónákat tárgyalja. További információ az Azure CLI Azure DNS-beli privát zónák kezeléséhez való használatáról: Ismerkedés [a Azure DNS Private Zones az Azure CLI használatával](private-dns-getstarted-cli.md).
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 [!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
@@ -47,7 +47,7 @@ A konfigurálás megkezdése előtt győződjön meg arról, hogy rendelkezik a 
 
 ### <a name="sign-in-to-your-azure-account"></a>Jelentkezzen be az Azure-fiókjába
 
-Nyisson meg egy konzolablakot, adja meg a saját hitelesítő adatait. További információt az [Azure parancssori felületből (CLI) Azure-ba történő bejelentkezést ismertető cikkben](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) talál.
+Nyisson meg egy konzolablakot, adja meg a saját hitelesítő adatait. További információt az [Azure parancssori felületből (CLI) Azure-ba történő bejelentkezést ismertető cikkben](/cli/azure/authenticate-azure-cli) talál.
 
 ```
 az login
@@ -73,7 +73,7 @@ Az Azure DNS privát zóna funkció az Azure CLI-n keresztül érhető el egy b�
 az extension add --name dns
 ``` 
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure Resource Manager megköveteli, hogy minden erőforráscsoport adjon meg egy helyet. Ez szolgál az erőforráscsoport erőforrásainak alapértelmezett helyeként. Mivel azonban minden DNS-erőforrás globális, nem pedig regionális, az erőforráscsoport kiválasztott helye nincs hatással az Azure DNS szolgáltatásra.
 

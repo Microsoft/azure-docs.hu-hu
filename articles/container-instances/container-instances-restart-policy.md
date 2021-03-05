@@ -3,12 +3,12 @@ title: Újraindítási szabályzat a futtatási egyszeri feladatokhoz
 description: Megtudhatja, hogyan használhatja a Azure Container Instances a befejezésre futó feladatok végrehajtásához, például a létrehozási, tesztelési vagy képrenderelési feladatokban.
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 336a31a03cdc9dfdfebe79ef47b59ef90053f523
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49280549fa834b82574f81494f1cf44817d8be5d
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798941"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203827"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Tárolóalapú feladatok futtatása újraindítási szabályzatokkal
 
@@ -56,7 +56,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-Az Azure Container Instances elindítja a tárolót, majd leállítja, amikor az alkalmazás (vagy ebben az esetben a szkript) kilép. Amikor Azure Container Instances leállít egy olyan tárolót, amelynek újraindítási szabályzata `Never` vagy `OnFailure` , a **Terminated**tároló állapota leállítva értékre van állítva. A tároló állapotát az [az Container show][az-container-show] paranccsal tekintheti meg:
+Az Azure Container Instances elindítja a tárolót, majd leállítja, amikor az alkalmazás (vagy ebben az esetben a szkript) kilép. Amikor Azure Container Instances leállít egy olyan tárolót, amelynek újraindítási szabályzata `Never` vagy `OnFailure` , a tároló állapota leállítva értékre van állítva. A tároló állapotát az [az Container show][az-container-show] paranccsal tekintheti meg:
 
 ```azurecli-interactive
 az container show \
@@ -94,7 +94,7 @@ Kimenet:
 
 Ez a példa azt a kimenetet mutatja, amelyet a parancsfájl az STDOUT-nak küld. A tárolóban lévő feladatok azonban Ehelyett a kimenetet állandó tárterületre írhatja a későbbi lekéréshez. Egy [Azure-fájlmegosztás](./container-instances-volume-azure-files.md)esetében például.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A feladat-alapú forgatókönyvek, például a Batch több tárolóval rendelkező nagyméretű adathalmazok feldolgozásával kihasználhatják az egyéni [környezeti változókat](container-instances-environment-variables.md) vagy a [parancssori vonalakat](container-instances-start-command.md) futásidőben.
 
@@ -104,7 +104,7 @@ Az [Azure-fájlmegosztás Azure Container Instancessal való csatlakoztatásáva
 [aci-wordcount-image]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount
 
 <!-- LINKS - Internal -->
-[az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create
-[az-container-logs]: /cli/azure/container?view=azure-cli-latest#az-container-logs
-[az-container-show]: /cli/azure/container?view=azure-cli-latest#az-container-show
+[az-container-create]: /cli/azure/container#az-container-create
+[az-container-logs]: /cli/azure/container#az-container-logs
+[az-container-show]: /cli/azure/container#az-container-show
 [azure-cli-install]: /cli/azure/install-azure-cli

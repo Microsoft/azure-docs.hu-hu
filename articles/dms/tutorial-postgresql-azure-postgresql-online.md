@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019, devx-track-azurecli
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: 87b3ecd9b77fcf07e6c41bce0a38ef4f99da1006
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bb4dd08b4f30982ec4572fd4e130a89112578175
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740936"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203555"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>Oktatóanyag: a PostgreSQL migrálása az Azure DB for PostgreSQL online-ba a DMS használatával az Azure CLI-n keresztül
 
@@ -71,7 +71,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
   * Telepítse és futtassa a CLI-t helyileg. A CLI 2.0 egy parancssori eszköz az Azure-erőforrások kezeléséhez.
 
-       A CLI letöltéséhez kövesse [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest) című cikkben lévő utasításokat. A cikk a CLI 2.0 verzióját támogató platformokat is felsorolja.
+       A CLI letöltéséhez kövesse [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli) című cikkben lévő utasításokat. A cikk a CLI 2.0 verzióját támogató platformokat is felsorolja.
 
        Windows Subsystem for Linux (WSL) beállításához kövesse a [Windows 10 telepítési útmutatójának](/windows/wsl/install-win10) utasításait
 

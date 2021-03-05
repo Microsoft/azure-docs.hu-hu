@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 02/12/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a39b91304c4123b216a0b508dcea0547cae5ab43
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 89bd77c30ec52a72087598b86f22e85659fa1b0e
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041501"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203895"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Az Azure Digital Twins integrálása az Azure Signaler szolgáltatással
 
@@ -88,7 +88,7 @@ Ezután konfigurálja a függvényeket az Azure Signaler-példánnyal való komm
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="Képernyőkép a Azure Portalről, amely a Signaler-példány kulcsok lapját jeleníti meg. Az elsődleges KAPCSOLÓDÁSi karakterlánc melletti &quot;másolás a vágólapra&quot; ikon ki van emelve." lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
 
-1. Végül adja hozzá az Azure Signaler- **kapcsolódási karakterláncot** a függvény alkalmazás-beállításaihoz az alábbi Azure CLI-parancs használatával. Továbbá cserélje le a helyőrzőket az erőforráscsoport és az App Service/Function alkalmazás neve elemre az [oktatóanyag előfeltételeiben](how-to-integrate-azure-signalr.md#prerequisites). A parancs [Azure Cloud Shell](https://shell.azure.com)vagy helyileg is futtatható, ha telepítve van az Azure CLI a [gépen](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true):
+1. Végül adja hozzá az Azure Signaler- **kapcsolódási karakterláncot** a függvény alkalmazás-beállításaihoz az alábbi Azure CLI-parancs használatával. Továbbá cserélje le a helyőrzőket az erőforráscsoport és az App Service/Function alkalmazás neve elemre az [oktatóanyag előfeltételeiben](how-to-integrate-azure-signalr.md#prerequisites). A parancs [Azure Cloud Shell](https://shell.azure.com)vagy helyileg is futtatható, ha telepítve van az Azure CLI a [gépen](/cli/azure/install-azure-cli):
  
     ```azurecli-interactive
     az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "AzureSignalRConnectionString=<your-Azure-SignalR-ConnectionString>"
@@ -189,7 +189,7 @@ Ekkor megnyílik a minta alkalmazást futtató böngészőablak, amely egy vizu�
 
 Ha már nincs szüksége az ebben a cikkben létrehozott erőforrásokra, a következő lépésekkel törölheti őket. 
 
-Az Azure Cloud Shell vagy a helyi Azure CLI használatával törölheti az erőforráscsoport összes Azure-erőforrását az az [Group delete](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-delete) paranccsal. Az erőforráscsoport eltávolítása is el lesz távolítva...
+Az Azure Cloud Shell vagy a helyi Azure CLI használatával törölheti az erőforráscsoport összes Azure-erőforrását az az [Group delete](/cli/azure/group#az-group-delete) paranccsal. Az erőforráscsoport eltávolítása is el lesz távolítva...
 * Az Azure Digital Twins-példány (a végpontok közötti oktatóanyagból)
 * az IoT hub és a hub-eszköz regisztrálása (a végpontok közötti oktatóanyagból)
 * az Event Grid-témakör és a hozzá tartozó előfizetések

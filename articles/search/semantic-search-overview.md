@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: eedb3dfeafbd378cfff7afb04fcc2b9aa6e791d6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e9cbb7daf61397064bd79f30d851d96fdf63f5a0
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679828"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203232"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Szemantikai keresés az Azure Cognitive Search
 
@@ -27,7 +27,7 @@ Az alapul szolgáló technológia a Bing és a Microsoft Research által nyújto
 
 A nyilvános előzetes verzió funkciói a következők:
 
-+ Szemantikai rangsorolási algoritmus, amely a keresési lekérdezési feltételek kontextusa vagy szemantikai jelentése alapján lekéri a kapcsolódó dokumentumokat
++ Szemantikai rangsorolási modell, amely az eredményeket a keresési lekérdezési feltételek kontextusa vagy szemantikai jelentése alapján szerzi be
 + A kapcsolódó szakaszokat kiemelő szemantikai feliratok
 + Szemantikai válaszok a lekérdezésre, az eredményekből is kialakítva
 + Helyesírás-ellenőrzés, amely kijavítani az elírásokat, mielőtt a lekérdezési kifejezés eléri a keresőmotort
@@ -44,7 +44,9 @@ A feliratok és válaszok létrehozásához használja a Language reprezentáci�
 
 ## <a name="availability-and-pricing"></a>Rendelkezésre állás és díjszabás
 
-A szemantikai rangsorolás a [regisztrációs regisztráción](https://aka.ms/SemanticSearchPreviewSignup)keresztül érhető el a standard szintű (S1, S2, S3), a következő régiókban található keresési szolgáltatásokban: az USA északi középső régiója, USA nyugati régiója, USA 2. keleti régiója, Észak-Európa, Nyugat-Európa. A helyesírás-javítás ugyanabban a régióban érhető el, de nem rendelkezik a rétegek korlátozásával. Ha rendelkezik olyan meglévő szolgáltatással, amely megfelel a rétegek és régiók feltételének, csak a regisztrációra van szükség.
+A szemantikai rangsorolás a [regisztrációs regisztráción](https://aka.ms/SemanticSearchPreviewSignup)keresztül érhető el a standard szintű (S1, S2, S3), a következő régiókban található keresési szolgáltatásokban: az USA északi középső régiója, USA nyugati régiója, USA 2. keleti régiója, Észak-Európa, Nyugat-Európa. A megadott régiókban az S1 vagy a magasabb szintű keresési szolgáltatás jogosult az előzetes verzióra (új szolgáltatás létrehozása nem szükséges).
+
+A helyesírás-javítás ugyanabban a régióban érhető el, de nem rendelkezik a rétegek korlátozásával, és nincs szükség regisztrációra. 
 
 Az előzetes indítás és a 2. március 1-től április 1-én a helyesírás-javítás és a szemantikai rangsorolás díjmentesen vehető igénybe. Április 1. után a funkció futtatásának számítási költségei számlázandó eseménynek számítanak. A várt díj körülbelül 500 USD, a 250 000-es lekérdezésekhez pedig a havi dollár. A részletes költségadatok a [Cognitive Search díjszabási oldalon](https://azure.microsoft.com/pricing/details/search/) , valamint a [költségek becslése és kezelése](search-sku-manage-costs.md)című témakörben találhatók.
 

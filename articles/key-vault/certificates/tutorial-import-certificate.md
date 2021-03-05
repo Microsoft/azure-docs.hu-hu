@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-azurecli
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 626d7f161d23e6105eea0ca160cd2c9be0ed0ea0
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: b7b15c1c4952f6e0a606b1ed46f1588c536b4ae2
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935937"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102204082"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Oktatóanyag: tanúsítvány importálása Azure Key Vault
 
@@ -33,7 +33,7 @@ Ez az oktatóanyag a következőket mutatja be:
 
 Mielőtt elkezdené, olvassa el [Key Vault alapvető fogalmakat](../general/basic-concepts.md). 
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -78,7 +78,7 @@ Ha tanúsítványt szeretne importálni a tárolóba, rendelkeznie kell egy, a l
     - **Tanúsítvány neve**: ExampleCertificate.
     - **Tanúsítványfájl feltöltése**: válassza ki a fájlt a lemezről.
     - **Password** (jelszó): jelszóval védett tanúsítványfájl feltöltésekor itt adja meg a jelszót. Ellenkező esetben hagyja üresen. A tanúsítványfájl sikeres importálása után a Key Vault eltávolítja ezt a jelszót.
-4. Kattintson a **Létrehozás** gombra.
+4. Kattintson a **Létrehozás** lehetőségre.
 
 ![Tanúsítvány tulajdonságai](../media/certificates/tutorial-import-cert/cert-import.png)
 
@@ -104,9 +104,9 @@ az keyvault certificate import --file
                                [--tags]
 ```
 
-További információ a [paraméterekről](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import).
+További információ a [paraméterekről](/cli/azure/keyvault/certificate#az-keyvault-certificate-import).
 
-A tanúsítvány importálása után megtekintheti a tanúsítványt a [tanúsítvány megjelenítése](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show) lehetőség használatával.
+A tanúsítvány importálása után megtekintheti a tanúsítványt a [tanúsítvány megjelenítése](/cli/azure/keyvault/certificate#az-keyvault-certificate-show) lehetőség használatával.
 
 
 ```azurecli
@@ -148,7 +148,7 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a k
 3. Az **ÍRJA BE AZ ERŐFORRÁSCSOPORT NEVÉT:** mezőbe írja be az erőforráscsoport nevét, és válassza a **Törlés** lehetőséget.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy Key Vault, és importált egy tanúsítványt. Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
 

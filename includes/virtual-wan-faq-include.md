@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/05/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d275f2f4cad83c8f378c471e5a3fa1313d6c0e7d
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: a66eff14490add8269082e4e54f077d1d9db7e02
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99624869"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102206003"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Az Azure Virtual WAN a GA-ban található?
 
@@ -302,3 +302,8 @@ Nem. A virtuális WAN nem tárolja az ügyféladatokat.
 ### <a name="are-there-any-managed-service-providers-that-can-manage-virtual-wan-for-users-as-a-service"></a>Vannak olyan felügyelt szolgáltatók, amelyek felügyelik a virtuális WAN szolgáltatást a felhasználók számára szolgáltatásként?
 
 Igen. Az Azure Marketplace-en keresztül engedélyezett felügyelt szolgáltatói (MSP) megoldások listáját az Azure [Marketplace-ajánlatok az Azure hálózati MSP-partnerek](../articles/networking/networking-partners-msp.md#msp)számára című témakörben találja.
+
+### <a name="how-does-virtual-wan-hub-routing-differ-from-azure-route-server-in-a-vnet"></a>Miben különbözik a virtuális WAN hub útválasztása az Azure Route Server VNet?
+
+Az Azure Route Server egy Border Gateway Protocol (BGP) társítási szolgáltatást biztosít, amelyet a NVA (hálózati virtuális berendezés) használhat az útválasztási kiszolgálótól érkező útvonalak megismerésére egy DIY hub-VNet. A virtuális WAN-útválasztás többek között lehetővé teszi a VNET, például a VNET tranzit-útválasztást, az egyéni útválasztást, az egyéni útvonal-társítást és a propagálást, valamint egy nulla érintéses teljes körű rácsvonal-szolgáltatást, valamint a ExpressRoute, a webhely VPN, a távoli felhasználó/nagy léptékű P2S VPN és a Secure hub (Azure Firewall) képességeit. Ha a NVA és az Azure útválasztó kiszolgáló között hoz létre Border Gateway Protocol (BGP) társítást, akkor az IP-címeket a virtuális hálózata számára is meghirdetheti a NVA. Az összes olyan speciális útválasztási lehetőség esetében, mint az átjárási útválasztás, az egyéni útválasztás stb., a virtuális WAN-útválasztást használhatja.
+

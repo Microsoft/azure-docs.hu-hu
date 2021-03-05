@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 2005b24e9a5692adda8c8e3a5100a6450c67663c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ad6696fc4fe2af7047c25a3a9c260d3b12588ee2
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101653847"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203300"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Magas rendelkezésre állás az Azure cache Redis
 
@@ -23,7 +23,7 @@ A Redis készült Azure cache magas rendelkezésre állást biztosít a gyorsít
 | ------------------- | ------- | ------- | :------: | :---: | :---: |
 | [Normál replikáció](#standard-replication)| Két csomópontos replikált konfiguráció egyetlen adatközpontban automatikus feladatátvételsel | 99.9% |✔|✔|-|
 | [Zónaredundancia](#zone-redundancy) | Több csomópontos replikált konfiguráció a AZs-ben automatikus feladatátvételsel | 99,95% (prémium szint), 99,99% (nagyvállalati szint) |-|Előnézet|Előnézet|
-| [Georeplikáció](#geo-replication) | Csatolt gyorsítótár-példányok két régióban, felhasználó által vezérelt feladatátvételsel | 99,999% (nagyvállalati szintű) |-|✔|-|
+| [Georeplikáció](#geo-replication) | Csatolt gyorsítótár-példányok két régióban, felhasználó által vezérelt feladatátvételsel | 99,999% (nagyvállalati szintű) |-|✔|Előnézet|
 
 ## <a name="standard-replication"></a>Normál replikáció
 

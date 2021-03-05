@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: cb501dd8e548ea2f6ce8b63fbffb1c4b2403c9a6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8c6e584a4bdb1953d7ceac4e3d612b329738f646
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102035959"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203980"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-azure-digital-twins-explorer"></a>Gyors útmutató – a minta Azure digitális Twins-forgatókönyvek megismerése az Azure Digital Twins Explorer használatával
 
@@ -57,13 +57,13 @@ A szakasz további részében végigvezeti a lépéseket.
 
 Az Azure Digital Twins Explorer alkalmazás a [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) (a könyvtár részét képező `Azure.Identity` ) használatával hitelesíti a felhasználókat az Azure Digital Twins-példánnyal a helyi gépen való futtatáskor. További információ az ügyfélalkalmazások az Azure digitális Twins használatával történő hitelesítésének különböző módjairól: az [alkalmazás-hitelesítési kód írása](how-to-authenticate-client.md).
 
-Ilyen típusú hitelesítés esetén az Azure Digital Twins Explorer a helyi környezetben, például egy helyi [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) -ben, vagy a Visual Studióban vagy a Visual Studio Code-ban keresi a hitelesítő adatokat. Emiatt *helyileg kell bejelentkeznie az Azure* -ba ezen mechanizmusok egyikével az Azure Digital Twins Explorer alkalmazás hitelesítő adatainak beállításához.
+Ilyen típusú hitelesítés esetén az Azure Digital Twins Explorer a helyi környezetben, például egy helyi [Azure CLI](/cli/azure/install-azure-cli) -ben, vagy a Visual Studióban vagy a Visual Studio Code-ban keresi a hitelesítő adatokat. Emiatt *helyileg kell bejelentkeznie az Azure* -ba ezen mechanizmusok egyikével az Azure Digital Twins Explorer alkalmazás hitelesítő adatainak beállításához.
 
 Ha már bejelentkezett az Azure-ba az egyik ilyen módon, ugorjon a [következő szakaszra](#run-and-configure-azure-digital-twins-explorer).
 
 Ellenkező esetben a helyi Azure CLI-t a következő lépésekkel telepítheti:
 
-1. Kövesse a [telepítési hivatkozás](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) folyamatát az operációs rendszerének megfelelő telepítés befejezéséhez.
+1. Kövesse a [telepítési hivatkozás](/cli/azure/install-azure-cli) folyamatát az operációs rendszerének megfelelő telepítés befejezéséhez.
 1. Nyisson meg egy konzolablak ablakot a gépen.
 1. Futtassa `az login` a parancsot, és kövesse a hitelesítési kéréseket, hogy bejelentkezzen az Azure-fiókjába.
 1. Utolsó lépés: Ha a fiókban több Azure-előfizetést is használ, állítsa be a hitelesítési környezetet az Azure-beli digitális Twins-példányt tartalmazó Azure-előfizetésre a futtatásával `az account set --subscription "<your-subscription-name-or-ID>"` (vagy az előfizetés nevének vagy azonosítójának értéke).

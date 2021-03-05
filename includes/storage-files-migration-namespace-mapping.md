@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 441632ea33195ff8bcb6da5f4fb2298c337a6c97
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 265d14d7cca05ff510e747c8d3a3b071e44a0a68
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043203"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202399"
 ---
 Ebben a lépésben azt értékeli, hogy hány Azure-fájlmegosztás szükséges. Egyetlen Windows Server-példány (vagy fürt) akár 30 Azure-fájlmegosztás szinkronizálására is képes.
 
-Előfordulhat, hogy a köteteken további mappák vannak, amelyeket a felhasználók és alkalmazások SMB-megosztásként helyileg oszt meg. Ennek a forgatókönyvnek a legegyszerűbb módja, ha olyan helyszíni megosztást képzel el, amely a 1:1-et egy Azure-fájlmegosztás felé képezi le. Ha elég kicsi a száma, akkor egy Windows Server-példány esetében 30 alatta egy 1:1-es leképezést ajánlunk.
+Előfordulhat, hogy a köteteken további mappák vannak, amelyeket a felhasználók és alkalmazások SMB-megosztásként helyileg oszt meg. Ennek a forgatókönyvnek a legegyszerűbb módja, ha olyan helyszíni megosztást képzel el, amely a 1:1-et egy Azure-fájlmegosztás felé képezi le. Ha elég kicsi a száma, akkor egy Windows Server-példány esetében 30 alatta egy 1:1-es hozzárendelés javasolt.
 
 Ha a 30-nál több megosztással rendelkezik, gyakran szükségtelen egy helyszíni megosztást (1:1) leképezni egy Azure-fájlmegosztás számára. Vegye figyelembe a következő beállításokat.
 
@@ -26,11 +26,11 @@ Ha például az emberi erőforrások (HR) részlege összesen 15 megosztást tar
 
 #### <a name="volume-sync"></a>Kötet szinkronizálása
 
-Azure File Sync támogatja a kötetek gyökerének Azure-fájlmegosztás felé történő szinkronizálását. Ha szinkronizálja a gyökérkönyvtárat, az összes almappa és fájl ugyanarra az Azure-fájlmegosztásra fog esni.
+Azure File Sync támogatja a kötetek gyökerének Azure-fájlmegosztás felé történő szinkronizálását. Ha a kötet gyökerét szinkronizálja, az összes almappa és fájl ugyanarra az Azure-fájlmegosztásra fog esni.
 
 A kötet gyökerének szinkronizálása nem mindig a legjobb válasz. Több hely szinkronizálása is előnyökkel jár. Így például segít megőrizni az elemek számát a szinkronizálási hatókörben. Az Azure-fájlmegosztás és a Azure File Sync az 100 000 000 elemekkel (fájlokkal és mappákkal) történő tesztelését az ajánlott eljárás szerint a 20 000 000 vagy 30 000 000 alatti szám egyetlen megosztáson való megtartására próbálja meg. Az alacsonyabb számú elemet tartalmazó Azure File Sync beállítása nem csak a fájl-szinkronizálás esetén hasznos. Az elemek alacsonyabb száma is előnyökkel jár, például a következő esetekben:
 
-* A felhő tartalmának kezdeti vizsgálata, mielőtt a névtér megkezdődhet egy Azure File Sync-kompatibilis kiszolgálón, gyorsabban elvégezhető.
+* A felhő tartalmának kezdeti vizsgálata gyorsabban elvégezhető, ami viszont csökkenti a várakozást arra, hogy a névtér megjelenjen egy Azure File Sync-kompatibilis kiszolgálón.
 * Az Azure fájlmegosztás pillanatképének Felhőbeli visszaállítása gyorsabb lesz.
 * A helyszíni kiszolgálók vész-helyreállítási sebessége jelentősen felgyorsulhat.
 * Az Azure-fájlmegosztás (szinkronizáláson kívül) által közvetlenül végrehajtott módosítások észlelhetők és gyorsabban szinkronizálhatók.
@@ -47,24 +47,22 @@ A következő korlátozásokkal és ajánlott eljárásokkal határozhatja meg, 
 * A telepített Azure File Sync ügynökkel rendelkező kiszolgálók akár 30 Azure-fájlmegosztás szinkronizálásával is szinkronizálhatók.
 * Egy Azure-fájlmegosztás üzembe helyezése egy Storage-fiókon belül történik. Ennek köszönhetően a Storage-fiók egy méretezési célt szolgál a teljesítményszámlálók, például a IOPS és az átviteli sebesség számára.
 
-  Két standard (nem prémium szintű) Azure-fájlmegosztás elméletileg felhasználhatja a Storage-fiók által kézbesíthető maximális teljesítményt. Ha azt tervezi, hogy csak Azure File Sync csatol a fájlmegosztás számára, a több Azure-fájlmegosztás ugyanabba a Storage-fiókba való csoportosítása nem okoz problémát. Tekintse át az Azure fájlmegosztás teljesítményének céljait, és tekintse át a releváns mérőszámokat.
+  Egy standard szintű Azure-fájlmegosztás elméletileg telített lehet a Storage-fiók által kézbesíthető maximális teljesítményre. Ha több megosztást helyez át egyetlen Storage-fiókba, akkor a IOPS és az átviteli sebesség közös készletét hozza létre ezen megosztások számára. Ha azt tervezi, hogy csak Azure File Sync csatol a fájlmegosztás számára, a több Azure-fájlmegosztás ugyanabba a Storage-fiókba való csoportosítása nem okoz problémát. Tekintse át az Azure fájlmegosztás teljesítményének céljait, és tekintse át a releváns mérőszámokat. Ezek a korlátozások nem vonatkoznak a Premium Storage szolgáltatásra, ahol az egyes megosztások esetében a teljesítmény explicit módon van kiépítve és garantált.
 
-  Ha azt tervezi, hogy az Azure-ban natív módon fogja használni az Azure-fájlmegosztást, akkor előfordulhat, hogy az Azure-fájlmegosztás nagyobb teljesítményre van szüksége. Ha az ilyen típusú használat egy lehetőség, még a jövőben is, majd az Azure-fájlmegosztás a saját Storage-fiókjához való leképezése a legmegfelelőbb.
-* Egy Azure-régióban legfeljebb 250 Storage-fiók adható meg előfizetésre.
+  Ha azt tervezi, hogy az Azure-ban natív módon fogja használni az Azure-fájlmegosztást, akkor előfordulhat, hogy az Azure-fájlmegosztás nagyobb teljesítményre van szüksége. Ha ez a fajta használati lehetőség a jövőben is lehetséges, akkor a saját Storage-fiókjában egyetlen standard Azure-fájlmegosztás létrehozása a legmegfelelőbb.
+* Azure-régiónként legfeljebb 250 Storage-fiók adható meg.
 
 > [!TIP]
 > Ezekkel az információkkal gyakran szükségessé válik, hogy a köteteken több legfelső szintű mappát egy közös, új gyökérkönyvtárba csoportosítson. Ezután szinkronizálja ezt az új gyökérkönyvtárat és a hozzá tartozó összes mappát egyetlen Azure-fájlmegosztás számára. Ez a módszer lehetővé teszi, hogy kiszolgálónként legfeljebb 30 Azure fájlmegosztás-szinkronizáláson belül maradjon.
 >
-> A közös gyökér alá tartozó csoportosítás nem befolyásolja az adataihoz való hozzáférést. Az ACL-ek maradnak. Csak a megosztási útvonalakat (például az SMB-vagy NFS-megosztásokat) kell módosítania, hogy azok a kiszolgálói mappákban legyenek, amelyeket mostantól egy közös gyökérben módosítanak. Semmi más nem változik.
+> A közös gyökér alá tartozó csoportosítás nem befolyásolja az adataihoz való hozzáférést. Az ACL-ek maradnak. Csak úgy kell módosítania a megosztási útvonalakat (például az SMB-vagy NFS-megosztásokat), hogy a helyi kiszolgáló mappáiban módosult a közös gyökér. Semmi más nem változik.
 
 > [!IMPORTANT]
-> A Azure File Sync legfontosabb méretezési vektora a szinkronizálandó elemek (fájlok és mappák) száma.
+> A Azure File Sync legfontosabb méretezési vektora a szinkronizálandó elemek (fájlok és mappák) száma. További részletekért tekintse át a [Azure file Sync méretezési célokat](../articles/storage/files/storage-files-scale-targets.md#azure-file-sync-scale-targets) .
 
-Azure File Sync támogatja akár 100 000 000 elem szinkronizálását egyetlen Azure-fájlmegosztás számára. Ez a korlát túlléphető, és csak azt jeleníti meg, hogy az Azure File Sync csapat rendszeresen tesztelje a teszteket.
+Az ajánlott eljárás az, hogy a szinkronizálási hatókörben lévő elemek száma ne legyen alacsony. Ez fontos szempont a mappák Azure-fájlmegosztás számára történő leképezésében. A Azure File Sync egy megosztáson 100 000 000 elemekkel (fájlok és mappák) tesztelték. Azonban általában a legjobb, ha az 20 000 000-es vagy a 30 000 000-os elemek számát egyetlen megosztásban tartja. Ossza szét a névteret több megosztásra, ha elkezdi túllépni ezeket a számokat. Ha nagyjából a számok alatt marad, továbbra is csoportosíthatja több helyszíni megosztást ugyanabba az Azure-fájlmegosztásba. Ezzel a gyakorlattal megadhatja a növekedéshez szükséges helyet.
 
-Az ajánlott eljárás az, hogy a szinkronizálási hatókörben lévő elemek száma ne legyen alacsony. Ez fontos szempont a mappák Azure-fájlmegosztás számára történő leképezésében. Az Azure-fájlmegosztás és a Azure File Sync az 100 000 000 elemekkel (fájlokkal és mappákkal) történő tesztelését az ajánlott eljárás szerint a 20 000 000 vagy 30 000 000 alatti szám egyetlen megosztáson való megtartására próbálja meg. Ossza szét a névteret több megosztásra, ha elkezdi túllépni ezeket a számokat. Ha nagyjából a számok alatt marad, továbbra is csoportosíthatja több helyszíni megosztást ugyanabba az Azure-fájlmegosztásba. Ezzel a gyakorlattal megadhatja a növekedéshez szükséges helyet.
-
-Ebben az esetben lehetséges, hogy a mappák egy halmaza képes logikailag szinkronizálni ugyanazt az Azure-fájlmegosztást (a korábban említett új, közös gyökérmappa-megközelítés használatával). Előfordulhat azonban, hogy továbbra is jobb lesz a mappák újracsoportosítása, például egy Azure-fájlmegosztás helyett kettőre szinkronizálva. Ezzel a módszerrel megtarthatja, hogy a fájlmegosztás hány fájlt és mappát használjon a kiszolgálón.
+Ebben az esetben lehetséges, hogy a mappák egy halmaza képes logikailag szinkronizálni ugyanazt az Azure-fájlmegosztást (a korábban említett új, közös gyökérmappa-megközelítés használatával). Előfordulhat azonban, hogy továbbra is jobb lesz a mappák újracsoportosítása, például egy Azure-fájlmegosztás helyett kettőre szinkronizálva. Ezzel a módszerrel megtarthatja, hogy a fájlmegosztás hány fájlt és mappát használjon a kiszolgálón. A helyszíni megosztásokat és a szinkronizálást több helyszíni kiszolgálón is elvégezheti, így további 30 további Azure-fájlmegosztás esetén is szinkronizálhatja a szolgáltatást.
 
 #### <a name="create-a-mapping-table"></a>Leképezési tábla létrehozása
 

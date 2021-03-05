@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 2/5/2021
-ms.openlocfilehash: 3cc29e0bd806ab76c4980128df5a89761e465fe7
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: d1a0873552ac9043d8f584f38ecd41c5e8543489
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988383"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202757"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Egyéni besorolások az Azure hatáskörébe 
 
@@ -91,24 +91,50 @@ Egyéni besorolási szabály létrehozása:
 
     :::image type="content" source="media/create-a-custom-classification-and-classification-rule/newclassificationrule.png" alt-text="Új besorolási szabály hozzáadása" border="true":::
 
-5. Megnyílik az **új besorolási szabály** párbeszédpanel. Adja meg az új szabály konfigurációs adatait.
+5. Megnyílik az **új besorolási szabály** párbeszédpanel. Töltse ki a mezőket, és döntse el, hogy **reguláris kifejezési szabályt** vagy **szótári szabályt** szeretne-e létrehozni.
 
-    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/createclassificationrule.png" alt-text="Új besorolási szabály létrehozása" border="true":::
+    |Mező     |Leírás  |
+    |---------|---------|
+    |Név   |    Kötelező. A maximális érték 100 karakter.    |
+    |Leírás      |Választható. A maximális érték 256 karakter.    |
+    |Besorolás neve    | Kötelező. A legördülő listából válassza ki a besorolás nevét, hogy a rendszer a képolvasót alkalmazza, ha egyezést talál.        |
+    |Állam   |  Kötelező. A beállítások engedélyezve vagy le vannak tiltva. Az alapértelmezés szerint engedélyezve van.    |
 
-|Mező     |Leírás  |
-|---------|---------|
-|Név   |    Kötelező. A maximális érték 100 karakter.    |
-|Description      |Választható. A maximális érték 256 karakter.    |
-|Besorolás neve    | Kötelező. A legördülő listából válassza ki a besorolás nevét, hogy a rendszer a képolvasót alkalmazza, ha egyezést talál.        |
-|Állam   |  Kötelező. A beállítások engedélyezve vagy le vannak tiltva. Az alapértelmezés szerint engedélyezve van.    |
-|Adatminta    |Választható. Egy reguláris kifejezés, amely az adatmezőben tárolt adatértéket jelöli. A korlát nagyon nagy. Az előző példában az adatmintázatok a szó szerint egy alkalmazotti AZONOSÍTÓhoz vannak tesztelve `Employee{GUID}` .  |
-|Oszlop mintája    |Választható. Egy reguláris kifejezés, amely az egyező oszlop nevét jelöli. A korlát nagyon nagy.          |
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/create-new-classification-rule.png" alt-text="Új besorolási szabály létrehozása" border="true":::
 
-Az **adatminta** területen két lehetőség közül választhat:
+### <a name="creating-a-regular-expression-rule"></a>Reguláris kifejezési szabály létrehozása
 
-- **Eltérő egyezési küszöbérték**: az oszlopokban a képolvasó által az adatmintázat futtatása előtt megtalált különböző adatértékek teljes száma. A javasolt érték 8. Ez az érték 2 és 32 közötti tartományba állítható be manuálisan. A rendszernek ezt az értéket kell megadnia ahhoz, hogy az oszlop elegendő adatmennyiséget tartalmazzon a képolvasó számára a pontos besoroláshoz. Például egy olyan oszlop, amely az 1 értéket tartalmazó több sort tartalmaz, nem lesz besorolva. Azokat az oszlopokat, amelyek egy értéket tartalmazó sort tartalmaznak, és a sorok többi része null értékű, nem lesz besorolva. Ha több mintázatot ad meg, ez az érték mindenre vonatkozik.
+1. Reguláris kifejezési szabály létrehozásakor a következő képernyő jelenik meg. Feltölthet egy fájlt, amelyet a rendszer a szabályhoz **javasolt regex-minták létrehozásához** fog használni.
 
-- **Minimális egyezési küszöb**: ezzel a beállítással megadható, hogy az adatértékek hány százalékos aránya legyen a képolvasó által az alkalmazandó besoroláshoz. A javasolt érték 60%. Ennek a beállításnak Körültekintőnek kell lennie. Ha csökkenti a 60% alatti szintet, akkor előfordulhat, hogy hamis pozitív besorolásokat vezet be a katalógusba. Ha több Adatmintázatot is megad, ez a beállítás le van tiltva, és az érték 60%-on lesz javítva.
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/create-new-regex-rule.png" alt-text="Új regex-szabály létrehozása" border="true":::
+
+1. Ha úgy dönt, hogy létrehoz egy javasolt regex-mintát, a fájl feltöltése után válasszon ki egyet a javasolt minták közül, majd kattintson a **Hozzáadás a mintákhoz** lehetőségre a javasolt adattípusok és az oszlopok mintáinak használatához. Megadhatja a javasolt mintákat, vagy a fájl feltöltése nélkül is beírhatja saját mintáit.
+
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/suggested-regex.png" alt-text="Javasolt regex készítése" border="true":::
+
+    |Mező     |Leírás  |
+    |---------|---------|
+    |Adatminta    |Választható. Egy reguláris kifejezés, amely az adatmezőben tárolt adatértéket jelöli. A korlát nagyon nagy. Az előző példában az adatmintázatok a szó szerint egy alkalmazotti AZONOSÍTÓhoz vannak tesztelve `Employee{GUID}` .  |
+    |Oszlop mintája    |Választható. Egy reguláris kifejezés, amely az egyező oszlop nevét jelöli. A korlát nagyon nagy.          |
+
+1. Az **adatminta** alatt két küszöbérték állítható be:
+
+    - **Eltérő egyezési küszöbérték**: az oszlopokban a képolvasó által az adatmintázat futtatása előtt megtalált különböző adatértékek teljes száma. A javasolt érték 8. Ez az érték 2 és 32 közötti tartományba állítható be manuálisan. A rendszernek ezt az értéket kell megadnia ahhoz, hogy az oszlop elegendő adatmennyiséget tartalmazzon a képolvasó számára a pontos besoroláshoz. Például egy olyan oszlop, amely az 1 értéket tartalmazó több sort tartalmaz, nem lesz besorolva. Azokat az oszlopokat, amelyek egy értéket tartalmazó sort tartalmaznak, és a sorok többi része null értékű, nem lesz besorolva. Ha több mintázatot ad meg, ez az érték mindenre vonatkozik.
+
+    - **Minimális egyezési küszöb**: ezzel a beállítással megadhatja, hogy a különböző adatértékek milyen minimális százalékos arányban legyenek meghatározva egy olyan oszlopban, amelyet a lapolvasónak kell megkeresnie az alkalmazandó besoroláshoz. A javasolt érték 60%. Ennek a beállításnak Körültekintőnek kell lennie. Ha csökkenti a 60% alatti szintet, akkor előfordulhat, hogy hamis pozitív besorolásokat vezet be a katalógusba. Ha több Adatmintázatot is megad, ez a beállítás le van tiltva, és az érték 60%-on lesz javítva.
+
+1. Most ellenőrizheti a szabályt, és **létrehozhatja** azt.
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/verify-rule.png" alt-text="Szabály ellenőrzése a létrehozás előtt" border="true":::
+
+### <a name="creating-a-dictionary-rule"></a>Szótári szabály létrehozása
+
+1.  Ha szótári szabályt hoz létre, a következő képernyő jelenik meg. Töltsön fel egy olyan fájlt, amely az egyetlen oszlopban létrehozott besorolás összes lehetséges értékét tartalmazza.
+
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-rule.png" alt-text="Szótári szabály létrehozása" border="true":::
+
+1.  A szótár létrehozása után módosíthatja a különböző egyeztetési és a minimális egyezési küszöbértékeket, és elküldheti a szabályt.
+
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-generated.png" alt-text="Szótári szabály létrehozása" border="true":::
 
 ## <a name="next-steps"></a>Következő lépések
 

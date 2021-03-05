@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 739e1dea23f87403a4aded50d5c9f254a55c64cc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2d4286cc8bc08eaf7d0b376a8b7789c8c8db183d
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737613"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202637"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Filesszal kapcsolatos gyakori kérdések (GYIK)
 A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az iparági szabványnak megfelelő [SMB protokollon](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) és a [Network File System (NFS) protokollon](https://en.wikipedia.org/wiki/Network_File_System) (előzetes verzió) keresztül érhető el. Az Azure-fájlmegosztás párhuzamosan csatlakoztatható a Felhőbeli vagy a Windows, Linux és macOS rendszerű helyszíni környezetekhez. Az Azure-fájlmegosztás a Windows Server rendszerű gépeken is gyorsítótárazható a Azure File Sync használatával a gyors eléréshez, ahol az adott adatforgalomhoz közeledik.
@@ -119,26 +119,38 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 
 * <a id="sizeondisk-versus-size"></a>
   **Miért nem egyezik *meg* a fájl mérete a *méret tulajdonsággal* a Azure file Sync használata után?**  
-  Lásd: a [felhőalapú rétegek ismertetése](storage-sync-cloud-tiering.md#sizeondisk-versus-size).
+  Lásd: [Azure file Sync felhőalapú rétegek megismerése](storage-sync-cloud-tiering-overview.md#tiered-vs-locally-cached-file-behavior).
 
 * <a id="is-my-file-tiered"></a>
   **Honnan tudhatom meg, hogy van-e lépcsőzetesen egy fájl?**  
-  Lásd: a [felhőalapú rétegek ismertetése](storage-sync-cloud-tiering.md#is-my-file-tiered).
+  Lásd: [Azure file Sync rétegű fájlok kezelése](storage-sync-how-to-manage-tiered-files.md#how-to-check-if-your-files-are-being-tiered).
 
 * <a id="afs-recall-file"></a>**A használni kívánt fájlt a rendszer lépcsőzetesen felhasználta. Hogyan hívhatom fel a fájlt a lemezre helyileg való használatra?**  
-  Lásd: a [felhőalapú rétegek ismertetése](storage-sync-cloud-tiering.md#afs-recall-file).
+  Lásd: [Azure file Sync rétegű fájlok kezelése](storage-sync-how-to-manage-tiered-files.md#how-to-recall-a-tiered-file-to-disk).
 
 * <a id="afs-force-tiering"></a>
   **Hogyan egy fájl vagy könyvtár lépcsőzetes kikényszerítését?**  
-  Lásd: a [felhőalapú rétegek ismertetése](storage-sync-cloud-tiering.md#afs-force-tiering).
+  Lásd: [Azure file Sync rétegű fájlok kezelése](storage-sync-how-to-manage-tiered-files.md#how-to-force-a-file-or-directory-to-be-tiered).
 
 * <a id="afs-effective-vfs"></a>
   **Hogyan történik a *kötetek szabad területének* értelmezése, ha több kiszolgálói végpontom van egy köteten?**  
-  Lásd: a [felhőalapú rétegek ismertetése](storage-sync-cloud-tiering.md#afs-effective-vfs).
+  Lásd: [Azure file Sync felhő-rétegek kiválasztásának házirendje](storage-sync-cloud-tiering-policy.md#multiple-server-endpoints-on-a-local-volume).
   
 * <a id="afs-tiered-files-tiering-disabled"></a>
   **Letiltottam a Felhőbeli letiltást, miért vannak a kiszolgálói végpontok helyen található, lépcsőzetes fájlok?**  
-  Lásd: a [felhőalapú rétegek ismertetése](storage-sync-cloud-tiering.md#afs-tiering-disabled).
+    A kiszolgálói végpont helyének két oka lehet a többrétegű fájlok:
+
+    - Ha új kiszolgálói végpontot ad hozzá egy meglévő szinkronizálási csoporthoz, ha a kezdeti letöltési mód beállításnál a névtér felidézése vagy a csak a névtér felidézése lehetőséget választja, akkor a fájlok a következőként jelennek meg, amíg helyileg le nem töltik. Ennek elkerüléséhez jelölje be a rétegek közötti fájlok elkerülése lehetőséget a kezdeti letöltési módhoz. A fájlok manuális felidézéséhez használja a Call [-StorageSyncFileRecall](storage-sync-how-to-manage-tiered-files.md#how-to-recall-a-tiered-file-to-disk) parancsmagot.
+
+    - Ha a felhő-rétegek engedélyezve lettek a kiszolgálói végponton, majd letiltották, akkor a fájlok addig lesznek feldolgozva, amíg el nem éri őket.
+
+* <a id="afs-tiered-files-not-showing-thumbnails"></a>
+  **A Windows Intézőben miért nem láthatók miniatűr vagy előzetes verziók a többrétegű fájlok számára?**  
+    A többhelyes fájlok esetében a miniatűrök és az előzetes verziók nem láthatók a kiszolgálói végponton. Ez a viselkedés várható, mivel a Windows miniatűr gyorsítótár funkciója szándékosan kihagyja a fájlok olvasását az offline attribútummal. Ha engedélyezve van a felhőalapú rétegek beolvasása, a többoldalas fájlok olvasásával le lehet tölteni őket (visszahívásra).
+
+    Ez a viselkedés nem jellemző a Azure File Syncre, a Windows Intéző megjeleníti a "szürke X" értéket minden olyan fájlnál, amelynél az offline attribútum be van állítva. Az X ikon jelenik meg, amikor SMB-kapcsolaton keresztül fér hozzá a fájlokhoz. A viselkedés részletes ismertetését a következő témakörben találja: [https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
+
+    A többplatformos fájlok kezelésével kapcsolatos kérdéseit lásd: [a többplatformos fájlok kezelése](storage-sync-how-to-manage-tiered-files.md).
 
 * <a id="afs-files-excluded"></a>
   **Mely fájlokat és mappákat automatikusan kizárja a Azure File Sync?**  
@@ -274,7 +286,7 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
     2.  A "Active Directory tartományok és megbízhatósági kapcsolatok" konzol megnyitása
     3.  Kattintson a jobb gombbal arra a tartományra, amelyhez el szeretné érni a fájlmegosztást, majd kattintson a "Megbízhatóságok" fülre, és válassza az erdő B tartomány lehetőséget a kimenő Megbízhatóságok területen. Ha nem konfigurálta a megbízhatóságot a két erdő között, először a megbízhatóságot kell beállítania
     4.  Kattintson a "tulajdonságok..." elemre. Ezután a "név utótagjának útválasztása"
-    5.  Ellenőrizze, hogy a "*. file.core.windows.net" surffix megjelenik-e. Ha nem, kattintson a frissítés gombra.
+    5.  Ellenőrizze, hogy megjelenik-e a "*. file.core.windows.net" utótag. Ha nem, kattintson a frissítés gombra.
     6.  Válassza a "*. file.core.windows.net" lehetőséget, majd kattintson az "engedélyezés" és az "alkalmaz" gombra.
 
 * <a id=""></a>

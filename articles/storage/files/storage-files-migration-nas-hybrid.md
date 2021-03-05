@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 2d531edeeae9e0dd7e392cae66d9e4d41c68dfa2
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 73dc2520fbe970123a52133cb00909fea190610a
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882263"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202671"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migrálás hálózati csatlakoztatott tárolóból (NAS) hibrid felhőbe történő központi telepítésre Azure File Sync
 
@@ -45,7 +45,7 @@ Ahogy azt a Azure Files [áttelepítésének áttekintése című cikkben](stora
 * Hozzon létre egy Windows Server 2019-at a minimális 2012R2 virtuális gép vagy fizikai kiszolgálóként. A Windows Server feladatátvételi fürt is támogatott.
 * Hozzon létre vagy adjon hozzá közvetlenül csatlakoztatott tárolót (a DAS-t a NAS-hez képest, amely nem támogatott).
 
-    Ha az Azure file syncs [Cloud rétegű](storage-sync-cloud-tiering.md) funkciót használja, a kiépített tárterület mérete kisebb lehet, mint amit jelenleg használ a NAS-berendezésben.
+    Ha az Azure file syncs [Cloud rétegű](storage-sync-cloud-tiering-overview.md) funkciót használja, a kiépített tárterület mérete kisebb lehet, mint amit jelenleg használ a NAS-berendezésben.
     Ha azonban a nagyobb NAS-területről másolja a fájlokat a kisebb Windows Server-kötetre egy későbbi fázisban, akkor a kötegekben kell működnie:
 
     1. Helyezze át a lemezre illeszkedő fájlok készletét
@@ -105,7 +105,7 @@ Futtassa az első helyi másolatot a Windows Server célmappájában:
 
 A következő RoboCopy parancs a NAS-tárolóból másolja a fájlokat a Windows Server célmappába. A Windows Server szinkronizálja az Azure-fájlmegosztás (ok) val. 
 
-Ha kevesebb tárterületet telepített a Windows-kiszolgálón, mint amennyit a fájlok felvesznek a NAS-készülékre, akkor konfigurálta a Felhőbeli adatmennyiséget. Mivel a helyi Windows Server-kötet betelik, a [Felhőbeli rétegek](storage-sync-cloud-tiering.md) beindulnak, és a már sikeresen szinkronizált fájlokat. A Felhőbeli rétegek létrehozásához elegendő hely áll rendelkezésre, hogy továbbra is a NAS-berendezésből folytassa a másolást. A Felhőbeli rétegek ellenőrzése óránként egyszer megtekintheti, hogy mi szinkronizált, és szabadítson fel lemezterületet a 99%-os mennyiségű szabad terület eléréséhez.
+Ha kevesebb tárterületet telepített a Windows-kiszolgálón, mint amennyit a fájlok felvesznek a NAS-készülékre, akkor konfigurálta a Felhőbeli adatmennyiséget. Mivel a helyi Windows Server-kötet betelik, a [Felhőbeli rétegek](storage-sync-cloud-tiering-overview.md) beindulnak, és a már sikeresen szinkronizált fájlokat. A Felhőbeli rétegek létrehozásához elegendő hely áll rendelkezésre, hogy továbbra is a NAS-berendezésből folytassa a másolást. A Felhőbeli rétegek ellenőrzése óránként egyszer megtekintheti, hogy mi szinkronizált, és szabadítson fel lemezterületet a 99%-os mennyiségű szabad terület eléréséhez.
 Lehetséges, hogy a RoboCopy a fájlokat gyorsabban helyezi át, mint amennyire a felhőbe és a szintjére tud szinkronizálni, így a helyi lemezterület nem működik. A RoboCopy sikertelen lesz. Azt javasoljuk, hogy a megosztásokat egy olyan sorozatban hajtsa meg, amely meggátolja a működését. Ha például nem indítja el a RoboCopy-feladatokat az összes megosztáshoz, vagy csak olyan megosztásokat helyez át, amelyek megfelelnek a Windows Server jelenlegi szabad területének, néhányat említve.
 
 ```console
@@ -208,13 +208,13 @@ Elvégezte a megosztások/csoportok egy közös gyökerébe vagy kötetbe való 
 A másolatok közül néhányat párhuzamosan is futtathat. Javasoljuk, hogy egyszerre egy Azure-fájlmegosztás hatókörét dolgozza fel.
 
 > [!WARNING]
-> Miután áthelyezte az összes olyan hálózati kiszolgálót a Windows Serverre, amelyről az áttelepítés befejeződött: térjen vissza a Azure Portal **minden** _ szinkronizálási csoportba, és állítsa be a Felhőbeli kötet szabad területének százalékos értékét a gyorsítótár kihasználtságára alkalmasabb értékre, azaz 20%-ot. 
+> Ha áthelyezte az összes adatforrást a Windows Server rendszerbe, és az áttelepítés befejeződött: térjen vissza a Azure Portal ***összes***  szinkronizálási csoportjához, és állítsa be a Felhőbeli kötet szabad területének százalékos értékét a gyorsítótár kihasználtságára alkalmasabb értékre, azaz 20%-ot. 
 
 A felhő-rétegek kötetének szabad területére vonatkozó házirend olyan kötet szintjén működik, amelynek több kiszolgálói végpontja is szinkronizálva van. Ha a szabad területet még egy kiszolgálói végponton is módosítani szeretné, a szinkronizálás továbbra is alkalmazza a legszigorúbb szabályt, és megkísérli a 99%-os szabad lemezterület fenntartását, így a helyi gyorsítótár nem végezhető el a várt módon. Kivéve, ha a célja, hogy csak a ritkán használt, archivált adatok tárolására szolgáló kötet névterét adja meg, és egy másik forgatókönyvben a tárterület többi részét is kiszolgálja.
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-A legvalószínűbb probléma az, hogy a RoboCopy parancs a Windows Server oldalon a "Volume Full" * értékkel meghiúsul. A felhő-rétegek a szinkronizált helyi Windows Server-lemezről óránként egyszer elürítik a tartalmat. A cél az, hogy eléri a 99%-os szabad területet a köteten.
+A legvalószínűbb probléma az, hogy a RoboCopy parancs a Windows Server oldalon a *"teljes kötet"* művelettel meghiúsul. A felhő-rétegek a szinkronizált helyi Windows Server-lemezről óránként egyszer elürítik a tartalmat. A cél az, hogy eléri a 99%-os szabad területet a köteten.
 
 A szinkronizálási folyamat és a Felhőbeli rétegek felszabadítása szabad lemezterületet szabadít fel. Megfigyelheti, hogy a Fájlkezelőben a Windows Serveren.
 
@@ -222,7 +222,7 @@ Ha a Windows-kiszolgáló elegendő rendelkezésre álló kapacitással rendelke
 
 A következő szakaszban található hivatkozásra kattintva megtudhatja, hogyan hibaelhárítási Azure File Sync problémákat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure-fájlmegosztás és a Azure File Sync. A következő cikkek segítséget nyújtanak a speciális beállítások, az ajánlott eljárások és a hibaelhárítással kapcsolatos súgó megismerésében. Ezek a cikkek szükség szerint az [Azure file share-dokumentációra](storage-files-introduction.md) mutató hivatkozást tartalmaznak.
 

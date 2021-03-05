@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 502776e85eaafa46fb2b5ce45ca3bd937e303566
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a512151dce336de42da78232ca30845dae754db3
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366258"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202722"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 és 8600 Migrálás Azure File Syncre
 
@@ -637,6 +637,6 @@ A Migrálás befejeződött.
 ## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg [Azure file Syncával: aka.MS/AFS](./storage-sync-files-planning.md).
-* Ismerje meg a [felhőre vonatkozó szintű](storage-sync-cloud-tiering.md) házirendek rugalmasságát.
+* Ismerje meg a [felhőre vonatkozó szintű](storage-sync-cloud-tiering-overview.md) házirendek rugalmasságát.
 * Az Azure-fájlmegosztás [Azure Backupának engedélyezése](../../backup/backup-afs.md#configure-backup-from-the-file-share-pane) a pillanatképek ütemezett és a biztonsági mentési adatmegőrzési ütemtervek definiálásához.
 * Ha a Azure Portal úgy látja, hogy egyes fájlok véglegesen nem szinkronizálhatók, tekintse át a [hibaelhárítási útmutatót](storage-sync-files-troubleshoot.md) a problémák megoldásához szükséges lépésekért.

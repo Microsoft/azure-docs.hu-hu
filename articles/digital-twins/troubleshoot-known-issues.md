@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 49c790ae92537ab72fb9848ed4e57e222ef11d79
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: d7d97ca1eb590fb96789d439243dd04d6143a960
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545683"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102203147"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Az Azure Digital Twins ismert problémái
 
@@ -24,7 +24,7 @@ Ez a cikk az Azure Digital Twins szolgáltatással kapcsolatos ismert problémá
 
 | Ez hatással van rám? | Ok | Feloldás |
 | --- | --- | --- |
-| Az &nbsp; Azure &nbsp; Digital &nbsp; Twins-ban ez a következő parancsokra van hatással:<br><br>`az dt route`<br><br>`az dt model`<br><br>`az dt twin` | Ez az Cloud Shell ismert problémájának eredménye: a [*token Lekérése Cloud Shell időszakosan meghiúsul az 400-es ügyféllel kapcsolatos hiba miatt: hibás kérelem*](https://github.com/Azure/azure-cli/issues/11749).<br><br>Ez problémát jelent az Azure Digital ikrek instance Auth-tokenekkel és a Cloud Shell alapértelmezett [felügyelt identitás](../active-directory/managed-identities-azure-resources/overview.md) -alapú hitelesítésével kapcsolatban. <br><br>Ez nem befolyásolja az Azure Digital Twins parancsait a `az dt` vagy a `az dt endpoint` parancssorból, mert más típusú hitelesítési tokent használnak (Azure Resource Manager alapján), amely nem rendelkezik a Cloud Shell felügyelt identitás-hitelesítésével. | Ennek egyik módja, ha újra szeretné futtatni a `az login` parancsot a Cloud Shellban, és végrehajtja a következő bejelentkezési lépéseket. Ez a folyamat a felügyelt identitások hitelesítésén kívülre vált, ami elkerüli a probléma gyökerét. Ezután futtassa újra a parancsot.<br><br>Azt is megteheti, hogy megnyithatja a Cloud Shell ablaktáblát a Azure Portalban, és elvégezheti a Cloud Shell munkát.<br>:::image type="content" source="media/troubleshoot-known-issues/portal-launch-icon.png" alt-text="A Cloud Shell ikon képe a Azure Portal ikon sávján" lightbox="media/troubleshoot-known-issues/portal-launch-icon.png":::<br><br>Végül egy másik megoldás, ha [telepíti az Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) -t a gépére, így helyileg is futtathatja az Azure CLI-parancsokat. A helyi CLI nem tapasztalja ezt a problémát. |
+| Az &nbsp; Azure &nbsp; Digital &nbsp; Twins-ban ez a következő parancsokra van hatással:<br><br>`az dt route`<br><br>`az dt model`<br><br>`az dt twin` | Ez az Cloud Shell ismert problémájának eredménye: a [*token Lekérése Cloud Shell időszakosan meghiúsul az 400-es ügyféllel kapcsolatos hiba miatt: hibás kérelem*](https://github.com/Azure/azure-cli/issues/11749).<br><br>Ez problémát jelent az Azure Digital ikrek instance Auth-tokenekkel és a Cloud Shell alapértelmezett [felügyelt identitás](../active-directory/managed-identities-azure-resources/overview.md) -alapú hitelesítésével kapcsolatban. <br><br>Ez nem befolyásolja az Azure Digital Twins parancsait a `az dt` vagy a `az dt endpoint` parancssorból, mert más típusú hitelesítési tokent használnak (Azure Resource Manager alapján), amely nem rendelkezik a Cloud Shell felügyelt identitás-hitelesítésével. | Ennek egyik módja, ha újra szeretné futtatni a `az login` parancsot a Cloud Shellban, és végrehajtja a következő bejelentkezési lépéseket. Ez a folyamat a felügyelt identitások hitelesítésén kívülre vált, ami elkerüli a probléma gyökerét. Ezután futtassa újra a parancsot.<br><br>Azt is megteheti, hogy megnyithatja a Cloud Shell ablaktáblát a Azure Portalban, és elvégezheti a Cloud Shell munkát.<br>:::image type="content" source="media/troubleshoot-known-issues/portal-launch-icon.png" alt-text="A Cloud Shell ikon képe a Azure Portal ikon sávján" lightbox="media/troubleshoot-known-issues/portal-launch-icon.png":::<br><br>Végül egy másik megoldás, ha [telepíti az Azure CLI](/cli/azure/install-azure-cli) -t a gépére, így helyileg is futtathatja az Azure CLI-parancsokat. A helyi CLI nem tapasztalja ezt a problémát. |
 
 
 ## <a name="missing-role-assignment-after-scripted-setup"></a>A szerepkör-hozzárendelés hiányzik a parancsfájlból történő telepítés után
