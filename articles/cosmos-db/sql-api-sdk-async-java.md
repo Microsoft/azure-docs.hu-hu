@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: adca35567499452cf35b9541d3a7caac27b45a0a
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1a9add42026dddeb5ce5ac5fcbcd5b93d109b594
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545485"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216811"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB aszinkron Java SDK az SQL API-hoz: kibocsátási megjegyzések és erőforrások
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -47,12 +47,12 @@ Az SQL API aszinkron Java SDK eltér az SQL API Java SDK-val, mivel aszinkron m�
 | |  |
 |---|---|
 | **SDK letöltése** | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) |
-|**API-dokumentáció** |[Java API-referenciák dokumentációja](/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient?preserve-view=true&view=azure-java-stable) | 
+|**API-dokumentáció** |[Java API-referenciák dokumentációja](/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient) | 
 |**Közreműködés az SDK-val** | [GitHub](https://github.com/Azure/azure-cosmosdb-java) | 
 |**Első lépések** | [Ismerkedés az aszinkron Java SDK-val](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started) | 
 |**Kódminta** | [GitHub](https://github.com/Azure/azure-cosmosdb-java#usage-code-sample)| 
 | **Teljesítménnyel kapcsolatos tippek**| [GitHub-információ](https://github.com/Azure/azure-cosmosdb-java#guide-for-prod)| 
-| **Minimális támogatott futtatókörnyezet**|[JDK 8](/java/azure/jdk/?view=azure-java-stable&preserve-view=true) | 
+| **Minimális támogatott futtatókörnyezet**|[JDK 8](/java/azure/jdk/) | 
 
 [!INCLUDE [Release notes](~/azure-cosmosdb-java-v2/changelog/README.md)]
 ## <a name="faq"></a>GYIK

@@ -9,12 +9,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: subject-monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 5337372b5e996798a5000e1c32ea8e372aa63ed4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3f96549c73c231db63360891dd0705b649097c80
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591779"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218098"
 ---
 # <a name="monitoring-azure-blob-storage"></a>Az Azure Blob Storage figyelése
 
@@ -128,7 +128,7 @@ Ha úgy dönt, hogy a naplókat egy Event hub-ba továbbítja, akkor az Event hu
 
 #### <a name="send-logs-to-azure-log-analytics"></a>Naplók elküldése az Azure Log Analyticsba
 
-1. Jelölje be a **küldés log Analytics** jelölőnégyzetet, válassza ki a log Analytics-munkaterületet, majd kattintson a, majd a **Mentés** gombra.
+1. Jelölje be a **küldés log Analytics** jelölőnégyzetet, válasszon ki egy log Analytics-munkaterületet, majd kattintson a **Save (Mentés** ) gombra.
 
    > [!div class="mx-imgBorder"]   
    > ![Diagnosztikai beállítások lap log Analytics](media/monitor-blob-storage/diagnostic-logs-settings-pane-log-analytics.png)

@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.custom: template-concept
-ms.openlocfilehash: 8a9ed564012e8b530436152d931f5a5f6470ff98
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: d0cdabb3b22d642a7903810181106b09c549e1a2
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098366"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218162"
 ---
 # <a name="azure-percept-ai-models"></a>Azure Percept AI-modellek
 
@@ -29,9 +29,9 @@ Az Azure Percept Studio a következő alkalmazásokhoz tartalmaz minta modelleke
 
 Az előre betanított modellek esetében nincs szükség kódolási vagy betanítási adatgyűjtésre. Egyszerűen üzembe helyezheti a kívánt modellt az Azure Percept DK-be a portálon, és megnyithatja a fejlesztői készlet video streamjét, hogy megtekintse a modellen alapuló műveletet. A Model következtetési telemetria az [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer/releases) eszköz használatával is elérhetők.
 
-## <a name="pre-built-solutions"></a>Előre elkészített megoldások
+## <a name="reference-solutions"></a>Referenciamegoldások
 
-A [felhasználók észlelésére szolgáló, előre elkészített térbeli elemzési megoldás](https://github.com/george-moore/Santa-Cruz-AI-App) is elérhető. Az előre elkészített megoldás egy nyílt forráskódú AI-alkalmazás, amely a felhasználó által megadott zóna-belépési/kilépési eseményekkel rendelkező, Edge-alapú személyek számára biztosít. A helyszíni peremhálózati eszköz videó-és AI-kimenete egressed, és az Azure-webhelyként futó felhasználói felülettel [Azure Data Lake](https://azure.microsoft.com/solutions/data-lake/). Az AI-következtetést egy nyílt forráskódú AI-modell nyújtja a személyek észlelésére.
+A rendszer szintén elérhetővé teszi A [felhasználók számlálására szolgáló hivatkozási megoldást](https://github.com/microsoft/Azure-Percept-Reference-Solutions/tree/main/people-detection-app) . Ez a hivatkozási megoldás egy nyílt forráskódú AI-alkalmazás, amely a felhasználó által megadott zóna-belépési/kilépési eseményekkel rendelkező, Edge-alapú személyek számára biztosít. A helyszíni peremhálózati eszköz videó-és AI-kimenete egressed, és az Azure-webhelyként futó felhasználói felülettel [Azure Data Lake](https://azure.microsoft.com/solutions/data-lake/). Az AI-következtetést egy nyílt forráskódú AI-modell nyújtja a személyek észlelésére.
 
 :::image type="content" source="./media/overview-ai-models/people-detector.gif" alt-text="Térbeli elemzés – előre elkészített megoldás gif.":::
 

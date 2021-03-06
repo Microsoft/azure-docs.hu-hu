@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: mqtt, devx-track-java
-ms.openlocfilehash: 36092e0bb7d0249837d2eaa7898e9231ecb5f5a9
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3e98cfc2d8c7fb8d40c8565a1c620f123ce171ff
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147002"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217839"
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>Feladatok ütemezett és szórása (Java)
 
@@ -39,7 +39,7 @@ Ha többet szeretne megtudni ezekről a képességekről, tekintse meg a követk
 
 Ez az oktatóanyag a következőket mutatja be:
 
-* Hozzon létre egy **lockDoor**nevű közvetlen metódust megvalósító eszközt. Az eszközbeállítások a háttérbeli alkalmazásból is fogadja a kívánt tulajdonságokat.
+* Hozzon létre egy **lockDoor** nevű közvetlen metódust megvalósító eszközt. Az eszközbeállítások a háttérbeli alkalmazásból is fogadja a kívánt tulajdonságokat.
 
 * Hozzon létre egy háttérbeli alkalmazást, amely létrehoz egy feladatot a **lockDoor** Direct metódus több eszközön való meghívásához. Egy másik feladatot a kívánt tulajdonságok frissítései több eszközre küldenek.
 
@@ -54,7 +54,7 @@ Az oktatóanyag végén egy Java-konzolos eszköz-alkalmazás és egy Java-konzo
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Java SE Development Kit 8](/java/azure/jdk/?view=azure-java-stable). Győződjön meg arról, hogy a **Java 8** lehetőséget választja a **hosszú távú támogatás** alatt a JDK 8 letöltéséhez.
+* [Java SE Development Kit 8](/java/azure/jdk/). Győződjön meg arról, hogy a **Java 8** lehetőséget választja a **hosszú távú támogatás** alatt a JDK 8 letöltéséhez.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
@@ -88,7 +88,7 @@ Ebben a szakaszban egy olyan Java-konzol alkalmazást hoz létre, amely a követ
 
 Az alkalmazás létrehozása:
 
-1. A fejlesztői gépen hozzon létre egy **IOT-Java-Schedule-Jobs**nevű üres mappát.
+1. A fejlesztői gépen hozzon létre egy **IOT-Java-Schedule-Jobs** nevű üres mappát.
 
 2. A **IOT-Java-Schedule-Jobs** mappában hozzon létre egy **Schedule-Jobs** nevű Maven-projektet a következő parancs futtatásával a parancssorba. Látható, hogy ez egyetlen hosszú parancs:
 

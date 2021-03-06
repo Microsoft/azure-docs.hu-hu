@@ -7,12 +7,12 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 11/25/2020
 ms.custom: mvc
-ms.openlocfilehash: b82bb9b7684d1119b6b62216b52210845d8f4c67
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 6f2b3d9f38fc04428678a71c9942fc7aa2182dc8
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "98199631"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217193"
 ---
 # <a name="tutorial-deploy-wordpress-app-on-aks-with-azure-database-for-mysql---flexible-server"></a>Oktatóanyag: WordPress-alkalmazás üzembe helyezése az AK-ban Azure Database for MySQL-rugalmas kiszolgálóval
 
@@ -60,7 +60,7 @@ A következő példa kimenete azt mutatja, hogy az erőforráscsoport sikeresen 
 
 ## <a name="create-aks-cluster"></a>AKS-fürt létrehozása
 
-Használja az [az aks create](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-create) parancsot egy AKS-fürt létrehozásához. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal. A művelet végrehajtása több percet is igénybe vehet.
+Használja az [az aks create](/cli/azure/aks#az-aks-create) parancsot egy AKS-fürt létrehozásához. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal. A művelet végrehajtása több percet is igénybe vehet.
 
 ```azurecli-interactive
 az aks create --resource-group wordpress-project --name myAKSCluster --node-count 1 --generate-ssh-keys
@@ -73,13 +73,13 @@ Néhány perc elteltével a parancs befejeződik, és a fürthöz tartozó JSON-
 
 ## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
 
-A Kubernetes-fürtök kezeléséhez a [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), a Kubernetes parancssori ügyfélprogramot kell használnia. Ha Azure Cloud Shellt használ, `kubectl` már telepítve van. A helyi telepítéshez `kubectl` használja az az [AK install-CLI](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-install-cli) parancsot:
+A Kubernetes-fürtök kezeléséhez a [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), a Kubernetes parancssori ügyfélprogramot kell használnia. Ha Azure Cloud Shellt használ, `kubectl` már telepítve van. A helyi telepítéshez `kubectl` használja az az [AK install-CLI](/cli/azure/aks#az-aks-install-cli) parancsot:
 
 ```azurecli-interactive
 az aks install-cli
 ```
 
-Az [aks get-credentials](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-get-credentials) paranccsal konfigurálható`kubectl` a Kubernetes-fürthöz való csatlakozásra. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes CLI-t a használatára.
+Az [az aks get-credentials](/cli/azure/aks#az-aks-get-credentials) paranccsal konfigurálható `kubectl` a Kubernetes-fürthöz való csatlakozásra. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes CLI-t a használatára.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group wordpress-project --name myAKSCluster
@@ -102,7 +102,7 @@ aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 ```
 
 ## <a name="create-an-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL rugalmas kiszolgáló létrehozása
-Hozzon létre egy rugalmas kiszolgálót az az [MySQL flexibilis-Server Create](/cli/azure/mysql/flexible-server?view=azure-cli-latest&preserve-view=true)paranccsal. A következő parancs egy kiszolgálót hoz létre az Azure CLI helyi környezetében lévő szolgáltatás-alapértékek és-értékek használatával:
+Hozzon létre egy rugalmas kiszolgálót az az [MySQL flexibilis-Server Create](/cli/azure/mysql/flexible-server)paranccsal. A következő parancs egy kiszolgálót hoz létre az Azure CLI helyi környezetében lévő szolgáltatás-alapértékek és-értékek használatával:
 
 ```azurecli-interactive
 az mysql flexible-server create --public-access <YOUR-IP-ADDRESS>
@@ -312,7 +312,7 @@ Nyisson meg egy webböngészőt a szolgáltatás külső IP-címére a WordPress
 
 ## <a name="clean-up-the-resources"></a>Az erőforrások eltávolítása
 
-Az Azure-költségek elkerülése érdekében törölje a szükségtelen erőforrásokat.  Ha a fürtre már nincs szükség, az [az group delete](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_delete) paranccsal törölheti az erőforráscsoportot, a tárolószolgáltatást és az összes kapcsolódó erőforrást.
+Az Azure-költségek elkerülése érdekében törölje a szükségtelen erőforrásokat.  Ha a fürtre már nincs szükség, az [az group delete](/cli/azure/group#az_group_delete) paranccsal törölheti az erőforráscsoportot, a tárolószolgáltatást és az összes kapcsolódó erőforrást.
 
 ```azurecli-interactive
 az group delete --name wordpress-project --yes --no-wait
@@ -321,7 +321,7 @@ az group delete --name wordpress-project --yes --no-wait
 > [!NOTE]
 > A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. A szolgáltatásnév eltávolításának lépéseiért lásd [az AKS-szolgáltatásnevekre vonatkozó szempontokat és a szolgáltatásnevek törlését](../../aks/kubernetes-service-principal.md#additional-considerations) ismertető cikket. Felügyelt identitás használata esetén az identitást a platform felügyeli, és nem szükséges az eltávolítás.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan [érheti el a Kubernetes webes irányítópultját](../../aks/kubernetes-dashboard.md) az AK-fürthöz
 - Ismerje meg, hogyan [méretezheti a fürtöt](../../aks/tutorial-kubernetes-scale.md)

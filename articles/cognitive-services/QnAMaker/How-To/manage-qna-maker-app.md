@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 652489e8de68d61707fd419843f0dbb2ffd83754
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 49bfca118e53bbe3e4287b2ce25e5baffa717175
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987944"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217329"
 ---
 # <a name="manage-qna-maker-app"></a>QnA Maker alkalmazás kezelése
 
@@ -29,7 +29,7 @@ QnA Maker szolgáltatásban nem oszthat meg egy adott tudásbázist. Ha részlet
 
 ### <a name="add-a-user-account-to-the-qna-maker-resource"></a>Felhasználói fiók hozzáadása a QnA Maker erőforráshoz
 
-A következő lépések a közreműködő szerepkört használják, de a [szerepkörök](../reference-role-based-access-control.md) bármelyike felvehető a következő lépések használatával
+A következő lépések a közreműködő szerepkört használják, de a szerepkörök bármelyike felvehető a következő lépések használatával
 
 1. Jelentkezzen be az [Azure](https://portal.azure.com/) Portalra, és lépjen a QnA Maker-erőforráshoz.
 

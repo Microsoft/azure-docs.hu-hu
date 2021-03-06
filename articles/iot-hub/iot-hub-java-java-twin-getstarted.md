@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: mqtt, devx-track-java
-ms.openlocfilehash: 68908b7d62b8211c202262112831d5d2b523f594
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 53a82ba545fa1709d1b79f3ff6b18f1817736bb7
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146961"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217856"
 ---
 # <a name="get-started-with-device-twins-java"></a>Ismerkedés az eszközök ikrekkel (Java)
 
@@ -31,7 +31,7 @@ Ebben az oktatóanyagban két Java-konzolos alkalmazást hoz létre:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Java SE Development Kit 8](/java/azure/jdk/?view=azure-java-stable). Győződjön meg arról, hogy a **Java 8** lehetőséget választja a **hosszú távú támogatás** alatt a JDK 8 letöltéséhez.
+* [Java SE Development Kit 8](/java/azure/jdk/). Győződjön meg arról, hogy a **Java 8** lehetőséget választja a **hosszú távú támogatás** alatt a JDK 8 letöltéséhez.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
@@ -57,7 +57,7 @@ Ebben az oktatóanyagban két Java-konzolos alkalmazást hoz létre:
 
 Ebben a szakaszban egy Java-alkalmazást hoz létre, amely a hely metaadatainak hozzáadását adja hozzá a **myDeviceId**-hez társított IoT hubhoz. Az alkalmazás először a IoT hub-t kérdezi le az USA-ban található eszközökhöz, majd a mobil hálózati kapcsolatot bejelentő eszközökhöz.
 
-1. A fejlesztői gépen hozzon létre egy **IOT-Java-Twin-getstarted**nevű üres mappát.
+1. A fejlesztői gépen hozzon létre egy **IOT-Java-Twin-getstarted** nevű üres mappát.
 
 2. A **IOT-Java-Twin-getstarted** mappában hozzon létre egy **Add-Tags-Query** nevű Maven-projektet a következő paranccsal a parancssorban:
 

@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: mqtt, devx-track-java
-ms.openlocfilehash: 28b82c87442257124f286a5e7c949afe7f001019
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: f05e1a458bc83fe4042c4b6cf35d9aa2095868ef
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146926"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217958"
 ---
 # <a name="get-started-with-device-management-java"></a>Ismerkedés az eszközkezelés (Java) szolgáltatással
 
@@ -54,7 +54,7 @@ Az oktatóanyag végén két Java-konzolos alkalmazás található:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Java SE Development Kit 8](/java/azure/jdk/?view=azure-java-stable). Győződjön meg arról, hogy a **Java 8** lehetőséget választja a **hosszú távú támogatás** alatt a JDK 8 letöltéséhez.
+* [Java SE Development Kit 8](/java/azure/jdk/). Győződjön meg arról, hogy a **Java 8** lehetőséget választja a **hosszú távú támogatás** alatt a JDK 8 letöltéséhez.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
@@ -88,7 +88,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely a következők
 
 Ez a konzol-alkalmazás csatlakozik a IoT Hubhoz, hogy meghívja a közvetlen metódust, és beolvassa a jelentett tulajdonságokat.
 
-1. Hozzon létre egy, a **DM-Get-Started**nevű üres mappát.
+1. Hozzon létre egy, a **DM-Get-Started** nevű üres mappát.
 
 2. A **DM-Get-Started** mappában hozzon létre egy **trigger-újraindítás** nevű Maven-projektet a következő parancs használatával a parancssorban:
 
@@ -415,7 +415,7 @@ Ebben a szakaszban egy Java-konzol alkalmazást hoz létre, amely egy eszközt s
     public static void main(String[] args) throws IOException, URISyntaxException
     ```
 
-16. **DeviceClient**létrehozásához cserélje le a **Main** metódus kódját a következő kódra:
+16. **DeviceClient** létrehozásához cserélje le a **Main** metódus kódját a következő kódra:
 
     ```java
     System.out.println("Starting device client sample...");

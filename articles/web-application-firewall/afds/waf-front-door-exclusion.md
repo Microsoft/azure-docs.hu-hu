@@ -7,16 +7,16 @@ ms.service: web-application-firewall
 ms.date: 11/10/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: c2c84b508ee86ebdd82dbcc7040106142187c506
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 1b94a3d8675461779fa9d543bf0153b165ab4fb4
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563460"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217584"
 ---
 # <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>Webalkalmazási tűzfal (WAF) a bejárati ajtó szolgáltatás kizárási listájával 
 
-Előfordulhat, hogy a webalkalmazási tűzfal (WAF) blokkolni kívánja az alkalmazás számára engedélyezni kívánt kérelmet. A Active Directory például beszúrja a hitelesítéshez használt jogkivonatokat. Ezek a tokenek olyan speciális karaktereket tartalmazhatnak, amelyek a WAF-szabályokból hamis pozitív riasztást indíthatnak. A WAF kizárási listája lehetővé teszi bizonyos WAF kiértékelését.  A kizárási lista a  [PowerShell](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-3.5.0), az [Azure CLI](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-managed-rules-exclusion-add), a [REST API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)vagy a Azure Portal használatával konfigurálható. A következő példa a Azure Portal konfigurációját mutatja be. 
+Előfordulhat, hogy a webalkalmazási tűzfal (WAF) blokkolni kívánja az alkalmazás számára engedélyezni kívánt kérelmet. A Active Directory például beszúrja a hitelesítéshez használt jogkivonatokat. Ezek a tokenek olyan speciális karaktereket tartalmazhatnak, amelyek a WAF-szabályokból hamis pozitív riasztást indíthatnak. A WAF kizárási listája lehetővé teszi bizonyos WAF kiértékelését.  A kizárási lista a  [PowerShell](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-3.5.0), az [Azure CLI](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion#ext-front-door-az-network-front-door-waf-policy-managed-rules-exclusion-add), a [REST API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)vagy a Azure Portal használatával konfigurálható. A következő példa a Azure Portal konfigurációját mutatja be. 
 ## <a name="configure-exclusion-lists-using-the-azure-portal"></a>Kizárási listák konfigurálása a Azure Portal használatával
 A **kizárások kezelése** a WAF-portálról a **felügyelt szabályok** területen érhető el
 
@@ -36,11 +36,11 @@ A következő attribútumok adhatók hozzá a kizárási listához név szerint.
 
 Megadhat egy pontos kérelem fejlécét, törzsét, cookie-t vagy lekérdezési karakterlánc-attribútumát.  Másik lehetőségként megadhatja a részleges egyezéseket is. A támogatott egyeztetési feltételek a következő operátorok:
 
-- **Egyenlő** : ez az operátor pontos egyezést használ. Például egy **bearerToken** nevű fejléc kiválasztásához használja az Equals operátort a választó **bearerToken**.
-- A következővel **kezdődik** : ez az operátor megegyezik a megadott választó értékkel kezdődő összes mezővel.
-- **Végződik** : ez az operátor a megadott választó értékkel végződő összes kérelem mezőre illeszkedik.
-- **Tartalmazza** : ez az operátor megfelel az összes olyan kérelem mezőnek, amely tartalmazza a megadott választó értéket.
-- **Egyenlő** : ez az operátor megfelel az összes kérelem mezőnek. * a választó értéke.
+- **Egyenlő**: ez az operátor pontos egyezést használ. Például egy **bearerToken** nevű fejléc kiválasztásához használja az Equals operátort a választó **bearerToken**.
+- A következővel **kezdődik**: ez az operátor megegyezik a megadott választó értékkel kezdődő összes mezővel.
+- **Végződik**: ez az operátor a megadott választó értékkel végződő összes kérelem mezőre illeszkedik.
+- **Tartalmazza**: ez az operátor megfelel az összes olyan kérelem mezőnek, amely tartalmazza a megadott választó értéket.
+- **Egyenlő**: ez az operátor megfelel az összes kérelem mezőnek. * a választó értéke.
 
 A fejléc és a cookie neve nem megkülönbözteti a kis-és nagybetűket.
 

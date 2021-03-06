@@ -8,12 +8,12 @@ ms.date: 08/31/2020
 ms.author: victorh
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a33114dce47ca3df87b1c6c774289c8a8efcf835
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 967d4d4a49809c2b5fa7a344286469bb67eec6cf
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94739864"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217601"
 ---
 # <a name="enable-web-application-firewall-using-the-azure-cli"></a>Webalkalmazási tűzfal engedélyezése az Azure CLI használatával
 
@@ -36,7 +36,7 @@ Ha szeretné, az eljárást [Azure PowerShell](tutorial-restrict-web-traffic-pow
 
 - Ehhez a cikkhez az Azure CLI 2.0.4 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy *myResourceGroupAG* nevű Azure-erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal.
 
@@ -143,7 +143,7 @@ Ebben a cikkben az Application Gateway egy Storage-fiók használatával tárolj
 
 ### <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-Hozzon létre egy *myagstore1* nevű tárfiókot az [az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) paranccsal.
+Hozzon létre egy *myagstore1* nevű tárfiókot az [az storage account create](/cli/azure/storage/account#az-storage-account-create) paranccsal.
 
 ```azurecli-interactive
 az storage account create \
@@ -156,7 +156,7 @@ az storage account create \
 
 ### <a name="configure-diagnostics"></a>Diagnosztika konfigurálása
 
-Konfigurálja a diagnosztikát az adatok az ApplicationGatewayAccessLog, az ApplicationGatewayPerformanceLog és az ApplicationGatewayFirewallLog naplóba rögzítéséhez. Cserélje le `<subscriptionId>` az értékét az előfizetés-azonosítóra, majd konfigurálja a diagnosztikát az [az monitor diagnosztikai-Settings Create](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create)paranccsal.
+Konfigurálja a diagnosztikát az adatok az ApplicationGatewayAccessLog, az ApplicationGatewayPerformanceLog és az ApplicationGatewayFirewallLog naplóba rögzítéséhez. Cserélje le `<subscriptionId>` az értékét az előfizetés-azonosítóra, majd konfigurálja a diagnosztikát az [az monitor diagnosztikai-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create)paranccsal.
 
 ```azurecli-interactive
 appgwid=$(az network application-gateway show --name myAppGateway --resource-group myResourceGroupAG --query id -o tsv)

@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: b743b5be195f44c03adbee75c3108f4908d8d4e8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2a5ba6cb0778e0c013f150d787d694b23f0497bd
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717757"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218009"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Profil élő Azure App Service alkalmazások Application Insights
 
@@ -56,11 +56,11 @@ A Profiler engedélyezéséhez a következő beállítások szükségesek:
 
 Ezeket az értékeket [Azure Resource Manager sablonok](./azure-web-apps.md#app-service-application-settings-with-azure-resource-manager), [Azure POWERSHELL](/powershell/module/az.websites/set-azwebapp)és  [Azure CLI](/cli/azure/webapp/config/appsettings)használatával állíthatja be.
 
-### <a name="enabling-profiler-for-other-clouds-manually"></a>A Profiler engedélyezése más felhők számára manuálisan
+## <a name="enable-profiler-for-other-clouds"></a>A Profiler engedélyezése más felhők számára
 
-Ha engedélyezni szeretné a Profilert más felhők esetében, használhatja az alábbi beállításokat.
+Jelenleg csak a végpontok módosítását igénylő régiók [Azure Government](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights) és az [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide).
 
-|Alkalmazásbeállítás    | USA kormányzati értékei| Kínai felhő |   
+|Alkalmazásbeállítás    | Egyesült államokbeli kormányzati felhő | Kínai felhő |   
 |---------------|---------------------|-------------|
 |ApplicationInsightsProfilerEndpoint         | `https://profiler.monitor.azure.us`    | `https://profiler.monitor.azure.cn` |
 |ApplicationInsightsEndpoint | `https://dc.applicationinsights.us` | `https://dc.applicationinsights.azure.cn` |

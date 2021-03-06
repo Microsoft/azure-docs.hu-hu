@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: a2afd47db01725c56f4fe571f1b464818653081d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2396973170762bf98be63b998a87c8a47ce3226d
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737494"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217652"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>A Windows rendszerű virtuális asztal újdonságai
 
@@ -248,7 +248,7 @@ A következőképpen módosult a 2020 augusztusában:
 
 - Azure Advisor mostantól a Windows rendszerű virtuális asztal része. Ha a Azure Portalon keresztül fér hozzá a Windows rendszerű virtuális asztalhoz, a Windows rendszerű virtuális asztali környezet optimalizálására vonatkozó javaslatok láthatók. További információ: [Azure Advisor](azure-advisor.md).
 
-- Az Azure CLI mostantól támogatja a Windows rendszerű virtuális asztal () használatát a `az desktopvirtualization` Windows rendszerű virtuális asztali környezetek automatizálásának elősegítése érdekében. Tekintse meg a [desktopvirtualization](/cli/azure/ext/desktopvirtualization/?view=azure-cli-latest&preserve-view=true) listáját a kiterjesztési parancsok listájához.
+- Az Azure CLI mostantól támogatja a Windows rendszerű virtuális asztal () használatát a `az desktopvirtualization` Windows rendszerű virtuális asztali környezetek automatizálásának elősegítése érdekében. Tekintse meg a [desktopvirtualization](/cli/azure/ext/desktopvirtualization/) listáját a kiterjesztési parancsok listájához.
 
 - Frissítettük a központi telepítési sablonokat, hogy teljes mértékben kompatibilisek legyenek a Windows rendszerű virtuális asztali Azure Resource Manager felületekkel. A sablonok a [githubon](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates)találhatók.
 

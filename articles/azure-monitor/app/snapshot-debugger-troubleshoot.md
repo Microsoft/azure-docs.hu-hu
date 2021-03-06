@@ -6,17 +6,54 @@ author: cweining
 ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: c9813108c05cabbd071a9d919452682bd6ad69e7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a285f26a406caa88d91da5647b3b79cffc9b614f
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101731952"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102217414"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> A Application Insights Snapshot Debugger engedélyezésével vagy a pillanatképek megtekintésével kapcsolatos problémák elhárítása
 Ha engedélyezte Application Insights Snapshot Debugger az alkalmazáshoz, de nem tekinti meg a kivételekhez tartozó pillanatképeket, a következő utasításokat követve elháríthatja a hibát.
 
 Számos különböző oka lehet annak, hogy a pillanatképek miért nem hozhatók létre. A Snapshot Health-ellenőrzés futtatásával elindíthatja a lehetséges gyakori okok némelyikét.
+
+## <a name="make-sure-youre-using-the-appropriate-snapshot-debugger-endpoint"></a>Győződjön meg arról, hogy a megfelelő Snapshot Debugger végpontot használja
+
+Jelenleg csak a végpontok módosítását igénylő régiók [Azure Government](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights) és az [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide).
+
+A Application Insights SDK-t használó App Service és alkalmazásokhoz a következő módon kell frissítenie a kapcsolódási karakterláncot a Snapshot Debugger támogatott felülbírálásai alapján:
+
+|A kapcsolatok karakterláncának tulajdonsága    | Egyesült államokbeli kormányzati felhő | Kínai felhő |   
+|---------------|---------------------|-------------|
+|SnapshotEndpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
+
+További információ az egyéb kapcsolatok felülbírálásáról: [Application Insights dokumentáció](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net#connection-string-with-explicit-endpoint-overrides).
+
+Függvényalkalmazás a következő `host.json` támogatott felülbírálások használatával kell frissítenie:
+
+|Tulajdonság    | Egyesült államokbeli kormányzati felhő | Kínai felhő |   
+|---------------|---------------------|-------------|
+|AgentEndpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
+
+Alább látható egy példa az `host.json` Egyesült államokbeli kormányzati Felhőbeli ügynök végpontjának frissítésére:
+```json
+{
+  "version": "2.0",
+  "logging": {
+    "applicationInsights": {
+      "samplingExcludedTypes": "Request",
+      "samplingSettings": {
+        "isEnabled": true
+      },
+      "snapshotConfiguration": {
+        "isEnabled": true,
+        "agentEndpoint": "https://snapshot.monitor.azure.us"
+      }
+    }
+  }
+}
+```
 
 ## <a name="use-the-snapshot-health-check"></a>A pillanatkép-állapot-ellenőrzési eszköz használata
 Számos gyakori probléma miatt az Open debug pillanatkép nem jelenik meg. Elavult Snapshot Collector használata, például:; a napi feltöltési korlát elérése; vagy lehet, hogy a pillanatkép csak hosszú időt vesz fel a feltöltéshez. Az általános problémák elhárításához használja a pillanatkép állapotának ellenőrzését.

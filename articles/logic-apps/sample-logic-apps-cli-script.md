@@ -7,25 +7,25 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/30/2020
-ms.openlocfilehash: e66edb1325d1c603e89f877f1d34f60c136eb1db
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: a4553ceee482fb232e9ab56deca650be93f9dc6b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740720"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218043"
 ---
 # <a name="azure-cli-script-sample---create-a-logic-app"></a>Azure CLI parancsfájl-minta – logikai alkalmazás létrehozása
 
-Ez a szkript egy minta logikai alkalmazást hoz létre az [Azure CLI Logic apps bővítménnyel](/cli/azure/ext/logic/logic?view=azure-cli-latest)( `az logic` ). A Logic apps Azure CLI-n keresztüli létrehozásával és kezelésével kapcsolatos részletes útmutatóért tekintse meg az [Azure cli Logic apps](quickstart-logic-apps-azure-cli.md)gyors üzembe helyezési útmutatóját.
+Ez a szkript egy minta logikai alkalmazást hoz létre az [Azure CLI Logic apps bővítménnyel](/cli/azure/ext/logic/logic)( `az logic` ). A Logic apps Azure CLI-n keresztüli létrehozásával és kezelésével kapcsolatos részletes útmutatóért tekintse meg az [Azure cli Logic apps](quickstart-logic-apps-azure-cli.md)gyors üzembe helyezési útmutatóját.
 
 > [!WARNING]
-> Az Azure CLI Logic Apps bővítménye jelenleg *kísérleti jellegű* , és *nem vonatkozik az ügyfélszolgálatra* . Ezt a CLI-bővítményt körültekintően használhatja, különösen akkor, ha a bővítményt éles környezetben használja.
+> Az Azure CLI Logic Apps bővítménye jelenleg *kísérleti jellegű* , és *nem vonatkozik az ügyfélszolgálatra*. Ezt a CLI-bővítményt körültekintően használhatja, különösen akkor, ha a bővítményt éles környezetben használja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Aktív előfizetéssel rendelkező Azure-fiók. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) telepítve van a helyi számítógépen.
-* A számítógépre telepített [Logic apps Azure CLI-bővítmény](/cli/azure/azure-cli-extensions-list?view=azure-cli-latest) . A bővítmény telepítéséhez használja a következő parancsot: `az extension add --name logic`
+* Az [Azure CLI](/cli/azure/install-azure-cli) telepítve van a helyi számítógépen.
+* A számítógépre telepített [Logic apps Azure CLI-bővítmény](/cli/azure/azure-cli-extensions-list) . A bővítmény telepítéséhez használja a következő parancsot: `az extension add --name logic`
 * [Munkafolyamat-definíció](quickstart-logic-apps-azure-cli.md#workflow-definition) a logikai alkalmazáshoz. A JSON-fájlnak meg kell felelnie a [munkafolyamat-definíció nyelvi sémájának](logic-apps-workflow-definition-language.md).
 * API-csatlakozás egy e-mail-fiókhoz egy támogatott [Logic apps-összekötőn](../connectors/apis-list.md) keresztül ugyanabban az erőforráscsoportban, mint a logikai alkalmazás. Ez a példa az [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md) Connectort használja, de más összekötőket is használhat, mint például a [Outlook.com](../connectors/connectors-create-api-outlook.md).
 
@@ -35,9 +35,9 @@ A Kezdés előtt ellenőrizze a környezetet:
 
 * Jelentkezzen be a Azure Portalba, és győződjön meg arról, hogy az előfizetése aktív a futtatásával `az login` .
 
-* A futtatásával tekintse meg az Azure CLI-verziót egy terminálon vagy parancsablakban `az --version` . A legújabb verzióra vonatkozó megjegyzések a [legújabb kiadási megjegyzésekben](/cli/azure/release-notes-azure-cli?tabs=azure-cli&view=azure-cli-latest)találhatók.
+* A futtatásával tekintse meg az Azure CLI-verziót egy terminálon vagy parancsablakban `az --version` . A legújabb verzióra vonatkozó megjegyzések a [legújabb kiadási megjegyzésekben](/cli/azure/release-notes-azure-cli)találhatók.
 
-  * Ha nem rendelkezik a legújabb verzióval, frissítse a telepítést az [operációs rendszer vagy a platform telepítési útmutatóját](/cli/azure/install-azure-cli?view=azure-cli-latest)követve.
+  * Ha nem rendelkezik a legújabb verzióval, frissítse a telepítést az [operációs rendszer vagy a platform telepítési útmutatóját](/cli/azure/install-azure-cli)követve.
 
 ### <a name="sample-workflow-explanation"></a>Példa a munkafolyamat magyarázatára
 
@@ -197,12 +197,12 @@ Ez a minta parancsfájl a következő parancsokat használja egy új erőforrás
 
 | Parancs | Jegyzetek |
 | ------- | ----- |
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Létrehoz egy erőforráscsoportot, amelyben a logikai alkalmazás erőforrásai tárolódnak. |
-| [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create) | Létrehoz egy logikai alkalmazást a paraméterben meghatározott munkafolyamat alapján `--definition` . |
-| [`az group delete`](/cli/azure/vm/extension?view=azure-cli-latest) | Töröl egy erőforráscsoportot és annak összes beágyazott erőforrását. |
+| [`az group create`](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amelyben a logikai alkalmazás erőforrásai tárolódnak. |
+| [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create) | Létrehoz egy logikai alkalmazást a paraméterben meghatározott munkafolyamat alapján `--definition` . |
+| [`az group delete`](/cli/azure/vm/extension) | Töröl egy erőforráscsoportot és annak összes beágyazott erőforrását. |
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az Azure CLI-vel kapcsolatos további információkért tekintse meg az [Azure CLI dokumentációját](/cli/azure/?view=azure-cli-latest).
+Az Azure CLI-vel kapcsolatos további információkért tekintse meg az [Azure CLI dokumentációját](/cli/azure/).
 
 További Logic Apps CLI-szkripteket a [Microsoft Code Samples böngészőben](/samples/browse/?products=azure-logic-apps)talál.
