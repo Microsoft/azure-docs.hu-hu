@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/05/2020
 ms.author: v-jawe
-ms.openlocfilehash: 16797a5bdb5ef5f2b5660a33e1788b8824f1ad8f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b4a63f76cbcd9e98295f5edcf7ff2d06979e6556
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722559"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102245031"
 ---
 ## <a name="quickstart-face-client-library-for-javascript"></a>Gyors útmutató: Face ügyféloldali kódtár a JavaScripthez
 
@@ -27,7 +27,7 @@ A következőhöz használhatja a Face ügyféloldali kódtárat a JavaScripthez
 * [Személy csoport létrehozása](#create-a-person-group)
 * [Arc azonosítása](#identify-a-face)
 
-[Dokumentáció](/javascript/api/@azure/cognitiveservices-face/?view=azure-node-latest)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-face)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-face)  |  [Példák](/samples/browse/?products=azure&term=face&languages=javascript)
+[Dokumentáció](/javascript/api/@azure/cognitiveservices-face/)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-face)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-face)  |  [Példák](/samples/browse/?products=azure&term=face&languages=javascript)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -92,12 +92,12 @@ A következő osztályok és felületek kezelik a Face .NET ügyféloldali kódt
 
 |Név|Leírás|
 |---|---|
-|[FaceClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/faceclient?view=azure-node-latest) | Ez az osztály a Face szolgáltatás használatára vonatkozó engedélyt jelöli, és minden arc funkcióhoz szüksége van rá. Ezt az előfizetési adatok alapján hozza létre, és más osztályok példányainak előállítására használja. |
-|[Face](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/face?view=azure-node-latest)|Ez az osztály az emberi arcokkal elvégezhető alapvető észlelési és felismerési feladatokat kezeli. |
-|[DetectedFace](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/detectedface?view=azure-node-latest)|Ez az osztály a rendszerkép egyetlen arca által észlelt összes adatmennyiséget jelképezi. Ezzel az oldallal kapcsolatos részletes információkat kérhet le.|
-|[FaceList](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/facelist?view=azure-node-latest)|Ez az osztály kezeli a felhőben tárolt **FaceList** -szerkezeteket, amelyek az arcok válogatott készleteit tárolják. |
-|[PersonGroupPerson](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroupperson?view=azure-node-latest)| Ez az osztály kezeli a felhőalapú tárolt **személyek** szerkezetét, amelyek egyetlen személyhez tartozó arcok készletét tárolják.|
-|[PersonGroup](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroup?view=azure-node-latest)| Ez az osztály kezeli a felhőben tárolt **PersonGroup** -szerkezeteket, amelyek a különböző **személyre** kiterjedő objektumok készletét tárolják. |
+|[FaceClient](/javascript/api/@azure/cognitiveservices-face/faceclient) | Ez az osztály a Face szolgáltatás használatára vonatkozó engedélyt jelöli, és minden arc funkcióhoz szüksége van rá. Ezt az előfizetési adatok alapján hozza létre, és más osztályok példányainak előállítására használja. |
+|[Face](/javascript/api/@azure/cognitiveservices-face/face)|Ez az osztály az emberi arcokkal elvégezhető alapvető észlelési és felismerési feladatokat kezeli. |
+|[DetectedFace](/javascript/api/@azure/cognitiveservices-face/detectedface)|Ez az osztály a rendszerkép egyetlen arca által észlelt összes adatmennyiséget jelképezi. Ezzel az oldallal kapcsolatos részletes információkat kérhet le.|
+|[FaceList](/javascript/api/@azure/cognitiveservices-face/facelist)|Ez az osztály kezeli a felhőben tárolt **FaceList** -szerkezeteket, amelyek az arcok válogatott készleteit tárolják. |
+|[PersonGroupPerson](/javascript/api/@azure/cognitiveservices-face/persongroupperson)| Ez az osztály kezeli a felhőalapú tárolt **személyek** szerkezetét, amelyek egyetlen személyhez tartozó arcok készletét tárolják.|
+|[PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup)| Ez az osztály kezeli a felhőben tárolt **PersonGroup** -szerkezeteket, amelyek a különböző **személyre** kiterjedő objektumok készletét tárolják. |
 
 ## <a name="code-examples"></a>Kódpéldák
 
@@ -114,7 +114,7 @@ Az alábbi kódrészletek azt mutatják be, hogyan végezheti el a következő f
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Ügyfelet hoz létre a végponttal és a kulccsal. Hozzon létre egy **[ApiKeyCredentials](https://docs.microsoft.com/javascript/api/@azure/ms-rest-js/apikeycredentials?view=azure-node-latest)** objektumot a kulccsal, és használja a végpontján egy **[FaceClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/faceclient?view=azure-node-latest)** objektum létrehozásához.
+Ügyfelet hoz létre a végponttal és a kulccsal. Hozzon létre egy **[ApiKeyCredentials](https://docs.microsoft.com/javascript/api/@azure/ms-rest-js/apikeycredentials)** objektumot a kulccsal, és használja a végpontján egy **[FaceClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/faceclient)** objektum létrehozásához.
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="credentials":::
 
@@ -134,14 +134,14 @@ A következő függvénnyel megvárhatja, amíg a PersonGroup betanítása befej
 
 ### <a name="get-detected-face-objects"></a>Észlelt Arcfelismerés-objektumok
 
-Hozzon létre egy új metódust az arcok észleléséhez. A `DetectFaceExtract` metódus három képet dolgoz fel a megadott URL-címen, és létrehozza a **[DetectedFace](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/detectedface?view=azure-node-latest)** objektumok listáját a program memóriájában. A **[FaceAttributeType](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/faceattributetype?view=azure-node-latest)** értékek listája határozza meg a kinyerni kívánt szolgáltatásokat. 
+Hozzon létre egy új metódust az arcok észleléséhez. A `DetectFaceExtract` metódus három képet dolgoz fel a megadott URL-címen, és létrehozza a **[DetectedFace](/javascript/api/@azure/cognitiveservices-face/detectedface)** objektumok listáját a program memóriájában. A **[FaceAttributeType](/javascript/api/@azure/cognitiveservices-face/faceattributetype)** értékek listája határozza meg a kinyerni kívánt szolgáltatásokat. 
 
-A `DetectFaceExtract` metódus ezután elemzi és kinyomtatja az összes észlelt arc attribútum-adatát. Minden attribútumot külön kell megadni az eredeti Arcfelismerés API-hívásban (a **[FaceAttributeType](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/faceattributetype?view=azure-node-latest)** listában). A következő kód dolgozza fel az összes attribútumot, de valószínűleg csak egy vagy néhányat kell használnia.
+A `DetectFaceExtract` metódus ezután elemzi és kinyomtatja az összes észlelt arc attribútum-adatát. Minden attribútumot külön kell megadni az eredeti Arcfelismerés API-hívásban (a **[FaceAttributeType](/javascript/api/@azure/cognitiveservices-face/faceattributetype)** listában). A következő kód dolgozza fel az összes attribútumot, de valószínűleg csak egy vagy néhányat kell használnia.
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="detect":::
 
 > [!TIP]
-> A helyi rendszerképben is felderítheti az arcokat. Tekintse meg a [Face](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/face?view=azure-node-latest) metódusokat, például a [DetectWithStreamAsync](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/face?view=azure-node-latest#detectWithStream_msRest_HttpRequestBody__FaceDetectWithStreamOptionalParams__ServiceCallback_DetectedFace____).
+> A helyi rendszerképben is felderítheti az arcokat. Tekintse meg a [Face](/javascript/api/@azure/cognitiveservices-face/face) metódusokat, például a [DetectWithStreamAsync](/javascript/api/@azure/cognitiveservices-face/face#detectWithStream_msRest_HttpRequestBody__FaceDetectWithStreamOptionalParams__ServiceCallback_DetectedFace____).
 
 ## <a name="find-similar-faces"></a>Hasonló arcok keresése
 
@@ -161,11 +161,11 @@ A következő metódus észleli a megcélzott lemezképekben található arcokat
 
 ## <a name="identify-a-face"></a>Arc azonosítása
 
-Az [azonosítási](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/face?view=azure-node-latest#identify_string____FaceIdentifyOptionalParams__ServiceCallback_IdentifyResult____) művelet egy személy (vagy több személy) képét veszi igénybe, és megkeresi a rendszerképben lévő egyes arcok identitását (Arcfelismerés-keresés). Összehasonlítja az észlelt elemeket egy [PersonGroup](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroup?view=azure-node-latest), egy olyan, a különböző [személy](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/person?view=azure-node-latest) objektumokat tartalmazó adatbázissal, amelyek az arc funkciói ismertek. Az azonosítási művelet végrehajtásához először létre kell hoznia és be kell tanítania egy [PersonGroup](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroup?view=azure-node-latest).
+Az [azonosítási](/javascript/api/@azure/cognitiveservices-face/face#identify_string____FaceIdentifyOptionalParams__ServiceCallback_IdentifyResult____) művelet egy személy (vagy több személy) képét veszi igénybe, és megkeresi a rendszerképben lévő egyes arcok identitását (Arcfelismerés-keresés). Összehasonlítja az észlelt elemeket egy [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup), egy olyan, a különböző [személy](/javascript/api/@azure/cognitiveservices-face/person) objektumokat tartalmazó adatbázissal, amelyek az arc funkciói ismertek. Az azonosítási művelet végrehajtásához először létre kell hoznia és be kell tanítania egy [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup).
 
 ### <a name="add-faces-to-person-group"></a>Arcok felvétele a person csoportba
 
-Hozza létre a következő függvényt az arcok hozzáadásához a [PersonGroup](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroup?view=azure-node-latest).
+Hozza létre a következő függvényt az arcok hozzáadásához a [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup).
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="add_faces":::
 
@@ -178,7 +178,7 @@ Hozza létre a következő segítő függvényt, hogy megvárja, amíg a személ
 ### <a name="create-a-person-group"></a>Személy csoport létrehozása
 
 A következő kód:
-- Létrehoz egy [PersonGroup](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroup?view=azure-node-latest)
+- Létrehoz egy [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup)
 - A korábban definiált hívással hozzáadja az arcokat a személy csoporthoz `AddFacesToPersonGroup` .
 - A személy csoportjának bevonata.
 - A személy csoportba tartozó arcokat azonosítja.
@@ -188,7 +188,7 @@ Most már készen áll arra, hogy az ellenőrzési, azonosítási vagy csoportos
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="identify":::
 
 > [!TIP]
-> Helyi rendszerképekből is létrehozhat **PersonGroup** . Tekintse meg a [PersonGroupPerson](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroupperson?view=azure-node-latest) metódusokat, például a [AddFaceFromStream](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroupperson?view=azure-node-latest#addFaceFromStream_string__string__msRest_HttpRequestBody__Models_PersonGroupPersonAddFaceFromStreamOptionalParams_).
+> Helyi rendszerképekből is létrehozhat **PersonGroup** . Tekintse meg a [PersonGroupPerson](/javascript/api/@azure/cognitiveservices-face/persongroupperson) metódusokat, például a [AddFaceFromStream](/javascript/api/@azure/cognitiveservices-face/persongroupperson#addFaceFromStream_string__string__msRest_HttpRequestBody__Models_PersonGroupPersonAddFaceFromStreamOptionalParams_).
 
 ## <a name="main"></a>Fő
 

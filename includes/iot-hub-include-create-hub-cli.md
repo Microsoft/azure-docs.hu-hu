@@ -6,12 +6,12 @@ ms.author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 01/14/2021
-ms.openlocfilehash: ab17b12913630774c4fe6d99a4830080de02e541
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 10bd2c4902157b9e01b1cb0ff10b3ebdf448568c
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712580"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102244827"
 ---
 A következő fejezetekben beállíthat egy terminált, és az Azure CLI használatával hozhat létre egy IoT hubot. Az Azure CLI-parancsokat futtató terminálok konfigurálásához használhatja a böngészőalapú Azure Cloud Shell, vagy használhat helyi terminált is.
 * A Cloud Shell használatához lépjen a következő szakaszra: [indítsa el a Cloud Shell](#launch-the-cloud-shell). 
@@ -41,7 +41,7 @@ A Cloud Shell elindítása:
 Ha Cloud Shell helyett helyi terminált szeretne használni, végezze el ezt a szakaszt.  
 
 1. Nyisson meg egy helyi terminált.
-1. Futtassa az az [login](/cli/azure/reference-index?preserve-view=true&view=azure-cli-latest#az_login) parancsot:
+1. Futtassa az az [login](/cli/azure/reference-index#az_login) parancsot:
 
    ```azurecli
    az login
@@ -65,7 +65,7 @@ Ebben a szakaszban az Azure CLI-hez készült Microsoft Azure IoT-bővítményt 
 > [!IMPORTANT]
 > A rövid útmutató többi részén található terminál-parancsok ugyanúgy működnek, mint Cloud Shell vagy egy helyi terminálon. A parancs futtatásához válassza a **Másolás** elemet a rövid útmutatóban található kód egy blokkjának másolásához. Ezután illessze be a CLI-rendszerhéjba, és futtassa.
 
-Futtassa az az [Extension Add](/cli/azure/extension?preserve-view=true&view=azure-cli-latest#az-extension-add) parancsot. 
+Futtassa az az [Extension Add](/cli/azure/extension#az-extension-add) parancsot. 
 
    ```azurecli
    az extension add --name azure-iot
@@ -77,7 +77,7 @@ Ebben a szakaszban az Azure CLI használatával hozzon létre egy IoT hubot és 
 
 IoT hub és erőforráscsoport létrehozása:
 
-1. Futtassa az az [Group Create](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-create) parancsot egy erőforráscsoport létrehozásához. A következő parancs létrehoz egy *MyResourceGroup* nevű erőforráscsoportot a *eastus* helyen. 
+1. Futtassa az az [Group Create](/cli/azure/group#az-group-create) parancsot egy erőforráscsoport létrehozásához. A következő parancs létrehoz egy *MyResourceGroup* nevű erőforráscsoportot a *eastus* helyen. 
     >[!NOTE]
     > Opcionálisan másik helyet is beállíthat. Az elérhető helyszínek megjelenítéséhez futtassa a parancsot `az account list-locations` . Ez az oktatóanyag a *eastus* használja, ahogy az a example parancsban is látható. 
 
@@ -85,7 +85,7 @@ IoT hub és erőforráscsoport létrehozása:
     az group create --name MyResourceGroup --location eastus
     ```
 
-1. Futtassa az az [IOT hub Create](/cli/azure/iot/hub?preserve-view=true&view=azure-cli-latest#az-iot-hub-create) parancsot egy IOT hub létrehozásához. Az IoT hub létrehozása eltarthat néhány percig. 
+1. Futtassa az az [IOT hub Create](/cli/azure/iot/hub#az-iot-hub-create) parancsot egy IOT hub létrehozásához. Az IoT hub létrehozása eltarthat néhány percig. 
 
     *YourIotHubName*. Cserélje le ezt a helyőrzőt és a környező kapcsos zárójeleket a következő parancsban az IoT hub számára kiválasztott néven. Az IoT hub nevének globálisan egyedinek kell lennie az Azure-ban. Használja az IoT hub nevét a rövid útmutató hátralévő részében, ahol megjelenik a helyőrző.
 
@@ -97,7 +97,7 @@ IoT hub és erőforráscsoport létrehozása:
 Ebben a szakaszban egy szimulált IoT-eszközt hoz létre, amely az IoT hubhoz csatlakozik. 
 
 Szimulált eszköz létrehozása:
-1. Futtassa az az [IOT hub Device-Identity Create](/cli/azure/ext/azure-iot/iot/hub/device-identity?preserve-view=true&view=azure-cli-latest#ext-azure-iot-az-iot-hub-device-identity-create) parancsot a CLI-rendszerhéjban. Ezzel létrehozza a szimulált eszköz identitását. 
+1. Futtassa az az [IOT hub Device-Identity Create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) parancsot a CLI-rendszerhéjban. Ezzel létrehozza a szimulált eszköz identitását. 
 
     *YourIotHubName*. Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre. 
 
@@ -107,7 +107,7 @@ Szimulált eszköz létrehozása:
     az iot hub device-identity create --device-id myDevice --hub-name {YourIoTHubName} 
     ```
 
-1.  Futtassa az az [IOT hub Device-Identity kapcsolat-string show](/cli/azure/ext/azure-iot/iot/hub/device-identity/connection-string?preserve-view=true&view=azure-cli-latest#ext_azure_iot_az_iot_hub_device_identity_connection_string_show) parancsot. 
+1.  Futtassa az az [IOT hub Device-Identity kapcsolat-string show](/cli/azure/ext/azure-iot/iot/hub/device-identity/connection-string#ext_azure_iot_az_iot_hub_device_identity_connection_string_show) parancsot. 
 
     ```azurecli
     az iot hub device-identity connection-string show --device-id myDevice --hub-name {YourIoTHubName}

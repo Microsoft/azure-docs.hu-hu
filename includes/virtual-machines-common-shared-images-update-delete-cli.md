@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -8,24 +8,24 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: fe37b0c9dbc16520a0dcb0993236db2797da6b68
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 4392e7f146f13e581f722b94f13038ad8abff0ba
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95560326"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102244869"
 ---
 ## <a name="update-resources"></a>Erőforrások frissítése
 
 Bizonyos korlátozások vonatkoznak a frissítésre. A következő elemek frissíthetők: 
 
 Megosztott képgyűjtemény:
-- Leírás
+- Description
 
 Rendszerkép definíciója:
 - Ajánlott vCPU
 - Ajánlott memória
-- Leírás
+- Description
 - Élettartam vége
 
 Rendszerkép verziója:
@@ -36,7 +36,7 @@ Rendszerkép verziója:
 
 Ha a replika-régiók hozzáadását tervezi, ne törölje a forrás által felügyelt képet. A forrás által felügyelt rendszerkép a rendszerkép verziójának további régiókba való replikálásához szükséges. 
 
-Frissítse a katalógus leírását az ([az SIG Update](/cli/azure/sig?view=azure-cli-latest#az-sig-update)) használatával. 
+Frissítse a katalógus leírását az ([az SIG Update](/cli/azure/sig#az-sig-update)) használatával. 
 
 ```azurecli-interactive
 az sig update \
@@ -46,7 +46,7 @@ az sig update \
 ```
 
 
-Frissítse a rendszerkép definíciójának leírását az [az SIG rendszerkép-definition Update](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update)paranccsal.
+Frissítse a rendszerkép definíciójának leírását az [az SIG rendszerkép-definition Update](/cli/azure/sig/image-definition#az-sig-image-definition-update)paranccsal.
 
 ```azurecli-interactive
 az sig image-definition update \
@@ -56,7 +56,7 @@ az sig image-definition update \
    --set description="My updated description."
 ```
 
-Frissítsen egy rendszerkép-verziót, és adjon hozzá egy régiót a replikáláshoz az [az SIG rendszerkép-Version Update](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update)használatával. Ez a változás hosszabb időt vesz igénybe, amíg a rendszerkép replikálása az új régióba történik.
+Frissítsen egy rendszerkép-verziót, és adjon hozzá egy régiót a replikáláshoz az [az SIG rendszerkép-Version Update](/cli/azure/sig/image-definition#az-sig-image-definition-update)használatával. Ez a változás hosszabb időt vesz igénybe, amíg a rendszerkép replikálása az új régióba történik.
 
 ```azurecli-interactive
 az sig image-version update \
@@ -67,7 +67,7 @@ az sig image-version update \
    --add publishingProfile.targetRegions  name=eastus
 ```
 
-Ez a példa azt mutatja be, hogyan használható az az [SIG lemezkép-Version Update](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) , hogy kizárja ezt a lemezkép-verziót a *legújabb* rendszerképként való használatból.
+Ez a példa azt mutatja be, hogyan használható az az [SIG lemezkép-Version Update](/cli/azure/sig/image-definition#az-sig-image-definition-update) , hogy kizárja ezt a lemezkép-verziót a *legújabb* rendszerképként való használatból.
 
 ```azurecli-interactive
 az sig image-version update \
@@ -78,7 +78,7 @@ az sig image-version update \
    --set publishingProfile.excludeFromLatest=true
 ```
 
-Ez a példa azt mutatja be, hogyan használható az [az SIG lemezkép-Version Update](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) , hogy a lemezkép verziója szerepeljen a *legújabb* rendszerképben.
+Ez a példa azt mutatja be, hogyan használható az [az SIG lemezkép-Version Update](/cli/azure/sig/image-definition#az-sig-image-definition-update) , hogy a lemezkép verziója szerepeljen a *legújabb* rendszerképben.
 
 ```azurecli-interactive
 az sig image-version update \
@@ -93,7 +93,7 @@ az sig image-version update \
 
 Az erőforrásokat fordított sorrendben kell törölnie, ha először törli a rendszerkép verzióját. Az összes rendszerkép-verzió törlése után törölheti a rendszerkép definícióját. Az összes rendszerkép-definíció törlését követően törölheti a katalógust. 
 
-Rendszerkép verziójának törlése [az az SIG rendszerkép-Version delete](/cli/azure/sig/image-version?view=azure-cli-latest#az-sig-image-version-delete)paranccsal.
+Rendszerkép verziójának törlése [az az SIG rendszerkép-Version delete](/cli/azure/sig/image-version#az-sig-image-version-delete)paranccsal.
 
 ```azurecli-interactive
 az sig image-version delete \
@@ -103,7 +103,7 @@ az sig image-version delete \
    --gallery-image-version 1.0.0 
 ```
 
-A rendszerkép definíciójának törlése [az az SIG rendszerkép-definition delete](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-delete)paranccsal.
+A rendszerkép definíciójának törlése [az az SIG rendszerkép-definition delete](/cli/azure/sig/image-definition#az-sig-image-definition-delete)paranccsal.
 
 ```azurecli-interactive
 az sig image-definition delete \
@@ -113,7 +113,7 @@ az sig image-definition delete \
 ```
 
 
-Töröljön egy képtárat az [az SIG delete](/cli/azure/sig?view=azure-cli-latest#az-sig-delete)paranccsal.
+Töröljön egy képtárat az [az SIG delete](/cli/azure/sig#az-sig-delete)paranccsal.
 
 ```azurecli-interactive
 az sig delete \
