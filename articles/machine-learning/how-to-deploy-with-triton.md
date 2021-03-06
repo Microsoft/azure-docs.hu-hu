@@ -11,12 +11,12 @@ ms.date: 02/16/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 3d2e01b645c1661d4b44520193b9c4557cbc1ea0
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 47d2c8865109e8ef43317b3c4a19c36e692aff91
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652174"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218842"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Nagy teljesítményű kiszolgálás a Triton inferenc Serverrel (előzetes verzió) 
 
@@ -36,7 +36,7 @@ A Triton egy *következtetésre optimalizált* keretrendszer. A GPU-k jobb kihas
 
 * Egy **Azure-előfizetés**. Ha még nem rendelkezik ilyennel, próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 * Ismerje meg, [Hogyan és hol helyezheti üzembe a modelleket Azure Machine learning használatával](how-to-deploy-and-where.md) .
-* A [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/?view=azure-ml-py) **vagy** az [Azure CLI](/cli/azure/?view=azure-cli-latest) és a [Machine learning bővítmény](reference-azure-machine-learning-cli.md).
+* A [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/?view=azure-ml-py) **vagy** az [Azure CLI](/cli/azure/) és a [Machine learning bővítmény](reference-azure-machine-learning-cli.md).
 * A Docker egy működő telepítése a helyi teszteléshez. A Docker telepítésével és ellenőrzésével kapcsolatos információkért lásd: [Tájolás és beállítás](https://docs.docker.com/get-started/) a Docker dokumentációjában.
 
 ## <a name="architectural-overview"></a>Az architektúra áttekintése
@@ -331,7 +331,7 @@ print(local_service.scoring_uri)
 
 ---
 
-Az üzembe helyezés befejezése után megjelenik a pontozási URI. Ebben a helyi telepítésben a következő lesz: `http://localhost:6789/score` . Ha a felhőbe telepíti a szolgáltatást, az az [ml Service show](/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) CLI paranccsal kérheti le a pontozási URI-t.
+Az üzembe helyezés befejezése után megjelenik a pontozási URI. Ebben a helyi telepítésben a következő lesz: `http://localhost:6789/score` . Ha a felhőbe telepíti a szolgáltatást, az az [ml Service show](/cli/azure/ext/azure-cli-ml/ml/service#ext_azure_cli_ml_az_ml_service_show) CLI paranccsal kérheti le a pontozási URI-t.
 
 További információ arról, hogyan hozhat létre olyan ügyfelet, amely a pontozási URI-ra vonatkozó következtetéseket küld: [webszolgáltatásként üzembe helyezett modell felhasználása](how-to-consume-web-service.md).
 

@@ -16,12 +16,12 @@ ms.custom:
 - devx-track-java
 - devx-track-azurecli
 ms.date: 01/27/2021
-ms.openlocfilehash: c0f1272bf195c6d5ef2dfe88cc6541f731fa51c8
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: df6673f6e8e448b0208ee53c17cf86f55d6d9f8f
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928568"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102219165"
 ---
 # <a name="quickstart-send-telemetry-to-an-azure-iot-hub-and-read-it-with-a-java-application"></a>Gyors útmutató: telemetria küldése egy Azure IoT hub-ba, és beolvasása Java-alkalmazással
 
@@ -33,7 +33,7 @@ Ebben a rövid útmutatóban telemetria küld az Azure IoT Hubnek, és elolvasha
 
 * Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-* Java SE Development Kit 8. A [Java hosszú távú Azure-és Azure stack-támogatásában](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)a **hosszú távú támogatás** alatt válassza a **Java 8** lehetőséget.
+* Java SE Development Kit 8. A [Java hosszú távú Azure-és Azure stack-támogatásában](/java/azure/jdk/)a **hosszú távú támogatás** alatt válassza a **Java 8** lehetőséget.
 
     A Java aktuális verzióját a következő paranccsal ellenőrizheti a fejlesztői gépen:
 

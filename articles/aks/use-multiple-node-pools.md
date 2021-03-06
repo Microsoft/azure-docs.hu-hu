@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre és kezelhet több Node-készlete
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 07c4628a17d2c76e8e4608c9c6d059a81a9c378f
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3e029695e9dce79473ada0bae3e7f0bbfd30db89
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182859"
+ms.locfileid: "102218485"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Egy fürthöz több csomópontkészlet létrehozása és felügyelete az Azure Kubernetes Service (AKS) szolgáltatásban
 
@@ -130,9 +130,11 @@ A számítási feladatok esetében előfordulhat, hogy a fürt csomópontjait k�
 #### <a name="limitations"></a>Korlátozások
 
 * A nodepools rendelt összes alhálózatnak ugyanahhoz a virtuális hálózathoz kell tartoznia.
-* A rendszerhüvelyeknek hozzá kell férniük a fürt összes csomópontja számára a kritikus funkciók, például a coreDNS keresztüli DNS-feloldás biztosításához.
-* A csomópont-készlet egyedi alhálózatának hozzárendelése az előzetes verzióban az Azure CNI korlátozódik.
-* Az előzetes verzióban nem támogatott a hálózati házirendek egyedi alhálózattal való használata.
+* A rendszerhüvelyeknek a fürt összes csomópontja/hüvelye számára elérhetőnek kell lenniük a kritikus fontosságú funkciók, például a DNS-feloldás és a bújtatási kubectl naplók/exec/port továbbítási proxyk biztosításához.
+* Ha a fürt létrehozása után kibontja a VNET, frissítenie kell a fürtöt (minden felügyelt clster műveletet végre kell hajtania, de a csomópont-készlet műveletei nem számítanak), mielőtt hozzáad egy alhálózatot az eredeti CIDR kívül. Az AK hibát jelez az ügynök-készletben, de most már eredetileg engedélyezte. Ha nem tudja, hogyan kell összeegyeztetni a fürt fájlját, a támogatási jegyet. 
+* A tarka hálózati házirend nem támogatott. 
+* Az Azure hálózati házirendje nem támogatott.
+* A Kube-proxy egyetlen összefüggő CIDR vár, és három optmizations használja ezt. Tekintse meg ezt a [K.E.P.](https://github.com/kubernetes/enhancements/blob/master/keps/sig-network/20191104-iptables-no-cluster-cidr.md ) és--cluster-CIDR [itt talál](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/) további információt. Az Azure CNI az első csomópont-készlet alhálózatát a Kube-proxy kapja meg. 
 
 Ha egy dedikált alhálózattal rendelkező csomópont-készletet szeretne létrehozni, adja át az alhálózati erőforrás-azonosítót további paraméterként egy csomópont-készlet létrehozásakor.
 

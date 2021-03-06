@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 52413f36a9ba5c7b7a3c68567a65a20bc3ce4090
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c354435f689f5182dd368fd53fdab28f1ab63d48
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585201"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218791"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Naplók és mérőszámok elemzése diagnosztikai beállításokkal
 
@@ -27,7 +27,7 @@ Az Azure Spring Cloud diagnosztikai funkciójának használatával a naplók és
 Válassza ki a figyelni kívánt naplózási kategóriát és metrikai kategóriát.
 
 > [!TIP]
-> Csak szeretné továbbítani a naplókat? Tekintse meg ezt az [Azure CLI-parancsot](/cli/azure/ext/spring-cloud/spring-cloud/app?preserve-view=true&view=azure-cli-latest#ext-spring-cloud-az-spring-cloud-app-logs)!
+> Csak szeretné továbbítani a naplókat? Tekintse meg ezt az [Azure CLI-parancsot](/cli/azure/ext/spring-cloud/spring-cloud/app#ext-spring-cloud-az-spring-cloud-app-logs)!
 
 ## <a name="logs"></a>Naplók
 

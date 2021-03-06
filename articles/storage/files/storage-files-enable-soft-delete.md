@@ -8,12 +8,12 @@ ms.date: 12/01/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 22e4d0998cde14d4461141a53f05cbc19d1ab671
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 77381700f4257006b50e56ab7ffc037ef99d297c
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878969"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218553"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>A Soft delete engedélyezése az Azure-fájlmegosztás esetében
 
@@ -35,7 +35,7 @@ A következő részekben bemutatjuk, hogyan engedélyezheti és használhatja a 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-A Soft delete parancsmagok az [Azure CLI-moduljának](/cli/azure/install-azure-cli?view=azure-cli-latest)2.1.3-es és újabb verzióiban érhetők el.
+A Soft delete parancsmagok az [Azure CLI-moduljának](/cli/azure/install-azure-cli)2.1.3-es és újabb verzióiban érhetők el.
 
 ## <a name="getting-started-with-cli"></a>Első lépések a CLI-vel
 
@@ -151,6 +151,6 @@ Update-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountNa
 ```
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adatvédelem és a helyreállítás más formájával kapcsolatos további információkért tekintse meg a [Azure Files-Pillanatképek megosztásának áttekintését](storage-snapshots-files.md)ismertető cikket.

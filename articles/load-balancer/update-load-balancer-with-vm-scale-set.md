@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/29/2020
 ms.author: irenehua
-ms.openlocfilehash: 952889777e4236d7fa03fad5b1bdbf98499f7066
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 52f2a2ed301bf734ad605a2ee68a0ab672a97014
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721310"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218723"
 ---
 # <a name="update-or-delete-a-load-balancer-used-by-virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportokkal használt terheléselosztó frissítése vagy törlése
 
@@ -30,7 +30,7 @@ Ha a virtuálisgép-méretezési csoportokkal és a Azure Load Balancer egy pél
 
 ## <a name="set-up-a-load-balancer-for-scaling-out-virtual-machine-scale-sets"></a>Terheléselosztó beállítása a virtuálisgép-méretezési csoportok horizontális felskálázásához
 
-Győződjön meg arról, hogy a Azure Load Balancer példánya egy [bejövő NAT](/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest) -készlettel rendelkezik, és hogy a virtuálisgép-méretezési csoport a terheléselosztó backend-készletében van. A Load Balancer automatikusan új bejövő NAT-szabályokat hoz létre a bejövő NAT-készletben, amikor új virtuálisgép-példányok kerülnek a virtuálisgép-méretezési csoportba.
+Győződjön meg arról, hogy a Azure Load Balancer példánya egy [bejövő NAT](/cli/azure/network/lb/inbound-nat-pool) -készlettel rendelkezik, és hogy a virtuálisgép-méretezési csoport a terheléselosztó backend-készletében van. A Load Balancer automatikusan új bejövő NAT-szabályokat hoz létre a bejövő NAT-készletben, amikor új virtuálisgép-példányok kerülnek a virtuálisgép-méretezési csoportba.
 
 Annak ellenőrzését, hogy a bejövő NAT-készlet megfelelően van-e beállítva:
 
@@ -44,7 +44,7 @@ Az egyes bejövő NAT-szabályok nem vehetők fel. A virtuálisgép-méretezési
 
 A virtuálisgép-méretezési csoportokhoz tartozó bejövő NAT-szabályok teljes készletének hozzáadásához először hozzon létre egy bejövő NAT-készletet a terheléselosztó számára. Ezután hivatkozzon a bejövő NAT-készletre a virtuálisgép-méretezési csoport hálózati profiljából. Megjelenik egy teljes példa a CLI használatával.
 
-Az új bejövő NAT-készletnek nem lehetnek átfedésben lévő előtér-porttartomány a meglévő bejövő NAT-készletekkel. A beállított meglévő bejövő NAT-készletek megtekintéséhez használja ezt a CLI- [parancsot](/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest#az_network_lb_inbound_nat_pool_list):
+Az új bejövő NAT-készletnek nem lehetnek átfedésben lévő előtér-porttartomány a meglévő bejövő NAT-készletekkel. A beállított meglévő bejövő NAT-készletek megtekintéséhez használja ezt a CLI- [parancsot](/cli/azure/network/lb/inbound-nat-pool#az_network_lb_inbound_nat_pool_list):
   
 ```azurecli-interactive
   az network lb inbound-nat-pool create 

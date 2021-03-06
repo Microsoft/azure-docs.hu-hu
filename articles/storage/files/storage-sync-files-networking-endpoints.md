@@ -8,12 +8,12 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: f307380114acd4f98d68b580333c4dccc2a7340b
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 97ccbd0858a7b85c4b5d1e460f67416d8139e49a
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201600"
+ms.locfileid: "102218604"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Az Azure File Sync hálózati végpontjainak konfigurálása
 Azure Files és Azure File Sync két fő típusú végpontot biztosít az Azure-fájlmegosztás eléréséhez: 
@@ -34,7 +34,7 @@ Ez a cikk azt feltételezi, hogy:
 
 Továbbá:
 - Ha Azure PowerShell szeretne használni, [telepítse a legújabb verziót](/powershell/azure/install-az-ps).
-- Ha az Azure CLI-t szeretné használni, [telepítse a legújabb verziót](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
+- Ha az Azure CLI-t szeretné használni, [telepítse a legújabb verziót](/cli/azure/install-azure-cli).
 
 ## <a name="create-the-private-endpoints"></a>Saját végpontok létrehozása
 Ha egy Azure-erőforráshoz hoz létre privát végpontot, a rendszer a következő erőforrásokat telepíti:

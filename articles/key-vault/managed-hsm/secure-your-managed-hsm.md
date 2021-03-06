@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 99918d039052c9913400b85ac3caa4a1a5481155
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5a3fcc10f318f2a8065550a48eb2bfb4bbdd4915
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445319"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218400"
 ---
 # <a name="secure-access-to-your-managed-hsms"></a>Biztonságos hozzáférés a felügyelt HSM
 
@@ -40,7 +40,7 @@ Ha a parancssori felülettel szeretne bejelentkezni az Azure-ba, írja be a köv
 az login
 ```
 
-A parancssori felületről való bejelentkezéssel kapcsolatos további információkért lásd: [Bejelentkezés az Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true) használatával
+A parancssori felületről való bejelentkezéssel kapcsolatos további információkért lásd: [Bejelentkezés az Azure CLI](/cli/azure/authenticate-azure-cli) használatával
 
 ## <a name="example"></a>Példa
 
@@ -48,9 +48,9 @@ Ebben a példában egy olyan alkalmazást fejlesztünk, amely egy RSA 2 048 bite
 
 A következő szerepköröket azonosította az alkalmazás felügyeletével, üzembe helyezésével és auditálásával kapcsolatban:
 
-- **Biztonsági csapat** : a KSH (a biztonsági tisztviselő) vagy hasonló közreműködők irodájában dolgozó személyzet. A biztonsági csapat feladata a kulcsok megfelelő megóvása. Az adattitkosításhoz használt RSA-vagy EK-kulcsok az aláíráshoz, valamint az RSA-vagy AES-kulcsok.
-- **Fejlesztők és operátorok** : az alkalmazást fejlesztő és az Azure-ban üzembe helyezett munkatársak. A csapat tagjai nem tartoznak a biztonsági személyzetbe. Nem férhetnek hozzá a bizalmas adatokhoz, például az RSA-kulcsokhoz. Csak az általuk telepített alkalmazások férhetnek hozzá ehhez a bizalmas adatokhoz.
-- **Könyvvizsgálók** : Ez a szerepkör olyan közreműködők számára szól, akik nem tagjai a fejlesztési vagy általános informatikai munkatársainak. A biztonsági szabványoknak való megfelelés biztosítása érdekében áttekintik a tanúsítványok, kulcsok és titkok használatát és karbantartását.
+- **Biztonsági csapat**: a KSH (a biztonsági tisztviselő) vagy hasonló közreműködők irodájában dolgozó személyzet. A biztonsági csapat feladata a kulcsok megfelelő megóvása. Az adattitkosításhoz használt RSA-vagy EK-kulcsok az aláíráshoz, valamint az RSA-vagy AES-kulcsok.
+- **Fejlesztők és operátorok**: az alkalmazást fejlesztő és az Azure-ban üzembe helyezett munkatársak. A csapat tagjai nem tartoznak a biztonsági személyzetbe. Nem férhetnek hozzá a bizalmas adatokhoz, például az RSA-kulcsokhoz. Csak az általuk telepített alkalmazások férhetnek hozzá ehhez a bizalmas adatokhoz.
+- **Könyvvizsgálók**: Ez a szerepkör olyan közreműködők számára szól, akik nem tagjai a fejlesztési vagy általános informatikai munkatársainak. A biztonsági szabványoknak való megfelelés biztosítása érdekében áttekintik a tanúsítványok, kulcsok és titkok használatát és karbantartását.
 
 Van egy másik szerepkör, amely az alkalmazás hatókörén kívül esik: az előfizetés (vagy erőforráscsoport) rendszergazdája. Az előfizetés-rendszergazda beállítja a kezdeti hozzáférési engedélyeket a biztonsági csapat számára. Hozzáférést biztosítanak a biztonsági csapathoz egy olyan erőforráscsoport használatával, amely az alkalmazás által igényelt erőforrásokkal rendelkezik.
 
@@ -79,10 +79,10 @@ A következő táblázat összefoglalja a csoportokra és erőforrásokra vonatk
 | Szerepkör | Felügyeleti sík szerepkör | Adatsík szerepkör |
 | --- | --- | --- |
 | Biztonsági csapat | Felügyelt HSM-közreműködő | Felügyelt HSM-rendszergazda |
-| Fejlesztők és üzemeltetők | Nincsenek | Nincsenek |
-| Ellenőrök | Nincsenek | Felügyelt HSM titkosítási auditor |
-| Az alkalmazás által használt virtuális gép felügyelt azonosítása| Nincsenek | Felügyelt HSM kriptográfiai felhasználó |
-| Az alkalmazás által használt Storage-fiók felügyelt identitása| Nincsenek| Felügyelt HSM szolgáltatás titkosítása |
+| Fejlesztők és üzemeltetők | Nincs | Nincs |
+| Ellenőrök | Nincs | Felügyelt HSM titkosítási auditor |
+| Az alkalmazás által használt virtuális gép felügyelt azonosítása| Nincs | Felügyelt HSM kriptográfiai felhasználó |
+| Az alkalmazás által használt Storage-fiók felügyelt identitása| Nincs| Felügyelt HSM szolgáltatás titkosítása |
 
 A három csapat szerepkörhöz a felügyelt HSM-engedélyek mellett más erőforrásokhoz is hozzá kell férnie. A virtuális gépek (vagy a Azure App Service Web Apps funkciójának üzembe helyezéséhez) a fejlesztőknek és a kezelőknek `Contributor` hozzá kell férniük az ilyen típusú erőforrásokhoz. A könyvvizsgálóknak olvasási hozzáféréssel kell rendelkezniük ahhoz a Storage-fiókhoz, amelyben a felügyelt HSM-naplókat tárolják.
 
@@ -132,13 +132,13 @@ Ez az oktatóanyag csak a legtöbb esetben a hozzáférés-vezérléssel kapcsol
 
 Példánkban egy egyszerű forgatókönyvet ismertetünk. A valós életbeli forgatókönyvek összetettebbek lehetnek. Az engedélyeket a Key Vault igényei szerint módosíthatja. Feltételezzük, hogy a biztonsági csapat biztosítja a kulcs-és titkos referenciákat (URI-k és ujjlenyomatai megfelelnek), amelyeket az DevOps munkatársai használnak az alkalmazásaikban. A fejlesztőknek és az operátoroknak nincs szükségük adatsíkon való hozzáférésre. A Key Vault biztonságossá tételére koncentrálunk. [A virtuális gépek, a](https://azure.microsoft.com/services/virtual-machines/security/) [Storage-fiókok](../../storage/blobs/security-recommendations.md)és az egyéb Azure-erőforrások biztonságossá tételéhez hasonló szempontokat kell figyelembe venni.
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Források
 
 - [Az Azure RBAC dokumentációja](../../role-based-access-control/overview.md)
 - [Azure RBAC: beépített szerepkörök](../../role-based-access-control/built-in-roles.md)
 - [Azure-RBAC kezelése az Azure CLI-vel](../../role-based-access-control/role-assignments-cli.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az első lépéseket ismertető oktatóanyagért lásd: [Mi a felügyelt HSM?](overview.md).
 

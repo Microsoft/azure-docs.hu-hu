@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: jeedes
-ms.openlocfilehash: dc3f307a21b746981a84b1c0747c4b22c448541f
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 71f95b08584a46fccb0975cd9285150573ac02d4
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349905"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218519"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés DocuSign konfigurálása
 
@@ -97,7 +97,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 ## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
 * A Docusign felhasználó szerepkör-vagy engedélyezési profiljának kiépítéséhez használhatja az attribútum-hozzárendelések kifejezését a [switch](../app-provisioning/functions-for-customizing-application-data.md#switch) és a [singleAppRoleAssignment](../app-provisioning/functions-for-customizing-application-data.md#singleapproleassignment) függvények használatával. Az alábbi kifejezés például a "8032066" azonosítót fogja kiépíteni, ha egy felhasználónál az Azure AD-ben hozzá van rendelve a "DS-rendszergazda" szerepkör. Ha a felhasználó nincs hozzárendelve szerepkör az Azure AD-oldalhoz, nem fog semmilyen jogosultsági profilt kiépíteni. Az azonosító a DocuSign- [portálról](https://support.docusign.com/articles/Default-settings-for-out-of-the-box-DocuSign-Permission-Profiles)kérhető le.
 
-Switch (SingleAppRoleAssignment ([appRoleAssignments]), "", "8032066", "DS-rendszergazda")
+Switch (SingleAppRoleAssignment ([appRoleAssignments]), "", "DS-rendszergazda", "8032066")
 
 
 ## <a name="additional-resources"></a>További források

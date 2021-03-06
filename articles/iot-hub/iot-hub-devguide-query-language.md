@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dbdc1c079f7ef2a06ece553e9fec542cbc05ea54
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: cae2bcb1a3302814a426fa0cb2dfb36ba1b013fa
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147666"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218366"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub-lekérdezési nyelv az ikereszközökhöz - és modulokhoz, feladatokhoz, valamint az üzenetirányításhoz
 
@@ -82,7 +82,7 @@ Tegyük fel például, hogy az IoT hub-eszköz ikrek a következő struktúráva
 
 ### <a name="device-twin-queries"></a>Eszközök kettős lekérdezései
 
-A **IoT hub eszközként**szolgáló dokumentum-gyűjteményként teszi elérhetővé az eszközt az ikrek számára. Például a következő lekérdezés a teljes eszköz-készletet kérdezi le:
+A **IoT hub eszközként** szolgáló dokumentum-gyűjteményként teszi elérhetővé az eszközt az ikrek számára. Például a következő lekérdezés a teljes eszköz-készletet kérdezi le:
 
 ```sql
 SELECT * FROM devices
@@ -160,7 +160,7 @@ SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 
 ### <a name="module-twin-queries"></a>Modul – két lekérdezés
 
-Az ikrek modul lekérdezése hasonló az eszközön található ikrek lekérdezéséhez, de egy másik gyűjteményt vagy névteret használ. az **eszközök**helyett az eszközökről kérdez le lekérdezést **. modulok**:
+Az ikrek modul lekérdezése hasonló az eszközön található ikrek lekérdezéséhez, de egy másik gyűjteményt vagy névteret használ. az **eszközök** helyett az eszközökről kérdez le lekérdezést **. modulok**:
 
 ```sql
 SELECT * FROM devices.modules
@@ -204,7 +204,7 @@ A lekérdezési objektum több **következő** értéket tesz elérhetővé a le
 
 ### <a name="nodejs-example"></a>Node.js példa
 
-A lekérdezési funkciót az [Azure IoT Service SDK ](iot-hub-devguide-sdks.md) teszi elérhetővé Node.jsszámára a **beállításjegyzék** -objektumban.
+A lekérdezési funkciót az [Azure IoT Service SDK](iot-hub-devguide-sdks.md) teszi elérhetővé Node.jsszámára a **beállításjegyzék** -objektumban.
 
 Íme egy példa egy egyszerű lekérdezésre:
 
@@ -234,13 +234,13 @@ A lekérdezési objektum több **következő** értéket tesz elérhetővé a le
 ### <a name="limitations"></a>Korlátozások
 
 > [!IMPORTANT]
-> A lekérdezési eredmények néhány percet is igénybe vehetnek az eszközökre vonatkozó legfrissebb értékekkel kapcsolatban. Ha az egyedi eszközökről származó ikreket az azonosító alapján kérdezi le, használja a [Get twin REST API](/java/api/com.microsoft.azure.sdk.iot.device.devicetwin?view=azure-java-stable). Ez az API mindig a legújabb értékeket adja vissza, és magasabb szabályozási korlátokat tartalmaz. A REST API közvetlenül, vagy az egyik [Azure IoT hub Service SDK](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks)-ban is használhatja az egyenértékű funkciókat.
+> A lekérdezési eredmények néhány percet is igénybe vehetnek az eszközökre vonatkozó legfrissebb értékekkel kapcsolatban. Ha az egyedi eszközökről származó ikreket az azonosító alapján kérdezi le, használja a [Get twin REST API](/java/api/com.microsoft.azure.sdk.iot.device.devicetwin). Ez az API mindig a legújabb értékeket adja vissza, és magasabb szabályozási korlátokat tartalmaz. A REST API közvetlenül, vagy az egyik [Azure IoT hub Service SDK](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks)-ban is használhatja az egyenértékű funkciókat.
 
 Az összehasonlítások jelenleg csak az egyszerű típusok (nincsenek objektumok) között támogatottak, például `... WHERE properties.desired.config = properties.reported.config` csak akkor támogatott, ha ezek a tulajdonságok primitív értékeket tartalmaznak.
 
 ## <a name="get-started-with-jobs-queries"></a>Ismerkedés a feladatok lekérdezésekkel
 
-A [feladatok](iot-hub-devguide-jobs.md) eszközök készletén végeznek műveleteket. Minden egyes eszköz tartalmazza azokat a feladatokat, amelyek a **feladatok**nevű gyűjtemény részét képezik.
+A [feladatok](iot-hub-devguide-jobs.md) eszközök készletén végeznek műveleteket. Minden egyes eszköz tartalmazza azokat a feladatokat, amelyek a **feladatok** nevű gyűjtemény részét képezik.
 
 ```json
 {
@@ -316,7 +316,7 @@ A **Devices.Jobs** -lekérdezések jelenleg nem támogatják a következőket:
 
 ## <a name="basics-of-an-iot-hub-query"></a>IoT Hub lekérdezés alapjai
 
-Minden IoT Hub lekérdezés SELECT és FROM záradékból áll, opcionális WHERE és GROUP BY záradékkal. Minden lekérdezés JSON-dokumentumok gyűjteményén fut, például az eszközök ikrek. A FROM záradék jelzi a dokumentum azon gyűjteményét, amelyet meg kell ismételni (**eszközök**, **eszközök. modulok**vagy **Devices.Jobs**). Ezután alkalmazza a szűrőt a WHERE záradékban. Az összesítésekkel a lépés eredményei a GROUP BY záradékban megadott módon vannak csoportosítva. Az egyes csoportok esetében a SELECT záradékban megadott sorok jönnek létre.
+Minden IoT Hub lekérdezés SELECT és FROM záradékból áll, opcionális WHERE és GROUP BY záradékkal. Minden lekérdezés JSON-dokumentumok gyűjteményén fut, például az eszközök ikrek. A FROM záradék jelzi a dokumentum azon gyűjteményét, amelyet meg kell ismételni (**eszközök**, **eszközök. modulok** vagy **Devices.Jobs**). Ezután alkalmazza a szűrőt a WHERE záradékban. Az összesítésekkel a lépés eredményei a GROUP BY záradékban megadott módon vannak csoportosítva. Az egyes csoportok esetében a SELECT záradékban megadott sorok jönnek létre.
 
 ```sql
 SELECT <select_list>
@@ -403,7 +403,7 @@ Magas szintű *kifejezés*:
 * Kiértékeli a JSON-típus egy példányát (például logikai, szám, karakterlánc, tömb vagy objektum).
 * Az az eszköz JSON-dokumentumában és a beépített operátorok és függvények használatával történő folyamatos adatkezeléssel van meghatározva.
 
-A *feltételek* olyan kifejezések, amelyek kiértékelik a logikai értéket. **A logikai** értékektől eltérő állandók **hamisnak**minősülnek. Ez a szabály **Null**, nem **definiált**, minden objektum vagy tömb példányát, bármely karakterláncot és a logikai **hamis**értéket tartalmazza.
+A *feltételek* olyan kifejezések, amelyek kiértékelik a logikai értéket. **A logikai** értékektől eltérő állandók **hamisnak** minősülnek. Ez a szabály **Null**, nem **definiált**, minden objektum vagy tömb példányát, bármely karakterláncot és a logikai **hamis** értéket tartalmazza.
 
 A kifejezések szintaxisa a következő:
 
@@ -454,7 +454,7 @@ A következő operátorok támogatottak:
 | Logikai |ÉS, VAGY NEM |
 | Összehasonlítás |=, !=, <, >, <=, >=, <> |
 
-### <a name="functions"></a>Függvények
+### <a name="functions"></a>Functions
 
 Az ikrek és a feladatok lekérdezése az egyetlen támogatott függvény:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: 75226f92995794221635ced7ee0e285ac824b6e2
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 714fb92e8757fed6e11a09528b60cda3e945175e
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696863"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218893"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Nyilvános Load Balancer létrehozása IPv6-tal az Azure CLI használatával
 
@@ -58,7 +58,7 @@ Terheléselosztó üzembe helyezéséhez hozza létre és konfigurálja a követ
 
 Ebben a példában az Azure CLI-eszközöket egy PowerShell-parancsablakban futtatja. Az olvashatóság és az újrafelhasználás javítása érdekében a PowerShell parancsfájl-kezelési funkcióit használja, nem az Azure PowerShell-parancsmagokat.
 
-1. [Telepítse és konfigurálja az Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) -t a csatolt cikkben leírt lépéseket követve, és jelentkezzen be az Azure-fiókjába.
+1. [Telepítse és konfigurálja az Azure CLI](/cli/azure/install-azure-cli) -t a csatolt cikkben leírt lépéseket követve, és jelentkezzen be az Azure-fiókjába.
 
 2. PowerShell-változók beállítása az Azure CLI-parancsokkal való használathoz:
 

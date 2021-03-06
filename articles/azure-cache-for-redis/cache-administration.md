@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: 156dfd1d9553e369357eb68225e722222a59d847
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a79b0b5b5f21d1c75fec6b062f1ca91cfe9dd1f
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91838670"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102219199"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Az Azure cache felügyelete a Redis-hez
 Ez a témakör azt ismerteti, hogyan hajtható végre olyan adminisztrációs feladatok, mint például a Redis-példányok Azure cache-re való [újraindítása](#reboot) és a [frissítések ütemezése](#schedule-updates) .
@@ -23,7 +23,7 @@ Az **Újraindítás** panel lehetővé teszi a gyorsítótár egy vagy több cso
 
 ![Képernyőkép, amely kiemeli az újraindítás menüpontot.](./media/cache-administration/redis-cache-administration-reboot.png)
 
-Válassza ki az újraindítani kívánt csomópontokat, majd kattintson az **Újraindítás**gombra.
+Válassza ki az újraindítani kívánt csomópontokat, majd kattintson az **Újraindítás** gombra.
 
 ![Képernyőkép, amely megjeleníti, hogy mely csomópontokat lehet újraindítani.](./media/cache-administration/redis-cache-reboot.png)
 
@@ -31,7 +31,7 @@ Ha olyan prémium szintű gyorsítótárral rendelkezik, amelyen engedélyezve v
 
 ![Újraindítás](./media/cache-administration/redis-cache-reboot-cluster.png)
 
-A gyorsítótár egy vagy több csomópontjának újraindításához válassza ki a kívánt csomópontokat, majd kattintson az **Újraindítás**gombra. Ha olyan prémium szintű gyorsítótárral rendelkezik, amelyen engedélyezve van a fürtözés, válassza ki a kívánt szegmenseket az újraindításhoz, majd kattintson az **Újraindítás**gombra. Néhány perc elteltével a kijelölt csomópontok újraindulnak, és néhány perc múlva újra online állapotba kerülnek.
+A gyorsítótár egy vagy több csomópontjának újraindításához válassza ki a kívánt csomópontokat, majd kattintson az **Újraindítás** gombra. Ha olyan prémium szintű gyorsítótárral rendelkezik, amelyen engedélyezve van a fürtözés, válassza ki a kívánt szegmenseket az újraindításhoz, majd kattintson az **Újraindítás** gombra. Néhány perc elteltével a kijelölt csomópontok újraindulnak, és néhány perc múlva újra online állapotba kerülnek.
 
 Az ügyfélalkalmazások hatása attól függően változik, hogy melyik csomópontokat kívánja újraindítani.
 
@@ -57,6 +57,8 @@ Igen, ha újraindítja a gyorsítótárat, az összes ügyfél-kapcsolat törlő
 > 
 > 
 
+
+
 ### <a name="will-i-lose-data-from-my-cache-if-i-do-a-reboot"></a>Elveszítem az adatok a gyorsítótárból, ha újraindítást végezek?
 Ha a **fő** -és a **replika** -csomópontokat is újraindítja, akkor a gyorsítótárban lévő összes adat (vagy abban az esetben, ha egy prémium szintű gyorsítótár használata engedélyezve van a fürtözéssel) elveszik, de ez nem garantált. Ha beállította az [adatmegőrzést](cache-how-to-premium-persistence.md), a rendszer visszaállítja a legutóbbi biztonsági mentést, ha a gyorsítótár online állapotba kerül, de a biztonsági mentés után történt gyorsítótár-írások elvesznek.
 
@@ -69,12 +71,13 @@ Igen, a PowerShell-utasításokért lásd: az [Azure cache újraindítása a Red
 A **frissítések ütemezett frissítése** panelen megadhatja a gyorsítótár-példány karbantartási időszakát. A karbantartási időszak lehetővé teszi a hét azon napjának és időpontjának szabályozását, amely alatt a gyorsítótárat üzemeltető virtuális gépek (ek) frissíthetők. Az Azure cache for Redis az Ön által megadott időszakon belül a Redis-kiszolgáló szoftverének megkezdéséhez és befejezéséhez szükséges legjobb megoldás.
 
 > [!NOTE] 
-> A karbantartási időszak csak a Redis-kiszolgáló frissítéseire vonatkozik, és nem a gyorsítótárat üzemeltető virtuális gépek operációs rendszerének összes Azure-frissítésére vagy frissítésére.
+> A karbantartási időszak a Redis kiszolgálói frissítéseire és frissítéseire vonatkozik a gyorsítótárat üzemeltető virtuális gépek operációs rendszerének esetében. A karbantartási időszak nem vonatkozik a gazdagép operációs rendszerének frissítéseire a gyorsítótárban lévő virtuális gépeket vagy más Azure hálózati összetevőket üzemeltető gazdagépeken. Ritka esetekben, amikor a gyorsítótárak régebbi modelleken futnak (ha a gyorsítótár DNS-neve a "cloudapp.net", a "chinacloudapp.cn", a "usgovcloudapi.net" vagy a "cloudapi.de" utótagot oldja fel, akkor a karbantartási időszak nem lesz érvényes a vendég operációs rendszer frissítéseire.
 >
+
 
 ![Frissítések ütemezése](./media/cache-administration/redis-schedule-updates.png)
 
-A karbantartási időszak megadásához tekintse meg a kívánt napokat, és minden nap esetében határozza meg a karbantartási időszak kezdő óráját, majd kattintson **az OK**gombra. Vegye figyelembe, hogy a karbantartási időszak időpontja UTC. 
+A karbantartási időszak megadásához tekintse meg a kívánt napokat, és minden nap esetében határozza meg a karbantartási időszak kezdő óráját, majd kattintson **az OK** gombra. Vegye figyelembe, hogy a karbantartási időszak időpontja UTC. 
 
 A frissítések alapértelmezett és minimális karbantartási időszaka öt óra. Ez az érték nem konfigurálható a Azure Portalból, de a `MaintenanceWindow` [New-AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) parancsmag paraméterének használatával konfigurálhatja a PowerShellben. További információ: kezelhetem az ütemezett frissítéseket a PowerShell, a CLI vagy más felügyeleti eszközök használatával?
 

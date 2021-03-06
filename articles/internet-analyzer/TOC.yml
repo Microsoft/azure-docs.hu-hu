@@ -25,7 +25,7 @@
     - name: Az Internet Analyzer hibaelhárítása
       href: troubleshoot.md
     - name: Internet Analyzer – Parancssori felülettel kapcsolatos referencia
-      href: /cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest
+      href: /cli/azure/ext/internet-analyzer/internet-analyzer
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Blog
