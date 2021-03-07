@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: ad16b63360364acd88ab12fb4715d1fd3115c0fb
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 71ba3d99ceee89464dafdf5bf4c16e70df146bef
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209372"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426076"
 ---
 # <a name="analyze-data-in-a-storage-account"></a>A Storage-fiókban tárolt adatelemzés
 
@@ -45,7 +45,7 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats_parquetformat")
 A munkaterület alapértelmezett ADLS Gen2 fiókjában lévő adatait elemezheti, vagy egy ADLS Gen2-vagy blob Storage-fiókot a munkaterülethez társíthat "**Manage**" > "**társított szolgáltatások**" > "**New**" (az alábbi lépések az elsődleges ADLS Gen2 fiókra vonatkoznak).
 
 1. A szinapszis Studióban nyissa meg **az** adatközpontot, majd kattintson a **csatolt** elemre.
-1. Nyissa meg a **Storage accounts**  >  **sajátmunkaterület (Primary-contosolake)**.
+1. Nyissa meg az Azure-beli **Gen2**  >  **sajátmunkaterület (Primary-contosolake)**.
 1. Válassza a **felhasználók (elsődleges)** lehetőséget. Ekkor megjelenik a **NYCTaxi** mappa. A belsejében két, **PassengerCountStats_csvformat** és **PassengerCountStats_parquetformat** nevű mappát kell látnia.
 1. Nyissa meg a **PassengerCountStats_parquetformat** mappát. A (z) rendszerben egy, a következőhöz hasonló nevű parketta-fájl jelenik meg: `part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet` .
 1. Kattintson a jobb gombbal a **. parketta** elemre, majd válassza az **új jegyzetfüzet** lehetőséget, majd válassza **a betöltés a DataFrame** lehetőséget. Egy új jegyzetfüzet jön létre a következőhöz hasonló cellával:

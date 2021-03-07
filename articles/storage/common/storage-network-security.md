@@ -5,16 +5,16 @@ services: storage
 author: santoshc
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/05/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 4aa4e0566093f01e5f14691158f37c630c753b00
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9e395ce996bf7e6889a27fcb04b0e643cf63c58b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101714748"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430887"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
 
@@ -136,7 +136,7 @@ A regionális leállás során felmerülő vész-helyreállítás tervezése sor
 
 ### <a name="required-permissions"></a>Szükséges engedélyek
 
-Ha egy virtuális hálózati szabályt egy Storage-fiókra szeretne alkalmazni, a felhasználónak rendelkeznie kell a megfelelő engedélyekkel az alhálózatok hozzáadásához. A szükséges engedély *egy alhálózathoz való csatlakoztatási szolgáltatás* , amely a *Storage-fiók közreműködői* beépített szerepkör részét képezi. Az egyéni szerepkör-definíciók is hozzáadhatók.
+Ha egy virtuális hálózati szabályt egy Storage-fiókra szeretne alkalmazni, a felhasználónak rendelkeznie kell a megfelelő engedélyekkel az alhálózatok hozzáadásához. A szabályok alkalmazását egy olyan [Storage-fiók közreműködői](../../role-based-access-control/built-in-roles.md#storage-account-contributor) vagy egy felhasználó hajthatja végre, aki `Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action` egy egyéni Azure-szerepkörön keresztül engedélyt kapott az [Azure erőforrás-szolgáltatói műveletre](../../role-based-access-control/resource-provider-operations.md#microsoftnetwork) .
 
 A Storage-fiók és a hozzáférést biztosító virtuális hálózatok különböző előfizetésekben lehetnek, beleértve az olyan előfizetéseket, amelyek egy másik Azure AD-bérlő részét képezik.
 

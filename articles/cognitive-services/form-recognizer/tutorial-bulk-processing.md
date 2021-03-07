@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 01/04/2021
 ms.author: pafarley
-ms.openlocfilehash: d0c95312e1794e2f78bbbef217ef5530a993146d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 5b220652009f54482c757f01232517569596c562
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102040906"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102423896"
 ---
 # <a name="tutorial-extract-form-data-in-bulk-by-using-azure-data-factory"></a>Oktatóanyag: adatok tömeges kinyerése Azure Data Factory használatával
 
@@ -43,10 +43,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/).
-* Az Azure <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" -előfizetés létrehozása után hozzon létre egy űrlap-felismerő erőforrást "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Az Azure Portal a kulcs és a végpont beszerzéséhez. Az erőforrás üzembe helyezése után válassza az **Erőforrás megnyitása** lehetőséget.
+* Az Azure <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" -előfizetés létrehozása után hozzon létre egy űrlap-felismerő erőforrást "  target="_blank"> </a> Az Azure Portal a kulcs és a végpont beszerzéséhez. Az erőforrás üzembe helyezése után válassza az **Erőforrás megnyitása** lehetőséget.
     * Az alkalmazás az űrlap-felismerő API-hoz való összekapcsolásához a létrehozott erőforrás kulcsára és végpontra lesz szüksége. Ebben a rövid útmutatóban később beillesztheti a kulcsot és a végpontot a kódjába.
     * A szolgáltatás kipróbálásához az ingyenes díjszabási szintet (F0) használhatja. Ezt követően később is frissítheti az éles környezetben futó fizetős csomagot.
 * Legalább öt azonos típusú űrlap. Ideális esetben ez a munkafolyamat nagy méretű dokumentumok támogatását jelenti. A betanítási adatkészlet összeállításával kapcsolatos tippekért és lehetőségekért tekintse meg [a képzési adatkészlet létrehozása](./build-training-data-set.md) című témakört. Ebben az oktatóanyagban a [minta adatkészlethez](https://go.microsoft.com/fwlink/?linkid=2128080)tartozó Train mappában található fájlokat használhatja.
+
 
 ## <a name="project-architecture"></a>Projekt architektúrája 
 

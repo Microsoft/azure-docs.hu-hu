@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 02/05/2021
+ms.date: 03/05/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a66eff14490add8269082e4e54f077d1d9db7e02
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: b7f79bebce5a086b268f4fc1080c33517555fb39
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102206003"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431540"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Az Azure Virtual WAN a GA-ban található?
 
@@ -93,7 +93,7 @@ A P2S-ügyfelekhez két lehetőség van a DNS-kiszolgálók hozzáadására. Az 
 
 ### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>Felhasználói VPN (pont – hely) esetén – hány ügyfél támogatott?
 
-Minden felhasználói VPN P2S-átjáró két példánnyal rendelkezik, és mindegyik példány támogatja a méretezési egység módosításait. A 1-3-es méretezési egység támogatja a 500-kapcsolatokat, a skálázási egység 4-6 támogatja a 1000-kapcsolatokat, a Scale Unit 7-12 támogatja az 5000-kapcsolatokat és a Scale Unit 13-18 támogatja a legfeljebb 10 000 kapcsolatot
+Minden felhasználói VPN P2S-átjáró két példánnyal rendelkezik. Az egyes példányok bizonyos számú kapcsolatot támogatnak a skálázási egység változásainál. A 1-3-es méretezési egység támogatja a 500-kapcsolatokat, a skálázási egység 4-6 támogatja a 1000 kapcsolatokat, a Scale Unit 7-12 támogatja az 5000-kapcsolatokat, és a Scale Unit 13-18 támogatja a legfeljebb 10 000 kapcsolatot.
 
 Tegyük fel például, hogy a felhasználó 1 méretezési egységet választ. Mindegyik skálázási egység egy aktív-aktív átjáró üzembe helyezését jelentené, és a példányok mindegyike (ebben az esetben 2) legfeljebb 500 kapcsolatot támogat. Mivel az 500-os kapcsolatok * 2 átjárón keresztül, nem jelenti azt, hogy az 500 helyett 1000-et tervez ehhez a skálázási egységhez. Előfordulhat, hogy olyan példányokat kell kiszolgálni, amelyekben az extra 500-kapcsolat megszakad, ha túllépi az ajánlott kapcsolatok számát. Ügyeljen arra is, hogy az állásidőt úgy tervezze meg, hogy a méretezési egység vertikális fel-vagy leskálázását választja, vagy ha módosítani szeretné a pont – hely konfigurációt a VPN-átjárón.
 
@@ -125,7 +125,7 @@ Nem. Bármely olyan VPN-kompatibilis eszközt használhat, amely megfelel az Azu
 
 ### <a name="how-do-virtual-wan-partners-automate-connectivity-with-azure-virtual-wan"></a>Hogyan csatlakozhatnak a Virtual WAN-partnerek automatikusan az Azure Virtual WAN-hoz?
 
-A szoftveralapú csatlakozási megoldások jellemzően vezérlővel vagy eszközkiépítési központtal kezelik a kompatibilis eszközöket. A vezérlők Azure API-kat is használhatnak az Azure Virtual WAN-hoz való automatikus csatlakozáshoz. Az Automation magában foglalja a fiókirodák feltöltését, az Azure-konfiguráció letöltését, az IPSec-alagutak Azure-beli virtuális hubokba való beállítását, valamint a kapcsolat automatikus beállítását az Azure Virtual WAN-hoz. Ha több száz ága van, a virtuális WAN CPE-partnerekkel való csatlakozás egyszerű, mivel a bevezetési élmény eltartja a nagyméretű IPsec-kapcsolatok beállításának, konfigurálásának és felügyeletének szükségességét. További információ: [Virtual WAN partner Automation](../articles/virtual-wan/virtual-wan-configure-automation-providers.md).
+A szoftveralapú csatlakozási megoldások jellemzően vezérlővel vagy eszközkiépítési központtal kezelik a kompatibilis eszközöket. A vezérlők Azure API-kat is használhatnak az Azure Virtual WAN-hoz való automatikus csatlakozáshoz. Az Automation magában foglalja a fiókirodák feltöltését, az Azure-konfiguráció letöltését, az IPsec-alagutak Azure-beli virtuális hubokba való beállítását, valamint a kapcsolat automatikus beállítását az Azure Virtual WAN-hoz. Ha több száz ága van, a virtuális WAN CPE-partnerekkel való csatlakozás egyszerű, mivel a bevezetési élmény eltartja a nagyméretű IPsec-kapcsolatok beállításának, konfigurálásának és felügyeletének szükségességét. További információ: [Virtual WAN partner Automation](../articles/virtual-wan/virtual-wan-configure-automation-providers.md).
 
 ### <a name="what-if-a-device-i-am-using-is-not-in-the-virtual-wan-partner-list-can-i-still-use-it-to-connect-to-azure-virtual-wan-vpn"></a>Mi a teendő, ha a virtuális WAN-partnerek listáján nem szerepel a használni kívánt eszköz? Használhatom továbbra is az Azure Virtual WAN VPN-hez való csatlakozáshoz?
 
@@ -133,7 +133,7 @@ Igen, amíg az eszköz támogatja az IPsec-IKEv1 vagy a IKEv2. A virtuális WAN-
 
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>Hogyan készülhetnek elő a szolgáltatásra a meglévő partnerek listáján még nem szereplő új partnerek?
 
-Minden virtuális WAN API nyitott API. A technikai megvalósíthatóság értékeléséhez áttekintheti a [Virtual WAN partner Automation](../articles/virtual-wan/virtual-wan-configure-automation-providers.md) dokumentációját. Ideális esetben a partner olyan eszközzel rendelkezik, amely támogatja az IKEv1 vagy az IKEv2 IPsec-kapcsolatot. Miután a vállalat befejezte a CPE-eszközre vonatkozó automatizálási munkát a fent ismertetett automatizálási irányelvek alapján, elérheti a azurevirtualwan@microsoft.com [partnereken keresztüli kapcsolatait]( ../articles/virtual-wan/virtual-wan-locations-partners.md#partners). Ha Ön olyan ügyfél, amely egy adott céges megoldást szeretne virtuális WAN-partnerként felvenni, forduljon a virtuális WAN-hoz, és küldjön e-mailt a címre azurevirtualwan@microsoft.com .
+Minden virtuális WAN API nyitott API. A technikai megvalósíthatóság értékeléséhez áttekintheti a [Virtual WAN partner Automation](../articles/virtual-wan/virtual-wan-configure-automation-providers.md) dokumentációját. Ideális esetben a partner olyan eszközzel rendelkezik, amely támogatja az IKEv1 vagy az IKEv2 IPsec-kapcsolatot. Miután a vállalat befejezte a CPE-eszközre vonatkozó automatizálási munkát a fent ismertetett automatizálási irányelvek alapján, elérheti a azurevirtualwan@microsoft.com [partnereken keresztüli kapcsolatait]( ../articles/virtual-wan/virtual-wan-locations-partners.md#partners). Ha Ön olyan ügyfél, amely szeretné, hogy egy adott vállalati megoldás virtuális WAN-partnerként jelenjen meg, a vállalat a következő e-mail címre küldi a kapcsolatot a virtuális HÁLÓZATtal: azurevirtualwan@microsoft.com .
 
 ### <a name="how-is-virtual-wan-supporting-sd-wan-devices"></a>Hogyan támogatja a virtuális WAN az SD-WAN-eszközöket?
 
@@ -149,7 +149,7 @@ Egy fiókirodából vagy VPN-eszközről az Azure Virtual WAN-ba létesített ka
 
 ### <a name="what-happens-if-the-on-premises-vpn-device-only-has-1-tunnel-to-an-azure-virtual-wan-vpn-gateway"></a>Mi történik, ha a helyszíni VPN-eszköznek csak 1 alagútja van egy Azure-beli virtuális WAN VPN-átjáróhoz?
 
-Az Azure-beli virtuális WAN-kapcsolat 2 alagútból áll. Egy virtuális WAN VPN-átjáró üzembe helyezése aktív-aktív módban lévő virtuális központban történik, ami azt jelenti, hogy külön alagutak találhatók a helyszíni eszközöktől a különálló példányokon. Ez az összes felhasználóra vonatkozó javaslat. Ha azonban a felhasználó úgy dönt, hogy csak 1 alagúttal rendelkezik a virtuális WAN VPN Gateway példányai közül, ha valamilyen okból (karbantartás, javítás stb.) az átjáró példányát offline állapotba helyezi, az alagút átkerül a másodlagos aktív példányra, és a felhasználó újracsatlakozást fog tapasztalni. A BGP-munkamenetek nem kerülnek át a példányokra.
+Az Azure-beli virtuális WAN-kapcsolat 2 alagútból áll. Egy virtuális WAN VPN-átjáró üzembe helyezése aktív-aktív módban lévő virtuális központban történik, ami azt jelenti, hogy külön alagutak találhatók a helyszíni eszközöktől a különálló példányokon. Ez az összes felhasználóra vonatkozó javaslat. Ha azonban a felhasználó úgy dönt, hogy csak 1 alagúttal rendelkezik az egyik virtuális WAN VPN Gateway-példányhoz, ha valamilyen okból kifolyólag (karbantartás, javítás stb.) az átjáró példánya offline állapotba kerül, az alagút át lesz helyezve a másodlagos aktív példányra, és a felhasználó újracsatlakozást tapasztalhat. A BGP-munkamenetek nem kerülnek át a példányokra.
 
 ### <a name="can-the-on-premises-vpn-device-connect-to-multiple-hubs"></a>Csatlakozhat a helyszíni VPN-eszköz több hubhoz is?
 
@@ -213,7 +213,7 @@ A hub teljes VPN-átviteli sebessége a VPN-átjáró kiválasztott méretezési
 
 ### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>Használhatom a NAT-T-T a VPN-kapcsolatokon?
 
-Igen, a NAT-bejárás (NAT-T) támogatott. A virtuális WAN VPN Gateway nem hajtja végre a NAT-hoz hasonló funkciókat a belső csomagokon az IPsec-alagutak között. Ebben a konfigurációban ellenőrizze, hogy a helyszíni eszköz kezdeményezi-e az IPSec-alagutat.
+Igen, a NAT-bejárás (NAT-T) támogatott. A virtuális WAN VPN Gateway nem hajtja végre a NAT-hoz hasonló funkciókat a belső csomagokon az IPsec-alagutak között. Ebben a konfigurációban győződjön meg arról, hogy a helyszíni eszköz kezdeményezi az IPsec-alagutat.
 
 ### <a name="i-dont-see-the-20-gbps-setting-for-the-virtual-hub-in-portal-how-do-i-configure-that"></a>Nem látom a 20 GB/s beállítást a virtuális hubhoz a portálon. Hogyan konfigurálja?
 
@@ -305,5 +305,4 @@ Igen. Az Azure Marketplace-en keresztül engedélyezett felügyelt szolgáltató
 
 ### <a name="how-does-virtual-wan-hub-routing-differ-from-azure-route-server-in-a-vnet"></a>Miben különbözik a virtuális WAN hub útválasztása az Azure Route Server VNet?
 
-Az Azure Route Server egy Border Gateway Protocol (BGP) társítási szolgáltatást biztosít, amelyet a NVA (hálózati virtuális berendezés) használhat az útválasztási kiszolgálótól érkező útvonalak megismerésére egy DIY hub-VNet. A virtuális WAN-útválasztás többek között lehetővé teszi a VNET, például a VNET tranzit-útválasztást, az egyéni útválasztást, az egyéni útvonal-társítást és a propagálást, valamint egy nulla érintéses teljes körű rácsvonal-szolgáltatást, valamint a ExpressRoute, a webhely VPN, a távoli felhasználó/nagy léptékű P2S VPN és a Secure hub (Azure Firewall) képességeit. Ha a NVA és az Azure útválasztó kiszolgáló között hoz létre Border Gateway Protocol (BGP) társítást, akkor az IP-címeket a virtuális hálózata számára is meghirdetheti a NVA. Az összes olyan speciális útválasztási lehetőség esetében, mint az átjárási útválasztás, az egyéni útválasztás stb., a virtuális WAN-útválasztást használhatja.
-
+Az Azure Route Server egy Border Gateway Protocol (BGP) társ-szolgáltatási szolgáltatást biztosít, amelyet a NVA (hálózati virtuális berendezés) használhat az útválasztási kiszolgálótól érkező útvonalak megismeréséhez egy DIY hub-VNet. A virtuális WAN-útválasztás több képességet biztosít, többek között a VNet, az egyéni útválasztást, az egyéni útvonal-társítást és a propagálást, valamint egy nulla érintéses, teljes mértékben szembőségű hub-szolgáltatást a ExpressRoute, a VNet, a távoli felhasználó/nagy léptékű P2S VPN és a Secure hub (Azure Firewall) képességeivel együtt. Ha a NVA és az Azure Route Server közötti BGP-társat hoz létre, akkor a NVA származó IP-címeket a virtuális hálózatra is meghirdetheti. Az összes olyan speciális útválasztási funkcióhoz, mint például az árutovábbítási útválasztás, az egyéni útválasztás stb., a virtuális WAN-útválasztást használhatja.

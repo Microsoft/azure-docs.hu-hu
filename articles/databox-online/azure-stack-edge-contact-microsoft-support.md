@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/07/2021
+ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 411757f4ef4e33ccbc8a69ca2b40598b51c6d13b
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: f76652600f42d7e82914836537935ac9a74decb4
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790833"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102436794"
 ---
 # <a name="open-a-support-ticket-for-azure-stack-edge-pro-and-azure-data-box-gateway"></a>Támogatási jegy megnyitása Azure Stack Edge Pro-hoz és Azure Data Box Gateway
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-databox-gateway-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-databox-gateway-sku.md)]
 
 Ez a cikk Azure Stack Edge Pro-re vonatkozik, és Azure Data Box Gateway mindkettőt az Azure Stack Edge Pro/Azure Data Box Gateway szolgáltatás kezeli. Ha problémák merülnek fel a szolgáltatással kapcsolatban, létrehozhat egy szolgáltatási kérelmet a technikai támogatáshoz. Ez a cikk végigvezeti a következő lépéseken:
 
@@ -39,7 +41,7 @@ Hozzon létre egy támogatási kérést a következő lépésekkel:
     7. A kiválasztott probléma típusa alapján válasszon ki egy megfelelő **problémát altípust**.
     8. Válassza a **tovább lehetőséget: megoldások >>**.
 
-        ![Alapbeállítások](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-1.png)
+        ![Alapvető beállítások](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-1.png)
 
 3. A **részletek** lapon hajtsa végre a következő lépéseket:
 
@@ -96,7 +98,7 @@ A támogatási jegy létrehozása után a jegyet a teljes életciklusán kereszt
 
 3. Válasszon ki egy támogatási kérést, és kattintson rá. Megtekintheti a kérelem állapotát és részleteit. Ha ezt a kérést szeretné követni, kattintson az **+ új üzenet** elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan lehet [elhárítani a Azure stack Edge Pro-val kapcsolatos problémákat](azure-stack-edge-troubleshoot.md).
 Ismerje meg, hogyan lehet [elhárítani a Data Box Gateway kapcsolatos problémákat](../databox-gateway/data-box-gateway-troubleshoot.md).

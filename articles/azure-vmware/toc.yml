@@ -4,6 +4,8 @@
   items:
     - name: Az Azure VMware Solution ismertetése
       href: introduction.md
+    - name: Platform frissítései
+      href: azure-vmware-solution-platform-updates.md
 - name: Első lépések
   items:
     - name: 0 – Az üzembe helyezés megtervezése

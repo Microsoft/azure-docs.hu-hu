@@ -1,21 +1,23 @@
 ---
-title: Alkalmazás üzembe helyezése `PHP Guestbook` az arc-kompatibilis Kubernetes Azure stack Edge Pro GPU-eszközön | Microsoft Docs
+title: PHP-alkalmazás üzembe helyezése `Guestbook` az arc-kompatibilis Kubernetes Azure stack Edge Pro GPU-eszközön | Microsoft Docs
 description: Leírja, hogyan helyezhet üzembe egy PHP `Guestbook` állapot nélküli alkalmazást a Redis használatával a GitOps-mel a Azure stack Edge Pro-eszközön lévő arc-kompatibilis Kubernetes-fürtön.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/25/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: ba72617444a2c7ec30e4d1d25afe1edcda16ff35
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: f47f795335204ecd0c74463b76583d7dd79f8532
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804882"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102436430"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>PHP állapot nélküli alkalmazás üzembe helyezése a `Guestbook` Redis on arc enabled Kubernetes-fürtön Azure stack Edge Pro GPU-val
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Ez a cikk bemutatja, hogyan hozhat létre és helyezhet üzembe egy egyszerű, többrétegű webes alkalmazást a Kubernetes és az Azure arc használatával. Ez a példa a következő összetevőkből áll:
 
@@ -178,6 +180,6 @@ C:\Users\user>
 ```-->
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [figyelheti a Kubernetes irányítópultot a Azure stack Edge Pro-eszközön üzemelő példányok figyelésére](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)

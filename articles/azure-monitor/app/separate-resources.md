@@ -3,12 +3,12 @@ title: A Application Insights üzembe helyezésének megtervezése – egy vagy 
 description: A különböző erőforrásokhoz való közvetlen telemetria fejlesztési, tesztelési és üzemi bélyegzők.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 3964cddcf27a4b2c7397b508ccb3cc8928bd04ad
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9a60981e692a45dd3630073300b206289cfd2a30
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589534"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424665"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Hány Application Insights erőforrást kell üzembe helyezni
 
@@ -32,6 +32,9 @@ Minden Application Insights erőforráshoz elérhető metrikák tartoznak. Ha a 
 -   Ha nem kell a számlázási/kvótákat az összetevőktől eltérő módon kezelni.
 -   Ha az API-kulcs rendben van, az összes összetevővel azonos hozzáférése van az adatokhoz. És a 10 API-kulcs elegendő a szükségletek kielégítéséhez.
 -   Ha nem szeretné, hogy ugyanazokat az intelligens észlelési és munkaelem-integrációs beállításokat az összes szerepkörbe feldolgozza.
+
+> [!NOTE]
+> Ha több Application Insights erőforrást szeretne összevonni, a meglévő alkalmazás-összetevőket egy új, összevont Application Insights-erőforrásra irányíthatja. A régi erőforrásban tárolt telemetria nem kerül át az új erőforrásra, ezért csak akkor törölje a régi erőforrást, ha elegendő telemetria van az új erőforrásban az üzletmenet folytonossága érdekében.
 
 ### <a name="other-things-to-keep-in-mind"></a>További tudnivalók a következőkről:
 

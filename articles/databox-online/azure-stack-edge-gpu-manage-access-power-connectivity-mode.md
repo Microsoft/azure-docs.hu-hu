@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/28/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: b1b5c236c147f060ca1c05e8ed9de12e7e88cf68
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 39990a557315c3fcc79f2b9dab59f25f758ab2bd
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99061807"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443114"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro-gpu"></a>A Azure Stack Edge Pro GPU hozzáférés-, energiagazdálkodási és csatlakozási módjának kezelése
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Ez a cikk azt ismerteti, hogyan kezelhető a Azure Stack Edge Pro és a GPU-eszköz hozzáférésének, teljesítményének és csatlakozási módjának kezelése. Ezek a műveletek a helyi webes felületen vagy a Azure Portalon keresztül hajthatók végre.
 

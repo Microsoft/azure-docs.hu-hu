@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bbcc60070a05155a6143d3f1ff4689d44de7b3c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be87251c24ee51e931dc45754b070718d9685a3c
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88944425"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434581"
 ---
 :::row:::
     :::column span="3":::
-        A .NET Speech SDK NuGet-csomagként érhető el, és a .NET Standard 2,0-es implementációjában további információkat talál a <a href="https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech" target="_blank">Microsoft. CognitiveServices <span class="docon docon-navigate-external x-hidden-focus"></span> . Speech </a>témakörben.
+        A .NET Speech SDK NuGet-csomagként érhető el, és a .NET Standard 2,0-es implementációjában további információkat talál a <a href="https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech" target="_blank">Microsoft. CognitiveServices. Speech </a>témakörben.
     :::column-end:::
     :::column:::
         <br>
@@ -40,4 +40,4 @@ Install-Package Microsoft.CognitiveServices.Speech
 
 #### <a name="additional-resources"></a>További források
 
-- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp" target="_blank">.NET Core, .NET-keretrendszer, Unity, UWP és Xamarin rövid útmutató C#-forráskód <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp" target="_blank">.NET Core, .NET-keretrendszer, Unity, UWP és Xamarin rövid útmutató C#-forráskód </a>

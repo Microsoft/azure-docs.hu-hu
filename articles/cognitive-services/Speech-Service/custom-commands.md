@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 40736764cf9cec6f652e0147eb25d83f15c5bee2
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e4ae8a09a554afe232091b68888af17dfa096771
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024942"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426469"
 ---
 # <a name="what-is-custom-commands"></a>Mik azok az egyéni parancsok?
 
@@ -36,7 +36,7 @@ Az egyéni parancsok jó jelöltje egy rögzített, jól definiált változóval
 
 ## <a name="getting-started-with-custom-commands"></a>Egyéni parancsok – első lépések
 
-Célunk, hogy egyéni parancsokkal csökkentse a kognitív terhelést, hogy megismerje a különböző technológiákat, és koncentráljon a hangvezérelt alkalmazás létrehozására. Az <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Azure Speech-erőforrások <span class="docon docon-navigate-external x-hidden-focus"></span> létrehozására </a>szolgáló egyéni parancsok használatának első lépése. Megadhatja az egyéni parancsok alkalmazást a Speech Studióban, és közzéteheti azt, amely után az eszközön futó alkalmazások kommunikálhatnak a Speech SDK használatával.
+Célunk, hogy egyéni parancsokkal csökkentse a kognitív terhelést, hogy megismerje a különböző technológiákat, és koncentráljon a hangvezérelt alkalmazás létrehozására. Az <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Azure Speech-erőforrások létrehozására </a>szolgáló egyéni parancsok használatának első lépése. Megadhatja az egyéni parancsok alkalmazást a Speech Studióban, és közzéteheti azt, amely után az eszközön futó alkalmazások kommunikálhatnak a Speech SDK használatával.
 
 #### <a name="authoring-flow-for-custom-commands"></a>Egyéni parancsok létrehozási folyamata
    ![Egyéni parancsok létrehozási folyamata](media/voice-assistants/custom-commands-flow.png "Az egyéni parancsok létrehozási folyamata")

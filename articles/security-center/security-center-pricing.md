@@ -7,15 +7,17 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: overview
 ms.date: 02/14/2021
-ms.openlocfilehash: 7ca8a89cc93cc36d790eca7b19665e5bfed9695c
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: e72e312e932e71d4dac8532983c2c96ba105ba3b
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099103"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439476"
 ---
 # <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Azure Security Center Free vs Azure Defender engedélyezve
 Az Azure Defender az első 30 napon belül díjmentes. 30 nap elteltével a szolgáltatás használatának folytatásához automatikusan elindul a használati díj.
+
+A **díjszabási & beállítások** oldaláról a gyors útmutató [: az Azure Defender engedélyezése](enable-azure-defender.md)című témakörben leírtak szerint lehet frissíteni. A díjszabással kapcsolatos részletekért a választott pénznemben és a régiója szerint tekintse meg a [Security Center díjszabását](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="what-are-the-benefits-of-enabling-azure-defender"></a>Milyen előnyökkel jár az Azure Defender engedélyezése?
 
@@ -70,14 +72,14 @@ Security Center két ajánlattal rendelkezik:
 ### <a name="how-do-i-enable-azure-defender-for-my-subscription"></a>Hogyan engedélyezhetem az Azure Defendert az előfizetéshez? 
 Az előfizetéshez az alábbi módokon engedélyezheti az Azure Defender használatát: 
 
-|Metódus  |Utasítások  |
-|---------|---------|
-|A Azure Portal Azure Security Center lapja|[Az Azure Defender engedélyezése](enable-azure-defender.md)|
-|REST API|[Díjszabási API](/rest/api/securitycenter/pricings)|
-|Azure CLI|[az Security díjszabása](/cli/azure/security/pricing)|
-|PowerShell|[Set-AzSecurityPricing](/powershell/module/az.security/set-azsecuritypricing)|
-|Azure Policy|[Csomagok díjszabása](https://github.com/Azure/Azure-Security-Center/blob/master/Pricing%20%26%20Settings/ARM%20Templates/Set-ASC-Bundle-Pricing.json)|
-|||
+| Metódus                                          | Utasítások                                                                                                                                       |
+|-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| A Azure Portal Azure Security Center lapja | [Az Azure Defender engedélyezése](enable-azure-defender.md)                                                                                                  |
+| REST API                                        | [Díjszabási API](/rest/api/securitycenter/pricings)                                                                                                  |
+| Azure CLI                                       | [az Security díjszabása](/cli/azure/security/pricing)                                                                                                 |
+| PowerShell                                      | [Set-AzSecurityPricing](/powershell/module/az.security/set-azsecuritypricing)                                                                      |
+| Azure Policy                                    | [Csomagok díjszabása](https://github.com/Azure/Azure-Security-Center/blob/master/Pricing%20%26%20Settings/ARM%20Templates/Set-ASC-Bundle-Pricing.json) |
+|                                                 |                                                                                                                                                    |
 
 ### <a name="can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription"></a>Engedélyezhetem az Azure Defendert kiszolgálók részhalmazában lévő kiszolgálókhoz az előfizetésben?
 Nem. Ha engedélyezi az [Azure Defender számára](defender-for-servers-introduction.md) az előfizetéshez tartozó kiszolgálókat, az előfizetésben lévő összes kiszolgálót az Azure Defender fogja védeni. 

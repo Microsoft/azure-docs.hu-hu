@@ -88,40 +88,40 @@
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: A hang- és videóhívással kapcsolatos alapfogalmak
           href: concepts/voice-video-calling/about-call-types.md
+        - name: Hívási folyamatok
+          href: concepts/call-flows.md
+        - name: Folyamat-topológiák hívása
+          href: concepts/detailed-call-flows.md
     - name: Felhasználói felületi keretrendszer
       items:
         - name: A felhasználói felületi keretrendszer áttekintése
           href: concepts/ui-framework/ui-sdk-overview.md
         - name: Felhasználói felületi keretrendszer képességei
           href: concepts/ui-framework/ui-sdk-features.md
-    - name: Teams-együttműködés
-      href: concepts/teams-interop.md
+    - name: Adatok és műveletek
+      items:
+        - name: Szolgáltatási események (EventGrid)
+          href: concepts/event-handling.md
+        - name: Naplózás és diagnosztika
+          href: concepts/logging-and-diagnostics.md
+        - name: Mérőszámok
+          href: concepts/metrics.md
+        - name: Hibaelhárítás
+          href: concepts/troubleshooting-info.md
+    - name: SDK-k és REST API-k
+      href: concepts/sdk-options.md
     - name: Ügyfél- és kiszolgálói architektúra
       href: concepts/client-and-server-architecture.md
-    - name: Hívási folyamatok
-      href: concepts/call-flows.md
-    - name: Folyamat-topológiák hívása
-      href: concepts/detailed-call-flows.md
-    - name: Ügyfélkódtárak és REST API-k
-      href: concepts/sdk-options.md
-    - name: Díjszabási modell
-      href: concepts/pricing.md
-    - name: Adatvédelem
-      href: concepts/privacy.md
     - name: Identitásmodell
       href: concepts/identity-model.md
     - name: Hitelesítés
       href: concepts/authentication.md
-    - name: Eseménykezelés
-      href: concepts/event-handling.md
-    - name: Értesítések
+    - name: Adatvédelem
+      href: concepts/privacy.md
+    - name: Leküldéses értesítések
       href: concepts/notifications.md
-    - name: Naplózás és diagnosztika
-      href: concepts/logging-and-diagnostics.md
-    - name: Mérőszámok
-      href: concepts/metrics.md
-    - name: Hibaelhárítás
-      href: concepts/troubleshooting-info.md
+    - name: Teams-együttműködés
+      href: concepts/teams-interop.md
     - name: Ismert problémák
       href: concepts/known-issues.md
 - name: Példák

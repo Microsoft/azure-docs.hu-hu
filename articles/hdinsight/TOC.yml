@@ -273,7 +273,7 @@
         - name: Azure PowerShell
           href: /powershell/module/az.hdinsight
         - name: .NET-hez készült SDK
-          href: /dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true
+          href: /dotnet/api/overview/azure/hdinsight
         - name: Pythonhoz készült SDK
           href: /python/api/overview/azure/hdinsight?view=azure-python&preserve-view=true
         - name: Javához készült SDK

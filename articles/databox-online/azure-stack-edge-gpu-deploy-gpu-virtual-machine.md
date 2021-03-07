@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/21/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: cb6b8e310f46cd98c4d3343d44fd83a3cc714a32
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ff805b758dce05a66764ab1ff08e53378c946362
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101730711"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438182"
 ---
 # <a name="gpu-vms-for-your-azure-stack-edge-pro-device"></a>GPU virtuális gépek a Azure Stack Edge Pro-eszközhöz
+
+[!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
 
 Ez a cikk áttekintést nyújt a GPU virtuális gépekről (VM) az Azure Stack Edge Pro-eszközön. A cikk azt ismerteti, hogyan lehet GPU-alapú virtuális gépet létrehozni, majd telepíteni a GPU illesztőprogram-bővítményt a megfelelő NVIDIA-illesztőprogramok telepítéséhez. A GPU virtuális gép létrehozásához használja a Azure Resource Manager sablonokat, és telepítse a GPU illesztőprogram-bővítményt. 
 

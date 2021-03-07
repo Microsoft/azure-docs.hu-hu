@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 03/03/2021
-ms.openlocfilehash: d36dcfccb6843947991b2548af6dd98b81adb40e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a080a3b536cb6e11a254f15d745334fbf17531e8
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049508"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439561"
 ---
 # <a name="azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL – rugalmas kiszolgáló
 
@@ -90,7 +90,7 @@ A rugalmas kiszolgáló szolgáltatás beépített teljesítmény-figyelési és
 
 A számítási feladatok Azure-ban való futtatásának egyik előnye, hogy globálisan elérhető. A rugalmas kiszolgáló jelenleg a következő Azure-régiókban érhető el:
 
-| Region | Rendelkezésre állás | Zóna redundáns HA | 
+| Region | Rendelkezésre állás | Zóna – redundáns HA | 
 | --- | --- | --- |
 | Nyugat-Európa | :heavy_check_mark: | :heavy_check_mark: |
 | Észak-Európa | :heavy_check_mark: | :heavy_check_mark: |
@@ -102,7 +102,7 @@ A számítási feladatok Azure-ban való futtatásának egyik előnye, hogy glob
 | Délkelet-Ázsia | :heavy_check_mark: | :heavy_check_mark: |
 | Kelet-Japán | :heavy_check_mark: | :heavy_check_mark: | 
 
-Továbbra is új régiókat adunk hozzá. 
+Továbbra is bővítjük a rugalmas kiszolgáló további régióit.
 
 ## <a name="migration"></a>Áttelepítés
 
@@ -110,6 +110,16 @@ A szolgáltatás a PostgreSQL közösségi verzióját futtatja. Ez lehetővé t
 
 - **Memóriakép és visszaállítás** – kapcsolat nélküli áttelepítések esetén, ahol a felhasználók bizonyos állásidőt, kiírást és visszaállítást biztosíthatnak olyan közösségi eszközök használatával, mint a pg_dump és az pg_restore a leggyorsabb áttelepítési módot biztosítanak. A részletekért lásd: az [áttelepítés a dump és a Restore használatával](../howto-migrate-using-dump-and-restore.md) .
 - **Azure Database Migration Service** – a rugalmas kiszolgáló zökkenőmentes és egyszerűbb áttelepítésének minimális állásidővel való kihasználása érdekében Azure Database Migration Service használható. Lásd a DMS-t a [portálon](../../dms/tutorial-postgresql-azure-postgresql-online-portal.md) és a DMS-n [keresztül a parancssori](../../dms/tutorial-postgresql-azure-postgresql-online.md)felületen Áttelepítheti az Azure Database for PostgreSQL – egyetlen kiszolgálóról a rugalmas kiszolgálóra. További részletekért tekintse meg ezt a [DMS-cikket](../../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) .
+
+## <a name="contacts"></a>Kapcsolattartók
+Ha bármilyen kérdése vagy javaslata van Azure Database for PostgreSQL rugalmas kiszolgálón, küldjön e-mailt a Azure Database for PostgreSQL csapatnak (az[ @Ask Azure-adatbázis PostgreSQL-hez](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)). Vegye figyelembe, hogy ez az e-mail-cím nem technikai támogatási alias.
+
+Ezenkívül a következő elérhetőségeken léphet velünk kapcsolatba:
+
+- Ha az Azure-támogatással szeretne kapcsolatba lépni, [nyújtson be igénylést az Azure Portalon](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- Ha a fiókjával van probléma, nyújtson be [támogatási kérelmet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) az Azure Portalon.
+- Ha visszajelzést szeretne küldeni vagy új szolgáltatásokat kérne, hozzon létre egy bejegyzést a [UserVoice-on](https://feedback.azure.com/forums/597976-azure-database-for-postgresql).
+  
 
 ## <a name="next-steps"></a>Következő lépések
 

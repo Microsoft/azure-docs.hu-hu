@@ -1,17 +1,17 @@
 ---
 title: Eszköz frissítése az Azure IoT Hub oktatóanyaghoz a málna PI 3 B + Reference Yocto-rendszerkép használatával | Microsoft Docs
 description: Ismerkedjen meg az Azure IoT Hub Device Update szolgáltatásával a málna PI 3 B + Reference Yocto képpel.
-author: vimeht
-ms.author: vimeht
+author: valls
+ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: bb992e4f33cc833411e7cce560f71adf1dc72076
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ca689df97e7268a5c0f7c0479e6514b98ffda9f2
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664881"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443454"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-raspberry-pi-3-b-reference-image"></a>Eszköz frissítése az Azure IoT Hub oktatóanyaghoz a málna PI 3 B és a Reference kép használatával
 
@@ -143,13 +143,11 @@ Használja ezt a verziószámot az alábbi frissítés importálása lépésben.
 
 ## <a name="import-update"></a>Frissítés importálása
 
-1. Válassza ki az eszközök frissítései lehetőséget a bal oldali navigációs sávon az automatikus eszközkezelés lehetőség alatt.
-
-2. Válassza a frissítések lapot.
-
-3. Válassza az "+ új frissítés importálása" lehetőséget.
-
-4. Válassza ki a mappa ikont vagy szövegmezőt a "Select a manifest file List" (fájl importálása) elem alatt. Ekkor megjelenik egy fájl-választó párbeszédpanel. Válassza ki a korábban letöltött importálási jegyzékfájlt. Ezután válassza a mappa ikont vagy a szövegmezőt a "válasszon ki egy vagy több frissítési fájlt" területen. Ekkor megjelenik egy fájl-választó párbeszédpanel. Válassza ki a korábban letöltött apt manifest-frissítési fájlt.
+1. Az alábbi [utasításokat](import-update.md)követve hozzon létre egy importálási jegyzékfájlt.
+2. Válassza ki az eszközök frissítései lehetőséget a bal oldali navigációs sávon az automatikus eszközkezelés lehetőség alatt.
+3. Válassza a frissítések lapot.
+4. Válassza az "+ új frissítés importálása" lehetőséget.
+5. Válassza ki a mappa ikont vagy szövegmezőt a "Select a manifest file List" (fájl importálása) elem alatt. Ekkor megjelenik egy fájl-választó párbeszédpanel. Válassza ki a fentiekben létrehozott importálási jegyzékfájlt.  Ezután válassza a mappa ikont vagy a szövegmezőt a "válasszon ki egy vagy több frissítési fájlt" területen. Ekkor megjelenik egy fájl-választó párbeszédpanel. Válassza ki a IoT-eszközökre telepíteni kívánt frissítési fájlt.
    
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="A frissítési fájl kijelölését bemutató képernyőkép." lightbox="media/import-update/select-update-files.png":::
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.topic: how-to
 ms.date: 02/21/2018
-ms.openlocfilehash: 2ff62f4feba44a1c706ab85db1be3f7f654e6135
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a8f808cd43f96f26db0de28e8059d02d9488320a
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945771"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434661"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migrálás Azure Resource Manager-alapú fejlesztői eszközökre HDInsight-fürtökhöz
 
@@ -238,7 +238,7 @@ Ez a szakasz a Resource Manager-alapú SDK-val való bizonyos feladatok végreha
 
 | kézikönyv... a Resource Manager-alapú HDInsight SDK használata | Hivatkozások |
 | --- | --- |
-| .NET-hez készült Azure HDInsight SDK|Lásd: [Az Azure HDINSIGHT SDK for .net](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true) |
+| .NET-hez készült Azure HDInsight SDK|Lásd: [Az Azure HDINSIGHT SDK for .net](/dotnet/api/overview/azure/hdinsight) |
 | Alkalmazások interaktív hitelesítése Azure Active Directory és a .NET SDK használatával |Lásd: [Apache Hive lekérdezések futtatása a .net SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)-val. A cikkben szereplő kódrészlet az interaktív hitelesítési módszert használja. |
 | Alkalmazások nem interaktív hitelesítése a .NET SDK-val való Azure Active Directory használatával |Lásd: [nem interaktív alkalmazások létrehozása a HDInsight-hez](hdinsight-create-non-interactive-authentication-dotnet-applications.md) |
 | Apache Hive-feladatok elküldése a .NET SDK-val |Lásd: [Apache Hive feladatok elküldése](hadoop/apache-hadoop-use-hive-dotnet-sdk.md) |

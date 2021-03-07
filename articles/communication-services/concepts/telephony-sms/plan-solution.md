@@ -10,21 +10,31 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 4ba8a6b530f3f3650959eac90bba5b05e3ac0643
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 8a811a033a2d6e2229c83899e237f996ccddd7b3
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215408"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430411"
 ---
 # <a name="phone-number-types-in-azure-communication-services"></a>Telefonszám-típusok az Azure kommunikációs szolgáltatásokban
+
+
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 > [!IMPORTANT]
-> A telefonszámok rendelkezésre állása jelenleg olyan Azure-előfizetésekre korlátozódik, amelyek számlázási címükkel rendelkeznek a Egyesült Államok. További információkért tekintse meg a jelen dokumentum [előfizetési jogosultságok](#azure-subscriptions-eligibility) című szakaszát.
+> A telefonszámok rendelkezésre állása jelenleg olyan fizetős Azure-előfizetésekre korlátozódik, amelyek számlázási címükkel rendelkeznek az USA-beli adatterülettel rendelkező Egyesült Államok és kommunikációs szolgáltatások erőforrásaiban. A telefonszámok nem szerezhetők be próbaverziós fiókokon vagy Azure ingyenes kreditek használatával. További információkért tekintse meg a jelen dokumentum [előfizetési jogosultságok](#azure-subscriptions-eligibility) című szakaszát.
+
 
 Az Azure kommunikációs szolgáltatások lehetővé teszik a telefonszámok használatát hanghívások készítésére és SMS-üzenetek küldésére a nyilvános kapcsolású telefonos hálózattal (PSTN). Ebben a dokumentumban áttekintjük a telefonszámokat, a konfigurációs beállításokat és a régió rendelkezésre állását a telefonos és SMS-megoldás kommunikációs szolgáltatásokkal történő megtervezéséhez.
+
+## <a name="azure-subscriptions-eligibility"></a>Azure-előfizetések jogosultsága
+
+Telefonszám beolvasásához fizetős Azure-előfizetésre van szükség. A telefonszámok nem szerezhetők be próbaverziós fiókokon vagy Azure ingyenes kreditekkel. 
+
+A telefonszám rendelkezésre állása jelenleg olyan Azure-előfizetésekre korlátozódik, amelyek számlázási címükkel rendelkeznek az USA-beli adatterülettel rendelkező Egyesült Államok és kommunikációs szolgáltatások erőforrásaiban.
+
 
 ## <a name="number-types-and-features"></a>Típusok és szolgáltatások száma
 A kommunikációs szolgáltatások kétféle telefonszámot biztosítanak: **helyi** és **díjmentes**. 
@@ -72,11 +82,6 @@ A következő táblázat azt mutatja be, hogy hol szerezhetők be különböző 
 
 * A hívási célokkal és a díjszabással kapcsolatos további információkért tekintse meg a [díjszabási oldalt](../pricing.md).
 
-## <a name="azure-subscriptions-eligibility"></a>Azure-előfizetések jogosultsága
-
-Telefonszám beolvasásához fizetős Azure-előfizetésre van szükség. A telefonszámok nem szerezhetők be próbaverziós fiókokon vagy Azure ingyenes kreditekkel. 
-
-Jelenleg a telefonszámok rendelkezésre állása olyan Azure-előfizetésekre korlátozódik, amelyek számlázási címükkel rendelkeznek a Egyesült Államok.
 
 ## <a name="next-steps"></a>Következő lépések
 

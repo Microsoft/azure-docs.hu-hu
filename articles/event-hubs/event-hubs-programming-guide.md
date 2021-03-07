@@ -4,12 +4,12 @@ description: Ez a cikk azt ismerteti, hogyan írhat kódot az Azure Event Hubs a
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a299813620ee90591d8c9491991237f75f2e9382
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 32c3c05b61d2ee8fc79d7c863ddbe84de5fe7e2b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98623048"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102432740"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>.NET programozási útmutató az Azure Event Hubshoz (örökölt Microsoft. Azure. EventHubs csomag)
 Ez a cikk néhány gyakori forgatókönyvet ismertet a kód az Azure Event Hubs használatával történő írásához. A témakör feltételezi az Event Hubs szolgáltatással kapcsolatos előzetes ismeretek meglétét. Az Event Hubs fogalmi áttekintése: [Event Hubs – áttekintés](./event-hubs-about.md).
@@ -73,21 +73,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 > [!NOTE]
 > Ha nem ismeri a partíciókat, tekintse meg [ezt a cikket](event-hubs-features.md#partitions). 
 
-Az események küldésekor megadhat egy olyan értéket, amely kivonattal létrehoz egy partíció-hozzárendelést. A partíciót a [PartitionSender. PartitionID](/dotnet/api/microsoft.azure.eventhubs.partitionsender.partitionid) tulajdonsággal adhatja meg. A partíciók használatára vonatkozó döntés azonban a rendelkezésre állás és a konzisztencia közötti választást is magában foglalja. 
-
-### <a name="availability-considerations"></a>Rendelkezésre állási szempontok
-
-A partíciós kulcs használata nem kötelező, és körültekintően kell megfontolnia, hogy használja-e az egyiket. Ha nem ad meg partíciós kulcsot egy esemény közzétételekor, Event Hubs terheléselosztást végez a partíciók között. Sok esetben a partíciós kulcs használata jó választás, ha az események rendezése fontos. Partíciós kulcs használatakor ezek a partíciók egy adott csomóponton rendelkezésre állást igényelnek, és időbeli kimaradások léphetnek fel. például a számítási csomópontok újraindításakor és javításakor. Így ha egy partíció-azonosítót állít be, és a partíció valamilyen okból elérhetetlenné válik, akkor a partíción lévő adat elérésére tett kísérlet sikertelen lesz. Ha a magas rendelkezésre állás a legfontosabb, ne határozzon meg partíciós kulcsot. Ebben az esetben az eseményeket egy belső terheléselosztási algoritmus használatával küldik el a partícióknak. Ebben az esetben a rendelkezésre állás (partíció-azonosító nélkül) és a konzisztencia (a partíciós azonosító rögzítése) között explicit módon választhat.
-
-Egy másik szempont a feldolgozási események késésének kezelése. Bizonyos esetekben érdemes lehet eldobni az adatvesztést, és újra kell próbálkoznia, mint a feldolgozás megtartása, ami esetleg további alsóbb rétegbeli feldolgozási késéseket eredményezhet. Egy tőzsdei ticker esetében például érdemes megvárni a teljes naprakész adatok megjelenítését, azonban egy élő csevegésben vagy VOIP-forgatókönyvben inkább az adatok gyors, még akkor is, ha nem fejeződött be.
-
-Ezeknek a rendelkezésre állási szempontoknak a figyelembe vételekor a következő hiba-kezelési stratégiák közül választhat:
-
-- Leállítás (Event Hubs olvasásának leállítása a dolgok kijavítása után)
-- Drop (az üzenetek nem fontosak, eldobása)
-- Újrapróbálkozás (próbálja megismételni az üzeneteket, ahogy jónak látja)
-
-A rendelkezésre állás és a konzisztencia közötti kompromisszumokkal kapcsolatos további információkért lásd: [rendelkezésre állás és konzisztencia a Event Hubsban](event-hubs-availability-and-consistency.md). 
+Az események küldésekor megadhat egy olyan értéket, amely kivonattal létrehoz egy partíció-hozzárendelést. A partíciót a [PartitionSender. PartitionID](/dotnet/api/microsoft.azure.eventhubs.partitionsender.partitionid) tulajdonsággal adhatja meg. A partíciók használatára vonatkozó döntés azonban a rendelkezésre állás és a konzisztencia közötti választást is magában foglalja. További információ: [rendelkezésre állás és konzisztencia](event-hubs-availability-and-consistency.md).
 
 ## <a name="batch-event-send-operations"></a>Kötegelt eseményküldési műveletek
 

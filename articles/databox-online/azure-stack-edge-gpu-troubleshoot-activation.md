@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 10/08/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 5e6f411fef5d3e27b6ad61b720f1c64fb6f8c9a0
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 66e62bffe28cc10bd49e1456fdd6e2ac1faebf6e
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883333"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102442145"
 ---
 # <a name="troubleshoot-activation-issues-on-your-azure-stack-edge-pro-gpu-device"></a>Az Azure Stack Edge Pro GPU-eszköz aktiválási problémáinak elhárítása 
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Ez a cikk azt ismerteti, hogyan lehet elhárítani az aktiválási problémákat az Azure Stack Edge Pro GPU-eszközön. 
 
@@ -34,6 +34,6 @@ A következő táblázat összefoglalja az eszköz aktiválásával és a megfel
 | Ha az aktiválási kulcs létrehozása valamilyen hiba miatt meghiúsul, akkor ezt a hibaüzenetet kapja. További részletek jelennek meg az értesítésben. <br> ![Key Vault – 4. hiba](./media/azure-stack-edge-gpu-troubleshoot-activation/key-vault-error-4.png)   | Győződjön meg arról, hogy a tűzfal [mögötti hozzáférési Azure Key Vaultban](../key-vault/general/access-behind-firewall.md) megadott portok és URL-címek nyitva vannak a tűzfalon a Key Vault eléréséhez. Várjon néhány percet, és ismételje meg a műveletet. Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz. |
 | Ha a felhasználó csak olvasási jogosultsággal rendelkezik, akkor a felhasználó nem jogosult az aktiválási kulcs előállítására, és ez a hiba jelenik meg. <br> ![Key Vault – 5. hiba](./media/azure-stack-edge-gpu-troubleshoot-activation/key-vault-error-5.png) | Ennek oka az lehet, hogy nincs megfelelő hozzáférése, vagy a  *Microsoft.* kulcstartó nincs regisztrálva.<li>Ellenőrizze, hogy rendelkezik-e tulajdonosi vagy közreműködői hozzáféréssel az Azure Stack Edge-erőforráshoz használt erőforráscsoport szintjén.</li><li>Győződjön meg arról, hogy a Microsoft. kulcstartó erőforrás-szolgáltató regisztrálva van. Az erőforrás-szolgáltató regisztrálásához lépjen az Azure Stack Edge-erőforráshoz használt előfizetésre. Lépjen az **erőforrás-szolgáltatók** elemre, keresse meg a *Microsoft.* kulcstartót, és válassza ki és **regisztrálja**.</li> |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [eszközök problémáinak elhárításáról](azure-stack-edge-gpu-troubleshoot.md).

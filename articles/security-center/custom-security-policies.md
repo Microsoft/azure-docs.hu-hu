@@ -1,7 +1,6 @@
 ---
 title: Egyéni biztonsági szabályzatok létrehozása a Azure Security Centerban | Microsoft Docs
 description: A Azure Security Center által figyelt egyéni Azure-házirend-definíciók.
-services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
@@ -9,12 +8,12 @@ ms.topic: how-to
 ms.date: 02/25/2021
 ms.author: memildin
 zone_pivot_groups: manage-asc-initiatives
-ms.openlocfilehash: a39b79c6c209c0fc66edac846d5458475ec75810
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: a901e71da640f8413e5714ad59073324f582c1b9
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100865"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441057"
 ---
 # <a name="create-custom-security-initiatives-and-policies"></a>Egyéni biztonsági kezdeményezések és szabályzatok létrehozása
 
@@ -23,6 +22,9 @@ A rendszerek és a környezet biztonságossá tételéhez Azure Security Center 
 Ezzel a funkcióval saját *Egyéni* kezdeményezéseket adhat hozzá. Ezután javaslatokat fog kapni, ha a környezet nem követi a létrehozott házirendeket. Az Ön által létrehozott egyéni kezdeményezések a szabályozási megfelelőségi irányítópult beépített kezdeményezései mellett jelennek meg, [az oktatóanyagban](security-center-compliance-dashboard.md)ismertetett módon.
 
 Amint azt [a Azure Policy dokumentációban](../governance/policy/concepts/definition-structure.md#definition-location)tárgyaljuk, az egyéni kezdeményezés helyének megadásakor felügyeleti csoportnak vagy előfizetésnek kell lennie. 
+
+> [!TIP]
+> Az ezen a lapon található alapfogalmak áttekintését lásd: [Mik a biztonsági szabályzatok, kezdeményezések és javaslatok?](security-policy-concept.md).
 
 ::: zone pivot="azure-portal"
 

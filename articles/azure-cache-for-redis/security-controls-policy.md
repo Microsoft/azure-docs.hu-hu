@@ -1,18 +1,18 @@
 ---
 title: Az Azure cache Redis való megfelelőségi szabályozásának Azure Policy
 description: Felsorolja Azure Policy az Azure cache Redis-hez elérhető megfelelőségi szabályozásait. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.topic: sample
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 01d3e2fc345b066472797baf2d32c23b94dcacdf
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: b0b87dec6cc712a6e4b43345f0f2c7b098307809
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100094193"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441677"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cache-for-redis"></a>Az Azure cache Redis való megfelelőségi szabályozásának Azure Policy
 

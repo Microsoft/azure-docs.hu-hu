@@ -6,12 +6,12 @@ ms.author: elhorton
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/11/2021
-ms.openlocfilehash: fc30515f4b5ca0a763bf9f40de6a03356b88e500
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 4ac675d0b6c2ce1e735a8ad530bc004f993a1833
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102214609"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102435494"
 ---
 # <a name="overview-of-azure-iot-device-sdks"></a>Az Azure IoT Device SDK-k áttekintése
 
@@ -91,8 +91,8 @@ Ezek az SDK-k bármely olyan eszközön futtathatók, amely támogatja a magasab
 * [GitHub-adattár](https://github.com/Azure/azure-iot-sdk-csharp)
 * [Példák](https://github.com/Azure/azure-iot-sdk-csharp#samples)
 * [Csomag](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/)
-* [Referenciadokumentáció](/dotnet/api/microsoft.azure.devices?view=azure-dotnet&preserve-view=true)
-* [Az Edge-modul dokumentációja](/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet&preserve-view=true)
+* [Referenciadokumentáció](/dotnet/api/microsoft.azure.devices)
+* [Az Edge-modul dokumentációja](/dotnet/api/microsoft.azure.devices.client.moduleclient)
 
 #### <a name="java-device-sdk"></a>Java-eszköz SDK
 
@@ -141,7 +141,7 @@ Az Azure Digital Twins egy szolgáltatásként nyújtott platform, amely lehető
 
 [**További információ az Azure digitális Twins**](https://azure.microsoft.com/services/digital-twins/)  |  szolgáltatásról [ **ADT-alkalmazás kódja**](../digital-twins/tutorial-code.md)
 
-**C# ADT Service SDK**: [GitHub-adattár](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)  |  [csomag](https://www.nuget.org/packages/Azure.DigitalTwins.Core)  |  [minták](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core/samples)  |  [dokumentációja](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)
+**C# ADT Service SDK**: [GitHub-adattár](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)  |  [csomag](https://www.nuget.org/packages/Azure.DigitalTwins.Core)  |  [minták](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core/samples)  |  [dokumentációja](/dotnet/api/overview/azure/digitaltwins/client)
 
 **Java ADT Service SDK**: [GitHub-adattár](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core)  |  [csomag](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0/jar)  |  [minták](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core/src/samples)  |  [dokumentációja](/java/api/overview/azure/digitaltwins/client)
 
@@ -155,7 +155,7 @@ A IoT Hub Device Provisioning Service (DPS) egy olyan IoT Hub segítő szolgált
 
 [**További információ az eszköz kiépítési szolgáltatásáról**](../iot-dps/index.yml)  |  [ **Próbáljon meg létrehozni egy csoportos regisztrációt X. 509-eszközökhöz**](../iot-dps/quick-enroll-device-x509-csharp.md)
 
-**C# Device kiépítési szolgáltatás SDK**: [GitHub-adattár](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service)  |  [csomag](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/)  |  [minták](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples)  |  [dokumentációja](/dotnet/api/microsoft.azure.devices.provisioning.service?view=azure-dotnet&preserve-view=true)
+**C# Device kiépítési szolgáltatás SDK**: [GitHub-adattár](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service)  |  [csomag](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/)  |  [minták](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples)  |  [dokumentációja](/dotnet/api/microsoft.azure.devices.provisioning.service)
 
 **Java Device kiépítési szolgáltatás SDK**: [GitHub-adattár](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-service-client/src)  |  [csomag](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client)  |  [minták](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples#provisioning-service-client)  |  [dokumentációja](/java/api/com.microsoft.azure.sdk.iot.provisioning.service)
 
