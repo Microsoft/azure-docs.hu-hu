@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: mbullwin
-ms.openlocfilehash: a17301e0807877662ae1bf34ade48e90a1d30c0c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b122765a3d77428008c91dda471706cad53a5616
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006200"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430598"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Oktatóanyag: rendellenességek megjelenítése a Batch észlelésével és Power BIával
 
@@ -32,7 +32,7 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 * [Azure-előfizetés](https://azure.microsoft.com/free/cognitive-services)
 * A [Microsoft Power bi Desktop](https://powerbi.microsoft.com/get-started/)ingyenesen elérhető.
 * Az idősorozat adatpontjait tartalmazó Excel-fájl (. xlsx). A rövid útmutatóhoz tartozó példa a [githubon](https://go.microsoft.com/fwlink/?linkid=2090962) érhető el
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" hozzon létre egy rendellenesség-Kiderítő erőforrást, "  target="_blank"> és hozzon létre egy anomália-detektor erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" hozzon létre egy rendellenesség-Kiderítő erőforrást, "  target="_blank"> és hozzon létre egy anomália-detektor erőforrást </a> a Azure Portal a kulcs és a végpont
     * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazásnak a rendellenesség-érzékelő API-hoz való összekapcsolásához. Ezt később is megteheti a rövid útmutatóban.
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
@@ -172,7 +172,7 @@ Színeket alkalmazhat a diagramra úgy, hogy a **Formátum** eszközre és az **
 
 ![Az utolsó diagram képe](../media/tutorials/final-chart.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 >[Adatfolyam-rendellenességek észlelése Azure Databricks](anomaly-detection-streaming-databricks.md)

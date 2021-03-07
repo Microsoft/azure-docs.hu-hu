@@ -3,25 +3,27 @@ title: Az Azure-Blob Storageban tárolt adatkezelési és-keresési blob-indexel
 description: Tekintse át, hogyan használhat blob-indexelési címkéket a blob-objektumok kategorizálásához, kezeléséhez és lekérdezéséhez.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/19/2020
+ms.date: 03/05/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 411815ca2f947c47b8dfb0d2e5d61f8ea18f3545
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 32bb51751430dcd0208849f798d21f2b25e6b82b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95541249"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430870"
 ---
 # <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Az Azure-beli blob-indexek (előzetes verzió) használatával kezelhetők és megkereshetők az Azure Blob Storage
 
 A blob index címkéje a Storage-fiókban lévő, kulcs-érték címkével rendelkező attribútumokkal kategorizálja az adatait. Ezek a címkék automatikusan indexelve vannak, és egy kereshető többdimenziós indexként jelennek meg, így könnyen megkereshetők az adatkeresések. Ebből a cikkből megtudhatja, hogyan állíthat be, kérhet le és kereshet meg a blob-indexek címkéi használatával.
 
-> [!NOTE]
-> A blob index nyilvános előzetes verzióban érhető el, és a **Közép**-Kanada, **Kelet-Kanada**, **Közép** -Franciaország és **Dél-Franciaország déli** régiójában érhető el. Ha többet szeretne megtudni erről a szolgáltatásról, valamint az ismert problémákról és korlátozásokról, tekintse meg az [Azure Blob-adatkezelés és-keresés a blob-index címkékkel (előzetes verzió)](storage-manage-find-blobs.md)című témakört
+> [!IMPORTANT]
+> A blob index címkék jelenleg **előzetes** verzióban érhetők el, és elérhetők a **Közép**-Kanada, **Kelet-Kanada**, Közép- **Franciaország** és **Dél-Franciaország** régiójában. Tekintse meg az Azure-szolgáltatásokra vonatkozó, a bétaverzióban, az előzetes verzióban, vagy más módon még nem közzétett, általánosan elérhetővé vált jogi feltételekhez tartozó [Microsoft Azure előzetes verziójának kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) .
+
+Ha többet szeretne megtudni erről a szolgáltatásról, valamint az ismert problémákról és korlátozásokról, tekintse meg az [Azure Blob-adatkezelés és-keresés a blob-index címkékkel (előzetes verzió)](storage-manage-find-blobs.md)című témakört
 
 ## <a name="prerequisites"></a>Előfeltételek
 
