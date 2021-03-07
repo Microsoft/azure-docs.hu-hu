@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 7dccce597dcfbcedd5083befafa79b8ba6f3adac
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: a9f9e03227bfb75d94ed79cdf858278e2efe4f31
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97693480"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440394"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>A Azure SQL Database és az Azure SQL felügyelt példányának csatlakozási és lekérdezési cikkei
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -26,9 +26,9 @@ Az alábbi dokumentum olyan Azure-példákra mutató hivatkozásokat tartalmaz, 
 
 ## <a name="quickstarts"></a>Rövid útmutatók
 
-| Első lépések | Leírás |
+| Gyorsútmutató | Description |
 |---|---|
-|[SQL Server Management Studio](connect-query-ssms.md)|Ez a rövid útmutató bemutatja, hogyan használható a SSMS egy adatbázishoz való kapcsolódáshoz, majd hogyan lehet Transact-SQL-utasításokkal adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban.|
+|[Az SQL Server Management Studio](connect-query-ssms.md)|Ez a rövid útmutató bemutatja, hogyan használható a SSMS egy adatbázishoz való kapcsolódáshoz, majd hogyan lehet Transact-SQL-utasításokkal adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban.|
 |[Azure Data Studio](/sql/azure-data-studio/quickstart-sql-database?toc=%2fazure%2fsql-database%2ftoc.json)|Ez a rövid útmutató azt ismerteti, hogyan használható a Azure Data Studio egy adatbázishoz való kapcsolódáshoz, majd hogyan lehet Transact-SQL-(T-SQL-) utasítások használatával létrehozni a Azure Data Studio oktatóanyagokban használt oktatóanyagaiban.|
 |[Azure Portal](connect-query-portal.md)|Ez a rövid útmutató azt ismerteti, hogyan használható a lekérdezéstervező egy adatbázishoz való kapcsolódáshoz (csak Azure SQL Database), majd hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban.|
 |[Visual Studio Code](connect-query-vscode.md)|Ez a rövid útmutató bemutatja, hogyan használható a Visual Studio Code egy adatbázishoz való kapcsolódáshoz, majd hogyan lehet Transact-SQL-utasításokkal adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban.|
@@ -88,7 +88,7 @@ A következő táblázat felsorolja azokat a kapcsolódási könyvtárakat és *
 | Nyelv | Platform | További források | Letöltés | Bevezetés |
 | :-- | :-- | :-- | :-- | :-- |
 | C# | Windows, Linux, macOS | [A SQL Server Microsoft ADO.NET](/sql/connect/ado-net/microsoft-ado-net-sql-server) | [Letöltés](https://www.microsoft.com/net/download/) | [Első lépések](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
-| Java | Windows, Linux, macOS | [Microsoft JDBC-illesztőprogram a SQL Serverhoz](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server/) | [Letöltés](https://go.microsoft.com/fwlink/?linkid=852460) |  [Első lépések](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
+| Java | Windows, Linux, macOS | [Microsoft JDBC-illesztőprogram a SQL Serverhoz](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server/) | [Letöltés](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server) |  [Első lépések](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
 | PHP | Windows, Linux, macOS| [PHP SQL-illesztőprogram a SQL Serverhoz](/sql/connect/php/microsoft-php-driver-for-sql-server) | [Letöltés](/sql/connect/php/download-drivers-php-sql-server) | [Első lépések](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
 | Node.js | Windows, Linux, macOS | [ SQL ServerNode.js illesztőprogram](/sql/connect/node-js/node-js-driver-for-sql-server/) | [Telepítse](/sql/connect/node-js/step-1-configure-development-environment-for-node-js-development/) |  [Első lépések](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)
 | Python | Windows, Linux, macOS | [Python SQL-illesztőprogram](/sql/connect/python/python-driver-for-sql-server/) | Telepítési lehetőségek: <br/> \*[pymssql](/sql/connect/python/pymssql/step-1-configure-development-environment-for-pymssql-python-development/) <br/> \*[pyodbc](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development/) |  [Első lépések](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)
@@ -107,7 +107,7 @@ Az alábbi táblázat felsorolja azokat az objektum-összehasonlító leképezé
 | Ruby | Windows, Linux, macOS | [Ruby on Rails](https://rubyonrails.org/) |
 ||||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A kapcsolati architektúrával kapcsolatos információkért tekintse meg [az Azure SQL Database kapcsolati architektúráját](connectivity-architecture.md) ismertető cikket.
 - Megtalálhatja SQL Server az ügyfélalkalmazások közötti kapcsolódáshoz használt [illesztőprogramokat](/sql/connect/sql-connection-libraries/) .

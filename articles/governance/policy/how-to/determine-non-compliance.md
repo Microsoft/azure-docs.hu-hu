@@ -3,12 +3,12 @@ title: A nemmegfelelőség okainak meghatározása
 description: Ha egy erőforrás nem megfelelő, számos lehetséges oka lehet. Ismerje meg, hogy mi okozta a meg nem felelés okait.
 ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: df1eefec782835838add0beb8939bf4ff1a8a194
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8168bf22aceaf5cbdec4b1346801aa62b7aa4ee
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541271"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439833"
 ---
 # <a name="determine-causes-of-non-compliance"></a>A nemmegfelelőség okainak meghatározása
 
@@ -30,17 +30,17 @@ Ha egy erőforrás nem megfelelő, az adott erőforrás megfelelőségi adatai a
 
 A megfelelőségi adatok megtekintéséhez kövesse az alábbi lépéseket:
 
-1. Indítsa el a Azure Policy szolgáltatást a Azure Portal a **minden szolgáltatás**lehetőség kiválasztásával, majd a **szabályzat**keresésével és kiválasztásával.
+1. Indítsa el a Azure Policy szolgáltatást a Azure Portal a **minden szolgáltatás** lehetőség kiválasztásával, majd a **szabályzat** keresésével és kiválasztásával.
 
 1. Az **Áttekintés** vagy **megfelelőség** lapon válassza ki a szabályzatot olyan **megfelelőségi állapotban** , amely _nem megfelelő_.
 
-1. A **szabályzat megfelelősége** lap **erőforrás-megfelelőség** lapján kattintson a jobb gombbal, vagy válassza ki az erőforrás három pontját egy olyan **megfelelőségi állapotban** , amely _nem megfelelő_. Ezután válassza a **megfelelőségi adatok megtekintése**lehetőséget.
+1. A **szabályzat megfelelősége** lap **erőforrás-megfelelőség** lapján kattintson a jobb gombbal, vagy válassza ki az erőforrás három pontját egy olyan **megfelelőségi állapotban** , amely _nem megfelelő_. Ezután válassza a **megfelelőségi adatok megtekintése** lehetőséget.
 
    :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="Képernyőkép a &quot;megfelelőségi adatok megtekintése&quot; hivatkozásra az erőforrás-megfelelőség lapon." border="false":::
 
 1. A **megfelelőség részletei** ablaktábla az erőforrás legutóbbi kiértékelésével kapcsolatos információkat jeleníti meg az aktuális szabályzat-hozzárendeléshez. Ebben a példában a **Microsoft. SQL/Servers/Version** mező értéke _12,0_ , míg a rendszer a _14,0_-es szabályzat-definíciót várta. Ha az erőforrás több okból nem megfelelő, az egyes elemek a panelen jelennek meg.
 
-   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="Képernyőkép a &quot;megfelelőségi adatok megtekintése&quot; hivatkozásra az erőforrás-megfelelőség lapon." border="false":::
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="Képernyőkép a megfelelőségi részletek panelről és a nem megfelelőségi okokról, amelyek a jelenlegi érték tizenkét, a célként megadott érték pedig tizennégy." border="false":::
 
    **AuditIfNotExists** vagy **deployIfNotExists** házirend-definíció esetén a részletek között szerepel a **részletek. Type** tulajdonság és a nem kötelező tulajdonságok. A listában tekintse meg a [auditIfNotExists tulajdonságai](../concepts/effects.md#auditifnotexists-properties) és a [deployIfNotExists tulajdonságai](../concepts/effects.md#deployifnotexists-properties)című témakört. Az **utolsó kiértékelt erőforrás** a definíció **részletek** szakaszában található kapcsolódó erőforrás.
 
@@ -69,7 +69,7 @@ A megfelelőségi adatok megtekintéséhez kövesse az alábbi lépéseket:
    }
    ```
 
-   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="Képernyőkép a &quot;megfelelőségi adatok megtekintése&quot; hivatkozásra az erőforrás-megfelelőség lapon." border="false":::
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="Képernyőkép a megfelelőségi részletek panelről ifNotExists, beleértve az értékelt erőforrások számát." border="false":::
 
 > [!NOTE]
 > Az adatvédelemhez, ha egy tulajdonság értéke _titkos_ , a jelenlegi érték csillagokat jelenít meg.
@@ -80,7 +80,7 @@ Ezek a részletek ismertetik, hogy egy adott erőforrás miért nem megfelelő, 
 
 A következő mátrix minden lehetséges _okot_ leképez a szabályzat-definícióban szereplő felelős [feltételre](../concepts/definition-structure.md#conditions) :
 
-|Ok | Condition (Állapot) |
+|Ok | Feltétel |
 |-|-|
 |A jelenlegi értéknek a célként megadott értéket kell tartalmaznia kulcsként. |containsKey vagy **nem** notContainsKey |
 |A jelenlegi értéknek tartalmaznia kell a célérték értékét. |notContains tartalmaz vagy **nem** |
@@ -106,9 +106,9 @@ A következő mátrix minden lehetséges _okot_ leképez a szabályzat-definíci
 
 ## <a name="component-details-for-resource-provider-modes"></a>Az erőforrás-szolgáltatói módok összetevő részletei
 
-[Erőforrás-szolgáltatói móddal](../concepts/definition-structure.md#resource-manager-modes)rendelkező hozzárendelések esetén válassza a _nem megfelelő_ erőforrást a mélyebb nézet megnyitásához. Az **összetevő megfelelősége** lapon további információk szerepelnek az erőforrás-szolgáltatói üzemmódra vonatkozóan a hozzárendelt szabályzatban, amely a _nem megfelelő_ **összetevőt** és **összetevő-azonosítót**mutatja.
+[Erőforrás-szolgáltatói móddal](../concepts/definition-structure.md#resource-manager-modes)rendelkező hozzárendelések esetén válassza a _nem megfelelő_ erőforrást a mélyebb nézet megnyitásához. Az **összetevő megfelelősége** lapon további információk szerepelnek az erőforrás-szolgáltatói üzemmódra vonatkozóan a hozzárendelt szabályzatban, amely a _nem megfelelő_ **összetevőt** és **összetevő-azonosítót** mutatja.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Képernyőkép a &quot;megfelelőségi adatok megtekintése&quot; hivatkozásra az erőforrás-megfelelőség lapon." border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Képernyőkép az összetevő-megfelelőség lapról, valamint az erőforrás-szolgáltatói mód hozzárendelésének megfelelőségi részleteiről." border="false":::
 
 ## <a name="compliance-details-for-guest-configuration"></a>Vendégkonfiguráció megfelelőségi adatai
 
@@ -120,84 +120,19 @@ Előfordulhat, hogy nem fér hozzá közvetlenül a virtuális géphez, de jelen
 
 A szabályzat megfelelőségi részleteinek megtekintéséhez kövesse a fenti szakasz lépéseit.
 
-A megfelelőség részletei ablaktáblán válassza az **utoljára kiértékelt erőforrás**hivatkozását.
+A megfelelőség részletei ablaktáblán válassza az **utoljára kiértékelt erőforrás** hivatkozását.
 
-:::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="Képernyőkép a &quot;megfelelőségi adatok megtekintése&quot; hivatkozásra az erőforrás-megfelelőség lapon." border="false":::
+:::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="Képernyőkép a auditIfNotExists-definíció megfelelőségi részleteinek megtekintéséhez." border="false":::
 
 A **vendég-hozzárendelés** lap megjeleníti az összes elérhető megfelelőségi részletet. A nézet minden sora a gépen belül végrehajtott értékelést jelképezi. Az **OK** oszlopban megjelenik egy kifejezés, amely leírja, hogy a vendég-hozzárendelés miért _nem megfelelő_. Ha például a jelszóházirend naplózása, az **OK** oszlopban az egyes beállítások aktuális értéke is megjelenik.
 
-:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="Képernyőkép a &quot;megfelelőségi adatok megtekintése&quot; hivatkozásra az erőforrás-megfelelőség lapon." border="false":::
-
-### <a name="azure-powershell"></a>Azure PowerShell
-
-Azure PowerShell a megfelelőségi adatokat is megtekintheti. Először győződjön meg arról, hogy telepítve van a vendég konfigurációs modul.
-
-```azurepowershell-interactive
-Install-Module Az.GuestConfiguration
-```
-
-A virtuális gép összes vendég hozzárendelésének aktuális állapotát a következő parancs használatával tekintheti meg:
-
-```azurepowershell-interactive
-Get-AzVMGuestPolicyStatus -ResourceGroupName <resourcegroupname> -VMName <vmname>
-```
-
-```output
-PolicyDisplayName                                                         ComplianceReasons
------------------                                                         -----------------
-Audit that an application is installed inside Windows VMs                 {[InstalledApplication]bwhitelistedapp}
-Audit that an application is not installed inside Windows VMs.            {[InstalledApplication]NotInstalledApplica...
-```
-
-Ha csak az _OK_ kifejezést szeretné megtekinteni, amely leírja, hogy a virtuális gép miért _nem megfelelő_, csak a gyermek tulajdonságot küldje vissza.
-
-```azurepowershell-interactive
-Get-AzVMGuestPolicyStatus -ResourceGroupName <resourcegroupname> -VMName <vmname> | % ComplianceReasons | % Reasons | % Reason
-```
-
-```output
-The following applications are not installed: '<name>'.
-```
-
-A számítógép hatókörében a vendég-hozzárendelések megfelelőségi előzményeit is kiállíthatja. A parancs kimenete tartalmazza a virtuális gép jelentéseinek részleteit.
-
-> [!NOTE]
-> A kimenet nagy mennyiségű adatokat adhat vissza. Azt javasoljuk, hogy a kimenetet egy változóban tárolja.
-
-```azurepowershell-interactive
-$guestHistory = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName <resourcegroupname> -VMName <vmname>
-$guestHistory
-```
-
-```output
-PolicyDisplayName                                                         ComplianceStatus ComplianceReasons StartTime              EndTime                VMName LatestRepor
-                                                                                                                                                                  tId
------------------                                                         ---------------- ----------------- ---------              -------                ------ -----------
-[Preview]: Audit that an application is installed inside Windows VMs      NonCompliant                       02/10/2019 12:00:38 PM 02/10/2019 12:00:41 PM VM01  ../17fg0...
-<truncated>
-```
-
-A nézet egyszerűsítéséhez használja a **ShowChanged** paramétert. A parancs kimenete csak azokat a jelentéseket tartalmazza, amelyek követték a megfelelőségi állapot változását.
-
-```azurepowershell-interactive
-$guestHistory = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName <resourcegroupname> -VMName <vmname> -ShowChanged
-$guestHistory
-```
-
-```output
-PolicyDisplayName                                                         ComplianceStatus ComplianceReasons StartTime              EndTime                VMName LatestRepor
-                                                                                                                                                                  tId
------------------                                                         ---------------- ----------------- ---------              -------                ------ -----------
-Audit that an application is installed inside Windows VMs                 NonCompliant                       02/10/2019 10:00:38 PM 02/10/2019 10:00:41 PM VM01  ../12ab0...
-Audit that an application is installed inside Windows VMs.                Compliant                          02/09/2019 11:00:38 AM 02/09/2019 11:00:39 AM VM01  ../e3665...
-Audit that an application is installed inside Windows VMs                 NonCompliant                       02/09/2019 09:00:20 AM 02/09/2019 09:00:23 AM VM01  ../15ze1...
-```
+:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="Képernyőkép a vendég-hozzárendelés megfelelőségi részleteiről." border="false":::
 
 ## <a name="change-history-preview"></a><a name="change-history"></a>Változási előzmények (előzetes verzió)
 
-Egy új **nyilvános előzetes**verzió részeként az utolsó 14 nap változási előzményei minden olyan Azure-erőforráshoz elérhetők, amely támogatja a [teljes módú törlést](../../../azure-resource-manager/templates/complete-mode-deletion.md). A változási előzmények részletesen ismertetik a változás észlelését és az egyes változtatások _vizuális_ eltéréseit. A változás észlelése akkor aktiválódik, ha a Azure Resource Manager tulajdonságok hozzáadása, eltávolítása vagy módosítása történik.
+Egy új **nyilvános előzetes** verzió részeként az utolsó 14 nap változási előzményei minden olyan Azure-erőforráshoz elérhetők, amely támogatja a [teljes módú törlést](../../../azure-resource-manager/templates/complete-mode-deletion.md). A változási előzmények részletesen ismertetik a változás észlelését és az egyes változtatások _vizuális_ eltéréseit. A változás észlelése akkor aktiválódik, ha a Azure Resource Manager tulajdonságok hozzáadása, eltávolítása vagy módosítása történik.
 
-1. Indítsa el a Azure Policy szolgáltatást a Azure Portal a **minden szolgáltatás**lehetőség kiválasztásával, majd a **szabályzat**keresésével és kiválasztásával.
+1. Indítsa el a Azure Policy szolgáltatást a Azure Portal a **minden szolgáltatás** lehetőség kiválasztásával, majd a **szabályzat** keresésével és kiválasztásával.
 
 1. Az **Áttekintés** vagy **megfelelőség** lapon válassza ki a szabályzatot bármilyen **megfelelőségi állapotban**.
 
@@ -205,11 +140,11 @@ Egy új **nyilvános előzetes**verzió részeként az utolsó 14 nap változás
 
 1. Válassza az **erőforrás-megfelelőség** lapon az **Előzmények módosítása (előzetes verzió)** lapot. Megjelenik az észlelt módosítások listája, ha vannak ilyenek.
 
-   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text="Képernyőkép a &quot;megfelelőségi adatok megtekintése&quot; hivatkozásra az erőforrás-megfelelőség lapon." border="false":::
+   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text="Képernyőkép a változások előzményei lapról, valamint az erőforrás-megfelelőségi lapon észlelt változási időkről." border="false":::
 
 1. Válassza ki az észlelt módosítások egyikét. Az erőforráshoz tartozó _vizualizációs diff_ a **változási előzmények** lapon jelenik meg.
 
-   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text="Képernyőkép a &quot;megfelelőségi adatok megtekintése&quot; hivatkozásra az erőforrás-megfelelőség lapon." border="false":::
+   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text="Képernyőfelvétel a korábbi és a korábbi tulajdonságok állapotának változási előzményeiről a korábbi változások lapon." border="false":::
 
 A _vizualizációs diff_ segédek egy erőforrás változásainak azonosításához. Előfordulhat, hogy az észlelt változások nem kapcsolódnak az erőforrás aktuális megfelelőségi állapotához.
 

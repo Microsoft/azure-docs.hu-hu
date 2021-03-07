@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/08/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: eb01ae5e9c7e134e33460674eb2c44b710671a4a
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: e8005bbf0373c91cf9f3515059544b9af3d52384
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833354"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443794"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Azure Stack Edge 2101 kibocsátási megjegyzései
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 A következő kibocsátási megjegyzések azonosítják a kritikus nyitott problémákat, valamint az Azure Stack Edge-eszközök 2101-es kiadásával kapcsolatos megoldott problémákat. Ezek a kibocsátási megjegyzések Azure Stack Edge Pro GPU-ra, Azure Stack Edge Pro R-re és Azure Stack Edge mini R-eszközökre vonatkoznak. Az adott modellnek megfelelő szolgáltatásokat és problémákat minden esetben meghívjuk.
 

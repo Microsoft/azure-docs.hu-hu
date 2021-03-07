@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d7d97ca1eb590fb96789d439243dd04d6143a960
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 641b44a5e21e6646c07e6e1511e1c4ff01707f79
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102203147"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434100"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Az Azure Digital Twins ismert problémái
 
@@ -37,7 +37,7 @@ Ez a cikk az Azure Digital Twins szolgáltatással kapcsolatos ismert problémá
 
 ## <a name="issue-with-interactive-browser-authentication-on-azureidentity-120"></a>Probléma az Azure-beli interaktív böngésző-hitelesítéssel. Identity 1.2.0
 
-**Probléma leírása:** Az Azure-beli digitális Twins-alkalmazásokban az **[Azure. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) Library** **1.2.0** használatával történő írás során problémák merülhetnek fel a [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) metódussal. Ez az "Azure. Identity. AuthenticationFailedException" hibaüzenetként jelenik meg, amikor egy böngészőablakban próbál hitelesíteni. Előfordulhat, hogy a böngészőablak nem indul el teljesen, vagy úgy tűnik, hogy sikeresen hitelesíti a felhasználót, míg az ügyfélalkalmazás továbbra is a hibával meghiúsul.
+**Probléma leírása:** Az Azure-beli digitális Twins-alkalmazásokban az **[Azure. Identity](/dotnet/api/azure.identity) Library** **1.2.0** használatával történő írás során problémák merülhetnek fel a [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential) metódussal. Ez az "Azure. Identity. AuthenticationFailedException" hibaüzenetként jelenik meg, amikor egy böngészőablakban próbál hitelesíteni. Előfordulhat, hogy a böngészőablak nem indul el teljesen, vagy úgy tűnik, hogy sikeresen hitelesíti a felhasználót, míg az ügyfélalkalmazás továbbra is a hibával meghiúsul.
 
 | Ez hatással van rám? | Ok | Feloldás |
 | --- | --- | --- |
@@ -45,7 +45,7 @@ Ez a cikk az Azure Digital Twins szolgáltatással kapcsolatos ismert problémá
 
 ## <a name="issue-with-default-azure-credential-authentication-on-azureidentity-130"></a>Hiba az Azure-beli hitelesítő adatok alapértelmezett hitelesítésével. Identity 1.3.0
 
-**Probléma leírása:** Ha hitelesítési kódot ír az **[Azure. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) Library** **1.3.0** használatával, néhány felhasználó problémát észlelt az Azure digitális Twins dokumentációjában számos mintában használt [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet?view=azure-dotnet&preserve-view=true) metódussal. Ez az "Azure. Identity. AuthenticationFailedException: SharedTokenCacheCredential hitelesítés sikertelen" hibaüzenetet jeleníti meg, amikor a kód megpróbál hitelesíteni.
+**Probléma leírása:** Ha hitelesítési kódot ír az **[Azure. Identity](/dotnet/api/azure.identity) Library** **1.3.0** használatával, néhány felhasználó problémát észlelt az Azure digitális Twins dokumentációjában számos mintában használt [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) metódussal. Ez az "Azure. Identity. AuthenticationFailedException: SharedTokenCacheCredential hitelesítés sikertelen" hibaüzenetet jeleníti meg, amikor a kód megpróbál hitelesíteni.
 
 | Ez hatással van rám? | Ok | Feloldás |
 | --- | --- | --- |

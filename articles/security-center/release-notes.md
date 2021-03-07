@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 6c69e5923e2b65bab0feca04d10fa67f49df3616
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: da2201931c92939029724b1086589803845109a7
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102174483"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439629"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -53,7 +53,7 @@ További információ az irányítópultról [Azure Security Center Áttekintés
 
 ### <a name="sql-vulnerability-assessment-now-includes-the-disable-rule-experience-preview"></a>Az SQL sebezhetőségi felmérés mostantól tartalmazza a "szabály letiltásának" élményét (előzetes verzió)
 
-A Security Center tartalmaz egy beépített sebezhetőségi képolvasót a potenciális adatbázis-sebezhetőségek felderítéséhez, nyomon követéséhez és szervizeléséhez. Az értékelési vizsgálatok eredményei áttekintést nyújtanak az SQL-gépek biztonsági állapotáról, valamint a biztonsági eredmények részleteiről.
+A Security Center tartalmaz egy beépített sebezhetőségi képolvasót a potenciális adatbázis-sebezhetőségek felderítéséhez, nyomon követéséhez és szervizeléséhez. Az értékelés eredményei áttekintést nyújtanak az SQL-gépek biztonsági állapotáról, és ismertetik a biztonsági eredmények részleteit.
 
 Ha a szervezetnek figyelmen kívül kell hagynia egy megállapítást, és nem javítja azt, akkor letilthatja. A letiltott eredmények nem befolyásolják a biztonságos pontszámot, vagy nem eredményeznek nemkívánatos zajt.
 

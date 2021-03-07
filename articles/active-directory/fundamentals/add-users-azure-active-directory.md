@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 11/12/2019
+ms.date: 03/05/2021
 ms.author: ajburnle
-ms.reviewer: jeffsta
+ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de529a8ffb0c72854904717c71dbc322c919f1a8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 51f1b122cb005f47e9816db3b403a35f4f502248
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996695"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426824"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Felhasználók hozzáadása vagy törlése Azure Active Directory használatával
 
@@ -54,7 +54,7 @@ Létrehozhat egy új felhasználót a Azure Active Directory portál használat�
 
 1. Másolja a **jelszó** mezőben megadott automatikusan generált jelszót. Ezt a jelszót kell megadnia a felhasználónak, hogy első alkalommal jelentkezzen be.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 A rendszer létrehozza és hozzáadja a felhasználót az Azure AD-szervezethez.
 
@@ -74,6 +74,9 @@ Ha Azure Active Directory (felhő) és a Windows Server Active Directory (helysz
 
 Meglévő felhasználót a Azure Active Directory portál használatával törölhet.
 
+>[!Note]
+>A szervezeten belüli felhasználók törléséhez globális rendszergazdai vagy felhasználói rendszergazdai szerepkör-hozzárendelés szükséges. A globális rendszergazdák bármilyen felhasználót törölhetnek, beleértve a többi rendszergazdát is. A felhasználói rendszergazdák törölhetik a nem rendszergazda felhasználókat, az ügyfélszolgálati rendszergazdákat és más felhasználói rendszergazdákat. További információ: [rendszergazdai szerepkör engedélyei az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference).
+
 A felhasználók törléséhez kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) a szervezet felhasználói rendszergazdai fiókjának használatával.
@@ -91,9 +94,9 @@ A felhasználó törölve lett, és már nem jelenik meg a **felhasználók – 
 Ha töröl egy felhasználót, a felhasználó által felhasznált összes licenc elérhetővé válik más felhasználók számára.
 
 >[!Note]
->A Windows Server Active Directory használatával frissítenie kell az identitást, a kapcsolattartási adatokat vagy a feladatokat azon felhasználók számára, akiknek a forrása a Windows Server Active Directory. A frissítés befejezése után meg kell várnia, hogy a következő szinkronizálási ciklus befejeződjön, mielőtt látni fogja a módosításokat.
+>Ha szeretné frissíteni az identitást, a kapcsolattartási adatokat vagy a feladatokat azon felhasználók számára, akiknek a forrása a Windows Server Active Directory, akkor a Windows Server Active Directoryt kell használnia. A frissítés befejezése után meg kell várnia a következő szinkronizálási ciklus befejeződését, mielőtt látni fogja a módosításokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felhasználók hozzáadása után a következő alapvető folyamatokat végezheti el:
 

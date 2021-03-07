@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: normesta
-ms.openlocfilehash: e5f62456b85791bad5bb66f3abf67e523558d76e
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 9fa7f586db5a32640c16db5802b56d6481e8889d
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650388"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439289"
 ---
 # <a name="access-control-model-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlési modell Azure Data Lake Storage Gen2
 
@@ -106,7 +106,7 @@ Az alábbi táblázat bemutatja, hogyan egyesítheti az Azure-szerepköröket é
 
 
 > [!NOTE] 
-> Azure Storage Explorer tároló tartalmának megtekintéséhez a rendszerbiztonsági tagoknak az [Azure ad használatával kell bejelentkezniük Storage Explorerba](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#add-a-resource-via-azure-ad), és (minimum) olvasási hozzáféréssel (R--) kell rendelkezniük a tároló gyökérkönyvtárához ( `\` ). Ez az engedélyezési szint lehetővé teszi számukra a gyökérmappa tartalmának listázását. Ha nem szeretné, hogy a gyökérmappa tartalma látható legyen, hozzárendelheti az [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkört. Ezzel a szerepkörrel listázhatja a fiókban lévő tárolókat, a tároló tartalmait azonban nem. Ezt követően hozzáférés-vezérlési listákat adhat meg az egyes címtárakhoz és fájlokhoz.   
+> Azure Storage Explorer tároló tartalmának megtekintéséhez a rendszerbiztonsági tagoknak az [Azure ad használatával kell bejelentkezniük Storage Explorerba](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#attach-to-an-individual-resource), és (minimum) olvasási hozzáféréssel (R--) kell rendelkezniük a tároló gyökérkönyvtárához ( `\` ). Ez az engedélyezési szint lehetővé teszi számukra a gyökérmappa tartalmának listázását. Ha nem szeretné, hogy a gyökérmappa tartalma látható legyen, hozzárendelheti az [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkört. Ezzel a szerepkörrel listázhatja a fiókban lévő tárolókat, a tároló tartalmait azonban nem. Ezt követően hozzáférés-vezérlési listákat adhat meg az egyes címtárakhoz és fájlokhoz.   
 
 ## <a name="security-groups"></a>Biztonsági csoportok
 

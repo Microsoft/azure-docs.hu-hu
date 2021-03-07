@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6ef255d78d3dd3ff6fcc5eba7aad522018185299
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: ffc5f49e357591b41a18ae15c5551c1f447095fb
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518895"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440309"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Az Azure Files méretezhetőségi és teljesítménycéljai
 A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az SMB-és NFS fájlrendszer-protokollok használatával érhető el. Ez a cikk a Azure Files és Azure File Sync méretezhetőségi és teljesítménybeli céljait ismerteti.
@@ -126,10 +126,21 @@ Az alábbi szakaszokban megtervezheti az üzembe helyezést, és a belső teszte
 | Névtér letöltési átviteli sebessége | 400 objektum/másodperc |
 
 ### <a name="initial-one-time-provisioning"></a>Egyszeri kiépítés kezdeti időpontja
+
 **Kezdeti Felhőbeli módosítás enumerálása**: új szinkronizálási csoport létrehozásakor a kezdeti Felhőbeli változások számbavétele az első lépés, amelyet a rendszer végrehajt. Ebben a folyamatban a rendszer az Azure-fájlmegosztás összes elemét enumerálja. A folyamat során nem lesz szinkronizálási tevékenység, azaz egyetlen elem sem lesz letöltve a Felhőbeli végpontról a kiszolgálói végpontra, és egyetlen elem sem lesz feltöltve a kiszolgálói végpontról a Felhőbeli végpontra. A szinkronizálási tevékenység akkor folytatódik, amikor a kezdeti Felhőbeli változás enumerálása befejeződik.
 A teljesítmény sebessége 20 objektum másodpercenként. Az ügyfelek a Felhőbeli megosztásban lévő elemek számának meghatározásával, valamint a következő képletek használatával tudják megbecsülni a Felhőbeli módosítások számbavételének befejezéséhez szükséges időt. 
 
    **Kezdeti Felhőbeli számbavétel időpontja (napokban) = (objektumok száma a Felhőbeli végpontban)/(20 * 60 * 60 * 24)**
+
+A **Windows Serverről az Azure-ba irányuló adatok kezdeti szinkronizálása**: sok Azure file Sync üzemelő példány üres Azure-fájlmegosztás használatával kezdődik, mert az összes adatok a Windows Serveren vannak. Ezekben az esetekben a felhő kezdeti változásának számbavétele gyors, és a legtöbb időt a Windows-kiszolgálóról az Azure-fájlmegosztás (ok) ra való szinkronizálás során kell kitölteni. 
+
+Míg a Sync adatok feltöltése az Azure-fájlmegosztásba, a helyi fájlkiszolgálón nincs leállás, és a rendszergazdák [hálózati korlátozásokat](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-registration#set-azure-file-sync-network-limits) állíthatnak be a háttérbeli adatok feltöltéséhez használt sávszélesség korlátozására.
+
+A kezdeti szinkronizálást a szinkronizálási csoport másodpercenkénti 20 fájljának kezdeti feltöltési sebessége korlátozza. Az ügyfelek a következő képletekkel tudják megbecsülni az összes adat Azure-ba való feltöltésének időpontját napokban:  
+
+   **A fájlok szinkronizálási csoportba való feltöltésének időpontja (napokban) = (objektumok száma a Felhőbeli végpontban)/(20 * 60 * 60 * 24)**
+
+Az adatok több kiszolgálói végpontba és szinkronizálási csoportba való felosztása felgyorsíthatja ezt a kezdeti adatfeltöltést, mivel a feltöltés párhuzamosan hajtható végre több szinkronizálási csoport számára, másodpercenként 20 elemnél. Így a két szinkronizálási csoport a másodpercenként 40-as összesített sebességgel fut. A teljes befejezési idő az a szinkronizálási csoportra vonatkozó becsült idő, amelyet a legtöbb fájl szinkronizál
 
 **Névtér letöltési átviteli sebessége** Ha új kiszolgálói végpontot ad hozzá egy meglévő szinkronizálási csoporthoz, a Azure File Sync ügynök nem tölti le a fájl tartalmát a Felhőbeli végpontból. Először szinkronizálja a teljes névteret, majd elindítja a háttérben való visszahívást, hogy letöltse a fájlokat, akár teljes egészében, akár a felhőalapú rétegek engedélyezése esetén a kiszolgálói végponton beállított felhő-előállítási házirendhez.
 

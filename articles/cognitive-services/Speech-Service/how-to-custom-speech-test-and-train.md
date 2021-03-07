@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: f7e29fab542db79b22a9ace7371bc22d3526ac33
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 15f0b01304f3333b8650ab2079cd56271d0095db
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710498"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424495"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Adatok előkészítése a Custom Speech szolgáltatáshoz
 
@@ -46,16 +46,16 @@ Ez a táblázat felsorolja az elfogadott adattípusokat, valamint az egyes adatt
 
 | Adattípus | Teszteléshez használatos | Ajánlott mennyiség | Képzéshez használatos | Ajánlott mennyiség |
 |-----------|-----------------|----------|-------------------|----------|
-| [Audió](#audio-data-for-testing) | Igen<br>Vizuális vizsgálathoz használatos | 5 + hangfájl | Nem | N/A |
-| [Hang + emberi – címkézett átiratok](#audio--human-labeled-transcript-data-for-testingtraining) | Igen<br>A pontosság kiértékeléséhez használatos | 0,5-5 órányi hang | Igen | 1-20 órányi hang |
-| [Kapcsolódó szöveg](#related-text-data-for-training) | Nem | N/a | Igen | 1-200 MB kapcsolódó szöveg |
+| [Audió](#audio-data-for-testing) | Yes<br>Vizuális vizsgálathoz használatos | 5 + hangfájl | No | N/A |
+| [Hang + emberi – címkézett átiratok](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>A pontosság kiértékeléséhez használatos | 0,5-5 órányi hang | Yes | 1-20 órányi hang |
+| [Kapcsolódó szöveg](#related-text-data-for-training) | No | N/a | Yes | 1-200 MB kapcsolódó szöveg |
 
 Új modell betanításakor Kezdje a [kapcsolódó szöveggel](#related-text-data-for-training). Ezek az adatmennyiségek már javítják a speciális kifejezések és kifejezések felismerését. A szöveggel való képzés sokkal gyorsabb, mint a hanggal való képzés (perc és nap).
 
 A fájlokat típus szerint kell csoportosítani egy adatkészletbe, és. zip fájlként kell feltölteni. Az egyes adatkészletek csak egyetlen adattípust tartalmazhatnak.
 
 > [!TIP]
-> A gyors kezdéshez vegye fontolóra a mintaadatok használatát. Tekintse meg a GitHub-tárházat a <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">minta Custom Speech <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
+> A gyors kezdéshez vegye fontolóra a mintaadatok használatát. Tekintse meg a GitHub-tárházat a <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">minta Custom Speech </a>
 
 > [!NOTE]
 > Nem minden alapmodell támogatja a hangfelvételt. Ha egy alapmodell nem támogatja azt, a beszédfelismerési szolgáltatás csak az átiratokból származó szöveget fogja használni, és figyelmen kívül hagyja a hangot. A hangadatokkal való képzést támogató alapmodellek listáját a [nyelvi támogatásban](language-support.md#speech-to-text) találhatja meg. Még ha az alapmodell is támogatja a hangadatokkal való képzést, a szolgáltatás csak a hang egy részét használja. Továbbra is az összes átiratot fogja használni.
@@ -69,7 +69,7 @@ A fájlokat típus szerint kell csoportosítani egy adatkészletbe, és. zip fá
 
 ## <a name="upload-data"></a>Adatok feltöltése
 
-Az adatok feltöltéséhez navigáljon a <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech studióhoz <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. A portálon kattintson az **adatok feltöltése** elemre a varázsló indításához és az első adatkészlet létrehozásához. Az adatok feltöltésének engedélyezése előtt meg kell adnia, hogy ki kell választania egy beszédfelismerési adattípust az adatkészlethez.
+Az adatok feltöltéséhez navigáljon a <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech studióhoz </a>. A portálon kattintson az **adatok feltöltése** elemre a varázsló indításához és az első adatkészlet létrehozásához. Az adatok feltöltésének engedélyezése előtt meg kell adnia, hogy ki kell választania egy beszédfelismerési adattípust az adatkészlethez.
 
 ![Képernyőfelvétel a hangfeltöltési lehetőségről a beszédfelismerési portálról.](./media/custom-speech/custom-speech-select-audio.png)
 
@@ -101,9 +101,9 @@ Ezzel a táblázattal ellenőrizheti, hogy a hangfájlok formátuma helyesen van
 > [!TIP]
 > A képzés és a tesztelési célú adatfeldolgozás során a. zip fájl mérete nem haladhatja meg a 2 GB-ot. Ha további adatokra van szüksége a betanításhoz, Ossza szét azt több. zip-fájlba, és töltse fel őket külön. Később is dönthet úgy, hogy *több* adatkészletből is betanít. Azonban csak *egyetlen* adatkészletből lehet tesztelni.
 
-A <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">Sox <span class="docon docon-navigate-external x-hidden-focus"></span> </a> használatával ellenőrizze a hangtulajdonságokat, vagy alakítsa át a meglévő hangokat a megfelelő formátumokba. Az alábbiakban néhány példát láthat arra, hogyan végezheti el ezeket a tevékenységeket a SoX parancssorban:
+A <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">Sox </a> használatával ellenőrizze a hangtulajdonságokat, vagy alakítsa át a meglévő hangokat a megfelelő formátumokba. Az alábbiakban néhány példát láthat arra, hogyan végezheti el ezeket a tevékenységeket a SoX parancssorban:
 
-| Tevékenység | Leírás | SoX-parancs |
+| Tevékenység | Description | SoX-parancs |
 |----------|-------------|-------------|
 | Hangformátum keresése | Ezzel a paranccsal ellenőrizhető<br>a hangfájl formátuma. | `sox --i <filename>` |
 | Hangformátum konvertálása | A parancs használata a konvertáláshoz<br>a hangfájl egyetlen csatornára, 16 bites, 16 KHz. | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
@@ -146,7 +146,7 @@ speech03.wav    the lazy dog was not amused
 
 Az átiratokat a rendszer normalizálja, hogy fel tudja őket dolgozni. Van azonban néhány fontos normalizálás, amelyeket el kell végezni, mielőtt feltölti az adatsort a Speech studióba. Az átírások előkészítésekor használandó megfelelő nyelvet lásd: [Human-címkével ellátott átirat létrehozása](how-to-custom-speech-human-labeled-transcriptions.md)
 
-A hangfájlok és a megfelelő átírások összegyűjtése után egyetlen. zip-fájlként csomagolja őket, mielőtt feltölti őket a <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech studióba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. Az alábbi példa egy három hangfájllal és egy emberi címkével ellátott átírási fájllal rendelkező adathalmazt mutat be:
+A hangfájlok és a megfelelő átírások összegyűjtése után egyetlen. zip-fájlként csomagolja őket, mielőtt feltölti őket a <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech studióba </a>. Az alábbi példa egy három hangfájllal és egy emberi címkével ellátott átírási fájllal rendelkező adathalmazt mutat be:
 
 > [!div class="mx-imgBorder"]
 > ![Hang kiválasztása a Speech Portalon](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
@@ -164,7 +164,7 @@ Az egyedi terméknév vagy szolgáltatások esetében a betanításhoz kapcsoló
 | Mondatok (hosszúságú kimondott szöveg) | A termékek nevének felismerése, illetve az iparágra jellemző Szószedet használata a mondatok kontextusában. |
 | Kiejtés | A nem definiált kiejtésekkel kapcsolatos gyakori kifejezések, mozaikszavak és egyéb szavak kiejtésének javítása. |
 
-A mondatok egyetlen szövegfájlként vagy több szövegfájlként is megadhatók. A pontosság javítása érdekében a várt hosszúságú kimondott szöveg közelebbi szöveges adatok használatával. A kiejtéseket egyetlen szövegfájlként kell megadni. Minden egyes zip-fájlként becsomagolható, és a <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech studióba <span class="docon docon-navigate-external x-hidden-focus"></span> </a>tölthető fel.
+A mondatok egyetlen szövegfájlként vagy több szövegfájlként is megadhatók. A pontosság javítása érdekében a várt hosszúságú kimondott szöveg közelebbi szöveges adatok használatával. A kiejtéseket egyetlen szövegfájlként kell megadni. Minden egyes zip-fájlként becsomagolható, és a <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech studióba </a>tölthető fel.
 
 A kapcsolódó szöveggel végzett képzések általában néhány percen belül befejeződik.
 

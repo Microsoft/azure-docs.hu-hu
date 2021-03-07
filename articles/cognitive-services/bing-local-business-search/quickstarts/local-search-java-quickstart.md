@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/12/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 8bd2c174456c35da872a0e995333503a72ce7c7a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 09f387eebd48b6e2d72e49a24fc9345817674b35
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493304"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430122"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Gyors útmutató: lekérdezés küldése a Bing helyi üzleti keresési API-nak Java használatával
 
@@ -33,7 +33,7 @@ Ez a példában szereplő alkalmazás helyi válaszüzeneteket olvas be az API-b
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
 * A [Java fejlesztői készlet (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" hozzon létre egy Bing Search erőforrást, "  target="_blank"> és hozzon létre egy Bing Search-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" hozzon létre egy Bing Search erőforrást, "  target="_blank"> és hozzon létre egy Bing Search-erőforrást </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
 
 ## <a name="create-the-request"></a>A kérelem létrehozása 
 
@@ -91,8 +91,8 @@ import com.google.gson.JsonParser;
 public class LocalSearchCls {
 
     // ***********************************************
-    // **_ Update or verify the following values. _*_
-    // _*********************************************
+    // *** Update or verify the following values. ***
+    // **********************************************
 
         // Replace the subscriptionKey string value with your valid subscription key.
         static String subscriptionKey = "YOUR-ACCESS-KEY";
@@ -168,7 +168,7 @@ public class LocalSearchCls {
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Helyi üzleti keresés C# rövid útmutató](local-quickstart.md)
 - [Helyi üzleti keresés Node.js rövid útmutató](local-search-node-quickstart.md)
 - [Helyi üzleti keresés – Python rövid útmutató](local-search-python-quickstart.md)

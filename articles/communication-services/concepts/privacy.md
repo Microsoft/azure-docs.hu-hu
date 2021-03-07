@@ -8,16 +8,18 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8e08c531cd46d5112138a3feedf97b27307e3dca
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f6e4218290de6ef41ef6eedc78b3b0b55ee322e8
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656193"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438557"
 ---
 # <a name="region-availability-and-data-residency"></a>Regionális elérhetőség és adattárolási hely
 
-Az Azure kommunikációs szolgáltatás elkötelezett ahhoz, hogy ügyfeleink megfeleljenek az adatvédelmi és személyes adatokra vonatkozó követelményeiknek. A kommunikációs szolgáltatásokat használó fejlesztőknek, akik az alkalmazás használatával közvetlen kapcsolatban állnak az emberekkel, lehetséges, hogy az adataik vezérlői. Mivel az Azure kommunikációs szolgáltatás tárolja ezeket az adattárolást az Ön nevében, valószínűleg az ilyen típusú adatfeldolgozót használjuk. Ez az oldal összefoglalja, hogyan őrzi meg a szolgáltatás az adatait, és hogyan azonosíthatja, exportálhatja és törölheti ezeket az adatfájlokat.
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
+
+Az Azure kommunikációs szolgáltatás elkötelezett ahhoz, hogy ügyfeleink megfeleljenek az adatvédelmi és személyes adatokra vonatkozó követelményeiknek. A kommunikációs szolgáltatásokat használó fejlesztőknek, akik az alkalmazás használatával közvetlen kapcsolatban állnak az emberekkel, lehetséges, hogy az adataik vezérlői. Mivel az Azure kommunikációs szolgáltatások az Ön nevében tárolják és titkosítják ezeket az adattárolást, valószínűleg ennek az adatoknak a processzora. Ez az oldal összefoglalja, hogyan őrzi meg a szolgáltatás az adatait, és hogyan azonosíthatja, exportálhatja és törölheti ezeket az adatfájlokat.
 
 ## <a name="data-residency"></a>Adattárolási hely
 
@@ -63,7 +65,7 @@ A csevegési szálak és üzenetek csak explicit törlés után maradnak meg. A 
 
 ### <a name="sms"></a>SMS
 
-Az SMS-üzenetek küldését és fogadását a szolgáltatás elmúlóan dolgozza fel, és nem őrzi meg.
+Az SMS-üzenetek küldését és fogadását a szolgáltatás elmúlóan dolgozza fel, és nem őrzi meg. 
 
 ### <a name="pstn-voice-calling"></a>PSTN hanghívása
 

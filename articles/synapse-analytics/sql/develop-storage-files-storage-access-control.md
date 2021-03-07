@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1ee631e3e4a13a18bb61ee6237ff67a49f663179
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1ea67fa4ae925e04415fe358175c1dea3b0f03e3
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693900"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428796"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>A Storage-fiók hozzáférésének szabályozása kiszolgáló nélküli SQL-készlethez az Azure szinapszis Analyticsben
 
@@ -105,13 +105,13 @@ A tűzfallal védett tárhely felhasználói identitáson keresztüli elérésé
 Az alábbi lépéseket követve konfigurálja a Storage-fiók tűzfalát, és vegyen fel egy kivételt a szinapszis-munkaterületre.
 
 1. A PowerShell megnyitása vagy a [PowerShell telepítése](/powershell/scripting/install/installing-powershell-core-on-windows?preserve-view=true&view=powershell-7.1)
-2. Telepítse az az. Storage 3.0.1-modult és az az. szinapszis 0.7.0: 
+2. Telepítse az az. Storage 3.4.0-modult és az az. szinapszis 0.7.0: 
     ```powershell
-    Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease
+    Install-Module -Name Az.Storage -RequiredVersion 3.4.0
     Install-Module -Name Az.Synapse -RequiredVersion 0.7.0
     ```
     > [!IMPORTANT]
-    > Győződjön meg arról, hogy a 3.0.1-es **verziót** használja. Az az. Storage verzióját a következő parancs futtatásával tekintheti meg:  
+    > Győződjön meg arról, hogy a **3.4.0 verzióját** használja. Az az. Storage verzióját a következő parancs futtatásával tekintheti meg:  
     > ```powershell 
     > Get-Module -ListAvailable -Name  Az.Storage | select Version
     > ```

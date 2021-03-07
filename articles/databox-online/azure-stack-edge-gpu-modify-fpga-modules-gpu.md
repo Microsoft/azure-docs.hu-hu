@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/03/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 6e9e1319b90ab859c63c022e478bc26c4b8aedeb
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 660fbf7cc4dd28c800d8f49fd5d990c99f97c4c8
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550218"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102442995"
 ---
 # <a name="run-existing-iot-edge-modules-from-azure-stack-edge-pro-fpga-devices-on-azure-stack-edge-pro-gpu-device"></a>Meglévő IoT Edge modulok futtatása Azure Stack Edge Pro FPGA-eszközökről Azure Stack Edge Pro GPU-eszközön
+
+[!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
 
 Ez a cikk részletesen ismerteti az Azure Stack Edge Pro-FPGA futó Docker-alapú IoT Edge modul módosításait, így az Azure Stack Edge Pro GPU-eszközön futó, Kubernetes-alapú IoT Edge platformon is futtatható. 
 

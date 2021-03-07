@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: chez
 ms.reviewer: mariozi
-ms.openlocfilehash: 4e30ac2e6836b40ab0c0c2915eae48266cb4845c
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: c6c376e44c6135a800e6f7e281f8ea85b828329a
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102199210"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443876"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>Azure Data Factory titkosítása az ügyfél által felügyelt kulcsokkal
 
@@ -102,9 +102,9 @@ A felhasználó által hozzárendelt felügyelt identitással kapcsolatos továb
 1. Győződjön meg arról, hogy a felhasználó által hozzárendelt felügyelt identitás (UA-MI) _beolvassa_, _kicsomagolja a kulcsot_ , és _betakarja a kulcsot_ Key Vault
 
 1. A __speciális__ lapon jelölje be a titkosítás engedélyezése a következőhöz: az _ügyfél által felügyelt kulcs_ a 
-   :::image type="content" source="media/enable-customer-managed-key/06-uami-cmk.png" alt-text="Speciális lapon a Azure Portal-ben a adat-előállító létrehozási élményéhez.":::
+   :::image type="content" source="media/enable-customer-managed-key/06-user-assigned-managed-identity.png" alt-text="Speciális lapon a Azure Portal-ben a adat-előállító létrehozási élményéhez.":::
 
-1. Adja meg a Key Vault URL-címét
+1. Adja meg a Key Vault tárolt ügyfél által felügyelt kulcs URL-címét.
 
 1. Válassza ki a megfelelő felhasználóhoz rendelt felügyelt identitást a hitelesítéshez Key Vault
 

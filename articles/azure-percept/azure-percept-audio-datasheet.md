@@ -6,12 +6,12 @@ ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: reference
 ms.date: 02/16/2021
-ms.openlocfilehash: 27b47cbd8eed60ccc2dc1c4a8dd397cca53a9d35
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 3e72aea657b82c2111bea1493b5654ec667c491b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098417"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425277"
 ---
 # <a name="azure-percept-audio-datasheet"></a>Azure Percept audio Adatlap
 
@@ -24,8 +24,8 @@ ms.locfileid: "102098417"
 |Külső méretek             |90mm x170mm x 25mm   |
 |Termék súlya                  |0,42 kg   |
 |Felügyeleti vezérlő síkja        |Azure-eszköz frissítése (ADU)          |
-|Támogatott szoftverek és szolgáltatások |Testreszabható kulcsszavak és parancsok <br> Azure Speech Devices SDK <br> [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) <br> [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) |
-|Hangfeldolgozás                 |XMOS XUF208 kodek        |
+|Támogatott szoftverek és szolgáltatások |Testreszabható kulcsszavak és parancsok <br> Azure Speech SDK <br> [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) <br> [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) |
+|Hangkodek                     |XMOS XUF208 kodek        |
 |Érzékelők, vizuális mutatók és összetevők   |4x MEM érzékelő Microsystems mikrofonja (MSM261D3526Z1CM) <br> 2x gomb <br> USB hub <br> DAC <br> 3x LED-EK <br> VEZETETT illesztőprogram          |
 |Biztonsági Crypto-Controller      |ST-Microelectronics STM32L462CE       |
 |Portok                           |1x USB 2,0 Type Micro B típus <br> 3,5 mm audiokimenet     |

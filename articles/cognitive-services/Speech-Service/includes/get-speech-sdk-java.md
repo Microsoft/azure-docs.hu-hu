@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 2ab636679e59536a2ddfaa8603dc2da45811cd2f
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 6897bf9b4ccce71048af88a3108e3d87d17a375d
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99213627"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434491"
 ---
 :::row:::
     :::column span="3":::
-        Az Androidhoz <a href="https://developer.android.com/studio/projects/android-library" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a>készült Java SDK a szükséges kódtárakat és a szükséges Android-engedélyeket tartalmazza. A szolgáltatás egy Maven-tárházban található a `https://csspeechstorage.blob.core.windows.net/maven/` csomagban `com.microsoft.cognitiveservices.speech:client-sdk:1.15.0` .
+        Az Androidhoz készült Java SDK a szükséges kódtárakat és a szükséges <a href="https://developer.android.com/studio/projects/android-library" target="_blank">Android-engedélyeket </a>tartalmazza. A szolgáltatás egy Maven-tárházban található a `https://csspeechstorage.blob.core.windows.net/maven/` csomagban `com.microsoft.cognitiveservices.speech:client-sdk:1.15.0` .
     :::column-end:::
     :::column:::
         <br>
@@ -39,5 +39,5 @@ A Java SDK a [Speech Devices SDK](../speech-devices-sdk.md)része is.
 
 #### <a name="additional-resources"></a>További források
 
-- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android" target="_blank">Android-specifikus Java gyors útmutató forráskódja <span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/jre" target="_blank">Java Runtime (JRE) gyors útmutató forráskódja <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android" target="_blank">Android-specifikus Java gyors útmutató forráskódja </a>
+- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/jre" target="_blank">Java Runtime (JRE) gyors útmutató forráskódja </a>

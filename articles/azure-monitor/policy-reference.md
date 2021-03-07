@@ -1,17 +1,17 @@
 ---
 title: A Azure Monitor beépített szabályzat-definíciói
 description: A Azure Monitor Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.custom: subject-policy-reference
-ms.openlocfilehash: ac789e56942a167da670d1cbbadc8773f0c0d1a1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b2aeb76c24813813ce03075ecac0fd778f838188
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100618318"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102435137"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-monitor"></a>A Azure Monitor beépített definíciói Azure Policy
 

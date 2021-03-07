@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 10/06/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 27af230f8fa157f76865bd38a48c17640491d7db
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1404dfd25f4e80e0e05c0071da649cacfa45dac0
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896189"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437757"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Azure Stack Edge Pro GPU-eszköz kezelése a Windows PowerShell használatával
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Azure Stack Edge Pro-megoldás lehetővé teszi az adatfeldolgozást és a hálózaton keresztüli küldését az Azure-ba. Ez a cikk az Azure Stack Edge Pro-eszköz konfigurációs és felügyeleti feladatait ismerteti. Az eszköz kezeléséhez használhatja a Azure Portal, a helyi webes felhasználói felületet vagy a Windows PowerShell felületét is.
 
@@ -121,7 +123,7 @@ Ha a számítási szerepkör konfigurálva van az eszközön, a számítási nap
     - `FullLogCollection`: Ez a paraméter biztosítja, hogy a naplófájl tartalmazza az összes számítási naplót. Alapértelmezés szerint a naplófájl csak a naplók egy részhalmazát tartalmazza.
 
 
-## <a name="change-kubernetes-pod-and-service-subnets"></a>Kubernetes Pod-és szolgáltatási alhálózatok módosítása
+## <a name="change-kubernetes-pod-and-service-subnets"></a>Kubernetes-pod és szolgáltatási alhálózatok módosítása
 
 Alapértelmezés szerint a Kubernetes az Azure Stack Edge-eszközön a 172.27.0.0/16 és a 172.28.0.0/16 alhálózatokat használja a pod és a Service-hez. Ha ezek az alhálózatok már használatban vannak a hálózatban, akkor a parancsmag futtatásával `Set-HcsKubeClusterNetworkInfo` módosíthatja ezeket az alhálózatokat.
 

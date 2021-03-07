@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/04/2021
 ms.author: alkohli
-ms.openlocfilehash: bd49edcfaca781ac3d36fbf871ec146b32c64ae3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 99068a68c5d35bc6a501c5860d0bbc9ea3e3f368
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733414"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102436973"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro-gpu"></a>Számítások kezelése a Azure Stack Edge Pro GPU-val
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Ez a cikk bemutatja, hogyan kezelheti a számításokat IoT Edge szolgáltatáson keresztül az Azure Stack Edge Pro GPU-eszközön. A számítást a Azure Portal vagy a helyi webes felületen keresztül kezelheti. A Azure Portal segítségével kezelheti a modulokat, az eseményindítókat és a IoT Edge konfigurációt, valamint a helyi webes felhasználói felületet a számítási hálózati beállítások kezeléséhez.
 
@@ -37,7 +37,7 @@ Trigger létrehozásához hajtsa végre az alábbi lépéseket a Azure Portal.
 
 1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, majd lépjen a **IoT Edge** elemre. Lépjen az **Eseményindítók** elemre, és válassza a parancssáv **+ eseményindító hozzáadása** parancsát.
 
-    ![Válassza az trigger hozzáadása lehetőséget](media/azure-stack-edge-j-series-manage-compute/add-trigger-1m.png)
+    ![Válassza az trigger hozzáadása lehetőséget](media/azure-stack-edge-j-series-manage-compute/add-trigger-1-m.png)
 
 2. Az **trigger hozzáadása** panelen adjon meg egy egyedi nevet az trigger számára.
     

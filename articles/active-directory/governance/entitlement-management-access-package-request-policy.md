@@ -16,12 +16,12 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4a1aa737b1f671c08d51d780fa98db50f2869a1
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 7b6bc00af8d54c8748dd82b934974282e0e8da0e
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102211651"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426960"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomagra vonatkozó kérelmek beállításainak módosítása az Azure AD-jogosultságok kezelésében
 
@@ -197,6 +197,8 @@ Egy hozzáférési csomag kérésének és jóváhagyási beállításainak mód
     ![Hozzáférési csomag – házirend – házirend-beállítás engedélyezése](./media/entitlement-management-access-package-approval-policy/enable-requests.png)
 
 1. Kattintson a **Tovább** gombra.
+
+1. Ha szeretné megkövetelni, hogy a kérések további információkat szolgáltassanak a hozzáférési csomaghoz való hozzáférés kérésekor, a kérelmező adatainak (előzetes verzió) konfigurálásához használja az [Azure ad-jogosultságok kezelése szolgáltatásban található hozzáférési csomag jóváhagyási és kérelmezői információinak (előzetes verzió) beállításainak módosítása](entitlement-management-access-package-approval-policy.md#collect-additional-requestor-information-for-approval-preview) című témakör lépéseit.
 
 1. Az életciklus beállításainak konfigurálása.
 

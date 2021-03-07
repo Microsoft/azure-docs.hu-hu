@@ -3,18 +3,18 @@ title: Azure Blob-adatkezelés és-keresés a blob-index címkékkel (előzetes 
 description: Megtudhatja, hogyan használhat blob-index címkéket a blob-objektumok kategorizálásához, kezeléséhez és lekérdezéséhez.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 10/19/2020
+ms.date: 03/05/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions
-ms.openlocfilehash: 4f84c3c2f6fc671a8cb6ac70313361540e3dd815
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bfaee493c25f882b8beeed565a155db93efd0083
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95523280"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431754"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>Azure Blob-adatkezelés és-keresés a blob-index címkékkel (előzetes verzió)
 
@@ -29,6 +29,9 @@ A blob index címkéi a következőket teszik lehetővé:
 
 Vegyünk például egy olyan forgatókönyvet, ahol több millió blob található a Storage-fiókban, és számos különböző alkalmazás érhető el. Egyetlen projekt összes kapcsolódó adatát szeretné megkeresni. Nem biztos benne, hogy mi a hatókör, mert az adathalmaz több tárolón is átterjedhet különböző elnevezési konvenciókkal. Az alkalmazások azonban az összes, a projekten alapuló címkével feltöltik az összes adathalmazt. Ahelyett, hogy több millió blobot keres, és nem hasonlítja össze a neveket és a tulajdonságokat, használhatja `Project = Contoso` felderítési feltételként. A blob index a teljes Storage-fiókban lévő összes tárolót szűri, így gyorsan megkeresheti és visszaküldheti a 50-es Blobok készletét `Project = Contoso` .
 
+> [!IMPORTANT]
+> A blob index címkék jelenleg **előzetes** verzióban érhetők el. Tekintse meg az Azure-szolgáltatásokra vonatkozó, a bétaverzióban, az előzetes verzióban, vagy más módon még nem közzétett, általánosan elérhetővé vált jogi feltételekhez tartozó [Microsoft Azure előzetes verziójának kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) .
+
 A blob index használatára vonatkozó példákkal kapcsolatban lásd: [blob-index címkék használata az adatkezeléshez és az adatkereséshez](storage-blob-index-how-to.md).
 
 ## <a name="blob-index-tags-and-data-management"></a>BLOB index címkék és adatkezelés
@@ -42,7 +45,6 @@ Vegye figyelembe a következő öt blobot a Storage-fiókban:
 - *fényképek/bannerphoto.png*
 - *Archívum/befejezett/2019review.pdf*
 - *naplók/2020/01/01/logfile.txt*
-
 
 Ezek a Blobok a *tároló/virtuális mappa/blob neve* előtaggal vannak elválasztva. Az alábbi öt blobon beállíthatja az index címke attribútumát `Project = Contoso` , hogy azok együtt legyenek kategorizálva az aktuális előtag-szervezetük megtartása mellett. Az indexelési címkék hozzáadásával nem kell áthelyeznie az adatok áthelyezését azáltal, hogy az index használatával szűrni és keresni kívánja az adatkeresési lehetőséget.
 
@@ -225,7 +227,7 @@ A blob indexekhez való hozzáférést a következő módszerek egyikével enged
 
 A blob index címkéi a blob-adatforráshoz tartozó alerőforrások. Előfordulhat, hogy a Blobok olvasásához vagy írásához szükséges engedélyekkel rendelkező felhasználó vagy SAS-token nem fér hozzá a blob-index címkéhez.
 
-### <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
+### <a name="role-based-access-control"></a>Szerepkör alapú hozzáférés-vezérlés
 
 Az [Azure ad-identitást](../common/storage-auth-aad.md) használó hívók a következő engedélyeket kaphatják meg a blob index-címkéken való működéshez.
 

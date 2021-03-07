@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/02/2021
 ms.author: cherylmc
 ms.custom: subject-armqs
-ms.openlocfilehash: bf892a45ee6df2ab29a1b326a663dc41057c7ea6
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: d31f490baec49e8e0b6fcf89caa8c19202fdf763
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509826"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431380"
 ---
 # <a name="quickstart-create-an-any-to-any-configuration-using-an-arm-template"></a>Rövid útmutató: bármilyen konfiguráció létrehozása ARM-sablonnal
 
@@ -125,13 +125,7 @@ A sablon nem konfigurálja a hibrid hálózatokhoz szükséges összes beállít
 
 Ha már nincs szüksége a létrehozott erőforrásokra, törölje őket. A virtuális WAN-erőforrások némelyikét bizonyos sorrendben törölni kell a függőségek miatt. A törlés körülbelül 30 percet vesz igénybe.
 
-1. Nyissa meg a létrehozott virtuális WAN-t.
-1. Válassza ki a virtuális WAN-hoz társított virtuális hubot a központ lap megnyitásához.
-1. Kattintson a **Törlés** gombra. Törölje az összes entitást (kapcsolatok, átjárók stb.) a központban. A művelet végrehajtása 30 percet is igénybe vehet.
-1. A hubot törölheti ezen a ponton, vagy később is törölheti az erőforráscsoportot.
-1. Ismételje meg a műveletet a virtuális WAN-hoz társított összes hubhoz.
-1. Navigáljon az erőforráscsoporthoz a Azure Portal.
-1. Válassza az **Erőforráscsoport törlése** elemet. Ez az erőforráscsoport összes elemét törli, beleértve az hubokat és a virtuális WAN-t is.
+[!INCLUDE [Delete resources](../../includes/virtual-wan-resource-cleanup.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 

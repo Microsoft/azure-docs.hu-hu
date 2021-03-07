@@ -6,18 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: d172ce98ba93360c621a91fb0e2a55d022470943
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: dfae1a9b02db7e7b9577acdb47a1ba089f1609e8
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935560"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439051"
 ---
 # <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-pro-device"></a>Modul konfigurálása és futtatása GPU-ban Azure Stack Edge Pro-eszközön
 
-Az Azure Stack Edge Pro-eszköz egy vagy több grafikus feldolgozó egységet (GPU) tartalmaz. A GPU-k olyan népszerű AI-számítások, amelyek párhuzamos feldolgozási képességeket kínálnak, és gyorsabbak a képmegjelenítésnél, mint a központi feldolgozó egységek (CPU-k). Az Azure Stack Edge Pro-eszközön található GPU-val kapcsolatos további információkért látogasson el az [Edge Pro-eszköz technikai specifikációjának Azure stack](azure-stack-edge-gpu-technical-specifications-compliance.md).
+[!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
+
+Az Azure Stack Edge Pro-eszköz egy vagy több grafikus feldolgozó egységet (GPU) tartalmaz. A GPU-k használata gyakori választás az MI-számítások esetén, mivel párhuzamos feldolgozási képességekkel rendelkeznek, és gyorsabban renderelik a képeket a processzoroknál (CPU-knál). Az Azure Stack Edge Pro-eszközön található GPU-val kapcsolatos további információkért látogasson el az [Edge Pro-eszköz technikai specifikációjának Azure stack](azure-stack-edge-gpu-technical-specifications-compliance.md).
 
 Ez a cikk bemutatja, hogyan konfigurálhat és futtathat egy modult a GPU-ban az Azure Stack Edge Pro-eszközön. Ebben a cikkben az NVIDIA T4 GPU-hoz írt, nyilvánosan elérhető tároló modul **számjegyeit** fogjuk használni. Ezzel az eljárással konfigurálhatja az NVIDIA által a GPU-k által közzétett egyéb modulokat.
 
@@ -102,7 +104,7 @@ Egy modul konfigurálásához, hogy a GPU-t használja a Azure Stack Edge Pro-es
        További információ az NVIDIA GPU-val használható környezeti változókról: [NVIDIA Container Runtime](https://github.com/NVIDIA/nvidia-container-runtime#environment-variables-oci-spec).
 
     > [!NOTE]
-    > A GPU-t csak egyetlen modulhoz lehet hozzárendelni. Egy modul azonban a GPU-k egyikét is használhatja.
+    > Egy GPU csak egy modulhoz rendelhető hozzá. Egy modul azonban a GPU-k egyikét is használhatja.
 
 12. Adja meg a modul nevét. Ezen a ponton dönthet úgy, hogy a tároló létrehozása lehetőséget adja meg, és módosítja a modul különálló beállításait, vagy ha elkészült, válassza a **Hozzáadás** lehetőséget. 
 
@@ -125,6 +127,6 @@ Egy modul konfigurálásához, hogy a GPU-t használja a Azure Stack Edge Pro-es
     ![Modul konfigurálása a GPU 16 használatára](media/azure-stack-edge-j-series-configure-gpu-modules/configure-gpu-12.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ [az NVIDIA GPU-val használható környezeti változókról](https://github.com/NVIDIA/nvidia-container-runtime#environment-variables-oci-spec).
