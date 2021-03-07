@@ -8,14 +8,16 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 6e9ae9b8d9d1154d55991d078af0faef65ff654b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 72ba07090e6ce67501761d97876aa136f146d61c
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699572"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437927"
 ---
 # <a name="kubernetes-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes az Azure Stack Edge Pro GPU-eszközön
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 A Kubernetes egy népszerű, nyílt forráskódú platform a tároló alkalmazások előkészítéséhez. Ez a cikk áttekintést nyújt a Kubernetes, majd leírja, hogy a Kubernetes hogyan működik a Azure Stack Edge Pro-eszközön. 
 
@@ -57,7 +59,7 @@ Az alkalmazások számítási feladatainak támogatásához csatlakoztathatja az
 
 További információ: Storage-létesítési beállítások a Kubernetes-tárolóban lévő alkalmazások számára az [Azure stack Edge Pro-eszközhöz](azure-stack-edge-gpu-kubernetes-storage.md).
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 A Kubernetes hálózatkezelés lehetővé teszi a Kubernetes-hálózaton belüli kommunikáció konfigurálását, többek között a tárolók közötti hálózatkezelést, a pod-Pod hálózatkezelést, a pod-szolgáltatást és az internetről a szolgáltatásba történő hálózatkezelést. További információ: hálózati modell a [Kubernetes hálózatkezelésben az Azure stack Edge Pro-eszközhöz](azure-stack-edge-gpu-kubernetes-networking.md).
 

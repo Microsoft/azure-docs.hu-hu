@@ -1,24 +1,18 @@
 ---
 title: Engedélyek a Azure Security Centerban | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan használható a Azure Security Center szerepköralapú hozzáférés-vezérléssel a felhasználók engedélyeinek kiosztásához és az egyes szerepkörökhöz engedélyezett műveletek azonosításához.
-services: security-center
-cloud: na
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
-ms.date: 12/01/2020
+ms.date: 01/03/2021
 ms.author: memildin
-ms.openlocfilehash: 14ee9f23379a26c1756c622efb7d739f49dd0537
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: dcbb4977e1bfd17f0cbed61abf9ba335615b7799
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099182"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443760"
 ---
 # <a name="permissions-in-azure-security-center"></a>Engedélyek az Azure Security Centerben
 
@@ -39,15 +33,15 @@ Ezen szerepkörök mellett két speciális Security Center-szerepkör van:
 
 A következő táblázat a szerepköröket és az engedélyezett műveleteket mutatja Security Centerban.
 
-|Művelet|Biztonsági olvasó/ <br> Olvasó |Biztonsági rendszergazda  |Erőforráscsoport közreműködői/ <br> Erőforráscsoport tulajdonosa  |Előfizetés közreműködői  |Előfizetés tulajdonosa  |
-|:--- |:---:|:---:|:---:|:---:|:---:|
-|Biztonsági házirend szerkesztése|-|✔|-|-|✔|
-|Kezdeményezések hozzáadása/kiosztása (beleértve) szabályozási megfelelőségi szabványok)|-|-|-|-|✔|
-|Az Azure Defender engedélyezése/letiltása|-|✔|-|-|✔|
-|Automatikus kiépítés engedélyezése/letiltása|-|✔|-|✔|✔|
-|Erőforrásokra vonatkozó biztonsági javaslatok alkalmazása</br> (és használjon [gyors javítást!](security-center-remediate-recommendations.md#quick-fix-remediation))|-|-|✔|✔|✔|
-|Riasztások bezárása|-|✔|-|✔|✔|
-|Riasztások és javaslatok megtekintése|✔|✔|✔|✔|✔|
+| Művelet                                                                                                                                        | Biztonsági olvasó/ <br> Olvasó | Biztonsági rendszergazda | Erőforráscsoport közreműködői/ <br> Erőforráscsoport tulajdonosa | Előfizetés közreműködői | Előfizetés tulajdonosa |
+|:----------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------:|:--------------:|:------------------------------------------------------:|:------------------------:|:------------------:|
+| Biztonsági házirend szerkesztése                                                                                                                          | -                             | ✔             | -                                                      | -                        | ✔                 |
+| Kezdeményezések hozzáadása/kiosztása (beleértve) szabályozási megfelelőségi szabványok)                                                                           | -                             | -              | -                                                      | -                        | ✔                 |
+| Az Azure Defender engedélyezése/letiltása                                                                                                               | -                             | ✔             | -                                                      | -                        | ✔                 |
+| Automatikus kiépítés engedélyezése/letiltása                                                                                                            | -                             | ✔             | -                                                      | ✔                       | ✔                  |
+| Erőforrásokra vonatkozó biztonsági javaslatok alkalmazása</br> (és használjon [gyors javítást!](security-center-remediate-recommendations.md#quick-fix-remediation)) | -                             | -              | ✔                                                     | ✔                        | ✔                 |
+| Riasztások bezárása                                                                                                                                | -                             | ✔             | -                                                      | ✔                       | ✔                  |
+| Riasztások és javaslatok megtekintése                                                                                                               | ✔                            | ✔              | ✔                                                     | ✔                        | ✔                 |
 
 > [!NOTE]
 > Javasoljuk, hogy a felhasználókhoz azt a lehető legalacsonyabb szintű szerepkört rendelje, amellyel még el tudják végezni feladataikat. Például rendelje hozzá az olvasó szerepkört azokhoz a felhasználókhoz, akik csak az erőforrások biztonsági állapotával kapcsolatos információkat szeretnének megtekinteni, de nem végeznek műveleteket, például javaslatok alkalmazása vagy szerkesztési szabályzatok.

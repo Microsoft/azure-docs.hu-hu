@@ -126,7 +126,7 @@
         - name: C#
           items:
             - name: Referenciadokumentáció
-              href: /dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet
+              href: /dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker
             - name: NuGet-csomag
               href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker/'
             - name: Példák

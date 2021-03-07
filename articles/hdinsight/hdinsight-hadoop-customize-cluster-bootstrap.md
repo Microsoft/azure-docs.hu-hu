@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/01/2020
-ms.openlocfilehash: 306ebcf7db3c11f783af8cf4c1779bd3d1a013a4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: c73cb99d62295312980fe5f1b248d23efa2eb0c5
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945750"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102432383"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>HDInsight-fürtök testreszabása a bootstrap használatával
 
@@ -105,7 +105,7 @@ $OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # 
 
 ## <a name="use-net-sdk"></a>A .NET SDK használata
 
-Lásd: [Az Azure HDINSIGHT SDK for .net](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true).
+Lásd: [Az Azure HDINSIGHT SDK for .net](/dotnet/api/overview/azure/hdinsight).
 
 ## <a name="use-resource-manager-template"></a>Resource Manager-sablon használata
 

@@ -4,17 +4,17 @@ description: Ismerje meg, hogyan diagnosztizálhatja és javíthatja a .NET SDK-
 author: j82w
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 08/06/2020
+ms.date: 03/05/2021
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: c8d448cf335f328b5ae55579fd30127ef0e37e9d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: c8d35f7c666562022f503b2777f30f84193d0231
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340498"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440003"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout-exceptions"></a>A .NET SDK-kérelmek időtúllépési kivételeinek diagnosztizálása és megoldása Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -39,8 +39,24 @@ Az SDK-ban az összes aszinkron művelethez választható CancellationToken para
 ## <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
 Az alábbi lista a kérelmek időtúllépési kivételeinek ismert okait és megoldásait tartalmazza.
 
-### <a name="high-cpu-utilization"></a>Magas CPU-kihasználtság
+### <a name="high-cpu-utilization"></a>Magas processzorkihasználtság
 A leggyakoribb eset a processzor magas kihasználtsága. Az optimális késés érdekében a CPU-használatnak nagyjából 40%-nak kell lennie. A maximális (nem átlagos) CPU-kihasználtság figyeléséhez használja a 10 másodperces értéket. A CPU-tüskék gyakoribbak a több partíciós lekérdezések esetében, ahol több kapcsolat is lehetséges egyetlen lekérdezéshez.
+
+Ha a hiba `TransportException` információt tartalmaz, a következőket is tartalmazhatja `CPU History` :
+
+```
+CPU history: 
+(2020-08-28T00:40:09.1769900Z 0.114), 
+(2020-08-28T00:40:19.1763818Z 1.732), 
+(2020-08-28T00:40:29.1759235Z 0.000), 
+(2020-08-28T00:40:39.1763208Z 0.063), 
+(2020-08-28T00:40:49.1767057Z 0.648), 
+(2020-08-28T00:40:59.1689401Z 0.137), 
+CPU count: 8)
+```
+
+* Ha a CPU-mérések 70%-nál nagyobbak, az időtúllépést valószínűleg a CPU-kimerültség okozhatja. Ebben az esetben a megoldás a magas CPU-kihasználtság forrásának vizsgálata és a kihasználtság csökkentése, vagy a gép felskálázása egy nagyobb erőforrás-méretre.
+* Ha a CPU mérése nem történik meg 10 másodpercenként (pl. a hézagok vagy a mérési idők alapján több idő telik el a mérések között), akkor az ok a szál erőforráshiánya. Ebben az esetben a megoldás a szál erőforráshiányát (esetlegesen zárolt szálakat) előidéző ok kivizsgálása, vagy a gép(ek) felskálázása egy nagyobb erőforrás-méretre.
 
 #### <a name="solution"></a>Megoldás:
 Az SDK-t használó ügyfélalkalmazás vertikálisan fel-vagy kibővíthető.
@@ -90,6 +106,6 @@ Az alkalmazásnak képesnek kell lennie az átmeneti hibák kezelésére, és sz
 ### <a name="failure-rate-violates-the-azure-cosmos-db-sla"></a>A meghibásodási arány sérti a Azure Cosmos DB SLA-t
 Forduljon az [Azure ügyfélszolgálatához](https://aka.ms/azure-support).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A Azure Cosmos DB .NET SDK használatakor felmerülő problémák [diagnosztizálása és hibaelhárítása](troubleshoot-dot-net-sdk.md) .
 * A [.net v3](performance-tips-dotnet-sdk-v3-sql.md) és a [.NET v2](performance-tips.md)teljesítményére vonatkozó irányelvek ismertetése.

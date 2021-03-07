@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/24/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 2dc211b7564b08e9aa36b1e394a66a4c175922e2
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: a04243093b89b6a2498efc48f80cbd7a47d57337
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100549674"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437723"
 ---
 # <a name="create-certificates-for-your-azure-stack-edge-pro-using-azure-stack-hub-readiness-checker-tool"></a>Tanúsítványok létrehozása a Azure Stack Edge Pro-hoz Azure Stack hub Readiness-ellenőrző eszköz használatával 
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Ez a cikk azt ismerteti, hogyan hozhat létre tanúsítványokat a Azure Stack Edge Pro-hoz a Azure Stack hub Readiness-ellenőrző eszköz használatával. 
 
@@ -73,7 +73,7 @@ Az alábbi lépések segítségével készítheti elő az Azure Stack Edge Pro-e
     
 4. Tanúsítványkérelem létrehozásához adja meg a következő információkat. Ha VPN-tanúsítványt hoz létre, néhány ilyen bemenet nem érvényes.
     
-    |Bevitel |Leírás  |
+    |Bevitel |Description  |
     |---------|---------|
     |`OutputRequestPath`|A fájl elérési útja a helyi ügyfélszámítógépen, amelyen létre szeretné hozni a tanúsítványokat.        |
     |`DeviceName`|Az eszköz helyi webes felhasználói felületének **eszközök** lapján található név. <br> Ez a mező nem szükséges a VPN-tanúsítványokhoz.         |
