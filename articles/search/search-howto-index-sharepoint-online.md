@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 558df115043d76acf865f19611e8c4cd322e00a7
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 22adccfc4adbb7f8b1c72d8b5705ec8fcdb9a375
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679716"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441091"
 ---
 # <a name="how-to-configure-sharepoint-online-indexing-in-cognitive-search-preview"></a>A SharePoint Online indexelés konfigurálása a Cognitive Searchban (előzetes verzió)
 
@@ -23,6 +23,9 @@ ms.locfileid: "101679716"
 > Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 > 
 > A [REST API 2020-06-30-es verziójának előzetes verziója](search-api-preview.md) biztosítja ezt a funkciót. Jelenleg nincs portál vagy SDK-támogatás.
+
+> [!NOTE]
+> A SharePoint Online olyan szemcsés engedélyezési modellt támogat, amely a dokumentum szintjén határozza meg a felhasználónkénti hozzáférést. A SharePoint Online indexelő nem kéri le ezeket az engedélyeket a keresési indexbe, és Cognitive Search nem támogatja a dokumentum szintű engedélyezést. Ha egy dokumentum indexelve van a SharePoint Online-ból egy keresési szolgáltatásba, a tartalom mindenki számára elérhető lesz, aki olvasási hozzáféréssel rendelkezik az indexhez. Ha a dokumentum szintű engedélyekre van szüksége, meg kell vizsgálnia a biztonsági szűrőket a jogosulatlan tartalom eredményeinek kivágásához. További információ: [biztonsági kivágás Active Directory identitások használatával](search-security-trimming-for-azure-search-with-aad.md).
 
 Ez a cikk azt ismerteti, hogyan használható az Azure Cognitive Search a SharePoint Online-dokumentumtárakban tárolt dokumentumok (például PDF-fájlok, Microsoft Office dokumentumok és számos más gyakori formátum) Azure Cognitive Search indexbe való indexeléséhez. Először is ismerteti az indexelő beállításának és konfigurálásának alapjait. Ezt követően mélyebben megismerheti a viselkedéseket és a valószínűleg felmerülő forgatókönyveket.
 
@@ -251,7 +254,7 @@ Ha úgy állította be az indexelő, hogy indexelje a dokumentum metaadatait, a 
 > [!NOTE]
 > Az előzetes verzió aktuális verziója nem tartalmazza az egyéni metaadatokat.
 
-| Azonosító | Típus | Leírás | 
+| Azonosító | Típus | Description | 
 | ------------- | -------------- | ----------- |
 | metadata_spo_site_library_item_id | Edm.String | A hely AZONOSÍTÓjának, a kódtár AZONOSÍTÓjának és az elem AZONOSÍTÓjának kombinációs kulcsa, amely egyedileg azonosít egy adott helyet a dokumentumtárban egy adott helyhez. |
 | metadata_spo_site_id | Edm.String | A SharePoint Online-webhely azonosítója. |

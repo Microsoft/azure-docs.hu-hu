@@ -6,15 +6,15 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: c83221743e0566d783c38c40aaf92111a0cd80f7
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 7f2353d9e87c35f01a9fd514df7cfb090a98bf27
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030732"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102442944"
 ---
 # <a name="import-new-update"></a>Új frissítés importálása
-Ismerje meg, hogyan importálhat új frissítést a IoT Hub eszköz frissítésében.
+Ismerje meg, hogyan importálhat új frissítést a IoT Hub eszköz frissítésében. Ha még nem tette meg, mindenképpen ismerkedjen meg az alapszintű [importálási fogalmakkal](import-concepts.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -59,9 +59,9 @@ Ismerje meg, hogyan importálhat új frissítést a IoT Hub eszköz frissítés�
     | --------- | ----------- |
     | deviceManufacturer | Az eszköz gyártója, amelyen a frissítés kompatibilis, például: contoso
     | deviceModel | Az eszköz modellje, amely kompatibilis a frissítéssel, például kenyérpirító
-    | updateProvider | A frissítési identitás szolgáltatói része, például: fabrikam
-    | updateName | A frissítési identitás részének neve, például ImageUpdate
-    | updateVersion | Frissítés verziója, például 2,0
+    | updateProvider | A frissítéshez létrehozott vagy közvetlenül felelős entitás. Ez gyakran a vállalat neve lesz.
+    | updateName | A frissítések osztályának azonosítója. Az osztály tetszőlegesen kiválasztható. Ez gyakran az eszköz vagy a modell neve lesz.
+    | updateVersion | A frissítést megkülönbözteti a többitől, és ugyanazzal a szolgáltatóval és névvel. Előfordulhat, hogy az eszközön az egyes szoftver-összetevők verziója nem egyezik.
     | Frissítés típusa | <ul><li>`microsoft/swupdate:1`Rendszerkép frissítésének megadása</li><li>`microsoft/apt:1`Csomag frissítésének megadása</li></ul>
     | installedCriteria | <ul><li>SWVersion értékének megadása a `microsoft/swupdate:1` frissítési típushoz</li><li>Adja meg a `microsoft/apt:1` frissítési típus javasolt értékét.
     | updateFilePath (ok) | A frissítési fájl (ok) elérési útja a számítógépen

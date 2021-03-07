@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: b1ff10290e0059295f14b55e90ed05e9690c9f5c
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: cf4e83b8ae2fa4aceb7d4c4875fdbc4f77d7b4fd
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97896678"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102436736"
 ---
 # <a name="use-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>A Azure Portal használata az Azure Stack Edge Pro-beli megosztások kezeléséhez
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Ez a cikk bemutatja, hogyan kezelheti a megosztásokat a Azure Stack Edge Pro-ban. A Azure Stack Edge Pro-t a Azure Portal vagy a helyi webes felületen keresztül kezelheti. A megosztásokhoz társított Storage-fiókhoz használja a Azure Portal a megosztások hozzáadásához, törléséhez, frissítéséhez vagy a Storage-kulcs szinkronizálásához. Ez a cikk Azure Stack Edge Pro GPU-ra, Azure Stack Edge Pro R-re és Azure Stack Edge mini R-eszközökre vonatkozik.
 
@@ -82,7 +82,7 @@ Megosztás létrehozásához hajtsa végre a következő lépéseket az Azure Po
 
 6. A **minden jogosultság helyi felhasználó** mezőben válassza az **új létrehozása** lehetőséget, vagy **használja a meglévőt**.
 
-7. Kattintson a **Létrehozás** gombra. 
+7. Válassza a **Létrehozás** lehetőséget. 
 
     ![Helyi megosztás létrehozása](media/azure-stack-edge-j-series-manage-shares/add-local-share-2.png)
 

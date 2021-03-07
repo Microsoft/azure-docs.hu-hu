@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: fe6fa5c9b05afd5479818fe9bb25e471665cb867
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: fe3f2328bb1ec9e7bb2ef79c09a821412ce7f7e1
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102171466"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102423985"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Jupyter-jegyzetfüzetek futtatása a munkaterületen
 
@@ -195,7 +195,7 @@ A cella parancs módban van, ha nincs beírni kívánt szöveg. Ha egy cella par
 
    :::image type="content" source="media/how-to-run-jupyter-notebooks/command-mode.png" alt-text="Jegyzetfüzet-cella parancs módban ":::
 
-| Helyi                      | Leírás                          |
+| Helyi                      | Description                          |
 | ----------------------------- | ------------------------------------|
 | Enter                         | A szerkesztési mód megnyitása             |        
 | Shift + Enter                 | Cella futtatása, válassza az alábbi lehetőséget         |     
@@ -239,7 +239,7 @@ A szerkesztési módot egy szöveges kurzor jelzi, amely arra kéri, hogy írja 
 
 A következő billentyűleütés-billentyűparancsokkal könnyebben navigálhat és futtathat Azure Machine Learning jegyzetfüzetekben lévő kódokat szerkesztési módban.
 
-| Helyi                      | Leírás|                                     
+| Helyi                      | Description|                                     
 | ----------------------------- | ----------------------------------------------- |
 | Escape                        | Adja meg a parancs módját|  
 | Vezérlő/parancs + szóköz       | IntelliSense aktiválása |
@@ -273,7 +273,7 @@ A következő billentyűleütés-billentyűparancsokkal könnyebben navigálhat 
 
 * Ha nem tud jegyzetfüzethez csatlakozni, győződjön meg arról, hogy a webes szoftvercsatorna- **kommunikáció nincs letiltva** . A számítási példányok Jupyter működéséhez engedélyezni kell a webes szoftvercsatorna-kommunikációt. Győződjön meg arról, hogy a hálózat engedélyezi a WebSocket-kapcsolatokat a *. instances.azureml.net és a *. instances.azureml.ms. 
 
-* Ha a számítási példány egy privát kapcsolati munkaterületen van üzembe helyezve, akkor csak a [virtuális hálózaton belülről lehet hozzáférni](https://docs.microsoft.com/azure/machine-learning/how-to-secure-training-vnet#compute-instance). Ha egyéni DNS-vagy gazdagép-fájlt használ, vegyen fel egy bejegyzést a <példány neve>. <region> . instances.azureml.ms a munkaterület privát végpontjának magánhálózati IP-címével. További információ az [Egyéni DNS-](./how-to-custom-dns.md?tabs=azure-cli) cikkben található.
+* Ha a számítási példány egy privát kapcsolati munkaterületen van üzembe helyezve, akkor csak a [virtuális hálózaton belülről lehet hozzáférni](https://docs.microsoft.com/azure/machine-learning/how-to-secure-training-vnet#compute-instance). Ha egyéni DNS-vagy hosts fájlt használ, vegyen fel egy bejegyzést a < instance-Name >. < régió >. instances.azureml.ms a munkaterület privát végpontjának magánhálózati IP-címével. További információ az [Egyéni DNS-](./how-to-custom-dns.md?tabs=azure-cli) cikkben található.
     
 ## <a name="next-steps"></a>Következő lépések
 

@@ -32,7 +32,7 @@
       href: device-update-agent-overview.md
     - name: Eszköz frissítési konfigurációs fájlja
       href: device-update-configuration-file.md
-    - name: Eszköz frissítési jegyzékfájlja
+    - name: Jegyzékfájl frissítése
       href: update-manifest.md
     - name: Az eszköz frissítésének módja
       href: device-update-security.md

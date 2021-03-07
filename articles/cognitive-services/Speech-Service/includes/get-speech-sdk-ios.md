@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 7ce193c2c2f5e10a27550da68a4c2d2fdcd1db7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a9ca21cc14bb87797c962a89cf87ac184e73735
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81399909"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434563"
 ---
 :::row:::
     :::column span="3":::
@@ -24,9 +24,9 @@ ms.locfileid: "81399909"
 :::row-end:::
 
 > [!TIP]
-> A Swift Objective-C Speech SDK használatával kapcsolatos részletekért lásd: az <a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift" target="_blank">Objective-c importálása Swift <span class="docon docon-navigate-external x-hidden-focus"></span> -be </a>.
+> A Swift Objective-C Speech SDK használatával kapcsolatos részletekért lásd: az <a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift" target="_blank">Objective-c importálása Swift-be </a>.
 
-### <a name="system-requirements"></a>Rendszerkövetelmények
+### <a name="system-requirements"></a>System requirements (Rendszerkövetelmények)
 
 - MacOS 10,3-es vagy újabb verzió
 - Cél iOS 9,3 vagy újabb
@@ -35,7 +35,7 @@ ms.locfileid: "81399909"
 
 :::row:::
     :::column span="3":::
-        Az iOS CocoaPod csomag letölthető és használható a <a href="https://apps.apple.com/us/app/xcode/id497799835" target="_blank">Xcode 9.4.1 (vagy újabb) <span class="docon docon-navigate-external x-hidden-focus"></span> </a> integrált fejlesztési környezettel (ide). Először <a href="https://aka.ms/csspeech/iosbinary" target="_blank">töltse le a bináris CocoaPod <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. Bontsa ki a pod-t ugyanabban a címtárban a kívánt használatra, hozzon létre egy *cocoapods* , és sorolja fel a következőt: `pod` `target` .
+        Az iOS CocoaPod csomag letölthető és használható a <a href="https://apps.apple.com/us/app/xcode/id497799835" target="_blank">Xcode 9.4.1 (vagy újabb) </a> integrált fejlesztési környezettel (ide). Először <a href="https://aka.ms/csspeech/iosbinary" target="_blank">töltse le a bináris CocoaPod </a>. Bontsa ki a pod-t ugyanabban a címtárban a kívánt használatra, hozzon létre egy *cocoapods* , és sorolja fel a következőt: `pod` `target` .
     :::column-end:::
     :::column:::
         <br>
@@ -58,7 +58,7 @@ end
 
 :::row:::
     :::column span="3":::
-        A Xamarin. iOS a .NET-fejlesztők számára készült iOS SDK-t teszi elérhetővé. Teljes natív iOS-alkalmazások készítése C# vagy F # használatával a Visual Studióban. További információ: <a href="https://docs.microsoft.com/xamarin/ios/" target="_blank">Xamarin. iOS <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+        A Xamarin. iOS a .NET-fejlesztők számára készült iOS SDK-t teszi elérhetővé. Teljes natív iOS-alkalmazások készítése C# vagy F # használatával a Visual Studióban. További információ: <a href="https://docs.microsoft.com/xamarin/ios/" target="_blank">Xamarin. iOS </a>.
     :::column-end:::
     :::column:::
         <br>
@@ -75,5 +75,5 @@ end
 
 #### <a name="additional-resources"></a>További források
 
-- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/objectivec/ios" target="_blank">iOS Speech SDK gyors üzembe helyezési célkitűzés – C forráskód <span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/ios" target="_blank">iOS Speech SDK gyors útmutató Swift-forráskódja <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/objectivec/ios" target="_blank">iOS Speech SDK gyors üzembe helyezési célkitűzés – C forráskód </a>
+- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/ios" target="_blank">iOS Speech SDK gyors útmutató Swift-forráskódja </a>

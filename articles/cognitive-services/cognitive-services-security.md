@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: f14ac72443dedc8e33e607a82b2145c7ebf95ad2
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 66de81387fe27bd2a81ebcfeab7d86aac7031ff1
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368780"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425294"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure Cognitive Services biztonság
 
@@ -29,13 +29,13 @@ A HTTP-n keresztül elérhető összes Cognitive Services-végpont TLS 1,2. A k�
 * A HTTP-híváshoz használt nyelv (és platform) a kérelem részeként meg kell határoznia a TLS 1,2-as értéket.
   * A nyelvtől és a platformtól függően a TLS meghatározása implicit módon vagy explicit módon történik
 
-.NET-felhasználók esetén vegye figyelembe a <a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">Transport Layer Security ajánlott <span class="docon docon-navigate-external x-hidden-focus"></span> eljárásokat </a>.
+.NET-felhasználók esetén vegye figyelembe a <a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">Transport Layer Security ajánlott eljárásokat </a>.
 
 ## <a name="authentication"></a>Hitelesítés
 
-A hitelesítés megvitatásakor számos gyakori tévhit van. A hitelesítés és az engedélyezés gyakran zavaros egymás számára. Az identitás a biztonság egyik fő összetevője is. Az identitás egy <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">rendszerbiztonsági tag <span class="docon docon-navigate-external x-hidden-focus"></span> </a>információinak gyűjteménye. Az Identity Providers (identitásszolgáltató) hitelesítő szolgáltatásokhoz biztosít identitásokat. A hitelesítés a felhasználó identitásának ellenőrzése. Az engedélyezés az adott identitáshoz tartozó erőforrásokhoz való hozzáférési jogosultságok és jogosultságok meghatározása. A Cognitive Services számos ajánlata tartalmaz Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC). Az Azure RBAC felhasználható a rendszerbiztonsági tag manuális kezelésével foglalkozó néhány ünnepség leegyszerűsítésére. További részletek: [Azure szerepköralapú hozzáférés-vezérlés az Azure-erőforrásokhoz](../role-based-access-control/overview.md).
+A hitelesítés megvitatásakor számos gyakori tévhit van. A hitelesítés és az engedélyezés gyakran zavaros egymás számára. Az identitás a biztonság egyik fő összetevője is. Az identitás egy <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">rendszerbiztonsági tag </a>információinak gyűjteménye. Az Identity Providers (identitásszolgáltató) hitelesítő szolgáltatásokhoz biztosít identitásokat. A hitelesítés a felhasználó identitásának ellenőrzése. Az engedélyezés az adott identitáshoz tartozó erőforrásokhoz való hozzáférési jogosultságok és jogosultságok meghatározása. A Cognitive Services számos ajánlata tartalmaz Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC). Az Azure RBAC felhasználható a rendszerbiztonsági tag manuális kezelésével foglalkozó néhány ünnepség leegyszerűsítésére. További részletek: [Azure szerepköralapú hozzáférés-vezérlés az Azure-erőforrásokhoz](../role-based-access-control/overview.md).
 
-Az előfizetési kulcsokkal, a hozzáférési jogkivonatokkal és a Azure Active Directorysal (HRE) való hitelesítéssel kapcsolatos további információkért lásd: <a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">kérések hitelesítése az Azure Cognitive Servicesban <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+Az előfizetési kulcsokkal, a hozzáférési jogkivonatokkal és a Azure Active Directorysal (HRE) való hitelesítéssel kapcsolatos további információkért lásd: <a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">kérések hitelesítése az Azure Cognitive Servicesban</a>.
 
 ## <a name="environment-variables-and-application-configuration"></a>Környezeti változók és alkalmazás konfigurációja
 
@@ -113,7 +113,7 @@ Környezeti változó beszerzéséhez a memóriába kell beolvasni. A használt 
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-További információ: <a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank">`Environment.GetEnvironmentVariable` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+További információ: <a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank"> `Environment.GetEnvironmentVariable` </a>.
 
 ```csharp
 using static System.Environment;
@@ -132,7 +132,7 @@ class Program
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-További információ: <a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank">`getenv` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+További információ: <a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank"> `getenv` </a>.
 
 ```cpp
 #include <stdlib.h>
@@ -147,7 +147,7 @@ int main()
 
 # <a name="java"></a>[Java](#tab/java)
 
-További információ: <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#getenv(java.lang.String)" target="_blank">`System.getenv` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+További információ: <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#getenv(java.lang.String)" target="_blank"> `System.getenv` </a>.
 
 ```java
 import java.lang.*;
@@ -164,7 +164,7 @@ public class Program {
 
 # <a name="nodejs"></a>[Node.js](#tab/node-js)
 
-További információ: <a href="https://nodejs.org/api/process.html#process_process_env" target="_blank">`process.env` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+További információ: <a href="https://nodejs.org/api/process.html#process_process_env" target="_blank"> `process.env` </a>.
 
 ```javascript
 // Get the named env var, and assign it to the value variable
@@ -174,7 +174,7 @@ const value =
 
 # <a name="python"></a>[Python](#tab/python)
 
-További információ: <a href="https://docs.python.org/2/library/os.html#os.environ" target="_blank">`os.environ` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+További információ: <a href="https://docs.python.org/2/library/os.html#os.environ" target="_blank"> `os.environ` </a>.
 
 ```python
 import os
@@ -185,7 +185,7 @@ value = os.environ['ENVIRONMENT_VARIABLE_KEY']
 
 # <a name="objective-c"></a>[Objective-C](#tab/objective-c)
 
-További információ: <a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank">`environment` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+További információ: <a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank"> `environment` </a>.
 
 ```objectivec
 // Get the named env var, and assign it to the value variable
@@ -201,12 +201,12 @@ NSString* value =
 
 Ügyfélszéf érhető el ehhez a kognitív szolgáltatáshoz:
 
-* Fordító
+* Translator
 
 A következő szolgáltatások esetében a Microsoft Engineers nem fér hozzá a E0-szinten található összes ügyfél-adatszolgáltatáshoz: 
 
 * Language Understanding
-* Arcfelismerés
+* Face
 * Tartalommoderátor
 * Personalizer
 
@@ -220,7 +220,7 @@ A beszédfelismerési szolgáltatás jelenleg nem támogatja a Ügyfélszéf. A 
 > [!IMPORTANT]
 > A Microsoft **nem** használja fel az ügyféladatokat, hogy javítsa a beszédfelismerési modelljeit. Emellett, ha a végpont-naplózás le van tiltva, és nem használ testreszabást, akkor a rendszer nem tárolja az ügyféladatokat. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg a különböző [Cognitive Servicesokkal](./what-are-cognitive-services.md)
 * További információ a [Cognitive Services Virtual Networks](cognitive-services-virtual-networks.md) szolgáltatásról

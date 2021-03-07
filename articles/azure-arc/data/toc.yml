@@ -152,7 +152,7 @@
           items:
             - name: PostgreSQL-adatok migrálása rugalmas skálázású Postgres-kiszolgálócsoportba
               href: migrate-postgresql-data-into-postgresql-hyperscale-server-group.md
-            - name: Az AdventureWorks-mintaadatbázis visszaállítása
+            - name: A mintaadatbázis AdventureWorks importálása
               href: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md
         - name: Hibaelhárítás
           href: troubleshoot-postgresql-hyperscale-server-group.md

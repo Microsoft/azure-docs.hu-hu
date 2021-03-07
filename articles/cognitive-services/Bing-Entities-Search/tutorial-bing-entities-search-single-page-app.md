@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: f725a4095103a7dcfc3dcdbdcefdc84d16501632
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: f2c15221268635ca1892a9292d5b0c208c13dd34
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366533"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426807"
 ---
 # <a name="tutorial-single-page-web-app"></a>Oktatóanyag: Egyoldalas webalkalmazás
 
@@ -27,7 +27,7 @@ ms.locfileid: "94366533"
 
 A Bing Entity Search API-val *entitásokról* és *helyekről* kereshet információkat a weben. Egy adott lekérdezésben kérheti a helyeket, az entitásokat vagy mindkettőt. A helyek és entitások definícióját az alábbiakban találja.
 
-| Eredmény | Leírás |
+| Eredmény | Description |
 |-|-|
 |Entitások|Ismert személyek, helyek és dolgok, amelyeket/akiket név alapján talál meg|
 |Helyek|Éttermek, szállodák és egyéb helyi vállalkozások, amelyeket név *vagy* típus alapján talál meg (olasz éttermek)|
@@ -68,8 +68,8 @@ Ahhoz, hogy követni tudja az oktatóanyagot, előfizetési kulcsokra van szüks
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
 * Ha már rendelkezik Azure-előfizetéssel:
-  * <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Hozzon létre egy Bing Search erőforrás "  target="_blank"> létrehozásához Bing Search erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
-  * <a href="https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"  title="Hozzon létre egy Computer Vision-erőforrást, "  target="_blank"> és hozzon létre egy Bing Maps-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
+  * <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Hozzon létre egy Bing Search erőforrás "  target="_blank"> létrehozásához Bing Search erőforrást </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
+  * <a href="https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"  title="Hozzon létre egy Computer Vision-erőforrást, "  target="_blank"> és hozzon létre egy Bing Maps-erőforrást </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
 
 ## <a name="app-components"></a>Alkalmazás-összetevők
 
@@ -147,7 +147,7 @@ A `<body>` HTML-címke tartalmaz egy `onload` attribútumot, amely a lap betölt
 
 A HTML-űrlap a következő vezérlőket tartalmazza:
 
-| Vezérlés | Leírás |
+| Szabályozás | Description |
 |-|-|
 |`where`|Legördülő menü a kereséshez használt piac (hely és nyelv) kiválasztásához.|
 |`query`|Szövegmező a keresőkifejezések megadásához.|
@@ -561,7 +561,7 @@ cors-proxy-server
 
 Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A bővíthető HTTP-fejlécek szakaszában, a keresési eredmények alatt, most már az `X-MSEdge-ClientID` fejléc is megjelenik, és ellenőrizheti, hogy ugyanaz a fejléc szerepel-e minden kérésnél.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Bing Entity Search API-referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)

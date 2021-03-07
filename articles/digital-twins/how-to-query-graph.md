@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 3a5c98b3fad76d2206d1fcba79663063e22ecdbc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a38af4c942de280e7b1c094885a1ede6774ead56
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737970"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433216"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Az Azure Digital Twins Twin gráf lekérdezése
 
@@ -220,11 +220,11 @@ Ha úgy döntött, hogy egy lekérdezési karakterláncot használ, a [**lekérd
 
 Az API-t közvetlenül is meghívhatja, vagy használhatja az Azure Digital Twins-hoz elérhető [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis) -kat.
 
-A következő kódrészlet az ügyfélalkalmazás [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) -hívását mutatja be:
+A következő kódrészlet az ügyfélalkalmazás [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) -hívását mutatja be:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="RunQuery":::
 
-Az ebben a hívásban használt lekérdezés a digitális ikrek listáját adja vissza, amelyet a fenti példa [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin?view=azure-dotnet&preserve-view=true) -objektumokkal képvisel. Az egyes lekérdezésekhez tartozó adatok visszatérési típusa az utasítással megadott feltételektől függ `SELECT` :
+Az ebben a hívásban használt lekérdezés a digitális ikrek listáját adja vissza, amelyet a fenti példa [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin) -objektumokkal képvisel. Az egyes lekérdezésekhez tartozó adatok visszatérési típusa az utasítással megadott feltételektől függ `SELECT` :
 * A-vel kezdődő lekérdezések `SELECT * FROM ...` visszaküldik a digitális Twins (amelyek `BasicDigitalTwin` objektumokként szerializálható vagy más, az Ön által létrehozott egyéni digitális különálló típusok) listáját adják vissza.
 * A formátumban kezdődő lekérdezések `SELECT <A>, <B>, <C> FROM ...` egy szótárt adnak vissza kulcsokkal, `<A>` `<B>` és `<C>` .
 * Az utasítások más formátuma is `SELECT` elvégezhető egyéni adatértékek visszaküldéséhez. Érdemes lehet saját osztályokat létrehozni a nagyon testreszabott eredményhalmaz kezelésére. 

@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 1f16ef0ede25f17acb915a7812ae5b15b45f78a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4142542c9f17ae464a996df310c50d73d8711d8e
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899734"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438199"
 ---
 # <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-pro-gpu-device"></a>GPU-t támogató IoT-modul üzembe helyezése Azure Stack Edge Pro GPU-eszközön
+
+[!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
 
 Ez a cikk azt ismerteti, hogyan helyezhet üzembe GPU-kompatibilis IoT Edge modult az Azure Stack Edge Pro GPU-eszközön. 
 
@@ -35,7 +37,7 @@ A cikkben található GPU-minta modul a PyTorch és a TensorFlow teljesítményt
 
 Mielőtt hozzákezd, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
-- Hozzáférése van egy GPU-t támogató, 1 csomópontos Azure Stack Edge Pro-eszközhöz. Ez az eszköz egy Azure-erőforrással van aktiválva. Lásd: [az eszköz aktiválása](azure-stack-edge-gpu-deploy-activate.md).
+- Hozzáférése van egy GPU-t támogató, 1 csomópontos Azure Stack Edge Pro-eszközhöz. Ezt az eszközt egy Azure-beli erőforrás aktiválta. Lásd: [az eszköz aktiválása](azure-stack-edge-gpu-deploy-activate.md).
 - Konfigurálta az eszközön a számítást. Kövesse az [oktatóanyag: számítás konfigurálása a Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-deploy-configure-compute.md)című témakör lépéseit.
 - Egy Azure Container Registry (ACR). Lépjen a **hozzáférési kulcsok** panelre, és jegyezze fel az ACR bejelentkezési kiszolgálóját, felhasználónevét és jelszavát. További információért látogasson el a rövid útmutató [: Private Container Registry létrehozása a Azure Portal használatával](../container-registry/container-registry-get-started-portal.md#create-a-container-registry).
 - A következő fejlesztői erőforrások egy Windows-ügyfélen:
@@ -65,7 +67,7 @@ Mielőtt hozzákezd, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
     ![GPUReferenceModules megnyitása a VS Code-ban](media/azure-stack-edge-gpu-deploy-sample-module/open-folder-gpu-sample-1.png)
 
-2. Nyissa * meg adeployment.template.jst* , és azonosítsa a tároló-beállításjegyzékre hivatkozó paramétereket. A következő fájlban CONTAINER_REGISTRY_USERNAME, CONTAINER_REGISTRY_PASSWORD és CONTAINER_REGISTRY_NAME használatos.
+2. Nyissa *meg adeployment.template.jst* , és azonosítsa a tároló-beállításjegyzékre hivatkozó paramétereket. A következő fájlban CONTAINER_REGISTRY_USERNAME, CONTAINER_REGISTRY_PASSWORD és CONTAINER_REGISTRY_NAME használatos.
 
     ```json
         {
@@ -115,7 +117,7 @@ Mielőtt hozzákezd, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
     ![Sikeres bejelentkezés](media/azure-stack-edge-gpu-deploy-sample-module/successful-sign-in-1.png)
 
-6. Küldje le a rendszerképet az Azure Container registrybe. A VS Code Explorerben válassza ki és kattintson a jobb gombbal a **deployment.template.js** fájlra, majd válassza a **IoT Edge megoldás létrehozása és leküldése**lehetőséget. 
+6. Küldje le a rendszerképet az Azure Container registrybe. A VS Code Explorerben válassza ki és kattintson a jobb gombbal a **deployment.template.js** fájlra, majd válassza a **IoT Edge megoldás létrehozása és leküldése** lehetőséget. 
 
     ![IoT Edge-megoldás létrehozása és leküldése](media/azure-stack-edge-gpu-deploy-sample-module/build-push-iot-edge-solution-1.png)   
 
@@ -126,13 +128,13 @@ Mielőtt hozzákezd, győződjön meg arról, hogy rendelkezik az alábbiakkal:
     ![Modul a tároló beállításjegyzékében](media/azure-stack-edge-gpu-deploy-sample-module/module-container-registry-1.png)    
 
 
-7. Központi telepítési jegyzékfájl létrehozásához kattintson a jobb gombbal a **deployment.template.js** elemre, majd válassza a **IoT Edge üzembe helyezési jegyzék**létrehozása lehetőséget. 
+7. Központi telepítési jegyzékfájl létrehozásához kattintson a jobb gombbal a **deployment.template.js** elemre, majd válassza a **IoT Edge üzembe helyezési jegyzék** létrehozása lehetőséget. 
 
     ![IoT Edge üzembe helyezési jegyzék előállítása](media/azure-stack-edge-gpu-deploy-sample-module/generate-iot-edge-deployment-manifest-1.png)  
 
     Az értesítés azt az elérési utat értesíti, amelyen az üzembe helyezési jegyzék létrejött. A jegyzékfájl a `deployment.amd64.json` **konfigurációs** mappában létrehozott fájl. 
 
-8. Válassza ki a **deployment.amd64.js** fájlt a **konfigurációs** mappában, majd válassza a **központi telepítés létrehozása egyetlen eszközhöz**lehetőséget. Ne használja a **deployment.template.js** fájlt. 
+8. Válassza ki a **deployment.amd64.js** fájlt a **konfigurációs** mappában, majd válassza a **központi telepítés létrehozása egyetlen eszközhöz** lehetőséget. Ne használja a **deployment.template.js** fájlt. 
 
     ![Üzemelő példány létrehozása egyetlen eszközhöz](media/azure-stack-edge-gpu-deploy-sample-module/create-deployment-single-device-1.png)  
 
@@ -146,9 +148,9 @@ Mielőtt hozzákezd, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
 2. Válassza ki a konfigurálni kívánt IoT Edge-eszközt tartalmazó előfizetést és IoT Hubot. Ebben az esetben válassza ki az Azure Stack Edge Pro-eszköz üzembe helyezéséhez használt előfizetést, és válassza ki az Azure Stack Edge Pro-eszközhöz létrehozott IoT Edge eszközt. Ez akkor fordul elő, ha a számítást a korábbi lépések Azure Portalján keresztül konfigurálja.
 
-3. A VS Code Explorerben bontsa ki az Azure IoT Hub szakaszt. Az **eszközök**területen az Azure stack Edge Pro-eszköznek megfelelő IoT Edge eszközt kell látnia. 
+3. A VS Code Explorerben bontsa ki az Azure IoT Hub szakaszt. Az **eszközök** területen az Azure stack Edge Pro-eszköznek megfelelő IoT Edge eszközt kell látnia. 
 
-    1. Válassza ki az eszközt, kattintson a jobb gombbal, majd válassza a **figyelés beépített esemény végpontja**lehetőséget.
+    1. Válassza ki az eszközt, kattintson a jobb gombbal, majd válassza a **figyelés beépített esemény végpontja** lehetőséget.
   
         ![Figyelés indítása](media/azure-stack-edge-gpu-deploy-sample-module/monitor-builtin-event-endpoint-1.png)  
 

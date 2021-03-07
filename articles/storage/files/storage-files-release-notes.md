@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/3/2021
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 38754e0f43ceaf40411cd89b97d1c0bf5fe7eb99
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 5549fc3b63b76c6158ae7399e6d94a43d2d4f28f
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049253"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102435188"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Az Azure File Sync ügynök kibocsátási megjegyzései
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. A Windows Server-telepítéseket az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -150,6 +150,8 @@ A következő elemek nem szinkronizálhatók, de a rendszer többi része továb
 ### <a name="cloud-tiering"></a>Felhőbeli rétegzés
 - Ha egy rétegzett fájlt a Robocopy használatával másik helyre másol, az eredményül kapott fájl nem lesz rétegzett. Előfordulhat, hogy az offline attribútum be lesz állítva, mert a Robocopy helytelenül belefoglalja ezt az attribútumot a másolási műveletekbe.
 - Fájlok a Robocopy használatával történő másolásakor használja a/MIR beállítást a fájl időbélyegének megőrzéséhez. Ezzel biztosíthatja, hogy a régebbi fájlok a legutóbb használt fájlokhoz legyenek bontva.
+    > [!Warning]  
+    > A Robocopy/B kapcsoló nem támogatott a Azure File Sync. A Robocopy/B kapcsoló és egy Azure File Sync kiszolgálói végpont használata esetén a forrás a fájl sérüléséhez vezethet.
 
 ## <a name="agent-version-10100"></a>Ügynök verziója 10.1.0.0
 A következő kibocsátási megjegyzések a Azure File Sync ügynök verziójának 10.1.0.0, amely 2020. június 5-én jelent meg. Ezek a megjegyzések a 10.0.0.0 és a 10.0.2.0 verzióhoz tartozó kibocsátási megjegyzéseken kívül is szerepelnek.

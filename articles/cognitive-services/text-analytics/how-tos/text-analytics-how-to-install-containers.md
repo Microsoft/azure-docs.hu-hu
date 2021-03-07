@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/02/2021
 ms.author: aahi
 keywords: helyszíni, Docker, tároló, érzelmek elemzése, természetes nyelvi feldolgozás
-ms.openlocfilehash: fb924f955e46058420e645cdf1e76e6c06e91646
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: ac82781ed4a05fbbca7f5b16edb0b5349dfc400a
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050137"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102432060"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>A Text Analytics-tárolók telepítése és futtatása
 
@@ -32,7 +32,7 @@ A tárolók lehetővé teszik a Text Analytics API-k a saját környezetében va
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/).
 
 > [!IMPORTANT]
-> Az ingyenes fiók havonta 5 000 tranzakcióra van korlátozva, és csak az **ingyenes** és a **standard** <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">szintű <span class="docon docon-navigate-external x-hidden-focus"></span> díjszabás</a> érvényes a tárolók esetében. A tranzakciós kérelmek díjszabásával kapcsolatos további információkért lásd az [Adatkorlátokat](../overview.md#data-limits)ismertető témakört.
+> Az ingyenes fiók havonta 5 000 tranzakcióra van korlátozva, és csak az **ingyenes** és a **standard** szintű <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">díjszabás</a> érvényes a tárolók esetében. A tranzakciós kérelmek díjszabásával kapcsolatos további információkért lásd az [Adatkorlátokat](../overview.md#data-limits)ismertető témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

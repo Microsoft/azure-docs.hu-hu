@@ -1,19 +1,18 @@
 ---
 title: Azure Security Center – Hibaelhárítási útmutató | Microsoft Docs
 description: Ez az útmutató olyan informatikai szakembereknek, biztonsági elemzőknek és felhőalapú rendszergazdáknak szól, akiknek szükségük van a Azure Security Center kapcsolatos problémák elhárítására.
-services: security-center
-author: v-miegge
-manager: dcscontentpm
+author: memildin
+manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: e49d8bcc55036b21f53720aab17be02edb114d4b
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 9822dfe50fa50fdd70f4e09e188188cad0f9b8f0
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100253"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438216"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center – Hibaelhárítási útmutató
 
@@ -81,7 +80,7 @@ A Log Analytics ügynöknek a számítógépre való telepítésekor két telep�
 
 A **Figyelés állapota** megmutatja, hogy a Security Center miért nem tudja sikeresen monitorozni az automatikus üzembe helyezésre beállított virtuális gépeket és számítógépeket. Az alábbi táblázatban a **Figyelés állapota** értékei, leírásai és a megoldás lépései láthatók.
 
-| Figyelés állapota | Leírás | A megoldás lépései |
+| Figyelés állapota | Description | A megoldás lépései |
 |---|---|---|
 | Ügynök függőben lévő telepítése | A Log Analytics ügynök telepítése még fut.  A telepítés akár néhány órát is igénybe vehet. | Várjon, amíg az automatikus telepítés befejeződik. |
 | Energiaállapot: ki | A virtuális gép leállt.  A Log Analytics ügynök csak a rendszert futtató virtuális gépekre telepíthető. | Indítsa újra a virtuális gépet. |
@@ -105,10 +104,10 @@ Az alábbi táblázat a kommunikációhoz szükséges erőforrásokat tartalmazz
 
 | Ügynök erőforrása | Portok | HTTPS-ellenőrzés kihagyása |
 |---|---|---|
-| *.ods.opinsights.azure.com | 443 | Igen |
-| *.oms.opinsights.azure.com | 443 | Igen |
-| *.blob.core.windows.net | 443 | Igen |
-| *.azure-automation.net | 443 | Igen |
+| *.ods.opinsights.azure.com | 443 | Yes |
+| *.oms.opinsights.azure.com | 443 | Yes |
+| *.blob.core.windows.net | 443 | Yes |
+| *.azure-automation.net | 443 | Yes |
 
 Ha problémába ütközik az ügynök előkészítése során, olvassa el a következő cikket: [Az Operations Management Suite előkészítési problémáinak hibaelhárítása](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues).
 

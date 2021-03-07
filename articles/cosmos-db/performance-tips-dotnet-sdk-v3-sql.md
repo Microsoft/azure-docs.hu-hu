@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet, contperf-fy21q2
-ms.openlocfilehash: f503f132794f6d04b587a78b8f838acba26f9ac3
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 06fb087744ff4ecd96bee7a26e4a796e87866322
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032014"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433675"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Az Azure Cosmos DB és a .NET teljesítményével kapcsolatos tippek
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -172,7 +172,7 @@ A párhuzamos lekérdezések két paramétert biztosítanak, amelyeket az igény
 
 A teljesítmény tesztelése során növelje a terhelést, amíg a rendszer kis mennyiségű kérést nem szabályoz. Ha a kérelmek szabályozása megtörténik, az ügyfélalkalmazás a kiszolgáló által megadott újrapróbálkozási időköz szabályozásának visszavonását hajtja végre. A leállítási tiszteletben tartásával biztosítható, hogy az újrapróbálkozások között minimálisan megtörténjen az idő várakozása. 
 
-További információ: [RetryAfter](/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Cosmos_CosmosException_RetryAfter).
+További információ: [RetryAfter](/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter#Microsoft_Azure_Cosmos_CosmosException_RetryAfter).
     
 Létezik egy mechanizmus a további diagnosztikai információk naplózására és a késéssel kapcsolatos hibák elhárítására, ahogy az az alábbi példában is látható. Naplózhatja a diagnosztikai karakterláncot olyan kérelmek esetében, amelyek nagyobb olvasási késéssel rendelkeznek. A rögzített diagnosztikai karakterlánc segít megérteni, hogy hányszor kapott egy adott kéréshez *429* hibát.
 
@@ -202,7 +202,7 @@ Container container = await this.cosmosDatabase.CreateContainerAsync(containerPr
 
 További információ: [Azure Cosmos db indexelési házirendek](index-policy.md).
 
-## <a name="throughput"></a>Teljesítmény
+## <a name="throughput"></a>Átviteli sebesség
 <a id="measure-rus"></a>
 
 **Az alacsonyabb RU/s használatának mérése és finomhangolása**
@@ -213,7 +213,7 @@ Az egyes műveletekhez kapcsolódó költségek a művelet végrehajtásához sz
 
 Az átviteli sebesség az egyes tárolók számára beállított [kérelmek egységeinek](request-units.md) száma alapján lett kiépítve. A kérés egységének felhasználását egység/másodperc arányban értékeljük. Azok az alkalmazások, amelyek túllépik a tárolók kiépített kérelmi egységének sebességét, csak a tároló számára kiépített szint alá csökkennek. Ha az alkalmazás magasabb adatátviteli kapacitást igényel, akkor a további kérelmek kiszámításával növelheti a teljesítményt.
 
-A lekérdezés bonyolultsága befolyásolja, hogy a rendszer hány kérési egységet használ a műveletekhez. A predikátumok száma, a predikátumok természete, az UDF-fájlok száma és a forrás-adatkészlet mérete egyaránt befolyásolja a lekérdezési műveletek költségeit.
+A lekérdezés összetettsége hatással van arra, hogy egy művelethez hány kérelemegység szükséges. A predikátumok száma, a predikátumok természete, az UDF-fájlok száma és a forrás-adatkészlet mérete egyaránt befolyásolja a lekérdezési műveletek költségeit.
 
 Bármilyen művelet (létrehozás, frissítés vagy törlés) mértékének méréséhez vizsgálja meg az [x-MS-Request-Charge](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) fejlécét (vagy a `RequestCharge` .net SDK-ban vagy annak megfelelő tulajdonságát `ResourceResponse\<T>` ) a `FeedResponse\<T>` műveletek által felhasznált kérelmek mennyiségének méréséhez:
 

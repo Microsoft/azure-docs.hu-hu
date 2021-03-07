@@ -3,12 +3,12 @@ title: Azure Functions – alkalmazásbeállítási referencia
 description: A Azure Functions Alkalmazásbeállítások vagy környezeti változók dokumentációja.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 6f77efc877f210455be6716f8159ee000241c62f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 6fa8e2d9fb2270d53d8c0419ac7b4d88d79f30fd
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102040345"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425702"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions – alkalmazásbeállítási referencia
 
@@ -159,11 +159,11 @@ Azt diktálja, hogy engedélyezve van-e a Azure Portal szerkesztése. Az érvén
 
 ## <a name="functions_extension_version"></a>FUNCTIONs \_ bővítmény \_ verziója
 
-A Function alkalmazásban használni kívánt functions futtatókörnyezet verziója. A nagyobb verziószámú tilde a főverzió legújabb verzióját használja (például "~ 2"). Ha az azonos főverzióhoz tartozó új verziók elérhetők, a rendszer automatikusan telepíti őket a Function alkalmazásba. Az alkalmazás egy adott verzióra való rögzítéséhez használja a teljes verziószámot (például "2.0.12345"). Az alapértelmezett érték a "~ 2". Az alkalmazás a `~1` futtatókörnyezet 1. x verziójára való PIN-kód.
+A Function alkalmazást futtató functions futtatókörnyezet verziója. A `~` nagyobb verziószámú tilde () a főverzió legújabb verzióját használja (például: "~ 3"). Ha az azonos főverzióhoz tartozó új verziók elérhetők, a rendszer automatikusan telepíti őket a Function alkalmazásba. Az alkalmazás egy adott verzióra való rögzítéséhez használja a teljes verziószámot (például "3.0.12345"). Az alapértelmezett érték a "~ 3". Az alkalmazás a `~1` futtatókörnyezet 1. x verziójára való PIN-kód. További információ: [Azure functions Runtime Versions – áttekintés](functions-versions.md).
 
 |Kulcs|Mintaérték|
 |---|------------|
-|FUNCTIONs \_ bővítmény \_ verziója|~ 2|
+|FUNCTIONs \_ bővítmény \_ verziója|~ 3|
 
 ## <a name="functions_v2_compatibility_mode"></a>FUNCTIONs \_ v2 \_ kompatibilitási \_ mód
 

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 085dd18214f795566669fb862bba63b67eb9115d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 218579176b807bbdae85646f27eaa7f301d4b9a6
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350364"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428269"
 ---
 # <a name="build-an-enrollment-app-for-android-with-react"></a>Beléptetési alkalmazás készítése az Androidhoz a reakcióval
 
@@ -37,9 +37,9 @@ A minta-beléptetési alkalmazást a JavaScript és a reakciós natív keretrend
 ## <a name="set-up-the-development-environment"></a>A fejlesztési környezet kialakítása
 
 1. A [minta beléptetési alkalmazás](https://github.com/azure-samples/cognitive-services-FaceAPIEnrollmentSample)git-tárházának klónozása.
-1. A fejlesztési környezet beállításához kövesse a natív dokumentáció megválaszolása <a href="https://reactnative.dev/docs/environment-setup"  title=" "  target="_blank"> natív dokumentációt <span class="docon docon-navigate-external x-hidden-focus"></span> </a> . Válassza a **NATÍV CLI** -gyors reagálás a fejlesztési operációs rendszerként lehetőséget, és válassza az **Android** lehetőséget célként szolgáló operációs rendszerként. Fejezze be a **függőségek** és az **androidos fejlesztői környezet** telepítését ismertető szakaszt.
+1. A fejlesztési környezet beállításához kövesse a natív dokumentáció megválaszolása <a href="https://reactnative.dev/docs/environment-setup"  title=" "  target="_blank"> natív dokumentációt </a> . Válassza a **NATÍV CLI** -gyors reagálás a fejlesztési operációs rendszerként lehetőséget, és válassza az **Android** lehetőséget célként szolgáló operációs rendszerként. Fejezze be a **függőségek** és az **androidos fejlesztői környezet** telepítését ismertető szakaszt.
 1. Nyissa meg a env.jsfájlt a kívánt szövegszerkesztőben, például a [Visual Studio Code](https://code.visualstudio.com/)-ban, és adja hozzá a végpontot és a kulcsot. A végpontot és a kulcsot a Azure Portal az erőforrás **Áttekintés** lapján érheti el. Ez a lépés csak helyi tesztelési célokra szolgál, a &mdash; távoli tárházban nem kell bejelentkeznie a Face API-kulcsba.
-1. Futtassa az alkalmazást az Android rendszerű virtuális eszköz emulátorával Android Studio vagy a saját Android-eszközéről. Ha egy fizikai eszközön szeretné tesztelni az alkalmazást, kövesse a kapcsolódó <a href="https://reactnative.dev/docs/running-on-device"  title=" reagáló natív dokumentációt a "  target="_blank"> natív dokumentációban <span class="docon docon-navigate-external x-hidden-focus"></span> </a> .  
+1. Futtassa az alkalmazást az Android rendszerű virtuális eszköz emulátorával Android Studio vagy a saját Android-eszközéről. Ha egy fizikai eszközön szeretné tesztelni az alkalmazást, kövesse a kapcsolódó <a href="https://reactnative.dev/docs/running-on-device"  title=" reagáló natív dokumentációt a "  target="_blank"> natív dokumentációban </a> .  
 
 
 ## <a name="create-an-enrollment-experience"></a>Regisztrálási élmény létrehozása  
@@ -78,10 +78,10 @@ Először győződjön meg arról, hogy az alkalmazás készen áll az éles kö
 
 Ha készen áll az alkalmazás éles környezetben való kiadására, létrehoz egy kiadásra kész APK-fájlt, amely az Android-alkalmazások csomag fájlformátuma. Ezt az APK-fájlt titkos kulccsal kell aláírni. Ezzel a kiadással megkezdheti az alkalmazás közvetlen terjesztését az eszközökön. 
 
-A kiadási <a href="https://developer.android.com/studio/publish/preparing#publishing-build"  title=" dokumentáció előkészítésének előkészítése "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> című témakörben megtudhatja, hogyan hozhatja ki a titkos kulcsot, hogyan aláírhatja az alkalmazást, és hogyan hozhatja ki a kiadási apk-t.  
+A kiadási <a href="https://developer.android.com/studio/publish/preparing#publishing-build"  title=" dokumentáció előkészítésének előkészítése "  target="_blank"> </a> című témakörben megtudhatja, hogyan hozhatja ki a titkos kulcsot, hogyan aláírhatja az alkalmazást, és hogyan hozhatja ki a kiadási apk-t.  
 
-Miután létrehozott egy aláírt APK-t, tekintse meg az alkalmazás közzététele az alkalmazás közzététele című <a href="https://developer.android.com/studio/publish"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> dokumentációt, amelyből többet tudhat meg az alkalmazás kiadásáról.
+Miután létrehozott egy aláírt APK-t, tekintse meg az alkalmazás közzététele az alkalmazás közzététele című <a href="https://developer.android.com/studio/publish"  title=" "  target="_blank"> </a> dokumentációt, amelyből többet tudhat meg az alkalmazás kiadásáról.
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 Ebből az útmutatóból megtudhatta, hogyan állíthatja be a fejlesztési környezetet, és megkezdheti a minta-beléptetési alkalmazás megkezdését. Ha most ismerkedik a natív reagálással, olvassa el az [első lépéseket ismertető dokumentációt](https://reactnative.dev/docs/getting-started) , ahol további háttér-információkat tudhat meg. Hasznos lehet a [Face API](Overview.md)megismerése is. A fejlesztés megkezdése előtt olvassa el a beléptetési alkalmazás dokumentációjának egyéb fejezeteit.

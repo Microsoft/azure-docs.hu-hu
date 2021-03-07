@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c5b2364328fc4e0103b969f94a4c877a388edb7c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 2c4ed092604e9511023a7025a69dc7a78652ea56
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103611"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430479"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Fiókkezelés Azure Data Lake Storage Gen1 a .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -27,14 +27,14 @@ Ebből a cikkből megtudhatja, hogyan hajthat végre Fiókkezelés-műveleteket 
 Az adatkezelési műveletek .NET SDK használatával történő végrehajtásával kapcsolatos útmutatásért tekintse meg a [Data Lake Storage Gen1 filesystem Operations on Data Lake Storage Gen1 .net SDK](data-lake-store-data-operations-net-sdk.md)-t.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* A **Visual Studio 2013-es vagy újabb**verzióját. Az alábbi utasítások a Visual Studio 2019-et használják.
+* A **Visual Studio 2013-es vagy újabb** verzióját. Az alábbi utasítások a Visual Studio 2019-et használják.
 
 * **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="create-a-net-application"></a>.NET-alkalmazás létrehozása
-1. A Visual Studióban kattintson a **fájl** menüre, majd az **új**, majd a **projekt**elemre.
-2. Válassza a **konzol alkalmazás (.NET-keretrendszer)** elemet, majd kattintson a **tovább**gombra.
-3. A **Project Name (projekt neve**) mezőben adja meg a nevet `CreateADLApplication` , majd válassza a **Létrehozás**lehetőséget.
+1. A Visual Studióban kattintson a **fájl** menüre, majd az **új**, majd a **projekt** elemre.
+2. Válassza a **konzol alkalmazás (.NET-keretrendszer)** elemet, majd kattintson a **tovább** gombra.
+3. A **Project Name (projekt neve**) mezőben adja meg a nevet `CreateADLApplication` , majd válassza a **Létrehozás** lehetőséget.
 
 4. Adja hozzá a NuGet-csomagokat a projekthez.
 
@@ -144,7 +144,7 @@ _adlsClient.Account.Delete(_resourceGroupName, _adlsAccountName);
 
 ## <a name="see-also"></a>Lásd még
 * [Fájlrendszer-műveletek Data Lake Storage Gen1 a .NET SDK használatával](data-lake-store-data-operations-net-sdk.md)
-* [Data Lake Storage Gen1 .NET SDK-dokumentáció](/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
+* [Data Lake Storage Gen1 .NET SDK-dokumentáció](/dotnet/api/overview/azure/data-lake-store)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)

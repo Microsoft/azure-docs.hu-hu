@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: cbab73a2fb3aecaacdfc92950c0d0b86edf775af
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: e20cd09ce3d9eb1937819da79cea17bdd14a07dc
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653346"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433267"
 ---
 # <a name="manage-digital-twins"></a>Digitális ikereszközök kezelése
 
-A környezetben található entitásokat a [digitális ikrek](concepts-twins-graph.md)jelölik. A digitális ikrek kezelése magában foglalhatja a létrehozását, módosítását és eltávolítását. Ezeknek a műveleteknek a végrehajtásához használhatja a [**DigitalTwins API-kat**](/rest/api/digital-twins/dataplane/twins), a [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)-t vagy az [Azure digitális Twins parancssori](how-to-use-cli.md)felületét.
+A környezetben található entitásokat a [digitális ikrek](concepts-twins-graph.md)jelölik. A digitális ikrek kezelése magában foglalhatja a létrehozását, módosítását és eltávolítását. Ezeknek a műveleteknek a végrehajtásához használhatja a [**DigitalTwins API-kat**](/rest/api/digital-twins/dataplane/twins), a [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)-t vagy az [Azure digitális Twins parancssori](how-to-use-cli.md)felületét.
 
 Ez a cikk a digitális ikrek kezelésére koncentrál. Ha a kapcsolatokkal és a [Twin gráfmal](concepts-twins-graph.md) szeretne dolgozni, tekintse meg [*az útmutató: a Twin gráf kezelése a kapcsolatokkal*](how-to-manage-graph.md)című témakört.
 
@@ -160,7 +160,7 @@ A javítási hívások a több tulajdonságot is frissíthetik egyetlen dupla é
 
 :::code language="json" source="~/digital-twins-docs-samples/models/patch.json":::
 
-Az Azure .NET SDK [JsonPatchDocument](/dotnet/api/azure.jsonpatchdocument?view=azure-dotnet&preserve-view=true)is létrehozhat javításokat. Íme egy példa.
+Az Azure .NET SDK [JsonPatchDocument](/dotnet/api/azure.jsonpatchdocument)is létrehozhat javításokat. Íme egy példa.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="UpdateTwin":::
 
@@ -227,7 +227,7 @@ A kódrészlet a modell definíciójában szereplő [Room.js](https://github.com
 A minta futtatása előtt tegye a következőket:
 1. Töltse le a modell fájlját, helyezze el a projektbe, és cserélje le a `<path-to>` helyőrzőt az alábbi kódban, hogy a program hol találja meg.
 2. Cserélje le a helyőrzőt az `<your-instance-hostname>` Azure Digital ikrek példányának állomásnévre.
-3. Vegyen fel két függőséget a projekthez, amely szükséges lesz az Azure digitális ikrekkel való együttműködéshez. Az első a .NET-hez készült [Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)csomag, a második pedig az Azure-hoz való hitelesítéshez segítséget nyújtó eszközöket biztosít.
+3. Vegyen fel két függőséget a projekthez, amely szükséges lesz az Azure digitális ikrekkel való együttműködéshez. Az első a .NET-hez készült [Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client)csomag, a második pedig az Azure-hoz való hitelesítéshez segítséget nyújtó eszközöket biztosít.
 
       ```cmd/sh
       dotnet add package Azure.DigitalTwins.Core

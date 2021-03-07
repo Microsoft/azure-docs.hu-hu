@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 5e488bc0863dc831ee3c2895c2a8377d5483370f
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 67a6a318be247da43f51a0e5667a7e088389e444
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100099666"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439143"
 ---
 ## <a name="azure-security-benchmark"></a>Azure-biztonsági teljesítményteszt
 
@@ -41,7 +41,7 @@ Ha szeretné áttekinteni, hogy az összes Azure-szolgáltatáshoz rendelkezésr
 |Adat-helyreállítás |9,1 |Rendszeres automatizált biztonsági másolatok biztosítása |[A Geo-redundáns biztonsági mentést engedélyezni kell a Azure Database for PostgreSQL](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F48af4db5-9b8b-401c-8e74-076be876a430) |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/GeoRedundant_DBForPostgreSQL_Audit.json) |
 |Adat-helyreállítás |9,2 |A teljes rendszerbiztonsági másolatok és az ügyfelek által felügyelt kulcsok biztonsági mentésének végrehajtása |[A Geo-redundáns biztonsági mentést engedélyezni kell a Azure Database for PostgreSQL](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F48af4db5-9b8b-401c-8e74-076be876a430) |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/GeoRedundant_DBForPostgreSQL_Audit.json) |
 
-## <a name="cis-microsoft-azure-foundations-benchmark"></a>CIS Microsoft Azure Foundations Benchmark
+## <a name="cis-microsoft-azure-foundations-benchmark-110"></a>CIS Microsoft Azure Foundations Benchmark 1.1.0
 
 Ha szeretné áttekinteni, hogy az összes Azure-szolgáltatáshoz elérhető beépített Azure Policy hogyan képezi le a megfelelőségi szabványt, tekintse meg a [Azure Policy szabályozási megfelelőség – CIS Microsoft Azure alapítványok teljesítményteszt 1.1.0](../../../../articles/governance/policy/samples/cis-azure-1-1-0.md)című témakört.
 További információ erről a megfelelőségi szabványról: [CIS Microsoft Azure founds benchmark](https://www.cisecurity.org/benchmark/azure/).
@@ -53,6 +53,19 @@ További információ erről a megfelelőségi szabványról: [CIS Microsoft Azu
 |Adatbázis-szolgáltatások |4,14 |Győződjön meg arról, hogy a (z) "log_connections" kiszolgálói paraméter "ON" értékre van beállítva a PostgreSQL adatbázis-kiszolgálóhoz |[A naplózási kapcsolatokat engedélyezni kell a PostgreSQL adatbázis-kiszolgálóinak](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Feb6f77b9-bd53-4e35-a23d-7f65d5f0e442) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_EnableLogConnections_Audit.json) |
 |Adatbázis-szolgáltatások |4,15 |Győződjön meg arról, hogy a (z) "log_disconnections" kiszolgálói paraméter "ON" értékre van beállítva a PostgreSQL adatbázis-kiszolgálóhoz |[A leválasztásokat a PostgreSQL adatbázis-kiszolgálóihoz kell naplózni.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Feb6f77b9-bd53-4e35-a23d-7f65d5f0e446) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_EnableLogDisconnections_Audit.json) |
 |Adatbázis-szolgáltatások |4,17 |Győződjön meg arról, hogy a (z) "connection_throttling" kiszolgálói paraméter "ON" értékre van beállítva a PostgreSQL adatbázis-kiszolgálóhoz |[A kapcsolatok szabályozását engedélyezni kell a PostgreSQL-adatbázis-kiszolgálók esetében](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5345bb39-67dc-4960-a1bf-427e16b9a0bd) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_ConnectionThrottling_Enabled_Audit.json) |
+
+## <a name="cis-microsoft-azure-foundations-benchmark-130"></a>CIS Microsoft Azure alapítványok teljesítményteszt 1.3.0
+
+Ha szeretné áttekinteni, hogy az összes Azure-szolgáltatáshoz elérhető beépített Azure Policy hogyan képezi le a megfelelőségi szabványt, tekintse meg a [Azure Policy szabályozási megfelelőség – CIS Microsoft Azure alapítványok teljesítményteszt 1.3.0](../../../../articles/governance/policy/samples/cis-azure-1-3-0.md)című témakört.
+További információ erről a megfelelőségi szabványról: [CIS Microsoft Azure founds benchmark](https://www.cisecurity.org/benchmark/azure/).
+
+|Tartomány |Vezérlő azonosítója |Vezérlő címe |Szabályzat<br /><sub>(Azure Portal)</sub> |Házirend verziója<br /><sub>GitHub</sub>  |
+|---|---|---|---|---|
+|Adatbázis-szolgáltatások |4.3.2 |Győződjön meg arról, hogy az "SSL-kapcsolat érvényesítése" beállítás értéke "ENABLED" a MySQL adatbázis-kiszolgáló számára |[Az SSL-kapcsolat betartatását engedélyezni kell a PostgreSQL-adatbázis-kiszolgálók esetében](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd158790f-bfb0-486c-8631-2dc6b4e8e6af) |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_EnableSSL_Audit.json) |
+|Adatbázis-szolgáltatások |4.3.3 |Győződjön meg arról, hogy a (z) "log_checkpoints" kiszolgálói paraméter "ON" értékre van beállítva a PostgreSQL adatbázis-kiszolgálóhoz |[A naplózási ellenőrzőpontokat engedélyezni kell a PostgreSQL adatbázis-kiszolgálóinak](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Feb6f77b9-bd53-4e35-a23d-7f65d5f0e43d) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_EnableLogCheckpoint_Audit.json) |
+|Adatbázis-szolgáltatások |4.3.4 |Győződjön meg arról, hogy a (z) "log_connections" kiszolgálói paraméter "ON" értékre van beállítva a PostgreSQL adatbázis-kiszolgálóhoz |[A naplózási kapcsolatokat engedélyezni kell a PostgreSQL adatbázis-kiszolgálóinak](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Feb6f77b9-bd53-4e35-a23d-7f65d5f0e442) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_EnableLogConnections_Audit.json) |
+|Adatbázis-szolgáltatások |4.3.5 |Győződjön meg arról, hogy a (z) "log_disconnections" kiszolgálói paraméter "ON" értékre van beállítva a PostgreSQL adatbázis-kiszolgálóhoz |[A leválasztásokat a PostgreSQL adatbázis-kiszolgálóihoz kell naplózni.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Feb6f77b9-bd53-4e35-a23d-7f65d5f0e446) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_EnableLogDisconnections_Audit.json) |
+|Adatbázis-szolgáltatások |4.3.6 |Győződjön meg arról, hogy a (z) "connection_throttling" kiszolgálói paraméter "ON" értékre van beállítva a PostgreSQL adatbázis-kiszolgálóhoz |[A kapcsolatok szabályozását engedélyezni kell a PostgreSQL-adatbázis-kiszolgálók esetében](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5345bb39-67dc-4960-a1bf-427e16b9a0bd) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_ConnectionThrottling_Enabled_Audit.json) |
 
 ## <a name="cmmc-level-3"></a>3. CMMC szint
 

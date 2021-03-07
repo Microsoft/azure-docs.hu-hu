@@ -10,12 +10,12 @@ ms.date: 03/23/2020
 ms.author: ramkris
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6f6994717ff4c730fb27bd26c40d199fb198e528
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 34aef5bd880e3ef080676fb9e90e62796d499e7b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96019956"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102429816"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Tömeges műveletek végrehajtása a tömeges végrehajtó .NET-kódtár használatával Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -94,7 +94,7 @@ A "BulkImportSample" alkalmazás véletlenszerű dokumentumokat hoz létre, és 
    client.ConnectionPolicy.RetryOptions.MaxRetryAttemptsOnThrottledRequests = 0;
    ```
 
-5. Az alkalmazás meghívja a BulkImportAsync API-t. A .NET-függvénytár két túlterhelést biztosít a tömeges importálási API-nak, amely elfogadja a szerializált JSON-dokumentumok listáját, valamint a másikat, amely elfogadja a deszerializált POCO-dokumentumok listáját. Ha többet szeretne megtudni ezekről a túlterhelt módszerekről, tekintse meg az [API dokumentációját](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkimportasync?view=azure-dotnet&preserve-view=true).
+5. Az alkalmazás meghívja a BulkImportAsync API-t. A .NET-függvénytár két túlterhelést biztosít a tömeges importálási API-nak, amely elfogadja a szerializált JSON-dokumentumok listáját, valamint a másikat, amely elfogadja a deszerializált POCO-dokumentumok listáját. Ha többet szeretne megtudni ezekről a túlterhelt módszerekről, tekintse meg az [API dokumentációját](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkimportasync).
 
    ```csharp
    BulkImportResponse bulkImportResponse = await bulkExecutor.BulkImportAsync(
@@ -126,11 +126,11 @@ A "BulkImportSample" alkalmazás véletlenszerű dokumentumokat hoz létre, és 
 
 ## <a name="bulk-update-data-in-your-azure-cosmos-account"></a>Az Azure Cosmos-fiókban tárolt adatmennyiségek tömeges frissítése
 
-A meglévő dokumentumokat a BulkUpdateAsync API használatával frissítheti. Ebben a példában a `Name` mezőt egy új értékre állítja be, és eltávolítja a `Description` mezőt a meglévő dokumentumokból. A támogatott frissítési műveletek teljes készletét az [API dokumentációjában](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet&preserve-view=true)találja.
+A meglévő dokumentumokat a BulkUpdateAsync API használatával frissítheti. Ebben a példában a `Name` mezőt egy új értékre állítja be, és eltávolítja a `Description` mezőt a meglévő dokumentumokból. A támogatott frissítési műveletek teljes készletét az [API dokumentációjában](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate)találja.
 
 1. Navigáljon a "BulkUpdateSample" mappára, és nyissa meg a "BulkUpdateSample. SLN" fájlt.  
 
-2. A frissítési elemek meghatározása a megfelelő mező-frissítési műveletekkel együtt. Ebben a példában a használatával `SetUpdateOperation` frissíti a `Name` mezőt, és `UnsetUpdateOperation` eltávolítja a `Description` mezőt az összes dokumentumból. Más műveleteket is végrehajthat, például egy adott értékkel növelheti a dokumentum mező értékét, leküldheti a konkrét értékeket egy tömb mezőjébe, vagy eltávolíthat egy adott értéket egy tömb mezőből. Ha többet szeretne megtudni a tömeges frissítési API által nyújtott különböző módszerekről, tekintse meg az [API dokumentációját](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet&preserve-view=true).
+2. A frissítési elemek meghatározása a megfelelő mező-frissítési műveletekkel együtt. Ebben a példában a használatával `SetUpdateOperation` frissíti a `Name` mezőt, és `UnsetUpdateOperation` eltávolítja a `Description` mezőt az összes dokumentumból. Más műveleteket is végrehajthat, például egy adott értékkel növelheti a dokumentum mező értékét, leküldheti a konkrét értékeket egy tömb mezőjébe, vagy eltávolíthat egy adott értéket egy tömb mezőből. Ha többet szeretne megtudni a tömeges frissítési API által nyújtott különböző módszerekről, tekintse meg az [API dokumentációját](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate).
 
    ```csharp
    SetUpdateOperation<string> nameUpdate = new SetUpdateOperation<string>("Name", "UpdatedDoc");
@@ -147,7 +147,7 @@ A meglévő dokumentumokat a BulkUpdateAsync API használatával frissítheti. E
    }
    ```
 
-3. Az alkalmazás meghívja a BulkUpdateAsync API-t. Az BulkUpdateAsync metódus definíciójának megismeréséhez tekintse meg az [API dokumentációját](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.ibulkexecutor.bulkupdateasync?view=azure-dotnet&preserve-view=true).  
+3. Az alkalmazás meghívja a BulkUpdateAsync API-t. Az BulkUpdateAsync metódus definíciójának megismeréséhez tekintse meg az [API dokumentációját](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.ibulkexecutor.bulkupdateasync).  
 
    ```csharp
    BulkUpdateResponse bulkUpdateResponse = await bulkExecutor.BulkUpdateAsync(
@@ -203,6 +203,6 @@ A tömeges végrehajtó függvénytár használata esetén vegye figyelembe a k�
   </system.diagnostics>
   ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A NuGet-csomag részleteivel és a kibocsátási megjegyzésekkel kapcsolatos további információkért tekintse meg a [tömeges végrehajtó SDK részleteit](sql-api-sdk-bulk-executor-dot-net.md).
