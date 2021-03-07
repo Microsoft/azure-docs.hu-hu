@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 3395dc3010f7ae3aabadda8105c1765a9c300988
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 30b30697750a0b9068cfcde19ea4bf9c474f9ad9
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201260"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424564"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Oktatóanyag: végpontok közötti megoldás kiépítése
 
@@ -48,7 +48,7 @@ A forgatókönyvben való működéshez a korábban letöltött, előre megírt 
 
 Az alábbi, az építési forgatókönyv *AdtSampleApp* minta alkalmazás által megvalósított összetevők:
 * Eszköz hitelesítése 
-* A [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) használati példái (a *CommandLoop.cs*-ben találhatók)
+* A [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) használati példái (a *CommandLoop.cs*-ben találhatók)
 * Konzol kezelőfelülete az Azure Digital Twins API meghívásához
 * *SampleClientApp* – egy minta Azure digitális Twins-megoldás
 * *SampleFunctionsApp* – egy Azure functions alkalmazás, amely a IoT hub és az Azure digitális Twins eseményeiből származó telemetria eredményeképpen frissíti az Azure digitális Twins-diagramot

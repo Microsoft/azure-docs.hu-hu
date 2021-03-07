@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: fd27383add6e73fed4cc2048a977c6277689aa8c
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 835bf559760910bb92c838721eb5f67543e35011
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100096019"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425227"
 ---
 |Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
@@ -38,5 +38,6 @@ ms.locfileid: "100096019"
 |[A Kubernetes-fürtök csak HTTPS protokollon keresztül érhetők el](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1a5b4dca-0b6f-4cf5-907c-56316bc1bf3d) |A HTTPS használata biztosítja a hitelesítést, és védelmet biztosít a hálózati rétegbeli lehallgatási támadásoktól érkező adatok számára. Ez a képesség jelenleg általánosan elérhető a Kubernetes szolgáltatás (ak) számára, valamint az AK-motor és az Azure arc-kompatibilis Kubernetes előzetes verziójában. További információért látogasson el ide: [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc) |naplózás, megtagadás, letiltva |[5.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/IngressHttpsOnly.json) |
 |[A Kubernetes-fürtöknek le kell tiltaniuk az API hitelesítő adatainak automatikus csatlakoztatását](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F423dd1ba-798e-40e4-9c4d-b6902674b423) |Az API hitelesítő adatainak letiltásával megakadályozhatja, hogy egy potenciálisan sérült Pod-erőforrás futtasson API-parancsokat a Kubernetes-fürtökön. A szabályzat használatára vonatkozó utasításokért lépjen a következőre: [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc) . |naplózás, megtagadás, letiltva |[1.0.0 – előzetes verzió](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/BlockAutomountToken.json) |
 |[A Kubernetes-fürtök nem engedélyezhetik a tárolók jogosultságának emelését](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) |Ez a szabályzat nem teszi lehetővé a tárolók számára, hogy a jogosultságok eszkalációját használják egy Kubernetes-fürtben. Ez a szabályzat általánosan elérhető a Kubernetes Service (ak) szolgáltatáshoz, valamint az AK-motor és az Azure arc-kompatibilis Kubernetes előzetes verziója. A szabályzat használatáról a következő témakörben tájékozódhat: [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc) . |naplózás, megtagadás, letiltva |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerNoPrivilegeEscalation.json) |
+|[A Kubernetes-fürtök nem biztosíthatnak CAP_SYS_ADMIN biztonsági képességeket](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd2e7ea85-6b44-4317-a0be-1b951587f626) |A tárolók támadási felületének csökkentése érdekében korlátozza CAP_SYS_ADMIN linuxos képességeit |naplózás, megtagadás, letiltva |[1.0.0 – előzetes verzió](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerDisallowedSysAdminCapability.json) |
 |[A Kubernetes-fürtök nem használhatnak bizonyos biztonsági képességeket](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa27c700f-8a22-44ec-961c-41625264370b) |Megakadályozhatja, hogy a Kubernetes-fürtök bizonyos biztonsági képességei megakadályozzák a nem biztosított jogosultságok használatát a pod-erőforráson. A szabályzat használatáról a következő témakörben tájékozódhat: [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc) . |naplózás, megtagadás, letiltva |[1.0.0 – előzetes verzió](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerDisallowedCapabilities.json) |
 |[A Kubernetes-fürtök nem használhatják az alapértelmezett névteret](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9f061a12-e40d-4183-a00e-171812443373) |A Kubernetes-fürtökben lévő alapértelmezett névtér használatának megakadályozása a ConfigMap, a pod, a Secret, a Service és a ServiceAccount típusú erőforrások jogosulatlan hozzáférésének megakadályozásához. A szabályzat használatára vonatkozó utasításokért lépjen a következőre: [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc) . |naplózás, megtagadás, letiltva |[1.0.0 – előzetes verzió](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/BlockDefaultNamespace.json) |

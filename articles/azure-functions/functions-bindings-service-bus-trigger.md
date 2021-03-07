@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: f2a514af99baa2d828df1aee35a0e6339d39e617
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 4b95c25400317b2baac694f4ba2b1b1dc1eae098
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788553"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102435154"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Functions Azure Service Bus trigger
 
@@ -323,7 +323,7 @@ A Python nem támogatja az attribútumokat.
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `ServiceBusTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa** | n.a. | "ServiceBusTrigger" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
 |**irányba** | n.a. | "In" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
@@ -346,8 +346,8 @@ A következő típusparaméter-típusok érhetők el a várólista vagy a témak
 * `string` – Ha az üzenet szövege.
 * `byte[]` – Hasznos a bináris adattároláshoz.
 * Egyéni típus – ha az üzenet JSON-t tartalmaz, Azure Functions megpróbálja deszerializálni a JSON-adattípust.
-* `BrokeredMessage` -Megadja a deszerializált üzenetet a [BrokeredMessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1&preserve-view=true) metódussal.
-* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet&preserve-view=true) -Az üzenet-tárolóból érkező üzenetek fogadására és visszaigazolására használatos (kötelező, ha a értéke [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) `false` )
+* `BrokeredMessage` -Megadja a deszerializált üzenetet a [BrokeredMessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) metódussal.
+* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver) -Az üzenet-tárolóból érkező üzenetek fogadására és visszaigazolására használatos (kötelező, ha a értéke [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) `false` )
 
 Ezek a paraméterek a Azure Functions 1. x verzióra vonatkoznak. 2. x és újabb verziók esetén használja [`Message`](/dotnet/api/microsoft.azure.servicebus.message) a helyett a következőt: `BrokeredMessage` .
 
@@ -358,7 +358,7 @@ A következő típusparaméter-típusok érhetők el a várólista vagy a témak
 * `string` – Ha az üzenet szövege.
 * `byte[]` – Hasznos a bináris adattároláshoz.
 * Egyéni típus – ha az üzenet JSON-t tartalmaz, Azure Functions megpróbálja deszerializálni a JSON-adattípust.
-* `BrokeredMessage` -Megadja a deszerializált üzenetet a [BrokeredMessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1&preserve-view=true) metódussal.
+* `BrokeredMessage` -Megadja a deszerializált üzenetet a [BrokeredMessage. GetBody \<T> ()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) metódussal.
 
 Ezek a paraméterek az 1. x Azure Functions-verzióra vonatkoznak. 2. x és újabb verziók esetén használja [`Message`](/dotnet/api/microsoft.azure.servicebus.message) a helyett a következőt: `BrokeredMessage` .
 
@@ -390,13 +390,13 @@ A megmérgezett üzenetküldés nem szabályozható és nem konfigurálható Azu
 
 A functions futtatókörnyezet [PeekLock módban](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode)fogad üzenetet. Ha a `Complete` függvény sikeresen befejeződik, meghívja az üzenetet, vagy meghívja, `Abandon` Ha a függvény meghibásodik. Ha a függvény hosszabb ideig fut az `PeekLock` időtúllépésnél, a rendszer automatikusan megújítja a zárolást, amíg a függvény fut.
 
-Az a `maxAutoRenewDuration` *host.json* konfigurálható, amely a [OnMessageOptions. MaxAutoRenewDuration](/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet&preserve-view=true)leképezésére szolgál. Az ehhez a beállításhoz engedélyezett maximális érték 5 perc a Service Bus dokumentációjában, míg a functions időkorlát az alapértelmezett 5 perc és 10 perc között is megnövelhető. Olyan Service Bus függvények esetében, amelyeket nem kíván végrehajtani, mert túllépi a Service Bus megújítási korlátot.
+Az a `maxAutoRenewDuration` *host.json* konfigurálható, amely a [OnMessageOptions. MaxAutoRenewDuration](/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration)leképezésére szolgál. Az ehhez a beállításhoz engedélyezett maximális érték 5 perc a Service Bus dokumentációjában, míg a functions időkorlát az alapértelmezett 5 perc és 10 perc között is megnövelhető. Olyan Service Bus függvények esetében, amelyeket nem kíván végrehajtani, mert túllépi a Service Bus megújítási korlátot.
 
 ## <a name="message-metadata"></a>Üzenet metaadatai
 
-A Service Bus trigger számos [metaadat-tulajdonságot](./functions-bindings-expressions-patterns.md#trigger-metadata)biztosít. Ezek a tulajdonságok a más kötésekben lévő kötési kifejezések vagy a kódban szereplő paraméterek részeként is használhatók. Ezek a tulajdonságok az [üzenet](/dotnet/api/microsoft.azure.servicebus.message?view=azure-dotnet&preserve-view=true) osztály tagjai.
+A Service Bus trigger számos [metaadat-tulajdonságot](./functions-bindings-expressions-patterns.md#trigger-metadata)biztosít. Ezek a tulajdonságok a más kötésekben lévő kötési kifejezések vagy a kódban szereplő paraméterek részeként is használhatók. Ezek a tulajdonságok az [üzenet](/dotnet/api/microsoft.azure.servicebus.message) osztály tagjai.
 
-|Tulajdonság|Típus|Leírás|
+|Tulajdonság|Típus|Description|
 |--------|----|-----------|
 |`ContentType`|`string`|A küldő és a fogadó által az alkalmazásspecifikus logikához használt tartalomtípus-azonosító.|
 |`CorrelationId`|`string`|A korrelációs azonosító.|
@@ -415,6 +415,6 @@ A Service Bus trigger számos [metaadat-tulajdonságot](./functions-bindings-exp
 
 Tekintse meg a jelen cikk korábbi részében említett tulajdonságokat használó [példákat](#example) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Service Bus üzenetek küldése Azure Functionsból (kimeneti kötés)](./functions-bindings-service-bus-output.md)

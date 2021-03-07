@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 8c6e584a4bdb1953d7ceac4e3d612b329738f646
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: f1b25b853977b3a1f4871e232a562d6a3cfd2fae
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102203980"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434202"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-azure-digital-twins-explorer"></a>Gyors útmutató – a minta Azure digitális Twins-forgatókönyvek megismerése az Azure Digital Twins Explorer használatával
 
@@ -55,7 +55,7 @@ A szakasz további részében végigvezeti a lépéseket.
 
 ### <a name="set-up-local-azure-credentials"></a>Helyi Azure-beli hitelesítő adatok beállítása
 
-Az Azure Digital Twins Explorer alkalmazás a [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) (a könyvtár részét képező `Azure.Identity` ) használatával hitelesíti a felhasználókat az Azure Digital Twins-példánnyal a helyi gépen való futtatáskor. További információ az ügyfélalkalmazások az Azure digitális Twins használatával történő hitelesítésének különböző módjairól: az [alkalmazás-hitelesítési kód írása](how-to-authenticate-client.md).
+Az Azure Digital Twins Explorer alkalmazás a [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) (a könyvtár részét képező `Azure.Identity` ) használatával hitelesíti a felhasználókat az Azure Digital Twins-példánnyal a helyi gépen való futtatáskor. További információ az ügyfélalkalmazások az Azure digitális Twins használatával történő hitelesítésének különböző módjairól: az [alkalmazás-hitelesítési kód írása](how-to-authenticate-client.md).
 
 Ilyen típusú hitelesítés esetén az Azure Digital Twins Explorer a helyi környezetben, például egy helyi [Azure CLI](/cli/azure/install-azure-cli) -ben, vagy a Visual Studióban vagy a Visual Studio Code-ban keresi a hitelesítő adatokat. Emiatt *helyileg kell bejelentkeznie az Azure* -ba ezen mechanizmusok egyikével az Azure Digital Twins Explorer alkalmazás hitelesítő adatainak beállításához.
 

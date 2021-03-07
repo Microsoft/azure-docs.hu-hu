@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 86de3e1199b00dff4e03f3b4292f86e6c19ea491
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 0c95fc9e416399b5c8fe032e0d3af0c3b7f9cf6e
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296539"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433573"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>A kiosztott átviteli sebesség költségeinek optimalizálása az Azure Cosmos DB-ben
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -65,7 +65,7 @@ Ahogy az az alábbi táblázatban is látható, az API megválasztása alapján 
 
 Az átviteli sebesség különböző szinteken való kiépítés révén a számítási feladatok jellemzői alapján optimalizálhatja költségeit. Ahogy azt korábban említettük, programozott módon és bármikor növelheti vagy csökkentheti a kiosztott átviteli sebességet az egyes tároló (k) esetében, vagy együttesen a különböző tárolók között. A számítási feladatok változásainak rugalmas skálázásával, csak a konfigurált átviteli sebességért kell fizetnie. Ha a tároló vagy a tárolók több régióban vannak elosztva, akkor a tárolón konfigurált átviteli sebesség és a tárolók halmaza garantáltan elérhető az összes régióban.
 
-## <a name="optimize-with-rate-limiting-your-requests"></a>Optimalizálás díjszabással – a kérések korlátozása
+## <a name="optimize-with-rate-limiting-your-requests"></a>Optimalizálás a kérések sebességének korlátozásával
 
 A késésre nem érzékeny munkaterhelések esetében kiépítheti a kevesebb átviteli sebességet, és engedélyezheti az alkalmazás-kezelői sebesség korlátozását, ha a tényleges átviteli sebesség meghaladja a kiosztott átviteli sebességet. A kiszolgáló a (429-es http-állapotkód) megelőző jelleggel befejezi a kérést, `RequestRateTooLarge` és visszaküldi a `x-ms-retry-after-ms` fejlécet, amely jelzi, hogy a felhasználónak mennyi idő elteltével kell megvárnia a kérés újrapróbálkozása előtt. 
 
@@ -81,7 +81,7 @@ A natív SDK-k (.NET/.NET Core, Java, Node.js és Python) implicit módon elkapj
 
 Ha több ügyfél halmozottan működik, és a kérések aránya meghaladja a kérelmek arányát, akkor az újrapróbálkozások alapértelmezett száma, amely jelenleg 9, előfordulhat, hogy nem elegendő. Ilyen esetekben az ügyfél az `RequestRateTooLargeException` 429-as állapotkódot veti fel az alkalmazáshoz. Az újrapróbálkozások alapértelmezett száma módosítható a ConnectionPolicy-példányra való beállításával `RetryOptions` . Alapértelmezés szerint a `RequestRateTooLargeException` 429-as állapotkód a 30 másodperces kumulatív várakozási idő után tér vissza, ha a kérés továbbra is a kérelem arányán felül működik. Ez akkor is előfordul, ha a jelenlegi újrapróbálkozások száma kisebb, mint az újrapróbálkozások maximális száma, legyen az alapértelmezett 9-es vagy felhasználó által definiált érték. 
 
-A [MaxRetryAttemptsOnThrottledRequests](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?preserve-view=true&view=azure-dotnet) értéke 3, tehát ebben az esetben ha egy kérési művelet a tároló számára fenntartott átviteli sebesség meghaladása miatt korlátozott, a kérési művelet háromszor újrapróbálkozik a kivételnek az alkalmazásba való eldobása előtt. A [MaxRetryWaitTimeInSeconds](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) értéke 60, tehát ebben az esetben, ha az első kérelemnél nagyobb az újrapróbálkozási várakozási idő másodpercben, mivel az első kérés meghaladja a 60 másodpercet, a kivételt a rendszer eldobta.
+A [MaxRetryAttemptsOnThrottledRequests](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests) értéke 3, tehát ebben az esetben ha egy kérési művelet a tároló számára fenntartott átviteli sebesség meghaladása miatt korlátozott, a kérési művelet háromszor újrapróbálkozik a kivételnek az alkalmazásba való eldobása előtt. A [MaxRetryWaitTimeInSeconds](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) értéke 60, tehát ebben az esetben, ha az első kérelemnél nagyobb az újrapróbálkozási várakozási idő másodpercben, mivel az első kérés meghaladja a 60 másodpercet, a kivételt a rendszer eldobta.
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 
@@ -99,7 +99,7 @@ A megfelelő particionálási stratégia fontos az Azure Cosmos DB költségeine
 
 * Válasszon olyan partíciós kulcsot, amely számos értéket tartalmaz. 
 
-Az alapvető elképzelés az adatok és a tárolóban lévő tevékenységek elosztása a logikai partíciók készletében, így az adattárolásra és az átviteli sebességre vonatkozó erőforrások eloszthatók a logikai partíciók között. A partíciós kulcsok pályázói tartalmazhatják a lekérdezésekben gyakran megjelenő tulajdonságokat. A lekérdezések hatékonyan irányíthatók úgy, hogy a Filter predikátumban található partíciós kulcsot is megadhatják. A particionálási stratégia révén a kiépített átviteli sebesség sokkal egyszerűbb lesz. 
+Az alapvető elképzelés az adatok és a tárolóban lévő tevékenységek elosztása a logikai partíciók készletében, így az adattárolásra és az átviteli sebességre vonatkozó erőforrások eloszthatók a logikai partíciók között. A partíciós kulcsok pályázói tartalmazhatják a lekérdezésekben gyakran megjelenő tulajdonságokat. A lekérdezések hatékony átirányításához a partíciókulcsot foglalja bele a szűrő predikátumába. A particionálási stratégia révén a kiépített átviteli sebesség sokkal egyszerűbb lesz. 
 
 ### <a name="design-smaller-items-for-higher-throughput"></a>Kisebb elemek tervezése nagyobb átviteli sebességhez 
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8ed4e550ea441d5d99a3debb6bf37eb7db2a4a20
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 4889744347b72603a0f6318f981bc2db4906b835
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180127"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433539"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Function Apps-alkalmazások összekapcsolhatók az Azure-ban az adatfeldolgozáshoz
 
@@ -54,7 +54,7 @@ A Function app létrehozása után a Visual Studio egy **Function1.cs** -fájlba
 
 ## <a name="write-a-function-with-an-event-grid-trigger"></a>Függvény írása Event Grid triggerrel
 
-Az SDK-nak a Function alkalmazásba való felvételével írhat egy függvényt. A Function app a [.net-hez készült Azure Digital Twins SDK (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)használatával kommunikál az Azure Digital Twins szolgáltatással. 
+Az SDK-nak a Function alkalmazásba való felvételével írhat egy függvényt. A Function app a [.net-hez készült Azure Digital Twins SDK (C#)](/dotnet/api/overview/azure/digitaltwins/client)használatával kommunikál az Azure Digital Twins szolgáltatással. 
 
 Az SDK használatához a következő csomagokat kell felvennie a projektbe. A csomagokat telepítheti a Visual Studio NuGet csomagkezelő használatával, vagy hozzáadhatja a csomagokat `dotnet` egy parancssori eszköz használatával.
 

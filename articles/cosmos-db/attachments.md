@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/07/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 0a2ff0f24e3fe4711e0d2f1c306ae2eaa0fda5e0
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 55d110501d5e0273ebf8cbc666920cacb87cf5cf
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102217244"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434984"
 ---
 # <a name="azure-cosmos-db-attachments"></a>Azure Cosmos DB mellékletek
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -162,6 +162,6 @@ namespace attachments
 ## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedés az [Azure Blob Storage](../storage/blobs/storage-quickstart-blobs-dotnet.md) szolgáltatással
-- Hivatkozások a mellékletek használatára [Azure Cosmos db .net SDK v2](/dotnet/api/microsoft.azure.documents.attachment?preserve-view=true&view=azure-dotnet) használatával
+- Hivatkozások a mellékletek használatára [Azure Cosmos db .net SDK v2](/dotnet/api/microsoft.azure.documents.attachment) használatával
 - Hivatkozások a mellékletek használatára [Azure Cosmos db Java SDK v2](/java/api/com.microsoft.azure.documentdb.attachment) használatával
 - Hivatkozások a mellékletek használatára [Azure Cosmos DB REST API](/rest/api/cosmos-db/attachments)

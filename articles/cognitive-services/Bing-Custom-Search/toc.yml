@@ -75,7 +75,7 @@
     - name: SDK-k
       items:
         - name: .NET
-          href: /dotnet/api/overview/azure/cognitiveservices/bing-custom-search-readme?view=azure-dotnet
+          href: /dotnet/api/overview/azure/cognitiveservices/bing-custom-search-readme
         - name: Java – Egyéni keresés
           href: /java/api/overview/azure/cognitiveservices/client/bingcustomsearch
         - name: Java – Egyéni képkeresés

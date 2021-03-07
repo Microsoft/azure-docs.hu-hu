@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 8f84fb6bf37a3d3b61f4cad2c89745447aa88a36
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 85eb4ed0832c9384fcd05154833bc21f83f4adf2
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102179391"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426348"
 ---
 # <a name="introduction-to-azure-percept-audio"></a>Az Azure Percept audio bemutatása
 
@@ -36,26 +36,13 @@ Az Azure Percept audio továbbítja a hangbemenetet az Azure Percept DK szolgál
 
 A feldolgozás a következőképpen történik: 
 
-- Azure Percept hang: a gerenda-létrehozási és-visszavonási művelet elvégzése, valamint a bejövő hang optimalizálása a beszédhez és a DK-be történő küldéshez.  
+- Azure Percept hang: rögzíti és átalakítja a hanganyagot, és elküldi azt a DK és a audio jack számára.
 
-- Azure Percept DK: a Speech stack végrehajtja a kulcsszót a bepecsételés során.  
+- Azure Percept DK: a Speech stack a távolsági kialakítást és visszhangot hajt végre, és feldolgozza a bejövő hangot a beszédre való optimalizáláshoz. Ezután végrehajtja a bepecsételés kulcsszót.
 
 - Felhő: feldolgozza a természetes nyelvi parancsokat és kifejezéseket, a kulcsszavas ellenőrzést és az átképzést. 
 
 - Offline: Ha az eszköz offline állapotban van, a rendszer felismeri a kulcsszót, és rögzíti az internetkapcsolat állapotát telemetria. A kulcsszó-észlelés megnövekedett hamis elfogadási aránya megfigyelhető, mert a felhőben nem hajtható végre a kulcsszó-ellenőrzés. 
-
-<!---
-
-## How it works
-
-Azure Percept Audio passes the audio input to the Azure Percept DK carrier board in a hybrid edge-cloud manner. Specifically,
-
-- The Azure Percept Audio device: processes the incoming speech input to the clearest format by executing beam forming and echo cancellation befor sending the input to the Azure Percept DK. 
-- The Azure Percept DK uses edge processing to perform keyword spotting and then sends the relevant inputs to Azure speech services.
-- Cloud: Processing of natural language commands and phrases, in addition to keyword verification and retraining.
-- Offline: If the device is offline it will detect the keyword and capture telemetry that there is no internet connection at the time of the command. It will not be able to weed out false accepts since it cannot perform keyword verification.
-
--->
 
 ## <a name="getting-started"></a>Első lépések
 

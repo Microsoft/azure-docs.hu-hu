@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.custom: references_regions
-ms.openlocfilehash: ea32358aa86a6093cd72adf959d5fe731cf1e125
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: e046f8cbf6fa0418244f20e9a0c6f75f6da34136
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98786876"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434627"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Hangvezérelt asszisztens létrehozása egyéni parancsokkal
 
@@ -38,7 +38,7 @@ Jelenleg az egyéni parancsok támogatják a következő régiókban létrehozot
 ## <a name="prerequisites"></a>Előfeltételek
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Hozzon létre egy Azure Speech-erőforrást egy olyan régióban, amely támogatja az egyéni parancsokat.<span class="docon docon-navigate-external x-hidden-focus"></span></a> A támogatott régiók listájáért tekintse meg a **régió elérhetőségét** ismertető szakaszt.
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Hozzon létre egy Azure Speech-erőforrást egy olyan régióban, amely támogatja az egyéni parancsokat.</a> A támogatott régiók listájáért tekintse meg a **régió elérhetőségét** ismertető szakaszt.
 > * Töltse le a minta [Smart Room Lite](https://aka.ms/speech/cc-quickstart) JSON-fájlját.
 > * Töltse le a [Windows Voice Assistant-ügyfél](https://aka.ms/speech/va-samples-wvac)legújabb verzióját.
 
@@ -134,6 +134,6 @@ A jelen cikk hatókörében az előfeltételek részeként letöltött Windows V
 > [!TIP]
 > A **tevékenység naplójának** bejegyzéseire kattintva ellenőrizheti az egyéni parancsok szolgáltatásból küldött nyers válaszokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben egy meglévő alkalmazást használt. A következő, [útmutató szakaszban](./how-to-develop-custom-commands-application.md)megtudhatja, hogyan tervezhet, fejleszthet, végezhet hibakeresést, tesztelheti és integrálhatja az egyéni parancsok alkalmazásait a semmiből.

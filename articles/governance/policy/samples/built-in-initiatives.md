@@ -1,15 +1,15 @@
 ---
 title: Beépített házirend-kezdeményezések listája
 description: A Azure Policy beépített házirend-kezdeményezéseit sorolja fel. A kategóriák közé tartoznak a jogszabályi megfelelőség, a vendég konfigurációja és még sok más.
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 11e00c95f023bbbe1e57f258a251fff52270cc64
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: a10b35d80758ac7e872815e730e7ef9cee79d3e0
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091845"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426889"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Azure Policy beépített kezdeményezési definíciók
 

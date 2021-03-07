@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 33cc9b52c4b687ca8147867b99dc70e8d71a9223
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc4cc5063f72ff3f0db62cde79f7908add86166e
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88944395"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434582"
 ---
 :::row:::
     :::column span="3":::
@@ -24,13 +24,13 @@ ms.locfileid: "88944395"
     :::column-end:::
 :::row-end:::
 
-### <a name="system-requirements"></a>Rendszerkövetelmények
+### <a name="system-requirements"></a>System requirements (Rendszerkövetelmények)
 
-A Windowson futó Speech SDK használatához a <a href="https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads" target="_blank">Microsoft Visual C++ újraterjeszthető változata szükséges a Visual <span class="docon docon-navigate-external x-hidden-focus"></span> Studio 2019-hez</a> a rendszeren.
+A Windowson futó Speech SDK használatához a <a href="https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads" target="_blank">Microsoft Visual C++ újraterjeszthető változata szükséges a Visual Studio 2019-hez </a> a rendszeren.
 
-- <a href="https://aka.ms/vs/16/release/vc_redist.x86.exe" target="_blank">Telepítés x86-ra <span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/vs/16/release/vc_redist.x64.exe" target="_blank">Telepítés x64-re <span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/vs/16/release/vc_redist.arm64.exe" target="_blank">Telepítés a ARMx64 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.x86.exe" target="_blank">Telepítés x86-ra </a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.x64.exe" target="_blank">Telepítés x64-re </a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.arm64.exe" target="_blank">Telepítés a ARMx64 </a>
 
 ### <a name="c"></a>C#
 
@@ -40,7 +40,7 @@ A mikrofonos bevitelhez telepíteni kell a Multimédia alaprendszer kódtárakat
 
 A szükséges Speech SDK-fájlokat az alkalmazással megegyező könyvtárba lehet telepíteni. Így az alkalmazás közvetlenül hozzáférhet a könyvtárakhoz. Ügyeljen arra, hogy a megfelelő verziót (x86/x64) válassza, amely megfelel az alkalmazásnak.
 
-| Name (Név)                                            | Függvény                                             |
+| Name                                            | Függvény                                             |
 |-------------------------------------------------|------------------------------------------------------|
 | `Microsoft.CognitiveServices.Speech.core.dll`   | A natív és felügyelt központi telepítéshez szükséges Core SDK |
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | Felügyelt központi telepítéshez szükséges                      |

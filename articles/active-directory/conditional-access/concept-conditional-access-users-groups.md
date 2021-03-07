@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4c654f70af2188264465d97abded9cae95e9275
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9d5671626e05145f79c3ad5fc0ecdb5628ac9421
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364579"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102427130"
 ---
 # <a name="conditional-access-users-and-groups"></a>Feltételes hozzáférés: felhasználók és csoportok
 
-A feltételes hozzáférési szabályzatnak tartalmaznia kell egy felhasználói hozzárendelést a döntési folyamat egyik jeleként. A felhasználók belefoglalhatják vagy kizárhatják a feltételes hozzáférési szabályzatokat. Azure Active Directory kiértékeli az összes házirendet, és biztosítja, hogy minden követelmény teljesül, mielőtt hozzáférést adna a felhasználóhoz.
+A feltételes hozzáférési szabályzatnak tartalmaznia kell egy felhasználói hozzárendelést a döntési folyamat egyik jeleként. A felhasználók belefoglalhatják vagy kizárhatják a feltételes hozzáférési szabályzatokat. Azure Active Directory kiértékeli az összes házirendet, és biztosítja, hogy minden követelmény teljesül, mielőtt hozzáférést adna a felhasználóhoz. A jelen cikken kívül egy videót is talál arról, [Hogyan foglalhat be vagy zárhat ki felhasználókat olyan feltételes hozzáférési szabályzatokból](https://www.youtube.com/watch?v=5DsW1hB3Jqs) , amelyek végigvezetik az alább vázolt folyamaton. 
 
 ![A felhasználó mint jel a feltételes hozzáférés által hozott döntésekben](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups.png)
 

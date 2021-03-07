@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 7551ef88c2251b64cf6f6db1de4fed22db2c69e2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/05/2021
+ms.openlocfilehash: 8fdb6a53ed0fd64953b75238c3ba3df62c4b644e
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693645"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102432944"
 ---
 # <a name="create-a-semantic-query-in-cognitive-search"></a>Szemantikai lekérdezés létrehozása Cognitive Search
 
@@ -21,6 +21,8 @@ ms.locfileid: "101693645"
 > A szemantikai lekérdezés típusa nyilvános előzetes verzióban érhető el, és az előzetes verziójú REST API és Azure Portal is elérhető. Az előzetes verziójú funkciók a [kiegészítő használati feltételek](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)mellett is elérhetők. A kezdeti előzetes indítás során a szemantikai keresés díjmentes. További információkért lásd a [rendelkezésre állást és a díjszabást](semantic-search-overview.md#availability-and-pricing).
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre szemantikai rangsorolást használó keresési kéréseket, és hogyan hozhat létre szemantikai feliratokat és válaszokat.
+
+A szemantikai lekérdezések általában olyan keresési indexeken működnek, amelyek nagy mennyiségű szöveges tartalomból, például PDF-fájlokból vagy nagyméretű szöveggel ellátott dokumentumokból állnak.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,7 +40,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre szemantikai rangsorolást ha
 
 ## <a name="whats-a-semantic-query"></a>Mi az a szemantikai lekérdezés?
 
-Cognitive Search a lekérdezés egy paraméteres kérelem, amely meghatározza a lekérdezések feldolgozását és a válasz alakját. A *szemantikai lekérdezés* olyan paramétereket hoz létre, amelyek felhívhatják a szemantikai átrendezési algoritmust, amely képes felmérni a megfelelő eredmények környezetét és jelentését, valamint a fent látható további releváns találatok előléptetését.
+Cognitive Search a lekérdezés egy paraméteres kérelem, amely meghatározza a lekérdezések feldolgozását és a válasz alakját. A *szemantikai lekérdezés* olyan paramétereket ad hozzá, amelyek felhívhatják a szemantikai visszahelyezési modellt, amely képes felmérni a megfelelő eredmények kontextusát és jelentését, a legfontosabb egyezéseket és a szemantikai válaszokat és feliratokat adja vissza.
 
 A következő kérelem egy alapszintű szemantikai lekérdezésre (válasz nélkül) jellemző.
 
@@ -48,7 +50,7 @@ POST https://[service name].search.windows.net/indexes/[index name]/docs/search?
     "search": " Where was Alan Turing born?",    
     "queryType": "semantic",  
     "searchFields": "title,url,body",  
-    "queryLanguage": "en-us",  
+    "queryLanguage": "en-us"  
 }
 ```
 
@@ -60,7 +62,7 @@ A kezdeti eredmények közül csak a legfontosabb 50-as egyezés lehet szemantik
 
 A REST API teljes leírása megtalálható a következő helyen: [Search Documents (REST Preview)](/rest/api/searchservice/preview-api/search-documents).
 
-A szemantikai lekérdezések olyan nyílt végű kérdésekre készültek, mint a "mi a legjobb növény a beporzók számára" vagy "a tojás megsütjük". Ha azt szeretné, hogy a válasz tartalmazzon választ, hozzáadhat egy opcionális **`answer`** paramétert is a kérelemhez.
+A szemantikai lekérdezések lehetővé teszik a feliratok és a kiemelés automatikus kiemelését. Ha azt szeretné, hogy a válasz tartalmazzon választ, hozzáadhat egy opcionális **`answer`** paramétert is a kérelemhez. Ez a paraméter, valamint maga a lekérdezési karakterlánc felépítése is választ ad a válaszban.
 
 Az alábbi példa a Hotels-Sample-index használatával hoz létre szemantikai lekérdezési kérést szemantikai válaszokkal és feliratokkal:
 
@@ -82,37 +84,66 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 ### <a name="formulate-the-request"></a>A kérelem összeállítása
 
-1. Állítsa **`"queryType"`** a "szemantika" és **`"queryLanguage"`** az "en-us" értékre. Mindkét paraméter megadása kötelező.
+Ez a szakasz a szemantikai kereséshez szükséges lekérdezési paramétereket ismerteti.
 
-   A queryLanguage konzisztensnek kell lennie az index séma mezőihez rendelt [nyelvi elemzők](index-add-language-analyzers.md) esetében. Ha a queryLanguage "en-us", akkor minden nyelvi elemzőnek angol változatnak ("en. Microsoft" vagy "en. Lucene") is szerepelnie kell. A nyelvtől független elemzők, például a kulcsszavak vagy az egyszerűek nem ütköznek a queryLanguage értékekkel.
+#### <a name="step-1-set-querytype-and-querylanguage"></a>1. lépés: a queryType és a queryLanguage beállítása
 
-   Lekérdezési kérelem esetén, ha a [helyesírás-javítást](speller-how-to-add.md)is használja, a beállított queryLanguage a helyesírást, a válaszokat és a feliratokat egyaránt alkalmazza. Az egyes részek esetében nincs felülbírálás. 
+Adja hozzá a következő paramétereket a REST-hez. Mindkét paraméter megadása kötelező.
 
-   Míg a keresési index tartalma több nyelvből is állhat, a lekérdezés bemenete valószínűleg egy. A keresőmotor nem ellenőrzi a queryLanguage, a Language Analyzer és a tartalom összetételének nyelvét, ezért ügyeljen arra, hogy a helytelen eredmények kiépítésének elkerülése érdekében a hatókör-lekérdezések megfelelően legyenek kitéve.
+```json
+"queryType": "semantic",
+"queryLanguage": "en-us",
+```
+
+A queryLanguage konzisztensnek kell lennie az index séma mezőihez rendelt [nyelvi elemzők](index-add-language-analyzers.md) esetében. Ha a queryLanguage "en-us", akkor minden nyelvi elemzőnek angol változatnak ("en. Microsoft" vagy "en. Lucene") is szerepelnie kell. A nyelvtől független elemzők, például a kulcsszavak vagy az egyszerűek nem ütköznek a queryLanguage értékekkel.
+
+Lekérdezési kérelem esetén, ha a [helyesírás-javítást](speller-how-to-add.md)is használja, a beállított queryLanguage a helyesírást, a válaszokat és a feliratokat egyaránt alkalmazza. Az egyes részek esetében nincs felülbírálás. 
+
+Míg a keresési index tartalma több nyelvből is állhat, a lekérdezés bemenete valószínűleg egy. A keresőmotor nem ellenőrzi a queryLanguage, a Language Analyzer és a tartalom összetételének nyelvét, ezért ügyeljen arra, hogy a helytelen eredmények kiépítésének elkerülése érdekében a hatókör-lekérdezések megfelelően legyenek kitéve.
 
 <a name="searchfields"></a>
 
-1. Set **`"searchFields"`** (nem kötelező, de ajánlott).
+#### <a name="step-2-set-searchfields"></a>2. lépés: a searchFields beállítása
 
-   Szemantikai lekérdezésekben a "searchFields" mezők sorrendje a mező prioritását vagy relatív fontosságát tükrözi a szemantikai rangsorban. Csak a legfelső szintű karakterlánc-mezők (önálló vagy gyűjtemény) lesznek használatban. Mivel a searchFields más viselkedésekkel rendelkezik az egyszerű és a teljes Lucene-lekérdezésekben (ha nincs implicit prioritási sorrend), a nem sztring mezők és almezők nem eredményeznek hibát, de a szemantikai rangsorolásban nem lesznek használva.
+Ez a paraméter nem kötelező abban az esetben, ha nincs hiba, ha elhagyja, de a mezők rendezett listájának megadása kifejezetten ajánlott mindkét felirathoz és válaszhoz.
 
-   A searchFields megadásakor kövesse az alábbi irányelveket:
+A searchFields paraméterrel azonosíthatók azok a részek, amelyeket a rendszer "szemantikai hasonlóság" esetén kiértékel a lekérdezéshez. Az előzetes verzió esetében nem javasoljuk, hogy a searchFields üresen hagyja, mivel a modellhez olyan célzásra van szükség, amely a legfontosabb, hogy milyen mezőket kell feldolgoznia.
 
-   + A tömör mezők, például a pezsgő vagy a cím, megelőzheti a részletes mezőket, például a leírást.
+A searchFields sorrendje kritikus. Ha már meglévő egyszerű vagy teljes Lucene-lekérdezésekben használja a searchFields-t, akkor a szemantikai lekérdezés típusára váltáskor mindenképpen újra meg kell keresnie ezt a paramétert.
 
-   + Ha az indexnek van olyan URL-mezője, amely szöveges (emberi olvasásra alkalmas, például `www.domain.com/name-of-the-document-and-other-details` nem gépi `www.domain.com/?id=23463&param=eis` ), akkor azt a listában helyezheti el (ha nincs tömör Cím mező).
+Kövesse az alábbi irányelveket az optimális eredmények biztosításához, ha két vagy több searchFields van megadva:
 
-   + Ha csak egy mező van megadva, akkor a dokumentumok szemantikai rangsorolását leíró mezőnek tekinti a rendszer.  
++ Csak karakterlánc típusú mezőket és legfelső szintű karakterlánc mezőket tartalmazzon a gyűjteményekben. Ha nem karakterlánc típusú mezőket vagy alacsonyabb szintű mezőket tartalmaz egy gyűjteményben, nincs hiba, de ezek a mezők nem lesznek felhasználva szemantikai rangsorban.
 
-   + Ha nincsenek megadva mezők, akkor az összes kereshető mező a dokumentumok szemantikai rangsorolását veszi figyelembe. Ez azonban nem ajánlott, mivel előfordulhat, hogy a keresési indexből nem lehet a legoptimálisabb eredményeket kiszolgálni.
++ Az első mezőnek mindig tömörnek kell lennie (például cím vagy név), ideális esetben 25 szó alatt.
 
-1. Távolítsa el **`"orderBy"`** a záradékokat, ha meglévő kérelemben vannak. A szemantikai pontszám az eredmények rendezésére szolgál, és ha explicit rendezési logikát tartalmaz, a rendszer HTTP 400-hibát ad vissza.
++ Ha az indexnek van olyan URL-mezője, amely szöveges (emberi olvasásra alkalmas, például `www.domain.com/name-of-the-document-and-other-details` nem gépi `www.domain.com/?id=23463&param=eis` ), akkor helyezze a másodikat a listára (vagy először, ha nincs tömör Cím mező).
 
-1. Opcionálisan adja hozzá a **`"answers"`** "kinyerés" értéket, és adja meg a válaszok számát, ha egynél többre van szüksége.
++ Ezeket a mezőket olyan leíró mezők követik, amelyekben a szemantikai lekérdezésekre adott válasz, például a dokumentum fő tartalma található.
 
-1. Igény szerint testre szabhatja a feliratokra alkalmazott kiemelés stílusát. A feliratok a válasz összegzése a dokumentumban lévő legfontosabb részeknél. A mező alapértelmezett értéke: `<em>`. Ha meg szeretné adni a formázás típusát (például sárga háttér), megadhatja a highlightPreTag és a highlightPostTag.
+Ha csak egy mező van megadva, használjon olyan leíró mezőket, ahol a szemantikai lekérdezésekre adott válasz található, például a dokumentum fő tartalma. Olyan mezőt válasszon, amely elegendő tartalmat biztosít.
 
-1. A kérelemben használni kívánt egyéb paramétereket is megadhat. Az olyan paraméterek, mint a [speller](speller-how-to-add.md), a [Select](search-query-odata-select.md)és a Count, javítják a kérés minőségét és a válasz olvashatóságát.
+#### <a name="step-3-remove-orderby-clauses"></a>3. lépés: az orderBy záradékok eltávolítása
+
+Távolítson el minden orderBy záradékot, ha már létezik egy meglévő kérelemben. A szemantikai pontszám az eredmények rendezésére szolgál, és ha explicit rendezési logikát tartalmaz, a rendszer HTTP 400-hibát ad vissza.
+
+#### <a name="step-4-add-answers"></a>4. lépés: válaszok hozzáadása
+
+Ha további feldolgozást szeretne felvenni a válaszra, adja hozzá a "válaszok" lehetőséget. A válaszokat (és a feliratokat) a searchFields-ben felsorolt mezőkben található szakaszokból alakítottuk ki. Ügyeljen arra, hogy a searchFields a tartalomban gazdag mezőket tartalmazza, hogy a válaszban a legjobb válaszokat és feliratokat kapja meg.
+
+Vannak explicit és implicit feltételek, amelyek válaszokat hoznak létre. 
+
++ A explicit feltételek közé tartozik a "Answers = Extracting" hozzáadása. Emellett a teljes válaszban visszaadott válaszok számának megadásához adja hozzá a "Count" értéket, amelyet a következő szám követ: `"answers=extractive|count=3"` .  Az alapértelmezett érték egy. Legfeljebb öt.
+
++ Az implicit feltételek közé tartozik egy lekérdezési karakterlánc-konstrukció, amely választ ad magának. A "What Hotel 's The Green Room" kifejezésből álló lekérdezés nagyobb valószínűséggel "válaszol", mint egy "Hotel with Fancy Interior" utasításból álló lekérdezés. Ahogy várható, a lekérdezés nem lehet meghatározatlan vagy NULL értékű.
+
+A fontos szempont, hogy ha a lekérdezés nem egy kérdéshez hasonlít, a rendszer kihagyja a válasz feldolgozását, még akkor is, ha a "válaszok" paraméter be van állítva.
+
+#### <a name="step-5-add-other-parameters"></a>5. lépés: egyéb paraméterek hozzáadása
+
+Adja meg a kérésben használni kívánt egyéb paramétereket. Az olyan paraméterek, mint a [speller](speller-how-to-add.md), a [Select](search-query-odata-select.md)és a Count, javítják a kérés minőségét és a válasz olvashatóságát.
+
+Igény szerint testre szabhatja a feliratokra alkalmazott kiemelés stílusát. A feliratok a válasz összegzése a dokumentumban lévő legfontosabb részeknél. A mező alapértelmezett értéke: `<em>`. Ha meg szeretné adni a formázás típusát (például sárga háttér), megadhatja a highlightPreTag és a highlightPostTag.
 
 ### <a name="review-the-response"></a>A válasz áttekintése
 
@@ -141,7 +172,7 @@ A fenti lekérdezésre adott válasz a következő egyezést adja vissza, mint a
 
 A következő táblázat összefoglalja a szemantikai lekérdezésekben használt lekérdezési paramétereket, hogy azok holisztikusan lássák őket. Az összes paraméter listáját itt tekintheti meg: [dokumentumok keresése (REST előzetes verzió)](/rest/api/searchservice/preview-api/search-documents)
 
-| Paraméter | Típus | Leírás |
+| Paraméter | Típus | Description |
 |-----------|-------|-------------|
 | queryType | Sztring | Az érvényes értékek közé tartozik az egyszerű, a teljes és a szemantikai érték. Szemantikai lekérdezésekhez a "szemantika" érték szükséges. |
 | queryLanguage | Sztring | Szemantikai lekérdezésekhez szükséges. Jelenleg csak az "en-us" van implementálva. |

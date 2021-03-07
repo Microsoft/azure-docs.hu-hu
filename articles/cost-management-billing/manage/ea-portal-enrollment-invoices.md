@@ -3,18 +3,18 @@ title: Azure nagyvállalati regisztrációs számlák
 description: Ez a cikk az Azure Nagyvállalati számlák kezelését ismerteti.
 author: bandersmsft
 ms.author: banders
-ms.date: 01/19/2021
+ms.date: 03/05/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
-ms.reviewer: boalcsva
+ms.reviewer: ruturajd
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 90ae9bdcee5f5f4c4281f2c3f931389b2ebf9486
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: HT
+ms.openlocfilehash: 71ba1d6e1e45c5c2e72e2be620158b1aa4b71582
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598066"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430809"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure nagyvállalati regisztrációs számlák
 
@@ -98,29 +98,41 @@ Az Azure Enterprise portál kiszűri az inaktív regisztrációkat. Az inaktív 
 
 ## <a name="change-a-po-number-for-an-upcoming-overage-invoice"></a>Jövőbeli túlhasználati számla rendelésszámának módosítása
 
-Az Azure Enterprise Portal automatikusan létrehoz egy alapértelmezett rendelési (PO-) számot, ha a vállalati rendszergazda nem állít be egyet a számlázási dátum előtt. A vállalati rendszergazda az automatikus számlaértesítő e-mail beérkezése utáni hét napban frissítheti a rendelési számot.
+Az Azure Enterprise Portal automatikusan létrehoz egy alapértelmezett rendelési (PO-) számot, ha a vállalati rendszergazda nem állít be egyet a számlázási dátum előtt. A vállalati rendszergazda az automatikus számlaértesítő e-mail beérkezése utáni hét napban frissítheti a rendelési számot. 
 
-### <a name="to-update-the-azure-services-purchase-order-number"></a>Az Azure-szolgáltatások rendelési számának frissítése:
+Ha meg szeretné akadályozni, hogy minden hónapban automatikusan generálja a PO-számokat, zárolhatja a PO-számot. Lásd: [postafiók zárolásának száma](#lock-po-number-to-prevent-automatic-update-in-upcoming-billing-cycles).
+
+### <a name="update-the-azure-services-purchase-order-number"></a>Az Azure Services beszerzési rendelési számának frissítése
 
 1. Az Azure Enterprise Portalon válassza a **Jelentés** > **Használati adatok összegzése** lapot.
 1. Válassza a jobb felső sarokban található, **rendelési számok szerkesztésére** szolgáló lehetőséget.
 1. Jelölje be az **Azure-szolgáltatások** választógombot.
 1. Válasszon ki egy **számlázási időszakot** a dátumtartományok legördülő menüjéből.
-
    A rendelésszámot hét napig szerkesztheti a számláról szóló értesítést követően, addig, amíg nem egyenlíti ki a számlát.
 1. Adja meg az új rendelési számot a **Rendelésszám** mezőben.
 1. Válassza a **Mentés** parancsot a módosítások küldéséhez.
 
-### <a name="to-update-the-azure-marketplace-purchase-order-number"></a>Az Azure Marketplace rendelési számának frissítése:
+### <a name="update-the-azure-marketplace-purchase-order-number"></a>Az Azure Marketplace-beli beszerzési rendelés számának frissítése
 
 1. Az Azure Enterprise Portalon válassza a **Jelentés** > **Használati adatok összegzése** lapot.
 1. Válassza a jobb felső sarokban található, **rendelési számok szerkesztésére** szolgáló lehetőséget.
 1. Jelölje be a **Marketplace** választógombot.
-1. Válasszon ki egy **számlázási időszakot** a dátumtartományok legördülő menüjéből.
-
-   A rendelésszámot hét napig szerkesztheti a számláról szóló értesítést követően, addig, amíg nem egyenlíti ki a számlát.
+1. Válasszon ki egy **számlázási időszakot** a dátumtartományok legördülő menüjéből.  
+    A rendelésszámot hét napig szerkesztheti a számláról szóló értesítést követően, addig, amíg nem egyenlíti ki a számlát.
 1. Adja meg az új rendelési számot a **Rendelésszám** mezőben.
 1. Válassza a **Mentés** parancsot a módosítások küldéséhez.
+
+### <a name="lock-po-number-to-prevent-automatic-update-in-upcoming-billing-cycles"></a>A következő számlázási ciklusok automatikus frissítésének megakadályozása a PO-szám zárolásával
+
+A postafiók számának zárolása után az összes új számla zárolva marad, és nem kell frissítenie a PO-számot.
+
+1.  Az Azure Enterprise Portalon válassza a **jelentés**  >  **használat összegzése** elemet.
+2.  Válassza a jobb felső sarokban található, **rendelési számok szerkesztésére** szolgáló lehetőséget.
+3.  Írjon be egy új PO-számot a **Po number (postafiók száma** ) mezőbe.
+4.  Válassza a **zárolási postafiók száma** mezőt.
+5.  Válassza a **Mentés** parancsot a módosítások küldéséhez.  
+    :::image type="content" source="./media/ea-portal-enrollment-invoices/lock-po.png" alt-text="A PO-számok megtekintése/szerkesztése panelt ábrázoló képernyőfelvétel" lightbox="./media/ea-portal-enrollment-invoices/lock-po.png" :::
+
 
 ## <a name="azure-enterprise-billing-frequency"></a>Az Azure Enterprise számlázási gyakorisága
 

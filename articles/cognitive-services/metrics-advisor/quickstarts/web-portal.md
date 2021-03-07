@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: quickstart
 ms.date: 09/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: 5dbf98d363429e6d22a0b7719cdc669deebd21a0
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: f853dca12b6a5855dc0603259ab534fa9933cd5b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348636"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102432298"
 ---
 # <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>Rövid útmutató: az első metrika monitorozása a webes portál használatával
 
@@ -30,7 +30,7 @@ Metrikai Advisor-példány kiépítésekor az API-k és a webalapú munkaterüle
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://go.microsoft.com/fwlink/?linkid=2142156"  title=" hozzon létre egy mérőszámok Advisor "  target="_blank"> -erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a metrikai tanácsadó példány üzembe helyezéséhez.  
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://go.microsoft.com/fwlink/?linkid=2142156"  title=" hozzon létre egy mérőszámok Advisor "  target="_blank"> -erőforrást </a> a Azure Portal a metrikai tanácsadó példány üzembe helyezéséhez.  
 
     
 > [!TIP]
@@ -91,8 +91,8 @@ Ha az Adatséma betöltődik, és az alábbi módon jelenik meg, válassza ki a 
 
 |Kiválasztás  |Leírás  |Jegyzetek  |
 |---------|---------|---------|
-|**Timestamp**     | Egy adatpont időbélyege Ha nincs megadva, a metrikák tanácsadója az adatpont betöltésének időbélyegét fogja használni. Minden adatcsatorna esetében legfeljebb egy oszlopot adhat meg timestamp típusúként.        | Választható. Legfeljebb egy oszlopnak kell megadnia.       |
-|**mérték**     |  Az adatcsatorna numerikus értékei. Minden adatcsatorna esetében több mértéket is megadhat, de legalább egy oszlopot ki kell jelölni mértékként.        | Legalább egy oszloppal kell megadni.        |
+|**Időbélyeg**     | Egy adatpont időbélyege Ha nincs megadva, a metrikák tanácsadója az adatpont betöltésének időbélyegét fogja használni. Minden adatcsatorna esetében legfeljebb egy oszlopot adhat meg timestamp típusúként.        | Választható. Legfeljebb egy oszlopnak kell megadnia.       |
+|**Measure**     |  Az adatcsatorna numerikus értékei. Minden adatcsatorna esetében több mértéket is megadhat, de legalább egy oszlopot ki kell jelölni mértékként.        | Legalább egy oszloppal kell megadni.        |
 |**dimenzió**     | Kategorikus értékek. A különböző értékek kombinációja egy adott egydimenziós idősorozatot azonosít, például: ország, nyelv, bérlő. A none vagy tetszőleges számú oszlopot kiválaszthatja dimenzióként. Megjegyzés: Ha nem karakterlánc típusú oszlopot választ dimenzióként, a dimenzió alábontása legyen óvatos. | Választható.        |
 |**Figyelmen kívül**     | A kijelölt oszlop figyelmen kívül hagyása.        |         |
 
@@ -150,7 +150,7 @@ A web Hook az a belépési pont, amellyel a rendszer a metrikai tanácsadó szol
 A Hook létrehozása után a riasztási beállítások határozzák meg, hogy a rendszer milyen riasztási értesítéseket küldjön. Az egyes mérőszámokhoz több riasztási beállítást is beállíthat. két fontos beállítás a **riasztás** , amely meghatározza a befoglalni kívánt rendellenességeket, és **szűri az anomáliák beállításait** , amelyek meghatározzák, hogy mely rendellenességek szerepeljenek a riasztásban. További részletekért tekintse meg a **riasztási beállítások hozzáadása vagy szerkesztése** című szakaszt a következő témakörben [: útmutató: riasztások konfigurálása és értesítések beszerzése Hook használatával](../how-tos/alerts.md#add-or-edit-alert-settings) .
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Adatcsatornák előkészítése](../how-tos/onboard-your-data.md)
     - [Adatcsatornák kezelése](../how-tos/manage-data-feeds.md)

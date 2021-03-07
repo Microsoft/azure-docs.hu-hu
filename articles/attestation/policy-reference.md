@@ -1,18 +1,18 @@
 ---
 title: Beépített szabályzat-definíciók az Azure-igazoláshoz
 description: Felsorolja Azure Policy beépített szabályzat-definíciókat az Azure-igazoláshoz. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 02/11/2021
+ms.date: 03/05/2021
 ms.topic: reference
 ms.service: attestation
 author: msmbaldwin
 ms.author: mbaldwin
 ms.custom: subject-policy-reference
-ms.openlocfilehash: df03b953ba143d827159d8868150131071e2ce56
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 2741ee837bdb030bb0dd7120257befa3715f86f1
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100642391"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102435315"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-attestation"></a>Az Azure-igazolás beépített definíciói Azure Policy
 

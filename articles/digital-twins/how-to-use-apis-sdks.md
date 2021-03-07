@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3724586ae9773e135905cddd2a9a33a3a6803ce5
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: d2d3d04bdb8066db263c608bb1d42acca303a656
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102211783"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433828"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Az Azure Digital Twins API-k és SDK-k használata
 
@@ -31,7 +31,7 @@ A jelenlegi Control Plant API-verzió a _**2020-12-01**_.
 A vezérlő sík API-k használata:
 * Az API-kat közvetlenül hívhatja a [vezérlési sík hencegő](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/stable)tárházának legújabb hencegő mappájára hivatkozva. Ez a mappa a használatot bemutató példákat tartalmazó mappát is tartalmaz.
 * Jelenleg a vezérlési API-k számára érhető el az SDK-ban...
-  - [**.Net (C#)**](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([hivatkozás [automatikusan generált]](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true)) ([forrás](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))
+  - [**.Net (C#)**](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([hivatkozás [automatikusan generált]](/dotnet/api/overview/azure/digitaltwins/management)) ([forrás](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))
   - [**Java**](https://search.maven.org/search?q=a:azure-mgmt-digitaltwins) ([hivatkozás [automatikusan generált]](/java/api/overview/azure/digitaltwins)) ([forrás](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins))
   - [**JavaScript**](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([forrás](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins))
   - [**Python**](https://pypi.org/project/azure-mgmt-digitaltwins/) ([forrás](https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins))
@@ -55,7 +55,7 @@ Az adatsík API-k használata:
    - az [API-referenciák dokumentációjának](/rest/api/azure-digitaltwins/)megtekintése.
 * Használhatja a **.net (C#) SDK-** t. A .NET SDK használata...
    - a csomagot a NuGet: [Azure. DigitalTwins. Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core)fájlból tekintheti meg és adhatja hozzá. 
-   - megtekintheti az [SDK-referenciák dokumentációját](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true).
+   - megtekintheti az [SDK-referenciák dokumentációját](/dotnet/api/overview/azure/digitaltwins/client).
    - megtalálhatja az SDK-forrást, beleértve a példákat tartalmazó mappát is a GitHubban: az [Azure IoT Digital Twins ügyféloldali kódtára a .net-hez](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
    - a részletes információkat és használati példákat a jelen cikk [*.net (C#) SDK (adatsíkja)*](#net-c-sdk-data-plane) című szakaszában tekintheti meg.
 * Használhatja a **Java SDK**-t. A Java SDK használata...
@@ -82,7 +82,7 @@ Az Azure Digital Twins .NET (C#) SDK része a .NET-hez készült Azure SDK-nak. 
 > Az SDK kialakításával kapcsolatos további információkért tekintse meg az Azure SDK-k általános [tervezési alapelveit](https://azure.github.io/azure-sdk/general_introduction.html) és az adott [.net tervezési irányelveket](https://azure.github.io/azure-sdk/dotnet_introduction.html).
 
 Az SDK használatához foglalja bele az **Azure. DigitalTwins. Core** NuGet-csomagot a projektbe. Az **Azure. Identity** csomag legújabb verziójára is szüksége lesz. A Visual Studióban ezeket a csomagokat a NuGet Package Managerrel veheti fel (az eszközökön keresztül érhető el *> NuGet csomagkezelő > NuGet-csomagok kezelése a megoldáshoz*). Azt is megteheti, hogy a .NET parancssori eszközt használja az alábbi NuGet-csomag hivatkozásaiban található parancsokkal a projekthez való hozzáadáshoz:
-* [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Ez a csomag a .NET-hez készült [Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)-hoz. 
+* [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Ez a csomag a .NET-hez készült [Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client)-hoz. 
 * [**Azure. Identity**](https://www.nuget.org/packages/Azure.Identity). Ez a kódtár eszközöket biztosít az Azure-beli hitelesítéshez.
 
 Az API-k gyakorlatban való használatának részletes ismertetését az [*oktatóanyag: az ügyfélalkalmazás kódolása*](tutorial-code.md)című témakörben tekintheti meg. 
@@ -175,15 +175,15 @@ Az ikrek és a kapcsolatok frissítési hívásainak használata [JSON-javítás
 Az alábbi lista további részleteket és általános irányelveket tartalmaz az API-k és SDK-k használatához.
 
 * Használhat olyan HTTP REST-tesztelési eszközt, mint a Poster, amely közvetlen hívásokat hajt végre az Azure digitális Twins API-kon. További információ erről a folyamatról [*: útmutató: kérelmek küldése a Poster használatával*](how-to-use-postman.md).
-* Az SDK használatához hozza létre az `DigitalTwinsClient` osztályt. A konstruktorhoz olyan hitelesítő adatok szükségesek, amelyek különböző hitelesítési módszerekkel szerezhetők be a `Azure.Identity` csomagban. További `Azure.Identity` információ: a [névtér dokumentációja](/dotnet/api/azure.identity?preserve-view=true&view=azure-dotnet). 
-* Hasznos lehet az `InteractiveBrowserCredential` első lépések során, de több más lehetőség is van, beleértve a [felügyelt identitáshoz](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet)tartozó hitelesítő adatokat is, amelyeket valószínűleg az MSI-vel az Azure Digital Twins szolgáltatásban [beállított Azure-függvények](../app-service/overview-managed-identity.md?tabs=dotnet) hitelesítésére fog használni. További információ `InteractiveBrowserCredential` : az [osztály dokumentációja](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet).
+* Az SDK használatához hozza létre az `DigitalTwinsClient` osztályt. A konstruktorhoz olyan hitelesítő adatok szükségesek, amelyek különböző hitelesítési módszerekkel szerezhetők be a `Azure.Identity` csomagban. További `Azure.Identity` információ: a [névtér dokumentációja](/dotnet/api/azure.identity). 
+* Hasznos lehet az `InteractiveBrowserCredential` első lépések során, de több más lehetőség is van, beleértve a [felügyelt identitáshoz](/dotnet/api/azure.identity.interactivebrowsercredential)tartozó hitelesítő adatokat is, amelyeket valószínűleg az MSI-vel az Azure Digital Twins szolgáltatásban [beállított Azure-függvények](../app-service/overview-managed-identity.md?tabs=dotnet) hitelesítésére fog használni. További információ `InteractiveBrowserCredential` : az [osztály dokumentációja](/dotnet/api/azure.identity.interactivebrowsercredential).
 * Az összes szolgáltatás API-hívása tag-függvényként van kitéve az `DigitalTwinsClient` osztályban.
 * Az összes szolgáltatási funkció szinkron és aszinkron verziókban található.
-* Az összes szolgáltatási funkció kivételt jelez a 400-es vagy újabb visszaküldési állapot esetén. Ügyeljen arra, hogy a hívásokat egy `try` szakaszba csomagolja, és legalább a fogást `RequestFailedExceptions` . Az ilyen típusú kivételekről [itt](/dotnet/api/azure.requestfailedexception?preserve-view=true&view=azure-dotnet)talál további információt.
-* A legtöbb szolgáltatási módszer visszaadja `Response<T>` vagy (az `Task<Response<T>>` aszinkron hívások esetében), ahol a a `T` szolgáltatás hívásához tartozó visszatérési objektum osztálya. A [`Response`](/dotnet/api/azure.response-1?preserve-view=true&view=azure-dotnet) osztály beágyazza a szolgáltatás visszaadását, és megadja a visszatérési értékeket a `Value` mezőben.  
-* A lapozható eredményekkel `Pageable<T>` vagy eredményekkel rendelkező szolgáltatási metódusok `AsyncPageable<T>` . További információ az `Pageable<T>` osztályról: itt [](/dotnet/api/azure.pageable-1?preserve-view=true&view=azure-dotnet)talál további információt `AsyncPageable<T>` . [](/dotnet/api/azure.asyncpageable-1?preserve-view=true&view=azure-dotnet)
+* Az összes szolgáltatási funkció kivételt jelez a 400-es vagy újabb visszaküldési állapot esetén. Ügyeljen arra, hogy a hívásokat egy `try` szakaszba csomagolja, és legalább a fogást `RequestFailedExceptions` . Az ilyen típusú kivételekről [itt](/dotnet/api/azure.requestfailedexception)talál további információt.
+* A legtöbb szolgáltatási módszer visszaadja `Response<T>` vagy (az `Task<Response<T>>` aszinkron hívások esetében), ahol a a `T` szolgáltatás hívásához tartozó visszatérési objektum osztálya. A [`Response`](/dotnet/api/azure.response-1) osztály beágyazza a szolgáltatás visszaadását, és megadja a visszatérési értékeket a `Value` mezőben.  
+* A lapozható eredményekkel `Pageable<T>` vagy eredményekkel rendelkező szolgáltatási metódusok `AsyncPageable<T>` . További információ az `Pageable<T>` osztályról: itt [](/dotnet/api/azure.pageable-1)talál további információt `AsyncPageable<T>` . [](/dotnet/api/azure.asyncpageable-1)
 * A lapozható eredmények egy hurok használatával is megadhatók `await foreach` . További információ erről a folyamatról: [.](/archive/msdn-magazine/2019/november/csharp-iterating-with-async-enumerables-in-csharp-8)
-* A mögöttes SDK a `Azure.Core` . Az SDK-infrastruktúrával és-típusokkal kapcsolatos tudnivalókat az [Azure névtér dokumentációjában](/dotnet/api/azure?preserve-view=true&view=azure-dotnet) találja.
+* A mögöttes SDK a `Azure.Core` . Az SDK-infrastruktúrával és-típusokkal kapcsolatos tudnivalókat az [Azure névtér dokumentációjában](/dotnet/api/azure) találja.
 
 A szolgáltatási metódusok nagy mértékben gépelt objektumokat adnak vissza, ahol lehetséges. Mivel azonban az Azure Digital Twins a felhasználó által a futásidőben konfigurált modelleken alapul (a szolgáltatásba feltöltött DTDL-modelleken keresztül), számos szolgáltatás-API-t fogad el és ad vissza a két, JSON formátumú formában.
 

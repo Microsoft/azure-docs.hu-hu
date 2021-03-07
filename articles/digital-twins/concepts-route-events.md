@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: c51f8c894c9a88b6ae81460623eec616d29b62ff
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: ea412b695c12f3ff7fdfa6250e2a474b618b8032
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050515"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430921"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Események irányítása az Azure digitális Twins-n belül és kívül
 
@@ -73,7 +73,7 @@ A vezérlési síkon elérhető Endpoint API-k a következők:
  
 Esemény-útvonal létrehozásához használhatja az Azure Digital Twins [REST API-kat, a CLI-parancsokat](how-to-manage-routes-apis-cli.md#create-an-event-route)vagy a [Azure Portal](how-to-manage-routes-portal.md#create-an-event-route).
 
-Íme egy példa arra, hogyan hozhat létre egy esemény-útvonalat az ügyfélalkalmazások között a `CreateOrReplaceEventRouteAsync` [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) -hívás használatával: 
+Íme egy példa arra, hogyan hozhat létre egy esemény-útvonalat az ügyfélalkalmazások között a `CreateOrReplaceEventRouteAsync` [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) -hívás használatával: 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/eventRoute_operations.cs" id="CreateEventRoute":::
 

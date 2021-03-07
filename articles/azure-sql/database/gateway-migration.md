@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: eab1ebb3bf66b28bae80fbf16eaf24dbbc63bfb0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 588c6548afb07fb8ee3de5152c240ddd9ea2293b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690532"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430190"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database forgalom áttelepítése újabb átjáróra
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,6 +29,18 @@ A legfrissebb információk a [Azure SQL Database átjáró IP-címei](connectiv
 ## <a name="status-updates"></a>Állapot-frissítések
 
 # <a name="in-progress"></a>[Folyamatban](#tab/in-progress-ip)
+
+## <a name="april-2021"></a>Április 2021
+Az új SQL Gateway-átjárók a következő régiókban lesznek hozzáadva:
+- Kelet-Norvégia: 51.120.96.33
+- Dél-Kelet-Ázsia: 13.67.16.193
+- Dél-Afrika északi régiója: 102.133.152.32
+- Dél-Korea: 52.231.151.96
+- Észak-Közép: USA 52.162.105.9
+- Kelet-Ausztrália, Délkelet-Ausztrália: 13.77.49.32 
+
+Ezek az SQL-átjárók az ügyfelek forgalmának elfogadását az 2021. április 5-én megkezdik.
+
 ## <a name="march-2021"></a>Március 2021
 A következő SQL-átjárók több régióban vannak folyamatban inaktiválva:
 

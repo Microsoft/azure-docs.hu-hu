@@ -4,18 +4,30 @@ description: Ismerje meg, hogyan implementálhat egy állapotfigyelőt a Azure F
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e70c50098ece516312e1e92984185624c276301b
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 8ef32ecfb6f69b71d29578d3b8314f568fd9386a
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028420"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431074"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Figyelő forgatókönyv Durable Functions-Weather Watcher minta
 
 A figyelő minta egy munkafolyamatban egy rugalmas *ismétlődő* folyamatra utal – például az egyes feltételek teljesülése esetén történő lekérdezésre. Ez a cikk a figyelés megvalósítását [Durable functions](durable-functions-overview.md) használó mintát ismerteti.
 
-[!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
+## <a name="prerequisites"></a>Előfeltételek
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+* [A gyors üzembe helyezési cikk befejezése](durable-functions-create-first-csharp.md)
+* [A Samples projekt klónozása vagy letöltése a GitHubról](https://github.com/Azure/azure-functions-durable-extension/tree/main/samples/precompiled)
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+* [A gyors üzembe helyezési cikk befejezése](quickstart-js-vscode.md)
+* [A Samples projekt klónozása vagy letöltése a GitHubról](https://github.com/Azure/azure-functions-durable-extension/tree/main/samples/javascript)
+
+---
 
 ## <a name="scenario-overview"></a>A forgatókönyv áttekintése
 
@@ -72,9 +84,6 @@ Itt látható a függvényt megvalósító kód:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
 
-# <a name="python"></a>[Python](#tab/python)
-A Python figyelési mintájának egy másik oktatóanyaga van, amelyet [itt](durable-functions-monitor-python.md)talál.
-
 ---
 
 Ez a Orchestrator-függvény a következő műveleteket hajtja végre:
@@ -105,9 +114,6 @@ Itt pedig a megvalósítás.
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
 
-# <a name="python"></a>[Python](#tab/python)
-A Python figyelési mintájának egy másik oktatóanyaga van, amelyet [itt](durable-functions-monitor-python.md)talál.
-
 ---
 
 ### <a name="e3_sendgoodweatheralert-activity-function"></a>E3_SendGoodWeatherAlert Activity függvény
@@ -130,9 +136,6 @@ A *function.js* egyszerű:
 Itt látható az SMS-üzenetet küldő kód:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
-
-# <a name="python"></a>[Python](#tab/python)
-A Python figyelési mintájának egy másik oktatóanyaga van, amelyet [itt](durable-functions-monitor-python.md)talál.
 
 ---
 
@@ -183,7 +186,7 @@ Az előkészítés az időtúllépés elérésekor vagy az égbolt észlelésén
 POST https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a példa azt mutatja be, hogyan használható a Durable Functions egy külső forrás állapotának figyelésére [tartós időzítők](durable-functions-timers.md) és feltételes logika használatával. A következő minta bemutatja, hogyan használhatók a külső események és a [tartós időzítők](durable-functions-timers.md) az emberi interakció kezelésére.
 

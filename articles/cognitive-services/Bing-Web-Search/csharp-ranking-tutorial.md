@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 077c715616e377d8b296e53fdd5a861f944ab940
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 907899d8c5be2cbba7ff3eee4a59713718357a5c
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349503"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430088"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>A konzol alkalmazás keresési ügyfelének létrehozása C-ben #
 
@@ -38,7 +38,7 @@ Ez az oktatóanyag a következőket mutatja be:
 Ahhoz, hogy követni tudja az oktatóanyagot, a következőkre lesz szüksége:
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" hozzon létre egy Bing Search erőforrást, "  target="_blank"> és hozzon létre egy Bing Search-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" hozzon létre egy Bing Search erőforrást, "  target="_blank"> és hozzon létre egy Bing Search-erőforrást </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
 * A [Visual Studio ide](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-a-new-console-app-project"></a>Új konzolos alkalmazás projekt létrehozása
@@ -336,6 +336,6 @@ WebPage:
 ...
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [rangsor használatáról az eredmények megjelenítéséhez](rank-results.md).

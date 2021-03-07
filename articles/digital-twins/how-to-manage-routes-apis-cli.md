@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 40cf83b0ca9e4c794979f2b20ddb73360758abc5
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: b0e440f9fe0b7ce1591318362ac0419b9aa01baf
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198540"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433301"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Végpontok és útvonalak kezelése az Azure Digital Twinsban (API-k és parancssori felület)
 
@@ -20,7 +20,7 @@ ms.locfileid: "102198540"
 
 Az Azure Digital Twins-ban átirányíthatja az [eseményekre vonatkozó értesítéseket](how-to-interpret-event-data.md) az alsóbb rétegbeli szolgáltatásokhoz vagy a csatlakoztatott számítási erőforrásokhoz. Ehhez először be kell állítani az eseményeket fogadó **végpontokat**. Ezután létrehozhat olyan  [**esemény-útvonalakat**](concepts-route-events.md) , amelyekkel megadhatja, hogy az Azure Digital Twins mely eseményeit adja meg a végpontok.
 
-Ez a cikk végigvezeti a végpontok és útvonalak létrehozásának folyamatán a [REST API](/rest/api/azure-digitaltwins/)-kkal, a [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)-val és az [Azure digitális Twins parancssori](how-to-use-cli.md)felületével.
+Ez a cikk végigvezeti a végpontok és útvonalak létrehozásának folyamatán a [REST API](/rest/api/azure-digitaltwins/)-kkal, a [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)-val és az [Azure digitális Twins parancssori](how-to-use-cli.md)felületével.
 
 Azt is megteheti, hogy a végpontokat és útvonalakat is felügyeli a [Azure Portal](https://portal.azure.com). A jelen cikk a portált használó verziója esetén olvassa el a következő témakört [*: útmutató: végpontok és útvonalak kezelése (portál)*](how-to-manage-routes-portal.md).
 
@@ -208,7 +208,7 @@ Az esemény-útvonalak az Azure Digital Twins [ **EventRoutes** adatsík API](/r
 
 ### <a name="create-routes-with-the-apis-and-c-sdk"></a>Útvonalak létrehozása az API-kkal és a C# SDK-val
 
-Az események útvonalának definiálásának egyik módja az [adatsík API](how-to-use-apis-sdks.md#overview-data-plane-apis)-k használata. Az ebben a szakaszban szereplő minták a [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)-t használják.
+Az események útvonalának definiálásának egyik módja az [adatsík API](how-to-use-apis-sdks.md#overview-data-plane-apis)-k használata. Az ebben a szakaszban szereplő minták a [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)-t használják.
 
 `CreateOrReplaceEventRouteAsync` egy esemény-útvonal hozzáadására szolgáló SDK-hívás. Íme egy példa a használatra:
 

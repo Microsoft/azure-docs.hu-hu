@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 747ceb0106f437f9e2442c2b8c68c0b73a9107a6
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: 0343402d92498bff56250027086cbf2ceb258f0f
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808255"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102427164"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Az űrlap-felismerő modelljeinek biztonsági mentése és helyreállítása
 
@@ -28,7 +28,7 @@ Ha az alkalmazás vagy az üzlet egy űrlap-felismerő egyéni modelltől függ,
 
 ##  <a name="prerequisites"></a>Előfeltételek
 
-1. Két űrlap-felismerő Azure-erőforrás különböző Azure-régiókban. Ha nem rendelkezik velük, lépjen a Azure Portalra, és <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title=" hozzon létre egy új űrlap-felismerő erőforrást, és " target="_blank"> hozzon létre egy új űrlap-felismerő erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> .
+1. Két űrlap-felismerő Azure-erőforrás különböző Azure-régiókban. Ha nem rendelkezik velük, lépjen a Azure Portalra, és <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title=" hozzon létre egy új űrlap-felismerő erőforrást, és " target="_blank"> hozzon létre egy új űrlap-felismerő erőforrást </a> .
 1. Az előfizetési kulcs, a végpont URL-címe és az űrlap-felismerő erőforrás előfizetés-azonosítója. Ezek az értékek az erőforrás **Áttekintés** lapján találhatók a Azure Portal.
 
 
@@ -162,7 +162,7 @@ curl -i -X POST "https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecogniz
 curl -i GET "https://<SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT>/formrecognizer/v2.0/custom/models/{SOURCE_MODELID}/copyResults/{RESULT_ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az útmutatóban megtanulta, hogyan használhatja a copy API-t az egyéni modellek másodlagos űrlap-felismerő erőforrásra történő biztonsági mentésére. Ezután tekintse meg az API-referenciák dokumentációját, hogy megtudja, mit tehet az űrlap-felismerővel.
 * [REST API dokumentáció](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)

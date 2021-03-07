@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet, contperf-fy21q2
-ms.openlocfilehash: 47e20e89c8eaef59b9acd6cf7e31244afd4bcf60
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 57b3d5853f83fc7ee75538d7966f5e20b1a64cd6
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359047"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428949"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Teljesítménnyel kapcsolatos tippek az Azure Cosmos DB Java SDK v2-höz
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -137,19 +137,19 @@ Az SQL .NET SDK 1.9.0 és újabb verziói támogatják a párhuzamos lekérdezé
 - `MaxDegreeOfParallelism` a párhuzamosan lekérdezhető partíciók maximális számát szabályozza. 
 - `MaxBufferedItemCount` az előre lehívott eredmények számát szabályozza.
 
-**_A párhuzamosság foka_* _
+***A párhuzamossági fok finomhangolása***
 
 A párhuzamos lekérdezés több partíció párhuzamos lekérdezésével működik. Az egyes partíciók adatait azonban a lekérdezésre vonatkozó sorosan kell beolvasni. Az `MaxDegreeOfParallelism` [SDK v2](sql-api-sdk-dotnet.md) és a partíciók számának beállítása a legjobb lehetőség a legtöbb teljesítményű lekérdezés megvalósítására, ha az összes többi rendszerfeltétel változatlan marad. Ha nem ismeri a partíciók számát, megadhatja a párhuzamosság mértékét magas számra. A rendszer kijelöli a minimális (partíciók számát, a felhasználó által megadott bemenetet) a párhuzamosság foka alapján.
 
 A párhuzamos lekérdezések a legnagyobb haszonnal járnak, ha az adatforgalom egyenletesen oszlik el az összes partíció között a lekérdezés tekintetében. Ha a particionált gyűjtemény particionálva van, és a lekérdezés által visszaadott összes adat egy része néhány partícióra koncentrál (az egyik partíció a legrosszabb ESET), akkor ezek a partíciók a lekérdezés teljesítményét szűk keresztmetszetbe helyezik.
 
-_*_MaxBufferedItemCount finomhangolása_*_
+***MaxBufferedItemCount finomhangolása***
     
 A párhuzamos lekérdezés úgy lett kialakítva, hogy előzetesen beolvassa az eredményeket, miközben az ügyfél az aktuális eredményt dolgozza fel. Ez az előzetes lehívás a lekérdezés teljes késésének javítására nyújt segítséget. A `MaxBufferedItemCount` paraméter korlátozza az előre lehívott eredmények számát. Állítsa be a `MaxBufferedItemCount` visszaadott eredmények várt számát (vagy egy magasabb számot), hogy a lekérdezés a lehető legtöbbet fogadja az előzetes lekéréstől.
 
 Az előzetes lekérés ugyanúgy működik, függetlenül a párhuzamosság mértékétől, és egyetlen puffer van az összes partícióból származó adatokhoz.  
 
-_ *A leállítási megvalósítása RetryAfter időközönként**
+**Leállítási megvalósítása RetryAfter időközönként**
 
 A teljesítmény tesztelése során növelje a terhelést, amíg a rendszer kis mennyiségű kérést nem szabályoz. Ha a kérelmek szabályozása megtörténik, az ügyfélalkalmazás a kiszolgáló által megadott újrapróbálkozási időközre vonatkozó biztonsági mentést hajt végre a szabályozásban. A leállítási tiszteletben tartásával biztosíthatja, hogy az újrapróbálkozások között minimálisan mennyi időt kell várnia. 
 
@@ -180,7 +180,7 @@ Ha csökkenteni szeretné az összes vonatkozó eredmény beolvasásához szüks
 > [!NOTE] 
 > A `maxItemCount` tulajdonságot nem szabad csak a tördeléshez használni. Fő felhasználási célja a lekérdezések teljesítményének javítása azáltal, hogy csökkenti az egyetlen oldalon visszaadott elemek maximális számát.  
 
-Az oldalméret az elérhető Azure Cosmos DB SDK-k használatával is beállítható. A [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet&preserve-view=true) tulajdonsága `FeedOptions` lehetővé teszi, hogy beállítsa a számbavételi műveletben visszaadott elemek maximális számát. Ha a `maxItemCount` értéke-1, az SDK automatikusan megkeresi az optimális értéket a dokumentum méretétől függően. Például:
+Az oldalméret az elérhető Azure Cosmos DB SDK-k használatával is beállítható. A [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount) tulajdonsága `FeedOptions` lehetővé teszi, hogy beállítsa a számbavételi műveletben visszaadott elemek maximális számát. Ha a `maxItemCount` értéke-1, az SDK automatikusan megkeresi az optimális értéket a dokumentum méretétől függően. Például:
     
 ```csharp
 IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
@@ -215,7 +215,7 @@ Azure Cosmos DB az adatbázis-műveletek gazdag készletét kínálja. Ezek a m�
 
 Az átviteli sebesség az egyes tárolók számára beállított [kérelmek egységeinek](request-units.md) száma alapján lett kiépítve. A kérelem egységének felhasználását a rendszer másodpercenkénti arányban értékeli. Azok az alkalmazások, amelyek túllépik a tárolók kiépített kérelmi egységének sebességét, csak a tároló számára kiépített szint alá csökkennek. Ha az alkalmazás magasabb adatátviteli kapacitást igényel, akkor a további kérelmek kiszámításával növelheti a teljesítményt.
 
-A lekérdezés bonyolultsága befolyásolja, hogy a rendszer hány kérési egységet használ a műveletekhez. A predikátumok száma, a predikátumok természete, a UDF száma és a forrás-adatkészlet mérete egyaránt befolyásolja a lekérdezési műveletek költségeit.
+A lekérdezés összetettsége hatással van arra, hogy egy művelethez hány kérelemegység szükséges. A predikátumok száma, a predikátumok természete, a UDF száma és a forrás-adatkészlet mérete egyaránt befolyásolja a lekérdezési műveletek költségeit.
 
 Bármilyen művelet (létrehozás, frissítés vagy törlés) mértékének méréséhez vizsgálja meg az [x-MS-Request-Charge](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) fejlécét (vagy a `RequestCharge` .net SDK-ban vagy annak megfelelő tulajdonságát `ResourceResponse\<T>` ) a `FeedResponse\<T>` műveletek által felhasznált kérelmek mennyiségének méréséhez:
 

@@ -9,12 +9,12 @@ ms.date: 02/01/2021
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: ad660ee69bb568e1a76d59344cf31fbf044aaae9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8d04d1bd758480ec33a7480e4045d28ed750f22e
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581426"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430938"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Az üzlet szempontjából létfontosságú blobadatok tárolása nem módosítható tárolással
 
@@ -44,13 +44,13 @@ A nem módosítható tároló a következő funkciókat támogatja:
 
 - **Minden blobszint támogatása**: A WORM-szabályzatok az Azure Blob Storage-szintektől függetlenek, és minden szintre vonatkoznak, legyen az ritka elérésű, gyakori elérésű vagy archív. Így a felhasználók a számítási feladatok szempontjából leginkább költségoptimalizált szinten tárolhatják adataikat, miközben továbbra sem tudják őket módosítani.
 
-- **Tároló szintű konfiguráció**: a felhasználók időalapú adatmegőrzési szabályzatokat és a jogi megtartási címkéket is konfigurálhatják a tároló szintjén. A felhasználók egyszerű tárolószintű beállítások segítségével többek között létrehozhatnak és zárolhatnak időalapú adatmegőrzési szabályzatokat, meghosszabbíthatják a megőrzési időtartamot, és jogi célú visszatartást állíthatnak be vagy oldhatnak fel. Ezek a szabályzatok a tárolóban található összes blobra vonatkoznak, a meglévőkre és az újakra is.
+- **Tároló szintű konfiguráció**: a felhasználók időalapú adatmegőrzési szabályzatokat és a jogi megtartási címkéket is konfigurálhatják a tároló szintjén. A felhasználók egyszerű tárolószintű beállítások segítségével többek között létrehozhatnak és zárolhatnak időalapú adatmegőrzési szabályzatokat, meghosszabbíthatják a megőrzési időtartamot, és jogi célú visszatartást állíthatnak be vagy oldhatnak fel. Ezek a szabályzatok a tárolóban található összes blobra vonatkoznak, a meglévőkre és az újakra is. A HNS kompatibilis fiókok esetében ezek a házirendek a tároló összes könyvtárára is érvényesek.
 
 - **Naplózási naplózás támogatása**: minden tároló tartalmaz egy házirend-naplót. Legfeljebb hét időalapú adatmegőrzési parancsot jelenít meg a zárolt időalapú adatmegőrzési házirendek esetében, és tartalmazza a felhasználói azonosítót, a parancs típusát, az időbélyegzőket és a megőrzési időt. A jogi célú visszatartások esetében a naplóbejegyzés tartalmazza a felhasználói azonosítót, a parancs típusát, az időbélyegeket és a jogi céllal történő zárolás címkéit. Ezt a naplót a házirend élettartama érdekében a SEC 17a-4 (f) szabályozási irányelveknek megfelelően megőrzi a rendszer. Az [Azure-tevékenység naplója](../../azure-monitor/essentials/platform-logs-overview.md) az összes vezérlő síkja tevékenységének átfogóbb naplóját jeleníti meg; az [Azure-erőforrás-naplók](../../azure-monitor/essentials/platform-logs-overview.md) engedélyezésekor az adatsík műveletei megmaradnak és láthatók. A felhasználó felelőssége, hogy gondoskodjon a naplók állandó tárolásáról, mivel szabályozási és egyéb célból is szükség lehet rájuk.
 
 ## <a name="how-it-works"></a>Működés
 
-Az Azure Blob Storage nem módosítható tárolási funkciója két típusú WORM vagy nem módosítható szabályzatot támogat: az időalapú adatmegőrzést és a jogi célú visszatartást. Ha egy tárolón időalapú adatmegőrzési szabályzatot vagy jogi megtartást alkalmaz, az összes meglévő blob nem módosítható féreg állapotba kerül 30 másodpercnél kevesebb ideig. A házirend által védett tárolóba feltöltött összes új blob nem változtatható állapotba kerül. Ha az összes blob megváltoztathatatlan állapotban van, a rendszer megerősíti a megváltoztathatatlan házirendet, és a nem módosítható tárolóban lévő felülírási vagy törlési műveletek nem engedélyezettek.
+Az Azure Blob Storage nem módosítható tárolási funkciója két típusú WORM vagy nem módosítható szabályzatot támogat: az időalapú adatmegőrzést és a jogi célú visszatartást. Ha egy tárolón időalapú adatmegőrzési szabályzatot vagy jogi megtartást alkalmaz, az összes meglévő blob nem módosítható féreg állapotba kerül 30 másodpercnél kevesebb ideig. A házirend által védett tárolóba feltöltött összes új blob nem változtatható állapotba kerül. Ha az összes blob megváltoztathatatlan állapotban van, a rendszer megerősíti a megváltoztathatatlan házirendet, és a nem módosítható tárolóban lévő felülírási vagy törlési műveletek nem engedélyezettek. A HNS használatára képes fiók esetén a blobokat nem lehet átnevezni, vagy áthelyezni egy másik könyvtárba.
 
 A tároló-és a Storage-fiók törlése szintén nem engedélyezett, ha a tárolóban olyan Blobok vannak, amelyeket jogi vagy zárolt időalapú szabályzat véd. A jogi tartási szabályzat a Blobok, tárolók és a Storage-fiókok törlésével szembeni védelmet nyújt. A feloldva és a zárolt időalapú házirendek is védelmet kapnak a Blobok törlésével a megadott ideig. A feloldva és a zárolt időalapú házirendek is csak akkor védik a tároló törlését, ha legalább egy blob létezik a tárolón belül. Csak a *zárolt* időalapú házirenddel rendelkező tároló fogja védeni a Storage-fiókok törlését; a zárolt időalapú házirendekkel rendelkező tárolók nem kínálnak a Storage-fiókok törlésének védelmét és megfelelőségét.
 
@@ -175,6 +175,9 @@ Igen. Időalapú adatmegőrzési szabály létrehozásakor a rendszer *zárolt* 
 **Használhatom a Soft delete szolgáltatást a nem módosítható blob-házirendek mellett?**
 
 Igen, ha a megfelelőségi követelmények lehetővé teszik a Soft delete engedélyezését. Az [Azure Blob Storage](./soft-delete-blob-overview.md) -hoz készült Soft delete egy Storage-fiókban lévő összes tárolóra érvényes, függetlenül a jogi vagy időalapú adatmegőrzési szabályoktól. Javasoljuk, hogy a nem módosítható féreg-házirendek alkalmazása és megerősítése előtt a további védelem érdekében engedélyezze a Soft delete használatát.
+
+**A HNS használatára képes fiók esetében Átnevezhetem vagy áthelyezhetek egy blobot, ha a blob nem módosítható állapotban van?**
+Nem, a név és a címtár szerkezete is fontos tároló szintű adatnak minősül, amely nem módosítható, ha a megváltoztathatatlan házirend érvényben van. Az átnevezés és áthelyezés csak a HNS használatára képes fiókok esetében érhető el.
 
 ## <a name="next-steps"></a>Következő lépések
 

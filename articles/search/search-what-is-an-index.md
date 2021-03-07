@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/03/2021
-ms.openlocfilehash: d0cc7630a3bea67a99c3cb65d2015e934e8ac2da
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.date: 03/05/2021
+ms.openlocfilehash: 96594d573c308727217f537e5421dcb79f02c2ff
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539094"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433794"
 ---
 # <a name="creating-search-indexes-in-azure-cognitive-search"></a>Keresési indexek létrehozása az Azure-ban Cognitive Search
 
@@ -61,7 +61,7 @@ A további elemek összecsukása rövid ideig elvégezhető, de a következő hi
 
 ## <a name="choose-a-client"></a>Válasszon ügyfelet
 
-A keresési index létrehozásának számos módszere van. Javasoljuk, hogy az Azure Portal vagy REST API-kat a korai fejlesztéshez és a megvalósíthatósági teszteléshez.
+A keresési indexek többféle módon is létrehozhatók. Javasoljuk, hogy a korai fejlesztéshez és a megvalósíthatósági teszteléshez a Azure Portal vagy SDK-kat ajánljuk.
 
 A fejlesztés során tervezze meg a gyakori újraépítést. Mivel a fizikai struktúrák a szolgáltatásban jönnek létre, az [indexek eldobása és](search-howto-reindex.md) újbóli létrehozása szükséges ahhoz, hogy a legtöbb módosítást egy meglévő mező határozza meg. Érdemes lehet az adatai egy részhalmazával dolgozni az Újraépítés gyorsabb elvégzése érdekében.
 
@@ -110,7 +110,7 @@ Cognitive Search az Azure SDK-k általánosan elérhető funkciókat implementá
 
 A keresési dokumentumot a gyűjtemény határozza meg `fields` . A lekérdezésekhez és a kulcsokhoz mezőkre lesz szüksége. A szűrők, a dimenziók és a rendezések támogatásához valószínűleg mezőkre is szüksége lesz. Előfordulhat, hogy a felhasználó által soha nem látható adathoz mezőket kell megadnia, például a haszonkulcsok vagy a marketing-előléptetések mezőit, amelyeket a keresés rangjának módosításához használhat.
 
-Egy EDM. String típusú mezőt kell kijelölni a dokumentum kulcsaként. Az egyes keresési dokumentumok egyedi azonosítására szolgál. Egy dokumentum a kulcsa alapján kérhető le a Részletek lap feltöltéséhez.  
+Egy EDM. String típusú mezőt kell kijelölni a dokumentum kulcsaként. A rendszer az egyes keresési dokumentumok egyedi azonosítására szolgál, és megkülönbözteti a kis-és nagybetűket. Egy dokumentum a kulcsa alapján kérhető le a Részletek lap feltöltéséhez.
 
 Ha a bejövő adattípusok hierarchikus jellegűek, a beágyazott struktúrákat a [komplex típus](search-howto-complex-data-types.md) adattípusa szerint kell kijelölni. A beépített mintavételi adatkészlet, a hotelek és az összetett típusok illusztrálása egy olyan címen (több almezőt tartalmaz), amely egy-az-egyhez kapcsolattal rendelkezik az egyes szolgáltatásokkal, valamint a szobák összetett gyűjteménye, ahol több szoba van társítva az egyes szolgáltatásokhoz. 
 

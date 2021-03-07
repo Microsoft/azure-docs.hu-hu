@@ -102,7 +102,7 @@
           href: ../../virtual-machines/prepay-reserved-vm-instances.md?toc=%2fazure%2fcost-management-billing%2freservations%2ftoc.json
     - name: 'Megtekintés, kezelés és optimalizálás a vásárlás után'
       items:
-        - name: Foglalások és kihasználtság megtekintése
+        - name: Megtekintésre és felügyeletre vonatkozó engedélyek
           href: view-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Foglalások megtekintése CSP-ként
           href: how-to-view-csp-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json

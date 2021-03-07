@@ -4,12 +4,12 @@ description: Eseményindítók és kötések használata a Azure Functions Durab
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 899bc3fdc94b8232acd3edf3e0cbab3c481ff8f2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fe64945aeb71011e769ba4016ae36cb557f41f33
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013725"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424257"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions kötései (Azure Functions)
 
@@ -19,7 +19,7 @@ A [Durable functions](durable-functions-overview.md) bővítmény két új trigg
 
 Az előkészítési trigger lehetővé teszi [tartós Orchestrator függvények](durable-functions-types-features-overview.md#orchestrator-functions)készítését. Ez az aktiválás támogatja az új Orchestrator-függvények indítását és a meglévő Orchestrator-függvények lefolytatását, amelyek "várnak" egy feladatot.
 
-Ha a Visual Studio-eszközöket használja a Azure Functionshoz, a [OrchestrationTriggerAttribute](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.orchestrationtriggerattribute?view=azure-dotnet) .net-attribútummal konfigurálhatja a előkészítési triggert.
+Ha a Visual Studio-eszközöket használja a Azure Functionshoz, a [OrchestrationTriggerAttribute](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.orchestrationtriggerattribute) .net-attribútummal konfigurálhatja a előkészítési triggert.
 
 Ha Orchestrator függvényeket ír a parancsfájlkezelési nyelveken (például JavaScript vagy C# parancsfájlkezelés), a (z) a következő JSON-objektum határozza meg a `bindings` *function.js* fájljában található tömbben:
 
@@ -60,7 +60,7 @@ A előkészítési trigger kötése a bemeneteket és kimeneteket is támogatja.
 
 ### <a name="trigger-sample"></a>Példa triggerre
 
-A következő mintakód azt szemlélteti, hogy a legegyszerűbb "„Helló világ!” alkalmazás" Orchestrator függvény a következőképpen néz ki:
+A következő mintakód azt szemlélteti, hogy a legegyszerűbb "Hello World" Orchestrator függvény a következőképpen néz ki:
 
 #### <a name="c"></a>C#
 
@@ -92,7 +92,7 @@ module.exports = df.orchestrator(function*(context) {
 > [!NOTE]
 > A JavaScript-rendszerszervezőket érdemes használni `return` . A `durable-functions` kódtár gondoskodik a metódus meghívásáról `context.done` .
 
-A legtöbb Orchestrator függvény hívja a Activity functions funkciót, ezért itt látható egy "„Helló világ!” alkalmazás" példa, amely bemutatja, hogyan hívhat meg egy tevékenységi függvényt:
+A legtöbb Orchestrator függvény hívja a Activity functions funkciót, ezért itt látható egy "Hello World" példa, amely bemutatja, hogyan hívhat meg egy tevékenységi függvényt:
 
 #### <a name="c"></a>C#
 
@@ -165,7 +165,7 @@ A tevékenység-trigger kötés támogatja a bemeneteket és a kimeneteket is, u
 
 ### <a name="trigger-sample"></a>Példa triggerre
 
-Az alábbi mintakód azt mutatja be, hogy egy egyszerű "„Helló világ!” alkalmazás" tevékenységi funkció hogyan nézhet ki:
+Az alábbi mintakód azt mutatja be, hogy egy egyszerű "Hello World" tevékenységi funkció hogyan nézhet ki:
 
 #### <a name="c"></a>C#
 
@@ -641,7 +641,7 @@ module.exports = async function (context) {
 
 [!INCLUDE [durabletask](../../../includes/functions-host-json-durabletask.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Beépített HTTP API-referenciák a példányok kezeléséhez](durable-functions-http-api.md)

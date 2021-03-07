@@ -12,12 +12,12 @@ ms.date: 03/02/2021
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: helyszíni, OCR, Docker, tároló
-ms.openlocfilehash: 93d59e78241dcc94785ca139818d72908c7184a4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 1c9e681e3c02cb65b2a54070cc778051a0e7ac53
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043915"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102432553"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Az OCR Docker-tárolók beolvasása (előzetes verzió) 
 
@@ -418,7 +418,7 @@ Ha a képet a teljes egészében beolvasják, akkor az API-nak csak egy JSON-vá
 
 A JSON-válasz objektuma ugyanazzal az objektum-gráfmal rendelkezik, mint az aszinkron verzió. Ha Ön JavaScript-felhasználó, és szeretné beírni a biztonságot, érdemes lehet az írógéppel használni a JSON-válasz elküldéséhez.
 
-Példa a használati esetekre: itt  <a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer"> <span class="docon docon-navigate-external x-hidden-focus"></span> láthatja az írógéppel Sandboxot</a> , és a Futtatás lehetőség kiválasztásával jelenítheti meg a könnyű használatot.
+Példa a használati esetekre: Itt láthatja az <a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">írógéppel Sandboxot</a> , és a **Futtatás** lehetőség kiválasztásával jelenítheti meg a könnyű használatot.
 
 ## <a name="stop-the-container"></a>A tároló leállítása
 
