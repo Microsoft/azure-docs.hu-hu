@@ -1,22 +1,22 @@
 ---
-title: Az új-zélandi ISM-re vonatkozó szabályozási megfelelőség részletei
-description: Az új-zélandi ISM szabályozási megfelelőség beépített kezdeményezésének részletei. Minden vezérlő egy vagy több olyan Azure Policy-definícióra van leképezve, amely segítséget nyújt az értékeléshez.
-ms.date: 02/09/2021
+title: Az új-zélandi ISM korlátozásokkal kapcsolatos szabályok megfelelőségi részletei
+description: Az új-zélandi ISM korlátozott szabályozási megfelelőség beépített kezdeményezésének részletei. Minden vezérlő egy vagy több olyan Azure Policy-definícióra van leképezve, amely segítséget nyújt az értékeléshez.
+ms.date: 03/05/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: b2f4cec4f2c9abf6fb896ba9d515db1780115716
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 5f346f7755cf252ed15513d8dc0a60a9bc5cce3f
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100101736"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437246"
 ---
-# <a name="details-of-the-new-zealand-ism-regulatory-compliance-built-in-initiative"></a>Az új-zélandi ISM szabályozási megfelelőség beépített kezdeményezésének részletei
+# <a name="details-of-the-new-zealand-ism-restricted-regulatory-compliance-built-in-initiative"></a>Az új-zélandi, korlátozott szabályozási megfelelőséggel kapcsolatos beépített kezdeményezés részletei
 
-A következő cikk azt ismerteti, hogyan jelennek meg a Azure Policy szabályozási megfelelőségének beépített kezdeményezési definíciója a **megfelelőségi tartományokhoz** és az új-ZÉLANDi ISM- **vezérlőkhöz** .
-További információ erről a megfelelőségi szabványról: [új-zélandi ISM](https://www.nzism.gcsb.govt.nz/). A _tulajdonjog_ megismeréséhez tekintse meg a [Azure Policy házirend-definíció](../concepts/definition-structure.md#type) és [a megosztott felelősség a felhőben](../../../security/fundamentals/shared-responsibility.md)című témakört.
+A következő cikk részletesen ismerteti, Hogyan szabályozható a Azure Policy szabályozással kapcsolatos megfelelőségi kezdeményezés definíciója a **megfelelőségi tartományokra** és az új-zélandi ISM korlátozás alá tartozó **vezérlőkre** .
+További információ erről a megfelelőségi szabványról: [új-zélandi ISM korlátozott](https://www.nzism.gcsb.govt.nz/). A _tulajdonjog_ megismeréséhez tekintse meg a [Azure Policy házirend-definíció](../concepts/definition-structure.md#type) és [a megosztott felelősség a felhőben](../../../security/fundamentals/shared-responsibility.md)című témakört.
 
-A következő leképezések az **új-zélandi ISM-** vezérlőkre vonatkoznak. A jobb oldali navigációs sávon közvetlenül egy adott **megfelelőségi tartományra** ugorhat. Számos vezérlő [Azure Policy](../overview.md) kezdeményezési definícióval van implementálva. A teljes kezdeményezési definíció áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot.
+A következő leképezések az **új-zélandi ISM korlátozott** vezérlőkre vonatkoznak. A jobb oldali navigációs sávon közvetlenül egy adott **megfelelőségi tartományra** ugorhat. Számos vezérlő [Azure Policy](../overview.md) kezdeményezési definícióval van implementálva. A teljes kezdeményezési definíció áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot.
 Ezután keresse meg és válassza ki az **új-zélandi adatbiztonságra vonatkozó** szabályzat-megfelelőségi szabályzatot, amely beépített kezdeményezéseket definiál.
 
 > [!IMPORTANT]
@@ -91,7 +91,7 @@ Ezután keresse meg és válassza ki az **új-zélandi adatbiztonságra vonatkoz
 
 ## <a name="access-control-and-passwords"></a>Access Control és jelszavak
 
-### <a name="16132-system-user-identitfication"></a>16.1.32 rendszer felhasználói Identitfication
+### <a name="16132-system-user-identification"></a>16.1.32 rendszer-felhasználói azonosító
 
 **Azonosító**: NZISM biztonsági teljesítményteszt AC-2 **tulajdonos**: ügyfél
 

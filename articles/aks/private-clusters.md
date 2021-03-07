@@ -3,13 +3,13 @@ title: Privát Azure Kubernetes Service-fürt létrehozása
 description: Ismerje meg, hogyan hozhat létre egy privát Azure Kubernetes Service-(ak-) fürtöt
 services: container-service
 ms.topic: article
-ms.date: 7/17/2020
-ms.openlocfilehash: f0c74c1b3715fd3f5c83c3a9231009e622b87927
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 3/5/2021
+ms.openlocfilehash: d5f39460ad821265aed2c21d7426aa894f7cc933
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181227"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425107"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Privát Azure Kubernetes Service-fürt létrehozása
 
@@ -70,19 +70,26 @@ Ahol a egy `--enable-private-cluster` privát fürt kötelező jelzője.
 
 A következő paraméterek használhatók a saját DNS zónák konfigurálásához.
 
-1. A "System" az alapértelmezett érték. Ha a--Private-DNS-Zone argumentum ki van hagyva, az AK létrehoz egy saját DNS zónát a csomópont-erőforráscsoporthoz.
-2. A "None" érték azt jelenti, hogy az AK nem hoz létre saját DNS zónát.  Ehhez a saját DNS-kiszolgálót kell használnia, és konfigurálnia kell a DNS-feloldást a privát FQDN számára.  Ha nem konfigurálja a DNS-feloldást, a DNS csak az ügynök-csomópontokon belül oldható fel, és a telepítés után problémát okoz a fürtben.
-3. Az "egyéni DNS-zóna neve" formátumnak ebben a formátumban kell lennie az Azure globális felhőhöz: `privatelink.<region>.azmk8s.io` . Szüksége lesz az adott saját DNS zónához tartozó erőforrás-azonosítóra.  Emellett szüksége lesz egy felhasználóhoz rendelt identitásra vagy egyszerű szolgáltatásra, amely legalább a `private dns zone contributor` szerepkört az egyéni magánhálózati DNS-zónához rendeli.
+- A "System" az alapértelmezett érték. Ha a--Private-DNS-Zone argumentum ki van hagyva, az AK létrehoz egy saját DNS zónát a csomópont-erőforráscsoporthoz.
+- A "None" érték azt jelenti, hogy az AK nem hoz létre saját DNS zónát.  Ehhez a saját DNS-kiszolgálót kell használnia, és konfigurálnia kell a DNS-feloldást a privát FQDN számára.  Ha nem konfigurálja a DNS-feloldást, a DNS csak az ügynök-csomópontokon belül oldható fel, és a telepítés után problémát okoz a fürtben. 
+- A (z) "CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID" megköveteli, hogy a következő formátumban hozzon létre egy saját DNS zónát az Azure globális felhőhöz: `privatelink.<region>.azmk8s.io` . Szüksége lesz a saját DNS zóna erőforrás-azonosítójára.  Emellett szüksége lesz egy felhasználóhoz rendelt identitásra vagy egyszerű szolgáltatásra legalább a `private dns zone contributor` szerepkörrel.
+- az "FQDN-altartomány" a "CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID" lehetőséggel csak az altartományi képességek biztosítására használható `privatelink.<region>.azmk8s.io`
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-* Az AK előzetes verziójának 0.4.71 vagy újabb verziója
+* Az AK előzetes verziójának 0.5.3 vagy újabb verziója
 * Az API 2020-11-01-es vagy újabb verziója
 
 ### <a name="create-a-private-aks-cluster-with-private-dns-zone-preview"></a>Privát AK-fürt létrehozása saját DNS zónával (előzetes verzió)
 
 ```azurecli-interactive
-az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone [none|system|custom private dns zone ResourceId]
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone [system|none]
+```
+
+### <a name="create-a-private-aks-cluster-with-a-custom-private-dns-zone-preview"></a>Privát AK-fürt létrehozása egyéni saját DNS zónával (előzetes verzió)
+
+```azurecli-interactive
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <custom private dns zone ResourceId> --fqdn-subdomain <subdomain-name>
 ```
 ## <a name="options-for-connecting-to-the-private-cluster"></a>A privát fürthöz való csatlakozás lehetőségei
 

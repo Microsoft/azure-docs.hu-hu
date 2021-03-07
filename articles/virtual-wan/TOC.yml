@@ -13,6 +13,9 @@
         - name: Bármilyen útvonal
           displayName: Resource Manager Any-to-any routing
           href: quickstart-any-to-any-template.md
+        - name: Útvonal a megosztott szolgáltatások virtuális hálózatok
+          displayName: Resource Manager route to shared services VNets
+          href: quickstart-route-shared-services-vnet-template.md
 - name: Oktatóanyagok
   expanded: true
   items:
@@ -60,7 +63,7 @@
           href: scenario-isolate-vnets-custom.md
         - name: Virtuális hálózatok és ágak elkülönítése
           href: scenario-isolate-virtual-networks-branches.md
-        - name: Megosztott szolgáltatások virtuális hálózatai
+        - name: Megosztott szolgáltatások virtuális hálózatok
           href: scenario-shared-services-vnet.md
         - name: Útvonal NVA-n keresztül
           href: scenario-route-through-nva.md

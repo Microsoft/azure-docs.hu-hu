@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 8b2a61a92a25e1c0da9f85439438e75969fcfbf0
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e86ea0d90ea267b1c9ceecc8fed6c3d7e5102eaf
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661018"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443573"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>ML futtatási naplók és metrikák figyelése és megtekintése
 
@@ -78,20 +78,23 @@ A **ScriptRunConfig** használatakor a ```run.wait_for_completion(show_output = 
 
 <a id="queryrunmetrics"></a>
 
-### <a name="logging-run-metrics"></a>Naplózási futtatási metrikák 
+## <a name="view-run-metrics"></a>Futtatási metrikák megtekintése
 
-A következő módszerek használhatók a naplózási API-kon a metrikák vizualizációinak befolyásolására. Jegyezze fel a naplózott metrikák [szolgáltatási korlátait](https://docs.microsoft.com/azure/machine-learning/resource-limits-quotas-capacity#metrics) . 
+## <a name="via-the-sdk"></a>Az SDK-n keresztül
+A betanított modell metrikáit a használatával tekintheti meg ```run.get_metrics()``` . Lásd az alábbi példát. 
 
-|Naplózott érték|Mintakód| Formátum a portálon|
-|----|----|----|
-|Numerikus értékek tömbje| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|Egyváltozós vonalas diagram|
-|Egy numerikus értéket többször is felhasználhat ugyanazzal a metrikai névvel (például a cikluson belül)| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| Egyváltozós vonalas diagram|
-|Sor naplózása 2 numerikus oszloppal ismételten|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Kétváltozós vonalas diagram|
-|Táblázat két numerikus oszloppal|`run.log_table(name='Sine Wave', value=sines)`|Kétváltozós vonalas diagram|
+```python
+from azureml.core import Run
+run = Run.get_context()
+run.log('metric-name', metric_value)
 
-## <a name="query-run-metrics"></a>Lekérdezés-futtatási metrikák
+metrics = run.get_metrics()
+# metrics is of type Dict[str, List[float]] mapping mertic names
+# to a list of the values for that metric in the given run.
 
-A betanított modell metrikáit a használatával tekintheti meg ```run.get_metrics()``` . Például a fenti példával meghatározhatja a legjobb modellt úgy, hogy a legalacsonyabb Mean Square error (MSE) értékkel keresi a modellt.
+metrics.get('metric-name')
+# list of metrics in the order they were recorded
+```
 
 <a name="view-the-experiment-in-the-web-portal"></a>
 
@@ -124,7 +127,7 @@ Az alábbi táblázat a naplófájlok tartalmát mutatja az ebben a szakaszban l
 
 #### <a name="azureml-logs-folder"></a>`azureml-logs` mappa
 
-|Fájl  |Leírás  |
+|Fájl  |Description  |
 |---------|---------|
 |20_image_build_log.txt     | Docker-rendszerkép-létrehozási napló a betanítási környezethez, nem kötelező, egy Futtatás. Csak a környezet frissítésekor alkalmazható. Máskülönben a pénzmosás felhasználja a gyorsítótárazott rendszerképet. Ha a művelet sikeres, a rendszerkép beállításjegyzékének részleteit tartalmazza a megfelelő rendszerképhez.         |
 |55_azureml-Execution-<node_id # C1.txt     | StdOut/stderr log of Host Tool, egy csomóponton. A rendszerkép lekérése a számítási célra. Megjegyzés: Ez a napló csak akkor jelenik meg, ha biztonságos számítási erőforrásokkal rendelkezik.         |
@@ -137,7 +140,7 @@ Az alábbi táblázat a naplófájlok tartalmát mutatja az ebben a szakaszban l
 
 #### <a name="logs--azureml-folder"></a>`logs > azureml` mappa
 
-|Fájl  |Leírás  |
+|Fájl  |Description  |
 |---------|---------|
 |110_azureml. log      |         |
 |job_prep_azureml. log     |   rendszernapló a feladat-előkészítéshez        |
@@ -147,7 +150,7 @@ Az alábbi táblázat a naplófájlok tartalmát mutatja az ebben a szakaszban l
 
 Ha az oldalkocsi engedélyezve van, a feladatok előkészítési és a feladatok kiadására szolgáló szkriptek az oldalkocsis tárolón belül lesznek futtatva.  Mindegyik csomóponthoz egy mappa van. 
 
-|Fájl  |Leírás  |
+|Fájl  |Description  |
 |---------|---------|
 |start_cms.txt     |  Az oldalkocsi-tároló indításakor megjelenő folyamat naplózása       |
 |prep_cmd.txt      |   A futtatáskor megadott ContextManagers naplója `job_prep.py` (ennek egy része a következőre lesz továbbítva: `azureml-logs/65-job_prep` )       |

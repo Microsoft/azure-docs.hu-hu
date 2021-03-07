@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 683da659dcfa07c0a105382f4cc93d1f4dfb21b5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 54b650d598cf19e061465b3a4fa18d50808e7f29
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219535"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426161"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Az adatelemzés dedikált SQL-készletekkel
 
@@ -77,11 +77,12 @@ Az Azure szinapszis Analytics lehetővé teszi az adatelemzést egy dedikált SQ
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>A New York-i taxi adatai a dedikált SQL-készletben
 
 1. A szinapszis Studióban nyissa meg **az** adatközpontot.
+1. Ekkor meg kell jelennie egy **SQLPOOL1** nevű adatbázisnak. Ha nem látja, kattintson a **frissítés** gombra.
 1. Nyissa meg a **SQLPOOL1**  >  **táblákat**. 
-1. Kattintson a jobb gombbal a **dbo. Utazási** táblázat és válassza az **új SQL-parancsfájl** lehetőséget, majd  >  **válassza a Top 100 sort**.
-1. Várjon, amíg a rendszer létrehoz egy új SQL-parancsfájlt, és futtatja azt.
-1. Figyelje meg, hogy az SQL-parancsfájl felső részén a **Kapcsolódás** automatikusan a **SQLPOOL1** nevű SQL-készletre lesz beállítva.
-1. Cserélje le az SQL-parancsfájl szövegét ezzel a kóddal, majd futtassa.
+3. Kattintson a jobb gombbal a **dbo. Utazási** táblázat és válassza az **új SQL-parancsfájl** lehetőséget, majd  >  **válassza a Top 100 sort**.
+4. Várjon, amíg a rendszer létrehoz egy új SQL-parancsfájlt, és futtatja azt.
+5. Figyelje meg, hogy az SQL-parancsfájl felső részén a **Kapcsolódás** automatikusan a **SQLPOOL1** nevű SQL-készletre lesz beállítva.
+6. Cserélje le az SQL-parancsfájl szövegét ezzel a kóddal, majd futtassa.
 
     ```sql
     SELECT PassengerCount,

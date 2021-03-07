@@ -28,18 +28,18 @@ Ez az oktatóanyag a következőket mutatja be:
 Az oktatóanyag elvégzésének feltételei a következők:
 
 - Telepítse a Visual Studio Code vagy a Visual Studio alkalmazást.
-- [Hozzon létre egy Media Services fiókot](./create-account-howto.md).<br/>Ügyeljen arra, hogy jegyezze fel az erőforráscsoport neveként használt értékeket, és Media Services a fiók nevét.
-- Kövesse a [Azure Media Services API-nak az Azure CLI-vel való elérésének](./access-api-howto.md) lépéseit, és mentse a hitelesítő adatokat. Ezeket az API-k eléréséhez kell használnia.
+- [Hozzon létre egy Media Services fiókot](./create-account-howto.md).<br/>Ügyeljen arra, hogy JSON formátumban másolja az API-hozzáférési adatokat, vagy tárolja a Media Services fiókhoz való kapcsolódáshoz szükséges értékeket az ebben a mintában használt. env fájlformátumban.
+- Kövesse a [Azure Media Services API-nak az Azure CLI-vel való elérésének](./access-api-howto.md) lépéseit, és mentse a hitelesítő adatokat. Ezeket az API-k eléréséhez a mintában kell használni, vagy a. env fájlformátumban kell megadnia őket. 
 - Egy olyan kamera vagy eszköz (például laptop), amely az események közvetítésére szolgál.
-- Helyszíni élő kódoló, amely a kamerából származó jeleket átalakítja a Media Services élő közvetítési szolgáltatásnak küldött adatfolyamokra: [ajánlott helyszíni élő kódolók](recommended-on-premises-live-encoders.md). A streamnek **RTMP** vagy **Smooth Streaming** formátumúnak kell lennie.  
-- Ehhez a mintához ajánlott egy szoftveres kódolóval kezdeni, például a OBS Studio Live Streaming szoftverrel. 
+- Egy helyszíni kódoló, amely kódolja a kamerás adatfolyamot, és elküldi azt a Media Services élő adatfolyam-továbbítási szolgáltatásnak az RTMP protokoll használatával, lásd: [ajánlott helyszíni élő kódolók](recommended-on-premises-live-encoders.md). A streamnek **RTMP** vagy **Smooth Streaming** formátumúnak kell lennie.  
+- Ehhez a mintához ajánlott egy szoftveres kódolóval kezdeni, például az ingyenes [nyílt forráskódú szoftver OBS Studio](https://obsproject.com/download) használatával, így egyszerűen elsajátíthatja az első lépéseket. 
 
 > [!TIP]
 > Mielőtt folytatná, mindenképp tekintse át [a Media Services 3-as verziójával megvalósított élő streamelést](live-streaming-overview.md) bemutató cikket. 
 
 ## <a name="download-and-configure-the-sample"></a>A minta letöltése és konfigurálása
 
-Klónozza a gépre a streamelési .NET-mintát tartalmazó GitHub-adattárat a következő paranccsal:  
+A következő parancs használatával klónozott az élő streaming .NET-mintát tartalmazó git hub-tárházat a gépre:  
 
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet.git
@@ -48,6 +48,9 @@ Klónozza a gépre a streamelési .NET-mintát tartalmazó GitHub-adattárat a k
 Az elő streamelési minta az [Élő](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Live) mappában található.
 
 Nyissa meg [appsettings.jsa](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/appsettings.json) letöltött projektben. Cserélje le az értékeket az API-khoz [való hozzáféréshez](./access-api-howto.md)kapott hitelesítő adatokkal.
+
+Vegye figyelembe, hogy a projekt gyökerében a. env fájlformátumot is használhatja, ha a környezeti változókat csak egyszer szeretné beállítani a .NET-minták tárházában lévő összes projekthez. Csak másolja a sample. env fájlt, töltse ki a Azure Portal Media Services API-elérési lapon vagy az Azure CLI-ből beszerzett adatokat.  Nevezze át a sample. env fájlt úgy, hogy csak ". env" legyen, hogy az összes projektben használhassa.
+A. gitignore fájl már konfigurálva van a fájl tartalmának az elágazó adattárba való közzétételének elkerüléséhez. 
 
 > [!IMPORTANT]
 > Ez a minta minden erőforráshoz egyedi utótagot használ. Ha megszakítja a hibakeresést, vagy leállítja az alkalmazást a rendszeren keresztül, akkor a fiókjában több élő esemény fog megjelenni. <br/>Győződjön meg arról, hogy leállítja a futó élő eseményeket. Ellenkező esetben a **számlázás**!
@@ -58,27 +61,24 @@ Ez a szakasz a *LiveEventWithDVR* projekt [program.cs](https://github.com/Azure-
 
 A minta egyedi utótagot hoz létre minden erőforráshoz, hogy ne legyenek a nevek ütközései, ha a mintát többször is futtatja a tisztítás nélkül.
 
-> [!IMPORTANT]
-> Ez a minta minden erőforráshoz egyedi utótagot használ. Ha megszakítja a hibakeresést, vagy leállítja az alkalmazást a rendszeren keresztül, akkor a fiókjában több élő esemény fog megjelenni. <br/>
-> Győződjön meg arról, hogy leállítja a futó élő eseményeket. Ellenkező esetben a **számlázás**!
 
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>A Media Services API-k használatának megkezdése a .NET SDK-val
 
-Ha szeretné megkezdeni a Media Services API-k használatát a .NET-tel, létre kell hoznia egy **AzureMediaServicesClient** objektumot. Az objektum létrehozásához meg kell adnia a hitelesítő adatokat, amelyekkel az ügyfél csatlakozhat az Azure-hoz az Azure AD használatával. A cikk elején klónozott kódban a **GetCredentialsAsync** függvény létrehozza a ServiceClientCredentials objektumot a helyi konfigurációs fájlban szereplő hitelesítési adatok alapján. 
+Ha szeretné megkezdeni a Media Services API-k használatát a .NET-tel, létre kell hoznia egy **AzureMediaServicesClient** objektumot. Az objektum létrehozásához meg kell adnia a hitelesítő adatokat, amelyekkel az ügyfél csatlakozhat az Azure-hoz az Azure AD használatával. A cikk elején klónozott kódban a **GetCredentialsAsync** függvény a helyi konfigurációs fájlban (appsettings.json) megadott hitelesítő adatok alapján hozza létre a ServiceClientCredentials objektumot, vagy pedig a tárház gyökerében található. env környezeti változók fájlt.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateMediaServicesClient)]
 
 ### <a name="create-a-live-event"></a>Élő esemény létrehozása
 
-Ebből a szakaszból megtudhatja, hogyan hozhat létre **áteresztő** típusú élő eseményt (a LiveEventEncodingType beállítása none). További információ a rendelkezésre álló élő események típusairól: [élő eseménytípus](live-events-outputs-concept.md#live-event-types). 
+Ebből a szakaszból megtudhatja, hogyan hozhat létre **áteresztő** típusú élő eseményt (a LiveEventEncodingType beállítása none). További információ az élő események egyéb elérhető típusairól: [élő eseménytípus](live-events-outputs-concept.md#live-event-types). Az áteresztőn kívül élő transcoding Live-eseményt is használhat 720P vagy 1080P adaptív sávszélességű felhőalapú kódoláshoz. 
  
 Néhány dolog, amit érdemes megadnia az élő esemény létrehozásakor:
 
-* Media Services hely.
-* Az élő esemény folyamatos átviteli protokollja (jelenleg az RTMP és a Smooth Streaming protokollok támogatottak).<br/>A protokoll beállítás nem módosítható, amíg az élő esemény vagy a hozzá tartozó élő kimenet fut. Ha eltérő protokollokra van szüksége, hozzon létre külön élő eseményt az egyes streaming protokollokhoz.  
+* Az élő esemény betöltési protokollja (jelenleg az RTMP (k) és a Smooth Streaming protokollok támogatottak).<br/>A protokoll beállítás nem módosítható, amíg az élő esemény vagy a hozzá tartozó élő kimenet fut. Ha eltérő protokollokra van szüksége, hozzon létre külön élő eseményt az egyes streaming protokollokhoz.  
 * IP-korlátozások a betöltési és az előnézeti címen. Megadhatja azokat az IP-címeket, amelyek számára engedélyezett az élő esemény Videójának beolvasása. Az engedélyezett IP-címek köre tartalmazhat egyetlen IP-címet (például „10.0.0.1”), vagy egy IP-tartományt, amelyet egy IP-cím és egy CIDR alhálózati maszk (például„10.0.0.1/22”) vagy egy IP-cím és egy pontozott decimális alhálózati maszk (például „10.0.0.1(255.255.252.0)”) segítségével lehet megadni.<br/>Ha nincs megadva IP-cím, és nincs szabály definíciója, akkor a rendszer nem engedélyezi az IP-címet. Ha az összes IP-címnek szeretne engedélyt adni, hozzon létre egy szabályt, és állítsa be a következő értéket: 0.0.0.0/0.<br/>Az IP-címnek a következő formátumok egyikében kell lennie: IpV4-cím, amely négy számot vagy CIDR-címtartományt tartalmaz.
 * Az esemény létrehozásakor megadhatja az automatikus indítást. <br/>Ha az autostart értéke TRUE (igaz), a rendszer az élő eseményt a létrehozás után indítja el. Ez azt jelenti, hogy a számlázás azonnal elindul, amint az élő esemény fut. A további számlázás leállításához explicit módon hívnia kell az élő esemény erőforrásának leállítását. További információ: [élő események állapota és számlázása](live-event-states-billing.md).
-* Ahhoz, hogy a betöltési URL-cím prediktív, állítsa a "Vanity" módot. Részletes információk: élő események betöltésének [URL-címei](live-events-outputs-concept.md#live-event-ingest-urls).
+Rendelkezésre állnak készenléti üzemmódok is az élő esemény elindításához a "lefoglalt" állapotnál, amely gyorsabban áthelyezhető a "Running" állapotba. Ez olyan helyzetekben hasznos, mint a hotpools, amelyeknek gyorsan kell kiadniuk a csatornákat a streamek számára.
+* Ahhoz, hogy egy betöltési URL-cím prediktív és könnyebben karbantartható legyen egy hardveres élő kódolóban, állítsa az "useStaticHostname" tulajdonságot igaz értékre. Részletes információk: élő események betöltésének [URL-címei](live-events-outputs-concept.md#live-event-ingest-urls).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateLiveEvent)]
 
@@ -101,15 +101,27 @@ A previewEndpoint segítségével tekintse meg az előnézetet, és győződjön
 
 Ha a stream az élő eseménybe áramlik, megkezdheti a folyamatos átviteli eseményt egy eszköz, egy élő kimenet és a folyamatos átviteli lokátor létrehozásával. Ezzel archiválja a streamet, és a streamvégponton keresztül elérhetővé teszi a nézők számára.
 
+A fogalmak megismerése során érdemes meggondolni az "eszköz" objektumot a régi napokban beszúrt szalagra. Az "élő kimenet" a szalagos felvevő gép. Az "élő esemény" csak a gép hátulján érkező videojel.
+
+Először hozza létre a jelet az "élő esemény" létrehozásával.  A jel nem áramlik egészen addig, amíg el nem indítja az élő eseményt, és nem kapcsolja össze a kódolót a bemenettel.
+
+A szalag bármikor létrehozható. Ez csak egy üres "eszköz", amelyet az élő kimeneti objektumra, a szalagos rögzítőre fog átadni ebben az analógia.
+
+A szalagos felvevő bármikor létrehozható. Így élő kimenetet hozhat létre a jelerősség elindítása előtt vagy azt követően. Ha fel kell gyorsítania a dolgokat, időnként hasznos lehet létrehozni a jelerősség megkezdése előtt.
+
+A szalagos felvevő leállításához hívja a Delete (Törlés) lehetőséget a LiveOutput. Ez nem törli a szalag "eszköz" tartalmát.  Az eszköz mindig az archivált videó tartalmának megfelelően marad, amíg a törlést nem kifejezetten az adott objektumra hívja meg.
+
+A következő szakasz végigvezeti az eszköz ("szalag") és az élő kimenet ("szalagos felvevő") létrehozásán.
+
 #### <a name="create-an-asset"></a>Adategység létrehozása
 
-Hozzon létre egy eszközt a használni kívánt élő kimenethez.
+Hozzon létre egy eszközt a használni kívánt élő kimenethez. A fenti analógiában ez lesz a szalagunk, amelyet az élő videós jelet rögzítünk. A megtekintők a virtuális szalagról élőben vagy igény szerint tekinthetik meg a tartalmakat.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateAsset)]
 
 #### <a name="create-a-live-output"></a>Élő kimenet létrehozása
 
-Az élő kimenetek a létrehozás után kezdődnek, és a törléskor leállnak. Ha törli az élő kimenetet, nem törli az objektum mögöttes eszközét és tartalmát.
+Az élő kimenetek a létrehozás után kezdődnek, és a törléskor leállnak. Ez lesz a "szalagos felvevő" az eseményhez. Ha törli az élő kimenetet, nem törli az eszköz mögöttes eszközét vagy tartalmát. Gondoljon rá úgy, ahogy kiadja a szalagot. A rögzítéssel ellátott eszköz addig tart, amíg szeretné, és amikor kiadja (azaz az élő kimenet törlése után) azonnal elérhető lesz az igény szerinti megjelenítéshez. 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateLiveOutput)]
 
@@ -118,7 +130,7 @@ Az élő kimenetek a létrehozás után kezdődnek, és a törléskor leállnak.
 > [!NOTE]
 > A Media Services-fiók létrehozásakor a rendszer egy **alapértelmezett** folyamatos átviteli végpontot ad hozzá a fiókhoz a **leállított** állapotban. A tartalom folyamatos átvitelének megkezdéséhez, valamint a [dinamikus csomagolás](dynamic-packaging-overview.md) és a dinamikus titkosítás kihasználásához a adatfolyam-továbbítási végpontnak **futó** állapotban kell lennie.
 
-Ha az élő kimeneti eszközt egy folyamatos átviteli lokátor használatával teszi közzé, az élő esemény (a DVR-ablak hosszára számítva) továbbra is megtekinthető marad, amíg a streaming-kereső lejárata vagy törlése nem történik meg.
+Amikor egy streaming-lokátor használatával teszi közzé az adategységet, az élő esemény (a DVR-ablak hosszára számítva) továbbra is megtekinthető marad, amíg a streaming-lokátor lejárata vagy törlése megkezdődik. Így teheti elérhetővé a megtekintő közönség számára a virtuális szalagot, hogy élő és igény szerint lássa. Ugyanez az URL-cím is használható az élő esemény, a DVR ablak vagy az igény szerinti eszköz megtekintésére a rögzítés befejezésekor (az élő kimenet törlésekor).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateStreamingLocator)]
 

@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/11/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: bccb6fa33007082737997c7282fb286c38e3bbd7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f19625f1d558071ccb29487efe56146756c7692c
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466464"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437536"
 ---
 # <a name="enable-edge-container-registry-on-your-azure-stack-edge-pro-gpu-device"></a>Edge Container Registry engedélyezése a Azure Stack Edge Pro GPU-eszközön
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Ez a cikk bemutatja, hogyan engedélyezheti a peremhálózati tároló beállításjegyzékét, és hogyan használhatja azt a Kubernetes-fürtön belül az Azure Stack Edge Pro-eszközön. A cikkben használt példa részletesen ismerteti, hogyan kell leküldeni egy rendszerképet a forrás-beállításjegyzékből, ebben az esetben a Microsoft Container registryben az Azure Stack Edge-eszköz, a peremhálózati tároló beállításjegyzékének beállításjegyzékében.
 
@@ -290,6 +292,6 @@ Egy vagy több tároló lemezképének eltávolításához kövesse az alábbi l
 
 A nem használt lemezképek törlése után a nem hivatkozott képekhez társított területet automatikusan visszaállítja egy olyan folyamat, amely éjjel fut. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Állapot nélküli alkalmazás üzembe helyezése a Azure stack Edge Pro](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md)-ban.

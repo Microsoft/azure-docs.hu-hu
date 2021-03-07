@@ -8,12 +8,12 @@ ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 197bd1ab63093a18bd7838349acb3aed11a98e16
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 171e858ef06228f2bf5ef5dea662de00143a0567
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202382"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441941"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 
@@ -243,6 +243,16 @@ Ha a felhő-rétegek engedélyezve vannak egy kiszolgálói végponton, a rendsz
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Egyéb hierarchikus tárolási kezelési (HSM) megoldások
 Nem kell más HSM-megoldásokat használni a Azure File Synchoz.
 
+## <a name="performance-and-scalability"></a>Teljesítmény és méretezhetőség
+
+Mivel a Azure File Sync ügynök egy olyan Windows Server rendszerű gépen fut, amely az Azure-fájlmegosztás számára csatlakozik, a tényleges szinkronizálási teljesítmény számos tényezőtől függ az infrastruktúrában: a Windows Server és a mögöttes lemez konfigurációja, a kiszolgáló és az Azure Storage közötti hálózati sávszélesség, a fájlméret, a teljes adatkészlet mérete és az adatkészlet tevékenysége. Mivel Azure File Sync a fájl szintjén működik, a Azure File Sync-alapú megoldás teljesítménybeli jellemzői jobban mérhetők a másodpercenként feldolgozott objektumok (fájlok és könyvtárak) száma alapján.
+
+Az Azure-fájlmegosztás Azure Portal vagy SMB használatával végzett módosításai nem észlelhetők azonnal, és nem replikálódnak, mint a kiszolgálói végpont módosításai. Azure Files még nem rendelkezik módosítási értesítésekkel vagy naplózással, így a fájlok módosításakor nem lehet automatikusan kezdeményezni a szinkronizálási munkamenetet. A Windows Serveren a Azure File Sync a [Windows USN-naplózást](https://docs.microsoft.com/windows/win32/fileio/change-journals) használja a szinkronizálási munkamenet automatikus elindítására a fájlok módosításakor
+
+Az Azure-fájlmegosztás változásainak észleléséhez Azure File Sync rendelkezik egy változás-észlelési feladatokkal nevű ütemezett feladatokkal. A változás-észlelési feladatok a fájlmegosztás összes fájlját felsorolják, majd összehasonlítják az adott fájl szinkronizálási verziójával. Ha a változás észlelése feladata meghatározza, hogy a fájlok megváltoztak, Azure File Sync kezdeményez egy szinkronizálási munkamenetet. A változás észlelése feladatot 24 óránként kezdeményezi a rendszer. Mivel a változás-észlelési feladatok az Azure-fájlmegosztás összes fájljának enumerálásával működnek, az észlelési funkció hosszabb időt vesz igénybe, mint a kisebb névterekben. Nagyméretű névterek esetén 24 óránként hosszabb időt vehet igénybe, hogy meghatározza, mely fájlok változtak.
+
+További információ: [Azure file Sync teljesítmény-mérőszámok](storage-files-scale-targets.md#azure-file-sync-performance-metrics) és [Azure file Sync méretezési célok](storage-files-scale-targets.md#azure-file-sync-scale-targets)
+
 ## <a name="identity"></a>Identitás
 A Azure File Sync a szokásos AD-alapú identitással működik, anélkül, hogy a szinkronizálás beállítását meghaladó beállítást kellene beállítania. Azure File Sync használatakor az általános elvárás, hogy a legtöbb hozzáférés a Azure File Sync gyorsítótárazási kiszolgálókon halad át az Azure-fájlmegosztás helyett. Mivel a kiszolgálói végpontok a Windows Serveren találhatók, és a Windows Server hosszú ideje támogatja az AD és a Windows stílusú ACL-eket, nincs szükség arra, hogy a Storage Sync szolgáltatásban regisztrált Windows-fájlkiszolgálók ne legyenek tartományhoz csatlakoztatva. Azure File Sync fogja tárolni az ACL-eket az Azure-fájlmegosztás fájljain, és replikálja azokat az összes kiszolgálói végpontra.
 
@@ -251,7 +261,7 @@ Bár a közvetlenül az Azure-fájlmegosztást érintő módosítások hosszabb 
 > [!Important]  
 > A Storage-fiók Active Directoryhoz való csatlakoztatása nem szükséges a Azure File Sync sikeres telepítéséhez. Ez egy szigorúan opcionális lépés, amely lehetővé teszi az Azure-fájlmegosztás számára a helyszíni ACL-ek kényszerítését, amikor a felhasználók közvetlenül csatlakoztatják az Azure-fájlmegosztást.
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 A Azure File Sync ügynök kommunikál a Storage Sync szolgáltatással és az Azure-fájlmegosztás használatával a Azure File Sync REST protokoll és a legtitkosítási protokoll segítségével, amely mindkét esetben HTTPS protokollt használ a 443-as porton keresztül. Az SMB soha nem használja fel az adatok feltöltését és letöltését a Windows Server és az Azure-fájlmegosztás között. Mivel a legtöbb szervezet engedélyezi a HTTPS-forgalmat az 443-as porton keresztül, a legtöbb webhely felkeresésének követelménye, a speciális hálózati konfiguráció általában nem szükséges a Azure File Sync telepítéséhez.
 
 A szervezet házirendje vagy az egyedi szabályozási követelmények alapján több korlátozó kommunikációra lehet szükség az Azure-ban, így a Azure File Sync számos mechanizmust biztosít a hálózatkezelés konfigurálásához. A követelmények alapján a következőket teheti:

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 49fa928285b29eaff806b009cf327e84e17491c6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2ece9ed5cb6eb6ea706db1ed615a64d001f2b17c
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098722"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102423952"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Oktatóanyag: .NET-konzolos alkalmazás létrehozása Azure Cosmos DB SQL API-fiókban tárolt adatkezeléshez
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -63,15 +63,15 @@ Hozzunk létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik egy használni k
 ## <a name="step-2-set-up-your-visual-studio-project"></a><a id="SetupVS"></a>2. lépés: a Visual Studio-projekt beállítása
 
 1. Nyissa meg a Visual studiót, és válassza **az új projekt létrehozása** lehetőséget.
-1. A **create a New Project (új projekt létrehozása** ) területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget a C# számára, majd kattintson a **tovább** gombra.
-1. Nevezze el a projekt *CosmosGettingStartedTutorial* , majd válassza a **Létrehozás** lehetőséget.
+1. A **create a New Project (új projekt létrehozása**) területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget a C# számára, majd kattintson a **tovább** gombra.
+1. Nevezze el a projekt *CosmosGettingStartedTutorial*, majd válassza a **Létrehozás** lehetőséget.
 
     :::image type="content" source="./media/sql-api-get-started/configure-cosmos-getting-started-2019.png" alt-text="A projekt konfigurálása":::
 
 1. A **megoldáskezelő** kattintson a jobb gombbal az új Console-alkalmazásra, amely a Visual Studio-megoldás alatt található, majd válassza a **NuGet-csomagok kezelése** lehetőséget.
 1. A **NuGet csomagkezelő eszközben** válassza a **Tallózás** lehetőséget, és keresse meg a *Microsoft. Azure. Cosmos* elemet. Válassza a **Microsoft. Azure. Cosmos** lehetőséget, és válassza a **telepítés** lehetőséget.
 
-   :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-manage-nuget-2019.png" alt-text="A projekt konfigurálása":::
+   :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-manage-nuget-2019.png" alt-text="A NuGet telepítése Azure Cosmos DB ügyfél-SDK-hoz":::
 
    Az Azure Cosmos DB SQL API ügyfélkódtárának csomagazonosítója a következő: [Microsoft Azure Cosmos DB Client Library](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/).
 
@@ -118,13 +118,13 @@ Nagyszerű! Most, hogy befejeztük a beállítást, lássunk neki a kód megír�
     ```
 
    > [!NOTE]
-   > Ha már ismeri a .NET SDK korábbi verzióját, akkor előfordulhat, hogy ismeri a feltételek *gyűjteményét* és a *dokumentumot* . Mivel Azure Cosmos DB több API-modellt is támogat, a .NET SDK 3,0-es verziója az általános feltételek *tárolóját* és *elemét* használja. Egy *tároló* lehet gyűjtemény, gráf vagy tábla. Egy *elem* lehet dokumentum, Edge/csúcspont vagy sor, és a tartalom egy tárolón belül van. További információ: [adatbázisok, tárolók és elemek használata Azure Cosmos DBban](account-databases-containers-items.md).
+   > Ha már ismeri a .NET SDK korábbi verzióját, akkor előfordulhat, hogy ismeri a feltételek *gyűjteményét* és a *dokumentumot*. Mivel Azure Cosmos DB több API-modellt is támogat, a .NET SDK 3,0-es verziója az általános feltételek *tárolóját* és *elemét* használja. Egy *tároló* lehet gyűjtemény, gráf vagy tábla. Egy *elem* lehet dokumentum, Edge/csúcspont vagy sor, és a tartalom egy tárolón belül van. További információ: [adatbázisok, tárolók és elemek használata Azure Cosmos DBban](account-databases-containers-items.md).
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com). Keresse meg Azure Cosmos DB-fiókját, majd válassza a **kulcsok** lehetőséget.
 
-   :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-portal-keys.png" alt-text="A projekt konfigurálása":::
+   :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-portal-keys.png" alt-text="Azure Cosmos DB kulcsok beolvasása Azure Portal":::
 
-1. A *program.cs* -ben cserélje le az `<your endpoint URL>` értéket az **URI** értékre. Cserélje le az `<your primary key>` értéket az **elsődleges kulcs** értékére.
+1. A *program.cs*-ben cserélje le az `<your endpoint URL>` értéket az **URI** értékre. Cserélje le az `<your primary key>` értéket az **elsődleges kulcs** értékére.
 
 1. A **Main** metódus alatt adjon hozzá egy új, **GetStartedDemoAsync** nevű aszinkron feladatot, amely új példányt hoz létre `CosmosClient` .
 
@@ -279,7 +279,7 @@ Gratulálunk! Sikeresen létrehozott egy Azure Cosmos-adatbázist.
 >
 >
 
-A tárolót a osztály [**CreateContainerIfNotExistsAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_Database_CreateContainerIfNotExistsAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) vagy [**CreateContainerAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerasync?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_Database_CreateContainerAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) metódusával lehet létrehozni `CosmosDatabase` . A tároló elemekből áll (JSON-dokumentumok, ha az SQL API) és a kapcsolódó kiszolgálóoldali alkalmazás-logikát a JavaScriptben, például tárolt eljárásokat, felhasználó által definiált függvényeket és eseményindítókat.
+A tárolót a osztály [**CreateContainerIfNotExistsAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync#Microsoft_Azure_Cosmos_Database_CreateContainerIfNotExistsAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) vagy [**CreateContainerAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerasync#Microsoft_Azure_Cosmos_Database_CreateContainerAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) metódusával lehet létrehozni `CosmosDatabase` . A tároló elemekből áll (JSON-dokumentumok, ha az SQL API) és a kapcsolódó kiszolgálóoldali alkalmazás-logikát a JavaScriptben, például tárolt eljárásokat, felhasználó által definiált függvényeket és eseményindítókat.
 
 1. Másolja és illessze be a metódust a `CreateContainerAsync` `CreateDatabaseAsync` metódus alá. `CreateContainerAsync`  létrehoz egy új tárolót az AZONOSÍTÓval `FamilyContainer` , ha még nem létezik, a `containerId` tulajdonság által particionált mező alapján megadott azonosító használatával `LastName` .
 
@@ -305,13 +305,13 @@ Gratulálunk! Sikeresen létrehozott egy Azure Cosmos-tárolót.
 
 ## <a name="step-6-add-items-to-the-container"></a><a id="CreateDoc"></a>6. lépés: elemek hozzáadása a tárolóhoz
 
-Az osztály [**CreateItemAsync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_) metódusa `CosmosContainer` létrehozhat egy elemeket. Az SQL API használatakor az elemek dokumentumokként vannak kiképezve, amelyek felhasználó által definiált tetszőleges JSON-tartalomnak minősülnek. Most már beszúrhat egy elemeket az Azure Cosmos-tárolóba.
+Az osztály [**CreateItemAsync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_) metódusa `CosmosContainer` létrehozhat egy elemeket. Az SQL API használatakor az elemek dokumentumokként vannak kiképezve, amelyek felhasználó által definiált tetszőleges JSON-tartalomnak minősülnek. Most már beszúrhat egy elemeket az Azure Cosmos-tárolóba.
 
 Először hozzon létre egy `Family` osztályt, amely a minta Azure Cosmos db belül tárolt objektumokat jelöli. A alkalmazásban a, a, az `Parent` `Child` `Pet` `Address` alosztályokat is létrehozjuk `Family` . Az objektumnak a `Id` JSON-ban szerializált tulajdonsággal kell rendelkeznie `id` .
 
 1. Válassza a CTRL + SHIFT + A billentyűkombinációt az **új elem hozzáadása** lehetőség megnyitásához. Adjon hozzá egy új osztályt `Family.cs` a projekthez.
 
-    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-add-family-class-2019.png" alt-text="A projekt konfigurálása":::
+    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-add-family-class-2019.png" alt-text="Képernyőkép új Family.cs osztály projekthez való hozzáadásáról":::
 
 1. Másolja és illessze be a,,, `Family` `Parent` `Child` `Pet` és `Address` osztályt a alkalmazásba `Family.cs` .
 
@@ -323,7 +323,7 @@ Először hozzon létre egy `Family` osztályt, amely a minta Azure Cosmos db be
     [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=AddItemsToContainerAsync)]
 
 
-    A kód ellenőrzi, hogy az azonos AZONOSÍTÓJÚ elemek már nem léteznek-e. Két elemet szúrunk be, egyet az *Andersen családhoz* és a *Wakefield családhoz* .
+    A kód ellenőrzi, hogy az azonos AZONOSÍTÓJÚ elemek már nem léteznek-e. Két elemet szúrunk be, egyet az *Andersen családhoz* és a *Wakefield családhoz*.
 
 1. Adjon hozzá egy hívást a `AddItemsToContainerAsync` `GetStartedDemoAsync` metódushoz.
 
@@ -490,7 +490,7 @@ A megoldás létrehozásához `GetStarted` a következő előfeltételek szüks�
 * Egy [Azure Cosmos db-fiók][cosmos-db-create-account].
 * A GitHubon elérhető [GetStarted](https://github.com/Azure-Samples/cosmos-dotnet-getting-started) megoldás.
 
-Ha vissza szeretné állítani a Azure Cosmos DB .NET SDK-ra mutató hivatkozásokat a Visual Studióban, kattintson a jobb gombbal a megoldásra **megoldáskezelő** , majd válassza a **NuGet-csomagok visszaállítása** lehetőséget. Ezután a *App.config* fájlban frissítse a `EndPointUri` és az értékeket a `PrimaryKey` [3. lépés: Kapcsolódás egy Azure Cosmos db-fiókhoz című témakörben](#Connect)leírtak szerint.
+Ha vissza szeretné állítani a Azure Cosmos DB .NET SDK-ra mutató hivatkozásokat a Visual Studióban, kattintson a jobb gombbal a megoldásra **megoldáskezelő**, majd válassza a **NuGet-csomagok visszaállítása** lehetőséget. Ezután a *App.config* fájlban frissítse a `EndPointUri` és az értékeket a `PrimaryKey` [3. lépés: Kapcsolódás egy Azure Cosmos db-fiókhoz című témakörben](#Connect)leírtak szerint.
 
 Ennyi az egész, hogy létrejöjjön, és Ön így van.
 

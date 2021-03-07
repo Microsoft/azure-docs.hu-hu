@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9ee7116efe931d101a1505bc2d9d866d8ea5b92a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: d91bfee228b946ff564f6d080976f9ce5c12caa4
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943441"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426263"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Oktatóanyag: hang – a robot engedélyezése a Speech SDK használatával
 
@@ -69,7 +69,7 @@ Az oktatóanyag elvégzéséhez a következőket kell elvégeznie:
 
 Az oktatóanyagban létrehozandó ügyfélalkalmazás néhány Azure-szolgáltatást használ. Ha csökkenteni szeretné a robottól érkező válaszok időkorlátját, győződjön meg arról, hogy ezek a szolgáltatások ugyanabban az Azure-régióban találhatók. Ebben a szakaszban egy erőforráscsoportot hoz létre az **USA nyugati** régiójában. Ezt az erőforráscsoportot a bot Framework, a Direct line Speech Channel és a Speech Service egyedi erőforrásainak létrehozásakor fogjuk használni.
 
-1. <a href="https://ms.portal.azure.com/#create/Microsoft.ResourceGroup" target="_blank">Erőforráscsoport létrehozása <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.ResourceGroup" target="_blank">Erőforráscsoport létrehozása </a>
 1. A rendszer a következő információk megadását kéri:
    * **Előfizetés** beállítása az **ingyenes próbaverzióra** (meglévő előfizetést is használhat).
    * Adja meg az **erőforráscsoport** nevét. Javasoljuk, hogy **SpeechEchoBotTutorial-ResourceGroup**.
@@ -95,7 +95,7 @@ Most, hogy már van egy erőforráscsoport egy támogatott régióban, a követk
 
 A beszédfelismerési erőforrások létrehozásához kövesse az alábbi utasításokat:
 
-1. <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Beszédfelismerési szolgáltatás erőforrásának létrehozása <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Beszédfelismerési szolgáltatás erőforrásának létrehozása </a>
 4. A rendszer a következő információk megadását kéri:
    * Adjon **nevet** az erőforrásnak. Javasoljuk, hogy **SpeechEchoBotTutorial**
    * **Előfizetés** esetén győződjön meg arról, hogy az **ingyenes próbaverzió** van kiválasztva.
@@ -115,7 +115,7 @@ Ezen a ponton győződjön meg arról, hogy az erőforráscsoport (**SpeechEchoB
 
 A következő lépés egy App Service terv létrehozása. Az App Service-csomagok határozzák meg a futtatni kívánt webalkalmazások számítási erőforrásait.
 
-1. <a href="https://ms.portal.azure.com/#create/Microsoft.AppServicePlanCreate" target="_blank">Azure App Service terv létrehozása <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.AppServicePlanCreate" target="_blank">Azure App Service terv létrehozása </a>
 4. A rendszer a következő információk megadását kéri:
    * **Előfizetés** beállítása az **ingyenes próbaverzióra** (meglévő előfizetést is használhat).
    * Az **erőforráscsoport** területen válassza a **SpeechEchoBotTutorial-ResourceGroup** elemet.
@@ -236,7 +236,7 @@ Egy kis méretű konfigurációs módosítást kell végeznie, hogy a robot a we
 
 Most, hogy létrehozott egy Azure App Service a robot üzemeltetéséhez, a következő lépés egy **robot-csatornák regisztrációjának** létrehozása. A csatorna regisztrálásának előfeltétele, hogy regisztrálja a robotot a bot Framework csatornákon, beleértve a közvetlen vonalas hangcsatornát. Ha többet szeretne megtudni arról, hogy a robotok hogyan használják a csatornákat, tekintse meg [a bot összekapcsolását a csatornákhoz](/azure/bot-service/bot-service-manage-channels)című témakört.
 
-1. <a href="https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage" target="_blank">Azure bot channels-regisztráció létrehozása <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage" target="_blank">Azure bot channels-regisztráció létrehozása </a>
 2. A rendszer a következő információk megadását kéri:
    * A **bot Handle** esetében írja be a következőt: **SpeechEchoBotTutorial-BotRegistration-# # # #** , és cserélje le **####** a-t a tetszőleges számú elemre. Vegye figyelembe, hogy a robot-leírónak globálisan egyedinek kell lennie. Ha egy robot-leírót ad meg, de hibaüzenetet kap, _a kért bot-azonosító nem érhető el_, válasszon másik számot. Az alábbi példákban a 8726-et használtuk
    * Az **előfizetés** mezőben válassza az **ingyenes próbaverzió** lehetőséget.

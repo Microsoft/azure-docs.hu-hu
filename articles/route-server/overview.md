@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: overview
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 099f9b3769179076491c7c2098ec56faff9847dd
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d868c064b96f58ab3febc1fd3b7f20b74d507cb0
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039835"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437161"
 ---
 # <a name="what-is-azure-route-server-preview"></a>Mi az az Azure Route Server (előzetes verzió)? 
 
@@ -37,7 +37,7 @@ Az Azure Route Server leegyszerűsíti a NVA konfigurálását, felügyeletét �
 
 * Többé nem kell manuálisan frissítenie a [felhasználó által megadott útvonalakat](../virtual-network/virtual-networks-udr-overview.md) , amikor a NVA új útvonalakat jelent, vagy visszavonja a régieket. 
 
-* Többé nem kell konfigurálnia a terheléselosztó-t a NVA előtt a rugalmasság és a teljesítmény érdekében. Ha a NVA több példányát az Azure Route Serverrel együtt futtatja, akkor a BGP-attribútumokat a NVA konfigurálhatja. Ezek a BGP-attribútumok lehetővé teszik az Azure Route Server számára, hogy a NVA-példánynak aktívnak vagy passzívnak kell lennie. 
+* A NVA több példányát is használhatja az Azure Route Serverrel. Megadhatja a BGP-attribútumokat a NVA, és a tervtől függően (például aktív-aktív a teljesítmény vagy az aktív-passzív a rugalmasság érdekében), hogy az Azure Route Server tudja, melyik NVA-példány aktív, vagy melyik a passzív. 
 
 * A NVA és az Azure Route Server közötti interfész egy közös szabványú protokollon alapul. Ha a NVA támogatja a BGP-t, az Azure Route Serverrel is használhatja. További információ: az Útválasztás- [kiszolgáló által támogatott útválasztási protokollok](route-server-faq.md#protocol).
 

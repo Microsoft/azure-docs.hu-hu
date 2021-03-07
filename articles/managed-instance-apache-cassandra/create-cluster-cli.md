@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
-ms.openlocfilehash: 510fcf48091266af255c15aced80651619133aab
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 86fa7e2e45dacb86b6601b699dca46b1b909fd08
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748686"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424699"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-using-azure-cli-preview"></a>Gyors útmutató: Azure felügyelt példány létrehozása az Apache Cassandra-fürthöz az Azure CLI használatával (előzetes verzió)
 
@@ -30,9 +30,8 @@ Ez a rövid útmutató azt ismerteti, hogyan használható az Azure CLI-parancso
 
 * Az [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) a saját üzemeltetésű vagy helyszíni környezethez való csatlakozással. A helyszíni környezetek Azure-hoz való csatlakoztatásával kapcsolatos további információkért tekintse meg a helyszíni [hálózat csatlakoztatása az Azure-hoz](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) című cikket.
 
-## <a name="prerequisites"></a>Előfeltételek
+* Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="create-a-managed-instance-cluster"></a><a id="create-cluster"></a>Felügyelt példány fürt létrehozása
 
@@ -50,16 +49,10 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
    az network vnet create -n <VNet_Name> -l eastus2 -g <Resource_Group_Name> --subnet-name <Subnet Name>
    ```
 
-1. Alkalmazzon speciális engedélyeket a felügyelt példány által igényelt Virtual Network és alhálózatra. Ehhez be kell szereznie a meglévő Virtual Network erőforrás-AZONOSÍTÓját. Futtassa a következő parancsot, és másolja a `Resource ID` paraméter értékét:
+1. Alkalmazzon speciális engedélyeket a felügyelt példány által igényelt Virtual Network és alhálózatra. Használja a `az role assignment create` parancsot, cserélje le a,, `<subscription ID>` `<resource group name>` `<VNet name>` és `<subnet name>` értéket a megfelelő értékekre:
 
    ```azurecli-interactive
-   # get the resource ID of the Virtual Network
-   az network vnet show -n <VNet_name> -g <Resource_Group_Name> --query "id" --output tsv
-
-1. Now apply the special permissions by using the `az role assignment create` command. Use the `Resource ID` parameter from the output of previous command to the `scope` parameter:
-
-   ```azurecli-interactive
-   az role assignment create --assignee e5007d2c-4b13-4a74-9b6a-605d99f03501 --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope <Resource ID>
+   az role assignment create --assignee e5007d2c-4b13-4a74-9b6a-605d99f03501 --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>/subnets/<subnet name>
    ```
 
    > [!NOTE]

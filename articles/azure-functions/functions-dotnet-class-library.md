@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre és tehet közzé olyan kódot a 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: e29b250b25bdafb2b3af26f5669f2ae5ed485457
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 748b4a2a6af1c0183e28af8da732bc90531bee29
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041195"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428398"
 ---
 # <a name="develop-c-functions-using-azure-functions"></a>C# függvények fejlesztése Azure Functions használatával
 
@@ -23,24 +23,40 @@ Ez a cikk bemutatja, hogyan fejlesztheti Azure Functions a C# használatával a 
 C#-fejlesztőként a következő cikkek egyike is érdekli:
 
 | Első lépések | Alapelvek| Interaktív tanulás/minták |
-| -- | -- | -- | 
+|--| -- |--| 
 | <ul><li>[A Visual Studio használata](functions-create-your-first-function-visual-studio.md)</li><li>[A Visual Studio Code használata](create-first-function-vs-code-csharp.md)</li><li>[Parancssori eszközök használata](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li><li>[A Visual Studio fejlesztése](functions-develop-vs.md)</li><li>[Függőséginjektálás](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[Kiszolgáló nélküli alkalmazás létrehozása](/learn/paths/create-serverless-applications/)</li><li>[C#-minták](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
 
 Azure Functions támogatja a C# és C# programozási nyelveket. Ha a C# használatával kapcsolatos útmutatást keres [a Azure Portalban](functions-create-function-app-portal.md), tekintse meg a [c# parancsfájl (. CSX) fejlesztői referenciáját](functions-reference-csharp.md).
 
 ## <a name="supported-versions"></a>Támogatott verziók
 
-A functions futtatókörnyezet verziói a .NET adott verziójával működnek. Az alábbi táblázat a .NET Core és a .NET-keretrendszer és a .NET Core legmagasabb szintjét mutatja be, amelyek a projektben a függvények adott verziójával használhatók. 
+A functions futtatókörnyezet verziói a .NET adott verziójával működnek. További információ a functions-verziókról: [Azure functions Runtime Versions – áttekintés](functions-versions.md)
+
+Az alábbi táblázat a .NET Core vagy a .NET-keretrendszer azon legmagasabb szintjét mutatja, amely a függvények adott verziójával használható. 
 
 | Functions futtatókörnyezet verziója | .NET-es verzió max. verziója |
 | ---- | ---- |
-| Függvények 3. x | .NET Core 3.1<br/>.NET 5,0<sup>*</sup> |
-| Functions 2.x | .NET Core 2.2 |
+| Függvények 3. x | .NET Core 3.1<br/>.NET 5,0<sup>1</sup> |
+| Functions 2.x | .NET Core 2,2<sup>2</sup> |
 | Functions 1.x | .NET-keretrendszer 4,7 |
 
-<sup>*</sup>[Folyamaton kívül](dotnet-isolated-process-guide.md)kell futnia.
+<sup>1</sup> [a folyamaton kívül](dotnet-isolated-process-guide.md)kell futnia.  
+<sup>2</sup> a részletekért lásd: [functions v2. x megfontolások](#functions-v2x-considerations).   
 
-További információ: [Azure functions Runtime-verziók áttekintése](functions-versions.md)
+A Azure Functions kiadásokról szóló legfrissebb híreket, beleértve az egyes régebbi alverziók eltávolítását, a [Azure app Service hirdetmények](https://github.com/Azure/app-service-announcements/issues)figyelését.
+
+### <a name="functions-v2x-considerations"></a>Functions v2. x szempontok
+
+A legújabb 2. x verziót () tároló alkalmazások `~2` automatikusan frissülnek, hogy a .net Core 3,1-as verzióra fussanak. A .NET Core-verziók közötti változások miatt nem minden, a .NET Core 2,2-es verzióra fejlesztett és összeállított alkalmazás biztonságosan frissíthető a .NET Core 3,1-ra. Ezt a frissítést letilthatja, ha a Function alkalmazást a következőre rögzíti `~2.0` . A függvények a nem kompatibilis API-kat is észlelik, és az alkalmazást a .NET Core 3,1-es verzióban való `~2.0` helytelen végrehajtás megakadályozása érdekében rögzíthetik. 
+
+>[!NOTE]
+>Ha a Function alkalmazás rögzítve van `~2.0` , és megváltoztatja ezt a verzió célját `~2` , akkor a Function alkalmazás megszakadhat. Ha ARM-sablonok használatával végzi az üzembe helyezést, ellenőrizze a verziót a sablonokban. Ha ez történik, módosítsa a verziót vissza a cél értékre, `~2.0` és javítsa ki a kompatibilitási problémákat. 
+
+Az alkalmazások `~2.0` a .net Core 2,2-on folytatott futtatását célozzák meg. A .NET Core ezen verziója már nem kap biztonsági és egyéb karbantartási frissítéseket. További információkért tekintse meg [ezt a bejelentési oldalt](https://github.com/Azure/app-service-announcements/issues/266). 
+
+A függvények a lehető leghamarabb, a .NET Core 3,1-kompatibilisek legyenek. Miután megoldotta ezeket a problémákat, módosítsa a verziót vissza, `~2` vagy frissítsen a verzióra `~3` . Ha többet szeretne megtudni a függvények futtatókörnyezetének megcélzásáról, tekintse meg a következő témakört: [Azure functions Runtime-verziók célja](set-runtime-version.md).
+
+Ha prémium szintű vagy dedikált (App Service) csomagon keresztül fut a Linux rendszeren, az adott rendszerkép megcélzásához inkább egy adott rendszerképet kell `linuxFxVersion` `DOCKER|mcr.microsoft.com/azure-functions/dotnet:2.0.14786-appservice` beállítania `linuxFxVersion` . [](set-runtime-version.md#manual-version-updates-on-linux)
 
 ## <a name="functions-class-library-project"></a>Functions Class Library-projekt
 
@@ -90,7 +106,7 @@ Az trigger attribútum meghatározza az trigger típusát, és a bemeneti adatok
 
 ## <a name="method-signature-parameters"></a>Metódus-aláírás paraméterei
 
-A metódus aláírása nem az trigger attribútummal használt paramétereket tartalmazhat. Íme néhány további paraméter, amelyet felvehet:
+A metódus aláírása nem az trigger attribútummal használt paramétereket tartalmazhat. Íme néhány további paraméter, amely a következőket tartalmazza:
 
 * A [bemeneti és kimeneti kötések](functions-triggers-bindings.md) úgy vannak megjelölve, hogy az attribútumokkal díszítsék őket.  
 * A `ILogger` `TraceWriter` (z) vagy ([1. x verziójú](functions-versions.md#creating-1x-apps)) paraméter a [naplózáshoz](#logging).
@@ -147,7 +163,7 @@ public static class BindingExpressionsExample
 
 A létrehozási folyamat létrehoz egy *function.js* fájlt a Build mappában található Function mappában. Amint azt korábban említettük, a fájlt nem közvetlenül kell szerkeszteni. Nem módosíthatja a kötési konfigurációt, vagy letilthatja a függvényt a fájl szerkesztésével. 
 
-Ennek a fájlnak a célja, hogy információt szolgáltasson a méretezési vezérlő számára [a használati tervre vonatkozó döntések skálázásához](event-driven-scaling.md). Emiatt a fájl csak trigger-információkkal, nem bemeneti vagy kimeneti kötésekkel rendelkezik.
+Ennek a fájlnak a célja, hogy információt szolgáltasson a méretezési vezérlő számára [a használati tervre vonatkozó döntések skálázásához](event-driven-scaling.md). Emiatt a fájl csak trigger-információkkal, nem bemeneti/kimeneti kötésekkel rendelkezik.
 
 A fájlhoz generált *function.js* tartalmaz egy `configurationSource` tulajdonságot, amely azt jelzi, hogy a futtatókörnyezet .net-attribútumokat használ a kötésekhez ahelyett, hogy *function.jsa* konfiguráción. Bemutatunk egy példát:
 
@@ -172,7 +188,7 @@ A fájlhoz generált *function.js* tartalmaz egy `configurationSource` tulajdons
 
 A NuGet-csomag [Microsoft \. net \. SDK \. függvények](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions)a fájl-létrehozási *function.js* . 
 
-Ugyanez a csomag a functions futtatókörnyezet 1. x és 2. x verziójára is használható. A cél-keretrendszer az 1. x projekt megkülönböztetése egy 2. x projektből. Az alábbiakban láthatók a *. csproj* -fájlok azon részei, amelyek különböző cél-keretrendszereket és azonos csomagot mutatnak be `Sdk` :
+Ugyanez a csomag a functions futtatókörnyezet 1. x és 2. x verziójára is használható. A cél-keretrendszer az 1. x projekt megkülönböztetése egy 2. x projektből. Az alábbiakban a *. csproj* -fájlok megfelelő részei láthatók, amelyek az azonos csomaggal rendelkező különböző cél-keretrendszereket mutatják be `Sdk` :
 
 # <a name="v2x"></a>[v2. x +](#tab/v2)
 
@@ -625,7 +641,7 @@ public static class IBinderExample
 
 A [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs) meghatározza a [Storage blob](functions-bindings-storage-blob.md) bemeneti vagy kimeneti kötését, és a [TextWriter](/dotnet/api/system.io.textwriter) egy támogatott kimeneti kötési típus.
 
-### <a name="multiple-attribute-example"></a>Több attribútum – példa
+### <a name="multiple-attributes-example"></a>Több attribútum – példa
 
 Az előző példában beolvassa a Function alkalmazás fő Storage-fiókjának (azaz) az alkalmazás beállítását `AzureWebJobsStorage` . A Storage-fiókhoz a [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) hozzáadásával és az attribútum tömbbe való átadásával adhat meg egyéni alkalmazás-beállítást `BindAsync<T>()` . Használjon `Binder` paramétert, nem `IBinder` .  Például:
 

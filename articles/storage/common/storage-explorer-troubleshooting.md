@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 9a20db58846ca48afb4fb256adae58e1fccdff3a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 15df9b38abe35fe3eefad2fa160e1c1f16fe7aa7
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98875736"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439459"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Az Azure Storage Explorer hibaelhárítási útmutatója
 
@@ -58,14 +58,22 @@ Ha nincs olyan szerepköre, amely felügyeleti rétegbeli engedélyeket biztosí
 
 ### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>Mi a teendő, ha nem tudom beolvasni a felügyeleti réteghez szükséges engedélyeket a rendszergazdától?
 
-Ha blob-tárolókat vagy-várólistákat szeretne elérni, az Azure-beli hitelesítő adataival csatolhatja ezeket az erőforrásokat.
+Ha a blob-tárolókat, ADLS Gen2 tárolókat vagy címtárakat vagy várólistákat szeretné elérni, az Azure-beli hitelesítő adataival csatolhatja ezeket az erőforrásokat.
 
 1. Nyissa meg a csatlakozási párbeszédpanelt.
-2. Válassza az "erőforrás hozzáadása Azure Active Directory (Azure AD)" lehetőséget. Kattintson a Tovább gombra.
-3. Válassza ki azt a felhasználói fiókot és bérlőt, amelyhez hozzá kívánja rendelni az erőforrást. Kattintson a Tovább gombra.
-4. Válassza ki az erőforrás típusát, adja meg az erőforrás URL-címét, és adjon meg egy egyedi megjelenítendő nevet a kapcsolódáshoz. Válassza a tovább, majd a kapcsolat lehetőséget.
+1. Válassza ki azt az erőforrás-típust, amelyhez csatlakozni szeretne.
+1. Válassza **a bejelentkezés Azure Active Directory (Azure ad) használatával** lehetőséget. Kattintson a **Tovább** gombra.
+1. Válassza ki azt a felhasználói fiókot és bérlőt, amelyhez hozzá kívánja rendelni az erőforrást. Kattintson a **Tovább** gombra.
+1. Adja meg az erőforrás URL-címét, és adjon meg egy egyedi megjelenítendő nevet a kapcsolódáshoz. Válassza a **tovább** , majd a **kapcsolat** lehetőséget.
 
-Más erőforrástípusok esetében jelenleg nem áll rendelkezésre Azure RBAC kapcsolatos megoldás. Megkerülő megoldásként igényelhet SAS URI-t az [erőforráshoz való csatoláshoz](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#use-a-shared-access-signature-uri).
+Más erőforrástípusok esetében jelenleg nem áll rendelkezésre Azure RBAC kapcsolatos megoldás. Megkerülő megoldásként igényelhet SAS URL-címet, majd csatolja az erőforráshoz a következő lépések végrehajtásával:
+
+1. Nyissa meg a csatlakozási párbeszédpanelt.
+1. Válassza ki azt az erőforrás-típust, amelyhez csatlakozni szeretne.
+1. Válassza a **közös hozzáférési aláírás (SAS)** lehetőséget. Kattintson a **Tovább** gombra.
+1. Adja meg a kapott SAS URL-címet, és adjon meg egy egyedi megjelenítendő nevet a kapcsolatok számára. Válassza a **tovább** , majd a **kapcsolat** lehetőséget.
+ 
+További információ az erőforrásokhoz való csatolásról: [csatolás egy adott erőforráshoz](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#attach-to-an-individual-resource).
 
 ### <a name="recommended-azure-built-in-roles"></a>Ajánlott Azure beépített szerepkörök
 
@@ -424,7 +432,7 @@ Ha a Azure Portal **Megnyitás a Explorerben** gomb nem működik, győződjön 
 * Google Chrome
 * Microsoft Internet Explorer
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha egyik megoldás sem működik, [Nyisson meg egy problémát a githubon](https://github.com/Microsoft/AzureStorageExplorer/issues). Ezt úgy is megteheti, hogy kijelöli a **jelentéssel kapcsolatos problémát a GitHub** gombra a bal alsó sarokban.
 

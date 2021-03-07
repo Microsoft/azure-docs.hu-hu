@@ -6,14 +6,14 @@ author: vikancha-MSFT
 ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 01/09/2019
+ms.date: 11/11/2019
 ms.author: vikancha
-ms.openlocfilehash: 553a0fb1f7eb578bcd5c89c1aec45c38a1d2305e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 766f6cb0515f45fa11ee26ba23e79ae51fff5ce3
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101672536"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102436090"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>NVIDIA GPU-illesztőprogramok telepítése a Linuxon futó N sorozatú virtuális gépeken
 
@@ -29,7 +29,6 @@ Az N sorozatú virtuális gépekhez tartozó specifikációk, a tárolókapacit�
 
 Az alábbi lépésekkel telepítheti a CUDA-illesztőprogramokat az NVIDIA CUDA Toolkit-ből az N sorozatú virtuális gépeken. 
 
-
 A C és C++ fejlesztők igény szerint telepíthetik a teljes eszközkészletet a GPU-gyorsított alkalmazások létrehozásához. További információ: a [CUDA telepítési útmutatója](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
 
 A CUDA-illesztőprogramok telepítéséhez létesítsen SSH-kapcsolatokat az egyes virtuális gépekhez. A következő parancs futtatásával ellenőrizheti, hogy a rendszer rendelkezik-e CUDA-kompatibilis GPU-val:
@@ -41,6 +40,7 @@ A következő példához hasonló kimenet jelenik meg (NVIDIA Tesla K80 kártya)
 
 ![lspci parancs kimenete](./media/n-series-driver-setup/lspci.png)
 
+a lspci felsorolja a virtuális gépen található PCIe-eszközöket, beleértve a InfiniBand NIC-t és a GPU-t, ha van ilyen. Ha a lspci nem ad vissza sikeres értéket, lehet, hogy telepítenie kell a következőt: LIS/RHEL (utasítások alább).
 Ezután futtassa az adott disztribúcióhoz tartozó telepítési parancsokat.
 
 ### <a name="ubuntu"></a>Ubuntu 
@@ -48,19 +48,14 @@ Ezután futtassa az adott disztribúcióhoz tartozó telepítési parancsokat.
 1. Töltse le és telepítse a CUDA-illesztőprogramokat az NVIDIA webhelyről. Például Ubuntu 16,04 LTS esetén:
    ```bash
    CUDA_REPO_PKG=cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
-
    wget -O /tmp/${CUDA_REPO_PKG} https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
 
    sudo dpkg -i /tmp/${CUDA_REPO_PKG}
-
    sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub 
-
    rm -f /tmp/${CUDA_REPO_PKG}
 
    sudo apt-get update
-
    sudo apt-get install cuda-drivers
-
    ```
 
    A telepítés több percet is igénybe vehet.
@@ -79,11 +74,8 @@ Javasoljuk, hogy a telepítés után rendszeresen frissítse a CUDA-illesztőpro
 
 ```bash
 sudo apt-get update
-
 sudo apt-get upgrade -y
-
 sudo apt-get dist-upgrade -y
-
 sudo apt-get install cuda-drivers
 
 sudo reboot
@@ -95,42 +87,33 @@ sudo reboot
 
    ```
    sudo yum install kernel kernel-tools kernel-headers kernel-devel
-  
-   sudo reboot
-
-2. Install the latest [Linux Integration Services for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106). Check if LIS is required by verifying the results of lspci. If all GPU devices are listed as expected, installing LIS is not required.
-
-Skip this step if you plan to use CentOS 7.8(or higher) as LIS is no longer required for these versions.
-
-Please note that LIS is applicable to Red Hat Enterprise Linux, CentOS, and the Oracle Linux Red Hat Compatible Kernel 5.2-5.11, 6.0-6.10, and 7.0-7.7. Please refer to the [Linux Integration Services documentation] (https://www.microsoft.com/en-us/download/details.aspx?id=55106) for more details. 
-
-Skip this step if you are not using the Kernel versions listed above.
-
-   ```bash
-   wget https://aka.ms/lis
- 
-   tar xvzf lis
- 
-   cd LISISO
- 
-   sudo ./install.sh
- 
    sudo reboot
    ```
- 
+
+2. Telepítse a [Hyper-V és az Azure legújabb linuxos integrációs szolgáltatásait](https://www.microsoft.com/download/details.aspx?id=55106). Ellenőrizze, hogy szükséges-e a LIS a lspci eredményeinek ellenőrzéséhez. Ha az összes GPU-eszköz a várt módon szerepel (és dokumentálva van), a LIS telepítése nem szükséges.
+
+   Vegye figyelembe, hogy a LIS a Red Hat Enterprise Linux, a CentOS és a Oracle Linux Red hat-kompatibilis kernel 5.2-5.11, 6.0-6.10 és 7.0-7.7 rendszerre vonatkozik. Tekintse át a [Linux Integration Services dokumentációját] ( https://www.microsoft.com/en-us/download/details.aspx?id=55106) További részletekért. 
+   Ugorja át ezt a lépést, ha a CentOS/RHEL 7,8 (vagy újabb verzió) használatát tervezi, mert az nem szükséges a következő verziókhoz: LIS.
+
+      ```bash
+      wget https://aka.ms/lis
+      tar xvzf lis
+      cd LISISO
+
+      sudo ./install.sh
+      sudo reboot
+      ```
+
 3. Kapcsolódjon újra a virtuális géphez, és folytassa a telepítést a következő parancsokkal:
 
    ```bash
    sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-
    sudo yum install dkms
-
+   
    CUDA_REPO_PKG=cuda-repo-rhel7-10.0.130-1.x86_64.rpm
-
    wget https://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
 
    sudo rpm -ivh /tmp/${CUDA_REPO_PKG}
-
    rm -f /tmp/${CUDA_REPO_PKG}
 
    sudo yum install cuda-drivers
@@ -200,20 +183,15 @@ Az NVIDIA GRID-illesztőprogramok NV-vagy NVv3-sorozatú virtuális gépekre val
 
    ```bash
    sudo apt-get update
-
    sudo apt-get upgrade -y
-
    sudo apt-get dist-upgrade -y
-
    sudo apt-get install build-essential ubuntu-desktop -y
-   
    sudo apt-get install linux-azure -y
    ```
 3. Tiltsa le a Nouveau kernel illesztőprogramját, amely nem kompatibilis az NVIDIA-illesztőprogrammal. (Csak az NVIDIA-illesztőprogramot használja az NV-vagy NVv2-alapú virtuális gépeken.) Ehhez hozzon létre egy `/etc/modprobe.d` nevű fájlt `nouveau.conf` a következő tartalommal:
 
    ```
    blacklist nouveau
-
    blacklist lbm-nouveau
    ```
 
@@ -228,9 +206,7 @@ Az NVIDIA GRID-illesztőprogramok NV-vagy NVv3-sorozatú virtuális gépekre val
 
    ```bash
    wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=874272  
-
    chmod +x NVIDIA-Linux-x86_64-grid.run
-
    sudo ./NVIDIA-Linux-x86_64-grid.run
    ``` 
 
@@ -263,13 +239,9 @@ Az NVIDIA GRID-illesztőprogramok NV-vagy NVv3-sorozatú virtuális gépekre val
  
    ```bash  
    sudo yum update
- 
    sudo yum install kernel-devel
- 
    sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
- 
    sudo yum install dkms
-   
    sudo yum install hyperv-daemons
    ```
 
@@ -277,26 +249,22 @@ Az NVIDIA GRID-illesztőprogramok NV-vagy NVv3-sorozatú virtuális gépekre val
 
    ```
    blacklist nouveau
-
    blacklist lbm-nouveau
    ```
- 
-3. Indítsa újra a virtuális gépet, kapcsolódjon újra, és telepítse a [Hyper-V és az Azure legújabb linuxos integrációs szolgáltatásait](https://www.microsoft.com/download/details.aspx?id=55106). Ellenőrizze, hogy szükséges-e a LIS a lspci eredményeinek ellenőrzéséhez. Ha az összes GPU-eszköz a várt módon van felsorolva, akkor a LIS telepítése nem szükséges. 
 
-Ugorja át ezt a lépést, ha a CentOS/RHEL 7,8-es vagy újabb verzióját használja.
- 
-   ```bash
-   wget https://aka.ms/lis
+3. Indítsa újra a virtuális gépet, kapcsolódjon újra, és telepítse a [Hyper-V és az Azure legújabb linuxos integrációs szolgáltatásait](https://www.microsoft.com/download/details.aspx?id=55106). Ellenőrizze, hogy szükséges-e a LIS a lspci eredményeinek ellenőrzéséhez. Ha az összes GPU-eszköz a várt módon szerepel (és dokumentálva van), a LIS telepítése nem szükséges. 
 
-   tar xvzf lis
+   Ugorja át ezt a lépést, ha a CentOS/RHEL 7,8 (vagy újabb verzió) használatát tervezi, mert az nem szükséges a következő verziókhoz: LIS.
 
-   cd LISISO
+      ```bash
+      wget https://aka.ms/lis
+      tar xvzf lis
+      cd LISISO
 
-   sudo ./install.sh
+      sudo ./install.sh
+      sudo reboot
 
-   sudo reboot
-
-   ```
+      ```
  
 4. Kapcsolódjon újra a virtuális géphez, és futtassa a `lspci` parancsot. Győződjön meg arról, hogy az NVIDIA M60 kártya vagy kártya PCI-eszközként jelenik meg.
  
@@ -304,7 +272,6 @@ Ugorja át ezt a lépést, ha a CentOS/RHEL 7,8-es vagy újabb verzióját haszn
 
    ```bash
    wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=874272  
-
    chmod +x NVIDIA-Linux-x86_64-grid.run
 
    sudo ./NVIDIA-Linux-x86_64-grid.run
@@ -384,7 +351,7 @@ Ezután hozzon létre egy bejegyzést a frissítési parancsfájlhoz, `/etc/rc.d
 
 * Az adatmegőrzési módot úgy állíthatja be, hogy a `nvidia-smi` parancs kimenete gyorsabb legyen, ha kártyákat kell lekérdezni. Az adatmegőrzési mód beállításához futtassa a következőt: `nvidia-smi -pm 1` . Vegye figyelembe, hogy ha a virtuális gép újraindul, a Mode (mód) beállítás eltűnik. A mód beállítását bármikor végrehajthatja indításkor.
 * Ha a legújabb verzióra frissítette az NVIDIA CUDA-illesztőprogramokat, és megkeresi az RDMA-kapcsolatot, akkor [a kapcsolat újbóli létrehozásához telepítse újra a RDMA-illesztőprogramokat](#rdma-network-connectivity) . 
-* Ha egy bizonyos CentOS/RHEL operációsrendszer-verzió (vagy kernel) nem támogatott a LIS esetében, a rendszer a "nem támogatott kernel-verzió" hibát dobta. Jelentse ezt a hibát az operációs rendszer és a kernel verzióival együtt.
+* A LIS telepítésekor, ha egy bizonyos CentOS/RHEL operációsrendszer-verzió (vagy kernel) nem támogatott a LIS esetében, a rendszer a "nem támogatott kernel-verzió" hibát dobta. Jelentse ezt a hibát az operációs rendszer és a kernel verzióival együtt.
 
 ## <a name="next-steps"></a>Következő lépések
 

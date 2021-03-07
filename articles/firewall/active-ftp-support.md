@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 01/22/2021
+ms.date: 03/05/2021
 ms.author: victorh
-ms.openlocfilehash: 47bced3c3c4f01212af6919d51adc5dfc2e6e1b5
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: aa543b32efcd1897eb0ee7d8b477742705095ad9
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102200062"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430734"
 ---
 # <a name="azure-firewall-active-ftp-support"></a>Azure Firewall aktív FTP-támogatás
 
@@ -20,8 +20,6 @@ Az aktív FTP szolgáltatással az FTP-kiszolgáló kezdeményezi az adatkapcsol
 
 Alapértelmezés szerint az aktív FTP-támogatás le van tiltva a Azure Firewallon az FTP-parancs használatával történő FTP-visszafordulási támadásokkal szembeni védelem érdekében `PORT` . A Azure PowerShell, az Azure CLI vagy egy Azure ARM-sablon használatával történő üzembe helyezéskor azonban engedélyezheti az aktív FTP-t.
 
-> [!NOTE]
-> Az aktív FTP jelenleg csak a virtuális hálózatban üzembe helyezett tűzfalak esetében támogatott. A virtuális WAN-támogatás később lesz hozzáadva.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 

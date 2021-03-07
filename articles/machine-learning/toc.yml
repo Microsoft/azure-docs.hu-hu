@@ -454,6 +454,8 @@
           href: how-to-understand-automated-ml.md
         - name: Az ONNX modell használata a .NET-alkalmazásban
           href: how-to-use-automl-onnx-model-dotnet.md
+        - name: Automatizált ML – hibakeresés
+          href: how-to-troubleshoot-auto-ml.md
     - name: Modellek üzembe helyezése és kiszolgálása
       items:
         - name: Az üzembe helyezés módja és helye

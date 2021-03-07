@@ -6,17 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 9a9625dcf40ae7d11e1154fc89b7f04652c8ca16
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 1b38a9807e05385a378fa6103710fb6b393c7b1f
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635840"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443148"
 ---
 # <a name="kubernetes-role-based-access-control-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes szerepköralapú hozzáférés-vezérlés a Azure Stack Edge Pro GPU-eszközön
 
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 A Azure Stack Edge Pro-eszközön a számítási szerepkör konfigurálásakor létrejön egy Kubernetes-fürt. A Kubernetes szerepköralapú hozzáférés-vezérlés (Kubernetes RBAC) segítségével korlátozhatja az eszközön található fürterőforrások elérését.
 
@@ -39,13 +40,13 @@ Az Azure Stack Edge Pro-eszköz a következő névtereket tartalmazhatja:
 - **Rendszernévtér** – ez a névtér az alapvető erőforrások, például a DNS és a proxy, illetve a Kubernetes irányítópult. Általában nem telepítheti saját alkalmazásait ebbe a névtérbe. Használja ezt a névteret a Kubernetes-fürtökkel kapcsolatos problémák hibakereséséhez. 
 
     Az eszközön több rendszernévtér található, és az ezekhez a rendszernévtérekhez tartozó nevek vannak fenntartva. Itt látható a fenntartott rendszernévtérek listája: 
-    - Kube – rendszerek
+    - kube-system
     - metallb – rendszerek
     - dbe – névtér
     - alapértelmezett
     - kubernetes – irányítópult
     - Kube – csomópont-bérlet
-    - Kube – nyilvános
+    - kube-public
 
 
     Ügyeljen arra, hogy ne használjon fenntartott neveket a létrehozott felhasználói névterekhez. 
@@ -61,15 +62,15 @@ Az Azure Stack Edge Pro-eszköz a következő névtereket tartalmazhatja:
 
 A valós világban fontos a fürtöt több névtérre osztani. 
 
-- **Több felhasználó** : Ha több felhasználóval is rendelkezik, akkor több névtér is lehetővé teszi, hogy ezek a felhasználók az alkalmazásait és szolgáltatásait az adott névterekben, egymástól elkülönítve telepíthessék. 
-- **Egyetlen felhasználó** : akkor is, ha egyetlen felhasználó van, több névtér is lehetővé teszi, hogy a felhasználó ugyanazon a Kubernetes-fürtön futtassa az alkalmazások több verzióját.
+- **Több felhasználó**: Ha több felhasználóval is rendelkezik, akkor több névtér is lehetővé teszi, hogy ezek a felhasználók az alkalmazásait és szolgáltatásait az adott névterekben, egymástól elkülönítve telepíthessék. 
+- **Egyetlen felhasználó**: akkor is, ha egyetlen felhasználó van, több névtér is lehetővé teszi, hogy a felhasználó ugyanazon a Kubernetes-fürtön futtassa az alkalmazások több verzióját.
 
 ### <a name="roles-and-rolebindings"></a>Szerepkörök és RoleBindings
 
 A Kubernetes a szerepkör és a szerepkör-kötés fogalmával rendelkezik, amely lehetővé teszi, hogy a felhasználók vagy erőforrások számára a névtér szintjén és a fürt szintjén biztosítson engedélyeket. 
 
-- **Szerepkörök** : megadhatja a felhasználóknak az engedélyeket **szerepkörként** , majd **szerepkörök** használatával engedélyeket adhat meg a névtéren belül. 
-- **RoleBindings** : Miután definiálta a szerepköröket, a **RoleBindings** használatával rendelhet hozzá szerepköröket egy adott névtérhez. 
+- **Szerepkörök**: megadhatja a felhasználóknak az engedélyeket **szerepkörként** , majd **szerepkörök** használatával engedélyeket adhat meg a névtéren belül. 
+- **RoleBindings**: Miután definiálta a szerepköröket, a **RoleBindings** használatával rendelhet hozzá szerepköröket egy adott névtérhez. 
 
 Ez a megközelítés lehetővé teszi, hogy logikailag elkülönítse egyetlen Kubernetes-fürtöt, és a felhasználók csak a hozzájuk rendelt névtérben tudják elérni az alkalmazás erőforrásait. 
 
@@ -103,7 +104,7 @@ Ha névtereket és felhasználókat használ a Azure Stack Edge Pro-eszközökö
 - A már fenntartott névvel rendelkező felhasználókat nem lehet létrehozni. Például `aseuser` egy fenntartott felhasználó, és nem használható.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretné megtudni, hogyan hozhat létre egy felhasználót, hozzon létre egy névteret, és engedélyezze a hozzáférést a névtérhez, tekintse meg a [Kubernetes-fürt elérése a kubectl keresztül](azure-stack-edge-gpu-create-kubernetes-cluster.md)című témakört.
 

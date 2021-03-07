@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: bd911868028825164cdd9627bf6b5c6d56de7164
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 28940272d39a08d790fe2cd913df808b02e7f426
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98679618"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441890"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Az Azure Synapse SQL architektúrája 
 
@@ -35,7 +35,7 @@ A szinapszis SQL egy node-alapú architektúrát használ. Az alkalmazások a T-
 
 Az Azure szinapszis SQL-vezérlő csomópontja elosztott lekérdezési motort használ a párhuzamos feldolgozásra irányuló lekérdezések optimalizálásához, majd a műveleteket a számítási csomópontok számára továbbítja a munkájukat párhuzamosan. 
 
-A kiszolgáló nélküli SQL-készlet vezérlési csomópontja elosztott lekérdezés-feldolgozási (DQP) motort használ a felhasználói lekérdezések elosztott végrehajtásának optimalizálására és összehangolására azáltal, hogy a számítási csomópontokon végrehajtandó kisebb lekérdezésekre osztja fel azokat. A rendszer minden kis lekérdezést feladatnak nevez, és elosztott végrehajtási egységet jelöl. Beolvassa a fájl (oka) t a tárolóból, a más feladatokból beolvasott más feladatokból, csoportokból vagy rendelésekből származó adatokat is összekapcsol. 
+A kiszolgáló nélküli SQL-készlet vezérlési csomópontja elosztott lekérdezés-feldolgozási (DQP) motort használ a felhasználói lekérdezések elosztott végrehajtásának optimalizálására és összehangolására azáltal, hogy a számítási csomópontokon végrehajtandó kisebb lekérdezésekre osztja fel azokat. A rendszer minden kis lekérdezést feladatnak nevez, és elosztott végrehajtási egységet jelöl. Beolvassa a fájl (oka) t a tárolóból, összekapcsolja a más feladatokból beolvasott más tevékenységekkel, csoportokkal vagy rendelésekkel kapcsolatos adatokat. 
 
 A számítási csomópontok az összes felhasználói adatot az Microsoft Azure Storage-ban tárolják, és futtatják a párhuzamos lekérdezéseket. Az adatáthelyezési szolgáltatás (DMS) egy rendszerszintű belső szolgáltatás, amely szükség szerint áthelyezi az adatokat a csomópontok között a lekérdezések párhuzamos futtatásához és pontos eredmények visszaadásához. 
 
@@ -49,7 +49,7 @@ A leválasztott tárolással és számítással a szinapszis SQL egyik használa
 
 A szinapszis SQL kihasználja az Azure Storage-t a felhasználói adatai biztonságának megőrzése érdekében. Mivel az Azure Storage tárolja és kezeli az adatait, külön díjat számítunk fel a tárterület-felhasználásért. 
 
-A kiszolgáló nélküli SQL-készlet lehetővé teszi, hogy a fájlok lekérdezését csak olvasható módon lehessen lekérdezni, az SQL-készlet pedig az adatbevitelt is lehetővé teszi. Ha az adat betöltése dedikált SQL-készletbe történik, az adat **elosztásra** kerül a rendszer teljesítményének optimalizálása érdekében. Hogy melyik horizontális skálázási mintát szeretné használni az adatok elosztásához, azt a tábla definiálásakor döntheti el. Ezek a horizontális skálázási minták támogatottak:
+A kiszolgáló nélküli SQL-készlet lehetővé teszi, hogy lekérdezze a tárolt adatokról a Lake-fájlokat, míg a dedikált SQL-készlet lehetővé teszi az adatok lekérdezését és betöltését a Microsoft-fájlokba. Ha az adat betöltése dedikált SQL-készletbe történik, az adat **elosztásra** kerül a rendszer teljesítményének optimalizálása érdekében. Hogy melyik horizontális skálázási mintát szeretné használni az adatok elosztásához, azt a tábla definiálásakor döntheti el. Ezek a horizontális skálázási minták támogatottak:
 
 * Kivonat
 * Ciklikus időszeletelés
@@ -107,7 +107,7 @@ Ciklikus időszeleteléses elosztott tábla egyenletesen osztja el az adatokat a
 ## <a name="replicated-tables"></a>Replikált táblák
 A kisméretű tábláknál a replikált táblák nyújtják a leggyorsabb lekérdezési teljesítményt.
 
-A replikált tábla a tábla teljes másolatát gyorsítótárazza az egyes számítási csomópontokon. Ebből következően a replikál tábla esetében nincs szükség adatadásra a számítási csomópontok között az összekapcsolási vagy aggregációs művelet előtt. A replikált táblákat legjobban kisméretű táblákkal lehet kihasználni. További tárterületre van szükség, és az adatírás során felmerülő további terhelés, amely a nagyméretű táblákat nem praktikus formában hajtja végre. 
+A replikált tábla a tábla teljes másolatát gyorsítótárazza az egyes számítási csomópontokon. Így a táblázatok replikálásával megszűnik az adatok átvitele a számítási csomópontok között a csatlakozás vagy összesítés előtt. A replikált táblákat legjobban kisméretű táblákkal lehet kihasználni. További tárterületre van szükség, és az adatírás során felmerülő további terhelés, amely a nagyméretű táblákat nem praktikus formában hajtja végre. 
 
 Az alábbi ábrán egy olyan replikált tábla látható, amely az első eloszlásban van gyorsítótárazva az egyes számítási csomópontokon. 
 
@@ -115,4 +115,4 @@ Az alábbi ábrán egy olyan replikált tábla látható, amely az első eloszl�
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy már ismeri a szinapszis SQL-t, ismerkedjen meg [a DEDIKÁLT SQL-készlet gyors létrehozásával](../quickstart-create-sql-pool-portal.md) és a [mintaadatok betöltésével](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) (./SQL-Data-Warehouse-Load-Sample-Databases.MD). Vagy elkezdheti [használni a kiszolgáló nélküli SQL-készletet](../quickstart-sql-on-demand.md). Ha az Azure új felhasználója, hasznosnak találhatja az [Azure szószedetét](../../azure-glossary-cloud-terminology.md), amikor az új fogalmakkal ismerkedik. 
+Most, hogy már ismeri a szinapszis SQL-t, ismerkedjen meg [a DEDIKÁLT SQL-készlet gyors létrehozásával](../quickstart-create-sql-pool-portal.md) és a [mintaadatok betöltésével](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) (./SQL-Data-Warehouse-Load-Sample-Databases.MD). Vagy kezdjen el [használni a kiszolgáló nélküli SQL-készletet](../quickstart-sql-on-demand.md). Ha az Azure új felhasználója, hasznosnak találhatja az [Azure szószedetét](../../azure-glossary-cloud-terminology.md), amikor az új fogalmakkal ismerkedik. 

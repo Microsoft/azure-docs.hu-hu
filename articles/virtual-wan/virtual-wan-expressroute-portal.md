@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.date: 10/07/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 07053c096ce001b322e5f05556bd041519ca9d2e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 080136b8fc25b08a6b96464f0a61115a4bb2f3f8
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102476"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426611"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Oktatóanyag: ExpressRoute-társítás létrehozása az Azure Virtual WAN használatával
 
 Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Virtual WAN-t az Azure-beli erőforrásokhoz való kapcsolódáshoz egy ExpressRoute áramkörben. A virtuális WAN-és virtuális WAN-erőforrásokkal kapcsolatos további információkért tekintse meg a [virtuális WAN áttekintése](virtual-wan-about.md)című témakört.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Virtuális WAN létrehozása
@@ -58,8 +58,8 @@ Egy böngészőből lépjen az [Azure Portalra](https://portal.azure.com), majd 
    * **Erőforráscsoport** – Hozzon létre egy új erőforráscsoportot, vagy használjon egy meglévőt.
    * **Erőforráscsoport helye** – válasszon ki egy erőforrás-helyet a legördülő listából. A WAN egy globális erőforrás, és nem egy adott régióhoz tartozik. Mindazonáltal mégis ki kell választania egy régiót, hogy könnyebben kezelhesse és megtalálhassa a létrehozott WAN-erőforrást.
    * **Név** – írja be a WAN-híváshoz használni kívánt nevet.
-   * **Típus** – válassza a **standard**lehetőséget. Nem hozhat létre ExpressRoute-átjárót az alapszintű SKU használatával.
-4. Miután befejezte a mezők kitöltését, válassza a **felülvizsgálat + létrehozás**lehetőséget.
+   * **Típus** – válassza a **standard** lehetőséget. Nem hozhat létre ExpressRoute-átjárót az alapszintű SKU használatával.
+4. Miután befejezte a mezők kitöltését, válassza a **felülvizsgálat + létrehozás** lehetőséget.
 5. Az ellenőrzés után válassza a **Létrehozás** lehetőséget a virtuális WAN létrehozásához.
 
 ## <a name="create-a-virtual-hub-and-gateway"></a><a name="hub"></a>Virtuális központ és átjáró létrehozása
@@ -79,14 +79,14 @@ Hozzon létre egy új virtuális hubot. A hub létrehozása után a központ dí
 Az átjárót egy meglévő hubhoz is létrehozhatja szerkesztéssel.
 
 1. Navigáljon a szerkeszteni kívánt virtuális hubhoz, és válassza ki azt.
-2. A **virtuális központ szerkesztése** lapon jelölje be a ExpressRoute- **átjáró belefoglalása**jelölőnégyzetet.
+2. A **virtuális központ szerkesztése** lapon jelölje be a ExpressRoute- **átjáró belefoglalása** jelölőnégyzetet.
 3. A módosítások megerősítéséhez válassza a **Confirm (megerősítés** ) lehetőséget. Körülbelül 30 percet vesz igénybe, hogy a hub és a hub erőforrásai teljesen létre legyenek hozni.
 
    ![meglévő központ](./media/virtual-wan-expressroute-portal/edithub.png "központ szerkesztése")
 
 ### <a name="to-view-a-gateway"></a>Átjáró megtekintése
 
-Miután létrehozott egy ExpressRoute-átjárót, megtekintheti az átjáró részleteit. Navigáljon a hubhoz, válassza a **ExpressRoute**lehetőséget, és tekintse meg az átjárót.
+Miután létrehozott egy ExpressRoute-átjárót, megtekintheti az átjáró részleteit. Navigáljon a hubhoz, válassza a **ExpressRoute** lehetőséget, és tekintse meg az átjárót.
 
 ![Átjáró megtekintése](./media/virtual-wan-expressroute-portal/viewgw.png "átjáró megtekintése")
 
@@ -145,7 +145,7 @@ Ha módosítani szeretné a ExpressRoute-átjáró méretét, keresse meg az Exp
 
 Ha szeretné, hogy az Azure-beli virtuális központ meghirdesse az alapértelmezett 0.0.0.0/0 útvonalat a ExpressRoute, engedélyeznie kell az "alapértelmezett útvonal propagálása" beállítást.
 
-1. Válassza ki az **áramkör->... – > a kapcsolat szerkesztése**lehetőséget.
+1. Válassza ki az **áramkör->... – > a kapcsolat szerkesztése** lehetőséget.
 
    ![Kapcsolatok szerkesztése](./media/virtual-wan-expressroute-portal/defaultroute1.png "Kapcsolatok szerkesztése")
 
@@ -155,13 +155,11 @@ Ha szeretné, hogy az Azure-beli virtuális központ meghirdesse az alapértelme
 
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>Az erőforrások eltávolítása
 
-Ha már nincs szükség ezekre az erőforrásokra, a [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) paranccsal törölheti az erőforráscsoportot és az összes benne található erőforrást. A „myResourceGroup” helyére írja be az erőforráscsoport nevét, és futtassa a következő PowerShell-parancsot:
+Ha már nincs szüksége a létrehozott erőforrásokra, törölje őket. A virtuális WAN-erőforrások némelyikét bizonyos sorrendben törölni kell a függőségek miatt. A törlés körülbelül 30 percet vesz igénybe.
 
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name myResourceGroup -Force
-```
+[!INCLUDE [Delete resources](../../includes/virtual-wan-resource-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A virtuális WAN-ról további információt a következő témakörben talál:
 

@@ -12,12 +12,12 @@ metadata:
   title: A Personalizer dokumentációja
   titleSuffix: Azure Cognitive Services
   description: Az Azure Personalizer egy felhőalapú API-szolgáltatás, amellyel a valós idejű viselkedésükből tanulva kiválaszthatja a felhasználók számára megjelenítendő legjobb élményt.
-  ms.openlocfilehash: f4d263e551360b326fbe849e4cb62347e8125849
-  ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
-  ms.translationtype: HT
+  ms.openlocfilehash: 51d86faac37ad4131adad395d0fb52a23870e2ea
+  ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+  ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 11/08/2020
-  ms.locfileid: "94368134"
+  ms.lasthandoff: 03/07/2021
+  ms.locfileid: "102433709"
 landingContent:
 - title: Információk a Personalizerről
   linkLists:
@@ -68,7 +68,7 @@ landingContent:
     - text: NuGet-csomag
       url: https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/0.8.0-preview
     - text: NuGet-referenciadokumentáció
-      url: /dotnet/api/microsoft.azure.cognitiveservices.personalizer?view=azure-dotnet-preview&viewFallbackFrom=azure-dotnet
+      url: /dotnet/api/microsoft.azure.cognitiveservices.personalizer?view=azure-dotnet-preview&preserve-view=true
   - linkListType: get-started
     links:
     - text: Personalizer-ciklus fejlesztése Node.js-sel

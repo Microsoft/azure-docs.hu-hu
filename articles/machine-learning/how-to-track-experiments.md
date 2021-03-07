@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 9e5f64d9ef61a272da488ad70e690db4c07ddccc
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 0130af66152d4f70db47191ae2f271630a59e179
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99625077"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441074"
 ---
 # <a name="enable-logging-in-ml-training-runs"></a>A naplózás engedélyezése ML betanítási futtatásokban
 
@@ -38,6 +38,37 @@ A naplókkal diagnosztizálhatja a hibákat és a figyelmeztetéseket, vagy nyom
 ## <a name="data-types"></a>Adattípusok
 
 Többféle adattípust is naplózhat, például skaláris értékeket, listákat, táblákat, rendszerképeket, könyvtárakat és egyebeket. További információt és a különböző adattípusok Python-kódmintáit a [futtatási osztály referenciaoldalán](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) találja.
+
+### <a name="logging-run-metrics"></a>Naplózási futtatási metrikák 
+
+A következő módszerek használhatók a naplózási API-kon a metrikák vizualizációinak befolyásolására. Jegyezze fel a naplózott metrikák [szolgáltatási korlátait](https://docs.microsoft.com/azure/machine-learning/resource-limits-quotas-capacity#metrics) . 
+
+|Naplózott érték|Mintakód| Formátum a portálon|
+|----|----|----|
+|Numerikus értékek tömbje| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|Egyváltozós vonalas diagram|
+|Egy numerikus értéket többször is felhasználhat ugyanazzal a metrikai névvel (például a cikluson belül)| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| Egyváltozós vonalas diagram|
+|Sor naplózása 2 numerikus oszloppal ismételten|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Kétváltozós vonalas diagram|
+|Táblázat két numerikus oszloppal|`run.log_table(name='Sine Wave', value=sines)`|Kétváltozós vonalas diagram|
+|Napló képe|`run.log_image(name='food', path='./breadpudding.jpg', plot=None, description='desert')`|Ezzel a módszerrel egy képfájlt vagy egy matplotlib-rajzot naplózhat a futtatáshoz. Ezek a képek láthatók és összehasonlíthatók lesznek a futtatási rekordban|
+
+### <a name="logging-with-mlflow"></a>Naplózás a MLflow
+MLFlowLogger használata a metrikák naplózásához.
+
+```python
+from azureml.core import Run
+# connect to the workspace from within your running code
+run = Run.get_context()
+ws = run.experiment.workspace
+
+# workspace has associated ml-flow-tracking-uri
+mlflow_url = ws.get_mlflow_tracking_uri()
+
+#Example: PyTorch Lightning
+from pytorch_lightning.loggers import MLFlowLogger
+
+mlf_logger = MLFlowLogger(experiment_name=run.experiment.name, tracking_uri=mlflow_url)
+mlf_logger._run_id = run.id
+```
 
 ## <a name="interactive-logging-session"></a>Interaktív naplózási munkamenet
 

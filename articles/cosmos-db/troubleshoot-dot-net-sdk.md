@@ -3,18 +3,18 @@ title: Az Azure Cosmos DB .NET SDK használatakor felmerülő hibák diagnosztiz
 description: A .NET SDK használatakor olyan szolgáltatásokat használhat, mint az ügyféloldali naplózás és más külső eszközök a Azure Cosmos DB problémák azonosításához, diagnosztizálásához és hibaelhárításához.
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 02/05/2021
+ms.date: 03/05/2021
 ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: dce309b955882f6236f285ee6bd20a79201e43fb
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 1f7548b355353eb77419f4d1760b40ba02eeddda
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/07/2021
-ms.locfileid: "102429935"
+ms.locfileid: "102442196"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Az Azure Cosmos DB .NET SDK használatakor felmerülő hibák diagnosztizálása és elhárítása
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -93,12 +93,47 @@ Ha az alkalmazás [nyilvános IP-cím nélküli Azure-Virtual Machines](../load-
 ### <a name="high-network-latency"></a><a name="high-network-latency"></a>Nagy hálózati késés
 A hálózati késést a v2 SDK- [ban vagy a](/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) v3 SDK-ban lévő diagnosztika [diagnosztikai karakterláncának](/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring) használatával lehet azonosítani.
 
-Ha nincsenek [időtúllépések](troubleshoot-dot-net-sdk-request-timeout.md) , és a diagnosztika egyetlen kérést mutat be, ahol a nagy késés nyilvánvaló a és a közötti különbségnél `ResponseTime` `RequestStartTime` (>300 ezredmásodperc ebben a példában):
+Ha nincsenek [időtúllépések](troubleshoot-dot-net-sdk-request-timeout.md) , és a diagnosztika egyetlen kérést mutat be, ahol a nagy késés nyilvánvaló.
+
+# <a name="v3-sdk"></a>[V3 SDK](#tab/diagnostics-v3)
+
+`ResponseMessage` `ItemResponse` A diagnosztika a következő `FeedResponse` `CosmosException` `Diagnostics` tulajdonsággal szerezhető be:
+
+```csharp
+ItemResponse<MyItem> response = await container.CreateItemAsync<MyItem>(item);
+Console.WriteLine(response.Diagnostics.ToString());
+```
+
+A diagnosztika hálózati interakciói például a következőket teszik:
+
+```json
+{
+    "name": "Microsoft.Azure.Documents.ServerStoreModel Transport Request",
+    "id": "0e026cca-15d3-4cf6-bb07-48be02e1e82e",
+    "component": "Transport",
+    "start time": "12: 58: 20: 032",
+    "duration in milliseconds": 1638.5957
+}
+```
+
+Ahol az a `duration in milliseconds` késést jeleníti meg.
+
+# <a name="v2-sdk"></a>[V2 SDK](#tab/diagnostics-v2)
+
+A diagnosztika akkor érhető el, ha az ügyfél [közvetlen módban](sql-sdk-connection-modes.md)van konfigurálva a (z) `RequestDiagnosticsString` tulajdonságon keresztül:
+
+```csharp
+ResourceResponse<Document> response = await client.ReadDocumentAsync(documentLink, new RequestOptions() { PartitionKey = new PartitionKey(partitionKey) });
+Console.WriteLine(response.RequestDiagnosticsString);
+```
+
+És a késés a következők közötti különbség lenne `ResponseTime` `RequestStartTime` :
 
 ```bash
 RequestStartTime: 2020-03-09T22:44:49.5373624Z, RequestEndTime: 2020-03-09T22:44:49.9279906Z,  Number of regions attempted:1
 ResponseTime: 2020-03-09T22:44:49.9279906Z, StoreResult: StorePhysicalAddress: rntbd://..., ...
 ```
+--- 
 
 Ennek a késésnek több oka lehet:
 

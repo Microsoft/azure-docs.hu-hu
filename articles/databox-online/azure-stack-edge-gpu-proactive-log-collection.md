@@ -8,14 +8,16 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: alkohli
-ms.openlocfilehash: 064af116112f0b530ac0cc9b5755dcec2cf0bd07
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bdd44bf81e34b60ee648b71c6dc3bde5a96d3deb
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722066"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443012"
 ---
 # <a name="proactive-log-collection-on-your-azure-stack-edge-device"></a>Proaktív naplók gyűjtése az Azure Stack Edge-eszközön
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 A proaktív naplók a Azure Stack peremhálózati eszközön rendszerállapot-jelölőket gyűjtenek, amelyek segítségével hatékonyan elháríthatja az eszközök problémáit. A proaktív naplózási gyűjtemény alapértelmezés szerint engedélyezve van. Ez a cikk ismerteti a naplózott, a Microsoft által kezelt adatkezelési műveleteket, valamint a proaktív naplók letiltásának vagy engedélyezésének módját. 
 
@@ -58,7 +60,7 @@ A proaktív naplózási gyűjtemény alapértelmezés szerint engedélyezve van.
 Az előjelzéses naplózási gyűjtemény engedélyezése után a rendszer automatikusan feltölti a naplókat, ha a következő események valamelyike észlelhető az eszközön:  
 
 
-|Riasztás/hiba/feltétel  |Leírás  |
+|Riasztás/hiba/feltétel  |Description  |
 |---------|---------|
 |AcsUnhealthyCondition     |Az Azure konzisztens szolgáltatások állapota nem kifogástalan.         |
 |IOTEdgeAgentNotRunningCondition      |IoT Edge ügynök nem fut.         |

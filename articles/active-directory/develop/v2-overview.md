@@ -13,12 +13,12 @@ ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40, contperf-fy21q2
-ms.openlocfilehash: 662523b1544fe3ca9e8bda993efa7b578b9f69cc
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: a4ce8242bd3110fee038ac826973e6a134413344
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752569"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426841"
 ---
 # <a name="what-is-the-microsoft-identity-platform"></a>Mi az a Microsoft Identitásplatform?
 
@@ -38,6 +38,8 @@ A Microsoft Identity platform számos összetevőből áll:
 A fejlesztők számára a Microsoft Identity platform a modern innovációk integrációját kínálja az identitás és a biztonság terén, például a jelszó-alapú hitelesítéshez, a lépésenkénti hitelesítéshez és a feltételes hozzáféréshez. Nincs szükség ilyen funkciók megvalósítására: a Microsoft Identity platformmal integrált alkalmazások natív módon kihasználhatják ezeket az innovációkat.
 
 A Microsoft Identity platformmal egyszer is írhat kódot, és elérheti a felhasználókat. Egyszerre létrehozhat egy alkalmazást, és több platformon is dolgozhat, vagy olyan alkalmazást hozhat létre, amely ügyfélként, valamint erőforrás-alkalmazásként (API) működik.
+
+A platform és a hitelesítési élmény bemutatójának áttekintését lásd: [Mi a Microsoft Identity platform for Developers?](https://youtu.be/uDU1QTSw7Ps).
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -76,7 +78,7 @@ Ismerje meg, hogyan vonatkoznak az alapszintű hitelesítés és az Azure AD-fog
 
 [Azure Active Directory fejlesztők számára (v 1.0)](../azuread-dev/v1-overview.md) – itt láthatók a régebbi 1.0-s verziókat használó meglévő alkalmazásokkal rendelkező fejlesztők számára. **Ne használja az** 1.0-s verziókat új projektekhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha van olyan Azure-fiókja, amelyhez már van hozzáférése egy Azure Active Directory bérlőhöz, a Microsoft Identity platform fejlesztőinek azonban a saját Azure AD-bérlőre van szükségük az alkalmazások fejlesztéséhez, a "dev bérlő".
 

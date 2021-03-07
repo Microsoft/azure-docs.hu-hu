@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan konfigurálhat gazdagép-alapú titkosítást e
 services: container-service
 ms.topic: article
 ms.date: 03/03/2021
-ms.openlocfilehash: 66e71dfd6a76fb4e6b464eb5c44dcc809fb9be38
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: f4e599ae7aa81c15f86d0e8b1c934824010ea45b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039733"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430155"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Gazdagép-alapú titkosítás az Azure Kubernetes szolgáltatásban (ak) (előzetes verzió)
 
@@ -48,7 +48,7 @@ az extension update --name aks-preview
 
 ### <a name="limitations"></a>Korlátozások
 
-- Csak új csomópont-készleteken vagy új fürtökön engedélyezhető.
+- Csak új csomópont-készleteken engedélyezhető.
 - Csak olyan [Azure-régiókban][supported-regions] engedélyezhető, amelyek támogatják az Azure Managed Disks kiszolgálóoldali titkosítását, és csak bizonyos támogatott virtuálisgép- [méretekkel][supported-sizes]rendelkeznek.
 - A (z) Virtual Machine Scale Sets (VMSS) alapján, virtuálisgép- *készlet típusú* fürt és csomópont-készlet szükséges.
 

@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b839df7abe6552506456ed6d0485405f43ea4639
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: d61ddee1ac510b6d3528a2221a52fd266a2dd5ad
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198353"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102436498"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity platform Code Samples (v 2.0 végpont)
 
@@ -36,7 +36,7 @@ Emellett a GitHubon is hozzájárulhat a mintákhoz. További információ: [Mic
 
 Ezek a minták azt mutatják be, hogyan lehet egy egyoldalas alkalmazást biztonságossá tennie a Microsoft Identity platformmal. Ezek a minták a MSAL.js egyikét használják.
 
-| Platform | Leírás | Hivatkozás |
+| Platform | Description | Hivatkozás |
 | -------- | --------------------- | -------- |
 | ![Ez a képen a JavaScript ](media/sample-v2-code/logo_js.png) [-embléma javascript (MSAL.js) látható.](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) | SPA-hívások Microsoft Graph |[JavaScript-graphapi-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
 | ![Ez a képen a JavaScript ](media/sample-v2-code/logo_js.png) [-embléma javascript (MSAL.js 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser) látható | SPA-hívások Microsoft Graph az Auth Code flow PKCE |[JavaScript – v2](https://github.com/Azure-Samples/ms-identity-javascript-v2) |
@@ -61,13 +61,24 @@ Az alábbi példák bemutatják a felhasználók bejelentkezési webalkalmazása
 | ![Ez a képen a ASP.NET Core embléma látható](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | [ASP.NET Core WebApp Signs-in Users oktatóanyag](https://aka.ms/aspnetcore-webapp-sign-in) | Ugyanaz a minta a [ASP.net Core Web App calls Microsoft Graph](https://aka.ms/aspnetcore-webapp-call-msgraph) fázisban</p>Speciális példa [a bejelentkezett felhasználó jogkivonat-gyorsítótárának elérésére a háttérben futó alkalmazások, API-k és szolgáltatások](https://github.com/Azure-Samples/ms-identity-dotnet-advanced-token-cache) segítségével |
 | ![Ez a képen a ASP.NET-keretrendszer emblémája látható](media/sample-v2-code/logo_NETframework.png)</p>ASP.NET Core | [AD FS az Azure ad Application Migration forgatókönyvét a fejlesztők](https://github.com/Azure-Samples/ms-identity-dotnet-adfs-to-aad) számára, hogy megtudja, hogyan lehet biztonságosan és biztonságosan migrálni az alkalmazásokat a Active Directory összevonási szolgáltatások (AD FS) (AD FS) szolgáltatással integrált Azure Active Directory (Azure ad) | |
 | ![Ez a képen a ASP.NET-keretrendszer emblémája látható](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [ASP.NET gyors útmutató](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [DotNet-WebApp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [DotNet-rendszergazda-korlátozott-hatókörök-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[msgraph – képzés – aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
-| ![Ez a rendszerkép a Java-emblémát jeleníti meg](media/sample-v2-code/logo_java.png)  |[Java servlet webalkalmazás fejezet Wise-oktatóanyag – 1. fejezet](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication)| [Java servlet webalkalmazás fejezet Wise-oktatóanyag – 2. fejezet](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication) |
-| ![Ez a rendszerkép a Java-emblémát jeleníti meg](media/sample-v2-code/logo_java.png)  |                   | [MS-Identity-Java-WebApp](https://github.com/Azure-Samples/ms-identity-java-webapp) |
+| ![Ez a rendszerkép a Java-emblémát jeleníti meg](media/sample-v2-code/logo_java.png)  |[Java servlet-oktatóanyag – 1,1. fejezet](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) Bejelentkezés a HRE| |
+| ![Ez a rendszerkép a Java-emblémát jeleníti meg](media/sample-v2-code/logo_java.png)  |[Java servlet-oktatóanyag – 1,2. fejezet](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) Bejelentkezés B2C-vel |
+| ![Ez a rendszerkép a Java-emblémát jeleníti meg](media/sample-v2-code/logo_java.png)  | | [Java servlet-oktatóanyag – 2,1. fejezet](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) Bejelentkezés a HRE és a Call Graph szolgáltatással|
+| ![Ez a rendszerkép a Java-emblémát jeleníti meg](media/sample-v2-code/logo_java.png)  |[Java servlet-oktatóanyag – 3,1. fejezet](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) Jelentkezzen be a HRE, és szabályozza a hozzáférést a roles jogcímhez| |
+| ![Ez a rendszerkép a Java-emblémát jeleníti meg](media/sample-v2-code/logo_java.png)  | | [Java servlet-oktatóanyag – 3,2. fejezet](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) Jelentkezzen be a HRE, és szabályozza a hozzáférést a groups jogcímhez|
+| ![Ez a rendszerkép a Java-emblémát jeleníti meg](media/sample-v2-code/logo_java.png) | |[Java servlet-oktatóanyag – 4,1. fejezet](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) Üzembe helyezés Azure App Service|
+| ![Ez a rendszerkép a Java-emblémát jeleníti meg](media/sample-v2-code/logo_java.png)  | | [MS-Identity-Java-WebApp](https://github.com/Azure-Samples/ms-identity-java-webapp) |
 | ![Ez a rendszerkép a Java-emblémát jeleníti meg](media/sample-v2-code/logo_java.png)  | [MS-Identity-B2C-Java-servlet-WebApp-hitelesítés](https://github.com/Azure-Samples/ms-identity-b2c-java-servlet-webapp-authentication)|  |
 | ![Ez a képen a Node.js embléma látható](media/sample-v2-code/logo_nodejs.png)</p>Node.js (MSAL csomópont) | [Expressz webalkalmazás-bejelentkezések – felhasználói oktatóanyag](https://github.com/Azure-Samples/ms-identity-node) | |
-| ![Ez a képen a Python-embléma látható](media/sample-v2-code/logo_python.png)  | [MS-Identity-Python-lombik-WebApp-Authentication](https://github.com/Azure-Samples/ms-identity-python-flask-webapp-authentication) | [MS-Identity-Python-WebApp](https://github.com/Azure-Samples/ms-identity-python-webapp) |
-| ![Ez a képen a Python-embléma látható](media/sample-v2-code/logo_python.png)  | [Python-lombik webalkalmazás](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md) -bejelentkezések – felhasználói oktatóanyag                   | [Python-lombik webalkalmazás](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md) -bejelentkezések – felhasználók és hívások a Graph-ban – oktatóanyag |
-| ![Ez a képen a Python-embléma látható](media/sample-v2-code/logo_python.png)  | [Python-lombik webalkalmazás](https://github.com/Azure-Samples/ms-identity-b2c-python-flask-webapp-authentication/blob/main/README.md) -bejelentkezési felhasználói a B2C-vel                    |  |
+| ![Ez a képen a Python-embléma látható](media/sample-v2-code/logo_python.png)  | [Python-lombik – oktatóanyag – 1,1. fejezet](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md) Bejelentkezés a HRE  |  |
+| ![Ez a képen a Python-embléma látható](media/sample-v2-code/logo_python.png)  | [Python-lombik – oktatóanyag – 1,2. fejezet](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md) Bejelentkezés B2C-vel                    |  |
+| ![Ez a képen a Python-embléma látható](media/sample-v2-code/logo_python.png)  | | [Python-lombik – oktatóanyag – 2,1. fejezet](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md) Bejelentkezés a HRE és a Call Graph szolgáltatással |
+| ![Ez a képen a Python-embléma látható](media/sample-v2-code/logo_python.png)  | |[Python-lombik – oktatóanyag – 3,1. fejezet](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md) Üzembe helyezés Azure App Service  |
+| ![Ez a képen a Python-embléma látható](media/sample-v2-code/logo_python.png)  | [Python Django-oktatóanyag – 1,1. fejezet](https://github.com/Azure-Samples/ms-identity-python-django-tutorial/blob/main/README.md)   Bejelentkezés a HRE  | |
+| ![Ez a képen a Python-embléma látható](media/sample-v2-code/logo_python.png)  | [Python Django-oktatóanyag – 1,2. fejezet](https://github.com/Azure-Samples/ms-identity-python-django-tutorial/blob/main/README.md) Bejelentkezés B2C-vel                    |  |
+| ![Ez a képen a Python-embléma látható](media/sample-v2-code/logo_python.png)  | | [Python Django-oktatóanyag – 2,1. fejezet](https://github.com/Azure-Samples/ms-identity-python-django-tutorial/blob/main/README.md)  Bejelentkezés a HRE és a Call Graph szolgáltatással|
+| ![Ez a képen a Python-embléma látható](media/sample-v2-code/logo_python.png)  | | [Python Django-oktatóanyag – 3,1. fejezet](https://github.com/Azure-Samples/ms-identity-python-django-tutorial/blob/main/README.md) Üzembe helyezés Azure App Service                    |
+| ![Ez a képen a Python-embléma látható](media/sample-v2-code/logo_python.png)  | | [Python Flask-webalkalmazás](https://github.com/Azure-Samples/ms-identity-python-webapp) |
 | ![Ez a képen a Ruby embléma látható](media/sample-v2-code/logo_ruby.png) |                   | [msgraph – képzés – rubyrailsapp](https://github.com/microsoftgraph/msgraph-training-rubyrailsapp) |
 | ![Ez a képen a Blazer embléma látható](media/sample-v2-code/logo-blazor.png)</p>Blazor Server | [A Blazer Server alkalmazás bejelentkezési felhasználói oktatóanyaga](https://github.com/Azure-Samples/ms-identity-blazor-server/tree/main/WebApp-OIDC) | [A Blazer Server-alkalmazások hívása Microsoft Graph](https://github.com/Azure-Samples/ms-identity-blazor-server/tree/main/WebApp-graph-user/Call-MSGraph)</p>Chapterwise-oktatóanyag: [a Blazer Server-alkalmazás a felhasználók bejelentkezéséhez és az API-k hívásához Azure Active Directory](https://github.com/Azure-Samples/ms-identity-blazor-server) |
 
@@ -118,7 +129,7 @@ Az alábbi példa egy, a webböngészőt nem használó eszközön futó nyilvá
 
 Az alábbi példák bemutatják, hogyan konfigurálhatja az alkalmazást úgy, hogy fogadja a bejelentkezéseket bármely Azure Active Directory (Azure AD) bérlőről. Ha úgy konfigurálja az alkalmazást, hogy *több-bérlős* legyen, azt jelenti, hogy egy **szolgáltatott szoftver** (SaaS) alkalmazás számos szervezet számára elérhetővé válik, lehetővé téve a felhasználóknak az alkalmazásba való bejelentkezést a beleegyező engedély megadása után.
 
-| Platform | Leírás | Hivatkozás |
+| Platform | Description | Hivatkozás |
 | -------- | --------------------- | -------- |
 | ![Ez a képen a szögletes embléma szögletes ábrázolása látható ](media/sample-v2-code/logo_angular.png) [(MSAL szögletes 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) | Több-bérlős SPA-hívások Graph API |[MS-Identity-JavaScript-szögletes-Spa-ASPNET-webapi-több-bérlős](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant/tree/master/Chapter1) |
 | ![Ez a képen a szögletes embléma szögletes ábrázolása látható ](media/sample-v2-code/logo_angular.png) [(MSAL szögletes 2,0)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) | Több-bérlős SPA több-bérlős egyéni webes API-t hív meg |[MS-Identity-JavaScript-szögletes-Spa-ASPNET-webapi-több-bérlős](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant/tree/master/Chapter2) |

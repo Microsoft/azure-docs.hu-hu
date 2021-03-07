@@ -8,20 +8,22 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
-ms.openlocfilehash: be9b2d9a31d4affc9615f5d2f4b2585b7533a0f6
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 3a8fe3ded6608059cc6ad50901ffe6df5dcf1b08
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95545907"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441582"
 ---
 # <a name="get-started-with-storage-explorer"></a>A Storage Explorer használatának első lépései
 
 ## <a name="overview"></a>Áttekintés
 
-A Microsoft Azure Storage Explorer egy különálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszeren. Ebből a cikkből megismerheti az Azure Storage-fiókok csatlakoztatásának és kezelésének számos módját.
+A Microsoft Azure Storage Explorer egy különálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszeren.
 
-![Microsoft Azure Storage Explorer][0]
+Ebből a cikkből megismerheti az Azure Storage-fiókok csatlakoztatásának és kezelésének számos módját.
+
+:::image type="content" alt-text="Microsoft Azure Storage Explorer" source="./vs-storage-explorer-overview.png":::
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,7 +47,7 @@ A macOS-támogatás következő verziói Storage Explorer:
 
 Az Storage Explorer a Linux leggyakoribb disztribúcióinak [beépülő moduljában](https://snapcraft.io/storage-explorer) érhető el. Javasoljuk, hogy ehhez a telepítéshez a Snap Store-t. A Storage Explorer beépülő modul telepíti az összes függőségét és frissítését, amikor a rendszer közzéteszi az új verziókat az illesztési tárolóban.
 
-A támogatott disztribúciók esetében tekintse meg a [beépülő modul telepítése lapot](https://snapcraft.io/docs/installing-snapd).
+A támogatott disztribúciók esetében tekintse meg a [ `snapd` telepítési lapot](https://snapcraft.io/docs/installing-snapd).
 
 Storage Explorer a Password Manager használatát igényli. Előfordulhat, hogy manuálisan kell csatlakoznia a jelszó-kezelőhöz. A következő parancs futtatásával csatlakozhat Storage Explorer a rendszer jelszavas kezelőjéhez:
 
@@ -53,7 +55,7 @@ Storage Explorer a Password Manager használatát igényli. Előfordulhat, hogy 
 snap connect storage-explorer:password-manager-service :password-manager-service
 ```
 
-A Storage Explorer *. tar. gz* letöltésként is elérhető. A függőségeket manuálisan kell telepítenie. A Linux-támogatás következő disztribúciói *. tar. gz* telepítés:
+A Storage Explorer *. tar. gz* letöltésként is elérhető. Ha a *. tar. gz*-t használja, manuálisan kell telepítenie a függőségeket. A Linux-támogatás következő disztribúciói *. tar. gz* telepítés:
 
 * Ubuntu 20,04 x64
 * Ubuntu 18,04 x64
@@ -71,141 +73,160 @@ Storage Explorer letöltéséhez és telepítéséhez lásd: [Azure Storage Expl
 
 ## <a name="connect-to-a-storage-account-or-service"></a>Csatlakozás egy tárfiókhoz vagy -szolgáltatáshoz
 
-A Storage Explorer számos különféle módot kínál a tárfiókokhoz való csatlakozáshoz. Általában a következők közül választhat:
+A Storage Explorer számos lehetőséget kínál az Azure-erőforrásokhoz való kapcsolódásra:
 
 * [Jelentkezzen be az Azure-ba az előfizetések és erőforrásaik eléréséhez](#sign-in-to-azure)
-* [Egy adott tárolási vagy CosmosDB erőforrás csatolása](#attach-a-specific-resource)
+* [Csatolás egyéni Azure Storage-erőforráshoz](#attach-to-an-individual-resource)
+* [Csatolás CosmosDB-erőforráshoz](#connect-to-azure-cosmos-db)
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
 > [!NOTE]
-> Ahhoz, hogy a bejelentkezés után teljesen hozzáférjen az erőforrásokhoz, Storage Explorer a felügyeleti (Azure Resource Manager) és az adatrétegbeli engedélyeket is. Ez azt jelenti, hogy szüksége van Azure Active Directory (Azure AD) engedélyekre, amelyek hozzáférést biztosítanak a Storage-fiókjához, a fiókhoz tartozó tárolóhoz és a tárolókban lévő adattárakhoz. Ha csak az adatréteghez rendelkezik engedélyekkel, vegyen fel [egy erőforrást az Azure ad](#add-a-resource-via-azure-ad)-n keresztül. További információ a Storage Explorer szükséges konkrét engedélyekről: [Azure Storage Explorer hibaelhárítási útmutató](./storage/common/storage-explorer-troubleshooting.md#azure-rbac-permissions-issues).
+> Ahhoz, hogy a bejelentkezés után teljesen hozzáférjen az erőforrásokhoz, Storage Explorer a felügyeleti (Azure Resource Manager) és az adatrétegbeli engedélyeket is. Ez azt jelenti, hogy Azure Active Directory (Azure AD) engedélyek szükségesek a Storage-fiók, a fiókban lévő tárolók és a tárolók adatai eléréséhez. Ha csak az adatréteghez rendelkezik engedélyekkel, érdemes lehet a **bejelentkezést Azure Active Directory (Azure ad)** beállítással használni egy erőforráshoz való csatoláskor. További információ a Storage Explorer szükséges konkrét engedélyekről: [Azure Storage Explorer hibaelhárítási útmutató](./storage/common/storage-explorer-troubleshooting.md#azure-rbac-permissions-issues).
 
-1. A Storage Explorer lapon válassza **View**  >  a **Fiókkezelés** megtekintése lehetőséget, vagy kattintson a **fiókok kezelése** gombra.
+1. A Storage Explorer lapon válassza   >  a **Fiókkezelés** megtekintése lehetőséget, vagy kattintson a **fiókok kezelése** gombra.
 
-    ![Fiókok kezelése][1]
+    :::image type="content" alt-text="Fiókok kezelése" source ="./vs-storage-explorer-manage-accounts.png":::
 
-1. A **Fiókkezelés** mostantól megjeleníti az összes olyan Azure-fiókot, amelybe bejelentkezett. Egy másik fiókhoz való kapcsolódáshoz válassza a **fiók hozzáadása** lehetőséget.
+1. A **Fiókkezelés** mostantól megjeleníti az összes olyan Azure-fiókot, amelybe be van jelentkezve. Egy másik fiókhoz való kapcsolódáshoz válassza a **fiók hozzáadása..**. lehetőséget.
 
-1. A **Kapcsolódás az Azure Storage-hoz** területen válasszon ki egy Azure-felhőt az **Azure-környezetből** egy nemzeti felhőbe vagy egy Azure Stackba való bejelentkezéshez. A környezet kiválasztása után válassza a **tovább** lehetőséget.
+1. Megnyílik a **Kapcsolódás az Azure Storage-hoz** párbeszédpanel. Az **erőforrás kiválasztása** panelen válassza az **előfizetés** lehetőséget.
 
-    ![Bejelentkezés lehetősége][2]
+    :::image type="content" alt-text="Csatlakozási párbeszédpanel" source="./vs-storage-explorer-connect-dialog.png":::
 
-    Storage Explorer megnyit egy oldalt a bejelentkezéshez. További információ: a [Storage Explorer összekötése egy Azure stack-előfizetéssel vagy egy Storage-fiókkal](/azure-stack/user/azure-stack-storage-connect-se).
+1. Az **Azure-környezet kiválasztása** panelen válassza ki a bejelentkezni kívánt Azure-környezetet. Bejelentkezhet a globális Azure-ba, egy nemzeti felhőbe vagy egy Azure Stack-példányba. Ezután kattintson a **Tovább** gombra.
 
-1. Miután sikeresen bejelentkezett egy Azure-fiókkal, a fiók és az ahhoz hozzárendelt Azure-előfizetések megjelennek **a fiók felügyelete alatt.** Válassza ki az **összes előfizetést** , hogy a kijelölt Azure-előfizetések közül egy vagy több se legyen bekapcsolva. Válassza ki azt az Azure-előfizetést, amellyel dolgozni szeretne, majd válassza az **Alkalmaz** lehetőséget.
+    :::image type="content" alt-text="Bejelentkezés lehetősége" source="./vs-storage-explorer-connect-environment.png":::
 
-    ![Azure-előfizetések kiválasztása][3]
+    > [!TIP]
+    > További információ a Azure Stackről: [Storage Explorer összekötése egy Azure stack előfizetés-vagy Storage-fiókkal](/azure-stack/user/azure-stack-storage-connect-se).
 
-    Az **Explorer** megjeleníti a kiválasztott Azure-előfizetésekhez társított Storage-fiókokat.
+1. Storage Explorer megnyílik egy weblap, amelyen bejelentkezhet.
 
-    ![Kiválasztott Azure-előfizetések][4]
+1. Miután sikeresen bejelentkezett egy Azure-fiókkal, a fiók és az ahhoz hozzárendelt Azure-előfizetések megjelennek **a fiók felügyelete alatt.** Válassza ki azt az Azure-előfizetést, amellyel dolgozni szeretne, majd válassza az **Alkalmaz** lehetőséget.
 
-### <a name="attach-a-specific-resource"></a>Adott erőforrás csatolása
+    :::image type="content" alt-text="Azure-előfizetések kiválasztása" source="./vs-storage-explorer-account-panel.png":::
 
-A Storage Explorer több módon is csatolhat erőforrásokhoz:
+1. Az **Explorer** megjeleníti a kiválasztott Azure-előfizetésekhez társított Storage-fiókokat.
 
-* [Erőforrás hozzáadása az Azure ad-n keresztül](#add-a-resource-via-azure-ad). Ha csak az adatréteghez rendelkezik engedélyekkel, akkor ezzel a lehetőséggel hozzáadhat egy BLOB-tárolót vagy egy Azure Data Lake Storage Gen2 blob Storage-tárolót.
-* [Használjon egy kapcsolatok karakterláncot](#use-a-connection-string). Akkor használja ezt a beállítást, ha egy Storage-fiókhoz tartozik egy kapcsolódási sztring. A Storage Explorer a kulcs-és [közös hozzáférésű aláírás](./storage/common/storage-sas-overview.md) -kapcsolati karakterláncokat is támogatja.
-* [Használjon közös hozzáférésű aláírási URI](#use-a-shared-access-signature-uri)-t. Ha [közös hozzáférési aláírási URI](./storage/common/storage-sas-overview.md) -t használ a blob-tárolóhoz, a fájlmegosztás, a várólista vagy a tábla számára, az erőforráshoz való csatoláshoz használja azt. A közös hozzáférésű aláírás URI-azonosítójának beszerzéséhez használhatja [Storage Explorer](#generate-a-sas-in-storage-explorer) vagy a [Azure Portal](https://portal.azure.com).
-* Adjon meg [egy nevet és egy kulcsot](#use-a-name-and-key). Ha ismeri a fiók kulcsainak valamelyikét a Storage-fiókjához, akkor ezzel a lehetőséggel gyorsan csatlakozhat. Keresse meg a kulcsokat a Storage-fiók lapon **Settings** a  >  [Azure Portal](https://portal.azure.com)beállítások **hozzáférési kulcsainak** kiválasztásával.
-* [Csatoljon egy helyi emulátorhoz](#attach-to-a-local-emulator). Ha az elérhető Azure Storage-emulátorok egyikét használja, ezzel a lehetőséggel egyszerűen csatlakozhat az emulátorhoz.
-* [Kapcsolódás Azure Cosmos db fiókhoz kapcsolati karakterlánc használatával](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string). Akkor használja ezt a beállítást, ha egy CosmosDB-példányhoz tartozik egy kapcsolódási sztring.
-* [Azure Data Lake Storehoz való kapcsolódás URI-n keresztül](#connect-to-azure-data-lake-store-by-uri). Akkor használja ezt a beállítást, ha a Azure Data Lake Store URI azonosítóval rendelkezik.
+    :::image type="content" alt-text="Kiválasztott Azure-előfizetések" source="./vs-storage-explorer-subscription-node.png":::
 
-#### <a name="add-a-resource-via-azure-ad"></a>Erőforrás hozzáadása az Azure AD-n keresztül
+### <a name="attach-to-an-individual-resource"></a>Csatolás egy adott erőforráshoz
 
-1. Válassza a **Kapcsolódás** szimbólumot az **Azure Storage-hoz való kapcsolódás** megnyitásához.
+Storage Explorer lehetővé teszi, hogy különböző hitelesítési módszerekkel kapcsolódjon az egyes erőforrásokhoz, például egy Azure Data Lake Storage Gen2 tárolóhoz. Egyes hitelesítési módszerek csak bizonyos erőforrástípusok esetén támogatottak.
 
-    ![Csatlakozás Azure Storage-hoz lehetőség][9]
+| Erőforrás típusa    | Azure AD | Fiók neve és kulcsa | Közös hozzáférésű jogosultságkód (SAS)  | Nyilvános (Névtelen) |
+|------------------|----------|----------------------|--------------------------------|--------------------|
+| Tárfiókok | Igen      | Yes                  | Igen (a kapcsolatok karakterlánca vagy URL-címe) | No                 |
+| Blobtárolók  | Igen      | Nem                   | Igen (URL)                      | Yes                |
+| Gen2-tárolók  | Igen      | Nem                   | Igen (URL)                      | Yes                |
+| Gen2-címtárak | Igen      | Nem                   | Igen (URL)                      | Yes                |
+| Fájlmegosztások      | Nem       | Nem                   | Igen (URL)                      | No                 |
+| Üzenetsorok           | Igen      | Nem                   | Igen (URL)                      | No                 |
+| Táblák           | Nem       | Nem                   | Igen (URL)                      | No                 |
+ 
+A Storage Explorer az emulátor konfigurált portjaival is csatlakozhat a [helyi tároló-emulátorhoz](#local-storage-emulator) .
 
-1. Ha még nem tette meg, használja az **Azure-fiók hozzáadása** lehetőséget az erőforráshoz hozzáférő Azure-fiókba való bejelentkezéshez. A bejelentkezést követően térjen vissza az **Azure Storage-hoz való kapcsolódáshoz**.
+Egy adott erőforráshoz való kapcsolódáshoz kattintson a bal oldali eszköztáron a **Kapcsolódás** gombra. Ezután kövesse azon erőforrástípus utasításait, amelyhez csatlakozni szeretne.
 
-1. Válassza **az erőforrás hozzáadása Azure Active Directory (Azure ad)** lehetőséget, majd kattintson a **tovább** gombra.
+:::image type="content" alt-text="Csatlakozás Azure Storage-hoz lehetőség" source="./vs-storage-explorer-connect-button.png":::
 
-1. Válasszon ki egy Azure-fiókot és-bérlőt. Ezeknek az értékeknek hozzáféréssel kell rendelkezniük ahhoz a tárolási erőforráshoz, amelyhez csatolni kíván. Kattintson a **Tovább** gombra.
+Ha a Storage-fiókhoz való kapcsolódás sikeres volt, egy új facsomópont fog megjelenni a **helyi & csatolt**  >  **Storage-fiókokban**.
 
-1. Válassza ki a csatolni kívánt erőforrás típusát. Adja meg a kapcsolódáshoz szükséges adatokat. 
+Más erőforrástípusok esetében új csomópont kerül hozzáadásra a **helyi & csatlakoztatott**  >  **Storage**  >  **-fiókok (csatolt tárolók)** területen. A csomópont a típusának megfelelő csoport csomópont alatt fog megjelenni. Egy Azure Data Lake Storage Gen2 tárolóhoz való új kapcsolódás például a **blob-tárolók** területen jelenik meg.
 
-   Az ezen a lapon megadott információk attól függnek, hogy milyen típusú erőforrást szeretne hozzáadni. Ügyeljen arra, hogy a megfelelő típusú erőforrást adja meg. A szükséges információk megadása után válassza a **tovább** lehetőséget.
+Ha Storage Explorer nem tudta felvenni a kapcsolatot, vagy ha a kapcsolat sikeres hozzáadása után nem fér hozzá az adataihoz, tekintse meg a [Azure Storage Explorer hibaelhárítási útmutatót](./storage/common/storage-explorer-troubleshooting.md).
 
-1. Tekintse át a **kapcsolatok összegzését** , és győződjön meg arról, hogy minden adat helyes. Ha igen, válassza a **kapcsolat** lehetőséget. Ellenkező esetben válassza a **vissza** lehetőséget, ha vissza szeretne térni az előző lapokra a helytelen információk kijavításához.
+A következő szakaszok ismertetik az egyes erőforrásokhoz való kapcsolódáshoz használható különböző hitelesítési módszereket.
 
-A kapcsolódás sikeres hozzáadása után az erőforrás-fa a kapcsolódást jelölő csomópontra kerül. Az erőforrás a **helyi & csatolt**  >  **Storage**  >  **-fiókok (csatolt tárolók)**  >  **blob-tárolók** területen jelenik meg. Ha Storage Explorer nem tudta felvenni a kapcsolatot, vagy ha a kapcsolat sikeres hozzáadása után nem fér hozzá az adataihoz, tekintse meg a [Azure Storage Explorer hibaelhárítási útmutatót](./storage/common/storage-explorer-troubleshooting.md).
+#### <a name="azure-ad"></a>Azure AD
 
-#### <a name="use-a-connection-string"></a>Kapcsolati sztring használata
+A Storage Explorer az Azure-fiókkal csatlakozhat a következő típusú erőforrásokhoz:
+* Blobtárolók
+* Azure Data Lake Storage Gen2 tárolók
+* Könyvtárak Azure Data Lake Storage Gen2
+* Üzenetsorok
+ 
+Az Azure AD az előnyben részesített lehetőség, ha adatrétege hozzáfér az erőforráshoz, de nincs hozzáférése a felügyeleti réteghez.
 
-1. Válassza a **Kapcsolódás** szimbólumot az **Azure Storage-hoz való kapcsolódás** megnyitásához.
+1. Jelentkezzen be legalább egy Azure-fiókba a [fent ismertetett lépések](#sign-in-to-azure)segítségével.
+1. A **Kapcsolódás az Azure Storage-hoz** párbeszédpanel **erőforrás kiválasztása** paneljén válassza a **blob Container**, **ADLS Gen2 tároló** vagy a **várólista** lehetőséget.
+1. Válassza **a bejelentkezés Azure Active Directory (Azure ad) használatával** lehetőséget, majd kattintson a **Tovább gombra**.
+1. Válasszon ki egy Azure-fiókot és-bérlőt. A fióknak és a bérlőnek hozzáféréssel kell rendelkeznie a csatolni kívánt tárolási erőforráshoz. Kattintson a **Tovább** gombra.
+1. Adja meg a kapcsolatok megjelenítendő nevét és az erőforrás URL-címét. Kattintson a **Tovább** gombra.
+1. Tekintse át a kapcsolatok adatait az **Összefoglalás** panelen. Ha a kapcsolati adatok helyesek, **válassza a kapcsolat lehetőséget**.
 
-    ![Csatlakozás Azure Storage-hoz lehetőség][9]
+#### <a name="account-name-and-key"></a>Fiók neve és kulcsa
 
-1. Válassza **a kapcsolatok karakterlánc használata** lehetőséget, majd kattintson a **tovább** gombra.
+A Storage Explorer a Storage-fiók nevét és kulcsát használva tud csatlakozni a Storage-fiókhoz.
 
-1. Válassza ki a kapcsolatok megjelenítendő nevét, és adja meg a kapcsolatok karakterláncát. Ezután válassza a **tovább** lehetőséget.
+A fiók kulcsai a [Azure Portalban](https://portal.azure.com)találhatók. Nyissa meg a Storage-fiók lapot, és válassza a **Beállítások**  >  **hozzáférési kulcsok** elemet.
 
-1. Tekintse át a **kapcsolatok összegzését** , és győződjön meg arról, hogy minden adat helyes. Ha igen, válassza a **kapcsolat** lehetőséget. Ellenkező esetben válassza a **vissza** lehetőséget, ha vissza szeretne térni az előző lapokra a helytelen információk kijavításához.
+1. A **Kapcsolódás az Azure Storage-hoz** párbeszédpanel **erőforrás kiválasztása** paneljén válassza a **Storage-fiók** lehetőséget.
+1. Válassza a **fiók neve és kulcsa** lehetőséget, majd kattintson a **Tovább gombra**.
+1. Adja meg a kapcsolatok megjelenítendő nevét, a fiók nevét és az egyik fiók kulcsát. Válassza ki a megfelelő Azure-környezetet. Kattintson a **Tovább** gombra.
+1. Tekintse át a kapcsolatok adatait az **Összefoglalás** panelen. Ha a kapcsolati adatok helyesek, **válassza a kapcsolat lehetőséget**.
 
-A kapcsolódás sikeres hozzáadása után az erőforrás-fa a kapcsolódást jelölő csomópontra kerül. Az erőforrás a **helyi & csatolt**  >  **Storage-fiókok** területen jelenik meg. Ha Storage Explorer nem tudta felvenni a kapcsolatot, vagy ha a kapcsolat sikeres hozzáadása után nem fér hozzá az adataihoz, tekintse meg a [Azure Storage Explorer hibaelhárítási útmutatót](./storage/common/storage-explorer-troubleshooting.md).
+#### <a name="shared-access-signature-sas-connection-string"></a>Közös hozzáférésű aláírás (SAS) kapcsolati sztringje
 
-#### <a name="use-a-shared-access-signature-uri"></a>Közös hozzáférésű jogosultságkód URI-jának használata
+Storage Explorer csatlakozhat egy Storage-fiókhoz egy megosztott hozzáférési aláírással (SAS) rendelkező kapcsolati karakterlánc használatával. A SAS-kapcsolatok karakterlánca így néz ki:
 
-1. Válassza a **Kapcsolódás** szimbólumot az **Azure Storage-hoz való kapcsolódás** megnyitásához.
+```text
+SharedAccessSignature=sv=2020-04-08&ss=btqf&srt=sco&st=2021-03-02T00%3A22%3A19Z&se=2020-03-03T00%3A22%3A19Z&sp=rl&sig=fFFpX%2F5tzqmmFFaL0wRffHlhfFFLn6zJuylT6yhOo%2FY%3F;
+BlobEndpoint=https://contoso.blob.core.windows.net/;
+FileEndpoint=https://contoso.file.core.windows.net/;
+QueueEndpoint=https://contoso.queue.core.windows.net/;
+TableEndpoint=https://contoso.table.core.windows.net/;
+```
 
-    ![Csatlakozás Azure Storage-hoz lehetőség][9]
+1. A **Kapcsolódás az Azure Storage-hoz** párbeszédpanel **erőforrás kiválasztása** paneljén válassza a **Storage-fiók** lehetőséget.
+1. Válassza a **közös hozzáférési aláírás (SAS)** lehetőséget, és kattintson a **Tovább gombra**.
+1. Adja meg a kapcsolatok megjelenítendő nevét és a Storage-fiók SAS-kapcsolatok sztringjét. Kattintson a **Tovább** gombra.
+1. Tekintse át a kapcsolatok adatait az **Összefoglalás** panelen. Ha a kapcsolati adatok helyesek, **válassza a kapcsolat lehetőséget**.
 
-1. Válassza **a közös hozzáférésű aláírás (SAS) URI használata** lehetőséget, majd kattintson a **tovább** gombra.
+#### <a name="shared-access-signature-sas-url"></a>Közös hozzáférésű aláírás (SAS) URL-címe
 
-1. Válassza ki a kapcsolat megjelenítendő nevét, és adja meg a közös hozzáférésű aláírás URI-JÁT. A csatolni kívánt erőforrás-típushoz tartozó szolgáltatási végpontot az automatikus kitöltés értékre kell írni. Ha egyéni végpontot használ, lehetséges, hogy előfordulhat, hogy nem. Kattintson a **Tovább** gombra.
+A Storage Explorer SAS URI használatával tud csatlakozni a következő erőforrás-típusokhoz:
+* Blobtároló
+* Azure Data Lake Storage Gen2 tároló vagy könyvtár
+* Fájlmegosztás
+* Üzenetsor
+* Tábla
 
-1. Tekintse át a **kapcsolatok összegzését** , és győződjön meg arról, hogy minden adat helyes. Ha igen, válassza a **kapcsolat** lehetőséget. Ellenkező esetben válassza a **vissza** lehetőséget, ha vissza szeretne térni az előző lapokra a helytelen információk kijavításához.
+A SAS URI a következőképpen néz ki:
 
-A kapcsolódás sikeres hozzáadása után az erőforrás-fa a kapcsolódást jelölő csomópontra kerül. Az erőforrás a **helyi & csatlakoztatott**  >  **Storage**  >  **-fiókok (csatolt tárolók)** alatt jelenik meg a  >  *szolgáltatás csomópontja számára a csatlakoztatott tároló típusaként*. Ha Storage Explorer nem tudta felvenni a kapcsolatokat, tekintse meg a [Azure Storage Explorer hibaelhárítási útmutatót](./storage/common/storage-explorer-troubleshooting.md). Ha a kapcsolat sikeres hozzáadása után nem fér hozzá az adataihoz, tekintse meg a hibaelhárítási útmutatót.
+```text
+https://contoso.blob.core.windows.net/container01?sv=2020-04-08&st=2021-03-02T00%3A30%3A33Z&se=2020-03-03T00%3A30%3A33Z&sr=c&sp=rl&sig=z9VFdWffrV6FXU51T8b8HVfipZPOpYOFLXuQw6wfkFY%3F
+```
 
-#### <a name="use-a-name-and-key"></a>Név és kulcs használata
+1. A **Kapcsolódás az Azure Storage-hoz** párbeszédpanel **erőforrás kiválasztása** paneljén válassza ki azt az erőforrást, amelyhez csatlakozni szeretne.
+1. Válassza a **közös hozzáférési aláírás (SAS)** lehetőséget, és kattintson a **Tovább gombra**.
+1. Adja meg a kapcsolatok megjelenítendő nevét, valamint az erőforrás SAS URI azonosítóját. Kattintson a **Tovább** gombra.
+1. Tekintse át a kapcsolatok adatait az **Összefoglalás** panelen. Ha a kapcsolati adatok helyesek, **válassza a kapcsolat lehetőséget**.
 
-1. Válassza a **Kapcsolódás** szimbólumot az **Azure Storage-hoz való kapcsolódás** megnyitásához.
+#### <a name="local-storage-emulator"></a>Helyi tároló emulátora
 
-    ![Csatlakozás Azure Storage-hoz lehetőség][9]
-
-1. Válassza **a Storage-fiók nevének és kulcsának használata** lehetőséget, majd kattintson a **tovább** gombra.
-
-1. Válassza ki a kapcsolatok megjelenítendő nevét.
-
-1. Adja meg a Storage-fiók nevét és a hozzá tartozó hozzáférési kulcsok egyikét.
-
-1. Válassza ki a használni kívánt **tárolási tartományt** , majd kattintson a **tovább** gombra.
-
-1. Tekintse át a **kapcsolatok összegzését** , és győződjön meg arról, hogy minden adat helyes. Ha igen, válassza a **kapcsolat** lehetőséget. Ellenkező esetben válassza a **vissza** lehetőséget, ha vissza szeretne térni az előző lapokra a helytelen információk kijavításához.
-
-A kapcsolódás sikeres hozzáadása után az erőforrás-fa a kapcsolódást jelölő csomópontra kerül. Az erőforrás a **helyi & csatolt**  >  **Storage-fiókok** területen jelenik meg. Ha Storage Explorer nem tudta felvenni a kapcsolatot, vagy ha a kapcsolat sikeres hozzáadása után nem fér hozzá az adataihoz, tekintse meg a [Azure Storage Explorer hibaelhárítási útmutatót](./storage/common/storage-explorer-troubleshooting.md).
-
-#### <a name="attach-to-a-local-emulator"></a>Csatlakoztatás helyi emulátorhoz
-
-Storage Explorer jelenleg két hivatalos tároló-emulátort támogat:
+Storage Explorer csatlakozhat egy Azure Storage-emulátorhoz. Jelenleg két támogatott emulátor létezik:
 
 * [Azure Storage-emulátor](storage/common/storage-use-emulator.md) (csak Windows)
 * [Azurite](https://github.com/azure/azurite) (Windows, MacOS vagy Linux)
 
-Ha az emulátor figyeli az alapértelmezett portokat, az emulátor **-alapértelmezett portok** csomópont használatával érheti el az emulátort. Keresse meg az **emulátort – az alapértelmezett portokat** a **helyi & csatlakoztatott**  >  **Storage-fiókok** területen.
+Ha az emulátor figyeli az alapértelmezett portokat, használhatja a **helyi & csatolt**  >  **Storage**  >  **-fiókok emulátora – az alapértelmezett portok** csomópontot az emulátor eléréséhez.
 
-Ha más nevet szeretne használni a csatlakozáshoz, vagy ha az emulátor nem fut az alapértelmezett portokon, kövesse az alábbi lépéseket:
+Ha más nevet szeretne használni a csatlakozáshoz, vagy ha az emulátor nem fut az alapértelmezett portokon:
 
-1. Indítsa el az emulátort. Adja meg a parancsot `AzureStorageEmulator.exe status` , hogy megjelenjenek a portok az egyes szolgáltatástípus-típusokhoz.
+1. Indítsa el az emulátort.
 
    > [!IMPORTANT]
    > A Storage Explorer nem indítja el automatikusan az emulátort. Manuálisan kell elindítania.
 
-1. Válassza a **Kapcsolódás** szimbólumot az **Azure Storage-hoz való kapcsolódás** megnyitásához.
+1. A **Kapcsolódás az Azure Storage-hoz** párbeszédpanel **erőforrás kiválasztása** paneljén válassza a **helyi tároló emulátor** lehetőséget.
+1. Adja meg a kapcsolatok megjelenítendő nevét, valamint a használni kívánt emulált szolgáltatások portszámát. Ha nem szeretné használni a szolgáltatást, hagyja üresen a megfelelő portot. Kattintson a **Tovább** gombra.
+1. Tekintse át a kapcsolatok adatait az **Összefoglalás** panelen. Ha a kapcsolati adatok helyesek, **válassza a kapcsolat lehetőséget**.
 
-    ![Csatlakozás Azure Storage-hoz lehetőség][9]
+### <a name="connect-to-azure-cosmos-db"></a>Csatlakozás az Azure Cosmos DB-hez
 
-1. Válassza **a csatolás helyi emulátorhoz** lehetőséget, majd kattintson a **tovább** gombra.
-
-1. Válassza ki a kapcsolatok megjelenítendő nevét, és adja meg azokat a portokat, amelyeken az emulátor figyeli az egyes szolgáltatások típusait. A **helyi emulátorhoz való csatolás** a legtöbb emulátor alapértelmezett portszámát mutatja. A **fájlok portja** üres, mert egyik hivatalos emulátor sem támogatja a Files szolgáltatást. Ha a használt emulátor támogatja a fájlokat, megadhatja a használni kívánt portot. Ezután válassza a **tovább** lehetőséget.
-
-1. Tekintse át a **kapcsolatok összegzését** , és győződjön meg arról, hogy minden adat helyes. Ha igen, válassza a **kapcsolat** lehetőséget. Ellenkező esetben válassza a **vissza** lehetőséget, ha vissza szeretne térni az előző lapokra a helytelen információk kijavításához.
-
-A kapcsolódás sikeres hozzáadása után az erőforrás-fa a kapcsolódást jelölő csomópontra kerül. A csomópontnak a **helyi & csatolt**  >  **Storage-fiókokban** kell megjelennie. Ha Storage Explorer nem tudta felvenni a kapcsolatot, vagy ha a kapcsolat sikeres hozzáadása után nem fér hozzá az adataihoz, tekintse meg a [Azure Storage Explorer hibaelhárítási útmutatót](./storage/common/storage-explorer-troubleshooting.md).
+A Storage Explorer a Azure Cosmos DB erőforrásokhoz való csatlakozást is támogatja.
 
 #### <a name="connect-to-an-azure-cosmos-db-account-by-using-a-connection-string"></a>Kapcsolódás Azure Cosmos DB fiókhoz kapcsolati sztring használatával
 
@@ -263,8 +284,6 @@ Amikor szöveget ír be a keresőmezőbe, Storage Explorer megjeleníti az össz
 
 > [!NOTE]
 > A keresés felgyorsításához a **Fiókkezelés** használatával törölje azokat az előfizetéseket, amelyek nem tartalmazzák a keresett elemet. Kattintson a jobb gombbal a csomópontra, és válassza a **Keresés itt** lehetőséget egy adott csomópont keresésének megkezdéséhez.
->
->
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -272,26 +291,8 @@ Amikor szöveget ír be a keresőmezőbe, Storage Explorer megjeleníti az össz
 * [Adatok kezelése az Azure Storage Explorerrel](./cosmos-db/storage-explorer.md)
 * [Azure Data Lake Store erőforrások kezelése a Storage Explorer](./data-lake-store/data-lake-store-in-storage-explorer.md)
 
-[0]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/Overview.png
-[1]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ManageAccounts.png
-[2]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connect-to-azure-storage-azure-environment.png
-[3]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/account-panel-subscriptions-apply.png
-[4]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/SubscriptionNode.png
-[5]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ConnectDialog.png
-[7]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/PortalAccessKeys.png
-[8]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/AccessKeys.png
-[9]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ConnectDialog.png
-[10]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ConnectDialog-AddWithKeySelected.png
-[11]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ConnectDialog-NameAndKeyPage.png
-[12]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/AttachedWithKeyAccount.png
-[13]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/AttachedWithKeyAccount-Detach.png
 [14]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/get-shared-access-signature-for-storage-explorer.png
 [15]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/create-shared-access-signature-for-storage-explorer.png
-[16]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ConnectDialog-WithConnStringOrSASSelected.png
-[17]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ConnectDialog-ConnStringOrSASPage-1.png
-[18]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/AttachedWithSASAccount.png
-[19]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ConnectDialog-ConnStringOrSASPage-2.png
-[20]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ServiceAttachedWithSAS.png
 [21]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connect-to-cosmos-db-by-connection-string.png
 [22]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connection-string-for-cosmos-db.png
 [23]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/storage-explorer-search-for-resource.png
