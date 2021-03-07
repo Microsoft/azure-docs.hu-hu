@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: bf73640c1a4014b61809f407e1873686c229273f
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 5289f9b558a200bf3dbefdf584eab59d1792439b
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954631"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437740"
 ---
 # <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes-fürt csatlakoztatása és kezelése a Azure Stack Edge Pro GPU-eszközön a kubectl használatával
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 A Azure Stack Edge Pro-eszközön a számítási szerepkör konfigurálásakor létrejön egy Kubernetes-fürt. A Kubernetes-fürt létrehozása után a fürt helyileg is csatlakoztatható egy ügyfélszámítógépről egy natív eszköz, például a *kubectl* használatával.
 

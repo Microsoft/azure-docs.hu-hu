@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 12/11/2019
+ms.date: 03/06/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: b20bb4df7524c179766a2b2f7f090fccbddd7f37
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: df88bd9a1d4901b348fbec47ea9e2946542a08e3
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102122612"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440088"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>A ExpressRoute és a helyek közötti egyidejű kapcsolatok konfigurálása a PowerShell használatával
 > [!div class="op_single_selector"]
@@ -36,17 +36,18 @@ Ebben a cikkben ismertetjük mindkét forgatókönyv konfigurálásának lépés
 >
 
 ## <a name="limits-and-limitations"></a>Korlátok és korlátozások
-* **A tranzit útválasztás nem támogatott.** Nem hajthat végre útválasztást (az Azure-on keresztül) a helyek közötti VPN használatával csatlakoztatott helyi hálózat és az ExpressRoute használatával csatlakoztatott helyi hálózat között.
-* **Az alapszintű termékváltozat átjárója nem támogatott.** Nem Basic SKU-átjárót kell használnia [ExpressRoute-](expressroute-about-virtual-network-gateways.md) és [VPN-átjáróként](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 * **Kizárólag az útvonalalapú VPN-átjáró támogatott.** Egy Route-alapú [VPN-átjárót](../vpn-gateway/vpn-gateway-about-vpngateways.md)kell használnia. Egy Route-alapú VPN-átjárót is használhat a "házirend-alapú forgalmi választóknak" konfigurált VPN-kapcsolattal, a következő témakörben leírtak szerint: [Csatlakozás több házirend-alapú VPN-eszközhöz](../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
-* **A VPN-átjáróhoz statikus útvonalat kell konfigurálni.** Ha a helyi hálózat az ExpressRoute-hoz és a helyek közötti VPN-hez is csatlakozik, konfigurálnia kell egy statikus útvonalat a helyi hálózaton a helyek közötti VPN-kapcsolat a nyilvános internetre történő átirányításához.
-* **Ha nincs megadva, a rendszer az ASN 65515 alapértékeket VPN Gateway.** Az Azure VPN Gateway támogatja a BGP útválasztási protokollt. Az-ASN kapcsoló hozzáadásával megadhatja a virtuális hálózathoz tartozó ASN (AS-szám) értéket. Ha nem megadja ezt a paramétert, a rendszer az alapértelmezett 65515-AS számot határozza meg. Bármilyen ASN-t használhat a konfigurációhoz, de ha a 65515-nál nem nagyobb értéket választ, a beállítás érvénybe léptetéséhez alaphelyzetbe kell állítania az átjárót.
+* **Az Azure VPN Gateway ASN-jét 65515-re kell állítani.** Az Azure VPN Gateway támogatja a BGP útválasztási protokollt. Ahhoz, hogy a ExpressRoute és az Azure VPN működjön együtt, a 65515-as alapértelmezett értéken meg kell őriznie az Azure VPN Gateway autonóm rendszer számát. Ha korábban a 65515-es és a 65515-es értéket választotta, a beállítás érvénybe léptetéséhez alaphelyzetbe kell állítania a VPN-átjárót.
 * **Az átjáró-alhálózat/27 vagy egy rövidebb előtag**(például/26,/25) lehet, vagy hibaüzenet jelenik meg, amikor hozzáadja a ExpressRoute virtuális hálózati átjárót.
 * **A kettős verem vnet nem támogatott az együttélés.** Ha a ExpressRoute IPv6-támogatást és egy kettős verem ExpressRoute-átjárót használ, akkor a VPN Gateway együttes létezése nem lehetséges.
 
 ## <a name="configuration-designs"></a>Konfigurációs tervek
 ### <a name="configure-a-site-to-site-vpn-as-a-failover-path-for-expressroute"></a>Helyek közötti VPN konfigurálása feladatátvételi útvonalként az ExpressRoute számára
 Konfigurálhat egy helyek közötti VPN-kapcsolatot tartalékként az ExpressRoute számára. Ez a kapcsolat csak az Azure privát társviszony-létesítési útvonalhoz társított virtuális hálózatokra vonatkozik. Az Azure Microsoft társviszony-létesítésekhez nem létezik VPN-alapú feladatátvételi megoldás. Minden esetben az ExpressRoute-kapcsolatcsoport az elsődleges kapcsolat. Az adatok csak akkor lesznek a helyek közötti VPN-útvonalon továbbítva, ha az ExpressRoute-kapcsolatcsoport meghibásodik. Az aszimmetrikus útválasztás elkerüléséhez a helyi hálózati konfigurációnak szintén az ExpressRoute-kapcsolatcsoportot kell előnyben részesítenie a helyek közötti VPN helyett. Az ExpressRoute elérési útjának előnyben részesítéséhez beállíthat magasabb helyi prioritást az ExpressRoute által fogadott útvonalakhoz. 
+
+>[!NOTE]
+> Ha engedélyezve van a Microsoft ExpressRoute, a ExpressRoute-kapcsolaton keresztül az Azure VPN Gateway nyilvános IP-címét is megkaphatja. Ha a helyek közötti VPN-kapcsolatot biztonsági másolatként szeretné beállítani, konfigurálnia kell a helyszíni hálózatot, hogy a VPN-kapcsolat az internethez legyen irányítva.
+>
 
 > [!NOTE]
 > Bár a rendszer az ExpressRoute-kapcsolatcsoportot részesíti előnyben a helyek közötti VPN helyett, ha az útvonalak megegyeznek, az Azure a leghosszabb előtag-megfeleltetéssel választja ki a célcsomag útvonalát.
@@ -261,6 +262,9 @@ Az alábbi lépések végrehajtásával pont – hely konfigurációt adhat hozz
    $p2sCertData = [System.Convert]::ToBase64String($p2sCertToUpload.RawData) 
    Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $p2sCertFullName -VirtualNetworkGatewayname $azureVpn.Name -ResourceGroupName $resgrp.ResourceGroupName -PublicCertData $p2sCertData
    ```
+
+## <a name="to-enable-transit-routing-between-expressroute-and-azure-vpn"></a>Az átviteli útválasztás engedélyezése a ExpressRoute és az Azure VPN között
+Ha engedélyezni szeretné a csatlakozást a ExpressRoute-hez csatlakozó helyi hálózat vagy egy, a helyek közötti VPN-kapcsolathoz csatlakozó helyi hálózat között, be kell állítania az [Azure Route Servert](../route-server/expressroute-vpn-support.md).
 
 A pont-hely VPN-ekkel kapcsolatos további információkért lásd: [Pont-hely kapcsolat konfigurálása](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md).
 

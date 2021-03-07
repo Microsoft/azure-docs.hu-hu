@@ -16,12 +16,12 @@ ms.date: 02/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 000b91529b3b02f2c7d03b50ddc841c68625dada
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e758933b80efbf36dc263b7bd7d2d3c45a59a9f8
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644803"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426790"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a cikk a Azure Active Directory (Azure AD) csatlakozási előfeltételeit és hardverkövetelmények leírását ismerteti.
@@ -102,6 +102,7 @@ Javasoljuk, hogy a biztonsági támadási felületet az IT-környezet ezen kriti
 
 ### <a name="connectivity"></a>Kapcsolatok
 * A Azure AD Connect-kiszolgálónak az intraneten és az interneten egyaránt DNS-feloldásra van szüksége. A DNS-kiszolgálónak képesnek kell lennie a nevek feloldására a helyszíni Active Directory és az Azure AD-végpontokon.
+* Azure AD Connect hálózati kapcsolatra van szükség az összes konfigurált tartományhoz
 * Ha tűzfallal rendelkezik az intraneten, és meg kell nyitnia a portokat a Azure AD Connect-kiszolgálók és a tartományvezérlők között, további információért lásd: [Azure ad Connect portok](reference-connect-ports.md) .
 * Ha a proxy vagy a tűzfal korlátozza, hogy mely URL-címek érhetők el, meg kell nyitni az [Office 365 URL-címek és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) által dokumentált URL-címeket. Tekintse [meg a tűzfal vagy a proxykiszolgáló Azure Portal URL-safelist](../../azure-portal/azure-portal-safelist-urls.md?tabs=public-cloud)is.
   * Ha a Microsoft Cloud-ot Németországban vagy a Microsoft Azure Government felhőben használja, Azure AD Connect tekintse meg az URL-címek [szinkronizálási szolgáltatás példányainak szempontjait](reference-connect-instances.md) ismertető témakört.

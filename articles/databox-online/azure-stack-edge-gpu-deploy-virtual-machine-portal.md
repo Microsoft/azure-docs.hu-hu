@@ -6,17 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/02/2020
+ms.date: 02/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro device so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: a48abb34a201928185130fbe8fdf9592e77492d9
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 6054e7e79acaa6abf304508221c63143b9d14a45
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944950"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102436532"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-the-azure-portal"></a>Virtuális gépek üzembe helyezése az Azure Stack Edge Pro GPU-eszközön a Azure Portal használatával
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Létrehozhat és kezelhet virtuális gépeket Azure Stack peremhálózati eszközön Azure Portal, sablonok, Azure PowerShell parancsmagok és Azure CLI/Python parancsfájlok használatával. Ez a cikk azt ismerteti, hogyan hozhat létre és kezelhet virtuális gépeket a Azure Stack peremhálózati eszközön a Azure Portal használatával. 
 
@@ -82,7 +84,7 @@ A következő lépésekkel hozhat létre egy virtuális gépet az Azure Stack Ed
 
     ![VM-rendszerkép hozzáadása 3](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-3.png)
 
-1. A **rendszerkép hozzáadása panelen adja** meg a következő paramétereket. Válassza a **Hozzáadás** elemet.
+1. A **rendszerkép hozzáadása panelen adja** meg a következő paramétereket. Válassza a **Hozzáadás** lehetőséget.
 
 
     |Paraméter  |Leírás  |

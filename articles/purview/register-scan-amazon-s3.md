@@ -6,14 +6,14 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 01/19/2021
+ms.date: 03/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 7d3fd0b1ffb87a84772000702b958c52ed1cc47c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ddd5c5de85da5ae8cec9d24d33dfd2bf035b5b34
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679900"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438728"
 ---
 # <a name="azure-purview-connector-for-amazon-s3"></a>Azure-beli hatáskörébe-összekötő az Amazon S3-hoz
 
@@ -61,8 +61,8 @@ Az alábbi táblázat azokat a régiókat ismerteti, amelyekben a rendszer az Az
 | Ázsia és a Csendes-óceáni térség (Sydney)           | Európa (Frankfurt)                    |
 | Ázsia és a Csendes-óceáni térség (Tokió)            | Európa (Frankfurt)                    |
 | Kanada (Közép)                | USA keleti régiója (Ohio)                        |
-| Kína (Peking)                 | Európa (Frankfurt)                    |
-| Kína (Ningxia)                 | Európa (Frankfurt)                    |
+| Kína (Peking)                 | Nem támogatott                    |
+| Kína (Ningxia)                 | Nem támogatott                   |
 | Európa (Frankfurt)              | Európa (Frankfurt)                    |
 | Európa (Írország)                | Európa (Frankfurt)                    |
 | Európa (London)                 | Európa (Frankfurt)                    |
@@ -351,7 +351,7 @@ Ha a gyűjtőket a hatáskörébe tartozó adatforrásként adta hozzá, beáll�
 
     Ha új egyéni ellenőrzési szabálykészlet létrehozását választja, a varázslóval adja meg a következő beállításokat:
 
-    |Ablaktábla  |Leírás  |
+    |Ablaktábla  |Description  |
     |---------|---------|
     |**Új ellenőrzési szabály beállítva** /<br>**Vizsgálati szabály leírása**    |   Adjon meg egy értelmes nevet és egy opcionális leírást a szabálykészlet számára      |
     |**Fájltípusok kiválasztása**     | Válassza ki az összes olyan fájltípust, amelyet fel szeretne venni a vizsgálatba, majd válassza a **Folytatás** lehetőséget.<br><br>Új fájltípus hozzáadásához válassza az **új fájltípus** lehetőséget, és adja meg a következőket: <br>– A hozzáadni kívánt fájlkiterjesztés <br>– Opcionális Leírás  <br>– Azt határozza meg, hogy a fájl tartalma rendelkezik-e egyéni elválasztóval vagy rendszerfájl-típussal. Ezután adja meg az egyéni határolójelet, vagy válassza ki a rendszerfájl típusát. <br><br>Válassza a **Létrehozás** lehetőséget az egyéni fájltípus létrehozásához.     |

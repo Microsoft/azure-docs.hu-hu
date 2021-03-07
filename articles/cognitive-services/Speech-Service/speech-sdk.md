@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 597a7c3954912a3a86b5db9f92ba75e8aaee63f6
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4c8ee3a65c26d1eb3acb7b9f4c18f11e870e4b82
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601814"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434526"
 ---
 # <a name="about-the-speech-sdk"></a>A Speech SDK ismertetése
 
@@ -58,13 +58,14 @@ A **szöveg-beszéd (TTS)** a következő platformokon érhető el:
 
 ### <a name="voice-assistants"></a>Hangvezérelt asszisztensek
 
-A Speech SDK-t használó [hangsegédek](voice-assistants.md) lehetővé teszik, hogy a fejlesztők természetes, emberi jellegű társalgási felületet hozzanak létre alkalmazásaikban és tapasztalataikban. A hangsegéd szolgáltatás gyors, megbízható interakciót biztosít egy eszköz és egy segéd között. A megvalósítás a bot Framework közvetlen vonalas beszéd csatornáját vagy az integrált Custom commands szolgáltatást használja a feladatok befejezéséhez. Emellett a hangsegédek az [Egyéni Hangportálon](https://aka.ms/customvoice) létrehozott egyéni hangokat is felhasználhatják egy egyedi hangkimeneti élmény hozzáadásához.
+A beszédfelismerési SDK-val rendelkező [hangsegédek](voice-assistants.md) lehetővé teszik az alkalmazások és a tapasztalatok természetes, emberi és hasonló társalgási felületének létrehozását. A Speech SDK gyors és megbízható interakciót biztosít, amely magában foglalja a beszéd-szöveg, a szöveg és a beszéd közötti kommunikációt, valamint az egyetlen kapcsolaton belüli társalgási adatbevitelt. A megvalósítás a bot Framework közvetlen vonalas beszéd csatornáját vagy az integrált Custom commands szolgáltatást használhatja a feladatok befejezéséhez. Emellett a hangsegédek az [Egyéni Hangportálon](https://aka.ms/customvoice) létrehozott egyéni hangokat is felhasználhatják egy egyedi hangkimeneti élmény hozzáadásához.
 
-A **hangsegédek** a következő platformokon érhetők el:
+A **hangsegéd** támogatása a következő platformokon érhető el:
 
   - C++/Windows & Linux & macOS rendszerhez
   - C#/Windows
   - Java/Windows & Linux & macOS & Android (Speech Devices SDK)
+  - Go
 
 #### <a name="keyword-spotting"></a>Kulcsszavas bepecsételés
 
@@ -113,7 +114,7 @@ A **Call Center átirata** a Batch Speech szolgáltatáson keresztül érhető e
 
 ### <a name="codec-compressed-audio-input"></a>Codec tömörített hangbemenet
 
-A Speech SDK programozási nyelvei közül több is támogatja a kodekkel tömörített hangbemeneti streameket. További információ: <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">tömörített hangformátumok <span class="docon docon-navigate-external x-hidden-focus"></span> használata </a>.
+A Speech SDK programozási nyelvei közül több is támogatja a kodekkel tömörített hangbemeneti streameket. További információ: <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">tömörített hangformátumok használata </a>.
 
 A **kodek tömörített hangbemenete** a következő platformokon érhető el:
 
@@ -177,7 +178,7 @@ Az egyéni hangvezérelt szöveg-beszéd, más néven az egyéni hang olyan onli
 
 [!INCLUDE [Sample source code](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/cognitive-services/)
 * [Lásd: beszéd felismerése a C-ben #](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet)

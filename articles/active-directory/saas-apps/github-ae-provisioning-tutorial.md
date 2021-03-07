@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2020
 ms.author: Zhchia
-ms.openlocfilehash: c3384effc961c6c588bc2d7f4f75bc386d63076b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0a9615e6bcb350732ccd7b2cf27dad3b46a7e4b3
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651577"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102427011"
 ---
 # <a name="tutorial-configure-github-ae-for-automatic-user-provisioning"></a>Oktatóanyag: a GitHub AE konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
 
@@ -32,6 +32,7 @@ Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a GitHub AE és Azu
 > * Felhasználók létrehozása a GitHub AE-ben
 > * Távolítsa el a felhasználókat a GitHub AE-ben, ha már nincs szükség hozzáférésre
 > * A felhasználói attribútumok szinkronizálása az Azure AD és a GitHub AE között
+> * Csoportok és csoporttagságok kiépítése a GitHub AE-ben
 > * Egyszeri bejelentkezés a [GITHUB AE](./github-ae-tutorial.md) -be (ajánlott)
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -59,7 +60,7 @@ Vegye fel a GitHub AE-t az Azure AD-alkalmazás-katalógusból a GitHub AE-re va
 
 Az Azure AD kiépítési szolgáltatása lehetővé teszi az alkalmazáshoz való hozzárendelés és a felhasználó és/vagy csoport attribútumai alapján kiépített hatókör kiosztását. Ha azt a hatókört választja, hogy a hozzárendelés alapján ki lesz kiépítve az alkalmazáshoz, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet hozzá felhasználókat és/vagy csoportokat az alkalmazáshoz. Ha olyan hatókört választ ki, aki kizárólag a felhasználó és/vagy csoport attribútumai alapján lesz kiépítve, az [itt](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)leírtak szerint hatókör-szűrőt is használhat. 
 
-* Amikor felhasználókat rendel a GitHub AE-hoz, ki kell választania az **alapértelmezett hozzáféréstől** eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](../develop/howto-add-app-roles-in-azure-ad-apps.md). 
+* Amikor felhasználókat és csoportokat rendel a GitHub AE-hoz, ki kell választania az **alapértelmezett hozzáféréstől** eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](../develop/howto-add-app-roles-in-azure-ad-apps.md). 
 
 * Kezdje kicsiben. Tesztelje a felhasználókat és/vagy csoportokat egy kis készlettel, mielőtt mindenki számára elérhetővé tenné. Ha a kiépítés hatóköre a hozzárendelt felhasználók és/vagy csoportok értékre van beállítva, akkor ezt úgy szabályozhatja, hogy egy vagy két felhasználót és/vagy csoportot rendel az alkalmazáshoz. Amikor a hatókör az összes felhasználóra és csoportra van beállítva, meghatározhat egy [attribútumalapú hatókörszűrőt](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 

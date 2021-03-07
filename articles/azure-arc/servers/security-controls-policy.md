@@ -1,15 +1,15 @@
 ---
 title: Az Azure arc használatára képes kiszolgálók Azure Policy vonatkozó megfelelőségi szabályozása (előzetes verzió)
 description: Felsorolja Azure Policy az Azure arc-kompatibilis kiszolgálók (előzetes verzió) számára elérhető megfelelőségi szabályozásokat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.topic: sample
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: a36259c64cb1a789750cfd7e5db5ff758f7de3d5
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 4a86cfd5f6776611680aca33f179fb356c2a57aa
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091091"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441761"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-arc-enabled-servers"></a>Az Azure arc-kompatibilis kiszolgálókra vonatkozó megfelelőségi szabályozás Azure Policy
 

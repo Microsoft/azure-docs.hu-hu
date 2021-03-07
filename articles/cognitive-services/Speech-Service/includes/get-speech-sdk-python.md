@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: c0e3dc2a93393982341414399e318de0d983b918
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ecc8fa0d6660d76f20451cf98e927e7efb2c30d7
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81399929"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434545"
 ---
 :::row:::
     :::column span="3":::
-        A Python Speech SDK Python Package index (PyPI) modulként érhető el, további információ: <a href="https://pypi.org/project/azure-cognitiveservices-speech/" target="_blank">Azure-cognitiveservices-Speech <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. A Python Speech SDK kompatibilis a Windows, a Linux és a macOS rendszerekkel.
+        A Python Speech SDK Python Package index (PyPI) modulként érhető el, további információ: <a href="https://pypi.org/project/azure-cognitiveservices-speech/" target="_blank">Azure-cognitiveservices-Speech </a>. A Python Speech SDK kompatibilis a Windows, a Linux és a macOS rendszerekkel.
     :::column-end:::
     :::column:::
         <br>
@@ -35,4 +35,4 @@ pip install azure-cognitiveservices-speech
 
 #### <a name="additional-resources"></a>További források
 
-- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/python" target="_blank">Python Speech SDK gyors útmutató forráskódja <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/python" target="_blank">Python Speech SDK gyors útmutató forráskódja </a>

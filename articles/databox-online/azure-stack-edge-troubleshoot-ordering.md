@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 08/11/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: be7d477d08b025fd450bfa859e8eb677ba680143
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e074043cb685f60027d3c09ae7ad8dc17dded0df
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446373"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443403"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-pro-ordering-issues"></a>A Azure Stack Edge Pro-rendezéssel kapcsolatos problémák elhárítása
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Ez a cikk azt ismerteti, hogyan lehet elhárítani a Azure Stack Edge Pro rendezésével kapcsolatos problémákat.
 
@@ -73,6 +75,6 @@ További információ: erőforrás- [szolgáltatók regisztrálása](azure-stack
 
 **Javasolt megoldás:** Ez a hiba egy meglévő Azure-szabályzat miatt fordul elő, amely blokkolja az erőforrások létrehozását. Az Azure-szabályzatokat a szervezet rendszergazdája állítja be, hogy biztosítsa az Azure-erőforrások használatának vagy létrehozásának megfelelőségét. Ha bármely ilyen házirend blokkolja Azure Stack peremhálózati erőforrás-létrehozást, forduljon a rendszergazdához az Azure-szabályzat szerkesztéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az [Azure stack Edge Pro-problémák elhárításáról](azure-stack-edge-troubleshoot.md).

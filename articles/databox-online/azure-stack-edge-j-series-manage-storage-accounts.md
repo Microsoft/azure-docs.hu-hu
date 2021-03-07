@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: d3378b08ace73b2bc9a10286abf5a48f3063ba7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58ea8709af33510b1848d0c031d513e4af7a352d
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743505"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102436549"
 ---
-# <a name="use-the-azure-portal-to-manage-edge-storage-accounts-on-your-azure-stack-edge-pro"></a>Az Edge Storage-fiókok kezelése az Azure Stack Edge Pro-ban Azure Portal használatával
+# <a name="use-the-azure-portal-to-manage-edge-storage-accounts-on-your-azure-stack-edge-pro"></a>Az Azure Stack Edge Pro alatt lévő Edge-tárfiókok kezelése az Azure Portalon
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Ez a cikk bemutatja, hogyan kezelheti az Edge Storage-fiókokat a Azure Stack Edge Pro-ban. A Azure Stack Edge Pro-t a Azure Portal vagy a helyi webes felületen keresztül kezelheti. A Azure Portal használatával hozzáadhat vagy törölhet Edge Storage-fiókokat az eszközön.
 
@@ -48,11 +48,11 @@ Edge Storage-fiók létrehozásához hajtsa végre a következő eljárást:
 
 A következő lépésekkel törölheti az Edge Storage-fiókot.
 
-1. Nyissa meg az erőforrás **konfigurációs > Storage-fiókjait** . A Storage-fiókok listájából válassza ki a törölni kívánt Storage-fiókot. A felső menüsávban válassza a **Storage-fiók törlése**lehetőséget.
+1. Nyissa meg az erőforrás **konfigurációs > Storage-fiókjait** . A Storage-fiókok listájából válassza ki a törölni kívánt Storage-fiókot. A felső menüsávban válassza a **Storage-fiók törlése** lehetőséget.
 
     ![Ugrás a Storage-fiókok listájához](media/azure-stack-edge-j-series-manage-storage-accounts/delete-edge-storage-account-1.png)
 
-2. A **Storage-fiók törlése** panelen erősítse meg a törölni kívánt Storage-fiókot, és válassza a **Törlés**lehetőséget.
+2. A **Storage-fiók törlése** panelen erősítse meg a törölni kívánt Storage-fiókot, és válassza a **Törlés** lehetőséget.
 
     ![Storage-fiók megerősítése és törlése](media/azure-stack-edge-j-series-manage-storage-accounts/delete-edge-storage-account-2.png)
 
@@ -65,7 +65,7 @@ Hozzáadhat vagy törölhet is tárolókat ezekhez a Storage-fiókokhoz.
 
 Tároló hozzáadásához hajtsa végre a következő lépéseket:
 
-1. Válassza ki a kezelni kívánt Storage-fiókot. A felső menüsávban válassza a **+ tároló hozzáadása**elemet.
+1. Válassza ki a kezelni kívánt Storage-fiókot. A felső menüsávban válassza a **+ tároló hozzáadása** elemet.
 
     ![Válassza ki a Storage-fiókot a tároló hozzáadásához](media/azure-stack-edge-j-series-manage-storage-accounts/add-container-1.png)
 
@@ -87,11 +87,11 @@ Szinkronizálhatja az eszközön található peremhálózati (helyi) Storage-fi�
 
 A Storage-fiók elérési kulcsának szinkronizálásához hajtsa végre a következő lépéseket:
 
-1. Az erőforrásban válassza ki a kezelni kívánt Storage-fiókot. A felső menüsávban válassza ki a **Storage-kulcs szinkronizálása**elemet.
+1. Az erőforrásban válassza ki a kezelni kívánt Storage-fiókot. A felső menüsávban válassza ki a **Storage-kulcs szinkronizálása** elemet.
 
     ![Válassza ki a Storage-kulcs szinkronizálása lehetőséget](media/azure-stack-edge-j-series-manage-storage-accounts/sync-storage-key-1.png)
 
-2. Ha a rendszer megerősítést kér, válassza az **Igen**lehetőséget.
+2. Ha a rendszer megerősítést kér, válassza az **Igen** lehetőséget.
 
     ![Válassza a 2. Storage-kulcs lehetőséget](media/azure-stack-edge-j-series-manage-storage-accounts/sync-storage-key-2.png)
 

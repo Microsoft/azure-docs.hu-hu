@@ -57,7 +57,7 @@
     - name: SDK-k
       items:
         - name: .NET
-          href: /dotnet/api/overview/azure/cognitiveservices/bing-entity-search-api-readme?view=azure-dotnet
+          href: /dotnet/api/overview/azure/cognitiveservices/bing-entity-search-api-readme
         - name: Java
           href: /java/api/overview/azure/cognitiveservices/client/bingentitysearchapi
         - name: Python
@@ -66,7 +66,7 @@
           href: /javascript/api/@azure/cognitiveservices-entitysearch/
         - name: Go
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/entitysearch'
-- name: Források
+- name: További források
   items:
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/bing-entity-search-api/'

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 48ff32655b107958a3e8e42dbd7de0f405a6fffa
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: aa0da5721c577957b101ac8a2d9346c0536f0a88
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094862"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424138"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Hozzáférés-vezérlés az Azure Data Lake Storage Gen1-ben
 
@@ -218,7 +218,7 @@ Fájl vagy mappa létrehozásakor a rendszer a umask használatával módosítja
 
 A Azure Data Lake Storage Gen1 umask egy állandó érték, amely a 007-re van állítva. Ez az érték a következőre van lefordítva
 
-| umask-összetevő     | Numerikus alak | Rövid alak | Jelentés |
+| umask-összetevő     | Numerikus alak | Rövid alak | Értelmezés |
 |---------------------|--------------|------------|---------|
 | umask.owning_user   |    0         |   `---`      | A tulajdonos felhasználó számára másolja a szülő alapértelmezett ACL-t a gyermek hozzáférési ACL-jéhez. | 
 | umask.owning_group  |    0         |   `---`      | A tulajdonos csoport esetében másolja a szülő alapértelmezett ACL-t a gyermek hozzáférési ACL-jéhez. | 
@@ -286,7 +286,11 @@ Az Azure Portalon lépjen a **Azure Active Directory-> vállalati alkalmazások*
 
 ### <a name="does-data-lake-storage-gen1-support-inheritance-of-acls"></a>Támogatja Data Lake Storage Gen1 az ACL-ek öröklését?
 
-Nem, az alapértelmezett ACL-ek azonban használhatók a szülő mappán belül újonnan létrehozott gyermekfájlok és mappák ACL-jeinek beállításához.  
+Nem, az alapértelmezett ACL-ek azonban használhatók a szülő mappán belül újonnan létrehozott gyermekfájlok és mappák ACL-jeinek beállításához.
+
+### <a name="what-are-the-limits-for-acl-entries-on-files-and-folders"></a>Mik a fájlok és mappák ACL-bejegyzéseinek korlátai?
+
+32 ACL-ek állíthatók be fájlonként és könyvtárként. Hozzáférés és alapértelmezett ACL-ek mindegyike rendelkezik saját 32 ACL-bejegyzési korláttal. Ha lehetséges, használjon biztonsági csoportokat ACL-hozzárendelésekhez. A csoportok használatával kevésbé valószínű, hogy a fájlok vagy könyvtárak ACL-bejegyzéseinek maximális száma nagyobb.
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>Hol tudhatok meg többet a POSIX hozzáférés-vezérlési modellről?
 
@@ -299,6 +303,6 @@ Nem, az alapértelmezett ACL-ek azonban használhatók a szülő mappán belül 
 * [POSIX ACL Ubuntu rendszeren](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [Hozzáférés-vezérlési listákat használó ACL Linux rendszeren](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [A Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)

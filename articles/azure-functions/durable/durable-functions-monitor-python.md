@@ -5,18 +5,22 @@ author: davidmrdavid
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 9083821fa03c09949daaf3166367489248a4d7d2
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 62b3c9bb1c6fd53d9f11227a9d7e774d56859d04
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98029187"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434763"
 ---
 # <a name="monitor-scenario-in-durable-functions---github-issue-monitoring-sample"></a>Figyelési forgatókönyv Durable Functions – GitHub-probléma figyelési mintája
 
 A figyelő minta egy munkafolyamatban egy rugalmas ismétlődő folyamatra utal – például az egyes feltételek teljesülése esetén történő lekérdezésre. Ez a cikk a figyelés megvalósítását Durable Functions használó mintát ismerteti.
 
-[! Tartós funkciók belefoglalása – előfeltételek]
+## <a name="prerequisites"></a>Előfeltételek
+
+* [A gyors üzembe helyezési cikk befejezése](quickstart-python-vscode.md)
+* [A Samples projekt klónozása vagy letöltése a GitHubról](https://github.com/Azure/azure-functions-durable-python/tree/main/samples/)
+
 
 ## <a name="scenario-overview"></a>A forgatókönyv áttekintése
 
@@ -45,7 +49,6 @@ Ez a cikk a minta alkalmazás következő funkcióit ismerteti:
 
 ### <a name="e3_monitor-orchestrator-function"></a>E3_Monitor Orchestrator függvény
 
-# <a name="python"></a>[Python](#tab/python)
 
 A **E3_Monitor** függvény a standard *function.jst* használja a Orchestrator függvényekhez.
 
@@ -55,7 +58,6 @@ Itt látható a függvényt megvalósító kód:
 
 [!code-python[Main](~/samples-durable-functions-python/samples/monitor/E3_Monitor/\_\_init\_\_.py)]
 
----
 
 Ez a Orchestrator-függvény a következő műveleteket hajtja végre:
 
@@ -73,7 +75,6 @@ Egyszerre több Orchestrator példány is futtatható a Orchestrator függvény 
 
 Más mintákhoz hasonlóan a segítő tevékenység funkciói az trigger-kötést használó reguláris függvények `activityTrigger` . A **E3_TooManyOpenIssues** függvény beolvassa az aktuálisan megnyitott hibák listáját a tárházban, és meghatározza, hogy vannak-e "túl sok": több mint 3, mint a minta.
 
-# <a name="python"></a>[Python](#tab/python)
 
 A *function.jsa* következő módon van definiálva:
 
@@ -83,13 +84,11 @@ Itt pedig a megvalósítás.
 
 [!code-python[Main](~/samples-durable-functions-python/samples/monitor/E3_TooManyOpenIssues/\_\_init\_\_.py)]
 
----
 
 ### <a name="e3_sendalert-activity-function"></a>E3_SendAlert Activity függvény
 
 A **E3_SendAlert** függvény a Twilio kötés használatával küld SMS-üzenetet, amely értesíti a felhasználót arról, hogy legalább 3 nyitott probléma vár a megoldásra.
 
-# <a name="python"></a>[Python](#tab/python)
 
 A *function.js* egyszerű:
 
@@ -99,7 +98,6 @@ Itt látható az SMS-üzenetet küldő kód:
 
 [!code-python[Main](~/samples-durable-functions-python/samples/monitor/E3_SendAlert/\_\_init\_\_.py)]
 
----
 
 ## <a name="run-the-sample"></a>Minta futtatása
 
@@ -150,7 +148,7 @@ A rendszer az időtúllépés elérésekor vagy több mint 3 nyitott probléma �
 POST https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a példa azt mutatja be, hogyan használható a Durable Functions egy külső forrás állapotának figyelésére [tartós időzítők](durable-functions-timers.md) és feltételes logika használatával. A következő minta bemutatja, hogyan használhatók a külső események és a [tartós időzítők](durable-functions-timers.md) az emberi interakció kezelésére.
 

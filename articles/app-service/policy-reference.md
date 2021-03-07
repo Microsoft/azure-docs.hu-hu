@@ -1,15 +1,15 @@
 ---
 title: A Azure App Service beépített szabályzat-definíciói
 description: A Azure App Service Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: c4d083c84d89c39b865dc7b5e677f45e976da5a2
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 479f68ef391d68489a4ebe052336ba140c07af64
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100092748"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428616"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-app-service"></a>A Azure App Service beépített definíciói Azure Policy
 

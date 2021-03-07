@@ -9,16 +9,16 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: db946dcc0fc8571f7b6aa191909155baccf7d1a2
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 8ed63a508447104f9073c986debfae73ba7de89f
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878578"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428643"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>BLOB Storage csatlakoztatása a hálózati fájlrendszer (NFS) 3,0 protokoll (előzetes verzió) használatával
 
-A blob Storage-tárolók egy Windows-vagy Linux-alapú Azure-beli virtuális gépről (VM) vagy olyan Windows-vagy Linux-rendszerből is csatlakoztathatók, amely a helyszínen fut az NFS 3,0 protokoll használatával. Ez a cikk lépésről lépésre haladó útmutatót tartalmaz. Ha többet szeretne megtudni az NFS 3,0 protokoll támogatásáról a blob Storage-ban, tekintse meg a következőt: [hálózati fájlrendszer (NFS) 3,0 protokoll támogatása az Azure Blob Storage-ban (előzetes verzió)](network-file-system-protocol-support.md).
+A blob Storage-tárolót egy Linux-alapú Azure-beli virtuális gépről (VM) vagy egy, a helyszínen futó Linux rendszerről is csatlakoztathatja az NFS 3,0 protokoll használatával. Ez a cikk lépésről lépésre haladó útmutatót tartalmaz. Ha többet szeretne megtudni az NFS 3,0 protokoll támogatásáról a blob Storage-ban, tekintse meg a következőt: [hálózati fájlrendszer (NFS) 3,0 protokoll támogatása az Azure Blob Storage-ban (előzetes verzió)](network-file-system-protocol-support.md).
 
 ## <a name="step-1-register-the-nfs-30-protocol-feature-with-your-subscription"></a>1. lépés: az NFS 3,0 protokoll szolgáltatás regisztrálása az előfizetéssel
 
@@ -107,9 +107,7 @@ Hozzon létre egy tárolót a Storage-fiókban ezen eszközök vagy SDK-k bárme
 
 ## <a name="step-7-mount-the-container"></a>7. lépés: a tároló csatlakoztatása
 
-Hozzon létre egy könyvtárat a Windows-vagy Linux-rendszeren, majd csatlakoztatjon egy tárolót a Storage-fiókhoz.
-
-### <a name="linux"></a>[Linux](#tab/linux)
+Hozzon létre egy könyvtárat a linuxos rendszeren, majd csatlakoztatjon egy tárolót a Storage-fiókhoz.
 
 1. Linux rendszeren hozzon létre egy könyvtárat.
 
@@ -126,32 +124,6 @@ Hozzon létre egy könyvtárat a Windows-vagy Linux-rendszeren, majd csatlakozta
    - Cserélje le a `<storage-account-name>` parancsban megjelenő helyőrzőt a Storage-fiók nevére.  
 
    - Cserélje le a `<container-name>` helyőrzőt a tároló nevére.
-
-
-### <a name="windows"></a>[Windows](#tab/windows)
-
-1. Nyissa meg a **Windows-szolgáltatások** párbeszédpanelt, majd kapcsolja be az **NFS-ügyfélszolgáltatás** funkciót. 
-
-   ![A hálózati fájlrendszer funkciójának ügyfele](media/network-file-system-protocol-how-to/client-for-network-files-system-feature.png)
-
-2. Nyisson meg egy **parancssori** ablakot (cmd.exe). Ezután csatlakoztassa a tárolót a [csatlakoztatási](/windows-server/administration/windows-commands/mount) parancs használatával.
-
-   ```
-   mount -o nolock <storage-account-name>.blob.core.windows.net:/<storage-account-name>/<container-name> *
-   ```
-
-   - Cserélje le a `<storage-account-name>` parancsban megjelenő helyőrzőt a Storage-fiók nevére.  
-
-   - Cserélje le a `<container-name>` helyőrzőt a tároló nevére.
-
-3. Ha írási engedélyre van szüksége, előfordulhat, hogy módosítania kell az alapértelmezett UID-t és a GID-t, amelyet a Windows a megosztáshoz való kapcsolódáshoz használ. Ehhez futtassa a következő PowerShell-parancsokat rendszergazdaként:
-
-   ```
-   New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\ClientForNFS\CurrentVersion\Default -Name AnonymousUid -PropertyType DWord -Value 0
-   New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\ClientForNFS\CurrentVersion\Default -Name AnonymousGid -PropertyType DWord -Value 0
-   ```
-   
-   - Indítsa újra az NFS-ügyfélszolgáltatás szolgáltatást, vagy indítsa újra a kiszolgálót a módosítás után.
 
 ---
 

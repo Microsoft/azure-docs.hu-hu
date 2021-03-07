@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 7410fcbc890780281763a91f33525562e9de1853
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 6b3c1ac2ea3625a768e16a3465230a5386c98ddc
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182485"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102423713"
 ---
 # <a name="analyze-with-apache-spark"></a>Elemzés a Apache Spark
 
@@ -38,7 +38,7 @@ Ebből az oktatóanyagból megismerheti az adatok betöltését és elemzését 
     display(df.limit(10))
     ```
 1. A jegyzetfüzetben a **csatolás** menüben válassza ki a korábban létrehozott **Spark1** kiszolgáló nélküli Spark-készletet.
-1. A cella **futtatásának** kiválasztása
+1. Válassza a **Futtatás** lehetőséget a cellában. A szinapszis egy új Spark-munkamenetet indít el, hogy szükség esetén futtassa ezt a cellát. Ha új Spark-munkamenetre van szükség, intially, hogy a rendszer két másodpercet fog létrehozni. 
 1. Ha csak a dataframe sémáját szeretné megtekinteni, futtasson egy cellát a következő kóddal:
     ```
 

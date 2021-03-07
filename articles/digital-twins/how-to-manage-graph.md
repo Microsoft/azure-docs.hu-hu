@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a2732c3979998ea3429833f96056b88bc2dccf75
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: fde473453aa79e0078765df394acdeb54b3c7fe9
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050936"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433318"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Digitális ikrek gráfjának kezelése kapcsolatok használatával
 
 Az Azure digitális ikrek szíve a teljes környezetet jelképező [kettős gráf](concepts-twins-graph.md) . A Twin gráf a **kapcsolatokon** keresztül összekapcsolt digitális ikrekből tevődik össze. 
 
-Miután egy működő [Azure digitális Twins-példánnyal](how-to-set-up-instance-portal.md) rendelkezik, és beállította a [hitelesítési](how-to-authenticate-client.md) kódot az ügyfélalkalmazás számára, a [**DigitalTwins API**](/rest/api/digital-twins/dataplane/twins) -kkal digitális ikreket és azok kapcsolatait is létrehozhatja, módosíthatja és törölheti egy Azure digitális Twins-példányban. Használhatja a [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)-t vagy az [Azure Digital Twins CLI](how-to-use-cli.md)-t is.
+Miután egy működő [Azure digitális Twins-példánnyal](how-to-set-up-instance-portal.md) rendelkezik, és beállította a [hitelesítési](how-to-authenticate-client.md) kódot az ügyfélalkalmazás számára, a [**DigitalTwins API**](/rest/api/digital-twins/dataplane/twins) -kkal digitális ikreket és azok kapcsolatait is létrehozhatja, módosíthatja és törölheti egy Azure digitális Twins-példányban. Használhatja a [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)-t vagy az [Azure Digital Twins CLI](how-to-use-cli.md)-t is.
 
 Ez a cikk a kapcsolatok és a gráf egészének kezelésére koncentrál. az egyes digitális ikrekkel való munkavégzéshez tekintse meg az [*útmutató: digitális ikrek kezelése*](how-to-manage-twin.md)című témakört.
 
@@ -97,7 +97,7 @@ A beolvasott kapcsolatok használatával más ikrek is megnyitható a gráfban. 
 Az Azure Digital Twins is rendelkezik egy API-val, amely az adott iker összes **bejövő** kapcsolatát megkeresi. Ez gyakran hasznos a fordított navigáláshoz, illetve a Twin törléséhez.
 
 >[!NOTE]
-> `IncomingRelationship` a hívások nem adják vissza a kapcsolat teljes törzsét. A osztályról további információt a `IncomingRelationship` [dokumentációjában](/dotnet/api/azure.digitaltwins.core.incomingrelationship?view=azure-dotnet&preserve-view=true)talál.
+> `IncomingRelationship` a hívások nem adják vissza a kapcsolat teljes törzsét. A osztályról további információt a `IncomingRelationship` [dokumentációjában](/dotnet/api/azure.digitaltwins.core.incomingrelationship)talál.
 
 Az előző szakaszban található mintakód a kimenő kapcsolatok egy Twin-ből való megtalálására koncentrál. A következő példa hasonló strukturált, de a *bejövő* kapcsolatokat is megkeresi a Twin helyett. Ez a példa az SDK-hívást (kiemelten) is használja egy olyan egyéni metóduson belül, amely egy nagyobb program kontextusában jelenhet meg.
 
@@ -157,7 +157,7 @@ A kódrészlet a [*Room.json*](https://github.com/Azure-Samples/digital-twins-sa
 A minta futtatása előtt tegye a következőket:
 1. Töltse le a modell fájljait, helyezze el őket a projektbe, és cserélje le az `<path-to>` alábbi kódban található helyőrzőket, hogy megtudja, hol találják meg a programot.
 2. Cserélje le a helyőrzőt az `<your-instance-hostname>` Azure Digital ikrek példányának állomásnévre.
-3. Vegyen fel két függőséget a projekthez, amely szükséges lesz az Azure digitális ikrekkel való együttműködéshez. Az első a .NET-hez készült [Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)csomag, a második pedig az Azure-hoz való hitelesítéshez segítséget nyújtó eszközöket biztosít.
+3. Vegyen fel két függőséget a projekthez, amely szükséges lesz az Azure digitális ikrekkel való együttműködéshez. Az első a .NET-hez készült [Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client)csomag, a második pedig az Azure-hoz való hitelesítéshez segítséget nyújtó eszközöket biztosít.
 
       ```cmd/sh
       dotnet add package Azure.DigitalTwins.Core

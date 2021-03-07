@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da21359b56b9e5b9d6e971032d06f8bae94efce0
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 13460fad0ed106f5c0590df961ceca54cb04cd7b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682138"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102427181"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>A feltételes hozzáférés üzembe helyezésének megtervezése
 
@@ -72,6 +72,7 @@ A feltételes hozzáférés megismeréséhez a következő erőforrások hasznos
 * [Mit jelent a feltételes hozzáférés?](https://youtu.be/ffMAw2IVO7A)
 * [Feltételes hozzáférés üzembe helyezése](https://youtu.be/c_izIRNJNuk)
 * [Hogyan lehet feltételes hozzáférési szabályzatokat felderíteni a végfelhasználók számára?](https://youtu.be/0_Fze7Zpyvc)
+* [Felhasználók belefoglalása vagy kizárása a feltételes hozzáférési házirendből](https://youtu.be/5DsW1hB3Jqs)
 * [Feltételes hozzáférés eszközvezérlőkkel](https://youtu.be/NcONUf-jeS4)
 * [Feltételes hozzáférés az Azure AD MFA-val](https://youtu.be/Tbc-SU97G-w)
 * [Feltételes hozzáférés Enterprise Mobility + Security](https://youtu.be/A7IrxAH87wc)

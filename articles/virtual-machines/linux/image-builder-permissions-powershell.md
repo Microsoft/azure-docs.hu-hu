@@ -3,21 +3,25 @@ title: Az Azure rendszerkép-készítő szolgáltatás engedélyeinek konfigurá
 description: Az Azure VM rendszerkép-készítő szolgáltatás követelményeinek konfigurálása, beleértve az engedélyeket és a jogosultságokat a PowerShell használatával
 author: danielsollondon
 ms.author: danis
-ms.date: 03/02/2021
+ms.date: 03/05/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
-ms.openlocfilehash: 4b9cf3ffdb1fc6db9604098e8e5782317a8eb431
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9f8793b6ea0ba454b66c525c2d53c1de2197d539
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695396"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440207"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-powershell"></a>Az Azure rendszerkép-készítő szolgáltatás engedélyeinek konfigurálása a PowerShell használatával
 
-Az Azure rendszerkép-készítő szolgáltatásnak a rendszerkép létrehozása előtt meg kell adni az engedélyek és a jogosultságok konfigurációját. A következő részek részletesen ismertetik a lehetséges forgatókönyvek konfigurálásának módját a PowerShell használatával.
+A (z) (AIB) regisztrálásakor a AIB szolgáltatás engedélyt ad az átmeneti erőforráscsoport létrehozásához, kezeléséhez és törléséhez (IT_ *), és jogosultsággal rendelkezik ahhoz, hogy erőforrásokat adjon hozzá, amelyek szükségesek a rendszerkép létrehozásához. Ezt egy AIB egyszerű szolgáltatásnév (SPN) hajtja végre, amely a sikeres regisztráció során elérhetővé válik az előfizetésben.
+
+Annak engedélyezéséhez, hogy az Azure VM Image Builder lemezképeket terjesszen a felügyelt lemezképekre vagy egy megosztott képkatalógusba, létre kell hoznia egy Azure-beli felhasználó által hozzárendelt identitást, amely jogosult a képek olvasására és írására. Ha az Azure Storage-hoz fér hozzá, akkor a saját vagy nyilvános tárolók olvasásához engedélyre van szüksége.
+
+A rendszerkép létrehozása előtt be kell állítani az engedélyeket és a jogosultságokat. A következő részek részletesen ismertetik a lehetséges forgatókönyvek konfigurálásának módját a PowerShell használatával.
 
 > [!IMPORTANT]
 > Az Azure rendszerkép-szerkesztő jelenleg nyilvános előzetes verzióban érhető el.

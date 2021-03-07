@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: ab819239572fd99fdf5ff3bf23f81eb3cdff3b9a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: dc75ada87db6fdbb3861c2e4e495f93147513421
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98940093"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440564"
 ---
 # <a name="encoding-scenario-based-migration-guidance"></a>Kódolási forgatókönyv-alapú áttelepítési útmutató
 
@@ -41,7 +41,7 @@ Szánjon néhány percet az alábbi folyamatábrára a v2 és v3 kódolási munk
 
 Az alábbi képre kattintva megtekintheti a nagyobb verziót.
 
-[![A v2 ](./media/migration-guide/V2-pretty.svg) kódolási munkafolyamata](./media/migration-guide/V2-pretty.svg#lightbox)
+[![A v2 ](./media/migration-guide/V2-pretty.svg) kódolási munkafolyamata ](./media/migration-guide/V2-pretty.svg#lightbox)
 
 1. Telepítés
     1. Hozzon létre egy eszközt, vagy használja a és a meglévő eszközt. Ha új eszközt használ, töltse fel a tartalmat az adott eszközre. Ha meglévő eszközt használ, az objektumban már létező fájlokat kell kódolnia.
@@ -58,10 +58,12 @@ Az alábbi képre kattintva megtekintheti a nagyobb verziót.
 
 ### <a name="v3-encoding-workflow"></a>V3 kódolási munkafolyamat
 
-[![A v3 ](./media/migration-guide/V3-pretty.svg) kódolási munkafolyamat](./media/migration-guide/V3-pretty.svg#lightbox)
+<Token>
+<object data="./media/migration-guide/v3-pretty2.svg" width="80%"></object>
+</Token>
 
 1. Beállítás
-    1. Hozzon létre egy eszközt, vagy használja a és a meglévő eszközt. Ha új eszközt használ, töltse fel a tartalmat az adott eszközre. Ha meglévő eszközt használ, az objektumban már létező fájlokat kell kódolnia. *Ne töltsön fel további tartalmat az adott eszközre.*
+    1. Hozzon létre egy eszközt, vagy használjon egy meglévő eszközt. Ha új eszközt használ, töltse fel a tartalmat az adott eszközre. Ha meglévő eszközt használ, az objektumban már létező fájlokat kell kódolnia. *Ne töltsön fel további tartalmat az adott eszközre.*
     1. Kimeneti eszköz létrehozása  A kimeneti eszköz a kódolt fájlok, valamint a bemeneti és kimeneti metaadatok tárolására szolgál.
     1. Az átalakítás értékeinek beolvasása:
         - Standard szintű kódoló készlete
@@ -84,17 +86,6 @@ Az alábbi képre kattintva megtekintheti a nagyobb verziót.
 Ha a v2-kód a standard kódolót egyéni beállításkészlettel látja el, először létre kell hoznia egy új átalakítást az egyéni szabványos kódoló készlettel a feladatok elküldése előtt.
 
 Az egyéni beállításkészletek mostantól JSON formátumúak, és már nem XML-alapúak. Hozza létre újra az beállításkészletet a JSON-ban az [átalakítás Open API (hencegés)](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/examples/transforms-create.json) dokumentációjában meghatározott egyéni előre beállított séma alapján.
-
-
-<!-- removed because this is covered in the tutorials
-Common custom [encoding](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json) scenarios:
-        1. Create a custom Single Bitrate MP4 encode
-        1. Create a custom [Adaptive Bitrate Encoding Ladder](autogen-bitrate-ladder.md)
-        1. Creating Sprite Thumbnails
-        1. Creating Thumbnails (see below for your preferred method)
-        1. [Sub Clipping](subclip-video-rest-howto.md)
-        1. Cropping
--->
 
 ## <a name="input-and-output-metadata-files-from-an-encoding-job"></a>Bemeneti és kimeneti metaadat-fájlok kódolási feladatból
 

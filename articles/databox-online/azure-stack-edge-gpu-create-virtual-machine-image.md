@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/25/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 0985779aeb14fd4f3d6a12cf152e4c63c909d613
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: ee0587063c0fac67068869c58471ada58354fab7
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806683"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437672"
 ---
 # <a name="create-custom-vm-images-for-your-azure-stack-edge-pro-device"></a>Egyéni virtuálisgép-rendszerképek létrehozása az Azure Stack Edge Pro-eszközhöz
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Ha virtuális gépeket szeretne üzembe helyezni a Azure Stack Edge Pro-eszközön, létre kell hoznia egy egyéni virtuálisgép-rendszerképet, amelyet a virtuális gépek létrehozásához használhat. Ez a cikk a Linux vagy a Windows rendszerű virtuális gépek egyéni rendszerképeinek létrehozásához szükséges lépéseket ismerteti, amelyekkel virtuális gépeket helyezhet üzembe a Azure Stack Edge Pro-eszközön.
 
@@ -71,7 +71,7 @@ Hozzon létre egy linuxos virtuálisgép-rendszerképet a következő lépésekk
 
 Ezzel a VHD-vel most létrehozhatja és üzembe helyezheti a virtuális gépet a Azure Stack Edge Pro-eszközön. A következő két Azure Marketplace-rendszerkép használatával hozhat létre linuxos egyéni rendszerképeket:
 
-|Elemnév  |Leírás  |Publisher  |
+|Elemnév  |Description  |Publisher  |
 |---------|---------|---------|
 |[Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.ubuntuserver) |Az Ubuntu Server a világ legnépszerűbb Linux-környezete.|Canonical|
 |[Debian 8 "Megbéklyóz"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.debian) |A Debian GNU/Linux az egyik legnépszerűbb Linux-disztribúció.     |credativ|
@@ -79,6 +79,6 @@ Ezzel a VHD-vel most létrehozhatja és üzembe helyezheti a virtuális gépet a
 Az Azure Marketplace rendszerképeinek teljes listáját, amelyek működhetnek (nem teszteltek), látogasson el az [Azure marketplace Azure stack hub számára elérhető elemeire](/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910&preserve-view=true).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Virtuális gépek üzembe helyezése Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md).

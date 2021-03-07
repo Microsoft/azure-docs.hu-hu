@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 9d8d3cb4bf68f7da2bddabd21272d1011ce92f66
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/05/2021
+ms.openlocfilehash: ad059931d87603c957e446e82b894731dca984dd
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715207"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102442740"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Áttekintés: Azure Logic Apps előzetes verzió
 
@@ -118,9 +118,13 @@ Ez a tábla a gyermek munkafolyamatok viselkedését határozza meg attól függ
 
 A Azure Logic Apps Preview számos aktuális és további funkciót tartalmaz, például:
 
-* Hozzon létre Logic apps-alkalmazásokat és-munkafolyamatokat [390 +-összekötők](/connectors/connector-reference/connector-reference-logicapps-connectors) alapján a szolgáltatott szoftver (SaaS) és a szolgáltatásként nyújtott platformhoz, valamint a szolgáltatásokhoz, valamint az összekötőket a helyszíni rendszerekhez.
+* Hozzon létre logikai alkalmazásokat és azok munkafolyamatait [400 + összekötőből](/connectors/connector-reference/connector-reference-logicapps-connectors) a szolgáltatott szoftver (SaaS) és a szolgáltatásként nyújtott platform (Pásti) alkalmazásaihoz és szolgáltatásaihoz, valamint a helyszíni rendszerekhez.
 
-  * Egyes felügyelt összekötők, például az Azure Service Bus, az Azure Event Hubs és a SQL Server ugyanúgy futnak a beépített eseményindítók és műveletek esetében, amelyek natívak a Azure Logic Apps előzetes verziójának futtatókörnyezetéhez, például a kérelem eseményindítója és a HTTP művelet. További információ: [Azure Logic apps futó, bárhol beépített összekötő bővíthetősége](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272).
+  * Egyes felügyelt összekötők, például az Azure Service Bus, az Azure Event Hubs, a SQL Server és az MQ, hasonlóan futnak a beépített triggerekhez és a Azure Logic Apps előzetes verziójának natív műveleteihez, például a kérelem-eseményindítóhoz és a HTTP-művelethez.
+
+  * Hozzon létre saját beépített összekötőket minden szükséges szolgáltatáshoz az [előzetes verzió bővíthetőségi keretrendszerének](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272)használatával. A beépített összekötők, például a Azure Service Bus és a SQL Server esetében, de az előzetes verzióban jelenleg nem támogatott [Egyéni összekötők](../connectors/apis-list.md#custom-apis-and-connectors) eltérően ezek az összekötők magasabb átviteli sebességet, kis késleltetést, helyi kapcsolatot biztosítanak, és natív módon futnak az előzetes verziójú futtatókörnyezettel azonos folyamatban.
+
+    A szerzői művelet jelenleg csak a Visual Studio Code-ban érhető el, de alapértelmezés szerint nincs engedélyezve. Ezeknek az összekötőknek a létrehozásához [állítsa át a projektet a csomag-alapú (Node.js) NuGet Package-based (.net) értékre](create-stateful-stateless-workflows-visual-studio-code.md#enable-built-in-connector-authoring). További információ: [Azure Logic apps futó, bárhol beépített összekötő bővíthetősége](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272).
 
   * Integrációs fiók nélkül is használhatja a VÁLLALATKÖZI műveleteket a folyékony műveletekhez és az XML-műveletekhez. Ezeknek a műveleteknek a használatához olyan likvid térképeket, XML-térképeket vagy XML-sémákat kell használni, amelyeket fel lehet tölteni a Azure Portalban található megfelelő műveletekkel, vagy hozzáadhat a Visual Studio Code Project összetevőinek mappájához a megfelelő **térképek** és **sémák** **mappák használatával** .
 
@@ -148,7 +152,7 @@ A Azure Logic Apps Preview számos aktuális és további funkciót tartalmaz, p
 * Az egyes munkafolyamatok által használt felügyelt kapcsolatok elérési kulcsainak újragenerálása egy **logikai alkalmazás (előzetes verzió)** erőforrásban. Ehhez a feladathoz [kövesse ugyanezen lépéseket a **Logic apps** erőforráshoz, de az egyes munkafolyamatok szintjén](logic-apps-securing-a-logic-app.md#regenerate-access-keys), ne a logikai alkalmazás erőforrás szintjén.
 
 * A nem előzetes verziójú tervezővel megegyező lépéseket követve vegyen fel párhuzamos ágakat az új tervezőben.
- 
+
 További információ: [módosított, korlátozott, nem elérhető és nem támogatott képességek](#limited-unavailable-unsupported) és a [Logic apps nyilvános előzetes verzió ismert problémák lapja a githubon](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md).
 
 <a name="pricing-model"></a>
@@ -193,8 +197,6 @@ Azure Logic Apps előzetes verzióban ezek a funkciók megváltoztak, vagy jelen
 
     * [A helyszíni adatátjáró- *Eseményindítók*](../connectors/apis-list.md#on-premises-connectors) nem érhetők el, *de az átjáró műveletei* elérhetők.
 
-    * Az [Egyéni összekötők](../connectors/apis-list.md#custom-apis-and-connectors) nem érhetők el.
-
     * A beépített művelet, [Azure functions – válasszon ki egy Azure-](logic-apps-azure-functions.md) függvényt mostantól **Azure Function Operations – hívjon egy Azure-függvényt**. Ez a művelet jelenleg csak a **http-trigger** sablonból létrehozott függvények esetében működik.
 
       A Azure Portalban kiválaszthat egy HTTP-trigger függvényt, amelyhez hozzáférése van a felhasználói felületén keresztüli kapcsolat létrehozásával. Ha megvizsgálja a Function művelet JSON-definícióját a kód nézetben vagy a **workflow.js** fájlon, a művelet hivatkozás használatával hivatkozik a függvényre `connectionName` . Ez a verzió összevonta a függvény információit a kapcsolatok között, amelyet a projekt **connections.js** talál a fájlon, amely a kapcsolatok létrehozása után érhető el.
@@ -217,6 +219,8 @@ Azure Logic Apps előzetes verzióban ezek a funkciók megváltoztak, vagy jelen
     * Az [integrációs fiókokhoz tartozó beépített B2B-eseményindítók és műveletek](../connectors/apis-list.md#integration-account-connectors) nem érhetők el, például a **sima fájl** kódolása és a dekódolási műveletek.
 
     * A beépített művelet, [Azure Logic apps – a logikai alkalmazás munkafolyamatának kiválasztása](logic-apps-http-endpoint.md) most **munkafolyamat-műveletek – munkafolyamat meghívása ebben a munkafolyamat-alkalmazásban**.
+
+* Az [Egyéni összekötők](../connectors/apis-list.md#custom-apis-and-connectors) jelenleg előzetes verzióban nem támogatottak.
 
 * **Üzemeltetési csomag rendelkezésre állása**: akár egy új **logikai alkalmazás (előzetes verzió)** típusú erőforrástípust hoz létre a Azure Portal vagy üzembe helyezés a Visual Studio Code-ból, csak a prémium vagy a app Service üzemeltetési csomagot használhatja az Azure-ban. A felhasználási üzemeltetési csomagok nem érhetők el, és nem támogatottak az erőforrástípus üzembe helyezése során. A Visual Studio Code-ból telepítheti a Docker-tárolót, az [integrációs szolgáltatási környezetre (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)azonban nem.
 
