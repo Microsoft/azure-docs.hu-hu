@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/04/2021
-ms.openlocfilehash: ec1ea7d727278076944b8cc11f47a1af587e6591
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: dee896c8e4946cb4f6406d2f9f50547d2723da05
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102440156"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448982"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Adatátalakítási kifejezések a leképezési adatfolyamban
 
@@ -1198,73 +1198,73 @@ ___
 
 A konverziós függvények az adatok átalakítására és az adattípusok tesztelésére szolgálnak.
 
-<code>isBoolean</code>
+### <code>isBoolean</code>
 <code><b>isBoolean(<value1> : string) => boolean</b></code><br/><br/>
 Ellenőrzi, hogy a karakterlánc értéke logikai érték-e a következő szabályoknak megfelelően ``toBoolean()``
 * ``isBoolean('true') -> true``
 * ``isBoolean('no') -> true``
 * ``isBoolean('microsoft') -> false``
-
-<code>isByte</code>
+___
+### <code>isByte</code>
 <code><b>isByte(<value1> : string) => boolean</b></code><br/><br/>
 Ellenőrzi, hogy a karakterlánc értéke egy bájtos érték-e, amely a következő szabályoknak megfelelően választható formátumban van megadva ``toByte()``
 * ``isByte('123') -> true``
 * ``isByte('chocolate') -> false``
-
-<code>isDate</code>
+___
+### <code>isDate</code>
 <code><b>isDate (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
 Ellenőrzi, hogy a bemeneti dátum karakterlánca egy dátum, amely nem kötelező bemeneti dátumformátumot használ. Tekintse át a Java SimpleDateFormat az elérhető formátumokhoz. Ha a bemeneti dátum formátuma nincs megadva, az alapértelmezett formátum: ``yyyy-[M]M-[d]d`` . Az elfogadott formátumok ``[ yyyy, yyyy-[M]M, yyyy-[M]M-[d]d, yyyy-[M]M-[d]dT* ]``
 * ``isDate('2012-8-18') -> true``
 * ``isDate('12/18--234234' -> 'MM/dd/yyyy') -> false``
-
-<code>isShort</code>
+___
+### <code>isShort</code>
 <code><b>isShort (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
 A karakterlánc értékének ellenőrzése egy nem kötelező formátumú, a következő szabályoknak megfelelően megadott formátumban ``toShort()``
 * ``isShort('123') -> true``
 * ``isShort('$123' -> '$###') -> true``
 * ``isShort('microsoft') -> false``
-
-<code>isInteger</code>
+___
+### <code>isInteger</code>
 <code><b>isInteger (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
 A karakterlánc értékének ellenőrzése egy egész szám, amely a következő szabályoknak megfelelően választható formátumban van megadva ``toInteger()``
 * ``isInteger('123') -> true``
 * ``isInteger('$123' -> '$###') -> true``
 * ``isInteger('microsoft') -> false``
-
-<code>isLong</code>
+___
+### <code>isLong</code>
 <code><b>isLong (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
 A karakterlánc értékének ellenőrzése hosszú érték, amely a következő szabályoknak megfelelően választható formátumban van megadva ``toLong()``
 * ``isLong('123') -> true``
 * ``isLong('$123' -> '$###') -> true``
 * ``isLong('gunchus') -> false``
-
-<code>isFloat</code>
+___
+### <code>isFloat</code>
 <code><b>isFloat (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
 A karakterlánc értékének ellenőrzése egy lebegőpontos érték, amely a következő szabályoknak megfelelően választható formátumban van megadva ``toFloat()``
 * ``isFloat('123') -> true``
 * ``isFloat('$123.45' -> '$###.00') -> true``
 * ``isFloat('icecream') -> false``
-
-<code>isDouble</code>
+___
+### <code>isDouble</code>
 <code><b>isDouble (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
 A karakterlánc értékének megkeresése egy dupla érték, amely a következő szabályoknak megfelelően választható formátumban van megadva ``toDouble()``
 * ``isDouble('123') -> true``
 * ``isDouble('$123.45' -> '$###.00') -> true``
 * ``isDouble('icecream') -> false``
-
-<code>isDecimal</code>
+___
+### <code>isDecimal</code>
 <code><b>isDecimal (<value1> : string) => boolean</b></code><br/><br/>
 A karakterlánc értékének ellenőrzése decimális érték, amely a következő szabályoknak megfelelően választható formátumban van megadva ``toDecimal()``
 * ``isDecimal('123.45') -> true``
 * ``isDecimal('12/12/2000') -> false``
-
-<code>isTimestamp</code>
+___
+### <code>isTimestamp</code>
 <code><b>isTimestamp (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
 Ellenőrzi, hogy a bemeneti dátum karakterlánca egy időbélyeg, amely nem kötelező bemeneti időbélyeg-formátumot használ. Tekintse meg a Java SimpleDateFormat az elérhető formátumokhoz. Ha az időbélyeg ki van hagyva, a rendszer az alapértelmezett mintát ``yyyy-[M]M-[d]d hh:mm:ss[.f...]`` használja. A választható időzónát "GMT", "PST", "UTC", "America/Cayman" formában adhatja át. Az időbélyeg a 999 értékkel legfeljebb ezredmásodperc pontosságot támogat a Java SimpleDateFormat az elérhető formátumokhoz.
 * ``isTimestamp('2016-12-31 00:12:00') -> true``
 * ``isTimestamp('2016-12-31T00:12:00' -> 'yyyy-MM-dd\\'T\\'HH:mm:ss' -> 'PST') -> true``
 * ``isTimestamp('2012-8222.18') -> false``
-
+___
 ### <code>toBase64</code>
 <code><b>toBase64(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
 A megadott karakterlánc kódolása Base64-ben.  
@@ -1420,6 +1420,15 @@ Oszlop értékének kiválasztása az adatfolyamban lévő relatív pozíció (1
 * ``toBoolean(byName(4))``  
 * ``toString(byName($colName))``  
 * ``toString(byPosition(1234))``  
+___
+### <code>hex</code>
+<code><b>hex(<value1>: binary) => string</b></code><br/><br/>
+Egy bináris érték hexadecimális karakterláncos ábrázolását adja vissza. * ``hex(toBinary([toByte(0x1f), toByte(0xad), toByte(0xbe)])) -> '1fadbe'``
+___
+### <code>unhex</code>
+<code><b>unhex(<value1>: string) => binary</b></code><br/><br/>
+Unhexes a bináris értéket. Ez a SHA2-mel, az MD5-vel együtt a sztringről bináris formátumra való átalakításra is használható. *   ``unhex('1fadbe') -> toBinary([toByte(0x1f), toByte(0xad), toByte(0xbe)])``
+*   ``unhex(md5(5, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4'))) -> toBinary([toByte(0x4c),toByte(0xe8),toByte(0xa8),toByte(0x80),toByte(0xbd),toByte(0x62),toByte(0x1a),toByte(0x1f),toByte(0xfa),toByte(0xd0),toByte(0xbc),toByte(0xa9),toByte(0x05),toByte(0xe1),toByte(0xbc),toByte(0x5a)])``
 
 ## <a name="window-functions"></a>Ablakfunkciók
 A következő függvények csak az ablakos átalakításokban érhetők el.

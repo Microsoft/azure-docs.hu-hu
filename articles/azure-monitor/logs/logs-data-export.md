@@ -1,17 +1,18 @@
 ---
 title: Log Analytics munkaterület-adatexportálás Azure Monitorban (előzetes verzió)
 description: Log Analytics adatexportálás lehetővé teszi a kijelölt táblák adatainak folyamatos exportálását a Log Analytics munkaterületről egy Azure Storage-fiókba vagy az Azure-Event Hubsba a gyűjtött adatok alapján.
+ms.subservice: logs
 ms.topic: conceptual
 ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 02/07/2021
-ms.openlocfilehash: f0bbe02576323342376ad155878d575c6403cf70
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 556570b02664a0afd01137f939bea67a1014b680
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048811"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449492"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics munkaterület-adatexportálás Azure Monitorban (előzetes verzió)
 Log Analytics munkaterület-adatexportálás Azure Monitor lehetővé teszi, hogy folyamatosan exportálja a Log Analytics munkaterület kijelölt tábláiból származó adatokat egy Azure Storage-fiókba vagy az Azure-Event Hubsba az összegyűjtött adatok alapján. Ez a cikk részletesen ismerteti ezt a funkciót, valamint az adatexportálás konfigurálásának lépéseit a munkaterületeken.
@@ -75,7 +76,7 @@ Log Analytics adatexportálás írási blobokat írhat a nem módosítható tár
 A rendszer közel valós időben küldi el az adatait az Event hub számára, mivel Azure Monitor. A rendszer minden olyan adattípushoz létrehoz egy Event hub *-* t, amelyet a név és a tábla neve után exportál. Például a *SecurityEvent* tábla egy *am-SecurityEvent* nevű Event hub számára fog eljuttatni. Ha azt szeretné, hogy az exportált adatai egy adott esemény központhoz jussanak, vagy ha olyan névvel rendelkezik, amely meghaladja az 47 karakteres korlátot, akkor megadhatja a saját Event hub-nevét, és exportálhatja a megadott táblák összes adatait.
 
 > [!IMPORTANT]
-> A [támogatott esemény-hubok száma a névtérben 10](../../event-hubs/event-hubs-quotas.md#common-limits-for-all-tiers). Ha több mint 10 táblázatot exportál, adja meg a saját Event hub-nevét az összes tábla exportálásához az Event hub-ba. 
+> A [támogatott esemény-hubok száma a névtérben 10](../../event-hubs/event-hubs-quotas.md#common-limits-for-all-tiers). Ha több mint 10 táblázatot exportál, adja meg a saját Event hub-nevét az összes tábla exportálásához az Event hub-ba.
 
 Szempontok:
 1. Az "alapszintű" Event hub SKU támogatja a kisebb méretű események [korlátját](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-tiers) , és a munkaterület egyes naplói túllépik azt, és el is lehet dobni. Javasoljuk, hogy a "standard" vagy a "dedikált" Event hub legyen az Exportálás célhelye.
@@ -113,10 +114,14 @@ Ha úgy állította be a Storage-fiókot, hogy az engedélyezze a hozzáférést
 
 [![A Storage-fiók tűzfala és virtuális hálózatai](media/logs-data-export/storage-account-vnet.png)](media/logs-data-export/storage-account-vnet.png#lightbox)
 
-
 ### <a name="create-or-update-data-export-rule"></a>Adatexportálási szabály létrehozása vagy frissítése
-Az adatexportálási szabály a táblák egy adott célhelyére exportálandó adatmennyiséget határozza meg. Minden célhoz létrehozhat egyetlen szabályt.
+Az adatexportálási szabályok határozzák meg azokat a táblákat, amelyekhez a rendszer exportálja az exportált és a célhelyet. Az egyes célhelyekhez jelenleg egyetlen szabályt hozhat létre.
 
+Ha az exportálási szabályok konfigurálásához a workapce található táblák listája szükséges, futtassa ezt a lekérdezést a munkaterületen.
+
+```kusto
+find where TimeGenerated > ago(24h) | distinct Type
+```
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
@@ -127,12 +132,6 @@ N/A
 N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Az alábbi CLI-paranccsal megtekintheti a munkaterületen lévő táblákat. Ez segíthet a kívánt táblák másolásában és az adatexportálási szabályban való felvételében.
-
-```azurecli
-az monitor log-analytics workspace table list --resource-group resourceGroupName --workspace-name workspaceName --query [].name --output table
-```
 
 A következő parancs használatával hozzon létre egy adatexportálási szabályt egy Storage-fiókhoz a parancssori felület használatával.
 

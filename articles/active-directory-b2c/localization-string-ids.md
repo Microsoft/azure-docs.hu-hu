@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 11/09/2020
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 81a1263d0eacbffa77e2e35e4594e23235394183
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: e867fee753fb9db530db2b2015c3aea9280bc16f
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108671"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448644"
 ---
 # <a name="localization-string-ids"></a>Honosítási sztringazonosítók
 
@@ -357,7 +357,7 @@ A következő egy [ellenőrzési megjelenítési vezérlő](display-control-veri
 | ID (Azonosító) | Alapértelmezett érték |
 | -- | ------------- |
 |intro_msg| Ellenőrzés szükséges. Kattintson a Küldés gombra.|
-|success_send_code_msg | Az ellenőrző kód el lett küldve a Beérkezett üzenetek mappájába. Másolja az alábbi beviteli mezőbe.|
+|success_send_code_msg | Az ellenőrző kód elküldése megtörtént. Másolja az alábbi beviteli mezőbe.|
 |failure_send_code_msg | Nem sikerül ellenőrizni az e-mail-címét. Adjon meg egy érvényes e-mail-címet, és próbálkozzon újra.|
 |success_verify_code_msg | Az E-mail cím ellenőrizve. Most már folytathatja.|
 |failure_verify_code_msg | Nem sikerül ellenőrizni az e-mail-címét. Próbálkozzon újra.|

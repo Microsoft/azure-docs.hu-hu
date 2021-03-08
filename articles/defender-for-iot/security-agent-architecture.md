@@ -1,6 +1,6 @@
 ---
-title: Biztonsági ügynökök áttekintése
-description: A biztonsági ügynök architektúrájának ismertetése az Azure Defender for IoT szolgáltatásban használt ügynökökkel kapcsolatban.
+title: 'Gyors útmutató: biztonsági ügynökök áttekintése'
+description: Ebből a rövid útmutatóból megtudhatja, hogyan megismerheti a biztonsági ügynök architektúráját az Azure Defender for IoT szolgáltatásban használt ügynökökkel kapcsolatban.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -8,19 +8,19 @@ author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: ff837fe88f878c522366b2b6bc19a1ef3954b667
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: aceeaec63eb637002352f5c503f57890033b0381
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820653"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449237"
 ---
-# <a name="security-agent-reference-architecture"></a>Biztonsági ügynök hivatkozási architektúrája
+# <a name="quickstart-security-agent-reference-architecture"></a>Gyors útmutató: biztonsági ügynök hivatkozási architektúrája
 
 A IoT készült Azure Defender olyan biztonsági ügynökök számára biztosít hivatkozási architektúrát, amelyek IoT Hubon keresztül naplózzák, feldolgozzák, összesítik és elküldik a biztonsági adatokat.
 
@@ -41,6 +41,10 @@ A IoT biztonsági ügynökök védelmezője nyílt forráskódú projektként le
 - [Defender IoT C-alapú ügynökhöz](https://github.com/Azure/Azure-IoT-Security-Agent-C)
 - [Defender IoT C#-alapú ügynökhöz](https://github.com/Azure/Azure-IoT-Security-Agent-CS)
 
+## <a name="prerequisites"></a>Előfeltételek
+
+Nincs
+
 ## <a name="agent-supported-platforms"></a>Ügynök által támogatott platformok
 
 A IoT Defender különböző telepítő ügynököket kínál a 32 bites és a 64 bites Windowshoz, és ugyanezt a 32 bites és a 64 bites Linux rendszerhez. Győződjön meg arról, hogy rendelkezik a megfelelő ügynök-telepítővel az egyes eszközökhöz az alábbi táblázat szerint:
@@ -57,8 +61,5 @@ Ebben a cikkben a IoT biztonsági modul architektúrájának és a rendelkezésr
 
 A Defender IoT-telepítéssel való használatának folytatásához használja a következő cikkeket:
 
-- A [biztonsági ügynök hitelesítési módszereinek](concept-security-agent-authentication-methods.md) megismerése
-- [Biztonsági ügynök](how-to-deploy-agent.md) kiválasztása és központi telepítése
-- Tekintse át a Defender IoT [rendszerkövetelményeit](quickstart-system-prerequisites.md)
-- Ismerje meg, hogyan [engedélyezheti a Defender for IoT szolgáltatást a IoT hub](quickstart-onboard-iot-hub.md)
-- További információ a szolgáltatásról a [Defender for IoT – gyakori kérdések](resources-frequently-asked-questions.md)
+> [!div class="nextstepaction"]
+> [biztonsági ügynök hitelesítési módszerei](concept-security-agent-authentication-methods.md)

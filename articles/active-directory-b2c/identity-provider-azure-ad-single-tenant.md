@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: da12955606062e6cfc0e6bf17eeedcaed0aac1ff
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: dc824c7e4caa2a634a60f7d8a69870ddd961998c
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102171684"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448472"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Bejelentkezés beállítása egy adott Azure Active Directory szervezet számára Azure Active Directory B2C
 
@@ -111,7 +111,10 @@ Ha a `family_name` és a `given_name` jogcímeket az Azure ad-től szeretné bes
 1. Kattintson a **Mentés** gombra.
 1. A szabályzat teszteléséhez válassza a **felhasználói folyamat futtatása** lehetőséget.
 1. Az **alkalmazás** lapon válassza ki a korábban regisztrált *testapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
-1. Kattintson a **felhasználói folyamat futtatása** elemre.
+1. Kattintson a **felhasználói folyamat futtatása** gombra.
+1. A regisztrációs vagy bejelentkezési oldalon válassza a **contoso Azure ad** lehetőséget az Azure ad contoso-fiókkal való bejelentkezéshez.
+
+Ha a bejelentkezési folyamat sikeres, a rendszer átirányítja a böngészőt `https://jwt.ms` , amely a Azure ad B2C által visszaadott jogkivonat tartalmát jeleníti meg.
 
 ::: zone-end
 
@@ -220,7 +223,14 @@ Az Azure AD-végponttól kapott jogkivonat lekéréséhez meg kell határoznia a
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>Egyéni szabályzat tesztelése
+
+1. Válassza ki a függő entitás házirendjét, például: `B2C_1A_signup_signin` .
+1. **Alkalmazás** esetén válasszon ki egy [korábban regisztrált](troubleshoot-custom-policies.md#troubleshoot-the-runtime)webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
+1. Kattintson a **Futtatás most** gombra.
+1. A regisztrációs vagy bejelentkezési oldalon válassza a **contoso Employee** lehetőséget az Azure ad contoso-fiókkal való bejelentkezéshez.
+
+Ha a bejelentkezési folyamat sikeres, a rendszer átirányítja a böngészőt `https://jwt.ms` , amely a Azure ad B2C által visszaadott jogkivonat tartalmát jeleníti meg.
 
 ## <a name="next-steps"></a>Következő lépések
 

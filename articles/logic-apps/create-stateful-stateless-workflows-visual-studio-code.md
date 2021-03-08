@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 0850830e6f8101feae80154a0e245196a690f276
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/05/2021
+ms.openlocfilehash: ab2d7c23e69c73c78c852de722733e8f0d09fcec
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050239"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449730"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Állapot-nyilvántartó és állapot nélküli munkafolyamatok létrehozása a Visual Studio Code-ban a Azure Logic Apps (előzetes verzió) bővítménnyel
 
@@ -280,6 +280,7 @@ A logikai alkalmazás létrehozása előtt hozzon létre egy helyi projektet, í
    1. Cserélje le a `AzureWebJobsStorage` tulajdonság értékét a Storage-fiók a korábban mentett, például:
 
       Előtte:
+
       ```json
       {
          "IsEncrypted": false,
@@ -291,6 +292,7 @@ A logikai alkalmazás létrehozása előtt hozzon létre egy helyi projektet, í
       ```
 
       Utána:
+
       ```json
       {
          "IsEncrypted": false,
@@ -302,6 +304,25 @@ A logikai alkalmazás létrehozása előtt hozzon létre egy helyi projektet, í
       ```
 
    1. Ha elkészült, győződjön meg róla, hogy menti a módosításokat.
+
+<a name="enable-built-in-connector-authoring"></a>
+
+## <a name="enable-built-in-connector-authoring"></a>Beépített összekötők létrehozásának engedélyezése
+
+Az [előzetes verzió bővíthetőségi keretrendszerének](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272)használatával saját beépített összekötőket hozhat létre bármely olyan szolgáltatáshoz, amelyre szüksége van. A beépített összekötők, például a Azure Service Bus és a SQL Server esetében ezek az összekötők magasabb átviteli sebességet, kis késleltetést és helyi kapcsolatot biztosítanak, és natív módon futnak az előzetes verziójú futtatókörnyezettel azonos folyamatban.
+
+A szerzői művelet jelenleg csak a Visual Studio Code-ban érhető el, de alapértelmezés szerint nincs engedélyezve. Ezen összekötők létrehozásához először a csomag alapú (Node.js) csomagot kell konvertálnia a NuGet Package-based (.NET) verzióra.
+
+> [!IMPORTANT]
+> Ez a művelet egy egyirányú művelet, amelyet nem lehet visszavonni.
+
+1. Az Explorer ablaktáblán, a projekt gyökerénél vigye az egérmutatót az összes többi fájl és mappa alá tartozó üres terület fölé, nyissa meg a helyi menüt, és válassza az **átalakítás Nuget-alapú logikai alkalmazásra projektet**.
+
+   ![Képernyőkép, amely azt mutatja, hogy az Explorer ablaktábla a projekt ablakának üres területéről megnyitott, a projekt helyi menüjében látható.](./media/create-stateful-stateless-workflows-visual-studio-code/convert-logic-app-project.png)
+
+1. Amikor megjelenik a kérdés, erősítse meg a projekt átalakítását.
+
+1. A folytatáshoz tekintse át és kövesse a cikkben ismertetett lépéseket, [Azure Logic apps futtassa a bárhol beépített összekötő bővíthetőségét](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272).
 
 <a name="open-workflow-definition-designer"></a>
 
@@ -441,9 +462,9 @@ Az ebben a példában szereplő munkafolyamat ezt az triggert és a következő 
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Ide:** | Igen | <*saját e-mail cím*> | Az e-mail címzettje, amely a tesztelési célú e-mail-címe lehet. Ez a példa a fiktív e-mailt használja `sophiaowen@fabrikam.com` . |
-   | **Tárgy** | Igen | `An email from your example workflow` | Az e-mail tárgya |
-   | **Törzs** | Igen | `Hello from your example workflow!` | Az e-mail szövegtörzsének tartalma |
+   | **Ide:** | Yes | <*saját e-mail cím*> | Az e-mail címzettje, amely a tesztelési célú e-mail-címe lehet. Ez a példa a fiktív e-mailt használja `sophiaowen@fabrikam.com` . |
+   | **Tárgy** | Yes | `An email from your example workflow` | Az e-mail tárgya |
+   | **Törzs** | Yes | `Hello from your example workflow!` | Az e-mail szövegtörzsének tartalma |
    ||||
 
    > [!NOTE]
@@ -629,7 +650,7 @@ A logikai alkalmazás teszteléséhez kövesse az alábbi lépéseket a hibakere
 
    ![Képernyőkép a munkafolyamat áttekintő oldaláról a futtatási állapottal és előzményekkel](./media/create-stateful-stateless-workflows-visual-studio-code/post-trigger-call.png)
 
-   | Futtatás állapota | Leírás |
+   | Futtatás állapota | Description |
    |------------|-------------|
    | **Megszakítva** | A Futtatás leállt vagy nem fejeződik be külső problémák miatt, például rendszerleállás vagy elévült Azure-előfizetés. |
    | **Megszakítva** | A Futtatás elindítva és elindítva, de lemondási kérelem érkezett. |
@@ -653,7 +674,7 @@ A logikai alkalmazás teszteléséhez kövesse az alábbi lépéseket a hibakere
 
    A munkafolyamat egyes lépései a következő lehetséges állapotokat tartalmazhatják:
 
-   | Művelet állapota | Ikon | Leírás |
+   | Művelet állapota | Ikon | Description |
    |---------------|------|-------------|
    | **Megszakítva** | ![A "megszakított" művelet állapotának ikonja][aborted-icon] | A művelet a külső problémák miatt leállt vagy nem zárult, például rendszerleállás vagy elévült Azure-előfizetés. |
    | **Megszakítva** | ![A "megszakított" művelet állapotának ikonja][cancelled-icon] | A művelet futott, de kérelem érkezett a megszakításhoz. |
@@ -1348,6 +1369,7 @@ Ha hibakeresési munkamenetet próbál elindítani, a következő hibaüzenet je
 1. A következő feladatban törölje a sort, `"dependsOn: "generateDebugSymbols"` valamint a vesszőt, amely az előző sort ér véget, például:
 
    Előtte:
+
    ```json
     {
       "type": "func",
@@ -1359,6 +1381,7 @@ Ha hibakeresési munkamenetet próbál elindítani, a következő hibaüzenet je
    ```
 
    Utána:
+
    ```json
     {
       "type": "func",

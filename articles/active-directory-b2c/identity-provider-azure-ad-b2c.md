@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ea4def3cfaa19e27dc05e955bf97b41976ec2190
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: c9a20305f05b285b29d4a5eaf75116c862f3a6d4
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98953920"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448489"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-azure-ad-b2c-account-from-another-azure-ad-b2c-tenant"></a>Regisztráció és bejelentkezés beállítása egy másik Azure AD B2C bérlő Azure AD B2C fiókjából
 
@@ -115,8 +115,10 @@ Alkalmazás létrehozásához.
 1. Kattintson a **Mentés** gombra.
 1. A szabályzat teszteléséhez válassza a **felhasználói folyamat futtatása** lehetőséget.
 1. Az **alkalmazás** lapon válassza ki a korábban regisztrált *testapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
-1. Kattintson a **felhasználói folyamat futtatása** elemre.
-1. A regisztrációs vagy bejelentkezési oldalon válassza a *Fabrikam* lehetőséget a másik Azure ad B2C Bérlővel való bejelentkezéshez.
+1. Kattintson a **felhasználói folyamat futtatása** gombra.
+1. A regisztrációs vagy bejelentkezési oldalon válassza a **Fabrikam** lehetőséget a másik Azure ad B2C Bérlővel való bejelentkezéshez.
+
+Ha a bejelentkezési folyamat sikeres, a rendszer átirányítja a böngészőt `https://jwt.ms` , amely a Azure ad B2C által visszaadott jogkivonat tartalmát jeleníti meg.
 
 ::: zone-end
 
@@ -221,7 +223,15 @@ A jogcímek szolgáltatóként való megAzure AD B2C adásához vegyen fel egy A
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+
+## <a name="test-your-custom-policy"></a>Egyéni szabályzat tesztelése
+
+1. Válassza ki a függő entitás házirendjét, például: `B2C_1A_signup_signin` .
+1. **Alkalmazás** esetén válasszon ki egy [korábban regisztrált](troubleshoot-custom-policies.md#troubleshoot-the-runtime)webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
+1. Kattintson a **Futtatás most** gombra.
+1. A regisztrációs vagy bejelentkezési oldalon válassza a **Fabrikam** lehetőséget a másik Azure ad B2C Bérlővel való bejelentkezéshez.
+
+Ha a bejelentkezési folyamat sikeres, a rendszer átirányítja a böngészőt `https://jwt.ms` , amely a Azure ad B2C által visszaadott jogkivonat tartalmát jeleníti meg.
 
 ::: zone-end
 

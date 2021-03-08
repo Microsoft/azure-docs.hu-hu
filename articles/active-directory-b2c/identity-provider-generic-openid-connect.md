@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/08/2019
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8b71a7b8ab29e8083a5f119a41ef6de312518301
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9434bd4042798dc05a33401e1884e11a73774936
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388272"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448336"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Az OpenID Connecttel való regisztráció és bejelentkezés beállítása Azure Active Directory B2C használatával
 
@@ -27,7 +27,8 @@ Az [OpenID Connect](openid-connect.md) egy OAuth 2,0-re épülő hitelesítési 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
 1. Győződjön meg arról, hogy az Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben kattintson a **könyvtár + előfizetés** szűrőre, és válassza ki a bérlőt tartalmazó könyvtárat.
 1. Válassza az Azure Portal bal felső sarkában található **Minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki az **Azure AD B2C**-t.
-1. Válassza az **identitás-szolgáltatók**, majd az **új OpenID Connect Provider**lehetőséget.
+1. Válassza az **identitás-szolgáltatók**, majd az **új OpenID Connect Provider** lehetőséget.
+1. Adjon meg egy **nevet**. Adja meg például a *contoso* értéket.
 
 ## <a name="configure-the-identity-provider"></a>Az identitás-szolgáltató konfigurálása
 
@@ -35,7 +36,7 @@ Minden OpenID Connect Identity szolgáltató olyan metaadat-dokumentumot ír le,
 
 ## <a name="client-id-and-secret"></a>Ügyfél-azonosító és titok
 
-Annak engedélyezéséhez, hogy a felhasználók bejelentkezzenek, az identitás-szolgáltató megköveteli a fejlesztőknek, hogy regisztráljanak egy alkalmazást a szolgáltatásban. Az alkalmazáshoz tartozik egy **ügyfél-azonosító** és egy **ügyfél-titok**néven ismert azonosító. Másolja ezeket az értékeket az identitás-szolgáltatóból, és írja be őket a megfelelő mezőkbe.
+Annak engedélyezéséhez, hogy a felhasználók bejelentkezzenek, az identitás-szolgáltató megköveteli a fejlesztőknek, hogy regisztráljanak egy alkalmazást a szolgáltatásban. Az alkalmazáshoz tartozik egy **ügyfél-azonosító** és egy **ügyfél-titok** néven ismert azonosító. Másolja ezeket az értékeket az identitás-szolgáltatóból, és írja be őket a megfelelő mezőkbe.
 
 > [!NOTE]
 > Az ügyfél titkos kulcsa nem kötelező. Ha azonban az [engedélyezési kód folyamatát](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)szeretné használni, meg kell adnia egy ügyfél titkos kulcsát, amely a titkos kódot használja a jogkivonat kódjának cseréjéhez.
@@ -68,6 +69,19 @@ Miután az egyéni identitás-szolgáltató visszaküldi az azonosító jogkivon
 
 * **Felhasználói azonosító**: adja meg a bejelentkezett felhasználó *egyedi azonosítóját* biztosító jogcímet.
 * **Megjelenítendő név**: adja meg azt a jogcímet, amely megadja a felhasználó *megjelenítendő nevét* vagy *teljes nevét* .
-* **Utónév: adja**meg a *felhasználó vezetéknevét* biztosító jogcímet.
+* **Utónév: adja** meg a *felhasználó vezetéknevét* biztosító jogcímet.
 * **Vezetéknév**: adja meg a felhasználó *vezetéknevét* biztosító jogcímet.
 * **E-mail**: adja meg a felhasználó *e-mail-címét* biztosító jogcímet.
+
+## <a name="add-the-identity-provider-to-a-user-flow"></a>Az identitás-szolgáltató hozzáadása felhasználói folyamathoz 
+
+1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok** lehetőséget.
+1. Kattintson arra a felhasználói folyamatra, amelyhez hozzá szeretné adni az identitás-szolgáltatót. 
+1. A **közösségi identitás-szolgáltatók** területen válassza ki a hozzáadott identitás-szolgáltatót. Például: *contoso*.
+1. Kattintson a **Mentés** gombra.
+1. A szabályzat teszteléséhez válassza a **felhasználói folyamat futtatása** lehetőséget.
+1. Az **alkalmazás** lapon válassza ki a korábban regisztrált *testapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
+1. Kattintson a **felhasználói folyamat futtatása** gombra.
+1. A regisztrációs vagy bejelentkezési oldalon válassza ki a bejelentkezni kívánt identitás-szolgáltatót. Például: *contoso*.
+
+Ha a bejelentkezési folyamat sikeres, a rendszer átirányítja a böngészőt `https://jwt.ms` , amely a Azure ad B2C által visszaadott jogkivonat tartalmát jeleníti meg.

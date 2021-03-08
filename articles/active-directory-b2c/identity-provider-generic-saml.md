@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 71d51c4303dbc4c0c2668dbfcf388b0d6c6bcffe
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 357ea903ed4bbc87717dfefc1c542722f5bd40c0
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107552"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448404"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-saml-identity-provider-using-azure-active-directory-b2c"></a>Az SAML-identitás-szolgáltatóval való regisztráció és bejelentkezés beállítása Azure Active Directory B2C használatával
 
@@ -222,6 +222,7 @@ Nyisson meg egy böngészőt, és navigáljon az URL-címre. Győződjön meg ar
 1. Válassza ki a függő entitás házirendjét, például: `B2C_1A_signup_signin` .
 1. **Alkalmazás** esetén válasszon ki egy [korábban regisztrált](troubleshoot-custom-policies.md#troubleshoot-the-runtime)webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
 1. Kattintson a **Futtatás most** gombra.
+1. A regisztrációs vagy bejelentkezési oldalon válassza a **contoso** lehetőséget a contoso-fiókkal való bejelentkezéshez.
 
 Ha a bejelentkezési folyamat sikeres, a rendszer átirányítja a böngészőt `https://jwt.ms` , amely a Azure ad B2C által visszaadott jogkivonat tartalmát jeleníti meg.
 

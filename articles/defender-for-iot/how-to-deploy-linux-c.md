@@ -13,24 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 8c03f6b882c8b1a64c9f256493c5d586b5fa0f89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d3f96ed60ca784402b6d24eea7234f37c4fb959
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90940053"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449781"
 ---
 # <a name="deploy-defender-for-iot-c-based-security-agent-for-linux"></a>A Defender üzembe helyezése a IoT C-alapú biztonsági ügynökének Linuxra
 
 Ez az útmutató ismerteti, hogyan telepítheti és telepítheti a Defender for IoT C-alapú biztonsági ügynökét Linux rendszeren.
 
-Ebből az útmutatóból a következőket tanulhatja meg:
-
-> [!div class="checklist"]
-> * Telepítés
-> * Az üzembe helyezés ellenőrzése
-> * Ügynök eltávolítása
-> * Hibaelhárítás
+- Telepítés
+- Az üzembe helyezés ellenőrzése
+- Ügynök eltávolítása
+- Hibaelhárítás
 
 ## <a name="prerequisites"></a>Előfeltételek
 

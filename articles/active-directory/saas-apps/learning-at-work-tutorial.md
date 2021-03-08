@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/01/2019
+ms.date: 02/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 826a9358503ca6a207d53ae1b3b244befe976b08
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: bd7203aa9c9efe3b4eeefbda6043720c2bbaa066
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458682"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449475"
 ---
 # <a name="tutorial-integrate-learning-at-work-with-azure-active-directory"></a>Oktatóanyag: a tanulás integrálása a munkahelyi Azure Active Directory
 
@@ -25,8 +25,6 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a tanulást a Azur
 * A munkahelyi tanuláshoz hozzáférő Azure AD-beli vezérlés.
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek az Azure AD-fiókjával való munkavégzéshez.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
-
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -39,40 +37,39 @@ Első lépésként a következő elemeket kell megadnia:
 
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* A Worker learning az **SP** által kezdeményezett egyszeri bejelentkezést támogatja
+* A Learning on Work támogatja az **SP** által kezdeményezett egyszeri bejelentkezést.
 
-## <a name="adding-learning-at-work-from-the-gallery"></a>A tanulás a munkahelyen való hozzáadása a gyűjteményből
+## <a name="add-learning-at-work-from-the-gallery"></a>A Learning a munkahelyen való hozzáadása a gyűjteményből
 
 A tanulás munkahelyi Azure AD-ba való integrálásának konfigurálásához hozzá kell adnia a tanulási munkát a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **tanulás a munkahelyen** kifejezést a keresőmezőbe.
 1. Válassza a **tanulás** a munkahelyen az eredmények panelen lehetőséget, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
+## <a name="configure-and-test-azure-ad-sso-for-learning-at-work"></a>Az Azure AD SSO konfigurálása és tesztelése a munkahelyi tanuláshoz
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+Az Azure AD SSO konfigurálása és tesztelése a munkahelyi tanulással **B. Simon** néven. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a munkahelyi tanulásban.
 
-Az Azure AD SSO konfigurálása és tesztelése a munkahelyi tanulással **B. Simon**néven. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a munkahelyi tanulásban.
-
-Az Azure AD SSO és a munkahelyi tanulás konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO és a munkahelyi tanulás konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
-2. A **[tanulás konfigurálása a munkahelyi egyszeri bejelentkezéshez](#configure-learning-at-work-sso)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-4. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-5. **[Tanulás létrehozása a munkahelyi tesztelési felhasználónál](#create-learning-at-work-test-user)** – a "B. Simon" partnere, amely a felhasználó Azure ad-képviseletéhez kapcsolódik.
-6. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. A **[tanulás konfigurálása a munkahelyi egyszeri](#configure-learning-at-work-sso)** bejelentkezéshez – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    1. **[Tanulás létrehozása a munkahelyi tesztelési felhasználónál](#create-learning-at-work-test-user)** – a "B. Simon" partnere, amely a felhasználó Azure ad-képviseletéhez kapcsolódik.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)a **munkahelyi** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. A Azure Portal a **munkahelyi** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
+1. Az **egyszeres Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** ceruza ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -85,13 +82,13 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek beszerzéséhez lépjen kapcsolatba a [munkahelyi ügyfél-támogatási csapattal](https://www.learninga-z.com/site/contact/support) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. A Working for Work alkalmazás egy adott formátumban várja az SAML-jogcímeket, amelyhez egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName**leképezéssel van leképezve.
+5. A Working for Work alkalmazás egy adott formátumban várja az SAML-jogcímeket, amelyhez egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName** leképezéssel van leképezve.
 
-    A **NameIdentifier** értékét az Azure ad-ben a szervezet beállítása alapján frissítheti, és ennek az értéknek egyeznie kell a **felhasználó azonosítóval** a Saba-felhőben, ezért az attribútum-hozzárendelés szerkesztéséhez kattintson a **Szerkesztés** ikonra, és módosítsa az attribútumok leképezését.
+    A **NameIdentifier** értékét az Azure ad-ben a szervezet beállítása alapján frissítheti, és ennek az értéknek egyeznie kell a Saba felhőben lévő **felhasználói azonosítóval** , mert az attribútum-hozzárendelést úgy kell módosítania, hogy a **ceruza** ikonra kattint, és megváltoztatja az attribútum-hozzárendelést.
 
     ![image](common/edit-attribute.png)
 
-4. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
+6. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -99,15 +96,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="configure-learning-at-work-sso"></a>A tanulás konfigurálása a munkahelyi egyszeri bejelentkezéshez
-
-Ha az egyszeri bejelentkezést szeretné beállítani a **munkahelyi tanuláshoz** , el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portal a [munkahelyi támogatási csapat tanulásához](https://www.learninga-z.com/site/contact/support). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolódási csoport mindkét oldalon helyesen legyen beállítva
-
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
@@ -119,34 +112,32 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést a munkahelyi tanuláshoz való hozzáférés biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **tanulás a munkahelyen**lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
-
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
-
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
-
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **tanulás a munkahelyen** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+
+## <a name="configure-learning-at-work-sso"></a>A tanulás konfigurálása a munkahelyi egyszeri bejelentkezéshez
+
+Ha az egyszeri bejelentkezést szeretné beállítani a **munkahelyi tanuláshoz** , el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portal a [munkahelyi támogatási csapat tanulásához](https://www.learninga-z.com/site/contact/support). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
 ### <a name="create-learning-at-work-test-user"></a>Tanulás létrehozása munkahelyi tesztelési felhasználónál
 
 Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a Worker learningben. A Working for Work [támogatási csapatával](https://www.learninga-z.com/site/contact/support) a felhasználók a tanulás munkahelyi platformon való hozzáadásával dolgozhatnak. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
-### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-Ha a hozzáférési panelen a tanulás munkahelyi csempére kattint, automatikusan be kell jelentkeznie a munkahelyi tanulásba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. Ez átirányítja a munkahelyi bejelentkezési URL-címen megjelenő tanulásra, amelyen elindíthatja a bejelentkezési folyamatot. 
 
-## <a name="additional-resources"></a>További források
+* Lépjen a Learning on Work bejelentkezési URL-címére közvetlenül, és indítsa el onnan a bejelentkezési folyamatot.
 
-- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](./tutorial-list.md)
+* Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások tanulás munkahelyi csempére kattint, a rendszer átirányítja a munkahelyi bejelentkezési URL-címen végzett tanulásra. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Következő lépések
 
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
+Ha a tanulást a munkahelyen konfigurálta, akkor kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

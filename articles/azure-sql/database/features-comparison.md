@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: bonova, sstein, danil
-ms.date: 02/21/2021
-ms.openlocfilehash: 75fc4166614862c5ac48a72bacb6b7b19019d003
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/08/2021
+ms.openlocfilehash: 56f7a233e7098f18b727da3ce56c5fbe30a328a1
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691909"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102447469"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Szolgáltatások összehasonlítása: Azure SQL Database és az Azure SQL felügyelt példánya
 
@@ -30,7 +30,11 @@ A Azure SQL Database és az SQL felügyelt példánya közös programkódot oszt
 - Biztonsági funkciók – [alkalmazás-szerepkörök](/sql/relational-databases/security/authentication-access/application-roles), [dinamikus adatmaszkolás](/sql/relational-databases/security/dynamic-data-masking) ([lásd az első lépéseket ismertető útmutatót](dynamic-data-masking-overview.md)), a [sorok szintjének biztonsága](/sql/relational-databases/security/row-level-security)és a fenyegetések észlelése – az első lépéseket ismertető útmutató a [SQL Database](threat-detection-configure.md) és az [SQL felügyelt példányához](../managed-instance/threat-detection-configure.md).
 - Többmodelles funkciók – [gráf feldolgozása](/sql/relational-databases/graphs/sql-graph-overview), [JSON](/sql/relational-databases/json/json-data-sql-server) -adatkezelés ([lásd: első lépések útmutató](json-features.md)), [OpenXML](/sql/t-sql/functions/openxml-transact-sql), [térbeli](/sql/relational-databases/spatial/spatial-data-sql-server), [openjson utasítással](/sql/t-sql/functions/openjson-transact-sql)és [XML-indexek](/sql/t-sql/statements/create-xml-index-transact-sql).
 
-Az Azure kezeli az adatbázisokat, és garantálja a magas rendelkezésre állást. Néhány olyan funkció, amely hatással lehet a magas rendelkezésre állásra, vagy nem használható a Pásti világban, korlátozott funkcionalitással rendelkezik a SQL Database és az SQL felügyelt példányában. Ezeket a funkciókat az alábbi táblázat ismerteti. Ha további információra van szüksége a különbségekről, a [Azure SQL Database](../managed-instance/transact-sql-tsql-differences-sql-server.md) vagy az [Azure SQL felügyelt példányának](../managed-instance/transact-sql-tsql-differences-sql-server.md)külön oldalain találhatja meg őket.
+Az Azure kezeli az adatbázisokat, és garantálja a magas rendelkezésre állást. Néhány olyan funkció, amely hatással lehet a magas rendelkezésre állásra, vagy nem használható a Pásti világban, korlátozott funkcionalitással rendelkezik a SQL Database és az SQL felügyelt példányában. Ezeket a funkciókat az alábbi táblázat ismerteti.
+
+Ha további információra van szüksége a különbségekről, a különböző lapokon találja őket:
+- [Azure SQL Database](transact-sql-tsql-differences-sql-server.md)
+- [Felügyelt Azure SQL-példány](../managed-instance/transact-sql-tsql-differences-sql-server.md)
 
 ## <a name="features-of-sql-database-and-sql-managed-instance"></a>A SQL Database és az SQL felügyelt példányának szolgáltatásai
 
@@ -49,28 +53,28 @@ A következő táblázat a SQL Server főbb funkcióit sorolja fel, és informá
 | [Tanúsítványok és aszimmetrikus kulcsok](/sql/relational-databases/security/sql-server-certificates-and-asymmetric-keys) | Igen, a fájlrendszerhez és a műveletekhez való hozzáférés nélkül `BACKUP` `CREATE` . | Igen, a fájlrendszerhez és a műveletekhez való hozzáférés nélkül `BACKUP` `CREATE` – lásd a [tanúsítványok közötti különbségeket](../managed-instance/transact-sql-tsql-differences-sql-server.md#certificates). |
 | [Adatváltozások rögzítése – CDC](/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | Nem | Igen |
 | [Rendezés – kiszolgáló/példány](/sql/relational-databases/collations/set-or-change-the-server-collation) | Nem, mindig az alapértelmezett kiszolgáló-rendezést `SQL_Latin1_General_CP1_CI_AS` használja a rendszer. | Igen, beállítható a [példány létrehozásakor](../managed-instance/create-template-quickstart.md) , és később nem frissíthető. |
-| [Oszlopcentrikus indexek](/sql/relational-databases/indexes/columnstore-indexes-overview) | Igen – [prémium szint, standard szint – S3 és újabb verziók, általános célú szint, üzletileg kritikus és nagy kapacitású szint](/sql/relational-databases/indexes/columnstore-indexes-overview) |Igen |
-| [Közös nyelvi futtatókörnyezet – CLR](/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | Nem | Igen, de nem fér hozzá a fájlrendszerhez az `CREATE ASSEMBLY` utasításban – lásd: [CLR különbségek](../managed-instance/transact-sql-tsql-differences-sql-server.md#clr) |
+| [Oszlopcentrikus indexek](/sql/relational-databases/indexes/columnstore-indexes-overview) | Igen – [prémium szint, standard szint – S3 és újabb verziók, általános célú szint, üzletileg kritikus és nagy kapacitású szint](/sql/relational-databases/indexes/columnstore-indexes-overview) |Yes |
+| [Közös nyelvi futtatókörnyezet – CLR](/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | No | Igen, de nem fér hozzá a fájlrendszerhez az `CREATE ASSEMBLY` utasításban – lásd: [CLR különbségek](../managed-instance/transact-sql-tsql-differences-sql-server.md#clr) |
 | [Hitelesítő adatok](/sql/relational-databases/security/authentication-access/credentials-database-engine) | Igen, de csak az [adatbázis-hatókörű hitelesítő adatok](/sql/t-sql/statements/create-database-scoped-credential-transact-sql). | Igen, de csak **Azure Key Vault** és `SHARED ACCESS SIGNATURE` támogatottak – lásd a [részleteket](../managed-instance/transact-sql-tsql-differences-sql-server.md#credential) |
 | [Több adatbázis/háromrészes nevek lekérdezése](/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nem – lásd a [rugalmas lekérdezéseket](elastic-query-overview.md) | Igen, valamint [rugalmas lekérdezések](elastic-query-overview.md) |
-| [Adatbázisközi tranzakciók](/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nem | Igen, a példányon belül. Tekintse meg a [csatolt kiszolgálók közötti különbségeket](../managed-instance/transact-sql-tsql-differences-sql-server.md#linked-servers) a példányok közötti lekérdezésekhez. |
+| [Adatbázisközi tranzakciók](/sql/relational-databases/linked-servers/linked-servers-database-engine) | No | Igen, a példányon belül. Tekintse meg a [csatolt kiszolgálók közötti különbségeket](../managed-instance/transact-sql-tsql-differences-sql-server.md#linked-servers) a példányok közötti lekérdezésekhez. |
 | [Adatbázis levelezési Adatmódosulás](/sql/relational-databases/database-mail/database-mail) | Nem | Igen |
-| [Adatbázis-tükrözés](/sql/database-engine/database-mirroring/database-mirroring-sql-server) | Nem | [Nem](../managed-instance/transact-sql-tsql-differences-sql-server.md#database-mirroring) |
+| [Adatbázis-tükrözés](/sql/database-engine/database-mirroring/database-mirroring-sql-server) | No | [Nem](../managed-instance/transact-sql-tsql-differences-sql-server.md#database-mirroring) |
 | [Adatbázis-pillanatképek](/sql/relational-databases/databases/database-snapshots-sql-server) | Nem | Nem |
 | [DBCC-utasítások](/sql/t-sql/database-console-commands/dbcc-transact-sql) | A legtöbb esetben – lásd az egyes utasításokat | Igen – lásd a [DBCC-különbségeket](../managed-instance/transact-sql-tsql-differences-sql-server.md#dbcc) |
 | [DDL-utasítások](/sql/t-sql/statements/statements) | A legtöbb esetben – lásd az egyes utasításokat | Igen – lásd: a [T-SQL eltérései](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
-| [DDL-eseményindítók](/sql/relational-databases/triggers/ddl-triggers) | Csak adatbázis |  Igen |
+| [DDL-eseményindítók](/sql/relational-databases/triggers/ddl-triggers) | Csak adatbázis |  Yes |
 | [Elosztott partíciók nézetei](/sql/t-sql/statements/create-view-transact-sql#partitioned-views) | Nem | Igen |
 | [Elosztott tranzakciók – MS DTC](/sql/relational-databases/native-client-ole-db-transactions/supporting-distributed-transactions) | Nem – lásd a [rugalmas tranzakciókat](elastic-transactions-overview.md) |  Nem – lásd a [csatolt kiszolgálók közötti különbségeket](../managed-instance/transact-sql-tsql-differences-sql-server.md#linked-servers). A Migrálás során próbáljon összevonni több elosztott SQL Server-példány adatbázisát egyetlen SQL felügyelt példányba. |
-| [DML-eseményindítók](/sql/relational-databases/triggers/create-dml-triggers) | A legtöbb esetben – lásd az egyes utasításokat |  Igen |
+| [DML-eseményindítók](/sql/relational-databases/triggers/create-dml-triggers) | A legtöbb esetben – lásd az egyes utasításokat |  Yes |
 | [Dinamikus felügyeleti nézetek](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) | A legtöbb esetben – lásd az egyes DMV |  Igen – lásd: a [T-SQL eltérései](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
 | [Rugalmas lekérdezés](elastic-query-overview.md) (nyilvános előzetes verzióban) | Igen, a szükséges RDBMS-típussal. | Igen, a szükséges RDBMS-típussal. |
-| [Eseményértesítések](/sql/relational-databases/service-broker/event-notifications) | Nem – a [riasztások](alerts-insights-configure-portal.md) megtekintése | Nem |
-| [Kifejezések](/sql/t-sql/language-elements/expressions-transact-sql) |Igen | Igen |
+| [Eseményértesítések](/sql/relational-databases/service-broker/event-notifications) | Nem – a [riasztások](alerts-insights-configure-portal.md) megtekintése | No |
+| [Kifejezések](/sql/t-sql/language-elements/expressions-transact-sql) |Igen | Yes |
 | [Kiterjesztett események (XEvent)](/sql/relational-databases/extended-events/extended-events) | Néhány – lásd [a kiterjesztett eseményeket SQL Database](xevent-db-diff-from-svr.md) | Igen – lásd a [kiterjesztett események különbségeit](../managed-instance/transact-sql-tsql-differences-sql-server.md#extended-events) |
 | [Bővített tárolt eljárások](/sql/relational-databases/extended-stored-procedures-programming/creating-extended-stored-procedures) | Nem | Nem |
 | [Fájlok és fájlcsoportok](/sql/relational-databases/databases/database-files-and-filegroups) | Csak az elsődleges fájl csoport | Igen. A rendszer automatikusan hozzárendeli a fájlelérési utakat, és a fájl helye nem adható meg az `ALTER DATABASE ADD FILE` [utasításban](../managed-instance/transact-sql-tsql-differences-sql-server.md#alter-database-statement).  |
-| [Fájlstream](/sql/relational-databases/blob/filestream-sql-server) | Nem | [Nem](../managed-instance/transact-sql-tsql-differences-sql-server.md#filestream-and-filetable) |
+| [Fájlstream](/sql/relational-databases/blob/filestream-sql-server) | No | [Nem](../managed-instance/transact-sql-tsql-differences-sql-server.md#filestream-and-filetable) |
 | [Teljes szöveges keresés (FTS)](/sql/relational-databases/search/full-text-search) |  Igen, de a harmadik féltől származó Word-megszakítók nem támogatottak | Igen, de [a harmadik féltől származó Word-megszakítók nem támogatottak](../managed-instance/transact-sql-tsql-differences-sql-server.md#full-text-semantic-search) |
 | [Functions](/sql/t-sql/functions/functions) | A legtöbb esetben – lásd az egyes függvényeket | Igen – lásd: [tárolt eljárások, függvények, eseményindítók eltérései](../managed-instance/transact-sql-tsql-differences-sql-server.md#stored-procedures-functions-and-triggers) |
 | [Memóriabeli optimalizálás](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Igen, [prémium és üzletileg kritikus szolgáltatási szinteken](../in-memory-oltp-overview.md).</br> Korlátozott támogatás a nem állandó In-Memory OLTP objektumok, például a [nagy kapacitású szolgáltatási réteg](service-tier-hyperscale.md)memóriára optimalizált táblázatos változói számára.| Igen [üzletileg kritikus szolgáltatási](../managed-instance/sql-managed-instance-paas-overview.md) szinten |
@@ -82,21 +86,21 @@ A következő táblázat a SQL Server főbb funkcióit sorolja fel, és informá
 | [Minimális naplózás tömeges importálás során](/sql/relational-databases/import-export/prerequisites-for-minimal-logging-in-bulk-import) | Nem, csak a teljes helyreállítási modell támogatott. | Nem, csak a teljes helyreállítási modell támogatott. |
 | [Rendszeradatok módosítása](/sql/relational-databases/databases/system-databases) | Nem | Igen |
 | [OLE-automatizálás](/sql/database-engine/configure-windows/ole-automation-procedures-server-configuration-option) | Nem | Nem |
-| [INDEX](/sql/t-sql/functions/opendatasource-transact-sql)|Nem|Igen, csak SQL Database, SQL felügyelt példányra és SQL Serverre. Lásd: a [T-SQL eltérései](../managed-instance/transact-sql-tsql-differences-sql-server.md)|
-| [LEKÉRDEZÉSMEGNYITÁSA](/sql/t-sql/functions/openquery-transact-sql)|Nem|Igen, csak SQL Database, SQL felügyelt példányra és SQL Serverre. Lásd: a [T-SQL eltérései](../managed-instance/transact-sql-tsql-differences-sql-server.md)|
+| [INDEX](/sql/t-sql/functions/opendatasource-transact-sql)|No|Igen, csak SQL Database, SQL felügyelt példányra és SQL Serverre. Lásd: a [T-SQL eltérései](../managed-instance/transact-sql-tsql-differences-sql-server.md)|
+| [LEKÉRDEZÉSMEGNYITÁSA](/sql/t-sql/functions/openquery-transact-sql)|No|Igen, csak SQL Database, SQL felügyelt példányra és SQL Serverre. Lásd: a [T-SQL eltérései](../managed-instance/transact-sql-tsql-differences-sql-server.md)|
 | [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql)|Igen, csak az Azure Blob Storage-ból való importáláshoz. |Igen, csak SQL Database, SQL felügyelt példányra és SQL Serverre, valamint az Azure Blob Storage-ból való importálásra. Lásd: a [T-SQL eltérései](../managed-instance/transact-sql-tsql-differences-sql-server.md)|
 | [Operátorok](/sql/t-sql/language-elements/operators-transact-sql) | A legtöbb esetben – lásd az egyes operátorokat |Igen – lásd: a [T-SQL eltérései](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
 | [Polybase](/sql/relational-databases/polybase/polybase-guide) | Nem. Az Azure Blob Storage-ban elhelyezett fájlokban lévő adatok lekérdezéséhez használja a `OPENROWSET` függvényt, vagy használjon [egy külső táblázatot, amely a szinapszis Analytics kiszolgáló nélküli SQL-készletére hivatkozik](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/). | Nem. Az Azure Blob Storage-ban elhelyezett fájlokban lévő adatok lekérdezéséhez a `OPENROWSET` függvény, [egy csatolt kiszolgáló, amely a szinapszis Analytics kiszolgáló nélküli SQL-készletére hivatkozik](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/), vagy egy olyan külső táblázat (nyilvános előzetes verzióban), amely [a szinapszis Analytics](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) vagy a SQL Server kiszolgáló nélküli SQL-készletére hivatkozik. |
 | [Lekérdezési értesítések](/sql/relational-databases/native-client/features/working-with-query-notifications) | Nem | Igen |
-| [Machine learning Services](/sql/advanced-analytics/what-is-sql-server-machine-learning)(_korábbi R szolgáltatások_)| Igen, a [nyilvános előzetes](/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services) verzióban  | Nem |
+| [Machine learning Services](/sql/advanced-analytics/what-is-sql-server-machine-learning)(_korábbi R szolgáltatások_)| Igen, a [nyilvános előzetes](/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services) verzióban  | No |
 | [Helyreállítási modellek](/sql/relational-databases/backup-restore/recovery-models-sql-server) | Csak a magas rendelkezésre állást garantáló teljes helyreállítás támogatott. Az egyszerű és a tömegesen naplózott helyreállítási modellek nem érhetők el. | Csak a magas rendelkezésre állást garantáló teljes helyreállítás támogatott. Az egyszerű és a tömegesen naplózott helyreállítási modellek nem érhetők el. |
 | [Erőforrás-kormányzó](/sql/relational-databases/resource-governor/resource-governor) | Nem | Igen |
-| [RESTORE utasítások](/sql/t-sql/statements/restore-statements-for-restoring-recovering-and-managing-backups-transact-sql) | Nem | Igen, az `FROM URL` Azure Blob Storage-ra helyezett biztonsági másolatok fájljainak kötelező beállításaival. Lásd: [visszaállítási különbségek](../managed-instance/transact-sql-tsql-differences-sql-server.md#restore-statement) |
+| [RESTORE utasítások](/sql/t-sql/statements/restore-statements-for-restoring-recovering-and-managing-backups-transact-sql) | No | Igen, az `FROM URL` Azure Blob Storage-ra helyezett biztonsági másolatok fájljainak kötelező beállításaival. Lásd: [visszaállítási különbségek](../managed-instance/transact-sql-tsql-differences-sql-server.md#restore-statement) |
 | [Adatbázis visszaállítása biztonsági mentésből](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases#restore-data-backups) | Csak automatizált biztonsági másolatokból – lásd: [SQL Database Recovery](recovery-using-backups.md) | Automatizált biztonsági másolatokból – tekintse meg a [SQL Database helyreállítást](recovery-using-backups.md) és az Azure Blob Storageba helyezett teljes biztonsági mentést – lásd a [biztonsági másolatok közötti különbségeket](../managed-instance/transact-sql-tsql-differences-sql-server.md#backup) |
 | [Adatbázis visszaállítása SQL Serverre](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases#restore-data-backups) | Nem. Natív visszaállítás helyett használja a BACPAC vagy a BCP-t. | Nem, mert az SQL felügyelt példányában használt SQL Server adatbázismotor magasabb verziójú, mint a helyszínen használt SQL Server RTM verziója. Használja helyette a BACPAC, a BCP vagy a tranzakciós replikálást. |
 | [Szemantikus keresés](/sql/relational-databases/search/semantic-search-sql-server) | Nem | Nem |
-| [Szolgáltatásközvetítő](/sql/database-engine/configure-windows/sql-server-service-broker) | Nem | Igen, de csak a példányon belül. Ha távoli Service Broker útvonalakat használ, próbálja meg összevonni több elosztott SQL Server példány adatbázisát egyetlen SQL felügyelt példányra az áttelepítés során, és csak helyi útvonalakat használjon. Lásd: [Service Broker különbségek](../managed-instance/transact-sql-tsql-differences-sql-server.md#service-broker) |
-| [Kiszolgáló konfigurációs beállításai](/sql/database-engine/configure-windows/server-configuration-options-sql-server) | Nem | Igen – lásd: a [T-SQL eltérései](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
+| [Szolgáltatásközvetítő](/sql/database-engine/configure-windows/sql-server-service-broker) | No | Igen, de csak a példányon belül. Ha távoli Service Broker útvonalakat használ, próbálja meg összevonni több elosztott SQL Server példány adatbázisát egyetlen SQL felügyelt példányra az áttelepítés során, és csak helyi útvonalakat használjon. Lásd: [Service Broker különbségek](../managed-instance/transact-sql-tsql-differences-sql-server.md#service-broker) |
+| [Kiszolgáló konfigurációs beállításai](/sql/database-engine/configure-windows/server-configuration-options-sql-server) | No | Igen – lásd: a [T-SQL eltérései](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
 | [Utasítások megadása](/sql/t-sql/statements/set-statements-transact-sql) | A legtöbb esetben – lásd az egyes utasításokat | Igen – lásd: a [T-SQL eltérései](../managed-instance/transact-sql-tsql-differences-sql-server.md)|
 | [SQL Server Agent](/sql/ssms/agent/sql-server-agent) | Nem – lásd a [rugalmas feladatokat (előzetes verzió)](elastic-jobs-overview.md) | Igen – lásd [SQL Server Agent különbségek](../managed-instance/transact-sql-tsql-differences-sql-server.md#sql-server-agent) |
 | [SQL Server naplózás](/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | Nem – lásd [SQL Database naplózás](auditing-overview.md) | Igen – lásd a [naplózási különbségeket](../managed-instance/transact-sql-tsql-differences-sql-server.md#auditing) |
@@ -106,8 +110,8 @@ A következő táblázat a SQL Server főbb funkcióit sorolja fel, és informá
 | [Rendszerkatalógus-nézetek](/sql/relational-databases/system-catalog-views/catalog-views-transact-sql) | Néhány – lásd az egyes nézeteket | Igen – lásd: a [T-SQL eltérései](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
 | [TempDB](/sql/relational-databases/databases/tempdb-database) | Igen. [32 – GB méret minden adatbázishoz](resource-limits-vcore-single-databases.md). | Igen. [a teljes GP-réteghez tartozó virtuális mag 24 GB, a BC-szinten pedig a példányok mérete korlátozva](../managed-instance/resource-limits.md#service-tier-characteristics)  |
 | [ideiglenes táblákkal](/sql/t-sql/statements/create-table-transact-sql#database-scoped-global-temporary-tables-azure-sql-database) | Helyi és adatbázis-hatókörű globális ideiglenes táblák | Helyi és példány-hatókörű globális ideiglenes táblák |
-| Időzóna választása | Nem | [Igen](../managed-instance/timezones-overview.md), és az SQL felügyelt példányának létrehozásakor be kell állítani. |
-| [Nyomkövetési jelzők](/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | Nem | Igen, de csak a globális nyomkövetési jelzők korlátozott készlete. Lásd: [DBCC különbségek](../managed-instance/transact-sql-tsql-differences-sql-server.md#dbcc) |
+| Időzóna választása | No | [Igen](../managed-instance/timezones-overview.md), és az SQL felügyelt példányának létrehozásakor be kell állítani. |
+| [Nyomkövetési jelzők](/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | No | Igen, de csak a globális nyomkövetési jelzők korlátozott készlete. Lásd: [DBCC különbségek](../managed-instance/transact-sql-tsql-differences-sql-server.md#dbcc) |
 | [Tranzakciós replikáció](../managed-instance/replication-transactional-overview.md) | Igen, [csak tranzakciós és pillanatkép-replikációs előfizető](migrate-to-database-from-sql-server.md) | Igen, a [nyilvános előzetes](/sql/relational-databases/replication/replication-with-sql-database-managed-instance)verzióban. [Itt](../managed-instance/transact-sql-tsql-differences-sql-server.md#replication)megtalálhatja a megkötéseket. |
 | [Transzparens adattitkosítás (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | Igen – csak általános célú és üzletileg kritikus szolgáltatási szintet| [Igen](transparent-data-encryption-tde-overview.md) |
 | Windows-hitelesítés | Nem | Nem |
@@ -123,31 +127,31 @@ Az Azure platform számos olyan, a szabványos adatbázis-funkciókhoz hozzáado
 | [Automatikus feladatátvételi csoportok](auto-failover-group-overview.md) | Igen – az összes szolgáltatási réteg a nagy kapacitású kivételével | Igen, lásd: [automatikus feladatátvételi csoportok](auto-failover-group-overview.md)|
 | Automatikus méretezés | Igen, de csak [kiszolgáló nélküli modellben](serverless-tier-overview.md). A nem kiszolgáló nélküli modellben a szolgáltatási réteg (virtuális mag, tárterület vagy DTU) változása gyors és online állapotú. A szolgáltatási rétegek változásához minimális vagy nem állásidő szükséges. | Nem, a fenntartott számítási és tárolási kapacitást kell választania. A szolgáltatási szintek (virtuális mag vagy maximális tárterület) módosítása online állapotú, és minimális vagy leállást igényel. |
 | [Automatikus biztonsági mentések](automated-backups-overview.md) | Igen. A teljes biztonsági mentés 7 naponta, különbözeti 12 órában, a biztonsági másolatok pedig 5-10 percenként történik. | Igen. A teljes biztonsági mentés 7 naponta, különbözeti 12 órában, a biztonsági másolatok pedig 5-10 percenként történik. |
-| [Automatikus hangolás (indexek)](/sql/relational-databases/automatic-tuning/automatic-tuning)| [Igen](automatic-tuning-overview.md)| Nem |
+| [Automatikus hangolás (indexek)](/sql/relational-databases/automatic-tuning/automatic-tuning)| [Igen](automatic-tuning-overview.md)| No |
 | [Rendelkezésre állási zónák](../../availability-zones/az-overview.md) | Igen | Nem |
 | [Azure Resource Health](../../service-health/resource-health-overview.md) | Igen | Nem |
 | Biztonsági mentés megőrzése | Igen. 7 nap alapértelmezett, max. 35 nap. | Igen. 7 nap alapértelmezett, max. 35 nap. |
-| [Adatáttelepítési szolgáltatás (DMS)](/sql/dma/dma-overview) | Igen | Igen |
+| [Adatáttelepítési szolgáltatás (DMS)](/sql/dma/dma-overview) | Igen | Yes |
 | [Rugalmas feladatok](elastic-jobs-overview.md) | Igen – lásd: [rugalmas feladatok (előzetes verzió)](elastic-jobs-overview.md) | Nem (Ehelyett[SQL-ügynök](../managed-instance/transact-sql-tsql-differences-sql-server.md#sql-server-agent) használható). |
 | Fájlrendszer-hozzáférés | Nem. Alternatív megoldásként [bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) vagy [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) használatával férhet hozzá és tölthet be az Azure Blob Storageból. | Nem. Alternatív megoldásként [bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) vagy [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) használatával férhet hozzá és tölthet be az Azure Blob Storageból. |
-| [Geo-visszaállítás](recovery-using-backups.md#geo-restore) | Igen | Igen |
+| [Geo-visszaállítás](recovery-using-backups.md#geo-restore) | Igen | Yes |
 | [Nagy kapacitású architektúra](service-tier-hyperscale.md) | Igen | Nem |
 | [Biztonsági másolatok hosszú távú megőrzése – LTR](long-term-retention-overview.md) | Igen, az automatikusan megtarthatja a biztonsági mentéseket akár 10 évig. | Jelenleg nem. A `COPY_ONLY` [manuális biztonsági mentések](../managed-instance/transact-sql-tsql-differences-sql-server.md#backup) ideiglenes megkerülő megoldásként használhatók. |
-| Szüneteltetés/folytatás | Igen, [kiszolgáló nélküli modellben](serverless-tier-overview.md) | Nem |
+| Szüneteltetés/folytatás | Igen, [kiszolgáló nélküli modellben](serverless-tier-overview.md) | No |
 | [Szabályzatalapú felügyelet](/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | Nem | Nem |
 | Nyilvános IP-cím | Igen. A hozzáférés tűzfal vagy szolgáltatási végpontok használatával korlátozható.  | Igen. Explicit módon engedélyezni kell, és engedélyezni kell a 3342-es portot a NSG-szabályokban. Ha szükséges, a nyilvános IP-cím is letiltható. További részletekért tekintse meg a [nyilvános végpontot](../managed-instance/public-endpoint-overview.md) . |
 | [Időponthoz kötött adatbázis-visszaállítás](/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | Igen – az összes szolgáltatási réteg a nagy kapacitású kivételével – lásd: [SQL Database helyreállítás](recovery-using-backups.md#point-in-time-restore) | Igen – lásd: [SQL Database helyreállítás](recovery-using-backups.md#point-in-time-restore) |
 | Erőforráskészletek | Igen, [rugalmas készletekként](elastic-pool-overview.md) | Igen. Az SQL felügyelt példányainak egyetlen példánya több adatbázissal is rendelkezhet, amelyek ugyanazt a készletet használják. Emellett az SQL felügyelt példányainak több példányát is telepítheti az erőforrások megosztására használható [példány-készletek (előzetes verzió)](../managed-instance/instance-pools-overview.md) használatával. |
 | Vertikális fel-vagy leskálázás (online) | Igen, a minimális állásidővel módosíthatja a DTU vagy a fenntartott virtuális mag vagy a maximális tárterületet. | Igen, a minimális állásidővel módosíthatja a fenntartott virtuális mag vagy a maximális tárterületet. |
 | [SQL-alias](/sql/database-engine/configure-windows/create-or-delete-a-server-alias-for-use-by-a-client) | Nem, használjon [DNS-aliast](dns-alias-overview.md) | Nem, a [Clicongf](https://techcommunity.microsoft.com/t5/Azure-Database-Support-Blog/Lesson-Learned-33-How-to-make-quot-cliconfg-quot-to-work-with/ba-p/369022) használatával állítson be aliast az ügyfélgépeken. |
-| [SQL-elemzés](../../azure-monitor/insights/azure-sql.md) | Igen | Igen |
+| [SQL-elemzés](../../azure-monitor/insights/azure-sql.md) | Igen | Yes |
 | [SQL-adatszinkronizálás](sql-data-sync-sql-server-configure.md) | Igen | Nem |
 | [SQL Server Analysis Services (SSAS)](/sql/analysis-services/analysis-services) | Nem, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) egy különálló Azure Cloud Service. | Nem, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) egy különálló Azure Cloud Service. |
 | [Az SQL Server Integration Servicest (SSIS)](/sql/integration-services/sql-server-integration-services) | Igen, felügyelt SSIS Azure Data Factory (ADF) környezetben, ahol a csomagok tárolása a Azure SQL Database által futtatott és az Azure SSIS Integration Runtime (IR) szolgáltatásban futtatott SSISDB történik, lásd: [Azure-SSIS IR létrehozása ADF-ben](../../data-factory/create-azure-ssis-integration-runtime.md). <br/><br/>A SQL Database és az SQL felügyelt példányának SSIS-funkcióinak összehasonlítását lásd: [SQL Database összehasonlítása az SQL felügyelt példányaival](../../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance). | Igen, felügyelt SSIS Azure Data Factory (ADF) környezetben, ahol a csomagok tárolása az SQL felügyelt példány által üzemeltetett SSISDB történik, és az Azure SSIS Integration Runtime (IR) hajtja végre, lásd: [Create Azure-SSIS IR in ADF](../../data-factory/create-azure-ssis-integration-runtime.md). <br/><br/>A SQL Database és az SQL felügyelt példányának SSIS-funkcióinak összehasonlítását lásd: [SQL Database összehasonlítása az SQL felügyelt példányaival](../../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance). |
 | [SQL Server Reporting Services (SSRS)](/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | Nem – [lásd Power bi](/power-bi/) | Nem – használjon [Power bi](/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) többoldalas jelentéseket, vagy az SSRS-t egy Azure-beli virtuális gépen üzemelteti. A felügyelt SQL-példányok nem futtathatják az SSRS-t szolgáltatásként, SQL Server hitelesítéssel az Azure-beli virtuális gépen telepített jelentéskészítő kiszolgálókhoz is tárolhatnak [SSRS-katalógus-adatbázisokat](/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements) . |
 | [Teljesítménytesztek lekérdezése (QPI)](query-performance-insight-use.md) | Igen | Nem. SQL Server Management Studio és Azure Data Studio beépített jelentéseinek használata. |
 | [VNet](../../virtual-network/virtual-networks-overview.md) | Részleges, lehetővé teszi a korlátozott hozzáférést a [VNet-végpontok](vnet-service-endpoint-rule-overview.md) használatával | Igen, az SQL felügyelt példánya az ügyfél VNet van befecskendezve. Lásd: [alhálózat](../managed-instance/transact-sql-tsql-differences-sql-server.md#subnet) és [VNet](../managed-instance/transact-sql-tsql-differences-sql-server.md#vnet) |
-| VNet-szolgáltatásvégpont | [Igen](vnet-service-endpoint-rule-overview.md) | Nem |
+| VNet-szolgáltatásvégpont | [Igen](vnet-service-endpoint-rule-overview.md) | No |
 | Globális VNet | Igen, [magánhálózati IP-címek és szolgáltatási végpontok](vnet-service-endpoint-rule-overview.md) használata | Igen, [virtuális hálózati](https://techcommunity.microsoft.com/t5/azure-sql/new-feature-global-vnet-peering-support-for-azure-sql-managed/ba-p/1746913)társítás használata. |
 
 ## <a name="tools"></a>Eszközök
@@ -156,19 +160,19 @@ A Azure SQL Database és az Azure SQL felügyelt példánya különböző adates
 
 | **Eszköz** | **Azure SQL Database** | **Felügyelt Azure SQL-példány** |
 | --- | --- | --- |
-| Azure Portal | Igen | Igen |
-| Azure CLI | Igen | Igen|
-| [Azure Data Studio](/sql/azure-data-studio/what-is) | Igen | Igen |
-| Azure PowerShell | Igen | Igen |
+| Azure Portal | Igen | Yes |
+| Azure CLI | Igen | Yes|
+| [Azure Data Studio](/sql/azure-data-studio/what-is) | Igen | Yes |
+| Azure PowerShell | Igen | Yes |
 | [BACPAC-fájl (exportálás)](/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Igen – lásd [SQL Database exportálás](database-export.md) | Igen – lásd: az [SQL felügyelt példányának exportálása](database-export.md) |
 | [BACPAC-fájl (importálás)](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Igen – lásd [SQL Database importálás](database-import.md) | Igen – lásd: az [SQL felügyelt példányának importálása](database-import.md) |
 | [Data Quality Services (DQS)](/sql/data-quality-services/data-quality-services) | Nem | Nem |
 | [Master Data Services (MDS)](/sql/master-data-services/master-data-services-overview-mds) | Nem | Nem |
 | [SMO](/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [Igen](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) | Igen, 150-es [verzió](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) |
-| [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) | Igen | Igen |
-| [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) | Igen | Igen [, 18,0-es és újabb verzió](/sql/ssms/download-sql-server-management-studio-ssms) |
-| [SQL Server PowerShell](/sql/relational-databases/scripting/sql-server-powershell) | Igen | Igen |
-| [SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) | Nem – lásd a [kiterjesztett eseményeket](xevent-db-diff-from-svr.md) | Igen |
+| [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) | Igen | Yes |
+| [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) | Yes | Igen [, 18,0-es és újabb verzió](/sql/ssms/download-sql-server-management-studio-ssms) |
+| [SQL Server PowerShell](/sql/relational-databases/scripting/sql-server-powershell) | Igen | Yes |
+| [SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) | Nem – lásd a [kiterjesztett eseményeket](xevent-db-diff-from-svr.md) | Yes |
 | [System Center Operations Manager (SCOM)](/system-center/scom/welcome) | [Igen](https://www.microsoft.com/download/details.aspx?id=38829) | [Igen](https://www.microsoft.com/en-us/download/details.aspx?id=101203) |
 
 ## <a name="migration-methods"></a>Áttelepítési módszerek

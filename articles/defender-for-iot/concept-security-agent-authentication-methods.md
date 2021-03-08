@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: c72fa87201fb0d7fdd526f0e6f4eeb2c35192fc2
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 85a5edc1485cb5a1eeb4428b201380ad9ca89422
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100521645"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449169"
 ---
 # <a name="security-agent-authentication-methods"></a>Biztonsági ügynök hitelesítési módszerei
 
@@ -26,9 +26,8 @@ Ez a cikk ismerteti a különböző hitelesítési módszereket, amelyekkel a Az
 
 Egy biztonsági modulra van szükség minden olyan eszközhöz, amely a Defender IoT Hub IoT van bevezetve. Az eszköz hitelesítéséhez a Defender for IoT két módszer egyikét használhatja. Válassza ki a meglévő IoT-megoldáshoz legjobban illő módszert.
 
-> [!div class="checklist"]
-> * SecurityModule beállítás
-> * Eszköz beállítás
+- SecurityModule beállítás
+- Eszköz beállítás
 
 ## <a name="authentication-methods"></a>Hitelesítési módszerek
 
@@ -101,7 +100,8 @@ Szerkessze _LocalConfiguration.jsa_ következő paraméterekkel:
     "HostName" : ""
 }
 ```
-## <a name="next-steps"></a>Következő lépések
+
+## <a name="see-also"></a>Lásd még
 
 - [Biztonsági ügynökök áttekintése](security-agent-architecture.md)
 - [Biztonsági ügynök telepítése](how-to-deploy-agent.md)

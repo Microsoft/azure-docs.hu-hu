@@ -3,12 +3,12 @@ title: Támogatási mátrix a VMware/fizikai vész-helyreállításhoz Azure Sit
 description: Összefoglalja a VMware virtuális gépek és a fizikai kiszolgálók vész-helyreállításának támogatását az Azure-ban Azure Site Recovery használatával.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 3b658a0dd2522b1ca1ad2d46b5f778351b271a27
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: e025b1681306a3bb837a338655dc561e897226c2
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102212423"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449254"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>A VMware virtuális gépek és fizikai kiszolgálók Azure-ba való vész-helyreállítási mátrixának támogatása
 
@@ -295,10 +295,10 @@ Az Azure-ba replikált helyszíni virtuális gépeknek meg kell felelniük az eb
 --- | --- | ---
 Vendég operációs rendszer | A replikált gépek [támogatott operációs rendszereinek](#replicated-machines) ellenőrzése. | Az ellenőrzés sikertelen, ha nem támogatott.
 Vendég operációs rendszer architektúrája | 64 bites. | Az ellenőrzés sikertelen, ha nem támogatott.
-Operációsrendszer-lemez mérete | Akár 2 048 GB-ig. | Az ellenőrzés sikertelen, ha nem támogatott.
+Operációsrendszer-lemez mérete | Akár 2 048 GB az 1. generációs gépekhez. <br> Akár 4 095 GB a 2. generációs gépekhez. | Az ellenőrzés sikertelen, ha nem támogatott.
 Operációsrendszer-lemezek száma | 1 </br> a rendszerindító és a rendszerpartíciók nem támogatottak a különböző lemezeken | Az ellenőrzés sikertelen, ha nem támogatott.
 Adatlemezek száma | 64 vagy kevesebb. | Az ellenőrzés sikertelen, ha nem támogatott.
-Adatlemez mérete | Akár 8 192 GB a felügyelt lemezre való replikáláskor (9,26-es verzió)<br> Akár 4 095 GB a Storage-fiókba való replikáláskor </br> Minimális lemezterület-követelmény – legalább 1024 MB| Az ellenőrzés sikertelen, ha nem támogatott.
+Adatlemez mérete | Akár 32 767 GB a felügyelt lemezre való replikáláskor (9,41-es verzió)<br> Akár 4 095 GB a Storage-fiókba való replikáláskor </br> Minimális lemezterület-követelmény – legalább 1024 MB| Az ellenőrzés sikertelen, ha nem támogatott.
 Hálózati adapterek | Több adapter is támogatott. |
 Megosztott VHD | Nem támogatott. | Az ellenőrzés sikertelen, ha nem támogatott.
 FC-lemez | Nem támogatott. | Az ellenőrzés sikertelen, ha nem támogatott.

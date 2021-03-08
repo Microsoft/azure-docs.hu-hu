@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: bba459be4408f4a4bc438bb33b0570a91e84f2cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dee9a845df305b06153d99c2bafe6d74524a139
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75563360"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449203"
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>A metrikák és a betöltések töredezettségmentesítését Service Fabric
 A Service Fabric fürterőforrás-kezelő alapértelmezett stratégiája a terhelési metrikák kezeléséhez a fürtben a terhelés elosztását végzi. Annak biztosítása, hogy a csomópontok egyenletesen legyenek kihasználva, így elkerülhetők a gyors és a ritka elérésű foltok is, amelyek mind a versengő, mind a kárba A munkaterhelések fürtben való elosztása szintén a legbiztonságosabb a túlélő meghibásodások szempontjából, mivel biztosítja, hogy a hiba nem veszi figyelembe az adott munkaterhelés nagy hányadát. 
@@ -88,8 +88,8 @@ ClusterManifest.xml:
 ```
 
 
-## <a name="next-steps"></a>További lépések
-- A fürterőforrás-kezelő rendelkezik a fürt leírására szolgáló Man-beállításokkal. Ha többet szeretne megtudni róluk, tekintse meg ezt a cikket a [Service Fabric-fürt leírását ismertető](service-fabric-cluster-resource-manager-cluster-description.md) cikkben.
+## <a name="next-steps"></a>Következő lépések
+- A fürterőforrás-kezelő számos lehetőséget kínál a fürt leírására. Ha többet szeretne megtudni róluk, tekintse meg ezt a cikket a [Service Fabric-fürt leírását ismertető](service-fabric-cluster-resource-manager-cluster-description.md) cikkben.
 - A metrikák azt jelentik, hogyan kezeli a Service Fabric fürterőforrás-kezelő a fürtben a felhasználást és a kapacitást. A metrikákkal és azok konfigurálásával kapcsolatos további tudnivalókért tekintse meg [ezt a cikket](service-fabric-cluster-resource-manager-metrics.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-defragmentation-metrics/balancing-defrag-compared.png

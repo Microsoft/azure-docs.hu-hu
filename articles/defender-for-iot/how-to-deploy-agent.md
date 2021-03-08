@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 2634ed819b8818632c58b9e471b0f26190e5f16b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 89ecf26778433a3f075f76905183f3fe866cb5db
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339965"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102447265"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Biztonsági ügynök kiválasztása és üzembe helyezése a IoT-eszközön
 
@@ -28,11 +28,9 @@ További információt a [biztonsági ügynök hivatkozási architektúrája](se
 Az ügynökök nyílt forráskódú projektekként lettek kifejlesztve, és két változatban érhetők el: <br> [C](https://aka.ms/iot-security-github-c)és [C#](https://aka.ms/iot-security-github-cs).
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
-
-> [!div class="checklist"]
-> * Biztonsági ügynöki ízek összehasonlítása
-> * Támogatott ügynökök platformjának felderítése
-> * Válassza ki a megoldás megfelelő ügynökének ízét
+- Biztonsági ügynöki ízek összehasonlítása
+- Támogatott ügynökök platformjának felderítése
+- Válassza ki a megoldás megfelelő ügynökének ízét
 
 ## <a name="understand-security-agent-options"></a>A biztonsági ügynök beállításainak ismertetése
 
@@ -50,10 +48,10 @@ A C-alapú biztonsági ügynök alacsonyabb memória-lábnyomot tartalmaz, és i
 | **A Linux előfeltételei** | libunwind8, libcurl3, UUID-Runtime, auditált, audispd-plugins | libunwind8, libcurl3, UUID-Runtime, auditált, audispd-plugins, sudo, netstat, iptables |
 | **Lemez lábnyoma** | 10,5 MB | 90 MB |
 | **Memória lábnyoma (átlagos)** | 5,5 MB | 33 MB |
-| **[Hitelesítés](concept-security-agent-authentication-methods.md) IoT hub** | Igen | Igen |
-| **Biztonsági adatgyűjtés [collection](how-to-agent-configuration.md#supported-security-events)** | Igen | Igen |
-| **Eseményösszesítés** | Igen | Igen |
-| **Távoli konfiguráció a [biztonsági modul Twin](concept-security-module.md) szolgáltatásán keresztül** | Igen | Igen |
+| **[Hitelesítés](concept-security-agent-authentication-methods.md) IoT hub** | Igen | Yes |
+| **Biztonsági adatgyűjtés [](how-to-agent-configuration.md#supported-security-events)** | Igen | Yes |
+| **Eseményösszesítés** | Igen | Yes |
+| **Távoli konfiguráció a [biztonsági modul Twin](concept-security-module.md) szolgáltatásán keresztül** | Igen | Yes |
 
 ## <a name="security-agent-installation-guidelines"></a>Biztonsági ügynök telepítési útmutatója
 
@@ -87,9 +85,9 @@ Az alábbi lista tartalmazza az összes jelenleg támogatott platformot.
 
 |Defender a IoT-ügynökhöz |Operációs rendszer |Architektúra |
 |--------------|------------|--------------|
-|M|Ubuntu 16.04 |    x64|
-|M|Ubuntu 18.04 |    x64, ARMv7|
-|M|Debian 9 |    x64, x86|
+|C|Ubuntu 16.04 |    x64|
+|C|Ubuntu 18.04 |    x64, ARMv7|
+|C|Debian 9 |    x64, x86|
 |C#|Ubuntu 16.04     |x64|
 |C#|Ubuntu 18.04    |x64, ARMv7|
 |C#|Debian 9    |x64|
@@ -97,7 +95,7 @@ Az alábbi lista tartalmazza az összes jelenleg támogatott platformot.
 |C#|Windows 10 IoT Core, Build 17763    |x64|
 |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A konfigurációs beállításokkal kapcsolatos további tudnivalókért folytassa az ügynök konfigurációjának útmutatója című témakört.
 > [!div class="nextstepaction"]

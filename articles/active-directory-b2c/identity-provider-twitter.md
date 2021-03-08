@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 65d3badc02efbb02df50189885c28a8abe851415
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 8cb31f57e5403e99e2ef9bfcc5d1042e33516d1d
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050447"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448149"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Twitter-fiókkal való regisztráció és bejelentkezés beállítása Azure Active Directory B2C használatával
 
@@ -72,7 +72,10 @@ Ha Azure AD B2C Twitter-fiókkal rendelkező felhasználók számára szeretné 
 1. Kattintson a **Mentés** gombra.
 1. A szabályzat teszteléséhez válassza a **felhasználói folyamat futtatása** lehetőséget.
 1. Az **alkalmazás** lapon válassza ki a korábban regisztrált *testapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
-1. Kattintson a **felhasználói folyamat futtatása** elemre.
+1. Kattintson a **felhasználói folyamat futtatása** gombra.
+1. A regisztrációs vagy bejelentkezési oldalon válassza a **Twitter** lehetőséget a Twitter-fiókkal való bejelentkezéshez.
+
+Ha a bejelentkezési folyamat sikeres, a rendszer átirányítja a böngészőt `https://jwt.ms` , amely a Azure ad B2C által visszaadott jogkivonat tartalmát jeleníti meg.
 
 ::: zone-end
 
@@ -167,7 +170,13 @@ A Twitter-fiókot jogcím-szolgáltatóként is meghatározhatja, ha hozzáadja 
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>Egyéni szabályzat tesztelése
 
+1. Válassza ki a függő entitás házirendjét, például: `B2C_1A_signup_signin` .
+1. **Alkalmazás** esetén válasszon ki egy [korábban regisztrált](troubleshoot-custom-policies.md#troubleshoot-the-runtime)webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
+1. Kattintson a **Futtatás most** gombra.
+1. A regisztrációs vagy bejelentkezési oldalon válassza a **Twitter** lehetőséget a Twitter-fiókkal való bejelentkezéshez.
+
+Ha a bejelentkezési folyamat sikeres, a rendszer átirányítja a böngészőt `https://jwt.ms` , amely a Azure ad B2C által visszaadott jogkivonat tartalmát jeleníti meg.
 
 ::: zone-end

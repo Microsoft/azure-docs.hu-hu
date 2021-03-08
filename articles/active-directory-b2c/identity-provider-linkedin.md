@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1ce9c00cb58253e2cca9a7d60c4cce9b77709688
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: ce5e8cfda4a9f51a90c8f26133a710f4d1c258b6
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98953852"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448268"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Bejelentkezés és bejelentkezés beállítása LinkedIn-fiókkal Azure Active Directory B2C használatával
 
@@ -69,7 +69,10 @@ Ha Azure Active Directory B2C (Azure AD B2C) LinkedIn-fiókkal rendelkező felha
 1. Kattintson a **Mentés** gombra.
 1. A szabályzat teszteléséhez válassza a **felhasználói folyamat futtatása** lehetőséget.
 1. Az **alkalmazás** lapon válassza ki a korábban regisztrált *testapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
-1. Kattintson a **felhasználói folyamat futtatása** elemre.
+1. Kattintson a **felhasználói folyamat futtatása** gombra.
+1. A regisztrációs vagy bejelentkezési oldalon válassza a **LinkedIn** lehetőséget a LinkedIn-fiókkal való bejelentkezéshez.
+
+Ha a bejelentkezési folyamat sikeres, a rendszer átirányítja a böngészőt `https://jwt.ms` , amely a Azure ad B2C által visszaadott jogkivonat tartalmát jeleníti meg.
 
 ::: zone-end
 
@@ -96,8 +99,8 @@ Annak engedélyezéséhez, hogy a felhasználók egy LinkedIn-fiókkal jelentkez
 
 Definiáljon egy LinkedIn-fiókot jogcím-szolgáltatóként, ha hozzáadja azt a **ClaimsProviders** elemhez a szabályzat bővítmény fájljában.
 
-1. Nyissa meg a * SocialAndLocalAccounts/**TrustFrameworkExtensions.xml** _ fájlt a szerkesztőben. Ez a fájl az egyes előfeltételek egyikének részeként letöltött [egyéni házirend alapszintű csomagban][starter-pack] található.
-1. Keresse meg a _ *ClaimsProviders** elemet. Ha nem létezik, adja hozzá a gyökérelem elemhez.
+1. Nyissa meg a *SocialAndLocalAccounts/* * TrustFrameworkExtensions.xml** * fájlt a szerkesztőben. Ez a fájl az egyes előfeltételek egyikének részeként letöltött [egyéni házirend alapszintű csomagban][starter-pack] található.
+1. Keresse meg a **ClaimsProviders** elemet. Ha nem létezik, adja hozzá a gyökérelem elemhez.
 1. Vegyen fel egy új **ClaimsProvider** a következőképpen:
 
     ```xml
@@ -213,7 +216,14 @@ Adja hozzá a **BuildingBlocks** elemet a *TrustFrameworkExtensions.xml* fájl t
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>Egyéni szabályzat tesztelése
+
+1. Válassza ki a függő entitás házirendjét, például: `B2C_1A_signup_signin` .
+1. **Alkalmazás** esetén válasszon ki egy [korábban regisztrált](troubleshoot-custom-policies.md#troubleshoot-the-runtime)webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
+1. Kattintson a **Futtatás most** gombra.
+1. A regisztrációs vagy bejelentkezési oldalon válassza a **LinkedIn** lehetőséget a LinkedIn-fiókkal való bejelentkezéshez.
+
+Ha a bejelentkezési folyamat sikeres, a rendszer átirányítja a böngészőt `https://jwt.ms` , amely a Azure ad B2C által visszaadott jogkivonat tartalmát jeleníti meg.
 
 ## <a name="migration-from-v10-to-v20"></a>Migrálás v 1.0-ről v 2.0-ra
 

@@ -1,5 +1,5 @@
 ---
-title: Azure-erőforrások hozzáadása a IoT-megoldáshoz
+title: 'Gyors útmutató: Azure-erőforrások hozzáadása a IoT-megoldáshoz'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan konfigurálhatja a végpontok közötti IoT megoldást az Azure Defender for IoT használatával.
 services: defender-for-iot
 ms.service: defender-for-iot
@@ -13,16 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: shhazam
-ms.openlocfilehash: 8912e8d66ae0cc1b5dba80ee9aabb0fbd288e3c6
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: afe62e5cf255df28ea395405fc894ec5c15bb18c
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809023"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449713"
 ---
 # <a name="quickstart-configure-your-azure-defender-for-iot-solution"></a>Gyors útmutató: Azure Defender konfigurálása IoT-megoldáshoz
 
 Ez a cikk azt ismerteti, hogyan végezheti el a IoT biztonsági megoldás kezdeti konfigurálását a Defender for IoT használatával.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Nincs
 
 ## <a name="what-is-defender-for-iot"></a>Mi a IoT Defender?
 
@@ -48,7 +52,7 @@ Az összes erőforrás-kapcsolat definiálását követően a Defender a IoT a D
 
 1. Válassza a **Szerkesztés** lehetőséget, és válassza ki a IoT-megoldáshoz tartozó megfigyelt erőforrásokat.
 
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 Gratulálunk! Új erőforráscsoportot adott hozzá a IoT-megoldáshoz.
 

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ddd41448820984497ae96142ca409774af7c7bf9
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: d2e2680f1d679a4bd1e967e32a409b59ad992c01
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98954055"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448098"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>WeChat-fiókkal történő regisztráció és bejelentkezés beállítása Azure Active Directory B2C
 
@@ -64,7 +64,10 @@ Ha Azure Active Directory B2C (Azure AD B2C) WeChat-fiókkal rendelkező felhasz
 1. Kattintson a **Mentés** gombra.
 1. A szabályzat teszteléséhez válassza a **felhasználói folyamat futtatása** lehetőséget.
 1. Az **alkalmazás** lapon válassza ki a korábban regisztrált *testapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
-1. Kattintson a **felhasználói folyamat futtatása** elemre.
+1. Kattintson a **felhasználói folyamat futtatása** gombra.
+1. A regisztráció vagy bejelentkezés lapon válassza a **WeChat** lehetőséget a WeChat-fiókkal való bejelentkezéshez.
+
+Ha a bejelentkezési folyamat sikeres, a rendszer átirányítja a böngészőt `https://jwt.ms` , amely a Azure ad B2C által visszaadott jogkivonat tartalmát jeleníti meg.
 
 ::: zone-end
 
@@ -164,6 +167,13 @@ A WeChat-fiókot jogcím-szolgáltatóként is meghatározhatja, ha hozzáadja a
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>Egyéni szabályzat tesztelése
+
+1. Válassza ki a függő entitás házirendjét, például: `B2C_1A_signup_signin` .
+1. **Alkalmazás** esetén válasszon ki egy [korábban regisztrált](troubleshoot-custom-policies.md#troubleshoot-the-runtime)webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
+1. Kattintson a **Futtatás most** gombra.
+1. A regisztráció vagy bejelentkezés lapon válassza a **WeChat** lehetőséget a WeChat-fiókkal való bejelentkezéshez.
+
+Ha a bejelentkezési folyamat sikeres, a rendszer átirányítja a böngészőt `https://jwt.ms` , amely a Azure ad B2C által visszaadott jogkivonat tartalmát jeleníti meg.
 
 ::: zone-end

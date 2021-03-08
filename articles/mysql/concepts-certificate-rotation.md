@@ -6,18 +6,20 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/18/2021
-ms.openlocfilehash: 9ad2566188256dd23b0f479c2576636750e33b02
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 23fa3e93565066ce4b897bffe63164486efc179e
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715105"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449883"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql-single-server"></a>A legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ változásának megértése Azure Database for MySQL egyetlen kiszolgálón
 
 Azure Database for MySQL egy kiszolgáló sikeresen befejezte a főtanúsítvány változását **február 15-én, 2021 (02/15/2021)** a szokásos karbantartási és biztonsági eljárások részeként. Ez a cikk további részleteket tartalmaz a változásokról, az érintett erőforrásokról és azokról a lépésekről, amelyekkel biztosítható, hogy az alkalmazás fenntartsa a kapcsolatot az adatbázis-kiszolgálóval.
 
 > [!NOTE]
+> Ez a cikk csak [Azure Database for MySQL-egyetlen kiszolgálóra](single-server-overview.md) vonatkozik. [Azure Database for MySQL rugalmas kiszolgáló](flexible-server/overview.md)esetén az SSL protokollon keresztüli kommunikációhoz szükséges tanúsítvány [DigiCert globális LEGfelső szintű hitelesítésszolgáltató](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)
+> 
 > Ez a cikk a _Slave_ kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 >
 

@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 01/07/2021
+ms.date: 03/08/2021
 tags: connectors
-ms.openlocfilehash: 388d747da692160ab6d0a89c0c35de348d921486
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 983e0d34692d67302e11c35abac590fefd610b2e
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016762"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449628"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SFTP-fájlok monitorozása, létrehozása és kezelése SSH és az Azure Logic Apps használatával
 
@@ -51,20 +51,20 @@ Az SFTP-SSH-összekötő és az SFTP-összekötő közötti különbségekért t
 
   Az adatrészlet mérete egy kapcsolatban van társítva, ami azt jelenti, hogy ugyanazt a kapcsolatokat használhatja a darabolást támogató műveletekhez, majd olyan műveletekhez, amelyek nem támogatják a darabolást. Ebben az esetben az adathalmaz mérete olyan műveletek esetében, amelyek nem támogatják az adatdarabolási tartományokat 5 MB-ról 50 MB-ra. Ez a táblázat azt mutatja, hogy mely SFTP-SSH-műveletek támogatják a darabolást:
 
-  | Műveletek | Adatdarabolás támogatása | Adatméret-méretezési támogatás felülbírálása |
+  | Művelet | Adatdarabolás támogatása | Adatméret-méretezési támogatás felülbírálása |
   |--------|------------------|-----------------------------|
-  | **Fájl másolása** | Nem | Nem alkalmazható |
-  | **Fájl létrehozása** | Igen | Igen |
+  | **Fájl másolása** | No | Nem alkalmazható |
+  | **Fájl létrehozása** | Igen | Yes |
   | **Mappa létrehozása** | Nem alkalmazható | Nem alkalmazható |
   | **Fájl törlése** | Nem alkalmazható | Nem alkalmazható |
   | **Archív fájl kibontása a mappába** | Nem alkalmazható | Nem alkalmazható |
-  | **Fájl tartalmának beolvasása** | Igen | Igen |
-  | **Fájl tartalmának beolvasása elérési út alapján** | Igen | Igen |
+  | **Fájl tartalmának beolvasása** | Igen | Yes |
+  | **Fájl tartalmának beolvasása elérési út alapján** | Igen | Yes |
   | **Fájl metaadatainak beolvasása** | Nem alkalmazható | Nem alkalmazható |
   | **Fájl metaadatainak beolvasása elérési út használatával** | Nem alkalmazható | Nem alkalmazható |
   | **Mappában található fájlok listázása** | Nem alkalmazható | Nem alkalmazható |
   | **Fájl átnevezése** | Nem alkalmazható | Nem alkalmazható |
-  | **Fájl frissítése** | Nem | Nem alkalmazható |
+  | **Fájl frissítése** | No | Nem alkalmazható |
   ||||
 
 * SFTP – az SSH-eseményindítók nem támogatják az üzenetek darabolását. Fájl tartalmának kérésekor az eseményindítók csak a 15 MB vagy annál kisebb fájlokat jelölik ki. A 15 MB-nál nagyobb fájlok lekéréséhez kövesse az alábbi mintát:
@@ -103,10 +103,10 @@ Az SFTP-SSH-összekötő és az SFTP-összekötő közötti különbségekért t
   >
   > * **Ujjlenyomat**: MD5
   >
-  > Miután hozzáadta az SFTP-SSH-triggert vagy a logikai alkalmazáshoz használni kívánt műveletet, meg kell adnia az SFTP-kiszolgáló kapcsolódási adatait. Ha megadja az SSH titkos kulcsát ehhez a csatlakozáshoz, a **_ne adja meg manuálisan a_*(_) kulcsot, ami miatt a kapcsolódás sikertelen lehet. Ehelyett a _*_kulcsot másolja_*_ a titkos SSH-kulcs fájljából, és _*_illessze_*_ be a kulcsot a kapcsolat részleteibe. 
+  > Miután hozzáadta az SFTP-SSH-triggert vagy a logikai alkalmazáshoz használni kívánt műveletet, meg kell adnia az SFTP-kiszolgáló kapcsolódási adatait. Ha megadja az SSH titkos kulcsát ehhez a csatlakozáshoz, ***ne adja meg manuálisan a kulcsot, vagy szerkessze a kulcsot***, ami miatt a kapcsolódás sikertelen lehet. Ehelyett a ***kulcsot másolja*** a titkos SSH-kulcs fájljából, és ***illessze*** be a kulcsot a kapcsolat részleteibe. 
   > További információkért lásd a jelen cikk a [Kapcsolódás az SFTP-hez SSH-val](#connect) című szakaszát.
 
-_ Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 * Az a logikai alkalmazás, ahová el szeretné érni az SFTP-fiókját. Egy SFTP-SSH triggerrel való kezdéshez [hozzon létre egy üres logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). Ha SFTP-SSH műveletet szeretne használni, indítsa el a logikai alkalmazást egy másik eseményindítóval, például az **ismétlődési** eseményindítóval.
 
@@ -118,7 +118,7 @@ _ Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps
 
 SFTP – az SSH-eseményindítók lekérdezik az SFTP fájlrendszert, és megkeresik a legutóbbi lekérdezés óta módosult fájlokat. Egyes eszközök lehetővé teszik, hogy a fájlok változásakor őrizze meg az időbélyeget. Ezekben az esetekben le kell tiltania ezt a funkciót, így az trigger működhet. Íme néhány gyakori beállítás:
 
-| SFTP-ügyfél | Műveletek |
+| SFTP-ügyfél | Művelet |
 |-------------|--------|
 | WinSCP | Ugrás a **Beállítások**  >  **Beállítások**  >  **átvitel**  >  **szerkesztési**  >  **megőrzési időbélyegének**  >  **letiltása** |
 | Filezillát | Ugrás az   >  **átvitt fájlok adatmegőrzési időbélyegére –**  >  **Letiltás** |
@@ -170,7 +170,15 @@ Ha a titkos kulcs Putty formátumú, amely a. PPK (Putty titkos kulcs) fájlnév
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
-Ez a szakasz az összekötő eseményindítóinak és műveleteinek áttekintésére vonatkozó szempontokat ismerteti.
+Ez a szakasz azokat a szempontokat ismerteti, amelyeket az összekötő eseményindítóinak és műveleteinek használatakor érdemes áttekinteni.
+
+<a name="different-folders-trigger-processing-file-storage"></a>
+
+### <a name="use-different-sftp-folders-for-file-upload-and-processing"></a>A fájlok feltöltése és feldolgozása különböző SFTP-mappák használatával
+
+Győződjön meg arról, hogy az SFTP-kiszolgálón külön mappákat használ a feltöltött fájlok tárolásához, és hogy az trigger hogyan figyeli ezeket a fájlokat a feldolgozáshoz, ami azt jelenti, hogy a fájlok között át kell helyeznie a fájlokat a mappák között. Ellenkező esetben az trigger nem indul el, és kiszámíthatatlanul viselkedik, például kihagy egy véletlenszerű számú fájlt, amelyet az trigger feldolgoz.
+
+Ha ez a probléma történik, távolítsa el a fájlokat az trigger által figyelt mappából, és használjon másik mappát a feltöltött fájlok tárolásához.
 
 <a name="create-file"></a>
 
@@ -208,9 +216,9 @@ Az SFTP-kiszolgálón található fájl létrehozásához használhatja az SFTP-
 
    1. Válassza a  >  **Másolás** szerkesztése lehetőséget.
 
-   1. Az SFTP-SSH-trigger vagy a hozzáadott művelet esetében illessze be a *teljes* kulcsot, amelyet a **titkos SSH-kulcs** tulajdonságba másolt, amely több sort is támogat.  **_Ügyeljen rá, hogy a kulcsot illessze be_* a kulcsba. _*_Ne adja meg manuálisan a kulcsot, vagy szerkessze_*_ azt.
+   1. Az SFTP-SSH-trigger vagy a hozzáadott művelet esetében illessze be a *teljes* kulcsot, amelyet a **titkos SSH-kulcs** tulajdonságba másolt, amely több sort is támogat.  **_Ügyeljen rá, hogy a kulcsot illessze be_*a kulcsba. _*_ne adja meg manuálisan a kulcsot, vagy szerkessze_ azt**.
 
-1. Miután befejezte a kapcsolat részleteinek beírását, válassza a _ * létrehozás * * elemet.
+1. A kapcsolat részleteinek megadása után kattintson a **Létrehozás** gombra.
 
 1. Most adja meg a kiválasztott trigger vagy művelet szükséges adatait, és folytassa a logikai alkalmazás munkafolyamatának összeállítását.
 
@@ -289,6 +297,6 @@ Az összekötő részletes technikai részleteiről, például az eseményindít
 > [!NOTE]
 > Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében az összekötő ISE-címkével ellátott verziója adatdarabolást igényel az [ISE-üzenetek használatának korlátozásához](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

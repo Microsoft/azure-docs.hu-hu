@@ -1,20 +1,20 @@
 ---
 title: Az Adatmásolás a Dynamicsban (Common Data Service)
-description: Megtudhatja, hogyan másolhat adatokat a Microsoft Dynamics CRM vagy a Microsoft Dynamics 365 (Common Data Service) rendszerből a fogadó adattárakba vagy a támogatott forrásból származó adattárakból a Dynamics CRM-be vagy a Dynamics 365-be egy másolási tevékenységgel egy adatfeldolgozó-folyamaton keresztül.
+description: Megtudhatja, hogyan másolhat adatokat a Microsoft Dynamics CRM vagy a Microsoft Dynamics 365 (Common Data Service/Microsoft Dataverse) szolgáltatásból a fogadó adattárakba vagy a támogatott forrásból származó adattárakból a Dynamics CRM-be vagy a Dynamics 365-be egy másolási tevékenységgel egy adatfeldolgozó-folyamaton keresztül.
 ms.service: data-factory
 ms.topic: conceptual
 ms.author: jingwang
 author: linda33wj
 ms.custom: seo-lt-2019
-ms.date: 02/02/2021
-ms.openlocfilehash: d238a232d719c75244e6f9b825272957d2a4a4bc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/08/2021
+ms.openlocfilehash: b1e7511f7666455592b6d5f463a316c3354ec76b
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381001"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102447435"
 ---
-# <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Adatok másolása a és a rendszerből a Dynamics 365 (Common Data Service) vagy a Dynamics CRM-be a Azure Data Factory használatával
+# <a name="copy-data-from-and-to-dynamics-365-common-data-servicemicrosoft-dataverse-or-dynamics-crm-by-using-azure-data-factory"></a>Adatok másolása a és a rendszerből a Dynamics 365-be (Common Data Service/Microsoft Dataverse) vagy a Dynamics CRM-be a Azure Data Factory használatával
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -27,7 +27,7 @@ Ez az összekötő a következő tevékenységek esetében támogatott:
 - [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás-és fogadó mátrixtal](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 
-A Dynamics 365 (Common Data Service) vagy a Dynamics CRM adatait átmásolhatja bármely támogatott fogadó adattárba. Az adatok bármely támogatott forrásból származó adattárból is átmásolhatók a Dynamics 365 (Common Data Service) vagy a Dynamics CRM-be. A másolási tevékenység által forrásként és fogadóként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
+A Dynamics 365-ből (Common Data Service/Microsoft Dataverse) vagy a Dynamics CRM-ből bármilyen támogatott fogadó adattárba másolhat adatok. Az adatok bármely támogatott forrásból származó adattárból is átmásolhatók a Dynamics 365 (Common Data Service) vagy a Dynamics CRM-be. A másolási tevékenység által forrásként és fogadóként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
 
 Ez a Dynamics-összekötő a 7 – 9 verziójú Dynamics-verziót is támogatja online és helyszíni rendszereken egyaránt. Pontosabban:
 
@@ -363,6 +363,32 @@ A **writeBatchSize** és a **parallelCopies** optimális kombinációja az entit
         }
     }
 ]
+```
+
+## <a name="retrieving-data-from-views"></a>Adatok beolvasása nézetből
+
+A Dynamics nézetekben tárolt adatok lekéréséhez le kell kérnie a nézet mentett lekérdezését, és az adatok lekérdezéséhez a lekérdezést kell használnia.
+
+Két olyan entitás létezik, amely különböző típusú nézeteket tárol: a "mentett lekérdezés" tárolja a rendszernézetet, és a "felhasználói lekérdezés" a felhasználói nézetet tárolja. A nézetek információinak beszerzéséhez tekintse meg a következő FetchXML-lekérdezést, és cserélje le a "TARGETENTITY" kifejezést a vagy a használatával `savedquery` `userquery` . Minden entitás típusa több elérhető attribútummal rendelkezik, amelyeket igény szerint adhat hozzá a lekérdezéshez. További információ az [SavedQuery entitásról](https://docs.microsoft.com/dynamics365/customer-engagement/web-api/savedquery) és a [userquery entitásról](https://docs.microsoft.com/dynamics365/customer-engagement/web-api/userquery).
+
+```xml
+<fetch top="5000" >
+  <entity name="<TARGETENTITY>">
+    <attribute name="name" />
+    <attribute name="fetchxml" />
+    <attribute name="returnedtypecode" />
+    <attribute name="querytype" />
+  </entity>
+</fetch>
+```
+
+Szűrőket is hozzáadhat a nézetek szűréséhez. Például adja hozzá a következő szűrőt egy "saját aktív fiókok" nevű nézet beszerzéséhez a fiók entitásban.
+
+```xml
+<filter type="and" >
+    <condition attribute="returnedtypecode" operator="eq" value="1" />
+    <condition attribute="name" operator="eq" value="My Active Accounts" />
+</filter>
 ```
 
 ## <a name="data-type-mapping-for-dynamics"></a>Adattípusok leképezése a Dynamics számára

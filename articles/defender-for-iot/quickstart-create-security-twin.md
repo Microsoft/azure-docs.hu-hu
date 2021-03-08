@@ -1,5 +1,5 @@
 ---
-title: Biztonsági modul létrehozása – Twin
+title: 'Gyors útmutató: biztonsági modul létrehozása – Twin'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre a Defender for IoT modul Twin-et az Azure Defender for IoT használatával.
 services: defender-for-iot
 ms.service: defender-for-iot
@@ -13,16 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/21/2021
 ms.author: shhazam
-ms.openlocfilehash: 68d137caeed91e9dea2dbf3883929d85c25382aa
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 832c8e426b57e6b447ef805f2868a6d42abe3d9d
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523260"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449696"
 ---
-# <a name="create-an-azureiotsecurity-module-twin"></a>Twin azureiotsecurity-modul létrehozása
+# <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Gyors útmutató: azureiotsecurity-modul létrehozása – Twin
 
 Ez a rövid útmutató azt ismerteti, hogyan hozhat létre egyedi _azureiotsecurity_ -modult az új eszközökhöz, vagy létrehozhat egy batch-modult az összes eszközhöz egy IoT hub.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Nincs
 
 ## <a name="understanding-azureiotsecurity-module-twins"></a>Az ikrek azureiotsecurity-moduljának ismertetése
 
