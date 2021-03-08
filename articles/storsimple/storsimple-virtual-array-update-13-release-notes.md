@@ -6,12 +6,12 @@ author: v-dalc
 ms.topic: article
 ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 52b30730ee8ab126521ad0760204ee48ef6a63fe
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 4e50f866c0bd44ca54c2f4df78b9507aa7077169
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576008"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452560"
 ---
 # <a name="storsimple-virtual-array-update-13-release-notes"></a>StorSimple Virtual Array Update 1,3 kibocsátási megjegyzések
 
@@ -65,4 +65,4 @@ Régebbi kiadási megjegyzést keres? Ugrás:
 - [StorSimple Virtual Array Update 0,4 kibocsátási megjegyzések](./storsimple-virtual-array-update-04-release-notes.md)
 - [StorSimple Virtual Array Update 0,3 kibocsátási megjegyzések](./storsimple-ova-update-03-release-notes.md)
 - [StorSimple Virtual Array Update 0,1 és 0,2 kibocsátási megjegyzések](./storsimple-ova-update-01-release-notes.md)
-- [A StorSimple Virtual Array általános elérhetőségi kibocsátási megjegyzései](https://review.docs.microsoft.com/en-us/azure/storsimple/storsimple-ova-pp-release-notes)
+- [A StorSimple Virtual Array általános elérhetőségi kibocsátási megjegyzései](/azure/storsimple/storsimple-ova-pp-release-notes)

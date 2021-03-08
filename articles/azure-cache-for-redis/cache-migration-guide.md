@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: yegu
-ms.openlocfilehash: 5de4e1b465cfc3ced59f8fe34a7f397324b4a225
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: d63cafb32dc1db0a901ed3e6004446b450db10c7
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537626"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102451523"
 ---
 # <a name="migrate-to-azure-cache-for-redis"></a>Migrálás az Azure Cache for Redisbe
 Ez a cikk számos módszert ismertet a helyszíni vagy egy másik felhőalapú szolgáltatásban futó meglévő Redis-gyorsítótár áttelepítése érdekében az Azure cache for Redis számára.
@@ -64,12 +64,12 @@ A beállítás megvalósításának általános lépései a következők:
 2. Mentse a meglévő Redis cache pillanatképét. A Redis úgy is [beállíthatja, hogy rendszeres időközönként mentse a pillanatképeket](https://redis.io/topics/persistence) , vagy a [Mentés](https://redis.io/commands/save) vagy a [BGSAVE](https://redis.io/commands/bgsave) parancs használatával manuálisan futtassa a folyamatot. A RDB-fájl neve alapértelmezés szerint "dump. RDB", és az *Redis. conf* konfigurációs fájlban megadott elérési úton lesz elhelyezve.
 
     > [!NOTE]
-    > Ha a Redis az Azure cache-ben végez áttelepítést, tekintse [meg a RDB-fájlok exportálásának](cache-how-to-import-export-data.md) lépéseit, vagy használja helyette a [PowerShell-exportálási parancsmagot](/powershell/module/azurerm.rediscache/export-azurermrediscache?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.4.0) .
+    > Ha a Redis az Azure cache-ben végez áttelepítést, tekintse [meg a RDB-fájlok exportálásának](cache-how-to-import-export-data.md) lépéseit, vagy használja helyette a [PowerShell-exportálási parancsmagot](/powershell/module/azurerm.rediscache/export-azurermrediscache) .
     >
 
 3. Másolja a RDB-fájlt egy Azure Storage-fiókba abban a régióban, ahol az új gyorsítótár található. Ehhez a feladathoz használhatja a AzCopy.
 
-4. Importálja a RDB-fájlt az új gyorsítótárba ezen [importálási utasítások](cache-how-to-import-export-data.md) vagy a [PowerShell importálási parancsmagjának](/powershell/module/azurerm.rediscache/import-azurermrediscache?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.4.0)használatával.
+4. Importálja a RDB-fájlt az új gyorsítótárba ezen [importálási utasítások](cache-how-to-import-export-data.md) vagy a [PowerShell importálási parancsmagjának](/powershell/module/azurerm.rediscache/import-azurermrediscache)használatával.
 
 5. Frissítse az alkalmazást az új gyorsítótár-példány használatára.
 
@@ -111,8 +111,8 @@ A beállítás megvalósításának általános lépései a következők:
 
 4. Használjon olyan alkalmazást, mint a fenti nyílt forráskódú eszköz, amellyel automatizálható az adatok másolása a forrás-gyorsítótárból a célhelyre. Ne feledje, hogy a másolási folyamat eltarthat egy darabig, hogy az adatkészlet méretétől függően befejeződjön.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az Azure cache Redis szolgáltatásairól.
 
 * [Azure cache a Redis szolgáltatási szintjeihez](cache-overview.md#service-tiers)
-* [Adatok importálása](cache-how-to-import-export-data.md#import)
+* [Adatimportálás](cache-how-to-import-export-data.md#import)

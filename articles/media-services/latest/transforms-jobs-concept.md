@@ -45,7 +45,7 @@ Az **átalakítások** használatával konfigurálhatja a videók kódolására 
 
 ### <a name="viewing-schema"></a>Séma megtekintése
 
-A Media Services v3-as verzióban az előzetes beállítások az API-ban erősen beírt entitások. Ezekhez az objektumokhoz a "séma" definíciója [nyílt API-specifikációban (vagy hencegés)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)található. A [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset), a [.net SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)vagy más Media Services v3 SDK dokumentációjában megtekintheti az előre definiált definíciókat (például a **StandardEncoderPreset**-t) is.
+A Media Services v3-as verzióban az előzetes beállítások az API-ban erősen beírt entitások. Ezekhez az objektumokhoz a "séma" definíciója [nyílt API-specifikációban (vagy hencegés)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)található. A [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset), a [.net SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset)vagy más Media Services v3 SDK dokumentációjában megtekintheti az előre definiált definíciókat (például a **StandardEncoderPreset**-t) is.
 
 ### <a name="creating-transforms"></a>Átalakítások létrehozása
 

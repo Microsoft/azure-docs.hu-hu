@@ -18,12 +18,12 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 56eedda7f79fedce1e34ad837c92006e5cd8f191
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d27ad1f15e9f46f0bc67e62b79606828efb85e6
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88998271"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453155"
 ---
 # <a name="how-to-send-scheduled-notifications"></a>Útmutató: ütemezett értesítések küldése
 
@@ -31,7 +31,7 @@ Ha van olyan forgatókönyv, amelyben egy későbbi időpontban szeretne értes�
 
 
 ## <a name="schedule-your-notifications"></a>Értesítések időzítése
-Egy értesítés küldésekor egyszerűen használja a Notification Hubs SDK [ `ScheduledNotification` osztályát](/dotnet/api/microsoft.azure.notificationhubs.schedulednotification?view=azure-dotnet#microsoft_azure_notificationhubs_schedulednotification) az alábbi példában látható módon:
+Egy értesítés küldésekor egyszerűen használja a Notification Hubs SDK [ `ScheduledNotification` osztályát](/dotnet/api/microsoft.azure.notificationhubs.schedulednotification#microsoft_azure_notificationhubs_schedulednotification) az alábbi példában látható módon:
 
 ```csharp
 Notification notification = new AppleNotification("{\"aps\":{\"alert\":\"Happy birthday!\"}}");

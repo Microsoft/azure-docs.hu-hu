@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2021
 ms.author: inhenkel
-ms.openlocfilehash: 1f3be34c6488b977a0b03237025ba0f0ab1af7ec
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 3b40ad6c8ef7cc9446f0b60e4cda2efd70b8ed32
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102214456"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102451574"
 ---
 # <a name="step-3---set-up-to-migrate-to-the-v3-rest-api-or-client-sdk"></a>3. lépés – áttelepítés beállítása a v3 REST API vagy az ügyféloldali SDK-ra
 
@@ -50,7 +50,7 @@ Kövesse a rövid útmutató lépéseit a [környezet beállításához](how-to-
 
 ## <a name="download-client-sdk-of-your-choice-and-set-up-your-environment"></a>Az Ön által választott ügyféloldali SDK letöltése és a környezet beállítása
 
-- A [.net](/dotnet/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-dotnet), a .net Core, a [Node.js](/javascript/api/overview/azure/mediaservices/management), a [Python](/python/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-python), a [Java](/java/api/overview/azure/mediaservices/management), a [Go](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/mediaservices/mgmt/2018-07-01/media)és a [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md)esetében elérhető SDK-k.
+- A [.net](/dotnet/api/overview/azure/mediaservices/management), a .net Core, a [Node.js](/javascript/api/overview/azure/mediaservices/management), a [Python](/python/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-python), a [Java](/java/api/overview/azure/mediaservices/management), a [Go](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/mediaservices/mgmt/2018-07-01/media)és a [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md)esetében elérhető SDK-k.
 - [Azure CLI](/cli/azure/ams)   integráció az egyszerű parancsfájlok támogatásához.
 
 > [!NOTE]

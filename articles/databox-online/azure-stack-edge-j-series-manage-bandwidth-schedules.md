@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: b3ae2986b49cf6854e0d9a6b99aabdfc2dd6b713
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 29ac6976b6248f066f18f0ffcc8e03061ee74f77
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102436651"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454415"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro-gpu"></a>A Azure Portal segítségével kezelheti a sávszélesség-ütemterveket a Azure Stack Edge Pro GPU-ban 
 
@@ -44,7 +44,7 @@ Az ütemterv hozzáadásához hajtsa végre az alábbi lépéseket a Azure Porta
 
    1. Adja meg a **kezdő napot**, a **Befejezés napját**, a **kezdési időt** és az ütemezett **befejezési időpontot** .
    2. Ellenőrizze az **egész nap** beállítást, ha az adott ütemtervnek egész nap kell futnia.
-   3. A **sávszélesség sebessége** az eszköz által a felhővel (feltöltések és letöltések) járó műveletekben használt sávszélesség (MB/s). Ehhez a mezőhöz 20 és 2 147 483 647 közötti számot adjon meg.
+   3. A **sávszélesség sebessége** az eszköz által a felhővel (feltöltések és letöltések) járó műveletekben használt sávszélesség (MB/s). Ehhez a mezőhöz 64 és 2 147 483 647 közötti számot adjon meg.
    4. Válassza a **korlátlan sávszélesség** lehetőséget, ha nem szeretné szabályozni a feltöltés és a letöltés dátumát.
    5. Válassza a **Hozzáadás** lehetőséget.
 

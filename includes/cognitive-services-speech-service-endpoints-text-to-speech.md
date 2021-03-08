@@ -4,42 +4,56 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: wolfma
-ms.openlocfilehash: 6b16dea3c4f9241133b91b092c90c9056da57de0
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1eefb7097f672552956e90a19e0a7b411cae8a24
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100514909"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455686"
 ---
 ### <a name="standard-and-neural-voices"></a>Standard és neurális hangok
 
-A táblázat segítségével meghatározhatja a standard és a neurális hangok rendelkezésre állását régiónként/végpont szerint:
+A táblázat segítségével meghatározhatja a **szabványos hangok rendelkezésre állását** régiónként/végpont szerint:
 
-| Region | Végpont | Neurális hangok | Standard hangok |
-|--------|----------|-----------------|---------------|
-| Kelet-Ausztrália | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1` | Igen | Yes |
-| Dél-Brazília | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/v1` | Nem | Igen |
-| Közép-Kanada | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/v1` | Igen | Yes |
-| Az USA középső régiója | `https://centralus.tts.speech.microsoft.com/cognitiveservices/v1` | Nem | Igen |
-| Kelet-Ázsia | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1` | Nem | Igen |
-| USA keleti régiója | `https://eastus.tts.speech.microsoft.com/cognitiveservices/v1` | Igen | Yes |
-| USA 2. keleti régiója | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/v1` | Nem | Igen |
-| Közép-Franciaország | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/v1` | Nem | Igen |
-| Közép-India | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/v1` | Igen | Yes |
-| Kelet-Japán | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/v1` | Nem | Igen |
-| Nyugat-Japán | `https://japanwest.tts.speech.microsoft.com/cognitiveservices/v1` | Nem | Igen |
-| Dél-Korea középső régiója | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/v1` | Nem | Igen |
-| USA északi középső régiója | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/v1` | Nem | Igen |
-| Észak-Európa | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1` | Nem | Igen |
-| USA déli középső régiója | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/v1` | Igen | Yes |
-| Délkelet-Ázsia | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1` | Igen | Yes |
-| Az Egyesült Királyság déli régiója | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/v1` | Igen | Yes |
-| Nyugat-Európa | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1` | Igen | Yes |
-| USA nyugati régiója | `https://westus.tts.speech.microsoft.com/cognitiveservices/v1` | Nem | Igen |
-| USA 2. nyugati régiója | `https://westus2.tts.speech.microsoft.com/cognitiveservices/v1` | Igen | Yes |
+| Region | Végpont |
+|--------|----------|
+| Kelet-Ausztrália | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1` |
+| Dél-Brazília | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/v1` |
+| Közép-Kanada | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/v1` |
+| Az USA középső régiója | `https://centralus.tts.speech.microsoft.com/cognitiveservices/v1` |
+| Kelet-Ázsia | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1` |
+| USA keleti régiója | `https://eastus.tts.speech.microsoft.com/cognitiveservices/v1` |
+| USA 2. keleti régiója | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/v1` |
+| Közép-Franciaország | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/v1` |
+| Közép-India | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/v1` |
+| Kelet-Japán | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/v1` |
+| Nyugat-Japán | `https://japanwest.tts.speech.microsoft.com/cognitiveservices/v1` |
+| Dél-Korea középső régiója | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/v1` |
+| USA északi középső régiója | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/v1` |
+| Észak-Európa | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1` |
+| USA déli középső régiója | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/v1` |
+| Délkelet-Ázsia | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1` |
+| Az Egyesült Királyság déli régiója | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/v1` |
+| Nyugat-Európa | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1` |
+| USA nyugati régiója | `https://westus.tts.speech.microsoft.com/cognitiveservices/v1` |
+| USA 2. nyugati régiója | `https://westus2.tts.speech.microsoft.com/cognitiveservices/v1` |
 
 > [!TIP]
 > Az előzetes verzióban megjelenő [hangok](../articles/cognitive-services/Speech-Service/language-support.md#neural-voices-in-preview) csak a következő 3 régióban érhetők el: USA keleti régiója, Nyugat-Európa és Délkelet-Ázsia.
+
+A táblázat segítségével meghatározhatja a **neurális hangok elérhetőségét** régiónként/végpont szerint:
+
+| Region | Végpont |
+|--------|----------|
+| Kelet-Ausztrália | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1` | 
+| Közép-Kanada | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/v1` |
+| USA keleti régiója | `https://eastus.tts.speech.microsoft.com/cognitiveservices/v1` |
+| Közép-India | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/v1` |
+| USA déli középső régiója | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/v1` |
+| Délkelet-Ázsia | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1` |
+| Az Egyesült Királyság déli régiója | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/v1` |
+| Nyugat-Európa | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1` |
+| USA 2. nyugati régiója | `https://westus2.tts.speech.microsoft.com/cognitiveservices/v1` |
 
 ### <a name="custom-voices"></a>Egyéni hangok
 

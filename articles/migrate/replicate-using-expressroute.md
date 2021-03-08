@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 02/22/2021
-ms.openlocfilehash: b52d61c2828ddf5c04ab943d73964d236c9017c1
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 5dd27e4502ac70ef10f2623ed6dfb2f62de37f06
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098842"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448783"
 ---
 # <a name="replicate-data-over-expressroute-with-azure-migrate-server-migration"></a>Adatreplikálás ExpressRoute keresztül a Azure Migrate: kiszolgáló áttelepítése
 
@@ -72,6 +72,7 @@ A Storage-fiók létrehozása és megkeresése:
 ![Erőforráscsoport nézet](./media/replicate-using-expressroute/storage-account-name.png)
 
 > [!Tip]
+>  
 > Ha egynél több Storage-fiókja van az erőforráscsoport **"LSA"** előtaggal, a Storage-fiók ellenőrzéséhez navigáljon a projektben lévő replikáló virtuális gépek replikációs beállítások és cél konfigurációja menüjébe. <br/> 
 > ![A replikációs beállítások áttekintése](./media/replicate-using-expressroute/storage-account.png)
 
@@ -125,8 +126,9 @@ Ha nem jelölte be a magánhálózati DNS-zónával való integráció lehetős�
 
     ![createprivatedns](./media/replicate-using-expressroute/create-private-dns.png)
 
-    a.  Az **saját DNS zónák** lapon kattintson a **+ Hozzáadás** gombra az új zóna létrehozásának megkezdéséhez.  
-    b.  A **saját DNS-zóna létrehozása** lapon adja meg a szükséges adatokat. Adja meg a saját DNS-zóna nevét _privatelink_. blob.Core.Windows.net néven. c. A DNS-zóna áttekintéséhez és létrehozásához folytassa a **felülvizsgálat + létrehozás** lapon.
+    a. Az **saját DNS zónák** lapon kattintson a **+ Hozzáadás** gombra az új zóna létrehozásának megkezdéséhez.  
+    b. A **saját DNS-zóna létrehozása** lapon adja meg a szükséges adatokat. Adja meg a saját DNS-zóna nevét _privatelink_. blob.Core.Windows.net néven.  
+    c. A DNS-zóna áttekintéséhez és létrehozásához folytassa a **felülvizsgálat + létrehozás** lapon.   
 
 2. Kapcsolja össze a magánhálózati DNS-zónát a virtuális hálózattal.  
 

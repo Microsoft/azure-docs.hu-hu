@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: aeabfb42d378f22ff660214517fea031d678b208
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 41f96202bffc0169be9705cd7e67c1eedbecbc05
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635574"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453444"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Oktatóanyag: Biztonsági riasztások osztályozása, kivizsgálása és a riasztásokra való válaszadás
 Security Center folyamatosan elemzi a hibrid Felhőbeli számítási feladatokat a fejlett Analitika és a fenyegetések felderítése révén, hogy figyelmeztessen a Felhőbeli erőforrásaiban esetlegesen rosszindulatú tevékenységekre. A riasztásokat más biztonsági termékekből és szolgáltatásokból is integrálhatja Security Centerba. A riasztások beadását követően gyors beavatkozásra van szükség a lehetséges biztonsági problémák kivizsgálásához és szervizeléséhez. 
@@ -112,7 +112,7 @@ Ha nem folytatja a folytatást, vagy le szeretné tiltani valamelyik funkciót:
 1. Válassza ki az adott előfizetést.
 1. A visszalépéshez válassza az **Azure Defender kikapcsolva** lehetőséget.
 1. Az automatikus kiépítés letiltásához nyissa meg az **adatgyűjtés** lapot, és állítsa be az **automatikus kiépítés** **beállítást.**
-4. Kattintson a **Mentés** gombra.
+1. Kattintson a **Mentés** gombra.
 
 >[!NOTE]
 > Az automatikus kiépítés letiltása nem távolítja el a Log Analytics ügynököt olyan Azure-beli virtuális gépekről, amelyek már rendelkeznek ügynökkel. Az automatikus kiépítés letiltása korlátozza az erőforrások biztonsági monitorozását.

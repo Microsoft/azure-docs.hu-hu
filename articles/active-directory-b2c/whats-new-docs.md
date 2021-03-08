@@ -1,7 +1,7 @@
 ---
 title: Újdonságok a Azure Active Directory vállalat – ügyfél (B2C) szolgáltatásban
 description: Új és frissített dokumentáció a Azure Active Directory üzleti – ügyfél (B2C) szolgáltatáshoz.
-ms.date: 02/01/2021
+ms.date: 03/08/2021
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: reference
@@ -9,16 +9,28 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: c4561780a20bb2dfdef39269a49ebf8cb2a29fff
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 00be0a18984f1ad3eacf86a2cf3477d8b0d9065f
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593010"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454617"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C: Újdonságok
 
 Üdvözli a Azure Active Directory B2C dokumentációjának újdonságai. Ez a cikk felsorolja a hozzáadott új dokumentumokat, valamint azokat, amelyek az elmúlt három hónapban jelentős frissítésekkel rendelkeztek. A B2C szolgáltatás újdonságait itt tekintheti meg: a [Azure Active Directory újdonságai](../active-directory/fundamentals/whats-new.md).
+
+## <a name="february-2021"></a>2021. február
+
+### <a name="new-articles"></a>Új cikkek
+
+- [A telefon alapú többtényezős hitelesítés (MFA) biztonságossá tétele](phone-based-mfa.md)
+
+### <a name="updated-articles"></a>Frissített cikkek
+
+- [Azure Active Directory B2C-mintakódok](code-samples.md)
+- [A felhasználó viselkedésének nyomon követése Azure AD B2Cban Application Insights használatával](analytics-with-application-insights.md)
+- [Munkamenet viselkedésének konfigurálása az Azure Active Directory B2C-ben](session-behavior.md)
 
 ## <a name="january-2021"></a>2021. január
 

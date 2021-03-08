@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 02/24/2021
 ms.author: alexeyo
-ms.openlocfilehash: f5566276f4555e2480434e385bf2129f5b8cdd24
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f6c7ec3f66d0ab9186645654adf3c062c241e5d0
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699980"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449849"
 ---
 # <a name="speech-services-quotas-and-limits"></a>A Speech Services kvótái és korlátai
 
@@ -30,7 +30,9 @@ Az alábbi táblázatokban az "állítható" sor nélkül **nem** állítható b
 
 | Kvóta | Ingyenes (F0)<sup>1</sup> | Standard (S0) |
 |--|--|--|
-| **Egyidejű kérelmek korlátja (alapszintű és egyéni modellek)** | 1 | 20 (alapértelmezett érték) |
+| **Egyidejű kérelmek korlátja – alapmodell** | 1 | 100 (alapértelmezett érték) |
+| Módosítható | Nem<sup>2</sup> | Igen<sup>2</sup> |
+| **Egyidejű kérelmek korlátja – egyéni modell** | 1 | 20 (alapértelmezett érték) |
 | Módosítható | Nem<sup>2</sup> | Igen<sup>2</sup> |
 
 #### <a name="batch-transcription"></a>Kötegelt átírás

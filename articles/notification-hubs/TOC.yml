@@ -120,7 +120,7 @@
     - name: Értesítési központ létrehozása SDK-k segítségével
       items:
         - name: Értesítési központ létrehozása – .NET
-          href: /dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
+          href: /dotnet/api/overview/azure/notification-hubs
         - name: Értesítési központ létrehozása – Node.js
           href: notification-hubs-nodejs-push-notification-tutorial.md
         - name: Értesítési központ létrehozása – Java

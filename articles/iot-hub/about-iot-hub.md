@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 7e72f628bf328a3b93e81c60aa65b8c2495f7f2b
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 86a373844b370cc9f9ce31dc65b2039a81279803
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095255"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454770"
 ---
 # <a name="what-is-azure-iot-hub"></a>Mi az Azure IoT Hub?
 
@@ -30,7 +30,7 @@ Az IoT Hub képességei segítenek a skálázható, teljes körű IoT-megoldáso
 
 ## <a name="scale-your-solution"></a>A megoldás méretezése
 
-Az IoT Hub több millió egyszerre csatlakoztatott eszközre és másodpercenként több millió eseményre skálázható az IoT számítási feladatok támogatása érdekében. További információ a IoT Hub skálázásáról: [IoT hub skálázás](iot-hub-scaling.md?branch=release-iotbasic). Ha többet szeretne megtudni a IoT Hub által kínált több rétegről, valamint arról, hogy miként lehet a legjobban megfelelni a méretezhetőségi igényeknek, tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/iot-hub/).
+Az IoT Hub több millió egyszerre csatlakoztatott eszközre és másodpercenként több millió eseményre skálázható az IoT számítási feladatok támogatása érdekében. További információ a IoT Hub skálázásáról: [IoT hub skálázás](iot-hub-scaling.md). Ha többet szeretne megtudni a IoT Hub által kínált több rétegről, valamint arról, hogy miként lehet a legjobban megfelelni a méretezhetőségi igényeknek, tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 ## <a name="secure-your-communications"></a>Biztonságos kommunikáció
 

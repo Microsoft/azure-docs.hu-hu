@@ -4,13 +4,13 @@
   displayName: 'IoT, OT, getting started'
   href: overview.md
   items:
-    - name: Újdonságok
-      href: release-notes.md
     - name: Ügynök nélküli megoldás architektúrája
       displayName: 'deployment, where to deploy'
       href: architecture.md
     - name: Ügynök-alapú megoldás architektúrája
       href: architecture-agent-based.md
+- name: Újdonságok
+  href: release-notes.md
 - name: Rövid útmutatók
   expanded: true
   items:

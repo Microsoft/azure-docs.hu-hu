@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: aec26c0109b4aa8e0819e7f5e9b3c69db7f74648
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 28abe5dbd9064fb0a6bc1b3f167830672deacdcc
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726903"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452696"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric kiadások
 
@@ -71,7 +71,7 @@ Közzétettük a frissítéseket a támogatási dátum végéig a 6,5 7,1-ig ter
       -  Csökkentse a teljes költséget (a lemezek ingyenesek, és nem merülnek fel további tárolási költségek)
 - [**Service Fabric alkalmazásokhoz tartozó szolgáltatás-végponti tanúsítványok deklarációjának támogatása a tulajdonos köznapi neve alapján**](./service-fabric-service-manifest-resources.md).
 - A [**tároló szolgáltatásokhoz tartozó állapot**](./probes-codepackage.md)-mintavételek támogatása: a tároló alkalmazások működés közbeni mintavételi mechanizmusának támogatása. Az élettartam mintavételi súgója bejelenti a tároló alkalmazás élettartamát, és ha nem válaszol időben, akkor a rendszer újraindítást eredményez. 
-- [**Inicializálási kód csomagjainak támogatása**](./initializer-codepackages.md) [tárolók](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-containers-overview) és [vendég végrehajtható](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-guest-executables-introduction) alkalmazások számára. Ez lehetővé teszi a csomagok (például tárolók) futtatását egy megadott sorrendben a szervizcsomag inicializálásának végrehajtásához.
+- [**Inicializálási kód csomagjainak támogatása**](./initializer-codepackages.md) [tárolók](/azure/service-fabric/service-fabric-containers-overview) és [vendég végrehajtható](/azure/service-fabric/service-fabric-guest-executables-introduction) alkalmazások számára. Ez lehetővé teszi a csomagok (például tárolók) futtatását egy megadott sorrendben a szervizcsomag inicializálásának végrehajtásához.
 - A **FabricObserver és a ClusterObserver** állapot nélküli alkalmazások, amelyek az SF-fürtök különböző szempontjaihoz kapcsolódó, Service Fabric telemetria rögzítik. Mindkét alkalmazás készen áll a Windows éles fürtökre való központi telepítésre, hogy a ApplicationInsights, a EventSource és a LogAnalytics megvalósított támogatással rendelkező gazdag telemetria rögzítsen.
     - [**FabricObserver (fo) 2,0**](https://github.com/microsoft/service-fabric-observer)– az összes csomóponton fut, egészségügyi eseményeket generál, és telemetria bocsát ki a felhasználó által konfigurált erőforrás-használati küszöbértékek elérésekor. Ez a kiadás számos fejlesztést tartalmaz a monitorozás, az adatkezelés, az állapotadatok részletei és a strukturált telemetria között.
      - [**ClusterObserver (CO) 1,1**](https://github.com/microsoft/service-fabric-observer/tree/master/ClusterObserver) – egy csomóponton fut, rögzíti a fürt szintjének állapotának telemetria. Ebben a kiadásban a ClusterObserver figyeli a csomópontok állapotát, és telemetria bocsát ki, ha a csomópont a felhasználó által megadott időtartamnál hosszabb ideig nem működik le, illetve tiltja le/le van tiltva.

@@ -1,7 +1,7 @@
 ---
 title: Újdonságok az Azure Active Directory alkalmazás-kiépítés során
 description: Új és frissített dokumentáció a Azure Active Directory alkalmazás üzembe helyezéséhez.
-ms.date: 02/01/2021
+ms.date: 03/08/2021
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -9,16 +9,27 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: a127552c47b9e1ee86d2164926971c8628367dc0
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: abee58607a5492548e4d64f44c15fd365876f3f5
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256001"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453681"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory alkalmazás üzembe helyezése: Újdonságok
 
 Üdvözli a Azure Active Directory Application kiépítési dokumentációjának újdonságai. Ez a cikk felsorolja a hozzáadott új dokumentumokat, valamint azokat, amelyek az elmúlt három hónapban jelentős frissítésekkel rendelkeztek. A kiépítési szolgáltatás újdonságait itt tekintheti meg: a [Azure Active Directory újdonságai](../fundamentals/whats-new.md).
+
+## <a name="february-2021"></a>2021. február
+
+### <a name="updated-articles"></a>Frissített cikkek
+
+- [A Azure Active Directory kiépítés munkanapokkal való integrálása](workday-integration-reference.md)
+- [Oktatóanyag – a felhasználó-kiépítési attribútum testreszabása – SaaS-alkalmazások leképezése Azure Active Directory](customize-application-attributes.md)
+- [Mi az az Azure AD-ben az automatizált SaaS-alkalmazások felhasználói üzembe helyezése?](user-provisioning.md)
+- [Oktatóanyag: minta SCIM-végpont fejlesztése](use-scim-to-build-users-and-groups-endpoints.md)
+- [Oktatóanyag: SCIM-végpont létesítésének fejlesztése és tervezése](use-scim-to-provision-users-and-groups.md)
+- [Az üzembe helyezés menete](how-provisioning-works.md)
 
 ## <a name="january-2021"></a>2021. január
 

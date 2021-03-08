@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: dc277d71f8f39b342095d0ac14b592eb866984d5
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 4ef01045d1ca16d0101cdd9ccfcd118231cd28de
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100525"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102456113"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Gyakori kérdések – az adatgyűjtés, az ügynökök és a munkaterületek kérdései
 
@@ -111,7 +111,7 @@ Meglévő Log Analytics munkaterület kiválasztása:
 
 1. A Security Center menüjében válassza a **díjszabás & beállítások** lehetőséget.
 1. Válassza ki az adott előfizetést.
-1. Nyissa meg az **automatikus kiépítés** lapot, s
+1. Nyissa meg az **automatikus kiépítés** lapot.
 1. A Log Analytics ügynöknél válassza a **konfiguráció szerkesztése** lehetőséget. 
 
     :::image type="content" source="./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png" alt-text="Az automatikus központi telepítés használatakor használandó Log Analytics-ügynök konfigurációja" lightbox="./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png":::

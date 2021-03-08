@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 0221022c342735744d59f956d6047b4abf23b5cf
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 58f71ddc470c06e17ff73dd5681cd343bcf8ac7b
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100516515"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102451897"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Korlátok Azure Database for PostgreSQL – rugalmas kiszolgáló
 
@@ -68,12 +68,12 @@ A PostgreSQL-kapcsolatok, akár tétlenek is, körülbelül 10 MB memóriát fog
 
 ### <a name="storage"></a>Tárolás
 
-- A konfigurálást követően a tárterület mérete nem csökkenthető.
+- A konfigurálást követően a tárterület mérete nem csökkenthető. Létre kell hoznia egy új kiszolgálót a kívánt tárterület-mérettel, és manuális memóriaképet és visszaállítási folyamatot kell végrehajtania az adatbázisok áttelepítéséhez.
 - Jelenleg a Storage automatikus növekedés funkciója nem érhető el. Figyelje a használatot, és növelje a tárterületet magasabb méretre. 
 - Ha a tárterület-használat eléri a 95%-ot, vagy ha a rendelkezésre álló kapacitás kevesebb, mint 5 GiB, a kiszolgáló automatikusan **írásvédett módra** vált, így elkerülhetők a lemezek teljes helyzetével kapcsolatos hibák. 
 - Javasoljuk, hogy a riasztási szabályokat állítsa be, `storage used` vagy `storage percent` ha azok túllépik az egyes küszöbértékeket, így proaktív módon végezhet műveleteket, például növelheti a tárterület méretét. Beállíthat például egy riasztást, ha a tárolási százalék meghaladja a 80%-os kihasználtságot.
   
-### <a name="networking"></a>Hálózatkezelés
+### <a name="networking"></a>Hálózat
 
 - A VNET-ben és a-ban való áthelyezés jelenleg nem támogatott.
 - A nyilvános hozzáférésnek a VNET belüli üzembe helyezésével való kombinálása jelenleg nem támogatott.

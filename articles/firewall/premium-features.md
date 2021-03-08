@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 02/25/2021
+ms.date: 03/08/2021
 ms.author: victorh
-ms.openlocfilehash: ff5c6961e64deddc8e52dc92a7c34b5b369a44ed
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a3f72d235d6c52ce91ae351c2606ee6cf4285159
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715564"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453427"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Azure Firewall Premium előzetes verziójának funkciói
 
@@ -39,9 +39,8 @@ A Premium Preview Azure Firewall a következő funkciókat tartalmazza:
 - **URL-szűrés** – kiterjeszti Azure Firewall FQDN-szűrési képességét egy teljes URL-cím megfontolni. Például a `www.contoso.com/a/c` helyett `www.contoso.com` .
 - **Webes kategóriák** – a rendszergazdák engedélyezhetik vagy megtagadhatják a webhely-kategóriákhoz való hozzáférést, például a szerencsejáték-webhelyeket, a közösségi média webhelyeket és egyebeket.
 
-## <a name="features"></a>Funkciók
 
-### <a name="tls-inspection"></a>TLS-ellenőrzés
+## <a name="tls-inspection"></a>TLS-ellenőrzés
 
 A Azure Firewall Premium megszakítja a kimenő és a kelet-nyugati TLS-kapcsolatokat. A bejövő TLS-vizsgálat az [Azure Application Gateway](../web-application-firewall/ag/ag-overview.md) támogatja a végpontok közötti titkosítást. Azure Firewall a szükséges értékkel bővített biztonsági funkciókat, majd újratitkosítja az eredeti célhelyre eljuttatott forgalmat.
 
@@ -50,23 +49,30 @@ A Azure Firewall Premium megszakítja a kimenő és a kelet-nyugati TLS-kapcsola
 
 Ha többet szeretne megtudni az Azure Firewall Premium Preview köztes HITELESÍTÉSSZOLGÁLTATÓI tanúsítványra vonatkozó követelményekről, tekintse meg a [prémium szintű előzetes verziójú tanúsítványokat Azure Firewall](premium-certificates.md).
 
-### <a name="idps"></a>IDP
+## <a name="idps"></a>IDP
 
 A hálózati behatolás-észlelési és-megelőzési rendszerek (IDP-EK) lehetővé teszik a hálózat figyelését a kártékony tevékenységekhez, a tevékenység adatainak naplózását, jelentését, és opcionálisan megkísérli a blokkolását. 
 
 A Azure Firewall Premium Preview az aláírás-alapú IDP lehetővé teszi a támadások gyors észlelését azáltal, hogy konkrét mintákat keres, például a hálózati forgalomban lévő bájtok sorozatait vagy a kártevők által használt ismert kártékony utasítások sorozatait. A IDP aláírása teljes mértékben felügyelt és folyamatosan frissül.
 
+A Azure Firewall aláírások/szabályrendszerek a következők:
+- Hangsúlyt fektetve a tényleges kártevők, a parancsok és szabályozások, a készletek kiaknázása, valamint a hagyományos megelőzési módszerek által kimaradt vad kártékony tevékenységek ujjlenyomatára.
+- Több mint 35 000 szabály van több mint 50 kategóriában.
+    - A kategóriák közé tartoznak a kártevők parancs és vezérlés, a DoS-támadások, a botnetek, a tájékoztató események, a biztonsági rések, a SCADA hálózati protokollok, a Kit-tevékenységek kiaknázása és egyebek.
+- minden nap 20 – 40 + új szabályt szabadítanak fel.
+- Alacsony hamis pozitív minősítés a State-of-the-art malware sandbox és a Global szenzor Network feedback loop használatával.
+
 A IDP lehetővé teszi a nem titkosított forgalomhoz tartozó összes port és protokoll támadásának észlelését. Ha azonban a HTTPS-forgalmat meg kell vizsgálni, a Azure Firewall a TLS-ellenőrzési funkció használatával visszafejtheti a forgalmat, és hatékonyabban észlelheti a kártékony tevékenységeket.  
 
-A IDP megkerülése lista lehetővé teszi, hogy a megkerülési listán megadott IP-címekre, tartományokra és alhálózatokra ne szűrje a forgalmat.  
+A IDP megkerülése lista lehetővé teszi, hogy a megkerülési listán megadott IP-címekre, tartományokra és alhálózatokra ne szűrje a forgalmat. 
 
-### <a name="url-filtering"></a>URL-szűrés
+## <a name="url-filtering"></a>URL-szűrés
 
 Az URL-szűrés kibővíti a Azure Firewall FQDN-szűrési képességét egy teljes URL-cím megfontolni. Például a `www.contoso.com/a/c` helyett `www.contoso.com` .  
 
 Az URL-szűrés a HTTP-és a HTTPS-forgalomon is alkalmazható. A HTTPS-forgalom vizsgálata során Azure Firewall Premium Preview a TLS-ellenőrzési funkcióval visszafejtheti a forgalmat, és kinyerheti a célként megadott URL-címet annak ellenőrzéséhez, hogy a hozzáférés engedélyezett-e. A TLS-ellenőrzéshez az alkalmazás szabályának szintjén kell választania. Ha engedélyezve van, használhatja az URL-címeket a HTTPS-szűréshez. 
 
-### <a name="web-categories"></a>Webes kategóriák
+## <a name="web-categories"></a>Webes kategóriák
 
 A webes kategóriák lehetővé teszik a rendszergazdák számára, hogy engedélyezik vagy megtagadják a webhelyhez való hozzáférést, például a szerencsejáték-webhelyeket, a közösségi média webhelyeket A webes kategóriák a Azure Firewall standard részét képezik, de a Azure Firewall Premium Preview-ban részletesebben is elérhetővé válik. A standard SKU-ban található, a teljes tartománynév alapján a kategóriának megfelelő webes kategóriák lehetőséggel ellentétben a prémium SKU a HTTP-és a HTTPS-forgalom teljes URL-címének megfelelően a kategóriának felel meg. 
 
@@ -78,11 +84,11 @@ Ha például Azure Firewall elfogja a HTTPS `www.google.com/news` -kérelmet, a 
 
 A kategóriákat a **felelősség**, a **nagy sávszélesség**, az **üzleti használat**, a **termelékenység elvesztése**, az **általános szörfözés** és a **Kategorizálatlan** kategóriák alapján rendezi a rendszer.
 
-#### <a name="category-exceptions"></a>Kategória kivételei
+### <a name="category-exceptions"></a>Kategória kivételei
 
 Kivételeket hozhat létre a webes kategória szabályaihoz. Hozzon létre egy külön engedélyezési vagy megtagadási szabályt a szabály gyűjtési csoportjában magasabb prioritással. Beállíthat például egy olyan szabálygyűjtemény-gyűjteményt `www.linkedin.com` , amely az 100-es prioritással rendelkezik, és olyan szabálygyűjtemény használatát teszi lehetővé, amely megtagadja a **közösségi hálózatkezelést** a 200-es prioritással. Ez létrehozza a kivételt az előre definiált **közösségi hálózat** webes kategóriához.
 
-#### <a name="categorization-change"></a>Kategorizálási változás
+### <a name="categorization-change"></a>Kategorizálási változás
 
 A kategorizálási változást a következő lehetőségekkel kérheti le:
 

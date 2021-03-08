@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 03/03/2021
-ms.openlocfilehash: 6a71999f0896a5d056b7d0b38be4d494c347e9f9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/08/2021
+ms.openlocfilehash: 8812806e535e8e34ca07fdb13e6223bfa0c91d6b
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049372"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449611"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>A Azure Data Factory és az Azure hatáskörébe való kapcsolódás
 
@@ -110,26 +110,26 @@ A Data Factory és a hatáskörébe való integráció a következő szakaszokba
 | Adattár | Támogatott | 
 | ------------------- | ------------------- | 
 | Azure Blob Storage | Igen |
-| Azure Cognitive Search | Igen | 
-| Azure Cosmos DB (SQL API) \* | Igen | 
-| Azure Cosmos DB API-MongoDB \* | Igen |
+| Azure Cognitive Search | Yes | 
+| Azure Cosmos DB (SQL API) \* | Yes | 
+| Azure Cosmos DB API-MongoDB \* | Yes |
 | Azure-Adatkezelő \* | Igen | 
 | Azure Data Lake Storage Gen1 | Igen | 
 | Azure Data Lake Storage Gen2 | Igen | 
-| Azure Database for Maria DB \* | Igen | 
-| Azure Database for MySQL \* | Igen | 
-| Azure Database for PostgreSQL \* | Igen |
-| Azure File Storage | Igen | 
-| Azure SQL Database \* | Igen | 
-| Felügyelt Azure SQL-példány \* | Igen | 
+| Azure Database for Maria DB \* | Yes | 
+| Azure Database for MySQL \* | Yes | 
+| Azure Database for PostgreSQL \* | Yes |
+| Azure File Storage | Yes | 
+| Azure SQL Database \* | Yes | 
+| Felügyelt Azure SQL-példány \* | Yes | 
 | Azure szinapszis-elemzés \* | Igen | 
-| Azure-Table Storage \* | Igen |
-| SQL Server \* | Igen | 
-| Amazon S3 | Igen | 
-| Kaptár \* | Igen | 
-| SAP ECC \* | Igen |
-| SAP-táblázat \* | Igen |
-| Teradata \* | Igen |
+| Azure Table Storage | Igen |
+| Amazon S3 | Yes | 
+| Kaptár \* | Yes | 
+| SAP ECC \* | Yes |
+| SAP-tábla | Yes |
+| SQL Server \* | Yes | 
+| Teradata \* | Yes |
 
 *\* Az Azure hatáskörébe jelenleg nem támogatott a lekérdezés vagy a tárolt eljárás a leszármazás vagy a vizsgálat során. A Lineage csak a táblákra és a források megtekintésére korlátozódik.*
 
@@ -144,6 +144,7 @@ Jelenleg a következő másolási tevékenység-funkciók használata esetén a 
 - Adatok másolása az Azure szinapszis Analyticsbe a Base vagy a COPY utasítás használatával.
 - Tömörítési beállítás bináris, tagolt szöveg-, Excel-, JSON-és XML-fájlokhoz.
 - A Azure SQL Database, az Azure SQL felügyelt példányának, az Azure szinapszis Analytics, a SQL Server és az SAP-táblázatnak a forrás partíciós beállításai.
+- A forrásfájl-felderítési beállítás a fájl alapú tárolók esetében.
 - Adatmásolás fájl alapú fogadóba fájlok maximális sorainak beállításával.
 - További oszlopok hozzáadása a másolás során.
 
@@ -154,8 +155,8 @@ Jelenleg a következő másolási tevékenység-funkciók használata esetén a 
 | Azure Blob Storage | Igen |
 | Azure Data Lake Storage Gen1 | Igen |
 | Azure Data Lake Storage Gen2 | Igen |
-| Azure SQL Database \* | Igen |
-| Azure szinapszis-elemzés \* | Igen |
+| Azure SQL Database \* | Yes |
+| Azure szinapszis-elemzés \* | Yes |
 
 *\* Az Azure hatáskörébe jelenleg nem támogatott a lekérdezés vagy a tárolt eljárás a leszármazás vagy a vizsgálat során. A Lineage csak a táblákra és a források megtekintésére korlátozódik.*
 
@@ -166,11 +167,11 @@ Jelenleg a következő másolási tevékenység-funkciók használata esetén a 
 | Azure Blob Storage | Igen |
 | Azure Data Lake Storage Gen1 | Igen |
 | Azure Data Lake Storage Gen2 | Igen |
-| Azure File Storage | Igen |
-| Azure SQL Database \* | Igen |
-| Felügyelt Azure SQL-példány \*| Igen |
-| Azure szinapszis-elemzés \* | Igen |
-| SQL Server \* | Igen |
+| Azure File Storage | Yes |
+| Azure SQL Database \* | Yes |
+| Felügyelt Azure SQL-példány \*| Yes |
+| Azure szinapszis-elemzés \* | Yes |
+| SQL Server \* | Yes |
 
 *\* Az Azure hatáskörébe jelenleg nem támogatott a lekérdezés vagy a tárolt eljárás a leszármazás vagy a vizsgálat során. A Lineage csak a táblákra és a források megtekintésére korlátozódik.*
 

@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 03/05/2021
+ms.date: 03/08/2021
 tags: connectors
-ms.openlocfilehash: 2820fe9d885187071924386ef71eb12fd42bbf01
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 3e98dc36b3d58ce5289fccde7b5f5a49973c9de6
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102426450"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454226"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Csatlakozás SAP-rendszerekhez az Azure Logic Appsből
 
@@ -30,7 +30,7 @@ Ez a cikk azt ismerteti, hogyan érheti el az SAP-erőforrásait Logic Apps az [
 
     * Ha a logikai alkalmazást több-bérlős Azure-ban futtatja, tekintse meg a [több-bérlős előfeltételek](#multi-tenant-azure-prerequisites)című témakört.
 
-    * Ha a logikai alkalmazást prémium szintű[ integrációs szolgáltatási környezetben (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)futtatja, tekintse meg az [ISE előfeltételeit](#ise-prerequisites).
+    * Ha a logikai alkalmazást prémium szintű [integrációs szolgáltatási környezetben (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)futtatja, tekintse meg az [ISE előfeltételeit](#ise-prerequisites).
 
 * Egy [SAP-alkalmazáskiszolgáló](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) vagy egy [SAP-üzenetkezelő kiszolgáló](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm) , amelyhez Logic apps szeretne hozzáférni. További információ az összekötővel használható SAP-kiszolgálókkal és SAP-műveletekkel kapcsolatban: [SAP-kompatibilitás](#sap-compatibility).
 
@@ -633,6 +633,14 @@ A IDocs SAP-ból logikai alkalmazásba való elküldéséhez a következő minim
     * Az **RFC-cél** mezőben adjon meg egy nevet.
     
     * A **technikai beállítások** lapon az **aktiválás típusa** beállításnál válassza a **regisztrált kiszolgáló program** elemet. A **program azonosítójának** megadásához adjon meg egy értéket. Az SAP-ben a logikai alkalmazás triggere az azonosító használatával lesz regisztrálva.
+
+    > [!IMPORTANT]
+    > Az SAP- **program azonosítója** megkülönbözteti a kis-és nagybetűket. A logikai alkalmazás és az SAP-kiszolgáló konfigurálásakor ügyeljen arra, hogy a **program azonosítójának** formátuma konzisztens legyen. Ellenkező esetben előfordulhat, hogy a következő hibák jelennek meg a tRFC-figyelőben (T-Code SM58), amikor IDoc küld az SAP-nak:
+    >
+    > * **A függvény IDOC_INBOUND_ASYNCHRONOUS nem található**
+    > * **Nem ABAP RFC-ügyfél (partner típusa) nem támogatott**
+    >
+    > Az SAP-ról további információt a következő megjegyzésekben talál (bejelentkezés szükséges) <https://launchpad.support.sap.com/#/notes/2399329> és <https://launchpad.support.sap.com/#/notes/353597> .
     
     * A **Unicode** lapon a **rendszerhez tartozó kommunikációs típushoz** válassza a **Unicode** lehetőséget.
 
@@ -745,6 +753,14 @@ Beállíthatja az SAP-t, hogy [IDocs küldjön a csomagokban](https://help.sap.c
 Az alábbi példa bemutatja, hogyan lehet kinyerni az egyes IDocs egy csomagból a következő [ `xpath()` függvény](./workflow-definition-language-functions-reference.md#xpath)használatával:
 
 1. A Kezdés előtt egy SAP-triggerrel rendelkező logikai alkalmazásra van szükség. Ha még nem rendelkezik ezzel a logikai alkalmazással, az ebben a témakörben ismertetett lépéseket követve [beállíthat egy SAP-triggerrel rendelkező logikai alkalmazást](#receive-message-from-sap).
+
+    > [!IMPORTANT]
+    > Az SAP- **program azonosítója** megkülönbözteti a kis-és nagybetűket. A logikai alkalmazás és az SAP-kiszolgáló konfigurálásakor ügyeljen arra, hogy a **program azonosítójának** formátuma konzisztens legyen. Ellenkező esetben előfordulhat, hogy a következő hibák jelennek meg a tRFC-figyelőben (T-Code SM58), amikor IDoc küld az SAP-nak:
+    >
+    > * **A függvény IDOC_INBOUND_ASYNCHRONOUS nem található**
+    > * **Nem ABAP RFC-ügyfél (partner típusa) nem támogatott**
+    >
+    > Az SAP-ról további információt a következő megjegyzésekben talál (bejelentkezés szükséges) <https://launchpad.support.sap.com/#/notes/2399329> és <https://launchpad.support.sap.com/#/notes/353597> .
 
    Például:
 
@@ -1313,11 +1329,18 @@ Ha a logikai alkalmazásból duplikált IDocs küldésével kapcsolatos problém
 
 ## <a name="known-issues-and-limitations"></a>Ismert problémák és korlátozások
 
-A felügyelt (nem ISE) SAP-összekötő jelenleg ismert problémái és korlátozásai:
+A felügyelt (nem ISE) SAP-összekötő jelenleg ismert problémái és korlátozásai: 
 
-* Az SAP-trigger nem támogatja az adatátjáró-fürtöket. Bizonyos feladatátvételi esetekben az SAP-rendszerrel kommunikáló adatátjáró-csomópont eltérhet az aktív csomóponttól, ami váratlan viselkedést eredményez. A küldési forgatókönyvek esetében az adatátjáró-fürtök támogatottak.
+* Általánosságban elmondható, hogy az SAP-trigger nem támogatja az adatátjáró-fürtöket. Bizonyos feladatátvételi esetekben az SAP-rendszerrel kommunikáló adatátjáró-csomópont eltérhet az aktív csomóponttól, ami váratlan viselkedést eredményez.
+
+  * A küldési forgatókönyvek esetében a feladatátvételi módban lévő adatátjáró-fürtök támogatottak. 
+
+  * A terheléselosztási módban lévő adatátjáró-fürtöket nem támogatja az állapot-nyilvántartó SAP-műveletek. Ezek közé tartozik például az **állapot-nyilvántartó munkamenet létrehozása**, a **BAPI tranzakciójának** elvégzése, a **BAPI visszaállítása**, az **állapot-nyilvántartó munkamenet lezárása** és a **munkamenet-azonosító** értékét megadó összes művelet. Az állapot-nyilvántartó kommunikációnak ugyanabban az adatátjáró-fürtcsomóponton kell maradnia. 
+
+  * Állapot-nyilvántartó SAP-műveletek esetén használja az adatátjárót nem fürt módban vagy olyan fürtben, amely csak feladatátvételre van beállítva.
 
 * Az SAP-összekötő jelenleg nem támogatja az SAP útválasztó karakterláncait. A helyszíni adatátjárónak ugyanazon a helyi hálózaton kell lennie, mint a csatlakozni kívánó SAP-rendszernek.
+
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 

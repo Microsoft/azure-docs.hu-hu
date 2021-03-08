@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1d7cd07ee8ae8b35d51fbdd25b34602c2e799c75
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 460fd66ed4651248639334caa55eb8facbce866d
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787264"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452373"
 ---
 # <a name="azure-security-baseline-for-azure-stack-edge"></a>Az Azure biztonsági alapterve Azure Stack Edge-hez
 
@@ -308,7 +308,7 @@ Vegye figyelembe, hogy további engedélyekre lehet szükség a számítási fel
 
 **Útmutató**: a saját alkalmazásaiban a helyileg létrehozott virtuális gépeken is futtathatók. A PowerShell-parancsfájlok használatával helyi számítási virtuális gépeket hozhat létre a verem peremhálózati eszközén. Azt javasoljuk, hogy csak megbízható alkalmazásokat használjon a helyi virtuális gépeken való futtatáshoz. 
 
-- [A PowerShell-parancsfájlok végrehajtásának szabályozása Windows-környezetben](/powershell/module/microsoft.powershell.security/set-executionpolicy?preserve-view=true&amp;viewFallbackFrom=powershell-6&view=powershell-7.1)
+- [A PowerShell-parancsfájlok végrehajtásának szabályozása Windows-környezetben](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 
@@ -799,7 +799,7 @@ További információkat az alábbi hivatkozásokon találhat:
 
 **Felelősség**: Ügyfél
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Security Benchmark v2 áttekintésének](../security/benchmarks/overview.md) megtekintése
 - További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

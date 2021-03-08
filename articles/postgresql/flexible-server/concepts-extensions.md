@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/05/2021
-ms.openlocfilehash: 70f54fc111bfd9443f988619cb2b86303fd3f07b
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: d223d2c6a83b1389cd70344efdb48c357dda4ac4
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102443386"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454586"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL-bővítmények Azure Database for PostgreSQL – rugalmas kiszolgáló
 
@@ -53,7 +53,7 @@ A következő bővítmények érhetők el Azure Database for PostgreSQL rugalmas
 > |[ltree](https://www.postgresql.org/docs/12/ltree.html)                        | 1.1             | adattípus a hierarchikus fastruktúrához hasonló struktúrákhoz|
 > |[pageinspect](https://www.postgresql.org/docs/12/pageinspect.html)                        | 1.7             | az adatbázis-lapok tartalmának alacsony szintű vizsgálata|
 > |[pg_buffercache](https://www.postgresql.org/docs/12/pgbuffercache.html)               | 1.3             | a megosztott puffer gyorsítótárának vizsgálata|
-> |[pg_cron](https://github.com/citusdata/pg_cron)                        | 1.2             | Feladatütemező a PostgreSQL-hez|
+> |[pg_cron](https://github.com/citusdata/pg_cron/tree/b6e7dc9627515bf00e2086f168b3faa660e5fd36)                        | 1.2             | Feladatütemező a PostgreSQL-hez|
 > |[pg_freespacemap](https://www.postgresql.org/docs/12/pgfreespacemap.html)               | 1.2             | a szabad terület térképének (MSZÁ) vizsgálata|
 > |[pg_prewarm](https://www.postgresql.org/docs/12/pgprewarm.html)                   | 1.2             | előmelegítő kapcsolatok adatvédelme|
 > |[pg_stat_statements](https://www.postgresql.org/docs/12/pgstatstatements.html)           | 1.7             | az összes végrehajtott SQL-utasítás végrehajtási statisztikájának nyomon követése|
@@ -61,7 +61,6 @@ A következő bővítmények érhetők el Azure Database for PostgreSQL rugalmas
 > |[pg_visibility](https://www.postgresql.org/docs/12/pgvisibility.html)                      | 1.2             | vizsgálja meg a láthatósági térképet (VM) és az oldal szintű láthatósági adatokat|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.4             | naplózási funkciókat biztosít|
 > |[pgcrypto](https://www.postgresql.org/docs/12/pgcrypto.html)                     | 1.3             | titkosítási függvények|
-> |[pglogical](https://github.com/2ndQuadrant/pglogical)                        | 2.3.2             | PostgreSQL logikai replikációja|
 > |[pgrowlocks](https://www.postgresql.org/docs/12/pgrowlocks.html)                   | 1.2             | sor szintű zárolási információk megjelenítése|
 > |[pgstattuple](https://www.postgresql.org/docs/12/pgstattuple.html)                  | 1.5             | rekord szintű statisztikák megjelenítése|
 > |[plpgsql](https://www.postgresql.org/docs/12/plpgsql.html)                      | 1.0             | PL/pgSQL eljárási nyelv|
@@ -104,7 +103,7 @@ A következő bővítmények érhetők el Azure Database for PostgreSQL rugalmas
 > |[ltree](https://www.postgresql.org/docs/11/ltree.html)                        | 1.1             | adattípus a hierarchikus fastruktúrához hasonló struktúrákhoz|
 > |[pageinspect](https://www.postgresql.org/docs/11/pageinspect.html)                        | 1.7             | az adatbázis-lapok tartalmának alacsony szintű vizsgálata|
 > |[pg_buffercache](https://www.postgresql.org/docs/11/pgbuffercache.html)               | 1.3             | a megosztott puffer gyorsítótárának vizsgálata|
-> |[pg_cron](https://github.com/citusdata/pg_cron)                        | 1.2             | Feladatütemező a PostgreSQL-hez|
+> |[pg_cron](https://github.com/citusdata/pg_cron/tree/b6e7dc9627515bf00e2086f168b3faa660e5fd36)                        | 1.2             | Feladatütemező a PostgreSQL-hez|
 > |[pg_freespacemap](https://www.postgresql.org/docs/11/pgfreespacemap.html)               | 1.2             | a szabad terület térképének (MSZÁ) vizsgálata|
 > |[pg_prewarm](https://www.postgresql.org/docs/11/pgprewarm.html)                   | 1.2             | előmelegítő kapcsolatok adatvédelme|
 > |[pg_stat_statements](https://www.postgresql.org/docs/11/pgstatstatements.html)           | 1.6             | az összes végrehajtott SQL-utasítás végrehajtási statisztikájának nyomon követése|
@@ -112,7 +111,6 @@ A következő bővítmények érhetők el Azure Database for PostgreSQL rugalmas
 > |[pg_visibility](https://www.postgresql.org/docs/11/pgvisibility.html)                      | 1.2             | vizsgálja meg a láthatósági térképet (VM) és az oldal szintű láthatósági adatokat|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.3.1             | naplózási funkciókat biztosít|
 > |[pgcrypto](https://www.postgresql.org/docs/11/pgcrypto.html)                     | 1.3             | titkosítási függvények|
-> |[pglogical](https://github.com/2ndQuadrant/pglogical)                        | 2.3.2             | PostgreSQL logikai replikációja|
 > |[pgrowlocks](https://www.postgresql.org/docs/11/pgrowlocks.html)                   | 1.2             | sor szintű zárolási információk megjelenítése|
 > |[pgstattuple](https://www.postgresql.org/docs/11/pgstattuple.html)                  | 1.5             | rekord szintű statisztikák megjelenítése|
 > |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1.0             | PL/pgSQL eljárási nyelv|
@@ -134,6 +132,27 @@ a [dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html)
 
 Javasoljuk, hogy a kiszolgálókat a [VNet-integrációval](concepts-networking.md) telepítse, ha azt tervezi, hogy ezt a két bővítményt használja. Alapértelmezés szerint a VNet-integráció lehetővé teszi a VNET-kiszolgálók közötti kapcsolatokat. Azt is megteheti, hogy a [VNet hálózati biztonsági csoportok](../../virtual-network/manage-network-security-group.md) használatával testreszabja a hozzáférést.
 
+## <a name="pg_cron"></a>pg_cron
+
+a [pg_cron](https://github.com/citusdata/pg_cron/tree/b6e7dc9627515bf00e2086f168b3faa660e5fd36) egy egyszerű, cron-alapú Feladatütemező a PostgreSQL-hez, amely bővítményként fut az adatbázisban. A pg_cron bővítmény használatával ütemezett karbantartási feladatokat futtathat a PostgreSQL-adatbázison belül. Futtathat például egy tábla időszakos vákuumát, vagy eltávolíthatja a régi adatfeldolgozási feladatokat.
+
+`pg_cron` egyszerre több feladatot is futtathat, de egyszerre egy feladat legfeljebb egy példányán fut. Ha egy második futtatást az első befejezés előtt kellene elindítani, a második Futtatás a várólistára kerül, és az első futtatás után azonnal elindul. Ezzel biztosíthatja, hogy a feladatok az ütemezés szerint hányszor fussanak, és ne fussanak egyidejűleg önmagukkal.
+
+Néhány példa:
+
+A régi adatértékek törlése szombaton, 3: (GMT)
+```
+SELECT cron.schedule('30 3 * * 6', $$DELETE FROM events WHERE event_time < now() - interval '1 week'$$);
+```
+A vákuum futtatása minden nap 10 órakor (GMT)
+```
+SELECT cron.schedule('0 10 * * *', 'VACUUM');
+```
+
+Az összes feladat ütemezett pg_cron
+```
+SELECT cron.unschedule(jobid) FROM cron.job;
+```
 
 ## <a name="pg_prewarm"></a>pg_prewarm
 
