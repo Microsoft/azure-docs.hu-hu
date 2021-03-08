@@ -112,7 +112,7 @@
           href: exempt-resource.md
         - name: Egyéni biztonsági kezdeményezések és szabályzatok létrehozása
           href: custom-security-policies.md
-    - name: A gépek elleni védelem a Defender for Servers szolgáltatással
+    - name: A gépek megóvása
       displayName: 'hybrid, arc, Azure Defender for machines'
       items:
         - name: Az Azure Defender for Servers szolgáltatás áttekintése
