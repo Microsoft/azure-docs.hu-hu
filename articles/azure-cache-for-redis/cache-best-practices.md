@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 9754a043c90c01f889be9639d2d045fb1929de17
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 4e209bfe5e3856f3847b0c24852c487a92c8f182
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178116"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454736"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Ajánlott eljárások az Azure Cache for Redis használatához 
 Az ajánlott eljárások követésével maximalizálhatja az Azure cache teljesítményének és költséghatékony felhasználásának hatékonyságát a Redis-példány esetében.
@@ -74,7 +74,7 @@ Ha szeretné tesztelni, hogyan működik a kód a hibák között, érdemes lehe
  * **Azt javasoljuk** , hogy a Dv2 virtuálisgép-sorozatokat az ügyfélhez hasonlóan használja, mivel ezek a hardverek jobbak, és a lehető legjobb eredményeket fogják biztosítani.
  * Győződjön meg arról, hogy az ügyfél által használt virtuális gép rendelkezik **legalább annyi számítási és sávszélességgel* , mint a tesztelt gyorsítótár. 
  * **Tesztelés feladatátvételi feltételek** alapján a gyorsítótárban. Fontos, hogy ne a teljesítmény tesztelése a gyorsítótárban legyen stabil állapotú körülmények között. Tesztelje is a feladatátvételi feltételek alatt, és mérje fel a CPU/kiszolgáló terhelését a gyorsítótárban az idő alatt. A feladatátvételt [az elsődleges csomópont újraindításával](cache-administration.md#reboot)indíthatja el. Ez lehetővé teszi, hogy megtudja, hogyan viselkedik az alkalmazása az átviteli sebesség és a késés tekintetében a feladatátvételi feltételek során (a frissítések során történik, és egy nem tervezett esemény során fordulhat elő). Ideális esetben a CPU/kiszolgáló betöltési csúcsát több mint 80%-ra szeretné megtekinteni a feladatátvétel során még don't't, mivel ez hatással lehet a teljesítményre.
- * A **prémium P2 és újabb** verziók 4 vagy több magot tartalmazó virtuális gépeken futnak. Ez akkor hasznos, ha a TLS titkosítási/visszafejtési munkaterhelést több mag között terjeszti le, hogy a teljes CPU-használatot használja.  [A VM-méretek és a magok részletes ismertetését itt találja:](cache-planning-faq.md#azure-cache-for-redis-performance)
+ * **Egyes gyorsítótár-méretek** 4 vagy több magot tartalmazó virtuális gépeken futnak. Ez akkor hasznos, ha a TLS-titkosítás/-visszafejtés, valamint a TLS-kapcsolatok/leválasztási munkaterhelések több magot is elosztanak a teljes CPU-használat érdekében a gyorsítótár virtuális gépeken.  [A VM-méretek és a magok részletes ismertetését itt találja:](cache-planning-faq.md#azure-cache-for-redis-performance)
  * **Engedélyezze a VRSS** az ügyfélszámítógépen, ha Windows rendszeren van.  [Részletekért lásd itt](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn383582(v=ws.11)).  Példa a PowerShell parancsprogramra:
      >PowerShell-ExecutionPolicy korlátlan Enable-NetAdapterRSS-Name (Get-NetAdapter). név 
 

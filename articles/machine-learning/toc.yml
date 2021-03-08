@@ -258,6 +258,8 @@
         - name: Resource Manager-sablon használata
           displayName: arm
           href: how-to-create-workspace-template.md
+        - name: Az Azure szinapszis Analytics-munkaterületre mutató hivatkozás
+          href: how-to-link-synapse-ml-workspaces.md
     - name: Számítási erőforrások létrehozása és kezelése
       items:
         - name: Számítási példány

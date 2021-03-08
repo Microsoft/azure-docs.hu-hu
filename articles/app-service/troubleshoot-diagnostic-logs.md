@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 6008304ea7c1d17363587a4fa5bf6017cb0903f9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 44e18be9d66131ad5f4a3ebcc039621ec9e9dbe6
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049236"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452254"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Diagnosztikai naplózás engedélyezése a Azure App Serviceban lévő alkalmazásokhoz
 ## <a name="overview"></a>Áttekintés
@@ -134,19 +134,17 @@ A [Azure Portal](https://portal.azure.com)adatfolyam-naplóihoz navigáljon az a
 
 A [Cloud Shell](../cloud-shell/overview.md)élő naplók továbbításához használja a következő parancsot:
 
+> [!IMPORTANT]
+> Ez a parancs nem használható a Linux app Service-csomagokban üzemeltetett webalkalmazásokkal.
+
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup
 ```
 
-Adott események, például hibák szűréséhez használja a **--Filter** paramétert. Például:
+Bizonyos típusú naplók (például a HTTP) szűréséhez használja a **--Provider** paramétert. Például:
 
 ```azurecli-interactive
-az webapp log tail --name appname --resource-group myResourceGroup --filter Error
-```
-Adott típusú naplók (például HTTP) szűréséhez használja a **--path** paramétert. Például:
-
-```azurecli-interactive
-az webapp log tail --name appname --resource-group myResourceGroup --path http
+az webapp log tail --name appname --resource-group myResourceGroup --provider http
 ```
 
 ### <a name="in-local-terminal"></a>Helyi terminálon
@@ -187,15 +185,15 @@ A következő táblázat a támogatott naplózási típusokat és leírásokat t
 
 | Napló típusa | Windows | Windows-tároló | Linux | Linux-tároló | Leírás |
 |-|-|-|-|-|-|
-| AppServiceConsoleLogs | Java SE & tomcat | Igen | Igen | Igen | Standard kimenet és standard hiba |
-| AppServiceHTTPLogs | Igen | Igen | Igen | Igen | Webkiszolgáló-naplók |
-| AppServiceEnvironmentPlatformLogs | Igen | N.A. | Igen | Igen | App Service Environment: skálázás, konfigurációs változások és állapotüzenetek|
-| AppServiceAuditLogs | Igen | Igen | Igen | Igen | Bejelentkezési tevékenység FTP-n és kudu |
-| AppServiceFileAuditLogs | Igen | Igen | TBA | TBA | A webhely tartalma módosult; **csak a prémium szinthez és a fentiekhez érhető el** |
+| AppServiceConsoleLogs | Java SE & tomcat | Igen | Igen | Yes | Standard kimenet és standard hiba |
+| AppServiceHTTPLogs | Igen | Igen | Igen | Yes | Webkiszolgáló-naplók |
+| AppServiceEnvironmentPlatformLogs | Yes | N.A. | Igen | Yes | App Service Environment: skálázás, konfigurációs változások és állapotüzenetek|
+| AppServiceAuditLogs | Igen | Igen | Igen | Yes | Bejelentkezési tevékenység FTP-n és kudu |
+| AppServiceFileAuditLogs | Igen | Yes | TBA | TBA | A webhely tartalma módosult; **csak a prémium szinthez és a fentiekhez érhető el** |
 | AppServiceAppLogs | ASP .NET | ASP .NET | Java SE & tomcat áldott képek <sup>1</sup> | Java SE & tomcat áldott képek <sup>1</sup> | Alkalmazás-naplók |
-| AppServiceIPSecAuditLogs  | Igen | Igen | Igen | Igen | IP-szabályoktól érkező kérések |
-| AppServicePlatformLogs  | TBA | Igen | Igen | Igen | Tároló műveleti naplói |
-| AppServiceAntivirusScanAuditLogs | Igen | Igen | Igen | Igen | Víruskeresési [naplók](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html) a Microsoft Defender használatával; **csak a prémium szintű csomag esetében érhető el** | 
+| AppServiceIPSecAuditLogs  | Igen | Igen | Igen | Yes | IP-szabályoktól érkező kérések |
+| AppServicePlatformLogs  | TBA | Igen | Igen | Yes | Tároló műveleti naplói |
+| AppServiceAntivirusScanAuditLogs | Igen | Igen | Igen | Yes | Víruskeresési [naplók](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html) a Microsoft Defender használatával; **csak a prémium szintű csomag esetében érhető el** | 
 
 <sup>1</sup> a Java SE-alkalmazások esetében adja hozzá a "$website _AZMON_PREVIEW_ENABLED" lehetőséget az alkalmazás beállításaihoz, és állítsa 1 vagy igaz értékre.
 

@@ -16,8 +16,6 @@
   items:
     - name: Rendellenességek vizualizálása kötegként a Power BI használatával
       href: tutorials/batch-anomaly-detection-powerbi.md
-    - name: Streamelési adatok rendellenességeinek észlelése az Azure Databricks használatával
-      href: tutorials/anomaly-detection-streaming-databricks.md
 - name: Útmutatók
   items:
     - name: Adatok rendellenességeinek azonosítása

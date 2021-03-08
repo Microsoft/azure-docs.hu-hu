@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 03/07/2021
 ms.author: duau
-ms.openlocfilehash: 1be7331b0c2309350316d1c88c54e6018400463c
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 59194f8d7b1783867ab1422597b361aa3a4a2a60
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789347"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449866"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -40,9 +40,9 @@ A díjszabással kapcsolatos információk [megtekintéséhez](https://azure.mic
 
 Igen, a ExpressRoute áramköri sávszélesség duplex. Ha például egy 200 Mbps ExpressRoute áramkört vásárol, a kimenő forgalomért 200 Mbps-t, a kimenő forgalmat pedig 200 Mbps-ra vásárolhatja meg.
 
-### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-vpn-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>Ha fizetnem kell egy adott sávszélesség ExpressRoute, akkor a hálózati szolgáltatótól vásárolt VPN-kapcsolatnak azonos sebességgel kell lennie?
+### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-private-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>Ha fizetnem kell egy adott sávszélesség ExpressRoute áramkörének, akkor a saját hálózati szolgáltatótól vásárolt magánhálózati kapcsolatnak azonos sebességgel kell esnie?
 
-Nem. A szolgáltatótól bármilyen sebességű VPN-kapcsolat is megvásárolható. Az Azure-hoz való kapcsolódás azonban a megvásárolt ExpressRoute-áramköri sávszélességre korlátozódik.
+Nem. A szolgáltatói sebességtől függetlenül is vásárolhat privát kapcsolatokat. Az Azure-hoz való kapcsolódás azonban a megvásárolt ExpressRoute-áramköri sávszélességre korlátozódik.
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-use-more-than-my-procured-bandwidth"></a>Ha fizetnem kell egy adott sávszélesség ExpressRoute, akkor használhatom a beszerzett sávszélességet?
 
@@ -101,7 +101,7 @@ Ha a ExpressRoute-áramkör engedélyezve van az Azure Microsoft-partneri kapcso
 
 * Tartalomkézbesítési hálózat (CDN)
 * Azure Front Door
-* [Windows Virtual Desktop](https://azure.microsoft.com/services/virtual-desktop/)
+* [Windows virtuális asztal](https://azure.microsoft.com/services/virtual-desktop/)
 * Multi-Factor Authentication kiszolgáló (örökölt)
 * Traffic Manager
 
@@ -258,9 +258,13 @@ Ha az alapértelmezett útvonalakat hirdeti meg, a Microsoft-partnereken (péld�
 
 Igen. Az ugyanahhoz a ExpressRoute-áramkörhöz csatlakozó virtuális hálózatokban üzembe helyezett virtuális gépek kommunikálhatnak egymással. Javasoljuk, hogy a kommunikáció elősegítése érdekében a [virtuális hálózatok](../virtual-network/virtual-network-peering-overview.md) összevonását állítsa be.
 
-### <a name="can-i-use-site-to-site-connectivity-for-virtual-networks-in-conjunction-with-expressroute"></a>Használhatok helyek közötti kapcsolatot a virtuális hálózatokhoz a ExpressRoute együtt?
+### <a name="can-i-set-up-a-site-to-site-vpn-connection-to-my-virtual-network-in-conjunction-with-expressroute"></a>Létrehozhatok helyek közötti VPN-kapcsolatokat a virtuális hálózathoz a ExpressRoute együtt?
 
 Igen. A ExpressRoute a helyek közötti VPN-kapcsolatokkal együtt is létezhetnek. Lásd: [a ExpressRoute és a helyek közötti egyidejű kapcsolatok konfigurálása](expressroute-howto-coexist-resource-manager.md).
+
+### <a name="how-do-i-enable-routing-between-my-site-to-site-vpn-connection-and-my-expressroute"></a>Hogyan engedélyezi a helyek közötti VPN-kapcsolat és a ExpressRoute közötti útválasztást?
+
+Ha engedélyezni szeretné a Expressoute-hez csatlakoztatott ág és a telephelyek közötti VPN-kapcsolathoz csatlakoztatott ág közötti útválasztást, be kell állítania az [Azure Route Servert](../route-server/expressroute-vpn-support.md).
 
 ### <a name="why-is-there-a-public-ip-address-associated-with-the-expressroute-gateway-on-a-virtual-network"></a>Miért van társítva nyilvános IP-cím a ExpressRoute-átjáróhoz egy virtuális hálózaton?
 

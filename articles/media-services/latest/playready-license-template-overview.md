@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0dc015ee1798bb4b9ce632d11f952178156155d6
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 23b0f92a4beca6e1c986993a42cc8ac66e619177
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955186"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455433"
 ---
 # <a name="media-services-v3-with-playready-license-template"></a>Media Services v3 és PlayReady-licenc sablonnal
 
@@ -65,7 +65,7 @@ Az XML-fájl megfelel a PlayReady-sablon XML-sémájának, amely az [PlayReady-l
 
 A Media Services olyan típusokat biztosít, amelyek segítségével konfigurálhat egy PlayReady-licencet. 
 
-Az alábbi kódrészlet Media Services .NET-osztályokat használ a PlayReady-licenc sablonjának konfigurálásához. Az osztályok a [Microsoft. Azure. Management. Media. models](/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) névtérben vannak meghatározva. A kódrészlet konfigurálja a PlayReady-licenc PlayRight. A PlayRight lehetővé teszi a felhasználó számára, hogy a licencben és a PlayRight (a lejátszásra vonatkozó szabályzat esetében) megadott korlátozásoknak megfelelően visszajátssza a tartalmat. A PlayRight vonatkozó szabályzatok nagy része olyan kimeneti korlátozásra vonatkozik, amely a tartalom lejátszásához használható kimeneti típusokat szabályozza. Emellett olyan korlátozásokat is tartalmaz, amelyeket meg kell tenni egy adott kimenet használatakor. Ha például a DigitalVideoOnlyContentRestriction engedélyezve van, a DRM-futtatókörnyezet csak a videó digitális kimeneteken való megjelenítését teszi lehetővé. (Az analóg videó kimenetei nem jogosultak a tartalom továbbítására.)
+Az alábbi kódrészlet Media Services .NET-osztályokat használ a PlayReady-licenc sablonjának konfigurálásához. Az osztályok a [Microsoft. Azure. Management. Media. models](/dotnet/api/microsoft.azure.management.media.models) névtérben vannak meghatározva. A kódrészlet konfigurálja a PlayReady-licenc PlayRight. A PlayRight lehetővé teszi a felhasználó számára, hogy a licencben és a PlayRight (a lejátszásra vonatkozó szabályzat esetében) megadott korlátozásoknak megfelelően visszajátssza a tartalmat. A PlayRight vonatkozó szabályzatok nagy része olyan kimeneti korlátozásra vonatkozik, amely a tartalom lejátszásához használható kimeneti típusokat szabályozza. Emellett olyan korlátozásokat is tartalmaz, amelyeket meg kell tenni egy adott kimenet használatakor. Ha például a DigitalVideoOnlyContentRestriction engedélyezve van, a DRM-futtatókörnyezet csak a videó digitális kimeneteken való megjelenítését teszi lehetővé. (Az analóg videó kimenetei nem jogosultak a tartalom továbbítására.)
 
 > [!IMPORTANT]
 > A PlayReady-licenc hatékony korlátozásokkal rendelkezik. Ha a kimeneti védelem túlságosan korlátozó, előfordulhat, hogy egyes ügyfeleken nem játszhatók le a tartalom. További információ: [PlayReady megfelelőségi szabályok](https://www.microsoft.com/playready/licensing/compliance/).

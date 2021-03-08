@@ -3,12 +3,12 @@ title: Azure DevTest Labs használat több Labs és előfizetés között
 description: Megtudhatja, hogyan jelentheti Azure DevTest Labs használatát több Labs és előfizetés között.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d789b9849ec798a396e99420649792937422470f
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 1e4d1f0abb5596c7fd9d22740bf052827c2ca666
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789938"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452645"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>Jelentés Azure DevTest Labs használat több Labs és előfizetés között
 
@@ -25,7 +25,7 @@ Ez a szakasz azt ismerteti, hogyan lehet exportálni az erőforrások használat
 A DevTest Labs erőforrás-használatának exportálásához be kell állítania egy Azure Storage-fiókot, hogy a különböző fájlok tárolják a tárolt használati adatokat. Az adatexportálás két gyakori módon hajtható végre:
 
 * [DevTest Labs REST API](/rest/api/dtl/labs/exportresourceusage) 
-* A PowerShell az. Resource modul [meghívja a-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2) a művelettel `exportResourceUsage` , a labor erőforrás-azonosítóval és a szükséges paraméterekkel. 
+* A PowerShell az. Resource modul [meghívja a-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) a művelettel `exportResourceUsage` , a labor erőforrás-azonosítóval és a szükséges paraméterekkel. 
 
     A [személyes adatok exportálása vagy törlése](personal-data-delete-export.md) cikkben egy minta PowerShell-parancsfájl található, amely részletes információkat tartalmaz az exportált adatokról. 
 

@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 3dc9b178b9aa22991230f4cc6a9d54b44cf09b4e
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: ca0052eebd8d3c8e80943ca8c0e0346216436800
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098808"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452764"
 ---
 # <a name="discover-sql-server-instances-in-an-existing-project"></a>SQL Server példányok felderítése meglévő projektekben 
 
@@ -20,7 +20,7 @@ Ez a cikk azt ismerteti, hogyan lehet felderíteni SQL Server példányokat és 
 SQL Server példányok és a helyszíni gépeken futó adatbázisok felderítése segít azonosítani és testre szabni az Azure SQL áttelepítési útvonalát. A Azure Migrate berendezés a tartományi hitelesítő adatokkal végzi el ezt a felderítést, vagy SQL Server hitelesítő adatokat, amelyek hozzáférnek a megcélozott kiszolgálókon futó SQL Server példányokhoz és adatbázisokhoz. Ez a felderítési folyamat ügynök nélküli, azaz nincs telepítve a célkiszolgálón.
 
 > [!Note]
-> A VMware-környezetben futó SQL Server példányok és adatbázisok felderítése és értékelése már előzetes verzióban érhető el. A szolgáltatás kipróbálásához használja ezt a [**hivatkozást**](https://aka.ms/AzureMigrate/SQL) **Kelet-Ausztrália** régióban található projekt létrehozásához. Ha már rendelkezik egy projekttel Kelet-Ausztráliaban, és szeretné kipróbálni ezt a funkciót, győződjön meg arról, hogy végrehajtotta a jelen cikkben ismertetett [**előfeltételeket**](how-to-discover-sql-existing-project.md) .
+> A VMware-környezetben futó SQL Server példányok és adatbázisok felderítése és értékelése már előzetes verzióban érhető el. A funkció kipróbálásához hozzon létre egy projektet a **Kelet-Ausztrália** régióban [**ezzel a hivatkozással**](https://aka.ms/AzureMigrate/SQL). Ha már rendelkezik egy projekttel Kelet-Ausztráliaban, és szeretné kipróbálni ezt a funkciót, győződjön meg arról, hogy végrehajtotta a jelen cikkben ismertetett [**előfeltételeket**](how-to-discover-sql-existing-project.md) .
 
 ## <a name="before-you-start"></a>Előkészületek
 
@@ -44,7 +44,7 @@ SQL Server példányok és a helyszíni gépeken futó adatbázisok felderítés
     - Ellenőrizze, hogy a készüléken futó szolgáltatások frissítve vannak-e a legújabb verzióra. Ehhez indítsa el a készülék Configuration Managert a berendezés-kiszolgálóról, és válassza a berendezés-szolgáltatások megtekintése lehetőséget az előfeltételek beállítása panelen.
         - A készülék és annak összetevői automatikusan frissülnek :::image type="content" source="./media/how-to-discover-sql-existing-project/appliance-services-version.png" alt-text="a készülék verziójának vizsgálatával"::: .
     - A készülék Configuration Manager hitelesítő adatok kezelése és felderítési források paneljén adja meg azokat a tartományi vagy SQL Server hitelesítő adatokat, amelyek rendszergazdai hozzáféréssel rendelkeznek a SQL Server példányon és a felderített adatbázisokon. 
-    Kihasználhatja a készülék automatikus hitelesítő adatok leképezése szolgáltatását, vagy manuálisan leképezheti a hitelesítő adatokat a megfelelő kiszolgálóra, ahogy az [itt](https://review.docs.microsoft.com/azure/migrate/tutorial-discover-vmware?branch=release-migrate-sql-scenario#start-continuous-discovery)látható.
+    Kihasználhatja a készülék automatikus hitelesítő adatok leképezése szolgáltatását, vagy manuálisan leképezheti a hitelesítő adatokat a megfelelő kiszolgálóra, ahogy az [itt](/azure/migrate/tutorial-discover-vmware#start-continuous-discovery)látható.
         
     Néhány Megjegyzés:
     - Győződjön meg arról, hogy a szoftver leltározása már engedélyezve van, vagy adjon meg tartományi vagy nem tartományi hitelesítő adatokat az engedélyezéshez. SQL Server példányok felderítéséhez a szoftver leltározását kell elvégezni.

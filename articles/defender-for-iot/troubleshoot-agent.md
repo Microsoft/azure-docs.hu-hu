@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 9367cf4324d577e4dd44cb9294a8b82b1bceaf74
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 7be6cf1df15d7afd7cb9447be68ff70ff7b14d03
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522953"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449220"
 ---
 # <a name="security-agent-troubleshoot-guide-linux"></a>Biztonsági ügynök hibaelhárítási útmutatója (Linux)
 
@@ -28,10 +28,9 @@ A IoT-ügynökhöz tartozó Azure Defender a telepítés után azonnal elindul. 
 
 Ez a hibaelhárítási útmutató a következőket ismerteti:
 
-> [!div class="checklist"]
-> * Annak ellenőrzése, hogy fut-e a biztonsági ügynök
-> * Biztonsági ügynök hibáinak beolvasása
-> * A biztonsági ügynökkel kapcsolatos hibák megismerése és szervizelése
+- Annak ellenőrzése, hogy fut-e a biztonsági ügynök
+- Biztonsági ügynök hibáinak beolvasása
+- A biztonsági ügynökkel kapcsolatos hibák megismerése és szervizelése
 
 ## <a name="validate-if-the-security-agent-is-running"></a>Annak ellenőrzése, hogy fut-e a biztonsági ügynök
 
@@ -108,4 +107,10 @@ Defender for IoT agent encountered an error! Error in: {Error Code}, reason: {Er
 
 ## <a name="next-steps"></a>Következő lépések
 
-A Defender for IoT szolgáltatás [áttekintése –](overview.md) további információ a Defender for IoT [architektúráról](architecture.md) : a Defender for IoT [szolgáltatás](quickstart-onboard-iot-hub.md) beolvasása a Defender for IoT szolgáltatással kapcsolatos [Gyakori kérdések](resources-frequently-asked-questions.md) a biztonsági [](concept-recommendations.md) [riasztások](concept-security-alerts.md) [megismerésének](how-to-security-data-access.md) ismertetése
+- Olvassa el a Defender for IoT szolgáltatást [– Áttekintés](overview.md)
+- További információ a IoT [architektúra](architecture.md) Defender szolgáltatásáról
+- A Defender engedélyezése a IoT [szolgáltatáshoz](quickstart-onboard-iot-hub.md)
+- Olvassa el a Defender for IoT szolgáltatást [– Gyakori kérdések](resources-frequently-asked-questions.md)
+- Ismerje meg, hogyan érheti el a [nyers biztonsági információkat](how-to-security-data-access.md)
+- [Javaslatok](concept-recommendations.md) ismertetése
+- Biztonsági [riasztások](concept-security-alerts.md) ismertetése

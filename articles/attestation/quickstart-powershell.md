@@ -7,16 +7,16 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 3c908fffe93d657662310d4e91ed25ae28ca6908
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: ebc12982bcc05c2d07f91fbc4d85afc170adf075
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429092"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453393"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>Gyors útmutató: Azure-igazolás beállítása Azure PowerShell
 
-Az alábbi lépések végrehajtásával hozzon létre és konfiguráljon egy igazolási szolgáltatót Azure PowerShell használatával. A Azure PowerShell telepítésével és futtatásával kapcsolatos információkért tekintse meg a [Azure PowerShell áttekintése](/powershell/azure/?view=azps-2.8.0&viewFallbackFrom=azps-2.4.0) című témakört.
+Az alábbi lépések végrehajtásával hozzon létre és konfiguráljon egy igazolási szolgáltatót Azure PowerShell használatával. A Azure PowerShell telepítésével és futtatásával kapcsolatos információkért tekintse meg a [Azure PowerShell áttekintése](/powershell/azure/) című témakört.
 
 Vegye figyelembe, hogy a PowerShell-galéria elavult Transport Layer Security (TLS) 1,0-es és 1,1-es verzióval rendelkezik. A TLS 1,2 vagy újabb verzió használata javasolt. Így a következő hibák jelenhetnek meg:
 

@@ -4,12 +4,12 @@ description: Gyakori kérdések a Service Fabricről, beleértve a képességeke
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 1655a8ed03b1f678cc5dba0a165e0bcca1d2517a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e03ccf432852a5fc9ee700ba0e39dfe2e64fcc9
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292860"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102456096"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Service Fabric – GYIK
 
@@ -22,7 +22,7 @@ Számos gyakran feltett kérdés arról, hogy mit tehet, és hogyan használhat�
 
 ### <a name="how-do-i-roll-back-my-service-fabric-cluster-certificate"></a>Hogyan vissza a Service Fabric-fürt tanúsítványát?
 
-Az alkalmazásra való frissítés visszagörgetéséhez az Service Fabric fürt kvóruma előtt a módosítás véglegesítése előtt állapot-meghibásodás észlelése szükséges. a véglegesített módosításokat csak előre lehet görgetni. A eszkalációs mérnök az ügyfél-támogatási szolgáltatásokon keresztül szükséges lehet a fürt helyreállításához, ha a nem figyelt feltörési tanúsítvány megváltozása be lett vezetve.  [Service Fabric alkalmazásának frissítése](./service-fabric-application-upgrade.md?branch=master) az [alkalmazás frissítési paramétereit](./service-fabric-application-upgrade-parameters.md?branch=master)alkalmazza, és nulla állásidő-frissítési ígéretet biztosít.  Az ajánlott alkalmazás-frissítési figyelt üzemmódot követve a frissítési tartományokon keresztüli automatikus előrehaladás az állapot-ellenőrzéseken alapul, az alapértelmezett szolgáltatás frissítése esetén pedig automatikusan visszagörgethető.
+Az alkalmazásra való frissítés visszagörgetéséhez az Service Fabric fürt kvóruma előtt a módosítás véglegesítése előtt állapot-meghibásodás észlelése szükséges. a véglegesített módosításokat csak előre lehet görgetni. A eszkalációs mérnök az ügyfél-támogatási szolgáltatásokon keresztül szükséges lehet a fürt helyreállításához, ha a nem figyelt feltörési tanúsítvány megváltozása be lett vezetve.  [Service Fabric alkalmazásának frissítése](./service-fabric-application-upgrade.md) az [alkalmazás frissítési paramétereit](./service-fabric-application-upgrade-parameters.md)alkalmazza, és nulla állásidő-frissítési ígéretet biztosít.  Az ajánlott alkalmazás-frissítési figyelt üzemmódot követve a frissítési tartományokon keresztüli automatikus előrehaladás az állapot-ellenőrzéseken alapul, az alapértelmezett szolgáltatás frissítése esetén pedig automatikusan visszagörgethető.
  
 Ha a fürt továbbra is kihasználja a klasszikus tanúsítvány ujjlenyomatát a Resource Manager-sablonban, javasoljuk, hogy a modern titkok kezelési funkcióinak kihasználásához [módosítsa a fürtet a tanúsítvány ujjlenyomatáról a köznapi névre](./service-fabric-cluster-change-cert-thumbprint-to-cn.md).
 
@@ -187,6 +187,6 @@ Nyílt forráskódú Service Fabric ([megbízható szolgáltatások keretrendsze
 
 További részletekért tekintse meg a [Service Fabric blogot](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg az [alapszintű Service Fabric fogalmakat](service-fabric-technical-overview.md) és az [ajánlott eljárásokat](service-fabric-best-practices-overview.md)

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/25/2021
+ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 458c801e1434832bf65da669ca89cb5c5eebe2e8
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: bf7a17d96d31fd4214d5465a5739acc9ce9a9d53
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99807563"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455501"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>A felhasználók és az entitások viselkedésének elemzésével (UEBA) kapcsolatos fejlett veszélyforrások azonosítása az Azure Sentinelben
 
@@ -68,41 +68,9 @@ Minden tevékenység a "vizsgálat prioritási pontszáma" kifejezéssel van ki�
 
 Tekintse meg, hogyan használja a viselkedés-elemzést [Microsoft Cloud app Security](https://techcommunity.microsoft.com/t5/microsoft-security-and/prioritize-user-investigations-in-cloud-app-security/ba-p/700136) a működésének példáját.
 
-## <a name="entities-in-azure-sentinel"></a>Entitások az Azure Sentinelben
+## <a name="entity-pages"></a>Entitás lapjai
 
-### <a name="entity-identifiers"></a>Entitás-azonosítók
-
-Ha riasztásokat küld az Azure Sentinelnek, azok olyan adatelemeket tartalmaznak, amelyeket az Azure Sentinel azonosít és osztályoz entitásként, például felhasználói fiókokat, gazdagépeket, IP-címeket és egyéb adatokat. Alkalmanként ez az azonosító kihívást jelenthet, ha a riasztás nem tartalmaz elegendő információt az entitásról.
-
-A felhasználói fiókok például több módon is azonosíthatók: az Azure AD-fiók numerikus azonosítójának (GUID) vagy az egyszerű felhasználóneve (UPN) értékének vagy a Felhasználónév és az NT-tartománynév kombinációjának használatával. A különböző adatforrások különböző módokon tudják azonosítani ugyanazt a felhasználót. Ezért, amikor csak lehetséges, az Azure Sentinel egyesíti ezeket az azonosítókat egyetlen entitásba, hogy megfelelően azonosítható legyen.
-
-Előfordulhat azonban, hogy az egyik erőforrás-szolgáltató olyan riasztást hoz létre, amelyben az entitások nem eléggé azonosíthatók – például a tartománynév nélküli Felhasználónév. Ebben az esetben a felhasználói entitás nem egyesíthető ugyanazzal a felhasználói fiókkal, amely külön entitásként azonosítható, és a két entitás külön marad az egységes helyett.
-
-Ennek kockázatának csökkentése érdekében győződjön meg arról, hogy az összes riasztási szolgáltató megfelelően azonosítja az entitásokat az általuk előállított riasztásokban. Emellett a felhasználói fiókok entitásait Azure Active Directory is szinkronizálhatja, így létrehozhat egy egyesítő könyvtárat, amely egyesítheti a felhasználói fiókok entitásait.
-
-Az Azure Sentinel jelenleg a következő típusú entitásokat azonosítja:
-
-- Felhasználói fiók (fiók)
-- Gazdagép
-- IP-cím (IP)
-- Kártevő szoftver
-- Fájl
-- Folyamat
-- Cloud Application (CloudApplication)
-- Tartománynév (DNS)
-- Azure-erőforrás
-- Fájl (FileHash)
-- Beállításkulcs
-- Beállításazonosító
-- Biztonsági csoport
-- URL-cím
-- IoT-eszköz
-- Mailbox
-- Levelezési fürt
-- Levélüzenet
-- E-mailek küldése
-
-### <a name="entity-pages"></a>Entitás lapjai
+Tudjon meg többet az [Azure Sentinel-entitásokról](entities-in-azure-sentinel.md) , és tekintse meg a [támogatott entitások és azonosítók](entities-reference.md)teljes listáját.
 
 Ha a keresés, a riasztás vagy a vizsgálat során bármely entitást (jelenleg a felhasználókra és gazdagépekre korlátozódik) keres, kiválaszthatja az entitást, és az entitások **oldalára** is áthelyezheti az adott entitás hasznos információit tartalmazó adatlapot. Az ezen a lapon megjelenő információk típusai közé tartoznak az entitás alapvető tudnivalói, a jelen entitással kapcsolatos jelentős események ütemezése, valamint az entitás viselkedésére vonatkozó megállapítások.
  
@@ -131,20 +99,23 @@ Az idősor a következő típusú elemeket tartalmazza:
  
 ### <a name="entity-insights"></a>Entitás-felismerések
  
-Az entitás-elemzések a Microsoft biztonsági kutatói által meghatározott lekérdezések, amelyek segítenek az elemzőknek a hatékonyabb és hatékony vizsgálatában. Az elemzések az entitások oldalának részeként jelennek meg, és értékes biztonsági információkat biztosítanak a gazdagépekről és a felhasználókról táblázatos adatok és diagramok formájában. Az itt látható információk azt jelzik, hogy nem kell Log Analytics. Az elemzések között szerepelnek a bejelentkezések, a csoportok kiegészítései, a rendellenes események és egyebek, valamint a rendellenes viselkedést észlelő speciális ML-algoritmusok is. Az elemzések a következő adattípusokon alapulnak:
-- Rendszernapló
-- Biztonsági esemény
-- Naplók
-- Bejelentkezési naplók
-- Office-tevékenység
-- BehaviorAnalytics (UEBA) 
- 
+Az entitás-elemzések a Microsoft biztonsági kutatói által meghatározott lekérdezések, amelyek segítenek az elemzőknek a hatékonyabb és hatékony vizsgálatában. Az elemzések az entitások oldalának részeként jelennek meg, és értékes biztonsági információkat biztosítanak a gazdagépekről és a felhasználókról táblázatos adatok és diagramok formájában. Az itt látható információk azt jelzik, hogy nem kell Log Analytics. Az elemzések között szerepelnek a bejelentkezések, a csoportok kiegészítései, a rendellenes események és egyebek, valamint a rendellenes viselkedést észlelő speciális ML-algoritmusok is. 
+
+Az elemzések a következő adatforrásokon alapulnak:
+- Syslog (Linux)
+- SecurityEvent (Windows)
+- AuditLogs (Azure AD)
+- SigninLogs (Azure AD)
+- OfficeActivity (Office 365)
+- BehaviorAnalytics (Azure Sentinel UEBA)
+- Szívverés (Azure Monitor ügynök)
+- CommonSecurityLog (Azure Sentinel)
+
 ### <a name="how-to-use-entity-pages"></a>Az entitások lapjainak használata
 
 Az entitások lapjai több használati forgatókönyv részét képezik, és az incidensek kezelése, a vizsgálati gráf, a könyvjelzők vagy közvetlenül **az entitás-** keresési oldalon, az Azure Sentinel főmenüjében is elérhetők.
 
 :::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-use-cases.png" alt-text="Entitás lap használati esetei":::
-
 
 ## <a name="data-schema"></a>Adatséma
 

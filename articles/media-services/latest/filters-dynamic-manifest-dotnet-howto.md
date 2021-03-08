@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d007c104dc53683d49547db582e8de6981ab921f
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 11c65498d5a31c2e2ee997bdaf18037b1f0f9060
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101093426"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455212"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>Szűrők létrehozása Media Services .NET SDK-val
 
@@ -29,7 +29,7 @@ Ha a tartalmat az ügyfeleknek (élő vagy igény szerinti közvetítéssel köz
 
 A funkció részletes ismertetését és a használatban lévő forgatókönyveket lásd: [dinamikus jegyzékfájlok](filters-dynamic-manifest-overview.md) és [szűrők](filters-concept.md).
 
-Ez a témakör azt mutatja be, hogyan használható a Media Services .NET SDK egy szűrő megadására az igény szerinti videóhoz, valamint a [fiókok](/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet) és az adategységek [szűrők](/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet)létrehozásához. 
+Ez a témakör azt mutatja be, hogyan használható a Media Services .NET SDK egy szűrő megadására az igény szerinti videóhoz, valamint a [fiókok](/dotnet/api/microsoft.azure.management.media.models.accountfilter) és az adategységek [szűrők](/dotnet/api/microsoft.azure.management.media.models.assetfilter)létrehozásához. 
 
 > [!NOTE]
 > Ügyeljen rá, hogy ellenőrizze a [presentationTimeRange](filters-concept.md#presentationtimerange).
@@ -43,7 +43,7 @@ Ez a témakör azt mutatja be, hogyan használható a Media Services .NET SDK eg
 
 ## <a name="define-a-filter"></a>Szűrő definiálása  
 
-A .NET-ben a [FilterTrackSelection](/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) és a [FilterTrackPropertyCondition](/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet) osztályok használatával követheti nyomon a beállításokat. 
+A .NET-ben a [FilterTrackSelection](/dotnet/api/microsoft.azure.management.media.models.filtertrackselection) és a [FilterTrackPropertyCondition](/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition) osztályok használatával követheti nyomon a beállításokat. 
 
 A következő kód egy olyan szűrőt határoz meg, amely minden olyan hangsávot tartalmaz, amely EC-0-1000000 3.
 

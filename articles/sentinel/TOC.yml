@@ -25,6 +25,8 @@
       href: tutorial-respond-threats-playbook.md
 - name: Alapelvek
   items:
+    - name: Az adatbesorolás entitások használatával
+      href: entities-in-azure-sentinel.md
     - name: Hozzáférés kezelése
       items:
         - name: Az Azure Sentinel engedélyei
@@ -33,18 +35,20 @@
           href: resource-context-rbac.md
     - name: Fejlett többfázisú támadásészlelés
       href: fusion.md
-    - name: Saját gépi tanulási platform használata
-      href: bring-your-own-ml.md
-    - name: Az Azure Sentinel kiterjesztése munkaterületek és bérlők között
-      href: extend-sentinel-across-workspaces-tenants.md
     - name: Fejlett fenyegetések észlelése az UEBA használatával
       href: identify-threats-with-entity-behavior-analytics.md
     - name: Fenyegetésfelderítési adatok importálása az Azure Sentinelbe
       href: import-threat-intelligence.md
+    - name: Saját gépi tanulási platform használata
+      href: bring-your-own-ml.md
     - name: Microsoft 365 Defender integrálása az Azure Sentinelrel
       href: microsoft-365-defender-sentinel-integration.md
     - name: Külső adatok használata figyelőlistákkal
       href: watchlists.md
+    - name: Engedélyek hozzárendelése szerepkörökkel
+      href: roles.md
+    - name: Az Azure Sentinel kiterjesztése munkaterületek és bérlők között
+      href: extend-sentinel-across-workspaces-tenants.md
     - name: Adatok normalizálása táblázatok között
       href: normalization.md
     - name: Biztonság
@@ -84,7 +88,7 @@
               href: connect-office-365-advanced-threat-protection.md
             - name: Azure Defender-riasztások az ASC-től
               href: connect-azure-security-center.md
-            - name: Azure Defender (korábbi nevén ASC) az IoT-hez
+            - name: Defender for IoT (korábban ASC a IoT esetében)
               href: connect-asc-iot.md
             - name: Azure DDoS Protection
               href: connect-azure-ddos-protection.md
@@ -242,12 +246,16 @@
           href: monitor-data-connector-health.md
     - name: A felhasználó és az entitás viselkedésének elemzésének engedélyezése
       href: enable-entity-behavior-analytics.md
+    - name: Adatmezők leképezése entitásokra
+      href: map-data-fields-to-entities.md
     - name: Több bérlő (MSSP) kezelése
       href: multiple-tenants-service-providers.md
     - name: Munkavégzés több munkaterület incidenseivel
       href: multiple-workspace-view.md
     - name: Az ügyfél által kezelt kulcsok (CMK) beállítása
       href: customer-managed-keys.md
+    - name: A Surface egyéni adatai a riasztásokban
+      href: surface-custom-details-in-alerts.md
     - name: Incidens létrehozása riasztásból
       href: create-incidents-from-alerts.md
     - name: A SOC hatékonyabb kezelése incidensmetrikákkal
@@ -265,10 +273,10 @@
           href: livestream.md
     - name: Az Azure Sentinel eltávolítása
       href: offboard.md
-    - name: Speciális RBAC implementálása
-      items: null
 - name: Referencia
   items:
+    - name: Top Azure Sentinel-munkafüzetek
+      href: top-workbooks.md
     - name: Azure RBAC-szerepkörök
       items:
         - name: Az összes Azure-szerepkör
@@ -285,6 +293,8 @@
           href: watchlist-with-rest-api.md
     - name: Az Azure Sentinel Logic Apps-összekötője
       href: /connectors/azuresentinel/
+    - name: Entitások referenciája
+      href: entities-reference.md
     - name: Hálózati normalizációs séma
       href: normalization-schema.md
     - name: Adatforrás sémájának referenciája

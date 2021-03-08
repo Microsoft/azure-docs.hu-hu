@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory B2C és az Azure API Management használatával biztosíthatja a SPA-háttér OAuth 2,0-es védelemmel való ellátását.
-description: Az API-k a OAuth 2,0-mel való ellátása a JavaScript SPA-ból hívható Azure Active Directory B2C, Azure API Management és Easy Auth használatával.
+title: SPA-háttérrendszer biztosítása az Azure API Managementban Active Directory B2C
+description: A OAuth 2,0-mel biztosíthatja az API-t az Azure Active Directory B2C, az Azure API Management és az Easy Auth használatával, hogy a JavaScript SPA-ból hívható a PKCE enabled SPA hitelesítési folyamat használatával.
 services: api-management, azure-ad-b2c, app-service
 documentationcenter: ''
 author: WillEastbury
@@ -11,46 +11,60 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2020
+ms.date: 02/18/2021
 ms.author: wieastbu
-ms.custom: fasttrack-new, devx-track-js
-ms.openlocfilehash: b157200b03bdc89e00bfa5c8264d78baf24875c1
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.custom: fasttrack-new, fasttrack-update, devx-track-js
+ms.openlocfilehash: 812b54d10ea3cc3c405f534e36ac66abf3466808
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97609122"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449288"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Az OAuth 2,0, a Azure Active Directory B2C és az Azure API Management által védett SPA-háttérrendszer
 
 Ez a forgatókönyv bemutatja, hogyan konfigurálhatja az Azure API Management-példányát az API-k elleni védelemhez.
-A OAuth 2,0 protokollt a Azure AD B2Ctel együtt fogjuk használni, a API Management mellett pedig az EasyAuth-t használó Azure Functions-háttér védelmét.
+A Azure AD B2C SPA (Auth Code + PKCE) flow-t használjuk a tokenek beszerzéséhez, a API Management mellett pedig az EasyAuth-t használó Azure Functions-háttér védelméhez.
 
 ## <a name="aims"></a>Célja
-Látni fogjuk, hogyan használhatók a API Management egy egyszerűsített forgatókönyvben Azure Functions és Azure AD B2C. Létre fog hozni egy API-t meghívó JavaScript-(JS-) alkalmazást, amely a felhasználók Azure AD B2C használatával jelentkezik be. Ezt követően API Management érvényesítő JWT házirend-funkcióit fogja használni a háttérrendszer API-ja elleni védelemhez.
 
-A védelem részletesen a EasyAuth használatával érvényesíti a tokent a háttérbeli API-ban.
+Látni fogjuk, hogyan használhatók a API Management egy egyszerűsített forgatókönyvben Azure Functions és Azure AD B2C. Létre fog hozni egy API-t meghívó JavaScript-(JS-) alkalmazást, amely a felhasználók Azure AD B2C használatával jelentkezik be. Ezt követően API Management érvényesítő-JWT, CORS és díjszabási korlátját fogja használni a fő házirend-funkciókkal a háttérrendszer API-ja elleni védelem érdekében.
+
+A védelem részletesen a EasyAuth használatával érvényesíti a tokent a háttérbeli API-ban, és gondoskodjon arról, hogy az API Management az egyetlen olyan szolgáltatás, amely meghívja a Azure Functions háttérrendszer-kezelőt.
+
+## <a name="what-will-you-learn"></a>Mit fog tanulni?
+
+> [!div class="checklist"]
+> * Egyoldalas alkalmazás és háttérbeli API beállítása Azure Active Directory B2C
+> * Azure Functions háttérrendszer API létrehozása
+> * Azure Functions API importálása az Azure-ba API Management
+> * Az API biztonságossá tétele az Azure API Management
+> * A Azure Active Directory B2C engedélyezési végpontok meghívása a Microsoft Identity platform kódtárai (MSAL.js) használatával
+> * HTML/Vanilla JS egyoldalas alkalmazás tárolása és egy Azure Blob Storage-végpontról való kiszolgálás
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
-* Egy Azure (StorageV2) általános célú v2 Storage-fiók a frontend JS Single Page alkalmazás üzemeltetéséhez
-* Azure API Management-példány 
-* Egy üres Azure Function-alkalmazás (a v2 .NET Core Runtime futtatása Windows-alapú használati csomagon) a nevezett API üzemeltetéséhez
-* Egy előfizetéshez csatolt Azure AD B2C bérlő 
+
+* Egy Azure (StorageV2) általános célú v2 Storage-fiók a frontend JS egyoldalas alkalmazás üzemeltetéséhez.
+* Egy Azure API Management-példány (bármely szint működni fog, beleértve a "fogyasztást" is, de a teljes forgatókönyvre vonatkozó bizonyos funkciók nem érhetők el ebben a rétegben (a díjszabási kulcs és a dedikált virtuális IP-cím), ezek a korlátozások a cikkben olvashatók.
+* Egy üres Azure Function-alkalmazás (amely a V 3.1 .NET Core futtatókörnyezetet futtatja egy használati csomagon) a nevezett API üzemeltetéséhez
+* Egy előfizetéshez csatolt Azure AD B2C bérlő.
 
 Annak ellenére, hogy a gyakorlatban a termelési számítási feladatokban ugyanabban a régióban használja az erőforrásokat, ebben az útmutatóban az üzembe helyezés régiója nem fontos.
 
 ## <a name="overview"></a>Áttekintés
-Itt látható a használatban lévő összetevők, valamint a folyamat befejezése után zajló folyamatok.
+
+Íme egy illusztráció a használatban lévő összetevőkről és a folyamatok között a folyamat befejezése után.
 ![Használatban és folyamatban található összetevők](../api-management/media/howto-protect-backend-frontend-azure-ad-b2c/image-arch.png "Használatban és folyamatban található összetevők")
 
 Íme egy gyors áttekintés a következő lépésekről:
 
 1. A Azure AD B2C hívó (frontend, API Management) és API-alkalmazások létrehozása hatókörökkel és API-hozzáférés biztosítása
-1. Hozza létre a regisztrációs vagy bejelentkezési szabályzatokat, hogy a felhasználók bejelentkezhetnek Azure AD B2C 
+1. A regisztrációs és bejelentkezési szabályzatok létrehozása, hogy a felhasználók bejelentkezhetnek Azure AD B2C 
 1. API Management konfigurálása az új Azure AD B2C ügyfél-azonosítókkal és kulcsokkal a OAuth2 felhasználói hitelesítésének engedélyezéséhez a Fejlesztői konzolon
 1. A Function API létrehozása
-1. Konfigurálja a Function API-t úgy, hogy engedélyezze a EasyAuth az új Azure AD B2C ügyfél-AZONOSÍTÓval és kulccsal, és zárolja a APIM VIP-t 
+1. Konfigurálja a Function API-t úgy, hogy engedélyezze a EasyAuth az új Azure AD B2C ügyfél-AZONOSÍTÓval és kulccsal, és zárolja a APIM VIP-t
 1. Az API-definíció létrehozása a API Managementban
 1. Oauth2 beállítása a API Management API-konfigurációhoz
 1. Állítsa be a **CORS** házirendet, és adja hozzá a **validate-JWT** szabályzatot a OAuth-jogkivonat ellenőrzéséhez minden bejövő kérelem esetében
@@ -59,48 +73,85 @@ Itt látható a használatban lévő összetevők, valamint a folyamat befejezé
 1. A minta JS-ügyfélalkalmazás konfigurálása az új Azure AD B2C ügyfél-azonosító és-kulcsok használatával 
 1. Az ügyfélalkalmazás tesztelése
 
-## <a name="configure-azure-ad-b2c"></a>Azure AD B2C konfigurálása 
+   > [!TIP]
+   > Rengeteg információt és kulcsot fogunk rögzíteni, stb. ebben a dokumentumban ezt a dokumentumot érdemes lehet megnyitni, hogy egy szövegszerkesztőben a következő konfigurációs elemek ideiglenesen legyenek tárolva.  
+   >
+   > B2C HÁTTÉR-ÜGYFÉL AZONOSÍTÓJA:  
+   > B2C-HÁTTÉRBELI ÜGYFÉL TITKOS KULCSA:  
+   > B2C-HÁTTÉR API-HATÓKÖRÉNEK URI-JA:  
+   > B2C FELÜLETI ÜGYFÉL AZONOSÍTÓJA:  
+   > B2C FELHASZNÁLÓI FOLYAMAT VÉGPONTJÁNAK URI-JA:  
+   > B2C JÓL ISMERT OPENID-VÉGPONT:   
+   > B2C-szabályzat neve: Frontendapp_signupandsignin függvény URL-címe:  
+   > APIM API-ALAP URL-CÍME: TÁROLÓ ELSŐDLEGES VÉGPONTJÁNAK URL-CÍME:  
+
+## <a name="configure-the-backend-application"></a>A háttérbeli alkalmazás konfigurálása
+
 Nyissa meg a Azure AD B2C panelt a portálon, és hajtsa végre a következő lépéseket.
-1. Az **alkalmazások** lap kiválasztása 
-1. Kattintson a Hozzáadás gombra, és hozzon létre három alkalmazást az alábbi célokból
-   * A frontend-ügyfél.
-   * A háttérbeli függvény API-ját.
-   * Választható A API Management fejlesztői portálon (kivéve, ha az Azure API Managementt a felhasználási szinten futtatja, további információ a forgatókönyvről később).
-1. Állítsa be a WebApp/web API-t mind a 3 alkalmazáshoz, és állítsa az "implicit flow engedélyezése" beállítást Igen értékre csak a előtér-ügyfél számára.
-1. Most állítsa be az alkalmazás-azonosító URI-JÁT, válassza ki a létrehozni kívánt szolgáltatás egyedi és releváns elemét.
-1. A válasz URL-címeihez helyőrzőket használhat, például az https://localhost URL-eket később frissíti.
-1. Kattintson a Létrehozás elemre, majd ismételje meg a 2-5. lépést a fenti három alkalmazásnál, rögzítse a AppID URI-JÁT, a nevet és az alkalmazás AZONOSÍTÓját, hogy az a későbbiekben mindhárom alkalmazást használja.
-1. Nyissa meg a API Management fejlesztői portál alkalmazást az alkalmazások listájából, és válassza a *kulcsok* fület (általános), majd kattintson a kulcs generálása elemre egy hitelesítési kulcs létrehozásához.
-1. A Save (Mentés) gombra való kattintás után rögzítse a kulcsot valahol a későbbi használat érdekében – vegye figyelembe, hogy ez a hely az egyetlen lehetőség a kulcs megtekintésére és másolására.
-1. Most válassza ki a *közzétett hatókörök* lapot (az API-hozzáférés területen)
-1. Hozzon létre és nevezzen el egy hatókört a Function API számára, és jegyezze fel a hatókört és a feltöltött teljes hatókört, majd kattintson a Save (Mentés) gombra.
+
+1. Válassza az **alkalmazás-regisztrációk** lapot.
+1. Kattintson az új regisztráció gombra.
+1. Az átirányítási URI kiválasztása mezőben válassza a "web" lehetőséget.
+1. Most állítsa be a megjelenítendő nevet, válassza ki a létrehozni kívánt szolgáltatáshoz tartozó egyedi és releváns elemet. Ebben a példában a "háttérbeli alkalmazás" nevet fogjuk használni.
+1. Használjon helyőrzőket a válasz URL-címekhez, például a https://jwt.ms (z) "" (A Microsoft tulajdonában lévő jogkivonat-dekódolási hely), majd később frissíti ezeket az URL-címeket.
+1. Győződjön meg arról, hogy a "fiókok bármely identitás-szolgáltatóban vagy szervezeti címtárban (a felhasználók hitelesítéséhez felhasználói folyamatokkal) lehetőséget választotta
+1. Ehhez a mintához szüntesse meg a "rendszergazdai jóváhagyás megadása" mezőt, mivel még ma nem lesz szükség offline_access engedélyekre.
+1. Kattintson a „Regisztrálás” parancsra.
+1. Jegyezze fel a háttérbeli alkalmazás ügyfél-AZONOSÍTÓját későbbi használatra (az "alkalmazás (ügyfél) azonosítója" alatt látható).
+1. Válassza ki a *tanúsítványok és titkok* lapot (a kezelés alatt), majd kattintson az "új ügyfél titka" elemre az Auth kulcs létrehozásához (fogadja el az alapértelmezett beállításokat, és kattintson a "Hozzáadás" gombra).
+1. Ha a Hozzáadás gombra kattint, másolja a kulcsot (az "érték" alatt) valahol biztonságos értékre a későbbi, "háttérbeli ügyfél-titokként" való használatra. vegye figyelembe, hogy ez a párbeszédpanel az egyetlen lehetséges lehetőség a kulcs másolására.
+1. Most válassza ki az *API közzététele* lapot (a kezelés alatt).
+1. A rendszer felszólítja, hogy állítsa be a AppID URI-JÁT, majd válassza ki és jegyezze fel az alapértelmezett értéket.
+1. Hozza létre és nevezze el a "Hello" hatókört a Function API számára, a "Hello" kifejezést használhatja az összes beírható beállításhoz, rögzítheti a teljes hatókör értékének URI-JÁT, majd kattintson a "hatókör hozzáadása" elemre.
+1. Térjen vissza a Azure AD B2C panel gyökeréhez a portál bal felső részén található "Azure AD B2C" navigációs elem kiválasztásával.
+
    > [!NOTE]
    > Azure AD B2C hatókörök hatékony engedélyek az API-n belül, hogy más alkalmazások is igényelhetnek hozzáférést az API-hozzáférés panelről az alkalmazásokból, gyakorlatilag csak a nevezett API-hoz létrehozott alkalmazás-engedélyeket.
-1. Nyissa meg a másik két alkalmazást, és tekintse meg az *API-hozzáférés* lapot.
-1. Hozzáférés biztosítása a háttérrendszer API-hatóköréhez, és az alapértelmezett érték, amely már létezik ("hozzáférés a felhasználó profiljához").
-1. Létrehozhatja a kulcsokat úgy, hogy kijelöli a *kulcsok* fület az "általános" alatt egy hitelesítési kulcs létrehozásához, és rögzíti ezeket a kulcsokat a későbbiek során.
 
-## <a name="create-a-sign-up-or-sign-in-user-flow"></a>"Regisztráció vagy bejelentkezés" felhasználói folyamat létrehozása
-1. Visszatérés a Azure AD B2C panel gyökerébe (vagy az áttekintő oldalra) 
-1. Ezután válassza a "Felhasználókövetés (szabályzatok)" lehetőséget, majd kattintson az "új felhasználói folyamat" elemre.
-1. Válassza a "regisztráció és bejelentkezés" felhasználói folyamat típusát.
-1. Adja meg a szabályzat nevét, és jegyezze fel később.
-1. Ezután a "személyazonosság-szolgáltatók" területen jelölje be a "felhasználói azonosító regisztrálása" lehetőséget (ez az "e-mail-regisztráció" lehet), majd kattintson az OK gombra. 
-1. Kattintson a "felhasználói attribútumok és jogcímek" lehetőségre, majd a "továbbiak..." elemre. Ezután válassza ki azokat a jogcím-beállításokat, amelyeket a felhasználók megadhatnak, és amelyeket visszaadottak a jogkivonatban. A gyűjtéshez és a visszatéréshez jelölje be a "megjelenítendő név" és az "e-mail-cím" elemet, majd kattintson az OK gombra, majd a Létrehozás gombra.
-1. Válassza ki a listában létrehozott szabályzatot, majd kattintson a "felhasználói folyamat futtatása" gombra.
-1. Ez a művelet megnyitja a felhasználói folyamat futtatása panelt, jelölje ki a előtér-alkalmazást, majd jegyezze fel a "Select domain" legördülő listájában látható b2clogin.com-tartomány címeit.
-1. A felül található hivatkozásra kattintva nyissa meg a "jól ismert OpenID konfigurációs végpontot", és jegyezze fel a authorization_endpoint és a token_endpoint értékeket, valamint a hivatkozás értékét, mint a jól ismert OpenID konfigurációs végpontot.
+## <a name="configure-the-frontend-application"></a>A frontend alkalmazás konfigurálása
+
+1. Válassza az **alkalmazás-regisztrációk** lapot.
+1. Kattintson az új regisztráció gombra.
+1. Az átirányítási URI kiválasztása mezőben válassza az "egyoldalas alkalmazás (SPA)" lehetőséget.
+1. Most állítsa be a megjelenítendő nevet és a AppID URI-t, válassza ki a AAD B2C alkalmazás regisztrációját használó előtér-alkalmazáshoz tartozó egyedi és releváns elemet. Ebben a példában a "frontend Application" kifejezést használhatja
+1. Az első alkalmazás regisztrálásának megfelelően hagyja meg a támogatott fióktípus beállítást az alapértelmezett értékre (a felhasználók hitelesítése felhasználói folyamatokkal)
+1. Használjon helyőrzőket a válasz URL-címekhez, például a https://jwt.ms (z) "" (A Microsoft tulajdonában lévő jogkivonat-dekódolási hely), majd később frissíti ezeket az URL-címeket.
+1. Hagyja bejelölve az engedélyezési rendszergazda jóváhagyása jelölőnégyzetet.
+1. Kattintson a „Regisztrálás” parancsra.
+1. Jegyezze fel a előtér-alkalmazás ügyfél-AZONOSÍTÓját későbbi használatra (az "alkalmazás (ügyfél) azonosítója" alatt látható).
+1. Váltson az *API-engedélyek* lapra.
+1. Hozzáférés biztosítása a háttérbeli alkalmazáshoz az "engedély hozzáadása", majd a "saját API-k" elemre kattintva válassza ki a "háttérbeli alkalmazás" lehetőséget, válassza az "engedélyek" lehetőséget, válassza ki az előző szakaszban létrehozott hatókört, és kattintson az "engedélyek hozzáadása" elemre.
+1. Kattintson a "rendszergazdai jóváhagyás megadása a következőhöz: {bérlő}" elemre, majd kattintson az igen lehetőségre az előugró ablakban. Ez a felugró ablak beleegyezett a "előtér-alkalmazás" használatára a korábban létrehozott "háttérbeli alkalmazás" című "Hello" engedély használatához.
+1. Az összes engedélynek most az Állapot oszlopban szereplő zöld pipaként kell megjelennie az alkalmazásban.
+
+## <a name="create-a-sign-up-and-sign-in-user-flow"></a>"Regisztráció és bejelentkezés" felhasználói folyamat létrehozása
+
+1. Térjen vissza a B2C panel gyökeréhez a Azure AD B2C morzsa kiválasztásával.
+1. Váltson a "Felhasználókövetés" (a házirendek alatt) fülre.
+1. Kattintson az "új felhasználói folyamat" elemre.
+1. Válassza a "regisztráció és bejelentkezés" felhasználói folyamat típusát, és válassza az "ajánlott", majd a "létrehozás" lehetőséget.
+1. Adja meg a szabályzat nevét, és jegyezze fel később. Ebben a példában a "Frontendapp_signupandsignin" kifejezést használhatja, hogy ez a "B2C_1_" előtaggal lesz ellátva, hogy "B2C_1_Frontendapp_signupandsignin"
+1. Az "Identity Providers" és a "helyi fiókok" területen jelölje be az "e-mail-regisztráció" (vagy a "felhasználói azonosító regisztrálása" lehetőséget a B2C-bérlő konfigurációjától függően), majd kattintson az OK gombra. Ennek a konfigurációnak az az oka, hogy a helyi B2C-fiókokat regisztrálni fogjuk, nem pedig egy másik identitás-szolgáltatóra (például egy közösségi identitás-szolgáltatóra), hogy egy felhasználó meglévő közösségi adathordozó-fiókját használják.
+1. Hagyja meg az MFA és a feltételes hozzáférési beállításokat az alapértelmezett értékeken.
+1. Kattintson a "felhasználói attribútumok és jogcímek" lehetőségre, majd a "továbbiak..." elemre. Ezután válassza ki azokat a jogcím-beállításokat, amelyeket a felhasználók megadhatnak, és amelyeket visszaadottak a jogkivonatban. Győződjön meg arról, hogy a "megjelenítendő név" és az "e-mail-cím" mezőben a "megjelenítendő név" és az "e-mail-címek" értéket adja vissza (Ügyeljen arra, hogy az EmailAddress, a szám, és az e-mail-címek visszaadását kéri, és kattintson az OK gombra, majd kattintson a "létrehozás" gombra.
+1. Kattintson a listában létrehozott felhasználói folyamatra, majd kattintson a "felhasználói folyamat futtatása" gombra.
+1. Ezzel a művelettel megnyílik a felhasználói folyamat futtatása panel, válassza ki a előtér-alkalmazást, másolja a felhasználói folyamat végpontját, és mentse később.
+1. Másolja és tárolja a hivatkozást a tetején, és rögzítse a "jól ismert OpenID konfigurációs végpontként" a későbbi használat érdekében.
 
    > [!NOTE]
-   > A B2C-szabályzatok lehetővé teszik a Azure AD B2C bejelentkezési végpontok elérhetővé tételét, így különböző módon rögzíthetik a különböző adatösszetevőket és jelentkezhetnek be a felhasználókba. Ebben az esetben olyan regisztrációs vagy bejelentkezési végpontot konfiguráltunk, amely egy jól ismert konfigurációs végpontot tesz elérhetővé, és az URL-cím a p = paraméter alapján azonosította a létrehozott házirendet.
+   > A B2C-szabályzatok lehetővé teszik a Azure AD B2C bejelentkezési végpontok elérhetővé tételét, így különböző módon rögzíthetik a különböző adatösszetevőket és jelentkezhetnek be a felhasználókba.
    > 
-   > Ha ez megtörtént, most már rendelkezik egy működőképes üzleti felhasználói identitás platformmal, amely több alkalmazásba is aláírja a felhasználókat. 
-   > Ha azt szeretné, hogy a "felhasználói folyamat futtatása" gombra kattinthat (a regisztráció vagy a bejelentkezés folyamatán keresztül), és megtudhatja, hogy mit fog tenni a gyakorlatban, de az átirányítási lépés a végén sikertelen lesz, mivel az alkalmazás még nincs telepítve.
+   > Ebben az esetben konfiguráltunk egy regisztrációs vagy bejelentkezési folyamatot (szabályzatot). Ez egy jól ismert konfigurációs végpontot is feltett, amely mindkét esetben a létrehozott szabályzatot a "p =" lekérdezési karakterlánc paraméterrel együtt azonosította az URL-ben.  
+   >
+   > Ha ezt elvégezte, most már rendelkezik egy működőképes üzleti identitás platformmal, amely több alkalmazásba is aláírja a felhasználókat.
 
 ## <a name="build-the-function-api"></a>A Function API létrehozása
-1. Váltson vissza a standard Azure AD-bérlőre a Azure Portal, hogy az előfizetésben lévő elemeket újra be lehessen állítani 
-1. Lépjen a Azure Portal Function apps paneljére, nyissa meg az üres Function alkalmazást, majd hozzon létre egy új, In-Portal "webhook + API" függvényt a rövid útmutató segítségével.
-1. Illessze be az alábbi kódrészletet a Run. CSX fölé a megjelenő meglévő kód fölé.
+
+1. Váltson vissza a standard Azure AD-bérlőre a Azure Portalban, hogy ismét be lehessen állítani az előfizetésben lévő elemeket.
+1. Lépjen a Azure Portal Function apps paneljére, nyissa meg az üres Function alkalmazást, majd kattintson a függvények elemre, majd a Hozzáadás gombra.
+1. A megjelenő menüben válassza a "fejlesztés a portálon" lehetőséget a "sablon kiválasztása" területen, majd válassza a "HTTP-trigger" lehetőséget a sablon részletei alatt a "Hello" (engedélyezési szint "Function"), majd válassza a Hozzáadás lehetőséget.
+1. Váltson a Code + test (kód + tesztelés) panelre, és másolja a vágólapra a kódot a megjelenő *meglévő kód fölé* .
+1. Kattintson a Mentés gombra.
 
    ```csharp
    
@@ -117,348 +168,299 @@ Nyissa meg a Azure AD B2C panelt a portálon, és hajtsa végre a következő l�
    
    ```
 
-   > [!NOTE]
-   > Az imént beillesztett c# parancsfájl-függvény kódja egyszerűen naplóz egy sort a függvények naplóiba, és a "„Helló világ!” alkalmazás" szöveget adja vissza néhány dinamikus adattal (a dátummal és idővel).
+   > [!TIP]
+   > Az imént beillesztett c# parancsfájl-függvény kódja egyszerűen naplóz egy sort a függvények naplóiba, és a "Hello World" szöveget adja vissza néhány dinamikus adattal (a dátummal és idővel).
 
-3. Válassza az "integrálás" lehetőséget a bal oldali panelen, majd válassza a "Speciális szerkesztő" lehetőséget a panel jobb felső sarkában.
-4. Illessze be az alábbi mintakód-kódot a meglévő JSON fölé.
-
-   ```json
-   {
-      "bindings": [
-       {
-        "authLevel": "function",
-        "name": "req",
-        "type": "httpTrigger",
-        "direction": "in",
-        "methods": [
-           "get"
-        ],
-        "route": "hello"
-       },
-       {
-         "name": "$return",
-         "type": "http",
-         "direction": "out"
-       }
-     ]
-   }
-   ```
-
-5. Váltson vissza a HttpTrigger1 lapra, kattintson a "függvény URL-címének beolvasása" elemre, majd másolja ki a megjelenő URL-címet.
+1. Válassza az "integráció" lehetőséget a bal oldali panelen, majd kattintson a http (REQ) hivatkozásra az "trigger" mezőben.
+1. A "kiválasztott HTTP-metódusok" legördülő menüből törölje a HTTP POST metódust, hagyja bejelölve a csak a kiválasztott lehetőséget, majd kattintson a Mentés gombra.
+1. Váltson vissza a Code + test lapra, kattintson a "függvény URL-címének beolvasása" elemre, majd másolja ki a megjelenő URL-címet, és mentse később.
 
    > [!NOTE]
-   > Az imént létrehozott kötések egyszerűen csak azt mondják, hogy a függvények válaszolnak a névtelen http GET kérelmekre az imént másolt URL-címre. ( `https://yourfunctionappname.azurewebsites.net/api/hello?code=secretkey` ) Most már van egy méretezhető, kiszolgáló nélküli HTTPS API-je, amely képes egy nagyon egyszerű hasznos adat visszaküldésére.
-   > Most már tesztelheti ezt az API-t egy webböngészőből a fenti URL-cím használatával, és a? Code = Secret részét is megadhatja az URL-címben, és igazolhatja, hogy a Azure Functions 401 hibát ad vissza.
+   > Az imént létrehozott kötések egyszerűen csak azt mondják, hogy a függvények válaszolnak a névtelen http GET kérelmekre az imént másolt URL-címre ( `https://yourfunctionappname.azurewebsites.net/api/hello?code=secretkey` ). Most már van egy skálázható, kiszolgáló nélküli HTTPS API-je, amely képes egy nagyon egyszerű hasznos adat visszaküldésére.
+   >
+   > Most tesztelheti ezt az API-t egy webböngészőből az imént másolt és mentett URL-cím használatával. Eltávolíthatja a lekérdezési karakterlánc paramétereit is: "? Code = secretkey" az URL-címet, majd tesztelje újra, hogy a Azure Functions 401 hibát ad vissza.
 
 ## <a name="configure-and-secure-the-function-api"></a>A Function API konfigurálása és biztonságossá tétele
-1. A Function alkalmazás két további területét kell konfigurálni (hitelesítési és hálózati korlátozásokat).
-1. Először konfigurálja a hitelesítést/engedélyezést, ezért kattintson a Function alkalmazás nevére (a &lt; Z &gt; functions ikon mellett) az Áttekintés oldal megjelenítéséhez.
-1. Ezután válassza a "platform szolgáltatások" fület, és válassza a "hitelesítés/engedélyezés" lehetőséget.
-1. Kapcsolja be a App Service hitelesítési funkciót.
-1. A "hitelesítő szolgáltatók" területen válassza a "Azure Active Directory" lehetőséget, és válassza a "speciális" lehetőséget a felügyeleti mód kapcsolóból.
-1. Illessze be a háttérbeli függvény API alkalmazás-AZONOSÍTÓját (a Azure AD B2Cból az "ügyfél-azonosító" mezőbe)
-1. Illessze be a jól ismert Open-ID konfigurációs végpontot a regisztrációs vagy bejelentkezési szabályzatba a kiállító URL-címe mezőbe (ezt a konfigurációt korábban rögzítették).
-1. Kattintson az OK gombra.
-1. Állítsa be az elvégzendő műveletet, ha a kérés nincs hitelesítve legördülő menüben a "Bejelentkezés Azure Active Directoryval" lehetőségre, majd kattintson a Mentés gombra.
 
-   > [!NOTE]
-   > Most a Function API üzembe lett helyezve, és ha a megfelelő kulcs nincs megadva, akkor a 401-es válaszokat kell kidobnia.
-   > A nem hitelesített kérelmek kezeléséhez a "Bejelentkezés az Azure AD szolgáltatással" beállítással további védelmi részletes biztonsági EasyAuth bővült. Vegye figyelembe, hogy ez megváltoztatja a háttérbeli függvényalkalmazás és a frontend SPA közötti jogosulatlan kérelmek viselkedését, mivel a EasyAuth a 401-re nem jogosult válasz helyett 302-es átirányítást ad ki, ezért API Management később kell kijavítani.
-   > Még mindig nem alkalmazunk IP-biztonságot, ha rendelkezik érvényes kulcs-és OAuth2 jogkivonattal, bárki meghívhatja ezt bárhonnan – ideális esetben az API Management-on keresztüli összes kérést kényszeríteni szeretné.
-   > Ha a API Management használati szintet használja, nem fogja tudni végrehajtani ezt a zárolást VIP-ként, mivel az adott szinten nincs dedikált statikus IP-cím, az API-hívások zárolásának módszerét kell használnia a közös titkos kulcson keresztül, így a 11-13-es lépések nem lesznek lehetségesek.
+1. A Function app két további területét kell konfigurálni (engedélyezési és hálózati korlátozásokkal).
+1. Először konfigurálja a hitelesítést/engedélyezést, ezért a navigációs felületen keresztül térjen vissza a Function alkalmazás gyökeréhez.
+1. Ezután válassza a "hitelesítés/engedélyezés" lehetőséget (a "beállítások" alatt).
+1. Kapcsolja be a App Service hitelesítési funkciót.
+1. Állítsa be az elvégzendő műveletet, ha a kérés nincs hitelesítve a legördülő menüben a "Bejelentkezés a Azure Active Directory" művelettel.
+1. A "hitelesítő szolgáltatók" területen válassza a "Azure Active Directory" lehetőséget.
+1. Válassza a "speciális" lehetőséget a felügyeleti mód kapcsolóján.
+1. Illessze be a háttérbeli alkalmazás [alkalmazás] ügyfél-AZONOSÍTÓját (Azure AD B2C) az "ügyfél-azonosító" mezőbe.
+1. Illessze be a jól ismert Open-ID konfigurációs végpontot a regisztrációs és bejelentkezési szabályzatba a kiállító URL-címe mezőbe (ezt a konfigurációt korábban rögzítették).
+1. Kattintson a "titok megjelenítése" gombra, és illessze be a háttérbeli alkalmazás ügyfelének titkos kódját a megfelelő mezőbe.
+1. Válassza az OK gombot, amely visszaadja az identitás-szolgáltató kijelölési paneljét vagy képernyőjét.
+1. Hagyja engedélyezve a [jogkivonat-tárolót](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization#token-store) a speciális beállítások területen (alapértelmezett).
+1. Kattintson a Save (Mentés) gombra a panel bal felső részén.
+
+   > [!IMPORTANT]
+   > Most már telepítette a Function API-t, és 401-válaszokat kell dobnia, ha a megfelelő JWT nincs megadva engedélyként: tulajdonosi fejléc, és az érvényes kérelem beérkezése esetén vissza kell térnie az adatokra.  
+   > A nem hitelesített kérelmek kezeléséhez a "Bejelentkezés az Azure AD szolgáltatással" beállítással további védelmi részletes biztonsági EasyAuth bővült. Vegye figyelembe, hogy ez megváltoztatja a háttérbeli függvényalkalmazás és a frontend SPA közötti jogosulatlan kérelmek viselkedését, mivel a EasyAuth a 401-re nem jogosult válasz helyett 302-es átirányítást ad ki, ezért API Management később kell kijavítani.  
+   >
+   > Még mindig nem alkalmazunk IP-biztonságot, ha rendelkezik érvényes kulcs-és OAuth2 jogkivonattal, bárki meghívhatja ezt bárhonnan – ideális esetben az API Management-on keresztüli összes kérést kényszeríteni szeretné.  
+   > 
+   > Ha APIM-használati szintet használ, akkor [nincs dedikált Azure API Management virtuális IP-cím](./api-management-howto-ip-addresses.md#ip-addresses-of-consumption-tier-api-management-service) , amely lehetővé teszi a-listához a függvények hozzáférés-korlátozásait. Az Azure API Management standard SKU-ban és [a VIP-nél egyetlen bérlő, az erőforrás élettartama pedig](./api-management-howto-ip-addresses.md#changes-to-the-ip-addresses). Az Azure API Management-használati szinten az API-hívásokat a fent másolt URI-azonosító részét képező közös titkos kulcs használatával zárolhatja. Továbbá a felhasználási réteghez – az alábbi 12-17-es lépések nem érvényesek.
 
 1. A "hitelesítés/engedélyezés" panel lezárása 
-1. Válassza a hálózatkezelés lehetőséget, majd válassza a "hozzáférési korlátozások" lehetőséget.
-1. Ezután zárja be az engedélyezett Function app IP-címeket a API Management-példány VIP-címére. Ez a VIP a portál API Management – Áttekintés szakaszában látható.
+1. Nyissa meg a *portál API Management* paneljét, majd nyissa meg a *példányt*.
+1. Rögzítse az Áttekintés lapon látható privát VIP-címet.
+1. Térjen vissza a *portál Azure functions* paneljére, majd nyissa meg újra *a példányt* .
+1. Válassza a hálózatkezelés lehetőséget, majd válassza a "hozzáférési korlátozások konfigurálása" lehetőséget.
+1. Kattintson a szabály hozzáadása elemre, és adja meg a fenti 3. lépésben átmásolt virtuális IP-címet a következő formátumban: xx. xx. xx. xx/32.
 1. Ha továbbra is használni szeretné a functions-portált, és az alábbi opcionális lépéseket is el kívánja végezni, adja hozzá a saját nyilvános IP-címét vagy CIDR-tartományát.
-1. Ha egy engedélyezési bejegyzés szerepel a listán, az Azure egy implicit megtagadási szabályt ad hozzá az összes többi cím blokkolásához. 
+1. Ha egy engedélyezési bejegyzés szerepel a listán, az Azure egy implicit megtagadási szabályt ad hozzá az összes többi cím blokkolásához.
 
-A CIDR formázott blokkokat kell hozzáadnia az IP-korlátozások panelhez. Ha egyetlen címet kell hozzáadnia, például a API Management VIP-t, hozzá kell adnia a következő formátumban: xx. xx. xx. xx.
+A CIDR formázott blokkokat kell hozzáadnia az IP-korlátozások panelhez. Ha egy címet (például a API Management VIP-t) kell hozzáadnia, hozzá kell adnia azt a következő formátumban: xx. xx. xx. xx/32.
 
    > [!NOTE]
    > A Function API mostantól nem hívható meg, mint az API Management vagy a címe.
-   
-## <a name="import-the-function-app-definition"></a>A Function app-definíció importálása
+
 1. Nyissa meg a *API Management* panelt, majd nyissa meg a *példányt*.
-1. Válassza ki az API-kat a példány API Management szakaszából.
+1. Válassza az API-k panelt.
 1. Az "új API hozzáadása" panelen válassza a "függvényalkalmazás" lehetőséget, majd az előugró ablak tetején válassza a "teljes" lehetőséget.
-1. Kattintson a Tallózás gombra, válassza ki az API-t üzemeltető Function alkalmazást, és kattintson a Kiválasztás gombra.
+1. Kattintson a Tallózás gombra, válassza ki az API-t üzemeltető Function alkalmazást, és kattintson a Kiválasztás gombra. Ezután kattintson ismét a kijelölés gombra.
 1. Adja meg az API számára a API Management belső használatra vonatkozó nevét és leírását, és adja hozzá a "korlátlan" termékhez.
-1. Ügyeljen rá, hogy az alap URL-címet későbbi használatra jegyezze fel, majd kattintson a Létrehozás gombra.
+1. Másolja és jegyezze fel az API alapszintű URL-címét, majd kattintson a Létrehozás gombra.
+1. Kattintson a beállítások fülre, majd az előfizetés elemre, kapcsolja ki az "előfizetés szükséges" jelölőnégyzetet, mert ebben az esetben a OAuth JWT tokent fogjuk használni. Vegye figyelembe, hogy ha a felhasználási szintet használja, akkor az éles környezetben továbbra is szükséges lenne. 
 
-## <a name="configure-oauth2-for-api-management"></a>API Management Oauth2 konfigurálása
+   > [!TIP]
+   > Ha a APIM felhasználási szintjét használja, a korlátlan termék nem lesz elérhető a dobozból. Ehelyett navigáljon a "termékek" elemre az "API-k" alatt, és nyomja meg a "Hozzáadás" lehetőséget.  
+   > Írja be a "korlátlan" kifejezést a terméknév és a Leírás mezőbe, és válassza ki az imént hozzáadott API-t a képernyő bal alsó sarkában található "+" API-ábrafeliratból. Jelölje be a "közzétett" jelölőnégyzetet. Hagyja meg a többi értéket alapértelmezettként. Végül nyomja meg a "létrehozás" gombot. Ezzel létrehozta a "korlátlan" terméket, és hozzárendelte az API-hoz. Az új terméket később is testreszabhatja.
 
-1. Ezután válassza ki a OAuth 2,0 panelt a biztonság lapon, és kattintson a "Hozzáadás" gombra.
-1. Adja meg a hozzáadott OAuth-végpont *megjelenítendő nevét* és *leírását* (ezek az értékek a következő lépésben jelennek meg Oauth2-végpontként).
-1. Megadhat bármilyen értéket az ügyfél-regisztrációs oldal URL-címében, mivel ez az érték nem lesz használatban.
-1. Jelölje be az *implicit hitelesítési* engedélyezési típust, és hagyja bejelölve az engedélyezési kód engedélyezésének típusát.
-1. Váltson az *engedélyezési* és *jogkivonat* -végpont mezőire, és adja meg a korábban a jól ismert konfigurációs XML-dokumentumból rögzített értékeket.
-1. Görgessen lefelé, és töltse fel az "erőforrás" nevű *további Body paramétert* a háttérbeli függvény API-ÜGYFELÉnek azonosítójával a Azure ad B2C alkalmazás regisztrációja alatt
-1. Válassza az "ügyfél hitelesítő adatai" lehetőséget, állítsa be az ügyfél-azonosítót a fejlesztői konzol alkalmazásának AZONOSÍTÓJÁRA – ezt a lépést kihagyhatja, ha a felhasználás API Management modellt használja.
-1. Állítsa az ügyfél titkát a korábban rögzített kulcsra – ezt a lépést kihagyhatja, ha a felhasználás API Management modellt használja.
-1. Végül pedig az API Managementtól a későbbi használat érdekében rögzítse az Auth Code-támogatás redirect_uri.
+## <a name="configure-and-capture-the-correct-storage-endpoint-settings"></a>A megfelelő tárolási végpont beállításainak konfigurálása és rögzítése
 
-## <a name="set-up-oauth2-for-your-api"></a>Oauth2 beállítása az API-hoz
-1. Az API a portál bal oldalán jelenik meg a "minden API" szakaszban, majd az API megnyitásához kattintson rá.
-1. Válassza a beállítások lapot.
-1. A beállítások frissítéséhez válassza a "OAuth 2,0" lehetőséget a felhasználói hitelesítés választógombot választva.
-1. Válassza ki a korábban megadott OAuth-kiszolgálót.
-1. Jelölje be a "hatókör felülbírálása" jelölőnégyzetet, és adja meg a háttérbeli API-híváshoz korábban rögzített hatókört.
-
-   > [!NOTE]
-   > Most már van egy API Management-példánya, amely tudja, hogyan kérhet le hozzáférési jogkivonatokat a Azure AD B2Ctól a kérelmek engedélyezéséhez és a Oauth2 Azure Active Directory B2C konfigurációjának megismeréséhez.
-
-## <a name="set-up-the-cors-and-validate-jwt-policies"></a>A **CORS** és a **validate-JWT** szabályzatok beállítása
-
-> A következő részeket kell követni, függetlenül attól, hogy milyen APIM-réteg van használatban. 
-
-1. Váltson vissza a tervezés lapra, és válassza az "összes API" lehetőséget, majd kattintson a kód nézet gombra a szabályzat-szerkesztő megjelenítéséhez.
-1. Szerkessze a bejövő szakaszt, és illessze be az alábbi XML-fájlt, hogy az a következőképpen hangzik.
-
-   ```xml
-   <inbound>
-      <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
-         <openid-config url="https://tenant.b2clogin.com/tenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_MyDefaultPolicy" />
-         <required-claims>
-            <claim name="aud">
-               <value>your-backend-api-application-client-id</value>
-            </claim>
-         </required-claims>
-      </validate-jwt>
-      <cors>
-         <allowed-origins>
-            <origin>*</origin>
-         </allowed-origins>
-         <allowed-methods>
-           <method>GET</method>
-         </allowed-methods>
-         <allowed-headers>
-            <header>*</header>
-         </allowed-headers>
-         <expose-headers>
-           <header>*</header>
-         </expose-headers>
-       </cors>
-   </inbound>
-   ```
-1. Szerkessze az OpenID-config URL-címet, hogy az megfeleljen a regisztrálási vagy bejelentkezési szabályzatok jól ismert Azure AD B2C végpontjának.
-1. Szerkessze a jogcím értékét úgy, hogy az megfeleljen az érvényes alkalmazás-AZONOSÍTÓnak, más néven a háttér API-alkalmazás ügyfél-AZONOSÍTÓjának, és mentse.
-
-   > [!NOTE]
-   > Az API Management mostantól képes válaszolni a JS SPA-alkalmazásokba érkező, több eredetű kérelmekre, és a kérésnek a Function API-ra való továbbítása előtt szabályozni fogja a sávszélesség-korlátozást és a JWT hitelesítési jogkivonat előzetes érvényesítését.
-
-   > [!NOTE]
-   > A következő szakasz nem kötelező, és nem vonatkozik a fejlesztői portált nem támogató **felhasználási** szintre.
-   > Ha nem kívánja használni a fejlesztői portált, vagy nem használhatja azt a felhasználási szint használata óta, ugorja át ezt a lépést, és ugorjon a ["JavaScript-Spa felépítése az API-hoz](#build-the-javascript-spa-to-consume-the-api)" lehetőségre.
-
-## <a name="optional-configure-the-developer-portal"></a>Választható A fejlesztői portál konfigurálása
-
-1. Nyissa meg a Azure AD B2C panelt, és navigáljon az alkalmazás regisztrálásához a fejlesztői portálon
-1. Állítsa be a "válasz URL-címe" bejegyzést arra a megjegyzett értékre, amelyet a API Management korábbi hitelesítési kód engedélyezésének redirect_uri konfigurált.
-
-   Most, hogy a OAuth 2,0 felhasználói hitelesítés engedélyezve van a `Echo API` -ben, a fejlesztői konzol a felhasználó számára hozzáférési jogkivonatot szerez be az API meghívása előtt.
-
-1. Tallózással keresse meg a `Echo API` fejlesztői portálon található bármelyik műveletet, és válassza a **kipróbálás** lehetőséget a fejlesztői konzol létrehozásához.
-1. Jegyezze fel, hogy az **engedélyezési** szakasz egy új eleme, amely az imént hozzáadott engedélyezési kiszolgálónak felel meg.
-1. Válassza az engedélyezési **kód** lehetőséget az engedélyezés legördülő listából, és a rendszer felszólítja, hogy jelentkezzen be az Azure ad-bérlőbe. Ha már bejelentkezett a fiókkal, előfordulhat, hogy a rendszer nem kérdezi le.
-1. A sikeres bejelentkezés után a rendszer egy `Authorization: Bearer` fejlécet ad hozzá a kérelemhez, amely a Azure ad B2C Base64-kódolású hozzáférési jogkivonattal rendelkezik. 
-1. Kattintson a **Küldés** lehetőségre, és az API-t sikeresen meghívhatja.
-
-   > [!NOTE]
-   > Az API Management mostantól képes jogkivonatokat beszerezni a fejlesztői portálon az API teszteléséhez, és képes megérteni a definícióját, és megjeleníti a megfelelő teszt oldalt a fejlesztői portálon.
-
-1. A API Management portál áttekintés paneljén kattintson a fejlesztői portál elemre az API rendszergazdájaként való bejelentkezéshez.
-1. Itt Ön és az API más kiválasztott felhasználói is kipróbálhatják és meghívhatják őket a konzolról.
-1. Válassza a termékek lehetőséget, majd válassza a "korlátlan" lehetőséget, majd válassza ki a korábban létrehozott API-t, és kattintson a "kipróbálás" gombra.
-1. Az API-előfizetési kulcs elrejtésének megszüntetése, és a kérelem URL-címének másolása, amelyre később szükség lesz.
-1. Válassza a implicit lehetőséget is a OAuth-hitelesítés legördülő menüből, és előfordulhat, hogy az itt megadott előugró ablakban kell hitelesítenie magát.
-1. Kattintson a Send (küldés) gombra, és ha minden rendben van, a függvényalkalmazás a Hello-üzenettel kell válaszolnia az API Management használatával egy 200 OK üzenettel és néhány JSON-val.
-
-   > [!NOTE]
-   > Gratulálunk, mostantól Azure AD B2C, API Management és Azure Functions együtt dolgozhat az API-k közzétételével, biztonságossá tételével és felhasználásával. Előfordulhat, hogy észrevette, hogy az API-t a metódus használatával kétszer is biztonságossá teszi, egyszer a API Management OCP-Subscription-Key Fejléctel, és egyszer a következő engedélyekkel: tulajdonos JWT.
-   > Helyes lenne, mivel ez a példa egy JavaScript-alapú egyoldalas alkalmazás, a API Management kulcsot csak a ráta-korlátozási és számlázási hívások esetében használjuk.
-   > A tényleges engedélyezést és hitelesítést a Azure AD B2C kezeli, és a rendszer a JWT ágyazja be, amely API Management, egyszer pedig a Azure Functions alapján érvényesítve lesz.
-
-## <a name="build-the-javascript-spa-to-consume-the-api"></a>A JavaScript SPA felépítése az API használatára
 1. Nyissa meg a Storage-fiókok panelt a Azure Portal 
 1. Válassza ki a létrehozott fiókot, és válassza a "statikus webhely" panelt a beállítások szakaszban (ha nem jelenik meg a "statikus webhely" beállítás, ellenőrizze, hogy létrehozott-e v2-fiókot).
 1. Állítsa a statikus web hosting szolgáltatást "engedélyezve" értékre, és állítsa az index dokumentum nevét "index.html" értékre, majd kattintson a Save (Mentés) gombra.
-1. Jegyezze fel az elsődleges végpont tartalmát, mivel ez a hely, ahol a előtér-helyet üzemeltetni fogja. 
+1. Jegyezze fel később az "elsődleges végpont" tartalmát, mivel ez a hely, ahol a előtér-helyet üzemeltetni fogja.
+
+   > [!TIP]
+   > Használhatja az Azure Blob Storage + CDN újraírását, vagy Azure App Service a SPA üzemeltetéséhez, de a Blob Storage statikus webhely-üzemeltetési funkciója egy alapértelmezett tárolót biztosít számunkra, amely az Azure Storage-ban statikus webes tartalmakat, illetve HTML/js-t/CSS-t szolgál ki, és egy alapértelmezett oldalt fog kikövetkeztetni a nulla működés érdekében.
+
+## <a name="set-up-the-cors-and-validate-jwt-policies"></a>A **CORS** és a **validate-JWT** szabályzatok beállítása
+
+> A következő részeket kell követni, függetlenül attól, hogy milyen APIM-réteg van használatban. A Storage-fiók URL-címe abból a Storage-fiókból származik, amelyet a cikk elején lévő előfeltételekben elérhetővé tesz.
+1. Váltson a portál API Management paneljére, és nyissa meg a példányát.
+1. Válassza az API-k lehetőséget, majd válassza az "összes API" lehetőséget.
+1. A "bejövő feldolgozás" alatt kattintson a "</>" kód nézetre a szabályzat-szerkesztő megjelenítéséhez.
+1. Szerkessze a bejövő szakaszt, és illessze be az alábbi XML-fájlt, hogy az a következőképpen hangzik.
+1. A szabályzat következő paramétereinek cseréje
+1. {PrimaryStorageEndpoint} (Az előző szakaszban másolt elsődleges tárolási végpontot), a {Szabályzathoz-Well-known-OpenID} (a korábban másolt "jól ismert" OpenID konfigurációs végpontot ") és a {backend-API-Application-Client-ID} (B2C-alkalmazás/ügyfél-azonosító a **háttérrendszer API**-hoz) a korábban mentett megfelelő értékekkel.
+1. Ha a API Management fogyasztási szintjét használja, akkor mindkét díjszabási korlátot el kell távolítania, mivel ez a házirend nem érhető el az Azure-API Management energiafogyasztási szintje használata esetén.
+
+   ```xml
+   <inbound>
+      <cors allow-credentials="true">
+            <allowed-origins>
+                <origin>{PrimaryStorageEndpoint}</origin>
+            </allowed-origins>
+            <allowed-methods preflight-result-max-age="120">
+                <method>GET</method>
+            </allowed-methods>
+            <allowed-headers>
+                <header>*</header>
+            </allowed-headers>
+            <expose-headers>
+                <header>*</header>
+            </expose-headers>
+        </cors>
+      <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid." require-expiration-time="true" require-signed-tokens="true" clock-skew="300">
+         <openid-config url="{b2cpolicy-well-known-openid}" />
+         <required-claims>
+            <claim name="aud">
+               <value>{backend-api-application-client-id}</value>
+            </claim>
+         </required-claims>
+      </validate-jwt>
+      <rate-limit-by-key calls="300" renewal-period="120" counter-key="@(context.Request.IpAddress)" />
+      <rate-limit-by-key calls="15" renewal-period="60" counter-key="@(context.Request.Headers.GetValueOrDefault("Authorization","").AsJwt()?.Subject)" />
+   </inbound>
+   ```
 
    > [!NOTE]
-   > Használhat Azure Blob Storage + CDN-újraírást, vagy Azure App Service, de a Blob Storage statikus webhely-üzemeltetési funkciója egy alapértelmezett tárolót biztosít számunkra, amely az Azure Storage-ban statikus webtartalomot/HTML/js/CSS-t szolgál ki, és a nulla működéshez az alapértelmezett oldalt következteti ki számunkra.
+   > Az Azure API Management mostantól képes reagálni a JavaScript SPA-alkalmazásokból származó kereszthivatkozásokra, és a kérésnek a Function API-ra való továbbítása előtt a JWT hitelesítési token korlátozását és előzetes érvényesítését fogja végezni.
+   > 
+   > Gratulálunk, mostantól Azure AD B2C, API Management és Azure Functions együtt dolgozhat az API-k közzétételével, biztonságossá tételével és felhasználásával.
 
-## <a name="upload-the-js-spa-sample"></a>A JS SPA-minta feltöltése
-1. Továbbra is a Storage-fiók panelen jelölje ki a "Blobok" panelt a blob szolgáltatás szakaszban, majd kattintson a jobb oldali ablaktáblán megjelenő $web tárolóra.
+   > [!TIP]
+   > Ha a API Management használati szintet használja, és a JWT tulajdonos vagy a bejövő IP-cím alapján korlátozza a korlátozást (a hívások korlátozása a kulcsfontosságú házirend szerint nem támogatott a "fogyasztás" szinten), akkor a hívási arány kvótája [itt](./api-management-access-restriction-policies.md#LimitCallRate)látható.  
+   > Mivel ez a példa egy JavaScript-alapú egyoldalas alkalmazás, a API Management kulcsot csak a ráta-korlátozási és számlázási hívások esetében használjuk. A tényleges engedélyezést és hitelesítést Azure AD B2C kezeli, és a rendszer a JWT ágyazza be, amely a API Management, majd a háttérbeli Azure-függvény által kétszer érvényesítve lesz.
+
+## <a name="upload-the-javascript-spa-sample-to-static-storage"></a>A JavaScript SPA-minta feltöltése statikus tárolóba
+
+1. Továbbra is a Storage-fiók panelen válassza a "tárolók" panelt a blob szolgáltatás szakaszban, majd kattintson a jobb oldali ablaktáblán megjelenő $web tárolóra.
 1. Mentse az alábbi kódot egy, a gépen helyileg található fájlba index.html néven, majd töltse fel a index.html fájlt a $web tárolóba.
 
    ```html
-   <!doctype html>
-   <html lang="en">
-   <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Sample JS SPA</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-   </head>
-   <body>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark">
-                        <a class="navbar-brand" href="#">Sample Code</a>
-                        <ul class="navbar-nav ml-md-auto">
-                            <li class="nav-item dropdown">
-                                <a class="btn btn-large btn-success" onClick="login()">Sign In</a>
-                            </li>
-                        </ul>
+    <!doctype html>
+    <html lang="en">
+    <head>
+         <meta charset="utf-8">
+         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+         <script type="text/javascript" src="https://alcdn.msauth.net/browser/2.11.1/js/msal-browser.min.js"></script>
+    </head>
+    <body>
+         <div class="container-fluid">
+             <div class="row">
+                 <div class="col-md-12">
+                    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                        <div class="container-fluid">
+                            <a class="navbar-brand" href="#">Azure Active Directory B2C with Azure API Management</a>
+                            <div class="navbar-nav">
+                                <button class="btn btn-success" id="signinbtn"  onClick="login()">Sign In</a>
+                            </div>
+                        </div>
                     </nav>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="jumbotron">
-                        <h2>
-                    <div id="message">Hello, world!</div>
-                    </h2>
-                        <p>
-                            <a class="btn btn-primary btn-large" onClick="GetAPIData()">Call API</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.0/js/msal.js"></script>
-        <script lang="javascript">
-            var applicationConfig = {
-                clientID: "clientidgoeshere",
-                authority: "https://tenant.b2clogin.com/tfp/tenant/policy",
-                b2cScopes: ["https://tenant/app/scope"],
-                webApi: 'http://functionurl',
-                subKey: 'apimkeygoeshere'
-            };
-            var msalConfig = {
-                auth: {
-                        clientId: applicationConfig.clientID, 
-                        authority:  applicationConfig.authority,
-                        validateAuthority: false
-                },
-                cache: {
-                        cacheLocation: "localStorage",
-                        storeAuthStateInCookie: true
+                 </div>
+             </div>
+             <div class="row">
+                 <div class="col-md-12">
+                     <div class="card" >
+                        <div id="cardheader" class="card-header">
+                            <div class="card-text"id="message">Please sign in to continue</div>
+                        </div>
+                        <div class="card-body">
+                            <button class="btn btn-warning" id="callapibtn" onClick="getAPIData()">Call API</a>
+                            <div id="progress" class="spinner-border" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <script lang="javascript">
+                // Just change the values in this config object ONLY.
+                var config = {
+                    msal: {
+                        auth: {
+                            clientId: "{CLIENTID}", // This is the client ID of your FRONTEND application that you registered with the SPA type in AAD B2C
+                            authority:  "{YOURAUTHORITYB2C}", // Formatted as https://{b2ctenantname}.b2clogin.com/tfp/{b2ctenantguid or full tenant name including onmicrosoft.com}/{signuporinpolicyname}
+                            redirectUri: "{StoragePrimaryEndpoint}", // The storage hosting address of the SPA, a web-enabled v2 storage account - recorded earlier as the Primary Endpoint.
+                            knownAuthorities: ["{B2CTENANTDOMAIN}"] // {b2ctenantname}.b2clogin.com
+                        },
+                        cache: {
+                            cacheLocation: "sessionStorage",
+                            storeAuthStateInCookie: false 
+                        }
+                    },
+                    api: {
+                        scopes: ["{BACKENDAPISCOPE}"], // The scope that we request for the API from B2C, this should be the backend API scope, with the full URI.
+                        backend: "{APIBASEURL}/hello" // The location that we will call for the backend api, this should be hosted in API Management, suffixed with the name of the API operation (in the sample this is '/hello').
+                    }
                 }
-            };
-            var clientApplication = new Msal.UserAgentApplication(msalConfig);
-            function login() {
-                var loginRequest = {
-                    scopes: applicationConfig.b2cScopes
-                };
-                clientApplication.loginPopup(loginRequest).then(function (loginResponse) {
-                    var tokenRequest = {
-                        scopes: applicationConfig.b2cScopes
-                    };
-                    clientApplication.acquireTokenSilent(tokenRequest).then(function (tokenResponse) {
-                        document.getElementById("signinbtn").innerHTML = "Logged in as: " + clientApplication.account.name;
-                        document.getElementById("callapibtn").hidden = false
-                        }).catch(function (error) {
-                            clientApplication.acquireTokenPopup(tokenRequest).then(function (tokenResponse) {
-                                }).catch (function (error) {
-                                    console.log("Error acquiring the popup:\n" + error);
+                document.getElementById("callapibtn").hidden = true;
+                document.getElementById("progress").hidden = true;
+                const myMSALObj = new msal.PublicClientApplication(config.msal);
+                myMSALObj.handleRedirectPromise().then((tokenResponse) => {
+                    if(tokenResponse !== null){
+                        console.log(tokenResponse.account);
+                        document.getElementById("message").innerHTML = "Welcome, " + tokenResponse.account.name;
+                        document.getElementById("signinbtn").hidden = true;
+                        document.getElementById("callapibtn").hidden = false;
+                    }}).catch((error) => {console.log("Error Signing in:" + error);
+                });
+                function login() {
+                    try {
+                        myMSALObj.loginRedirect({scopes: config.api.scopes});
+                    } catch (err) {console.log(err);}
+                }
+                function getAPIData() {
+                    document.getElementById("progress").hidden = false; 
+                    document.getElementById("message").innerHTML = "Calling backend ... "
+                    document.getElementById("cardheader").classList.remove('bg-success','bg-warning','bg-danger');
+                    myMSALObj.acquireTokenSilent({scopes: config.api.scopes, account: getAccount()}).then(tokenResponse => {
+                        const headers = new Headers();
+                        headers.append("Authorization", `Bearer ${tokenResponse.accessToken}`);
+                        fetch(config.api.backend, {method: "GET", headers: headers})
+                            .then(async (response)  => {
+                                if (!response.ok)
+                                {
+                                    document.getElementById("message").innerHTML = "Error: " + response.status + " " + JSON.parse(await response.text()).message;
+                                    document.getElementById("cardheader").classList.add('bg-warning');
+                                }
+                                else
+                                {
+                                    document.getElementById("cardheader").classList.add('bg-success');
+                                    document.getElementById("message").innerHTML = await response.text();
+                                }
+                                }).catch(async (error) => {
+                                    document.getElementById("cardheader").classList.add('bg-danger');
+                                    document.getElementById("message").innerHTML = "Error: " + error;
                                 });
-                        })
-                    }).catch (function (error) {
-                        console.log("Error during login:\n" + error);
-                });
-            }
-            function GetAPIData() {
-                var tokenRequest = {
-                    scopes: applicationConfig.b2cScopes
+                    }).catch(error => {console.log("Error Acquiring Token Silently: " + error);
+                        return myMSALObj.acquireTokenRedirect({scopes: config.api.scopes, forceRefresh: false})
+                    });
+                    document.getElementById("progress").hidden = true;
+             }
+            function getAccount() {
+                var accounts = myMSALObj.getAllAccounts();
+                if (!accounts || accounts.length === 0) {
+                    return null;
+                } else {
+                    return accounts[0];
                 }
-                clientApplication.acquireTokenSilent(tokenRequest).then(function (tokenResponse) {
-                    callApiWithAccessToken(tokenResponse.accessToken);
-                    }).catch(function (error) {
-                        clientApplication.acquireTokenPopup(tokenRequest).then(function (tokenResponse) {
-                            callApiWithAccessToken(tokenResponse.accessToken);
-                            
-                        }).catch(function (error) {
-                            console.log("Error acquiring the access token to call the Web api:\n" + error);
-                        });
-                    })
-            }
-            function callApiWithAccessToken(token)
-            {
-                console.log("calling "  + applicationConfig.webApi +  " with " + token);
-                    // Make the api call here
-                $.ajax({
-                    type: "get",
-                    headers: {'Authorization': 'Bearer ' + token, 'Ocp-Apim-Subscription-Key': applicationConfig.subKey},
-                    url: applicationConfig.webApi
-                }
-                ).done(function (body) {
-                    document.getElementById("message").innerHTML = "The API Said " + body;
-                });
             }
         </script>
-    </body>
-   </html>
-   
+     </body>
+    </html>
    ```
 
 1. Keresse meg az előző szakaszban korábban tárolt statikus webhely elsődleges végpontját.
 
    > [!NOTE]
-   > Gratulálunk, egy JavaScript-alapú egyoldalas alkalmazást helyezett üzembe az Azure Storage-ban, mivel még nem konfigurálta a JS-alkalmazást az API kulcsaival, vagy a JS-alkalmazást még nem konfigurálta a Azure AD B2C részleteivel – a lap még nem fog működni, ha megnyitja.
+   > Gratulálunk, csak egy JavaScript egyoldalas alkalmazást helyezett üzembe az Azure Storage statikus tartalmak üzemeltetéséhez.  
+   > Mivel még nem konfigurálta a JS alkalmazást a Azure AD B2C részleteivel – a lap még nem működik, ha megnyitja.
 
-## <a name="configure-the-js-spa-for-azure-ad-b2c"></a>A JS SPA konfigurálása Azure AD B2Choz
-1. Most már tudjuk, hol vannak: az SPA-t konfigurálhatja a megfelelő API Management API-címnek és a megfelelő Azure AD B2C alkalmazás-/ügyfél-azonosítóknak megfelelően.
-1. Lépjen vissza a Azure Portal Storage panelre, és kattintson a index.html elemre, majd válassza a "blob szerkesztése" lehetőséget. 
-1. Frissítse az Auth részleteit úgy, hogy az megfeleljen a B2C-ben korábban regisztrált előtér-alkalmazásnak, és azt, hogy az "b2cScopes" értékek az API-háttérhez tartoznak.
-1. A webApi kulcs és az API URL-címe az API-művelet API Management teszt paneljén található.
-1. Hozzon létre egy APIM-előfizetési kulcsot fejléc szerint a API Management vissza a API Management panelre, majd válassza az "előfizetések" lehetőséget, és kattintson az "előfizetés hozzáadása" gombra, majd mentse a rekordot. A létrehozott sor melletti három pontra (...) kattintva megjelenítheti a kulcsokat, így az elsődleges kulcs másolását is lehetővé teszi.
-1. A következő kódhoz hasonlóan kell kinéznie:-  
+## <a name="configure-the-javascript-spa-for-azure-ad-b2c"></a>A JavaScript SPA Azure AD B2C konfigurálása
 
-   ```javascript
-   var applicationConfig =
-      clientID: "{aadb2c-clientid-goeshere}",
-      authority: "https://{tenant}.b2clogin.com/{tenant}/{policy}",
-      b2cScopes: ["https://{tenant}/{app}/{scope}"], 
-      webApi: 'http://{apim-url-for-your-function}',
-      subKey: '{apim-subscription-key-goes-here}'
-   };
-   ```
-
+1. Most már tudjuk, hol vannak: az SPA-t konfigurálhatja a megfelelő API Management API-címnek, valamint a megfelelő Azure AD B2C alkalmazás-/ügyfél-azonosítók használatával.
+1. Visszatérés a Azure Portal Storage panelre 
+1. Válassza a tárolók lehetőséget (a beállítások alatt) 
+1. Válassza ki a "$web" tárolót a listából.
+1. index.html blob kiválasztása a listából 
+1. Kattintson a "szerkesztés" gombra. 
+1. Frissítse a msal konfigurációs szakaszban található hitelesítési értékeket a B2C-ben korábban regisztrált *előtér-* alkalmazásnak megfelelően. A kód megjegyzéseit a konfigurációs értékek kikeresésének módjához használhatja.
+A *hitelesítésszolgáltató* értékének a következő formátumúnak kell lennie:-https://{b2ctenantname}. b2clogin. com/TFP/{b2ctenantname}. onmicrosoft. com}/{signupandsigninpolicyname}, ha használta a minta neveit, és a B2C-bérlő neve "contoso", akkor a szolgáltatónak "" értékűnek kell lennie https://contoso.b2clogin.com/tfp/contoso.onmicrosoft.com}/Frontendapp_signupandsignin .
+1. Állítsa be az API-értékeket úgy, hogy megfeleljenek a háttérbeli címnek (a korábban feljegyzett API-alap URL-címet, az "b2cScopes" értékeket pedig korábban rögzítették a *háttérbeli alkalmazásnál*).
 1. Kattintson a Save (Mentés) gombra.
 
 ## <a name="set-the-redirect-uris-for-the-azure-ad-b2c-frontend-app"></a>Az átirányítási URI-k beállítása a Azure AD B2C előtér-alkalmazáshoz
-1. Nyissa meg a Azure AD B2C panelt, és navigáljon az alkalmazás regisztrációja a JavaScript frontend-alkalmazáshoz
-1. Állítsa be az átirányítási URL-címet arra a megjegyzett értékre, amikor korábban már beállította a statikus webhely elsődleges végpontját
 
-   > [!NOTE] 
-   > Ez a konfiguráció azt eredményezi, hogy az előtér-alkalmazás egy olyan hozzáférési jogkivonatot kap, amely a Azure AD B2Ctól megfelelő jogcímeket fogad.
-   > A SPA a háttér-API hívásakor a https-fejlécben szereplő tulajdonosi jogkivonatként fogja tudni felvenni ezt a tulajdonságot.
-   > API Management előre érvényesíti a tokent, és az előfizetői kulcs korlátozza a végpont felé irányuló hívásokat, mielőtt átadná a kérést az Azure Function API-nak.
-   > A SPA a választ a böngészőben fogja megjeleníteni.
-
-   > *Gratulálunk, Ön konfigurálta Azure AD B2C, Azure API Management, Azure Functions Azure App Service engedélyezését, hogy tökéletes harmóniában működjön!*
+1. Nyissa meg a Azure AD B2C panelt, és navigáljon az alkalmazás regisztrálásához a JavaScript frontend alkalmazáshoz.
+1. Kattintson az "URI-k átirányítása" elemre, és törölje a https://jwt.ms korábban megadott helyőrzőt.
+1. Adjon hozzá egy új URI-t az elsődleges (tárolási) végponthoz (mínusz a záró perjel).
 
    > [!NOTE]
-   > Most már van egy egyszerű alkalmazásunk egy egyszerű, biztonságos API-val, teszteljük.
+   > Ez a konfiguráció azt eredményezi, hogy az előtér-alkalmazás egy olyan hozzáférési jogkivonatot kap, amely a Azure AD B2Ctól megfelelő jogcímeket fogad.  
+   > A SPA a háttér-API hívásakor a https-fejlécben szereplő tulajdonosi jogkivonatként fogja tudni felvenni ezt a tulajdonságot.  
+   > 
+   > API Management a tokent előzetesen érvényesíti, és az Azure ID (a felhasználó) által kiállított JWT, valamint a hívó IP-címe (az API Management szolgáltatási szintjétől függően a fenti megjegyzést tekinti meg), mielőtt átadná a kérést az Azure Function API-nak, adja hozzá a functions biztonsági kulcsot.  
+   > A SPA a választ a böngészőben fogja megjeleníteni.
+   >
+   > *Gratulálunk, Ön konfigurálta Azure AD B2C, Azure API Management, Azure Functions Azure App Service engedélyezését, hogy tökéletes harmóniában működjön!*
+
+Most már van egy egyszerű alkalmazásunk egy egyszerű, biztonságos API-val, teszteljük.
 
 ## <a name="test-the-client-application"></a>Az ügyfélalkalmazás tesztelése
-1. Nyissa meg a korábban létrehozott Storage-fiókban megjegyzett minta alkalmazás URL-címét
+
+1. Nyissa meg a korábban létrehozott Storage-fiókban megjegyzett minta alkalmazás URL-címét.
 1. Kattintson a "Bejelentkezés" gombra a jobb felső sarokban, ez a gombra kattintva megnyithatja a Azure AD B2C regisztrációs vagy bejelentkezési profilját.
-1. A JWT a képernyő "bejelentkezett" szakaszába való beléptetése után jelenik meg.
-1. Most kattintson a "webes API hívása" lehetőségre, és a lapon a biztonságos API-ból visszaadott értékeket kell frissítenie.
+1. Az alkalmazásnak a B2C-profil neve alapján kell megjelennie.
+1. Most kattintson a "hívás API" elemre, és a lapon frissítse a biztonságos API-ból visszaadott értékeket.
+1. Ha *többször* is rákattint a hívási API gombra, és a fejlesztői szinten vagy a API Managementon fut, vegye figyelembe, hogy a megoldás megkezdi az API korlátozását, és ezt a funkciót a megfelelő üzenettel kell jelenteni az alkalmazásban.
 
 ## <a name="and-were-done"></a>És készen vagyunk
+
 A fenti lépések módosíthatók és szerkeszthetők úgy, hogy a Azure AD B2C számos különböző felhasználási igényét lehetővé tegyék a API Management.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
+
 * További információ a [Azure Active Directory és a OAuth 2.0-s](../active-directory/develop/authentication-vs-authorization.md)verzióról.
 * További [videók](https://azure.microsoft.com/documentation/videos/index/?services=api-management) a API Managementról.
 * A háttér-szolgáltatás biztonságossá tételének egyéb módjaival kapcsolatban lásd: [kölcsönös Tanúsítványos hitelesítés](api-management-howto-mutual-certificates.md).

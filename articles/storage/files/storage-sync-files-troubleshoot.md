@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 2/1/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 534f9e76cfca4037634cfca089f1131984456636
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: f54156ed8cc4c049e10bada77a66eee084f7c5fb
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820704"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453274"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -74,8 +74,8 @@ Az az vagy a AzureRM modul a PowerShell 5,1-ben történő telepítéséhez hajt
 
 1. Írja be a **PowerShell** parancsot egy rendszergazda jogú parancssorba, és nyomja le az ENTER billentyűt.
 2. Telepítse a legújabb az vagy AzureRM modult a dokumentációt követve:
-    - [Az Module (.NET 4.7.2 szükséges)](/powershell/azure/install-az-ps?viewFallbackFrom=azps-1.1.0)
-    - [AzureRM modul]( https://go.microsoft.com/fwlink/?linkid=856959)
+    - [Az Module (.NET 4.7.2 szükséges)](/powershell/azure/install-az-ps)
+    - [AzureRM modul](https://go.microsoft.com/fwlink/?linkid=856959)
 3. Futtassa a ServerRegistration.exe alkalmazást, és fejezze be a varázslót, hogy regisztrálja a kiszolgálót a Storage Sync szolgáltatással.
 
 <a id="server-already-registered"></a>**A kiszolgáló regisztrálása a következő üzenetet jeleníti meg: "Ez a kiszolgáló már regisztrálva van"** 

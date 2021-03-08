@@ -10,12 +10,12 @@ ms.custom: devx-track-dotnet, devx-track-azurecli
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: 39c50f539c04a6c49316f4541c759859be861f9d
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: b3e0bcad7beccc31e1772fbb24ffad7f502b8140
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095519"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454243"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>Alkalmazás-konfigurációs tárolók automatikus biztonsági mentése
 
@@ -137,7 +137,7 @@ Annak érdekében, hogy megkönnyítse az adatai biztonsági mentését, [teszte
 
 Ha a korábban megadott mintakód nem felel meg a követelményeknek, saját függvényt is létrehozhat. A biztonsági mentés befejezéséhez a függvénynek képesnek kell lennie a következő feladatok végrehajtására:
 - Rendszeresen olvassa el a várólista tartalmát, és ellenőrizze, hogy tartalmaz-e értesítéseket a Event Gridról. A megvalósítás részleteiért tekintse meg a [Storage ÜZENETSOR SDK](../storage/queues/storage-quickstart-queues-dotnet.md) -t.
-- Ha a várólista [Event Grid származó esemény-értesítéseket](./concept-app-configuration-event.md?branch=pr-en-us-112982#event-schema)tartalmaz, bontsa `<key, label>` ki az esemény üzeneteiből származó összes egyedi információt. A kulcs és a címke kombinációja az elsődleges tároló kulcs-érték változásainak egyedi azonosítója.
+- Ha a várólista [Event Grid származó esemény-értesítéseket](./concept-app-configuration-event.md#event-schema)tartalmaz, bontsa `<key, label>` ki az esemény üzeneteiből származó összes egyedi információt. A kulcs és a címke kombinációja az elsődleges tároló kulcs-érték változásainak egyedi azonosítója.
 - Az elsődleges tároló összes beállításának olvasása. Csak azokat a beállításokat frissítse a másodlagos tárolóban, amelyek megfelelő eseménnyel rendelkeznek a várólistában. Törölje az összes olyan beállítást a másodlagos tárolóból, amely szerepel a várólistában, de az elsődleges tárolóban nem. Az [app CONFIGURATION SDK](https://github.com/Azure/AppConfiguration#sdks) használatával programozott módon érheti el a konfigurációs tárolókat.
 - Üzenetek törlése a sorból, ha a feldolgozás során nem történt kivétel.
 - A hibakezelés megvalósítása igény szerint. Tekintse át az előző kódrészletet, hogy lásson néhány olyan gyakori kivételt, amelyet érdemes lehet kezelni.

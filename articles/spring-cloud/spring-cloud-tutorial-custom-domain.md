@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: d06a6eb8b504f2c5dd09de70d79f50a3ed5d89a3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 6b2134ffd414aed3ed6561fb34544094eb52baa0
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844727"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452475"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Meglévő egyéni tartomány leképezése az Azure Spring Cloud-ra
 
@@ -82,7 +82,7 @@ A tanúsítvány feltöltése a Key vaultba:
 1. A **tanúsítvány létrehozása** párbeszédpanel **tanúsítvány létrehozása módjában** válassza a lehetőséget `Import` .
 1. A **tanúsítványfájl feltöltése** területen navigáljon a tanúsítvány helyére, és jelölje ki.
 1. A **jelszó** területen adja meg a tanúsítvány titkos kulcsát.
-1. Kattintson a **Létrehozás** gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 
     ![1. tanúsítvány importálása](./media/custom-dns-tutorial/import-certificate-a.png)
 
@@ -104,7 +104,7 @@ A tanúsítvány importálása előtt Azure Spring Cloud-hozzáférést kell biz
 
 | Titkos engedély | Tanúsítvány engedélye | Rendszerbiztonsági tag kiválasztása |
 |--|--|--|
-| Beolvasás, Listázás | Beolvasás, Listázás | Azure Spring Cloud Domain-Management |
+| Lekérés, Listázás | Lekérés, Listázás | Azure Spring Cloud Domain-Management |
 
 ![2. tanúsítvány importálása](./media/custom-dns-tutorial/import-certificate-b.png)
 
@@ -156,7 +156,7 @@ Nyissa meg a DNS-szolgáltatót, és adjon hozzá egy CNAME-rekordot a tartomán
 ![DNS-rekordok oldala](./media/custom-dns-tutorial/dns-records.png)
 
 ## <a name="map-your-custom-domain-to-azure-spring-cloud-app"></a>Egyéni tartomány leképezése az Azure Spring Cloud-alkalmazásra
-Ha nem rendelkezik alkalmazással az Azure Spring Cloud-ban, kövesse a rövid útmutató [: meglévő Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával](https://review.docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-portal?branch=master)című témakör utasításait.
+Ha nem rendelkezik alkalmazással az Azure Spring Cloud-ban, kövesse a rövid útmutató [: meglévő Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával](/azure/spring-cloud/spring-cloud-quickstart-launch-app-portal)című témakör utasításait.
 
 #### <a name="portal"></a>[Portál](#tab/Azure-portal)
 Ugrás az alkalmazás oldalra.
@@ -223,7 +223,7 @@ az spring-cloud app update -n <app name> --resource-group <resource group name> 
 ---
 Ha a művelet befejeződött, navigáljon az alkalmazására mutató HTTPS URL-címek bármelyikéhez. Vegye figyelembe, hogy a HTTP-URL-címek nem működnek.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 * [Mi az Azure Key Vault?](../key-vault/general/overview.md)
 * [Tanúsítvány importálása](../key-vault/certificates/certificate-scenarios.md#import-a-certificate)
 * [A Spring Cloud-alkalmazás elindítása az Azure CLI használatával](./spring-cloud-quickstart.md)

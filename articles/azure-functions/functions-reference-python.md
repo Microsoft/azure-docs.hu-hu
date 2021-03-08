@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan fejlesztheti a függvényeket a Python használ
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 0829ef9a6b63866c2527e521ed7edf48a3249392
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 3eb3b3b015f401e872a879c46ec6f8c69df5f87f
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102044255"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455416"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python fejlesztői útmutató
 
@@ -51,7 +51,7 @@ def main(req: azure.functions.HttpRequest) -> str:
     return f'Hello, {user}!'
 ```
 
-Használja az [Azure. functions. *](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true) csomagban található Python-megjegyzéseket a bemenetek és kimenetek a metódusokhoz való kötéséhez.
+Használja az [Azure. functions. *](/python/api/azure-functions/azure.functions) csomagban található Python-megjegyzéseket a bemenetek és kimenetek a metódusokhoz való kötéséhez.
 
 ## <a name="alternate-entry-point"></a>Másodlagos belépési pont
 
@@ -199,7 +199,7 @@ A kimenet a visszatérési értékben és a kimeneti paraméterekben is kifejezh
 
 Egy függvény visszatérési értékének egy kimeneti kötés értékeként való használatához a `name` kötés tulajdonságát a következő értékre kell beállítani `$return` : `function.json` .
 
-Több kimenet létrehozásához használja a `set()` csatoló által biztosított metódust, [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) amellyel egy értéket rendelhet a kötéshez. A következő függvény például leküldheti az üzeneteket egy várólistába, és HTTP-választ is küldhet.
+Több kimenet létrehozásához használja a `set()` csatoló által biztosított metódust, [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out) amellyel egy értéket rendelhet a kötéshez. A következő függvény például leküldheti az üzeneteket egy várólistába, és HTTP-választ is küldhet.
 
 ```json
 {
@@ -306,7 +306,7 @@ A Python functions-alkalmazások méretezésére és teljesítményére vonatkoz
 
 ## <a name="context"></a>Környezet
 
-Ha egy függvény hívási környezetét szeretné lekérni a végrehajtás során, adja [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) meg az argumentumot az aláírásában.
+Ha egy függvény hívási környezetét szeretné lekérni a végrehajtás során, adja [`context`](/python/api/azure-functions/azure.functions.context) meg az argumentumot az aláírásában.
 
 Például:
 
@@ -319,7 +319,7 @@ def main(req: azure.functions.HttpRequest,
     return f'{context.invocation_id}'
 ```
 
-A [**környezeti**](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) osztály a következő karakterlánc-attribútumokkal rendelkezik:
+A [**környezeti**](/python/api/azure-functions/azure.functions.context) osztály a következő karakterlánc-attribútumokkal rendelkezik:
 
 `function_directory` Az a címtár, amelyben a függvény fut.
 
@@ -640,7 +640,7 @@ Az összes ismert probléma és szolgáltatás kérését a [GitHub-problémák]
 
 További információkat találhat az alábbi forrásokban:
 
-* [Azure Functions csomag API-dokumentációja](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true)
+* [Azure Functions csomag API-dokumentációja](/python/api/azure-functions/azure.functions)
 * [Azure Functions – ajánlott eljárások](functions-best-practices.md)
 * [Eseményindítók és kötések Azure Functions](functions-triggers-bindings.md)
 * [BLOB Storage-kötések](functions-bindings-storage-blob.md)
@@ -651,5 +651,5 @@ További információkat találhat az alábbi forrásokban:
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/python-functions-ref-survey)
 
 
-[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python&preserve-view=true
-[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python&preserve-view=true
+[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest
+[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse

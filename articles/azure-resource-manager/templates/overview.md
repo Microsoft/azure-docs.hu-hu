@@ -2,13 +2,13 @@
 title: Sablonok – Áttekintés
 description: A Azure Resource Manager-sablonok (ARM-sablonok) használatának előnyeit ismerteti az erőforrások üzembe helyezéséhez.
 ms.topic: conceptual
-ms.date: 03/03/2021
-ms.openlocfilehash: 7f850d06066a6892db9f17ae86a6bba9496bad58
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/08/2021
+ms.openlocfilehash: 3a144b69f69c90b997b17d9526c9c3e0f259c554
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046380"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455735"
 ---
 # <a name="what-are-arm-templates"></a>Mik azok az ARM-sablonok?
 
@@ -111,6 +111,15 @@ REQUEST BODY
 ```
 
 Figyelje meg, hogy az erőforrás sablonjában beállított **apiVersion** a REST-művelet API-verziójaként szolgál. A sablon többször is üzembe helyezhető, és biztos lehet abban, hogy továbbra is működni fog. Ha ugyanazt az API-verziót használja, nem kell aggódnia a későbbi verziókban esetlegesen bevezetett változtatások miatt.
+
+Sablon üzembe helyezéséhez használja a következő lehetőségek bármelyikét:
+
+* [Azure Portal](deploy-portal.md)
+* [Azure CLI](deploy-cli.md)
+* [PowerShell](deploy-powershell.md)
+* [REST API](deploy-rest.md)
+* [Gomb a GitHub-tárházban](deploy-to-azure-button.md)
+* [Azure Cloud Shell](deploy-cloud-shell.md)
 
 ## <a name="template-design"></a>Sablon kialakítása
 

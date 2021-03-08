@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 03/03/2021
-ms.openlocfilehash: c466d7717dd1dad0ea9ee3f44088d1400cee083f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/08/2021
+ms.openlocfilehash: c24512ad38f9397c9a40a85489c45fcb0de906b3
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048182"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453801"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Az Azure Sentinel újdonságai
 
@@ -32,9 +32,26 @@ A feljegyzett funkciók jelenleg előzetes verzióban érhetők el. Az [Azure el
 
 ## <a name="february-2021"></a>2021. február
 
+- [Kiberbiztonsági érettségi modell minősítési (CMMC) munkafüzet](#cybersecurity-maturity-model-certification-cmmc-workbook)
 - [Harmadik féltől származó adatösszekötők](#third-party-data-connectors)
 - [UEBA az entitások oldalán](#ueba-insights-in-the-entity-page)
 - [Javított incidensek keresése](#improved-incident-search)
+
+### <a name="cybersecurity-maturity-model-certification-cmmc-workbook"></a>Kiberbiztonsági érettségi modell minősítési (CMMC) munkafüzet
+
+Az Azure Sentinel CMMC munkafüzete lehetővé teszi a CMMC-vezérlőkhöz igazított naplók megtekintését a Microsoft portfóliójában, beleértve a Microsoft biztonsági ajánlatait, az Office 365, a Teams, az Intune, a Windows Virtual Desktop és sok más funkciót.
+
+A CMMC-munkafüzet lehetővé teszi a biztonsági építészek, mérnökök, biztonsági műveleti elemzők, vezetők és informatikai szakemberek számára, hogy a Felhőbeli számítási feladatok biztonsági helyzetének megfelelő helyzetet kapjanak. A Microsoft ajánlatok kiválasztására, tervezésére, üzembe helyezésére és konfigurálására vonatkozó javaslatok a megfelelő CMMC követelményekkel és eljárásokkal való összehangolásra is vonatkoznak.
+
+Még ha nem is kell megfelelnie a CMMC, a CMMC-munkafüzet hasznos lehet a biztonsági üzemeltetési központok kiépítésében, a riasztások fejlesztésében, a fenyegetések megjelenítésében és a számítási feladatok helyzetének megismerésében.
+
+Nyissa meg a CMMC-munkafüzetet az Azure Sentinel- **munkafüzetek** területén. Válassza a **sablon** lehetőséget, majd keresse meg a **CMMC**.
+
+További információkért lásd:
+
+- [Azure Sentinel kiberbiztonsági érettségi modell minősítési (CMMC) munkafüzet](https://techcommunity.microsoft.com/t5/public-sector-blog/azure-sentinel-cybersecurity-maturity-model-certification-cmmc/ba-p/2110524)
+- [Oktatóanyag: Az adatok megjelenítése és figyelése](tutorial-monitor-your-data.md)
+
 
 ### <a name="third-party-data-connectors"></a>Harmadik féltől származó adatösszekötők
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: afa782df8666413356fa334bf4e9dcb989b87c2f
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: c38a6236fe3ad9164d11d94e5563a7dddf5b4b32
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102441353"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452781"
 ---
 # <a name="use-runbooks-and-modules-in-powershell-gallery"></a>Runbookok és modulok használata a PowerShell-galériában
 
@@ -51,11 +51,11 @@ Az alábbi lista néhány olyan runbookok tartalmaz, amelyek támogatják a gyak
 1. **Forrás kiválasztása: PowerShell-Galéria**. Itt láthatja a böngészhető elérhető runbookok listáját.
 1. A lista feletti keresőmező használatával szűkítheti a listát, vagy a szűrők segítségével szűkítheti a megjelenítést a közzétevő, a típus és a rendezés alapján. Keresse meg a kívánt katalógus-elemet, és válassza ki azt a részletek megtekintéséhez.
 
-   :::image type="content" source="media/automation-runbook-gallery/browse-gallery-sm.png" alt-text="A runbook-gyűjtemény tallózása" lightbox="media/automation-runbook-gallery/browse-gallery-lg.png":::
+   :::image type="content" source="media/automation-runbook-gallery/browse-gallery-sm.png" alt-text="Böngészés a runbook-galériában." lightbox="media/automation-runbook-gallery/browse-gallery-lg.png":::
 
 1. Egy elem importálásához kattintson az **Importálás** gombra a részletek panelen.
 
-   :::image type="content" source="media/automation-runbook-gallery/gallery-item-detail-sm.png" alt-text="Runbook-gyűjtemény részleteinek megjelenítése" lightbox="media/automation-runbook-gallery/gallery-item-detail-lg.png":::
+   :::image type="content" source="media/automation-runbook-gallery/gallery-item-detail-sm.png" alt-text="Egy runbook-gyűjtemény elem részleteinek megjelenítése" lightbox="media/automation-runbook-gallery/gallery-item-detail-lg.png":::
 
 1. Igény szerint módosítsa a runbook nevét, majd kattintson az **OK** gombra a runbook importálásához.
 1. A runbook megjelenik az Automation-fiók **runbookok** lapján.
@@ -67,11 +67,11 @@ Az alábbi lista néhány olyan runbookok tartalmaz, amelyek támogatják a gyak
 1. **Forrás kiválasztása: GitHub**.
 1. A lista feletti szűrők használatával szűkítheti a megjelenítést a közzétevő, a típus és a rendezés alapján. Keresse meg a kívánt katalógus-elemet, és válassza ki azt a részletek megtekintéséhez.
 
-   :::image type="content" source="media/automation-runbook-gallery/browse-gallery-github-sm.png" alt-text="Böngészés a GitHub-galériában" lightbox="media/automation-runbook-gallery/browse-gallery-github-lg.png":::
+   :::image type="content" source="media/automation-runbook-gallery/browse-gallery-github-sm.png" alt-text="Böngészés a GitHub-galériában." lightbox="media/automation-runbook-gallery/browse-gallery-github-lg.png":::
 
 1. Egy elem importálásához kattintson az **Importálás** gombra a részletek panelen.
 
-   :::image type="content" source="media/automation-runbook-gallery/gallery-item-details-blade-github-sm.png" alt-text="Egy runbook részletes nézete a GitHub-galériából" lightbox="media/automation-runbook-gallery/gallery-item-details-blade-github-lg.png":::
+   :::image type="content" source="media/automation-runbook-gallery/gallery-item-details-blade-github-sm.png" alt-text="Egy runbook részletes nézete a GitHub-galériából." lightbox="media/automation-runbook-gallery/gallery-item-details-blade-github-lg.png":::
 
 1. Igény szerint módosítsa a runbook nevét, majd kattintson az **OK** gombra a runbook importálásához.
 1. A runbook megjelenik az Automation-fiók **runbookok** lapján.
@@ -99,7 +99,7 @@ A Microsoft azt javasolja, hogy runbookok adjon hozzá a PowerShell-galériahoz,
 
    Egy adott modul részletezésével további információkat jeleníthet meg. Ez az információ tartalmaz egy hivatkozást a PowerShell-galériara, a szükséges függőségekre, valamint az összes olyan parancsmagra vagy DSC-erőforrásra, amelyet a modul tartalmaz.
 
-   :::image type="content" source="media/automation-runbook-gallery/gallery-item-details-blade-sm.png" alt-text="Modul részletes nézete a katalógusból" lightbox="media/automation-runbook-gallery/gallery-item-details-blade-lg.png":::
+   :::image type="content" source="media/automation-runbook-gallery/gallery-item-details-blade-sm.png" alt-text="Egy modul részletes nézete a katalógusból." lightbox="media/automation-runbook-gallery/gallery-item-details-blade-lg.png":::
 
 1. Ha közvetlenül a Azure Automation szeretné telepíteni a modult, kattintson az **Importálás** gombra.
 1. Az importálás ablaktáblán láthatja az importálandó modul nevét. Ha az összes függőség telepítve van, az **OK** gomb aktiválva lesz. Ha a függőségek hiányoznak, ezeket a függőségeket importálnia kell, mielőtt importálni tudja a modult.

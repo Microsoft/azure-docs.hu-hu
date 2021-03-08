@@ -2,14 +2,14 @@
 title: Válassza ki a virtuális gépek méretét és lemezképeit a készletekhez
 description: Az elérhető virtuálisgép-méretek és operációsrendszer-verziók kiválasztása Azure Batch-készletekben lévő számítási csomópontokhoz
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 03/08/2021
 ms.custom: seodec18
-ms.openlocfilehash: de1f61bb2bdc83377887fda726a65c1900f36d55
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 42b8743fac6a6c64e98271490f0bfc4671fa7698
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576701"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455195"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Virtuális gép méretének és rendszerképének kiválasztása Azure Batch készlet számítási csomópontjaihoz
 
@@ -35,13 +35,11 @@ A virtuális gép konfigurációjában a Batch-készletek szinte minden virtuál
 | DC | Nem támogatott |
 | Dv2, DSv2 | Minden méret |
 | Dv3, Dsv3 | Minden méret |
-| Dav4 | Minden méret |
-| Dasv4 | Minden méret |
+| Dav4, Dasv4 | Minden méret |
 | Ddv4, Ddsv4 |  Minden méret |
 | DV4, Dsv4 | Nem támogatott |
 | Ev3, Esv3 | Minden méret, kivéve a E64is_v3 |
-| Eav4 | Minden méret |
-| Easv4 | Minden méret |
+| Eav4, Easv4 | Minden méret |
 | Edv4, Edsv4 |  Minden méret |
 | Ev4, Esv4 | Nem támogatott |
 | F, FS | Minden méret |
@@ -58,7 +56,7 @@ A virtuális gép konfigurációjában a Batch-készletek szinte minden virtuál
 | NC | Minden méret |
 | NCv2 | Minden méret |
 | NCv3 | Minden méret |
-| NCasT4_v3 | Nincs – még nem érhető el |
+| NCasT4_v3 | Minden méret |
 | ND | Minden méret |
 | NDv2 | Nincs – még nem érhető el |
 | NV | Minden méret |

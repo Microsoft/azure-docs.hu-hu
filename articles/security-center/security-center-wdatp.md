@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 02/15/2021
+ms.date: 03/08/2021
 ms.author: memildin
-ms.openlocfilehash: 475c7671636d3aac036e3da1392fc2da9b0a001f
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 17e54dfc5c369a8cbb35db50ff2cbab131d34c2d
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176467"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453767"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>A végpontok Security Center integrált EDR megoldással való ellátása: a Microsoft Defender for Endpoint
 
@@ -38,10 +38,10 @@ A Microsoft Defender for Endpoint egy holisztikus, felhőalapú végponti bizton
 | Kiadás állapota:                  | Általánosan elérhető (GA)                                                                                                                                                                                                                                                                                      |
 | Árképzési                        | [Az Azure Defender for Servers](defender-for-servers-introduction.md) használatát igényli                                                                                                                                                                                                                                             |
 | Támogatott platformok:            |  • Windows rendszerű Azure-gépek<br> • Windows rendszerű Azure arc-gépek|
-| A Windows támogatott verziói:  |  • **Általánosan elérhető (GA) –** észlelés a Windows Server 2016, 2012 r2 és 2008 R2 SP1 rendszeren<br> • **Előzetes verzió –** észlelés a windows Server 2019, a [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md)és a [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.md) (korábban Enterprise for Virtual desktops (EVD) szolgáltatásban<br>Az alábbi integrációkat használó kiszolgálói végpontok figyelése le van tiltva az Office 365 GCC-ügyfelek számára|
+| A Windows támogatott verziói:  |  • **Általánosan elérhető (GA) –** észlelés a Windows Server 2016, 2012 r2 és 2008 R2 SP1 rendszeren<br> • **Előzetes verzió –** észlelés a windows Server 2019, a [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md)és a [Windows 10 Enterprise multi-session](../virtual-desktop/windows-10-multisession-faq.md) (korábban Enterprise for Virtual desktops (EVD) szolgáltatásban|
 | Nem támogatott operációs rendszerek:  |  • Windows 10 (a EVD vagy a WVD kivételével)<br> • Linux|
 | Szükséges szerepkörök és engedélyek: | Az integráció engedélyezése/letiltása: **biztonsági rendszergazda** vagy **tulajdonos**<br>MDATP-riasztások megtekintése a Security Center-ben: **biztonsági olvasó**, **olvasó**, **erőforráscsoport-közreműködő**, **erőforráscsoport-tulajdonos**, **biztonsági rendszergazda**, **előfizetés tulajdonosa** vagy **előfizetéshez tartozó közreműködő**|
-| Felhők                         | ![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov                                                        |
+| Felhők                         | ![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Kínai gov, egyéb gov                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
 
 ## <a name="microsoft-defender-for-endpoint-features-in-security-center"></a>A Microsoft Defender for Endpoint szolgáltatásai Security Center

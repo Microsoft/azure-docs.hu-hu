@@ -6,12 +6,12 @@ ms.author: chugu
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: c268dba51ecf2c2b246c54574ecf3838533b017e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 62bd5d2e70d3a66998907305fecee4dcc87cdb23
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710209"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102451727"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Az Azure SQL felügyelt példányának használata SQL Server Integration Services (SSIS) használatával Azure Data Factory
 
@@ -39,7 +39,7 @@ Most már áthelyezheti SQL Server Integration Services (SSIS) projektjeit, csom
             - Ugyanazon a virtuális hálózaton belül, ahol a felügyelt példány **eltérő alhálózattal** rendelkezik.
             - Egy másik virtuális hálózaton belül, mint a felügyelt példány, virtuális hálózati közvetítéssel (amely az adott régióra korlátozódik a globális VNet-megkötések miatt) vagy virtuális hálózatról virtuális hálózatra való kapcsolódás esetén.
 
-            További információ az SQL felügyelt példányok kapcsolatáról: [az alkalmazás csatlakoztatása az Azure SQL felügyelt példányához](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app).
+            További információ az SQL felügyelt példányok kapcsolatáról: [az alkalmazás csatlakoztatása az Azure SQL felügyelt példányához](/azure/sql-database/sql-database-managed-instance-connect-app).
 
         1. [Konfigurálja a virtuális hálózatot](#configure-virtual-network).
 

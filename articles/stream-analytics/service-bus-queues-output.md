@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 9f71a0f9c6d3fdca4b81be3a69479c78236fcc31
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: ad5bb90a0df68cc6c1c230c234c1f695312da3d8
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014212"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102451779"
 ---
 # <a name="service-bus-queues-output-from-azure-stream-analytics"></a>Service Bus a várólisták kimenetét Azure Stream Analytics
 
@@ -69,9 +69,9 @@ Az alábbi ábrán a EventHub által a [Service Bus Explorer](https://github.com
 
 ## <a name="system-properties"></a>Rendszertulajdonságok
 
-A lekérdezési oszlopokat [rendszertulajdonságként](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true#properties) csatolhatja a kimenő Service Bus-üzenetsor vagy-témakör üzeneteihez.
+A lekérdezési oszlopokat [rendszertulajdonságként](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#properties) csatolhatja a kimenő Service Bus-üzenetsor vagy-témakör üzeneteihez.
 
-Ezek az oszlopok nem lépnek be a hasznos adatokba, hanem a megfelelő BrokeredMessage [rendszertulajdonságot](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true#properties) a lekérdezési oszlop értékeivel töltik fel.
+Ezek az oszlopok nem lépnek be a hasznos adatokba, hanem a megfelelő BrokeredMessage [rendszertulajdonságot](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#properties) a lekérdezési oszlop értékeivel töltik fel.
 Ezek a Rendszertulajdonságok támogatottak – `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc` .
 
 Ezeknek az oszlopoknak a karakterlánc-értékeit a rendszer a megfelelő rendszertulajdonság-érték típusként értelmezi, és az elemzési hibák adathibákként lesznek kezelve.
@@ -91,7 +91,7 @@ Ez a tulajdonság használatát mutatja be –
 
 Ezzel beállítja a `MessageId` Service Bus üzenetsor üzeneteinek `column1` értékeit és a PartitionKey `column2` értékeit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával](stream-analytics-quick-create-portal.md)
 * [Gyors útmutató: Azure Stream Analytics-feladatok létrehozása az Azure CLI használatával](quick-create-azure-cli.md)

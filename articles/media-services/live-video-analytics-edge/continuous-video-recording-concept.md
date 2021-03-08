@@ -3,12 +3,12 @@ title: Folyamatos videofelvétel – Azure
 description: A folyamatos videofelvétel (CVR) arra a folyamatra utal, amely folyamatosan rögzíti a videót a videó forrásaként. Ez a témakör a CVR ismerteti.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 04f09f1968e647c57ba0913a9e7f9e601d045771
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8b25d74db279f8cfff68f08efeab2975484a0c5
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566694"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453750"
 ---
 # <a name="continuous-video-recording"></a>Folyamatos videófelvétel  
 
@@ -19,7 +19,7 @@ ms.locfileid: "89566694"
 
 ## <a name="overview"></a>Áttekintés
 
-A folyamatos videofelvétel (CVR) arra a folyamatra utal, amely folyamatosan rögzíti a videót a videó forrásaként. A IoT Edge élő videó-elemzési szolgáltatás támogatja a videó folyamatos, nonstop-alapú, a CCTV kamerából való rögzítését egy olyan [adathordozó-gráfon](media-graph-concept.md) keresztül, amely egy RTSP-forrás csomópontból és egy eszköz fogadó csomópontból áll. Az alábbi ábrán egy ilyen adathordozó-gráf grafikus ábrázolása látható. Az ilyen adathordozó-gráf [gráf-topológiájának](media-graph-concept.md?branch=release-preview-media-services-lva#media-graph-topologies-and-instances) JSON-ábrázolása [itt](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/cvr-asset)található.
+A folyamatos videofelvétel (CVR) arra a folyamatra utal, amely folyamatosan rögzíti a videót a videó forrásaként. A IoT Edge élő videó-elemzési szolgáltatás támogatja a videó folyamatos, nonstop-alapú, a CCTV kamerából való rögzítését egy olyan [adathordozó-gráfon](media-graph-concept.md) keresztül, amely egy RTSP-forrás csomópontból és egy eszköz fogadó csomópontból áll. Az alábbi ábrán egy ilyen adathordozó-gráf grafikus ábrázolása látható. Az ilyen adathordozó-gráf [gráf-topológiájának](media-graph-concept.md#media-graph-topologies-and-instances) JSON-ábrázolása [itt](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/cvr-asset)található.
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/continuous-video-recording/continuous-video-recording-overview.svg" alt-text="Folyamatos videófelvétel":::

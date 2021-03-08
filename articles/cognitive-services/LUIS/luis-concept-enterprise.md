@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 2e2165b81c7cd634fe79ec4438a550ad365f5a30
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b8110323afda2ad445ffe279030ee7f3035e2b71
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019177"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455399"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>A LUIS-alkalmazás vállalati stratégiái
 Tekintse át ezeket a tervezési stratégiákat a vállalati alkalmazáshoz.
@@ -48,10 +48,10 @@ Ha az alkalmazás célja, hogy előre megjósolja a felhasználói hosszúságú
 Ütemezze a [végpontok hosszúságú kimondott szöveg rendszeres áttekintését](luis-how-to-review-endpoint-utterances.md) az aktív tanuláshoz, például kéthetente, majd az újratanításhoz és az újbóli közzétételhez. 
 
 ## <a name="when-you-need-to-have-more-than-500-intents"></a>Ha több mint 500 szándékkal kell rendelkeznie
-Tegyük fel, hogy olyan Office-Segédet fejleszt, amelynek több mint 500 szándéka van. Ha az 200 szándéka az ütemezési értekezletekhez kapcsolódik, a 200 emlékeztetőket tartalmaz, 200 a munkatársakkal kapcsolatos információk beszerzéséről, az 200 pedig az e-mailek küldéséhez, a csoportos leképezésekhez, hogy az egyes csoportok egyetlen alkalmazásban legyenek, majd hozzon létre egy legfelső szintű alkalmazást, amely tartalmazza az egyes leképezéseket. A legfelső szintű alkalmazás létrehozásához használja a [küldő modellt](#dispatch-tool-and-model) . Ezután módosítsa a robotot a lépcsőzetes hívás használatára a [küldő modell oktatóanyagában](/azure/bot-service/bot-builder-tutorial-dispatch?branch=master&tabs=cs&view=azure-bot-service-4.0)látható módon. 
+Tegyük fel, hogy olyan Office-Segédet fejleszt, amelynek több mint 500 szándéka van. Ha az 200 szándéka az ütemezési értekezletekhez kapcsolódik, a 200 emlékeztetőket tartalmaz, 200 a munkatársakkal kapcsolatos információk beszerzéséről, az 200 pedig az e-mailek küldéséhez, a csoportos leképezésekhez, hogy az egyes csoportok egyetlen alkalmazásban legyenek, majd hozzon létre egy legfelső szintű alkalmazást, amely tartalmazza az egyes leképezéseket. A legfelső szintű alkalmazás létrehozásához használja a [küldő modellt](#dispatch-tool-and-model) . Ezután módosítsa a robotot a lépcsőzetes hívás használatára a [küldő modell oktatóanyagában](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs&view=azure-bot-service-4.0)látható módon. 
 
 ## <a name="when-you-need-to-combine-several-luis-and-qna-maker-apps"></a>Ha több LUIS-és QnA-készítő alkalmazást is össze kell kapcsolni
-Ha több LUIS-és QnA-készítő alkalmazásra van szüksége, amelyeknek egy robotra kell válaszolnia, használja a [küldő modellt](#dispatch-tool-and-model) a legfelső szintű alkalmazás létrehozásához.  Ezután módosítsa a robotot a lépcsőzetes hívás használatára a [küldő modell oktatóanyagában](/azure/bot-service/bot-builder-tutorial-dispatch?branch=master&tabs=cs&view=azure-bot-service-4.0)látható módon. 
+Ha több LUIS-és QnA-készítő alkalmazásra van szüksége, amelyeknek egy robotra kell válaszolnia, használja a [küldő modellt](#dispatch-tool-and-model) a legfelső szintű alkalmazás létrehozásához.  Ezután módosítsa a robotot a lépcsőzetes hívás használatára a [küldő modell oktatóanyagában](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs&view=azure-bot-service-4.0)látható módon. 
 
 ## <a name="dispatch-tool-and-model"></a>Küldő eszköz és modell
 A [botbuilder témakörben-eszközökben](https://github.com/Microsoft/botbuilder-tools) található [küldő][dispatch-tool] parancssori eszköz használatával több Luis-és/vagy QnA Maker-alkalmazást egyesítheti egy szülő Luis-alkalmazásba. Ez a módszer lehetővé teszi, hogy egy szülő tartománnyal rendelkezzen, beleértve az összes tárgyat és a különböző alárendelt tartományokat különálló alkalmazásokban. 
@@ -62,7 +62,7 @@ A szülőtartomány megjegyezte a LUIS-ben egy nevű verziót `Dispatch` az alka
 
 A csevegési robot megkapja a megnyilatkozás, majd az elküldés a szülő LUIS alkalmazást az előrejelzéshez. A fölérendelt alkalmazás első előre jelzett szándéka határozza meg, hogy melyik LUIS Child-alkalmazást hívják tovább. A csevegési robot részletesebb előrejelzést küld a gyermek alkalmazásnak.
 
-Ismerje meg, hogy a rendszer hogyan hívja meg ezt a hierarchiát a Bot Builder v4 [diszpécser-Application-oktatóanyagból](/azure/bot-service/bot-builder-tutorial-dispatch?branch=master&tabs=cs&view=azure-bot-service-4.0).  
+Ismerje meg, hogy a rendszer hogyan hívja meg ezt a hierarchiát a Bot Builder v4 [diszpécser-Application-oktatóanyagból](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs&view=azure-bot-service-4.0).  
 
 ### <a name="intent-limits-in-dispatch-model"></a>Leképezési korlátok a küldő modellben
 A küldő alkalmazásnak 500 elküldési forrása van, amely 500 szándékkal egyenértékű, maximális értékként. 
@@ -70,13 +70,13 @@ A küldő alkalmazásnak 500 elküldési forrása van, amely 500 szándékkal eg
 ## <a name="more-information"></a>További információ
 
 * [Bot Framework SDK](https://github.com/Microsoft/botframework)
-* [Útmutató a küldő modellhez](/azure/bot-service/bot-builder-tutorial-dispatch?branch=master&tabs=cs&view=azure-bot-service-4.0)
+* [Útmutató a küldő modellhez](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs&view=azure-bot-service-4.0)
 * [Küldési CLI](https://github.com/Microsoft/botbuilder-tools)
 * Küldési modell bot Sample- [.net](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch), [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Útmutató [a Batch teszteléséhez](luis-how-to-batch-test.md)
 
-[dispatcher-application-tutorial]: /azure/bot-service/bot-builder-tutorial-dispatch?branch=master
+[dispatcher-application-tutorial]: /azure/bot-service/bot-builder-tutorial-dispatch
 [dispatch-tool]: https://aka.ms/dispatch-tool

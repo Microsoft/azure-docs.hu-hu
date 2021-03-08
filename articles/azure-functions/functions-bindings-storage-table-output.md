@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 825a336b5ad07f50d96b19036d70c759b907bd07
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: f793f96f55a258b2d7cb11f214984416557618df
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102209679"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453002"
 ---
 # <a name="azure-table-storage-output-bindings-for-azure-functions"></a>Azure Table Storage – kimeneti kötések Azure Functions
 
@@ -390,7 +390,7 @@ A Python nem támogatja az attribútumokat.
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `Table` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**típusa** | n.a. | Értékre kell állítani `table` . A rendszer automatikusan beállítja ezt a tulajdonságot, amikor létrehozza a kötést a Azure Portalban.|
 |**irányba** | n.a. | Értékre kell állítani `out` . A rendszer automatikusan beállítja ezt a tulajdonságot, amikor létrehozza a kötést a Azure Portalban. |
@@ -438,7 +438,7 @@ Két lehetőség áll rendelkezésre a táblázatos tárolási sor üzenetének 
 
 - Visszaadott **érték**: állítsa be `name` *function.js* tulajdonságát a értékre `$return` . Ezzel a konfigurációval a függvény visszatérési értéke táblázatos tárolási sorként marad.
 
-- **Elengedhetetlen**: adjon meg egy értéket a [set](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true#set-val--t-----none) metódusnak, amely [kimenő](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) típusként van deklarálva. Az átadott érték az `set` Event hub-üzenetként is megmarad.
+- **Elengedhetetlen**: adjon meg egy értéket a [set](/python/api/azure-functions/azure.functions.out#set-val--t-----none) metódusnak, amely [kimenő](/python/api/azure-functions/azure.functions.out) típusként van deklarálva. Az átadott érték az `set` Event hub-üzenetként is megmarad.
 
 ---
 

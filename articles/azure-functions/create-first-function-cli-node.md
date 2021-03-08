@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre JavaScript-függvényt a parancss
 ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3b14b7d9f97be12a73ffcb2416a00cd4a51bca5f
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: c9810b1eb9e5f6bc65843d65f2f2452eac1be703
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937246"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102447316"
 ---
 # <a name="quickstart-create-a-javascript-function-in-azure-from-the-command-line"></a>Gyors útmutató: JavaScript-függvény létrehozása az Azure-ban a parancssorból
 
@@ -96,7 +96,7 @@ Ha szeretné, kihagyhatja [a függvény helyi futtatását](#run-the-function-lo
 
 :::code language="javascript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-JavaScript/index.js":::
 
-HTTP-trigger esetén a függvény a `req` *function.json* megadottak szerint fogadja a kérelmeket a változóban. A (z `$return` ) *function.jsban* definiált visszatérési objektum a válasz. További információ: [Azure FUNCTIONS http-eseményindítók és-kötések](./functions-bindings-http-webhook.md?tabs=javascript).
+HTTP-trigger esetén a függvény a `req` *function.json* megadottak szerint fogadja a kérelmeket a változóban. A válasz a `res` *function.jsban* van definiálva, és a használatával érhető el `context.res` . További információ: [Azure FUNCTIONS http-eseményindítók és-kötések](./functions-bindings-http-webhook.md?tabs=javascript).
 
 #### <a name="functionjson"></a>function.json
 
@@ -142,7 +142,7 @@ Minden kötéshez meg kell adni egy irányt, egy típust és egy egyedi nevet. A
 
 [!INCLUDE [functions-cleanup-resources-cli](../../includes/functions-cleanup-resources-cli.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Kapcsolódás Azure Storage-várólistához](functions-add-output-binding-storage-queue-cli.md?pivots=programming-language-javascript)

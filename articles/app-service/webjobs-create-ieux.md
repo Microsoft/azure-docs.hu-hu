@@ -10,16 +10,16 @@ ms.reviewer: msangapu;suwatch;pbatum;naren.soni
 ms.custom: seodec18
 zone_pivot_groups: app-service-webjob
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 4737f0f19acf199190df02386ecb2ece65fa571e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0d49323e2bc3c0522b1fb9ad49ffcc14f476e2dc
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101745665"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452798"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Háttérben futó feladatok futtatása webjobs-feladatokkal Azure App Service
 
-Az Azure-beli runn-feladatok az Azure app Service webes [feladataival](./webjobs-create-ieux-conceptual.md) vannak ellátva. Útmutató az üzembe helyezéshez <abbr title="Egy program vagy parancsfájl ugyanabban a példányban, mint egy webalkalmazás, egy API-alkalmazás vagy egy mobil alkalmazás.">WebJobs</abbr> végrehajtható fájl vagy parancsfájl feltöltéséhez a [Azure Portal](https://portal.azure.com) használatával. 
+Az Azure-ban az Azure app Service webjobs- [feladataival](./webjobs-create-ieux-conceptual.md) biztosíthatja a háttérben futó feladatok futtatásának koncepcióját. Útmutató az üzembe helyezéshez <abbr title="Egy program vagy parancsfájl ugyanabban a példányban, mint egy webalkalmazás, egy API-alkalmazás vagy egy mobil alkalmazás.">WebJobs</abbr> végrehajtható fájl vagy parancsfájl feltöltéséhez a [Azure Portal](https://portal.azure.com) használatával. 
 
 Három támogatott webjobs többek között:
 

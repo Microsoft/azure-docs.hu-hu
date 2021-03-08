@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 9975e40f7d4f3b69c9281efd0288389740bf92ec
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 9a0d06a8f8fa8f68f063404f2b483b817eb0563f
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943649"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452101"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>Virtuális hálózati vagy VPN-kapcsolatok konfigurálása és ellenőrzése
 
@@ -248,7 +248,7 @@ A BGP a több hálózat között is lehetővé teszi az átviteli útválasztás
 
 A BGP-t használó VPN-kapcsolat konfigurálásával kapcsolatban lásd: a [BGP konfigurálása Azure VPN Gateway-átjárón a PowerShell használatával](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md).
 
-Engedélyezze a BGP-t a virtuális hálózati átjárón egy autonóm rendszer (AS) számának létrehozásával. Az alapszintű átjárók nem támogatják a BGP-t. Az átjáró SKU-jának vizsgálatához nyissa meg a Azure Portal **VPN Gateway** paneljének **Áttekintés** szakaszát. Ha az SKU **alapszintű**, akkor módosítania kell az SKU-t (lásd: [az átjáró átméretezése](/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway?viewFallbackFrom=azurermps-4.0.0)) a **VpnGw1**. 
+Engedélyezze a BGP-t a virtuális hálózati átjárón egy autonóm rendszer (AS) számának létrehozásával. Az alapszintű átjárók nem támogatják a BGP-t. Az átjáró SKU-jának vizsgálatához nyissa meg a Azure Portal **VPN Gateway** paneljének **Áttekintés** szakaszát. Ha az SKU **alapszintű**, akkor módosítania kell az SKU-t (lásd: [az átjáró átméretezése](/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway)) a **VpnGw1**. 
 
 Az SKU ellenőrzése 20 – 30 perces állásidőt eredményez. Amint az átjáró megfelelő SKU-val rendelkezik, az AS-számot a [set-AzureRmVirtualNetworkGateway PowerShell-](/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway) parancsmagot használatával adhatja hozzá. A AS szám konfigurálása után a rendszer automatikusan megadja a BGP-társ IP-címet az átjáró számára.
 

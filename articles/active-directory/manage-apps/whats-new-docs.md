@@ -1,7 +1,7 @@
 ---
 title: Az Azure Active Directory-alkalmazások kezelésének újdonságai
 description: Új és frissített dokumentáció a Azure Active Directory-alkalmazások kezeléséhez.
-ms.date: 02/01/2021
+ms.date: 03/08/2021
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -9,16 +9,32 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: 9de518f53a6054a47a72e40ebe546a32dd48aabe
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ebd8839fd17f79bc53b5093af83d457bb23712d9
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101647272"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452050"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory Application Management: Újdonságok
 
 Üdvözli a Azure Active Directory Application Management dokumentációjának újdonságai. Ez a cikk felsorolja a hozzáadott új dokumentumokat, valamint azokat, amelyek az elmúlt három hónapban jelentős frissítésekkel rendelkeztek. Az Application Management szolgáltatással kapcsolatos újdonságok megismeréséhez tekintse [meg a Azure Active Directory újdonságait](../fundamentals/whats-new.md)ismertető témakört.
+
+## <a name="february-2021"></a>2021. február
+
+### <a name="new-articles"></a>Új cikkek
+
+- [Integrálás a SharePoint (SAML) szolgáltatással](application-proxy-integrate-with-sharepoint-server-saml.md)
+- [Alkalmazás-hitelesítés migrálása Azure Active Directoryre](migrate-application-authentication-to-azure-active-directory.md)
+
+### <a name="updated-articles"></a>Frissített cikkek
+
+- [Integrálás a SharePoint (SAML) szolgáltatással](application-proxy-integrate-with-sharepoint-server-saml.md)
+- [Bérlőszintű rendszergazdai jóváhagyás megadása egy alkalmazáshoz](grant-admin-consent.md)
+- [Alkalmazáshitelesítés áthelyezése az Active Directory Federation Servicesből az Azure Active Directoryba](migrate-adfs-apps-to-azure.md)
+- [Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory](application-proxy-add-on-premises-application.md)
+- [Problémák az SAML-alapú egyszeri bejelentkezésre konfigurált alkalmazásokba való bejelentkezés során](application-sign-in-problem-federated-sso-gallery.md)
+- [A bérlői korlátozások használata a SaaS-Felhőbeli alkalmazásokhoz való hozzáférés kezelésére](tenant-restrictions.md)
 
 ## <a name="january-2021"></a>2021. január
 

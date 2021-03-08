@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2021
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9cd5a62cd85687767497b142a30d31aa6dd00b77
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 85574b7d33af6d9abfe25f5af4d811255f08ce4b
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175090"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452237"
 ---
 # <a name="string-claims-transformations"></a>Karakterlánc-jogcímek átalakítása
 
@@ -326,6 +326,77 @@ Az alábbi példa egy 0 és 1000 közötti egész számú véletlenszerű érté
     - **outputClaim**: OTP_853
 
 
+## <a name="formatlocalizedstring"></a>FormatLocalizedString
+
+Több jogcím formázása egy megadott honosított formázó sztring alapján. Ez a transzformáció a C# `String.Format` metódust használja.
+
+
+| Elem | TransformationClaimType | Adattípus | Jegyzetek |
+| ---- | ----------------------- | --------- | ----- |
+| Szabályzattípushoz |  |sztring | Karakterlánc-formátumú {0} , paraméterként működő bemeneti jogcímek gyűjteménye {1} {2} . |
+| InputParameter | stringFormatId | sztring |  `StringId` [Honosított karakterlánc](localization.md).   |
+| OutputClaim | outputClaim | sztring | A jogcím-átalakítás után létrehozott ClaimType meghívása megtörtént. |
+
+> [!NOTE]
+> A karakterlánc-formátum maximálisan megengedett mérete 4000.
+
+A FormatLocalizedString jogcím-átalakítás használata:
+
+1. Definiáljon egy [honosító karakterláncot](localization.md), és társítsa azt egy [önérvényesített – technikai profilhoz](self-asserted-technical-profile.md).
+1. Az elem értékének a következőnek kell `ElementType` `LocalizedString` lennie: `FormatLocalizedStringTransformationClaimType` .
+1. Az `StringId` egy egyedi azonosító, amelyet Ön határoz meg, és később használhatja a jogcím-átalakításban `stringFormatId` .
+1. A jogcím-átalakítás lapon adja meg a honosított karakterlánccal beállítani kívánt jogcímek listáját. Ezután állítsa be a `stringFormatId` `StringId` elemet a honosított karakterlánc elemre. 
+1. Egy [önérvényesített technikai profilban](self-asserted-technical-profile.md), vagy egy [megjelenítési vezérlő](display-controls.md) bemeneti vagy kimeneti jogcímek átalakításával hivatkozhat a jogcímek átalakítására.
+
+
+A következő példa hibaüzenetet generál, ha egy fiók már szerepel a címtárban. A példa az angol (alapértelmezett) és a spanyol nyelv honosított karakterláncait határozza meg.
+
+```xml
+<Localization Enabled="true">
+  <SupportedLanguages DefaultLanguage="en" MergeBehavior="Append">
+    <SupportedLanguage>en</SupportedLanguage>
+    <SupportedLanguage>es</SupportedLanguage>
+   </SupportedLanguages>
+
+  <LocalizedResources Id="api.localaccountsignup.en">
+    <LocalizedStrings>
+      <LocalizedString ElementType="FormatLocalizedStringTransformationClaimType" StringId="ResponseMessge_EmailExists">The email '{0}' is already an account in this organization. Click Next to sign in with that account.</LocalizedString>
+      </LocalizedStrings>
+    </LocalizedResources>
+  <LocalizedResources Id="api.localaccountsignup.es">
+    <LocalizedStrings>
+      <LocalizedString ElementType="FormatLocalizedStringTransformationClaimType" StringId="ResponseMessge_EmailExists">Este correo electrónico "{0}" ya es una cuenta de esta organización. Haga clic en Siguiente para iniciar sesión con esa cuenta.</LocalizedString>
+    </LocalizedStrings>
+  </LocalizedResources>
+</Localization>
+```
+
+A jogcím-átalakítás a honosított karakterlánc alapján hoz létre válaszüzenetet. Az üzenet tartalmazza a felhasználó e-mail-címét a honosított Sting *ResponseMessge_EmailExistsba* ágyazva.
+
+```xml
+<ClaimsTransformation Id="SetResponseMessageForEmailAlreadyExists" TransformationMethod="FormatLocalizedString">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="stringFormatId" DataType="string" Value="ResponseMessge_EmailExists" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Példa
+
+- Bemeneti jogcímek:
+    - **inputClaim**: sarah@contoso.com
+- Bemeneti paraméterek:
+    - **stringFormat**: ResponseMessge_EmailExists
+- Kimeneti jogcímek:
+  - **outputClaim**: a (z) "" e-mail-cím sarah@contoso.com már egy fiók ebben a szervezetben. A Next (tovább) gombra kattintva jelentkezzen be ezzel a fiókkal.
+
+
 ## <a name="formatstringclaim"></a>FormatStringClaim
 
 Jogcím formázása a megadott formátumú karakterláncnak megfelelően. Ez a transzformáció a C# `String.Format` metódust használja.
@@ -335,6 +406,9 @@ Jogcím formázása a megadott formátumú karakterláncnak megfelelően. Ez a t
 | InputClaim | inputClaim |sztring |Az a ClaimType, amely sztring formátumú {0} paraméterként működik. |
 | InputParameter | stringFormat | sztring | A karakterlánc formátuma, beleértve a {0}  paramétert is. Ez a bemeneti paraméter támogatja a [karakterlánc-jogcímek átalakítási kifejezéseit](string-transformations.md#string-claim-transformations-expressions).  |
 | OutputClaim | outputClaim | sztring | A jogcím-átalakítás után létrehozott ClaimType meghívása megtörtént. |
+
+> [!NOTE]
+> A karakterlánc-formátum maximálisan megengedett mérete 4000.
 
 Ezzel a jogcím-átalakítással bármilyen sztringet formázhat egyetlen paraméterrel {0} . A következő példa egy **userPrincipalName** hoz létre. Az összes közösségi identitás-szolgáltató technikai profilja, például `Facebook-OAUTH` a **CreateUserPrincipalName** meghívása egy **userPrincipalName** létrehozásához.
 
@@ -371,6 +445,9 @@ Két jogcím formázása a megadott formátumú karakterláncnak megfelelően. E
 | InputClaim | inputClaim | sztring | Az a ClaimType, amely sztring formátumú {1} paraméterként működik. |
 | InputParameter | stringFormat | sztring | A karakterlánc formátuma, beleértve a {0} és a {1} paramétereket is. Ez a bemeneti paraméter támogatja a [karakterlánc-jogcímek átalakítási kifejezéseit](string-transformations.md#string-claim-transformations-expressions).   |
 | OutputClaim | outputClaim | sztring | A jogcím-átalakítás után létrehozott ClaimType meghívása megtörtént. |
+
+> [!NOTE]
+> A karakterlánc-formátum maximálisan megengedett mérete 4000.
 
 A jogcímek átalakításával bármilyen sztringet formázhat két paraméterrel {0} és {1} . A következő példa egy **DisplayName** paramétert hoz létre a megadott formátumban:
 

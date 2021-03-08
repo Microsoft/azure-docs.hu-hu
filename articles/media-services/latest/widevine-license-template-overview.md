@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 39cccd270a4947820640940ae43fa0feb3e52028
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 9ef45e804b593f36171907395c564c8c6058c286
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954479"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453733"
 ---
 # <a name="media-services-v3-with-widevine-license-template-overview"></a>A Media Services v3 és a Widevine-licenc sablonjának áttekintése
 
@@ -117,7 +117,7 @@ Minden content_key_specs értéket meg kell adni az összes pályán, a use_poli
 
 ## <a name="configure-your-widevine-license-with-net"></a>A Widevine-licenc konfigurálása a .NET-tel 
 
-A Media Services egy olyan osztályt biztosít, amely lehetővé teszi a Widevine-licencek konfigurálását. A licenc létrehozásához továbbítsa a JSON-t a [WidevineTemplate](/dotnet/api/microsoft.azure.management.media.models.contentkeypolicywidevineconfiguration.widevinetemplate?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_ContentKeyPolicyWidevineConfiguration_WidevineTemplate).
+A Media Services egy olyan osztályt biztosít, amely lehetővé teszi a Widevine-licencek konfigurálását. A licenc létrehozásához továbbítsa a JSON-t a [WidevineTemplate](/dotnet/api/microsoft.azure.management.media.models.contentkeypolicywidevineconfiguration.widevinetemplate#Microsoft_Azure_Management_Media_Models_ContentKeyPolicyWidevineConfiguration_WidevineTemplate).
 
 A sablon konfigurálásához a következőket teheti:
 
@@ -263,7 +263,7 @@ public class WidevineTemplate
 
 #### <a name="configure-the-license"></a>A licenc konfigurálása
 
-Az előző szakaszban meghatározott osztályok használata a [WidevineTemplate](/dotnet/api/microsoft.azure.management.media.models.contentkeypolicywidevineconfiguration.widevinetemplate?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_ContentKeyPolicyWidevineConfiguration_WidevineTemplate)konfigurálásához használt JSON létrehozásához:
+Az előző szakaszban meghatározott osztályok használata a [WidevineTemplate](/dotnet/api/microsoft.azure.management.media.models.contentkeypolicywidevineconfiguration.widevinetemplate#Microsoft_Azure_Management_Media_Models_ContentKeyPolicyWidevineConfiguration_WidevineTemplate)konfigurálásához használt JSON létrehozásához:
 
 ```csharp
 private static ContentKeyPolicyWidevineConfiguration ConfigureWidevineLicenseTempate()
