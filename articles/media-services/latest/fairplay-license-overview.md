@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 5a00ba8000f33e8e50b1a5d01f40a68a7fe2442d
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 187c1e60d97e0bebb3b6216b0055ddffe6e6cb4c
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956191"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454381"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay-licencek követelményei és konfigurálása
 
@@ -86,7 +86,7 @@ A FairPlay-licencek konfigurálásához Media Services API-t használhat. Ha a l
 > [!NOTE]
 > Általában csak egyszer kell konfigurálnia a FairPlay házirend-beállításokat, mert csak egy tanúsítvánnyal és egy KÉRDÉSsel rendelkezik.
 
-Az alábbi példa a [Media Services .net SDK](/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) -t használja a licenc konfigurálásához.
+Az alábbi példa a [Media Services .net SDK](/dotnet/api/microsoft.azure.management.media.models) -t használja a licenc konfigurálásához.
 
 ```csharp
 private static ContentKeyPolicyFairPlayConfiguration ConfigureFairPlayPolicyOptions()

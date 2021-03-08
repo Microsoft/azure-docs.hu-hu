@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 1ee4e19a3e76a001a66f6498530fab4f4703fa85
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 1d83a828829d27d85749b3fa7b283cad9683bffc
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381603"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455915"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Blob Storage-trigger Azure Functions
 
@@ -317,7 +317,7 @@ A Python nem támogatja az attribútumokat.
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `BlobTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**típusa** | n.a. | Értékre kell állítani `blobTrigger` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
 |**irányba** | n.a. | Értékre kell állítani `in` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. A kivételek a [használat](#usage) szakaszban vannak feltüntetve. |
@@ -351,7 +351,7 @@ A blob-adatelérést olyan paraméterrel érheti el, amely megegyezik a kötés 
 
 # <a name="python"></a>[Python](#tab/python)
 
-A blob-adatelérést a [InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python&preserve-view=true)típussal megadott paraméterrel érheti el. A részletekért tekintse meg az [trigger példáját](#example) .
+A blob-adatelérést a [InputStream](/python/api/azure-functions/azure.functions.inputstream)típussal megadott paraméterrel érheti el. A részletekért tekintse meg az [trigger példáját](#example) .
 
 ---
 
