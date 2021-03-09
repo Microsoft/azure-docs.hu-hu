@@ -5,18 +5,18 @@ author: neilpeterson
 ms.date: 08/09/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: 97f956c1b1c1ea18242dc656c533451eda29dc6d
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3e41d4f6f8b8aeb2be376ae1385189fe02e9b897
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102179051"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504657"
 ---
 # <a name="quickstart-create-arm-templates-with-visual-studio-code"></a>Rövid útmutató: ARM-sablonok létrehozása a Visual Studio Code-ban
 
 A Visual Studio Code-hoz készült Azure Resource Manager Tools biztosítja a nyelvi támogatást, az erőforrás-kódrészleteket és az erőforrás-kiegészítést. Ezek az eszközök segítenek Azure Resource Manager-sablonok (ARM-sablonok) létrehozásában és ellenőrzésében. Ebben a rövid útmutatóban a bővítmény használatával hozzon létre egy ARM-sablont a semmiből. Ennek során a bővítmények funkcióit, például az ARM-sablonok részleteit, az érvényesítést, a befejezést és a paraméteres fájlok támogatását tapasztalhatja.
 
-A rövid útmutató elvégzéséhez szüksége lesz a [Visual Studio Code](https://code.visualstudio.com/)-ra, amelyen telepítve van a [Azure Resource Manager Tools bővítmény](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) . Az [Azure CLI](/cli/azure/) -t vagy az Azure PowerShell- [modult](/powershell/azure/new-azureps-module-az?view=azps-3.7.0) is telepítenie és hitelesítenie kell.
+A rövid útmutató elvégzéséhez szüksége lesz a [Visual Studio Code](https://code.visualstudio.com/)-ra, amelyen telepítve van a [Azure Resource Manager Tools bővítmény](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) . Az [Azure CLI](/cli/azure/) -t vagy az Azure PowerShell- [modult](/powershell/azure/new-azureps-module-az) is telepítenie és hitelesítenie kell.
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 

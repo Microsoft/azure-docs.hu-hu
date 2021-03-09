@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 04492abc0f235c2dc6139adbe543bcce82f7f7b3
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 46f117b13909c2d9624b88e9f5d9a62c4c646e51
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101646861"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500292"
 ---
 # <a name="tutorial-configure-arkose-labs-with-azure-active-directory-b2c"></a>Oktatóanyag: a Arkóz Labs konfigurálása Azure Active Directory B2C
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja Azure Active Directory (AD) B2C-hitelesítését a [Arkóz Labs szolgáltatással](https://www.arkoselabs.com/). A Arkóz Labs segítséget nyújt a szervezeteknek a robotok elleni támadásokkal, a fiókok átvételi támadásokkal és a csalárd fiókok megnyitásával kapcsolatban.  
+Ebből az oktatóanyagból megtudhatja, hogyan integrálható Azure Active Directory (AD) B2C-hitelesítés a [Arkóz Labs szolgáltatással](https://www.arkoselabs.com/). A Arkóz Labs segítséget nyújt a szervezeteknek a robotok elleni támadásokkal, a fiókok átvételi támadásokkal és a csalárd fiókok megnyitásával kapcsolatban.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -196,7 +196,7 @@ A az `<B2C_EXTENSIONS_APP_ID>` Azure ad B2C által használt alkalmazás azonos�
 
 [Hozzon létre egy API-összekötőt](https://docs.microsoft.com/azure/active-directory-b2c/add-api-connector) , és engedélyezze azt a felhasználói folyamat számára. Az API-összekötő konfigurációjának a következőhöz hasonlóan kell kinéznie:
 
-![A képen az alkalmazás azonosítója alapján történő keresés látható](media/partner-arkose-labs/configure-api-connector.png)
+![A képen látható az API-összekötő konfigurálása](media/partner-arkose-labs/configure-api-connector.png)
 
 - **Végpont URL-címe** – az Azure-függvény üzembe helyezése során korábban átmásolt függvény URL-címe.
 

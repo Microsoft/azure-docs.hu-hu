@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/02/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 850b590ae8aeab822367714fb9a56661306c2387
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 318afced85f3cca0a450d77f8be7b2a1d6c388ed
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518691"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504933"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>Számítási célok beállítása a modell betanításához és üzembe helyezéséhez
 
@@ -43,7 +43,7 @@ Azure Machine Learning által felügyelt számítási célok használatához lá
 
 * Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
-* Az [Azure CLI-bővítmény Machine learning szolgáltatáshoz](reference-azure-machine-learning-cli.md), [Azure Machine learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)-hoz vagy a [Azure Machine learning Visual Studio Code bővítményhez](tutorial-setup-vscode-extension.md).
+* Az [Azure CLI-bővítmény Machine learning szolgáltatáshoz](reference-azure-machine-learning-cli.md), [Azure Machine learning Python SDK](/python/api/overview/azure/ml/intro)-hoz vagy a [Azure Machine learning Visual Studio Code bővítményhez](tutorial-setup-vscode-extension.md).
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -60,7 +60,7 @@ A Azure Machine Learning segítségével különböző erőforrásokra és körn
 
 Ha a helyi számítógépet használja a **betanításhoz**, nem kell számítási célt létrehoznia.  Csak [küldje el a képzést](how-to-set-up-training-targets.md) a helyi gépről.
 
-Ha a helyi számítógépet használja a **következtetéshez**, telepítve kell lennie a Docker-nek. Az üzemelő példány végrehajtásához használja a [LocalWebservice.deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.local.localwebservice?preserve-view=true&view=azure-ml-py#deploy-configuration-port-none-) lehetőséget a webszolgáltatás által használt port definiálásához. Ezután használja a normál telepítési folyamatot a [modellek üzembe helyezése Azure Machine learning](how-to-deploy-and-where.md)használatával című témakörben leírtak szerint.
+Ha a helyi számítógépet használja a **következtetéshez**, telepítve kell lennie a Docker-nek. Az üzemelő példány végrehajtásához használja a [LocalWebservice.deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.local.localwebservice#deploy-configuration-port-none-) lehetőséget a webszolgáltatás által használt port definiálásához. Ezután használja a normál telepítési folyamatot a [modellek üzembe helyezése Azure Machine learning](how-to-deploy-and-where.md)használatával című témakörben leírtak szerint.
 
 ## <a name="remote-virtual-machines"></a><a id="vm"></a>Távoli virtuális gépek
 
@@ -325,7 +325,7 @@ Részletesebb példaként tekintse meg a GitHubon egy [példát a notebookra](ht
 > Ne hozzon létre egyszerre több, egyidejű mellékletet ugyanahhoz a ADLA a munkaterületről. Minden új melléklet megtöri az előző meglévő melléklet (eke) t.
 
 > [!TIP]
-> Azure Machine Learning folyamatok csak az Data Lake Analytics-fiók alapértelmezett adattárában tárolt adatmennyiségek esetében használhatók. Ha a működéséhez szükséges adatmennyiség nem alapértelmezett tárolóban található, akkor az a használatával [`DataTransferStep`](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?preserve-view=true&view=azure-ml-py) másolhatja az Adatmásolást a betanítás előtt.
+> Azure Machine Learning folyamatok csak az Data Lake Analytics-fiók alapértelmezett adattárában tárolt adatmennyiségek esetében használhatók. Ha a működéséhez szükséges adatmennyiség nem alapértelmezett tárolóban található, akkor az a használatával [`DataTransferStep`](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep) másolhatja az Adatmásolást a betanítás előtt.
 
 ## <a name="azure-container-instance"></a><a id="aci"></a>Azure Container-példány
 

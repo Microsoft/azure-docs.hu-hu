@@ -1,19 +1,19 @@
 ---
-title: Zónában lévő linuxos virtuális gép létrehozása az Azure CLI-vel
-description: Linuxos virtuális gép létrehozása rendelkezésre állási zónában az Azure CLI-vel
+title: Zónában lévő virtuális gép létrehozása az Azure CLI-vel
+description: Virtuális gép létrehozása rendelkezésre állási zónában az Azure CLI-vel
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 04/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 964d2b5d89fd91aca68e9b47b0049529fe284848
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fbed3e7ac3e809658da532ccc27e78230cc0b581
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016403"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509132"
 ---
-# <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Linuxos virtuális gép létrehozása rendelkezésre állási zónában az Azure CLI-vel
+# <a name="create-a-virtual-machine-in-an-availability-zone-using-azure-cli"></a>Virtuális gép létrehozása rendelkezésre állási zónában az Azure CLI használatával
 
 Ez a cikk a Linux rendszerű virtuális gépek Azure-beli rendelkezésre állási zónában történő létrehozásához szükséges lépéseket ismerteti az Azure CLI használatával. A [rendelkezésre állási zónák](../../availability-zones/az-overview.md) egy Azure-régió fizikailag elkülönített zónáit jelentik. Az alkalmazások és az adatok védelmét rendelkezésre állási zónákkal biztosíthatja nem várt hibák bekövetkezése, illetve a teljes adatközpont elérhetetlenné válása esetére.
 
@@ -186,6 +186,6 @@ A kimenet azt mutatja, hogy az IP-cím ugyanabban a rendelkezésre állási zón
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan hozható létre virtuális gép egy rendelkezésre állási zónában. További információ az Azure-beli virtuális gépek [rendelkezésre állásáról](../availability.md) .

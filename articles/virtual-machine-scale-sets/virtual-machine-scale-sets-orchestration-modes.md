@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.date: 02/12/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 3350ff7aa05232173e5fd3b21451a76a0a40683d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 71ddb1217be7fe3e1254e0d49e1f40c43a55a3f0
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043711"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502416"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>Előzetes verzió: az Azure-beli virtuálisgép-méretezési csoportok előkészítési módjai 
 
@@ -102,33 +102,33 @@ A következő táblázat összehasonlítja a rugalmas előkészítési módot, a
 |         Virtuális gép típusa  | Standard szintű Azure IaaS VM (Microsoft. számítási/virtualmachines)  | Meghatározott virtuális gépek méretezése (Microsoft. számítási/virtualmachinescalesets/virtualmachines)  | Standard szintű Azure IaaS VM (Microsoft. számítási/virtualmachines)  |
 |         Támogatott SKU-i  |            D sorozat, E sorozat, F sorozat, sorozat, B sorozat, Intel, AMD  |            Összes SKU  |            Összes SKU  |
 |         Rendelkezésre állási zónák  |            Egyetlen rendelkezésre állási zónában lévő összes példány megadása opcionálisan |            Példányok meghatározása 1, 2 vagy 3 rendelkezésre állási zónán belül  |            Nem támogatott  |
-|         Teljes hozzáférés a virtuális gépekhez, hálózati adapterekhez, lemezekhez  |            Igen  |            Korlátozott vezérlés a virtuálisgép-méretezési csoportokkal rendelkező VM API-val  |            Igen  |
+|         Teljes hozzáférés a virtuális gépekhez, hálózati adapterekhez, lemezekhez  |            Yes  |            Korlátozott vezérlés a virtuálisgép-méretezési csoportokkal rendelkező VM API-val  |            Yes  |
 |         Automatikus skálázás  |            Nem  |            Igen  |            Nem  |
 |         Virtuális gép kiosztása egy adott tartalék tartományhoz  |            Igen  |             Nem   |            Nem  |
 |         Hálózati adapterek és lemezek eltávolítása virtuálisgép-példányok törlésekor  |            Nem  |            Igen  |            Nem  |
-|         Frissítési szabályzat (VM-méretezési csoportok) |            Nem  |            Automatikus, működés közbeni manuális  |            N/A  |
+|         Frissítési szabályzat (VM-méretezési csoportok) |            No  |            Automatikus, működés közbeni manuális  |            N/A  |
 |         Operációs rendszer automatikus frissítései (VM-méretezési csoportok) |            Nem  |            Igen  |            N/A  |
 |         A vendég biztonsági javításában  |            Igen  |            Nem  |            Igen  |
 |         Értesítések leállítása (virtuálisgép-méretezési csoportok) |            Nem  |            Igen  |            N/A  |
 |         Példány javítása (virtuálisgép-méretezési csoportok) |            Nem  |            Igen   |            N/A  |
-|         Gyorsított hálózatkezelés  |            Igen  |            Igen  |            Igen  |
+|         Gyorsított hálózatkezelés  |            Igen  |            Igen  |            Yes  |
 |         Helyszíni példányok és díjszabás   |            Igen, mind a helyszíni, mind a Normál prioritású példányok használhatók  |            Igen, a példányoknak mind a helyszínen, mind pedig a szokásosnak kell lenniük  |            Nem, csak normál prioritású példányok  |
 |         Vegyes operációs rendszerek  |            Igen, a Linux és a Windows ugyanazon a rugalmas méretezési csoporton belül lehet |            Nem, a példányok azonos operációs rendszer  |               Igen, a Linux és a Windows ugyanazon a rugalmas méretezési csoporton belül lehet |
 |         Alkalmazás állapotának figyelése  |            Alkalmazás állapota bővítmény  |            Az alkalmazás állapota vagy az Azure Load Balancer mintavétele  |            Alkalmazás állapota bővítmény  |
-|         UltraSSD-lemezek   |            Igen  |            Igen, csak a zónákon üzemelő példányok esetében  |            Nem  |
-|         InfiniBand   |            Nem  |            Igen, csak egy elhelyezési csoport  |            Igen  |
-|         írásgyorsító   |            Nem  |            Igen  |            Igen  |
-|         Proximity elhelyezési csoportok   |            Igen  |            Igen  |            Igen  |
-|         Dedikált Azure-gazdagépek   |            Nem  |            Igen  |            Igen  |
-|         Alapszintű SLB   |            Nem  |            Igen  |            Igen  |
-|         Standard SKU Azure Load Balancer |            Igen  |            Igen  |            Igen  |
-|         Application Gateway  |            Nem  |            Igen  |            Igen  |
-|         Karbantartási ellenőrzés   |            Nem  |            Igen  |            Igen  |
-|         Készletben lévő virtuális gépek listázása  |            Igen  |            Igen  |            Igen, virtuális gépek listázása a AvSet-ben  |
-|         Azure-riasztások  |            Nem  |            Igen  |            Igen  |
-|         VM-ismeretek  |            Nem  |            Igen  |            Igen  |
-|         Azure Backup  |            Igen  |            Igen  |            Igen  |
-|         Azure Site Recovery  |            Igen, csak PowerShell  |            Igen  |            Igen  |
+|         UltraSSD-lemezek   |            Yes  |            Igen, csak a zónákon üzemelő példányok esetében  |            No  |
+|         InfiniBand   |            No  |            Igen, csak egy elhelyezési csoport  |            Yes  |
+|         írásgyorsító   |            Nem  |            Igen  |            Yes  |
+|         Proximity elhelyezési csoportok   |            Igen  |            Igen  |            Yes  |
+|         Dedikált Azure-gazdagépek   |            Nem  |            Igen  |            Yes  |
+|         Alapszintű SLB   |            Nem  |            Igen  |            Yes  |
+|         Standard SKU Azure Load Balancer |            Igen  |            Igen  |            Yes  |
+|         Application Gateway  |            Nem  |            Igen  |            Yes  |
+|         Karbantartási ellenőrzés   |            Nem  |            Igen  |            Yes  |
+|         Készletben lévő virtuális gépek listázása  |            Igen  |            Yes  |            Igen, virtuális gépek listázása a AvSet-ben  |
+|         Azure-riasztások  |            Nem  |            Igen  |            Yes  |
+|         VM-ismeretek  |            Nem  |            Igen  |            Yes  |
+|         Azure Backup  |            Igen  |            Igen  |            Yes  |
+|         Azure Site Recovery  |            Igen, csak PowerShell  |            Igen  |            Yes  |
 |         Meglévő virtuális gép hozzáadása vagy eltávolítása a csoportba  |            Nem  |            Nem  |            Nem  | 
 
 
@@ -322,7 +322,7 @@ InvalidParameter. The specified fault domain count 2 must fall in the range 1 to
 
 **OK:** A `platformFaultDomainCount` paraméter érvénytelen a kiválasztott régióhoz vagy zónához. 
 
-**Megoldás:** Érvényes értéket kell választania `platformFaultDomainCount` . A zónákon alapuló központi telepítések esetében a maximális `platformFaultDomainCount` érték 1. Olyan regionális központi telepítések esetén, ahol nincs megadva zóna, a maximális eltérés a `platformFaultDomainCount` régiótól függően változhat. Tekintse meg a [virtuális gépek rendelkezésre állásának kezelése a parancsfájlok](../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) számára című témakört, amely meghatározza a tartalék tartományok maximális számát régiónként. 
+**Megoldás:** Érvényes értéket kell választania `platformFaultDomainCount` . A zónákon alapuló központi telepítések esetében a maximális `platformFaultDomainCount` érték 1. Olyan regionális központi telepítések esetén, ahol nincs megadva zóna, a maximális eltérés a `platformFaultDomainCount` régiótól függően változhat. Tekintse meg a [virtuális gépek rendelkezésre állásának kezelése a parancsfájlok](../virtual-machines/availability.md) számára című témakört, amely meghatározza a tartalék tartományok maximális számát régiónként. 
 
 ```
 OperationNotAllowed. Deletion of Virtual Machine Scale Set is not allowed as it contains one or more VMs. Please delete or detach the VM(s) before deleting the Virtual Machine Scale Set.

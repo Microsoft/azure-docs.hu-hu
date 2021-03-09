@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d879039e6d3ad94e55ed7f7bd283f8b99a5b2161
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8bbd56499c9b62248662fc5e8df0d5b3e1b672d4
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042453"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504167"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Always On rendelkezésre állási csoport SQL Server Azure-beli virtuális gépeken
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,7 +38,7 @@ Az alábbi ábra az Azure-beli virtuális gépeken SQL Server rendelkezésre ál
 
 ## <a name="vm-redundancy"></a>VM-redundancia 
 
-A redundancia és a magas rendelkezésre állás növeléséhez SQL Server virtuális gépeknek ugyanahhoz a [rendelkezésre állási csoporthoz](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview)vagy különböző [rendelkezésre állási zónákhoz](../../../availability-zones/az-overview.md)kell tartoznia.
+A redundancia és a magas rendelkezésre állás növeléséhez SQL Server virtuális gépeknek ugyanahhoz a [rendelkezésre állási csoporthoz](../../../virtual-machines/availability-set-overview.md)vagy különböző [rendelkezésre állási zónákhoz](../../../availability-zones/az-overview.md)kell tartoznia.
 
 Ha a virtuális gépek egy készletét ugyanabban a rendelkezésre állási csoportba helyezi, a berendezés meghibásodása által okozott kimaradás (a rendelkezésre állási csoportba tartozó virtuális gépek nem osztják meg az erőforrásokat) vagy a frissítések (a rendelkezésre állási csoportba tartozó virtuális gépek nem frissülnek egyszerre). Availability Zones a teljes adatközpont meghibásodása elleni védelmet, és minden olyan zónát, amely egy adott régióban található adatközpontok készletét jelképezi.  Azáltal, hogy az erőforrások különböző Availability Zonesba vannak helyezve, az adatközpont-szintű leállás nélkül az összes virtuális gép offline állapotba kerülhet.
 
@@ -89,9 +89,9 @@ Az alábbi táblázat az elérhető lehetőségek összehasonlítását tartalma
 |**Lehetséges DNN-figyelőt létrehozni ezzel a módszerrel?**|Nem|Nem|Nem|Igen|
 |**WSFC kvórum konfigurálása**|Felhőbeli tanúsító|Felhőbeli tanúsító|Felhőbeli tanúsító|Mind|
 |**DR több régióban** |Nem|Nem|Nem|Igen|
-|**Többalhálózat támogatása** |Igen|Igen|Igen|Igen|
-|**Meglévő AD támogatása**|Igen|Igen|Igen|Igen|
-|**DR többzónás, ugyanabban a régióban**|Igen|Igen|Igen|Igen|
+|**Többalhálózat támogatása** |Igen|Igen|Igen|Yes|
+|**Meglévő AD támogatása**|Igen|Igen|Igen|Yes|
+|**DR többzónás, ugyanabban a régióban**|Igen|Igen|Igen|Yes|
 |**AD-t nem tartalmazó elosztott AG**|Nem|Nem|Nem|Igen|
 |**Fürt nélküli elosztott AG** |Nem|Nem|Nem|Igen|
 

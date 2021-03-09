@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 7f2353d9e87c35f01a9fd514df7cfb090a98bf27
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 6502728a14ea825fadfde107e61f235db5619ae0
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102442944"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507279"
 ---
 # <a name="import-new-update"></a>Új frissítés importálása
 Ismerje meg, hogyan importálhat új frissítést a IoT Hub eszköz frissítésében. Ha még nem tette meg, mindenképpen ismerkedjen meg az alapszintű [importálási fogalmakkal](import-concepts.md).
@@ -57,8 +57,8 @@ Ismerje meg, hogyan importálhat új frissítést a IoT Hub eszköz frissítés�
 
     | Paraméter | Leírás |
     | --------- | ----------- |
-    | deviceManufacturer | Az eszköz gyártója, amelyen a frissítés kompatibilis, például: contoso
-    | deviceModel | Az eszköz modellje, amely kompatibilis a frissítéssel, például kenyérpirító
+    | deviceManufacturer | Az eszköz gyártója, amelyen a frissítés kompatibilis, például: contoso. Meg kell egyeznie a _gyártó_ [eszköz tulajdonságával](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties)
+    | deviceModel | Az eszköz modellje, amely kompatibilis a frissítéssel, például kenyérpirítóval. Meg kell egyeznie a _modell_ [eszköz tulajdonságával](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties)
     | updateProvider | A frissítéshez létrehozott vagy közvetlenül felelős entitás. Ez gyakran a vállalat neve lesz.
     | updateName | A frissítések osztályának azonosítója. Az osztály tetszőlegesen kiválasztható. Ez gyakran az eszköz vagy a modell neve lesz.
     | updateVersion | A frissítést megkülönbözteti a többitől, és ugyanazzal a szolgáltatóval és névvel. Előfordulhat, hogy az eszközön az egyes szoftver-összetevők verziója nem egyezik.

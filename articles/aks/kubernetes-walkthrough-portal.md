@@ -6,12 +6,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 01/13/2021
 ms.custom: mvc, seo-javascript-october2019, contperfq3
-ms.openlocfilehash: 63d23b01eddc70dedd849560248dd053c80e0037
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 5f758c0bc50b2d4f22b3dbf0efaa4ecbc3f334cb
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181414"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507806"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Gyors útmutató: Azure Kubernetes Service (ak) fürt üzembe helyezése a Azure Portal használatával
 
@@ -47,13 +47,11 @@ Az AKS-fürt létrehozásához hajtsa végre az alábbi lépéseket:
 
 4. A **csomópont-készletek** lapon tartsa meg az alapértelmezett beállításokat. A képernyő alján kattintson a **Tovább: hitelesítés** elemre.
     > [!CAUTION]
-    > Az új HRE-szolgáltatások létrehozása több percet is igénybe vehet, így az egyszerű szolgáltatásnév nem talált hibákat és érvényesítési hibákat Azure Portalban. Ha ezt tapasztalja, tekintse meg az [Azure Kubernetes-szolgáltatással kapcsolatos gyakori problémák elhárításával kapcsolatos problémákat](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster) .
+    > Az új fürt identitásának létrehozása több percet is igénybe vehet, és így elérhetővé válik, így az egyszerű szolgáltatásnév nem talált hibákat és érvényesítési hibákat a Azure Portal. Ha ezt tapasztalja, tekintse meg az [Azure Kubernetes-szolgáltatással kapcsolatos gyakori problémák elhárításával kapcsolatos problémákat](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster) .
 
 5. A **Hitelesítés** lapon konfigurálja az alábbiakat:
-    - Hozzon létre egy új szolgáltatásnevet úgy, hogy a **Szolgáltatásnév** mezőben meghagyja az **(új) alapértelmezett szolgáltatásnév** értéket. De használhat egy már meglévőt is, ha a *Szolgáltatásnév konfigurálása* lehetőséget választja. Ha meglévőt használ, meg kell adnia az SPN ügyfél-azonosítót és a titkos kulcsot.
+    - Hozzon létre egy új fürtöt, és hagyja a **hitelesítési** mezőt a **assinged által felügyelt identitással**. Alternatív megoldásként kiválaszthatja az **egyszerű** szolgáltatásnév használatát is. Válassza az *(új) alapértelmezett egyszerű szolgáltatásnév* lehetőséget egy alapértelmezett egyszerű szolgáltatásnév létrehozásához, vagy *konfigurálja a szolgáltatásnevet* egy meglévő használatára. Ha meglévőt használ, meg kell adnia az SPN ügyfél-azonosítót és a titkos kulcsot.
     - Engedélyezze a Kubernetes szerepköralapú hozzáférés-vezérlés (Kubernetes RBAC) beállítását. Így részletesebben szabályozhatja az AKS-fürtben üzembe helyezett Kubernetes-erőforrásokhoz való hozzáférést.
-
-    Azt is megteheti, hogy az egyszerű szolgáltatásnév helyett felügyelt identitást is használhat. További információért lásd: [felügyelt identitások használata](use-managed-identity.md) .
 
 Alapértelmezés szerint a rendszer *alapszintű* hálózatkezelést használ, a tárolók Azure monitor pedig engedélyezve van. Ha az ellenőrzés véget ért, kattintson az **Áttekintés és létrehozás**, majd a **Létrehozás** lehetőségre.
 

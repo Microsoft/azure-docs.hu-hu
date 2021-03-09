@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: e753d810bbc2ed1079b58d20a0659bf5e2219d11
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3b3c313df5704e49481c66ad682faccd48d180ea
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101671897"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505902"
 ---
 # <a name="sap-businessobjects-bi-platform-planning-and-implementation-guide-on-azure"></a>SAP BusinessObjects BI platformtervezési és -megvalósítási útmutató az Azure-on
 
@@ -222,7 +222,7 @@ Az SAP BI platform számos különböző összetevőt tartalmaz, és az architek
 
 Azon frissítési és tartalék tartományok száma, amelyek Azure-beli rendelkezésre állási csoporton belül is használhatók, véges. Így ha továbbra is egyetlen rendelkezésre állási csoportba helyezi a virtuális gépeket, két vagy több virtuális gép végül ugyanabban a hiba-vagy frissítési tartományban fog megjelenni. További információ: az Azure Virtual Machines tervezésének és megvalósításának Azure-beli [rendelkezésre állási készletek](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/virtual-machines/workloads/sap/planning-guide.md#azure-availability-sets) című szakasza az SAP-dokumentumhoz.
 
-Az Azure rendelkezésre állási csoportok fogalmának megismeréséhez és a rendelkezésre állási csoportok hibákhoz és frissítési tartományokhoz való kapcsolódásához olvassa el a [rendelkezésre állás kezelése](../../manage-availability.md) című cikket.
+Az Azure rendelkezésre állási csoportok fogalmának megismeréséhez és a rendelkezésre állási csoportok hibákhoz és frissítési tartományokhoz való kapcsolódásához olvassa el a [rendelkezésre állás kezelése](../../availability.md) című cikket.
 
 > [!Important]
 > A Azure Availability Zones és az Azure rendelkezésre állási csoportjaira vonatkozó fogalmak kölcsönösen kizárják egymást. Ez azt jelenti, hogy egy pár vagy több virtuális gépet telepít egy adott rendelkezésre állási zónába vagy egy Azure-beli rendelkezésre állási csoportba. De nem mindkettő.
@@ -255,7 +255,7 @@ Az Azure Storage-ban különböző tárolási típusok érhetők el az ügyfelek
 
 ![SAP BusinessObjects BI platform Storage-elrendezés az Azure-ban](media/businessobjects-deployment-guide/businessobjects-storage-layout.png)
 
-### <a name="networking"></a>Hálózatkezelés
+### <a name="networking"></a>Hálózat
 
 Az SAP BOBI olyan jelentéskészítési és elemzési BI-platform, amely nem rendelkezik üzleti adattal. Így a rendszer a többi adatbázis-kiszolgálóhoz csatlakozik, ahonnan beolvassa az összes információt, és betekintést nyújt a felhasználók számára. Az Azure egy hálózati infrastruktúrát biztosít, amely lehetővé teszi az SAP BI platformmal megvalósítható összes forgatókönyv leképezését, például a helyszíni rendszerhez való csatlakozást, a különböző virtuális hálózatok rendszereit és egyebeket. További információ: [Microsoft Azure hálózatkezelés az SAP-Munkaterheléshez](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/virtual-machines/workloads/sap/planning-guide.md#microsoft-azure-networking).
 

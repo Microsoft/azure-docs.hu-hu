@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 9ec1e59a5599ca2e95578eacc1484932956ebf16
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 7b71fc2f3afb67d766bfe267888674b55af6a3a5
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204014"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503913"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>Key Vault naplózás engedélyezése
 
@@ -42,7 +42,7 @@ az account list
 az account set --subscription "<subscriptionID>"
 ```
 
-A Azure PowerShell segítségével először a [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription?view=azps-4.7.0) parancsmaggal listázhatja előfizetéseit, majd csatlakozhat egyet a [set-AzContext](/powershell/module/az.accounts/set-azcontext?view=azps-4.7.0) parancsmag használatával: 
+A Azure PowerShell segítségével először a [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) parancsmaggal listázhatja előfizetéseit, majd csatlakozhat egyet a [set-AzContext](/powershell/module/az.accounts/set-azcontext) parancsmag használatával: 
 
 ```powershell-interactive
 Get-AzSubscription
@@ -64,13 +64,13 @@ Az Azure CLI-vel használja az az [Storage Account Create](/cli/azure/storage/ac
 az storage account create --name "<your-unique-storage-account-name>" -g "myResourceGroup" --sku "Standard_LRS"
 ```
 
-A Azure PowerShell használatával használja a [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount?view=azps-4.7.0) parancsmagot. Meg kell adnia az erőforráscsoport számára megfelelő helyet.
+A Azure PowerShell használatával használja a [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) parancsmagot. Meg kell adnia az erőforráscsoport számára megfelelő helyet.
 
 ```powershell
  New-AzStorageAccount -ResourceGroupName myResourceGroup -Name "<your-unique-storage-account-name>" -Type "Standard_LRS" -Location "eastus"
 ```
 
-Mindkét esetben jegyezze fel a Storage-fiók azonosítóját. Az Azure CLI-művelet az "id" értéket adja vissza a kimenetben. Az "id" Azure PowerShellhoz való beszerzéséhez használja a [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount?view=azps-4.7.0) , és rendelje hozzá a kimenetet a $SA változóhoz. Ezután megtekintheti a Storage-fiókot $sa. id használatával. (A "$sa. A környezeti "tulajdonságot a cikk későbbi részében is használni fogjuk.)
+Mindkét esetben jegyezze fel a Storage-fiók azonosítóját. Az Azure CLI-művelet az "id" értéket adja vissza a kimenetben. Az "id" Azure PowerShellhoz való beszerzéséhez használja a [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) , és rendelje hozzá a kimenetet a $SA változóhoz. Ezután megtekintheti a Storage-fiókot $sa. id használatával. (A "$sa. A környezeti "tulajdonságot a cikk későbbi részében is használni fogjuk.)
 
 ```powershell-interactive
 $sa = Get-AzStorageAccount -Name "<your-unique-storage-account-name>" -ResourceGroup "myResourceGroup"
@@ -84,7 +84,7 @@ A Storage-fiók "id" formátuma a "/Subscriptions/<saját előfizetés-azonosít
 
 ## <a name="obtain-your-key-vault-resource-id"></a>A Key Vault erőforrás-AZONOSÍTÓjának beszerzése
 
-A [CLI](quick-create-cli.md) rövid útmutató és a [PowerShell](quick-create-powershell.md)rövid útmutatójában egy egyedi névvel rendelkező kulcsot hozott létre.  Ezt a nevet újra használhatja az alábbi lépésekben.  Ha nem emlékszik a kulcstartó nevére, használhatja az Azure CLI az Key [Vault List](/cli/azure/keyvault#az_keyvault_list) parancsot vagy a Azure PowerShell [Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault?view=azps-4.7.0) parancsmagot a listázáshoz.
+A [CLI](quick-create-cli.md) rövid útmutató és a [PowerShell](quick-create-powershell.md)rövid útmutatójában egy egyedi névvel rendelkező kulcsot hozott létre.  Ezt a nevet újra használhatja az alábbi lépésekben.  Ha nem emlékszik a kulcstartó nevére, használhatja az Azure CLI az Key [Vault List](/cli/azure/keyvault#az_keyvault_list) parancsot vagy a Azure PowerShell [Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault) parancsmagot a listázáshoz.
 
 Az erőforrás-AZONOSÍTÓjának megkereséséhez használja a kulcstartó nevét.  Az Azure CLI-vel használja az az Key [Vault show](/cli/azure/keyvault#az_keyvault_show) parancsot.
 
@@ -92,7 +92,7 @@ Az erőforrás-AZONOSÍTÓjának megkereséséhez használja a kulcstartó nevé
 az keyvault show --name "<your-unique-keyvault-name>"
 ```
 
-A Azure PowerShell használatával használja a [Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault?view=azps-4.7.0) parancsmagot.
+A Azure PowerShell használatával használja a [Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault) parancsmagot.
 
 ```powershell-interactive
 Get-AzKeyVault -VaultName "<your-unique-keyvault-name>"
@@ -102,13 +102,13 @@ A Key Vault erőforrás-azonosítója a "/Subscriptions/<saját előfizetés-azo
 
 ## <a name="enable-logging-using-azure-powershell"></a>Naplózás engedélyezése Azure PowerShell használatával
 
-A Key Vault naplózásának engedélyezéséhez az Azure CLI az monitor Diagnostics [-Settings Create](/cli/azure/monitor/diagnostic-settings) parancsot vagy a [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) parancsmagot használjuk a Storage-fiók azonosítójával és a Key Vault erőforrás-azonosítóval együtt.
+A Key Vault naplózásának engedélyezéséhez az Azure CLI az monitor Diagnostics [-Settings Create](/cli/azure/monitor/diagnostic-settings) parancsot vagy a [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) parancsmagot használjuk a Storage-fiók azonosítójával és a Key Vault erőforrás-azonosítóval együtt.
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --storage-account "<storage-account-id>" --resource "<key-vault-resource-id>" --name "Key vault logs" --logs '[{"category": "AuditEvent","enabled": true}]' --metrics '[{"category": "AllMetrics","enabled": true}]'
 ```
 
-A Azure PowerShell használatával a [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) parancsmagot használjuk, és az **-enabled** jelzőt beállítottuk, hogy a **$true** és a kategória beállítása `AuditEvent` (az egyetlen kategória a Key Vault naplózáshoz):
+A Azure PowerShell használatával a [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) parancsmagot használjuk, és az **-enabled** jelzőt beállítottuk, hogy a **$true** és a kategória beállítása `AuditEvent` (az egyetlen kategória a Key Vault naplózáshoz):
 
 ```powershell-interactive
 Set-AzDiagnosticSetting -ResourceId "<key-vault-resource-id>" -StorageAccountId $sa.id -Enabled $true -Category "AuditEvent"
@@ -123,7 +123,7 @@ az monitor diagnostic-settings update
 ```
 -->
 
-A Azure PowerShell használatával használja a [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) parancsmagot. 
+A Azure PowerShell használatával használja a [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) parancsmagot. 
 
 ```powershell-interactive
 Set-AzDiagnosticSetting "<key-vault-resource-id>" -StorageAccountId $sa.id -Enabled $true -Category AuditEvent -RetentionEnabled $true -RetentionInDays 90
@@ -149,7 +149,7 @@ Először sorolja fel a tárolóban lévő összes blobot.  Az Azure CLI-vel has
 az storage blob list --account-name "<your-unique-storage-account-name>" --container-name "insights-logs-auditevent"
 ```
 
-A Azure PowerShell használatával a tárolóban található összes blobot használja a [Get-AzStorageBlob](/powershell/module/az.storage/get-azstorageblob?view=azps-4.7.0) listához, írja be a következőt:
+A Azure PowerShell használatával a tárolóban található összes blobot használja a [Get-AzStorageBlob](/powershell/module/az.storage/get-azstorageblob) listához, írja be a következőt:
 
 ```powershell
 Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context
@@ -165,7 +165,7 @@ Az Azure CLI-vel használja az az [Storage blob Download](/cli/azure/storage/blo
 az storage blob download --container-name "insights-logs-auditevent" --file <path-to-file> --name "<blob-name>" --account-name "<your-unique-storage-account-name>"
 ```
 
-A Azure PowerShell használatával a [gt-AzStorageBlobs](/powershell/module/az.storage/get-azstorageblob?view=azps-4.7.0) parancsmaggal lekérheti a Blobok listáját, majd a [Get-AzStorageBlobContent](/powershell/module/az.storage/get-azstorageblobcontent?view=azps-4.7.0) parancsmaghoz tartozó csatornán keresztül letöltheti a naplókat a kiválasztott elérési útra.
+A Azure PowerShell használatával a [gt-AzStorageBlobs](/powershell/module/az.storage/get-azstorageblob) parancsmaggal lekérheti a Blobok listáját, majd a [Get-AzStorageBlobContent](/powershell/module/az.storage/get-azstorageblobcontent) parancsmaghoz tartozó csatornán keresztül letöltheti a naplókat a kiválasztott elérési útra.
 
 ```powershell-interactive
 $blobs = Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context | Get-AzStorageBlobContent -Destination "<path-to-file>"

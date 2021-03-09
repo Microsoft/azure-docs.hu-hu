@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 6fe43c39b17e574e1913cd9e7b4292a71f1e418d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 7e493404e7a36b60e8f9e62cd4ac2f2b32845bb9
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031759"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501617"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>Python-fejlesztési környezet beállítása Azure Machine Learninghoz
 
@@ -55,7 +55,7 @@ A munkaterület-konfigurációs fájl egy JSON-fájl, amely közli az SDK-val, h
 
 A JSON-fájlnak a Python-szkripteket vagy Jupyter-jegyzetfüzeteket tartalmazó címtár-struktúrában kell lennie. Ez lehet ugyanabban a címtárban, egy *. azureml* nevű alkönyvtár vagy egy szülő könyvtárban.
 
-Ha ezt a fájlt a kódból szeretné használni, használja a [`Workspace.from_config`](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#from-config-path-none--auth-none---logger-none---file-name-none-&preserve-view=true) metódust. Ez a kód betölti az adatokat a fájlból, és csatlakozik a munkaterülethez.
+Ha ezt a fájlt a kódból szeretné használni, használja a [`Workspace.from_config`](/python/api/azureml-core/azureml.core.workspace.workspace#from-config-path-none--auth-none---logger-none---file-name-none-) metódust. Ez a kód betölti az adatokat a fájlból, és csatlakozik a munkaterülethez.
 
 Hozzon létre egy munkaterület-konfigurációs fájlt az alábbi módszerek egyikével:
 
@@ -67,7 +67,7 @@ Hozzon létre egy munkaterület-konfigurációs fájlt az alábbi módszerek egy
 
 * Python SDK Azure Machine Learning
 
-    Hozzon létre egy parancsfájlt a Azure Machine Learning munkaterülethez való kapcsolódáshoz, és a [`write_config`](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#write-config-path-none--file-name-none-&preserve-view=true) metódus használatával hozza létre a fájlt, és mentse *. azureml/config.js*. Győződjön meg arról, hogy a, a `subscription_id` `resource_group` és a és a együtt van lecserélve `workspace_name` .
+    Hozzon létre egy parancsfájlt a Azure Machine Learning munkaterülethez való kapcsolódáshoz, és a [`write_config`](/python/api/azureml-core/azureml.core.workspace.workspace#write-config-path-none--file-name-none-) metódus használatával hozza létre a fájlt, és mentse *. azureml/config.js*. Győződjön meg arról, hogy a, a `subscription_id` `resource_group` és a és a együtt van lecserélve `workspace_name` .
 
     ```python
     from azureml.core import Workspace
@@ -99,7 +99,7 @@ Helyi fejlesztési környezet vagy távoli virtuális gép konfigurálása:
     > Ha Linux vagy macOS rendszerű, és a bashtől eltérő (például zsh) rendszerhéjat használ, előfordulhat, hogy bizonyos parancsok futtatásakor hibák jelentkeznek. A probléma megkerüléséhez a `bash` paranccsal indítson el egy új bash-rendszerhéjat, és futtassa a parancsokat.
 
 1. Aktiválja az újonnan létrehozott Python virtuális környezetet.
-1. Telepítse a [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)-t.
+1. Telepítse a [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/install)-t.
 1. A helyi környezet a Azure Machine Learning munkaterület használatára való konfigurálásához [hozzon létre egy munkaterület-konfigurációs fájlt](#workspace) , vagy használjon egy meglévőt.
 
 Most, hogy beállította a helyi környezetét, készen áll a Azure Machine Learning használatának megkezdésére. A kezdéshez tekintse meg a [Azure Machine learning Python első lépések útmutatóját](tutorial-1st-experiment-sdk-setup-local.md) .
@@ -217,4 +217,4 @@ További információ: [Adatelemzési Virtual Machines](https://azure.microsoft.
 ## <a name="next-steps"></a>Következő lépések
 
 - Azure Machine Learning [modell betanítása](tutorial-train-models-with-aml.md) a MNIST adatkészlettel.
-- Tekintse [meg a Pythonhoz készült Azure Machine learning SDK-referenciát](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py). 
+- Tekintse [meg a Pythonhoz készült Azure Machine learning SDK-referenciát](/python/api/overview/azure/ml/intro). 

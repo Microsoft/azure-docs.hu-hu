@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 7ab113a9c7ab03a477f387c5599b55d67c99c6fd
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 40222b6a108976de9c82ffccee119b1c1c55f334
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433896"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505749"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>HDInsight-fürt kezelése – ajánlott eljárások
 
@@ -28,7 +28,7 @@ Ismerje meg a HDInsight-fürtök kezelésének ajánlott eljárásait.
 | Azure CLI | [HDInsight-fürtök létrehozása az Azure CLI használatával](./hdinsight-hadoop-create-linux-clusters-azure-cli.md) |
 | Azure PowerShell | [Linux-alapú fürtök létrehozása a HDInsight-ben a Azure PowerShell használatával](./hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |
 | cURL | [Apache Hadoop-fürtök létrehozása az Azure REST API használatával](./hdinsight-hadoop-create-linux-clusters-curl-rest.md) |
-| SDK-k (.NET, Python, Java) | [.Net](/dotnet/api/overview/azure/hdinsight), [Python](/python/api/overview/azure/hdinsight?preserve-view=true&view=azure-python), [Java](/java/api/overview/azure/hdinsight), [Go](./hdinsight-go-sdk-overview.md) |
+| SDK-k (.NET, Python, Java) | [.Net](/dotnet/api/overview/azure/hdinsight), [Python](/python/api/overview/azure/hdinsight), [Java](/java/api/overview/azure/hdinsight), [Go](./hdinsight-go-sdk-overview.md) |
 
 > [!Note]
 > Ha egy korábban létrehozott fürtből hoz létre fürtöt, és újból felhasználja a fürtöt, várjon, amíg a fürt létrehozása előtt a fürt korábbi törlése be nem fejeződik.

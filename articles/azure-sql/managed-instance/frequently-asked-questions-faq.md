@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 9e8ef5bf9d5d8000bfdd581cd7e9ae1a1a775fc9
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 17e97503996b53868f12e74ed5a38dba63285426
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178133"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503198"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Felügyelt Azure SQL-példányra vonatkozó gyakori kérdések (GYIK)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -102,7 +102,7 @@ Igen, írhat. Útmutatásért lásd: [erőforrások áthelyezése régiók köz�
 
 **Hogyan törölhetem a felügyelt példányt?**
 
-A felügyelt példányok a Azure Portal, a [PowerShell](/powershell/module/az.sql/remove-azsqlinstance?preserve-view=true&view=azps-4.3.0), az [Azure CLI](/cli/azure/sql/mi#az-sql-mi-delete) vagy a [Resource Manager REST API](/rest/api/sql/managedinstances/delete)-k használatával törölhetők.
+A felügyelt példányok a Azure Portal, a [PowerShell](/powershell/module/az.sql/remove-azsqlinstance), az [Azure CLI](/cli/azure/sql/mi#az-sql-mi-delete) vagy a [Resource Manager REST API](/rest/api/sql/managedinstances/delete)-k használatával törölhetők.
 
 **Mennyi ideig tart egy példány létrehozása vagy frissítése, vagy egy adatbázis visszaállítása?**
 

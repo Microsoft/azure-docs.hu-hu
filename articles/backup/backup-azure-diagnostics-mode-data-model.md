@@ -3,12 +3,12 @@ title: Azure Monitor naplók adatmodellje
 description: Ebből a cikkből megtudhatja, hogyan Azure Monitor Log Analytics adatmodell adatait Azure Backup adatokra vonatkozóan.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 2d2146612763bac39eb636bb7da522586a0daee2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 004c5a6c0c2c4dcfcf13134bd5a5143ba647048f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586773"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500988"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics adatmodell Azure Backup-adattípushoz
 
@@ -18,7 +18,8 @@ A Log Analytics adatmodell használatával egyéni riasztásokat hozhat létre a
 
 > [!NOTE]
 >
-> Ez az adatmodell a diagnosztikai események Log Analytics (LA) való küldésének Azure Diagnostics módjára hivatkozik. Az új erőforrás-specifikus mód adatmodelljének megismeréséhez tekintse meg a következő cikket: [Azure Backup diagnosztikai események Adatmodellje](./backup-azure-reports-data-model.md)
+> * Ez az adatmodell a diagnosztikai események Log Analytics (LA) való küldésének Azure Diagnostics módjára hivatkozik. Az új erőforrás-specifikus mód adatmodelljének megismeréséhez tekintse meg a következő cikket: [Azure Backup diagnosztikai események Adatmodellje](./backup-azure-reports-data-model.md)
+> * Egyéni jelentéskészítési nézetek létrehozásához ajánlott a [rendszerfunkciókat Azure monitor naplókon](backup-reports-system-functions.md) használni az alább felsorolt nyers táblák használata helyett.
 
 ## <a name="using-azure-backup-data-model"></a>Azure Backup adatmodell használata
 
@@ -172,7 +173,7 @@ Ez a táblázat a feladatokkal kapcsolatos mezők részleteit tartalmazza.
 
 Ez a táblázat a házirendekkel kapcsolatos mezőkről tartalmaz információkat.
 
-| Mező | Adattípus | Alkalmazható verziók | Description |
+| Mező | Adattípus | Alkalmazható verziók | Leírás |
 | --- | --- | --- | --- |
 | EventName_s |Szöveg ||Ez a mező az esemény nevét jelöli. Mindig AzureBackupCentralReport |
 | SchemaVersion_s |Szöveg ||Ez a mező a séma aktuális verzióját jelöli. **V2** |
@@ -220,7 +221,7 @@ Ez a táblázat a házirendekkel kapcsolatos mezőkről tartalmaz információka
 
 Ez a táblázat a különböző entitásokkal rendelkező házirend-társítások részleteit tartalmazza.
 
-| Mező | Adattípus | Alkalmazható verziók | Description |
+| Mező | Adattípus | Alkalmazható verziók | Leírás |
 | --- | --- | --- | --- |
 | EventName_s |Szöveg ||Ez a mező az esemény nevét jelöli. Mindig AzureBackupCentralReport |
 | SchemaVersion_s |Szöveg ||Ez a mező a séma aktuális verzióját jelöli. **V2** |
@@ -349,7 +350,7 @@ Ez a tábla meghatározza, hogy egy kötet milyen munkaterheléshez van társít
 
 Ez a táblázat az alapszintű védett példányokkal kapcsolatos mezőket tartalmazza.
 
-| Mező | Adattípus |Alkalmazható verziók | Description |
+| Mező | Adattípus |Alkalmazható verziók | Leírás |
 | --- | --- | --- | --- |
 | BackupItemUniqueId_s |Szöveg |v2|Egyedi azonosító, amely a DPM, MABS használatával biztonsági mentést végző virtuális gépek biztonsági mentési elemének azonosítására szolgál.|
 | ProtectedContainerUniqueId_s |Szöveg |v2|Egyedi azonosító, amely a védett tároló azonosítására szolgál a DPM, a MABS-t használó virtuális gépek kivételével.|

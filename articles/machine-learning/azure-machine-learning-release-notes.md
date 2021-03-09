@@ -9,16 +9,16 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: 69313b48b505bd0b53df6f15f636e2903f41ebfd
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: ebd4aed284869eb74760de8612a76139d26d47f5
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124006"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502348"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
-Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hivatkozási tartalomért keresse fel a Azure Machine Learning [**fő SDK for Python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) -referenciát tartalmazó oldalt.
+Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hivatkozási tartalomért keresse fel a Azure Machine Learning [**fő SDK for Python**](/python/api/overview/azure/ml/intro) -referenciát tartalmazó oldalt.
 
 __RSS-hírcsatorna__: értesítést kap az oldal frissítésekor, ha a következő URL-címet másolja és illeszti be a hírcsatorna-olvasóba: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
 
@@ -49,7 +49,7 @@ __RSS-hírcsatorna__: értesítést kap az oldal frissítésekor, ha a következ
     + [Kísérleti funkció] Támogatás hozzáadása a szinapszis Spark-készlet a pénzmosás-hez való csatlakoztatásához számítási feladatokhoz
     + [Kísérleti funkció] Adja meg az identitás-alapú adathozzáférés támogatását. A felhasználók a hitelesítő adatok megadása nélkül regisztrálhatják az adattárt vagy az adatkészleteket. Ilyen esetben a rendszer a felhasználó HRE tokenjét vagy a számítási cél felügyelt identitását fogja használni a hitelesítéshez. További információ [itt](https://aka.ms/data-access).
   + **azureml-pipeline-steps**
-    + [Kísérleti funkció] [SynapseSparkStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.synapsesparkstep?preserve-view=true&view=azure-ml-py) -támogatás hozzáadása
+    + [Kísérleti funkció] [SynapseSparkStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.synapsesparkstep) -támogatás hozzáadása
   + **azureml-synapse**
     + [Kísérleti funkció] A Spark Magic támogatásának hozzáadásával interaktív munkamenetet futtathat a szinapszis Spark-készletben.
 + **Hibajavítások és javítások**
@@ -80,10 +80,10 @@ __RSS-hírcsatorna__: értesítést kap az oldal frissítésekor, ha a következ
     + Kijavítva a hiba, ahol a klasszikus előrejelzési modellek (például a AutoArima) olyan képzési adatokhoz vezethetnek, amelyekben nem szerepelnek az imputált célérték értékű sorok. Ez megsértette ezeknek a modelleknek az adategyezményét. * Az idősoros késleltető operátorban rögzített különböző hibák, amelyek késési előfordulási viselkedéssel rendelkeznek. Korábban a késések közötti művelet nem jelölte meg megfelelően az összes imputált sort, így nem mindig eredményezi a helyes előfordulási késési értékeket. A lag-kezelő és a gördülő ablak operátora közötti kompatibilitási problémák is kijavítva vannak a késések miatti viselkedéssel. Ez korábban azt eredményezte, hogy a gördülő ablak kezelője eldobott néhány sort a betanítási adatokból, amelyeket egyébként használnia kell.
   + **azureml-core**
     + Támogatás hozzáadása a token-hitelesítéshez a célközönség által.
-    + Adja hozzá `process_count` a [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) a többcsomópontos többcsomópontos PyTorch feladatok támogatásához.
+    + Adja hozzá `process_count` a [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration) a többcsomópontos többcsomópontos PyTorch feladatok támogatásához.
   + **azureml-pipeline-steps**
-    + [CommandStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.commandstep?preserve-view=true&view=azure-ml-py) most, és már nem kísérletezik.
-    + [ParallelRunConfig](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig?preserve-view=true&view=azure-ml-py): adjon hozzá argumentumot allowed_failed_count és allowed_failed_percent a hiba küszöbértékének a mini batch szintjén való vizsgálatához. A hiba küszöbértéke már 3 íz:
+    + [CommandStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.commandstep) most, és már nem kísérletezik.
+    + [ParallelRunConfig](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig): adjon hozzá argumentumot allowed_failed_count és allowed_failed_percent a hiba küszöbértékének a mini batch szintjén való vizsgálatához. A hiba küszöbértéke már 3 íz:
        + error_threshold – a nem engedélyezett mini batch-elemek száma; 
        + allowed_failed_count – a nem engedélyezett mini-kötegek száma; 
        + allowed_failed_percent – a nem engedélyezett mini-kötegek százalékos aránya. 
@@ -93,7 +93,7 @@ __RSS-hírcsatorna__: értesítést kap az oldal frissítésekor, ha a következ
     + A ScriptRunConfig mostantól támogatja a HyperDriveStep
   + **azureml-train-core**
     + A ScriptRun meghívott HyperDrive-futtatások most már alárendeltnek minősülnek.
-    + Adja hozzá `process_count` a [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) a többcsomópontos többcsomópontos PyTorch feladatok támogatásához.
+    + Adja hozzá `process_count` a [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration) a többcsomópontos többcsomópontos PyTorch feladatok támogatásához.
   + **azureml-widgets**
     + Adja hozzá a widget ParallelRunStepDetails egy ParallelRunStep állapotának megjelenítéséhez.
     + Lehetővé teszi a HyperDrive-felhasználók számára, hogy egy további tengelyt lássanak a párhuzamos koordináták diagramon, amely megjeleníti az egyes hiperparaméterek beállítása tartozó egyes gyermekobjektumok metrikai értékét.
@@ -454,7 +454,7 @@ További információ a [rendszerkép-példányok szegmentálásának címkézé
 
 ### <a name="azure-machine-learning-sdk-for-python-v1130"></a>Azure Machine Learning SDK a Python v 1.13.0
 + **Előzetes verziójú funkciók**
-  + **azureml – mag** Az új kimeneti adatkészletek lehetőséggel vissza lehet írni a Felhőbeli tárhelyre, beleértve a blobot, a ADLS Gen 1, a ADLS Gen 2 és a fájlmegosztás. Konfigurálhatja a kimeneti adatok helyét, az adatok kimenetét (csatlakoztatás vagy feltöltés útján), függetlenül attól, hogy regisztrálja-e a kimeneti adatokat a jövőbeli újrafelhasználáshoz és megosztáshoz, és továbbítsa a közbenső adatokat a folyamat lépései között zökkenőmentesen. Ez lehetővé teszi a reprodukálhatóságot, a megosztást, megakadályozza az adatismétlődést, és a költséghatékonyság és a termelékenység növekedését eredményezi. [Tudnivalók a használatáról](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py)
+  + **azureml – mag** Az új kimeneti adatkészletek lehetőséggel vissza lehet írni a Felhőbeli tárhelyre, beleértve a blobot, a ADLS Gen 1, a ADLS Gen 2 és a fájlmegosztás. Konfigurálhatja a kimeneti adatok helyét, az adatok kimenetét (csatlakoztatás vagy feltöltés útján), függetlenül attól, hogy regisztrálja-e a kimeneti adatokat a jövőbeli újrafelhasználáshoz és megosztáshoz, és továbbítsa a közbenső adatokat a folyamat lépései között zökkenőmentesen. Ez lehetővé teszi a reprodukálhatóságot, a megosztást, megakadályozza az adatismétlődést, és a költséghatékonyság és a termelékenység növekedését eredményezi. [Tudnivalók a használatáról](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig)
     
 + **Hibajavítások és javítások**
   + **azureml-automl-core**
@@ -528,7 +528,7 @@ További információ a [rendszerkép-példányok szegmentálásának címkézé
   + **azureml-core**
     + Az új metódus `run.get_detailed_status()` mostantól megjeleníti az aktuális futtatási állapot részletes magyarázatát. Jelenleg csak az állapot magyarázata látható `Queued` .
     + Adja hozzá image_name és image_label paramétereket a Model. package () paraméterhez, hogy engedélyezze a beépített csomag rendszerképének átnevezését.
-    + Új módszer `set_pip_requirements()` a teljes pip szakasz egyszerre történő beállításához [`CondaDependencies`](/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?preserve-view=true&view=azure-ml-py) .
+    + Új módszer `set_pip_requirements()` a teljes pip szakasz egyszerre történő beállításához [`CondaDependencies`](/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies) .
     + Hitelesítő adatok regisztrálásának engedélyezése – kevésbé ADLS Gen2 adattár.
     + Javított hibaüzenet, ha helytelen adatkészlet-típust próbál letölteni vagy csatlakoztatni.
     + A szűrési optimalizálást biztosító partition_timestamp több példáját tartalmazó idősorozat-adatkészlet-szűrő minta notebookjának frissítése.
@@ -553,7 +553,7 @@ További információ a [rendszerkép-példányok szegmentálásának címkézé
     + Rögzített pillanatkép-problémák a AutoML-futtatások elküldésekor, felhasználó által megadott parancsfájlok nélkül.
     + A rögzített gyermek-futtatási hibák, amikor a Nan és a featurization funkció ki van kapcsolva.
   + **azureml-train-core**
-    + A pip-beállítások megadásának támogatása (például--extra-index-URL) a pip-követelmények fájlban átadott értékre [`Estimator`](/python/api/azureml-train-core/azureml.train.estimator.estimator?preserve-view=true&view=azure-ml-py) `pip_requirements_file` .
+    + A pip-beállítások megadásának támogatása (például--extra-index-URL) a pip-követelmények fájlban átadott értékre [`Estimator`](/python/api/azureml-train-core/azureml.train.estimator.estimator) `pip_requirements_file` .
 
 
 ## <a name="2020-08-03"></a>2020-08-03
@@ -1001,7 +1001,7 @@ További információ a [rendszerkép-példányok szegmentálásának címkézé
 ## <a name="2020-05-04"></a>2020-05-04
 **Új jegyzetfüzet-élmény**
 
-Mostantól közvetlenül a Azure Machine Learning Studio webes felületén belül hozhat létre, szerkeszthet és oszthat meg gépi tanulási jegyzetfüzeteket és fájlokat. A [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) -ban elérhető összes osztályt és módszert felhasználhatja ezekből a jegyzetfüzetekről az [első lépések](./how-to-run-jupyter-notebooks.md) elkezdéséhez
+Mostantól közvetlenül a Azure Machine Learning Studio webes felületén belül hozhat létre, szerkeszthet és oszthat meg gépi tanulási jegyzetfüzeteket és fájlokat. A [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/intro) -ban elérhető összes osztályt és módszert felhasználhatja ezekből a jegyzetfüzetekről az [első lépések](./how-to-run-jupyter-notebooks.md) elkezdéséhez
 
 **Új szolgáltatások bevezetése:**
 
@@ -1372,7 +1372,7 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
     + Elavult üzenetek hozzáadása az összes képosztály kódjának elérési útjához
     + Rögzített modellkezelés URL-konstrukció az Azure China 21Vianet régióhoz.
     + Kijavítva a probléma, hogy az source_dir-t használó modellek nem tölthetők Azure Functionshoz.    
-    + Lehetőség a [Environment.build_local ()](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) elemre a rendszerkép leküldéséhez a AzureML Workspace-tároló beállításjegyzékében
+    + Lehetőség a [Environment.build_local ()](/python/api/azureml-core/azureml.core.environment.environment) elemre a rendszerkép leküldéséhez a AzureML Workspace-tároló beállításjegyzékében
     + Frissítette az SDK-t, hogy az új jogkivonat-függvénytárat használja az Azure szinapszisban egy visszamenőleges kompatibilis módon.
   + **azureml-interpret**
     + Kijavítva a hiba, ha a rendszer nem adott vissza semmilyen magyarázatot a letöltéshez. A mostantól kivételt vet fel.
@@ -1751,7 +1751,7 @@ A Azure Machine Learning mostantól a Event Grid erőforrás-szolgáltatója, a 
       + A következő paraméter elavult: "daily_latest_only".
     + Támogatja az adatkészlet-alapú adateltolódások kimenetének beolvasását.
   + **azureml-explain-model**
-    + A MimicWrapper használatával közvetlenül létrehozandó [ScoringExplainer](/python/api/azureml-interpret/azureml.interpret.scoring.scoring_explainer.scoringexplainer?view=azure-ml-py&preserve-view=true) -támogatás hozzáadása
+    + A MimicWrapper használatával közvetlenül létrehozandó [ScoringExplainer](/python/api/azureml-interpret/azureml.interpret.scoring.scoring_explainer.scoringexplainer) -támogatás hozzáadása
   + **[azureml-pipeline-core](/python/api/azureml-pipeline-core)**
     + Nagyobb teljesítmény a nagy adatcsatornák létrehozásához.
   + **[azureml-train-core](/python/api/azureml-train-core)**
@@ -2334,7 +2334,7 @@ A jelen kiadás időpontjában a következő böngészők támogatottak: Chrome,
 
 A Azure Machine Learning SDK for Python v 1.0.30 megjelent.
 
-A [`PipelineEndpoint`](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline_endpoint.pipelineendpoint?preserve-view=true&view=azure-ml-py) be lett vezetve, hogy hozzáadjon egy közzétett folyamat új verzióját, miközben megtartja ugyanazt a végpontot.
+A [`PipelineEndpoint`](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline_endpoint.pipelineendpoint) be lett vezetve, hogy hozzáadjon egy közzétett folyamat új verzióját, miközben megtartja ugyanazt a végpontot.
 
 ## <a name="2019-04-15"></a>2019-04-15
 
@@ -2351,7 +2351,7 @@ A [`PipelineEndpoint`](/python/api/azureml-pipeline-core/azureml.pipeline.core.p
 + **Új funkciók**
   + A Azure Machine Learning SDK mostantól támogatja a Python 3,7-es verzióit.
   + Azure Machine Learning DNN becslések már beépített, többverziós támogatást biztosít. Például a `TensorFlow` kalkulátor mostantól elfogad egy `framework_version` paramétert, és a felhasználók megadhatják a következő verziót: "1,10" vagy "1,12". Az aktuális SDK-kiadás által támogatott verziók listáját a `get_supported_versions()` kívánt keretrendszer osztály (például:) alapján teheti meg `TensorFlow.get_supported_versions()` .
-  A legújabb SDK-kiadás által támogatott verziók listáját a [DNN kalkulátor dokumentációjában](/python/api/azureml-train-core/azureml.train.dnn?preserve-view=true&view=azure-ml-py)találja.
+  A legújabb SDK-kiadás által támogatott verziók listáját a [DNN kalkulátor dokumentációjában](/python/api/azureml-train-core/azureml.train.dnn)találja.
 
 ## <a name="2019-03-25"></a>2019-03-25
 
@@ -2388,13 +2388,13 @@ A [`PipelineEndpoint`](/python/api/azureml-pipeline-core/azureml.pipeline.core.p
 ### <a name="azure-machine-learning-sdk-for-python-v1017"></a>Azure Machine Learning SDK a Python v 1.0.17
 
 + **Új funkciók**
-  + A Azure Machine Learning mostantól első osztályú támogatást biztosít a népszerű DNN-keretrendszer láncolásához. Az [`Chainer`](/python/api/azureml-train-core/azureml.train.dnn.chainer?preserve-view=true&view=azure-ml-py) osztály felhasználóinak használatával könnyedén betaníthatja és üzembe helyezheti a láncolt modelleket.
+  + A Azure Machine Learning mostantól első osztályú támogatást biztosít a népszerű DNN-keretrendszer láncolásához. Az [`Chainer`](/python/api/azureml-train-core/azureml.train.dnn.chainer) osztály felhasználóinak használatával könnyedén betaníthatja és üzembe helyezheti a láncolt modelleket.
     + Ismerje meg, hogyan [futtathatja az elosztott képzést a ChainerMN](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/chainer/distributed-chainer/distributed-chainer.ipynb)
     + Ismerje meg, hogyan [futtathat hiperparaméter-hangolást a chainer használatával a HyperDrive segítségével](https://github.com/Azure/MachineLearningNotebooks/blob/b881f78e4658b4e102a72b78dbd2129c24506980/how-to-use-azureml/ml-frameworks/chainer/deployment/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb)
   + Azure Machine Learning folyamatokkal bővült az adattár-módosítások alapján a folyamat futtatásának lehetősége. A folyamat [ütemezett jegyzetfüzete](https://aka.ms/pl-schedule) frissült a szolgáltatás megjelenítéséhez.
 
 + **Hibajavítások és javítások**
-  + Azure Machine Learning-folyamatokat is támogatunk, amelyekkel beállíthatja a source_directory_data_store tulajdonságot egy kívánt adattárra (például blob Storage-ra) a [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?preserve-view=true&view=azure-ml-py)megadott [RunConfigurations](/python/api/azureml-core/azureml.core.runconfig.runconfiguration?preserve-view=true&view=azure-ml-py) . Alapértelmezés szerint az Azure file Store-t használja a háttérként szolgáló adattárként, amely szabályozási problémákba ütközik, amikor nagy számú lépést hajt végre egyszerre.
+  + Azure Machine Learning-folyamatokat is támogatunk, amelyekkel beállíthatja a source_directory_data_store tulajdonságot egy kívánt adattárra (például blob Storage-ra) a [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep)megadott [RunConfigurations](/python/api/azureml-core/azureml.core.runconfig.runconfiguration) . Alapértelmezés szerint az Azure file Store-t használja a háttérként szolgáló adattárként, amely szabályozási problémákba ütközik, amikor nagy számú lépést hajt végre egyszerre.
 
 ### <a name="azure-portal"></a>Azure Portal
 

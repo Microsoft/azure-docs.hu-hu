@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 11/09/2020
 author: palma21
-ms.openlocfilehash: c6160d36240b59c60fafa955b916fb6167c2648e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 93c8d1392de8f502a829276287a4687476dd36de
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685754"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505058"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>A fürtcsomópontok kimenő forgalmának szabályozása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -28,13 +28,13 @@ Az AK kimenő függőségei szinte teljesen meg vannak határozva teljes TARTOM�
 Alapértelmezés szerint az AK-fürtök korlátlan kimenő (kimenő) internet-hozzáféréssel rendelkeznek. A hálózati hozzáférés ezen szintje lehetővé teszi, hogy a futtatott csomópontok és szolgáltatások igény szerint hozzáférhessenek a külső erőforrásokhoz. Ha korlátozni szeretné a kimenő forgalom forgalmát, a fürt kifogástalan karbantartási feladatainak megtartása érdekében korlátozott számú portot és címet kell elérhetővé tenni. A kimenő címek biztonságossá tételének legegyszerűbb megoldása egy olyan tűzfal-eszköz használata, amely a tartománynevek alapján képes a kimenő forgalom vezérlésére. Azure Firewall például a célként megadott teljes tartománynév alapján korlátozhatja a kimenő HTTP-és HTTPS-forgalmat. Az előnyben részesített tűzfal-és biztonsági szabályokat is konfigurálhatja, hogy engedélyezze ezeket a szükséges portokat és címeket.
 
 > [!IMPORTANT]
-> Ez a dokumentum csak azt ismerteti, hogyan lehet zárolni az AK-alhálózatot elhagyó forgalmat. Az AK-ban alapértelmezés szerint nincsenek beáramlási követelmények.  A **belső alhálózati forgalom** blokkolása hálózati biztonsági csoportokkal (NSG) és tűzfalakkal nem támogatott. A fürtön belüli forgalom szabályozásához és letiltásához használja a [ * *_hálózati házirendek_* _][network-policy]lehetőséget.
+> Ez a dokumentum csak azt ismerteti, hogyan lehet zárolni az AK-alhálózatot elhagyó forgalmat. Az AK-ban alapértelmezés szerint nincsenek beáramlási követelmények.  A **belső alhálózati forgalom** blokkolása hálózati biztonsági csoportokkal (NSG) és tűzfalakkal nem támogatott. A fürtön belüli forgalom szabályozásához és letiltásához használja a [**_hálózati házirendeket_**][network-policy].
 
 ## <a name="required-outbound-network-rules-and-fqdns-for-aks-clusters"></a>Szükséges kimenő hálózati szabályok és teljes tartománynevek az AK-fürtökhöz
 
 A következő hálózati és FQDN/alkalmazási szabályok szükségesek egy AK-fürthöz, akkor használhatja őket, ha a Azure Firewallon kívüli megoldást szeretne konfigurálni.
 
-_ Az IP-címek függőségei nem HTTP/S forgalomra vonatkoznak (TCP-és UDP-forgalom)
+* Az IP-címek függőségei nem HTTP/S forgalomra vonatkoznak (TCP-és UDP-forgalom)
 * Az FQDN HTTP-/HTTPS-végpontok a tűzfal eszközén helyezhetők el.
 * A helyettesítő HTTP/HTTPS-végpontok olyan függőségek, amelyek számos minősítőtől függően eltérőek lehetnek az AK-fürttől.
 * Az AK egy belépésvezérlés használatával adja hozzá a teljes tartománynevet környezeti változóként a Kube-rendszer és a forgalomirányító-rendszer területen lévő összes központi telepítéshez, amely biztosítja, hogy a csomópontok és az API-kiszolgáló közötti összes rendszerkommunikáció az API-kiszolgáló teljes tartománynevét használja, nem az API-kiszolgáló IP-címét. 
@@ -407,7 +407,7 @@ Most már van egy AK-fürt üzembe helyezése a meglévő virtuális hálózatba
 
 ### <a name="create-a-service-principal-with-access-to-provision-inside-the-existing-virtual-network"></a>Egyszerű szolgáltatásnév létrehozása a meglévő virtuális hálózatban való üzembe helyezéshez
 
-Az AK egy egyszerű szolgáltatásnevet használ a fürterőforrások létrehozásához. A létrehozáskor átadott egyszerű szolgáltatás a mögöttes AK-erőforrások, például a tárolási erőforrások, az IP-címek és a terheléselosztó által használt terheléselosztó létrehozásához használható (Ehelyett [felügyelt identitást](use-managed-identity.md) is használhat). Ha nem kapta meg az alábbi megfelelő engedélyeket, nem fogja tudni kiépíteni az AK-fürtöt.
+A rendszer a fürt identitását (felügyelt identitást vagy szolgáltatásnevet) használja a fürterőforrás létrehozásához. A létrehozás ideje alatt átadott egyszerű szolgáltatás a mögöttes AK-erőforrások, például a tárolási erőforrások, az IP-címek és a terheléselosztó által használt terheléselosztó létrehozásához használatos (Ehelyett [felügyelt identitást](use-managed-identity.md) is használhat). Ha nem kapta meg az alábbi megfelelő engedélyeket, nem fogja tudni kiépíteni az AK-fürtöt.
 
 ```azurecli
 # Create SP and Assign Permission to Virtual Network

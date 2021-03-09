@@ -6,12 +6,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: af8403f80f7282207ee1bc6b2f81da0d83d264e0
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: d1021352f3555f49b165eed60214e11b1a8d07d9
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180938"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508180"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Azure Kubernetes Services (ak) fürt létrehozása és konfigurálása virtuális csomópontok használatára az Azure CLI használatával
 
@@ -86,7 +86,7 @@ az network vnet subnet create \
 
 ## <a name="create-a-service-principal-or-use-a-managed-identity"></a>Egyszerű szolgáltatásnév létrehozása vagy felügyelt identitás használata
 
-Ahhoz, hogy egy AKS-fürt kommunikálhasson más Azure-erőforrásokkal, Azure Active Directory-szolgáltatásnevet kell használnia. A szolgáltatásnév automatikusan létrehozható az Azure CLI-vel vagy a portállal, vagy létrehozhat egyet előre, és hozzárendelhet további engedélyeket. Azt is megteheti, hogy egy egyszerű szolgáltatásnév helyett felügyelt identitást is használhat az engedélyekhez. További információ: [felügyelt identitások használata](use-managed-identity.md).
+Annak engedélyezéséhez, hogy egy AK-fürt más Azure-erőforrásokkal is működjön, a rendszer a fürt identitását használja. Ez a fürtkonfiguráció automatikusan létrehozható az Azure CLI vagy a portál használatával, vagy előre létrehozhat egyet, és további engedélyeket is hozzárendelhet. Alapértelmezés szerint a fürt identitása felügyelt identitás. További információ: [felügyelt identitások használata](use-managed-identity.md). A fürt identitását is használhatja egyszerű szolgáltatásnévként. A következő lépések bemutatják, hogyan lehet manuálisan létrehozni és hozzárendelni az egyszerű szolgáltatást a fürthöz.
 
 Hozzon létre egy szolgáltatásnevet az [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] paranccsal. A `--skip-assignment` paraméter korlátozza a további engedélyek hozzárendelését.
 

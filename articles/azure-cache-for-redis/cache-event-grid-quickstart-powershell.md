@@ -6,12 +6,12 @@ author: curib
 ms.author: cauribeg
 ms.topic: quickstart
 ms.service: cache
-ms.openlocfilehash: 0ab959d531ff1080e5e6a640410b4955e4cfeff7
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6c3b433a8e433f39b723a7155bb6de116857efca
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101652198"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508163"
 ---
 # <a name="quickstart-route-azure-cache-for-redis-events-to-web-endpoint-with-powershell"></a>Gyors útmutató: az Azure cache átirányítása a Redis-események webes végponthoz a PowerShell használatával
 
@@ -73,7 +73,7 @@ New-AzRedisCache
    [-Confirm]
    [<CommonParameters>]
 ```
-A gyorsítótár-példány PowerShellben való létrehozásával kapcsolatos további információkért tekintse meg a [Azure PowerShell referenciát](/powershell/module/az.rediscache/new-azrediscache?view=azps-5.2.0). 
+A gyorsítótár-példány PowerShellben való létrehozásával kapcsolatos további információkért tekintse meg a [Azure PowerShell referenciát](/powershell/module/az.rediscache/new-azrediscache). 
 
 ## <a name="create-a-message-endpoint"></a>Üzenetvégpont létrehozása
 
@@ -132,7 +132,7 @@ Import-AzRedisCache
       [-Confirm]
       [<CommonParameters>]
 ```
-A PowerShell-beli importálással kapcsolatos további információkért tekintse meg a [Azure PowerShell referenciát](/powershell/module/az.rediscache/import-azrediscache?view=azps-5.2.0). 
+A PowerShell-beli importálással kapcsolatos további információkért tekintse meg a [Azure PowerShell referenciát](/powershell/module/az.rediscache/import-azrediscache). 
 
 Ön kiváltotta az eseményt, az Event Grid pedig elküldte az üzenetet a feliratkozáskor konfigurált végpontnak. Tekintse meg a webalkalmazást az imént elküldött esemény megtekintéséhez.
 

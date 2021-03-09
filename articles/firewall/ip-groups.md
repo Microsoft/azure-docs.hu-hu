@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.author: victorh
-ms.openlocfilehash: 6910fda855402d2f99994da1e835560be84ca2dd
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 907ed0774db0e07a61a3ad568e6c451ea5d37b44
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703377"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501736"
 ---
 # <a name="ip-groups-in-azure-firewall"></a>IP-csoportok a Azure Firewall
 
@@ -79,14 +79,14 @@ Tűzfalon legfeljebb 100 IP-csoport lehet, maximális 5000 egyedi IP-cím vagy I
 
 Az IP-csoportok létrehozásához és kezeléséhez a következő Azure PowerShell parancsmagokat használhatja:
 
-- [New-AzIpGroup](/powershell/module/az.network/new-azipgroup?view=azps-3.4.0)
-- [Remove-AzIPGroup](/powershell/module/az.network/remove-azipgroup?view=azps-3.4.0)
-- [Get-AzIpGroup](/powershell/module/az.network/get-azipgroup?view=azps-3.4.0)
-- [Set-AzIpGroup](/powershell/module/az.network/set-azipgroup?view=azps-3.4.0)
-- [Új – AzFirewallNetworkRule](/powershell/module/az.network/new-azfirewallnetworkrule?view=azps-3.4.0)
-- [Új – AzFirewallApplicationRule](/powershell/module/az.network/new-azfirewallapplicationrule?view=azps-3.4.0)
-- [Új – AzFirewallNatRule](/powershell/module/az.network/new-azfirewallnatrule?view=azps-3.4.0)
+- [New-AzIpGroup](/powershell/module/az.network/new-azipgroup)
+- [Remove-AzIPGroup](/powershell/module/az.network/remove-azipgroup)
+- [Get-AzIpGroup](/powershell/module/az.network/get-azipgroup)
+- [Set-AzIpGroup](/powershell/module/az.network/set-azipgroup)
+- [Új – AzFirewallNetworkRule](/powershell/module/az.network/new-azfirewallnetworkrule)
+- [Új – AzFirewallApplicationRule](/powershell/module/az.network/new-azfirewallapplicationrule)
+- [Új – AzFirewallNatRule](/powershell/module/az.network/new-azfirewallnatrule)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [helyezhet üzembe és konfigurálhat egy Azure Firewall](tutorial-firewall-deploy-portal.md).

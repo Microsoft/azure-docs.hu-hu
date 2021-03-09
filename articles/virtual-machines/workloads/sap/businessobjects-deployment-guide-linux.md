@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 7a40acf7dea11781a0381e93ea180c5185b7818b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b94e1f82409da3329eb6d978fa2ae0222928cd97
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101671919"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505936"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>SAP BusinessObjects BI platformtelepítési útmutató Linuxhoz az Azure-on
 
@@ -603,7 +603,7 @@ Egy vagy több esemény miatti leállások hatásának csökkentése érdekében
 - Használjon Managed Disks virtuális gépekhez egy rendelkezésre állási csoporton belül.
 - Konfigurálja az egyes alkalmazási szinteket különálló rendelkezésre állási csoportokra.
 
-További információkért tekintse meg [a Linux rendszerű virtuális gépek rendelkezésre állásának felügyeletét](../../manage-availability.md) ismertető témakört.
+További információkért tekintse meg [a Linux rendszerű virtuális gépek rendelkezésre állásának felügyeletét](../../availability.md) ismertető témakört.
 
 #### <a name="high-availability-for-cms-database"></a>Magas rendelkezésre állás a CMS-adatbázishoz
 

@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
 ms.custom: automl
-ms.openlocfilehash: 6ed9b316fceeb30a775e2e0d90e7bbb0a07278cd
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: e7038a4e06a96ac2df1a7f0918877db9c97cb71d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180497"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502535"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Mi az a gépi tanulás (AutoML)?
 
@@ -204,7 +204,7 @@ Például az __egyes példányok vagy egyedi__ modellek létrehozása a követke
 
 A Azure Machine Learning két felületet biztosít az automatikus ML-vel való munkavégzéshez:
 
-* A Code tapasztalt ügyfelek esetében [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) -t 
+* A Code tapasztalt ügyfelek esetében [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/intro) -t 
 
 * A korlátozott/nem kódokkal rendelkező ügyfelek számára Azure Machine Learning Studio at [https://ml.azure.com](https://ml.azure.com/)  
 
@@ -289,7 +289,7 @@ Tekintse át a részletes példákat és a használati eseteket a [GitHub notebo
 
 ### <a name="python-sdk-reference"></a>Python SDK-referencia
 
-Az SDK tervezési mintáinak és az [AutoML osztály dokumentációjának](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py)elmélyítésére szaktudását. 
+Az SDK tervezési mintáinak és az [AutoML osztály dokumentációjának](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)elmélyítésére szaktudását. 
 
 > [!Note]
 > Az automatizált gépi tanulási képességek más Microsoft-megoldásokban is elérhetők, mint például a, a [ml.net](/dotnet/machine-learning/automl-overview), a [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), a [Power bi](/power-bi/service-machine-learning-automated) és a [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)

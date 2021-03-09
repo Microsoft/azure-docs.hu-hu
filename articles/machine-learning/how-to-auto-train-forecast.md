@@ -10,17 +10,17 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 6e686c7b22eb834a096cdd7a67beb6d8d291ef20
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 14837391f7bf907acbbe1d573f3171acef4db658
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392323"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503504"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Idősorozat-előrejelzési modell automatikus betanítása
 
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhat és betaníthat egy idősorozat-előrejelző regressziós modellt a [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)-ban, az automatikus gépi tanulás, a AutoML használatával. 
+Ebből a cikkből megtudhatja, hogyan konfigurálhat és betaníthat egy idősorozat-előrejelző regressziós modellt a [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/)-ban, az automatikus gépi tanulás, a AutoML használatával. 
 
 Ehhez a következőket kell tennie: 
 
@@ -120,7 +120,7 @@ További információ arról, hogy a AutoML hogyan alkalmazza a határokon átny
 
 ## <a name="configure-experiment"></a>Kísérlet konfigurálása
 
-Az [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) objektum meghatározza az automatizált gépi tanulási feladatokhoz szükséges beállításokat és adatmennyiséget. Az előrejelzési modell konfigurációja hasonló a standard regressziós modell beállításához, de bizonyos modellek, konfigurációs beállítások és featurization lépések kifejezetten az idősorozat-adatsorokra vonatkoznak. 
+Az [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) objektum meghatározza az automatizált gépi tanulási feladatokhoz szükséges beállításokat és adatmennyiséget. Az előrejelzési modell konfigurációja hasonló a standard regressziós modell beállításához, de bizonyos modellek, konfigurációs beállítások és featurization lépések kifejezetten az idősorozat-adatsorokra vonatkoznak. 
 
 ### <a name="supported-models"></a>Támogatott modellek
 Az automatizált gépi tanulás automatikusan különböző modelleket és algoritmusokat próbál a modell létrehozási és hangolási folyamatának részeként. Felhasználóként nem kell megadnia az algoritmust. Az előrejelzési kísérletek esetében a natív idősorozat és a Deep learning modellek is a javaslati rendszer részét képezik. A következő táblázat összefoglalja a modellek ezen részhalmazát. 
@@ -128,7 +128,7 @@ Az automatizált gépi tanulás automatikusan különböző modelleket és algor
 >[!Tip]
 > A rendszer a hagyományos regressziós modelleket is teszteli a javaslatrendszer részeként az előrejelzési kísérletekhez. A modellek teljes listájáért tekintse meg a [támogatott modell táblázatát](how-to-configure-auto-train.md#supported-models) . 
 
-Modellek| Description | Előnyök
+Modellek| Leírás | Előnyök
 ----|----|---
 Próféta (előzetes verzió)|A próféta a legjobb idősorozattal működik, amely erős szezonális hatásokat és több időszakot is tartalmaz. A modell kihasználása érdekében telepítse helyileg a használatával `pip install fbprophet` . | Pontos & gyors, robusztus a kiugró értékek, a hiányzó adatmennyiségek és az idősorozat drámai változásai.
 Automatikus ARIMA (előzetes verzió)|Az automatikusan újradegresszív, integrált mozgóátlag (ARIMA) a legjobbat hajtja végre, ha az adatok állomáson vannak. Ez azt jelenti, hogy a statisztikai tulajdonságok, például a középérték és a variancia állandó a teljes készleten. Ha például egy érme tükrözését hajtja végre, akkor a fejek megszerzésének valószínűsége 50% lesz, függetlenül attól, hogy a mai, a holnapi vagy a következő évre fordít-e.| Kiválóan használható a univariate sorozatokhoz, mivel a korábbi értékeket a jövőbeli értékek előrejelzésére használjuk.
@@ -138,7 +138,7 @@ ForecastTCN (előzetes verzió)| A ForecastTCN egy olyan neurális hálózati mo
 
 A regressziós problémákhoz hasonlóan szabványos betanítási paramétereket is definiálhat, például a feladattípust, az ismétlések számát, a betanítási adatok számát és az eltérő érvényességi értéket. Az előrejelzési feladatokhoz további paramétereket kell megadni, amelyek hatással vannak a kísérletre. 
 
-A következő táblázat összefoglalja ezeket a további paramétereket. A szintaxis kialakítási mintáit a [ForecastingParameter osztály dokumentációjában](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py) találja.
+A következő táblázat összefoglalja ezeket a további paramétereket. A szintaxis kialakítási mintáit a [ForecastingParameter osztály dokumentációjában](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters) találja.
 
 | Paraméter &nbsp; neve | Leírás | Kötelező |
 |-------|-------|-------|
@@ -154,7 +154,7 @@ A következő táblázat összefoglalja ezeket a további paramétereket. A szin
 
 
 A következő kód, 
-* Kihasználja az [`ForecastingParameters`](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py) osztályt, hogy meghatározza az előrejelzési paramétereket a kísérlet betanításához
+* Kihasználja az [`ForecastingParameters`](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters) osztályt, hogy meghatározza az előrejelzési paramétereket a kísérlet betanításához
 * Beállítja a `time_column_name` értékét az `day_datetime` adatkészlet mezőjére. 
 * A paramétert adja meg a következőhöz: `time_series_id_column_names` `"store"` . Ez biztosítja, hogy az **adatsorozatok két különálló csoportja** legyen létrehozva. egyet az A és A B áruházhoz.
 * A 50 értékre állítja a `forecast_horizon` teljes tesztelési készlet előrejelzését. 
@@ -298,7 +298,7 @@ Tekintse meg a [cél gördülő ablak összesítési funkcióját](https://githu
 
 ### <a name="short-series-handling"></a>Rövid adatsorozat-kezelő
 
-Az automatizált ML egy **rövid** adatsorozatot vesz figyelembe, ha nincs elegendő adatpont a modell fejlesztésének betanítási és ellenőrzési fázisának végrehajtásához. Az adatpontok száma minden kísérlet esetében változik, és a max_horizontól, a több ellenőrzési osztástól, valamint a modell lookback hosszától függ, azaz az idősorozat-funkciók létrehozásához szükséges előzmények maximális száma. A pontos számításhoz tekintse meg a [short_series_handling_configuration dokumentációját](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py#short-series-handling-configuration).
+Az automatizált ML egy **rövid** adatsorozatot vesz figyelembe, ha nincs elegendő adatpont a modell fejlesztésének betanítási és ellenőrzési fázisának végrehajtásához. Az adatpontok száma minden kísérlet esetében változik, és a max_horizontól, a több ellenőrzési osztástól, valamint a modell lookback hosszától függ, azaz az idősorozat-funkciók létrehozásához szükséges előzmények maximális száma. A pontos számításhoz tekintse meg a [short_series_handling_configuration dokumentációját](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters#short-series-handling-configuration).
 
 Az automatikus ML az `short_series_handling_configuration` objektumban található paraméterrel alapértelmezés szerint rövid adatsorozat-kezelést nyújt `ForecastingParameters` . 
 

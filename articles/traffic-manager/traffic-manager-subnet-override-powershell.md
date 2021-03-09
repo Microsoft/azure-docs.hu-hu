@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: 502533b69058eacd4ad18a3b29a33fbc4a3715a5
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 7dd7f43044a9643eb7e9d5296dfb209e425d5fb6
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183778"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504780"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-powershell"></a>Alhálózat Traffic Manager felülbírálása az Azure PowerShell-lel
 
@@ -43,7 +43,7 @@ Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com
 
 1. **Traffic Manager végpont beolvasása:**
 
-    Az alhálózat felülbírálásának engedélyezéséhez kérje le azt a végpontot, amelyhez hozzá szeretné adni a felülbírálást, és tárolja azt egy változóban a [Get-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0)használatával.
+    Az alhálózat felülbírálásának engedélyezéséhez kérje le azt a végpontot, amelyhez hozzá szeretné adni a felülbírálást, és tárolja azt egy változóban a [Get-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint)használatával.
 
     Cserélje le a nevet, a profilnév és a ResourceGroupName értéket a módosítani kívánt végpont értékeire.
 
@@ -54,7 +54,7 @@ Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com
     ```
 2. **Adja hozzá az IP-címtartományt a végponthoz:**
     
-    Ha az IP-címtartományt hozzá szeretné adni a végponthoz, a [Add-AzTrafficManagerIpAddressRange](/powershell/module/az.trafficmanager/add-aztrafficmanageripaddressrange?view=azps-2.5.0&viewFallbackFrom=azps-2.4.0) használatával adja hozzá a tartományt.
+    Ha az IP-címtartományt hozzá szeretné adni a végponthoz, a [Add-AzTrafficManagerIpAddressRange](/powershell/module/az.trafficmanager/add-aztrafficmanageripaddressrange) használatával adja hozzá a tartományt.
 
     ```powershell
 
@@ -68,18 +68,18 @@ Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com
     Add-AzTrafficManagerIPAddressRange -TrafficManagerEndpoint $TrafficManagerEndpoint -First "12.13.14.0" -Last "12.13.14.31" -Scope 27
  
     ```
-    A tartományok hozzáadása után a [set-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) használatával frissítse a végpontot.
+    A tartományok hozzáadása után a [set-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint) használatával frissítse a végpontot.
 
     ```powershell
 
     Set-AzTrafficManagerEndpoint -TrafficManagerEndpoint $TrafficManagerEndpoint
 
     ```
-Az IP-címtartomány eltávolítását a [Remove-AzTrafficManagerIpAddressRange](/powershell/module/az.trafficmanager/remove-aztrafficmanageripaddressrange?view=azps-2.5.0)használatával végezheti el.
+Az IP-címtartomány eltávolítását a [Remove-AzTrafficManagerIpAddressRange](/powershell/module/az.trafficmanager/remove-aztrafficmanageripaddressrange)használatával végezheti el.
 
 1.  **Traffic Manager végpont beolvasása:**
 
-    Az alhálózat felülbírálásának engedélyezéséhez kérje le azt a végpontot, amelyhez hozzá szeretné adni a felülbírálást, és tárolja azt egy változóban a [Get-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0)használatával.
+    Az alhálózat felülbírálásának engedélyezéséhez kérje le azt a végpontot, amelyhez hozzá szeretné adni a felülbírálást, és tárolja azt egy változóban a [Get-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint)használatával.
 
     Cserélje le a nevet, a profilnév és a ResourceGroupName értéket a módosítani kívánt végpont értékeire.
 
@@ -102,7 +102,7 @@ Az IP-címtartomány eltávolítását a [Remove-AzTrafficManagerIpAddressRange]
     Remove-AzTrafficManagerIpAddressRange -TrafficManagerEndpoint $TrafficManagerEndpoint -First "12.13.14.0" -Last "12.13.14.31" -Scope 27
 
     ```
-     A tartományok eltávolítása után a [set-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) használatával frissítse a végpontot.
+     A tartományok eltávolítása után a [set-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint) használatával frissítse a végpontot.
 
     ```powershell
 

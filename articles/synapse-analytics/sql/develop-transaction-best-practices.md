@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 74deebb66bc0db316e2aa36588034c6afb3bbe40
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8b1f820cfca0e352b49d815e2b99d407ccc8ce43
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674024"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505698"
 ---
 # <a name="optimize-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Tranzakciók optimalizálása dedikált SQL-készlettel az Azure szinapszis Analyticsben 
 
@@ -422,4 +422,4 @@ A legjobb megoldás, ha a dedikált SQL-készlet szüneteltetése vagy skáláz�
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az elkülönítési szintekkel és a tranzakciós korlátokkal kapcsolatos további tudnivalókért tekintse meg a [DEDIKÁLT SQL-készlet tranzakciói](develop-transactions.md) című témakört.  Az egyéb ajánlott eljárások áttekintését lásd: [SQL Pool – ajánlott eljárások](best-practices-sql-pool.md).
+Az elkülönítési szintekkel és a tranzakciós korlátokkal kapcsolatos további tudnivalókért tekintse meg a [DEDIKÁLT SQL-készlet tranzakciói](develop-transactions.md) című témakört.  Az egyéb ajánlott eljárások áttekintését lásd: [DEDIKÁLT SQL Pool](best-practices-sql-pool.md)– ajánlott eljárások.

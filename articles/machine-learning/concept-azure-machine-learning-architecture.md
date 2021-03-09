@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 987b56eb1b258e1c5f2fd7d5bcfdd0e95f6c0730
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: dc1954c97da0d7f40deaf0f4efa7ca99793107bb
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091669"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503691"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>A Azure Machine Learning működése: architektúra és fogalmak
 
@@ -102,7 +102,7 @@ A futtatást akkor kell létrehoznia, ha parancsfájlt küld a modell betanítá
 
 [Munkaterület](#workspace)  >  [Kísérletek](#experiments)  >  [Futtatás](#runs)  >  **Konfiguráció futtatása**
 
-A futtatási konfiguráció határozza meg, hogyan fusson egy parancsfájl egy adott számítási célhelyen. A konfiguráció segítségével megadhatja a parancsfájlt, a számítási célt és az Azure ML-környezetet a futtatáshoz, a feladatokra vonatkozó elosztott konfigurációkat és néhány további tulajdonságot. További információ a futtatások konfigurálható lehetőségeinek teljes készletéről: [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py).
+A futtatási konfiguráció határozza meg, hogyan fusson egy parancsfájl egy adott számítási célhelyen. A konfiguráció segítségével megadhatja a parancsfájlt, a számítási célt és az Azure ML-környezetet a futtatáshoz, a feladatokra vonatkozó elosztott konfigurációkat és néhány további tulajdonságot. További információ a futtatások konfigurálható lehetőségeinek teljes készletéről: [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig).
 
 A futtatási konfiguráció a betanítási parancsfájlt tartalmazó könyvtárban található fájlban maradhat.   Vagy egy memóriában tárolt objektumként is létrehozható, és futtatásra is elküldhető.
 
@@ -282,7 +282,7 @@ A Studióban a Azure Machine Learning részét képező interaktív eszközök i
 > Az alábbi megjelölésű eszközök (előzetes verzió) jelenleg nyilvános előzetes verzióban érhetők el.
 > Az előzetes verzió szolgáltatási szintű szerződés nélkül van megadva, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-+  A szolgáltatással bármilyen Python-környezetben dolgozhat a [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)-val.
++  A szolgáltatással bármilyen Python-környezetben dolgozhat a [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/intro)-val.
 + A szolgáltatás használata bármely R-környezetben az R- [hez készült Azure Machine learning SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html) -val (előzetes verzió).
 + A [Azure Machine learning Designer](concept-designer.md) használatával hajtsa végre a munkafolyamat lépéseit anélkül, hogy kódot kellene írnia. 
 + Az automatizáláshoz használja a [Azure Machine learning CLI](./reference-azure-machine-learning-cli.md) -t.
