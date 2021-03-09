@@ -5,18 +5,18 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 01/08/2021
-ms.openlocfilehash: fd599c69b3072831461acc94827d97c4520292e9
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 19ece696dabc81e643e8a904d506d22e40eaa099
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182451"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499152"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Azure Container Registryvel történő hitelesítés az Azure Kubernetes Service-ből (AKS)
 
 Ha Azure Container Registryt (ACR) használ az Azure Kubernetes szolgáltatással (ak), akkor hitelesítési mechanizmust kell létrehoznia. Ez a művelet a CLI és a portál felhasználói felületének részeként valósul meg, az ACR számára szükséges engedélyek megadásával. Ez a cikk példákat tartalmaz a két Azure-szolgáltatás közötti hitelesítés konfigurálására. 
 
-Beállíthatja az AK-t az ACR-integrációra néhány egyszerű parancsban az Azure CLI-vel. Ez az integráció a AcrPull szerepkört az AK-fürthöz társított egyszerű szolgáltatáshoz rendeli.
+Beállíthatja az AK-t az ACR-integrációra néhány egyszerű parancsban az Azure CLI-vel. Ez az integráció a AcrPull-szerepkört az AK-fürthöz társított felügyelt identitáshoz rendeli.
 
 > [!NOTE]
 > Ez a cikk az AK és az ACR közötti automatikus hitelesítést ismerteti. Ha privát külső beállításjegyzékből kell lekérnie a képet, használjon [képet lekéréses titkos kulcsot][Image Pull Secret].
@@ -28,11 +28,11 @@ A példákhoz a következők szükségesek:
 * Az **Azure-előfizetéshez** tartozó **tulajdonosi** vagy **Azure-fiók rendszergazdai** szerepköre
 * Azure CLI-verzió 2.7.0 vagy újabb verziója
 
-Ha el szeretné kerülni a **tulajdonosi** vagy az **Azure-fiók rendszergazdai** szerepkörének megkövetelését, manuálisan is konfigurálhat egy egyszerű szolgáltatásnevet, vagy használhat egy meglévő egyszerű szolgáltatásnevet az ACR-ből való hitelesítéshez. További információkért tekintse meg az [ACR-hitelesítés egyszerű szolgáltatásokkal](../container-registry/container-registry-auth-service-principal.md) vagy a [Kubernetes egy lekéréses titokkal történő hitelesítését](../container-registry/container-registry-auth-kubernetes.md)ismertető témakört.
+Ha el szeretné kerülni a **tulajdonosi** vagy az **Azure-fiók rendszergazdai** szerepkörét, manuálisan konfigurálhatja a felügyelt identitást, vagy egy meglévő felügyelt identitás használatával hitelesítheti az ACR-t az AK-ból. További információ: [Azure-beli felügyelt identitás használata az Azure Container registryben való hitelesítéshez](../container-registry/container-registry-authentication-managed-identity.md).
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>Új AK-fürt létrehozása ACR-integrációval
 
-Itt állíthatja be az AK-t és az ACR-integrációt az AK-fürt kezdeti létrehozása során.  Annak engedélyezéséhez, hogy egy AK-fürt együttműködjön az ACR-szel, egy Azure Active Directory **egyszerű szolgáltatásnevet** használ. A következő CLI-parancs lehetővé teszi egy meglévő ACR engedélyezését az előfizetésében, és konfigurálja az egyszerű szolgáltatásnév megfelelő **ACRPull** -szerepkörét. Adja meg az alábbi paraméterek érvényes értékeit.
+Itt állíthatja be az AK-t és az ACR-integrációt az AK-fürt kezdeti létrehozása során.  Annak engedélyezéséhez, hogy egy AK-fürt együttműködjön az ACR-szel, Azure Active Directory **felügyelt identitást** kell használni. A következő CLI-parancs lehetővé teszi egy meglévő ACR engedélyezését az előfizetésében, és konfigurálja a megfelelő **ACRPull** szerepkört a felügyelt identitáshoz. Adja meg az alábbi paraméterek érvényes értékeit.
 
 ```azurecli
 # set this to the name of your Azure Container Registry.  It must be globally unique

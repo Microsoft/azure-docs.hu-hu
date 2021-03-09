@@ -3,12 +3,12 @@ title: Tesztkörnyezet hozzáadásának automatizálása a Azure DevTest Labsban
 description: Ez a cikk azt mutatja be, hogyan lehet automatizálni a felhasználókat a laborban Azure DevTest Labs a Azure Resource Manager sablonok, a PowerShell és a parancssori felület használatával.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 61853efacc5974b81d46b2b8cca0f2796672d72d
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 6dddf06289da79e16cbd7e64869fa77f0a40dd22
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327960"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508826"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Tesztkörnyezet hozzáadásának automatizálása a laborban Azure DevTest Labs
 Azure DevTest Labs lehetővé teszi az önkiszolgáló fejlesztési és tesztelési környezetek gyors létrehozását a Azure Portal használatával. Ha azonban több csapattal és számos DevTest Labs-példánnyal rendelkezik, akkor a létrehozási folyamat automatizálása időt takaríthat meg. [Azure Resource Manager-sablonok](https://github.com/Azure/azure-devtestlab/tree/master/Environments) lehetővé teszik a laborok, laboratóriumi virtuális gépek, Egyéni rendszerképek és képletek létrehozását, valamint a felhasználók automatikus módon való hozzáadását. Ez a cikk kifejezetten a felhasználók DevTest Labs-példányhoz való hozzáadására koncentrál.
@@ -100,7 +100,7 @@ A szerepkör-definíció azonosítója a meglévő szerepkör-definíció karakt
 
 Az előfizetés AZONOSÍTÓját a Template függvény használatával szerezheti be `subscription().subscriptionId` .  
 
-Be kell szereznie a beépített szerepkör szerepkör-definícióját `DevTest Labs User` . A [DevTest Labs felhasználói](../role-based-access-control/built-in-roles.md#devtest-labs-user) szerepkör GUID azonosítójának lekéréséhez használhatja a szerepkör- [hozzárendelések REST API](/rest/api/authorization/roleassignments) vagy a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition?view=azps-1.8.0) parancsmagot.
+Be kell szereznie a beépített szerepkör szerepkör-definícióját `DevTest Labs User` . A [DevTest Labs felhasználói](../role-based-access-control/built-in-roles.md#devtest-labs-user) szerepkör GUID azonosítójának lekéréséhez használhatja a szerepkör- [hozzárendelések REST API](/rest/api/authorization/roleassignments) vagy a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) parancsmagot.
 
 ```powershell
 $dtlUserRoleDefId = (Get-AzRoleDefinition -Name "DevTest Labs User").Id
@@ -189,7 +189,7 @@ A következő Azure CLI-példa bemutatja, hogyan adhat hozzá egy személyt a De
 az role assignment create --roleName "DevTest Labs User" --signInName <email@company.com> -–resource-name "<Lab Name>" --resource-type “Microsoft.DevTestLab/labs" --resource-group "<Resource Group Name>"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
 - [Virtuális gépek létrehozása és kezelése az Azure CLI-vel a DevTest Labs használatával](devtest-lab-vmcli.md)

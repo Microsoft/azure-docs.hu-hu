@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 419823086fd7ba05ba5023216be302576350e30a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: cadba181ea7d6a12ca64c78f3c7c58654d5f756f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101687285"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500808"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Útmutató: a hibrid Azure Active Directory JOIN implementációjának megtervezése
 
@@ -171,7 +171,7 @@ Az alábbi táblázat részletesen ismerteti ezen helyszíni AD UPN-ket a Window
 | ----- | ----- | ----- | ----- |
 | Irányítható | Összevont | 1703-es kiadásból | Általánosan elérhető |
 | Nem irányítható | Összevont | 1803-es kiadásból | Általánosan elérhető |
-| Irányítható | Felügyelt | 1803-es kiadásból | Általánosan elérhető, az Azure AD SSPR a Windows lockscreen nem támogatott |
+| Irányítható | Felügyelt | 1803-es kiadásból | Általánosan elérhető, a Windows lockscreen futó Azure AD-SSPR nem támogatott. A helyszíni UPN-t szinkronizálni kell az     `onPremisesUserPrincipalName` Azure ad-ben található attribútummal |
 | Nem irányítható | Felügyelt | Nem támogatott | |
 
 ## <a name="next-steps"></a>Következő lépések

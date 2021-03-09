@@ -2,13 +2,13 @@
 title: Az Azure Red Hat OpenShift v4. x konfigurálása a Container bepillantást tartalmazó szolgáltatással | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a Kubernetes-fürtök figyelését az Azure Red Hat OpenShift 4-es vagy újabb verziójában üzemeltetett Azure Monitor.
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: a9e04818f1a915a853d32b5db408a521cdae9f4c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/05/2021
+ms.openlocfilehash: 02cb794463b965ebafef0b6861477dbf69227511
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101713932"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506412"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-container-insights"></a>Az Azure Red Hat OpenShift v4. x konfigurálása a Container bepillantást tartalmazó szolgáltatással
 
@@ -61,21 +61,8 @@ Ha engedélyezni szeretné az Azure-ban a megadott bash-parancsfájllal üzembe 
 
     `curl -o enable-monitoring.sh -L https://aka.ms/enable-monitoring-bash-script`
 
-1. A fürt *kubeContext* azonosításához futtassa a következő parancsokat.
+1. Kapcsolódjon az ARO v4-fürthöz az [oktatóanyag: Kapcsolódás Azure Red Hat OpenShift 4-fürthöz](../../openshift/tutorial-connect-cluster.md)című témakör útmutatásai alapján.
 
-    ```
-    adminUserName=$(az aro list-credentials -g $clusterResourceGroup -n $clusterName --query 'kubeadminUsername' -o tsv)
-    adminPassword=$(az aro list-credentials -g $clusterResourceGroup -n $clusterName --query 'kubeadminPassword' -o tsv)
-    apiServer=$(az aro show -g $clusterResourceGroup -n $clusterName --query apiserverProfile.url -o tsv)
-    oc login $apiServer -u $adminUserName -p $adminPassword
-    # openshift project name for Container insights
-    openshiftProjectName="azure-monitor-for-containers"
-    oc new-project $openshiftProjectName
-    # get the kube config context
-    kubeContext=$(oc config current-context)
-    ```
-
-1. Másolja az értéket későbbi használatra.
 
 ### <a name="integrate-with-an-existing-workspace"></a>Integrálás meglévő munkaterülettel
 
@@ -113,17 +100,16 @@ Ha nem rendelkezik a megadható munkaterülettel, ugorjon az [integrálás az al
 
 1. A kimenetben keresse meg a munkaterület nevét, majd másolja az adott Log Analytics munkaterület teljes erőforrás-AZONOSÍTÓját a mező **azonosítója** alá.
 
-1. A figyelés engedélyezéséhez futtassa a következő parancsot. Cserélje le a `azureAroV4ClusterResourceId` , `logAnalyticsWorkspaceResourceId` , és paraméterek értékeit `kubeContext` .
+1. A figyelés engedélyezéséhez futtassa a következő parancsot. Cserélje le a és a `azureAroV4ClusterResourceId` paraméterek értékeit `logAnalyticsWorkspaceResourceId` .
 
     ```bash
-    export azureAroV4ClusterResourceId=“/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>”
-    export logAnalyticsWorkspaceResourceId=“/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/microsoft.operationalinsights/workspaces/<workspaceName>”
-    export kubeContext="<kubeContext name of your ARO v4 cluster>"  
+    export azureAroV4ClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>"
+    export logAnalyticsWorkspaceResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/microsoft.operationalinsights/workspaces/<workspaceName>" 
     ```
 
     Az alábbi parancsot kell futtatnia, ha a 3 változót az exportálási parancsokkal tölti fel:
 
-    `bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId --kube-context $kubeContext --workspace-id $logAnalyticsWorkspaceResourceId`
+    `bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId --workspace-id $logAnalyticsWorkspaceResourceId`
 
 A figyelés engedélyezése után körülbelül 15 percet is igénybe vehet, mielőtt megtekintheti a fürthöz tartozó állapot-mérőszámokat.
 
@@ -135,16 +121,15 @@ Ebben a példában nem kell előzetesen létrehoznia vagy megadnia egy meglévő
 
 A létrehozott alapértelmezett munkaterület a *alapértelmezettmunkaterület \<GUID> - \<Region>* formátuma.  
 
-Cserélje le a és a `azureAroV4ClusterResourceId` paraméterek értékeit `kubeContext` .
+Cserélje le a paraméter értékét `azureAroV4ClusterResourceId` .
 
 ```bash
 export azureAroV4ClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>"
-export kubeContext="<kubeContext name of your ARO v4 cluster>"
 ```
 
 Például:
 
-`bash enable-monitoring.sh --resource-id $azureAroV4ClusterResourceId --kube-context $kubeContext`
+' bash enable-monitoring.sh--Resource-id $azureAroV 4ClusterResourceId 
 
 A figyelés engedélyezése után körülbelül 15 percet is igénybe vehet, mielőtt megtekintheti a fürthöz tartozó állapot mérőszámait.
 

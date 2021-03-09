@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 11ad3bdcaa40c479c9358fd623edf0e6fdafa0d6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: dadd86521a7b6c20dab2ed036555b798b869344c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002075"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510880"
 ---
 Az események egy esemény-adatfolyamba való írásához használja a Event Hubs kimeneti kötést. Küldési engedéllyel kell rendelkeznie ahhoz, hogy eseményeket írhasson egy eseményközpontba.
 
@@ -245,9 +245,9 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 
 |function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa** | n/a | "EventHub" értékre kell állítani. |
-|**irányba** | n/a | "Out" értékre kell állítani. Ez a paraméter automatikusan be van állítva, amikor létrehozza a kötést a Azure Portalban. |
-|**név** | n/a | Az eseményt jelölő függvény kódjában használt változó neve. |
+|**típusa** | n.a. | "EventHub" értékre kell állítani. |
+|**irányba** | n.a. | "Out" értékre kell állítani. Ez a paraméter automatikusan be van állítva, amikor létrehozza a kötést a Azure Portalban. |
+|**név** | n.a. | Az eseményt jelölő függvény kódjában használt változó neve. |
 |**elérési útja** |**EventHubName** | Csak 1. x függvények. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. |
 |**eventHubName** |**EventHubName** | A 2. x és újabb függvények. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. |
 |**kapcsolat** |**Kapcsolat** | Az Event hub névteréhez tartozó kapcsolati sztringet tartalmazó Alkalmazásbeállítás neve. Másolja ezt a kapcsolati karakterláncot a *névtér* **kapcsolati adatok** gombjára kattintva, nem az Event hub-t. Ez a kapcsolati karakterláncnak küldési engedéllyel kell rendelkeznie az üzenet küldéséhez az esemény-adatfolyamba.|
@@ -274,7 +274,7 @@ Az Event hub-üzenetek egy függvényből való üzembe helyezésének két lehe
 
 - Visszaadott **érték**: állítsa be `name` *function.js* tulajdonságát a értékre `$return` . Ezzel a konfigurációval a függvény visszatérési értéke Event hub-üzenetként is megmarad.
 
-- **Elengedhetetlen**: adjon meg egy értéket a [set](/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) metódusnak, amely [kimenő](/python/api/azure-functions/azure.functions.out?view=azure-python) típusként van deklarálva. Az átadott érték az `set` Event hub-üzenetként is megmarad.
+- **Elengedhetetlen**: adjon meg egy értéket a [set](/python/api/azure-functions/azure.functions.out#set-val--t-----none) metódusnak, amely [kimenő](/python/api/azure-functions/azure.functions.out) típusként van deklarálva. Az átadott érték az `set` Event hub-üzenetként is megmarad.
 
 # <a name="java"></a>[Java](#tab/java)
 

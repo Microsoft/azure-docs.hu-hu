@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: victorh
-ms.openlocfilehash: 0df91680dadbc4ac19299a4df48a585a11f044e8
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: c425afc314435c38d15d53ab0c38dcd48e35a40b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072241"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508928"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>SNAT magánhálózati IP-címtartományok Azure Firewall
 
@@ -58,7 +58,7 @@ New-AzFirewall @azFw
 > [!NOTE]
 > A IANAPrivateRanges a Azure Firewall aktuális alapértelmezett értékeire van kiterjesztve, míg a többi tartomány hozzá van adva. Ha meg szeretné őrizni a IANAPrivateRanges alapértelmezett értékeit a privát tartomány specifikációjában, akkor az `PrivateRange` alábbi példákban látható módon meg kell maradnia a specifikációban.
 
-További információ: [New-AzFirewall](/powershell/module/az.network/new-azfirewall?view=azps-3.3.0).
+További információ: [New-AzFirewall](/powershell/module/az.network/new-azfirewall).
 
 ### <a name="existing-firewall"></a>Meglévő tűzfal
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: f61d45b6c46830064c3b58608e2eca0787d559c2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f81e76e32bc0a50b945c54cdfcac0575540484bc
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675112"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502433"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-powershell"></a>Rövid útmutató: nyilvános IP-cím létrehozása Azure PowerShell használatával
 
@@ -51,7 +51,7 @@ New-AzResourceGroup -Name $rg -Location $loc
 # <a name="standard-sku---using-zones"></a>[**Szabványos SKU – zónák használatával**](#tab/option-create-public-ip-standard-zones)
 
 >[!NOTE]
->A következő parancs az az. Network modul 4.5.0 vagy újabb verziójára működik.  A jelenleg használt PowerShell-modulokkal kapcsolatos további információkért tekintse meg a [PowerShellGet dokumentációját](/powershell/module/powershellget/?view=powershell-7.1).
+>A következő parancs az az. Network modul 4.5.0 vagy újabb verziójára működik.  A jelenleg használt PowerShell-modulokkal kapcsolatos további információkért tekintse meg a [PowerShellGet dokumentációját](/powershell/module/powershellget/).
 
 A [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) használatával hozzon létre egy **myStandardZRPublicIP** nevű standard zóna-redundáns nyilvános IP-címet a **myResourceGroup**-ben.
 
@@ -89,7 +89,7 @@ Vegye figyelembe, hogy a zónák fenti beállításai csak a [Availability Zones
 # <a name="standard-sku---no-zones"></a>[**Szabványos SKU – nincsenek zónák**](#tab/option-create-public-ip-standard)
 
 >[!NOTE]
->A következő parancs az az. Network modul 4.5.0 vagy újabb verziójára működik.  A jelenleg használt PowerShell-modulokkal kapcsolatos további információkért tekintse meg a [PowerShellGet dokumentációját](/powershell/module/powershellget/?view=powershell-7.1).
+>A következő parancs az az. Network modul 4.5.0 vagy újabb verziójára működik.  A jelenleg használt PowerShell-modulokkal kapcsolatos további információkért tekintse meg a [PowerShellGet dokumentációját](/powershell/module/powershellget/).
 
 A [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) használatával hozzon létre egy szabványos nyilvános IP-címet egy **myStandardPublicIP** nevű, a **myResourceGroup**-ben található nem zónákból álló erőforrásként.
 

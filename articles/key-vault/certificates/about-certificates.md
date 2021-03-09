@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 66f077028b9f9f7a7644a318d4447eeaaab19e98
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: b410dc89b286ef830f0d5b6a9c33fe77d380f5d1
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94919930"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507211"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Információk az Azure Key Vault-tanúsítványokról
 
@@ -91,7 +91,7 @@ A tanúsítvány-szabályzat a Key Vault-tanúsítványok életciklusának létr
 
 Ha egy Key Vault-tanúsítvány teljesen létre lett hozva, a szabályzatot meg kell adni. A házirend meghatározza, hogyan kell létrehozni ezt a Key Vault-tanúsítvány verzióját vagy a következő Key Vault-tanúsítvány verzióját. A szabályzat létrehozása után a későbbi verziókhoz nem szükséges egymást követő létrehozási művelet. Egy Key Vault-tanúsítvány összes verziójához csak egy példány van.  
 
-A tanúsítvány-házirend magas szinten a következő adatokat tartalmazza (a definíciók [itt](/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)találhatók):  
+A tanúsítvány-házirend magas szinten a következő adatokat tartalmazza (a definíciók [itt](/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy)találhatók):  
 
 -   X509 tanúsítvány tulajdonságai: a tulajdonos nevét, a tulajdonos alternatív neveit, valamint az X509-tanúsítványkérelem létrehozásához használt egyéb tulajdonságokat tartalmazza.  
 -   Kulcs tulajdonságai: kulcs típusát, kulcs hosszát, exportálható és ReuseKeyOnRenewal mezőket tartalmaz. Ezek a mezők a Key vaultot tájékoztatják a kulcsok létrehozásáról. 
@@ -112,14 +112,14 @@ A következő táblázat a x509-használati szabályzat hozzárendelését mutat
 
 |**X509-használat jelzői**|**Key Vault Key Ops**|**Alapértelmezett viselkedés**|
 |----------|--------|--------|
-|DataEncipherment|titkosítás, visszafejtés| N.A. |
-|DecipherOnly|visszafejteni| N.A.  |
+|DataEncipherment|titkosítás, visszafejtés| N/A |
+|DecipherOnly|visszafejteni| N/A  |
 |DigitalSignature|aláírás, ellenőrzés| Key Vault alapértelmezett beállítás a tanúsítvány létrehozási idejének használati specifikációja nélkül | 
-|EncipherOnly|encrypt| N.A. |
-|KeyCertSign|aláírás, ellenőrzés|N.A.|
+|EncipherOnly|encrypt| N/A |
+|KeyCertSign|aláírás, ellenőrzés|N/A|
 |KeyEncipherment|wrapKey, unwrapKey| Key Vault alapértelmezett beállítás a tanúsítvány létrehozási idejének használati specifikációja nélkül | 
-|Letagadhatatlanság nyújtására|aláírás, ellenőrzés| N.A. |
-|crlsign|aláírás, ellenőrzés| N.A. |
+|Letagadhatatlanság nyújtására|aláírás, ellenőrzés| N/A |
+|crlsign|aláírás, ellenőrzés| N/A |
 
 ## <a name="certificate-issuer"></a>Tanúsítvány kiállítója
 

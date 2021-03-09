@@ -3,12 +3,12 @@ title: Szószedet Azure Backup
 description: Ez a cikk a Azure Backup használatának hasznos feltételeit határozza meg.
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 5b575e0f56c9cf39987e9e77850ab1d9b2e80d93
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: fb46415c8bdb463556d57004e37d741c1b9a9b57
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98723914"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502025"
 ---
 # <a name="azure-backup-glossary"></a>Szószedet Azure Backup
 
@@ -31,7 +31,7 @@ A helyreállítási pontról a biztonsági mentések eredeti helyétől eltérő
 
 (Munkaterhelés-specifikus kifejezés)
 
-Az alkalmazással konzisztens biztonsági másolatok rögzítik a memória tartalmát és a függőben lévő I/O-műveleteket. Az alkalmazás-konzisztens Pillanatképek egy [VSS](#vss-windows-volume-shadow-copy-service) VSS-író (vagy a Linux előtti vagy utáni parancsfájlok) használatával biztosítják, hogy az alkalmazásadatok a biztonsági mentés előtt konzisztensek legyenek. [További információ](backup-azure-vms-introduction.md).
+Az alkalmazással konzisztens biztonsági másolatok rögzítik a memória tartalmát és a függőben lévő I/O-műveleteket. Az alkalmazás-konzisztens Pillanatképek egy [VSS](#vss-windows-volume-shadow-copy-service) VSS-író (vagy a Linux előtti vagy utáni parancsfájlok) használatával biztosítják, hogy az alkalmazásadatok a biztonsági mentés előtt konzisztensek legyenek. [További információk](backup-azure-vms-introduction.md).
 
 ## <a name="azure-resource-manager-arm-templates"></a>Azure Resource Manager- (ARM-) sablonok
 
@@ -88,7 +88,7 @@ A biztonsági mentési példány által használt tényleges tárterület. A biz
 
 ## <a name="bare-metal-backup"></a>Operációs rendszer nélküli biztonsági mentés
 
-Az operációs rendszer fájljainak és a kritikus köteteken lévő összes információnak a biztonsági mentése, kivéve a felhasználói adatmennyiséget. Definíció szerint az operációs rendszer nélküli biztonsági mentés magában foglalja a rendszerállapot biztonsági mentését. Védelmet biztosít, ha a számítógép nem indul el, és mindent helyre kell állítani. [További információ](backup-mabs-system-state-and-bmr.md).
+Az operációs rendszer fájljainak és a kritikus köteteken lévő összes információnak a biztonsági mentése, kivéve a felhasználói adatmennyiséget. Definíció szerint az operációs rendszer nélküli biztonsági mentés magában foglalja a rendszerállapot biztonsági mentését. Védelmet biztosít, ha a számítógép nem indul el, és mindent helyre kell állítani. [További információk](backup-mabs-system-state-and-bmr.md).
 
 ## <a name="backup-extensions--vm-extensions"></a>Biztonsági mentési bővítmények/virtuálisgép-bővítmények
 
@@ -120,7 +120,7 @@ A két egymást követő biztonsági mentések között elmentett adatváltozás
 
 (Munkaterhelés-specifikus kifejezés)
 
-Az összeomlás-konzisztens Pillanatképek általában akkor fordulnak elő, ha egy Azure-beli virtuális gép le van állítva a biztonsági mentés időpontjában. A rendszer csak azokat az adatmennyiségeket rögzíti, amelyek már léteznek a lemezen a biztonsági mentés során. [További információ](backup-azure-vms-introduction.md#snapshot-consistency).
+Az összeomlás-konzisztens Pillanatképek általában akkor fordulnak elő, ha egy Azure-beli virtuális gép le van állítva a biztonsági mentés időpontjában. A rendszer csak azokat az adatmennyiségeket rögzíti, amelyek már léteznek a lemezen a biztonsági mentés során. [További információk](backup-azure-vms-introduction.md#snapshot-consistency).
 
 ## <a name="cross-region-restore-crr"></a>Régiók közötti visszaállítás (CRR)
 
@@ -148,7 +148,7 @@ Tekintse meg a [ExpressRoute dokumentációját](../expressroute/expressroute-in
 
 (Munkaterhelés-specifikus kifejezés)
 
-A fájlrendszerrel konzisztens biztonsági másolatok következetességet biztosítanak azáltal, hogy az összes fájlról pillanatképet készítenek. [További információ](backup-azure-vms-introduction.md#snapshot-consistency).
+A fájlrendszerrel konzisztens biztonsági másolatok következetességet biztosítanak azáltal, hogy az összes fájlról pillanatképet készítenek. [További információk](backup-azure-vms-introduction.md#snapshot-consistency).
 
 ## <a name="frontend-storage--source-size"></a>Előtér-tároló/-forrás mérete
 
@@ -202,7 +202,7 @@ Tekintse át a [Managed Disks dokumentációját](../virtual-machines/managed-di
 
 (Munkaterhelés-specifikus kifejezés)
 
-Más néven **Azure Backup ügynök** vagy **Recovery Services ügynök**, a Mars-ügynököt a Azure Backup használja a helyszíni gépekről és az Azure-beli virtuális gépekről származó adatok biztonsági mentésére az Azure-beli biztonsági mentési Recovery Services-tárolóba. [További információ](backup-support-matrix-mars-agent.md).
+Más néven **Azure Backup ügynök** vagy **Recovery Services ügynök**, a Mars-ügynököt a Azure Backup használja a helyszíni gépekről és az Azure-beli virtuális gépekről származó adatok biztonsági mentésére az Azure-beli biztonsági mentési Recovery Services-tárolóba. [További információk](backup-support-matrix-mars-agent.md).
 
 ## <a name="nsg-network-security-group"></a>NSG (hálózati biztonsági csoport)
 
@@ -210,7 +210,7 @@ Tekintse meg a [NSG dokumentációját](../virtual-network/network-security-grou
 
 ## <a name="offline-seeding"></a>Offline előkészítés
 
-Az offline előkészítés arra a folyamatra utal, amely a kezdeti (teljes) biztonsági mentést offline állapotba helyezi, a hálózati sávszélesség használata nélkül. Egy olyan mechanizmust biztosít, amellyel a biztonsági mentési adatai átmásolhatók a fizikai tárolóeszközökre, amelyeket aztán egy közeli Azure-adatközpontba szállítanak, és egy Recovery Services-tárolóra tölthetők fel. [További információ](offline-backup-overview.md).
+Az offline előkészítés arra a folyamatra utal, amely a kezdeti (teljes) biztonsági mentést offline állapotba helyezi, a hálózati sávszélesség használata nélkül. Egy olyan mechanizmust biztosít, amellyel a biztonsági mentési adatai átmásolhatók a fizikai tárolóeszközökre, amelyeket aztán egy közeli Azure-adatközpontba szállítanak, és egy Recovery Services-tárolóra tölthetők fel. [További információk](offline-backup-overview.md).
 
 ## <a name="on-demand-backup--ad-hoc-backup"></a>Igény szerinti biztonsági mentés/alkalmi biztonsági mentés
 
@@ -232,7 +232,7 @@ Tekintse meg a [Private Endpoint dokumentációját](../private-link/private-end
 
 ## <a name="protected-instance"></a>Védett példány
 
-A védett példány arra a számítógépre, fizikai vagy virtuális kiszolgálóra vonatkozik, amelyet az Azure-ba történő biztonsági mentés konfigurálására használ.  **Számlázási szempontból** a gép védett példányainak száma a frontend méretének függvénye. Így az egyetlen biztonsági mentési példány (például egy, az Azure-ba mentett virtuális gép) több védett példánynak is megadható, a felület méretétől függően. [További információ](https://azure.microsoft.com/pricing/details/backup/).
+A védett példány arra a számítógépre, fizikai vagy virtuális kiszolgálóra vonatkozik, amelyet az Azure-ba történő biztonsági mentés konfigurálására használ.  **Számlázási szempontból** a gép védett példányainak száma a frontend méretének függvénye. Így az egyetlen biztonsági mentési példány (például egy, az Azure-ba mentett virtuális gép) több védett példánynak is megadható, a felület méretétől függően. [További információk](https://azure.microsoft.com/pricing/details/backup/).
 
 ## <a name="rbac-role-based-access-control"></a>RBAC (szerepköralapú hozzáférés-vezérlés)
 
@@ -272,11 +272,11 @@ Az adott elemhez konfigurált biztonsági mentési szabályzat által automatiku
 
 ## <a name="secondary-region--paired-region"></a>Másodlagos régió/párosított régió
 
-A regionális párok két régióból állnak, ugyanazon a földrajzon belül. Az egyik az elsődleges régió, a másik pedig a másodlagos régió. A párosított régiókat néhány Azure-szolgáltatás (beleértve a GRS-beállításokkal Azure Backup) használja az üzletmenet folytonosságának biztosításához és az adatvesztés elleni védelemhez. [További információ](../best-practices-availability-paired-regions.md).
+A regionális párok két régióból állnak, ugyanazon a földrajzon belül. Az egyik az elsődleges régió, a másik pedig a másodlagos régió. A párosított régiókat néhány Azure-szolgáltatás (beleértve a GRS-beállításokkal Azure Backup) használja az üzletmenet folytonosságának biztosításához és az adatvesztés elleni védelemhez. [További információk](../best-practices-availability-paired-regions.md).
 
 ## <a name="soft-delete"></a>Helyreállítható törlés
 
-A Soft delete egy olyan szolgáltatás, amely segít megvédeni a biztonsági mentési adatmennyiségek véletlen törlését. A helyreállítható törléssel akkor is, ha egy rosszindulatú szereplő töröl egy biztonsági mentést (vagy véletlenül törli a biztonsági mentési adatmennyiséget), a biztonsági mentési adat további ideig marad, így a biztonsági mentési elem helyreállítása adatvesztés nélkül történik. [További információ](backup-azure-security-feature-cloud.md).
+A Soft delete egy olyan szolgáltatás, amely segít megvédeni a biztonsági mentési adatmennyiségek véletlen törlését. A helyreállítható törléssel akkor is, ha egy rosszindulatú szereplő töröl egy biztonsági mentést (vagy véletlenül törli a biztonsági mentési adatmennyiséget), a biztonsági mentési adat további ideig marad, így a biztonsági mentési elem helyreállítása adatvesztés nélkül történik. [További információk](backup-azure-security-feature-cloud.md).
 
 ## <a name="snapshot"></a>Pillanatkép
 
@@ -294,11 +294,23 @@ Az Azure-előfizetés az erőforrások kiosztására használt logikai tároló 
 
 (Munkaterhelés-specifikus kifejezés)
 
-Biztonsági másolatot készít az operációs rendszer fájljairól. Ez a biztonsági másolat lehetővé teszi a helyreállítást a számítógép indításakor, de a rendszerfájlok és a beállításjegyzék elvesznek. [További információ](backup-mabs-system-state-and-bmr.md).
+Biztonsági másolatot készít az operációs rendszer fájljairól. Ez a biztonsági másolat lehetővé teszi a helyreállítást a számítógép indításakor, de a rendszerfájlok és a beállításjegyzék elvesznek. [További információk](backup-mabs-system-state-and-bmr.md).
 
 ## <a name="tenant"></a>Bérlő
 
 A bérlő egy szervezetet képvisel. Az Azure AD egy dedikált példánya, amelyet a szervezetek vagy alkalmazásfejlesztők kapnak, amikor kapcsolatot hoznak létre a Microsofttal, például regisztrálnak az Azure, a Microsoft Intune vagy a Microsoft 365 szolgáltatásra.
+
+## <a name="tier"></a>Szint
+
+A Azure Backup jelenleg a következő biztonsági mentési tárolási szinteket támogatja:
+
+### <a name="snapshot-tier"></a>Pillanatkép szintje
+
+(Munkaterhelés-specifikus kifejezés) A virtuális gép biztonsági mentésének első fázisában az elkészített pillanatkép a lemezzel együtt tárolódik. Ezt a tárolási formát pillanatfelvételi szinten nevezzük. A pillanatkép-csomagok visszaállítása gyorsabb (a tárolóból való visszaállításnál), mert a pillanatképek várakozási idejét nem törlik a tárolóból a visszaállítási művelet elindítása előtt.
+
+### <a name="vault-standard-tier"></a>Vault-Standardi szintű
+
+A Azure Backup által támogatott összes munkaterhelésre vonatkozó biztonsági mentési adatok tárolása a biztonsági mentési tárolóval rendelkező tárolókban történik, a Azure Backup által felügyelt tárolási fiókok automatikus méretezési készlete. A Vault-Standard szint egy online tárolási réteg, amely lehetővé teszi a biztonsági mentési információk elkülönített másolatának tárolását egy Microsoft által felügyelt bérlőben, így újabb védelmi réteget hozhat létre. Olyan munkaterhelések esetén, ahol a pillanatkép-réteg támogatott, a pillanatkép-rétegben és a tár-standard szinten is található a biztonsági mentési adatok másolata. A standard szintű tároló biztosítja, hogy a biztonsági mentési adatforrások akkor is elérhetők legyenek, ha az adatforrás biztonsági mentését törli vagy feltörték.
 
 ## <a name="unmanaged-disk"></a>Nem felügyelt lemez
 
@@ -310,7 +322,7 @@ Egy Azure-beli tárolási entitás, amely a biztonsági mentési adatgyűjtést.
 
 ## <a name="vault-credentials"></a>Tároló hitelesítő adatai
 
-A tároló hitelesítőadat-fájlja a portál által az egyes tárakhoz létrehozott tanúsítvány. Ezt használja a rendszer, amikor a helyszíni kiszolgálót regisztrálja a tárolóban. [További információ](backup-azure-dpm-introduction.md).
+A tároló hitelesítőadat-fájlja a portál által az egyes tárakhoz létrehozott tanúsítvány. Ezt használja a rendszer, amikor a helyszíni kiszolgálót regisztrálja a tárolóban. [További információk](backup-azure-dpm-introduction.md).
 
 ## <a name="vnet-virtual-network"></a>VNET (Virtual Network)
 
@@ -320,7 +332,7 @@ Tekintse meg a [VNET dokumentációját](../virtual-network/virtual-networks-ove
 
 Tekintse meg a [VSS dokumentációját](/windows-server/storage/file-server/volume-shadow-copy-service).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Backup áttekintése](backup-overview.md)
 - [Architektúra és összetevők Azure Backup](backup-architecture.md)

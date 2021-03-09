@@ -1,24 +1,20 @@
 ---
-title: Virtuális gépek közös elhelyezése
-description: Ismerje meg, hogy az Azure-beli virtuálisgép-erőforrások hogyan használhatók a jobb késés érdekében.
+title: Közelségi elhelyezési csoportok
+description: További információ az elhelyezési csoportok Azure-beli használatáról.
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 3/07/2021
 ms.reviewer: zivr
-ms.openlocfilehash: e193b7d084723ad50ddc0d1a40e0b6c8a111af73
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 584d98c93083bc0b203276c8eda2801841da3ad7
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96924280"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507857"
 ---
-# <a name="co-locate-resources-for-improved-latency"></a>Közös elhelyezésű erőforrások a késleltetés csökkentéséhez
-
-Amikor üzembe helyezi az alkalmazást az Azure-ban, a különböző régiókba vagy rendelkezésre állási zónákba tartozó példányok elterjedése hálózati késést okoz, ami hatással lehet az alkalmazás általános teljesítményére. 
-
-## <a name="proximity-placement-groups"></a>Közelségi elhelyezési csoportok
+# <a name="proximity-placement-groups"></a>Közelségi elhelyezési csoportok
 
 A virtuális gépek egyetlen régióban való elhelyezése csökkenti a példányok közötti fizikai távolságot. Ha egyetlen rendelkezésre állási zónába helyezi őket, az is fizikailag szorosabban fog működni. Mivel azonban az Azure-lábnyom növekszik, az egyetlen rendelkezésre állási zóna több fizikai adatközpontra is kiterjedhet, ami az alkalmazást érintő hálózati késést eredményezhet. 
 

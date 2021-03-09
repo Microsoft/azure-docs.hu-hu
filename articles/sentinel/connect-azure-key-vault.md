@@ -8,14 +8,14 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 03/07/2021
 ms.author: yelevin
-ms.openlocfilehash: 56587ae91de086cccb7cc85c125f935be2a56f73
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 00e634ec62d1fda4b1f2763a8c69b8e950d54beb
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102491281"
+ms.locfileid: "102505188"
 ---
-# <a name="connect-azure-key-vault-diagnostics-and-auditing-logs"></a>Azure Key Vault diagnosztika és naplózási naplók összekötése
+# <a name="connect-azure-key-vault-diagnostics-logs"></a>Azure Key Vault diagnosztikai naplók összekötése
 
 A Azure Key Vault egy felhőalapú szolgáltatás a titkok biztonságos tárolásához és eléréséhez. A titkos kulcs minden, ami szigorúan szabályozni kívánja a hozzáférést, például az API-kulcsokat, a jelszavakat, a tanúsítványokat és a titkosítási kulcsokat.
 

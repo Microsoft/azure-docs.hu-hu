@@ -3,12 +3,12 @@ title: Hyper-V rendszerű virtuális gépek biztonsági mentése a MABS-mel
 description: Ez a cikk a virtuális gépek Microsoft Azure Backup Server (MABS) használatával történő biztonsági mentésének és helyreállításának eljárásait tartalmazza.
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: fc4e34e11e2474521082b1c23f600e9a5ca7a9fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a020559229771fff1ecc8fb512a5b2af70240cdd
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89377998"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509506"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Hyper-V rendszerű virtuális gépek biztonsági mentése Azure Backup Server
 
@@ -66,7 +66,7 @@ A Hyper-V virtuális gépek MABS történő biztonsági mentésének előfeltét
 |A Hyper-V virtuális gépek előfeltételei|– A virtuális gépen futó integrációs összetevők verziójának meg kell egyeznie a Hyper-V-gazdagép verziójával. <br />–   Az egyes virtuális gépek biztonsági mentéséhez szabad területre lesz szükség azon a köteten, amelyen a virtuálismerevlemez-fájlok találhatók, hogy a Hyper-V a biztonsági mentés során elég hellyel rendelkezzen a különbséglemezek (AVHD) számára. A területnek legalább akkorának kell lennie, mint a **kezdeti lemezméret\*forgalom sebessége\*biztonsági mentési időablak** számítás eredménye. Ha egy fürtön több biztonsági mentést futtat, akkor az egyes virtuális gépek különbséglemezeinek elegendő tárolókapacitással kell rendelkezniük, hogy a fenti számítás szerint elférjenek rajtuk az egyes virtuális gépek.<br />-A Windows Server 2012 R2 rendszerű Hyper-V-gazdagépeken található virtuális gépek biztonsági mentéséhez a virtuális gépnek rendelkeznie kell egy SCSI-vezérlővel, még akkor is, ha az nem csatlakozik semmihöz. (A Windows Server 2012 R2 online biztonsági mentésében a Hyper-V-gazdagép egy új virtuális merevlemezt csatlakoztat a virtuális géphez, majd később leválasztja azt. Ezt csak az SCSI-vezérlő tudja támogatni, ezért szükséges a virtuális gép online biztonsági mentéséhez.  A beállítás nélkül a 10103-es AZONOSÍTÓJÚ esemény lesz kiadva, amikor megkísérli a virtuális gép biztonsági mentését.)|
 |A Linux előfeltételei|– A Linux rendszerű virtuális gépek biztonsági mentését a MABS használatával végezheti el. Csak a fájlkonzisztens pillanatképek támogatottak.|
 |Virtuális gépek biztonsági mentése CSV-tárolóval|–   A megosztott fürtkötetes tároláshoz telepítse a Kötet árnyékmásolata szolgáltatás (VSS) hardverszolgáltatót a Hyper-V-kiszolgálóra. A VSS hardverszolgáltatóról a tárolóhálózat (SAN) gyártójánál érdeklődhet.<br />– Ha egy csomópont váratlanul leáll egy CSV-fürtben, a MABS konzisztencia-ellenőrzést hajt végre az adott csomóponton futó virtuális gépeken.<br />–   Ha újra kell indítani a kérdéses fürt egyik olyan Hyper-V-kiszolgálóját, amelyen engedélyezve van a BitLocker meghajtótitkosítás, konzisztencia-ellenőrzést kell futtatni a Hyper-V rendszerű virtuális gépeken.|
-|Virtuális gépek biztonsági mentése SMB-tárolóval|– Kapcsolja be az automatikus csatlakoztatást a Hyper-V-t futtató kiszolgálón a virtuális gép védelmének engedélyezéséhez.<br />   –   Tiltsa le a TCP Chimney tehermentesítést.<br />–   Ügyeljen arra, hogy minden Hyper-V machine$-fiók teljes körű engedélyekkel rendelkezzen a megfelelő távoli SMB-fájlmegosztásokon.<br />– Győződjön meg arról, hogy az összes virtuálisgép-összetevő fájljának elérési útja a másik helyre történő helyreállítás során kevesebb, mint 260 karakter. Ha nem, a helyreállítás sikeres lehet, de a Hyper-V nem fogja tudni csatlakoztatni a virtuális gépet.<br />– A következő forgatókönyvek nem támogatottak:<br />     Olyan központi telepítések, ahol a virtuális gép egyes összetevői helyi köteteken találhatók, és egyes összetevők távoli köteteken találhatók; egy IPv4-vagy IPv6-cím a tárolási hely fájlkiszolgáló számára, valamint egy virtuális gép helyreállítása olyan számítógépre, amely távoli SMB-megosztásokat használ.<br />– Engedélyeznie kell a Fájlkiszolgálói VSS-ügynök szolgáltatást minden SMB-kiszolgálón – vegye fel azt a **szerepkörök és szolgáltatások hozzáadása**  >  **elemnél válassza a kiszolgálói szerepkörök**  >  **fájl-és tárolási szolgáltatások**Fájlszolgáltatások fájl-szolgáltatás fájlkiszolgáló  >  **File Services**  >  **File Service**  >  **VSS-ügynök szolgáltatást**.|
+|Virtuális gépek biztonsági mentése SMB-tárolóval|– Kapcsolja be az automatikus csatlakoztatást a Hyper-V-t futtató kiszolgálón a virtuális gép védelmének engedélyezéséhez.<br />   –   Tiltsa le a TCP Chimney tehermentesítést.<br />–   Ügyeljen arra, hogy minden Hyper-V machine$-fiók teljes körű engedélyekkel rendelkezzen a megfelelő távoli SMB-fájlmegosztásokon.<br />– Győződjön meg arról, hogy az összes virtuálisgép-összetevő fájljának elérési útja a másik helyre történő helyreállítás során kevesebb, mint 260 karakter. Ha nem, a helyreállítás sikeres lehet, de a Hyper-V nem fogja tudni csatlakoztatni a virtuális gépet.<br />– A következő forgatókönyvek nem támogatottak:<br />     Olyan központi telepítések, ahol a virtuális gép egyes összetevői helyi köteteken találhatók, és egyes összetevők távoli köteteken találhatók; egy IPv4-vagy IPv6-cím a tárolási hely fájlkiszolgáló számára, valamint egy virtuális gép helyreállítása olyan számítógépre, amely távoli SMB-megosztásokat használ.<br />– Engedélyeznie kell a Fájlkiszolgálói VSS-ügynök szolgáltatást minden SMB-kiszolgálón – vegye fel azt a **szerepkörök és szolgáltatások hozzáadása**  >  **elemnél válassza a kiszolgálói szerepkörök**  >  **fájl-és tárolási szolgáltatások** Fájlszolgáltatások fájl-szolgáltatás fájlkiszolgáló  >    >    >  **VSS-ügynök szolgáltatást**.|
 
 ## <a name="back-up-virtual-machines"></a>Virtuális gépek biztonsági mentése
 
@@ -78,13 +78,13 @@ A Hyper-V virtuális gépek MABS történő biztonsági mentésének előfeltét
 
 2. Állítsa be a MABS védelmi ügynököt a Hyper-V-kiszolgálón vagy a Hyper-V-fürt csomópontjain. Ha vendég szintű biztonsági mentést végez, az ügynököt azon virtuális gépekre kell telepítenie, amelyekről biztonsági másolatot szeretne készíteni a vendég szintjén.
 
-3. Az **Protection**  >  **új védelmi csoport létrehozása** varázsló megnyitásához a MABS felügyeleti konzolján kattintson a védelem védelmi**csoport létrehozása** elemre.
+3. Az   >  **új védelmi csoport létrehozása** varázsló megnyitásához a MABS felügyeleti konzolján kattintson a védelem védelmi **csoport létrehozása** elemre.
 
 4. A **Csoporttagok kiválasztása** lapon válassza ki a védendő virtuális gépeket az ezeket magukban foglaló Hyper-V-gazdakiszolgálóról. Javasoljuk, hogy minden olyan virtuális gépet, amelyre azonos védelmi szabályzat vonatkozik, egy védelmi csoportba helyezzen. A tárterület hatékony felhasználása érdekében engedélyezze az együttes elhelyezést. Az együttes elhelyezés lehetővé teszi a különböző védelmi csoportokból származó adatok ugyanazon lemezen vagy szalagon történő tárolását, így több adatforrásnak egyetlen replika- és helyreállításipont-kötete keletkezik.
 
 5. Az **Adatvédelmi módszer kiválasztása** oldalon adja meg a védelmi csoport nevét. Válassza ki a **Rövid távú védelmet szeretnék a következő használatával: Lemez** elemet, és válassza az **Online védelmet szeretnék** beállítást, ha az Azure Backup szolgáltatás segítségével szeretné az Azure-ba menteni az adatok biztonsági másolatát.
 
-6. A **Short-Term célok**  >  **megőrzési tartományának**megadása területen válassza ki, hogy mennyi ideig kívánja megőrizni a lemezes adattárolást. A **szinkronizálás gyakorisága**mezőben adja meg, hogy milyen gyakran fusson a növekményes biztonsági másolatok. A növekményes biztonsági mentések időközeinek megadása helyett azt is megteheti, hogy engedélyezi a **Csak helyreállítási pont létrehozása előtt** beállítást. Ha ez a beállítás engedélyezve van, a MABS expressz teljes biztonsági mentést futtat az egyes ütemezett helyreállítási pontok előtt.
+6. A **Short-Term célok**  >  **megőrzési tartományának** megadása területen válassza ki, hogy mennyi ideig kívánja megőrizni a lemezes adattárolást. A **szinkronizálás gyakorisága** mezőben adja meg, hogy milyen gyakran fusson a növekményes biztonsági másolatok. A növekményes biztonsági mentések időközeinek megadása helyett azt is megteheti, hogy engedélyezi a **Csak helyreállítási pont létrehozása előtt** beállítást. Ha ez a beállítás engedélyezve van, a MABS expressz teljes biztonsági mentést futtat az egyes ütemezett helyreállítási pontok előtt.
 
     > [!NOTE]
     >
@@ -94,7 +94,7 @@ A Hyper-V virtuális gépek MABS történő biztonsági mentésének előfeltét
 
    A **teljes adatméret** a biztonsági mentéshez használni kívánt adatmennyiség, a **MABS** pedig a lemezterület, amelyet a MABS a védelmi csoport számára ajánl. A MABS a beállítások alapján kiválasztja az ideális biztonsági mentési kötetet. Lehetőség van azonban arra, hogy a **Disk allocation details** (Lemezfoglalás részletei) panelen módosítsa a biztonsági mentési kötetek választási lehetőségeit. A munkaterhelésekhez válassza ki a legördülő menüből az előnyben részesített tárhelyet. A módosítások megváltoztatják az **Összes tárhely** és a **Szabad tárterület** értékeit az **Elérhető lemezterület** ablaktáblán. A kiépített terület az a tárolási MABS, amely a kötethez való hozzáadást javasolja, hogy zökkenőmentesen folytassa a biztonsági mentéseket a jövőben.
 
-8. A **Replika-létrehozási módszer kiválasztása** oldalon adhatja meg, hogy a rendszer hogyan végezze el a védelmi csoport adatainak kezdeti replikálását. Ha úgy dönt, hogy **automatikusan replikálja a hálózaton keresztül**, javasoljuk, hogy válasszon ki egy off-Peak időpontot. Nagy mennyiségű vagy az optimális hálózati feltételeknél kisebb méretű adatforgalom esetén érdemes **manuálisan**kiválasztani a lehetőséget, amelyhez a cserélhető adathordozón keresztül az adatreplikálás szükséges.
+8. A **Replika-létrehozási módszer kiválasztása** oldalon adhatja meg, hogy a rendszer hogyan végezze el a védelmi csoport adatainak kezdeti replikálását. Ha úgy dönt, hogy **automatikusan replikálja a hálózaton keresztül**, javasoljuk, hogy válasszon ki egy off-Peak időpontot. Nagy mennyiségű vagy az optimális hálózati feltételeknél kisebb méretű adatforgalom esetén érdemes **manuálisan** kiválasztani a lehetőséget, amelyhez a cserélhető adathordozón keresztül az adatreplikálás szükséges.
 
 9. A **Konzisztencia-ellenőrzési beállítások** oldalon válassza ki, hogyan szeretné automatizálni a konzisztencia-ellenőrzéseket. Beállíthatja hogy a rendszer ütemezés szerint futtasson ellenőrzést, vagy csak akkor, amikor a replikaadatok inkonzisztenssé válnak. Ha nem szeretne automatikus konzisztencia-ellenőrzést beállítani, bármikor lefuttathat egy manuális ellenőrzést, ha a jobb gombbal a védelmi csoportra kattint, és a **Konzisztencia-ellenőrzés végrehajtása** elemet választja.
 
@@ -134,22 +134,25 @@ Amikor biztonsági másolatba mentett virtuális gépeket állít helyre, a Hely
 
     A kiválasztott virtuális gép és helyreállítási pont megjelenik a **Helyreállítási beállítások áttekintése** képernyőn. Kattintson a **Tovább** gombra.
 
-4. A **helyreállítási típus kiválasztása** képernyőn válassza ki, hogy hová szeretné visszaállítani az adatkészletet, majd válassza a **tovább**lehetőséget.
+4. A **helyreállítási típus kiválasztása** képernyőn válassza ki, hogy hová szeretné visszaállítani az adatkészletet, majd válassza a **tovább** lehetőséget.
 
-    - **Visszaállítás az eredeti példányban**: Ha az eredeti példányba állít vissza, akkor az eredeti virtuális merevlemez törlődik. A MABS a Hyper-V VSS-író használatával helyreállítja a VHD-t és az egyéb konfigurációs fájlokat az eredeti helyükre. A helyreállítási folyamat végén a virtuális gépek továbbra is magas rendelkezésre állásúak lesznek.
+    - **Visszaállítás az eredeti példányra**: Ha az eredeti példányt állítja helyre, a rendszer törli az eredeti virtuális merevlemezt és az összes kapcsolódó ellenőrzőpontot. A MABS a Hyper-V VSS-író használatával helyreállítja a VHD-t és az egyéb konfigurációs fájlokat az eredeti helyükre. A helyreállítási folyamat végén a virtuális gépek továbbra is magas rendelkezésre állásúak lesznek.
         A helyreállításhoz szükség van az erőforráscsoportra. Ha az nem érhető el, akkor egy másik helyre végezze el a helyreállítást, és állítsa a virtuális gépet magas rendelkezésre állásúra.
 
     - **Helyreállítás virtuális gépnek bármely gazdagépre**: a MABS támogatja a másik helyre történő helyreállítást (ALR), amely a védett Hyper-v virtuális gépek zökkenőmentes helyreállítását teszi lehetővé egy másik Hyper-v-gazdagépen, a processzor-architektúrától függetlenül. A fürtcsomóponton helyreállított Hyper-V virtuális gépek nem lesznek magasan elérhetők. Ha ezt a beállítást választja, a Helyreállítási varázsló megjelenít egy további, a cél és a cél elérési útjának azonosítására szolgáló képernyőt.
+    
+        >[!NOTE]
+        >Ha az eredeti gazdagépet választja, a viselkedés ugyanaz, mint az **eredeti példány helyreállítása**. A rendszer törli az eredeti virtuális merevlemezt és az összes kapcsolódó ellenőrzőpontot.
 
     - **Másolás hálózati mappába**: a MABS támogatja az elemszintű helyreállítást (ILR), amely lehetővé teszi a fájlok, mappák, kötetek és virtuális merevlemezek (VHD-k) elemszintű helyreállítását a Hyper-V virtuális gépek gazdagép szintű biztonsági másolatából egy hálózati megosztásra vagy egy MABS által védett kiszolgáló kötetére. Az elemszintű helyreállítás végrehajtásához a MABS védelmi ügynököt nem kell a vendégen belül telepíteni. Ha ezt a beállítást választja, a Helyreállítási varázsló megjelenít egy további, a cél és a cél elérési útjának azonosítására szolgáló képernyőt.
 
 5. A **helyreállítási beállítások megadása** területen adja meg a helyreállítási beállításokat, majd válassza a **Next (tovább**) gombot:
 
-    - Ha alacsony sávszélességen keresztül helyreállít egy virtuális gépet, válassza a **módosítás** lehetőséget a **hálózati sávszélesség-használat szabályozásának**engedélyezéséhez. A sávszélesség-szabályozási beállítás bekapcsolása után megadhatja, hogy mekkora sávszélességet, illetve mikor kíván elérhetővé tenni.
+    - Ha alacsony sávszélességen keresztül helyreállít egy virtuális gépet, válassza a **módosítás** lehetőséget a **hálózati sávszélesség-használat szabályozásának** engedélyezéséhez. A sávszélesség-szabályozási beállítás bekapcsolása után megadhatja, hogy mekkora sávszélességet, illetve mikor kíván elérhetővé tenni.
     - Ha konfigurálta a hálózatot, válassza a **hardveres Pillanatképek használatával történő San-alapú helyreállítás engedélyezése** lehetőséget.
     - Ha azt szeretné, hogy a rendszer e-mail-értesítést küldjön a helyreállítási folyamat befejezése után, jelölje be az **E-mail küldése a helyreállítás befejezéséről** lehetőséget, majd adja meg a kívánt e-mail-címeket.
 
-6. Az Összefoglalás képernyőn ellenőrizze az adatok helyességét. Ha a részletek nem megfelelőek, vagy ha módosítani kívánja a módosításokat, válassza a **vissza**lehetőséget. Ha elégedett a beállításokkal **, válassza a helyreállítás lehetőséget** a helyreállítási folyamat elindításához.
+6. Az Összefoglalás képernyőn ellenőrizze az adatok helyességét. Ha a részletek nem megfelelőek, vagy ha módosítani kívánja a módosításokat, válassza a **vissza** lehetőséget. Ha elégedett a beállításokkal **, válassza a helyreállítás lehetőséget** a helyreállítási folyamat elindításához.
 
 7. A helyreállítási feladatra vonatkozó információk a **Helyreállítás állapota** képernyőn jelennek meg.
 

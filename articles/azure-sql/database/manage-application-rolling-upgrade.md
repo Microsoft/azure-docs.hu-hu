@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 659a8a3b38a79cc9dcc97f6f1e9c4395426ef7a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7d21852ad684782fa1cb917442fee236d3c882b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450258"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502144"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>Felhőalapú alkalmazások működés közbeni frissítésének kezelése SQL Database aktív földrajzi replikálás használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -92,7 +92,7 @@ A frissítés visszavonásához létre kell hoznia egy átmeneti környezetet az
 
 1. Üzembe helyezheti a webalkalmazás átmeneti környezetét az elsődleges régióban (6).
 2. Hozzon létre egy másodlagos adatbázist az elsődleges Azure-régióban (7). Konfigurálja a webalkalmazás átmeneti környezetét a kapcsolódáshoz. 
-3. Hozzon létre egy másik geo-redundáns másodlagos adatbázist a biztonsági mentési régióban a másodlagos adatbázis elsődleges régióban való replikálásával. (Ezt a metódust *láncolt geo-replikációnak*nevezzük.) (8).
+3. Hozzon létre egy másik geo-redundáns másodlagos adatbázist a biztonsági mentési régióban a másodlagos adatbázis elsődleges régióban való replikálásával. (Ezt a metódust *láncolt geo-replikációnak* nevezzük.) (8).
 4. Helyezzen üzembe a webalkalmazás-példány átmeneti környezetét a biztonsági mentési régióban (9), és konfigurálja úgy, hogy a (8) időpontban létrehozott geo-redundáns másodlagos adatbázishoz kapcsolódjon.
 
 > [!NOTE]
@@ -110,7 +110,7 @@ ALTER DATABASE <Prod_DB>
 SET (ALLOW_CONNECTIONS = NO)
 ```
 
-2. Zárja le a Geo-replikációt a másodlagos (11) kapcsolat leválasztásával. Ez a művelet létrehoz egy független, de teljesen szinkronizált példányt az éles adatbázisból. Ez az adatbázis frissülni fog. A következő példa Transact-SQL-t használ, de a [PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary?view=azps-1.5.0&preserve-view=true) is elérhető. 
+2. Zárja le a Geo-replikációt a másodlagos (11) kapcsolat leválasztásával. Ez a művelet létrehoz egy független, de teljesen szinkronizált példányt az éles adatbázisból. Ez az adatbázis frissülni fog. A következő példa Transact-SQL-t használ, de a [PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary) is elérhető. 
 
 ```sql
 -- Disconnect the secondary, terminating geo-replication
@@ -145,7 +145,7 @@ Ennek a lehetőségnek a legfőbb előnye, hogy az alkalmazást és annak geo-re
 
 A fő kompromisszum az, hogy minden alkalmazás-összetevőnél kettős redundancia szükséges, ezért magasabb dollár-költségekkel jár. Emellett bonyolultabb munkafolyamatot is magában foglal.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 A cikkben leírt két frissítési módszer különbözik az összetettség és a dollár díja között, de mindkettőre összpontosít, hogy a felhasználó mennyi ideig korlátozódik a csak olvasási műveletekre. Ezt az időt közvetlenül a Frissítési parancsfájl időtartama határozza meg. Ez nem függ az adatbázis méretétől, a választott szolgáltatási szinttől, a webhely konfigurációjától vagy más olyan tényezőktől, amelyeket nem tud egyszerűen szabályozni. Az előkészítési lépések elvesznek a frissítés lépéseitől, és nem befolyásolják az éles alkalmazást. A Frissítési parancsfájl hatékonysága kulcsfontosságú tényező, amely meghatározza a felhasználói élményt a frissítések során. Így a legjobb megoldás az, hogy a lehető leghatékonyabban fejlessze a frissítési szkriptet.
 

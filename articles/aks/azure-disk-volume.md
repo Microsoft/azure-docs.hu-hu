@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hozhat létre manuálisan Azure-lemezekkel rend
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: d44c8a7241308c26a3f1148ec70a7a5730dd0c89
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 7d8a038926fc6bf3234b43a82c0259ba633df11e
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900847"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506650"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure-lemezekkel rendelkező kötet manuális létrehozása és használata az Azure Kubernetes szolgáltatásban (ak)
 
@@ -28,9 +28,9 @@ Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a tele
 
 ## <a name="create-an-azure-disk"></a>Azure-lemez létrehozása
 
-Ha az AK-val való használatra létrehoz egy Azure-lemezt, akkor a **csomópont** -erőforráscsoport létrehozhatja a lemez erőforrását. Ez a megközelítés lehetővé teszi az AK-fürt számára a lemez erőforrásának elérését és kezelését. Ha ehelyett egy különálló erőforráscsoporthoz hozza létre a lemezt, akkor a fürthöz tartozó Azure Kubernetes szolgáltatás (ak) egyszerű szolgáltatásnév számára meg kell adnia a `Contributor` szerepkört a lemez erőforráscsoporthoz. Azt is megteheti, hogy az egyszerű szolgáltatásnév helyett a rendszerhez rendelt felügyelt identitást használja az engedélyekhez. További információ: [felügyelt identitások használata](use-managed-identity.md).
+Ha az AK-val való használatra létrehoz egy Azure-lemezt, akkor a **csomópont** -erőforráscsoport létrehozhatja a lemez erőforrását. Ez a megközelítés lehetővé teszi az AK-fürt számára a lemez erőforrásának elérését és kezelését. Ha ehelyett külön erőforráscsoporthoz hozza létre a lemezt, meg kell adnia az Azure Kubernetes szolgáltatás (ak) felügyelt identitását a fürt számára a `Contributor` szerepkört a lemez erőforráscsoporthoz.
 
-Ehhez a cikkhez hozza létre a lemezt a csomópont-erőforráscsoporthoz. Először kérje le az erőforráscsoport nevét az az [az AK show][az-aks-show] paranccsal, és adja hozzá a `--query nodeResourceGroup` lekérdezési paramétert. A következő példa lekéri a csomópont-erőforráscsoportot az AK-fürt neve *myAKSCluster* az erőforráscsoport neve *myResourceGroup* :
+Ehhez a cikkhez hozza létre a lemezt a csomópont-erőforráscsoporthoz. Először kérje le az erőforráscsoport nevét az az [az AK show][az-aks-show] paranccsal, és adja hozzá a `--query nodeResourceGroup` lekérdezési paramétert. A következő példa lekéri a csomópont-erőforráscsoportot az AK-fürt neve *myAKSCluster* az erőforráscsoport neve *myResourceGroup*:
 
 ```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -38,7 +38,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-Most hozzon létre egy lemezt az az [Disk Create][az-disk-create] paranccsal. Adja meg az előző parancsban beszerzett csomópont-erőforráscsoport nevét, majd a lemez erőforrásának nevét, például *myAKSDisk* . A következő példa egy *20* GIB-lemezt hoz létre, és a létrehozás után kiírja a lemez azonosítóját. Ha Windows Server-tárolókkal használandó lemezt kell létrehoznia, adja hozzá a `--os-type windows` paramétert a lemez megfelelő formázásához.
+Most hozzon létre egy lemezt az az [Disk Create][az-disk-create] paranccsal. Adja meg az előző parancsban beszerzett csomópont-erőforráscsoport nevét, majd a lemez erőforrásának nevét, például *myAKSDisk*. A következő példa egy *20* GIB-lemezt hoz létre, és a létrehozás után kiírja a lemez azonosítóját. Ha Windows Server-tárolókkal használandó lemezt kell létrehoznia, adja hozzá a `--os-type windows` paramétert a lemez megfelelő formázásához.
 
 ```azurecli-interactive
 az disk create \
@@ -59,7 +59,7 @@ A lemez erőforrás-azonosítója a parancs sikeres befejeződése után jelenik
 
 ## <a name="mount-disk-as-volume"></a>Lemez csatlakoztatása kötetként
 
-Az Azure-lemez Pod-ba való csatlakoztatásához konfigurálja a kötetet a tároló specifikációjában. Hozzon létre egy nevű új fájlt `azure-disk-pod.yaml` a következő tartalommal. Frissítse az `diskName` előző lépésben létrehozott lemez nevét és `diskURI` a lemez létrehozása parancs kimenetében látható lemez azonosítóját. Ha szükséges, frissítse a `mountPath` -t, amely az az elérési út, ahol az Azure-lemez csatlakoztatva van a pod-hoz. Windows Server-tárolók esetén a Windows PATH Convention (például *'d:* ) használatával válasszon egy *mountPath* .
+Az Azure-lemez Pod-ba való csatlakoztatásához konfigurálja a kötetet a tároló specifikációjában. Hozzon létre egy nevű új fájlt `azure-disk-pod.yaml` a következő tartalommal. Frissítse az `diskName` előző lépésben létrehozott lemez nevét és `diskURI` a lemez létrehozása parancs kimenetében látható lemez azonosítóját. Ha szükséges, frissítse a `mountPath` -t, amely az az elérési út, ahol az Azure-lemez csatlakoztatva van a pod-hoz. Windows Server-tárolók esetén a Windows PATH Convention (például *'d:*) használatával válasszon egy *mountPath* .
 
 ```yaml
 apiVersion: v1

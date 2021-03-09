@@ -3,12 +3,12 @@ title: Összetevő hozzáadása a laborhoz Azure DevTest Labsban | Microsoft Doc
 description: Megtudhatja, hogyan adhatja meg a laborhoz tartozó saját Azure DevTest Labs, hogy az eszközök ne legyenek elérhetők a nyilvános tárolóban.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 5dd7d89020bf077e29b177f6871f43b52467b0d8
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: da4e345b18a46226853d71bbf66af0487f1a761f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97512011"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502195"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>A DevTest Labs szolgáltatásban lévő tároló hozzáadása a laborhoz
 A DevTest Labs lehetővé teszi, hogy a virtuális gép létrehozásakor vagy a virtuális gép létrehozása után adja meg a virtuális géphez hozzáadandó összetevőt. Ez az összetevő lehet egy eszköz vagy egy alkalmazás, amelyet telepíteni kíván a virtuális gépre. Az összetevők egy GitHub vagy Azure DevOps git-tárházból betöltött JSON-fájlban vannak meghatározva.
@@ -71,7 +71,7 @@ Ez a szakasz azokat a lépéseket ismerteti, amelyekkel egy összetevő-tárház
    5. **Mappa elérési útjai** Adja meg legalább egy olyan mappa elérési útját, amely az összetevő vagy a Resource Manager-sablon definícióit tartalmazó klónozási URL-címhez képest van. Alkönyvtár megadásakor ügyeljen arra, hogy a mappa elérési útja tartalmazza a továbbítás perjelét.
 
         ![Adattárakhoz tartozó területek](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
 
 ## <a name="use-azure-resource-manager-template"></a>Azure Resource Manager sablon használata
 Az Azure erőforrás-kezelési (Azure Resource Manager) Sablonok JSON-fájlok, amelyek az Azure-ban létrehozni kívánt erőforrásokat írják le. További információ ezekről a sablonokról: [Azure Resource Manager-sablonok készítése](../azure-resource-manager/templates/template-syntax.md).
@@ -183,7 +183,7 @@ New-AzResourceGroupDeployment `
 A New-AzResourceGroupDeployment sikeres futtatása után a parancs a fontos információkat, például a kiépítési állapotot (sikeres) és a sablon kimeneteit is megjeleníti.
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell használatával
-Ez a szakasz egy PowerShell-parancsfájlt tartalmaz, amely egy összetevő-adattár tesztkörnyezetben való hozzáadására használható. Ha még nem rendelkezik Azure PowerShellval, tekintse meg a telepítési [és konfigurálási Azure PowerShell](/powershell/azure/?view=azps-1.2.0) részletes útmutatását.
+Ez a szakasz egy PowerShell-parancsfájlt tartalmaz, amely egy összetevő-adattár tesztkörnyezetben való hozzáadására használható. Ha még nem rendelkezik Azure PowerShellval, tekintse meg a telepítési [és konfigurálási Azure PowerShell](/powershell/azure/) részletes útmutatását.
 
 ### <a name="full-script"></a>Teljes szkript
 Itt látható a teljes szkript, beleértve néhány részletes üzenetet és megjegyzést:
@@ -381,7 +381,7 @@ $resourceName = $LabName + '/' + $ArtifactRepositoryName
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [A laborhoz tartozó kötelező összetevők megadása Azure DevTest Labs](devtest-lab-mandatory-artifacts.md)
 - [Egyéni összetevők létrehozása a DevTest Labs virtuális géphez](devtest-lab-artifact-author.md)
 - [Az összetevők hibáinak diagnosztizálása a laborban](devtest-lab-troubleshoot-artifact-failure.md)

@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: e18c09130fcbcdbb470abc19d76bdf2ccfef0775
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 554730919d4226c07e099d5e457cd0fd20dbad30
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175710"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510683"
 ---
 Az Azure Instance Metadata Service (IMDS) információt nyújt a jelenleg futó virtuálisgép-példányokról. Használhatja a virtuális gépek felügyeletére és konfigurálására.
 Ezen információk közé tartozik a SKU, a Storage, a hálózati konfigurációk és a közelgő karbantartási események. Az elérhető adatmennyiségek teljes listájáért tekintse meg a [végpontok kategóriáinak összegzése](#endpoint-categories)című témakört.
@@ -345,8 +345,8 @@ Séma részletezése:
 | `osType` | Linux vagy Windows | 2017-04-02
 | `placementGroupId` | A virtuálisgép-méretezési [csoport elhelyezési csoportja](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
 | `plan` | Egy virtuális gép nevét, termékét és közzétevőjét tartalmazó [csomag megtervezése](/rest/api/compute/virtualmachines/createorupdate#plan) , ha az Azure Marketplace-rendszerkép | 2018-04-02
-| `platformUpdateDomain` |  A virtuális gépet futtató [tartomány frissítése](../articles/virtual-machines/manage-availability.md) | 2017-04-02
-| `platformFaultDomain` | A virtuális gép által futtatott tartalék [tartomány](../articles/virtual-machines/manage-availability.md) | 2017-04-02
+| `platformUpdateDomain` |  A virtuális gépet futtató [tartomány frissítése](../articles/virtual-machines/availability.md) | 2017-04-02
+| `platformFaultDomain` | A virtuális gép által futtatott tartalék [tartomány](../articles/virtual-machines/availability.md) | 2017-04-02
 | `priority` | A virtuális gép prioritása. További információt a [helyszíni virtuális gépek](../articles/virtual-machines/spot-vms.md) című témakörben talál. | 2020-12-01
 | `provider` | A virtuális gép szolgáltatója | 2018-10-01
 | `publicKeys` | A virtuális géphez és elérési utakhoz rendelt [nyilvános kulcsok gyűjteménye](/rest/api/compute/virtualmachines/createorupdate#sshpublickey) | 2018-04-02

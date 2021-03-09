@@ -3,12 +3,12 @@ title: Bepillantást nyerhet a Backup Center használatával
 description: Ismerje meg, hogyan elemezheti a korábbi trendeket, és mélyebb elemzéseket készíthet a biztonsági mentésekről a Backup Center használatával.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 47158e53e6248b2b9cef4ff6fd6b5da5972786eb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c48173749a9b47be7eeb906e9f8eec716e0cb200
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719457"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506011"
 ---
 # <a name="obtain-insights-using-backup-center"></a>Bepillantást nyerhet a Backup Center használatával
 
@@ -44,17 +44,19 @@ A következő nézetek érhetők el:
 
 1. **Összefoglalás** – ezen a lapon áttekintheti a Backup-hagyaték magas szintű áttekintését. [További információ](./configure-reports.md#summary)
 
-1. **Biztonsági másolati elemek** – ezen a lapon tekinthetők meg a biztonsági mentési elem szintjén felhasználható felhőalapú tárterület információi és trendjei. [További információ](./configure-reports.md#backup-items)
+2. **Biztonsági másolati elemek** – ezen a lapon tekinthetők meg a biztonsági mentési elem szintjén felhasználható felhőalapú tárterület információi és trendjei. [További információ](./configure-reports.md#backup-items)
 
-1. **Használat** – ezen a lapon megtekintheti a biztonsági másolatok legfontosabb számlázási paramétereit. [További információ](./configure-reports.md#usage)
+3. **Használat** – ezen a lapon megtekintheti a biztonsági másolatok legfontosabb számlázási paramétereit. [További információ](./configure-reports.md#usage)
 
-1. **Feladatok** – ezen a lapon megtekintheti a feladatok hosszan futó trendjét, például a sikertelen feladatok számát napi bontásban, valamint a feladat meghibásodásának leggyakoribb okait. [További információ](./configure-reports.md#jobs)
+4. **Feladatok** – ezen a lapon megtekintheti a feladatok hosszan futó trendjét, például a sikertelen feladatok számát napi bontásban, valamint a feladat meghibásodásának leggyakoribb okait. [További információ](./configure-reports.md#jobs)
 
-1. **Házirendek** – ezen a lapon megtekintheti az összes aktív házirend adatait, például a társított elemek számát, valamint az adott szabályzatban biztonsági mentés alatt álló elemek által felhasznált teljes felhőalapú tárterületet. [További információ](./configure-reports.md#policies)
+5. **Házirendek** – ezen a lapon megtekintheti az összes aktív házirend adatait, például a társított elemek számát, valamint az adott szabályzatban biztonsági mentés alatt álló elemek által felhasznált teljes felhőalapú tárterületet. [További információ](./configure-reports.md#policies)
 
-1. **Optimalizálás** – ezen a lapon betekintést nyerhet a biztonsági mentések lehetséges költségtakarékos lehetőségeibe. [További információ](./configure-reports.md#optimize)
+6. **Optimalizálás** – ezen a lapon betekintést nyerhet a biztonsági mentések lehetséges költségtakarékos lehetőségeibe. [További információ](./configure-reports.md#optimize)
 
-1. **Szabályzatok** betartása – ezen a lapon betekintést nyerhet, hogy minden biztonsági másolati példánynak van-e legalább egy sikeres biztonsági mentése naponta.
+7. **Szabályzatok** betartása – ezen a lapon betekintést nyerhet, hogy minden biztonsági másolati példánynak van-e legalább egy sikeres biztonsági mentése naponta. [További információ](./configure-reports.md#policy-adherence)
+
+Ezen jelentések e-mail-címeit az [E-mail jelentés](backup-reports-email.md) funkció használatával is konfigurálhatja.
 
 ## <a name="next-steps"></a>Következő lépések
 

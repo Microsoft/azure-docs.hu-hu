@@ -1,19 +1,20 @@
 ---
-title: Virtuális gépek rendelkezésre állási csoportjának módosítása
+title: Virtuális gépek rendelkezésre állási csoportjának módosítása Azure PowerShell használatával
 description: Megtudhatja, hogyan módosíthatja a virtuális gép rendelkezésre állási csoportját Azure PowerShell használatával.
 ms.service: virtual-machines
 author: cynthn
 ms.topic: how-to
-ms.date: 01/31/2020
+ms.date: 3/8/2021
 ms.author: cynthn
-ms.openlocfilehash: 65bf2dea6f3bc2e33ec10dc75b1678466401c10b
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.reviewer: mimckitt
+ms.openlocfilehash: 99985d0bb2294c538efa712e477cc6f8a2eb4938
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102184474"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102498472"
 ---
-# <a name="change-the-availability-set-for-a-vm"></a>Virtuális gép rendelkezésre állási csoportjának módosítása
+# <a name="change-the-availability-set-for-a-vm-using-azure-powershell"></a>Virtuális gép rendelkezésre állási csoportjának módosítása Azure PowerShell használatával    
 A következő lépések azt ismertetik, hogyan módosítható a virtuális gépek rendelkezésre állási csoportja a Azure PowerShell használatával. A virtuális gépeket csak akkor lehet felvenni a rendelkezésre állási csoportba, ha az létrejött. A rendelkezésre állási csoport módosításához törölnie kell, majd újra létre kell hoznia a virtuális gépet. 
 
 Ez a cikk a Linux és a Windows rendszerű virtuális gépekre is vonatkozik.

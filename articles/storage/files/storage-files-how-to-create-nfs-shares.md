@@ -8,12 +8,12 @@ ms.date: 01/22/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 2ff669d0ff3bde791de9bc7773e13d880762f898
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 778d82cd36e1f7389a443630f0982dd8774fe3ee
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102214422"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509200"
 ---
 # <a name="how-to-create-an-nfs-share"></a>NFS-megosztás létrehozása
 Az Azure-fájlmegosztás teljes körűen felügyelt fájlmegosztás, amely a felhőben él. Ez a cikk az NFS protokollt használó fájlmegosztás létrehozását ismerteti. További információ mindkét protokollról: [Azure fájlmegosztás protokollok](storage-files-compare-protocols.md).
@@ -208,7 +208,7 @@ Most, hogy létrehozott egy FileStorage-fiókot, és konfigurálta a hálózatot
    Install-Module Az.Storage -Repository PsGallery -RequiredVersion 2.5.2-preview -AllowClobber -AllowPrerelease -Force  
    ```
 
-   A PowerShell-modulok telepítésével kapcsolatos további információkért lásd: [a Azure PowerShell modul telepítése](/powershell/azure/install-az-ps?view=azps-3.0.0&preserve-view=true)
+   A PowerShell-modulok telepítésével kapcsolatos további információkért lásd: [a Azure PowerShell modul telepítése](/powershell/azure/install-az-ps)
    
 1. Ha prémium szintű fájlmegosztást szeretne létrehozni a Azure PowerShell modullal, használja a [New-AzRmStorageShare](/powershell/module/az.storage/new-azrmstorageshare) parancsmagot.
 

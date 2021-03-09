@@ -3,14 +3,14 @@ title: Biztonsági mentések monitorozása és üzemeltetése a Backup Centerrel
 description: Ez a cikk bemutatja, hogyan figyelheti és működtetheti a biztonsági másolatok méretét a Backup Center használatával
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 1c40f7804a0f0bb7694e6df205648d3ad20ad80e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 86b81110d6abeb1425e18ee45dfe65a96f69687d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719542"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506125"
 ---
-# <a name="monitor-and-operate-backups-using-backup-center"></a>Biztonsági mentések monitorozása és üzemeltetése a Backup Centerrel
+# <a name="monitor-and-operate-backups-using-backup-center"></a>Biztonsági másolatok figyelése és üzemeltetése a Backup Center használatával
 
 Biztonsági mentési rendszergazdaként a Backup centert egyetlen Ablaktáblaként használhatja a feladatok és a biztonsági másolatok napi rendszerességű nyomon követéséhez. A Backup Center használatával is elvégezheti a rendszeres műveleteket, például az igény szerinti biztonsági mentési kérelmekre való válaszadást, a biztonsági másolatok visszaállítását, a biztonsági mentési házirendek létrehozását és így tovább.
 

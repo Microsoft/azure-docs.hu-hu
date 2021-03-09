@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 58d4459e1869a9d1f7ccb8234c0356ac486a950c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e2bc42f8222c1c713b995a6184ac8a2d1d304d7e
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975552"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502722"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrálás Premium Storagere Azure Site Recovery használatával
 
@@ -74,7 +74,7 @@ Site Recovery használatával áttelepítheti az Azure IaaS virtuális gépeket 
 ### <a name="step-1-create-a-recovery-services-vault"></a>1. lépés: Recovery Services-tároló létrehozása
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
-2. Válassza **az erőforrás létrehozása**  >  **felügyeleti**  >  **Backup és site Recovery (OMS)** lehetőséget. Választhatja a **Tallózás**  >  **Recovery Services**tár  >  **hozzáadása**lehetőséget is.
+2. Válassza **az erőforrás létrehozása**  >  **felügyeleti**  >  **Backup és site Recovery (OMS)** lehetőséget. Választhatja a **Tallózás**  >  **Recovery Services** tár  >  **hozzáadása** lehetőséget is.
    >[!NOTE]
    >A Backup és a Site Recovery korábban a [OMS Suite](../../azure-monitor/terminology.md#april-2018---retirement-of-operations-management-suite-brand)része volt.
 1. Itt adhatja meg azt a régiót, amelyet a virtuális gépek replikálnak a rendszerbe. Ugyanabban a régióban a Migrálás céljából válassza ki azt a régiót, ahol a forrásként használt virtuális gépek és a forrás Storage-fiókok találhatók. 
@@ -86,13 +86,13 @@ Site Recovery használatával áttelepítheti az Azure IaaS virtuális gépeket 
 
    ![Böngészés a védelmi cél ablaktáblán][2]
 
-3. A **védelem célja**területen az első legördülő listában válassza az **Azure**lehetőséget. A második legördülő listában válassza a **nem virtualizált/egyéb**lehetőséget, majd kattintson **az OK gombra**.
+3. A **védelem célja** területen az első legördülő listában válassza az **Azure** lehetőséget. A második legördülő listában válassza a **nem virtualizált/egyéb** lehetőséget, majd kattintson **az OK gombra**.
 
    ![Védelmi cél ablaktábla kitöltött mezőkkel][3]
 
 ### <a name="step-3-set-up-the-source-environment-configuration-server"></a>3. lépés: a forrásoldali környezet (konfigurációs kiszolgáló) beállítása
 
-1. Töltse le **Azure site Recovery egyesített telepítőt** és a tároló regisztrációs kulcsát az **infrastruktúra**előkészítése  >  **előkészítési forrás**  >  **hozzáadására szolgáló kiszolgáló hozzáadása** panelen. 
+1. Töltse le **Azure site Recovery egyesített telepítőt** és a tároló regisztrációs kulcsát az **infrastruktúra** előkészítése  >  **előkészítési forrás**  >  **hozzáadására szolgáló kiszolgáló hozzáadása** panelen. 
  
    Az egyesített telepítő futtatásához szüksége lesz a tároló regisztrációs kulcsára. A kulcs a generálásától számított öt napig érvényes.
 
@@ -104,15 +104,15 @@ Site Recovery használatával áttelepítheti az Azure IaaS virtuális gépeket 
 
 3. Azon a virtuális gépen, amelyet konfigurációs kiszolgálóként használ, futtassa az egyesített telepítőt a konfigurációs kiszolgáló és a Process Server telepítéséhez. A [képernyőképek](../../site-recovery/vmware-azure-tutorial.md) segítségével elvégezheti a telepítést. Az áttelepítési forgatókönyvhöz megadott lépésekért tekintse meg az alábbi képernyőképeket.
 
-   1. A **Kezdés előtt**válassza **a konfigurációs kiszolgáló és a Process Server telepítése**lehetőséget.
+   1. A **Kezdés előtt** válassza **a konfigurációs kiszolgáló és a Process Server telepítése** lehetőséget.
 
       ![Mielőtt elkezdené a lapot][6]
 
-   2. A **regisztráció**területen keresse meg és válassza ki a tárból letöltött regisztrációs kulcsot.
+   2. A **regisztráció** területen keresse meg és válassza ki a tárból letöltött regisztrációs kulcsot.
 
       ![Regisztrációs oldal][7]
 
-   3. A **Környezet részletei** területen válassza ki, hogy kívánja-e replikálni a VMware virtuális gépeket. Ehhez az áttelepítési forgatókönyvhöz válassza a **nem**lehetőséget.
+   3. A **Környezet részletei** területen válassza ki, hogy kívánja-e replikálni a VMware virtuális gépeket. Ehhez az áttelepítési forgatókönyvhöz válassza a **nem** lehetőséget.
 
       ![Környezet részletei lap][8]
 
@@ -125,7 +125,7 @@ Site Recovery használatával áttelepítheti az Azure IaaS virtuális gépeket 
 
 ### <a name="step-4-set-up-the-target-environment"></a>4. lépés: a célként megadott környezet beállítása
 
-Válassza az **infrastruktúra előkészítése**  >  **cél**lehetőséget, majd adja meg azt a telepítési modellt, amelyet a virtuális gépekhez szeretne használni a feladatátvételt követően. A forgatókönyvtől függően a **klasszikus** vagy a **Resource Managert**is választhatja.
+Válassza az **infrastruktúra előkészítése**  >  **cél** lehetőséget, majd adja meg azt a telepítési modellt, amelyet a virtuális gépekhez szeretne használni a feladatátvételt követően. A forgatókönyvtől függően a **klasszikus** vagy a **Resource Managert** is választhatja.
 
 ![Cél ablaktábla][10]
 
@@ -154,7 +154,7 @@ Annak ellenőrzéséhez, hogy a konfigurációs kiszolgáló sikeresen hozzá va
    A feladatátvételen átesett virtuális gépnek két ideiglenes lemeze lesz: egyet az elsődleges virtuális gépről, a másikat pedig a virtuális gép üzembe helyezése során hozta létre a helyreállítási régióban. Ha ki szeretné zárni az ideiglenes lemezt a replikáció előtt, telepítse a mobilitási szolgáltatást a replikáció engedélyezése előtt. További információ az ideiglenes lemez kizárásáról: [Lemezek kizárása a replikációból](../../site-recovery/vmware-azure-tutorial.md).
 
 2. A replikációt a következők szerint engedélyezheti:
-   1. Válassza az **alkalmazás**  >  **forrásának**replikálása lehetőséget. Miután az első alkalommal engedélyezte a replikálást, kattintson a **+ replikálás** a tárolóban lehetőségre a további gépek replikációjának engedélyezéséhez.
+   1. Válassza az **alkalmazás**  >  **forrásának** replikálása lehetőséget. Miután az első alkalommal engedélyezte a replikálást, kattintson a **+ replikálás** a tárolóban lehetőségre a további gépek replikációjának engedélyezéséhez.
    2. Az 1. lépésben állítsa be a **forrást** a Process kiszolgálóként.
    3. A 2. lépésben adja meg a feladatátvétel utáni üzembe helyezési modellt, egy prémium szintű Storage-fiókot, amelyre át kell telepíteni a naplókat, és egy virtuális hálózatot, amely nem fog működni.
    4. A 3. lépésben adja hozzá a védett virtuális gépeket IP-cím szerint. (Szükség lehet egy belső IP-cím megkeresésére.)
@@ -167,7 +167,7 @@ Annak ellenőrzéséhez, hogy a konfigurációs kiszolgáló sikeresen hozzá va
 
    ![Replikáció ablaktábla engedélyezése a forrás kiválasztásával][13]
 
-Az Azure Storage-környezet tervezésekor ajánlott külön Storage-fiókot használni a rendelkezésre állási csoportba tartozó egyes virtuális gépekhez. Javasoljuk, hogy kövesse a tárolási réteg ajánlott eljárását, hogy az [egyes rendelkezésre állási csoportokhoz több Storage-fiókot használjon](../manage-availability.md). A virtuálisgép-lemezek több Storage-fiókba való terjesztése segíti a tárterület rendelkezésre állásának javítását, és az Azure Storage-infrastruktúra teljes I/O-elosztását.
+Az Azure Storage-környezet tervezésekor ajánlott külön Storage-fiókot használni a rendelkezésre állási csoportba tartozó egyes virtuális gépekhez. Javasoljuk, hogy kövesse a tárolási réteg ajánlott eljárását, hogy az [egyes rendelkezésre állási csoportokhoz több Storage-fiókot használjon](../availability.md). A virtuálisgép-lemezek több Storage-fiókba való terjesztése segíti a tárterület rendelkezésre állásának javítását, és az Azure Storage-infrastruktúra teljes I/O-elosztását.
 
 Ha a virtuális gépek rendelkezésre állási csoportba tartoznak, ahelyett, hogy az összes virtuális gép lemezeit egyetlen Storage-fiókba replikálja, a több virtuális gép többszöri áttelepítését javasoljuk. Így az azonos rendelkezésre állási csoportba tartozó virtuális gépek egyetlen Storage-fiókkal sem osztoznak. A **replikáció engedélyezése** panelen beállíthatja az egyes virtuális gépekhez tartozó cél Storage-fiókot egyszerre.
  
@@ -175,14 +175,14 @@ A feladatátvétel utáni üzembe helyezési modellt igény szerint választhatj
 
 ### <a name="step-8-run-a-test-failover"></a>8. lépés: feladatátvételi teszt futtatása
 
-A replikálás befejezésének megadásához válassza ki a site Recovery példányt, majd válassza a **Beállítások**  >  **replikált elemek**lehetőséget. Ekkor megtekintheti a replikációs folyamat állapotát és százalékos arányát. 
+A replikálás befejezésének megadásához válassza ki a site Recovery példányt, majd válassza a **Beállítások**  >  **replikált elemek** lehetőséget. Ekkor megtekintheti a replikációs folyamat állapotát és százalékos arányát. 
 
 A kezdeti replikáció befejezését követően futtasson egy feladatátvételi tesztet a replikációs stratégia ellenőrzéséhez. A feladatátvételi teszt részletes lépéseiért lásd: [feladatátvételi teszt futtatása site Recoveryban](../../site-recovery/vmware-azure-tutorial.md). 
 
 > [!NOTE]
 > A feladatátvétel futtatása előtt győződjön meg arról, hogy a virtuális gépek és a replikációs stratégia megfelel a követelményeknek. További információ a feladatátvételi teszt futtatásáról: [feladatátvételi teszt tesztelése az Azure-ban site Recovery](../../site-recovery/site-recovery-test-failover-to-azure.md).
 
-A feladatátvételi teszt állapotát a **Beállítások**  >  **feladatok**  >  *YOUR_FAILOVER_PLAN_NAMEban*tekintheti meg. A panelen megtekintheti a lépések és a siker/sikertelen eredmények részletezését. Ha a feladatátvételi teszt bármelyik lépésben meghiúsul, válassza ki a lépést a hibaüzenet ellenőrzéséhez. 
+A feladatátvételi teszt állapotát a **Beállítások**  >  **feladatok**  >  *YOUR_FAILOVER_PLAN_NAMEban* tekintheti meg. A panelen megtekintheti a lépések és a siker/sikertelen eredmények részletezését. Ha a feladatátvételi teszt bármelyik lépésben meghiúsul, válassza ki a lépést a hibaüzenet ellenőrzéséhez. 
 
 ### <a name="step-9-run-a-failover"></a>9. lépés: feladatátvétel futtatása
 

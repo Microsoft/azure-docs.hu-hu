@@ -5,12 +5,12 @@ description: Ismerje meg, hogyan hozhat létre és használhat statikus IP-címe
 services: container-service
 ms.topic: article
 ms.date: 11/14/2020
-ms.openlocfilehash: 22fd099633556fa9ddce575c2ac238b4950667cb
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 102df48ca22fb996e0f4d9c402b8ce8f0fa80f2c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651889"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509472"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Statikus nyilvános IP-cím és DNS-címke használata az Azure Kubernetes Service (ak) terheléselosztó használatával
 
@@ -63,16 +63,14 @@ $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicI
 
 ## <a name="create-a-service-using-the-static-ip-address"></a>Szolgáltatás létrehozása a statikus IP-cím használatával
 
-A szolgáltatás létrehozása előtt győződjön meg arról, hogy az AK-fürt által használt egyszerű szolgáltatásnév delegált engedélyekkel rendelkezik a másik erőforráscsoporthoz. Például:
+A szolgáltatás létrehozása előtt győződjön meg arról, hogy az AK-fürt által használt fürt identitása delegált engedéllyel rendelkezik a másik erőforráscsoporthoz. Például:
 
 ```azurecli-interactive
 az role assignment create \
-    --assignee <SP Client ID> \
+    --assignee <Client ID> \
     --role "Network Contributor" \
     --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
-
-Azt is megteheti, hogy az egyszerű szolgáltatásnév helyett a rendszerhez rendelt felügyelt identitást használja az engedélyekhez. További információ: [felügyelt identitások használata](use-managed-identity.md).
 
 > [!IMPORTANT]
 > Ha a kimenő IP-címet testreszabta, győződjön meg arról, hogy a fürt identitása rendelkezik a kimenő nyilvános IP-címhez és a bejövő nyilvános IP-címhez tartozó engedélyekkel is.

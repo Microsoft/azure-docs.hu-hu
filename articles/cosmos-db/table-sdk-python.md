@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 0029b3f2f70745997ea99db6d88ee298965453fd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 92771bb22897b0568ae601813ca919a260a31d8d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101136"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499390"
 ---
 # <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Azure Cosmos DB Table API SDK for Python: kibocsátási megjegyzések és erőforrások
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "93101136"
 |   |   |
 |---|---|
 |**SDK letöltése**|[PyPI](https://pypi.python.org/pypi/azure-cosmosdb-table/)|
-|**API-dokumentáció**|[Python API-referenciák dokumentációja](/python/api/overview/azure/cosmosdb?preserve-view=true&view=azure-python)|
+|**API-dokumentáció**|[Python API-referenciák dokumentációja](/python/api/overview/azure/cosmosdb)|
 |**SDK telepítési utasítások**|[A Python SDK telepítési utasításai](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
 |**Közreműködés az SDK-val**|[GitHub](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
 |**Jelenleg támogatott platform**|[Python 2,7](https://www.python.org/downloads/) vagy [python 3,3, 3,4, 3,5 vagy 3,6](https://www.python.org/downloads/)|

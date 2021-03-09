@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 381cba23175086a4d9bac7cc0ba71807bc248056
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4298c10d6344a1b0173a2ea79aeba9b8bbfffe4c
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750138"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102511116"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -93,6 +93,24 @@ const connectionString = process.env['COMMUNICATION_SERVICES_CONNECTION_STRING']
 const identityClient = new CommunicationIdentityClient(connectionString);
 ```
 
+Azt is megteheti, hogy elkülöníti a végpontot és a hozzáférési kulcsot.
+```javascript
+// This code demonstrates how to fetch your endpoint and access key
+// from an environment variable.
+const endpoint = process.env["COMMUNICATION_SERVICES_ENDPOINT"];
+const accessKey = process.env["COMMUNICATION_SERVICES_ACCESSKEY"];
+const tokenCredential = new AzureKeyCredential(accessKey);
+// Instantiate the identity client
+const identityClient = new CommunicationIdentityClient(endpoint, tokenCredential)
+```
+
+Felügyelt identitás beállítása esetén lásd: [felügyelt](../managed-identity.md)identitások használata, felügyelt identitással is hitelesíthető.
+```javascript
+const endpoint = process.env["COMMUNICATION_SERVICES_ENDPOINT"];
+const tokenCredential = new DefaultAzureCredential();
+var client = new CommunicationIdentityClient(endpoint, tokenCredential);
+```
+
 ## <a name="create-an-identity"></a>Identitás létrehozása
 
 Az Azure kommunikációs szolgáltatások egy egyszerűsített identitási könyvtárat tartanak fenn. A `createUser` metódus használatával hozzon létre egy új bejegyzést a címtárban egyedi értékkel `Id` . Tárolja a kapott identitást az alkalmazás felhasználóinak való leképezéssel. Például úgy, hogy az alkalmazás-kiszolgáló adatbázisában tárolja őket. Az identitást később kell megadni a hozzáférési tokenek kiküldéséhez.
@@ -104,11 +122,11 @@ console.log(`\nCreated an identity with ID: ${identityResponse.communicationUser
 
 ## <a name="issue-access-tokens"></a>Hozzáférési tokenek kiadása
 
-A `issueToken` metódus használatával kiállíthat egy hozzáférési jogkivonatot egy már meglévő kommunikációs szolgáltatás identitásához. A paraméter olyan `scopes` primitívek készletét határozza meg, amelyek engedélyezik ezt a hozzáférési jogkivonatot. Tekintse meg a [támogatott műveletek listáját](../../concepts/authentication.md). A paraméter új példánya az `communicationUser` Azure kommunikációs szolgáltatás identitásának karakterlánc-ábrázolása alapján hozható létre.
+A `getToken` metódus használatával kiállíthat egy hozzáférési jogkivonatot egy már meglévő kommunikációs szolgáltatás identitásához. A paraméter olyan `scopes` primitívek készletét határozza meg, amelyek engedélyezik ezt a hozzáférési jogkivonatot. Tekintse meg a [támogatott műveletek listáját](../../concepts/authentication.md). A paraméter új példánya az `communicationUser` Azure kommunikációs szolgáltatás identitásának karakterlánc-ábrázolása alapján hozható létre.
 
 ```javascript
 // Issue an access token with the "voip" scope for an identity
-let tokenResponse = await identityClient.issueToken(identityResponse, ["voip"]);
+let tokenResponse = await identityClient.getToken(identityResponse, ["voip"]);
 const { token, expiresOn } = tokenResponse;
 console.log(`\nIssued an access token with 'voip' scope that expires at ${expiresOn}:`);
 console.log(token);
@@ -131,7 +149,7 @@ console.log(token);
 
 ## <a name="refresh-access-tokens"></a>Hozzáférési jogkivonatok frissítése
 
-A hozzáférési tokenek frissítése olyan egyszerű, mintha `issueToken` ugyanazzal az identitással telefonáljon, mint a tokenek kibocsátásához. Emellett meg kell adnia a `scopes` frissített tokeneket is. 
+A hozzáférési tokenek frissítése olyan egyszerű, mintha `getToken` ugyanazzal az identitással telefonáljon, mint a tokenek kibocsátásához. Emellett meg kell adnia a `scopes` frissített tokeneket is.
 
 ```javascript
 // // Value of identityResponse represents the Azure Communication Services identity stored during identity creation and then used to issue the tokens being refreshed
@@ -143,7 +161,7 @@ let refreshedTokenResponse = await identityClient.issueToken(identityResponse, [
 
 Bizonyos esetekben explicit módon visszavonhatja a hozzáférési jogkivonatokat. Például amikor egy alkalmazás felhasználója megváltoztatja a szolgáltatásban való hitelesítéshez használt jelszót. `revokeTokens`A metódus érvénytelenít minden aktív hozzáférési jogkivonatot, amely az identitás számára lett kiállítva.
 
-```javascript  
+```javascript
 await identityClient.revokeTokens(identityResponse);
 console.log(`\nSuccessfully revoked all access tokens for identity with ID: ${identityResponse.communicationUserId}`);
 ```
