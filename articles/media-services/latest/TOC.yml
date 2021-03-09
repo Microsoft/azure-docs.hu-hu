@@ -220,10 +220,10 @@
           href: media-services-metrics-diagnostic-logs.md
         - name: Diagnosztikai naplók sémái
           href: media-services-diagnostic-logs-schema.md
-    - name: Azure Media Player
+    - name: Kompatibilis játékosok
       items:
-        - name: Az Azure Media Player áttekintése
-          href: ../azure-media-player/azure-media-player-overview.md
+        - name: Media Services médialejátszók
+          href: media-players-overview.md
     - name: Fejlesztés v3 API-kkal
       items:
         - name: Áttekintés

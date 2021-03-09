@@ -4,16 +4,16 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 10/20/2020
-ms.openlocfilehash: bef7807c0df580a6763a69619cdaa3d9d29f72e6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a925c3a17988ef6f4b95a1e3cf4dd5fb8baa4829
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521385"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510614"
 ---
 A következő erőforrások is elérhetők:
 
-- [A Python SDK dokumentációja](/python/api/azure-iot-hub/azure.iot.hub?preserve-view=true&view=azure-python)
+- [A Python SDK referenciadokumentációja](/python/api/azure-iot-hub/azure.iot.hub)
 - [Szolgáltatás-ügyfél minták](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/iothub_registry_manager_method_sample.py)
 - [Digitális Twins-minták](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/get_digital_twin_sample.py)
 

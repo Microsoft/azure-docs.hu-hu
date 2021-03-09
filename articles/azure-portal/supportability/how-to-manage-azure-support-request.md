@@ -5,12 +5,12 @@ tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.topic: how-to
 ms.date: 12/14/2020
-ms.openlocfilehash: d6c68dd341e0794a690b41b73ecc4be954db7359
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 4d0c03e0035f6b71a23891ac1691f5421c1bdb76
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653849"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502518"
 ---
 # <a name="manage-an-azure-support-request"></a>Azure-támogatáskérés kezelése
 
@@ -88,34 +88,34 @@ A fájlfeltöltés lehetőség használata esetén kövesse az alábbi irányelv
 * A fájlok nem lehetnek nagyobbak 4 MB-nál.
 * Minden fájlnak rendelkeznie kell fájlnévkiterjesztés (például *. docx* vagy *. xlsx*). A következő táblázat a feltöltésre jogosult filename-bővítményeket tartalmazza.
 
-| 0-9, A – C     | D-G   | H-M         | N – P   | R-T      | U-W        | X – Z     |
+| 0-9, A – C    | D-G   | H-N         | O-Q   | R-T      | U-W        | X – Z     |
 |-------------|-------|-------------|-------|----------|------------|---------|
-| .7z         | . dat  | . har        | . ODX  | . rar     | . TDB       | .xlam   |
-| . a          | . db   | .hwl        | . gyakran  | . rdl     | . TDF       | . XLR    |
-| . ABC        | . Eszközkezelő pont –  | . ics        | . régi  | . RDLC    | . Text      | .xls    |
-| . adm        | .do_  | . ini        | . egy  | .re_     | .thmx      | .xlsb   |
-| . aspx       | .doc  | .java       | . OSD  | . reg     | .tif       | .xlsm   |
-| . ATF        | .docm | .jpg        | . KI  | . Eltávolítás  | . TRC       | .xlsx   |
-| . b          | .docx | . LDF        | . P1   | . ren     | . TTD       | .xlt    |
-| .ba_        | .dotm | . levélpapírfejléc | . Pcap | . Átnevezés  | .tx_       | .xltx   |
-| . bak        | .dotx | . lnk        | . pdb  | . RFT     | .txt       | .xml    |
-| .bat        | .dtsx | .lo_        | .pdf  | . RPT     | .uccapilog | . XMLA   |
-| . blg        | . EDS  | . log        | . Piz  | . RTE     | .uccplog   | .xps    |
-| .CA_        | . EMF  | . LPK        | .pmls | .rtf     | . udcx      | . xsd    |
-| . CAB        | . EML  | . manifest   | .png  | . Run     | .vb_       | . xsn    |
-| . Cap        | . a. a  | . Master     | .potx | . saz     | .vbs_      | . xxx    |
-| .catx       | . err  | . mdmp       | .ppt  | .sql     | . vcf       | .z_     |
-| . CFG        | . etl  | . MOF        | .pptm | .sqlplan | . vsd       | . Z01    |
-| . tömörített | . evt  | . mp3        | .pptx | . stp     | . wdb       | .z02    |
-| . Config     | . evtx | . mpg        | . prn  | .svclog  | . WKS       | . zi     |
-| . CPK        | . PÉLDÁUL   | .ms_        | . PSF  | -        | . WMA       | .zi_    |
-| . cpp        | .ex_  | . msg        | . pst  | -        | . wmv       | .zip    |
-| .cs         | .ex0  | .msi        | . pub  | -        | . WMZ       | .zip_   |
-| . CSV        | . FRD  | . MSO        | -     | -        | . wps       | .zipp   |
-| . CVR        | .gif  | . msu        | -     | -        | . WPT       | . zip |
-| -           | . GUID | . nfo        | -     | -        | . WSDL      | . villámgyors  |
-| -           | . gz   | -           | -     | -        | . wsp       | . ZIPX   |
-| -           | -     | -           | -     | -        | .wtl       | . zit    |
+| .7z         | . dat  | . har        | . ODX  | . rar     | .uccapilog | .xlam   |
+| . a          | . db   | .hwl        | . gyakran  | . rdl     | .uccplog   | . XLR    |
+| . ABC        | . Eszközkezelő pont –  | . ics        | . régi  | . RDLC    | . udcx      | .xls    |
+| . adm        | .do_  | . ini        | . egy  | .re_     | .vb_       | .xlsb   |
+| . aspx       | .doc  | .java       | . OSD  | . Eltávolítás  | .vbs_      | .xlsm   |
+| . ATF        | .docm | .jpg        | . KI  | . ren     | . vcf       | .xlsx   |
+| . b          | .docx | . LDF        | . P1   | . Átnevezés  | . vsd       | .xlt    |
+| .ba_        | .dotm | . levélpapírfejléc | . Pcap | . RFT     | . wdb       | .xltx   |
+| . bak        | .dotx | .lo_        | . pdb  | . RPT     | . WKS       | .xml    |
+| . blg        | .dtsx | . log        | .pdf  | . RTE     | . WMA       | . XMLA   |
+| .CA_        | . EDS  | . LPK        | . Piz  | .rtf     | . wmv       | .xps    |
+| . CAB        | . EMF  | . manifest   | .pmls | . Run     | . WMZ       | . xsd    |
+| . Cap        | . EML  | . Master     | .png  | . saz     | . wps       | . xsn    |
+| .catx       | . a. a  | . mdmp       | .potx | .sql     | . WPT       | . xxx    |
+| . CFG        | . err  | . MOF        | .ppt  | .sqlplan | . WSDL      | .z_     |
+| . tömörített | . etl  | . mp3        | .pptm | . stp     | . wsp       | . Z01    |
+| . Config     | . evt  | . mpg        | .pptx | .svclog  | .wtl       | .z02    |
+| . CPK        | . evtx | .ms_        | . prn  | . TDB     | -          | . zi     |
+| . cpp        | . PÉLDÁUL   | . msg        | . PSF  | . TDF     | -          | .zi_    |
+| .cs         | .ex_  | . MSO        | . pst  | . Text    | -          | .zip    |
+| . CSV        | .ex0  | . msu        | . pub  | .thmx    | -          | .zip_   |
+| . CVR        | . FRD  | . nfo        | -     | .tif     | -          | .zipp   |
+| -           | .gif  | -           | -     | . TRC     | -          | . zip |
+| -           | . GUID | -           | -     | . TTD     | -          | . villámgyors  |
+| -           | . gz   | -           | -     | .tx_     | -          | . ZIPX   |
+| -           | -     | -           | -     | .txt     | -          | . zit    |
 | -           | -     | -           | -     | -        | -          | .zix    |
 | -           | -     | -           | -     | -        | -          | . ZZZ    |
 

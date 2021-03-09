@@ -3,17 +3,17 @@ title: Azure-költségek kezelése automatizálással
 description: Ez a cikk az Azure-költségek automatizálással való kezelését ismerteti.
 author: bandersmsft
 ms.author: banders
-ms.date: 01/06/2021
+ms.date: 03/08/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 02215bace693ac5ac36f9fc29758215d45b23eb1
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
-ms.translationtype: HT
+ms.openlocfilehash: f5cebffeaba1ce198be347758004068e8c03133b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051785"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499679"
 ---
 # <a name="manage-costs-with-automation"></a>Költségek kezelése automatizálással
 
@@ -46,6 +46,8 @@ Akkor érdemes megfontolni a [Usage Details API](/rest/api/consumption/usageDeta
 ## <a name="automate-retrieval-with-usage-details-api"></a>Lekérés automatizálása a Usage Details API-val
 
 A [Usage Details API](/rest/api/consumption/usageDetails) egyszerű módot kínál az Azure-számlájának megfelelő, nyers, nem összesített költségadatok lekérésére. Az API akkor hasznos, ha a szervezetnek programozott adatlekérési megoldásra van szüksége. Akkor érdemes megfontolni az API használatát, ha kisebb költségadathalmazokat szeretne elemezni. Ha nagyobb adathalmazokkal rendelkezik, használja a korábban említett megoldások egyikét. A Usage Details mérőeszközök alapján adja meg az adatokat, napi bontásban. A havi számla kiszámításához használják. Az API-k általánosan elérhető (GA) verziója a `2019-10-01`. Az API-kkal végzett foglalások és Azure Marketplace-vásárlások előzetes verziójának eléréséhez használja a `2019-04-01-preview` verziót.
+
+Ha rendszeresen nagy mennyiségű exportált adatra van szüksége, tekintse meg a [nagy kapacitású adatkészletek ismétlődő beolvasása az exports szolgáltatással](ingest-azure-usage-at-scale.md)című témakört.
 
 ### <a name="usage-details-api-suggestions"></a>Usage Details API-ra vonatkozó javaslatok
 
@@ -101,81 +103,19 @@ Ha azt szeretné, hogy a tényleges költségekben a vásárlások keletkezésü
 GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?metric=AmortizedCost&$filter=properties/usageStart+ge+'2019-04-01'+AND+properties/usageEnd+le+'2019-04-30'&api-version=2019-04-01-preview
 ```
 
-## <a name="retrieve-large-cost-datasets-recurringly-with-exports"></a>Nagy méretű költségadathalmazok ismétlődő lekérése az Exports használatával
-
-Rendszeresen exportálhat nagy mennyiségű adatot a Cost Management exportálási funkciójával. Az exportálás az ajánlott módszer a nem összesített költségadatok lekérésére. Különösen akkor, amikor a használati adatokat tartalmazó fájlok túl nagyok ahhoz, hogy megbízhatóan meg lehessen őket hívni és letölteni a Usage Details API-val. Az exportált adatok a kiválasztott Azure Storage-fiókba lesznek helyezve. Ezt követően betöltheti az adatokat a saját rendszereibe, és igény szerint elemezheti őket. Az Exports az Azure Portalon való konfigurálásához lásd az [adatok exportálását](tutorial-export-acm-data.md) ismertető szakaszt.
-
-Ha az exportálást különböző hatókörökben szeretné automatizálni, a következő szakaszban található minta API-kérelem jó kiindulási pont lehet. Az Exports API-val az általános környezeti konfiguráció részeként hozhat létre automatikus exportálást. Az automatikus exportálással biztosíthatja, hogy a szükséges adatok rendelkezésére álljanak. Az Azure használatának bővítésével párhuzamosan ezt a saját szervezeti rendszerében is használhatja.
-
-### <a name="common-export-configurations"></a>Az exportálások gyakori konfigurációi
-
-Az első exportálás létrehozása előtt állapítsa meg, milyen az adott forgatókönyv, és milyen konfigurációs beállításokkal valósulhat meg. Fontolja meg a következő exportálási beállítások alkalmazását:
-
-- **Ismétlődés** – Meghatározza az exportálási feladat futtatásának gyakoriságát és a fájlok Azure Storage-fiókba való helyezésének idejét. Napi, heti és havi ütemezés választható. Próbálja meg úgy konfigurálni az ismétlődést, hogy az megfelelő legyen a szervezet belső rendszere által használt adatimportálási feladatokhoz.
-- **Ismétlődési időtartam** – Meghatározza az exportálás érvényességének időtartamát. A fájlokat a rendszer csak az ismétlődési időtartamban exportálja.
-- **Időkeret** – Meghatározza az egy adott futtatás során az exportálás által előállított adatok mennyiségét. Gyakran használt lehetőség az Ebben a hónapban és az Ez a hét.
-- **Kezdő dátum** – Konfigurálja az exportálás ütemezésének kezdetét. Az exportálás létrehozása a Kezdő dátum értékeként megadott napon történik, majd ezt követően az Ismétlődés alapján.
-- **Típus** – Az exportálásnak három típusa van:
-  - Tényleges költség – Egy meghatározott időszak alatt keletkező és a számlán megjelenő összes használatot és költséget mutatja.
-  - Amortizált költség – Egy meghatározott időszak alatt keletkező és a számlán megjelenő összes használatot és költséget mutatja a vonatkozó foglalásvásárlási költségekre alkalmazott amortizációval együtt.
-  - Használat – A 2020. július 20. előtt létrehozott valamennyi exportálás Használat típusú. Frissítse az összes ütemezett exportálást Tényleges költség vagy Amortizált költség típusúra.
-- **Oszlopok** – Meghatározza, hogy milyen adatmezőket tartalmazzon az exportált fájl. Ezek megegyeznek a Usage Details API-ban elérhető mezőkkel. További információkért lásd: [Usage Details API](/rest/api/consumption/usagedetails/list).
-
-### <a name="create-a-daily-month-to-date-export-for-a-subscription"></a>Napi tárgyhavi exportálás létrehozása egy előfizetéshez
-
-Kérés URL-címe: `PUT https://management.azure.com/{scope}/providers/Microsoft.CostManagement/exports/{exportName}?api-version=2020-06-01`
-
-```json
-{
-  "properties": {
-    "schedule": {
-      "status": "Active",
-      "recurrence": "Daily",
-      "recurrencePeriod": {
-        "from": "2020-06-01T00:00:00Z",
-        "to": "2020-10-31T00:00:00Z"
-      }
-    },
-    "format": "Csv",
-    "deliveryInfo": {
-      "destination": {
-        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Storage/storageAccounts/{yourStorageAccount} ",
-        "container": "{yourContainer}",
-        "rootFolderPath": "{yourDirectory}"
-      }
-    },
-    "definition": {
-      "type": "ActualCost",
-      "timeframe": "MonthToDate",
-      "dataSet": {
-        "granularity": "Daily",
-        "configuration": {
-          "columns": [
-            "Date",
-            "MeterId",
-            "ResourceId",
-            "ResourceLocation",
-            "Quantity"
-          ]
-        }
-      }
-    }
-}
-```
-
-### <a name="automate-alerts-and-actions-with-budgets"></a>Költségvetéssel kapcsolatos riasztások és műveletek automatizálása
+## <a name="automate-alerts-and-actions-with-budgets"></a>Riasztások és műveletek automatizálása költségvetésekkel
 
 Két kritikus tényező szükséges ahhoz, hogy a felhővel kapcsolatos befektetéséből a lehető legtöbbet tudja kihozni. Az egyik az automatikus költségvetés-létrehozás. A másik a költségalapú vezénylés konfigurálása a költségvetési riasztásokra válaszul. Az Azure-beli költségvetés-létrehozás automatizálásának három különböző módja van. A különböző riasztási válaszok a beállított riasztási küszöbérték túllépése esetén mennek végbe.
 
 A következő szakaszok bemutatják az elérhető lehetőségeket, és minta API-kérelmeket ismertetnek a költségvetések automatizálásának megkezdéséhez.
 
-#### <a name="how-costs-are-evaluated-against-your-budget-threshold"></a>A költségek kiértékelése a költségvetési küszöbértékhez képest
+### <a name="how-costs-are-evaluated-against-your-budget-threshold"></a>A költségek kiértékelése a költségvetési küszöbértékhez képest
 
 A költségek a költségvetési küszöbértékhez képesti kiértékelése naponta egyszer történik meg. Amikor új költségvetést hoz létre vagy eléri a költségvetés alaphelyzetbe állításának napját, a költségek mértéke a küszöbértékhez képest nulla lesz, mert előfordulhat, hogy nem történt meg az értékelés.
 
 Ha az Azure azt észleli, hogy a költségek túllépték a küszöbértéket, a rendszer az észlelést követő egy órán belül értesítést küld.
 
-#### <a name="view-your-current-cost"></a>Aktuális költségek megtekintése
+### <a name="view-your-current-cost"></a>Aktuális költségek megtekintése
 
 A jelenlegi költségek megtekintéséhez GET-hívást kell végrehajtania a [Query API](/rest/api/cost-management/query)-val.
 
@@ -185,7 +125,7 @@ A Budgets API GET-hívása nem adja vissza a költségelemzésben szereplő aktu
 
 A költségvetések létrehozását a [Budgets API](/rest/api/consumption/budgets)-val automatizálhatja. Emellett [költségvetési sablonnal](quick-create-budget-template.md) is létrehozhat költségvetést. A sablonokkal könnyedén egységesítheti az Azure-beli üzemelő példányokat, ráadásul a költségszabályozás megfelelően konfigurálva és érvényesítve lesz.
 
-#### <a name="supported-locales-for-budget-alert-emails"></a>Támogatott területi beállítások a költségvetési riasztások e-mailjeihez
+### <a name="supported-locales-for-budget-alert-emails"></a>Támogatott területi beállítások a költségvetési riasztások e-mailjeihez
 
 A költségvetések használatakor riasztást kap, ha a költségek túllépnek egy meghatározott küszöbértéket. Költségvetésenként legfeljebb öt címzettet állíthat be. A címzettek az e-mailes riasztásokat a költségvetési küszöbérték átlépésétől számított 24 órán belül kapják meg. Előfordulhat, hogy egy címzettnek más nyelven kell fogadnia az e-mailt. A következő nyelvkultúra-kódokat használhatja a Budgets API-val. A kulturális kódot a `locale` paraméterrel adhatja meg, a következő példához hasonló módon.
 
@@ -249,7 +189,7 @@ A kulturális kód által támogatott nyelvek:
 | pt-pt | Portugál (Portugália) |
 | sv-se | Svéd (Svédország) |
 
-#### <a name="common-budgets-api-configurations"></a>Gyakori Budgets API-konfigurációk
+### <a name="common-budgets-api-configurations"></a>Gyakori Budgets API-konfigurációk
 
 A költségvetéseket számos különféle módon konfigurálhatja az Azure-környezetben. Gondolja végig az adott forgatókönyvet, majd állapítsa meg, mely konfigurációs beállításokkal valósulhat meg. Tekintse át a következő beállításokat:
 

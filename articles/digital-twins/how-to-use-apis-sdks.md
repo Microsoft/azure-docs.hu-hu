@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d2d3d04bdb8066db263c608bb1d42acca303a656
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: b9804e119f5b5cfbee1a61eabf217dad7dbf5500
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433828"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507228"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Az Azure Digital Twins API-k és SDK-k használata
 
@@ -68,7 +68,7 @@ Az adatsík API-k használata:
    - Az SDK-forrást a GitHubon találja: [Azure Azure Digital Twins Core ügyféloldali kódtár a javascripthez](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core)
 * Használhatja a **PYTHON SDK**-t. A Python SDK használata...
    - a csomagot a PyPi-ből tekintheti meg és telepítheti: az [Azure Azure Digital Twins Core ügyféloldali kódtára a Pythonhoz](https://pypi.org/project/azure-digitaltwins-core/).
-   - megtekintheti az [SDK-referenciák dokumentációját](/python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python&preserve-view=true).
+   - megtekintheti az [SDK-referenciák dokumentációját](/python/api/azure-digitaltwins-core/azure.digitaltwins.core).
    - Az SDK forrását a GitHubon találja: az [Azure Azure Digital Twins Core ügyféloldali kódtára a Pythonhoz](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
 * Az autorest használatával egy másik nyelvhez is létrehozhat SDK-t. Kövesse az útmutató [*: egyéni SDK-k létrehozása az Azure digitális ikrekhez az autorest használatával*](how-to-create-custom-sdks.md)című témakör utasításait.
 

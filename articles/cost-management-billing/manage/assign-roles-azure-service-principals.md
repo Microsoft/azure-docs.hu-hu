@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 03/07/2021
 ms.author: banders
-ms.openlocfilehash: 0f30c90bf81a837b1e78ca5f91450cf085cc91bc
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: e7f5370e1e387947d196959fef31043ea8f4d3bd
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102495097"
+ms.locfileid: "102508520"
 ---
 # <a name="assign-roles-to-azure-enterprise-agreement-service-principal-names"></a>Szerepkörök kiosztása az Azure Nagyvállalati Szerződés egyszerű szolgáltatásnév neveként
 
@@ -23,7 +23,7 @@ A Nagyvállalati Szerződés (EA) regisztrációját az [Azure Enterprise Portal
 Mielőtt elkezdené, győződjön meg arról, hogy már ismeri a következő cikkeket:
 
 - [Nagyvállalati szerződés szerepkörei](understand-ea-roles.md)
-- [Bejelentkezés az Azure PowerShell-lel](/powershell/azure/authenticate-azureps?view=azps-5.5.0&preserve-view=true)
+- [Bejelentkezés az Azure PowerShell-lel](/powershell/azure/authenticate-azureps)
 - [REST API-k hívása a Poster használatával](/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
 
 ## <a name="create-and-authenticate-your-service-principal"></a>Az egyszerű szolgáltatás létrehozása és hitelesítése
@@ -89,7 +89,7 @@ A paraméter a Számlázási fiók azonosítója. A Azure Portal a Cost Manageme
 
 **billingRoleAssignmentName**
 
-A paraméter egy egyedi GUID, amelyet meg kell adnia. A GUID azonosítót a [New-GUID PowerShell-](/powershell/module/microsoft.powershell.utility/new-guid?view=powershell-7.1&preserve-view=true) paranccsal hozhatja meg.
+A paraméter egy egyedi GUID, amelyet meg kell adnia. A GUID azonosítót a [New-GUID PowerShell-](/powershell/module/microsoft.powershell.utility/new-guid) paranccsal hozhatja meg.
 
 Vagy használhatja az [online GUID/UUID Generator](https://guidgenerator.com/) webhelyét is egyedi GUID létrehozásához.
 
@@ -141,7 +141,7 @@ Ez a Számlázási fiók azonosítója. A Azure Portal a Cost Management + szám
 
 **billingRoleAssignmentName**
 
-A paraméter egy egyedi GUID, amelyet meg kell adnia. A GUID azonosítót a [New-GUID PowerShell-](/powershell/module/microsoft.powershell.utility/new-guid?view=powershell-7.1&preserve-view=true) paranccsal hozhatja meg.
+A paraméter egy egyedi GUID, amelyet meg kell adnia. A GUID azonosítót a [New-GUID PowerShell-](/powershell/module/microsoft.powershell.utility/new-guid) paranccsal hozhatja meg.
 
 Vagy használhatja az [online GUID/UUID Generator](https://guidgenerator.com/) webhelyét is egyedi GUID létrehozásához.
 
@@ -199,7 +199,7 @@ A paraméter a Számlázási fiók azonosítója. A Azure Portal a Cost Manageme
 
 **billingRoleAssignmentName**
 
-A paraméter egy egyedi GUID, amelyet meg kell adnia. A GUID azonosítót a [New-GUID PowerShell-](/powershell/module/microsoft.powershell.utility/new-guid?view=powershell-7.1&preserve-view=true) paranccsal hozhatja meg.
+A paraméter egy egyedi GUID, amelyet meg kell adnia. A GUID azonosítót a [New-GUID PowerShell-](/powershell/module/microsoft.powershell.utility/new-guid) paranccsal hozhatja meg.
 
 Vagy használhatja az [online GUID/UUID Generator](https://guidgenerator.com/) webhelyét is egyedi GUID létrehozásához.
 **enrollmentAccountName**

@@ -4,12 +4,12 @@ description: Saját kulcsok (BYOK-EK) használatával titkosíthatja az AK-OS op
 services: container-service
 ms.topic: article
 ms.date: 09/01/2020
-ms.openlocfilehash: 60a7e36039500ccb8a46fd1f5998c23c37174689
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 4b1c311132cc812ccb2bbbc95c4b7414b108008c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728135"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499203"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Saját kulcsok (BYOK) használata Azure-lemezekkel az Azure Kubernetes szolgáltatásban (ak)
 
@@ -93,7 +93,7 @@ Ha új csomópont-készleteket ad hozzá a fent létrehozott fürthöz, a létre
 Az operációs rendszer lemezének titkosítási kulcsa az adatlemez titkosítására szolgál, ha a kulcs nincs megadva a v 1.17.2 található adatlemezhez, és az AK-adatlemezeket is titkosíthatja a többi kulccsal.
 
 > [!IMPORTANT]
-> Győződjön meg arról, hogy megfelelő AK-beli hitelesítő adatokkal rendelkezik. Az egyszerű szolgáltatásnak közreműködői hozzáféréssel kell rendelkeznie ahhoz az erőforráscsoporthoz, amelyben a diskencryptionset telepítve van. Ellenkező esetben hibaüzenet jelenik meg, amely arra utal, hogy az egyszerű szolgáltatásnév nem rendelkezik engedéllyel.
+> Győződjön meg arról, hogy megfelelő AK-beli hitelesítő adatokkal rendelkezik. A felügyelt identitásnak közreműködői hozzáféréssel kell rendelkeznie ahhoz az erőforráscsoporthoz, amelyben a diskencryptionset telepítve van. Ellenkező esetben hibaüzenet jelenik meg, amely arra utal, hogy a felügyelt identitásnak nincs engedélye.
 
 ```azurecli-interactive
 # Retrieve your Azure Subscription Id from id property as shown below
@@ -141,7 +141,7 @@ az aks get-credentials --name myAksCluster --resource-group myResourceGroup --ou
 kubectl apply -f byok-azure-disk.yaml
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az AK-fürtök biztonságával kapcsolatos ajánlott eljárások][best-practices-security] áttekintése
 

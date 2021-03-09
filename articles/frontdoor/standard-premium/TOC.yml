@@ -11,6 +11,10 @@
   items:
     - name: A bejárati ajtó standard/prémium portáljának létrehozása
       href: create-front-door-portal.md
+- name: Példák
+  items:
+    - name: Resource Manager-sablonok
+      href: resource-manager-template-samples.md
 - name: Alapelvek
   items:
     - name: Front Door – GYIK

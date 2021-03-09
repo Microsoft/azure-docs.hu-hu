@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: 30587fac7d7be37d7595a78502b7999adee9a30f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4dd078205989872179b0b2474974a29cf6b88dad
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91665310"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507840"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>Azure-beli virtuálisgép-méretek helyi ideiglenes lemezzel nem 
 Ez a cikk olyan Azure-beli virtuálisgép-méretekkel kapcsolatos gyakori kérdésekre adott válaszokat tartalmaz, amelyek nem rendelkeznek helyi ideiglenes lemezzel (azaz nincs helyi Temp lemez). A virtuálisgép-méretekkel kapcsolatos további információkért tekintse meg a [DV4 és Dsv4-sorozat (általános célú munkaterhelések)](dv4-dsv4-series.md) , illetve [a Ev4 és a Esv4-sorozat (memória-optimalizált számítási feladatok)](ev4-esv4-series.md)specifikációit ismertető témakört.
@@ -40,8 +40,22 @@ Nem. Az átméretezéshez csak a következő kombinációk engedélyezettek:
 1. Virtuális gép (helyi Temp lemezzel) – > virtuális gép (helyi Temp lemezzel); és 
 2. Virtuális gép (helyi Temp lemez nélkül) – > virtuális gép (helyi Temp lemez nélkül). 
 
+Ha érdekli a megoldás, tekintse meg a következő kérdést.
+
 > [!NOTE]
 > Ha egy rendszerkép az erőforrás-lemeztől függ, vagy a helyi ideiglenes lemezen található egy lapozófájl vagy swapfile, a lemez nélküli lemezképek nem fognak működni – helyette a "lemez" alternatívát használja. 
+
+## <a name="how-do-i-migrate-from-a-vm-size-with-local-temp-disk-to-a-vm-size-with-no-local-temp-disk"></a>Hogyan Migrálás virtuális gépről a helyi Temp lemezrel rendelkező virtuálisgép-méretre, helyi Temp lemez nélkül?  
+A lépéseket a következő lépésekkel telepítheti át: 
+
+1. Kapcsolódjon a virtuális géphez, amely helyi rendszergazdaként (például a D: meghajtón) található helyi ideiglenes lemezzel.
+2. Kövesse a [d: meghajtó használata a Windows rendszerű virtuális gépen](./windows/change-drive-letter.md) az "ideiglenes áthelyezés pagefile.sys a c meghajtóra" című szakaszt, amely a lapozófájlt a helyi ideiglenes lemezről (D: meghajtó) a C: meghajtóra helyezi át.
+
+   > [!NOTE]
+   > Kövesse a D: meghajtó használata a Windows rendszerű virtuális gépen adatmeghajtóként a (z) "ideiglenes áthelyezés pagefile.sys a C meghajtóra" című szakasz útmutatását, és helyezze át a lapozófájlt a helyi ideiglenes lemezről (D: meghajtó) a C: meghajtóra. **Az ismertetett lépésektől való eltérés a következő hibaüzenetet eredményezi: "nem lehet átméretezni a virtuális gépet, mert az erőforrás lemezről nem az erőforrás-lemezről nem a virtuálisgép-méretre változik, és fordítva nem engedélyezett.**
+
+3. Készítse el a virtuális gép pillanatképét a [pillanatkép létrehozása a portál vagy az Azure CLI használatával](./linux/snapshot-copy-managed-disk.md)című rész lépéseit követve. 
+4. A pillanatkép használatával hozzon létre egy új lemez nélküli virtuális gépet (például:, DV4, Dsv4, Ev4, Esv4 sorozat) a [virtuális gép létrehozása pillanatképből a CLI-vel](./scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md)című rész lépéseit követve. 
 
 ## <a name="do-these-vm-sizes-support-both-linux-and-windows-operating-systems-os"></a>Ezek a virtuálisgép-méretek támogatják a Linux és a Windows operációs rendszer (OS) használatát?
 Igen.

@@ -3,12 +3,12 @@ title: Virtuális gépek indítása és leállítása parancssori eszközök has
 description: Megtudhatja, hogyan indíthatja el és állíthatja le a virtuális gépeket a Azure DevTest Labsban a parancssori eszközök használatával.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 2b9be3d09c488fdae211d81daf88e8807bc7b4dc
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 2ddc1620cf86fa203b2f0e31359f9fd262df8916
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201192"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499543"
 ---
 # <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>Azure DevTest Labs virtuális gépek indítása és leállítása parancssori eszközök használatával
 Ez a cikk bemutatja, hogyan indíthatja el vagy állíthatja le a virtuális gépeket a Azure PowerShell vagy az Azure CLI használatával a Azure DevTest Labs tesztkörnyezetben. A műveletek automatizálásához létrehozhat PowerShell-vagy CLI-parancsfájlokat is. 
@@ -29,7 +29,7 @@ Bizonyos esetekben azonban érdemes lehet automatizálni a virtuális gépek ind
 > [!NOTE]
 > A következő szkript a Azure PowerShell az modult használja. 
 
-A következő PowerShell-parancsfájl egy virtuális gépet indít el egy laborban. A [meghívó-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) a parancsfájl elsődleges fókusza. A **ResourceId** paraméter a virtuális gép teljes erőforrás-azonosítója a laborban. A **műveleti** paraméter az a hely, ahol a szükséges **indítási** vagy **leállítási** beállítások vannak megadva.
+A következő PowerShell-parancsfájl egy virtuális gépet indít el egy laborban. A [meghívó-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) a parancsfájl elsődleges fókusza. A **ResourceId** paraméter a virtuális gép teljes erőforrás-azonosítója a laborban. A **műveleti** paraméter az a hely, ahol a szükséges **indítási** vagy **leállítási** beállítások vannak megadva.
 
 ```powershell
 # The id of the subscription

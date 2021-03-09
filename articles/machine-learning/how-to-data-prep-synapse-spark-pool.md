@@ -11,19 +11,21 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: 242fd57cbdbc9ef01ba28bea25d1aad4c6a17377
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: acd8df620e23ee4ebc103d8910c6443f47ffa141
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102453376"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503827"
 ---
 # <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-wrangling-preview"></a>Az Azure szinapszis Analytics szolgáltatással rendelkező Apache Spark-készletek csatlakoztatása a huzavona (előzetes verzió)
 
 Ebből a cikkből megtudhatja, hogyan csatolhat és indíthat el egy olyan Apache Spark-készletet, amely az [Azure szinapszis Analytics](/synapse-analytics/overview-what-is.md) segítségével huzavona az adatmennyiséget. 
 
+Ez a cikk útmutatást nyújt az adathuzavona-feladatok interaktív végrehajtásához egy Jupyter-jegyzetfüzetben lévő dedikált szinapszis-munkameneten belül. Ha Azure Machine Learning-folyamatokat szeretne használni, tekintse [meg a Machine learning-folyamat (előzetes verzió) Apache Spark (az Azure szinapszis Analytics által működtetett) használatát](how-to-use-synapsesparkstep.md)ismertető témakört.
+
 >[!IMPORTANT]
-> A Azure Machine Learning és az Azure szinapszis Analytics-integráció előzetes verzióban érhető el. A cikkben bemutatott képességek olyan csomagot alkalmaznak `azureml-synapse` , amely a [kísérleti](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) előzetes verzió funkcióit tartalmazza, amelyek bármikor megváltozhatnak.
+> A Azure Machine Learning és az Azure szinapszis Analytics-integráció előzetes verzióban érhető el. A cikkben bemutatott képességek olyan csomagot alkalmaznak `azureml-synapse` , amely a [kísérleti](/python/api/overview/azure/ml/#stable-vs-experimental) előzetes verzió funkcióit tartalmazza, amelyek bármikor megváltozhatnak.
 
 ## <a name="azure-machine-learning-and-azure-synapse-analytics-integration-preview"></a>Azure Machine Learning és az Azure szinapszis Analytics-integrációja (előzetes verzió)
 
@@ -37,11 +39,13 @@ Az Azure szinapszis Analytics Azure Machine Learning (előzetes verzió) szolgá
 
 * [Apache Spark-készlet létrehozása a Azure Portal, a web Tools vagy a szinapszis Studio használatával](../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
 
-* [Telepítse a Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)-t, amely tartalmazza a `azureml-synapse` csomagot (előzetes verzió). 
-    * Telepítheti saját magát is, de csak az SDK 1,20-es vagy újabb verziójával kompatibilis. 
-        ```python
-        pip install azureml-synapse
-        ```
+* [Állítsa be a fejlesztési környezetet](how-to-configure-environment.md) a Azure Machine learning SDK telepítéséhez, vagy használjon egy [Azure Machine learning számítási példányt](concept-compute-instance.md#create) az SDK-val, amely már telepítve van. 
+
+* Telepítse a `azureml-synapse` csomagot (előzetes verzió) a következő kóddal:
+
+  ```python
+  pip install azureml-synapse
+  ```
 
 * [Azure Machine learning munkaterület és az Azure szinapszis Analytics-munkaterület összekapcsolása](how-to-link-synapse-ml-workspaces.md).
 
@@ -56,7 +60,7 @@ A Machine learning-munkaterülethez kapcsolódó összes társított szolgáltat
 LinkedService.list(ws)
 ```
 
-Ez a példa egy meglévő társított szolgáltatást kér le a `synapselink1` munkaterületről a `ws` [`get()`](/python/api/azureml-core/azureml.core.linkedservice?preserve-view=true&view=azure-ml-py#get-workspace--name-) metódussal.
+Ez a példa egy meglévő társított szolgáltatást kér le a `synapselink1` munkaterületről a `ws` [`get()`](/python/api/azureml-core/azureml.core.linkedservice#get-workspace--name-) metódussal.
 ```python
 linked_service = LinkedService.get(ws, 'synapselink1')
 ```
@@ -108,7 +112,7 @@ attach_config = SynapseCompute.attach_configuration(linked_service, #Linked syna
                                                     pool_name="<Synapse Spark pool name>") #Name of Synapse spark pool 
 
 synapse_compute = ComputeTarget.attach(workspace= ws,                
-                                       name='<Synapse Spark pool alias in Azure ML>', 
+                                       name="<Synapse Spark pool alias in Azure ML>", 
                                        attach_configuration=attach_config
                                       )
 
@@ -180,7 +184,7 @@ A következő kód azt mutatja be, hogyan lehet az **Azure Blob Storage** -ból 
 
 # setup access key or SAS token
 sc._jsc.hadoopConfiguration().set("fs.azure.account.key.<storage account name>.blob.core.windows.net", "<access key>")
-sc._jsc.hadoopConfiguration().set("fs.azure.sas.<container name>.<storage account name>.blob.core.windows.net", "sas token")
+sc._jsc.hadoopConfiguration().set("fs.azure.sas.<container name>.<storage account name>.blob.core.windows.net", "<sas token>")
 
 # read from blob 
 df = spark.read.option("header", "true").csv("wasbs://demo@dprepdata.blob.core.windows.net/Titanic.csv")
@@ -295,4 +299,3 @@ input1 = train_ds.as_mount()
 
 * [Modell betanítása](how-to-set-up-training-targets.md).
 * [Betanítás Azure Machine Learning adatkészlettel](how-to-train-with-datasets.md)
-* [Hozzon létre egy Azure Machine learning-adatkészletet](how-to-create-register-datasets.md).

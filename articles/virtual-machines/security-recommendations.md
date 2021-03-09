@@ -10,12 +10,12 @@ ms.date: 11/13/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.reviewer: cynthn
-ms.openlocfilehash: afb985ecbe91835369738966e39e751f06f8d796
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 622ebfed8294dbcb441aa509fc4f6ba75114f28d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571335"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499356"
 ---
 # <a name="security-recommendations-for-virtual-machines-in-azure"></a>Biztonsági javaslatok az Azure-beli virtuális gépekhez
 
@@ -26,14 +26,14 @@ Ennek a cikknek a javaslatait a Azure Security Center automatikusan tudja kezeln
 
 A Azure Security Centertel kapcsolatos általános információkért lásd: [Mi az Azure Security Center?](../security-center/security-center-introduction.md)
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 | Ajánlás | Megjegyzések | Security Center |
 |-|----|--|
 | Egyéni virtuálisgép-rendszerképek létrehozásakor alkalmazza a legújabb frissítéseket. | A lemezképek létrehozása előtt telepítse az operációs rendszer legújabb frissítéseit, és minden olyan alkalmazáshoz, amely a lemezkép részét képezi majd.  | - |
 | Tartsa naprakészen a virtuális gépeket. | Az Azure-ban lévő Windows-és Linux-számítógépeken az operációs rendszer frissítéseinek kezeléséhez használhatja a Azure Automation [Update Management](../automation/update-management/overview.md) megoldását. | [Igen](../security-center/asset-inventory.md) |
 | Készítse elő a virtuális gépek biztonsági mentését. | [Azure Backup](../backup/backup-overview.md) segít az alkalmazásadatok védelme terén, és minimális működési költségekkel jár. Az alkalmazások hibái sérültek az adataikat, és az emberi hibák hibákat okozhatnak az alkalmazásaiban. Azure Backup védi a Windows és a Linux rendszerű virtuális gépeket. | - |
-| Több virtuális gép használata nagyobb rugalmasság és rendelkezésre állás érdekében. | Ha a virtuális gép olyan alkalmazásokat futtat, amelyek számára elérhetőnek kell lennie, használjon több virtuális gépet vagy [rendelkezésre állási készletet](./manage-availability.md). | - |
+| Több virtuális gép használata nagyobb rugalmasság és rendelkezésre állás érdekében. | Ha a virtuális gép olyan alkalmazásokat futtat, amelyek számára elérhetőnek kell lennie, használjon több virtuális gépet vagy [rendelkezésre állási készletet](./availability.md). | - |
 | Egy üzletmenet-folytonossági és vész-helyreállítási (BCDR) stratégiát kell alkalmaznia. | Azure Site Recovery lehetővé teszi az üzletmenet folytonosságának támogatására szolgáló különböző lehetőségek kiválasztását. Különböző replikációs és feladatátvételi forgatókönyveket támogat. További információ:  [About site Recovery](../site-recovery/site-recovery-overview.md). | - |
 
 ## <a name="data-security"></a>Adatbiztonság
@@ -58,7 +58,7 @@ A Azure Security Centertel kapcsolatos általános információkért lásd: [Mi 
 |-|----|--|
 | A virtuális gépek figyelése. | Az Azure-beli virtuális gépek és a virtuálisgép-méretezési csoportok állapotának figyeléséhez [Azure monitor for VMst](../azure-monitor/vm/vminsights-overview.md) használhat. A virtuális gépekkel kapcsolatos teljesítményproblémák a szolgáltatás megszakadásához vezethetnek, ami sérti a rendelkezésre állás biztonsági elvét. | - |
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 | Ajánlás | Megjegyzések | Security Center |
 |-|----|--|

@@ -5,12 +5,12 @@ description: Megtudhatja, hogyan telepíthet és konfigurálhat egy, az Azure Ku
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 58cda3f2bfc76f00deaa85347c059040e39f9ef5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: fa6572ddc694cb892f48cb3e618c176f087524f6
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98729013"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506565"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Statikus nyilvános IP-címmel rendelkező bejövő vezérlő létrehozása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -50,7 +50,7 @@ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eas
 ```
 
 > [!NOTE]
-> A fenti parancsok olyan IP-címet hoznak létre, amely törölve lesz, ha törli az AK-fürtöt. Másik lehetőségként létrehozhat egy olyan IP-címet is egy másik erőforráscsoporthoz, amelyet az AK-fürttől függetlenül kezelhet. Ha egy másik erőforráscsoporthoz hoz létre IP-címet, győződjön meg arról, hogy az AK-fürt által használt szolgáltatásnév delegált engedélyekkel rendelkezik a másik erőforráscsoporthoz, például a *hálózati közreműködőhöz*. További információ: [statikus nyilvános IP-cím és DNS-címke használata az AK-Load Balancer használatával][aks-static-ip].
+> A fenti parancsok olyan IP-címet hoznak létre, amely törölve lesz, ha törli az AK-fürtöt. Másik lehetőségként létrehozhat egy olyan IP-címet is egy másik erőforráscsoporthoz, amelyet az AK-fürttől függetlenül kezelhet. Ha egy másik erőforráscsoporthoz hoz létre IP-címet, győződjön meg arról, hogy az AK-fürt által használt fürt identitása delegált engedélyekkel rendelkezik a másik erőforráscsoporthoz, például a *hálózati közreműködőhöz*. További információ: [statikus nyilvános IP-cím és DNS-címke használata az AK-Load Balancer használatával][aks-static-ip].
 
 Most telepítse az *Nginx-* beléptetési diagramot a Helm szolgáltatással. A magasabb szintű redundancia érdekében az NGINX bejövő forgalmi vezérlő két replikája van telepítve a `--set controller.replicaCount` paraméterrel. Ahhoz, hogy teljes mértékben élvezhesse a bejövő vezérlő replikáit, győződjön meg arról, hogy az AK-fürt több csomópontja van.
 
@@ -450,7 +450,7 @@ Végezetül távolítsa el a bejövő vezérlőhöz létrehozott statikus nyilv�
 az network public-ip delete --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk néhány külső összetevőt tartalmaz az ak-nak. Ha többet szeretne megtudni ezekről az összetevőkről, tekintse meg a következő Project-lapokat:
 

@@ -9,12 +9,12 @@ ms.author: nibaccam
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 4e1972e0530656bf6cc0e6319191ab4ebbfbfddb
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: f87175500fcf5bdbcf9a5c2f499f6bab96b37b63
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358575"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102498965"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>Elosztott képzés Azure Machine Learning
 
@@ -24,7 +24,7 @@ Az elosztott képzésben a modell betanításához szükséges számítási fela
 
 ## <a name="deep-learning-and-distributed-training"></a>Mélyreható tanulás és elosztott képzés 
 
-Az elosztott képzésnek két fő típusa van: az [adatpárhuzamosság](#data-parallelism) és a [modell párhuzamossága](#model-parallelism). A részletes tanulási modelleken a [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) támogatja a népszerű keretrendszerek, a PyTorch és a TensorFlow integrációját. Mindkét keretrendszer adatpárhuzamosságot alkalmaz az elosztott képzések esetében, és a számítási sebesség optimalizálása érdekében [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) is képes kihasználni. 
+Az elosztott képzésnek két fő típusa van: az [adatpárhuzamosság](#data-parallelism) és a [modell párhuzamossága](#model-parallelism). A részletes tanulási modelleken a [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/intro) támogatja a népszerű keretrendszerek, a PyTorch és a TensorFlow integrációját. Mindkét keretrendszer adatpárhuzamosságot alkalmaz az elosztott képzések esetében, és a számítási sebesség optimalizálása érdekében [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) is képes kihasználni. 
 
 * [Elosztott betanítás a PyTorch használatával](how-to-train-pytorch.md#distributed-training)
 

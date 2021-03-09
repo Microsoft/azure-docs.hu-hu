@@ -366,7 +366,7 @@
           href: monitor-azure-backup-with-backup-explorer.md
         - name: Az Azure Portal használata
           href: backup-azure-monitoring-built-in-monitor.md
-        - name: Az Azure Monitor használata
+        - name: Azure Monitor naplók használata
           href: backup-azure-monitoring-use-azuremonitor.md
     - name: Jelentések
       items:
@@ -374,10 +374,14 @@
           items:
             - name: Azure Backup-jelentések konfigurálása
               href: configure-reports.md
+            - name: E-mail-Azure Backup jelentések
+              href: backup-reports-email.md
         - name: Diagnosztikai események konfigurálása Recovery Services-tárolókhoz
           items:
             - name: Diagnosztikai beállítások használata Recovery Services-tárolókhoz
               href: backup-azure-diagnostic-events.md
+            - name: A System functions használata
+              href: backup-reports-system-functions.md
             - name: Log Analytics-adatmodell erőforrás-specifikus diagnosztikai eseményekhez
               href: backup-azure-reports-data-model.md
             - name: Log Analytics-adatmodell az Azure Backuphoz (Azure Diagnostics üzemmód)

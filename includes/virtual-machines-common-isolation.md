@@ -2,18 +2,18 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: virtual-machines
-author: styli365
+author: rishabv90
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/05/2020
-ms.author: sttsinar
+ms.author: risverma
 ms.custom: include file
-ms.openlocfilehash: 3d78441e56e23cf49b09073fdf88bef4b3434da9
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: fc61c111291f9862f71f9a81828fa0fa828ab2ad
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102473854"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510800"
 ---
 Az Azure-beli számítások olyan virtuálisgép-méreteket biztosítanak, amelyek egy adott hardvereszközhöz vannak elkülönítve, és egyetlen ügyfélhez vannak hozzárendelve. Az elkülönített méretek élőak és működnek az adott hardveres generáción, és a hardveres generáció kivonásakor elavulttá válik.
 
@@ -42,12 +42,12 @@ Az elkülönített virtuálisgép-méretek hardveres korlátozott élettartammal
 
 | Méret | Elkülönítés megszüntetésének dátuma | 
 | --- | --- |
-| Standard_DS15_v2 | Május 15., 2020 |
-| Standard_D15_v2  | Május 15., 2020 |
-| Standard_G5  | Február 15., 2021 |
-| Standard_GS5  | Február 15., 2021 |
-| Standard_E64i_v3  | Február 15., 2021 |
-| Standard_E64is_v3  | Február 15., 2021 |
+| Standard_DS15_v2 | Május 15., 2021 |
+| Standard_D15_v2  | Május 15., 2021 |
+| Standard_G5  | Február 15., 2022 |
+| Standard_GS5  | Február 15., 2022 |
+| Standard_E64i_v3  | Február 15., 2022 |
+| Standard_E64is_v3  | Február 15., 2022 |
 
 
 ## <a name="faq"></a>GYIK
@@ -71,8 +71,8 @@ Az elkülönített virtuálisgép-méretek hardveres korlátozott élettartammal
  
 | Date | Művelet |
 |---|---| 
-| Május 15., 2019<sup>1</sup> | D/DS15_v2 elkülönítés kivonulási hirdetmény| 
-| Május 15., 2020 | D/DS15_v2 elkülönítési garancia eltávolítva| 
+| Május 15., 2020<sup>1</sup> | D/DS15_v2 elkülönítés kivonulási hirdetmény| 
+| Május 15., 2021 | D/DS15_v2 elkülönítési garancia eltávolítva| 
 
 <sup>1</sup> az ezeket a méreteket használó meglévő ügyfelek egy bejelentési e-mailt kapnak, amely részletes útmutatást ad a következő lépésekhez.  
 
@@ -81,8 +81,8 @@ Az elkülönített virtuálisgép-méretek hardveres korlátozott élettartammal
  
 | Date | Művelet |
 |---|---|
-| Február 15., 2020<sup>1</sup> | G5/GS5/E64i_v3/E64is_v3 elkülönítési kivonulási hirdetmény |
-| Február 15., 2021 | G5/GS5/E64i_v3/E64is_v3 elkülönítési garancia eltávolítva |
+| Február 15., 2021<sup>1</sup> | G5/GS5/E64i_v3/E64is_v3 elkülönítési kivonulási hirdetmény |
+| Február 15., 2022 | G5/GS5/E64i_v3/E64is_v3 elkülönítési garancia eltávolítva |
 
 <sup>1</sup> az ezeket a méreteket használó meglévő ügyfelek egy bejelentési e-mailt kapnak, amely részletes útmutatást ad a következő lépésekhez.  
 

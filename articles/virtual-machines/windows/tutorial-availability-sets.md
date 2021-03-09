@@ -1,22 +1,22 @@
 ---
-title: Oktatóanyag – magas rendelkezésre állás a Windows rendszerű virtuális gépek számára az Azure-ban
-description: Ebből az oktatóanyagból elsajátíthatja, hogyan használhatja az Azure PowerShellt magas rendelkezésre állású virtuális gépek üzembe helyezésére a rendelkezésre állási csoportokban
+title: Virtuális gépek üzembe helyezése rendelkezésre állási csoportokban Azure PowerShell használatával
+description: Ismerje meg, hogy miként használhatók a Azure PowerShell a magasan elérhető virtuális gépek rendelkezésre állási csoportokban való üzembe helyezéséhez
 services: virtual-machines-windows
-author: cynthn
-ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.topic: tutorial
-ms.date: 11/30/2018
-ms.author: cynthn
+author: mimckitt
+ms.service: virtual-machines
+ms.topic: how-to
+ms.date: 3/8/2021
+ms.author: mimckitt
+ms.reviewer: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e1c9cf0a60446fba6fae5c850231b0805e7ea135
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 90f57e48ef8cd2f71eea7a5c2b98fda83f282203
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736652"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509098"
 ---
-# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>Oktatóanyag: Magas rendelkezésre állású virtuális gépek létrehozása és üzembe helyezése az Azure PowerShell-lel
+# <a name="create-and-deploy-virtual-machines-in-an-availability-set-using-azure-powershell"></a>Virtuális gépek létrehozása és üzembe helyezése rendelkezésre állási csoportokban Azure PowerShell használatával
 
 Ebből az oktatóanyagból megtudhatja, hogyan növelheti a Virtual Machines (VM-EK) rendelkezésre állását és megbízhatóságát a rendelkezésre állási csoportok használatával. A rendelkezésre állási csoportok gondoskodnak arról, hogy az Azure-ban üzembe helyezett virtuális gépek több, elkülönített hardverkonfiguráció között legyenek elosztva a fürtben. 
 
@@ -28,14 +28,6 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Elérhető virtuálisgép-méretek ellenőrzése
 > * Az Azure Advisor ellenőrzése
 
-
-## <a name="availability-set-overview"></a>Rendelkezésre állási csoport – áttekintés
-
-A rendelkezésre állási csoport egy logikai csoportosítási funkció, amely a virtuálisgép-erőforrások elkülönítését végzi az üzembe helyezésük során. Az Azure biztosítja, hogy a rendelkezésre állási csoporton belüli virtuális gépek több fizikai kiszolgálón, számítási állványokon, tárolási egységeken és hálózati kapcsolókon fussanak. Ha hardveres vagy szoftveres hiba történik, a rendszer csak a virtuális gépek egy részhalmazát érinti, és a teljes megoldás működőképes marad. A rendelkezésre állási csoportok nélkülözhetetlenek a megbízható felhőalapú megoldások létrehozásához.
-
-Vegyünk például egy tipikus virtuálisgép-alapú megoldást négy előtérbeli webkiszolgálóval és két háttérbeli virtuális géppel. Az Azure-ban két rendelkezésre állási csoportot kell megadnia a virtuális gépek üzembe helyezése előtt: egyet a webes réteghez, egyet pedig a hátsó réteghez. Új virtuális gép létrehozásakor paraméterként meg kell adnia a rendelkezésre állási készletet. Az Azure biztosítja, hogy a virtuális gépek több fizikai hardveres erőforrás között legyenek elkülönítve. Ha az egyik kiszolgáló fizikai hardverén fut a probléma, akkor tudja, hogy a kiszolgálók többi példánya továbbra is fut, mert különböző hardveren futnak.
-
-Használjon rendelkezésre állási csoportokat, ha megbízható VM-alapú megoldásokat szeretne üzembe helyezni az Azure-ban.
 
 ## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell elindítása
 

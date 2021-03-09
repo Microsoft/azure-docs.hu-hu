@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
-ms.openlocfilehash: 1112df382fb10051ac06c4461a9e4328e1663388
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 77d51b2c839a64567838fa4d6308d203a6bb8b82
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92139307"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501141"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>Fájlok feltöltése az eszközről a felhőbe IoT Hub (Python)
 
@@ -109,7 +109,7 @@ Ebben a szakaszban létrehozza az eszköz alkalmazást, hogy feltöltse a fájlt
             return (False, ex)
     ```
 
-    Ez a függvény elemzi az átadott *blob_info* struktúrát az [Azure. Storage. blob. BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient?view=azure-python)inicializálásához használt URL-cím létrehozásához. Ezután feltölti a fájlt az Azure Blob Storage-ba az ügyfél használatával.
+    Ez a függvény elemzi az átadott *blob_info* struktúrát az [Azure. Storage. blob. BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient)inicializálásához használt URL-cím létrehozásához. Ezután feltölti a fájlt az Azure Blob Storage-ba az ügyfél használatával.
 
 1. Adja hozzá a következő kódot az ügyfél összekapcsolásához és a fájl feltöltéséhez:
 
@@ -211,4 +211,4 @@ További információ az Azure Blob Storage az alábbi hivatkozásokkal:
 
 * [Az Azure Blob Storage dokumentációja](../storage/blobs/index.yml)
 
-* [Azure Blob Storage a Python API-hoz – dokumentáció](/python/api/overview/azure/storage-blob-readme?view=azure-python)
+* [Azure Blob Storage a Python API-hoz – dokumentáció](/python/api/overview/azure/storage-blob-readme)

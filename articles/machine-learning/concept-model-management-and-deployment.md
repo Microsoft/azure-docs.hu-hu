@@ -10,12 +10,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8813b2cad5800bd4ede6e64119117df57c230fdc
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 32777d9f8313457036b103777f251329687b3997
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071221"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508010"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: a modell kezelése, üzembe helyezése és figyelése Azure Machine Learning
 
@@ -160,7 +160,7 @@ Az Azure ML lehetővé teszi az összes ML-eszköz teljes körű naplózásának
 > [!TIP]
 > Míg a modellekkel és adatkészletekkel kapcsolatos néhány információ automatikusan rögzítve van, a __címkék__ használatával további információkat is hozzáadhat. Ha regisztrált modelleket és adatkészleteket keres a munkaterületen, használhat címkéket szűrőként.
 >
-> Az adatkészlet regisztrált modellel való társítása egy választható lépés. Az adatkészletek modelljének regisztrálásakor való hivatkozással kapcsolatos információkért tekintse meg a [modell](/python/api/azureml-core/azureml.core.model%28class%29?preserve-view=true&view=azure-ml-py) osztályának referenciáját.
+> Az adatkészlet regisztrált modellel való társítása egy választható lépés. Az adatkészletek modelljének regisztrálásakor való hivatkozással kapcsolatos információkért tekintse meg a [modell](/python/api/azureml-core/azureml.core.model%28class%29) osztályának referenciáját.
 
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>A ML-életciklus eseményeinek értesítése, automatizálása és riasztása

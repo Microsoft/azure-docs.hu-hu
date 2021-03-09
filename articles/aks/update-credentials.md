@@ -5,16 +5,16 @@ description: Megtudhatja, hogyan frissítheti vagy állíthatja alaphelyzetbe az
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: ba2c31872ae026cfdfcb7be17d333fb98194dce6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 84cadc54a11c2e57d73fd1f06e98deb3d599d648
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389008"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501175"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (ak) hitelesítő adatainak frissítése vagy elforgatása
 
-Alapértelmezés szerint az AK-fürtök olyan egyszerű szolgáltatással jönnek létre, amely egy éves lejárati idővel rendelkezik. A lejárati dátum közelében visszaállíthatja a hitelesítő adatokat, hogy a szolgáltatásnév további ideig is kiterjeszthető legyen. Előfordulhat, hogy a hitelesítő adatokat egy meghatározott biztonsági szabályzat részeként szeretné frissíteni vagy elforgatni. Ez a cikk részletesen ismerteti, hogyan frissítheti ezeket a hitelesítő adatokat egy AK-fürthöz.
+Az egyszerű szolgáltatással létrehozott AK-fürtök egy éves lejárati idővel rendelkeznek. A lejárati dátum közelében visszaállíthatja a hitelesítő adatokat, hogy a szolgáltatásnév további ideig is kiterjeszthető legyen. Előfordulhat, hogy a hitelesítő adatokat egy meghatározott biztonsági szabályzat részeként szeretné frissíteni vagy elforgatni. Ez a cikk részletesen ismerteti, hogyan frissítheti ezeket a hitelesítő adatokat egy AK-fürthöz.
 
 Előfordulhat, hogy az [AK-fürtöt Azure Active Directory-mel integrálta][aad-integration], és a fürthöz hitelesítő szolgáltatóként használja. Ebben az esetben a fürthöz, a HRE Server-alkalmazáshoz és a HRE-ügyfélalkalmazáshoz két további identitást kell létrehoznia, ezeket a hitelesítő adatokat is visszaállíthatja.
 

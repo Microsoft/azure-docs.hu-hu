@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b635a83c5ea1378a525ff607e5c6f2725337ad1a
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 4c5ab92fcc1d70d12e37ae351e768514b4e7522f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102453036"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501702"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Archiválási naplók és jelentéskészítés az Azure AD-jogosultságok kezelésében Azure Monitor
 
@@ -130,7 +130,7 @@ A szerepkör-hozzárendelés beállításához és a lekérdezés létrehozásá
 
 ### <a name="install-azure-powershell-module"></a>Azure PowerShell modul telepítése
 
-Ha rendelkezik a megfelelő szerepkör-hozzárendeléssel, indítsa el a PowerShellt, és [telepítse a Azure PowerShell modult](/powershell/azure/install-az-ps?view=azps-3.3.0) (ha még nem tette meg), írja be a következőt:
+Ha rendelkezik a megfelelő szerepkör-hozzárendeléssel, indítsa el a PowerShellt, és [telepítse a Azure PowerShell modult](/powershell/azure/install-az-ps) (ha még nem tette meg), írja be a következőt:
 
 ```azurepowershell
 install-module -Name az -allowClobber -Scope CurrentUser
@@ -168,8 +168,7 @@ $wks | ft CustomerId, Name
 ```
 
 ### <a name="send-the-query-to-the-log-analytics-workspace"></a>A lekérdezés elküldése a Log Analytics munkaterületre
-Végül, ha már azonosított egy munkaterületet, akkor az [AzOperationalInsightsQuery](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery?view=azps-3.3.0
-) használatával küldhet Kusto-lekérdezést az adott munkaterületre. Ezek a lekérdezések [Kusto lekérdezési nyelven](/azure/kusto/query/)íródnak.
+Végül, ha már azonosított egy munkaterületet, akkor az [AzOperationalInsightsQuery](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery) használatával küldhet Kusto-lekérdezést az adott munkaterületre. Ezek a lekérdezések [Kusto lekérdezési nyelven](/azure/kusto/query/)íródnak.
  
 Például lekérheti a naplózási események rekordjainak időtartományát a Log Analytics munkaterületről, a PowerShell-parancsmagokkal pedig egy lekérdezés küldéséhez, például:
  

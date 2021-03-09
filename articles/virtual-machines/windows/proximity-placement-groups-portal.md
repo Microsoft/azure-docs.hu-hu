@@ -6,16 +6,16 @@ ms.service: virtual-machines
 ms.subservice: proximity-placement-groups
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 04/24/2020
+ms.date: 3/8/2021
 ms.author: cynthn
-ms.openlocfilehash: 201f2f585c907ff82f28b96562efe3622dae6422
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: daf844870670c14db5208f45fbd9c9adf46be985
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666045"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504626"
 ---
-# <a name="create-a-proximity-placement-group-using-the-portal"></a>Közelségi elhelyezési csoport létrehozása a portál használatával
+# <a name="create-a-proximity-placement-group-using-the-azure-portal"></a>Proximity elhelyezési csoport létrehozása a Azure Portal használatával
 
 Ha a lehető legközelebb szeretné lekérni a virtuális gépeket, a lehető legkevesebb késést kell megvalósítania, egy [közelségi elhelyezési csoporton](../co-location.md#proximity-placement-groups)belül kell telepítenie.
 

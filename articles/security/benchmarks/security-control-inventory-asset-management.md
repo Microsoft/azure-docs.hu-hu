@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 464439516ee86d2fb6f900c3fcaf179095192acf
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8a15517c7c34d39dfb1de237d19e84c40bf834ea
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498880"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500104"
 ---
 # <a name="security-control-inventory-and-asset-management"></a>Biztonság-ellenőrzés: leltár-és eszközkezelés
 
@@ -30,7 +30,7 @@ Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keres
 
 - [Lekérdezések létrehozása az Azure Resource Graph használatával](../../governance/resource-graph/first-query-portal.md)
 
-- [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription)
 
 - [Az Azure RBAC ismertetése](../../role-based-access-control/overview.md)
 
@@ -173,6 +173,6 @@ Az üzleti műveletekhez szükséges szoftverek, de nagyobb kockázatot jelenthe
 - [NSG létrehozása biztonsági konfigurációval](../../virtual-network/tutorial-filter-network-traffic.md)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg a következő biztonsági vezérlőt: [biztonságos konfiguráció](security-control-secure-configuration.md)

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 671a8f7c6fa4c20ef4fc88f57d4a946a84614389
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 3ba69a6ddf38083e5665e20081f5f909b7100024
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420869"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508486"
 ---
 # <a name="convert-to-dataset"></a>Átalakítás adathalmazzá
 
@@ -35,18 +35,18 @@ Azt javasoljuk, hogy a [metaadatok szerkesztése](edit-metadata.md) modul haszn�
 
 2. Csatlakoztatása bármely modulhoz, amely egy adatkészletet eredményez.   
 
-    Ha az adat [táblázatos](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py), akkor átalakíthatja azt egy adatkészletbe. Ez magában foglalja az [importálási adaton](import-data.md)keresztül betöltött adatokat, az [adatbevitel manuális](enter-data-manually.md)használatával létrehozott adatokat, vagy az átalakított adatkészleteket az [alkalmazás-átalakítás](apply-transformation.md)használatával.
+    Ha az adat [táblázatos](/python/api/azureml-core/azureml.data.tabulardataset), akkor átalakíthatja azt egy adatkészletbe. Ez magában foglalja az [importálási adaton](import-data.md)keresztül betöltött adatokat, az [adatbevitel manuális](enter-data-manually.md)használatával létrehozott adatokat, vagy az átalakított adatkészleteket az [alkalmazás-átalakítás](apply-transformation.md)használatával.
 
 3.  A **művelet** legördülő listában adja meg, hogy az adatkészlet mentése előtt szeretné-e elvégezni az adattisztítást:  
   
-    - **Nincs** : használja az-t a következőképpen.  
+    - **Nincs**: használja az-t a következőképpen.  
   
-    - **SetMissingValue** : egy adott értéket állít be egy hiányzó értékre az adatkészletben. Az alapértelmezett helyőrző a kérdőjel (?) karakter, de az  **Egyéni hiányzó érték** lehetőséggel más értéket is megadhat. Ha például az **Egyéni hiányzó értékhez** a **taxit** adja meg, akkor az adatkészlet **Taxi** összes példánya a hiányzó értékre lesz módosítva.
+    - **SetMissingValue**: egy adott értéket állít be egy hiányzó értékre az adatkészletben. Az alapértelmezett helyőrző a kérdőjel (?) karakter, de az  **Egyéni hiányzó érték** lehetőséggel más értéket is megadhat. Ha például az **Egyéni hiányzó értékhez** a **taxit** adja meg, akkor az adatkészlet  összes példánya a hiányzó értékre lesz módosítva.
   
-    - **ReplaceValues** : ezzel a beállítással egyetlen pontos értéket adhat meg, amelyet más pontos értékkel kell helyettesíteni. A hiányzó értékeket vagy egyéni értékeket a **replace** metódus beállításával helyettesítheti:
+    - **ReplaceValues**: ezzel a beállítással egyetlen pontos értéket adhat meg, amelyet más pontos értékkel kell helyettesíteni. A hiányzó értékeket vagy egyéni értékeket a **replace** metódus beállításával helyettesítheti:
 
-      - **Hiányzik** : válassza ezt a lehetőséget a hiányzó értékek lecserélése a bemeneti adatkészletben. Az **új érték** mezőben adja meg a hiányzó értékeket a értékkel lecserélő értéket.
-      - **Egyéni** : válassza ezt a lehetőséget, ha az egyéni értékeket a bemeneti adatkészletben szeretné lecserélni. **Egyéni érték** esetén adja meg a keresett értéket. Ha például az adatok a `obs` hiányzó értékek helyőrzőként használt sztringjét tartalmazzák, akkor adja meg a következőt: `obs` . Az **új érték** mezőben adja meg az új értéket az eredeti sztring helyett.
+      - **Hiányzik**: válassza ezt a lehetőséget a hiányzó értékek lecserélése a bemeneti adatkészletben. Az **új érték** mezőben adja meg a hiányzó értékeket a értékkel lecserélő értéket.
+      - **Egyéni**: válassza ezt a lehetőséget, ha az egyéni értékeket a bemeneti adatkészletben szeretné lecserélni. **Egyéni érték** esetén adja meg a keresett értéket. Ha például az adatok a `obs` hiányzó értékek helyőrzőként használt sztringjét tartalmazzák, akkor adja meg a következőt: `obs` . Az **új érték** mezőben adja meg az új értéket az eredeti sztring helyett.
   
     Vegye figyelembe, hogy a **ReplaceValues** művelet csak a pontos egyezésekre vonatkozik. Például a következő sztringek nem lesznek érintettek: `obs.` , `obsolete` .  
  
@@ -68,6 +68,6 @@ Azt javasoljuk, hogy a [metaadatok szerkesztése](edit-metadata.md) modul haszn�
 -   Az egyéni csere műveletei esetén a csere csendesen meghiúsul, ha helyettesítő karaktert használ, amely nem felel meg az oszlop aktuális adattípusának.  
 
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) .

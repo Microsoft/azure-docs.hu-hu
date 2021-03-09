@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83c56c337e2b07175dec28cfefa5da75dab7b4f0
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 845cecfb6b09591b10de30267b31e6e1a80a7482
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101667966"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504320"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>SAP HANA rendelkezésre állás egy Azure-régión belül
 Ez a cikk számos rendelkezésre állási forgatókönyvet ismertet egy Azure-régión belül. Az Azure számos régióval rendelkezik, és a világ minden pontján elterjedt. Az Azure-régiók listájáért lásd: [Azure-régiók](https://azure.microsoft.com/regions/). Az Azure-régión belüli virtuális gépeken való SAP HANA üzembe helyezéséhez a Microsoft egy HANA-példánnyal rendelkező egyetlen virtuális gép üzembe helyezését kínálja. A rendelkezésre állás érdekében két, HANA-példánnyal rendelkező virtuális gépet telepíthet egy olyan Azure-beli rendelkezésre állási [csoporton](../../windows/tutorial-availability-sets.md) belül, amely HANA rendszerreplikációt használ a rendelkezésre álláshoz. 
@@ -29,7 +29,7 @@ Az Azure jelenleg [Azure Availability Zones](../../../availability-zones/az-over
 
 Azok az Azure-régiók, amelyekben a Availability Zones több adatközpont is rendelkezésre áll. Az adatközpontok függetlenek az áramforrás, a hűtés és a hálózat kínálatában. A különböző zónák egyetlen Azure-régión belüli felajánlásának oka az alkalmazások telepítése két vagy három Availability Zones. A zónákon belüli üzembe helyezés, az energiagazdálkodással és a hálózatkezeléssel kapcsolatos problémák csak egy Azure-beli rendelkezésre állási zónára épülő infrastruktúrát érintenek, az alkalmazások üzembe helyezése az Azure-régióban Bizonyos kisebb kapacitás előfordulhat. Előfordulhat például, hogy egy zónában lévő virtuális gépek elvesznek, de a másik két zónában lévő virtuális gépek továbbra is futnak. 
  
-Az Azure-beli rendelkezésre állási csoport egy logikai csoportosítási funkció, amely segít biztosítani, hogy a rendelkezésre állási csoportban lévő virtuálisgép-erőforrások meghibásodása elkülöníthető legyen egymástól, amikor egy Azure-adatközpontban üzembe helyezik őket. Az Azure biztosítja, hogy a rendelkezésre állási csoportba helyezett virtuális gépek több fizikai kiszolgálón, számítási rackszekrényen, tárolási egységben és hálózati kapcsolón fussanak. Néhány Azure-dokumentációban ezt a konfigurációt a különböző [frissítési és tartalék tartományokban](../../manage-availability.md)lévő elhelyezéseknek nevezzük. Ezek az elhelyezések általában egy Azure-adatközponton belül találhatók. Feltételezve, hogy az áramforrás és a hálózati problémák hatással lennének az üzembe helyezett adatközpontra, az egyik Azure-régióban az összes kapacitása érintett lesz.
+Az Azure-beli rendelkezésre állási csoport egy logikai csoportosítási funkció, amely segít biztosítani, hogy a rendelkezésre állási csoportban lévő virtuálisgép-erőforrások meghibásodása elkülöníthető legyen egymástól, amikor egy Azure-adatközpontban üzembe helyezik őket. Az Azure biztosítja, hogy a rendelkezésre állási csoportba helyezett virtuális gépek több fizikai kiszolgálón, számítási rackszekrényen, tárolási egységben és hálózati kapcsolón fussanak. Néhány Azure-dokumentációban ezt a konfigurációt a különböző [frissítési és tartalék tartományokban](../../availability.md)lévő elhelyezéseknek nevezzük. Ezek az elhelyezések általában egy Azure-adatközponton belül találhatók. Feltételezve, hogy az áramforrás és a hálózati problémák hatással lennének az üzembe helyezett adatközpontra, az egyik Azure-régióban az összes kapacitása érintett lesz.
 
 Az Azure Availability Zonest jelképező adatközpontok elhelyezése a különböző zónákban üzembe helyezett szolgáltatások és az adatközpontok közötti távolság között fennálló elfogadható hálózati késések miatti kompromisszum. A természeti katasztrófák ideális esetben nem befolyásolják a régió összes Availability Zonesának áramellátását, hálózati kínálatát és infrastruktúráját. Azonban a természetes természeti katasztrófák láthatók, Availability Zones lehet, hogy nem mindig adja meg a rendelkezésre állást, amelyet egyetlen régióban szeretne használni. Gondoljon arra, hogy a Mária hurrikán a Puerto Rico-sziget 2017-es szeptember 20-án eltelik. A Hurricane alapvetően közel 100%-os áramszünetet okozott a 90-mérföld széles szigetén.
 

@@ -6,12 +6,12 @@ ms.author: crtreasu
 ms.date: 02/17/2021
 ms.topic: best-practice
 ms.service: azure-object-anchors
-ms.openlocfilehash: 5b84bfae4a338a15b75e4f61114869aab1e94f87
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: da3be6e3d97e50b27ded29ba017164fdbd9a0a5b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101746025"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503045"
 ---
 # <a name="best-practices"></a>Ajánlott eljárások
 
@@ -28,6 +28,8 @@ Javasoljuk, hogy a lehető legtöbbet próbálja ki a legjobb eredmények elér�
 - A modell átalakítási szolgáltatása hosszú időt is igénybe vehet egy nagyméretű, magas LOD (részletességi szintű) modell feldolgozásához. A hatékonyság érdekében elődolgozhatja a 3D-modellt a belső arcok eltávolításához.
 
 ## <a name="detection"></a>Észlelés
+
+> [!VIDEO https://channel9.msdn.com/Shows/Docs-Mixed-Reality/Azure-Object-Anchors-Detection-and-Alignment-Best-Practices/player]
 
 - A megadott futtatókörnyezeti SDK-nak egy felhasználó által megadott keresési régióra van szüksége a fizikai objektum (ok) kereséséhez és észleléséhez. A keresési régió lehet egy határoló mező, egy gömb, egy nézet csonkakúpot vagy bármely kombinációja. A hamis észlelés elkerülése érdekében érdemes egy olyan keresési régiót beállítani, amely elég nagy ahhoz, hogy az objektumra kiterjedjen. A megadott minta alkalmazások használatakor az objektum egyik oldalán a legközelebbi felületről 2 méter távolságra állhat, és elindíthatja az alkalmazást.
 - Mielőtt elkezdené az objektum-horgonyok alkalmazását egy HoloLens 2 eszközön, távolítsa el a hologramokat a munkahely környékén az eszközök főbb beállításain keresztül a ***Beállítások – >rendszer->Hologramok*** használatával

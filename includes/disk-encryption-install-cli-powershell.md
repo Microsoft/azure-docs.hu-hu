@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: be6de283ed230a6e6a6b4986abb0a36386e36925
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 4c168738c0396b83412f9ed8c27fe3b2db9918d7
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102211991"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510761"
 ---
 Azure Disk Encryption engedélyezhető és felügyelhető az [Azure CLI](/cli/azure) -n és [Azure PowerShellon](/powershell/azure/new-azureps-module-az)keresztül. Ehhez telepítenie kell az eszközöket helyileg, és csatlakoznia kell az Azure-előfizetéséhez.
 
@@ -47,13 +47,13 @@ Az [Azure PowerShell az modul](/powershell/azure/new-azureps-module-az) olyan pa
 
 Ha már helyileg telepítette, győződjön meg arról, hogy a Azure Disk Encryption konfigurálásához a Azure PowerShell SDK legújabb verzióját használja. Töltse le [Azure PowerShell kiadás](https://github.com/Azure/azure-powershell/releases)legújabb verzióját.
 
-Ha [Azure PowerShell használatával szeretne bejelentkezni az Azure-fiókjába](/powershell/azure/authenticate-azureps?view=azps-2.5.0), használja a [AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) parancsmagot.
+Ha [Azure PowerShell használatával szeretne bejelentkezni az Azure-fiókjába](/powershell/azure/authenticate-azureps), használja a [AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmagot.
 
 ```powershell
 Connect-AzAccount
 ```
 
-Ha több előfizetéssel rendelkezik, és meg szeretne adni egyet, a [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) parancsmaggal listázhatja őket, majd a [set-AzContext](/powershell/module/az.accounts/set-azcontext?view=azps-2.5.0) parancsmagot:
+Ha több előfizetéssel rendelkezik, és meg szeretne adni egyet, a [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) parancsmaggal listázhatja őket, majd a [set-AzContext](/powershell/module/az.accounts/set-azcontext) parancsmagot:
 
 ```powershell
 Set-AzContext -Subscription -Subscription <SubscriptionId>

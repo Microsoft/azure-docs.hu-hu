@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 01133ab5582e63c0e87d8a5cf8de12f5445394c5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e5ae08c23748e55a8c3b75eb8fb9c112684f022e
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969704"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507906"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Azure IaaS-lemezek biztonsági mentése és vész-helyreállítás
 
@@ -48,7 +48,7 @@ Ennek az architektúrának az az oka, hogy az Azure nagyvállalati szintű tart�
 
 A számítási gazdagépen vagy a tárolási platformon a honosított hardverhiba miatt előfordulhat, hogy a virtuális gép átmenetileg nem érhető el, mert az [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) a virtuális gépek rendelkezésre állására vonatkozik. Az Azure piacvezető SLA-t is biztosít az Azure Premium SSD-ket használó egyetlen VM-példányhoz.
 
-Ha az alkalmazások számítási feladatait a lemez vagy a virtuális gép ideiglenes leállása miatt szeretné biztosítani az állásidőtől, az ügyfelek használhatják a [rendelkezésre állási csoportokat](./manage-availability.md). A rendelkezésre állási csoportba tartozó két vagy több virtuális gép redundanciát biztosít az alkalmazás számára. Az Azure ezt követően külön tartalék tartományokban hozza létre ezeket a virtuális gépeket és lemezeket különböző energiaellátási, hálózati és kiszolgáló-összetevőkkel.
+Ha az alkalmazások számítási feladatait a lemez vagy a virtuális gép ideiglenes leállása miatt szeretné biztosítani az állásidőtől, az ügyfelek használhatják a [rendelkezésre állási csoportokat](./availability.md). A rendelkezésre állási csoportba tartozó két vagy több virtuális gép redundanciát biztosít az alkalmazás számára. Az Azure ezt követően külön tartalék tartományokban hozza létre ezeket a virtuális gépeket és lemezeket különböző energiaellátási, hálózati és kiszolgáló-összetevőkkel.
 
 Ezen különálló tartalék tartományok miatt a honosított hardverhiba általában nem érinti a készletben lévő több virtuális gépet. A különálló tartalék tartományok magas rendelkezésre állást biztosítanak az alkalmazás számára. A rendelkezésre állási csoportok használata jó gyakorlatnak minősül, ha magas rendelkezésre állásra van szükség. A következő szakasz a vész-helyreállítási aspektust ismerteti.
 
@@ -62,7 +62,7 @@ A IaaS számítási feladatainak kimaradások elleni védelméhez meg kell terve
 
 A DR-megfontolások a következő szempontokat tartalmazhatják:
 
-- Magas rendelkezésre állás: az alkalmazás azon képessége, hogy a működést kifogástalan állapotban folytassa, jelentős állásidő nélkül. A *Kifogástalan állapot*szerint ez az állapot azt jelenti, hogy az alkalmazás válaszol, és a felhasználók csatlakozhatnak az alkalmazáshoz, és kommunikálhatnak vele. Előfordulhat, hogy bizonyos kritikus fontosságú alkalmazásokat és adatbázisokat mindig elérhetővé kell tennie, még akkor is, ha a platformon hiba történik. A számítási feladatok esetében előfordulhat, hogy az alkalmazáshoz és az adatokhoz is meg kell terveznie a redundanciát.
+- Magas rendelkezésre állás: az alkalmazás azon képessége, hogy a működést kifogástalan állapotban folytassa, jelentős állásidő nélkül. A *Kifogástalan állapot* szerint ez az állapot azt jelenti, hogy az alkalmazás válaszol, és a felhasználók csatlakozhatnak az alkalmazáshoz, és kommunikálhatnak vele. Előfordulhat, hogy bizonyos kritikus fontosságú alkalmazásokat és adatbázisokat mindig elérhetővé kell tennie, még akkor is, ha a platformon hiba történik. A számítási feladatok esetében előfordulhat, hogy az alkalmazáshoz és az adatokhoz is meg kell terveznie a redundanciát.
 
 - Adattartósság: bizonyos esetekben a fő szempont az, hogy az adatvesztés megmaradjon, ha vészhelyzet történik. Ezért előfordulhat, hogy egy másik helyen kell biztonsági másolatot készítenie az adatairól. Ilyen számítási feladatok esetén előfordulhat, hogy nincs szükség teljes redundanciára az alkalmazáshoz, de csak a lemezek rendszeres biztonsági mentése.
 
@@ -108,7 +108,7 @@ A nem felügyelt lemezek esetében használhatja a helyileg redundáns tárolás
 
  A következő táblázat a DR számára elérhető megoldások összegzését tartalmazza.
 
-| Forgatókönyv | Automatikus replikáció | DR megoldás |
+| Eset | Automatikus replikáció | DR megoldás |
 | --- | --- | --- |
 | Prémium SSD-lemezek | Helyi ([helyileg redundáns tárolás](../storage/common/storage-redundancy.md#locally-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Felügyelt lemezek | Helyi ([helyileg redundáns tárolás](../storage/common/storage-redundancy.md#locally-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
@@ -120,7 +120,7 @@ A magas rendelkezésre állás a legjobb megoldás, ha felügyelt lemezeket hasz
 
 Az alkalmazások és az infrastruktúra szintjén a magas rendelkezésre állás, a biztonsági mentés és a DR választható lehetőségei a következőképpen adhatók meg:
 
-| Szint |   Magas rendelkezésre állás   | Biztonsági mentés vagy DR |
+| Level |   Magas rendelkezésre állás   | Biztonsági mentés vagy DR |
 | --- | --- | --- |
 | Alkalmazás | SQL Server AlwaysOn | Azure Backup |
 | Infrastruktúra    | Rendelkezésre állási csoport  | Földrajzilag redundáns tárolás konzisztens pillanatképekkel |
@@ -147,7 +147,7 @@ A következő lépésekkel engedélyezheti a virtuális gépek biztonsági ment�
 
     b. A **Recovery Services** -tárolók menüben kattintson a **Hozzáadás** gombra, és kövesse a lépéseket egy új tároló létrehozásához ugyanabban a régióban, ahol a virtuális gép található. Ha például a virtuális gép az USA nyugati régiójában található, válassza az USA nyugati régióját a tárolóhoz.
 
-1.  Ellenőrizze az újonnan létrehozott tároló tárolási replikálását. Nyissa meg **Recovery Services** -tárolók területét, és lépjen a **Tulajdonságok**  >  **biztonsági mentési konfiguráció**  >  **frissítése**elemre. Győződjön meg arról, hogy a **geo-redundáns tárolás** beállítás alapértelmezés szerint ki van választva. Ezzel a beállítással biztosíthatja, hogy a tárolót automatikusan egy másodlagos adatközpontba replikálja a rendszer. Például az USA nyugati régiójában lévő tároló automatikusan replikálódik az USA keleti régiójában.
+1.  Ellenőrizze az újonnan létrehozott tároló tárolási replikálását. Nyissa meg **Recovery Services** -tárolók területét, és lépjen a **Tulajdonságok**  >  **biztonsági mentési konfiguráció**  >  **frissítése** elemre. Győződjön meg arról, hogy a **geo-redundáns tárolás** beállítás alapértelmezés szerint ki van választva. Ezzel a beállítással biztosíthatja, hogy a tárolót automatikusan egy másodlagos adatközpontba replikálja a rendszer. Például az USA nyugati régiójában lévő tároló automatikusan replikálódik az USA keleti régiójában.
 
 1.  Konfigurálja a biztonsági mentési szabályzatot, és válassza ki a virtuális gépet ugyanabból a felhasználói felületről.
 

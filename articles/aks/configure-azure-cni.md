@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.custom: references_regions
-ms.openlocfilehash: 6c0cc1c8da6fddfad6d3f70c88860ddcdd35a11a
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: ef9e3689f5846ddfc66c47a15967a18fc6550d35
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182417"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504252"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Az Azure CNI hálózatkezelés konfigurálása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -24,10 +24,9 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és használhat az *Azure CN
 
 * Az AK-fürthöz tartozó virtuális hálózatnak engedélyeznie kell a kimenő internetkapcsolatot.
 * Az AK-fürtök nem használhatják a,, `169.254.0.0/16` `172.30.0.0/16` `172.31.0.0/16` , vagy `192.0.2.0/24` a Kubernetes szolgáltatási címtartomány, a pod címtartomány vagy a fürt virtuális hálózati címtartomány-tartományát.
-* Az AK-fürt által használt egyszerű szolgáltatásnak legalább [hálózati közreműködői](../role-based-access-control/built-in-roles.md#network-contributor) engedélyekkel kell rendelkeznie a virtuális hálózaton belüli alhálózaton. Ha [Egyéni szerepkört](../role-based-access-control/custom-roles.md) szeretne definiálni a beépített hálózati közreműködő szerepkör használata helyett, a következő engedélyek szükségesek:
+* Az AK-fürt által használt fürt identitásának legalább [hálózati közreműködői](../role-based-access-control/built-in-roles.md#network-contributor) engedélyekkel kell rendelkeznie a virtuális hálózaton belüli alhálózaton. Ha [Egyéni szerepkört](../role-based-access-control/custom-roles.md) szeretne definiálni a beépített hálózati közreműködő szerepkör használata helyett, a következő engedélyek szükségesek:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
-* Egyszerű szolgáltatásnév helyett használhatja a rendszerhez rendelt felügyelt identitást az engedélyekhez. További információ: [felügyelt identitások használata](use-managed-identity.md).
 * Az AK-csomóponti készlethez rendelt alhálózat nem lehet [delegált alhálózat](../virtual-network/subnet-delegation-overview.md).
 
 ## <a name="plan-ip-addressing-for-your-cluster"></a>A fürt IP-címzésének megtervezése
@@ -64,7 +63,7 @@ A hüvelyek maximális száma egy AK-fürtben 250. A *kubenet* és az *Azure CNI
 | -- | :--: | :--: | -- |
 | Azure CLI | 110 | 30 | Igen (legfeljebb 250) |
 | Resource Manager-sablon | 110 | 30 | Igen (legfeljebb 250) |
-| Portál | 110 | 110 (a csomópont-készletek lapon van konfigurálva) | Nem |
+| Portál | 110 | 110 (a csomópont-készletek lapon van konfigurálva) | No |
 
 ### <a name="configure-maximum---new-clusters"></a>Maximális – új fürtök konfigurálása
 
@@ -74,7 +73,7 @@ Ha nem ad meg maxPods az új csomópontok létrehozásakor, az Azure CNI esetéb
 
 A csomópontok maximális számaként megadott minimális érték kényszerítve van, hogy a rendszer a fürt állapotának kritikus fontosságú területét biztosítsa. A maximális hüvelyek esetében beállítható minimális érték 10, ha és csak akkor, ha az egyes csomópontok készletének konfigurációja legalább 30 hüvelyből áll. Például a maximális hüvelyek/csomópontok minimum 10 értékre való beállítása megköveteli, hogy minden egyes csomópont-készlet legalább 3 csomóponttal rendelkezzen. Ez a követelmény minden létrehozott új csomópont-készletre vonatkozik, így ha a 10 a csomópontok maximális hüvelye van definiálva, minden további hozzáadott csomópontnak legalább 3 csomóponttal kell rendelkeznie.
 
-| Hálózatkezelés | Minimum | Maximum |
+| Hálózat | Minimum | Maximum |
 | -- | :--: | :--: |
 | Azure-CNI | 10 | 250 |
 | Kubenet | 10 | 110 |

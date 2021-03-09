@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 1c2a917712cbde95fda9321e56fe1c033ad444aa
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 601be8409db22162a410d481e6609d378718a7b4
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659715"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503589"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Adatelérés védelme Azure Machine Learning
 
@@ -67,7 +67,7 @@ Az Azure-ban támogatott felhőalapú tárolási szolgáltatások, amelyek adatt
 + Azure Database for MySQL
 
 >[!TIP]
-> Az adattárolók létrehozásának általánosan elérhető funkciói hitelesítő adatokat igényelnek a tárolási szolgáltatások, például az egyszerű szolgáltatásnév vagy a közös hozzáférésű aláírás (SAS) tokenek eléréséhez. Ezeket a hitelesítő adatokat azok a felhasználók érhetik el, akik *olvasói* hozzáféréssel rendelkeznek a munkaterülethez. <br><br>Ha ez problémát jelent,  [hozzon létre egy adattárolót, amely identitás-alapú adatelérést használ a Storage Services (előzetes verzió) szolgáltatáshoz](how-to-identity-based-data-access.md). Ez a funkció egy [kísérleti](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) előzetes verzió, és bármikor megváltozhat.
+> Az adattárolók létrehozásának általánosan elérhető funkciói hitelesítő adatokat igényelnek a tárolási szolgáltatások, például az egyszerű szolgáltatásnév vagy a közös hozzáférésű aláírás (SAS) tokenek eléréséhez. Ezeket a hitelesítő adatokat azok a felhasználók érhetik el, akik *olvasói* hozzáféréssel rendelkeznek a munkaterülethez. <br><br>Ha ez problémát jelent,  [hozzon létre egy adattárolót, amely identitás-alapú adatelérést használ a Storage Services (előzetes verzió) szolgáltatáshoz](how-to-identity-based-data-access.md). Ez a funkció egy [kísérleti](/python/api/overview/azure/ml/#stable-vs-experimental) előzetes verzió, és bármikor megváltozhat.
 
 <a name="datasets"></a>
 ## <a name="reference-data-in-storage-with-datasets"></a>A tárolóban lévő adatkészletekkel való adatforrások
@@ -86,9 +86,9 @@ Az adatkészletek helyi fájlokból, nyilvános URL-címekből, [Azure Open-adat
 
 Két típusú adatkészlet létezik: 
 
-+ A [FileDataset](/python/api/azureml-core/azureml.data.file_dataset.filedataset?preserve-view=true&view=azure-ml-py) egy vagy több fájlt hivatkozik az adattárolókban vagy a nyilvános URL-címeken. Ha az adatok már ki vannak takarítva, és használatra készen állnak a betanítási kísérletekben, [letöltheti vagy csatlakoztathatja](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) a FileDatasets által hivatkozott fájlokat a számítási célra.
++ A [FileDataset](/python/api/azureml-core/azureml.data.file_dataset.filedataset) egy vagy több fájlt hivatkozik az adattárolókban vagy a nyilvános URL-címeken. Ha az adatok már ki vannak takarítva, és használatra készen állnak a betanítási kísérletekben, [letöltheti vagy csatlakoztathatja](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) a FileDatasets által hivatkozott fájlokat a számítási célra.
 
-+ A [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) táblázatos formátumban jeleníti meg az adatokat a megadott fájl vagy fájlok listájának elemzésével. A TabularDataset egy Panda vagy Spark DataFrame is betöltheti további manipuláció és tisztítás céljából. A TabularDatasets létrehozásához használható adatformátumok teljes listáját a [TabularDatasetFactory osztályban](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory)tekintheti meg.
++ A [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset) táblázatos formátumban jeleníti meg az adatokat a megadott fájl vagy fájlok listájának elemzésével. A TabularDataset egy Panda vagy Spark DataFrame is betöltheti további manipuláció és tisztítás céljából. A TabularDatasets létrehozásához használható adatformátumok teljes listáját a [TabularDatasetFactory osztályban](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory)tekintheti meg.
 
 Az adatkészletek további funkciói a következő dokumentációban találhatók:
 

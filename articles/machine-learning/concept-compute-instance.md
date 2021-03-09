@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: ef753043218f259c69082dbb8682517be79cf95c
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: e4f6db9e462f937d44bc0e1dbc2d3c4d3e915ba3
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100099795"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503640"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Mi az az Azure Machine Learning számítási példány?
 
@@ -32,7 +32,7 @@ A számítási példányok Jupyter működéséhez győződjön meg arról, hogy
 
 A számítási példány egy teljes körűen felügyelt felhőalapú munkaállomás, amely a gépi tanulási fejlesztési környezethez van optimalizálva. A következő előnyöket biztosítja:
 
-|Főbb előnyök|Description|
+|Főbb előnyök|Leírás|
 |----|----|
 |Termelékenység|A modelleket integrált jegyzetfüzetekkel és a Azure Machine Learning Studio következő eszközeivel hozhatja létre és helyezheti üzembe:<br/>– Jupyter<br/>- JupyterLab<br/>– RStudio (előzetes verzió)<br/>A számítási példány teljes mértékben integrálva van Azure Machine Learning munkaterülettel és Studióval. A jegyzetfüzeteket és az egyéb adatszakértőket a munkaterületen is megoszthatja.<br/> A [vs Code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630) -ot számítási példányokkal is használhatja.
 |Felügyelt & biztonságos|Csökkentse a biztonsági lábnyomot, és adja hozzá a vállalati biztonsági követelményeknek való megfelelést. A számítási példányok robusztus felügyeleti házirendeket és biztonságos hálózati konfigurációkat biztosítanak, például:<br/><br/>– Kiépítés Resource Manager-sablonokból vagy Azure Machine learning SDK-ból<br/>- [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)<br/>- [Virtuális hálózatok támogatása](./how-to-secure-training-vnet.md#compute-instance)<br/>– SSH-szabályzat az SSH-hozzáférés engedélyezéséhez vagy letiltásához<br/>TLS 1,2 engedélyezve |
@@ -77,7 +77,7 @@ A következő eszközök és környezetek már telepítve vannak a számítási 
 |Anaconda Python||
 |Jupyter és-bővítmények||
 |Jupyterlab és-bővítmények||
-[Pythonhoz készült Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)</br>PyPI|A legtöbb azureml extra csomagot tartalmazza.  A teljes lista megtekintéséhez nyisson meg [egy terminál ablakot a számítási példányon](how-to-access-terminal.md) , és futtassa a következőt: <br/> `conda list -n azureml_py36 azureml*` |
+[Pythonhoz készült Azure Machine Learning SDK](/python/api/overview/azure/ml/intro)</br>PyPI|A legtöbb azureml extra csomagot tartalmazza.  A teljes lista megtekintéséhez nyisson meg [egy terminál ablakot a számítási példányon](how-to-access-terminal.md) , és futtassa a következőt: <br/> `conda list -n azureml_py36 azureml*` |
 |Egyéb PyPI-csomagok|`jupytext`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Conda-csomagok|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |Deep learning-csomagok|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|

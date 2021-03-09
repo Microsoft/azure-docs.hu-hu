@@ -6,13 +6,13 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 01/19/2021
-ms.openlocfilehash: bcfe26bc6f637dd140776df98f8267c4c43684ba
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/09/2021
+ms.openlocfilehash: 37ac292acc76c681ea38b2ae881ff8cd2ae5ec3c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049540"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502446"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Az Azure hatáskörébe tartozó adatfeliratok automatikus címkézése
 
@@ -114,6 +114,14 @@ Például:
 Ha kiterjeszti a címkézést az eszközökre az Azure hatáskörébe, kiválaszthatja azokat a címkéket, amelyeket elérhetővé szeretne tenni a hatáskörébe. További információ: [új érzékenységi Címkék létrehozása vagy meglévő címkék módosítása](#creating-new-sensitivity-labels-or-modifying-existing-labels).
 ### <a name="creating-new-sensitivity-labels-or-modifying-existing-labels"></a>Új érzékenységi Címkék létrehozása vagy meglévő címkék módosítása
 
+Ha Windows, macOS, iOS és Android rendszeren használja az Office-alkalmazások érzékenységi címkéit, a felhasználók négy órán belül új címkéket látnak, és egy órán belül megtekinthetik a webes Office-t. Azonban akár 24 óráig is engedélyezheti a módosítások replikálását az összes alkalmazásra és szolgáltatásra.
+
+> [!IMPORTANT]
+> Ne törölje a címkét, hacsak nem érti a felhasználókra gyakorolt hatást. További információ: [címkék eltávolítása és törlése](/microsoft-365/compliance/create-sensitivity-labels#removing-and-deleting-labels) a Microsoft 365 dokumentációjában.
+>
+
+**Új érzékenységi Címkék létrehozása vagy meglévő címkék módosítása**:
+
 1. Nyissa meg a [Microsoft 365 biztonsági és megfelelőségi központot](https://protection.office.com/homepage). 
 
 1. A **megoldások** területen válassza az **Adatvédelem**, majd **a címke létrehozása** lehetőséget. 
@@ -152,10 +160,6 @@ Ha kiterjeszti a címkézést az eszközökre az Azure hatáskörébe, kiválasz
 
     További információkért lásd a Microsoft 365 dokumentációjának [címkék prioritása (rendelési kérdések)](/microsoft-365/compliance/sensitivity-labels#label-priority-order-matters) című témakörét.
 
-> [!IMPORTANT]
-> Ne törölje a címkét, hacsak nem érti a felhasználókra gyakorolt hatást. 
->
-> További információ: [címkék eltávolítása és törlése](/microsoft-365/compliance/create-sensitivity-labels#removing-and-deleting-labels) a Microsoft 365 dokumentációjában.
 
 Folytassa az [adatai vizsgálatával, hogy automatikusan alkalmazza a címkéket](#scan-your-data-to-apply-labels-automatically), majd:
 

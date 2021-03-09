@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
 ms.date: 11/16/2020
-ms.openlocfilehash: 78f8d6d216659eaad01d512dd45696dd31035885
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 648dbe6b8d275c832f219cb6f3119ac0bc518a54
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695384"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508469"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Mik azok a Azure Machine Learning környezetek?
 
@@ -78,13 +78,13 @@ Ha a környezet definíciója még nem létezik a munkaterület ACR-ben, a rends
  1. Alaprendszerkép letöltése és a Docker-lépések végrehajtása
  2. Conda-környezet létrehozása a környezeti definícióban megadott Conda-függőségek alapján.
 
-A második lépés kimarad, ha [felhasználó által felügyelt függőségeket](/python/api/azureml-core/azureml.core.environment.pythonsection?preserve-view=true&view=azure-ml-py)ad meg. Ebben az esetben Ön felelős a Python-csomagok telepítéséhez, az alaprendszerképbe való belefoglalásával, vagy az első lépésben az egyéni Docker-lépések megadásával. Emellett a Python végrehajtható fájl megfelelő helyének megadására is a felelős. [Egyéni Docker-alaprendszerkép](how-to-deploy-custom-docker-image.md)is használható.
+A második lépés kimarad, ha [felhasználó által felügyelt függőségeket](/python/api/azureml-core/azureml.core.environment.pythonsection)ad meg. Ebben az esetben Ön felelős a Python-csomagok telepítéséhez, az alaprendszerképbe való belefoglalásával, vagy az első lépésben az egyéni Docker-lépések megadásával. Emellett a Python végrehajtható fájl megfelelő helyének megadására is a felelős. [Egyéni Docker-alaprendszerkép](how-to-deploy-custom-docker-image.md)is használható.
 
 ### <a name="image-caching-and-reuse"></a>Képek gyorsítótárazása és újrafelhasználása
 
 Ha ugyanezt a környezeti definíciót használja egy másik futtatáshoz, a Azure Machine Learning szolgáltatás újrahasználja a gyorsítótárazott rendszerképet a munkaterület ACR-ből. 
 
-A gyorsítótárazott képek részleteinek megtekintéséhez használja [Environment.get_image_details](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-image-details-workspace-) metódust.
+A gyorsítótárazott képek részleteinek megtekintéséhez használja [Environment.get_image_details](/python/api/azureml-core/azureml.core.environment.environment#get-image-details-workspace-) metódust.
 
 Annak megállapításához, hogy fel kell-e használni a gyorsítótárazott képet, vagy újat kell létrehoznia, a szolgáltatás kiszámítja a környezeti definícióból származó [kivonatot](https://en.wikipedia.org/wiki/Hash_table) , és összehasonlítja a meglévő környezetek kivonatával. A kivonat a következőn alapul:
  
@@ -107,10 +107,10 @@ A következő ábra három környezeti definíciót mutat be. Közülük kettő 
 A csomag frissítéséhez meg kell adnia egy verziószámot a rendszerkép újraépítésének kényszerítéséhez, például: ```numpy==1.18.1``` . A rendszer telepíti az új függőségeket, beleértve a beágyazottkat is, amelyek megszakítják a korábban működő forgatókönyvet. 
 
 > [!WARNING]
->  A [környezet. a Build](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#&preserve-view=truebuild-workspace--image-build-compute-none-) metódus újraépíti a gyorsítótárazott rendszerképet, amely a nem rögzített csomagok frissítésének lehetséges mellékhatása, valamint az adott gyorsítótárazott rendszerképnek megfelelő összes környezeti definíció esetén a reprodukálhatóság megszakítása.
+>  A [környezet. a Build](/python/api/azureml-core/azureml.core.environment.environment#build-workspace--image-build-compute-none-) metódus újraépíti a gyorsítótárazott rendszerképet, amely a nem rögzített csomagok frissítésének lehetséges mellékhatása, valamint az adott gyorsítótárazott rendszerképnek megfelelő összes környezeti definíció esetén a reprodukálhatóság megszakítása.
 
 ## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [hozhat létre és használhat környezeteket](how-to-use-environments.md) a Azure Machine Learningban.
-* A [környezeti osztályhoz](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py)tartozó Python SDK dokumentációjában talál.
+* A [környezeti osztályhoz](/python/api/azureml-core/azureml.core.environment%28class%29)tartozó Python SDK dokumentációjában talál.
 * Tekintse meg az R SDK dokumentációját a [környezetekhez](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-environments).

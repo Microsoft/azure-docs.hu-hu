@@ -11,12 +11,12 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 02/23/2021
-ms.openlocfilehash: add84c2cb53a362fc78fc50a6df13b4976e3868d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 31d3dc2c2d8194541ba1fe7d0865e6c939d75f73
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661035"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501582"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Adatfelosztások és keresztvalidálás konfigurálása az automatizált gépi tanulásban
 
@@ -24,7 +24,7 @@ Ebből a cikkből megtudhatja, hogyan konfigurálhatja a betanítási és az ér
 
 Ha Azure Machine Learning, ha az automatizált ML-t több ML modell kiépítésére használja, minden gyermeknek a modell minőségi metrikáinak kiszámításával ellenőriznie kell a kapcsolódó modellt, például a pontosságot vagy a AUC súlyozottan. Ezek a metrikák az egyes modellekhez tartozó előrejelzések összehasonlításával vannak kiszámítva, és az érvényesítési adatokban szereplő korábbi észrevételekből származó valódi címkékkel vannak ellátva. [További információ a metrikák kiszámításáról az ellenőrzési típus alapján](#metric-calculation-for-cross-validation-in-machine-learning). 
 
-Az automatizált ML-kísérletek automatikusan végzik a modell érvényesítését. Az alábbi szakaszok azt ismertetik, hogyan lehet tovább testreszabni az érvényesítési beállításokat a [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)-val. 
+Az automatizált ML-kísérletek automatikusan végzik a modell érvényesítését. Az alábbi szakaszok azt ismertetik, hogyan lehet tovább testreszabni az érvényesítési beállításokat a [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/)-val. 
 
 Az alacsony kódú vagy a kód nélküli felhasználói élményért lásd: [az automatizált gépi tanulási kísérletek létrehozása Azure Machine learning Studióban](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment). 
 
@@ -47,7 +47,7 @@ Ehhez a cikkhez szükséges,
 
 ## <a name="default-data-splits-and-cross-validation-in-machine-learning"></a>A gépi tanulásban az alapértelmezett adatfelosztás és a több érvényesítés
 
-A kísérlet és a betanítási beállítások megadásához használja a [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) objektumot. A következő kódrészletben figyelje meg, hogy csak a szükséges paraméterek vannak definiálva, azaz a vagy a paraméterei `n_cross_validation` `validation_ data` **nem** szerepelnek benne.
+A kísérlet és a betanítási beállítások megadásához használja a [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) objektumot. A következő kódrészletben figyelje meg, hogy csak a szükséges paraméterek vannak definiálva, azaz a vagy a paraméterei `n_cross_validation` `validation_ data` **nem** szerepelnek benne.
 
 ```python
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
