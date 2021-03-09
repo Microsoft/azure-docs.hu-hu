@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/05/2020
 ms.author: sttsinar
 ms.custom: include file
-ms.openlocfilehash: e22c2b7cb561e30e84ea5ede5481fbdc35be8cdf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3d78441e56e23cf49b09073fdf88bef4b3434da9
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100514927"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102473854"
 ---
 Az Azure-beli számítások olyan virtuálisgép-méreteket biztosítanak, amelyek egy adott hardvereszközhöz vannak elkülönítve, és egyetlen ügyfélhez vannak hozzárendelve. Az elkülönített méretek élőak és működnek az adott hardveres generáción, és a hardveres generáció kivonásakor elavulttá válik.
 
@@ -42,24 +42,26 @@ Az elkülönített virtuálisgép-méretek hardveres korlátozott élettartammal
 
 | Méret | Elkülönítés megszüntetésének dátuma | 
 | --- | --- |
-| Standard_DS15_v2<sup>1</sup> | Május 15., 2020 |
-| Standard_D15_v2<sup>1</sup>  | Május 15., 2020 |
-
-<sup>1</sup>  a Standard_DS15_v2 és Standard_D15_v2 elkülönítési program részleteit lásd: gyakori kérdések
+| Standard_DS15_v2 | Május 15., 2020 |
+| Standard_D15_v2  | Május 15., 2020 |
+| Standard_G5  | Február 15., 2021 |
+| Standard_GS5  | Február 15., 2021 |
+| Standard_E64i_v3  | Február 15., 2021 |
+| Standard_E64is_v3  | Február 15., 2021 |
 
 
 ## <a name="faq"></a>GYIK
 ### <a name="q-is-the-size-going-to-get-retired-or-only-its-isolation-feature"></a>K: a méret kivonásra kerül, vagy csak az "elkülönítés" funkciót?
-**A**: Ha a virtuális gép mérete nem rendelkezik az "i" alparancsfájllal, akkor a rendszer csak az "elkülönítés" szolgáltatást fogja kivonni. Ha nincs szükség elkülönítésre, nem kell végrehajtania a műveletet, és a virtuális gép továbbra is a várt módon fog működni. Ilyenek például a következők: Standard_DS15_v2, Standard_D15_v2, Standard_M128ms stb. Ha a virtuális gép mérete magában foglalja az "i" alszkriptet, akkor a méret megszűnik.
+**A**: jelenleg csak a virtuális gépek méretének elkülönítési funkciója kerül kivonásra. Az elavult elkülönített méretek továbbra is nem elszigetelt állapotban vannak. Ha nincs szükség elkülönítésre, nem kell végrehajtania a műveletet, és a virtuális gép továbbra is a várt módon fog működni.
 
 ### <a name="q-is-there-a-downtime-when-my-vm-lands-on-a-non-isolated-hardware"></a>K: van olyan állásidő, amikor a virtuális gép nem elszigetelt hardveren landol?
-**A**: Ha nincs szükség az elkülönítésre, nincs szükség beavatkozásra, és nem lesz leállás.
+**A**: Ha nincs szükség az elkülönítésre, nincs szükség beavatkozásra, és nem lesz leállás. Ha elkülönítésre van szükség, a Bejelentésünk a javasolt helyettesítő méretet is tartalmazza. A csere méretének kiválasztásához az ügyfeleknek át kell méretezniük a virtuális gépeket.  
 
 ### <a name="q-is-there-any-cost-delta-for-moving-to-a-non-isolated-virtual-machine"></a>K: a nem elkülönített virtuális gépekre való áttéréshez bármilyen díjas különbözet vonatkozik?
 **A**: nem
 
 ### <a name="q-when-are-the-other-isolated-sizes-going-to-retire"></a>K: Mikor kell kivonni a többi elszigetelt méretet?
-**A**: az elkülönített méret hivatalos elavulása előtt 12 hónappal az emlékeztetőket is biztosítjuk.
+**A**: az elkülönített méret hivatalos elavulása előtt 12 hónappal az emlékeztetőket is biztosítjuk. A legújabb Bejelentésünk Standard_G5, Standard_GS5, Standard_E64i_v3 és Standard_E64i_v3 elkülönítési funkciójának kivonását tartalmazza.  
 
 ### <a name="q-im-an-azure-service-fabric-customer-relying-on-the-silver-or-gold-durability-tiers-does-this-change-impact-me"></a>K: Azure Service Fabric ügyfél vagyok az ezüst vagy az arany tartóssági szintjein. Hatással van ez a változás?
 **A**: nem. A Service Fabric [tartóssági szintjei](../articles/service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) által biztosított garanciák még a változás után is működni fognak. Ha más okokból fizikai hardveres elkülönítésre van szüksége, akkor továbbra is szükség lehet a fent ismertetett műveletek egyikére. 
@@ -69,11 +71,20 @@ Az elkülönített virtuálisgép-méretek hardveres korlátozott élettartammal
  
 | Date | Művelet |
 |---|---| 
-| 2019. november 18. | D/DS15i_v2 rendelkezésre állása (TB, 1 éves RI) | 
-| Május 14., 2020 | Az elmúlt nap, hogy megvásárolja a D/DS15i_v2 1 éves RI | 
-| Május 15., 2020 | D/DS15_v2 elkülönítési garancia eltávolítva | 
-| Május 15., 2021 | A D/DS15i_v2 kivonása (az összes ügyfél, kivéve, ha a D/DS15_v2 3 éves RI-t vásárolt, 2019. november 18. előtt)| 
-| November 17., 2022 | A (z) D/DS15i_v2 kivonása a 3 éves beérkező 2019 DS15_v2 példányok esetében |
+| Május 15., 2019<sup>1</sup> | D/DS15_v2 elkülönítés kivonulási hirdetmény| 
+| Május 15., 2020 | D/DS15_v2 elkülönítési garancia eltávolítva| 
+
+<sup>1</sup> az ezeket a méreteket használó meglévő ügyfelek egy bejelentési e-mailt kapnak, amely részletes útmutatást ad a következő lépésekhez.  
+
+### <a name="q-what-are-the-milestones-for-g5-gs5-e64i_v3-and-e64is_v3-isolation-retirement"></a>K: milyen mérföldkövek vannak a G5, a Gs5, a E64i_v3 és az E64is_v3 elkülönítésének megszüntetéséhez? 
+**A**: 
+ 
+| Date | Művelet |
+|---|---|
+| Február 15., 2020<sup>1</sup> | G5/GS5/E64i_v3/E64is_v3 elkülönítési kivonulási hirdetmény |
+| Február 15., 2021 | G5/GS5/E64i_v3/E64is_v3 elkülönítési garancia eltávolítva |
+
+<sup>1</sup> az ezeket a méreteket használó meglévő ügyfelek egy bejelentési e-mailt kapnak, amely részletes útmutatást ad a következő lépésekhez.  
 
 ## <a name="next-steps"></a>Következő lépések
 

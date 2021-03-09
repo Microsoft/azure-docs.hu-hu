@@ -5,14 +5,14 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 11/11/2020
 ms.author: baanders
-ms.openlocfilehash: 887d185249f96b5d3be4aab6a96aa3c6c4a85690
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 02f6c59a76a3fdb7bd4360570b29d7b40a1aff8d
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96231412"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102473657"
 ---
-Ez a cikk bemutatja, hogyan végezheti el a különböző felügyeleti műveleteket az [Azure Digital Twins .net (C#) **SDK**](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true)használatával. Ugyanezeket a felügyeleti hívásokat a következő témakörben ismertetett egyéb nyelvi SDK-kkal is elvégezheti [*: az Azure Digital Twins API-k és SDK*](../articles/digital-twins/how-to-use-apis-sdks.md)-k használatával.
+Ez a cikk bemutatja, hogyan végezheti el a különböző felügyeleti műveleteket az [Azure Digital Twins .net (C#) **SDK**](/dotnet/api/overview/azure/digitaltwins/management)használatával. Ugyanezeket a felügyeleti hívásokat a következő témakörben ismertetett egyéb nyelvi SDK-kkal is elvégezheti [*: az Azure Digital Twins API-k és SDK*](../articles/digital-twins/how-to-use-apis-sdks.md)-k használatával.
 
 > [!TIP] 
 > Ne feledje, hogy minden SDK-módszer szinkron és aszinkron verziókban érhető el. A lapozási hívások esetében az aszinkron metódusok a `AsyncPageable<T>` szinkron verziók visszaadása után térnek vissza `Pageable<T>` .

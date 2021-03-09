@@ -2,20 +2,36 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 12/12/2019
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 1f93f4d4e3295a0f08ac2e9f3e5826d3c8e6f6e4
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5c1ac3f79ab5db2622dafd3229b39bbe19bce41e
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95557499"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102473892"
 ---
 Az ügyfél operációs rendszertől függően az eszközhöz való távoli kapcsolódás eljárásai eltérőek.
 
 ### <a name="remotely-connect-from-a-windows-client"></a>Távoli kapcsolat Windows-ügyféllel
 
-Mielőtt elkezdené, győződjön meg arról, hogy a Windows-ügyfél a Windows PowerShell 5,0-es vagy újabb verzióját futtatja.
+
+#### <a name="prerequisites"></a>Előfeltételek
+
+Mielőtt hozzákezd, győződjön meg az alábbiakról:
+
+- A Windows-ügyfél Windows PowerShell 5,0-es vagy újabb verzióját futtatja.
+- A Windows-ügyfél rendelkezik az eszközön telepített csomópont-tanúsítványhoz tartozó aláíró lánctal (főtanúsítvánnyal). Részletes útmutatás: a [tanúsítvány telepítése a Windows-ügyfélen](../articles/databox-online/azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device).
+- A `hosts` Windows-ügyfélen található fájl a `C:\Windows\System32\drivers\etc` csomópont-tanúsítványnak megfelelő bejegyzést tartalmaz a következő formátumban:
+
+    `<Device IP>    <Node serial number>.<DNS domain of the device>`
+
+    Íme egy példa a `hosts` fájlra:
+ 
+    `10.100.10.10    1HXQG13.wdshcsso.com`
+  
+
+#### <a name="detailed-steps"></a>Részletes lépések
 
 Az alábbi lépéseket követve távolról csatlakozhat a Windows-ügyfelekről.
 
@@ -23,6 +39,8 @@ Az alábbi lépéseket követve távolról csatlakozhat a Windows-ügyfelekről.
 2. Győződjön meg arról, hogy a Windows távfelügyeleti szolgáltatása fut az ügyfélen. A parancssorba írja be a következőt:
 
     `winrm quickconfig`
+
+    További információ: a Rendszerfelügyeleti [webszolgáltatások telepítése és konfigurálása](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#quick-default-configuration).
 
 3. Rendeljen hozzá egy változót az eszköz IP-címéhez.
 
@@ -36,7 +54,12 @@ Az alábbi lépéseket követve távolról csatlakozhat a Windows-ügyfelekről.
 
 5. Indítsa el a Windows PowerShell-munkamenetet az eszközön:
 
-    `Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell`
+    `Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell -UseSSL`
+
+    Ha a megbízhatósági kapcsolattal kapcsolatos hiba jelenik meg, akkor ellenőrizze, hogy az eszközre feltöltött csomópont-tanúsítvány aláíró lánca is telepítve van-e az eszközhöz hozzáférő ügyfélen.
+
+    > [!NOTE] 
+    > Ha a `-UseSSL` kapcsolót használja, a távoli eljáráshívás *https*-kapcsolaton keresztül történik. Javasoljuk, hogy mindig *https* -kapcsolatot használjon a PowerShell használatával történő távoli kapcsolódáshoz. Bár a *http* -munkamenet nem a legbiztonságosabb kapcsolati módszer, a megbízható hálózatokon elfogadható.
 
 6. Ha a rendszer kéri, adja meg a jelszót. Használja ugyanazt a jelszót, amelyet a helyi webes felhasználói felületen való bejelentkezéshez használ. A helyi webes felhasználói felület alapértelmezett jelszava *jelszó1*. Amikor sikeresen kapcsolódott az eszközhöz a távoli PowerShell használatával, a következő minta kimenet jelenik meg:  
 
@@ -48,7 +71,7 @@ Az alábbi lépéseket követve távolról csatlakozhat a Windows-ügyfelekről.
     WinRM service is already running on this machine.
     PS C:\WINDOWS\system32> $ip = "10.100.10.10"
     PS C:\WINDOWS\system32> Set-Item WSMan:\localhost\Client\TrustedHosts $ip -Concatenate -Force
-    PS C:\WINDOWS\system32> Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell
+    PS C:\WINDOWS\system32> Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell -UseSSL
 
     WARNING: The Windows PowerShell interface of your device is intended to be used only for the initial network configuration. Please engage Microsoft Support if you need to access this interface to troubleshoot any potential issues you may be experiencing. Changes made through this interface without involving Microsoft Support could result in an unsupported configuration.
     [10.100.10.10]: PS>
@@ -58,11 +81,11 @@ Az alábbi lépéseket követve távolról csatlakozhat a Windows-ügyfelekről.
 
 Azon a Linux-ügyfélen, amelyet a kapcsolódáshoz használni fog:
 
-- [Telepítse a Linux rendszerhez készült legújabb PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6) -t a githubról az SSH távelérési szolgáltatásának beszerzéséhez. 
+- [Telepítse a Linux rendszerhez készült legújabb PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6&preserve-view=true) -t a githubról az SSH távelérési szolgáltatásának beszerzéséhez. 
 - [Csak az `gss-ntlmssp` NTLM-modulból telepítse a csomagot](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md). Ubuntu-ügyfelek esetén használja a következő parancsot:
     - `sudo apt-get install gss-ntlmssp`
 
-További információért nyissa meg a [PowerShell távoli ELJÁRÁSHÍVÁS SSH](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6)-val című témakört.
+További információért nyissa meg a [PowerShell távoli ELJÁRÁSHÍVÁS SSH](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6&preserve-view=true)-val című témakört.
 
 Az alábbi lépéseket követve távolról csatlakozhat egy NFS-ügyfélről.
 
@@ -72,7 +95,7 @@ Az alábbi lépéseket követve távolról csatlakozhat egy NFS-ügyfélről.
  
 2. A távoli ügyfél használatával történő kapcsolódáshoz írja be a következőt:
 
-    `Enter-PSSession -ComputerName $ip -Authentication Negotiate -ConfigurationName Minishell -Credential ~\EdgeUser`
+    `Enter-PSSession -ComputerName $ip -Authentication Negotiate -ConfigurationName Minishell -Credential ~\EdgeUser -UseSSL`
 
     Ha a rendszer kéri, adja meg az eszközre való bejelentkezéshez használt jelszót.
  
