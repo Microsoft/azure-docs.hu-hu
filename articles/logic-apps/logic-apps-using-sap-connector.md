@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 03/08/2021
 tags: connectors
-ms.openlocfilehash: 3e98dc36b3d58ce5289fccde7b5f5a49973c9de6
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: b9238d099c7b33e904c2fc8de3c4fc08369f1f36
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102454226"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489837"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Csatlakozás SAP-rendszerekhez az Azure Logic Appsből
 
@@ -752,7 +752,7 @@ Beállíthatja az SAP-t, hogy [IDocs küldjön a csomagokban](https://help.sap.c
 
 Az alábbi példa bemutatja, hogyan lehet kinyerni az egyes IDocs egy csomagból a következő [ `xpath()` függvény](./workflow-definition-language-functions-reference.md#xpath)használatával:
 
-1. A Kezdés előtt egy SAP-triggerrel rendelkező logikai alkalmazásra van szükség. Ha még nem rendelkezik ezzel a logikai alkalmazással, az ebben a témakörben ismertetett lépéseket követve [beállíthat egy SAP-triggerrel rendelkező logikai alkalmazást](#receive-message-from-sap).
+1. A Kezdés előtt egy SAP-triggerrel rendelkező logikai alkalmazásra van szükség. Ha még nem rendelkezik ezzel a logikai alkalmazással, kövesse a témakör előző lépéseit [egy logikai alkalmazás SAP-triggerrel való beállításához](#receive-message-from-sap).
 
     > [!IMPORTANT]
     > Az SAP- **program azonosítója** megkülönbözteti a kis-és nagybetűket. A logikai alkalmazás és az SAP-kiszolgáló konfigurálásakor ügyeljen arra, hogy a **program azonosítójának** formátuma konzisztens legyen. Ellenkező esetben előfordulhat, hogy a következő hibák jelennek meg a tRFC-figyelőben (T-Code SM58), amikor IDoc küld az SAP-nak:
@@ -765,6 +765,14 @@ Az alábbi példa bemutatja, hogyan lehet kinyerni az egyes IDocs egy csomagból
    Például:
 
    ![SAP-trigger hozzáadása a logikai alkalmazáshoz](./media/logic-apps-using-sap-connector/first-step-trigger.png)
+
+1. [Adjon hozzá egy Response műveletet a logikai alkalmazáshoz](/azure/connectors/connectors-native-reqres#add-a-response-action) , hogy azonnal válaszoljon az SAP-kérelem állapotával. Ajánlott ezt a műveletet azonnal felvenni az trigger után, hogy felszabadítsa a kommunikációs csatornát az SAP-kiszolgálóval. Válassza ki a következő állapotkódok () egyikét a `statusCode` Válasz műveletben való használathoz:
+
+    * **202 elfogadva**, ami azt jelenti, hogy a kérelem feldolgozásra lett elfogadva, de a feldolgozás még nem fejeződött be.
+
+    * **204 nincs tartalom**, ami azt jelenti, hogy a kiszolgáló sikeresen teljesítette a kérést, és nincs további tartalom, amely a válasz adattartalom-törzsében elküldhető. 
+
+    * **200 OK**. Ez az állapotkód mindig tartalmaz egy adattartalmat, még akkor is, ha a kiszolgáló nulla hosszúságú hasznos adattartalom-törzset hoz létre. 
 
 1. Szerezze be a gyökér névteret a logikai alkalmazás által az SAP-től kapott XML-IDoc. A névtér XML-dokumentumból való kinyeréséhez adjon hozzá egy olyan lépést, amely létrehoz egy helyi karakterlánc-változót, és egy kifejezéssel tárolja a névteret `xpath()` :
 

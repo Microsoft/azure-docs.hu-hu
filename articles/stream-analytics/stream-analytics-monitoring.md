@@ -5,14 +5,14 @@ author: sidramadoss
 ms.author: sidram
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 06/21/2018
+ms.date: 03/08/2021
 ms.custom: seodec18
-ms.openlocfilehash: 3356e0bdd45b6a213ef5ef4a814e64585d8e8924
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6d3558511721a91c3a195cb510a1a00d5d8a9a51
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726767"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487878"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>A Stream Analytics feladatok figyelésének és a lekérdezések figyelésének ismertetése
 
@@ -30,7 +30,7 @@ Ekkor megjelenik az ablak:
 | ---------------------- | ---------------------------------------- |
 | Várakozó bemeneti eseményei       | A várakozó bemeneti eseményeinek száma. A metrika nem nulla értéke azt jelenti, hogy a feladatnak nem sikerült megtartania a bejövő események számát. Ha ez az érték lassan növekszik vagy konzisztensen nem nulla, érdemes felmérni a feladatot. További információért tekintse meg a [folyamatos átviteli egységek megismerése és módosítása](stream-analytics-streaming-unit-consumption.md)című témakört. |
 | Adatátalakítási hibák | Azon kimeneti események száma, amelyek nem alakíthatók át a várt kimeneti sémába. A hiba házirendje a "drop" értékre módosítható, hogy eldobják az ebben a forgatókönyvben észlelt eseményeket. |
-| CPU-kihasználtság%-ban (előzetes verzió)       | A feladatokban felhasznált CPU százalékos aránya. Ha ez a metrika következetesen meghaladja a 80%-ot, az azt jelentheti, hogy a feladatának szűk keresztmetszete van a CPU-használat során, és valószínűleg a bemeneti események várakozó beolvasását okozza. A feladatokhoz lefoglalt SUs számának növelésével csökkentheti az ilyen problémákat. |
+| CPU-kihasználtság%-ban (előzetes verzió)       | A feladatokban felhasznált CPU százalékos aránya. Még ha ez az érték nagyon magas (90% vagy újabb), ne növelje az SUs számát a metrika alapján. Ha a várakozó bemeneti eseményeinek száma vagy a vízjel késleltetése növekszik, akkor a CPU% kihasználtsági metrikájának használatával meghatározhatja, hogy a CPU a szűk keresztmetszet-e. Lehetséges, hogy ez a metrika időnként tüskékkel rendelkezik. Ajánlott a méretezési tesztek végrehajtása a feladatok felső határának meghatározásához, amely után a várakozó vagy a vízjel késleltetése a CPU szűk keresztmetszete miatt megnövekszik. |
 | Korai bemeneti események       | Azok az események, amelyek esetében az alkalmazás időbélyeg-értéke korábbi, mint 5 perc. |
 | Sikertelen függvények kérései | A sikertelen Azure Machine Learning függvények hívásának száma (ha van). |
 | Függvények eseményei        | Az Azure Machine Learning függvénynek eljuttatott események száma (ha van). |

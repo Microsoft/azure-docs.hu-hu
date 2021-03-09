@@ -5,14 +5,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 09/18/2020
+ms.date: 01/06/2021
 ms.author: mjbrown
-ms.openlocfilehash: d8763a794d2fb96d0c464fb1249b9eb400fd23e7
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: d542e2b4e5db86fd3354514790e718f0694a09a5
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339869"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489752"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos-fiók kezelése
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -153,9 +153,9 @@ Az automatikus feladatátvételi beállítás lehetővé teszi, hogy az Azure Co
 
    :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Adatok globális replikálása menü":::
 
-3. Az **automatikus feladatátvétel** ablaktáblán **Győződjön meg arról** , hogy az **automatikus feladatátvétel engedélyezése** beállítás be értékre van állítva. 
+3. Az **automatikus feladatátvétel** ablaktáblán **Győződjön meg arról**, hogy az **automatikus feladatátvétel engedélyezése** beállítás be értékre van állítva. 
 
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
    :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Automatikus feladatátvétel menü a portálon":::
 
@@ -182,11 +182,11 @@ Ha egy Cosmos-fiók automatikus feladatátvételre van konfigurálva, a régiók
 
    :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Adatok globális replikálása menü":::
 
-3. Az **automatikus feladatátvétel** ablaktáblán **Győződjön meg arról** , hogy az **automatikus feladatátvétel engedélyezése** beállítás be értékre van állítva.
+3. Az **automatikus feladatátvétel** ablaktáblán **Győződjön meg arról**, hogy az **automatikus feladatátvétel engedélyezése** beállítás be értékre van állítva.
 
 4. A feladatátvételi prioritás módosításához húzza az olvasási régiókat a sor bal oldalán lévő három pontra, amikor az egérmutatót a fölé viszi.
 
-5. Válassza a **Mentés** lehetőséget.
+5. Kattintson a **Mentés** gombra.
 
    :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Automatikus feladatátvétel menü a portálon":::
 
@@ -206,7 +206,7 @@ Lásd: [a feladatátvételi prioritás beállítása a PowerShell](manage-with-p
 A manuális feladatátvétel végrehajtásának folyamata magában foglalja a fiók írási régiójának (feladatátvételi prioritás = 0) a fiókhoz konfigurált másik régióba való módosítását.
 
 > [!NOTE]
-> A több írási régióval rendelkező fiókok feladatátvétele nem végezhető el manuálisan. Az Azure Cosmos SDK-t használó alkalmazások esetében az SDK felismeri, ha egy régió elérhetetlenné válik, majd automatikusan átirányítja a következő legközelebbi régióba, ha az SDK-ban több-vezérlési API-t használ.
+> A több írási régióval rendelkező fiókok feladatátvétele nem végezhető el manuálisan. Az Azure Cosmos SDK-t használó alkalmazások esetében az SDK felismeri, ha egy régió elérhetetlenné válik, majd automatikusan átirányítja a következő legközelebbi régióra.
 
 ### <a name="azure-portal"></a><a id="enable-manual-failover-via-portal"></a>Azure Portal
 
@@ -230,7 +230,7 @@ Lásd: [a manuális feladatátvétel elindítása az Azure CLI-vel](manage-with-
 
 Lásd: [a manuális feladatátvétel elindítása a PowerShell](manage-with-powershell.md#trigger-manual-failover) -lel
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure Cosmos-fiók, valamint az adatbázis és a tárolók kezelésével kapcsolatos további információkért és példákért olvassa el a következő cikkeket:
 

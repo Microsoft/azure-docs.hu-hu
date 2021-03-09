@@ -292,6 +292,8 @@
           href: manage/mca-check-azure-credits-balance.md
         - name: Migrálás EA-ról MCA API-kra
           href: costs/migrate-cost-management-api.md
+        - name: Szerepkörök társítása SPN-hez
+          href: manage/assign-roles-azure-service-principals.md
     - name: Foglalások vásárlása és adminisztrálása
       items:
         - name: 'Kiválaszthatja, hogy mit szeretne megvásárolni'

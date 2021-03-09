@@ -10,18 +10,21 @@ ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: f40da8b2c9f64da424d43a6679977cda5bf111df
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9324ca3b347550c2514a506c5a143b6e963e116f
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691773"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487321"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>Gyors útmutató: kommunikációs szolgáltatások erőforrásainak létrehozása és kezelése
- 
+
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Ismerkedjen meg az Azure kommunikációs szolgáltatásokkal az első kommunikációs szolgáltatások erőforrásának kiépítési folyamatával. A kommunikációs szolgáltatások erőforrásai a [Azure Portalon](https://portal.azure.com) vagy a .net Management ügyféloldali kódtáran keresztül is kiterjeszthetők. A felügyeleti ügyféloldali kódtár és a Azure Portal lehetővé teszik az erőforrások, valamint a [Azure Resource Manager](../../azure-resource-manager/management/overview.md), az Azure üzembe helyezési és kezelési szolgáltatásával történő létrehozását, konfigurálását, frissítését és törlését. Az ügyféloldali kódtárakban elérhető összes funkció elérhető a Azure Portal. 
+
+
+Ismerkedjen meg az Azure kommunikációs szolgáltatásokkal az első kommunikációs szolgáltatások erőforrásának kiépítési folyamatával. A kommunikációs szolgáltatások erőforrásai a [Azure Portalon](https://portal.azure.com) vagy a .net Management ügyféloldali kódtáran keresztül is kiterjeszthetők. A felügyeleti ügyféloldali kódtár és a Azure Portal lehetővé teszik az erőforrások, valamint a [Azure Resource Manager](../../azure-resource-manager/management/overview.md), az Azure üzembe helyezési és kezelési szolgáltatásával történő létrehozását, konfigurálását, frissítését és törlését. Az ügyféloldali kódtárakban elérhető összes funkció elérhető a Azure Portal.
 
 > [!WARNING]
 > Vegye figyelembe, hogy míg a kommunikációs szolgáltatások több földrajzi régióban is elérhetők, a telefonszám beszerzéséhez az erőforrásnak rendelkeznie kell egy "US" értékkel rendelkező adathellyel. Azt is vegye figyelembe, hogy a kommunikációs erőforrások nem vihetők át másik előfizetésre a nyilvános előzetes verzió során.
@@ -40,7 +43,7 @@ Ismerkedjen meg az Azure kommunikációs szolgáltatásokkal az első kommuniká
 
 ## <a name="access-your-connection-strings-and-service-endpoints"></a>A kapcsolati karakterláncok és a szolgáltatási végpontok elérése
 
-A kapcsolati karakterláncok lehetővé teszik a kommunikációs szolgáltatások ügyféloldali kódtárainak kapcsolódását és hitelesítését az Azure-ban. A kommunikációs szolgáltatáshoz tartozó kapcsolati karakterláncok és szolgáltatási végpontok a Azure Portal vagy programozott módon, Azure Resource Manager API-kkal érhetők el. 
+A kapcsolati karakterláncok lehetővé teszik a kommunikációs szolgáltatások ügyféloldali kódtárainak kapcsolódását és hitelesítését az Azure-ban. A kommunikációs szolgáltatáshoz tartozó kapcsolati karakterláncok és szolgáltatási végpontok a Azure Portal vagy programozott módon, Azure Resource Manager API-kkal érhetők el.
 
 A kommunikációs szolgáltatások erőforráshoz való navigálás után válassza a navigációs menü **kulcsok** elemét, és másolja a **kapcsolati karakterláncot** vagy a **végponti** értékeket a kommunikációs szolgáltatások ügyféloldali kódtárai általi használathoz. Vegye figyelembe, hogy van hozzáférése az elsődleges és a másodlagos kulcsokhoz. Ez olyan esetekben lehet hasznos, amikor ideiglenes hozzáférést szeretne biztosítani a kommunikációs szolgáltatások erőforrásaihoz egy harmadik fél vagy átmeneti környezet számára.
 
@@ -49,7 +52,7 @@ A kommunikációs szolgáltatások erőforráshoz való navigálás után válas
 A legfontosabb információkat az Azure CLI használatával is elérheti:
 
 ```azurecli
-az communication list --resource-group "<resourceGroup>"    
+az communication list --resource-group "<resourceGroup>"
 
 az communication list-key --name "<communicationName>" --resource-group "<resourceGroup>"
 ```
@@ -103,7 +106,7 @@ A környezeti változó hozzáadását követően futtassa a `source ~/.bash_pro
 
 Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
-Ha az erőforrás törlése után bármilyen telefonszáma van rendelve az erőforráshoz, a telefonszámok automatikusan kikerülnek az erőforrásból egy időben. 
+Ha az erőforrás törlése után bármilyen telefonszáma van rendelve az erőforráshoz, a telefonszámok automatikusan kikerülnek az erőforrásból egy időben.
 
 ## <a name="next-steps"></a>Következő lépések
 

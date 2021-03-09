@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: f8ceacf88968d884de666b764c1037db9e63450f
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: d64dfdad0c51950228288b704b3fdb7579496abb
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102214915"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488069"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Munkaterületek létrehozása Azure Machine Learninghez Azure Resource Manager sablon használatával
 
@@ -285,7 +285,7 @@ Az adatai számára további konfigurációt adhat meg, ha a **confidential_data
 Ha a társított erőforrások nem egy virtuális hálózat mögött találhatók, a **privateEndpointType** paramétert beállíthatja úgy, hogy `AutoAproval` `ManualApproval` a munkaterületet egy privát végpont mögött helyezze üzembe. Ezt az új és a meglévő munkaterületek esetében is megteheti. Meglévő munkaterület frissítésekor adja meg a sablon paramétereit a meglévő munkaterületről származó információkkal.
 
 > [!IMPORTANT]
-> A privát hivatkozást tartalmazó Azure Machine Learning munkaterület nem érhető el a Azure Government-régiókban vagy az Azure China 21Vianet-régiókban.
+> A magánhálózati kapcsolattal rendelkező Azure Machine Learning munkaterület nem érhető el a Azure Government régiókban.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 

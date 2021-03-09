@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 02/09/2021
-ms.openlocfilehash: 34b37fde83ca957e7c90302561589e2568beb59b
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 752f38c0a44d40f2bf7e7b5961dca7743fbf4b76
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215051"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488035"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Azure Private-hivatkozás konfigurálása Azure Machine Learning munkaterülethez
 
@@ -36,7 +36,7 @@ Az Azure Private link segítségével privát végponton keresztül csatlakozhat
 * A privát végpont létrehozásához rendelkeznie kell egy meglévő virtuális hálózattal. A privát végpont hozzáadása előtt [le kell tiltania a magánhálózati végpontok hálózati házirendjeit](../private-link/disable-private-endpoint-network-policy.md) is.
 ## <a name="limitations"></a>Korlátozások
 
-* A privát hivatkozást tartalmazó Azure Machine Learning munkaterület nem érhető el a Azure Government-régiókban vagy az Azure China 21Vianet-régiókban.
+* A magánhálózati kapcsolattal rendelkező Azure Machine Learning munkaterület nem érhető el a Azure Government régiókban.
 * Ha engedélyezi a nyilvános hozzáférést egy privát kapcsolattal védett munkaterülethez, és a nyilvános interneten keresztül használja a Azure Machine Learning studiót, néhány funkció, például a tervező nem tud hozzáférni az adataihoz. Ez a probléma akkor fordul elő, ha az adattárolást egy olyan szolgáltatás tárolja, amely a VNet mögött található. Például egy Azure Storage-fiók.
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>Privát végpontot használó munkaterület létrehozása

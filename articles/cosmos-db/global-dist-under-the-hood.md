@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: f19e009341ac0e9556cef36f8da6ef19cde0447f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1b47ad27abbe59eceabd15d091f88f4659d8dad6
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93087515"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102486386"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Globális Adatterjesztés a Azure Cosmos DB-ben – a motorháztető alatt
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -23,15 +23,15 @@ Azure Cosmos DB az Azure alapszintű szolgáltatása, így az összes világszer
 
 **A Azure Cosmos db globális eloszlása kulcsrakész:** Bármikor, néhány kattintással vagy programozott módon egyetlen API-hívással, hozzáadhat vagy eltávolíthat a Cosmos-adatbázishoz társított földrajzi régiókat. A Cosmos-adatbázisok a Cosmos-tárolók készletét tartalmazzák. Cosmos DB a tárolók a terjesztés és a méretezhetőség logikai egységként szolgálnak. A létrehozott gyűjtemények, táblák és diagramok (belsőleg) csak a Cosmos-tárolók. A tárolók teljes mértékben sémák és agnosztikusok, és hatókört biztosítanak a lekérdezésekhez. A Cosmos-tárolóban tárolt adatmennyiség automatikusan bekerül a betöltés után. Az Automatikus indexelés lehetővé teszi a felhasználók számára az adatlekérdezést a séma vagy az index kezelésének gondja nélkül, különösen egy globálisan elosztott telepítésben.  
 
-- Egy adott régióban a tárolóban lévő adatokat egy olyan partíciós kulcs használatával osztják el, amelyet Ön biztosít, és a mögöttes fizikai partíciók ( *helyi terjesztés* ) transzparens módon kezelik.  
+- Egy adott régióban a tárolóban lévő adatokat egy olyan partíciós kulcs használatával osztják el, amelyet Ön biztosít, és a mögöttes fizikai partíciók (*helyi terjesztés*) transzparens módon kezelik.  
 
-- Az egyes fizikai partíciók a földrajzi régiók között is replikálódnak ( *globális eloszlás* ). 
+- Az egyes fizikai partíciók a földrajzi régiók között is replikálódnak (*globális eloszlás*). 
 
 Ha egy Cosmos DB rugalmasan méretezi az átviteli sebességet egy Cosmos-tárolón, vagy több tárhelyet használ fel, Cosmos DB az összes régióban transzparens módon kezeli a particionálási műveleteket (felosztás, klónozás, törlés). A méretezés, a terjesztés vagy a hibáktól függetlenül a Cosmos DB továbbra is egyetlen rendszerképet biztosít a tárolókban lévő adatokról, amelyek globálisan vannak elosztva tetszőleges számú régióban.  
 
 Ahogy az az alábbi ábrán is látható, a tárolóban lévő adatok két dimenzión oszlanak el – egy régión belül és régiókban, a világ minden részén:  
 
-:::image type="content" source="./media/global-dist-under-the-hood/distribution-of-resource-partitions.png" alt-text="Rendszertopológia" border="false":::
+:::image type="content" source="./media/global-dist-under-the-hood/distribution-of-resource-partitions.png" alt-text="fizikai partíciók" border="false":::
 
 A fizikai partíciót replikák egy csoportja *hozza létre, amelyet replika-készletnek* neveznek. Mindegyik gép több száz replikát üzemeltet, amelyek a fenti képen látható különböző fizikai partíciókhoz tartoznak. A fizikai partícióknak megfelelő replikák dinamikusan helyezhetők el és töltődnek be a fürtben lévő gépek és a régión belüli adatközpontok között.  
 
@@ -39,7 +39,7 @@ A replika egyedi Azure Cosmos DB bérlőhöz tartozik. Minden replika Cosmos DB 
 
 A Cosmos adatbázismotor olyan összetevőkből áll, mint például a különböző koordinációs primitívek, nyelvi futtatókörnyezetek, a lekérdezési processzor, valamint a tranzakciós tároláshoz és az adatindexeléshez felelős tárolási és indexelési alrendszerek. A tartósság és a magas rendelkezésre állás biztosítása érdekében az adatbázismotor az SSD-meghajtókon megőrzi az adataikat és az indexeket, és replikálja azt az adatbázismotor-példányok között a másodpéldány-készlet (ek) en belül. A nagyobb bérlők az átviteli sebesség és a tárterület nagyobb méretének felelnek meg, és nagyobb vagy több replikával vagy mindkettővel rendelkeznek. A rendszer minden összetevője teljes mértékben aszinkron – egyetlen szál sincs blokkolva, és minden szál rövid életű munkát végez, anélkül, hogy szükségtelen szál-kapcsolókra lenne szükség. A ráta-korlátozó és a ellennyomás a teljes verembe kerül a beléptetési vezérlőről az összes I/O-útvonalra. A Cosmos adatbázismotor a részletes Egyidejűség kihasználása és a nagy adatátviteli sebesség biztosítására szolgál, és a rendszer erőforrásain belül működik.
 
-Cosmos DB globális eloszlása két kulcsfontosságú absztrakcióra támaszkodik – a *replika-* és a *partíciós készletekre* . A replika-készlet egy moduláris Lego-blokk a koordinációhoz, és egy partíciós készlet egy vagy több földrajzilag elosztott fizikai partíció dinamikus átfedése. A globális terjesztés működésének megismeréséhez ismernie kell ezt a két kulcsfontosságú absztrakciót. 
+Cosmos DB globális eloszlása két kulcsfontosságú absztrakcióra támaszkodik – a *replika-* és a *partíciós készletekre*. A replika-készlet egy moduláris Lego-blokk a koordinációhoz, és egy partíciós készlet egy vagy több földrajzilag elosztott fizikai partíció dinamikus átfedése. A globális terjesztés működésének megismeréséhez ismernie kell ezt a két kulcsfontosságú absztrakciót. 
 
 ## <a name="replica-sets"></a>Replika – készletek
 
@@ -53,7 +53,7 @@ A fizikai partíciók önfelügyelt és dinamikusan elosztott replikák, amelyek
 
 A fizikai partíciók egy csoportja, amelyek mindegyike a Cosmos adatbázis-régiókkal van konfigurálva, az összes konfigurált régióban replikált azonos kulcsok kezelésére szolgál. Ezt a magasabb szintű koordinációs primitívet *partíciós készletnek* nevezzük – a fizikai partíciók földrajzilag elosztott dinamikus átfedése, amely egy adott kulcsot kezel. Míg egy adott fizikai partíció (egy replika-készlet) egy fürtön belül van, a partíciók a fürtökön, az adatközpontokban és a földrajzi régiókban is kiterjedhetnek, ahogy az alábbi képen is látható:  
 
-:::image type="content" source="./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png" alt-text="Rendszertopológia" border="false":::
+:::image type="content" source="./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png" alt-text="Particionálási készletek" border="false":::
 
 Úgy gondolja, hogy a partíciók földrajzilag elszórtan szétszórt "Super Replica-set" típusúak, amely több replika-készletből áll, amelyek ugyanazt a kulcsot tartalmazza. Hasonlóan a másodpéldányhoz, a partíciós csoport tagsága is dinamikus – az implicit fizikai particionálási műveletek alapján ingadozik az új partíciók hozzáadására/eltávolítására egy adott partíción (például amikor egy tárolón kibővíti az átviteli sebességet, hozzáadhat/eltávolíthat egy régiót a Cosmos-adatbázishoz, vagy ha hiba történik). Azáltal, hogy az egyes partíciók (partíciók) a saját replikáján belül kezelik a particionálási tagságot, a tagság teljes mértékben decentralizált és magasan elérhető. Egy lemezpartíció újrakonfigurálása során a rendszer a fizikai partíciók közötti átfedés topológiáját is létrehozta. A topológia dinamikusan van kiválasztva a forrás és a cél fizikai partíciói között a konzisztencia, a földrajzi távolság és a rendelkezésre álló hálózati sávszélesség alapján.  
 
@@ -69,7 +69,7 @@ A rendszer kódolt vektoros órákat alkalmaz (amelyek a régió-azonosítót é
 
 A több írási tartománnyal konfigurált Cosmos-adatbázisok esetében a rendszer számos rugalmas automatikus ütközés-feloldási szabályzatot biztosít a fejlesztők számára, többek között a következők közül: 
 
-- A **Last-Write-WINS (LWW)** , amely alapértelmezés szerint a rendszer által definiált időbélyeg-tulajdonságot használja (amely az időszinkronizálási órajel protokollon alapul). A Cosmos DB az ütközés feloldásához használt egyéni numerikus tulajdonságok megadását is lehetővé teszi.  
+- A **Last-Write-WINS (LWW)**, amely alapértelmezés szerint a rendszer által definiált időbélyeg-tulajdonságot használja (amely az időszinkronizálási órajel protokollon alapul). A Cosmos DB az ütközés feloldásához használt egyéni numerikus tulajdonságok megadását is lehetővé teszi.  
 - Az **alkalmazás által definiált (egyéni) ütközés-feloldási szabályzat** (egyesítési eljárásokkal kifejezve), amely az alkalmazás által definiált szemantikai egyeztetésekhez készült. Ezek az eljárások a írási-olvasási ütközések észlelése után kerülnek meghívásra egy adatbázis-tranzakció védnöksége alatt a kiszolgálói oldalon. A rendszer pontosan egyszer garantálja az egyesítési eljárás végrehajtását a kötelezettségvállalási protokoll részeként. [Több ütközési megoldási minta](how-to-manage-conflicts.md) is elérhető a következővel:.  
 
 ## <a name="consistency-models"></a>Konzisztencia-modellek
@@ -85,5 +85,4 @@ Az Cosmos DB öt konzisztencia-modelljének szemantikai leírását [itt](consis
 A következő cikkből megtudhatja, hogyan konfigurálhatja a globális eloszlást a következő cikkek használatával:
 
 * [Régiók hozzáadása és eltávolítása az adatbázisfiókból](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
-* [Az ügyfelek konfigurálása a többsoros vezérléshez](how-to-manage-database-account.md#configure-multiple-write-regions)
 * [Egyéni ütközés-feloldási szabályzat létrehozása](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)

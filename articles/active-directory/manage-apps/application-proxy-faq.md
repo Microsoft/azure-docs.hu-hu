@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 19a5d223b587e47c562977cc9fea34f990eb0e46
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: edd2ec633bd78ce1a596782deab57105e9d7f1c3
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370818"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487746"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory-(Azure AD-) alkalmazásproxy – gyakori kérdések
 
@@ -37,6 +37,21 @@ Ha a licenc lejár, az alkalmazásproxy automatikusan le lesz tiltva. Az alkalma
 Győződjön meg arról, hogy legalább egy prémium szintű Azure AD P1 vagy P2 licenccel rendelkezik, és telepítve van egy Azure AD Application Proxy-összekötő. Az első összekötő sikeres telepítése után az Azure AD Application Proxy szolgáltatás automatikusan engedélyezve lesz.
 
 ## <a name="connector-configuration"></a>Összekötő konfigurációja
+
+### <a name="why-is-my-connector-still-using-an-older-version-and-not-auto-upgraded-to-latest-version"></a>Miért van még egy régebbi verziója, és ne legyen automatikusan frissítve a legújabb verzióra?
+
+Ennek oka az lehet, hogy a frissítési szolgáltatás nem működik megfelelően, vagy ha nem érhető el új frissítés, amelyet a szolgáltatás telepíthet.
+
+A frissítési szolgáltatás kifogástalan állapotú, ha fut, és nincsenek hibák rögzítve az eseménynaplóban (alkalmazások és szolgáltatások naplói – > Microsoft-> AadApplicationProxy-> Updater-> admin). 
+
+> [!IMPORTANT]
+> Az automatikus frissítés csak a főverziókat szabadítja fel. Javasoljuk, hogy rendszeres időközönként frissítse az összekötőt. Az új kiadásokkal kapcsolatos további információkért tekintse meg a kiadás típusát (letöltés, automatikus frissítés), hibajavításokat és új szolgáltatásokat, lásd [: Azure ad Application proxy: verzió kiadási előzmények](application-proxy-release-version-history.md).
+
+Összekötő manuális frissítése:
+
+-  Töltse le az összekötő legújabb verzióját. (Az Azure Portalon az Application proxy alatt találhatja meg. A hivatkozást az [Azure ad Application proxy: Version kiadási előzmények](application-proxy-release-version-history.md)című részében találja.
+-   A telepítő újraindítja az Azure AD Application Proxy Connector Services szolgáltatást. Bizonyos esetekben szükség lehet a kiszolgáló újraindítására, ha a telepítő nem tudja lecserélni az összes fájlt. Ezért javasoljuk, hogy a frissítés megkezdése előtt zárjon be minden alkalmazást (azaz Eseménynapló).
+-   Indítsa el a telepítőt. A frissítési folyamat gyors, és nem igényli a hitelesítő adatok megadását, és az összekötő nem lesz újra regisztrálva.
 
 ### <a name="can-application-proxy-connector-services-run-in-a-different-user-context-than-the-default"></a>Az alkalmazásproxy-összekötő szolgáltatások az alapértelmezettnél eltérő felhasználói környezetben futnak?
 

@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 2d97d02aec84fec92e29e971cd5c667c847b2541
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 733b2375a26b0157f88bc148b52932e2f3e3f2e2
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368047"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488273"
 ---
 # <a name="migration-overview-sql-server-to-sql-database"></a>Áttelepítési Áttekintés: SQL Server SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -104,6 +104,7 @@ A következő táblázat a javasolt áttelepítési eszközöket sorolja fel:
 
 |Technológia | Leírás|
 |---------|---------|
+| [Azure Migrate](/azure/migrate/how-to-create-azure-sql-assessment) | Az Azure SQL Azure Migrate lehetővé teszi, hogy az SQL-adatkészletet a VMware platformon Fedezze fel és mérje fel, így biztosítva az Azure SQL-telepítésre vonatkozó javaslatokat, a cél méretezését és a havi becsléseket. | 
 |[Data Migration Assistant (DMA)](/sql/dma/dma-migrateonpremsqltosqldb)|A Data Migration Assistant egy asztali eszköz, amely zökkenőmentesen értékeli a SQL Server és a Migrálás Azure SQL Database (a séma és az adatértékek esetében egyaránt). Az eszközt telepítheti a helyszíni kiszolgálóra vagy a helyi gépre, amely a forrás-adatbázisokhoz kapcsolódik. Az áttelepítési folyamat a forrás-és a céladatbázis objektumai közötti logikai adatáthelyezés. </br> – Önálló adatbázisok migrálása (a séma és az adatszolgáltatások esetében is)|
 |[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-azure-sql.md)|Egy első féltől származó Azure-szolgáltatás, amely áttelepítheti a SQL Server-adatbázisokat Azure SQL Database a Azure Portal vagy a PowerShell-lel automatizált használatával. Az Azure DMS használatához ki kell választania egy előnyben részesített Azure-Virtual Network (VNet) a kiépítés során, hogy biztosítsa a forrás-SQL Server adatbázisaihoz való kapcsolódást. </br> – Önálló adatbázisok vagy nagy léptékű Migrálás. |
 | | |
@@ -194,7 +195,7 @@ A speciális felügyeleti és biztonsági funkciók mellett a SQL Database olyan
 
 További segítségért tekintse meg az alábbi, a valós migrációs projektekhez fejlesztett forrásokat.
 
-|Objektum  |Description  |
+|Objektum  |Leírás  |
 |---------|---------|
 |[Adatmunkaterhelés-felmérési modell és eszköz](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Ez az eszköz a javasolt "legmegfelelőbb" cél platformot, a felhő készültségét, valamint az alkalmazások/adatbázisok szervizelési szintjét biztosítja egy adott munkaterhelés esetében. Egyszerű, egykattintásos számítási és jelentéskészítési lehetőséget kínál, amely lehetővé teszi a nagyméretű ingatlan-értékelések felgyorsítását azáltal, hogy automatizált és egységes célzott platformra vonatkozó döntési folyamatot biztosít.|
 |[DBLoader segédprogram](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|A DBLoader felhasználható a tagolt szövegfájlokból származó adatok SQL Serverba való betöltésére. Ez a Windows-konzol segédprogram a SQL Server natív ügyféloldali bulkload felületet használja, amely a SQL Server összes verzióján működik, beleértve a Azure SQL Databaset is.|

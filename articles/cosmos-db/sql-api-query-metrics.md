@@ -5,15 +5,15 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 05/23/2019
+ms.date: 01/06/2021
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fedcdd55a465f5c09c331a0fa917811c349b15b1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 019ca26143a4879efafa973299703f0abcb21162
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097226"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488086"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>A lekérdezési teljesítmény finomhangolása az Azure Cosmos DB-vel
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -143,7 +143,6 @@ A következő leggyakoribb tényezők befolyásolják Azure Cosmos DB lekérdez�
 | Kiosztott átviteli sebesség | Adja meg a kérdéses RU-t, és ellenőrizze, hogy rendelkezik-e a szükséges kiosztott átviteli sebességgel a lekérdezésekhez. | 
 | Particionálás és particionálási kulcsok | Az alacsony késés érdekében a Filter záradékban lévő Partition Key értékkel rendelkező lekérdezéseket a rendszer nem támogatja. |
 | Az SDK és a lekérdezés beállításai | Kövesse az SDK ajánlott eljárásait, például a közvetlen kapcsolódást és az ügyféloldali lekérdezés-végrehajtási beállítások finomhangolását. |
-| Hálózati késleltetés | A hálózati terhelést a mérés során kell figyelembe venni, és a többkiszolgálós API-k használatával kell olvasni a legközelebbi régióból. |
 | Indexelési szabályzat | Győződjön meg arról, hogy rendelkezik a lekérdezéshez szükséges indexelési útvonalakkal/házirenddel. |
 | Lekérdezés-végrehajtási mérőszámok | Elemezze a lekérdezés-végrehajtási mérőszámokat a lekérdezési és adatalakzatok lehetséges újraírásának azonosításához.  |
 
@@ -210,7 +209,7 @@ A következő szempontok arra vonatkoznak, hogy a párhuzamos lekérdezések hog
 
 Az SDK kibocsátási megjegyzései és a megvalósított osztályok és metódusok részleteiért lásd: [SQL SDK](sql-api-sdk-dotnet.md) -k
 
-### <a name="network-latency"></a>Hálózati késleltetés
+### <a name="network-latency"></a>Hálózati késés
 A globális terjesztés beállításával és a legközelebbi régióhoz való kapcsolódással kapcsolatban lásd: [Azure Cosmos db globális terjesztés](tutorial-global-distribution-sql-api.md) . A hálózati késés jelentős hatással van a lekérdezési teljesítményre, ha több kör-vagy időpontot kell lekérnie a lekérdezésből. 
 
 A lekérdezés-végrehajtási mérőszámok szakasza azt ismerteti, hogyan kérhető le a lekérdezések kiszolgáló-végrehajtási ideje ( `totalExecutionTimeInMs` ), így megkülönböztethető a lekérdezés-végrehajtás során eltöltött idő és a hálózati átvitel során töltött idő között.
@@ -239,7 +238,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| Metrika | Egység | Leírás | 
+| Metric | Unit (Egység) | Leírás | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | ezredmásodperc | Lekérdezés végrehajtási ideje | 
 | `queryCompileTimeInMs` | ezredmásodperc | Lekérdezés fordítási ideje  | 

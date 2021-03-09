@@ -12,12 +12,12 @@ ms.date: 12/04/2020
 ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: celested
-ms.openlocfilehash: f231b50651764408a516f8e8e3275ea3c86bd388
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5e12731515b40f42d75e60de1fe577e07432f0e6
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "100530696"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102486147"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához
 
@@ -95,6 +95,7 @@ További oktatóanyagokat a bal oldali tartalomjegyzékben talál.
 | ![embléma – InVision](./media/tutorial-list/active-directory-saas-invision-tutorial.png)| [InVision](invision-tutorial.md)|
 | ![embléma – JAMF Pro](./media/tutorial-list/active-directory-saas-jamfprosamlconnector-tutorial.png)| [Jamf Pro](jamfprosamlconnector-tutorial.md)|
 | ![embléma – Kanbanize](./media/tutorial-list/active-directory-saas-kanbanize-tutorial.png)| [Kanbanize](kanbanize-tutorial.md)|
+| ![embléma – Kendis – Azure AD-integráció](./media/tutorial-list/active-directory-saas-kendis-azure-ad-integration.png)| [Kendis – Azure AD-integráció](kendis-scaling-agile-platform-tutorial.md)|
 | ![embléma – az ismeretek bárhol LMS](./media/tutorial-list/active-directory-saas-knowlwdge-anywhere-lms-tutorial.png)| [Knowledge Anywhere LMS](knowledge-anywhere-lms-tutorial.md)|
 | ![embléma – Lakmusz](./media/tutorial-list/active-directory-saas-litmus-tutorial.png)| [Litmus](litmus-tutorial.md)|
 | ![embléma – Marketo](./media/tutorial-list/active-directory-saas-marketo-tutorial.png)| [Marketo](marketo-tutorial.md)|

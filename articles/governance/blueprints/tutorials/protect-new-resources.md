@@ -1,25 +1,25 @@
 ---
 title: 'Oktatóanyag: új erőforrások megvédése zárolásokkal'
 description: Ebben az oktatóanyagban az Azure-tervrajzok erőforrás-zárolási lehetőségeit csak olvasható módon használja, és nem törli az újonnan telepített erőforrások elleni védelemhez.
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.topic: tutorial
-ms.openlocfilehash: c671d641982ba833b54586c1b33979a97747396b
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 87da0f5a1fff2feb103b32533c8d314fb7690f80
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98915407"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485741"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Oktatóanyag: új erőforrások biztosítása az Azure BluePrints erőforrás-zárolásokkal
 
-Az Azure-tervrajzok [erőforrás-zárolásai](../concepts/resource-locking.md)révén az újonnan telepített erőforrásokat védetté teheti, akár a _tulajdonos_ szerepkörrel rendelkező fiókkal. Ezt a védelmet a Azure Resource Manager-sablon (ARM-sablon) által létrehozott erőforrások tervrajz-definíciójában adhatja hozzá.
+Az Azure-tervrajzok [erőforrás-zárolásai](../concepts/resource-locking.md)révén az újonnan telepített erőforrásokat védetté teheti, akár a _tulajdonos_ szerepkörrel rendelkező fiókkal. Ezt a védelmet a Azure Resource Manager-sablon (ARM-sablon) által létrehozott erőforrások tervrajz-definíciójában adhatja hozzá. A terv erőforrás-zárolása a terv hozzárendelése során van beállítva.
 
 Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
 > [!div class="checklist"]
 > - Terv definíciójának létrehozása
 > - A terv definíciójának megjelölése **közzétettként**
-> - A terv definíciójának társítása meglévő előfizetéshez
+> - A terv definíciójának társítása meglévő előfizetéshez (**erőforrás-zárolások beállítása**)
 > - Az új erőforráscsoport vizsgálata
 > - A terv hozzárendelésének megszüntetése a zárolások eltávolításához
 
@@ -56,6 +56,9 @@ Először hozza létre a terv definícióját.
    1. Válassza a **RGtoLock** bejegyzés alatt az összetevők **hozzáadása** sort.
    1. Válassza ki **Azure Resource Manager sablont** az összetevő **típusa** területen, állítsa a **lelet megjelenítendő nevét** **StorageAccount** értékre, és hagyja üresen a **leírást** .
    1. A **sablon** lapon illessze be a következő ARM-sablont a szerkesztő mezőbe. A sablon beillesztése után a **Hozzáadás** gombra kattintva adja hozzá az összetevőt a tervhez.
+
+      > [!NOTE]
+      > Ez a lépés határozza meg azokat az erőforrásokat, amelyeket a terv erőforrás-zárolása zárol, de nem tartalmazza a terv-erőforrás zárolását. A terv-erőforrások zárolása a terv-hozzárendelés paraméterének megfelelően van beállítva.
 
    ```json
    {
@@ -142,6 +145,9 @@ A terv definíciójának közzététele után hozzárendelheti azt egy előfizet
    - **Hozzárendelés zárolása**
 
      Válassza a **csak olvasható** terv zárolási módot. További információkat talál a [terv-erőforrások zárolásáról](../concepts/resource-locking.md) szóló cikkben.
+
+     > [!NOTE]
+     > Ez a lépés konfigurálja a terv erőforrás-zárolását az újonnan telepített erőforrásokon.
 
    - **Felügyelt identitás**
 

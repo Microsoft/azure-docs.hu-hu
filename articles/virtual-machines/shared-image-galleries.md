@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/14/2020
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: baba35bd29ec6708aca77bd9c6d74401a365014a
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 9a5bc0620468980da68e1b92f758d5f3862ac7d3
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091887"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487253"
 ---
 # <a name="shared-image-galleries-overview"></a>Megosztott képgyűjtemények – áttekintés
 
@@ -104,7 +104,7 @@ A speciális virtuális gépek nem a gép specifikus információinak és fiókj
 
 ## <a name="regional-support"></a>Regionális támogatás
 
-Az összes nyilvános régió lehet célcsoport, de az Ausztrália középső és Ausztrália középső régiójában való replikáláshoz a 2. előfizetést hozzá kell adni az engedélyezési listához. Ha egy előfizetést szeretne kérni az engedélyezési listához, lépjen a következőre: https://azure.microsoft.com/global-infrastructure/australia/contact/
+Az összes nyilvános régió lehet célcsoport, de az Ausztrália középső és Ausztrália középső régiójában való replikáláshoz a 2. előfizetést hozzá kell adni az engedélyezési listához. Ha egy előfizetést szeretne kérni az engedélyezési listához, lépjen a következőre: https://docs.microsoft.com/azure/virtual-machines/shared-image-galleries#regional-support
 
 ## <a name="limits"></a>Korlátok 
 
@@ -170,12 +170,12 @@ Tegyük fel például, hogy rendelkezik egy 127 GB-OS operációsrendszer-lemezz
 A létrehozás után módosításokat végezhet a Képtár erőforrásaiban. Ezek a következőkre korlátozódnak:
  
 Megosztott képgyűjtemény:
-- Description
+- Leírás
 
 Rendszerkép definíciója:
 - Ajánlott vCPU
 - Ajánlott memória
-- Description
+- Leírás
 - Élettartam vége
 
 Rendszerkép verziója:
@@ -325,4 +325,3 @@ Emellett a kérdését a következő címen teheti közzé és címkézheti `azu
 ## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan helyezhet üzembe megosztott rendszerképeket az [Azure CLI](shared-images-cli.md) vagy a [PowerShell](shared-images-powershell.md)használatával.
-

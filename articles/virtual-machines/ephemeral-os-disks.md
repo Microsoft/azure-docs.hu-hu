@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 9c13a914a002f63f3c0d5bd988b0d76b951586dd
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 814824fb6708abaf549bb3de19b4aced4774a244
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124686"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485758"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Ideiglenes operációsrendszer-lemezek Azure-beli virtuális gépekhez
 
@@ -247,7 +247,7 @@ A: az ideiglenes lemezek nem támogatják A következőket:
 
 > [!NOTE]
 > 
-> Az ideiglenes lemez nem lesz elérhető a portálon keresztül. Előfordulhat, hogy "az erőforrás nem található" vagy "404" hibaüzenet jelenik meg az ideiglenes lemez elérésekor.
+> Az ideiglenes lemez nem lesz elérhető a portálon keresztül. A rendszer "erőforrás nem található" vagy "404" hibaüzenetet kap a várt ideiglenes lemez elérésekor.
 > 
  
 ## <a name="next-steps"></a>Következő lépések

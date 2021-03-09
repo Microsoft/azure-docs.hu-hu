@@ -5,19 +5,19 @@ ms.topic: how-to
 manager: nitinme
 ms.author: lajanuar
 author: laujan
-ms.date: 02/11/2021
-ms.openlocfilehash: 104329928c507c288537704fbbef4e35b65cb445
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/05/2021
+ms.openlocfilehash: e40fc569ad1c8ec5894f06915422bea37cfc40ee
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101739436"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489633"
 ---
-# <a name="create-sas-tokens-for-document-translation"></a>SAS-jogkivonatok létrehozása a dokumentumok fordításához
+# <a name="create-sas-tokens-for-document-translation-processing"></a>SAS-jogkivonatok létrehozása a dokumentumok fordításának feldolgozásához
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre közös hozzáférésű aláírási (SAS-) jogkivonatokat a Azure Storage Explorer vagy a Azure Portal használatával. Az SAS-token biztonságos, delegált hozzáférést biztosít az Azure Storage-fiók erőforrásaihoz.
 
-## <a name="create-sas-tokens-with-azure-storage-explorer"></a>SAS-tokenek létrehozása Azure Storage Explorer
+## <a name="create-your-sas-tokens-with-azure-storage-explorer"></a>SAS-tokenek létrehozása Azure Storage Explorer
 
 ### <a name="prerequisites"></a>Előfeltételek
 
@@ -65,7 +65,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre közös hozzáférésű alá
 ## <a name="create-sas-tokens-for-blobs-in-the-azure-portal"></a>A Blobok SAS-jogkivonatának létrehozása a Azure Portalban
 
 > [!NOTE]
-> Az SAS-jogkivonatok közvetlenül a Azure Portalban való létrehozása jelenleg nem támogatott. Létrehozhat azonban egy [**Azure Storage Explorer**](#create-sas-tokens-with-azure-storage-explorer) sas-tokent, vagy [programozott](../../../storage/blobs/sas-service-create.md)módon végezheti el a feladatot.
+> Az SAS-jogkivonatok közvetlenül a Azure Portalban való létrehozása jelenleg nem támogatott. Létrehozhat azonban egy [**Azure Storage Explorer**](#create-your-sas-tokens-with-azure-storage-explorer) sas-tokent, vagy [programozott](../../../storage/blobs/sas-service-create.md)módon végezheti el a feladatot.
 
 <!-- markdownlint-disable MD024 -->
 ### <a name="prerequisites"></a>Előfeltételek
@@ -74,7 +74,7 @@ A kezdéshez a következőkre lesz szüksége:
 
 * Aktív [**Azure-fiók**](https://azure.microsoft.com/free/cognitive-services/).  Ha még nem rendelkezik ilyennel, [**létrehozhat egy ingyenes fiókot**](https://azure.microsoft.com/free/).
 * Egy [**Translator**](https://ms.portal.azure.com/#create/Microsoft) Service-erőforrás (**nem** Cognitive Services több szolgáltatásból álló erőforrás).  *Lásd:* [új Azure-erőforrás létrehozása](../../cognitive-services-apis-create-account.md#create-a-new-azure-cognitive-services-resource).  
-* Egy [**Azure Blob Storage-fiók**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Az Azure Storage-hoz való összes hozzáférés egy Storage-fiókon keresztül történik.
+* Egy [**Azure Blob Storage-fiók**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). A blob-adatai tárolásához és rendszerezéséhez tárolókat kell létrehoznia a Storage-fiókon belül.
 
 ### <a name="create-your-tokens"></a>Jogkivonatok létrehozása
 

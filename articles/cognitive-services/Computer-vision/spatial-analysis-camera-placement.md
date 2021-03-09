@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 849afe54125588cb7664ee221e4f229e83be8f96
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 4c2d1cd1c73b377d85501fd31d0f5a1893df5183
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185478"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487423"
 ---
 # <a name="camera-placement-guide"></a>Kamera elhelyezése – útmutató
 
@@ -72,12 +72,12 @@ Az alábbi táblázat segítségével meghatározhatja a kamera távolságát a 
 
 | Kamera magassága | Kamerától a fókusztávolságig terjedő távolság (min/max) |  
 | ------------- | ---------------------------------------- |  
-| 8            | 10 "-13"                                  |  
-| 10           | 7 "-13"                                   |  
-| 12           | 10 "-17"                                  |  
-| 14           | 11 '-18 '                                  |  
-| 16           | 12 – 22                                  |  
-| 20           | 15 "-30"                                  |  
+| 8            | 4.6 '-8 '                                  |  
+| 10           | 5.8 – 10                                 |  
+| 12           | 7 – 12                                   |  
+| 14           | 8 '-14 ' '                                  |  
+| 16           | 9.2 – 16                                 |  
+| 20           | 11,5-20                                |  
 
 A következő ábra a kamera nézeteit szimulálja a legközelebb és legtávolabbi kameráról a fókuszra mutató távolságokra.
 
@@ -91,15 +91,9 @@ Ez a szakasz az elfogadható kamera szögének csatlakoztatási tartományait is
 
 ### <a name="line-configuration"></a>Vonal konfigurációja
 
-A következő táblázat a **cognitiveservices. vízió. spatialanalysis-personcrossingline** művelethez konfigurált fényképezőgépek javaslatait mutatja be. Az álarcok észleléséhez a +/-30 fok a kamera magasságának optimális kamera-csatlakoztatási szöge 8 és 12 között.
+A **cognitiveservices. vízió. spatialanalysis-personcrossingline** művelet esetében a +/-5 ° az optimális kamera-csatlakoztatási szög a pontosság maximalizálása érdekében.
 
-| Kamera magassága | Kameráról a fókuszra mutató távolság | Optimális kamera-csatlakoztatási szög (min/max.) |  
-| ------------- | ------------------------------ | ------------------------------------------ |  
-| 8            | 9                             | +/-40 °                                     |  
-| 10           | 10                            | +/-30 °                                     |  
-| 12           | 13                            | +/-20 °                                     |  
-| 16           | 18                            | +/-10 °                                     |  
-| 20           | 22                            | +/-10 °                                     |  
+Az álarcok észleléséhez a +/-30 fok a kamera magasságának optimális kamera-csatlakoztatási szöge 8 és 12 között.
 
 Az alábbi ábrán a bal szélső (-) és a jobb oldali (+) csatlakozási szöggel kapcsolatos javaslatok láthatók a **cognitiveservices. vízió. spatialanalysis-personcrossingline** használatával a bejárati számláláshoz.
 

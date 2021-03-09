@@ -5,25 +5,25 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 01/06/2021
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 7fedd45585698aef9248318a1b055cb656f25d02
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 6bdb167990afeb5c1b6c68185f24a8f930287bed
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335128"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487899"
 ---
 # <a name="distribute-your-data-globally-with-azure-cosmos-db"></a>Globális adatterjesztés az Azure Cosmos DB-vel
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-A mai alkalmazásoknak alacsony válaszidővel kell rendelkezniük, és mindig elérhetőnek kell lenniük a hálózaton keresztül. A kis késés és a magas rendelkezésre állás elérése érdekében ezeknek az alkalmazásoknak a példányait a felhasználókhoz közel lévő adatközpontokban kell üzembe helyezni. Ezeket az alkalmazásokat jellemzően több adatközpontba helyezik üzembe, és globálisan elosztottnak nevezzük őket. A globálisan elosztott alkalmazásoknak globálisan elosztott adatbázisra van szükségük, amely transzparens módon tudja replikálni az adatokat a világ bármely pontján, hogy az alkalmazások a felhasználóikhoz közel lévő adatpéldányt használhassák. 
+A mai alkalmazásoknak alacsony válaszidővel kell rendelkezniük, és mindig elérhetőnek kell lenniük a hálózaton keresztül. A kis késés és a magas rendelkezésre állás elérése érdekében ezeknek az alkalmazásoknak a példányait a felhasználókhoz közel lévő adatközpontokban kell üzembe helyezni. Ezeket az alkalmazásokat általában több adatközpontban helyezik üzembe, ezért globálisan elosztott alkalmazásoknak nevezik őket. A globálisan elosztott alkalmazásoknak globálisan elosztott adatbázisra van szükségük, amely transzparens módon tudja replikálni az adatokat a világ bármely pontján, hogy az alkalmazások a felhasználóikhoz közel lévő adatpéldányt használhassák. 
 
-A Azure Cosmos DB egy globálisan elosztott adatbázis-rendszer, amely lehetővé teszi az adatok olvasását és írását az adatbázis helyi replikái alapján. Azure Cosmos DB transzparens módon replikálja az adatait a Cosmos-fiókjához társított összes régióba. A Azure Cosmos DB egy globálisan elosztott adatbázis-szolgáltatás, amely alacsony késést, rugalmas méretezhetőséget és adatátvitelt, valamint jól definiált szemantikai adatkonzisztenciaet és magas rendelkezésre állást biztosít. Röviden, ha az alkalmazásnak a világ bármely pontján gyors válaszidő szükséges, és ha mindig online állapotba kell esnie, és az átviteli sebesség és a tárterület korlátlan és rugalmas méretezhetőségére van szüksége, az alkalmazást Azure Cosmos DB kell létrehoznia.
+Az Azure Cosmos DB egy globálisan elosztott adatbázis, amely lehetővé teszi az adatok olvasását és írását az adatbázis helyi replikáiból. Az Azure Cosmos DB transzparensen replikálja az adatokat a Cosmos-fiókhoz társított összes régióba. A Azure Cosmos DB egy globálisan elosztott adatbázis-szolgáltatás, amely alacsony késést, rugalmas méretezhetőséget és adatátvitelt, valamint jól definiált szemantikai adatkonzisztenciaet és magas rendelkezésre állást biztosít. Röviden, ha az alkalmazásnak a világ bármely pontján gyors válaszidő szükséges, és ha mindig online állapotba kell esnie, és az átviteli sebesség és a tárterület korlátlan és rugalmas méretezhetőségére van szüksége, az alkalmazást Azure Cosmos DB kell létrehoznia.
 
-Az adatbázisokat úgy állíthatja be, hogy globálisan terjeszthetők legyenek, és elérhetők legyenek bármelyik Azure-régióban. Ha csökkenteni szeretné a késést, helyezze az adatait közel oda, ahová a felhasználók tartoznak. A szükséges régiók kiválasztása az alkalmazás globális elérhetősége és a felhasználók helyétől függ. Cosmos DB transzparens módon replikálja az adatait a Cosmos-fiókjához társított összes régióba. Egyetlen rendszerképet biztosít a globálisan elosztott Azure Cosmos-adatbázisról, valamint az alkalmazás által a helyileg olvasható és írható tárolók közül. 
+Az adatbázisokat úgy állíthatja be, hogy globálisan terjeszthetők legyenek, és elérhetők legyenek bármelyik Azure-régióban. Ha csökkenteni szeretné a késést, helyezze az adatait közel oda, ahová a felhasználók tartoznak. A szükséges régiók kiválasztása az alkalmazás globális elérhetősége és a felhasználók helyétől függ. Cosmos DB transzparens módon replikálja az adatait a Cosmos-fiókjához társított összes régióba. Egyetlen rendszerképet biztosít a globálisan elosztott Azure Cosmos-adatbázisról, valamint az alkalmazás által a helyileg olvasható és írható tárolók közül.
 
-A Azure Cosmos DB segítségével bármikor hozzáadhat vagy eltávolíthat a fiókjához társított régiókat. Az alkalmazást nem kell szüneteltetni vagy újratelepíteni egy régió hozzáadásához vagy eltávolításához. Továbbra is a szolgáltatás által natív módon biztosított többsoros képességek miatt továbbra is nagyon sok időt vesz igénybe.
+A Azure Cosmos DB segítségével bármikor hozzáadhat vagy eltávolíthat a fiókjához társított régiókat. Az alkalmazást nem kell szüneteltetni vagy újratelepíteni egy régió hozzáadásához vagy eltávolításához.
 
 :::image type="content" source="./media/distribute-data-globally/deployment-topology.png" alt-text="Magasan elérhető üzembe helyezési topológia" border="false":::
 
@@ -35,7 +35,7 @@ A Azure Cosmos DB segítségével bármikor hozzáadhat vagy eltávolíthat a fi
 - 99,999%-os olvasási és írási rendelkezésre állás a világ minden tájáról.
 - A garantált olvasási és írási műveletek száma kevesebb, mint 10 ezredmásodperc a esetek 99% percentilis esetében.
 
-Az Azure Cosmos DB többsoros API-k használatával az alkalmazás ismeri a legközelebbi régiót, és kéréseket küldhet az adott régiónak. A legközelebbi régió konfiguráció módosítása nélkül azonosítható. Az Azure Cosmos-fiókjához tartozó régiók hozzáadásakor és eltávolításakor az alkalmazásnak nem kell újratelepítenie vagy szüneteltetve lennie, ezért a rendszer mindig nagyon elérhető marad.
+Az Azure Cosmos-fiókjához tartozó régiók hozzáadásakor és eltávolításakor az alkalmazásnak nem kell újratelepítenie vagy szüneteltetve lennie, ezért a rendszer mindig nagyon elérhető marad.
 
 **Gyorsan reagáló alkalmazásokat készíthet.** Az alkalmazás közel valós idejű olvasási és írási műveleteket hajt végre az adatbázishoz választott összes régióban. A Azure Cosmos DB belsőleg kezeli az adatreplikációt a kiválasztott szinthez tartozó konzisztencia-szintű garanciával rendelkező régiók között.
 

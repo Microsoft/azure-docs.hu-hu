@@ -74,6 +74,8 @@
       href: public-ip-usage.md
     - name: IPSec-alagút létrehozása
       href: create-ipsec-tunnel.md
+    - name: Windows Server feladatátvevő fürt
+      href: windows-server-failover-cluster.md
     - name: Azure natív integrációja
       items:
         - name: API Management

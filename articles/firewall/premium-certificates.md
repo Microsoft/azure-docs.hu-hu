@@ -7,12 +7,12 @@ services: firewall
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.author: victorh
-ms.openlocfilehash: 3914a82903c293cf1a8306b5ecc1f542fef83e72
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 31948d5e98ea3024c838bf0fa4b05609a5662ec5
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100549756"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485520"
 ---
 # <a name="azure-firewall-premium-preview-certificates"></a>Prémium előzetes verziójú tanúsítványok Azure Firewall 
 
@@ -90,6 +90,117 @@ Ha HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt szeretne konfigurálni a tűzfal 
 > Ha szeretné megtekinteni és konfigurálni a tanúsítványokat a Azure Portalból, fel kell vennie az Azure-beli felhasználói fiókját az Key Vault hozzáférési szabályzatba. Adja meg a felhasználói **fiókját** , és **sorolja** fel a **titkos engedélyeket**.
    :::image type="content" source="media/premium-certificates/secret-permissions.png" alt-text="Hozzáférési szabályzat Azure Key Vault":::
 
+
+## <a name="create-your-own-self-signed-ca-certificate"></a>Saját önaláírt HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány létrehozása
+
+A TLS-ellenőrzés teszteléséhez és ellenőrzéséhez használja a következő parancsfájlokat a saját önaláírt legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ és a köztes HITELESÍTÉSSZOLGÁLTATÓ létrehozásához.
+
+> [!IMPORTANT]
+> Éles környezetben a vállalati PKI-t kell használnia egy köztes HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány létrehozásához. A vállalati PKI kihasználja a meglévő infrastruktúrát, és kezeli a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI eloszlást az összes végponti gépen.
+
+A szkript két verziója létezik:
+- egy bash-szkript `cert.sh` 
+- egy PowerShell-parancsfájl `cert.ps1` 
+
+ Emellett mindkét parancsfájl a `openssl.cnf` konfigurációs fájlt használja. A parancsfájlok használatához másolja a ( `openssl.cnf` `cert.sh` vagy) tartalmát a `cert.ps1` helyi számítógépre.
+
+A parancsfájlok a következő fájlokat eredményezik:
+- rootCA. CRT/rootCA. Key – legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ nyilvános tanúsítványa és titkos kulcsa.
+- interCA. CRT/interCA. Key – közbenső szintű HITELESÍTÉSSZOLGÁLTATÓ nyilvános tanúsítványa és titkos kulcsa
+- interCA. pfx – köztes HITELESÍTÉSSZOLGÁLTATÓI PKCS12/pfx-profil-csomag, amelyet a tűzfal használni fog
+
+> [!IMPORTANT]
+> a rootCA. Key tárolót biztonságos offline helyen kell tárolni. A parancsfájlok 1024 napos érvényességű tanúsítványt állítanak elő.
+
+A tanúsítványok létrehozása után telepítse azokat a következő helyszínekre:
+- rootCA. CRT – üzembe helyezés Endpoint Machines gépeken (csak nyilvános tanúsítvány).
+- interCA. pfx – importálás tanúsítványként egy Key Vault, és hozzárendelés a tűzfal házirendjéhez.
+
+### <a name="opensslcnf"></a>**OpenSSL. cnf**
+```
+[ req ]
+default_bits        = 4096
+distinguished_name  = req_distinguished_name
+string_mask         = utf8only
+default_md          = sha512
+
+[ req_distinguished_name ]
+countryName                     = Country Name (2 letter code)
+stateOrProvinceName             = State or Province Name
+localityName                    = Locality Name
+0.organizationName              = Organization Name
+organizationalUnitName          = Organizational Unit Name
+commonName                      = Common Name
+emailAddress                    = Email Address
+
+[ rootCA_ext ]
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid:always,issuer
+basicConstraints = critical, CA:true
+keyUsage = critical, digitalSignature, cRLSign, keyCertSign
+
+[ interCA_ext ]
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid:always,issuer
+basicConstraints = critical, CA:true, pathlen:1
+keyUsage = critical, digitalSignature, cRLSign, keyCertSign
+
+[ server_ext ]
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid:always,issuer
+basicConstraints = critical, CA:false
+keyUsage = critical, digitalSignature
+extendedKeyUsage = serverAuth
+```
+
+###  <a name="bash-script---certsh"></a>Bash-szkript – cert.sh 
+```bash
+#!/bin/bash
+
+# Create root CA
+openssl req -x509 -new -nodes -newkey rsa:4096 -keyout rootCA.key -sha256 -days 1024 -out rootCA.crt -subj "/C=US/ST=US/O=Self Signed/CN=Self Signed Root CA" -config openssl.cnf -extensions rootCA_ext
+
+# Create intermediate CA request
+openssl req -new -nodes -newkey rsa:4096 -keyout interCA.key -sha256 -out interCA.csr -subj "/C=US/ST=US/O=Self Signed/CN=Self Signed Intermediate CA"
+
+# Sign on the intermediate CA
+openssl x509 -req -in interCA.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateserial -out interCA.crt -days 1024 -sha256 -extfile openssl.cnf -extensions interCA_ext
+
+# Export the intermediate CA into PFX
+openssl pkcs12 -export -out interCA.pfx -inkey interCA.key -in interCA.crt -password "pass:"
+
+echo ""
+echo "================"
+echo "Successfully generated root and intermediate CA certificates"
+echo "   - rootCA.crt/rootCA.key - Root CA public certificate and private key"
+echo "   - interCA.crt/interCA.key - Intermediate CA public certificate and private key"
+echo "   - interCA.pfx - Intermediate CA pkcs12 package which could be uploaded to Key Vault"
+echo "================"
+```
+
+### <a name="powershell---certps1"></a>PowerShell – cert.ps1
+```powershell
+# Create root CA
+openssl req -x509 -new -nodes -newkey rsa:4096 -keyout rootCA.key -sha256 -days 3650 -out rootCA.crt -subj '/C=US/ST=US/O=Self Signed/CN=Self Signed Root CA' -config openssl.cnf -extensions rootCA_ext
+
+# Create intermediate CA request
+openssl req -new -nodes -newkey rsa:4096 -keyout interCA.key -sha256 -out interCA.csr -subj '/C=US/ST=US/O=Self Signed/CN=Self Signed Intermediate CA'
+
+# Sign on the intermediate CA
+openssl x509 -req -in interCA.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateserial -out interCA.crt -days 3650 -sha256 -extfile openssl.cnf -extensions interCA_ext
+
+# Export the intermediate CA into PFX
+openssl pkcs12 -export -out interCA.pfx -inkey interCA.key -in interCA.crt -password 'pass:'
+
+Write-Host ""
+Write-Host "================"
+Write-Host "Successfully generated root and intermediate CA certificates"
+Write-Host "   - rootCA.crt/rootCA.key - Root CA public certificate and private key"
+Write-Host "   - interCA.crt/interCA.key - Intermediate CA public certificate and private key"
+Write-Host "   - interCA.pfx - Intermediate CA pkcs12 package which could be uploaded to Key Vault"
+Write-Host "================"
+
+```
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

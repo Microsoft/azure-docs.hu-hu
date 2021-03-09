@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 2/19/2021
 ms.author: cavoeg
-ms.openlocfilehash: 675030ac47cb26e817a9ef7ee51999f25020f292
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9ed78baed35312b9a33c71a3e49b7e9dca22eb9f
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712698"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487219"
 ---
 # <a name="how-to-export-fhir-data"></a>FHIR-adatexportálás
 
@@ -38,6 +38,13 @@ Az adatexportálás során minden erőforrástípus külön fájlt hoz létre. A
 
 Emellett az exportálási állapot ellenőrzése a hely fejléce által visszaadott URL-címen, a tényleges exportálási feladat megszakítása mellett.
 
+### <a name="exporting-fhir-data-to-adls-gen2"></a>FHIR-ADLS Gen2 exportálása
+
+Jelenleg a következő korlátozásokkal támogatjuk a ADLS Gen2 engedélyezett Storage-fiókok $exportét:
+
+- A felhasználó még nem tudja kihasználni a [hierarchikus névtereket](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) ; nincs lehetőség arra, hogy a tárolón belül egy adott alkönyvtárba exportálja az exportálást. Csak egy adott tárolót célozunk meg (ahol minden egyes exportáláshoz új mappát hozunk létre).
+
+- Az Exportálás befejezése után még soha nem exportálunk semmit erre a mappára, mert az ugyanazon tárolóba való későbbi exportálás egy újonnan létrehozott mappába kerül.
 
 
 ## <a name="settings-and-parameters"></a>Beállítások és paraméterek
@@ -52,11 +59,11 @@ A FHIR készült Azure API a következő lekérdezési paramétereket támogatja
 
 |Lekérdezési paraméter        | A FHIR-specifikáció határozza meg?    |  Leírás|
 |------------------------|---|------------|
-| \_outputFormat | Igen | A jelenleg három értéket támogat a FHIR spec: Application/FHIR + ndjson, Application/ndjson vagy Just ndjsonhoz való igazításhoz. Minden exportálási feladat vissza fog térni `ndjson` , és az átadott érték nem befolyásolja a kód viselkedését. |
-| \_mivel | Igen | Lehetővé teszi a csak a megadott idő óta módosított erőforrások exportálását |
-| \_típusa | Igen | Lehetővé teszi annak megadását, hogy milyen típusú erőforrásokat fog tartalmazni. Írja be például, hogy \_ = beteg csak a beteg erőforrásait adja vissza|
-| \_typefilter | Igen | Ha finomabb szűrést szeretne kérni, \_ a Type paraméterrel együtt használhatja a typefilter-t is \_ . A _typeFilter paraméter értéke az olyan FHIR lekérdezések vesszővel tagolt listája, amelyek tovább korlátozzák az eredményeket |
-| \_tároló | Nem |  Meghatározza azt a tárolót a konfigurált Storage-fiókon belül, ahol az adatexportálást el kell helyezni. Ha meg van adva tároló, a rendszer az adott tárolóba exportálja a nevet egy új mappába. Ha a tároló nincs megadva, a rendszer egy új tárolóba exportálja az időbélyeg és a Job ID használatával. |
+| \_outputFormat | Yes | A jelenleg három értéket támogat a FHIR spec: Application/FHIR + ndjson, Application/ndjson vagy Just ndjsonhoz való igazításhoz. Minden exportálási feladat vissza fog térni `ndjson` , és az átadott érték nem befolyásolja a kód viselkedését. |
+| \_mivel | Yes | Lehetővé teszi a csak a megadott idő óta módosított erőforrások exportálását |
+| \_típusa | Yes | Lehetővé teszi annak megadását, hogy milyen típusú erőforrásokat fog tartalmazni. Írja be például, hogy \_ = beteg csak a beteg erőforrásait adja vissza|
+| \_typefilter | Yes | Ha finomabb szűrést szeretne kérni, \_ a Type paraméterrel együtt használhatja a typefilter-t is \_ . A _typeFilter paraméter értéke az olyan FHIR lekérdezések vesszővel tagolt listája, amelyek tovább korlátozzák az eredményeket |
+| \_tároló | No |  Meghatározza azt a tárolót a konfigurált Storage-fiókon belül, ahol az adatexportálást el kell helyezni. Ha meg van adva tároló, a rendszer az adott tárolóba exportálja a nevet egy új mappába. Ha a tároló nincs megadva, a rendszer egy új tárolóba exportálja az időbélyeg és a Job ID használatával. |
 
 ## <a name="secure-export-to-azure-storage"></a>Biztonságos Exportálás az Azure Storage-ba
 

@@ -4,15 +4,15 @@ description: Piaci megjelenést segítő szolgáltatások – ebben a szakaszban
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 01/13/2021
+ms.date: 03/03/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 07535add495484abae06fc6ac8ac435d84bccc52
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 06f98a8e303d2ff692c0f84314e639c2a51cbcc1
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246247"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489477"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>A kereskedelmi piactér előnyei
 
@@ -38,7 +38,7 @@ Támogatni fogja az Ön számára elérhető erőforrások megértését és az 
 
 A program előnyeinek részletes ismertetését ebben a [Marketplace jutalmazási program bemutatójában](https://aka.ms/marketplacerewards)találja.
 
-Az első lépések egyszerűek:
+## <a name="getting-started-is-easy"></a>Az első lépések egyszerűek:
 
 1. Ajánlat közzététele Microsoft AppSource vagy Azure piactéren.
 2. Nyissa meg a [Piactéri jutalmakat](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace) a partner Centerben, és válassza **a regisztrálás a Marketplace jutalmazási programban** lehetőséget.
@@ -49,19 +49,19 @@ Az első lépések egyszerűek:
     1. Adja meg a kapcsolattartó telefonszámát és az előnyben részesített nyelvet. Miután megadta ezeket az adatokat, válassza a **Felhasználó hozzárendelése** lehetőséget.
     1. A marketing-kapcsolattartó frissítése után válassza az **aktiválás** lehetőséget a használni kívánt előnyhez. Az előny aktiválása után a Rewards csapatának egy tagja fel fogja keresni a kapcsolattartót.
 
-### <a name="technical-benefits"></a>Műszaki előnyök
+> [!NOTE]
+> Ha az ajánlata több mint négy hetet is tartalmaz, és nem kapott üzenetet, ellenőrizze a szervezeten belül, hogy az adott ajánlat tulajdonosa a partner Center. A kommunikációhoz és a következő lépésekhez kell tartoznia.
 
-1. Technikai támogatási szolgálata a Felhőbeli és a hibrid megoldások előadásainak, tervezésének, üzembe helyezésének és alkalmazás-fejlesztési fázisaiban technikai segítséget kérhet. Ha segítséget szeretne kérni, töltse ki a kérelem űrlapját, majd válassza a **kérelem küldése** lehetőséget.
-2. Az Azure szponzorálási előnyeinek felhasználása e-mailben történik, az előnyök feloldása során.
-
->[!NOTE]
->Ha az ajánlata több mint négy hetet is tartalmaz, és nem kapott üzenetet, ellenőrizze a szervezeten belül, hogy az adott ajánlat tulajdonosa a partner Center. A kommunikációhoz és a következő lépésekhez kell tartoznia.<br><br>Ha nem tudja megállapítani a tulajdonost, vagy ha a tulajdonos elhagyta a vállalatot, támogatási jegyet is létrehozhat a [Súgó és támogatás](https://aka.ms/marketplacepublishersupport)szolgáltatásban.
+Ha nem tudja megállapítani a tulajdonost, vagy ha a tulajdonos elhagyta a vállalatot, támogatási jegyet is létrehozhat a [Súgó és támogatás](https://aka.ms/marketplacepublishersupport)szolgáltatásban.
 
 Az Ön számára elérhető tevékenységek köre a kereskedelmi piactéren kibővíthető ajánlatokkal bővül. Az összes lista az optimalizálási javaslatok és a promóció alapszintű, az erőforrások és az ajánlott eljárások önkiszolgáló e-mail-címének részeként jelenik meg.
 
 ## <a name="list-trial-and-consulting-benefits"></a>A lista, a próbaverzió és a tanácsadás előnyei
 
-Ha közzétesz egy próbaverziót vagy egy tanácsadót a koncepcióval, a megvalósítással vagy a workshoptal kapcsolatban, három hónapig lesz hozzárendelve egy engagement Managerhez, amely segítséget nyújt a sikeres piaci megjelenéshez. Minden alkalommal megismételheti ezt a három hónapos részvételt, amikor új ajánlatot tesz közzé, hogy segítse az új ajánlatok sikeres elindítását.
+Minden alkalommal, amikor közzétesz Microsoft AppSource vagy az Azure Marketplace-en, az előnyök új készlete lesz elérhető. Ha az ajánlat élőben is elérhetővé válik, lépjen a [partner Center](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fpartner.microsoft.com%2Fdashboard%2Fmpn%2Fmembership%2Fbenefits%2Fcommercialmarketplace&data=04%7C01%7Cv-kilieb%40microsoft.com%7C3b13a8a6e41a47d6d96008d8c7cb3b50%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637479022971578374%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=MF1ZlPX9M5JiJZE2e%2B6kXEsRX1klB5hTcSqcHYDjZq8%3D&reserved=0) webhelyre, és aktiválja a jogosult marketing-, értékesítési és technikai előnyeit.
+
+> [!NOTE]
+> Az összes próbaverziós és tanácsadási kedvezmény 3 hónap után lejár.
 
 Az alábbi táblázat összefoglalja a listára, próbaverzióra és tanácsadásra vonatkozó ajánlatok támogathatósági követelményeit:
 
@@ -121,7 +121,7 @@ Ezt az ajánlatot angol nyelven, az Azure Marketplace-en vagy Microsoft AppSourc
 
 A megtévesztőnek bizonyuló tranzakciók nem számítanak bele a kiadó által számlázott értékesítési program szintjébe, ahogy azt a [lista, a próbaverzió, a Consulting](#list-trial-and-consulting-benefits) szakasz és a [Transact partner előnyei](#marketplace-rewards-for-transact-partners) című szakasz tartalmazza. A csalás eltávolítását követően a Microsoft kiosztja a partnereket a jogosultsági szintek szerint a tényleges számlázott értékesítések alapján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az ajánlat létrehozásához vagy konfigurálásához jelentkezzen be a [partner Centerben](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) .
 - A piactér előnyeinek aktiválása a [partner Centerben](https://partner.microsoft.com/dashboard/commercial-marketplace/overview).

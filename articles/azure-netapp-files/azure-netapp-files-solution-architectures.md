@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/03/2021
+ms.date: 03/08/2021
 ms.author: b-juche
-ms.openlocfilehash: 6041e863f6c887af35aa070f13e1406462ffc5b3
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 3db4999f1cb6185f02a40395842c30b9d77072b3
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041569"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489021"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Megoldásarchitektúrák az Azure NetApp Filesszal
 Ez a cikk az ajánlott eljárásokra mutató hivatkozásokat tartalmaz, amelyek segítségével megismerheti a Azure NetApp Files használatának megoldási architektúráit.  
@@ -34,9 +34,9 @@ Ez a szakasz a Linux OSS-alkalmazások és-adatbázisok megoldásaira mutató hi
 
 ### <a name="oracle"></a>Oracle
 
-* [Az Oracle-adatbázis teljesítménye az Azure NetApp Files önálló kötetein](performance-oracle-single-volumes.md)
 * [Oracle az Azure-beli üzembe helyezéssel kapcsolatos ajánlott eljárási útmutató az Azure NetApp Files](https://www.netapp.com/us/media/tr-4780.pdf)
 * [Oracle VM-rendszerképek és azok üzembe helyezése Microsoft Azure: megosztott tároló konfigurációs beállításai](../virtual-machines/workloads/oracle/oracle-vm-solutions.md#shared-storage-configuration-options)
+* [Az Oracle-adatbázis teljesítménye az Azure NetApp Files önálló kötetein](performance-oracle-single-volumes.md)
 * [Az Azure NetApp Files Oracle Database-szel való használatának előnyei](solutions-benefits-azure-netapp-files-oracle-database.md)
 
 ### <a name="machine-learning"></a>Machine Learning
@@ -77,10 +77,12 @@ Ez a szakasz az SAP Azure-megoldásokra mutató hivatkozásokat tartalmaz.
 * [A SAP HANA skálázás magas rendelkezésre állása Azure NetApp Filesekkel Red Hat Enterprise Linux](../virtual-machines/workloads/sap/sap-hana-high-availability-netapp-files-red-hat.md)
 * [SAP HANA az Azure-beli virtuális gépek készenléti csomópontjaival, a Azure NetApp Files a SUSE Linux Enterprise Server](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse.md)
 * [SAP HANA az Azure-beli virtuális gépek készenléti csomópontjaival, a Azure NetApp Files a Red Hat Enterprise Linux](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel.md)
+* [SAP HANA HSR és pacemaker a RHEL-ben – Azure Virtual Machines](../virtual-machines/workloads/sap/sap-hana-high-availability-scale-out-hsr-rhel.md)
 * [Azure Application konzisztens pillanatkép-eszköz (AzAcSnap)](azacsnap-introduction.md)
 
 ### <a name="sap-anydb"></a>SAP-AnyDB
 
+* [Oracle Azure Virtual Machines adatbázis-kezelői telepítés az SAP-munkaterheléshez – Azure Virtual Machines](../virtual-machines/workloads/sap/dbms_guide_oracle.md#oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-linux)
 * [SAP-AnyDB (Oracle 19c) üzembe helyezése Azure NetApp Files](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/deploy-sap-anydb-oracle-19c-with-azure-netapp-files/ba-p/2064043)
 
 ### <a name="sap-iq-nls"></a>SAP IQ – NLS

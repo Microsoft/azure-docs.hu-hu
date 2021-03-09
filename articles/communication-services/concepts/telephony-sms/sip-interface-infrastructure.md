@@ -8,12 +8,12 @@ ms.author: bobazile
 ms.date: 02/09/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 432a9dab851bda65ecf8736d725b08c5e726ac16
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a94aa0a0deea14cca2b558c602ff7e35ca0ba81f
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659256"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487380"
 ---
 # <a name="sip-interface-infrastructure-requirements"></a>A SIP-interfész infrastruktúrájának követelményei 
 
@@ -47,8 +47,8 @@ A következő táblázat példákat mutat be a bérlőhöz regisztrált DNS-neve
 
 |DNS-név|SBC teljes tartománynevet használhat.|Példa FQDN-nevekre|
 |:--- |:--- |:--- |
-contoso.com|Igen|**Érvényes nevek:**<br/>sbc1.contoso.com<br/>ssbcs15.contoso.com<br/>europe.contoso.com|
-|contoso.onmicrosoft.com|Nem|Az *. onmicrosoft.com tartományok használata nem támogatott az SBC-neveknél
+contoso.com|Yes|**Érvényes nevek:**<br/>sbc1.contoso.com<br/>ssbcs15.contoso.com<br/>europe.contoso.com|
+|contoso.onmicrosoft.com|No|Az *. onmicrosoft.com tartományok használata nem támogatott az SBC-neveknél
 
 Ha Ön Office 365-ügyfél, akkor az SBC-tartomány neve nem egyezhet meg az Office 365-bérlőben regisztrált tartományokban. Az alábbi példa az Office 365 és az Azure kommunikációs szolgáltatás együttes létezését mutatja be:
 
@@ -158,12 +158,12 @@ Az adathordozó-processzorok porttartomány a következő táblázatban láthat�
 
 ## <a name="media-traffic-media-processors-geography"></a>Média forgalma: a Media processors földrajza
 
-Az adathordozó-forgalom a Media processors nevű összetevőkön keresztül folyik. Az adathordozó-processzorok a SIP-proxykkal megegyező adatközpontokban vannak elhelyezve. Emellett a Media Flow optimalizálásához további adathordozó-processzorok is használhatók. Például nem rendelkezünk SIP proxy-összetevővel Ausztráliában (SIP-folyamatok Szingapúron vagy Hongkongon keresztül), de a média-feldolgozó helyileg van Ausztráliában. A helyi média-processzorok szükségességét a késéssel kell megszabni, amelyet a forgalom hosszú távú továbbítása okoz, például Ausztráliában, Szingapúrba vagy Hongkongba. Habár az Ausztráliából a Hongkongba vagy Szingapúrba áramló forgalom késése elfogadható a jó hívási minőség megőrzése érdekében a SIP-forgalom számára, a valós idejű adathordozó-forgalom esetében nem.
+Az adathordozó-forgalom a Media processors nevű összetevőkön keresztül folyik. Az adathordozó-processzorok a SIP-proxykkal megegyező adatközpontokban vannak elhelyezve. Emellett a Media Flow optimalizálásához további adathordozó-processzorok is használhatók. Például nem rendelkezünk SIP proxy-összetevővel Ausztráliában (SIP-forgalom Szingapúron vagy Hongkong KKT-n keresztül), de a média-feldolgozó helyileg van Ausztráliában. A helyi média-processzorok szükségességét a késéssel kell megszabni, amelyet a forgalom hosszú távú továbbítása okoz, például Ausztráliában – Szingapúr vagy Hongkong KKT. Habár az Ausztráliából a hongkongi SAR-re vagy Szingapúrba áramló forgalom késése elfogadható a jó hívási minőség megőrzése érdekében a SIP-forgalom számára, a valós idejű adathordozó-forgalom esetében nem.
 
 Hely, ahol a SIP-proxy és a Media Processor-összetevők is telepítve vannak:
 - USA (kettő az USA nyugati régiójában és az USA keleti adatközpontjában)
 - Európa (Amszterdam és dublini adatközpontok)
-- Ázsia (Szingapúr és Hong Kong-adatközpontok)
+- Ázsia (Szingapúr és Hongkong KKT-adatközpontok)
 - Ausztrália (Ausztrália keleti régiója és Délkelet-adatközpontok)
 
 Azok a helyszínek, ahol csak adathordozó-processzorok vannak telepítve (a SIP-folyamatok a fent felsorolt legközelebbi adatközponton keresztül):

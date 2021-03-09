@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 234a0137f0a9487a56b3e0343eaea375d2f9a1af
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 97b0a4ca3e4fb94a21cbd30a27a3037f45fed782
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043014"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487117"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Lekérdezés az Azure Cognitive Searchban
 
@@ -24,10 +24,11 @@ A Cognitive Searchban a lekérdezés egy kerekítési művelet teljes specifiká
 ```http
 POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 {
-    "queryType": "simple"
-    "search": "`New York` +restaurant",
-    "searchFields": "Description, Address/City, Tags",
-    "select": "HotelId, HotelName, Description, Rating, Address/City, Tags",
+    "queryType": "simple",
+    "searchMode": "all",
+    "search": "restaurant +view",
+    "searchFields": "HotelName, Description, Address/City, Address/StateProvince, Tags",
+    "select": "HotelName, Description, Address/City, Address/StateProvince, Tags",
     "top": "10",
     "count": "true",
     "orderby": "Rating desc"
@@ -38,9 +39,11 @@ A lekérdezés végrehajtása során használt paraméterek a következők:
 
 + **`queryType`** Beállítja az elemzőt, amely az [alapértelmezett egyszerű lekérdezés-elemző](search-query-simple-examples.md) (optimális a teljes szöveges kereséshez), vagy a speciális lekérdezési felépítéshez használt [teljes Lucene lekérdezés-elemző](search-query-lucene-examples.md) , például a reguláris kifejezések, a közelségi keresés, a fuzzy és a helyettesítő karakterek keresése, hogy csak néhányat említsünk.
 
++ **`searchMode`** Megadja, hogy a egyezések az "összes" feltétel vagy az "any" feltétel alapján jelennek-e meg a kifejezésben. Az alapértelmezett érték bármelyik.
+
 + **`search`** az egyeztetési feltételeket, általában a teljes kifejezéseket és kifejezéseket biztosítja operátorok segítségével vagy anélkül. Az index sémában *kereshetőként* megadott bármely mező erre a paraméterre van jelölt.
 
-+ **`searchFields`** a lekérdezés végrehajtásának korlátozása adott kereshető mezőkre.
++ **`searchFields`** a lekérdezés végrehajtásának korlátozása adott kereshető mezőkre. A fejlesztés során hasznos lehet ugyanazon mezőlista használata a Select és a Search kifejezéshez. Ellenkező esetben előfordulhat, hogy a egyezés az eredményekben nem látható mezőértékek alapján jelenik meg, ami bizonytalanságot eredményez a dokumentum visszaadásának okát illetően.
 
 A válasz formálásához használt paraméterek:
 
@@ -114,4 +117,4 @@ A lekérdezés megvalósításának alaposabb megtekintéséhez tekintse át az 
 
 + [Példák egyszerű lekérdezésre](search-query-simple-examples.md)
 + [Példák a speciális lekérdezések kiépítési Lucene](search-query-lucene-examples.md)
-+ [A teljes szöveges keresés működése az Azure Cognitive Searchben](search-lucene-query-architecture.md)
++ [A teljes szöveges keresés működése az Azure Cognitive Search](search-lucene-query-architecture.md)gitben

@@ -151,7 +151,7 @@
           items:
             - name: GitHub Actions
               href: quickstart-mysql-github-actions.md
-    - name: Hálózatkezelés
+    - name: Hálózat
       items:
         - name: Virtuális hálózati szolgáltatásvégpontok
           items:
@@ -430,6 +430,8 @@
               href: flexible-server/quickstart-create-arm-template.md
         - name: Csatlakozás és lekérdezés
           items:
+            - name: Azure CLI
+              href: flexible-server/connect-azure-cli.md
             - name: PHP
               href: flexible-server/connect-php.md
             - name: MySQL Workbench
@@ -481,7 +483,7 @@
           href: flexible-server/how-to-stop-start-server-portal.md
         - name: Kiszolgáló újraindítása Azure Portal használatával
           href: flexible-server/how-to-restart-server-portal.md
-    - name: Hálózatkezelés
+    - name: Hálózat
       items:
         - name: Alapelvek
           href: flexible-server/concepts-networking.md

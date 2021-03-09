@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: cc2a641cb017edace24db5df69bc4adf3a607524
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: d95da29b732e2d520b3413628c9b4a1c403abed6
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797874"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488230"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>Áttelepítési útmutató: az Azure-beli virtuális gépeken SQL Server SQL Server 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -58,6 +58,8 @@ További felderítési eszközök: az adatáttelepítési forgatókönyvekhez el
 
 
 ### <a name="assess"></a>Kiértékelés
+
+[!INCLUDE [assess-estate-with-azure-migrate](../../../../includes/azure-migrate-to-assess-sql-data-estate.md)]
 
 Miután felderítette az összes adatforrást, a [Data Migration Assistant (DMA)](/sql/dma/dma-overview) segítségével mérje fel a helyszíni SQL Server példányokat, amelyek áttelepíthetők az Azure-beli virtuális gépen SQL Server példányára, hogy megértse a forrás-és a cél példányok közötti hézagokat. 
 
@@ -123,7 +125,7 @@ A következő lépésekkel végezheti el a normál áttelepítést a biztonsági
 1. Az áttelepítésre szánt adatbázisokat használó alkalmazások szüneteltetése/leállítása. 
 1. Győződjön meg arról, hogy a felhasználói adatbázis (ok) inaktív az [egyfelhasználós módban](/sql/relational-databases/databases/set-a-database-to-single-user-mode). 
 1. Teljes adatbázis biztonsági mentése egy helyszíni helyre.
-1. Másolja a helyszíni biztonságimásolat-fájl (oka) t a virtuális gépre a távoli asztal, az [Azure adatkezelő](/azure/data-explorer/data-explorer-overview)vagy a [AZCopy parancssori segédprogram](../../../storage/common/storage-use-azcopy-v10.md) (> 2 TB biztonsági mentés ajánlott) használatával.
+1. Másolja a helyszíni biztonságimásolat-fájl (oka) t a virtuális gépre a távoli asztal, az [Azure adatkezelő](/azure/data-explorer/data-explorer-overview)vagy a [AZCopy parancssori segédprogram](../../../storage/common/storage-use-azcopy-v10.md) (> 2 TB-os biztonsági másolatok ajánlott) használatával.
 1. A teljes adatbázis biztonsági másolatának visszaállítása az Azure-beli virtuális gépen lévő SQL Serverra.
 
 ### <a name="log-shipping--minimize-downtime"></a>Napló szállítása (az állásidő csökkentése)
@@ -205,7 +207,7 @@ További információt ezekről a problémákról és az azok enyhítésére szo
 - [A teljesítmény finomhangolása az Azure SQL Virtual Machinesban](../../virtual-machines/windows/performance-guidelines-best-practices.md).
 - [Azure Cost-optimalizálási központ](https://azure.microsoft.com/overview/cost-optimization/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A SQL Server alkalmazandó szolgáltatások rendelkezésre állásának vizsgálatához tekintse meg az [Azure globális infrastruktúra-központot](https://azure.microsoft.com/global-infrastructure/services/?regions=all&amp;products=synapse-analytics,virtual-machines,sql-database)
 

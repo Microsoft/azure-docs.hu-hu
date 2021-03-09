@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 02/25/2021
 ms.author: jeedes
-ms.openlocfilehash: b471e113a7e5ae2277e275d53ff8ac8ca9187d1d
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 23b534f1ccbd51b028beeee173e5c3e0accd47a3
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98731219"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102486131"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-printerlogic-saas"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a PrinterLogic SaaS-vel
 
@@ -37,10 +37,10 @@ Első lépésként a következő elemeket kell megadnia:
 
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* A PrinterLogic SaaS támogatja **az SP és a identitásszolgáltató** által kezdeményezett SSO-t
-* A PrinterLogic SaaS **csak időben támogatja a** felhasználók üzembe helyezését
+* A PrinterLogic SaaS **az SP és a identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést támogatja.
+* A PrinterLogic SaaS **csak időben támogatja a** felhasználók üzembe helyezését.
 
-## <a name="adding-printerlogic-saas-from-the-gallery"></a>A PrinterLogic SaaS hozzáadása a katalógusból
+## <a name="add-printerlogic-saas-from-the-gallery"></a>A PrinterLogic SaaS hozzáadása a katalógusból
 
 A PrinterLogic SaaS Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a PrinterLogic SaaS-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
@@ -146,17 +146,16 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 #### <a name="sp-initiated"></a>Az SP inicializálva:
 
-* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja a AskYourTeam bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot.  
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. Ekkor a rendszer átirányítja a PrinterLogic SaaS-bejelentkezési URL-címre, ahol elindíthatja a bejelentkezési folyamatot.  
 
-* Lépjen közvetlenül a AskYourTeam bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
+* Lépjen közvetlenül a PrinterLogic SaaS bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
 
 #### <a name="idp-initiated"></a>IDENTITÁSSZOLGÁLTATÓ kezdeményezve:
 
-* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie arra a AskYourTeam, amelyhez be szeretné állítani az egyszeri bejelentkezést 
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie arra a PrinterLogic SaaS-be, amelyhez be szeretné állítani az egyszeri bejelentkezést. 
 
-A Microsoft My Apps használatával bármilyen módban tesztelheti az alkalmazást. Ha a saját alkalmazások AskYourTeam csempére kattint, ha az SP módban van konfigurálva, a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat kezdeményezéséhez, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie arra a AskYourTeam, amelyhez be szeretné állítani az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
+A Microsoft My Apps használatával bármilyen módban tesztelheti az alkalmazást. Ha a saját alkalmazások PrinterLogic SaaS csempére kattint, ha az SP módban van konfigurálva, a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat kezdeményezéséhez, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie a PrinterLogic SaaS-be, amelyhez be kell állítania az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
+## <a name="next-steps"></a>Következő lépések
 
-## <a name="next-steps"></a>További lépések
-
-A PrinterLogic SaaS konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
+A PrinterLogic SaaS konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

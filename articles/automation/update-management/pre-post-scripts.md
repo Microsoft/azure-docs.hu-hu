@@ -3,14 +3,14 @@ title: Az Azure-ban Update Management üzembe helyezés előtti parancsfájlok �
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja és kezelheti az előzetes parancsfájlokat és a parancsfájlokat a frissítések telepítéséhez.
 services: automation
 ms.subservice: update-management
-ms.date: 12/17/2020
+ms.date: 03/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 3ca1dec1b6139f3192edb09f8748c8f23a9d399e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ce60c773626d951062de3cc830b898e3b875f3cb
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101701501"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485537"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Előzetes és utólagos szkriptek kezelése
 
@@ -19,6 +19,8 @@ A szkriptek előtti és utáni parancsfájlokat a rendszer a frissítés közpon
 ## <a name="pre-script-and-post-script-requirements"></a>Parancsfájl előtti és parancsfájl utáni követelmények
 
 Ahhoz, hogy egy runbook előre megírt vagy post-parancsfájlként lehessen használni, importálnia kell az Automation-fiókjába, és [közzé kell tennie a runbook](../manage-runbooks.md#publish-a-runbook).
+
+Jelenleg csak a PowerShell és a Python 2 runbookok használhatók előzetes/post parancsfájlként. Más runbook típusok, mint például a Python 3, a grafikus, a PowerShell-munkafolyamat, a grafikus PowerShell-munkafolyamat jelenleg nem támogatott a Pre/post parancsfájlként.
 
 ## <a name="pre-script-and-post-script-parameters"></a>Parancsfájl előtti és parancsfájl utáni paraméterek
 
@@ -91,9 +93,6 @@ Az összes tulajdonsággal rendelkező teljes példa a következő helyen talál
 > [!NOTE]
 > Az `SoftwareUpdateConfigurationRunContext` objektum tartalmazhat duplikált bejegyzéseket a gépekhez. Ennek hatására előfordulhat, hogy az előparancsfájlok és a szkriptek többször is futhatnak ugyanazon a gépen. Ennek a viselkedésnek a megkerülő megoldásához `Sort-Object -Unique` a használatával válassza ki a csak egyedi virtuális gépek nevét.
 
-> [!NOTE]
-> Jelenleg csak a PowerShell-runbookok támogatottak a Pre/post parancsfájlként. Más runbook típusok, mint például a Python, a grafikus, a PowerShell-munkafolyamat, a grafikus PowerShell-munkafolyamat jelenleg nem támogatott a Pre/post parancsfájlként.
-
 ## <a name="use-a-pre-script-or-post-script-in-a-deployment"></a>Egy üzembe helyezés előtti vagy utáni parancsfájl használata
 
 Ha egy frissítés előtti vagy utáni parancsfájlt szeretne használni egy frissítési telepítésben, először hozzon létre egy frissítés központi telepítését. Válassza a **Pre-Scripts + post-Scripts** elemet. Ez a művelet megnyitja a **Select pre-Scripts + post-Scripts** oldalt.
@@ -120,7 +119,7 @@ A frissítés központi telepítésének kiválasztásával további részleteke
 
 ## <a name="stop-a-deployment"></a>Központi telepítés leállítása
 
-Ha egy előzetes parancsfájl alapján szeretné leállítani a központi telepítést, kivételt kell [eldobnia](../automation-runbook-execution.md#throw) . Ha nem, a telepítés és a parancsfájl utáni Futtatás továbbra is futni fog. A következő kódrészlet bemutatja, hogyan lehet kivételt kidobni.
+Ha egy előzetes parancsfájl alapján szeretné leállítani a központi telepítést, kivételt kell [eldobnia](../automation-runbook-execution.md#throw) . Ha nem, a telepítés és a parancsfájl utáni Futtatás továbbra is futni fog. A következő kódrészlet bemutatja, hogyan lehet kivételt kidobni a PowerShell használatával.
 
 ```powershell
 #In this case, we want to terminate the patch job if any run fails.
@@ -134,6 +133,8 @@ foreach($summary in $finalStatus)
     }
 }
 ```
+
+A Python 2 esetében a kivételek kezelése egy [Try](https://www.python-course.eu/exception_handling.php) blokkban történik.
 
 ## <a name="interact-with-machines"></a>Számítógépekkel való kommunikáció
 
@@ -169,6 +170,13 @@ if (<My custom error logic>)
     #Throw an error to fail the patch deployment.
     throw "There was an error, abort deployment"
 }
+```
+
+A Python 2 esetében, ha egy bizonyos feltétel bekövetkezésekor hibát szeretne kimutatni, használjon egy [Raise](https://docs.python.org/2.7/reference/simple_stmts.html#the-raise-statement) utasítást.
+
+```python
+If (<My custom error logic>)
+   raise Exception('Something happened.')
 ```
 
 ## <a name="samples"></a>Példák

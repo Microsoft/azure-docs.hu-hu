@@ -9,14 +9,17 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 88948f757c41550124acf20ac1cf0e33cdb3e5ba
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 88a5ad66cb401715790bcff8c773e6d7881b103d
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660157"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487695"
 ---
 # <a name="communication-services-notifications"></a>Kommunikációs szolgáltatások értesítései
+
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
+
 
 Az Azure kommunikációs szolgáltatások csevegési és Meghívási ügyfélszoftvere olyan valós idejű üzenetkezelési csatornát hoz létre, amely lehetővé teszi, hogy a rendszer hatékony, megbízható módon továbbítsa az üzeneteket a csatlakoztatott ügyfeleknek. Ez lehetővé teszi, hogy a bonyolult HTTP-lekérdezési logika megvalósítása nélkül hozzon létre gazdag és valós idejű kommunikációs funkciókat az alkalmazásaiba. A mobil alkalmazásokban azonban ez a jelző csatorna csak akkor marad csatlakoztatva, ha az alkalmazás az előtérben van aktív. Ha azt szeretné, hogy a felhasználók fogadják a bejövő hívásokat vagy csevegési üzeneteket, amíg az alkalmazása a háttérben van, akkor leküldéses értesítéseket kell használnia.
 

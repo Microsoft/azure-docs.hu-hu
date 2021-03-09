@@ -8,23 +8,24 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: tutorial
-ms.date: 05/29/2020
+ms.date: 02/24/2021
 ms.author: ambapat
-ms.openlocfilehash: 8a1f3b5e80152fb0fb9458aef0d3524dd2d6f5eb
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 511544f81f6de887014545e3f4bbc7a4172fc91e
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092329"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488749"
 ---
 # <a name="import-hsm-protected-keys-for-key-vault-ncipher"></a>HSM-védelemmel ellátott kulcsok importálása Key Vaulthoz (nCipher)
+
+> [!WARNING]
+> A jelen dokumentumban ismertetett HSM-Key importálási módszer **elavult** , és a jövőben nem lesz támogatott. Ez csak a nCipher nShield HSM, belső vezérlőprogram-12.40.2 vagy 12,50-es verzióval működik gyorsjavítással. A [HSM-kulcsok importálására szolgáló új módszer](hsm-protected-keys-byok.md) használata erősen ajánlott.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Ha további garanciára van szüksége, amikor Azure Key Vault használ, a hardveres biztonsági modulokban (HSM) olyan kulcsokat importálhat vagy generálhat, amelyek soha nem hagyják el a HSM-határt. Ennek a megoldásnak a neve *saját kulcs használata*, angol betűszóval BYOK. A Azure Key Vault a HSM (FIPS 140-2 2. szint) nCipher nShield-családját használja a kulcsok elleni védelemhez.
 
-> [!NOTE]
-> A jelen dokumentumban ismertetett HSM-Key importálási módszer csak a nCipher nShield Family of HSM szolgáltatással működik. A HSM-kulcsok más HSM való importálásáról [itt talál további információt](hsm-protected-keys-byok.md).
 
 A témakörben található információk segítségével megtervezheti, létrehozhatja és átviheti a saját HSM-védelemmel ellátott kulcsait, hogy azok a Azure Key Vault használatával legyenek használatban. 
 

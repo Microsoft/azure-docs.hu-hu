@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: 59c000a816d55d248febb841b695d366cb9979cc
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 9074480f44e75a90c202f0d0813c43aed1f7ba95
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102455229"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488205"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Áttelepítési Áttekintés: SQL Server a felügyelt SQL-példányhoz
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -88,6 +88,7 @@ A következő táblázat a javasolt áttelepítési eszközöket sorolja fel:
 
 |Technológia | Leírás|
 |---------|---------|
+| [Azure Migrate](/azure/migrate/how-to-create-azure-sql-assessment) | Az Azure SQL Azure Migrate lehetővé teszi, hogy az SQL-adatkészletet a VMware platformon Fedezze fel és mérje fel, így biztosítva az Azure SQL-telepítésre vonatkozó javaslatokat, a cél méretezését és a havi becsléseket. | 
 |[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md)  | Az első fél Azure-szolgáltatás, amely támogatja az offline módban való áttelepítést az áttelepítési folyamat során állásidőt biztosító alkalmazások esetében. Az online módban való folyamatos áttelepítéstől eltérően az offline módú áttelepítés a teljes adatbázis biztonsági másolatának egyszeri visszaállítását futtatja a forrásról a célra. | 
 |[Natív biztonsági mentés és visszaállítás](../../managed-instance/restore-sample-database-quickstart.md) | A felügyelt SQL-példány támogatja a natív SQL Server adatbázis biztonsági másolatainak (. bak fájlok) VISSZAÁLLÍTÁSát, így a legkönnyebb áttelepítési lehetőség azon ügyfelek számára, akik teljes adatbázis-biztonsági mentést biztosíthatnak az Azure Storage-ba. A teljes és a különbözeti biztonsági másolatok is támogatottak és dokumentálva vannak az [áttelepítési eszközök szakaszban](#migration-assets) , a cikk későbbi részében.| 
 |[A log Replay szolgáltatás (LRS)](../../managed-instance/log-replay-service-migrate.md) | Ez egy felhőalapú szolgáltatás, amely a SQL Server naplózási technológia alapján engedélyezve van a felügyelt példányok számára, így áttelepítési lehetőséget biztosít azon ügyfelek számára, akik teljes, differenciált és naplózási adatbázist tudnak készíteni az Azure Storage-ba. A LRS az Azure Blob Storageról az SQL felügyelt példányra történő biztonsági mentési fájlok visszaállítására szolgál.| 

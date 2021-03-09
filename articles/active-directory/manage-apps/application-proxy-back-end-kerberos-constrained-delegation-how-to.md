@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/23/2019
 ms.author: kenwith
 ms.reviewer: asteen, japere
-ms.openlocfilehash: 65d68924fbc3a777ef7ef59d2532a1ae20e23c48
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: b8562f3bdd82b5b0c2c1340f511f87ad90dfbe3b
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258218"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487950"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Az alkalmazásproxy Kerberos által korlátozott delegálási konfigurációinak hibaelhárítása
 
@@ -161,7 +161,7 @@ Ha továbbra sem tudja elérni a folyamatot, a Microsoft támogatási szolgálat
 ## <a name="other-scenarios"></a>Egyéb forgatókönyvek
 
 - Az Azure Application proxy egy Kerberos-jegyet kér, mielőtt elküldené a kérelmét egy alkalmazásnak. Egyes harmadik féltől származó alkalmazások nem szeretik ezt a hitelesítési módszert. Ezek az alkalmazások a hagyományosabb tárgyalásokra várnak. Az első kérelem névtelen, amely lehetővé teszi az alkalmazás számára, hogy válaszoljon az általa támogatott hitelesítési típusokra 401-en keresztül. Az ilyen típusú Kerberos-egyeztetés a jelen dokumentumban ismertetett lépések használatával engedélyezhető: a Kerberos által [korlátozott delegálás az egyszeri bejelentkezéshez](application-proxy-configure-single-sign-on-with-kcd.md).
-- A Többugrásos hitelesítés általában olyan esetekben használatos, amikor egy alkalmazás többszintű, háttér-és előtér-szolgáltatással rendelkezik, ahol mindkét esetben hitelesítés szükséges, például SQL Server Reporting Services. A Többugrásos forgatókönyv konfigurálását lásd: a Kerberos által korlátozott delegálás támogatását ismertető cikk a [több ugrásos forgatókönyvekben történő protokoll-áttérést is szükségessé teheti](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul).
+- A Többugrásos hitelesítés általában olyan esetekben használatos, amikor egy alkalmazás többszintű, háttér-és előtér-szolgáltatással rendelkezik, ahol mindkét esetben hitelesítés szükséges, például SQL Server Reporting Services. További részletek: a [Kerberos által korlátozott delegálás konfigurálása webes igénylési proxy lapokhoz](/troubleshoot/windows-server/identity/configure-kerberos-constrained-delegation).
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, sstein
 ms.date: 02/11/2019
-ms.openlocfilehash: d62d568b4924a2bfa67740b3e5f0cc1377519d47
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bef1e9bdafd91a51290fe84af074c8cece7cc371
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91335041"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102486726"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-using-the-azure-portal"></a>Gyors útmutató: kiszolgálói szintű tűzfalszabály létrehozása a Azure Portal használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -58,7 +58,7 @@ Kövesse az alábbi lépéseket egy kiszolgálói szintű IP-tűzfalszabály lé
    > Alapértelmezés szerint a Azure SQL Database tűzfalon keresztüli hozzáférés le van tiltva az összes Azure-szolgáltatás esetében. Ha engedélyezni szeretné az összes Azure-szolgáltatás elérését, válassza az ezen **a** lapon lehetőséget.
    >
 
-5. Válassza a **Mentés** lehetőséget. A rendszer a kiszolgálón a 1433-as portot nyitja meg a jelenlegi IP-címhez.
+5. Kattintson a **Mentés** gombra. A rendszer a kiszolgálón a 1433-as portot nyitja meg a jelenlegi IP-címhez.
 
 6. A **tűzfalbeállítások** oldalának lezárása.
 
@@ -68,10 +68,10 @@ Ha SQL Server Management Studio vagy egy másik eszközt használ, a korábban l
 
 Mentse ezeket az erőforrásokat, ha a [Következő lépésekre](#next-steps) szeretne lépni, és meg szeretné tudni, hogyan milyen módokon csatlakozhat az adatbázishoz és végezhet róla lekérdezéseket. Ha azonban törölni szeretné az ebben a rövid útmutatóban létrehozott erőforrásokat, kövesse az alábbi lépéseket.
 
-1. A Azure Portal bal oldali menüjében válassza az **erőforráscsoportok** lehetőséget, majd válassza a **myResourceGroup**lehetőséget.
-2. Az erőforráscsoport lapon válassza a **Törlés**lehetőséget, írja be a **myResourceGroup** szöveget a szövegmezőbe, majd válassza a **Törlés**lehetőséget.
+1. A Azure Portal bal oldali menüjében válassza az **erőforráscsoportok** lehetőséget, majd válassza a **myResourceGroup** lehetőséget.
+2. Az erőforráscsoport lapon válassza a **Törlés** lehetőséget, írja be a **myResourceGroup** szöveget a szövegmezőbe, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Most, hogy rendelkezik egy adatbázissal, [kapcsolódhat hozzá és lekérdezéseket hajthat végre rajta](connect-query-content-reference-guide.md) a kedvenc eszközeinek vagy nyelveinek egyikével, többek között
   - [Kapcsolódás és lekérdezés az SQL Server Management Studióval](connect-query-ssms.md)

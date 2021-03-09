@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 02/25/2021
 ms.custom: generated
-ms.openlocfilehash: 1ee422d4c040e8546135981e0640484acc997b0a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c91172ff110b950335c66f2c0ea9ac59c37e0a76
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718726"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487851"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure erőforrás-szolgáltatói műveletek
 
@@ -50,6 +50,7 @@ A műveletek listájának megtekintéséhez kattintson az erőforrás-szolgálta
 | [Microsoft. storagesync](#microsoftstoragesync) |
 | [Microsoft. StorSimple](#microsoftstorsimple) |
 | **Web** |
+| [Microsoft. AppPlatform](#microsoftappplatform) |
 | [Microsoft. CertificateRegistration](#microsoftcertificateregistration) |
 | [Microsoft. DomainRegistration](#microsoftdomainregistration) |
 | [Microsoft. Maps](#microsoftmaps) |
@@ -662,7 +663,7 @@ Azure-szolgáltatás: [Service Fabric](../service-fabric/index.yml)
 > | Microsoft. ServiceFabric/Locations/Operations/READ | Bármilyen művelet beolvasása hely szerint |
 > | Microsoft. ServiceFabric/Operations/READ | Az összes elérhető művelet beolvasása |
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 ### <a name="microsoftcdn"></a>Microsoft. CDN
 
@@ -2047,6 +2048,62 @@ Azure-szolgáltatás: [StorSimple](../storsimple/index.yml)
 > | Microsoft. StorSimple/Operations/READ | A műveletek listája vagy beolvasása |
 
 ## <a name="web"></a>Webes
+
+### <a name="microsoftappplatform"></a>Microsoft. AppPlatform
+
+Azure-szolgáltatás: [Azure Spring Cloud](../spring-cloud/index.yml)
+
+> [!div class="mx-tableFixed"]
+> | Művelet | Leírás |
+> | --- | --- |
+> | Microsoft. AppPlatform/regisztráció/művelet | Regisztrálja az előfizetést a Microsoft. AppPlatform erőforrás-szolgáltatón |
+> | Microsoft. AppPlatform/regisztráció/művelet | Előfizetés regisztrációjának törlése a Microsoft. AppPlatform erőforrás-szolgáltatótól |
+> | Microsoft. AppPlatform/Locations/checkNameAvailability/Action | Erőforrás nevének rendelkezésre állásának keresése |
+> | Microsoft. AppPlatform/Locations/operationResults/Spring/READ | Erőforrás-művelet eredményének beolvasása |
+> | Microsoft. AppPlatform/Locations/operationStatus/operationId/READ | Erőforrás-művelet állapotának olvasása |
+> | Microsoft. AppPlatform/Operations/READ | Microsoft Azure Spring Cloud elérhető műveleteinek listázása |
+> | Microsoft. AppPlatform/SKU/READ | Microsoft Azure Spring Cloud elérhető SKU-i listája |
+> | Microsoft. AppPlatform/Spring/Write | Adott Azure Spring Cloud Service-példány létrehozása vagy frissítése |
+> | Microsoft. AppPlatform/Spring/delete | Adott Azure Spring Cloud Service-példány törlése |
+> | Microsoft. AppPlatform/Spring/READ | Azure Spring Cloud Service-példány (ok) beszerzése |
+> | Microsoft. AppPlatform/Spring/enableTestEndpoint/művelet | Tesztelési végpont funkciójának engedélyezése egy adott Azure Spring Cloud Service-példányhoz |
+> | Microsoft. AppPlatform/Spring/disableTestEndpoint/művelet | Tesztelési végpont funkcióinak letiltása egy adott Azure Spring Cloud Service-példányhoz |
+> | Microsoft. AppPlatform/Spring/listTestKeys/művelet | Adott Azure Spring Cloud Service-példányhoz tartozó tesztelési kulcsok listázása |
+> | Microsoft. AppPlatform/Spring/regenerateTestKey/művelet | Adott Azure Spring Cloud Service-példány tesztelési kulcsának újralétrehozása |
+> | Microsoft. AppPlatform/Spring/apps/írás | Az alkalmazás létrehozása vagy frissítése egy adott Azure Spring Cloud Service-példányhoz |
+> | Microsoft. AppPlatform/Spring/apps/delete | Az alkalmazás törlése egy adott Azure Spring Cloud Service-példányhoz |
+> | Microsoft. AppPlatform/Spring/apps/READ | Alkalmazások beszerzése egy adott Azure Spring Cloud Service-példányhoz |
+> | Microsoft. AppPlatform/Spring/apps/getResourceUploadUrl/Action | Egy adott Microsoft Azure Spring Cloud-alkalmazás erőforrás-feltöltési URL-címének beolvasása |
+> | Microsoft. AppPlatform/Spring/apps/validateDomain/Action | Egy adott alkalmazás egyéni tartományának ellenőrzése |
+> | Microsoft. AppPlatform/Spring/apps/kötések/írás | Egy adott alkalmazás kötésének létrehozása vagy frissítése |
+> | Microsoft. AppPlatform/Spring/apps/kötések/törlés | Egy adott alkalmazás kötésének törlése |
+> | Microsoft. AppPlatform/Spring/apps/kötések/olvasás | Egy adott alkalmazás kötésének beolvasása |
+> | Microsoft. AppPlatform/Spring/apps/üzembe helyezés/írás | Egy adott alkalmazás központi telepítésének létrehozása vagy frissítése |
+> | Microsoft. AppPlatform/Spring/apps/üzembe helyezés/törlés | Egy adott alkalmazás központi telepítésének törlése |
+> | Microsoft. AppPlatform/Spring/apps/üzembe helyezés/olvasás | Egy adott alkalmazás központi telepítésének beolvasása |
+> | Microsoft. AppPlatform/Spring/apps/üzembe helyezés/indítás/művelet | Egy adott alkalmazás üzembe helyezésének elindítása |
+> | Microsoft. AppPlatform/Spring/apps/üzembe helyezés/leállítás/művelet | Egy adott alkalmazás központi telepítésének leállítása |
+> | Microsoft. AppPlatform/Spring/apps/üzembe helyezés/újraindítás/művelet | Egy adott alkalmazás központi telepítésének újraindítása |
+> | Microsoft. AppPlatform/Spring/apps/üzembe helyezés/getLogFileUrl/művelet | Egy adott Microsoft Azure Spring Cloud Application-telepítés naplófájljának URL-címének beolvasása |
+> | Microsoft. AppPlatform/Spring/apps/üzembe helyezés/SKU/READ | Egy alkalmazás központi telepítésének elérhető SKU-i listája |
+> | Microsoft. AppPlatform/Spring/apps/tartományok/írás | Egyéni tartomány létrehozása vagy frissítése egy adott alkalmazáshoz |
+> | Microsoft. AppPlatform/Spring/apps/tartományok/törlés | Egy adott alkalmazás egyéni tartományának törlése |
+> | Microsoft. AppPlatform/Spring/apps/tartományok/olvasás | Egy adott alkalmazás egyéni tartományának beolvasása |
+> | Microsoft. AppPlatform/Spring/Certificates/Write | Egy adott Azure Spring Cloud Service-példány tanúsítványának létrehozása vagy frissítése |
+> | Microsoft. AppPlatform/Spring/Certificates/delete | Egy adott Azure Spring Cloud Service-példány tanúsítványának törlése |
+> | Microsoft. AppPlatform/Spring/Certificates/READ | Egy adott Azure Spring Cloud Service-példány tanúsítványainak beszerzése |
+> | Microsoft. AppPlatform/Spring/configServers/READ | A konfigurációs kiszolgáló beszerzése egy adott Azure Spring Cloud Service-példányhoz |
+> | Microsoft. AppPlatform/Spring/configServers/Write | A konfigurációs kiszolgáló létrehozása vagy frissítése egy adott Azure Spring Cloud Service-példányhoz |
+> | Microsoft. AppPlatform/Spring/üzembe helyezés/olvasás | Egy adott Azure Spring Cloud Service-példány üzembe helyezésének beolvasása |
+> | Microsoft. AppPlatform/Spring/érzékelők/olvasás | Egy adott Azure Spring Cloud Service-példány észlelésének beolvasása |
+> | Microsoft. AppPlatform/Spring/monitoringSettings/READ | Egy adott Azure Spring Cloud Service-példány figyelési beállításának beolvasása |
+> | Microsoft. AppPlatform/Spring/monitoringSettings/Write | Egy adott Azure Spring Cloud Service-példány figyelési beállításának létrehozása vagy frissítése |
+> | **DataAction** | **Leírás** |
+> | Microsoft. AppPlatform/Spring/configService/READ | Egy adott Azure Spring Cloud Service-példány konfigurációs tartalmának (például Application. YAML) olvasása |
+> | Microsoft. AppPlatform/Spring/eurekaService/READ | A felhasználói alkalmazás (ok) regisztrációs információinak beolvasása egy adott Azure Spring Cloud Service-példányhoz |
+> | Microsoft. AppPlatform/Spring/eurekaService/Write | A felhasználói alkalmazás (ok) regisztrációs adatainak megírása egy adott Azure Spring Cloud Service-példányhoz |
+> | Microsoft. AppPlatform/Spring/eurekaService/delete | A felhasználói alkalmazás regisztrációs adatainak törlése egy adott Azure Spring Cloud Service-példányhoz |
+> | Microsoft. AppPlatform/Spring/logstreamService/READ | Egy adott Azure Spring Cloud Service-példányhoz tartozó felhasználói alkalmazás adatfolyam-naplójának beolvasása |
 
 ### <a name="microsoftcertificateregistration"></a>Microsoft. CertificateRegistration
 
@@ -7673,7 +7730,7 @@ Azure-szolgáltatás: [Azure DevOps](/azure/devops/)
 > | Microsoft. VisualStudio/Project/delete | Projekt törlése |
 > | Microsoft. VisualStudio/Project/READ | Projekt beolvasása |
 
-## <a name="migrate"></a>Migrálja a(z)
+## <a name="migrate"></a>Migrate
 
 ### <a name="microsoftmigrate"></a>Microsoft. Migrálás
 

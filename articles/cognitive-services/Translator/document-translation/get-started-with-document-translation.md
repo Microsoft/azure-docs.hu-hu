@@ -5,13 +5,13 @@ ms.topic: how-to
 manager: nitinme
 ms.author: lajanuar
 author: laujan
-ms.date: 02/11/2021
-ms.openlocfilehash: 886889ef9a42e358fca22a9d86955a23c5419dfa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/05/2021
+ms.openlocfilehash: cb6b3af8d8fb6c2d3fe63964e59f8e3e32f0f0fd
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738157"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102486658"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Ismerkedés a dokumentumok fordításával (előzetes verzió)
 
@@ -19,27 +19,27 @@ ms.locfileid: "101738157"
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+> [!NOTE]
+> Általában, amikor a Azure Portalban létrehoz egy kognitív szolgáltatási erőforrást, lehetősége van egy több szolgáltatásból álló előfizetési kulcs vagy egy egyszolgáltatásos előfizetési kulcs létrehozására. A dokumentumok fordítása azonban jelenleg csak a Translator (Single Service) erőforrásban támogatott, és **nem** szerepel a Cognitive Services (több szolgáltatás) erőforrásban.
+
 A kezdéshez a következőkre lesz szüksége:
 
 * Aktív [**Azure-fiók**](https://azure.microsoft.com/free/cognitive-services/).  Ha még nem rendelkezik ilyennel, [**létrehozhat egy ingyenes fiókot**](https://azure.microsoft.com/free/).
 
-* Egy [**Translator**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) Service-erőforrás (**nem** Cognitive Services erőforrás). 
+* Egy [**Translator**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) Service-erőforrás (**nem** Cognitive Services erőforrás).
 
-* Egy [**Azure Blob Storage-fiók**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Az Azure Storage-hoz való összes hozzáférés egy Storage-fiókon keresztül történik.
+* Egy [**Azure Blob Storage-fiók**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). A blob-adatai tárolásához és rendszerezéséhez tárolókat kell létrehoznia a Storage-fiókon belül.
 
 * Egy befejezett [**dokumentum fordítása (előzetes verzió) űrlap**](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-riVR3Xj0tOnIRdZOALbM9UOEE4UVdFQVBRQVBWWDBRQUM3WjYxUEpUTC4u) , amely lehetővé teszi, hogy az Azure-előfizetése az új dokumentum-fordítási funkciót használja.
-
-> [!NOTE]
-> A dokumentumok fordítása jelenleg csak a Translator (Single-Service) erőforrásban támogatott, **nem** pedig a Cognitive Services (több szolgáltatás) erőforrás.
 
 ## <a name="get-your-custom-domain-name-and-subscription-key"></a>Egyéni tartománynév és előfizetési kulcs beszerzése
 
 > [!IMPORTANT]
 >
-> * Nem használhatja a végpontot a Azure Portal erőforrás- _kulcsok és a végpontok_ oldalán, sem a globális Translator végponton –, `api.cognitive.microsofttranslator.com` hogy http-kéréseket lehessen felvenni a dokumentumok fordítására.
+> * Nem fogja használni a végpontot a Azure Portal erőforrás _kulcsainak és a végpontok_ lapján, sem a globális Translator végponton –, `api.cognitive.microsofttranslator.com` hogy http-kéréseket lehessen felvenni a dokumentumok fordítására.
 > * **A dokumentum-fordítási szolgáltatáshoz tartozó összes API-kérelemhez egyéni tartományi végpont szükséges**.
 
-### <a name="what-is-the-custom-domain-endpoint"></a>Mi az egyéni tartomány végpontja? 
+### <a name="what-is-the-custom-domain-endpoint"></a>Mi az egyéni tartomány végpontja?
 
 Az egyéni tartomány végpontja az erőforrás neve, az állomásnév és a fordító alkönyvtárral formázott URL-cím:
 
@@ -72,9 +72,9 @@ A Translator Service-kérelmekhez csak olvasható kulcs szükséges a hozzáfér
 * **Cél tároló**. Ebben a tárolóban lesznek tárolva a lefordított fájlok (kötelező).  
 * **Szószedet-tároló**. Ebben a tárolóban töltheti fel a Szószedet fájljait (opcionális).  
 
-*Lásd:* **sas hozzáférési jogkivonatok létrehozása dokumentum fordításához**
+### <a name="create-sas-access-tokens-for-document-translation"></a>**SAS hozzáférési jogkivonatok létrehozása a dokumentumok fordításához**
 
-A `sourceUrl` , `targetUrl` , és opcionálisan `glossaryUrl`  tartalmaznia kell egy közös hozzáférésű aláírás (SAS) tokent, amely lekérdezési karakterláncként van hozzáfűzve. A jogkivonat hozzárendelhető a tárolóhoz vagy egy adott blobhoz.
+A `sourceUrl` , `targetUrl` , és opcionálisan `glossaryUrl`  tartalmaznia kell egy közös hozzáférésű aláírás (SAS) tokent, amely lekérdezési karakterláncként van hozzáfűzve. A jogkivonat hozzárendelhető a tárolóhoz vagy egy adott blobhoz. *Lásd:* [**sas-jogkivonatok létrehozása dokumentum-fordítási folyamathoz**](create-sas-tokens.md).
 
 * A **forrás** tárolónak vagy a blobnak kijelölt  **olvasási** és **listázási** hozzáféréssel kell rendelkeznie.
 * A **célként** megadott tárolónak vagy blobnak a kijelölt  **írási** és **listázási** hozzáféréssel kell rendelkeznie.
@@ -271,7 +271,9 @@ A következő fejlécek szerepelnek az egyes Document Translator API-kérelmekbe
 
 > [!IMPORTANT]
 >
-> Az alábbi kód-minták esetében előfordulhat, hogy a művelettől függően frissítenie kell a következő mezőket:
+> Az alábbi kódrészletek esetében a kulcsot és a végpontot a jelzett módon kell megadnia. Ne felejtse el eltávolítani a kulcsot a kódból, ha elkészült, és soha ne tegye közzé nyilvánosan.  A hitelesítő adatok biztonságos tárolásához és eléréséhez tekintse meg az [Azure Cognitive Services biztonsága](/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp) című témakört.
+>
+> Előfordulhat, hogy a művelettől függően frissítenie kell a következő mezőket:
 >>>
 >> * `endpoint`
 >> * `subscriptionKey`
@@ -280,13 +282,18 @@ A következő fejlécek szerepelnek az egyes Document Translator API-kérelmekbe
 >> * `glossaryURL`
 >> * `id`  (Job ID)
 >>
-> Hol találja meg az `id` értéket:
-> * A feladatot a `id`  post metódus válasz fejlécének `Operation-Location`  URL-értékében találja. Az URL-cím utolsó paramétere a művelet feladata **`id`** .  
-> * A feladatok beolvasása kérelem használatával is lekérheti a feladatot `id`  egy dokumentum-fordítási művelethez.
+
+#### <a name="locating--the-id-value"></a>Az érték megkeresése `id`
+
+* A feladatot a `id`  post metódus válasz fejlécének `Operation-Location`  URL-címe értékében találja. Az URL-cím utolsó paramétere a művelet feladata **`id`** :
+
+|**Válasz fejléce**|**Eredmény URL-címe**|
+|-----------------------|----------------|
+Operation-Location   | a https://<<span>saját erőforrás->. cognitiveservices.Azure.com/Translator/Text/batch/v1.0-preview.1/batches/9dce0aa9-78dc-41ba-8cae-2e2f3c2ff8ec</span>
+
+* Egy dokumentum fordítási feladatának lekérése a **feladatok beolvasása** kérelem használatával is elvégezhető `id` .
+
 >
-> Az alábbi kódrészletek esetében a kulcsot és a végpontot a jelzett módon kell megadnia. Ne felejtse el eltávolítani a kulcsot a kódból, ha elkészült, és soha ne tegye közzé nyilvánosan.  
->
-> A hitelesítő adatok biztonságos tárolásához és eléréséhez tekintse meg az [Azure Cognitive Services biztonsága](/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp) című témakört.
 
 ## <a name="_post-document-translation_-request"></a>_Dokumentum-fordítási kérelem küldése_
 

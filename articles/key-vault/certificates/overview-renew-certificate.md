@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 0720e6b55cec8150eea9d41ca89b2c9b21a0bc94
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: c7948230164258aa785f3dd6c1f487c51ece9333
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287683"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487185"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>Azure Key Vault-tanúsítványok megújítása
 
@@ -73,13 +73,16 @@ Az új CSR létrehozásával kapcsolatos további információkért lásd: [CSR 
 A Azure Key Vault az önaláírt tanúsítványok automatikus megújítását is kezeli. Ha többet szeretne megtudni a kiállítási szabályzat módosításáról és a tanúsítvány életciklus-attribútumainak frissítéséről, tekintse meg a [tanúsítvány autorotációjának konfigurálása Key Vaultban](./tutorial-rotate-certificates.md#update-lifecycle-attributes-of-a-stored-certificate)című témakört.
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
-Ha a kiállított tanúsítvány *letiltott* állapotban van a Azure Portalban, lépjen a **tanúsítvány műveletre** a tanúsítvány hibaüzenetének megtekintéséhez.
+* Ha a kiállított tanúsítvány *letiltott* állapotban van a Azure Portalban, lépjen a **tanúsítvány műveletre** a tanúsítvány hibaüzenetének megtekintéséhez.
+* Hiba típusa: "a tanúsítvány beszerzéséhez használt CSR már használatban van. Próbáljon új tanúsítványt készíteni új CSR-sel. "
+  Nyissa meg a tanúsítvány speciális szabályzat szakaszát, és ellenőrizze, hogy ki van-e kapcsolva a **"kulcs újrafelhasználásának megújítása** " beállítás.
+
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 **Hogyan tesztelhető a tanúsítvány autorotációs funkciója?**
 
-Hozzon létre egy **hónap** érvényességével rendelkező tanúsítványt, majd állítsa be az élettartam műveletet az elforgatáshoz **1%** -ban. Ez a beállítás 7,2 óránként elforgatja a tanúsítványt.
+Hozzon létre egy **hónap** érvényességével rendelkező tanúsítványt, majd állítsa be az élettartam műveletet az elforgatáshoz **1%**-ban. Ez a beállítás 7,2 óránként elforgatja a tanúsítványt.
   
 **A rendszer replikálja a címkéket a tanúsítvány automatikus megújítása után?**
 
