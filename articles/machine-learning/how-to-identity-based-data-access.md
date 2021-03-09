@@ -11,19 +11,19 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 02/22/2021
 ms.custom: how-to, contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: dbfb4ea729b8360c7065d75cb3efbaf42b82c0da
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 68d07481e228b1d1b2f4571a783f925add261cff
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662456"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520013"
 ---
 # <a name="connect-to-storage-with-identity-based-data-access-preview"></a>Kapcsolódás a tárolóhoz identitás-alapú adathozzáféréssel (előzetes verzió)
 
 >[!IMPORTANT]
-> A cikkben ismertetett funkciók előzetes verzióban érhetők el, és a [kísérleti](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) előzetes verziónak minősülő funkcióknak tekintendők, amelyek bármikor megváltozhatnak.
+> A cikkben ismertetett funkciók előzetes verzióban érhetők el, és a [kísérleti](/python/api/overview/azure/ml/#stable-vs-experimental) előzetes verziónak minősülő funkcióknak tekintendők, amelyek bármikor megváltozhatnak.
 
-Ebből a cikkből megtudhatja, hogyan kapcsolódhat az Azure-beli Storage-szolgáltatásokhoz identitás-alapú adathozzáféréssel és Azure Machine Learning adattárakkal a [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)használatával.  
+Ebből a cikkből megtudhatja, hogyan kapcsolódhat az Azure-beli Storage-szolgáltatásokhoz identitás-alapú adathozzáféréssel és Azure Machine Learning adattárakkal a [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/intro)használatával.  
 
 Az adattárolók általában hitelesítő adatokon alapuló adathozzáféréssel igazolják, hogy rendelkezik a tárolási szolgáltatás eléréséhez szükséges engedéllyel. A munkaterülethez társított [Key Vault](https://azure.microsoft.com/services/key-vault/) a kapcsolati adatokat, például az előfizetés-azonosítót és a jogkivonat-hitelesítést is megőrzik. Amikor identitás-alapú adatelérést használó adattárat hoz létre, az Azure-bejelentkezés ([Azure Active Directory token](../active-directory/fundamentals/active-directory-whatis.md)) segítségével ellenőrizheti, hogy van-e engedélye a tárolási szolgáltatás elérésére. Ebben az esetben a rendszer nem menti a hitelesítő adatokat, és csak a Storage-fiók adatait tárolja az adattárban. 
 
@@ -67,7 +67,7 @@ Bizonyos gépi tanulási forgatókönyvek személyes adatokkal rendelkező képz
     - [2. generációs Azure Data Lake](../storage/blobs/data-lake-storage-introduction.md)
     - [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md)
 
-- A [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
+- A [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/install).
 
 - Egy Azure Machine Learning-munkaterület.
   
@@ -105,7 +105,7 @@ A következő kódban figyelje meg, hogy nincs-e hitelesítő paraméter, péld�
 
 ### <a name="azure-blob-container"></a>Azure Blob-tároló
 
-Az Azure Blob-tárolók adattárként való regisztrálásához használja a következőt: [`register_azure_blob_container()`](/python/api/azureml-core/azureml.core.datastore%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) .
+Az Azure Blob-tárolók adattárként való regisztrálásához használja a következőt: [`register_azure_blob_container()`](/python/api/azureml-core/azureml.core.datastore%28class%29#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) .
 
 A következő kód létrehozza és regisztrálja az `credentialless_blob` adattárt a `ws` munkaterületen, és hozzárendeli a változóhoz `blob_datastore` . Ez az adattár hozzáfér a `my_container_name` blob-tárolóhoz a `my-account-name` Storage-fiókban.
 
@@ -119,7 +119,7 @@ blob_datastore = Datastore.register_azure_blob_container(workspace=ws,
 
 ### <a name="azure-data-lake-storage-generation-1"></a>1. generációs Azure Data Lake Storage
 
-Az 1. generációs Azure Data Lake Storage (1. ADLS) adattárat a [register_azure_data_lake ()](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-data-lake-workspace--datastore-name--store-name--tenant-id-none--client-id-none--client-secret-none--resource-url-none--authority-url-none--subscription-id-none--resource-group-none--overwrite-false--grant-workspace-access-false-) használatával regisztrálja az Azure DataLake 1. generációs tárolóhoz csatlakozó adattárt.
+Az 1. generációs Azure Data Lake Storage (1. ADLS) adattárat a [register_azure_data_lake ()](/python/api/azureml-core/azureml.core.datastore.datastore#register-azure-data-lake-workspace--datastore-name--store-name--tenant-id-none--client-id-none--client-secret-none--resource-url-none--authority-url-none--subscription-id-none--resource-group-none--overwrite-false--grant-workspace-access-false-) használatával regisztrálja az Azure DataLake 1. generációs tárolóhoz csatlakozó adattárt.
 
 A következő kód létrehozza és regisztrálja az `credentialless_adls1` adattárt a `workspace` munkaterületen, és hozzárendeli a változóhoz `adls_dstore` . Ez az adattár fér hozzá a `adls_storage` Azure Data Lake Store Storage-fiókhoz.
 
@@ -133,7 +133,7 @@ adls_dstore = Datastore.register_azure_data_lake(workspace = workspace,
 
 ### <a name="azure-data-lake-storage-generation-2"></a>2. generációs Azure Data Lake Storage
 
-Azure Data Lake Storage 2. generációs (ADLS Gen 2) adattár esetében a [register_azure_data_lake_gen2 ()](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) használatával regisztrálja az Azure DataLake 2. generációs tárolóhoz csatlakozó adattárt.
+Azure Data Lake Storage 2. generációs (ADLS Gen 2) adattár esetében a [register_azure_data_lake_gen2 ()](/python/api/azureml-core/azureml.core.datastore.datastore#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) használatával regisztrálja az Azure DataLake 2. generációs tárolóhoz csatlakozó adattárt.
 
 A következő kód létrehozza és regisztrálja az `credentialless_adls2` adattárt a `ws` munkaterületen, és hozzárendeli a változóhoz `adls2_dstore` . Ez az adattár fér hozzá a fájlrendszerhez `tabular` a `myadls2` Storage-fiókban.  
 

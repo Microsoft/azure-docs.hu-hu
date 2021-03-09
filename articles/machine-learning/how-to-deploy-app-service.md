@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: a87620c12cccbed702a2a299b68f555f2b727dd9
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 3b1b416f3fec9e40261a82c88260c041918c1424
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215306"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522002"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Gépi tanulási modell üzembe helyezése Azure App Service (előzetes verzió)
 
@@ -75,7 +75,7 @@ A telepítés előtt meg kell határoznia, hogy mire van szükség a modell webs
 Ezek az entitások egy __következtetési konfigurációba__ vannak ágyazva. A következtetési konfiguráció a bejegyzés parancsfájljára és további függőségekre hivatkozik.
 
 > [!IMPORTANT]
-> Ha Azure App Service-vel való használatra vonatkozó következtetési konfigurációt hoz létre, [környezeti](/python/api/azureml-core/azureml.core.environment(class)?preserve-view=true&view=azure-ml-py) objektumot kell használnia. Vegye figyelembe, hogy ha egyéni környezetet határoz meg, akkor a >= 1.0.45 verzióval rendelkező azureml kell hozzáadnia pip-függőségként. Ez a csomag tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat. Az alábbi példa bemutatja, hogyan hozható létre egy környezeti objektum, és hogyan használhatja azt egy következtetési konfigurációval:
+> Ha Azure App Service-vel való használatra vonatkozó következtetési konfigurációt hoz létre, [környezeti](/python/api/azureml-core/azureml.core.environment(class)) objektumot kell használnia. Vegye figyelembe, hogy ha egyéni környezetet határoz meg, akkor a >= 1.0.45 verzióval rendelkező azureml kell hozzáadnia pip-függőségként. Ez a csomag tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat. Az alábbi példa bemutatja, hogyan hozható létre egy környezeti objektum, és hogyan használhatja azt egy következtetési konfigurációval:
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -101,7 +101,7 @@ További információ a konfigurációval kapcsolatban: [modellek üzembe helyez
 
 ## <a name="create-the-image"></a>A rendszerkép létrehozása
 
-A Azure App Service üzembe helyezett Docker-rendszerkép létrehozásához használja a [Model. package csomagot](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py). A következő kódrészlet bemutatja, hogyan hozhat létre egy új rendszerképet a modellből és a következtetések konfigurálásával:
+A Azure App Service üzembe helyezett Docker-rendszerkép létrehozásához használja a [Model. package csomagot](/python/api/azureml-core/azureml.core.model.model). A következő kódrészlet bemutatja, hogyan hozhat létre egy új rendszerképet a modellből és a következtetések konfigurálásával:
 
 > [!NOTE]
 > A kódrészlet feltételezi, hogy `model` egy regisztrált modellt tartalmaz, amely `inference_config` tartalmazza a következtetési környezet konfigurációját. További információ: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).

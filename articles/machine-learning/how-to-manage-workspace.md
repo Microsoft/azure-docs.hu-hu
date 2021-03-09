@@ -10,23 +10,23 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 3fca8e74112b90b3cac70adaa955bbf242999705
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 472bc66c75881d622e8ecfe23031f58db773a919
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739586"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518925"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning-munkaterületek létrehozása és kezelése 
 
-Ebben a cikkben [**Azure Machine learning munkaterületeket**](concept-workspace.md) hozhat létre, tekinthet meg és törölhet [Azure Machine Learning](overview-what-is-azure-ml.md)számára a Azure Portal vagy a [Python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) használatával
+Ebben a cikkben [**Azure Machine learning munkaterületeket**](concept-workspace.md) hozhat létre, tekinthet meg és törölhet [Azure Machine Learning](overview-what-is-azure-ml.md)számára a Azure Portal vagy a [Python SDK](/python/api/overview/azure/ml/) használatával
 
 Az igények változásának vagy az automatizálásra vonatkozó követelményeknek megfelelően a parancssori felület vagy [a vs Code bővítmény](tutorial-setup-vscode-extension.md) [használatával](reference-azure-machine-learning-cli.md)is létrehozhat és törölhet munkaterületeket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
-* Ha a Python SDK-t használja, [telepítse az SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)-t.
+* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Ha a Python SDK-t használja, [telepítse az SDK](/python/api/overview/azure/ml/install)-t.
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -111,7 +111,7 @@ Alapértelmezés szerint a Munkaterületek létrehozása is létrehoz egy Azure 
                              exist_ok=False)
    ```
 
-További információ: [munkaterület SDK-referenciája](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py).
+További információ: [munkaterület SDK-referenciája](/python/api/azureml-core/azureml.core.workspace.workspace).
 
 Ha problémája merül fel az előfizetés elérésekor, tekintse [meg a Azure Machine learning erőforrások és munkafolyamatok hitelesítésének beállítása](how-to-setup-authentication.md), valamint a Azure Machine learning jegyzetfüzetben végzett [hitelesítés](https://aka.ms/aml-notebook-auth) című témakört.
 
@@ -136,8 +136,8 @@ Ha problémája merül fel az előfizetés elérésekor, tekintse [meg a Azure M
    Munkaterület neve |Adjon meg egy egyedi nevet, amely azonosítja a munkaterületet. Ebben a példában a **docs-ws-** t használjuk. A névnek egyedinek kell lennie az erőforráscsoport között. Használjon könnyen felhívható nevet, és a mások által létrehozott munkaterületek megkülönböztetését. A munkaterület neve megkülönbözteti a kis-és nagybetűket.
    Előfizetés |Válassza ki a használni kívánt Azure-előfizetést.
    Erőforráscsoport | Az előfizetés valamelyik meglévő erőforráscsoportját használja, vagy adjon meg egy nevet új erőforráscsoport létrehozásához. Egy erőforráscsoport kapcsolódó erőforrásokat tárol egy Azure-megoldáshoz. Ebben a példában a **docs-pénzmosást** használjuk. Meglévő erőforráscsoport használatához *közreműködői* vagy *tulajdonosi* szerepkörre van szükség.  További információ a hozzáférésről: [Azure Machine learning munkaterület hozzáférésének kezelése](how-to-assign-roles.md).
-   Régió | Válassza ki a felhasználókhoz legközelebb eső Azure-régiót, valamint az adatforrásokat a munkaterület létrehozásához.
-   | Tárfiók | A munkaterület alapértelmezett Storage-fiókja. Alapértelmezés szerint a rendszer létrehoz egy újat. |
+   Region | Válassza ki a felhasználókhoz legközelebb eső Azure-régiót, valamint az adatforrásokat a munkaterület létrehozásához.
+   | A(z) | A munkaterület alapértelmezett Storage-fiókja. Alapértelmezés szerint a rendszer létrehoz egy újat. |
    | Key Vault | A munkaterület által használt Azure Key Vault. Alapértelmezés szerint a rendszer létrehoz egy újat. |
    | Application Insights | A munkaterület Application Insight-példánya. Alapértelmezés szerint a rendszer létrehoz egy újat. |
    | Container Registry | A munkaterület Azure Container Registry. Alapértelmezés szerint a rendszer _nem_ hoz létre egy újat a munkaterülethez. Ehelyett akkor jön létre, amikor szüksége lesz rá, amikor egy Docker-rendszerképet hoz létre a betanítás vagy az üzembe helyezés során. |
@@ -167,7 +167,7 @@ Ha problémája merül fel az előfizetés elérésekor, tekintse [meg a Azure M
 
 # <a name="python"></a>[Python](#tab/python)
 
-A Azure Machine Learning Python SDK biztosítja a [PrivateEndpointConfig](/python/api/azureml-core/azureml.core.privateendpointconfig?preserve-view=true&view=azure-ml-py) osztályt, amely a [munkaterülettel együtt használható. hozzon létre ()](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-&preserve-view=true) egy olyan munkaterületet, amely privát végponttal rendelkezik. Ehhez az osztályhoz egy meglévő virtuális hálózat szükséges.
+A Azure Machine Learning Python SDK biztosítja a [PrivateEndpointConfig](/python/api/azureml-core/azureml.core.privateendpointconfig) osztályt, amely a [munkaterülettel együtt használható. hozzon létre ()](/python/api/azureml-core/azureml.core.workspace.workspace#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-) egy olyan munkaterületet, amely privát végponttal rendelkezik. Ehhez az osztályhoz egy meglévő virtuális hálózat szükséges.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -193,7 +193,7 @@ Privát végpont létrehozásakor létrejön egy új, __privatelink.API.azureml.
 
 1. A [Azure Portal](https://portal.azure.com)válassza ki a munkaterületet tartalmazó erőforráscsoportot. Ezután válassza ki a __privatelink.API.azureml.MS__ nevű saját DNS zóna erőforrást.
 2. A __Beállítások__ területen válassza a __virtuális hálózati kapcsolatok__ elemet.
-3. Válassza a __Hozzáadás__ elemet. A __virtuális hálózat hozzáadása hivatkozás__ lapon adjon meg egy egyedi __hivatkozási nevet__, majd válassza ki a hozzáadni kívánt __virtuális hálózatot__ . A hálózati kapcsolat hozzáadásához kattintson __az OK gombra__ .
+3. Válassza a __Hozzáadás__ lehetőséget. A __virtuális hálózat hozzáadása hivatkozás__ lapon adjon meg egy egyedi __hivatkozási nevet__, majd válassza ki a hozzáadni kívánt __virtuális hálózatot__ . A hálózati kapcsolat hozzáadásához kattintson __az OK gombra__ .
 
 További információ: [Azure Private Endpoint DNS-konfiguráció](../private-link/private-endpoint-dns.md).
 
@@ -404,6 +404,6 @@ Példák a munkaterület létrehozására:
 * [Munkaterület és számítási példány létrehozása](tutorial-1st-experiment-sdk-setup.md) Azure Portal használatával
 * [Munkaterület létrehozása a saját környezetében](tutorial-1st-experiment-sdk-setup-local.md) a Python SDK használatával
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha már rendelkezik munkaterülettel, megismerheti a [modellek betanítását és üzembe helyezését](tutorial-train-models-with-aml.md).

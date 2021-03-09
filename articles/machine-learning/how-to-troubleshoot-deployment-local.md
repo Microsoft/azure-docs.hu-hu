@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: ebd984ad6fd91aa29af9766042a03bc56efe17eb
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 69ac47296cb4624de6cdf05ddb3e72973751f631
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215748"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519622"
 ---
 # <a name="troubleshooting-with-a-local-model-deployment"></a>Hibaelhárítás helyi modell-telepítéssel
 
@@ -28,7 +28,7 @@ Próbálja ki a helyi modell központi telepítését az Azure Container Instanc
 * "A" lehetőség (**ajánlott**) – helyi hibakeresés Azure Machine learning számítási példányon
    * Egy Azure Machine Learning-munkaterülett futtató [számítási példány](how-to-deploy-local-container-notebook-vm.md)
 * B lehetőség – helyi hibakeresés a számítási feladatokban
-   * A [Azure Machine learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
+   * A [Azure Machine learning SDK](/python/api/overview/azure/ml/install).
    * Az [Azure CLI](/cli/azure/install-azure-cli)-vel.
    * A [Azure Machine learning CLI-bővítménye](reference-azure-machine-learning-cli.md).
    * Van egy működő Docker-telepítés a helyi rendszeren. 
@@ -98,7 +98,7 @@ print(service.run(input_data=test_sample))
 > [!NOTE]
 > A parancsfájl a `InferenceConfig` szolgáltatás által használt objektum által megadott helyről lesz újratöltve.
 
-A modell, a Conda-függőségek vagy a telepítési konfiguráció módosításához használja az [Update ()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueupdate--args-)t. A következő példa frissíti a szolgáltatás által használt modellt:
+A modell, a Conda-függőségek vagy a telepítési konfiguráció módosításához használja az [Update ()](/python/api/azureml-core/azureml.core.webservice%28class%29#update--args-)t. A következő példa frissíti a szolgáltatás által használt modellt:
 
 ```python
 service.update([different_model], inference_config, deployment_config)
@@ -106,7 +106,7 @@ service.update([different_model], inference_config, deployment_config)
 
 ### <a name="delete-the-service"></a>A szolgáltatás törlése
 
-A szolgáltatás törléséhez használja a [delete ()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--)t.
+A szolgáltatás törléséhez használja a [delete ()](/python/api/azureml-core/azureml.core.webservice%28class%29#delete--)t.
 
 ### <a name="inspect-the-docker-log"></a><a id="dockerlog"></a> A Docker-napló ellenőrzése
 

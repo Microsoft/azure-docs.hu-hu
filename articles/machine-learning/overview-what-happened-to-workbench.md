@@ -10,18 +10,18 @@ ms.custom: how-to
 ms.author: larryfr
 author: BlackMist
 ms.date: 03/05/2020
-ms.openlocfilehash: ec99be6082e01ea49e75ff29b5fb3c37d56b6dd5
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: c800901ae139b16e75613b0cc8de3a9485186896
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683374"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521373"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Mi történt az Azure Machine Learning Workbench alkalmazással?
 
 A Azure Machine Learning Workbench alkalmazást és néhány más korai szolgáltatást elavultak, és lecserélték a **szeptember 2018** -es kiadásban, hogy a fejlettebb [architektúra](concept-azure-machine-learning-architecture.md)legyen.
 
-Az élmény javítása érdekében a kiadás számos jelentős frissítést tartalmaz, amelyeket az ügyfél visszajelzése kér. A kísérlet alapfunkciói a modell üzembe helyezése során nem változtak. Most azonban használhatja a robusztus <a href="/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">PYTHON SDK</a>-t, az R SDK-t és az [Azure CLI](reference-azure-machine-learning-cli.md) -t a gépi tanulási feladatok és folyamatok elvégzéséhez.
+Az élmény javítása érdekében a kiadás számos jelentős frissítést tartalmaz, amelyeket az ügyfél visszajelzése kér. A kísérlet alapfunkciói a modell üzembe helyezése során nem változtak. Most azonban használhatja a robusztus <a href="/python/api/overview/azure/ml/intro" target="_blank">PYTHON SDK</a>-t, az R SDK-t és az [Azure CLI](reference-azure-machine-learning-cli.md) -t a gépi tanulási feladatok és folyamatok elvégzéséhez.
 
 A Azure Machine Learning korábbi verziójában létrehozott összetevők többsége a saját helyi vagy Felhőbeli tárolójában tárolódik. Ezek a munkadarabok sohasem fognak eltűnni.
 
@@ -36,7 +36,7 @@ Ebből a cikkből megtudhatja, hogy mi változott, és hogyan befolyásolja a m�
 A Azure Machine Learning legújabb kiadása a következő funkciókat tartalmazza:
 + Egy [egyszerűsített Azure-erőforrás modell](concept-azure-machine-learning-architecture.md).
 + [Új portál felhasználói felület](how-to-track-experiments.md) a kísérletek és számítási célok kezeléséhez.
-+ Egy új, átfogóbb Python <a href="/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>.
++ Egy új, átfogóbb Python <a href="/python/api/overview/azure/ml/intro" target="_blank">SDK</a>.
 + Az új bővített [Azure CLI-bővítmény](reference-azure-machine-learning-cli.md) a gépi tanuláshoz.
 
 Az [architektúra](concept-azure-machine-learning-architecture.md) újratervezése egyszerű használat érdekében. Több Azure-erőforrás és -fiók helyett csak egy [Azure Machine Learning-munkaterület](concept-workspace.md) szükséges. Az [Azure Portalon](how-to-manage-workspace.md) gyorsan létrehozhat munkaterületeket. Munkaterületek használatával több felhasználó is tárolhatja a képzési és üzembe helyezési számítási célokat, a modellek kísérleteit, a Docker-rendszerképeket, a telepített modelleket stb.
@@ -49,7 +49,7 @@ Bár új továbbfejlesztett CLI-és SDK-ügyfelek találhatók a jelenlegi kiad�
 
 Január 9 2019-én a Machine Learning Workbench, Azure Machine Learning-kísérletezés és modellkezelés-fiókok, valamint a hozzájuk kapcsolódó SDK-és CLI-támogatással zárult.
 
-Az <a href="/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>, a [CLI](reference-azure-machine-learning-cli.md)és a [portál](how-to-manage-workspace.md)használatával minden legújabb funkció elérhető.
+Az <a href="/python/api/overview/azure/ml/intro" target="_blank">SDK</a>, a [CLI](reference-azure-machine-learning-cli.md)és a [portál](how-to-manage-workspace.md)használatával minden legújabb funkció elérhető.
 
 ## <a name="what-about-run-histories"></a>Mi a helyzet a futtatási előzményekkel?
 
@@ -67,7 +67,7 @@ Az új parancssori felület és az SDK használatával megkezdheti a modellek be
 
 Nem fog elveszni sem kód, sem munka. A régebbi verzióban, a projektek helyi könyvtárral rendelkező felhőbeli entitások. A legújabb verzióban helyi konfigurációs fájllal csatolja a helyi címtárakat a Azure Machine Learning munkaterülethez. Tekintse meg a [legújabb architektúra diagramját](concept-azure-machine-learning-architecture.md).
 
-A projekt tartalmának nagy része már a helyi gépen van. Ezért csak létre kell hoznia egy konfigurációs fájlt a könyvtárban, és hivatkoznia kell a kódban a munkaterülethez való kapcsolódásra. A fájlokat és parancsfájlokat tartalmazó helyi könyvtár használatának folytatásához adja meg a könyvtár nevét a ["Experiment. submit"](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py) Python-parancsban vagy a `az ml project attach` CLI-parancs használatával.  Például:
+A projekt tartalmának nagy része már a helyi gépen van. Ezért csak létre kell hoznia egy konfigurációs fájlt a könyvtárban, és hivatkoznia kell a kódban a munkaterülethez való kapcsolódásra. A fájlokat és parancsfájlokat tartalmazó helyi könyvtár használatának folytatásához adja meg a könyvtár nevét a ["Experiment. submit"](/python/api/azureml-core/azureml.core.experiment.experiment) Python-parancsban vagy a `az ml project attach` CLI-parancs használatával.  Például:
 ```python
 run = exp.submit(source_directory=script_folder,
                  script='train.py', run_config=run_config_system_managed)

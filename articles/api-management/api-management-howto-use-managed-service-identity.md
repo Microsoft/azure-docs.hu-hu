@@ -9,14 +9,14 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 11/14/2020
+ms.date: 03/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 8ec0f8cf090b3ae85a8602fb39cb07f03a417133
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 98237efae89e7d88dd23cb7e8fc9f7e9f05bca70
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605598"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521543"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Felügyelt identitások használata az Azure-ban API Management
 
@@ -35,7 +35,7 @@ A Azure Portal felügyelt identitásának beállításához először létre kel
 
 1. A szokásos módon hozzon létre egy API Management példányt a portálon. Tallózással keresse meg a portálon.
 2. Válassza a **felügyelt identitások** lehetőséget.
-3. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva **értékre**. Válassza a **Mentés** lehetőséget.
+3. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva **értékre**. Kattintson a **Mentés** gombra.
 
     :::image type="content" source="./media/api-management-msi/enable-system-msi.png" alt-text="A rendszer által hozzárendelt felügyelt identitás engedélyezésének kiválasztása" border="true":::
 
@@ -264,6 +264,19 @@ Az alábbi példa egy Azure Resource Manager sablont mutat be, amely a következ
 
 A rendszer által hozzárendelt identitás használatával a [hitelesítéssel felügyelt identitásra](api-management-authentication-policies.md#ManagedIdentity) vonatkozó házirend segítségével végezheti el a hitelesítést a háttérben.
 
+### <a name="connect-to-azure-resources-behind-ip-firewall-using-system-assigned-managed-identity"></a><a name="apim-as-trusted-service"></a>Kapcsolódás az IP-tűzfal mögötti Azure-erőforrásokhoz rendszerhez rendelt felügyelt identitás használatával
+
+
+API Management megbízható Microsoft-szolgáltatás a következő erőforrásokhoz. Ez lehetővé teszi, hogy a szolgáltatás tűzfal mögött a következő erőforrásokhoz kapcsolódjon. Miután explicit módon hozzárendelte a megfelelő Azure-szerepkört az adott erőforrás [-példány rendszerhez rendelt felügyelt identitásához](../active-directory/managed-identities-azure-resources/overview.md) , a példányhoz való hozzáférés hatóköre megfelel a felügyelt identitáshoz rendelt Azure-szerepkörnek.
+
+
+|Azure-szolgáltatás | Hivatkozás|
+|---|---|
+|Azure Storage | [Megbízható hozzáférés az Azure-hoz – tárterület](../storage/common/storage-network-security.md?tabs=azure-portal#trusted-access-based-on-system-assigned-managed-identity)|
+|Azure Service Bus | [Megbízható hozzáférés – Azure-Service – busz](../service-bus-messaging/service-bus-ip-filtering.md#trusted-microsoft-services)|
+|Azure Event Hub | [Többplatformos hozzáférés – Azure-Event-hub](../event-hubs/event-hubs-ip-filtering.md#trusted-microsoft-services)|
+
+
 ## <a name="create-a-user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás létrehozása
 
 > [!NOTE]
@@ -432,7 +445,7 @@ Ha a Azure Resource Manager sablonnal szeretné eltávolítani az összes identi
 >
 > A blokkolás feloldásához váltson át egy Azure Key Vault-tanúsítványról egy beágyazott kódolt tanúsítványra, majd tiltsa le a felügyelt identitást. További információ: [Egyéni tartománynév konfigurálása](configure-custom-domain.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure-erőforrások felügyelt identitásáról:
 

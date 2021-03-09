@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/07/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 455fdc7615e0909189f311755571d02a9acca24e
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: a8e968d05a1f844a79d2e42d10c323ed4c392424
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102501991"
+ms.locfileid: "102521220"
 ---
 # <a name="azure-cosmos-db-attachments"></a>Azure Cosmos DB mellékletek
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-mongodb-api.md)]
@@ -42,9 +42,9 @@ A Azure Cosmos DB felügyelt mellékletei különböznek a standard elemek támo
 - A felügyelt mellékletek nem kompatibilisek a Azure Cosmos DB globális eloszlásával, és nem replikálódnak a régiók között.
 
 > [!NOTE]
-> Az 3,2-es MongoDB-verzióhoz készült Azure Cosmos DB API a GridFS felügyelt mellékleteit használja, amelyek tehát a Azure Cosmos DB felügyelt mellékleteivel megegyező korlátozások alá esnek.
+> Az 3,2-es MongoDB-verzióhoz készült Azure Cosmos DB API a GridFS felügyelt mellékleteit használja, és ugyanazok a korlátozások vonatkoznak rájuk.
 >
-> Azt javasoljuk, hogy a MongoDB GridFS funkciójának használatával frissítsen Azure Cosmos DB API-ra a MongoDB 3,6-es vagy újabb verziójára, amely a mellékletekből van leválasztva, és erősebb és robusztusabb élményt nyújt. Azt is megteheti, hogy a MongoDB GridFS szolgáltatást használó fejlesztőknek érdemes megfontolniuk az Azure Blob Storage – amely a blob-tartalmak tárolására szolgál, és alacsonyabb áron kínál bővített funkciókat a GridFS képest.
+> Javasoljuk, hogy a MongoDB GridFS funkciójának használatával Azure Cosmos DB frissítsen a MongoDB 3,6-es vagy újabb verziójára, amely a mellékletekből van leválasztva, és jobb élményt biztosít. Azt is megteheti, hogy a MongoDB GridFS szolgáltatást használó fejlesztőknek érdemes megfontolniuk az Azure Blob Storage – amely a blob-tartalmak tárolására szolgál, és alacsonyabb áron kínál bővített funkciókat a GridFS képest.
 
 ## <a name="migrating-attachments-to-azure-blob-storage"></a>Mellékletek migrálása az Azure Blob Storageba
 

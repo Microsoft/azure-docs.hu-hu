@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 01/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: cb556466a5a76cbb9447538e98a5a2385f7b5614
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b1cb14e07f6c0e402510abad6f1cb160f5215c63
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661001"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518381"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>PyTorch-modellek betanítása méretekben Azure Machine Learning
 
@@ -36,7 +36,7 @@ Futtassa ezt a kódot ezen környezetek bármelyikén:
     - A notebook-kiszolgáló minták Deep learning mappájában keresse meg a befejezett és kibontott jegyzetfüzetet a következő könyvtárra való navigálással: **útmutató – használat-azureml > ml-keretrendszerek > pytorch > Train-hiperparaméter-Tune-Deploy-with-pytorch** mappa. 
  
  - Saját Jupyter Notebook-kiszolgáló
-    - [Telepítse az Azure Machine learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) -t (>= 1.15.0).
+    - [Telepítse az Azure Machine learning SDK](/python/api/overview/azure/ml/install) -t (>= 1.15.0).
     - [Hozzon létre egy munkaterület-konfigurációs fájlt](how-to-configure-environment.md#workspace).
     - [A minta parancsfájl fájljainak letöltése](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch/train-hyperparameter-tune-deploy-with-pytorch)`pytorch_train.py`
      
@@ -64,7 +64,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>Munkaterület inicializálása
 
-A [Azure Machine learning munkaterület](concept-workspace.md) a szolgáltatás legfelső szintű erőforrása. Központi helyet biztosít az összes létrehozott összetevővel való együttműködéshez. A Python SDK-ban egy objektum létrehozásával érheti el a munkaterület összetevőit [`workspace`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) .
+A [Azure Machine learning munkaterület](concept-workspace.md) a szolgáltatás legfelső szintű erőforrása. Központi helyet biztosít az összes létrehozott összetevővel való együttműködéshez. A Python SDK-ban egy objektum létrehozásával érheti el a munkaterület összetevőit [`workspace`](/python/api/azureml-core/azureml.core.workspace.workspace) .
 
 Hozzon létre egy munkaterület-objektumot az `config.json` [Előfeltételek szakaszban](#prerequisites)létrehozott fájlból.
 
@@ -181,7 +181,7 @@ További információ a környezetek létrehozásáról és használatáról: [s
 
 ### <a name="create-a-scriptrunconfig"></a>ScriptRunConfig létrehozása
 
-Hozzon létre egy [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) objektumot a betanítási feladatok konfigurációs adatainak megadásához, beleértve a betanítási parancsfájlt, a használni kívánt környezetet és a futtatáshoz szükséges számítási célt. A program a (z `arguments` ) paraméterben megadott paraméterekkel adja át a betanítási parancsfájl összes argumentumát. 
+Hozzon létre egy [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) objektumot a betanítási feladatok konfigurációs adatainak megadásához, beleértve a betanítási parancsfájlt, a használni kívánt környezetet és a futtatáshoz szükséges számítási célt. A program a (z `arguments` ) paraméterben megadott paraméterekkel adja át a betanítási parancsfájl összes argumentumát. 
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -203,7 +203,7 @@ A feladatok ScriptRunConfig-vel való konfigurálásával kapcsolatos további i
 
 ## <a name="submit-your-run"></a>A Futtatás beküldése
 
-A [Run objektum](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) biztosítja a felületet a futtatási előzményekhez, miközben a feladatot futtatja, és a művelet befejeződött.
+A [Run objektum](/python/api/azureml-core/azureml.core.run%28class%29) biztosítja a felületet a futtatási előzményekhez, miközben a feladatot futtatja, és a művelet befejeződött.
 
 ```Python
 run = Experiment(ws, name='Tutorial-pytorch-birds').submit(src)
@@ -267,7 +267,7 @@ dependencies:
   - horovod==0.19.5
 ```
 
-Elosztott feladatok az Azure ML-ben használt MPI/Horovod használatával történő végrehajtásához meg kell adnia egy [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py) a `distributed_job_config` ScriptRunConfig konstruktor paramétereként. Az alábbi kód egy 2 csomópontos elosztott feladatot konfigurál, amely egy folyamatot futtat egy csomóponton. Ha egy csomóponton belül több folyamatot is futtatni kíván (például ha a fürt SKU-jának több GPU-val rendelkezik), adja meg a `process_count_per_node` paramétert a MpiConfiguration (ez az alapértelmezett érték `1` ).
+Elosztott feladatok az Azure ML-ben használt MPI/Horovod használatával történő végrehajtásához meg kell adnia egy [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration) a `distributed_job_config` ScriptRunConfig konstruktor paramétereként. Az alábbi kód egy 2 csomópontos elosztott feladatot konfigurál, amely egy folyamatot futtat egy csomóponton. Ha egy csomóponton belül több folyamatot is futtatni kíván (például ha a fürt SKU-jának több GPU-val rendelkezik), adja meg a `process_count_per_node` paramétert a MpiConfiguration (ez az alapértelmezett érték `1` ).
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -294,7 +294,7 @@ Ezek az indítási lehetőségek nem rendelkeznek alapvető különbségekkel; n
 #### <a name="per-process-launch"></a>Folyamaton belüli indítás
 Ha ezt a lehetőséget szeretné használni az elosztott PyTorch-feladatok futtatásához, tegye a következőket:
 1. Adja meg a betanítási szkriptet és argumentumokat
-2. Hozzon létre egy [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) , és határozza meg a, valamint a `process_count` `node_count` . Az `process_count` megfelel a feladatokhoz futtatni kívánt folyamatok teljes számának. Ez általában egyenlő a GPU-k számával, szorozva a csomópontok számával. Ha `process_count` nincs megadva, az Azure ml alapértelmezés szerint egy folyamatot indít el egy csomóponton.
+2. Hozzon létre egy [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration) , és határozza meg a, valamint a `process_count` `node_count` . Az `process_count` megfelel a feladatokhoz futtatni kívánt folyamatok teljes számának. Ez általában egyenlő a GPU-k számával, szorozva a csomópontok számával. Ha `process_count` nincs megadva, az Azure ml alapértelmezés szerint egy folyamatot indít el egy csomóponton.
 
 Az Azure ML a következő környezeti változókat fogja beállítani:
 * `MASTER_ADDR` – Az a számítógép IP-címe, amely a 0. rangsorban fogja üzemeltetni a folyamatot.

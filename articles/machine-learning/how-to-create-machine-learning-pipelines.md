@@ -11,16 +11,16 @@ author: NilsPohlmann
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 75d241840ecfc8520989342d9def8186de922c0d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0d4f014db85a40819b178b23caa89b90d08026af
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691858"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522274"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Gépi tanulási folyamatokat hozhat létre és futtathat Azure Machine Learning SDK-val
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre és futtathat [gépi tanulási folyamatokat](concept-ml-pipelines.md) a [Azure Machine learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)használatával. A **ml** -folyamatok használatával létrehozhat egy olyan munkafolyamatot, amely különböző ml fázisokat egyesít. Ezt követően tegye közzé ezt a folyamatot későbbi hozzáféréshez vagy megosztáshoz másokkal. A ML-folyamatok nyomon követésével megtekintheti a modell teljesítményét a valós világban, valamint az adateltolódás észlelését. A ML-folyamatok ideálisak kötegelt pontozási forgatókönyvekhez, különböző számítások használatával, az újbóli Futtatás helyett a lépések végrehajtásával, valamint az ML-munkafolyamatok másokkal való megosztásával.
+Ebből a cikkből megtudhatja, hogyan hozhat létre és futtathat [gépi tanulási folyamatokat](concept-ml-pipelines.md) a [Azure Machine learning SDK](/python/api/overview/azure/ml/intro)használatával. A **ml** -folyamatok használatával létrehozhat egy olyan munkafolyamatot, amely különböző ml fázisokat egyesít. Ezt követően tegye közzé ezt a folyamatot későbbi hozzáféréshez vagy megosztáshoz másokkal. A ML-folyamatok nyomon követésével megtekintheti a modell teljesítményét a valós világban, valamint az adateltolódás észlelését. A ML-folyamatok ideálisak kötegelt pontozási forgatókönyvekhez, különböző számítások használatával, az újbóli Futtatás helyett a lépések végrehajtásával, valamint az ML-munkafolyamatok másokkal való megosztásával.
 
 Ez a cikk nem oktatóanyag. Az első folyamat létrehozásával kapcsolatos útmutatásért tekintse meg a következőt [: oktatóanyag: Azure Machine learning folyamat létrehozása batch-pontozási célra](tutorial-pipeline-batch-scoring-classification.md) , vagy [automatikus ML használata egy Azure Machine learning-folyamaton a Pythonban](how-to-use-automlstep-in-pipelines.md). 
 
@@ -81,7 +81,7 @@ A lépések általában adatokat használnak, és kimeneti adatokat hoznak létr
 
 Az adatfolyamatok adatátvitelének előnyben részesített módja egy [adatkészlet](/python/api/azureml-core/azureml.core.dataset.Dataset) -objektum. Az `Dataset` objektum olyan adatokra mutat, amelyek vagy egy adattárból vagy egy webes URL-címről érhetők el. Az `Dataset` osztály absztrakt, ezért létre kell hoznia egy `FileDataset` (egy vagy több fájlra hivatkozó) vagy egy olyan példányát, amelyet egy `TabularDataset` vagy több, tagolt oszlopokkal rendelkező fájlból hozott létre.
 
-Hozzon létre egy olyan `Dataset` metódust, mint például a [from_files](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?preserve-view=true&view=azure-ml-py#&preserve-view=truefrom-files-path--validate-true-) vagy a [from_delimited_files](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?preserve-view=true&view=azure-ml-py#&preserve-view=truefrom-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-).
+Hozzon létre egy olyan `Dataset` metódust, mint például a [from_files](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory#from-files-path--validate-true-) vagy a [from_delimited_files](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-).
 
 ```python
 from azureml.core import Dataset
@@ -89,7 +89,7 @@ from azureml.core import Dataset
 my_dataset = Dataset.File.from_files([(def_blob_store, 'train-images/')])
 ```
 
-A közbenső adatokat (vagy egy lépés kimenetét) egy [OutputFileDatasetConfig](/python/api/azureml-pipeline-core/azureml.data.output_dataset_config.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) objektum jelképezi. `output_data1` egy lépés kimenete. Opcionálisan az adatokat adatkészletként is regisztrálhatja a hívásával `register_on_complete` . Ha `OutputFileDatasetConfig` egy lépésben létrehoz egy lépést, és bemenetként használja egy másik lépéshez, a lépések közötti függőségek egy implicit végrehajtási sorrendet hoznak létre a folyamatban.
+A közbenső adatokat (vagy egy lépés kimenetét) egy [OutputFileDatasetConfig](/python/api/azureml-pipeline-core/azureml.data.output_dataset_config.outputfiledatasetconfig) objektum jelképezi. `output_data1` egy lépés kimenete. Opcionálisan az adatokat adatkészletként is regisztrálhatja a hívásával `register_on_complete` . Ha `OutputFileDatasetConfig` egy lépésben létrehoz egy lépést, és bemenetként használja egy másik lépéshez, a lépések közötti függőségek egy implicit végrehajtási sorrendet hoznak létre a folyamatban.
 
 `OutputFileDatasetConfig` az objektumok egy könyvtárat adnak vissza, és alapértelmezés szerint a munkaterülethez tartozó alapértelmezett adattárba írja a kimenetet.
 
@@ -180,7 +180,7 @@ Az elérési út, ha úgy módosítja `USE_CURATED_ENV` , hogy `False` a függő
 
 ## <a name="construct-your-pipeline-steps"></a><a id="steps"></a>A folyamat lépéseinek megépítése
 
-Miután létrehozta a számítási erőforrást és a környezetet, készen áll a folyamat lépéseinek definiálására. A Azure Machine Learning SDK-n keresztül számos beépített lépés érhető el, ahogy a [ `azureml.pipeline.steps` csomag dokumentációjában](/python/api/azureml-pipeline-steps/azureml.pipeline.steps?preserve-view=true&view=azure-ml-py)is látható. A legrugalmasabb osztály a [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?preserve-view=true&view=azure-ml-py), amely egy Python-szkriptet futtat.
+Miután létrehozta a számítási erőforrást és a környezetet, készen áll a folyamat lépéseinek definiálására. A Azure Machine Learning SDK-n keresztül számos beépített lépés érhető el, ahogy a [ `azureml.pipeline.steps` csomag dokumentációjában](/python/api/azureml-pipeline-steps/azureml.pipeline.steps)is látható. A legrugalmasabb osztály a [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep), amely egy Python-szkriptet futtat.
 
 ```python
 from azureml.pipeline.steps import PythonScriptStep
@@ -233,7 +233,7 @@ További Példákért lásd: [kétlépéses ml-folyamat létrehozása](https://g
 A lépések meghatározása után a folyamatokat a fenti lépések némelyikével vagy mindegyikével kell felépíteni.
 
 > [!NOTE]
-> A lépések megadása vagy a folyamat összeállítása során a rendszer nem tölt fel fájlt vagy Azure Machine Learning. A rendszer a [kísérlet. Submit ()](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py#&preserve-view=truesubmit-config--tags-none----kwargs-)hívásakor feltölti a fájlokat.
+> A lépések megadása vagy a folyamat összeállítása során a rendszer nem tölt fel fájlt vagy Azure Machine Learning. A rendszer a [kísérlet. Submit ()](/python/api/azureml-core/azureml.core.experiment.experiment#submit-config--tags-none----kwargs-)hívásakor feltölti a fájlokat.
 
 ```python
 # list of steps to run (`compare_step` definition not shown)
@@ -247,7 +247,7 @@ pipeline1 = Pipeline(workspace=ws, steps=[compare_models])
 
 ### <a name="use-a-dataset"></a>Adatkészlet használata 
 
-Az Azure Blob Storage-ból, Azure Filesból, Azure Data Lake Storage Gen1ból, Azure Data Lake Storage Gen2ból, Azure SQL Databaseból és Azure Database for PostgreSQLból létrehozott adatkészletek a folyamat bármely lépéséhez bemenetként is használhatók. Kimenetet írhat egy [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?preserve-view=true&view=azure-ml-py), [DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?preserve-view=true&view=azure-ml-py), vagy ha adatokat szeretne írni egy adott adattárhoz, használja a [OutputFileDatasetConfig](/python/api/azureml-pipeline-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py). 
+Az Azure Blob Storage-ból, Azure Filesból, Azure Data Lake Storage Gen1ból, Azure Data Lake Storage Gen2ból, Azure SQL Databaseból és Azure Database for PostgreSQLból létrehozott adatkészletek a folyamat bármely lépéséhez bemenetként is használhatók. Kimenetet írhat egy [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep), [DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep), vagy ha adatokat szeretne írni egy adott adattárhoz, használja a [OutputFileDatasetConfig](/python/api/azureml-pipeline-core/azureml.data.outputfiledatasetconfig). 
 
 > [!IMPORTANT]
 > A kimeneti adatokat az adattár használatával való visszaírás `OutputFileDatasetConfig` csak az Azure Blob, az Azure file share, a ADLS Gen 1 és a Gen 2 adattárolók esetében támogatott. 
@@ -261,7 +261,7 @@ dataset_consuming_step = PythonScriptStep(
 )
 ```
 
-Ezután lekéri a folyamat adatkészletét a [Run.input_datasets](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueinput-datasets) szótár használatával.
+Ezután lekéri a folyamat adatkészletét a [Run.input_datasets](/python/api/azureml-core/azureml.core.run.run#input-datasets) szótár használatával.
 
 ```python
 # iris_train.py
@@ -285,7 +285,7 @@ További részletekért, beleértve az adatok továbbításának és elérésén
 ## <a name="caching--reuse"></a>Gyorsítótárazási & újrafelhasználása  
 
 A folyamatok működésének optimalizálásához és testreszabásához hajtson végre néhány dolgot a gyorsítótárazás és az újbóli használat érdekében. Például a következőket teheti:
-+ **Állítsa le a kimenet futtatásának alapértelmezett újrafelhasználását** a `allow_reuse=False` [lépés definíciója](/python/api/azureml-pipeline-steps/?preserve-view=true&view=azure-ml-py)szerint. Az újrafelhasználás a kulcs, ha a folyamatokat együttműködésen alapuló környezetben használja, mivel a szükségtelen futtatások kiiktatása rugalmasságot biztosít. Azonban letilthatja az ismételt használatot.
++ **Állítsa le a kimenet futtatásának alapértelmezett újrafelhasználását** a `allow_reuse=False` [lépés definíciója](/python/api/azureml-pipeline-steps/)szerint. Az újrafelhasználás a kulcs, ha a folyamatokat együttműködésen alapuló környezetben használja, mivel a szükségtelen futtatások kiiktatása rugalmasságot biztosít. Azonban letilthatja az ismételt használatot.
 + **A kimenet újragenerálásának kényszerítése a futtatási folyamat összes lépése esetében**`pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`
 
 Alapértelmezés szerint `allow_reuse` a lépések engedélyezve vannak, és a `source_directory` lépés definíciójában megadott érték kivonatolásra kerül. Tehát ha egy adott lépés parancsfájlja ugyanazokat ( `script_name` , bemeneteket és paramétereket) tartalmaz, és semmi más nem ` source_directory` módosult, az előző lépés futtatásának kimenete újra felhasználható, a feladatot a rendszer nem küldi el a számításba, és az előző Futtatás eredményei azonnal elérhetővé válnak a következő lépéshez.
@@ -328,7 +328,7 @@ A folyamat első futtatásakor Azure Machine Learning:
 
 ![Kísérlet folyamatként való futtatásának ábrája](./media/how-to-create-your-first-pipeline/run_an_experiment_as_a_pipeline.png)
 
-További információ: [kísérlet osztály](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py) referenciája.
+További információ: [kísérlet osztály](/python/api/azureml-core/azureml.core.experiment.experiment) referenciája.
 
 ## <a name="use-pipeline-parameters-for-arguments-that-change-at-inference-time"></a>A viszonyítási időpontnál megjelenő argumentumok esetén használja a folyamat paramétereit
 
@@ -378,6 +378,6 @@ Ha olyan képzést indít el, ahol a forrás könyvtára helyi git-tárház, a r
 
 - A folyamat munkatársaival vagy ügyfeleivel való megosztását lásd: [Machine learning-folyamatok közzététele](how-to-deploy-pipelines.md)
 - [Ezeket a Jupyter notebookokat a githubon](https://aka.ms/aml-pipeline-readme) használhatja a gépi tanulási folyamatok további megismeréséhez
-- Tekintse meg a [azureml-pipeline-Core](/python/api/azureml-pipeline-core/?preserve-view=true&view=azure-ml-py) csomag és a azureml-folyamatok – [STEPs](/python/api/azureml-pipeline-steps/?preserve-view=true&view=azure-ml-py) csomag SDK-referenciáját.
+- Tekintse meg a [azureml-pipeline-Core](/python/api/azureml-pipeline-core/) csomag és a azureml-folyamatok – [STEPs](/python/api/azureml-pipeline-steps/) csomag SDK-referenciáját.
 - A folyamatok hibakeresésével és hibaelhárításával kapcsolatos tippekért tekintse [meg a következő](how-to-debug-pipelines.md) témakört:.
 - [A szolgáltatás megismerése Jupyter-notebookok használatával](samples-notebooks.md) cikk útmutatását követve megtanulhatja, hogyan futtathat notebookokat.

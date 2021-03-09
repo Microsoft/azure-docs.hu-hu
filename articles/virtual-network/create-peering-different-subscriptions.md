@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: kumud
-ms.openlocfilehash: 9f3ea595c3cfacc479deea7b7db7689785e3b520
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1f8b7162787e870337918794f353ab8dc94c1965
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694954"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518245"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions-and-azure-active-directory-tenants"></a>Hozzon létre egy virtuális hálózati társ-erőforrás-kezelőt, különböző előfizetéseket és Azure Active Directory bérlőket
 
@@ -276,7 +276,7 @@ Ez az oktatóanyag különböző fiókokat használ az egyes előfizetésekhez. 
    }
    ```
 
-3. Jelentkezzen be az Azure-ba felhasználóként, és telepítse a sablont a [portál](../azure-resource-manager/templates/deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template), a [PowerShell](../azure-resource-manager/templates/deploy-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template)vagy az [Azure CLI](../azure-resource-manager/templates/deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template-or-bicep-file)használatával. Adja meg azt a fájlnevet, amelyet a 2. lépésben a JSON-szöveg mentett.
+3. Jelentkezzen be az Azure-ba felhasználóként, és telepítse a sablont a [portál](../azure-resource-manager/templates/deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template), a [PowerShell](../azure-resource-manager/templates/deploy-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template-or-bicep-file)vagy az [Azure CLI](../azure-resource-manager/templates/deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template-or-bicep-file)használatával. Adja meg azt a fájlnevet, amelyet a 2. lépésben a JSON-szöveg mentett.
 4. Másolja a példában szereplő JSON-t a 2. lépésben a számítógép egyik fájljába, és hajtsa végre a következővel kezdődő sorokat:
    - **név**: módosítsa a *myVnetA/myVnetAToMyVnetB* a *myVnetB/myVnetBToMyVnetA* értékre.
    - **azonosító**: cserélje le `<subscription ID>` a FELHASZNÁLÓB előfizetési azonosítóját, és módosítsa a *myVnetB* a *myVnetA* értékre.

@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 01/29/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 56a3183e259a0b1c661dfe84d5e47c4c221e5d48
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 3ecf4458b052f4fdc0eb2e6e697b0468c71ce9c2
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584862"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519656"
 ---
 # <a name="trigger-machine-learning-pipelines"></a>Gépi tanulási folyamatok indítása
 
@@ -66,7 +66,7 @@ from azureml.pipeline.core.schedule import ScheduleRecurrence, Schedule
 
 ### <a name="create-a-time-based-schedule"></a>Időalapú ütemterv létrehozása
 
-A `ScheduleRecurrence` konstruktor egy kötelező `frequency` argumentummal rendelkezik, amelynek a következő karakterláncok egyikének kell lennie: "minute", "Hour", "Day", "Week" vagy "Month". Egy egész szám argumentumot is igényel, amely `interval` meghatározza, hogy hány `frequency` egységnek kell eltelnie az ütemterv kezdete között. A választható argumentumok lehetővé teszik a [SCHEDULERECURRENCE SDK-dokumentációban](/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?preserve-view=true&view=azure-ml-py)részletezett időpontokra vonatkozó részletesebb tudnivalókat.
+A `ScheduleRecurrence` konstruktor egy kötelező `frequency` argumentummal rendelkezik, amelynek a következő karakterláncok egyikének kell lennie: "minute", "Hour", "Day", "Week" vagy "Month". Egy egész szám argumentumot is igényel, amely `interval` meghatározza, hogy hány `frequency` egységnek kell eltelnie az ütemterv kezdete között. A választható argumentumok lehetővé teszik a [SCHEDULERECURRENCE SDK-dokumentációban](/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence)részletezett időpontokra vonatkozó részletesebb tudnivalókat.
 
 Hozzon létre egy-t `Schedule` , amely 15 percenként elindítja a futtatást:
 
@@ -83,11 +83,11 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
 
 A fájlok változásai által aktivált folyamatok hatékonyabbak lehetnek, mint az időalapú ütemtervek. Ha meg szeretne tenni valamit a fájl módosítása előtt, vagy ha új fájlt adnak hozzá egy adatkönyvtárhoz, a fájl előfeldolgozására van lehetőség. Az adattáron belüli adattárolók és az adattárban lévő módosítások változásai figyelhetők. Ha egy adott könyvtárat figyel, akkor a könyvtár alkönyvtárain belüli módosítások _nem_ indítják el a futtatást.
 
-Fájl – reaktív létrehozásához a (z) `Schedule` paramétert be kell állítania `datastore` a [Schedule. Create](/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-)értékre. Egy mappa figyeléséhez állítsa be az `path_on_datastore` argumentumot.
+Fájl – reaktív létrehozásához a (z) `Schedule` paramétert be kell állítania `datastore` a [Schedule. Create](/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule#create-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-)értékre. Egy mappa figyeléséhez állítsa be az `path_on_datastore` argumentumot.
 
 Az `polling_interval` argumentummal percek alatt megadhatja, hogy az adattár milyen gyakorisággal legyen bejelölve a változásokhoz.
 
-Ha a folyamat [DataPath](/python/api/azureml-core/azureml.data.datapath.datapath?preserve-view=true&view=azure-ml-py) - [PipelineParameter](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?preserve-view=true&view=azure-ml-py)lett létrehozva, a változót a módosított fájl nevére állíthatja be az argumentum beállításával `data_path_parameter_name` .
+Ha a folyamat [DataPath](/python/api/azureml-core/azureml.data.datapath.datapath) - [PipelineParameter](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter)lett létrehozva, a változót a módosított fájl nevére állíthatja be az argumentum beállításával `data_path_parameter_name` .
 
 ```python
 datastore = Datastore(workspace=ws, name="workspaceblobstore")

@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: ad86ebdbef8bf8c8ec00e54e15b751fd2285ad68
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 03400173dd35660d6e7a98500b831a7c6aa4ebd7
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601345"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521170"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>Modell betanítása egyéni Docker-rendszerkép használatával
 
@@ -32,7 +32,7 @@ Futtassa a kódot a következő környezetek bármelyikén:
   * A Azure Machine learning [példák tárházában](https://github.com/Azure/azureml-examples)keresse **meg a kész jegyzetfüzetet a**  >  **fastai**  >  **Train-pets-resnet34. ipynb** könyvtárban. 
 * Saját Jupyter Notebook-kiszolgáló:
   * Hozzon létre egy [munkaterület-konfigurációs fájlt](how-to-configure-environment.md#workspace).
-  * Telepítse a [Azure Machine learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)-t. 
+  * Telepítse a [Azure Machine learning SDK](/python/api/overview/azure/ml/install)-t. 
   * Hozzon létre egy [Azure Container registryt](../container-registry/index.yml) vagy más, az interneten elérhető Docker-beállításjegyzéket.
 
 ## <a name="set-up-a-training-experiment"></a>Betanítási kísérlet beállítása
@@ -41,7 +41,7 @@ Ebben a szakaszban beállíthatja a betanítási kísérletet egy munkaterület 
 
 ### <a name="initialize-a-workspace"></a>Munkaterület inicializálása
 
-A [Azure Machine learning munkaterület](concept-workspace.md) a szolgáltatás legfelső szintű erőforrása. Központi helyet biztosít az összes létrehozott összetevővel való együttműködéshez. A Python SDK-ban egy objektum létrehozásával érheti el a munkaterület összetevőit [`Workspace`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) .
+A [Azure Machine learning munkaterület](concept-workspace.md) a szolgáltatás legfelső szintű erőforrása. Központi helyet biztosít az összes létrehozott összetevővel való együttműködéshez. A Python SDK-ban egy objektum létrehozásával érheti el a munkaterület összetevőit [`Workspace`](/python/api/azureml-core/azureml.core.workspace.workspace) .
 
 Hozzon létre egy `Workspace` objektumot a config.jsaz [előfeltételként](#prerequisites)létrehozott fájlból.
 
@@ -169,9 +169,9 @@ run.wait_for_completion(show_output=True)
 ```
 
 > [!WARNING]
-> Azure Machine Learning a teljes forrás könyvtár másolásával futtatja a betanítási parancsfájlokat. Ha olyan bizalmas adatokkal rendelkezik, amelyeket nem szeretne felvenni, használja az [. ignore fájlt](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) , vagy ne adja meg a forrás könyvtárában. Ehelyett egy [adattár](/python/api/azureml-core/azureml.data?preserve-view=true&view=azure-ml-py)használatával férhet hozzá az adataihoz.
+> Azure Machine Learning a teljes forrás könyvtár másolásával futtatja a betanítási parancsfájlokat. Ha olyan bizalmas adatokkal rendelkezik, amelyeket nem szeretne felvenni, használja az [. ignore fájlt](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) , vagy ne adja meg a forrás könyvtárában. Ehelyett egy [adattár](/python/api/azureml-core/azureml.data)használatával férhet hozzá az adataihoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben egy modellt egy egyéni Docker-rendszerkép használatával oktatott. Ezekről a cikkekről további tudnivalókat talál a Azure Machine Learning:
 * A [futtatási metrikák nyomon követése](how-to-track-experiments.md) a betanítás során.
 * [Modell üzembe helyezése](how-to-deploy-custom-docker-image.md) egyéni Docker-rendszerkép használatával.

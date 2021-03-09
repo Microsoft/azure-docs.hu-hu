@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 04/14/2020
 ms.author: victorh
-ms.openlocfilehash: c0f802f5113e38e811c110ee913099e76fa7be0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd917bcf54022564640d22a5968738c27f75ff38
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81383815"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519044"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Egyéni szabályok a webalkalmazási tűzfal v2-hez az Azure Application Gateway
 
@@ -24,9 +24,9 @@ Például letilthatja az összes kérést egy IP-címről a 192.168.5.4/24 tarto
 
 Az egyéni szabályok az összetett logika használatát teszik lehetővé a biztonsági igényeket kielégítő speciális szabályok megadásához. Például: (1. feltétel **és** 2. feltétel) **vagy** feltétel 3). Ez azt jelenti, hogy ha az 1. **és** a 2. feltétel teljesül, **vagy** ha a 3. feltétel teljesül, a WAF el kell végeznie az egyéni szabályban megadott műveletet.
 
-Ugyanazon szabályon belül a különböző egyeztetési feltételek mindig a **és**a használatával vannak összekapcsolva. Például letilthatja a forgalmat egy adott IP-címről, és csak akkor, ha egy adott böngészőt használnak.
+Ugyanazon szabályon belül a különböző egyeztetési feltételek mindig a **és** a használatával vannak összekapcsolva. Például letilthatja a forgalmat egy adott IP-címről, és csak akkor, ha egy adott böngészőt használnak.
 
-Ha **vagy** két különböző feltételt szeretne használni, a két feltételnek különböző szabályokban kell lennie. Például letilthatja a forgalmat egy adott IP-címről, vagy letilthatja a forgalmat, ha egy adott böngészőt használnak.
+Ha két különböző feltételt **szeretne használni,** akkor a két feltételnek különböző szabályoknak kell lennie. Például letilthatja a forgalmat egy adott IP-címről, vagy letilthatja a forgalmat, ha egy adott böngészőt használnak.
 
 > [!NOTE]
 > Az egyéni WAF-szabályok maximális száma 100. A Application Gateway korlátozásokkal kapcsolatos további információkért tekintse meg az [Azure-előfizetés és a szolgáltatás korlátai, kvótái és megkötései](../../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits)című témakört.
@@ -37,7 +37,7 @@ A reguláris kifejezések az egyéni szabályokban is támogatottak, ugyanúgy, 
 
 A forgalom engedélyezése és blokkolása egyszerű az egyéni szabályokkal. Letilthatja például az IP-címtartományból érkező összes forgalmat. Ha a kérelem egy adott böngészőből származik, egy másik szabályt is beállíthat, amely engedélyezi a forgalmat.
 
-Ha valamit szeretne engedélyezni, győződjön meg arról, hogy a `-Action` paraméter értéke **Engedélyezés**. Ha blokkolni szeretne valamit, győződjön meg arról, hogy a `-Action` paraméter **blokkolás**értékre van beállítva.
+Ha valamit szeretne engedélyezni, győződjön meg arról, hogy a `-Action` paraméter értéke **Engedélyezés**. Ha blokkolni szeretne valamit, győződjön meg arról, hogy a `-Action` paraméter **blokkolás** értékre van beállítva.
 
 ```azurepowershell
 $AllowRule = New-AzApplicationGatewayFirewallCustomRule `
@@ -101,7 +101,7 @@ A szabály neve.  Megjelenik a naplókban.
 
 ### <a name="rule-type-required"></a>Szabály típusa [kötelező]
 
-Jelenleg **MatchRule**kell lennie.
+Jelenleg **MatchRule** kell lennie.
 
 ### <a name="match-variable-required"></a>Egyezés változó [kötelező]
 
@@ -165,6 +165,6 @@ Azoknak az értékeknek a listája, amelyek megfelelnek a következőnek *: "ED*
 
 Az egyéni szabályok segítségével testre szabott szabályokat hozhat létre az alkalmazások és biztonsági szabályzatok pontos igényeinek megfelelően. A webalkalmazásokhoz való hozzáférést ország/régió szerint korlátozhatja. További információ: [Egyéni Geomatch-szabályok (előzetes verzió)](geomatch-custom-rules.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az egyéni szabályok megismerése után [hozza létre saját egyéni szabályait](create-custom-waf-rules.md).

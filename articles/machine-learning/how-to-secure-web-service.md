@@ -10,12 +10,12 @@ author: aashishb
 ms.date: 01/04/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 68163f7ca8cc1b37bda4e1224330f966265554c2
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: e0e25a804ac66ca33715906ce4d397b80887037d
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980472"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518551"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS használata webszolgáltatás védelméhez az Azure Machine Learning szolgáltatás segítségével
 
@@ -82,9 +82,9 @@ ACI-telepítés esetén engedélyezheti a TLS-megszakítást a modell központi 
 ### <a name="deploy-on-azure-kubernetes-service"></a>Üzembe helyezés az Azure Kubernetes Service-ben
 
   > [!NOTE]
-  > Az ebben a szakaszban található információk akkor is érvényesek, ha biztonságos webszolgáltatást telepít a tervezőhöz. Ha nem ismeri a Python SDK használatát, tekintse [meg a mi a Pythonhoz készült Azure Machine learning SDK?](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)című témakört.
+  > Az ebben a szakaszban található információk akkor is érvényesek, ha biztonságos webszolgáltatást telepít a tervezőhöz. Ha nem ismeri a Python SDK használatát, tekintse [meg a mi a Pythonhoz készült Azure Machine learning SDK?](/python/api/overview/azure/ml/intro)című témakört.
 
-Ha a pénzmosás-munkaterületen [létrehoz vagy csatol egy AK-fürtöt](how-to-create-attach-kubernetes.md) , engedélyezheti a TLS-megszakítást **[AksCompute.provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** és **[AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** konfigurációs objektummal. Mindkét metódus olyan konfigurációs objektumot ad vissza, amely **enable_ssl** metódussal rendelkezik, és a TLS engedélyezéséhez használhatja a **enable_ssl** metódust.
+Ha a pénzmosás-munkaterületen [létrehoz vagy csatol egy AK-fürtöt](how-to-create-attach-kubernetes.md) , engedélyezheti a TLS-megszakítást **[AksCompute.provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** és **[AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** konfigurációs objektummal. Mindkét metódus olyan konfigurációs objektumot ad vissza, amely **enable_ssl** metódussal rendelkezik, és a TLS engedélyezéséhez használhatja a **enable_ssl** metódust.
 
 A TLS-t a Microsoft-tanúsítvánnyal vagy a CA-ból vásárolt egyéni tanúsítvánnyal engedélyezheti. 
 
@@ -134,7 +134,7 @@ A TLS-t a Microsoft-tanúsítvánnyal vagy a CA-ból vásárolt egyéni tanúsí
                                         ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
-További információ a *enable_sslről*: [AksProvisioningConfiguration.enable_ssl ()](/python/api/azureml-core/azureml.core.compute.aks.aksprovisioningconfiguration?preserve-view=true&view=azure-ml-py#&preserve-view=trueenable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-) és [AksAttachConfiguration.enable_ssl ()](/python/api/azureml-core/azureml.core.compute.aks.aksattachconfiguration?preserve-view=true&view=azure-ml-py#&preserve-view=trueenable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-).
+További információ a *enable_sslről*: [AksProvisioningConfiguration.enable_ssl ()](/python/api/azureml-core/azureml.core.compute.aks.aksprovisioningconfiguration#enable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-) és [AksAttachConfiguration.enable_ssl ()](/python/api/azureml-core/azureml.core.compute.aks.aksattachconfiguration#enable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-).
 
 ### <a name="deploy-on-azure-container-instances"></a>Üzembe helyezés az Azure Container Instancesben
 
@@ -199,8 +199,8 @@ az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n 
 
 További információkért tekintse meg a következő dokumentációs dokumentumokat:
 
-* [SslConfiguration](/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?preserve-view=true&view=azure-ml-py)
-* [AksUpdateConfiguration](/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?preserve-view=true&view=azure-ml-py)
+* [SslConfiguration](/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration)
+* [AksUpdateConfiguration](/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration)
 
 ### <a name="update-custom-certificate"></a>Egyéni tanúsítvány frissítése
 
@@ -239,8 +239,8 @@ Ha a tanúsítványt eredetileg egy hitelesítésszolgáltató hozta létre, kö
 
 További információkért tekintse meg a következő dokumentációs dokumentumokat:
 
-* [SslConfiguration](/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?preserve-view=true&view=azure-ml-py)
-* [AksUpdateConfiguration](/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?preserve-view=true&view=azure-ml-py)
+* [SslConfiguration](/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration)
+* [AksUpdateConfiguration](/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration)
 
 ## <a name="disable-tls"></a>TLS letiltása
 

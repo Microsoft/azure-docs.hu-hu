@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: aaa7dbf2ae7c8acb3b3beeb3e9098c5058af26a7
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: c45b819f9fc02fae40c2bf7fc5c2247c8c0a6147
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97918196"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517480"
 ---
 # <a name="deploy-mlflow-models-as-azure-web-services-preview"></a>MLflow-modellek üzembe helyezése Azure web servicesként (előzetes verzió)
 
@@ -44,14 +44,14 @@ Az alábbi ábra azt mutatja be, hogy a MLflow üzembe helyezése API-val és Az
 * Gépi tanulási modell. Ha nem rendelkezik betanított modellel, keresse meg az [ebben](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/using-mlflow) a tárházban legjobban illeszkedő jegyzetfüzet-példát, és kövesse az útmutatását. 
 * [Állítsa be a MLflow követési URI-t a Azure Machine learning összekapcsolásához](how-to-use-mlflow.md#track-local-runs).
 * Telepítse az `azureml-mlflow` csomagot. 
-    * Ez a csomag automatikusan bevezeti a `azureml-core` [Azure Machine learning Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)-t, amely biztosítja a kapcsolatot a MLflow a munkaterület eléréséhez.
+    * Ez a csomag automatikusan bevezeti a `azureml-core` [Azure Machine learning Python SDK](/python/api/overview/azure/ml/install)-t, amely biztosítja a kapcsolatot a MLflow a munkaterület eléréséhez.
 * Megtudhatja, [hogy mely hozzáférési engedélyek szükségesek a MLflow műveleteinek elvégzéséhez a munkaterületen](how-to-assign-roles.md#mlflow-operations). 
 
 ## <a name="deploy-to-azure-container-instance-aci"></a>Üzembe helyezés az Azure Container Instanceban (ACI)
 
 Ha a MLflow modellt egy Azure Machine Learning webszolgáltatásba szeretné telepíteni, a modellt a [MLflow követési URI-val kell beállítani a Azure Machine Learninghoz való kapcsolódáshoz](how-to-use-mlflow.md). 
 
-Állítsa be a telepítési konfigurációt a [deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.aciwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) metódussal. A webszolgáltatások nyomon követéséhez címkéket és leírásokat is hozzáadhat.
+Állítsa be a telepítési konfigurációt a [deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) metódussal. A webszolgáltatások nyomon követéséhez címkéket és leírásokat is hozzáadhat.
 
 ```python
 from azureml.core.webservice import AciWebservice, Webservice
@@ -84,7 +84,7 @@ webservice.wait_for_deployment(show_output=True)
 
 Ha a MLflow modellt egy Azure Machine Learning webszolgáltatásba szeretné telepíteni, a modellt a [MLflow követési URI-val kell beállítani a Azure Machine Learninghoz való kapcsolódáshoz](how-to-use-mlflow.md). 
 
-Az AK-ra való üzembe helyezéshez először hozzon létre egy AK-fürtöt. Hozzon létre egy AK-fürtöt a [ComputeTarget. Create ()](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-workspace--name--provisioning-configuration-) metódus használatával. Egy új fürt létrehozása 20-25 percet is igénybe vehet.
+Az AK-ra való üzembe helyezéshez először hozzon létre egy AK-fürtöt. Hozzon létre egy AK-fürtöt a [ComputeTarget. Create ()](/python/api/azureml-core/azureml.core.computetarget#create-workspace--name--provisioning-configuration-) metódus használatával. Egy új fürt létrehozása 20-25 percet is igénybe vehet.
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -104,7 +104,7 @@ aks_target.wait_for_completion(show_output = True)
 print(aks_target.provisioning_state)
 print(aks_target.provisioning_errors)
 ```
-Állítsa be a telepítési konfigurációt a [deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.aciwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) metódussal. A webszolgáltatások nyomon követéséhez címkéket és leírásokat is hozzáadhat.
+Állítsa be a telepítési konfigurációt a [deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) metódussal. A webszolgáltatások nyomon követéséhez címkéket és leírásokat is hozzáadhat.
 
 ```python
 from azureml.core.webservice import Webservice, AksWebservice
@@ -139,7 +139,7 @@ A szolgáltatás üzembe helyezése több percet is igénybe vehet.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha nem tervezi az üzembe helyezett webszolgáltatás használatát, `service.delete()` törölje azt a jegyzetfüzetből.  További információ: a [webszolgáltatások dokumentációja. Delete ()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--).
+Ha nem tervezi az üzembe helyezett webszolgáltatás használatát, `service.delete()` törölje azt a jegyzetfüzetből.  További információ: a [webszolgáltatások dokumentációja. Delete ()](/python/api/azureml-core/azureml.core.webservice%28class%29#delete--).
 
 ## <a name="example-notebooks"></a>Példajegyzetfüzetek
 

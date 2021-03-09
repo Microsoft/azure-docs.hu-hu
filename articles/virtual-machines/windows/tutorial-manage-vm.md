@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 3e52a808b187e3823acfee2c260986518f2f6f49
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b9b7fee32ec8d844452cfcb5eba29859467105e4
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978003"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520761"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Oktatóanyag: Windows rendszerű virtuális gépek létrehozása és felügyelete Azure PowerShell-lel
 
@@ -50,7 +50,7 @@ Az erőforráscsoport meghatározására a virtuális gép létrehozásakor vagy
 
 A virtuális gépek létrehozásakor több lehetőség is elérhető, például az operációs rendszer képe, a hálózati konfiguráció és a rendszergazdai hitelesítő adatok. Ez a példa létrehoz egy *myVM* nevű virtuális gépet, amely a Windows Server 2016 Datacenter alapértelmezett verzióját futtatja.
 
-A virtuális gép rendszergazdai fiókjának felhasználónevét és jelszavát állítsa be a [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-6) paranccsal:
+A virtuális gép rendszergazdai fiókjának felhasználónevét és jelszavát állítsa be a [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) paranccsal:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -234,7 +234,7 @@ Start-AzVM `
 Számos energiaállapot van, amelyek közül az Azure-beli virtuális gépek felvesznek egyet. 
 
 
-| Energiaállapot | Description
+| Energiaállapot | Leírás
 |----|----|
 | Indítás | A virtuális gép indítása folyamatban van. |
 | Futó | A virtuális gép fut. |

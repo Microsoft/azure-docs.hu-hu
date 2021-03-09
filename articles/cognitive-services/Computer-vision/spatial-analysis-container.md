@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 0316850788a4f762680be91c8ecd86b3aa8bf6bc
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 9989c6ea6b75203d43c37854caef7fdcbc321779
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433607"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519027"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>A térbeli elemzési tároló telepítése és futtatása (előzetes verzió)
 
@@ -137,7 +137,7 @@ Amikor a peremhálózati eszközön beállította a peremhálózat számítási 
 3. Rendeljen hozzá egy változót az eszköz IP-címéhez. 
     
     ```powershell
-    $ip = "" Replace with the IP address of your device. 
+    $ip = "<device-IP-address>" 
     ```
     
 4. Ha hozzá szeretné adni az eszköz IP-címét az ügyfél megbízható gazdagépek listájához, használja a következő parancsot: 
@@ -255,13 +255,22 @@ Azure IoT Hub-példány létrehozása az Azure CLI használatával. Szükség es
 
 ```bash
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+```
+```bash
 sudo az login
-sudo az account set --subscription <name or ID of Azure Subscription>
-sudo az group create --name "test-resource-group" --location "WestUS"
-
-sudo az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-resource-group"
-
-sudo az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
+```
+```bash
+sudo az account set --subscription "<name or ID of Azure Subscription>"
+```
+```bash
+sudo az group create --name "<resource-group-name>" --location "<your-region>"
+```
+További információ: [régió támogatása](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services) az elérhető régiókban.
+```bash
+sudo az iot hub create --name "<iothub-group-name>" --sku S1 --resource-group "<resource-group-name>"
+```
+```bash
+sudo az iot hub device-identity create --hub-name "<iothub-name>" --device-id "<device-name>" --edge-enabled
 ```
 
 Telepítenie kell [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) 1.0.9 verzióját. A megfelelő verzió letöltéséhez kövesse az alábbi lépéseket:
@@ -280,6 +289,8 @@ Telepítse a Microsoft GPG nyilvános kulcsot.
 
 ```bash
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+```
+```bash
 sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
 ```
 
@@ -406,13 +417,22 @@ Azure IoT Hub-példány létrehozása az Azure CLI használatával. Szükség es
 
 ```bash
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+```
+```bash
 sudo az login
-sudo az account set --subscription <name or ID of Azure Subscription>
-sudo az group create --name "test-resource-group" --location "WestUS"
-
-sudo az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-resource-group"
-
-sudo az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
+```
+```bash
+sudo az account set --subscription "<name or ID of Azure Subscription>"
+```
+```bash
+sudo az group create --name "<resource-group-name>" --location "<your-region>"
+```
+További információ: [régió támogatása](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services) az elérhető régiókban.
+```bash
+sudo az iot hub create --name "<iothub-group-name>" --sku S1 --resource-group "<resource-group-name>"
+```
+```bash
+sudo az iot hub device-identity create --hub-name "<iothub-name>" --device-id "<device-name>" --edge-enabled
 ```
 
 Telepítenie kell [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) 1.0.9 verzióját. A megfelelő verzió letöltéséhez kövesse az alábbi lépéseket:
@@ -431,6 +451,8 @@ Telepítse a Microsoft GPG nyilvános kulcsot.
 
 ```bash
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+```
+```bash
 sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
 ```
 
@@ -497,7 +519,7 @@ Miután frissítette az [Azure stack Edge-eszközök](https://go.microsoft.com/f
 ```azurecli
 sudo az login
 sudo az extension add --name azure-iot
-sudo az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json --subscription "<subscriptionId>"
+sudo az iot edge set-modules --hub-name "<iothub-name>" --device-id "<device-name>" --content DeploymentManifest.json --subscription "<name or ID of Azure Subscription>"
 ```
 
 |Paraméter  |Leírás  |

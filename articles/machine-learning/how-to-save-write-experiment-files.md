@@ -12,12 +12,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 49e1e9efbd6f59bd037a8033f83836bf7fc71c43
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: ad641c2270f94b9d902a25e8d061fb1137a0cdb7
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630328"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518602"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Fájlok mentése és írása Azure Machine Learning kísérletekhez
 
@@ -30,13 +30,13 @@ A képzés indításakor a [számítási célra](concept-compute-target.md)elkü
 
 Mielőtt kísérletet kezdeményezzen egy számítási célra vagy a helyi gépre, gondoskodnia kell arról, hogy a szükséges fájlok elérhetők legyenek a számítási cél számára, például a függőségi fájlok és az adatfájlok, amelyeket a kódnak futtatnia kell.
 
-Azure Machine Learning a teljes forrás könyvtár másolásával futtatja a betanítási parancsfájlokat. Ha olyan bizalmas adatokkal rendelkezik, amelyeket nem szeretne felvenni, használja a [. ignore fájlt](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) , vagy ne adja meg a forrás könyvtárában. Ehelyett egy [adattár](/python/api/azureml-core/azureml.data?preserve-view=true&view=azure-ml-py)használatával férhet hozzá az adataihoz.
+Azure Machine Learning a teljes forrás könyvtár másolásával futtatja a betanítási parancsfájlokat. Ha olyan bizalmas adatokkal rendelkezik, amelyeket nem szeretne felvenni, használja a [. ignore fájlt](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) , vagy ne adja meg a forrás könyvtárában. Ehelyett egy [adattár](/python/api/azureml-core/azureml.data)használatával férhet hozzá az adataihoz.
 
 A kísérletek pillanatképeinél a tárhelykorlát 300 MB és/vagy 2000 fájl.
 
 Ezért javasoljuk, hogy:
 
-* **Fájlok tárolása egy Azure Machine Learning [adattárban](/python/api/azureml-core/azureml.data?preserve-view=true&view=azure-ml-py).** Ez meggátolja a kísérletek késésével kapcsolatos problémákat, és a távoli számítási céltól származó adatok elérésének előnyeit biztosítja, ami azt jelenti, hogy a hitelesítést és a csatlakoztatást Azure Machine Learning kezeli. További információ az adattár forrásként való megadásáról és a fájlok az adattárba való feltöltéséről az [adattárolók című cikk hozzáférési adataiban](how-to-access-data.md) .
+* **Fájlok tárolása egy Azure Machine Learning [adattárban](/python/api/azureml-core/azureml.data).** Ez meggátolja a kísérletek késésével kapcsolatos problémákat, és a távoli számítási céltól származó adatok elérésének előnyeit biztosítja, ami azt jelenti, hogy a hitelesítést és a csatlakoztatást Azure Machine Learning kezeli. További információ az adattár forrásként való megadásáról és a fájlok az adattárba való feltöltéséről az [adattárolók című cikk hozzáférési adataiban](how-to-access-data.md) .
 
 * **Ha csak pár adatfájlra és függőségi parancsfájlra van szüksége, és nem tud adattárt használni,** helyezze a fájlokat ugyanabba a mappába, mint a betanítási parancsfájlt. Adja meg ezt a mappát `source_directory` közvetlenül a betanítási parancsfájlban, vagy a betanítási parancsfájlt meghívó kódban.
 
@@ -69,13 +69,13 @@ A módosítások írásakor ajánlott fájlokat írni egy Azure Machine Learning
 Ha nincs szüksége adattárra, írja a fájlokat a `./outputs` és/vagy `./logs` mappába.
 
 >[!Important]
-> Két mappa, *kimenet* és *napló* , a Azure Machine learning speciális kezelést kap. Ha a betanítás során fájlokat `./outputs` és mappákat ír `./logs` , a fájlok automatikusan feltöltve lesznek a futtatási előzményekbe, hogy a Futtatás befejezése után hozzáférjenek hozzájuk.
+> Két mappa, *kimenet* és *napló*, a Azure Machine learning speciális kezelést kap. Ha a betanítás során fájlokat `./outputs` és mappákat ír `./logs` , a fájlok automatikusan feltöltve lesznek a futtatási előzményekbe, hogy a Futtatás befejezése után hozzáférjenek hozzájuk.
 
 * **A kimenetek, például állapotüzenetek vagy pontozási eredmények esetén** fájlokat írhat a `./outputs` mappába, így azok a futtatási előzményekben szereplő összetevőkként megmaradnak. Legyen szem előtt tartva a mappába írt fájlok számát és méretét, mivel a tartalom a futtatási előzményekbe való feltöltésekor késést eredményezhet. Ha a késés aggodalomra ad okot, ajánlott a fájlok adattárba való írása.
 
 * **Ha az írott fájlt naplófájlként szeretné menteni a futtatási előzményekben,** írja a fájlokat a `./logs` mappába. A naplók valós időben lesznek feltöltve, így ez a módszer alkalmas az élő frissítések távoli futtatásból való továbbítására.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az [adattárolók adatainak eléréséről](how-to-access-data.md).
 

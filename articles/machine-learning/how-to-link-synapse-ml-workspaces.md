@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: 8941a7f7a27f6ffe58cda3f0bf2c6833ec226783
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: d1c4defc53c4af0fb481a57c0a455e987fdd480a
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102456235"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519996"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-preview"></a>Az Azure szinapszis Analytics és Azure Machine Learning munkaterületek (előzetes verzió) összekapcsolása
 
@@ -29,7 +29,7 @@ A ML-munkaterületet és a szinapszis-munkaterületet a [PYTHON SDK](#link-sdk) 
 Emellett munkaterületeket is csatolhat, és egy szinapszis Spark-készletet is csatolhat egyetlen [Azure Resource Manager (ARM) sablonnal](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json).
 
 >[!IMPORTANT]
-> A Azure Machine Learning és az Azure szinapszis-integráció nyilvános előzetes verzióban érhető el. A csomagban bemutatott funkciók `azureml-synapse` [kísérleti](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) előzetes funkciók, és bármikor megváltozhatnak.
+> A Azure Machine Learning és az Azure szinapszis-integráció nyilvános előzetes verzióban érhető el. A csomagban bemutatott funkciók `azureml-synapse` [kísérleti](/python/api/overview/azure/ml/#stable-vs-experimental) előzetes funkciók, és bármikor megváltozhatnak.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -39,7 +39,7 @@ Emellett munkaterületeket is csatolhat, és egy szinapszis Spark-készletet is 
 
 * [Apache Spark-készlet létrehozása a Azure Portal, a web Tools vagy a szinapszis Studio használatával](/synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
 
-* A [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) telepítése
+* A [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/intro) telepítése
 
 * Hozzáférés a [Azure Machine learning studióhoz](https://ml.azure.com/).
 
@@ -51,7 +51,7 @@ Emellett munkaterületeket is csatolhat, és egy szinapszis Spark-készletet is 
 >
 > Ha Ön nem **tulajdonosa** , és csak a szinapszis munkaterülethez **járul hozzá** , akkor csak a meglévő társított szolgáltatásokat használhatja. Tekintse meg a [meglévő társított szolgáltatás](how-to-data-prep-synapse-spark-pool.md#get-an-existing-linked-service)felolvasása és használata című témakört.
 
-A következő kód a [`LinkedService`](/python/api/azureml-core/azureml.core.linked_service.linkedservice?preserve-view=true&view=azure-ml-py) és osztályokat alkalmazza a alkalmazásra [`SynapseWorkspaceLinkedServiceConfiguration`](/python/api/azureml-core/azureml.core.linked_service.synapseworkspacelinkedserviceconfiguration?preserve-view=true&view=azure-ml-py) ,
+A következő kód a [`LinkedService`](/python/api/azureml-core/azureml.core.linked_service.linkedservice) és osztályokat alkalmazza a alkalmazásra [`SynapseWorkspaceLinkedServiceConfiguration`](/python/api/azureml-core/azureml.core.linked_service.synapseworkspacelinkedserviceconfiguration) ,
 
 * Kapcsolja össze a Machine learning-munkaterületet az Azure szinapszis-munkaterülettel `ws` .
 * A szinapszis-munkaterület regisztrálása a Azure Machine Learning társított szolgáltatásként.

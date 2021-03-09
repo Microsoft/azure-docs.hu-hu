@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.topic: conceptual
 ms.custom: how-to, racking-python, devx-track-azurecli
-ms.openlocfilehash: 88408c4d1c1936d364029f73d9e7b2be0bcf9d84
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: abb38ebbdacdf4f153148fbe121e54ede88f066a
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102213113"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519265"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Gépi tanulási modell üzembe helyezése Azure Functions (előzetes verzió)
 
@@ -63,7 +63,7 @@ További információ a beléptetési parancsfájlról: [pontozási kód defini�
 Ezek az entitások egy __következtetési konfigurációba__ vannak ágyazva. A következtetési konfiguráció a bejegyzés parancsfájljára és további függőségekre hivatkozik.
 
 > [!IMPORTANT]
-> Ha Azure Functions-vel való használatra vonatkozó következtetési konfigurációt hoz létre, [környezeti](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py) objektumot kell használnia. Vegye figyelembe, hogy ha egyéni környezetet határoz meg, akkor a >= 1.0.45 verzióval rendelkező azureml kell hozzáadnia pip-függőségként. Ez a csomag tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat. Az alábbi példa bemutatja, hogyan hozható létre egy környezeti objektum, és hogyan használhatja azt egy következtetési konfigurációval:
+> Ha Azure Functions-vel való használatra vonatkozó következtetési konfigurációt hoz létre, [környezeti](/python/api/azureml-core/azureml.core.environment%28class%29) objektumot kell használnia. Vegye figyelembe, hogy ha egyéni környezetet határoz meg, akkor a >= 1.0.45 verzióval rendelkező azureml kell hozzáadnia pip-függőségként. Ez a csomag tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat. Az alábbi példa bemutatja, hogyan hozható létre egy környezeti objektum, és hogyan használhatja azt egy következtetési konfigurációval:
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -96,7 +96,7 @@ pip install azureml-contrib-functions
 
 ## <a name="create-the-image"></a>A rendszerkép létrehozása
 
-A Azure Functions rendszerbe állított Docker-rendszerkép létrehozásához használja a [azureml... a. functions. functions. package](/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py) vagy az adott Package függvényt a használni kívánt triggerhez. A következő kódrészlet azt mutatja be, hogyan hozhat létre egy új csomagot a modellből és a következtetések konfigurációjában a blob triggerrel:
+A Azure Functions rendszerbe állított Docker-rendszerkép létrehozásához használja a [azureml... a. functions. functions. package](/python/api/azureml-contrib-functions/azureml.contrib.functions) vagy az adott Package függvényt a használni kívánt triggerhez. A következő kódrészlet azt mutatja be, hogyan hozhat létre egy új csomagot a modellből és a következtetések konfigurációjában a blob triggerrel:
 
 > [!NOTE]
 > A kódrészlet feltételezi, hogy `model` egy regisztrált modellt tartalmaz, amely `inference_config` tartalmazza a következtetési környezet konfigurációját. További információ: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
@@ -301,4 +301,4 @@ A blob-eseményindítók használatával kapcsolatos további információkért 
 * További információ a blob Storage eseményindítók [Azure Blob Storage-kötésekről](../azure-functions/functions-bindings-storage-blob.md).
 * [A modell üzembe helyezése Azure app Service](how-to-deploy-app-service.md).
 * [Webszolgáltatásként üzembe helyezett ML-modell felhasználása](how-to-consume-web-service.md)
-* [API-referencia](/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py)
+* [API-referencia](/python/api/azureml-contrib-functions/azureml.contrib.functions)

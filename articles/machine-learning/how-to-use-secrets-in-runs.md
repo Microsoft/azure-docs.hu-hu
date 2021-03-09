@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: ce47041d888b8a7786f0f87f54e725919638e7f7
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: b93da1e252357830578783c8f3ab5ca02f5a3e5b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349018"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520744"
 ---
 # <a name="use-authentication-credential-secrets-in-azure-machine-learning-training-runs"></a>Hitelesítő adatokkal kapcsolatos titkos kódok használata Azure Machine Learning betanítási futtatásokban
 
@@ -33,7 +33,7 @@ A titkok használatára szolgáló standard folyamat a következő:
 
 ## <a name="set-secrets"></a>Titkos kódok beállítása
 
-A [Azure Machine learning a kulcstartó osztály a](/python/api/azureml-core/azureml.core.keyvault.keyvault?preserve-view=true&view=azure-ml-py) titkok beállítására szolgáló metódusokat tartalmazza. A helyi Python-munkamenetben először szerezzen be egy hivatkozást a munkaterületre Key Vault, majd a [`set_secret()`](/python/api/azureml-core/azureml.core.keyvault.keyvault?preserve-view=true&view=azure-ml-py#&preserve-view=trueset-secret-name--value-) metódus használatával állítsa be a titkos kulcsot név és érték alapján. Ha a név már létezik, a __set_secret__ metódus frissíti a titkos értéket.
+A [Azure Machine learning a kulcstartó osztály a](/python/api/azureml-core/azureml.core.keyvault.keyvault) titkok beállítására szolgáló metódusokat tartalmazza. A helyi Python-munkamenetben először szerezzen be egy hivatkozást a munkaterületre Key Vault, majd a [`set_secret()`](/python/api/azureml-core/azureml.core.keyvault.keyvault#set-secret-name--value-) metódus használatával állítsa be a titkos kulcsot név és érték alapján. Ha a név már létezik, a __set_secret__ metódus frissíti a titkos értéket.
 
 ```python
 from azureml.core import Workspace
@@ -49,13 +49,13 @@ keyvault.set_secret(name="mysecret", value = my_secret)
 
 Ne helyezze el a titkos értéket a Python-kódban, mert nem biztonságos a fájlként való tárolása titkosítatlan fájlként. Ehelyett szerezze be a titkos értéket egy környezeti változóból, például az Azure DevOps Build Secret vagy az interaktív felhasználói bemenet alapján.
 
-A titkos neveket a [`list_secrets()`](/python/api/azureml-core/azureml.core.keyvault.keyvault?preserve-view=true&view=azure-ml-py#&preserve-view=truelist-secrets--) metódussal listázhatja, és egy batch-verzió is,[set_secrets ()](/python/api/azureml-core/azureml.core.keyvault.keyvault?preserve-view=true&view=azure-ml-py#&preserve-view=trueset-secrets-secrets-batch-) segítségével egyszerre több titkot is beállíthat.
+A titkos neveket a [`list_secrets()`](/python/api/azureml-core/azureml.core.keyvault.keyvault#list-secrets--) metódussal listázhatja, és egy batch-verzió is,[set_secrets ()](/python/api/azureml-core/azureml.core.keyvault.keyvault#set-secrets-secrets-batch-) segítségével egyszerre több titkot is beállíthat.
 
 ## <a name="get-secrets"></a>Titkok beolvasása
 
-A helyi kódban a [`get_secret()`](/python/api/azureml-core/azureml.core.keyvault.keyvault?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-secret-name-) metódus használatával kérheti le a titkos értéket név alapján.
+A helyi kódban a [`get_secret()`](/python/api/azureml-core/azureml.core.keyvault.keyvault#get-secret-name-) metódus használatával kérheti le a titkos értéket név alapján.
 
-A futtatásához a [`Experiment.submit`](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py#&preserve-view=truesubmit-config--tags-none----kwargs-)  metódust a következő osztály használatával küldi [`get_secret()`](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-secret-name-) el: [`Run`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) . Mivel az elküldött futtatások tisztában vannak a munkaterületével, ez a módszer a munkaterület-példányát, és közvetlenül a titkos értéket adja vissza.
+A futtatásához a [`Experiment.submit`](/python/api/azureml-core/azureml.core.experiment.experiment#submit-config--tags-none----kwargs-)  metódust a következő osztály használatával küldi [`get_secret()`](/python/api/azureml-core/azureml.core.run.run#get-secret-name-) el: [`Run`](/python/api/azureml-core/azureml.core.run%28class%29) . Mivel az elküldött futtatások tisztában vannak a munkaterületével, ez a módszer a munkaterület-példányát, és közvetlenül a titkos értéket adja vissza.
 
 ```python
 # Code in submitted run
@@ -67,7 +67,7 @@ secret_value = run.get_secret(name="mysecret")
 
 Ügyeljen arra, hogy a titkos értéket ne tegye elérhetővé vagy nyomtassa ki.
 
-Létezik egy batch-verzió is, [get_secrets ()](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-secrets-secrets-) , amely egyszerre több titkot is elér.
+Létezik egy batch-verzió is, [get_secrets ()](/python/api/azureml-core/azureml.core.run.run#get-secrets-secrets-) , amely egyszerre több titkot is elér.
 
 ## <a name="next-steps"></a>Következő lépések
 

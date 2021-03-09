@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cef2636aeecf78a12c48b31b384af2cf76903879
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 722f3158c8eca4cec4dbf23658f9d8d4cb68c3ed
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102498829"
+ms.locfileid: "102517990"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: gyakori kérdések (GYIK)
 
@@ -145,13 +145,13 @@ Használhatja az új, egységesített **Alkalmazásregisztrációk** élményt v
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. A bal oldali menüben válassza a **Azure ad B2C** lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C** lehetőséget.
 1. Törölje az összes **felhasználói folyamatot (szabályzatot)** a Azure ad B2C-bérlőben.
+1. Törölje az összes **Identity providert** a Azure ad B2C-bérlőben.
 1. Válassza a **Alkalmazásregisztrációk** lehetőséget, majd válassza a **minden alkalmazás** lapot.
 1. Az összes regisztrált alkalmazás törlése.
 1. A **B2C-Extensions-app** törlése.
 1. A **Kezelés** menüpontban válassza a **Felhasználók** lehetőséget.
 1. Jelölje ki az egyes felhasználókat, és válassza ki azt az *előfizetés-rendszergazda* felhasználót, amelyhez jelenleg be van jelentkezve. Kattintson a lap alján található **Törlés** elemre, és válassza az **Igen** lehetőséget, ha a rendszer kéri.
 1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
-1. A **kezelés** területen válassza a **felhasználói beállítások** lehetőséget.
 1. A **kezelés** területen válassza a **Tulajdonságok** lehetőséget.
 1. Az **Azure-erőforrásokhoz való hozzáférés kezelése** területen válassza az **Igen**, majd a **Mentés** lehetőséget.
 1. Jelentkezzen ki a Azure Portal, majd jelentkezzen be újra a hozzáférésének frissítéséhez.

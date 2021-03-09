@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 5c1ac3f79ab5db2622dafd3229b39bbe19bce41e
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 12e67103fb1d16276cc3d8fd6171eee30dd58851
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102473892"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517564"
 ---
 Az ügyfél operációs rendszertől függően az eszközhöz való távoli kapcsolódás eljárásai eltérőek.
 
@@ -81,11 +81,11 @@ Az alábbi lépéseket követve távolról csatlakozhat a Windows-ügyfelekről.
 
 Azon a Linux-ügyfélen, amelyet a kapcsolódáshoz használni fog:
 
-- [Telepítse a Linux rendszerhez készült legújabb PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6&preserve-view=true) -t a githubról az SSH távelérési szolgáltatásának beszerzéséhez. 
+- [Telepítse a Linux rendszerhez készült legújabb PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-linux) -t a githubról az SSH távelérési szolgáltatásának beszerzéséhez. 
 - [Csak az `gss-ntlmssp` NTLM-modulból telepítse a csomagot](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md). Ubuntu-ügyfelek esetén használja a következő parancsot:
     - `sudo apt-get install gss-ntlmssp`
 
-További információért nyissa meg a [PowerShell távoli ELJÁRÁSHÍVÁS SSH](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6&preserve-view=true)-val című témakört.
+További információért nyissa meg a [PowerShell távoli ELJÁRÁSHÍVÁS SSH](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core)-val című témakört.
 
 Az alábbi lépéseket követve távolról csatlakozhat egy NFS-ügyfélről.
 

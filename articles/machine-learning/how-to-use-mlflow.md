@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ed9d41a84e455241ed3cfc41b905a671f2a2d499
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 02684ba91c207357e15684870a6fa0ceab3e17ff
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912954"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520965"
 ---
 # <a name="train-and-track-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>ML-modellek betanítása és nyomon követése MLflow és Azure Machine Learning (előzetes verzió)
 
@@ -46,7 +46,7 @@ Az alábbi ábra azt szemlélteti, hogy a MLflow nyomon követésével nyomon k�
 
  A következő táblázat összefoglalja azokat a különböző ügyfeleket, amelyek használhatják a Azure Machine Learningt, valamint a hozzájuk tartozó funkciókra vonatkozó képességeiket.
 
- A MLflow követése olyan metrikai naplózási és összetevő-tárolási funkciókat kínál, amelyek csak a [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)-n keresztül érhetők el.
+ A MLflow követése olyan metrikai naplózási és összetevő-tárolási funkciókat kínál, amelyek csak a [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/intro)-n keresztül érhetők el.
 
 | Képesség | MLflow követés & üzemelő példány | Python SDK Azure Machine Learning |  Azure Machine Learning CLI | Azure Machine Learning Studio|
 |---|---|---|---|---|
@@ -63,7 +63,7 @@ Az alábbi ábra azt szemlélteti, hogy a MLflow nyomon követésével nyomon k�
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Telepítse az `azureml-mlflow` csomagot. 
-    * Ez a csomag automatikusan bevezeti a `azureml-core` [Azure Machine learning Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)-t, amely biztosítja a kapcsolatot a MLflow a munkaterület eléréséhez.
+    * Ez a csomag automatikusan bevezeti a `azureml-core` [Azure Machine learning Python SDK](/python/api/overview/azure/ml/install)-t, amely biztosítja a kapcsolatot a MLflow a munkaterület eléréséhez.
 * [Hozzon létre egy Azure Machine learning-munkaterület](how-to-manage-workspace.md).
     * Megtudhatja, [hogy mely hozzáférési engedélyek szükségesek a MLflow műveleteinek elvégzéséhez a munkaterületen](how-to-assign-roles.md#mlflow-operations).
 
@@ -71,7 +71,7 @@ Az alábbi ábra azt szemlélteti, hogy a MLflow nyomon követésével nyomon k�
 
 A MLflow követése Azure Machine Learning lehetővé teszi a naplózott metrikák és összetevők tárolását a helyi futtatásokból a Azure Machine Learning-munkaterületre.
 
-Importálja a `mlflow` és [`Workspace`](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py) osztályokat a MLflow követési URI-ja eléréséhez és a munkaterület konfigurálásához.
+Importálja a `mlflow` és [`Workspace`](/python/api/azureml-core/azureml.core.workspace%28class%29) osztályokat a MLflow követési URI-ja eléréséhez és a munkaterület konfigurálásához.
 
 A következő kódban a `get_mlflow_tracking_uri()` metódus egyedi nyomkövetési URI-címeket rendel a munkaterülethez, `ws` és `set_tracking_uri()` a MLflow nyomon követi az adott címnek megfelelő URI-t.
 
@@ -118,7 +118,7 @@ dependencies:
     - numpy
 ```
 
-A szkriptben konfigurálja a számítási és képzési környezetét a [`Environment`](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) osztállyal. Ezután hozza létre a számítási  [`ScriptRunConfig`](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?preserve-view=true&view=azure-ml-py) célként a távoli számítási célt.
+A szkriptben konfigurálja a számítási és képzési környezetét a [`Environment`](/python/api/azureml-core/azureml.core.environment.environment) osztállyal. Ezután hozza létre a számítási  [`ScriptRunConfig`](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig) célként a távoli számítási célt.
 
 ```Python
 import mlflow
@@ -145,7 +145,7 @@ Telepítse a `azureml-mlflow` csomagot úgy, hogy a MLflow-követést helyi Azur
 pip install azureml-mlflow
 ```
 
-Importálja a `mlflow` és [`Workspace`](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py) osztályokat a MLflow követési URI-ja eléréséhez és a munkaterület konfigurálásához.
+Importálja a `mlflow` és [`Workspace`](/python/api/azureml-core/azureml.core.workspace%28class%29) osztályokat a MLflow követési URI-ja eléréséhez és a munkaterület konfigurálásához.
 
 ```Python
 import mlflow

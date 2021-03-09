@@ -9,12 +9,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 06/22/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: a4adb5bff80f1ab216a39fa773e027670b9e6509
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 3e073310d62bfb772ea1120bd379cdc277137da0
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102212688"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519112"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Telepítse & a CLI-bővítményt használja Azure Machine Learning
 
@@ -242,7 +242,7 @@ Számítási példányok kezelése.  Az alábbi példákban a számítási péld
     > [!TIP]
     > A `az ml folder attach` parancs létrehoz egy `.azureml` alkönyvtárat, amely két példa runconfig-fájlt tartalmaz. 
     >
-    > Ha olyan Python-szkripttel rendelkezik, amely programozott módon hozza létre a futtatási konfigurációs objektumot, a [RunConfig. Save ()](/python/api/azureml-core/azureml.core.runconfiguration?preserve-view=true&view=azure-ml-py#&preserve-view=truesave-path-none--name-none--separate-environment-yaml-false-) paranccsal mentheti RunConfig-fájlként.
+    > Ha olyan Python-szkripttel rendelkezik, amely programozott módon hozza létre a futtatási konfigurációs objektumot, a [RunConfig. Save ()](/python/api/azureml-core/azureml.core.runconfiguration#save-path-none--name-none--separate-environment-yaml-false-) paranccsal mentheti RunConfig-fájlként.
     >
     > A teljes runconfig séma ebben a [JSON-fájlban](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)található. A séma az `description` egyes objektumok kulcsán keresztüli öndokumentálás. Emellett a lehetséges értékek enumerálásai is megtalálhatók, a végén pedig egy sablon-kódrészlet.
 
@@ -362,7 +362,7 @@ A következő parancsok bemutatják, hogyan hozhat létre, regisztrálhat és li
 
 ### <a name="environment-configuration-schema"></a>Környezeti konfigurációs séma
 
-Ha a parancsot használta `az ml environment scaffold` , egy olyan sablonfájlt hoz `azureml_environment.json` létre, amely módosítható és használható egyéni környezeti konfigurációk létrehozásához a CLI használatával. A legfelső szintű objektum lazán leképezi a [`Environment`](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py) PYTHON SDK osztályát. 
+Ha a parancsot használta `az ml environment scaffold` , egy olyan sablonfájlt hoz `azureml_environment.json` létre, amely módosítható és használható egyéni környezeti konfigurációk létrehozásához a CLI használatával. A legfelső szintű objektum lazán leképezi a [`Environment`](/python/api/azureml-core/azureml.core.environment%28class%29) PYTHON SDK osztályát. 
 
 ```json
 {
@@ -406,17 +406,17 @@ Ha a parancsot használta `az ml environment scaffold` , egy olyan sablonfájlt 
 }
 ```
 
-A következő táblázat részletezi a JSON-fájl legfelső szintű mezőjét, típusát és leírását. Ha egy objektumtípus egy osztályhoz van társítva a Python SDK-val, az egyes JSON-mezők és a Python-osztály nyilvános változójának neve minden esetben meg1:1 lazult. Bizonyos esetekben előfordulhat, hogy a mező egy konstruktor argumentumhoz rendelhető, nem pedig egy osztály változó. Például a mező a `environmentVariables` `environment_variables` osztályban lévő változóra mutat [`Environment`](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py) .
+A következő táblázat részletezi a JSON-fájl legfelső szintű mezőjét, típusát és leírását. Ha egy objektumtípus egy osztályhoz van társítva a Python SDK-val, az egyes JSON-mezők és a Python-osztály nyilvános változójának neve minden esetben meg1:1 lazult. Bizonyos esetekben előfordulhat, hogy a mező egy konstruktor argumentumhoz rendelhető, nem pedig egy osztály változó. Például a mező a `environmentVariables` `environment_variables` osztályban lévő változóra mutat [`Environment`](/python/api/azureml-core/azureml.core.environment%28class%29) .
 
-| JSON-mező | Típus | Description |
+| JSON-mező | Típus | Leírás |
 |---|---|---|
 | `name` | `string` | A környezet neve. A név nem kezdődhet a **Microsofttal** vagy a **AzureML**. |
 | `version` | `string` | A környezet verziója. |
 | `environmentVariables` | `{string: string}` | A környezeti változók neveinek és értékeinek kivonata. |
-| `python` | [`PythonSection`](/python/api/azureml-core/azureml.core.environment.pythonsection?preserve-view=true&view=azure-ml-py)a kalap meghatározza a Python-környezetet és a tolmácsot a cél számítási erőforráson való használatra. |
-| `docker` | [`DockerSection`](/python/api/azureml-core/azureml.core.environment.dockersection?preserve-view=true&view=azure-ml-py) | Meghatározza a környezet specifikációi alapján létrehozott Docker-rendszerkép testreszabásához szükséges beállításokat. |
-| `spark` | [`SparkSection`](/python/api/azureml-core/azureml.core.environment.sparksection?preserve-view=true&view=azure-ml-py) | Ez a szakasz a Spark beállításait konfigurálja. A rendszer csak akkor használja, ha a keretrendszer PySpark értékre van állítva. |
-| `databricks` | [`DatabricksSection`](/python/api/azureml-core/azureml.core.databricks.databrickssection?preserve-view=true&view=azure-ml-py) | A Databricks-függvénytár függőségeinek konfigurálása. |
+| `python` | [`PythonSection`](/python/api/azureml-core/azureml.core.environment.pythonsection)a kalap meghatározza a Python-környezetet és a tolmácsot a cél számítási erőforráson való használatra. |
+| `docker` | [`DockerSection`](/python/api/azureml-core/azureml.core.environment.dockersection) | Meghatározza a környezet specifikációi alapján létrehozott Docker-rendszerkép testreszabásához szükséges beállításokat. |
+| `spark` | [`SparkSection`](/python/api/azureml-core/azureml.core.environment.sparksection) | Ez a szakasz a Spark beállításait konfigurálja. A rendszer csak akkor használja, ha a keretrendszer PySpark értékre van állítva. |
+| `databricks` | [`DatabricksSection`](/python/api/azureml-core/azureml.core.databricks.databrickssection) | A Databricks-függvénytár függőségeinek konfigurálása. |
 | `inferencingStackVersion` | `string` | Megadja a rendszerképhez hozzáadott következtetési verem verzióját. Ha nem szeretne hozzáadni egy következtetést, hagyja üresen ezt a mezőt `null` . Érvényes érték: "Latest". |
 
 ## <a name="ml-pipeline-management"></a>ML-folyamat kezelése

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 8a15517c7c34d39dfb1de237d19e84c40bf834ea
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: f3079ea475c20e3ae0e78319d6c6b24ee579fd0c
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102500104"
+ms.locfileid: "102521305"
 ---
 # <a name="security-control-inventory-and-asset-management"></a>Biztonság-ellenőrzés: leltár-és eszközkezelés
 
@@ -156,7 +156,7 @@ Az Azure feltételes hozzáférés használatával korlátozhatja, hogy a felhas
 
 A parancsfájlok típusától függően használhat operációs rendszer-specifikus konfigurációkat vagy harmadik féltől származó erőforrásokat, hogy korlátozza a felhasználók számára az Azure számítási erőforrásokon belüli parancsfájlok futtatását.  Emellett kihasználhatja Azure Security Center adaptív alkalmazás vezérlőelemeit is, hogy csak a hitelesített szoftverek fussanak, és az összes jogosulatlan szoftver le legyen tiltva az Azure Virtual Machines.
 
-- [A PowerShell-parancsfájlok végrehajtásának szabályozása Windows-környezetekben](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+- [A PowerShell-parancsfájlok végrehajtásának szabályozása Windows-környezetekben](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 - [Azure Security Center adaptív alkalmazás-vezérlők használata](../../security-center/security-center-adaptive-application.md)
 

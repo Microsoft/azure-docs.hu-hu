@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to, data4ml
-ms.openlocfilehash: fc890dbaf717d3eb9ec87afcb69c87e80c7f14bc
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: f42a2f9e606eaa0475f2e35c479e99545ecf8193
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680955"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521900"
 ---
 # <a name="collect-data-from-models-in-production"></a>Adatok gyűjtése üzemi modellből
 
@@ -65,11 +65,11 @@ A blob kimeneti adatelérési útja a következő szintaxist követi:
 
 - Szüksége van egy AK-fürtre. További információ a létrehozásáról és telepítéséről: a [telepítés és a hol](how-to-deploy-and-where.md).
 
-- [Állítsa be a környezetet](how-to-configure-environment.md) , és telepítse a [Azure Machine learning monitoring SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)-t.
+- [Állítsa be a környezetet](how-to-configure-environment.md) , és telepítse a [Azure Machine learning monitoring SDK](/python/api/overview/azure/ml/install)-t.
 
 ## <a name="enable-data-collection"></a>Az adatgyűjtés engedélyezése
 
-Az [adatgyűjtést](/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?preserve-view=true&view=azure-ml-py) a Azure Machine learning vagy más eszközökön keresztül üzembe helyezett modelltől függetlenül is engedélyezheti.
+Az [adatgyűjtést](/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector) a Azure Machine learning vagy más eszközökön keresztül üzembe helyezett modelltől függetlenül is engedélyezheti.
 
 Az adatgyűjtés engedélyezéséhez a következőket kell tennie:
 

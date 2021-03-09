@@ -11,12 +11,12 @@ ms.author: siarora
 ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: aa25a81068b25b7b8696a7472eb04542e8bb1a60
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 4e61a15b86d1d2d05889253f615eec0865c87a70
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878952"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520387"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Erőforrások kvótáinak kezelése és növelése Azure Machine Learning
 
@@ -124,7 +124,7 @@ A virtuális gépekre vonatkozó korlátok az alábbi táblázatban látható é
 
 További információ: [Container instances korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#container-instances-limits).
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Tárolás
 Az Azure Storage-ban legfeljebb 250 Storage-fiók lehet, előfizetése pedig régiónként. Ez a korlát a standard és a Premium Storage-fiókokat is tartalmazza.
 
 A korlát növeléséhez kérjen egy kérést az [Azure-támogatáson](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/)keresztül. Az Azure Storage csapata áttekinti az esetet, és legfeljebb 250 Storage-fiókot tud jóváhagyni egy adott régióban.
@@ -189,7 +189,6 @@ A Azure Machine Learning erőforrásokat hoz létre az (ügyfél-) előfizetésb
  A következő esetekben előfordulhat, hogy kvótát kell igényelnie a Microsoft tulajdonában lévő előfizetésben:
 
 * Azure Private-hivatkozás engedélyezett munkaterülete ügyfél által felügyelt kulccsal (CMK)
-* Azure Container Registry a virtuális hálózat mögötti munkaterülethez
 * Private Link-kompatibilis Azure Kubernetes Service-fürt csatolása a munkaterülethez
 
 Ezen forgatókönyvek esetében a következő lépések végrehajtásával igényelhet támogatást:
@@ -209,7 +208,7 @@ Ezen forgatókönyvek esetében a következő lépések végrehajtásával igén
 
 :::image type="content" source="media/how-to-manage-quotas/quota-increase-private-endpoint.png" alt-text="Képernyőkép a privát végpontról és a saját DNS-kvóta növeléséről.":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + [A Azure Machine Learning költségeinek megtervezése és kezelése](concept-plan-manage-cost.md)
 + [Szolgáltatási korlátozások a Azure Machine Learning](resource-limits-quotas-capacity.md)

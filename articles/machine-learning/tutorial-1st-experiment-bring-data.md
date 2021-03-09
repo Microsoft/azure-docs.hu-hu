@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 02/11/2021
 ms.custom: tracking-python
-ms.openlocfilehash: 5e1af60cccb48195db38e420dfe3df01f404669c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bbe28f4fda32ce7d55a437e4ac944dc206f436ee
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100377999"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522359"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Oktatóanyag: saját adatai használata (4. rész)
 
@@ -200,7 +200,7 @@ A vezérlő parancsfájl hasonló a [sorozat 3. részéből](tutorial-1st-experi
       `dataset = Dataset.File.from_files( ... )`
    :::column-end:::
    :::column span="2":::
-      Az [adatkészletek](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py) az Azure Blob Storageba feltöltött adatokat használják. Az adatkészletek olyan absztrakt rétegek, amelyek a megbízhatóság és a megbízhatóság javítása érdekében lettek kialakítva.
+      Az [adatkészletek](/python/api/azureml-core/azureml.core.dataset.dataset) az Azure Blob Storageba feltöltött adatokat használják. Az adatkészletek olyan absztrakt rétegek, amelyek a megbízhatóság és a megbízhatóság javítása érdekében lettek kialakítva.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -208,7 +208,7 @@ A vezérlő parancsfájl hasonló a [sorozat 3. részéből](tutorial-1st-experi
       `config = ScriptRunConfig(...)`
    :::column-end:::
    :::column span="2":::
-      A [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) úgy módosul, hogy tartalmazza a számára átadott argumentumok listáját `train.py` . Az `dataset.as_named_input('input').as_mount()` argumentum azt jelenti, hogy a megadott könyvtár a számítási célhoz lesz _csatlakoztatva_ .
+      A [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) úgy módosul, hogy tartalmazza a számára átadott argumentumok listáját `train.py` . Az `dataset.as_named_input('input').as_mount()` argumentum azt jelenti, hogy a megadott könyvtár a számítási célhoz lesz _csatlakoztatva_ .
    :::column-end:::
 :::row-end:::
 

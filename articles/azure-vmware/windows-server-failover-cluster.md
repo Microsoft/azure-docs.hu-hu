@@ -2,17 +2,17 @@
 title: Windows Server feladatátvevő fürt az Azure VMware megoldás vSAN natív megosztott lemezekkel
 description: Állítsa be a Windows Server feladatátvevő fürtöt (WSFC) az Azure VMware-megoldáson, és használja ki a WSFC-képességet igénylő megoldások előnyeit.
 ms.topic: how-to
-ms.date: 03/08/2021
-ms.openlocfilehash: 84bb846cd3fb6dd1b138308670db7ccf122b2187
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.date: 03/09/2021
+ms.openlocfilehash: d667eef00fcad0e3f5243c6ab580e2e8371c6793
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102491297"
+ms.locfileid: "102518993"
 ---
 # <a name="windows-server-failover-cluster-on-azure-vmware-solution-vsan-with-native-shared-disks"></a>Windows Server feladatátvevő fürt az Azure VMware megoldás vSAN natív megosztott lemezekkel
 
-Ebből a cikkből megtudhatja, hogyan állíthatja be a Windows Server feladatátvevő fürtöt az Azure VMware megoldásban. A jelen cikkben ismertetett megvalósítás a koncepciók és a tesztelési célok igazolására szolgál.
+Ebből a cikkből megtudhatja, hogyan állíthatja be a Windows Server feladatátvevő fürtöt az Azure VMware megoldásban. A jelen cikkben ismertetett megvalósítás a koncepciók és a tesztelési célok igazolására szolgál. Azt javasoljuk, hogy a helyszíni (CIB) konfigurációt csak az elhelyezési házirendek elérhetővé tételéhez használja.
 
 A Windows Server feladatátvételi fürt (WSFC), korábbi nevén Microsoft Service cluster Service (MSCS), a Windows Server operációs rendszer (OS) egyik funkciója. A WSFC egy üzleti szempontból kritikus funkció, és számos alkalmazásra van szükség. A következő konfigurációk esetében például a WSFC szükséges:
 
@@ -143,7 +143,7 @@ A következő tevékenységek nem támogatottak, és a WSFC csomópont feladatá
         
       - A **hálózati kommunikáció ellenőrzése**. A fürt-ellenőrzési teszt arra figyelmeztet, hogy a fürtben csak egy hálózati adapter érhető el. Ezt a figyelmeztetést figyelmen kívül hagyhatja. Az Azure VMware-megoldás biztosítja a szükséges rendelkezésre állást és teljesítményt, mivel a csomópontok az egyik NSX-T szegmenshez csatlakoznak. Tartsa azonban ezt az elemeket a fürt ellenőrzési tesztje részeként, mivel a hálózati kommunikáció egyéb szempontjait is érvényesíti.
 
-16. Hozzon létre egy DRS-szabályt, amely elkülöníti a WSFC virtuális gépeket az Azure VMware-megoldás csomópontjain. A következő szabályok használhatók: egy virtuális gép közötti affinitás és egy virtuális gép – virtuális gép közötti affinitási szabály. Így a fürtcsomópontok nem futnak ugyanazon az Azure VMware Solution gazdagépen.
+16. Hozzon létre egy DRS-szabályt, amely a WSFC virtuális gépeket ugyanarra az Azure VMware megoldás-csomópontra helyezi. Ehhez szükség van egy gazdagép – VM affinitási szabályra. Így a fürtcsomópontok ugyanazon az Azure VMware Solution gazdagépen futnak. Ez még kísérleti célokra szolgál, amíg nem állnak rendelkezésre elhelyezési szabályzatok.
 
     >[!NOTE]
     > Ehhez létre kell hoznia egy támogatási kérési jegyet. Az Azure-támogatási szervezetünk segítségére lesz.

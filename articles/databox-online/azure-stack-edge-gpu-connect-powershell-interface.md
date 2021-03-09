@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 1404dfd25f4e80e0e05c0071da649cacfa45dac0
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 1319f806dd2f32233dcfe7383f5283b67827f16f
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102437757"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102517563"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Azure Stack Edge Pro GPU-eszköz kezelése a Windows PowerShell használatával
 
@@ -26,30 +26,12 @@ Ebből a cikkből megtudhatja, hogyan kapcsolódhat az eszköz PowerShell-felül
 
 ## <a name="connect-to-the-powershell-interface"></a>Csatlakozás a PowerShell-felülethez
 
-[!INCLUDE [Connect to admin runspace](../../includes/data-box-edge-gateway-connect-minishell.md)]
+[!INCLUDE [Connect to admin runspace](../../includes/azure-stack-edge-gateway-connect-minishell.md)]
 
 ## <a name="create-a-support-package"></a>Támogatási csomag létrehozása
 
 [!INCLUDE [Create a support package](../../includes/data-box-edge-gateway-create-support-package.md)]
 
-<!--## Upload certificate
-
-[!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
-
-You can also upload IoT Edge certificates to enable a secure connection between your IoT Edge device and the downstream devices that may connect to it. There are three IoT Edge certificates (*.pem* format) that you need to install:
-
-- Root CA certificate or the owner CA
-- Device CA certificate
-- Device key certificate
-
-The following example shows the usage of this cmdlet to install IoT Edge certificates:
-
-```
-Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username"
-```
-When you run this cmdlet, you will be prompted to provide the password for the network share.
-
-For more information on certificates, go to [Azure IoT Edge certificates](../iot-edge/iot-edge-certs.md) or [Install certificates on a gateway](../iot-edge/how-to-create-transparent-gateway.md).-->
 
 ## <a name="view-device-information"></a>Eszköz adatainak megtekintése
  
@@ -88,17 +70,8 @@ Ha a számítási szerepkör konfigurálva van az eszközön, a GPU-illesztőpro
 
 A többfolyamatos szolgáltatás (mp) az NVIDIA GPU-ban olyan mechanizmust biztosít, amelyben több feladat is megoszthatja a GPU-kat, ahol az egyes feladatok a GPU erőforrásainak bizonyos hányadát foglalják magukban. Az MPS a Azure Stack Edge Pro GPU-eszköz előzetes verziójának funkciója. Az alábbi lépéseket követve engedélyezheti az MPS-t az eszközön:
 
-1. Mielőtt elkezdené, győződjön meg arról, hogy: 
+[!INCLUDE [Enable MPS](../../includes/azure-stack-edge-gateway-enable-mps.md)]
 
-    1. Konfigurálta és [aktiválta Azure stack Edge Pro-eszközét](azure-stack-edge-gpu-deploy-activate.md) egy Azure stack Edge pro/Data Box Gateway erőforrással az Azure-ban.
-    1. [Ezen az eszközön konfigurálta a számítást a Azure Portal](azure-stack-edge-deploy-configure-compute.md#configure-compute).
-    
-1. [Kapcsolódjon a PowerShell felületéhez](#connect-to-the-powershell-interface).
-1. Az alábbi paranccsal engedélyezheti az MPS használatát az eszközön.
-
-    ```powershell
-    Start-HcsGpuMPS
-    ```
 
 ## <a name="reset-your-device"></a>Eszköz alaphelyzetbe állítása
 
@@ -150,45 +123,13 @@ Id                                   PodSubnet    ServiceSubnet
 [10.100.10.10]: PS>
 ```
 
-
 ## <a name="debug-kubernetes-issues-related-to-iot-edge"></a>Kubernetes kapcsolatos hibák elhárítása IoT Edge
 
-<!--When the Kubernetes cluster is created, there are two system namespaces created: `iotedge` and `azure-arc`. --> 
+Mielőtt elkezdené, a következőket kell tennie:
 
-<!--### Create config file for system namespace
-
-To troubleshoot, first create the `config` file corresponding to the `iotedge` namespace with `aseuser`.
-
-Run the `Get-HcsKubernetesUserConfig -AseUser` command and save the output as `config` file (no file extension). Save the file in the `.kube` folder of your user profile on the local machine.
-
-Following is the sample output of the `Get-HcsKubernetesUserConfig` command.
-
-```PowerShell
-[10.100.10.10]: PS>Get-HcsKubernetesUserConfig -AseUser
-apiVersion: v1
-clusters:
-- cluster:
-    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUN5RENDQWJDZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRJd01EVXhNekl4TkRRME5sb1hEVE13TURVeE1USXhORFEwTmxvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBS0M1CjlJbzRSU2hudG90QUdxdjNTYmRjOVd4UmJDYlRzWXU5S0RQeU9xanVoZE1UUE9PcmROOGNoa0x4NEFyZkZaU1AKZithUmhpdWZqSE56bWhucnkvZlprRGdqQzQzRmV5UHZzcTZXeVVDV0FEK2JBdi9wSkJDbkg2MldoWGNLZ1BVMApqU1k0ZkpXenNFbzBaREhoeUszSGN3MkxkbmdmaEpEanBQRFJBNkRWb2pIaktPb29OT1J1dURvUHpiOTg2dGhUCkZaQXJMZjRvZXRzTEk1ZzFYRTNzZzM1YVhyU0g3N2JPYVVsTGpYTzFYSnpFZlZWZ3BMWE5xR1ZqTXhBMVU2b1MKMXVJL0d1K1ArY
-===========CUT=========================================CUT===================
-    server: https://compute.myasegpu1.wdshcsso.com:6443
-    name: kubernetes
-contexts:
-- context:
-    cluster: kubernetes
-    user: aseuser
-    name: aseuser@kubernetes
-current-context: aseuser@kubernetes
-kind: Config
-preferences: {}
-users:
-- name: aseuser
-    user:
-    client-certificate-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUMwRENDQWJpZ0F3SUJBZ0lJY1hOTXRPU2VwbG93RFFZSktvWklodmNOQVFFTEJRQXdGVEVUTUJFR0ExVUUKQXhNS2EzVmlaWEp1WlhSbGN6QWVGdzB5TURBMU1UTXlNVFEwTkRaYUZ3MHlNVEExTVRNeU1UVXhNVEphTUJJeApFREFPQmdOVkJBTVRCMkZ6WlhWelpYSXdnZ0VpTUEwR0NTcUdTSWIzRFFFQkFRVUFBNElCRHdBd2dnRUtBb0lCCkFRRHVjQ1pKdm9qNFIrc0U3a1EyYmVjNEJkTXdpUEhmU2R2WnNDVVY0aTRRZGY1Yzd0dkE3OVRSZkRLQTY1d08Kd0h0QWdlK3lLK0hIQ1Qyd09RbWtNek1RNjZwVFEzUlE0eVdtRDZHR1cWZWMExBR1hFUUxWWHRuTUdGCi0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg==
-
-[10.100.10.10]: PS>
-```
--->
-
+- A számítási hálózat konfigurálva van. Lásd [: a Network for Azure stack Edge Pro és a GPU közötti konfigurálásának bemutatója](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md).
+- Az eszközön konfigurált számítási szerepkör.
+    
 Olyan Azure Stack Edge Pro-eszközön, amelyen a számítási szerepkör konfigurálva van, az eszközt két különböző paranccsal lehet elhárítani vagy figyelni.
 
 - `iotedge`Parancsok használata. Ezek a parancsok alapszintű műveletekhez érhetők el az eszközön.
@@ -214,7 +155,7 @@ Commands:
 
 A következő táblázat a rendelkezésre álló parancsok rövid leírását tartalmazza `iotedge` :
 
-|command  |Description |
+|command  |Leírás |
 |---------|---------|
 |`list`     | Modulok listázása         |
 |`logs`     | Modul naplóinak beolvasása        |
@@ -274,7 +215,7 @@ A parancsok átfogó listáját itt tekintheti `kubectl` meg: [ `kubectl` súgó
 
 #### <a name="to-get-ip-of-service-or-module-exposed-outside-of-kubernetes-cluster"></a>A Kubernetes-fürtön kívül elérhető szolgáltatás vagy modul beszerzése
 
-A Kubernetes-en kívül elérhető terheléselosztási szolgáltatás vagy modulok IP-címének lekéréséhez futtassa a következő parancsot:
+A terheléselosztási szolgáltatás vagy a Kubernetes kívül elérhető modulok IP-címének lekéréséhez futtassa a következő parancsot:
 
 `kubectl get svc -n iotedge`
 
@@ -403,7 +344,7 @@ Egy modul naplóinak lekéréséhez futtassa a következő parancsot az eszköz 
 
 `kubectl logs <pod_name> -n <namespace> --all-containers` 
 
-Mivel a `all-containers` jelölő az összes tároló naplóit kiírja, jó módszer a legutóbbi hibák megtekintésére, ha a kapcsolót használja `--tail 10` .
+Mivel a `all-containers` jelölő kiírja az összes tároló összes naplóját, jó módszer a legutóbbi hibák megtekintésére, ha a kapcsolót használja `--tail 10` .
 
 A következő egy minta kimenet. 
 
@@ -534,8 +475,8 @@ A memória és a processzor használatának módosításakor kövesse az alábbi
 
 - Az alapértelmezett memória az eszköz specifikációjának 25%-a.
 - Az alapértelmezett processzorok száma az eszköz specifikációjának 30%-a.
-- A memória és a processzor értékének módosításakor azt javasoljuk, hogy az értékek 15% – 65%-a az eszköz memóriája és a processzorok száma között legyenek módosítva. 
-- Az 65%-os felső korlátot javasoljuk, hogy elegendő erőforrás legyen a rendszerösszetevőkhöz. 
+- A memória és a processzor értékének módosításakor azt javasoljuk, hogy az értékek 15% – 60%-a az eszköz memóriája és a processzorok száma között legyenek módosítva. 
+- Az 60%-os felső korlátot javasoljuk, hogy elegendő erőforrás legyen a rendszerösszetevőkhöz. 
 
 ## <a name="connect-to-bmc"></a>Kapcsolódás BMC-hez
 

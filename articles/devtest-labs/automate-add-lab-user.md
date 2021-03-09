@@ -3,12 +3,12 @@ title: Tesztkörnyezet hozzáadásának automatizálása a Azure DevTest Labsban
 description: Ez a cikk azt mutatja be, hogyan lehet automatizálni a felhasználókat a laborban Azure DevTest Labs a Azure Resource Manager sablonok, a PowerShell és a parancssori felület használatával.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6dddf06289da79e16cbd7e64869fa77f0a40dd22
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: dc5522cfe694f193b9bbeeb3145808a367a62c12
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102508826"
+ms.locfileid: "102519401"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Tesztkörnyezet hozzáadásának automatizálása a laborban Azure DevTest Labs
 Azure DevTest Labs lehetővé teszi az önkiszolgáló fejlesztési és tesztelési környezetek gyors létrehozását a Azure Portal használatával. Ha azonban több csapattal és számos DevTest Labs-példánnyal rendelkezik, akkor a létrehozási folyamat automatizálása időt takaríthat meg. [Azure Resource Manager-sablonok](https://github.com/Azure/azure-devtestlab/tree/master/Environments) lehetővé teszik a laborok, laboratóriumi virtuális gépek, Egyéni rendszerképek és képletek létrehozását, valamint a felhasználók automatikus módon való hozzáadását. Ez a cikk kifejezetten a felhasználók DevTest Labs-példányhoz való hozzáadására koncentrál.
@@ -161,7 +161,7 @@ New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -Resou
 
 Fontos megjegyezni, hogy a csoport központi telepítésének neve és a szerepkör-hozzárendelés GUID-azonosítójának egyedinek kell lennie. Ha olyan erőforrás-hozzárendelést próbál meg telepíteni, amely nem egyedi GUID-azonosítóval rendelkezik, hibaüzenet jelenik meg `RoleAssignmentUpdateNotPermitted` .
 
-Ha többször szeretné használni a sablont, hogy több Active Directory objektumot adjon hozzá a DevTest Labs felhasználói szerepköréhez a laborhoz, érdemes lehet dinamikus objektumokat használni a PowerShell-parancsban. Az alábbi példa a [New-GUID](/powershell/module/Microsoft.PowerShell.Utility/New-Guid?view=powershell-5.0) parancsmagot használja az erőforráscsoport-telepítési név és a szerepkör-hozzárendelési GUID dinamikus megadásához.
+Ha többször szeretné használni a sablont, hogy több Active Directory objektumot adjon hozzá a DevTest Labs felhasználói szerepköréhez a laborhoz, érdemes lehet dinamikus objektumokat használni a PowerShell-parancsban. Az alábbi példa a [New-GUID](/powershell/module/Microsoft.PowerShell.Utility/New-Guid) parancsmagot használja az erőforráscsoport-telepítési név és a szerepkör-hozzárendelési GUID dinamikus megadásához.
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -ResourceGroupName 'MyLabResourceGroup' -TemplateFile .\azuredeploy.json -roleAssignmentGuid "$(New-Guid)" -labName "MyLab" -principalId "11111111-1111-1111-1111-111111111111"

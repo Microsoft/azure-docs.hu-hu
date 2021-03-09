@@ -9,18 +9,49 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: ebd4aed284869eb74760de8612a76139d26d47f5
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: b61337f29eac11ca3fb45056b9348fbc70956b53
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102502348"
+ms.locfileid: "102521203"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
 Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hivatkozási tartalomért keresse fel a Azure Machine Learning [**fő SDK for Python**](/python/api/overview/azure/ml/intro) -referenciát tartalmazó oldalt.
 
 __RSS-hírcsatorna__: értesítést kap az oldal frissítésekor, ha a következő URL-címet másolja és illeszti be a hírcsatorna-olvasóba: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+
+## <a name="2021-03-08"></a>2021-03-08
+
+### <a name="azure-machine-learning-sdk-for-python-v1240"></a>Azure Machine Learning SDK a Python v 1.24.0
++ **Új funkciók**
+  + **azureml-automl-core**
+    + A visszamenőlegesen kompatibilis importálások eltávolítva a rendszerből `azureml.automl.core.shared` . A modulban nem található hibák a `azureml.automl.core.shared` névtérben való importálással oldhatók fel `azureml.automl.runtime.shared` .
+  + **azureml-automl-DNN-vízió**
+    + Yolo-modell feltett objektum-észlelése.
+  + **azureml-contrib-dataset**
+    + Hozzáadott funkciók a táblázatos adatkészletek oszlopos értékek és a metaadatok alapján történő szűréséhez.
+  + **azureml-contrib-fairness**
+    + JSON-séma belefoglalása a görgetőkerékbe `azureml-contrib-fairness`
+  + **azureml – k8s**
+    + Most meg kell adnia az erőforráscsoport és a fürt neve helyett csatolni kell resource_id.
+  + **azureml – megterhelés – Mir**
+    + Ha a modellek telepítésekor a show_output True (igaz) értékre van állítva, a rendszer a kérésnek a kiszolgálónak való elküldése előtt újra lejátssza a konfigurációt és a központi telepítési konfigurációt.
+  + **azureml-core**
+    + Hozzáadott funkciók a táblázatos adatkészletek oszlopos értékek és a metaadatok alapján történő szűréséhez.
+    + Korábban a felhasználók számára valószínűleg olyan létesítési konfigurációkat hozhatnak létre a ComputeTarget, amelyek nem feleltek meg a mezőhöz tartozó jelszó-erősségi követelményeknek `admin_user_password` (azaz a következők közül legalább hármat tartalmazniuk kell: 1 kisbetűs betű, 1 nagybetűs, 1 számjegy és 1 különleges karakter a következő készletből: ``\`~!@#$%^&*()=+_[]{}|;:./'",<>?`` ). Ha a felhasználó egy gyenge jelszóval rendelkező konfigurációt hozott létre, és ezzel a konfigurációval futtatott egy feladatot, a feladat futása meghiúsul. Most pedig az a hívása, amely `AmlCompute.provisioning_configuration` egy `ComputeTargetException` kísérő hibaüzenetet jelenít meg, amely ismerteti a jelszó erősségének követelményeit. 
+    + Emellett bizonyos esetekben lehetőség van arra is, hogy olyan konfigurációt határozzon meg, amely negatív számú maximális csomóponttal rendelkezik. Ez már nem lehetséges. Most pedig `AmlCompute.provisioning_configuration` akkor fog kidobni, `ComputeTargetException` Ha az `max_nodes` argumentum egy negatív egész szám.
+    + Ha a modellek telepítésekor a show_output True értékre van állítva, a rendszer a konfiguráció és a központi telepítési konfiguráció megjelenítését jeleníti meg.
+    + Ha a rendszer a modell telepítésének befejezésére vár, show_output igaz értéket, a rendszer megjeleníti a telepítési művelet előrehaladását.
+    + Az ügyfél által megadott AzureML hitelesítési konfigurációs könyvtárának engedélyezése környezeti változón keresztül: AZUREML_AUTH_CONFIG_DIR
+    + Korábban lehetséges volt egy kiépítési konfiguráció létrehozása, amely a csomópontok minimális számanál kisebb, mint a csomópontok maximális száma. A feladat futása meghiúsul, de futásidőben sikertelen lesz. Ez a hiba már kijavítva lett. Ha most megpróbál létrehozni egy létesítési konfigurációt az SDK-val, a következőt `min_nodes < max_nodes` fogja növelni: `ComputeTargetException` .
+  + **azureml-interpret**
+    + a magyarázatok irányítópultjának kijavítása nem mutatja az összesített funkciók fontosságát a ritka tervezésű magyarázatokhoz
+    + a ExplanationClient optimalizált memória-használata a azureml-értelmező csomagban
+  + **azureml-train-automl-client**
+    +  Rögzített show_output = false, hogy a rendszer a Spark használatával futtatja a vezérlést a felhasználónak.
 
 ## <a name="2021-02-28"></a>2021-02-28
 ### <a name="azure-machine-learning-studio-notebooks-experience-february-update"></a>Azure Machine Learning Studio notebookok felülete (február Update)
@@ -39,6 +70,7 @@ __RSS-hírcsatorna__: értesítést kap az oldal frissítésekor, ha a következ
   + Továbbfejlesztett sebesség és kernel megbízhatóság
   + Az összes folyamatban lévő [számítási példány műveletének](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#status-indicators)előrehaladását a forgó kerék hozzáadásával jeleníti meg.
   + Kattintson a jobb gombbal a fájlkezelőben. Kattintson a jobb gombbal bármelyik fájlra, majd nyissa meg a fájlok műveleteit. 
+
 
 ## <a name="2021-02-16"></a>2021-02-16
 

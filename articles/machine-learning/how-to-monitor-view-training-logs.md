@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: e86ea0d90ea267b1c9ceecc8fed6c3d7e5102eaf
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 47531da9c1e508281a57074df7aa10ffffe78810
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102443573"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518738"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>ML futtatási naplók és metrikák figyelése és megtekintése
 
@@ -39,7 +39,7 @@ A kísérletek kezelésével kapcsolatos általános információkért lásd: a 
 
 ## <a name="monitor-runs-using-the-jupyter-notebook-widget"></a>A monitor futtatása a Jupyter notebook Widget használatával
 
-Ha a **ScriptRunConfig** metódust használja a futtatások elküldéséhez, tekintse meg a Futtatás előrehaladását a [Jupyter widget](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)használatával. A futtatás elküldéséhez hasonlóan a vezérlő aszinkron módon működik, és 10-15 másodpercenként élő állapotfrissítést biztosít a feladat befejeződéséig.
+Ha a **ScriptRunConfig** metódust használja a futtatások elküldéséhez, tekintse meg a Futtatás előrehaladását a [Jupyter widget](/python/api/azureml-widgets/azureml.widgets)használatával. A futtatás elküldéséhez hasonlóan a vezérlő aszinkron módon működik, és 10-15 másodpercenként élő állapotfrissítést biztosít a feladat befejeződéséig.
 
 Tekintse meg a Jupyter widgetet a Futtatás befejeződésére való várakozás közben.
     
@@ -127,7 +127,7 @@ Az alábbi táblázat a naplófájlok tartalmát mutatja az ebben a szakaszban l
 
 #### <a name="azureml-logs-folder"></a>`azureml-logs` mappa
 
-|Fájl  |Description  |
+|Fájl  |Leírás  |
 |---------|---------|
 |20_image_build_log.txt     | Docker-rendszerkép-létrehozási napló a betanítási környezethez, nem kötelező, egy Futtatás. Csak a környezet frissítésekor alkalmazható. Máskülönben a pénzmosás felhasználja a gyorsítótárazott rendszerképet. Ha a művelet sikeres, a rendszerkép beállításjegyzékének részleteit tartalmazza a megfelelő rendszerképhez.         |
 |55_azureml-Execution-<node_id # C1.txt     | StdOut/stderr log of Host Tool, egy csomóponton. A rendszerkép lekérése a számítási célra. Megjegyzés: Ez a napló csak akkor jelenik meg, ha biztonságos számítási erőforrásokkal rendelkezik.         |
@@ -140,7 +140,7 @@ Az alábbi táblázat a naplófájlok tartalmát mutatja az ebben a szakaszban l
 
 #### <a name="logs--azureml-folder"></a>`logs > azureml` mappa
 
-|Fájl  |Description  |
+|Fájl  |Leírás  |
 |---------|---------|
 |110_azureml. log      |         |
 |job_prep_azureml. log     |   rendszernapló a feladat-előkészítéshez        |
@@ -150,7 +150,7 @@ Az alábbi táblázat a naplófájlok tartalmát mutatja az ebben a szakaszban l
 
 Ha az oldalkocsi engedélyezve van, a feladatok előkészítési és a feladatok kiadására szolgáló szkriptek az oldalkocsis tárolón belül lesznek futtatva.  Mindegyik csomóponthoz egy mappa van. 
 
-|Fájl  |Description  |
+|Fájl  |Leírás  |
 |---------|---------|
 |start_cms.txt     |  Az oldalkocsi-tároló indításakor megjelenő folyamat naplózása       |
 |prep_cmd.txt      |   A futtatáskor megadott ContextManagers naplója `job_prep.py` (ennek egy része a következőre lesz továbbítva: `azureml-logs/65-job_prep` )       |

@@ -237,7 +237,7 @@
         - name: Feltételes hozzáférés konfigurálása
           href: conditional-access-user-flow.md
     - name: Korhatáralapú hozzáférés-korlátozás konfigurálása
-      href: basic-age-gating.md
+      href: age-gating.md
     - name: API-összekötők (előzetes verzió)
       items:
         - name: Áttekintés

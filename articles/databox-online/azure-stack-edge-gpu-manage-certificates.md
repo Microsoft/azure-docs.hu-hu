@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/22/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 4193e58c28b481297df38bca8f18d2ea766ce886
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 534870e6bd67b7aa5273289f3154a794a2b9bd22
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102443131"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519010"
 ---
 # <a name="use-certificates-with-azure-stack-edge-pro-gpu-device"></a>Tanúsítványok használata Azure Stack Edge Pro GPU-eszközzel
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-Ez a cikk az Azure Stack Edge Pro-eszközre telepíthető tanúsítványok típusait ismerteti. A cikk az egyes tanúsítvány-típusok részleteit is tartalmazza, valamint a lejárati dátum telepítésére és azonosítására szolgáló eljárást. 
+Ez a cikk az Azure Stack Edge Pro-eszközre telepíthető tanúsítványok típusait ismerteti. A cikk az egyes tanúsítvány-típusok részleteit is tartalmazza, valamint a lejárati dátum telepítésére és azonosítására szolgáló eljárást.  
 
 ## <a name="about-certificates"></a>Információ a tanúsítványokról
 
@@ -400,7 +400,7 @@ A. pfx-fájl biztonsági mentése mostantól a kiválasztott helyre lett mentve,
 
 ## <a name="supported-certificate-algorithms"></a>Támogatott tanúsítvány-algoritmusok
 
- Az Azure Stack Edge Pro-eszközön csak a Rivest – a-Adleman (RSA) tanúsítványok támogatottak. Ha a rendszer elliptikus görbe digitális aláírási algoritmust (ECDSA) használ, az eszköz viselkedése meghatározatlan.
+ Az Azure Stack Edge Pro-eszközön csak a Rivest – a-Adleman (RSA) tanúsítványok támogatottak. Az elliptikus görbe digitális aláírási algoritmus (ECDSA) tanúsítványai nem támogatottak.
 
  Az RSA nyilvános kulcsot tartalmazó tanúsítványokat RSA-tanúsítványoknak nevezzük. Az elliptikus görbe kriptográfiai (ECC) nyilvános kulcsát tartalmazó tanúsítványokat ECDSA (elliptikus görbe digitális aláírási algoritmus) tanúsítványoknak nevezzük. 
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/07/2021
 ms.author: duau
-ms.openlocfilehash: 59194f8d7b1783867ab1422597b361aa3a4a2a60
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 7819aaa1af588b0a74bb960cf47ea1feeeff8b3b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449866"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522291"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -60,7 +60,7 @@ Az ExpressRoute-átjáró meghirdeti az Azure-VNet tartozó *címterület (ka)* 
 
 ### <a name="how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering"></a>Hány előtagokat lehet meghirdetni egy VNet a helyszíni ExpressRoute-alapú privát partneri kapcsolaton?
 
-Egyetlen ExpressRoute-kapcsolaton keresztül legfeljebb 200 előtagot lehet meghirdetni, vagy az átjáró-továbbítást használó VNet-társításon keresztül. Ha például a 199-es címtartomány egyetlen VNet van csatlakoztatva egy ExpressRoute-áramkörhöz, a rendszer az összes előtagok 199-os részét a helyszínen hirdeti meg. Ha van olyan VNet, amely lehetővé teszi, hogy az átjárók átvitele 1 címtartomány és 150 küllős virtuális hálózatok engedélyezve legyen a "távoli átjáró engedélyezése" lehetőség használatával, az átjáróval üzembe helyezett VNet a 151 előtagokat hirdeti meg a helyszínen.
+Egyetlen ExpressRoute-kapcsolaton keresztül legfeljebb 1000 előtagot lehet meghirdetni, vagy az átjáró-továbbítást használó VNet-társításon keresztül. Ha például a 199-es címtartomány egyetlen VNet van csatlakoztatva egy ExpressRoute-áramkörhöz, a rendszer az összes előtagok 199-os részét a helyszínen hirdeti meg. Ha van olyan VNet, amely lehetővé teszi, hogy az átjárók átvitele 1 címtartomány és 150 küllős virtuális hálózatok engedélyezve legyen a "távoli átjáró engedélyezése" lehetőség használatával, az átjáróval üzembe helyezett VNet a 151 előtagokat hirdeti meg a helyszínen.
 
 ### <a name="what-happens-if-i-exceed-the-prefix-limit-on-an-expressroute-connection"></a>Mi történik, ha túllépem a ExpressRoute-kapcsolatok előtag-korlátját?
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 155df45d975a30991edc80d587445d699a8d2695
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 8a1a2d7f5272def78cd162da1f6ac0265d4fb30b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103226"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517736"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Webes API-kat meghívó asztali alkalmazás: alkalmazás regisztrálása
 
@@ -43,7 +43,7 @@ Az asztali alkalmazásokban használandó átirányítási URI-k a használni k�
 - Ha az interaktív hitelesítést vagy az eszköz kódjának folyamatát használja, használja a t `https://login.microsoftonline.com/common/oauth2/nativeclient` . A konfiguráció eléréséhez válassza ki a megfelelő URL-címet az alkalmazás **hitelesítés** szakaszában.
 
   > [!IMPORTANT]
-  > `https://login.microsoftonline.com/common/oauth2/nativeclient`Ajánlott biztonsági eljárásként használni az as átirányítási URI-t.  Ha nincs megadva átirányítási URI, a MSAL.NET `urn:ietf:wg:oauth:2.0:oob` alapértelmezés szerint nem a javasolt használja.  Ez az alapértelmezett érték a következő jelentős kiadásban feltört változásként frissül.
+  > `https://login.microsoftonline.com/common/oauth2/nativeclient`Ajánlott biztonsági eljárásként használni az as átirányítási URI-t.  Ha nincs megadva átirányítási URI, a MSAL.NET `urn:ietf:wg:oauth:2.0:oob` alapértelmezés szerint nem ajánlott.  Ez az alapértelmezett érték a következő jelentős kiadásban feltört változásként frissül.
 
 - Ha macOS-hez készült natív Objective-C vagy SWIFT alkalmazást hoz létre, regisztrálja az átirányítási URI-t az alkalmazás köteg-azonosítója alapján a következő formátumban: `msauth.<your.app.bundle.id>://auth` . Cserélje le `<your.app.bundle.id>` az alkalmazást az alkalmazás Bundle-azonosítójával.
 - Ha az alkalmazás kizárólag integrált Windows-hitelesítést vagy felhasználónevet és jelszót használ, nem kell regisztrálnia az alkalmazás átirányítási URI-JÁT. Ezek a folyamatok a Microsoft Identity platform 2.0-s végpontján keresztül egy oda-vissza. Az alkalmazás nem hívható vissza semmilyen konkrét URI-ra.

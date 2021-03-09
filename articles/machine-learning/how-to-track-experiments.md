@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 0130af66152d4f70db47191ae2f271630a59e179
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 3d970193bd8d73baeac89fb45da4c8a3d81cbde4
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102441074"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518399"
 ---
 # <a name="enable-logging-in-ml-training-runs"></a>A naplózás engedélyezése ML betanítási futtatásokban
 
@@ -37,7 +37,7 @@ A naplókkal diagnosztizálhatja a hibákat és a figyelmeztetéseket, vagy nyom
 
 ## <a name="data-types"></a>Adattípusok
 
-Többféle adattípust is naplózhat, például skaláris értékeket, listákat, táblákat, rendszerképeket, könyvtárakat és egyebeket. További információt és a különböző adattípusok Python-kódmintáit a [futtatási osztály referenciaoldalán](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) találja.
+Többféle adattípust is naplózhat, például skaláris értékeket, listákat, táblákat, rendszerképeket, könyvtárakat és egyebeket. További információt és a különböző adattípusok Python-kódmintáit a [futtatási osztály referenciaoldalán](/python/api/azureml-core/azureml.core.run%28class%29) találja.
 
 ### <a name="logging-run-metrics"></a>Naplózási futtatási metrikák 
 
@@ -72,13 +72,13 @@ mlf_logger._run_id = run.id
 
 ## <a name="interactive-logging-session"></a>Interaktív naplózási munkamenet
 
-Az interaktív naplózási munkameneteket általában jegyzetfüzet típusú környezetekben használják. Az [Experiment.start_logging()](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truestart-logging--args----kwargs-) metódus elindít egy interaktív naplózási munkamenetet. A munkamenet során naplózott összes metrika a kísérlet futtatási rekordjába kerül. A [run.complete()](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truecomplete--set-status-true-) metódus befejezi a munkameneteket, és befejezettként jelöli meg a futtatást.
+Az interaktív naplózási munkameneteket általában jegyzetfüzet típusú környezetekben használják. Az [Experiment.start_logging()](/python/api/azureml-core/azureml.core.experiment%28class%29#start-logging--args----kwargs-) metódus elindít egy interaktív naplózási munkamenetet. A munkamenet során naplózott összes metrika a kísérlet futtatási rekordjába kerül. A [run.complete()](/python/api/azureml-core/azureml.core.run%28class%29#complete--set-status-true-) metódus befejezi a munkameneteket, és befejezettként jelöli meg a futtatást.
 
 ## <a name="scriptrun-logs"></a>ScriptRun naplók
 
-Ebben a szakaszban azt ismertetjük, hogyan adhat meg naplózási kódot a létrehozott futtatásokban a ScriptRunConfig paranccsal való konfiguráláskor. A [**ScriptRunConfig**](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) osztállyal szkripteket és környezeteket ágyazhat be ismételhető futtatásokhoz. Ezzel a lehetőséggel azt is megteheti, hogy megjelenít egy vizuális Jupyter Notebooks-vezérlőt a monitorozáshoz.
+Ebben a szakaszban azt ismertetjük, hogyan adhat meg naplózási kódot a létrehozott futtatásokban a ScriptRunConfig paranccsal való konfiguráláskor. A [**ScriptRunConfig**](/python/api/azureml-core/azureml.core.scriptrunconfig) osztállyal szkripteket és környezeteket ágyazhat be ismételhető futtatásokhoz. Ezzel a lehetőséggel azt is megteheti, hogy megjelenít egy vizuális Jupyter Notebooks-vezérlőt a monitorozáshoz.
 
-Ez a példa paraméteres frissítést végez az alfa értékeken, és az eredményeket a [run.log()](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truelog-name--value--description----) metódussal rögzíti.
+Ez a példa paraméteres frissítést végez az alfa értékeken, és az eredményeket a [run.log()](/python/api/azureml-core/azureml.core.run%28class%29#log-name--value--description----) metódussal rögzíti.
 
 1. Hozza létre a naplózási logikát tartalmazó `train.py` betanítási szkriptet.
 

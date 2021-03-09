@@ -7,17 +7,17 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 0493b66928d944e251e6fe4abda4f1d3d8fb7e23
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 8887243f953a7bb000033a2e56b4655b93cd7ca8
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695894"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519792"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Az SMB-hozzáférésre vonatkozó Azure Files identitás-alapú hitelesítési beállítások áttekintése
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
-Ha meg szeretné tudni, hogyan engedélyezheti a helyszíni Active Directory tartományi szolgáltatások hitelesítést az Azure-fájlmegosztás számára, tekintse meg [a helyszíni Active Directory tartományi szolgáltatások hitelesítés engedélyezése SMB-en keresztül az Azure-fájlmegosztás](storage-files-identity-auth-active-directory-enable.md)számára című témakört.
+Ha meg szeretné tudni, hogyan engedélyezheti a helyszíni Active Directory Domain Services hitelesítést az Azure-fájlmegosztás számára, tekintse meg [a helyszíni Active Directory Domain Services hitelesítés engedélyezése SMB-en keresztül az Azure-fájlmegosztás](storage-files-identity-auth-active-directory-enable.md)számára című témakört.
 
 Ha szeretné megtudni, hogyan engedélyezheti az Azure-AD DS hitelesítését az Azure-fájlmegosztás számára, tekintse [meg a Azure Active Directory Domain Services hitelesítés engedélyezése Azure Fileson](storage-files-identity-auth-active-directory-domain-service-enable.md)című részt.
 
@@ -38,11 +38,11 @@ Hasznos megérteni az Azure AD tartományi szolgáltatás hitelesítésével kap
 
 -   **Azure Active Directory Domain Services (Azure AD DS)**
 
-    Az Azure AD DS felügyelt tartományi szolgáltatásokat biztosít, például a tartományhoz való csatlakozást, a csoportházirendeket, az LDAP-t és a Kerberos/NTLM-hitelesítést. Ezek a szolgáltatások teljes mértékben kompatibilisek a Active Directory tartományi szolgáltatásokokkal. További információ: [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md).
+    Az Azure AD DS felügyelt tartományi szolgáltatásokat biztosít, például a tartományhoz való csatlakozást, a csoportházirendeket, az LDAP-t és a Kerberos/NTLM-hitelesítést. Ezek a szolgáltatások teljes mértékben kompatibilisek a Active Directory Domain Servicesokkal. További információ: [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md).
 
-- **Helyszíni Active Directory tartományi szolgáltatások (AD DS)**
+- **Helyszíni Active Directory Domain Services (AD DS)**
 
-    A helyszíni Active Directory tartományi szolgáltatások (AD DS) Azure Files integrációja biztosítja a címtáradatok tárolásának módszereit, miközben elérhetővé teszi a hálózati felhasználók és a rendszergazdák számára. A biztonság integrálva van AD DS a bejelentkezési hitelesítéssel és a címtárban található objektumok hozzáférés-vezérlésével. A rendszergazdák egyetlen hálózati bejelentkezéssel kezelhetik a címtáradatokat és a szervezetet a hálózaton belül, és a jogosult hálózati felhasználók hozzáférhetnek az erőforrásokhoz a hálózat bármely pontján. A AD DS általában a helyszíni környezetben működő vállalatok fogadják el, és AD DS hitelesítő adatokat használják a hozzáférés-vezérlés identitásának. További információ: [Active Directory tartományi szolgáltatások Overview (áttekintés](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)).
+    A helyszíni Active Directory Domain Services (AD DS) Azure Files integrációja biztosítja a címtáradatok tárolásának módszereit, miközben elérhetővé teszi a hálózati felhasználók és a rendszergazdák számára. A biztonság integrálva van AD DS a bejelentkezési hitelesítéssel és a címtárban található objektumok hozzáférés-vezérlésével. A rendszergazdák egyetlen hálózati bejelentkezéssel kezelhetik a címtáradatokat és a szervezetet a hálózaton belül, és a jogosult hálózati felhasználók hozzáférhetnek az erőforrásokhoz a hálózat bármely pontján. A AD DS általában a helyszíni környezetben működő vállalatok fogadják el, és AD DS hitelesítő adatokat használják a hozzáférés-vezérlés identitásának. További információ: [Active Directory Domain Services Overview (áttekintés](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)).
 
 -   **Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)**
 
@@ -77,7 +77,7 @@ Az alábbi táblázat összefoglalja az Azure AD DS és a helyszíni AD DS támo
 
 - Az Azure AD DS és a helyszíni AD DS hitelesítés nem támogatja a számítógép-fiókok hitelesítését. Ehelyett érdemes lehet szolgáltatás-bejelentkezési fiókot használni.
 - Sem az Azure AD DS hitelesítés, sem a helyszíni AD DS hitelesítés nem támogatott az Azure AD-hez csatlakoztatott eszközökön vagy az Azure AD-ban regisztrált eszközökön.
-- Az Azure-fájlmegosztás csak az alábbi tartományi szolgáltatások egyikén támogatja az identitás alapú hitelesítést: [Azure Active Directory Domain Services (Azure AD DS)](#azure-ad-ds) vagy helyszíni [Active Directory tartományi szolgáltatások (AD DS)](#ad-ds).
+- Az Azure-fájlmegosztás csak az alábbi tartományi szolgáltatások egyikén támogatja az identitás alapú hitelesítést: [Azure Active Directory Domain Services (Azure AD DS)](#azure-ad-ds) vagy helyszíni [Active Directory Domain Services (AD DS)](#ad-ds).
 - A hálózati fájlrendszer (NFS) nem támogatja az olyan identitás-alapú hitelesítési módszert, amely előzetes verzióban érhető el.
 
 ## <a name="advantages-of-identity-based-authentication"></a>Az identitás-alapú hitelesítés előnyei
@@ -120,7 +120,7 @@ Az alábbi ábra az Azure-AD DS az SMB-en keresztüli Azure-fájlmegosztás hite
 
 ### <a name="enable-identity-based-authentication"></a>Identitás-alapú hitelesítés engedélyezése
 
-Az identitás-alapú hitelesítést engedélyezheti az Azure-AD DS vagy a helyszíni AD DS Azure-fájlmegosztás számára az új és meglévő Storage-fiókokban is. Csak egy tartományi szolgáltatás használható a fájl-hozzáférési hitelesítéshez a Storage-fiókban, amely a fiókban lévő összes fájlmegosztás esetében érvényes. Részletes útmutató a fájlmegosztás Azure-beli hitelesítéshez való beállításához AD DS a cikkben [Azure Active Directory Domain Services hitelesítés engedélyezése a Azure Files](storage-files-identity-auth-active-directory-domain-service-enable.md) és a helyszíni AD DS útmutatása a másik cikkben, a helyszíni [Active Directory tartományi szolgáltatások hitelesítés engedélyezése az SMB-en keresztül az Azure-fájlmegosztás](storage-files-identity-auth-active-directory-enable.md)számára.
+Az identitás-alapú hitelesítést engedélyezheti az Azure-AD DS vagy a helyszíni AD DS Azure-fájlmegosztás számára az új és meglévő Storage-fiókokban is. Csak egy tartományi szolgáltatás használható a fájl-hozzáférési hitelesítéshez a Storage-fiókban, amely a fiókban lévő összes fájlmegosztás esetében érvényes. Részletes útmutató a fájlmegosztás Azure-beli hitelesítéshez való beállításához AD DS a cikkben [Azure Active Directory Domain Services hitelesítés engedélyezése a Azure Files](storage-files-identity-auth-active-directory-domain-service-enable.md) és a helyszíni AD DS útmutatása a másik cikkben, a helyszíni [Active Directory Domain Services hitelesítés engedélyezése az SMB-en keresztül az Azure-fájlmegosztás](storage-files-identity-auth-active-directory-enable.md)számára.
 
 ### <a name="configure-share-level-permissions-for-azure-files"></a>Megosztási szintű engedélyek konfigurálása Azure Fileshoz
 
@@ -128,7 +128,7 @@ Ha az Azure AD DS vagy a helyszíni AD DS hitelesítés engedélyezve van, haszn
 
 ### <a name="configure-directory-or-file-level-permissions-for-azure-files"></a>A Azure Files könyvtár-vagy fájl szintű engedélyeinek konfigurálása
 
-Az Azure-fájlmegosztás a könyvtár és a fájl szintjén is kikényszeríti a Windows-fájlok szabványos engedélyeit, beleértve a gyökérkönyvtárat is. A címtár vagy a fájl szintű engedélyek konfigurációja az SMB és a REST protokollon keresztül is támogatott. Csatlakoztassa a célfájl megosztását a virtuális gépről, és konfigurálja az engedélyeket a Windows fájlkezelő, a Windows [icacls](/windows-server/administration/windows-commands/icacls)vagy a [set-ACL](/powershell/module/microsoft.powershell.security/get-acl?view=powershell-6) parancs használatával.
+Az Azure-fájlmegosztás a könyvtár és a fájl szintjén is kikényszeríti a Windows-fájlok szabványos engedélyeit, beleértve a gyökérkönyvtárat is. A címtár vagy a fájl szintű engedélyek konfigurációja az SMB és a REST protokollon keresztül is támogatott. Csatlakoztassa a célfájl megosztását a virtuális gépről, és konfigurálja az engedélyeket a Windows fájlkezelő, a Windows [icacls](/windows-server/administration/windows-commands/icacls)vagy a [set-ACL](/powershell/module/microsoft.powershell.security/get-acl) parancs használatával.
 
 ### <a name="use-the-storage-account-key-for-superuser-permissions"></a>Rendszergazdai jogosultságok használata a Storage-fiók kulcsaként
 
@@ -148,6 +148,6 @@ A Storage-fiókjában nem található további szolgáltatás, amely lehetővé 
 Az SMB-en keresztüli Azure Files-és identitás-alapú hitelesítéssel kapcsolatos további információkért tekintse meg a következő forrásokat:
 
 - [Azure Files üzembe helyezésének tervezése](storage-files-planning.md)
-- [Helyszíni Active Directory tartományi szolgáltatások hitelesítés engedélyezése SMB-en keresztül az Azure-fájlmegosztás esetében](storage-files-identity-auth-active-directory-enable.md)
+- [Helyszíni Active Directory Domain Services hitelesítés engedélyezése SMB-en keresztül az Azure-fájlmegosztás esetében](storage-files-identity-auth-active-directory-enable.md)
 - [Azure Active Directory Domain Services hitelesítés engedélyezése Azure Files](storage-files-identity-auth-active-directory-domain-service-enable.md)
 - [Gyakori kérdések](storage-files-faq.md)
