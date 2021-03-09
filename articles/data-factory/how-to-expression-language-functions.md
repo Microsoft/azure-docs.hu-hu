@@ -1,18 +1,18 @@
 ---
 title: Paraméterek és kifejezések használata a Azure Data Factoryban
 description: Ez a cikk a adat-előállító entitások létrehozásakor használható kifejezésekkel és függvényekkel kapcsolatos információkat tartalmaz.
-author: dcstwh
-ms.author: weetok
+author: ssabat
+ms.author: susabat
 ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 11/25/2019
-ms.openlocfilehash: 9cf37d554081ddd300a3ea4c16e2f167c5b98895
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.date: 03/08/2020
+ms.openlocfilehash: 4aa8a0790e7f5812e8c6a70eab1718f92a5e00d0
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102510465"
+ms.locfileid: "102520302"
 ---
 # <a name="how-to-use-parameters-expressions-and-functions-in-azure-data-factory"></a>Paraméterek, kifejezések és függvények használata a Azure Data Factoryban
 
@@ -21,7 +21,11 @@ ms.locfileid: "102510465"
 > * [Aktuális verzió](how-to-expression-language-functions.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Ebben a cikkben elsősorban a tanulási fogalmakat mutatjuk be példákkal és oktatóanyagokkal, amelyek lehetővé teszik a paraméteres adatfolyamatok létrehozását Azure Data Factoryon belül. A paraméterezés és a dinamikus kifejezések az ADF-hez hasonló jelentős kiegészítések, mivel ez rengeteg időt takaríthat meg, és lehetővé teszi egy sokkal rugalmasabb kinyerési, átalakítási, betöltési (ETL) vagy kinyerési, betöltési és átalakítási (ELT) megoldás használatát, ami jelentősen csökkenti a megoldás-karbantartási költségeket, és felgyorsítja az új funkciók megvalósítását a meglévő folyamat Ezek a nyereségek azért vannak, mert a paraméterezés minimálisra csökkentheti a merevlemezek mennyiségét, és növeli a megoldás újrafelhasználható objektumainak és folyamatainak számát.
+Ebben a dokumentumban elsősorban a különböző példákkal foglalkozó alapfogalmakat mutatjuk be, hogy felderítse, hogyan hozhat létre paraméteres adatfolyamatokat Azure Data Factoryon belül. A paraméterezés és a dinamikus kifejezések az ADF-hez hasonló jelentős kiegészítések, mivel rengeteg időt takarítanak meg, és lehetővé teszik egy sokkal rugalmasabb kinyerési, átalakítási, betöltési (ETL) vagy kinyerési, betöltési és átalakítási (ELT) megoldás használatát, ami jelentősen csökkenti a megoldás karbantartásának költségeit, és felgyorsítja az új funkciók megvalósítását a meglévő folyamatokban Ezek a nyereségek azért vannak, mert a paraméterezés minimálisra csökkentheti a merevlemezek mennyiségét, és növeli a megoldás újrafelhasználható objektumainak és folyamatainak számát.
+
+## <a name="azure-data-factory-ui-and-parameters"></a>Azure-beli adatok gyári felhasználói felülete és paraméterei
+
+Ha még nem ismeri az Azure-beli adat-előállító paramétert az ADF felhasználói felületén, tekintse át a [adat-előállító felhasználói felületét](https://docs.microsoft.comazure/data-factory/parameterize-linked-services#data-factory-ui)  a társított szolgáltatások paramétereit és a [adat-előállító felhasználói felületét a metaadatok vezérelt folyamatához](https://docs.microsoft.com/azure/data-factory/how-to-use-trigger-parameterization#data-factory-ui) , a vizualizációs magyarázattal.
 
 ## <a name="parameter-and-expression-concepts"></a>Paraméterek és kifejezések fogalmak 
 
@@ -39,7 +43,7 @@ Például:
 "name": "@pipeline().parameters.password"
 ```
 
-A kifejezések egy JSON-karakterlánc értékében bárhol megjelenhetnek, és mindig egy másik JSON-értéket eredményeznek. Ha egy JSON-érték egy kifejezés, a rendszer kinyeri a kifejezés törzsét az at-Sign ( \@ ) eltávolításával. Ha olyan literális karakterláncra van szükség, amely a-vel kezdődik \@ , akkor azt a használatával kell megmenekülnie \@ \@ . Az alábbi példák bemutatják a kifejezések kiértékelésének módját.  
+A kifejezések egy JSON-karakterlánc értékében bárhol megjelenhetnek, és mindig egy másik JSON-értéket eredményeznek. Itt a *jelszó* egy folyamat paraméter a kifejezésben. Ha egy JSON-érték egy kifejezés, a rendszer kinyeri a kifejezés törzsét az at-Sign ( \@ ) eltávolításával. Ha olyan literális karakterláncra van szükség, amely a-vel kezdődik \@ , akkor azt a használatával kell megmenekülnie \@ \@ . Az alábbi példák bemutatják a kifejezések kiértékelésének módját.  
   
 |JSON-érték|Eredmény|  
 |----------------|------------|  
@@ -301,13 +305,20 @@ Ezek a függvények a feltételeken belül hasznosak lehetnek, és bármilyen t�
 | [ticks](control-flow-expression-language-functions.md#ticks) | A `ticks` tulajdonság értékének visszaadása egy megadott időbélyeghez. |
 | [utcNow](control-flow-expression-language-functions.md#utcNow) | Az aktuális időbélyeg visszaadása karakterláncként. |
 
-## <a name="detailed-azure-data-factory-copy-pipeline-with-parameters"></a>Részletes Azure-beli adatfeldolgozó másolási folyamat paraméterekkel 
+## <a name="detailed-examples-for-practice"></a>Részletes példák a gyakorlatra
+
+### <a name="detailed-azure-data-factory-copy-pipeline-with-parameters"></a>Részletes Azure-beli adatfeldolgozó másolási folyamat paraméterekkel 
 
 Ez az [Azure-beli adatfeldolgozó másolási folyamata az oktatóanyag](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-passing-parameters/Azure%20data%20Factory-Whitepaper-PassingParameters.pdf) elvégzésével végigvezeti Önt egy folyamat és tevékenység, valamint a tevékenységek közötti paraméterek átadásának lépésein.
 
-## <a name="detailed--mapping-data-flow-pipeline-with-parameters"></a>Részletes leképezési adatfolyam-folyamat paraméterekkel 
+### <a name="detailed--mapping-data-flow-pipeline-with-parameters"></a>Részletes leképezési adatfolyam-folyamat paraméterekkel 
 
 A paraméterek az adatfolyamban való használatának módjával kapcsolatban kövesse az [adatforgalom leképezése](https://docs.microsoft.com/azure/data-factory/parameters-data-flow) az átfogó példa paraméterekkel című szakaszát.
+
+### <a name="detailed-metadata-driven-pipeline-with-parameters"></a>Részletes metaadatok vezérelt folyamat paraméterekkel
+
+Adja meg a [metaadatok vezérelt folyamatát paraméterekkel](https://docs.microsoft.com/azure/data-factory/how-to-use-trigger-parameterization) , és tudjon meg többet arról, hogyan használhatók paraméterek a metaadatokat használó folyamatok kialakításához. Ez egy népszerű használati eset a paraméterekhez.
+
 
 ## <a name="next-steps"></a>Következő lépések
 A kifejezésekben használható rendszerváltozók listáját a [rendszerváltozók](control-flow-system-variables.md)című részben tekintheti meg.

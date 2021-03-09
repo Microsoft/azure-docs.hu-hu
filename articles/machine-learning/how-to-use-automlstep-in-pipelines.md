@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 02/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, automl
-ms.openlocfilehash: da973cf377ceace4a92d1cdd1e956321a5592e6a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0de3c9a7cf464f38a1a12d8bc19451fb1158a5ad
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692215"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520506"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Automatizált ML használata Azure Machine Learning-folyamatokban a Pythonban
 
@@ -37,7 +37,7 @@ A folyamatokban az automatikus ML-t egy `AutoMLStep` objektum jelképezi. Az `Au
 
 A több alosztálya is létezik `PipelineStep` . A on kívül `AutoMLStep` Ez a cikk az `PythonScriptStep` adatok előkészítését és egy másikat is megjeleníti a modell regisztrálásához.
 
-Az első lépés az, _Ha az adatátvitelt egy ml_ -folyamatba kívánja használni, az `Dataset` objektumokkal. Ha át szeretné helyezni az adatokat a lépések _között_ , és lehetséges az adatok kimenetének mentése a futtatásokból, az előnyben részesített mód [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) és az [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?preserve-view=true&view=azure-ml-py) objektumok. A szolgáltatással való használathoz `AutoMLStep` az `PipelineData` objektumot át kell alakítani egy `PipelineOutputTabularDataset` objektumba. További információ: [bemeneti és kimeneti adatok a ml-folyamatokból](how-to-move-data-in-out-of-pipelines.md).
+Az első lépés az, _Ha az adatátvitelt egy ml_ -folyamatba kívánja használni, az `Dataset` objektumokkal. Ha át szeretné helyezni az adatokat a lépések _között_ , és lehetséges az adatok kimenetének mentése a futtatásokból, az előnyben részesített mód [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig) és az [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig) objektumok. A szolgáltatással való használathoz `AutoMLStep` az `PipelineData` objektumot át kell alakítani egy `PipelineOutputTabularDataset` objektumba. További információ: [bemeneti és kimeneti adatok a ml-folyamatokból](how-to-move-data-in-out-of-pipelines.md).
 
 A `AutoMLStep` konfigurálása egy `AutoMLConfig` objektumon keresztül történik. `AutoMLConfig` a egy rugalmas osztály, amelyet az [automatikus ml-kísérletek konfigurálása a Pythonban](./how-to-configure-auto-train.md#configure-your-experiment-settings)című cikkben talál. 
 

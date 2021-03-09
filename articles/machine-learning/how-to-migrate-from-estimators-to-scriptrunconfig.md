@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/14/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: d603a12f851dac5b7cefc5bad728d42967bb27dc
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: ae0623a11b940a4d142f6bfae02d4b20727a6f55
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878595"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518872"
 ---
 # <a name="migrating-from-estimators-to-scriptrunconfig"></a>Migrálás a becslések-ből a ScriptRunConfig-be
 
@@ -30,7 +30,7 @@ Ez a cikk a becslések-ről ScriptRunConfig-re való áttelepítésének gyakori
 > A becslések-ból származó ScriptRunConfig való Migrálás esetén győződjön meg arról, hogy a Python SDK-t használja >= 1.15.0.
 
 ## <a name="scriptrunconfig-documentation-and-samples"></a>A ScriptRunConfig dokumentációja és mintái
-Azure Machine Learning dokumentáció és minták frissítve lettek a [ScriptRunConfig](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?preserve-view=true&view=azure-ml-py) használatára a feladatok konfigurálásához és a beküldéshez.
+Azure Machine Learning dokumentáció és minták frissítve lettek a [ScriptRunConfig](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig) használatára a feladatok konfigurálásához és a beküldéshez.
 
 A ScriptRunConfig használatával kapcsolatos információkért tekintse meg a következő dokumentációt:
 * [Betanítási futtatások konfigurálása és elküldése](how-to-set-up-training-targets.md)
@@ -107,7 +107,7 @@ További információ a betanítási adatok használatáról:
 * [Képzés az Azure ML adatkészletekkel](./how-to-train-with-datasets.md)
 
 ## <a name="distributed-training"></a>Elosztott betanítás
-Ha a betanításhoz elosztott feladatot kell konfigurálnia, akkor a `distributed_job_config` paramétert a ScriptRunConfig konstruktorban kell megadnia. Továbbítson egy [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py), [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py)vagy [TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?preserve-view=true&view=azure-ml-py) a megfelelő típusú elosztott feladatokhoz.
+Ha a betanításhoz elosztott feladatot kell konfigurálnia, akkor a `distributed_job_config` paramétert a ScriptRunConfig konstruktorban kell megadnia. Továbbítson egy [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration), [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration)vagy [TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration) a megfelelő típusú elosztott feladatokhoz.
 
 Az alábbi példa egy PyTorch-betanítási feladatot konfigurál az elosztott képzések MPI/Horovod használatával történő használatához:
 ```python
@@ -130,6 +130,6 @@ Ha bármilyen okból el kell érnie egy ScriptRunConfig mögöttes RunConfigurat
 src.run_config
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Betanítási futtatások konfigurálása és elküldése](how-to-set-up-training-targets.md)

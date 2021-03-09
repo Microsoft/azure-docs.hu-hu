@@ -11,12 +11,12 @@ ms.date: 02/16/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 47d2c8865109e8ef43317b3c4a19c36e692aff91
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 2966b685e1904102467bf16994ea781556544047
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102218842"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519197"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Nagy teljesítményű kiszolgálás a Triton inferenc Serverrel (előzetes verzió) 
 
@@ -36,7 +36,7 @@ A Triton egy *következtetésre optimalizált* keretrendszer. A GPU-k jobb kihas
 
 * Egy **Azure-előfizetés**. Ha még nem rendelkezik ilyennel, próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 * Ismerje meg, [Hogyan és hol helyezheti üzembe a modelleket Azure Machine learning használatával](how-to-deploy-and-where.md) .
-* A [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/?view=azure-ml-py) **vagy** az [Azure CLI](/cli/azure/) és a [Machine learning bővítmény](reference-azure-machine-learning-cli.md).
+* A [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/) **vagy** az [Azure CLI](/cli/azure/) és a [Machine learning bővítmény](reference-azure-machine-learning-cli.md).
 * A Docker egy működő telepítése a helyi teszteléshez. A Docker telepítésével és ellenőrzésével kapcsolatos információkért lásd: [Tájolás és beállítás](https://docs.docker.com/get-started/) a Docker dokumentációjában.
 
 ## <a name="architectural-overview"></a>Az architektúra áttekintése
@@ -134,7 +134,7 @@ model = Model.register(
 )
 
 ```
-További információkért tekintse meg a [modell osztály](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py)dokumentációját.
+További információkért tekintse meg a [modell osztály](/python/api/azureml-core/azureml.core.model.model)dokumentációját.
 
 ---
 
@@ -276,7 +276,7 @@ A következtetési konfiguráció lehetővé teszi egy belépési parancsfájl h
 > [!IMPORTANT]
 > Meg kell adnia a `AzureML-Triton` [kurátori környezetet](./resource-curated-environments.md).
 >
-> A Python-kód például `AzureML-Triton` egy másik, nevű környezetbe klónozott `My-Triton` . Az Azure CLI-kód ezt a környezetet is használja. A környezetek klónozásával kapcsolatos további információkért tekintse meg a [Environment. Clone ()](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#clone-new-name-) hivatkozást.
+> A Python-kód például `AzureML-Triton` egy másik, nevű környezetbe klónozott `My-Triton` . Az Azure CLI-kód ezt a környezetet is használja. A környezetek klónozásával kapcsolatos további információkért tekintse meg a [Environment. Clone ()](/python/api/azureml-core/azureml.core.environment.environment#clone-new-name-) hivatkozást.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -337,7 +337,7 @@ További információ arról, hogyan hozhat létre olyan ügyfelet, amely a pont
 
 ### <a name="setting-the-number-of-workers"></a>A feldolgozók számának beállítása
 
-Az üzemelő példányban lévő feldolgozók számának beállításához állítsa be a környezeti változót `WORKER_COUNT` . Ha van egy nevű [környezeti](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) objektum `env` , a következőket teheti:
+Az üzemelő példányban lévő feldolgozók számának beállításához állítsa be a környezeti változót `WORKER_COUNT` . Ha van egy nevű [környezeti](/python/api/azureml-core/azureml.core.environment.environment) objektum `env` , a következőket teheti:
 
 ```{py}
 env.environment_variables["WORKER_COUNT"] = "1"

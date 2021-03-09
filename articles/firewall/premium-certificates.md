@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 02/16/2021
+ms.date: 03/09/2021
 ms.author: victorh
-ms.openlocfilehash: 31948d5e98ea3024c838bf0fa4b05609a5662ec5
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 621bf6138e4336c63ca137a6a8c54f77a4a99d61
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102485520"
+ms.locfileid: "102520285"
 ---
 # <a name="azure-firewall-premium-preview-certificates"></a>Prémium előzetes verziójú tanúsítványok Azure Firewall 
 
@@ -96,7 +96,7 @@ Ha HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt szeretne konfigurálni a tűzfal 
 A TLS-ellenőrzés teszteléséhez és ellenőrzéséhez használja a következő parancsfájlokat a saját önaláírt legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ és a köztes HITELESÍTÉSSZOLGÁLTATÓ létrehozásához.
 
 > [!IMPORTANT]
-> Éles környezetben a vállalati PKI-t kell használnia egy köztes HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány létrehozásához. A vállalati PKI kihasználja a meglévő infrastruktúrát, és kezeli a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI eloszlást az összes végponti gépen.
+> Éles környezetben a vállalati PKI-t kell használnia egy köztes HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány létrehozásához. A vállalati PKI kihasználja a meglévő infrastruktúrát, és kezeli a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI eloszlást az összes végponti gépen. További információ: [vállalati hitelesítésszolgáltatói tanúsítványok telepítése és konfigurálása Azure Firewall előzetes](premium-deploy-certificates-enterprise-ca.md)verzióhoz.
 
 A szkript két verziója létezik:
 - egy bash-szkript `cert.sh` 

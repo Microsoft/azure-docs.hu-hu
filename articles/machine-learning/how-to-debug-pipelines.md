@@ -10,16 +10,16 @@ ms.author: laobri
 ms.date: 10/22/2020
 ms.topic: troubleshooting
 ms.custom: troubleshooting, devx-track-python, contperf-fy21q2
-ms.openlocfilehash: 0f27688e31f772cc8d784371aa570d55c41f5695
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 195942d1787cdef51ee480fa5c5595db99bc7c78
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131814"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522087"
 ---
 # <a name="troubleshooting-machine-learning-pipelines"></a>Gépi tanulási folyamatok hibaelhárítása
 
-Ebből a cikkből megtudhatja, hogyan végezheti el a hibaelhárítást, ha a [Azure Machine learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) -ban és [Azure Machine learning Designerben](./concept-designer.md)a [Machine learning-folyamat](concept-ml-pipelines.md) futtatásakor hibák jelentkeznek. 
+Ebből a cikkből megtudhatja, hogyan végezheti el a hibaelhárítást, ha a [Azure Machine learning SDK](/python/api/overview/azure/ml/intro) -ban és [Azure Machine learning Designerben](./concept-designer.md)a [Machine learning-folyamat](concept-ml-pipelines.md) futtatásakor hibák jelentkeznek. 
 
 ## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
 
@@ -190,9 +190,9 @@ A parancsfájlok helyi tesztelése nagyszerű módja annak, hogy a folyamat megk
 
 Az alábbi táblázat a folyamatok különböző hibakeresési lehetőségeiről nyújt információt. Nem kimerítő lista, mert az itt látható Azure Machine Learning, Python és OpenCensus mellett más lehetőségek is vannak.
 
-| Kódtár                    | Típus   | Példa                                                          | Cél                                  | Erőforrások                                                                                                                                                                                                                                                                                                                    |
+| Kódtár                    | Típus   | Példa                                                          | Cél                                  | További források                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Azure Machine Learning SDK | Metric | `run.log(name, val)`                                             | Azure Machine Learning portál felhasználói felülete             | [Kísérletek nyomon követése](how-to-track-experiments.md)<br>[azureml. Core. Run osztály](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)                                                                                                                                                 |
+| Azure Machine Learning SDK | Metric | `run.log(name, val)`                                             | Azure Machine Learning portál felhasználói felülete             | [Kísérletek nyomon követése](how-to-track-experiments.md)<br>[azureml. Core. Run osztály](/python/api/azureml-core/azureml.core.run%28class%29)                                                                                                                                                 |
 | Python-nyomtatás/-naplózás    | Napló    | `print(val)`<br>`logging.info(message)`                          | Illesztőprogram-naplók, Azure Machine Learning Designer | [Kísérletek nyomon követése](how-to-track-experiments.md)<br><br>[Python-naplózás](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
 | OpenCensus Python          | Napló    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights – nyomkövetés                | [Folyamatok hibakeresése az Application Insightsban](./how-to-log-pipelines-application-insights.md)<br><br>[OpenCensus Azure Monitor-exportálók](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Python-naplózási szakácskönyv](https://docs.python.org/3/howto/logging-cookbook.html) |
 
@@ -244,7 +244,7 @@ Amikor elküld egy folyamat futását, és az authoring (szerzői műveletek) ol
 1. A modul jobb oldali ablaktáblájában lépjen a  **kimenetek és naplók** lapra.
 1. Bontsa ki a jobb oldali ablaktáblát, és válassza ki a **70_driver_log.txt** a fájl böngészőben való megtekintéséhez. A naplókat helyileg is letöltheti.
 
-    ![Kibontott kimeneti ablaktábla a tervezőben](./media/how-to-debug-pipelines/designer-logs.png)? View = Azure-ml-a&megőrzése-nézet = true)? nézet = Azure-ml-a&megőrzése – nézet = true)
+    ![Kibontott kimeneti ablaktábla a tervezőben](./media/how-to-debug-pipelines/designer-logs.png)
 
 ### <a name="get-logs-from-pipeline-runs"></a>Naplók beolvasása a folyamat-futtatásokból
 
@@ -274,6 +274,6 @@ Bizonyos esetekben előfordulhat, hogy interaktívan kell hibakeresést végezni
 
 * Az automatizált gépi tanulást ML-folyamatokban bemutató teljes példa: az [automatikus ml használata egy Azure Machine learning-folyamaton a Pythonban](how-to-use-automlstep-in-pipelines.md).
 
-* Tekintse meg az SDK-referenciát a [azureml-pipeline-Core](/python/api/azureml-pipeline-core/?preserve-view=true&view=azure-ml-py) csomag és a [azureml-Steps](/python/api/azureml-pipeline-steps/?preserve-view=true&view=azure-ml-py) csomag súgójában.
+* Tekintse meg az SDK-referenciát a [azureml-pipeline-Core](/python/api/azureml-pipeline-core/) csomag és a [azureml-Steps](/python/api/azureml-pipeline-steps/) csomag súgójában.
 
 * Tekintse meg a [Designer-kivételek és-hibakódok](algorithm-module-reference/designer-error-codes.md)listáját.

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cb8cc98a020cb382a6941c1e410eab4543594629
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 53f09dd042543ebc433e9d9cbbd65db332e8fb6d
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009755"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518211"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell-példaszkriptek
 
@@ -36,7 +36,7 @@ A minta szkriptek végrehajtásához a [Azure PowerShell](/powershell/azure/)fun
     1. Nyisson meg egy PowerShell-ablakot rendszergazdai jogosultságokkal.
     1. Futtassa `Install-Module -Name Az -AllowClobber`
 
-1. Ha hibát tapasztal a parancsfájlok futtatásával kapcsolatban, győződjön meg arról, hogy a [végrehajtási házirend](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) megfelelően van beállítva:
+1. Ha hibát tapasztal a parancsfájlok futtatásával kapcsolatban, győződjön meg arról, hogy a [végrehajtási házirend](/powershell/module/microsoft.powershell.core/about/about_execution_policies) megfelelően van beállítva:
     1. Nyisson meg egy PowerShell-ablakot rendszergazdai jogosultságokkal.
     1. Futtassa `Set-ExecutionPolicy -ExecutionPolicy Unrestricted`
 
@@ -276,7 +276,7 @@ A konverzió állapotát a következő paranccsal kérheti le:
 
 `-Poll`A paranccsal megvárhatja, amíg a konverzió megtörténik, vagy hiba történt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Gyors útmutató: modell megjelenítése egységgel](../quickstarts/render-model.md)
 - [Gyorsútmutató: Modell konvertálása a renderelés előtt](../quickstarts/convert-model.md)

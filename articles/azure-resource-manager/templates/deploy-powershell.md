@@ -1,18 +1,20 @@
 ---
 title: Erőforrások üzembe helyezése a PowerShell és a sablon használatával
-description: Erőforrások üzembe helyezése az Azure-ban Azure Resource Manager és Azure PowerShell használatával. Az erőforrások egy Resource Manager-sablonban vannak meghatározva.
+description: Erőforrások üzembe helyezése az Azure-ban Azure Resource Manager és Azure PowerShell használatával. Az erőforrások egy Resource Manager-sablonban vagy egy bicep-fájlban vannak meghatározva.
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: efefb6706794bc2488aa4d4fef6c4ecc082b41a7
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 03/04/2021
+ms.openlocfilehash: 784f17566ce4fb19a7ec5e3fd4a504d7c25f90fe
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881265"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521628"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>Erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShell
 
-Ez a cikk azt ismerteti, hogyan használhatók a Azure PowerShell az Azure Resource Manager-sablonokkal (ARM-sablonokkal) az erőforrások Azure-beli üzembe helyezéséhez. Ha nem ismeri az Azure-megoldások üzembe helyezésével és kezelésével kapcsolatos fogalmakat, tekintse meg a [sablonok üzembe helyezésének áttekintése](overview.md)című témakört.
+Ez a cikk azt ismerteti, hogyan Azure PowerShell használhatók az erőforrások az Azure-ban való üzembe helyezéséhez Azure Resource Manager sablonokkal (ARM-sablonokkal) vagy bicep-fájlokkal. Ha nem ismeri az Azure-megoldások üzembe helyezésével és kezelésével kapcsolatos fogalmakat, tekintse meg a [sablonok üzembe helyezésének áttekintése](overview.md) vagy a [bicep – áttekintés](bicep-overview.md)című témakört.
+
+A bicep-fájlok telepítéséhez [Azure PowerShell 5.6.0 vagy újabb verzióra](/powershell/azure/install-az-ps)van szükség.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,13 +34,13 @@ Az üzembe helyezést egy erőforráscsoport, egy előfizetés, egy felügyeleti
 - Egy **erőforráscsoporthoz** való üzembe helyezéshez használja a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment):
 
   ```azurepowershell
-  New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
+  New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template-or-bicep>
   ```
 
 - Egy **előfizetésre** való üzembe helyezéshez használja a [New-AzSubscriptionDeployment](/powershell/module/az.resources/new-azdeployment) , amely a `New-AzDeployment` parancsmag aliasa:
 
   ```azurepowershell
-  New-AzSubscriptionDeployment -Location <location> -TemplateFile <path-to-template>
+  New-AzSubscriptionDeployment -Location <location> -TemplateFile <path-to-template-or-bicep>
   ```
 
   Az előfizetési szintű központi telepítésekkel kapcsolatos további információkért lásd: [erőforráscsoportok és erőforrások létrehozása az előfizetési szinten](deploy-to-subscription.md).
@@ -46,7 +48,7 @@ Az üzembe helyezést egy erőforráscsoport, egy előfizetés, egy felügyeleti
 - Ha **felügyeleti csoportba** kíván üzembe helyezni, használja a [New-AzManagementGroupDeployment](/powershell/module/az.resources/New-AzManagementGroupDeployment).
 
   ```azurepowershell
-  New-AzManagementGroupDeployment -Location <location> -TemplateFile <path-to-template>
+  New-AzManagementGroupDeployment -Location <location> -TemplateFile <path-to-template-or-bicep>
   ```
 
   További információ a felügyeleti csoport szintű központi telepítésekről: [erőforrások létrehozása a felügyeleti csoport szintjén](deploy-to-management-group.md).
@@ -54,7 +56,7 @@ Az üzembe helyezést egy erőforráscsoport, egy előfizetés, egy felügyeleti
 - Egy **bérlőn** való üzembe helyezéshez használja a [New-AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment).
 
   ```azurepowershell
-  New-AzTenantDeployment -Location <location> -TemplateFile <path-to-template>
+  New-AzTenantDeployment -Location <location> -TemplateFile <path-to-template-or-bicep>
   ```
 
   A bérlői szintű központi telepítésekkel kapcsolatos további információkért lásd: [erőforrások létrehozása a bérlő szintjén](deploy-to-tenant.md).
@@ -89,7 +91,7 @@ Amikor egyedi nevet ad meg az egyes központi telepítésekhez, ütközés nélk
 
 Az egyidejű központi telepítésekkel való ütközések elkerülése érdekében, valamint a telepítési előzmények egyedi bejegyzéseinek biztosításához adjon egyedi nevet a központi telepítésnek.
 
-## <a name="deploy-local-template"></a>Helyi sablon üzembe helyezése
+## <a name="deploy-local-template-or-bicep-file"></a>Helyi sablon vagy bicep-fájl üzembe helyezése
 
 A sablont telepítheti a helyi gépről, vagy egy külső tárolóból. Ez a szakasz egy helyi sablon központi telepítését ismerteti.
 
@@ -99,18 +101,21 @@ Ha nem létező erőforráscsoporthoz végez üzembe helyezést, hozzon létre e
 New-AzResourceGroup -Name ExampleGroup -Location "Central US"
 ```
 
-Helyi sablon üzembe helyezéséhez használja a (z `-TemplateFile` ) paramétert a telepítési parancsban. Az alábbi példa azt is bemutatja, hogyan lehet beállítani a sablonból származó paraméterérték értékét.
+Helyi sablon vagy bicep-fájl üzembe helyezéséhez használja a `-TemplateFile` paramétert a telepítési parancsban. Az alábbi példa azt is bemutatja, hogyan lehet beállítani a sablonból származó paraméterérték értékét.
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
   -Name ExampleDeployment `
   -ResourceGroupName ExampleGroup `
-  -TemplateFile c:\MyTemplates\azuredeploy.json
+  -TemplateFile <path-to-template-or-bicep>
 ```
 
 Az üzembe helyezés több percet is igénybe vehet.
 
 ## <a name="deploy-remote-template"></a>Távoli sablon üzembe helyezése
+
+> [!NOTE]
+> A Azure PowerShell jelenleg nem támogatja a távoli bicep-fájlok telepítését. Távoli bicep-fájl üzembe helyezéséhez használja a CLI bicep a bicep-fájl egy JSON-sablonhoz való fordításához.
 
 Az ARM-sablonok helyi gépen való tárolása helyett érdemes lehet őket külső helyen tárolni. Sablonokat tárolhat egy olyan verziókövetési rendszer adattárában is, mint a GitHub. Tárolhatja azokat egy Azure-tárfiókban is, ahol megosztva érhető el a vállalat számára.
 
@@ -145,6 +150,8 @@ További információ: [relatív elérési út használata csatolt sablonokhoz](
 
 ## <a name="deploy-template-spec"></a>Sablon üzembe helyezése – spec
 
+> [!NOTE]
+> A Azure PowerShell jelenleg nem támogatja a sablon specifikációinak létrehozását a bicep-fájlok biztosításával. Létrehozhat azonban egy olyan bicep-fájlt, amely a [Microsoft. Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) erőforrás segítségével helyezi üzembe a sablon specifikációját. Íme egy [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep).
 Helyi vagy távoli sablon telepítése helyett hozzon létre egy [specifikációt](template-specs.md). A sablon spec egy ARM-sablont tartalmazó Azure-előfizetésben található erőforrás. Megkönnyíti a sablon biztonságos megosztását a szervezetben lévő felhasználókkal. Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával hozzáférést biztosíthat a sablon specifikációjának. Ez a funkció jelenleg előzetes verzióban érhető el.
 
 Az alábbi példák bemutatják, hogyan hozhat létre és helyezhet üzembe egy sablon-specifikációt.
@@ -187,7 +194,7 @@ A beágyazott paraméterek továbbításához adja meg a paraméter nevét a `Ne
 ```powershell
 $arrayParam = "value1", "value2"
 New-AzResourceGroupDeployment -ResourceGroupName testgroup `
-  -TemplateFile c:\MyTemplates\demotemplate.json `
+  -TemplateFile <path-to-template-or-bicep> `
   -exampleString "inline string" `
   -exampleArray $arrayParam
 ```
@@ -197,7 +204,7 @@ Emellett beolvashatja a fájl tartalmát, és megadhatja a tartalmat beágyazott
 ```powershell
 $arrayParam = "value1", "value2"
 New-AzResourceGroupDeployment -ResourceGroupName testgroup `
-  -TemplateFile c:\MyTemplates\demotemplate.json `
+  -TemplateFile <path-to-template-or-bicep> `
   -exampleString $(Get-Content -Path c:\MyTemplates\stringcontent.txt -Raw) `
   -exampleArray $arrayParam
 ```
@@ -211,13 +218,13 @@ $hash1 = @{ Name = "firstSubnet"; AddressPrefix = "10.0.0.0/24"}
 $hash2 = @{ Name = "secondSubnet"; AddressPrefix = "10.0.1.0/24"}
 $subnetArray = $hash1, $hash2
 New-AzResourceGroupDeployment -ResourceGroupName testgroup `
-  -TemplateFile c:\MyTemplates\demotemplate.json `
+  -TemplateFile <path-to-template-or-bicep> `
   -exampleArray $subnetArray
 ```
 
 ### <a name="parameter-files"></a>Paraméter fájljai
 
-Ahelyett, hogy a paramétereket beágyazott értékekként adná át a szkriptben, egyszerűbbnek találhatja egy olyan JSON-fájl használatát, amely tartalmazza a paraméterértékeket. A paraméter fájl lehet helyi fájl vagy egy elérhető URI-val rendelkező külső fájl is.
+Ahelyett, hogy a paramétereket beágyazott értékekként adná át a szkriptben, egyszerűbbnek találhatja egy olyan JSON-fájl használatát, amely tartalmazza a paraméterértékeket. A paraméter fájl lehet helyi fájl vagy egy elérhető URI-val rendelkező külső fájl is. Mindkét ARM-sablon és a bicep-fájl JSON-paramétereket használ.
 
 A paraméterfájlról a [Resource Manager-paraméterfájl létrehozása](parameter-files.md) című cikk nyújt további információkat.
 
@@ -225,7 +232,7 @@ Helyi paraméter fájljának átadásához használja a következő `TemplatePar
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
-  -TemplateFile c:\MyTemplates\azuredeploy.json `
+  -TemplateFile <path-to-template-or-bicep> `
   -TemplateParameterFile c:\MyTemplates\storage.parameters.json
 ```
 
@@ -237,7 +244,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
   -TemplateParameterUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha hibát tapasztal a sikeres üzembe helyezéshez, olvassa el a [hiba visszaállítása a sikeres központi telepítéshez](rollback-on-error.md)című témakört.
 - Ha meg szeretné adni, hogyan kezelje az erőforráscsoport meglévő erőforrásait, de a sablonban nincs definiálva, tekintse meg a [Azure Resource Manager üzembe helyezési módokat](deployment-modes.md).

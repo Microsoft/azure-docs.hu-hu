@@ -823,8 +823,8 @@
           href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md?context=/azure/virtual-machines/context/context
     - name: A virtuális gépek újraindításainak ismertetése
       href: understand-vm-reboots.md
-    - name: Állapotok és életciklus
-      href: states-lifecycle.md
+    - name: Állapotok és számlázás
+      href: states-billing.md
     - name: Azure-régiók
       href: regions.md
 - name: Lemezek
@@ -1355,7 +1355,7 @@
             - name: Általános rendelkezésre állás – gyakori kérdések
               href: ../azure-monitor/vm/vminsights-ga-release-faq.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: GYIK
-              href: ../azure-monitor/faq.md
+              href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context
             - name: Monitorozás engedélyezése
               items:
                 - name: Monitorozás engedélyezésének áttekintése

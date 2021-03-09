@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
 ms.reviewer: cynthn
-ms.openlocfilehash: eb02bff77ffedc0a1f2fee0a186d544c39374dbf
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a3138da0ecbcabaeb7ef910975afc3b7005e5b50
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693866"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519707"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Előzetes verzió: Azure rendszerkép-készítő sablon létrehozása 
 
@@ -391,7 +391,7 @@ Tulajdonságok testreszabása:
 - **validExitCodes** – választható, érvényes kódok, amelyek a parancsfájl/beágyazott parancsból visszaadhatók, így elkerülhető a parancsfájl/beágyazott parancs hibájának jelentése.
 - **runElevated** – opcionális, logikai, támogatás emelt szintű engedélyekkel rendelkező parancsok és parancsfájlok futtatásához.
 - **sha256Checksum** – a fájl sha256-ellenőrzőösszegének értéke, ezt helyileg létrehozhatja, majd a rendszerkép-szerkesztő ellenőrzőösszeget és érvényesítést végez.
-    * A sha256Checksum létrehozása a Windows [Get-hash](/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6) PowerShell használatával
+    * A sha256Checksum létrehozása a Windows [Get-hash](/powershell/module/microsoft.powershell.utility/get-filehash) PowerShell használatával
 
 
 ### <a name="file-customizer"></a>Fájl-testreszabó
@@ -456,7 +456,7 @@ Tulajdonságok testreszabása:
 - **updateLimit** – nem kötelező, meghatározza, hogy hány frissítést lehet telepíteni, alapértelmezett érték: 1000.
  
 > [!NOTE]
-> A Windows Update-testreszabó sikertelen lehet, ha fennáll a Windows újraindítása, vagy az alkalmazás telepítése még fut, ez a hiba általában a Testreszabás. naplóban jelenhet meg `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016` . Nyomatékosan javasoljuk, hogy vegye fel a Windows újraindítását, és/vagy engedélyezze az alkalmazások számára, hogy az [alvó] vagy a várakozási parancsokkal ( https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep?view=powershell-7) a beágyazott parancsokban vagy parancsfájlokban a Windows Update futtatása előtt végezze el a telepítést.
+> A Windows Update-testreszabó sikertelen lehet, ha fennáll a Windows újraindítása, vagy az alkalmazás telepítése még fut, ez a hiba általában a Testreszabás. naplóban jelenhet meg `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016` . Határozottan javasoljuk, hogy vegye fel a Windows újraindítását, és/vagy engedélyezze az alkalmazások számára, hogy az [alvó](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep) vagy várakozási parancsokkal a beágyazott parancsokban vagy parancsfájlokban a Windows Update futtatása előtt elvégezze a telepítést.
 
 ### <a name="generalize"></a>Általánossá tétel 
 Alapértelmezés szerint az Azure-rendszerkép-készítő a rendszerkép testreszabási fázisának végén a "megszüntetés" kódot is futtatja, hogy "általánosítsa" a képet. Az általánosítás egy olyan folyamat, amelyben a rendszerkép be van állítva, így több virtuális gép létrehozására is felhasználható. Windows rendszerű virtuális gépek esetén az Azure rendszerkép-készítő a Sysprept használja. Linux rendszeren az Azure rendszerkép-szerkesztő "waagent"-megszüntetést futtat. 

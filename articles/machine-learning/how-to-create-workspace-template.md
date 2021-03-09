@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: 98ea51957014a4e9d83f27adefd86d8d0708b500
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 9df8a67fd3dfbf23986f1cc5ed18392463fc7ecb
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503181"
+ms.locfileid: "102522206"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Munkaterületek létrehozása Azure Machine Learninghez Azure Resource Manager sablon használatával
 
@@ -32,12 +32,7 @@ További információ: [alkalmazások központi telepítése Azure Resource Mana
 
 * Ha a parancssori felületről szeretne sablont használni, [Azure PowerShell](/powershell/azure/) vagy az [Azure CLI](/cli/azure/install-azure-cli)-t kell használnia.
 
-* Egyes esetekben támogatási jegyet kell megnyitni. Ezek a forgatókönyvek a következők:
-
-    * __Private Link-kompatibilis, felhasználó által felügyelt kulccsal rendelkező munkaterület__
-    * __Azure Container Registry a virtuális hálózat mögötti munkaterülethez__
-
-    További információ: a [kvóták kezelése és növelése](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
+* Egyes esetekben támogatási jegyet kell megnyitni. Például egy ügyfél által felügyelt kulccsal rendelkező magánhálózati kapcsolattal rendelkező munkaterület használata. További információ: a [kvóták kezelése és növelése](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
 
 ## <a name="limitations"></a>Korlátozások
 

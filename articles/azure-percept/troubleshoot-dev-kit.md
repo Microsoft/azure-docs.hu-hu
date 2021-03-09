@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: c8027b62c0c463e134817f589ba3e1957cea5b39
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a6d099e8d267c9fe03e0bb676276e7a4ab8157ab
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101679576"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521526"
 ---
 # <a name="azure-percept-dk-dev-kit-troubleshooting"></a>Az Azure Percept DK (dev Kit) hibaelhárítása
 
@@ -95,7 +95,7 @@ Három kisméretű LED van a Carrier Board-ház tetején. A LED 1 ikon mellett m
 |VEZETETT             |Állam      |Leírás                      |
 |----------------|-----------|---------------------------------|
 |1. LED (IoT Hub) |Bekapcsolva (Solid) |Az eszköz egy IoT Hubhoz van csatlakoztatva. |
-|2. LED (Wi-Fi)   |Lassú villogás |Az eszköz hitelesítése folyamatban van. |
+|2. LED (Wi-Fi)   |Lassú villogás |Az eszköz készen áll a Wi-Fi Easy-kapcsolat konfigurálására, és bejelenti annak jelenlétét egy konfigurátorban. |
 |2. LED (Wi-Fi)   |Gyors villogás |A hitelesítés sikeres volt, az eszköz társítása folyamatban van. |
 |2. LED (Wi-Fi)   |Bekapcsolva (Solid) |A hitelesítés és a társítás sikeres volt; az eszköz Wi-Fi hálózathoz csatlakozik. |
 |3. LED           |NA         |A LED nem használatban van. |

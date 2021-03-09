@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to, deploy
-ms.openlocfilehash: 8f22f1af04d59b4c1fb7f19a3d6815b61cac5fbd
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: a7d1212d1106f0883d05a860b498b90e4e5f8e00
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102211227"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517514"
 ---
 # <a name="deploy-models-trained-with-azure-machine-learning-on-your-local-machines"></a>Helyi gépeken Azure Machine Learning betanított modellek üzembe helyezése 
 
@@ -31,7 +31,7 @@ A helyi telepítés forgatókönyvei a következők:
 
 - Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 - Modell és környezet. Ha nem rendelkezik betanított modellel, az [oktatóanyagban](tutorial-train-models-with-aml.md)szereplő modell-és függőségi fájlokat is használhatja.
-- A [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
+- A [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/intro).
 - Conda-kezelő, például anaconda vagy Miniconda, ha meg szeretné jeleníteni Azure Machine Learning csomag függőségeinek tükrözését.
 - Docker, ha a Azure Machine Learning környezet egy tárolós verzióját kívánja használni.
 

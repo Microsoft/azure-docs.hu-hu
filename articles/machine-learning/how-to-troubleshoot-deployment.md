@@ -10,12 +10,12 @@ ms.author: gopalv
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 1a7116f0edbed8270a3345bc924bf50872615b04
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 8bec083e62bec6a0311487c1e64e780ad14f451b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102217159"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518263"
 ---
 # <a name="troubleshooting-remote-model-deployment"></a>Távoli modellek központi telepítésének hibaelhárítása 
 
@@ -32,7 +32,7 @@ Ismerje meg, hogy miként lehet elhárítani és megoldani a modelleket a Azure 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy **Azure-előfizetés**. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
-* A [Azure Machine learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
+* A [Azure Machine learning SDK](/python/api/overview/azure/ml/install).
 * Az [Azure CLI](/cli/azure/install-azure-cli)-vel.
 * A [Azure Machine learning CLI-bővítménye](reference-azure-machine-learning-cli.md).
 
@@ -99,7 +99,7 @@ Használja az információ a [Docker-napló vizsgálata](how-to-troubleshoot-dep
 
 ## <a name="function-fails-get_model_path"></a>A függvény sikertelen: get_model_path ()
 
-Gyakran előfordul, `init()` hogy a pontozási parancsfájl függvényében a [Model.get_model_path ()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) függvényt a rendszer megkeresi a modell fájlját vagy a tárolóban a modell fájljainak mappáját. Ha a modellfájl vagy -mappa nem található, a függvény meghiúsul. A hiba hibakeresésének legegyszerűbb módja a következő Python-kód futtatása a Container shellben:
+Gyakran előfordul, `init()` hogy a pontozási parancsfájl függvényében a [Model.get_model_path ()](/python/api/azureml-core/azureml.core.model.model#get-model-path-model-name--version-none---workspace-none-) függvényt a rendszer megkeresi a modell fájlját vagy a tárolóban a modell fájljainak mappáját. Ha a modellfájl vagy -mappa nem található, a függvény meghiúsul. A hiba hibakeresésének legegyszerűbb módja a következő Python-kód futtatása a Container shellben:
 
 ```python
 from azureml.core.model import Model
@@ -177,7 +177,7 @@ Két olyan dolog van, amely segíthet megelőzni a 503-es állapotkódot:
     > [!NOTE]
     > Ha az új minimális replikánál nagyobb kérelmeket kap, akkor a 503s újra megjelenhet. Ha például a szolgáltatás felé irányuló forgalom növekszik, akkor előfordulhat, hogy növelnie kell a minimális replikákat.
 
-A és a for beállításával kapcsolatos további információkért `autoscale_target_utilization` `autoscale_max_replicas` `autoscale_min_replicas` tekintse meg a [AksWebservice](/python/api/azureml-core/azureml.core.webservice.akswebservice?preserve-view=true&view=azure-ml-py) -modul referenciáját.
+A és a for beállításával kapcsolatos további információkért `autoscale_target_utilization` `autoscale_max_replicas` `autoscale_min_replicas` tekintse meg a [AksWebservice](/python/api/azureml-core/azureml.core.webservice.akswebservice) -modul referenciáját.
 
 ## <a name="http-status-code-504"></a>504-es HTTP-állapotkód
 

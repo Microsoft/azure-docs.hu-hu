@@ -11,16 +11,16 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/03/2020
 ms.custom: how-to, contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: 0bc247e473ea96f2f9301eeaebb543b3317c84c7
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 78b7bab204a08b474ea3c5cf5c2f7735c019a9c3
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659664"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519928"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>Kapcsolódás az Azure Storage Services szolgáltatásához
 
-Ebből a cikkből megtudhatja, hogyan csatlakozhat az Azure-beli adattárolási szolgáltatásokhoz Azure Machine Learning adattárral és a [PYTHON SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)-val Azure Machine learning.
+Ebből a cikkből megtudhatja, hogyan csatlakozhat az Azure-beli adattárolási szolgáltatásokhoz Azure Machine Learning adattárral és a [PYTHON SDK](/python/api/overview/azure/ml/intro)-val Azure Machine learning.
 
 Az adattárolók biztonságosan csatlakoznak a Storage szolgáltatáshoz az Azure-ban anélkül, hogy hitelesítő adatokat kellene megadnia, és az eredeti adatforrásának integritását kockáztatja. A kapcsolati adatokat, például az előfizetési AZONOSÍTÓját és a jogkivonat-engedélyezést a munkaterülethez társított [Key Vault](https://azure.microsoft.com/services/key-vault/) tárolják, így biztonságosan hozzáférhet a tárolóhoz anélkül, hogy a parancsfájlokban rögzített kódokat kellene megtennie. [Ezekhez az Azure Storage-megoldásokhoz kapcsolódó adattárakat](#matrix)is létrehozhat.
 
@@ -29,7 +29,7 @@ Ha szeretné megismerni, hogy az adattárolók hogyan illeszkednek Azure Machine
 Az alacsony kódú élményért lásd: az adattárolók [létrehozása és regisztrálása a Azure Machine learning Studio](how-to-connect-data-ui.md#create-datastores)használatával.
 
 >[!TIP]
-> Ez a cikk azt feltételezi, hogy a tárolási szolgáltatáshoz hitelesítő adatokon alapuló hitelesítési hitelesítő adatokkal szeretne csatlakozni, például egy egyszerű szolgáltatásnév vagy egy közös hozzáférésű aláírás (SAS) token. Ne feledje, hogy ha a hitelesítő adatok regisztrálva vannak az adattárolókban, a munkaterület- *olvasó* szerepkörrel rendelkező felhasználók beolvashatják ezeket a hitelesítő adatokat. [További információ a munkaterület- *olvasó* szerepkörről.](how-to-assign-roles.md#default-roles) <br><br>Ha ez problémát jelent, Ismerje meg, hogyan [csatlakozhat a Storage-szolgáltatásokhoz identitás-alapú hozzáféréssel](how-to-identity-based-data-access.md). <br><br>Ez a funkció egy [kísérleti](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) előzetes verzió, és bármikor megváltozhat. 
+> Ez a cikk azt feltételezi, hogy a tárolási szolgáltatáshoz hitelesítő adatokon alapuló hitelesítési hitelesítő adatokkal szeretne csatlakozni, például egy egyszerű szolgáltatásnév vagy egy közös hozzáférésű aláírás (SAS) token. Ne feledje, hogy ha a hitelesítő adatok regisztrálva vannak az adattárolókban, a munkaterület- *olvasó* szerepkörrel rendelkező felhasználók beolvashatják ezeket a hitelesítő adatokat. [További információ a munkaterület- *olvasó* szerepkörről.](how-to-assign-roles.md#default-roles) <br><br>Ha ez problémát jelent, Ismerje meg, hogyan [csatlakozhat a Storage-szolgáltatásokhoz identitás-alapú hozzáféréssel](how-to-identity-based-data-access.md). <br><br>Ez a funkció egy [kísérleti](/python/api/overview/azure/ml/#stable-vs-experimental) előzetes verzió, és bármikor megváltozhat. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -37,7 +37,7 @@ Az alacsony kódú élményért lásd: az adattárolók [létrehozása és regis
 
 - Egy [támogatott tárolási típusú](#matrix)Azure Storage-fiók.
 
-- A [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
+- A [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/intro).
 
 - Egy Azure Machine Learning-munkaterület.
   
@@ -66,7 +66,7 @@ Az adattárolók jelenleg támogatják a kapcsolódási adatok tárolását a k�
 > [!TIP]
 > A nem **támogatott tárolási megoldások esetében**, valamint az adatforgalomnak a ml-kísérletek során történő megtakarítása érdekében [Helyezze át az adatait](#move) egy támogatott Azure Storage-megoldásba. 
 
-| Tárolási &nbsp; típus | Hitelesítés &nbsp; típusa | [Azure &nbsp; Machine &nbsp; learning Studio](https://ml.azure.com/) | [Az Azure &nbsp; Machine &nbsp; learning &nbsp; Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) |  [Azure &nbsp; Machine &nbsp; learning parancssori felület](reference-azure-machine-learning-cli.md) | [Azure &nbsp; Machine &nbsp; learning – &nbsp; REST API](/rest/api/azureml/) | VS Code
+| Tárolási &nbsp; típus | Hitelesítés &nbsp; típusa | [Azure &nbsp; Machine &nbsp; learning Studio](https://ml.azure.com/) | [Az Azure &nbsp; Machine &nbsp; learning &nbsp; Python SDK](/python/api/overview/azure/ml/intro) |  [Azure &nbsp; Machine &nbsp; learning parancssori felület](reference-azure-machine-learning-cli.md) | [Azure &nbsp; Machine &nbsp; learning – &nbsp; REST API](/rest/api/azureml/) | VS Code
 ---|---|---|---|---|---|---
 [Azure &nbsp; blob &nbsp; Storage](../storage/blobs/storage-blobs-overview.md)| Fiókkulcs <br> SAS-jogkivonat | ✓ | ✓ | ✓ |✓ |✓
 [Azure- &nbsp; fájlmegosztás &nbsp;](../storage/files/storage-files-introduction.md)| Fiókkulcs <br> SAS-jogkivonat | ✓ | ✓ | ✓ |✓|✓
@@ -77,8 +77,8 @@ Az adattárolók jelenleg támogatják a kapcsolódási adatok tárolását a k�
 [MySQL-hez készült Azure- &nbsp; adatbázis &nbsp; &nbsp;](../mysql/overview.md) | SQL-hitelesítés|  | ✓* | ✓* |✓*|
 [Databricks &nbsp; fájlrendszer &nbsp;](/azure/databricks/data/databricks-file-system)| Nincs hitelesítés | | ✓** | ✓ ** |✓** |
 
-\*A MySQL-t csak a folyamat [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?preserve-view=true&view=azure-ml-py) támogatja<br />
-\*\*A Databricks csak a folyamat [DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?preserve-view=true&view=azure-ml-py) támogatott
+\*A MySQL-t csak a folyamat [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep) támogatja<br />
+\*\*A Databricks csak a folyamat [DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep) támogatott
 
 
 ### <a name="storage-guidance"></a>Storage – útmutató
@@ -143,7 +143,7 @@ Ebben a szakaszban példákat talál egy adattár létrehozására és regisztr�
 * [Azure-fájlmegosztás](#azure-file-share)
 * [2. generációs Azure Data Lake Storage](#azure-data-lake-storage-generation-2)
 
- Más támogatott tárolási szolgáltatásokhoz tartozó adattárolók létrehozásához tekintse meg a [megfelelő `register_azure_*` módszerek dokumentációját](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=truemethods).
+ Más támogatott tárolási szolgáltatásokhoz tartozó adattárolók létrehozásához tekintse meg a [megfelelő `register_azure_*` módszerek dokumentációját](/python/api/azureml-core/azureml.core.datastore.datastore#methods).
 
 Ha alacsony szintű felhasználói élményt szeretne, tekintse meg az [Azure Machine learning Studióval való kapcsolódás](how-to-connect-data-ui.md)az adatkapcsolathoz című témakört.
 >[!IMPORTANT]
@@ -154,7 +154,7 @@ Ha alacsony szintű felhasználói élményt szeretne, tekintse meg az [Azure Ma
 
 ### <a name="azure-blob-container"></a>Azure Blob-tároló
 
-Az Azure Blob-tárolók adattárként való regisztrálásához használja a következőt: [`register_azure_blob_container()`](/python/api/azureml-core/azureml.core.datastore%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) .
+Az Azure Blob-tárolók adattárként való regisztrálásához használja a következőt: [`register_azure_blob_container()`](/python/api/azureml-core/azureml.core.datastore%28class%29#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) .
 
 A következő kód létrehozza és regisztrálja az `blob_datastore_name` adattárt a `ws` munkaterületen. Ez az adattár hozzáfér a `my-container-name` blob-tárolóhoz a `my-account-name` Storage-fiókban a megadott fiók-hozzáférési kulcs használatával. Tekintse át a [tárolási hozzáférési & engedélyek](#storage-access-and-permissions) szakaszt a virtuális hálózati forgatókönyvekkel kapcsolatos útmutatásért és a szükséges hitelesítő adatok megkereséséhez. 
 
@@ -173,7 +173,7 @@ blob_datastore = Datastore.register_azure_blob_container(workspace=ws,
 
 ### <a name="azure-file-share"></a>Azure-fájlmegosztás
 
-Azure-fájlmegosztás adattárként való regisztrálásához használja a következőt: [`register_azure_file_share()`](/python/api/azureml-core/azureml.core.datastore%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-) . 
+Azure-fájlmegosztás adattárként való regisztrálásához használja a következőt: [`register_azure_file_share()`](/python/api/azureml-core/azureml.core.datastore%28class%29#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-) . 
 
 A következő kód létrehozza és regisztrálja az `file_datastore_name` adattárt a `ws` munkaterületen. Ez az adattár hozzáfér a `my-fileshare-name` fájlmegosztást a `my-account-name` Storage-fiókban a megadott fiók-hozzáférési kulcs használatával. Tekintse át a [tárolási hozzáférési & engedélyek](#storage-access-and-permissions) szakaszt a virtuális hálózati forgatókönyvekkel kapcsolatos útmutatásért és a szükséges hitelesítő adatok megkereséséhez. 
 
@@ -192,7 +192,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 ### <a name="azure-data-lake-storage-generation-2"></a>2. generációs Azure Data Lake Storage
 
-Egy Azure Data Lake Storage 2. generációs (ADLS Gen 2) adattár esetében a [register_azure_data_lake_gen2 ()](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) használatával regisztrálja az Azure DataLake Gen 2 tárolóhoz csatlakoztatott hitelesítő adatokat az [egyszerű szolgáltatás engedélyeivel](../active-directory/develop/howto-create-service-principal-portal.md).  
+Egy Azure Data Lake Storage 2. generációs (ADLS Gen 2) adattár esetében a [register_azure_data_lake_gen2 ()](/python/api/azureml-core/azureml.core.datastore.datastore#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) használatával regisztrálja az Azure DataLake Gen 2 tárolóhoz csatlakoztatott hitelesítő adatokat az [egyszerű szolgáltatás engedélyeivel](../active-directory/develop/howto-create-service-principal-portal.md).  
 
 Az egyszerű szolgáltatás használatához [regisztrálnia](../active-directory/develop/app-objects-and-service-principals.md) kell az alkalmazást, és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) vagy a hozzáférés-vezérlési listák (ACL) használatával kell megadnia az egyszerű szolgáltatás adatelérését. További információ a [2. generációs ADLS-hez beállított hozzáférés-vezérlésről](../storage/blobs/data-lake-storage-access-control-model.md). 
 
@@ -244,13 +244,13 @@ Az adatkészletek segítségével bármilyen formátumú fájlokat [tölthet le 
 
 ## <a name="get-datastores-from-your-workspace"></a>Adattárolók beolvasása a munkaterületről
 
-Az aktuális munkaterületen regisztrált adott adattár beszerzéséhez használja a [`get()`](/python/api/azureml-core/azureml.core.datastore%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-workspace--datastore-name-) statikus metódust az `Datastore` osztályban:
+Az aktuális munkaterületen regisztrált adott adattár beszerzéséhez használja a [`get()`](/python/api/azureml-core/azureml.core.datastore%28class%29#get-workspace--datastore-name-) statikus metódust az `Datastore` osztályban:
 
 ```Python
 # Get a named datastore from the current workspace
 datastore = Datastore.get(ws, datastore_name='your datastore name')
 ```
-Egy adott munkaterülethez regisztrált adattárolók listájának lekéréséhez használhatja a (z) [`datastores`](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedatastores) tulajdonságot egy munkaterület-objektumon:
+Egy adott munkaterülethez regisztrált adattárolók listájának lekéréséhez használhatja a (z) [`datastores`](/python/api/azureml-core/azureml.core.workspace%28class%29#datastores) tulajdonságot egy munkaterület-objektumon:
 
 ```Python
 # List all datastores registered in the current workspace

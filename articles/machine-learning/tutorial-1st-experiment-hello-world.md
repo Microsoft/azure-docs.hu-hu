@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 02/11/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 18f76480d1327d6ab41c475395a689f8024d7b25
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4f2b01b7a04958c4bd1f97332b54a1ff4fc32356
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369024"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522325"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>Oktatóanyag: a "Helló világ!" futtatása Python-szkript (2. rész/4)
 
@@ -92,7 +92,7 @@ Itt látható a vezérlő parancsfájl működésének leírása:
       `ws = Workspace.from_config()`
    :::column-end:::
    :::column span="2":::
-      A [munkaterület](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) a Azure Machine learning munkaterülethez csatlakozik, hogy kommunikálni tudjon a Azure Machine learning erőforrásaival.
+      A [munkaterület](/python/api/azureml-core/azureml.core.workspace.workspace) a Azure Machine learning munkaterülethez csatlakozik, hogy kommunikálni tudjon a Azure Machine learning erőforrásaival.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -100,7 +100,7 @@ Itt látható a vezérlő parancsfájl működésének leírása:
       `experiment =  Experiment( ... )`
    :::column-end:::
    :::column span="2":::
-      A [Experiment](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py) egyszerű módszert kínál több Futtatás egyetlen névvel való rendszerezésére. Később láthatja, hogyan könnyíti meg a kísérletek a több tucat futtatás közötti mérőszámok összehasonlítását.
+      A [Experiment](/python/api/azureml-core/azureml.core.experiment.experiment) egyszerű módszert kínál több Futtatás egyetlen névvel való rendszerezésére. Később láthatja, hogyan könnyíti meg a kísérletek a több tucat futtatás közötti mérőszámok összehasonlítását.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -108,7 +108,7 @@ Itt látható a vezérlő parancsfájl működésének leírása:
       `config = ScriptRunConfig( ... )` 
    :::column-end:::
    :::column span="2":::
-      A [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) becsomagolja a `hello.py` kódot, és átadja a munkaterületnek. Ahogy a neve is sugallja, ezt az osztályt használhatja annak _konfigurálásához_ , hogy a _parancsfájl_ hogyan _fusson_ Azure Machine learning. Azt is meghatározza, hogy a parancsfájl milyen számítási célt fog futni. Ebben a kódban a cél az a számítási fürt, amelyet a [beállítási oktatóanyagban](tutorial-1st-experiment-sdk-setup-local.md)hozott létre.
+      A [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) becsomagolja a `hello.py` kódot, és átadja a munkaterületnek. Ahogy a neve is sugallja, ezt az osztályt használhatja annak _konfigurálásához_ , hogy a _parancsfájl_ hogyan _fusson_ Azure Machine learning. Azt is meghatározza, hogy a parancsfájl milyen számítási célt fog futni. Ebben a kódban a cél az a számítási fürt, amelyet a [beállítási oktatóanyagban](tutorial-1st-experiment-sdk-setup-local.md)hozott létre.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -116,7 +116,7 @@ Itt látható a vezérlő parancsfájl működésének leírása:
       `run = experiment.submit(config)`
    :::column-end:::
    :::column span="2":::
-       Elküldi a parancsfájlt. Ezt a beküldést [futtatásnak](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)nevezzük. A Futtatás egyetlen végrehajtást ágyaz be a kódjába. Egy futtatással figyelheti a parancsfájl előrehaladását, rögzítheti a kimenetet, elemezheti az eredményeket, megjelenítheti a metrikákat, és egyéb műveleteket is alkalmazhat.
+       Elküldi a parancsfájlt. Ezt a beküldést [futtatásnak](/python/api/azureml-core/azureml.core.run%28class%29)nevezzük. A Futtatás egyetlen végrehajtást ágyaz be a kódjába. Egy futtatással figyelheti a parancsfájl előrehaladását, rögzítheti a kimenetet, elemezheti az eredményeket, megjelenítheti a metrikákat, és egyéb műveleteket is alkalmazhat.
    :::column-end:::
 :::row-end:::
 :::row:::

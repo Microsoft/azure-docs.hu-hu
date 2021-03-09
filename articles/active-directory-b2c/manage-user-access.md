@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/15/2020
+ms.date: 03/09/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fadc739f16ce9690a735be22758f58857ff8b9ff
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0ee26e7fe74d87f7b20f9a28b049b8043b376273
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951621"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518056"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Felhasználói hozzáférés kezelése Azure Active Directory B2C
 
@@ -83,7 +83,53 @@ Ha egy alkalmazás más módszerekkel megbízhatóan gyűjtött DOB vagy ország
 - Ha egy felhasználó ismert felnőttnek, akkor frissítse a **beszerzésimennyiség** Directory-attribútumot **felnőtt** értékkel.
 - Ha a felhasználó neve kisebb, akkor frissítse a **beszerzésimennyiség** attribútumot, és adja meg a **consentProvidedForMinor** értéket **a megfelelő** értékkel.
 
-További információ a DOB-adatok gyűjtéséről: [Age kapuzás használata a Azure ad B2Cban](basic-age-gating.md).
+## <a name="minor-calculation-rules"></a>Másodlagos számítási szabályok
+
+Az Age kapuzás két életkori értéket tartalmaz: az életkort, amelyet valaki már nem tekint kisebbnek, és azt, hogy a kiskorú gyermekeknek hogyan kell beleegyezniük. A következő táblázat felsorolja azokat a kor-szabályokat, amelyek egy kisebb és egy kisebb, a hozzájuk szükséges engedély definiálásához használatosak.
+
+| Ország/régió | Ország/régió neve | Kisebb beleegyező életkor | Kisebb kor |
+| -------------- | ------------------- | ----------------- | --------- |
+| Alapértelmezett | Nincs | Nincs | 18 |
+| AE | Egyesült Arab Emírségek | Nincs | 21 |
+| AT | Ausztria | 14 | 18 |
+| BE | Belgium | 14 | 18 |
+| BG | Bulgária | 16 | 18 |
+| BH | Bahrein | Nincs | 21 |
+| CM | Kamerun | Nincs | 21 |
+| CY | Ciprus | 16 | 18 |
+| CZ | Cseh Köztársaság | 16 | 18 |
+| DE | Németország | 16 | 18 |
+| DK | Dánia | 16 | 18 |
+| EE | Észtország | 16 | 18 |
+| EG | Egyiptom | Nincs | 21 |
+| ES | Spanyolország | 13 | 18 |
+| JK | Franciaország | 16 | 18 |
+| GB | Egyesült Királyság | 13 | 18 |
+| GR | Görögország | 16 | 18 |
+| HR | Horvátország | 16 | 18 |
+| HU | Magyarország | 16 | 18 |
+| IE | Írország | 13 | 18 |
+| IT | Olaszország | 16 | 18 |
+| KR | Koreai Köztársaság | 14 | 18 |
+| LT | Litvánia | 16 | 18 |
+| LU | Luxemburg | 16 | 18 |
+| LV | Lettország | 16 | 18 |
+| MT | Málta | 16 | 18 |
+| NA | Namíbia | Nincs | 21 |
+| NL | Hollandia | 16 | 18 |
+| PL | Lengyelország | 13 | 18 |
+| PT | Portugália | 16 | 18 |
+| RO | Románia | 16 | 18 |
+| SE | Svédország | 13 | 18 |
+| SG | Szingapúr | Nincs | 21 |
+| SI | Szlovénia | 16 | 18 |
+| SK | Szlovákia | 16 | 18 |
+| TD | Csád | Nincs | 21 |
+| TH | Thaiföld | Nincs | 20 |
+| TW | Tajvan | Nincs | 20 |
+| USA | Egyesült Államok | 13 | 18 |
+
+
 
 ## <a name="capture-terms-of-use-agreement"></a>Használati feltételek rögzítése
 
@@ -175,5 +221,6 @@ A következő példa a használati feltételekre vonatkozó, a jogcímek megadá
 
 ## <a name="next-steps"></a>Következő lépések
 
+- [Az életkor kapuzás engedélyezése a Azure ad B2Cban](age-gating.md).
 - A felhasználói információk törlésével és exportálásával kapcsolatos információkért lásd: [felhasználói adatkezelés](manage-user-data.md).
 - A használati feltételeket használó egyéni szabályzatok esetében tekintse meg [a B2C-IEF egyéni szabályzatot, és jelentkezzen be a "használati feltételek" üzenettel](https://github.com/azure-ad-b2c/samples/tree/master/policies/sign-in-sign-up-versioned-tou).

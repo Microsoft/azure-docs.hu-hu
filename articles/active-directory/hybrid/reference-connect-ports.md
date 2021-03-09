@@ -16,12 +16,12 @@ ms.date: 03/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da318840426d1c0b94eab06b89ff3152df9d26fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 681d92ed162feff0510067556d7eeaa47b12d988
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80331094"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520030"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>Hibrid identitás – szükséges portok és protokollok
 A következő dokumentum technikai útmutató a hibrid identitási megoldások megvalósításához szükséges portokról és protokollokról. Használja az alábbi ábrát, és tekintse meg a megfelelő táblát.
@@ -39,7 +39,7 @@ Ez a táblázat azokat a portokat és protokollokat ismerteti, amelyek a Azure A
 | LDAP |389 (TCP/UDP) |Az AD-ből származó adatok importálására szolgál. Az adattitkosítás Kerberos-bejelentkezési & pecséttel történik. |
 | SMB | 445 (TCP) |A zökkenőmentes egyszeri bejelentkezés használatával egy számítógépfiók hozható létre az AD-erdőben. |
 | LDAP/SSL |636 (TCP/UDP) |Az AD-ből származó adatok importálására szolgál. Az adatátvitel aláírása és titkosítása megtörténik. Csak akkor használatos, ha TLS-t használ. |
-| RPC |49152 – 65535 (véletlenszerű magas RPC-port) (TCP) |Azure AD Connect kezdeti konfigurálásakor használatos, amikor az AD-erdőkhöz kötődik, és a jelszó-szinkronizálás során. További információért lásd: [KB929851](https://support.microsoft.com/kb/929851), [KB832017](https://support.microsoft.com/kb/832017)és [KB224196](https://support.microsoft.com/kb/224196) . |
+| RPC |49152 – 65535 (véletlenszerű magas RPC-port) (TCP) |Azure AD Connect kezdeti konfigurálásakor használatos, amikor az AD-erdőkhöz kötődik, és a jelszó-szinkronizálás során. Ha a dinamikus port módosult, akkor meg kell nyitnia a portot. További információért lásd: [KB929851](https://support.microsoft.com/kb/929851), [KB832017](https://support.microsoft.com/kb/832017)és [KB224196](https://support.microsoft.com/kb/224196) . |
 |WinRM  | 5985 (TCP) |Csak akkor használatos, ha Azure AD Connect varázslóval telepíti a AD FSt a gMSA-ben|
 |Webszolgáltatások AD DS | 9389 (TCP) |Csak akkor használatos, ha Azure AD Connect varázslóval telepíti a AD FSt a gMSA-ben |
 

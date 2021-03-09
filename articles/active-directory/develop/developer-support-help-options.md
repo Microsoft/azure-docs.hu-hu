@@ -12,85 +12,96 @@ ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: ecbb7ec503011d78c2f83a76cea921e1cf438ac1
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 43990952f6cbe90c729ac2df421c682fe8d42b1b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215102"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517937"
 ---
 # <a name="support-and-help-options-for-developers"></a>Támogatási és súgó lehetőségek fejlesztőknek
 
-Ha most kezdi az integrációt a Azure Active Directory (Azure AD), a Microsoft-identitásokkal vagy a Microsoft Graph API-val, vagy ha új funkciót valósít meg az alkalmazáshoz, akkor a Közösség segítségére van szüksége, vagy megismerheti a fejlesztőknek nyújtott támogatási lehetőségeket. Ez a cikk segít megismerni ezeket a lehetőségeket, beleértve a következőket:
+Ha most kezdi az integrációt a Azure Active Directory (Azure AD), a Microsoft-identitásokkal vagy a Microsoft Graph API-val, vagy ha új funkciót valósít meg az alkalmazáshoz, akkor a Közösség segítségére van szüksége, vagy megismerheti a fejlesztőknek nyújtott támogatási lehetőségeket. Itt találja azokat a javaslatokat, amelyekkel segítséget kaphat a Microsoft Identity platform-megoldások fejlesztésekor.
 
-> [!div class="checklist"]
-> * Hogyan lehet megkeresni a kérdést, hogy a Közösség nem válaszolt-e, vagy ha már létezik a megvalósítani kívánt szolgáltatás meglévő dokumentációja
-> * Bizonyos esetekben csak azt szeretné, hogy támogatási eszközeink segítségével hibakeresést végezzen egy adott probléma esetén
-> * Ha nem találja a szükséges választ, felteheti a kérdést a *Microsoft Q&a*
-> * Ha a hitelesítési kódtárak egyikével kapcsolatos problémát talál, akkor adjon meg egy *GitHub* -problémát
-> * Végül, ha valakivel szeretne kommunikálni, érdemes lehet egy támogatási kérést megnyitni
+## <a name="create-an-azure-support-request"></a>Azure-támogatáskérés létrehozása
 
-## <a name="search"></a>Keresés
+<div class='icon is-large'>
+    <img alt='Azure support' src='https://docs.microsoft.com/media/logos/logo_azure.svg'>
+</div>
 
-Ha a fejlesztéssel kapcsolatos kérdése van, előfordulhat, hogy megtalálja a választ a dokumentációban, a GitHub- [mintákat](https://github.com/azure-samples), vagy választ a [Microsoft Q&](/answers/products/) kérdésekre.
+Fedezze fel az [Azure-támogatási lehetőségek körét, és válassza ki a](https://azure.microsoft.com/support/plans) legjobban illeszkedő csomagot, legyen szó akár fejlesztőknek, akár a Felhőbeli utazásról, akár egy olyan nagy szervezetről, amely üzleti szempontból kritikus fontosságú, stratégiai alkalmazásokat helyez üzembe. Az Azure-ügyfelek támogatási kérelmeket hozhatnak létre és kezelhetnek a Azure Portalban.
 
-### <a name="scoped-search"></a>Hatókörön belüli keresés
+- Ha már rendelkezik Azure-támogatási csomaggal, [Nyisson meg egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-
-A gyorsabb eredmény érdekében a keresés a [Microsoft Q&](https://docs.microsoft.com/answers/products/) a dokumentációt, a kód mintáit pedig a következő lekérdezéssel használhatja a kedvenc keresőmotorjában:
-
-A gyorsabb eredmény érdekében a keresés a [Microsoft Q&](/answers/products/)a dokumentációt, a kód mintáit pedig a következő lekérdezéssel használhatja a kedvenc keresőmotorjában:
-
-
-```
-{Your Search Terms} (site:http://www.docs.microsoft.com/answers/products/ OR site:docs.microsoft.com OR site:github.com/azure-samples OR site:cloudidentity.com OR site:developer.microsoft.com/graph)
-```
-
-Ahol *{a keresési kifejezések}* megfelelnek a keresési kulcsszavaknak.
-
-## <a name="use-the-development-support-tools"></a>A fejlesztői támogatási eszközök használata
-
-| Eszköz  | Leírás  |
-|---------|---------|
-| [jwt.ms](https://jwt.ms) | A jogcímek nevének és értékének dekódolásához illesszen be egy azonosítót vagy hozzáférési tokent. |
-| [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)| Eszköz, amely lehetővé teszi a kérelmek elfogadását és a válaszok megtekintését a Microsoft Graph API-ra. |
+- Ha Ön nem Azure-ügyfél, akkor a Microsoft [kereskedelmi támogatási szolgálatán](https://support.serviceshub.microsoft.com/supportforbusiness)keresztül is megnyithatja a támogatási kérést.
 
 ## <a name="post-a-question-to-microsoft-qa"></a>Kérdés közzététele a Microsoft Q&A
+<div class='icon is-large'>
+    <img alt='Microsoft Q&A' src='./media/common/question-mark-icon.png'>
+</div>             
 
-A [Microsoft Q&](/answers/products/) a a fejlesztéssel kapcsolatos kérdések előnyben részesített csatornája. Itt a fejlesztői közösség és a Microsoft csapattagok tagjai közvetlenül részt vesznek a problémák megoldásában.
+Közvetlenül a Microsoft mérnököktől, az Azure legértékesebb szakembereitől (MVP) és a szakértői Közösség tagjaitól kaphat válaszokat az Identity app fejlesztési kérdéseire.
 
-Ha nem talál választ a kérdésére a kereséssel, küldjön új kérdést a [Microsoft Q&a](/answers/products/) -nek. A következő címkék egyikével teheti fel a kérdést, hogy a Közösség könnyebben azonosítsa és válaszolja meg a kérdést:
+[A Microsoft Q&a](/answers/products/) az Azure által ajánlott közösségi támogatási forrás.
 
-|Összetevő/régió  | Címkék |
-|---------|---------|
-| ADAL-könyvtár | [adal](/answers/topics/azure-ad-adal-deprecation.html) |
-| MSAL-könyvtár     | [msal](/answers/topics/azure-ad-msal.html) |
-| OWIN middleware  | [[Azure-Active-Directory]](/answers/topics/azure-active-directory.html) |
-| [Azure B2B](../external-identities/what-is-b2b.md)  | [[Azure-ad-B2B]](/answers/topics/azure-ad-b2b.html) |
-| [Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-ad-B2C]](/answers/topics/azure-ad-b2c.html) |
-| [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[Azure-ad-Graph]](/answers/topics/azure-ad-graph.html) |
-| A hitelesítési vagy engedélyezési témakörökhöz kapcsolódó egyéb területek | [[Azure-Active-Directory]](/answers/topics/azure-active-directory.html) |
+Ha nem talál választ a problémára a Microsoft Q&A alkalmazásban való kereséssel, küldjön egy új kérdést. A következő címkék egyikét használhatja, ha a [kiváló minőségű kérdést](https://docs.microsoft.com/answers/articles/24951/how-to-write-a-quality-question.html)kéri:
 
-Az alábbi bejegyzések a [Microsoft Q&egy olyan](/answers/products/) tippeket tartalmaznak, amelyekkel kérdéseket tehet fel, és hogyan adhat hozzá forráskódot. Kövesse az alábbi irányelveket, hogy növelje a közösségi tagok számára a kérdés gyors értékelését és megválaszolását:
-
-* [Hogyan tegyen fel egy jó kérdést](/answers/articles/24951/how-to-write-a-quality-question.html)
-* [Minimális, teljes és ellenőrizhető példa létrehozása](/answers/articles/24907/how-to-write-a-quality-answer.html)
+| Összetevő/régió| Címkék  |
+|------------|---------------------------|
+| Active Directory Authentication Library (ADAL)                              | [adal](https://docs.microsoft.com/answers/topics/azure-ad-adal-deprecation.html)                |
+| Microsoft Authentication Library (MSAL)                                     | [msal](https://docs.microsoft.com/answers/topics/azure-ad-msal.html)                            |
+| A .NET-hez készült webes felület (OWIN) megnyitása                               | [[Azure-Active-Directory]](https://docs.microsoft.com/answers/topics/azure-active-directory.html) |
+| [Azure AD B2B/külső identitások](../external-identities/what-is-b2b.md) | [[Azure-ad-B2B]](https://docs.microsoft.com/answers/topics/azure-ad-b2b.html)                     |
+| [Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-ad-B2C]](https://docs.microsoft.com/answers/topics/azure-ad-b2c.html)                     |
+| [Microsoft Graph API](https://developer.microsoft.com/graph/)               | [[Azure-ad-Graph]](https://docs.microsoft.com/answers/topics/azure-ad-graph.html)                 |
+| Minden egyéb hitelesítési és engedélyezési terület                            | [[Azure-Active-Directory]](https://docs.microsoft.com/answers/topics/azure-active-directory.html) |
 
 ## <a name="create-a-github-issue"></a>GitHub-probléma létrehozása
 
-Ha a kódtárakkal kapcsolatos hibát vagy problémát talál, akkor a GitHub-adattárakban probléma merülhet fel. Mivel a kódtárak nyílt forráskódúak, lekéréses kérelmet is küldhet.
+<div class='icon is-large'>
+    <img alt='GitHub-image' src='./media/common/github.svg'>
+</div>
 
-A kódtárak és a GitHub-adattárak listáját a következő témakörben találja:
+Ha segítségre van szüksége a Microsoft Authentication librarys (MSAL) egyikével, nyisson meg egy problémát az adattárában a GitHubon.
 
-* [Azure Active Directory Authentication Library (ADAL)](../azuread-dev/active-directory-authentication-libraries.md) kódtárak és GitHub-adattárak
-* [Microsoft Authentication Library (MSAL)](reference-v2-libraries.md) kódtárak és GitHub-adattárak
+| MSAL-könyvtár | GitHub-problémák URL-címe|
+| --- | --- |
+| MSAL Android rendszerhez | https://github.com/AzureAD/microsoft-authentication-library-for-android/issues |
+| MSAL szögletes | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues |
+| MSAL iOS és macOS rendszerekre| https://github.com/AzureAD/microsoft-authentication-library-for-objc/issues |
+| MSAL Java | https://github.com/AzureAD/microsoft-authentication-library-for-java/issues |
+| MSAL.js | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues |
+|MSAL.NET| https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues |
+| MSAL csomópont | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues |
+| MSAL Python | https://github.com/AzureAD/microsoft-authentication-library-for-python/issues |
+| MSAL reagál | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues |
 
-## <a name="open-a-support-request"></a>Támogatási kérelem megnyitása
+## <a name="submit-feedback-on-azure-feedback"></a>Visszajelzés küldése az Azure-visszajelzésekről
 
-Ha valakivel szeretne kommunikálni, nyisson meg egy támogatási kérést. Ha Ön Azure-ügyfél, számos támogatási lehetőség közül választhat. A csomagok összehasonlításához tekintse meg [ezt a lapot](https://azure.microsoft.com/support/plans/). A fejlesztői támogatás az Azure-ügyfelek számára is elérhető. A fejlesztői támogatási csomagok megvásárlásával kapcsolatos információkért tekintse meg [ezt a lapot](https://azure.microsoft.com/support/plans/developer/).
+<div class='icon is-large'>
+    <img alt='UserVoice' src='https://docs.microsoft.com/media/logos/logo-uservoice.svg'>
+</div>
 
-* Ha már rendelkezik Azure-támogatási csomaggal, [Nyisson meg egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+Új szolgáltatások igényléséhez tegye közzé őket az Azure feedback szolgáltatásban. Ossza meg ötleteit, hogy a Microsoft Identity platform jobban működjön a fejlesztett alkalmazásoknál.
 
-* Ha Ön nem Azure-ügyfél, akkor a Microsoft [kereskedelmi támogatási szolgálatán](https://support.serviceshub.microsoft.com/supportforbusiness)keresztül is megnyithatja a támogatási kérést.
+| Szolgáltatás                       | Azure-visszajelzés URL-címe |
+|-------------------------------|---------------|
+| Azure Active Directory | https://feedback.azure.com/forums/169401-azure-active-directory |
+| Azure Active Directory – fejlesztői tapasztalatok             | https://feedback.azure.com/forums/169401-azure-active-directory?category_id=164757 |
+| Azure Active Directory – hitelesítés             | https://feedback.azure.com/forums/169401-azure-active-directory?category_id=167256 |
 
-Egy [virtuális ügynököt](https://support.microsoft.com/contactus/?ws=support) is kipróbálhat, hogy támogatást kapjon vagy kérdéseket tegyen fel.
+## <a name="stay-informed-of-updates-and-new-releases"></a>A frissítések és az új kiadások naprakészen tartása
+
+<div class='icon is-large'>
+    <img alt='Stay informed' src='https://docs.microsoft.com/media/common/i_blog.svg'>
+</div>
+
+- [Azure-frissítések](https://azure.microsoft.com/updates/?category=identity): Ismerje meg a fontos termékfrissítéseket, útitervet és hirdetményeket.
+
+- A [docs újdonságai](https://docs.microsoft.com/azure/active-directory/develop/whats-new-docs): Ismerje meg a Microsoft Identity platform dokumentációjának újdonságait.
+
+- [Azure Active Directory Identity blog](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/bg-p/Identity): híreket és információkat kaphat az Azure ad-ről.
+
+- [Technikai Közösség](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/bg-p/Identity/): ossza meg tapasztalatait, ismerkedjen meg a szakértőktől.
+
+

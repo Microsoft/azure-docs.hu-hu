@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: 1309ad1b3e3f6bd6f9b543959220bf71c569f083
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: fcb678efe29178784c9233e79b307f705c40e3f7
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175005"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518677"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Virtual Network elkülönítés és Adatvédelem – áttekintés
 
@@ -69,9 +69,14 @@ A következő öt szakasz bemutatja, hogyan védheti meg a fent ismertetett hál
 A munkaterület és a kapcsolódó erőforrások védelméhez kövesse az alábbi lépéseket. Ezek a lépések lehetővé teszik, hogy a szolgáltatások kommunikálhassanak a virtuális hálózaton.
 
 1. Hozzon létre egy [magánhálózati kapcsolattal rendelkező munkaterületet](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint) a VNet és a munkaterület közötti kommunikáció engedélyezéséhez.
-1. Azure Key Vault hozzáadása a virtuális hálózathoz [szolgáltatási végponttal](../key-vault/general/overview-vnet-service-endpoints.md) vagy [privát végponttal](../key-vault/general/private-link-service.md). A Key Vault beállítása a [következőre: "megbízható Microsoft-szolgáltatások engedélyezése a tűzfal megkerüléséhez"](how-to-secure-workspace-vnet.md#secure-azure-key-vault).
-1. Adja hozzá az Azure Storage-fiókot a virtuális hálózathoz egy [szolgáltatási végponttal](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) vagy egy [privát végponttal](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints).
-1. [Azure Container Registry konfigurálása privát végpont használatára](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr).
+1. Adja hozzá a következő szolgáltatásokat a virtuális hálózathoz egy __szolgáltatási végpont__ vagy egy __privát végpont__ _használatával._ A megbízható Microsoft-szolgáltatások számára is lehetővé kell tenni a következő szolgáltatások elérését:
+    
+    | Szolgáltatás | Végpont adatai | Megbízható információk engedélyezése |
+    | ----- | ----- | ----- |
+    | __Azure Key Vault__| [Szolgáltatási végpont](../key-vault/general/overview-vnet-service-endpoints.md)</br>[Privát végpont](../key-vault/general/private-link-service.md) | [A megbízható Microsoft-szolgáltatások számára a tűzfal megkerülésének engedélyezése](how-to-secure-workspace-vnet.md#secure-azure-key-vault) |
+    | __Azure Storage-fiók__ | [Szolgáltatási végpont](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints)</br>[Privát végpont](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints) | [Hozzáférés biztosítása a megbízható Azure-szolgáltatásokhoz](../storage/common/storage-network-security.md#grant-access-to-trusted-azure-services) |
+    | __Azure Container Registry__ | [Szolgáltatási végpont](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr)</br>[Privát végpont](../container-registry/container-registry-private-link.md) | [Megbízható szolgáltatások engedélyezése](../container-registry/allow-access-trusted-services.md) |
+
 
 ![Architektúra-diagram, amely bemutatja, hogy a munkaterület és a kapcsolódó erőforrások hogyan kommunikálnak egymással a szolgáltatási végpontokon vagy a VNet belüli privát végpontokon](./media/how-to-network-security-overview/secure-workspace-resources.png)
 

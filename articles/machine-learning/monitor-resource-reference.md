@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
 ms.date: 10/02/2020
-ms.openlocfilehash: f9f25ec2dd8fb8b859f7863c1e695e22cb9a9cec
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f130fc0c65c49c33c838812fc2758619e0d1bca0
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100575071"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521339"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Az Azure Machine learning-adatreferenciák monitorozása
 
@@ -27,7 +27,7 @@ Ez a szakasz felsorolja a Azure Machine Learning összegyűjtött, automatikusan
 
 **Modellezés**
 
-| Metric | Unit (Egység) | Description |
+| Metric | Unit (Egység) | Leírás |
 | ----- | ----- | ----- |
 | A modell üzembe helyezése nem sikerült | Darabszám | A sikertelen telepítési modellek száma. |
 | A modell üzembe helyezése elindult | Darabszám | A modell központi telepítésének száma megkezdődött. |
@@ -39,7 +39,7 @@ Ez a szakasz felsorolja a Azure Machine Learning összegyűjtött, automatikusan
 
 A kvóta adatai csak Azure Machine Learning számítási feladatokhoz használhatók.
 
-| Metric | Unit (Egység) | Description |
+| Metric | Unit (Egység) | Leírás |
 | ----- | ----- | ----- |
 | Aktív magok | Darabszám | Az aktív számítási magok száma. |
 | Aktív csomópontok | Darabszám | Az aktív csomópontok száma. |
@@ -57,7 +57,7 @@ A kvóta adatai csak Azure Machine Learning számítási feladatokhoz használha
 
 **Erőforrás**
 
-| Metric | Unit (Egység) | Description |
+| Metric | Unit (Egység) | Leírás |
 | ----- | ----- | ----- |
 | CpuUtilization | Százalék | A CPU százalékát használták egy adott csomóponthoz egy futtatási/feladatban. Ez a metrika csak akkor jelenik meg, ha egy művelet egy csomóponton fut. Egy adott feladattípus egy vagy több csomópontot is használhat. Ez a mérőszám egy csomóponton van közzétéve. |
 | GpuUtilization | Százalék | A GPU hány százalékát használták egy adott csomóponthoz egy futtatási/feladatban. Egy csomópont egy vagy több GPU-val rendelkezhet. Ez a mérőszám egy GPU-onként van közzétéve. |
@@ -66,7 +66,7 @@ A kvóta adatai csak Azure Machine Learning számítási feladatokhoz használha
 
 A képzések futtatásával kapcsolatos információk.
 
-| Metric | Unit (Egység) | Description |
+| Metric | Unit (Egység) | Leírás |
 | ----- | ----- | ----- |
 | Befejezett futtatások | Darabszám | A befejezett futtatások száma. |
 | Sikertelen futtatások | Darabszám | A sikertelen futtatások száma. |
@@ -78,7 +78,7 @@ A metrikus dimenziókkal kapcsolatos további információkért lásd: [többdim
 
 A Azure Machine Learning a metrikához tartozó következő dimenziókkal rendelkezik.
 
-| Dimenzió | Description |
+| Dimenzió | Leírás |
 | ---- | ---- |
 | Fürt neve | A számítási fürt erőforrásának neve. Minden kvóta-metrika esetében elérhető. |
 | VM-család neve | A fürt által használt virtuálisgép-család neve. Elérhető a kvóta kihasználtsága százalékban. |
@@ -88,7 +88,7 @@ A Azure Machine Learning a metrikához tartozó következő dimenziókkal rendel
 | NodeId | Annak a csomópontnak az azonosítója, amelybe a feladatot futtatja. Csak CpuUtilization és GpuUtilization esetén érhető el. |
 | RunId | A futtatási/feladatokhoz tartozó azonosító. Csak CpuUtilization és GpuUtilization esetén érhető el. |
 | ComputeType | A futtatáshoz használt számítási típus. Csak a befejezett futtatások, a sikertelen futtatások és a megkezdett futtatások esetében érhető el. |
-| PipelineStepType | A Futtatás során használt [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?preserve-view=true&view=azure-ml-py) típusa. Csak a befejezett futtatások, a sikertelen futtatások és a megkezdett futtatások esetében érhető el. |
+| PipelineStepType | A Futtatás során használt [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep) típusa. Csak a befejezett futtatások, a sikertelen futtatások és a megkezdett futtatások esetében érhető el. |
 | PublishedPipelineId | A futtatásban használt közzétett folyamat azonosítója. Csak a befejezett futtatások, a sikertelen futtatások és a megkezdett futtatások esetében érhető el. |
 | RunType | A Futtatás típusa. Csak a befejezett futtatások, a sikertelen futtatások és a megkezdett futtatások esetében érhető el. |
 
@@ -105,7 +105,7 @@ A RunType dimenzió érvényes értékei a következők:
 
 A következő táblázat felsorolja azokat a Azure Machine Learning kapcsolódó műveleteket, amelyek a tevékenység naplójában hozhatók létre.
 
-| Művelet | Description |
+| Művelet | Leírás |
 |:---|:---|
 | Machine Learning munkaterület létrehozása vagy frissítése | Egy munkaterület lett létrehozva vagy frissítve |
 | CheckComputeNameAvailability | Ellenőrizze, hogy a számítási név már használatban van-e |

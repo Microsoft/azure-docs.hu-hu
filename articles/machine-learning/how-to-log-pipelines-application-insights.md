@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 58e604eccaca4630a235f4ae83724df20d6b1e26
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7ed27eba66b3d18bed8017934fce85928b961392
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592528"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520047"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>A gépi tanulási folyamat naplófájljainak összegyűjtése a riasztások és a hibakeresés Application Insights
 
@@ -38,7 +38,7 @@ Ha a naplók a helyükön vannak, a kivételek és a hibaüzenetek előzményeit
 
 Ez a szakasz a OpenCensus egy Azure Machine Learning folyamatból történő használatával kapcsolatos bevezetés. Részletes oktatóanyagért lásd: [OpenCensus Azure monitor-exportőrök](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
 
-Adjon hozzá egy PythonScriptStep az Azure ML-adatcsatornához. Konfigurálja a [RunConfiguration](/python/api/azureml-core/azureml.core.runconfiguration?preserve-view=true&view=azure-ml-py) a opencensus-ext-Azure függőségével. Konfigurálja a `APPLICATIONINSIGHTS_CONNECTION_STRING` környezeti változót.
+Adjon hozzá egy PythonScriptStep az Azure ML-adatcsatornához. Konfigurálja a [RunConfiguration](/python/api/azureml-core/azureml.core.runconfiguration) a opencensus-ext-Azure függőségével. Konfigurálja a `APPLICATIONINSIGHTS_CONNECTION_STRING` környezeti változót.
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies

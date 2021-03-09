@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: c24d88e47569da430153dedfd1ff68a584083775
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ef41c52fa1b63094d952dc34f81db36f7aeaac95
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695243"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521288"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-cli"></a>Gyors útmutató: útválasztási kiszolgáló létrehozása és konfigurálása az Azure CLI használatával 
 
@@ -56,8 +56,8 @@ az account set --subscription "<subscription ID>"
 Az Azure Route Server létrehozása előtt szüksége lesz egy virtuális hálózatra az üzemelő példány üzemeltetéséhez. Az alábbi parancs használatával hozzon létre egy erőforráscsoportot és egy virtuális hálózatot. Ha már rendelkezik virtuális hálózattal, ugorjon a következő szakaszra.
 
 ```azurecli-interactive
-az group create -n “RouteServerRG” -l “westus” 
-az network vnet create -g “RouteServerRG” -n “myVirtualNetwork” --address-prefix “10.0.0.0/16” 
+az group create -n "RouteServerRG" -l "westus" 
+az network vnet create -g "RouteServerRG" -n "myVirtualNetwork" --address-prefix "10.0.0.0/16" 
 ``` 
 
 ### <a name="add-a-subnet"></a>Alhálózat hozzáadása 
@@ -65,13 +65,13 @@ az network vnet create -g “RouteServerRG” -n “myVirtualNetwork” --addres
 1. Adjon hozzá egy *RouteServerSubnet* nevű alhálózatot az Azure Route-kiszolgáló üzembe helyezéséhez a alkalmazásban. Ez az alhálózat csak az Azure Route Server dedikált alhálózata. A RouteServerSubnet/27 vagy egy rövidebb előtagnak kell lennie (például/26,/25), vagy hibaüzenet jelenik meg az Azure-útválasztó kiszolgáló hozzáadásakor.
 
     ```azurecli-interactive 
-    az network vnet subnet create -g “RouteServerRG” --vnet-name “myVirtualNetwork” --name “RouteServerSubnet” --address-prefix “10.0.0.0/24”  
+    az network vnet subnet create -g "RouteServerRG" --vnet-name "myVirtualNetwork" --name "RouteServerSubnet" --address-prefix "10.0.0.0/24"  
     ``` 
 
 1. Szerezze be a RouteServerSubnet AZONOSÍTÓját. A virtuális hálózat összes alhálózatának erőforrás-AZONOSÍTÓjának megtekintéséhez használja az alábbi parancsot: 
 
     ```azurecli-interactive 
-    subnet_id = $(az network vnet subnet show -n “RouteServerSubnet” --vnet-name “myVirtualNetwork” -g “RouteServerRG” --query id -o tsv) 
+    subnet_id = $(az network vnet subnet show -n "RouteServerSubnet" --vnet-name "myVirtualNetwork" -g "RouteServerRG" --query id -o tsv) 
     ``` 
 
 A RouteServerSubnet-azonosító a következőhöz hasonlóan néz ki: 
@@ -83,7 +83,7 @@ A RouteServerSubnet-azonosító a következőhöz hasonlóan néz ki:
 Hozza létre az útválasztási kiszolgálót a következő paranccsal: 
 
 ```azurecli-interactive
-az network routeserver create -n “myRouteServer” -g “RouteServerRG” --hosted-subnet $subnet_id  
+az network routeserver create -n "myRouteServer" -g "RouteServerRG" --hosted-subnet $subnet_id  
 ``` 
 
 A helynek meg kell egyeznie a virtuális hálózat helyével. A HostedSubnet az előző szakaszban beszerzett RouteServerSubnet-azonosító. 
@@ -94,7 +94,7 @@ Használja az alábbi parancsot az útválasztási kiszolgálóról a NVA való 
 
 ```azurecli-interactive 
 
-az network routeserver peering create --routeserver-name “myRouteServer” -g “RouteServerRG” --peer-ip “nva_ip” --peer-asn “nva_asn” -n “NVA1_name” 
+az network routeserver peering create --routeserver-name "myRouteServer" -g "RouteServerRG" --peer-ip "nva_ip" --peer-asn "nva_asn" -n "NVA1_name" 
 
 ``` 
 
@@ -104,7 +104,7 @@ A következő parancs használatával állíthatja be a társítást különböz
 
 ```azurecli-interactive 
 
-az network routeserver peering create --routeserver-name “myRouteServer” -g “RouteServerRG” --peer-ip “nva_ip” --peer-asn “nva_asn” -n “NVA2_name” 
+az network routeserver peering create --routeserver-name "myRouteServer" -g "RouteServerRG" --peer-ip "nva_ip" --peer-asn "nva_asn" -n "NVA2_name" 
 ``` 
 
 ## <a name="complete-the-configuration-on-the-nva"></a>A konfiguráció befejezése a NVA 
@@ -112,7 +112,7 @@ az network routeserver peering create --routeserver-name “myRouteServer” -g 
 A NVA konfigurálásának befejezéséhez és a BGP-munkamenetek engedélyezéséhez szüksége lesz az Azure Route Server IP-címére és ASN-ra. Ezt az információt a következő paranccsal kérheti le: 
 
 ```azurecli-interactive 
-az network routeserver show -g “RouteServerRG” -n “myRouteServer” 
+az network routeserver show -g "RouteServerRG" -n "myRouteServer" 
 ``` 
 
 A kimeneten a következő információk szerepelnek. 
@@ -143,14 +143,14 @@ Ha egy ExpressRoute-átjáróval és egy Azure-beli VPN-átjáróval rendelkezik
 1. Az Azure Route Server és az átjáró (k) közötti útvonal-csere engedélyezéséhez használja a következő parancsot:
 
 ```azurecli-interactive 
-az network routeserver update -g “RouteServerRG” -n “myRouteServer” --allow-b2b-traffic true 
+az network routeserver update -g "RouteServerRG" -n "myRouteServer" --allow-b2b-traffic true 
 
 ``` 
 
 2. Az Azure Route Server és az átjáró (k) közötti útválasztási váltás letiltásához használja a következő parancsot:
 
 ```azurecli-interactive
-az network routeserver update -g “RouteServerRG” -n “myRouteServer” --allow-b2b-traffic false 
+az network routeserver update -g "RouteServerRG" -n "myRouteServer" --allow-b2b-traffic false 
 ``` 
 
 ## <a name="troubleshooting"></a>Hibaelhárítás 
@@ -169,13 +169,13 @@ Ha már nincs szüksége az Azure Route Serverre, az alábbi parancsokkal távol
 1. Távolítsa el a BGP-társat az Azure Route Server és egy NVA között a következő paranccsal:
 
 ```azurecli-interactive
-az network routeserver peering delete --routeserver-name “myRouteServer” -g “RouteServerRG” -n “NVA2_name” 
+az network routeserver peering delete --routeserver-name "myRouteServer" -g "RouteServerRG" -n "NVA2_name" 
 ``` 
 
 2. Az Azure Route Server eltávolítása ezzel a paranccsal: 
 
 ```azurecli-interactive 
-az network routeserver delete -n “myRouteServer” -g “RouteServerRG” 
+az network routeserver delete -n "myRouteServer" -g "RouteServerRG" 
 ``` 
 
 ## <a name="next-steps"></a>Következő lépések

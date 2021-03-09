@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: subject-armqs
-ms.openlocfilehash: ded7b24461fdcdbc3d020a487cafc20620633097
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: bc075e5074fe39ad38e45235af932b40fef78fce
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019720"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521866"
 ---
 # <a name="quickstart-configure-network-security-group-flow-logs-by-using-an-arm-template"></a>Gyors útmutató: hálózati biztonsági csoport folyamatábráinak konfigurálása ARM-sablonnal
 
@@ -82,7 +82,7 @@ A NSG flow-naplók objektum tulajdonságainak teljes áttekintését lásd: [Mic
 
 Ha első alkalommal használ ARM-sablonokat, tekintse meg az alábbi cikkeket az ARM-sablonokkal kapcsolatos további információkért:
 
-- [Erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template)
+- [Erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template-or-bicep-file)
 - [Oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
 A következő példa egy teljes sablon. Ez a sablon legegyszerűbb verziója is. A példa a NSG-naplók beállításakor átadott minimális paramétereket tartalmazza. További példákért tekintse meg a [NSG flow-naplók konfigurálása Azure Resource Manager sablonból](network-watcher-nsg-flow-logging-azure-resource-manager.md)című cikket.
@@ -145,7 +145,7 @@ New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatc
 Két lehetősége van annak megtekintésére, hogy sikeres volt-e az üzembe helyezés:
 
 - A PowerShell-konzol a következőképpen jelenik meg: `ProvisioningState` `Succeeded` .
-- A változtatások megerősítéséhez lépjen a [NSG flow-naplók portál oldalra](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) . 
+- A változtatások megerősítéséhez lépjen a [NSG flow-naplók portál oldalra](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) .
 
 Ha probléma merült fel a központi telepítéssel kapcsolatban, tekintse meg a [gyakori Azure-telepítési hibák elhárítása a Azure Resource Managerkal](../azure-resource-manager/templates/common-deployment-errors.md)című témakört.
 
@@ -160,9 +160,9 @@ A Azure Portal NSG is letilthatja:
 1. A **naplók** területen válassza a **NSG flow-naplók** lehetőséget.
 1. A NSG listából válassza ki azt a NSG, amely számára le szeretné tiltani a folyamat naplóit.
 1. A **flow-naplók beállításai** területen válassza a **ki** lehetőséget.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan engedélyezheti a NSG-folyamatok naplóit egy ARM-sablon használatával. Következő lépésként megtudhatja, hogyan jelenítheti meg a NSG folyamat adatait a következő lehetőségek egyikének használatával:
 

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 014c592713a8568b3bbc7e8e536f81b203271ccc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a7efd57100ad89fa9824b7a635e11698515e13ae
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388073"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521016"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Felügyelt identitások használata Azure Machine Learning (előzetes verzió)
 
@@ -38,7 +38,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a felügyelt identitásokat 
 
 - Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 - [Machine learning szolgáltatás Azure CLI-bővítménye](reference-azure-machine-learning-cli.md)
-- A [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/intro?view=azure-ml-py)-t.
+- A [Azure Machine learning PYTHON SDK](/python/api/overview/azure/ml/intro)-t.
 - A szerepkörök hozzárendeléséhez az Azure-előfizetéshez tartozó bejelentkezési azonosítónak rendelkeznie kell a [felügyelt identitás-kezelő](../role-based-access-control/built-in-roles.md#managed-identity-operator) szerepkörrel, vagy más olyan szerepkörrel, amely a szükséges műveleteket (például a __tulajdonost__) biztosítja.
 - Ismernie kell a [felügyelt identitások](../active-directory/managed-identities-azure-resources/overview.md)létrehozását és a velük való munkát.
 
@@ -107,7 +107,7 @@ A munkaterület ACR eléréséhez hozzon létre egy gépi tanulási számítási
 
 # <a name="python"></a>[Python](#tab/python)
 
-Amikor számítási fürtöt hoz létre a [AmlComputeProvisioningConfiguration](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcomputeprovisioningconfiguration?view=azure-ml-py), használja a `identity_type` paramétert a felügyelt identitás típusának megadásához.
+Amikor számítási fürtöt hoz létre a [AmlComputeProvisioningConfiguration](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcomputeprovisioningconfiguration), használja a `identity_type` paramétert a felügyelt identitás típusának megadásához.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -191,7 +191,7 @@ Ebben az esetben a Azure Machine Learning szolgáltatás a privát ACR-ből szá
 
         A UAI erőforrás-azonosító a felhasználó által hozzárendelt identitás Azure-erőforrás-azonosítója a formátumban `/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<UAI name>` .
 
-1. [Workspace.set_connection metódus](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#set-connection-name--category--target--authtype--value-)használatával határozza meg a __felhasználó által hozzárendelt felügyelt identitás__ külső ACR-és ügyfél-azonosítóját a munkaterület-kapcsolatokban:
+1. [Workspace.set_connection metódus](/python/api/azureml-core/azureml.core.workspace.workspace#set-connection-name--category--target--authtype--value-)használatával határozza meg a __felhasználó által hozzárendelt felügyelt identitás__ külső ACR-és ügyfél-azonosítóját a munkaterület-kapcsolatokban:
 
     ```python
     workspace.set_connection(
@@ -211,7 +211,7 @@ env = Environment(name="my-env")
 env.docker.base_image = "<acr url>/my-repo/my-image:latest"
 ```
 
-Megadhatja a felügyelt identitás erőforrásának URL-címét és az ügyfél-azonosítót a környezeti definícióban a [RegistryIdentity](/python/api/azureml-core/azureml.core.container_registry.registryidentity?view=azure-ml-py)használatával. Ha explicit módon használja a beállításjegyzék-identitást, a felülbírálja a korábban megadott munkaterület-kapcsolatokat:
+Megadhatja a felügyelt identitás erőforrásának URL-címét és az ügyfél-azonosítót a környezeti definícióban a [RegistryIdentity](/python/api/azureml-core/azureml.core.container_registry.registryidentity)használatával. Ha explicit módon használja a beállításjegyzék-identitást, a felülbírálja a korábban megadott munkaterület-kapcsolatokat:
 
 ```python
 from azureml.core.container_registry import RegistryIdentity

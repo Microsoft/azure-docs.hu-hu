@@ -2,19 +2,19 @@
 title: Erőforrások üzembe helyezése az Azure CLI-vel és sablonnal
 description: Erőforrások üzembe helyezése az Azure-ban a Azure Resource Manager és az Azure CLI használatával. Az erőforrások egy Resource Manager-sablonban vagy egy bicep-fájlban vannak meghatározva.
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 547b860869738f3cfe12d6a22262829ef132a671
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/04/2021
+ms.openlocfilehash: d0c48a5cf05d6cec495a7a96e181910a0849a1ac
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741123"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521696"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Erőforrások üzembe helyezése ARM-sablonokkal és Azure CLI-vel
 
-Ez a cikk azt ismerteti, hogyan használható az Azure CLI Azure Resource Manager-sablonokkal (ARM-sablonokkal) vagy a bicep-fájllal az erőforrások Azure-beli üzembe helyezéséhez. Ha nem ismeri az Azure-megoldások üzembe helyezésével és kezelésével kapcsolatos fogalmakat, tekintse meg a [sablonok üzembe helyezésének áttekintése](overview.md) vagy a [bicep – áttekintés](bicep-overview.md)című témakört.
+Ez a cikk azt ismerteti, hogyan használható az Azure CLI Azure Resource Manager-sablonokkal (ARM-sablonokkal) vagy bicep-fájlokkal az erőforrások Azure-beli üzembe helyezéséhez. Ha nem ismeri az Azure-megoldások üzembe helyezésével és kezelésével kapcsolatos fogalmakat, tekintse meg a [sablonok üzembe helyezésének áttekintése](overview.md) vagy a [bicep – áttekintés](bicep-overview.md)című témakört.
 
-Az üzembe helyezési parancsok az Azure CLI 2.2.0-as verziójában változtak. A cikkben szereplő példákhoz az Azure CLI 2.2.0 vagy újabb verziójára van szükség.
+Az üzembe helyezési parancsok az Azure CLI 2.2.0-as verziójában változtak. A cikkben szereplő példákhoz az Azure CLI 2.2.0 vagy újabb verziójára van szükség. A bicep-fájlok üzembe helyezéséhez az [Azure CLI 2.20.0 vagy újabb verziójára](/cli/azure/install-azure-cli)van szükség.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -85,7 +85,7 @@ Az üzembe helyezés eltarthat néhány percig. Amikor befejeződik, megjelenik 
 ## <a name="deploy-remote-template"></a>Távoli sablon üzembe helyezése
 
 > [!NOTE]
-> Az Azure CLI jelenleg nem támogatja a bicep-fájlok eltávolítását.
+> Az Azure CLI jelenleg nem támogatja a távoli bicep-fájlok telepítését. Távoli bicep-fájl üzembe helyezéséhez használja a CLI bicep a bicep-fájl egy JSON-sablonhoz való fordításához.
 
 Az ARM-sablonok helyi gépen való tárolása helyett érdemes lehet őket külső helyen tárolni. Sablonokat tárolhat egy olyan verziókövetési rendszer adattárában is, mint a GitHub. Tárolhatja azokat egy Azure-tárfiókban is, ahol megosztva érhető el a vállalat számára.
 
@@ -148,7 +148,7 @@ Az egyidejű központi telepítésekkel való ütközések elkerülése érdeké
 ## <a name="deploy-template-spec"></a>Sablon üzembe helyezése – spec
 
 > [!NOTE]
-> Az Azure CLI jelenleg nem támogatja a sablonhoz tartozó specifikációk létrehozását a bicep-fájlok biztosításával. Azonban létrehozhat egy ARM-sablont vagy egy bicep-fájlt a [Microsoft. Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) erőforrással a sablon specifikációjának telepítéséhez. Íme egy [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep).
+> Az Azure CLI jelenleg nem támogatja a sablonhoz tartozó specifikációk létrehozását a bicep-fájlok biztosításával. Létrehozhat azonban egy olyan bicep-fájlt, amely a [Microsoft. Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) erőforrás segítségével helyezi üzembe a sablon specifikációját. Íme egy [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep).
 
 Helyi vagy távoli sablon telepítése helyett hozzon létre egy [specifikációt](template-specs.md). A sablon spec egy ARM-sablont tartalmazó Azure-előfizetésben található erőforrás. Megkönnyíti a sablon biztonságos megosztását a szervezetben lévő felhasználókkal. Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával hozzáférést biztosíthat a sablon specifikációjának. Ez a funkció jelenleg előzetes verzióban érhető el.
 

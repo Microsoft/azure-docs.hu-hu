@@ -7,14 +7,14 @@ ms.service: web-application-firewall
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: victorh
-ms.openlocfilehash: 6949c1e8f83ebf47878a3d449796ccc03920756a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd1f21f150094094a6bf856b04a64a02963f35a8
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89225152"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521713"
 ---
-# <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Azure webalkalmazási tűzfal az Azure Content Delivery Network
+# <a name="azure-web-application-firewall-on-azure-content-delivery-network-from-microsoft"></a>Azure webalkalmazási tűzfal az Azure Content Delivery Network a Microsofttól
 
 Az Azure webalkalmazási tűzfal (WAF) a Microsoft Azure Content Delivery Network (CDN) szolgáltatásában központosított védelmet biztosít a webes tartalmak számára. A WAF megvédi webszolgáltatásait a gyakori biztonsági rések és sebezhetőségek ellen. A szolgáltatás elérhetővé válik a felhasználók számára, és segít a megfelelőségi követelmények teljesítésében.
 
@@ -35,7 +35,7 @@ Beállíthat egy WAF szabályzatot, és hozzárendelheti a szabályzatot egy vag
 
 - felügyelt szabálykészlet, amely az Azure által felügyelt előre konfigurált szabályok gyűjteménye.
 
-Ha mindkettő létezik, az egyéni szabályok feldolgozása a felügyelt szabálykészlet szabályainak feldolgozása előtt történik meg. A szabályok egyeztetési feltételből, prioritásból és műveletből állnak. Támogatott tevékenységtípusok: *Engedélyezés*, *Letiltás*, *napló*és *átirányítás*. A felügyelt és az egyéni szabályok kombinálásával teljes mértékben testre szabott szabályzatot hozhat létre, amely megfelel az adott alkalmazás védelmi követelményeinek.
+Ha mindkettő létezik, az egyéni szabályok feldolgozása a felügyelt szabálykészlet szabályainak feldolgozása előtt történik meg. A szabályok egyeztetési feltételből, prioritásból és műveletből állnak. Támogatott tevékenységtípusok: *Engedélyezés*, *Letiltás*, *napló* és *átirányítás*. A felügyelt és az egyéni szabályok kombinálásával teljes mértékben testre szabott szabályzatot hozhat létre, amely megfelel az adott alkalmazás védelmi követelményeinek.
 
 A szabályzaton belüli szabályok feldolgozása prioritási sorrendben történik. A prioritás egy egyedi szám, amely meghatározza a feldolgozandó szabályok sorrendjét. A kisebb számok magasabb prioritást jelentenek, és a szabályok kiértékelése nagyobb értékű szabályok előtt történik. A szabály egyeztetése után a szabályban definiált megfelelő művelet lesz alkalmazva a kérelemre. Az ilyen egyezés feldolgozását követően az alacsonyabb prioritású szabályok nem kerülnek feldolgozásra.
 

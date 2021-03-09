@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88eae702782e2f1af9c20797676214db458c2adc
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: eeede88bfbe024a66e40270240d32488e581dd77
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937621"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517701"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Közvetlen egyszeri bejelentkezés az Azure Active Directoryba
 
@@ -37,7 +37,7 @@ A zökkenőmentes egyszeri bejelentkezést a jelszó- [kivonatoló szinkronizál
 
 ## <a name="sso-via-primary-refresh-token-vs-seamless-sso"></a>Egyszeri bejelentkezés az elsődleges frissítési jogkivonat és a zökkenőmentes SSO használatával
 
-A Windows 10 esetében ajánlott az egyszeri bejelentkezést használni az elsődleges frissítési jogkivonat (PRT) használatával. Windows 7 és 8,1 esetén a zökkenőmentes SSO használatát javasoljuk.
+Windows 10, Windows Server 2016 és újabb verziók esetén ajánlott az egyszeri bejelentkezést használni az elsődleges frissítési jogkivonat (PRT) használatával. Windows 7 és 8,1 esetén a zökkenőmentes SSO használatát javasoljuk.
 A zökkenőmentes egyszeri bejelentkezéshez a felhasználó eszközének tartományhoz csatlakoztatottnak kell lennie, de a Windows 10 [Azure ad-hez csatlakoztatott eszközökön](../devices/concept-azure-ad-join.md) vagy a [hibrid Azure ad-hez csatlakoztatott eszközökön](../devices/concept-azure-ad-join-hybrid.md)nem használható. Egyszeri bejelentkezés az Azure AD-hez csatlakoztatott, hibrid Azure AD-hez csatlakoztatott és az Azure AD által regisztrált eszközök az [elsődleges frissítési jogkivonat (PRT)](../devices/concept-primary-refresh-token.md) alapján működnek
 
 Egyszeri bejelentkezés a PRT-n keresztül, ha az eszközök regisztrálva vannak az Azure AD-ben a hibrid Azure AD-hez, az Azure AD-hez csatlakoztatott vagy a személyes regisztrált eszközökhöz munkahelyi vagy iskolai fiókkal. További információ arról, hogyan működik az SSO a PRT használatával a Windows 10 rendszerben: [elsődleges frissítési jogkivonat (PRT) és Azure ad](../devices/concept-primary-refresh-token.md)

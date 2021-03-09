@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/13/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: f2bad214045710fe861040514beb3c536664d684
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 281b22db692087f2876b4011563fee8c56bd476e
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201889"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522393"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Oktatóanyag: Az Azure Data Box megrendelése
 
@@ -164,7 +164,7 @@ A következő kimenet jelenik meg:
     WSManStackVersion              3.0
 ```
 
-Ha a verzió alacsonyabb, mint a 6.2.4, frissítenie kell a Windows PowerShell verzióját. A Windows PowerShell legújabb verziójának telepítéséhez tekintse meg a következőt: [install Azure PowerShell](/powershell/scripting/install/installing-powershell?view=powershell-7&preserve-view=true).
+Ha a verzió alacsonyabb, mint a 6.2.4, frissítenie kell a Windows PowerShell verzióját. A Windows PowerShell legújabb verziójának telepítéséhez tekintse meg a következőt: [install Azure PowerShell](/powershell/scripting/install/installing-powershell).
 
 **Azure PowerShell és Data Box modulok telepítése**
 
@@ -355,22 +355,34 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
     ![A saját jelszó beállításainak kibontása Data Box importálási sorrendhez](media/data-box-deploy-ordered/select-data-box-import-security-02.png) 
 
    - Ha saját jelszavát szeretné használni az új eszközhöz, az **eszköz jelszavának beállításával** válassza a **saját jelszó használata** lehetőséget, és írjon be egy jelszót, amely megfelel a biztonsági követelményeknek.
+     
+     A jelszónak alfanumerikusnak kell lennie, és 12 – 15 karakterből kell állnia, és legalább egy nagybetűt, egy kisbetűt, egy speciális karaktert és egy számot kell tartalmaznia. 
+
+     - Engedélyezett speciális karakterek: @ #-$% ^! + = ; : _ ( )
+     - Nem megengedett karakterek: I i o 0
    
      ![A saját eszköz jelszavának használatának lehetőségei a Data Box importálási sorrendjének biztonsági képernyőjén](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
 
  - Saját jelszavak használata megosztásokhoz:
 
-   - A **jelszavak megosztása** beállításnál válassza a **saját jelszavak használata** lehetőséget, majd **válassza a megosztások jelszavait**.
+   1. A **jelszavak megosztása** beállításnál válassza a **saját jelszavak használata** lehetőséget, majd **válassza a megosztások jelszavait**.
      
-        ![A saját megosztási jelszavainak használatára vonatkozó beállítások a Data Box importálási sorrendjének biztonsági képernyőjén](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
+       ![A saját megosztási jelszavainak használatára vonatkozó beállítások a Data Box importálási sorrendjének biztonsági képernyőjén](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
 
-    - A sorrendben adja meg az egyes Storage-fiókok jelszavát. A jelszót a rendszer a Storage-fiók összes megosztásán használni fogja.
-     
-        Ha az összes Storage-fiókhoz ugyanazt a jelszót szeretné használni, válassza a **Másolás az összesbe** lehetőséget. Ha végzett, válassza a **Mentés** lehetőséget.
-     
-        ![A megosztási jelszavak megadására szolgáló képernyő a Data Box importálási sorrendjéhez](media/data-box-deploy-ordered/select-data-box-import-security-05.png)
+    1. A sorrendben adja meg az egyes Storage-fiókok jelszavát. A jelszót a rendszer a Storage-fiók összes megosztásán használni fogja.
+    
+       A jelszónak alfanumerikusnak kell lennie, és 12 – 64 karakterből kell állnia, és legalább egy nagybetűt, egy kisbetűs betűt, egy speciális karaktert és egy számot kell tartalmaznia.
 
-       A **Biztonság** képernyőn **megtekintheti vagy módosíthatja a jelszavakat** a jelszavak módosításához.
+       - Engedélyezett speciális karakterek: @ #-$% ^! + = ; : _ ( )
+       - Nem megengedett karakterek: I i o 0
+     
+    1. Ha az összes Storage-fiókhoz ugyanazt a jelszót szeretné használni, válassza a **Másolás az összesbe** lehetőséget. 
+
+    1. Ha végzett, válassza a **Mentés** lehetőséget.
+     
+       ![A megosztási jelszavak megadására szolgáló képernyő a Data Box importálási sorrendjéhez](media/data-box-deploy-ordered/select-data-box-import-security-05.png)
+
+    A **Biztonság** képernyőn **megtekintheti vagy módosíthatja a jelszavakat** a jelszavak módosításához.
 
 16. Ha a **biztonságban** engedélyezni szeretné a szoftveres kettős titkosítást, bontsa ki a **kettős titkosítás (a biztonságos környezetek esetében)** elemet, és válassza **a rendeléshez a dupla titkosítás engedélyezése** lehetőséget.
 

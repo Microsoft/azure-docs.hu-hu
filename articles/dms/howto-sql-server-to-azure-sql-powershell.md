@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: 87505557653e70aab7f1392aeea8dbdf505327e0
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a8f7e14500fb377b46f651b53e2704d8477aea7a
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94962756"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520659"
 ---
 # <a name="migrate-a-sql-server-database-to-azure-sql-database-using-azure-powershell"></a>SQL Server-adatbázis migrálása Azure SQL Databasera a Azure PowerShell használatával
 
@@ -42,7 +42,7 @@ A lépések elvégzéséhez a következőkre lesz szüksége:
 * [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v 3.3-as vagy újabb verzió.
 * Ahhoz, hogy a Azure Resource Manager üzemi modellel létrehozott egy Microsoft Azure Virtual Network, amely Azure Database Migration Service a [ExpressRoute](../expressroute/expressroute-introduction.md) vagy a [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)használatával biztosítja a helyek közötti kapcsolatot a helyszíni forráskiszolgálóról.
 * A helyszíni adatbázis és a séma áttelepítésének felmérése a Data Migration Assistant használatával a [SQL Server áttelepítési felmérés végrehajtása](/sql/dma/dma-assesssqlonprem) című cikkben leírtak szerint
-* Az az. DataMigration modul letöltése és telepítése a PowerShell-galéria az [install-Module PowerShell-parancsmag](/powershell/module/powershellget/Install-Module?view=powershell-5.1)használatával; Győződjön meg arról, hogy a PowerShell-parancssorablakot a Futtatás rendszergazdaként paranccsal nyitja meg.
+* Az az. DataMigration modul letöltése és telepítése a PowerShell-galéria az [install-Module PowerShell-parancsmag](/powershell/module/powershellget/Install-Module)használatával; Győződjön meg arról, hogy a PowerShell-parancssorablakot a Futtatás rendszergazdaként paranccsal nyitja meg.
 * Annak biztosítása érdekében, hogy a forrás SQL Server-példányhoz való kapcsolódáshoz használt hitelesítő adatok a [vezérlési kiszolgáló](/sql/t-sql/statements/grant-server-permissions-transact-sql) engedéllyel rendelkezzenek.
 * Annak ellenőrzéséhez, hogy az Azure SQL DB-példányhoz való kapcsolódáshoz használt hitelesítő adatok rendelkeznek-e a vezérlési adatbázis engedélyével a cél Azure SQL Database adatbázisain.
 * Azure-előfizetés. Ha még nem rendelkezik ilyennel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
@@ -51,7 +51,7 @@ A lépések elvégzéséhez a következőkre lesz szüksége:
 
 Az Azure-előfizetéshez a PowerShell használatával történő bejelentkezéshez használja a [Azure PowerShell bejelentkezve](/powershell/azure/authenticate-azureps) található cikk utasításait.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy erőforráscsoportot a virtuális gép létrehozása előtt.
 
@@ -63,7 +63,7 @@ A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscso
 New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
-## <a name="create-an-instance-of-azure-database-migration-service"></a>Azure Database Migration Service-példány létrehozása
+## <a name="create-an-instance-of-azure-database-migration-service"></a>Egy Azure Database Migration Service-példány létrehozása
 
 Azure Database Migration Service új példányát a parancsmag használatával hozhatja létre `New-AzDataMigrationService` . Ez a parancsmag a következő szükséges paramétereket várja:
 
@@ -73,7 +73,7 @@ Azure Database Migration Service új példányát a parancsmag használatával h
 * *SKU*. Ez a paraméter a DMS SKU-nevének felel meg. A jelenleg támogatott SKU-név *GeneralPurpose_4vCores*.
 * *Virtuális alhálózati azonosító*. A [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) parancsmag segítségével alhálózatot hozhat létre. 
 
-A következő példa egy *MyDMS* nevű szolgáltatást hoz létre az *USA keleti* régiójában, a *MyVNET* nevű virtuális hálózat és a *MySubnet* nevű alhálózat használatával. *MyDMSResourceGroup*
+A következő példa egy *MyDMS* nevű szolgáltatást hoz létre az *USA keleti* régiójában, a *MyVNET* nevű virtuális hálózat és a *MySubnet* nevű alhálózat használatával. 
 
 ```powershell
  $vNet = Get-AzVirtualNetwork -ResourceGroupName MyDMSResourceGroup -Name MyVNET

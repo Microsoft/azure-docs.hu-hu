@@ -8,16 +8,16 @@ ms.date: 01/19/2021
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: fad065795345314c58e83c8d2614ed01c9e78e49
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 174ec8c42ea17ccae04769d7c0baaa91b8e7025b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805529"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517871"
 ---
 # <a name="cloud-sync-troubleshooting"></a>Felhőalapú szinkronizálás – hibaelhárítás
 
-A Cloud Sync számos különböző dolgot érint, és számos különböző függőséggel rendelkezik. Ez az általános hatókör számos problémát eredményezhet. Ez a cikk segítséget nyújt a problémák elhárításában. Bevezeti a tipikus területeket, amelyekkel koncentrálhat, hogyan gyűjthet további információkat, valamint a problémák nyomon követéséhez használható különféle technikákat.
+A felhőalapú szinkronizálás számos különböző területet érint, és számos különböző függőséggel rendelkezik. Ez az átfogó hatókör számos problémát eredményezhet. Ez a cikk segítséget nyújt a problémák elhárításában. Bemutatja a területeket, amelyekre általában figyelmet kell fordítania, a további információk beszerzésének módját, és a különböző módszereket, amelyekkel megkeresheti a hibák forrását.
 
 
 ## <a name="common-troubleshooting-areas"></a>Gyakori hibaelhárítási területek
@@ -120,7 +120,7 @@ A felhőalapú kiépítési ügynök telepítésekor hibaüzenet jelenhet meg.
 
 Ezt a problémát általában az okozza, hogy az ügynök nem tudja végrehajtani a PowerShell regisztrációs parancsfájlokat a helyi PowerShell-végrehajtási házirendek miatt.
 
-A probléma megoldásához módosítsa a PowerShell végrehajtási szabályzatait a kiszolgálón. A számítógép-és felhasználói házirendeket nem *definiált* vagy *RemoteSigned* kell beállítani. Ha nem *korlátozottként* vannak beállítva, akkor ez a hibaüzenet jelenik meg. További információ: [PowerShell végrehajtási szabályzatok](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6). 
+A probléma megoldásához módosítsa a PowerShell végrehajtási szabályzatait a kiszolgálón. A számítógép-és felhasználói házirendeket nem *definiált* vagy *RemoteSigned* kell beállítani. Ha nem *korlátozottként* vannak beállítva, akkor ez a hibaüzenet jelenik meg. További információ: [PowerShell végrehajtási szabályzatok](/powershell/module/microsoft.powershell.core/about/about_execution_policies). 
 
 ### <a name="log-files"></a>Naplófájlok
 

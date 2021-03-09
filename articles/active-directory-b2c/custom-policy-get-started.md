@@ -12,12 +12,12 @@ ms.date: 02/28/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9612a26d7ac2e7a059655636fc1a2a7a43e3b8d7
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 2d6c76a15ee62c26e0d0261c6b0d2d1e27443a40
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526238"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518043"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Ismerkedés az egyéni szabályzatokkal Azure Active Directory B2C
 
@@ -30,6 +30,10 @@ Az [Egyéni házirendek](custom-policy-overview.md) olyan konfigurációs fájlo
 - Ha még nem rendelkezik ilyennel, [hozzon létre egy Azure ad B2C bérlőt](tutorial-create-tenant.md) , amely az Azure-előfizetéshez van csatolva.
 - [Regisztrálja az alkalmazást](tutorial-register-applications.md) a létrehozott bérlőn, hogy kommunikálni tudjon a Azure ad B2Cával.
 - A Facebook-alkalmazás konfigurálásához hajtsa végre a [regisztráció és bejelentkezés Facebook-fiókkal](identity-provider-facebook.md) való beállításának lépéseit. Bár az egyéni házirendek használatához nem szükséges Facebook-alkalmazás, a jelen útmutatóban a közösségi bejelentkezés engedélyezését mutatja be egy egyéni házirendben.
+
+> [!TIP]
+> Ez a cikk azt ismerteti, hogyan állíthatja be a bérlőt manuálisan. Ez a cikk a teljes folyamatot automatizálhatja. Az automatizálás a Azure AD B2C [SocialAndLocalAccountsWithMFA Starter Pack csomagot](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)helyezi üzembe, amely lehetővé teszi a regisztrációt és bejelentkezést, a jelszó-visszaállítást és a profil szerkesztési menetét. Az alábbi forgatókönyv automatizálásához keresse fel a [IEF Setup alkalmazást](https://aka.ms/iefsetup) , és kövesse az utasításokat.
+
 
 ## <a name="add-signing-and-encryption-keys"></a>Aláírási és titkosítási kulcsok hozzáadása
 

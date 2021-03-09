@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 8f1cea6e9bc833c6d441c39c401f60d872cd9099
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: a4d1d1c4f4d6354d0206bf598a0622112dc99453
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102174937"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518704"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Adatok áthelyezése gép tanulási folyamatok lépéseibe és azok között (Python)
 
@@ -36,7 +36,7 @@ A következők szükségesek:
 
 - Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
-- A [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py), vagy a [Azure Machine learning studióhoz](https://ml.azure.com/)való hozzáférés.
+- A [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/intro), vagy a [Azure Machine learning studióhoz](https://ml.azure.com/)való hozzáférés.
 
 - Egy Azure Machine Learning-munkaterület.
   
@@ -55,7 +55,7 @@ A következők szükségesek:
 
 ## <a name="use-dataset-objects-for-pre-existing-data"></a>`Dataset`Objektumok használata már meglévő adatértékekhez 
 
-Az adatfolyamatok adatfeldolgozásának előnyben részesített módja egy [adatkészlet](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) -objektum használata. `Dataset` az objektumok az egész munkaterületen elérhető állandó adatértékeket jelölik.
+Az adatfolyamatok adatfeldolgozásának előnyben részesített módja egy [adatkészlet](/python/api/azureml-core/azureml.core.dataset%28class%29) -objektum használata. `Dataset` az objektumok az egész munkaterületen elérhető állandó adatértékeket jelölik.
 
 Számos módon hozhatók létre és regisztrálhatók `Dataset` objektumok. A táblázatos adatkészletek egy vagy több fájlban elérhető tagolt adatokat foglalnak magukban. A fájl adatkészletei bináris adatokat (például képeket) vagy az elemezni kívánt adatokat használják. Az objektumok létrehozásának legegyszerűbb programozási módjai a `Dataset` meglévő Blobok használata a munkaterület-tárolóban vagy a nyilvános URL-címekben:
 
@@ -154,7 +154,7 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 
 ## <a name="use-outputfiledatasetconfig-for-intermediate-data"></a>`OutputFileDatasetConfig`A köztes adatkezeléshez használatos
 
-Míg `Dataset` az objektumok csak állandó adatokat képviselnek, [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) az objektum (ok) a folyamat lépései **és** az állandó kimeneti adatok ideiglenes adatkimenetéhez használható. `OutputFileDatasetConfig` támogatja az adatírást a blob Storage-ba, a fájlmegosztás, a adlsgen1 vagy a adlsgen2. Támogatja a csatlakoztatási módot és a feltöltési módot is. A csatlakoztatási módban a csatlakoztatott könyvtárba írt fájlok véglegesen tárolódnak a fájl bezárásakor. Feltöltési módban a kimeneti könyvtárba írt fájlok a feladatok végén lesznek feltöltve. Ha a feladat meghiúsul vagy meg lett szakítva, a kimeneti könyvtár nem lesz feltöltve.
+Míg `Dataset` az objektumok csak állandó adatokat képviselnek, [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig) az objektum (ok) a folyamat lépései **és** az állandó kimeneti adatok ideiglenes adatkimenetéhez használható. `OutputFileDatasetConfig` támogatja az adatírást a blob Storage-ba, a fájlmegosztás, a adlsgen1 vagy a adlsgen2. Támogatja a csatlakoztatási módot és a feltöltési módot is. A csatlakoztatási módban a csatlakoztatott könyvtárba írt fájlok véglegesen tárolódnak a fájl bezárásakor. Feltöltési módban a kimeneti könyvtárba írt fájlok a feladatok végén lesznek feltöltve. Ha a feladat meghiúsul vagy meg lett szakítva, a kimeneti könyvtár nem lesz feltöltve.
 
  `OutputFileDatasetConfig` az objektum alapértelmezett viselkedése a munkaterület alapértelmezett adattárára való írás. Adja át az `OutputFileDatasetConfig` objektumait a `PythonScriptStep` `arguments` paraméterrel.
 

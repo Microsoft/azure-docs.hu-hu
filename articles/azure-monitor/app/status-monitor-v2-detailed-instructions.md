@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 2a955273c01d8c0d865aabd91bb1bfcce70fd373
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 29922f088a51e4876e5e2ec8fe87c3bbce4482f3
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587380"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521679"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights ügynök (korábbi nevén Állapotmonitor v2): részletes utasítások
 
@@ -29,7 +29,7 @@ Első lépésként szükség van egy kialakítási kulcsra. További informáci�
 A PowerShellnek rendszergazdai szintű engedélyekkel kell rendelkeznie a számítógép módosításához.
 ### <a name="execution-policy"></a>Végrehajtási házirend
 - Leírás: alapértelmezés szerint a PowerShell-parancsfájlok futtatása le van tiltva. Javasoljuk, hogy csak az aktuális hatókörhöz engedélyezze a RemoteSigned-parancsfájlokat.
-- Hivatkozás: [a végrehajtási házirendek és a](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6).
+- Hivatkozás: [a végrehajtási házirendek és a](/powershell/module/microsoft.powershell.core/about/about_execution_policies) [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy).
 - Parancs: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process` .
 - Választható paraméter:
     - `-Force`. Megkerüli a megerősítési kérést.
@@ -71,14 +71,14 @@ Ezeket az utasításokat a Windows 10 rendszert és a fent felsorolt verziókat 
 Ezek a lépések előkészítik a kiszolgálót a PowerShell-galéria-ból származó modulok letöltésére.
 
 > [!NOTE] 
-> A PowerShell-galéria Windows 10, Windows Server 2016 és PowerShell 6 rendszeren támogatott.
+> A PowerShell-galéria támogatott a Windows 10, a Windows Server 2016 és a PowerShell 6 + rendszeren.
 > További információ a korábbi verziókról: a [PowerShellGet telepítése](/powershell/scripting/gallery/installing-psget).
 
 
 1. Futtassa a PowerShellt rendszergazdaként egy emelt szintű végrehajtási házirenddel.
 2. Telepítse a NuGet csomag szolgáltatóját.
     - Leírás: szükség van erre a szolgáltatóra, hogy együttműködjön a NuGet-alapú adattárakkal, például a PowerShell-galériaokkal.
-    - Hivatkozás: [install-PackageProvider](/powershell/module/packagemanagement/install-packageprovider?view=powershell-6).
+    - Hivatkozás: [install-PackageProvider](/powershell/module/packagemanagement/install-packageprovider).
     - Parancs: `Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201` .
     - Választható paraméterek:
         - `-Proxy`. Megad egy proxykiszolgálót a kérelemhez.
@@ -98,7 +98,7 @@ Ezek a lépések előkészítik a kiszolgálót a PowerShell-galéria-ból szár
 
 3. PowerShell-galéria konfigurálása megbízható tárházként.
     - Leírás: alapértelmezés szerint a PowerShell-galéria nem megbízható tárház.
-    - Hivatkozás: [set-PSRepository](/powershell/module/powershellget/set-psrepository?view=powershell-6).
+    - Hivatkozás: [set-PSRepository](/powershell/module/powershellget/set-psrepository).
     - Parancs: `Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted` .
     - Választható paraméter:
         - `-Proxy`. Megad egy proxykiszolgálót a kérelemhez.
@@ -144,7 +144,7 @@ Ezek a lépések az az. ApplicationMonitor modult töltik le PowerShell-galéria
 1. Győződjön meg arról, hogy a PowerShell-galéria összes előfeltétele teljesül.
 2. Futtassa a PowerShellt rendszergazdaként egy emelt szintű végrehajtási házirenddel.
 3. Telepítse az az. ApplicationMonitor modult.
-    - Hivatkozás: [install-Module](/powershell/module/powershellget/install-module?view=powershell-6).
+    - Hivatkozás: [install-Module](/powershell/module/powershellget/install-module).
     - Parancs: `Install-Module -Name Az.ApplicationMonitor` .
     - Választható paraméterek:
         - `-Proxy`. Megad egy proxykiszolgálót a kérelemhez.
@@ -170,7 +170,7 @@ További információ: PowerShell- [modul telepítése](/powershell/scripting/de
 #### <a name="unzip-nupkg-as-a-zip-file-by-using-expand-archive-v1010"></a>Nupkg kicsomagolása zip-fájlként Expand-Archive használatával (v 1.0.1.0)
 
 - Leírás: a Microsoft. PowerShell. Archive (v 1.0.1.0) alapverziója nem tudja kibontani a nupkg-fájlokat. Nevezze át a fájlt a. zip kiterjesztéssel.
-- Hivatkozás: [Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6).
+- Hivatkozás: [Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive).
 - Parancs
 
     ```console
@@ -184,7 +184,7 @@ További információ: PowerShell- [modul telepítése](/powershell/scripting/de
 #### <a name="unzip-nupkg-by-using-expand-archive-v1100"></a>Nupkg kicsomagolása Expand-Archive használatával (v 1.1.0.0)
 
 - Leírás: a Expand-Archive aktuális verziójának használatával csomagolja ki a nupkg-fájlokat a bővítmény módosítása nélkül.
-- Hivatkozás: [Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6) és [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0).
+- Hivatkozás: [Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive) és [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0).
 - Parancs
 
     ```console
@@ -197,7 +197,7 @@ További információ: PowerShell- [modul telepítése](/powershell/scripting/de
 Telepítse a manuálisan letöltött PowerShell-modult egy PowerShell-könyvtárba, hogy a PowerShell-munkamenetek is felderíthetők legyenek.
 További információ: PowerShell- [modul telepítése](/powershell/scripting/developer/module/installing-a-powershell-module).
 
-Ha a modult bármely más könyvtárba telepíti, manuálisan importálja a modult [importálási modul](/powershell/module/microsoft.powershell.core/import-module?view=powershell-6)használatával.
+Ha a modult bármely más könyvtárba telepíti, manuálisan importálja a modult [importálási modul](/powershell/module/microsoft.powershell.core/import-module)használatával.
 
 > [!IMPORTANT] 
 > A DLL-eket relatív elérési utakon keresztül kell telepíteni.

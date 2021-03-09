@@ -11,16 +11,16 @@ author: jpe316
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, devx-track-python, deploy
-ms.openlocfilehash: 39c7d980bf9a90e5f72dfc9366d0ec44204b1ed2
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: e6a58a6555602af2494683037721a1f83e7ea33c
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102212790"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519316"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>ML modellek üzembe helyezése programozható Gate-tömbökben (FPGA) Azure Machine Learning 
 
-Ebből a cikkből megtudhatja, hogyan helyezheti üzembe a FPGA, és hogyan telepítheti az ML-modelleket egy Azure-FPGA a [hardveres gyorsítású modellek Python-csomag](/python/api/azureml-accel-models/azureml.accel?preserve-view=true&view=azure-ml-py) használatával a [Azure Machine Learningból](overview-what-is-azure-ml.md).
+Ebből a cikkből megtudhatja, hogyan helyezheti üzembe a FPGA, és hogyan telepítheti az ML-modelleket egy Azure-FPGA a [hardveres gyorsítású modellek Python-csomag](/python/api/azureml-accel-models/azureml.accel) használatával a [Azure Machine Learningból](overview-what-is-azure-ml.md).
 
 ## <a name="what-are-fpgas"></a>Mi a FPGA?
 Az FPGA-k programozható logikai blokkok tömbjét és újrakonfigurálható összekötők hierarchiáját tartalmazzák. Az összekapcsolások lehetővé teszik, hogy ezeket a blokkokat különböző módokon konfigurálja a gyártás után. A többi zsetonnal összehasonlítva a FPGA a programozhatóság és a teljesítmény kombinációját biztosítja. 
@@ -31,7 +31,7 @@ A FPGA újrakonfigurálhatja különböző típusú gépi tanulási modellekhez.
 
 ![Azure Machine Learning FPGA összehasonlításának ábrája](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
 
-|Processzor| Rövidítés |Description|
+|Processzor| Rövidítés |Leírás|
 |---|:-------:|------|
 |Alkalmazásspecifikus integrált áramkörök|ASICs|Az egyéni áramkörök, például a Google tenser processzor-egységei (TPU) a lehető legnagyobb hatékonyságot biztosítják. Az igények változása miatt nem konfigurálhatók újra.|
 |Mező – programozható Gate-tömbök|FPGA-k|A FPGA, például az Azure-on elérhetők, az ASICs-hoz hasonló teljesítményt biztosítanak. Az új logika megvalósításához az idő múlásával rugalmasan és újrakonfigurálható is.|
@@ -56,7 +56,7 @@ Az **Azure-beli virtuális gépek PBS-családja** Intel Arria 10 FPGA tartalmaz.
 
 ## <a name="deploy-models-on-fpgas"></a>Modellek üzembe helyezése a FPGA
 
-A modelleket webszolgáltatásként is üzembe helyezheti a FPGA [Azure Machine Learning Hardware Accelerated models](/python/api/azureml-accel-models/azureml.accel?preserve-view=true&view=azure-ml-py)használatával. A FPGA használata rendkívül kis késleltetésű következtetést biztosít, akár egyetlen batch-méret is. 
+A modelleket webszolgáltatásként is üzembe helyezheti a FPGA [Azure Machine Learning Hardware Accelerated models](/python/api/azureml-accel-models/azureml.accel)használatával. A FPGA használata rendkívül kis késleltetésű következtetést biztosít, akár egyetlen batch-méret is. 
 
 Ebben a példában egy TensorFlow gráfot hoz létre a bemeneti rendszerkép előfeldolgozásához, hogy a Képtulajdonság a ResNet 50-et használja egy FPGA, majd a szolgáltatásokat a ImageNet-adatkészletben szereplő osztályozó használatával futtassa. Ezután a modell üzembe helyezése egy AK-fürtön történik.
 
@@ -80,7 +80,7 @@ Ebben a példában egy TensorFlow gráfot hoz létre a bemeneti rendszerkép el�
 
 ### <a name="define-the-tensorflow-model"></a>A TensorFlow modell megadása
 
-Kezdje a [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) -val egy szolgáltatás definíciójának létrehozásához. A szolgáltatás definíciója egy olyan fájl, amely a diagramok (bemenet, Képtulajdonság és osztályozó) folyamatát írja le a TensorFlow alapján. A telepítési parancs tömöríti a definíciót és a diagramokat egy ZIP-fájlba, és feltölti a ZIP-fájlt az Azure Blob Storage-ba. A DNN már telepítve van, hogy a FPGA fusson.
+Kezdje a [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/intro) -val egy szolgáltatás definíciójának létrehozásához. A szolgáltatás definíciója egy olyan fájl, amely a diagramok (bemenet, Képtulajdonság és osztályozó) folyamatát írja le a TensorFlow alapján. A telepítési parancs tömöríti a definíciót és a diagramokat egy ZIP-fájlba, és feltölti a ZIP-fájlt az Azure Blob Storage-ba. A DNN már telepítve van, hogy a FPGA fusson.
 
 1. Azure Machine Learning munkaterület betöltése
 

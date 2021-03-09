@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: d72d2d094e220bd4e460cfca6b422f0609c083af
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: fde25e4ba75bfb86c9837582d7168f85335836b6
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880067"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520540"
 ---
 # <a name="version-and-track-azure-machine-learning-datasets"></a>Azure Machine Learning adatkészletek verziója és nyomon követése
 
@@ -31,7 +31,7 @@ Jellemző verziószámozási forgatókönyvek:
 
 Ebben az oktatóanyagban a következőkre lesz szüksége:
 
-- [A Azure Machine learning SDK for Python telepítve van](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py). Ez az SDK tartalmazza a [azureml-adatkészletek](/python/api/azureml-core/azureml.core.dataset?preserve-view=true&view=azure-ml-py) csomagot.
+- [A Azure Machine learning SDK for Python telepítve van](/python/api/overview/azure/ml/install). Ez az SDK tartalmazza a [azureml-adatkészletek](/python/api/azureml-core/azureml.core.dataset) csomagot.
     
 - Egy [Azure Machine learning munkaterület](concept-workspace.md). A következő kód futtatásával vagy [egy új munkaterület létrehozásával](how-to-manage-workspace.md)kérjen le egy meglévőt.
 
@@ -62,7 +62,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ### <a name="retrieve-a-dataset-by-name"></a>Adatkészlet lekérése név szerint
 
-Alapértelmezés szerint a [(z) osztály get_by_name ()](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) metódusa a `Dataset` munkaterületen regisztrált adatkészlet legújabb verzióját adja vissza. 
+Alapértelmezés szerint a [(z) osztály get_by_name ()](/python/api/azureml-core/azureml.core.dataset.dataset#get-by-name-workspace--name--version--latest--) metódusa a `Dataset` munkaterületen regisztrált adatkészlet legújabb verzióját adja vissza. 
 
 A következő kód az adatkészlet 1. verzióját kapja meg `titanic_ds` .
 
@@ -182,7 +182,7 @@ Az alábbi forgatókönyvek az adatok **kimeneti adatkészletként** való nyomo
 
 Minden Machine Learning kísérletnél könnyedén nyomon követheti a kísérlet objektum bemenetként használt adatkészleteket `Run` .
 
-A következő kód a [`get_details()`](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-details--) metódus használatával követi nyomon, hogy mely bemeneti adatkészletek lettek használva a kísérlet futtatásával:
+A következő kód a [`get_details()`](/python/api/azureml-core/azureml.core.run.run#get-details--) metódus használatával követi nyomon, hogy mely bemeneti adatkészletek lettek használva a kísérlet futtatásával:
 
 ```Python
 # get input datasets
@@ -213,7 +213,7 @@ A következő nézet az **adatkészletek** ablaktábla **eszközök** területé
 
 ![Bemeneti adatkészletek modelljei](./media/how-to-version-track-datasets/dataset-models.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Betanítás adathalmazok használatával](how-to-train-with-datasets.md)
 * [További minta-adathalmazi jegyzetfüzetek](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/)

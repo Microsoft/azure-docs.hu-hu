@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, data4ml
 ms.date: 05/14/2020
-ms.openlocfilehash: a4f15a1a0911e5a33da8b5f9445709cb42e7e10e
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 2eec512af9b139b2707c435fd0c78b7d50ac1b11
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981510"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521050"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Azure Machine Learning adatkészlet létrehozása és feltárása címkékkel
 
@@ -27,8 +27,8 @@ A címkével ellátott adatkészletek használatával Azure Machine Learning ada
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree) .
-* A [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py), vagy a [Azure Machine learning studióhoz](https://ml.azure.com/)való hozzáférés.
-    * Az [Azure--beli-adathalmaz-adatkészlet](/python/api/azureml-contrib-dataset/?preserve-view=true&view=azure-ml-py) csomagjának telepítése
+* A [Pythonhoz készült Azure Machine learning SDK](/python/api/overview/azure/ml/intro), vagy a [Azure Machine learning studióhoz](https://ml.azure.com/)való hozzáférés.
+    * Az [Azure--beli-adathalmaz-adatkészlet](/python/api/azureml-contrib-dataset/) csomagjának telepítése
 * Machine Learning munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 * Hozzáférés egy Azure Machine Learning adatcímkéző projekthez. Ha nem rendelkezik címkéző projekttel, hozzon létre egyet [ezekkel a lépésekkel](how-to-create-labeling-projects.md).
 
@@ -55,7 +55,7 @@ Betöltheti a címkével ellátott adatkészleteket egy Panda dataframe vagy Tor
 
 ### <a name="pandas-dataframe"></a>Panda dataframe
 
-A címkével ellátott adatkészleteket egy Panda dataframe is betöltheti a [`to_pandas_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueto-pandas-dataframe-on-error--null---out-of-range-datetime--null--) osztály metódusával `azureml-contrib-dataset` . Telepítse az osztályt a következő rendszerhéj-paranccsal: 
+A címkével ellátott adatkészleteket egy Panda dataframe is betöltheti a [`to_pandas_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) osztály metódusával `azureml-contrib-dataset` . Telepítse az osztályt a következő rendszerhéj-paranccsal: 
 
 ```shell
 pip install azureml-contrib-dataset
@@ -90,7 +90,7 @@ imgplot = plt.imshow(img)
 
 ### <a name="torchvision-datasets"></a>Torchvision adatkészletek
 
-Címkézett adatkészleteket is betölthet a Torchvision adatkészletbe a [to_torchvision ()](/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueto-torchvision--) metódussal a `azureml-contrib-dataset` osztályból is. Ennek a módszernek a használatához telepítenie kell a [PyTorch](https://pytorch.org/) . 
+Címkézett adatkészleteket is betölthet a Torchvision adatkészletbe a [to_torchvision ()](/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset#to-torchvision--) metódussal a `azureml-contrib-dataset` osztályból is. Ennek a módszernek a használatához telepítenie kell a [PyTorch](https://pytorch.org/) . 
 
 A következő kódban az `animal_labels` adatkészlet egy korábban a munkaterületre mentett címkéző projekt kimenete.
 

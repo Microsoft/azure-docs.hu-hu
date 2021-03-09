@@ -99,6 +99,8 @@
       href: firewall-workbook.md
     - name: A tűzfal Premium telepítése és konfigurálása
       href: premium-deploy.md
+    - name: Vállalati HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok telepítése prémium szintű használatra
+      href: premium-deploy-certificates-enterprise-ca.md
     - name: Migrálás Azure Firewall Premiumra
       href: premium-migrate.md
 - name: Referencia
