@@ -8,12 +8,12 @@ ms.author: nmurav
 ms.date: 01/03/2012
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 08fe9e56298218936e700518cdd150f54d7f01de
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: adb9ddee3d1caaac4c7530755b5e49ac50ab3181
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102425721"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488868"
 ---
 # <a name="tutorial-prepare-a-web-app-for-azure-communication-services-nodejs"></a>Oktatóanyag: webalkalmazás előkészítése az Azure kommunikációs szolgáltatásokhoz (Node.js)
 
@@ -161,7 +161,7 @@ module.exports ={
     output: {
         filename:'app.js',
         path: path.resolve(__dirname, 'dist'),
-    }     
+    }
 }
 ```
 
@@ -218,7 +218,7 @@ A fájlnak most így kell kinéznie:
 }
 ```
 
-Hozzáadta a NPM-ből használható parancsot. 
+Hozzáadta a NPM-ből használható parancsot.
 
 :::image type="content" source="./media/step-one-pic-12.png" alt-text="A package.jsmódosítását bemutató képernyőkép.":::
 
@@ -327,7 +327,7 @@ Ez a konfiguráció a következővel lesz egyesítve: `webpack.common.js` (hol a
 A alkalmazásban `package.json` adja hozzá a következő kódot:
 
 ```JavaScript
-"build:prod": "webpack --config webpack.prod.js" 
+"build:prod": "webpack --config webpack.prod.js"
 ```
 
 A fájlnak a következőhöz kell hasonlítania:
@@ -341,14 +341,14 @@ A fájlnak a következőhöz kell hasonlítania:
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:dev": "webpack-dev-server --config webpack.dev.js",
-    "build:prod": "webpack --config webpack.prod.js" 
+    "build:prod": "webpack --config webpack.prod.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@azure/communication-calling": "^1.0.0-beta.3",
-    "@azure/communication-common": "^1.0.0-beta.3"
+    "@azure/communication-calling": "^1.0.0-beta.6",
+    "@azure/communication-common": "^1.0.0"
   },
   "devDependencies": {
     "webpack": "^4.42.0",
@@ -374,7 +374,7 @@ A parancs létrehoz egy `dist` mappát és egy éles használatra kész `app.js`
  
  
 ### <a name="deploy-your-app-to-azure-storage"></a>Az alkalmazás üzembe helyezése az Azure Storage-ban
- 
+
 Másolja `index.html` `app.css` a mappát a `dist` mappába.
 
 A `dist` mappában hozzon létre egy fájlt, és nevezze el `404.html` . Másolja a következő korrektúrát a fájlba:

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: b013c66feefade077c85194ba3b1ff04ff4c4aa5
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 5a89e9ae05b0733c865d537ffeb1714d3b3ebef1
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99536832"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489361"
 ---
 # <a name="creating-queries-in-azure-cognitive-search"></a>Lekérdezések létrehozása az Azure-ban Cognitive Search
 
@@ -21,18 +21,21 @@ Ha első alkalommal hoz létre lekérdezést, ez a cikk a lekérdezések beáll�
 
 ## <a name="whats-a-query-request"></a>Mi a lekérdezési kérelem?
 
-A lekérdezés csak olvasható kérelem egyetlen keresési index docs-gyűjteményéből. Meghatározza a "queryType" és a lekérdezési kifejezést, azonban a "Search" paramétert. A lekérdezés kifejezés tartalmazhat keresési kifejezéseket, idézőjeleket tartalmazó kifejezést és operátorokat.
+A lekérdezés csak olvasható kérelem egyetlen keresési index docs-gyűjteményéből. Meghatározza, hogy a "keresés" paraméter tartalmazza a lekérdezési kifejezést, amely kifejezéseket, idézőjelek közé tartozó kifejezéseket és operátorokat tartalmaz.
 
-A lekérdezésben a "Count" érték is megadható az indexben található egyezések számának visszaadásához, a "kiválasztás" lehetőséggel pedig kiválaszthatja, hogy mely mezőket adja vissza a rendszer a keresési eredmények között, és a "OrderBy" kifejezéssel A következő példa egy lekérdezési kérelem általános gondolatát mutatja be az elérhető paraméterek egy részhalmazának bemutatásával. A lekérdezések összeállításával kapcsolatos további információkért lásd: [lekérdezési típusok és összeállítások](search-query-overview.md) és [keresési dokumentumok (REST)](/rest/api/searchservice/search-documents).
+A további paraméterek több definíciót biztosítanak a lekérdezéshez és a válaszhoz. Például a "searchFields" hatókörök lekérdezésének végrehajtása meghatározott mezőkre, a "Select" érték határozza meg, hogy mely mezők lesznek visszaadva az eredmények között, a "Count" pedig az indexben található egyezések számát adja vissza.
+
+A következő példa egy lekérdezési kérelem általános gondolatát mutatja be az elérhető paraméterek egy részhalmazának bemutatásával. A lekérdezések összeállításával kapcsolatos további információkért lásd: [lekérdezési típusok és összeállítások](search-query-overview.md) és [keresési dokumentumok (REST)](/rest/api/searchservice/search-documents).
 
 ```http
 POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 {
-    "queryType": "simple"
-    "search": "`New York` +restaurant",
-    "select": "HotelId, HotelName, Description, Rating, Address/City, Tags",
-    "count": "true",
-    "orderby": "Rating desc"
+    "search": "NY +view",
+    "queryType": "simple",
+    "searchMode": "all",
+    "searchFields": "HotelName, Description, Address/City, Address/StateProvince, Tags",
+    "select": "HotelName, Description, Address/City, Address/StateProvince, Tags",
+    "count": "true"
 }
 ```
 

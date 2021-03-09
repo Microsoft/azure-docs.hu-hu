@@ -9,16 +9,17 @@ ms.author: mikben
 ms.date: 03/04/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 54f3f075e9bf8bce9d8fb01a28f0f81dd3a930aa
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: fe1e08434a9137fced3dc8aa061affc2d6580b67
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102218417"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489276"
 ---
 # <a name="calling-client-library-overview"></a>Hívási ügyfélkódtár áttekintése
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+
 
 Az *ügyfelek* és szolgáltatások esetében két különálló család hívható meg az ügyféloldali kódtárak meghívásával *.* A jelenleg elérhető ügyféloldali kódtárak a végfelhasználói élményekhez készültek: webhelyek és natív alkalmazások.
 
@@ -28,12 +29,12 @@ A szolgáltatás ügyféloldali kódtárai még nem érhetők el, és hozzáfér
 
 Az alábbi lista azokat a funkciókat mutatja be, amelyek jelenleg elérhetők az Azure kommunikációs szolgáltatásokban az ügyféloldali kódtárak meghívásakor.
 
-| Szolgáltatások csoportja | Képesség                                                                                                          | JS  | Java (Android) | Objective-C (iOS) 
+| Szolgáltatások csoportja | Képesség                                                                                                          | JS  | Java (Android) | Objective-C (iOS)
 | ----------------- | ------------------------------------------------------------------------------------------------------------------- | ---  | -------------- | -------------
-| Alapvető képességek | Egy-az-egyhez hívás elhelyezése két felhasználó között                                                                           | ✔️   | ✔️            | ✔️  
-|                   | Csoportos hívás elhelyezése kettőnél több felhasználóval (legfeljebb 350 felhasználó)                                                       | ✔️   | ✔️            | ✔️ 
-|                   | Egy-az-egyhez hívás előléptetése két felhasználóval egy csoportos hívásban több mint két felhasználóval                                 | ✔️   | ✔️            | ✔️ 
-|                   | Csatlakozás egy csoportos híváshoz az elindítása után                                                                              | ✔️   | ✔️            | ✔️ 
+| Alapvető képességek | Egy-az-egyhez hívás elhelyezése két felhasználó között                                                                           | ✔️   | ✔️            | ✔️
+|                   | Csoportos hívás elhelyezése kettőnél több felhasználóval (legfeljebb 350 felhasználó)                                                       | ✔️   | ✔️            | ✔️
+|                   | Egy-az-egyhez hívás előléptetése két felhasználóval egy csoportos hívásban több mint két felhasználóval                                 | ✔️   | ✔️            | ✔️
+|                   | Csatlakozás egy csoportos híváshoz az elindítása után                                                                              | ✔️   | ✔️            | ✔️
 |                   | Egy másik VoIP-résztvevő meghívása egy folyamatos csoportos híváshoz                                                       | ✔️   | ✔️            | ✔️
 |  Közepes hívások vezérlése | Videó be-és kikapcsolása                                                                                              | ✔️   | ✔️            | ✔️ 
 |                   | Mikrofon némítása/feloldása                                                                                                     | ✔️   | ✔️            | ✔️         

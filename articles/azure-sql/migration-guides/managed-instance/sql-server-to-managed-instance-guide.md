@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: ac8b0e0c2cdbd46626677f4be0f78800d839ad28
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 67f5665225bc1297d0eb1b1e1da954fb47660dee
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358894"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488953"
 ---
 # <a name="migration-guide-sql-server-to-sql-managed-instance"></a>Áttelepítési útmutató: SQL Server a felügyelt SQL-példányhoz
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -57,6 +57,8 @@ Azt is megteheti, hogy a [Microsoft Assessment and Planning Toolkit (a "Map To
 További információ a felderítési fázishoz használható eszközökről: az [adatáttelepítési forgatókönyvekhez elérhető szolgáltatások és eszközök](../../../dms/dms-tools-matrix.md). 
 
 ### <a name="assess"></a>Kiértékelés 
+
+[!INCLUDE [assess-estate-with-azure-migrate](../../../../includes/azure-migrate-to-assess-sql-data-estate.md)]
 
 Az adatforrások felderítése után mérje fel azokat a helyszíni SQL Server-példányokat, amelyek áttelepíthetők az Azure SQL felügyelt példányaira az áttelepítési blokkolók vagy kompatibilitási problémák azonosításához. 
 

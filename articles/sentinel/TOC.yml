@@ -66,40 +66,46 @@
               href: connect-aws.md
             - name: Azure Active Directory
               href: connect-azure-active-directory.md
-            - name: Office 365 (mostantól Teamsszel)
-              href: connect-office-365.md
-            - name: Dynamics 365 (új!)
-              href: connect-dynamics-365.md
-            - name: Cloud App Security
-              href: connect-cloud-app-security.md
             - name: Azure-tevékenységnapló
               href: connect-azure-activity.md
             - name: Azure AD Identity Protection
               href: connect-azure-ad-identity-protection.md
-            - name: Azure Information Protection
-              href: connect-azure-information-protection.md
-            - name: Microsoft 365 Defender
-              href: connect-microsoft-365-defender.md
-            - name: Microsoft Defender végponthoz (korábbi nevén MDATP)
-              href: connect-microsoft-defender-advanced-threat-protection.md
-            - name: Microsoft Defender identitáshoz (korábbi nevén Azure ATP)
-              href: connect-azure-atp.md
-            - name: Microsoft Defender az Office 365-höz (korábbi nevén Office 365 ATP)
-              href: connect-office-365-advanced-threat-protection.md
             - name: Azure Defender-riasztások az ASC-től
               href: connect-azure-security-center.md
-            - name: Defender for IoT (korábban ASC a IoT esetében)
-              href: connect-asc-iot.md
             - name: Azure DDoS Protection
               href: connect-azure-ddos-protection.md
             - name: Azure Firewall
               href: connect-azure-firewall.md
-            - name: Azure-beli webalkalmazási tűzfal (WAF)
-              href: connect-azure-waf.md
+            - name: Azure Information Protection
+              href: connect-azure-information-protection.md
+            - name: Azure Key Vault
+              href: connect-azure-key-vault.md
+            - name: Azure Kubernetes Service (AKS)
+              href: connect-azure-kubernetes-service.md
             - name: Azure SQL-adatbázisnaplók
               href: connect-azure-sql-logs.md
+            - name: Azure-beli webalkalmazási tűzfal (WAF)
+              href: connect-azure-waf.md
+            - name: Defender for IoT (korábban ASC a IoT esetében)
+              href: connect-asc-iot.md
             - name: Tartományi névkiszolgáló
               href: connect-dns.md
+            - name: Dynamics 365 (új!)
+              href: connect-dynamics-365.md
+            - name: Microsoft 365 Defender
+              href: connect-microsoft-365-defender.md
+              expanded: true
+              items:
+                - name: Cloud App Security
+                  href: connect-cloud-app-security.md
+                - name: Microsoft Defender végponthoz (korábbi nevén MDATP)
+                  href: connect-microsoft-defender-advanced-threat-protection.md
+                - name: Microsoft Defender identitáshoz (korábbi nevén Azure ATP)
+                  href: connect-azure-atp.md
+                - name: Microsoft Defender az Office 365-höz (korábbi nevén Office 365 ATP)
+                  href: connect-office-365-advanced-threat-protection.md
+            - name: Office 365 (mostantól Teamsszel)
+              href: connect-office-365.md
             - name: Windows tűzfal
               href: connect-windows-firewall.md
             - name: A Windows biztonsági eseményei

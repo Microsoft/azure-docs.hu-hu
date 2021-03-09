@@ -9,16 +9,15 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: 4fda626581265b4b1f6541a3b453b164ccd27963
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4acc1cb93fb04ba190173fea05805a1a4b833ffc
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690447"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488766"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>Gyors útmutató: telefonszám beszerzése a Azure Portal használatával
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 Az Azure Communication Services használatának első lépései a Azure Portal használatával vásárolhatják meg a telefonszámot.
@@ -40,15 +39,15 @@ Navigáljon a **telefonszámok** panelre az erőforrás menüben.
 
 :::image type="content" source="../media/manage-phone-azure-portal-phone-page.png" alt-text="A kommunikációs szolgáltatások erőforrásának telefonos lapját ábrázoló képernyőkép.":::
 
-A varázsló elindításához kattintson a **Letöltés** gombra. A **telefonszámok** panelen a varázsló végigvezeti egy olyan kérdésen, amely segít kiválasztani a forgatókönyvnek leginkább megfelelő telefonszámot. 
+A varázsló elindításához kattintson a **Letöltés** gombra. A **telefonszámok** panelen a varázsló végigvezeti egy olyan kérdésen, amely segít kiválasztani a forgatókönyvnek leginkább megfelelő telefonszámot.
 
-Először ki kell választania azt az **országot/régiót** , ahol ki szeretné építeni a telefonszámot. Miután kiválasztotta az országot/régiót, ki kell választania az igényeinek legmegfelelőbb **használati esetet** . 
+Először ki kell választania azt az **országot/régiót** , ahol ki szeretné építeni a telefonszámot. Miután kiválasztotta az országot/régiót, ki kell választania az igényeinek legmegfelelőbb **használati esetet** .
 
 :::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="Képernyőfelvétel: a telefonszámok beolvasása nézet.":::
 
 ### <a name="select-your-phone-number-features"></a>Telefonszám-funkciók kiválasztása
 
-A telefonszám beállítása két lépésből áll: 
+A telefonszám beállítása két lépésből áll:
 
 1. A [szám típusának](../../concepts/telephony-sms/plan-solution.md#phone-number-types-in-azure-communication-services) kiválasztása
 2. A [szám funkcióinak](../../concepts/telephony-sms/plan-solution.md#phone-number-features-in-azure-communication-services) kiválasztása

@@ -14,8 +14,10 @@
       href: quickstarts/create-communication-resource.md
     - name: Hozzáférési jogkivonatok létrehozása és kezelése
       href: quickstarts/access-tokens.md
-    - name: Felügyelt identitások használata (.NET)
+    - name: Felügyelt identitások használata
       href: quickstarts/managed-identity.md
+    - name: Felügyelt identitások beállítása a parancssori felületről
+      href: quickstarts/managed-identity-from-cli.md
     - name: Csevegés
       items:
         - name: Csevegés hozzáadása az alkalmazáshoz
@@ -24,7 +26,7 @@
           href: quickstarts/chat/meeting-interop.md
     - name: Telefonos funkciók és SMS
       items:
-        - name: Telefonszám lekérése
+        - name: Telefonszámok kezelése
           href: quickstarts/telephony-sms/get-phone-number.md
         - name: Telefonhívás hozzáadása az alkalmazáshoz
           href: quickstarts/voice-video-calling/pstn-call.md
@@ -154,6 +156,8 @@
           href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationchat'
         - name: Csevegés (Android/Java)
           href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-chat'
+        - name: Csevegés (Python)
+          href: 'https://azure.github.io/azure-sdk-for-python/communication.html#azure-communication-chat'
     - name: SMS-kódtárak
       items:
         - name: SMS (JavaScript)
@@ -162,14 +166,18 @@
           href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationsms'
         - name: SMS (Android/Java)
           href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-sms'
-    - name: Felügyeleti kódtárak
+        - name: SMS (Python)
+          href: 'https://azure.github.io/azure-sdk-for-python/communication.html#azure-communication-sms'
+    - name: Azonosító kódtárak
       items:
-        - name: Felügyelet (JavaScript)
-          href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-administration'
-        - name: Felügyelet (.NET)
-          href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationadministration'
-        - name: Felügyelet (Android/Java)
-          href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-administration'
+        - name: Identitás (JavaScript)
+          href: 'https://azure.github.io/azure-sdk-for-js/communication.html#azure-communication-identity'
+        - name: Identitás (.NET)
+          href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationidentity'
+        - name: Identitás (Android/Java)
+          href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-identity'
+        - name: Identitás (Python)
+          href: 'https://azure.github.io/azure-sdk-for-python/communication.html#azure-communication-identity'
     - name: Általános kódtárak
       items:
         - name: Általános (JavaScript)
@@ -178,6 +186,8 @@
           href: 'https://azure.github.io/azure-sdk-for-net/communication.html#azurecommunicationcommon'
         - name: Általános (Android/Java)
           href: 'https://azure.github.io/azure-sdk-for-java/communication.html#azure-communication-common'
+        - name: Gyakori (Python)
+          href: 'https://azure.github.io/azure-sdk-for-python/communication.html#azure-communication-common'
 - name: További források
   items:
     - name: Kibocsátási megjegyzések

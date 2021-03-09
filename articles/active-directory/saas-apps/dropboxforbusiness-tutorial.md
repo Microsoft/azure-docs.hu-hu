@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/28/2021
+ms.date: 02/17/2021
 ms.author: jeedes
-ms.openlocfilehash: c5bdab2038f2f41c7240addaff99bd831d29f489
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d4c9d2e290f6a8f07878a019b755c8add2ab69ea
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101643813"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488444"
 ---
 # <a name="tutorial-integrate-dropbox-business-with-azure-active-directory"></a>Oktatóanyag: a Dropbox Business integrálása a Azure Active Directory
 
@@ -38,9 +38,9 @@ Első lépésként a következő elemeket kell megadnia:
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-* Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben. A Dropbox Business támogatja az **SP** által KEZDEMÉNYEZett SSO-t
+* Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben. A Dropbox Business támogatja az **SP** által kezdeményezett egyszeri bejelentkezést.
 
-* A Dropbox Business támogatja [a felhasználók automatikus üzembe](dropboxforbusiness-tutorial.md) helyezését és megszüntetését
+* A Dropbox Business [a felhasználók automatikus üzembe](dropboxforbusiness-tutorial.md)helyezését és megszüntetését támogatja.
 
 > [!NOTE]
 > Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
@@ -82,11 +82,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 1. Az **alapszintű SAML-konfiguráció** lapon adja meg a következő mezők értékeit:
 
     a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://www.dropbox.com/sso/<id>`
-
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be a következő értéket: `Dropbox`
-
+    
+     b. Az **azonosító (Entity ID)** szövegmezőbe írja be a következő értéket: `Dropbox`
+    
     > [!NOTE]
-    > Az előző bejelentkezési URL-cím értéke nem valós érték. A tényleges bejelentkezési URL-címmel frissítenie kell az értéket, amelyet az oktatóanyag későbbi részében ismertetünk.
+    > A Dropbox- **bejelentkezési SSO-azonosító** a Dropbox webhelyén, a Dropbox > felügyeleti konzolon > beállítások > egyszeri bejelentkezés > SSO bejelentkezési URL-címében található.
 
 1. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
@@ -137,23 +137,23 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 4. Kattintson a **felhasználó ikonra** , és válassza a **Beállítások** lapot.
 
-    ![Képernyőkép, amely a "felhasználó ikon" műveletet és a "beállítások" beállítást mutatja.](./media/dropboxforbusiness-tutorial/configure1.png "Egyszeri bejelentkezés konfigurálása")
+    ![Képernyőkép, amely a "felhasználó ikon" műveletet és a "beállítások" beállítást mutatja.](./media/dropboxforbusiness-tutorial/configure-1.png "Egyszeri bejelentkezés konfigurálása")
 
 5. A bal oldali navigációs ablaktáblán kattintson a **felügyeleti konzol** elemre.
 
-    ![A "felügyeleti konzol" elemet megjelenítő képernyőkép.](./media/dropboxforbusiness-tutorial/configure2.png "Egyszeri bejelentkezés konfigurálása")
+    ![A "felügyeleti konzol" elemet megjelenítő képernyőkép.](./media/dropboxforbusiness-tutorial/configure-2.png "Egyszeri bejelentkezés konfigurálása")
 
 6. A **felügyeleti konzolon** kattintson a bal oldali navigációs ablaktábla **Beállítások** elemére.
 
-    ![Képernyőkép, amely a "beállítások" elemet jeleníti meg.](./media/dropboxforbusiness-tutorial/configure3.png "Egyszeri bejelentkezés konfigurálása")
+    ![Képernyőkép, amely a "beállítások" elemet jeleníti meg.](./media/dropboxforbusiness-tutorial/configure-3.png "Egyszeri bejelentkezés konfigurálása")
 
 7. Válassza az **egyszeri bejelentkezés** lehetőséget a **hitelesítés** szakaszban.
 
-    ![A "hitelesítés" szakaszt az "egyszeri bejelentkezés" beállítással ábrázoló képernyőkép.](./media/dropboxforbusiness-tutorial/configure4.png "Egyszeri bejelentkezés konfigurálása")
+    ![A "hitelesítés" szakaszt az "egyszeri bejelentkezés" beállítással ábrázoló képernyőkép.](./media/dropboxforbusiness-tutorial/configure-4.png "Egyszeri bejelentkezés konfigurálása")
 
 8. Az **egyszeri bejelentkezés** szakaszban hajtsa végre a következő lépéseket:  
 
-    ![Képernyőkép, amely az "egyszeri bejelentkezés" konfigurációs beállításait jeleníti meg.](./media/dropboxforbusiness-tutorial/configure5.png "Egyszeri bejelentkezés konfigurálása")
+    ![Képernyőkép, amely az "egyszeri bejelentkezés" konfigurációs beállításait jeleníti meg.](./media/dropboxforbusiness-tutorial/configure-5.png "Egyszeri bejelentkezés konfigurálása")
 
     a. Válassza a **kötelező** lehetőséget a legördülő listából az **egyszeri bejelentkezéshez**.
 
@@ -174,7 +174,7 @@ Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a Dropbox Busine
 >[!Note]
 >Ha manuálisan kell létrehoznia egy felhasználót, lépjen kapcsolatba a [Dropbox üzleti ügyfél-támogatási csapatával](https://www.dropbox.com/business/contact)
 
-### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
@@ -186,4 +186,4 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 ## <a name="next-steps"></a>Következő lépések
 
-A Dropbox Business konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
+A Dropbox Business konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

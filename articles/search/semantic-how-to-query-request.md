@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/05/2021
-ms.openlocfilehash: 8fdb6a53ed0fd64953b75238c3ba3df62c4b644e
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 7f7a09b9e20b461a8a1e448bf4a7b0747a35fbb1
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102432944"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487144"
 ---
 # <a name="create-a-semantic-query-in-cognitive-search"></a>Szemantikai lekérdezés létrehozása Cognitive Search
 
@@ -172,12 +172,12 @@ A fenti lekérdezésre adott válasz a következő egyezést adja vissza, mint a
 
 A következő táblázat összefoglalja a szemantikai lekérdezésekben használt lekérdezési paramétereket, hogy azok holisztikusan lássák őket. Az összes paraméter listáját itt tekintheti meg: [dokumentumok keresése (REST előzetes verzió)](/rest/api/searchservice/preview-api/search-documents)
 
-| Paraméter | Típus | Description |
+| Paraméter | Típus | Leírás |
 |-----------|-------|-------------|
 | queryType | Sztring | Az érvényes értékek közé tartozik az egyszerű, a teljes és a szemantikai érték. Szemantikai lekérdezésekhez a "szemantika" érték szükséges. |
 | queryLanguage | Sztring | Szemantikai lekérdezésekhez szükséges. Jelenleg csak az "en-us" van implementálva. |
 | searchFields | Sztring | A kereshető mezők vesszővel tagolt listája. Nem kötelező, de ajánlott. Meghatározza azokat a mezőket, amelyeken szemantikai rangsorolás történik. </br></br>Az egyszerű és a teljes lekérdezési típusokkal szemben a listában szereplő mezők sorrendje határozza meg a sorrendet.|
-| válaszok |Sztring | Választható mező annak megadásához, hogy a szemantikai válaszok szerepeljenek-e az eredményben. Jelenleg csak a "kinyerő" van implementálva. A válaszokat beállíthatja úgy, hogy legfeljebb öt értéket lehessen visszaadni. Ez a példa a kinyerés|a "" count3 három válasz számát jeleníti meg. Az alapértelmezett érték 1.|
+| válaszok |Sztring | Választható mező annak megadásához, hogy a szemantikai válaszok szerepeljenek-e az eredményben. Jelenleg csak a "kinyerő" van implementálva. A válaszokat beállíthatja úgy, hogy legfeljebb öt értéket lehessen visszaadni. Az alapértelmezett érték egy. Ez a példa három válasz számát mutatja: "kinyerő \| count3". |
 
 ## <a name="query-with-search-explorer"></a>Lekérdezés a keresési ablakban
 
@@ -186,7 +186,7 @@ A következő lekérdezés az API 2020-06-30-es verziójának használatával, v
 ### <a name="with-querytypesemantic"></a>A queryType = szemantika
 
 ```json
-search=I want a nice hotel on the water with a great restaurant&$select=HotelId,HotelName,Description,Tags&queryType=semantic&queryLanguage=english&searchFields=Description,Tags
+search=nice hotel on water with a great restaurant&$select=HotelId,HotelName,Description,Tags&queryType=semantic&queryLanguage=english&searchFields=Description,Tags
 ```
 
 Az első néhány találat a következő:

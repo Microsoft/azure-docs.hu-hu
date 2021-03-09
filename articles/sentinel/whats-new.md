@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 03/08/2021
-ms.openlocfilehash: c24512ad38f9397c9a40a85489c45fcb0de906b3
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 66294e3c59c2252042e30864dd220683106cd574
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102453801"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485384"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Az Azure Sentinel újdonságai
 
@@ -29,6 +29,32 @@ A feljegyzett funkciók jelenleg előzetes verzióban érhetők el. Az [Azure el
 >
 > Ön is hozzájárulhat! Csatlakozzon hozzánk az [Azure Sentinel Threat Hunters GitHub-közösségében](https://github.com/Azure/Azure-Sentinel/wiki).
 > 
+
+## <a name="march-2021"></a>Március 2021
+
+- [Microsoft 365 Defender-incidensek integrációja](#microsoft-365-defender-incident-integration) (nyilvános előzetes verzió)
+- [Új Microsoft szolgáltatás-összekötők a Azure Policy használatával](#new-microsoft-service-connectors-using-azure-policy)
+
+### <a name="microsoft-365-defender-incident-integration"></a>Microsoft 365 Defender-incidensek integrációja
+
+Az Azure Sentinel [Microsoft 365 Defender-(M365D-)](/microsoft-365/security/mtp/microsoft-threat-protection) incidens-integrációja lehetővé teszi, hogy az összes M365D-incidenst az Azure sentinelbe továbbítsa, és mindkét portál között szinkronizálja őket. A M365D-ből (korábbi nevén Microsoft Threat Protection vagy MTP) származó incidensek tartalmazzák az összes kapcsolódó riasztást, entitást és releváns információt, így elegendő kontextust biztosítanak az osztályozás és az előzetes vizsgálat végrehajtásához az Azure Sentinelben. A Sentinelben az incidensek kétirányúan szinkronizálva maradnak a M365D, így kihasználhatja az incidensek vizsgálatának mindkét portáljának előnyeit.
+
+Az Azure Sentinel és a Microsoft 365 Defender együttes használatával mindkét világból a legjobbat nyújtja. Részletesen betekintést nyerhet arról, hogy a SIEM a szervezet teljes körű információs erőforrásait tartalmazza, valamint a testre szabott és személyre szabott vizsgálati teljesítmény mélységét, amelyet a XDR a Microsoft 365 erőforrásainak megóvására biztosít, és mindkettőt koordinálja és szinkronizálja a zökkenőmentes SOC-művelethez.
+
+További információ: [Microsoft 365 Defender-integráció az Azure sentinelrel](microsoft-365-defender-sentinel-integration.md).
+
+### <a name="new-microsoft-service-connectors-using-azure-policy"></a>Új Microsoft szolgáltatás-összekötők a Azure Policy használatával
+
+A [Azure Policy](../governance/policy/overview.md) egy Azure-szolgáltatás, amely lehetővé teszi, hogy szabályzatok használatával kényszerítse és szabályozza az erőforrások tulajdonságait. A szabályzatok használata biztosítja, hogy az erőforrások megfeleljenek az informatikai irányítási előírásoknak.
+
+A szabályzatok által szabályozható erőforrások tulajdonságai között a diagnosztika és a naplózási naplók létrehozása és felügyelete látható. Az Azure Sentinel mostantól Azure Policy használatával lehetővé teszi, hogy a diagnosztikai naplók közös készletét alkalmazza az Azure Sentinelbe bevenni kívánt naplók egy adott típusának összes (aktuális és jövőbeli) erőforrására. Azure Policy Köszönjük, hogy erőforrás szerint nem kell beállítania a diagnosztikai naplók beállításait erőforrásként.
+
+A Azure Policy-alapú összekötők mostantól a következő Azure-szolgáltatásokhoz érhetők el:
+- [Azure Key Vault](connect-azure-key-vault.md) (nyilvános előzetes verzió)
+- [Azure Kubernetes szolgáltatás](connect-azure-kubernetes-service.md) (nyilvános előzetes verzió)
+- Azure SQL-adatbázisok/-kiszolgálók (GA)
+
+Az ügyfelek továbbra is képesek lesznek manuálisan elküldeni a naplókat bizonyos példányokhoz, és nem kell használniuk a szabályzat motorját.
 
 ## <a name="february-2021"></a>2021. február
 
@@ -86,7 +112,7 @@ A harmadik féltől származó integrációs gyűjtemények folyamatosan növeke
 - [Symantec Endpoint Protection](connect-data-sources.md)
 - [Thycotic Secret Server](connect-thycotic-secret-server.md)
 - [Trend Micro XDR](connect-data-sources.md)
-- [VMWare ESXi](connect-vmware-esxi.md)
+- [VMware ESXi](connect-vmware-esxi.md)
 
 ### <a name="ueba-insights-in-the-entity-page"></a>UEBA az entitások oldalán
 
