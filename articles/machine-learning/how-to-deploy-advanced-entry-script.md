@@ -11,12 +11,12 @@ ms.date: 09/17/2020
 ms.author: gopalv
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 22b22cf364f4422c358fc71db74465b839ddae45
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: f88b6bd79e1004c108ef868f910a4e5a974cc08a
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102454968"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508537"
 ---
 # <a name="advanced-entry-script-authoring"></a>Speciális bejegyzésszkript létrehozása
 
@@ -291,7 +291,7 @@ second_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), second_model_na
 
 ### <a name="get_model_path"></a>get_model_path
 
-Modell regisztrálása esetén meg kell adnia a modellnek a beállításjegyzékben való kezeléséhez használt modell nevét. Ezt a nevet használja a [Model.get_model_path ()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) metódussal, hogy lekérje a modell fájljának vagy fájljainak elérési útját a helyi fájlrendszerben. Ha egy mappát vagy fájl-gyűjteményt regisztrál, az API a fájlokat tartalmazó könyvtár elérési útját adja vissza.
+Modell regisztrálása esetén meg kell adnia a modellnek a beállításjegyzékben való kezeléséhez használt modell nevét. Ezt a nevet használja a [Model.get_model_path ()](/python/api/azureml-core/azureml.core.model.model#get-model-path-model-name--version-none---workspace-none-) metódussal, hogy lekérje a modell fájljának vagy fájljainak elérési útját a helyi fájlrendszerben. Ha egy mappát vagy fájl-gyűjteményt regisztrál, az API a fájlokat tartalmazó könyvtár elérési útját adja vissza.
 
 Modell regisztrálása esetén a nevet adja meg. A név a modell elhelyezésének helyét adja meg helyileg vagy a szolgáltatás telepítése során.
 

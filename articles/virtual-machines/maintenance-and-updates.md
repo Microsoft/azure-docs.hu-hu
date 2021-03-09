@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: shants
-ms.openlocfilehash: 3cf126caaaa0c518574418aca194ebd82cc4d6b9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 51df72e31acaadc83f4c094b99fa938377e5f023
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972067"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500002"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Az Azure-ban futó virtuális gépek karbantartása
 
@@ -23,7 +23,7 @@ A frissítések ritkán érintik az üzemeltetett virtuális gépeket. Ha a fris
 - Ha a frissítés nem igényel újraindítást, a rendszer szünetelteti a virtuális gépet a gazdagép frissítésekor, vagy a virtuális gép egy már frissített gazdagépre van áttelepítve. 
 - Ha a karbantartás újraindítást igényel, értesítést kap a tervezett karbantartásról. Az Azure egy időablakot is biztosít, amelyben saját maga is elindíthatja a karbantartást. Az önkarbantartási időszak általában 35 nap, kivéve, ha a karbantartás nem sürgős. Az Azure olyan technológiákat fektet be, amelyek csökkentik azon esetek számát, amelyekben a tervezett platform karbantartásához szükség van a virtuális gépek újraindítására. A tervezett karbantartás kezelésével kapcsolatos útmutatásért lásd: tervezett karbantartási értesítések kezelése az Azure [CLI](maintenance-notifications-cli.md), a [PowerShell](maintenance-notifications-powershell.md) vagy a [Portal](maintenance-notifications-portal.md)használatával.
 
-Ez a lap leírja, hogy az Azure hogyan hajtja végre mindkét típusú karbantartást. További információ a nem tervezett eseményekről (kimaradások): [a Windows rendszerű virtuális gépek rendelkezésre állásának kezelése](./manage-availability.md) , illetve a megfelelő [Linux](./manage-availability.md)-cikk.
+Ez a lap leírja, hogy az Azure hogyan hajtja végre mindkét típusú karbantartást. További információ a nem tervezett eseményekről (kimaradások): [a Windows rendszerű virtuális gépek rendelkezésre állásának kezelése](./availability.md) , illetve a megfelelő [Linux](./availability.md)-cikk.
 
 A virtuális gépeken belül a Windows vagy [Linux](./linux/scheduled-events.md)rendszerhez [készült Scheduled Events használatával](./windows/scheduled-events.md) értesítéseket kaphat a közelgő karbantartásról.
 
@@ -87,9 +87,9 @@ Egy rendelkezésre állási csoporton belül az egyes virtuális gépek akár 20
 
 A virtuálisgép- *méretezési* csoportok egy olyan Azure-beli számítási erőforrás, amellyel azonos virtuális gépek egyetlen erőforrásként való üzembe helyezésére és kezelésére használhatók. A méretezési csoport automatikusan települ a frissítési között, például a virtuális gépeket egy rendelkezésre állási csoportba. A rendelkezésre állási csoportokhoz hasonlóan a méretezési csoportok használatakor a rendszer az ütemezett karbantartás során egy adott időpontban csak egy UD frissítést végez.
 
-A virtuális gépek magas rendelkezésre állásra való beállításával kapcsolatos további információkért lásd: a [Windows rendszerű virtuális gépek rendelkezésre állásának kezelése](./manage-availability.md) , vagy a megfelelő [Linux](./manage-availability.md)-cikk.
+A virtuális gépek magas rendelkezésre állásra való beállításával kapcsolatos további információkért lásd: a [Windows rendszerű virtuális gépek rendelkezésre állásának kezelése](./availability.md) , vagy a megfelelő [Linux](./availability.md)-cikk.
 
-#### <a name="availability-zones"></a>Rendelkezésre állási zónák
+#### <a name="availability-zones"></a>Rendelkezésreállási zónák
 
 A rendelkezésre állási zónák egy Azure-régióban található egyedi fizikai helyek. Minden rendelkezésreállási zóna egy vagy több, független áramforrással, hűtéssel és hálózatkezelési megoldással ellátott adatközpontból áll. A rugalmasság biztosításához legalább három különálló zónának kell lennie az összes engedélyezett régióban. 
 

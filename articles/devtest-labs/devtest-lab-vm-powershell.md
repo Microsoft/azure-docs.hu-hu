@@ -3,12 +3,12 @@ title: Virtuális gép létrehozása a DevTest Labs szolgáltatásban Azure Powe
 description: Megtudhatja, hogyan hozhat létre és kezelhet Azure DevTest Labs virtuális gépeket Azure PowerShell használatával.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6bcc1b8cfe1da7e5eafbee0af008a1defbe6f49d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f79b6ff92d633cf63477cddaabec918df352bec8
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85484111"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499254"
 ---
 # <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>Virtuális gép létrehozása a DevTest Labs használatával Azure PowerShell
 Ez a cikk bemutatja, hogyan hozhat létre virtuális gépet a Azure DevTest Labsban Azure PowerShell használatával. A PowerShell-parancsfájlok segítségével automatizálhatja a virtuális gépek létrehozását a laborban Azure DevTest Labs. 
@@ -17,10 +17,10 @@ Ez a cikk bemutatja, hogyan hozhat létre virtuális gépet a Azure DevTest Labs
 Előkészületek:
 
 - [Hozzon létre egy labort](devtest-lab-create-lab.md) , ha nem szeretne meglévő labort használni a szkript vagy a parancsok teszteléséhez ebben a cikkben. 
-- [Telepítse a Azure PowerShellt](/powershell/azure/install-az-ps?view=azps-1.7.0) , vagy használja a Azure Portalba integrált Azure Cloud shell. 
+- [Telepítse a Azure PowerShellt](/powershell/azure/install-az-ps) , vagy használja a Azure Portalba integrált Azure Cloud shell. 
 
 ## <a name="powershell-script"></a>PowerShell-parancsprogram
-Az ebben a szakaszban szereplő minta parancsfájl a [rehív-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) parancsmagot használja.  Ez a parancsmag a labor erőforrás-AZONOSÍTÓját, a végrehajtandó művelet nevét ( `createEnvironment` ) és a művelet végrehajtásához szükséges paramétereket veszi át. A paraméterek egy olyan kivonatoló táblában találhatók, amely tartalmazza az összes virtuális gép leírásának tulajdonságait. 
+Az ebben a szakaszban szereplő minta parancsfájl a [rehív-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) parancsmagot használja.  Ez a parancsmag a labor erőforrás-AZONOSÍTÓját, a végrehajtandó művelet nevét ( `createEnvironment` ) és a művelet végrehajtásához szükséges paramétereket veszi át. A paraméterek egy olyan kivonatoló táblában találhatók, amely tartalmazza az összes virtuális gép leírásának tulajdonságait. 
 
 ```powershell
 [CmdletBinding()]
@@ -214,5 +214,5 @@ Set-AzureRmResource -ResourceId $VmResourceId -Properties $VmProperties -Force
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő tartalmakat: [Azure PowerShell dokumentációja Azure DevTest Labs](/powershell/module/az.devtestlabs/)

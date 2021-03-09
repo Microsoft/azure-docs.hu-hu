@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: 78829ae52d74cf6ec58c12779c51bca9a98e0af1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 787f7727e18b7055055ed2b764ddce5be20f5afc
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450797"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503436"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>A Storage-fiók elérési kulcsainak újragenerálása
 
@@ -33,7 +33,7 @@ Biztonsági okokból előfordulhat, hogy módosítania kell egy Azure Storage-fi
 
 * Egy Azure Machine Learning-munkaterület. További információt a [Munkaterület létrehozása](how-to-manage-workspace.md) című cikkben talál.
 
-* A [Azure Machine learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
+* A [Azure Machine learning SDK](/python/api/overview/azure/ml/install).
 
 * A [Azure Machine learning CLI-bővítmény](reference-azure-machine-learning-cli.md).
 
@@ -140,6 +140,6 @@ Az új kulcs használatára Azure Machine Learning frissítéséhez kövesse az 
         
             Ha frissíti az **alapértelmezett adattár** hitelesítő adatait, hajtsa végre ezt a lépést, és ismételje meg a 2B. lépést, hogy újraszinkronizálja az új kulcsot a munkaterület alapértelmezett adattárával. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az adattárolók regisztrálásával kapcsolatos további információkért tekintse meg az [`Datastore`](/python/api/azureml-core/azureml.core.datastore%28class%29?preserve-view=true&view=azure-ml-py) osztály referenciáját.
+Az adattárolók regisztrálásával kapcsolatos további információkért tekintse meg az [`Datastore`](/python/api/azureml-core/azureml.core.datastore%28class%29) osztály referenciáját.

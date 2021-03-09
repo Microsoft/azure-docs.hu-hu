@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: include
 ms.date: 12/08/2020
 ms.author: pafarley
-ms.openlocfilehash: 4c7aa1db2c7f475025585b9d93636243ba9ae3fe
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 859c57fb6caeee730d5ba937bacf5d29a25ca173
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102445782"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510667"
 ---
 Ismerkedjen meg az Azure Content Moderator REST APIával. 
 
@@ -32,7 +32,7 @@ Használja a Content Moderator REST APIt a következőre:
 * Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator"  title=" hozzon létre egy Content moderator erőforrást, "  target="_blank"> és hozzon létre egy Content moderator-erőforrást </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Várja meg, amíg üzembe helyezi, majd kattintson az **Ugrás erőforrásra** gombra.
     * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Content Moderatorhoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
     * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
-* A [PowerShell 6.0](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1)-s vagy újabb verziója, vagy egy hasonló parancssori alkalmazás.
+* A [PowerShell 6.0](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows)-s vagy újabb verziója, vagy egy hasonló parancssori alkalmazás.
 
 
 ## <a name="moderate-text"></a>Mérsékelt szöveg

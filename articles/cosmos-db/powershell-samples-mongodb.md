@@ -7,17 +7,17 @@ ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 01/20/2021
 ms.author: mjbrown
-ms.openlocfilehash: 1ac3d6ac163723cea8980b3d23683d61bf102dea
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2f852b1ec359033c8bc700c8a382705b4479d6de
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684468"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503351"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db-api-for-mongodb"></a>Azure PowerShell minták a MongoDB Azure Cosmos DB API-hoz
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
-Az alábbi táblázat a Azure Cosmos DB leggyakrabban használt Azure PowerShell parancsfájljaira mutató hivatkozásokat tartalmaz. A jobb oldalon található hivatkozásokkal navigáljon az API-specifikus mintákhoz. Az általános minták minden API esetében azonosak. Az összes Azure Cosmos DB PowerShell-parancsmagra vonatkozó hivatkozási lapok a [Azure PowerShell-hivatkozásban](/powershell/module/az.cosmosdb)érhetők el. A `Az.CosmosDB` modul már része a `Az` modulnak. [Töltse le és telepítse](/powershell/azure/install-az-ps?preserve-view=true&view=azps-5.4.0) az az modul legújabb verzióját az Azure Cosmos db-parancsmagok beszerzéséhez. A [PowerShell-Galéria](https://www.powershellgallery.com/packages/Az/5.4.0)a legújabb verziót is letöltheti. Ezeket a PowerShell-mintákat a GitHub-adattárból is letölthetik Cosmos DBhoz, [Cosmos db PowerShell-mintákat a githubon](https://github.com/Azure/azure-docs-powershell-samples/tree/master/cosmosdb).
+Az alábbi táblázat a Azure Cosmos DB leggyakrabban használt Azure PowerShell parancsfájljaira mutató hivatkozásokat tartalmaz. A jobb oldalon található hivatkozásokkal navigáljon az API-specifikus mintákhoz. Az általános minták minden API esetében azonosak. Az összes Azure Cosmos DB PowerShell-parancsmagra vonatkozó hivatkozási lapok a [Azure PowerShell-hivatkozásban](/powershell/module/az.cosmosdb)érhetők el. A `Az.CosmosDB` modul már része a `Az` modulnak. [Töltse le és telepítse](/powershell/azure/install-az-ps) az az modul legújabb verzióját az Azure Cosmos db-parancsmagok beszerzéséhez. A [PowerShell-Galéria](https://www.powershellgallery.com/packages/Az/5.4.0)a legújabb verziót is letöltheti. Ezeket a PowerShell-mintákat a GitHub-adattárból is letölthetik Cosmos DBhoz, [Cosmos db PowerShell-mintákat a githubon](https://github.com/Azure/azure-docs-powershell-samples/tree/master/cosmosdb).
 
 ## <a name="common-samples"></a>Gyakori minták
 

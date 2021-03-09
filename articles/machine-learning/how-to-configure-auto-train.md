@@ -11,17 +11,17 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 98260b909514febf80ea6a1a33b0f9e3d2d1446b
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: e8e904511178f494890b25764a84df8ca64a6b6c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102431890"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102498863"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált gépi tanulási kísérletek konfigurálása Pythonban
 
 
-Ebből az útmutatóból megtudhatja, hogyan határozhatja meg az automatizált gépi tanulási kísérletek különböző konfigurációs beállításait a [Azure Machine learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)-val. Az automatizált gépi tanulás egy algoritmust és hiperparaméterek beállítása hoz létre, és létrehoz egy modellt, amely készen áll a telepítésre. Számos lehetőség közül választhat, amelyek segítségével konfigurálhatja az automatizált gépi tanulási kísérleteket.
+Ebből az útmutatóból megtudhatja, hogyan határozhatja meg az automatizált gépi tanulási kísérletek különböző konfigurációs beállításait a [Azure Machine learning SDK](/python/api/overview/azure/ml/intro)-val. Az automatizált gépi tanulás egy algoritmust és hiperparaméterek beállítása hoz létre, és létrehoz egy modellt, amely készen áll a telepítésre. Számos lehetőség közül választhat, amelyek segítségével konfigurálhatja az automatizált gépi tanulási kísérleteket.
 
 Ha szeretné megtekinteni az automatizált gépi tanulási kísérletekre vonatkozó példákat, tekintse meg az [oktatóanyag: besorolási modell betanítása automatizált gépi tanulással](tutorial-auto-train-models.md) vagy [tanítási modelleket a Felhőbeli automatizált gépi tanulással](how-to-auto-train-remote.md).
 
@@ -46,7 +46,7 @@ Ehhez a cikkhez szükséges,
     Az SDK telepítéséhez használhatja a következőt is, 
     * Hozzon létre egy számítási példányt, amely automatikusan telepíti az SDK-t, és előre konfigurálva van a ML-munkafolyamatokhoz. További információkért lásd: [Azure Machine learning számítási példány létrehozása és kezelése](how-to-create-manage-compute-instance.md) . 
 
-    * [Telepítse a `automl` csomagot saját kezűleg](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment), amely tartalmazza az SDK [alapértelmezett telepítését](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py#default-install) .
+    * [Telepítse a `automl` csomagot saját kezűleg](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment), amely tartalmazza az SDK [alapértelmezett telepítését](/python/api/overview/azure/ml/install#default-install) .
 
 ## <a name="select-your-experiment-type"></a>A kísérlet típusának kiválasztása
 
@@ -69,7 +69,7 @@ A gépi tanulásban bekövetkező betanítási követelmények:
 - Az adatokat táblázatos formában kell megadni.
 - Az előre jelzett értéknek, a célként megadott oszlopnak szerepelnie kell az adatsorokban.
 
-**Távoli kísérletek** esetén a betanítási adatoknak elérhetőnek kell lenniük a távoli számításból. Az AutoML kizárólag [Azure Machine Learning TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) típusú adathalmazokat fogad el a távoli számításokon végzett munka során. 
+**Távoli kísérletek** esetén a betanítási adatoknak elérhetőnek kell lenniük a távoli számításból. Az AutoML kizárólag [Azure Machine Learning TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset) típusú adathalmazokat fogad el a távoli számításokon végzett munka során. 
 
 Az Azure Machine Learning-adathalmazok a következő funkciókat biztosítják:
 
@@ -257,7 +257,7 @@ Minden automatizált gépi tanulási kísérlet során az adatok automatikusan m
 
 A kísérletek az objektumban való konfigurálásakor `AutoMLConfig` engedélyezheti vagy letilthatja a beállítást `featurization` . A következő táblázat a [AutoMLConfig objektum](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)featurization elfogadott beállításait tartalmazza. 
 
-|Featurization-konfiguráció | Description |
+|Featurization-konfiguráció | Leírás |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Azt jelzi, hogy az előfeldolgozás részeként a rendszer automatikusan végrehajtja az [guardrails és a featurization lépéseket](how-to-configure-auto-features.md#featurization) . **Alapértelmezett beállítás**.|
 |`"featurization": 'off'`| Azt jelzi, hogy a featurization lépést nem kell automatikusan elvégezni.|

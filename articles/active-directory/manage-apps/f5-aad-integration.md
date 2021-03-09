@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8210e00824d7680f4eecde2f0b299dfcdc93b90
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 38b484bd67f3354132675f343dcc06bd7f9d48a0
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98730571"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499812"
 ---
 # <a name="f5-big-ip-access-policy-manager-and-azure-active-directory-integration-for-secure-hybrid-access"></a>F5 BIG-IP Access Policy Manager és Azure Active Directory integráció a biztonságos hibrid hozzáféréshez
 
@@ -155,7 +155,7 @@ A következő oktatóanyagok részletes útmutatást nyújtanak a BIG-IP és az 
 
 - [Ismerkedés az Azure Sentinelrel](https://azure.microsoft.com/services/azure-sentinel/?&OCID=AID2100131_SEM_XfknpgAAAHoVMTvh:20200922160358:s&msclkid=5e0e022409fc1c94dab85d4e6f4710e3&ef_id=XfknpgAAAHoVMTvh:20200922160358:s&dclid=CJnX6vHU_esCFUq-ZAod1iQF6A)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A meglévő BIG IP-infrastruktúra használatával vagy egy próbaverziós példány üzembe helyezésével érdemes lehet a (POC) SHA-igazolást futtatni. [A Big-IP Virtual Edition (ve) virtuális gép Azure-ba való üzembe helyezése](f5-bigip-deployment-guide.md) körülbelül 30 percet vesz igénybe, és ekkor a következőkre lesz szüksége:
 

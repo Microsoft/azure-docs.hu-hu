@@ -1,32 +1,27 @@
 ---
-title: Oktatóanyag – magas rendelkezésre állás Linux rendszerű virtuális gépek számára az Azure-ban
+title: Virtuális gépek üzembe helyezése rendelkezésre állási csoportokban az Azure CLI használatával
 description: Ebből az oktatóanyagból elsajátíthatja, hogyan használhatja az Azure CLI-t magas rendelkezésre állású virtuális gépek üzembe helyezésére a rendelkezésre állási csoportokban
 documentationcenter: ''
-services: virtual-machines-linux
-author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.topic: tutorial
-ms.date: 01/17/2020
-ms.author: cynthn
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4b3817bd33c72ce6d1c3426aa8379101c84f5bc5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+services: virtual-machines
+author: mimckitt
+ms.service: virtual-machines
+ms.topic: how-to
+ms.date: 3/8/2021
+ms.author: mimckitt
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 6a54e0d808ef734a26a0fa309bd7367e73316856
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961510"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507065"
 ---
-# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>Oktatóanyag: Magas rendelkezésre állású virtuális gépek létrehozása és üzembe helyezése az Azure CLI-vel
+# <a name="create-and-deploy-virtual-machines-in-an-availability-set-using-azure-cli"></a>Virtuális gépek létrehozása és üzembe helyezése rendelkezésre állási csoportokban az Azure CLI használatával
 
 Ebben az oktatóanyagban megtanulhatja, hogyan növelheti Azure-beli virtuálisgép-megoldásai rendelkezésre állását és megbízhatóságát a rendelkezésre állási csoportok elnevezésű képesség használatával. A rendelkezésre állási csoportok biztosítják, hogy az Azure-ban üzembe helyezett virtuális gépek több elkülönített hardverfürt között legyenek elosztva. Ezáltal biztosítható, hogy ha hardveres vagy Azure-beli szoftveres hiba fordul elő, az a virtuális gépeknek csak egy részhalmazát érintse, és a teljes megoldás továbbra is elérhető és működőképes maradjon.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Rendelkezésre állási csoport létrehozása
@@ -36,13 +31,6 @@ Az oktatóanyag a következőket ismerteti:
 Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](../../cloud-shell/overview.md)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
-
-## <a name="overview"></a>Áttekintés
-
-A rendelkezésre állási csoport egy logikai csoportosítási funkció, amelyet az Azure-ban használva biztosíthatja, hogy a csoportba helyezett virtuálisgép-erőforrások egymástól elkülönítve legyenek üzembe helyezve az Azure-adatközpontokban. Az Azure biztosítja, hogy a rendelkezésre állási csoportba helyezett virtuális gépek több fizikai kiszolgálón, számítási rackszekrényen, tárolási egységben és hálózati kapcsolón fussanak. Ha hardveres vagy Azure-beli szoftveres hiba lép fel, az a virtuális gépeknek csak egy részhalmazát érinti, a teljes alkalmazás azonban tovább üzemel, és továbbra is elérhető marad az ügyfelek számára. A rendelkezésre állási csoport egy alapvető funkció, ha megbízható felhőalapú megoldásokat kíván létrehozni.
-
-Vegyünk például egy tipikus virtuálisgép-alapú megoldást négy előtérbeli webkiszolgálóval és két háttérbeli virtuális géppel, amelyek egy adatbázist futtatnak. Az Azure-ban két rendelkezésre állási csoportot érdemes meghatározni a virtuális gépek üzembe helyezése előtt: egy rendelkezésre állási csoportot a webes szint, egyet pedig az adatbázisszint számára. Amikor létrehoz egy új virtuális gépet, megadhatja a rendelkezésre állási csoportot paraméterként az „az vm create” parancsban. Ekkor az Azure automatikusan biztosítja, hogy a rendelkezésre állási csoportban létrehozott virtuális gépek el legyenek különítve több fizikai hardvererőforráson. Ha a fizikai hardver, amelyen az egyik webes vagy adatbázis-kiszolgáló virtuális gép üzemel, meghibásodik, biztos lehet abban, hogy a webes és az adatbázis-kiszolgáló virtuális gép többi példánya tovább üzemel, mivel azok más hardveren találhatók.
-
 
 ## <a name="create-an-availability-set"></a>Rendelkezésre állási csoport létrehozása
 
@@ -116,5 +104,5 @@ Folytassa a következő oktatóanyaggal, amely a virtuálisgép-méretezési cso
 > [Virtuálisgép-méretezési csoport létrehozása](tutorial-create-vmss.md)
 
 * Ha többet szeretne megtudni a rendelkezésre állási zónákról, látogasson el a  [Availability Zones dokumentációra](../../availability-zones/az-overview.md).
-* A rendelkezésre állási csoportokról és a rendelkezésre állási zónákról további dokumentáció [is elérhető.](../manage-availability.md)
+* A rendelkezésre állási csoportokról és a rendelkezésre állási zónákról további dokumentáció [is elérhető.](../availability.md)
 * A rendelkezésre állási zónák kipróbálásához látogasson el a [linuxos virtuális gép létrehozása rendelkezésre állási zónába az Azure CLI-vel](./create-cli-availability-zone.md)

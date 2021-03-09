@@ -8,12 +8,12 @@ ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 118c08c8ede369eecd86fe8e6db24473b67ff306
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: c22b3f3164cbb7c1a7ed150d093f77777c7b1023
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102214439"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501294"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Nagyméretű fájlmegosztás engedélyezése és létrehozása
 
@@ -23,7 +23,7 @@ Ha engedélyezi a nagyméretű fájlmegosztást a Storage-fiókjában, a fájlme
 
 - Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 - Ha az Azure CLI-t szeretné használni, [telepítse a legújabb verziót](/cli/azure/install-azure-cli).
-- Ha a Azure PowerShell modult szeretné használni, [telepítse a legújabb verziót](/powershell/azure/install-az-ps?view=azps-4.6.0).
+- Ha a Azure PowerShell modult szeretné használni, [telepítse a legújabb verziót](/powershell/azure/install-az-ps).
 
 ## <a name="restrictions"></a>Korlátozások
 
@@ -76,7 +76,7 @@ az storage account create --name <yourStorageAccountName> -g <yourResourceGroup>
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Először [telepítse a PowerShell legújabb verzióját](/powershell/azure/install-az-ps?view=azps-3.0.0) , hogy lehetővé váljon a nagyméretű fájlmegosztás engedélyezése.
+Először [telepítse a PowerShell legújabb verzióját](/powershell/azure/install-az-ps) , hogy lehetővé váljon a nagyméretű fájlmegosztás engedélyezése.
 
 Nagyméretű fájlmegosztást engedélyező Storage-fiók létrehozásához használja a következő parancsot. Cserélje `<yourStorageAccountName>` le `<yourResourceGroup>` a, a és `<yourDesiredRegion>` az adatait az adataira.
 

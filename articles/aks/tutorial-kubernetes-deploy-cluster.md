@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 01/12/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: a8e0ddcd77c26a00cf784fb8c2372734314dc0bb
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: c39169c0531a73bd00db7de5fe393ef8c51c8c96
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250638"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509421"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Oktatóanyag: Azure Kubernetes Service- (AKS-) fürt üzembe helyezése
 
@@ -35,7 +35,7 @@ Az AK-fürtök Kubernetes szerepköralapú hozzáférés-vezérlést (Kubernetes
 
 AKS-fürtöket az [az aks create][] paranccsal hozhat létre. A következő példában létrehozunk egy *myAKSCluster* nevű fürtöt a *myResourceGroup* nevű erőforráscsoportban. Ez az erőforráscsoport az [előző oktatóanyagban][aks-tutorial-prepare-acr] , a *eastus* régióban lett létrehozva. A következő példa nem ad meg régiót, így az AK-fürt is létrejön az *eastus* régióban. További információ: a [kvóták, a virtuálisgép-méretre vonatkozó korlátozások és a régió rendelkezésre állása az Azure Kubernetes szolgáltatásban (ak)][quotas-skus-regions] további információ az erőforrás-korlátokról és a régió rendelkezésre állásáról az AK-ban.
 
-Annak engedélyezéséhez, hogy egy AK-fürt más Azure-erőforrásokkal is működjön, automatikusan létrejön egy Azure Active Directory egyszerű szolgáltatás, mert nem adott meg ilyet. Ebben az egyszerű szolgáltatásban [megkapta a jogot arra, hogy][container-registry-integration] az előző oktatóanyagban létrehozott Azure Container Registry (ACR) példányból lekérje a lemezképeket. A parancs sikeres végrehajtásához rendelkeznie kell egy **tulajdonos** vagy **Azure-fiók rendszergazdai** szerepkörrel az Azure-előfizetésben.
+Annak engedélyezéséhez, hogy egy AK-fürt más Azure-erőforrásokkal is működjön, automatikusan létrejön egy fürt identitása, mert nem adott meg ilyet. Itt a fürt identitása jogosult az előző oktatóanyagban létrehozott Azure Container Registry (ACR) példányból származó [képek lekérésére][container-registry-integration] . A parancs sikeres végrehajtásához rendelkeznie kell egy **tulajdonos** vagy **Azure-fiók rendszergazdai** szerepkörrel az Azure-előfizetésben.
 
 ```azurecli
 az aks create \
@@ -81,7 +81,7 @@ aks-nodepool1-37463671-vmss000000   Ready    agent   2m37s   v1.18.10
 aks-nodepool1-37463671-vmss000001   Ready    agent   2m28s   v1.18.10
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy Kubernetes-fürtöt helyezett üzembe az AKS-ben, és úgy konfigurálta a `kubectl` elemet, hogy a fürthöz csatlakozzon. Megtanulta végrehajtani az alábbi műveleteket:
 

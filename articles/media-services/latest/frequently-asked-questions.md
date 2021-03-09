@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: a452a056ff2bdbad5d2e461716ee1a56d36c8523
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 3ebff5a40528e9e3ea0e75c4b51529638de34b5d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897560"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505766"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 – gyakori kérdések
 
@@ -24,7 +24,15 @@ ms.locfileid: "98897560"
 
 Ez a cikk a Azure Media Services v3-vel kapcsolatos gyakori kérdésekre ad választ.
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
+
+### <a name="does-media-services-store-any-customer-data-outside-of-the-service-region"></a>A Media Services a szolgáltatási régión kívül tárolja az ügyféladatokat?
+
+- Az ügyfelek a saját Storage-fiókjaikat a Azure Media Services-fiókjához csatolják.  A rendszer az összes adategységet tárolja a társított Storage-fiókokban, és az ügyfél a tároló helyét és replikálási típusát vezérli.
+- A Media Services fiókhoz (beleértve a tartalom titkosítási kulcsokat, a jogkivonat-ellenőrző kulcsokat, a JobInputHttp URL-címeket és az egyéb entitások metaadatait) társított további adatokat a Microsoft tulajdonában lévő tárolóban tároljuk a Media Services fiókhoz kiválasztott régióban.
+    - A Dél-és Délkelet-ázsiai régiókban tárolt [adattárolási követelmények](https://azure.microsoft.com/global-infrastructure/data-residency/#more-information) miatt a további fiókadatok tárolása redundáns módon történik, és egyetlen régióban található. Délkelet-Ázsiában a további fiókadatok tárolása Szingapúrban és Dél-Brazíliában történik, a rendszer az adattárolást Brazíliában tárolja.
+    - Brazília déli és Délkelet-ázsiai régiójában a további fiókadatok a Microsoft tulajdonában lévő tárolóban is tárolhatók a [párosított régióban](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+- Azure Media Services regionális szolgáltatás, és nem biztosít [magas rendelkezésre állást](media-services-high-availability-encoding.md) vagy adatreplikálást. Azok az ügyfelek, akik ezeket a szolgáltatásokat igénybe veszik, kifejezetten javasoljuk, hogy hozzon létre egy megoldást több régióban lévő Media Services-fiókok használatával.  Egy minta, amely bemutatja, hogyan hozhat létre magas rendelkezésre állású megoldást a Media Services video on demand útmutatóként.
 
 ### <a name="what-are-the-azure-portal-limitations-for-media-services-v3"></a>Melyek a Media Services v3 Azure Portal korlátozásai?
 

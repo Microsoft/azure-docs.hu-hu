@@ -1,22 +1,22 @@
 ---
-title: Zónában lévő Windows rendszerű virtuális gép létrehozása a Azure Portal
+title: Zónában lévő virtuális gép létrehozása a Azure Portal
 description: Windows rendszerű virtuális gép létrehozása rendelkezésre állási zónában a Azure Portal
 documentationcenter: virtual-machines
-author: cynthn
-ms.service: virtual-machines-windows
+author: mimckitt
+ms.service: virtual-machines
 ms.topic: conceptual
-ms.workload: infrastructure
-ms.date: 03/27/2018
-ms.author: cynthn
+ms.date: 3/8/2021
+ms.author: mimckitt
+ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: 339c093e5444839f9b106cd08980438a864c0474
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c7f135d4033a31f855342c172d73f51478931ab
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87828914"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501685"
 ---
-# <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>Windows rendszerű virtuális gép létrehozása rendelkezésre állási zónában a Azure Portal
+# <a name="create-a-virtual-machine-in-an-availability-zone-using-the-azure-portal"></a>Virtuális gép létrehozása rendelkezésre állási zónában a Azure Portal használatával
 
 Ez a cikk végigvezeti a virtuális gép Azure-beli rendelkezésre állási zónában való létrehozásához szükséges Azure Portal használatával. A [rendelkezésre állási zónák](../../availability-zones/az-overview.md) egy Azure-régió fizikailag elkülönített zónáit jelentik. Az alkalmazások és az adatok védelmét rendelkezésre állási zónákkal biztosíthatja nem várt hibák bekövetkezése, illetve a teljes adatközpont elérhetetlenné válása esetére.
 
@@ -40,7 +40,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
     ![Virtuális gép méretének kiválasztása](./media/create-portal-availability-zone/create-windows-vm-portal-sizes.png)  
 
-5. A **Beállítások**  >  **magas rendelkezésre állása**területen válassza ki az egyik számú zónát a **rendelkezésre állási zóna** legördülő listából, tartsa meg a fennmaradó alapértékeket, majd kattintson **az OK**gombra.
+5. A **Beállítások**  >  **magas rendelkezésre állása** területen válassza ki az egyik számú zónát a **rendelkezésre állási zóna** legördülő listából, tartsa meg a fennmaradó alapértékeket, majd kattintson **az OK** gombra.
 
     ![Rendelkezésre állási zóna kiválasztása](./media/create-portal-availability-zone/create-windows-vm-portal-availability-zone.png)
 

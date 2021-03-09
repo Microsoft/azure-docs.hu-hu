@@ -3,12 +3,12 @@ title: Aszinkron üzenetkezelés Service Bus | Microsoft Docs
 description: Megtudhatja, hogyan támogatja a Azure Service Bus a asynchronism a várólistákkal, témakörökkel és előfizetésekkel rendelkező tárolási és továbbítási mechanizmussal.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: ea09b809a19cfe7c7f024b059589748ff9e297d4
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: e37c18b95bca7ef1e6e8f0d74976bb73b214624a
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631623"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500631"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>Aszinkron üzenetkezelési minták és magas rendelkezésre állás
 
@@ -73,5 +73,5 @@ Most, hogy megismerte az aszinkron üzenetkezelés alapjait Service Busban, olva
 [System.TimeSpan.Zero]: /dotnet/api/system.timespan.zero
 [IsTransient]: /dotnet/api/microsoft.servicebus.messaging.messagingexception
 [UnauthorizedAccessException]: /dotnet/api/system.unauthorizedaccessexception
-[BacklogQueueCount]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions?redirectedfrom=MSDN
+[BacklogQueueCount]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions
 [handling outages and disasters]: service-bus-outages-disasters.md

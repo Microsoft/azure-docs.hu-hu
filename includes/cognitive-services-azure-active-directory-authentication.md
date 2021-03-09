@@ -4,12 +4,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/11/2020
-ms.openlocfilehash: fcb4113a4dab1e3de17eb022b1ad386cbc6a9583
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 2d186463f340be14113228baa583fdcf6ff55401
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102109072"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102511072"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Hitelesítés az Azure Active Directoryval
 
@@ -25,13 +25,13 @@ A következő fejezetekben a Azure Cloud Shell vagy az Azure CLI használatával
 
 Első lépésként hozzon létre egy egyéni altartományt. Ha olyan meglévő Cognitive Services-erőforrást szeretne használni, amely nem rendelkezik egyéni altartomány nevével, kövesse a [Cognitive Services egyéni altartományok](../articles/cognitive-services/cognitive-services-custom-subdomains.md#how-does-this-impact-existing-resources) című témakör utasításait az erőforráshoz tartozó egyéni altartományok engedélyezéséhez.
 
-1. Először nyissa meg a Azure Cloud Shell. Ezután [válasszon ki egy előfizetést](/powershell/module/az.accounts/set-azcontext?view=azps-3.3.0):
+1. Először nyissa meg a Azure Cloud Shell. Ezután [válasszon ki egy előfizetést](/powershell/module/az.accounts/set-azcontext):
 
    ```powershell-interactive
    Set-AzContext -SubscriptionName <SubscriptionName>
    ```
 
-2. Ezután [hozzon létre egy Cognitive Services erőforrást](/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0) egy egyéni altartománnyal. Az altartomány nevének globálisan egyedinek kell lennie, és nem tartalmazhat speciális karaktereket (például: ".", "!", ",").
+2. Ezután [hozzon létre egy Cognitive Services erőforrást](/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount) egy egyéni altartománnyal. Az altartomány nevének globálisan egyedinek kell lennie, és nem tartalmazhat speciális karaktereket (például: ".", "!", ",").
 
    ```powershell-interactive
    $account = New-AzCognitiveServicesAccount -ResourceGroupName <RESOURCE_GROUP_NAME> -name <ACCOUNT_NAME> -Type <ACCOUNT_TYPE> -SkuName <SUBSCRIPTION_TYPE> -Location <REGION> -CustomSubdomainName <UNIQUE_SUBDOMAIN>
@@ -47,7 +47,7 @@ Most, hogy rendelkezik az erőforráshoz tartozó egyéni altartománnyal, hozz�
 > [!NOTE]
 > Ne feledje, hogy az Azure-szerepkör-hozzárendelések akár öt percet is igénybe vehetnek.
 
-1. Először regisztráljon egy [HRE alkalmazást](/powershell/module/Az.Resources/New-AzADApplication?view=azps-1.8.0).
+1. Először regisztráljon egy [HRE alkalmazást](/powershell/module/Az.Resources/New-AzADApplication).
 
    ```powershell-interactive
    $SecureStringPassword = ConvertTo-SecureString -String <YOUR_PASSWORD> -AsPlainText -Force
@@ -57,7 +57,7 @@ Most, hogy rendelkezik az erőforráshoz tartozó egyéni altartománnyal, hozz�
 
    A következő lépésben szüksége lesz a **ApplicationId** .
 
-2. Ezután [létre kell hoznia egy szolgáltatásnevet](/powershell/module/az.resources/new-azadserviceprincipal?view=azps-1.8.0) a HRE alkalmazáshoz.
+2. Ezután [létre kell hoznia egy szolgáltatásnevet](/powershell/module/az.resources/new-azadserviceprincipal) a HRE alkalmazáshoz.
 
    ```powershell-interactive
    New-AzADServicePrincipal -ApplicationId <APPLICATION_ID>
@@ -66,7 +66,7 @@ Most, hogy rendelkezik az erőforráshoz tartozó egyéni altartománnyal, hozz�
    >[!NOTE]
    > Ha a Azure Portalban regisztrál egy alkalmazást, ez a lépés az Ön számára lesz elvégezve.
 
-3. Az utolsó lépés a ["Cognitive Services user" szerepkör társítása](/powershell/module/az.Resources/New-azRoleAssignment?view=azps-1.8.0) az egyszerű szolgáltatáshoz (hatóköre az erőforrás). Szerepkör hozzárendelésével a szolgáltatás egyszerű hozzáférést biztosít ehhez az erőforráshoz. Az előfizetés több erőforrásához is biztosíthatja ugyanazt a szolgáltatást.
+3. Az utolsó lépés a ["Cognitive Services user" szerepkör társítása](/powershell/module/az.Resources/New-azRoleAssignment) az egyszerű szolgáltatáshoz (hatóköre az erőforrás). Szerepkör hozzárendelésével a szolgáltatás egyszerű hozzáférést biztosít ehhez az erőforráshoz. Az előfizetés több erőforrásához is biztosíthatja ugyanazt a szolgáltatást.
    >[!NOTE]
    > Az egyszerű szolgáltatásnév ObjectId van használatban, nem az alkalmazás ObjectId.
    > A ACCOUNT_ID a létrehozott Cognitive Services fiók Azure-erőforrás-azonosítója lesz. Az Azure Resource id-t a Azure Portal erőforrás "tulajdonságok" területén találja.

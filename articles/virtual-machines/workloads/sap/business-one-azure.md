@@ -6,12 +6,12 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: juergent
-ms.openlocfilehash: c9c2b0c3f55cf5fb6dfd32774baac2a49ec3609f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e17739c65c0b80beb1f6fdd09f31897b317d7858
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677160"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506888"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One az Azure Virtual Machinesban
 Ez a dokumentum útmutatást nyújt az SAP Business One Azure Virtual Machines üzembe helyezéséhez. A dokumentáció nem helyettesíti a Business One for SAP szolgáltatás telepítési dokumentációját. A dokumentációnak az Azure-infrastruktúrára vonatkozó alapszintű tervezési és üzembe helyezési útmutatókat kell kiterjednie, amelyekkel az üzleti alkalmazások futtatása elérhető
@@ -102,7 +102,7 @@ Az adatbázis típusához SQL Server és SAP HANA érhető el. Az adatbázis-kez
 
 Bár az adott és általános adatbázis-dokumentumokban már szerepelnek, a következőket kell megismernie:
 
-- [Kezelheti a Windows rendszerű virtuális gépek rendelkezésre állását az Azure-ban](../../manage-availability.md) , és [kezelheti az Azure-beli linuxos virtuális gépek rendelkezésre állását](../../manage-availability.md)
+- [Kezelheti a Windows rendszerű virtuális gépek rendelkezésre állását az Azure-ban](../../availability.md) , és [kezelheti az Azure-beli linuxos virtuális gépek rendelkezésre állását](../../availability.md)
 - [A virtuális gépekre vonatkozó SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)
 
 Ezek a dokumentumok segítenek dönteni a tárolási típusok és a magas rendelkezésre állási konfiguráció kiválasztásáról.

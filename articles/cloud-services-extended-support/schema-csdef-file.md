@@ -8,12 +8,12 @@ author: gachandw
 ms.author: gachandw
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: ab85067184ebe5b34097a3c81aa521d509ae4b9a
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: d9bf1b54f1bfeebacbb406a50c8496817857204c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744605"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507568"
 ---
 # <a name="azure-cloud-services-extended-support-definition-schema-csdef-file"></a>Azure Cloud Services (bővített támogatás) definíciós sémája (csdef-fájl)
 
@@ -68,7 +68,7 @@ Az alábbi táblázat az elem attribútumait ismerteti `ServiceDefinition` .
 | name                    |Kötelező. A szolgáltatás neve. A névnek egyedinek kell lennie a szolgáltatásfiók keretén belül.|
 | topologyChangeDiscovery | Választható. Meghatározza a topológia változási értesítésének típusát. Lehetséges értékek:<br /><br /> -   `Blast` – A frissítést a lehető leghamarabb elküldi az összes szerepkör-példánynak. Ha a beállítás lehetőséget választja, a szerepkörnek újra kell tudnia kezelni a topológia frissítését.<br />-   `UpgradeDomainWalk` – Az egyes szerepkör-példányok frissítését szekvenciális módon küldi el, miután az előző példány sikeresen elfogadta a frissítést.|
 | sémaverzióval           | Választható. Megadja a szolgáltatás definíciós sémájának verzióját. A séma verziója lehetővé teszi a Visual Studio számára, hogy kiválassza a séma-ellenőrzéshez használandó megfelelő SDK-eszközöket, ha az SDK több verziója is telepítve van egymás mellett.|
-| upgradeDomainCount      | Választható. Meghatározza, hogy hány frissítési tartomány van lefoglalva a szolgáltatás szerepkörei között. A szerepkör-példányok egy frissítési tartományhoz vannak lefoglalva, ha a szolgáltatás telepítve van. További információ: [Cloud Service-szerepkör vagy-telepítés frissítése](sample-update-cloud-service.md) és [a virtuális gépek rendelkezésre állásának kezelése](../virtual-machines/manage-availability.md) , legfeljebb 20 frissítési tartományt adhat meg. Ha nincs megadva, a frissítési tartományok alapértelmezett száma 5.|
+| upgradeDomainCount      | Választható. Meghatározza, hogy hány frissítési tartomány van lefoglalva a szolgáltatás szerepkörei között. A szerepkör-példányok egy frissítési tartományhoz vannak lefoglalva, ha a szolgáltatás telepítve van. További információ: [Cloud Service-szerepkör vagy-telepítés frissítése](sample-update-cloud-service.md) és [a virtuális gépek rendelkezésre állásának kezelése](../virtual-machines/availability.md) , legfeljebb 20 frissítési tartományt adhat meg. Ha nincs megadva, a frissítési tartományok alapértelmezett száma 5.|
 
 ## <a name="see-also"></a>Lásd még
 

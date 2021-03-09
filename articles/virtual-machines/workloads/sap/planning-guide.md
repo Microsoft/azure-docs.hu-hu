@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 98cc41b735a5a25f84bed4b443b735fadb0925e5
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8bc289e90470ae9bc8b1996ac08c3144ea78de35
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101668032"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504712"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása
 
@@ -273,7 +273,7 @@ ms.locfileid: "101668032"
 [virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux]:../../linux/add-disk.md#format-and-mount-the-disk
 [virtual-machines-linux-tutorial]:../../linux/quick-create-cli.md
 [virtual-machines-linux-update-agent]:../../linux/update-agent.md
-[virtual-machines-manage-availability]:../../linux/manage-availability.md
+[virtual-machines-manage-availability]:../../linux/availability.md
 [virtual-machines-ps-create-preconfigure-windows-resource-manager-vms]:virtual-machines-windows-create-powershell.md
 [virtual-machines-sizes-linux]:../../linux/sizes.md
 [virtual-machines-sizes-windows]:../../windows/sizes.md
@@ -1805,7 +1805,7 @@ A virtuális gépek rendelkezésre állását a tervezett karbantartás és a ne
 * A tervezett karbantartási események a Microsoft által a mögöttes Azure platformon végzett időszakos frissítések a virtuális gépeket futtató platforminfrastruktúra általános megbízhatóságának, teljesítményének és biztonságának növelése érdekében.
 * A nem tervezett karbantartási események akkor következnek be, ha a virtuális gép mögöttes hardveres vagy fizikai infrastruktúrája valamiképp meghibásodik. Ez lehet helyi hálózati hiba, a helyi lemezek meghibásodása, vagy egyéb állványszintű meghibásodások. Ha a rendszer ilyen hibát észlel, az Azure platform automatikusan áttelepíti a virtuális gépet a virtuális gépet egy kifogástalan fizikai kiszolgálóra üzemeltető sérült fizikai kiszolgálóról. Ilyen esetek ritkán lépnek fel, de ezek is okozhatják a virtuális gép újraindítását.
 
-További részletekért lásd: [Windows rendszerű virtuális gépek rendelkezésre állása az Azure-ban](../../manage-availability.md) és a [linuxos virtuális gépek rendelkezésre állása az Azure-ban](../../manage-availability.md).
+További részletekért lásd: [Windows rendszerű virtuális gépek rendelkezésre állása az Azure-ban](../../availability.md) és a [linuxos virtuális gépek rendelkezésre állása az Azure-ban](../../availability.md).
 
 #### <a name="azure-storage-redundancy"></a>Azure Storage-redundancia
 

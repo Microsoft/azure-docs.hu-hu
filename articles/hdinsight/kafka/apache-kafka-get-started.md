@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/29/2020
-ms.openlocfilehash: 9bb981b5a1d6ecb9e0c20748983a36ef3acfa001
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 102bb1a7bf1bd3cb799d52ce13045e01a2a34297
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932901"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505256"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Rövid útmutató: Apache Kafka-fürt létrehozása az Azure HDInsight Azure Portal használatával
 
@@ -47,7 +47,7 @@ Apache Kafka-fürt HDInsight való létrehozásához kövesse az alábbi lépés
     |Előfizetés    |  A legördülő listában válassza ki a fürthöz használt Azure-előfizetést. |
     |Erőforráscsoport     | Hozzon létre egy erőforráscsoportot, vagy válasszon ki egy már meglévőt.  Az erőforráscsoport az Azure összetevőit tartalmazó tároló.  Ebben az esetben az erőforráscsoport a HDInsight-fürtöt és a függő Azure Storage-fiókot tartalmazza. |
     |Fürt neve   | Adjon meg egy globálisan egyedi nevet. A név legfeljebb 59 karaktert tartalmazhat, beleértve a betűket, számokat és kötőjeleket. A név első és utolsó karaktere nem lehet kötőjel. |
-    |Régió    | A legördülő listából válassza ki azt a régiót, ahol a fürtöt létrehozták.  A jobb teljesítmény érdekében válasszon régiót közelebbről. |
+    |Region    | A legördülő listából válassza ki azt a régiót, ahol a fürtöt létrehozták.  A jobb teljesítmény érdekében válasszon régiót közelebbről. |
     |Fürt típusa| A lista megnyitásához válassza a **fürt típusának kiválasztása** lehetőséget. A listából válassza a **Kafka** lehetőséget a fürt típusaként.|
     |Verzió|A fürt típusának alapértelmezett verziója lesz megadva. Ha más verziót szeretne megadni, válasszon a legördülő listából.|
     |A fürt bejelentkezési felhasználóneve és jelszava    | Az alapértelmezett bejelentkezési név a **rendszergazda**. A jelszónak legalább 10 karakterből kell állnia, és tartalmaznia kell legalább egy számot, egy nagybetűs és egy kisbetűs betűt, egy nem alfanumerikus karaktert (kivéve a következő karaktereket: "" " \) . Győződjön meg róla, hogy **ne adjon meg** gyakori jelszót, mint például a következő: Pass@word1.|
@@ -58,7 +58,7 @@ Apache Kafka-fürt HDInsight való létrehozásához kövesse az alábbi lépés
 
     Minden egyes Azure-régió (hely) _tartalék tartományokat_ biztosít. A tartalék tartomány az alapul szolgáló hardver logikai csoportosítása egy Azure-adatközpontban. Mindegyik tartalék tartomány közös áramforrással és hálózati kapcsolóval rendelkezik. A HDInsight-fürtön belül a csomópontokat implementáló virtuális gépek és felügyelt lemezek ezek között a tartalék tartományok között vannak elosztva. Ez az architektúra csökkenti a fizikai hardverhibák lehetséges hatását.
 
-    Az adatok magas rendelkezésre állásának biztosításához válasszon egy olyan régiót (helyet), amely __három tartalék tartományt__ tartalmaz. Az adott régióban található tartalék tartományok számáról további információkat a [Linux rendszerű virtuális gépek rendelkezésre állása](../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) dokumentumban talál.
+    Az adatok magas rendelkezésre állásának biztosításához válasszon egy olyan régiót (helyet), amely __három tartalék tartományt__ tartalmaz. Az adott régióban található tartalék tartományok számáról további információkat a [Linux rendszerű virtuális gépek rendelkezésre állása](../../virtual-machines/availability.md) dokumentumban talál.
 
     Kattintson a **következő: storage >>** fülre a tárolási beállítások megadásához.
 
@@ -215,7 +215,7 @@ A Kafka *témakörökben* tárolja az adatstreameket. A `kafka-topics.sh` segéd
         
         * A három tartalék tartományt tartalmazó régiókban a 3-as replikációs tényező lehetővé teszi, hogy a replikákat el lehessen osztani a tartalék tartományok között. A két tartalék tartományt tartalmazó régiókban a négyes replikációs tényező egyenlően osztja el a replikákat a tartományok között.
         
-        * Az adott régióban található tartalék tartományok számáról további információkat a [Linux rendszerű virtuális gépek rendelkezésre állása](../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) dokumentumban talál.
+        * Az adott régióban található tartalék tartományok számáról további információkat a [Linux rendszerű virtuális gépek rendelkezésre állása](../../virtual-machines/availability.md) dokumentumban talál.
 
         * Az Apache Kafka nem észleli a tartalék Azure-tartományokat. Témakörök számára történő partícióreplikák létrehozásakor lehetséges, hogy a Kafka nem a magas rendelkezésre állásnak megfelelően osztja ki a replikákat.
 

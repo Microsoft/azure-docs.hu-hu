@@ -586,6 +586,8 @@
           href: control-flow-system-variables.md
         - name: Leképezési adatfolyamok paraméterezése
           href: parameters-data-flow.md
+        - name: Parametrizálja
+          href: how-to-expression-language-functions.md
     - name: Biztonság
       items:
         - name: Az adatáthelyezés biztonsági szempontjai

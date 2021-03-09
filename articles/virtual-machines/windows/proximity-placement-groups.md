@@ -1,22 +1,22 @@
 ---
-title: 'PowerShell: Proximity elhelyezési csoportok használata'
+title: Közelségi elhelyezési csoport létrehozása Azure PowerShell használatával
 description: További információ a közelségi csoportok létrehozásáról és használatáról Azure PowerShell használatával.
 services: virtual-machines
 ms.service: virtual-machines
 ms.subservice: proximity-placement-groups
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 01/27/2020
+ms.date: 3/8/2021
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 742ce6e9937fbe0f67e61b7b96b1289030e7e148
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 26921b3d102032cb36f47c3be7a79c2b596a1d0c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677212"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503674"
 ---
-# <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>Virtuális gépek üzembe helyezése a közeli elhelyezési csoportokban a PowerShell használatával
+# <a name="deploy-vms-to-proximity-placement-groups-using-azure-powershell"></a>Virtuális gépek üzembe helyezése a közvetlen elhelyezési csoportokba Azure PowerShell használatával
 
 
 Ha a lehető legközelebb szeretné lekérni a virtuális gépeket, a lehető legkevesebb késést kell megvalósítania, egy [közelségi elhelyezési csoporton](../co-location.md#proximity-placement-groups)belül kell telepítenie.

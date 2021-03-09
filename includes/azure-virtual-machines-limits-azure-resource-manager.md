@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: cynthn
-ms.openlocfilehash: 61af1f1a97e0ffad0332a34034f5dd1d007d1a5c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 397dd3d16fa994df29a08ff9095b4c7c6c4af815
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98900981"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510765"
 ---
 | Erőforrás | Korlát |
 | --- | --- |
@@ -17,7 +17,7 @@ ms.locfileid: "98900981"
 | Virtuálisgép-magok összesen, [előfizetésenként](https://azure.microsoft.com/pricing/) |régiónként 20<sup>1</sup> . A korlát növeléséhez forduljon az ügyfélszolgálathoz. |
 | Azure spot VM-alapú teljes mag/ [előfizetés](https://azure.microsoft.com/pricing/) |régiónként 20<sup>1</sup> . A korlát növeléséhez forduljon az ügyfélszolgálathoz. |
 | VM/sorozat, például Dv2 és F, mag/ [előfizetés](https://azure.microsoft.com/pricing/) |régiónként 20<sup>1</sup> . A korlát növeléséhez forduljon az ügyfélszolgálathoz. |
-| [Rendelkezésre állási](../articles/virtual-machines/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) csoportok/előfizetés |2 500 régiónként. |
+| [Rendelkezésre állási](../articles/virtual-machines/availability-set-overview.md) csoportok/előfizetés |2 500 régiónként. |
 | Virtuális gépek rendelkezésre állási készlete | 200 |
 | [Proximity elhelyezési csoportok](../articles/virtual-machines/windows/proximity-placement-groups-portal.md) / [erőforráscsoport](../articles/azure-resource-manager/management/overview.md#resource-groups) | 800 | 
 | Tanúsítvány/rendelkezésre állási csoport | 199<sup>2</sup> |

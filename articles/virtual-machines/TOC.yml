@@ -280,28 +280,26 @@
           href: ./linux/spot-template.md
         - name: Hibakódok
           href: error-codes-spot.md
-    - name: Vásárlási lehetőségek
+    - name: Azure Hybrid Benefit
       items:
-        - name: Azure Hybrid Benefit
+        - name: Linux
+          href: ./linux/azure-hybrid-benefit-linux.md
+        - name: Windows
           items:
-            - name: Linux
-              href: ./linux/azure-hybrid-benefit-linux.md
-            - name: Windows
-              items:
-                - name: Azure Hybrid Benefit-licenc használata
-                  href: ./windows/hybrid-use-benefit-licensing.md
-                - name: "Többvállalatos üzemeltetési jogosultságok használata Windows\_10-hez"
-                  href: ./windows/windows-desktop-multitenant-hosting-deployment.md
-        - name: Fenntartott példányok
-          items:
-            - name: Előre fizetés virtuális gépekért
-              href: ./prepay-reserved-vm-instances.md
-            - name: Előre fizetés dedikált gazdagépekért
-              href: prepay-dedicated-hosts-reserved-instances.md
-            - name: Mi az az Azure Reservations?
-              href: ../cost-management-billing/reservations/save-compute-costs-reservations.md?context=/azure/virtual-machines/context/context
-            - name: Virtuálisgép-példányok méretrugalmassága
-              href: reserved-vm-instance-size-flexibility.md
+            - name: Azure Hybrid Benefit-licenc használata
+              href: ./windows/hybrid-use-benefit-licensing.md
+            - name: "Többvállalatos üzemeltetési jogosultságok használata Windows\_10-hez"
+              href: ./windows/windows-desktop-multitenant-hosting-deployment.md
+    - name: Fenntartott példányok
+      items:
+        - name: Előre fizetés virtuális gépekért
+          href: ./prepay-reserved-vm-instances.md
+        - name: Előre fizetés dedikált gazdagépekért
+          href: prepay-dedicated-hosts-reserved-instances.md
+        - name: Mi az az Azure Reservations?
+          href: ../cost-management-billing/reservations/save-compute-costs-reservations.md?context=/azure/virtual-machines/context/context
+        - name: Virtuálisgép-példányok méretrugalmassága
+          href: reserved-vm-instance-size-flexibility.md
     - name: Linux rendszerű virtuális gépek létrehozása
       items:
         - name: Támogatott disztribúciók
@@ -783,41 +781,52 @@
           href: ./windows/build-image-with-packer.md
 - name: Rendelkezésre állás és méretezés
   items:
-    - name: Méretezési csoportok
-      href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
-    - name: Rendelkezésre állás
+    - name: Áttekintés
       href: availability.md
-    - name: Közös elhelyezés
-      href: co-location.md
-    - name: Hálózati teljesítmény
-      href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?context=/azure/virtual-machines/context/context
-    - name: Állapotok és életciklus
-      href: states-lifecycle.md
-    - name: Automatikus méretezés
-      href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md?context=/azure/virtual-machines/context/context
-    - name: Magas rendelkezésre állás
-      href: manage-availability.md
     - name: Rendelkezésre állási csoportok
       items:
-        - name: Linux
+        - name: Áttekintés
+          href: availability-set-overview.md
+        - name: parancssori felület
           href: ./linux/tutorial-availability-sets.md
-        - name: Windows
-          items:
-            - name: Rendelkezésre állási csoport létrehozása
-              href: ./windows/tutorial-availability-sets.md
-            - name: Rendelkezésre állási csoport módosítása
-              href: ./windows/change-availability-set.md
-    - name: Közelségi elhelyezési csoport létrehozása
-      displayName: PPG aligned colocation co-location
+        - name: PowerShell
+          href: ./windows/tutorial-availability-sets.md
+        - name: Rendelkezésre állási csoport módosítása
+          href: ./windows/change-availability-set.md
+    - name: Rendelkezésreállási zónák
       items:
+        - name: Áttekintés
+          href: ../availability-zones/az-overview.md?context=/azure/virtual-machines/context/context
+        - name: parancssori felület
+          href: ./linux/create-cli-availability-zone.md
+        - name: PowerShell
+          href: ./windows/create-powershell-availability-zone.md
+        - name: Portál
+          href: ./windows/create-portal-availability-zone.md
+    - name: Proximity elhelyezési csoportok
+      items:
+        - name: Áttekintés
+          href: co-location.md
         - name: parancssori felület
           href: ./linux/proximity-placement-groups.md
-        - name: Portál
-          href: ./windows/proximity-placement-groups-portal.md
         - name: PowerShell
           href: ./windows/proximity-placement-groups.md
-    - name: Virtuális gép létrehozása rendelkezésre állási zónában
-      href: ./linux/create-cli-availability-zone.md
+        - name: Portál
+          href: ./windows/proximity-placement-groups-portal.md
+    - name: Virtual Machine Scale Sets
+      items:
+        - name: Áttekintés
+          href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
+        - name: Automatikus méretezés
+          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md?context=/azure/virtual-machines/context/context
+        - name: Vezénylési módok
+          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md?context=/azure/virtual-machines/context/context
+    - name: A virtuális gépek újraindításainak ismertetése
+      href: understand-vm-reboots.md
+    - name: Állapotok és életciklus
+      href: states-lifecycle.md
+    - name: Azure-régiók
+      href: regions.md
 - name: Lemezek
   items:
     - name: A felügyelt lemezek bemutatása
@@ -1101,7 +1110,7 @@
               href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-vhd.md'
             - name: Pillanatkép létrehozása VHD-ből
               href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-snapshot-from-vhd.md'
-- name: Hálózatkezelés
+- name: Hálózat
   items:
     - name: Áttekintés
       href: network-overview.md

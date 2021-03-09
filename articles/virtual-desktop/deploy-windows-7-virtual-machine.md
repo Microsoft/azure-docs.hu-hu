@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0dcf21190b52f966dafb9caa9ae28fdf9b99ba86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d245b780acee59afbc6cb8bde6c916bfd1046e3c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88007573"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508554"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Windows 7 rendszerű virtuális gép üzembe helyezése a Windows Virtual Desktopban
 
@@ -37,7 +37,7 @@ Windows 7 rendszerű virtuális gép beállítása Windows rendszerű virtuális
 5. Nyissa meg a Windows Updatet a virtuális gépen.
 6. Telepítse az összes Windows-frissítést a fontos kategóriába.
 7. Telepítse az összes Windows-frissítést a választható kategóriába (kivéve a nyelvi csomagokat). Ez a folyamat telepíti a RDP protokoll 8,0 frissítést ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35387)), amelyre el kell végeznie ezeket az utasításokat.
-8. Nyissa meg a Helyicsoportházirend-szerkesztő, és navigáljon a **Számítógép konfigurációja**  >  **Felügyeleti sablonok**  >  **Windows-összetevők**  >  **Távoli asztali szolgáltatások**  >  **Távoli asztal munkamenet-gazdagép**  >  **távoli munkamenet-környezete**elemre.
+8. Nyissa meg a Helyicsoportházirend-szerkesztő, és navigáljon a **Számítógép konfigurációja**  >  **Felügyeleti sablonok**  >  **Windows-összetevők**  >  **Távoli asztali szolgáltatások**  >  **Távoli asztal munkamenet-gazdagép**  >  **távoli munkamenet-környezete** elemre.
 9. Engedélyezze a RDP protokoll 8,0 szabályzatot.
 10. Csatlakoztassa a virtuális gépet a Active Directory tartományhoz.
 11. Indítsa újra a virtuális gépet a következő parancs futtatásával:
@@ -46,7 +46,7 @@ Windows 7 rendszerű virtuális gép beállítása Windows rendszerű virtuális
      shutdown /r /t 0
      ```
 
-12. A regisztrációs jogkivonat beszerzéséhez kövesse az [itt](/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo?view=azps-4.3.0) található utasításokat.
+12. A regisztrációs jogkivonat beszerzéséhez kövesse az [itt](/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo) található utasításokat.
 
       - Ha inkább a Azure Portal használja, megtekintheti annak a gazdagépnek az Áttekintés lapját is, amelyhez hozzá szeretné adni a virtuális gépet, és létre kell hoznia egy jogkivonatot.
 

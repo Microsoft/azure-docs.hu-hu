@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e00e22862121f2f974f9531a9892e32e115d6041
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f556c7acd903c108193f9c12a2849500645b119b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737647"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506701"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Vészhelyreállítás és tárfiók feladatátvétele
 
@@ -132,7 +132,7 @@ Mivel az Azure Storage erőforrás-szolgáltató nem hajtja végre a feladatátv
 
 ### <a name="azure-virtual-machines"></a>Azure-beli virtuális gépek
 
-Az Azure Virtual Machines (VM) nem végez feladatátvételt a fiók feladatátvételének részeként. Ha az elsődleges régió elérhetetlenné válik, és feladatátvételt hajt végre a másodlagos régióban, akkor a feladatátvételt követően újra létre kell hoznia a virtuális gépeket. Emellett lehetséges, hogy a fiók feladatátvételével kapcsolatos adatvesztés történik. A Microsoft az Azure-beli virtuális gépekre jellemző, [magas rendelkezésre állású](../../virtual-machines/manage-availability.md) és vész- [helyreállítási](../../virtual-machines/backup-recovery.md) útmutatót javasolja.
+Az Azure Virtual Machines (VM) nem végez feladatátvételt a fiók feladatátvételének részeként. Ha az elsődleges régió elérhetetlenné válik, és feladatátvételt hajt végre a másodlagos régióban, akkor a feladatátvételt követően újra létre kell hoznia a virtuális gépeket. Emellett lehetséges, hogy a fiók feladatátvételével kapcsolatos adatvesztés történik. A Microsoft az Azure-beli virtuális gépekre jellemző, [magas rendelkezésre állású](../../virtual-machines/availability.md) és vész- [helyreállítási](../../virtual-machines/backup-recovery.md) útmutatót javasolja.
 
 ### <a name="azure-unmanaged-disks"></a>Nem felügyelt Azure-lemezek
 

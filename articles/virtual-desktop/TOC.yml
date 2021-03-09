@@ -223,7 +223,7 @@
 - name: További források
   items:
     - name: PowerShell
-      href: /powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization
+      href: /powershell/module/az.desktopvirtualization/#desktopvirtualization
     - name: REST API-referencia
       href: /rest/api/desktopvirtualization/
     - name: Élménybecslő

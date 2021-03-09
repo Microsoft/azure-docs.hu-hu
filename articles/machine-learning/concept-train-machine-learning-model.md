@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: a84e4e767092a1507ef0608c21ff1896cb1dde0d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: de3d9aa60322cc3e6e189f6f16c35d6f42c0cf61
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880944"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500410"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modellek betanítása Azure Machine Learning
 
@@ -41,13 +41,13 @@ A képzési módszerek mindegyike különböző típusú számítási erőforrá
 
 A Pythonhoz készült Azure Machine Learning SDK lehetővé teszi a gépi tanulási munkafolyamatok létrehozását és futtatását Azure Machine Learning használatával. Interaktív Python-munkamenetből, Jupyter-jegyzetfüzetből, Visual Studio Code-ból vagy más IDE-ből is használhatja a szolgáltatást.
 
-* [Mi a Pythonhoz készült Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)
-* [Az SDK telepítése vagy frissítése](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)
+* [Mi a Pythonhoz készült Azure Machine Learning SDK](/python/api/overview/azure/ml/intro)
+* [Az SDK telepítése vagy frissítése](/python/api/overview/azure/ml/install)
 * [Fejlesztési környezet konfigurálása Azure Machine Learninghoz](how-to-configure-environment.md)
 
 ### <a name="run-configuration"></a>Konfiguráció futtatása
 
-Azure Machine Learning használatával általános betanítási feladatok határozhatók meg a [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py). A szkript futtatási konfigurációját a rendszer a modellnek a számítási célra való betanítására szolgáló betanítási szkripttel együtt használja.
+Azure Machine Learning használatával általános betanítási feladatok határozhatók meg a [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig). A szkript futtatási konfigurációját a rendszer a modellnek a számítási célra való betanítására szolgáló betanítási szkripttel együtt használja.
 
 A futtatási konfigurációt a helyi számítógép esetében is elindíthatja, majd igény szerint átválthat egy felhőalapú számítási célra. A számítási cél módosításakor csak a használt futtatási konfigurációt kell módosítania. A Futtatás a betanítási feladatról is naplóz adatokat, például a bemeneteket, a kimeneteket és a naplókat.
 
@@ -141,6 +141,6 @@ A Machine learning parancssori felület egy bővítmény az Azure CLI-hez. Platf
 
 A VS Code bővítmény használatával futtathatja és kezelheti a betanítási feladatokat. További információt a [vs Code erőforrás-kezelési útmutatója](how-to-manage-resources-vscode.md#experiments) című témakörben talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan [konfigurálhat egy tanítási futtatást](how-to-set-up-training-targets.md).

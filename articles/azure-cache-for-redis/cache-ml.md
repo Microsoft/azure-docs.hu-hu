@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 83fc88a57a1cdbec35a8f939a81698799d290d70
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: ec8943bc73cac2020350dd4916f040f031cd842b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183624"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499696"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>Gépi tanulási modell üzembe helyezése az Azure cache for Redis Azure Functions 
 
@@ -128,7 +128,7 @@ További információ a belépési parancsfájlról: [pontozási kód definiál�
 Ezek az entitások egy __következtetési konfigurációba__ vannak ágyazva. A következtetési konfiguráció a bejegyzés parancsfájljára és további függőségekre hivatkozik.
 
 > [!IMPORTANT]
-> Ha Azure Functions-vel való használatra vonatkozó következtetési konfigurációt hoz létre, [környezeti](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py) objektumot kell használnia. Vegye figyelembe, hogy ha egyéni környezetet határoz meg, akkor a >= 1.0.45 verzióval rendelkező azureml kell hozzáadnia pip-függőségként. Ez a csomag tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat. Az alábbi példa bemutatja, hogyan hozható létre egy környezeti objektum, és hogyan használhatja azt egy következtetési konfigurációval:
+> Ha Azure Functions-vel való használatra vonatkozó következtetési konfigurációt hoz létre, [környezeti](/python/api/azureml-core/azureml.core.environment%28class%29) objektumot kell használnia. Vegye figyelembe, hogy ha egyéni környezetet határoz meg, akkor a >= 1.0.45 verzióval rendelkező azureml kell hozzáadnia pip-függőségként. Ez a csomag tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat. Az alábbi példa bemutatja, hogyan hozható létre egy környezeti objektum, és hogyan használhatja azt egy következtetési konfigurációval:
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -161,7 +161,7 @@ pip install azureml-contrib-functions
 
 ## <a name="create-the-image"></a>A rendszerkép létrehozása
 
-A Azure Functions rendszerbe állított Docker-rendszerkép létrehozásához használja a [azureml... a. functions. functions. package](/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py) vagy az adott Package függvényt a használni kívánt triggerhez. A következő kódrészlet bemutatja, hogyan hozhat létre egy új csomagot HTTP-triggerrel a modellből és a következtetések konfigurálásával:
+A Azure Functions rendszerbe állított Docker-rendszerkép létrehozásához használja a [azureml... a. functions. functions. package](/python/api/azureml-contrib-functions/azureml.contrib.functions) vagy az adott Package függvényt a használni kívánt triggerhez. A következő kódrészlet bemutatja, hogyan hozhat létre egy új csomagot HTTP-triggerrel a modellből és a következtetések konfigurálásával:
 
 > [!NOTE]
 > A kódrészlet feltételezi, hogy `model` egy regisztrált modellt tartalmaz, amely `inference_config` tartalmazza a következtetési környezet konfigurációját. További információ: [modellek üzembe helyezése Azure Machine Learningsal](../machine-learning/how-to-deploy-and-where.md).
@@ -317,5 +317,5 @@ A rendszer néhány pillanaton belül törli az erőforráscsoportot és annak e
 
 * További információ a [Redis készült Azure cache](./cache-overview.md) -ről
 * Ismerje meg, hogyan konfigurálhatja a Function alkalmazást [a functions dokumentációjában](../azure-functions/functions-create-function-linux-custom-image.md) .
-* [API-referencia](/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py) 
+* [API-referencia](/python/api/azureml-contrib-functions/azureml.contrib.functions) 
 * [Azure cache-t használó Python-alkalmazás létrehozása a Redis-hez](./cache-python-get-started.md)

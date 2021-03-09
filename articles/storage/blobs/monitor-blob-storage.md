@@ -9,12 +9,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: subject-monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 3f96549c73c231db63360891dd0705b649097c80
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 3b497a8507fb82bfb69fbe7396e5a0d34006a7f1
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102218098"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502076"
 ---
 # <a name="monitoring-azure-blob-storage"></a>Az Azure Blob Storage figyelése
 
@@ -110,6 +110,8 @@ Ha úgy dönt, hogy archiválja a naplókat egy Storage-fiókba, akkor a Storage
 
 2. A **Storage-fiók** legördülő listában válassza ki azt a Storage-fiókot, amelybe archiválni szeretné a naplókat, kattintson az **OK** gombra, majd kattintson a **Mentés** gombra.
 
+   [!INCLUDE [no retention policy](../../../includes/azure-storage-logs-retention-policy.md)]
+
    > [!NOTE]
    > Mielőtt az Exportálás célhelyként kiválasztja a Storage-fiókot, tekintse meg az [Azure-erőforrás-naplók archiválása](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) című témakört az előfeltételek a Storage-fiókban való megismeréséhez.
 
@@ -154,12 +156,14 @@ Ha úgy dönt, hogy archiválja a naplókat egy Storage-fiókba, akkor a Storage
 Engedélyezze a naplókat a [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell-parancsmag használatával a `StorageAccountId` paraméterrel együtt.
 
 ```powershell
-Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operations-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operations-to-log>
 ```
 
 Cserélje le az `<storage-service-resource--id>` ebben a kódrészletben található helyőrzőt a blob szolgáltatás erőforrás-azonosítójával. A Azure Portal erőforrás-AZONOSÍTÓját a Storage-fiók **tulajdonságlapjának** megnyitásával érheti el.
 
 `StorageRead` `StorageWrite` A (z), és a (z) `StorageDelete` paraméter  értékeként a (z), és értéket használhatja.
+
+[!INCLUDE [no retention policy](../../../includes/azure-storage-logs-retention-policy.md)]
 
 Bemutatunk egy példát:
 
@@ -216,16 +220,18 @@ Ha úgy dönt, hogy archiválja a naplókat egy Storage-fiókba, akkor a Storage
 Engedélyezze a naplókat az az [monitor diagnosztikai-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) paranccsal.
 
 ```azurecli-interactive
-az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
+az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true }]'
 ```
 
 Cserélje le az `<storage-service-resource--id>` ebben a kódrészletben található helyőrzőt az erőforrás-azonosító blob Storage szolgáltatással. A Azure Portal erőforrás-AZONOSÍTÓját a Storage-fiók **tulajdonságlapjának** megnyitásával érheti el.
 
 `StorageRead` `StorageWrite` A (z), és a (z) `StorageDelete` paraméter  értékeként a (z), és értéket használhatja.
 
+[!INCLUDE [no retention policy](../../../includes/azure-storage-logs-retention-policy.md)]
+
 Bemutatunk egy példát:
 
-`az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/blobServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite, "enabled": true, "retentionPolicy": {"days": 90, "enabled": true}}]'`
+`az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/blobServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite}]'`
 
 Az egyes paraméterek leírását az [erőforrás-naplók archiválása az Azure CLI használatával](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)című részben tekintheti meg.
 

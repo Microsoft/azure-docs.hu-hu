@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: e7e8d51b8227acd033c95583d6e61d78a56d62a3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6f073777930b4d026d826d2c3586e0886f906206
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590284"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503079"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Ajánlott biztonsági eljárások IaaS számítási feladatokhoz az Azure-ban
 Ez a cikk a virtuális gépek és operációs rendszerek ajánlott biztonsági eljárásait ismerteti.
@@ -63,7 +63,7 @@ Az előfizetési rendszergazdák és az adminisztrátorok módosíthatják ezt a
 A virtuális gépek hozzáférését és beállítását vezérlő szervezetek javítják a virtuális gépek teljes biztonságát.
 
 ## <a name="use-multiple-vms-for-better-availability"></a>Több virtuális gép használata a jobb rendelkezésre állás érdekében
-Ha a virtuális gép olyan kritikus fontosságú alkalmazásokat futtat, amelyeknek magas rendelkezésre állásra van szükségük, javasoljuk, hogy több virtuális gépet használjon. A jobb rendelkezésre állás érdekében használjon [rendelkezésre állási készletet](../../virtual-machines/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) vagy rendelkezésre állási [zónákat](../../availability-zones/az-overview.md).
+Ha a virtuális gép olyan kritikus fontosságú alkalmazásokat futtat, amelyeknek magas rendelkezésre állásra van szükségük, javasoljuk, hogy több virtuális gépet használjon. A jobb rendelkezésre állás érdekében használjon [rendelkezésre állási készletet](../../virtual-machines/availability-set-overview.md) vagy rendelkezésre állási [zónákat](../../availability-zones/az-overview.md).
 
 A rendelkezésre állási csoport olyan logikai csoportosítás, amelyet az Azure-ban használhat, így biztosíthatja, hogy a benne található virtuálisgép-erőforrások elkülönítve legyenek egymástól, amikor egy Azure-adatközpontban üzembe vannak helyezve. Az Azure biztosítja, hogy a rendelkezésre állási csoportba helyezett virtuális gépek több fizikai kiszolgálón, számítási állványokon, tárolási egységeken és hálózati kapcsolókon fussanak. Ha hardveres vagy Azure-beli szoftveres hiba lép fel, a rendszer csak a virtuális gépek egy részhalmazát érinti, és a teljes alkalmazás továbbra is elérhető lesz az ügyfelek számára. A rendelkezésre állási csoportok nélkülözhetetlen képességgel rendelkeznek, ha megbízható felhőalapú megoldásokat szeretne létrehozni.
 

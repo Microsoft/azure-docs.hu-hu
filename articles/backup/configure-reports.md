@@ -3,12 +3,12 @@ title: Azure Backup-jelentések konfigurálása
 description: Azure Backup jelentések konfigurálása és megtekintése Log Analytics és Azure-munkafüzetek használatával
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 62bb59a8a77d11e30e54298317a35e1f883a9622
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e9f3d9dfa33e71d827a338258001f2b52af62b06
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710617"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509367"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 
@@ -22,8 +22,8 @@ A Azure Backup jelenleg olyan jelentéskészítési megoldást biztosít, amely 
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
 
-- A biztonsági mentési jelentések az Azure-beli virtuális gépek, az SQL SAP HANA Azure-beli virtuális gépek, az Azure-beli virtuális gépek, a Microsoft Azure Recovery Services (MARS) ügynök, a Microsoft Azure Backup-kiszolgáló (MABS) és a System Center Data Protection Manager (DPM) esetében támogatottak. Az Azure-fájlmegosztás biztonsági mentése esetén az adatok az 2020. június 1-jén vagy azt követően létrehozott összes rekord esetében megjelennek.
-- Az Azure fájlmegosztás biztonsági mentése esetén a védett példányokon lévő adatok jelenleg nem jelennek meg a jelentésekben (az alapértelmezett érték az összes biztonsági mentési elem esetében nulla).
+- A biztonsági mentési jelentések az Azure-beli virtuális gépek, az SQL SAP HANA Azure-beli virtuális gépek, az Azure-beli virtuális gépek, a Microsoft Azure Recovery Services (MARS) ügynök, a Microsoft Azure Backup-kiszolgáló (MABS) és a System Center Data Protection Manager (DPM) esetében támogatottak. Az Azure-fájlmegosztás biztonsági másolata esetében a 2020. június 1-jén vagy azt követően létrehozott rekordok adatai jelennek meg.
+- Az Azure fájlmegosztás biztonsági mentése esetén a védett példányokon lévő adatok a 2021-as Feb. után létrehozott rekordoknál jelennek meg (az alapértelmezett érték a régebbi rekordok esetében nulla).
 - A DPM számítási feladatokhoz a biztonsági mentési jelentések támogatottak a DPM 5.1.363.0-es vagy újabb verziójával, valamint az ügynök 2.0.9127.0 és újabb verziójával.
 - A MABS számítási feladatokhoz a biztonsági mentési jelentések támogatottak a MABS 13.0.415.0-es vagy újabb verziójával, valamint az ügynök 2.0.9170.0 és újabb verziójával.
 - A biztonsági mentési jelentések az összes biztonsági mentési elemben, tárolóban, előfizetésben és régióban is megtekinthetők, ha az adatokat egy olyan Log Analytics munkaterületre küldik, amelyhez a felhasználó hozzáfér. A jelentések egy készlethez való megtekintéséhez csak olvasási hozzáféréssel kell rendelkeznie ahhoz a Log Analytics munkaterülethez, amelyhez a tárolók küldik az adatokat. Nincs szükség az egyes tárak elérésére.
@@ -142,17 +142,31 @@ A lap tetején található **biztonságimásolat-kezelési típus** szűrőnek a
 
 ###### <a name="policy-adherence"></a>Szabályzatok betartása
 
-Ezen a lapon megadhatja, hogy az összes biztonsági mentési példány rendelkezik-e legalább egy sikeres biztonsági mentéssel minden nap. Megtekintheti a házirend betartását az adott időszakra vagy a biztonsági mentési példány alapján.
+Ezen a lapon megadhatja, hogy az összes biztonsági mentési példány rendelkezik-e legalább egy sikeres biztonsági mentéssel minden nap. A heti biztonsági mentési szabályzattal rendelkező elemek esetében ezen a lapon határozható meg, hogy az összes biztonsági mentési példánynak van-e legalább egy sikeres biztonsági mentése hetente.
+
+A házirend-betartási nézetek két típusa érhető el:
+
+* **Házirend betartásának időtartama**: ebben a nézetben meghatározhatja, hogy hány elemnek volt legalább egy sikeres biztonsági másolata egy adott napon, és hányan nem volt sikeres biztonsági mentés az adott napon. Egy sorra kattintva megtekintheti a kiválasztott napon aktivált összes biztonsági mentési feladat részleteit. Vegye figyelembe, hogy ha nagyobb értékre (például az utolsó 60 napra) emeli az időtartományt, a rács hetente jelenik meg, és megjeleníti az összes olyan elem számát, amelynek legalább egy sikeres biztonsági másolata volt az adott hét minden napján. Hasonlóképpen, a nagyobb időtartományok havi nézete is rendelkezésre áll.
+
+Ha hetente készít biztonsági mentést, ez a rács segít azonosítani az adott héten legalább egy sikeres biztonsági mentést tartalmazó elemet. Nagyobb időtartománynál, például az elmúlt 120 napban a rács a havi nézetben jelenik meg, és megjeleníti az összes olyan elem számát, amelynek legalább egy sikeres biztonsági másolata volt minden héten az adott hónapban. A napi, heti és havi megtekintéssel kapcsolatos további részletekért tekintse [meg a biztonsági mentési jelentésekben használt konvenciókat](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports) .
+
+![Házirend betartásának időtartama](./media/backup-azure-configure-backup-reports/policy-adherence-by-time-period.png)
+
+* **Házirend betartásának biztonsági mentési példánya**: ebben a nézetben a biztonsági mentési példányok szintjén is megadhatja a szabályzatot. A zöld színű cella azt jelzi, hogy a biztonsági mentési példány legalább egy sikeres biztonsági mentést végzett az adott napon. Egy piros cella jelzi, hogy a biztonsági mentési példánynak nem volt még egy sikeres biztonsági mentése az adott napon. A napi, heti és havi összesítések ugyanazt a viselkedést követik, mint a szabályzatnak az időszakos nézettel való betartása. Bármelyik sorra kattintva megtekintheti az összes biztonsági mentési feladatot a megadott időtartományon belül az adott biztonsági mentési példányon.
+
+![Házirend betartásának biztonsági mentési példánya](./media/backup-azure-configure-backup-reports/policy-adherence-by-backup-instance.png)
 
 ###### <a name="email-azure-backup-reports"></a>E-mail-Azure Backup jelentések
 
 A biztonsági mentési jelentésekben elérhető **e-mail-jelentés** funkció használatával automatizált feladatokat hozhat létre, amelyekkel rendszeres jelentéseket fogadhat e-mailben. Ez a funkció egy olyan logikai alkalmazás üzembe helyezését mutatja be az Azure-környezetben, amely az Ön által megadott bemenetek alapján lekérdezi a kiválasztott Log Analytics (LA) munkaterületről származó adatokat.
 
-A logikai alkalmazás létrehozása után engedélyeznie kell a kapcsolatokat Azure Monitor naplókhoz és az Office 365-hez. Ehhez keresse meg **Logic apps** a Azure Portal, és keresse meg a létrehozott feladat nevét. Az **API-kapcsolatok** menüpont kiválasztásával megnyílik az engedélyezéshez szükséges API-kapcsolatok listája.
+A logikai alkalmazás létrehozása után engedélyeznie kell a kapcsolatokat Azure Monitor naplókhoz és az Office 365-hez. Ehhez keresse meg **Logic apps** a Azure Portal, és keresse meg a létrehozott feladat nevét. Az **API-kapcsolatok** menüpont kiválasztásával megnyílik az engedélyezéshez szükséges API-kapcsolatok listája. [További információ az e-mailek konfigurálásáról és a hibák elhárításáról](backup-reports-email.md).
 
 ###### <a name="customize-azure-backup-reports"></a>Azure Backup jelentések testreszabása
 
-A biztonsági mentési jelentések a függvényeket használják Azure Monitor naplókon. Ezek a függvények a (z) LA nyers Azure Backup tábláiban található adatokon működnek, és olyan formázott adatokat adnak vissza, amelyek segítségével egyszerűen lekérheti az összes biztonsági mentéssel kapcsolatos entitás információit egyszerű lekérdezések használatával.
+A biztonsági mentési jelentések [rendszerfunkciókat használnak Azure monitor naplókon](backup-reports-system-functions.md). Ezek a függvények a (z) LA nyers Azure Backup tábláiban található adatokon működnek, és olyan formázott adatokat adnak vissza, amelyek segítségével egyszerűen lekérheti az összes biztonsági mentéssel kapcsolatos entitás információit egyszerű lekérdezések használatával. 
+
+Ha saját jelentéskészítési munkafüzeteket kíván létrehozni a biztonsági mentési jelentésekkel, akkor navigáljon a biztonsági mentési jelentésekhez, kattintson a jelentés tetején található **Szerkesztés** gombra, és tekintse meg/szerkessze a jelentésekben használt lekérdezéseket. Az egyéni jelentések létrehozásával kapcsolatos további információkért tekintse meg az [Azure-munkafüzetek dokumentációját](https://docs.microsoft.com/azure/azure-monitor/visualize/workbooks-overview) . 
 
 ## <a name="export-to-excel"></a>Exportálás Excelbe
 
@@ -175,6 +189,8 @@ Ha az [Azure Lighthouse](../lighthouse/index.yml) -t az előfizetések több bé
 - A jelentés a feladatok részleteit jeleníti meg (a naplózási feladatok kivételével), amelyek a kijelölt időtartományban voltak *aktiválva* .
 - A **Felhőbeli tárolás** és a **védett példányok** értéke a kijelölt időtartomány *végén* található.
 - A jelentésekben megjelenő biztonsági másolati elemek azok az elemek, amelyek a kijelölt időtartomány *végén* találhatók. A kijelölt időtartomány közepén törölt biztonsági másolati elemek nem jelennek meg. Ugyanez az egyezmény érvényes a biztonsági mentési szabályzatokra is.
+- Ha a kiválasztott időtartomány 30 napnál rövidebb időszakot ölel fel, a diagramok napi nézetben jelennek meg, ahol minden nap egyetlen adatpont van. Ha az időtartomány a 30 napnál hosszabb ideig tart, és kevesebb, mint (vagy egyenlő) 90 nap, a diagramok heti nézetben jelennek meg. Nagyobb időtartományok esetén a diagramok havi nézetben jelennek meg. A hetente vagy havonta összesítve a lekérdezések jobb teljesítményét és a diagramokban lévő adatolvashatóságot is megkönnyíti.
+- A házirend-betartási rácsok a fentiekben leírtak szerint hasonló aggregációs logikát is követnek. Van azonban néhány kisebb eltérés. Az első különbség, hogy a heti biztonsági mentési házirenddel rendelkező elemek esetében nincs napi nézet (csak heti és havi nézetek érhetők el). Továbbá a heti biztonsági mentési szabályzattal rendelkező elemek rácsán a "Month" a 4 hetes időszakot (28 nap), a nem pedig 30 napot is figyelembe veszi, hogy elkerülje a részleges heteket.
 
 ## <a name="query-load-times"></a>Lekérdezés betöltési ideje
 

@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: a4536f0dd40e1d0ee3a5ca75db9b111dcfa0ad6f
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 197dfa6a33e3a91a4d5717746629a667c5518b05
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102214898"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506922"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service-fürt létrehozása és csatolása
 
@@ -26,7 +26,7 @@ A Azure Machine Learning betanított gépi tanulási modelleket telepíthet az A
 
 - Egy Azure Machine Learning-munkaterület. További információ: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
-- Az [Azure CLI-bővítmény Machine learning szolgáltatáshoz](reference-azure-machine-learning-cli.md), [Azure Machine learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)-hoz vagy a [Azure Machine learning Visual Studio Code bővítményhez](tutorial-setup-vscode-extension.md).
+- Az [Azure CLI-bővítmény Machine learning szolgáltatáshoz](reference-azure-machine-learning-cli.md), [Azure Machine learning Python SDK](/python/api/overview/azure/ml/intro)-hoz vagy a [Azure Machine learning Visual Studio Code bővítményhez](tutorial-setup-vscode-extension.md).
 
 - Ha Azure-Virtual Network használatát tervezi az Azure ML-munkaterület és az AK-fürt közötti kommunikáció biztonságossá tételéhez, olvassa el a [hálózati elkülönítést a & következtetések betanítása](./how-to-network-security-overview.md) című cikkben.
 
@@ -187,10 +187,10 @@ aks_target.wait_for_completion(show_output = True)
 
 Az ebben a példában használt osztályokkal, metódusokkal és paraméterekkel kapcsolatos további információkért tekintse meg a következő dokumentációt:
 
-* [AksCompute.ClusterPurpose](/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?preserve-view=true&view=azure-ml-py)
-* [AksCompute.provisioning_configuration](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
-* [ComputeTarget. Create](/python/api/azureml-core/azureml.core.compute.computetarget?preserve-view=true&view=azure-ml-py#create-workspace--name--provisioning-configuration-)
-* [ComputeTarget.wait_for_completion](/python/api/azureml-core/azureml.core.compute.computetarget?preserve-view=true&view=azure-ml-py#wait-for-completion-show-output-false-)
+* [AksCompute.ClusterPurpose](/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose)
+* [AksCompute.provisioning_configuration](/python/api/azureml-core/azureml.core.compute.akscompute#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
+* [ComputeTarget. Create](/python/api/azureml-core/azureml.core.compute.computetarget#create-workspace--name--provisioning-configuration-)
+* [ComputeTarget.wait_for_completion](/python/api/azureml-core/azureml.core.compute.computetarget#wait-for-completion-show-output-false-)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -219,7 +219,7 @@ Ha már rendelkezik AK-fürttel az Azure-előfizetésében, használhatja azt a 
 > [!WARNING]
 > Ne hozzon létre több, egyidejű mellékletet ugyanahhoz az AK-fürthöz a munkaterületről. Például egy AK-fürt csatolása egy munkaterülethez két különböző név használatával. Minden új melléklet megtöri az előző meglévő melléklet (eke) t.
 >
-> Ha egy AK-fürtöt újra szeretne csatlakoztatni, például a TLS vagy más fürtkonfiguráció beállításának módosításához, először el kell távolítania a meglévő mellékletet a [AksCompute. leválasztás ()](/python/api/azureml-core/azureml.core.compute.akscompute?preserve-view=true&view=azure-ml-py#detach--)használatával.
+> Ha egy AK-fürtöt újra szeretne csatlakoztatni, például a TLS vagy más fürtkonfiguráció beállításának módosításához, először el kell távolítania a meglévő mellékletet a [AksCompute. leválasztás ()](/python/api/azureml-core/azureml.core.compute.akscompute#detach--)használatával.
 
 A következő cikkekből megtudhatja, hogyan hozhat létre egy AK-fürtöt az Azure CLI vagy a portál használatával:
 
@@ -251,9 +251,9 @@ aks_target.wait_for_completion(show_output = True)
 
 Az ebben a példában használt osztályokkal, metódusokkal és paraméterekkel kapcsolatos további információkért tekintse meg a következő dokumentációt:
 
-* [AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
-* [AksCompute.ClusterPurpose](/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?preserve-view=true&view=azure-ml-py)
-* [AksCompute. Attach](/python/api/azureml-core/azureml.core.compute.computetarget?preserve-view=true&view=azure-ml-py#attach-workspace--name--attach-configuration-)
+* [AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
+* [AksCompute.ClusterPurpose](/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose)
+* [AksCompute. Attach](/python/api/azureml-core/azureml.core.compute.computetarget#attach-workspace--name--attach-configuration-)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -284,7 +284,7 @@ Az AK-fürtök portálon való csatlakoztatásával kapcsolatos információkér
 ---
 
 ## <a name="create-or-attach-an-aks-cluster-with-tls-termination"></a>AK-fürt létrehozása vagy csatolása TLS-megszakítással
-AK- [fürt létrehozásakor vagy csatolásakor](how-to-create-attach-kubernetes.md)engedélyezheti a TLS-megszakítást **[AksCompute.provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** és a **[AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** konfigurációs objektumokkal. Mindkét metódus olyan konfigurációs objektumot ad vissza, amely **enable_ssl** metódussal rendelkezik, és a TLS engedélyezéséhez használhatja a **enable_ssl** metódust.
+AK- [fürt létrehozásakor vagy csatolásakor](how-to-create-attach-kubernetes.md)engedélyezheti a TLS-megszakítást **[AksCompute.provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** és a **[AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** konfigurációs objektumokkal. Mindkét metódus olyan konfigurációs objektumot ad vissza, amely **enable_ssl** metódussal rendelkezik, és a TLS engedélyezéséhez használhatja a **enable_ssl** metódust.
 
 Az alábbi példa bemutatja, hogyan engedélyezheti a TLS-leállítást a TLS-tanúsítványok automatikus létrehozásával és konfigurálásával a motorháztető alatti Microsoft-tanúsítvány használatával.
 ```python

@@ -275,7 +275,7 @@
         - name: .NET-hez készült SDK
           href: /dotnet/api/overview/azure/hdinsight
         - name: Pythonhoz készült SDK
-          href: /python/api/overview/azure/hdinsight?view=azure-python&preserve-view=true
+          href: /python/api/overview/azure/hdinsight
         - name: Javához készült SDK
           href: /java/api/overview/azure/hdinsight
         - name: Góhoz készült SDK

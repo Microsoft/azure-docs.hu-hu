@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 2b45bd2e2b9ad971891cbcb944286f40b4f66883
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 43d3da49688a7daeb3ea4e0c1c3dba505dcd3b59
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216954"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508333"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Hálózati adapterek hozzáadása vagy eltávolítása virtuális gépekről
 
@@ -143,7 +143,7 @@ A hálózati adapterek beállításairól és azok módosításáról a [hálóz
 
 - Megadhatja, hogy melyik hálózati adapterre küldje a kimenő forgalmat. Azonban a virtuális gép alapértelmezés szerint az összes kimenő forgalmat az elsődleges hálózati adapter elsődleges IP-konfigurációjához rendelt IP-címhez küldi.
 
-- A múltban az azonos rendelkezésre állási csoportba tartozó összes virtuális gépnek egyetlen vagy több hálózati adapterrel kell rendelkeznie. A tetszőleges számú hálózati adapterrel rendelkező virtuális gépek már ugyanabban a rendelkezésre állási készletben létezhetnek, a virtuális gép mérete által támogatott számmal. A létrehozáskor csak egy virtuális gépet adhat hozzá rendelkezésre állási készlethez. További információ a rendelkezésre állási csoportokról: [virtuális gépek rendelkezésre állásának kezelése az Azure-ban](../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy).
+- A múltban az azonos rendelkezésre állási csoportba tartozó összes virtuális gépnek egyetlen vagy több hálózati adapterrel kell rendelkeznie. A tetszőleges számú hálózati adapterrel rendelkező virtuális gépek már ugyanabban a rendelkezésre állási készletben létezhetnek, a virtuális gép mérete által támogatott számmal. A létrehozáskor csak egy virtuális gépet adhat hozzá rendelkezésre állási készlethez. További információ a rendelkezésre állási csoportokról: [virtuális gépek rendelkezésre állásának kezelése az Azure-ban](../virtual-machines/availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 - Az azonos virtuális GÉPEN lévő hálózati adaptereket a virtuális hálózatban lévő különböző alhálózatokhoz is összekapcsolhatjuk. A hálózati adaptereknek azonban mind ugyanahhoz a virtuális hálózathoz kell csatlakozniuk.
 

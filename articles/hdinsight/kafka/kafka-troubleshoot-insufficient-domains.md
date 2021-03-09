@@ -4,12 +4,12 @@ description: A fürt létrehozása nem sikerült, mert nem áll rendelkezésre e
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/09/2019
-ms.openlocfilehash: 3f7d866d1c9b8c8437bc0f84acca47e0b8631895
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: ed9e98750a469f78855096c3149254cf92c2788f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98939050"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501345"
 ---
 # <a name="scenario-cluster-creation-failed-due-to-not-sufficient-fault-domains-in-region-in-azure-hdinsight"></a>Forgatókönyv: a fürt létrehozása `not sufficient fault domains in region` Az Azure HDInsight miatt nem sikerült
 
@@ -23,7 +23,7 @@ A rendszer a következőhöz hasonló hibaüzenetet kap, `not sufficient fault d
 
 A tartalék tartomány az alapul szolgáló hardver logikai csoportosítása egy Azure-adatközpontban. Mindegyik tartalék tartomány közös áramforrással és hálózati kapcsolóval rendelkezik. A HDInsight-fürtön belül a csomópontokat implementáló virtuális gépek és felügyelt lemezek ezek között a tartalék tartományok között vannak elosztva. Ez az architektúra csökkenti a fizikai hardverhibák lehetséges hatását.
 
-Mindegyik Azure-régió meghatározott számú tartalék tartománnyal rendelkezik. A tartományok listáját és a bennük található tartalék tartományok számát a [rendelkezésre állási csoportokról](../../virtual-machines/manage-availability.md)szóló dokumentációban találja.
+Mindegyik Azure-régió meghatározott számú tartalék tartománnyal rendelkezik. A tartományok listáját és a bennük található tartalék tartományok számát a [rendelkezésre állási csoportokról](../../virtual-machines/availability.md)szóló dokumentációban találja.
 
 A HDInsight-ben a Kafka-fürtöket legalább három tartalék tartománnyal rendelkező régióban kell kiépíteni.
 

@@ -3,12 +3,12 @@ title: Azure DevTest Labs kiterjesztése a Azure Functions használatával | Mic
 description: Ismerje meg, hogyan bővíthető Azure DevTest Labs a Azure Functions használatával.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7a51f0935540df18cfb8805902bbe2c4ec365291
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 620cda83094ee65f421a5529a9d5b51e505ec48e
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102203674"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501158"
 ---
 # <a name="use-azure-functions-to-extend-devtest-labs"></a>A DevTest Labs kiterjesztése az Azure Functions használatával
 A DevTest Labs által már támogatott további forgatókönyvek támogatásához Azure Functions is használhatja. A Azure Functions használatával kiterjesztheti a szolgáltatás beépített funkcióit az üzleti igények kielégítése érdekében. Az alábbi lista néhány lehetséges forgatókönyvet tartalmaz. Ez a cikk bemutatja, hogyan hajthatja végre az alábbi példák egyikét.
@@ -44,7 +44,7 @@ Van egy további művelet is, amely minden olyan virtuális gép esetében, amel
 Ez a szakasz részletesen ismerteti a **belső támogatási** oldal frissítéséhez szükséges Azure-erőforrások beállításának lépéseit. Ez az útmutató egy példát mutat be a DevTest Labs kiterjesztésére. Ezt a mintát használhatja más forgatókönyvek esetében is.
 
 ### <a name="step-1-create-a-service-principal"></a>1. lépés: egyszerű szolgáltatásnév létrehozása 
-Az első lépés egy egyszerű szolgáltatásnév beszerzése, amely engedéllyel rendelkezik a labort tartalmazó előfizetéshez. Az egyszerű szolgáltatásnak a jelszó-alapú hitelesítést kell használnia. Az [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli), [Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-2.5.0)vagy a [Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)használatával végezhető el. Ha már rendelkezik egy egyszerű szolgáltatással, akkor kihagyhatja ezt a lépést.
+Az első lépés egy egyszerű szolgáltatásnév beszerzése, amely engedéllyel rendelkezik a labort tartalmazó előfizetéshez. Az egyszerű szolgáltatásnak a jelszó-alapú hitelesítést kell használnia. Az [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli), [Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps)vagy a [Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)használatával végezhető el. Ha már rendelkezik egy egyszerű szolgáltatással, akkor kihagyhatja ezt a lépést.
 
 Jegyezze fel az **alkalmazás azonosítóját**, **kulcsát** és **bérlői azonosítóját** az egyszerű szolgáltatáshoz. Az útmutató későbbi részében szüksége lesz rájuk. 
 

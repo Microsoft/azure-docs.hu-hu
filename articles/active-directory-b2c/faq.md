@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/14/2020
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e181b90219f340a29e818801ee2b53f1ccbd9c23
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: cef2636aeecf78a12c48b31b384af2cf76903879
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660284"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102498829"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: gyakori kérdések (GYIK)
 
@@ -82,7 +82,10 @@ Az e-mail-aláírás tartalmazza azt a Azure AD B2C bérlő nevét, amelyet a Az
 1. Módosítsa a **név** mezőt.
 1. Kattintson az oldal tetején lévő **Mentés** elemre.
 
-Jelenleg nincs lehetőség a "from:" mező módosítására az e-mailben.
+Jelenleg nem módosítható a "from:" mező az e-mailben.
+
+> [!TIP]
+> Azure AD B2C [Egyéni szabályzattal](custom-policy-overview.md)testreszabhatja az e-mailek küldését Azure ad B2C a felhasználók számára, beleértve az e-mailben szereplő "from:" mezőt is. Az egyéni e-mail-ellenőrzéshez egy külső gyártótól származó e-mail-szolgáltató (például [mailjet](custom-email-mailjet.md), [SendGrid](custom-email-sendgrid.md)vagy [SparkPost](https://sparkpost.com)) használata szükséges.
 
 ### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>Hogyan telepíthetem át a meglévő felhasználóneveket, jelszavakat és profilokat az adatbázisból a Azure AD B2Cba?
 
