@@ -1,7 +1,7 @@
 ---
 title: A Micro Focus Enterprise Server 5,0 és az AK üzembe helyezése | Microsoft Docs
 description: Az IBM z/OS mainframe-alapú számítási feladatokat az Azure Virtual Machines (VM) Micro Focus fejlesztési és tesztkörnyezet használatával helyezheti át.
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: ''
 author: maggsl
 ms.author: edprice
@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 6780942d922f885c7afebd8e64f4f28654c3800e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e5b3857c2252a939080206fb1f92cc422f326fc
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87042538"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564356"
 ---
 # <a name="deploy-micro-focus-enterprise-server-50-to-aks"></a>A Micro Focus Enterprise Server 5,0 – AK üzembe helyezése
 
@@ -39,11 +39,11 @@ Készen? Kezdjünk hozzá.
 
 ## <a name="create-the-azure-container-registry"></a>A Azure Container Registry létrehozása
 
-A Azure Portal válassza az **erőforrás létrehozása** lehetőséget a bal felső sarokban. A piactér irányítópultján válassza a **tárolók,** majd a **Container Registry**lehetőséget. Ekkor megjelenik a **create Container Registry (tároló létrehozása** ) panel, ahol ki kell töltenie a **beállításjegyzék nevét**, az **Azure-előfizetést**, az **erőforráscsoportot**és a **helyet**. A **beállításjegyzék nevének** feloldására van szükség, ezért egyedinek kell lennie. Válassza ki az előző blogbejegyzésben használt **erőforráscsoportot** és a megfelelő **helyet**. Válassza a **rendszergazda felhasználó** és **alapszintű** az **SKU** **engedélyezése** lehetőséget. Miután megtörtént az összes kitöltése, válassza a **Létrehozás**lehetőséget.
+A Azure Portal válassza az **erőforrás létrehozása** lehetőséget a bal felső sarokban. A piactér irányítópultján válassza a **tárolók,** majd a **Container Registry** lehetőséget. Ekkor megjelenik a **create Container Registry (tároló létrehozása** ) panel, ahol ki kell töltenie a **beállításjegyzék nevét**, az **Azure-előfizetést**, az **erőforráscsoportot** és a **helyet**. A **beállításjegyzék nevének** feloldására van szükség, ezért egyedinek kell lennie. Válassza ki az előző blogbejegyzésben használt **erőforráscsoportot** és a megfelelő **helyet**. Válassza a **rendszergazda felhasználó** és **alapszintű** az **SKU** **engedélyezése** lehetőséget. Miután megtörtént az összes kitöltése, válassza a **Létrehozás** lehetőséget.
 
 ![Tároló beállításjegyzék-felületének létrehozása](media/deploy-image-1.png)
 
-A beállításjegyzék üzembe helyezését követően válassza az **Ugrás erőforráshoz**lehetőséget. Ekkor megjelenik a Azure Container Registry főpaneljén. A **gyorskonfigurálás** menüpont egy szép funkció. Jelölje ki, és megtekintheti, hogy mit kell tenni a lemezképek a beállításjegyzékbe való küldéséhez és lekéréséhez. Nézzük meg, hogy ezek a következők:
+A beállításjegyzék üzembe helyezését követően válassza az **Ugrás erőforráshoz** lehetőséget. Ekkor megjelenik a Azure Container Registry főpaneljén. A **gyorskonfigurálás** menüpont egy szép funkció. Jelölje ki, és megtekintheti, hogy mit kell tenni a lemezképek a beállításjegyzékbe való küldéséhez és lekéréséhez. Nézzük meg, hogy ezek a következők:
 
 1.  A **Docker telepítése** – nem kell aggódnia, mert már befejeződött.
 
@@ -63,7 +63,7 @@ Most, hogy már tudja, mit kell tennie, jelentkezzen be a virtuális gépre.
 
 ## <a name="rdp-to-the-virtual-machine-you-used-to-create-the-docker-image"></a>RDP a Docker-rendszerkép létrehozásához használt virtuális géphez
 
-Mivel már létrehozta a Docker-rendszerképet egy Windows 2016-kiszolgálón, be kell jelentkeznie az adott virtuális gépre. Ebből a virtuális gépről elküldheti a rendszerképet az imént létrehozott Azure Container Registry. Keresse meg a virtuális gépet a Azure Portal, majd válassza az **Áttekintés** , majd a **Kapcsolódás**lehetőséget. Ez a távoli asztal protokoll (RDP) használatával csatlakozik a virtuális géphez. A virtuális gép létrehozásakor a hitelesítő adatokat kell használnia.
+Mivel már létrehozta a Docker-rendszerképet egy Windows 2016-kiszolgálón, be kell jelentkeznie az adott virtuális gépre. Ebből a virtuális gépről elküldheti a rendszerképet az imént létrehozott Azure Container Registry. Keresse meg a virtuális gépet a Azure Portal, majd válassza az **Áttekintés** , majd a **Kapcsolódás** lehetőséget. Ez a távoli asztal protokoll (RDP) használatával csatlakozik a virtuális géphez. A virtuális gép létrehozásakor a hitelesítő adatokat kell használnia.
 
 ## <a name="log-in-and-push-the-image-to-the-registry"></a>Jelentkezzen be, és küldje le a rendszerképet a beállításjegyzékbe
 
@@ -71,7 +71,7 @@ Miután bejelentkezett, nyisson meg egy parancssort, és kezdeményezzen a köve
 
 -   **Docker-rendszerképek** – Itt láthatja a virtuális gépen jelenleg telepített rendszerképek listáját. Jegyezze fel a **Focus/es-acctdemo** , mert ez a következő:.
 
--   **Docker-bejelentkezési acrmf50.azurecr.IO** – a megfelelő formátum itt a *Docker \<registry name\> -Bejelentkezés *. Helyettesítse be a beállításjegyzék létrehozásakor használt nevet.
+-   **Docker-bejelentkezési acrmf50.azurecr.IO** – a megfelelő formátum itt a *Docker \<registry name\> -Bejelentkezés*. Helyettesítse be a beállításjegyzék létrehozásakor használt nevet.
 
     -   Szüksége lesz a Azure Portalból másolt **felhasználónévre** és **jelszóra** . Ekkor az alábbihoz hasonlónak kell megjelennie.
 
@@ -85,11 +85,11 @@ Miután bejelentkezett, nyisson meg egy parancssort, és kezdeményezzen a köve
 
     ![Rendszergazdai parancssor képernyő](media/deploy-image-4.png)
 
-Most térjen vissza a Azure Portalra, kifejezetten a **tárházhoz**. Az **adattár**menüjében válassza a **adattárak**lehetőséget, és tekintse meg a felsorolt **es-acctdemo** . Most hozzon létre egy AK-fürtöt.
+Most térjen vissza a Azure Portalra, kifejezetten a **tárházhoz**. Az **adattár** menüjében válassza a **adattárak** lehetőséget, és tekintse meg a felsorolt **es-acctdemo** . Most hozzon létre egy AK-fürtöt.
 
 ## <a name="create-the-azure-kubernetes-aks-cluster"></a>Az Azure Kubernetes (ak) fürt létrehozása
 
-A Azure Portal válassza az **erőforrás létrehozása** , majd a **tárolók/Kubernetes szolgáltatás** lehetőséget a **piactér** menüben. Ezután ki kell töltenie a Kubernetes- **fürt létrehozása** panelt. Ügyeljen arra, hogy a fürtöt az Ön által használt régióba és erőforráscsoporthoz is megtartsa. Elfogadhatja az alapértelmezett értékek hátralévő részét, kivéve a **csomópontok számát,** amelyeknek csak 1 értékkel kell rendelkezniük. Ha elkészült, válassza a **felülvizsgálat + létrehozás**elemet.
+A Azure Portal válassza az **erőforrás létrehozása** , majd a **tárolók/Kubernetes szolgáltatás** lehetőséget a **piactér** menüben. Ezután ki kell töltenie a Kubernetes- **fürt létrehozása** panelt. Ügyeljen arra, hogy a fürtöt az Ön által használt régióba és erőforráscsoporthoz is megtartsa. Elfogadhatja az alapértelmezett értékek hátralévő részét, kivéve a **csomópontok számát,** amelyeknek csak 1 értékkel kell rendelkezniük. Ha elkészült, válassza a **felülvizsgálat + létrehozás** elemet.
 
 ![Kubernetes-fürt létrehozása képernyő](media/deploy-image-5.png)
 

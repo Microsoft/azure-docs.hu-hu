@@ -97,10 +97,10 @@
       items:
         - name: Az API-k és SDK-k használata
           href: how-to-use-apis-sdks.md
+        - name: Egyéni nyelvi SDK-k létrehozása autorest-tel
+          href: how-to-create-custom-sdks.md
         - name: Kérelem küldése a Postman használatával
           href: how-to-use-postman.md
-        - name: Egyéni SDK-k létrehozása az AutoRest használatával
-          href: how-to-create-custom-sdks.md
         - name: Integrálás az Azure SignalR szolgáltatással
           href: how-to-integrate-azure-signalr.md
     - name: Bemenet csatlakoztatása

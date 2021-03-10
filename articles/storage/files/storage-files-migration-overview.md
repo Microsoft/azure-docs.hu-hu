@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 4a874e6f1e026a1888b9039799be71c95f040ac6
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 27056f39885949d52c9fcc0d1472033cfc8f9aa0
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202348"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554870"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrálás Azure-fájlmegosztásokba
 
@@ -81,13 +81,12 @@ A hivatkozás nélküli forgatókönyv még nem rendelkezik közzétett áttelep
 | Forrás | Cél: </br>Hibrid üzembe helyezés | Cél: </br>Csak felhőalapú központi telepítés |
 |:---|:--|:--|
 | | Eszköz kombinációja:| Eszköz kombinációja: |
-| Windows Server 2012 R2 és újabb verziók | <ul><li>[Azure File Sync](storage-sync-files-deployment-guide.md)</li><li>[Azure File Sync és Azure Data Box](storage-sync-offline-data-transfer.md)</li><li>[A felhőben Azure File Sync és előre összeállított fájlok](storage-sync-offline-data-transfer.md#azure-file-sync-and-pre-seeded-files-in-the-cloud)</li><li>Azure File Sync és Storage áttelepítési szolgáltatás</li></ul> | <ul><li>Azure File Sync</li><li>Azure File Sync és Data Box</li><li>Azure File Sync és Storage áttelepítési szolgáltatás</li><li>RoboCopy</li></ul> |
-| Windows Server 2012 és korábbi verziók | <ul><li>Azure File Sync és Data Box</li><li>Azure File Sync és Storage áttelepítési szolgáltatás</li></ul> | <ul><li>Azure File Sync és Storage áttelepítési szolgáltatás</li><li>RoboCopy</li></ul> |
-| Hálózatra csatlakoztatott tároló (NAS) | <ul><li>[Azure File Sync és RoboCopy](storage-files-migration-nas-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
-| Linux vagy Samba | <ul><li>[Azure File Sync és RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
-| Microsoft Azure StorSimple Cloud Appliance 8100 vagy StorSimple Cloud Appliance 8600 | <ul><li>[Azure File Sync és StorSimple Cloud Appliance 8020](storage-files-migration-storsimple-8000.md)</li></ul> | |
-| StorSimple Cloud Appliance 1200 | <ul><li>[Azure File Sync](storage-files-migration-storsimple-1200.md)</li></ul> | |
-| | | |
+| Windows Server 2012 R2 és újabb verziók | <ul><li>[Azure File Sync](storage-sync-files-deployment-guide.md)</li><li>[Azure File Sync és az Azure DataBox](storage-sync-offline-data-transfer.md)</li></ul> | <ul><li>A RoboCopy segítségével egy csatlakoztatott Azure-fájlmegosztás</li><li>Azure File Sync keresztül</li></ul> |
+| Windows Server 2012 és korábbi verziók | <ul><li>A DataBox és a Azure File Sync a legutóbbi kiszolgálói operációs rendszerre</li><li>Tárterület-áttelepítési szolgáltatás és a legutóbbi kiszolgáló között Azure File Sync, majd feltöltés</li></ul> | <ul><li>A Storage áttelepítési szolgáltatás és a legutóbbi kiszolgáló között Azure File Sync</li><li>A RoboCopy segítségével egy csatlakoztatott Azure-fájlmegosztás</li></ul> |
+| Hálózatra csatlakoztatott tároló (NAS) | <ul><li>[Azure File Sync feltöltéssel](storage-files-migration-nas-hybrid.md)</li><li>[DataBox + Azure File Sync](storage-files-migration-nas-hybrid-databox.md)</li></ul> | <ul><li>A RoboCopy segítségével egy csatlakoztatott Azure-fájlmegosztás</li></ul> |
+| Linux/Samba | <ul><li>[Azure File Sync és RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>A RoboCopy segítségével egy csatlakoztatott Azure-fájlmegosztás</li></ul> |
+| Microsoft Azure StorSimple Cloud Appliance 8100 vagy StorSimple Cloud Appliance 8600 | <ul><li>[Dedikált adatáttelepítési felhőalapú szolgáltatás](storage-files-migration-storsimple-8000.md)</li></ul> | |
+| StorSimple Cloud Appliance 1200 | <ul><li>[Azure File Sync keresztül](storage-files-migration-storsimple-1200.md)</li></ul> | |
 
 ## <a name="migration-toolbox"></a>Áttelepítési eszközkészlet
 
@@ -120,9 +119,9 @@ Az alábbi táblázat a Microsoft-eszközöket és az Azure-fájlmegosztás jele
 |![Igen, ajánlott](media/storage-files-migration-overview/circle-green-checkmark.png)| RoboCopy | Támogatott. Az Azure-fájlmegosztás hálózati meghajtóként is csatlakoztatható. | Teljes hűség. * |
 |![Igen, ajánlott](media/storage-files-migration-overview/circle-green-checkmark.png)| Azure File Sync | Natívan integrálva van az Azure-fájlmegosztásba. | Teljes hűség. * |
 |![Igen, ajánlott](media/storage-files-migration-overview/circle-green-checkmark.png)| Storage áttelepítési szolgáltatás | Közvetetten támogatott. Az Azure-fájlmegosztás hálózati meghajtóként is csatlakoztatható SMS-célkiszolgálón. | Teljes hűség. * |
-|![Igen, ajánlott](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy, 10,4-es vagy újabb verzió| Támogatott. | Teljes hűség. * |
-|![Igen, ajánlott](media/storage-files-migration-overview/circle-green-checkmark.png)| Data Box | Támogatott. | A DataBox mostantól teljes mértékben támogatja a metaadatokat. A [Data Box a Azure file Sync használatával együtt is használható](storage-sync-offline-data-transfer.md). |
-|![Nem teljes mértékben ajánlott](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure Storage Explorer, 1,14-es verzió | Támogatott. | Nem másolja át az ACL-eket. Az időbélyegeket támogatja.  |
+|![Igen, ajánlott](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy </br>10,6-es verzió | Támogatott. | Nem támogatja a forrás legfelső szintű ACL másolatát, ellenkező esetben teljes hűséget. * </br>[Ismerje meg, hogyan használhatja a AzCopy-t az Azure-fájlmegosztás használatával](../common/storage-use-azcopy-files.md) |
+|![Igen, ajánlott](media/storage-files-migration-overview/circle-green-checkmark.png)| Data Box | Támogatott. | A DataBox teljes mértékben támogatja a metaadatokat. |
+|![Nem teljes mértékben ajánlott](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure Storage Explorer </br>1,14-es verzió | Támogatott. | Nem másolja át az ACL-eket. Az időbélyegeket támogatja.  |
 |![Nem ajánlott](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | Támogatott. | Nem másolja a metaadatokat. |
 |||||
 
@@ -149,7 +148,7 @@ Az eszköz tesztelt verziója a 4.4.1-es verzió. Kompatibilis a Felhőbeli rét
 1. Hozzon létre egy tervet, amely az Azure-fájlmegosztás (csak felhőalapú vagy hibrid) telepítését kívánja használni.
 1. Tekintse át az elérhető áttelepítési útmutatók listáját, és keresse meg az Azure-fájlmegosztás forrására és üzembe helyezésére vonatkozó részletes útmutatót.
 
-További információ a jelen cikkben említett Azure Files technológiákról:
+További információ a cikkben említett Azure Files technológiákról:
 
 * [Az Azure file share áttekintése](storage-files-introduction.md)
 * [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)

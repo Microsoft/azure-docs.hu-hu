@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: dc75ada87db6fdbb3861c2e4e495f93147513421
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 671991a936fd0330c31017dd5f64e7b5eca9b3f4
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102440564"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563659"
 ---
 # <a name="encoding-scenario-based-migration-guidance"></a>Kódolási forgatókönyv-alapú áttelepítési útmutató
 
@@ -58,9 +58,7 @@ Az alábbi képre kattintva megtekintheti a nagyobb verziót.
 
 ### <a name="v3-encoding-workflow"></a>V3 kódolási munkafolyamat
 
-<Token>
-<object data="./media/migration-guide/v3-pretty2.svg" width="80%"></object>
-</Token>
+[![A v3 ](./media/migration-guide/V3-pretty.svg) kódolási munkafolyamat ](./media/migration-guide/V3-pretty.svg#lightbox)
 
 1. Beállítás
     1. Hozzon létre egy eszközt, vagy használjon egy meglévő eszközt. Ha új eszközt használ, töltse fel a tartalmat az adott eszközre. Ha meglévő eszközt használ, az objektumban már létező fájlokat kell kódolnia. *Ne töltsön fel további tartalmat az adott eszközre.*

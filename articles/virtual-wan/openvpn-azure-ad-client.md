@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8e97a2f077efd4d00eec4a91645dc1b65057ebd9
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 3dbdfb461bc2ae79439f39df3efbc2c564782110
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565007"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548393"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>VPN-ügyfél konfigurálása P2S OpenVPN protokollt használó kapcsolatokhoz: Azure AD-hitelesítés
 
@@ -54,7 +54,7 @@ Tanúsítványalapú profillal való munka esetén győződjön meg arról, hogy
 
 Ha van egy működő profilja, és el kell terjesztenie más felhasználóknak, a következő lépésekkel exportálhatja:
 
-1. Jelölje ki az exportálni kívánt VPN-ügyféloldali profilt, majd válassza a **...** , majd az **Exportálás** lehetőséget.
+1. Jelölje ki az exportálni kívánt VPN-ügyféloldali profilt, majd válassza a **...**, majd az **Exportálás** lehetőséget.
 
     ![A képernyőképen a menüből kiválasztott exportálás látható.](./media/openvpn-azure-ad-client/export/export1.jpg)
 
@@ -108,7 +108,7 @@ Ha van egy működő profilja, és el kell terjesztenie más felhasználóknak, 
 
     ![Képernyőfelvétel: a kapcsolathoz tartozó csatlakoztatás gomb.](./media/openvpn-azure-ad-client/create/create3.jpg)
 
-4. Válassza ki a megfelelő hitelesítő adatokat, majd kattintson a **Continue (folytatás** ) gombra.
+4. Válassza ki a megfelelő hitelesítő adatokat, majd kattintson a **Continue (folytatás**) gombra.
 
     ![A képernyőképen a bejelentkezés párbeszédpanel látható.](./media/openvpn-azure-ad-client/create/create4.jpg)
 
@@ -192,7 +192,7 @@ Megváltoztathatja a letöltött profil XML-fájlját, **\<dnsservers> \<dnsserv
 ```
 
 > [!NOTE]
-> Az OpenVPN Azure AD-ügyfél DNS-névfeloldási házirend-tábla (NRPT) bejegyzéseket használ, ami azt jelenti, hogy a DNS-kiszolgálók nem lesznek felsorolva a kimenetében `ipconfig /all` . A használaton kívüli DNS-beállítások megerősítéséhez tekintse meg a [Get-DnsClientNrptPolicy](/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) a PowerShellben című részt.
+> Az OpenVPN Azure AD-ügyfél DNS-névfeloldási házirend-tábla (NRPT) bejegyzéseket használ, ami azt jelenti, hogy a DNS-kiszolgálók nem lesznek felsorolva a kimenetében `ipconfig /all` . A használaton kívüli DNS-beállítások megerősítéséhez tekintse meg a [Get-DnsClientNrptPolicy](/powershell/module/dnsclient/get-dnsclientnrptpolicy) a PowerShellben című részt.
 >
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Hogyan egyéni útvonalakat hozzáadni a VPN-ügyfélhez?

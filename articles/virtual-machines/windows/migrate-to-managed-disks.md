@@ -2,17 +2,17 @@
 title: Azure-beli virtuális gépek migrálása a Managed Disksba
 description: Telepítse át a nem felügyelt lemezekkel létrehozott Azure-beli virtuális gépeket a Storage-fiókokban a Managed Disks használatához.
 author: roygara
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 05/30/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d88792f50e0e79dd0313694cf979761054551eac
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 65b36db5185390cd6527a66c91eecd4712623df5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487524"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564339"
 ---
 # <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>Azure-beli virtuális gépek migrálása az Azure-ba való Managed Disks
 
@@ -23,7 +23,7 @@ Az igények alapján négyféle tárolási lehetőség közül választhat. A re
 
 A következő helyzetekben telepítheti át Managed Disksre:
 
-|Használati példa  |Cikk  |
+|Eset  |Cikk  |
 |---------|---------|
 |Különálló virtuális gépek és rendelkezésreállási csoportban lévő virtuális gépek konvertálása felügyelt lemezekké     |[Virtuális gépek konvertálása felügyelt lemezek használatára](convert-unmanaged-to-managed-disks.md)         |
 |Egyetlen virtuális gép konvertálása klasszikusról Resource Managerre felügyelt lemezeken     |[Virtuális gép létrehozása klasszikus VHD-ből](create-vm-specialized-portal.md)         |
@@ -32,7 +32,7 @@ A következő helyzetekben telepítheti át Managed Disksre:
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Managed Disks](../managed-disks-overview.md)
 - Tekintse át a [Managed Disks díjszabását](https://azure.microsoft.com/pricing/details/managed-disks/).

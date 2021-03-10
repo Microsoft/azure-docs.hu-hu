@@ -1,26 +1,27 @@
 ---
 title: Windows rendszerű virtuális gép operációsrendszer-meghajtójának kibontása az Azure-ban
 description: A Resource Manager-alapú üzemi modellben Azure PowerShell használatával bontsa ki a virtuális gép operációsrendszer-meghajtójának méretét.
-services: virtual-machines-windows
+services: virtual-machines
 documentationcenter: ''
 author: kirpasingh
 manager: roshar
 editor: ''
 tags: azure-resource-manager
 ms.assetid: d9edfd9f-482f-4c0b-956c-0d2c2c30026c
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: df27d7b25010fa68fc86ffe093318b2b0b7f4e96
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 2f991dd93549cf73005127569af496df541eecde
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393829"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549600"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Virtuális gép operációsrendszer-meghajtójának bővítése
 
@@ -60,7 +61,7 @@ Amikor új virtuális gépet (VM) hoz létre egy erőforráscsoporthoz egy rends
 
     :::image type="content" source="./media/expand-os-disk/size.png" alt-text="Képernyőkép, amely a kiválasztott lemezterülettel rendelkező konfigurációs ablaktáblát jeleníti meg.":::
 
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
 
     :::image type="content" source="./media/expand-os-disk/save.png" alt-text="Képernyőkép, amely megjeleníti a konfiguráció ablaktáblát a Mentés gomb kiválasztásával.":::
 
@@ -241,9 +242,9 @@ Ha kibontotta a virtuális gép lemezét, be kell lépnie az operációs rendsze
 
 4. A **DiskPart** parancssorba írja be a következőt: `select volume <volumenumber>` . Itt választhatja ki, hogy milyen kötetre kívánja kiterjeszteni a *kötetszám* , hanem az ugyanazon a lemezen lévő üres helyet.
 
-5. A **DiskPart** parancssorba írja be a következőt: `extend [size=<size>]` . Ez kibővíti a kijelölt *size* kötetet megabájtban (MB).
+5. A **DiskPart** parancssorba írja be a következőt: `extend [size=<size>]` . Ez kibővíti a kijelölt  kötetet megabájtban (MB).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [Azure Portal](attach-managed-disk-portal.md)használatával is csatolhat lemezeket.

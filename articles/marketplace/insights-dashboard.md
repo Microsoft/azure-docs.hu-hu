@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 9089fee7565633b198043efeed929fc7446437d5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a8a53a54d30df9a2f7079d705f754e554328c3f7
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458293"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553935"
 ---
 # <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>A Marketplace Insights irányítópult a kereskedelmi piactér-elemzésekben
 
 Ez a cikk a partner Center Piactéri információk irányítópultján nyújt információt. Ez az irányítópult a kereskedelmi piactér webes elemzési szolgáltatásának összegzését jeleníti meg, amely lehetővé teszi a kiadók számára, hogy a kereskedelmi piactér online üzleteiben (Microsoft AppSource és az Azure Marketplace-en) felsorolt termék részletes oldalain mérjék fel az ügyfelek engagement
 
-Ha a **piactéren elérhető Piactéri** irányítópultot szeretné elérni a partner Centerben, a kereskedelmi piactér területen válassza a Marketplace- **[elemzések elemzése](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** lehetőséget  >  **Marketplace Insights**.
+Ha a **piactéren elérhető Piactéri** irányítópultot szeretné elérni a partner Centerben, a kereskedelmi piactér területen válassza a Marketplace- **[elemzések elemzése](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** lehetőséget  >  .
 
 Az analitikai terminológia részletes leírását lásd: [kereskedelmi piactér analitikai terminológiája és gyakori kérdések](./analytics-faq.md).
 
@@ -104,7 +104,20 @@ Ez a táblázat a meglátogatott oldalak megtekintését, valamint a kiválaszto
 > [!TIP]
 > Az adatletöltéshez használhatja a letöltés ikont bármelyik widget jobb felső sarkában. Az egyes widgetekkel kapcsolatos visszajelzéseket a "hüvelykujj fel" vagy a "hüvelykujj lefelé" ikonra kattintva teheti meg.
 
-## <a name="next-steps"></a>További lépések
+| Oszlop neve a (z)<br>felhasználói felület | Attribútum neve | Definíció | A programozott oszlop neve<br>hozzáférési jelentések |
+| ------------ | ------------- | ------------- | ------------- |
+| Date | Látogatás dátuma | A lap látogatásának és/vagy CTA-nak az esemény létrehozása az Azure Marketplace piactéren és/vagy a AppSource. | Date |
+| Offer Name | Offer Name | A kereskedelmi Piactéri ajánlat neve. | OfferName |
+| Hivatkozó tartomány | Hivatkozó tartomány | Annak az átirányítási tartománynak a neve, ahonnan az oldal meglátogatása megtörtént. Ha az oldal felkereséséhez nincsenek beléptetési tartományok rögzítve, akkor a megfelelő bejegyzés "hivatkozó tartomány nincs jelen". |  ReferralDomain |
+| Ország neve | Ország neve | Annak az országnak a neve, ahonnan az oldal meglátogatása megtörtént. | CountryName |
+| Oldalak meglátogatása | Oldalak meglátogatása | Az adott dátumhoz tartozó ajánlat nevéhez társított oldal-látogatások száma. | PageVisits |
+| Letöltés most | Letöltés most | Az ajánlat oldalának "Letöltés most" CTA-ra való kattintások száma egy adott dátumra vonatkozóan. | GetItNow |
+| Kapcsolatfelvétel | Kapcsolatfelvétel | A "Contact me" CTA-ra való kattintások száma az ajánlat oldalán egy adott dátumra vonatkozóan. | ContactMe |
+| Tesztverzió | Tesztverzió | A "tesztvezetés" CTA-re való kattintások száma az ajánlat lapján egy adott dátumra vonatkozóan. | TestDrive |
+| Ingyenes próba | Ingyenes próba | Az "ingyenes próbaverzió" CTA-ra való kattintások száma az ajánlat oldalán egy adott dátumra vonatkozóan. | FreeTrial |
+|||||
+
+## <a name="next-steps"></a>Következő lépések
 
 - A kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [hozzáférés analitikus jelentések a kereskedelmi piactérhez a partner Centerben](./partner-center-portal/analytics.md).
 - További információ a megrendelésekről grafikus és letölthető formátumban: [Orders Dashboard a kereskedelmi piactér elemzésében](./orders-dashboard.md).

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 04137fef640da46ca8876811e127e109a8c3d445
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 4bfc29472373a53bcebb2ba59134d1f3702d4793
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348304"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549872"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>A kereskedelmi piactéren felépítheti a transacter SaaS-ajánlat kezdőlapját
 
@@ -62,7 +62,7 @@ Ha emelt szintű engedélyekre van szüksége a bevezetési vagy kiépítési fo
 
 Számos olyan minta alkalmazást adtunk meg, amelyek az Azure AD-bejelentkezést használó egyszerű webhelyeket implementálják. Miután az alkalmazás regisztrálva lett az Azure AD-ben, a gyors üzembe helyezési **panel az 1** . ábrán látható általános alkalmazások és fejlesztői csomagok listáját kínálja. Válassza ki a környezetének megfelelőt, és kövesse a letöltésre és telepítésre vonatkozó utasításokat.
 
-**_1. ábra: rövid útmutató a Azure Portal_* _
+***1. ábra: rövid útmutató a Azure Portal***
 
 :::image type="content" source="./media/azure-ad-saas/azure-ad-quickstart-blade.png" alt-text="A Azure Portal rövid útmutató paneljének bemutatása.":::
 
@@ -109,20 +109,20 @@ Az [OpenID Connect](../active-directory/develop/v2-protocols-oidc.md) folyamat r
 
 ## <a name="use-the-microsoft-graph-api"></a>A Microsoft Graph API használata
 
-Az azonosító jogkivonat alapszintű információt tartalmaz a vásárló azonosításához, de az aktiválási folyamat további részleteket igényelhet – például a vevő vállalatát – a bevezetési folyamat befejezéséhez. A [Microsoft Graph API](/graph/use-the-api) -val kérheti ezeket az adatokat, hogy ne kényszerítse a felhasználót, hogy adja meg újra ezeket a részleteket. A standard _ *User. Read* * engedélyek alapértelmezés szerint a következő információkat tartalmazzák.
+Az azonosító jogkivonat alapszintű információt tartalmaz a vásárló azonosításához, de az aktiválási folyamat további részleteket igényelhet – például a vevő vállalatát – a bevezetési folyamat befejezéséhez. A [Microsoft Graph API](/graph/use-the-api) -val kérheti ezeket az adatokat, hogy ne kényszerítse a felhasználót, hogy adja meg újra ezeket a részleteket. Az általános jogú **felhasználó. az olvasási** engedélyek alapértelmezés szerint a következő információkat tartalmazzák.
 
 | Érték | Leírás |
 | ------------ | ------------- |
 | displayName | A felhasználó címjegyzékében megjelenő név. |
 | givenName | A felhasználó vezetékneve. |
-| Beosztás | A felhasználó beosztása. |
+| jobTitle | A felhasználó beosztása. |
 | Levelezés | A felhasználó SMTP-címe. |
 | Mobiltelefon | A felhasználó elsődleges mobil telefonszáma. |
 | preferredLanguage | ISO 639-1-kód a felhasználó által előnyben részesített nyelvhez. |
 | surname | A felhasználó vezetékneve. |
 |||
 
-További tulajdonságok – például a felhasználó vállalatának neve vagy a felhasználó helye (ország) – kiválasztható a kérelembe való felvételhez. További részletekért tekintse meg [a felhasználói erőforrástípus tulajdonságait](/graph/api/resources/user?view=graph-rest-1.0&preserve-view=true#properties) .
+További tulajdonságok – például a felhasználó vállalatának neve vagy a felhasználó helye (ország) – kiválasztható a kérelembe való felvételhez. További részletekért tekintse meg [a felhasználói erőforrástípus tulajdonságait](/graph/api/resources/user#properties) .
 
 Az Azure AD-ben regisztrált alkalmazások többsége delegált engedélyekkel rendelkezik, hogy beolvassa a felhasználó adatait a vállalat Azure AD-bérlője számára. Az adott információhoz Microsoft Graph kérelmekhez hozzáférési jogkivonatot kell csatolni a hitelesítéshez. A hozzáférési jogkivonat létrehozásával kapcsolatos konkrét lépések a használt technológiai veremtől függenek, de a mintakód egy példát is tartalmaz majd. További információ: [hozzáférés beszerzése egy felhasználó nevében](/graph/auth-v2-user).
 

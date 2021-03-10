@@ -1,24 +1,24 @@
 ---
 title: AD DS hitelesítés engedélyezése az Azure-fájlmegosztás számára
-description: Megtudhatja, hogyan engedélyezheti Active Directory tartományi szolgáltatások hitelesítést az SMB-en keresztül az Azure-fájlmegosztás esetében. A tartományhoz csatlakoztatott Windows-alapú virtuális gépek ezután AD DS hitelesítő adatok használatával érhetik el az Azure-fájlmegosztást.
+description: Megtudhatja, hogyan engedélyezheti Active Directory Domain Services hitelesítést az SMB-en keresztül az Azure-fájlmegosztás esetében. A tartományhoz csatlakoztatott Windows-alapú virtuális gépek ezután AD DS hitelesítő adatok használatával érhetik el az Azure-fájlmegosztást.
 author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 948b30cbf37ae5f4f357860569579d8591412414
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 5ee4481b3151e28d5d37760e486a43adbc194994
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630396"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553221"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Első rész: az Azure-fájlmegosztás AD DS hitelesítésének engedélyezése 
 
-A Active Directory tartományi szolgáltatások (AD DS) hitelesítés engedélyezése előtt olvassa el az [áttekintő cikket](storage-files-identity-auth-active-directory-enable.md) a támogatott forgatókönyvek és követelmények megismeréséhez.
+A Active Directory Domain Services (AD DS) hitelesítés engedélyezése előtt olvassa el az [áttekintő cikket](storage-files-identity-auth-active-directory-enable.md) a támogatott forgatókönyvek és követelmények megismeréséhez.
 
-Ez a cikk a Active Directory tartományi szolgáltatások (AD DS) hitelesítésének engedélyezéséhez szükséges folyamatot ismerteti a Storage-fiókban. A szolgáltatás engedélyezése után konfigurálnia kell a Storage-fiókot és a AD DS, hogy AD DS hitelesítő adatokat használjon az Azure-fájlmegosztás hitelesítéséhez. Az Azure-fájlmegosztás SMB-en keresztüli AD DS hitelesítésének engedélyezéséhez regisztrálnia kell a Storage-fiókját a AD DS, majd be kell állítania a szükséges tartományi tulajdonságokat a Storage-fiókban.
+Ez a cikk a Active Directory Domain Services (AD DS) hitelesítésének engedélyezéséhez szükséges folyamatot ismerteti a Storage-fiókban. A szolgáltatás engedélyezése után konfigurálnia kell a Storage-fiókot és a AD DS, hogy AD DS hitelesítő adatokat használjon az Azure-fájlmegosztás hitelesítéséhez. Az Azure-fájlmegosztás SMB-en keresztüli AD DS hitelesítésének engedélyezéséhez regisztrálnia kell a Storage-fiókját a AD DS, majd be kell állítania a szükséges tartományi tulajdonságokat a Storage-fiókban.
 
 A Storage-fiók AD DShoz való regisztrálásához hozzon létre egy fiókot, amely a AD DS. Ezt a folyamatot úgy tekintheti meg, mintha olyan fiókot hozzon létre, amely egy helyi Windows-fájlkiszolgálón jelöli a AD DS. Ha a szolgáltatás engedélyezve van a Storage-fiókon, akkor az a fiók összes új és meglévő fájljára érvényes lesz.
 
@@ -41,7 +41,7 @@ A parancsmag által létrehozott AD DS fiók a Storage-fiókot jelöli. Ha a AD 
 Cserélje le a helyőrző értékeket az alábbi paraméterekkel, mielőtt végrehajtja a PowerShellben.
 > [!IMPORTANT]
 > A tartományhoz való csatlakozás parancsmag létrehoz egy AD-fiókot, amely a Storage-fiókot (fájlmegosztást) az AD-ben fogja ábrázolni. Megadhatja, hogy számítógép-fiókként vagy szolgáltatás-bejelentkezési fiókként regisztrálja a részleteket a [Gyakori kérdések](./storage-files-faq.md#security-authentication-and-access-control) részben. Számítógépfiókok esetében az alapértelmezett jelszó lejárati ideje 30 nap múlva az AD-ben van beállítva. Hasonlóképpen, előfordulhat, hogy a szolgáltatás bejelentkezési fiókja az AD-tartományon vagy a szervezeti egységen (OU) beállított alapértelmezett jelszó-lejárati kort tartalmaz.
-> Mindkét fióktípus esetében javasoljuk, hogy tekintse meg az AD-környezetben konfigurált jelszó lejárati idejét, és tervezze meg, hogy a jelszó maximális kora előtt [frissítse a Storage-fiók identitásának jelszavát](storage-files-identity-ad-ds-update-password.md) . Érdemes lehet [új ad szervezeti egységet (OU-t) létrehozni az ad-ben](/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps) , és ennek megfelelően letiltani a jelszó lejárati házirendjét a [számítógép fiókjain](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)) vagy a szolgáltatás bejelentkezési fiókjain. 
+> Mindkét fióktípus esetében javasoljuk, hogy tekintse meg az AD-környezetben konfigurált jelszó lejárati idejét, és tervezze meg, hogy a jelszó maximális kora előtt [frissítse a Storage-fiók identitásának jelszavát](storage-files-identity-ad-ds-update-password.md) . Érdemes lehet [új ad szervezeti egységet (OU-t) létrehozni az ad-ben](/powershell/module/addsadministration/new-adorganizationalunit) , és ennek megfelelően letiltani a jelszó lejárati házirendjét a [számítógép fiókjain](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)) vagy a szolgáltatás bejelentkezési fiókjain. 
 
 ```PowerShell
 #Change the execution policy to unblock importing AzFilesHybrid.psm1 module
@@ -89,7 +89,7 @@ Ha a `Join-AzStorageAccountForAuth` fenti szkriptet már sikeresen végrehajtott
 
 ### <a name="checking-environment"></a>Környezet ellenőrzése
 
-Először ellenőriznie kell a környezet állapotát. Pontosabban ellenőriznie kell, hogy telepítve van-e a [Active Directory PowerShell](/powershell/module/addsadministration/?view=win10-ps) , és hogy a rendszerhéj rendszergazdai jogosultságokkal van-e végrehajtva. Ezután ellenőrizze, hogy az [Az.Storage 2.0 modul](https://www.powershellgallery.com/packages/Az.Storage/2.0.0) telepítve van-e, és ha nincs, telepítse. Az ellenőrzések elvégzése után ellenőrizze a AD DS, hogy van-e olyan [számítógépfiók](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (alapértelmezett) vagy [szolgáltatás-bejelentkezési fiók](/windows/win32/ad/about-service-logon-accounts) , amely már létrehozva van SPN/UPN néven "CIFS/a-Storage-Account-Name-here. file. Core. Windows. net". Ha a fiók nem létezik, hozzon létre egyet a következő szakaszban leírtak szerint.
+Először ellenőriznie kell a környezet állapotát. Pontosabban ellenőriznie kell, hogy telepítve van-e a [Active Directory PowerShell](/powershell/module/addsadministration/) , és hogy a rendszerhéj rendszergazdai jogosultságokkal van-e végrehajtva. Ezután ellenőrizze, hogy az [Az.Storage 2.0 modul](https://www.powershellgallery.com/packages/Az.Storage/2.0.0) telepítve van-e, és ha nincs, telepítse. Az ellenőrzések elvégzése után ellenőrizze a AD DS, hogy van-e olyan [számítógépfiók](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (alapértelmezett) vagy [szolgáltatás-bejelentkezési fiók](/windows/win32/ad/about-service-logon-accounts) , amely már létrehozva van SPN/UPN néven "CIFS/a-Storage-Account-Name-here. file. Core. Windows. net". Ha a fiók nem létezik, hozzon létre egyet a következő szakaszban leírtak szerint.
 
 ### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>Az AD-ben manuálisan létrehozott Storage-fiókot jelölő identitás létrehozása
 
@@ -165,7 +165,7 @@ DomainGuid:<yourGUIDHere>
 DomainSid:<yourSIDHere>
 AzureStorageID:<yourStorageSIDHere>
 ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezzel sikeresen engedélyezte a szolgáltatást a Storage-fiókjában. A szolgáltatás használatához hozzá kell rendelnie a megosztási szintű engedélyeket. Folytassa a következő szakasszal.
 

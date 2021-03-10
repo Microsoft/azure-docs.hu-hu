@@ -1,23 +1,24 @@
 ---
 title: Linux rendszerű virtuális gépek időszinkronizálása az Azure-ban
 description: Linux rendszerű virtuális gépek időszinkronizálása.
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: ''
 author: cynthn
 manager: gwallace
 tags: azure-resource-manager
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 399022c1ef740865e4b2f7b82e2175e748a2a925
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18c8570a8066985cab5263c4779787062dc32d75
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306956"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552643"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Linux rendszerű virtuális gépek időszinkronizálása az Azure-ban
 
@@ -114,7 +115,7 @@ root        391      2  0 17:52 ?        00:00:00 [hv_balloon]
 
 ### <a name="check-for-ptp-clock-source"></a>A PTP-óra forrásának keresése
 
-A Linux újabb verzióiban a VMICTimeSync-szolgáltató részeként a (z) Precision Time Protocol (PTP) órajel-forrás érhető el. Red Hat Enterprise Linux vagy CentOS 7. x régebbi verzióiban a [Linux integrációs szolgáltatások](https://github.com/LIS/lis-next) tölthetők le, és a frissített illesztőprogram telepítéséhez használhatók. Ha a PTP-órajel forrása elérhető, a Linux-eszköz/dev/PTP*x*formátumú lesz. 
+A Linux újabb verzióiban a VMICTimeSync-szolgáltató részeként a (z) Precision Time Protocol (PTP) órajel-forrás érhető el. Red Hat Enterprise Linux vagy CentOS 7. x régebbi verzióiban a [Linux integrációs szolgáltatások](https://github.com/LIS/lis-next) tölthetők le, és a frissített illesztőprogram telepítéséhez használhatók. Ha a PTP-órajel forrása elérhető, a Linux-eszköz/dev/PTP *x* formátumú lesz. 
 
 Itt láthatja, hogy mely PTP-órajelek érhetők el.
 

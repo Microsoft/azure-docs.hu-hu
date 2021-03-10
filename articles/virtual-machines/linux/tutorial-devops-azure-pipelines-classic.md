@@ -5,19 +5,20 @@ author: moala
 manager: jpconnock
 tags: azure-devops-pipelines
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: tutorial
 ms.tgt_pltfrm: azure-pipelines
 ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: f77cc85bd62deb2cb2cb74c42cf245a409904b3a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: dd47250989be5c31d5f0ade2b602b9d6af535d83
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978305"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563999"
 ---
 # <a name="tutorial---configure-the-rolling-deployment-strategy-for-azure-linux-virtual-machines"></a>Oktatóanyag – az Azure Linux rendszerű virtuális gépek működés közbeni üzembe helyezési stratégiájának konfigurálása
 
@@ -42,7 +43,7 @@ Az egyes iterációkban a működés közbeni központi telepítés az alkalmaz�
 A folyamatos kézbesítés beállítás használatával a Azure Portalon belül konfigurálhatja a virtuális gépek működés közbeni frissítéseit. Itt látható a lépésenkénti útmutató:
 
 1. Jelentkezzen be a Azure Portalba, és navigáljon a virtuális géphez.
-1. A virtuális gép beállításainak bal szélső paneljén válassza a **folyamatos kézbesítés**lehetőséget. Ezután válassza a **Konfigurálás**lehetőséget.
+1. A virtuális gép beállításainak bal szélső paneljén válassza a **folyamatos kézbesítés** lehetőséget. Ezután válassza a **Konfigurálás** lehetőséget.
 
    ![A folyamatos kézbesítés panel a configure (Konfigurálás) gombbal](media/tutorial-devops-azure-pipelines-classic/azure-devops-configure.png)
 
@@ -52,7 +53,7 @@ A folyamatos kézbesítés beállítás használatával a Azure Portalon belül 
 
 1. A központi telepítési csoport a központi telepítési célszámítógépek logikai készlete, amely a fizikai környezeteket jelképezi. Példák a fejlesztési, tesztelési, ellenőrzését és éles környezetekre. Létrehozhat egy új központi telepítési csoportot, vagy kijelölhet egy meglévőt is.
 1. Válassza ki a Build folyamatot, amely közzéteszi a virtuális gépre telepítendő csomagot. A közzétett csomagnak rendelkeznie kell egy deploy.ps1 vagy deploy.sh nevű telepítési parancsfájllal a csomag gyökérkönyvtárában található deployscripts mappában. A folyamat futtatja ezt az üzembe helyezési parancsfájlt.
-1. A **központi telepítési stratégia**területen válassza a **gördülő**lehetőséget.
+1. A **központi telepítési stratégia** területen válassza a **gördülő** lehetőséget.
 1. Szükség esetén az egyes gépeket felcímkézheti a szerepkörével. A "web" és az "db" címke példákat tartalmaz. Ezek a címkék segítenek kizárólag adott szerepkörrel rendelkező virtuális gépek célzásában.
 1. A folyamatos kézbesítési folyamat konfigurálásához kattintson **az OK gombra** .
 1. A konfigurálás befejeződése után folyamatos kézbesítési folyamattal rendelkezik, amely a virtuális gépre való üzembe helyezésre van konfigurálva.  

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: e0913351d40cd75da17d16cca119b4ad5ce20de0
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 84cbc681d0974e91561daf8918dff389226fa7aa
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334701"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553969"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Tanúsítványalapú hitelesítés Azure AD-identitáshoz Azure Cosmos DB-fiók kulcsainak eléréséhez
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -30,7 +30,7 @@ A tanúsítványalapú hitelesítéssel az ügyfélalkalmazás ügyféltanúsít
 
 Ebben a lépésben egy minta webalkalmazást fog regisztrálni az Azure AD-fiókjában. Ezt az alkalmazást később a rendszer a Azure Cosmos DB-fiók kulcsainak olvasásához használja. Egy alkalmazás regisztrálásához kövesse az alábbi lépéseket: 
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 1. Nyissa meg az Azure **Active Directory** panelt, lépjen a **Alkalmazásregisztrációk** panelre, és válassza az **új regisztráció** lehetőséget. 
 
@@ -46,7 +46,7 @@ Ebben a lépésben egy minta webalkalmazást fog regisztrálni az Azure AD-fiók
 
 1. Az űrlap kitöltése után válassza a **regisztráció** lehetőséget.
 
-1. Ha az alkalmazás regisztrálva van, jegyezze fel az **alkalmazás (ügyfél) azonosítóját** és az **objektumazonosítót** , majd a következő lépésekben fogja használni ezeket az adatokat. 
+1. Ha az alkalmazás regisztrálva van, jegyezze fel az **alkalmazás (ügyfél) azonosítóját** és az **objektumazonosítót**, majd a következő lépésekben fogja használni ezeket az adatokat. 
 
    :::image type="content" source="./media/certificate-based-authentication/get-app-object-ids.png" alt-text="Az alkalmazás és az objektum azonosítóinak beolvasása":::
 
@@ -65,7 +65,7 @@ Ebben a lépésben telepíteni fogja az Azure AD PowerShell-modult. Ez a modul a
    Set-AzContext $context 
    ```
 
-1. A [AzureAD](/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) modul telepítése és importálása
+1. A [AzureAD](/powershell/module/azuread/) modul telepítése és importálása
 
    ```powershell
    Install-Module AzureAD
@@ -105,7 +105,7 @@ A fenti parancs az alábbi képernyőképhez hasonló kimenetet eredményez:
 
 ## <a name="configure-your-azure-cosmos-account-to-use-the-new-identity"></a>Az Azure Cosmos-fiók konfigurálása az új identitás használatára
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 1. Navigáljon az Azure Cosmos-fiókjához, és nyissa meg a **hozzáférés-vezérlés (iam) panelt** .
 
@@ -121,13 +121,13 @@ A tanúsítvány alapú hitelesítő adatokat társíthatja az Azure AD-beli üg
 
 Az ügyfélalkalmazás Azure-alkalmazásának regisztrációja:
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 1. Nyissa meg az Azure **Active Directory** panelt, nyissa meg a **Alkalmazásregisztrációk** ablaktáblát, és nyissa meg az előző lépésben létrehozott minta alkalmazást. 
 
 1. Válassza a **tanúsítványok & a titkok** lehetőséget, majd **töltse fel a tanúsítványt**. Keresse meg az előző lépésben létrehozott tanúsítványfájl-fájlt a feltöltéshez.
 
-1. Válassza a **Hozzáadás** elemet. A tanúsítvány feltöltése után a rendszer megjeleníti az ujjlenyomatot, a kezdési dátumot és a lejárati értékeket.
+1. Válassza a **Hozzáadás** lehetőséget. A tanúsítvány feltöltése után a rendszer megjeleníti az ujjlenyomatot, a kezdési dátumot és a lejárati értékeket.
 
 ## <a name="access-the-keys-from-powershell"></a>A kulcsok elérése a PowerShellből
 
@@ -245,7 +245,7 @@ Ez a parancsfájl az elsődleges és másodlagos elsődleges kulcsokat az alább
 Az előző szakaszhoz hasonlóan megtekintheti az Azure Cosmos-fiókhoz tartozó műveletnapló adatait annak ellenőrzéséhez, hogy a "PéldaAlkalmazás" alkalmazás kezdeményezte-e a kulcsok kérése eseményt. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Cosmos-kulcsok védelme az Azure Key Vaulttal](access-secrets-from-keyvault.md)
 

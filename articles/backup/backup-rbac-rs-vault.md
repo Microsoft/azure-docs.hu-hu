@@ -3,13 +3,13 @@ title: Biztonsági másolatok kezelése az Azure szerepköralapú hozzáférés-
 description: Az Azure szerepköralapú hozzáférés-vezérlés használatával kezelheti Recovery Services-tárolóban a biztonsági mentési kezelési műveletekhez való hozzáférést.
 ms.reviewer: utraghuv
 ms.topic: conceptual
-ms.date: 06/24/2019
-ms.openlocfilehash: 0dd8d08c4ee79082f47929cf7d453f3f4bbd60ee
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.date: 03/09/2021
+ms.openlocfilehash: 179cb6efcff4bcf50a64a6d58f861622e853b02b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090879"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553408"
 ---
 # <a name="use-azure-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Az Azure szerepköralapú hozzáférés-vezérlés használata Azure Backup helyreállítási pontok kezeléséhez
 
@@ -28,26 +28,28 @@ Ha a saját szerepköröket is meg szeretné határozni még több szabályozás
 
 ## <a name="mapping-backup-built-in-roles-to-backup-management-actions"></a>Beépített szerepkörök biztonsági mentésének leképezése biztonsági mentési felügyeleti műveletekre
 
+### <a name="minimum-role-requirements-for-azure-vm-backup"></a>Az Azure virtuális gépek biztonsági mentésének minimális szerepköri követelményei
+
 Az alábbi táblázat a művelet végrehajtásához szükséges biztonságimásolat-kezelési műveleteket és a hozzá tartozó minimális Azure-szerepkört rögzíti.
 
-| Kezelési művelet | Minimálisan szükséges Azure-szerepkör | Hatókör szükséges |
-| --- | --- | --- |
-| Helyreállítási tár létrehozása | Biztonsági mentési közreműködő | A tárolót tartalmazó erőforráscsoport |
-| Azure-beli virtuális gépek biztonsági mentésének engedélyezése | Biztonságimásolat-felelős | A tárolót tartalmazó erőforráscsoport |
-| | Virtuális gépek közreműködője | VM-erőforrás |
-| Virtuális gép igény szerinti biztonsági mentése | Biztonságimásolat-felelős | Recovery Services-tároló |
-| Virtuális gép visszaállítása | Biztonságimásolat-felelős | Recovery Services-tároló |
-| | Közreműködő | Az erőforráscsoport, amelyben a virtuális gép üzembe lesz helyezve |
-| | Virtuális gépek közreműködője | A forrásként szolgáló virtuális gép, amelyről biztonsági mentés készül |
+| Kezelési művelet | Minimálisan szükséges Azure-szerepkör | Hatókör szükséges | Alternatív |
+| --- | --- | --- | --- |
+| Helyreállítási tár létrehozása | Biztonsági mentési közreműködő | A tárolót tartalmazó erőforráscsoport |   |
+| Azure-beli virtuális gépek biztonsági mentésének engedélyezése | Biztonságimásolat-felelős | A tárolót tartalmazó erőforráscsoport |   |
+| | Virtuális gépek közreműködője | VM-erőforrás |  A beépített szerepkör helyett a következő engedélyekkel rendelkező egyéni szerepkört is megtekintheti: Microsoft. számítás/virtualMachines/írás |
+| Virtuális gép igény szerinti biztonsági mentése | Biztonságimásolat-felelős | Recovery Services-tároló |   |
+| Virtuális gép visszaállítása | Biztonságimásolat-felelős | Recovery Services-tároló |   |
+| | Közreműködő | Az erőforráscsoport, amelyben a virtuális gép üzembe lesz helyezve |   A beépített szerepkör helyett olyan egyéni szerepkört is megadhat, amely a következő engedélyekkel rendelkezik: Microsoft. Resources/Subscriptions/resourceGroups/Write Microsoft. DomainRegistration/Domains/Write, Microsoft. számítás/virtualMachines/Write Microsoft. Network/virtualNetworks/Read Microsoft. Network/virtualNetworks/alhálózatok/csatlakozás/művelet | 
+| | Virtuális gépek közreműködője | A forrásként szolgáló virtuális gép, amelyről biztonsági mentés készül |   A beépített szerepkör helyett a következő engedélyekkel rendelkező egyéni szerepkört is megtekintheti: Microsoft. számítás/virtualMachines/írás |
 | Nem felügyelt lemezek visszaállítása virtuális gép biztonsági mentése | Biztonságimásolat-felelős | Recovery Services-tároló |
-| | Virtuális gépek közreműködője | A forrásként szolgáló virtuális gép, amelyről biztonsági mentés készül |
-| | Tárfiók-közreműködő | A Storage-fiók erőforrása, ahol a lemezek vissza lesznek állítva |
+| | Virtuális gépek közreműködője | A forrásként szolgáló virtuális gép, amelyről biztonsági mentés készül | A beépített szerepkör helyett a következő engedélyekkel rendelkező egyéni szerepkört is megtekintheti: Microsoft. számítás/virtualMachines/írás |
+| | Tárfiók-közreműködő | A Storage-fiók erőforrása, ahol a lemezek vissza lesznek állítva |   A beépített szerepkör helyett a következő engedélyekkel rendelkező egyéni szerepkört is megtekintheti: Microsoft. Storage/storageAccounts/Write |
 | Felügyelt lemezek visszaállítása a virtuális gép biztonsági másolatából | Biztonságimásolat-felelős | Recovery Services-tároló |
-| | Virtuális gépek közreműködője | A forrásként szolgáló virtuális gép, amelyről biztonsági mentés készül |
-| | Tárfiók-közreműködő | A visszaállítás részeként kijelölt ideiglenes Storage-fiók, amely a tárolóból származó adatok tárolására szolgál, mielőtt átalakítja őket a felügyelt lemezekre. |
-| | Közreműködő | Az erőforráscsoport, amelybe a felügyelt lemez (ek) vissza lesz állítva |
+| | Virtuális gépek közreműködője | A forrásként szolgáló virtuális gép, amelyről biztonsági mentés készül |    A beépített szerepkör helyett a következő engedélyekkel rendelkező egyéni szerepkört is megtekintheti: Microsoft. számítás/virtualMachines/írás |
+| | Tárfiók-közreműködő | A visszaállítás részeként kijelölt ideiglenes Storage-fiók, amely a tárolóból származó adatok tárolására szolgál, mielőtt átalakítja őket a felügyelt lemezekre. |   A beépített szerepkör helyett a következő engedélyekkel rendelkező egyéni szerepkört is megtekintheti: Microsoft. Storage/storageAccounts/Write |
+| | Közreműködő | Az erőforráscsoport, amelybe a felügyelt lemez (ek) vissza lesz állítva | A beépített szerepkör helyett a következő engedélyekkel rendelkező egyéni szerepkört is megtekintheti: Microsoft. Resources/Subscriptions/resourceGroups/Write|
 | Egyedi fájlok visszaállítása a virtuális gép biztonsági másolatából | Biztonságimásolat-felelős | Recovery Services-tároló |
-| | Virtuális gépek közreműködője | A forrásként szolgáló virtuális gép, amelyről biztonsági mentés készül |
+| | Virtuális gépek közreműködője | A forrásként szolgáló virtuális gép, amelyről biztonsági mentés készül | A beépített szerepkör helyett a következő engedélyekkel rendelkező egyéni szerepkört is megtekintheti: Microsoft. számítás/virtualMachines/írás |
 | Biztonsági mentési szabályzat létrehozása az Azure-beli virtuális gépek biztonsági mentéséhez | Biztonsági mentési közreműködő | Recovery Services-tároló |
 | Azure-beli virtuális gép biztonsági mentési szabályzatának módosítása | Biztonsági mentési közreműködő | Recovery Services-tároló |
 | Azure-beli virtuális gép biztonsági mentési szabályzatának törlése | Biztonsági mentési közreműködő | Recovery Services-tároló |
@@ -58,7 +60,25 @@ Az alábbi táblázat a művelet végrehajtásához szükséges biztonságimáso
 > [!IMPORTANT]
 > Ha virtuálisgép-erőforrás-hatókörben adja meg a virtuálisgép-közreműködőt, és a virtuálisgép-beállítások részeként kiválasztja a **biztonsági mentést** , megnyílik a **biztonsági mentés engedélyezése** képernyő, még akkor is, ha a virtuális gép már biztonsági másolattal rendelkezik. Ennek az az oka, hogy a biztonsági mentési állapot ellenőrzésének meghívása csak az előfizetési szinten működik. Ennek elkerüléséhez nyissa meg a tárolót, és nyissa meg a virtuális gép biztonsági mentési elemének nézetét, vagy a virtuálisgép-közreműködő szerepkört egy előfizetési szinten kell megadnia.
 
-## <a name="minimum-role-requirements-for-the-azure-file-share-backup"></a>Az Azure-fájlmegosztás biztonsági mentésének minimális szerepköri követelményei
+### <a name="minimum-role-requirements-for-azure-workload-backups-sql-and-hana-db-backups"></a>Az Azure munkaterhelés biztonsági mentéséhez szükséges minimális szerepkör-követelmények (SQL-és HANA-adatbázis biztonsági mentései)
+
+Az alábbi táblázat a művelet végrehajtásához szükséges biztonságimásolat-kezelési műveleteket és a hozzá tartozó minimális Azure-szerepkört rögzíti.
+
+| Kezelési művelet | Minimálisan szükséges Azure-szerepkör | Hatókör szükséges | Alternatív |
+| --- | --- | --- | --- |
+| Helyreállítási tár létrehozása | Biztonsági mentési közreműködő | A tárolót tartalmazó erőforráscsoport |   |
+| SQL-és/vagy HANA-adatbázisok biztonsági mentésének engedélyezése | Biztonságimásolat-felelős | A tárolót tartalmazó erőforráscsoport |   |
+| | Virtuális gépek közreműködője | VM-erőforrás, amelyben az adatbázis telepítve van |  A beépített szerepkör helyett a következő engedélyekkel rendelkező egyéni szerepkört is megtekintheti: Microsoft. számítás/virtualMachines/írás |
+| Az adatbázis igény szerinti biztonsági mentése | Biztonságimásolat-felelős | Recovery Services-tároló |   |
+| Adatbázis visszaállítása vagy visszaállítás fájlként | Biztonságimásolat-felelős | Recovery Services-tároló |   |
+| | Virtuális gépek közreműködője | A forrásként szolgáló virtuális gép, amelyről biztonsági mentés készül |   A beépített szerepkör helyett a következő engedélyekkel rendelkező egyéni szerepkört is megtekintheti: Microsoft. számítás/virtualMachines/írás |
+| | Virtuális gépek közreműködője | Cél virtuális gép, amelybe a rendszer visszaállítja vagy létrehozta a fájlokat |   A beépített szerepkör helyett a következő engedélyekkel rendelkező egyéni szerepkört is megtekintheti: Microsoft. számítás/virtualMachines/írás |
+| Biztonsági mentési szabályzat létrehozása az Azure-beli virtuális gépek biztonsági mentéséhez | Biztonsági mentési közreműködő | Recovery Services-tároló |
+| Azure-beli virtuális gép biztonsági mentési szabályzatának módosítása | Biztonsági mentési közreműködő | Recovery Services-tároló |
+| Azure-beli virtuális gép biztonsági mentési szabályzatának törlése | Biztonsági mentési közreműködő | Recovery Services-tároló |
+| Biztonsági mentés leállítása (az adat megőrzése vagy az adat törlése) a virtuális gép biztonsági mentésében | Biztonsági mentési közreműködő | Recovery Services-tároló |
+
+### <a name="minimum-role-requirements-for-the-azure-file-share-backup"></a>Az Azure-fájlmegosztás biztonsági mentésének minimális szerepköri követelményei
 
 Az alábbi táblázat rögzíti az Azure fájlmegosztás művelet végrehajtásához szükséges biztonságimásolat-kezelési műveleteket és a hozzá tartozó szerepkört.
 

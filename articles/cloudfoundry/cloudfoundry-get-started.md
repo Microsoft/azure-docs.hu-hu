@@ -2,17 +2,17 @@
 title: Első lépések Cloud Foundry a Microsoft Azure
 description: OSS vagy Pivotal Cloud Foundry futtatása Microsoft Azure
 author: seanmck
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: workloads
 ms.topic: article
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.openlocfilehash: 8645afac5734cdbffb8df6f341529e688ca526d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3b13dffcf251f79a04182d32f23fd40e6ed6044
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84754594"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562894"
 ---
 # <a name="cloud-foundry-on-azure"></a>Cloud Foundry az Azure-ban
 
@@ -55,7 +55,7 @@ Ha Pivotal Cloud Foundry használ, a Service Broker a csuklós hálózat [csemp�
 
 Cloud Foundry kiválóan alkalmas a szoftverfejlesztés gyors fejlesztésére, beleértve a folyamatos integráció (CI) és a folyamatos teljesítés (CD) használatát. Ha az Azure DevOps Services használatával felügyeli a projekteket, és szeretné beállítani a CI/CD-t célzó Cloud Foundry, akkor használhatja az [Azure DevOps Services Cloud Foundry Build bővítményt](https://marketplace.visualstudio.com/items?itemName=ms-vsts.cloud-foundry-build-extension). A beépülő modul megkönnyíti az üzembe helyezések konfigurálását és automatizálását Cloud Foundry, akár az Azure-ban, akár más környezetben fut.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Pivotal Cloud Foundry üzembe helyezése az Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry)
 - [Alkalmazás üzembe helyezése az Azure-ban Cloud Foundry](./cloudfoundry-deploy-your-first-app.md)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: b8cfb483f2b06c072707c57ff45b7ad995a22eb4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a2f6023b86b96266be8e625fd5b0d6625500e3fc
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034438"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551470"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor ügynökök áttekintése
 
@@ -152,10 +152,10 @@ A következő táblázatok a Azure Monitor ügynökök által támogatott operá
 
 ### <a name="linux"></a>Linux
 
-| Operációs rendszer | Azure Monitor-ügynök | Log Analytics-ügynök | Függőségi ügynök | Diagnosztikai bővítmény | 
+| Operációs rendszer | Azure Monitor ügynök <sup>1</sup> | Log Analytics ügynök <sup>1</sup> | Függőségi ügynök | Diagnosztikai bővítmény <sup>2</sup>| 
 |:---|:---:|:---:|:---:|:---:
 | Amazon Linux 2017,09                                        |   | X |   |   |
-| CentOS Linux 8 <sup>1</sup> <sup>2</sup>                    | X | X | X |   |
+| CentOS Linux 8                                              | X <sup>3</sup> | X | X |   |
 | CentOS Linux 7                                              | X | X | X | X |
 | CentOS Linux 6                                              |   | X |   |   |
 | CentOS Linux 6.5 +                                           |   | X | X | X |
@@ -164,26 +164,28 @@ A következő táblázatok a Azure Monitor ügynökök által támogatott operá
 | Debian 8                                                    |   | X | X |   |
 | Debian 7                                                    |   |   |   | X |
 | OpenSUSE 13.1 +                                              |   |   |   | X |
-| Oracle Linux 8 <sup>1</sup> <sup>2</sup>                    | X | X |   |   |
+| Oracle Linux 8                                              | X <sup>3</sup> | X |   |   |
 | Oracle Linux 7                                              | X | X |   | X |
 | Oracle Linux 6                                              |   | X |   |   |
 | Oracle Linux 6.4 +                                           |   | X |   | X |
-| Red Hat Enterprise Linux Server 8 <sup>1</sup> <sup>2</sup> | X | X | X |   |
+| Red Hat Enterprise Linux Server 8                           | X <sup>3</sup> | X | X |   |
 | Red Hat Enterprise Linux Server 7                           | X | X | X | X |
 | Red Hat Enterprise Linux Server 6                           |   | X | X |   |
 | Red Hat Enterprise Linux Server 6.7 +                        |   | X | X | X |
-| SUSE Linux Enterprise Server 15,2 <sup>1</sup> <sup>2</sup> | X |   |   |   |
-| SUSE Linux Enterprise Server 15,1 <sup>1</sup> <sup>2</sup> | X | X |   |   |
+| SUSE Linux Enterprise Server 15,2                           | X <sup>3</sup> |   |   |   |
+| SUSE Linux Enterprise Server 15,1                           | X <sup>3</sup> | X |   |   |
 | SUSE Linux Enterprise Server 15                             | X | X | X |   |
 | SUSE Linux Enterprise Server 12                             | X | X | X | X |
-| Ubuntu 20,04 LTS <sup>1</sup>                               | X | X | X |   |
+| Ubuntu 20,04 LTS                                            | X | X | X |   |
 | Ubuntu 18.04 LTS                                            | X | X | X | X |
 | Ubuntu 16.04 LTS                                            | X | X | X | X |
 | Ubuntu 14,04 LTS                                            |   | X |   | X |
 
-<sup>1</sup> szükséges, hogy a Python 3 telepítve legyen a gépen.
+<sup>1</sup> a számítógépen telepítendő Python (2 vagy 3) szükséges.
 
-<sup>2</sup> ismert probléma a syslog-események gyűjtésével. Jelenleg csak a teljesítményadatok támogatottak.
+<sup>2</sup> a számítógépen telepíteni kell a Python 2-t.
+
+<sup>3</sup> ismert probléma a syslog-események gyűjtésével kapcsolatban. Jelenleg csak a teljesítményadatok támogatottak.
 #### <a name="dependency-agent-linux-kernel-support"></a>Függőségi ügynök Linux kernel-támogatás
 
 Mivel a függőségi ügynök a kernel szintjén működik, a támogatás a kernel verziójától is függ. A következő táblázat felsorolja a függőségi ügynök fő és alverziójának Linux operációsrendszer-kiadását és támogatott kernel-verzióit.

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2fdebffbf9643febc08cba997b3a5a5fc4bb5998
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 8aafb08ff0ccc9391071f796450e69f87de279ba
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652313"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547832"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>Kulcsszókeresés kognitív képesség
 
@@ -37,21 +37,22 @@ A rekordok maximális méretének 50 000 karakternek kell lennie, a következők
 
 A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
-| Bevitelek | Description |
+| Bevitelek | Leírás |
 |---------------------|-------------|
 | `defaultLanguageCode` | Választható A nyelvet explicit módon nem megadó dokumentumokra alkalmazandó nyelvi kód.  Ha nincs megadva az alapértelmezett nyelvkód, a rendszer az angol (en) nyelvet használja alapértelmezett nyelvi kódnak. <br/> [A támogatott nyelvek teljes listáját](../cognitive-services/text-analytics/language-support.md)itt tekintheti meg. |
 | `maxKeyPhraseCount`   | Választható A létrehozni kívánt legfontosabb kifejezések maximális száma. |
+| `modelVersion`   | Választható A Text Analytics szolgáltatás meghívásakor használni kívánt modell verziója. Alapértelmezés szerint a legújabb elérhető, ha nincs megadva. Azt javasoljuk, hogy csak akkor válassza ezt az értéket, ha feltétlenül szükséges. További részletekért tekintse meg [a Text Analytics API modell verziószámozását](../cognitive-services/text-analytics/concepts/model-versioning.md) ismertető témakört. |
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Bevitel  | Description |
+| Bevitel  | Leírás |
 |--------------------|-------------|
 | `text` | Az elemezni kívánt szöveg.|
 | `languageCode`    |  A rekordok nyelvét jelző sztring. Ha ez a paraméter nincs megadva, a rendszer az alapértelmezett nyelvkódot fogja használni a rekordok elemzéséhez. <br/>[A támogatott nyelvek teljes listája](../cognitive-services/text-analytics/language-support.md)|
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
 
-| Kimenet     | Description |
+| Kimenet     | Leírás |
 |--------------------|-------------|
 | `keyPhrases` | A bemeneti szövegből kinyert fő kifejezések listája. A legfontosabb kifejezések fontossági sorrendben lesznek visszaadva. |
 
@@ -109,8 +110,8 @@ A fenti példában a szakértelem kimenete a "Document/myKeyPhrases" nevű, dús
 
 A "Document/myKeyPhrases" kifejezés más készségekbe való bevitelként, illetve [kimeneti mezők leképezésének](cognitive-search-output-field-mapping.md)forrásaként is használható.
 
-## <a name="errors-and-warnings"></a>Hibák és figyelmeztetések
-Ha nem támogatott nyelvi kódot ad meg, a rendszer hibát generál, és a rendszer nem bontja ki a fő kifejezéseket.
+## <a name="warnings"></a>Figyelmeztetések
+Ha nem támogatott nyelvi kódot ad meg, a rendszer figyelmeztetést generál, és a rendszer nem bontja ki a legfontosabb kifejezéseket.
 Ha a szöveg üres, a rendszer figyelmeztetést készít.
 Ha a szöveg 50 000 karakternél nagyobb, akkor csak az első 50 000 karakter lesz elemezve, és a rendszer figyelmeztetést ad ki.
 

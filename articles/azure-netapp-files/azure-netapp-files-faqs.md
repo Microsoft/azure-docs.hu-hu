@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 03/09/2021
 ms.author: b-juche
-ms.openlocfilehash: 2cb0e3829011ca9bd0f2b6f36ebf3e6744a180ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6d9d56a7f6d1e265508081f735e2dbc379f195fb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101713405"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552031"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Gyakori kérdések a Azure NetApp Files
 
@@ -147,6 +147,16 @@ Győződjön meg arról, hogy `CaseSensitiveLookup` engedélyezve van-e a Window
 2. Csatlakoztassa a kötetet a Windows Serveren.   
     Példa:   
     `Mount -o rsize=1024 -o wsize=1024 -o mtype=hard \\10.x.x.x\testvol X:*`
+
+### <a name="how-does-azure-netapp-files-support-nfsv41-file-locking"></a>Hogyan támogatja a Azure NetApp Files a NFSv 4.1 fájl zárolását? 
+
+A NFSv 4.1-ügyfelek esetében a Azure NetApp Files támogatja a NFSv 4.1 fájl-zárolási mechanizmust, amely a címbérlet-alapú modellben lévő összes fájl zárolásának állapotát karbantartja. 
+
+Az RFC 3530-ben Azure NetApp Files egyetlen címbérleti időszakot határoz meg az NFS-ügyfél által őrzött összes állapothoz. Ha az ügyfél nem újítja meg a bérletet a megadott időszakon belül, az ügyfél címbérletéhez társított összes államot a kiszolgáló fogja felszabadítani.  
+
+Ha például egy kötetet csatlakoztató ügyfél nem válaszol, vagy az időtúllépéseken túl összeomlik, a zárolások fel lesznek szabadítva. Az ügyfél explicit módon vagy implicit módon megújíthatja a bérletét olyan műveletek elvégzésével, mint például egy fájl olvasása.   
+
+A türelmi időszak azt a különleges feldolgozási időszakot határozza meg, amelyben az ügyfelek megpróbálják visszaigényelni a zárolási állapotukat a kiszolgálók helyreállítása során. A bérletek alapértelmezett időtúllépése 30 másodperc, 45 másodperces türelmi idővel. Ezt követően a rendszer felszabadítja az ügyfél bérletét.   
 
 ## <a name="smb-faqs"></a>SMB – gyakori kérdések
 

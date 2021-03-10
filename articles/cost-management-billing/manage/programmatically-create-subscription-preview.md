@@ -9,12 +9,12 @@ ms.date: 11/17/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: bc761d0bf4001fb1e3fb757b9be9e1e19689913d
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: b524869998dd2464ed359ec61ce655a807899aaa
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202994"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565716"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-preview-apis"></a>Azure-előfizetések létrehozása programozott módon, előzetes verziójú API-kkal
 
@@ -190,7 +190,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 | `EnrollmentAccountObjectId`      | Igen       | Sztring | Azon regisztrációs fiók objektumazonosítója, amelyhez az előfizetés létre lett hozva, és amelyhez ki lesz számlázva. Az érték egy GUID, amelyet a `Get-AzEnrollmentAccount` parancs ad vissza. |
 | `OwnerObjectId`      | Nem       | Sztring | Annak a felhasználónak az objektumazonosítója, akit az előfizetés létrehozásakor Azure RBAC-tulajdonosként szeretne megadni.  |
 | `OwnerSignInName`    | Nem       | Sztring | Annak a felhasználónak az e-mail-címe, akit az előfizetés létrehozásakor Azure RBAC-tulajdonosként szeretne megadni. A paramétert az `OwnerObjectId` helyett használhatja.|
-| `OwnerApplicationId` | Nem       | Sztring | Bármely olyan szolgáltatásnév alkalmazásazonosítója, amelyet az előfizetés létrehozásakor Azure RBAC-tulajdonosként szeretne megadni. A paramétert az `OwnerObjectId` helyett használhatja. Ha használja ezt a paramétert, a szolgáltatásnévnek [olvasási hozzáféréssel kell rendelkeznie a könyvtárhoz](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole&preserve-view=true).|
+| `OwnerApplicationId` | Nem       | Sztring | Bármely olyan szolgáltatásnév alkalmazásazonosítója, amelyet az előfizetés létrehozásakor Azure RBAC-tulajdonosként szeretne megadni. A paramétert az `OwnerObjectId` helyett használhatja. Ha használja ezt a paramétert, a szolgáltatásnévnek [olvasási hozzáféréssel kell rendelkeznie a könyvtárhoz](/powershell/azure/active-directory/signing-in-service-principal#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).|
 
 A paraméterek teljes listáját lásd a [New-AzSubscription](/powershell/module/az.subscription/New-AzSubscription) témakörben.
 
@@ -211,7 +211,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 | `enrollment-account-object-id`      | Igen       | Sztring | Azon regisztrációs fiók objektumazonosítója, amelyhez az előfizetés létre lett hozva, és amelyhez ki lesz számlázva. Az érték egy GUID, amelyet a `az billing enrollment-account list` parancs ad vissza. |
 | `owner-object-id`      | Nem       | Sztring | Annak a felhasználónak az objektumazonosítója, akit az előfizetés létrehozásakor Azure RBAC-tulajdonosként szeretne megadni.  |
 | `owner-upn`    | Nem       | Sztring | Annak a felhasználónak az e-mail-címe, akit az előfizetés létrehozásakor Azure RBAC-tulajdonosként szeretne megadni. A paramétert az `owner-object-id` helyett használhatja.|
-| `owner-spn` | Nem       | Sztring | Bármely olyan szolgáltatásnév alkalmazásazonosítója, amelyet az előfizetés létrehozásakor Azure RBAC-tulajdonosként szeretne megadni. A paramétert az `owner-object-id` helyett használhatja. Ha használja ezt a paramétert, a szolgáltatásnévnek [olvasási hozzáféréssel kell rendelkeznie a könyvtárhoz](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole&preserve-view=true).|
+| `owner-spn` | Nem       | Sztring | Bármely olyan szolgáltatásnév alkalmazásazonosítója, amelyet az előfizetés létrehozásakor Azure RBAC-tulajdonosként szeretne megadni. A paramétert az `owner-object-id` helyett használhatja. Ha használja ezt a paramétert, a szolgáltatásnévnek [olvasási hozzáféréssel kell rendelkeznie a könyvtárhoz](/powershell/azure/active-directory/signing-in-service-principal#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).|
 
 A paraméterek teljes listáját lásd az [az account create](/cli/azure/ext/subscription/account#-ext-subscription-az-account-create) témakörben.
 

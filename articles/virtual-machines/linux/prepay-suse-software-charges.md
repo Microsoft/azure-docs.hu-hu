@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan fizethet elő előre a szoftveres csomagokra az
 author: bandersmsft
 manager: yashesvi
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: reserved-instances
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: banders
-ms.openlocfilehash: 5a4f7de0cacb17087e346123f53dad45ae1de357
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 136207afef3fef9266fadcea1e67bb0aa6a38a32
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602614"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549753"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Előre fizetés Azure-szoftvercsomagokért
 
@@ -32,7 +32,7 @@ A Azure Portalban a SUSE és a RedHat szoftvercsomag is megvásárolható. Csoma
 Töltse ki a kötelező mezőket. Minden olyan SUSE Linux rendszerű virtuális gép vagy RedHat virtuális gép, amely megfelel a megvásárolni kívánt mennyiségnek, a kedvezményt kapja. A kedvezményt megkapó központi telepítések tényleges száma a kiválasztott hatókörtől és mennyiségtől függ.
 3. Válasszon egy előfizetést. A csomagért kell fizetni.
 Az előfizetés fizetési módja a foglalás előzetes díjait terheli. Az előfizetés típusának Nagyvállalati Szerződésnak kell lennie (ajánlati számok: MS-AZR-0017P vagy MS-AZR-0148P) vagy külön szerződés az utólagos elszámolású díjszabással (ajánlati számok: MS-AZR-0003P vagy MS-AZR-0023P).
-    - A nagyvállalati előfizetések esetében a díjakat a beléptetési Azure-előfizetésből (korábban pénzügyi kötelezettségvállalásnak nevezett) egyenlegből és a túlterhelésnek megfelelően kell levonni.
+    - Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó Azure-előrefizetés (korábbi nevén pénzügyi keret) egyenlegéből lesznek levonva, illetve túlhasználatként lesznek számlázva.
     - Az utólagos elszámolású előfizetések díját az előfizetés bankkártyája vagy a számla fizetési módja alapján számítjuk fel.
 4. Válassza ki a hatókört. A hatókör egyetlen előfizetésre vagy több előfizetésre (megosztott hatókörre) is vonatkozhat.
     - Egyszeri előfizetés – a csomagra vonatkozó kedvezményt a rendszer az előfizetésben szereplő használatra alkalmazza.

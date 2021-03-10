@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 202f2190e68b89d790c628248ae89f0cb274ff76
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 266142240ba9e892c905ac8aa6521da5a14c4c3d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725211"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554020"
 ---
 # <a name="3-create-a-security-plan-for-external-access"></a>3. biztonsági terv létrehozása külső hozzáféréshez 
 
@@ -132,7 +132,7 @@ Noha a szabályzatok az Ön igényeinek megfelelően testre szabhatók, vegye fi
 
    * Ha [csatlakoztatott szervezeteket](../governance/entitlement-management-organization.md) használ az összes felhasználó egyetlen partnertől való csoportosításához, akkor rendszeres felülvizsgálatokat ütemezhet a vállalat tulajdonosával és a partner képviselőjével.
 
-* **Microsoft 365 csoportok**. Adja meg a [csoport lejárati szabályzatát](/microsoft-365/solutions/microsoft-365-groups-expiration-policy?view=o365-worldwide) azon Microsoft 365 csoportok esetében, amelyekhez a külső felhasználókat meghívja. 
+* **Microsoft 365 csoportok**. Adja meg a [csoport lejárati szabályzatát](/microsoft-365/solutions/microsoft-365-groups-expiration-policy) azon Microsoft 365 csoportok esetében, amelyekhez a külső felhasználókat meghívja. 
 
 * **Egyéb beállítások**. Ha a külső felhasználók jogosultság-kezelési hozzáférési csomagokon vagy Microsoft 365-csoportokon kívül férnek hozzá, az üzleti folyamat beállításával tekintse át a fiókok inaktív vagy törölt állapotának ellenőrzését. Például:
 
@@ -208,7 +208,7 @@ Az Azure AD P1-sel és a Microsoft 365 E3-mel is robusztus irányítás érhető
 | További módszerek| | A SharePoint-webhely hozzáférését a biztonsági csoportokkal való részletességgel korlátozhatja.<br>Közvetlen megosztás letiltása.| **Külső meghívók korlátozása a csapatokból**|  |
 
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő cikkeket az erőforrásokhoz való külső hozzáférés biztonságossá tételéhez. Javasoljuk, hogy a felsorolt sorrendben végezze el a műveleteket.
 

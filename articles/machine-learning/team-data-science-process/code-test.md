@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
-ms.openlocfilehash: ce37ee51e549a2bd6f2747f28af8c038c39d8f1f
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 66853b580ba1b619bf4cc995e05bd3cfaff07cfb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656835"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565869"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Adatelemzési kód tesztelése az Azure-ban a csoportos adatelemzési folyamattal és az Azure DevOps Services szolgáltatással
 Ez a cikk az adatelemzési munkafolyamatok kódjának tesztelésére vonatkozó előzetes irányelveket ismerteti. Az ilyen tesztelések lehetővé teszik az adatszakértők számára, hogy szisztematikusan és hatékonyan ellenőrizzék a kód minőségét és várható eredményét. Olyan csoportos adatelemzési folyamat (TDSP) [projektjét használjuk, amely a korábban közzétett UCI Adult bevételi adatkészletet használja](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) , hogy megmutassa, hogyan lehet elvégezni a kód tesztelését. 
@@ -124,7 +124,7 @@ A következő lépésekkel állíthatja be és futtathatja a kód tesztelését 
 
     ![Sablonok listája és "üres folyamat" gomb](./media/code-test/start_empty_process_template.PNG)
 
-    d. Nevezze el a Build nevet, és válassza ki az ügynököt. Itt választhatja ki az alapértelmezett értéket, ha DSVM kíván használni a létrehozási folyamat befejezéséhez. Az ügynökök beállításával kapcsolatos további információkért lásd: [létrehozási és kiadási ügynökök](/azure/devops/pipelines/agents/agents?view=vsts).
+    d. Nevezze el a Build nevet, és válassza ki az ügynököt. Itt választhatja ki az alapértelmezett értéket, ha DSVM kíván használni a létrehozási folyamat befejezéséhez. Az ügynökök beállításával kapcsolatos további információkért lásd: [létrehozási és kiadási ügynökök](/azure/devops/pipelines/agents/agents).
     
     ![Létrehozás és ügynök kiválasztása](./media/code-test/select_agent.PNG)
 

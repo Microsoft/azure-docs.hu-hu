@@ -107,6 +107,8 @@
       href: concepts/logging-diagnostics.md
     - name: Durva helyzet-újrameghatározás
       href: concepts/coarse-reloc.md
+    - name: Horgony keresése stratégia
+      href: concepts/anchor-locate-strategy.md
 - name: Referencia
   items:
     - name: Unityhez készült SDK

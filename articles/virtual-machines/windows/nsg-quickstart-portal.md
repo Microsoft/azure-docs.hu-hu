@@ -3,16 +3,17 @@ title: Portok megnyitása virtuális géphez a Azure Portal használatával
 description: Megtudhatja, hogyan nyithat meg egy portot/hozzon létre egy végpontot a virtuális géphez a Azure Portal használatával
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: networking
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/27/2020
 ms.author: cynthn
-ms.openlocfilehash: 1c3c39dd8c907f780876f97f9703857653d4e359
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 28b3ee98d44e1567d9e25cf9237015396975ab01
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92777758"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550450"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Portok megnyitása virtuális géphez a Azure Portal
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -23,9 +24,9 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
 
-1. Keresse meg és válassza ki a virtuális géphez tartozó erőforráscsoportot, válassza a **Hozzáadás** lehetőséget, majd keresse meg és válassza ki a **hálózati biztonsági csoportot** .
+1. Keresse meg és válassza ki a virtuális géphez tartozó erőforráscsoportot, válassza a **Hozzáadás** lehetőséget, majd keresse meg és válassza ki a **hálózati biztonsági csoportot**.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
     Megnyílik a **hálózati biztonsági csoport létrehozása** ablak.
 
@@ -47,9 +48,9 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 1. A **bejövő biztonsági szabály hozzáadása** lapon váltson át a **speciális** elemre az **alapszintű** oldalon a lap tetején. 
 
-1. Válasszon egy közös **szolgáltatást** a legördülő menüből, például **http** . A **Custom (egyéni** ) lehetőséget is választhatja, ha a használni kívánt portot szeretné megadni. 
+1. Válasszon egy közös **szolgáltatást** a legördülő menüből, például **http**. A **Custom (egyéni** ) lehetőséget is választhatja, ha a használni kívánt portot szeretné megadni. 
 
-1. Szükség esetén módosíthatja a **prioritást** vagy a **nevet** . A prioritás befolyásolja a szabályok alkalmazásának sorrendjét: minél kisebb a numerikus érték, annál korábbi a szabály alkalmazása.
+1. Szükség esetén módosíthatja a **prioritást** vagy a **nevet**. A prioritás befolyásolja a szabályok alkalmazásának sorrendjét: minél kisebb a numerikus érték, annál korábbi a szabály alkalmazása.
 
 1. A szabály létrehozásához válassza a **Hozzáadás** lehetőséget.
 

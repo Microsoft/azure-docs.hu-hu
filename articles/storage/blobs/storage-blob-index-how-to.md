@@ -9,19 +9,19 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 32bb51751430dcd0208849f798d21f2b25e6b82b
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: a820f7efc39af8c6ab66c883d285b507c7bc7368
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102430870"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563268"
 ---
 # <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Az Azure-beli blob-indexek (előzetes verzió) használatával kezelhetők és megkereshetők az Azure Blob Storage
 
 A blob index címkéje a Storage-fiókban lévő, kulcs-érték címkével rendelkező attribútumokkal kategorizálja az adatait. Ezek a címkék automatikusan indexelve vannak, és egy kereshető többdimenziós indexként jelennek meg, így könnyen megkereshetők az adatkeresések. Ebből a cikkből megtudhatja, hogyan állíthat be, kérhet le és kereshet meg a blob-indexek címkéi használatával.
 
 > [!IMPORTANT]
-> A blob index címkék jelenleg **előzetes** verzióban érhetők el, és elérhetők a **Közép**-Kanada, **Kelet-Kanada**, Közép- **Franciaország** és **Dél-Franciaország** régiójában. Tekintse meg az Azure-szolgáltatásokra vonatkozó, a bétaverzióban, az előzetes verzióban, vagy más módon még nem közzétett, általánosan elérhetővé vált jogi feltételekhez tartozó [Microsoft Azure előzetes verziójának kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) .
+> A blob index címkék jelenleg **előzetes** verzióban érhetők el, és az összes nyilvános régióban elérhetők. Tekintse meg az Azure-szolgáltatásokra vonatkozó, a bétaverzióban, az előzetes verzióban, vagy más módon még nem közzétett, általánosan elérhetővé vált jogi feltételekhez tartozó [Microsoft Azure előzetes verziójának kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) .
 
 Ha többet szeretne megtudni erről a szolgáltatásról, valamint az ismert problémákról és korlátozásokról, tekintse meg az [Azure Blob-adatkezelés és-keresés a blob-index címkékkel (előzetes verzió)](storage-manage-find-blobs.md)című témakört
 
