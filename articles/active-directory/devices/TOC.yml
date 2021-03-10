@@ -80,7 +80,7 @@
     - name: Graph API-k
       items:
         - name: Eszközidentitás API
-          href: /graph/api/resources/device?view=graph-rest-1.0
+          href: /graph/api/resources/device
 - name: További források
   items:
     - name: Azure visszajelzési fórum

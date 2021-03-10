@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bba64f8c07545107d57f79ae94dab96e517815f
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: ceea2dbcf408b6b35ef7c26580278d3979244119
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900705"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551538"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Egy csoport licenc-hozzárendelési problémáinak azonosítása és megoldása Azure Active Directory
 
@@ -106,7 +106,7 @@ Ha az Exchange Online-t használja, előfordulhat, hogy a szervezet egyes felhas
 > ```
 > Get-Recipient -ResultSize unlimited | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
 > ```
-> A problémával kapcsolatos további információkért tekintse [meg a "proxy címe már használatban van" hibaüzenetet az Exchange Online-ban](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online). A cikk azt is ismerteti, [hogyan csatlakozhat az Exchange Online-hoz a távoli PowerShell használatával](/powershell/exchange/connect-to-exchange-online-powershell?view=exchange-ps).
+> A problémával kapcsolatos további információkért tekintse [meg a "proxy címe már használatban van" hibaüzenetet az Exchange Online-ban](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online). A cikk azt is ismerteti, [hogyan csatlakozhat az Exchange Online-hoz a távoli PowerShell használatával](/powershell/exchange/connect-to-exchange-online-powershell).
 
 Miután feloldotta az érintett felhasználók proxy-címeivel kapcsolatos problémákat, ügyeljen arra, hogy a licencek feldolgozását kényszerítse a csoporton, hogy a licencek érvénybe lépjenek.
 

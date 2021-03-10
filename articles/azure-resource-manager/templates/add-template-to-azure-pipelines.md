@@ -2,13 +2,13 @@
 title: CI/CD Azure-folyamatokkal és-sablonokkal
 description: Ismerteti, hogyan konfigurálhatja a folyamatos integrációt az Azure-folyamatokban Azure Resource Manager sablonok használatával. Bemutatja, hogyan használhat PowerShell-parancsfájlokat, illetve hogyan másolhat fájlokat egy átmeneti helyre, és onnan telepítheti azokat.
 ms.topic: conceptual
-ms.date: 02/05/2021
-ms.openlocfilehash: ea1ccac00f121bd81fd8b9b1f182b565fc53d214
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.date: 03/09/2021
+ms.openlocfilehash: 4a2f1f15de0abd802f3dce138b2cea33e52e3dfc
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594197"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561942"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>ARM-sablonok integrálása az Azure Pipelines használatával
 
@@ -234,4 +234,5 @@ Ha a **Mentés** lehetőséget választja, a folyamat automatikusan elindul. Té
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ az ARM-sablonok GitHub-műveletekkel való használatáról: [Azure Resource Manager sablonok üzembe helyezése a GitHub-műveletek használatával](deploy-github-actions.md).
+* Ha a mi-if műveletet egy folyamaton szeretné használni, olvassa el a következő témakört: [ARM-sablonok tesztelése What-If egy folyamaton belül](https://4bes.nl/2021/03/06/test-arm-templates-with-what-if/).
+* További információ az ARM-sablonok GitHub-műveletekkel való használatáról: [Azure Resource Manager sablonok üzembe helyezése a GitHub-műveletek használatával](deploy-github-actions.md).

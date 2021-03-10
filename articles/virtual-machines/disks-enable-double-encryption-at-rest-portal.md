@@ -5,15 +5,15 @@ author: roygara
 ms.date: 08/24/2020
 ms.topic: how-to
 ms.author: rogarana
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 3882aae0fb1ecf330917f886555208c3937dd9a5
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: b5f58b549fc9d879f6c2e5515c679d82c3ff44e4
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358218"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560361"
 ---
 # <a name="use-the-azure-portal-to-enable-double-encryption-at-rest-for-managed-disks"></a>A Azure Portal használatával engedélyezze a kettős titkosítást a felügyelt lemezeken.
 
@@ -51,7 +51,7 @@ Azure Disk Storage támogatja a kettős titkosítást a felügyelt lemezeken. A 
 
     :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-select-key-vault.png" alt-text="Képernyőkép a Key Vault létrehozási paneljéről.":::
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 1. Navigáljon a létrehozott lemezes titkosítási készlethez, és válassza ki a megjelenített hibát. Ezzel a beállítással beállíthatja, hogy a lemez titkosítása működjön.
 
     :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-disk-set-error.png" alt-text="Képernyőfelvétel: a lemez titkosítási készlete hibaüzenetet jelenít meg, a hiba szövege: egy lemez, lemezkép vagy pillanatkép ehhez a lemezes titkosítási készlethez való hozzárendeléséhez engedélyeket kell adnia a kulcstartónak.":::

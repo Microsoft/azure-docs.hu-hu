@@ -1,7 +1,7 @@
 ---
 title: 'Gyors útmutató: profil és végpont – Resource Manager-sablon létrehozása'
 titleSuffix: Azure Content Delivery Network
-description: Ismerje meg, hogyan hozhat létre Azure Content Delivery Network-profilt és egy Resource Manager-sablont a végponton
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Content Delivery Network-profilt és egy Resource Manager-sablon végpontját
 services: cdn
 author: asudbring
 manager: KumudD
@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 06/25/2020
 ms.author: allensu
-ms.openlocfilehash: b215dfff3bf62b67b89aa260b0134381de6edeae
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: a36484bea3a2bc9caadc5cf4482aae3bea84eafa
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695725"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560463"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---arm-template"></a>Gyors útmutató: Azure CDN profil és végpont-ARM sablon létrehozása
 
@@ -107,7 +107,7 @@ Ha már nincs rá szükség, az az [Group delete](/cli/azure/group#az-group-dele
 
 ### <a name="powershell"></a>PowerShell
 
-Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=latest) paranccsal távolíthatja el az erőforráscsoportot és a benne található összes erőforrást.
+Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) paranccsal távolíthatja el az erőforráscsoportot és a benne található összes erőforrást.
 
 ```azurepowershell-interactive 
 Remove-AzResourceGroup -Name myResourceGroupCDN
@@ -117,7 +117,7 @@ Remove-AzResourceGroup -Name myResourceGroupCDN
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a CDN-profilt és az összes kapcsolódó erőforrást. Válassza ki a CDN-profilt és-végpontot tartalmazó erőforráscsoport **myResourceGroupCDN** , majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozta a következőket:
 
@@ -126,5 +126,5 @@ Ebben a rövid útmutatóban létrehozta a következőket:
 
 Ha többet szeretne megtudni a Azure CDN és a Azure Resource Managerról, folytassa az alábbi cikkekkel.
 
-* [A Azure CDN áttekintése](cdn-overview.md)
-* További információ az [Azure Resource Managerről](../azure-resource-manager/management/overview.md)
+> [!div class="nextstepaction"]
+> [Oktatóanyag: a CDN használata a statikus tartalmak kiszolgálására egy webalkalmazásból](cdn-add-to-web-app.md)

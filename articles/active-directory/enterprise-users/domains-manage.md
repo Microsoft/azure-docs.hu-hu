@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b8867a137e38e7400da877f4c239e517cbebe05
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 47c991457925664c82baed1a47d89f77a323ff45
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859980"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561534"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Egyéni tartománynevek kezelése a Azure Active Directoryban
 
@@ -111,7 +111,7 @@ Ha úgy látja, hogy a feltételek bármelyike nem teljesült, manuálisan tör�
 Azure Active Directory a tartománynevek legtöbb felügyeleti feladata a Microsoft PowerShell használatával vagy programozott módon, a Microsoft Graph API használatával is elvégezhető.
 
 * [Tartománynevek kezelése a PowerShell használatával az Azure AD-ben](/powershell/module/azuread/#domains&preserve-view=true)
-* [Tartományi erőforrás típusa](/graph/api/resources/domain?view=graph-rest-1.0&preserve-view=true)
+* [Tartományi erőforrás típusa](/graph/api/resources/domain)
 
 ## <a name="next-steps"></a>Következő lépések
 

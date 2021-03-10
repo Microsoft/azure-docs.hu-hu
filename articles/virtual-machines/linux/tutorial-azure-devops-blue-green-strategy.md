@@ -2,22 +2,22 @@
 title: Oktatóanyag – az Azure Linux rendszerű virtuális gépekre vonatkozó Kanári-telepítések konfigurálása
 description: Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be a folyamatos üzembe helyezés (CD) folyamatát. Ez a folyamat az Azure Linux rendszerű virtuális gépek egy csoportját frissíti a kék-zöld telepítési stratégia használatával.
 author: moala
-manager: jpconnock
 tags: azure-devops-pipelines
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: tutorial
 ms.tgt_pltfrm: azure-pipelines
 ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: f349ff62fe211f0610341864a4c7528ee6bfe9c5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 4545891cce926f049673cd2c2380a8309f2e71a1
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961527"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552587"
 ---
 # <a name="tutorial---configure-the-blue-green-deployment-strategy-for-azure-linux-virtual-machines"></a>Oktatóanyag – az Azure Linux rendszerű virtuális gépekhez készült Blue-Green üzembe helyezési stratégia konfigurálása
 
@@ -40,7 +40,7 @@ Az új kiadásra való felkészülés során végezze el a tesztelés utolsó sz
 A folyamatos kézbesítés beállítás használatával a Azure Portal a kék-zöld környezeteket a virtuális gépekre is konfigurálhatja. Itt látható a lépésenkénti útmutató:
 
 1. Jelentkezzen be a Azure Portalba, és navigáljon a virtuális géphez.
-1. A virtuális gép beállításainak bal szélső paneljén válassza a **folyamatos kézbesítés**lehetőséget. Ezután válassza a **Konfigurálás**lehetőséget.
+1. A virtuális gép beállításainak bal szélső paneljén válassza a **folyamatos kézbesítés** lehetőséget. Ezután válassza a **Konfigurálás** lehetőséget.
 
    ![A folyamatos kézbesítés panel a configure (Konfigurálás) gombbal](media/tutorial-devops-azure-pipelines-classic/azure-devops-configure.png)
 
@@ -50,7 +50,7 @@ A folyamatos kézbesítés beállítás használatával a Azure Portal a kék-z�
 
 1. A központi telepítési csoport a központi telepítési célszámítógépek logikai készlete, amely a fizikai környezeteket jelképezi. Példák a fejlesztési, tesztelési, ellenőrzését és éles környezetekre. Létrehozhat egy új központi telepítési csoportot, vagy kijelölhet egy meglévőt is.
 1. Válassza ki a Build folyamatot, amely közzéteszi a virtuális gépre telepítendő csomagot. A közzétett csomagnak rendelkeznie kell egy deploy.ps1 vagy deploy.sh nevű telepítési parancsfájllal a csomag gyökérkönyvtárában található deployscripts mappában. A folyamat futtatja ezt az üzembe helyezési parancsfájlt.
-1. A **központi telepítési stratégia**területen válassza a **kék-zöld**lehetőséget.
+1. A **központi telepítési stratégia** területen válassza a **kék-zöld** lehetőséget.
 1. Adjon hozzá egy "kék" vagy "zöld" címkét olyan virtuális gépekhez, amelyek a kék-zöld környezetek részét képezik. Ha egy virtuális gép készenléti szerepkörhöz kapcsolódik, a címke "zöld". Ellenkező esetben címkézse "Blue"-ként.
 
    ![A folyamatos kézbesítés panel, a központi telepítési stratégia értékének Blue-Green választása](media/tutorial-devops-azure-pipelines-classic/azure-devops-blue-green-configure.png)

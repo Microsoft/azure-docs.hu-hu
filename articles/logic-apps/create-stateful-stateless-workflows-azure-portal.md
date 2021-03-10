@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 3cf5047dbb79f6d8b35b0fe089069a20ab4a50a6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/08/2021
+ms.openlocfilehash: ff938d29d998b6fcf0b2cfae72a9a9e685a10dc5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736351"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563952"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-the-azure-portal-with-azure-logic-apps-preview"></a>Állapot-nyilvántartó és állapot nélküli munkafolyamatok létrehozása a Azure Portalban Azure Logic Apps előzetes verzióban
 
@@ -76,11 +76,11 @@ Ez a cikk bemutatja, hogyan hozhatja létre a logikai alkalmazást és a munkafo
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Előfizetés** | Igen | <*Azure-előfizetés – név*> | A logikai alkalmazáshoz használandó Azure-előfizetés. |
-   | **Erőforráscsoport** | Igen | <*Azure-Erőforrás-csoport-név*> | Az Azure-erőforráscsoport, amelyben létrehozza a logikai alkalmazást és a kapcsolódó erőforrásokat. Az erőforrás nevének egyedinek kell lennie a régiók között, és csak betűket, számokat, kötőjeleket ( **-** ), aláhúzást (**_**), zárójeleket (**()**) és pontokat (**.**) tartalmazhat. <p><p>Ez a példa létrehoz egy nevű erőforráscsoportot `Fabrikam-Workflows-RG` . |
-   | **Logikai alkalmazás neve** | Igen | <*logikai alkalmazás neve*> | A logikai alkalmazáshoz használandó név. Az erőforrás nevének egyedinek kell lennie a régiók között, és csak betűket, számokat, kötőjeleket ( **-** ), aláhúzást (**_**), zárójeleket (**()**) és pontokat (**.**) tartalmazhat. <p><p>Ez a példa egy nevű logikai alkalmazást hoz létre `Fabrikam-Workflows` . <p><p>**Megjegyzés**: a logikai alkalmazás neve automatikusan beolvassa az utótagot, `.azurewebsites.net` mivel a **logikai alkalmazás (előzetes verzió)** erőforrása Azure functions, amely ugyanazt az alkalmazás-elnevezési konvenciót használja. |
-   | **Közzététel** | Igen | <*üzembe helyezés – környezet*> | A logikai alkalmazás üzembe helyezési célhelye. A **munkafolyamat** vagy a **Docker-tároló** kiválasztásával üzembe helyezheti az Azure-ban. <p><p>Ez a példa **munkafolyamatot** használ, amely a **logikai alkalmazás (előzetes verzió)** erőforrását telepíti a Azure Portal. <p><p>**Megjegyzés**: a **Docker**-tároló kiválasztása előtt győződjön meg róla, hogy létrehozta a Docker-tároló rendszerképét. Létrehozhatja például ezt a rendszerképet [Azure Container Registry](../container-registry/container-registry-intro.md), [app Service](../app-service/overview.md)vagy az [Azure Container instance](../container-instances/container-instances-overview.md)használatával. Így a **Docker-tároló** kiválasztása után [megadhatja a logikai alkalmazás beállításaiban használni kívánt tárolót](#set-docker-container). |
-   | **Régió** | Igen | <*Azure-régió*> | Az erőforráscsoport és az erőforrások létrehozásakor használandó Azure-régió. <p><p>Ez a példa az **USA nyugati** régióját használja. |
+   | **Előfizetés** | Yes | <*Azure-előfizetés – név*> | A logikai alkalmazáshoz használandó Azure-előfizetés. |
+   | **Erőforráscsoport** | Yes | <*Azure-Erőforrás-csoport-név*> | Az Azure-erőforráscsoport, amelyben létrehozza a logikai alkalmazást és a kapcsolódó erőforrásokat. Az erőforrás nevének egyedinek kell lennie a régiók között, és csak betűket, számokat, kötőjeleket ( **-** ), aláhúzást (**_**), zárójeleket (**()**) és pontokat (**.**) tartalmazhat. <p><p>Ez a példa létrehoz egy nevű erőforráscsoportot `Fabrikam-Workflows-RG` . |
+   | **Logikai alkalmazás neve** | Yes | <*logikai alkalmazás neve*> | A logikai alkalmazáshoz használandó név. Az erőforrás nevének egyedinek kell lennie a régiók között, és csak betűket, számokat, kötőjeleket ( **-** ), aláhúzást (**_**), zárójeleket (**()**) és pontokat (**.**) tartalmazhat. <p><p>Ez a példa egy nevű logikai alkalmazást hoz létre `Fabrikam-Workflows` . <p><p>**Megjegyzés**: a logikai alkalmazás neve automatikusan beolvassa az utótagot, `.azurewebsites.net` mivel a **logikai alkalmazás (előzetes verzió)** erőforrása Azure functions, amely ugyanazt az alkalmazás-elnevezési konvenciót használja. |
+   | **Közzététel** | Yes | <*üzembe helyezés – környezet*> | A logikai alkalmazás üzembe helyezési célhelye. A **munkafolyamat** vagy a **Docker-tároló** kiválasztásával üzembe helyezheti az Azure-ban. <p><p>Ez a példa **munkafolyamatot** használ, amely a **logikai alkalmazás (előzetes verzió)** erőforrását telepíti a Azure Portal. <p><p>**Megjegyzés**: a **Docker**-tároló kiválasztása előtt győződjön meg róla, hogy létrehozta a Docker-tároló rendszerképét. Létrehozhatja például ezt a rendszerképet [Azure Container Registry](../container-registry/container-registry-intro.md), [app Service](../app-service/overview.md)vagy az [Azure Container instance](../container-instances/container-instances-overview.md)használatával. Így a **Docker-tároló** kiválasztása után [megadhatja a logikai alkalmazás beállításaiban használni kívánt tárolót](#set-docker-container). |
+   | **Régió** | Yes | <*Azure-régió*> | Az erőforráscsoport és az erőforrások létrehozásakor használandó Azure-régió. <p><p>Ez a példa az **USA nyugati** régióját használja. |
    |||||
 
    Bemutatunk egy példát:
@@ -91,10 +91,10 @@ Ez a cikk bemutatja, hogyan hozhatja létre a logikai alkalmazást és a munkafo
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Storage-fiók** | Igen | <*Azure-Storage-fiók-név*> | A tárolási tranzakciókhoz használandó [Azure Storage-fiók](../storage/common/storage-account-overview.md) . Az erőforrás nevének egyedinek kell lennie a régiók között, és 3-24 karakterből kell állnia, és csak számokat és kisbetűket tartalmazhat. Válasszon ki egy meglévő fiókot, vagy hozzon létre egy új fiókot. <p><p>Ez a példa egy nevű Storage-fiókot hoz létre `fabrikamstorageacct` . |
-   | **Csomag típusa** | Igen | <*Azure-üzemeltetési csomag*> | A logikai alkalmazás üzembe helyezésére szolgáló [üzemeltetési terv](../app-service/overview-hosting-plans.md) , amely vagy [**functions Premium**](../azure-functions/functions-premium-plan.md) vagy [ **app Service-csomag** (dedikált)](../azure-functions/dedicated-plan.md). Az Ön választása befolyásolja a később elérhető képességeket és árképzési szinteket. <p><p>Ez a példa az **app Service-csomagot** használja. <p><p>**Megjegyzés**: a Azure Functionshöz hasonlóan a **logikai alkalmazás (előzetes verzió)** erőforrástípus üzemeltetési tervet és díjszabási szintet igényel. A felhasználási csomagok nem támogatottak, és nem érhetők el ehhez az erőforrás-típushoz. További információkért tekintse át a következő témaköröket: <p><p>- [Méretezés és üzemeltetés Azure Functions](../azure-functions/functions-scale.md) <br>- [A App Service díjszabása](https://azure.microsoft.com/pricing/details/app-service/) <p><p>A functions Premium csomag például hozzáférést biztosít a hálózati képességekhez, például az Azure-beli virtuális hálózatokhoz való csatlakozáshoz és az azokhoz való hozzáféréshez, hasonlóan a Azure Functionshoz, mint a logikai alkalmazások létrehozásakor és telepítésekor. További információkért tekintse át a következő témaköröket: <p><p>- [Azure Functions hálózati beállítások](../azure-functions/functions-networking-options.md) <br>- [Azure Logic Apps a bárhonnan hálózati lehetőségeket a Azure Logic Apps előzetes verziójával](https://techcommunity.microsoft.com/t5/integrations-on-azure/logic-apps-anywhere-networking-possibilities-with-logic-app/ba-p/2105047) |
-   | **Windows-csomag** | Igen | <*csomag neve*> | A használandó csomag neve. Válasszon ki egy meglévő csomagot, vagy adja meg egy új csomag nevét. <p><p>Ez a példa a nevet használja `Fabrikam-Service-Plan` . |
-   | **SKU és size** | Igen | <*díjszabás – réteg*> | A logikai alkalmazás üzemeltetéséhez használt [díjszabási](../app-service/overview-hosting-plans.md) csomag. A beállításokat a korábban kiválasztott csomag típusa érinti. Ha módosítani szeretné az alapértelmezett szintet, válassza a **méret módosítása** lehetőséget. Ezután kiválaszthatja az egyéb díjszabási szinteket a szükséges munkaterhelés alapján. <p><p>Ez a példa az ingyenes **F1 árképzési szintet** használja a **fejlesztési és tesztelési** feladatokhoz. További információkért tekintse át [app Service díjszabását](https://azure.microsoft.com/pricing/details/app-service/). |
+   | **Storage-fiók** | Yes | <*Azure-Storage-fiók-név*> | A tárolási tranzakciókhoz használandó [Azure Storage-fiók](../storage/common/storage-account-overview.md) . Az erőforrás nevének egyedinek kell lennie a régiók között, és 3-24 karakterből kell állnia, és csak számokat és kisbetűket tartalmazhat. Válasszon ki egy meglévő fiókot, vagy hozzon létre egy új fiókot. <p><p>Ez a példa egy nevű Storage-fiókot hoz létre `fabrikamstorageacct` . |
+   | **Csomag típusa** | Yes | <*Azure-üzemeltetési csomag*> | A logikai alkalmazás üzembe helyezésére szolgáló [üzemeltetési terv](../app-service/overview-hosting-plans.md) , amely vagy [**functions Premium**](../azure-functions/functions-premium-plan.md) vagy [ **app Service-csomag** (dedikált)](../azure-functions/dedicated-plan.md). Az Ön választása befolyásolja a később elérhető képességeket és árképzési szinteket. <p><p>Ez a példa az **app Service-csomagot** használja. <p><p>**Megjegyzés**: a Azure Functionshöz hasonlóan a **logikai alkalmazás (előzetes verzió)** erőforrástípus üzemeltetési tervet és díjszabási szintet igényel. A felhasználási csomagok nem támogatottak, és nem érhetők el ehhez az erőforrás-típushoz. További információkért tekintse át a következő témaköröket: <p><p>- [Méretezés és üzemeltetés Azure Functions](../azure-functions/functions-scale.md) <br>- [A App Service díjszabása](https://azure.microsoft.com/pricing/details/app-service/) <p><p>A functions Premium csomag például hozzáférést biztosít a hálózati képességekhez, például az Azure-beli virtuális hálózatokhoz való csatlakozáshoz és az azokhoz való hozzáféréshez, hasonlóan a Azure Functionshoz, mint a logikai alkalmazások létrehozásakor és telepítésekor. További információkért tekintse át a következő témaköröket: <p><p>- [Azure Functions hálózati beállítások](../azure-functions/functions-networking-options.md) <br>- [Azure Logic Apps a bárhonnan hálózati lehetőségeket a Azure Logic Apps előzetes verziójával](https://techcommunity.microsoft.com/t5/integrations-on-azure/logic-apps-anywhere-networking-possibilities-with-logic-app/ba-p/2105047) |
+   | **Windows-csomag** | Yes | <*csomag neve*> | A használandó csomag neve. Válasszon ki egy meglévő csomagot, vagy adja meg egy új csomag nevét. <p><p>Ez a példa a nevet használja `Fabrikam-Service-Plan` . |
+   | **SKU és size** | Yes | <*díjszabás – réteg*> | A logikai alkalmazás üzemeltetéséhez használt [díjszabási](../app-service/overview-hosting-plans.md) csomag. A beállításokat a korábban kiválasztott csomag típusa érinti. Ha módosítani szeretné az alapértelmezett szintet, válassza a **méret módosítása** lehetőséget. Ezután kiválaszthatja az egyéb díjszabási szinteket a szükséges munkaterhelés alapján. <p><p>Ez a példa az ingyenes **F1 árképzési szintet** használja a **fejlesztési és tesztelési** feladatokhoz. További információkért tekintse át [app Service díjszabását](https://azure.microsoft.com/pricing/details/app-service/). |
    |||||
 
 1. Ezt követően, ha a létrehozási és telepítési beállítások támogatják a [Application Insights](../azure-monitor/app/app-insights-overview.md)-t, lehetősége van engedélyezni a diagnosztikai naplózást és a nyomkövetést a logikai alkalmazáshoz.
@@ -226,9 +226,9 @@ Mielőtt hozzáadhat egy triggert egy üres munkafolyamathoz, győződjön meg a
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Ide:** | Igen | <*saját e-mail cím*> | Az e-mail címzettje, amely a tesztelési célú e-mail-címe lehet. Ez a példa a fiktív e-mailt használja `sophiaowen@fabrikam.com` . |
-   | **Tárgy** | Igen | `An email from your example workflow` | Az e-mail tárgya |
-   | **Törzs** | Igen | `Hello from your example workflow!` | Az e-mail szövegtörzsének tartalma |
+   | **Ide:** | Yes | <*saját e-mail cím*> | Az e-mail címzettje, amely a tesztelési célú e-mail-címe lehet. Ez a példa a fiktív e-mailt használja `sophiaowen@fabrikam.com` . |
+   | **Tárgy** | Yes | `An email from your example workflow` | Az e-mail tárgya |
+   | **Törzs** | Yes | `Hello from your example workflow!` | Az e-mail szövegtörzsének tartalma |
    ||||
 
    > [!NOTE]
@@ -236,7 +236,33 @@ Mielőtt hozzáadhat egy triggert egy üres munkafolyamathoz, győződjön meg a
 
 1. Mentse a munkáját. A tervező eszköztárán válassza a **Mentés** lehetőséget.
 
-A munkafolyamat teszteléséhez manuálisan indítson el egy futtatást.
+1. Ha a környezete szigorú hálózati követelményekkel vagy a forgalmat korlátozó tűzfalakkal rendelkezik, be kell állítania a munkafolyamatban létező összes trigger-vagy műveleti kapcsolat engedélyeit. A teljes minősítés megkeresése 
+
+   Ellenkező esetben a munkafolyamat teszteléséhez [futtasson manuálisan egy futtatást](#trigger-workflow).
+
+<a name="firewall-setup"></a>
+
+##  <a name="find-domain-names-for-firewall-access"></a>A tűzfal-hozzáféréshez használt tartománynevek keresése
+
+Mielőtt telepítené a logikai alkalmazást, és futtatja a munkafolyamatot a Azure Portalban, ha a környezete szigorú hálózati követelményekkel vagy a forgalmat korlátozó tűzfalakkal rendelkezik, a logikai alkalmazásban található munkafolyamatokban be kell állítania a hálózati vagy a tűzfal engedélyeit.
+
+A kapcsolatok teljes tartománynevének (FQDN) megkereséséhez kövesse az alábbi lépéseket:
+
+1. A logikai alkalmazás menüjében, a **munkafolyamatok** területen válassza a **kapcsolatok** lehetőséget. Az **API-kapcsolatok** lapon válassza ki a kapcsolat erőforrásának nevét, például:
+
+   ![Képernyőfelvétel: a Azure Portal és a Logic app menü, amely a "connections" és a "offic365" kapcsolati erőforrás nevét tartalmazza.](./media/create-stateful-stateless-workflows-azure-portal/logic-app-connections.png)
+
+1. Elég széles a böngésző kibontása ahhoz, hogy a böngésző jobb felső sarkában megjelenjen a **JSON-nézet** , válassza a **JSON-nézet** lehetőséget.
+
+   ![Képernyőfelvétel: a Azure Portal és az API-kapcsolatok ablaktáblája a "JSON nézettel" van kiválasztva.](./media/create-stateful-stateless-workflows-azure-portal/logic-app-connection-view-json.png)
+
+1. A tulajdonságérték biztonságos megkeresése, másolása és mentése, `connectionRuntimeUrl` így a tűzfal beállítható ezen információk használatával.
+
+   ![A "connectionRuntimeUrl" tulajdonság kiválasztott értékét megjelenítő képernyőkép.](./media/create-stateful-stateless-workflows-azure-portal/logic-app-connection-runtime-url.png)
+
+1. Az egyes kapcsolatok esetében ismételje meg a megfelelő lépéseket.
+
+<a name="trigger-workflow"></a>
 
 ## <a name="trigger-the-workflow"></a>A munkafolyamat elindítása
 

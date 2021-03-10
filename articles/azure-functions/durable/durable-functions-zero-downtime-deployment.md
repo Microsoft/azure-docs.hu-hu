@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2c96f2cc37c47c77b82ca86d5fd0295f0c66a896
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 707d624c47c536e00e98910a8902772703733515
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009483"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558763"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Nulla – állásidő üzembe helyezése Durable Functions
 
@@ -111,7 +111,7 @@ public static async Task<IActionResult> StatusCheck(
 }
 ```
 
-Ezután konfigurálja az átmeneti kaput, és várjon, amíg a rendszer nem fut. További információ: üzembehelyezési [üzembe helyezési vezérlő kiadása Gates használatával](/azure/devops/pipelines/release/approvals/gates?view=azure-devops)
+Ezután konfigurálja az átmeneti kaput, és várjon, amíg a rendszer nem fut. További információ: üzembehelyezési [üzembe helyezési vezérlő kiadása Gates használatával](/azure/devops/pipelines/release/approvals/gates)
 
 ![Üzembe helyezési kapu](media/durable-functions-zero-downtime-deployment/deployment-gate.png)
 
@@ -171,7 +171,7 @@ További információ: a [példányok kezelése az Azure](durable-functions-inst
 
 ![Nyomkövetési tároló beállításai](media/durable-functions-zero-downtime-deployment/tracking-store-settings.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Verziószámozás Durable Functions](durable-functions-versioning.md)

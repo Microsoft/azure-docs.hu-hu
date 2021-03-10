@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: bed1c8fd77e84c69571cfad7dd6b7eeb6607209f
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: f1bce5c0ecdab4a9c96c3f2cc0e9734247bdfd66
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98808044"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566345"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>StorSimple-eszközök üzembe helyezésével kapcsolatos problémák elhárítása
 ## <a name="overview"></a>Áttekintés
@@ -189,7 +189,7 @@ Amikor a hálózati adaptereket konfigurálja egy első alkalommal üzemelő esz
    * Ha az illesztőfelület kifogástalan, de nincs engedélyezve, a **előtérillesztő ifindex** állapota **NotPresent** lesz látható.
    * Ha az illesztőfelület nem létezik, akkor nem jelenik meg a listában. A StorSimple Eszközkezelő szolgáltatás felhasználói felülete továbbra is hibás állapotban jeleníti meg ezt az illesztőfelületet.
 
-A parancsmag használatáról további információt a [Get-NetAdapter](/powershell/module/netadapter/get-netadapter?view=win10-ps&preserve-view=true) című témakörben olvashat a Windows PowerShell-parancsmagok dokumentációjában.
+A parancsmag használatáról további információt a [Get-NetAdapter](/powershell/module/netadapter/get-netadapter) című témakörben olvashat a Windows PowerShell-parancsmagok dokumentációjában.
 
 A következő részekben a parancsmag kimenetének mintái láthatók `Get-NetAdapter` .
 
@@ -549,7 +549,7 @@ A hibát a következő problémák okozhatják:
 8. Tekintse meg a naplókat. [A hibaelhárításhoz keresse fel a támogatási csomagokat és az eszközök naplóit](#support-packages-and-device-logs-available-for-troubleshooting).
 9. Ha a fenti lépések nem oldják meg a problémát, [kérje a Microsoft ügyfélszolgálata](storsimple-8000-contact-microsoft-support.md) segítségét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Megtudhatja, hogyan használhatja a diagnosztikai eszközt a StorSimple-eszközök hibakereséséhez](storsimple-8000-diagnostics.md).
 
 <!--Link references-->

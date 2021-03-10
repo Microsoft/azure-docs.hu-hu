@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 02/24/2021
-ms.openlocfilehash: 7fc964abf7e6832341ad8b1ad55711b3a9993506
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9107ef6100a3c362eae982412d54a981851bcb42
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712511"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561398"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>Oktatóanyag: régiók közötti Azure Load Balancer létrehozása a Azure Portal használatával
 
@@ -200,9 +200,6 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 * Létrehozott egy terheléselosztási szabályt.
 * Tesztelte a terheléselosztó.
 
-A régiók közötti terheléselosztó részletes ismertetését lásd: [régiók közötti Load Balancer (előzetes verzió)](cross-region-overview.md).
-
-
-A következő cikkből megtudhatja, hogyan végezheti el a következőket:
+A régiók közötti terheléselosztó további információit a következő témakörben talál:
 > [!div class="nextstepaction"]
-> [Virtuális gépek terheléselosztása rendelkezésre állási zónák között](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
+> [Régiók közötti Load Balancer (előzetes verzió)](cross-region-overview.md)

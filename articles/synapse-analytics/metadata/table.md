@@ -10,19 +10,19 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b93addfe659847187dffe61f12f5a2bfac9dca21
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: a8080720480beaeb7bc8692f2dcddddad5da0e3c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209627"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548461"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Az Azure szinapszis Analytics megosztott metaadatait tartalmazó táblái
 
 
 Az Azure szinapszis Analytics lehetővé teszi, hogy a különböző munkaterület-számítási motorok megosszák az adatbázisokat és a parketta által támogatott táblákat a Apache Spark-készletek és a kiszolgáló nélküli SQL-készlet között.
 
-Miután létrehozta az adatbázist egy Spark-feladatokkal, a Sparkban létrehozhat olyan táblákat, amelyek tárolási formátumként használják a parketta-t. Ezek a táblák azonnal elérhetővé válnak az Azure szinapszis-munkaterület Spark-készletei bármelyikének lekérdezéséhez. Ezek bármelyik Spark-feladatból is felhasználhatók, az engedélyek alá tartoznak.
+Miután létrehozta az adatbázist egy Spark-feladatokkal, a Sparkban létrehozhat olyan táblákat, amelyek tárolási formátumként használják a parketta-t. A táblázat neveit a rendszer az kisbetű értékre konvertálja, és az alsó eset nevével kell lekérdezni. Ezek a táblák azonnal elérhetővé válnak az Azure szinapszis-munkaterület Spark-készletei bármelyikének lekérdezéséhez. Ezek bármelyik Spark-feladatból is felhasználhatók, az engedélyek alá tartoznak.
 
 A Spark által létrehozott, felügyelt és külső táblák is elérhetők a kiszolgáló nélküli SQL-készletben található megfelelő szinkronizált adatbázisban található azonos nevű külső táblákként. Az [SQL-ben a Spark-táblázat](#expose-a-spark-table-in-sql) további részleteket tartalmaz a tábla szinkronizálásával kapcsolatban.
 
@@ -101,17 +101,17 @@ Ebben az esetben egy nevű Spark-adatbázissal rendelkezik `mytestdb` . Lásd: [
 Hozzon létre egy felügyelt Spark-táblázatot a SparkSQL a következő parancs futtatásával:
 
 ```sql
-    CREATE TABLE mytestdb.myParquetTable(id int, name string, birthdate date) USING Parquet
+    CREATE TABLE mytestdb.myparquettable(id int, name string, birthdate date) USING Parquet
 ```
 
-Ez a parancs létrehozza a táblát `myParquetTable` az adatbázisban `mytestdb` . Rövid késleltetés után megtekintheti a táblát a kiszolgáló nélküli SQL-készletben. Futtassa például a következő utasítást a kiszolgáló nélküli SQL-készletből.
+Ez a parancs létrehozza a táblát `myparquettable` az adatbázisban `mytestdb` . A táblázatok neve kisbetűsre lesz konvertálva. Rövid késleltetés után megtekintheti a táblát a kiszolgáló nélküli SQL-készletben. Futtassa például a következő utasítást a kiszolgáló nélküli SQL-készletből.
 
 ```sql
     USE mytestdb;
     SELECT * FROM sys.tables;
 ```
 
-Ellenőrizze, hogy `myParquetTable` szerepel-e az eredmények között.
+Ellenőrizze, hogy `myparquettable` szerepel-e az eredmények között.
 
 >[!NOTE]
 >Nem lesz szinkronizálva olyan tábla, amely nem használ parkettát, mert a tárolási formátuma nem.
@@ -136,13 +136,13 @@ var schema = new StructType
     );
 
 var df = spark.CreateDataFrame(data, schema);
-df.Write().Mode(SaveMode.Append).InsertInto("mytestdb.myParquetTable");
+df.Write().Mode(SaveMode.Append).InsertInto("mytestdb.myparquettable");
 ```
 
 Most már elolvashatja a kiszolgáló nélküli SQL-készlet adatait a következőképpen:
 
 ```sql
-SELECT * FROM mytestdb.dbo.myParquetTable WHERE name = 'Alice';
+SELECT * FROM mytestdb.dbo.myparquettable WHERE name = 'Alice';
 ```
 
 A következő sort kell beolvasnia az eredményként:
@@ -160,26 +160,26 @@ Ebben a példában hozzon létre egy külső Spark-táblázatot a kezelt tábla 
 Például a SparkSQL futtatásával:
 
 ```sql
-CREATE TABLE mytestdb.myExternalParquetTable
+CREATE TABLE mytestdb.myexternalparquettable
     USING Parquet
     LOCATION "abfss://<fs>@arcadialake.dfs.core.windows.net/synapse/workspaces/<synapse_ws>/warehouse/mytestdb.db/myparquettable/"
 ```
 
 A helyőrzőt cserélje le `<fs>` a fájlrendszer nevére, amely a munkaterület alapértelmezett fájlrendszere, a helyőrző pedig annak a `<synapse_ws>` szinapszis-munkaterületnek a neve, amelyet a példa futtatásához használ.
 
-Az előző példa létrehozza a táblát `myExtneralParquetTable` az adatbázisban `mytestdb` . Rövid késleltetés után megtekintheti a táblát a kiszolgáló nélküli SQL-készletben. Futtassa például a következő utasítást a kiszolgáló nélküli SQL-készletből.
+Az előző példa létrehozza a táblát `myextneralparquettable` az adatbázisban `mytestdb` . Rövid késleltetés után megtekintheti a táblát a kiszolgáló nélküli SQL-készletben. Futtassa például a következő utasítást a kiszolgáló nélküli SQL-készletből.
 
 ```sql
 USE mytestdb;
 SELECT * FROM sys.tables;
 ```
 
-Ellenőrizze, hogy `myExternalParquetTable` szerepel-e az eredmények között.
+Ellenőrizze, hogy `myexternalparquettable` szerepel-e az eredmények között.
 
 Most már elolvashatja a kiszolgáló nélküli SQL-készlet adatait a következőképpen:
 
 ```sql
-SELECT * FROM mytestdb.dbo.myExternalParquetTable WHERE name = 'Alice';
+SELECT * FROM mytestdb.dbo.myexternalparquettable WHERE name = 'Alice';
 ```
 
 A következő sort kell beolvasnia az eredményként:

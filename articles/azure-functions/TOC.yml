@@ -270,6 +270,8 @@
                   href: ./functions-create-your-first-function-visual-studio.md
                 - name: Visual Studio Code
                   href: ./create-first-function-vs-code-csharp.md
+                - name: C# elkülönített (.NET 5)
+                  href: dotnet-isolated-process-developer-howtos.md
                 - name: Java a Gradle használatával
                   href: functions-create-first-java-gradle.md
                 - name: Java az Eclipse használatával

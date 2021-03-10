@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: c98b47507a7543002f00aae82370f5ea0043510d
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: c5c50787ef3e287d164e051ece26da4e83199d47
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954277"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555635"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>Az ügyfelek irányítópultja a kereskedelmi piactér elemzésében
 
@@ -142,28 +142,28 @@ Vegye figyelembe a következőket:
 
 _**1. táblázat: az adatszótár kifejezése**_
 
-| Oszlop neve | Attribútum neve | Definíció |
-| ------------ | ------------- | ------------- |
-| Piactér-előfizetés azonosítója | Piactér-előfizetés azonosítója | Az Azure-előfizetéshez társított egyedi azonosító, amelyet az ügyfél a kereskedelmi Piactéri ajánlat megvásárlásához használt. Az infrastruktúra-ajánlatok esetében ez az ügyfél Azure-előfizetési GUID-azonosítója. Az SaaS-ajánlatok esetében ez nulla értékként jelenik meg, mivel az SaaS-vásárlásokhoz nincs szükség Azure-előfizetésre. |
-| DateAcquired | Beszerzés dátuma | Az első dátum, amikor az ügyfél megvásárolta a közzétett ajánlatot. |
-| DateLost | Elveszett dátum | Az utolsó időpont, amikor az ügyfél megszakította az utolsó összes korábban megvásárolt ajánlatot. |
-| Szolgáltató neve | Szolgáltató neve | A Microsoft és az ügyfél közötti kapcsolatban részt vevő szolgáltató neve. Ha az ügyfél a viszonteladón keresztüli vállalat, akkor ez lesz a viszonteladó. Ha egy felhőalapú megoldás-szolgáltató (CSP) is részt vesz, ez lesz a CSP. |
-| Szolgáltatói E-mail cím | Szolgáltatói E-mail cím | A Microsoft és az ügyfél közötti kapcsolatban részt vevő szolgáltató e-mail-címe. Ha az ügyfél a viszonteladón keresztüli vállalat, akkor ez lesz a viszonteladó. Ha egy felhőalapú megoldás-szolgáltató (CSP) is részt vesz, ez lesz a CSP. |
-| FirstName | Ügyfél utóneve | Az ügyfél által megadott keresztnév. A név nem lehet azonos az ügyfél Azure-előfizetésében megadott névvel. |
-| LastName | Ügyfél vezetékneve | Az ügyfél által megadott utolsó név. A név nem lehet azonos az ügyfél Azure-előfizetésében megadott névvel. |
-| E-mail | Ügyfél e-mail-címe | A végfelhasználó által megadott e-mail-cím. Az e-mail nem lehet az ügyfél Azure-előfizetésében szereplő e-mail-cím. |
-| Ügyfél vállalatának neve | Ügyfél vállalatának neve | Az ügyfél által megadott cég neve. A név nem lehet más, mint az ügyfél Azure-előfizetésének városa. |
-| CustomerCity | Customer City | Az ügyfél által megadott város neve. A város eltérő lehet az ügyfél Azure-előfizetésében lévő várostól. |
-| Ügyfél postai irányítószáma | Ügyfél postai irányítószáma | Az ügyfél által megadott postai irányítószám. A kód különbözhet az ügyfél Azure-előfizetésében megadott postai kóddal. |
-| CustomerCommunicationCulture | Ügyfél-kommunikációs nyelv | Az ügyfél által a kommunikációhoz előnyben részesített nyelv. |
-| CustomerCountryRegion | Ügyfél országa/régiója | Az ügyfél által megadott ország/régió neve. Az ország/régió eltérő lehet az ügyfél Azure-előfizetésében lévő országgal vagy régióval. |
-| AzureLicenseType | Azure-licenc típusa | Az ügyfelek által az Azure megvásárlásához használt licencelési szerződés típusa. Más néven _csatorna_. Lehetséges értékek:<ul><li>Felhőszolgáltató</li><li>Enterprise</li><li>Enterprise a viszonteladón keresztül</li><li>Utólagos fizetés</li></ul> |
-| PromotionalCustomers | A promóciós kapcsolatfelvételi lehetőség | Az érték tudatja Önnel, hogy az ügyfél proaktív módon választotta-e a közzétevők számára a promóciós kapcsolatfelvételt. Jelenleg nem vesszük igénybe az ügyfeleket, ezért a táblán a "nem" jelölés szerepel. A szolgáltatás üzembe helyezése után a frissítés ennek megfelelően kezdődik. |
-| CustomerState | Ügyfél állapota | Az ügyfél által biztosított tartózkodási állapot. Az állapot különbözhet az ügyfél Azure-előfizetésében megadott állapottól. |
-| CommerceRootCustomer | Kereskedelmi gyökér ügyfél | Egy számlázási fiókazonosító több ügyfél-azonosítóval is társítható.<br>A Számlázási fiók AZONOSÍTÓjának és ügyfél-AZONOSÍTÓjának egy kombinációja több kereskedelmi piactér-előfizetéshez is társítható.<br>A kereskedelmi gyökér ügyfél az előfizetés ügyfelének nevét jelzi. |
-| Ügyfél-azonosító | Ügyfél-azonosító | Az ügyfélhez rendelt egyedi azonosító. Előfordulhat, hogy egy ügyfél nulla vagy több Azure Marketplace-előfizetéssel rendelkezik. |
-| Számlázási fiók azonosítója | Számlázási fiók azonosítója | Annak a fióknak az azonosítója, amelyre a számlázást létrehozták. A **Számlázási fiók azonosítójának** hozzárendelése a **Vevőkódhez** a kifizetési tranzakciós jelentés összekapcsolásához az ügyfél, a megrendelés és a használati jelentések segítségével. |
-||||
+| Oszlop neve a (z)<br>felhasználói felület | Attribútum neve | Definíció | A programozott oszlop neve<br>hozzáférési jelentések |
+| ------------ | ------------- | ------------- | ------------- |
+| Piactér-előfizetés azonosítója | Piactér-előfizetés azonosítója | Az Azure-előfizetéshez társított egyedi azonosító, amelyet az ügyfél a kereskedelmi Piactéri ajánlat megvásárlásához használt. Az infrastruktúra-ajánlatok esetében ez az ügyfél Azure-előfizetési GUID-azonosítója. Az SaaS-ajánlatok esetében ez nulla értékként jelenik meg, mivel az SaaS-vásárlásokhoz nincs szükség Azure-előfizetésre. | MarketplaceSubscriptionId |
+| DateAcquired | Beszerzés dátuma | Az első dátum, amikor az ügyfél megvásárolta a közzétett ajánlatot. | DateAcquired |
+| DateLost | Elveszett dátum | Az utolsó időpont, amikor az ügyfél megszakította az utolsó összes korábban megvásárolt ajánlatot. | DateLost |
+| Szolgáltató neve | Szolgáltató neve | A Microsoft és az ügyfél közötti kapcsolatban részt vevő szolgáltató neve. Ha az ügyfél a viszonteladón keresztüli vállalat, akkor ez lesz a viszonteladó. Ha egy felhőalapú megoldás-szolgáltató (CSP) is részt vesz, ez lesz a CSP. | ProviderName |
+| Szolgáltatói E-mail cím | Szolgáltatói E-mail cím | A Microsoft és az ügyfél közötti kapcsolatban részt vevő szolgáltató e-mail-címe. Ha az ügyfél a viszonteladón keresztüli vállalat, akkor ez lesz a viszonteladó. Ha egy felhőalapú megoldás-szolgáltató (CSP) is részt vesz, ez lesz a CSP. | ProviderEmail |
+| FirstName | Ügyfél utóneve | Az ügyfél által megadott keresztnév. A név nem lehet azonos az ügyfél Azure-előfizetésében megadott névvel. | FirstName |
+| LastName | Ügyfél vezetékneve | Az ügyfél által megadott utolsó név. A név nem lehet azonos az ügyfél Azure-előfizetésében megadott névvel. | LastName |
+| E-mail | Ügyfél e-mail-címe | A végfelhasználó által megadott e-mail-cím. Az e-mail nem lehet az ügyfél Azure-előfizetésében szereplő e-mail-cím. | E-mail |
+| Ügyfél vállalatának neve | Ügyfél vállalatának neve | Az ügyfél által megadott cég neve. A név nem lehet más, mint az ügyfél Azure-előfizetésének városa. | CustomerCompany neve |
+| CustomerCity | Customer City | Az ügyfél által megadott város neve. A város eltérő lehet az ügyfél Azure-előfizetésében lévő várostól. | CustomerCity |
+| Ügyfél postai irányítószáma | Ügyfél postai irányítószáma | Az ügyfél által megadott postai irányítószám. A kód különbözhet az ügyfél Azure-előfizetésében megadott postai kóddal. | CustomerPostal-kód |
+| CustomerCommunicationCulture | Ügyfél-kommunikációs nyelv | Az ügyfél által a kommunikációhoz előnyben részesített nyelv. | CustomerCommunicationCulture |
+| CustomerCountryRegion | Ügyfél országa/régiója | Az ügyfél által megadott ország/régió neve. Az ország/régió eltérő lehet az ügyfél Azure-előfizetésében lévő országgal vagy régióval. | CustomerCountryRegion |
+| AzureLicenseType | Azure-licenc típusa | Az ügyfelek által az Azure megvásárlásához használt licencelési szerződés típusa. Más néven _csatorna_. Lehetséges értékek:<ul><li>Felhőszolgáltató</li><li>Enterprise</li><li>Enterprise a viszonteladón keresztül</li><li>Utólagos fizetés</li></ul> | AzureLicenseType |
+| PromotionalCustomers | A promóciós kapcsolatfelvételi lehetőség | Az érték tudatja Önnel, hogy az ügyfél proaktív módon választotta-e a közzétevők számára a promóciós kapcsolatfelvételt. Jelenleg nem vesszük igénybe az ügyfeleket, ezért a táblán a "nem" jelölés szerepel. A szolgáltatás üzembe helyezése után a frissítés ennek megfelelően kezdődik. | PromotionalCustomers |
+| CustomerState | Ügyfél állapota | Az ügyfél által biztosított tartózkodási állapot. Az állapot különbözhet az ügyfél Azure-előfizetésében megadott állapottól. | CustomerState |
+| CommerceRootCustomer | Kereskedelmi gyökér ügyfél | Egy számlázási fiókazonosító több ügyfél-azonosítóval is társítható.<br>A Számlázási fiók AZONOSÍTÓjának és ügyfél-AZONOSÍTÓjának egy kombinációja több kereskedelmi piactér-előfizetéshez is társítható.<br>A kereskedelmi gyökér ügyfél az előfizetés ügyfelének nevét jelzi. | CommerceRootCustomer |
+| Ügyfél-azonosító | Ügyfél-azonosító | Az ügyfélhez rendelt egyedi azonosító. Előfordulhat, hogy egy ügyfél nulla vagy több Azure Marketplace-előfizetéssel rendelkezik. | CustomerId |
+| Számlázási fiók azonosítója | Számlázási fiók azonosítója | Annak a fióknak az azonosítója, amelyre a számlázást létrehozták. A **Számlázási fiók azonosítójának** hozzárendelése a **Vevőkódhez** a kifizetési tranzakciós jelentés összekapcsolásához az ügyfél, a megrendelés és a használati jelentések segítségével. | BillingAccountId |
+|||||
 
 ### <a name="customers-page-filters"></a>Ügyfelek oldal szűrői
 
@@ -172,7 +172,7 @@ Az ügyfelek oldal szűrői az ügyfelek oldal szintjén lesznek alkalmazva. Tö
 > [!TIP]
 > Az adatletöltéshez használhatja a letöltés ikont bármelyik widget jobb felső sarkában. Az egyes widgetekkel kapcsolatos visszajelzéseket a "hüvelykujj fel" vagy a "hüvelykujj lefelé" ikonra kattintva teheti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [hozzáférés analitikus jelentések a kereskedelmi piactérhez a partner Centerben](./partner-center-portal/analytics.md).
 - Az ajánlathoz tartozó Piactéri tevékenységet összefoglaló összesített adatok grafikonok, trendek és értékek esetében lásd: [az összefoglaló irányítópult a kereskedelmi piactér elemzésében](./summary-dashboard.md).

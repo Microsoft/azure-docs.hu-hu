@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: ''
 ms.date: 07/11/2019
-ms.openlocfilehash: 2761b97e595f5e11b00e75cd778ee269b12bfcae
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 49d37a5537ada260eae453bbb5f81716d42657a5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917800"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565821"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>SQL Server példány áttelepítése az Azure SQL felügyelt példányára
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -45,7 +45,7 @@ Az adatbázis-áttelepítési folyamat magas szinten a következőképpen néz k
 
 Először határozza meg, hogy az SQL felügyelt példány kompatibilis-e az alkalmazás adatbázis-követelményeivel. Az SQL felügyelt példánya úgy lett kialakítva, hogy a SQL Servert használó meglévő alkalmazások többsége számára könnyen áthelyezhető legyen a lift és a váltás. Előfordulhat azonban, hogy esetenként olyan szolgáltatásokat vagy képességeket igényel, amelyek még nem támogatottak, és a megkerülő megoldás megvalósításának díja túl magas.
 
-A [Data Migration Assistant](/sql/dma/dma-overview) használatával észlelheti a Azure SQL Databaseon az adatbázis-funkciókat érintő lehetséges kompatibilitási problémákat. Ha néhány blokkolt blokkolási probléma van, előfordulhat, hogy fontolóra kell vennie egy másik lehetőséget, például [SQL Server az Azure virtuális gépen](https://azure.microsoft.com/services/virtual-machines/sql-server/). Néhány példa:
+A [Data Migration Assistant](/sql/dma/dma-overview) használatával észlelheti a Azure SQL Databaseon az adatbázis-funkciókat érintő lehetséges kompatibilitási problémákat. Ha néhány blokkolt blokkolási probléma van, előfordulhat, hogy fontolóra kell vennie egy másik lehetőséget, például [SQL Server az Azure virtuális gépen](https://azure.microsoft.com/services/virtual-machines/sql-server/). Íme néhány példa:
 
 - Ha közvetlen hozzáférésre van szüksége az operációs rendszerhez vagy a fájlrendszerhez, például a külső gyártótól származó vagy az egyéni ügynököket ugyanarra a virtuális gépre telepíti SQL Server.
 - Ha olyan funkciókkal rendelkezik, amelyek még nem támogatottak, például a FileStream/leválasztható, a bázisterület és a több példány tranzakciója.
@@ -59,6 +59,26 @@ Ha feloldotta az összes azonosított áttelepítési blokkot, és folytatja az 
 - A használt új funkciók, például az átlátszó adatbázis-titkosítás (TDE) vagy az automatikus feladatátvételi csoportok befolyásolhatják a CPU-t és az IO-használatot.
 
 A felügyelt SQL-példányok a 99,99%-os rendelkezésre állást a kritikus helyzetekben is garantálják, így a szolgáltatások által okozott terhelés nem tiltható le. További információkért tekintse [meg a SQL Server és az Azure SQL felügyelt példányának különböző teljesítményét okozó kiváltó okokat](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/).
+
+#### <a name="in-memory-oltp-memory-optimized-tables"></a>In-Memory OLTP (memóriára optimalizált táblák)
+
+A SQL Server In-Memory OLTP képességet biztosít, amely lehetővé teszi a memóriára optimalizált táblák, a memóriára optimalizált táblázatok és a natív módon lefordított SQL-modulok használatát a nagy átviteli sebességű és kis késésű tranzakciós feldolgozási követelményekkel rendelkező munkaterhelések futtatásához. 
+
+> [!IMPORTANT]
+> In-Memory OLTP csak az Azure SQL felügyelt példányának üzletileg kritikus szintjében támogatott (és a általános célú szinten nem támogatott).
+
+Ha a helyszíni SQL Server memóriára optimalizált táblákat vagy memóriára optimalizált táblázatokat használ, és az Azure SQL felügyelt példányára szeretne áttérni, akkor a következők egyikét kell tennie:
+
+- Válassza ki üzletileg kritikus szintet a cél Azure SQL felügyelt példányához, amely támogatja a In-Memory OLTP, vagy
+- Ha az Azure SQL felügyelt példányának általános célú szintjére kíván áttérni, távolítsa el a memóriára optimalizált táblákat, a memóriára optimalizált táblázatos típusokat és a natív módon lefordított SQL-modulokat, amelyek az adatbázis (ok) áttelepítése előtt a memóriára optimalizált objektumokat használják. A következő T-SQL-lekérdezéssel azonosíthatók az összes olyan objektum, amelyet el kell távolítani a általános célúi rétegbe való áttelepítés előtt:
+
+```tsql
+SELECT * FROM sys.tables WHERE is_memory_optimized=1
+SELECT * FROM sys.table_types WHERE is_memory_optimized=1
+SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
+```
+
+A memórián belüli technológiákkal kapcsolatos további információkért lásd: [a teljesítmény optimalizálása a memóriában lévő technológiák használatával Azure SQL Database és az Azure SQL felügyelt példányain](https://docs.microsoft.com/azure/azure-sql/in-memory-oltp-overview) .
 
 ### <a name="create-a-performance-baseline"></a>Teljesítmény-alapterv létrehozása
 

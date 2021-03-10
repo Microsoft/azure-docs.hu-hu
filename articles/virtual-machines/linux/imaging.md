@@ -2,19 +2,20 @@
 title: Linux-rendszerképek létrehozása az Azure-ban – áttekintés
 description: Hogyan hozhatja létre a linuxos virtuálisgép-lemezképeket, vagy létrehozhat új rendszerképeket az Azure-ban való használatra.
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: imaging
+ms.collection: linux
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 223fdc215bc391bea5cad5d4cb9999b9d14ba570
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: a77c2bc69418b821933c0b62674500f7a32e40a5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878782"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565206"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Linux-rendszerképek készítése és létrehozása az Azure-ban
 
@@ -108,6 +109,6 @@ Ha továbbra is létre kell hoznia egy saját rendszerképet, győződjön meg a
 - [Ubuntu](create-upload-ubuntu.md)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan hozhat létre [megosztott képtárat](tutorial-custom-images.md).

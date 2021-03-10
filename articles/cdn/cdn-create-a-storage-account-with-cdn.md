@@ -1,26 +1,19 @@
 ---
-title: Gyors útmutató – Azure Storage-fiók integrálása Azure CDN
-description: Az útmutató azt ismerteti, hogyan kézbesíthet nagy sávszélességű tartalmakat az Azure Content Delivery Network (CDN) segítségével az Azure Storage-ben lévő blobok gyorsítótárazása révén.
+title: 'Gyors útmutató: Azure Storage-fiók integrálása Azure CDN'
+description: Ebből a rövid útmutatóból megtudhatja, hogyan használható az Azure Content Delivery Network (CDN) a nagy sávszélességű tartalmak továbbítására az Azure Storage-ban.
 services: cdn
-documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: ''
-ms.assetid: cbc2ff98-916d-4339-8959-622823c5b772
 ms.service: azure-cdn
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: b80437fa1ac41bb240565923eb40e562c8cf8c5b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7cd1c6b0b11ba291a36f49a2a9990a2755cdd74b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018613"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561925"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Gyors útmutató: Azure Storage-fiók integrálása Azure CDN
 
@@ -60,7 +53,7 @@ Tárfiók létrehozásához a társított előfizetés szolgáltatás-rendszerga
 
 ## <a name="enable-azure-cdn-for-the-storage-account"></a>Az Azure CDN engedélyezése a tárfiókhoz
 
-1. A Storage-fiók lapján válassza **Blob service**  >  a bal oldali menü blob Service **Azure CDN** elemét. Megjelenik az **Azure CDN** oldal.
+1. A Storage-fiók lapján válassza   >  a bal oldali menü blob Service **Azure CDN** elemét. Megjelenik az **Azure CDN** oldal.
 
     ![CDN-végpont létrehozása](./media/cdn-create-a-storage-account-with-cdn/cdn-storage-endpoint-configuration.png)
     
@@ -73,7 +66,7 @@ Tárfiók létrehozásához a társított előfizetés szolgáltatás-rendszerga
     | **CDN-végpont neve** | Adja meg a végpont nevét, például: *CDN-Endpoint-123*. Ennek a névnek globálisan egyedinek kell lennie az Azure-ban, mert a gyorsítótárazott erőforrásaihoz az URL _&lt; -végpont – name &gt;_. azureedge.NET hozzáfér. |
     | **Forrás gazdaneve** | Alapértelmezés szerint egy új CDN-végpont a tárfiók eszköznevét használja forráskiszolgálóként. |
 
-1. Kattintson a **Létrehozás** gombra. A létrejött végpont megjelenik a végpontok listájában.
+1. Válassza a **Létrehozás** lehetőséget. A létrejött végpont megjelenik a végpontok listájában.
 
     ![Tároló új CDN-végpontja](./media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-list.png)
 
@@ -122,10 +115,7 @@ A korábbi lépésekben létrehozott egy CDN-profilt és egy végpontot egy erő
 
 3. A törlendő tárfiókot jelölje ki az irányítópulton, majd válassza ki a **Törlés** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>További lépések
-
-> [!div class="nextstepaction"]
-> [Azure CDN-profil és -végpont létrehozása](cdn-create-new-endpoint.md)
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: a CDN használata a webalkalmazások statikus tartalmának lekérdezéséhez](cdn-add-to-web-app.md)

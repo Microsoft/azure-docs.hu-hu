@@ -2,22 +2,22 @@
 title: Oktatóanyag – az Azure Linux Virtual Machines Kanári-telepítések konfigurálása
 description: Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be a folyamatos üzembe helyezés (CD) folyamatát. Ez a folyamat az Azure Linux rendszerű virtuális gépek egy csoportját frissíti a Kanári-telepítési stratégia használatával.
 author: moala
-manager: jpconnock
 tags: azure-devops-pipelines
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: tutorial
 ms.tgt_pltfrm: azure-pipelines
 ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: fafe2ba9ae65f95d8a2258ead5715cc0630202ba
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: bbfe6571cf075b2ce4930eea91bfd1e239470c5a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963482"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552507"
 ---
 # <a name="tutorial---configure-the-canary-deployment-strategy-for-azure-linux-virtual-machines"></a>Oktatóanyag – a Kanári üzembe helyezési stratégia konfigurálása az Azure Linux Virtual Machines
 
@@ -38,7 +38,7 @@ A Kanári-környezetek csökkentik a kockázatot a felhasználók kis részhalma
 A folyamatos kézbesítés lehetőséggel a Azure Portal a Kanári-telepítéseket a virtuális gépekre is konfigurálhatja. Itt látható a lépésenkénti útmutató:
 
 1. Jelentkezzen be a Azure Portalba, és navigáljon a virtuális géphez.
-1. A virtuális gép beállításainak bal szélső paneljén válassza a **folyamatos kézbesítés**lehetőséget. Ezután válassza a **Konfigurálás**lehetőséget.
+1. A virtuális gép beállításainak bal szélső paneljén válassza a **folyamatos kézbesítés** lehetőséget. Ezután válassza a **Konfigurálás** lehetőséget.
 
    ![A folyamatos kézbesítés panel a configure (Konfigurálás) gombbal](media/tutorial-devops-azure-pipelines-classic/azure-devops-configure.png)
 
@@ -48,7 +48,7 @@ A folyamatos kézbesítés lehetőséggel a Azure Portal a Kanári-telepítések
 
 1. A központi telepítési csoport a központi telepítési célszámítógépek logikai készlete, amely a fizikai környezeteket jelképezi. Példák a fejlesztési, tesztelési, ellenőrzését és éles környezetekre. Létrehozhat egy új központi telepítési csoportot, vagy kijelölhet egy meglévőt is.
 1. Válassza ki a Build folyamatot, amely közzéteszi a virtuális gépre telepítendő csomagot. A közzétett csomagnak rendelkeznie kell egy deploy.ps1 vagy deploy.sh nevű telepítési parancsfájllal a csomag gyökérkönyvtárában található deployscripts mappában. A folyamat futtatja ezt az üzembe helyezési parancsfájlt.
-1. A **központi telepítési stratégia**területen válassza a **Kanári**lehetőséget.
+1. A **központi telepítési stratégia** területen válassza a **Kanári** lehetőséget.
 1. Vegyen fel egy "Kanári" címkét a Kanári-környezetek részét képező virtuális gépekhez. Adjon hozzá egy "Prod" címkét a virtuális gépekhez, amelyek a Kanári üzembe helyezése után végrehajtott központi telepítések részét képezik. A címkék segítségével csak az adott szerepkörrel rendelkező virtuális gépeket célozza meg.
 
    ![A folyamatos kézbesítési panel, a központi telepítési stratégia értékének kiválasztása](media/tutorial-devops-azure-pipelines-classic/azure-devops-configure-canary.png)

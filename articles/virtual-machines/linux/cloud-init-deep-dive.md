@@ -2,18 +2,18 @@
 title: A Cloud-init ismertetése
 description: Az Azure-beli virtuális gépek Cloud-init használatával történő üzembe helyezésének megismerése.
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: f5028abadbe5600058c83a144d0095aee1278fe6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94dd57310375febb4bc9a55efa704a5fbf4e80e8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86042074"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559443"
 ---
 # <a name="diving-deeper-into-cloud-init"></a>Mélyebb búvárkodás a Cloud-init használatával
 Ha többet szeretne megtudni a [Cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) szolgáltatásról, vagy mélyebb szinten hárítsa el a hibát, meg kell ismernie, hogyan működik. Ez a dokumentum kiemeli a fontos részeket, és ismerteti az Azure-specifikus elemeket.
@@ -22,7 +22,7 @@ Ha a Cloud-init egy általánosított rendszerkép részét képezi, és egy vir
 
 
 ## <a name="understand-cloud-init-configuration"></a>Cloud-Init konfiguráció ismertetése
-Ha egy virtuális gépet egy platformon futtat, a Cloud-init alkalmazásnak több konfigurációt kell alkalmaznia, mint a képfogyasztót, a `User data` (customData), amely támogatja a több formátumot, ezek dokumentálva vannak. [here](https://cloudinit.readthedocs.io/en/latest/topics/format.html#user-data-formats) A további konfigurációkhoz parancsfájlokat (/var/lib/Cloud/Scripts) is hozzáadhat és futtathat, az alábbi témakör részletesebben tárgyalja.
+Ha egy virtuális gépet egy platformon futtat, a Cloud-init alkalmazásnak több konfigurációt kell alkalmaznia, mint a képfogyasztót, a `User data` (customData), amely támogatja a több formátumot, ezek dokumentálva vannak. [](https://cloudinit.readthedocs.io/en/latest/topics/format.html#user-data-formats) A további konfigurációkhoz parancsfájlokat (/var/lib/Cloud/Scripts) is hozzáadhat és futtathat, az alábbi témakör részletesebben tárgyalja.
 
 Néhány konfiguráció már be van építve az Azure Marketplace-re, amely a Cloud-init használatával érkezik, például:
 
@@ -75,6 +75,6 @@ A Cloud-init használatával történő kiépítés esetén a rendszerindításn
    - `per-instance` – a könyvtáron belüli parancsfájlok futtatása új példány első indításakor
    - `per-once` – a könyvtárban lévő parancsfájlok csak egyszer futnak
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [Cloud-init hibaelhárítása](cloud-init-troubleshooting.md).

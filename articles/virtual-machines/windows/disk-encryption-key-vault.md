@@ -2,18 +2,19 @@
 title: Kulcstartó létrehozása és konfigurálása Azure Disk Encryptionhoz Windows rendszerű virtuális gépen
 description: Ez a cikk a kulcstartó létrehozásának és konfigurálásának lépéseit ismerteti a Windows rendszerű virtuális gépek Azure Disk Encryption való használatához.
 ms.service: virtual-machines
-ms.subservice: security
+ms.subservice: disks
+ms.collection: windows
 ms.topic: how-to
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 01d4a11e14aee144d83fe50961744ebb15d1c82f
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: af48bd74bbc38b1cd9b4d3b0f127e7bdf5d3e037
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181533"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555448"
 ---
 # <a name="create-and-configure-a-key-vault-for-azure-disk-encryption-on-a-windows-vm"></a>Kulcstartó létrehozása és konfigurálása Azure Disk Encryptionhoz Windows rendszerű virtuális gépen
 

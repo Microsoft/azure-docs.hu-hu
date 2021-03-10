@@ -1,19 +1,19 @@
 ---
-title: Privát végpont létrehozása az Azure Private linkben
+title: Rövid útmutató – privát végpont létrehozása ARM-sablonnal
 description: Ebben a rövid útmutatóban egy Azure Resource Manager sablont (ARM-sablont) használ egy privát végpont létrehozásához.
 services: private-link
-author: mblanco77
+author: asudbring
 ms.service: private-link
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: 553d36a86671617417b6b9b1ea47966c3ba3fdf6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e80adc16e08e676ac2daabec01a11c10d537c547
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88705809"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562945"
 ---
 # <a name="quickstart-create-a-private-endpoint-by-using-an-arm-template"></a>Rövid útmutató: privát végpont létrehozása ARM-sablonnal
 
@@ -63,7 +63,7 @@ Az ARM-sablon üzembe helyezése az Azure-ban:
 2. Válassza ki vagy hozza létre az erőforráscsoportot.
 3. Írja be az SQL-rendszergazda bejelentkezési és jelszavát.
 4. Írja be a virtuális gép rendszergazdai felhasználónevét és jelszavát.
-5. Olvassa el a feltételek és kikötések utasítást. Ha elfogadja, jelölje be az Elfogadom a vásárláskor **megjelenő feltételeket és kikötéseket**  >  **Purchase**. Az üzembe helyezés akár 20 percet vagy hosszabb időt is igénybe vehet.
+5. Olvassa el a feltételek és kikötések utasítást. Ha elfogadja, jelölje be az Elfogadom a vásárláskor **megjelenő feltételeket és kikötéseket**  >  . Az üzembe helyezés akár 20 percet vagy hosszabb időt is igénybe vehet.
 
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 
@@ -76,7 +76,7 @@ Kapcsolódjon a _(z) {UniqueID}_ virtuális gép myVm az internetről a követke
 
 1. A portál keresősáv mezőjébe írja be a _myVm {UniqueID}_ értéket.
 
-2. Kattintson a **Csatlakozás** gombra. Megnyílik **a virtuális géphez való kapcsolódás** .
+2. Válassza a **Kapcsolódás** lehetőséget. Megnyílik **a virtuális géphez való kapcsolódás** .
 
 3. Válassza az **RDP-fájl letöltése** lehetőséget. Az Azure létrehoz egy RDP protokoll (_. rdp_) fájlt, és letölti a számítógépre.
 
@@ -87,7 +87,7 @@ Kapcsolódjon a _(z) {UniqueID}_ virtuális gép myVm az internetről a követke
    b. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
       > [!NOTE]
-      > Előfordulhat, hogy a **More choices**  >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania**egy másik fiók használatával**.
+      > Előfordulhat, hogy a   >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania **egy másik fiók használatával**.
 
 5. Válassza az **OK** lehetőséget.
 
@@ -113,17 +113,17 @@ A következőképpen csatlakozhat a virtuális gépről a SQL Database-kiszolgá
     ```
 
 3.  Telepítse a SQL Server Management Studio.
-4.  A **Kapcsolódás a kiszolgálóhoz**lapon adja meg vagy válassza ki az alábbi adatokat:
-    - **Kiszolgáló típusa**: válassza az **adatbázismotor**lehetőséget.
-    - **Kiszolgáló neve**: válassza a **SQLServer {UniqueID}. database. Windows. net**elemet.
+4.  A **Kapcsolódás a kiszolgálóhoz** lapon adja meg vagy válassza ki az alábbi adatokat:
+    - **Kiszolgáló típusa**: válassza az **adatbázismotor** lehetőséget.
+    - **Kiszolgáló neve**: válassza a **SQLServer {UniqueID}. database. Windows. net** elemet.
     - **Felhasználónév**: adjon meg egy, a létrehozás során megadott felhasználónevet.
     - **Password (jelszó**): adja meg a létrehozás során megadott jelszót.
-    - **Jelszó megjegyzése**: válassza az **Igen**lehetőséget.
+    - **Jelszó megjegyzése**: válassza az  **Igen** lehetőséget.
 
-5.  Kattintson a **Csatlakozás** gombra.
-6.  A bal oldali menüben válassza az **adatbázisok**elemet.
+5.  Válassza a **Kapcsolódás** lehetőséget.
+6.  A bal oldali menüben válassza az **adatbázisok** elemet.
 7.  Lehetőség van arra is, hogy adatokat hozzon létre vagy lekérdezzen a _Sample-db-_ ből.
-8.  A _(távoli asztal) {UniqueID} myVm_való kapcsolódás lezárása.
+8.  A _(távoli asztal) {UniqueID} myVm_ való kapcsolódás lezárása.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -135,6 +135,8 @@ Az erőforráscsoport törléséhez hívja meg a következő `Remove-AzResourceG
 Remove-AzResourceGroup -Name <your resource group name>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információ az [Azure Private linkről](private-link-overview.md).
+A privát végpontot támogató szolgáltatásokkal kapcsolatos további információkért lásd:
+> [!div class="nextstepaction"]
+> [Privát kapcsolat elérhetősége](private-link-overview.md#availability)
