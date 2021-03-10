@@ -3,18 +3,18 @@ author: rothja
 ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
-ms.author: jroth
-ms.openlocfilehash: 71782661fd960cae3248005a8b90944eff9bef45
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.author: msangapu
+ms.openlocfilehash: bcbbd133c71b2917b73c200c4453ea57385fcaf1
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024335"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102532744"
 ---
 | Erőforrás | Ingyenes | Megosztott | Alapszintű | Standard | Prémium (v1-v3) | Izolált </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | [Web-, mobil-vagy API-alkalmazások](https://azure.microsoft.com/services/app-service/) [Azure app Service](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> . csomag |10 |100 |Korlátlan<sup>2</sup> |Korlátlan<sup>2</sup> |Korlátlan<sup>2</sup> |Korlátlan<sup>2</sup>|
-| [App Service terv](../articles/app-service/overview-hosting-plans.md) |10 régiónként |10/erőforráscsoport |100/erőforráscsoport |100/erőforráscsoport |100/erőforráscsoport |100/erőforráscsoport|
+| [App Service-csomag](../articles/app-service/overview-hosting-plans.md) |10 régiónként |10/erőforráscsoport |100/erőforráscsoport |100/erőforráscsoport |100/erőforráscsoport |100/erőforráscsoport|
 | Számítási példány típusa |Megosztott |Megosztott |<sup>3</sup> . dedikált |<sup>3</sup> . dedikált |<sup>3</sup> . dedikált</p> |<sup>3</sup> . dedikált|
 | Vertikális [felskálázás](../articles/app-service/manage-scale-up.md) (példányok maximális száma) |1 megosztott |1 megosztott |3 dedikált<sup>3</sup> |10 dedikált<sup>3</sup> | 20 dedikált v1 és v2; 30 dedikált v3. <sup>3</sup>|100 dedikált<sup>4</sup>|
 | <sup>5</sup> . tárterület |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup> <br/><br/> Ha több mint 250 GB-nyi, küldjön egy támogatási kérést. |1 TB<sup>5</sup> <br/><br/> A rendelkezésre álló tárolási kvóta 999 GB. |
@@ -24,7 +24,7 @@ ms.locfileid: "98024335"
 | Sávszélesség |165 MB |Korlátlan [adatátviteli díjszabás](https://azure.microsoft.com/pricing/details/data-transfers/) érvényes |Korlátlan [adatátviteli díjszabás](https://azure.microsoft.com/pricing/details/data-transfers/) érvényes |Korlátlan [adatátviteli díjszabás](https://azure.microsoft.com/pricing/details/data-transfers/) érvényes |Korlátlan [adatátviteli díjszabás](https://azure.microsoft.com/pricing/details/data-transfers/) érvényes |Korlátlan [adatátviteli díjszabás](https://azure.microsoft.com/pricing/details/data-transfers/) érvényes |
 | Alkalmazásarchitektúra |32 bites |32 bites |32 bites/64 bites |32 bites/64 bites |32 bites/64 bites |32 bites/64 bites |
 | Web Sockets/instance<sup>7</sup> |5 |35 |350 |Korlátlan |Korlátlan |Korlátlan |
-| IP-kapcsolatok | 600 | 600 | A példány<sup>8</sup> . mérettől függ | A példány<sup>8</sup> . mérettől függ | A példány<sup>8</sup> . mérettől függ | 16000 |
+| Kimenő IP-kapcsolatok száma példányban | 600 | 600 | A példány<sup>8</sup> . mérettől függ | A példány<sup>8</sup> . mérettől függ | A példány<sup>8</sup> . mérettől függ | 16000 |
 | Egyidejű [hibakereső kapcsolatok](../articles/app-service/troubleshoot-dotnet-visual-studio.md) alkalmazása |1 |1 |1 |5 |5 |5 |
 | Tanúsítványok App Service<sup>9</sup> /előfizetés| Nem támogatott | Nem támogatott |10 |10 |10 |10 |
 | Egyéni tartományok/alkalmazás</a> |0 (csak azurewebsites.net altartomány)|500 |500 |500 |500 |500 |

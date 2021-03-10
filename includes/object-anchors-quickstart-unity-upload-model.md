@@ -4,16 +4,16 @@ ms.service: azure-object-anchors
 ms.topic: include
 ms.date: 03/02/2021
 ms.author: crtreasu
-ms.openlocfilehash: 8b7ab183dfb7b6721beae7835acd75bc7a05e72c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d8dfc3d4b7a8447250481b98c1adadc865a29da1
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102044777"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102532612"
 ---
 ### <a name="upload-your-model"></a>A modell feltöltése
 
-Ha még nem rendelkezik objektum-összekötési modellel, kövesse a [modell létrehozása](/object-anchors/quickstarts/get-started-model-conversion.md) létrehozásával kapcsolatos utasításokat. Ezután térjen vissza ide.
+Ha még nem rendelkezik objektum-összekötési modellel, kövesse a [modell létrehozása](/azure/object-anchors/quickstarts/get-started-model-conversion) létrehozásával kapcsolatos utasításokat. Ezután térjen vissza ide.
 
 Ha a HoloLens csatlakozik a Windows-eszköz portálhoz, kövesse az alábbi lépéseket az alkalmazás által használandó modell feltöltéséhez:
 
