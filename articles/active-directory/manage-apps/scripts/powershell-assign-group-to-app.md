@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: b071bd29c3e66b2d2e504936b3653d15a22ca6f2
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 77c4cfeb45510b1a06e02e398e20006f385511b8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258456"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548563"
 ---
 # <a name="assign-a-group-to-a-specific-azure-ad-application-proxy-application"></a>Csoport társítása egy adott Azure AD Application Proxy-alkalmazáshoz
 
@@ -28,7 +28,7 @@ Ez a PowerShell-parancsfájl lehetővé teszi, hogy egy adott csoportot rendelje
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Ehhez a mintához a Graph modul (AzureAD) [AzureAD v2 PowerShell](/powershell/azure/active-directory/install-adv2) -je, vagy a [Graph modul előzetes verziójának (AzureADPreview) AzureAD v2 PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) szükséges.
+Ehhez a mintához a Graph modul (AzureAD) [AzureAD v2 PowerShell](/powershell/azure/active-directory/install-adv2) -je, vagy a [Graph modul előzetes verziójának (AzureADPreview) AzureAD v2 PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) szükséges.
 
 ## <a name="sample-script"></a>Példaszkript
 
