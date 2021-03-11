@@ -7,14 +7,23 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: f95585237bbee743083b855dd78cc850c4daffe8
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: ff26318cafdf493579961fc718643f831ae9efeb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202688"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564254"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migrálás Linuxról hibrid Felhőbeli üzembe helyezésre Azure File Sync
+
+Ez az áttelepítési cikk a többek között az NFS és a Azure File Sync kulcsszavakat is magában foglalja. Ellenőrizze, hogy a jelen cikk a forgatókönyvre vonatkozik-e:
+
+> [!div class="checklist"]
+> * Adatforrás: hálózati csatlakoztatott tároló (NAS)
+> * Áttelepítési útvonal: linuxos kiszolgáló a SAMBA &rArr; Windows Server 2012R2 vagy újabb &rArr; szinkronizálás az Azure-fájlmegosztás (ok) val
+> * Helyi gyorsítótárazási fájlok: igen, a végső cél egy Azure File Sync üzemelő példány.
+
+Ha a forgatókönyv eltérő, tekintse át az [áttelepítési útmutatók táblázatát](storage-files-migration-overview.md#migration-guides).
 
 A Azure File Sync a közvetlenül csatlakoztatott tárolóval (DAS) rendelkező Windows Server-példányokon működik. Nem támogatja a Linux-ügyfelek vagy a távoli SMB-megosztások, illetve a hálózati fájlrendszer (NFS) megosztások közötti szinkronizálást.
 
@@ -22,13 +31,13 @@ Ennek eredményeképpen a Fájlszolgáltatások hibrid telepítésre való átal
 
 ## <a name="migration-goals"></a>Migrálási célok
 
-A cél a linuxos Samba-kiszolgálón lévő megosztások áthelyezése egy Windows Server-példányra. Ezután használja a Azure File Synct a hibrid Felhőbeli üzembe helyezéshez. Ezt az áttelepítést olyan módon kell végrehajtani, amely garantálja az üzemi adatok integritását, valamint a rendelkezésre állást az áttelepítés során. Az utóbbi megköveteli, hogy a leállások minimálisra kerüljenek, így az csak kis mértékben meghaladhatja a normál karbantartási időszakokat.
+A cél a linuxos Samba-kiszolgálón lévő megosztások áthelyezése egy Windows Server-példányra. Ezután használja a Azure File Synct a hibrid Felhőbeli üzembe helyezéshez. Ezt az áttelepítést olyan módon kell végrehajtani, amely garantálja az adatáttelepítés során a termelési adatok és a rendelkezésre állás integritását. Az utóbbi megköveteli, hogy a leállások minimálisra kerüljenek, így az csak kis mértékben meghaladhatja a normál karbantartási időszakokat.
 
 ## <a name="migration-overview"></a>Migrálás áttekintése
 
 Ahogy azt a Azure Files [áttelepítésének áttekintése című cikkben](storage-files-migration-overview.md)említettük, fontos a megfelelő másolási eszköz és megközelítés használata. A Linux Samba-kiszolgáló az SMB-megosztásokat közvetlenül a helyi hálózaton teszi közzé. A Windows Server rendszerbe épített Robocopy a legjobb módszer a fájlok áthelyezésére ebben az áttelepítési forgatókönyvben.
 
-Ha nem futtatja a Samba-t a Linux-kiszolgálón, és inkább a Windows Server hibrid telepítésére szeretné telepíteni a mappákat, a Robocopy helyett a linuxos másolási eszközöket is használhatja. Ha így tesz, vegye figyelembe a fájlmásolási eszköz hűségi képességeit. Tekintse át az áttelepítési [alapismeretek szakaszt](storage-files-migration-overview.md#migration-basics) az áttelepítés áttekintése című cikkben, amelyből megtudhatja, mit kell keresni a másolási eszközben.
+Ha nem futtatja a Samba-t a Linux-kiszolgálón, és inkább a Windows Server hibrid telepítésére szeretné telepíteni a mappákat, a Robocopy helyett a linuxos másolási eszközöket is használhatja. Vegye figyelembe a másolási eszköz hűségi képességeit. Tekintse át az áttelepítési [alapismeretek szakaszt](storage-files-migration-overview.md#migration-basics) az áttelepítés áttekintése című cikkben, amelyből megtudhatja, mit kell keresni a másolási eszközben.
 
 ## <a name="phase-1-identify-how-many-azure-file-shares-you-need"></a>1. fázis: annak meghatározása, hogy hány Azure-fájlmegosztás szükséges
 
@@ -39,11 +48,13 @@ Ha nem futtatja a Samba-t a Linux-kiszolgálón, és inkább a Windows Server hi
 * Hozzon létre egy Windows Server 2019-példányt virtuális géppel vagy fizikai kiszolgálóként. A minimális követelmény a Windows Server 2012 R2. A Windows Server feladatátvevő fürtök is támogatottak.
 * Közvetlenül csatlakoztatott tároló (DAS) kiépítése vagy hozzáadása. A hálózati csatolású tároló (NAS) nem támogatott.
 
-  Az Ön által kiépített tárterület mérete kisebb lehet, mint amit jelenleg a linuxos Samba-kiszolgálón használ, ha a Azure File Sync [Cloud rétegű](storage-sync-cloud-tiering-overview.md) funkciót használja. Ha azonban egy későbbi fázisban másolja a fájlokat a nagyobb Linux Samba-kiszolgáló területéről a kisebb Windows Server-kötetre, akkor a kötegekben kell működnie:
+  Az Ön által kiépített tárterület mérete kisebb lehet, mint amit jelenleg a linuxos Samba-kiszolgálón használ, ha a Azure File Sync [Cloud rétegű](storage-sync-cloud-tiering-overview.md) funkciót használja. 
+
+A kiépített tárterület mérete kisebb lehet, mint amit jelenleg a linuxos Samba-kiszolgálón használ. Ehhez a konfigurációhoz az Azure file syncs [Cloud rétegű](storage-sync-cloud-tiering-overview.md) szolgáltatást is használni kell. Ha azonban egy későbbi fázisban másolja a fájlokat a nagyobb Linux Samba-kiszolgáló területéről a kisebb Windows Server-kötetre, akkor a kötegekben kell működnie:
 
   1. Helyezze át a lemezre illeszkedő fájlok készletét.
   2. A fájlok szinkronizálása és a Felhőbeli rétegek bevonása.
-  3. Ha a köteten több szabad terület jön létre, folytassa a következő batch-fájllal. 
+  3. Ha a köteten több szabad terület jön létre, folytassa a következő batch-fájllal. Másik megoldásként tekintse át a RoboCopy parancsot a közelgő [Robocopy szakaszban](#phase-7-robocopy) az új `/LFSM` kapcsoló használatához. A használatával `/LFSM` jelentősen egyszerűsítheti a Robocopy-feladatokat, de nem kompatibilis más Robocopy-kapcsolókkal, amelyektől függ.
     
   Ezt a Batch-módszert elkerülheti azzal, hogy kiépíti az azzal egyenértékű helyet a Windows Server-példányon, amelyet a fájlok a Linux Samba-kiszolgálón foglalnak el. Érdemes lehet a Windowsban engedélyezni a deduplikálás szolgáltatást. Ha nem szeretné véglegesen véglegesíteni ezt a nagy mennyiségű tárterületet a Windows Server-példány számára, csökkentheti a kötet méretét az áttelepítés után, és a felhő-előállítási házirendek módosítása előtt. Az Azure-fájlmegosztás kisebb helyszíni gyorsítótárát hozza létre.
 
@@ -100,78 +111,9 @@ A következő Robocopy parancs a Linux rendszerű Samba-kiszolgáló tárterüle
 
 Ha kevesebb tárterületet telepített a Windows Server-példányon, mint amennyit a fájlok felvesznek a Linux Samba-kiszolgálón, akkor konfigurálta a Felhőbeli rétegek létrehozását. Ahogy a helyi Windows Server-kötet betelik, a [Felhőbeli rétegek](storage-sync-cloud-tiering-overview.md) elindulnak, és a már sikeresen szinkronizált fájlokat is elindítják. A Felhőbeli rétegek kiszolgálása elég helyet eredményez a Linux Samba-kiszolgálóról történő másolás folytatásához. A Felhőbeli rétegek ellenőrzése óránként egyszer megtekintheti, hogy mi szinkronizált, és szabadítson fel lemezterületet a kötet 99%-os szabad területére vonatkozó szabályzat eléréséhez.
 
-Lehetséges, hogy a Robocopy gyorsabban helyezi át a fájlokat, mint amennyire a felhőbe és a szintjére tud szinkronizálni, így elfogyhat a helyi lemezterület. A Robocopy ekkor sikertelen lesz. Azt javasoljuk, hogy a megosztásokat egy olyan sorozatban hajtsa át, amely megakadályozza a problémát. Tegyük fel például, hogy nem indítja el a Robocopy-feladatokat egyszerre az összes megosztáshoz. Vagy vegye fontolóra a Windows Server-példányon aktuálisan rendelkezésre álló szabad területhez illeszkedő megosztások áthelyezését. Ha a Robocopy feladat meghiúsul, mindig futtassa újra a parancsot, ha a következő tükrözési/kiürítési lehetőséget használja:
+Lehetséges, hogy a Robocopy gyorsabban helyezi át a fájlokat, mint amennyire a felhőbe és a szintjére tud szinkronizálni, így elfogyhat a helyi lemezterület. A Robocopy ekkor sikertelen lesz. Azt javasoljuk, hogy a megosztásokat egy olyan sorozatban hajtsa át, amely megakadályozza a problémát. Tegyük fel például, hogy nem indítja el a Robocopy-feladatokat egyszerre az összes megosztáshoz. Vagy vegye fontolóra a Windows Server-példányon aktuálisan rendelkezésre álló szabad területhez illeszkedő megosztások áthelyezését. Ha a Robocopy feladat nem sikerül, akkor mindig futtassa újra a parancsot, ha a következő tükrözési/kiürítési lehetőséget használja:
 
-```console
-Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
-```
-
-Háttér
-
-:::row:::
-   :::column span="1":::
-      /MT
-   :::column-end:::
-   :::column span="1":::
-      Lehetővé teszi, hogy a Robocopy több szálon fusson. Az alapértelmezett érték 8, a maximális érték 128.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /UNILOG:\<file name\>
-   :::column-end:::
-   :::column span="1":::
-      Az állapotot a naplófájlba Unicode-ként adja vissza (felülírja a meglévő naplót).
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /TEE
-   :::column-end:::
-   :::column span="1":::
-      Kimenetek a konzol ablakába. Egy naplófájlban a kimenettel együtt használatos.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /B
-   :::column-end:::
-   :::column span="1":::
-      A Robocopy-t ugyanabban a módban futtatja, mint amelyet a biztonságimásolat-készítő alkalmazás használni fog. Lehetővé teszi, hogy a Robocopy olyan fájlokat helyezzen át, amelyekhez az aktuális felhasználónak nincs engedélye.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /MIR
-   :::column-end:::
-   :::column span="1":::
-      Lehetővé teszi, hogy a Robocopy parancs többször, egymás után, ugyanazon a célhelyen/célhelyen fusson. Azonosítja és kihagyja a korábban átmásolt fájlt. Csak a legutóbbi Futtatás óta bekövetkezett módosítások, kiegészítések és törlések feldolgozása történik meg. Ha a parancs korábban nem volt futtatva, semmi nincs megadva. A **/Mir** jelző kiváló megoldás a forrásként szolgáló helyekhez, amelyek továbbra is aktívan használatban vannak és változnak.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPY: copyflag [s]
-   :::column-end:::
-   :::column span="1":::
-      A fájlmásolás hűsége (az alapértelmezett érték a/COPY: DAT). A másolási jelzők a következők: D = adatok, A = attribútumok, T = timestamps, S = Security = NTFS ACL-ek, O = tulajdonosi adatok, U = naplózási adatok.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPYALL
-   :::column-end:::
-   :::column span="1":::
-      A fájl összes adatának másolása (egyenértékű a következő/COPY: DATSOU).
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /DCOPY: copyflag [s]
-   :::column-end:::
-   :::column span="1":::
-      A címtárak másolatának hűsége (az alapértelmezett érték a/DCOPY: DA). A másolási jelzők a következők: D = adatértékek, A = attribútumok, T = timestampok.
-   :::column-end:::
-:::row-end:::
+[!INCLUDE [storage-files-migration-robocopy](../../../includes/storage-files-migration-robocopy.md)]
 
 ## <a name="phase-8-user-cut-over"></a>8. fázis: felhasználói kivágás
 

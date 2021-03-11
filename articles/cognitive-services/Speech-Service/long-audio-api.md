@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: trbye
-ms.openlocfilehash: e28bd5b5caca259201758f0c633b2120a411f422
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 65c0d80394317c2b2bfbf621d3cc2ad0c2e3448a
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007448"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618406"
 ---
 # <a name="long-audio-api"></a>Hosszú hang API
 
@@ -47,6 +47,13 @@ A szövegfájl előkészítésekor győződjön meg róla, hogy:
 * Több mint 400 karaktert [tartalmaz az egyszerű szöveges vagy a 400](./text-to-speech.md#pricing-note) -es SSML-szövegekhez, és kisebb, mint 10 000 bekezdés
   * Egyszerű szöveg esetén az egyes bekezdéseket az ENTER/Return – [egyszerű szöveges beviteli példa](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt) **megadásával** választjuk el.
   * A SSML szövegek esetében az egyes SSML-darabok bekezdésnek tekintendők. A SSML-darabokat különböző bekezdések szerint kell elválasztani – a [SSML szövegének](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt) megjelenítése – példa
+
+## <a name="sample-code"></a>Mintakód
+A lap hátralévő része a Pythonra összpontosít, de a hosszú hang API-hoz tartozó mintakód a GitHubon érhető el a következő programozási nyelveken:
+
+* [Mintakód: Python](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/Python)
+* [Mintakód: C #](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/CSharp)
+* [Mintakód: Java](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/)
 
 ## <a name="python-example"></a>Python-példa
 
@@ -456,10 +463,3 @@ A rugalmas hangkimeneti formátumokat támogatjuk. A "concatenateResult" paramé
 * hang-24khz-48kbitrate-mono-MP3
 * hang-24khz-96kbitrate-mono-MP3
 * hang-24khz-160kbitrate-mono-MP3
-
-## <a name="sample-code"></a>Mintakód
-A hosszú hang API-mintakód elérhető a GitHubon.
-
-* [Mintakód: Python](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/Python)
-* [Mintakód: C #](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/CSharp)
-* [Mintakód: Java](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/)

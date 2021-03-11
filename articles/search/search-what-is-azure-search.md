@@ -7,26 +7,29 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 01/22/2021
+ms.date: 03/09/2021
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 893bf37a5a4c8a314e5182bf2ac4bc28502b98d9
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: e17d08d09814c135af3e0b4fc299b6e6f42326d4
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98699438"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549889"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Mi az az Azure Cognitive Search?
 
 Az Azure Cognitive Search ([korábbi nevén "Azure Search"](whats-new.md#new-service-name)) egy felhőalapú keresési szolgáltatás, amely lehetővé teszi, hogy a fejlesztők API-kat és eszközöket kínáljanak a webes, mobil-és Nagyvállalati alkalmazások privát, heterogén tartalmainak gazdag keresési élményének kialakításához. 
 
+A keresés alapja bármely olyan alkalmazás, amely tartalmat felhasznál a felhasználók számára, olyan gyakori forgatókönyvekkel, mint például a katalógus vagy a dokumentumok keresése, az e-kereskedelmi webhelyek keresése vagy az adatelemzés. A Cognitive Search API-k és architektúrája egyszerűsíti a kifinomult információk beolvasásának feladatát bármely megoldáshoz.
+
 A keresési szolgáltatás a következő összetevőket tartalmazhatja:
 
 + Keresőmotor a teljes szöveges kereséshez
 + A felhasználó tulajdonában lévő indexelt tartalom állandó tárolása
-+ API-k indexeléshez és lekérdezéshez
-+ Opcionális [AI-alapú dúsítások](cognitive-search-concept-intro.md), kereshető tartalmak létrehozása képekből, nyers szöveg, alkalmazásfájlok
-+ Opcionális integráció más Azure-szolgáltatásokkal az adatkezeléshez, gépi tanuláshoz/AI-hoz és biztonsághoz
++ A tartalom indexeléséhez és lekérdezéséhez szükséges API-k
++ Opcionális [AI-alapú dúsítások](cognitive-search-concept-intro.md), kereshető tartalmak létrehozása képekből, nyers strukturálatlan szöveg, alkalmazásfájlok
++ Opcionális integráció más Azure-szolgáltatásokkal az adatkezeléshez, gépi tanuláshoz/AI, monitorozáshoz és biztonsághoz
++ A [szemantikai keresés (előzetes verzió)](semantic-search-overview.md) opcionális megvalósítása a jobb relevancia szempontjából
 
 A keresési szolgáltatás építészeti szempontból a nem indexelt adatokat tartalmazó külső adattárak között található, és az ügyfélalkalmazás, amely lekérdezési kérelmeket küld egy keresési indexnek, és kezeli a választ.
 
@@ -74,8 +77,9 @@ Az alapvető keresési funkciók teljes körű feltárása négy lépésben érh
 
 1. [**Egy index lekérdezése**](search-query-overview.md) a portálon, a [REST API](search-get-started-rest.md), a [.net SDK](/dotnet/api/azure.search.documents.searchclient.search)-ban vagy más SDK-ban található [keresési tallózó](search-explorer.md) használatával.
 
-> [!TIP]
-> Minimálisra csökkentheti a lépéseket az [**adatimportálás varázsló**](search-get-started-portal.md) és egy Azure-adatforrás használatával, amely percek alatt létrehozhatja, betöltheti és lekérdezheti az indexeket.
+A kezdeti feltáráshoz kezdje az [**adatimportálás varázslóval**](search-get-started-portal.md) , valamint egy beépített Azure-adatforrást egy index létrehozásához, betöltéséhez és lekérdezéséhez percek alatt.
+
+Az összetett vagy egyéni megoldásokkal kapcsolatos segítségért [**vegye fel a kapcsolatot egy partnerrel**](resource-partners-knowledge-mining.md) Cognitive Search technológiában.
 
 ## <a name="compare-search-options"></a>Keresési beállítások összehasonlítása
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
-ms.date: 11/18/2020
-ms.openlocfilehash: 862d33e523562511796999d82b67d2b4b11efaf3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/10/2021
+ms.openlocfilehash: 5879c9107a0ab5a2ef150d119e8b5ac8e16ac01d
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690615"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609923"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatikus biztonsági mentések – Azure SQL Database & SQL felügyelt példánya
 
@@ -140,9 +140,12 @@ Mind a SQL Database, mind az SQL felügyelt példány esetében az Azure Blob St
 
 További információ a LTR: a [biztonsági másolatok hosszú távú megőrzése](long-term-retention-overview.md).
 
-## <a name="storage-costs"></a>Tárolási költségek
+## <a name="backup-storage-costs"></a>Biztonsági másolatok tárolási költségei
 
 A biztonsági mentési tár díja változó, és a vásárlási modelltől (DTU vagy virtuális mag), a biztonsági mentési tárterülettől, valamint a régiótól is függ. A biztonsági mentési tár díja GB/hó használatban van, díjszabásért lásd: [Azure SQL Database díjszabási](https://azure.microsoft.com/pricing/details/sql-database/single/) oldal és az [Azure SQL felügyelt példányának díjszabása](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/) oldal.
+
+> [!NOTE]
+> Az Azure-számla csak a felesleges biztonsági mentési tárterületet fogja megjeleníteni, nem a teljes biztonsági mentési tárterületet. Ha például egy feltételezett helyzetben kiosztott 4TB rendelkezik, akkor az ingyenes biztonsági mentési tárolóhely 4TB kap. Abban az esetben, ha a biztonsági mentési tárolóhely összesen 5,8 TB-át használta, az Azure-számla csak 1.8 TB-ot fog megjelenni, mivel a rendszer csak a felesleges biztonsági mentési tárterületet számítja fel.
 
 ### <a name="dtu-model"></a>DTU-modell
 
@@ -446,7 +449,7 @@ A SQL Database és a felügyelt példány beépített szabályzat-definícióina
 Ha szervezeti szinten szeretné kikényszeríteni az adattárolási követelményeket, ezeket a szabályzatokat hozzá lehet rendelni egy előfizetéshez. Miután ezek hozzá lettek rendelve egy előfizetési szinten, a megadott előfizetésben lévő felhasználók nem tudnak adatbázist vagy felügyelt példányt létrehozni a Geo-redundáns biztonsági mentési tárolóval Azure Portal vagy Azure PowerShell használatával. 
 
 > [!IMPORTANT]
-> Az Azure-szabályzatok nem lesznek kikényszerítve az adatbázisok T-SQL-n keresztüli létrehozásakor. Ha T-SQL-T használó adatbázis létrehozásakor szeretné kényszeríteni az adattárolást, [használja a "local" vagy a "Zone" utasítást a Create Database utasításban BACKUP_STORAGE_REDUNDANCY ismerhető](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current#create-database-using-zone-redundancy-for-backups).
+> Az Azure-szabályzatok nem lesznek kikényszerítve az adatbázisok T-SQL-n keresztüli létrehozásakor. Ha T-SQL-T használó adatbázis létrehozásakor szeretné kényszeríteni az adattárolást, [használja a "local" vagy a "Zone" utasítást a Create Database utasításban BACKUP_STORAGE_REDUNDANCY ismerhető](/sql/t-sql/statements/create-database-transact-sql#create-database-using-zone-redundancy-for-backups).
 
 Megtudhatja, hogyan rendelhet hozzá házirendeket a [Azure Portal](../../governance/policy/assign-policy-portal.md) vagy [Azure PowerShell](../../governance/policy/assign-policy-powershell.md) használatával
 
@@ -458,4 +461,5 @@ Megtudhatja, hogyan rendelhet hozzá házirendeket a [Azure Portal](../../govern
 - További információ arról, hogyan [állíthatja vissza az adatbázist egy adott időpontra a PowerShell használatával](scripts/restore-database-powershell.md).
 - Az Azure Blob Storage-ban az Azure Portal használatával történő automatikus biztonsági mentések konfigurálásával, kezelésével és visszaállításával kapcsolatos további információkért lásd: [a biztonsági másolatok hosszú távú megőrzésének kezelése a Azure Portal használatával](long-term-backup-retention-configure.md).
 - További információ arról, hogyan konfigurálható, kezelhető és állítható vissza az automatikus biztonsági mentések az Azure Blob Storage-ban a PowerShell használatával: a [biztonsági másolatok hosszú távú megőrzésének kezelése a PowerShell használatával](long-term-backup-retention-configure.md).
+- Az Azure SQL felügyelt példányain tárolt biztonsági másolatok tárolásával kapcsolatos tudnivalókat lásd: [a biztonsági másolatok tárolásának felhasználása a felügyelt példányon](https://aka.ms/mi-backup-explained).
 - Ha szeretné megtudni, hogyan finomíthatja a biztonsági másolatok tárolásának megőrzését és költségeit az Azure SQL felügyelt példányain, tekintse [meg a biztonsági mentési tárolási költségek finomhangolása felügyelt példányon](https://aka.ms/mi-backup-tuning)című témakört

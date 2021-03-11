@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b447873df882847f052125254ea52b5ae6ab9ec4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 95274f42da7f6cac9b193504df834232d7c0eb90
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644867"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609988"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Egyéni jóváhagyási munkafolyamat hozzáadása az önkiszolgáló regisztrációhoz
 
@@ -156,7 +156,6 @@ Content-type: application/json
     "version": "1.0.0",
     "action": "ShowBlockPage",
     "userMessage": "Your access request is already processing. You'll be notified when your request has been approved.",
-    "code": "CONTOSO-APPROVAL-PENDING"
 }
 ```
 
@@ -168,7 +167,6 @@ Content-type: application/json
     "version": "1.0.0",
     "action": "ShowBlockPage",
     "userMessage": "Your sign up request has been denied. Please contact an administrator if you believe this is an error",
-    "code": "CONTOSO-APPROVAL-DENIED"
 }
 ```
 
@@ -244,7 +242,6 @@ Content-type: application/json
     "version": "1.0.0",
     "action": "ShowBlockPage",
     "userMessage": "Your account is now waiting for approval. You'll be notified when your request has been approved.",
-    "code": "CONTOSO-APPROVAL-REQUESTED"
 }
 ```
 
@@ -256,7 +253,6 @@ Content-type: application/json
     "version": "1.0.0",
     "action": "ShowBlockPage",
     "userMessage": "Your sign up request has been denied. Please contact an administrator if you believe this is an error",
-    "code": "CONTOSO-APPROVAL-AUTO-DENIED"
 }
 ```
 
@@ -268,12 +264,12 @@ A `userMessage` válaszban látható a felhasználó számára, például:
 
 A manuális jóváhagyás beszerzését követően az egyéni jóváhagyási rendszer létrehoz egy [felhasználói](/graph/azuread-users-concept-overview) fiókot [Microsoft Graph](/graph/use-the-api)használatával. A jóváhagyási rendszernek a felhasználói fiókra vonatkozó kiépítésének módja a felhasználó által használt identitás-szolgáltatótól függ.
 
-### <a name="for-a-federated-google-or-facebook-user"></a>Összevont Google-vagy Facebook-felhasználó esetén
+### <a name="for-a-federated-google-or-facebook-user-and-email-one-time-passcode"></a>Összevont Google-vagy Facebook-felhasználó és egyszer használatos e-mail-jelszó
 
 > [!IMPORTANT]
-> A jóváhagyási rendszernek explicit módon ellenőriznie kell, hogy létezik-e, és a `identities` `identities[0]` `identities[0].issuer` `identities[0].issuer` "Facebook" vagy a "Google" értékkel egyenlő a metódus használatára.
+> A jóváhagyási rendszernek explicit módon ellenőriznie kell `identities` , hogy létezik-e, és `identities[0]` hogy a `identities[0].issuer` `identities[0].issuer` "Facebook", a "Google" vagy a "mail" értékkel használja ezt a metódust.
 
-Ha a felhasználó Google-vagy Facebook-fiókkal jelentkezett be, használhatja a [felhasználói létrehozási API](/graph/api/user-post-users?tabs=http)-t.
+Ha a felhasználó Google-vagy Facebook-fiókkal, illetve egyszer használatos jelszóval jelentkezett be, használhatja a [felhasználó-létrehozási API](/graph/api/user-post-users?tabs=http)-t.
 
 1. A jóváhagyási rendszer a felhasználói folyamattól fogadja a HTTP-kérést.
 
@@ -323,17 +319,17 @@ Content-type: application/json
 
 | Paraméter                                           | Kötelező | Leírás                                                                                                                                                            |
 | --------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| userPrincipalName                                   | Igen      | A az `email` API-nak eljuttatott jogcím alapján hozható létre, és a karaktert lecseréli a `@` `_` értékre, és előre függőben kell lennie `#EXT@<tenant-name>.onmicrosoft.com` . |
-| accountEnabled                                      | Igen      | Értékre kell állítani `true` .                                                                                                                                                 |
-| Levelezés                                                | Igen      | Az `email` API-nak eljuttatott jogcímet.                                                                                                               |
-| userType                                            | Igen      | Kell lennie `Guest` . A felhasználó kijelölése vendég felhasználóként.                                                                                                                 |
-| identitások                                          | Igen      | Az összevont identitás adatai.                                                                                                                                    |
-| \<otherBuiltInAttribute>                            | Nem       | Egyéb beépített attribútumok `displayName` , például,, `city` és mások. A paraméterek nevei ugyanazok, mint az API-összekötő által eljuttatott paraméterek.                            |
-| \<extension\_\{extensions-app-id}\_CustomAttribute> | Nem       | A felhasználó egyéni attribútumai. A paraméterek nevei ugyanazok, mint az API-összekötő által eljuttatott paraméterek.                                                            |
+| userPrincipalName                                   | Yes      | A az `email` API-nak eljuttatott jogcím alapján hozható létre, és a karaktert lecseréli a `@` `_` értékre, és előre függőben kell lennie `#EXT@<tenant-name>.onmicrosoft.com` . |
+| accountEnabled                                      | Yes      | Értékre kell állítani `true` .                                                                                                                                                 |
+| Levelezés                                                | Yes      | Az `email` API-nak eljuttatott jogcímet.                                                                                                               |
+| userType                                            | Yes      | Kell lennie `Guest` . A felhasználó kijelölése vendég felhasználóként.                                                                                                                 |
+| identitások                                          | Yes      | Az összevont identitás adatai.                                                                                                                                    |
+| \<otherBuiltInAttribute>                            | No       | Egyéb beépített attribútumok `displayName` , például,, `city` és mások. A paraméterek nevei ugyanazok, mint az API-összekötő által eljuttatott paraméterek.                            |
+| \<extension\_\{extensions-app-id}\_CustomAttribute> | No       | A felhasználó egyéni attribútumai. A paraméterek nevei ugyanazok, mint az API-összekötő által eljuttatott paraméterek.                                                            |
 
-### <a name="for-a-federated-azure-active-directory-user"></a>Összevont Azure Active Directory-felhasználó esetén
+### <a name="for-a-federated-azure-active-directory-user-or-microsoft-account-user"></a>Összevont Azure Active Directory felhasználó vagy Microsoft-fiók felhasználó számára
 
-Ha egy felhasználó összevont Azure Active Directory-fiókkal jelentkezik be, a [meghívót használó API](/graph/api/invitation-post) -val létre kell hoznia a felhasználót, majd opcionálisan a [felhasználó frissítési API](/graph/api/user-update) -ját, hogy további attribútumokat rendeljen a felhasználóhoz.
+Ha a felhasználó egy összevont Azure Active Directory-fiókkal vagy egy Microsoft-fiók-val jelentkezik be, a [meghívót használó API](/graph/api/invitation-post) -val létre kell hoznia a felhasználót, majd opcionálisan a [felhasználó frissítési API](/graph/api/user-update) -ját, hogy további attribútumokat rendeljen a felhasználóhoz.
 
 1. A jóváhagyási rendszer a HTTP-kérést a felhasználói folyamattól kapja meg.
 

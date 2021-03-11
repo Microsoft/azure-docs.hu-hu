@@ -2,17 +2,18 @@
 title: Felügyelt lemezek tárterületének konvertálása különböző típusú lemezekre az Azure CLI használatával
 description: Az Azure Managed Disks konvertálása a különböző lemezek típusai között az Azure CLI használatával.
 author: roygara
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 02/13/2021
 ms.author: albecker
 ms.subservice: disks
-ms.openlocfilehash: ec6d5b10b4c2336ba7fd221b43a7dbf43ed5cee1
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 35ba681ae35e60d7cd275c9e649b2463d2dc30a0
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100516821"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558457"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>Azure Managed Disks Storage konvertálása standard csomagról prémium vagy prémium szintre
 

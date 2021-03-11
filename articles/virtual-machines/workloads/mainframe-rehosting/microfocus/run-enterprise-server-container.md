@@ -1,7 +1,7 @@
 ---
 title: A Micro Focus Enterprise Server 5,0 futtatása az Azure-beli Docker-tárolóban | Microsoft Docs
 description: Ebből a cikkből megtudhatja, hogyan futtathatja a Micro Focus Enterprise Server 5,0-et egy Docker-tárolóban Microsoft Azureon.
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: ''
 author: maggsl
 ms.author: edprice
@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: f34767c160c8229eb5b63806924926a46ea00cc2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 5c436eae53b16c980e9725cfef0573367d144842
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127195"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548376"
 ---
 # <a name="run-micro-focus-enterprise-server-50-in-a-docker-container-on-azure"></a>A Micro Focus Enterprise Server 5,0 futtatása az Azure-beli Docker-tárolóban
 
@@ -25,7 +25,7 @@ A Micro Focus Enterprise Server 5,0 egy Docker-tárolóban is futtatható az Azu
 
 A Docker a hordozhatóságot és az elkülönítést adja az alkalmazásokhoz. Például exportálhat egy Docker-rendszerképet egy Windows rendszerű virtuális gépről (VM) egy másikra, vagy egy adattárból egy Windows Serverre a Docker használatával. A Docker-rendszerkép az új helyen fut ugyanazzal a konfigurációval, anélkül, hogy telepítenie kellene a vállalati kiszolgálót. A rendszerkép részét képezi. A licencelési megfontolások továbbra is érvényben vannak.
 
-Ez az oktatóanyag telepíti a **Windows 2016 Datacenter-t a containers** VM-mel az Azure Marketplace-ről. Ez a virtuális gép tartalmaz **Docker-18.09.0** . Az alábbi lépések bemutatják, hogyan helyezheti üzembe a tárolót, hogyan futtathatja, majd egy 3270-emulátorral csatlakozhat hozzá.
+Ez az oktatóanyag telepíti a **Windows 2016 Datacenter-t a containers** VM-mel az Azure Marketplace-ről. Ez a virtuális gép tartalmaz **Docker-18.09.0**. Az alábbi lépések bemutatják, hogyan helyezheti üzembe a tárolót, hogyan futtathatja, majd egy 3270-emulátorral csatlakozhat hozzá.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -81,7 +81,7 @@ Ezen a ponton a virtuális gép RDP-kapcsolaton keresztül fut és csatlakoztatv
 
 ## <a name="create-a-sandbox-directory-and-upload-the-zip-file"></a>Homokozó könyvtár létrehozása és a zip-fájl feltöltése
 
-1.  Hozzon létre egy könyvtárat a virtuális gépen, ahol feltöltheti a demót és a licenceket tartalmazó fájlokat. Például **C: \\ homokozó** .
+1.  Hozzon létre egy könyvtárat a virtuális gépen, ahol feltöltheti a demót és a licenceket tartalmazó fájlokat. Például **C: \\ homokozó**.
 
 2.  Töltse fel az **ENT \_ server \_ dockerfiles \_ 5,0 \_windows.zip** és az **es-Docker-Prod-XXXXXXXX. mflic** fájlt a létrehozott könyvtárba.
 
@@ -103,15 +103,15 @@ Ezen a ponton a virtuális gép RDP-kapcsolaton keresztül fut és csatlakoztatv
     Például a verzió 18.09.0 volt.
 
 3.  A könyvtár módosításához írja be a következőt:  
-    **CD \\ A sandbox \\ ENT \_ kiszolgáló \_ dockerfiles \_ 5,0 \_ Windows \\ EnterpriseServer** .
+    **CD \\ A sandbox \\ ENT \_ kiszolgáló \_ dockerfiles \_ 5,0 \_ Windows \\ EnterpriseServer**.
 
 4.  A kezdeti alaprendszerkép létrehozási folyamatának megkezdéséhez írja be **bld.bat IacceptEULA** . Várjon néhány percet a folyamat futtatásához. Az eredmények között figyelje meg a két létrehozott rendszerképet – egyet az x64-re és egyet az x86-hoz:
 
     ![Képek megjelenítése Parancsablak](./media/run-image-3.png)
 
-5.  A CICS bemutató utolsó rendszerképének létrehozásához váltson a CICS könyvtárba úgy, hogy beírja a **CD \\ sandbox \\ ent \_ kiszolgáló \_ dockerfiles \_ 5,0 \_ Windows \\ példák \\ CICS** .
+5.  A CICS bemutató utolsó rendszerképének létrehozásához váltson a CICS könyvtárba úgy, hogy beírja a **CD \\ sandbox \\ ent \_ kiszolgáló \_ dockerfiles \_ 5,0 \_ Windows \\ példák \\ CICS**.
 
-6.  A rendszerkép létrehozásához írja be a következőt: **bld.bat x64** . Várjon néhány percet, amíg a folyamat elindul, és az üzenet azt jelzi, hogy a rendszerkép létrejött.
+6.  A rendszerkép létrehozásához írja be a következőt: **bld.bat x64**. Várjon néhány percet, amíg a folyamat elindul, és az üzenet azt jelzi, hogy a rendszerkép létrejött.
 
 7.  Írja be a **Docker-rendszerképeket** a virtuális gépre telepített összes Docker-rendszerkép listájának megjelenítéséhez. Győződjön meg arról, hogy a **Focus/es-acctdemo** az egyik.
 
@@ -147,7 +147,7 @@ Ezen a ponton a virtuális gép RDP-kapcsolaton keresztül fut és csatlakoztatv
 
     ![Képernyőkép Parancsablak IP-címet megjelenítő](./media/run-image-5.png)
 
-5. Csatlakoztassa a lemezképet az emulátor használatával. Konfigurálja az emulátort a acctdemo-rendszerkép és a 9040-es port használatára. Itt a **172.19.202.52:9040** . A tiéd hasonló lesz. Megnyílik a **Bejelentkezés a CICS** képernyőn.
+5. Csatlakoztassa a lemezképet az emulátor használatával. Konfigurálja az emulátort a acctdemo-rendszerkép és a 9040-es port használatára. Itt a **172.19.202.52:9040**. A tiéd hasonló lesz. Megnyílik a **Bejelentkezés a CICS** képernyőn.
 
     ![Képernyőkép a CICS való bejelentkezésről](./media/run-image-6.png)
 
@@ -155,11 +155,11 @@ Ezen a ponton a virtuális gép RDP-kapcsolaton keresztül fut és csatlakoztatv
 
 7. Törölje a képernyőt az emulátor kiosztás használatával. A x3270 válassza a **kiosztás** menüpontot.
 
-8. A acctdemo alkalmazás indításához írja be a következőt: **acct** . Megjelenik az alkalmazás kezdeti képernyője.
+8. A acctdemo alkalmazás indításához írja be a következőt: **acct**. Megjelenik az alkalmazás kezdeti képernyője.
 
      ![A képernyőképen az alkalmazást megjelenítő konzolablak látható.](./media/run-image-7.png)
 
-9. Kísérletezzen a megjelenítési fiókok típusaival. Írja be például a **D** értéket a kérelemhez, a **11111** pedig a **fiókhoz** . A kipróbálható egyéb számlaszámok 22222, 33333 stb.
+9. Kísérletezzen a megjelenítési fiókok típusaival. Írja be például a **D** értéket a kérelemhez, a **11111** pedig a **fiókhoz**. A kipróbálható egyéb számlaszámok 22222, 33333 stb.
 
     ![A képernyőképen az alkalmazás különböző értékeinek szerkesztését láthatja.](./media/run-image-8.png)
 

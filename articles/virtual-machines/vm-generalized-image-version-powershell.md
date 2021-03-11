@@ -3,18 +3,18 @@ title: Virtuális gép létrehozása általános rendszerképből
 description: Hozzon létre egy virtuális gépet egy megosztott rendszerképben található általánosított rendszerkép használatával.
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: b198c094ffd5f2113603fc9d8d2fb1c4e5cd6fe1
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: dbe1e31a9b56f2f60edbebd8286bf0bfdeaa327e
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881957"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560964"
 ---
 # <a name="create-a-vm-using-a-generalized-image"></a>Virtuális gép létrehozása általánosított rendszerkép használatával 
 
@@ -145,7 +145,7 @@ New-AzVM `
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az [Azure rendszerkép-szerkesztő (előzetes verzió)](./image-builder-overview.md) segítségével automatizálhatja a rendszerkép-verziók létrehozását, és [egy meglévő rendszerkép-verzióból](./windows/image-builder-gallery-update-image-version.md)is frissítheti és létrehozhatja az új rendszerkép verzióját. 
 
 Sablonok használatával is létrehozhat megosztott képgyűjteményi erőforrásokat. Több Azure Gyorsindítás-sablon is elérhető: 

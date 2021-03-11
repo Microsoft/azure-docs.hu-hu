@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.date: 12/09/2020
-ms.openlocfilehash: c7a0be6f1d402cc994532ab4bc5a5d0ea39bc8b7
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 06586b5bf20619f57b2ad1c3d5de84dd61952261
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599049"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561245"
 ---
 # <a name="plan-and-manage-costs-for-azure-synapse-analytics"></a>Az Azure szinapszis Analytics költségeinek megtervezése és kezelése
 
@@ -113,13 +113,18 @@ Ha többet szeretne megtudni a kiszolgáló nélküli SQL-készlet költségeir�
 
 A dedikált SQL-készlet költségeit a nem használt erőforrás szüneteltetésével szabályozhatja. Ha például nem fogja használni az adatbázist az éjszaka és a hétvégén, szüneteltetheti ezeket az időpontokban, és a nap folyamán folytathatja. További információ: [a számítási feladat szüneteltetése és folytatása a DEDIKÁLT SQL-készletben a Azure Portal használatával](./sql-data-warehouse/pause-and-resume-compute-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
-<!-- ### Serverless Apache Spark pool -->
+### <a name="serverless-apache-spark-pool"></a>Kiszolgáló nélküli Apache Spark készlet
+
+A kiszolgáló nélküli Apache Spark készlet költségeinek szabályozásához engedélyezze a kiszolgáló nélküli Apache Spark automatikus szüneteltetése funkciót, és ennek megfelelően állítsa be az időtúllépés értékét.  Ha a szinapszis Studiot használja a fejlesztéshez, a Studio egy életben tartási üzenetet küld, amely az aktív munkamenetet is beállíthatja, ezért az automatikus szüneteltetéshez egy rövid időtúllépési értéket kell beállítani.  Ha elkészült, zárd be a munkamenetet, és a Apache Spark készlet automatikusan szüneteltetve lesz az időtúllépési érték elérésekor.
+ 
+A fejlesztés során hozzon létre több Apache Spark különböző méretű készlet-definíciókat.  Apache Spark készlet-definíciók létrehozása ingyenes, és csak a használatért kell fizetnie.  Az Azure Szinapszisban való használat Apache Spark virtuális mag óránként történik, és a percben számolva.  Használjon például kisebb méretű készleteket a kódok fejlesztéséhez és érvényesítéséhez, miközben nagyobb méretű készleteket használ a teljesítmény teszteléséhez.
+
 
 ### <a name="data-integration---pipelines-and-data-flows"></a>Adatintegráció – folyamatok és adatfolyamok 
 
 További információ az adatintegrációs költségekről: [a Azure Data Factory költségeinek tervezése és kezelése](../data-factory/plan-manage-costs.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja [, hogyan optimalizálhatja a felhőalapú befektetéseit Azure Cost Managementokkal](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 - További információ a költségek a [Cost Analysis](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)szolgáltatással történő kezeléséről.

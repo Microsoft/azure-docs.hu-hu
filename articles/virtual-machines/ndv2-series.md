@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: f4031893ae5d45902f9d0ab2ccb1cf984724a69e
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 2f062aa43132543a2c149039eb50c0a0ab22d83d
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/10/2021
-ms.locfileid: "102562248"
+ms.locfileid: "102618559"
 ---
 # <a name="updated-ndv2-series"></a>Frissített NDv2 sorozat
 
@@ -39,7 +39,7 @@ Kritikus fontosságú, hogy a NDv2 mind a számítási szempontból intenzív fe
 [Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
 [VM-létrehozási támogatás](generation-2.md): 2. generáció<br>
 [Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott<br>
-[Ideiglenes operációsrendszer-lemezek](ephemeral-os-disks.md): nem támogatott <br>
+[Ideiglenes operációsrendszer-lemezek](ephemeral-os-disks.md): támogatott <br>
 InfiniBand: támogatott<br>
 NVIDIA NVLink Interconnect: támogatott<br>
 <br>

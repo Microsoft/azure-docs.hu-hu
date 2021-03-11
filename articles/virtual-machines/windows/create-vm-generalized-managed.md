@@ -2,17 +2,18 @@
 title: Virtuális gép létrehozása felügyelt rendszerképből az Azure-ban
 description: Hozzon létre egy Windows rendszerű virtuális gépet egy általánosított felügyelt rendszerképből Azure PowerShell vagy a portál használatával.
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: imaging
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: edcaf3fb92b78f2d1fab54cf4db21aaaff0e3d59
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: bc87b0ec9cf41b2ddc5746a9734463f544b0cc2a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881855"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550688"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Virtuális gép létrehozása felügyelt rendszerképből
 
@@ -59,5 +60,5 @@ New-AzVm `
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Windows rendszerű virtuális gépek létrehozása és kezelése a Azure PowerShell modullal](tutorial-manage-vm.md)

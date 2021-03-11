@@ -1,5 +1,5 @@
 ---
-title: A partner Center Orders irányítópultja a kereskedelmi piactér elemzésében, Microsoft AppSource és az Azure Marketplace-en
+title: A partner Center Orders irányítópultja a kereskedelmi piactér elemzésében | Microsoft AppSource és az Azure Marketplace
 description: Megtudhatja, hogyan érheti el a kereskedelmi Piactéri ajánlatokra vonatkozó analitikai jelentéseket grafikus és letölthető formában.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 31216db98cc02724ac3625eb1a8fa18b0f75c6ee
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: ed12e470f3f3d8c1035c1e4e2e0fa7a3b33e2369
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955025"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561381"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>A Rendelések irányítópult a kereskedelmi piactér-elemzésekben
 
@@ -111,32 +111,32 @@ Az Order Details (megrendelés részletei) tábla a 1 000 Top orders (beszerzés
 - Alkalmazzon szűrőket az **Order details** táblára, hogy csak azokat az adatokat jelenítse meg, amelyekre kíváncsi. Szűrés ország/régió szerint, Azure-licenc típusa, kereskedelmi piactér licencelési típusa, ajánlat típusa, megrendelés állapota, ingyenes nyomvonalak, kereskedelmi piactér-előfizetés azonosítója, ügyfél-azonosító, és a vállalat neve.
 - Ha a rendelést egy védett ügyfél vásárolja meg, a **megrendelések részletes adatainak** maszkolása (* * * * * * * * * * * *).
 
-**_1. táblázat: az adatszótár kifejezése_* _
+***1. táblázat: az adatszótár kifejezése***
 
-| Oszlop neve | Attribútum neve | Definíció |
-| ------------ | ------------- | ------------- |
-| Piactér-előfizetés azonosítója | Piactér-előfizetés azonosítója | Az Azure-előfizetéshez társított egyedi azonosító, amelyet az ügyfél a kereskedelmi Piactéri ajánlat megvásárlásához használt. Az infrastruktúra-ajánlatok esetében ez az ügyfél Azure-előfizetési GUID-azonosítója. Az SaaS-ajánlatok esetében ez nulla értékként jelenik meg, mivel az SaaS-vásárlásokhoz nincs szükség Azure-előfizetésre. |
-| MonthStartDate | Hónap kezdő dátuma | A hónap kezdő dátuma a vásárlás hónapját jelöli. |
-| Ajánlat típusa | Ajánlat típusa | A kereskedelmi piactér kínálatának típusa. |
-| Azure-licenc típusa | Azure-licenc típusa | Az ügyfelek által az Azure megvásárlásához használt licencelési szerződés típusa. Más néven csatorna. Lehetséges értékek:<ul><li>Felhőszolgáltató</li><li>Enterprise</li><li>Enterprise a viszonteladón keresztül</li><li>Utólagos fizetés</li></ul> |
-| Marketplace-licenc típusa | Marketplace-licenc típusa | A kereskedelmi Piactéri ajánlat számlázási módszere. A különböző értékek a következők:<ul><li>Az Azure-on keresztül számlázva</li><li>Saját licenc használata</li><li>Ingyenes</li><li>Microsoft mint viszonteladó</li></ul> |
-| Termékváltozat | Termékváltozat | Az ajánlattal társított csomag |
-| Ügyfél országa | Ügyfél országa/régiója | Az ügyfél által megadott ország/régió neve. Az ország/régió eltérő lehet az ügyfél Azure-előfizetésében lévő országgal vagy régióval. |
-| Előzetes verziójú SKU | Előzetes verziójú SKU | Az érték tudatja Önnel, ha az SKU-t "Preview"-ként jelölte meg. Az érték "yes" lesz, ha az SKU-t ennek megfelelően címkézték, és csak az Ön által jóváhagyott Azure-előfizetések telepíthetők és használhatók. Az érték "nem" lesz, ha az SKU nem "Preview"-ként lett azonosítva. |
-| Megrendelés azonosítója | Rendelésazonosító | A kereskedelmi piactér szolgáltatáshoz tartozó ügyfél-rendelés egyedi azonosítója. A virtuális gépek használaton alapuló ajánlatai nincsenek rendeléshez társítva. |
-| Megrendelés mennyisége | Megrendelés mennyisége | Az aktív rendelésekhez tartozó rendelés-AZONOSÍTÓhoz társított eszközök száma |
-| Felhőbeli példány neve | Felhőbeli példány neve | Az a Microsoft Cloud, amelyben a virtuális gép üzembe helyezése megtörtént. |
-| Új ügyfél | Új ügyfél | Az érték azt határozza meg, hogy egy új ügyfél első alkalommal vásárolt-e egy vagy több ajánlatot. Az érték "yes" lesz, ha a "date beszerzett" dátummal megegyező naptári hónapon belül van. Az érték "nem" lesz, ha az ügyfél a jelentett naptári hónap előtt megvásárolta az ajánlatait. |
-| Megrendelés állapota | Megrendelés állapota | Egy kereskedelmi Piactéri megrendelés állapota az adatgyűjtés utolsó frissítésekor. |
-| Megrendelés megszakításának dátuma | Megrendelés megszakításának dátuma | Az a dátum, amikor a kereskedelmi Piactéri rendelést megszakították. |
-| Ügyfél vállalatának neve | Ügyfél vállalatának neve | Az ügyfél által megadott cég neve. A név nem lehet más, mint az ügyfél Azure-előfizetésének városa. |
-| Megrendelés vásárlásának dátuma | Megrendelés vásárlásának dátuma | Az a dátum, amikor a kereskedelmi Piactéri rendelés létrejött. |
-| Offer Name | Offer Name | A kereskedelmi Piactéri ajánlat neve. |
-| Próbaverzió befejezési dátuma | Próbaverzió befejezési dátuma | Az a dátum, ameddig a rendelés próbaidőszaka lejár vagy véget ér. |
-| Ügyfél-azonosító | Ügyfél-azonosító | Az ügyfélhez rendelt egyedi azonosító. Előfordulhat, hogy egy ügyfél nulla vagy több Azure Marketplace-előfizetéssel rendelkezik. |
-| Számlázási fiók azonosítója | Számlázási fiók azonosítója | Annak a fióknak az azonosítója, amelyre a számlázást létrehozták. A fizetési tranzakciós jelentés ügyfél-, megrendelés-és használati jelentésekkel való összekapcsolásához társítsa a *Számlázási fiók azonosítóját** a **Vevőkód** -hez. |
-| AssetCount | Eszközök száma | A megrendelési AZONOSÍTÓhoz társított eszközök száma. |
-||||
+| Oszlop neve a (z)<br>felhasználói felület | Attribútum neve | Definíció | A programozott oszlop neve<br>hozzáférési jelentések |
+| ------------ | ------------- | ------------- | ------------- |
+| Piactér-előfizetés azonosítója | Piactér-előfizetés azonosítója | Az Azure-előfizetéshez társított egyedi azonosító, amelyet az ügyfél a kereskedelmi Piactéri ajánlat megvásárlásához használt. Az infrastruktúra-ajánlatok esetében ez az ügyfél Azure-előfizetési GUID-azonosítója. Az SaaS-ajánlatok esetében ez nulla értékként jelenik meg, mivel az SaaS-vásárlásokhoz nincs szükség Azure-előfizetésre. | Piactér-előfizetés azonosítója |
+| MonthStartDate | Hónap kezdő dátuma | A hónap kezdő dátuma a vásárlás hónapját jelöli. A formátum éééé-hh-nn. | MonthStartDate |
+| Ajánlat típusa | Ajánlat típusa | A kereskedelmi piactér kínálatának típusa. | OfferType |
+| Azure-licenc típusa | Azure-licenc típusa | Az ügyfelek által az Azure megvásárlásához használt licencelési szerződés típusa. Más néven csatorna. Lehetséges értékek:<ul><li>Felhőszolgáltató</li><li>Enterprise</li><li>Enterprise a viszonteladón keresztül</li><li>Utólagos fizetés</li></ul> | AzureLicenseType |
+| Marketplace-licenc típusa | Marketplace-licenc típusa | A kereskedelmi Piactéri ajánlat számlázási módszere. A különböző értékek a következők:<ul><li>Az Azure-on keresztül számlázva</li><li>Saját licenc használata</li><li>Ingyenes</li><li>Microsoft mint viszonteladó</li></ul> | MarketplaceLicenseType |
+| Termékváltozat | Termékváltozat | Az ajánlattal társított csomag | Termékváltozat |
+| Ügyfél országa | Ügyfél országa/régiója | Az ügyfél által megadott ország/régió neve. Az ország/régió eltérő lehet az ügyfél Azure-előfizetésében lévő országgal vagy régióval. | CustomerCountry |
+| Előzetes verziójú SKU | Előzetes verziójú SKU | Az érték tudatja Önnel, ha az SKU-t "Preview"-ként jelölte meg. Az érték "yes" lesz, ha az SKU-t ennek megfelelően címkézték, és csak az Ön által jóváhagyott Azure-előfizetések telepíthetők és használhatók. Az érték "nem" lesz, ha az SKU nem "Preview"-ként lett azonosítva. | IsPreviewSKU |
+| Rendelésazonosító | Rendelésazonosító | A kereskedelmi piactér szolgáltatáshoz tartozó ügyfél-rendelés egyedi azonosítója. A virtuális gépek használaton alapuló ajánlatai nincsenek rendeléshez társítva. | OrderId |
+| Megrendelés mennyisége | Megrendelés mennyisége | Az aktív rendelésekhez tartozó rendelés-AZONOSÍTÓhoz társított eszközök száma | OrderQuantity |
+| Felhőbeli példány neve | Felhőbeli példány neve | Az a Microsoft Cloud, amelyben a virtuális gép üzembe helyezése megtörtént. | CloudInstanceName |
+| Új ügyfél | Új ügyfél | Az érték azt határozza meg, hogy egy új ügyfél első alkalommal vásárolt-e egy vagy több ajánlatot. Az érték "yes" lesz, ha a "date beszerzett" dátummal megegyező naptári hónapon belül van. Az érték "nem" lesz, ha az ügyfél a jelentett naptári hónap előtt megvásárolta az ajánlatait. | IsNewCustomer |
+| Megrendelés állapota | Megrendelés állapota | Egy kereskedelmi Piactéri megrendelés állapota az adatgyűjtés utolsó frissítésekor. | OrderStatus |
+| Megrendelés megszakításának dátuma | Megrendelés megszakításának dátuma | Az a dátum, amikor a kereskedelmi Piactéri rendelést megszakították. | OrderCancelDate |
+| Ügyfél vállalatának neve | Ügyfél vállalatának neve | Az ügyfél által megadott cég neve. A név nem lehet más, mint az ügyfél Azure-előfizetésének városa. | CustomerCompanyName |
+| Megrendelés vásárlásának dátuma | Megrendelés vásárlásának dátuma | Az a dátum, amikor a kereskedelmi Piactéri rendelés létrejött. A formátum éééé-hh-nn. | OrderPurchaseDate |
+| Offer Name | Offer Name | A kereskedelmi Piactéri ajánlat neve. | OfferName |
+| Próbaverzió befejezési dátuma | Próbaverzió befejezési dátuma | Az a dátum, ameddig a rendelés próbaidőszaka lejár vagy véget ér. | TrialEndDate |
+| Ügyfél-azonosító | Ügyfél-azonosító | Az ügyfélhez rendelt egyedi azonosító. Előfordulhat, hogy egy ügyfél nulla vagy több Azure Marketplace-előfizetéssel rendelkezik. | CustomerId |
+| Számlázási fiók azonosítója | Számlázási fiók azonosítója | Annak a fióknak az azonosítója, amelyre a számlázást létrehozták. A **Számlázási fiók azonosítójának** hozzárendelése a **Vevőkódhez** a kifizetési tranzakciós jelentés összekapcsolásához az ügyfél, a megrendelés és a használati jelentések segítségével. | BillingAccountId |
+| AssetCount | Eszközök száma | A megrendelési AZONOSÍTÓhoz társított eszközök száma. | Elavult |
+|||||
 
 ### <a name="orders-page-filters"></a>Megrendelések oldal szűrőinek
 
@@ -145,7 +145,7 @@ Az **orders (megrendelések** ) oldal szűrői az Orders (megrendelések) lap sz
 > [!TIP]
 > Az adatletöltéshez használhatja a letöltés ikont bármelyik widget jobb felső sarkában. Az egyes widgetekkel kapcsolatos visszajelzéseket a "hüvelykujj fel" vagy a "hüvelykujj lefelé" ikonra kattintva teheti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [hozzáférés analitikus jelentések a kereskedelmi piactérhez a partner Centerben](./partner-center-portal/analytics.md).
 - Az ajánlathoz tartozó Piactéri tevékenységet összefoglaló összesített adatok grafikonok, trendek és értékek esetében lásd: [az összefoglaló irányítópult a kereskedelmi piactér elemzésében](./summary-dashboard.md).

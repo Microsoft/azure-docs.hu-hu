@@ -7,19 +7,19 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: d9d0739704a9f5f16bdbde80661192b2f1ca9bb1
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 17f3440df4fa88995f2148680aba926207a0e46b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099420"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561262"
 ---
 # <a name="configure-auto-provisioning-for-agents-and-extensions-from-azure-security-center"></a>Az ügynökök és bővítmények automatikus kiépítés beállítása Azure Security Center
 
-Security Center adatokat gyűjt az erőforrásokról az adott erőforráshoz tartozó megfelelő ügynökkel vagy bővítményekkel, valamint az Ön által engedélyezett adatgyűjtési típussal. Az alábbi precedures használatával gondoskodhat arról, hogy az erőforrása rendelkezzen a Log Analytics ügynök és a Azure Security Center által használt egyéb ügynökök és bővítmények automatikus kiépítés beállításával.
+Azure Security Center adatokat gyűjt az erőforrásokról az adott erőforráshoz tartozó megfelelő ügynökkel vagy bővítményekkel, valamint az Ön által engedélyezett adatgyűjtési típussal. Az alábbi eljárásokkal biztosíthatja, hogy erőforrásai rendelkeznek a Security Center által használt szükséges ügynökökkel és bővítményekkel.
 
 ## <a name="prerequisites"></a>Előfeltételek
-A Security Center használatához Microsoft Azure-előfizetéssel kell rendelkeznie. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
+A Security Center használatához Microsoft Azure-előfizetéssel kell rendelkeznie. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="availability"></a>Rendelkezésre állás
 
@@ -27,15 +27,17 @@ A Security Center használatához Microsoft Azure-előfizetéssel kell rendelkez
 |-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Kiadás állapota:          | **Szolgáltatás**: az automatikus kiépítés általánosan elérhető (GA)<br>**Ügynök és bővítmények**: log Analytics Azure-beli virtuális gépek ügynöke, a Microsoft függőségi ügynök előzetes verzióban érhető el, a Kubernetes házirend-bővítménye a ga                |
 | Árképzési                | Ingyenes                                                                                                                                                                                                                         |
-| Támogatott célhelyek: | ![Igen](./media/icons/yes-icon.png) Azure-gépek<br>![Nem](./media/icons/no-icon.png) Azure arc-gépek<br>![Nem](./media/icons/no-icon.png) Kubernetes-csomópontok<br>![Nem](./media/icons/no-icon.png) Virtual Machine Scale Sets |
-| Felhők                 | ![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov, Kína gov, egyéb gov                                                                                                      |
+| Támogatott célhelyek: | ![Yes](./media/icons/yes-icon.png) Azure-gépek<br>![No](./media/icons/no-icon.png) Azure arc-gépek<br>![No](./media/icons/no-icon.png) Kubernetes-csomópontok<br>![No](./media/icons/no-icon.png) Virtual Machine Scale Sets |
+| Felhők                 | ![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) US Gov, Kína gov, egyéb gov                                                                                                      |
 |                         |                                                                                                                                                                                                                              |
 
 ## <a name="how-does-security-center-collect-data"></a>Hogyan gyűjt Security Center adatokat?
 
 A Security Center adatokat gyűjt az Azure-beli virtuális gépekről (VM), a virtuálisgép-méretezési csoportokról, a IaaS-tárolókra és a nem Azure-ból (beleértve a helyszíni gépeket is) a biztonsági rések és fenyegetések figyelésére. 
 
-Az adatgyűjtés szükséges a hiányzó frissítések láthatóságának biztosításához, a hibásan konfigurált operációs rendszer biztonsági beállításai, az Endpoint Protection állapota, valamint az állapot és a veszélyforrások elleni védelem. Az adatgyűjtés csak számítási erőforrások (virtuális gépek, virtuálisgép-méretezési csoportok, IaaS-tárolók és nem Azure-beli számítógépek) esetében szükséges. Kihasználhatja a Azure Security Center akkor is, ha nem rendelkezik ügynökökkel; azonban korlátozott a biztonság, és a fent felsorolt képességek nem támogatottak.  
+Az adatgyűjtés szükséges a hiányzó frissítések láthatóságának biztosításához, a hibásan konfigurált operációs rendszer biztonsági beállításai, az Endpoint Protection állapota, valamint az állapot és a veszélyforrások elleni védelem. Az adatgyűjtés csak számítási erőforrások, például virtuális gépek, virtuálisgép-méretezési csoportok, IaaS-tárolók és nem Azure-beli számítógépek esetében szükséges. 
+
+A Azure Security Center akkor is kihasználhatja, ha nem rendelkezik ügynökök kiosztásával. Azonban korlátozott a biztonság, és a fent felsorolt képességek nem támogatottak.  
 
 Az adatok gyűjtése a használatával történik:
 
@@ -51,7 +53,7 @@ Az ezen *a lapon leírt* ügynökök és bővítmények bármelyike telepíthet�
 Javasoljuk, hogy engedélyezze az automatikus kiépítés használatát, de alapértelmezés szerint le van tiltva.
 
 ## <a name="how-does-auto-provisioning-work"></a>Hogyan működik az automatikus kiépítés?
-Security Center automatikus kiépítési beállításai rendelkeznek a támogatott bővítmények egyes típusaihoz tartozó kapcsolókkal. Ha engedélyezi egy bővítmény automatikus kiosztását, akkor a megfelelő telepítést akkor kell kiosztania, **Ha nem létezik** a házirend, hogy a bővítmény az adott típusú meglévő és jövőbeli erőforrásokon legyen kiépítve.
+Security Center automatikus kiépítési beállításai rendelkeznek a támogatott bővítmények egyes típusaihoz tartozó kapcsolókkal. Ha engedélyezi egy bővítmény automatikus kiosztását, akkor a megfelelő központi telepítést kell kiosztania, **Ha nem létezik** a házirend. Ez a házirend-típus biztosítja, hogy a bővítmény az adott típusú meglévő és jövőbeli erőforrásokon legyen kiépítve.
 
 > [!TIP]
 > További információ a Azure Policy-effektusokról, beleértve az üzembe helyezést, ha nem létezik [Azure Policy-effektusok értelmezése](../governance/policy/concepts/effects.md).
@@ -282,4 +284,4 @@ Az ügynök automatikus kiépítési funkciójának kikapcsolásához:
 
 
 ## <a name="next-steps"></a>Következő lépések
-Ez az oldal azt ismerteti, hogyan engedélyezhető az automatikus kiépítés a Log Analytics-ügynök és más Security Center-bővítmények számára. Azt is ismerteti, hogyan lehet definiálni egy Log Analytics munkaterületet, amelyben tárolni kívánja az összegyűjtött adatokat. Az adatgyűjtés engedélyezéséhez mindkét művelet szükséges. Az adatok tárolása Log Analyticsban, akár új, akár meglévő munkaterületet használ, az adattárolásra további díjak merülhetnek fel. A díjszabással kapcsolatos részletekért a választott pénznemben és a régiója szerint tekintse meg a [Security Center díjszabását](https://azure.microsoft.com/pricing/details/security-center/).
+Ez az oldal azt ismerteti, hogyan engedélyezhető az automatikus kiépítés a Log Analytics-ügynök és más Security Center-bővítmények számára. Azt is ismerteti, hogyan lehet definiálni egy Log Analytics munkaterületet, amelyben tárolni kívánja az összegyűjtött adatokat. Az adatgyűjtés engedélyezéséhez mindkét művelet szükséges. Az adatok tárolása Log Analyticsban, akár új, akár meglévő munkaterületet használ, több díjat is felmerülhet az adattároláshoz. A díjszabással kapcsolatos részletekért a választott pénznemben és a régiója szerint tekintse meg a [Security Center díjszabását](https://azure.microsoft.com/pricing/details/security-center/).

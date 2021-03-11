@@ -3,18 +3,18 @@ title: Piactér-vásárlási terv adatainak meghatározása Azure PowerShell has
 description: Megtudhatja, hogyan adhatja meg az Azure Marketplace vásárlási terv részleteit a lemezképek megosztott képtárban való létrehozásakor.
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 07/07/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 2a971f6e56f441ab05a6a9b483eeef990d3ea31f
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 9df1f6b02e6572c8f2153016c0142912e24fcfe8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903751"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562537"
 ---
 # <a name="supply-azure-marketplace-purchase-plan-information-when-creating-images"></a>Adja meg az Azure Marketplace vásárlási terv információit képek létrehozásakor
 
@@ -41,7 +41,7 @@ Szerezze be a rendszerkép tárolására használni kívánt képtárat. Elősz�
 Get-AzResource -ResourceType Microsoft.Compute/galleries | Format-Table
 ```
 
-Ezután hozzon létre változókat a használni kívánt gyűjteményhez. Ebben a példában egy MyGallery nevű változót hozunk létre `$gallery` a *myGallery* *myGalleryRG* -erőforráscsoporthoz.
+Ezután hozzon létre változókat a használni kívánt gyűjteményhez. Ebben a példában egy MyGallery nevű változót hozunk létre `$gallery` a  *myGalleryRG* -erőforráscsoporthoz.
 
 ```azurepowershell-interactive
 $gallery = Get-AzGallery `

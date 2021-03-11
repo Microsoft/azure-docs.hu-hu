@@ -11,30 +11,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 02/11/2021
+ms.date: 03/09/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8f05ca02068c82a3839b22b698e49a7be818a56
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4276b48584ecbad91794de58abafd7e3367f6877
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370546"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564033"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Azure-beli erőforrás-szerepkörök hozzáférési felülvizsgálatának létrehozása Privileged Identity Management
 
-A Kiemelt Azure-beli erőforrás-szerepkörökhöz való hozzáférés az alkalmazottak számára időbeli változásokkal. Az elavult szerepkör-hozzárendelésekhez kapcsolódó kockázatok csökkentése érdekében rendszeresen tekintse át a hozzáférést. Azure Active Directory (Azure AD) Privileged Identity Management (PIM) használatával hozzáférési felülvizsgálatokat hozhat létre az emelt szintű Azure-erőforrás-szerepkörökhöz. Az ismétlődő hozzáférési felülvizsgálatokat is konfigurálhatja, amelyek automatikusan megtörténnek.
+A Kiemelt Azure-beli erőforrás-szerepkörökhöz való hozzáférésre van szükség az alkalmazottak változásainak időbeli változása miatt. Az elavult szerepkör-hozzárendelésekhez kapcsolódó kockázatok csökkentése érdekében rendszeresen tekintse át a hozzáférést. A Azure Active Directory (Azure AD) Privileged Identity Management (PIM) használatával hozzáférési felülvizsgálatokat hozhat létre az Azure-erőforrás szerepköreihez való jogosultsági szintű hozzáféréshez. Az ismétlődő hozzáférési felülvizsgálatokat is konfigurálhatja, amelyek automatikusan megtörténnek. Ez a cikk azt ismerteti, hogyan hozhat létre egy vagy több hozzáférési felülvizsgálatot.
 
-Ez a cikk azt ismerteti, hogyan hozhat létre egy vagy több hozzáférési felülvizsgálatot a Kiemelt Azure-beli erőforrás-szerepkörökhöz.
-
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="prerequisite-role"></a>Előfeltételként szükséges szerepkör
 
  Hozzáférési felülvizsgálatok létrehozásához hozzá kell rendelni a [tulajdonos](../../role-based-access-control/built-in-roles.md#owner) vagy a [felhasználói hozzáférés rendszergazdai](../../role-based-access-control/built-in-roles.md#user-access-administrator) Azure-szerepkört az erőforráshoz.
 
 ## <a name="open-access-reviews"></a>Hozzáférési felülvizsgálatok megnyitása
 
-1. Jelentkezzen be [Azure Portalba](https://portal.azure.com/) egy olyan felhasználóval, aki tagja a Kiemelt szerepkörű rendszergazda szerepkörnek.
+1. Jelentkezzen be [Azure Portalra](https://portal.azure.com/) egy olyan felhasználóval, aki hozzá van rendelve az egyik előfeltételi szerepkörhöz.
 
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 

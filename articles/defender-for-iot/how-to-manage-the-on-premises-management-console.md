@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: d76db6830839902a46aaf6515f816fdcc36d0df5
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: f3c9f8f78f17153c3d2eb7b014cf616253b3c0c9
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523940"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618253"
 ---
 # <a name="manage-the-on-premises-management-console"></a>A helyszíni felügyeleti konzol kezelése
 
@@ -226,7 +226,7 @@ A CLI-parancs használatakor:
 
 A tanúsítványokat a következő parancsokkal kezelheti:
 
-| Description | CLI-parancs |
+| Leírás | CLI-parancs |
 |--|--|
 | Új titkos kulcs és tanúsítvány-aláírási kérelem létrehozása | `openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key` |
 | Önaláírt tanúsítvány létrehozása | `openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt` |
@@ -236,7 +236,7 @@ A tanúsítványokat a következő parancsokkal kezelheti:
 
 Ha ellenőriznie kell a tanúsítványon, a CSR-en vagy a titkos kulcson belüli adatokat, használja a következő parancsokat:
 
-| Description | CLI-parancs |
+| Leírás | CLI-parancs |
 |--|--|
 | Tanúsítvány-aláírási kérelem (CSR) keresése | `openssl req -text -noout -verify -in CSR.csr` |
 | Titkos kulcs keresése | `openssl rsa -in privateKey.key -check` |
@@ -244,13 +244,13 @@ Ha ellenőriznie kell a tanúsítványon, a CSR-en vagy a titkos kulcson belüli
 
 Ha hibaüzenet jelenik meg arról, hogy a titkos kulcs nem egyezik a tanúsítvánnyal, vagy ha egy helyre telepített tanúsítvány nem megbízható, a következő parancsokkal javítsa ki a hibát;
 
-| Description | CLI-parancs |
+| Leírás | CLI-parancs |
 |--|--|
 | A nyilvános kulcs MD5-kivonatának ellenőrzése annak biztosításához, hogy az megfelel-e a CSR vagy a titkos kulcsnak | 1. `openssl x509 -noout -modulus -in certificate.crt | openssl md5` <br /> 2. `openssl rsa -noout -modulus -in privateKey.key | openssl md5` <br /> 3. `openssl req -noout -modulus -in CSR.csr | openssl md5 ` |
 
 Ha a tanúsítványokat és a kulcsokat különböző formátumokra szeretné átalakítani, hogy azok kompatibilisek legyenek a kiszolgálók vagy szoftverek bizonyos típusaival, használja a következő parancsokat:
 
-| Description | CLI-parancs |
+| Leírás | CLI-parancs |
 |--|--|
 | DER-fájl konvertálása (. CRT. cer. der) a PEM-ba  | `openssl x509 -inform der -in certificate.cer -out certificate.pem`  |
 | PEM-fájl átalakítása DER-re | `openssl x509 -outform der -in certificate.pem -out certificate.der`  |
@@ -415,7 +415,21 @@ Az alábbi eljárás ismerteti, hogyan frissítheti a helyszíni felügyeleti ko
 
 1. Válassza ki azt a fájlt, amelyet a Defender for IoT **Updates** lapon töltött le.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="mail-server-settings"></a>Levelezési kiszolgáló beállításai
+
+Az SMTP levelezési kiszolgáló beállításainak megadása a helyszíni felügyeleti konzolhoz.
+
+A következő megadása:
+
+1. Jelentkezzen be a parancssori felületre a rendszergazdai hitelesítő adatokkal rendelkező helyszíni felügyelethez.
+1. Gépelje be: ```nano /var/cyberx/properties/remote-interfaces.properties```.
+1. Nyomja le az Enter billentyűt. A következő promptok jelennek meg.
+```mail.smtp_server= ```
+```mail.port=25 ```
+```mail.sender=```
+1. Adja meg az SMTP-kiszolgáló nevét és a küldőt, majd kattintson az ENTER gombra.
+
+## <a name="see-also"></a>Lásd még
 
 [Érzékelők kezelése a felügyeleti konzolról](how-to-manage-sensors-from-the-on-premises-management-console.md)
 

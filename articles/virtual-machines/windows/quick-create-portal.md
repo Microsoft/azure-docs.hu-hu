@@ -2,18 +2,19 @@
 title: Rövid útmutató – Windows rendszerű virtuális gép létrehozása a Azure Portal
 description: Ez a rövid útmutató a Windows rendszerű virtuális gépek az Azure Portallal történő létrehozását ismerteti.
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: quickstart
 ms.workload: infrastructure
 ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 46119b9f7cdac47920d4bba8e00c3fc56b0edc78
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 5e52fab081a94ad58e91c629f4092ae889d38e7a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "87494519"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560922"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>Rövid útmutató: Windows rendszerű virtuális gép létrehozása az Azure Portalon
 
@@ -34,7 +35,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
     ![A Project Details (projekt részletei) szakasz képernyőképe, amelyen kiválaszthatja az Azure-előfizetést és a virtuális géphez tartozó erőforráscsoportot.](./media/quick-create-portal/project-details.png)
 
-1. A **példány részletei** területen írja *myVM* be a myVM **nevet a virtuális GÉPNEK** , majd válassza az *USA keleti* **régiója** lehetőséget, majd a **rendszerképhez** válassza a *Windows Server 2019 Datacenter* lehetőséget. Hagyja meg a többi alapértelmezett értéket.
+1. A **példány részletei** területen írja  be a myVM **nevet a virtuális GÉPNEK** , majd válassza az *USA keleti* **régiója** lehetőséget, majd a **rendszerképhez** válassza a *Windows Server 2019 Datacenter* lehetőséget. Hagyja meg a többi alapértelmezett értéket.
 
     ![Képernyőkép a példány részleteiről szakaszról, ahol megadhatja a virtuális gép nevét, és kiválaszthatja annak régióját, képét és méretét](./media/quick-create-portal/instance-details.png)
 
@@ -90,7 +91,7 @@ Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, a virtuáli
 
 Válassza ki a virtuális géphez tartozó erőforráscsoportot, majd válassza a **Törlés** lehetőséget. Erősítse meg az erőforráscsoport nevét az erőforrások törlésének befejezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a rövid útmutatónak a követésével üzembe helyezett egy egyszerű virtuális gépet, megnyitott egy hálózati portot a webes forgalomnak, és telepített egy alapszintű webkiszolgálót. Ha bővebb információra van szüksége az Azure-alapú virtuális gépekkel kapcsolatban, lépjen tovább a Windows rendszerű virtuális gépekről szóló oktatóanyagra.
 

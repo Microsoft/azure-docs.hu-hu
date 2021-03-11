@@ -4,17 +4,17 @@ description: Megtudhatja, hogyan alakíthatja át a Fortanix bizalmas számítá
 services: virtual-machines
 author: JBCook
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
-ms.openlocfilehash: 41e47e29553b3e4d9cd0e0e8f280b3648f224bf9
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 5bc1ff4a288e492613f02a8b095c5ef80436d18e
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832307"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558746"
 ---
 # <a name="how-to-run-an-application-with-fortanix-confidential-computing-manager"></a>Útmutató: alkalmazás futtatása a Fortanix bizalmas számítástechnikai kezelőjével
 
@@ -166,7 +166,7 @@ Válassza ki a virtuális géphez tartozó erőforráscsoportot, majd válassza 
 
 A létrehozott Fortanix bizalmas számítástechnikai kezelő fiók törléséhez nyissa meg a Fortanix bizalmas számítástechnikai kezelő [fiókok lapját](https://em.fortanix.com/accounts) . Vigye a kurzort a törölni kívánt fiók fölé. Válassza a jobb felső sarokban található függőleges fekete pontokat, és válassza a **fiók törlése** lehetőséget.
 
-  ![törlés](media/how-to-fortanix-enclave-manager/delete-account.png)
+  ![delete](media/how-to-fortanix-enclave-manager/delete-account.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

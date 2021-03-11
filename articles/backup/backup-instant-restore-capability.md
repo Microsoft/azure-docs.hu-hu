@@ -4,12 +4,12 @@ description: Azure azonnali visszaállítási képesség és gyakori kérdések 
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 147fadc92429157ed2f9ba3eb68297a3e1d08d24
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 3448b162c17dec2ab5b7637a3527d1c470bd415c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96014448"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618576"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Továbbfejlesztett biztonsági mentési és visszaállítási teljesítmény Azure Backup azonnali visszaállítási képességgel
 
@@ -112,7 +112,13 @@ Az új modell nem engedélyezi a visszaállítási pont (szint) törlését, kiv
 
 ### <a name="why-does-my-snapshot-still-exist-even-after-the-set-retention-period-in-backup-policy"></a>Miért van a pillanatképem még a biztonsági mentési szabályzatban beállított megőrzési időtartam után is?
 
-Ha a helyreállítási pont rendelkezik pillanatképtel, és a legújabb helyreállítási pont érhető el, a rendszer a következő sikeres biztonsági mentésig megőrzi. Ez a kijelölt "Garbage Collection" (GC) szabályzatnak megfelelően történik. Az informatikai Hivatal azt állítja be, hogy minden további biztonsági mentés a virtuális gép hibája miatt sikertelen lesz. Normál helyzetekben a helyreállítási pontok a lejárat után legfeljebb 24 órával törlődnek.
+Ha a helyreállítási pont rendelkezik pillanatképtel, és a legújabb helyreállítási pont érhető el, a rendszer a következő sikeres biztonsági mentésig megőrzi. Ez a kijelölt "Garbage Collection" (GC) szabályzatnak megfelelően történik. Az informatikai Hivatal azt állítja be, hogy minden további biztonsági mentés a virtuális gép hibája miatt sikertelen lesz. Normál helyzetekben a helyreállítási pontok a lejárat után legfeljebb 24 órával törlődnek. Ritka helyzetekben lehet egy vagy két további pillanatkép a Garbage Collector (GC) nehezebb terhelése alapján.
+
+### <a name="why-do-i-see-more-snapshots-than-my-retention-policy"></a>Miért látok több pillanatképet, mint az adatmegőrzési szabályzatom?
+
+Olyan helyzetekben, ahol egy adatmegőrzési szabály "1"-ként van beállítva, két pillanatképet talál. Ez arra kötelezi, hogy a virtuális gép hibája miatt az összes további biztonsági mentés meghiúsul. Ez két pillanatkép jelenlétét okozhatja.<br></br>Tehát ha a házirend "n" pillanatképekhez készült, időnként "n + 1" pillanatképeket talál. Emellett az "n + 1 + 2" Pillanatképek is megtalálhatók, ha késés van a szemetet tartalmazó gyűjteményben. Ez a következő ritka esetekben fordulhat elő:
+- Törölheti a pillanatképeket, amelyek korábbi megőrzést végeznek.
+- A háttérbeli Garbage Collector (GC) nagy terhelés alatt áll.
 
 ### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>Nincs szükség azonnali visszaállítási funkcióra. Le lehet tiltani?
 
@@ -120,5 +126,5 @@ Az azonnali visszaállítás funkció mindenki számára engedélyezve van, és 
 
 ### <a name="is-it-safe-to-restart-the-vm-during-the-transfer-process-which-can-take-many-hours-will-restarting-the-vm-interrupt-or-slow-down-the-transfer"></a>Biztonságos a virtuális gép újraindítása az adatátviteli folyamat során (ami több órát is igénybe vehet)? Újraindítja a virtuális gépet, vagy lelassítja az átvitelt?
 
-Igen, az adatátviteli sebesség egyáltalán nem befolyásolja a biztonságot.
+Igen, biztonságos, és nincs hatással az adatátvitel sebességére.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7924b06b9056a53fa9861fcd0df516845662b34b
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 113c8adccc5e8b1c3321569f32ca3fb33423ccd8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341566"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562877"
 ---
 # <a name="access-built-in-metrics"></a>Beépített mérőszámok elérése
 
@@ -44,13 +44,15 @@ A metrikák elérését a gazdagépről a mérőszámok portjának kiírásával
 Ha a edgeHub és a edgeAgent metrikáinak végpontját is szeretné leképezni, válassza a különböző és egyedi gazdagépek portszámait.
 
 > [!NOTE]
-> Ha le szeretné tiltani a metrikákat, állítsa a `MetricsEnabled` környezeti változót `false` a **edgeAgent**értékre.
+> A környezeti változó `httpSettings__enabled` nem állítható be úgy, hogy a `false` beépített metrikák elérhetők legyenek a gyűjtemény számára.
+>
+> A metrikák letiltására használható környezeti változók az [Azure/iotedge adattár doc](https://github.com/Azure/iotedge/blob/master/doc/EnvironmentVariables.md)-ban találhatók.
 
 ## <a name="available-metrics"></a>Rendelkezésre álló metrikák
 
 A metrikák olyan címkéket tartalmaznak, amelyek segítenek azonosítani a begyűjtött metrika természetét. Az összes metrika a következő címkéket tartalmazza:
 
-| Címke | Description |
+| Címke | Leírás |
 |-|-|
 | iothub | Az az eszköz, amelyre az eszközt beszél |
 | edge_device | Az aktuális eszköz azonosítója |
@@ -62,7 +64,7 @@ A beépített hisztogramhoz és az összegző metrikához megadott quantiles 0,1
 
 A **edgeHub** modul a következő metrikákat állítja elő:
 
-| Name | Dimenziók | Description |
+| Name | Dimenziók | Leírás |
 |-|-|-|
 | `edgehub_gettwin_total` | `source` (műveleti forrás)<br> `id` (modul azonosítója) | Típus: számláló<br> GetTwin-hívások száma összesen |
 | `edgehub_messages_received_total` | `route_output` (az üzenetet küldő kimenet)<br> `id` | Típus: számláló<br> Az ügyfelektől fogadott üzenetek teljes száma |
@@ -85,7 +87,7 @@ A **edgeHub** modul a következő metrikákat állítja elő:
 
 A **edgeAgent** modul a következő metrikákat állítja elő:
 
-| Name | Dimenziók | Description |
+| Name | Dimenziók | Leírás |
 |-|-|-|
 | `edgeAgent_total_time_running_correctly_seconds` | `module_name` | Típus: mérőműszer<br> Az a mennyiség, ameddig a modul meg lett adva a központi telepítésben, és a futási állapotban volt. |
 | `edgeAgent_total_time_expected_running_seconds` | `module_name` | Típus: mérőműszer<br> A modul az üzemelő példányban megadott időtartamának mennyisége |

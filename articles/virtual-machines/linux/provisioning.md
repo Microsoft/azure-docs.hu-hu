@@ -2,22 +2,23 @@
 title: A Linux-kiépítés áttekintése
 description: A Linux rendszerű virtuális gépek rendszerképeinek beszerzése, illetve az Azure-ban használandó új rendszerképek létrehozása.
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: imaging
+ms.collection: linux
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: a7d9aa7de8bb75a22acc85c77924765eaa1b6b3b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6dafa400f2ce2421db6775084befc0abeab70a04
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87080148"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563217"
 ---
 # <a name="azure-linux-vm-provisioning"></a>Azure Linux rendszerű virtuális gépek üzembe helyezése
-Ha általánosított rendszerképből (megosztott képkatalógusból vagy felügyelt rendszerképből) hoz létre virtuális gépet, a vezérlő síkja lehetővé teszi a virtuális gép létrehozását, valamint paramétereket és beállításokat adhat át a virtuális géphez. Ezt a virtuális gépek *üzembe*helyezésének nevezzük. A kiépítés során a platform lehetővé teszi, hogy a virtuális gép a rendszerindítás során elérhetővé hozzon paramétereket (állomásnév, Felhasználónév, jelszó, SSH-kulcsok, customData). 
+Ha általánosított rendszerképből (megosztott képkatalógusból vagy felügyelt rendszerképből) hoz létre virtuális gépet, a vezérlő síkja lehetővé teszi a virtuális gép létrehozását, valamint paramétereket és beállításokat adhat át a virtuális géphez. Ezt a virtuális gépek *üzembe* helyezésének nevezzük. A kiépítés során a platform lehetővé teszi, hogy a virtuális gép a rendszerindítás során elérhetővé hozzon paramétereket (állomásnév, Felhasználónév, jelszó, SSH-kulcsok, customData). 
 
 A rendszerképbe bekészített kiépítési ügynök a platformmal együtt csatlakozik a több független kiépítési interfészhez, és a tulajdonságokat és a jeleket a befejezett platformra állítja be. 
 
@@ -70,15 +71,15 @@ A platformról az ügynökre irányuló információáramlás két csatornán ke
 
 ## <a name="azure-provisioning-agent-requirements"></a>Az Azure kiépítési ügynökre vonatkozó követelmények
 A Linux-ügynök és a Cloud-init a megfelelő működés érdekében néhány rendszercsomagtól függ:
-- Python 2.6 +
-- OpenSSL 1.0 +
-- OpenSSH 5.3 +
-- Filesystem segédprogramok: `sfdisk` ,, `fdisk` `mkfs` , `parted`
+- Python 2.6+
+- OpenSSL 1.0+
+- OpenSSH 5.3+
+- Fájlrendszer-segédprogramok: `sfdisk`, `fdisk`, `mkfs`, `parted`
 - Jelszó-eszközök: chpasswd, sudo
 - Text Processing Tools: sed, grep
 - Hálózati eszközök: IP-útvonal
 - Kernel-támogatás az UDF-fájlrendszerek csatlakoztatásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szükséges, [letilthatja a kiépítés és a Linux-ügynök eltávolítását](disable-provisioning.md).
