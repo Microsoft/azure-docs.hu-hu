@@ -120,6 +120,8 @@
       href: concepts/authentication.md
     - name: Adatvédelem
       href: concepts/privacy.md
+    - name: Díjszabás
+      href: concepts/pricing.md
     - name: Leküldéses értesítések
       href: concepts/notifications.md
     - name: Teams-együttműködés

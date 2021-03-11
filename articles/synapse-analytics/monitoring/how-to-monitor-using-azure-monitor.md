@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: f801d25a0d0f70daaaac1ade3e8966cf5f53affc
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ac5b1df5ff246623b73dbc41d18216396e6ed7ef
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101672761"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549855"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>Azure Monitor használata az Azure szinapszis Analytics-munkaterülettel
 
@@ -171,7 +171,7 @@ Hozzon létre vagy adjon hozzá diagnosztikai beállításokat a munkaterülethe
 1. Adja meg a beállítás nevét, válassza a **küldés log Analytics** lehetőséget, majd válasszon ki egy munkaterületet **log Analytics munkaterületről**.
 
     > [!NOTE]
-    > Mivel az Azure-tábla nem rendelkezhet több mint 500 oszloppal **, javasoljuk, hogy az** _erőforrás-specifikus módot_ válassza. További információ: [log Analytics ismert korlátozások](../../azure-monitor/essentials/resource-logs.md#column-limit-in-azurediagnostics).
+    > Mivel az Azure-tábla nem rendelkezhet több mint 500 oszloppal **, javasoljuk, hogy az** _erőforrás-specifikus módot_ válassza. További információ: AzureDiagnostics- [naplók referenciája](/azure-monitor/reference/tables/azurediagnostics#additionalfields-column).
 
 1. Kattintson a **Mentés** gombra.
 

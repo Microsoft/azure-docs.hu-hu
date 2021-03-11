@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 5e2ecf8dff432f2a0ce6b3356ce3eca7a8127932
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 09456c06f2a171ec32c1b885dc2b4e475fea5371
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586864"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550297"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Data Factory figyelése és riasztása Azure Monitor használatával
 
@@ -76,7 +76,7 @@ Hozzon létre vagy adjon hozzá diagnosztikai beállításokat az adatai-előál
    ![Adja meg a beállításokat, és válasszon egy log-Analytics-munkaterületet](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
     > [!NOTE]
-    > Mivel az Azure-tábla nem rendelkezhet több mint 500 oszloppal **, javasoljuk, hogy az** _erőforrás-specifikus módot_ válassza. További információ: [log Analytics ismert korlátozások](../azure-monitor/essentials/resource-logs.md#column-limit-in-azurediagnostics).
+    > Mivel az Azure-tábla nem rendelkezhet több mint 500 oszloppal **, javasoljuk, hogy az** _erőforrás-specifikus módot_ válassza. További információ: AzureDiagnostics- [naplók referenciája](/azure-monitor/reference/tables/azurediagnostics#additionalfields-column).
 
 1. Kattintson a **Mentés** gombra.
 
@@ -265,7 +265,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | --- | --- | --- |
 | **storageAccountId** |Sztring | Annak a Storage-fióknak az erőforrás-azonosítója, amelyhez diagnosztikai naplókat szeretne küldeni. |
 | **serviceBusRuleId** |Sztring | Annak a Service-Bus-névtérnek az azonosítója, amelyben a Event Hubs létre kívánja hozni a stream diagnosztikai naplóihoz. A szabály AZONOSÍTÓjának formátuma `{service bus resource ID}/authorizationrules/{key name}` .|
@@ -574,7 +574,7 @@ Itt láthatók a SSIS IR indítási/leállítási/karbantartási műveleteinek n
 | **integrationRuntimeName** | Sztring | A SSIS IR neve                                      | `MySSISIR` |
 | **szint**                  | Sztring | A diagnosztikai naplók szintje                                  | `Informational` |
 | **resultType**             | Sztring | A SSIS IR-művelet eredménye                          | `Started/InProgress/Succeeded/Failed` |
-| **üzenetet**                | Sztring | A SSIS IR-művelet kimeneti üzenete                  | `The stopping of your SSIS integration runtime has succeeded.` |
+| **message**                | Sztring | A SSIS IR-művelet kimeneti üzenete                  | `The stopping of your SSIS integration runtime has succeeded.` |
 | **resourceId**             | Sztring | Az ADF-erőforrás egyedi azonosítója                            | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
 #### <a name="ssis-event-message-context-log-attributes"></a>SSIS-események környezeti naplójának attribútumai
@@ -667,7 +667,7 @@ Itt láthatók a SSIS-csomag végrehajtása által a SSIS IR-ben létrehozott es
 | **messageTime**            | Sztring | Az az idő, amikor az esemény üzenete UTC formátumban lett létrehozva          | `2017-06-28T21:00:27.3534352Z` |
 | **messageType**            | Sztring | Az üzenet típusa                                     | `70`( [további üzenetek típusai](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database#remarks)) |
 | **messageSourceType**      | Sztring | Az esemény-üzenet forrásának típusa                              | `20`(lásd: [több üzenet típusú Forrástípus](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database#remarks)) |
-| **üzenetet**                | Sztring | Az üzenet szövege                                     | `MyPackage:Validation has started.` |
+| **message**                | Sztring | Az üzenet szövege                                     | `MyPackage:Validation has started.` |
 | **packageName**            | Sztring | A végrehajtott csomagfájl neve                             | `MyPackage.dtsx` |
 | **eventName**              | Sztring | A kapcsolódó futásidejű esemény neve                                 | `OnPreValidate` |
 | **messageSourceName**      | Sztring | A csomag-összetevő neve az esemény üzenetének forrásaként         | `Data Flow Task` |

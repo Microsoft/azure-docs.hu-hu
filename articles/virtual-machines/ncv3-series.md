@@ -3,16 +3,16 @@ title: NCv3 sorozat – Azure Virtual Machines
 description: A NCv3 sorozatú virtuális gépek specifikációi.
 author: vikancha-MSFT
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 313ca9ddb893ad2d84fdb3f808bdee38dfc9e846
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: c28ed042156865c52607ce031507c696f28b4e7c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102119756"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617301"
 ---
 # <a name="ncv3-series"></a>NCv3 sorozat
 
@@ -24,7 +24,7 @@ Az NCv3 sorozatú virtuális gépeket NVIDIA Tesla V100 GPU-k működtetik. Ezek
 [Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
 [VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
 [Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): nem támogatott<br>
-[Ideiglenes operációsrendszer-lemezek](ephemeral-os-disks.md): nem támogatott <br>
+[Ideiglenes operációsrendszer-lemezek](ephemeral-os-disks.md): támogatott <br>
 NVIDIA NVLink Interconnect: nem támogatott<br>
 
 > [!IMPORTANT]

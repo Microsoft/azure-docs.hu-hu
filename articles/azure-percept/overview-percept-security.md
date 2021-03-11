@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: a08876cde9fac64c3a361b469049b4e33678a86f
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 6a3049709c6c094f722a8132ee4c4b2051e24d95
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098145"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102616689"
 ---
 # <a name="azure-percept-security-overview"></a>Az Azure Percept biztonsági áttekintése
 
@@ -37,7 +37,7 @@ Az Azure Percept-eszközök a hardveres legfelső szintű megbízhatóságot has
 
 ### <a name="iot-edge"></a>IoT Edge
 
-Az Azure Percept DK a Transport Layer Security (TLS) protokollt használó további biztonsági és egyéb Azure-szolgáltatásokkal csatlakozik az Azure Percept studióhoz. Az Azure Percept DK egy Azure IoT Edge engedélyezett eszköz. A IoT Edge Runtime olyan programok gyűjteménye, amelyek egy eszközt IoT Edge eszközre kapcsolnak be. Együttesen a IoT Edge futtatókörnyezet-összetevők lehetővé teszik, hogy IoT Edge eszközök megkapják a kód futtatását a peremhálózat szélén, és közlik az eredményeket. Az Azure Percept DK Docker-tárolókat használ a IoT Edge munkaterhelések elkülönítésére a gazda operációs rendszer és az Edge-kompatibilis alkalmazások számára. A Azure IoT Edge biztonsági keretrendszerével kapcsolatos további információkért olvassa el a [IoT Edge Security Manager](https://docs.microsoft.com/azure/iot-edge/iot-edge-security-manager?view=iotedge-2018-06)című témakört.
+Az Azure Percept DK a Transport Layer Security (TLS) protokollt használó további biztonsági és egyéb Azure-szolgáltatásokkal csatlakozik az Azure Percept studióhoz. Az Azure Percept DK egy Azure IoT Edge engedélyezett eszköz. A IoT Edge Runtime olyan programok gyűjteménye, amelyek egy eszközt IoT Edge eszközre kapcsolnak be. Együttesen a IoT Edge futtatókörnyezet-összetevők lehetővé teszik, hogy IoT Edge eszközök megkapják a kód futtatását a peremhálózat szélén, és közlik az eredményeket. Az Azure Percept DK Docker-tárolókat használ a IoT Edge munkaterhelések elkülönítésére a gazda operációs rendszer és az Edge-kompatibilis alkalmazások számára. A Azure IoT Edge biztonsági keretrendszerével kapcsolatos további információkért olvassa el a [IoT Edge Security Manager](https://docs.microsoft.com/azure/iot-edge/iot-edge-security-manager)című témakört.
 
 ### <a name="device-update-for-iot-hub"></a>IoT Hub eszköz frissítése
 
@@ -57,7 +57,7 @@ Ez az ellenőrzőlista a tűzfalszabályok kiindulási pontja:
 |*. auth.azureperceptdk.azure.net|   443|    Azure DK SOM-hitelesítés és-engedélyezés|
 |*. auth.projectsantacruz.azure.net| 443|    Azure DK SOM-hitelesítés és-engedélyezés|
 
-Emellett tekintse át az [Azure IoT Edge által használt kapcsolatok](https://docs.microsoft.com/azure/iot-edge/production-checklist?view=iotedge-2018-06#allow-connections-from-iot-edge-devices)listáját.
+Emellett tekintse át az [Azure IoT Edge által használt kapcsolatok](https://docs.microsoft.com/azure/iot-edge/production-checklist#allow-connections-from-iot-edge-devices)listáját.
 
 <!---
 ## Additional Recommendations for Deployment to Production

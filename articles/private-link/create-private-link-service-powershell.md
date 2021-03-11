@@ -1,20 +1,20 @@
 ---
 title: 'Rövid útmutató: Azure Private link Service létrehozása Azure PowerShell használatával'
-description: Ismerje meg, hogyan hozhat létre Azure Private link Service-t a Azure PowerShell használatával
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Private link Service-t a Azure PowerShell használatával
 services: private-link
 author: asudbring
 ms.service: private-link
 ms.topic: quickstart
 ms.date: 01/24/2021
 ms.author: allensu
-ms.openlocfilehash: 4780bc573796581438b8d331b1d1d9421a65414f
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 366be37135808a6d3d5cc1a277e2de3e3d6da8ae
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653244"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566399"
 ---
-# <a name="create-a-private-link-service-using-azure-powershell"></a>Privát kapcsolati szolgáltatás létrehozása Azure PowerShell használatával
+# <a name="quickstart-create-a-private-link-service-using-azure-powershell"></a>Rövid útmutató: privát link szolgáltatás létrehozása Azure PowerShell használatával
 
 Ismerkedjen meg a szolgáltatásra hivatkozó privát link szolgáltatás létrehozásával.  Adja meg az Azure-standard Load Balancer mögött üzembe helyezett szolgáltatáshoz vagy erőforráshoz való magánhálózati hivatkozást.  A szolgáltatás felhasználói a virtuális hálózatról privát hozzáféréssel rendelkeznek.
 

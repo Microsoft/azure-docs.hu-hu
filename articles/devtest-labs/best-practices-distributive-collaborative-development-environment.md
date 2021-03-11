@@ -3,12 +3,12 @@ title: Azure DevTest Labs erőforrások elosztott együttműködési fejlesztés
 description: A DevTest Labs erőforrásainak fejlesztéséhez ajánlott eljárásokat biztosít egy elosztott és együttműködő fejlesztési környezet beállításához.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 1ef6d7aa7d3cfd4fcc64eaa45259684dfcb9ccee
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: caf4bd13f2ec9c45db392a027db269b492cbd802
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592364"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550076"
 ---
 # <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Ajánlott eljárások az Azure DevTest Labs-erőforrások elosztott és együttműködő fejlesztéséhez
 Az elosztott együttműködési fejlesztés lehetővé teszi a különböző csapatok vagy személyek számára, hogy alapszintű kódot fejlesszenek és őrizzenek meg. Ahhoz, hogy sikeres legyen, a fejlesztési folyamat az információk létrehozására, megosztására és integrálására való képességtől függ. Ez a kulcs-fejlesztési elv a Azure DevTest Labson belül használható. A laborban többféle típusú erőforrás van, amelyeket általában a különböző laborok osztanak szét egy vállalaton belül. A különböző típusú erőforrások két területre vannak koncentrálva:
@@ -27,7 +27,7 @@ Az Egyéni rendszerképek közös forrásaként is elvégezheti a laborok éjsza
 A [képletek](devtest-lab-manage-formulas.md) labor-specifikusak, és nincs terjesztési mechanizmusuk. A labor tagjai a képletek fejlesztését végzik. 
 
 ## <a name="code-repository-based-resources"></a>Adattár-alapú erőforrások
-Két különböző funkció található a kódokon, az összetevőkön és a környezeteken alapulva. Ez a cikk a funkciók és a leghatékonyabban a Tárházak és a munkafolyamatok beállítását mutatja be, így lehetővé teszi az elérhető összetevők és környezetek testreszabását a szervezet szintjén vagy a csapat szintjén.  Ez a munkafolyamat a szabványos [forráskód-vezérlési elágazási stratégián](/azure/devops/repos/tfvc/branching-strategies-with-tfvc?view=azure-devops)alapul. 
+Két különböző funkció található a kódokon, az összetevőkön és a környezeteken alapulva. Ez a cikk a funkciók és a leghatékonyabban a Tárházak és a munkafolyamatok beállítását mutatja be, így lehetővé teszi az elérhető összetevők és környezetek testreszabását a szervezet szintjén vagy a csapat szintjén.  Ez a munkafolyamat a szabványos [forráskód-vezérlési elágazási stratégián](/azure/devops/repos/tfvc/branching-strategies-with-tfvc)alapul. 
 
 ### <a name="key-concepts"></a>Fő fogalmak
 Az összetevőkre vonatkozó információforrás metaadatokat, parancsfájlokat tartalmaz. A környezetekhez tartozó információforrás metaadatokat és Resource Manager-sablonokat tartalmaz minden olyan támogató fájllal, mint például a PowerShell-parancsfájlok, a DSC-parancsfájlok, a zip-fájlok stb.  
@@ -39,7 +39,7 @@ A forráskód-vezérlés (SCC) leggyakoribb konfigurációja egy többrétegű s
 - Üzleti egység/részleg – széles körű erőforrások
 - A csoportra jellemző erőforrások.
 
-Ezen szintek mindegyike egy másik adattárra mutat, ahol a fő ág az éles minőséghez szükséges. Az egyes adattárokban lévő [ágak](/azure/devops/repos/git/git-branching-guidance?view=azure-devops) az adott erőforrások (összetevők vagy sablonok) fejlesztéséhez szükségesek. Ez a struktúra jól illeszkedik a DevTest Labs szolgáltatáshoz, mivel egyszerre több tárház és több ág összekapcsolására is lehetőség van a szervezet laborjában. Az adattár nevét a felhasználói felület (UI) tartalmazza, hogy elkerülje a félreértéseket, ha ugyanazok a nevek, a leírások és a közzétevők.
+Ezen szintek mindegyike egy másik adattárra mutat, ahol a fő ág az éles minőséghez szükséges. Az egyes adattárokban lévő [ágak](/azure/devops/repos/git/git-branching-guidance) az adott erőforrások (összetevők vagy sablonok) fejlesztéséhez szükségesek. Ez a struktúra jól illeszkedik a DevTest Labs szolgáltatáshoz, mivel egyszerre több tárház és több ág összekapcsolására is lehetőség van a szervezet laborjában. Az adattár nevét a felhasználói felület (UI) tartalmazza, hogy elkerülje a félreértéseket, ha ugyanazok a nevek, a leírások és a közzétevők.
      
 Az alábbi ábrán két tárház látható: az IT-részleg által karbantartott vállalati tárház, valamint az R&D divízió által karbantartott divízió-tárház.
 

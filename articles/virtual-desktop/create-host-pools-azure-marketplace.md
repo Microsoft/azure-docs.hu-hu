@@ -4,15 +4,15 @@ description: Windows rendszerű virtuális asztali címkészlet létrehozása a 
 author: Heidilohr
 ms.topic: tutorial
 ms.custom: references_regions
-ms.date: 02/17/2021
+ms.date: 03/10/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 46a029a3b803428d6250b74059190f66183be452
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 60566b95447c1b69fb257435f45a11524ac5d8b2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100651459"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617343"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Oktatóanyag: állomáslista létrehozása a Azure Portal
 
@@ -101,18 +101,16 @@ A virtuális gép beállítása a gazdagép-készlet telepítési folyamatán be
 
 1. Az **erőforráscsoport** területen válassza ki azt az erőforráscsoportot, amelyben létre szeretné hozni a virtuális gépeket. Ez lehet egy másik erőforráscsoport, mint a gazdagéphez használt készlet.
 
-2. Válassza ki azt a **virtuális gépet** , amelyben létre szeretné hozni a virtuális gépeket. Megegyeznek a gazdagéphez kiválasztott régióval, vagy eltérőek lehetnek.
+2. Ezt követően adjon meg egy **előtagot** a virtuális gépek számára a telepítési folyamat által létrehozott névvel. Az utótag a 0 értéktől `-` kezdődő számmal lesz ellátva.
 
-3. Ezután válassza ki a használni kívánt **virtuálisgép-méretet** . Megtarthatja az alapértelmezett méretet is, vagy a méret **módosításához válassza a méret módosítása** lehetőséget. Ha a **méret módosítása** lehetőséget választja, a megjelenő ablakban válassza ki a munkaterheléshez megfelelő virtuális gép méretét.
+3. Válassza ki azt a **virtuális gépet** , amelyben létre szeretné hozni a virtuális gépeket. Megegyeznek a gazdagéphez kiválasztott régióval, vagy eltérőek lehetnek.
+   
+4. Ezután válassza ki az igényeinek leginkább megfelelő rendelkezésre állási lehetőséget. Ha többet szeretne megtudni arról, hogy melyik lehetőségről van szó, tekintse meg az Azure-beli [virtuális gépek rendelkezésre állási lehetőségeit](../virtual-machines/availability.md) , valamint [a gyakori kérdéseket](faq.md#which-availability-option-is-best-for-me).
+   
+   > [!div class="mx-imgBorder"]
+   > [A rendelkezésre állási zóna legördülő menüjének képernyőképe. A "rendelkezésre állási zóna" beállítás ki van emelve.](media/availability-zone.png)
 
-4. A **virtuális gépek száma** területen adja meg a gazdagéphez létrehozni kívánt virtuális gépek számát.
-
-    >[!NOTE]
-    >A telepítési folyamat akár 400 virtuális GÉPET is létrehozhat a gazdagép beállítása közben, és minden egyes virtuálisgép-beállítási folyamat négy objektumot hoz létre az erőforráscsoporthoz. Mivel a létrehozási folyamat nem ellenőrzi az előfizetési kvótát, győződjön meg arról, hogy a megadott virtuális gépek száma az Azure-beli virtuális gépen, valamint az erőforráscsoport és az előfizetés API-korlátain belül van. A gazdagép-készlet létrehozása után további virtuális gépeket adhat hozzá.
-
-5. Ezt követően adjon meg egy **előtagot** a virtuális gépek számára a telepítési folyamat által létrehozott névvel. Az utótag a 0 értéktől `-` kezdődő számmal lesz ellátva.
-
-6. Ezután válassza ki a virtuális gép létrehozásához használni kívánt rendszerképet. Kiválaszthatja a **Katalógus vagy a** **tárolási blob** lehetőséget.
+5. Ezután válassza ki a virtuális gép létrehozásához használni kívánt rendszerképet. Kiválaszthatja a **Katalógus vagy a** **tárolási blob** lehetőséget.
 
     - Ha a katalógus lehetőséget **választja, válassza ki a** javasolt rendszerképek egyikét a legördülő menüből:
 
@@ -122,23 +120,30 @@ A virtuális gép beállítása a gazdagép-készlet telepítési folyamatán be
       - Windows 10 Enterprise multi-session, 2004-es verzió
       - Windows 10 Enterprise multi-session, Version 2004 + Microsoft 365 alkalmazások
 
-     Ha nem látja a kívánt rendszerképet, válassza az **összes rendszerkép és lemez tallózása** lehetőséget, amely lehetővé teszi, hogy a katalógusban vagy a Microsoft által biztosított lemezképet vagy más közzétevőket is válasszon egy másik rendszerképben. Győződjön meg arról, hogy a kiválasztott rendszerkép a [támogatott operációsrendszer-lemezképek](overview.md#supported-virtual-machine-os-images)egyike.
+      Ha nem látja a kívánt rendszerképet, válassza az **összes** rendszerkép megjelenítése lehetőséget, amely lehetővé teszi egy másik rendszerkép kiválasztását a katalógusban vagy a Microsoft és más kiadók által biztosított lemezképben. Győződjön meg arról, hogy a kiválasztott rendszerkép a [támogatott operációsrendszer-lemezképek](overview.md#supported-virtual-machine-os-images)egyike.
 
-     > [!div class="mx-imgBorder"]
-     > ![A piactér képernyőképe a Microsoft által megjelenített rendszerképek listájáról.](media/marketplace-images.png)
+      > [!div class="mx-imgBorder"]
+      > ![A piactér képernyőképe a Microsoft által megjelenített rendszerképek listájáról.](media/marketplace-images.png)
 
-     Megnyithatja **az elemeket** , és kiválaszthat egy már feltöltött egyéni rendszerképet is.
+      Megnyithatja **az elemeket** , és kiválaszthat egy már feltöltött egyéni rendszerképet is.
 
-     > [!div class="mx-imgBorder"]
-     > ![Képernyőkép a saját elemek lapról.](media/my-items.png)
+      > [!div class="mx-imgBorder"]
+      > ![Képernyőkép a saját elemek lapról.](media/my-items.png)
 
-    - Ha a **Storage blob** lehetőséget választja, a saját rendszerképét a Hyper-V használatával vagy egy Azure-beli virtuális gépen is kihasználhatja. Mindössze annyit kell tennie, hogy megadja a rendszerkép helyét a Storage-blobban URI-ként.
+    - Ha a **Storage blob** lehetőséget választja, saját rendszerképét a Hyper-V használatával vagy egy Azure-beli virtuális gépen is létrehozhatja. Mindössze annyit kell tennie, hogy megadja a rendszerkép helyét a Storage-blobban URI-ként.
+   
+   A rendszerkép helye független a rendelkezésre állási lehetőségtől, de a rendszerkép zóna rugalmassága határozza meg, hogy a rendszerkép használható-e a rendelkezésre állási zónával. Ha kijelöl egy rendelkezésre állási zónát a rendszerkép létrehozása közben, győződjön meg róla, hogy a katalógusból származó képet használ a zóna rugalmassága beállítással. Ha többet szeretne megtudni arról, hogy melyik zóna rugalmassági beállítását érdemes használni, tekintse meg [a gyakori kérdéseket](faq.md#which-availability-option-is-best-for-me).
 
-7. Válassza ki, hogy a virtuális gépek milyen operációsrendszer-lemezeket szeretnének használni: standard SSD, prémium SSD vagy standard HDD.
+6. Ezután válassza ki a használni kívánt **virtuálisgép-méretet** . Megtarthatja az alapértelmezett méretet is, vagy a méret **módosításához válassza a méret módosítása** lehetőséget. Ha a **méret módosítása** lehetőséget választja, a megjelenő ablakban válassza ki a munkaterheléshez megfelelő virtuális gép méretét.
 
-8. A hálózat és biztonság területen válassza ki azt a **virtuális hálózatot** és **alhálózatot** , ahol a létrehozni kívánt virtuális gépeket el szeretné helyezni. Győződjön meg arról, hogy a virtuális hálózat tud csatlakozni a tartományvezérlőhöz, mert a virtuális hálózaton belüli virtuális gépeket a tartományhoz kell csatlakoztatnia. A kiválasztott virtuális hálózat DNS-kiszolgálóit úgy kell konfigurálni, hogy a tartományvezérlő IP-címét használják.
+7. A **virtuális gépek száma** területen adja meg a gazdagéphez létrehozni kívánt virtuális gépek számát.
 
-9. Ezután adja meg, hogy szeretne-e nyilvános IP-címet használni a virtuális gépekhez. Azt javasoljuk, hogy válassza a **nem** lehetőséget, mert a magánhálózati IP-cím biztonságosabb.
+    >[!NOTE]
+    >A telepítési folyamat akár 400 virtuális GÉPET is létrehozhat a gazdagép beállítása közben, és minden egyes virtuálisgép-beállítási folyamat négy objektumot hoz létre az erőforráscsoporthoz. Mivel a létrehozási folyamat nem ellenőrzi az előfizetési kvótát, győződjön meg arról, hogy a megadott virtuális gépek száma az Azure-beli virtuális gépen, valamint az erőforráscsoport és az előfizetés API-korlátain belül van. A gazdagép-készlet létrehozása után további virtuális gépeket adhat hozzá.
+
+8. Válassza ki, hogy a virtuális gépek milyen operációsrendszer-lemezeket szeretnének használni: standard SSD, prémium SSD vagy standard HDD.
+
+9. A hálózat és biztonság területen válassza ki azt a **virtuális hálózatot** és **alhálózatot** , ahol a létrehozni kívánt virtuális gépeket el szeretné helyezni. Győződjön meg arról, hogy a virtuális hálózat tud csatlakozni a tartományvezérlőhöz, mert a virtuális hálózaton belüli virtuális gépeket a tartományhoz kell csatlakoztatnia. A kiválasztott virtuális hálózat DNS-kiszolgálóit úgy kell konfigurálni, hogy a tartományvezérlő IP-címét használják.
 
 10. Válassza ki a kívánt biztonsági csoport típusát: **Alapszintű**, **speciális** vagy **nincs**.
 
@@ -154,9 +159,9 @@ A virtuális gép beállítása a gazdagép-készlet telepítési folyamatán be
 
 11. Ezután válassza ki, hogy szeretné-e a virtuális gépeket egy adott tartományhoz és szervezeti egységhez csatlakoztatni. Ha az **Igen** lehetőséget választja, adja meg azt a tartományt, amelyhez csatlakozni szeretne. Opcionálisan hozzáadhat egy adott szervezeti egységet, amelyben a virtuális gépeket be szeretné állítani. Ha a **nem** lehetőséget választja, a virtuális gépek az **ad-tartományhoz való csatlakozás UPN**-utótagjának megfelelő tartományhoz fognak csatlakozni.
 
-  - Szervezeti egység megadásakor ügyeljen arra, hogy a teljes elérési utat (megkülönböztető név) és idézőjelek nélkül használja.
+    - Szervezeti egység megadásakor ügyeljen arra, hogy a teljes elérési utat (megkülönböztető név) és idézőjelek nélkül használja.
 
-12. A rendszergazdai fiók területen adja meg a kiválasztott virtuális hálózat Active Directory-tartomány rendszergazdájához tartozó hitelesítő adatokat. Ennek a fióknak nincs engedélyezve a többtényezős hitelesítés (MFA). Azure Active Directory Domain Services (Azure AD DS) tartományhoz való csatlakozáskor a fióknak az Azure AD DC-rendszergazdák csoport tagjaként kell lennie, és a fiók jelszavának az Azure-AD DS kell működnie.
+12. A tartományi rendszergazda fiók területen adja meg a kiválasztott virtuális hálózat Active Directory-tartomány rendszergazdájához tartozó hitelesítő adatokat. Ennek a fióknak nincs engedélyezve a többtényezős hitelesítés (MFA). Azure Active Directory Domain Services (Azure AD DS) tartományhoz való csatlakozáskor a fióknak az Azure AD DC-rendszergazdák csoport tagjaként kell lennie, és a fiók jelszavának az Azure-AD DS kell működnie.
 
 13. Válassza a **Tovább: munkaterület >** elemet.
 

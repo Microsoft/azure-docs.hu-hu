@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 18282bbe902599c471775a853704e459ea44bac1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 24f64e19077488223e13d01e110b5b5118231673
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661640"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102603259"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 Az első lépések előtt ügyeljen a következőre:
@@ -140,22 +140,22 @@ A következő osztályok és felületek az Azure kommunikációs szolgáltatáso
 - A használatával `topic` témakört adhat a csevegéshez. A témaköröket a funkció használatával lehet frissíteni, miután a csevegési szál létrejött `UpdateThread` .
 - A használatával `participants` listázhatja a csevegési szálba felvenni kívánt résztvevőket.
 
-Ha megoldotta, `createChatThread` a metódus a értéket adja vissza `CreateChatThreadResponse` . Ez a modell egy olyan `chatThread` tulajdonságot tartalmaz, amely az `id` újonnan létrehozott szál elérésére használható. Ezután a használatával `id` kérheti le a egy példányát `ChatThreadClient` . A `ChatThreadClient` felhasználható a művelet végrehajtására a szálon belül, például üzenetek küldésére vagy listaelemek fogadására.
+Ha megoldotta, `createChatThread` a metódus a értéket adja vissza `CreateChatThreadResult` . Ez a modell egy olyan `chatThread` tulajdonságot tartalmaz, amely az `id` újonnan létrehozott szál elérésére használható. Ezután a használatával `id` kérheti le a egy példányát `ChatThreadClient` . A `ChatThreadClient` felhasználható a művelet végrehajtására a szálon belül, például üzenetek küldésére vagy listaelemek fogadására.
 
 ```JavaScript
 async function createChatThread() {
     let createThreadRequest = {
         topic: 'Preparation for London conference',
         participants: [{
-                    user: { communicationUserId: '<USER_ID_FOR_JACK>' },
+                    id: { communicationUserId: '<USER_ID_FOR_JACK>' },
                     displayName: 'Jack'
                 }, {
-                    user: { communicationUserId: '<USER_ID_FOR_GEETA>' },
+                    id: { communicationUserId: '<USER_ID_FOR_GEETA>' },
                     displayName: 'Geeta'
                 }]
     };
-    let createThreadResponse = await chatClient.createChatThread(createThreadRequest);
-    let threadId = createThreadResponse.chatThread.id;
+    let createChatThreadResult = await chatClient.createChatThread(createThreadRequest);
+    let threadId = createChatThreadResult.chatThread.id;
     return threadId;
     }
 
@@ -184,7 +184,7 @@ Thread created: <thread_id>
 A `getChatThreadClient` metódus egy olyan `chatThreadClient` szálat ad vissza, amely már létezik. A létrehozott szálon végzett műveletek végrehajtásához használható: résztvevők hozzáadása, üzenet küldése stb. szálazonosító a meglévő csevegési szál egyedi azonosítója.
 
 ```JavaScript
-let chatThreadClient = await chatClient.getChatThreadClient(threadId);
+let chatThreadClient = chatClient.getChatThreadClient(threadId);
 console.log(`Chat Thread client for threadId:${threadId}`);
 
 ```
@@ -195,35 +195,33 @@ Chat Thread client for threadId: <threadId>
 
 ## <a name="send-a-message-to-a-chat-thread"></a>Üzenet küldése csevegési szálnak
 
-A `sendMessage` metódus használatával küldhet csevegési üzenetet az imént létrehozott, szálazonosító által azonosított szálra.
+A `sendMessage` metódus használatával küldhet üzenetet a szálazonosító által azonosított szálnak.
 
-`sendMessageRequest` a csevegő üzenet kérésének kötelező mezőinek leírása:
+`sendMessageRequest` az üzenet kérésének leírására szolgál:
 
 - `content`A csevegési üzenet tartalmának megadásához használja a következőt:
 
-`sendMessageOptions` a csevegési üzenet kérésének választható mezőinek ismertetése:
+`sendMessageOptions` a művelet opcionális paraméterei leírására szolgál:
 
-- `priority`A (z) használatával adhatja meg a csevegés prioritási szintjét (például "NORMAL" vagy "magas"). Ezzel a tulajdonsággal megjelenítheti az alkalmazás felhasználóinak felhasználói felületi mutatóját, hogy az üzenetre figyeljen, vagy egyéni üzleti logikát hajtson végre.
 - A használatával `senderDisplayName` adja meg a feladó megjelenítendő nevét;
+- `type`Az üzenet típusának (például "text" vagy "HTML") megadására használható.
 
-A válasz `sendChatMessageResult` tartalmaz egy azonosítót, amely az üzenet egyedi azonosítója.
+`SendChatMessageResult` az üzenet elküldésekor kapott válasz egy azonosítót tartalmaz, amely az üzenet egyedi azonosítója.
 
 ```JavaScript
-
 let sendMessageRequest =
 {
     content: 'Hello Geeta! Can you share the deck for the conference?'
 };
 let sendMessageOptions =
 {
-    priority: 'Normal',
-    senderDisplayName : 'Jack'
+    senderDisplayName : 'Jack',
+    type: 'text'
 };
 let sendChatMessageResult = await chatThreadClient.sendMessage(sendMessageRequest, sendMessageOptions);
 let messageId = sendChatMessageResult.id;
-console.log(`Message sent!, message id:${messageId}`);
-
 ```
+
 Vegye fel ezt a kódot a `<SEND MESSAGE TO A CHAT THREAD>` Megjegyzés helyére **client.js**, frissítse a böngésző fület, és tekintse meg a konzolt.
 ```console
 Message sent!, message id:<number>
@@ -286,7 +284,7 @@ A csevegési szál létrehozása után hozzáadhat és eltávolíthat felhaszná
 A metódus meghívása előtt `addParticipants` Győződjön meg arról, hogy új hozzáférési jogkivonatot és identitást szerzett az adott felhasználó számára. A felhasználónak szüksége lesz erre a hozzáférési jogkivonatra ahhoz, hogy inicializálja a csevegési ügyfelet.
 
 `addParticipantsRequest` leírja a kérelem azon objektumát, amelyben a `participants` csevegési szálhoz hozzáadandó résztvevők szerepelnek.
-- `user`, kötelező, az a kommunikációs felhasználó, akit fel kell venni a csevegési szálba.
+- `id`, kötelező, a csevegési szálhoz hozzáadandó kommunikációs azonosító.
 - `displayName`, nem kötelező, a szál résztvevő megjelenítendő neve.
 - `shareHistoryTime`, nem kötelező, az az idő, amely alapján a csevegési előzmények megoszthatók a résztvevővel. Ha meg szeretné osztani a beszélgetési szál kezdete óta megjelenő előzményeket, állítsa ezt a tulajdonságot bármilyen dátumra vagy kevesebbre, mint a szál létrehozási ideje. Ha a résztvevő hozzáadását megelőzően meg szeretné osztani a korábbi előzményeket, állítsa azt az aktuális dátumra. A részleges előzmények megosztásához állítsa azt a választott dátumra.
 
@@ -296,7 +294,7 @@ let addParticipantsRequest =
 {
     participants: [
         {
-            user: { communicationUserId: '<NEW_PARTICIPANT_USER_ID>' },
+            id: { communicationUserId: '<NEW_PARTICIPANT_USER_ID>' },
             displayName: 'Jane'
         }
     ]

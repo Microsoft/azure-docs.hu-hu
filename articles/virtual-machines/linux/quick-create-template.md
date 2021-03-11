@@ -2,18 +2,19 @@
 title: 'Gyors útmutató: Ubuntu Linux virtuális gép létrehozása Resource Manager-sablonnal'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Linux rendszerű virtuális gépet Resource Manager-sablonok használatával
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: quickstart
 ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: bd22d20703dc72e220f9b479b4a4005033f964ae
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 97a9d3632cb0e78b899844b1aaa84a030c6da23e
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88649771"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549617"
 ---
 # <a name="quickstart-create-an-ubuntu-linux-virtual-machine-using-an-arm-template"></a>Gyors útmutató: Ubuntu Linux virtuális gép létrehozása ARM-sablonnal
 
@@ -55,13 +56,13 @@ Több erőforrás van definiálva a sablonban:
 1. Válassza ki vagy adja meg a következő értékeket. Használja az alapértelmezett értékeket, ha vannak ilyenek.
 
     - **Előfizetés**: válasszon ki egy Azure-előfizetést.
-    - **Erőforráscsoport**: válasszon ki egy meglévő erőforráscsoportot a legördülő listából, vagy válassza az **új létrehozása**lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK**gombra.
+    - **Erőforráscsoport**: válasszon ki egy meglévő erőforráscsoportot a legördülő listából, vagy válassza az **új létrehozása** lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK** gombra.
     - **Hely**: válasszon ki egy helyet.  Például: **USA középső régiója**.
-    - **Rendszergazdai Felhasználónév**: adjon meg egy felhasználónevet, például az *Azureus*nevet.
+    - **Rendszergazdai Felhasználónév**: adjon meg egy felhasználónevet, például az *Azureus* nevet.
     - **Hitelesítés típusa**: választhat, hogy SSH-kulcsot vagy jelszót használ-e.
     - **Rendszergazdai jelszó vagy kulcs** attól függően, hogy mit választott a hitelesítési típushoz:
-        - Ha a **jelszó**lehetőséget választja, a jelszónak legalább 12 karakter hosszúnak kell lennie, és meg kell felelnie a [meghatározott összetettségi követelményeknek](faq.md#what-are-the-password-requirements-when-creating-a-vm).
-        - Ha a **sshPublicKey**lehetőséget választja, illessze be a nyilvános kulcs tartalmát.
+        - Ha a **jelszó** lehetőséget választja, a jelszónak legalább 12 karakter hosszúnak kell lennie, és meg kell felelnie a [meghatározott összetettségi követelményeknek](faq.md#what-are-the-password-requirements-when-creating-a-vm).
+        - Ha a **sshPublicKey** lehetőséget választja, illessze be a nyilvános kulcs tartalmát.
     - **DNS-címke előtagja**: adjon meg egy egyedi azonosítót, amelyet a DNS-címke részeként kíván használni.
     - **Ubuntu operációs rendszer verziója**: válassza ki, hogy melyik Ubuntu-verziót szeretné futtatni a virtuális gépen.
     - **Hely**: az alapértelmezett érték ugyanaz a hely, mint az erőforráscsoport, ha már létezik.
@@ -84,11 +85,11 @@ A Azure Portal segítségével megkeresheti a virtuális gépet és a létrehozo
 Ha már nincs rá szükség, törölje az erőforráscsoportot, amely törli a virtuális gépet és az erőforráscsoport összes erőforrását. 
 
 1. Válassza ki az **erőforráscsoportot**.
-1. Az erőforráscsoport lapján válassza a **Törlés**lehetőséget.
-1. Ha a rendszer kéri, írja be az erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
+1. Az erőforráscsoport lapján válassza a **Törlés** lehetőséget.
+1. Ha a rendszer kéri, írja be az erőforráscsoport nevét, majd válassza a **Törlés** lehetőséget.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban üzembe helyezett egy egyszerű virtuális gépet egy ARM-sablon használatával. Ha bővebb információra van szüksége az Azure-beli virtuális gépekkel kapcsolatban, lépjen tovább a Linux rendszerű virtuális gépekről szóló oktatóanyagra.
 

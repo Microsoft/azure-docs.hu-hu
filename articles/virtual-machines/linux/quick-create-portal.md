@@ -2,18 +2,19 @@
 title: Rövid útmutató – Linux rendszerű virtuális gép létrehozása a Azure Portal
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Linux rendszerű virtuális gépet a Azure Portal használatával.
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: quickstart
 ms.workload: infrastructure
 ms.date: 06/25/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 405cb107711845a6699e09bc09a1d2d9f3005cd6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c1ccd2df3a1fd6b2f1f1cb5b2d3250e8bbfcc327
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016046"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549736"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Rövid útmutató: Linux rendszerű virtuális gép létrehozása az Azure Portalon
 
@@ -34,7 +35,7 @@ Ha még nem tette meg, jelentkezzen be a [Azure Portalba](https://portal.azure.c
 
     ![A Project Details (projekt részletei) szakasz képernyőképe, amelyen kiválaszthatja az Azure-előfizetést és a virtuális géphez tartozó erőforráscsoportot.](./media/quick-create-portal/project-details.png)
 
-1. A **példány részletei** területen írja *myVM* be a myVM **nevet a virtuális gép neveként**, válassza az *USA keleti* **régiója** lehetőséget, és válassza az *Ubuntu 18,04 LTS* lehetőséget a **rendszerképhez**. Hagyja meg a többi alapértelmezett értéket.
+1. A **példány részletei** területen írja  be a myVM **nevet a virtuális gép neveként**, válassza az *USA keleti* **régiója** lehetőséget, és válassza az *Ubuntu 18,04 LTS* lehetőséget a **rendszerképhez**. Hagyja meg a többi alapértelmezett értéket.
 
     ![Képernyőkép a példány részleteiről szakaszról, ahol megadhatja a virtuális gép nevét, és kiválaszthatja annak régióját, képét és méretét](./media/quick-create-portal/instance-details.png)
 
@@ -100,7 +101,7 @@ Egy tetszőleges webböngészővel tekintse meg az alapértelmezett NGINX-kezdő
 
 Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális gép erőforráscsoportját, kattintson a **Törlés** elemre, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban üzembe helyezett egy egyszerű virtuális gépet, létrehozott egy hálózati biztonsági csoportot és szabályt, valamint telepített egy alapszintű webkiszolgálót. Ha bővebb információra van szüksége az Azure-beli virtuális gépekkel kapcsolatban, lépjen tovább a Linux rendszerű virtuális gépekről szóló oktatóanyagra.
 

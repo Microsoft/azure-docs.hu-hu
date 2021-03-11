@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a25caa3b59d242b8dcc8a52e1a5d684815cf7bf
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 8525e9a76fa2439692cdb26b36c0bb761d63177c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547780"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550229"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Dinamikus csoport létrehozása vagy frissítése Azure Active Directory
 
@@ -67,7 +67,7 @@ Ha a beírt szabály nem érvényes, a portálon egy Azure-értesítésben láth
 ## <a name="to-update-an-existing-rule"></a>Meglévő szabály frissítése
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) egy olyan fiókkal, amely a globális rendszergazda, a csoport rendszergazdája, az Intune-rendszergazda vagy a felhasználói rendszergazdai szerepkör tagja az Azure ad-szervezetben.
-1. Válassza **Groups**  >  **a csoportok minden csoport** elemet.
+1. Válassza   >  **a csoportok minden csoport** elemet.
 1. Válasszon ki egy csoportot a profiljának megnyitásához.
 1. A csoport profil lapján válassza a **dinamikus tagsági szabályok** lehetőséget. A szabály-szerkesztő legfeljebb öt kifejezést támogat. Ötnél több kifejezés hozzáadásához a szövegmezőt kell használnia.
 
@@ -80,7 +80,7 @@ Ha a beírt szabály nem érvényes, a portálon egy Azure-értesítésben láth
 
 ## <a name="turn-on-or-off-welcome-email"></a>Üdvözlő e-mailek be-és kikapcsolása
 
-Új Microsoft 365 csoport létrehozásakor a rendszer üdvözlő e-mail-értesítést küld a csoportba felvett felhasználóknak. Később, ha a felhasználó vagy az eszköz bármelyik attribútuma módosul, a rendszer a szervezet összes dinamikus csoportjának szabályait dolgozza fel a tagság változásaihoz. A hozzáadott felhasználók megkapják az üdvözlő értesítést is. Ezt a viselkedést az [Exchange PowerShellben](/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps&preserve-view=true)is kikapcsolhatja.
+Új Microsoft 365 csoport létrehozásakor a rendszer üdvözlő e-mail-értesítést küld a csoportba felvett felhasználóknak. Később, ha a felhasználó vagy az eszköz bármelyik attribútuma módosul, a rendszer a szervezet összes dinamikus csoportjának szabályait dolgozza fel a tagság változásaihoz. A hozzáadott felhasználók megkapják az üdvözlő értesítést is. Ezt a viselkedést az [Exchange PowerShellben](/powershell/module/exchange/users-and-groups/Set-UnifiedGroup)is kikapcsolhatja.
 
 ## <a name="check-processing-status-for-a-rule"></a>Szabály feldolgozási állapotának keresése
 
