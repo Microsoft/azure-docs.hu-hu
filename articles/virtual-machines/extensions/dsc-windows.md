@@ -1,25 +1,19 @@
 ---
 title: Az Azure kívánt állapotának konfigurációs bővítményének kezelője
 description: PowerShell DSC-konfiguráció feltöltése és alkalmazása Azure-beli virtuális gépen DSC-bővítmény használatával
-services: virtual-machines-windows
-documentationcenter: ''
-author: bobbytreed
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: virtual-machines-windows
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: windows
-ms.workload: ''
-ms.date: 03/26/2018
+ms.service: virtual-machines
+ms.subservice: extensions
+author: bobbytreed
 ms.author: robreed
-ms.openlocfilehash: 5254d83c18ddc9f2a5518ed4f711d4cd73ab6de7
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.collection: windows
+ms.date: 03/26/2018
+ms.openlocfilehash: 72f66aeee64133a13ce0e49155c4b2a90240a3fb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510940"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559987"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC-bővítmény
 
@@ -98,7 +92,7 @@ A következő JSON a DSC-bővítmény beállítások részének sémáját mutat
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Név | Érték/példa | Adattípus |
+| Name | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2018-10-01 | dátum |
 | közzétevő | Microsoft. PowerShell. DSC | sztring |
@@ -107,7 +101,7 @@ A következő JSON a DSC-bővítmény beállítások részének sémáját mutat
 
 ### <a name="settings-property-values"></a>Beállítások tulajdonság értékei
 
-| Név | Adattípus | Leírás
+| Name | Adattípus | Leírás
 | ---- | ---- | ---- |
 | Settings. wmfVersion | sztring | Meghatározza a Windows felügyeleti keretrendszer azon verzióját, amelyet telepíteni kell a virtuális gépre. Ha ezt a tulajdonságot "Latest" értékre állítja, a rendszer a WMF legújabb verzióját telepíti. Ennek a tulajdonságnak csak az aktuális lehetséges értékei: "4,0", "5,0" és "Latest". Ezek a lehetséges értékek a frissítések tárgya. Az alapértelmezett érték a "Latest". |
 | settings.configszülő. URL | sztring | Meghatározza azt az URL-címet, amelyből le szeretné tölteni a DSC-konfiguráció zip-fájlját. Ha a megadott URL-címnek SAS-tokenre van szüksége a hozzáféréshez, akkor a protectedSettings.configurationUrlSasToken tulajdonságot az SAS-token értékére kell állítania. Ez a tulajdonság akkor szükséges, ha settings.configszülő. script és/vagy settings.configszülő. Function van definiálva.
@@ -121,7 +115,7 @@ A következő JSON a DSC-bővítmény beállítások részének sémáját mutat
 
 ### <a name="protected-settings-property-values"></a>Védett beállítások tulajdonságértékek
 
-| Név | Adattípus | Leírás
+| Name | Adattípus | Leírás
 | ---- | ---- | ---- |
 | protectedSettings.configurationArguments | sztring | Meghatározza a DSC-konfigurációnak átadandó paramétereket. Ez a tulajdonság titkosítva lesz. |
 | protectedSettings.configurationUrlSasToken | sztring | Meghatározza a Configuration. URL által definiált URL-cím elérésére szolgáló SAS-tokent. Ez a tulajdonság titkosítva lesz. |

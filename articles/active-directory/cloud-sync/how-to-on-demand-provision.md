@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect Cloud Sync igény szerinti kiépítés
-description: Ez a cikk az igény szerinti üzembe helyezési funkciót ismerteti.
+title: Igény szerinti kiépítés Azure AD Connect Cloud syncben
+description: Ez a cikk azt ismerteti, hogyan használható a Azure AD Connect Cloud Sync funkciója a konfigurációs változások teszteléséhez.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,88 +11,90 @@ ms.date: 09/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ac186d4b460165605ccf0fc53bdb0b691348bf3
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 5048b78c7d59b3358dbffe2e3e6eedf41decabb8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98622524"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554275"
 ---
-# <a name="azure-ad-connect-cloud-sync-on-demand-provisioning"></a>Azure AD Connect Cloud Sync igény szerinti kiépítés
+# <a name="on-demand-provisioning-in-azure-ad-connect-cloud-sync"></a>Igény szerinti kiépítés Azure AD Connect Cloud syncben
 
-Azure AD Connect a Cloud Sync egy új funkciót vezetett be, amely lehetővé teszi a konfigurációs változások tesztelését, ha ezeket a módosításokat egyetlen felhasználóra alkalmazza.  Ezzel ellenőrizheti, hogy a konfiguráción végrehajtott módosítások megfelelően lettek-e alkalmazva, és megfelelően szinkronizálva vannak-e az Azure AD-vel.  
+Az Azure Active Directory (Azure AD) Cloud Sync szolgáltatásával csatlakozhat a konfigurációs változások teszteléséhez, ha ezeket a módosításokat egyetlen felhasználóra alkalmazza. Az igény szerinti kiépítés segítségével ellenőrizheti, hogy a konfiguráción végrehajtott módosítások megfelelően lettek-e alkalmazva, és megfelelően vannak-e szinkronizálva az Azure AD-vel.  
 
 > [!IMPORTANT] 
-> Igény szerinti kiépítés használata esetén a rendszer nem alkalmazza a hatóköri szűrőket a kiválasztott felhasználóra.  Ez azt jelenti, hogy igény szerinti üzembe helyezést használhat a megadott szervezeti egységeken kívüli felhasználóknál.
+> Igény szerinti kiépítés használata esetén a rendszer nem alkalmazza a hatóköri szűrőket a kiválasztott felhasználóra. Igény szerinti kiépítést használhat a megadott szervezeti egységeken kívüli felhasználók számára.
 
-
-## <a name="using-on-demand-provisioning"></a>Igény szerinti kiépítés használata
-Az új funkció használatához kövesse az alábbi lépéseket.
-
+## <a name="validate-a-user"></a>Felhasználó ellenőrzése
+Igény szerinti kiépítés használatához kövesse az alábbi lépéseket:
 
 1.  Az Azure Portalon válassza az **Azure Active Directory** lehetőséget.
 2.  Válassza a **Azure ad Connect** lehetőséget.
 3.  Válassza a **Felhőbeli szinkronizálás kezelése** lehetőséget.
 
-    ![Kiépítés kezelése](media/how-to-install/install-6.png)
+    ![A Felhőbeli szinkronizálás kezelésére mutató hivatkozást bemutató képernyőkép.](media/how-to-install/install-6.png)
 4. A **konfiguráció** területen válassza ki a konfigurációt.
-5. Az **ellenőrzés** alatt kattintson a **felhasználó kiépítése** gombra. 
+5. Az **Érvényesítés** területen válassza a **felhasználó kiépítése** gombot. 
 
- ![Felhasználó kiépítése](media/how-to-on-demand-provision/on-demand-2.png)
+   ![A felhasználó kiépítési gombját megjelenítő képernyőkép.](media/how-to-on-demand-provision/on-demand-2.png)
 
-6. Az igény szerinti üzembe helyezési képernyőn.  Adja meg a felhasználó **megkülönböztető nevét** , és kattintson a **kiépítés** gombra.  
+6. A **kiépítés igény szerint** képernyőn adja meg a felhasználó megkülönböztető nevét, és válassza a **kiépítés** gombot.  
  
- ![Igény szerinti kiépítés](media/how-to-on-demand-provision/on-demand-3.png)
-7. Ha befejeződik, megjelenik egy sikeres képernyő és 4 zöld jelölőnégyzet, amely azt jelzi, hogy a rendszer sikeresen kiépített.  A hibák a bal oldalon jelennek meg.
+   ![A felhasználónevet és a kiosztási gombot bemutató képernyőkép.](media/how-to-on-demand-provision/on-demand-3.png)
+7. A kiépítés befejezését követően egy sikeres képernyő jelenik meg négy zöld pipa jel. A hibák a bal oldalon jelennek meg.
 
-  ![Siker](media/how-to-on-demand-provision/on-demand-4.png)
+   ![A sikeres üzembe helyezést bemutató képernyőkép.](media/how-to-on-demand-provision/on-demand-4.png)
 
-Most megtekintheti a felhasználót, és meghatározhatja, hogy alkalmazta-e a konfigurációban végrehajtott módosításokat.  A dokumentum hátralévő része leírja azokat az egyes szakaszokat, amelyek egy sikeresen szinkronizált felhasználó részleteiben jelennek meg.
+## <a name="get-details-about-provisioning"></a>A kiépítés részleteinek beolvasása
+Most megtekintheti a felhasználói adatokat, és meghatározhatja, hogy alkalmazta-e a konfigurációban végrehajtott módosításokat. A cikk további része a sikeresen szinkronizált felhasználó részleteiben megjelenő egyes szakaszokat ismerteti.
 
-## <a name="import-user-details"></a>Felhasználó adatainak importálása
-Ez a szakasz a Active Directoryból importált felhasználóval kapcsolatos információkat tartalmazza.  A felhasználó így néz ki az Azure AD-ben való üzembe helyezés előtt.  Az információk megjelenítéséhez kattintson a **részletek megtekintése** hivatkozásra.
+### <a name="import-user"></a>Felhasználó importálása
+A **felhasználó importálása** szakasz a Active Directoryból importált felhasználóról nyújt információkat. A felhasználó így néz ki az Azure AD-ba való kiépítés előtt. Az információk megjelenítéséhez kattintson a **részletek megtekintése** hivatkozásra.
 
-![Felhasználó importálása](media/how-to-on-demand-provision/on-demand-5.png)
+![Képernyőfelvétel a gombról az importált felhasználó részleteinek megtekintéséhez.](media/how-to-on-demand-provision/on-demand-5.png)
 
-Ezen információk használatával megtekintheti az importált különböző attribútumokat és azok értékeit.  Ha egyéni attribútum-hozzárendelést hozott létre, Itt láthatja az értéket.
-![Felhasználó adatainak importálása](media/how-to-on-demand-provision/on-demand-6.png)
+Ezen információk használatával megtekintheti az importált különböző attribútumokat (és azok értékeit). Ha egyéni attribútum-hozzárendelést hozott létre, Itt láthatja az értéket.
 
-## <a name="determine-if-user-is-in-scope-details"></a>Annak megállapítása, hogy a felhasználó hatóköre részletes-e
-Ez a szakasz azt ismerteti, hogy az Azure AD-ba importált felhasználó hatókörben van-e.  Az információk megjelenítéséhez kattintson a **részletek megtekintése** hivatkozásra.
+![A felhasználói adatokat megjelenítő képernyőkép.](media/how-to-on-demand-provision/on-demand-6.png)
 
-![Felhasználói hatókör](media/how-to-on-demand-provision/on-demand-7.png)
+### <a name="determine-if-user-is-in-scope"></a>Annak megállapítása, hogy a felhasználó hatókörben van-e
+Annak **megállapítása** , hogy a felhasználó szerepel-e a hatókör szakaszban, információt nyújt arról, hogy az Azure ad-ba importált felhasználó hatókörben van-e. Az információk megjelenítéséhez kattintson a **részletek megtekintése** hivatkozásra.
 
-Ezen információk használatával további információkat tekinthet meg a felhasználók hatóköréről.
+![A felhasználói hatókör részleteit megjelenítő gomb képernyőképe.](media/how-to-on-demand-provision/on-demand-7.png)
 
-![Felhasználói hatókör részletei](media/how-to-on-demand-provision/on-demand-10a.png)
+Ezen információk használatával megtekintheti, hogy a felhasználó hatókörben van-e.
 
-## <a name="match-user-between-source-and-target-system-details"></a>Felhasználó egyeztetése a forrás-és a célként megadott rendszer részletei között
-Ez a szakasz arról nyújt tájékoztatást, hogy a felhasználó már létezik-e az Azure AD-ben, és hogy egy új felhasználó üzembe helyezése helyett kell-e csatlakoznia.  Az információk megjelenítéséhez kattintson a **részletek megtekintése** hivatkozásra.
-![Részletek megtekintése](media/how-to-on-demand-provision/on-demand-8.png)
+![A felhasználói hatókör részleteit megjelenítő képernyőkép.](media/how-to-on-demand-provision/on-demand-10a.png)
 
-Ezen információk alapján megtekintheti, hogy talált-e egyezést, vagy új felhasználót fog-e létrehozni.
+### <a name="match-user-between-source-and-target-system"></a>Felhasználó egyeztetése a forrás-és a célként megadott rendszer között
+A **megfelelő felhasználó a forrás-és a célszámítógép között** című szakasz információt nyújt arról, hogy a felhasználó már létezik-e az Azure ad-ben, és hogy van-e kapcsolódás az új felhasználó üzembe helyezése helyett. Az információk megjelenítéséhez kattintson a **részletek megtekintése** hivatkozásra.
 
-![Felhasználói adatok](media/how-to-on-demand-provision/on-demand-11.png)
+![Képernyőfelvétel a gombról az egyeztetett felhasználó részleteinek megtekintéséhez.](media/how-to-on-demand-provision/on-demand-8.png)
 
-A megfeleltetés részletei egy üzenetet jelenítenek meg a következő három művelet egyikével.  Ezek a következők:
-- Létrehozás – felhasználó létrehozása az Azure AD-ben
-- Frissítés – a felhasználó a konfigurációban történt változás alapján frissül.
-- Delete (Törlés) – a felhasználó törlődik az Azure AD-ből.
+Ezen információk használatával megtekintheti, hogy talált-e egyezést, vagy új felhasználót fog-e létrehozni.
+
+![Képernyőkép, amely a felhasználói adatokat jeleníti meg.](media/how-to-on-demand-provision/on-demand-11.png)
+
+A megfeleltetés részletei egy üzenetet jelenítenek meg a következő három művelet egyikével:
+- **Létrehozás**: létrejön egy felhasználó az Azure ad-ben.
+- **Frissítés**: a rendszer a konfigurációban végrehajtott módosítások alapján frissíti a felhasználót.
+- **Törlés**: eltávolít egy felhasználót az Azure ad-ből.
 
 A végrehajtott művelet típusától függően az üzenet változhat.
 
-## <a name="perform-action-details"></a>Művelet részleteinek végrehajtása
-Ez a szakasz a konfiguráció alkalmazása után az Azure AD-ba kiosztott vagy exportált felhasználóval kapcsolatos információkat tartalmaz.  Így néz ki a felhasználó az Azure AD-ben való üzembe helyezés után.  Az információk megjelenítéséhez kattintson a **részletek megtekintése** hivatkozásra.
-![Művelet részleteinek végrehajtása](media/how-to-on-demand-provision/on-demand-9.png)
+### <a name="perform-action"></a>Művelet végrehajtása
+A **művelet végrehajtása** szakasz a konfiguráció alkalmazása után az Azure ad-ba kiosztott vagy exportált felhasználóról nyújt információkat. A felhasználó így néz ki az Azure AD-ba való kiépítés után. Az információk megjelenítéséhez kattintson a **részletek megtekintése** hivatkozásra.
 
-Ezen információk használatával megtekintheti az attribútumok értékeit a konfiguráció alkalmazása után.  Ugyanúgy néznek ki, mint az importált vagy a különböző elemek?  A konfiguráció alkalmazása sikeres?  
+![Képernyőkép a gombról az elvégezett művelet részleteinek megtekintéséhez.](media/how-to-on-demand-provision/on-demand-9.png)
 
-Ezzel a folyamattal nyomon követheti az attribútumok átalakítását, ahogy az a felhőben és az Azure AD-bérlőn halad át.
+Ezen információk használatával megtekintheti az attribútumok értékeit a konfiguráció alkalmazása után. Ugyanúgy néznek ki, mint az importált elemek, vagy különbözőek? Sikerült alkalmazni a konfigurációt?  
 
-![nyomkövetési attribútum](media/how-to-on-demand-provision/on-demand-12.png)
+Ez a folyamat lehetővé teszi, hogy nyomon kövesse az attribútum átalakítását, ahogy az a felhőben és az Azure AD-bérlőn halad át.
+
+![A nyomon követett attribútumok részleteit megjelenítő képernyőkép.](media/how-to-on-demand-provision/on-demand-12.png)
 
 ## <a name="next-steps"></a>Következő lépések 
 
 - [Mi az Azure AD Connect Cloud Sync?](what-is-cloud-sync.md)
-- [A Azure AD Connect Cloud Sync telepítése](how-to-install.md)
+- [Azure AD Connect Cloud Sync telepítése](how-to-install.md)
  

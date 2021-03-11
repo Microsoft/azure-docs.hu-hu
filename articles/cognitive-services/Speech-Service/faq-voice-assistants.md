@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 4b0bbb982ed48dc052b1a15514ad36b1d69b62b5
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 511eb12df511fd037fc0b5bec701c0cc5c29bad2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599414"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617777"
 ---
 # <a name="voice-assistants-frequently-asked-questions"></a>Hangvezérelt asszisztensek – gyakori kérdések
 
@@ -36,7 +36,7 @@ Ha a jelen dokumentumban nem talál választ a kérdéseire, tekintse meg az [eg
 **A:** A legjobb módszer az egyéni parancsok (előzetes verzió) alkalmazás vagy az alapszintű bot Framework bot létrehozásához.
 
 - [Egyéni parancsok (előzetes verzió) alkalmazás létrehozása](./quickstart-custom-commands-application.md)
-- [Alapszintű robot-keretrendszer robot létrehozása](/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+- [Alapszintű robot-keretrendszer robot létrehozása](/azure/bot-service/bot-builder-tutorial-basic-deploy)
 - [Robot összekötése a közvetlen vonalas beszéd csatornával](/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>Hibakeresés
@@ -68,7 +68,7 @@ Részletesebb útmutatásért tekintse meg az [oktatóanyag című szakaszt](tut
 
 **A:** A fájl alapú naplózás lényegesen több részletet biztosít, és a támogatási kérelmek felgyorsítását is segíti. A funkció engedélyezéséhez tekintse meg a [fájlok naplózásának használata](how-to-use-logging.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hibaelhárítás](troubleshooting.md)
 - [Kibocsátási megjegyzések](releasenotes.md)

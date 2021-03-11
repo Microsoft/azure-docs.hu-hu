@@ -38,8 +38,14 @@
       items:
         - name: Az App Management-minták áttekintése
           href: app-management-powershell-samples.md
-        - name: 'Az összes alkalmazás regisztrációjának, titkos kulcsának és tanúsítványának exportálása'
+        - name: Titkok és tanúsítványok exportálása (alkalmazás-regisztrációk)
           href: ./scripts/powershell-export-all-app-registrations-secrets-and-certs.md
+        - name: Titkok és tanúsítványok exportálása (vállalati alkalmazások)
+          href: ./scripts/powershell-export-all-enterprise-apps-secrets-and-certs.md
+        - name: A lejáró titkok és tanúsítványok exportálása
+          href: ./scripts/powershell-export-apps-with-expriring-secrets.md
+        - name: A titkok és tanúsítványok exportálása a szükséges dátum után lejár
+          href: ./scripts/powershell-export-apps-with-secrets-beyond-required.md
     - name: Az App proxy PowerShell-mintái
       href: application-proxy-powershell-samples.md
 - name: Alapelvek

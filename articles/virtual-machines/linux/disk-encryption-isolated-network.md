@@ -2,18 +2,19 @@
 title: Azure Disk Encryption izolált hálózaton
 description: Ebből a cikkből megtudhatja, hogyan hibaelhárítási tippeket Microsoft Azure lemezes titkosítást a Linux rendszerű virtuális gépeken.
 author: msmbaldwin
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1d7e019e7759e22e945bddee477a4cb77f17350b
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 8d8d2b88251f837a23c4e82a90eb4d4eb0043702
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913823"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553051"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>Azure Disk Encryption izolált hálózaton
 
@@ -25,12 +26,12 @@ Azure Disk Encryption számos összetevőtől függ, amelyek általában az ADE-
 
 Az alábbi csomagok szükségesek az egyes terjesztésekhez. A támogatott disztribúciók és mennyiségi típusok teljes listáját lásd: [támogatott virtuális gépek és operációs rendszerek](disk-encryption-overview.md#supported-vms-and-operating-systems).
 
-- **Ubuntu 14,04, 16,04, 18,04** : lsscsi, psmisc, at, cryptsetup program változatának-bin, Python-elváltott, Python-Six, procps, grub-PC-bin
-- **CentOS 7,2-7,7** : lsscsi, psmisc, LVM2, UUID, at, patch, cryptsetup program változatának, cryptsetup program változatának-reencrypt, pyparted, procps-ng, util-linux
-- **CentOS 6,8** : lsscsi, psmisc, LVM2, UUID, at, cryptsetup program változatának-retitkosítás, pyparted, Python-Six
-- **RedHat 7,2-7,7** : lsscsi, psmisc, LVM2, UUID, at, patch, cryptsetup program változatának, cryptsetup program változatának-reencrypt, procps-ng, util-linux
-- **RedHat 6,8** : lsscsi, psmisc, LVM2, UUID, at, patch, cryptsetup program változatának-reencrypt
-- **openSUSE 42,3, SLES 12-SP4, 12-SP3** : lsscsi, cryptsetup program változatának
+- **Ubuntu 14,04, 16,04, 18,04**: lsscsi, psmisc, at, cryptsetup program változatának-bin, Python-elváltott, Python-Six, procps, grub-PC-bin
+- **CentOS 7,2-7,7**: lsscsi, psmisc, LVM2, UUID, at, patch, cryptsetup program változatának, cryptsetup program változatának-reencrypt, pyparted, procps-ng, util-linux
+- **CentOS 6,8**: lsscsi, psmisc, LVM2, UUID, at, cryptsetup program változatának-retitkosítás, pyparted, Python-Six
+- **RedHat 7,2-7,7**: lsscsi, psmisc, LVM2, UUID, at, patch, cryptsetup program változatának, cryptsetup program változatának-reencrypt, procps-ng, util-linux
+- **RedHat 6,8**: lsscsi, psmisc, LVM2, UUID, at, patch, cryptsetup program változatának-reencrypt
+- **openSUSE 42,3, SLES 12-SP4, 12-SP3**: lsscsi, cryptsetup program változatának
 
 Red Hat esetén, ha proxyra van szükség, meg kell győződnie arról, hogy az előfizetés-kezelő és a yum megfelelően van beállítva. További információ: [az előfizetés-kezelő és a yum-problémák elhárítása](https://access.redhat.com/solutions/189533).  
 

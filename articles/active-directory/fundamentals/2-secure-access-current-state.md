@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 302e4becd337c8e7b0b425a52ed46d562db5bae4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 30858e9978f7e8857c5f8a2dcdfd7455f6e97b60
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725327"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553425"
 ---
 # <a name="discover-the-current-state-of-external-collaboration-in-your-organization"></a>A szervezeten belüli külső együttműködés aktuális állapotának felderítése 
 
@@ -34,11 +34,11 @@ A szervezeten belüli személyek valószínűleg már együttműködnek más sze
 
 A külső együttműködést kezdeményező felhasználók jobban megismerhetik a külső együttműködéshez leginkább megfelelő alkalmazásokat, és ha a hozzáférés véget ért. A felhasználók megismerése segíthet megállapítani, hogy ki delegált jogosultság a külső felhasználók meghívásához, a hozzáférési csomagok létrehozásához és a hozzáférési felülvizsgálatok befejezéséhez.
 
-A jelenleg együttműködő felhasználók megkereséséhez tekintse át a [Microsoft 365 naplót a megosztási és hozzáférési kérelmekre vonatkozó tevékenységekhez](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance?view=o365-worldwide#sharing-and-access-request-activities). Tekintse át az [Azure ad-naplózási naplót is, amely részletesen ismerteti](../external-identities/auditing-and-reporting.md) , hogy ki és mikor hívott meg a B2B-felhasználók címtára
+A jelenleg együttműködő felhasználók megkereséséhez tekintse át a [Microsoft 365 naplót a megosztási és hozzáférési kérelmekre vonatkozó tevékenységekhez](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#sharing-and-access-request-activities). Tekintse át az [Azure ad-naplózási naplót is, amely részletesen ismerteti](../external-identities/auditing-and-reporting.md) , hogy ki és mikor hívott meg a B2B-felhasználók címtára
 
 ## <a name="find-current-collaboration-partners"></a>Az aktuális együttműködési partnerek keresése
 
-A külső felhasználók lehetnek az [Azure ad B2B-felhasználók](../external-identities/what-is-b2b.md) (lehetőleg) partner által felügyelt hitelesítő adatokkal, illetve helyileg kiosztott hitelesítő adatokkal rendelkező külső felhasználókkal. Ezek a felhasználók jellemzően (de nem mindig) a vendég UserType vannak megjelölve. A vendég felhasználókat a [Microsoft Graph API](/graph/api/user-list?tabs=http&view=graph-rest-1.0), a [PowerShell](/graph/api/user-list?tabs=http&view=graph-rest-1.0)vagy a [Azure Portal](../enterprise-users/users-bulk-download.md)használatával lehet enumerálni.
+A külső felhasználók lehetnek az [Azure ad B2B-felhasználók](../external-identities/what-is-b2b.md) (lehetőleg) partner által felügyelt hitelesítő adatokkal, illetve helyileg kiosztott hitelesítő adatokkal rendelkező külső felhasználókkal. Ezek a felhasználók jellemzően (de nem mindig) a vendég UserType vannak megjelölve. A vendég felhasználókat a [Microsoft Graph API](/graph/api/user-list?tabs=http), a [PowerShell](/graph/api/user-list?tabs=http)vagy a [Azure Portal](../enterprise-users/users-bulk-download.md)használatával lehet enumerálni.
 
 ### <a name="use-email-domains-and-companyname-property"></a>E-mail-tartományok és cégnév-tulajdonság használata
 
@@ -55,7 +55,7 @@ Ha jogosultság-kezelést használ, a hozzáférési csomagokat a partnerek egy 
 
 ## <a name="find-access-being-granted-to-external-users"></a>A külső felhasználók számára biztosított hozzáférés megkeresése
 
-A külső felhasználók és szervezetek leltározása után a Microsoft Graph API-val meghatározhatja, hogy az Azure AD-csoporttagság vagy a [közvetlen alkalmazás-hozzárendelés](/graph/api/resources/approleassignment?view=graph-rest-1.0) az [Azure ad-](/graph/api/resources/groups-overview?view=graph-rest-1.0) ben milyen hozzáférést kap a felhasználóknak.
+A külső felhasználók és szervezetek leltározása után a Microsoft Graph API-val meghatározhatja, hogy az Azure AD-csoporttagság vagy a [közvetlen alkalmazás-hozzárendelés](/graph/api/resources/approleassignment) az [Azure ad-](/graph/api/resources/groups-overview) ben milyen hozzáférést kap a felhasználóknak.
 
 
 ### <a name="enumerate-application-specific-permissions"></a>Alkalmazásspecifikus engedélyek számbavétele
@@ -65,9 +65,9 @@ Előfordulhat, hogy az alkalmazásspecifikus engedélyek enumerálását is el t
 Kifejezetten vizsgálja meg az üzleti szempontból bizalmas és az üzleti szempontból kritikus fontosságú alkalmazások hozzáférését, hogy teljes mértékben tisztában legyenek a külső hozzáféréssel.
 
 ### <a name="detect-ad-hoc-sharing"></a>Ad hoc megosztás észlelése
-Ha e-mail-címe és hálózati csomagjai lehetővé teszik, a tartalmat megvizsgálhatja e-mailben vagy jogosulatlan szoftveres (SaaS) alkalmazásokon keresztül. [Microsoft 365 adatvesztés elleni védelem](/microsoft-365/compliance/data-loss-prevention-policies?view=o365-worldwide) segítségével azonosíthatja, megakadályozhatja és figyelheti a bizalmas információk véletlen megosztását a Microsoft 365-infrastruktúrában. A [Microsoft Cloud app Security](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/cloud-app-security) segítségével azonosíthatja a jogosulatlan SaaS-alkalmazások használatát a környezetben.
+Ha e-mail-címe és hálózati csomagjai lehetővé teszik, a tartalmat megvizsgálhatja e-mailben vagy jogosulatlan szoftveres (SaaS) alkalmazásokon keresztül. [Microsoft 365 adatvesztés elleni védelem](/microsoft-365/compliance/data-loss-prevention-policies) segítségével azonosíthatja, megakadályozhatja és figyelheti a bizalmas információk véletlen megosztását a Microsoft 365-infrastruktúrában. A [Microsoft Cloud app Security](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/cloud-app-security) segítségével azonosíthatja a jogosulatlan SaaS-alkalmazások használatát a környezetben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő cikkeket az erőforrásokhoz való külső hozzáférés biztonságossá tételéhez. Javasoljuk, hogy a felsorolt sorrendben végezze el a műveleteket.
 

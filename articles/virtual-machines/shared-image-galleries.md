@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/14/2020
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 225aca8c4695db33e504a5857acb856f4e01d1f1
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 32b4cf1555a2d0e074ae1551a5c0085f2758fa2b
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/10/2021
-ms.locfileid: "102551062"
+ms.locfileid: "102609141"
 ---
 # <a name="shared-image-galleries-overview"></a>Megosztott képgyűjtemények – áttekintés
 
@@ -104,7 +104,7 @@ A speciális virtuális gépek nem a gép specifikus információinak és fiókj
 
 ## <a name="regional-support"></a>Regionális támogatás
 
-Az összes nyilvános régió lehet célcsoport, de az Ausztrália középső és Ausztrália középső régiójában való replikáláshoz a 2. előfizetést hozzá kell adni az engedélyezési listához. Ha egy előfizetést szeretne kérni az engedélyezési listához, lépjen a következőre: https://docs.microsoft.com/azure/virtual-machines/shared-image-galleries#regional-support
+Az összes nyilvános régió lehet célcsoport, de bizonyos régiókban az ügyfeleknek a kérések folyamatán keresztül kell eljárniuk, hogy hozzáférjenek. Ahhoz, hogy egy előfizetés hozzá legyen adva egy olyan régió engedélyezési listájához, mint például az Australia Central vagy az Australia Central 2, [hozzáférési kérelem](/troubleshoot/azure/general/region-access-request-process) küldése
 
 ## <a name="limits"></a>Korlátok 
 

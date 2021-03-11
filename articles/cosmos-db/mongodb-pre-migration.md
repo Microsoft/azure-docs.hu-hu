@@ -1,21 +1,31 @@
 ---
 title: Áttelepítés előtti lépések a Azure Cosmos DB API-MongoDB való áttelepítéshez
 description: Ez a dokumentum áttekintést nyújt a MongoDB és a Cosmos DB közötti adatáttelepítés előfeltételeiről.
-author: christopheranderson
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.author: chrande
-ms.openlocfilehash: ced795385fdf00e706ea897db80f558b513a9f9d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.author: anfeldma
+ms.openlocfilehash: cdc5dc9cee3520d9a3f22ff710dfa193e6ef4fed
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656958"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553289"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Áttelepítés előtti lépések a MongoDB-ből Azure Cosmos DB API-MongoDB való áttelepítéshez
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
+
+> [!IMPORTANT]  
+> Ez a MongoDB-előtelepítési útmutató az első egy sorozatban, amely a MongoDB áttelepítését mutatja be Azure Cosmos DB Mongo API-ra nagy léptékben. A MongoDB önfelügyelt infrastruktúrában történő licencelése és üzembe helyezése a felügyelt felhőalapú szolgáltatásokra, Azure Cosmos DB például az utólagos elszámolású díjszabásra és a rugalmas méretezhetőségre való áttéréssel csökkentheti és kezelheti az adatközpontjuk költségeit. A sorozat célja, hogy az ügyfelet az áttelepítési folyamaton keresztül irányítsa:
+>
+> 1. [Áttelepítés előtti](mongodb-pre-migration.md) – a meglévő MongoDB-adatközpont leltározása, az áttelepítés megtervezése és a megfelelő áttelepítési eszköz (ek) kiválasztása.
+> 2. Végrehajtás – áttelepítés a MongoDB-ből a Azure Cosmos DB a megadott [oktatóanyagok]()használatával.
+> 3. [Áttelepítés utáni](mongodb-post-migration.md) – a meglévő alkalmazások frissítése és optimalizálása az új Azure Cosmos db adatbirtokon való végrehajtáshoz.
+>
+
+A folyamatos áttelepítés előtti terv a csapat áttelepítésének időszerűségére és sikerére is hatással lehet. A Migrálás jó hasonlósága egy új projekt indításával – a követelmények meghatározásával, majd az érintett feladatok tagolásával, valamint az elsőként megoldandó feladatok rangsorolásával is elvégezhető. Ez segít a projekt ütemtervének előrejelzésében, de természetesen nem várt követelmények merülhetnek fel, és megnehezítik a projekt ütemtervét. Migrálás az áttelepítés előtt – az áttelepítés előtti fázisban egy átfogó végrehajtási terv kialakítása csökkenti a váratlan áttelepítési feladatokat a folyamat végén, így időt takarít meg az áttelepítés során, és segít a célok teljesítésében.
 
 Mielőtt áttelepíti az adatait a MongoDB-ből (akár a helyszínen, akár a felhőben) Azure Cosmos DB API-ját a MongoDB-hez, a következőket kell tennie:
 

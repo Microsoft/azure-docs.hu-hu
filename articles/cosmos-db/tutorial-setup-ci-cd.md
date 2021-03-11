@@ -8,12 +8,12 @@ ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a5b8842718aa2d9f90ac06283abc5fe2fdd925cb
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: c7246511a88e2d2756a8ef56c5adf51ddbfd3e58
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95997001"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560531"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>CI/CD-folyamat beállítása a Azure Cosmos DB Emulator Build feladattal az Azure DevOps
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -33,13 +33,13 @@ A buildelési feladatot használat előtt telepítenie kell az Azure DevOps-szer
 Ezután válassza ki a szervezetet, amelyben telepíteni kívánja a bővítményt. 
 
 > [!NOTE]
-> Egy bővítmény Azure DevOps-szervezetbe való telepítéséhez a fiók tulajdonosának vagy a projekt-gyűjtemény rendszergazdájának kell lennie. Ha nem rendelkezik engedélyekkel, de a fiók tagja, ehelyett kérheti a bővítményt. [Részletek](/azure/devops/marketplace/faq-extensions?preserve-view=true&view=vsts)
+> Egy bővítmény Azure DevOps-szervezetbe való telepítéséhez a fiók tulajdonosának vagy a projekt-gyűjtemény rendszergazdájának kell lennie. Ha nem rendelkezik engedélyekkel, de a fiók tagja, ehelyett kérheti a bővítményt. [Részletek](/azure/devops/marketplace/faq-extensions)
 
 :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_2.png" alt-text="Válassza ki azt az Azure DevOps-szervezetet, amelyben telepíteni kívánja a bővítményt":::
 
 ## <a name="create-a-build-definition"></a>Builddefiníció létrehozása
 
-Most, hogy telepítette a bővítményt, jelentkezzen be az Azure DevOps-szervezetbe, és keresse meg a projektet a projektek irányítópulton. Hozzáadhat egy új [buildfolyamatot](/azure/devops/pipelines/get-started-designer?preserve-view=true&tabs=new-nav&view=vsts) a projekthez, vagy módosíthat egy meglévőt is. Ha már rendelkezik buildfolyamattal, továbbléphet [az Emulator buildelési feladatának hozzáadása egy builddefinícióhoz](#addEmulatorBuildTaskToBuildDefinition) részre.
+Most, hogy telepítette a bővítményt, jelentkezzen be az Azure DevOps-szervezetbe, és keresse meg a projektet a projektek irányítópulton. Hozzáadhat egy új [buildfolyamatot](/azure/devops/pipelines/get-started-designer?preserve-view=true&tabs=new-nav) a projekthez, vagy módosíthat egy meglévőt is. Ha már rendelkezik buildfolyamattal, továbbléphet [az Emulator buildelési feladatának hozzáadása egy builddefinícióhoz](#addEmulatorBuildTaskToBuildDefinition) részre.
 
 1. Új builddefiníció létrehozásához lépjen az Azure DevOps **Builds** (Buildek) lapjára. Válassza az **+ új lehetőséget.** \> **Új buildfolyamat**
 
@@ -52,7 +52,7 @@ Most, hogy telepítette a bővítményt, jelentkezzen be az Azure DevOps-szervez
 3. Végül válassza ki a buildfolyamathoz használni kívánt sablont. Ebben az oktatóanyagban az **ASP.NET** sablont választjuk. Most már rendelkezik egy olyan összeállítási folyamattal, amely a Azure Cosmos DB Emulator Build feladatának használatára beállítható. 
 
 > [!NOTE]
-> A CI számára kijelölni kívánt ügynök-készletnek a Windows rendszerhez készült Docker-nek kell lennie, kivéve, ha a telepítést manuálisan végzik el egy korábbi feladatban a CI részeként. Tekintse meg a [Microsoft által üzemeltetett ügynökökkel](/azure/devops/pipelines/agents/hosted?preserve-view=true&tabs=yaml&view=azure-devops) foglalkozó cikket az ügynök-készletek kiválasztásához. Javasoljuk, hogy kezdje a következővel: `Hosted VS2017` .
+> A CI számára kijelölni kívánt ügynök-készletnek a Windows rendszerhez készült Docker-nek kell lennie, kivéve, ha a telepítést manuálisan végzik el egy korábbi feladatban a CI részeként. Tekintse meg a [Microsoft által üzemeltetett ügynökökkel](/azure/devops/pipelines/agents/hosted?tabs=yaml) foglalkozó cikket az ügynök-készletek kiválasztásához. Javasoljuk, hogy kezdje a következővel: `Hosted VS2017` .
 
 Azure Cosmos DB emulátor jelenleg nem támogatja az üzemeltetett VS2019-ügynök készletét. Az emulátor azonban már telepítve van a VS2019, és a következő PowerShell-parancsmagokkal elindítja az emulátort. Ha a VS2019 használata során problémákba ütközik, az [Azure DevOps](https://developercommunity.visualstudio.com/spaces/21/index.html) csapata segítségért tájékozódhat:
 
@@ -176,7 +176,7 @@ Miután a build létrejött, láthatja, hogy a buildelési feladatból a Cosmos 
 
 :::image type="content" source="./media/tutorial-setup-ci-cd/buildComplete_1.png" alt-text="A képernyőképen az összefoglalás lapon látható a progresszió értéke.":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az emulátor helyi fejlesztéshez és teszteléshez való használatáról: [Az Azure Cosmos DB Emulator használata helyi fejlesztéshez és teszteléshez](./local-emulator.md).
 

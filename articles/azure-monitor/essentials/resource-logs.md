@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
-ms.openlocfilehash: cb4f1ecdada68218c104558a85277417641906f6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 2435e4ed16889d9d4701b6047c0a1f602ee7ae91
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102033012"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558695"
 ---
 # <a name="azure-resource-logs"></a>Azure-erőforrásnaplók
 Az Azure-erőforrás-naplók olyan [platform-naplók](../essentials/platform-logs-overview.md) , amelyek betekintést nyújtanak az Azure-erőforrásokon belül végrehajtott műveletekre. Az erőforrás-naplók tartalma az Azure-szolgáltatás és az erőforrás típusa szerint változik. A rendszer alapértelmezés szerint nem gyűjti az erőforrás-naplókat. Minden egyes Azure-erőforráshoz létre kell hoznia egy diagnosztikai beállítást, hogy az erőforrás-naplókat egy Log Analytics munkaterületre küldje el, amelyet [Azure monitor naplók](../logs/data-platform-logs.md), az Azure Event Hubs az Azure-on kívüli továbbítására, illetve az Azure Storage-ba történő archiválásra kíván használni.
@@ -28,11 +28,11 @@ További információ a diagnosztikai beállítások létrehozásáról és a Az
 
 [Hozzon létre egy diagnosztikai beállítást](../essentials/diagnostic-settings.md) , amely erőforrás-naplókat küld egy log Analytics munkaterületre. Ezeket az adattáblákat a [Azure monitor naplók struktúrája](../logs/data-platform-logs.md)című témakörben leírtak szerint tárolja a rendszer. Az erőforrás-naplók által használt táblák attól függnek, hogy az erőforrás milyen típusú gyűjteményt használ:
 
-- Azure Diagnostics – az összes írásos érték a _AzureDiagnostics_ tábla.
+- Azure Diagnostics – az összes írásos érték a [AzureDiagnostics](/azure/azure-monitor/reference/tables/azurediagnostics) tábla.
 - Az erőforrás-specifikus – az erőforrás minden kategóriája esetében az egyes táblákba kerül.
 
 ### <a name="azure-diagnostics-mode"></a>Azure Diagnostics üzemmód 
-Ebben a módban a diagnosztikai beállításokból származó összes adatok gyűjtése a _AzureDiagnostics_ táblában történik. Ez az örökölt módszer, amelyet jelenleg a legtöbb Azure-szolgáltatás használ. Mivel a több erőforrástípus adatokat küld ugyanahhoz a táblához, annak sémája a begyűjtött különböző adattípusok sémáinak kiterjesztése.
+Ebben a módban a diagnosztikai beállításokból származó összes adatok gyűjtése a [AzureDiagnostics](/azure/azure-monitor/reference/tables/azurediagnostics) táblában történik. Ez az örökölt módszer, amelyet jelenleg a legtöbb Azure-szolgáltatás használ. Mivel a több erőforrástípus adatokat küld ugyanahhoz a táblához, annak sémája a begyűjtött különböző adattípusok sémáinak kiterjesztése. Tekintse meg a táblázat struktúrájának részleteit, valamint azt, hogy ez milyen nagy számú oszloppal használható a [AzureDiagnostics](/azure/azure-monitor/reference/tables/azurediagnostics) .
 
 Vegye figyelembe a következő példát, ahol a diagnosztikai beállítások gyűjtése ugyanabban a munkaterületen történik a következő adattípusok esetén:
 
@@ -95,16 +95,6 @@ A legtöbb Azure-erőforrás az **Azure-diagnosztika** vagy az **erőforrás-spe
 Egy meglévő diagnosztikai beállítást erőforrás-specifikus módra is módosíthat. Ebben az esetben a már összegyűjtött adatok a _AzureDiagnostics_ táblában maradnak, amíg el nem távolítják a munkaterület megőrzési beállításának megfelelően. Az új adatok gyűjtése a dedikált táblában történik. A [Union](/azure/kusto/query/unionoperator) operátorral több táblázaton keresztül is lekérdezheti az adatlekérdezéseket.
 
 Tekintse meg az [Azure Updates](https://azure.microsoft.com/updates/) blogot, amely a Resource-Specific módot támogató Azure-szolgáltatásokra vonatkozó közleményeket is támogatja.
-
-### <a name="column-limit-in-azurediagnostics"></a>Oszlop korlátja a AzureDiagnostics
-A Azure Monitor-naplókban található bármely táblához 500 tulajdonság van korlátozva. Ha elérte ezt a korlátot, minden olyan sor, amely az első 500-n kívüli tulajdonsággal rendelkező adatot tartalmaz, a rendszer elveszi a betöltési idő alatt. A *AzureDiagnostics* tábla kifejezetten erre a korlátozásra van kitéve, mivel az összes Azure-szolgáltatáshoz tartozó tulajdonságokat tartalmazza.
-
-Ha több szolgáltatásból gyűjt erőforrás-naplókat, a _AzureDiagnostics_ túllépheti ezt a korlátot, és az adatok nem lesznek kimaradva. Amíg az összes Azure-szolgáltatás nem támogatja az erőforrás-specifikus üzemmódot, úgy kell beállítania az erőforrásokat, hogy több munkaterületre is írna, hogy csökkentse az 500-es oszlop korlátjának elérési lehetőségét.
-
-### <a name="azure-data-factory"></a>Azure Data Factory
-Azure Data Factory a naplók részletes készlete miatt egy olyan szolgáltatás, amely nagy számú oszlop írására ismert, és potenciálisan a _AzureDiagnostics_ túllépi a korlátot. Az erőforrás-specifikus üzemmódot megelőzően konfigurált diagnosztikai beállítások esetében egy új oszlop jön létre minden egyedi névvel ellátott felhasználói paraméterhez minden tevékenységre vonatkozóan. További oszlopok jönnek létre a tevékenységek bemenetének és kimenetének részletes természete miatt.
- 
-A naplók áttelepíthetők az erőforrás-specifikus mód használatára a lehető leghamarabb. Ha ezt azonnal nem tudja elvégezni, egy ideiglenes alternatíva az, hogy elkülönítse Azure Data Factory naplókat a saját munkaterületére, hogy csökkentse annak esélyét, hogy ezek a naplók a munkaterületeken gyűjtött más naplózási típusokra is hatással legyenek.
 
 
 ## <a name="send-to-azure-event-hubs"></a>Küldés az Azure Event Hubsba

@@ -3,19 +3,20 @@ title: Megosztott Azure linuxos virtuálisgép-rendszerképek létrehozása a po
 description: Megtudhatja, hogyan hozhat létre és oszthat meg linuxos virtuálisgép-lemezképeket a Azure Portal használatával.
 author: cynthn
 tags: azure-resource-manager
-ms.service: virtual-machines-linux
-ms.subservice: imaging
+ms.service: virtual-machines
+ms.subservice: shared-image-gallery
+ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 01d095a5506ec0886cdee875b57edbbbeca6fc86
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 90ed91caa1c4b71ae90b86f5b0783a6d5c1c669e
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878824"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552796"
 ---
 # <a name="create-a-shared-image-gallery-using-the-portal"></a>Megosztott képgyűjtemény létrehozása a portál használatával
 
@@ -69,7 +70,7 @@ Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, a virtuáli
 
 Ha törölni szeretné az egyes erőforrásokat, akkor azokat fordított sorrendben kell törölnie. A rendszerkép definíciójának törléséhez például törölnie kell az adott rendszerképből létrehozott összes rendszerkép-verziót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Sablonok használatával is létrehozhat megosztott képgyűjteményi erőforrásokat. Több Azure Gyorsindítás-sablon is elérhető: 
 

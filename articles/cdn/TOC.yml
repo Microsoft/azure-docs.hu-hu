@@ -27,8 +27,6 @@
       href: cdn-custom-ssl.md
     - name: Gyorsítótárazási szabályok beállítása
       href: cdn-caching-rules-tutorial.md
-    - name: HTTPS kényszerítése a Standard szabálymotor használatával
-      href: cdn-standard-rules-engine.md
 - name: Példák
   items:
     - name: Kódminták
@@ -76,6 +74,8 @@
           href: cdn-improve-performance.md
         - name: Végpont több forrással
           href: endpoint-multiorigin.md
+        - name: HTTPS kényszerítése a Standard szabálymotor használatával
+          href: cdn-standard-rules-engine.md
         - name: A gyorsítótárazási viselkedés vezérlése
           items:
             - name: A gyorsítótárazási viselkedés vezérlése gyorsítótár-szabályok használatával

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 19935037e98bbc7ce9c4152b034b664d802a8f3a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c373bb172be01594bb5642a626cad24838b66ea2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100588282"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102607985"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale-citus"></a>Azure biztonsági alapkonfiguráció Azure Database for PostgreSQL-nagy kapacitású (Citus)
 
@@ -544,9 +544,9 @@ Emellett Azure Resource Manager lehetősége van a sablon exportálására JavaS
 
 **Útmutató**: Ha egyéni Azure-szabályzat-definíciókat használ a nagy kapacitású-(Citus-) példányokhoz és a kapcsolódó erőforrásokhoz, az Azure Repos segítségével biztonságosan tárolhatja és kezelheti a kódot.
 
-- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
+- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
-- [Az Azure Repos dokumentációja](/azure/devops/repos/index?view=azure-devops&preserve-view=true)
+- [Az Azure Repos dokumentációja](/azure/devops/repos/index)
 
 **Azure Security Center – monitorozás**: Nem értelmezhető
 

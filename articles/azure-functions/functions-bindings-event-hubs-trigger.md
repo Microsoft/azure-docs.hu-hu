@@ -6,12 +6,12 @@ ms.assetid: daf81798-7acc-419a-bc32-b5a41c6db56b
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: efc785c96c76cca5deeadbd30fa962becb18d25b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c2b8302e64f7dcc657fd20ed5d918ed6816d750d
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997305"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608911"
 ---
 # <a name="azure-event-hubs-trigger-for-azure-functions"></a>Azure Event Hubs trigger a Azure Functionshoz
 
@@ -21,6 +21,10 @@ További információ a telepítésről és a konfigurációról: [Áttekintés]
 
 [!INCLUDE [functions-bindings-event-hubs-trigger](../../includes/functions-bindings-event-hubs-trigger.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="hostjson-settings"></a>Beállítások host.js
+
+A [host.js](functions-host-json.md#eventhub) fájl olyan beállításokat tartalmaz, amelyek az Event hub-eseményindító működését vezérlik. A rendelkezésre álló beállításokkal kapcsolatos részletekért tekintse [ meg ahost.json Settings](functions-bindings-event-hubs.md#hostjson-settings) szakaszt.
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Események írása egy esemény-adatfolyamba (kimeneti kötés)](./functions-bindings-event-hubs-output.md)
