@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - device-developer
 - iot-edge
-ms.openlocfilehash: 1a464b9e039f256fae52c32d828b1ec39a20a228
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: e0f3464420c5cb429f780999bf5983b2ab142567
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123275"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608631"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge-eszközök csatlakoztatása Azure IoT Central-alkalmazáshoz
 
@@ -74,8 +74,6 @@ Az alábbi ábrán egy IoT Edge átjáró-eszköz kapcsolatai láthatók mindké
 Az alsóbb rétegbeli eszközök több egyéni modulon keresztül kapcsolódhatnak egy IoT Edge átjáró-eszközhöz. Az alábbi ábrán egy Modbus egyéni modul, egy egypontos egyéni modul és a *IoT Edge hub*  modul használatával csatlakozó alsóbb rétegbeli eszközök láthatók:
 
 :::image type="content" source="media/concepts-iot-edge/gateway-two-modules-transparent.png" alt-text="Több egyéni modul használatával történő csatlakozás diagramja" border="false":::
-
-<!-- To do: add link to how to configure gateway article? -->
 
 ## <a name="iot-edge-devices-and-iot-central"></a>IoT Edge eszközök és IoT Central
 
@@ -286,7 +284,7 @@ A IoT Edge futtatókörnyezetet az alábbi környezetekben is telepítheti:
 
 Ha IoT Edge eszközt jelölt ki egy átjáró eszközként, akkor az átjáró eszközhöz csatlakozni kívánó eszközökhöz hozzáadhat alsóbb rétegbeli kapcsolatokat az eszköz modelljeihez.
 
-<!-- TODO - add link to Edge Gateway how-to -->
+További információ: [eszközök csatlakoztatása IoT Edge transzparens átjárón keresztül](how-to-connect-iot-edge-transparent-gateway.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

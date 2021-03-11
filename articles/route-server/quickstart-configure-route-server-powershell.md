@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 5b40cfcde7aa1771c8a4b9025d35b2dc0c728676
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: e302cb9da410487dbea4ec5c5b256c4cb5dd186f
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039784"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566379"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-powershell"></a>Gyors útmutató: útvonal-kiszolgáló létrehozása és konfigurálása Azure PowerShell használatával
 
@@ -130,7 +130,7 @@ Az Azure Route Server által hirdetett és fogadott útvonalakat az alábbi para
 Get-AzRouteServerPeerAdvertisedRoute
 Get-AzRouteServerPeerLearnedRoute
 ```
-## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége az Azure Route Serverre, az alábbi parancsokkal távolítsa el a BGP-társat, majd távolítsa el az útválasztási kiszolgálót. 
 

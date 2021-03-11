@@ -3,19 +3,20 @@ title: Migrálás AWS-ről és más platformokról az Azure-ba való Managed Dis
 description: Hozzon létre virtuális gépeket az Azure-ban más felhőktől (AWS vagy más virtualizációs platformok) feltöltött VHD-k használatával, és használja ki az Azure-Managed Disks
 author: roygara
 manager: twooley
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subervice: disks
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: conceptual
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 55f7c68df1e339f0f9eda809bbb0acbb2e9131b5
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: c817528ff26dd10112eaf69c7ad20f8fb5813695
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200889"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550399"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migrálás Amazon Web Servicesról (AWS) és más platformokról az Azure-ba Managed Disks
 
@@ -31,7 +32,7 @@ Feltöltheti az általánosított és a speciális virtuális merevlemezeket is.
 >
 
 
-| Használati eset                                                                                                                         | Dokumentáció                                                                                                                       |
+| Eset                                                                                                                         | Dokumentáció                                                                                                                       |
 |----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | Meglévő AWS EC2-példányokkal rendelkezik, amelyeket felügyelt lemezek használatával szeretne áttelepíteni az Azure-beli virtuális gépekre                              | [Virtuális gép áthelyezése Amazon Web Servicesból (AWS) az Azure-ba](aws-to-azure.md)                           |
 | Van olyan virtuális gépe, amelyet egy másik virtualizációs platformon szeretne használni több Azure-beli virtuális gép létrehozásához. | [Töltse fel az általánosított virtuális merevlemezt, és használja az új virtuális gép létrehozásához az Azure-ban](upload-generalized-managed.md) |

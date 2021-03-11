@@ -3,16 +3,17 @@ title: A Cloud-init használata a swap-partíciók Linux rendszerű virtuális g
 description: A Cloud-init használata a swap-partíció konfigurálásához Linux rendszerű virtuális gépen az Azure CLI-vel való létrehozás során
 author: rickstercdn
 manager: gwallace
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 1f8746e67ba712ac4c2c3e832fcb5ffefb170d59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9f4adc4e1e980db2af4fcc20b3a4492309c89f3
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87371940"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559375"
 ---
 # <a name="use-cloud-init-to-configure-a-swap-partition-on-a-linux-vm"></a>A Cloud-init használata a swap-partíciók Linux rendszerű virtuális gépen való konfigurálásához
 Ez a cikk bemutatja, hogyan konfigurálhatja a swap partíciót különböző Linux-disztribúciókban a [Cloud-init](https://cloudinit.readthedocs.io) használatával. A swap-partíciót hagyományosan a Linux-ügynök (WALA) állította be, amely alapján a disztribúciók közül egy szükséges.  Ez a dokumentum felvázolja a swap-partíció igény szerinti felépítési folyamatát a üzembe helyezés ideje alatt a Cloud-init használatával.  További információ arról, hogyan működik a Cloud-init natív módon az Azure-ban és a támogatott Linux-disztribúciókban: a [Cloud-init áttekintése](using-cloud-init.md)
@@ -81,7 +82,7 @@ Filename                Type        Size    Used    Priority
 > [!NOTE] 
 > Ha van olyan meglévő Azure-lemezképe, amelynek van konfigurált swap-partíciója, és módosítani szeretné az új lemezképek swap-partíciójának konfigurációját, távolítsa el a meglévő swap partíciót. További részletekért tekintse meg a "rendszerképek testreszabása a Cloud-init" dokumentumban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További felhő-inicializálási példákat a konfiguráció változásairól a következő témakörben talál:
  
 - [További linuxos felhasználó hozzáadása egy virtuális géphez](cloudinit-add-user.md)

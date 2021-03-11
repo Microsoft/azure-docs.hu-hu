@@ -1,7 +1,7 @@
 ---
 title: Az Azure IoT Central kiterjesztése egyéni elemzéssel | Microsoft Docs
 description: Megoldás fejlesztőként konfiguráljon egy IoT Central alkalmazást egyéni elemzések és vizualizációk végrehajtásához. Ez a megoldás Azure Databricks használ.
-author: TheJasonAndrew
+author: TheRealJasonAndrew
 ms.author: v-anjaso
 ms.date: 02/18/2020
 ms.topic: how-to
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 86f94b8059d85b892a87c82537b1e9b02552f8f7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 11e5ba3c0700cc9b29b8a11c0f9aa20cb5adb132
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741726"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551317"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Az Azure IoT Central kiterjesztése egyéni elemzésekkel Azure Databricks használatával
 
@@ -103,7 +103,7 @@ A Event Hubs névtere a következő képernyőképre hasonlít:
 
 Az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén navigáljon a contoso-sablonból létrehozott IoT Central alkalmazáshoz. Ebben a szakaszban úgy konfigurálja az alkalmazást, hogy a szimulált eszközökről az telemetria továbbítsa az alkalmazást. Az Exportálás konfigurálása:
 
-1. Navigáljon az **adatexportálás (örökölt)** lapra, válassza az **+ új**, majd az **Azure Event Hubs** elemet.
+1. Navigáljon az **adatexportálás** lapra, válassza az **+ új**, majd az **Azure Event Hubs** elemet.
 1. Az Exportálás konfigurálásához használja a következő beállításokat, majd válassza a **Mentés** lehetőséget:
 
     | Beállítás | Érték |
@@ -136,7 +136,7 @@ A fürt létrehozásához használja a következő táblázatban található inf
 | Fürt üzemmód | Standard |
 | Databricks Runtime verziója | 5,5 LTS (Scala 2,11, Spark 2.4.5) |
 | Python-verzió | 3 |
-| Automatikus skálázás engedélyezése | Nem |
+| Automatikus skálázás engedélyezése | No |
 | Megszakítás ennyi perc inaktivitás után | 30 |
 | Feldolgozó típusa | Standard_DS3_v2 |
 | Feldolgozók | 1 |

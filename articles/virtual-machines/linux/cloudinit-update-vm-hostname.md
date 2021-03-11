@@ -2,16 +2,17 @@
 title: A Cloud-init használatával állítsa be a Linux rendszerű virtuális gép állomásnevét
 description: Linux rendszerű virtuális gép testreszabása a Cloud-init használatával az Azure CLI-vel
 author: rickstercdn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 85d2772596224a3c4252d950ca6ca8d6af02991b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c3195fd338d17e2dae3ff2aadfb90790519715b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373657"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559392"
 ---
 # <a name="use-cloud-init-to-set-hostname-for-a-linux-vm-in-azure"></a>Az Azure-beli Linux rendszerű virtuális gép állomásnévének beállítása a Cloud-init használatával
 Ez a cikk bemutatja, hogyan lehet a [Cloud-init](https://cloudinit.readthedocs.io) használatával konfigurálni egy adott állomásnevet egy virtuális GÉPEN (VM) vagy virtuálisgép-méretezési csoportokon (VMSS) az Azure üzembe helyezési ideje alatt. Ezek a felhő-init parancsfájlok az első rendszerindítás során futnak az Azure-beli erőforrások kiépítés után. További információ arról, hogyan működik a Cloud-init natív módon az Azure-ban és a támogatott Linux-disztribúciókban: a [Cloud-init áttekintése](using-cloud-init.md)
@@ -61,7 +62,7 @@ A virtuális gépnek a Cloud-init fájlban megadott értékként jelentenie kell
 myhostname
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További felhő-inicializálási példákat a konfiguráció változásairól a következő témakörben talál:
  
 - [További linuxos felhasználó hozzáadása egy virtuális géphez](cloudinit-add-user.md)

@@ -2,22 +2,22 @@
 title: AMD GPU illesztőprogram-bővítmény – Azure Windows rendszerű virtuális gépek
 description: Microsoft Azure bővítmény az AMD GPU-illesztőprogramok telepítéséhez Windows rendszerű NVv4-sorozatú virtuális gépeken.
 services: virtual-machines-windows
-documentationcenter: ''
 author: vikancha-MSFT
 manager: jkabat
-ms.service: virtual-machines-windows
-ms.subservice: extensions
 ms.topic: article
+ms.service: virtual-machines
+ms.subservice: hpc
+ms.collection: windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/10/2020
 ms.author: vikancha
-ms.openlocfilehash: aad28df218973cf07231262ccd8b9a07f263424f
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 42dac9edc91d7cb935e8c20398c4d31343b358e1
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652751"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559681"
 ---
 # <a name="amd-gpu-driver-extension-for-windows"></a>AMD GPU illesztőprogram-bővítmény Windows rendszerhez
 

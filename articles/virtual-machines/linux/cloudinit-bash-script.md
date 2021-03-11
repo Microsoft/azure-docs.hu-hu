@@ -2,16 +2,17 @@
 title: A Cloud-init használatával bash-szkriptet futtathat egy Linux rendszerű virtuális gépen az Azure-ban
 description: A Cloud-init használata bash-szkript futtatásához Linux rendszerű virtuális gépen az Azure CLI-vel való létrehozás során
 author: rickstercdn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 0370ddeafd1f695292ba122bfebd6197a360f560
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1dabd7db85d4222ca2e9f8387b716af291ee6a69
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372807"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559426"
 ---
 # <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>A Cloud-init használata bash-szkript futtatásához Linux rendszerű virtuális gépen az Azure-ban
 Ez a cikk bemutatja, hogyan használható a [Cloud-init](https://cloudinit.readthedocs.io) egy meglévő bash-szkript futtatásához Linux rendszerű virtuális GÉPEN (VM) vagy virtuálisgép-méretezési csoportokon (VMSS) az Azure üzembe helyezési ideje alatt. Ezek a felhő-init parancsfájlok az első rendszerindítás során futnak az Azure-beli erőforrások kiépítés után. További információ arról, hogyan működik a Cloud-init natív módon az Azure-ban és a támogatott Linux-disztribúciókban: a [Cloud-init áttekintése](using-cloud-init.md)
@@ -57,7 +58,7 @@ Váltson át a **/tmp** könyvtárra, és ellenőrizze, hogy létezik-e myScript
 Running config-scripts-user using lock Running command ['/var/lib/cloud/instance/scripts/part-001']
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További felhő-inicializálási példákat a konfiguráció változásairól a következő témakörben talál:
  
 - [További linuxos felhasználó hozzáadása egy virtuális géphez](cloudinit-add-user.md)

@@ -2,24 +2,25 @@
 title: A Cloud-init használatával hozzáadhat egy felhasználót egy Linux rendszerű virtuális géphez az Azure-ban
 description: A Cloud-init használata felhasználó hozzáadása linuxos virtuális géphez az Azure CLI-vel való létrehozás során
 author: rickstercdn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 569ceb4c7158ba9dc08c99c234951fb4507b69f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c459965f2eb29a469ac90fdeb42107d1dbcf86a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87370070"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559409"
 ---
 # <a name="use-cloud-init-to-add-a-user-to-a-linux-vm-in-azure"></a>Felhasználó hozzáadása Linux rendszerű virtuális géphez az Azure-ban a Cloud-init használatával
 Ez a cikk bemutatja, hogyan lehet a [Cloud-init](https://cloudinit.readthedocs.io) használatával felhasználókat felvenni egy virtuális GÉPRE (VM) vagy virtuálisgép-méretezési csoportokra (VMSS) az Azure üzembe helyezési ideje alatt. Ez a Cloud-init parancsfájl az első indításkor fut, ha az erőforrások kiépítve lettek az Azure-ban. További információ arról, hogyan működik a Cloud-init natív módon az Azure-ban és a támogatott Linux-disztribúciókban: [Cloud-init – áttekintés](using-cloud-init.md).
 
 ## <a name="add-a-user-to-a-vm-with-cloud-init"></a>Felhasználó hozzáadása virtuális géphez a Cloud-init használatával
-Az új Linux rendszerű virtuális gépek egyik első feladata, hogy a *root*használatának elkerüléséhez további felhasználót adjon hozzá. Az SSH-kulcsok a biztonság és a használhatóság szempontjából ajánlott eljárások. A kulcsok hozzá lettek adva a *~/.ssh/authorized_keys* fájlhoz ezzel a Cloud-init parancsfájllal.
+Az új Linux rendszerű virtuális gépek egyik első feladata, hogy a *root* használatának elkerüléséhez további felhasználót adjon hozzá. Az SSH-kulcsok a biztonság és a használhatóság szempontjából ajánlott eljárások. A kulcsok hozzá lettek adva a *~/.ssh/authorized_keys* fájlhoz ezzel a Cloud-init parancsfájllal.
 
-Ha felhasználót szeretne hozzáadni egy linuxos virtuális géphez, hozzon létre egy fájlt a *cloud_init_add_user.txt* nevű aktuális rendszerhéjban, és illessze be a következő konfigurációt. Ebben a példában hozza létre a fájlt a Cloud Shell nem a helyi gépen. Bármelyik szerkesztőt használhatja. Írja be a `sensible-editor cloud_init_add_user.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. A **Nano** Editor használatához válassza a #1 lehetőséget. Győződjön meg arról, hogy a teljes Cloud-init fájl megfelelően van másolva, különösen az első sorban.  Meg kell adnia a saját nyilvános kulcsát (például a *~/.ssh/id_rsa. pub*fájl tartalmát) a következő értékhez: `ssh-authorized-keys:`
+Ha felhasználót szeretne hozzáadni egy linuxos virtuális géphez, hozzon létre egy fájlt a *cloud_init_add_user.txt* nevű aktuális rendszerhéjban, és illessze be a következő konfigurációt. Ebben a példában hozza létre a fájlt a Cloud Shell nem a helyi gépen. Bármelyik szerkesztőt használhatja. Írja be a `sensible-editor cloud_init_add_user.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. A **Nano** Editor használatához válassza a #1 lehetőséget. Győződjön meg arról, hogy a teljes Cloud-init fájl megfelelően van másolva, különösen az első sorban.  Meg kell adnia a saját nyilvános kulcsát (például a *~/.ssh/id_rsa. pub* fájl tartalmát) a következő értékhez: `ssh-authorized-keys:`
 
 ```yaml
 #cloud-config
@@ -74,7 +75,7 @@ sudo:x:27:myadminuser
 myadminuser:x:1000:
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További felhő-inicializálási példákat a konfiguráció változásairól a következő témakörben talál:
  
 - [További linuxos felhasználó hozzáadása egy virtuális géphez](cloudinit-add-user.md)

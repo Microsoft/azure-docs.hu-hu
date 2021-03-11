@@ -5,17 +5,17 @@ services: virtual-machines
 documentationcenter: ''
 author: mimckitt
 ms.author: mimckitt
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 07/28/2020
-ms.openlocfilehash: b845d547224fb173d2a4b156575778783e0281fa
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ba973bd5609dacf05eca842025d4e828d8a9f841
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488565"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550947"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Az Azure-beli virtuális gépek használatának ismertetése
 Az Azure-beli használati adatok elemzésével hatékony fogyasztási adatokat nyerhetnek ki – olyan elemzéseket készíthet, amelyek lehetővé teszik a szervezeten belüli jobb költséghatékonyságot és kiosztást. Ez a dokumentum részletesen ismerteti az Azure-beli számítási felhasználás részleteit. Az Azure általános használatának részletes ismertetését a [számla megismerése](../cost-management-billing/understand/review-individual-bill.md)című rész ismerteti.
@@ -24,14 +24,14 @@ Az Azure-beli használati adatok elemzésével hatékony fogyasztási adatokat n
 A kezdéshez [töltse le a használati adatokat](../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal). Az alábbi táblázat a Azure Resource Manager használatával üzembe helyezett Virtual Machines használatának definícióját és példáit tartalmazza. Ez a dokumentum nem tartalmaz részletes információkat a klasszikus modellen keresztül üzembe helyezett virtuális gépekről.
 
 
-| Mező | Jelentés | Példa értékek | 
+| Mező | Értelmezés | Példa értékek | 
 |---|---|---|
 | Usage Date (Használat dátuma) | Az erőforrás használatának dátuma | `11/23/2017` |
 | Meter ID | Meghatározza azt a legfelső szintű szolgáltatást, amelynek a használata a következőhöz tartozik:| `Virtual Machines`|
 | Meter Sub-Category | A kiszámlázott mérő azonosítója. <br><br> A számítási órák használata esetén a rendszer minden virtuálisgép-mérethez (Windows, nem Windows) és régióhoz tartozó mérőszámot használ. <br><br> A prémium szintű szoftverek használata esetén minden egyes szoftver esetében van egy mérőszám. A prémium szintű szoftverek többsége minden alapmérethez különböző mérőszámokat tartalmaz. További információért látogasson el a [számítási díjszabás oldalára](https://azure.microsoft.com/pricing/details/virtual-machines/) .</li></ul>| `2005544f-659d-49c9-9094-8e0aea1be3a5`|
 | Meter Name| Ez az egyes Azure-szolgáltatásokra jellemző. A számítási feladatokhoz mindig "Üzemóra".| `Compute Hours`|
 | Meter Region| Az igénybe vett vagy üzemeltető adatközpont elhelyezkedése, ha a szolgáltatás díjszabása az adatközpontok elhelyezkedésétől is függ.|  `JA East`|
-| Egység| A szolgáltatás számlázási egységét jelöli. A számítási erőforrások számlázása óránként történik.| `Hours`|
+| Unit (Egység)| A szolgáltatás számlázási egységét jelöli. A számítási erőforrások számlázása óránként történik.| `Hours`|
 | Consumed (Felhasznált mennyiség)| Az adott napra felhasznált erőforrás mennyisége. A számítási feladatokhoz minden percben a virtuális gép egy adott órában futott (legfeljebb 6 tizedesjegy pontossággal).| `1, 0.5`|
 | Resource Location  | Az az adatközpont, amelyen az erőforrás fut.| `JA East`|
 | Consumed Service | Az Azure platform szolgáltatás, amelyet használt.| `Microsoft.Compute`|
@@ -72,7 +72,7 @@ A használati adatok erőforrás helye mezőjében kitöltött régió neve elt�
 | CanadaCentral | Közép-Kanada|
 | CanadaEast | Kelet-Kanada|
 | CentralIndia | Közép-India|
-| centralus | USA középső régiója|
+| centralus | Az USA középső régiója|
 | chinaeast | Kelet-Kína|
 | chinanorth | Észak-Kína|
 | eastasia | Kelet-Ázsia|
@@ -136,5 +136,5 @@ A klasszikus modellben az erőforrások számlázása a Cloud Service szintjén 
 ### <a name="why-is-pricing-not-available-for-dsfsgsls-sizes-on-the-pricing-page"></a>Miért nem érhető el az árképzés a DS/FS/GS/LS méretekhez a díjszabási oldalon?
 A Premium Storage-kompatibilis virtuális gépek számlázása ugyanolyan sebességgel történik, mint a nem prémium szintű Storage-kompatibilis virtuális gépek. Csak a tárolási költségek különböznek. További információért látogasson el a [Storage díjszabási oldalára](https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A használati adatokkal kapcsolatos további információkért lásd: [Microsoft Azure számlájának ismertetése.](../cost-management-billing/understand/review-individual-bill.md)

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: b61337f29eac11ca3fb45056b9348fbc70956b53
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 8c876a09c77a2ed5441a2f40acc2da508697febb
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521203"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608682"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
@@ -59,7 +59,7 @@ __RSS-hírcsatorna__: értesítést kap az oldal frissítésekor, ha a következ
   + [Natív terminál (GA)](https://docs.microsoft.com/azure/machine-learning/how-to-access-terminal). A felhasználók mostantól hozzáférhetnek egy integrált terminálhoz, valamint a git-művelethez az integrált terminálon keresztül is.
   + [Jegyzetfüzet-kódrészletek (előzetes verzió)](https://azure.github.io/azureml-web/docs/vs-code-snippets/snippets). A Common Azure ML Code-részletek mostantól elérhetők. Navigáljon a kódrészletek panelre, amely az eszköztáron keresztül érhető el, vagy aktiválja a kódban szereplő kódrészleteket a CTRL + szóköz billentyűkombinációval.  
   + [Billentyűparancsok](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#shortcut-keys). Teljes paritás a Jupyter-ben elérhető billentyűparancsokkal. 
-  + Adja meg a cella paramétereit. Egy jegyzetfüzetben lévő cellával rendelkező felhasználók megjelenítése a paraméter cellája, amely paraméteres jegyzetfüzeteket futtathat a számítási példány [Papermill](https://github.com/nteract/papermill) használatával.
+  + Adja meg a cella paramétereit. Azokat a felhasználókat jeleníti meg, akik egy jegyzetfüzetben lévő cellák paraméter-cellák, és a számítási példányon [Papermill](https://github.com/nteract/papermill) keresztül futtathatnak paraméteres jegyzetfüzeteket.
   + A terminál és a kernel munkamenet-kezelője: a felhasználók a számítási folyamaton futó összes kernelt és terminál-munkamenetet kezelhetik.
   + Megosztás gomb. A felhasználók mostantól megoszthatnak bármilyen fájlt a jegyzetfüzet fájlkezelőben, ha a jobb gombbal a fájlra kattintanak, és a megosztás gombot használják.
 

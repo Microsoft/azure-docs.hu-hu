@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 12/23/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 2079a3a7c9ce6817186e743bb09d31facdecf0e7
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 15e1dff37e1782baf5740a3fb35119bbbbffc297
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97931721"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558797"
 ---
 # <a name="what-are-durable-functions"></a>Mik azok a tartós függvények?
 
@@ -23,7 +23,7 @@ A Durable Functions jelenleg a következő nyelveket támogatja:
 
 * **C#**: mindkét előre [lefordított osztály kódtára](../functions-dotnet-class-library.md) és [C# parancsfájl](../functions-reference-csharp.md).
 * **JavaScript**: csak az Azure functions futtatókörnyezet 2. x verziójára támogatott. A Durable Functions-bővítmény vagy újabb verzió 1.7.0 szükséges. 
-* **Python**: az Durable functions bővítmény 2.3.1-es vagy újabb verziójára van szükség. A Durable Functions támogatása jelenleg nyilvános előzetes verzióban érhető el.
+* **Python**: az Durable functions bővítmény 2.3.1-es vagy újabb verziójára van szükség.
 * **F #**: előre lefordított osztály kódtárak és F # szkript. Az F # parancsfájl csak az Azure Functions futtatókörnyezet 1. x verziójában támogatott.
 * **PowerShell**: a Durable functions támogatása jelenleg nyilvános előzetes verzióban érhető el. Csak a Azure Functions futtatókörnyezet 3. x verziójára és a PowerShell 7 verzióra támogatott. A Durable Functions-bővítmény, illetve egy újabb verzió 2.2.2-es verziójának megadását igényli. Jelenleg csak a következő minták támogatottak: [függvények láncolása](#chaining), [ventilátor-kijelentkezés/ventilátor](#fan-in-out), [aszinkron http API](#async-http)-k.
 
@@ -722,7 +722,7 @@ A Durable Functions és a mögöttes technológia részletes ismertetését lás
 
 Mivel a Durable Functions a [Azure functions](../functions-overview.md)speciális bővítménye, az összes alkalmazás esetében nem megfelelő. Az egyéb Azure-előkészítési technológiákkal való összehasonlításért lásd: [Azure functions és Azure Logic apps összehasonlítása](../functions-compare-logic-apps-ms-flow-webjobs.md#compare-azure-functions-and-azure-logic-apps).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Durable Functions függvények típusai és funkciói](durable-functions-types-features-overview.md)

@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 0eeea04cd42498c5ba066a3a3e977c92b2906292
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 681b60ac664a210971f083900b9d8b5ba5df119f
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98738033"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617556"
 ---
 # <a name="source-control-integration-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Verziókövetés integrálása dedikált SQL-készlethez az Azure szinapszis Analyticsben
 
@@ -51,7 +51,7 @@ Ez az oktatóanyag azt ismerteti, hogyan integrálható a SQL Server Data Tools 
 
    ![Klónozási tárház](./media/sql-data-warehouse-source-control-integration/4-clone-repo.png "Klónozási tárház")
 
-A projektek Visual Studióval való összekapcsolásával kapcsolatos további információkért tekintse meg a Kapcsolódás a következőhöz: [Team Explorer](/visualstudio/ide/connect-team-project?view=vs-2019&preserve-view=true). A tárház Visual Studióval történő klónozásával kapcsolatos útmutatásért tekintse át a klónozott a git-tárház [kilépését](/azure/devops/repos/git/clone?tabs=visual-studio&view=azure-devops&preserve-view=true) ismertető cikket. 
+A projektek Visual Studióval való összekapcsolásával kapcsolatos további információkért tekintse meg a Kapcsolódás a következőhöz: [Team Explorer](/visualstudio/ide/connect-team-project?view=vs-2019&preserve-view=true). A tárház Visual Studióval történő klónozásával kapcsolatos útmutatásért tekintse át a klónozott a git-tárház [kilépését](/azure/devops/repos/git/clone?tabs=visual-studio) ismertető cikket. 
 
 ## <a name="create-and-connect-your-project"></a>Projekt létrehozása és összekapcsolása
 
@@ -89,6 +89,6 @@ A projektek Visual Studióval való összekapcsolásával kapcsolatos további i
 
 4. (Nem **kötelező**) Használja a séma összevetését, és frissítse a cél dedikált SQL-készlet módosításait a SSDT használatával, hogy az Azure-tárházban és a helyi tárházban lévő Object-definíciók tükrözzék a dedikált SQL-készletet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Fejlesztés dedikált SQL-készlethez](sql-data-warehouse-overview-develop.md)

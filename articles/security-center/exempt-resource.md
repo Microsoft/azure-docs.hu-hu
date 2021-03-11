@@ -3,16 +3,16 @@ title: Erőforrás, előfizetés, felügyeleti csoport és biztonságos pontszá
 description: Megtudhatja, hogyan hozhat létre olyan szabályokat, amelyek az előfizetések vagy a felügyeleti csoportok biztonsági javaslatai alól mentesülnek, és megakadályozzák, hogy a biztonságos pontszámot befolyásolják
 author: memildin
 ms.author: memildin
-ms.date: 01/22/2021
+ms.date: 03/10/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 374ddaa088fba9ae7035f170562e06b7f07eae47
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a7a010b1014181ed325500fa501212579ef67d26
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101709376"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617573"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>Erőforrások és javaslatok kizárása a biztonságos pontszám alól 
 
@@ -30,13 +30,14 @@ Ilyen esetekben a következőket hozhatja létre a javaslatok alól:
 
 ## <a name="availability"></a>Rendelkezésre állás
 
-|Szempont|Részletek|
-|----|:----|
-|Kiadás állapota:|Előnézet<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
-|Árképzési|Ez egy prémium szintű Azure Policy-képesség, amely az Azure Defender-ügyfelek számára ingyenes, díjmentesen használható. Más felhasználók esetében a jövőben a díjak is vonatkozhatnak.|
-|Szükséges szerepkörök és engedélyek:|**Előfizetés tulajdonosának** vagy **szabályzatának közreműködője** a kivétel létrehozásához<br>Szabály létrehozásához engedélyekre van szükség a házirendek szerkesztéséhez Azure Policy.<br>További információ az [Azure RBAC engedélyeiről Azure Policy](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
-|||
+| Szempont                          | Részletek                                                                                                                                                                                                                                                                                                                            |
+|---------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Kiadás állapota:                  | Előnézet<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]                                                                                                                                                                                                                                             |
+| Árképzési                        | Ez egy prémium szintű Azure Policy-képesség, amely az Azure Defender-ügyfelek számára ingyenes, díjmentesen használható. Más felhasználók esetében a jövőben a díjak is vonatkozhatnak.                                                                                                                                                                 |
+| Szükséges szerepkörök és engedélyek: | **Előfizetés tulajdonosának** vagy **szabályzatának közreműködője** a kivétel létrehozásához<br>Szabály létrehozásához engedélyekre van szükség a házirendek szerkesztéséhez Azure Policy.<br>További információ az [Azure RBAC engedélyeiről Azure Policy](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).                                            |
+| Korlátozások:                    | Kivételeket csak az Security Center alapértelmezett kezdeményezésében, az Azure biztonsági Teljesítménytesztben foglalt javaslatok esetében lehet létrehozni. Az egyéni kezdeményezésekből létrehozott javaslatok nem mentesülnek. További információ a [házirendek, a kezdeményezések és a javaslatok](security-policy-concept.md)közötti kapcsolatokról. |
+| Felhők                         | ![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![No](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)                                                                                                                                                                                         |
+|                                 |                                                                                                                                                                                                                                                                                                                                    |
 
 ## <a name="define-an-exemption"></a>Kivétel meghatározása
 
@@ -44,6 +45,9 @@ Az előfizetések, a felügyeleti csoportok és az erőforrások Security Center
 
 - Egy konkrét **javaslat** vagy "enyhített" vagy "kockázat elfogadva" jelölésű. Egy előfizetéshez, több előfizetéshez vagy egy teljes felügyeleti csoporthoz is létrehozhat ajánlási kivételeket.
 - Egy **vagy több erőforrás** megjelölése "enyhített" vagy "kockázat elfogadva" egy adott javaslathoz.
+
+> [!NOTE]
+> Kivételeket csak az Security Center alapértelmezett kezdeményezésében, az Azure biztonsági Teljesítménytesztben foglalt javaslatok esetében lehet létrehozni. Az előfizetésekhez rendelt egyéni kezdeményezésekből létrehozott javaslatok nem mentesülnek. További információ a [házirendek, a kezdeményezések és a javaslatok](security-policy-concept.md)közötti kapcsolatokról.
 
 > [!TIP]
 > Az API használatával kivételeket is létrehozhat. Példa a JSON-ra, és a megfelelő struktúrák magyarázatát lásd: [Azure Policy kivétel struktúrája](../governance/policy/concepts/exemption-structure.md).
@@ -161,7 +165,7 @@ További információt a következő lapokon olvashat:
 
 
 
-## <a name="exemption-rule-faq"></a>Kivételi szabály – gyakori kérdések
+## <a name="faq---exemption-rules"></a>Gyakori kérdések – kivételi szabályok
 
 ### <a name="what-happens-when-one-recommendation-is-in-multiple-policy-initiatives"></a>Mi történik, ha az egyik javaslat több házirend-kezdeményezésre is vonatkozik?
 

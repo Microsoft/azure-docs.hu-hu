@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: e58f63b6ed7fb26a4e3b3069773810c5e5b7cdc3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e9a5427f7c3a057f291067ac83d3d9032d7e693d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732275"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559358"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Start/Stop VMs during off-hours áttekintése
 
-Az Start/Stop VMs during off-hours funkció indítása vagy leállítása az Azure-beli virtuális gépeken. A felhasználó által meghatározott ütemterveken megkezdi vagy leállítja a gépeket, bepillantást Azure Monitor naplókba, és a választható e-maileket a [műveleti csoportok](../azure-monitor/alerts/action-groups.md)használatával küldi el. A szolgáltatás a legtöbb forgatókönyv esetében engedélyezhető a Azure Resource Manager és a klasszikus virtuális gépeken is. 
+Az Start/Stop VMs during off-hours funkció indítása vagy leállítása az Azure-beli virtuális gépeken. A felhasználó által meghatározott ütemterveken megkezdi vagy leállítja a gépeket, bepillantást Azure Monitor naplókba, és a választható e-maileket a [műveleti csoportok](../azure-monitor/alerts/action-groups.md)használatával küldi el. A szolgáltatás a legtöbb forgatókönyv esetében engedélyezhető a Azure Resource Manager és a klasszikus virtuális gépeken is.
 
 Ez a szolgáltatás a [Start-AzVm](/powershell/module/az.compute/start-azvm) parancsmag használatával indítja el a virtuális gépeket. A [stop-AzVM](/powershell/module/az.compute/stop-azvm) használatával állítja le a virtuális gépeket.
 
@@ -34,6 +34,9 @@ A jelenlegi szolgáltatás korlátai a következők:
 
 - Bármely régióban felügyeli a virtuális gépeket, de csak a Azure Automation-fiókkal megegyező előfizetésben használható.
 - Az Azure-ban és Azure Government bármely olyan régióban elérhető, amely támogatja a Log Analytics-munkaterületet, a Azure Automation-fiókot és a riasztásokat. Azure Government régió jelenleg nem támogatja az e-mail-funkciókat.
+
+> [!NOTE]
+> A verzió telepítése előtt szeretnénk megismerni a következő verziót, amely jelenleg előzetes [verzióban](https://github.com/microsoft/startstopv2-deployments)érhető el.  Ez az új verzió (v2) ugyanazokat a funkciókat kínálja, mint ez, de az Azure-ban elérhető újabb technológiák kihasználása érdekében. Felkínálja az ügyfelek által leggyakrabban igényelt szolgáltatásokat, például a több előfizetés támogatását egyetlen indítási/leállítási példányból.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -1,16 +1,18 @@
 ---
 title: Az Azure Linux rendszerű virtuális gépek számítási teljesítményteszt-pontszámai
 description: Összehasonlíthatja a Linux rendszerű Azure-beli virtuális gépekhez tartozó, az összevetéssel kapcsolatos számítási teljesítménymutatókat
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: sizes
+ms.collection: linux
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.reviewer: davberg
-ms.openlocfilehash: 939b5f6005dcb0b320852aece60db5bcf36dddbd
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ef60bbfe19e10dcd98ca3691e1fdf0d03d07be24
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201178"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558661"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>A Linux rendszerű virtuális gépek számítási teljesítményteszt-pontszámai
 Az alábbi összehasonlító teljesítménytesztek eredményei az Azure nagy teljesítményű virtuálisgép-felállásának számítási teljesítményét mutatják be Ubuntu rendszeren. A számítási teljesítménytesztek pontszámai a [Windows rendszerű virtuális gépek](../windows/compute-benchmark-scores.md)esetében is elérhetők.
@@ -73,9 +75,9 @@ Az alábbi összehasonlító teljesítménytesztek eredményei az Azure nagy tel
 
 | Virtuális gép mérete | CPU | vCPU-k | NUMA-csomópontok | Memória (GiB) | Átlagos pontszám | Szórás | STD fejlesztői% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Standard_A1_v2 | Intel (R) Xeon (R) CPU E5-2660 0 @ 2.20 GHz | 1 | 1 | 1,9 | 6 483 | 120 | 1,85% | 273 |
-| Standard_A1_v2 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 1 | 1 | 1,9 | 6 059 | 208 | 3,43% | 217 |
-| Standard_A1_v2 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 1 | 1 | 1,9 | 6 367 | 453 | 7,12% | 217 |
+| Standard_A1_v2 | Intel (R) Xeon (R) CPU E5-2660 0 @ 2.20 GHz | 1 | 1 | 1.9 | 6 483 | 120 | 1,85% | 273 |
+| Standard_A1_v2 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 1 | 1 | 1.9 | 6 059 | 208 | 3,43% | 217 |
+| Standard_A1_v2 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 1 | 1 | 1.9 | 6 367 | 453 | 7,12% | 217 |
 | Standard_A2_v2 | Intel (R) Xeon (R) CPU E5-2660 0 @ 2.20 GHz | 2 | 1 | 3.9 | 13 161 | 194 | 1,48% | 266 |
 | Standard_A2_v2 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 2 | 1 | 3.9 | 12 067 | 401 | 3.32% | 203 |
 | Standard_A2_v2 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 2 | 1 | 3.9 | 12 527 | 797 | 6,37% | 238 |
@@ -103,8 +105,8 @@ Az alábbi összehasonlító teljesítménytesztek eredményei az Azure nagy tel
 
 | Virtuális gép mérete | CPU | vCPU-k | NUMA-csomópontok | Memória (GiB) | Átlagos pontszám | Szórás | STD fejlesztői% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Standard_B1ms | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 1 | 1 | 1,9 | 13 593 | 307 | 2,26% | 28 |
-| Standard_B1ms | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 1 | 1 | 1,9 | 14 069 | 495 | 3,52% | 672 |
+| Standard_B1ms | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 1 | 1 | 1.9 | 13 593 | 307 | 2,26% | 28 |
+| Standard_B1ms | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 1 | 1 | 1.9 | 14 069 | 495 | 3,52% | 672 |
 | Standard_B1s | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 1 | 1 | 0,9 | 13 736 | 211 | 1,54% | 28 |
 | Standard_B1s | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 1 | 1 | 0,9 | 13 965 | 457 | 3,27% | 672 |
 | Standard_B2ms | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 2 | 1 | 7,8 | 27 361 | 1 110 | 4,06% | 28 |
@@ -296,8 +298,8 @@ Az alábbi összehasonlító teljesítménytesztek eredményei az Azure nagy tel
 
 | Virtuális gép mérete | CPU | vCPU-k | NUMA-csomópontok | Memória (GiB) | Átlagos pontszám | Szórás | STD fejlesztői% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Standard_F1s | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 1 | 1 | 1,9 | 14 552 | 504 | 3,46% | 350 |
-| Standard_F1s | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 1 | 1 | 1,9 | 14 784 | 858 | 5,80% | 357 |
+| Standard_F1s | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 1 | 1 | 1.9 | 14 552 | 504 | 3,46% | 350 |
+| Standard_F1s | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 1 | 1 | 1.9 | 14 784 | 858 | 5,80% | 357 |
 | Standard_F2s | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 2 | 1 | 3.9 | 28 664 | 895 | 3,12% | 245 |
 | Standard_F2s | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 2 | 1 | 3.9 | 29 188 | 1 228 | 4,21% | 455 |
 | Standard_F4s | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 4 | 1 | 7,8 | 57 192 | 1 700 | 2,97% | 259 |
@@ -313,8 +315,8 @@ Az alábbi összehasonlító teljesítménytesztek eredményei az Azure nagy tel
 
 | Virtuális gép mérete | CPU | vCPU-k | NUMA-csomópontok | Memória (GiB) | Átlagos pontszám | Szórás | STD fejlesztői% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Standard_F1 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 1 | 1 | 1,9 | 14 937 | 593 | 3,97% | 350 |
-| Standard_F1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 1 | 1 | 1,9 | 15 460 | 1 326 | 8,58% | 350 |
+| Standard_F1 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 1 | 1 | 1.9 | 14 937 | 593 | 3,97% | 350 |
+| Standard_F1 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 1 | 1 | 1.9 | 15 460 | 1 326 | 8,58% | 350 |
 | Standard_F2 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 2 | 1 | 3.9 | 29 324 | 1 196 | 4,08% | 343 |
 | Standard_F2 | Intel (R) Xeon (R) CPU E5 – 2673 v4 @ 2.30 GHz | 2 | 1 | 3.9 | 29 299 | 1 908 | 6,51% | 364 |
 | Standard_F4 | Intel (R) Xeon (R) CPU E5 – 2673 v3 @ 2.40 GHz | 4 | 1 | 7,8 | 58 314 | 1 245 | 2,14% | 364 |

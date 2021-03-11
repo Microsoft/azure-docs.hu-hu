@@ -5,12 +5,12 @@ author: anthonychu
 ms.topic: quickstart
 ms.date: 12/23/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 749dea2d9d46cb69d0c7c8a799a3f82c04d020e8
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 567388277f5a68ae23e8c806a8581c177c3fd1dd
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936175"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549464"
 ---
 # <a name="create-your-first-durable-function-in-python"></a>Az első tartós függvény létrehozása a Pythonban
 
@@ -58,22 +58,7 @@ Ebben a szakaszban a Visual Studio Code használatával hozzon létre egy helyi 
 
 A Visual Studio Code szükség esetén telepíti a Azure Functions Core Tools. Emellett egy Function app-projektet is létrehoz egy mappában. Ez a projekt tartalmazza a konfigurációs fájlok [host.js](../functions-host-json.md) és [local.settings.js](../functions-run-local.md#local-settings-file) .
 
-A gyökérmappa egy requirements.txt fájlt is létrehoz. Meghatározza a Function alkalmazás futtatásához szükséges Python-csomagokat.
-
-## <a name="update-azure-functions-extension-bundles-version"></a>Azure Functions Extension csomagok verziójának frissítése
-
-A Python Azure Functions [Azure functions Extension csomagok](../functions-bindings-register.md#access-extensions-in-non-net-languages)2. x verzióját igénylik. A bővítmények *host.js* be vannak állítva.
-
-1. Nyissa meg *host.jsa* projektben. Frissítse a bővítmény csomagot a következőre: `version` `[2.*, 3.0.0)` . Ez egy 2,0-nál nagyobb vagy azzal egyenlő verziószámot ad meg, amely kisebb, mint 3,0.
-
-    ```json
-    "extensionBundle": {
-        "id": "Microsoft.Azure.Functions.ExtensionBundle",
-        "version": "[2.*, 3.0.0)"
-    }
-    ```
-
-1. A VS Code-ot újra kell tölteni, mielőtt a frissített kiterjesztési köteg verziója tükröződik. A parancssorban futtassa a következőt: Keresés a *fejlesztői: reload Window* parancshoz, és futtassa.
+A gyökérmappa egy *requirements.txt* fájlt is létrehoz. Meghatározza a Function alkalmazás futtatásához szükséges Python-csomagokat.
 
 ## <a name="install-azure-functions-durable-from-pypi"></a>Az Azure-functions-instrapabíró telepítése a PyPI-ből
 
@@ -83,7 +68,7 @@ A projekt létrehozásakor a Azure Functions VS Code bővítmény automatikusan 
 
     ```
     azure-functions
-    azure-functions-durable>=1.0.0b12
+    azure-functions-durable
     ```
 
 1. Nyissa meg a szerkesztő integrált terminálját az aktuális mappában (<kbd>CTRL + SHIFT +</kbd>).
@@ -144,7 +129,7 @@ Ezután adja hozzá a hivatkozott `Hello` tevékenység függvényt.
     | Adatkérés | Érték | Leírás |
     | ------ | ----- | ----------- |
     | Sablon kiválasztása a függvényhez | Durable Functions tevékenység | Tevékenységi függvény létrehozása |
-    | Adja meg a függvény nevét | helló | A tevékenység függvényének neve |
+    | Adja meg a függvény nevét | Üdvözöljük | A tevékenység függvényének neve |
 
 Hozzáadta a `Hello` Orchestrator által meghívott tevékenység-függvényt. Nyissa meg a *Hello/ \_ \_ init__. a.* a (z). A Activity függvény olyan műveleteket hajt végre, mint például egy adatbázis hívása vagy egy számítási művelet végrehajtása.
 
@@ -232,7 +217,7 @@ Miután ellenőrizte, hogy a függvény megfelelően fut a helyi számítógépe
 
 2. Illessze be a HTTP-kérelem új URL-címét a böngésző címsorába. Ugyanezt az állapot-választ kell megadnia, mint korábban a közzétett alkalmazás használatakor.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Visual Studio Code használatával létrehozhatja és közzéteheti a Python tartós Function alkalmazást.
 
