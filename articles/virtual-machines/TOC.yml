@@ -1231,16 +1231,24 @@
           href: ../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md?context=/azure/virtual-machines/context/context
     - name: Linux Active Directory bejelentkezés
       href: ./linux/login-using-aad.md
-- name: Karbantartás és frissítések
+- name: Frissítések és karbantartás
   items:
-    - name: Áttekintés
-      href: maintenance-and-updates.md
-    - name: Automatikus virtuálisgép-vendég-javítás (előzetes verzió)
-      href: automatic-vm-guest-patching.md
+    - name: Vendég operációs rendszer frissítései
+      items:
+        - name: Vendég operációs rendszer javítása
+          items:
+            - name: Automatikus virtuálisgép-vendég-javítás (előzetes verzió)
+              href: automatic-vm-guest-patching.md
+            - name: HotPatching
+              href: ../automanage/automanage-hotpatch.md?context=/azure/virtual-machines/context/context
+        - name: Operációs rendszer rendszerképének automatikus frissítése
+          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md?context=/azure/virtual-machines/context/context
     - name: Automatikus bővítmény frissítése (előzetes verzió)
       href: automatic-extension-upgrade.md
-    - name: Karbantartásszabályozás
+    - name: Karbantartás
       items:
+        - name: Áttekintés
+          href: maintenance-and-updates.md
         - name: Karbantartási értesítések
           items:
             - name: Áttekintés
@@ -1251,7 +1259,7 @@
               href: maintenance-notifications-portal.md
             - name: PowerShell
               href: maintenance-notifications-powershell.md
-        - name: Platformkarbantartás
+        - name: Karbantartásszabályozás
           items:
             - name: Áttekintés
               href: maintenance-control.md
@@ -1273,16 +1281,6 @@
               href: ./linux/tutorial-config-management.md
             - name: Windows
               href: ./windows/tutorial-config-management.md
-        - name: Virtuálisgép-méretezési csoport operációsrendszer-rendszerképének frissítései
-          items:
-            - name: Operációs rendszer automatikus frissítései
-              href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md?context=/azure/virtual-machines/context/context
-            - name: Karbantartásszabályozás
-              items:
-                - name: Áttekintés (Előzetes verzió)
-                  href: virtual-machine-scale-sets-maintenance-control.md
-                - name: PowerShell (előzetes verzió)
-                  href: virtual-machine-scale-sets-maintenance-control-powershell.md
 - name: Figyelés
   items:
     - name: Áttekintés

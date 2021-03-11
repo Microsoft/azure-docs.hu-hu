@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b9804e119f5b5cfbee1a61eabf217dad7dbf5500
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: cab32a6c2835dc283a169f58c79ff54e7925467b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102507228"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554241"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Az Azure Digital Twins API-k és SDK-k használata
 
@@ -122,18 +122,21 @@ További mintákat is talál a GitHub-tárházban a [.net (C#) SDK](https://gith
 A szerializáló segítői az SDK-n belül elérhető segítő függvények, amelyek lehetővé teszik a Twin adatok gyors létrehozását vagy deszerializálását az alapvető információk eléréséhez. Mivel az alapszintű SDK-metódusok alapértelmezés szerint a következő két értéket adják vissza JSON-ként, hasznos lehet ezeket a segítő osztályokat használni a Twin-adatsorok további bontásához.
 
 Az elérhető segítő osztályok a következők:
-* `BasicDigitalTwin`: A digitális iker alapértékeit jelöli
-* `BasicRelationship`: A kapcsolat alapvető adatmennyiségét jelöli.
-* `UpdateOperationUtility`: A frissítési hívásokban használt JSON-javítások adatait jelöli.
-* `WriteableProperty`: A tulajdonság metaadatait jelöli
+* `BasicDigitalTwin`: Általánosságban a digitális iker alapértékeit jelöli
+* `BasicDigitalTwinComponent`: Általánosságban a egy összetevőt jelöl a `Contents` Tulajdonságok között `BasicDigitalTwin`
+* `BasicRelationship`: Általánosságban a kapcsolat alapvető értékeit jelöli
+* `DigitalTwinsJsonPropertyName`: Az egyéni digitális Twin-típusok JSON-szerializálásához és deszerializálásához használható karakterlánc-konstansokat tartalmazza.
 
 ##### <a name="deserialize-a-digital-twin"></a>Digitális Twin deszerializálása
 
-A Twin-adatait bármikor deszerializálhatja a választott JSON-kódtár használatával, például `System.Test.Json` vagy `Newtonsoft.Json` . A Twin-hez való alapszintű hozzáféréshez a segítő osztályok egy kicsit kényelmesebben teszik ezt meg.
+A Twin-adatait bármikor deszerializálhatja a választott JSON-kódtár használatával, például `System.Text.Json` vagy `Newtonsoft.Json` . A Twin-hez való alapszintű hozzáféréshez a segítő osztályok kényelmesebbvé tehetik ezt a lehetőséget.
 
 A `BasicDigitalTwin` Helper osztály emellett hozzáférést biztosít a Twin-en, a-on keresztül meghatározott tulajdonságokhoz `Dictionary<string, object>` . A Twin tulajdonságok listázásához a következőket használhatja:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="GetTwin":::
+
+> [!NOTE]
+> `BasicDigitalTwin``System.Text.Json`attribútumok használata. Ahhoz, hogy használni tudja a `BasicDigitalTwin` [DigitalTwinsClient](/dotnet/api/azure.digitaltwins.core.digitaltwinsclient?view=azure-dotnet&preserve-view=true), vagy inicializálnia kell az ügyfelet az alapértelmezett konstruktorral, vagy ha testre szeretné szabni a szerializáló beállítást, használja a [JsonObjectSerializer](/dotnet/api/azure.core.serialization.jsonobjectserializer?view=azure-dotnet&preserve-view=true).
 
 ##### <a name="create-a-digital-twin"></a>Digitális Twin létrehozása
 

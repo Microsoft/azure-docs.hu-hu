@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 306da8dae31c2bbdb487e7128e3a2e24424c239d
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: a1b37ed1d15282224cc7de61ec6f8a98a4bbf732
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98743389"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102610501"
 ---
 # <a name="manage-cloud-services-classic-in-the-azure-portal"></a>A Azure Portal Cloud Services (klasszikus) kezelése
 
@@ -81,7 +81,7 @@ A sikeres üzembe helyezési felcserélés két fő előfeltétele:
 
 - Ha statikus IP-címet szeretne használni az üzemi tárolóhelyhez, le kell foglalni egyet az előkészítési tárolóhelyhez is. Ellenkező esetben a swap sikertelen lesz.
 
-- A felcserélés végrehajtása előtt a szerepkörök összes példányának futnia kell. A példányok állapotát a Azure Portal **Áttekintés** paneljén tekintheti meg. Azt is megteheti, hogy a [Get-AzureRole](/powershell/module/servicemanagement/azure.service/get-azurerole?view=azuresmps-3.7.0&preserve-view=true) parancsot használja a Windows PowerShellben.
+- A felcserélés végrehajtása előtt a szerepkörök összes példányának futnia kell. A példányok állapotát a Azure Portal **Áttekintés** paneljén tekintheti meg. Azt is megteheti, hogy a [Get-AzureRole](/powershell/module/servicemanagement/azure.service/get-azurerole) parancsot használja a Windows PowerShellben.
 
 Vegye figyelembe, hogy a vendég operációs rendszer frissítései és a szolgáltatás-javító műveletek miatt a telepítési swap-feladatok sikertelenek lehetnek. További információ: a [Cloud Service üzembe helyezési problémáinak elhárítása](cloud-services-troubleshoot-deployment-problems.md).
 
@@ -123,7 +123,7 @@ Az **Áttekintés** panel tetején egy állapotsor található. Amikor kiválasz
 
 [Azure portal]: https://portal.azure.com
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A felhőalapú szolgáltatás általános konfigurációja](cloud-services-how-to-configure-portal.md).
 * Ismerje meg, hogyan [helyezhet üzembe egy felhőalapú szolgáltatást](cloud-services-how-to-create-deploy-portal.md).
 * Konfigurálja az [Egyéni tartománynevet](cloud-services-custom-domain-name-portal.md).

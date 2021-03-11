@@ -231,6 +231,8 @@
               href: storage-files-migration-linux-hybrid.md
             - name: Migrálás helyszíni NAS-ról hibrid fájlkiszolgálóra az Azure File Sync használatával
               href: storage-files-migration-nas-hybrid.md
+            - name: Áttelepítés helyszíni NAS-ról egy hibrid fájlkiszolgálóra a DataBox-mel
+              href: storage-files-migration-nas-hybrid-databox.md
         - name: A StorSimple-ből
           items:
             - name: StorSimple 8100 és 8600 migrálási útmutató

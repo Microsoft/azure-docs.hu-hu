@@ -5,18 +5,20 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: ab89c012c985afa8d7375ff94d0f55b0ea6941cc
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: ffdb146b26e83e1973c1d1bfee130eabfa09ea6a
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449458"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613952"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Útmutató a függvények futtatásához a .NET 5,0-ben az Azure-ban
 
-_A .NET 5,0-támogatás jelenleg előzetes verzióban érhető el._
-
 Ez a cikk bevezetést biztosít a C# használatával a .NET elkülönített folyamat-függvények fejlesztéséhez, amelyek folyamaton kívül futnak Azure Functions. A folyamaton kívüli futtatással a Azure Functions futtatókörnyezetből választhatja ki a függvény kódját. Emellett lehetővé teszi olyan függvények létrehozását és futtatását, amelyek az aktuális .NET 5,0 kiadást célozzák meg. 
+
+| Első lépések | Alapelvek| Példák |
+|--|--|--| 
+| <ul><li>[A Visual Studio Code használata](dotnet-isolated-process-developer-howtos.md?pivots=development-environment-vscode)</li><li>[Parancssori eszközök használata](dotnet-isolated-process-developer-howtos.md?pivots=development-environment-cli)</li><li>[A Visual Studio használata](dotnet-isolated-process-developer-howtos.md?pivots=development-environment-vs)</li></ul> | <ul><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Figyelés](functions-monitoring.md)</li> | <ul><li>[Hivatkozási minták](https://github.com/Azure/azure-functions-dotnet-worker/tree/main/samples)</li></ul> |
 
 Ha nem kell támogatnia a .NET 5,0-et vagy a függvények folyamaton kívüli futtatását, érdemes lehet [C# szintű függvénytár-függvényeket létrehoznia](functions-dotnet-class-library.md).
 
@@ -80,11 +82,12 @@ A egy `HostBuilder` teljesen inicializált példány létrehozására és vissza
 
 Ha a gazdagép-építő folyamathoz fér hozzá, az inicializálás során bármely alkalmazásspecifikus konfigurációt beállíthat. Ezek a konfigurációk egy külön folyamatban futó Function alkalmazásra vonatkoznak. A functions Host vagy az trigger és a kötési konfiguráció módosításához továbbra is ahost.jskell használnia a [ fájlon](functions-host-json.md).      
 
-Az alábbi példa bemutatja, hogyan adhat hozzá olyan konfigurációt `args` , amely parancssori argumentumként van beolvasva: 
+<!--The following example shows how to add configuration `args`, which are read as command-line arguments: 
  
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_configure_app" :::
 
-A `ConfigureAppConfiguration` metódus a fordítási folyamat és az alkalmazás további részének konfigurálására szolgál. Ez a példa egy [IConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.iconfigurationbuilder?view=dotnet-plat-ext-5.0&preserve-view=true)is használ, amely megkönnyíti több konfigurációs elem hozzáadását. Mivel `ConfigureAppConfiguration` ugyanezt a példányt adja vissza, a több [`IConfiguration`](/dotnet/api/microsoft.extensions.configuration.iconfiguration?view=dotnet-plat-ext-5.0&preserve-view=true) konfigurációs elem hozzáadásához többször is meghívhatja azt. A konfigurációk teljes készletét a és a rendszerből is elérheti [`HostBuilderContext.Configuration`](/dotnet/api/microsoft.extensions.hosting.hostbuildercontext.configuration?view=dotnet-plat-ext-5.0&preserve-view=true) [`IHost.Services`](/dotnet/api/microsoft.extensions.hosting.ihost.services?view=dotnet-plat-ext-5.0&preserve-view=true) .
+The `ConfigureAppConfiguration` method is used to configure the rest of the build process and application. This example also uses an [IConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.iconfigurationbuilder?view=dotnet-plat-ext-5.0&preserve-view=true), which makes it easier to add multiple configuration items. Because `ConfigureAppConfiguration` returns the same instance of [`IConfiguration`](/dotnet/api/microsoft.extensions.configuration.iconfiguration?view=dotnet-plat-ext-5.0&preserve-view=true), you can also just call it multiple times to add multiple configuration items.-->  
+A konfigurációk teljes készletét a és a rendszerből is elérheti [`HostBuilderContext.Configuration`](/dotnet/api/microsoft.extensions.hosting.hostbuildercontext.configuration?view=dotnet-plat-ext-5.0&preserve-view=true) [`IHost.Services`](/dotnet/api/microsoft.extensions.hosting.ihost.services?view=dotnet-plat-ext-5.0&preserve-view=true) .
 
 A konfigurálással kapcsolatos további tudnivalókért tekintse meg [a ASP.net Core konfiguráció](/aspnet/core/fundamentals/configuration/?view=aspnetcore-5.0&preserve-view=true)című témakört. 
 
@@ -98,13 +101,13 @@ Az alábbi példa egy különálló szolgáltatás-függőséget szúr be:
 
 További információ: [függőségi befecskendezés ASP.net Coreban](/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-5.0&preserve-view=true).
 
-### <a name="middleware"></a>Köztes szoftverek
+<!--### Middleware
 
-A .NET izolált is támogatja a middleware-regisztrációt, a ASP.NET-ben találhatóhoz hasonló modell használatával. Ez a modell lehetővé teszi a logika beírását a Meghívási folyamatba, a függvények végrehajtása előtt és után.
+.NET isolated also supports middleware registration, again by using a model similar to what exists in ASP.NET. This model gives you the ability to inject logic into the invocation pipeline, and before and after functions execute.
 
-Bár az API-k teljes körű regisztrációs készlete még nem érhető el, a middleware-regisztráció támogatott, és egy példát is adtunk a middleware mappában található minta alkalmazáshoz.
+While the full middleware registration set of APIs is not yet exposed, we do support middleware registration and have added an example to the sample application under the Middleware folder.
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_middleware" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_middleware" :::-->
 
 ## <a name="execution-context"></a>Végrehajtási környezet
 
@@ -180,12 +183,15 @@ Ez a szakasz ismerteti a .NET 5,0-as folyamaton futó működési és viselkedé
 | Tartós függvények | [Támogatott](durable/durable-functions-overview.md) | Nem támogatott | 
 | Kényszerített kötések | [Támogatott](functions-dotnet-class-library.md#binding-at-runtime) | Nem támogatott |
 | function.jsaz összetevőn | Létrehozott | Nem generált |
-| Konfiguráció | [host.jsbekapcsolva](functions-host-json.md) | [host.js](functions-host-json.md) és [Egyéni inicializálás](#configuration) |
+| Konfiguráció | [host.jsbekapcsolva](functions-host-json.md) | [host.js](functions-host-json.md) és egyéni inicializálás |
 | Függőséginjektálás | [Támogatott](functions-dotnet-dependency-injection.md)  | [Támogatott](#dependency-injection) |
-| Köztes szoftverek | Nem támogatott | [Támogatott](#middleware) |
+| Köztes szoftverek | Nem támogatott | Támogatott |
 | Hideg indítási idő | Tipikus | Az igény szerinti indítás miatt már nem. A lehetséges késések csökkentése érdekében a Windows helyett Linuxon futtassa a parancsot. |
 | ReadyToRun | [Támogatott](functions-dotnet-class-library.md#readytorun) | _TBD_ |
 
+## <a name="known-issues"></a>Ismert problémák
+
+A .NET elkülönített folyamat-függvények futtatásával kapcsolatos megoldásokkal kapcsolatos további információkért tekintse meg [az ismert problémák oldalát](https://aka.ms/AAbh18e). A problémák jelentéséhez [hozzon létre egy problémát a GitHub-tárházban](https://github.com/Azure/azure-functions-dotnet-worker/issues/new/choose).  
 
 ## <a name="next-steps"></a>Következő lépések
 

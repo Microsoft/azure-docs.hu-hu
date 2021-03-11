@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/05/2021
+ms.date: 03/10/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: cd8f9ae3c33a766032a280b13780b8d9cdcff177
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 1e8175239c1f4100cb3484f067e1aa73d2547f70
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102429160"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102610791"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[A FHIR készült Azure API-nak ügyfél által felügyelt kulccsal kell rendelkeznie a REST-adatok titkosításához](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F051cba44-2429-45b9-9649-46cec11c7119) |A FHIR Azure API-ban tárolt adatok titkosítását az ügyfél által felügyelt kulcs segítségével szabályozhatja, ha ez szabályozási vagy megfelelőségi követelmény. Az ügyfél által felügyelt kulcsok emellett kettős titkosítást is biztosítanak, ha egy második titkosítási réteget adnak hozzá, amely a szolgáltatás által felügyelt kulcsokkal együtt az alapértelmezetten történik. |naplózás, letiltva |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/API%20for%20FHIR/HealthcareAPIs_EnableByok_Audit.json) |
 |[A FHIR készült Azure API-nak privát hivatkozást kell használnia](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1ee56206-5dd1-42ab-b02d-8aae8b1634ce) |A FHIR készült Azure API-nak legalább egy jóváhagyott privát végponti kapcsolatban kell lennie. A virtuális hálózatban lévő ügyfelek biztonságosan érhetik el a magánhálózati kapcsolatokon keresztül privát végponti kapcsolattal rendelkező erőforrásokat. További információért látogasson el a következő webhelyre: [https://aka.ms/fhir-privatelink](https://aka.ms/fhir-privatelink) . |Naplózás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/API%20for%20FHIR/HealthcareAPIs_PrivateLink_Audit.json) |

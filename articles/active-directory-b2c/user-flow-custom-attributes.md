@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 03/10/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c9453f2fc5803fb6ce09d8749cbf7fa1c7c2ec46
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 17c73257db371bbec0c72a23b1303847a8d14102
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102174820"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102607917"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Egyéni attribútumok definiálása a Azure Active Directory B2Cban
 
@@ -30,6 +30,8 @@ Az Azure AD B2C-címtár [beépített attribútumkészletet](user-profile-attrib
 * Egy ügyfél felé irányuló alkalmazásnak meg kell őriznie egy **LoyaltyId** attribútumot.
 * Az identitás-szolgáltató egyedi felhasználói azonosítóval rendelkezik, amelyet **uniqueUserGUID** kell megőrizni.
 * Az egyéni felhasználói utazásnak meg kell őriznie a felhasználó ( **migrationStatus**) állapotát, hogy más logika is működjön.
+
+A használati feltételek *kiterjesztésének tulajdonsága*, az *egyéni attribútum* és az *egyéni jogcím* a jelen cikk kontextusában ugyanezt a dolgot tekinti át. A név a környezettől, például az alkalmazástól, az objektumtól vagy a házirendtől függően változhat.
 
 Azure AD B2C segítségével kiterjesztheti az egyes felhasználói fiókokban tárolt attribútumok készletét. Ezeket az attribútumokat a [Microsoft Graph API](microsoft-graph-operations.md)használatával is elolvashatja és elvégezheti.
 
@@ -66,11 +68,7 @@ Miután létrehozott egy új felhasználót egy felhasználói folyamattal, amel
 
 ## <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C Extensions-alkalmazás
 
-A bővítmény attribútumai csak az Application objektumon regisztrálhatók, annak ellenére, hogy egy felhasználóhoz tartozó adatmennyiséget tartalmaznak. A bővítmény attribútum a B2C-Extensions-app nevű alkalmazáshoz van csatolva. Ne módosítsa ezt az alkalmazást, mert az Azure AD B2C használja a felhasználói adattároláshoz. Az alkalmazás az Azure AD B2C, az alkalmazások regisztrációja alatt található.
-
-A használati feltételek *kiterjesztésének tulajdonsága*, az *egyéni attribútum* és az *egyéni jogcím* a jelen cikk kontextusában ugyanezt a dolgot tekinti át. A név a környezettől, például az alkalmazástól, az objektumtól vagy a házirendtől függően változhat.
-
-## <a name="get-the-application-properties"></a>Az alkalmazás tulajdonságainak beolvasása
+A bővítmény attribútumai csak az Application objektumon regisztrálhatók, annak ellenére, hogy egy felhasználóhoz tartozó adatmennyiséget tartalmaznak. A bővítmény attribútum a nevű alkalmazáshoz van csatolva `b2c-extensions-app` . Ne módosítsa ezt az alkalmazást, mert az Azure AD B2C használja a felhasználói adattároláshoz. Az alkalmazás az Azure AD B2C, az alkalmazások regisztrációja alatt található. Az alkalmazás tulajdonságainak beolvasása:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
@@ -80,14 +78,6 @@ A használati feltételek *kiterjesztésének tulajdonsága*, az *egyéni attrib
 1. Másolja a következő azonosítókat a vágólapra, és mentse őket:
     * **Alkalmazásazonosító**. Példa: `11111111-1111-1111-1111-111111111111`.
     * **Objektumazonosító**. Példa: `22222222-2222-2222-2222-222222222222`.
-
-## <a name="using-custom-attribute-with-ms-graph-api"></a>Egyéni attribútum használata az MS Graph API
-
-Microsoft Graph API támogatja a bővítmény-attribútumokkal rendelkező felhasználók létrehozását és frissítését. A Graph API a bővítmény attribútumait az egyezmény használatával nevezi el `extension_ApplicationClientID_attributename` , ahol az az `ApplicationClientID` alkalmazás **alkalmazás-(ügyfél-) azonosítója** `b2c-extensions-app` . Vegye figyelembe, hogy a bővítmény attribútumának nevében szereplő **alkalmazás-azonosító (ügyfél)** nem tartalmaz kötőjelet. Például:
-
-```json
-"extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
-``` 
 
 ::: zone pivot="b2c-custom-policy"
 
@@ -172,6 +162,14 @@ Az alábbi példa egy egyéni attribútum használatát mutatja be Azure AD B2C 
 ```
 
 ::: zone-end
+
+## <a name="using-custom-attribute-with-ms-graph-api"></a>Egyéni attribútum használata az MS Graph API
+
+Microsoft Graph API támogatja a bővítmény-attribútumokkal rendelkező felhasználók létrehozását és frissítését. A Graph API a bővítmény attribútumait az egyezmény használatával nevezi el `extension_ApplicationClientID_attributename` , ahol az az `ApplicationClientID` alkalmazás **alkalmazás-(ügyfél-) azonosítója** `b2c-extensions-app` . Vegye figyelembe, hogy a bővítmény attribútumának nevében szereplő **alkalmazás-azonosító (ügyfél)** nem tartalmaz kötőjelet. Például:
+
+```json
+"extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyId": "212342" 
+``` 
 
 ## <a name="next-steps"></a>Következő lépések
 

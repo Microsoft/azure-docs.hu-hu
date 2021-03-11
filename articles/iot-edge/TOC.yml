@@ -258,7 +258,7 @@
 - name: További források
   items:
     - name: Támogatási és súgólehetőségek
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
     - name: Azure IoT-szolgáltatások
       items:
         - name: IoT Hub

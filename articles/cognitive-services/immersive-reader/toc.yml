@@ -1,30 +1,26 @@
 - name: A Modern olvasó dokumentációja
   href: index.yml
-- name: Mi az a Modern olvasó?
-  href: Overview.md
-- name: Gyorsútmutató
-  href: ./quickstarts/client-libraries.md
-- name: Oktatóanyagok
+- name: Áttekintés
   items:
-    - name: A Modern olvasó indítása (Android)
-      href: tutorial-android.md
-    - name: A Modern olvasó indítása (iOS)
-      href: tutorial-ios.md
-    - name: A Modern olvasó indítása (Python)
-      href: tutorial-python.md
-    - name: Több Modernolvasó-erőforrás használata
-      href: tutorial-multiple-resources.md
+    - name: Átfogó olvasó – áttekintés
+      href: Overview.md
+    - name: Nyelvi támogatás
+      href: language-support.md
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/'
+    - name: Kibocsátási megjegyzések
+      href: release-notes.md
+- name: Lebilincselő olvasó
+  href: ./quickstarts/client-libraries.md
 - name: Útmutató
   items:
     - name: Modern olvasó-erőforrás létrehozása
       href: how-to-create-immersive-reader.md
-    - name: A cookie-kra vonatkozó irányelv beállítása
-      href: how-to/set-cookie-policy.md
-    - name: Matematikai jelek megjelenítése
-      href: how-to/display-math.md
-    - name: A Modern olvasó indítása HTML-tartalommal
-      href: how-to-launch-with-html.md
-    - name: A Modern olvasó gombjának testreszabása
+    - name: A lebilincselő olvasó elindítása
+      href: how-to-launch-immersive-reader.md
+    - name: HTML-tartalom előkészítése
+      href: how-to-prepare-html.md
+    - name: A részletes olvasó indítás gombjának szerkesztése
       href: how-to-customize-launch-button.md
     - name: A hitelesítési jogkivonat gyorsítótárazása
       href: how-to-cache-token.md
@@ -32,21 +28,23 @@
       href: how-to-configure-read-aloud.md
     - name: Fordítás konfigurálása
       href: how-to-configure-translation.md
+    - name: Matematikai jelek megjelenítése
+      href: how-to/display-math.md
+    - name: A cookie-kra vonatkozó irányelv beállítása
+      href: how-to/set-cookie-policy.md
     - name: Felhasználói beállítások tárolása
       href: how-to-store-user-preferences.md
+    - name: Több Modernolvasó-erőforrás használata
+      href: how-to-multiple-resources.md
 - name: Referencia
   items:
     - name: JavaScript SDK
       href: reference.md
-    - name: Kibocsátási megjegyzések
-      href: release-notes.md
 - name: További források
   items:
+    - name: Regionális támogatás
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Támogatási lehetőségek
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/immersive-reader/context/context
-    - name: Azure-ütemterv
+    - name: Azure-frissítések
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: Nyelvi támogatás
-      href: language-support.md
-    - name: Régiónkénti rendelkezésre állás
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'

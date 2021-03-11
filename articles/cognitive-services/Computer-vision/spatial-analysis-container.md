@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 9989c6ea6b75203d43c37854caef7fdcbc321779
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 1a107f812ceb46649126bdbefcf3b828e1938ff3
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102519027"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612898"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>A térbeli elemzési tároló telepítése és futtatása (előzetes verzió)
 
@@ -306,7 +306,7 @@ A 1.0.9 kiadásának telepítése:
 sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
-A következő lépésként regisztrálja a gazdagépet IoT Edge eszközként a IoT Hub-példányban egy [kapcsolatok karakterlánc](../../iot-edge/how-to-register-device.md?view=iotedge-2018-06)használatával.
+A következő lépésként regisztrálja a gazdagépet IoT Edge eszközként a IoT Hub-példányban egy [kapcsolatok karakterlánc](../../iot-edge/how-to-register-device.md)használatával.
 
 Az IoT Edge eszközt az Azure-IoT Hubhoz kell kötnie. A korábban létrehozott IoT Edge eszközről kell másolnia a kapcsolódási karakterláncot. Azt is megteheti, hogy az alábbi parancsot futtatja az Azure CLI-ben.
 
@@ -468,7 +468,7 @@ A 1.0.9 kiadásának telepítése:
 sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
-Ezután regisztrálja a virtuális gépet IoT Edge eszközként a IoT Hub-példányban egy [kapcsolatok karakterlánc](../../iot-edge/how-to-register-device.md?view=iotedge-2018-06)használatával.
+Ezután regisztrálja a virtuális gépet IoT Edge eszközként a IoT Hub-példányban egy [kapcsolatok karakterlánc](../../iot-edge/how-to-register-device.md)használatával.
 
 Az IoT Edge eszközt az Azure-IoT Hubhoz kell kötnie. A korábban létrehozott IoT Edge eszközről kell másolnia a kapcsolódási karakterláncot. Azt is megteheti, hogy az alábbi parancsot futtatja az Azure CLI-ben.
 

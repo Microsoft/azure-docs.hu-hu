@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a84942337b3c8eb5f7509f61f9ba5bcd564d8bb3
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: ceac1e7b5e8efa7e87ecf6e1f4c9dd8286c87e98
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653078"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614071"
 ---
 # <a name="team-data-science-process-for-developer-operations"></a>Csoportos adatelemzési folyamat fejlesztői műveletekhez
 
@@ -74,10 +74,10 @@ Az alábbi táblázat a DevOps célkitűzések megvalósításához nyújt segí
 |  |  | [Ez a hivatkozás azt ismerteti, hogyan lehet adatfolyamatokat létrehozni a megoldáshoz, amelyet a "csomagként" JSON-sablonként menthet.](../../data-factory/v1/data-factory-introduction.md) | Azure Data Factory | Haladó | Általános számítástechnikai háttér, Adatprojekt-élmény |
 |  |  | [Ez a témakör egy Azure Resource Manager sablon szerkezetét ismerteti.](../../azure-resource-manager/templates/template-syntax.md) | Azure Resource Manager | Haladó | A Microsoft Azure platform ismerete |
 |  |  | [A DSC egy felügyeleti platform a PowerShellben, amely lehetővé teszi, hogy az informatikai és fejlesztési infrastruktúrát kóddal, a csomagként mentett konfigurációval kezelje. Ez a témakör áttekintést nyújt az adott témakörről](/powershell/scripting/dsc/overview/overview) | PowerShell kívánt állapotának konfigurálása | Haladó | PowerShell-kódolás, a vállalati architektúrák ismerete, parancsfájlok futtatása |
-|  | Kiadás | [Ez a fő hivatkozási cikk a CI/CD-környezetek létrehozásával, tesztelésével és kiadásával kapcsolatos fogalmakat tartalmaz.](/azure/devops/pipelines/?view=azure-devops) | Visual Studio Codespace | Tapasztalt | Szoftverfejlesztés, a CI/CD-környezetek ismerete, a SDLC ismerete |
+|  | Kiadás | [Ez a fő hivatkozási cikk a CI/CD-környezetek létrehozásával, tesztelésével és kiadásával kapcsolatos fogalmakat tartalmaz.](/azure/devops/pipelines/) | Visual Studio Codespace | Tapasztalt | Szoftverfejlesztés, a CI/CD-környezetek ismerete, a SDLC ismerete |
 |  |  | [Ez az előző hivatkozás a Runbookok a kiadás-felügyelet automatizálására a System Center használatával](/system-center/orchestrator/automate-runbooks) | System Center | Tapasztalt | Felhasználói élmény a System Center Orchestrator |
 |  |  | [Ebből a cikkből megtudhatja, hogyan helyezheti üzembe a webalkalmazás, a Mobile apps-háttér vagy az API-alkalmazás fájljait a Azure App Servicehoz, majd útmutatást nyújt a megfelelő erőforrásokhoz az előnyben részesített lehetőségre vonatkozó utasítások alapján.](../../app-service/deploy-local-git.md) | Microsoft Azure üzemelő példány | Haladó | Szoftverfejlesztés, a Microsoft Azure platformmal való élmény |
-|  | Figyelés | [Ez a hivatkozás ismerteti Application Insights és azt, hogyan adhatja hozzá a speciális elemzési megoldásokhoz](../../azure-monitor/app/app-insights-overview.md) | Application Insights | Haladó | Szoftverfejlesztés, a Microsoft Azure platform ismerete |
+|  | Monitor | [Ez a hivatkozás ismerteti Application Insights és azt, hogyan adhatja hozzá a speciális elemzési megoldásokhoz](../../azure-monitor/app/app-insights-overview.md) | Application Insights | Haladó | Szoftverfejlesztés, a Microsoft Azure platform ismerete |
 |  |  | [Ez a témakör a Operations Manager-infrastruktúrát kezelő rendszergazda és a fejlett analitikai megoldás figyelését és támogatását figyelő kezelővel kapcsolatos alapvető fogalmakat ismerteti Operations Manager](/previous-versions/system-center/system-center-2012-R2/hh230741(v=sc.12)) | System Center | Tapasztalt | A nagyvállalati monitorozás, System Center Operations Manager |
 |  |  | [Ez a blogbejegyzés azt ismerteti, hogyan használható a Azure Data Factory a fejlett elemzési folyamat monitorozásához és kezeléséhez](https://azure.microsoft.com/blog/azure-data-factory-updates-monitoring-and-management-enhancements/) | Azure Data Factory | Haladó | A Azure Data Factory ismerete |
 |  |  | [Ez a videó bemutatja, hogyan figyelheti a naplókat Azure Monitor naplókkal](https://channel9.msdn.com/Shows/Data-Exposed/Enterprise-HDInsight-Monitoring-with-Operations-Management-Suite) | Azure-naplók, PowerShell | Tapasztalt | Az Azure platform ismerete |

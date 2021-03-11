@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 03/03/2021
 ms.author: duau
-ms.openlocfilehash: ef48f7623aee1256ad1f889d2e70b5a2fdb8e6bf
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: f76c48af4f5ebc8013daad457f9973cf7792c7c6
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102108847"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547992"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-the-azure-portal"></a>Gyors útmutató: útvonal-kiszolgáló létrehozása és konfigurálása a Azure Portal használatával
 
@@ -101,6 +101,12 @@ Ha rendelkezik ExpressRoute-átjáróval és/vagy VPN-átjáróval, és azt szer
 1. Válassza az **Engedélyezés** lehetőséget az **ág – ág** beállításnál, majd válassza a **Mentés** lehetőséget.
 
     :::image type="content" source="./media/quickstart-configure-route-server-portal/enable-route-exchange.png" alt-text="A Route Exchange engedélyezésének képernyőképe.":::
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha már nincs szüksége az Azure Route Serverre, válassza a **Törlés** lehetőséget az Áttekintés lapon az útvonal-kiszolgáló megszüntetéséhez.
+
+:::image type="content" source="./media/quickstart-configure-route-server-portal/delete-route-server.png" alt-text="Képernyőkép az útválasztási kiszolgáló törléséről.":::
 
 ## <a name="next-steps"></a>Következő lépések
 

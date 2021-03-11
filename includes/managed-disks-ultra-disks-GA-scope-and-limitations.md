@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 26a5537496d9e881ece135437c403baf4a4fd67c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e94b14584f8eece3d772f67b680df4a2ffb8b5cd
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016632"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102603301"
 ---
 Jelenleg az ultra-lemezek további korlátozásokkal rendelkeznek, ezek a következők:
 
@@ -39,7 +39,7 @@ Az alábbi táblázat az ultra lemezek régióit ismerteti, valamint a hozzájuk
 |Ausztrália középső régiója    |Csak egyetlen virtuális gép (a rendelkezésre állási készletek és a virtuálisgép-méretezési csoportok nem támogatottak)|
 |Kelet-Ausztrália     |Három rendelkezésre állási zóna         |
 |Délkelet-Ázsia    |Három rendelkezésre állási zóna        |
-|Közép-Kanada *     |Három rendelkezésre állási zóna          |
+|Közép-Kanada     |Három rendelkezésre állási zóna          |
 |Az USA középső régiója     |Három rendelkezésre állási zóna          |
 |USA keleti régiója     |Három rendelkezésre állási zóna          |
 |USA 2. keleti régiója     |Három rendelkezésre állási zóna         |
@@ -49,8 +49,6 @@ Az alábbi táblázat az ultra lemezek régióit ismerteti, valamint a hozzájuk
 |Az Egyesült Királyság déli régiója    |Három rendelkezésre állási zóna        |
 |Nyugat-Európa    | Három rendelkezésre állási zóna|
 |USA 2. nyugati régiója    |Három rendelkezésre állási zóna|
-
-\* Vegye fel a kapcsolatot az Azure támogatási szolgálatával, hogy hozzáférhessen a régió Availability Zoneséhez.
 
 - Csak a következő virtuálisgép-sorozatokban támogatott:
     - [ESv3](../articles/virtual-machines/ev3-esv3-series.md#esv3-series)

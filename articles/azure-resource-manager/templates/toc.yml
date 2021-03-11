@@ -326,6 +326,8 @@
       href: template-best-practices.md
     - name: Bicep
       items:
+        - name: A bicep telepítése
+          href: bicep-install.md
         - name: JSON összehasonlítása a bicep
           href: compare-template-syntax.md
     - name: Adattípusok

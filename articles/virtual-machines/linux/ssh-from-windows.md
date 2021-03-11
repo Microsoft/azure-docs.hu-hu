@@ -3,16 +3,17 @@ title: SSH-kulcsok használata Linux rendszerű virtuális gépekhez való kapcs
 description: Útmutató SSH-kulcsok létrehozásához és használatához Windows-számítógépről az Azure-beli Linux rendszerű virtuális gépekhez való kapcsolódáshoz.
 author: cynthn
 ms.service: virtual-machines
+ms.collection: linux
 ms.workload: infrastructure-services
 ms.date: 10/31/2020
 ms.topic: how-to
 ms.author: cynthn
-ms.openlocfilehash: 183b601a4521c3ff3e4578784f7adadd01045b0e
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 167ce63931155f5142ed34b41f857505699bc0a6
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147147"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552779"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>SSH-kulcsok használata az Azure-ban a Windowsban
 
@@ -23,9 +24,9 @@ Ha Linux vagy macOS rendszerű ügyfélről szeretne SSH-kulcsokat használni, t
 
 ## <a name="overview-of-ssh-and-keys"></a>Az SSH és a kulcsok áttekintése
 
-Az [SSH](https://www.ssh.com/ssh/) egy titkosított kapcsolati protokoll, amely biztonságos bejelentkezéseket tesz lehetővé a nem biztonságos kapcsolatokon keresztül. Az SSH az Azure-ban üzemeltetett Linux rendszerű virtuális gépek alapértelmezett kapcsolati protokollja. Habár az SSH titkosított kapcsolatokat biztosít, a jelszavak SSH-val való használata továbbra is sebezhetővé teszi a virtuális gépet a találgatásos támadásokkal szemben. Azt javasoljuk, hogy SSH-kapcsolaton keresztül csatlakozzon egy virtuális géphez egy nyilvános titkos kulcspár, más néven *SSH* -kulcs használatával. 
+Az [SSH](https://www.ssh.com/ssh/) egy titkosított kapcsolati protokoll, amely biztonságos bejelentkezéseket tesz lehetővé a nem biztonságos kapcsolatokon keresztül. Az SSH az Azure-ban üzemeltetett Linux rendszerű virtuális gépek alapértelmezett kapcsolati protokollja. Habár az SSH titkosított kapcsolatokat biztosít, a jelszavak SSH-val való használata továbbra is sebezhetővé teszi a virtuális gépet a találgatásos támadásokkal szemben. Azt javasoljuk, hogy SSH-kapcsolaton keresztül csatlakozzon egy virtuális géphez egy nyilvános titkos kulcspár, más néven *SSH*-kulcs használatával. 
 
-A nyilvános titkos kulcspár olyan, mint a bejárati ajtó zárolása. A zárolás elérhetővé vált a **nyilvánosság** számára, a megfelelő kulccsal bárki megnyithatja az ajtót. A kulcs **magán** , és csak a megbízhatónak ítélt személyeket adja meg, mert feloldható az ajtó feloldása. 
+A nyilvános titkos kulcspár olyan, mint a bejárati ajtó zárolása. A zárolás elérhetővé vált a **nyilvánosság** számára, a megfelelő kulccsal bárki megnyithatja az ajtót. A kulcs **magán**, és csak a megbízhatónak ítélt személyeket adja meg, mert feloldható az ajtó feloldása. 
 
 - A *nyilvános kulcsot* a rendszer a linuxos virtuális gépre helyezi a virtuális gép létrehozásakor. 
 

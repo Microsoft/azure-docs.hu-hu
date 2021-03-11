@@ -201,6 +201,8 @@
           href: core/how-to-connect-devices-x509.md
         - name: Eszközkapcsolatok monitorozása az Azure CLI-vel
           href: core/howto-monitor-devices-azure-cli.md
+        - name: Eszközök csatlakoztatása IoT Edge transzparens átjárón keresztül
+          href: core/how-to-connect-iot-edge-transparent-gateway.md
         - name: Azure Sphere DevKit előkészítése és csatlakoztatása
           href: core/howto-connect-sphere.md
         - name: RuuviTag eszköz előkészítése és csatlakoztatása
@@ -209,6 +211,8 @@
           href: core/howto-connect-rigado-cascade-500.md
         - name: Más IoT-felhők csatlakoztatása
           href: core/howto-build-iotc-device-bridge.md
+        - name: Eszközök kezelése
+          href: core/how-to-move-device-to-iot.md
     - name: Integrált megoldások készítése
       items:
         - name: Csempék hozzáadása az irányítópulthoz
@@ -298,7 +302,7 @@
     - name: Kódminták
       href: /samples/browse/?expanded=azure&products=azure-iot-central
     - name: Támogatási és súgólehetőségek
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json
     - name: Azure IoT-szolgáltatások
       items:
         - name: IoT Hub

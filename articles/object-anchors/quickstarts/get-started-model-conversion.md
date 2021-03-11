@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 02/22/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 93443a321f22d232f8b2bfa6a0fe5a05a5e18175
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 69d23b9d02eb176a2e42985ef5c3673e83d9bb7e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748791"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102607900"
 ---
 # <a name="quickstart-create-an-object-anchors-model-from-a-3d-model"></a>Rövid útmutató: objektum-horgonyok modell létrehozása 3D-modellből
 
@@ -102,7 +102,7 @@ Most pedig átalakíthatja a 3D modellt.
 
     | Mező                    | Leírás                       |
     | ---                      | ---                               |
-    | InputAssetPath           | A 3D modell abszolút elérési útja a helyi gépen (a használható mappában van egy minta modell `assets/models` ). Támogatott fájlformátumok:,,, `fbx` `ply` `obj` `glb` és `gltf` . |
+    | InputAssetPath           | A 3D modell abszolút elérési útja a helyi gépen. Támogatott fájlformátumok:,,, `fbx` `ply` `obj` `glb` és `gltf` . |
     | AssetDimensionUnit       | A 3D modell mértékegysége. Az összes támogatott mértékegység a számbavétel használatával érhető el `Azure.MixedReality.ObjectAnchors.Conversion.AssetLengthUnit` . |
     | Gravitációs                  | A 3D modell gravitációs vektorának iránya. Ez a 3D vektor lefelé irányítja a modell koordináta-rendszerébe. Ha például a negatív `y` érték a modell 3D-területének lefelé irányuló irányát jelöli, ez az érték a következő lesz: `Vector3(0.0f, -1.0f, 0.0f)` . |
 

@@ -4,12 +4,12 @@ description: Összefoglalja az Azure-beli virtuális gépek Azure Backup szolgá
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 2536ae0d33767de5ad53740407622e67c582cc37
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 82de73944bd833ec5f921e07a29960ac6d175f8d
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710668"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609787"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa
 
@@ -72,6 +72,7 @@ A Linux rendszerű gépek biztonsági mentését a következők támogatják.
 Linux Azure-beli virtuális gépek biztonsági mentése a Linux Azure virtuálisgép-ügynökkel | Fájl konzisztens biztonsági mentése.<br/><br/> Alkalmazás-konzisztens biztonsági mentés [egyéni parancsfájlok](backup-azure-linux-app-consistent.md)használatával.<br/><br/> A visszaállítás során létrehozhat egy új virtuális gépet, visszaállíthat egy lemezt, és felhasználhatja egy virtuális gép létrehozásához, illetve egy lemez visszaállításához, illetve a meglévő virtuális gép lemezének lecseréléséhez. Az egyes fájlokat és mappákat is visszaállíthatja.
 Linux Azure-beli virtuális gépek biztonsági mentése a MARS-ügynökkel | Nem támogatott.<br/><br/> A MARS-ügynök csak Windows rendszerű gépekre telepíthető.
 Linuxos Azure-beli virtuális gépek biztonsági mentése a DPM/MABS | Nem támogatott.
+Linux Azure virtuális gépek biztonsági mentése Docker csatlakoztatási pontokkal | A Azure Backup jelenleg nem támogatja a Docker csatlakoztatási pontjainak kizárását, mivel ezek minden alkalommal különböző elérési utakon vannak csatlakoztatva.
 
 ## <a name="operating-system-support-linux"></a>Operációs rendszer támogatása (Linux)
 
@@ -170,6 +171,7 @@ Megosztott tároló| A virtuális gépek Fürt megosztott kötete (CSV) vagy Sca
 [Megosztott lemezek](../virtual-machines/disks-shared-enable.md) | Nem támogatott.
 ultra SSD lemezek | Nem támogatott. További információkért tekintse meg ezeket a [korlátozásokat](selective-disk-backup-restore.md#limitations).
 [Ideiglenes lemezek](../virtual-machines/managed-disks-overview.md#temporary-disk) | Azure Backup nem készít biztonsági másolatot az ideiglenes lemezekről.
+NVMe/ideiglenes lemezek | Nem támogatott.
 
 ## <a name="vm-network-support"></a>VM-hálózat támogatása
 
@@ -211,10 +213,10 @@ Az adatbiztonságot:
 
 **Gép** | **Átvitel közben** | **Nyugalmi állapotban**
 --- | --- | ---
-Helyszíni Windows rendszerű gépek DPM/MABS nélkül | ![Igen][green] | ![Igen][green]
-Azure-beli virtuális gépek | ![Igen][green] | ![Igen][green]
-Helyszíni/Azure-beli virtuális gépek DPM-mel | ![Igen][green] | ![Igen][green]
-Helyszíni/Azure-beli virtuális gépek MABS-mel | ![Igen][green] | ![Igen][green]
+Helyszíni Windows rendszerű gépek DPM/MABS nélkül | ![Igen][green] | ![Yes][green]
+Azure-beli virtuális gépek | ![Igen][green] | ![Yes][green]
+Helyszíni/Azure-beli virtuális gépek DPM-mel | ![Igen][green] | ![Yes][green]
+Helyszíni/Azure-beli virtuális gépek MABS-mel | ![Igen][green] | ![Yes][green]
 
 ## <a name="vm-compression-support"></a>VM-tömörítés támogatása
 
@@ -227,7 +229,7 @@ A Backup a következő táblázatban összefoglalt biztonsági mentési forgalom
 --- | --- | ---
 Helyszíni Windows rendszerű gépek DPM/MABS nélkül | NA | ![Igen][green]
 Azure-beli virtuális gépek | NA | NA
-Helyszíni/Azure-beli virtuális gépek DPM-mel | ![Igen][green] | ![Igen][green]
+Helyszíni/Azure-beli virtuális gépek DPM-mel | ![Igen][green] | ![Yes][green]
 Helyszíni/Azure-beli virtuális gépek MABS-mel | ![Igen][green] | ![Igen][green]
 
 ## <a name="next-steps"></a>Következő lépések

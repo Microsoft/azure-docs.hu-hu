@@ -1,25 +1,26 @@
 ---
 title: Oktatóanyag – Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI-vel
 description: Ez az oktatóanyag ismerteti, hogyan használja az Azure CLI-t Linux rendszerű Azure-beli virtuális gépek létrehozásához és kezeléséhez
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
 tags: azure-resource-manager
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: aeb44a52dc7a83321752bb00e09270fe7bfd0bbe
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 77213fe83a56a33f4d10658f85465349949be792
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972186"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555601"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Oktatóanyag: Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI használatával
 
@@ -251,7 +252,7 @@ Számos energiaállapot van, amelyek közül az Azure-beli virtuális gépek fel
 
 ### <a name="power-states"></a>Energiaállapotok
 
-| Energiaállapot | Description
+| Energiaállapot | Leírás
 |----|----|
 | Indítás | Azt jelzi, hogy a virtuális gép indítása folyamatban van. |
 | Futó | Azt jelzi, hogy a virtuális gép fut. |

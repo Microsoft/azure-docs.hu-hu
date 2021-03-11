@@ -1,18 +1,18 @@
 ---
 title: A Azure Data Box beépített szabályzat-definíciói
 description: A Azure Data Box Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 03/05/2021
+ms.date: 03/10/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
 ms.service: databox
 author: alkohli
 ms.author: alkohli
-ms.openlocfilehash: 4feeff0824bd332cd5081656df14aaec681ed1d4
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 9dabae2b0591627a5c31cca9f89d41a07d0d5607
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102424418"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608655"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-data-box"></a>A Azure Data Box beépített definíciói Azure Policy
 

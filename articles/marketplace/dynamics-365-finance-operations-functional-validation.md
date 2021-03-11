@@ -7,12 +7,12 @@ ms.topic: article
 author: emuench
 ms.author: navits
 ms.date: 07/17/2020
-ms.openlocfilehash: b9685081c0beacd745a83067b9d9876384933377
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9be90cdac742a581c6346f923f44e769c8a70f76
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131241"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613629"
 ---
 # <a name="appsource-dynamics-365-finance-and-operations-functional-validation"></a>AppSource Dynamics 365 pénzügyi és üzemeltetési funkciók ellenőrzése
 
@@ -50,17 +50,17 @@ A végső felülvizsgálati hívások bejelentéséhez vegye fel a kapcsolatot [
 
 2. Hajtsa végre a következő képernyőképeket az [LCS](https://lcs.dynamics.com/) -környezetből, amely megfelel a közzétenni kívánt ajánlatnak vagy megoldásnak. Elég Egyértelműnek kell lenniük ahhoz, hogy a minősítési csapat beolvassa a szöveget. Mentse a képernyőképeket JPG-fájlként. Engedélyt biztosíthat az [appSourceCRM@microsoft.com](mailto:appSourceCRM@microsoft.com) LCS-környezet számára, hogy a képernyőképek megadása helyett a telepítőt is ellenőrizzük.
 
-    1. Nyissa meg a következőt: **LCS**  >  **Business Process Modeling**  >  **Project Library** . Képernyőkép készítése a folyamat lépéseiről. Adja meg a **diagramokat** és az **áttekintett** oszlopokat az itt látható módon:
+    1. Nyissa meg a következőt: **LCS**  >  **Business Process Modeling**  >  **Project Library**. Képernyőkép készítése a folyamat lépéseiről. Adja meg a **diagramokat** és az **áttekintett** oszlopokat az itt látható módon:
 
        :::image type="content" source="media/dynamics-365-finance-operations/project-library.png" alt-text="Megjeleníti a Project Library ablakát.":::
 
-      2. Lépjen az **LCS**  >  **megoldás-felügyeleti**  >  **tesztelési megoldás csomagjába** . Készítsen képernyőképeket, amelyek tartalmazzák az alábbi példákban látható csomag áttekintését és tartalmát:
+      2. Lépjen az **LCS**  >  **megoldás-felügyeleti**  >  **tesztelési megoldás csomagjába**. Készítsen képernyőképeket, amelyek tartalmazzák az alábbi példákban látható csomag áttekintését és tartalmát:
 
-    | Mező | Kép <img src="" width="400px">|
+    | Mező | Kép |
     | --- | --- |
     | Csomag – áttekintés | [![A "csomag áttekintése" ablakot bemutató képernyőkép.](media/dynamics-365-finance-operations/package-overview-45.png)](media/dynamics-365-finance-operations/package-overview.png#lightbox) |
     | <ul><li>Megoldás-jóváhagyók</li></ul> | [![Csomag áttekintése képernyő](media/dynamics-365-finance-operations/solution-approvers-45.png)](media/dynamics-365-finance-operations/solution-approvers.png#lightbox) |
-    | Csomag tartalma<ul><li>Modell</li><li>Szoftveresen telepíthető csomag</li></ul> | [![Csomag tartalmának képernyője](media/dynamics-365-finance-operations/package-contents-1-45.png)](media/dynamics-365-finance-operations/package-contents-1.png#lightbox) |
+    | Csomag tartalma<ul><li>Modellezés</li><li>Szoftveresen telepíthető csomag</li></ul> | [![Csomag tartalmának képernyője](media/dynamics-365-finance-operations/package-contents-1-45.png)](media/dynamics-365-finance-operations/package-contents-1.png#lightbox) |
     | <ul><li>CSOPORTMENTESSÉGi konfiguráció</li><li>Adatbázis biztonsági mentése</li></ul><br>Az összetevők nem szükségesek a **GER konfigurációs** szakaszban. | [![Csomag tartalma két képernyő](media/dynamics-365-finance-operations/package-contents-2-45.png)](media/dynamics-365-finance-operations/package-contents-2.png#lightbox) |
     | <ul><li>Power BI jelentési modell</li><li>BPM-összetevő</li></ul><br>Az összetevők nem szükségesek a **Power bi** szakaszban. | [![Csomag tartalmának három képernyője](media/dynamics-365-finance-operations/package-contents-3-45.png)](media/dynamics-365-finance-operations/package-contents-3.png#lightbox) |
     | <ul><li>Adatcsomag feldolgozása</li><li>Megoldási licencszerződés és adatvédelmi szabályzat</li></ul><br>A **csoportmentességi konfiguráció** és a **Power bi jelentési modell** részei nem kötelezőek a pénzügyi és üzemeltetési ajánlatokhoz. | [![Csomag tartalmának négy képernyője](media/dynamics-365-finance-operations/package-contents-4-45.png)](media/dynamics-365-finance-operations/package-contents-4.png#lightbox) |

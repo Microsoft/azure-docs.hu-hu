@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/20/2019
-ms.openlocfilehash: 6fc5bea71909d0e17b4ef0256ab0cad644dacbb3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 37c4bd2af080a76e93bc9599f06e4d502985979f
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95993822"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609651"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>A végpontok kvótájának kezelése Microsoft Azure Traffic Manager használatával a kulcsok között
 Language Understanding (LUIS) lehetővé teszi a végponti kérelmek kvótájának növelését egy adott kulcs kvótája után. Ezt úgy teheti meg, hogy több kulcsot hoz létre a LUIS számára, és hozzáadja őket a LUIS-alkalmazáshoz az **erőforrások és kulcsok** szakasz **Közzététel** lapján.
@@ -366,12 +366,12 @@ A végpontok közötti forgalom kezeléséhez be kell szúrnia egy hívást a Tr
 
 Engedélyezze a [diagnosztikai naplókat](../../traffic-manager/traffic-manager-diagnostic-logs.md) a Traffic Manager számára, hogy megtudja, miért romlik a végpont állapota.
 
-## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 Távolítsa el a két LUIS Endpoint Key, a három Traffic Manager profilt és az öt erőforrást tartalmazó erőforráscsoportot. Ez a Azure Portalból történik. Törli az öt erőforrást az erőforrások listából. Ezután törölje az erőforráscsoportot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Tekintse át a Botframework témakörben v4 [middleware](/azure/bot-service/bot-builder-create-middleware?tabs=csaddmiddleware%252ccsetagoverwrite%252ccsmiddlewareshortcircuit%252ccsfallback%252ccsactivityhandler&view=azure-bot-service-4.0) -beállításait, hogy megtudja, hogyan vehetők fel ez a Traffic Management kód egy botframework témakörben-robotba.
+Tekintse át a Botframework témakörben v4 [middleware](/azure/bot-service/bot-builder-create-middleware?tabs=csaddmiddleware%252ccsetagoverwrite%252ccsmiddlewareshortcircuit%252ccsfallback%252ccsactivityhandler) -beállításait, hogy megtudja, hogyan vehetők fel ez a Traffic Management kód egy botframework témakörben-robotba.
 
 [traffic-manager-marketing]: https://azure.microsoft.com/services/traffic-manager/
 [traffic-manager-docs]: ../../traffic-manager/index.yml

@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 0cd514c852e13b83a679821ca2d940e4ed112bd8
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 145db7693db126d4e114e8c8a885ea7fd7809e69
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95556932"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608910"
 ---
 Az Event hub Event streambe küldött eseményre való reagáláshoz használja a függvény eseményindítóját. Az eseményindító beállításához olvasási hozzáféréssel kell rendelkeznie a mögöttes Event hub-hoz. A függvény elindításakor a függvénynek átadott üzenet karakterláncként van beírva.
 
@@ -353,16 +353,66 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 
 |function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa** | n/a | Értékre kell állítani `eventHubTrigger` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
-|**irányba** | n/a | Értékre kell állítani `in` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
-|**név** | n/a | Annak a változónak a neve, amely a függvény kódjában szereplő Event tételt jelöli. |
+|**típusa** | n.a. | Értékre kell állítani `eventHubTrigger` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
+|**irányba** | n.a. | Értékre kell állítani `in` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
+|**név** | n.a. | Annak a változónak a neve, amely a függvény kódjában szereplő Event tételt jelöli. |
 |**elérési útja** |**EventHubName** | Csak 1. x függvények. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. |
 |**eventHubName** |**EventHubName** | A 2. x és újabb függvények. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. Az [alkalmazás beállításain](../articles/azure-functions/functions-bindings-expressions-patterns.md#binding-expressions---app-settings) keresztül lehet hivatkozni `%eventHubName%` |
 |**consumerGroup** |**ConsumerGroup** | Egy opcionális tulajdonság, amely a központban lévő eseményekre való előfizetéshez használt [fogyasztói csoportot](../articles/event-hubs/event-hubs-features.md#event-consumers) állítja be. Ha nincs megadva, a `$Default` rendszer a fogyasztói csoportot használja. |
-|**számosság** | n/a | Az összes nem C nyelvhez használatos. A `many` kötegelt feldolgozás engedélyezéséhez állítsa a következőre:.  Ha nincs megadva vagy a értékre `one` van állítva, a függvény egyetlen üzenetet ad át.<br><br>A C# nyelvben ez a tulajdonság automatikusan lesz hozzárendelve, amikor az trigger rendelkezik tömbvel a típushoz.|
-|**kapcsolat** |**Kapcsolat** | Az Event hub névteréhez tartozó kapcsolati sztringet tartalmazó Alkalmazásbeállítás neve. Másolja ezt a kapcsolati karakterláncot a [névtér](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace) **kapcsolati adatok** gombjára kattintva, nem az Event hub-t. A kapcsolódási karakterláncnak legalább olvasási engedéllyel kell rendelkeznie az trigger aktiválásához.|
+|**számosság** | n.a. | Az összes nem C nyelvhez használatos. A `many` kötegelt feldolgozás engedélyezéséhez állítsa a következőre:.  Ha nincs megadva vagy a értékre `one` van állítva, a függvény egyetlen üzenetet ad át.<br><br>A C# nyelvben ez a tulajdonság automatikusan lesz hozzárendelve, amikor az trigger rendelkezik tömbvel a típushoz.|
+|**kapcsolat** |**Kapcsolat** | Az Event hub névteréhez tartozó kapcsolati sztringet tartalmazó Alkalmazásbeállítás neve. Másolja ezt a kapcsolati karakterláncot a [névtér](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace) **kapcsolati adatok** gombjára kattintva, nem az Event hub-t. A kapcsolódási karakterláncnak legalább olvasási engedéllyel kell rendelkeznie az trigger aktiválásához.<br><br>Ha [a bővítmény 5. x vagy újabb verzióját](../articles/azure-functions/functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher)használja, a kapcsolati karakterlánc helyett megadhat egy olyan konfigurációs szakaszra mutató hivatkozást, amely meghatározza a kapcsolódást. Lásd: [kapcsolatok](../articles/azure-functions/functions-reference.md#connections).|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
+
+## <a name="usage"></a>Használat
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+### <a name="default"></a>Alapértelmezett
+
+A következő típusú paramétereket használhatja az eseményindító esemény központjának:
+
+* `string`
+* `byte[]`
+* `POCO`
+* `EventData` – A EventData alapértelmezett tulajdonságai a [Microsoft. Azure. EventHubs névtérben](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)vannak megadva.
+
+### <a name="additional-types"></a>További típusok 
+Az Event hub-bővítmény 5.0.0 vagy újabb verzióját használó alkalmazások a `EventData` [Microsoft. Azure. EventHubs névtérben](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)használják a típust az [Azure. Messaging. EventHubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) helyett. Ez a verzió a `Body` következő típusok javára elveszíti a örökölt típus támogatását:
+
+- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+
+# <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
+
+### <a name="default"></a>Alapértelmezett
+
+A következő típusú paramétereket használhatja az eseményindító esemény központjának:
+
+* `string`
+* `byte[]`
+* `POCO`
+* `EventData` – A EventData alapértelmezett tulajdonságai a [Microsoft. Azure. EventHubs névtérben](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)vannak megadva.
+
+### <a name="additional-types"></a>További típusok 
+Az Event hub-bővítmény 5.0.0 vagy újabb verzióját használó alkalmazások a `EventData` [Microsoft. Azure. EventHubs névtérben](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)használják a típust az [Azure. Messaging. EventHubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) helyett. Ez a verzió a `Body` következő típusok javára elveszíti a örökölt típus támogatását:
+
+- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+
+# <a name="java"></a>[Java](#tab/java)
+
+A részletekért tekintse meg a Java [trigger példáját](#example) .
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+A részletekért tekintse meg a JavaScript [trigger példáját](#example) .
+
+# <a name="python"></a>[Python](#tab/python)
+
+A részletekért tekintse meg a Python [trigger példáját](#example) .
+
+
+---
+
 
 ## <a name="event-metadata"></a>Esemény metaadatainak
 
@@ -379,10 +429,3 @@ A Event Hubs trigger számos [metaadat-tulajdonságot](../articles/azure-functio
 |`SystemProperties`|`IDictionary<String,Object>`|A Rendszertulajdonságok, beleértve az eseményre vonatkozó adattípusokat is.|
 
 Tekintse meg a jelen cikk korábbi részében említett tulajdonságokat használó [példákat](#example) .
-
-## <a name="hostjson-properties"></a>Tulajdonságok host.js
-<a name="host-json"></a>
-
-A [host.js](../articles/azure-functions/functions-host-json.md#eventhub) fájl olyan beállításokat tartalmaz, amelyek a Event Hubs trigger viselkedését vezérlik. A konfiguráció a Azure Functions verziójától függően eltérő.
-
-[!INCLUDE [functions-host-json-event-hubs](../articles/azure-functions/../../includes/functions-host-json-event-hubs.md)]

@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ae3ee8cb96453bae1ce581ea92bdb77854c02d8
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3c6f37a1b5cc16c80af8316cfeae164d58ea9796
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644143"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552167"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Erőforrások katalógusának létrehozása és kezelése az Azure AD-jogosultságok kezelésében
 
@@ -83,7 +83,7 @@ Ahhoz, hogy egy hozzáférési csomagban erőforrásokat tartalmazzon, az erőfo
 
 ### <a name="add-a-multi-geo-sharepoint-site"></a>Multi-geo SharePoint-webhely hozzáadása
 
-1. Ha a SharePointhoz [több földrajzi](https://docs.microsoft.com/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365?view=o365-worldwide) hely van engedélyezve, válassza ki azt a környezetet, amelyben a helyeket ki szeretné választani.
+1. Ha a SharePointhoz [több földrajzi](https://docs.microsoft.com/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365) hely van engedélyezve, válassza ki azt a környezetet, amelyben a helyeket ki szeretné választani.
     
     :::image type="content" source="media/entitlement-management-catalog-create/sharepoint-multigeo-select.png" alt-text="Hozzáférési csomag – erőforrás-Szerepkörök hozzáadása – SharePoint multi-Geo-helyek kiválasztása":::
 
