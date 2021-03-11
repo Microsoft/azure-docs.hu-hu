@@ -1,25 +1,19 @@
 ---
 title: A virtuálisgép-bővítmények telepítésének korlátozása Azure Policy használatával (Linux)
 description: A virtuálisgép-bővítmények üzembe helyezésének korlátozásához használja a Azure Policy.
-services: virtual-machines-linux
-documentationcenter: ''
-author: axayjo
-manager: gwallace
-editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
+ms.service: virtual-machines
+ms.subservice: extensions
+author: amjads1
+ms.author: amjads
+ms.collection: linux
 ms.date: 03/23/2018
-ms.author: akjosh
-ms.reviewer: cynthn
-ms.openlocfilehash: 41457f26c22e3b8ed529ce77cfaf452618b03655
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 582f690c00ff8bdd06e4d2867724aa482bcacaf3
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737642"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559970"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>A bővítmények Linux rendszerű virtuális gépeken való telepítésének korlátozása a Azure Policy használatával
 
@@ -171,6 +165,6 @@ az policy assignment delete --name 'not-allowed-vmextension-linux' --resource-gr
 az policy definition delete --name 'not-allowed-vmextension-linux'
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [Azure Policy](../../governance/policy/overview.md).

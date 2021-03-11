@@ -9,49 +9,31 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: kgremban
-ms.openlocfilehash: 7857f93e8c767f270041bb6bf041447786ce19ff
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: c24389a1957f9e0cfb23e3bb5b8604c34e57a915
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633991"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609515"
 ---
-# <a name="install-and-manage-azure-iot-edge-for-windows"></a>A Windows Azure IoT Edge telepítése és kezelése
+# <a name="install-and-manage-azure-iot-edge-with-windows-containers"></a>Azure IoT Edge telepítése és kezelése Windows-tárolókkal
 
-A Windows Azure IoT Edge közvetlenül a gazdagépen futó Windows-eszközön fut, és Windows-tárolók használatával futtatja az üzleti logikát az Edge-ben.
-
-Az Azure IoT Edge futtatókörnyezet az eszköz IoT Edge eszközre való bekapcsolása. A futtatókörnyezet az eszközökön kisméretű, málna PI-ként vagy ipari kiszolgálóként is telepíthető. Miután konfigurált egy eszközt az IoT Edge-futtatókörnyezettel, üzembe helyezhet rajta üzleti logikát a felhőből. További információ: [a Azure IoT Edge futtatókörnyezet és az architektúrájának megismerése](iot-edge-runtime.md).
-
->[!NOTE]
->A Windows rendszerhez készült Azure IoT Edge a Azure IoT Edge 1.2.0 kezdődően nem támogatott.
->
->Érdemes lehet az új módszert használni a IoT Edge futtatásához Windows-eszközökön, Azure IoT Edge Linux rendszeren.
-
-<!-- TODO: link to EFLOW-->
+Az Azure IoT Edge futtatókörnyezet az eszköz IoT Edge eszközre való bekapcsolása. Miután konfigurált egy eszközt az IoT Edge-futtatókörnyezettel, üzembe helyezhet rajta üzleti logikát a felhőből. További információ: [a Azure IoT Edge futtatókörnyezet és az architektúrájának megismerése](iot-edge-runtime.md).
 
 Egy IoT Edge eszköz beállításának két lépése van. Első lépésként telepítse a futtatókörnyezetet és annak függőségeit. A második lépés az eszköz identitáshoz csatlakoztatása a felhőben, valamint a IoT Hub hitelesítés beállítása.
 
-Ez a cikk a Azure IoT Edge futtatókörnyezet Windows-eszközökön való telepítésének lépéseit sorolja fel. A futtatókörnyezet telepítésekor a Linux-tárolók vagy a Windows-tárolók használata is választható. Jelenleg csak Windows-tárolók támogatottak éles környezetekben. A Windowson futó Linux-tárolók fejlesztési és tesztelési forgatókönyvekhez hasznosak, különösen akkor, ha Windows rendszerű számítógépen fejlesztenek Linux rendszerű eszközökön való üzembe helyezéshez.
+Ez a cikk a Azure IoT Edge futtatókörnyezet Windows-tárolókkal való telepítésének lépéseit sorolja fel. Ha a Linux-tárolókat egy Windows-eszközön szeretné használni, tekintse meg a [Linux rendszerhez készült Azure IoT Edge a Windowsról szóló](how-to-install-iot-edge-on-windows.md) cikkben.
+
+>[!NOTE]
+>A Windows-tárolókkal való Azure IoT Edge a Azure IoT Edge 1,2-es verziójától kezdődően nem támogatott.
+>
+>Érdemes lehet az új módszert használni a IoT Edge futtatásához Windows-eszközökön, [Azure IoT Edge Linux rendszeren](iot-edge-for-linux-on-windows.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy Windows-eszköz
 
-  A Windows-tárolókkal IoT Edge a Windows rendszerhez 1809/Build 17762, amely a [Windows hosszú távú támogatásának](/windows/release-information/)legújabb verziója. Fejlesztési és tesztelési forgatókönyvek esetén a tárolók funkciót támogató bármely SKU (Pro, Enterprise, Server stb.) működni fog. Azonban mindenképpen tekintse át a [támogatott rendszerek listáját](support.md#operating-systems) az éles környezetbe állítás előtt.
-
-  A Linux-tárolókkal rendelkező IoT Edge a Windows bármely olyan verzióját futtathatja, amely megfelel a [Docker Desktop követelményeinek](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install).
-
-* Tárolók támogatása az eszközön
-
-  A Azure IoT Edge egy [OCI-kompatibilis](https://www.opencontainers.org/) tároló motorra támaszkodik. Győződjön meg arról, hogy az eszköz támogatja a tárolókat.
-
-  Ha virtuális gépen telepíti a IoT Edget, engedélyezze a beágyazott virtualizációt, és foglaljon le legalább 2 GB memóriát. A Hyper-V esetében a 2. generációs virtuális gépekhez alapértelmezés szerint engedélyezve van a beágyazott virtualizálás. A VMware esetében van egy váltógomb, amely engedélyezi a szolgáltatást a virtuális gépen.
-
-  Ha a IoT Edge IoT Core-eszközre telepíti, a [távoli PowerShell-munkamenetben](/windows/iot-core/connect-your-device/powershell) a következő paranccsal ellenőrizze, hogy a Windows-tárolók támogatottak-e az eszközön:
-
-  ```powershell
-  Get-Service vmcompute
-  ```
+  A Windows-tárolókkal IoT Edge a Windows rendszerhez 1809/Build 17763, amely a [Windows hosszú távú támogatásának](/windows/release-information/)legújabb verziója. Ügyeljen rá, hogy a támogatott [rendszerek listáját](support.md#operating-systems) a támogatott SKU-i listán tekintse át.
 
 * [Regisztrált eszköz azonosítója](how-to-register-device.md)
 
@@ -61,16 +43,9 @@ Ez a cikk a Azure IoT Edge futtatókörnyezet Windows-eszközökön való telep�
 
 ## <a name="install-a-container-engine"></a>Tároló-motor telepítése
 
-Azure IoT Edge egy OCI-kompatibilis tároló-futtatókörnyezetre támaszkodik. Éles környezetekben javasolt a Moby-alapú motor használata. A Moby motor az egyetlen tároló motor, amelyet hivatalosan támogat a Azure IoT Edge. A Docker CE/EE tároló lemezképei kompatibilisek a Moby Runtime szolgáltatással.
-
-Éles forgatókönyvek esetén használja a telepítési parancsfájlban található Moby-alapú motort. A motor telepítéséhez nincs szükség további lépésekre.
-
-A Linux-tárolókkal rendelkező IoT Edge a saját tároló-futtatókörnyezetet kell megadnia. Telepítse a [Docker Desktopot](https://docs.docker.com/docker-for-windows/install/) az eszközére, és konfigurálja úgy, hogy a folytatás előtt [Linux-tárolókat használjon](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers) .
+Azure IoT Edge egy OCI-kompatibilis tároló-futtatókörnyezetre támaszkodik, mint például a [Moby](https://github.com/moby/moby). A telepítési szkript részét képező Moby-alapú motor. A motor telepítéséhez nincs szükség további lépésekre.
 
 ## <a name="install-the-iot-edge-security-daemon"></a>A IoT Edge biztonsági démon telepítése
-
->[!TIP]
->A IoT Core-eszközök esetében javasoljuk, hogy a telepítési parancsokat távoli PowerShell-munkamenet használatával futtassa. További információ: a [PowerShell használata a Windows IoT](/windows/iot-core/connect-your-device/powershell).
 
 1. Futtassa a PowerShellt rendszergazdaként.
 
@@ -91,21 +66,14 @@ A Linux-tárolókkal rendelkező IoT Edge a saját tároló-futtatókörnyezetet
    Deploy-IoTEdge
    ```
 
-   A `Deploy-IoTEdge` parancs alapértelmezés szerint Windows-tárolókat használ. Ha Linux-tárolókat szeretne használni, adja hozzá a következő `ContainerOs` paramétert:
-
-   ```powershell
-   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Deploy-IoTEdge -ContainerOs Linux
-   ```
-
-3. Ezen a ponton a IoT Core-eszközök automatikusan újraindulnak. Előfordulhat, hogy a Windows 10 vagy Windows Server rendszerű eszközök újraindítást kérik. Ha igen, indítsa újra az eszközt.
+3. Ha a rendszer kéri, indítsa újra az eszközt.
 
 Ha IoT Edge telepít egy eszközre, további paramétereket is használhat a folyamat módosításához, beleértve a következőket:
 
 * Egy proxykiszolgálón keresztüli közvetlen forgalom
 * A telepítőt egy helyi könyvtárba irányítsa offline telepítéshez.
 
-További információ ezekről a további paraméterekről: [PowerShell-parancsfájlok IoT Edge Windows rendszeren](reference-windows-scripts.md).
+További információ ezekről a további paraméterekről: [PowerShell-parancsfájlok IoT Edge Windows-tárolókkal](reference-windows-scripts.md).
 
 ## <a name="provision-the-device-with-its-cloud-identity"></a>Az eszköz kiépítése a Felhőbeli identitással
 
@@ -131,13 +99,6 @@ Ez a szakasz végigvezeti az eszköz szimmetrikus kulcsos hitelesítéssel tört
    Initialize-IoTEdge -ManualConnectionString -ContainerOs Windows
    ```
 
-   * Ha Linux-tárolókat használ, adja hozzá a `-ContainerOs` paramétert a jelzőhöz. Konzisztensnek kell lennie a `Deploy-IoTEdge` korábban futtatott paranccsal kiválasztott tároló beállítással.
-
-      ```powershell
-      . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-      Initialize-IoTEdge -ContainerOs Linux
-      ```
-
    * Ha a IoTEdgeSecurityDaemon.ps1 szkriptet offline vagy adott verzióra történő telepítésre töltötte le az eszközön, akkor ügyeljen arra, hogy a parancsfájl helyi példányára hivatkozzon.
 
       ```powershell
@@ -154,7 +115,7 @@ Amikor manuálisan épít ki egy eszközt, további paramétereket is használha
 * Egy proxykiszolgálón keresztüli közvetlen forgalom
 * Egy adott edgeAgent-tároló rendszerképének deklarálása, és a hitelesítő adatok megadása, ha azok egy privát beállításjegyzékben találhatók
 
-További információ ezekről a további paraméterekről: [PowerShell-parancsfájlok IoT Edge Windows rendszeren](reference-windows-scripts.md).
+További információ ezekről a további paraméterekről: [PowerShell-parancsfájlok IoT Edge Windows-tárolókkal](reference-windows-scripts.md).
 
 ### <a name="option-2-authenticate-with-x509-certificates"></a>2. lehetőség: hitelesítés X. 509 tanúsítvánnyal
 
@@ -170,13 +131,6 @@ Ez a szakasz végigvezeti az eszköz X. 509 tanúsítvánnyal történő hiteles
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Initialize-IoTEdge -ManualX509
    ```
-
-   * Ha Linux-tárolókat használ, adja hozzá a `-ContainerOs` paramétert a jelzőhöz. Konzisztensnek kell lennie a `Deploy-IoTEdge` korábban futtatott paranccsal kiválasztott tároló beállítással.
-
-      ```powershell
-      . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-      Initialize-IoTEdge -ManualX509 -ContainerOs Linux
-      ```
 
    * Ha a IoTEdgeSecurityDaemon.ps1 szkriptet offline vagy adott verzióra történő telepítésre töltötte le az eszközön, akkor ügyeljen arra, hogy a parancsfájl helyi példányára hivatkozzon.
 
@@ -197,7 +151,7 @@ Amikor manuálisan épít ki egy eszközt, további paramétereket is használha
 * Egy proxykiszolgálón keresztüli közvetlen forgalom
 * Egy adott edgeAgent-tároló rendszerképének deklarálása, és a hitelesítő adatok megadása, ha azok egy privát beállításjegyzékben találhatók
 
-További információ ezekről a további paraméterekről: [PowerShell-parancsfájlok IoT Edge Windows rendszeren](reference-windows-scripts.md).
+További információ ezekről a további paraméterekről: [PowerShell-parancsfájlok IoT Edge Windows-tárolókkal](reference-windows-scripts.md).
 
 ## <a name="offline-or-specific-version-installation-optional"></a>Offline vagy adott verzió telepítése (nem kötelező)
 
@@ -220,9 +174,7 @@ Ha az eszköz a telepítés során offline állapotba kerül, vagy ha a IoT Edge
 2. Keresse meg a telepíteni kívánt verziót, majd töltse le a következő fájlokat a kibocsátási megjegyzések a IoT-eszközön lévő **eszközök** részéből:
 
    * IoTEdgeSecurityDaemon.ps1
-   * Microsoft-Azure-IoTEdge-amd64.cab a 1.0.9 vagy újabb kiadásokból, vagy Microsoft-Azure-IoTEdge.cab a 1.0.8 és régebbi kiadásokból.
-
-   A Microsoft-Azure-IotEdge-arm32.cab a 1.0.9-től kezdődően is elérhető tesztelési célokra. A IoT Edge jelenleg nem támogatott Windows ARM32-eszközökön.
+   * Microsoft-Azure-IoTEdge-amd64.cab a 1,1 kiadási csatornáról.
 
    Fontos, hogy a PowerShell-parancsfájlt ugyanazzal a kiadással használja, mint a. cab-fájllal, amelyet a funkció az egyes kiadásokban lévő funkciók támogatásához módosít.
 
@@ -246,19 +198,19 @@ Ha az eszköz a telepítés során offline állapotba kerül, vagy ha a IoT Edge
 A `Update-IoTEdge` parancs segítségével frissítse a biztonsági démont. A parancsfájl automatikusan lekéri a biztonsági démon legújabb verzióját.
 
 ```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux>
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge
 ```
 
-A Update-IoTEdge parancs futtatása eltávolítja és frissíti a biztonsági démont az eszközről, valamint a két futásidejű tároló lemezképét. A config. YAML fájlt a rendszer az eszközön tárolja, valamint a Moby Container Engine-ből származó adatokkal (ha Windows-tárolókat használ). A konfigurációs adatok megőrzése azt jelenti, hogy a frissítési folyamat során nem kell megadnia a kapcsolódási karakterlánc vagy az eszköz kiépítési szolgáltatásának adatait az eszközhöz.
+A Update-IoTEdge parancs futtatása eltávolítja és frissíti a biztonsági démont az eszközről, valamint a két futásidejű tároló lemezképét. A config. YAML fájlt a rendszer az eszközön tárolja, valamint a Moby Container Engine adatait is. A konfigurációs adatok megőrzése azt jelenti, hogy a frissítési folyamat során nem kell megadnia a kapcsolódási karakterlánc vagy az eszköz kiépítési szolgáltatásának adatait az eszközhöz.
 
-Ha a biztonsági démon egy adott verziójára szeretne frissíteni, keresse meg a célként használni kívánt verziót [IoT Edge kiadásokból](https://github.com/Azure/azure-iotedge/releases). Ebben a verzióban töltse le a **Microsoft-Azure-IoTEdge.cab** fájlt. Ezután a paraméter használatával `-OfflineInstallationPath` mutasson a helyi fájl helyére. Például:
+Ha a biztonsági démon egy adott verziójára szeretne frissíteni, keresse meg azt a 1,1-es kiadási csatornát, amelyet [IoT Edge](https://github.com/Azure/azure-iotedge/releases)kiadásokból kíván célozni. Ebben a verzióban töltse le a **Microsoft-Azure-IoTEdge.cab** fájlt. Ezután a paraméter használatával `-OfflineInstallationPath` mutasson a helyi fájl helyére. Például:
 
 ```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux> -OfflineInstallationPath <absolute path to directory>
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -OfflineInstallationPath <absolute path to directory>
 ```
 
 >[!NOTE]
->A `-OfflineInstallationPath` paraméter egy **Microsoft-Azure-IoTEdge.cab** nevű fájlt keres a megadott könyvtárban. A IoT Edge 1.0.9-rc4-es verziótól kezdődően két. cab fájl használható, egyet az AMD64-eszközökhöz, egyet pedig a ARM32. Töltse le az eszközének megfelelő fájlt, majd nevezze át a fájlt az architektúra utótagjának eltávolításához.
+>A `-OfflineInstallationPath` paraméter egy **Microsoft-Azure-IoTEdge.cab** nevű fájlt keres a megadott könyvtárban. Nevezze át a fájlt az architektúra utótagjának eltávolításához, ha van ilyen.
 
 Ha offline módban szeretné frissíteni az eszközt, keresse meg a célként használni kívánt verziót [Azure IoT Edge kiadásokból](https://github.com/Azure/azure-iotedge/releases). Ebben a verzióban töltse le a *IoTEdgeSecurityDaemon.ps1* és *Microsoft-Azure-IoTEdge.cab* fájlokat. Fontos, hogy a PowerShell-parancsfájlt ugyanazzal a kiadással használja, mint a. cab-fájllal, amelyet a funkció az egyes kiadásokban lévő funkciók támogatásához módosít.
 
@@ -271,7 +223,7 @@ Ha offline összetevőkkel szeretné frissíteni a frissítést, a [dot forrás]
 Update-IoTEdge -OfflineInstallationPath <path>
 ```
 
-A frissítési lehetőségekkel kapcsolatos további információkért használja az parancsot, `Get-Help Update-IoTEdge -full` vagy tekintse [meg IoT Edge Windows rendszeren a PowerShell-parancsfájlt](reference-windows-scripts.md).
+A frissítési lehetőségekkel kapcsolatos további információkért használja az parancsot, `Get-Help Update-IoTEdge -full` vagy tekintse meg a [Windows-tárolókkal rendelkező IoT Edge PowerShell-parancsfájlokat](reference-windows-scripts.md).
 
 ## <a name="uninstall-iot-edge"></a>IoT Edge eltávolítása
 
@@ -283,8 +235,6 @@ Ha el szeretné távolítani a IoT Edge telepítését a Windows-eszközről, ha
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
 Uninstall-IoTEdge
 ```
-
-A `Uninstall-IoTEdge` parancs nem működik a Windows IoT Core-on. IoT Edge eltávolításához újra kell telepítenie a Windows IoT Core-lemezképet.
 
 Az eltávolítási lehetőségekkel kapcsolatos további információkért használja az parancsot `Get-Help Uninstall-IoTEdge -full` .
 

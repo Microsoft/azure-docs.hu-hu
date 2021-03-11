@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: f14328567fdc9840b0a3d07aa23fe2496fd537ca
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 98310f65767efc6081451d9931c4ea9772df5f3b
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102213096"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609396"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
 
@@ -37,6 +37,77 @@ A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő
 > A [Azure Portal](https://portal.azure.com/) a v3 [élő események](live-events-outputs-concept.md)kezelésére, a v3- [eszközök](assets-concept.md) és-feladatok megtekintésére, az API-k elérésére és a tartalmak titkosítására vonatkozó információk beszerzésére használható. Az összes többi felügyeleti feladathoz (például az átalakítások és a feladatok kezeléséhez) használja a [REST API](/rest/api/media/accountfilters), a [CLI](/cli/azure/ams)vagy a támogatott [SDK](media-services-apis-overview.md#sdks)-k egyikét.
 >
 > Részletekért lásd: [a Media Services v3 Azure Portal korlátozásai](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
+
+
+## <a name="february-2021"></a>2021. február
+
+### <a name="hevc-encoding-support-in-standard-encoder"></a>HEVC-kódolás támogatása a standard kódolóban
+
+A standard kódoló mostantól támogatja a 8 bites HEVC (H. 265). A HEVC tartalma a "hev1" formátum használatával továbbítható és csomagolható a dinamikus csomagoláson keresztül.  
+
+A HEVC-mintát tartalmazó új .NET egyéni kódolás a [Media-Services-v3-DotNet git hub-tárházban](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomPreset_HEVC)érhető el.
+Az egyéni kódolás mellett a következő új beépített HEVC-Kódolási beállításkészletek már elérhetők:
+
+- H265ContentAwareEncoding
+- H265AdaptiveStreaming
+- H265SingleBitrate720P
+- H265SingleBitrate1080p
+- H265SingleBitrate4K
+
+
+A v2 API prémium szintű Kódolójában korábban a HEVC-t használó ügyfeleknek át kell térniük az új HEVC-kódolás támogatására a standard kódolóban.
+
+### <a name="azure-media-services-v2-api-and-sdks-deprecation-announcement"></a>Azure Media Services v2 API és SDK-k elavult hirdetmény
+
+#### <a name="update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024"></a>Frissítse a Azure Media Services REST API és SDK-kat v3-ra 2024. február 29-én
+
+Mivel a Azure Media Services REST API és a .NET-hez készült ügyféloldali SDK-k 3. verziója több funkciót kínál, mint a 2-es verzió, a Azure Media Services REST API és a .NET-hez és a Java-hoz készült ügyféloldali SDK-k 2. verzióját is kihasználjuk. Javasoljuk, hogy a váltást hamarabb növelje a Azure Media Services REST API és a .NET és a Java ügyféloldali SDK-k 3. verziójának gazdagabb előnyeivel. A 3. verzió a következőket biztosítja: 
+ 
+- nonstop élő esemény támogatása
+- ARM REST API-k, a .NET Core, a Node.js, a Python, a Java, a Go és a Ruby ügyféloldali SDK-jai.
+- Ügyfél által felügyelt kulcsok, megbízható tárolók integrációja, privát hivatkozások támogatása és [egyebek](https://review.docs.microsoft.com/en-us/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
+
+#### <a name="action-required"></a>Szükséges művelet:
+
+A munkaterhelések megszakadásának minimalizálásához tekintse át az [áttelepítési útmutatót](https://go.microsoft.com/fwlink/?linkid=2149150&clcid=0x409) a kód 2 API-ról és SDK-ról a 3-as verziójú API-ra és SDK-ra való átváltásához a 2024. február 29. előtt.
+**2024. február 29**-én a Azure Media Services a továbbiakban nem fogadja el a forgalmat a 2-es verziójú REST API, a ARM Management API-verzió 2015-10-01 vagy a 2. verziójú .net-ügyfél SDK-k használatával. Ez magában foglalja a harmadik féltől származó nyílt forráskódú ügyfél SDK-kat, amelyek meghívják a 2. verziójú API-t.  
+
+Tekintse meg a hivatalos [Azure-frissítések bejelentését](https://azure.microsoft.com/updates/update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024/).
+
+### <a name="standard-encoder-support-for-v2-api-features"></a>Standard szintű kódoló támogatása a v2 API-funkciókhoz
+
+A HEVC (H. 265)-kódolás új támogatása mellett a következő funkciók már elérhetők a kódolási API 2020-05-01-es verziójában. 
+
+- Az új **JobInputClip** -támogatás használatával mostantól több bemeneti fájl-Összefűzés is támogatott. 
+    - Egy példa elérhető a .NET-hez, amely bemutatja, hogyan lehet [összefűzni két eszközt](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomStitchTwoAssets).
+- A hangsáv kiválasztása lehetővé teszi, hogy az ügyfelek kiválasszák és leképezhetők a bejövő hangsávokat, és átirányítsák azokat a kimenetre a kódoláshoz
+    - A **AudioTrackDescriptor** és a [OpenAPI kapcsolatos részletekért](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L385) tekintse meg a következő témakört: REST API
+- Kódolás kiválasztásának nyomon követése – lehetővé teszi, hogy az ügyfelek a több bitrátát tartalmazó forrásfájl vagy élő Archívum zeneszámait válasszák. Rendkívül hasznos az élő események archiválási fájljainak MP4 létrehozásához.
+    - Lásd: [VideoTrackDescriptor](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L1562)
+- A FaceDetector-hez hozzáadott kivonási (homályos) képességek
+    - Lásd a FaceDetector-beállításkészlet [kivonási](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L634) és [kombinált](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L649) módjait
+
+### <a name="new-client-sdk-releases-for-2020-05-01-version-of-the-azure-media-services-api"></a>Új ügyféloldali SDK-kiadások a Azure Media Services API 2020-05-01-es verziójához
+
+A fenti szolgáltatásokkal mostantól elérhetők az összes elérhető nyelvhez készült ügyféloldali SDK-verziók.
+A csomagkezelő használatával frissítsen a kódban szereplő legújabb ügyféloldali SDK-kat.
+
+- [.NET SDK-csomag 3.0.4](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/)
+- [Node.js írógéppel 8.1.0-verzió](https://www.npmjs.com/package/@azure/arm-mediaservices)
+- [Python Azure-mgmt-Media 3.1.0](https://pypi.org/project/azure-mgmt-media/)
+- [Java SDK 1.0.0 – Beta. 2](https://search.maven.org/artifact/com.azure.resourcemanager/azure-resourcemanager-mediaservices/1.0.0-beta.2/jar)
+
+### <a name="updated-typescript-nodejs-samples-using-isomorphic-sdk-for-javascript"></a>Frissített írógéppel Node.js mintákat a Javascripthez készült isomorphic SDK használatával
+
+A Node.js minták frissítve lettek a legújabb isomorphic SDK használatára. A minták mostantól az írógéppel használatát mutatják be. Emellett új élő adatfolyam-továbbítási minta lett hozzáadva Node.js/Typescript.
+
+Tekintse meg a legújabb mintákat a **[Media-Services-v3-Node-oktatóanyagok](https://github.com/Azure-Samples/media-services-v3-node-tutorials)** git hub-tárházban.
+
+### <a name="new-live-stand-by-mode-to-support-faster-startup-from-warm-state"></a>Új élő készenléti mód a gyors rendszerindítás támogatásához meleg állapotból
+
+Az élő események mostantól egy alacsonyabb díjszabású számlázási módot is támogatnak a "készenléti" állapothoz. Ez lehetővé teszi, hogy az ügyfelek a "forró készletek" létrehozásához alacsonyabb áron előre foglalják el az élő eseményeket. Az ügyfelek ezután a készenléti állapotú élő események használatával gyorsabban válthatnak a futó állapotba, mint a létrehozáskor.  Ez csökkenti a csatorna jelentős elindításának idejét, és lehetővé teszi a gyors, alacsonyabb díjszabású gépek lefoglalását.
+Tekintse meg a legfrissebb [díjszabási részleteket.](https://azure.microsoft.com/pricing/details/media-services)
+A készenléti állapottal és az élő események más állapotával kapcsolatos további információkért tekintse meg a cikk [élő esemény állapotait és számlázását](https://docs.microsoft.com/azure/media-services/latest/live-event-states-billing) ismertető cikket.
 
 ## <a name="december-2020"></a>2020. december
 

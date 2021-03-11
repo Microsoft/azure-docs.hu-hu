@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9913132ca6ff3ce2840b55aa771f7bd9be2404ea
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e6d548f4d792d8980e2aa5040b09530eaf7868c4
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101650974"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609906"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>Microsoft 365 védelme a helyszíni támadásoktól
 
@@ -69,7 +69,7 @@ A korábban ismertetett veszélyforrás-vektorok kezeléséhez javasoljuk, hogy 
 
     Ezek a rendszergazdai fiókok korlátozott használatú fiókok. *A helyi fiókok nem rendelkezhetnek rendszergazdai jogosultságokkal Microsoft 365.* 
 
-    További információ: [Microsoft 365 rendszergazdai szerepkörök áttekintése](/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide). Lásd még: [Szerepkörök az Azure ad-ben Microsoft 365hoz](../roles/m365-workload-docs.md).
+    További információ: [Microsoft 365 rendszergazdai szerepkörök áttekintése](/microsoft-365/admin/add-users/about-admin-roles). Lásd még: [Szerepkörök az Azure ad-ben Microsoft 365hoz](../roles/m365-workload-docs.md).
 
 1. **Eszközök kezelése Microsoft 365ról.** Az Azure AD JOIN és a felhőalapú mobileszköz-kezelés (MDM) használatával elkerülhető a helyszíni eszközkezelés infrastruktúrájának függőségei. Ezek a függőségek veszélyeztethetik az eszköz-és biztonsági vezérlőket.
 
@@ -151,7 +151,7 @@ Hibrid fiókok kiépítésének használatakor az Azure-AD-from-Cloud-HR rendsze
 
 A felhőalapú csoportok lehetővé teszik az együttműködés és a helyszíni infrastruktúrák elérését.
 
-* **Együttműködés**: Microsoft 365 csoportok és Microsoft Teams használata a modern együttműködéshez. Kiszerelheti a helyszíni terjesztési listát, és [frissítheti a terjesztési listát az outlookban Microsoft 365 csoportokba](/office365/admin/manage/upgrade-distribution-lists?view=o365-worldwide).
+* **Együttműködés**: Microsoft 365 csoportok és Microsoft Teams használata a modern együttműködéshez. Kiszerelheti a helyszíni terjesztési listát, és [frissítheti a terjesztési listát az outlookban Microsoft 365 csoportokba](/office365/admin/manage/upgrade-distribution-lists).
 
 * **Hozzáférés**: az Azure ad biztonsági csoportjaival vagy Microsoft 365 csoportokkal engedélyezheti az alkalmazásokhoz való hozzáférést az Azure ad-ben.
 * **Office 365 licencelés**: csoportos licencelés használatával kiépíthető az Office 365-be a csak felhőalapú csoportok használatával. Ez a módszer leválasztja a csoporttagság vezérlését a helyszíni infrastruktúrából.
@@ -203,9 +203,9 @@ Az Azure AD feltételes hozzáféréssel a jelek értelmezésére és a hiteles�
 
 * Ha lehetséges, használja a feltételes hozzáférést az [örökölt hitelesítési protokollok blokkolásához](../conditional-access/howto-conditional-access-policy-block-legacy.md) . Emellett az alkalmazás szintjén tiltsa le az örökölt hitelesítési protokollokat egy alkalmazásspecifikus konfiguráció használatával.
 
-   További információ: [örökölt hitelesítési protokollok](../fundamentals/auth-sync-overview.md). Vagy tekintse meg az [Exchange Online](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) és a [SharePoint Online](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps)adott részleteit.
+   További információ: [örökölt hitelesítési protokollok](../fundamentals/auth-sync-overview.md). Vagy tekintse meg az [Exchange Online](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) és a [SharePoint Online](/powershell/module/sharepoint-online/set-spotenant)adott részleteit.
 
-* A javasolt [identitás-és eszköz-hozzáférési konfigurációk](/microsoft-365/security/office-365-security/identity-access-policies?view=o365-worldwide)implementálása.
+* A javasolt [identitás-és eszköz-hozzáférési konfigurációk](/microsoft-365/security/office-365-security/identity-access-policies)implementálása.
 
 * Ha olyan Azure AD-verziót használ, amely nem tartalmaz feltételes hozzáférést, győződjön meg arról, hogy az [Azure ad biztonsági alapértékeit](../fundamentals/concept-fundamentals-security-defaults.md)használja.
 

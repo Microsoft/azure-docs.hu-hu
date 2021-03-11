@@ -7,21 +7,30 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 73dc2520fbe970123a52133cb00909fea190610a
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 86e79302716fa502d8562dd563b0a5c5fb220a67
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202671"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547551"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migrálás hálózati csatlakoztatott tárolóból (NAS) hibrid felhőbe történő központi telepítésre Azure File Sync
+
+Ez az áttelepítési cikk a kulcsszavak és a Azure File Sync kulcsszavainak egyike. Ellenőrizze, hogy a jelen cikk a forgatókönyvre vonatkozik-e:
+
+> [!div class="checklist"]
+> * Adatforrás: hálózati csatlakoztatott tároló (NAS)
+> * Áttelepítési útvonal: NAS &rArr; Windows Server &rArr; -feltöltés és-szinkronizálás az Azure-fájlmegosztás (ok) val
+> * Helyi gyorsítótárazási fájlok: igen, a végső cél egy Azure File Sync üzemelő példány.
+
+Ha a forgatókönyv eltérő, tekintse át az [áttelepítési útmutatók táblázatát](storage-files-migration-overview.md#migration-guides).
 
 Azure File Sync a közvetlenül csatlakoztatott tároló (DAS) helyein működik, és nem támogatja a hálózati csatolású tárolók (NAS) helyein való szinkronizálást.
 Ez a tény a szükséges fájlok áttelepítését végzi el, és ez a cikk végigvezeti Önt a Migrálás megtervezésén és végrehajtásán.
 
 ## <a name="migration-goals"></a>Migrálási célok
 
-A cél a NAS-berendezésen lévő megosztások áthelyezése Windows Serverre. Ezután használja a Azure File Synct a hibrid felhőalapú telepítéshez. Ezt az áttelepítést olyan módon kell végrehajtani, amely garantálja az üzemi adatok integritását, valamint a rendelkezésre állást az áttelepítés során. Az utóbbi megköveteli, hogy a leállások minimálisra kerüljenek, így az csak kis mértékben meghaladhatja a normál karbantartási időszakokat.
+A cél a NAS-berendezésen lévő megosztások áthelyezése Windows Serverre. Ezután használja a Azure File Synct a hibrid felhőalapú telepítéshez. A Migrálás általában olyan módon történik, amely garantálja az üzemi adatok integritását, és az áttelepítés során rendelkezésre állást biztosít. Az utóbbi megköveteli, hogy a leállások minimálisra kerüljenek, így az csak kis mértékben meghaladhatja a normál karbantartási időszakokat.
 
 ## <a name="migration-overview"></a>Migrálás áttekintése
 
@@ -45,14 +54,14 @@ Ahogy azt a Azure Files [áttelepítésének áttekintése című cikkben](stora
 * Hozzon létre egy Windows Server 2019-at a minimális 2012R2 virtuális gép vagy fizikai kiszolgálóként. A Windows Server feladatátvételi fürt is támogatott.
 * Hozzon létre vagy adjon hozzá közvetlenül csatlakoztatott tárolót (a DAS-t a NAS-hez képest, amely nem támogatott).
 
-    Ha az Azure file syncs [Cloud rétegű](storage-sync-cloud-tiering-overview.md) funkciót használja, a kiépített tárterület mérete kisebb lehet, mint amit jelenleg használ a NAS-berendezésben.
+    A kiépített tárterület mérete kisebb lehet, mint amit jelenleg a NAS-berendezésen használ. Ehhez a konfigurációhoz az Azure file syncs [Cloud rétegű](storage-sync-cloud-tiering-overview.md) szolgáltatást is használni kell.
     Ha azonban a nagyobb NAS-területről másolja a fájlokat a kisebb Windows Server-kötetre egy későbbi fázisban, akkor a kötegekben kell működnie:
 
     1. Helyezze át a lemezre illeszkedő fájlok készletét
     2. a fájlok szinkronizálása és a felhőalapú rétegek bevonása
-    3. Ha a köteten több szabad terület jön létre, folytassa a következő batch-fájllal. 
+    3. Ha a köteten több szabad terület jön létre, folytassa a következő batch-fájllal. Másik megoldásként tekintse át a RoboCopy parancsot a közelgő [Robocopy szakaszban](#phase-7-robocopy) az új `/LFSM` kapcsoló használatához. A használatával `/LFSM` jelentősen egyszerűsítheti a Robocopy-feladatokat, de nem kompatibilis más Robocopy-kapcsolókkal, amelyektől függ.
     
-    Ennek a kötegelt megközelítésnek a elkerülésével kiépítheti a Windows Server megfelelő területét, amelyet a fájlok elfoglalnak a NAS-berendezésen. Érdemes lehet a NAS/Windows-t megismételni. Ha nem szeretné véglegesen véglegesíteni ezt a nagy mennyiségű tárterületet a Windows-kiszolgálóval, csökkentheti a kötet méretét az áttelepítés után, és a felhőalapú adatkorlátozási szabályzatok módosítása előtt. Az Azure-fájlmegosztás kisebb helyszíni gyorsítótárát hozza létre.
+    Ennek a kötegelt megközelítésnek a elkerülésével kiépítheti a Windows Server megfelelő területét, amelyet a fájlok elfoglalnak a NAS-berendezésen. Érdemes lehet a NAS/Windows-t megismételni. Ha nem szeretné véglegesen véglegesíteni ezt a nagy mennyiségű tárterületet a Windows-kiszolgálóval, csökkentheti a kötet méretét az áttelepítés után, és a felhőalapú adatkorlátozási szabályzatok módosítása előtt is. Az Azure-fájlmegosztás kisebb helyszíni gyorsítótárát hozza létre.
 
 A telepített Windows Server erőforrás-konfigurációja (számítás és RAM) a szinkronizálni kívánt elemek (fájlok és mappák) számától függ. Ha bármilyen probléma merül fel, javasoljuk, hogy nagyobb teljesítmény-konfigurációt végezzen.
 
@@ -108,76 +117,7 @@ A következő RoboCopy parancs a NAS-tárolóból másolja a fájlokat a Windows
 Ha kevesebb tárterületet telepített a Windows-kiszolgálón, mint amennyit a fájlok felvesznek a NAS-készülékre, akkor konfigurálta a Felhőbeli adatmennyiséget. Mivel a helyi Windows Server-kötet betelik, a [Felhőbeli rétegek](storage-sync-cloud-tiering-overview.md) beindulnak, és a már sikeresen szinkronizált fájlokat. A Felhőbeli rétegek létrehozásához elegendő hely áll rendelkezésre, hogy továbbra is a NAS-berendezésből folytassa a másolást. A Felhőbeli rétegek ellenőrzése óránként egyszer megtekintheti, hogy mi szinkronizált, és szabadítson fel lemezterületet a 99%-os mennyiségű szabad terület eléréséhez.
 Lehetséges, hogy a RoboCopy a fájlokat gyorsabban helyezi át, mint amennyire a felhőbe és a szintjére tud szinkronizálni, így a helyi lemezterület nem működik. A RoboCopy sikertelen lesz. Azt javasoljuk, hogy a megosztásokat egy olyan sorozatban hajtsa meg, amely meggátolja a működését. Ha például nem indítja el a RoboCopy-feladatokat az összes megosztáshoz, vagy csak olyan megosztásokat helyez át, amelyek megfelelnek a Windows Server jelenlegi szabad területének, néhányat említve.
 
-```console
-Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
-```
-
-Háttér
-
-:::row:::
-   :::column span="1":::
-      /MT
-   :::column-end:::
-   :::column span="1":::
-      Lehetővé teszi, hogy a RoboCopy több szálon fusson. Az alapértelmezett érték 8, Max 128.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /UNILOG:\<file name\>
-   :::column-end:::
-   :::column span="1":::
-      Az állapotot a NAPLÓFÁJLba UNICODE-ként adja vissza (felülírja a meglévő naplót).
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /TEE
-   :::column-end:::
-   :::column span="1":::
-      A konzol ablakának kimenete. Egy naplófájlban a kimenettel együtt használatos.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /B
-   :::column-end:::
-   :::column span="1":::
-      A RoboCopy szolgáltatást ugyanazon a módban futtatja, amikor a biztonságimásolat-készítő alkalmazás használni fogja. Lehetővé teszi, hogy a RoboCopy olyan fájlokat helyezzen át, amelyekhez az aktuális felhasználónak nincs engedélye.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /MIR
-   :::column-end:::
-   :::column span="1":::
-      Lehetővé teszi a RoboCopy parancs többszöri futtatását ugyanazon cél/cél esetén egymás után. Ez azonosítja a korábban másolt fájlt, és kihagyja azt. Csak a módosítások, kiegészítések és *törlések* lesznek feldolgozva, amelyek az utolsó Futtatás óta történtek. Ha a parancs korábban nem volt futtatva, semmi nincs megadva. A */Mir* jelző kiváló megoldás a forrásként szolgáló helyekhez, amelyek továbbra is aktívan használatban vannak és változnak.
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPY: copyflag [s]
-   :::column-end:::
-   :::column span="1":::
-      a fájlmásolás hűsége (az alapértelmezett érték a/COPY: DAT), a másolási jelzők: D = adat, A = attribútumok, T = időbélyeg, S = biztonság = NTFS ACL, O = tulajdonos adatai, U = naplózási információ
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPYALL
-   :::column-end:::
-   :::column span="1":::
-      A fájl összes adatának másolása (egyenértékű a következő/COPY: DATSOU)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /DCOPY: copyflag [s]
-   :::column-end:::
-   :::column span="1":::
-      a címtárak másolásának hűsége (az alapértelmezett érték a/DCOPY: DA), a másolási jelzők: D = az adat, A = attribútumok, A T = timestamps
-   :::column-end:::
-:::row-end:::
+[!INCLUDE [storage-files-migration-robocopy](../../../includes/storage-files-migration-robocopy.md)]
 
 ## <a name="phase-8-user-cut-over"></a>8. fázis: felhasználói kivágás
 
@@ -196,7 +136,7 @@ A második alkalommal, amikor a rendszer gyorsabban befejeződik, mert csak az u
 
 Ismételje meg ezt a folyamatot, amíg meggyőződött arról, hogy egy adott helyhez tartozó RoboCopy végrehajtásához szükséges idő egy elfogadható ablakban van az állásidőhöz.
 
-Ha figyelembe veszi az állásidőt, és készen áll arra, hogy offline állapotba hozza a hálózati hozzáférést: a felhasználói hozzáférés offline állapotba léptetéséhez lehetősége van módosítani a megosztási gyökér ACL-jeit úgy, hogy a felhasználók többé nem férhetnek hozzá a helyhez, vagy bármilyen más olyan lépést is megtehetnek, amely megakadályozza a tartalom módosítását a NAS kiszolgálón.
+Ha figyelembe veszi az állásidőt, akkor el kell távolítania a felhasználói hozzáférést a NAS-alapú megosztásokhoz. Ezt megteheti bármely olyan lépéssel, amely megakadályozza, hogy a felhasználók megváltoztassák a fájl-és mappák struktúráját és tartalmát. Egy példa arra, hogy a DFS-Namespace egy nem létező helyre mutasson, vagy módosítsa a gyökér ACL-jeit a megosztáson.
 
 Futtasson egy utolsó RoboCopy kört. Felveszi a módosításokat, amelyek esetleg kimaradtak.
 Az utolsó lépés elvégzésének időtartama a RoboCopy vizsgálat sebességétől függ. A korábbi Futtatás időtartamának mérésével megbecsülheti az időt (amely az állásidővel egyenlő).

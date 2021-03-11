@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – kapcsolódás Azure SQL Serverhez Azure Private Endpoint-PowerShell használatával
+title: 'Oktatóanyag: Kapcsolódás Azure SQL Serverhez Azure-beli magánhálózati végpont használatával – PowerShell'
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy privát végponttal rendelkező Azure SQL Servert Azure PowerShell használatával
 services: private-link
 author: asudbring
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 10/31/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4999d8b5d5ebe5d44aae782589b5c63324a4027b
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 8668bdb9dc391582234bf5741c0dd287d026defd
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102096513"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554938"
 ---
-# <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-powershell"></a>Oktatóanyag – kapcsolódás Azure SQL Serverhez Azure Private Endpoint-Azure PowerShell használatával
+# <a name="tutorial-connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-powershell"></a>Oktatóanyag: Kapcsolódás Azure SQL Serverhez Azure-beli magánhálózati végpont használatával – Azure PowerShell
 
 Az Azure privát végpontja az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a virtuális gépek (VM-EK) számára, hogy magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal.
 
@@ -338,8 +338,6 @@ Ebben az oktatóanyagban a következőket hozta létre:
 
 A virtuális gépet arra használta, hogy biztonságosan tesztelje a kapcsolatot az SQL Serverhez a magánhálózati végponton keresztül.
 
-A következő lépésként a webalkalmazás az Azure SQL Database architektúra-forgatókönyvhöz való [privát kapcsolattal](https://docs.microsoft.com/azure/architecture/example-scenario/private-web-app/private-web-app) is érdekli, amely a virtuális hálózaton kívül egy webalkalmazást kapcsol össze egy adatbázis privát végpontján.
-
-Megtudhatja, hogyan hozhat létre privát hivatkozási szolgáltatást:
+A következő lépésként a webalkalmazás az Azure SQL Database architektúra-forgatókönyvhöz való **privát kapcsolattal** is érdekli, amely a virtuális hálózaton kívül egy webalkalmazást kapcsol össze egy adatbázis privát végpontján.
 > [!div class="nextstepaction"]
-> [Privát kapcsolati szolgáltatás létrehozása](create-private-link-service-portal.md)
+> [Webalkalmazás az Azure SQL Database szolgáltatáshoz való privát kapcsolattal](/azure/architecture/example-scenario/private-web-app/private-web-app)

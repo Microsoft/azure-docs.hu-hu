@@ -3,12 +3,12 @@ title: host.jsAzure Functions 1. x esetén
 description: Dokumentáció a v1 futtatókörnyezettel rendelkező fájl Azure Functions host.jsához.
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.openlocfilehash: 588ab6723015f34d15e4a46ec4f7324302b13b81
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 48dba50b384731befdc7fba7c418e542994cedd9
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832823"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608954"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>host.jsAzure Functions 1. x esetén
 
@@ -141,7 +141,7 @@ A [Azure Cosmos db trigger és kötések](functions-bindings-cosmosdb.md)konfigu
 |---------|---------|---------|
 |GatewayMode|Átjáró|A függvény által a Azure Cosmos DB szolgáltatáshoz való csatlakozáskor használt kapcsolati mód. A lehetőségek a következők `Direct` , `Gateway`|
 |Protokoll|Https|A függvény által a Azure Cosmos DB szolgáltatáshoz való kapcsolódáskor használt kapcsolati protokoll.  A [két mód magyarázata itt](../cosmos-db/performance-tips.md#networking) olvasható|
-|leasePrefix|n/a|Az alkalmazás összes függvényében használandó bérlet-előtag.|
+|leasePrefix|n.a.|Az alkalmazás összes függvényében használandó bérlet-előtag.|
 
 ## <a name="durabletask"></a>durableTask
 
@@ -149,7 +149,7 @@ A [Azure Cosmos db trigger és kötések](functions-bindings-cosmosdb.md)konfigu
 
 ## <a name="eventhub"></a>eventHub
 
-Az [Event hub-eseményindítók és-kötések](functions-bindings-event-hubs-trigger.md#functions-1x)konfigurációs beállításai.
+Az [Event hub-eseményindítók és-kötések](functions-bindings-event-hubs.md#functions-1x)konfigurációs beállításai.
 
 ## <a name="functions"></a>funkciók
 
@@ -250,9 +250,9 @@ A [ILogger](functions-dotnet-class-library.md#ilogger) objektum vagy a [Context.
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|categoryFilter|n/a|Meghatározza a kategória szerinti szűrést| 
-|defaultLevel|Információ|A tömbben nem megadott kategóriákhoz `categoryLevels` küldje el a naplókat ezen a szinten és Application Insights.| 
-|categoryLevels|n/a|Kategóriákból álló tömb, amely meghatározza, hogy az egyes kategóriákhoz Application Insights milyen minimális naplózási szint legyen elküldve. Az itt megadott kategória az összes olyan kategóriát szabályozza, amely ugyanazzal az értékkel kezdődik, és a hosszabb értékek elsőbbséget élveznek. Az előző példában *host.js* fájlon az összes olyan kategória, amely a "host. aggregator" kifejezéssel kezdődik `Information` . Az összes többi olyan kategória, amely a "host" kifejezéssel kezdődik, például "Host.Executor", jelentkezzen be `Error` szinten.| 
+|categoryFilter|n.a.|Meghatározza a kategória szerinti szűrést| 
+|defaultLevel|Tájékoztatás|A tömbben nem megadott kategóriákhoz `categoryLevels` küldje el a naplókat ezen a szinten és Application Insights.| 
+|categoryLevels|n.a.|Kategóriákból álló tömb, amely meghatározza, hogy az egyes kategóriákhoz Application Insights milyen minimális naplózási szint legyen elküldve. Az itt megadott kategória az összes olyan kategóriát szabályozza, amely ugyanazzal az értékkel kezdődik, és a hosszabb értékek elsőbbséget élveznek. Az előző példában *host.js* fájlon az összes olyan kategória, amely a "host. aggregator" kifejezéssel kezdődik `Information` . Az összes többi olyan kategória, amely a "host" kifejezéssel kezdődik, például "Host.Executor", jelentkezzen be `Error` szinten.| 
 
 ## <a name="queues"></a>üzenetsorok
 
@@ -292,7 +292,7 @@ A [SendGrind kimeneti kötésének](functions-bindings-sendgrid.md) konfiguráci
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|a|n/a|A küldő e-mail-címe az összes függvényen belül.| 
+|a|n.a.|A küldő e-mail-címe az összes függvényen belül.| 
 
 ## <a name="servicebus"></a>serviceBus
 
@@ -312,7 +312,7 @@ A [SendGrind kimeneti kötésének](functions-bindings-sendgrid.md) konfiguráci
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
 |maxConcurrentCalls|16|Az üzenet-szivattyú által kezdeményezett visszahívás egyidejű hívásának maximális száma. Alapértelmezés szerint a függvények futtatókörnyezete egyszerre több üzenetet dolgoz fel. Ha úgy szeretné irányítani a futtatókörnyezetet, hogy egyszerre csak egyetlen üzenetsor vagy témakörbeli üzenetet dolgozza fel, állítsa `maxConcurrentCalls` az 1 értékre. | 
-|prefetchCount|n/a|Az alapul szolgáló MessageReceiver által használt alapértelmezett PrefetchCount.| 
+|prefetchCount|n.a.|Az alapul szolgáló MessageReceiver által használt alapértelmezett PrefetchCount.| 
 |autoRenewTimeout|00:05:00|Az a maximális időtartam, amelyen belül az üzenet zárolása automatikusan meg lesz újítva.|
 |Automatikus kiegészítés|true|Igaz értéke esetén az trigger automatikusan végrehajtja az üzenet feldolgozását a művelet sikeres végrehajtásakor. Hamis érték esetén a függvény feladata az üzenet befejezése a visszatérés előtt.|
 
@@ -338,7 +338,7 @@ Az egyszeri zárolási viselkedés konfigurációs beállításai. További info
 |listenerLockPeriod|00:01:00|A figyelő zárolásának időtartama.| 
 |listenerLockRecoveryPollingInterval|00:01:00|A figyelő zárolásának helyreállításához használt időintervallum, ha a figyelő zárolása nem szerezhető be indításkor.| 
 |lockAcquisitionTimeout|00:01:00|Az a maximális időtartam, ameddig a futtatókörnyezet megpróbál zárolást benyerni.| 
-|lockAcquisitionPollingInterval|n/a|A zárolási beszerzési kísérletek közötti időköz.| 
+|lockAcquisitionPollingInterval|n.a.|A zárolási beszerzési kísérletek közötti időköz.| 
 
 ## <a name="tracing"></a>nyomkövetés
 

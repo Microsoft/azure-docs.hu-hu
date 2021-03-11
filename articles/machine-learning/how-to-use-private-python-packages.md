@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: b922c25561843d140f1e2b8221f62fad89ea00c8
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 5cc1025528959f8c81aa80703e3fc26d59c5266f
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520897"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618100"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>Privát Python-csomagok használata Azure Machine Learning
 
@@ -52,11 +52,11 @@ Belsőleg a Azure Machine Learning szolgáltatás a biztonságos SAS URL-cím al
 
 ## <a name="use-a-repository-of-packages-from-azure-devops-feed"></a>Csomagok tárházának használata az Azure DevOps-hírcsatornából
 
-Ha aktívan fejleszt Python-csomagokat a Machine learning-alkalmazáshoz, az Azure DevOps-tárházban tárolhatja őket, és hírcsatornáként közzéteheti őket. Ez a módszer lehetővé teszi, hogy integrálja a DevOps munkafolyamatot a csomagok létrehozásához a Azure Machine Learning-munkaterület. A Python-hírcsatornák Azure DevOps való beállításának megismeréséhez olvassa el [a Python-csomagok használatának első lépései az Azure-](/azure/devops/artifacts/quickstarts/python-packages?preserve-view=true&view=azure-devops) összetevőkben című témakört.
+Ha aktívan fejleszt Python-csomagokat a Machine learning-alkalmazáshoz, az Azure DevOps-tárházban tárolhatja őket, és hírcsatornáként közzéteheti őket. Ez a módszer lehetővé teszi, hogy integrálja a DevOps munkafolyamatot a csomagok létrehozásához a Azure Machine Learning-munkaterület. A Python-hírcsatornák Azure DevOps való beállításának megismeréséhez olvassa el [a Python-csomagok használatának első lépései az Azure-](/azure/devops/artifacts/quickstarts/python-packages) összetevőkben című témakört.
 
 Ez a módszer személyes hozzáférési tokent használ a tárházon végzett hitelesítéshez. Ugyanez a módszer a jogkivonat-alapú hitelesítéssel, például a privát GitHub-adattárakkal rendelkező más adattárakra is érvényes. 
 
- 1. [Hozzon létre egy személyes hozzáférési jogkivonatot (Pat)](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?preserve-view=true&tabs=preview-page&view=azure-devops#create-a-pat) az Azure DevOps-példányhoz. Állítsa be a jogkivonat hatókörét __csomagolási > olvasásra__. 
+ 1. [Hozzon létre egy személyes hozzáférési jogkivonatot (Pat)](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?tabs=preview-page#create-a-pat) az Azure DevOps-példányhoz. Állítsa be a jogkivonat hatókörét __csomagolási > olvasásra__. 
 
  2. Adja hozzá az Azure DevOps URL-címét és a PAT as munkaterület-tulajdonságokat a [Workspace.set_connection](/python/api/azureml-core/azureml.core.workspace.workspace#set-connection-name--category--target--authtype--value-) metódus használatával.
 

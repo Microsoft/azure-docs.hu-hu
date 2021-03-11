@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7eb168610f10ac336084ac04c19679d26fc913e0
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 2d9d63c7a703987d7b17e6e03d8b5596d5f1dfa5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725244"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560616"
 ---
 # <a name="securing-external-access-with-groups"></a>A külső hozzáférés biztonságossá tétele a csoportokkal 
 
@@ -54,7 +54,7 @@ Ahogy fejleszti a csoport stratégiáját az erőforrásaihoz való külső hozz
 
    * *Alapértelmezés szerint minden felhasználó létrehozhat M365-csoportokat és-csoportokat a bérlőben lévő összes (belső és külső) felhasználóhoz való csatlakozáshoz*. 
 
-      * Egy adott biztonsági csoport tagjaira [korlátozhatja Microsoft 365 csoportok létrehozását](/microsoft-365/solutions/manage-creation-of-groups?view=o365-worldwide) . A beállítás konfigurálásához használja a Windows PowerShellt. 
+      * Egy adott biztonsági csoport tagjaira [korlátozhatja Microsoft 365 csoportok létrehozását](/microsoft-365/solutions/manage-creation-of-groups) . A beállítás konfigurálásához használja a Windows PowerShellt. 
 
 * **Ki kell tudnia hívni a személyeket a csoportokra?** Lehet, hogy az összes csoporttagok hozzáadhatnak más tagokat, vagy csak a tulajdonosok tagokat adhatnak hozzá?
 
@@ -150,13 +150,13 @@ A helyszíni **infrastruktúrát a biztonsági rések elleni védelem érdekébe
 
 ## <a name="microsoft-365-groups"></a>Microsoft 365 csoportok
 
-[Microsoft 365 csoportok](/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide) a M365 összes hozzáférését biztosító alapszintű tagsági szolgáltatás. Ezek a [Azure Portal](https://portal.azure.com/)vagy a [M365-portálról](https://admin.microsoft.com/)hozhatók létre. Egy M365-csoport létrehozásakor hozzáférést biztosít az együttműködéshez használt erőforrások csoportjához. Az erőforrások teljes listájáért tekintse [meg a rendszergazdák Microsoft 365 csoportok áttekintése](/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide) című témakört.
+[Microsoft 365 csoportok](/microsoft-365/admin/create-groups/office-365-groups) a M365 összes hozzáférését biztosító alapszintű tagsági szolgáltatás. Ezek a [Azure Portal](https://portal.azure.com/)vagy a [M365-portálról](https://admin.microsoft.com/)hozhatók létre. Egy M365-csoport létrehozásakor hozzáférést biztosít az együttműködéshez használt erőforrások csoportjához. Az erőforrások teljes listájáért tekintse [meg a rendszergazdák Microsoft 365 csoportok áttekintése](/microsoft-365/admin/create-groups/office-365-groups) című témakört.
 
 A M365-csoportok a következő árnyalatokkal rendelkeznek a szerepköreik számára
 
 * **Tulajdonosok** – a tulajdonosok tulajdonosai hozzáadhatnak vagy eltávolíthatnak tagokat, és egyedi engedélyekkel rendelkezhetnek, mint például a beszélgetések törlésének lehetősége a megosztott Beérkezett fájlok mappából vagy a csoport beállításainak módosítása. A csoport tulajdonosai átnevezhetik a csoportot, frissíthetik a leírást vagy a képet.
 
-* **Tagok** – a tagok hozzáférhetnek a csoport összes tagjához, de nem módosíthatják a csoportok beállításait. Alapértelmezés szerint a csoporttagok meghívhatják a vendégeket a csoportba való csatlakozásra, de [ezt a beállítást is szabályozhatja](/microsoft-365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide).
+* **Tagok** – a tagok hozzáférhetnek a csoport összes tagjához, de nem módosíthatják a csoportok beállításait. Alapértelmezés szerint a csoporttagok meghívhatják a vendégeket a csoportba való csatlakozásra, de [ezt a beállítást is szabályozhatja](/microsoft-365/admin/create-groups/manage-guest-access-in-groups).
 
 * **Vendég** -csoportos vendégek a szervezeten kívüli tagok. A vendégek alapértelmezés szerint bizonyos korlátokkal rendelkeznek a Teams szolgáltatásban.
 
@@ -170,7 +170,7 @@ Kiválaszthatja az e-mail aliast, az adatvédelmet, valamint azt, hogy engedély
 
 A telepítés után hozzáadhat tagokat, és konfigurálhatja az e-mailek használatának beállításait stb.
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő cikkeket az erőforrásokhoz való külső hozzáférés biztonságossá tételéhez. Javasoljuk, hogy a felsorolt sorrendben végezze el a műveleteket.
 

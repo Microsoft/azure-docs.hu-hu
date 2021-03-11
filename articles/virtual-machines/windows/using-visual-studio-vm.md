@@ -3,19 +3,19 @@ title: A Visual Studio használata Azure-beli virtuális gépeken
 description: A Visual Studio használata Azure-beli virtuális gépeken.
 author: cathysull
 manager: cathys
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: cathys
 keywords: VisualStudio
-ms.openlocfilehash: 315987060b96312c666bd5aa928588e27d13173b
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: a6acf27743f17941e14adc3f6deea903f4f5ca87
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938103"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562078"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio-lemezképek az Azure-ban
 A Visual Studio egy előre konfigurált Azure-beli virtuális gépen (VM) gyorsan és egyszerűen elvégezhető, hogy ne legyenek elérhetők a felhasználható fejlesztési környezetek. A különböző Visual Studio-konfigurációkkal rendelkező rendszerképek az [Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure)érhetők el.

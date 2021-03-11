@@ -1,22 +1,22 @@
 ---
 title: Áttekintés – helyszíni AD DS hitelesítés az Azure-fájlmegosztás számára
-description: Ismerje meg az Azure-fájlmegosztás Active Directory tartományi szolgáltatások (AD DS) hitelesítését. Ez a cikk a támogatási forgatókönyveket, a rendelkezésre állást, valamint azt ismerteti, hogy az engedélyek hogyan működnek a AD DS és az Azure Active Directory között.
+description: Ismerje meg az Azure-fájlmegosztás Active Directory Domain Services (AD DS) hitelesítését. Ez a cikk a támogatási forgatókönyveket, a rendelkezésre állást, valamint azt ismerteti, hogy az engedélyek hogyan működnek a AD DS és az Azure Active Directory között.
 author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 2214dbc9dcbd4ba7728065ee45471e9f94b9e513
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 6098497e89ad66fad7659aa64c9a7849380f8c43
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95739995"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547506"
 ---
-# <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Áttekintés – helyszíni Active Directory tartományi szolgáltatások hitelesítés SMB-en keresztül az Azure-fájlmegosztás esetében
+# <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Áttekintés – helyszíni Active Directory Domain Services hitelesítés SMB-en keresztül az Azure-fájlmegosztás esetében
 
-[Azure Files](storage-files-introduction.md)   támogatja a kiszolgálói üzenetblokk (SMB) szolgáltatáson keresztüli identitás-alapú hitelesítést a következő két típusú tartományi szolgáltatáson keresztül: helyszíni Active Directory tartományi szolgáltatások (AD DS) és Azure Active Directory Domain Services (Azure AD DS). Javasoljuk, hogy tekintse át a [működéséről szóló szakaszt](./storage-files-active-directory-overview.md#how-it-works) , és válassza ki a megfelelő tartományi szolgáltatást a hitelesítéshez. A beállítás a választott tartományi szolgáltatástól függően eltérő. Ezek a cikksorozatok a helyszíni AD DS engedélyezésére és konfigurálására összpontosítanak az Azure-fájlmegosztás segítségével történő hitelesítéshez.
+[Azure Files](storage-files-introduction.md)   támogatja a kiszolgálói üzenetblokk (SMB) szolgáltatáson keresztüli identitás-alapú hitelesítést a következő két típusú tartományi szolgáltatáson keresztül: helyszíni Active Directory Domain Services (AD DS) és Azure Active Directory Domain Services (Azure AD DS). Javasoljuk, hogy tekintse át a [működéséről szóló szakaszt](./storage-files-active-directory-overview.md#how-it-works) , és válassza ki a megfelelő tartományi szolgáltatást a hitelesítéshez. A beállítás a választott tartományi szolgáltatástól függően eltérő. Ezek a cikksorozatok a helyszíni AD DS engedélyezésére és konfigurálására összpontosítanak az Azure-fájlmegosztás segítségével történő hitelesítéshez.
 
 Ha még nem ismeri az Azure-fájlmegosztás újdonságait, javasoljuk, hogy olvassa el a [tervezési útmutatót](storage-files-planning.md) , mielőtt elolvassa a következő cikksorozatot.
 
@@ -33,10 +33,14 @@ Ha még nem ismeri az Azure-fájlmegosztás újdonságait, javasoljuk, hogy olva
 
 Ha engedélyezi a AD DS az Azure-fájlmegosztás SMB protokollon keresztül történő engedélyezését, a AD DS csatlakoztatott gépek az Azure-fájlmegosztást meglévő AD DS hitelesítő adataival csatlakoztathatók. Ez a funkció AD DS környezettel engedélyezhető, amely a helyszíni gépeken vagy az Azure-ban üzemeltethető.
 
-> [!NOTE]
-> A Azure Files AD-hitelesítés néhány gyakori felhasználási esethez való beállításának elősegítése érdekében két videót tettünk közzé a következő forgatókönyvek lépésenkénti útmutatójában:
-> - [Helyszíni fájlkiszolgálók cseréje Azure Files (beleértve a fájlokhoz és az AD-hitelesítéshez tartozó magánhálózati kapcsolaton keresztül történő telepítést)](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4)
-> - [A Azure Files használata a Windows rendszerű virtuális asztali profil tárolójának használatával (beleértve az AD-hitelesítés és a FsLogix-konfiguráció beállítását is)](https://www.youtube.com/embed/9S5A1IJqfOQ)
+## <a name="videos"></a>Videók
+
+A Azure Files AD-hitelesítés néhány gyakori felhasználási esethez való beállításának elősegítése érdekében két videót tettünk közzé a következő forgatókönyvek lépésenkénti útmutatójában:
+
+| Helyszíni fájlkiszolgálók cseréje Azure Files (beleértve a fájlokhoz és az AD-hitelesítéshez tartozó magánhálózati kapcsolaton keresztül történő telepítést) | A Azure Files használata a Windows rendszerű virtuális asztali profil tárolójának használatával (beleértve az AD-hitelesítés és a FsLogix-konfiguráció beállítását is)  |
+|-|-|
+| [![Képernyőfelvétel a helyszíni fájlkiszolgálók cseréjéről – kattintson a lejátszáshoz.](./media/storage-files-identity-auth-active-directory-enable/replace-on-prem-server-thumbnail.png)](https://www.youtube.com/watch?v=jd49W33DxkQ) | [![A using Azure Files használata a profil tárolójában – kattintson a lejátszáshoz.](./media/storage-files-identity-auth-active-directory-enable/files-ad-ds-fslogix-thumbnail.png)](https://www.youtube.com/watch?v=9S5A1IJqfOQ) |
+
 
 ## <a name="prerequisites"></a>Előfeltételek 
 

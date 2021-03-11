@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 417cc13c4a201a0dd86a846c347cb395b8d81c43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bde82a0ad50c2172e70337ad202b91af0a62c530
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535525"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547815"
 ---
 # <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>Beépített kognitív képességek a szöveg-és képfeldolgozáshoz az indexelés során (Azure Cognitive Search)
 
@@ -34,7 +34,7 @@ Az általuk felhasznált vagy előállított képességek számos képességgel 
 | Ügyességi | Leírás |
 |-------|-------------|
 |[Microsoft. Skills. Text. CustomEntityLookupSkill](cognitive-search-skill-custom-entity-lookup.md)| Szöveget keres a szavak és kifejezések egyéni, felhasználó által meghatározott listájából.|
-| [Microsoft. Skills. Text. KeyPhraseSkill](cognitive-search-skill-keyphrases.md) | Ez a képesség egy előképzett modellt használ a fontos kifejezések elhelyezésére, a nyelvi szabályokra, a más feltételekhez való közelségre, valamint arra, hogy a kifejezés milyen szokatlanul legyen a forrásadatok között. |
+| [Microsoft. Skills. Text. KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md) | Ez a képesség egy előképzett modellt használ a fontos kifejezések elhelyezésére, a nyelvi szabályokra, a más feltételekhez való közelségre, valamint arra, hogy a kifejezés milyen szokatlanul legyen a forrásadatok között. |
 | [Microsoft. Skills. Text. LanguageDetectionSkill](cognitive-search-skill-language-detection.md)  | Ez a képesség egy előképzésen alapuló modellt használ a használt nyelv észleléséhez (dokumentum-azonosító egy nyelven). Ha az azonos szöveges szegmensekben több nyelv is használatos, a kimenet a túlnyomórészt használt nyelv LCID-je.|
 | [Microsoft. Skills. Text. MergeSkill](cognitive-search-skill-textmerger.md) | Egy mezőkből álló gyűjteményből származó szöveget egyesít egyetlen mezőbe.  |
 | [Microsoft. Skills. Text. EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) | Ez a képesség egy előre betanított modellt használ a rögzített kategóriákhoz tartozó entitások létrehozásához: személyek, hely, szervezet, e-mailek, URL-címek, datetime-mezők. |

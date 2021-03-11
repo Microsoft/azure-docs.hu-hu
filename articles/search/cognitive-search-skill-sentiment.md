@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 895e22d94122539ee68bcac8ee4debce2d824ff0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6519cd952bd1265b4daad3b77b29aabd47ea4cc5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935279"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547475"
 ---
 # <a name="sentiment-cognitive-skill"></a>Érzelmek kognitív szaktudása
 
@@ -110,11 +110,9 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 }
 ```
 
-## <a name="notes"></a>Jegyzetek
-Ha üres, a rendszer nem adja vissza az adott rekordokhoz tartozó hangulati pontszámot.
-
-## <a name="error-cases"></a>Hibák esetei
-Ha a nyelv nem támogatott, a rendszer hibát generál, és nem ad vissza értéket.
+## <a name="warning-cases"></a>Figyelmeztető esetek
+Ha a szöveg üres, a rendszer figyelmeztetést generál, és nem ad eredményül egy érzelem-pontszámot.
+Ha a nyelv nem támogatott, a rendszer figyelmeztetést generál, és a rendszer nem ad vissza semmilyen hangulati pontszámot.
 
 ## <a name="see-also"></a>Lásd még
 

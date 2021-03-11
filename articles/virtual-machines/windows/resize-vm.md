@@ -2,18 +2,18 @@
 title: Windows rendszerű virtuális gép átméretezése az Azure-ban
 description: Az Azure-beli virtuális gépekhez használt virtuálisgép-méret módosítása.
 author: cynthn
-ms.service: virtual-machines-windows
-ms.subservice: sizes
+ms.service: virtual-machines
+ms.collection: windows
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: cynthn
-ms.openlocfilehash: 4860422fefb5a95fe41912b4898f02867f7b3aeb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7f41c0fb2bf949dd47491761fde8025a2d35155
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87832246"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560650"
 ---
 # <a name="resize-a-windows-vm"></a>Windows rendszerű virtuális gép átméretezése
 
@@ -21,14 +21,14 @@ Ez a cikk bemutatja, hogyan helyezhet át egy virtuális gépet egy másik virtu
 
 Miután létrehozta a virtuális gépet (VM), a virtuálisgép-méret módosításával felfelé vagy lefelé méretezheti a virtuális gépet. Bizonyos esetekben először fel kell szabadítania a virtuális gépet. Ez akkor fordulhat elő, ha az új méret nem érhető el azon a hardveres fürtön, amely jelenleg a virtuális gépet üzemelteti.
 
-Ha a virtuális gép Premium Storaget használ, győződjön meg arról, hogy a Premium Storage támogatásához **a méret egyik verzióját kell** választania. Válassza például a Standard_E4**s**_v3 a Standard_E4_v3 helyett.
+Ha a virtuális gép Premium Storaget használ, győződjön meg arról, hogy a Premium Storage támogatásához **a méret egyik verzióját kell** választania. Válassza például a Standard_E4 **s** _v3 a Standard_E4_v3 helyett.
 
 ## <a name="use-the-portal"></a>A portál használata
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 1. Nyissa meg a virtuális gép lapját.
-1. A bal oldali menüben válassza a **méret**lehetőséget.
-1. Válasszon új méretet az elérhető méretek listájából, majd válassza az **átméretezés**lehetőséget.
+1. A bal oldali menüben válassza a **méret** lehetőséget.
+1. Válasszon új méretet az elérhető méretek listájából, majd válassza az **átméretezés** lehetőséget.
 
 
 Ha a virtuális gép jelenleg fut, a méret módosításakor a rendszer újraindítást eredményez. A virtuális gép leállítása további méreteket jelezhet.

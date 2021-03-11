@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/08/2021
+ms.date: 03/09/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5cf43310c68c8446b9465a39d85f84c8273a68d8
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 24d955b0d1c53f57f5927f9e893b6ecd75fb3ca8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051224"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561891"
 ---
 # <a name="storage-account-overview"></a>Tárfiókok áttekintése
 
@@ -65,13 +65,13 @@ Az általános célú v2 Storage-fiókok támogatják az Azure Storage legújabb
 
 - Blobok (az összes típus: letiltás, Hozzáfűzés, lap)
 - Data Lake Gen2
-- Files
+- Fájlok
 - Lemezek
 - Üzenetsorok
 - Táblák
 
 > [!NOTE]
-> A Microsoft az általános célú v2 Storage-fiók használatát javasolja a legtöbb forgatókönyvhöz. Az általános célú v1-vagy blob Storage-fiókok egyszerűen, leállás nélkül frissíthetők egy általános célú v2-fiókra, anélkül, hogy adatmásolásra lenne szükség.
+> A Microsoft az általános célú v2 Storage-fiók használatát javasolja a legtöbb forgatókönyvhöz. Az általános célú v1-vagy blob Storage-fiókok egyszerűen, leállás nélkül frissíthetők egy általános célú v2-fiókra, anélkül, hogy adatmásolásra lenne szükség. A frissítés azonban nem vonható vissza.
 >
 > Az általános célú v2-fiókra való frissítéssel kapcsolatos további információkért lásd: [frissítés általános célú v2 Storage-fiókra](storage-account-upgrade.md).
 
@@ -82,18 +82,23 @@ Az általános célú v2 Storage-fiókok több hozzáférési szintet is kínál
 Az általános célú v1 Storage-fiókok hozzáférést biztosítanak az összes Azure Storage-szolgáltatáshoz, de nem rendelkezhetnek a legújabb szolgáltatásokkal, illetve a legalacsonyabb/gigabájt díjszabással. Az általános célú v1 Storage-fiókok támogatják ezeket az Azure Storage-szolgáltatásokat:
 
 - Blobok (az összes típus)
-- Files
+- Fájlok
 - Lemezek
 - Üzenetsorok
 - Táblák
 
-A Microsoft az általános célú v2-fiókokat javasolja a legtöbb forgatókönyvhöz. Az alábbi forgatókönyvekhez használhatja az általános célú v1-fiókokat:
+Az alábbi forgatókönyvekhez használhatja az általános célú v1-fiókokat:
 
 - Alkalmazásaihoz a klasszikus Azure-telepítési modell szükséges. Az általános célú v2-fiókok és a blob Storage-fiókok csak a Azure Resource Manager telepítési modellt támogatják.
 
 - Az alkalmazások tranzakció-igényesek, vagy jelentős földrajzi replikációs sávszélességet használnak, de nem igényelnek nagy kapacitást. Ebben az esetben az általános célú v1 lehet a leggazdaságosabb választás.
 
 - A [Storage REST API Services](/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) olyan verzióját használja, amely a 2014-02-14-nál korábbi, vagy a 4. x-nél alacsonyabb verziószámú ügyféloldali kódtár. Az alkalmazás nem frissíthető.
+
+> [!NOTE]
+> Bár a Microsoft a legtöbb esetben javasolja az általános célú v2-fiókok használatát, a Microsoft továbbra is támogatja az általános célú v1-fiókokat az új és a meglévő ügyfelek számára. Általános célú v1-es Storage-fiókokat hozhat létre új régiókban, amikor az Azure Storage elérhető ezekben a régiókban. A Microsoft jelenleg nem rendelkezik az általános célú v1-fiókok támogatásának elavulttá tételével, és legalább egy éves előzetes értesítést fog biztosítani az Azure Storage funkciójának elavulttá tételéhez. A Microsoft továbbra is biztosítja az általános célú v1-fiókok biztonsági frissítéseit, de ez a fióktípus nem vár új szolgáltatás-fejlesztést.
+>
+> Az új Azure Storage-régiókban az általános célú v1-fiókok díjszabása 2020. október 1-től megegyezik az általános célú v2-fiókok díjszabásával ezekben a régiókban. A meglévő Azure Storage-régiók díjszabása nem változott. Az általános célú v1-fiókok egy adott régióban való díjszabásáról az Azure Storage díjszabását ismertető oldalon tájékozódhat. Válassza ki a régiót, majd a **díjszabás** mellett válassza az **egyéb** lehetőséget.
 
 ### <a name="blockblobstorage-accounts"></a>BlockBlobStorage-fiókok
 
@@ -183,7 +188,7 @@ A következő táblázat felsorolja az egyes Azure Storage-szolgáltatások vég
 | Tárolási szolgáltatás | Végpont |
 |--|--|
 | Blob Storage | `https://<storage-account>.blob.core.windows.net` |
-| 2\. generációs Azure Data Lake Storage | `https://<storage-account>.dfs.core.windows.net` |
+| 2. generációs Azure Data Lake Storage | `https://<storage-account>.dfs.core.windows.net` |
 | Azure Files | `https://<storage-account>.file.core.windows.net` |
 | Queue Storage | `https://<storage-account>.queue.core.windows.net` |
 | Table Storage | `https://<storage-account>.table.core.windows.net` |
@@ -251,7 +256,7 @@ Az [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/prici
 
 [!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tárfiók létrehozása](storage-account-create.md)
 - [Blokkblob-tárfiók létrehozása](../blobs/storage-blob-create-account-block-blob.md)

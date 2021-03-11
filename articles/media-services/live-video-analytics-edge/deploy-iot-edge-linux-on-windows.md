@@ -3,16 +3,16 @@ title: Üzembe helyezés egy IoT Edge Linuxon a Windows rendszeren – Azure
 description: Ez a cikk útmutatást nyújt a Windows-eszközök Linux rendszerű IoT Edge való üzembe helyezéséhez.
 ms.topic: how-to
 ms.date: 02/18/2021
-ms.openlocfilehash: b635070d6a4834da2c6d82cc768684b6cde9cd71
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 9ec28c62ca804137ede3cd60d1980e55fbaa2807
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042181"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618134"
 ---
 # <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device"></a>Üzembe helyezés egy IoT Edge for Linux on Windows (EFLOW) eszközön
 
-Ebből a cikkből megtudhatja, hogyan helyezheti üzembe az élő videók elemzését egy olyan peremhálózati eszközön, amelyen [IoT Edge Linux rendszeren (EFLOW)](https://docs.microsoft.com/azure/iot-edge/iot-edge-for-linux-on-windows?view=iotedge-2018-06). Miután végzett a jelen dokumentumban ismertetett lépésekkel, futtathat egy olyan [adathordozó-diagramot](media-graph-concept.md) , amely észleli a videón való mozgást, és ilyen eseményeket bocsát ki a felhőben lévő IoT hubhoz. Ezt követően a speciális forgatókönyvek esetében kikapcsolhatja a Media Graphot, és a Windows-alapú IoT Edge eszközön elérhetővé teheti az élő video-elemzési lehetőségeket.
+Ebből a cikkből megtudhatja, hogyan helyezheti üzembe az élő videók elemzését egy olyan peremhálózati eszközön, amelyen [IoT Edge Linux rendszeren (EFLOW)](https://docs.microsoft.com/azure/iot-edge/iot-edge-for-linux-on-windows). Miután végzett a jelen dokumentumban ismertetett lépésekkel, futtathat egy olyan [adathordozó-diagramot](media-graph-concept.md) , amely észleli a videón való mozgást, és ilyen eseményeket bocsát ki a felhőben lévő IoT hubhoz. Ezt követően a speciális forgatókönyvek esetében kikapcsolhatja a Media Graphot, és a Windows-alapú IoT Edge eszközön elérhetővé teheti az élő video-elemzési lehetőségeket.
 
 ## <a name="prerequisites"></a>Előfeltételek 
 

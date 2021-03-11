@@ -3,17 +3,18 @@ title: Linux rendszerű virtuális gép létrehozása és titkosítása az Azure
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre és titkosíthat Linux rendszerű virtuális gépeket az Azure CLI használatával
 author: msmbaldwin
 ms.author: mbaldwin
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.collection: linux
+ms.subservice: disks
 ms.topic: quickstart
 ms.date: 05/17/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: addfa90f5ec793600072aaaaf2786cfe3d5dad38
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b600c895f98c46dbaafce7deef86bbbee8f57c99
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737015"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561041"
 ---
 # <a name="quickstart-create-and-encrypt-a-linux-vm-with-the-azure-cli"></a>Gyors útmutató: linuxos virtuális gép létrehozása és titkosítása az Azure CLI-vel
 
@@ -98,7 +99,7 @@ Ha már nincs rá szükség, az az [Group delete](/cli/azure/group) paranccsal e
 az group delete --name "myResourceGroup"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy virtuális gépet, létrehozott egy Key Vault, amely engedélyezte a titkosítási kulcsokat, és titkosította a virtuális gépet.  A következő cikkből többet tudhat meg a Linux rendszerű virtuális gépek további Azure Disk Encryptionéről.
 

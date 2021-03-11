@@ -6,20 +6,17 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 02/25/2021
-ms.openlocfilehash: b3ddbdf04dc736b6f78a04dc6bb2bc484e67f70f
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.date: 03/11/2021
+ms.openlocfilehash: 0a24546579df020dcb7c7a9b01ee3d181226d2df
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107685"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617488"
 ---
 # <a name="grant-and-request-tenant-wide-visibility"></a>Bérlői szintű láthatóság biztosítása és kérése
 
 A **globális rendszergazda** Azure Active Directory (ad) szerepkörrel rendelkező felhasználó bérlői szintű felelősséggel rendelkezhet, de nem rendelkezik az Azure-engedélyekkel a szervezetre vonatkozó információk megtekintésére a Azure Security Centerban. A jogosultságszint-emelésre van szükség, mert az Azure AD-szerepkör-hozzárendelések nem biztosítanak hozzáférést az Azure-erőforrásokhoz. 
-
-> [!TIP]
-> További információ az [Azure-előfizetések és-felügyeleti csoportok kezeléséhez való jogosultságszint](../role-based-access-control/elevate-access-global-admin.md)-emelési jogosultságok a globális rendszergazdai szerepkörhöz való jogosultságszint-emeléséről.
 
 ## <a name="grant-tenant-wide-permissions-to-yourself"></a>A bérlői szintű engedélyek megadása saját magának
 
@@ -45,6 +42,14 @@ Bérlői szintű engedélyek kiosztása:
 1. Jelentkezzen ki a Azure Portalból, majd jelentkezzen be újra.
 
 1. Ha emelt szintű hozzáférést, nyissa meg vagy frissítse Azure Security Center annak ellenőrzéséhez, hogy látható-e az Azure AD-bérlő összes előfizetése. 
+
+A fenti egyszerű folyamat automatikusan végrehajt néhány műveletet:
+
+1. A felhasználó engedélyei átmenetileg megemelve.
+1. Az új engedélyek használatával a felhasználó hozzá lesz rendelve a legfelső szintű felügyeleti csoportban lévő kívánt Azure RBAC-szerepkörhöz.
+1. A emelt szintű engedélyek el lesznek távolítva.
+
+Az Azure AD jogosultságszint-emelési folyamatával kapcsolatos további információkért tekintse meg az [Azure-előfizetések és-felügyeleti csoportok kezelésének megemelése](../role-based-access-control/elevate-access-global-admin.md)című témakört.
 
 
 ## <a name="request-tenant-wide-permissions-when-yours-are-insufficient"></a>Bérlői szintű engedélyek kérése, ha a tiéd nem elegendő

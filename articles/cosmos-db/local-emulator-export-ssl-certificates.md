@@ -7,12 +7,12 @@ ms.date: 09/17/2020
 author: deborahc
 ms.author: dech
 ms.custom: devx-track-python, devx-track-java, contperf-fy21q1
-ms.openlocfilehash: 6c144f33f32422e27916e1987e0b2e8693f97945
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 952be09662c2c74f883d63de72bba2b9cb58d0e0
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656478"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554003"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs-apps"></a>A Azure Cosmos DB Emulator-tanúsítványok exportálása Java-, Python-és Node.js-alkalmazásokkal való használatra
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -67,7 +67,7 @@ Exportálnia kell az emulátor tanúsítványát, hogy az emulátor végpontját
 
 Ha Java-alapú ügyfelet használó Java-alkalmazásokat vagy MongoDB-alkalmazásokat futtat, könnyebben telepítheti a tanúsítványt a Java alapértelmezett tanúsítványtárolóba, mint a `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` jelzők átadása. A mellékelt Java bemutató alkalmazás ( `https://localhost:8081/_explorer/index.html` ) például az alapértelmezett tanúsítványtárolótól függ.
 
-Az X. 509 tanúsítvány az alapértelmezett Java-tanúsítványtárolóba való importálásához kövesse a [tanúsítvány hozzáadása a Java-tanúsítványok tárolójához](/azure/developer/java/sdk/java-sdk-add-certificate-ca-store) című témakör utasításait. Ne feledje, hogy a *(z)% JAVA_HOME%* könyvtárban fog működni a-eszköz futtatásakor. Miután importálta a tanúsítványt a tanúsítványtárolóba, az SQL-és a Azure Cosmos DB API-MongoDB csatlakozni tudnak a Azure Cosmos DB emulátorhoz.
+Az X. 509 tanúsítvány az alapértelmezett Java-tanúsítványtárolóba való importálásához kövesse a [tanúsítvány hozzáadása a Java-tanúsítványok tárolójához](https://docs.oracle.com/cd/E54932_01/doc.705/e54936/cssg_create_ssl_cert.htm) című témakör utasításait. Ne feledje, hogy a *(z)% JAVA_HOME%* könyvtárban fog működni a-eszköz futtatásakor. Miután importálta a tanúsítványt a tanúsítványtárolóba, az SQL-és a Azure Cosmos DB API-MongoDB csatlakozni tudnak a Azure Cosmos DB emulátorhoz.
 
 Azt is megteheti, hogy a következő bash-szkriptet futtatja a tanúsítvány importálásához:
 

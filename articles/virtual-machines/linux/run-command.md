@@ -3,17 +3,18 @@ title: Rendszerhéj-parancsfájlok futtatása Linux rendszerű virtuális gépen
 description: Ez a témakör azt ismerteti, hogyan futtathat parancsfájlokat egy Azure-beli linuxos virtuális gépen a parancs futtatása funkció használatával
 services: automation
 ms.service: virtual-machines
+ms.collection: linux
 author: bobbytreed
 ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: dae77dfb72fb6b11721500686991f2b199606b99
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 73dd15a5eed3e27d9b72bc0357e35901c04ba7a2
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737863"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552932"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>Rendszerhéj-parancsfájlok futtatása Linux rendszerű virtuális gépen a Futtatás parancs használatával
 
@@ -96,6 +97,6 @@ A parancs futtatásához `Microsoft.Compute/virtualMachines/runCommand/action` e
 
 Használhatja a [beépített szerepkörök](../../role-based-access-control/built-in-roles.md) egyikét, vagy létrehozhat egy [Egyéni szerepkört](../../role-based-access-control/custom-roles.md) a futtatási parancs használatához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a parancsfájlok és parancsok távoli virtuális gépen való futtatásának egyéb módjairól, olvassa el a [parancsfájlok futtatása a linuxos virtuális gépen](run-scripts-in-vm.md)című témakört.

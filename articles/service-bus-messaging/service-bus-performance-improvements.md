@@ -2,14 +2,14 @@
 title: Ajánlott eljárások a teljesítmény javításához a Azure Service Bus használatával
 description: Ismerteti, hogyan optimalizálható a teljesítmény a Service Bus használatával a felügyelt üzenetek cseréjekor.
 ms.topic: article
-ms.date: 01/15/2021
+ms.date: 03/09/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4c775555f82258c532d72917220129e3913ad314
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 10435f74cfb7c87ccb28b64e1b3f136add1dc927
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102456045"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561874"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Ajánlott eljárások a teljesítmény javításához a Service Bus-üzenetkezelés használatával
 
@@ -44,17 +44,22 @@ További információ a .NET Standard szintű platform támogatásáról: [.net-
 # <a name="azuremessagingservicebus-sdk"></a>[Azure. Messaging. ServiceBus SDK](#tab/net-standard-sdk-2)
 A szolgáltatással kommunikáló Service Bus objektumokat (például a [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient), a [ServiceBusSender](/dotnet/api/azure.messaging.servicebus.servicebussender), a [ServiceBusReceiver](/dotnet/api/azure.messaging.servicebus.servicebusreceiver)és a [ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor)) regisztrálni kell a függőségi injektáláshoz (vagy egyszeres és megosztott példányként). A ServiceBusClient regisztrálható a függőségi injektáláshoz a [ServiceBusClientBuilderExtensions](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/src/Compatibility/ServiceBusClientBuilderExtensions.cs). 
 
-Azt javasoljuk, hogy az egyes üzenetek küldése vagy fogadása után ne zárjunk be vagy ne távolítsa el ezeket az objektumokat. Az entitás-specifikus objektumok (ServiceBusSender/fogadó/processzor) bezárása vagy ártalmatlanítása a Service Bus szolgáltatásra mutató hivatkozás lebontását eredményezi. A ServiceBusClient ártalmatlanítása a Service Bus szolgáltatással létesített kapcsolatok lebontását eredményezi. A kapcsolatok létrehozása költséges művelet, amellyel elkerülhető, hogy újra ugyanazzal a ServiceBusClient használja, és létrehozza a szükséges entitás-specifikus objektumokat ugyanabból a ServiceBusClient-példányból. Ezeket az ügyféloldali objektumokat biztonságosan használhatja egyidejű aszinkron műveletekhez és több szálból is.
+Azt javasoljuk, hogy az egyes üzenetek küldése vagy fogadása után ne zárjunk be vagy ne távolítsa el ezeket az objektumokat. Az entitás-specifikus objektumok (ServiceBusSender/fogadó/processzor) bezárása vagy ártalmatlanítása a Service Bus szolgáltatásra mutató hivatkozás lebontását eredményezi. A ServiceBusClient ártalmatlanítása a Service Bus szolgáltatással létesített kapcsolatok lebontását eredményezi. 
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
-Service Bus az ügyfélalkalmazások, például a vagy a implementációját, [`IQueueClient`][QueueClient] [`IMessageSender`][MessageSender] regisztrálni kell a függőségi injektáláshoz (vagy egyszeres és megosztott). Azt javasoljuk, hogy az üzenet elküldése után ne zárjunk be üzenetküldési gyárakat, üzenetsor-kezelést, témakört vagy előfizetési ügyfelet, majd hozza létre újra a következő üzenet elküldésekor. Az üzenetküldési gyár bezárása törli a Service Bus szolgáltatáshoz való kapcsolódást. Új kapcsolódás jön létre a gyár újbóli létrehozásakor. A kapcsolatok létrehozása költséges művelet, amellyel elkerülhető, hogy a több művelethez ugyanazt a gyári és ügyféloldali objektumot használja. Ezeket az ügyféloldali objektumokat biztonságosan használhatja egyidejű aszinkron műveletekhez és több szálból is.
+Service Bus az ügyfélalkalmazások, például a vagy a implementációját, [`IQueueClient`][QueueClient] [`IMessageSender`][MessageSender] regisztrálni kell a függőségi injektáláshoz (vagy egyszeres és megosztott). Azt javasoljuk, hogy az üzenet elküldése után ne zárjunk be üzenetküldési gyárakat, üzenetsor-kezelést, témakört vagy előfizetési ügyfelet, majd hozza létre újra a következő üzenet elküldésekor. Az üzenetküldési gyár bezárása törli a Service Bus szolgáltatáshoz való kapcsolódást. Új kapcsolódás jön létre a gyár újbóli létrehozásakor. 
 
 # <a name="windowsazureservicebus-sdk"></a>[WindowsAzure. ServiceBus SDK](#tab/net-framework-sdk)
 
-Service Bus-objektumok, például `QueueClient` a vagy a `MessageSender` egy [MessagingFactory][MessagingFactory] objektumon keresztül jönnek létre, amely a kapcsolatok belső felügyeletét is biztosítja. Azt javasoljuk, hogy az üzenet elküldése után ne zárjunk be üzenetküldési gyárakat, üzenetsor-kezelést, témakört vagy előfizetési ügyfelet, majd hozza létre újra a következő üzenet elküldésekor. Az üzenetküldési gyár bezárása törli a Service Bus szolgáltatással létesített kapcsolódást, és a gyár újbóli létrehozásakor létrejön egy új csatlakozás. A kapcsolatok létrehozása költséges művelet, amellyel elkerülhető, hogy a több művelethez ugyanazt a gyári és ügyféloldali objektumot használja. Ezeket az ügyféloldali objektumokat biztonságosan használhatja egyidejű aszinkron műveletekhez és több szálból is.
+Service Bus-objektumok, például `QueueClient` a vagy a `MessageSender` egy [MessagingFactory][MessagingFactory] objektumon keresztül jönnek létre, amely a kapcsolatok belső felügyeletét is biztosítja. Azt javasoljuk, hogy az üzenet elküldése után ne zárjunk be üzenetküldési gyárakat, üzenetsor-kezelést, témakört vagy előfizetési ügyfelet, majd hozza létre újra a következő üzenet elküldésekor. Az üzenetküldési gyár bezárása törli a Service Bus szolgáltatással létesített kapcsolódást, és a gyár újbóli létrehozásakor létrejön egy új csatlakozás. 
 
 ---
+
+A következő Megjegyzés minden SDK-ra vonatkozik:
+
+> [!NOTE]
+> A kapcsolatok létrehozása költséges művelet, amellyel elkerülhető, hogy a több művelethez ugyanazt a gyári és ügyféloldali objektumot használja. Ezeket az ügyféloldali objektumokat biztonságosan használhatja egyidejű aszinkron műveletekhez és több szálból is.
 
 ## <a name="concurrent-operations"></a>Egyidejű műveletek
 Az olyan műveletek, mint a küldés, fogadás, törlés stb., eltarthat egy ideig. Ez az idő magában foglalja azt az időpontot, ameddig a Service Bus szolgáltatásnak a művelet feldolgozásához és a kérés késéséhez, valamint a válaszhoz kell kapcsolódnia. A műveletek másodpercenkénti számának növeléséhez a műveleteknek egyidejűleg kell futniuk.
