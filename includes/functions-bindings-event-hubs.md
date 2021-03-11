@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: b0f8055dcd8bdfb2ecb3ea99448838514eeb34f3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 05d136093bd509e8c23ce8622423216326b0f1f2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96027656"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102623398"
 ---
 ## <a name="add-to-your-functions-app"></a>Hozzáadás a functions-alkalmazáshoz
 
@@ -29,6 +29,26 @@ Az trigger és a kötések használata megköveteli, hogy a megfelelő csomagra 
 [Bővítmények frissítése]: ../articles/azure-functions/functions-bindings-register.md
 [Azure-eszközök bővítmény]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
+### <a name="event-hubs-extension-5x-and-higher"></a>Event Hubs 5. x vagy újabb bővítmény
+
+A Event Hubs kötések bővítmény új verziója érhető el előzetes verziójú NuGet- [csomagként](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs/5.0.0-beta.1). Ez az előzetes verzió azt mutatja be, hogy [titkos kód helyett identitás használatával tud csatlakozni](../articles/azure-functions/functions-reference.md#configure-an-identity-based-connection). A .NET-alkalmazások esetében az azt is megváltoztatja, hogy milyen típusú kötések hozhatók létre, a típusait az `Microsoft.Azure.EventHubs` [Azure. Messaging. EventHubs](/dotnet/api/azure.messaging.eventhubs)újabb típusaiból cserélje le.
+
+> [!NOTE]
+> Az előnézeti csomag nem szerepel a kiterjesztési csomagban, és manuálisan kell telepíteni. .NET-alkalmazások esetén adjon hozzá egy hivatkozást a csomaghoz. Az összes többi alkalmazás típusával kapcsolatban lásd: [bővítmények frissítése].
+
+[core tools]: ./functions-run-local.md
+[kiterjesztési csomag]: ./functions-bindings-register.md#extension-bundles
+[NuGet-csomag]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs/
+[Bővítmények frissítése]: ./functions-bindings-register.md
+[Azure-eszközök bővítmény]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
+
 ### <a name="functions-1x"></a>Functions 1.x
 
 A functions 1. x alkalmazások automatikusan hivatkoznak a [Microsoft. Azure. webjobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet-csomagra, 2. x verzióra.
+
+## <a name="hostjson-settings"></a>Beállítások host.js
+<a name="host-json"></a>
+
+A [host.js](../articles/azure-functions/functions-host-json.md#eventhub) fájl olyan beállításokat tartalmaz, amelyek a Event Hubs trigger viselkedését vezérlik. A konfiguráció a Azure Functions verziójától függően eltérő.
+
+[!INCLUDE [functions-host-json-event-hubs](../articles/azure-functions/../../includes/functions-host-json-event-hubs.md)]

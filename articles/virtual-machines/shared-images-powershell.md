@@ -3,18 +3,18 @@ title: Közös rendszerkép-katalógus létrehozása Azure PowerShell
 description: Ismerje meg, hogyan hozhat létre egy megosztott képtárat az Azure-ban a Azure PowerShell használatával
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: f36b1d75dc167faf555d9af4e3aabd5d83db264a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 877439ddba6ffaf2fd060c29f28c25c18694605d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882314"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555567"
 ---
 # <a name="create-a-shared-image-gallery-with-azure-powershell"></a>Közös rendszerkép-katalógus létrehozása Azure PowerShell 
 
@@ -32,7 +32,7 @@ A megosztott képkatalógus funkció több erőforrástípust is tartalmaz.
 [!INCLUDE [virtual-machines-common-shared-images-powershell](../../includes/virtual-machines-common-shared-images-powershell.md)]
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hozzon létre egy rendszerképet egy [virtuális](image-version-vm-powershell.md)gépről, egy [felügyelt rendszerképből](image-version-managed-image-powershell.md)vagy egy [másik gyűjteményből származó képpel](image-version-another-gallery-powershell.md).
 

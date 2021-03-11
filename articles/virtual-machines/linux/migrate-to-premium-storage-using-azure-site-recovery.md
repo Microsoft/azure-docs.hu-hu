@@ -2,17 +2,18 @@
 title: Linux rendszerű virtuális gépek migrálása az Azure Premium Storageba Azure Site Recovery
 description: Áttelepítheti a meglévő virtuális gépeket az Azure Premium Storageba Site Recovery használatával. A Premium Storage nagy teljesítményű, kis késleltetésű lemezes támogatást biztosít az Azure-Virtual Machines futó I/O-igényes számítási feladatokhoz.
 author: luywang
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 5f8f72ec296be3127a2f8c1ddc87d883d7e2deed
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 8a03637352762646b0f209263769dbdb1ff14b21
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102504575"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562622"
 ---
 # <a name="use-site-recovery-to-migrate-to-premium-storage"></a>A Site Recovery használatával váltson át Premium Storage
 

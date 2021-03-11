@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: a8f06ce08c0df4cc86afe6fbbe7eb12fd866e61c
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 39fe439e37b1af4e833396ef83205729af8c7ad3
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98743270"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102610415"
 ---
 # <a name="use-an-azure-powershell-command-to-create-an-empty-cloud-service-classic-container"></a>Üres Cloud Service-(klasszikus) tároló létrehozása Azure PowerShell parancs használatával
 
@@ -24,7 +24,7 @@ Ez a cikk azt ismerteti, hogyan hozhat létre gyorsan Cloud Services-tárolót A
 
 1. Telepítse a Microsoft Azure PowerShell parancsmagot a [Azure PowerShell letöltések](https://aka.ms/webpi-azps) lapról.
 2. Nyissa meg a PowerShell-parancssort.
-3. Jelentkezzen be az [Add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount?view=azuresmps-4.0.0&preserve-view=true) használatával.
+3. Jelentkezzen be az [Add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount) használatával.
 
    > [!NOTE]
    > Az Azure PowerShell parancsmag telepítésével és az Azure-előfizetéshez való csatlakozással kapcsolatos további útmutatásért tekintse meg a [Azure PowerShell telepítése és konfigurálása című témakört](/powershell/azure/).
@@ -49,7 +49,7 @@ Az Azure Cloud Service létrehozásával kapcsolatos további információkért 
 Get-help New-AzureService
 ```
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
-* A felhőalapú szolgáltatás központi telepítésének kezeléséhez tekintse meg a [Get-AzureService](/powershell/module/servicemanagement/azure.service/Get-AzureService?view=azuresmps-4.0.0&preserve-view=true), a [Remove-AzureService](/powershell/module/servicemanagement/azure.service/Remove-AzureService?view=azuresmps-4.0.0&preserve-view=true)és a [set-AzureService](/powershell/module/servicemanagement/azure.service/set-azureservice?view=azuresmps-4.0.0&preserve-view=true) parancsokat. További információért tekintse meg a [Cloud Services konfigurálását](cloud-services-how-to-configure-portal.md) is.
+* A felhőalapú szolgáltatás központi telepítésének kezeléséhez tekintse meg a [Get-AzureService](/powershell/module/servicemanagement/azure.service/Get-AzureService), a [Remove-AzureService](/powershell/module/servicemanagement/azure.service/Remove-AzureService)és a [set-AzureService](/powershell/module/servicemanagement/azure.service/set-azureservice) parancsokat. További információért tekintse meg a [Cloud Services konfigurálását](cloud-services-how-to-configure-portal.md) is.
 * Ha közzé szeretné tenni a Cloud Service-projektet az Azure-ban, tekintse meg az [archivált Cloud Services-tárház](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Scripts/cloud-services-continuous-delivery) **PublishCloudService.ps1** kód mintáját.

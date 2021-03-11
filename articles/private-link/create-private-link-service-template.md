@@ -1,19 +1,19 @@
 ---
-title: Privát link szolgáltatás létrehozása az Azure Private linkben
+title: 'Rövid útmutató: privát link szolgáltatás létrehozása az Azure Private linkben'
 description: Ebben a rövid útmutatóban egy Azure Resource Manager sablont (ARM-sablont) használ egy privát kapcsolati szolgáltatás létrehozásához.
 services: private-link
-author: mblanco77
+author: asudbring
 ms.service: private-link
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/29/2020
 ms.author: allensu
-ms.openlocfilehash: dce80d70af7cd711cf852a60b98ad65b6d21117f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 34993ad3d3d0494f89bd264a8b7194f52129ad7c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88705248"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555057"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-an-arm-template"></a>Rövid útmutató: privát hivatkozási szolgáltatás létrehozása ARM-sablonnal
 
@@ -60,7 +60,7 @@ Az ARM-sablon üzembe helyezése az Azure-ban:
 
 2. Válassza ki vagy hozza létre az erőforráscsoportot.
 3. Írja be a virtuális gép rendszergazdai felhasználónevét és jelszavát.
-4. Olvassa el a feltételek és kikötések utasítást. Ha elfogadja, jelölje be az Elfogadom a vásárláskor **megjelenő feltételeket és kikötéseket**  >  **Purchase**.
+4. Olvassa el a feltételek és kikötések utasítást. Ha elfogadja, jelölje be az Elfogadom a vásárláskor **megjelenő feltételeket és kikötéseket**  >  .
 
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 
@@ -73,7 +73,7 @@ Kapcsolódjon a _(z) {UniqueID}_ virtuális gép myConsumerVm az internetről a 
 
 1.  A portál keresősáv mezőjébe írja be a _myConsumerVm {UniqueID}_ értéket.
 
-2.  Kattintson a **Csatlakozás** gombra. Megnyílik **a virtuális géphez való kapcsolódás** .
+2.  Válassza a **Kapcsolódás** lehetőséget. Megnyílik **a virtuális géphez való kapcsolódás** .
 
 3.  Válassza az **RDP-fájl letöltése** lehetőséget. Az Azure létrehoz egy RDP protokoll (_. rdp_) fájlt, és letölti a számítógépre.
 
@@ -84,7 +84,7 @@ Kapcsolódjon a _(z) {UniqueID}_ virtuális gép myConsumerVm az internetről a 
     b. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
     
     > [!NOTE]
-    > Előfordulhat, hogy a **More choices**  >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania**egy másik fiók használatával**.
+    > Előfordulhat, hogy a   >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania **egy másik fiók használatával**.
 
 5.  Válassza az **OK** lehetőséget.
 
@@ -110,6 +110,9 @@ Az erőforráscsoport törléséhez hívja meg a következő `Remove-AzResourceG
 Remove-AzResourceGroup -Name <your resource group name>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információ az [Azure Private linkről](private-link-overview.md).
+
+A privát végpontot támogató szolgáltatásokkal kapcsolatos további információkért lásd:
+> [!div class="nextstepaction"]
+> [Privát kapcsolat elérhetősége](private-link-overview.md#availability)

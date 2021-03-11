@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: ddfca965ea32ca726df39f894ba45f9580225d9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3300d68c6356cb7cdd56a9ad79eb0ac011942eb2
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542461"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547900"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Entitás-felismerés – kognitív képesség
 
@@ -53,7 +53,7 @@ A paraméterek megkülönböztetik a kis-és nagybetűket, és mindegyik nem kö
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
 
 > [!NOTE]
-> Az entitások összes kategóriája nem támogatott az összes nyelv esetében. A `"Person"` , a `"Location"` és az `"Organization"` Entity kategóriájú típusok a fenti nyelvek teljes listáját támogatják. Csak a _de_, az _en_, az _es_, a _fr_és a _zh-Hans_ támogatás támogatja a,, `"Quantity"` `"Datetime"` `"URL"` és `"Email"` típus kinyerését. További információ: [a Text Analytics API nyelv és régió támogatása](../cognitive-services/text-analytics/language-support.md).  
+> Az entitások összes kategóriája nem támogatott az összes nyelv esetében. A `"Person"` , a `"Location"` és az `"Organization"` Entity kategóriájú típusok a fenti nyelvek teljes listáját támogatják. Csak a _de_, az _en_, az _es_, a _fr_ és a _zh-Hans_ támogatás támogatja a,, `"Quantity"` `"Datetime"` `"URL"` és `"Email"` típus kinyerését. További információ: [a Text Analytics API nyelv és régió támogatása](../cognitive-services/text-analytics/language-support.md).  
 
 | Kimenet neve      | Leírás                   |
 |---------------|-------------------------------|
@@ -189,8 +189,8 @@ A paraméterek megkülönböztetik a kis-és nagybetűket, és mindegyik nem kö
 
 Vegye figyelembe, hogy a szakértelem kimenetében lévő entitások által visszaadott eltolásokat a rendszer közvetlenül visszaadja a [text Analytics APIból](../cognitive-services/text-analytics/overview.md), ami azt jelenti, hogy ha az eredeti sztring indexbe való indexelését használja, akkor a [StringInfo](/dotnet/api/system.globalization.stringinfo) osztályt a .net-ben kell használnia a megfelelő tartalom kinyeréséhez.  [További részleteket itt találhat.](../cognitive-services/text-analytics/concepts/text-offsets.md)
 
-## <a name="error-cases"></a>Hibák esetei
-Ha a dokumentumhoz tartozó nyelvi kód nem támogatott, a rendszer hibát ad vissza, és egyetlen entitás sincs kibontva.
+## <a name="warning-cases"></a>Figyelmeztető esetek
+Ha a dokumentumhoz tartozó nyelvi kód nem támogatott, a rendszer figyelmeztetést ad vissza, és egyetlen entitás sincs kibontva.
 
 ## <a name="see-also"></a>Lásd még
 

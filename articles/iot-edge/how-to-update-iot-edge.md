@@ -9,12 +9,12 @@ ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9c311826c2b17f8e9f95d1ef31980922154635b9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: db809807f0494b8510ba7eb71c742a7a7631f97e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042317"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609583"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Az IoT Edge biztonsági démon és futtatókörnyezet frissítése
 
@@ -120,8 +120,9 @@ Ha a IoT Edge legújabb verziójára szeretne frissíteni, használja a követke
 # <a name="windows"></a>[Windows](#tab/windows)
 
 <!-- 1.1 -->
-:::moniker range="iotedge-2018-06"
-A Windows rendszeren futó Linux-IoT Edge esetén a IoT Edge egy Windows-eszközön üzemeltetett linuxos virtuális gépen fut. Ez a virtuális gép előre telepítve van a IoT Edgeval, és a Microsoft Update kezeli az összetevők naprakészen tartásához. Jelenleg nincsenek elérhető frissítések.
+::: moniker range="iotedge-2018-06"
+
+A Windows rendszeren futó Linux-IoT Edge esetén a IoT Edge egy Windows-eszközön üzemeltetett linuxos virtuális gépen fut. Ez a virtuális gép előre telepítve van a IoT Edgeval, és a Microsoft Update kezeli az összetevők naprakészen tartásához. Ha engedélyezve vannak az automatikus frissítések, a rendszer minden alkalommal letölti és telepíti az új frissítéseket, amikor azok elérhetővé válnak.
 
 A Windows IoT Edge a IoT Edge közvetlenül a Windows-eszközön fut. A PowerShell-parancsfájlok használatával kapcsolatos frissítési utasításokért lásd: [Azure IoT Edge telepítése és kezelése a Windows](how-to-install-iot-edge-windows-on-windows.md)rendszerhez.
 :::moniker-end

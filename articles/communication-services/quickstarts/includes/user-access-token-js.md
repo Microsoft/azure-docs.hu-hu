@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 4298c10d6344a1b0173a2ea79aeba9b8bbfffe4c
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 2726be7b137b511795d92c62174158f33108cad9
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102511116"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102623212"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -136,11 +136,11 @@ A hozzáférési jogkivonatok olyan rövid élettartamú hitelesítő adatok, am
 
 ## <a name="create-an-identity-and-issue-an-access-token-within-the-same-request"></a>Identitás létrehozása és hozzáférési jogkivonat kiadása ugyanazon a kérésen belül
 
-A `createUserWithToken` metódus használatával hozzon létre egy kommunikációs szolgáltatások identitását, és adja meg a hozzá tartozó hozzáférési jogkivonatot. A paraméter olyan `scopes` primitívek készletét határozza meg, amelyek engedélyezik ezt a hozzáférési jogkivonatot. Tekintse meg a [támogatott műveletek listáját](../../concepts/authentication.md).
+A `createUserAndToken` metódus használatával hozzon létre egy kommunikációs szolgáltatások identitását, és adja meg a hozzá tartozó hozzáférési jogkivonatot. A paraméter olyan `scopes` primitívek készletét határozza meg, amelyek engedélyezik ezt a hozzáférési jogkivonatot. Tekintse meg a [támogatott műveletek listáját](../../concepts/authentication.md).
 
 ```javascript
 // Issue an identity and an access token with the "voip" scope for the new identity
-let identityTokenResponse = await this.client.createUserWithToken(["voip"]);
+let identityTokenResponse = await this.client.createUserAndToken(["voip"]);
 const { token, expiresOn, user } = identityTokenResponse;
 console.log(`\nCreated an identity with ID: ${user.communicationUserId}`);
 console.log(`\nIssued an access token with 'voip' scope that expires at ${expiresOn}:`);

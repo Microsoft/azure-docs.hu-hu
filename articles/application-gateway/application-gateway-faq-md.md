@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 90c20c1f463cf5143460510b9a409ad5ed3ba9f7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 83779dcd319614ae15de6b7e3e4e3abfd9599089
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576134"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102619154"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -21,7 +21,7 @@ ms.locfileid: "100576134"
 
 Az alábbi gyakori kérdések az Azure Application Gateway.
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="what-is-application-gateway"></a>Mi az Application Gateway?
 
@@ -470,9 +470,9 @@ Olyan Resource Manager-sablont is használhat, amely a népszerű [GoAccess](htt
 
 A platform jelenlegi korlátai miatt, ha a Application Gateway v2 (Standard_v2, WAF_v2) alhálózaton van egy NSG, és ha engedélyezte a NSG flow-naplókat, akkor a determinált viselkedést láthatja, és ez a forgatókönyv jelenleg nem támogatott.
 
-### <a name="does-application-gateway-store-customer-data"></a>A Application Gateway tárolja az ügyféladatokat?
+### <a name="where-does-application-gateway-store-customer-data"></a>Hol tárolja Application Gateway az ügyféladatokat?
 
-Nem, Application Gateway nem tárolja az ügyféladatokat.
+Application Gateway nem helyezi át és nem tárolja az ügyféladatokat a-ben üzembe helyezett régióból.
 
 ## <a name="next-steps"></a>Következő lépések
 

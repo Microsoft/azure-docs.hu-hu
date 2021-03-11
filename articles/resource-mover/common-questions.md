@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: conceptual
-ms.date: 02/04/2021
+ms.date: 02/21/2021
 ms.author: raynew
-ms.openlocfilehash: a75cd3c5dbf205f49aa606bfe96623a61bce39db
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: e900250aea84b4a9c9112fa54632a2be8b9cb49c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007056"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564271"
 ---
 # <a name="common-questions"></a>Gyakori kérdések
 
@@ -24,6 +24,15 @@ Ez a cikk az Azure- [erőforrás-mozgatóval](overview.md)kapcsolatos gyakori k�
 ### <a name="can-i-move-resources-across-any-regions"></a>Helyezhetek át erőforrásokat bármely régióban?
 
 Jelenleg az [adott régióban elérhető erőforrástípusok](https://azure.microsoft.com/global-infrastructure/services/)függvényében bármely forrás nyilvános régióból áthelyezheti az erőforrásokat a cél nyilvános régióba. A Azure Government-régiók erőforrásainak áthelyezése jelenleg nem támogatott.
+
+### <a name="what-regions-are-currently-supported"></a>Jelenleg milyen régiók támogatottak?
+
+Az Azure-erőforrás-mozgató jelenleg a következőképpen érhető el:
+
+**Támogatás** | **Részletek**
+--- | ---
+Támogatás áthelyezése | Az erőforrás-mozgató áthelyezéssel támogatott Azure-erőforrások bármely nyilvános régióból egy másik nyilvános régióba helyezhetők át.
+Metaadatok támogatása |  Az áthelyezni kívánt gépek metaadatait tároló támogatott régiók közé tartoznak a következők: Kelet-RÉGIÓJA, Észak-Európa, Délkelet-Ázsia, Kelet-Japán, Egyesült Királyság déli régiója és Kelet-Ausztrália metaadat-régiókként. <br/><br/> Az Azure China régión belüli erőforrások áthelyezését a kínai North2 metaadat-régiója is támogatja.
 
 ### <a name="what-resources-can-i-move-across-regions-using-resource-mover"></a>Milyen erőforrásokat helyezhetek át a régiók között az erőforrás-mozgató használatával?
 
@@ -44,15 +53,14 @@ A lemezek nem választhatók ki erőforrásként az áthelyezett régiók közö
 
 ### <a name="what-does-it-mean-to-move-a-resource-group"></a>Mit jelent az erőforráscsoport áthelyezése?
 
-Ha erőforrás van kiválasztva áthelyezésre, a rendszer automatikusan hozzáadja a megfelelő erőforráscsoportot az áthelyezéshez. Erre azért van szükség, mert a cél erőforrást egy olyan erőforráscsoport alá kell helyezni, mint a cél. Kiválaszthatja, hogy testreszabja és megadja a meglévő erőforráscsoportot, ha az áthelyezéshez hozzá lett adva. Vegye figyelembe, hogy az erőforráscsoport áthelyezése **nem** jelenti azt, hogy a forrás erőforráscsoport összes erőforrása át lesz helyezve.
+Ha erőforrás van kiválasztva áthelyezésre, a rendszer automatikusan hozzáadja a megfelelő erőforráscsoportot a mozgatáshoz. Ez azt eredményezi, hogy a cél erőforrás egy erőforráscsoporthoz helyezhető. Választhat, hogy testreszabja és megadja a meglévő erőforráscsoportot, miután hozzáadta az áthelyezéshez. Egy erőforráscsoport áthelyezése nem jelenti azt, hogy a forrás erőforráscsoport összes erőforrása át lesz helyezve.
 
 ### <a name="can-i-move-resources-across-subscriptions-when-i-move-them-across-regions"></a>Át lehet helyezni az erőforrásokat az előfizetések között, amikor áthelyezem őket a régiók között?
 
 Az erőforrásoknak a célhelyre való áthelyezése után módosíthatja az előfizetést. [További](../azure-resource-manager/management/move-resource-group-and-subscription.md) információ az erőforrások másik előfizetésre való áthelyezéséről. 
 
-### <a name="does-azure-resource-move-service-store-customer-data"></a>Az Azure erőforrás-áthelyezési szolgáltatás tárolja az ügyféladatokat? 
-Nem. Az erőforrás-áthelyezési szolgáltatás nem tárolja az ügyféladatokat, csak azokat a metaadatokat tárolja, amelyek megkönnyítik az ügyfél általi áthelyezésre kiválasztott erőforrások nyomon követését és előrehaladását.
-
+### <a name="does-azure-resource-mover-store-customer-data"></a>Az Azure-erőforrás-továbbítás tárolja az ügyféladatokat? 
+Nem. Az erőforrás-mozgató szolgáltatás nem tárolja az ügyféladatokat, csak azokat a metaadat-információkat tárolja, amelyek megkönnyítik az áthelyezett erőforrások nyomon követését és előrehaladását.
 
 ### <a name="where-is-the-metadata-for-moving-across-regions-stored"></a>Hol találhatók a metaadatok a tárolt régiók között?
 
@@ -85,14 +93,16 @@ Amikor erőforrásokat ad hozzá a Resource Mover hubhoz a portálon, az engedé
 > [!IMPORTANT]
 > Kifejezetten azt javasoljuk, hogy ne módosítsa vagy távolítsa el az identitás szerepkör-hozzárendeléseit. 
 
-### <a name="what-should-i-do-if-i-dont-have-permissions-to-assign-role-identity"></a>Mi a teendő, ha nincs engedélye a szerepkör-identitás hozzárendelésére?
+### <a name="what-if-i-dont-have-permissions-to-assign-role-identity"></a>Mi a teendő, ha nincs engedélye a szerepkör-identitás hozzárendelésére?
+
+Több oka is lehet, hogy nincs engedélye.
 
 **Lehetséges ok** | **Ajánlás**
 --- | ---
 Ha első alkalommal ad hozzá egy erőforrást, Ön nem *közreműködő* és *felhasználói hozzáférésű rendszergazda* (vagy *tulajdonos*). | Az előfizetéshez tartozó *közreműködői* és *felhasználói hozzáférési rendszergazdai* (vagy *tulajdonosi*) engedélyekkel rendelkező fiókot használjon.
 Az erőforrás-mozgató felügyelt identitás nem rendelkezik a szükséges szerepkörrel. | Adja hozzá a közreműködő és a felhasználói hozzáférés rendszergazdai szerepkört.
-Az erőforrás-mozgató felügyelt identitás *none* értékre lett visszaállítva. | Egy rendszerhez rendelt identitás újraengedélyezése a gyűjtemény áthelyezése > **identitásban**. Azt is megteheti, hogy újra hozzáadja az erőforrást a **Hozzáadás erőforrásokhoz**, ami ugyanezt teszi.  
-Az előfizetés átkerült egy másik bérlőre. | Tiltsa le, majd engedélyezze a felügyelt identitást az áthelyezési gyűjtemény számára.
+Az erőforrás-mozgató felügyelt identitás *none* értékre lett állítva. | Egy rendszerhez rendelt identitás újraengedélyezése a gyűjtemény beállításainak áthelyezése > **identitásban**. Másik megoldásként az **erőforrások hozzáadása** lehetőséggel adja hozzá újra az erőforrást, amely ugyanezt teszi.  
+Az előfizetés egy másik bérlőhöz lett áthelyezve. | Tiltsa le, majd engedélyezze a felügyelt identitást az áthelyezési gyűjtemény számára.
 
 ### <a name="how-can-i-do-multiple-moves-together"></a>Hogyan végezhetek együtt több lépést?
 
@@ -100,7 +110,7 @@ Szükség szerint módosítsa a forrás-és a cél kombinációt a portálon a m
 
 ### <a name="what-happens-when-i-remove-a-resource-from-a-list-of-move-resources"></a>Mi történik, ha eltávolítok egy erőforrást az áthelyezési erőforrások listájából?
 
-Eltávolíthatja az áthelyezési listához hozzáadott erőforrásokat. Ha az erőforrást a listából távolítja el, az erőforrás állapotától függ. [További információ](remove-move-resources.md#vm-resource-state-after-removing).
+Eltávolíthatja az áthelyezési listához hozzáadott erőforrásokat. A pontos eltávolítási viselkedés az erőforrás állapotától függ. [További információk](remove-move-resources.md#vm-resource-state-after-removing).
 
 
 

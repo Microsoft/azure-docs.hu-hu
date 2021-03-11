@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan forgathatja el a tanúsítványokat egy Azure K
 services: container-service
 ms.topic: article
 ms.date: 11/15/2019
-ms.openlocfilehash: 1871a8deed4d189534915a9b46b6ace071c1126c
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: fa26762c54ad54835b174b8d814a2e77cb38b885
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181771"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102619035"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Tanúsítványok elforgatása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -28,8 +28,6 @@ Az AK a következő tanúsítványokat, hitelesítésszolgáltatókat és szolg�
 * Az AK API-kiszolgáló létrehoz egy, a fürt HITELESÍTÉSSZOLGÁLTATÓjának nevezett hitelesítésszolgáltatót (CA).
 * Az API-kiszolgáló rendelkezik egy fürt HITELESÍTÉSSZOLGÁLTATÓval, amely az API-kiszolgáló és a kubelets közötti egyirányú kommunikációhoz tartozó tanúsítványokat aláírja.
 * Minden kubelet létrehoz egy tanúsítvány-aláírási kérelmet (CSR) is, amelyet a fürt HITELESÍTÉSSZOLGÁLTATÓja aláír a kubelet és az API-kiszolgáló közötti kommunikációhoz.
-* A etcd a etcd és az API-kiszolgáló közötti kommunikációhoz a fürt HITELESÍTÉSSZOLGÁLTATÓja aláírja a tanúsítványt.
-* A etcd kulcs értéke tároló olyan HITELESÍTÉSSZOLGÁLTATÓT hoz létre, amely aláírja a tanúsítványokat, és engedélyezi az adatreplikációt a etcd-replikák között az AK-fürtben.
 * Az API-gyűjtő a fürt HITELESÍTÉSSZOLGÁLTATÓját használja a más API-kkal való kommunikációhoz szükséges tanúsítványok kiállítására. Az API-gyűjtő rendelkezhet saját HITELESÍTÉSSZOLGÁLTATÓval is a tanúsítványok kiállításához, de jelenleg a fürt HITELESÍTÉSSZOLGÁLTATÓját használja.
 * Mindegyik csomópont egy szolgáltatásfiók-(SA-) tokent használ, amelyet a fürt HITELESÍTÉSSZOLGÁLTATÓja aláír.
 * Az `kubectl` ügyfél rendelkezik egy tanúsítvánnyal az AK-fürttel való kommunikációhoz.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/12/2019
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: f783245b17a880a67b62aa24a3feabb9b113053b
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 93bfb515c46413400ecd47105de378c7b677cecd
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102122255"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564958"
 ---
 ## <a name="prepare-your-repository"></a>A tárház előkészítése
 
@@ -34,6 +34,6 @@ Azure App Service Build-kiszolgálóról származó automatizált buildek beszer
 A központi telepítés testreszabásához vegyen fel egy *. Deployment* fájlt az adattár gyökerébe. További információ: a [központi telepítések](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) és az [egyéni telepítési parancsfájlok](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)testreszabása.
 
 > [!NOTE]
-> Ha a Visual Studióban fejleszti a fejlesztést, [a Visual Studio létrehoz egy tárházat](/azure/devops/repos/git/creatingrepo?view=vsts&tabs=visual-studio&preserve-view=true). A projekt azonnal készen áll a git használatával történő üzembe helyezésre.
+> Ha a Visual Studióban fejleszti a fejlesztést, [a Visual Studio létrehoz egy tárházat](/azure/devops/repos/git/creatingrepo?tabs=visual-studio). A projekt azonnal készen áll a git használatával történő üzembe helyezésre.
 >
 

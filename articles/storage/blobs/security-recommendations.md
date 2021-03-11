@@ -7,19 +7,19 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 03/01/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 5653b59ed29495334079e932fb305fd4ba10475c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 40067815ad582191606ad5a53cf06c9584d83350
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592349"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618015"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Biztonsági javaslatok a blob Storage-hoz
 
-Ez a cikk a blob Storage szolgáltatással kapcsolatos biztonsági javaslatokat tartalmaz. A javaslatok megvalósítása a közös felelősségi modellben leírtaknak megfelelően segíti a biztonsági kötelezettségek teljesítését. Ha többet szeretne megtudni arról, hogyan teljesíti a Microsoft a szolgáltatói feladatokat, olvassa el a [megosztott felelősségek a felhőalapú számítástechnika](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225366/1/Shared%20Responsibility%20for%20Cloud%20Computing-2019-10-25.pdf)terén című témakört.
+Ez a cikk a blob Storage szolgáltatással kapcsolatos biztonsági javaslatokat tartalmaz. A javaslatok megvalósítása a közös felelősségi modellben leírtaknak megfelelően segíti a biztonsági kötelezettségek teljesítését. További információ arról, hogy a Microsoft hogyan teljesíti a szolgáltatói feladatokat: [megosztott felelősség a felhőben](/azure/security/fundamentals/shared-responsibility).
 
 A cikkben szereplő ajánlások némelyikét a Azure Security Center automatikusan nyomon követheti. A Azure Security Center az Azure-beli erőforrások védelmének első védelmi vonala. További információ a Azure Security Centerről: [Mi az Azure Security Center?](../../security-center/security-center-introduction.md)
 
@@ -33,7 +33,7 @@ Azure Security Center rendszeresen elemzi az Azure-erőforrások biztonsági ál
 | Az Azure Defender engedélyezése az összes Storage-fiókhoz | Az Azure Defender for Azure Storage egy további biztonsági intelligenciát biztosít, amely szokatlan és potenciálisan ártalmas kísérleteket észlel a Storage-fiókok eléréséhez vagy kiaknázásához. A biztonsági riasztások Azure Security Center, ha a tevékenységben észlelt rendellenességek bekövetkeznek, és e-mailben is elküldik az előfizetési rendszergazdáknak, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálására és elhárítására vonatkozó javaslatokkal kapcsolatban. További információ: az [Azure Defender konfigurálása az Azure Storage](../common/azure-defender-storage-configure.md)-hoz. | [Igen](../../security-center/security-center-remediate-recommendations.md) |
 | Áltörlés bekapcsolása a blobokhoz | A Blobok helyreállítható törlésével a blob-adatok helyreállíthatók a törlés után. A Blobok Soft delete szolgáltatásával kapcsolatos további információkért lásd az [Azure Storage-Blobok helyreállítható törlését](./soft-delete-blob-overview.md)ismertető témakört. | - |
 | A tárolók helyreállítható törlésének bekapcsolása | A tárolók helyreállítható törlése lehetővé teszi a tárolók helyreállítását a törlése után. A tárolók Soft delete szolgáltatásával kapcsolatos további információkért lásd: [tárolók helyreállítható törlése (előzetes verzió)](./soft-delete-container-overview.md). | - |
-| Storage-fiók zárolása a fiókok véletlen törlésének megakadályozása érdekében | Zárolhat egy Azure Resource Manager erőforrást, például egy előfizetést, egy erőforráscsoportot vagy egy Storage-fiókot, hogy megakadályozza a szervezet más felhasználói számára a véletlen törlést vagy módosítást. A Storage-fiók zárolása nem akadályozza meg, hogy a fiókban lévő adatok ne legyenek törölve. Ez csak a fiók törlését akadályozza meg. További információ: [erőforrások zárolása a váratlan változások megelőzése érdekében](../../azure-resource-manager/management/lock-resources.md).
+| A Storage-fiók zárolásával megakadályozhatja a véletlen vagy rosszindulatú törlési vagy konfigurációs módosításokat | Alkalmazzon egy Azure Resource Manager zárolást a Storage-fiókjába, hogy megvédje a fiókot a véletlen vagy rosszindulatú törlés vagy a konfiguráció módosítása után. A Storage-fiók zárolása nem akadályozza meg, hogy a fiókban lévő adatok ne legyenek törölve. Ez csak a fiók törlését akadályozza meg. További információ: [Azure Resource Manager zárolás alkalmazása egy Storage-fiókra](../common/lock-account-resource.md).
 | Üzleti szempontból kritikus fontosságú adathalmazok tárolása a nem változtatható blobokban | A jogcímek és az időalapú adatmegőrzési szabályzatok konfigurálása a blob-adatok féreg általi tárolására (egyszer írható, olvasható) állapot. A immutably tárolt Blobok olvashatók, de a megőrzési időtartam időtartama alatt nem módosíthatók és nem törölhetők. További információ: [az üzleti szempontból kritikus fontosságú Blobok adatainak tárolása a](storage-blob-immutable-storage.md)nem módosítható tárolóval. | - |
 | Biztonságos átvitel (HTTPS) szükséges a Storage-fiókhoz | Ha biztonságos átvitelre van szükség egy Storage-fiókhoz, a Storage-fiókra irányuló összes kérelmet HTTPS-kapcsolaton keresztül kell elvégezni. A HTTP-n keresztül küldött kérelmeket a rendszer elutasítja. A Microsoft azt javasolja, hogy minden Storage-fiókhoz mindig biztonságos átvitelt igényeljen. További információ: [biztonságos átvitel megkövetelése a biztonságos kapcsolatok biztosításához](../common/storage-require-secure-transfer.md). | - |
 | Közös hozzáférésű aláírási (SAS-) tokenek korlátozása csak HTTPS-kapcsolatokra | HTTPS megkövetelése, ha az ügyfél SAS-jogkivonattal fér hozzá a blob-adatforgalomhoz, segít csökkenteni a lehallgatás kockázatát. További információ: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](../common/storage-sas-overview.md). | - |
@@ -53,7 +53,7 @@ Azure Security Center rendszeresen elemzi az Azure-erőforrások biztonsági ál
 | Ha egy szolgáltatás SAS-je nem egy tárolt hozzáférési szabályzathoz van társítva, akkor a lejárati időt állítsa egy órára vagy kevesebbre. | Nem lehet visszavonni egy olyan szolgáltatáshoz tartozó SAS-t, amely nincs hozzárendelve egy tárolt hozzáférési szabályzathoz. Emiatt a lejárati időt úgy kell korlátozni, hogy az SAS egy órán vagy kevesebb ideig érvényes legyen. | - |
 | Névtelen nyilvános olvasási hozzáférés letiltása a tárolók és a Blobok számára | A névtelen nyilvános olvasási hozzáférés egy tárolóhoz és a Blobok csak olvasási hozzáférést biztosítanak ezekhez az erőforrásokhoz bármely ügyfél számára. Kerülje a nyilvános olvasási hozzáférés engedélyezését, ha a forgatókönyv megköveteli. Ha meg szeretné tudni, hogyan tilthatja le a névtelen nyilvános hozzáférést egy Storage-fiókhoz, olvassa el a [Névtelen nyilvános olvasási hozzáférés beállítása tárolók és Blobok](anonymous-read-access-configure.md)számára című témakört.  | - |
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 | Ajánlás | Megjegyzések | Security Center |
 |-|----|--|

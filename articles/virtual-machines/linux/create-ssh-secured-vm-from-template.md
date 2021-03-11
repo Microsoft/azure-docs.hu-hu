@@ -2,16 +2,17 @@
 title: Linuxos virtuális gép létrehozása az Azure-ban sablon alapján
 description: Linux rendszerű virtuális gép létrehozása Resource Manager-sablonból az Azure CLI használatával
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 184e856636a74ce5b7ac72b2e8cab3d1f19c4e17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a4e1bf56df52717255d2bae0a38186335d922ff1
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89074389"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554683"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Linuxos virtuális gép létrehozása Azure Resource Manager-sablonokkal
 
@@ -32,11 +33,11 @@ Az Azure-beli virtuális gépek létrehozása általában két lépést tartalma
 1. Hozzon létre egy erőforráscsoportot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Az erőforráscsoportot még a virtuális gép létrejötte előtt létre kell hozni.
 1. Virtuális gépet hoz létre.
 
-Az alábbi példa egy virtuális gépet hoz létre egy [Azure Gyorsindítás sablonból](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json). Ehhez a központi telepítéshez csak SSH-hitelesítés engedélyezett. Ha a rendszer kéri, adja meg saját nyilvános SSH-kulcsának értékét, például a *~/.ssh/id_rsa. pub*tartalmát. Ha létre kell hoznia egy SSH-kulcspárt, tekintse meg a Linux rendszerű [virtuális gépekhez készült SSH-kulcspár létrehozása és használata az Azure-ban](mac-create-ssh-keys.md)című témakört. A sablon egy másolata:
+Az alábbi példa egy virtuális gépet hoz létre egy [Azure Gyorsindítás sablonból](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json). Ehhez a központi telepítéshez csak SSH-hitelesítés engedélyezett. Ha a rendszer kéri, adja meg saját nyilvános SSH-kulcsának értékét, például a *~/.ssh/id_rsa. pub* tartalmát. Ha létre kell hoznia egy SSH-kulcspárt, tekintse meg a Linux rendszerű [virtuális gépekhez készült SSH-kulcspár létrehozása és használata az Azure-ban](mac-create-ssh-keys.md)című témakört. A sablon egy másolata:
 
 [!code-json[create-linux-vm](~/quickstart-templates/101-vm-sshkey/azuredeploy.json)]
 
-A CLI-szkript futtatásához válassza a **kipróbálás** lehetőséget az Azure Cloud Shell megnyitásához. A szkript beillesztéséhez kattintson a jobb gombbal a rendszerhéjra, majd válassza a **Beillesztés**parancsot:
+A CLI-szkript futtatásához válassza a **kipróbálás** lehetőséget az Azure Cloud Shell megnyitásához. A szkript beillesztéséhez kattintson a jobb gombbal a rendszerhéjra, majd válassza a **Beillesztés** parancsot:
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -82,4 +83,4 @@ A sablonok létrehozásával kapcsolatos további tudnivalókért tekintse meg a
 - [Microsoft. Network/nyilvános IP](/azure/templates/microsoft.network/publicipaddresses)
 - [Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
 - [Microsoft. Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
-- [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)
+- [Microsoft. számítás/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)

@@ -10,12 +10,12 @@ ms.date: 03/03/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4e6dac1ab7350caeb29e23b21eace433568b38ea
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: da869091fb1f7bf31a29ba1bc6db8c1c42254dc4
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102031633"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618083"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>Időponthoz való visszaállítás a blokk Blobok esetében
 
@@ -47,7 +47,7 @@ A **blob-tartományok visszaállítása** művelet egy visszaállítási azonos�
 > A másodlagos hely olvasási műveletei a visszaállítási művelet során folytatódnak, ha a Storage-fiók földrajzilag replikálódik.
 
 > [!CAUTION]
-> Az időponthoz való visszaállítás támogatja a csak blokkos Blobok műveleteinek visszaállítását. A tárolók műveletei nem állíthatók vissza. Ha töröl egy tárolót a Storage-fiókból a [tároló törlése](/rest/api/storageservices/delete-container) művelet meghívásával, a tároló nem állítható vissza visszaállítási művelettel. A teljes tároló törlése helyett törölje az egyes blobokat, ha később szeretné visszaállítani őket.
+> Az időponthoz való visszaállítás támogatja a csak blokk blobokon végrehajtott műveletek elleni visszaállítást. A tárolón végrehajtott műveletek nem állíthatók vissza. Ha például töröl egy tárolót a Storage-fiókból a tároló [törlése](/rest/api/storageservices/delete-container) művelet meghívásával, a tároló nem állítható vissza időponthoz kapcsolódó visszaállítási művelettel. A teljes tároló törlése helyett törölje az egyes blobokat, ha később szeretné visszaállítani őket.
 
 ### <a name="prerequisites-for-point-in-time-restore"></a>Az időponthoz tartozó visszaállítás előfeltételei
 

@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.author: dylankil
 ms.custom: devx-track-js
-ms.openlocfilehash: e29aff97d510dfed178e32aa319e5cb51ae9786c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fa28d5779c05af615479e3143713badb7842f6c6
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91377231"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102619224"
 ---
 A teljes körűen kialakított [olvasó](https://www.onenote.com/learningtools) egy kipróbált eljárás, amely az új olvasók, a nyelvi tanulók és a tanulással kapcsolatos különbségeket, például a diszlexiat is javítja. Az alkalmazásokban magával ragadó olvasóval elkülönítheti a szöveget a fókusz növeléséhez, képeket jeleníthet meg a gyakran használt szavakhoz, kiemelheti a beszéd részeit, beolvashatja a kijelölt szöveget hangosan, lefordíthatja a szavakat és kifejezéseket valós időben, és így tovább.
 
@@ -36,7 +36,7 @@ Ebben a rövid útmutatóban egy Android-alkalmazást hozhat létre a semmiből,
 
 ![Új projekt – Kotlin](../../media/android/kotlin/android-studio-create-project.png)
 
-A **projekt kiválasztása** ablakban válassza az **üres tevékenység**elemet, majd kattintson a **tovább**gombra.
+A **projekt kiválasztása** ablakban válassza az **üres tevékenység** elemet, majd kattintson a **tovább** gombra.
 
 ![Üres tevékenység projekt – Kotlin](../../media/android/kotlin/android-studio-empty-activity.png)
 
@@ -611,6 +611,7 @@ A Android Studio használatával futtathatja az alkalmazást egy eszköz-emulát
 
 ![Lebilincselő olvasó – Kotlin](../../media/android/kotlin/android-studio-device-emulator.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Fedezze fel az [olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -t és a [magára ejtő olvasó SDK-referenciát](../../reference.md).
+> [!div class="nextstepaction"]
+> [Erőforrás létrehozása és HRE konfigurálása](../../how-to-create-immersive-reader.md)

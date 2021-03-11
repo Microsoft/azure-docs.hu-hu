@@ -2,18 +2,18 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: active-directory
-author: barclayn
+author: ajburnle
 ms.service: active-directory
 ms.topic: include
 ms.date: 12/07/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 0b1606e4506e7a1781426632d1f22221f7028b88
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 9c91eb6cfa18c5302a83347f671e4552befcf3e2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102193819"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102623222"
 ---
 ## <a name="create-one-or-more-access-reviews"></a>Egy vagy több hozzáférési felülvizsgálat létrehozása
 
@@ -38,6 +38,7 @@ ms.locfileid: "102193819"
     > [!NOTE]
     > - Az itt kiválasztott szerepkörök [állandó és jogosult szerepköröket](../articles/active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)is tartalmaznak.
     > - Egynél több szerepkör kiválasztásával több hozzáférési felülvizsgálat jön létre. Ha például öt szerepkört választ ki, öt külön hozzáférési felülvizsgálatot fog létrehozni.
+    > - A hozzájuk rendelt csoportokkal rendelkező szerepkörök esetében a hozzáférés felülvizsgálatának részeként a felülvizsgálat alatt álló szerepkörhöz csatolt egyes csoportok hozzáférését a rendszer felülvizsgálja.
 
     Ha **Azure ad-szerepkörök** hozzáférési felülvizsgálatát hozza létre, a következő példa a tagság áttekintése listára mutat.
 
@@ -52,8 +53,8 @@ ms.locfileid: "102193819"
     ![Kijelölt felhasználók vagy tagok (saját) véleményezők listája](./media/active-directory-privileged-identity-management-access-reviews/reviewers.png)
 
     - **Kiválasztott felhasználók** – ezt a beállítást akkor használja, ha nem tudja, kinek van hozzáférése. Ezzel a beállítással a felülvizsgálatot hozzárendelheti egy erőforrás-tulajdonoshoz vagy a csoport kezelőjéhez a befejezéshez.
-    - **Tagok (önálló)** – ezzel a beállítással a felhasználók áttekinthetik saját szerepkör-hozzárendeléseiket.
-    - **Kezelő** – ezzel a beállítással a felhasználó felettese áttekintheti a szerepkör-hozzárendelését. A Manager kiválasztásakor lehetősége van tartalék felülvizsgáló megadására is. A tartalék felülvizsgálók arra kérik, hogy tekintsék át a felhasználót, ha a felhasználó nem ad meg felettest a címtárban.
+    - **Tagok (önálló)** – ezzel a beállítással a felhasználók áttekinthetik saját szerepkör-hozzárendeléseiket. A szerepkörhöz hozzárendelt csoportok nem lesznek a felülvizsgálat részét képezik, ha ez a beállítás ki van választva.
+    - **Kezelő** – ezzel a beállítással a felhasználó felettese áttekintheti a szerepkör-hozzárendelését. A Manager kiválasztásakor lehetősége van tartalék felülvizsgáló megadására is. A tartalék felülvizsgálók arra kérik, hogy tekintsék át a felhasználót, ha a felhasználó nem ad meg felettest a címtárban. A szerepkörhöz rendelt csoportokat a tartalék felülvizsgáló is ellenőrzi, ha van ilyen. 
 
 ### <a name="upon-completion-settings"></a>Befejezési beállítások
 

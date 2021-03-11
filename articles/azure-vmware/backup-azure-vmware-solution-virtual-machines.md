@@ -3,12 +3,12 @@ title: Azure VMware-megoldás virtuális gépek biztonsági mentése Azure Backu
 description: Konfigurálja az Azure VMware-megoldási környezetét a virtuális gépek biztonsági mentésére Azure Backup Server használatával.
 ms.topic: how-to
 ms.date: 02/04/2021
-ms.openlocfilehash: ea2164ba19703660e54879c25b975342d824662c
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 163065556b7dbc979d68613744ea827c209d9fda
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585024"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618916"
 ---
 # <a name="back-up-azure-vmware-solution-vms-with-azure-backup-server"></a>Azure VMware-megoldás virtuális gépek biztonsági mentése Azure Backup Server
 
@@ -73,7 +73,7 @@ A VMware 6,7-es verziójában a TLS engedélyezve volt a kommunikációs protoko
 
 1. Másolja a következő beállításjegyzék-beállításokat, és illessze be őket a Jegyzettömbbe. Ezután mentse a fájlt TLS-ként. REG nélkül. txt kiterjesztéssel.
 
-   ```text
+   ```
    
    Windows Registry Editor Version 5.00
    

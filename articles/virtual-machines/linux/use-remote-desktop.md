@@ -1,20 +1,20 @@
 ---
 title: A xrdp használata Linux rendszeren
 description: Megtudhatja, hogyan telepíthet és konfigurálhat Távoli asztal (xrdp) az Azure-beli Linux rendszerű virtuális gépekhez grafikus eszközök használatával való kapcsolódáshoz
-services: virtual-machines-linux
+services: virtual-machines
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.collection: linux
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.author: cynthn
-ms.openlocfilehash: 0fecf9f16cd1069b140e61a019a43510b59e76e8
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 1f7eb3b38b4ae04e81839fce2b14c1a84f3f0204
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102199151"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564594"
 ---
 # <a name="install-and-configure-xrdp-to-use-remote-desktop-with-ubuntu"></a>A xrdp telepítése és konfigurálása az Ubuntu-Távoli asztal használatára
 

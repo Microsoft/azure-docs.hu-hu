@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.custom: devx-track-js
-ms.openlocfilehash: de98d9db515e4ed88759efa7f22dddcca06151c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1bdae976d5e5b7d98311d33bb38b5035f2557ca
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854681"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548699"
 ---
 # <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-starter"></a>Azure Cosmos DB-alapú Node.js-alkalmazások üzembe helyezése a DevOps Starter használatával
 
@@ -26,7 +26,7 @@ A DevOps Starter is:
 
 * CI/CD kiadási folyamat létrehozása és konfigurálása az Azure DevOps
 
-Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
+Az oktatóanyagban a következőket végezheti el:
 
 > [!div class="checklist"]
 > * A DevOps Starter használata egy Node.js-alkalmazás üzembe helyezéséhez Azure Cosmos DB
@@ -47,19 +47,19 @@ A DevOps Starter egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létreh
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. A keresőmezőbe írja be a **DevOps Starter**kifejezést, majd válassza a elemet. Kattintson a **Hozzáadás** gombra egy új létrehozásához.
+1. A keresőmezőbe írja be a **DevOps Starter** kifejezést, majd válassza a elemet. Kattintson a **Hozzáadás** gombra egy új létrehozásához.
 
     ![A DevOps Starter irányítópultja](_img/azure-devops-starter-aks/search-devops-starter.png)
 
-1. Válassza a **Node.js** lehetőséget futtatókörnyezetként, majd kattintson a **tovább**gombra. Az **alkalmazás-keretrendszer kiválasztása**területen válassza a **Express.js**lehetőséget.
+1. Válassza a **Node.js** lehetőséget futtatókörnyezetként, majd kattintson a **tovább** gombra. Az **alkalmazás-keretrendszer kiválasztása** területen válassza a **Express.js** lehetőséget.
 
-1. Engedélyezze az **adatbázis hozzáadása** a **Cosmos DBhoz**szakaszt, majd kattintson a **tovább**gombra.
+1. Engedélyezze az **adatbázis hozzáadása** a **Cosmos DBhoz** szakaszt, majd kattintson a **tovább** gombra.
 
     ![Adatbázis hozzáadása](_img/azure-devops-project-cosmos-db/add-database.png)
 
-    Az Azure DevOps Starter különböző alkalmazás-keretrendszereket támogat, mint például a **Express.js**, a **minta Node.js alkalmazás**és a **Sail.js**. Ebben az oktatóanyagban a **Express.jst **használjuk.
+    Az Azure DevOps Starter különböző alkalmazás-keretrendszereket támogat, mint például a **Express.js**, a **minta Node.js alkalmazás** és a **Sail.js**. Ebben az oktatóanyagban a **Express.jst** használjuk.
 
-1. Válasszon ki egy Azure-szolgáltatást az alkalmazás telepítéséhez, majd kattintson a **tovább**gombra. A lehetőségek közé tartozik a Windows Web App, az Azure Kubernetes Service és az Azure Web App for Containers. Ebben az oktatóanyagban a **Windows Web APPT**használjuk.
+1. Válasszon ki egy Azure-szolgáltatást az alkalmazás telepítéséhez, majd kattintson a **tovább** gombra. A lehetőségek közé tartozik a Windows Web App, az Azure Kubernetes Service és az Azure Web App for Containers. Ebben az oktatóanyagban a **Windows Web APPT** használjuk.
 
 ## <a name="configure-azure-devops-and-azure-subscription"></a>Az Azure DevOps és az Azure-előfizetés konfigurálása
 
@@ -67,11 +67,11 @@ A DevOps Starter egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létreh
 
 1. Hozzon létre egy új Azure DevOps-szervezetet, vagy válasszon ki egy meglévő szervezetet.
 
-1. Válassza ki az Azure-előfizetését.
+1. Válassza ki Azure-előfizetését.
 
-1. További Azure-konfigurációs beállítások megtekintéséhez vagy az árképzési csomag és a hely azonosításához válassza a **További beállítások**lehetőséget. Ez a panel az Azure-szolgáltatások díjszabási szintjeinek és helyének konfigurálására szolgáló különböző lehetőségeket mutatja be.
+1. További Azure-konfigurációs beállítások megtekintéséhez vagy az árképzési csomag és a hely azonosításához válassza a **További beállítások** lehetőséget. Ez a panel az Azure-szolgáltatások díjszabási szintjeinek és helyének konfigurálására szolgáló különböző lehetőségeket mutatja be.
 
-1. Lépjen ki az Azure-beli konfigurációs területen, majd válassza a **kész**lehetőséget.
+1. Lépjen ki az Azure-beli konfigurációs területen, majd válassza a **kész** lehetőséget.
 
 1. A folyamat néhány perc múlva befejeződik. Egy minta Node.js alkalmazás egy git-tárházban van beállítva az Azure DevOps-szervezetben. Ezt követően Azure Cosmos DB, App Service, App Service a terv és Application Insights erőforrások jönnek létre, valamint egy CI/CD-folyamat. Az alkalmazást ezután üzembe helyezi az Azure-ban.
 
@@ -97,13 +97,13 @@ A DevOps Starter automatikusan konfigurálja a CI/CD-folyamatot az Azure DevOps-
 
 1. Nyissa meg a DevOps Starter irányítópultját.
 
-1. Válassza ki a hivatkozást a **Build**alatt. Egy böngésző lap megjeleníti az új projekt összeállítási folyamatát.
+1. Válassza ki a hivatkozást a **Build** alatt. Egy böngésző lap megjeleníti az új projekt összeállítási folyamatát.
 
     ![Létrehozás ablaktábla](_img/azure-devops-project-cosmos-db/build.png)
 
 1. Válassza a **Szerkesztés** elemet. Ezen az ablaktáblán ellenőrizheti a felépítési folyamat különféle feladatait. A build különböző feladatokat hajt végre, mint például a forráskód beolvasása a git-tárházból, az alkalmazás létrehozása, az egységhez tartozó tesztek futtatása, valamint az üzembe helyezéshez használt kimenetek közzététele.
 
-1. Válassza az **Eseményindítók**lehetőséget. A DevOps Starter automatikusan létrehoz egy CI-triggert, és a tárházba való minden egyes véglegesít egy új buildet indít el. Dönthet úgy is, hogy a CI-folyamatból kijelöli vagy kizárja az ágakat.
+1. Válassza az **Eseményindítók** lehetőséget. A DevOps Starter automatikusan létrehoz egy CI-triggert, és a tárházba való minden egyes véglegesít egy új buildet indít el. Dönthet úgy is, hogy a CI-folyamatból kijelöli vagy kizárja az ágakat.
 
 1. Válassza a **Megtartást**. A forgatókönyvtől függően megadhat olyan házirendeket, amelyek bizonyos számú buildet megtartanak vagy eltávolítanak.
 
@@ -117,13 +117,13 @@ A DevOps Starter automatikusan konfigurálja a CI/CD-folyamatot az Azure DevOps-
 
 A DevOps Starter automatikusan létrehozza és konfigurálja a szükséges lépéseket az Azure DevOps-szervezetből az Azure-előfizetésbe való üzembe helyezéshez. Ezek a lépések az Azure-DevOps Azure-előfizetéshez való hitelesítéséhez szükséges Azure-szolgáltatási kapcsolatok konfigurálását is tartalmazzák. Az Automation egy kiadási folyamatot is létrehoz, amely biztosítja a CD-t az Azure-hoz. Ha többet szeretne megtudni a kiadási folyamatról, tegye a következőket:
 
-1. Nyissa meg a **folyamatokat** , és válassza a **kiadások**lehetőséget.
+1. Nyissa meg a **folyamatokat** , és válassza a **kiadások** lehetőséget.
 
 1. Válassza a **Szerkesztés** elemet.
 
 1. Az **Összetevők** alatt válassza az **Elvetést**. Az előző lépések során megvizsgált összeállítási folyamat létrehozza az összetevőhöz használt kimenetet.
 
-1. A **drop** ikontól jobbra válassza a **folyamatos üzembe helyezés trigger**lehetőséget. Ez a kiadási folyamat engedélyezte a folyamatos üzembe helyezési triggert, amely minden alkalommal végrehajt egy központi telepítést, amikor új Build-összetevő érhető el. Letilthatja az indítást úgy, hogy a központi telepítések manuálisan legyenek végrehajtva.
+1. A **drop** ikontól jobbra válassza a **folyamatos üzembe helyezés trigger** lehetőséget. Ez a kiadási folyamat engedélyezte a folyamatos üzembe helyezési triggert, amely minden alkalommal végrehajt egy központi telepítést, amikor új Build-összetevő érhető el. Letilthatja az indítást úgy, hogy a központi telepítések manuálisan legyenek végrehajtva.
 
 1. A jobb oldalon válassza a verziók **megtekintése** lehetőséget a kiadások előzményeinek megjelenítéséhez.
 
@@ -131,7 +131,7 @@ A DevOps Starter automatikusan létrehozza és konfigurálja a szükséges lép�
 
 1. Válassza a **Véglegesítéseket**. Ez a nézet a telepítéshez társított kód-véglegesítő kódokat jeleníti meg. Az üzembe helyezések közötti véglegesítési különbségek megtekintéséhez hasonlítsa össze a kiadásokat.
 
-1. Válassza a **naplók megtekintése**lehetőséget. A naplók hasznos információkat tartalmaznak az üzembehelyezési folyamattal kapcsolatban. Ezeket az üzembe helyezések során és után is megtekintheti.
+1. Válassza a **naplók megtekintése** lehetőséget. A naplók hasznos információkat tartalmaznak az üzembehelyezési folyamattal kapcsolatban. Ezeket az üzembe helyezések során és után is megtekintheti.
 
 ## <a name="commit-code-changes-and-execute-the-cicd-pipeline"></a>Kód végrehajtásának elvégzése és a CI/CD folyamat végrehajtása
 
@@ -140,11 +140,11 @@ A DevOps Starter automatikusan létrehozza és konfigurálja a szükséges lép�
 
 Most már készen áll az alkalmazásban lévő csapattal való együttműködésre egy CI/CD-folyamat használatával, amely a legújabb munkáját üzembe helyezi a App Service. A git-tárház minden módosítása egy buildet indít az Azure DevOps, és egy CD-folyamat végrehajtja az Azure-ba történő üzembe helyezést. Kövesse az ebben a szakaszban leírt eljárást, vagy használjon másik technikát a tárház változásainak érvényesítéséhez. Megteheti például, hogy a git-tárházat a kedvenc eszközén vagy IDE helyezi, majd leküldi a módosításokat a tárházban.
 
-1. Az Azure DevOps menüben válassza a **repók** , majd a **fájlok**elemet. Ezután lépjen a tárházba.
+1. Az Azure DevOps menüben válassza a **repók** , majd a **fájlok** elemet. Ezután lépjen a tárházba.
 
 1. A tárház már tartalmaz kódot a létrehozási folyamat során kiválasztott alkalmazás nyelve alapján. Nyissa meg az **Application/views/index. mopsz** fájlt.
 
-1. Válassza a **Szerkesztés**lehetőséget, majd végezze el a **15. számú sor**módosítását. Megváltoztathatja például a következőre: "az első központi telepítés Azure App Service powered by Azure Cosmos DB."
+1. Válassza a **Szerkesztés** lehetőséget, majd végezze el a **15. számú sor** módosítását. Megváltoztathatja például a következőre: "az első központi telepítés Azure App Service powered by Azure Cosmos DB."
 
 1. A jobb felső sarokban válassza a végrehajtás lehetőséget, majd a módosítás elküldéséhez válassza a **véglegesítés** **újra lehetőséget.**
 
@@ -154,7 +154,7 @@ Most már készen áll az alkalmazásban lévő csapattal való együttműködé
 
 Törölje a létrehozott kapcsolódó erőforrásokat, ha már nincs rá szüksége. Használja a **delete** funkciót a DevOps Starter irányítópultján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyamatokat. Ezt a CI-/CD-mintát egyéb folyamatok sablonjaként is használhatja. Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
@@ -167,4 +167,4 @@ A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyam
 > * Módosítások végrehajtása a git-ben és automatikus üzembe helyezése az Azure-ban
 > * Az erőforrások eltávolítása
 
-További információkat és további lépéseket a [többfázisú folyamatos üzembe helyezés (CD) folyamatának meghatározása](/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts) című témakörben talál.
+További információkat és további lépéseket a [többfázisú folyamatos üzembe helyezés (CD) folyamatának meghatározása](/azure/devops/pipelines/release/define-multistage-release-process) című témakörben talál.

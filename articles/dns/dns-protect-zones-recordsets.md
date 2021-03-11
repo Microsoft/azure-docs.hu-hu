@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 2/20/2020
 ms.author: allensu
-ms.openlocfilehash: 2280d6243f468708269569cd24cb8c7a3e2a8191
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 85aaf40237b6b6687c54d4b036f280805c98e7b2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202297"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618967"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS-zónák és -rekordok védelme
 
@@ -202,7 +202,7 @@ A zóna szintű erőforrás-zárolások a Azure Portal használatával hozhatók
 
 ![A zóna szintű erőforrások zárolása a Azure Portal keresztül](./media/dns-protect-zones-recordsets/locks1.png)
 
-A zóna szintű erőforrások zárolása [Azure PowerShell](/powershell/module/az.resources/new-azresourcelock?view=latest)használatával is létrehozható:
+A zóna szintű erőforrások zárolása [Azure PowerShell](/powershell/module/az.resources/new-azresourcelock)használatával is létrehozható:
 
 ```azurepowershell
 # Lock a DNS zone
