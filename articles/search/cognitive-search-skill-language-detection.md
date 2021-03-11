@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 087989638193bb59001ed33c4ee253d61682d8bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 078a9312a7ee1b3b0eafd000928ed74348a540c3
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935993"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548053"
 ---
 #   <a name="language-detection-cognitive-skill"></a>Nyelvfelismerés – kognitív képességek
 
@@ -21,7 +21,7 @@ A **nyelvfelismerési** képesség észleli a bemeneti szöveg nyelvét, és egy
 
 Ez a képesség különösen akkor hasznos, ha meg kell adnia a szöveg nyelvét más képességeknek (például a [Hangulatelemzés skill](cognitive-search-skill-sentiment.md) vagy a [text Split skill](cognitive-search-skill-textsplit.md)).
 
-A nyelvfelismerés a Bing természetes nyelvi feldolgozó kódtárait használja, ami meghaladja a [támogatott nyelvek és régiók](../cognitive-services/text-analytics/language-support.md) számát Text Analytics. A nyelvek pontos listája nincs közzétéve, de az összes széles körben beszélt nyelvet, valamint a változatokat, a dialektusokat és néhány regionális és kulturális nyelvet tartalmaz. Ha a tartalom ritkábban használt nyelven van kifejezve, [kipróbálhatja a NYELVFELISMERÉS API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) -t, és megnézheti, hogy visszaadja-e a kódot. A nem észlelhető nyelvek válasza a következő: `unknown` .
+A nyelvfelismerés a Bing természetes nyelvi feldolgozó kódtárait használja, ami meghaladja a [támogatott nyelvek és régiók](../cognitive-services/text-analytics/language-support.md) számát Text Analytics. A nyelvek pontos listája nincs közzétéve, de az összes széles körben beszélt nyelvet, valamint a változatokat, a dialektusokat és néhány regionális és kulturális nyelvet tartalmaz. Ha a tartalom ritkábban használt nyelven van kifejezve, [kipróbálhatja a NYELVFELISMERÉS API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages) -t, és megnézheti, hogy visszaadja-e a kódot. A nem észlelhető nyelvek válasza a következő: `(Unknown)` .
 
 > [!NOTE]
 > Ha a hatókört a feldolgozás gyakoriságának növelésével, további dokumentumok hozzáadásával vagy további AI-algoritmusok hozzáadásával bővíti, akkor [a számlázható Cognitive Services erőforrást kell csatolnia](cognitive-search-attach-cognitive-services.md). Az API-k Cognitive Services-ben való meghívásakor felmerülő díjak, valamint a képek kinyerése a dokumentum repedésének részeként az Azure Cognitive Searchban. A dokumentumokból való szöveg kinyerése díjmentes.
@@ -35,6 +35,15 @@ Microsoft. Skills. Text. LanguageDetectionSkill
 ## <a name="data-limits"></a>Adatkorlátok
 A rekordok maximális méretének 50 000 karakternek kell lennie, a következőképpen mérve: [`String.Length`](/dotnet/api/system.string.length) . Ha meg kell szakítania az adatokat, mielőtt elküldené azt a nyelvfelismerés szaktudásának, használhatja a [szöveg felosztása készséget](cognitive-search-skill-textsplit.md)is.
 
+## <a name="skill-parameters"></a>Szakértelem paraméterei
+
+A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
+
+| Bevitelek | Leírás |
+|---------------------|-------------|
+| `defaultCountryHint` | Választható Ha a nyelv nem egyértelműsítse, az ISO 3166-1 Alpha-2 2 Letter országkód adható meg a nyelvi észlelési modellre mutató tippként. További részletekért tekintse meg a jelen témakör [text Analytics dokumentációját](../cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection.md#ambiguous-content) . Pontosabban a `defaultCountryHint` paramétert olyan dokumentumokkal együtt használják, amelyek nem adják meg `countryHint` explicit módon a bemenetet.  |
+| `modelVersion`   | Választható A Text Analytics szolgáltatás meghívásakor használni kívánt modell verziója. Alapértelmezés szerint a legújabb elérhető, ha nincs megadva. Azt javasoljuk, hogy csak akkor válassza ezt az értéket, ha feltétlenül szükséges. További részletekért tekintse meg [a Text Analytics API modell verziószámozását](../cognitive-services/text-analytics/concepts/model-versioning.md) ismertető témakört. |
+
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
 A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
@@ -42,6 +51,7 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 | Bevitelek     | Leírás |
 |--------------------|-------------|
 | `text` | Az elemezni kívánt szöveg.|
+| `countryHint` | ISO 3166-1 Alpha-2 2 Letter országkód, amely a nyelvfelismerés-modellre mutató célzásként használható, ha a nyelv nem egyértelműsítse. További részletekért tekintse meg a jelen témakör [text Analytics dokumentációját](../cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection.md#ambiguous-content) . |
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
 
@@ -60,6 +70,10 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
       {
         "name": "text",
         "source": "/document/text"
+      },
+      {
+        "name": "countryHint",
+        "source": "/document/countryHint"
       }
     ],
     "outputs": [
@@ -98,6 +112,14 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
            {
              "text": "Estamos muy felices de estar con ustedes."
            }
+      },
+      {
+        "recordId": "3",
+        "data":
+           {
+             "text": "impossible",
+             "countryHint": "fr"
+           }
       }
     ]
 ```
@@ -125,14 +147,19 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
               "languageName": "Spanish",
               "score": 1,
             }
+      },
+      {
+        "recordId": "3",
+        "data":
+            {
+              "languageCode": "fr",
+              "languageName": "French",
+              "score": 1,
+            }
       }
     ]
 }
 ```
-
-
-## <a name="error-cases"></a>Hibák esetei
-Ha a szöveg nem támogatott nyelven van kifejezve, a rendszer hibát generál, és nem ad vissza nyelvi azonosítót.
 
 ## <a name="see-also"></a>Lásd még
 

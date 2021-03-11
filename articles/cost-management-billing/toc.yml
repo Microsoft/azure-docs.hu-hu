@@ -52,8 +52,6 @@
           href: costs/ingest-azure-usage-at-scale.md
         - name: Cost Management partnerek számára
           href: costs/get-started-partners.md
-        - name: Migrálás az EA-jelentésekből az Azure Resource Manager API-kba
-          href: costs/migrate-from-enterprise-reporting-to-azure-resource-manager-apis.md
     - name: Lefoglalások
       items:
         - name: Mi az az Azure Reservations?
@@ -296,8 +294,10 @@
           href: manage/mca-check-azure-credits-balance.md
         - name: Migrálás EA-ról MCA API-kra
           href: costs/migrate-cost-management-api.md
-        - name: Szerepkörök társítása SPN-hez
+        - name: Szerepkörök társítása az EA SPN-hez
           href: manage/assign-roles-azure-service-principals.md
+        - name: Migrálás az EA-jelentésekből az Azure Resource Manager API-kba
+          href: costs/migrate-from-enterprise-reporting-to-azure-resource-manager-apis.md
     - name: Foglalások vásárlása és adminisztrálása
       items:
         - name: 'Kiválaszthatja, hogy mit szeretne megvásárolni'

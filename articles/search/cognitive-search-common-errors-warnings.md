@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 6625cd5ad91826ac5cdf8ec63382e9f94d8a2c08
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 3ba0abe8510291351c10ba085ba7e42b8197d886
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895939"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553238"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Általános indexelő hibák és figyelmeztetések hibaelhárítása Az Azure Cognitive Search
 
@@ -236,6 +236,8 @@ Ha hiányzó bemenet esetén szeretné megadni az alapértelmezett értéket, a 
 
 ## <a name="warning--skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"></a>Figyelmeztetés: a (z) "languageCode" képzettségi bemenethez a következő nyelvi kódok szerepelnek: "X, Y, Z", amelyek közül legalább az egyik érvénytelen.
 Egy vagy több `languageCode` alsóbb rétegbeli képesség opcionális bemenetére átadott érték nem támogatott. Ez akkor fordulhat elő, ha a [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) kimenetét átadja a következő szakismereteknek, a kimenet pedig több nyelvből áll, mint amennyit az adott alsóbb rétegbeli készségek támogatnak.
+
+Vegye figyelembe, hogy ehhez hasonló figyelmeztetés jelenik meg, ha egy érvénytelen `countryHint` bemenet kerül át a LanguageDetectionSkill. Ha ez történik, ellenőrizze, hogy az adatforrásból az adott bemenethez használt mező érvényes ISO 3166-1 Alpha-2 2 betűs országkódot tartalmaz-e. Ha egyes értékek érvényesek, és néhány érvénytelen, folytassa a következő útmutatással, de cserélje le a `languageCode` `countryHint` és `defaultLanguageCode` a with `defaultCountryHint` kifejezésre a használati esetnek megfelelően.
 
 Ha tudja, hogy az adatkészlet egy adott nyelven van, távolítsa el a [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) és a `languageCode` szaktudás bemenetét, és használja `defaultLanguageCode` inkább a skill paramétert, feltéve, hogy az adott szakértelmet támogatja a nyelv.
 

@@ -4,16 +4,16 @@ description: A NVv3 sorozatú virtuális gépek specifikációi.
 services: virtual-machines
 author: vikancha-MSFT
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: f04847930f078ef506d66784deab4767db0a282d
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 276afba62a26a53fe32f7aa9d47f42ada251d6b5
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123972"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613051"
 ---
 # <a name="nvv3-series"></a>NVv3 sorozat
 
@@ -27,7 +27,7 @@ A NVv3-példányok minden GPU-je tartalmaz egy RÁCSos licencet. Ez a licenc leh
 [Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
 [VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
 [Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): támogatott<br>
-[Ideiglenes operációsrendszer-lemezek](ephemeral-os-disks.md): nem támogatott <br>
+[Ideiglenes operációsrendszer-lemezek](ephemeral-os-disks.md): támogatott <br>
 <br>
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Gyorsítótár nélküli lemez maximális átviteli sebessége: IOPS/MBps | Hálózati adapterek maximális száma/várt hálózati sávszélesség (Mbps) | Virtuális munkaállomások | Virtuális alkalmazások |

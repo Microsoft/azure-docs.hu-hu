@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 03/09/2021
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 50a0894898dcdc817ee253ad326b88a9bb61b9d6
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 85520032e9bc63b6296e40dd1c1055e36762dcc8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357364"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555006"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Frissítés általános célú v2-tárfiókra
 
@@ -24,6 +24,15 @@ Az általános célú, v1-es vagy blob Storage-fiókokból származó általáno
 
 > [!IMPORTANT]
 > Az általános célú v1-vagy blob Storage-fiókok általános célú v2-re való frissítése végleges, és nem vonható vissza.
+
+> [!NOTE]
+> Bár a Microsoft a legtöbb esetben javasolja az általános célú v2-fiókok használatát, a Microsoft továbbra is támogatja az általános célú v1-fiókokat az új és a meglévő ügyfelek számára. Általános célú v1-es Storage-fiókokat hozhat létre új régiókban, amikor az Azure Storage elérhető ezekben a régiókban. A Microsoft jelenleg nem rendelkezik az általános célú v1-fiókok támogatásának elavulttá tételével, és legalább egy éves előzetes értesítést fog biztosítani az Azure Storage funkciójának elavulttá tételéhez. A Microsoft továbbra is biztosítja az általános célú v1-fiókok biztonsági frissítéseit, de ez a fióktípus nem vár új szolgáltatás-fejlesztést.
+>
+> Az új Azure Storage-régiókban az általános célú v1-fiókok díjszabása 2020. október 1-től megegyezik az általános célú v2-fiókok díjszabásával ezekben a régiókban. A meglévő Azure Storage-régiók díjszabása nem változott. Az általános célú v1-fiókok egy adott régióban való díjszabásáról az Azure Storage díjszabását ismertető oldalon tájékozódhat. Válassza ki a régiót, majd a **díjszabás** mellett válassza az **egyéb** lehetőséget.
+
+## <a name="upgrade-an-account"></a>Fiók frissítése
+
+Általános célú v1-vagy blob Storage-fiók egy általános célú v2-fiókra történő frissítéséhez használja a Azure Portal, a PowerShell vagy az Azure CLI-t.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -47,6 +56,7 @@ Ezután hívja meg a következő parancsot a fiók frissítéséhez, az erőforr
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource-group> -Name <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
 ```
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Ha egy általános célú v1-fiókot az Azure CLI használatával szeretne általános célú v2-fiókra frissíteni, először telepítse az Azure CLI legújabb verzióját. A CLI telepítésével kapcsolatban lásd [az Azure CLI 2.0-s verziójának telepítését](/cli/azure/install-azure-cli) ismertető szakaszt.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: 778feda8d72101d4ae2a0f0c27549701dfb53340
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 1ce20deed8b26dc5f5bebf4656dd3f1c370d766f
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341413"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561228"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Endpoint Protection-Értékelés és javaslatok a Azure Security Center
 
@@ -29,9 +29,9 @@ A Azure Security Center az Endpoint Protection-megoldások [támogatott](securit
 
 ## <a name="windows-defender"></a>Windows Defender
 
-* Security Center a [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus?preserve-view=true&view=win10-ps) futtatásakor javasolja az **Endpoint Protection-megoldások telepítését a virtuális gépen** , és az eredmény **AMServiceEnabled: false**
+* Security Center a [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus) futtatásakor javasolja az **Endpoint Protection-megoldások telepítését a virtuális gépen** , és az eredmény **AMServiceEnabled: false**
 
-* Security Center a [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus?preserve-view=true&view=win10-ps) futtatásakor javasolja az **Endpoint Protection-állapottal kapcsolatos problémák megoldását a gépeken** , valamint a következő esetekben:
+* Security Center a [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus) futtatásakor javasolja az **Endpoint Protection-állapottal kapcsolatos problémák megoldását a gépeken** , valamint a következő esetekben:
 
   * A következő tulajdonságok bármelyike hamis:
 

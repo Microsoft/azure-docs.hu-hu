@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 8e69803f4740a58adb4230bd82cc723221762cb4
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 52c93bef4529f27ad38677f17209e7b48e997368
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576616"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548444"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Biztonságos alkalmazások fejlesztése az Azure szolgáltatásban
 Ebben a cikkben a Felhőbeli alkalmazások fejlesztésekor megfontolandó biztonsági tevékenységeket és ellenőrzéseket mutatjuk be. A Microsoft [biztonsági fejlesztési életciklus (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) megvalósítási és ellenőrzési szakaszaiban megfontolandó biztonsági kérdések és fogalmak. A cél az, hogy segítséget nyújtson olyan tevékenységek és Azure-szolgáltatások definiálásához, amelyeket a biztonságosabb alkalmazások fejlesztéséhez használhat.
@@ -34,7 +34,7 @@ Tegyük fel, hogy az alkalmazás olyan módokon fog használatba venni, amelyeke
 
 ### <a name="perform-code-reviews"></a>Kód felülvizsgálatának elvégzése
 
-A kód beadása előtt a kód [felülvizsgálatával](/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) növelheti a kódok általános minőségét, és csökkentheti a hibák kockázatát. A [Visual Studio](/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) segítségével kezelheti a kód-felülvizsgálati folyamatot.
+A kód beadása előtt a kód [felülvizsgálatával](/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) növelheti a kódok általános minőségét, és csökkentheti a hibák kockázatát. A [Visual Studio](/azure/devops/repos/tfvc/get-code-reviewed-vs) segítségével kezelheti a kód-felülvizsgálati folyamatot.
 
 ### <a name="perform-static-code-analysis"></a>Statikus kódelemzés végrehajtása
 

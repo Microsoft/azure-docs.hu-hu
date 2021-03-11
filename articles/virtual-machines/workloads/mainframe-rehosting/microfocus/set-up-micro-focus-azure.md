@@ -1,7 +1,7 @@
 ---
 title: A Micro Focus Enterprise Server 5,0 és Enterprise Developer 5,0 telepítése az Azure-on | Microsoft Docs
 description: Ebből a cikkből megtudhatja, hogyan telepítheti a Micro Focus Enterprise Server 5,0 és Enterprise Developer 5,0 programot Microsoft Azure.
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: ''
 author: maggsl
 ms.author: edprice
@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: d9e5f9b531fc28caf8f3162a70318927d40bb923
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0d0a7d9060d751dbf05d39545b332c13010cbfae
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483062"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553578"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>A Micro Focus Enterprise Server 5,0 és Enterprise Developer 5,0 telepítése az Azure-ban
 
@@ -87,7 +87,7 @@ A telepítés után ellenőrizze, hogy az előfeltételként szükséges tovább
 
 1.  Indítsa el a Micro Focus-licencek felügyeletét.
 
-2.  Válassza **Start** \> a **Micro Focus License Manager** \> - **licencek felügyeletének** indítása lehetőséget, majd kattintson a **telepítés** lapra. Válassza ki a feltölteni kívánt licenc formátumát: egy licencfájl vagy egy 16 karakterből álló licenckód. Egy fájl esetében például a **licencfájl** lapon keresse meg a * `mflic` korábban feltöltött fájlt a virtuális gépre, és válassza a **Licencek telepítése** lehetőséget.
+2.  Válassza  \> a **Micro Focus License Manager** \> - **licencek felügyeletének** indítása lehetőséget, majd kattintson a **telepítés** lapra. Válassza ki a feltölteni kívánt licenc formátumát: egy licencfájl vagy egy 16 karakterből álló licenckód. Egy fájl esetében például a **licencfájl** lapon keresse meg a * `mflic` korábban feltöltött fájlt a virtuális gépre, és válassza a **Licencek telepítése** lehetőséget.
 
     ![Képernyőfelvétel: a Micro Focus-licencek felügyelete párbeszédpanel, ahol kiválaszthatja a licencek telepítése lehetőséget.](media/install-image-3.png)
 
@@ -115,7 +115,7 @@ A telepítés után ellenőrizze, hogy az előfeltételként szükséges tovább
 
     ![Sikeres telepítés üzenete](media/install-image-6.png)
 
-6.  Indítsa el a Micro Focus License Managert ugyanúgy, mint a vállalati kiszolgáló esetében. Válassza **Start** \> a **Micro Focus License Manager** \> - **licencek felügyelete** lehetőséget, majd kattintson a **telepítés** fülre.
+6.  Indítsa el a Micro Focus License Managert ugyanúgy, mint a vállalati kiszolgáló esetében. Válassza  \> a **Micro Focus License Manager** \> - **licencek felügyelete** lehetőséget, majd kattintson a **telepítés** fülre.
 
 7.  Válassza ki a feltölteni kívánt licenc formátum típusát: egy licencfájl vagy egy 16 karakterből álló licenckód. Egy fájl esetében például a **licencfájl** területen keresse meg a `mflic` korábban feltöltött fájlt a virtuális gépre, és válassza a  **Licencek telepítése** lehetőséget.
 

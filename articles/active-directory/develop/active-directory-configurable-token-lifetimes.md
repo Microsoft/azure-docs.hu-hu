@@ -13,12 +13,12 @@ ms.date: 02/01/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 1bd60a60aa5f6fffcc459f0e14d550740e48496d
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 374e8bb61886a78289fcf44ce9582df325a4e64c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428149"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549039"
 ---
 # <a name="configurable-token-lifetimes-in-the-microsoft-identity-platform-preview"></a>Konfigurálható jogkivonat-élettartamok a Microsoft Identity platformban (előzetes verzió)
 
@@ -240,7 +240,7 @@ Ezt követően a felhasználó megpróbál hozzáférni a B webalkalmazáshoz. A
 
 ## <a name="cmdlet-reference"></a>Parancsmag-referencia
 
-Ezek a parancsmagok a [Azure Active Directory PowerShell a Graph Preview modulhoz](/powershell/module/azuread/?view=azureadps-2.0-preview#service-principals&preserve-view=true&preserve-view=true).
+Ezek a parancsmagok a [Azure Active Directory PowerShell a Graph Preview modulhoz](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#service-principals).
 
 ### <a name="manage-policies"></a>A szabályzatok kezelése
 

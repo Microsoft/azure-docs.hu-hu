@@ -1,18 +1,18 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.custom: include file
 ms.date: 04/16/2020
-ms.openlocfilehash: 78b93c05621754ae499e4ae8ca6b66c5bbfaad1b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b2b405e7f6babf84ef8297310a5a7a34c3f2dc11
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96025928"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102623545"
 ---
 Cognitive Services két természetes nyelvi feldolgozási szolgáltatást biztosít, [Language Understanding](../luis/what-is-luis.md) és [QnA Maker](../qnamaker/overview/overview.md), amelyek mindegyike más célra szolgál. Ismerje meg, hogy mikor kell használni az egyes szolgáltatásokat, és hogyan kell egymással kiegészíteni őket.
 
@@ -71,7 +71,7 @@ Ezt a külső féltől származó választ is bemutathatja a felhasználónak az
 
 Ha a csevegési robotnak több információra van szüksége, mint amennyit a szolgáltatás nyújt, a döntési fa folytatásához használja mindkét szolgáltatást, és dolgozza fel mindkét választ az ügyfélalkalmazás számára.
 
-A robot Framework **[elküldési parancssori](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** felületének használatával létrehozhat egy folyamatot, amely mindkét szolgáltatással használható. Ez az eszköz egy olyan legjobb LUIS-alkalmazást hoz létre, amely a LUIS és a QnA Maker között alárendelt alkalmazásként való kiszállításra szolgál. [További](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs&view=azure-bot-service-4.0) információ a Luis, a QnA Maker és a bot keretrendszer integrálásáról.
+A robot Framework **[elküldési parancssori](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** felületének használatával létrehozhat egy folyamatot, amely mindkét szolgáltatással használható. Ez az eszköz egy olyan legjobb LUIS-alkalmazást hoz létre, amely a LUIS és a QnA Maker között alárendelt alkalmazásként való kiszállításra szolgál. [További](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs) információ a Luis, a QnA Maker és a bot keretrendszer integrálásáról.
 
 A bot Builder minta, az **NLP a küldéssel**, [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) vagy [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)segítségével megvalósíthatja ezt a típusú csevegési robotot.
 
@@ -88,6 +88,6 @@ Ajánlott eljárások megvalósítása az egyes szolgáltatásokhoz:
 * [QnA Maker](../qnamaker/overview/overview.md)
 * [Küldési CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)
 * [Robot Framework-minták](https://github.com/Microsoft/BotBuilder-Samples)
-* [Azure bot Service](/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
+* [Azure bot Service](/azure/bot-service/bot-service-overview-introduction)
 * [Azure bot Emulator](https://github.com/Microsoft/BotFramework-Emulator)
 * [Bot Framework webes csevegés](https://github.com/microsoft/BotFramework-WebChat)

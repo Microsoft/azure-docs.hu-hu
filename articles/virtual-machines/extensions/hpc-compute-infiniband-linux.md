@@ -1,24 +1,25 @@
 ---
 title: InfiniBand-illesztőprogram kiterjesztése – Azure Linux rendszerű virtuális gépek
 description: Microsoft Azure bővítmény a InfiniBand-illesztőprogramok telepítéséhez a H-és N-sorozatú, Linux rendszerű virtuális gépeken.
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: ''
 author: vermagit
 editor: ''
 ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.subservice: extensions
+ms.service: virtual-machines
+ms.subservice: hpc
+ms.collection: linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: amverma
-ms.openlocfilehash: 2a5aa8983e6cbb0745e05ce275edeadeccb60736
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1219f5befb4de81850681a53c10f03dc81249d53
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966037"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559732"
 ---
 # <a name="infiniband-driver-extension-for-linux"></a>InfiniBand-illesztőprogram-bővítmény Linux rendszerhez
 
@@ -75,7 +76,7 @@ A következő JSON a bővítmény sémáját jeleníti meg.
 | apiVersion | 2015-06-15 | dátum |
 | közzétevő | Microsoft. HpcCompute | sztring |
 | típus | InfiniBandDriverLinux | sztring |
-| typeHandlerVersion | 1,1 | int |
+| typeHandlerVersion | 1.1 | int |
 
 
 

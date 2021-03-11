@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: cc0028a8c7d6d15277c3789118b13b80ed4306ea
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1ec4e26e266a1777857fe0e890b093f60a3597f0
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596634"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612524"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Virtuális hálózat létrehozása, módosítása vagy törlése
 
@@ -53,7 +53,7 @@ A cikk bármely szakaszának lépéseinek elvégzése előtt hajtsa végre a kö
      > Ha a virtuális hálózat olyan címtartományt tartalmaz, amelyek átfedésben vannak egy másik virtuális hálózattal vagy helyszíni hálózattal, a két hálózat nem csatlakoztatható. Címtartomány meghatározása előtt gondolja át, hogy szeretne-e a virtuális hálózatot más virtuális hálózatokhoz vagy helyi hálózatokhoz csatlakozni a jövőben. A Microsoft a szervezete tulajdonában lévő magánhálózati címtartomány vagy nyilvános címtartomány használatával javasolja a virtuális hálózati címtartományok konfigurálását.
      >
 
-     - **Alhálózat neve**: az alhálózat nevének egyedinek kell lennie a virtuális hálózaton belül. Az alhálózat neve nem módosítható az alhálózat létrehozása után. A portálhoz egy virtuális hálózat létrehozásakor meg kell határoznia egy alhálózatot, bár a virtuális hálózatnak nincs szüksége alhálózatra. A portálon csak egy alhálózatot adhat meg virtuális hálózat létrehozásakor. A virtuális hálózat létrehozása után később további alhálózatokat adhat hozzá a virtuális hálózathoz. Ha alhálózatot szeretne hozzáadni egy virtuális hálózathoz, tekintse meg az [alhálózatok kezelése](virtual-network-manage-subnet.md)című témakört. Az Azure CLI vagy a PowerShell használatával több alhálózattal rendelkező virtuális hálózatot is létrehozhat.
+     - **Alhálózat neve**: az alhálózat nevének egyedinek kell lennie a virtuális hálózaton belül. Az alhálózat neve nem módosítható az alhálózat létrehozása után. A portálhoz egy virtuális hálózat létrehozásakor meg kell határoznia egy alhálózatot, bár a virtuális hálózatnak nincs szüksége alhálózatra. A portálon megadhat egy vagy több alhálózatot, amikor létrehoz egy virtuális hálózatot. A virtuális hálózat létrehozása után később további alhálózatokat adhat hozzá a virtuális hálózathoz. Ha alhálózatot szeretne hozzáadni egy virtuális hálózathoz, tekintse meg az [alhálózatok kezelése](virtual-network-manage-subnet.md)című témakört. Az Azure CLI vagy a PowerShell használatával több alhálózattal rendelkező virtuális hálózatot is létrehozhat.
 
        >[!TIP]
        >Előfordulhat, hogy a rendszergazdák különböző alhálózatokat hoznak létre az alhálózatok közötti forgalom-útválasztás szűrésére vagy szabályozására. Az alhálózatok meghatározása előtt gondolja át, hogyan szeretné szűrni és irányítani az alhálózatok közötti forgalmat. Ha többet szeretne megtudni az alhálózatok közötti adatforgalom szűréséről, tekintse meg a [hálózati biztonsági csoportok](./network-security-groups-overview.md)című témakört. Az Azure automatikusan irányítja az alhálózatok közötti forgalmat, de felülbírálhatja az Azure alapértelmezett útvonalait. Az Azure-beli alapértelmezett alhálózati forgalom útválasztásával kapcsolatos további tudnivalókért tekintse meg az [Útválasztás áttekintése](virtual-networks-udr-overview.md)című témakört.

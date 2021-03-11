@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2020
-ms.openlocfilehash: 37ba5fc7ce118e2e8532ea4db18634265aaacb64
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 9df5c63ef175d0cf736ce16036466158ab6565f9
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99556861"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618304"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Üdvözli az Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -19,6 +19,9 @@ ms.locfileid: "99556861"
 A mai alkalmazásoknak alacsony válaszidővel kell rendelkezniük, és mindig elérhetőnek kell lenniük a hálózaton keresztül. A kis késés és a magas rendelkezésre állás elérése érdekében ezeknek az alkalmazásoknak a példányait a felhasználókhoz közel lévő adatközpontokban kell üzembe helyezni. Az alkalmazásoknak valós időben kell válaszolniuk a használat csúcsidőszakokban tapasztalható nagy változásaira, valamint egyre nagyobb mennyiségű adatot kell tárolniuk, és ezeket az adatokat ezredmásodpercek alatt kell elérhetővé tenniük a felhasználók számára.
 
 A Azure Cosmos DB egy teljes körűen felügyelt NoSQL-adatbázis a modern alkalmazások fejlesztéséhez. Egyszámjegyű ezredmásodperces válaszidő, az automatikus és az azonnali méretezhetőség, a garantált sebesség bármilyen méretben. Az üzletmenet folytonossága garantált [SLA-alapú](https://azure.microsoft.com/support/legal/sla/cosmos-db) rendelkezésre állással és nagyvállalati szintű biztonsággal. Az alkalmazásfejlesztés gyorsabb és termelékenyebb, köszönhetően a világ bármely pontján elérhető, nyílt forráskódú API-k és SDK-k népszerű nyelvekhez Teljes körűen felügyelt szolgáltatásként Azure Cosmos DB az adatbázis-felügyeletet az automatikus felügyelettel, frissítésekkel és javításokkal végzi. Emellett a kapacitások felügyeletét is a költséghatékony kiszolgáló nélküli és automatikus skálázási lehetőségekkel kezeli, amelyek az alkalmazásra reagálva kielégítik a kapacitást az igényeknek megfelelően.
+
+> [!NOTE]
+> Szeretne segíteni a felhasználói tanulmányokban való részvétellel Azure Cosmos DB dokumentumok fejlesztésében? Kérjük, szánjon néhány percet az 5 perces [szűrési kérdőív](https://aka.ms/cosmosdb-documentation-screener-survey)kitöltésére. Ha Ön jogosult, a rendszer átirányítja egy olyan ütemező munkahelyre, ahol egy interaktív kutatási munkamenethez is lefoglalhat egy tárolóhelyet. A folyamat során a rendszer [adatvédelmi nyilatkozata](https://go.microsoft.com/fwlink/?LinkId=521839)szerint nem gyűjt személyes adatokat.
 
 Ha ingyenes Azure-előfizetéssel, díjmentesen, vagy a [Azure Cosmos db ingyenes](optimize-dev-test.md#azure-cosmos-db-free-tier) szinten szeretné [kipróbálni a Azure Cosmos DBT](https://azure.microsoft.com/try/cosmosdb/) , akkor az első 400 ru/s és 5 GB tárhellyel rendelkező fiókot is igénybe veheti.
 

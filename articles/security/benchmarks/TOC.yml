@@ -76,7 +76,7 @@
     - name: Az Azure Bastion biztonsági alapkonfigurációja
       href: ../../bastion/security-baseline.md
     - name: Az Azure Bot Network biztonsági alapkonfigurációja
-      href: /azure/bot-service/security-baseline?view=azure-bot-service-4.0
+      href: /azure/bot-service/security-baseline
     - name: Az Azure Cache for Redis biztonsági alapkonfigurációja
       href: ../../azure-cache-for-redis/security-baseline.md
     - name: Az Azure Cognitive Search biztonsági alapkonfigurációja
@@ -231,7 +231,7 @@
       href: ../../vpn-gateway/security-baseline.md
     - name: Windows rendszerű virtuális asztali biztonsági alapterv
       href: ../../virtual-desktop/security-baseline.md
-- name: Források
+- name: További források
   items:
     - name: Hozzárendelés a ASB és a CIS teljesítményteszt között
       href: v2-cis-benchmark.md

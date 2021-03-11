@@ -11,12 +11,12 @@ author: knicholasa
 manager: martinco
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e5eb77a27a7c74ad9738a0e1784066a6a859e43
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3f90edd5729ff5229be09bc3798082c33bdeead2
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175368"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632101"
 ---
 # <a name="browser-support-of-fido2-passwordless-authentication"></a>A FIDO2 jelszavas hitelesítésének böngésző általi támogatása
 
@@ -54,8 +54,7 @@ A böngésző minimális verziójára vonatkozó követelmények a következők:
 | ---- | ---- |
 | Chrome | 76 |
 | Edge | Windows 10 1903-es verzió<sup>1</sup> |
-| Firefox | Chrome |
-| ChromeOS | 66 |
+| Firefox | 66 |
 
 <sup>1</sup> Az új Chromium-alapú Microsoft Edge-támogatás Fido2 összes verziója. A Microsoft Edge örökölt támogatása a 1903-es verzióban lett hozzáadva.
 

@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: 8a65619d65e1a3655d3ef8a295749a705e6a79e1
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: d35535c87ca20bfc573995bf15f79bc149619776
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102431278"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611589"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Az Azure IoT Hub SDK-k ismertetése és használata
 
@@ -84,7 +84,7 @@ Az Azure IoT Hub eszközoldali SDK for Node.js:
 
 * Telepítés a [NPM](https://www.npmjs.com/package/azure-iot-device)
 * [Forráskód](https://github.com/Azure/azure-iot-sdk-node)
-* [API-leírások](/javascript/api/azure-iot-device/?view=azure-iot-typescript-latest&preserve-view=true)
+* [API-leírások](/javascript/api/azure-iot-device/)
 * [Modul-hivatkozás](/javascript/api/azure-iot-device/moduleclient)
 
 A Pythonhoz készült Azure IoT Hub Device SDK:
@@ -119,7 +119,7 @@ Azure IoT Hub Service SDK a Node.jshoz:
 
 * Letöltés a [NPM](https://www.npmjs.com/package/azure-iothub)
 * [Forráskód](https://github.com/Azure/azure-iot-sdk-node)
-* [API-leírások](/javascript/api/azure-iothub/?view=azure-iot-typescript-latest&preserve-view=true)
+* [API-leírások](/javascript/api/azure-iothub/)
 
 Azure IoT Hub Service SDK a Pythonhoz:
 

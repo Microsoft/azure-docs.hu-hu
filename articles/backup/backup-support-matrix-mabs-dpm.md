@@ -3,12 +3,12 @@ title: MABS & System Center DPM támogatási mátrix
 description: Ez a cikk Azure Backup támogatást összegzi, ha Microsoft Azure Backup Servert (MABS) vagy System Center DPM használ a helyszíni és az Azure-beli virtuális gépek erőforrásainak biztonsági mentésére.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: aaa68dba0bbd1f3f5ffb5480a2bdb0a48ae85656
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: e888b43ea5641f1943a096f045747d547c52fcfa
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986056"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609753"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Támogatási mátrix a Microsoft Azure Backup Server vagy System Center DPM való biztonsági mentéshez
 
@@ -60,9 +60,9 @@ A DPM/MABS a következő táblázatban összefoglalt módon helyezhető üzembe.
 
 **Üzembe helyezés** | **Támogatás** | **Részletek**
 --- | --- | ---
-**Helyszíni üzembe helyezés** | Fizikai kiszolgáló<br/><br/>Hyper-V virtuális gép<br/><br/> VMware virtuális gép | További részletekért tekintse meg a [védelmi mátrixot](backup-mabs-protection-matrix.md) . 
+**Helyszíni üzembe helyezés** | Fizikai kiszolgáló, de nem fizikai fürtben.<br/><br/>Hyper-V virtuális gép. A MABS különálló hypervisoron vagy fürtön is üzembe helyezheti vendégként. Nem helyezhető üzembe egy fürt vagy önálló hypervisor csomópontján. A Azure Backup Server dedikált, egycélú kiszolgálón való futtatásra lett tervezve.<br/><br/> Windows rendszerű virtuális gépként VMware-környezetben. | A helyszíni MABS-kiszolgálók nem védik az Azure-alapú munkaterheléseket. <br><br> További információ: [védelmi mátrix](backup-mabs-protection-matrix.md).
 **Azure Stack virtuális gépként van üzembe helyezve** | Csak MABS | A DPM nem használható Azure Stack virtuális gépek biztonsági mentésére.
-**Azure-beli virtuális gépként telepítve** | Az ezen a virtuális gépeken futó Azure-beli virtuális gépeket és munkaterheléseket védi | Az Azure-ban futó DPM/MABS nem tud biztonsági másolatot készíteni a helyszíni gépekről.
+**Azure-beli virtuális gépként telepítve** | Az ezen a virtuális gépeken futó Azure-beli virtuális gépeket és munkaterheléseket védi | Az Azure-ban futó DPM/MABS nem tud biztonsági másolatot készíteni a helyszíni gépekről. Csak az Azure IaaS-alapú virtuális gépeken futó munkaterhelések elleni védelemre használható.
 
 ## <a name="supported-mabs-and-dpm-operating-systems"></a>Támogatott MABS és DPM operációs rendszerek
 
@@ -85,8 +85,11 @@ Azure Backup a következő operációs rendszerek bármelyikét futtató DPM-vag
 **Telepítés** | Telepítse a DPM/MABS egyetlen célra szolgáló gépre.<br/><br/> Ne telepítse a DPM/MABS tartományvezérlőre, az Alkalmazáskiszolgáló szerepkör telepítését futtató gépre egy Microsoft Exchange Servert vagy System Center Operations Managert futtató gépen vagy egy fürtcsomóponton.<br/><br/> [Tekintse át az összes DPM rendszerkövetelményt](/system-center/dpm/prepare-environment-for-dpm#dpm-server).
 **Tartomány** | A DPM/MABS tartományhoz kell csatlakoznia. Először telepítse, majd csatlakoztassa a DPM/MABS-t egy tartományhoz. A DPM/MABS új tartományba való áthelyezése az üzembe helyezést követően nem támogatott.
 **Storage** | A modern Backup Storage (MBS) a DPM 2016/MABS v2 és újabb verziók esetében támogatott. A MABS v1 esetében nem érhető el.
-**MABS-frissítés** | Közvetlenül telepítheti a MABS v3 verziót, vagy frissíthet a MABS v3 verzióra a MABS v2-ről. [További információ](backup-azure-microsoft-azure-backup.md#upgrade-mabs).
+**MABS-frissítés** | Közvetlenül telepítheti a MABS v3 verziót, vagy frissíthet a MABS v3 verzióra a MABS v2-ről. [További információk](backup-azure-microsoft-azure-backup.md#upgrade-mabs).
 **MABS áthelyezése** | Ha a MABS egy új kiszolgálóra helyezi át, a tárterület megőrzése mellett az MBS használata támogatott.<br/><br/> A kiszolgálónak ugyanazzal a névvel kell rendelkeznie, mint az eredetinek. A név nem módosítható, ha ugyanazt a tárolót szeretné megőrizni, és ugyanazt a MABS-adatbázist használja az adathelyreállítási pontok tárolásához.<br/><br/> Szüksége lesz egy biztonsági másolatra a MABS-adatbázisról, mert vissza kell állítania.
+
+>[!NOTE]
+>A DPM/MABS-kiszolgáló átnevezése nem támogatott.
 
 ## <a name="mabs-support-on-azure-stack"></a>MABS-támogatás Azure Stack
 
@@ -168,11 +171,19 @@ Több mint 15 napja nincs kapcsolat | Lejárt/kiépítés | Nincs biztonsági m�
 |Követelmény |Részletek |
 |---------|---------|
 |Tartomány    | A DPM/MABS-kiszolgálónak Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012 tartományban kell lennie.        |
-|Tartományi megbízhatóság   |  A DPM/MABS támogatja az erdők közötti adatvédelmet, ha a különálló erdők között erdőszintű kétirányú megbízhatósági kapcsolatot hoz létre.   <BR><BR>   A DPM/MABS képes a kiszolgálók és munkaállomások különböző tartományokban való ellátására, egy olyan erdőben, amely kétirányú megbízhatósági kapcsolattal rendelkezik a DPM/MABS-kiszolgáló tartományával. A munkacsoportokban vagy nem megbízható tartományokban található számítógépek elleni védelemért lásd: [munkacsoportokban és nem megbízható tartományokban lévő munkaterhelések biztonsági mentése és visszaállítása.](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains)  |
+|Tartományi megbízhatóság   |  A DPM/MABS támogatja az erdők közötti adatvédelmet, ha a különálló erdők között erdőszintű kétirányú megbízhatósági kapcsolatot hoz létre.   <BR><BR>   A DPM/MABS képes a kiszolgálók és munkaállomások különböző tartományokban való ellátására, egy olyan erdőben, amely kétirányú megbízhatósági kapcsolattal rendelkezik a DPM/MABS-kiszolgáló tartományával. A munkacsoportokban vagy nem megbízható tartományokban található számítógépek elleni védelemért lásd: [munkacsoportokban és nem megbízható tartományokban lévő munkaterhelések biztonsági mentése és visszaállítása.](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains) <br><br> A Hyper-V kiszolgálófürtök biztonsági mentéséhez a MABS-kiszolgálóval megegyező tartományban vagy egy megbízható vagy gyermektartomány-tartományban kell lennie. A nem megbízható tartományokban vagy munkaterhelésekben lévő kiszolgálók és fürtök biztonsági mentését az NTLM, önálló kiszolgálóhoz használható tanúsítványalapú hitelesítés, illetve önálló fürthöz használható tanúsítványalapú hitelesítés használatával teheti meg.  |
 
 ## <a name="dpmmabs-storage-support"></a>DPM/MABS-tároló támogatása
 
 A rendszer a DPM/MABS biztonsági mentést készít a helyi lemezes tárolóban.
+
+Az USB-vagy cserélhető meghajtók nem támogatottak.
+
+Az NTFS-tömörítés nem támogatott a DPM/MABS kötetek esetében.
+
+A BitLocker csak a tároló lemezének hozzáadása után engedélyezhető. A Hozzáadás előtt ne engedélyezze a BitLockert.
+
+A hálózatra csatlakoztatott tároló (NAS) nem támogatott a DPM-tárolóban való használathoz.
 
 **Storage** | **Részletek**
 --- | ---
@@ -199,6 +210,38 @@ A Data Protection Managerrel védhető különböző kiszolgálókkal és munkat
 
 - A DPM/MABS által készített fürtözött munkaterheléseknek ugyanabban a tartományban kell lenniük, mint a DPM/MABS, vagy egy alárendelt/megbízható tartományban.
 - Az NTLM/tanúsítványalapú hitelesítés használatával biztonsági mentést készíthet a nem megbízható tartományokban vagy munkacsoportokban található adatvédelemről.
+
+## <a name="deduplicated-volumes-support"></a>Deduplikált kötetek támogatása
+
+>[!NOTE]
+> A deduplikálás támogatása a MABS az operációs rendszer támogatásának függvénye.
+
+### <a name="for-ntfs-volumes"></a>NTFS-kötetek esetén
+
+| A védett kiszolgáló operációs rendszere  | A MABS-kiszolgáló operációs rendszere  | MABS verziója  | Deduplikációs támogatás |
+| ------------------------------------------ | ------------------------------------- | ------------------ | -------------------- |
+| Windows Server 2019                       | Windows Server 2019                  | MABS v3            | Y                    |
+| Windows Server 2016                       | Windows Server 2019                  | MABS v3            | Y                   |
+| Windows Server 2012 R2                    | Windows Server 2019                  | MABS v3            | N                    |
+| Windows Server 2012                       | Windows Server 2019                  | MABS v3            | N                    |
+| Windows Server 2019                       | Windows Server 2016                  | MABS v3            | Y * *                  |
+| Windows Server 2016                       | Windows Server 2016                  | MABS v3            | Y                    |
+| Windows Server 2012 R2                    | Windows Server 2016                  | MABS v3            | Y                    |
+| Windows Server 2012                       | Windows Server 2016                  | MABS v3            | Y                    |
+
+- \* Ha a WS 2019-on futó MABS v3-as verzióval védett WS 2016 NTFS-kötetet, a helyreállítások befolyásolhatják. Kijavítottuk a helyreállítások nem deduplikált módon történő helyreállítását. Ha erre a javításra van szüksége a MABS v3 UR1-on, MABS-támogatást érhet el.
+- \** Ha a WS 2016-es verzióban található MABS v3-as verzióval rendelkező WS 2019 NTFS deduplikált kötetet védi, a biztonsági mentések és a visszaállítások nem lesznek kiválasztva. Ez azt jelenti, hogy a biztonsági másolatok több helyet foglalnak el a MABS-kiszolgálón, mint az eredeti NTFS deduped kötet.
+
+**Probléma**: Ha a védett kiszolgáló operációs rendszerét a windows Server 2016-ről a windows Server 2019-re frissíti, akkor a rendszer az NTFS deduplikált kötet biztonsági másolatát fogja érinteni a deduplikálás logikájának változásai miatt.
+
+**Megkerülő megoldás**: Ha ezt a javítást szeretné elérni a MABS v3 UR1, akkor elérheti a MABS-támogatást.
+
+### <a name="for-refs-volumes"></a>ReFS-kötetek esetében
+
+>[!NOTE]
+> Azonosítottank néhány problémát a deduplikált ReFS-kötetek biztonsági mentésével kapcsolatban. Dolgozunk a kijavításán, és ezt a szakaszt azonnal frissítjük, amint elérhetővé tettük a javítást. Addig is eltávolítjuk a deduplikált ReFS-kötetek biztonsági mentésének támogatását a MABS V3-ból.
+>
+> A MABS v3 UR1 és újabb verziója továbbra is támogatja a normál ReFS-kötetek védelmét és helyreállítását.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -1,39 +1,44 @@
 ---
-title: Egyéni SDK-k létrehozása az Azure Digital Twins-hoz az autorest szolgáltatással
+title: Egyéni nyelvi SDK-k létrehozása autorest-tel
 titleSuffix: Azure Digital Twins
-description: Megtudhatja, hogyan hozhatja ki az egyéni SDK-kat, hogy az Azure Digital Twins használatát a C#-tól eltérő nyelvekkel használja.
+description: Ismerje meg, hogyan hozhatja ki az egyéni nyelvi SDK-kat az autorest használatával, ha más nyelveken is szeretne Azure digitális Twins-kódokat írni, amelyek nem rendelkeznek közzétett SDK-val.
 author: baanders
 ms.author: baanders
-ms.date: 4/24/2020
+ms.date: 3/9/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.custom: devx-track-js
-ms.openlocfilehash: e7239bfdca1dc464048c0db08488029b0868deb5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.custom:
+- devx-track-js
+- contperf-fy21q3
+ms.openlocfilehash: 35cf54199f8f2c187ad397c21fb941111f07c4a3
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049797"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561840"
 ---
-# <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Egyéni SDK-k létrehozása az Azure Digital Twins-hoz az autorest használatával
+# <a name="create-custom-language-sdks-for-azure-digital-twins-using-autorest"></a>Egyéni nyelvi SDK-k létrehozása az Azure Digital Twins-hoz az autorest használatával
 
-Jelenleg az Azure Digital Twins API-kkal való interakcióhoz az egyetlen közzétett adatsíkok-SDK a .NET (C#), a JavaScript és a Java. Ezekről az SDK-król és az API-król az [*útmutató: az Azure digitális Twins API-k és SDK-k használata*](how-to-use-apis-sdks.md)című témakörben olvashat bővebben. Ha más nyelven dolgozik, ebből a cikkből megtudhatja, hogyan hozhatja ki saját adatközpont SDK-t az Ön által választott nyelven az autorest használatával.
+Ha olyan nyelvvel kell dolgoznia az Azure Digital Twins-vel, amely nem rendelkezik [közzétett Azure digitális Twins SDK](how-to-use-apis-sdks.md)-val, akkor ez a cikk bemutatja, hogyan hozhatja ki saját SDK-t az Ön által választott nyelven az autorest használatával. 
 
->[!NOTE]
-> Az autorest használatával is létrehozhatja a Control Plane SDK-t, ha szeretné. Ehhez hajtsa végre a jelen cikkben ismertetett lépéseket a [vezérlési sík hencegő mappájában](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) található, a vezérlő síkja **(OpenAPI** ) fájl használatával, az adatsík helyett.
+Az ebben a cikkben szereplő példák egy [adatplant SDK](how-to-use-apis-sdks.md#overview-data-plane-apis)létrehozását mutatják be, de ez a folyamat a  [Control Plant SDK](how-to-use-apis-sdks.md#overview-control-plane-apis) létrehozásához is működni fog.
 
-## <a name="set-up-your-machine"></a>A gép beállítása
+## <a name="prerequisites"></a>Előfeltételek
 
-Az SDK létrehozásához a következőkre lesz szüksége:
-* Az [autorest](https://github.com/Azure/autorest), a Version 2.0.4413 (3-as verzió jelenleg nem támogatott)
-* [Node.js](https://nodejs.org) az autorest előfeltétele
-* A legújabb Azure Digital Twins **adatsík hencegő** (OpenAPI) fájl az [adatsík hencegő mappájából](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)és a hozzájuk tartozó, példákat tartalmazó mappából.  Töltse le a hencegő fájlt *digitaltwins.json* és a saját helyi számítógépére.
+Az SDK létrehozásához először el kell végeznie a következő beállításokat a helyi gépen:
+* Az [**autorest**](https://github.com/Azure/autorest), a Version 2.0.4413 (3-as verzió) telepítése jelenleg nem támogatott.
+* Telepítse a [**Node.jst**](https://nodejs.org), amely az automatikus Rest használatának előfeltétele
+* A [ **Visual Studio** telepítése](https://visualstudio.microsoft.com/downloads/)
+* Töltse le a legújabb Azure Digital Twins **adatsík hencegő** (OpenAPI) fájlt az [adatsík hencegő mappájából](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins), valamint a hozzá tartozó, példákkal ellátott mappáját. A hencegő fájl neve *digitaltwins.json*.
+
+>[!TIP]
+> Ha ehelyett a **Control** PLANt SDK-t szeretné létrehozni, hajtsa végre a jelen cikkben ismertetett lépéseket a [vezérlési sík hencegő mappájában](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) található, a vezérlő síkja **(OpenAPI** ) fájl használatával az adatsík helyett.
 
 Ha a gép a fenti listából mindent megtesz, készen áll az autorest használatára az SDK létrehozásához.
 
-## <a name="create-the-sdk-with-autorest"></a>Az SDK létrehozása az autorest használatával 
+## <a name="create-the-sdk-using-autorest"></a>Az SDK létrehozása az autorest használatával 
 
-Ha Node.js van telepítve, futtathatja ezt a parancsot, hogy ellenőrizze, van-e telepítve az autorest megfelelő verziója:
+A Node.js telepítése után futtathatja ezt a parancsot, hogy ellenőrizze, hogy rendelkezik-e az autorest szükséges verziójának telepítésével:
 ```cmd/sh
 npm install -g autorest@2.0.4413
 ```
@@ -51,11 +56,11 @@ Ennek eredményeképpen egy új, *DigitalTwinsApi* nevű mappa jelenik meg a mun
 
 Az autorest számos nyelvi kód generátort támogat.
 
-## <a name="add-the-sdk-to-a-visual-studio-project"></a>Az SDK hozzáadása egy Visual Studio-projekthez
+## <a name="make-the-sdk-into-a-class-library"></a>Az SDK integrálása egy osztály-tárba
 
-Az autorest által létrehozott fájlokat közvetlenül egy .NET-megoldásba is felveheti. Azonban valószínű, hogy az Azure digitális Twins SDK-t több különálló projektben (az ügyfélalkalmazások, Azure Functions alkalmazások stb.) szeretné felvenni. Emiatt hasznos lehet egy különálló projekt (.NET-osztály könyvtára) létrehozása a generált fájlokból. Ezt követően belefoglalhatja ezt az osztály-függvénytár-projektet több megoldásba projekt-hivatkozásként.
+Az autorest által létrehozott fájlokat közvetlenül egy .NET-megoldásba is felveheti. Azonban valószínű, hogy az Azure Digital Twins SDK-t több különálló projektben (az ügyfélalkalmazások, Azure Functions alkalmazások és egyebek) is szeretné használni. Emiatt hasznos lehet egy különálló projekt (.NET-osztály könyvtára) létrehozása a generált fájlokból. Ezt követően belefoglalhatja ezt az osztály-függvénytár-projektet több megoldásba projekt-hivatkozásként.
 
-Ebből a szakaszból megtudhatja, hogyan hozhatja létre az SDK-t egy olyan osztály-függvénytárként, amely a saját projektje, és más projektekben is szerepelhet. Ezek a lépések a **Visual studióra** támaszkodnak ( [innen](https://visualstudio.microsoft.com/downloads/)telepítheti a legújabb verziót).
+Ebből a szakaszból megtudhatja, hogyan hozhatja létre az SDK-t egy olyan osztály-függvénytárként, amely a saját projektje, és más projektekben is szerepelhet. Ezek a lépések a **Visual studióra** támaszkodnak.
 
 A lépések a következők:
 
@@ -81,7 +86,7 @@ Ezek hozzáadásához nyissa meg az *eszközök > NuGet Package Manager > NuGet-
 
 Most már felépítheti a projektet, és felhasználhatja azt projekt-referenciáként bármely olyan Azure digitális Twins-alkalmazásban, amelyet írsz.
 
-## <a name="general-guidelines-for-generated-sdks"></a>A generált SDK-k általános iránymutatásai
+## <a name="tips-for-using-the-sdk"></a>Tippek az SDK használatához
 
 Ez a szakasz a generált SDK használatának általános információit és irányelveit tartalmazza.
 

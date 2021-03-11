@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 85585b771d9c0ed7c6fcdba9cfef7b589a987c8c
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 020ba74948a062d23d61272ee912eb3364180f1e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429262"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617998"
 ---
 # <a name="microsoft-azure-attestation"></a>Microsoft Azure Attestation 
 
@@ -78,10 +78,10 @@ Az [üzletmenet folytonossága és](../best-practices-availability-paired-region
 A két régióban üzembe helyezett fürtök normál körülmények között egymástól függetlenül működnek. Az egyik régió hibája vagy kimaradása esetén a következő történik:
 
 - Az Azure igazolási BCDR zökkenőmentes feladatátvételt tesz lehetővé, amelyben az ügyfeleknek nem kell további lépéseket tenniük a helyreállításhoz
-- A régióhoz tartozó [Azure Traffic Manager](../traffic-manager/index.yml) felismeri az állapot-mintavételt, és átváltja a végpontot a párosított régióra.
+- A régióhoz tartozó [Azure-Traffic Manager](../traffic-manager/index.yml) felismeri, hogy az állapot-mintavétel lecsökken, és a végpontot párosított régióra vált.
 - A meglévő kapcsolatok nem fognak működni, és belső kiszolgálóhiba-vagy időtúllépési problémákat fognak kapni
-- A vezérlési sík összes művelete le lesz tiltva. Az ügyfelek nem tudnak tanúsítvány-előállítók létrehozására és a szabályzatok frissítésére az elsődleges régióban
-- Az összes adatsík művelet, beleértve a tanúsító hívásokat, továbbra is az elsődleges régióban fog működni
+- A vezérlési sík összes művelete le lesz tiltva. Az ügyfelek nem tudnak létrehozni tanúsító szolgáltatót az elsődleges régióban
+- Az adatsík összes műveletét, beleértve a tanúsító hívásokat és a házirend-konfigurációt, a másodlagos régió fogja kiszolgálni. Az ügyfelek továbbra is dolgozhatnak az adatsík műveletein az elsődleges régiónak megfelelő eredeti URI azonosítóval
 
 ## <a name="next-steps"></a>Következő lépések
 - Ismerje meg az [Azure igazolásának alapfogalmait](basic-concepts.md)

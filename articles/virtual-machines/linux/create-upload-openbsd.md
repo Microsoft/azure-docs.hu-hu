@@ -2,16 +2,17 @@
 title: OpenBSD-rendszerkép létrehozása és feltöltése
 description: Ismerje meg, hogyan hozhat létre és tölthet fel olyan virtuális merevlemezt (VHD-t), amely az OpenBSD operációs rendszert tartalmazza Azure-beli virtuális gép Azure CLI-n keresztüli létrehozásához
 author: gbowerman
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 05/24/2017
 ms.author: guybo
-ms.openlocfilehash: efa38384778bb63857d3c867d74ace7f4f199118
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 3437fcd2d1d521aad237ecf6d3f7937b4835d376
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685089"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554598"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>OpenBSD lemezkép létrehozása és feltöltése az Azure-ba
 Ebből a cikkből megtudhatja, hogyan hozhat létre és tölthet fel egy OpenBSD operációs rendszert tartalmazó virtuális merevlemezt (VHD-t). A feltöltés után saját képként is létrehozhatja a virtuális gépet (VM) az Azure CLI használatával.
@@ -87,7 +88,7 @@ Most leállíthatja a virtuális gépet.
 
 
 ## <a name="prepare-the-vhd"></a>A virtuális merevlemez előkészítése
-A VHDX formátuma nem támogatott az Azure-ban, csak a **rögzített VHD**. A lemezt rögzített VHD formátumba konvertálhatja a Hyper-V kezelőjével vagy a PowerShell [Convert-VHD](/powershell/module/hyper-v/convert-vhd?view=win10-ps) parancsmag használatával. Ilyen például a következő.
+A VHDX formátuma nem támogatott az Azure-ban, csak a **rögzített VHD**. A lemezt rögzített VHD formátumba konvertálhatja a Hyper-V kezelőjével vagy a PowerShell [Convert-VHD](/powershell/module/hyper-v/convert-vhd) parancsmag használatával. Ilyen például a következő.
 
 ```powershell
 Convert-VHD OpenBSD61.vhdx OpenBSD61.vhd -VHDType Fixed

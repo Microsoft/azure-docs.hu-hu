@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 7118ff589e580fd3aa1f693e72152f1ad4c18e10
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 47b4f36aec9a906317a9704a7d73bf66385d9e88
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979878"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552116"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>Oktatóanyag: bejelentkezés a felhasználókba és a védett API meghívása egy Blazer webszerelvény-alkalmazásból
 
@@ -49,7 +49,7 @@ Regisztráció után a **kezelés** területen válassza a **hitelesítés**  > 
 Az alkalmazás létrehozásához szüksége lesz a legújabb Blazer-sablonokra. Ezeket a a .NET Core parancssori felülete a következő paranccsal telepítheti:
 
 ```dotnetcli
-dotnet new --install Microsoft.AspNetCore.Components.WebAssembly.Templates::3.2.1
+dotnet new -i Microsoft.Identity.Web.ProjectTemplates::1.6.0
 ```
 
 Ezután futtassa a következő parancsot az alkalmazás létrehozásához. Cserélje le a parancsban található helyőrzőket az alkalmazás áttekintés lapjáról, és hajtsa végre a parancsot egy parancs-rendszerhéjban. A beállítással megadott kimeneti hely `-o|--output` létrehoz egy projekt mappát, ha az nem létezik, és az alkalmazás nevének részévé válik.

@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: e41d2e531a051738a31325b4ea33961bfb39e7f9
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 3292f337a39e2adb7dc5e78f12785ead8759f5d1
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98808023"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611946"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Eszköz felügyelete a Windows PowerShell StorSimple-bővítményével
 
@@ -29,7 +29,7 @@ A cikk elolvasása után a következőket teheti:
 
 > [!NOTE]
 > * Windows PowerShell StorSimple-bővítménye-parancsmagokkal felügyelheti a StorSimple-eszközt soros konzolról vagy távolról a Windows PowerShell távelérés használatával. Az ezen felületen használható egyes parancsmagokkal kapcsolatos további információkért tekintse meg a [Windows PowerShell StorSimple-bővítménye parancsmag-referenciáját](/powershell/module/hcs/?viewFallbackFrom=winserverr2-ps&preserve-view=true).
-> * A Azure PowerShell StorSimple-parancsmagok a parancsmagok egy másik gyűjteménye, amely lehetővé teszi a StorSimple-és áttelepítési feladatok automatizálását a parancssorból. A StorSimple Azure PowerShell-parancsmagokkal kapcsolatos további információkért nyissa meg az [Azure StorSimple parancsmag-referenciát](/powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0&preserve-view=true#azure).
+> * A Azure PowerShell StorSimple-parancsmagok a parancsmagok egy másik gyűjteménye, amely lehetővé teszi a StorSimple-és áttelepítési feladatok automatizálását a parancssorból. A StorSimple Azure PowerShell-parancsmagokkal kapcsolatos további információkért nyissa meg az [Azure StorSimple parancsmag-referenciát](/powershell/module/servicemanagement/azure.service/#azure).
 
 
 A Windows PowerShell StorSimple-bővítménye a következő módszerek egyikével érheti el:
@@ -179,6 +179,6 @@ A súgót egyszerűen frissítheti a Windows PowerShell felületén. A következ
 > A RunSpace elérhető parancsmagok listájának lekéréséhez jelentkezzen be a megfelelő menüpontba, és futtassa a `Get-Command` parancsmagot.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a fenti munkafolyamatok egyikének végrehajtása során problémákba ütközik a StorSimple-eszközzel, tekintse meg az [eszközök a StorSimple-telepítésekkel kapcsolatos hibaelhárítást ismertető témakört](storsimple-8000-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments).

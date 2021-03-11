@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: 6e81b3d62fb5b208c88257d7660f74ac25f099b8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 1c93002a6dd97aadbf407713ab25091436bd85e0
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048012"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612065"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>A VMware virtuális gépek ügynök nélküli áttelepítésének méretezése az Azure-ba
 
@@ -147,10 +147,10 @@ A kibővített berendezés regisztrációjának befejezéséhez kattintson az **
 1. Az előző lépésben megnyitott előugró ablakban válassza ki a másolt konfigurációs zip-fájl helyét, majd kattintson a **Mentés** gombra.
 
 A fájlok sikeres importálása után a kibővített berendezés regisztrálása befejeződik, és az utolsó sikeres importálás időbélyegét fogja megjeleníteni. A regisztráció részleteit a **részletek megtekintése** lehetőségre kattintva is megtekintheti.
-:::image type="content" source="./media/how-to-scale-out-for-migration/import-success.png" alt-text="Sikeres importálás":::
+:::image type="content" source="./media/how-to-scale-out-for-migration/import-success.png" alt-text="A képernyőfelvételen a kibővíthető berendezések regisztrálása Azure Migrate projekttel látható.":::
 
 Ezen a ponton újra ellenőriznie kell, hogy a kibővíthető berendezés képes-e csatlakozni a vCenter-kiszolgálóhoz. Kattintson az **újraellenőrzés** gombra a kibővíthető berendezés vCenter Server kapcsolatának ellenőrzéséhez.
-:::image type="content" source="./media/how-to-scale-out-for-migration/view-sources.png" alt-text="Sikeres importálás":::
+:::image type="content" source="./media/how-to-scale-out-for-migration/view-sources.png" alt-text="A képernyőképen az érvényesíteni kívánt hitelesítő adatok és felderítési források láthatók.":::
 
 > [!IMPORTANT]
 > Ha szerkeszti a vCenter Server hitelesítő adatait az elsődleges készüléken, győződjön meg arról, hogy a konfigurációs fájlokat újra importálja a kibővíthető készülékre a legújabb konfiguráció beszerzéséhez és a folyamatban lévő replikálás folytatásához.<br/> Ha már nincs szüksége a kibővíthető készülékre, győződjön meg róla, hogy letiltja a kibővíthető készüléket. [**További információ**](./common-questions-appliance.md) arról, hogyan tilthatja le a kibővíthető készüléket, ha nincs rá szükség.

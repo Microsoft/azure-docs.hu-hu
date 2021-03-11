@@ -1,26 +1,19 @@
 ---
 title: Rövid útmutató – Azure CDN profil és végpont létrehozása
 description: Ez a rövid útmutató egy új CDN-profil és -végpont létrehozásán keresztül ismerteti az Azure CDN aktiválását.
-services: cdn
-documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: ''
 ms.assetid: 4ca51224-5423-419b-98cf-89860ef516d2
 ms.service: azure-cdn
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 45edf57ed41f8cf7be839edade5038a0787424a4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e8b3b5c28d00b4d7c81fa3e245113119ae3134ad
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367289"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555703"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Gyors útmutató: Azure CDN-profil és -végpont létrehozása
 
@@ -82,6 +75,3 @@ A korábbi lépésekben létrehozott egy CDN-profilt és egy végpontot egy erő
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: a CDN használata a statikus tartalmak kiszolgálására egy webalkalmazásból](cdn-add-to-web-app.md)
-
-> [!div class="nextstepaction"]
-> [Oktatóanyag: Egyéni tartomány hozzáadása az Azure CDN-végponthoz](cdn-map-content-to-custom-domain.md)
