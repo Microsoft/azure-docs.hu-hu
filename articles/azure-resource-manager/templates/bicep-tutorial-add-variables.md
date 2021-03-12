@@ -2,16 +2,16 @@
 title: Oktatóanyag – változó hozzáadása Azure Resource Manager bicep-fájlhoz
 description: Adja hozzá a változókat a bicep-fájlhoz a szintaxis egyszerűsítése érdekében.
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 1706bafb85834cfd3abae1f5d6a0090da9041bb5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: da2755c1f2c0f9fa891fe1a99b1fed21f64492c8
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748169"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632475"
 ---
 # <a name="tutorial-add-variables-to-azure-resource-manager-bicep-file"></a>Oktatóanyag: változók hozzáadása Azure Resource Manager bicep-fájlhoz
 
@@ -35,7 +35,7 @@ A Storage-fiók nevének paramétere nem használható, mert egyedi nevet kell m
 
 ## <a name="use-variable"></a>Változó használata
 
-Az alábbi példa kiemeli a változóknak a bicep-fájlba való felvételének változásait, amelyek egyedi Storage-fióknevet hoznak létre. Másolja a teljes fájlt, és cserélje le a bicep-fájlt annak tartalmára.
+Az alábbi példa bemutatja, hogyan adhat hozzá egy változót a bicep-fájlhoz, amely egyedi Storage-fióknevet hoz létre. Másolja a teljes fájlt, és cserélje le a bicep-fájlt annak tartalmára.
 
 :::code language="bicep" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.bicep" range="1-31" highlight="1-3,19,22":::
 

@@ -5,14 +5,14 @@ author: jseb225
 ms.author: jeanb
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 12/06/2018
+ms.date: 3/12/2021
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 633885bb1062edac8226c073768ffdeba84fcb55
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 9adc4c92e3e637b9d3e18249b5de00782a94baab
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012631"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232885"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Felügyelet .NET SDK: elemzési feladatok beállítása és futtatása a .NET-hez készült Azure Stream Analytics API-val
 Ismerje meg, hogyan állíthatja be és futtathatja az elemzési feladatokat a .NET Stream Analytics API-val a felügyeleti .NET SDK használatával. Projekt beállítása, bemeneti és kimeneti források, átalakítások, valamint indítási és leállítási feladatok létrehozása. Az elemzési feladatokhoz blob Storage-ból vagy Event hub-ból továbbíthatja az adatait.
@@ -207,6 +207,12 @@ A **TestConnection** metódus ellenőrzi, hogy a stream Analytics-feladathoz tud
    // Test the connection to the input
    ResourceTestStatus testInputResult = streamAnalyticsManagementClient.Inputs.Test(resourceGroupName, streamingJobName, inputName);
    ```
+A TestConnection hívás eredménye egy *ResourceTestResult* objektum, amely két tulajdonságot tartalmaz:
+
+- *állapot*: a következő karakterláncok egyike lehet: ["TestNotAttempted", "TestSucceeded", "TestFailed"]
+- *hiba*: a következő tulajdonságokat tartalmazó ErrorResponse típusú:
+   - *Code*: String típusú kötelező tulajdonság. Az érték a standard System .net. HttpStatusCode, amely a tesztelés során érkezett.
+   - *üzenet*: a hibát jelölő karakterlánc típusú kötelező tulajdonság. 
 
 ## <a name="create-a-stream-analytics-output-target"></a>Stream Analytics kimeneti cél létrehozása
 A kimeneti cél létrehozása hasonló egy Stream Analytics bemeneti forrás létrehozásához. A bemeneti forrásokhoz hasonlóan a kimeneti célok egy adott feladathoz vannak kötve. Ha ugyanazt a kimeneti célt szeretné használni a különböző feladatokhoz, újra kell hívnia a metódust, és meg kell adnia egy másik feladat nevét.
@@ -286,7 +292,7 @@ A **delete** metódus törli a feladatot, valamint az alapul szolgáló alerőfo
 ## <a name="get-support"></a>Támogatás kérése
 További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](/answers/topics/azure-stream-analytics.html).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Megtanulta, hogyan hozhat létre és futtathat analitikai feladatokat a .NET SDK használatával. További tudnivalókért olvassa el a következő cikket:
 
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)

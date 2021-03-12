@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 8ed21d8689bf5340c1bde0a7f782bb8614f7cf11
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ecf115b7ce902fcd8b50f0eca32ffda6ef47e068
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101700201"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618474"
 ---
 # <a name="about-azure-cloud-services-extended-support"></a>Tudnivalók az Azure Cloud Servicesról (bővített támogatás)
 
@@ -57,7 +57,7 @@ Az üzembe helyezésre vonatkozó Cloud Services (klasszikus) és Cloud Services
 
 ## <a name="migration-to-azure-resource-manager"></a>Áttelepítés Azure Resource Managerre
 
-Cloud Services (kiterjesztett támogatás) két elérési utat biztosít az Azure- [Service Managerról](/powershell/azure/servicemanagement/overview?preserve-view=true&view=azuresmps-4.0.0) a [Azure Resource Managerre](../azure-resource-manager/management/overview.md)való Migrálás során. 
+Cloud Services (kiterjesztett támogatás) két elérési utat biztosít az Azure- [Service Managerról](/powershell/azure/servicemanagement/overview) a [Azure Resource Managerre](../azure-resource-manager/management/overview.md)való Migrálás során. 
 1) Az ügyfelek közvetlenül a Azure Resource Manager telepítik a Cloud Services szolgáltatást, majd törlik a régi Cloud Service-t az Azure Service Managerban. 
 2) A helyben történő áttelepítés lehetővé teszi Cloud Services (klasszikus) áttelepítését, amely minimálisan leállást eredményez Cloud Services (kiterjesztett támogatás). 
 

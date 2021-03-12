@@ -1,14 +1,14 @@
 ---
 title: Ismerkedés az Azure Gyorskonfigurálási központ használatával
 description: Az Azure gyors üzembe helyezési szolgáltatásával megismerheti az Azure-t. Megtudhatja, hogyan állíthatja be, telepítheti át és újíthatja meg.
-ms.date: 01/29/2020
+ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2b64e52ed0a15db216d5fb298b66d8ec03fc2f42
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: dbfe1ea99b09813edbfaa7bc248b4c71f1dd8a45
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745706"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232987"
 ---
 # <a name="get-started-with-the-azure-quickstart-center"></a>Ismerkedés az Azure Gyorskonfigurálási központ használatával
 
@@ -37,7 +37,7 @@ Tekintse meg ezt a videót az Azure Gyorsindítás központ által elvégezhető
 
 [Bevezetés az Azure Gyorsindítás központjába](https://www.youtube.com/watch?v=0bSA7RXrbAg)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az Azure-beli telepítésről és Migrálás az [azure Microsoft Cloud bevezetési keretrendszerében](/azure/architecture/cloud-adoption/).
 * Feloldja a felhő képességeit a [Microsoft Learn](/learn/azure/)további tanfolyamokkal.

@@ -16,12 +16,12 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: bd58f18959df3aa290083f907be8ab703366a7c6
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: d980b92bc4effc58ef84ef6ec70c3908f575e484
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360101"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615601"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Az Azure-beli virtuális gépek SQL Server díjszabási útmutatója
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -97,10 +97,7 @@ Ha SQL Server 2017 rendszerű Azure-beli virtuális gépet szeretne létrehozni 
 
 ## <a name="bring-your-own-license-byol"></a><a id="byol"></a> Saját licenc használata (BYOL)
 
-Ha **a saját SQL Server licencét licenchordozhatóság**(más néven **BYOL**) használja, akkor egy Azure-beli virtuális gépen meglévő, frissítési garanciával rendelkező SQL Server mennyiségi licencet használ. A BYOL-t használó SQL Server VM csak a virtuális gép SQL Server licencelési költségeiért számítanak fel díjat, mivel a mennyiségi licencelési program keretében már beszerezte a licenceket és a frissítési garanciát.
-
-> [!IMPORTANT]
-> A BYOL rendszerképekhez frissítési garanciával rendelkező Nagyvállalati Szerződés szükséges. Jelenleg nem érhetők el az Azure Cloud Solution partner (CSP) részeként. A CSP-ügyfelek az utólagos elszámolású lemezképek üzembe helyezésével, majd a [Azure Hybrid Benefit](licensing-model-azure-hybrid-benefit-ahb-change.md)engedélyezésével saját licencet hozhatnak.
+Ha **a saját SQL Server licencét licenchordozhatóság**(más néven **BYOL**) használja, akkor egy Azure-beli virtuális gépen meglévő, frissítési garanciával rendelkező SQL Server mennyiségi licencet használ. A BYOL-t használó SQL Server VM kizárólag a virtuális gép futtatásának költségeiért kell fizetnie, nem SQL Server licenceléshez, mivel a mennyiségi licencelési programon keresztül vagy egy felhőalapú megoldási partneren (CSP) keresztül már beszerezte a licenceket és a frissítési garanciát.
 
 > [!NOTE]
 > A BYOL-lemezképek jelenleg csak a Windows rendszerű virtuális gépek esetében érhetők el. Azonban manuálisan is telepítheti a SQL Servert egy Linux-alapú virtuális gépre. Tekintse [meg a Linux rendszerű virtuális](../linux/frequently-asked-questions-faq.md)gépekkel kapcsolatos gyakori kérdések a SQL Server című témakör útmutatását.

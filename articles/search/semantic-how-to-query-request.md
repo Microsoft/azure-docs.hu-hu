@@ -7,22 +7,22 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/05/2021
-ms.openlocfilehash: 7f7a09b9e20b461a8a1e448bf4a7b0747a35fbb1
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.date: 03/12/2021
+ms.openlocfilehash: 621cfa8977d4d0ed987b7d38407bbf5bbb370950
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102487144"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232739"
 ---
 # <a name="create-a-semantic-query-in-cognitive-search"></a>Szemantikai lekérdezés létrehozása Cognitive Search
 
 > [!IMPORTANT]
-> A szemantikai lekérdezés típusa nyilvános előzetes verzióban érhető el, és az előzetes verziójú REST API és Azure Portal is elérhető. Az előzetes verziójú funkciók a [kiegészítő használati feltételek](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)mellett is elérhetők. A kezdeti előzetes indítás során a szemantikai keresés díjmentes. További információkért lásd a [rendelkezésre állást és a díjszabást](semantic-search-overview.md#availability-and-pricing).
+> A szemantikai lekérdezés típusa nyilvános előzetes verzióban érhető el, és az előzetes verziójú REST API és Azure Portal is elérhető. Az előzetes verziójú funkciók a [kiegészítő használati feltételek](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)mellett is elérhetők. További információkért lásd a [rendelkezésre állást és a díjszabást](semantic-search-overview.md#availability-and-pricing).
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre szemantikai rangsorolást használó keresési kéréseket, és hogyan hozhat létre szemantikai feliratokat és válaszokat.
+Ebből a cikkből megtudhatja, hogyan alakíthat ki szemantikai rangsorolást használó keresési kéréseket. A kérés szemantikai feliratokat és opcionálisan [szemantikai válaszokat](semantic-answers.md)ad vissza, és kiemeli a legrelevánsabb kifejezéseket és kifejezéseket.
 
-A szemantikai lekérdezések általában olyan keresési indexeken működnek, amelyek nagy mennyiségű szöveges tartalomból, például PDF-fájlokból vagy nagyméretű szöveggel ellátott dokumentumokból állnak.
+Mindkét feliratot és választ szó szerint Kinyeri a keresési dokumentumban lévő szövegből. A szemantikai alrendszer meghatározza, hogy a tartalom milyen tulajdonságokkal rendelkezik egy felirat vagy válasz, de nem állít össze új mondatokat vagy kifejezéseket. Emiatt a magyarázatokat vagy definíciókat tartalmazó tartalom a legmegfelelőbb a szemantikai kereséshez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -36,13 +36,13 @@ A szemantikai lekérdezések általában olyan keresési indexeken működnek, a
 
   A keresési ügyfélnek támogatnia kell az előzetes verziójú REST API-kat a lekérdezési kérelemben. Használhatja a [Poster](search-get-started-rest.md), a [Visual Studio Code](search-get-started-vs-code.md)vagy az Ön által módosított kódot, hogy Rest-hívásokat hajtson végre az előnézeti API-khoz. Szemantikai lekérdezés elküldéséhez használhatja a Azure Portal [keresési tallózóját](search-explorer.md) is.
 
-+ A [keresési dokumentumok](/rest/api/searchservice/preview-api/search-documents) a szemantikai lehetőséggel és a jelen cikkben ismertetett egyéb paraméterekkel rendelkeznek.
++ A [lekérdezési kérelemnek](/rest/api/searchservice/preview-api/search-documents) tartalmaznia kell a szemantikai beállítást és a jelen cikkben ismertetett egyéb paramétereket.
 
 ## <a name="whats-a-semantic-query"></a>Mi az a szemantikai lekérdezés?
 
 Cognitive Search a lekérdezés egy paraméteres kérelem, amely meghatározza a lekérdezések feldolgozását és a válasz alakját. A *szemantikai lekérdezés* olyan paramétereket ad hozzá, amelyek felhívhatják a szemantikai visszahelyezési modellt, amely képes felmérni a megfelelő eredmények kontextusát és jelentését, a legfontosabb egyezéseket és a szemantikai válaszokat és feliratokat adja vissza.
 
-A következő kérelem egy alapszintű szemantikai lekérdezésre (válasz nélkül) jellemző.
+A következő kérelem egy minimális szemantikai lekérdezésre jellemző (válasz nélkül).
 
 ```http
 POST https://[service name].search.windows.net/indexes/[index name]/docs/search?api-version=2020-06-30-Preview      
@@ -54,15 +54,25 @@ POST https://[service name].search.windows.net/indexes/[index name]/docs/search?
 }
 ```
 
-Ahogy a Cognitive Search összes lekérdezése esetében, a kérelem egyetlen index dokumentum-gyűjteményét célozza meg. Emellett a szemantikai lekérdezés az elemzés, az elemzés és a vizsgálat egymást követő, nem szemantikai lekérdezési folyamatát is kifejti. A különbség abban rejlik, hogy a relevancia kiszámítása milyen módon történik. Az előzetes kiadásban meghatározottak szerint a szemantikai lekérdezés olyan, amelynek *eredményeit* speciális algoritmusok használatával dolgozzák fel újra, és így a szemantikai rangsorban leginkább relevánsnak ítélt egyezések feldolgozhatók az alapértelmezett hasonlósági algoritmus által hozzárendelt pontszámok helyett. 
+Ahogy a Cognitive Search összes lekérdezése esetében, a kérelem egyetlen index dokumentum-gyűjteményét célozza meg. Emellett a szemantikai lekérdezés az elemzés, az elemzés, a vizsgálat és a pontozás egymást követő, nem szemantikai lekérdezési folyamatát is kifejti. 
 
-A kezdeti eredmények közül csak a legfontosabb 50-as egyezés lehet szemantikailag rangsorolva, és az összes belefoglalási felirat szerepel a válaszban. Opcionálisan megadhat egy **`answer`** paramétert a kérelemben egy lehetséges válasz kinyeréséhez. Ez a modell legfeljebb öt lehetséges választ tud készíteni a lekérdezésre, amelyet a keresési oldal tetején választhat.
+A különbség a relevancia és a pontozás. Az előzetes kiadásban meghatározottak szerint a szemantikai lekérdezés olyan, amelynek *eredményei* egy szemantikai nyelvi modellel lettek rangsorolva, így az alapértelmezett hasonlósági algoritmus által hozzárendelt pontszámok helyett a szemantikai rangsornak leginkább megfelelőnek kell lennie.
 
-## <a name="query-using-rest-apis"></a>Lekérdezés REST API-k használatával
+A kezdeti eredmények közül csak a legfontosabb 50-as egyezés lehet szemantikailag rangsorolva, és az összes belefoglalási felirat szerepel a válaszban. Opcionálisan megadhat egy **`answer`** paramétert a kérelemben egy lehetséges válasz kinyeréséhez. További információ: [szemantikai válaszok](semantic-answers.md).
 
-A REST API teljes leírása megtalálható a következő helyen: [Search Documents (REST Preview)](/rest/api/searchservice/preview-api/search-documents).
+## <a name="query-with-search-explorer"></a>Lekérdezés a keresési ablakban
 
-A szemantikai lekérdezések lehetővé teszik a feliratok és a kiemelés automatikus kiemelését. Ha azt szeretné, hogy a válasz tartalmazzon választ, hozzáadhat egy opcionális **`answer`** paramétert is a kérelemhez. Ez a paraméter, valamint maga a lekérdezési karakterlánc felépítése is választ ad a válaszban.
+A [Search Explorer](search-explorer.md) frissült, hogy a szemantikai lekérdezésekre vonatkozó beállításokat is tartalmazzon. Ezek a beállítások az előzetes verzióhoz való hozzáférés után láthatóvá válnak a portálon. A lekérdezési beállítások lehetővé teszik a szemantikai lekérdezések, a searchFields és a helyesírás-javítás lehetőségét.
+
+A lekérdezési karakterlánchoz is beillesztheti a szükséges lekérdezési paramétereket.
+
+:::image type="content" source="./media/semantic-search-overview/search-explorer-semantic-query-options.png" alt-text="Lekérdezési beállítások a keresési Explorerben" border="true":::
+
+## <a name="query-using-rest"></a>Lekérdezés REST használatával
+
+A [keresési dokumentumok (REST Preview)](/rest/api/searchservice/preview-api/search-documents) használatával programozott módon alakíthatja ki a kérést.
+
+A válasz tartalmazza a feliratok és a kiemelés automatikus kiemelését. Ha azt szeretné, hogy a válasz helyesírás-javítást vagy válaszokat tartalmazzon, adjon hozzá egy opcionális **`speller`** vagy egy **`answers`** paramétert a kéréshez.
 
 Az alábbi példa a Hotels-Sample-index használatával hoz létre szemantikai lekérdezési kérést szemantikai válaszokkal és feliratokkal:
 
@@ -81,6 +91,16 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
     "count": true
 }
 ```
+
+A következő táblázat összefoglalja a szemantikai lekérdezésekben használt lekérdezési paramétereket, hogy azok holisztikusan lássák őket. Az összes paraméter listáját itt tekintheti meg: [dokumentumok keresése (REST előzetes verzió)](/rest/api/searchservice/preview-api/search-documents)
+
+| Paraméter | Típus | Leírás |
+|-----------|-------|-------------|
+| queryType | Sztring | Az érvényes értékek közé tartozik az egyszerű, a teljes és a szemantikai érték. Szemantikai lekérdezésekhez a "szemantika" érték szükséges. |
+| queryLanguage | Sztring | Szemantikai lekérdezésekhez szükséges. Jelenleg csak az "en-us" van implementálva. |
+| searchFields | Sztring | A kereshető mezők vesszővel tagolt listája. Nem kötelező, de ajánlott. Meghatározza azokat a mezőket, amelyeken szemantikai rangsorolás történik. </br></br>Az egyszerű és a teljes lekérdezési típusokkal szemben a listában szereplő mezők sorrendje határozza meg a sorrendet. További használati utasításokért lásd a [2. lépés: SearchFields beállítása](#searchfields)című témakört. |
+| helyesírás | Sztring | Nem kötelező megadni a szemantikai lekérdezéseket, amelyek a keresőmotor elérésének megkezdése előtt kijavítsák a hibásan írt kifejezéseket. További információ: [helyesírás-javítás hozzáadása lekérdezésekhez](speller-how-to-add.md). |
+| válaszok |Sztring | Választható paraméterek, amelyek meghatározzák, hogy az eredmény tartalmazza-e a szemantikai válaszokat. Jelenleg csak a "kinyerő" van implementálva. A válaszokat beállíthatja úgy, hogy legfeljebb öt értéket lehessen visszaadni. Az alapértelmezett érték egy. Ez a példa három válasz számát mutatja: "kinyerő \| count3". További információ: [szemantikai válaszok visszaküldése](semantic-answers.md).|
 
 ### <a name="formulate-the-request"></a>A kérelem összeállítása
 
@@ -109,7 +129,7 @@ Ez a paraméter nem kötelező abban az esetben, ha nincs hiba, ha elhagyja, de 
 
 A searchFields paraméterrel azonosíthatók azok a részek, amelyeket a rendszer "szemantikai hasonlóság" esetén kiértékel a lekérdezéshez. Az előzetes verzió esetében nem javasoljuk, hogy a searchFields üresen hagyja, mivel a modellhez olyan célzásra van szükség, amely a legfontosabb, hogy milyen mezőket kell feldolgoznia.
 
-A searchFields sorrendje kritikus. Ha már meglévő egyszerű vagy teljes Lucene-lekérdezésekben használja a searchFields-t, akkor a szemantikai lekérdezés típusára váltáskor mindenképpen újra meg kell keresnie ezt a paramétert.
+A searchFields sorrendje kritikus. Ha már meglévő egyszerű vagy teljes Lucene-lekérdezésekben használja a searchFields-t, mindenképpen keresse meg ezt a paramétert a mezők sorrendjének ellenőrzéséhez a szemantikai lekérdezés típusára való váltáskor.
 
 Kövesse az alábbi irányelveket az optimális eredmények biztosításához, ha két vagy több searchFields van megadva:
 
@@ -117,11 +137,11 @@ Kövesse az alábbi irányelveket az optimális eredmények biztosításához, h
 
 + Az első mezőnek mindig tömörnek kell lennie (például cím vagy név), ideális esetben 25 szó alatt.
 
-+ Ha az indexnek van olyan URL-mezője, amely szöveges (emberi olvasásra alkalmas, például `www.domain.com/name-of-the-document-and-other-details` nem gépi `www.domain.com/?id=23463&param=eis` ), akkor helyezze a másodikat a listára (vagy először, ha nincs tömör Cím mező).
++ Ha az indexnek van olyan URL-mezője, amely szöveges (emberi olvasásra alkalmas `www.domain.com/name-of-the-document-and-other-details` , például, nem pedig gépi `www.domain.com/?id=23463&param=eis` ), helyezze a másodikat a listára (vagy először, ha nincs tömör Cím mező).
 
 + Ezeket a mezőket olyan leíró mezők követik, amelyekben a szemantikai lekérdezésekre adott válasz, például a dokumentum fő tartalma található.
 
-Ha csak egy mező van megadva, használjon olyan leíró mezőket, ahol a szemantikai lekérdezésekre adott válasz található, például a dokumentum fő tartalma. Olyan mezőt válasszon, amely elegendő tartalmat biztosít.
+Ha csak egy mező van megadva, használjon olyan leíró mezőt, amelyben a szemantikai lekérdezésekre adott válasz található, például a dokumentum fő tartalma. Olyan mezőt válasszon, amely elegendő tartalmat biztosít. Az időben történő feldolgozás biztosításához csak a searchFields kollektív tartalmának első 20 000-tokenje legyen szemantikai kiértékelés és rangsorolás.
 
 #### <a name="step-3-remove-orderby-clauses"></a>3. lépés: az orderBy záradékok eltávolítása
 
@@ -129,15 +149,7 @@ Távolítson el minden orderBy záradékot, ha már létezik egy meglévő kére
 
 #### <a name="step-4-add-answers"></a>4. lépés: válaszok hozzáadása
 
-Ha további feldolgozást szeretne felvenni a válaszra, adja hozzá a "válaszok" lehetőséget. A válaszokat (és a feliratokat) a searchFields-ben felsorolt mezőkben található szakaszokból alakítottuk ki. Ügyeljen arra, hogy a searchFields a tartalomban gazdag mezőket tartalmazza, hogy a válaszban a legjobb válaszokat és feliratokat kapja meg.
-
-Vannak explicit és implicit feltételek, amelyek válaszokat hoznak létre. 
-
-+ A explicit feltételek közé tartozik a "Answers = Extracting" hozzáadása. Emellett a teljes válaszban visszaadott válaszok számának megadásához adja hozzá a "Count" értéket, amelyet a következő szám követ: `"answers=extractive|count=3"` .  Az alapértelmezett érték egy. Legfeljebb öt.
-
-+ Az implicit feltételek közé tartozik egy lekérdezési karakterlánc-konstrukció, amely választ ad magának. A "What Hotel 's The Green Room" kifejezésből álló lekérdezés nagyobb valószínűséggel "válaszol", mint egy "Hotel with Fancy Interior" utasításból álló lekérdezés. Ahogy várható, a lekérdezés nem lehet meghatározatlan vagy NULL értékű.
-
-A fontos szempont, hogy ha a lekérdezés nem egy kérdéshez hasonlít, a rendszer kihagyja a válasz feldolgozását, még akkor is, ha a "válaszok" paraméter be van állítva.
+Ha további feldolgozást szeretne felvenni a válaszra, adja hozzá a "válaszok" lehetőséget. A válaszok (és a feliratok) ki vannak kinyerve a searchFields-ben felsorolt mezőkben található szakaszokból. Ügyeljen arra, hogy a searchFields a tartalomban gazdag mezőket tartalmazza, hogy a válaszban a legjobb válaszokat kapja meg. További információ: [szemantikai válaszok visszaküldése](semantic-answers.md).
 
 #### <a name="step-5-add-other-parameters"></a>5. lépés: egyéb paraméterek hozzáadása
 
@@ -145,129 +157,33 @@ Adja meg a kérésben használni kívánt egyéb paramétereket. Az olyan param�
 
 Igény szerint testre szabhatja a feliratokra alkalmazott kiemelés stílusát. A feliratok a válasz összegzése a dokumentumban lévő legfontosabb részeknél. A mező alapértelmezett értéke: `<em>`. Ha meg szeretné adni a formázás típusát (például sárga háttér), megadhatja a highlightPreTag és a highlightPostTag.
 
-### <a name="review-the-response"></a>A válasz áttekintése
+## <a name="evaluate-the-response"></a>A válasz kiértékelése
 
-A fenti lekérdezésre adott válasz a következő egyezést adja vissza, mint a legfelső szintű kivételezés. A feliratok automatikusan, egyszerű szöveggel és Kiemelt verziókkal lesznek visszaadva. A szemantikai válaszokkal kapcsolatos további információkért lásd: [szemantikai rangsorolás és válaszok](semantic-how-to-query-response.md).
+Ahogy az összes lekérdezés esetében, a válasz a beolvasható, vagy csak a Select paraméterben felsorolt mezőkből áll. Magában foglalja az eredeti relevanciás pontszámot is, és tartalmazhat darabszámot vagy kötegelt eredményeket, attól függően, hogy hogyan alakította ki a kérést.
+
+Szemantikai lekérdezésekben a válasz további elemeket tartalmaz: egy új, szemantikailag rangsorolt relevanciás pontszám, egyszerű szöveg feliratai, és kiemeli a válaszokat, és opcionálisan választ is.
+
+Egy ügyfélalkalmazás esetében feldolgozhatja a keresési oldalt, hogy egy adott mező teljes tartalma helyett egy feliratot is tartalmazzon a egyezés leírásához. Ez akkor hasznos, ha az egyes mezők túl sűrűk a keresési eredmények lapon.
+
+A fenti példában szereplő lekérdezésre adott válasz a következő egyezést adja vissza, mint a legfelső szintű kivételezés. A feliratok automatikusan, egyszerű szöveggel és Kiemelt verziókkal lesznek visszaadva. A válaszok kimaradnak a példából, mert az adott lekérdezés és a corpus nem határozható meg.
 
 ```json
-"@odata.count": 29,
+"@odata.count": 35,
+"@search.answers": [],
 "value": [
     {
-        "@search.score": 1.8920634,
-        "@search.rerankerScore": 1.1091284966096282,
+        "@search.score": 1.8810667,
+        "@search.rerankerScore": 1.1446577133610845,
         "@search.captions": [
             {
-                "text": "Oceanside Resort. Budget. New Luxury Hotel. Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
-                "highlights": "<strong>Oceanside Resort.</strong> Budget. New Luxury Hotel. Be the first to stay.<strong> Bay views</strong> from every room, location near the pier, rooftop pool, waterfront dining & more."
+                "text": "Oceanside Resort. Luxury. New Luxury Hotel. Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
+                "highlights": "<strong>Oceanside Resort.</strong> Luxury. New Luxury Hotel. Be the first to stay.<strong> Bay</strong> views from every room, location near the pier, rooftop pool, waterfront dining & more."
             }
         ],
-        "HotelId": "18",
         "HotelName": "Oceanside Resort",
-        "Description": "New Luxury Hotel.  Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
-        "Category": "Budget"
+        "Description": "New Luxury Hotel. Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
+        "Category": "Luxury"
     },
-```
-
-### <a name="parameters-used-in-a-semantic-query"></a>Szemantikai lekérdezésben használt paraméterek
-
-A következő táblázat összefoglalja a szemantikai lekérdezésekben használt lekérdezési paramétereket, hogy azok holisztikusan lássák őket. Az összes paraméter listáját itt tekintheti meg: [dokumentumok keresése (REST előzetes verzió)](/rest/api/searchservice/preview-api/search-documents)
-
-| Paraméter | Típus | Leírás |
-|-----------|-------|-------------|
-| queryType | Sztring | Az érvényes értékek közé tartozik az egyszerű, a teljes és a szemantikai érték. Szemantikai lekérdezésekhez a "szemantika" érték szükséges. |
-| queryLanguage | Sztring | Szemantikai lekérdezésekhez szükséges. Jelenleg csak az "en-us" van implementálva. |
-| searchFields | Sztring | A kereshető mezők vesszővel tagolt listája. Nem kötelező, de ajánlott. Meghatározza azokat a mezőket, amelyeken szemantikai rangsorolás történik. </br></br>Az egyszerű és a teljes lekérdezési típusokkal szemben a listában szereplő mezők sorrendje határozza meg a sorrendet.|
-| válaszok |Sztring | Választható mező annak megadásához, hogy a szemantikai válaszok szerepeljenek-e az eredményben. Jelenleg csak a "kinyerő" van implementálva. A válaszokat beállíthatja úgy, hogy legfeljebb öt értéket lehessen visszaadni. Az alapértelmezett érték egy. Ez a példa három válasz számát mutatja: "kinyerő \| count3". |
-
-## <a name="query-with-search-explorer"></a>Lekérdezés a keresési ablakban
-
-A következő lekérdezés az API 2020-06-30-es verziójának használatával, valamint a keresési Explorerben futtatott, a beépített szállodákat ábrázoló minta indexet célozza meg. A `$select` záradék csak néhány mezőre korlátozza az eredményeket, így könnyebben megvizsgálható a Search Explorerben a részletes JSON-ban.
-
-### <a name="with-querytypesemantic"></a>A queryType = szemantika
-
-```json
-search=nice hotel on water with a great restaurant&$select=HotelId,HotelName,Description,Tags&queryType=semantic&queryLanguage=english&searchFields=Description,Tags
-```
-
-Az első néhány találat a következő:
-
-```json
-{
-    "@search.score": 0.38330218,
-    "@search.rerankerScore": 0.9754053303040564,
-    "HotelId": "18",
-    "HotelName": "Oceanside Resort",
-    "Description": "New Luxury Hotel. Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
-    "Tags": [
-        "view",
-        "laundry service",
-        "air conditioning"
-    ]
-},
-{
-    "@search.score": 1.8920634,
-    "@search.rerankerScore": 0.8829904259182513,
-    "HotelId": "36",
-    "HotelName": "Pelham Hotel",
-    "Description": "Stunning Downtown Hotel with indoor Pool. Ideally located close to theatres, museums and the convention center. Indoor Pool and Sauna and fitness centre. Popular Bar & Restaurant",
-    "Tags": [
-        "view",
-        "pool",
-        "24-hour front desk service"
-    ]
-},
-{
-    "@search.score": 0.95706713,
-    "@search.rerankerScore": 0.8538530203513801,
-    "HotelId": "22",
-    "HotelName": "Stone Lion Inn",
-    "Description": "Full breakfast buffet for 2 for only $1.  Excited to show off our room upgrades, faster high speed WiFi, updated corridors & meeting space. Come relax and enjoy your stay.",
-    "Tags": [
-        "laundry service",
-        "air conditioning",
-        "restaurant"
-    ]
-},
-```
-
-### <a name="with-querytype-default"></a>A queryType (alapértelmezett)
-
-Az összehasonlításhoz futtassa a fenti lekérdezést, és távolítsa el a következőt: `&queryType=semantic&queryLanguage=english&searchFields=Description,Tags` . Figyelje meg, hogy az eredmények nem jelennek `"@search.rerankerScore"` meg, és hogy a különböző szállodák az első három pozícióban jelennek meg.
-
-```json
-{
-    "@search.score": 8.633856,
-    "HotelId": "3",
-    "HotelName": "Triple Landscape Hotel",
-    "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel’s restaurant services.",
-    "Tags": [
-        "air conditioning",
-        "bar",
-        "continental breakfast"
-    ]
-},
-{
-    "@search.score": 6.407289,
-    "HotelId": "40",
-    "HotelName": "Trails End Motel",
-    "Description": "Only 8 miles from Downtown.  On-site bar/restaurant, Free hot breakfast buffet, Free wireless internet, All non-smoking hotel. Only 15 miles from airport.",
-    "Tags": [
-        "continental breakfast",
-        "view",
-        "view"
-    ]
-},
-{
-    "@search.score": 5.843788,
-    "HotelId": "14",
-    "HotelName": "Twin Vertex Hotel",
-    "Description": "New experience in the Making.  Be the first to experience the luxury of the Twin Vertex. Reserve one of our newly-renovated guest rooms today.",
-    "Tags": [
-        "bar",
-        "restaurant",
-        "air conditioning"
-    ]
-},
 ```
 
 ## <a name="next-steps"></a>Következő lépések

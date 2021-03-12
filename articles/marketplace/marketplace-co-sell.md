@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 3/08/2021
-ms.openlocfilehash: d3759590cdd926b5e144cdc11761630a0aba4e29
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 7d1d4a1a89931e3ded8274a4731aa3606695771b
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102563778"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199891"
 ---
 # <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>Közös értékesítés a Microsoft értékesítési csapatával és partnereivel – áttekintés
 
@@ -46,8 +46,8 @@ Az Azure közös értékesítéssel kapcsolatos állapotai:
 - Azure IP közös értékesítésű incentivized
 
 Az üzleti alkalmazások közös értékesítéssel kapcsolatos állapotai
-- Biz-alkalmazások ISV-kapcsolat standard
-- Biz-alkalmazások ISV-kapcsolat Premium  
+- Biz apps ISV-kapcsolat standard vagy prémium szintű ösztönző standard
+- Biz apps ISV-kapcsolat standard vagy prémium szintű ösztönző prémium  
 
 A közös értékesítéssel kapcsolatos állapotok elérésére vonatkozó követelményekről a [közös értékesítéssel kapcsolatos követelmények](co-sell-requirements.md)című témakörben olvashat bővebben.
 
@@ -74,12 +74,12 @@ A biz apps ISV-kapcsolat standard vagy prémium szintű ösztönző állapota az
 - Dynamics 365 a Customer engagement & PowerApps
 - A Dynamics 365 for Operations
 
-Az _Azure-beli IP-incentivized_ vagy biz- _alkalmazások ISV-összekapcsolási standard vagy prémium szintű ösztönző_ állapotot elérő ajánlatok a következő kereskedelmi Piactéri előnyöket vehetik igénybe:
+Az _Azure-beli IP-incentivized_ állapotot elérő ajánlatok ezeket a kereskedelmi Piactéri kedvezményeket vehetik igénybe:
 
 - A Piactéri szolgáltatási díj 20%-ról 10%-ra csökken. Ez a kedvezmény a kereskedelmi piactéren eladott, szolgáltatásként nyújtott infrastruktúra-(IaaS-) megoldás vagy szolgáltatott szoftver (SaaS) megoldásra vonatkozik. További információkért lásd: [kereskedelmi piactér szolgáltatási díjai](marketplace-commercial-transaction-capabilities-and-considerations.md#commercial-marketplace-service-fees).
 - A Cloud Solution Provider (CSP) partnerei 10%-os kedvezményt kapnak a IaaS-megoldás vagy az SaaS-ajánlat értékesítéséhez. További információ a CSP programról: [Cloud Solution Provider program](cloud-solution-providers.md).
 - Az ajánlat kereskedelmi piactéren keresztüli értékesítései hozzájárulnak az ügyfelek Azure-beli felhasználási kötelezettségeihez. A jogosult ügyfelek láthatják, hogy az ajánlat az **Azure kedvezményként** van megjelölve Azure Portalban. További információkért lásd: Azure-beli [fogyasztási kötelezettségvállalás juttatása](azure-consumption-commitment-benefit.md).
-- Az _Azure-beli IP-incentivized_ vagy _BIZ apps ISV-kapcsolat standard vagy prémium szintű ösztönző_ állapotot elérő ajánlatok a **Microsoft által preferált megoldások** jelvényt kapják meg az online áruházakban található ajánlati lista oldalon. A jelvény az ajánlat minőségének, teljesítményének és az ügyfelek igényeinek egy adott iparági vertikális vagy megoldási területen való kezelésére való képességének növelését segíti elő.
+- Olyan ajánlatok, amelyek az _Azure IP-incentivized_ vagy a _BIZ apps ISV-t, standard vagy prémium szintű ösztönzőket_ érik el. az állapot a **Microsoft által előnyben részesített megoldások** jelvényt kapja az online áruházak ajánlati lista lapján. A jelvény az ajánlat minőségének, teljesítményének és az ügyfelek igényeinek egy adott iparági vertikális vagy megoldási területen való kezelésére való képességének növelését segíti elő.
 
 Ha szeretné megtudni, hogyan érhető el a közös értékesítésre kész és közös értékesítésű incentivized-állapot, tekintse meg a következőt: [együttes értékesítésre kész és közös értékesítésű incentivized követelmények](co-sell-requirements.md).
 

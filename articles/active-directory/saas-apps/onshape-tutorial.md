@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: jeedes
-ms.openlocfilehash: 5d1c4d05748fd9efdc51e18396c8df14e12df63d
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 2ead9bd72691dc120afb60c025ce563684716038
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102185403"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199315"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onshape"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Onshape
 
@@ -74,26 +74,12 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A Azure Portal **Onshape** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
-
-   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-1. Az **alapszintű SAML-konfiguráció** szakaszban a felhasználónak nem kell végrehajtania egy lépést, mivel az alkalmazás már előre integrálva van az Azure-ban.
-
-1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
-
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<SUBDOMAIN>.onshape.com`
-
-    > [!NOTE]
-    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez forduljon a Onshape ügyfélszolgálati [csapatához](mailto:support@onshape.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
-
-1. Kattintson a **Mentés** gombra.
-
+1. Ha a rendszer kéri az egyszeri bejelentkezési beállítás mentését, válassza az **Igen** lehetőséget. 
 1. A Onshape alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
     ![image](common/default-attributes.png)
 
-1. A fentiek mellett a Onshape alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
+1. A fentieken kívül a Onshape alkalmazás néhány további attribútumot vár, amelyek az SAML-válaszban láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
     
     | Name |  Forrás attribútum|
     | --------------- | --------- |
@@ -102,7 +88,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     | companyName | <COMPANY_NAME> |
 
     > [!NOTE]
-    > Szerkessze a "cégnév" jogcím értékét a "tartomány előtagja" értékkel. Például, ha az ügyfél egy URL-cím (például) használatával éri el a Onshape alkalmazást https://acme.onshape.com , a tartomány előtagja "Acme". Az attribútum értékének csak az előtagnak kell lennie, nem a teljes DNS-névnek.
+    > Módosítania _kell_ a **Cégnév** attribútum értékét a Onshape Enterprise *tartományi előtagjaként* . Ha például egy URL-cím használatával fér hozzá a Onshape alkalmazáshoz `https://acme.onshape.com` , a tartomány előtagja *Acme*. Az attribútum értékének csak az előtagnak kell lennie, nem a teljes DNS-névnek.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
@@ -137,7 +123,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="configure-onshape-sso"></a>Onshape SSO konfigurálása
 
-Ha az egyszeri bejelentkezést szeretné konfigurálni a **Onshape** oldalon, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portal a [Onshape támogatási csapatának](mailto:support@onshape.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Az egyszeri bejelentkezés az **Onshape** oldalon való konfigurálásával kapcsolatos információkért lásd: [integrálás a Microsoft Azure ADával](https://cad.onshape.com/help/Content/MS_AzureAD.htm).
 
 ### <a name="create-onshape-test-user"></a>Onshape-tesztelési felhasználó létrehozása
 

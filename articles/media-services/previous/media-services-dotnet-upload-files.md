@@ -3,7 +3,7 @@ title: Fájlok feltöltése egy Media Services-fiókba .NET használatával | Mi
 description: Megtudhatja, hogyan szerezhet be médiatartalmakat Media Servicesba az eszközök .NET használatával történő létrehozásával és feltöltésével.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: c9c86380-9395-4db8-acea-507c52066f73
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9e9f1dc0ce303b45ad2d43c0c9365edc197f7d8e
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: ee9bcc6861245ce40c43570126445a3613cd2744
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695594"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013722"
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>Fájlok feltöltése Media Services-fiókba a .NET használatával
 
@@ -302,7 +302,7 @@ A következő példa a UploadFile függvényt hívja meg, és a tárolási titko
     var asset = UploadFile(@"C:\VideoFiles\BigBuckBunny.mp4", AssetCreationOptions.StorageEncrypted);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már kódolhatja a feltöltött adategységeket. További információ: [Encode Assets](media-services-portal-encode.md) (Adategységek kódolása).
 

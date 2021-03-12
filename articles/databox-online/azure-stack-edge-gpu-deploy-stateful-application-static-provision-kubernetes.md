@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 03/09/2021
 ms.author: alkohli
-ms.openlocfilehash: 51c4a873ca0f4d8c3013e77399f0f9b948875fb6
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 01ba8e1f22deb376fd461be24d3f66f0a7f5e1ae
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520710"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102610484"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>Kubernetes állapot-nyilvántartó alkalmazás futtatása a kubectl használatával a Azure Stack Edge Pro-eszközön PersistentVolume
 
@@ -21,7 +21,7 @@ ms.locfileid: "102520710"
 
 Ez a cikk bemutatja, hogyan helyezhet üzembe egy egypéldányos állapotú alkalmazást a Kubernetes egy PersistentVolume (PV) és egy központi telepítés használatával. A központi telepítés `kubectl` egy meglévő Kubernetes-fürtön lévő parancsokat használ, és üzembe helyezi a MySQL-alkalmazást. 
 
-Ez az eljárás azon felhasználók számára készült, akik áttekintették a [Kubernetes-tárolót Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-kubernetes-storage.md) , és ismerik a [Kubernetes-tároló](https://kubernetes.io/docs/concepts/storage/)fogalmait.
+Ez az eljárás azon felhasználók számára készült, akik áttekintették a [Kubernetes-tárolót Azure stack Edge Pro-eszközön](azure-stack-edge-gpu-kubernetes-storage.md) , és ismerik a [Kubernetes-tároló](https://kubernetes.io/docs/concepts/storage/)fogalmait. 
 
 A Azure Stack Edge Pro támogatja az Azure SQL Edge-tárolók futtatását is, és ezek a MySQL-hez hasonló módon telepíthetők. További információ: [Azure SQL Edge](../azure-sql-edge/overview.md).
 
@@ -62,7 +62,8 @@ Készen áll egy állapot-nyilvántartó alkalmazás üzembe helyezésére az Az
 A PV statikus kiépítéséhez létre kell hoznia egy megosztást az eszközön. Az alábbi lépéseket követve kiépítheti az SMB-megosztást. 
 
 > [!NOTE]
-> Az ebben a útmutatóban használt példa nem működik az NFS-megosztásokkal. Az NFS-megosztások általában az Azure Stack Edge-eszközön, nem adatbázis-alkalmazásokkal is üzembe helyezhetők.
+> - Az ebben a útmutatóban használt példa nem működik az NFS-megosztásokkal. Az NFS-megosztások általában az Azure Stack Edge-eszközön, nem adatbázis-alkalmazásokkal is üzembe helyezhetők.
+> - A tárolási köteteket használó állapot-nyilvántartó alkalmazások a tartós tárolás biztosításához való üzembe helyezéséhez ajánlott a használata `StatefulSet` . Ez a példa `Deployment` csak egy replikát használ, és fejlesztésre és tesztelésre alkalmas. 
 
 1. Válassza ki, hogy szeretne-e peremhálózati megosztást vagy peremhálózati helyi megosztást létrehozni. Megosztás létrehozásához kövesse a [megosztás hozzáadása](azure-stack-edge-manage-shares.md#add-a-share) című témakör utasításait. Ügyeljen arra, hogy jelölje be a **megosztás Edge-számítással való használatának** jelölőnégyzetét.
 

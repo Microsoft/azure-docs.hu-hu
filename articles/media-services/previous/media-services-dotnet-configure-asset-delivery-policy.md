@@ -3,7 +3,7 @@ title: Eszközök kézbesítési házirendjeinek konfigurálása .NET SDK-val | 
 description: Ez a témakör bemutatja, hogyan konfigurálhat különböző eszközökre vonatkozó kézbesítési házirendeket Azure Media Services .NET SDK-val.
 services: media-services
 documentationcenter: ''
-author: Mingfeiy
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 3ec46f58-6cbb-4d49-bac6-1fd01a5a456b
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 24fd4dcb9b24b6d025ff0327d98fee15a05fb7de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82e152f257e867dfdbf97c92b041ce57c5a1bdbc
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89267717"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014264"
 ---
 # <a name="configure-asset-delivery-policies-with-net-sdk"></a>Eszközök kézbesítési házirendjeinek konfigurálása a .NET SDK-val
 
@@ -40,7 +40,7 @@ Ez a cikk azt ismerteti, hogy miért és hogyan kell létrehozni és konfigurál
 
 Különböző házirendeket alkalmazhat ugyanarra az objektumra. Például alkalmazhat PlayReady titkosítást Smooth Streaming és AES-borítékos titkosításra az MPEG DASH és a HLS számára. A továbbítási szabályzatban meg nem határozott protokollok streameléshez való használatát a rendszer nem engedélyezi (ilyen lehet például, ha csupán egyetlen szabályzatot állít be, amely kizárólag a HLS-protokoll használatát tartalmazza). Kivételt jelent, ha egyáltalán nem állít be objektumtovábbítási szabályzatot. Ebben az esetben a rendszer az összes protokollt engedélyezi.
 
-Ha titkosított eszközt szeretne kézbesíteni, konfigurálnia kell az eszköz kézbesítési házirendjét. Az eszköz adatfolyamként való továbbítása előtt a streaming kiszolgáló eltávolítja a tárolási titkosítást, és a megadott kézbesítési házirenddel továbbítja a tartalmat. Ha például az eszköz titkosítását Advanced Encryption Standard (AES) boríték titkosítási kulccsal szeretné továbbítani, állítsa a szabályzat típusát **DynamicEnvelopeEncryption**értékre. A tároló titkosításának eltávolításához és az objektum kiürítésének törléséhez állítsa a házirend típusát **NoDynamicEncryption**értékre. Példák, amelyek bemutatják, hogyan konfigurálhatja ezeket a házirend-típusokat.
+Ha titkosított eszközt szeretne kézbesíteni, konfigurálnia kell az eszköz kézbesítési házirendjét. Az eszköz adatfolyamként való továbbítása előtt a streaming kiszolgáló eltávolítja a tárolási titkosítást, és a megadott kézbesítési házirenddel továbbítja a tartalmat. Ha például az eszköz titkosítását Advanced Encryption Standard (AES) boríték titkosítási kulccsal szeretné továbbítani, állítsa a szabályzat típusát **DynamicEnvelopeEncryption** értékre. A tároló titkosításának eltávolításához és az objektum kiürítésének törléséhez állítsa a házirend típusát **NoDynamicEncryption** értékre. Példák, amelyek bemutatják, hogyan konfigurálhatja ezeket a házirend-típusokat.
 
 Az eszköz kézbesítési házirendjének konfigurálásának módjától függően dinamikusan csomagolhatja, titkosíthatja és továbbíthatja a következő folyamatos átviteli protokollokat: Smooth Streaming, HLS és MPEG DASH.
 

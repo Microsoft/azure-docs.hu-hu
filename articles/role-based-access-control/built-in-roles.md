@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 02/25/2021
 ms.custom: generated
-ms.openlocfilehash: 90c0be8e6df3e489595bdafed1f29d1ed0ef00f8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: baa783d0dfb54e0e606e3f6c6d5397941ae7b7bc
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724506"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011629"
 ---
 # <a name="azure-built-in-roles"></a>Beépített Azure-szerepkörök
 
@@ -719,7 +719,7 @@ Tekintse meg Virtual Machines a portálon, és jelentkezzen be normál felhaszn�
 }
 ```
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 
 ### <a name="cdn-endpoint-contributor"></a>CDN-végpont közreműködői
@@ -6702,7 +6702,7 @@ Lehetővé teszi a EventGrid esemény-előfizetések olvasását. [További info
 
 ### <a name="fhir-data-contributor"></a>FHIR-adatközreműködő
 
-A szerepkör lehetővé teszi, hogy a felhasználó vagy a rendszerbiztonsági tag teljes hozzáférése legyen a FHIR- [információhoz](../healthcare-apis/configure-azure-rbac.md)
+A szerepkör lehetővé teszi, hogy a felhasználó vagy a rendszerbiztonsági tag teljes hozzáférése legyen a FHIR- [információhoz](../healthcare-apis/fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |
@@ -6741,7 +6741,7 @@ A szerepkör lehetővé teszi, hogy a felhasználó vagy a rendszerbiztonsági t
 
 ### <a name="fhir-data-exporter"></a>FHIR-adatexportőr
 
-A szerepkör lehetővé teszi a felhasználó vagy a résztvevő számára a FHIR-információk olvasását és exportálását. [További információ](../healthcare-apis/configure-azure-rbac.md)
+A szerepkör lehetővé teszi a felhasználó vagy a résztvevő számára a FHIR-információk olvasását és exportálását. [További információ](../healthcare-apis/fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |
@@ -6782,7 +6782,7 @@ A szerepkör lehetővé teszi a felhasználó vagy a résztvevő számára a FHI
 
 ### <a name="fhir-data-reader"></a>FHIR Adatolvasó
 
-A szerepkör lehetővé teszi a felhasználó vagy a résztvevő számára a FHIR-információk olvasását. [További információ](../healthcare-apis/configure-azure-rbac.md)
+A szerepkör lehetővé teszi a felhasználó vagy a résztvevő számára a FHIR-információk olvasását. [További információ](../healthcare-apis/fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |
@@ -6821,7 +6821,7 @@ A szerepkör lehetővé teszi a felhasználó vagy a résztvevő számára a FHI
 
 ### <a name="fhir-data-writer"></a>FHIR adatíró
 
-A szerepkör lehetővé teszi, hogy a felhasználó vagy a résztvevő FHIR-információkat [tudjon](../healthcare-apis/configure-azure-rbac.md) olvasni és írni
+A szerepkör lehetővé teszi, hogy a felhasználó vagy a résztvevő FHIR-információkat [tudjon](../healthcare-apis/fhir/configure-azure-rbac.md) olvasni és írni
 
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |

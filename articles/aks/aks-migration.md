@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 5881d03603002cc8d5bef1680083f6b4145bc77f
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 19de94db517afb2a8eeb855e76f2381096f8d7c0
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526687"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609107"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrálás az Azure Kubernetes szolgáltatásba (ak)
 
@@ -114,7 +114,7 @@ Az állapot nélküli alkalmazások migrálása a legegyszerűbb eset. Alkalmazz
 Gondosan tervezze meg az állapot-nyilvántartó alkalmazások áttelepítését, hogy elkerülje az adatvesztést vagy a váratlan állásidőt.
 
 Ha Azure Files használ, a fájlmegosztást kötetként csatlakoztathatja az új fürthöz:
-* [Statikus Azure Files csatlakoztatása kötetként](./azure-files-volume.md#mount-the-file-share-as-a-volume)
+* [Statikus Azure Files csatlakoztatása kötetként](./azure-files-volume.md#mount-file-share-as-an-persistent-volume)
 
 Ha az Azure Managed Disks-t használja, csak akkor csatlakoztathatja a lemezt, ha az nincs csatlakoztatva a virtuális géphez:
 * [Statikus Azure-lemez csatlakoztatása kötetként](./azure-disk-volume.md#mount-disk-as-volume)

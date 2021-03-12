@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: cshoe
-ms.openlocfilehash: 785fd535c46b67cfd631cd18560f396a6901e5c0
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 57c83a94925e94088085efacf1192416f63e6383
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593951"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232035"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>GitHub-műveletek munkafolyamatok az Azure statikus Web Apps előzetes verziójában
 
@@ -79,7 +79,7 @@ jobs:
         action: 'close'
 ```
 
-## <a name="triggers"></a>Triggerek
+## <a name="triggers"></a>Eseményindítók
 
 Egy GitHub-művelet [elindítja](https://help.github.com/actions/reference/events-that-trigger-workflows) a GitHub-műveletek munkafolyamatot, hogy az eseményindítók alapján futtasson egy feladatot. Az eseményindítók a `on` munkafolyamat-fájl tulajdonsága alapján vannak felsorolva.
 
@@ -152,7 +152,7 @@ Az üzembe helyezés mindig `npm install` minden egyéni parancs előtt meghívj
 
 | Parancs            | Leírás |
 |---------------------|-------------|
-| `app_build_command` | A statikus tartalom alkalmazásának üzembe helyezése során futtatandó egyéni parancsot határozza meg.<br><br>Ha például egy szögletes alkalmazás üzemi buildjét szeretné beállítani, hozzon létre egy nevű NPM-parancsfájlt a `build-prod` futtatáshoz `ng build --prod` , és adja meg `npm run build-prod` az egyéni parancsként. Ha üresen hagyja, a munkafolyamat megpróbálja futtatni a `npm run build` vagy a `npm run build:Azure` parancsokat.  |
+| `app_build_command` | A statikus tartalom alkalmazásának üzembe helyezése során futtatandó egyéni parancsot határozza meg.<br><br>Ha például egy szögletes alkalmazás üzemi buildjét szeretné beállítani, hozzon létre egy nevű NPM-parancsfájlt a `build-prod` futtatáshoz `ng build --prod` , és adja meg `npm run build-prod` az egyéni parancsként. Ha üresen hagyja, a munkafolyamat megpróbálja futtatni a `npm run build` vagy a `npm run build:azure` parancsokat.  |
 | `api_build_command` | A Azure Functions API-alkalmazás üzembe helyezése során futtatandó egyéni parancsot határozza meg. |
 
 ## <a name="route-file-location"></a>Útvonalfájl helye

@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 6958302a429fd88d4e26087b860b7f473bf4a1f9
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 226e94510709b37a7e6b1aae90a7e0ec5b4222b9
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103991"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199578"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Microsoft Authenticator vagy Intune Céges portál használata Xamarin-alkalmazásokban
 
@@ -326,6 +326,8 @@ Az értékben lévő aláírás előtt a Forward-Slash ( `/` ) `android:path` é
                     android:path="/hgbUYHVBYUTvuvT&Y6tr554365466="/>
 ```
 
+Az alkalmazás rendszerböngészővel és az Android 11 támogatással való konfigurálásával kapcsolatos további információkért lásd: [az Android-jegyzékfájl frissítése a rendszerböngésző támogatásához](msal-net-xamarin-android-considerations.md#update-the-android-manifest-for-system-webview-support).
+
 Másik lehetőségként beállíthatja, hogy a MSAL a beágyazott böngészőre térjen vissza, amely nem az átirányítási URI-ra támaszkodik:
 
 ```csharp
@@ -344,22 +346,22 @@ Másik lehetőségként beállíthatja, hogy a MSAL a beágyazott böngészőre 
 
     Példa: Ha először telepíti a Microsoft Authenticatort, majd telepíti a Intune Céges portál, a felügyelt hitelesítés *csak* a Microsoft Authenticator történik.
 - **Naplók** – ha a közvetítő hitelesítéssel kapcsolatos problémába ütközik, a közvetítő naplófájljainak megtekintése segíthet az OK diagnosztizálásában.
-  - Microsoft Authenticator naplók megtekintése:
+  - Microsoft Authenticator naplók beolvasása:
 
     1. Kattintson a menü gombra az alkalmazás jobb felső sarkában.
-    1. Válassza a **Súgó**  >  **Küldés naplók**  >  **megtekintése naplók** lehetőséget.
-    1. Válassza az **összes másolása** elemet a közvetítő naplóinak az eszköz vágólapra másolásához.
+    1. Válassza a **visszajelzés küldése**  >  **problémát?** lehetőséget.
+    1. A **mit próbál tenni?** területen válasszon ki egy lehetőséget, és adjon hozzá egy leírást.
+    1. A naplók elküldéséhez kattintson a nyílra az alkalmazás jobb felső sarkában.
 
-    Ezekkel a naplókkal a legjobb megoldás, ha e-mailben küldi el őket, és megtekinti őket a fejlesztői gépen. Előfordulhat, hogy könnyebben elemezni szeretné a számítógépen lévő naplókat az eszköz helyett. Az Androidon egy tesztelési szerkesztőt is használhat, amely szövegfájlként menti a naplókat, majd egy USB-kábellel másolja a fájlt a számítógépre.
+    A naplók elküldése után egy párbeszédpanel megjeleníti az incidens AZONOSÍTÓját. Jegyezze fel az incidens AZONOSÍTÓját, és adja meg a Segítség kérése során.
 
-  - Intune Céges portál naplók megtekintése:
+  - Intune Céges portál naplók beolvasása:
 
-    1. Kattintson az alkalmazás bal felső sarkában található menü gombra.
-    1. **Beállítások**  >  **diagnosztikai** adatelemének kiválasztása
-    1. Válassza a **naplók másolása** lehetőséget a Broker-naplók eszköz SD-kártyára másolásához.
-    1. Csatlakoztassa az eszközt egy számítógéphez egy USB-kábellel a fejlesztői gépen található naplók megtekintéséhez.
+    1. Kattintson a menü gombra az alkalmazás bal felső sarkában.
+    1. Válassza a **Súgó**  >  **e-mail támogatás** lehetőséget.
+    1. A naplók elküldéséhez válassza a **naplók feltöltése** lehetőséget.
 
-    A naplók segítségével megkeresheti a hitelesítési kísérleteket a korrelációs AZONOSÍTÓn keresztül. A korrelációs azonosító minden hitelesítési kérelemhez csatolva van. A Microsoft Identity platform hitelesítési végpontja által visszaadott hibák kereséséhez keresse meg a következőt: `AADSTS` .
+    A naplók elküldése után egy párbeszédpanel megjeleníti az incidens AZONOSÍTÓját. Jegyezze fel az incidens AZONOSÍTÓját, és adja meg a Segítség kérése során.
 
 ## <a name="next-steps"></a>Következő lépések
 

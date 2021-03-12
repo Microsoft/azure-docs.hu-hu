@@ -3,7 +3,7 @@ title: Helyszíni kódolók konfigurálása a többszörös sávszélességű ad
 description: Ez a témakör felsorolja azokat a helyszíni élő kódolókat, amelyek segítségével rögzítheti az élő eseményeket, és egyetlen sávszélességű élő streamet küldhet az AMS-csatornákra (amelyek az élő kódolás engedélyezve van) további feldolgozás céljából. A témakör a felsorolt kódolók konfigurálását bemutató oktatóanyagokra mutató hivatkozásokat tartalmaz.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 0ec6f046-0841-4673-9057-883bdbc30d5c
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 77f2d433b32d180c7b3a819af96a50b721c2087f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: d83c81e1a8a7d8d689e18cc8ba46fbb137959481
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89263433"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014859"
 ---
 # <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>Helyszíni kódolók konfigurálása a többszörös átviteli sebességű streamek létrehozásához Azure Media Services használatakor
 

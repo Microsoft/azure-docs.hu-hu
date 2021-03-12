@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: justinha
-ms.openlocfilehash: 7967347fa63c657ba6211328bdd1d55512358521
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 3341f290a5a5bb169b6e70ea22459a2afafedbbc
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618773"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103198962"
 ---
 # <a name="troubleshoot-account-lockout-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services felügyelt tartománnyal kapcsolatos fiókzárolási problémák elhárítása
 
@@ -84,7 +84,24 @@ AADDomainServicesAccountManagement
 | sort by TimeGenerated asc
 ```
 
-## <a name="next-steps"></a>További lépések
+**Megjegyzés**
+
+Az 4776-es és a 4740-es esemény részleteit a "forrás munkaállomás:" üres elemnél találja. Ennek az az oka, hogy a rossz jelszó más eszközökön keresztül történt a hálózati bejelentkezés során.
+Például: Ha rendelkezik RADIUS-kiszolgálóval, amely továbbítja a hitelesítést a HRE DS-be. Annak ellenőrzéséhez, hogy az RDP-t a DC háttérbe konfigurálja, konfigurálja a Netlogon naplókat.
+
+03/04 19:07:29 [bejelentkezés] [10752] contoso: SamLogon: a contoso\Nagappan.Veerappan tranzitív hálózati bejelentkezése (a LOB11-RADIUS használatával) megadva 
+
+03/04 19:07:29 [bejelentkezés] [10752] contoso: SamLogon: a contoso\Nagappan.Veerappan tranzitív hálózati bejelentkezése (a LOB11-RADIUS használatával) visszaadja a 0xC000006A
+
+03/04 19:07:35 [bejelentkezés] [10753] contoso: SamLogon: a contoso\Nagappan.Veerappan tranzitív hálózati bejelentkezése (a LOB11-RADIUS használatával) megadva 
+
+03/04 19:07:35 [bejelentkezés] [10753] contoso: SamLogon: a contoso\Nagappan.Veerappan tranzitív hálózati bejelentkezése (a LOB11-RADIUS használatával) visszaadja a 0xC000006A
+
+Engedélyezze az RDP-t a NSG lévő tartományvezérlők számára a diagnosztika-rögzítés konfigurálásához (azaz Netlogon) https://docs.microsoft.com/azure/active-directory-domain-services/alert-nsg#inbound-security-rules Ha már módosította az alapértelmezett NSG, kövesse a PSlet módot az engedélyezéshez https://docs.microsoft.com/azure/active-directory-domain-services/network-considerations#port-3389---management-using-remote-desktop
+
+A Netlogon-napló engedélyezése bármely kiszolgálón https://docs.microsoft.com/troubleshoot/windows-client/windows-security/enable-debug-logging-netlogon-service
+
+## <a name="next-steps"></a>Következő lépések
 
 A fiókzárolási küszöbértékek beállítására szolgáló részletes jelszóházirendek részletes ismertetését lásd: [jelszó-és fiókzárolási házirendek konfigurálása][configure-fgpp].
 

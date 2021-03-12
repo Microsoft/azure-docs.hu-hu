@@ -1,14 +1,14 @@
 ---
 title: Ismerje meg, hogyan működnek a metrikus riasztások Azure Monitorban.
 description: Tekintse át, hogy mit tehet a metrikus riasztásokkal, és hogyan működnek Azure Monitorban.
-ms.date: 01/19/2021
+ms.date: 03/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: 03968b3aa3eaf8f32019cfc5e9e2430c71419f62
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8a243f0a2130e0ec2ebafe726f48e07c148807c1
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038135"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016083"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>A metrikariasztások működése az Azure Monitorban
 
@@ -140,7 +140,7 @@ Ez a funkció jelenleg a platform metrikái (nem egyéni metrikák) esetén tám
 
 | Szolgáltatás | Nyilvános Azure | Államigazgatás | Kína |
 |:--------|:--------|:--------|:--------|
-| Virtuális gépek<sup>1</sup>  | **Igen** | **Igen** | Nem |
+| Virtuális gépek<sup>1</sup>  | **Igen** | **Igen** | **Igen** |
 | SQL Server-adatbázisok | **Igen** | **Igen** | **Igen** |
 | SQL Server rugalmas készletek | **Igen** | **Igen** | **Igen** |
 | NetApp-fájlok kapacitásának készletei | **Igen** | **Igen** | **Igen** |

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: genli
-ms.openlocfilehash: 518b8e33ac9adfdd1aa121e0cb8d1558545980e7
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: c28790b2ef423a3d0f996d7c6030b04198756eb1
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054854"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102607611"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-problems-in-azure"></a>A kimenő SMTP-kapcsolati problémák elhárítása az Azure-ban
 
@@ -76,6 +76,10 @@ A 2017. november 15. után létrehozott következő típusok előfizetései tech
 Ha közvetlenül az Azure-beli virtuális gépekről szeretne e-mailt küldeni a külső e-mail-szolgáltatók számára (hitelesített SMTP-továbbítás használata nélkül), a következő probléma típusának használatával egy támogatási eset megnyitásával teheti meg a kérelmet: **technikai**  >  **Virtual Network** a  >  **kapcsolat**  >  **nem tud e-mailt küldeni (SMTP/port 25)**. Győződjön meg arról, hogy a központi telepítésnek miért kell közvetlenül a levelezési szolgáltatónak küldenie a leveleket a hitelesített továbbító használata helyett. A kérelmeket a Microsoft saját belátása szerint fogja felülvizsgálni és jóváhagyni. A rendszer csak a további csalás elleni ellenőrzések befejezését követően kap kérelmeket. 
 
 Az előfizetés kivétele és a virtuális gépek leállítása és újraindítása után a Azure Portal az előfizetésben lévő összes virtuális gép mentesül. A kivétel csak a kért előfizetésre vonatkozik, és csak az internethez közvetlenül átirányított VM-forgalomra érvényes.
+
+## <a name="changing-subscription-type"></a>Előfizetés típusának módosítása
+
+Ha jóváhagyja az előfizetés típusát vagy a felhőalapú megoldás szolgáltatóját vagy az utólagos elszámolású előfizetést, akkor az új szabályzat érvénybe léptetéséhez le kell állítania, felszabadítani kell, majd újra kell indítania a virtuális gépet. Hasonlóképpen, ha az előfizetés típusa alapértelmezés szerint engedélyezett, és ezt követően nem engedélyezett előfizetési típusra vált, a 25-ös portot a telepítés változásai miatt le lehet tiltani.
 
 ## <a name="need-help-contact-support"></a>Segítségre van szüksége? Kapcsolatfelvétel a támogatási szolgáltatással
 

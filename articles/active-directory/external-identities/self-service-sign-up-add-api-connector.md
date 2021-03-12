@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f190b8ffbb98c6ff5465af869305de4c9135cc3f
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 703e3b4c951bc4c3a22f82b9faa31789d1abf868
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102610100"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008722"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>API-összekötő hozzáadása felhasználói folyamathoz
 
@@ -59,12 +59,12 @@ Tanúsítvány létrehozásához használhatja a [Azure Key Vault](../../key-vau
 
 Azure App Service és Azure Functions esetén tekintse meg a [TLS kölcsönös hitelesítés beállítása](../../app-service/app-service-web-configure-tls-mutual-auth.md) című témakört, amelyből megtudhatja, hogyan engedélyezheti és érvényesítheti a tanúsítványt az API-végpontból.
 
-Javasoljuk, hogy emlékeztető riasztásokat állítson be, amikor a tanúsítvány lejár. Új tanúsítvány meglévő API-összekötőbe való feltöltéséhez válassza ki az API-összekötőt az **összes API** -összekötő területen, majd kattintson az **új összekötő feltöltése** elemre. A legutóbb feltöltött tanúsítvány, amely nem járt le, és a Azure Active Directory automatikusan a kezdő dátumot fogja használni.
+Javasoljuk, hogy emlékeztető riasztásokat állítson be, amikor a tanúsítvány lejár. Új tanúsítvány meglévő API-összekötőbe való feltöltéséhez válassza ki az API-összekötőt az **összes API** -összekötő területen, majd kattintson az **új tanúsítvány feltöltése** elemre. A legutóbb feltöltött tanúsítvány, amely nem járt le, és a Azure Active Directory automatikusan a kezdő dátumot fogja használni.
 
 ### <a name="api-key"></a>API-kulcs
-Egyes szolgáltatások "API-kulcs" mechanizmus használatával nehezítik a HTTP-végpontok elérését a fejlesztés során. A [Azure functions](../../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)a `code` **végpont URL-címében** a as a lekérdezési paraméterrel is elvégezhető. Például: `https://contoso.azurewebsites.net/api/endpoint` <b>`?code=0123456789`</b> ). 
+Egyes szolgáltatások "API-kulcs" mechanizmust használnak a HTTP-végpontokhoz való hozzáféréshez a fejlesztés során. A [Azure functions](../../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)a `code` **végpont URL-címében** a as a lekérdezési paraméterrel is elvégezhető. Például: `https://contoso.azurewebsites.net/api/endpoint` <b>`?code=0123456789`</b> ). 
 
-Ez nem olyan mechanizmus, amelyet csak éles környezetben lehet használni. Ezért az alapszintű vagy a Tanúsítványos hitelesítés konfigurálására mindig szükség van. Ha a hitelesítési módszereket (nem javasolt) fejlesztési célokra szeretné megvalósítani, válassza az egyszerű hitelesítést, és használja az ideiglenes értékeket, `username` valamint `password` azt, hogy az API figyelmen kívül hagyhatja az engedélyezést az API-ban.
+Ez nem olyan mechanizmus, amelyet csak éles környezetben lehet használni. Ezért az alapszintű vagy a Tanúsítványos hitelesítés konfigurálására mindig szükség van. Ha nem kívánja megvalósítani a hitelesítési módszereket (nem ajánlott) fejlesztési célokra, válassza az egyszerű hitelesítést, és használja az ideiglenes értékeket, `username` valamint `password` azt, hogy az API figyelmen kívül hagyhatja az engedélyezést az API-ban.
 
 ## <a name="the-request-sent-to-your-api"></a>Az API-nak továbbított kérelem
 Az API-összekötők **http post** -kérelemként valósulnak meg, felhasználói attribútumok ("jogcímek") küldésével kulcs-érték párokként egy JSON-törzsben. Az attribútumok a [Microsoft Graph](/graph/api/resources/user#properties) felhasználó tulajdonságaihoz hasonlóan lesznek szerializálva. 
@@ -76,7 +76,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [ // Sent for Google, Facebook, and Email One Time Passcode identity providers 
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -138,7 +138,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [ // Sent for Google, Facebook, and Email One Time Passcode identity providers 
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -189,7 +189,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [ // Sent for Google, Facebook, and Email One Time Passcode identity providers 
      {
      "signInType":"federated",
      "issuer":"facebook.com",

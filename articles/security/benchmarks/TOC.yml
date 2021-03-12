@@ -191,6 +191,8 @@
       href: ../../iot-hub/security-baseline.md
     - name: A Key Vault biztonsági alapkonfigurációja
       href: ../../key-vault/general/security-baseline.md
+    - name: Linux számítási biztonsági alapterv
+      href: ../../governance/policy/samples/guest-configuration-baseline-linux.md?toc=/azure/security/benchmarks/toc.json
     - name: A Logic Apps biztonsági alapkonfigurációja
       href: ../../logic-apps/security-baseline.md
     - name: A Microsoft Cloud App Security alapkonfigurációja
@@ -229,6 +231,8 @@
       href: ../../virtual-wan/security-baseline.md
     - name: A VPN Gateway biztonsági alapkonfigurációja
       href: ../../vpn-gateway/security-baseline.md
+    - name: Windows számítási biztonsági alapterv
+      href: ../../governance/policy/samples/guest-configuration-baseline-windows.md?toc=/azure/security/benchmarks/toc.json
     - name: Windows rendszerű virtuális asztali biztonsági alapterv
       href: ../../virtual-desktop/security-baseline.md
 - name: További források

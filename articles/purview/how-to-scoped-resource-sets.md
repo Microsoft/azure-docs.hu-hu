@@ -1,5 +1,5 @@
 ---
-title: 'Útmutató: hatókörön belüli erőforrás-készlet konfigurációjának létrehozása'
+title: Hatókörrel rendelkező erőforrás-készlet konfigurációjának létrehozása
 description: Megtudhatja, hogyan hozhat létre egy hatókörrel rendelkező erőforrás-készlet konfigurációs szabályt, amely felülírja, hogy az eszközök hogyan legyenek csoportosítva az erőforrások csoportjaiba
 author: djpmsft
 ms.author: daperlov
@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/17/2021
-ms.openlocfilehash: 8d7d482f38d58c8d6a8959acb51c94c0fb814697
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 10e925a84dbe187ccdf5e444cb8b3dd4b7bb4676
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101668435"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608002"
 ---
 # <a name="create-scoped-resource-set-configuration-rules"></a>Hatókörön belüli erőforrás-készlet konfigurációs szabályainak létrehozása
 
@@ -24,20 +24,29 @@ Egy Storage-fiók vizsgálata során az Azure-beli hatáskörébe definiált min
 
 Kövesse az alábbi lépéseket egy új, hatókörön belüli erőforrás-készlet konfigurációjának létrehozásához:
 
-1. Nyissa meg a felügyeleti központot. Válassza ki a listából a **hatókörön belüli erőforrás-készleteket** . Új konfigurációs szabálykészlet létrehozásához kattintson az **+ új** elemre.
-        :::image type="content" source="media/how-to-scoped-resource-sets/create-new-scoped-resource-set-rule.png" alt-text="Új hatókörön belüli erőforrás-set szabály létrehozása" border="true":::
+1. Nyissa meg a felügyeleti központot. Válassza ki a listából a **hatókörön belüli erőforrás-készleteket** . Válassza az **+ új** lehetőséget egy új konfigurációs szabálykészlet létrehozásához.
 
-1. Adja meg a hatókörön belüli erőforrás-készlet konfigurációjának hatókörét. Válassza ki a Storage-fiók típusát és annak a Storage-fióknak a nevét, amelyhez szabályt kíván létrehozni. Az egyes szabályok a mappa **elérési útja** mezőben megadott mappa elérési útjának hatóköréhez képest érvényesek. 
-        :::image type="content" source="media/how-to-scoped-resource-sets/create-new-scoped-resource-set-scope.png" alt-text="Új hatókörön belüli erőforrás-set szabály létrehozása" border="true":::
+   :::image type="content" source="media/how-to-scoped-resource-sets/create-new-scoped-resource-set-rule.png" alt-text="Új hatókörön belüli erőforrás-set szabály létrehozása" border="true":::
+
+1. Adja meg a hatókörön belüli erőforrás-készlet konfigurációjának hatókörét. Válassza ki a Storage-fiók típusát és annak a Storage-fióknak a nevét, amelyhez szabályt kíván létrehozni. Az egyes szabályok a mappa **elérési útja** mezőben megadott mappa elérési útjának hatóköréhez képest érvényesek.
+
+   :::image type="content" source="media/how-to-scoped-resource-sets/create-new-scoped-resource-set-scope.png" alt-text="Hatókörön belüli erőforrás-készlet konfigurációinak létrehozása" border="true":::
 
 1. Egy konfigurációs hatókörhöz tartozó szabály megadásához válassza az **+ új szabály** lehetőséget.
+
 1. Szabály létrehozásához adja meg a következő mezőket:
-    1. **Szabály neve:** A konfigurációs szabály neve. Ez a mező nem befolyásolja azon eszközöket, amelyekre a szabály vonatkozik.
-    1. **Minősített név:** Olyan minősített elérési út, amely szöveg, dinamikus replacers és statikus replacers kombinációját használja az eszközöknek a konfigurációs szabályhoz való egyeztetéséhez. Ez az elérési út a konfigurációs szabály hatóköréhez képest relatív. A minősített nevek megadásával kapcsolatos részletes utasításokért tekintse meg az alábbi [szintaxist](#syntax) . 
-    1. **Megjelenítendő név:** Az eszköz megjelenített neve. A mező nem kötelező. Az egyszerű szöveg és a statikus replacers használatával testreszabhatja, hogy az eszköz hogyan jelenjen meg a katalógusban. Részletesebb útmutatást az alábbi [szintaxis](#syntax) című szakaszban talál.
-    1. **Csoportosítás nem erőforrás-készletként:** Ha engedélyezve van, a megfeleltetett erőforrás nem lesz csoportosítva egy erőforrás-készletbe. 
-        :::image type="content" source="media/how-to-scoped-resource-sets/scoped-resource-set-rule-example.png" alt-text="Új hatókörön belüli erőforrás-set szabály létrehozása" border="true"::: 
-1. Mentse a szabályt a **Hozzáadás** gombra kattintva. 
+
+   1. **Szabály neve:** A konfigurációs szabály neve. Ez a mező nem befolyásolja azon eszközöket, amelyekre a szabály vonatkozik.
+
+   1. **Minősített név:** Olyan minősített elérési út, amely szöveg, dinamikus replacers és statikus replacers kombinációját használja az eszközöknek a konfigurációs szabályhoz való egyeztetéséhez. Ez az elérési út a konfigurációs szabály hatóköréhez képest relatív. A minősített nevek megadásával kapcsolatos részletes utasításokért tekintse meg az alábbi [szintaxist](#syntax) .
+
+   1. **Megjelenítendő név:** Az eszköz megjelenített neve. A mező nem kötelező. Az egyszerű szöveg és a statikus replacers használatával testreszabhatja, hogy az eszköz hogyan jelenjen meg a katalógusban. Részletesebb útmutatást az alábbi [szintaxis](#syntax) című szakaszban talál.
+
+   1. **Csoportosítás nem erőforrás-készletként:** Ha engedélyezve van, a megfeleltetett erőforrás nem lesz csoportosítva egy erőforrás-készletbe.
+
+      :::image type="content" source="media/how-to-scoped-resource-sets/scoped-resource-set-rule-example.png" alt-text="Új konfigurációs szabály létrehozása." border="true":::
+
+1. Mentse a szabályt a **Hozzáadás** gombra kattintva.
 
 ## <a name="scoped-resource-set-syntax"></a><a name="syntax"></a> Hatókörön belüli erőforrás-készlet szintaxisa
 
@@ -69,21 +78,23 @@ A statikus és a dinamikus replacers használható elérhető típusok alább l�
 | ---- | --------- |
 | sztring | 1 vagy több Unicode-karakterből álló sorozat, beleértve az elválasztó karaktereket, például A szóközöket. |
 | int | 1 vagy több 0-9 ASCII karakterből álló sorozat lehet 0 előtag (például 0,001). |
-| guid | Egy 32-es vagy 8-4-4-4-12-es karakterlánc-ábrázolás egy olyan defineddefa, amely a https://tools.ietf.org/html/rfc4122 |
-| dátum | 6 vagy 8 0-9 ASCII-karakterből álló sorozat, opcionálisan elválasztó: ÉÉÉÉHHNN, éééé-hh-nn, ÉÉHHNN, éé-hh-nn, megadva a (z) https://tools.ietf.org/html/rfc3339 |
-| time | 4 vagy 6 0-9 ASCII-karakterek sorozata opcionálisan elválasztó karakterrel: óópp, óó: PP, HHmmss, HH: PP: mm https://tools.ietf.org/html/rfc3339 |
-| időbélyeg | 12 vagy 14 0-9 ASCII-karakterből álló sorozat, opcionálisan elválasztó: éééé-hh-NNTóó: PP, yyyyMMddHHmm, éééé-hh-NNTóó: PP: mm, yyyymmddHHmmss megadva https://tools.ietf.org/html/rfc3339 |
+| guid | Egy 32-es vagy 8-4-4-4-12-es karakterlánc-formátumú, az [RFC 4122](https://tools.ietf.org/html/rfc4122)-as defineddefa-sorozata. |
+| dátum | 6 vagy 8 0-9 ASCII-karakterből álló sorozat, opcionálisan elválasztó: ÉÉÉÉHHNN, éééé-hh-nn, ÉÉHHNN, éé-hh-nn, az [RFC 3339](https://tools.ietf.org/html/rfc3339)-ben megadva. |
+| time | 4 vagy 6 0-9 ASCII-karakterek sorozata opcionálisan elválasztó karakterrel: óópp, óó: PP, HHmmss, óó: PP: mm az [RFC 3339](https://tools.ietf.org/html/rfc3339)-ben megadva. |
+| időbélyeg | 12 vagy 14 0-9 ASCII-karakterből álló sorozat, opcionálisan elválasztó: éééé-hh-NNTóó: PP, yyyyMMddHHmm, éééé-hh-NNTóó: PP: mm, yyyymmddHHmmss megadva az [RFC 3339](https://tools.ietf.org/html/rfc3339). |
 | boolean | "True" vagy "false", kis-és nagybetűket nem tartalmazó. |
-| szám | 0 vagy több 0-9 ASCII karakterből álló sorozat lehet 0 előre rögzített (például 0,001), amelyet opcionálisan egy pont ("") követ. továbbá egy 1 vagy több 0-9 ASCII-karakterből álló sorozat lehet 0 Postfix (például. 100) | 
+| szám | 0 vagy több 0-9 ASCII-karakterből álló sorozat lehet 0 előre rögzített (például 0,001), amelyet opcionálisan egy pont ("."), valamint 1 vagy több 0-9 ASCII karakterből álló sorozat (például. 100) lehet. |
 | Hex | 1 vagy több, a 0-1-es és A-F készletből származó ASCII-karakterből álló sorozat, az érték lehet 0 előtag |
-| területi beállítás | Egy karakterlánc, amely megfelel a megadott szintaxisnak https://tools.ietf.org/html/rfc5646 |
+| területi beállítás | Egy karakterlánc, amely megfelel az [RFC 5646](https://tools.ietf.org/html/rfc5646)-ben megadott szintaxisnak. |
 
-## <a name="order-of-scoped-resource-set-rules-getting-applied"></a>A hatókörön belüli erőforrás-set szabályok sorrendje.
+## <a name="order-of-scoped-resource-set-rules-getting-applied"></a>A hatókörön belüli erőforrás-készletre vonatkozó szabályok sorrendjének alkalmazása
 
 Az alábbiakban a hatókörön belüli erőforrás-set-szabályok alkalmazására vonatkozó műveletek sorrendje látható:
 
-1. Ha egy eszköz két szabálynak felel meg, az egyes hatókörök prioritást kapnak. Egy hatókör szabályai például a `container/folder` hatókörben szereplő szabályok előtt lesznek érvényesek `container` . 
+1. Ha egy eszköz két szabálynak felel meg, az egyes hatókörök prioritást kapnak. Egy hatókör szabályai például a `container/folder` hatókörben szereplő szabályok előtt lesznek érvényesek `container` .
+
 1. Szabályok sorrendje egy adott hatókörön belül. Ezt az UX-ben lehet szerkeszteni.
+
 1. Ha egy eszköz nem felel meg egyetlen megadott szabálynak sem, az alapértelmezett erőforrás-készlet heurisztikus.
 
 ## <a name="examples"></a>Példák
@@ -95,16 +106,16 @@ SAP-Adatkiemelés teljes és Delta terheléssel
 #### <a name="inputs"></a>Bevitelek
 
 Fájlokat
--   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/13/saptable_customer_20200101_20200102_01.txt`
--   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/13/saptable_customer_20200101_20200102_02.txt`
--   `https://myazureblob.blob.core.windows.net/bar/customer/delta/2020/01/15/saptable_customer_20200101_20200102_01.txt`
--   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/17/saptable_customer_20200101_20200102_01.txt`
--   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/17/saptable_customer_20200101_20200102_02.txt`
 
+- `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/13/saptable_customer_20200101_20200102_01.txt`
+- `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/13/saptable_customer_20200101_20200102_02.txt`
+- `https://myazureblob.blob.core.windows.net/bar/customer/delta/2020/01/15/saptable_customer_20200101_20200102_01.txt`
+- `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/17/saptable_customer_20200101_20200102_01.txt`
+- `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/17/saptable_customer_20200101_20200102_02.txt`
 
-#### <a name="scoped-resource-set-rule"></a>Hatókörön belüli erőforrás-set szabály 
+#### <a name="scoped-resource-set-rule"></a>Hatókörön belüli erőforrás-set szabály
 
-**Hatókör:**https://myazureblob.blob.core.windows.net/bar/
+**Hatókör:**`https://myazureblob.blob.core.windows.net/bar/`
 
 **Megjelenítendő név:** "Külső ügyfél"
 
@@ -112,7 +123,7 @@ Fájlokat
 
 **Erőforrás-készlet:** True
 
-#### <a name="output"></a>Kimenet 
+#### <a name="output"></a>Kimenet
 
 Egy erőforrás-beállító eszköz
 
@@ -124,17 +135,18 @@ Egy erőforrás-beállító eszköz
 
 IoT az Avro formátumban
 
-#### <a name="inputs"></a>Bevitelek 
+#### <a name="inputs"></a>Bevitelek
 
 Fájlokat
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-#### <a name="scoped-resource-set-rules"></a>Hatókörön belüli erőforrás-készletre vonatkozó szabályok 
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-**Hatókör:**https://myazureblob.blob.core.windows.net/bar/
+#### <a name="scoped-resource-set-rules"></a>Hatókörön belüli erőforrás-készletre vonatkozó szabályok
+
+**Hatókör:**`https://myazureblob.blob.core.windows.net/bar/`
 
 1. szabály
 
@@ -150,11 +162,11 @@ Fájlokat
 
 **Minősített név:**`raw/machinename-90/{date:date}/{time:time}-{id:int}.avro`
 
-#### <a name="resource-set-true"></a>*Erőforrás-készlet: true* 
+#### <a name="resource-set-true"></a>*Erőforrás-készlet: true*
 
-#### <a name="outputs"></a>Kimenetek 
+#### <a name="outputs"></a>Kimenetek
 
-2 erőforrás-készlet 
+2 erőforrás-készlet
 
 1. erőforrás-készlet
 
@@ -172,17 +184,18 @@ Fájlokat
 
 IoT az Avro formátumban
 
-#### <a name="inputs"></a>Bevitelek 
+#### <a name="inputs"></a>Bevitelek
 
 Fájlokat
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
--   `https://myazureblob.blob.core.windows.netbar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-#### <a name="scoped-resource-set-rule"></a>Hatókörön belüli erőforrás-set szabály 
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
+- `https://myazureblob.blob.core.windows.netbar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-**Hatókör:**https://myazureblob.blob.core.windows.net/bar/
+#### <a name="scoped-resource-set-rule"></a>Hatókörön belüli erőforrás-set szabály
+
+**Hatókör:**`https://myazureblob.blob.core.windows.net/bar/`
 
 **Megjelenítendő név:** "Machine-{{machineid}}"
 
@@ -190,7 +203,7 @@ Fájlokat
 
 **Erőforrás-készlet:** True
 
-#### <a name="outputs"></a>Kimenetek 
+#### <a name="outputs"></a>Kimenetek
 
 1. erőforrás-készlet
 
@@ -208,25 +221,26 @@ Fájlokat
 
 Ne csoportosítsa az erőforrás-készleteket
 
-#### <a name="inputs"></a>Bevitelek 
+#### <a name="inputs"></a>Bevitelek
 
 Fájlokat
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-#### <a name="scoped-resource-set-rule"></a>Hatókörön belüli erőforrás-set szabály 
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-**Hatókör:**https://myazureblob.blob.core.windows.net/bar/
+#### <a name="scoped-resource-set-rule"></a>Hatókörön belüli erőforrás-set szabály
 
-**Megjelenítendő név:** "Machine-{{machineid}}"
+**Hatókör:**`https://myazureblob.blob.core.windows.net/bar/`
+
+**Megjelenítendő név:**`Machine-{{machineid}}`
 
 **Minősített név:**`raw/machinename-{{machineid:int}}/{{:date}}/{{:time}}-{{:int}}.avro`
 
 **Erőforrás-készlet:** hamis
 
-#### <a name="outputs"></a>Kimenetek 
+#### <a name="outputs"></a>Kimenetek
 
 4 egyedi eszköz
 
