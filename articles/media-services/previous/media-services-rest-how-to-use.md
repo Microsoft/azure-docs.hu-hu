@@ -1,9 +1,9 @@
 ---
 title: A Media Services Operations REST API áttekintése | Microsoft Docs
-description: A "Media Services Operations REST" API-t felhasználhatja feladatok, eszközök, élő csatornák és más erőforrások létrehozására egy Media Services-fiókban. Ez a cikk Azure Media Services v2 REST API áttekintést nyújt.
+description: A Media Services műveletek REST API feladatok, eszközök, élő csatornák és egyéb erőforrások létrehozásához használhatók egy Media Services-fiókban. Ez a cikk Azure Media Services v2 REST API áttekintést nyújt.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: a5f1c5e7-ec52-4e26-9a44-d9ea699f68d9
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
+ms.date: 3/10/2021
+ms.author: inhenkel
 ms.reviewer: johndeu
-ms.openlocfilehash: f48a01bb81829ff2bc10b4db1ed543382f992b58
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 9f147e333e4d1b95a14dd3121d7ab304b6166248
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696227"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010048"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API áttekintése
 
@@ -124,7 +124,7 @@ A Media Services fiókjának az Azure Portalról történő megszerzésével kap
 
 Az Azure AD-hitelesítéssel REST APIhoz kapcsolódó kódok írásához tekintse meg a következő cikket: az [Azure ad-hitelesítés használata a Azure Media Services API Rest-tel való eléréséhez](media-services-rest-connect-with-aad.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az Azure AD-hitelesítés Media Services REST API használatával történő használatáról további információt [Az Azure ad-hitelesítés használata a Azure Media Services API Rest-tel való eléréséhez](media-services-rest-connect-with-aad.md)című témakörben talál.
 
 ## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai

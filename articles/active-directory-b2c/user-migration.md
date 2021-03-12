@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/14/2020
+ms.date: 03/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 34bc50f5f95725b59c0d2b30b529e12abb6aa7fa
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: d2d4a61f653c5bedb31223d2eb3d37b92a076821
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661153"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010167"
 ---
-# <a name="migrate-users-to-azure-ad-b2c"></a>Felhasználók migrálása Azure AD B2Cre
+# <a name="migrate-users-to-azure-ad-b2c"></a>Felhasználók migrálása az Azure AD B2C-be
 
 A másik identitás-szolgáltatóról Azure Active Directory B2C (Azure AD B2C) való Migrálás a meglévő felhasználói fiókok áttelepítését is szükségessé teheti. Két áttelepítési módszer van megtárgyalva, az *áttelepítés előtti* és *zökkenőmentes áttelepítés*. Mindkét módszer esetében olyan alkalmazást vagy parancsfájlt kell írnia, amely a [Microsoft Graph API](microsoft-graph-operations.md) -t használja a felhasználói fiókok létrehozásához Azure ad B2Cban.
 
@@ -50,7 +50,7 @@ A zökkenőmentes áttelepítési folyamatnak két fázisa van: az *áttelepít�
 ### <a name="phase-1-pre-migration"></a>1. fázis: áttelepítés előtti
 
 1. Az áttelepítési alkalmazás beolvassa a felhasználói fiókokat a régi identitás-szolgáltatótól.
-1. Az áttelepítési alkalmazás a megfelelő felhasználói fiókokat hozza létre a Azure AD B2C könyvtárban, de *nem állítja be a jelszavakat*.
+1. Az áttelepítési alkalmazás a megfelelő felhasználói fiókokat hozza létre a Azure AD B2C-címtárban, de a generált *véletlenszerű jelszavakat is beállítja* .
 
 ### <a name="phase-2-set-credentials"></a>2. fázis: hitelesítő adatok beállítása
 

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 03/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: 00808c25ac84da852cce6169fb210767ee2b56cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f55d1dcc3364f119faab0c728f6e3b7f5ecbb06
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89265881"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614938"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>Hitelesítő adatok beszerzése Media Services API-hoz való hozzáféréshez
 
@@ -37,7 +37,7 @@ Ez a cikk a hitelesítő adatok Media Services API-hoz való hozzáférésének 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Azure-fiók. Ha nem rendelkezik fiókkal, kezdje egy [ingyenes Azure-próbaverzióval](https://azure.microsoft.com/pricing/free-trial/). 
+- Egy Azure-fiók. Ha nem rendelkezik fiókkal, kezdje egy [ingyenes Azure-próbaverzióval](https://azure.microsoft.com/pricing/free-trial/).
 - Egy Media Services-fiók. További információ: [Azure Media Services fiók létrehozása a Azure Portal használatával](create-account-howto.md).
 
 ## <a name="portal"></a>[Portál](#tab/portal/)
@@ -47,7 +47,7 @@ Ez a cikk a hitelesítő adatok Media Services API-hoz való hozzáférésének 
 Az **API-hozzáférés** lapon kiválaszthatja az API-hoz való kapcsolódáshoz használni kívánt hitelesítési módszert. Az oldalon az API-hoz való kapcsolódáshoz szükséges értékeket is megadja.
 
 1. A [Azure Portal](https://portal.azure.com/)válassza ki Media Services-fiókját.
-2. Válassza ki az **API-hozzáférés (új)** panelt a bal oldali navigációs sávon.
+2. Válassza ki az **API-hozzáférés** panelt a bal oldali navigációs sávon.
 3. A **kapcsolódás Media Services API**-hoz területen válassza ki azt a Media Services API-verziót, amelyhez csatlakozni szeretne (v3 a szolgáltatás legújabb verziója).
 
 ### <a name="service-principal-authentication--recommended"></a>Egyszerű szolgáltatásnév hitelesítése (ajánlott)

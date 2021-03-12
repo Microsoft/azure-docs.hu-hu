@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10f179ab1bf328a2132c9206580dfa58efb80f1b
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 02cd3f54823b80ae201316fee29c02616b9d8502
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741921"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103012037"
 ---
 # <a name="assign-a-role-to-a-group-using-privileged-identity-management"></a>Szerepkör társítása egy csoporthoz Privileged Identity Management használatával
 
@@ -48,14 +48,14 @@ Ez a cikk azt ismerteti, hogyan rendelhet hozzá Azure Active Directory (Azure A
 Az Azure AD #PowerShell modul telepítéséhez használja a következő parancsmagokat:
 
 ```powershell
-install-module azureadpreview
-import-module azureadpreview
+Install-Module -Name AzureADPreview
+Import-Module -Name AzureADPreview
 ```
 
 Annak ellenőrzéséhez, hogy a modul készen áll-e a használatra, használja a következő parancsmagot:
 
 ```powershell
-get-module azureadpreview
+Get-Module -Name AzureADPreview
 ```
 
 ### <a name="assign-a-group-as-an-eligible-member-of-a-role"></a>Csoport társítása egy szerepkör jogosult tagjaként
@@ -70,38 +70,25 @@ Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId aadRoles -Schedule $sc
 
 ## <a name="using-microsoft-graph-api"></a>Microsoft Graph API használata
 
-```powershell
+```http
 POST
-https://graph.microsoft.com/beta/privilegedAccess/aadroles/roleAssignmentRequests  
-
+https://graph.microsoft.com/beta/privilegedAccess/aadroles/roleAssignmentRequests
 {
-
  "roleDefinitionId": {roleDefinitionId},
-
  "resourceId": {tenantId},
-
  "subjectId": {GroupId},
-
  "assignmentState": "Eligible",
-
  "type": "AdminAdd",
-
  "reason": "reason string",
-
  "schedule": {
-
    "startDateTime": {DateTime},
-
    "endDateTime": {DateTime},
-
    "type": "Once"
-
  }
-
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felhőbeli csoportok használata a szerepkör-hozzárendelések kezeléséhez](groups-concept.md)
 - [A felhőbeli csoportokhoz hozzárendelt szerepkörökkel kapcsolatos hibák elhárítása](groups-faq-troubleshooting.md)

@@ -9,14 +9,16 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d968fb066e68fe1bb6986c63ce750c5de5c98cf9
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 0b7013979199eefa873a651d99e87dc8b2c47856
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633178"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201602"
 ---
 # <a name="monitor-module-twins"></a>Ikermodulok monitorozása
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Az Azure-ban található modulok IoT Hub lehetővé teszik a IoT Edge üzemelő példányok kapcsolatának és állapotának figyelését. Az ikrek modul hasznos információkat tárol a IoT hub-ban a futó modulok teljesítményéről. A [IoT Edge ügynök](iot-edge-runtime.md#iot-edge-agent) és a [IoT Edge hub](iot-edge-runtime.md#iot-edge-hub) futtatókörnyezeti modulok mindegyike megtartja a modul ikreket, `$edgeAgent` illetve a `$edgeHub` következőket:
 

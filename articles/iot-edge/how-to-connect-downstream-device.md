@@ -12,14 +12,16 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 44fe128658b90d2327f17f22b2a33aaa1d4da1fc
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: dc2d2d3e92435c7a028b43a095f456c2c383ecb4
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046125"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199633"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Lefelé irányuló eszköz csatlakoztatása Azure IoT Edge-átjáróhoz
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Ez a cikk útmutatást nyújt az alsóbb rétegbeli eszközök és a IoT Edge transzparens átjárók közötti megbízható kapcsolat létesítéséhez. Transzparens átjáró esetén egy vagy több eszköz átadhatja az üzeneteiket egyetlen átjárón keresztül, amely karbantartja a kapcsolatot IoT Hub.
 
@@ -44,7 +46,19 @@ Ebben a cikkben az *átjáró* és *IoT Edge átjáró* használati feltételei 
 
 ## <a name="prepare-a-downstream-device"></a>Alsóbb rétegbeli eszköz előkészítése
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Egy alsóbb rétegbeli eszköz lehet bármely olyan alkalmazás vagy platform, amely rendelkezik az Azure IoT Hub Cloud Service szolgáltatással létrehozott identitással. Sok esetben ezek az alkalmazások az [Azure IoT Device SDK](../iot-hub/iot-hub-devguide-sdks.md)-t használják. Egy alsóbb rétegbeli eszköz is lehet a IoT Edge átjáró eszközön futó alkalmazás. Azonban egy másik IoT Edge eszköz nem lehet egy IoT Edge átjárón.
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Egy alsóbb rétegbeli eszköz lehet bármely olyan alkalmazás vagy platform, amely rendelkezik az Azure IoT Hub Cloud Service szolgáltatással létrehozott identitással. Sok esetben ezek az alkalmazások az [Azure IoT Device SDK](../iot-hub/iot-hub-devguide-sdks.md)-t használják. Egy alsóbb rétegbeli eszköz is lehet a IoT Edge átjáró eszközön futó alkalmazás.
+
+Ez a cikk a IoT-eszközök alsóbb rétegbeli eszközként való csatlakoztatásának lépéseit ismerteti. Ha IoT Edge eszközzel rendelkezik alsóbb rétegbeli eszközként, tekintse meg az [alsóbb rétegbeli IoT Edge eszköz csatlakoztatása Azure IoT Edge-átjáróhoz](how-to-connect-downstream-iot-edge-device.md)című témakört.
+:::moniker-end
+<!-- end 1.2 -->
 
 >[!NOTE]
 >A IoT Hub-ben regisztrált IoT-eszközök az [ikrek modul](../iot-hub/iot-hub-devguide-module-twins.md) segítségével elkülönítik a különböző folyamatokat, hardvereket és funkciókat egyetlen eszközön. IoT Edge átjárók támogatják az alárendelt modulok kapcsolatait a szimmetrikus kulcsos hitelesítéssel, de X. 509 tanúsítványalapú hitelesítést nem.

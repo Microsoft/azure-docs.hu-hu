@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3cb65503ffab610f9545acb313f7284ffb11ed1
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: eb04616fb442f4a6c000e11919638231e3ddf64c
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741145"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103012173"
 ---
 # <a name="assign-custom-roles-to-manage-enterprise-apps-in-azure-active-directory"></a>Egyéni szerepkörök hozzárendelésével felügyelheti a vállalati alkalmazásokat Azure Active Directory
 
@@ -89,18 +89,16 @@ További részletekért lásd: [Egyéni szerepkör létrehozása és társítás
 Először telepítse az Azure AD PowerShell-modult [a PowerShell-Galéria](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17). Ezután importálja az Azure AD PowerShell előzetes verzióját a következő parancs használatával:
 
 ```powershell
-PowerShell
-import-module azureadpreview
+Import-Module -Name AzureADPreview
 ```
 
 Annak ellenőrzéséhez, hogy a modul készen áll-e a használatra, a következő parancs által visszaadott verziónak kell megfelelnie az itt felsoroltak közül:
 
 ```powershell
-PowerShell
-get-module azureadpreview
+Get-Module -Name AzureADPreview
   ModuleType Version      Name                         ExportedCommands
   ---------- ---------    ----                         ----------------
-  Binary     2.0.0.115    azureadpreview               {Add-AzureADAdministrati...}
+  Binary     2.0.0.115    AzureADPreview               {Add-AzureADAdministrati...}
 ```
 
 ### <a name="create-a-custom-role"></a>Egyéni szerepkör létrehozása
@@ -195,6 +193,6 @@ POST https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A vállalati alkalmazások számára elérhető egyéni szerepkör-engedélyek megismerése](custom-enterprise-app-permissions.md)

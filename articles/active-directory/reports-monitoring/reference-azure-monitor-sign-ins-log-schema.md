@@ -13,16 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/18/2019
+ms.date: 03/12/2021
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d912707a1f41a0c3063d6f3fb67aa6914bd2d390
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bad8ae86827144269e816a6c2e01d6af3f4d88ac
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592308"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225418"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Az Azure AD bejelentkezési naplók sémájának értelmezése Azure Monitor
 
@@ -143,29 +143,31 @@ Ez a cikk a Azure Monitor Azure Active Directory (Azure AD) bejelentkezési napl
 
 ## <a name="field-descriptions"></a>Mezőleírások
 
-| Mező neve | Description |
-|------------|-------------|
-| Idő | A dátum és az idő (UTC). |
-| ResourceId | Ez az érték le van képezve, és nyugodtan figyelmen kívül hagyhatja ezt a mezőt.  |
-| OperationName | A bejelentkezések esetében ez az érték mindig *bejelentkezési tevékenység*. |
-| OperationVersion | Az ügyfél által kért REST API-verzió. |
-| Kategória | A bejelentkezések esetében ez az érték mindig *bejelentkezési*. | 
-| TenantId | A naplókhoz társított bérlői GUID. |
-| ResultType | A bejelentkezési művelet eredménye lehet *sikeres* vagy *sikertelen*. | 
-| ResultSignature | A bejelentkezési művelethez tartozó hibakódot tartalmazza, ha van ilyen. |
-| ResultDescription | A bejelentkezési művelet hibájának leírását adja meg. |
+| Mező neve | Kulcs | Leírás |
+| --- | --- | --- | 
+| Idő |  - | A dátum és az idő (UTC). |
+| ResourceId | - | Ez az érték le van képezve, és nyugodtan figyelmen kívül hagyhatja ezt a mezőt.  |
+| OperationName | - | A bejelentkezések esetében ez az érték mindig *bejelentkezési tevékenység*. |
+| OperationVersion | - | Az ügyfél által kért REST API-verzió. |
+| Kategória | - | A bejelentkezések esetében ez az érték mindig *bejelentkezési*. | 
+| TenantId | - | A naplókhoz társított bérlői GUID. |
+| ResultType | - | A bejelentkezési művelet eredménye lehet *sikeres* vagy *sikertelen*. | 
+| ResultSignature | - | A bejelentkezési művelethez tartozó hibakódot tartalmazza, ha van ilyen. |
+| ResultDescription | N/A vagy üres | A bejelentkezési művelet hibájának leírását adja meg. |
 | riskDetail | riskDetail | A "okát" a kockázatos felhasználó, a bejelentkezés vagy a kockázatkezelés egy adott állapota mögött. A lehetséges értékek a következők:,,,, `none` `adminGeneratedTemporaryPassword` `userPerformedSecuredPasswordChange` `userPerformedSecuredPasswordReset` `adminConfirmedSigninSafe` , `aiConfirmedSigninSafe` , `userPassedMFADrivenByRiskBasedPolicy` , `adminDismissedAllRiskForUser` , `adminConfirmedSigninCompromised` , `unknownFutureValue` . Az érték `none` azt jelenti, hogy a felhasználó vagy a bejelentkezés eddig nem hajt végre műveletet. <br>**Megjegyzés:** A tulajdonság részleteit egy prémium szintű Azure AD P2-licencre van szükség. Más licencek az értéket adják vissza `hidden` . |
 | riskEventTypes | riskEventTypes | A bejelentkezéshez társított kockázati észlelési típusok. A lehetséges értékek a következők:,,,,,,,, `unlikelyTravel` `anonymizedIPAddress` `maliciousIPAddress` `unfamiliarFeatures` `malwareInfectedIPAddress` `suspiciousIPAddress` `leakedCredentials` `investigationsThreatIntelligence`  `generic` és `unknownFutureValue` . |
+| authProcessingDetails | Azure AD-alkalmazás hitelesítési könyvtára | A családra, a könyvtárra és a platformra vonatkozó információt tartalmaz a következő formátumban: "Family: ADAL Library: ADAL.JS 1.0.0 platform: JS" |
+| authProcessingDetails | IsCAEToken | Az értékek értéke TRUE (igaz) vagy FALSE (hamis) |
 | riskLevelAggregated | riskLevel | Összesített kockázati szint. A lehetséges értékek a következők:,,,, `none` `low` `medium` `high` `hidden` és `unknownFutureValue` . Az érték `hidden` azt jelenti, hogy a felhasználó vagy a bejelentkezés nem volt engedélyezve a Azure ad Identity Protection. **Megjegyzés:** Ennek a tulajdonságnak a részletei csak prémium szintű Azure AD P2 ügyfelek esetében érhetők el. A rendszer minden más ügyfelet visszaadja `hidden` . |
 | riskLevelDuringSignIn | riskLevel | Kockázati szint a bejelentkezés során. A lehetséges értékek a következők:,,,, `none` `low` `medium` `high` `hidden` és `unknownFutureValue` . Az érték `hidden` azt jelenti, hogy a felhasználó vagy a bejelentkezés nem volt engedélyezve a Azure ad Identity Protection. **Megjegyzés:** Ennek a tulajdonságnak a részletei csak prémium szintű Azure AD P2 ügyfelek esetében érhetők el. A rendszer minden más ügyfelet visszaadja `hidden` . |
 | riskState | riskState | A kockázatos felhasználó, a bejelentkezés vagy a kockázat észlelése állapotának jelentése. A lehetséges értékek a következők: `none` ,, `confirmedSafe` `remediated` , `dismissed` , `atRisk` , `confirmedCompromised` , `unknownFutureValue` . |
-| DurationMs |  Ez az érték le van képezve, és nyugodtan figyelmen kívül hagyhatja ezt a mezőt. |
-| CallerIpAddress | Annak az ügyfélnek az IP-címe, amely a kérelmet elvégezte. | 
-| CorrelationId | Az ügyfél által átadott opcionális GUID-azonosító. Ez az érték segít az ügyféloldali műveleteknek a kiszolgálóoldali műveletekkel való összekapcsolásában, és akkor hasznos, ha a szolgáltatásokra kiterjedő naplók követését végzi. |
-| Identitás | A kérelem elküldésekor bemutatott jogkivonat identitása. Felhasználói fiók, rendszerfiók vagy egyszerű szolgáltatásnév lehet. |
-| Level | Az üzenet típusát adja meg. A naplózáshoz mindig *tájékoztatás* szükséges. |
-| Hely | Megadja a bejelentkezési tevékenység helyét. |
-| Tulajdonságok | Felsorolja a bejelentkezésekhez kapcsolódó összes tulajdonságot. További információ: [Microsoft Graph API-referenciák](/graph/api/resources/signin?view=graph-rest-beta). Ez a séma ugyanazokat az attribútumokat használja, mint a bejelentkezési erőforrás, az olvashatóság érdekében.
+| DurationMs | - | Ez az érték le van képezve, és nyugodtan figyelmen kívül hagyhatja ezt a mezőt. |
+| CallerIpAddress | - | Annak az ügyfélnek az IP-címe, amely a kérelmet elvégezte. | 
+| CorrelationId | - | Az ügyfél által átadott opcionális GUID-azonosító. Ez az érték segít az ügyféloldali műveleteknek a kiszolgálóoldali műveletekkel való összekapcsolásában, és akkor hasznos, ha a szolgáltatásokra kiterjedő naplók követését végzi. |
+| Identitás | - | A kérelem elküldésekor bemutatott jogkivonat identitása. Felhasználói fiók, rendszerfiók vagy egyszerű szolgáltatásnév lehet. |
+| Level | - | Az üzenet típusát adja meg. A naplózáshoz mindig *tájékoztatás* szükséges. |
+| Hely | - | Megadja a bejelentkezési tevékenység helyét. |
+| Tulajdonságok | - | Felsorolja a bejelentkezésekhez kapcsolódó összes tulajdonságot.|
 
 ## <a name="next-steps"></a>Következő lépések
 

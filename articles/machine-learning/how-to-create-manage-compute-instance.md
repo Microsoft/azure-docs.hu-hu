@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 5aaaf2000fb8310a5208447f8eaf8546feda90fb
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 6c29bf87c5f0ecaaeb6d608069791431a949c89b
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102509319"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009963"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning számítási példány létrehozása és kezelése
 
@@ -108,7 +108,7 @@ Létrehozhat egy [Azure Resource Manager sablonnal](https://github.com/Azure/azu
 ### <a name="create-on-behalf-of-preview"></a>Létrehozás a következő nevében (előzetes verzió)
 
 Rendszergazdaként létrehozhat egy számítási példányt egy adattudós nevében, és hozzárendelheti a példányt a következőhöz:
-* [Azure Resource Manager sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance).  A sablonban szükséges TenantID és ObjectID megkeresésével kapcsolatos részletekért lásd a [hitelesítési konfiguráció azonosító objektum-azonosítóinak megkeresése](../healthcare-apis/find-identity-object-ids.md)című témakört.  Ezeket az értékeket a Azure Active Directory portálon is megtalálhatja.
+* [Azure Resource Manager sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance).  A sablonban szükséges TenantID és ObjectID megkeresésével kapcsolatos részletekért lásd a [hitelesítési konfiguráció azonosító objektum-azonosítóinak megkeresése](../healthcare-apis/fhir/find-identity-object-ids.md)című témakört.  Ezeket az értékeket a Azure Active Directory portálon is megtalálhatja.
 * REST API
 
 A számítási példányt a következő [Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC)](../role-based-access-control/overview.md) engedélyekkel kell létrehoznia: 

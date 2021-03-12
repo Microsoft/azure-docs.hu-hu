@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 03/11/2021
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 2ed6c0c20869e31c0ef664d15305c5aa85ca4c6c
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: b7290abe102d22bb87c87c3c9d13ee99c127b942
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215578"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199914"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Azure Storage-fiókhoz tartozó megosztott kulcs engedélyezésének tiltása (előzetes verzió)
 
@@ -143,28 +143,15 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Ha egy Storage-fiókhoz az Azure CLI-vel szeretné engedélyezni a megosztott kulcs engedélyezését, telepítse az Azure CLI 2.9.1 vagy újabb verzióját. További információ: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Ezután konfigurálja a **allowSharedKeyAccess** tulajdonságot egy új vagy meglévő Storage-fiókhoz.
+Ha egy Storage-fiókhoz az Azure CLI-vel szeretné engedélyezni a megosztott kulcs engedélyezését, telepítse az Azure CLI 2.20.0 vagy újabb verzióját. További információ: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Ezután konfigurálja a **allowSharedKeyAccess** tulajdonságot egy új vagy meglévő Storage-fiókhoz.
 
 Az alábbi példa bemutatja, hogyan lehet letiltani a megosztott kulccsal való hozzáférést egy meglévő Storage-fiókhoz az Azure CLI-vel. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
 
 ```azurecli-interactive
-$storage_account_id=$(az resource show \
+az storage account update \
     --name <storage-account> \
     --resource-group <resource-group> \
-    --resource-type Microsoft.Storage/storageAccounts \
-    --query id \
-    --output tsv)
-
-az resource update \
-    --ids $storage_account_id \
-    --set properties.allowSharedKeyAccess=false
-
-az resource show \
-    --name <storage-account> \
-    --resource-group <resource-group> \
-    --resource-type Microsoft.Storage/storageAccounts \
-    --query properties.allowSharedKeyAccess \
-    --output tsv
+    --allow-shared-key-access false
 ```
 
 ---
@@ -179,7 +166,7 @@ Annak ellenőrzéséhez, hogy a megosztott kulcs engedélyezése már nem enged�
 az storage container create \
     --account-name <storage-account> \
     --name sample-container \
-    --account-key <key>
+    --account-key <key> \
     --auth-mode key
 ```
 

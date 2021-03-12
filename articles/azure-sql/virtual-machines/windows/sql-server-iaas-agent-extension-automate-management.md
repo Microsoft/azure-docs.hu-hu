@@ -17,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: cab5ac5e6a8fd900a41ff3690763746033b6200e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: fdff3f6144f7099f3f61cfe57186357e17136e9f
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034812"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225489"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>A felügyelet automatizálása a SQL Server IaaS-ügynök bővítménnyel
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -164,6 +164,8 @@ Az SQL IaaS-ügynök bővítménye csak a következőket támogatja:
 - SQL Server a nyilvános vagy Azure Government felhőbe telepített virtuális gépeket. A többi magán-vagy kormányzati felhőbe való üzembe helyezés nem támogatott. 
 
 
+## <a name="in-region-data-residency"></a>Régión belüli adattárolás
+Az Azure SQL-alapú virtuális gép és az SQL IaaS-ügynök bővítménye nem helyezi át vagy tárolja az ügyféladatokat azon a régión kívül, amelyben telepítik.
 
 ## <a name="next-steps"></a>Következő lépések
 

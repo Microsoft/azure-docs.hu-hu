@@ -8,16 +8,23 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 13f78691a3652cc82e261f807c690c04cebec3b4
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 9356da9516ea17243be8e0e5519ec4b19e06db8a
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175516"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200877"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>IoT Edge-eszköz létrehozása és kiépítése Linux rendszerű TPM-sel
 
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
+
 Ez a cikk bemutatja, hogyan tesztelheti az automatikus kiépítés egy Linux IoT Edge-eszközön platformmegbízhatósági modul (TPM) használatával. Az eszközök [kiépítési szolgáltatásával](../iot-dps/index.yml)automatikusan kiépítheti Azure IoT Edge eszközöket. Ha nem ismeri az automatikus kiépítés folyamatát, a folytatás előtt tekintse át a [kiépítés](../iot-dps/about-iot-dps.md#provisioning-process) áttekintését.
+
+:::moniker range=">=iotedge-2020-11"
+> [!NOTE]
+> Jelenleg a TPM-hitelesítés használatával történő automatikus kiépítés nem támogatott IoT Edge 1,2-es verzióban.
+:::moniker-end
 
 A feladatok a következők:
 

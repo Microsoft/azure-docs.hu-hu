@@ -115,8 +115,6 @@
       href: support.md
     - name: Éles környezetben való üzembe helyezés feladatlistája
       href: production-checklist.md
-    - name: IoT Edge-szószedet
-      href: iot-edge-glossary.md
 - name: Útmutatók
   items:
     - name: IoT Edge-eszköz létrehozása
@@ -259,6 +257,8 @@
   items:
     - name: Támogatási és súgólehetőségek
       href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
+    - name: IoT Szószedet
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
     - name: Azure IoT-szolgáltatások
       items:
         - name: IoT Hub

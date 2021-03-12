@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 60eed96e20ffcebc3ddefccffa2761017e28e0d2
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: cf5b24bb55f278d9d33916d2d54d3ee5a169c3e8
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103617"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224401"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy JavaScript SPA-ban
 
@@ -109,15 +109,19 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 > [!div renderon="docs"]
 >
 > Ahol:
-> - *\<Enter_the_Application_Id_Here>* a regisztrált alkalmazáshoz tartozó **alkalmazás (ügyfél) azonosítója** .
-> - *\<Enter_the_Cloud_Instance_Id_Here>* Az Azure-felhő példánya. A fő vagy a globális Azure-felhőhöz egyszerűen írja be a következőt: *https://login.microsoftonline.com* . Az **országos** felhők (például Kína) esetében lásd: [nemzeti felhők](./authentication-national-cloud.md).
-> - *\<Enter_the_Tenant_info_here>* az a következő lehetőségek egyikére van beállítva:
->    - Ha az alkalmazás támogatja a *szervezeti címtárban lévő fiókokat*, cserélje le ezt az értéket a **bérlői azonosítóra** vagy a **bérlő nevére** (például *contoso.microsoft.com*).
->    - Ha az alkalmazás *minden szervezeti címtárban támogatja a fiókokat*, cserélje le ezt az értéket **szervezetekkel**.
->    - Ha az alkalmazás *minden szervezeti címtárban és személyes Microsoft-fiókban is támogatja a fiókokat*, cserélje le ezt az értéket **közösre**. Ha *csak a személyes Microsoft-fiókok* támogatását szeretné korlátozni, cserélje le ezt az értéket a **fogyasztókkal**.
+> - `Enter_the_Application_Id_Here` a regisztrált alkalmazáshoz tartozó **alkalmazás (ügyfél) azonosítója** .
 >
-> > [!TIP]
-> > Az **alkalmazás (ügyfél) azonosítója**, a **címtár (bérlő) azonosítója** és a **támogatott fióktípusok** értékét az alkalmazás **Áttekintés** oldalán találja az Azure Portalon.
+>    Az **alkalmazás (ügyfél) azonosítójának** megkereséséhez nyissa meg a Azure Portal alkalmazás **Áttekintés** lapját.
+> - `Enter_the_Cloud_Instance_Id_Here` Az Azure-felhő példánya. A fő vagy a globális Azure-felhőhöz egyszerűen írja be a következőt: `https://login.microsoftonline.com` . Az **országos** felhők (például Kína) esetében lásd: [nemzeti felhők](./authentication-national-cloud.md).
+> - `Enter_the_Tenant_info_here` az a következő lehetőségek egyikére van beállítva:
+>    - Ha az alkalmazás támogatja a *szervezeti címtárban lévő fiókokat*, cserélje le ezt az értéket a **bérlői azonosítóra** vagy a **bérlő nevére** (például: `contoso.microsoft.com` ).
+>
+>    A **címtár (bérlő) azonosító** értékének megkereséséhez nyissa meg az alkalmazás regisztrációjának **Áttekintés** lapját a Azure Portal.
+>    - Ha az alkalmazás *minden szervezeti címtárban támogatja a fiókokat*, cserélje le ezt az értéket a következőre: `organizations` .
+>    - Ha az alkalmazás a *szervezeti címtárban és a személyes Microsoft-fiókokban is támogatja a fiókokat*, cserélje le ezt az értéket a következőre: `common` . A *személyes Microsoft-fiókok* támogatásának korlátozásához cserélje le ezt az értéket a következőre: `consumers` .
+>
+>    A **támogatott fióktípus** értékének megkereséséhez nyissa meg az alkalmazás regisztrációjának **Áttekintés** lapját a Azure Portal.
+>
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>3. lépés: az alkalmazás konfigurálva van, és készen áll a futtatásra
@@ -203,7 +207,7 @@ A gyors üzembe helyezési kód azt is bemutatja, hogyan inicializálható a MSA
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
 
-> |Ahol  | Description |
+> |Ahol  | Leírás |
 > |---------|---------|
 > |`clientId`     | A Azure Portalban regisztrált alkalmazás alkalmazás-azonosítója.|
 > |`authority`    | Választható A fiók típusát támogató szolgáltatói URL-cím, a konfiguráció szakaszban korábban leírtak szerint. Az alapértelmezett szolgáltató: `https://login.microsoftonline.com/common` . |
@@ -231,7 +235,7 @@ myMSALObj.loginPopup(loginRequest)
 });
 ```
 
-> |Ahol  | Description |
+> |Ahol  | Leírás |
 > |---------|---------|
 > | `scopes`   | Választható Olyan hatóköröket tartalmaz, amelyeket a rendszer a bejelentkezési időben a felhasználói beleküldéshez kér. Például `[ "user.read" ]` Microsoft Graph vagy `[ "<Application ID URL>/scope" ]` egyéni webes API-khoz (azaz `api://<Application ID>/access_as_user` ). |
 
@@ -261,7 +265,7 @@ myMSALObj.acquireTokenSilent(tokenRequest)
     });
 ```
 
-> |Ahol  | Description |
+> |Ahol  | Leírás |
 > |---------|---------|
 > | `scopes`   | Az API hozzáférési jogkivonatában visszaadott hatóköröket tartalmaz. Például `[ "mail.read" ]` Microsoft Graph vagy `[ "<Application ID URL>/scope" ]` egyéni webes API-khoz (azaz `api://<Application ID>/access_as_user` ).|
 

@@ -10,14 +10,16 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: pdecarlo
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0e044e8102308fce4145d4aa6c887cefaa99be34
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 1cd89f3f772effce4997fb69b37858ce2077c1dc
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629962"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201092"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Azure IoT Edge futtatása Ubuntu-Virtual Machines
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Az Azure IoT Edge futtatókörnyezet az eszköz IoT Edge eszközre való bekapcsolása. A futtatókörnyezet az eszközökön kisméretű, málna PI-ként vagy ipari kiszolgálóként is telepíthető. Miután konfigurált egy eszközt az IoT Edge-futtatókörnyezettel, üzembe helyezhet rajta üzleti logikát a felhőből.
 
@@ -26,7 +28,10 @@ Ha többet szeretne megtudni arról, hogyan működik a IoT Edge futtatókörnye
 Ez a cikk egy Ubuntu 18,04 LTS rendszerű virtuális gép üzembe helyezésének lépéseit sorolja fel a telepített és az előre megadott eszköz-kapcsolódási karakterlánc használatával konfigurált Azure IoT Edge futtatókörnyezettel. Az üzembe helyezés egy [Felhőbeli init](../virtual-machines/linux/using-cloud-init.md
 ) -alapú Azure Resource Manager- [sablon](../azure-resource-manager/templates/overview.md) használatával valósul meg, amelyet a [iotedge-VM-Deploy](https://github.com/Azure/iotedge-vm-deploy) Project repository tart fenn.
 
-Az első rendszerindítás során az Ubuntu 18,04 LTS virtuális gép [telepíti a Azure IoT Edge Runtime legújabb verzióját a Cloud-init használatával](https://github.com/Azure/iotedge-vm-deploy/blob/master/cloud-init.txt). A megadott kapcsolati karakterláncot is beállítja a futtatókörnyezet elindítása előtt, így egyszerűen konfigurálhatja és csatlakoztathatja az IoT Edge eszközt anélkül, hogy SSH-vagy távoli asztali munkamenetet kellene elindítania. 
+Az első rendszerindítás során az Ubuntu 18,04 LTS virtuális gép [telepíti a Azure IoT Edge Runtime legújabb verzióját a Cloud-init használatával](https://github.com/Azure/iotedge-vm-deploy/blob/master/cloud-init.txt). A megadott kapcsolati karakterláncot is beállítja a futtatókörnyezet elindítása előtt, így egyszerűen konfigurálhatja és csatlakoztathatja az IoT Edge eszközt anélkül, hogy SSH-vagy távoli asztali munkamenetet kellene elindítania.
+
+>[!NOTE]
+>A cikkhez használt sablon az 1,1-es verziót telepíti IoT Edge.
 
 ## <a name="deploy-using-deploy-to-azure-button"></a>Üzembe helyezés az Azure-beli üzembe helyezéssel gomb
 

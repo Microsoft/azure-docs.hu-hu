@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: marsma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: 5ca8c41dc1e6a05975227555abd91f5d6725285a
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: d6be9753cbcb2a6be9836b27f82f1b60068570b8
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101092175"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224979"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy Node-webalkalmazásban az Auth Code flow használatával
 
@@ -48,6 +48,15 @@ Ez a rövid útmutató a Microsoft hitelesítési függvénytárát használja N
 > 1. Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét későbbi használatra.
 > 1. A **kezelés** területen válassza a **tanúsítványok & titkos kulcsok**  >  **új ügyfél titka** lehetőséget.  Hagyja üresen a leírást és az alapértelmezett lejáratot, majd válassza a **Hozzáadás** lehetőséget.
 > 1. Jegyezze fel az **ügyfél titkos kulcsának** **értékét** későbbi használatra.
+
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-1-configure-the-application-in-azure-portal"></a>1. lépés: az alkalmazás konfigurálása Azure Portalban
+> Ahhoz, hogy a rövid útmutatóhoz tartozó mintakód működjön, létre kell hoznia egy ügyfél-titkot, és hozzá kell adnia egy válasz URL-címet **http://localhost:3000/redirect** .
+> > [!div renderon="portal" id="makechanges" class="nextstepaction"]
+> > [A módosítás alkalmazása]()
+>
+> > [!div id="appconfigured" class="alert alert-info"]
+> > ![Már konfigurált](media/quickstart-v2-windows-desktop/green-check.png) Az alkalmazása már konfigurálva van ezekkel az attribútumokkal.
 
 #### <a name="step-2-download-the-project"></a>2. lépés: A projekt letöltése
 
@@ -91,16 +100,17 @@ Ez a rövid útmutató a Microsoft hitelesítési függvénytárát használja N
 > Módosítsa a szakasz értékeit az `config` itt leírtak szerint:
 >
 > - `Enter_the_Application_Id_Here` a regisztrált alkalmazáshoz tartozó **alkalmazás (ügyfél) azonosítója** .
+>
+>    Az **alkalmazás (ügyfél) azonosító** értékének megkereséséhez nyissa meg a Azure Portal az alkalmazás regisztrációjának **Áttekintés** lapját.
 > - `Enter_the_Client_Secret_Here`a regisztrált alkalmazáshoz tartozó **ügyfél-titkos kulcs** **értéke** .
+>
+>    Új **ügyfél-titkos** kód lekéréséhez vagy létrehozásához a **kezelés** területen válassza a **tanúsítványok & titkok** elemet.
 >
 > Az alapértelmezett `authority` érték a fő (globális) Azure-felhőt jelenti:
 >
 > ```javascript
 > authority: "https://login.microsoftonline.com/common",
 > ```
->
-> > [!TIP]
-> > Az **alkalmazás (ügyfél) azonosító** értékének megkereséséhez nyissa meg a Azure Portal az alkalmazás regisztrációjának **Áttekintés** lapját. Az új **ügyfél-titkos** kód lekéréséhez vagy létrehozásához lépjen a **tanúsítványok & Secrets** elemre.
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>3. lépés: az alkalmazás konfigurálva van, és készen áll a futtatásra

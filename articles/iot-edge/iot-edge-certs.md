@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: e5b1950935e6279995b44c2e07931519e82359d2
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 9b066dfd260a18f35149822b4107ea2c37db931c
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102040634"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200242"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>A Azure IoT Edge tanúsítványok használatának ismertetése
 
@@ -90,7 +90,7 @@ Mivel a gyártási és üzemeltetési folyamatok el vannak különítve, a köve
 
 ## <a name="devtest-implications"></a>Fejlesztési/tesztelési következmények
 
-A fejlesztési és tesztelési forgatókönyvek megkönnyítése érdekében a Microsoft számos [kényelmi parancsfájlt](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) biztosít a nem éles környezetű tanúsítványok létrehozásához, amelyek alkalmasak az átlátszó átjárók IoT Edgeához. A parancsfájlok működésével kapcsolatos példákért tekintse [meg a bemutató tanúsítványok létrehozása a IoT Edge eszköz funkcióinak teszteléséhez](how-to-create-test-certificates.md)című témakört.
+A fejlesztési és tesztelési forgatókönyvek megkönnyítése érdekében a Microsoft számos [kényelmi parancsfájlt](https://github.com/Azure/iotedge/tree/master/tools/CACertificates) biztosít a nem éles környezetű tanúsítványok létrehozásához, amelyek alkalmasak az átlátszó átjárók IoT Edgeához. A parancsfájlok működésével kapcsolatos példákért tekintse [meg a bemutató tanúsítványok létrehozása a IoT Edge eszköz funkcióinak teszteléséhez](how-to-create-test-certificates.md)című témakört.
 
 >[!Tip]
 > Ahhoz, hogy az eszköz IoT a "Leaf" eszközöket és alkalmazásokat, amelyek a IoT-eszköz SDK-t használják IoT Edgeon keresztül, hozzá kell adnia az opcionális GatewayHostName paramétert az eszköz kapcsolati karakterláncának végéhez. A peremhálózati kiszolgáló tanúsítványának létrehozásakor a rendszer az állomásnévnek a konfigurációs fájlból történő, alsó betokozású változatán alapul, ezért a nevek egyeztetéséhez és a TLS-tanúsítvány ellenőrzésének sikerességéhez meg kell adnia a GatewayHostName paramétert.

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 046fcb9d7473de5666b3acb25cbcaa1f9549e679
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 40e737a1ec5fb34cd22a08925143a100d36cdc6b
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039495"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009317"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM-termékek/-szolgáltatások összekapcsolása IT Service Management-összekötővel
 Ez a cikk azt ismerteti, hogyan konfigurálható a ITSM terméke/szolgáltatása és a IT-szolgáltatásmenedzsmenti csatoló (ITSMC) közötti kapcsolat a munkaelemek központilag felügyelhető Log Analyticsban. További információ a ITSMC: [Áttekintés](./itsmc-overview.md).
@@ -24,6 +24,9 @@ A következő ITSM-termékek/szolgáltatások támogatottak. Válassza ki a term
 
 > [!NOTE]
 > Javasoljuk, hogy a Cherwell és a felkínált ügyfeleinknek a [webhook műveleteit](./action-groups.md#webhook) a Cherwell és az Előa végpontot használják egy másik megoldásként az integrációhoz.
+
+## <a name="ip-ranges-for-itsm-partners-connections"></a>ITSM partnerek kapcsolatainak IP-tartományai
+A ITSM IP-címeinek listázásához, hogy engedélyezze a ITSM-kapcsolatokat a partnerek ITSM eszközeitől, javasoljuk, hogy az Azure-régió teljes nyilvános IP-tartományát sorolja fel, ahol a LogAnalytics-munkaterület tartozik. [részletek](https://www.microsoft.com/en-us/download/details.aspx?id=56519) A EUS/NYEU/EUS2/WUS2/USA déli középső régiójában az ügyfél csak a ActionGroup hálózati címkét listázhatja.
 
 ## <a name="next-steps"></a>Következő lépések
 

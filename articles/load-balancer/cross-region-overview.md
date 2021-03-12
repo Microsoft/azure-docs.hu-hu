@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: b0e51d11797bc5767f19b25a92a2d29a66ea1bb2
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 1d435c3b15433b7fec00d5dfa80970c04323e635
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176722"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199366"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Régiók közötti Load Balancer (előzetes verzió)
 
@@ -106,7 +106,7 @@ A **hazai régió** , ahol a régiók közötti terheléselosztó üzembe van he
 * Kelet-Ázsia
 
 > [!NOTE]
-> A régiók közötti terheléselosztó csak a fenti 8 régió egyikében helyezhető üzembe.
+> A régiók közötti terheléselosztó csak a fenti 7 régió egyikében helyezhető üzembe.
 
 A **bevett régió** az a hely, ahol a terheléselosztó globális nyilvános IP-címe elérhető. 
 

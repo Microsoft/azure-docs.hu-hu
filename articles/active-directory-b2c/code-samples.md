@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: a75896dde7a23ea346e0af73ed145094e78812ca
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b09587d90024a8c376be8b0d93f7ef7b6cc51a1e
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101654493"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008484"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C-mintakódok
 
@@ -47,9 +47,10 @@ Az alábbi táblázat többek között iOS-, Android-, .NET- és Node.js-mintaal
 
 | Sample | Leírás |
 |--------| ----------- |
+| [MS-Identity-JavaScript-reagálás-oktatóanyag](https://github.com/Azure-Samples/ms-identity-javascript-react-tutorial/tree/main/3-Authorization-II/2-call-api-b2c) | Egy egyoldalas alkalmazás (SPA), amely webes API-t hív meg. A hitelesítés Azure AD B2C használatával történik a MSAL reagálva. Ez a példa az engedélyezési kód folyamatát használja a PKCE. |
 | [MS-Identity-B2C-JavaScript-Spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa) | Egy egyoldalas alkalmazás (SPA), amely webes API-t hív meg. A hitelesítés Azure AD B2C MSAL.js használatával történik. Ez a példa az engedélyezési kód folyamatát használja a PKCE. |
-| [JavaScript – NodeJS – felügyelet](https://github.com/Azure-Samples/ms-identity-b2c-javascript-nodejs-management/tree/main/Chapter1) | Egy egyoldalas alkalmazás (SPA), amely a B2C-címtárban lévő felhasználók kezeléséhez Microsoft Graph hív meg. A hitelesítés Azure AD B2C MSAL.js használatával történik. Ez a példa az engedélyezési kód folyamatát használja a PKCE.|
 | [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Egy egyoldalas alkalmazás (SPA), amely webes API-t hív meg. A hitelesítés Azure AD B2C MSAL.js használatával történik. Ez a példa az implicit folyamatot használja.|
+| [JavaScript – NodeJS – felügyelet](https://github.com/Azure-Samples/ms-identity-b2c-javascript-nodejs-management/tree/main/Chapter1) | Egy egyoldalas alkalmazás (SPA), amely a B2C-címtárban lévő felhasználók kezeléséhez Microsoft Graph hív meg. A hitelesítés Azure AD B2C MSAL.js használatával történik. Ez a példa az engedélyezési kód folyamatát használja a PKCE.|
 
 ## <a name="consoledaemon-apps"></a>Konzol/démon alkalmazások
 

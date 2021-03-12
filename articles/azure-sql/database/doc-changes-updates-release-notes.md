@@ -9,14 +9,14 @@ ms.subservice: service
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 06/17/2020
+ms.date: 03/10/2021
 ms.author: sstein
-ms.openlocfilehash: 86687e8259e7abcb9ff0e97f8cb75d96c0abfca8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 0ddd2c96be3513d253537cefd5b9eb83da2b3c12
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042504"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634838"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>A Azure SQL Database & SQL felügyelt példányának újdonságai
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -50,13 +50,10 @@ Ez a táblázat a terminológia változásának gyors összehasonlítását bizt
 
 | Szolgáltatás | Részletek |
 | ---| --- |
-| Gyorsított adatbázis-helyreállítás önálló adatbázisokkal és rugalmas készletekkel | További információ: [gyorsított adatbázis-helyreállítás](../accelerated-database-recovery.md).|
-| Adatfelderítés és besorolás  |További információ: [Azure SQL Database és az Azure szinapszis Analytics adatfelderítési & besorolása](data-discovery-and-classification-overview.md).|
 | Rugalmas adatbázis-feladatok (előzetes verzió) | További információ: [rugalmas feladatok létrehozása, konfigurálása és kezelése](elastic-jobs-overview.md). |
 | Rugalmas lekérdezések | További információ: [rugalmas lekérdezés áttekintése](elastic-query-overview.md). |
 | Rugalmas tranzakciók | [Elosztott tranzakciók felhőalapú adatbázisok között](elastic-transactions-overview.md). |
 | A Azure Portal lekérdezés-szerkesztője |További információ: [a Azure Portal SQL Query Editor használata az adatok összekapcsolásához és lekérdezéséhez](connect-query-portal.md).|
-| R-szolgáltatások/gépi tanulás önálló adatbázisokkal és rugalmas készletekkel |További információ: [Machine Learning Services Azure SQL Database](/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database).|
 |SQL Analytics|További információ: [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md).|
 | &nbsp; |
 
@@ -66,7 +63,7 @@ Ez a táblázat a terminológia változásának gyors összehasonlítását bizt
 | ---| --- |
 | <a href="/azure/azure-sql/database/elastic-transactions-overview">Elosztott tranzakciók</a> | Elosztott tranzakciók a felügyelt példányok között. |
 | <a href="/azure/sql-database/sql-database-instance-pools">Példánykészletek</a> | A kisebb SQL-példányok felhőbe való áttelepíthető kényelmes és költséghatékony módszer. |
-| <a href="/en-gb/sql/t-sql/statements/create-login-transact-sql">Példány szintű Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezések)</a> | Hozzon létre példány-szintű bejelentkezéseket a <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">külső szolgáltatói utasítás létrehozási azonosítójával</a> . |
+| <a href="/en-gb/sql/t-sql/statements/create-login-transact-sql">Példány szintű Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezések)</a> | Hozzon létre példány-szintű bejelentkezéseket a <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true">külső szolgáltatói utasítás létrehozási azonosítójával</a> . |
 | [Tranzakciós replikáció](../managed-instance/replication-transactional-overview.md) | Replikálja a táblák módosításait a felügyelt SQL-példányok, SQL Database vagy SQL Server más adatbázisaiba. Vagy frissítse a táblázatokat, ha egyes sorok módosulnak az SQL felügyelt példányának más példányain vagy SQL Server. További információ: [replikáció konfigurálása az Azure SQL felügyelt példányában](../managed-instance/replication-between-two-instances-configure-tutorial.md). |
 | Fenyegetések észlelése |További információ: [a veszélyforrások észlelésének konfigurálása az Azure SQL felügyelt példányában](../managed-instance/threat-detection-configure.md).|
 | Biztonsági mentés hosszú távú megőrzése | További információ: a [hosszú távú biztonsági mentések megőrzésének konfigurálása az Azure SQL felügyelt példányain](../managed-instance/long-term-backup-retention-configure.md), amely jelenleg korlátozott nyilvános előzetes verzióban érhető el. | 
@@ -101,7 +98,7 @@ A következő funkciók engedélyezve vannak az SQL felügyelt példány üzembe
 |[Az eljárás sp_send_dbmail átmenetileg meghiúsulhat @query a paraméter használatakor](#procedure-sp_send_dbmail-may-transiently-fail-when--parameter-is-used)|Jan 2021|Megkerülő megoldás||
 |[Az elosztott tranzakciók a felügyelt példány kiszolgálói megbízhatósági csoportból való eltávolítása után hajthatók végre.](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|TOT 2020|Megkerülő megoldás||
 |[Az elosztott tranzakciók nem hajthatók végre a felügyelt példány skálázási művelete után](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|TOT 2020|Megkerülő megoldás||
-|[bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql) / [](/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15) Az Azure SQL-ben és `BACKUP` / `RESTORE` a felügyelt példányban található OpenRowset nem használhatja az Azure ad-beli felügyelet identitását az Azure Storage-ban való hitelesítéshez|Sep 2020|Megkerülő megoldás||
+|[bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql) / [](/sql/t-sql/functions/openrowset-transact-sql) Az Azure SQL-ben és `BACKUP` / `RESTORE` a felügyelt példányban található OpenRowset nem használhatja az Azure ad-beli felügyelet identitását az Azure Storage-ban való hitelesítéshez|Sep 2020|Megkerülő megoldás||
 |[Az egyszerű szolgáltatásnév nem fér hozzá az Azure AD-hez és a AKV](#service-principal-cannot-access-azure-ad-and-akv)|Augusztus 2020|Megkerülő megoldás||
 |[A manuális biztonsági mentés ELLENŐRZŐÖSSZEG nélküli visszaállítása sikertelen lehet](#restoring-manual-backup-without-checksum-might-fail)|2020. május|Feloldva|2020. június|
 |[Az ügynök nem válaszol a meglévő feladatok módosítása, letiltása vagy engedélyezése esetén](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|2020. május|Feloldva|2020. június|
@@ -174,7 +171,7 @@ GO
 BULK INSERT Sales.Invoices FROM 'inv-2017-12-08.csv' WITH (DATA_SOURCE = 'MyAzureBlobStorage');
 ```
 
-**Megkerülő megoldás**: használjon [megosztott hozzáférési aláírást a tárolóba való hitelesítéshez](/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage).
+**Megkerülő megoldás**: használjon [megosztott hozzáférési aláírást a tárolóba való hitelesítéshez](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage).
 
 ### <a name="service-principal-cannot-access-azure-ad-and-akv"></a>Az egyszerű szolgáltatásnév nem fér hozzá az Azure AD-hez és a AKV
 

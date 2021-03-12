@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 2/24/2021
-ms.openlocfilehash: 9fb86b3d4a46a70d71aa0c3fe9fd1b4a1ea6f298
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.date: 3/12/2021
+ms.openlocfilehash: fa8f2b5e952ddd188f99d130c2154d4602191c2b
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120130"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225064"
 ---
 # <a name="co-sell-requirements"></a>Közös értékesítésre vonatkozó követelmények
 
@@ -24,7 +24,7 @@ Ez a táblázat az összes lehetséges közös értékesítés állapotát mutat
 | ------------ | ------------- |
 | Nem közös értékesítésre kész | A [közös értékesítésre kész állapotra](#requirements-for-co-sell-ready-status) vonatkozó minimális követelmények nem teljesültek. |
 | Közös értékesítés kész | [A közös értékesítésre kész állapotra vonatkozó összes követelmény](#requirements-for-co-sell-ready-status) teljesült. |
-| Azure IP közös értékesítésű incentivized | [Ezen további követelmények](#requirements-for-ip-co-sell-incentivized-status)mellett a közös értékesítésre kész követelmények is teljesülnek. |
+| Azure IP közös értékesítésű incentivized | [Ezen további követelmények](#requirements-for-azure-ip-co-sell-incentivized-status)mellett a közös értékesítésre kész követelmények is teljesülnek. |
 | Biz apps ISV – prémium ösztönző  | Ez az állapot a Dynamics 365-es és a Power apps-ajánlatokra vonatkozik, és azt jelzi, hogy az [adott állapotra vonatkozó összes követelmény](#requirements-for-biz-apps-isv-connect-premium-incentive-status) teljesült. |
 |||
 
@@ -35,7 +35,7 @@ A közös értékesítésre kész állapot elérésére vonatkozó ajánlathoz a
 **Minden partner**:
 
 - Rendelkeznie kell egy MPN-AZONOSÍTÓval és egy aktív [kereskedelmi piactér-fiókkal a partner Centerben](./partner-center-portal/create-account.md).
-- Győződjön meg arról, hogy rendelkezik egy teljes [üzleti profillal](/partner-center/create-a-marketing-profile.md) a partner Centerben. A minősített Microsoft-partnerként az üzleti profil segítséget nyújt a vállalatoknak az üzleti igények kielégítésére szolgáló egyedi megoldásait és szakértelmét bemutató ügyfelei számára, ami az [ajánlásokat](/partner-center/referrals.md)eredményezi.
+- Győződjön meg arról, hogy rendelkezik egy teljes [üzleti profillal](/partner-center/create-a-marketing-profile) a partner Centerben. A minősített Microsoft-partnerként az üzleti profil segítséget nyújt a vállalatoknak az üzleti igények kielégítésére szolgáló egyedi megoldásait és szakértelmét bemutató ügyfelei számára, ami az [ajánlásokat](/partner-center/referrals)eredményezi.
 - Fejezze be a **közös értékesítés a Microsofttal** lapot, és tegye közzé az ajánlatot a kereskedelmi piactéren.
 - Adjon meg egy értékesítési kapcsolattartót minden közös értékesítésre jogosult földrajzi helyhez és a szükséges anyagjegyzékekhez.
 
@@ -60,7 +60,7 @@ A dokumentumok létrehozásához biztosítunk sablonokat. További információ 
 
 A közös értékesítésre kész állapot minősítéséhez ajánlatát vagy megoldását élőben közzé kell tenni a kereskedelmi Marketplace online áruházakban: Azure Marketplace vagy Microsoft AppSource. További információ a kereskedelmi piactéren elérhető ajánlatok közzétételéről: az [ajánlat típusa szerinti közzétételi útmutató](publisher-guide-by-offer-type.md). Ha még nem tett közzé ajánlatot a kereskedelmi piactéren, győződjön meg arról, hogy rendelkezik egy [kereskedelmi piactér-fiókkal](./partner-center-portal/create-account.md).
 
-## <a name="requirements-for-ip-co-sell-incentivized-status"></a>Az IP-címek közös értékesítésének incentivized állapotára vonatkozó követelmények
+## <a name="requirements-for-azure-ip-co-sell-incentivized-status"></a>Az Azure IP közös értékesítésének incentivized-állapotára vonatkozó követelmények
 
 Az Azure IP közös értékesítési incentivized állapota a következő típusú ajánlatokra vonatkozik:
 

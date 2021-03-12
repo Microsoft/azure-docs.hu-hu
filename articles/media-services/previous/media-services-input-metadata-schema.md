@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services bemeneti metaadatok sémája | Microsoft Docs
 description: Ez a cikk áttekintést nyújt Azure Media Services bemeneti metaadat-sémáról.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 57a91622bef401d946a383e3be39f2e566fa50b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: eebe1c77c9af6791be94c16f0f792a9e7deb9a6e
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89267836"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017409"
 ---
 # <a name="input-metadata"></a>Bemeneti metaadatok
 
@@ -72,7 +72,7 @@ Tekintse meg a cikk végén található XML-példát: [XML-példa](media-service
 | **Programok**<br /><br /> minOccurs = "0" | |Minden [program elem](media-services-input-metadata-schema.md#Programs) gyűjteménye, amikor az adategység fájlja MPEG-TS formátumú. |
 | **VideoTracks**<br /><br /> minOccurs = "0" | |Az egyes fizikai adatfájlok tartalmazhatnak nulla vagy több, a megfelelő tároló formátumba felhasználható videókat. Ez az elem az adatfájl részét képező összes [VideoTracks](media-services-input-metadata-schema.md#VideoTracks) gyűjteményét tartalmazza. |
 | **AudioTracks**<br /><br /> minOccurs = "0" | |Az egyes fizikai adatfájlok tartalmazhatnak nulla vagy több, a megfelelő tároló formátumba felhasználható hangsávot. Ez az elem az adatfájl részét képező összes [AudioTracks](media-services-input-metadata-schema.md#AudioTracks) gyűjteményét tartalmazza. |
-| **Metaadatok**<br /><br /> minOccurs = "0" maxOccurs = "nem kötött" |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |Az adatfájl metaadatai key\value karakterláncként jelennek meg. Példa:<br /><br /> **&lt;Metadata kulcs = "nyelv" érték = "ENG"/&gt;** |
+| **Metaadatok**<br /><br /> minOccurs = "0" maxOccurs = "nem kötött" |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |Az adatfájl metaadatai key\value karakterláncként jelennek meg. Például:<br /><br /> **&lt;Metadata kulcs = "nyelv" érték = "ENG"/&gt;** |
 
 ## <a name="tracktype"></a><a name="TrackType"></a> TrackType
 Tekintse meg a cikk végén található XML-példát: [XML-példa](media-services-input-metadata-schema.md#xml).  
@@ -130,7 +130,7 @@ Tekintse meg a cikk végén található XML-példát: [XML-példa](media-service
 | **Profil** |**xs: karakterlánc** |A Video Track profilja. |
 | **Szintű** |**xs: karakterlánc** |A videó követési szintje. |
 | **PixelFormat** |**xs: karakterlánc** |A Video Track képpontjának formátuma |
-| **Szélessége**<br /><br /> Kötelező |**xs: int** |Kódolt videó szélessége képpontban megadva |
+| **Szélesség**<br /><br /> Kötelező |**xs: int** |Kódolt videó szélessége képpontban megadva |
 | **Magasság**<br /><br /> Kötelező |**xs: int** |Kódolt videó magassága képpontban megadva. |
 | **DisplayAspectRatioNumerator**<br /><br /> Kötelező |**xs: dupla** |Videó megjelenítési oldalarányának számlálója |
 | **DisplayAspectRatioDenominator**<br /><br /> Kötelező |**xs: dupla** |Videó megjelenítési méretarányának nevezője |

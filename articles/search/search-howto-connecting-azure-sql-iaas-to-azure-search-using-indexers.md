@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: a13f78b6aa4fc3cb6f6777c76bc762ec565624fc
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: dce4c41d0d6f15ac9dc33e687c9a5ac7b7b96e06
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951315"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200782"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Azure Cognitive Search indexelő használatával létesített kapcsolatok konfigurálása Azure-beli virtuális gépeken való SQL Server
 
@@ -75,21 +75,12 @@ Az IP-címzés néhány olyan kihívást jelenthet, amely könnyen leküzdhető,
 #### <a name="restrict-access-to-the-azure-cognitive-search"></a>Az Azure-Cognitive Search való hozzáférés korlátozása
 Erősen ajánlott korlátozni a keresési szolgáltatás IP-címéhez való hozzáférést és a `AzureCognitiveSearch` [szolgáltatási címke](../virtual-network/service-tags-overview.md#available-service-tags) IP-CÍMTARTOMÁNY használatát az ACL-ben ahelyett, hogy a SQL Azure virtuális gépek minden kapcsolódási kérelem számára nyitva legyenek.
 
-Az IP-címet a keresési szolgáltatás teljes tartománynevének (például:) pingelésével keresheti meg `<your-search-service-name>.search.windows.net` .
+Az IP-címet a keresési szolgáltatás teljes tartománynevének (például:) pingelésével keresheti meg `<your-search-service-name>.search.windows.net` . Habár lehetséges, hogy a keresési szolgáltatás IP-címe megváltozik, nem valószínű, hogy meg fog változni. Az IP-cím általában statikus a szolgáltatás élettartama szempontjából.
 
 A `AzureCognitiveSearch` [Service tag](../virtual-network/service-tags-overview.md#available-service-tags) IP-CÍMTARTOMÁNY a [letölthető JSON-fájlok](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) használatával vagy a [Service tag Discovery API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview)-n keresztül található meg. Az IP-címtartomány hetente frissül.
-
-#### <a name="managing-ip-address-fluctuations"></a>IP-címek ingadozásának kezelése
-Ha a keresési szolgáltatásnak csak egy keresési egysége van (azaz egy replika és egy partíció), az IP-cím a rutin szolgáltatás újraindításakor módosul, és a keresési szolgáltatás IP-címével érvényteleníti a meglévő ACL-t.
-
-A következő kapcsolódási hiba elkerülésének egyik módja, ha egynél több replikát és egy partíciót használ az Azure Cognitive Searchban. Ezzel növeli a költségeket, de az IP-cím problémáját is megoldja. Az Azure Cognitive Searchban az IP-címek nem változnak, ha egynél több keresési egység van.
-
-A második módszer a sikertelen kapcsolódás engedélyezése, majd a NSG található ACL-ek újrakonfigurálása. Átlagosan néhány hetente megváltozhatnak az IP-címek. Az olyan ügyfelek számára, akik nem rendszeresen felügyelt indexelést végeznek, ez a megközelítés életképes lehet.
-
-A harmadik életképes (de nem különösen biztonságos) módszer az az Azure-régió IP-címtartomány megadására szolgál, ahol a keresési szolgáltatás kiépítve van. A nyilvános IP-címeket az Azure-erőforrások számára kiosztott IP-tartományok listája az [Azure-adatközpont IP-tartományokban](https://www.microsoft.com/download/details.aspx?id=41653)jelenik meg. 
 
 #### <a name="include-the-azure-cognitive-search-portal-ip-addresses"></a>Az Azure Cognitive Search-portál IP-címeinek belefoglalása
 Ha az Azure Portalt használja az indexelő létrehozásához, az Azure Cognitive Search Portal Logic is hozzáférést igényel a SQL Azure virtuális géphez a létrehozás ideje alatt. Az Azure Cognitive Search-portál IP-címei a pingeléssel találhatók meg `stamp2.search.ext.azure.com` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az Azure-beli Cognitive Search indexelő adatforrásaként megadhat egy SQL Servert az Azure-beli virtuális gépen. További információkért lásd: [Azure SQL Database csatlakoztatása az Azure Cognitive Searchhoz az indexelő használatával](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) .

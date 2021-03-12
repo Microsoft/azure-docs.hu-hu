@@ -1,14 +1,14 @@
 ---
 title: Ajánlott eljárások
 description: Ismerje meg az ajánlott eljárásokat és hasznos tippeket a Azure Batch-megoldások fejlesztéséhez.
-ms.date: 02/03/2020
+ms.date: 03/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 278aae410af536a5cc41e55dabf1dd71de04151b
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 0b3dfe6d974f2cc2449faf54c4549589e0baa7cf
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550861"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199847"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch ajánlott eljárások
 
@@ -25,8 +25,8 @@ A [készletek](nodes-and-pools.md#pools) a Batch szolgáltatásban a feladatok v
 
 - **Készlet lefoglalási módja** Batch-fiók létrehozásakor választhat két készlet kiosztási módja közül: **Batch szolgáltatás** vagy **felhasználói előfizetés**. A legtöbb esetben az alapértelmezett batch szolgáltatás módot kell használnia, amelyben a készletek a Batch által felügyelt előfizetésekben a színfalak mögött vannak lefoglalva. A szintén választható „Felhasználói előfizetés” mód esetében a Batch virtuális gépei és egyéb erőforrásai közvetlenül az előfizetésben jönnek létre egy készlet létrehozásakor. A felhasználói előfizetési fiókok elsődlegesen a fontos, de a forgatókönyvek kis részhalmazának engedélyezésére használatosak. A felhasználói előfizetési móddal kapcsolatos további információkért tekintse meg a [felhasználói előfizetés üzemmódjának további konfigurációját](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode).
 
-- **"cloudServiceConfiguration" vagy "virtualMachineConfiguration".**
-    a "virtualMachineConfiguration" használata szükséges. A Batch összes funkcióját a "virtualMachineConfiguration" készletek támogatják. Nem minden funkció támogatott a "cloudServiceConfiguration" készletekben, és nem terveznek új képességeket.
+- **"virtualMachineConfiguration" vagy "virtualMachineConfiguration".**
+    Habár a készleteket jelenleg a konfigurációval is létrehozhatja, az új készleteket a "virtualMachineConfiguration" és a "virtualMachineConfiguration" beállítással kell konfigurálni. A virtuálisgép-konfigurációs készletek minden aktuális és új batch-funkciót támogatni fognak. Cloud Services konfigurációs készletek nem támogatják az összes funkciót, és nem terveznek új képességeket. Az új "CloudServiceConfiguration" készleteket nem lehet létrehozni, vagy új csomópontokat hozzáadni a meglévő készletekhez a [2024. február 29. után](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/). További információ: batch- [készlet konfigurációjának Áttelepítése Cloud Servicesról virtuális gépre](batch-pool-cloud-service-to-virtual-machine-configuration.md).
 
 - **Vegye figyelembe a feladat és a feladat futási idejét a készlet hozzárendelésének meghatározásakor.**
     Ha a feladatok elsősorban rövid ideig futó tevékenységekből állnak, és a tevékenységek várható összesített száma kicsi, így a feladat teljes várható futási ideje nem hosszú, ne foglaljon le új készletet az egyes feladatokhoz. A csomópontok lefoglalási ideje csökkenti a feladatok futási idejét.

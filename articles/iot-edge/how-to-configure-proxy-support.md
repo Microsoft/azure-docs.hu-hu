@@ -10,14 +10,16 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperf-fy21q1
-ms.openlocfilehash: 22cea6a641a03d60565e62e64ccdeef72437d476
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 888761bb976b9d7a87211a77cb6504a44f108bbd
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046142"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200056"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge-eszköz konfigurálása proxykiszolgálón keresztüli kommunikációra
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 IoT Edge eszközök HTTPS-kérelmeket küldenek a IoT Hubsal való kommunikációhoz. Ha az eszköz proxykiszolgálót használó hálózathoz csatlakozik, az IoT Edge futtatókörnyezetet úgy kell konfigurálnia, hogy a kiszolgálón keresztül kommunikáljon. A proxykiszolgálók az egyes IoT Edge modulokat is befolyásolhatják, ha olyan HTTP-vagy HTTPS-kérelmeket tesznek elérhetővé, amelyek nem az IoT Edge hub-on keresztül vannak átirányítva
 

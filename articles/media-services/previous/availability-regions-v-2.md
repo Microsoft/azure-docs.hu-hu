@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: references_regions
-ms.openlocfilehash: 458927afc78c46ad365d437a574d0b40b32fc11e
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 125f2be205760618ab6ffa3175f719f5e91e8c05
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695797"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103012258"
 ---
 # <a name="media-services-regional-availability"></a>Regionális elérhetőség Media Services
 
@@ -42,7 +42,7 @@ Az [Azure-termékek régiónként](https://azure.microsoft.com/global-infrastruc
 
 A Media Services ügyfelei **standard** szintű streamvégpontot vagy **prémium** szintű streamvégpontot választhatnak.
 
-|Name|Állapot|Régió
+|Name|Állapot|Region
 |---|---|---|
 |Standard|FE|Mind|
 |Prémium|FE|Mind|
@@ -67,7 +67,7 @@ A Médiaelemzés beszéd- és vizuális összetevők gyűjteménye, amely egysze
 > [!NOTE]
 > Egyes elemzési adathordozó-processzorok ki lesznek vonva. A nyugdíjazási dátumokért tekintse meg az [örökölt összetevőkkel](legacy-components.md) foglalkozó témakört.
 
-|Médiafeldolgozó neve|Állapot|Régió
+|Médiafeldolgozó neve|Állapot|Region
 |---|---|---|
 |Azure Media Face Detector|Előnézet|Mind|
 |Azure Media Indexer|FE|Mind|
@@ -82,7 +82,7 @@ A Microsoft Azure Media Services lehetővé teszi a médiatartalmak védelmét a
 
 |Titkosítás|Állapot|Régiók|
 |---|---|---| 
-|Storage|FE|Mind|
+|Tárolás|FE|Mind|
 |AES-128-kulcsok|FE|Mind|
 |FairPlay|FE|Mind|
 |PlayReady|FE|Mind|
@@ -107,7 +107,7 @@ A Media Services fiók egy fenntartott egységhez van társítva, amely meghatá
 |S2|FE|Mindenhol, kivéve Dél-Brazíliát és Nyugat-Indiát|
 |S3|FE|Mindenhol, kivéve Nyugat-Indiát|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Migrálás a Media Services v3-ba](../latest/media-services-overview.md)
 

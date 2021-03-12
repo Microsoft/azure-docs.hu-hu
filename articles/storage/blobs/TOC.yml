@@ -295,6 +295,8 @@
               href: storage-blob-copy.md
             - name: Blobindex-címkék használata
               href: storage-blob-index-how-to.md
+            - name: Blobok számának és teljes méretének kiszámítása
+              href: calculate-blob-count-size.md
         - name: Blobadatok hozzáférésének engedélyezése
           items:
             - name: Felhasználói hitelesítési beállítások

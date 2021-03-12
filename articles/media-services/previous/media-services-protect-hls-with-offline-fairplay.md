@@ -4,7 +4,7 @@ description: Ez a témakör áttekintést nyújt, és bemutatja, hogyan használ
 services: media-services
 keywords: HLS, DRM, FairPlay streaming (FPS), offline, iOS 10
 documentationcenter: ''
-author: willzhan
+author: IngridAtMicrosoft
 manager: steveng
 editor: ''
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2020
+ms.date: 03/10/2021
 ms.author: willzhan
 ms.reviewer: dwgeo
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ae1d4ef81d14d5adfb728cf7a59534cb376a0eb1
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 2d05810da6abfd33ff6605fa7a6f3bfb6a0c202b
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695086"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009568"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>Offline FairPlay-streamelés iOS-hez
 
@@ -260,6 +260,6 @@ Ez a dokumentum az alábbi lépésekkel és információkkal rendelkezik, amelye
 * A minta FPS-videók az offline üzemmód és az online streaming tesztelésére szolgálnak.
 * A gyakori kérdések az FPS kapcsolat nélküli üzemmódra vonatkozó kérdésekre adnak választ.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

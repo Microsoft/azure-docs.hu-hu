@@ -4,12 +4,12 @@ description: Összefoglalja a Azure Backup szolgáltatás támogatási beállít
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: d8ffaf2c5aa32e8e0f851510adb58a78167abccb
-ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
+ms.openlocfilehash: 655a90ebc3164f076c333760beffcef5acefcd91
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103149035"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225547"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup támogatási mátrixa
 
@@ -40,6 +40,7 @@ A következő táblázat a Recovery Services-tárolók szolgáltatásait ismerte
 **Adatáthelyezés a tárolók között** | A biztonsági másolatok tárolók közötti áthelyezése nem támogatott.
 **Tár tárolási típusának módosítása** | A tároló replikációs típusát (vagy a Geo-redundáns tárterületet vagy a helyileg redundáns tárolást) a biztonsági másolatok tárolása előtt módosíthatja. Miután a biztonsági mentések megkezdődnek a tárolóban, a replikálás típusa nem módosítható.
 **Zónaredundáns tárolás (ZRS)** | Elérhető a Egyesült Királyság déli régiója (UKS) és a Dél-Kelet-Ázsia (tengeri) régiókban.
+**Privát végpontok** | Tekintse meg [ezt a szakaszt](https://docs.microsoft.com/azure/backup/private-endpoints#before-you-start) a helyreállítási tár magánhálózati végpontjának létrehozásához szükséges követelményeknél.  
 
 ## <a name="on-premises-backup-support"></a>Helyszíni biztonsági mentési támogatás
 

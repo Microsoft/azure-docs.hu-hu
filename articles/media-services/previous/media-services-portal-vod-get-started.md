@@ -3,7 +3,7 @@ title: Igény szerinti videotartalom-továbbítás az Azure Portal használatáv
 description: Ez az oktatóanyag végigvezeti a lépéseken, amelyek segítségével alapszintű igény szerinti videotartalom-továbbítási szolgáltatást hozhat létre az Azure Portalon egy Azure Media Services alkalmazással.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 6c98fcfa-39e6-43a5-83a5-d4954788f8a4
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 0cc3e26895f6bd11ba4f2e5f0b04e4dd36a4fcab
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: fc908f909cdb64e968db78b2c98b8f0edf1c61dd
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695289"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009691"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>Igény szerinti tartalomtovábbítás az Azure Portal használatával
 
@@ -137,7 +137,7 @@ A lokátor lejárati idejének módosításához használjon [REST API](/rest/ap
 2. Válassza a **Beállítások**  >  **eszközök** elemet. Válassza ki a közzétenni kívánt objektumot.
 3. Válassza ki a **Közzététel** gombot.
 4. Válassza ki a lokátor típusát.
-5. Válassza a **Hozzáadás** elemet.
+5. Válassza a **Hozzáadás** lehetőséget.
    
     ![A videó közzététele](./media/media-services-portal-vod-get-started/media-services-publish1.png)
 
@@ -159,5 +159,5 @@ Vegye figyelembe a következőket:
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

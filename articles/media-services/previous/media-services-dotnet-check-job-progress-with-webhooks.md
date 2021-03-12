@@ -3,7 +3,7 @@ title: Azure webhookok használata Media Services-feladatok értesítéseinek fi
 description: Ismerje meg, hogyan használhatja az Azure webhookokat Media Services feladatok értesítéseinek figyelésére. A kód mintája C# nyelven íródott, és a .NET-hez készült Media Services SDK-t használja.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: a61fe157-81b1-45c1-89f2-224b7ef55869
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e99d2c2676d05772106296d8b960dd55fd30501c
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 5ae1bdfeeffdb904ba80ed42919e4f51411871c3
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696472"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016151"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Az Azure webhookok használata Media Services feladatok értesítéseinek figyeléséhez a .NET-tel
 
@@ -78,7 +78,7 @@ Miután telepítette a Function alkalmazást, a **App Services** Azure functions
 3. Válassza az **általános webhook – C#** elemet.
 4. Nevezze el a webhookot, és kattintson a **Létrehozás** gombra.
 
-### <a name="files"></a>Files
+### <a name="files"></a>Fájlok
 
 Az Azure-függvény az ebben a szakaszban ismertetett kódrészletekhez és egyéb fájlokhoz van társítva. Alapértelmezés szerint a függvény a **function.jsés a** **Run. CSX** (C#) fájlokhoz van társítva. Hozzá kell adnia egy **project.jsa** fájlhoz. A szakasz további részében a fájlok definíciói láthatók.
 
@@ -521,7 +521,7 @@ Ebben a szakaszban a webhook-értesítés feladathoz való hozzáadását ismert
             }
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

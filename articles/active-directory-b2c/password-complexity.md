@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 03/12/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f9748d0d278375029fc9875f5b36674d19ad871a
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 81c6e58e34f30d5736c40c77a308321dee28ae34
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98058973"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224265"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>A Azure Active Directory B2Cban található jelszavak bonyolultsági követelményeinek konfigurálása
 
@@ -102,75 +102,89 @@ A jelszó bonyolultságának konfigurálásához bírálja felül a `newPassword
 1. Adja hozzá a `newPassword` és a `reenterPassword` jogcímeket a **ClaimsSchema** elemhez.
 
     ```xml
-    <ClaimType Id="newPassword">
-      <PredicateValidationReference Id="CustomPassword" />
-    </ClaimType>
-    <ClaimType Id="reenterPassword">
-      <PredicateValidationReference Id="CustomPassword" />
-    </ClaimType>
+    <!-- 
+    <BuildingBlocks>
+      <ClaimsSchema> -->
+        <ClaimType Id="newPassword">
+          <PredicateValidationReference Id="CustomPassword" />
+        </ClaimType>
+        <ClaimType Id="reenterPassword">
+          <PredicateValidationReference Id="CustomPassword" />
+        </ClaimType>
+      <!-- 
+      </ClaimsSchema>
+    </BuildingBlocks>-->
     ```
 
 1. A [predikátumok](predicates.md) alapszintű ellenőrzést határoznak meg a jogcím típusának ellenőrzéséhez, és igaz vagy hamis értéket ad vissza. Az érvényesítés egy megadott metódus-elem és a metódushoz tartozó paraméterek készletének használatával történik. Adja hozzá a következő predikátumokat a **BuildingBlocks** elemhez közvetlenül az elem bezárása után `</ClaimsSchema>` :
 
     ```xml
-    <Predicates>
-      <Predicate Id="LengthRange" Method="IsLengthRange">
-        <UserHelpText>The password must be between 6 and 64 characters.</UserHelpText>
-        <Parameters>
-          <Parameter Id="Minimum">6</Parameter>
-          <Parameter Id="Maximum">64</Parameter>
-        </Parameters>
-      </Predicate>
-      <Predicate Id="Lowercase" Method="IncludesCharacters">
-        <UserHelpText>a lowercase letter</UserHelpText>
-        <Parameters>
-          <Parameter Id="CharacterSet">a-z</Parameter>
-        </Parameters>
-      </Predicate>
-      <Predicate Id="Uppercase" Method="IncludesCharacters">
-        <UserHelpText>an uppercase letter</UserHelpText>
-        <Parameters>
-          <Parameter Id="CharacterSet">A-Z</Parameter>
-        </Parameters>
-      </Predicate>
-      <Predicate Id="Number" Method="IncludesCharacters">
-        <UserHelpText>a digit</UserHelpText>
-        <Parameters>
-          <Parameter Id="CharacterSet">0-9</Parameter>
-        </Parameters>
-      </Predicate>
-      <Predicate Id="Symbol" Method="IncludesCharacters">
-        <UserHelpText>a symbol</UserHelpText>
-        <Parameters>
-          <Parameter Id="CharacterSet">@#$%^&amp;*\-_+=[]{}|\\:',.?/`~"();!</Parameter>
-        </Parameters>
-      </Predicate>
-    </Predicates>
+    <!-- 
+    <BuildingBlocks>-->
+      <Predicates>
+        <Predicate Id="LengthRange" Method="IsLengthRange">
+          <UserHelpText>The password must be between 6 and 64 characters.</UserHelpText>
+          <Parameters>
+            <Parameter Id="Minimum">6</Parameter>
+            <Parameter Id="Maximum">64</Parameter>
+          </Parameters>
+        </Predicate>
+        <Predicate Id="Lowercase" Method="IncludesCharacters">
+          <UserHelpText>a lowercase letter</UserHelpText>
+          <Parameters>
+            <Parameter Id="CharacterSet">a-z</Parameter>
+          </Parameters>
+        </Predicate>
+        <Predicate Id="Uppercase" Method="IncludesCharacters">
+          <UserHelpText>an uppercase letter</UserHelpText>
+          <Parameters>
+            <Parameter Id="CharacterSet">A-Z</Parameter>
+          </Parameters>
+        </Predicate>
+        <Predicate Id="Number" Method="IncludesCharacters">
+          <UserHelpText>a digit</UserHelpText>
+          <Parameters>
+            <Parameter Id="CharacterSet">0-9</Parameter>
+          </Parameters>
+        </Predicate>
+        <Predicate Id="Symbol" Method="IncludesCharacters">
+          <UserHelpText>a symbol</UserHelpText>
+          <Parameters>
+            <Parameter Id="CharacterSet">@#$%^&amp;*\-_+=[]{}|\\:',.?/`~"();!</Parameter>
+          </Parameters>
+        </Predicate>
+      </Predicates>
+    <!-- 
+    </BuildingBlocks>-->
     ```
 
 1. Adja hozzá a következő predikátum-érvényesítéseket a **BuildingBlocks** elemhez közvetlenül az elem bezárása után `</Predicates>` :
 
     ```xml
-    <PredicateValidations>
-      <PredicateValidation Id="CustomPassword">
-        <PredicateGroups>
-          <PredicateGroup Id="LengthGroup">
-            <PredicateReferences MatchAtLeast="1">
-              <PredicateReference Id="LengthRange" />
-            </PredicateReferences>
-          </PredicateGroup>
-          <PredicateGroup Id="CharacterClasses">
-            <UserHelpText>The password must have at least 3 of the following:</UserHelpText>
-            <PredicateReferences MatchAtLeast="3">
-              <PredicateReference Id="Lowercase" />
-              <PredicateReference Id="Uppercase" />
-              <PredicateReference Id="Number" />
-              <PredicateReference Id="Symbol" />
-            </PredicateReferences>
-          </PredicateGroup>
-        </PredicateGroups>
-      </PredicateValidation>
-    </PredicateValidations>
+    <!-- 
+    <BuildingBlocks>-->
+      <PredicateValidations>
+        <PredicateValidation Id="CustomPassword">
+          <PredicateGroups>
+            <PredicateGroup Id="LengthGroup">
+              <PredicateReferences MatchAtLeast="1">
+                <PredicateReference Id="LengthRange" />
+              </PredicateReferences>
+            </PredicateGroup>
+            <PredicateGroup Id="CharacterClasses">
+              <UserHelpText>The password must have at least 3 of the following:</UserHelpText>
+              <PredicateReferences MatchAtLeast="3">
+                <PredicateReference Id="Lowercase" />
+                <PredicateReference Id="Uppercase" />
+                <PredicateReference Id="Number" />
+                <PredicateReference Id="Symbol" />
+              </PredicateReferences>
+            </PredicateGroup>
+          </PredicateGroups>
+        </PredicateValidation>
+      </PredicateValidations>
+    <!-- 
+    </BuildingBlocks>-->
     ```
 
 ## <a name="disable-strong-password"></a>Erős jelszó letiltása 
@@ -178,22 +192,28 @@ A jelszó bonyolultságának konfigurálásához bírálja felül a `newPassword
 A következő műszaki profilok [Active Directory műszaki profilok](active-directory-technical-profile.md), amelyek az Azure Active Directoryba való adatolvasást és-írást írják le. Bírálja felül ezeket a technikai profilokat a kiterjesztési fájlban. Ezzel `PersistedClaims` a beállítással letilthatja az erős jelszavas házirendet. Keresse meg a **ClaimsProviders** elemet.  Adja hozzá a következő jogcím-szolgáltatókat az alábbiak szerint:
 
 ```xml
-<ClaimsProvider>
-  <DisplayName>Azure Active Directory</DisplayName>
-  <TechnicalProfiles>
-    <TechnicalProfile Id="AAD-UserWriteUsingLogonEmail">
-      <PersistedClaims>
-        <PersistedClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration, DisableStrongPassword"/>
-      </PersistedClaims>
-    </TechnicalProfile>
-    <TechnicalProfile Id="AAD-UserWritePasswordUsingObjectId">
-      <PersistedClaims>
-        <PersistedClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration, DisableStrongPassword"/>
-      </PersistedClaims>
-    </TechnicalProfile>
-  </TechnicalProfiles>
-</ClaimsProvider>
+<!-- 
+<ClaimsProviders>-->
+  <ClaimsProvider>
+    <DisplayName>Azure Active Directory</DisplayName>
+    <TechnicalProfiles>
+      <TechnicalProfile Id="AAD-UserWriteUsingLogonEmail">
+        <PersistedClaims>
+          <PersistedClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration, DisableStrongPassword"/>
+        </PersistedClaims>
+      </TechnicalProfile>
+      <TechnicalProfile Id="AAD-UserWritePasswordUsingObjectId">
+        <PersistedClaims>
+          <PersistedClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration, DisableStrongPassword"/>
+        </PersistedClaims>
+      </TechnicalProfile>
+    </TechnicalProfiles>
+  </ClaimsProvider>
+<!-- 
+</ClaimsProviders>-->
 ```
+
+Ha a [Felhasználónév alapú bejelentkezési](https://github.com/azure-ad-b2c/samples/tree/master/policies/username-signup-or-signin) szabályzatot használja, frissítse a, a `AAD-UserWriteUsingLogonEmail` `AAD-UserWritePasswordUsingObjectId` és `LocalAccountWritePasswordUsingObjectId` a technikai profilokat a *DisableStrongPassword* házirenddel.
 
 Mentse a házirend-fájlt.
 
@@ -216,7 +236,7 @@ Mentse a házirend-fájlt.
 3. Kattintson a **Futtatás most** parancsra.
 4. Válassza a **regisztráció most** lehetőséget, adjon meg egy e-mail-címet, és adjon meg egy új jelszót. Útmutatást a jelszóra vonatkozó korlátozásokban talál. Fejezze be a felhasználói adatok beírását, majd kattintson a **Létrehozás** gombra. Ekkor meg kell jelennie a visszaadott token tartalmának.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [konfigurálhatja a jelszó módosítását a Azure Active Directory B2Cban](add-password-change-policy.md).
 - További információ a [predikátumok](predicates.md) és a [PredicateValidations](predicates.md#predicatevalidations) elemeiről a IEF-hivatkozásban.
