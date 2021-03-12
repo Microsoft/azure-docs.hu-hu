@@ -8,14 +8,16 @@ ms.date: 10/13/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ef3f09648e0d9101d07c6d8941ee7f79ae97b2b8
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 9248c9578d94b000c04c82b33eeeb089e55a26ef
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048032"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200313"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Azure IoT Edge modulok üzembe helyezése a Azure Portal
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Miután létrehozta IoT Edge modulokat az üzleti logikával, üzembe helyezheti azokat az eszközökön a peremhálózat működéséhez. Ha több modullal is együttműködik az adatok gyűjtéséhez és feldolgozásához, egyszerre telepítheti őket, és deklarálhatja az azokat összekötő útválasztási szabályokat.
 
@@ -32,7 +34,7 @@ Ez a cikk bemutatja, hogyan végigvezeti a Azure Portal az üzembe helyezési je
 
 Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely modulokat kell telepíteni, hogyan zajlik az adatforgalom a modulok és a modul kívánt tulajdonságai között. Az üzembe helyezési jegyzékek működésével és létrehozásával kapcsolatos további információkért lásd: [IoT Edge modulok használatának, konfigurálásának és](module-composition.md)újbóli használatának ismertetése.
 
-A Azure Portal tartalmaz egy varázslót, amely végigvezeti az üzembe helyezési jegyzék létrehozásán, a JSON-dokumentum manuális létrehozása helyett. Három lépésből áll: **modulok hozzáadása**, **útvonalak megadása**és az **üzembe helyezés áttekintése**.
+A Azure Portal tartalmaz egy varázslót, amely végigvezeti az üzembe helyezési jegyzék létrehozásán, a JSON-dokumentum manuális létrehozása helyett. Három lépésből áll: **modulok hozzáadása**, **útvonalak megadása** és az **üzembe helyezés áttekintése**.
 
 >[!NOTE]
 >A cikkben ismertetett lépések a IoT Edge-ügynök és a központ legújabb séma-verzióját tükrözik. A 1,1-es verziójú séma a IoT Edge verzió 1.0.10 együtt lett közzétéve, és lehetővé teszi a modul indítási sorrendjének és útvonal-rangsorolási funkcióinak használatát.
@@ -44,9 +46,9 @@ A Azure Portal tartalmaz egy varázslót, amely végigvezeti az üzembe helyezé
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és navigáljon az IoT hubhoz.
 1. A bal oldali panelen válassza a **IoT Edge** lehetőséget a menüből.
 1. Kattintson a céleszköz AZONOSÍTÓJÁRA az eszközök listájából.
-1. A felső sávon válassza a **modulok beállítása**lehetőséget.
+1. A felső sávon válassza a **modulok beállítása** lehetőséget.
 1. A lap **Container Registry beállítások** szakaszában adja meg a modul lemezképeit tartalmazó privát tároló-nyilvántartók eléréséhez szükséges hitelesítő adatokat.
-1. A lap **IoT Edge modulok** szakaszában válassza a **Hozzáadás**lehetőséget.
+1. A lap **IoT Edge modulok** szakaszában válassza a **Hozzáadás** lehetőséget.
 1. A legördülő menüből válasszon a következő három típusú modul közül:
 
    * **IoT Edge modul** – megadja a modul nevét és a tároló rendszerképének URI-ját. A minta SimulatedTemperatureSensor-modul képuri-ja például a következő: `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0` . Ha a modul rendszerképét egy privát tároló beállításjegyzékében tárolja, adja hozzá a hitelesítő adatokat ezen a lapon a rendszerkép eléréséhez.
@@ -76,7 +78,7 @@ Az útvonalak beállítása után kattintson a **Tovább gombra: felülvizsgála
 
 A felülvizsgálati szakasz megjeleníti a JSON üzembe helyezési jegyzéket, amelyet az előző két szakaszban megadott beállítások alapján hoztak létre. Vegye figyelembe, hogy két modul deklarálta azt, hogy nem adta hozzá a következőket: **$edgeAgent** és **$edgeHub**. Ez a két modul hozza létre a [IoT Edge futtatókörnyezetet](iot-edge-runtime.md) , és minden központi telepítés esetében kötelező alapértelmezett érték.
 
-Tekintse át az üzembe helyezési adatokat, majd kattintson a **Létrehozás**gombra.
+Tekintse át az üzembe helyezési adatokat, majd kattintson a **Létrehozás** gombra.
 
 ## <a name="view-modules-on-your-device"></a>Az eszközön található modulok megtekintése
 
@@ -90,11 +92,11 @@ IoT Edge modult az Azure piactéren és a IoT Hub is üzembe helyezhet.
 
 ### <a name="deploy-from-azure-marketplace"></a>Üzembe helyezés az Azure piactéren
 
-Beolvassa a IoT Edge modulokat a piactéren, és ha megtalálta, hogy melyikre van szüksége, a **Létrehozás** **vagy a letöltés lehetőség**kiválasztásával telepítheti. Folytassa a központi telepítési varázsló lépéseit, amelyek a kiválasztott IoT Edge modultól függően változhatnak:
+Beolvassa a IoT Edge modulokat a piactéren, és ha megtalálta, hogy melyikre van szüksége, a **Létrehozás** **vagy a letöltés lehetőség** kiválasztásával telepítheti. Folytassa a központi telepítési varázsló lépéseit, amelyek a kiválasztott IoT Edge modultól függően változhatnak:
 
-1. A **Folytatás**gombra kattintva nyugtázza a szolgáltató használati feltételeit és adatvédelmi szabályzatát. Előfordulhat, hogy először meg kell adnia a kapcsolattartási adatokat.
+1. A **Folytatás** gombra kattintva nyugtázza a szolgáltató használati feltételeit és adatvédelmi szabályzatát. Előfordulhat, hogy először meg kell adnia a kapcsolattartási adatokat.
 1. Válassza ki az előfizetését és azt a IoT Hub, amelyhez a céleszköz csatolva van.
-1. Válassza **a telepítés eszközre**lehetőséget.
+1. Válassza **a telepítés eszközre** lehetőséget.
 1. Adja meg az eszköz nevét, vagy válassza az **eszköz keresése** lehetőséget a hub-ban regisztrált eszközök között a tallózáshoz.
 1. Válassza a **Létrehozás** lehetőséget a telepítési jegyzék konfigurálásának szabványos folyamatának folytatásához, beleértve a további modulok hozzáadását, ha szükséges. Az új modul adatai, például a rendszerkép URI-ja, a létrehozási beállítások és a kívánt tulajdonságok előre definiálva vannak, de módosíthatók.
 
@@ -105,10 +107,10 @@ Ellenőrizze, hogy a modul telepítve van-e a IoT Hub a Azure Portalban. Válass
 Az Azure Marketplace-en gyorsan üzembe helyezhet egy modult az eszközön a Azure Portal IoT Hub.
 
 1. A Azure Portal navigáljon a IoT Hub.
-1. A bal oldali ablaktábla **automatikus eszközkezelés**területén válassza a **IoT Edge**lehetőséget.
+1. A bal oldali ablaktábla **automatikus eszközkezelés** területén válassza a **IoT Edge** lehetőséget.
 1. Válassza ki azt a IoT Edge eszközt, amely az üzemelő példány fogadására szolgál.
-1. A felső sávon válassza a **modulok beállítása**lehetőséget.
-1. A **IoT Edge-modulok** szakaszban kattintson a **Hozzáadás**gombra, és válassza ki a **piactér modult** a legördülő menüből.
+1. A felső sávon válassza a **modulok beállítása** lehetőséget.
+1. A **IoT Edge-modulok** szakaszban kattintson a **Hozzáadás** gombra, és válassza ki a **piactér modult** a legördülő menüből.
 
 ![Modul hozzáadása a IoT Hub](./media/how-to-deploy-modules-portal/iothub-add-module.png)
 

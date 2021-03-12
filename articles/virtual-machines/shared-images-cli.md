@@ -3,19 +3,19 @@ title: Megosztott képgyűjtemények létrehozása az Azure CLI-vel
 description: Ebből a cikkből megtudhatja, hogyan használhatja az Azure CLI-t egy virtuális gép megosztott rendszerképének létrehozásához az Azure-ban.
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ee7f7b524225845dc68100ee8ec9292eef111232
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 991b5363b180651b775bd46a0a1353fd124d34e6
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882348"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557728"
 ---
 # <a name="create-a-shared-image-gallery-with-the-azure-cli"></a>Megosztott képgyűjtemény létrehozása az Azure CLI-vel
 
@@ -26,7 +26,7 @@ A megosztott képkatalógus lehetővé teszi az egyéni virtuálisgép-rendszerk
 [!INCLUDE [virtual-machines-common-shared-images-cli](../../includes/virtual-machines-common-shared-images-cli.md)]
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hozzon létre egy rendszerkép-verziót egy [virtuális](image-version-vm-cli.md)gépről vagy egy [felügyelt rendszerképből](image-version-managed-image-cli.md) az Azure CLI használatával.
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: 39a1400bfe642672ba276686851d4f0edebbeb00
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: cbf070dce056795ad8e4a5f3e4d609e7d36d631e
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387852"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200814"
 ---
 # <a name="understanding-resource-sets"></a>Erőforráskészletek megismerése
 
@@ -21,7 +21,7 @@ Ebből a cikkből megtudhatja, hogyan használja az Azure hatáskörébe az adat
 
 A méretezés alatt álló adatfeldolgozási rendszerek általában egyetlen táblát tárolnak egy lemezen több fájlként. Ez a koncepció az Azure hatáskörébe tartozik az erőforrás-készletek használatával. Az erőforrás-készlet a katalógus egyetlen objektuma, amely nagy mennyiségű eszközt képvisel a tárolóban.
 
-Tegyük fel például, hogy a Spark-fürt megőrzött egy DataFrame egy Azure adatkezelési (ADLS) Gen2-adatforrásban. Bár a Sparkban a tábla egyetlen logikai erőforráshoz hasonlít, a lemezen valószínűleg több ezer parketta-fájl található, amelyek mindegyike a teljes DataFrame-tartalom partícióját jelöli. A IoT és a webnaplók adatkezelési feladatának ugyanaz a kihívása. Képzelje el, hogy van egy érzékelője, amely másodpercenként többször is kiírja a naplófájlokat. Addig nem fog sokáig tartani, amíg az adott érzékelőből több százezer naplófájl van.
+Tegyük fel például, hogy a Spark-fürt megőrzött egy DataFrame egy Azure Data Lake Storage (ADLS) Gen2-adatforrásban. Bár a Sparkban a tábla egyetlen logikai erőforráshoz hasonlít, a lemezen valószínűleg több ezer parketta-fájl található, amelyek mindegyike a teljes DataFrame-tartalom partícióját jelöli. A IoT és a webnaplók adatkezelési feladatának ugyanaz a kihívása. Képzelje el, hogy van egy érzékelője, amely másodpercenként többször is kiírja a naplófájlokat. Addig nem fog sokáig tartani, amíg az adott érzékelőből több százezer naplófájl van.
 
 Ahhoz, hogy a nagy számú adategység egyetlen logikai erőforráshoz való leképezésének kihívásával foglalkozzon, az Azure hatáskörébe erőforrás-készleteket használ.
 

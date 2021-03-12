@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e20cd09ce3d9eb1937819da79cea17bdd14a07dc
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 98b50673b464044af2a038fa93c3b6a022fa2899
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433267"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149703"
 ---
 # <a name="manage-digital-twins"></a>Digitális ikereszközök kezelése
 
@@ -127,13 +127,15 @@ A `object result = await client.GetDigitalTwinAsync("my-moon");` *Hold* típusú
 }
 ```
 
-A digitális iker definiált tulajdonságai a digitális iker felső szintű tulajdonságaiként lesznek visszaadva. A DTDL-definíciónak nem részét képező metaadatokat vagy rendszeradatokat előtaggal adja vissza a rendszer `$` . A metaadatok tulajdonságai a következők:
-* Az Azure Digital Twins-példányban lévő digitális iker azonosítója, mint `$dtId` .
-* `$etag`, a webkiszolgáló által hozzárendelt szabványos HTTP-mező.
-* További tulajdonságok egy `$metadata` szakaszban. Ezek a következők:
-    - A digitális iker modell DTMI.
-    - Az egyes írható tulajdonságok szinkronizálási állapota. Ez a leghasznosabb az eszközök esetében, ahol lehetséges, hogy a szolgáltatás és az eszköz eltérő állapotú (például ha egy eszköz offline állapotban van). Ez a tulajdonság jelenleg csak IoT Hubhoz csatlakoztatott fizikai eszközökre vonatkozik. A metaadatok szakaszban található adatokkal megismerheti a tulajdonságok teljes állapotát, valamint az utolsó módosítás időbélyegét is. A szinkronizálási állapottal kapcsolatos további információkért tekintse meg [ezt az IoT hub oktatóanyagot](../iot-hub/tutorial-device-twins.md) az eszköz állapotának szinkronizálásához.
-    - Szolgáltatás-specifikus metaadatok, például IoT Hub vagy Azure digitális Twins. 
+A digitális iker definiált tulajdonságai a digitális iker felső szintű tulajdonságaiként lesznek visszaadva. A DTDL-definíciónak nem részét képező metaadatokat vagy rendszeradatokat előtaggal adja vissza a rendszer `$` . A metaadatok tulajdonságai a következő értékeket tartalmazzák:
+* `$dtId`: Az Azure Digital Twins-példányban található Digital Twin azonosító
+* `$etag`: A webkiszolgáló által hozzárendelt szabványos HTTP-mező. Ezt a rendszer minden egyes frissítésekor új értékre frissíti, ami hasznos lehet annak megállapítására, hogy a Twin-adatbázis frissítve lett-e a kiszolgálón az előző ellenőrzések óta. A HTTP-fejlécekben is használható a következő módokon:
+  - olvasási műveletekkel a nem módosított tartalom beolvasásának elkerüléséhez
+  - az optimista párhuzamosságot támogató írási műveletekkel
+* `$metadata`: Más tulajdonságok készlete, beleértve a következőket:
+  - A digitális iker modell DTMI.
+  - Az egyes írható tulajdonságok szinkronizálási állapota. Ez a leghasznosabb az eszközök esetében, ahol lehetséges, hogy a szolgáltatás és az eszköz eltérő állapotú (például ha egy eszköz offline állapotban van). Ez a tulajdonság jelenleg csak IoT Hubhoz csatlakoztatott fizikai eszközökre vonatkozik. A metaadatok szakaszban található adatokkal megismerheti a tulajdonságok teljes állapotát, valamint az utolsó módosítás időbélyegét is. A szinkronizálási állapottal kapcsolatos további információkért tekintse meg [ezt az IoT hub oktatóanyagot](../iot-hub/tutorial-device-twins.md) az eszköz állapotának szinkronizálásához.
+  - Szolgáltatás-specifikus metaadatok, például IoT Hub vagy Azure digitális Twins. 
 
 További információ a szerializálási segítő osztályokról, például a `BasicDigitalTwin` [*útmutató: az Azure Digital Twins API-k és SDK*](how-to-use-apis-sdks.md)-k használata.
 

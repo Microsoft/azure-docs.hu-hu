@@ -1,7 +1,7 @@
 ---
 title: Media Encoder Standard séma | Microsoft Docs
 description: Ez a cikk az XML-séma azon elemeit és típusait ismerteti, amelyeken a Media Encoder Standard-készletek alapulnak.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 35f79702b7aad51b764ce2edb37c3c76d1fe98e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: f82e0c3f76dba05c3404b11e07c7130119ce0b9d
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89261512"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015658"
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard-séma
 
@@ -64,7 +64,7 @@ A következő elemek sorát tartalmazza:
 | **TwoPass**<br/><br/> minOccurs = "0" |**xs: logikai** |Jelenleg csak egymenetes kódolás támogatott. |
 | **KeyFrameInterval**<br/><br/> minOccurs = "0"<br/><br/> **default = "00:00:02"** |**xs: idő** |Meghatározza a rögzített térközt a IDR-keretek között másodpercben. Más néven a GOP időtartama. Tekintse meg a **SceneChangeDetection** , amely azt szabályozza, hogy a kódoló el tudja-e térni ettől az értéktől. |
 | **SceneChangeDetection**<br/><br/> minOccurs = "0"<br/><br/> default = "false" |**xs: logikai** |Ha igaz értékre van állítva, a kódoló megkísérli felderíteni a videó jelenetének változását, és beszúr egy IDR-keretet. |
-| **Összetettsége**<br/><br/> minOccurs = "0"<br/><br/> default = "Balanced" |**xs: karakterlánc** |A kódolás sebessége és a videó minősége közötti kompromisszumot vezérli. A következő értékek egyike lehet: **sebesség**, **kiegyensúlyozott**vagy **minőségi**<br/><br/> Alapértelmezett: **kiegyensúlyozott** |
+| **Összetettsége**<br/><br/> minOccurs = "0"<br/><br/> default = "Balanced" |**xs: karakterlánc** |A kódolás sebessége és a videó minősége közötti kompromisszumot vezérli. A következő értékek egyike lehet: **sebesség**, **kiegyensúlyozott** vagy **minőségi**<br/><br/> Alapértelmezett: **kiegyensúlyozott** |
 | **SyncMode**<br/><br/> minOccurs = "0" | |A szolgáltatás egy későbbi kiadásban lesz elérhető. |
 | **H264Layers**<br/><br/> minOccurs = "0" |[H264Layers](media-services-mes-schema.md#H264Layers) |Kimeneti videó rétegek gyűjteménye |
 
@@ -99,7 +99,7 @@ Alapértelmezés szerint, ha olyan bemenetet küld a kódolónak, amely csak han
 | **Sávszélességű**<br/><br/> minOccurs = "0" |**xs: int** |A videó réteghez használt, kbps-ben megadott bitrátát adja meg. |
 | **MaxBitrate**<br/><br/> minOccurs = "0" |**xs: int** |A videó réteghez használt maximális sebesség kbps-ben megadva. |
 | **BufferWindow**<br/><br/> minOccurs = "0"<br/><br/> default = "00:00:05" |**xs: idő** |A videó pufferének hossza |
-| **Szélessége**<br/><br/> minOccurs = "0" |**xs: int** |A kimeneti videó keretének szélessége képpontban megadva<br/><br/> Jelenleg a szélességet és a magasságot kell megadnia. A szélességnek és a magasságnak páros számnak kell lennie. |
+| **Szélesség**<br/><br/> minOccurs = "0" |**xs: int** |A kimeneti videó keretének szélessége képpontban megadva<br/><br/> Jelenleg a szélességet és a magasságot kell megadnia. A szélességnek és a magasságnak páros számnak kell lennie. |
 | **Magasság**<br/><br/> minOccurs = "0" |**xs: int** |A kimeneti videó keretének magassága képpontban megadva<br/><br/> Jelenleg a szélességet és a magasságot kell megadnia. A szélességnek és a magasságnak páros számnak kell lennie.|
 | **BFrames**<br/><br/> minOccurs = "0" |**xs: int** |A (B) keretek száma a hivatkozási keretek között. |
 | **ReferenceFrames**<br/><br/> minOccurs = "0"<br/><br/> alapértelmezett = "3" |**xs: int** |A GOP-ban található hivatkozási keretek száma. |
@@ -117,7 +117,7 @@ Alapértelmezés szerint, ha olyan bemenetet küld a kódolónak, amely csak han
 
 | Név | Típus | Leírás |
 | --- | --- | --- |
-| **Profil**<br/><br/> minOccurs = "0"<br/><br/> default = "AACLC" |**xs: karakterlánc** |A következő értékek egyike lehet: **AACLC**, **HEAACV1**vagy **HEAACV2**. |
+| **Profil**<br/><br/> minOccurs = "0"<br/><br/> default = "AACLC" |**xs: karakterlánc** |A következő értékek egyike lehet: **AACLC**, **HEAACV1** vagy **HEAACV2**. |
 
 ### <a name="attributes"></a>Attribútumok
 
@@ -163,7 +163,7 @@ Hangkodek|Részletek
 
 | Név | Típus | Leírás |
 | --- | --- | --- |
-| **FileName** |**xs: karakterlánc** |A kimeneti fájl neve.<br/><br/> A következő táblázatban ismertetett makrókat használhatja a kimeneti fájlnevek létrehozásához. Példa:<br/><br/> **"Outputs": [{"FileName": "{basename}*{felbontás}*{bitráta}. mp4", "Format": {"type": "MP4Format"}}]** |
+| **FileName** |**xs: karakterlánc** |A kimeneti fájl neve.<br/><br/> A következő táblázatban ismertetett makrókat használhatja a kimeneti fájlnevek létrehozásához. Például:<br/><br/> **"Outputs": [{"FileName": "{basename}*{felbontás}*{bitráta}. mp4", "Format": {"type": "MP4Format"}}]** |
 
 ### <a name="macros"></a>Makrók
 
@@ -217,7 +217,7 @@ Azt is megteheti, hogy a **PreserveResolutionAfterRotation** jelzőt használja,
 
 | Név | Típus | Leírás |
 | --- | --- | --- |
-| **Szélessége**<br/><br/> minOccurs = "0" |**xs: int** | |
+| **Szélesség**<br/><br/> minOccurs = "0" |**xs: int** | |
 | **Magasság**<br/><br/> minOccurs = "0" |**xs: int** | |
 
 ### <a name="attributes"></a>Attribútumok
@@ -231,7 +231,7 @@ Azt is megteheti, hogy a **PreserveResolutionAfterRotation** jelzőt használja,
 
 | Név | Típus | Leírás |
 | --- | --- | --- |
-| **Szélessége**<br/><br/> minOccurs = "0" |**xs: int** | |
+| **Szélesség**<br/><br/> minOccurs = "0" |**xs: int** | |
 | **Magasság**<br/><br/> minOccurs = "0" |**xs: int** | |
 
 ### <a name="attributes"></a>Attribútumok
@@ -245,7 +245,7 @@ Azt is megteheti, hogy a **PreserveResolutionAfterRotation** jelzőt használja,
 
 | Név | Típus | Leírás |
 | --- | --- | --- |
-| **Szélessége**<br/><br/> minOccurs = "0" |**xs: int** | |
+| **Szélesség**<br/><br/> minOccurs = "0" |**xs: int** | |
 | **Magasság**<br/><br/> minOccurs = "0" |**xs: int** | |
 | **Minőség**<br/><br/> minOccurs = "0" |**xs: int** |Érvényes értékek: 1 (legrosszabb) – 100 (legjobb) |
 

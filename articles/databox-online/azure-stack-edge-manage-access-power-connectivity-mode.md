@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 6455e4c9fa9460e47e3be7c860f89be540a514b0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 240d3872536e6974d7f65eed22dace6816844e9e
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453073"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200212"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro"></a>A Azure Stack Edge Pro hozzáférési, energiagazdálkodási és csatlakozási módjának kezelése
 
@@ -103,7 +103,7 @@ Az alapértelmezett teljes kapcsolaton kívül az eszköz részben csatlakoztato
 
 - **Teljes mértékben csatlakoztatva** – ez a normál alapértelmezett mód, amelyben az eszköz működik. Ebben a módban a Felhőbeli feltöltés és az adatok letöltése is engedélyezve van. Az eszköz kezeléséhez használhatja a Azure Portal vagy a helyi webes felhasználói felületet.
 
-- **Részben leválasztva** – ebben a módban az eszköz nem tölthető fel, és nem tölthető le, azonban a Azure Portal használatával felügyelhető.
+- **Részlegesen csatlakoztatva** – ebben a módban az eszköz nem tudja feltölteni vagy letölteni a megosztási adatok kezelését, azonban a Azure Portal használatával felügyelhető.
 
     Ezt a módot általában a mért műhold-hálózaton használják, és a cél a hálózati sávszélesség-fogyasztás csökkentése. Az eszköz-figyelési műveletek esetében a minimális hálózati fogyasztás továbbra is előfordulhat.
 
@@ -132,6 +132,6 @@ A fizikai eszköz a helyi webes felhasználói felülettel állítható le vagy 
 > [!NOTE]
 > Ha leállítja a fizikai eszközt, a bekapcsolásához le kell küldenie az eszköz főkapcsoló gombját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [kezelheti a megosztásokat](azure-stack-edge-manage-shares.md).

@@ -3,7 +3,7 @@ title: Hozzáférés a Azure Media Services API-hoz Azure Active Directory hitel
 description: Tudnivalók a Azure Media Services API-hoz való hozzáférés hitelesítéséhez Azure Active Directory (Azure AD) használatához szükséges fogalmakról és lépésekről.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/01/2019
-ms.author: juliako
-ms.openlocfilehash: a26359c46caa8085384313f1c385c5740abc0b32
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 3688f0f9266844ce584f3f2d2e1a7c39ed3e4f70
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98694537"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009014"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Az Azure Media Services API hozzáférése Azure AD-hitelesítéssel 
 
@@ -155,7 +155,7 @@ A következő cikkek az Azure AD-hitelesítési fogalmak áttekintését ismerte
 - [Alkalmazás hozzáadása, frissítése vagy eltávolítása az Azure AD-ben](../../active-directory/develop/quickstart-register-app.md)
 - [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure PowerShell használatával](../../role-based-access-control/role-assignments-powershell.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Portal használatával [férhet hozzá az Azure ad-hitelesítéshez Azure Media Services API](media-services-portal-get-started-with-aad.md)felhasználásához.
 * Az Azure AD-hitelesítés használatával [férhet hozzá Azure Media Services API-hoz a .net](media-services-dotnet-get-started-with-aad.md)-tel.

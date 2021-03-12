@@ -180,7 +180,7 @@
 - name: További források
   items:
     - name: Támogatási és súgólehetőségek
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/time-series-insights/toc.json&bc=/azure/time-series-insights/breadcrumb/toc.json
     - name: Ügyfelek adatkérései
       href: time-series-insights-customer-data-requests.md
     - name: Fejlesztői erőforrások

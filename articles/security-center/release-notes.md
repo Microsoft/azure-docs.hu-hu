@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/04/2021
+ms.date: 03/10/2021
 ms.author: memildin
-ms.openlocfilehash: da2201931c92939029724b1086589803845109a7
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 7080f79ca85a401ddcd3d421bb4a0292994508dd
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102439629"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636674"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -36,6 +36,7 @@ A márciusi frissítések a következők:
 - [Azure Monitor Security Centerba integrált munkafüzetek és a megadott három sablon](#azure-monitor-workbooks-integrated-into-security-center-and-three-templates-provided)
 - [A szabályozási megfelelőségi irányítópult mostantól tartalmazza az Azure audit-jelentéseket (előzetes verzió)](#regulatory-compliance-dashboard-now-includes-azure-audit-reports-preview)
 - [A Munkafolyamat-automatizálás üzembe helyezésére vonatkozó szabályzatok frissítései](#updates-to-the-policies-for-deploying-workflow-automation)
+- [Két örökölt javaslat már nem ír közvetlenül az Azure-tevékenység naplójába](#two-legacy-recommendations-no-longer-write-data-directly-to-azure-activity-log)
 
 
 ### <a name="azure-firewall-management-integrated-into-security-center"></a>Azure Firewall a Security Centerba integrált felügyelet
@@ -113,6 +114,19 @@ A szabályzatok szolgáltatásainak két frissítése van:
 Ismerkedés a [munkafolyamat-automatizálási sablonokkal](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation).
 
 További információ a [Security Center eseményindítókkal kapcsolatos válaszok automatizálásáról](workflow-automation.md).
+
+
+### <a name="two-legacy-recommendations-no-longer-write-data-directly-to-azure-activity-log"></a>Két örökölt javaslat már nem ír közvetlenül az Azure-tevékenység naplójába 
+
+A Security Center szinte minden biztonsági javaslathoz átadja az adatot, hogy Azure Advisor, amely viszont azt írja az [Azure-tevékenység naplójába](../azure-monitor/essentials/activity-log.md).
+
+Két javaslat esetében az adatgyűjtés egyidejűleg közvetlenül az Azure-tevékenység naplójában történik. Ezzel a módosítással a Security Center leállítja a korábbi biztonsági javaslatok adatírását közvetlenül a tevékenységi naplóba. Ehelyett exportáljuk az adatAzure Advisor, ahogy az összes többi javaslat esetében.
+
+A két örökölt javaslat a következők:
+- Az Endpoint Protection állapotával kapcsolatos problémákat fel kell oldani a gépeken
+- A gépek biztonsági beállításainak sebezhetőségeit szervizelni kell
+
+Ha a következő két javaslathoz van hozzáférése a "TaskDiscovery típusú javaslat" kategóriában, akkor ez már nem érhető el.
 
 
 

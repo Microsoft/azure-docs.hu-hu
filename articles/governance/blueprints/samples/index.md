@@ -1,14 +1,14 @@
 ---
 title: Tervminták indexe
 description: A környezetek, szabályzatok és felhőbevezetési keretrendszerek alapjainak Azure Blueprintsszel történő üzembe helyezésére szolgáló megfelelőségi és standard minták indexe.
-ms.date: 02/08/2020
+ms.date: 03/11/2021
 ms.topic: sample
-ms.openlocfilehash: c64bc02c1dea4e2c53d4ff195add2ac7fa57874f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 0873de5879a40b13bea03c97e0b78d146f0d6696
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370954"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200995"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints-minták
 
@@ -22,7 +22,8 @@ A következő táblázat az Azure Blueprints szolgáltatáshoz használható min
 | [Azure-biztonsági teljesítményteszt](./azure-security-benchmark.md) | Védőkorlátokat biztosít az [Azure biztonsági-teljesítménytesztnek](../../../security/benchmarks/overview.md) való megfelelőséghez. |
 | [Az Azure Security teljesítményteszt alapjai](./azure-security-benchmark-foundation/index.md) | Az Azure Security teljesítményteszt Foundation üzembe helyezése és konfigurálása. |
 | [Canada Federal PBMM](./canada-federal-pbmm/index.md) | Védőkorlátokat biztosít a Canada Federal Protected B, Medium Integrity, Medium Availability (PBMM) szabványnak való megfeleléshez. |
-| [CIS Microsoft Azure Foundations Benchmark](./cis-azure-1-1-0.md)| Szabályzatkészletet biztosít a CIS Microsoft Azure Foundations Benchmark ajánlásainak való megfelelőséghez. |
+| [CIS Microsoft Azure alapítványok teljesítményteszt v 1.3.0](./cis-azure-1-3-0.md)| Olyan szabályzatokat biztosít, amelyek segítenek megfelelni a CIS Microsoft Azure alapítványok teljesítményteszt v 1.3.0 ajánlásainak. |
+| [CIS Microsoft Azure Foundations Benchmark 1.1.0-s verzió](./cis-azure-1-1-0.md)| Olyan szabályzatokat biztosít, amelyek segítenek megfelelni a CIS Microsoft Azure alapítványok teljesítményteszt v 1.1.0 ajánlásainak. |
 | [DoD Impact Level 4](./dod-impact-level-4/index.md) | Szabályzatkészletet biztosít, amely segít megfelelni a DoD Impact Level 4 előírásainak. |
 | [DoD Impact Level 5](./dod-impact-level-5/index.md) | Szabályzatkészletet biztosít, amely segít megfelelni a DoD Impact Level 5 előírásainak. |
 | [FedRAMP Moderate](./fedramp-m/index.md) | Szabályzatkészletet biztosít a FedRAMP Moderate előírásainak való megfeleléshez. |

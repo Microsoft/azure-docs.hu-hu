@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 855765648d68756598f2942e0c994fa939bcbda0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 679df881e928825496a03b2fef7c9374d61593f7
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695668"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199988"
 ---
 # <a name="access-external-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Külső tárterület elérése kiszolgáló nélküli SQL-készlettel az Azure szinapszis Analyticsben
 
-Ez a dokumentum azt ismerteti, hogyan lehet a felhasználók beolvasni az Azure Storage-ban tárolt fájlok adatait a kiszolgáló nélküli SQL-készletben. A felhasználók a következő beállításokkal férhetnek hozzá a tárolóhoz:
+Ez a cikk azt ismerteti, hogy a felhasználók hogyan olvashatják el az Azure Storage-ban tárolt fájlokból származó információkat a kiszolgáló nélküli SQL-készletben. A felhasználók a következő beállításokkal férhetnek hozzá a tárolóhoz:
 
 - [OpenRowset](develop-openrowset.md) függvény, amely alkalmi lekérdezéseket tesz lehetővé az Azure Storage-ban található fájlokon.
 - Külső [tábla](develop-tables-external-tables.md) , amely a külső fájlok készletére épülő, előre definiált adatstruktúra.

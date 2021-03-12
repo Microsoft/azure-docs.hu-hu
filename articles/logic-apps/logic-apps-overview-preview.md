@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/08/2021
-ms.openlocfilehash: d53a36d99c9a54fdfef7baceb50edb4e8f5ae4c8
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.date: 03/10/2021
+ms.openlocfilehash: 7120b6ff17657232c0e614f49b75bb24263712b7
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102561857"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636335"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Áttekintés: Azure Logic Apps előzetes verzió
 
@@ -59,7 +59,7 @@ Az alábbi táblázat röviden összefoglalja, hogy a munkafolyamatok milyen mó
 | Azure Logic Apps (több-bérlős) | Az *ügyfelektől több bérlőn belüli* munkafolyamatok ugyanazt a feldolgozást (számítást), tárhelyet, hálózatot és így tovább használják. |
 | Azure Logic Apps (előzetes verzió, egybérlős) | *Az azonos logikai alkalmazásban és egyetlen bérlőn belüli* munkafolyamatok ugyanazt a feldolgozást (számítást), tárhelyet, hálózatot stb. használják. |
 | Integrációs szolgáltatási környezet (előzetes verzióban nem érhető el) | Az *ugyanabban a környezetben* lévő munkafolyamatok ugyanazt a feldolgozást (számítást), tárhelyet, hálózatot és egyebeket használják. |
-||||
+|||
 
 Eközben a több-bérlős logikai alkalmazás típusát is létrehozhatja a Azure Portal és a Visual Studio Code-ban a több-bérlős Azure Logic Apps bővítmény használatával. Bár a fejlesztési tapasztalatok különböznek a több-bérlős és az egybérlős logikai alkalmazások típusaitól, az Azure-előfizetések mindkét típust tartalmazhatják. Az Azure-előfizetésben megtekintheti és elérheti az összes telepített Logic apps-alkalmazást, de az alkalmazások a saját kategóriákban és szakaszban vannak rendszerezve.
 
@@ -122,7 +122,10 @@ A Azure Logic Apps Preview számos aktuális és további funkciót tartalmaz, p
 
 * Hozzon létre logikai alkalmazásokat és azok munkafolyamatait [400 + összekötőből](/connectors/connector-reference/connector-reference-logicapps-connectors) a szolgáltatott szoftver (SaaS) és a szolgáltatásként nyújtott platform (Pásti) alkalmazásaihoz és szolgáltatásaihoz, valamint a helyszíni rendszerekhez.
 
-  * Egyes felügyelt összekötők, például az Azure Service Bus, az Azure Event Hubs, a SQL Server és az MQ, hasonlóan futnak a beépített triggerekhez és a Azure Logic Apps előzetes verziójának natív műveleteihez, például a kérelem-eseményindítóhoz és a HTTP-művelethez.
+  * Néhány felügyelt összekötő már elérhető beépített verzióként, amely hasonlóan fut a beépített triggerekhez és műveletekhez, például a kérelem eseményindítója és a HTTP művelet, amely natív módon fut a Azure Logic Apps előnézet futtatókörnyezetben. Ezek az új beépített összekötők például a következők: Azure Service Bus, Azure Event Hubs, SQL Server és MQ.
+
+    > [!NOTE]
+    > A beépített SQL Server összekötő esetében csak a **lekérdezés végrehajtása** művelet tud közvetlenül csatlakozni az Azure virtuális hálózatokhoz anélkül, hogy a helyszíni [adatátjáróra](logic-apps-gateway-connection.md)lenne szükség.
 
   * Hozzon létre saját beépített összekötőket minden szükséges szolgáltatáshoz az [előzetes verzió bővíthetőségi keretrendszerének](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272)használatával. A beépített összekötők, például a Azure Service Bus és a SQL Server esetében, de az előzetes verzióban jelenleg nem támogatott [Egyéni összekötők](../connectors/apis-list.md#custom-apis-and-connectors) eltérően ezek az összekötők magasabb átviteli sebességet, kis késleltetést, helyi kapcsolatot biztosítanak, és natív módon futnak az előzetes verziójú futtatókörnyezettel azonos folyamatban.
 

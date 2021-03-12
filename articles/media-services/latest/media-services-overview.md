@@ -2,7 +2,7 @@
 title: Azure Media Services v3 Áttekintés: Azure Media Services Leírás: az Azure Media Services v3 magas szintű áttekintése, amely rövid útmutatókra, oktatóanyagokra és mintakód-mintákra mutató hivatkozásokat tartalmaz.
 szolgáltatások: Media-Services documentationcenter: na Author: IngridAtMicrosoft Manager: femila Editor: ' ' Tags: ' ' Keywords: Azure Media Services, stream, Broadcast, Live, offline
 
-MS. Service: Media-Services MS. devlang: több MS. topic: Áttekintés ms.tgt_pltfrm: több MS. munkaterhelés: Media MS. Date: 08/31/2020 MS. Author: inhenkel MS. Custom: MVC
+MS. Service: Media-Services MS. devlang: több MS. topic: Áttekintés ms.tgt_pltfrm: több MS. munkaterhelés: Media MS. Date: 3/10/2021 MS. Author: inhenkel MS. Custom: MVC
 #<a name="customer-intent-as-a-developer-or-a-content-provider-i-want-to-encode-stream-on-demand-or-live-analyze-my-media-content-so-that-my-customers-can-view-the-content-on-a-wide-variety-of-browsers-and-devices-gain-valuable-insights-from-recorded-content"></a>Ügyfél szándéka: fejlesztőként vagy tartalomszolgáltatóként szeretnék kódolni, adatfolyamként (igény szerint vagy élő verzióban) elemezni a médiatartalom tartalmát, hogy az ügyfeleim: megtekintheti a tartalmakat a böngészők és az eszközök széles köréről, értékes információkhoz juthat a rögzített tartalmakról.
 ---
 
@@ -13,9 +13,6 @@ MS. Service: Media-Services MS. devlang: több MS. topic: Áttekintés ms.tgt_pl
 Az Azure Media Services egy felhőalapú platform, amellyel olyan megoldások hozhatók létre, amelyek lehetővé teszik többek között a médiaszínvonalú videostreamelést, a hozzáférhetőség és terjesztés javítását vagy tartalmak elemzését. Akár egy app Developer, egy Call Center, egy kormányzati szerv vagy egy szórakoztató cég, Media Services segítségével olyan alkalmazásokat hozhat létre, amelyek kiváló minőségű multimédiás élményt biztosítanak a nagy közönségnek a mai legnépszerűbb mobileszközök és böngészők számára.
 
 A Media Services v3 SDK [-k Media Services v3 OpenAPI-specifikáción (henceg)](https://aka.ms/ams-v3-rest-sdk)alapulnak.
-
-> [!NOTE]
-> Jelenleg a [Azure Portal](https://portal.azure.com/) használható a következőhöz: Media Services v3 [élő események](live-events-outputs-concept.md), View (nem felügyelt) v3- [eszközök](assets-concept.md)kezelése, az API-k [elérésére vonatkozó információk lekérése](./access-api-howto.md). Az összes többi felügyeleti feladathoz (például [átalakításokhoz, feladatokhoz](transforms-jobs-concept.md) és [tartalmak védelméhez](content-protection-overview.md)) használja a [REST API](/rest/api/media/), a [CLI](/cli/azure/ams)vagy a támogatott [SDK](media-services-apis-overview.md#sdks)-k egyikét.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

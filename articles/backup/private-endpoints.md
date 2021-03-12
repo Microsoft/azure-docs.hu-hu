@@ -3,12 +3,12 @@ title: Privát végpontok
 description: Megtudhatja, hogyan hozhat létre privát végpontokat a Azure Backuphoz, és hogy a saját végpontok használata hogyan segít megőrizni az erőforrások biztonságát.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 9363aaf45a7c092d8a773a07803c8c1bce1eedd7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7423157abbc0833394af055f5e31f724caa10b46
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728212"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224707"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup magánhálózati végpontok
 
@@ -24,7 +24,7 @@ Ez a cikk segít megérteni a Azure Backup magánhálózati végpontok létrehoz
 - A biztonsági mentéshez használt privát végponti kapcsolatok összesen 11 magánhálózati IP-címet használnak az alhálózaton, beleértve a Azure Backup által a Storage szolgáltatáshoz használt. Az egyes Azure-régiók esetében ez a szám magasabb (akár 25) is lehet. Ezért javasoljuk, hogy elegendő privát IP-cím álljon rendelkezésre, ha privát végpontokat próbál létrehozni a biztonsági mentéshez.
 - A Recovery Services-tárolót (mindkettő) Azure Backup és Azure Site Recovery is használja, ez a cikk a privát végpontok használatát ismerteti csak Azure Backup esetén.
 - Azure Active Directory jelenleg nem támogatja a privát végpontokat. A Azure Active Directory működéséhez szükséges IP-címeket és teljes tartományneveket engedélyezni kell a biztonságos hálózatról, amikor az Azure-beli virtuális gépeken található adatbázisok biztonsági mentését hajtja végre, és a MARS-ügynök használatával készít biztonsági mentést. NSG-címkéket és Azure Firewall címkéket is használhat az Azure AD-hez való hozzáférés engedélyezéséhez.
-- A hálózati házirendekkel rendelkező virtuális hálózatok magánhálózati végpontok esetén nem támogatottak. A folytatás előtt le kell tiltania a hálózati házirendeket.
+- A hálózati házirendekkel rendelkező virtuális hálózatok magánhálózati végpontok esetén nem támogatottak. A folytatás előtt [le kell tiltania a hálózati házirendeket](https://docs.microsoft.com/azure/private-link/disable-private-endpoint-network-policy) .
 - A Recovery Services erőforrás-szolgáltatót újra regisztrálnia kell az előfizetéssel, ha azt a 1 2020. május előtt regisztrálta. A szolgáltató újbóli regisztrálásához nyissa meg az előfizetését a Azure Portalban, navigáljon az **erőforrás-szolgáltatóhoz** a bal oldali navigációs sávon, majd válassza a **Microsoft. recoveryservices szolgáltatónál** elemet, és válassza az **ismételt regisztráció** lehetőséget.
 - Az SQL-és SAP HANA-adatbázisok [régiók közötti visszaállítása](backup-create-rs-vault.md#set-cross-region-restore) nem támogatott, ha a tárolón engedélyezve vannak a privát végpontok.
 - Ha egy Recovery Services-tárolót egy új bérlőhöz már használ privát végpontokkal, akkor frissítenie kell a Recovery Services-tárolót a tár felügyelt identitásának újbóli létrehozásához és újrakonfigurálásához, és szükség szerint létre kell hoznia egy új privát végpontot (amelynek az új Bérlőnek kell lennie). Ha ez nem történik meg, a biztonsági mentési és visszaállítási műveletek sikertelenek lesznek. Az előfizetésen belül beállított szerepköralapú hozzáférés-vezérlési (RBAC) engedélyeket is újra kell konfigurálni.
@@ -297,6 +297,10 @@ Ha a MARS-ügynököt használja a helyszíni erőforrások biztonsági mentés�
 
 Ha azonban a MARS-ügynök regisztrálása után eltávolítja a tárolóhoz tartozó magánhálózati végpontokat, újra regisztrálnia kell a tárolót a tárolóban. Nem kell leállítania a védelmet.
 
+## <a name="deleting-private-endpoints"></a>Privát végpontok törlése
+
+[Ebből a szakaszból](https://docs.microsoft.com/rest/api/virtualnetwork/privateendpoints/delete) megtudhatja, hogyan törölhet privát végpontokat.
+
 ## <a name="additional-topics"></a>További témakörök
 
 ### <a name="create-a-recovery-services-vault-using-the-azure-resource-manager-client"></a>Recovery Services-tároló létrehozása az Azure Resource Manager ügyfél használatával
@@ -554,4 +558,4 @@ A. A cikkben részletezett folyamat után nem kell további munkát végeznie a 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a [Azure Backup összes biztonsági szolgáltatásáról](security-overview.md)
+- Olvassa el a [Azure Backup összes biztonsági szolgáltatását](security-overview.md).

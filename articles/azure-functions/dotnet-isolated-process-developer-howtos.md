@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan hozhat létre és kereshet C#-függvényeket a 
 ms.date: 03/03/2021
 ms.topic: how-to
 zone_pivot_groups: development-environment-functions
-ms.openlocfilehash: 70eacc5ec7f6adb65ba6e01c55acc6c6e3075ca9
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 9751d5d354d738a64d6b02e8153464491d78ec14
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102583895"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201364"
 ---
-# <a name="develop-and-publish-net-5-function-using-azure-functions"></a>.NET 5-függvény fejlesztése és közzététele Azure Functions használatával 
+# <a name="develop-and-publish-net-5-functions-using-azure-functions"></a>.NET 5 függvények fejlesztése és közzététele Azure Functions használatával 
 
 Ebből a cikkből megtudhatja, hogyan dolgozhat a C#-függvényekkel a .NET 5,0-es verzióval, amely a Azure Functions futtatókörnyezetből folyamaton kívül fut. Megtudhatja, hogyan hozhat létre, végezhet hibakeresést helyileg, és hogyan teheti közzé ezeket a .NET elkülönített folyamatokat az Azure-ban. Az Azure-ban ezek a függvények egy olyan elkülönített folyamaton futnak, amely támogatja a .NET 5,0-et. További információ: [útmutató a függvények futtatásához a .net 5,0-ben az Azure-ban](dotnet-isolated-process-guide.md).
 
@@ -152,7 +152,7 @@ Ezen a ponton futtathatja a parancsot a `func start` projekt mappájának gyöke
  
 1. A Azure Functions Runtime kimenetében jegyezze fel a gazdagép folyamatának AZONOSÍTÓját, amelyhez a hibakeresőt csatolni kell. Jegyezze fel a helyi függvény URL-címét is.
 
-1. A Visual Studio **hibakeresés** menüjében válassza a **Csatolás a feldolgozáshoz...** lehetőséget, keresse meg a folyamat azonosítójának megfelelő dotnet.exe folyamatot, majd válassza a **csatolás** lehetőséget. 
+1. A Visual Studio **hibakeresés** menüjében válassza a **Csatolás a feldolgozáshoz...** lehetőséget, keresse meg a folyamat azonosítójának megfelelő folyamatot, majd válassza a **csatolás** elemet. 
     
     :::image type="content" source="media/dotnet-isolated-process-developer-howtos/attach-to-process.png" alt-text="A hibakereső csatlakoztatása a functions Host folyamathoz":::    
 

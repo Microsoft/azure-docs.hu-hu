@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df867059a7d4020952f71ca8d663a644ee2428fd
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 4cd0febe5ffbc1b17718043d5fc97b804f87cc46
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102199628"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199723"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B-együttműködésre irányuló meghívás beváltása
 
@@ -65,7 +65,7 @@ Ha a felhasználó a meghívás **elfogadása** hivatkozásra kattint egy [megh�
 
 ![A beváltási folyamat diagramját ábrázoló képernyőfelvétel](media/redemption-experience/invitation-redemption-flow.png)
 
-**Ha a felhasználó felhasználói alapelvének neve (UPN) megegyezik egy meglévő Azure AD-és személyes MSA-fiókkal, a rendszer megkéri a felhasználót, hogy válassza ki, hogy melyik fiókot szeretné beváltani.*
+**Ha a felhasználó egyszerű felhasználóneve (UPN) megegyezik egy meglévő Azure AD-és személyes MSA-fiókkal, a rendszer megkéri a felhasználót, hogy válassza ki, hogy melyik fiókot szeretné beváltani.*
 
 1. Az Azure AD felhasználói alapú felderítést végez annak megállapításához, hogy a felhasználó létezik-e egy [meglévő Azure ad-bérlőben](./what-is-b2b.md#easily-invite-guest-users-from-the-azure-ad-portal).
 

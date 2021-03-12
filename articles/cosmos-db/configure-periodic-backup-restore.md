@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 185320868c491d98df5fb6e31d9a627157431944
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 69a9f0a82f5c19504564825e47f69ab8414e0909
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99527527"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565835"
 ---
 # <a name="configure-azure-cosmos-db-account-with-periodic-backup"></a>Azure Cosmos DB fiók konfigurálása rendszeres biztonsági mentéssel
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-A Azure Cosmos DB rendszeres időközönként automatikusan biztonsági másolatot készít az adatairól. Az automatikus biztonsági mentések az adatbázis-műveletek teljesítményének vagy rendelkezésre állásának befolyásolása nélkül hozhatók. Az összes biztonsági mentés külön tárolódik a tárolási szolgáltatásokban, és ezek a biztonsági másolatok globálisan replikálódnak a regionális katasztrófák elleni rugalmasságra. A Azure Cosmos DB, nem csupán az adatai, hanem az adatbiztonsági másolatok is nagyon redundánsak, és a regionális katasztrófák miatt rugalmasak. A következő lépések bemutatják, hogyan végzi el a Azure Cosmos DB az adatok biztonsági mentését:
+Az Azure Cosmos DB rendszeres időközönként automatikusan biztonsági másolatot készít az adatokról. Az automatikus biztonsági mentések az adatbázis-műveletek teljesítményét vagy rendelkezésre állását nem befolyásolják. Az összes biztonsági mentés külön tárolódik a tárolási szolgáltatásokban, és ezek a biztonsági másolatok globálisan replikálódnak a regionális katasztrófák elleni rugalmasságra. A Azure Cosmos DB, nem csupán az adatai, hanem az adatbiztonsági másolatok is nagyon redundánsak, és a regionális katasztrófák miatt rugalmasak. A következő lépések bemutatják, hogyan végzi el a Azure Cosmos DB az adatok biztonsági mentését:
 
 * A Azure Cosmos DB 4 óránként automatikusan teljes biztonsági másolatot készít az adatbázisról, és a rendszer minden időpontban csak a legújabb két biztonsági mentést tárolja. Ha az alapértelmezett intervallumok nem elégségesek a számítási feladatokhoz, módosíthatja a biztonsági mentés időközét és a megőrzési időszakot a Azure Portal. A biztonsági mentési konfigurációt az Azure Cosmos-fiók létrehozásakor vagy azt követően is módosíthatja. Ha törli a tárolót vagy az adatbázist, a Azure Cosmos DB 30 napig megőrzi egy adott tároló vagy adatbázis meglévő pillanatképeit.
 
@@ -33,7 +33,7 @@ A Azure Cosmos DB rendszeres időközönként automatikusan biztonsági másolat
 
 ## <a name="modify-the-backup-interval-and-retention-period"></a><a id="configure-backup-interval-retention"></a>A biztonsági mentés intervallumának és megőrzési idejének módosítása
 
-Azure Cosmos DB automatikusan teljes biztonsági másolatot készít az adatairól 4 óránként és bármikor, a legújabb két biztonsági mentést tárolja. Ez a konfiguráció az alapértelmezett beállítás, és többletköltség nélkül elérhető. Az alapértelmezett biztonsági mentési időköz és a megőrzési időszak az Azure Cosmos-fiók létrehozásakor vagy a fiók létrehozása után módosítható. A biztonsági mentési konfiguráció az Azure Cosmos-fiók szintjén van beállítva, és minden fióknál külön konfigurálnia kell. Miután konfigurálta egy fiók biztonsági mentési beállításait, a rendszer az adott fiókban lévő összes tárolóra alkalmazza. A biztonsági mentési beállításokat jelenleg csak az Azure Portalon változtathatja meg.
+Azure Cosmos DB automatikusan teljes biztonsági másolatot készít az adatairól 4 óránként és bármikor, a legújabb két biztonsági mentést tárolja. Ez a konfiguráció az alapértelmezett beállítás, és többletköltség nélkül elérhető. Az Azure Cosmos-fiók létrehozásakor vagy a fiók létrehozása után megváltoztathatja az alapértelmezett biztonsági mentési időközt és a megőrzési időtartamot. A biztonsági mentési konfiguráció az Azure Cosmos-fiók szintjén van beállítva, és minden fióknál külön konfigurálnia kell. Miután konfigurálta egy fiók biztonsági mentési beállításait, a rendszer az adott fiókban lévő összes tárolóra alkalmazza. A biztonsági mentési beállításokat jelenleg csak az Azure Portalon változtathatja meg.
 
 Ha véletlenül törölte vagy megsérült az adatai, az **adatok visszaállítására vonatkozó támogatási kérelem létrehozása előtt győződjön meg arról, hogy a fiók biztonsági mentése legalább hét napig megnövekszik. Az eseménytől számított 8 órán belül növelheti az adatmegőrzést.** Így az Azure Cosmos DB csapatának elég ideje lesz a fiók visszaállítására.
 
@@ -115,7 +115,7 @@ Ha az átviteli sebességet az adatbázis szintjén adja meg, a biztonsági ment
 A szerepkör [CosmosdbBackupOperator](../role-based-access-control/built-in-roles.md#cosmosbackupoperator), tulajdonosának vagy közreműködőinek részét képező rendszerbiztonsági tag jogosult a visszaállítás igénylésére vagy a megőrzési időtartam módosítására.
 
 ## <a name="understanding-costs-of-extra-backups"></a>További biztonsági másolatok költségeinek megismerése
-Két biztonsági mentés ingyenes, és az extra biztonsági mentések díjszabása a [biztonsági mentési tár díjszabásában](https://azure.microsoft.com/en-us/pricing/details/cosmos-db/)ismertetett biztonsági mentési tár régió alapú díjszabása alapján történik. Például, ha a biztonsági másolat megőrzési beállítása 240 óra, azaz 10 nap, a biztonsági mentés időköze pedig 24 óra. Ez a biztonsági mentési adat 10 másolatát jelenti. Feltéve, hogy az USA 2. nyugati régiójában 1 TB adat található, a 1000 * 0,12 ~ $120 a biztonsági mentési tár számára az adott hónapban. 
+Két biztonsági mentés ingyenes, és az extra biztonsági mentések díjszabása a [biztonsági mentési tár díjszabásában](https://azure.microsoft.com/en-us/pricing/details/cosmos-db/)ismertetett biztonsági mentési tár régió alapú díjszabása alapján történik. Például, ha a biztonsági másolat megőrzési beállítása 240 óra, azaz 10 nap, a biztonsági mentés időköze pedig 24 óra. Ez a biztonsági mentési adat 10 másolatát jelenti. Feltételezve, hogy az USA 2. nyugati régiójában 1 TB adat található, a díj a megadott hónapban 0,12 * 1000 * 8 lesz a biztonsági mentési tár számára. 
 
 
 ## <a name="options-to-manage-your-own-backups"></a>A saját biztonsági mentések kezelésére szolgáló beállítások

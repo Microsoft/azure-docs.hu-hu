@@ -6,13 +6,13 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: maghan
 ms.topic: conceptual
-ms.date: 02/18/2021
-ms.openlocfilehash: 2fd8911ca11ee6dfcf795347e1fe7f2c36a2b636
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/11/2021
+ms.openlocfilehash: 4f03236176acea14bed2dfaac53b1a1e6cf7a1e2
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101716524"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103197869"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és teljesítés az Azure Data Factoryben
 
@@ -204,7 +204,7 @@ Ha a fejlesztői gyárhoz tartozik egy társított git-tárház, felülbírálha
 * Automatikus CI/CD-t használ, és módosítani szeretné néhány tulajdonságot a Resource Manager üzembe helyezése során, de a tulajdonságok alapértelmezés szerint nem paraméterek.
 * A gyár olyan nagy méretű, hogy az alapértelmezett Resource Manager-sablon érvénytelen, mert több, mint a maximálisan megengedett paraméterek (256).
 
-    Az 256-os egyéni paraméterek kezeléséhez 3 lehetőség közül választhat:    
+    Az 256-os egyéni paraméterek kezeléséhez három lehetőség közül választhat:    
   
     * Használja az egyéni paraméter fájlját, és távolítsa el azokat a tulajdonságokat, amelyek nem igényelnek paraméterezés, azaz olyan tulajdonságokat, amelyek megtarthatják az alapértelmezett értéket, és így csökkenthetik a paraméterek darabszámát.
     * A adatfolyam újraértékelési logikája a paraméterek csökkentése érdekében, például a folyamat paramétereinek mindegyike azonos értékkel rendelkezik, csak a globális paramétereket használhatja.
@@ -319,7 +319,7 @@ Az alábbi példa egy Resource Manager-paraméterek konfigurációjának megjele
 
 * Az elérési út alatti összes tulajdonság a `typeProperties` megfelelő alapértelmezett értékekkel van ellátva. Például két tulajdonság van a `IntegrationRuntimes` típus tulajdonságainál: `computeProperties` és `ssisProperties` . Mindkét tulajdonság típusa a megfelelő alapértelmezett értékekkel és típusokkal (objektummal) jön létre.
 
-#### <a name="triggers"></a>Triggerek
+#### <a name="triggers"></a>Eseményindítók
 
 * A `typeProperties` rendszerben a két tulajdonság paraméteres. Az első a `maxConcurrency` , amely az alapértelmezett értékkel van megadva, és típusa `string` . Az alapértelmezett paraméter neve `<entityName>_properties_typeProperties_maxConcurrency` .
 * A `recurrence` tulajdonság paraméterrel is rendelkezik. Ebben az esetben az adott szinten lévő összes tulajdonságot karakterláncként kell megadni, alapértelmezett értékekkel és paraméterek nevével. Kivételt képez a `interval` tulajdonság, amely típusként van paraméterként `int` . A paraméter neve utótaggal van ellátva `<entityName>_properties_typeProperties_recurrence_triggerSuffix` . Hasonlóképpen, a `freq` tulajdonság egy karakterlánc, és karakterláncként van paraméterként. A tulajdonság azonban `freq` alapértelmezett érték nélkül van paraméterben. A név rövidítve és utótaggal van elnevezve. Például: `<entityName>_freq`.
@@ -333,6 +333,10 @@ Az alábbi példa egy Resource Manager-paraméterek konfigurációjának megjele
 #### <a name="datasets"></a>Adathalmazok
 
 * Bár a típus-specifikus Testreszabás elérhető az adatkészletekhez, a konfigurációt explicit módon nem lehet konfigurálni \* . Az előző példában az összes adatkészlet-tulajdonság `typeProperties` paraméterrel van elfoglalva.
+
+> [!NOTE]
+> Az **Azure-riasztások és-mátrixok** , ha egy folyamathoz vannak konfigurálva, jelenleg nem támogatottak az ARM-környezetek paraméterei. A riasztások és mátrixok új környezetben való újraalkalmazásához kövesse [Data Factory figyelés, riasztások és mátrixok lehetőséget.](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#data-factory-metrics)
+> 
 
 ### <a name="default-parameterization-template"></a>Alapértelmezett paraméterezés-sablon
 
@@ -678,6 +682,8 @@ Ha git-integrációt használ a saját adatgyárával, és rendelkezik egy CI/CD
 -   Privát ágakból nem lehet közzétenni.
 
 -   Jelenleg nem futtathat projekteket a bitbucket-on.
+
+-   A riasztások és mátrixok jelenleg nem exportálhatók és nem importálhatók paraméterekként. 
 
 ## <a name="sample-pre--and-post-deployment-script"></a><a name="script"></a> Példa előtti és utáni parancsfájl
 

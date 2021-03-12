@@ -136,8 +136,10 @@
       items:
         - name: AKS-fürt méretezése
           href: scale-cluster.md
-        - name: AKS-fürt leállítása (előzetes verzió)
+        - name: AK-fürt leállítása
           href: start-stop-cluster.md
+        - name: Tervezett karbantartás használata (előzetes verzió)
+          href: planned-maintenance.md
         - name: AKS-fürt frissítése
           href: upgrade-cluster.md
         - name: Használati üzemidőre vonatkozó SLA

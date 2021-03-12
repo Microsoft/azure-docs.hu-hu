@@ -308,6 +308,48 @@
       href: partner-center-portal/downloads-dashboard.md
     - name: Értékelések és vélemények irányítópult
       href: partner-center-portal/ratings-reviews.md
+    - name: Programozott hozzáférés az elemzésekhez
+      items:
+        - name: Bevezetés
+          href: analytics-get-started.md
+        - name: Programozott hozzáférési előfeltételek
+          href: analytics-prerequisites.md
+        - name: Programozott hozzáférés paradigma
+          href: analytics-programmatic-access.md
+        - name: Az első API-hívás készítése
+          href: analytics-make-your-first-api-call.md
+        - name: Rendszerlekérdezések listája
+          href: analytics-system-queries.md
+        - name: Mintalekérdezések
+          href: analytics-sample-queries.md
+        - name: Mintaalkalmazás
+          href: analytics-sample-application.md
+        - name: Egyéni lekérdezési specifikáció
+          href: analytics-custom-query-specification.md
+        - name: Programozási elemzés – gyakori kérdések
+          href: analytics-programmatic-faq.md
+        - name: Elemzési API-referenciák
+          items:
+            - name: API-k listája
+              href: analytics-available-apis.md
+            - name: Az összes adatkészlet lekérése
+              href: analytics-api-get-all-datasets.md
+            - name: Jelentési lekérdezési API beolvasása
+              href: analytics-api-get-report-queries.md
+            - name: Jelentés lekérdezési API törlése
+              href: analytics-api-delete-report-queries.md
+            - name: A Report lekérdezési API kipróbálása
+              href: analytics-api-try-report-queries.md
+            - name: Jelentés API beolvasása
+              href: analytics-api-get-report.md
+            - name: A jelentés API frissítése
+              href: analytics-api-update-report.md
+            - name: Jelentés API törlése
+              href: analytics-api-delete-report.md
+            - name: Jelentések végrehajtásának szüneteltetése API
+              href: analytics-api-pause-report-executions.md
+            - name: Jelentések végrehajtásának folytatása API
+              href: analytics-api-resume-report-executions.md
     - name: Mért számlázási rendellenességek kezelése
       href: anomaly-detection.md
     - name: Gyakori kérdések az elemzésről

@@ -475,8 +475,6 @@
           items:
             - name: Metrikariasztások kezelése
               href: alerts/alerts-metric.md
-            - name: Rendelkezésre állás
-              href: app/monitor-web-app-availability.md
             - name: Dinamikus küszöbértékek használata
               href: alerts/alerts-dynamic-thresholds.md
             - name: Egyetlen riasztás számos idősorhoz

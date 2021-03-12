@@ -1,14 +1,14 @@
 ---
 title: A lekérdezésnyelv megismerése
 description: Az Azure Resource Graph-ban használható Resource Graph-táblákat, valamint az elérhető Kusto adattípusokat, operátorokat és függvényeket ismerteti.
-ms.date: 01/14/2021
+ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 137b5c40097d7de82e156b4a0869d7257d3e9964
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: f6cb13814fe725ff0253a0a5bf0098f0080fa407
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624758"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633801"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Az Azure Resource Graph lekérdezési nyelvének megismerése
 
@@ -28,18 +28,21 @@ Az erőforrás-diagram több táblázatot is biztosít a Azure Resource Manager 
 
 |Resource Graph-táblázat |`join`Más táblák is lehetnek? |Leírás |
 |---|---|---|
-|További források |Igen |Az alapértelmezett tábla, ha nincs megadva a lekérdezésben. A legtöbb Resource Manager-erőforrás típusa és tulajdonsága itt található. |
-|ResourceContainers |Igen |A tartalmazza az előfizetést (előzetes verzióban `Microsoft.Resources/subscriptions` ) és az erőforráscsoport ( `Microsoft.Resources/subscriptions/resourcegroups` ) típusú erőforrásokat és az adattípusokat. |
+|További források |Yes |Az alapértelmezett tábla, ha nincs megadva a lekérdezésben. A legtöbb Resource Manager-erőforrás típusa és tulajdonsága itt található. |
+|ResourceContainers |Yes |A tartalmazza az előfizetést (előzetes verzióban `Microsoft.Resources/subscriptions` ) és az erőforráscsoport ( `Microsoft.Resources/subscriptions/resourcegroups` ) típusú erőforrásokat és az adattípusokat. |
 |AdvisorResources |Igen (előzetes verzió) |A következőhöz _kapcsolódó_ erőforrásokat tartalmazza: `Microsoft.Advisor` . |
 |AlertsManagementResources |Igen (előzetes verzió) |A következőhöz _kapcsolódó_ erőforrásokat tartalmazza: `Microsoft.AlertsManagement` . |
-|GuestConfigurationResources |Nem |A következőhöz _kapcsolódó_ erőforrásokat tartalmazza: `Microsoft.GuestConfiguration` . |
+|ExtendedLocationResources |No |A következőhöz _kapcsolódó_ erőforrásokat tartalmazza: `Microsoft.ExtendedLocation` . |
+|GuestConfigurationResources |No |A következőhöz _kapcsolódó_ erőforrásokat tartalmazza: `Microsoft.GuestConfiguration` . |
+|KubernetesConfigurationResources |No |A következőhöz _kapcsolódó_ erőforrásokat tartalmazza: `Microsoft.KubernetesConfiguration` . |
 |MaintenanceResources |Részleges, csak csatlakozás _a_ következőhöz:. (előzetes verzió) |A következőhöz _kapcsolódó_ erőforrásokat tartalmazza: `Microsoft.Maintenance` . |
-|PatchAssessmentResources|Nem |Az Azure Virtual Machines javításának értékeléséhez _kapcsolódó_ erőforrásokat tartalmaz. |
-|PatchInstallationResources|Nem |Az Azure Virtual Machines patch telepítésével _kapcsolatos_ erőforrásokat tartalmaz. |
-|PolicyResources |Nem |A következőhöz _kapcsolódó_ erőforrásokat tartalmazza: `Microsoft.PolicyInsights` . (**Előzetes** verzió)|
+|PatchAssessmentResources|No |Az Azure Virtual Machines javításának értékeléséhez _kapcsolódó_ erőforrásokat tartalmaz. |
+|PatchInstallationResources|No |Az Azure Virtual Machines patch telepítésével _kapcsolatos_ erőforrásokat tartalmaz. |
+|PolicyResources |No |A következőhöz _kapcsolódó_ erőforrásokat tartalmazza: `Microsoft.PolicyInsights` . (**Előzetes** verzió)|
 |RecoveryServicesResources |Részleges, csak csatlakozás _a_ következőhöz:. (előzetes verzió) |A és a szolgáltatáshoz _kapcsolódó_ erőforrásokat tartalmazza `Microsoft.DataProtection` `Microsoft.RecoveryServices` . |
 |SecurityResources |Részleges, csak csatlakozás _a_ következőhöz:. (előzetes verzió) |A következőhöz _kapcsolódó_ erőforrásokat tartalmazza: `Microsoft.Security` . |
-|ServiceHealthResources |Nem |A következőhöz _kapcsolódó_ erőforrásokat tartalmazza: `Microsoft.ResourceHealth` . |
+|ServiceHealthResources |No |A következőhöz _kapcsolódó_ erőforrásokat tartalmazza: `Microsoft.ResourceHealth` . |
+|WorkloadMonitorResources |No |A következőhöz _kapcsolódó_ erőforrásokat tartalmazza: `Microsoft.WorkloadMonitor` . |
 
 A teljes listát, beleértve az erőforrástípusok típusát, lásd [: hivatkozás: támogatott táblák és erőforrástípusok](../reference/supported-tables-resources.md).
 
@@ -126,7 +129,7 @@ Itt látható a KQL táblázatos operátorok listája, amelyeket az erőforrás-
 
 |KQL |Resource Graph-minta lekérdezése |Jegyzetek |
 |---|---|---|
-|[száma](/azure/kusto/query/countoperator) |[Kulcstartók száma](../samples/starter.md#count-keyvaults) | |
+|[count](/azure/kusto/query/countoperator) |[Kulcstartók száma](../samples/starter.md#count-keyvaults) | |
 |[különböző](/azure/kusto/query/distinctoperator) |[Tárolót tartalmazó erőforrások megjelenítése](../samples/starter.md#show-storage) | |
 |[kiterjesztése](/azure/kusto/query/extendoperator) |[A virtuális gépek száma az operációs rendszer típusa szerint](../samples/starter.md#count-os) | |
 |[csatlakozás](/azure/kusto/query/joinoperator) |[Key Vault előfizetés neve](../samples/advanced.md#join) |A JOIN Flavors támogatott: [innerunique](/azure/kusto/query/joinoperator#default-join-flavor), [Inner](/azure/kusto/query/joinoperator#inner-join), [leftouter](/azure/kusto/query/joinoperator#left-outer-join). Legfeljebb 3 `join` egyetlen lekérdezésben, amelyek közül 1 lehet egy több tábla `join` . Ha az összes táblázatos `join` használat az _erőforrás_ -és a _ResourceContainers_ között van, akkor a 3 keresztes tábla `join` engedélyezett. Az egyéni csatlakoztatási stratégiák, például a szórásos csatlakozás, nem engedélyezettek. A használható táblákat `join` lásd: [Resource Graph-táblák](#resource-graph-tables). |

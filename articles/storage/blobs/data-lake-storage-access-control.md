@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: d8ef616ef059424846d5c42a91262881b8f6d30b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4d75e60d0e497dcdd2aa121f8da73f11a7e2af5b
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101701807"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015216"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlési listák (ACL-ek) Azure Data Lake Storage Gen2
 
@@ -285,7 +285,7 @@ Az Azure szerepkör-hozzárendelések öröklik. A hozzárendelések az előfize
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Támogatja Data Lake Storage Gen2 az ACL-ek öröklését?
 
-Az alapértelmezett ACL-ek a szülő könyvtár alatt létrehozott új alárendelt alkönyvtárakhoz és fájlokhoz tartozó ACL-ek beállítására használhatók. A meglévő alárendelt elemek hozzáférés-vezérlési listáinak frissítéséhez a kívánt címtár-hierarchiához rekurzív módon kell hozzáadnia, frissítenie vagy eltávolítania az ACL-eket. További információ: [rekurzív hozzáférés-vezérlési listák (ACL-ek) beállítása Azure Data Lake Storage Gen2hoz](#set-access-control-lists). 
+Az alapértelmezett ACL-ek a szülő könyvtár alatt létrehozott új alárendelt alkönyvtárakhoz és fájlokhoz tartozó ACL-ek beállítására használhatók. A meglévő alárendelt elemek hozzáférés-vezérlési listáinak frissítéséhez a kívánt címtár-hierarchiához rekurzív módon kell hozzáadnia, frissítenie vagy eltávolítania az ACL-eket. Útmutatásért tekintse meg a jelen cikk ACL-ek [beállítása](#set-access-control-lists) című szakaszát. 
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-directory-and-its-contents"></a>Mely engedélyek szükségesek a címtár és annak tartalmának rekurzív törléséhez?
 

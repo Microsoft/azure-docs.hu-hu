@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/31/2020
-ms.openlocfilehash: 9b2466bbe061dc147d020104b13da197840fe40a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 07a959d4e8ba41652ba4e31ad59cf852659a5926
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030783"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199768"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Függvények használata Azure Monitor log-lekérdezésekben
 
@@ -27,7 +27,7 @@ A **Save (Mentés** ) gombra kattintva hozzon létre egy Azure Portal log Analyt
 | Függvény aliasa | A függvény más lekérdezésekben való használatának rövid neve. A nem tartalmazhat szóközt, és egyedinek kell lennie. |
 | Kategória       | A **lekérdezési Explorerben** mentett lekérdezések és függvények rendszerezésének kategóriája. |
 
-
+A [REST API](/rest/api/loganalytics/savedsearches/createorupdate) vagy a [PowerShell](/powershell/module/az.operationalinsights/new-azoperationalinsightssavedsearch)használatával is létrehozhat függvényeket.
 
 
 ## <a name="use-a-function"></a>Függvény használata

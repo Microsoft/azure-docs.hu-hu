@@ -1,17 +1,17 @@
 ---
 title: Ügyfél-hibakódok az Azure IoT Hub eszköz frissítéséhez | Microsoft Docs
 description: Ez a dokumentum a különböző eszköz-frissítési összetevőkhöz tartozó ügyfél-hibakódok táblázatát tartalmazza.
-author: lichris
+author: chrisjlin
 ms.author: lichris
 ms.date: 2/18/2021
 ms.topic: reference
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 5251d0cb09e40305d1efd89c31d3af0fa36ad385
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: dbdddc7cee0c3664a83501ba619a38e1cc44e1f3
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663652"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200341"
 ---
 # <a name="device-update-for-iot-hub-error-codes"></a>IoT Hub hibakódok eszközének frissítése
 
@@ -59,26 +59,19 @@ A előjel nélküli hexadecimális ábrázolása `-536870781` `FFFFFFFF E0000083
 ## <a name="delivery-optimization-agent"></a>Kézbesítési optimalizálási ügynök
 A következő táblázat felsorolja az eszköz frissítési ügyfelének kézbesítési optimalizálási (DO) összetevőjére vonatkozó hibakódokat. A DO összetevő feladata a frissítési tartalom letöltése a IoT-eszközre.
 
-A DO hibakódot az API-hívásokra adott válaszokban fellépő kivételek vizsgálatával lehet megszerezni.
+A DO hibakódot az API-hívásokra adott válaszokban fellépő kivételek vizsgálatával lehet megszerezni. Az összes DO hibakódot a 0x80D0 előtaggal lehet azonosítani.
 
 | Hibakód  | Karakterlánc-hiba                       | Típus                 | Leírás |
 |-------------|------------------------------------|----------------------|-------------|
 | 0x80D01001L | DO_E_NO_SERVICE                    | n.a.                  | A kézbesítési optimalizálás nem tudta biztosítani a szolgáltatást |
 | 0x80D02002L | DO_E_DOWNLOAD_NO_PROGRESS          | Feladatok letöltése         | A fájl letöltése nem történt meg a megadott időszakon belül. |
-| 0x80D02003L | DO_E_JOB_NOT_FOUND                 | Feladatok letöltése         | A feladatot nem található |
-| 0x80D02005L | DO_E_NO_DOWNLOADS                  | Feladatok letöltése         | Jelenleg nem találhatók letöltések |
-| 0x80D0200CL | DO_E_JOB_TOO_OLD                   | Feladatok letöltése         | A feladat nem fejeződött be, vagy meg lett szakítva a maximális korhatár elérése előtt |
 | 0x80D02011L | DO_E_UNKNOWN_PROPERTY_ID           | Feladatok letöltése         | A SetProperty () vagy a GetProperty () metódus ismeretlen tulajdonság-AZONOSÍTÓval lett meghívva |
 | 0x80D02012L | DO_E_READ_ONLY_PROPERTY            | Feladatok letöltése         | A SetProperty () nem hívható meg írásvédett tulajdonságon |
 | 0x80D02013L | DO_E_INVALID_STATE                 | Feladatok letöltése         | A kért művelet nem engedélyezett az aktuális feladattípusban. Lehet, hogy a feladatot megszakították vagy befejezték az átvitelt. Jelenleg csak olvasható állapotban van. |
 | 0x80D02018L | DO_E_FILE_DOWNLOADSINK_UNSPECIFIED | Feladatok letöltése         | Nem lehet elindítani a letöltést, mert nincs megadva a letöltés fogadója (helyi fájl vagy stream felület). |
 | 0x80D02200L | DO_E_DOWNLOAD_NO_URI               | IDODownload felület| A letöltés URI megadása nélkül lett elindítva |
 | 0x80D03805L | DO_E_BLOCKED_BY_NO_NETWORK         | Átmeneti feltételek | A letöltés szünetel a hálózati kapcsolat elvesztése miatt |
-| 0x80D05001L | DO_E_HTTP_BLOCKSIZE_MISMATCH       | HTTP                 | A HTTP-kiszolgáló olyan választ adott vissza, amelynek adatmérete nem egyezik meg a kért értékkel |
-| 0x80D05002L | DO_E_HTTP_CERT_VALIDATION          | HTTP                 | A HTTP-kiszolgáló tanúsítványának ellenőrzése nem sikerült |
-| 0x80D05010L | DO_E_INVALID_RANGE                 | HTTP                 | A megadott bájt-tartomány érvénytelen |
-| 0x80D05011L | DO_E_INSUFFICIENT_RANGE_SUPPORT    | HTTP                 | A kiszolgáló nem támogatja a szükséges HTTP protokollt. A kézbesítési optimalizálás (DO) megköveteli, hogy a kiszolgáló támogassa a tartomány protokoll fejlécét. |
-| 0x80D05012L | DO_E_OVERLAPPING_RANGES            | HTTP                 | A byte-tartományok listája néhány átfedésben lévő tartományt tartalmaz, amelyek nem támogatottak. |
+
 ## <a name="device-update-content-service"></a>Eszköz frissítési tartalmi szolgáltatása
 A következő táblázat felsorolja az eszköz frissítési szolgáltatásának Content Service összetevőjére vonatkozó hibakódokat. A Content Service összetevő felelős a frissítési tartalom importálásának kezeléséért.
 

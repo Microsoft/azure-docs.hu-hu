@@ -3,18 +3,18 @@ title: A Azure Media Services által javasolt kódolók ismertetése | Microsoft
 description: Ez a cikk a Azure Media Services által ajánlott helyszíni kódolókat sorolja fel.
 services: media-services
 keywords: kódolás; kódolók; adathordozó
-author: dbgeorge
+author: IngridAtMicrosoft
 manager: johndeu
 ms.author: johndeu
-ms.date: 03/20/2019
+ms.date: 03/10/2021
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 11456a8dc55a98778bf44225bf659e506e2d3a3f
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 98d78a105bf06a2e49dee0b8c2be710b220a0023
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510056"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009436"
 ---
 # <a name="recommended-on-premises-encoders"></a>Ajánlott helyszíni kódolók
 

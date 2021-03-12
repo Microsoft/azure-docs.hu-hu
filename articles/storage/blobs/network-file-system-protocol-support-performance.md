@@ -9,12 +9,12 @@ ms.date: 02/23/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: f8a780afba1f5703fbe457e113ed1b455f1e9b64
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3b596d14ea770bfcd7560903a234d2ab77b66201
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101745413"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614326"
 ---
 # <a name="network-file-system-nfs-30-performance-considerations-in-azure-blob-storage-preview"></a>Hálózati fájlrendszer (NFS) 3,0 teljesítménybeli megfontolások az Azure Blob Storage-ban (előzetes verzió)
 
@@ -35,7 +35,7 @@ A következő diagram azt mutatja be, hogyan növekszik a sávszélesség a tov�
 A következő diagram ugyanezt a hatást mutatja be, ha a prémium szintű teljesítményt használó fiókra van alkalmazva.
 
 > [!div class="mx-imgBorder"]
-> ![Standard teljesítmény](./media/network-file-system-protocol-support-performance/premium-performance-tier.png)
+> ![Prémium szintű teljesítmény](./media/network-file-system-protocol-support-performance/premium-performance-tier.png)
 
 ## <a name="use-premium-performance-tier-for-small-scale-applications"></a>Prémium szintű teljesítményszint használata kis léptékű alkalmazásokhoz
 

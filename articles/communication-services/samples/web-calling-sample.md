@@ -9,12 +9,12 @@ ms.author: mariusu
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: aadecd3c57f5a145efd43058a5113205d7517c0b
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: c3ceb866d9ca817299929b9a811915b82ccfbd48
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102486403"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614744"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Ismerkedés a webes hívási mintával
 
@@ -88,7 +88,7 @@ További információért tekintse át a következő cikkeket:
 
 - Ismerkedjen meg [a hívó ügyféloldali kódtár használatával](../quickstarts/voice-video-calling/calling-client-samples.md)
 - További információ a [hívás működéséről](../concepts/voice-video-calling/about-call-types.md)
-- Az [API-referenciák dokumentációjának](/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js) áttekintése
+- Az [API-referenciák dokumentációjának](/javascript/api/azure-communication-services/@azure/communication-calling/) áttekintése
 - A [contoso Med-alkalmazás](https://github.com/Azure-Samples/communication-services-contoso-med-app) mintájának áttekintése
 
 ## <a name="additional-reading"></a>További információ

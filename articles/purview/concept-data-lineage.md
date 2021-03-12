@@ -7,16 +7,16 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: ceb30cee194994e5b31db312f191194932c937b4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 476355f41de5e0e6aaffdedea8947cab5221767a
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552770"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200731"
 ---
 # <a name="data-lineage-in-azure-purview-data-catalog-client"></a>Adatbányászat az Azure hatáskörébe Data Catalog ügyfél
 
-Ez a cikk áttekintést nyújt az adatbányászatról az Azure hatáskörébe Data Catalog. Azt is részletezi, hogy az adatrendszerek hogyan integrálhatók a katalógusba az adatbányászati adatok rögzítéséhez. A hatáskörébe a szervezetek adatkészletének különböző részeiben lévő adatbányászati adatközpontok és különböző előkészítési szintek is rögzíthetők, többek között:
+Ez a cikk áttekintést nyújt az adatbányászatról az Azure hatáskörébe Data Catalog. Azt is részletezi, hogy az adatrendszerek hogyan integrálhatók a katalógusba az adatbányászati adatok rögzítéséhez. A hatáskörébe rögzítheti a szervezeti adatközpont különböző részeiben lévő adatbányászati értékeket, valamint az előkészítés különböző szintjein, beleértve a következőket:
 
 - Teljesen nyers adatok, amelyek különböző platformokról lettek átrendezve
 - Átalakított és előkészített adatértékek
@@ -53,7 +53,7 @@ Ez a szakasz részletesen ismerteti, hogy az adatkatalógus milyen részletessé
 
 ### <a name="column-or-attribute-level-lineage"></a>Oszlop vagy attribútum szintjének Lineage
 
-Azonosítsa egy olyan forrásoldali entitás attribútumát, amely attribútum (ok) létrehozásához vagy származtatása céljából van használatban a célként megadott entitásban. A forrás attribútum nevét megtarthatja vagy átnevezheti a célhelyen. Az ADF-hez hasonló rendszerek a helyszíni környezetből a felhőbe is elvégezhetnek egy másolatot. Például: `Table1/ColumnA -> Table2/ColumnA`.
+Azonosítsa egy olyan forrásoldali entitás attribútumát, amely attribútum (ok) létrehozásához vagy származtatása céljából van használatban a célként megadott entitásban. A forrás attribútum nevét megtarthatja vagy átnevezheti a célhelyen. Az ADF-hez hasonló rendszerek a helyszíni környezetből a felhőbe is elvégezhetnek egy másolatot. Példa: `Table1/ColumnA -> Table2/ColumnA`.
 
 ### <a name="process-execution-status"></a>Folyamat végrehajtási állapota
 

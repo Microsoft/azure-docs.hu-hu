@@ -8,12 +8,12 @@ ms.date: 02/11/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 75beb214682536b996cf4896588ea32d568579f1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: edca5a278414288ceb3c3d13f5d49e723e0ee5c2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045989"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615924"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge támogatott rendszerek
 
@@ -23,7 +23,7 @@ Ez a cikk részletesen ismerteti, hogy mely rendszerek és összetevők támogat
 
 Ha a Azure IoT Edge szolgáltatás használata során problémákba ütközik, többféleképpen is kérhet támogatást. Próbálja ki a következő csatornák egyikét a támogatáshoz:
 
-**Hibajelentések** – a Azure IoT Edge termékbe bekerülő fejlesztés többsége a IoT Edge nyílt forráskódú projektben történik. A hibákat a projekt [problémák lapján](https://github.com/azure/iotedge/issues) lehet jelenteni. Gyorsan megtörténik a javítások a projektből a termékek frissítéseibe való beüzemelése.
+**Hibajelentések** – a Azure IoT Edge termékbe bekerülő fejlesztés többsége a IoT Edge nyílt forráskódú projektben történik. A hibákat a projekt [problémák lapján](https://github.com/azure/iotedge/issues) lehet jelenteni. A Windows rendszerhez készült Linux Azure IoT Edge kapcsolatos hibák a [iotedge-eFlow problémák oldalon](https://github.com/azure/iotedge-eflow/issues)olvashatók be. Gyorsan megtörténik a javítások kijavítása a projektekben a termékek frissítéseibe.
 
 A **Microsoft ügyfélszolgálati csapata** – a [támogatási csomaggal](https://azure.microsoft.com/support/plans/) rendelkező felhasználók a támogatási jegyet közvetlenül a [Azure Portal](https://ms.portal.azure.com/signin/index/?feature.settingsportalinstance=mpac)hozhatják létre a Microsoft ügyfélszolgálati csapatának.
 
