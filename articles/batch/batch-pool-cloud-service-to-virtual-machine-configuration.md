@@ -2,56 +2,56 @@
 title: Batch-készlet konfigurációjának migrálása Cloud Servicesról Virtual Machinesra
 description: Ismerje meg, hogyan frissítheti a készlet konfigurációját a legújabb és ajánlott konfigurációra
 ms.topic: how-to
-ms.date: 2/16/2021
-ms.openlocfilehash: 9cbcf3864526bd8f8132f3b0f729e2d728e07bb8
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.date: 03/11/2021
+ms.openlocfilehash: a176c4df1737a340a546b4ab7926447cd821350d
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546040"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200559"
 ---
-# <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machines"></a>Batch-készlet konfigurációjának migrálása Cloud Servicesról Virtual Machinesra
+# <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machine"></a>Batch-készlet konfigurációjának migrálása Cloud Servicesról virtuális gépre
 
-A Batch-készleteket [cloudServiceConfiguration](/rest/api/batchservice/pool/add#cloudserviceconfiguration) vagy [virtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration)használatával lehet létrehozni. a "virtualMachineConfiguration" az ajánlott konfiguráció, mivel az támogatja az összes batch-funkciót. a "cloudServiceConfiguration" készletek nem támogatják az összes funkciót, és nem terveznek új szolgáltatásokat.
+A Batch-készleteket jelenleg a [virtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration) vagy a [cloudServiceConfiguration](/rest/api/batchservice/pool/add#cloudserviceconfiguration)használatával lehet létrehozni. Azt javasoljuk, hogy csak a virtuális gép konfigurációját használja, mivel ez a konfiguráció támogatja az összes batch-funkciót.
 
-Ha a "cloudServiceConfiguration" készleteket használja, erősen ajánlott, hogy a "virtualMachineConfiguration" készleteket használja. Ez lehetővé teszi az összes batch-képesség előnyeit, például a virtuálisgép- [sorozatok](batch-pool-vm-sizes.md), a linuxos virtuális gépek, a [tárolók](batch-docker-container-workloads.md), [Azure Resource Manager a virtuális hálózatok](batch-virtual-network.md)és a [csomópontos lemezek titkosításának](disk-encryption.md)kibővítését.
+Cloud Services konfigurációs készletek nem támogatják a jelenlegi batch-szolgáltatásokat, és nem támogatják az újonnan hozzáadott funkciókat. Az új "CloudServiceConfiguration" készleteket nem lehet létrehozni, vagy új csomópontokat hozzáadni a meglévő készletekhez a [2024. február 29. után](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/).
 
-Ez a cikk azt ismerteti, hogyan lehet áttérni a következőre: "virtualMachineConfiguration".
+Ha a Batch-megoldások jelenleg a "cloudServiceConfiguration" készleteket használják, javasoljuk, hogy a lehető leghamarabb váltson "virtualMachineConfiguration" értékre. Ez lehetővé teszi az összes batch-képesség előnyeit, például a virtuálisgép- [sorozatok](batch-pool-vm-sizes.md), a linuxos virtuális gépek, a [tárolók](batch-docker-container-workloads.md), [Azure Resource Manager a virtuális hálózatok](batch-virtual-network.md)és a [csomópontos lemezek titkosításának](disk-encryption.md)kibővítését.
 
-## <a name="new-pools-are-required"></a>Új készletek szükségesek
+## <a name="create-a-pool-using-virtual-machine-configuration"></a>Készlet létrehozása a virtuális gép konfigurációjának használatával
 
-A meglévő aktív készletek nem frissíthetők a "cloudServiceConfiguration" típusról a "virtualMachineConfiguration" értékre, ezért új készleteket kell létrehozni. Az "virtualMachineConfiguration" használatával létrehozott készleteket minden batch API, parancssori eszköz, Azure Portal és a Batch Explorer felhasználói felület támogatja.
+Nem válthat olyan meglévő aktív készletet, amely "cloudServiceConfiguration"-t használ a "virtualMachineConfiguration" használatához. Ehelyett új készleteket kell létrehoznia. Miután létrehozta az új "virtualMachineConfiguration" készleteket, és replikálta az összes feladatot és feladatot, törölheti a régi "cloudServiceConfiguration'pools, amelyet már nem használ.
 
-**A [.net](tutorial-parallel-dotnet.md) -és [Python](tutorial-parallel-python.md) -oktatóanyagok példákat biztosítanak a készlet létrehozására a "virtualMachineConfiguration" használatával.**
+A Batch API-k, a parancssori eszközök, a Azure Portal és a Batch Explorer felhasználói felülete lehetővé teszi, hogy a készleteket a "virtualMachineConfiguration" használatával hozza létre.
+
+A "virtualMachineConfiguration"-et használó készletek létrehozási folyamatának [bemutatóját a .net-oktatóanyag](tutorial-parallel-dotnet.md) vagy a [Python-oktatóanyag](tutorial-parallel-python.md)részben tekintheti meg.
 
 ## <a name="pool-configuration-differences"></a>Készlet konfigurációs eltérései
 
-A készlet konfigurációjának frissítésekor a következőket kell figyelembe venni:
+A két konfiguráció közötti legfontosabb különbségek közé tartoznak a következők:
 
-- a "cloudServiceConfiguration" pool-csomópontok mindig a Windows operációs rendszer, a "virtualMachineConfiguration" készletek lehetnek Linux vagy Windows operációs rendszer.
+- a "cloudServiceConfiguration" pool-csomópontok csak a Windows operációs rendszert használják. a "virtualMachineConfiguration" készletek Linux vagy Windows operációs rendszert is használhatnak.
 - A "cloudServiceConfiguration" készletekhez képest a "virtualMachineConfiguration" készletek szélesebb körű funkciókkal rendelkeznek, mint például a tárolók támogatása, az adatlemezek és a lemezek titkosítása.
+- A készlet és a csomópont indítási és törlési ideje eltérhet a "cloudServiceConfiguration" készletek és a "virtualMachineConfiguration" készletek között.
 - a "virtualMachineConfiguration" pool-csomópontok felügyelt operációsrendszer-lemezeket használnak. Az egyes csomópontokhoz használt [felügyelt lemez típusa](../virtual-machines/disks-types.md) a készlethez kiválasztott virtuális gép méretétől függ. Ha a virtuális gép mérete meg van adva a készlethez, például "Standard_D2s_v3", akkor a rendszer prémium szintű SSD-t használ. Ha meg van adva egy "nem s" virtuálisgép-méret, például "Standard_D2_v3", akkor a rendszer szabványos HDD-t használ.
 
    > [!IMPORTANT]
-   > Ahogy a Virtual Machines és a Virtual Machine Scale Sets esetében is, az egyes csomópontokhoz használt operációs rendszer felügyelt lemeze költségekkel jár, ami a virtuális gépekhez képest további költségeket eredményez. A "cloudServiceConfiguration" csomópontok esetében nincs operációsrendszer-lemez, mert az operációsrendszer-lemez a helyi SSD-meghajtón jön létre.
-
-- A készlet és a csomópont indítási és törlési ideje eltérhet a "cloudServiceConfiguration" készletek és a "virtualMachineConfiguration" készletek között.
+   > Ahogy a Virtual Machines és a Virtual Machine Scale Sets esetében is, az egyes csomópontokhoz használt operációs rendszer felügyelt lemeze költségekkel jár, ami a virtuális gépekhez képest további költségeket eredményez. A "cloudServiceConfiguration" csomópontok esetében nincs szükség operációsrendszer-lemezre, mert az operációsrendszer-lemez a helyi SSD-csomóponton jön létre.
 
 ## <a name="azure-data-factory-custom-activity-pools"></a>Egyéni tevékenység-készletek Azure Data Factory
 
 Azure Batch készleteket Data Factory egyéni tevékenységek futtatására lehet használni. Az egyéni tevékenységek futtatásához használt összes "cloudServiceConfiguration" készletet törölni kell, és létre kell hozni az új "virtualMachineConfiguration" készleteket.
 
-- A folyamatokat a törlés/újbóli létrehozás előtt szüneteltetni kell, hogy a végrehajtás ne legyen megszakítva.
+Ha új készleteket hoz létre Data Factory egyéni tevékenységek futtatásához, kövesse az alábbi eljárásokat:
+
+- Az új készletek létrehozása és a régiek törlése előtt szüneteltetheti az összes folyamatot, hogy a rendszer ne szakítsa meg a végrehajtást.
 - A társított szolgáltatás konfigurációjának módosításainak elkerüléséhez a készlet azonosítóját is használhatja.
 - Folyamatok folytatása új készletek létrehozásakor.
 
-További információ a Azure Batch használatáról Data Factory egyéni tevékenységek futtatásához:
-
-- [Társított szolgáltatás Azure Batch](../data-factory/compute-linked-services.md#azure-batch-linked-service)
-- [Egyéni tevékenységek egy Data Factory-folyamatban](../data-factory/transform-data-using-dotnet-custom-activity.md)
+További információ a Azure Batch használatáról Data Factory egyéni tevékenységek futtatásáról: [Azure batch társított szolgáltatás](../data-factory/compute-linked-services.md#azure-batch-linked-service) és  [egyéni tevékenységek Data Factory folyamatokban](../data-factory/transform-data-using-dotnet-custom-activity.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
 - További információ a [készlet-konfigurációkról](nodes-and-pools.md#configurations).
 - További információ a [Pool ajánlott eljárásairól](best-practices.md#pools).
-- REST API a [készlet hozzáadására](/rest/api/batchservice/pool/add) és [virtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration)vonatkozó referenciát.
+- Tekintse meg a [készlet hozzáadása](/rest/api/batchservice/pool/add) és a [virtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration)REST API referenciát.

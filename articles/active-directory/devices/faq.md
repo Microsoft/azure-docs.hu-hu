@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 550481b9153d8fe8745d2a745fe6b6f00d09cdb1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 509d267dcdaef58a9792609a60c8a9401e90e867
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365820"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199710"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory eszközkezelés – gyakori kérdések
 
@@ -147,7 +147,7 @@ A műveletek kijavításának menetét alább találja.
 
 ### <a name="q-i-cannot-add-more-than-3-azure-ad-user-accounts-under-the-same-user-session-on-a-windows-10-device-why"></a>K: nem lehet több mint 3 Azure AD-felhasználói fiókot felvenni egy Windows 10-es eszköz ugyanazon felhasználói munkamenete alatt, miért?
 
-**A**: az Azure ad több Azure ad-fiókot is támogat a Windows 10 1803 kiadásban. A Windows 10 azonban az eszközön lévő Azure AD-fiókok számát 3-ra korlátozza a jogkivonat-kérelmek méretének és a megbízható egyszeri bejelentkezés (SSO) engedélyezésének korlátozására. 3 fiók hozzáadása után a felhasználók hibaüzenetet fognak látni a további fiókok esetében. A hiba képernyőn megjelenő további információ a következő üzenetet jeleníti meg: "a fiók hozzáadása művelet le van tiltva, mert a rendszer elérte a Fiókbeállítások korlátját". 
+**A**: az Azure ad több Azure ad-fiókot is támogat a Windows 10 1803 kiadásban. A Windows 10 azonban az eszközön lévő Azure AD-fiókok számát 3-ra korlátozza a jogkivonat-kérelmek méretének és a megbízható egyszeri bejelentkezés (SSO) engedélyezésének korlátozására. 3 fiók hozzáadása után a felhasználók hibaüzenetet fognak látni a további fiókok esetében. A hiba képernyőn megjelenő további információ a következő üzenetet jeleníti meg: "a fiók hozzáadása művelet le van tiltva, mert elérte a fiók korlátját". 
 
 ---
 ## <a name="azure-ad-join-faq"></a>Azure AD-csatlakozás – gyakori kérdések

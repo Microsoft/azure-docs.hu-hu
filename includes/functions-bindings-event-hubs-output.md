@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: dadd86521a7b6c20dab2ed036555b798b869344c
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 9fca69804220021ca7935e562f2026c11749515a
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102510880"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102623476"
 ---
 Az események egy esemény-adatfolyamba való írásához használja a Event Hubs kimeneti kötést. Küldési engedéllyel kell rendelkeznie ahhoz, hogy eseményeket írhasson egy eseményközpontba.
 
@@ -250,7 +250,7 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 |**név** | n.a. | Az eseményt jelölő függvény kódjában használt változó neve. |
 |**elérési útja** |**EventHubName** | Csak 1. x függvények. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. |
 |**eventHubName** |**EventHubName** | A 2. x és újabb függvények. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. |
-|**kapcsolat** |**Kapcsolat** | Az Event hub névteréhez tartozó kapcsolati sztringet tartalmazó Alkalmazásbeállítás neve. Másolja ezt a kapcsolati karakterláncot a *névtér* **kapcsolati adatok** gombjára kattintva, nem az Event hub-t. Ez a kapcsolati karakterláncnak küldési engedéllyel kell rendelkeznie az üzenet küldéséhez az esemény-adatfolyamba.|
+|**kapcsolat** |**Kapcsolat** | Az Event hub névteréhez tartozó kapcsolati sztringet tartalmazó Alkalmazásbeállítás neve. Másolja ezt a kapcsolati karakterláncot a [névtér](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace) **kapcsolati adatok** gombjára kattintva, nem az Event hub-t. Ez a kapcsolati karakterláncnak küldési engedéllyel kell rendelkeznie az üzenet küldéséhez az esemény-adatfolyamba. <br><br>Ha [a bővítmény 5. x vagy újabb verzióját](../articles/azure-functions/functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher)használja, a kapcsolati karakterlánc helyett megadhat egy olyan konfigurációs szakaszra mutató hivatkozást, amely meghatározza a kapcsolódást. Lásd: [kapcsolatok](../articles/azure-functions/functions-reference.md#connections).|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
@@ -258,11 +258,39 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 
 # <a name="c"></a>[C#](#tab/csharp)
 
+### <a name="default"></a>Alapértelmezett
+
+Az Event hub kimeneti kötéséhez a következő paramétereket használhatja:
+
+* `string`
+* `byte[]`
+* `POCO`
+* `EventData` – A EventData alapértelmezett tulajdonságai a [Microsoft. Azure. EventHubs névtérben](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)vannak megadva.
+
 Üzenetek küldése a metódus paraméterének használatával, például: `out string paramName` . A C#-szkriptben a `paramName` `name` *function.js* tulajdonságában megadott érték van megadva. Több üzenet írásához használhatja a `ICollector<string>` vagy `IAsyncCollector<string>` a helyét `out string` .
+
+### <a name="additional-types"></a>További típusok 
+Az Event hub-bővítmény 5.0.0 vagy újabb verzióját használó alkalmazások a `EventData` [Microsoft. Azure. EventHubs névtérben](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)használják a típust az [Azure. Messaging. EventHubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) helyett. Ez a verzió a `Body` következő típusok javára elveszíti a örökölt típus támogatását:
+
+- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
 
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
+### <a name="default"></a>Alapértelmezett
+
+Az Event hub kimeneti kötéséhez a következő paramétereket használhatja:
+
+* `string`
+* `byte[]`
+* `POCO`
+* `EventData` – A EventData alapértelmezett tulajdonságai a [Microsoft. Azure. EventHubs névtérben](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)vannak megadva.
+
 Üzenetek küldése a metódus paraméterének használatával, például: `out string paramName` . A C#-szkriptben a `paramName` `name` *function.js* tulajdonságában megadott érték van megadva. Több üzenet írásához használhatja a `ICollector<string>` vagy `IAsyncCollector<string>` a helyét `out string` .
+
+### <a name="additional-types"></a>További típusok 
+Az Event hub-bővítmény 5.0.0 vagy újabb verzióját használó alkalmazások a `EventData` [Microsoft. Azure. EventHubs névtérben](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)használják a típust az [Azure. Messaging. EventHubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) helyett. Ez a verzió a `Body` következő típusok javára elveszíti a örökölt típus támogatását:
+
+- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 

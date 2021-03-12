@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 3ff07c773a2976a296d13510a3ddd7b41217aaa2
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 57633df8c6482a9b0645813519991282bdbf22c1
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102437621"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633512"
 ---
 # <a name="deploy-azure-data-services-on-your-azure-stack-edge-pro-gpu-device"></a>Az Azure Data Services üzembe helyezése az Azure Stack Edge Pro GPU-eszközön
 
@@ -87,7 +87,7 @@ Hozzon létre egy új, dedikált névteret, amelyben üzembe helyezi az adatkeze
 
 1. A konfigurációs fájlnak a `.kube` helyi számítógépen lévő felhasználói profil mappájában kell lennie. Másolja a fájlt a mappába a felhasználói profilban.
 
-    ![A konfigurációs fájl helye az ügyfélen](media/azure-stack-edge-j-series-create-kubernetes-cluster/location-config-file.png)
+    ![A konfigurációs fájl helye az ügyfélen](media/azure-stack-edge-gpu-create-kubernetes-cluster/location-config-file.png)
 1. Adja meg a felhasználó hozzáférését a létrehozott névtérhez. Típus: 
 
     `Grant-HcsKubernetesNamespaceAccess -Namespace <Name of namespace> -UserName <User name>`

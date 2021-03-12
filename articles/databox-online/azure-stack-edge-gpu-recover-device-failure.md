@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: b32757dddf745e7aaa0ea8276a3527fa464cc0d4
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: b1bfbda007619bf5bd94d47297845881758037bc
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102442162"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636640"
 ---
 # <a name="recover-from-a-failed-azure-stack-edge-pro-gpu-device"></a>Helyreállítás sikertelen Azure Stack Edge Pro GPU-eszközről 
 
@@ -52,10 +52,10 @@ Most már készen áll a régi eszközön futó munkaterhelések üzembe helyez�
 
 Az alábbi lépéseket követve állíthatja vissza az eszközön lévő Felhőbeli megosztások adatait:
 
-1. A korábban a hibás eszközön létrehozott megosztási névvel rendelkező [megosztásokat is hozzáadhat](azure-stack-edge-j-series-manage-shares.md#add-a-share) . Győződjön meg arról, hogy a megosztások létrehozásakor a **blob Container** a **meglévő lehetőség használatára** van beállítva, majd válassza ki az előző eszközzel használt tárolót.
-1. [Adja hozzá](azure-stack-edge-j-series-manage-users.md#add-a-user) az előző eszközhöz hozzáféréssel rendelkező felhasználókat.
-1. [Adja hozzá](azure-stack-edge-j-series-manage-storage-accounts.md#add-an-edge-storage-account) a korábban az eszközön található megosztásokhoz társított Storage-fiókokat. Edge Storage-fiókok létrehozásakor válasszon egy meglévő tárolóból, és mutasson arra a tárolóra, amely az előző eszközön leképezett Azure Storage-fiókra van leképezve. Az eszközön az előző eszköz Edge Storage-fiókjába írt összes adatait a rendszer feltöltötte a hozzárendelt Azure Storage-fiók kiválasztott tárolójába.
-1. [A megosztási adatok frissítése](azure-stack-edge-j-series-manage-shares.md#refresh-shares) az Azure-ból. Ezzel lekéri a meglévő tároló összes Felhőbeli adatait a megosztásokra.
+1. A korábban a hibás eszközön létrehozott megosztási névvel rendelkező [megosztásokat is hozzáadhat](azure-stack-edge-gpu-manage-shares.md#add-a-share) . Győződjön meg arról, hogy a megosztások létrehozásakor a **blob Container** a **meglévő lehetőség használatára** van beállítva, majd válassza ki az előző eszközzel használt tárolót.
+1. [Adja hozzá](azure-stack-edge-gpu-manage-users.md#add-a-user) az előző eszközhöz hozzáféréssel rendelkező felhasználókat.
+1. [Adja hozzá](azure-stack-edge-gpu-manage-storage-accounts.md#add-an-edge-storage-account) a korábban az eszközön található megosztásokhoz társított Storage-fiókokat. Edge Storage-fiókok létrehozásakor válasszon egy meglévő tárolóból, és mutasson arra a tárolóra, amely az előző eszközön leképezett Azure Storage-fiókra van leképezve. Az eszközön az előző eszköz Edge Storage-fiókjába írt összes adatait a rendszer feltöltötte a hozzárendelt Azure Storage-fiók kiválasztott tárolójába.
+1. [A megosztási adatok frissítése](azure-stack-edge-gpu-manage-shares.md#refresh-shares) az Azure-ból. Ezzel lekéri a meglévő tároló összes Felhőbeli adatait a megosztásokra.
 
 ## <a name="restore-edge-local-shares"></a>Peremhálózati helyi megosztások visszaállítása
 
@@ -73,7 +73,7 @@ Miután a helyettesítő eszköz teljesen konfigurálva van, engedélyezze az es
 A helyi megosztásokból származó adatok helyreállításához kövesse az alábbi lépéseket:
 
 1. [Állítsa be a számítást az eszközön](azure-stack-edge-gpu-deploy-configure-compute.md).
-1. [Helyi megosztást adjon](azure-stack-edge-j-series-manage-shares.md#add-a-local-share) vissza.
+1. [Helyi megosztást adjon](azure-stack-edge-gpu-manage-shares.md#add-a-local-share) vissza.
 1. Futtassa a választható adatvédelmi megoldás által biztosított helyreállítási eljárást. Lásd az előző táblázat hivatkozásait.
 
 ## <a name="restore-vm-files-and-folders"></a>Virtuálisgép-fájlok és-mappák visszaállítása

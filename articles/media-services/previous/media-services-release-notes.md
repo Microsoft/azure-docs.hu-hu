@@ -3,7 +3,7 @@ title: Azure Media Services kibocsátási megjegyzések | Microsoft Docs
 description: Ez a cikk a Microsoft Azure Media Services v2 kibocsátási megjegyzéseit tárgyalja.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/01/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e1700489b4f3ee37d95b87b1bf026d47c9f1de4d
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 019f0bc98de45fa1fe6f9b8c72ef74beb50ea2c2
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98694884"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017358"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services kibocsátási megjegyzések
 
@@ -48,6 +48,26 @@ Szeretnénk hallani ügyfeleinktől, hogy az Ön által érintett problémák me
 
 ## <a name="rest-api-version-history"></a><a name="rest_version_history"></a>REST API korábbi verziók
 A Media Services REST API korábbi verzióival kapcsolatos információkért tekintse meg a [Azure Media Services REST API referenciát].
+
+## <a name="february-2021"></a>2021. február
+
+### <a name="azure-media-services-v2-api-and-sdks-deprecation-announcement"></a>Azure Media Services v2 API és SDK-k elavult hirdetmény
+
+#### <a name="update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024"></a>Frissítse a Azure Media Services REST API és SDK-kat v3-ra 2024. február 29-én
+
+Mivel a Azure Media Services REST API és a .NET-hez készült ügyféloldali SDK-k 3. verziója több funkciót kínál, mint a 2-es verzió, a Azure Media Services REST API és a .NET-hez és a Java-hoz készült ügyféloldali SDK-k 2. verzióját is kihasználjuk. Javasoljuk, hogy a váltást hamarabb növelje a Azure Media Services REST API és a .NET és a Java ügyféloldali SDK-k 3. verziójának gazdagabb előnyeivel.
+A 3. verzió a következőket biztosítja:
+ 
+- nonstop élő esemény támogatása
+- ARM REST API-k, a .NET Core, a Node.js, a Python, a Java, a Go és a Ruby ügyféloldali SDK-jai.
+- Ügyfél által felügyelt kulcsok, megbízható tárolók integrációja, privát hivatkozások támogatása és [egyebek](https://review.docs.microsoft.com/en-us/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
+
+#### <a name="action-required"></a>Szükséges művelet:
+
+A munkaterhelések megszakadásának minimalizálásához tekintse át az [áttelepítési útmutatót](https://go.microsoft.com/fwlink/?linkid=2149150&clcid=0x409) a kód 2 API-ról és SDK-ról a 3-as verziójú API-ra és SDK-ra való átváltásához a 2024. február 29. előtt.
+**2024. február 29**-én a Azure Media Services a továbbiakban nem fogadja el a forgalmat a 2-es verziójú REST API, a ARM Management API-verzió 2015-10-01 vagy a 2. verziójú .net-ügyfél SDK-k használatával. Ez magában foglalja a harmadik féltől származó nyílt forráskódú ügyfél SDK-kat, amelyek meghívják a 2. verziójú API-t.  
+
+Tekintse meg a hivatalos [Azure-frissítések bejelentését](https://azure.microsoft.com/updates/update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024/).
 
 ## <a name="september-2020"></a>2020. szeptember
 

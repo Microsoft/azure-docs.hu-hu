@@ -11,26 +11,22 @@ ms.workload: identity
 ms.date: 09/19/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 8a01ee4e2b0d4e72c1b17cf56953675e735ead79
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 300df35918ea4868664fcb7c5882709eee4090ca
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582890"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103007999"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Webes API-kat meghívó Daemon-alkalmazás – kód konfigurálása
 
 Megtudhatja, hogyan konfigurálhatja a webes API-kat meghívó Daemon-alkalmazás kódját.
 
-## <a name="msal-libraries-that-support-daemon-apps"></a>Daemon-alkalmazásokat támogató MSAL-kódtárak
+## <a name="microsoft-libraries-supporting-daemon-apps"></a>Daemon-alkalmazásokat támogató Microsoft-kódtárak
 
-Ezek a Microsoft-kódtárak támogatják a Daemon-alkalmazásokat:
+A következő Microsoft-kódtárak támogatják a Daemon-alkalmazásokat:
 
-  MSAL-könyvtár | Description
-  ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | A .NET-keretrendszer és a .NET Core platform támogatott a Daemon-alkalmazások létrehozásához. (A UWP, a Xamarin. iOS és az Xamarin. Android nem támogatott, mert ezek a platformok nyilvános ügyfélalkalmazások létrehozásához használatosak.)
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Démon-alkalmazások támogatása a Pythonban.
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | A démon-alkalmazások támogatása a javában.
+[!INCLUDE [active-directory-develop-libraries-daemon](../../../includes/active-directory-develop-libraries-daemon.md)]
 
 ## <a name="configure-the-authority"></a>A szolgáltató konfigurálása
 

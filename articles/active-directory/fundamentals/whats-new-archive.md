@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a555d2813030daeca1f2abcdc4b7787444bd0614
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 74bfd0fe8cf1d26ccf96a8a27985e456b4e0e67c
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102453019"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633478"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiválja a Azure Active Directory újdonságait?
 
@@ -2106,7 +2106,7 @@ Ha további engedélyekre vagy erőforrásokra van szüksége, amelyek jelenleg 
 Az új kiépítési naplók segítenek a felhasználók és csoportok üzembe helyezésének figyelésében és hibakeresésében. Ezek az új naplófájlok a következőkkel kapcsolatos információkat tartalmazzák:
 
 - A [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md) sikeresen létrehozott csoportok
-- Milyen szerepkörök lettek importálva a [Amazon Web Servicesból (AWS)](../saas-apps/amazon-web-service-tutorial.md#configure-and-test-azure-ad-sso-for-amazon-web-services-aws)
+- Milyen szerepkörök lettek importálva az [AWS Single-Account hozzáférésből](../saas-apps/amazon-web-service-tutorial.md#configure-and-test-azure-ad-sso-for-aws-single-account-access)
 - Milyen alkalmazottak lettek importálva a [munkanapokból](../saas-apps/workday-inbound-tutorial.md)
 
 További információ: [jelentések kiépítési jelentései a Azure Active Directory portálon (előzetes verzió)](../reports-monitoring/concept-provisioning-logs.md).

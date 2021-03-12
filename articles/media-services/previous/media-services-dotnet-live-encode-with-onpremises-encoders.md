@@ -3,7 +3,7 @@ title: Élő stream továbbítása helyszíni kódolókkal a .NET használatáva
 description: Ez a témakör bemutatja, hogyan használható a .NET az élő kódolás helyszíni kódolókkal történő elvégzéséhez.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 438e13abc04c959895cd371dfc29ce93d9b63f41
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: a763bed0ed31d80ec094fde3c68c5c84537fec46
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695628"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013839"
 ---
 # <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Élő stream továbbítása helyszíni kódolókkal a .NET használatával
 

@@ -7,22 +7,25 @@ ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/09/2019
-ms.openlocfilehash: b0f564f68a638e7efd1cd1ce9116a26f4d19f277
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 03/11/2021
+ms.openlocfilehash: 5deaef04330e21c8d9c580bf2a16814d4e902f6a
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497044"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199870"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Adatok átalakítása adatfolyamok leképezésével
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ha még csak ismerkedik az Azure Data Factory használatával, olvassa el [az Azure Data Factory használatának első lépéseit](introduction.md) ismertető cikket.
 
 Ebben az oktatóanyagban a Azure Data Factory felhasználói felületét (UX) fogja használni egy olyan folyamat létrehozásához, amely egy Azure Data Lake Storage-(ADLS-) Gen2-forrásból származó adatok másolását és átalakítását végzi egy ADLS Gen2 fogadóba a leképezési adatfolyam használatával. Az oktatóanyagban szereplő konfigurációs minta kiterjeszthető, ha az adatátalakítást a leképezési folyamat használatával végezi el
 
+ >[!NOTE]
+   >Ez az oktatóanyag általában az adatfolyamatok hozzárendelését jelenti. Az adatfolyamatok Azure Data Factory és szinapszis folyamatokban egyaránt elérhetők. Ha még nem ismeri az Azure szinapszis-folyamatokban lévő adatfolyamatokat, kövesse az [Azure szinapszis-folyamatokat használó Adatfolyamatokat](https://docs.microsoft.com/azure/synapse-analytics/concepts-data-flow-overview) . 
+   
 Az oktatóanyag során a következő lépéseket hajtja végre:
 
 > [!div class="checklist"]
@@ -62,7 +65,7 @@ Ebben a lépésben létrehoz egy adatelőállítót, és megnyitja a Data Factor
     Az erőforráscsoportokkal kapcsolatos információkért tekintse meg az [Erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/management/overview.md) ismertető cikket. 
 6. A **Verzió** résznél válassza a **V2** értéket.
 7. A **Hely** területen válassza ki az adat-előállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adattárak (például az Azure Storage és a SQL Database) és a számítási erőforrások (például az Azure HDInsight) más régiókban is használhatók.
-8. Kattintson a **Létrehozás** gombra.
+8. Válassza a **Létrehozás** lehetőséget.
 9. A létrehozás befejezése után megjelenik az értesítési központban megjelenő értesítés. Válassza az **Ugrás az erőforráshoz** lehetőséget, hogy megnyissa az adatfeldolgozó lapot.
 10. A Data Factory felhasználói felületének külön lapon történő elindításához válassza a **Létrehozás és figyelés** csempét.
 
@@ -131,7 +134,7 @@ Miután létrehozta az adatfolyamatot, a rendszer automatikusan elküldi az adat
 
     Ha a hibakeresési fürt aktív, a **frissítés** gombra kattintva ellenőrizheti, hogy a kifejezés kimenete a használt bemenetekhez képest látható-e. A logikát az adatáramlás kifejezésének nyelve alapján több, mint egy megfelelő választ kaphat.
 
-    ![Szűrés](media/tutorial-data-flow/filter2.png)
+    ![Szűrő](media/tutorial-data-flow/filter2.png)
 
     Kattintson a **Mentés és Befejezés** gombra, ha elkészült a kifejezéssel.
 
@@ -160,7 +163,7 @@ Miután létrehozta az adatfolyamatot, a rendszer automatikusan elküldi az adat
 1. Ezután hozzá kíván **adni egy** fogadó átalakítást a **célhely** területen.
 
     ![Képernyőkép, amely bemutatja, hová kell hozzáadni a fogadó átalakítást a célhelyen.](media/tutorial-data-flow/sink1.png)
-1. Nevezze el a **Sink** fogadó fogadót. A fogadó adatkészlet létrehozásához kattintson az **új** elemre.
+1. Nevezze el a fogadó fogadót. A fogadó adatkészlet létrehozásához kattintson az **új** elemre.
 
     ![Képernyőkép, amely megjeleníti a fogadó nevét, és létrehoz egy új fogadó adatkészletet.](media/tutorial-data-flow/sink2.png)
 1. Válassza a **Azure Data Lake Storage Gen2** lehetőséget. Kattintson a Folytatás gombra.
@@ -194,7 +197,7 @@ A folyamat a közzététel előtt hibakeresést végezhet. Ebben a lépésben az
 
 Ha ezt az oktatóanyagot helyesen követte, a fogadó mappájába írt 83 és 2 oszlopot kell írnia. A blob Storage ellenőrzésével ellenőrizheti, hogy helyesek-e az adatok.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyagban szereplő folyamat egy olyan adatfolyamot futtat, amely összegzi a 1910 és 2000 közötti vígjátékok átlagos minősítését, és az adatokat a ADLS írja. Megtanulta végrehajtani az alábbi műveleteket:
 

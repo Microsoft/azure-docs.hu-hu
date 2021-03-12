@@ -92,6 +92,8 @@
   items:
     - name: Támogatási és súgólehetőségek
       href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-accelerators/toc.json&bc=/azure/iot-accelerators/breadcrumb/toc.json
+    - name: IoT Szószedet
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-accelerators/toc.json&bc=/azure/iot-accelerators/breadcrumb/toc.json
     - name: Azure IoT-szolgáltatások
       items:
         - name: IoT Hub

@@ -11,20 +11,18 @@ ms.topic: sample
 ms.date: 03/09/2021
 ms.author: kenwith
 ms.reviewer: mifarca
-ms.openlocfilehash: 3572f481cc2cbcb1df73b33eb2543e32256ad9fb
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 9c0e5508830343561833785fbce31f547a8a7428
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102584327"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149681"
 ---
 # <a name="export-apps-with-secrets-and-certificates-expiring-beyond-the-required-date"></a>A titkokat és tanúsítványokat tartalmazó alkalmazások exportálása a szükséges dátum után lejár
 
-Ez a PowerShell-parancsfájl az összes alkalmazás titkát és tanúsítványát exportálja, és a megadott dátumon túllépi a CSV-fájlban lévő címtár adott alkalmazásaihoz szükséges dátumot.
+Ez a PowerShell-parancsfájl például exportálja az összes alkalmazás-regisztráció titkát és tanúsítványát, amely egy szükséges időszakon túlian lejár a megadott alkalmazásoknak a címtárból egy CSV-fájlban, nem interaktív módon.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
-
-Ehhez a mintához a Graph modul (AzureAD) [AzureAD v2 PowerShell](/powershell/azure/active-directory/install-adv2) -je, vagy a [Graph modul előzetes verziójának (AzureADPreview) AzureAD v2 PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) szükséges.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -32,13 +30,14 @@ Ehhez a mintához a Graph modul (AzureAD) [AzureAD v2 PowerShell](/powershell/az
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
+Ez a szkript nem interaktív módon működik. A-t használó rendszergazdának módosítania kell a "#PARAMETERS a MÓDOSÍTÁSra" szakaszt a saját alkalmazás-azonosítójával, az alkalmazás titkos kódjával, a bérlő nevével, az alkalmazások hitelesítő adatainak lejárati idejével, valamint a CSV exportálásának elérési útjával.
+Ez a szkript a [Client_Credential OAuth flow](../../develop/v2-oauth2-client-creds-grant-flow.md) -t használja, és a "RefreshToken" függvény létrehozza a hozzáférési jogkivonatot a rendszergazda által módosított paraméterek értékei alapján.
+
 A "tag hozzáadása" parancs feladata az oszlopok létrehozása a CSV-fájlban.
-A "$Path" változót közvetlenül a PowerShellben, a CSV-fájl elérési útjával módosíthatja, ha azt szeretné, hogy az exportálás nem interaktív.
 
 | Parancs | Jegyzetek |
 |---|---|
-| [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0&preserve-view=true) | Beolvas egy alkalmazást a címtárból. |
-| [Get-AzureADApplicationOwner](/powershell/module/azuread/Get-AzureADApplicationOwner?view=azureadps-2.0&preserve-view=true) | Egy alkalmazás tulajdonosait kérdezi le a címtárból. |
+| [Meghívás – webkérés](/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7.1) | HTTP-és HTTPS-kéréseket küld egy weblapra vagy webszolgáltatásnak. Elemzi a választ, és visszaadja a hivatkozások, képek és egyéb jelentős HTML-elemek gyűjteményeit. |
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -3,7 +3,7 @@ title: Smooth Streaming Windows áruházbeli alkalmazás oktatóanyaga | Microso
 description: Megtudhatja, hogyan használhatja a Azure Media Services egy C# Windows áruházbeli alkalmazás létrehozásához egy XML-MediaElement vezérlőelem használatával a zökkenőmentes adatfolyam-tartalmak lejátszásához.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 0fa5d8c5-3d5f-4886-ae55-fb6de4f5256d
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9b616b03698e83d256a7b81e4548edbf21dba058
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 20c7068fa0cb56699fdbc6d75b279abadd583832
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021129"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017120"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Smooth Streaming Windows áruházbeli alkalmazás létrehozása
 
@@ -69,11 +69,11 @@ A Windows áruházbeli alkalmazások fejlesztésével kapcsolatos további infor
 1. Kattintson a **File** (Fájl) menüben a **New** (Új), majd a **Project** (Projekt) elemre.
 1. Az új projekt párbeszédpanelen írja be vagy válassza ki a következő értékeket:
 
-    | Név | Érték |
+    | Name | Érték |
     | --- | --- |
     | Sablon csoport |Telepített/sablonok/Visual C#/Windows Store |
     | Sablon |Üres alkalmazás (XAML) |
-    | Név |SSPlayer |
+    | Name |SSPlayer |
     | Hely |C:\SSTutorials |
     | Megoldás neve |SSPlayer |
     | Könyvtár létrehozása a megoldáshoz |kiválasztott |
@@ -85,7 +85,7 @@ A Windows áruházbeli alkalmazások fejlesztésével kapcsolatos további infor
 1. Megoldáskezelő kattintson a jobb gombbal a **SSPlayer** elemre, majd kattintson a **hivatkozás hozzáadása** parancsra.
 1. Írja be vagy válassza ki az alábbi értékeket:
 
-    | Név | Érték |
+    | Name | Érték |
     | --- | --- |
     | Hivatkozási csoport |Windows/bővítmények |
     | Referencia |Válassza a Microsoft Smooth Streaming ügyféloldali SDK Windows 8 és a Microsoft Visual C++ futtatókörnyezethez csomagot |

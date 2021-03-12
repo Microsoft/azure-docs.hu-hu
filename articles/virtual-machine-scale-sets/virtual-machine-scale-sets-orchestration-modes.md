@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.date: 02/12/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 8805b3c4947311a3054066b3378d881d673c2b14
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: d1290b1dcc1e97d63dd41d5be8ca19b81e32f838
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521747"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225030"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>Előzetes verzió: az Azure-beli virtuálisgép-méretezési csoportok előkészítési módjai 
 
@@ -128,12 +128,22 @@ A következő táblázat összehasonlítja a rugalmas előkészítési módot, a
 |         Azure-riasztások  |            Nem  |            Igen  |            Yes  |
 |         VM-ismeretek  |            Nem  |            Igen  |            Yes  |
 |         Azure Backup  |            Igen  |            Igen  |            Yes  |
-|         Azure Site Recovery  |            Nem  |            Nem  |            Igen  |
+|         Azure Site Recovery  |     Nem  |            Nem  |            Igen  |
 |         Meglévő virtuális gép hozzáadása vagy eltávolítása a csoportba  |            Nem  |            Nem  |            Nem  | 
 
 
 ## <a name="register-for-flexible-orchestration-mode"></a>Regisztráció rugalmas előkészítési módra
 A virtuálisgép-méretezési csoportok rugalmas előkészítési módban való üzembe helyezéséhez először regisztrálnia kell az előfizetését az előzetes verzió szolgáltatáshoz. A regisztráció elvégzése több percet is igénybe vehet. A regisztráláshoz a következő Azure PowerShell vagy Azure CLI-parancsok használhatók.
+
+### <a name="azure-portal"></a>Azure Portal
+Navigáljon a Részletek lapra ahhoz az előfizetéshez, amelyhez létre szeretné hozni a méretezési csoport rugalmas előkészítési módot, majd válassza a menü előnézet funkciók elemét. Válassza ki az engedélyezni kívánt két Orchestrator-funkciót: _VMOrchestratorSingleFD_ és _VMOrchestratorMultiFD_, majd kattintson a regisztráció gombra. A szolgáltatás regisztrálása akár 15 percet is igénybe vehet.
+
+![Funkció regisztrálása.](https://user-images.githubusercontent.com/157768/110361543-04d95880-7ff5-11eb-91a7-2e98f4112ae0.png)
+
+Ha a szolgáltatások regisztrálva lettek az előfizetéséhez, fejezze be a beléptetési folyamatot a számítási erőforrás-szolgáltatóra való váltás propagálásával. Navigáljon az előfizetés erőforrás-szolgáltatók lapjára, válassza a Microsoft. számítás lehetőséget, majd kattintson az újbóli regisztrálás gombra.
+
+![Regisztráció újra](https://user-images.githubusercontent.com/157768/110362176-cd1ee080-7ff5-11eb-8cc8-36aa967e267a.png)
+
 
 ### <a name="azure-powershell"></a>Azure PowerShell 
 Az előfizetés előnézetének engedélyezéséhez használja a [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) parancsmagot. 

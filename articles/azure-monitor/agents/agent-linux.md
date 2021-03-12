@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 2c86086a636ea667cff4fc8a853c4ef20fa6ae04
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: dae9ab56ca1349d288aee02f7e2dfa4eccf1508c
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041841"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199166"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Log Analytics-ügynök telepítése Linux rendszerű számítógépeken
 Ez a cikk részletesen ismerteti a Log Analytics-ügynök Linux rendszerű számítógépekre történő telepítését a következő módszerekkel:
@@ -41,7 +41,7 @@ A 2018 augusztusa után kiadott verzióktól kezdve a következő módosítások
 * Nem támogatottak azok a verziók, amelyek átadták a gyártó támogatásának befejezési dátumát.
 * Csak a VM-lemezképek támogatása; a tárolók, még azok is, amelyek a hivatalos distro kiadói lemezképből származnak, nem támogatottak.
 * Az AMI új verziói nem támogatottak.  
-* Az alapértelmezés szerint csak az SSL 1. x verziót futtató verziók támogatottak.
+* Alapértelmezés szerint csak az OpenSSL 1. x verziót futtató verziók támogatottak.
 
 >[!NOTE]
 >Ha olyan disztribúciót vagy verziót használ, amely jelenleg nem támogatott, és nem a támogatási modellhez igazodik, javasoljuk, hogy a tárházat elágazással lássa el, és tudomásul veszi, hogy a Microsoft támogatási szolgálata nem nyújt segítséget a villás ügynök verzióihoz.

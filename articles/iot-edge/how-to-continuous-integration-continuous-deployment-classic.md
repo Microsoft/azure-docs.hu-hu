@@ -8,14 +8,16 @@ ms.date: 08/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e38b3c617ded9c0001b01e481d4d3c1120be62ef
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 218c0f345e4ea453a2300b3de85ac8856a09c6ee
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100634753"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199278"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices-classic-editor"></a>Folyamatos integráció és folyamatos üzembe helyezés Azure IoT Edge eszközökön (klasszikus szerkesztő)
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Az Azure-folyamatok beépített Azure IoT Edge feladataival könnyedén elvégezheti a DevOps a Azure IoT Edge alkalmazásaiban. Ez a cikk bemutatja, hogyan használhatja az Azure-folyamatok folyamatos integrációját és folyamatos üzembe helyezési funkcióit az alkalmazások gyors és hatékony üzembe helyezéséhez, teszteléséhez és központi telepítéséhez a Azure IoT Edge a klasszikus szerkesztő használatával. Azt is megteheti, hogy a YAML-t [használja](how-to-continuous-integration-continuous-deployment.md).
 

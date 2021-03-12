@@ -3,17 +3,17 @@ title: Azure-beli virtuálisgép-méretek a mezőhöz – programozható Gate-t�
 description: Felsorolja az Azure-beli virtuális gépekhez elérhető különböző FPGA optimalizált méreteket. A vCPU, adatlemezek és hálózati adapterek számával, valamint az ebben a sorozatban lévő méretek sávszélességével kapcsolatos információkat sorolja fel.
 author: vikancha-MSFT
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-fpga
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: vikancha
-ms.openlocfilehash: b05c3198f6c3d84f852d9535a3cf0b67f66e01f6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d9eb0d5bc93cbe9c2a7cbae56c336115bb227b04
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417610"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557675"
 ---
 # <a name="fpga-optimized-virtual-machine-sizes"></a>FPGA optimalizált virtuálisgép-méretek
 

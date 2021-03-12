@@ -18,17 +18,17 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9ff923d0231a1b00493a54996c2fcd489012bbe7
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 329036f3ed815eaaba94f441e372f4be86edd629
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862037"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558083"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>Az Azure AD PowerShell-parancsmagjai jelentéskészítéshez
 
 > [!NOTE] 
-> Ezek a PowerShell-parancsmagok jelenleg csak az [Azure ad Preview](/powershell/module/azuread/?view=azureadps-2.0-preview#directory_auditing) modullal működnek. Vegye figyelembe, hogy az előzetes verziójú modul éles használatra nem ajánlott. 
+> Ezek a PowerShell-parancsmagok jelenleg csak az [Azure ad Preview](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#directory_auditing) modullal működnek. Vegye figyelembe, hogy az előzetes verziójú modul éles használatra nem ajánlott. 
 
 A nyilvános előzetes kiadás telepítéséhez használja az alábbi parancsot. 
 
@@ -49,7 +49,7 @@ A [naplók nyomon követést biztosítanak](concept-audit-logs.md) az Azure ad k
 A naplókhoz a Get-AzureADAuditDirectoryLogs parancsmag használatával férhet hozzá.
 
 
-| Használati példa                      | PowerShell-parancs |
+| Eset                      | PowerShell-parancs |
 | :--                           | :--                |
 | Alkalmazás megjelenítendő neve      | Get-AzureADAuditDirectoryLogs szűrő: "initiatedBy/app/displayName EQ" Azure AD Cloud Sync "" |
 | Kategória                      | Get-AzureADAuditDirectoryLogs szűrő "Category EQ" ApplicationManagement "" |
@@ -70,11 +70,11 @@ A [bejelentkezési](concept-sign-ins.md) naplók a felügyelt alkalmazások és 
 A bejelentkezési naplókhoz a Get-AzureADAuditSignInLogs parancsmag használatával férhet hozzá.
 
 
-| Használati példa                      | PowerShell-parancs |
+| Eset                      | PowerShell-parancs |
 | :--                           | :--                |
 | Felhasználó megjelenítendő neve             | Get-AzureADAuditSignInLogs szűrő "userDisplayName EQ" Timothy Perkins "" |
 | Létrehozás dátuma és időpontja              | Get-AzureADAuditSignInLogs szűrő "createdDateTime gt 2019-04-18T17:30:00.0 Z" (minden, 5:30 PM, 4/18) |
-| status                        | Get-AzureADAuditSignInLogs szűrő "Status/errorCode EQ 50105" |
+| Állapot                        | Get-AzureADAuditSignInLogs szűrő "Status/errorCode EQ 50105" |
 | Alkalmazás megjelenítendő neve      | Get-AzureADAuditSignInLogs szűrő "appDisplayName EQ" StoreFrontStudio [wsfed enabled] "" |
 | A fentiek mindegyike              | Get-AzureADAuditSignInLogs szűrő "userDisplayName EQ" Timothy Perkins "és status/errorCode ne 0 és appDisplayName EQ" StoreFrontStudio [wsfed enabled] "" |
 

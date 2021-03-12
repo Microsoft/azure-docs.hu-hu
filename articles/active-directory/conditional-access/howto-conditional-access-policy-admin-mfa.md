@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 08/03/2020
+ms.date: 03/04/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57826fcff03e79d5617c7eb69aac7d535d3c86f7
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 35178ecc9bc736bbaca3adc932022b15cc2fc956
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915708"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632084"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>Feltételes hozzáférés: MFA megkövetelése rendszergazdák számára
 
@@ -56,7 +56,7 @@ A következő lépésekkel létrehozhat egy feltételes hozzáférési szabályz
 1. Válassza az **új szabályzat** lehetőséget.
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
 1. A **hozzárendelések** alatt válassza a **felhasználók és csoportok** lehetőséget.
-   1. A **Belefoglalás** területen válassza a **címtárbeli szerepkörök (előzetes verzió)** lehetőséget, és legalább a következő szerepköröket válassza:
+   1. A **Belefoglalás** területen válassza ki a **címtárbeli szerepkörök** lehetőséget, és válasszon olyan beépített szerepköröket, mint például:
       * Hitelesítés rendszergazdája
       * Számlázási adminisztrátor
       * Feltételes hozzáférésű rendszergazda
@@ -69,12 +69,11 @@ A következő lépésekkel létrehozhat egy feltételes hozzáférési szabályz
       * Felhasználói rendszergazda
    
       > [!WARNING]
-      > A feltételes hozzáférési szabályzatok nem támogatják azokat a felhasználókat, akik egy [felügyeleti egységre](../roles/admin-units-assign-roles.md) vagy címtár-szerepkörre hatókörrel rendelkező, közvetlenül az adott objektumra (például [Egyéni szerepkörökre](../roles/custom-create.md)) kiterjedő címtár-szerepkört rendeltek.
+      > A feltételes hozzáférési szabályzatok beépített szerepköröket támogatnak. A feltételes hozzáférési házirendek nincsenek kikényszerítve más típusú szerepkörökhöz, beleértve a [felügyeleti egység hatókörét](../roles/admin-units-assign-roles.md) vagy az [Egyéni szerepköröket](../roles/custom-create.md).
 
    1. A **kizárás** területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 
    1. Válassza a **Kész** lehetőséget.
 1. A **Cloud apps vagy a műveletek** területen válassza a  >   **minden felhőalapú alkalmazás** lehetőséget, majd kattintson a **kész** gombra.
-1. Az   >  **ügyfélalkalmazások** feltételei területen állítsa a **Konfigurálás** az **Igen** értékre, majd **a válassza ki az ügyfélalkalmazások lehetőséget, hogy a házirend érvényes legyen** , és válassza a **kész** lehetőséget.
 1. A **hozzáférés-vezérlés**  >  **megadása** területen válassza a **hozzáférés biztosítása**, a **többtényezős hitelesítés megkövetelése**, majd a **kiválasztás** lehetőséget.
 1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva** értékre.
 1. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.

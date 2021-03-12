@@ -4,17 +4,17 @@ description: Távolítsa el a blobokat az archív tárolóból, hogy hozzáférh
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 01/08/2021
+ms.date: 03/11/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 5a89e5a9eca653a2d15e5b09605b78bc18d76b8f
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 2f0ddca9cbd7d85909b1d86e68b92fa1d847476d
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165671"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225081"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>BLOB-adatok rehidratálása az archív szintről
 
@@ -29,6 +29,10 @@ Míg a blob az archív hozzáférési szinten található, offline állapotba ke
 
 [!INCLUDE [storage-blob-rehydration](../../../includes/storage-blob-rehydrate-include.md)]
 
+### <a name="lifecycle-management"></a>Életciklus-kezelés
+
+A Blobok kiszáradása nem változik az `Last-Modified` ideje. Az [életciklus-kezelési](storage-lifecycle-management-concepts.md) funkció használatával létrehozhat egy olyan forgatókönyvet, amelyben a blob rehidratált, majd az életciklus-kezelési házirend visszahelyezi a blobot az archívumba, mert az `Last-Modified` idő meghaladja a házirendhez beállított küszöbértéket. Ennek elkerüléséhez használja az *[archivált blob másolása online szintű](#copy-an-archived-blob-to-an-online-tier)* metódusba lehetőséget. A másolási módszer a blob új példányát egy frissített `Last-Modified` időponttal hozza létre, és nem indítja el az életciklus-kezelési házirendet.
+
 ## <a name="monitor-rehydration-progress"></a>A rehidratálás folyamatának figyelése
 
 A rehidratálás során a blob beolvasása művelettel ellenőrizze az **Archive status** attribútumot, és erősítse meg, hogy a szint módosítása befejeződött-e. Az állapot a célszinttől függően „rehydrate-pending-to-hot” (rehidratálás-folyamatban-a-gyakoriba) vagy „rehydrate-pending-to-cool” (rehidratálás-folyamatban-a-ritkába) lehet. Befejezésekor a rendszer eltávolítja az archiválási állapot tulajdonságot, és a hozzáférési réteg blob tulajdonsága az új gyakori vagy ritka **elérésű** szintet tükrözi.
@@ -42,7 +46,7 @@ A Blobok archívumból való másolása a kiválasztott rehidratálás prioritá
 > [!IMPORTANT]
 > Ne törölje a forrás blobot, amíg a másolat sikeresen el nem fejeződik a célhelyen. Ha a forrás blob törölve lesz, akkor előfordulhat, hogy a cél blobja nem fejeződik be, és üres. A másolási művelet állapotának meghatározásához ellenőrizze az *x-MS-Copy-status állapotot* .
 
-Az archív Blobok csak ugyanazon a Storage-fiókon belüli online célhelyekre másolhatók. Az archív Blobok másik archív blobba való másolása nem támogatott. A következő táblázat a CopyBlob képességeit mutatja be.
+Az archív Blobok csak ugyanazon a Storage-fiókon belüli online célhelyekre másolhatók. Az archív Blobok másik archív blobba való másolása nem támogatott. A következő táblázat a **másolási Blobok** műveletének képességeit mutatja be.
 
 |                                           | **Forró réteg forrása**   | **Hűvös réteg forrása** | **Archiválási szint forrása**    |
 | ----------------------------------------- | --------------------- | -------------------- | ------------------- |

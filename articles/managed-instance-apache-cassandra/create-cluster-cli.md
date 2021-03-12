@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
-ms.openlocfilehash: 86fa7e2e45dacb86b6601b699dca46b1b909fd08
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 28599c08f25533e042c03612d035912a8d0f17c0
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102424699"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225370"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-using-azure-cli-preview"></a>Gyors útmutató: Azure felügyelt példány létrehozása az Apache Cassandra-fürthöz az Azure CLI használatával (előzetes verzió)
 
@@ -56,7 +56,7 @@ Ez a rövid útmutató azt ismerteti, hogyan használható az Azure CLI-parancso
    ```
 
    > [!NOTE]
-   > Az `assignee` `role` előző parancs és értékei rögzített szolgáltatási elv és szerepkör-azonosítók.
+   > Az `assignee` `role` előző parancs és értékei rögzített értékek, pontosan a parancsban említett értékeket adja meg. Ha ezt nem teszi meg, a rendszer hibákat fog eredményezni a fürt létrehozásakor. Ha hibát tapasztal a parancs végrehajtásakor, előfordulhat, hogy nem rendelkezik a futtatásához szükséges engedélyekkel, forduljon a rendszergazdához.
 
 1. Ezután hozza létre a fürtöt az újonnan létrehozott Virtual Networkban. Futtassa a következő parancsot, és győződjön meg arról, hogy az `Resource ID` előző parancsban beolvasott értéket használja a változó értékeként `delegatedManagementSubnetId` :
 

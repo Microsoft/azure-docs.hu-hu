@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/13/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 92bf066c9769cc4b2525923b9e18ed3c0e9c577a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2ad5bf08542cd98f7acae36827b1a7b284a893b0
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937147"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149298"
 ---
 # <a name="identify-required-appliances"></a>A szükséges berendezések azonosítása
 
@@ -38,13 +38,13 @@ A IoT Defender a fizikai és a virtuális üzemelő példányokat egyaránt tám
 
 Ez a szakasz áttekintést nyújt a fizikai érzékelők elérhető modelljeiről. Előre konfigurált szoftverekkel vagy olyan érzékelőkkel vásárolhat érzékelőket, amelyek nincsenek előre konfigurálva.
 
-| Központi telepítés típusa | Vállalat | Enterprise | SMB |
-|--|--|--|--|
-| Kép | :::image type="content" source="media/how-to-prepare-your-network/corporate-hpe-proliant-dl360-v2.png" alt-text="A vállalati szintű modell."::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="A nagyvállalati szintű modell."::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="Az SMB-szintű modell."::: |
-| Modellezés | HPE ProLiant DL360 | HPE ProLiant DL20 | HPE ProLiant DL20 |
-| Portok figyelése | Legfeljebb 15 RJ45 vagy 8 OPT | Legfeljebb 8 RJ45 vagy 6 OPT | 4 RJ45 |
-| Maximális sávszélesség [1](#anchortext) | másodpercenként 3 GB | másodpercenként 1 GB | 200 MB/másodperc |
-| Maximálisan védett eszközök | 30 000 | 15 000 | 1,000 |
+| Központi telepítés típusa | Vállalat | Enterprise | SMB rack csatlakoztatása| SMB-robusztus|
+|--|--|--|--|--|
+| Kép | :::image type="content" source="media/how-to-prepare-your-network/corporate-hpe-proliant-dl360-v2.png" alt-text="A vállalati szintű modell."::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="A nagyvállalati szintű modell."::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="Az SMB-szintű modell."::: | :::image type="content" source="media/how-to-prepare-your-network/office-ruggedized.png" alt-text="Az SMB-robusztus szintű modell."::: |
+| Modellezés | HPE ProLiant DL360 | HPE ProLiant DL20 | HPE ProLiant DL20 | HPE EL300 |
+| Portok figyelése | Legfeljebb 15 RJ45 vagy 8 OPT | Legfeljebb 8 RJ45 vagy 6 OPT | 4 RJ45 | Legfeljebb 5 |
+| Maximális sávszélesség [1](#anchortext) | 3 GB/mp | 1 GB/s | 200 MB/s | 100 MB/s |
+| Maximálisan védett eszközök | 30 000 | 15 000 | 1,000 | 800 |
 
 Lásd: a [készülék specifikációi](#appliance-specifications) a szállító adataihoz.
 
@@ -109,7 +109,7 @@ Ez a szakasz a következő berendezések hardveres specifikációit ismerteti:
 
 ### <a name="appliance-bom"></a>Készülék ANYAGJEGYZÉKe
 
-| PN | Description | Mennyiség |
+| PN | Leírás | Mennyiség |
 |--|--|--|
 | P19766 – B21 | HPE DL360 Gen10 8SFF NC műszaki kiszolgáló | 1 |
 | P19766 – B21 | Európa – többnyelvű honosítás | 1 |
@@ -180,7 +180,7 @@ Ez a szakasz a következő berendezések hardveres specifikációit ismerteti:
 
 ### <a name="appliance-bom"></a>Készülék ANYAGJEGYZÉKe
 
-| PN | Description | Mennyiség |
+| PN | Leírás | Mennyiség |
 |--|--|--|
 | P06961 – B21 | HPE DL20 Gen10 NHP 2LFF műszaki igazgató kiszolgáló | 1 |
 | P06961 – B21 | HPE DL20 Gen10 NHP 2LFF műszaki igazgató kiszolgáló | 1 |
@@ -194,6 +194,45 @@ Ez a szakasz a következő berendezések hardveres specifikációit ismerteti:
 | P06683 – B21 | HPE DL20 Gen10 M. 2 SATA/LFF AROC Cable Kit | 1 |
 | 512485 – B21 | HPE iLO ADV 1 – Server License 1 év támogatás | 1 |
 | 775612 – B21 | HPE 1U rövid súrlódású vasúti készlet | 1 |
+
+## <a name="smb-rugged-hpe-edgeline-el300"></a>SMB robusztus: HPE Edgeline EL300
+
+| Összetevő | Technikai specifikációk |
+|--|--|
+| Építőipar | Alumínium, fanless & por-ellenőrző kialakítás |
+| Méretek (magasság x szélesség x mélység) | 200.5 mm (7,9 ") magas, 232mm (9,14") Wide by 100mm (3,9 ") Deep |
+| Tömeg | 4,91 KG (10,83 lbs.) |
+| CPU | Intel Core i7 – 8650U (1,9 GHz/4 – mag/15W) |
+| Lapkakészletének | Intel® Q170 platform Controller hub |
+| Memória | 8GB DDR4 2133MHz Wide hőmérséklete (nátrium) |
+| Tárolás | 128GB 3ME3 Wide hőmérséklet mSATA SSD |
+| Hálózati vezérlő | 6x Gigabit Ethernet-portok Intel® I219 |
+| Eszköz-hozzáférés  | 4 USBs: 2 elülső oldal; 2 hátulsó; 1 belső |
+| Hálózati adapter | 250V/10A |
+| Szerelési | Mounting Kit, DIN sín |
+| Működési hőmérséklet | 0C a + 70C  |
+| Páratartalom | 10% ~ 90%, nem kondenzációs |
+| Rezgés | 0,3 grms 10Hz 300Hz, 15 perc/tengely – DIN sín   |
+| Sokk | 10G 10ms, félórás, három az egyes tengelyekhez. (Pozitív & negatív impulzus) – DIN sín |
+
+### <a name="appliance-bom"></a>Készülék ANYAGJEGYZÉKe
+| Termék | Leírás |
+|--|--|
+| P25828 – B21 | HPE Edgeline EL300 v2 konvergált Edge System |
+| P25828 – B21 B19 | HPE EL300 v2 konvergált Edge System |
+| P25833 – B21 | Intel Core i7-8650U (1,9 GHz/4-Core/15W) FIO alapszintű processzor-készlet HPE Edgeline EL300 |
+| P09176 – B21 | HPE Edgeline 8GB (1x8GB) Dual Rank x8 DDR4-2666 nátrium-WT CAS-19-19-19 regisztrált memória FIO készlet |
+| P09188 – B21 | HPE Edgeline 256GB SATA 6G Read intenzív M. 2 2242 3yr Wty Wide Temp SSD |
+| P04054 – B21 | HPE Edgeline EL300 SFF – M. 2 engedélyezési csomag |
+| P08120 – B21 | HPE Edgeline EL300 12VDC FIO-adatátviteli tábla |
+| P08641 – B21 | HPE Edgeline EL300 80W 12VDC tápegység |
+| AF564A | HPE C13-SI-32 IL 250V 10Amp 1.83 m tápkábel |
+| P25835 – B21 | HPE EL300 v2 FIO Carrier Board |
+| R1P49AAE | HPE EL300 izmus ADV 3yr nonstop Sup_Upd E-LTU |
+| P08018 – B21 nem kötelező | HPE Edgeline EL300, alacsony profilú zárójeles készlet  |
+| P08019 – B21 nem kötelező | HPE Edgeline EL300 DIN Rail Mount Kit |
+| P08020 – B21 nem kötelező | HPE Edgeline EL300 fali csatlakoztatási csomag |
+| P03456 – B21 nem kötelező | HPE Edgeline 1 GbE 4 – Port TSN FIO lánya kártya |
 
 ## <a name="virtual-appliance-specifications"></a>Virtuális készülék specifikációi
 
@@ -209,7 +248,7 @@ Ez a szakasz a következő berendezések hardveres specifikációit ismerteti:
 
 | Típus | Enterprise |
 |--|--|
-| Description | Virtuális berendezés vállalati telepítési típusokhoz |
+| Leírás | Virtuális berendezés vállalati telepítési típusokhoz |
 | vCPU | 8 |
 | Memória | 32 GB |
 | Tárolás | 1,8 TB |
@@ -238,7 +277,7 @@ A készülék megvásárlása után nyissa meg a **Defender for IoT**  >  **Netw
 
 | Összetevő | Technikai specifikációk |
 |--|--|
-| Váz | 1U rack-kiszolgáló |
+| Váz | 1U rack-kiszolgáló
 | Dimenziók | 42,8 x 434,0 x 596 (mm)/1,67 "x 17,09" x 23,5 "(a) |
 | Tömeg | Max. 29,98 LB/13.6 kg |
 | Processzor | Intel Xeon E-2144G 3,6 GHz, 8P cache, 4C/8T, Turbo (71 W) |
@@ -260,3 +299,4 @@ A készülék megvásárlása után nyissa meg a **Defender for IoT**  >  **Netw
 [Tudnivalók az Azure Defender for IoT telepítéséről](how-to-install-software.md)
 
 [Tudnivalók az Azure Defender for IoT Network telepítőről](how-to-set-up-your-network.md)
+

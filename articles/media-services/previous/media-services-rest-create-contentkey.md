@@ -3,7 +3,7 @@ title: Tartalom-kulcsok létrehozása REST használatával | Microsoft Docs
 description: Ez a cikk bemutatja, hogyan hozhatók létre biztonságos hozzáférést biztosító tartalmi kulcsok az eszközökhöz.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 95e9322b-168e-4a9d-8d5d-d7c946103745
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 5038a6d70f3293dfa1556d72b2f85aa930794949
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: a9960ece05b7cab4ddd26fdac7516f4adbccf5b0
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256973"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017256"
 ---
 # <a name="create-content-keys-with-rest"></a>Tartalom-kulcsok létrehozása REST használatával
 
@@ -33,11 +33,11 @@ ms.locfileid: "89256973"
 
 A Media Services lehetővé teszi a titkosított eszközök továbbítását. A **ContentKey** biztonságos hozzáférést biztosít az **eszközhöz**. 
 
-Új eszköz létrehozásakor (például a [fájlok feltöltése](media-services-rest-upload-files.md)előtt) a következő titkosítási beállításokat adhatja meg: **StorageEncrypted**, **CommonEncryptionProtected**vagy **EnvelopeEncryptionProtected**. 
+Új eszköz létrehozásakor (például a [fájlok feltöltése](media-services-rest-upload-files.md)előtt) a következő titkosítási beállításokat adhatja meg: **StorageEncrypted**, **CommonEncryptionProtected** vagy **EnvelopeEncryptionProtected**. 
 
 Amikor eszközöket továbbít az ügyfeleknek, beállíthatja, [hogy az eszközök dinamikusan legyenek titkosítva](media-services-rest-configure-asset-delivery-policy.md) a következő két titkosítás egyikével: **DynamicEnvelopeEncryption** vagy **DynamicCommonEncryption**.
 
-A titkosított eszközöket társítani kell a **ContentKey**s-hez. Ez a cikk a tartalmi kulcs létrehozását ismerteti.
+A titkosított eszközöket társítani kell a **ContentKey** s-hez. Ez a cikk a tartalmi kulcs létrehozását ismerteti.
 
 A következő általános lépésekkel hozhat létre olyan tartalmi kulcsokat, amelyeket a titkosítani kívánt eszközökkel társít. 
 
@@ -71,7 +71,7 @@ A következő általános lépésekkel hozhat létre olyan tartalmi kulcsokat, a
      }
     ```
 
-5. Hozza létre a **EncryptedContentKey** (a Base64 kódolású karakterlánccá konvertált), a **ProtectionKeyId**, a **ProtectionKeyType**, a **ContentKeyType**és az **ellenőrzőösszeg** értékeit, amelyeket az előző lépésekben kapott.
+5. Hozza létre a **EncryptedContentKey** (a Base64 kódolású karakterlánccá konvertált), a **ProtectionKeyId**, a **ProtectionKeyType**, a **ContentKeyType** és az **ellenőrzőösszeg** értékeit, amelyeket az előző lépésekben kapott.
 6. Társítsa a **ContentKey** entitást az **eszköz** entitásához a $Links művelettel.
 
 Ez a cikk nem mutatja be az AES-kulcs létrehozását, a kulcs titkosítását és az ellenőrzőösszeg kiszámítását. 

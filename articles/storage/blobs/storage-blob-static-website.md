@@ -9,12 +9,12 @@ ms.reviewer: dineshm
 ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-js
-ms.openlocfilehash: b9eb65311951706863c3b18c5fc91bae8c41c7dc
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bbb996362df1f99a8702de310bc11f6828cc303a
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96007341"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008450"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Statikus webhely üzemeltetés az Azure Storage-ban
 
@@ -25,9 +25,6 @@ A statikus tartalom (HTML-, CSS-, JavaScript-és képfájlok) közvetlenül egy 
 Ha a tartalom megjelenítéséhez webkiszolgálóra van szüksége, használhatja a [Azure app Service](https://azure.microsoft.com/services/app-service/).
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
-
-> [!NOTE]
-> Mindenképpen hozzon létre egy általános célú v2-es standard Storage-fiókot. A statikus webhelyek semmilyen más típusú Storage-fiókban nem érhetők el.
 
 ## <a name="setting-up-a-static-website"></a>Statikus webhely beállítása
 
@@ -122,7 +119,7 @@ A metrikák a statikus webhelyek oldalain is engedélyezhetők. A metrikák enge
 
 A mérőszámok statikus webhely oldalain való engedélyezéséhez tekintse [meg a metrikák engedélyezése statikus webhelyeken](storage-blob-static-website-how-to.md#metrics)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Statikus webhely üzemeltetése az Azure Storage-ban](storage-blob-static-website-how-to.md)
 * [Egyéni tartomány leképezése egy Azure Blob Storage-végpontra](storage-custom-domain-name.md)

@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0e644b7937f6ccb23b4833405b8f4ed3119879a5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a3aff7b99dad910a9691eef2004df856ca883789
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362284"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224384"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health ügynök telepítése
 
@@ -38,7 +38,7 @@ A következő táblázat a Azure AD Connect Health használatának követelmény
 | Ön globális rendszergazda az Azure AD-ben. |Alapértelmezés szerint csak a globális rendszergazdák telepíthetik és konfigurálhatják az állapotfigyelő ügynököket, érhetik el a portált, és a Azure AD Connect Healthon belül végezhetnek műveleteket. További információkért lásd: [Az Azure AD-címtár felügyelete](../fundamentals/active-directory-whatis.md). <br /><br /> Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával lehetővé teheti, hogy a szervezet más felhasználói hozzáférhessenek Azure AD Connect Healthhoz. További információ: [Azure RBAC for Azure ad Connect Health](how-to-connect-health-operations.md#manage-access-with-azure-rbac). <br /><br />**Fontos**: használjon munkahelyi vagy iskolai fiókot az ügynökök telepítéséhez. Microsoft-fiók nem használható. További információ: [regisztráció az Azure-ba szervezetként](../fundamentals/sign-up-organization.md). |
 | A Azure AD Connect Health ügynök telepítve van az egyes megcélzó kiszolgálókon. | Az állapotfigyelő szolgáltatásoknak a célként megadott kiszolgálókon kell telepíteniük és konfigurálniuk, hogy képesek legyenek az adatfogadásra és a figyelési és elemzési funkciók biztosítására. <br /><br />Ha például az Active Directory összevonási szolgáltatások (AD FS) (AD FS) infrastruktúra adatait szeretné lekérni, telepítenie kell az ügynököt a AD FS-kiszolgálóra és a webalkalmazás-proxy kiszolgálóra. Hasonlóképpen, ha a helyszíni Azure AD Domain Services (Azure AD DS) infrastruktúra adatait szeretné lekérni, telepítenie kell az ügynököt a tartományvezérlőkön.  |
 | Az Azure szolgáltatási végpontok kimenő kapcsolattal rendelkeznek. | A telepítés és a futásidő során az ügynöknek kapcsolódnia kell az Azure AD Connect Health szolgáltatás végpontjaihoz. Ha a tűzfalak letiltják a kimenő kapcsolatot, adja hozzá a [kimenő kapcsolati végpontokat](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) az engedélyezési listához. |
-|A kimenő kapcsolat IP-címeken alapul. | További információ az IP-címeken alapuló tűzfal-szűrésről: [Azure IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653).|
+|A kimenő kapcsolat IP-címeken alapul. | További információ az IP-címeken alapuló tűzfal-szűrésről: [Azure IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=56519).|
 | A kimenő forgalom TLS-ellenőrzése szűrve vagy letiltva. | Előfordulhat, hogy az ügynök regisztrációs lépése vagy az adatfeltöltési műveletek sikertelenek lesznek, ha a hálózati réteg kimenő forgalmának TLS-ellenőrzése vagy leállítása történik. További információt a TLS- [ellenőrzés beállítása](/previous-versions/tn-archive/ee796230(v=technet.10))című témakörben talál. |
 | A kiszolgálón a tűzfal portjai futtatják az ügynököt. |Az ügynöknek nyitva kell lennie a következő tűzfal-portok megnyitásához, hogy kommunikálni tudjon a Azure AD Connect Health szolgáltatási végpontokkal: <br /><li>443-as TCP-port</li><li>5671-es TCP-port</li> <br />Az ügynök legújabb verziója nem igényli a 5671-es portot. Frissítsen a legújabb verzióra, hogy csak a 443-es port legyen szükséges. További információ: [hibrid identitás szükséges portok és protokollok](./reference-connect-ports.md). |
 | Ha az Internet Explorer fokozott biztonsága engedélyezve van, engedélyezze a megadott webhelyeket.  |Ha az Internet Explorer fokozott biztonsága engedélyezve van, engedélyezze a következő webhelyeket azon a kiszolgálón, amelyen az ügynököt telepíti:<br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>https: \/ /aadcdn.msftauth.net</li><li>Az Azure AD által megbízhatónak tartott szervezet összevonási kiszolgálója (például https: \/ /STS.contoso.com)</li> <br />További információ: [az Internet Explorer konfigurálása](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing). Ha a hálózatban van proxyja, akkor tekintse meg a tábla végén megjelenő megjegyzést.|
