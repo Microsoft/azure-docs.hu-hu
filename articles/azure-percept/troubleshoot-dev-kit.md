@@ -1,18 +1,18 @@
 ---
 title: Az Azure Percept DK és a IoT Edge általános problémáinak elhárítása
-description: Hibaelhárítási tippek a beléptetési folyamat során észlelt leggyakoribb problémák némelyikéhez
+description: Hibaelhárítási tippek az Azure Percept DK leggyakoribb problémáira
 author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: a6d099e8d267c9fe03e0bb676276e7a4ab8157ab
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 93812cf2b0db7fc3557e31c8d9e8053831c7b90f
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521526"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011000"
 ---
 # <a name="azure-percept-dk-dev-kit-troubleshooting"></a>Az Azure Percept DK (dev Kit) hibaelhárítása
 
@@ -28,7 +28,7 @@ A parancsok futtatásához
 Ha további elemzés céljából át szeretné irányítani a kimenetet egy. txt fájlba, használja a következő szintaxist:
 
 ```console
-[command] > [file name].txt
+sudo [command] > [file name].txt
 ```
 
 Ha a kimenetet egy. txt fájlba irányítja át, másolja a fájlt a gazdagép SZÁMÍTÓGÉPére SCP használatával:
@@ -47,13 +47,13 @@ További információ a Azure IoT Edge parancsokról: [Azure IoT Edge eszköz hi
 |Operációs rendszer                |```cat /etc/os-subrelease```      |származtatott rendszerkép verziójának bejelölése |
 |Operációs rendszer                |```cat /etc/adu-version```        |a ADU verziójának keresése |
 |Hőmérséklet       |```cat /sys/class/thermal/thermal_zone0/temp``` |fejlesztői készlet hőmérsékletének ellenõrzése |
-|Wi-Fi             |```journalctl -u hostapd.service``` |SoftAP-naplók keresése|
-|Wi-Fi             |```journalctl -u wpa_supplicant.service``` |Wi-Fi Services-naplók keresése |
-|Wi-Fi             |```journalctl -u ztpd.service```  |Wi-Fi Zero Touch kiépítési szolgáltatás naplófájljainak keresése |
-|Wi-Fi             |```journalctl -u systemd-networkd``` |a Mariner hálózati verem naplófájljainak keresése |
-|Wi-Fi             |```/data/misc/wifi/hostapd_virtual.conf``` |a WiFi hozzáférési pont konfigurációjának részleteinek megtekintése |
-|OOBE              |```journalctl -u oobe -b```       |OOBE-naplók keresése |
-|Telemetria         |```azure-device-health-id```      |egyedi telemetria megkeresése HW_ID |
+|Wi-Fi             |```sudo journalctl -u hostapd.service``` |SoftAP-naplók keresése|
+|Wi-Fi             |```sudo journalctl -u wpa_supplicant.service``` |Wi-Fi Services-naplók keresése |
+|Wi-Fi             |```sudo journalctl -u ztpd.service```  |Wi-Fi Zero Touch kiépítési szolgáltatás naplófájljainak keresése |
+|Wi-Fi             |```sudo journalctl -u systemd-networkd``` |a Mariner hálózati verem naplófájljainak keresése |
+|Wi-Fi             |```sudo cat /etc/hostapd/hostapd-wlan1.conf``` |a WiFi hozzáférési pont konfigurációjának részleteinek megtekintése |
+|OOBE              |```sudo journalctl -u oobe -b```       |OOBE-naplók keresése |
+|Telemetria         |```sudo azure-device-health-id```      |egyedi telemetria megkeresése HW_ID |
 |Azure IoT Edge          |```sudo iotedge check```          |konfigurációs és kapcsolati ellenőrzések futtatása gyakori problémák esetén |
 |Azure IoT Edge          |```sudo iotedge logs [container name]``` |Tekintse meg a tároló naplóit, például a beszéd-és a látási modulokat |
 |Azure IoT Edge          |```sudo iotedge support-bundle --since 1h``` |modul-naplók gyűjtése, Azure IoT Edge Security Manager-naplók, tároló-kezelő naplók, ```iotedge check``` JSON-kimenet és egyéb hasznos hibakeresési információk az elmúlt órában |
@@ -61,26 +61,26 @@ További információ a Azure IoT Edge parancsokról: [Azure IoT Edge eszköz hi
 |Azure IoT Edge          |```sudo systemctl restart iotedge``` |a Azure IoT Edge biztonsági démon újraindítása |
 |Azure IoT Edge          |```sudo iotedge list```           |az üzembe helyezett Azure IoT Edge modulok listázása |
 |Egyéb             |```df [option] [file]```          |a megadott fájlrendszer (ek) rendelkezésre álló/teljes területére vonatkozó információk megjelenítése |
-|Egyéb             |```ip route get 1.1.1.1```        |eszköz IP-címének és felületi adatainak megjelenítése |
-|Egyéb             |```ip route get 1.1.1.1 \| awk '{print $7}'``` <br> ```ifconfig [interface]``` |csak az eszköz IP-címének megjelenítése |
+|Egyéb             |`ip route get 1.1.1.1`        |eszköz IP-címének és felületi adatainak megjelenítése |
+|Egyéb             |<code>ip route get 1.1.1.1 &#124; awk '{print $7}'</code> <br> `ifconfig [interface]` |csak az eszköz IP-címének megjelenítése |
 
 
 A ```journalctl``` Wi-Fi parancsok a következő egyetlen paranccsal kombinálhatók:
 
 ```console
-journalctl -u hostapd.service -u wpa_supplicant.service -u ztpd.service -u systemd-networkd -b
+sudo journalctl -u hostapd.service -u wpa_supplicant.service -u ztpd.service -u systemd-networkd -b
 ```
 
 ## <a name="docker-troubleshooting-commands"></a>Docker hibaelhárítási parancsai
 
 |Parancs                        |Függvény                  |
 |--------------------------------|---------------------------|
-|```docker ps``` |[Megjeleníti, hogy mely tárolók futnak](https://docs.docker.com/engine/reference/commandline/ps/) |
-|```docker images``` |[Megjeleníti, hogy mely képek vannak az eszközön](https://docs.docker.com/engine/reference/commandline/images/)|
-|```docker rmi [image id] -f``` |[rendszerkép törlése az eszközről](https://docs.docker.com/engine/reference/commandline/rmi/) |
-|```docker logs -f edgeAgent``` <br> ```docker logs -f [module_name]``` |[a megadott modul tároló naplóit veszi át](https://docs.docker.com/engine/reference/commandline/logs/) |
-|```docker image prune``` |[az összes lógó kép eltávolítása](https://docs.docker.com/engine/reference/commandline/image_prune/) |
-|```watch docker ps``` <br> ```watch ifconfig [interface]``` |Docker-tároló letöltési állapotának keresése |
+|```sudo docker ps``` |[Megjeleníti, hogy mely tárolók futnak](https://docs.docker.com/engine/reference/commandline/ps/) |
+|```sudo docker images``` |[Megjeleníti, hogy mely képek vannak az eszközön](https://docs.docker.com/engine/reference/commandline/images/)|
+|```sudo docker rmi [image id] -f``` |[rendszerkép törlése az eszközről](https://docs.docker.com/engine/reference/commandline/rmi/) |
+|```sudo docker logs -f edgeAgent``` <br> ```sudo docker logs -f [module_name]``` |[a megadott modul tároló naplóit veszi át](https://docs.docker.com/engine/reference/commandline/logs/) |
+|```sudo docker image prune``` |[az összes lógó kép eltávolítása](https://docs.docker.com/engine/reference/commandline/image_prune/) |
+|```sudo watch docker ps``` <br> ```watch ifconfig [interface]``` |Docker-tároló letöltési állapotának keresése |
 
 ## <a name="usb-updating"></a>USB-frissítés
 

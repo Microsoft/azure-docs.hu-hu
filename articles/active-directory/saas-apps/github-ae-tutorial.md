@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 1d66396b2d97a7f33158f91025f5735c7714cd65
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 537378ef11333bd8942a61ab2bbb4e8a251c2b59
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221049"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103196874"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-ae"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a GitHub AE-vel
 
@@ -101,9 +101,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Kattintson a **csoportok kiválasztása** elemre, és keresse meg azt a **csoportot** , amelyhez be kívánja vonni ezt a jogcímet, ahol a tagjainak rendszergazdáknak kell lenniük a GHAE.
 
-1. Válassza ki a **forrás** **attribútumát** , és adja meg a **true** **értéket az értékhez**. 
+1. Válassza ki a **forrás** **attribútumát** , és adja meg a **true** (idézőjelek nélkül) **értéket az értékhez**. 
 
-10. Kattintson a **Mentés** gombra.
+1. Kattintson a **Mentés** gombra.
 
     ![jogcím kezelése](./media/github-ae-tutorial/administrator.png)
 
@@ -112,7 +112,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozása](common/certificateBase64.png)
+    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
 1. A **GITHUB AE beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények alapján.
 

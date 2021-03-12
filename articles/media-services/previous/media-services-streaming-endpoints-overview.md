@@ -3,7 +3,7 @@ title: A Azure Media Services streaming Endpoint áttekintése | Microsoft Docs
 description: Ez a cikk áttekintést nyújt Azure Media Services streaming-végpontokról.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 writer: juliako
 manager: femila
 editor: ''
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: f5e3d7e61b6c2a6ad3c121da9c0198c95ac24850
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 0961b52ebc7271fabf4cc05ed99eea23d911a2d4
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98694571"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009092"
 ---
 # <a name="streaming-endpoints-overview"></a>Folyamatos átviteli végpontok áttekintése  
 
@@ -80,9 +80,9 @@ Ha a **"1,0"** adatfolyam-végpont >= 1 Premium streaming Units (su), akkor a pr
 |Típus|StreamingEndpointVersion|ScaleUnits|Tartalomkézbesítési hálózat (CDN)|Számlázás|
 |--------------|----------|-----------------|-----------------|-----------------|
 |Klasszikus|1.0|0|NA|Ingyenes|
-|Standard streaming Endpoint (előzetes verzió)|2.0|0|Igen|Fizetős|
-|prémium streamelési egység|1.0|>0|Igen|Fizetős|
-|prémium streamelési egység|2.0|>0|Igen|Fizetős|
+|Standard streaming Endpoint (előzetes verzió)|2.0|0|Yes|Fizetős|
+|prémium streamelési egység|1.0|>0|Yes|Fizetős|
+|prémium streamelési egység|2.0|>0|Yes|Fizetős|
 
 ### <a name="features"></a>Funkciók
 
@@ -91,11 +91,11 @@ Szolgáltatás|Standard|Prémium
 Teljesítmény |Akár 600 Mbps, és a CDN használata esetén sokkal nagyobb hatékonyságot biztosít.|200 MB/s átviteli egység (SU). Sokkal nagyobb hatékonyságot biztosíthat a CDN használatakor.
 Tartalomkézbesítési hálózat (CDN)|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.
 A számlázás arányosan történik| Napi|Napi
-Dinamikus titkosítás|Igen|Igen
-Dinamikus csomagolás|Igen|Igen
+Dinamikus titkosítás|Igen|Yes
+Dinamikus csomagolás|Igen|Yes
 Méretezés|Automatikus méretezés a célként megadott átviteli sebességgel.|További folyamatos átviteli egységek.
-IP-szűrés/G20/egyéni gazdagép <sup>1</sup>|Igen|Igen
-Progresszív letöltés|Igen|Igen
+IP-szűrés/G20/egyéni gazdagép <sup>1</sup>|Igen|Yes
+Progresszív letöltés|Igen|Yes
 Ajánlott használat |A folyamatos átviteli forgatókönyvek túlnyomó többségét ajánljuk.|Professzionális használat. 
 
 <sup>1</sup> csak akkor használható közvetlenül a folyamatos átviteli végponton, ha a CDN nincs engedélyezve a végponton.<br/>
@@ -117,7 +117,7 @@ Prémium (CDN-vel/anélkül)|Standard különböző konfigurációval|Leállíto
 1,0-es verzió, SU >= 1 és CDN|Standard/CDN nélkül|Leállított állapotban  engedélyezett. Az **elindított** állapotban nem engedélyezett. A 1,0-es verziójú CDN törölve lesz, és a rendszer létrehoz és elindít egy újat.
 1,0-es verzió, SU >= 1 és CDN|Prémium/CDN nélkül|Leállított állapotban  engedélyezett. Az **elindított** állapotban nem engedélyezett. A klasszikus CDN törölve lesz, és a rendszer létrehoz és elindít egy újat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse át a Media Services képzési terveket.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

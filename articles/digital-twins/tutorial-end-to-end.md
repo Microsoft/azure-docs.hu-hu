@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 30b30697750a0b9068cfcde19ea4bf9c474f9ad9
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: aec60218774f3f8e293a5e5ab8c03707d117c2a0
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102424564"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634974"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Oktatóanyag: végpontok közötti megoldás kiépítése
 
@@ -120,6 +120,8 @@ Ekkor megnyílik a NuGet Package Manager. Válassza a *frissítések* fület, é
 Vissza a Visual Studio-ablakba, ahol a _**AdtE2ESample**_ -projekt meg van nyitva, keresse meg a _**SampleFunctionsApp**_ -projektet a *megoldáskezelő* ablaktáblán.
 
 [!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
+
+Ahhoz, hogy a Function alkalmazás hozzáférhessen az Azure digitális Twins-hoz, rendelkeznie kell egy, a rendszer által felügyelt identitással, amely jogosult az Azure Digital Twins-példány elérésére. Ezt követően állítsa be a következőt.
 
 ### <a name="assign-permissions-to-the-function-app"></a>Engedélyek kiosztása a Function alkalmazáshoz
 

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 02/12/2021
-ms.openlocfilehash: 055df9d2290ee445e2a7201acd374508a86e839f
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.date: 03/09/2021
+ms.openlocfilehash: 7796fc7e2032559ca3ff5c738c46fe025719942d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102213318"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556621"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Az Azure-erőforrásokhoz való hozzáférés hitelesítése felügyelt identitások használatával Azure Logic Apps
 
@@ -39,7 +39,6 @@ Jelenleg csak az Azure AD-OAuth támogató [beépített eseményindítók és m�
 * Azure Automation
 * Azure Event Grid
 * Azure Key Vault
-* Azure Monitor-naplók
 * Azure Resource Manager
 * HTTP az Azure AD-vel
 
@@ -472,7 +471,7 @@ Tegyük fel, hogy a [Pillanatkép-blob műveletet](/rest/api/storageservices/sna
 
 A pillanatkép- [blob művelet](/rest/api/storageservices/snapshot-blob)futtatásához a http-művelet a következő tulajdonságokat adja meg:
 
-| Tulajdonság | Kötelező | Példaérték | Description |
+| Tulajdonság | Kötelező | Példaérték | Leírás |
 |----------|----------|---------------|-------------|
 | **Metódus** | Yes | `PUT`| A pillanatkép-blob művelet által használt HTTP-metódus |
 | **URI** | Yes | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Egy Azure-Blob Storage fájl erőforrás-azonosítója az Azure globális (nyilvános) környezetében, amely ezt a szintaxist használja |

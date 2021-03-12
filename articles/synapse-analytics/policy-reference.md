@@ -1,18 +1,18 @@
 ---
 title: Beépített szabályzat-definíciók
 description: Felsorolja Azure Policy beépített szabályzat-definíciókat az Azure szinapszis Analytics szolgáltatáshoz. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 03/05/2021
+ms.date: 03/10/2021
 ms.topic: reference
 author: julieMSFT
 ms.author: jrasnick
 ms.service: synapse-analytics
 ms.custom: subject-policy-reference
-ms.openlocfilehash: d6ad2800c0a223248bfd74b728583e3650395d6d
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: f913179072786da73df39fe34c26b707d0073bbd
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102424792"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611546"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-synapse-analytics"></a>Az Azure szinapszis Analytics beépített definícióinak Azure Policy 
 

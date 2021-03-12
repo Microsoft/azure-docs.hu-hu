@@ -39,7 +39,7 @@
     - name: Egyéni .NET-deszerializáló létrehozása
       href: custom-deserializer.md
     - name: IoT Edge-feladat létrehozása
-      href: ../iot-edge/tutorial-deploy-stream-analytics.md?view=iotedge-2018-06
+      href: ../iot-edge/tutorial-deploy-stream-analytics.md
       maintainContext: true
 - name: Példák
   items:

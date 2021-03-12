@@ -1131,6 +1131,8 @@
           href: ./machine-learning/tutorial-cognitive-services-sentiment.md
         - name: Rendellenességek észlelése a Cognitive Services használatával
           href: ./machine-learning/tutorial-cognitive-services-anomaly.md
+        - name: Gépi tanulási alkalmazások készítése a Microsoft Machine Learning for Apache Spark (előzetes verzió) szolgáltatással
+          href: ./machine-learning/tutorial-build-applications-use-mmlspark.md
 - name: Adatkatalógus és adatgazdálkodás
   items:
     - name: Rövid útmutatók

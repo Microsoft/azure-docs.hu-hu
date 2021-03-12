@@ -2,18 +2,19 @@
 title: Oktatóanyag – a Linux rendszerű virtuális gépek vész-helyreállításának beállítása Azure Site Recovery
 description: Megtudhatja, hogyan állíthatja be a Linux rendszerű virtuális gépek vész-helyreállítását egy másik Azure-régióba az Azure Site Recovery szolgáltatás használatával.
 author: rayne-wiselman
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.subservice: recovery
 ms.topic: tutorial
 ms.date: 11/05/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d14d276c798e40d417a8038aee5b7550e84f4114
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: fa43f40d4849a8e773241fa17a1e1787ce86a8ff
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93380378"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564747"
 ---
 # <a name="tutorial-set-up-disaster-recovery-for-linux-virtual-machines"></a>Oktatóanyag: a Linux rendszerű virtuális gépek vész-helyreállításának beállítása
 
@@ -43,7 +44,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
     **Név** | **Nyilvános felhő** | **Kormányzati felhő** | **Részletek**
     --- | --- | --- | ---
-    Storage | `*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`| Adatok írása a virtuális gépről a forrás régióban lévő cache Storage-fiókba. 
+    Tárolás | `*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`| Adatok írása a virtuális gépről a forrás régióban lévő cache Storage-fiókba. 
     Azure AD  | `login.microsoftonline.com` | `login.microsoftonline.us`| Engedélyezés és hitelesítés Site Recovery szolgáltatás URL-címeire. 
     Replikáció | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`  |VM-kommunikáció a Site Recovery szolgáltatással. 
     Service Bus | `*.servicebus.windows.net` | `*.servicebus.usgovcloudapi.net` | A virtuális gép a figyelési és diagnosztikai adatSite Recoveryra ír. 

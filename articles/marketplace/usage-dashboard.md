@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: d898efb44bb92151a5d044a6699a4efb70fa9390
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 765f4f358d593cd5fcc021fbf4ec2276c422c4d8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215731"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555125"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>A Használat irányítópult a kereskedelmi piactér-elemzésekben
 
@@ -62,7 +62,7 @@ Kétféle használati idő létezik: a virtuális gép normalizált használata 
 
 Ez a szakasz az Azure Marketplace-en a használaton alapuló ajánlatok teljes használati idejét és trendjét tartalmazza. Az ajánlatok táblázatos normalizált használatát alább találja.
 
-- A **normalizált használat** a halmozott oszlopdiagram használatával megjeleníti az első 5 ajánlat normalizált használati idejének részletezését a kiválasztott számítási időszak alapján. Az első öt ajánlat egy gráfban jelenik meg, míg a REST az **összes** kategóriába van csoportosítva.
+- A **normalizált használat** a halmozott oszlopdiagram használatával megjeleníti az első öt ajánlat normalizált használati idejének részletezését a kiválasztott számítási időszak alapján. Az első öt ajánlat egy gráfban jelenik meg, míg a REST az **összes** kategóriába van csoportosítva.
 - A halmozott oszlopdiagram a kiválasztott dátumtartomány hónapról hónapra eső növekedési trendjét ábrázolja. A hónap oszlopai az ajánlatokban szereplő használati órákat jelölik az adott hónap legmagasabb használati idejével. A diagram a másodlagos Y tengelyen ábrázolt százalékos növekedési arányt ábrázolja.
 - A jelmagyarázatban megadott ajánlatokat kiválasztva csak a gráfban található ajánlatokat jelenítheti meg.
 
@@ -117,46 +117,45 @@ A **használat részletei** tábla a legnépszerűbb 1 000-használati rekordok 
 
 _**1. táblázat: az adatszótár kifejezése**_
 
-| Oszlop neve | Attribútum neve | Definíció |
-| ------------ | ------------- | ------------- |
-| Piactér-előfizetés azonosítója | Piactér-előfizetés azonosítója | Az Azure-előfizetéshez társított egyedi azonosító, amelyet az ügyfél a kereskedelmi Piactéri ajánlat megvásárlásához használt. Az azonosító korábban az Azure-előfizetés GUID-azonosítója volt. |
-| MonthStartDate | Hónap kezdő dátuma | A hónap kezdő dátuma a vásárlás hónapját jelöli. |
-| Ajánlat típusa | Ajánlat típusa | A kereskedelmi piactér kínálatának típusa. |
-| Azure-licenc típusa | Azure-licenc típusa | Az ügyfelek által az Azure megvásárlásához használt licencelési szerződés típusa. Más néven csatorna. Lehetséges értékek:<ui><li>Felhőszolgáltató</li><li>Enterprise</li><li>Enterprise a viszonteladón keresztül</li><li>Utólagos fizetés</li></ul> |
-| Marketplace-licenc típusa | Marketplace-licenc típusa | A kereskedelmi Piactéri ajánlat számlázási módszere. Lehetséges értékek:<ul><li>Az Azure-on keresztül számlázva</li><li>Saját licenc használata</li><li>Ingyenes</li><li>Microsoft mint viszonteladó</li></ul> |
-| Termékváltozat | Termékváltozat | Az ajánlattal társított csomag. |
-| Ügyfél országa | Ügyfél országa/régiója | Az ügyfél által megadott ország/régió neve. Az ország/régió eltérő lehet az ügyfél Azure-előfizetésében lévő országgal vagy régióval. |
-| Előzetes verziójú SKU | Előzetes verziójú SKU | Az érték azt jelzi, hogy az SKU-t "Preview"-ként jelölte-e meg. Az érték "yes" lesz, ha az SKU-t ennek megfelelően címkézték, és csak az Ön által jóváhagyott Azure-előfizetések telepíthetők és használhatók. Az érték "nem" lesz, ha az SKU nem "Preview"-ként lett azonosítva. |
-| SKU számlázási típusa | SKU számlázási típusa | Az ajánlatban szereplő egyes SKU-hoz társított számlázási típus. Lehetséges értékek:<ul><li>Ingyenes</li><li>Fizetős</li></ul> |
-| IsInternal | Elavult | Elavult |
-| Virtuális gép mérete | Virtuális gép mérete | A virtuális gépeken alapuló ajánlat típusok esetében ez az entitás az ajánlat SKU-jának megfelelő méretű virtuális gép méretét jelzi. |
-| Felhőbeli példány neve | Felhőbeli példány neve | Az a Microsoft Cloud, amelyben a virtuális gép üzembe helyezése megtörtént. |
-| ServicePlanName | Elavult | Elavult (ugyanaz a definíció, mint az SKU) |
-| Offer Name | Offer Name | A kereskedelmi Piactéri ajánlat neve. |
-| DeploymentMethod | Elavult | Elavult (ugyanaz a definíció, mint az ajánlat típusa)
- |
-| Ügyfél vállalatának neve | Ügyfél vállalatának neve | Az ügyfél által megadott cég neve. A név különbözhet az ügyfél Azure-előfizetésében szereplő névvel. |
-| Usage Date (Használat dátuma) | Usage Date (Használat dátuma) | A használati események generálásának dátuma a használati alapú eszközökhöz. |
-| IsMultisolution | Többmegoldásos | Azt jelzi, hogy az ajánlat egy többmegoldásos ajánlat típusa-e. |
-| Új ügyfél | Elavult | Elavult |
-| Alapvető méret | Alapvető méret | A VM-alapú ajánlathoz társított magok száma. |
-| Használati típus | Használati típus | Azt jelzi, hogy az ajánlathoz társított használati esemény a következők egyike-e:<ul><li>Normalizált használat</li><li>Nyers használat</li><li>Mért használat</li></ul> |
-| Próbaverzió befejezési dátuma | Próbaverzió befejezési dátuma | Az a dátum, ameddig a rendelés próbaidőszaka lejár vagy véget ér. |
-| Ügyfél pénzneme (CC) | Ügyfél pénzneme | Az ügyfél által a kereskedelmi Piactéri tranzakcióhoz használt pénznem. |
-| Ár (CC) | Ár | Az ügyfél pénznemében megjelenő SKU egységára. |
-| Kifizetési pénznem (PC) | Kifizetés pénzneme | A közzétevőt a közzétevő által konfigurált pénznemben az objektumhoz társított használati eseményekért kell fizetni. |
-| Becsült ár (PC) | Becsült ár | Az SKU egységének árát a közzétevő által konfigurált pénznemben. |
-| Használati útmutató | Használati útmutató | Egy összefűzött GUID-azonosító, amely a használati jelentés (kereskedelmi piactér-elemzésekben) a kifizetési tranzakciós jelentéssel való összekapcsolására szolgál. A használati segédlet a kifizetési tranzakciós jelentésben a Rendeléskód és a LineItemId kapcsolattal van összekötve. |
-| Használati egység | Használati egység | Az SKU-hoz társított felhasználási egység. |
-| Ügyfél-azonosító | Ügyfél-azonosító | Az ügyfélhez rendelt egyedi azonosító. Előfordulhat, hogy egy ügyfél nulla vagy több Azure Marketplace-előfizetéssel rendelkezik. |
-| Számlázási fiók azonosítója | Számlázási fiók azonosítója | Annak a fióknak az azonosítója, amelyre a számlázást létrehozták. A **Számlázási fiók azonosítójának** hozzárendelése a **Vevőkódhez** a kifizetési tranzakciós jelentés összekapcsolásához az ügyfél, a megrendelés és a használati jelentések segítségével. |
-| Használat mennyisége | Használat mennyisége | Az eszköz által az ügyfél által üzembe helyezett összes használati egység.<br>Ez a használat típusa elemen alapul. Ha például a használat típusa normalizált, akkor a használati mennyiség normalizált használatra szolgál. |
-| NormalizedUsage | Normalizált használat | Az eszköz által az ügyfél által üzembe helyezett összes normalizált használati egység.<br>A normalizált használati idő a virtuálisgép-magok számának ([virtuálisgép-magok száma] x [órányi nyers használat]) fiókban normalizált használati órákat határozza meg. A "SHAREDCORE" jelölésű virtuális gépek a 1/6 (vagy 0,1666) értéket használják [virtuálisgép-magok száma] szorzóként. |
-| MeteredUsage | Mért használat | Az ügyfél által üzembe helyezett ajánlattal konfigurált mérőszámok által felhasznált összes használati egység. |
-| RawUsage | Nyers használat | Az eszköz által az ügyfél által üzembe helyezett összes nyers használati egység.<br>A nyers használati órák határozzák meg, hogy mennyi idő alatt futnak a virtuális gépek a használati egységekben. |
-| Becsült kiterjesztett díj (CC) | Becsült kiterjesztett díj az ügyfél pénznemében | A használattal kapcsolatos díjakat jelzi. Az oszlop az ár (CC) és a nyers használat szorzata. |
-| Becsült kiterjesztett díj (PC) | Becsült meghosszabbított díj a kifizetési pénznemben | A használattal kapcsolatos díjakat jelzi. Az oszlop a becsült ár (számítógép) és a nyers használat szorzata. |
-|
+| Oszlop neve a (z)<br>felhasználói felület | Attribútum neve | Definíció | A programozott oszlop neve<br>hozzáférési jelentések |
+| ------------ | ------------- | ------------- | ------------- |
+| Piactér-előfizetés azonosítója | Piactér-előfizetés azonosítója | Az Azure-előfizetéshez társított egyedi azonosító, amelyet az ügyfél a kereskedelmi Piactéri ajánlat megvásárlásához használt. Az azonosító korábban az Azure-előfizetés GUID-azonosítója volt. | MarketplaceSubscriptionId |
+| MonthStartDate | Hónap kezdő dátuma | A hónap kezdő dátuma a vásárlás hónapját jelöli. | MonthStartDate |
+| Ajánlat típusa | Ajánlat típusa | A kereskedelmi piactér kínálatának típusa. | OfferType |
+| Azure-licenc típusa | Azure-licenc típusa | Az ügyfelek által az Azure megvásárlásához használt licencelési szerződés típusa. Más néven csatorna. Lehetséges értékek:<ui><li>Felhőszolgáltató</li><li>Enterprise</li><li>Enterprise a viszonteladón keresztül</li><li>Utólagos fizetés</li></ul> | AzureLicenseType |
+| Marketplace-licenc típusa | Marketplace-licenc típusa | A kereskedelmi Piactéri ajánlat számlázási módszere. Lehetséges értékek:<ul><li>Az Azure-on keresztül számlázva</li><li>Saját licenc használata</li><li>Ingyenes</li><li>Microsoft mint viszonteladó</li></ul> | MarketplaceLicenseType |
+| Termékváltozat | Termékváltozat | Az ajánlattal társított csomag. | Termékváltozat |
+| Ügyfél országa | Ügyfél országa/régiója | Az ügyfél által megadott ország/régió neve. Az ország/régió eltérő lehet az ügyfél Azure-előfizetésében lévő országgal vagy régióval. | CustomerCountry |
+| Előzetes verziójú SKU | Előzetes verziójú SKU | Az érték azt jelzi, hogy az SKU-t "Preview"-ként jelölte-e meg. Az érték "yes" lesz, ha az SKU-t ennek megfelelően címkézték, és csak az Ön által jóváhagyott Azure-előfizetések telepíthetők és használhatók. Az érték "nem" lesz, ha az SKU nem "Preview"-ként lett azonosítva. | IsPreviewSKU |
+| SKU számlázási típusa | SKU számlázási típusa | Az ajánlatban szereplő egyes SKU-hoz társított számlázási típus. Lehetséges értékek:<ul><li>Ingyenes</li><li>Fizetős</li></ul> | SKUBillingType |
+| IsInternal | Elavult | Elavult | Elavult |
+| Virtuális gép mérete | Virtuális gép mérete | A VM-alapú ajánlat típusok esetében ez az entitás az ajánlat SKU-jának megfelelő méretű virtuális gép méretét jelzi. | VMSize |
+| Felhőbeli példány neve | Felhőbeli példány neve | Az a Microsoft Cloud, amelyben a virtuális gép üzembe helyezése megtörtént. | CloudInstanceName |
+| ServicePlanName | Elavult | Elavult (ugyanaz a definíció, mint az SKU) | ServicePlanName |
+| Offer Name | Offer Name | A kereskedelmi Piactéri ajánlat neve. | OfferName |
+| DeploymentMethod | Elavult | Elavult (ugyanaz a definíció, mint az ajánlat típusa) | DeploymentMethod |
+| Ügyfél vállalatának neve | Ügyfél vállalatának neve | Az ügyfél által megadott cég neve. A név különbözhet az ügyfél Azure-előfizetésében szereplő névvel. | CustomerCompanyName |
+| Usage Date (Használat dátuma) | Usage Date (Használat dátuma) | A használati események generálásának dátuma a használati alapú eszközökhöz. | UsageDate |
+| IsMultisolution | Többmegoldásos | Azt jelzi, hogy az ajánlat egy többmegoldásos ajánlat típusa-e. | IsMultisolution |
+| Új ügyfél | Elavult | Elavult | IsNewCustomer |
+| Alapvető méret | Alapvető méret | A VM-alapú ajánlathoz társított magok száma. | Méretezés |
+| Használati típus | Használati típus | Azt jelzi, hogy az ajánlathoz társított használati esemény a következők egyike-e:<ul><li>Normalizált használat</li><li>Nyers használat</li><li>Mért használat</li></ul> | Usagetype értékre |
+| Próbaverzió befejezési dátuma | Próbaverzió befejezési dátuma | Az a dátum, ameddig a rendelés próbaidőszaka lejár vagy véget ér. | TrialEndDate |
+| Ügyfél pénzneme (CC) | Ügyfél pénzneme | Az ügyfél által a kereskedelmi Piactéri tranzakcióhoz használt pénznem. | CustomerCurrencyCC |
+| Ár (CC) | Ár | Az ügyfél pénznemében megjelenő SKU egységára. | PriceCC |
+| Kifizetési pénznem (PC) | Kifizetés pénzneme | A közzétevőt a közzétevő által konfigurált pénznemben az objektumhoz társított használati eseményekért kell fizetni. | PayoutCurrencyPC |
+| Becsült ár (PC) | Becsült ár | Az SKU egységének árát a közzétevő által konfigurált pénznemben. | EstimatedPricePC |
+| Használati útmutató | Használati útmutató | Egy összefűzött GUID-azonosító, amely a használati jelentés (kereskedelmi piactér-elemzésekben) a kifizetési tranzakciós jelentéssel való összekapcsolására szolgál. A használati segédlet a kifizetési tranzakciós jelentésben a Rendeléskód és a LineItemId kapcsolattal van összekötve. | UsageReference |
+| Használati egység | Használati egység | Az SKU-hoz társított felhasználási egység. | UsageUnit |
+| Ügyfél-azonosító | Ügyfél-azonosító | Az ügyfélhez rendelt egyedi azonosító. Előfordulhat, hogy egy ügyfél nulla vagy több Azure Marketplace-előfizetéssel rendelkezik. | CustomerId |
+| Számlázási fiók azonosítója | Számlázási fiók azonosítója | Annak a fióknak az azonosítója, amelyre a számlázást létrehozták. A **Számlázási fiók azonosítójának** hozzárendelése a **Vevőkódhez** a kifizetési tranzakciós jelentés összekapcsolásához az ügyfél, a megrendelés és a használati jelentések segítségével. | BillingAccountId |
+| Használat mennyisége | Használat mennyisége | Az ügyfél által üzembe helyezett eszköz által felhasznált teljes használati egység.<br>Ez a használat típusa elemen alapul. Ha például a használat típusa normalizált, akkor a használati mennyiség normalizált használatra szolgál. | UsageQuantity |
+| NormalizedUsage | Normalizált használat | Az ügyfél által üzembe helyezett eszköz által felhasznált összes normalizált használati egység.<br>A normalizált használati idő a virtuálisgép-magok számának ([virtuálisgép-magok száma] x [órányi nyers használat]) fiókban normalizált használati órákat határozza meg. A "SHAREDCORE" jelölésű virtuális gépek a 1/6 (vagy 0,1666) értéket használják [virtuálisgép-magok száma] szorzóként. | NormalizedUsage |
+| MeteredUsage | Mért használat | Az ügyfél által üzembe helyezett ajánlattal konfigurált mérőszámok által felhasznált összes használati egység. | MeteredUsage |
+| RawUsage | Nyers használat | Az ügyfél által üzembe helyezett eszköz által felhasznált összes nyers használati egység.<br>A nyers használati órák határozzák meg, hogy mennyi idő alatt futnak a virtuális gépek a használati egységekben. | RawUsage |
+| Becsült kiterjesztett díj (CC) | Becsült kiterjesztett díj az ügyfél pénznemében | A használattal kapcsolatos díjakat jelzi. Az oszlop az ár (CC) és a használati mennyiség szorzata. | EstimatedExtendedChargeCC |
+| Becsült kiterjesztett díj (PC) | Becsült meghosszabbított díj a kifizetési pénznemben | A használattal kapcsolatos díjakat jelzi. Az oszlop a becsült ár (számítógép) és a használati mennyiség szorzata. | EstimatedExtended ChargePC |
+|||||
 
 ### <a name="usage-page-filters"></a>Használati oldal szűrői
 

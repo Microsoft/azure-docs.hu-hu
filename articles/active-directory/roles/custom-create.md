@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba8ecf5442ea3da6db02335520eef3856ea48c62
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 0e0e1543f18c18c7fdf97c39f35ba38ded658392
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740159"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103007817"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Egyéni szerepkör létrehozása és társítása Azure Active Directory
 
@@ -58,18 +58,18 @@ Először [le kell töltenie az Azure ad Preview PowerShell-modult](https://www.
 Az Azure AD PowerShell-modul telepítéséhez használja az alábbi parancsokat:
 
 ``` PowerShell
-install-module azureadpreview 
-import-module azureadpreview 
+Install-Module -Name AzureADPreview 
+Import-Module -Name AzureADPreview 
 ```
 
 A következő parancs használatával ellenőrizheti, hogy a modul használatra kész-e:
 
 ``` PowerShell
-get-module azureadpreview 
+Get-Module -Name AzureADPreview 
 
   ModuleType Version      Name                         ExportedCommands 
   ---------- ---------    ----                         ---------------- 
-  Binary     2.0.0.115    azureadpreview               {Add-AzureADAdministrati...} 
+  Binary     2.0.0.115    AzureADPreview               {Add-AzureADAdministrati...} 
 ```
 
 ### <a name="connect-to-azure"></a>Csatlakozás az Azure szolgáltatáshoz
@@ -188,7 +188,7 @@ A beépített szerepkörökhöz hasonlóan az egyéni szerepkörök alapértelme
 1. Válassza ki a szerepkört a **hozzárendelések** lap megnyitásához.
 1. Felhasználó hozzáadásához válassza a **hozzárendelés hozzáadása** lehetőséget. A felhasználó csak a kiválasztott alkalmazás regisztrációja után kap engedélyeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Nyugodtan ossza meg velünk az [Azure ad rendszergazdai szerepkörökkel foglalkozó fórumát](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
 - A szerepkörökkel és a rendszergazdai szerepkör-hozzárendeléssel kapcsolatos további információkért lásd: [rendszergazdai szerepkörök hozzárendelése](permissions-reference.md).

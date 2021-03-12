@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: facdb99a49c3778a75e733abf1fc72eed67549ab
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 59246c3739ad4de27e65641cc9d2154b33a6ee5e
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102611614"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008433"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>API-összekötő hozzáadása egy regisztrációs felhasználói folyamathoz (előzetes verzió)
 
@@ -61,9 +61,9 @@ Azure App Service és Azure Functions esetén tekintse meg a [TLS kölcsönös h
 Javasoljuk, hogy emlékeztető riasztásokat állítson be, amikor a tanúsítvány lejár. Új tanúsítvány meglévő API-összekötőbe való feltöltéséhez válassza ki az API-összekötőt az API-összekötők **(előzetes verzió)** területen, majd kattintson az **új tanúsítvány feltöltése** elemre. A legutóbb feltöltött tanúsítvány, amely nem járt le, és a Azure AD B2C automatikusan a kezdő dátumot fogja használni.
 
 ### <a name="api-key"></a>API-kulcs
-Egyes szolgáltatások "API-kulcs" mechanizmus használatával nehezítik a HTTP-végpontok elérését a fejlesztés során. A [Azure functions](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)a `code` **végpont URL-címében** a as a lekérdezési paraméterrel is elvégezhető. Például: `https://contoso.azurewebsites.net/api/endpoint` <b>`?code=0123456789`</b> ). 
+Egyes szolgáltatások "API-kulcs" mechanizmust használnak a HTTP-végpontokhoz való hozzáféréshez a fejlesztés során. A [Azure functions](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)a `code` **végpont URL-címében** a as a lekérdezési paraméterrel is elvégezhető. Például: `https://contoso.azurewebsites.net/api/endpoint` <b>`?code=0123456789`</b> ). 
 
-Ez nem olyan mechanizmus, amelyet csak éles környezetben lehet használni. Ezért az alapszintű vagy a Tanúsítványos hitelesítés konfigurálására mindig szükség van. Ha a hitelesítési módszereket (nem javasolt) fejlesztési célokra szeretné megvalósítani, válassza az egyszerű hitelesítést, és használja az ideiglenes értékeket, `username` valamint `password` azt, hogy az API figyelmen kívül hagyhatja az engedélyezést az API-ban.
+Ez nem olyan mechanizmus, amelyet csak éles környezetben lehet használni. Ezért az alapszintű vagy a Tanúsítványos hitelesítés konfigurálására mindig szükség van. Ha nem kívánja megvalósítani a hitelesítési módszereket (nem ajánlott) fejlesztési célokra, válassza az egyszerű hitelesítést, és használja az ideiglenes értékeket, `username` valamint `password` azt, hogy az API figyelmen kívül hagyhatja az engedélyezést az API-ban.
 
 ## <a name="the-request-sent-to-your-api"></a>Az API-nak továbbított kérelem
 Az API-összekötők **http post** -kérelemként valósulnak meg, felhasználói attribútumok ("jogcímek") küldésével kulcs-érték párokként egy JSON-törzsben. Az attribútumok a [Microsoft Graph](/graph/api/resources/user#properties) felhasználó tulajdonságaihoz hasonlóan lesznek szerializálva. 

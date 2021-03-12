@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1
-ms.openlocfilehash: ab7a74166e85f2ba9fd73e7323cf9cd200cf32e4
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 4194c71823e1affde1dcae47fd7e64668b57c0cf
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031028"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149358"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Számítási célok létrehozása a modell betanításához és üzembe helyezéséhez Azure Machine Learning Studióban
 
@@ -132,7 +132,7 @@ Hozzon létre vagy csatoljon egy Azure Kubernetes Service-(ak-) fürtöt a nagy 
 |---------|---------|
 |Számítási név     |  <li>A név megadása kötelező. A névnek 2 és 16 karakter közöttinek kell lennie. </li><li>Az érvényes karakterek a kis-és nagybetűk, a számjegyek és a karakterek  **-** .</li><li>A névnek betűvel kell kezdődnie</li><li>A névnek egyedinek kell lennie az Azure-régióban lévő összes számításban. Ha a választott név nem egyedi, akkor riasztás jelenik meg.</li><li>Ha **-**  a karakter használatban van, akkor a névben legalább egy betűt kell követnie.</li>     |
 |Kubernetes Service | Válassza az **új létrehozása** lehetőséget, és töltse ki a többi űrlapot.  Vagy válassza a **meglévő használata** lehetőséget, majd válasszon ki egy meglévő AK-fürtöt az előfizetésből.
-|Régió |  Válassza ki azt a régiót, ahol a fürtöt létre kívánja hozni |
+|Region |  Válassza ki azt a régiót, ahol a fürtöt létre kívánja hozni |
 |Virtuális gép mérete     |  A támogatott virtuálisgép-méretek a régióban korlátozottak lehetnek. Tekintse meg a [rendelkezésre állási listát](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
 |Fürt célja  | **Éles** vagy **fejlesztési-tesztelési** lehetőség kiválasztása |
 |Csomópontok száma | A virtuális gép (vCPU) által megszorozott csomópontok száma nem lehet nagyobb, mint 12. |
@@ -147,7 +147,7 @@ A [fenti lépések](#portal-create) végrehajtásával csatolhat egy számítás
 
 1. Adja meg a számítási cél nevét. 
 1. Válassza ki a csatolni kívánt számítási típust. Nem minden számítási típus csatlakoztatható Azure Machine Learning studióból. A képzéshez jelenleg használható számítási típusok a következők:
-    * Egy távoli virtuális gép
+    * Azure-beli virtuális gép (Data Science Virtual Machine csatlakoztatásához)
     * Azure Databricks (gépi tanulási folyamatokban való használatra)
     * Azure Data Lake Analytics (gépi tanulási folyamatokban való használatra)
     * Azure HDInsight

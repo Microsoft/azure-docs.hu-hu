@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e82be52cff824c69dd2fe4ea5e7e1c0d7489be1d
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 49f2c290c69fcadd594d6cbd5879e7d9f5304a42
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740329"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558015"
 ---
 # <a name="administrative-units-in-azure-active-directory"></a>Felügyeleti egységek a Azure Active Directory
 
@@ -47,8 +47,8 @@ A felügyeleti egységek használatához prémium szintű Azure Active Directory
 A felügyeleti egységeket a Azure Portal, a PowerShell-parancsmagok és a parancsfájlok használatával, vagy Microsoft Graph kezelheti. További információkért lásd:
 
 - [Szerepkörök létrehozása, eltávolítása, feltöltése és hozzáadása a felügyeleti egységekhez](admin-units-manage.md): teljes körű útmutató eljárásokat tartalmaz.
-- [Munka a felügyeleti egységekkel](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true): azt ismerteti, hogyan használhatók a felügyeleti egységek a PowerShell használatával.
-- [Felügyeleti egység Graph-támogatás](/graph/api/resources/administrativeunit?view=graph-rest-1.0&preserve-view=true): részletes dokumentációt biztosít a Microsoft Graph felügyeleti egységekhez.
+- [Munka a felügyeleti egységekkel](/powershell/azure/active-directory/working-with-administrative-units): azt ismerteti, hogyan használhatók a felügyeleti egységek a PowerShell használatával.
+- [Felügyeleti egység Graph-támogatás](/graph/api/resources/administrativeunit): részletes dokumentációt biztosít a Microsoft Graph felügyeleti egységekhez.
 
 ### <a name="plan-your-administrative-units"></a>A felügyeleti egységek megtervezése
 
@@ -79,7 +79,7 @@ A következő szakaszok ismertetik a felügyeleti egységek jelenlegi támogatá
 
 ### <a name="administrative-unit-management"></a>Felügyeleti egység kezelése
 
-| Engedélyek |   Gráf/PowerShell   | Azure AD-portál | Microsoft 365 Felügyeleti központ |
+| Engedélyek |   Gráf/PowerShell   | Azure AD-portál | Microsoft 365 felügyeleti központ |
 | --- | --- | --- | --- |
 | Felügyeleti egységek létrehozása és törlése   |    Támogatott    |   Támogatott   |    Nem támogatott |
 | Felügyeleti egység tagjainak egyenkénti hozzáadása és eltávolítása    |   Támogatott    |   Támogatott   |    Nem támogatott |
@@ -89,7 +89,7 @@ A következő szakaszok ismertetik a felügyeleti egységek jelenlegi támogatá
 
 ### <a name="user-management"></a>Felhasználókezelés
 
-| Engedélyek |   Gráf/PowerShell   | Azure AD-portál | Microsoft 365 Felügyeleti központ |
+| Engedélyek |   Gráf/PowerShell   | Azure AD-portál | Microsoft 365 felügyeleti központ |
 | --- | --- | --- | --- |
 | Felügyeleti egység – a felhasználói tulajdonságok, jelszavak és licencek hatókörön belüli kezelése   |    Támogatott     |  Támogatott   |   Támogatott |
 | Felügyeleti egység – a felhasználói bejelentkezések hatókörének blokkolása és feloldása    |   Támogatott   |    Támogatott   |    Támogatott |
@@ -97,14 +97,14 @@ A következő szakaszok ismertetik a felügyeleti egységek jelenlegi támogatá
 
 ### <a name="group-management"></a>Csoportkezelés
 
-| Engedélyek |   Gráf/PowerShell   | Azure AD-portál | Microsoft 365 Felügyeleti központ |
+| Engedélyek |   Gráf/PowerShell   | Azure AD-portál | Microsoft 365 felügyeleti központ |
 | --- | --- | --- | --- |
 | Felügyeleti egység – a csoport tulajdonságainak és tagjainak hatókörön belüli kezelése     |  Támogatott   |    Támogatott    |  Nem támogatott |
 | Felügyeleti egység – a csoportos licencelés hatókörön belüli kezelése   |    Támogatott  |    Támogatott   |   Nem támogatott |
 
 A felügyeleti egységek hatóköre csak a felügyeleti engedélyekre vonatkozik. Nem akadályozzák meg, hogy a tagok vagy a rendszergazdák az [alapértelmezett felhasználói engedélyeiket](../fundamentals/users-default-permissions.md) használják a felügyeleti egységen kívüli más felhasználók, csoportok vagy erőforrások tallózására. A Microsoft 365 felügyeleti központban a hatókörön kívüli rendszergazda felügyeleti egységeken kívüli felhasználók ki vannak szűrve. Más felhasználók azonban az Azure AD-portálon, a PowerShellben és más Microsoft-szolgáltatásokban is tallózhatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felügyeleti egységek kezelése](admin-units-manage.md)
 - [Felhasználók kezelése felügyeleti egységekben](admin-units-add-manage-users.md)

@@ -6,14 +6,14 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: afe14bc03f0d12e56e1512aeb788a77c64151b58
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7f98e14c2eae133941f3fc87247a427198ebcdc2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547248"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611963"
 ---
-# <a name="best-practices-for-building-an-application-with-azure-database-for-mysql"></a>Ajánlott eljárások alkalmazások létrehozásához Azure Database for MySQL 
+# <a name="best-practices-for-building-an-application-with-azure-database-for-mysql"></a>Ajánlott eljárások az Azure Database for MySQL-lel történő alkalmazásfejlesztéshez 
 
 Íme néhány ajánlott eljárás, amely segítséget nyújt egy felhőalapú alkalmazás létrehozásában Azure Database for MySQL használatával. Ezek az ajánlott eljárások csökkenthetik az alkalmazás fejlesztési idejét. 
 
@@ -73,10 +73,10 @@ A feladatátvételi forgatókönyvekhez használhatja a [felhőbe irányuló rep
 
 A forrás és a replika közötti késés tapasztalható, mert a replikáció aszinkron módon történik. A hálózati késést számos tényező befolyásolja, például a forráskiszolgálón futó munkaterhelés mérete, valamint az adatközpontok közötti késleltetés. A legtöbb esetben a replika késése néhány másodperctől pár percig terjed.
 
-## <a name="database-deployment"></a>Adatbázis központi telepítése 
+## <a name="database-deployment"></a>Adatbázis üzembe helyezése 
 
 ### <a name="configure-an-azure-database-for-mysql-task-in-your-cicd-deployment-pipeline"></a>Azure Database for MySQL-feladat konfigurálása a CI/CD üzembe helyezési folyamatában
-Alkalmanként az adatbázis módosításait kell telepítenie. Ilyen esetekben a folyamatos integráció (CI) és a folyamatos kézbesítés (CD) az [Azure-folyamatokon](https://azure.microsoft.com/services/devops/pipelines/) keresztül végezhető el, és a [MySQL-kiszolgáló](/azure/devops/pipelines/tasks/deploy/azure-mysql-deployment?view=azure-devops&preserve-view=true) feladatával frissítheti az adatbázist úgy, hogy egyéni parancsfájlt futtat.
+Alkalmanként az adatbázis módosításait kell telepítenie. Ilyen esetekben a folyamatos integráció (CI) és a folyamatos kézbesítés (CD) az [Azure-folyamatokon](https://azure.microsoft.com/services/devops/pipelines/) keresztül végezhető el, és a [MySQL-kiszolgáló](/azure/devops/pipelines/tasks/deploy/azure-mysql-deployment) feladatával frissítheti az adatbázist úgy, hogy egyéni parancsfájlt futtat.
 
 ### <a name="use-an-effective-process-for-manual-database-deployment"></a>Hatékony folyamat használata az adatbázis manuális telepítéséhez 
 Az adatbázis kézi üzembe helyezése során az alábbi lépéseket követve minimalizálhatja az állásidőt, vagy csökkentheti a sikertelen üzembe helyezés kockázatát: 

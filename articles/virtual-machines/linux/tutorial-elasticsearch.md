@@ -1,24 +1,25 @@
 ---
 title: Az ElasticSearch telepítése egy fejlesztési virtuális gépre Azure-ban
 description: Oktatóanyag – Az Elastic Stack telepítése egy fejlesztési célú linuxos virtuális gépre az Azure-ban
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: virtual-machines
 author: rloutlaw
 manager: justhe
 tags: azure-resource-manager
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 10/11/2017
 ms.author: routlaw
-ms.openlocfilehash: 54ef051b7d8778e2eecd85bef2e57b62239ba114
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: b3213d7de9aee88486fa1db1388c51948fbde430
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435314"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557811"
 ---
 # <a name="install-the-elastic-stack-on-an-azure-vm"></a>Az Elastic Stack telepítése egy Azure-beli virtuális gépen
 
@@ -39,7 +40,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 - Ehhez a cikkhez az Azure CLI 2.0.4 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. 
 
@@ -234,7 +235,7 @@ A Kibana-konzolon a **Discover** (Felderítés) elemet választva kereshet és t
 
 ![Rendszernapló-események tallózása a Kibanában](media/elasticsearch-install/kibana-search-filter.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban telepítette az Elastic Stacket egy fejlesztési célú virtuális gépre az Azure-ban. Megtanulta végrehajtani az alábbi műveleteket:
 

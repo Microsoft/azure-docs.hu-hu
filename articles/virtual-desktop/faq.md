@@ -3,15 +3,15 @@ title: Windows rendszerű virtuális asztali GYIK – Azure
 description: Gyakori kérdések és ajánlott eljárások a Windows rendszerű virtuális asztali gépekhez.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 10/15/2020
+ms.date: 03/09/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3bdb38b8a9590cf6191c75fdef024543c2b1c190
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8592b679fcfbb860962bf75b882dc1a0543412c0
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720273"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613969"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows Virtual Desktop – gyakori kérdések
 
@@ -140,3 +140,22 @@ Végül, ha engedélyezte az erőforrás-szolgáltatót a CSP tulajdonosi fiókj
 ## <a name="how-often-should-i-turn-my-vms-on-to-prevent-registration-issues"></a>Milyen gyakran kell bekapcsolni a virtuális gépeket a regisztrációs problémák megelőzésére?
 
 Miután regisztrált egy virtuális gépet a Windows Virtual Desktop szolgáltatásban található gazdagép-készletbe, az ügynök rendszeresen frissíti a virtuális gép tokenjét, amikor a virtuális gép aktív. A regisztrációs jogkivonat tanúsítványa 90 napig érvényes. A 90 napos korlát miatt javasoljuk, hogy a virtuális gépeket minden 90 nap alatt indítsa el. A virtuális gép ezen időtartamon belüli bekapcsolásával megakadályozhatja a regisztrációs token lejáratát vagy érvénytelenné válását. Ha 90 nap elteltével kezdte meg a virtuális gépet, és regisztrációs problémákat tapasztal, kövesse a [Windows rendszerű virtuális asztali ügynök hibaelhárítási útmutatójának](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved) utasításait a virtuális gép a gazdagépről való eltávolításához, telepítse újra az ügynököt, és regisztrálja újra a készletbe.
+
+## <a name="can-i-set-availability-options-when-creating-host-pools"></a>Megadhatok rendelkezésre állási beállításokat a gazdagépek létrehozásakor?
+
+Igen. A Windows rendszerű virtuális asztali gazdagépek lehetőséget biztosítanak a rendelkezésre állási csoport vagy a rendelkezésre állási zónák kiválasztására a virtuális gépek létrehozásakor. Ezek a rendelkezésre állási lehetőségek ugyanazok, mint az Azure számítási felhasználása. Ha kijelöl egy zónát a virtuális géphez, amelyet a gazdagépen hoz létre, a beállítás automatikusan az adott zónában létrehozott összes virtuális gépre érvényes lesz. Ha inkább több zónában szeretné terjeszteni a gazdagép-készletet, akkor a [virtuális gépek hozzáadása a Azure Portalhoz](expand-existing-host-pool.md#add-virtual-machines-with-the-azure-portal) című témakör útmutatását követve manuálisan ki kell választania egy új zónát minden létrehozott új virtuális géphez.
+
+## <a name="which-availability-option-is-best-for-me"></a>Melyik rendelkezésre állási lehetőség a legjobb számomra?
+
+A virtuális gépekhez használni kívánt rendelkezésre állási beállítás a rendszerkép helyétől és a felügyelt lemez mezőitől függ. A következő táblázat ismerteti az egyes beállításokhoz tartozó kapcsolatokat, amelyek segítenek kideríteni, hogy melyik lehetőség a legmegfelelőbb a telepítéshez. 
+
+| Rendelkezésre állási beállítás | Rendszerkép helye | Felügyelt lemez lehetőség gombjának használata (választógomb) |
+|---|---|---|
+| Nincs | Katalógus | Alapértelmezés szerint letiltva az "igen" értékkel |
+| Nincs | Blob Storage | Engedélyezve a "nem" beállítással alapértelmezettként |
+| A rendelkezésre állási zóna | Katalógus (blob Storage-beállítás letiltva) | Alapértelmezés szerint letiltva az "igen" értékkel |
+| Rendelkezésre állási csoport felügyelt SKU-val (felügyelt lemez) | Katalógus | Alapértelmezés szerint letiltva az "igen" értékkel |
+| Rendelkezésre állási csoport felügyelt SKU-val (felügyelt lemez) | Blob Storage | Engedélyezve a "nem" beállítással alapértelmezettként |
+| Rendelkezésre állási csoport felügyelt SKU-val (felügyelt lemez) | BLOB Storage (a katalógus lehetőség le van tiltva) | Alapértelmezés szerint letiltva a "nem" értékkel |
+| Rendelkezésre állási csoport (újonnan létrehozott felhasználó) | Katalógus | Alapértelmezés szerint letiltva az "igen" értékkel |
+| Rendelkezésre állási csoport (újonnan létrehozott felhasználó) | Blob Storage | Engedélyezve a "nem" beállítással alapértelmezettként |

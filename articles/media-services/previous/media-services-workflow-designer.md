@@ -3,7 +3,7 @@ title: Speciális kódolási munkafolyamatok létrehozása a Munkafolyamat-terve
 description: Ismerje meg, hogyan hozhat létre speciális kódolási munkafolyamatokat a Munkafolyamat-tervezővel.
 services: media-services
 documentationcenter: ''
-author: anilmur
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 004815f2-0761-4706-87a1-675ba36e0322
@@ -12,23 +12,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 3/10/2021
 ms.author: anilmur
 ms.reviewer: juliako;johndeu
-ms.openlocfilehash: a53027ec1f775c240164f67e7ee0473a44690964
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8173da37792948e267aae2078fee9f864bf7bdc9
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262685"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011153"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Speciális kódolási munkafolyamatok létrehozása a munkafolyamat-tervezővel
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 ## <a name="overview"></a>Áttekintés
-A **munkafolyamat-tervező** egy olyan Windows asztali eszköz, amellyel egyéni munkafolyamatokat tervezhet és hozhat létre **Media Encoder Premium workflow**használatával történő kódoláshoz.
-A Munkafolyamat-tervező eszköz erejével megtervezheti és létrehozhatja azokat a komplex munkafolyamatokat, amelyek a **Media Encoder Premium**szolgáltatásban futnak.  
+A **munkafolyamat-tervező** egy olyan Windows asztali eszköz, amellyel egyéni munkafolyamatokat tervezhet és hozhat létre **Media Encoder Premium workflow** használatával történő kódoláshoz.
+A Munkafolyamat-tervező eszköz erejével megtervezheti és létrehozhatja azokat a komplex munkafolyamatokat, amelyek a **Media Encoder Premium** szolgáltatásban futnak.  
 
 A munkafolyamatok magukban foglalhatják az ügyfelek döntési logikáját és az elágazást a bemeneti forrásfájl tulajdonságai alapján. Overridable-tulajdonságokkal és dinamikus értékekkel rendelkező munkafolyamatokat hozhat létre, hogy a legbonyolultabb kódolási feladatok könnyen ismételhetők és testreszabhatók legyenek a felhőben.
 
@@ -53,7 +53,7 @@ A következő videók bemutatják, hogyan használhatja a tervezőt.
 1. nap videó:
 
 * A Designer áttekintése
-* Alapszintű munkafolyamatok – "„Helló világ!” alkalmazás"
+* Alapszintű munkafolyamatok – "Hello World"
 * Több kimeneti MP4-fájl létrehozása Azure Media Services streamingtel való használatra
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-1/player]

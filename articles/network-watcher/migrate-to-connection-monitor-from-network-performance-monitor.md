@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: e95f6fdff164a6f5f9d4af4f19b1876d1483a70c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 998b0cb04d465f675423e2472a7ca8c6441b1fed
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038713"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010405"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Migrálás a Network Performance Monitorről a kapcsolódási figyelőbe
 
@@ -37,6 +37,9 @@ Az áttelepítés a következő eredményeket segíti elő:
 * Adatfigyelés:
    * **Log Analyticsban tárolt adatértékek**: az áttelepítés előtt az adatterület abban a munkaterületen marad, amelyben a NPM a NetworkMonitoring táblában van konfigurálva. Az áttelepítés után az adatelérési pont a NetworkMonitoring táblára, a NWConnectionMonitorTestResult táblára és a NWConnectionMonitorPathResult táblára kerül ugyanabban a munkaterületen. Miután a tesztek le vannak tiltva a NPM-ben, az adattárolást csak a NWConnectionMonitorTestResult tábla és a NWConnectionMonitorPathResult táblában tárolja a rendszer.
    * **Napló alapú riasztások, irányítópultok és integrációk**: manuálisan kell szerkesztenie a lekérdezéseket az új NWConnectionMonitorTestResult tábla és NWConnectionMonitorPathResult tábla alapján. A riasztások a mérőszámokban való újbóli létrehozásával kapcsolatban lásd: [hálózati kapcsolat figyelése a kapcsolat figyelője szolgáltatással](./connection-monitor-overview.md#metrics-in-azure-monitor).
+* ExpressRoute-figyelés esetén:
+    * **Végpontok közötti veszteség és késés**: a kapcsolódási figyelő ezt a lehetőséget fogja biztosítani, és könnyebb, mint a NPM, mivel a felhasználóknak nem kell konfigurálniuk a figyelni kívánt áramköröket és társításokat. Az elérési útban lévő áramkörök automatikusan fel lesznek derítve, az adatok metrikákban lesznek elérhetők (amely a NPM tárolt eredményeknél nagyobb, mint LA). A topológia ugyanúgy fog működni.
+    * **Sávszélesség-mérések**: a NPM log Analytics-alapú megközelítése nem volt hatékony a sávszélesség-figyelésben a ExpressRoute ügyfelek számára. Ez a funkció mostantól nem érhető el a Csatlakozáskezelőben.
     
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -60,7 +63,7 @@ Az áttelepítés megkezdése után a következő módosítások lépnek érvén
    * Régiónként egy figyelőt hoznak létre. Helyszíni ügynökökkel végzett tesztek esetén az új figyelő neve a következő lesz: `<workspaceName>_"workspace_region_name"` . Az Azure-ügynökökkel végzett tesztek esetében az új figyelő neve a következő lesz: `<workspaceName>_<Azure_region_name>` .
    * A figyelési adattárolási szolgáltatás jelenleg ugyanazon a Log Analytics munkaterületen található, amelyben a NPM engedélyezve van, az új táblákban, a NWConnectionMonitorTestResult Table és a NWConnectionMonitorPathResult tábla néven. 
    * A teszt neve a test Group neve alapján kerül továbbításra. A teszt leírása nincs áttelepítve.
-   * A forrás és a cél végpontok létrehozása és használata az új tesztelési csoportban történik. A helyszíni ügynökök esetében a végpontok formátuma a következő: `<workspaceName>_<FQDN of on-premises machine>` .
+   * A forrás és a cél végpontok létrehozása és használata az új tesztelési csoportban történik. A helyszíni ügynökök esetében a végpontok formátuma a következő: `<workspaceName>_<FQDN of on-premises machine>` . Az ügynök leírása nincs áttelepítve.
    * A rendszer áthelyezi a célport és a szondázás intervallumát a és a nevű teszt-konfigurációba `TC_<protocol>_<port>` `TC_<protocol>_<port>_AppThresholds` . A protokoll beállítása a portok értékei alapján történik. Az ICMP esetében a teszt konfigurációk neve a következő: `TC_<protocol>` és `TC_<protocol>_AppThresholds` . A siker küszöbértékei és egyéb opcionális tulajdonságok, ha a beállítás át van telepítve, máskülönben üresen maradnak.
    * Ha az áttelepítési tesztek olyan ügynököket tartalmaznak, amelyek nem futnak, engedélyeznie kell az ügynököket, és újra kell telepíteni az áttelepítést.
 * A NPM nincs letiltva, ezért az áttelepített tesztek továbbra is küldhetnek adatküldést a NetworkMonitoring táblába, a NWConnectionMonitorTestResult Table és a NWConnectionMonitorPathResult táblába. Ez a megközelítés biztosítja, hogy a meglévő napló alapú riasztások és integrációk ne legyenek hatással.

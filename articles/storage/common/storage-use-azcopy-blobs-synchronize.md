@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f8210428e772241134b57ac4fccb5b1549e04483
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: ab1da88899ba2b90e303da107631e3878b3a8b58
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617272"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102635875"
 ---
 # <a name="synchronize-with-azure-blob-storage-by-using-azcopy-v10"></a>Szinkronizálás az Azure Blob Storage-nal a AzCopy v10 használatával
 
@@ -26,14 +26,14 @@ A helyi fájlrendszer tartalmát egy blob-tárolóval szinkronizálhatja. A tár
 
 Ha más típusú feladatokra, például fájlok feltöltésére, blobok letöltésére vagy Blobok a fiókok közötti másolására szeretne példákat látni, tekintse meg a jelen cikk [következő lépések](#next-steps) című szakaszának hivatkozásait.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 Tekintse meg az első [lépések a AzCopy](storage-use-azcopy-v10.md) című cikket a AzCopy letöltéséhez és a tárolási szolgáltatás engedélyezési hitelesítő adatainak megadásához szükséges módszerekről.
 
 > [!NOTE] 
 > A cikkben szereplő példák azt feltételezik, hogy Azure Active Directory (Azure AD) használatával adta meg az engedélyezési hitelesítő adatokat.
 >
-> Ha inkább SAS-tokent használ a blob-adathozzáférés engedélyezéséhez, akkor a tokent az erőforrás URL-címéhez is hozzáfűzheti az egyes AzCopy-parancsokban. Például: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'` . ken> "".
+> Ha inkább SAS-tokent használ a blob-adathozzáférés engedélyezéséhez, akkor a tokent az erőforrás URL-címéhez is hozzáfűzheti az egyes AzCopy-parancsokban. Példa: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
 
 ## <a name="guidelines"></a>Irányelvek
 
@@ -95,7 +95,7 @@ A parancsban megjelenő első könyvtár a forrás. A második a cél.
 
 A szinkronizálási műveletet opcionális jelzők használatával is megadhatja. Íme néhány példa.
 
-|Forgatókönyv|Jelölő|
+|Eset|Jelölő|
 |---|---|
 |Itt adhatja meg, hogy a letöltéskor a szigorúan MD5-kivonatokat kell-e érvényesíteni.|**--ellenőrzési-MD5** = \[ Nincs \| bejelentkezett bejelentkezési \| FailIfDifferent \| FailIfDifferentOrMissing\]|
 |Fájlok kizárása mintázat alapján.|**--kizárás – elérési út**|
@@ -103,7 +103,7 @@ A szinkronizálási műveletet opcionális jelzők használatával is megadhatja
 
 A teljes listát itt tekintheti meg: [Beállítások](storage-ref-azcopy-sync.md#options).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További példákat a következő cikkekben talál:
 

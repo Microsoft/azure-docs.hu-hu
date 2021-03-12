@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/10/2021
+ms.date: 03/11/2021
 ms.author: memildin
-ms.openlocfilehash: 7080f79ca85a401ddcd3d421bb4a0292994508dd
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 4f2b31a4760a07779eebdd9492731ffe7e324d37
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/11/2021
-ms.locfileid: "102636674"
+ms.locfileid: "103149637"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -35,6 +35,7 @@ A márciusi frissítések a következők:
 - [Az SQL sebezhetőségi felmérés mostantól tartalmazza a "szabály letiltásának" élményét (előzetes verzió)](#sql-vulnerability-assessment-now-includes-the-disable-rule-experience-preview)
 - [Azure Monitor Security Centerba integrált munkafüzetek és a megadott három sablon](#azure-monitor-workbooks-integrated-into-security-center-and-three-templates-provided)
 - [A szabályozási megfelelőségi irányítópult mostantól tartalmazza az Azure audit-jelentéseket (előzetes verzió)](#regulatory-compliance-dashboard-now-includes-azure-audit-reports-preview)
+- [Az ajánlásokat az Azure Resource Graphban tekintheti meg az "Explore in ARG" használatával](#recommendation-data-can-be-viewed-in-azure-resource-graph-with-explore-in-arg)
 - [A Munkafolyamat-automatizálás üzembe helyezésére vonatkozó szabályzatok frissítései](#updates-to-the-policies-for-deploying-workflow-automation)
 - [Két örökölt javaslat már nem ír közvetlenül az Azure-tevékenység naplójába](#two-legacy-recommendations-no-longer-write-data-directly-to-azure-activity-log)
 
@@ -91,6 +92,17 @@ További információ [a szabványok kezeléséről a szabályozási megfelelős
 
 :::image type="content" source="media/release-notes/audit-reports-list-regulatory-compliance-dashboard.png" alt-text="Az elérhető Azure-naplózási jelentések listájának szűrése":::
 
+
+
+### <a name="recommendation-data-can-be-viewed-in-azure-resource-graph-with-explore-in-arg"></a>Az ajánlásokat az Azure Resource Graphban tekintheti meg az "Explore in ARG" használatával
+
+A javaslat részletei lapok mostantól tartalmazzák az "Explore az ARG-ben" eszköztárat. Ezzel a gombbal megnyithatja az Azure Resource Graph-lekérdezést, és megtekintheti, exportálhatja és megoszthatja az ajánlási adatforrásokat.
+
+Az Azure Resource Graph (ARG) a Felhőbeli környezetekben az erőforrás-információkhoz való azonnali hozzáférést biztosít robusztus szűrési, csoportosítási és rendezési képességekkel. Az Azure-előfizetések programozott vagy a Azure Portalon keresztüli lekérdezésének gyors és hatékony módja.
+
+További információ az [Azure Resource Graph (ARG)](../governance/resource-graph/index.yml)szolgáltatásról.
+
+:::image type="content" source="media/release-notes/explore-in-resource-graph.png" alt-text="Az ajánlott Azure Resource Graph-beli javaslatok megismerése.":::
 
 
 ### <a name="updates-to-the-policies-for-deploying-workflow-automation"></a>A Munkafolyamat-automatizálás üzembe helyezésére vonatkozó szabályzatok frissítései
