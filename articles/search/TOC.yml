@@ -312,6 +312,8 @@
           href: search-query-create.md
         - name: Szemantikai lekérdezés létrehozása
           href: semantic-how-to-query-request.md
+        - name: Szemantikai válasz visszaadása
+          href: semantic-answers.md
         - name: Helyesírás-ellenőrzés hozzáadása a lekérdezésekhez
           href: speller-how-to-add.md
         - name: Lekérdezéstípusok és összeállítás
@@ -330,6 +332,8 @@
               href: index-add-suggesters.md
             - name: Automatikus kitöltés és javaslatok hozzáadása
               href: search-autocomplete-tutorial.md
+        - name: Lapozás és darabszámok
+          href: search-pagination-page-layout.md
         - name: Szintaxisreferencia
           items:
             - name: Egyszerű lekérdezési szintaxis
@@ -352,16 +356,14 @@
           href: search-query-understand-collection-filters.md
         - name: Szűrés nyelv szerint
           href: search-filters-language.md
-    - name: Results (Eredmények)
+    - name: Relevancia
       items:
-        - name: Munka az eredményül kapott adatokkal
-          href: search-pagination-page-layout.md
-        - name: Szemantikai válasz szerkezete
-          href: semantic-how-to-query-response.md
+        - name: Hasonlósági rangsor
+          href: index-ranking-similarity.md
+        - name: Szemantikai rangsorolás
+          href: semantic-ranking.md
         - name: Pontozási profilok
           href: index-add-scoring-profiles.md
-        - name: Hasonlósági algoritmus
-          href: index-ranking-similarity.md
     - name: Biztonság
       items:
         - name: Adattitkosítás

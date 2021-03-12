@@ -4,12 +4,12 @@ description: Ismerkedjen meg az Azure-ban a függvények fejlesztéséhez szüks
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: fdc898c02cfd20ecfdd72dece4fb1e92d803dbb0
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7030ca1c1950f7c06580ce7417a4429fbe330c4e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100386900"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614819"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions – fejlesztői útmutató
 Azure Functions az egyes függvények a használt nyelvtől vagy kötéstől függetlenül megosztanak néhány alapvető műszaki fogalmat és összetevőt. Mielőtt beolvassa az adott nyelvre vagy kötésre vonatkozó tanulási adatokat, olvassa el ezt az áttekintést, amely az összesre vonatkozik.
@@ -116,10 +116,11 @@ A Azure Functions egyes kapcsolatai titkos kód helyett identitás használatár
 
 Az identitás-alapú kapcsolatokat a következő trigger-és kötési bővítmények támogatják:
 
-| Kiterjesztés neve | Bővítmény verziója                                                                                     | A használati terv identitás-alapú kapcsolatainak támogatása |
+| Kiterjesztés neve | Bővítmény verziója                                                                                     | A felhasználási tervben támogatott |
 |----------------|-------------------------------------------------------------------------------------------------------|---------------------------------------|
 | Azure-blob     | [5.0.0-béta vagy újabb verzió](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)  | No                                    |
 | Azure Queue    | [5.0.0-béta vagy újabb verzió](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) | No                                    |
+| Azure Event Hubs    | [5.0.0-béta vagy újabb verzió](./functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher) | No                                    |
 
 > [!NOTE]
 > Az identitás-alapú kapcsolatok támogatása még nem érhető el a functions futtatókörnyezet által a Core Behaviors szolgáltatáshoz használt tárolási kapcsolatokhoz. Ez azt jelenti, hogy a `AzureWebJobsStorage` beállításnak egy kapcsolatok sztringnek kell lennie.
@@ -128,9 +129,10 @@ Az identitás-alapú kapcsolatokat a következő trigger-és kötési bővítmé
 
 Az Azure-szolgáltatásokhoz tartozó identitás-alapú kapcsolatok a következő tulajdonságokat fogadják el:
 
-| Tulajdonság    | Környezeti változó | Kötelező | Description |
+| Tulajdonság    | Kiterjesztésekhez szükséges | Környezeti változó | Leírás |
 |---|---|---|---|
-| Szolgáltatás URI-ja | `<CONNECTION_NAME_PREFIX>__serviceUri` | Yes | Annak a szolgáltatásnak az adatsík URI azonosítója, amelyhez csatlakozik. |
+| Szolgáltatás URI-ja | Azure-Blob, Azure-üzenetsor | `<CONNECTION_NAME_PREFIX>__serviceUri` |  Annak a szolgáltatásnak az adatsík URI azonosítója, amelyhez csatlakozik. |
+| Teljesen minősített névtér | Event Hubs | `<CONNECTION_NAME_PREFIX>__fullyQualifiedNamespace` | A teljesen minősített Event hub-névtér. |
 
 Egy adott kapcsolattípus esetében további beállítások is támogatottak. Tekintse meg a kapcsolódást készítő összetevő dokumentációját.
 
@@ -152,14 +154,26 @@ Bizonyos esetekben előfordulhat, hogy egy másik identitás használatát szere
 > [!NOTE]
 > A következő konfigurációs beállítások nem támogatottak a Azure Functions szolgáltatásban.
 
-Az ügyfél-AZONOSÍTÓval és a titkos kulccsal rendelkező Azure Active Directory egyszerű szolgáltatással való kapcsolódáshoz adja meg a kapcsolatot a következő tulajdonságokkal:
+Ha egy Azure Active Directory egyszerű szolgáltatással szeretne csatlakozni ügyfél-AZONOSÍTÓval és titkos kulccsal, a fenti [kapcsolati tulajdonságok](#connection-properties) mellett adja meg a kapcsolatot a következő szükséges tulajdonságokkal:
 
-| Tulajdonság    | Környezeti változó | Kötelező | Description |
-|---|---|---|---|
-| Szolgáltatás URI-ja | `<CONNECTION_NAME_PREFIX>__serviceUri` | Yes | Annak a szolgáltatásnak az adatsík URI azonosítója, amelyhez csatlakozik. |
-| Bérlőazonosító | `<CONNECTION_NAME_PREFIX>__tenantId` | Yes | A Azure Active Directory bérlő (könyvtár) azonosítója. |
-| Ügyfél-azonosító | `<CONNECTION_NAME_PREFIX>__clientId` | Yes |  A bérlőn belüli alkalmazás-regisztráció ügyfél-(alkalmazás-) azonosítója. |
-| Titkos ügyfélkulcs | `<CONNECTION_NAME_PREFIX>__clientSecret` | Yes | Az alkalmazás regisztrálásához létrehozott ügyfél-titkos kulcs. |
+| Tulajdonság    | Környezeti változó | Leírás |
+|---|---|---|
+| Bérlőazonosító | `<CONNECTION_NAME_PREFIX>__tenantId` | A Azure Active Directory bérlő (könyvtár) azonosítója. |
+| Ügyfél-azonosító | `<CONNECTION_NAME_PREFIX>__clientId` |  A bérlőn belüli alkalmazás-regisztráció ügyfél-(alkalmazás-) azonosítója. |
+| Titkos ügyfélkulcs | `<CONNECTION_NAME_PREFIX>__clientSecret` | Az alkalmazás regisztrálásához létrehozott ügyfél-titkos kulcs. |
+
+Az `local.settings.json` Azure Blob identitás-alapú kapcsolataihoz szükséges tulajdonságok – példa: 
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "<CONNECTION_NAME_PREFIX>__serviceUri": "<serviceUri>",
+    "<CONNECTION_NAME_PREFIX>__tenantId": "<tenantId>",
+    "<CONNECTION_NAME_PREFIX>__clientId": "<clientId>",
+    "<CONNECTION_NAME_PREFIX>__clientSecret": "<clientSecret>"
+  }
+}
+```
 
 #### <a name="grant-permission-to-the-identity"></a>Engedély megadása az identitásnak
 

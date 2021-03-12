@@ -57,6 +57,8 @@
       href: diagnostic-logs.md
     - name: Munkamenetek monitorozása és felügyelete
       href: session-monitoring.md
+    - name: 'Metrikák, figyelés és riasztások'
+      href: howto-metrics-monitor-alert.md
     - name: Hibaelhárítás
       href: troubleshoot.md
 - name: Referencia

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 3/08/2021
-ms.openlocfilehash: 7d1d4a1a89931e3ded8274a4731aa3606695771b
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.date: 3/12/2021
+ms.openlocfilehash: 47f8f4ec3b5c5dd2d4545fc67561487d4f5a465c
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/12/2021
-ms.locfileid: "103199891"
+ms.locfileid: "103225309"
 ---
 # <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>Közös értékesítés a Microsoft értékesítési csapatával és partnereivel – áttekintés
 
@@ -33,7 +33,7 @@ A közös értékesítés lehetőség bármilyen típusú együttműködés a Mi
 - **Közös értékesítés a Microsoft értékesítési csapatával** – egy vagy több Microsoft értékesítési csapattal együttműködve aktívan teljesítheti az ügyfelek igényeit. Ez magában foglalhatja az ajánlatok, a Microsoft ajánlatai vagy mindkettő értékesítését is. Ön és a Microsoft értékesítési csapatai azonosítják és megoszthatják az ügyfelek lehetőségeit, amelyekben a megoldásai megfelelőek lehetnek.
 - **Partner-Partner (P2P)** – együttműködés egy másik Microsoft-partnerrel az ügyfél problémáinak aktív megoldásához.
 - **Private Deal** – megoszthatja a Microsofttól függetlenül, hogy a Microsoft jelentéskészítési rendszerében hogyan jelenik meg az elemzés és az előrejelzés.
-- **Megoldás-Assessment (SA)** – olyan partnerekkel együttműködve, akiket a megoldás értékelései üzleti csapata a Microsoft-technológiákat használó vagy azt megtervező ügyfelek technológiai igényeinek eléréséhez használ.
+- **Megoldás-Assessment (SA)** – olyan partnerekkel együttműködve, akik a megoldás-értékelési üzleti csapat által megvizsgálták, hogy felmérjék a Microsoft-technológiákat használó vagy azt megtervező ügyfelek technológiai igényeit.
 
 ## <a name="co-sell-statuses"></a>Közös értékesítés állapotok
 

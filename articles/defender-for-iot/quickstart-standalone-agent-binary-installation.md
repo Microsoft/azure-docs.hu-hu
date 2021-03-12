@@ -1,27 +1,27 @@
 ---
-title: A Defender telepítése a IoT Micro agenthez
+title: A Defender telepítése a IoT Micro agenthez (előzetes verzió)
 titleSuffix: Azure Defender for IoT
 description: Ismerje meg, hogyan telepítheti és hitelesítheti a Defender Micro Agent ügynököt.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 3/3/2021
+ms.date: 3/9/2021
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: ccf28c47e2e1438a141e2497da70d32c1832ddb9
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 8984b1dbcb9a6aca6d313d8195a75093ae421bbd
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120436"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611675"
 ---
-# <a name="install-defender-for-iot-micro-agent"></a>A Defender telepítése a IoT Micro agenthez 
+# <a name="install-defender-for-iot-micro-agent-preview"></a>A Defender telepítése a IoT Micro agenthez (előzetes verzió)
 
 Ez a cikk azt ismerteti, hogyan telepítheti és hitelesítheti a Defender Micro Agent ügynököt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Defender for IoT modul telepítése előtt létre kell hoznia egy modul-identitást a IoT Hubban. A modul identitásának létrehozásával kapcsolatos további információkért lásd: [Defender IoT Micro Agent modul Twin ](quickstart-create-micro-agent-module-twin.md).
+Mielőtt telepítené a Defender for IoT modult, létre kell hoznia egy modul-identitást a IoT Hubban. A modul identitásának létrehozásával kapcsolatos további információkért lásd: [Defender IoT Micro Agent Module twin (előzetes verzió)](quickstart-create-micro-agent-module-twin.md).
 
 ## <a name="install-the-package"></a>A csomag telepítése
 
@@ -49,13 +49,37 @@ sudo apt-get install defender-iot-micro-agent
 
 Az IoT Micro Agent Defender hitelesítéséhez használt két lehetőség a következő: 
 
-- A kapcsolatok karakterlánca. 
+- Modul identitás-összekapcsolási karakterlánca. 
 
 - Tanúsítvány.
 
-### <a name="authenticate-using-a-connection-string"></a>Hitelesítés a kapcsolatok karakterláncának használatával
+### <a name="authenticate-using-a-module-identity-connection-string"></a>Hitelesítés modul identitás-összekapcsolási sztring használatával
 
-Hitelesítés egy kapcsolódási sztring használatával:
+Győződjön meg arról, hogy a cikk [előfeltételei](#prerequisites) teljesülnek, és a lépések megkezdése előtt létre kell hoznia egy modul-identitást. 
+
+#### <a name="get-the-module-identity-connection-string"></a>A modul identitás-összekapcsolási karakterláncának beolvasása
+
+A modul Identity-kapcsolódási karakterláncának lekérése a IoT Hubből: 
+
+1. Navigáljon a IoT Hubra, és válassza ki a hubot.
+
+1. A bal oldali menüben a **felfedezők** szakaszban válassza a **IoT-eszközök** elemet.
+
+   :::image type="content" source="media/quickstart-standalone-agent-binary-installation/iot-devices.png" alt-text="Válassza ki a IoT eszközöket a bal oldali menüben.":::
+
+1. Válasszon ki egy eszközt az eszköz azonosítója listából az **eszköz részletei** lap megtekintéséhez.
+
+1. Válassza a **modul-identitások**   fület, majd válassza ki a **DefenderIotMicroAgent**   modult az eszközhöz társított modul-identitások listájából.
+
+   :::image type="content" source="media/quickstart-standalone-agent-binary-installation/module-identities.png" alt-text="Válassza a modul identitások fület.":::
+
+1. A **modul identitásának részletei** lapon a **Másolás** gombra kattintva másolja az elsődleges kulcsot.
+
+   :::image type="content" source="media/quickstart-standalone-agent-binary-installation/copy-button.png" alt-text="Az elsődleges kulcs másolásához kattintson a Másolás gombra.":::
+
+#### <a name="configure-authentication-using-a-module-identity-connection-string"></a>Hitelesítés konfigurálása modul Identity-kapcsolatok sztringje használatával
+
+Az ügynök konfigurálása a modul identitás-kapcsolódási karakterláncának használatával történő hitelesítéshez:
 
 1. A következő parancs beírásával helyezzen el egy nevű fájlt, `connection_string.txt` amely tartalmazza az UTF-8-ban kódolt kapcsolatok karakterláncát `/var/defender_iot_micro_agent` :
 
@@ -63,7 +87,7 @@ Hitelesítés egy kapcsolódási sztring használatával:
     sudo bash -c 'echo "<connection string" > /var/defender_iot_micro_agent/connection_string.txt' 
     ```
 
-    A `connection_string.txt` -nek most a következő elérési út helyén kell lennie `/var/defender_iot_micro_agent/connection_string.txt` .
+    Az értéknek `connection_string.txt` a következő elérési út helyén kell lennie `/var/defender_iot_micro_agent/connection_string.txt` .
 
 1. Indítsa újra a szolgáltatást a következő parancs használatával:  
 

@@ -7,13 +7,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 10/27/2020
-ms.openlocfilehash: 8b63dfb015c7337e36dac3812e92ddc53914206d
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.date: 03/10/2021
+ms.openlocfilehash: f8ddcbef6d2ce4a9cba625374db9908335954424
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247165"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630894"
 ---
 # <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>Ajánlat áttekintése és közzététele a kereskedelmi piactéren
 
@@ -74,6 +74,13 @@ A közzétételi folyamat első lépése az automatikus érvényesítések halma
 - **Vezető felügyelet ellenőrzése és regisztráció** (<15 perc)
 
     Megerősítjük, hogy a vezető felügyeleti rendszer az **ajánlat beállítása** oldalon megadott részletek alapján fogadja az ügyfelektől érkező érdeklődőket. Ez a lépés csak az érdeklődők felügyeletét engedélyező ajánlatokra alkalmazható.
+
+- **Ajánlat ellenőrzése** (<30 perc)
+
+    Csak SaaS-ajánlatok esetén gyors érvényesítést végzünk a tartalom és a technikai konfigurációk esetében. Az előzetes verzió létrehozása nem lesz blokkolva az ebben a lépésben észlelt érvényesítési problémák esetén. Ha olyan problémát talál, amely sikertelen minősítést tartalmaz, az **ajánlat áttekintés** lapján megjelenik egy **megtekintési ellenőrzési jelentés** hivatkozása. A jelentés tartalmazni fogja a szabályzatok megsértésének leírását.
+
+    > [!IMPORTANT]
+    > Az **élő** adás gomb kiválasztása előtt ellenőrizze, hogy az ajánlat ellenőrzése lépésből származó összes figyelmeztetést megtekinti és kezeli. Ellenkező esetben nem fog tudni kockázatot jelentő minősítést biztosítani, amely késlelteti az ajánlatot élőben.
 
 ## <a name="certification-phase"></a>Minősítési fázis
 
@@ -143,16 +150,19 @@ Ha egy későbbi időpontban szeretné közzétenni az ajánlatot, el kell indí
 
 Ha az ajánlat készen áll arra, hogy áttekintse és kijelentkezzen, küldjön Önnek egy e-mailt, amely kéri, hogy tekintse át és hagyja jóvá az ajánlat előzetes verzióját. Az **ajánlat áttekintés** lapját is frissítheti a böngészőben, és megtudhatja, hogy az ajánlat elérte-e a közzétevő kijelentkezési fázisát. Ha igen, a **Go Live** gomb és az előzetes verziójú hivatkozások is elérhetők lesznek.
 
-Az alábbi képernyőképen egy SaaS-ajánlat **ajánlat áttekintése** lapja látható. Az ezen az oldalon látható ellenőrzési lépések az ajánlat típusától és az ajánlat létrehozásakor létrehozott beállításoktól függően változnak.
+Az alábbi képernyőfelvételen a partner Center kereskedelmi Marketplace programjának **ajánlat áttekintése** lapja látható. Az ezen az oldalon látható ellenőrzési lépések az ajánlat típusától és az ajánlat létrehozásakor létrehozott beállításoktól függően változnak. Vegye figyelembe, hogy a minősítési fázis a beküldés során megtörténhet az előzetes verzióra vagy a küldésre az ajánlat típusától függően.
 
 ![A partneri központban elérhető ajánlat áttekintés lapját mutatja be. Megjelenik a Go Live gomb és az előzetes verzió hivatkozásai.](./media/publish-status-publisher-signoff.png)
 
 ### <a name="previewing-and-approving-your-offer"></a>Az ajánlat előzetes megtekintése és jóváhagyása
 
 > [!IMPORTANT]
-> A végpontok közötti vásárlási és beállítási folyamat ellenőrzéséhez vásárolja meg ajánlatát, amíg az előzetes verzióban is elérhető. Először értesítse a Microsoftot egy [támogatási jegyről](https://aka.ms/marketplacesupport) , hogy ne dolgozzon fel díjat. Ha az ajánlata egy kapcsolatfelvételi listával rendelkezik, tesztelje, hogy az érdeklődő a várt módon jön létre, ha az előzetes verzióban megadja a kapcsolatfelvételi adatokat.
+> A végpontok közötti vásárlási és beállítási folyamat ellenőrzéséhez vásárolja meg ajánlatát, amíg az előzetes verzióban is elérhető. Először értesítse a Microsoftot egy [támogatási jegyről](https://aka.ms/marketplacesupport) , hogy ne dolgozzon fel díjat. Ha az ajánlata egy _kapcsolatfelvételi_ listával rendelkezik, tesztelje, hogy az érdeklődő a várt módon jön létre, ha az előzetes verzióban megadja a kapcsolatfelvételi adatokat.
 
 Az **ajánlat áttekintése** lapon a **Go Live** gomb alatt láthatók az előzetes verziójú hivatkozások. A AppSource előzetes verziójához, az Azure Marketplace előzetes verziójához vagy mindkettőhöz az ajánlat létrehozásakor választott beállításoktól függően lesz hivatkozás. Ha úgy dönt, hogy az ajánlatot a Microsofton keresztül értékesíti, akkor bárki, aki hozzá lett adva az előzetes verzió célközönségéhez, tesztelheti az ajánlat beszerzését és üzembe helyezését, hogy az megfeleljen a jelen szakaszban foglalt követelményeknek.
+
+> [!IMPORTANT]
+> Az **élő** adás gomb kiválasztása előtt ellenőrizze, hogy az _ajánlat ellenőrzése_ lépésből származó összes figyelmeztetést megtekinti és kezeli. Ellenkező esetben nem fog tudni kockázatot jelentő minősítést biztosítani, amely késlelteti az ajánlatot élőben.
 
 Az előzetes verzió jóváhagyása után válassza az élő adás lehetőséget, hogy az ajánlat élőben **elérhető** legyen a kereskedelmi piactéren. 
 
@@ -225,7 +235,7 @@ A szűrők használatával szűkítheti az ajánlat teljes előzményeit adott k
 Négy szűrő van:
 * Események
 * Felhasználók
-* Dátum
+* Date
 * Oldalak
 
 Az **oldalak** szűrő kiválasztásakor kiválaszthatja a partneri központ azon lapjait, amelyek alkalmazhatók az ajánlat típusára. Ha alkalmazva van, a **Pages (oldalak** ) szűrő az összes elküldött ajánlatot megjeleníti az eseményeknek a kiválasztott oldal változásaival való **előnézetéhez** .
@@ -262,6 +272,6 @@ Az [érvényesítési és a közzétételi lépéseknek](#validation-and-publish
 
 [![Példa arra, hogy az előzmények oldal hogyan jeleníti meg az érvényesítési és közzétételi lépéseket.](./media/review-publish-offer/validation-and-publishing-event.png)](./media/review-publish-offer/validation-and-publishing-event.png#lightbox)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A partner Center kereskedelmi piactérről származó analitikai jelentések elérése](partner-center-portal/analytics.md)

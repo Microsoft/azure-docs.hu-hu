@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/12/2020
+ms.date: 03/03/2021
 ms.author: jeedes
-ms.openlocfilehash: f9e4af3330ecf5fbe161f7ba92ddf96eb04880a1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 1996024d163a4bf7cfa741110038bb8db5b883e8
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728024"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632744"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beyondtrust-remote-support"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a BeyondTrust távoli támogatással
 
@@ -51,7 +51,7 @@ A BeyondTrust távoli támogatásának az Azure AD-be való integrálásának ko
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **BeyondTrust távoli támogatás** kifejezést a keresőmezőbe.
 1. Válassza a **BeyondTrust távoli támogatás** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-beyondtrust-remote-support"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a BeyondTrust távoli támogatásához
+## <a name="configure-and-test-azure-ad-sso-for-beyondtrust-remote-support"></a>Azure AD SSO konfigurálása és tesztelése BeyondTrust távoli támogatáshoz
 
 Konfigurálja és tesztelje az Azure AD SSO-t BeyondTrust távoli támogatással a **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a BeyondTrust-távoli támogatásban.
 
@@ -76,14 +76,14 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<HOSTNAME>.bomgar.com/saml`
+    a. Az **azonosító** mezőbe írjon be egy URL-címet a következő minta használatával: `https://<HOSTNAME>.bomgar.com`
 
-    b. Az **azonosító** mezőbe írjon be egy URL-címet a következő minta használatával: `https://<HOSTNAME>.bomgar.com`
-
-    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<HOSTNAME>.bomgar.com/saml/sso`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<HOSTNAME>.bomgar.com/saml/sso`
+    
+    c. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<HOSTNAME>.bomgar.com/saml`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges Sign-On URL-címmel, azonosítóval és válasz URL-címmel. Ezeket az értékeket az oktatóanyag későbbi részében ismertetjük.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a Sign-On URL-címmel. Ezeket az értékeket az oktatóanyag későbbi részében ismertetjük.
 
 1. A BeyondTrust távoli támogatási alkalmazás meghatározott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
@@ -167,6 +167,10 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 ### <a name="create-beyondtrust-remote-support-test-user"></a>BeyondTrust távoli támogatási teszt felhasználó létrehozása
 
+Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a BeyondTrust távoli támogatásban. A BeyondTrust-alapú távoli támogatás az igény szerinti felhasználói üzembe helyezést is támogatja, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a BeyondTrust távoli támogatásban, a hitelesítés után létrejön egy új.
+
+Kövesse az alábbi eljárást, amely kötelező a BeyondTrust távoli támogatásának konfigurálásához.
+
 A felhasználó-kiépítési beállításokat itt fogjuk konfigurálni. Az ebben a szakaszban használt értékeket a Azure Portal **felhasználói attribútumok & jogcímek** szakasza hivatkozik. Ezt úgy konfiguráltuk, hogy az a létrehozáskor már importált alapértelmezett értékek legyenek, azonban az érték szükség esetén testreszabható.
 
 ![Képernyőfelvétel: a felhasználói kiépítési beállítások, amelyekkel konfigurálhatja a felhasználói értékeket.](./media/bomgarremotesupport-tutorial/user-attribute.png)
@@ -174,7 +178,7 @@ A felhasználó-kiépítési beállításokat itt fogjuk konfigurálni. Az ebben
 > [!NOTE]
 > A csoportok és az e-mail-attribútum nem szükséges ehhez a megvalósításhoz. Ha Azure AD-csoportokat használ, és hozzárendeli őket a BeyondTrust távoli támogatási csoportházirendekhez az engedélyekhez, a csoport objektum-AZONOSÍTÓját a Azure Portal és az "elérhető csoportok" szakaszban elhelyezett tulajdonságok segítségével kell hivatkozni. A művelet befejezését követően az objektum-azonosító/AD-csoport elérhető lesz a Csoportházirendhez való hozzárendeléshez az engedélyek számára.
 
-![Képernyőfelvétel: az I T szakasz a tagsági típussal, a forrással, a típussal és a D objektummal.](./media/bomgarremotesupport-tutorial/config-user2.png)
+![Képernyőfelvétel: az I T szakasz a tagsági típussal, a forrással, a típussal és a D objektummal.](./media/bomgarremotesupport-tutorial/config-user-2.png)
 
 ![Képernyőfelvétel: a csoportházirend alapszintű beállítások lapja.](./media/bomgarremotesupport-tutorial/group-policy.png)
 
@@ -191,6 +195,6 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 * Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások BeyondTrust távoli támogatás csempére kattint, a rendszer átirányítja a BeyondTrust távoli támogatás bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A BeyondTrust távoli támogatásának konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós idejű védelmet biztosít a szervezet bizalmas adatai kiszűrése és beszivárgásának. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáféréstől. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)

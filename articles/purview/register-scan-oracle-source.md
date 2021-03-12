@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 3ae81a9c05f0c88a52db6409bf870ee0427f09db
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 37f6a779e7dd83a6aa61de9850ad3b49b57393f9
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101696152"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010446"
 ---
 # <a name="register-and-scan-oracle-source-preview"></a>Oracle-forrás regisztrálása és bevizsgálása (előzetes verzió)
 
@@ -31,7 +31,7 @@ Az Oracle-forrás támogatja a **teljes vizsgálatot** , hogy kinyerje a metaada
 
 3.  Győződjön \" meg arról, hogy a Visual C++ redistributable 2012 Update 4 \" telepítve van a saját üzemeltetésű Integration Runtime gépen. Ha még nem \' telepítette a t, töltse le innen. [](https://www.microsoft.com/download/details.aspx?id=30679)
 
-4.  Manuálisan le kell töltenie egy "Oracle. JDBC. Driver. OracleDriver" nevű Oracle JDBC-illesztőprogramot a \' virtuális gépen, ahol a saját üzemeltetésű integrációs modul fut.
+4.  A saját üzemeltetésű integrációs modult futtató virtuális gépen manuálisan le kell töltenie egy Oracle [JDBC-illesztőprogramot](https://www.oracle.com/database/technologies/appdev/jdbc-downloads.html) .
 
     > [!Note] 
     > Az illesztőprogramnak elérhetőnek kell lennie a virtuális gép összes fiókja számára. Ne telepítse azt egy felhasználói fiókban.

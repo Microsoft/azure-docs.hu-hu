@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Application Proxy: verziók kiadásának előzményei'
-description: Ez a cikk felsorolja az Azure AD Application Proxy összes kiadását, és ismerteti az új funkciókat és a rögzített problémákat.
+title: 'Azure Active Directory Application Proxy: verziók kiadási előzményei'
+description: Ez a cikk felsorolja a Azure Active Directory Application Proxy összes kiadását, és ismerteti az új szolgáltatásokat és a rögzített problémákat.
 services: active-directory
 author: kenwith
 manager: daveba
@@ -8,15 +8,16 @@ ms.assetid: ''
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 07/22/2020
+ms.date: 02/17/2021
 ms.subservice: app-mgmt
 ms.author: kenwith
-ms.openlocfilehash: 6ba622bd52dc13fb0053b61b65529db6e6912611
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.reviewer: japere
+ms.openlocfilehash: 0244e0ca66f452649d3136eb122d1c2666182ae2
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101686716"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200964"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD Application Proxy: verziók kiadásának előzményei
 Ez a cikk a kiadott Azure Active Directory (Azure AD) alkalmazásproxy verzióit és funkcióit sorolja fel. Az Azure AD csapata rendszeresen frissíti az alkalmazásproxy új szolgáltatásait és funkcióit. Az alkalmazásproxy-összekötők automatikusan frissülnek, amikor megjelent egy új verzió. 
@@ -25,11 +26,11 @@ Javasoljuk, hogy az automatikus frissítések engedélyezve legyenek az összek�
 
 A kapcsolódó erőforrások listája:
 
-Erőforrás |  Részletek
---------- | --------- |
-Alkalmazásproxy engedélyezése | Ebben az [oktatóanyagban](application-proxy-add-on-premises-application.md)az alkalmazásproxy engedélyezéséhez, valamint az összekötők telepítéséhez és regisztrálásához szükséges előfeltételeket ismertetjük.
-Az Azure AD Application Proxy-összekötők ismertetése | További információ az [Összekötők felügyeletéről](application-proxy-connectors.md) és az összekötők [automatikus frissítéséről](application-proxy-connectors.md#automatic-updates).
-Azure AD Application Proxy-összekötő letöltése |  [Töltse le a legújabb összekötőt](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download).
+| Erőforrás                                         | Részletek                                                      |
+| ------------------------------------------------ | ------------------------------------------------------------ |
+| Alkalmazásproxy engedélyezése                  | Ebben az [oktatóanyagban](application-proxy-add-on-premises-application.md)az alkalmazásproxy engedélyezéséhez, valamint az összekötők telepítéséhez és regisztrálásához szükséges előfeltételeket ismertetjük. |
+| Az Azure AD Application Proxy-összekötők ismertetése | További információ az [Összekötők felügyeletéről](application-proxy-connectors.md) és az összekötők [automatikus frissítéséről](application-proxy-connectors.md#automatic-updates). |
+| Azure AD Application Proxy-összekötő letöltése    | [Töltse le a legújabb összekötőt](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download). |
 
 ## <a name="1519750"></a>1.5.1975.0
 
@@ -41,6 +42,7 @@ Július 22.2020: Ez a verzió csak a letöltési oldalon keresztül telepíthet�
 -   Továbbfejlesztett Azure Government felhőalapú környezetek támogatása. A Azure Government-felhőhöz tartozó összekötő megfelelő telepítésének lépéseiért tekintse át az [Előfeltételek](../hybrid/reference-connect-government-cloud.md#allow-access-to-urls) és a [telepítés lépéseit](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud).
 - Az Távoli asztali szolgáltatások webes ügyfél és az alkalmazásproxy használatának támogatása. További részletekért tekintse meg az [Azure AD Application Proxy távoli asztal közzétételével foglalkozó](application-proxy-integrate-with-remote-desktop-services.md) témakört.
 - Továbbfejlesztett WebSocket-bővítmények egyeztetése. 
+- Az összekötő-csoportok és a régión alapuló alkalmazásproxy-felhőalapú szolgáltatások közötti optimalizált Útválasztás támogatása. További részletekért tekintse meg a [forgalmi folyamat optimalizálása a Azure Active Directory Application Proxyával](application-proxy-network-topology.md) című témakört. 
 
 ### <a name="fixed-issues"></a>Megoldott problémák
 - Kijavítva a kisbetűs karakterláncokat kényszerítő WebSocket-probléma.

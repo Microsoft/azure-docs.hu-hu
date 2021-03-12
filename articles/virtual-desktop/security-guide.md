@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cfc980fdabdb9c6e7085088db12754243f133d89
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0ddbd4b798d37498af92cec40af6a80a88115fab
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581389"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014893"
 ---
 # <a name="security-best-practices"></a>Ajánlott biztonsági eljárások
 
@@ -117,7 +117,6 @@ Az új szolgáltatás tesztelése:
 >[!NOTE]
 >Az előzetes verzióban csak a Windows 10-es végpontok teljes asztali kapcsolatai támogatják ezt a funkciót.
 
-
 ### <a name="enable-endpoint-protection"></a>Endpoint Protection engedélyezése
 
 Az ismert kártevő szoftverektől való üzembe helyezés védelme érdekében javasoljuk, hogy engedélyezze az Endpoint Protectiont az összes munkamenet-gazdagépen. Használhatja a Windows Defender víruskeresőt vagy egy harmadik féltől származó programot. További információ: a [Windows Defender víruskereső üzembe helyezési útmutatója VDI-környezetben](/windows/security/threat-protection/windows-defender-antivirus/deployment-vdi-windows-defender-antivirus).
@@ -169,6 +168,52 @@ Az operációs rendszer képességeinek korlátozásával megerősítheti a munk
 - A felhasználók számára korlátozott engedélyek megadása helyi és távoli fájlrendszerek eléréséhez. Az engedélyek korlátozásához győződjön meg arról, hogy a helyi és a távoli fájlrendszerek hozzáférés-vezérlési listát használnak a legalacsonyabb jogosultsággal. Így a felhasználók csak a szükséges igényekhez férhetnek hozzá, és nem módosíthatják és nem törölhetik a kritikus erőforrásokat.
 
 - A nemkívánatos szoftverek futtatásának megakadályozása a munkamenet-gazdagépeken. A munkamenet-gazdagépek további biztonsága érdekében engedélyezheti az alkalmazások zárolását, így biztosíthatja, hogy csak az Ön által engedélyezett alkalmazások futhatnak a gazdagépen.
+
+## <a name="windows-virtual-desktop-support-for-trusted-launch"></a>Windows rendszerű virtuális asztali támogatás a megbízható indításhoz
+
+A megbízható indítás olyan fokozott biztonsági funkciókkal rendelkező Azure-beli virtuális gépek Gen2, amelyek a támadási vektorok, például a rootkitek, a rendszerindító csomagok és a kernel szintű kártevők elleni védelmet célozzák meg. Az alábbiakban a megbízható indítás fokozott biztonsági funkciói láthatók, amelyek mindegyike támogatott a Windows rendszerű virtuális asztalon. Ha többet szeretne megtudni a megbízható indításról, látogasson el [Az Azure Virtual Machines (előzetes verzió) megbízható indítására](../virtual-machines/trusted-launch.md).
+
+### <a name="secure-boot"></a>Biztonságos rendszerindítás
+
+A biztonságos rendszerindítás olyan mód, amelyet a platform belső vezérlőprogramja támogat, amely védelmet biztosít a belső vezérlőprogram számára a kártevő-alapú rootkitek és a rendszerindító készletek alapján. Ez a mód csak az aláírt operációs rendszer és az illesztőprogramok számára teszi lehetővé a gép elindítását. 
+
+### <a name="monitor-boot-integrity-using-remote-attestation"></a>Rendszerindítás integritásának figyelése távoli igazolás használatával
+
+A távoli igazolás nagyszerű módszer a virtuális gépek állapotának vizsgálatára. A távoli igazolás ellenőrzi, hogy a mért rendszerindítási rekordok megtalálhatók-e, valódiak-e, és a virtuális platformmegbízhatósági modultól (vTPM) származnak-e. Az állapot-ellenőrzés során titkosítási bizonyosságot biztosít arról, hogy a platform megfelelően elindult. 
+
+### <a name="vtpm"></a>vTPM
+
+A vTPM egy hardveres platformmegbízhatósági modul (TPM) virtualizált verziója, virtuális GÉPENként egy TPM virtuális példányával. a vTPM lehetővé teszi a távoli igazolást a virtuális gép teljes rendszerindítási láncának integritási mérésével (UEFI, OS, rendszer és illesztőprogramok). 
+
+Javasoljuk, hogy a vTPM engedélyezze a távoli tanúsítványok használatát a virtuális gépeken. A vTPM engedélyezése esetén engedélyezheti a BitLocker működőképességét is, amely teljes körű titkosítást biztosít az inaktív adatok védelme érdekében. A vTPM-t használó szolgáltatások az adott virtuális géphez kötődő titkot eredményeznek. Ha a felhasználók egy készletezett forgatókönyvben csatlakoznak a Windows rendszerű virtuális asztali szolgáltatáshoz, a felhasználók átirányíthatók a gazdagép bármely virtuális gépén. Attól függően, hogy a szolgáltatás hogyan lett kialakítva, hatással lehet rá.
+
+>[!NOTE]
+>A BitLocker nem használható a FSLogix-profil adatait tároló adott lemez titkosítására.
+
+### <a name="virtualization-based-security"></a>Virtualizálás-alapú biztonság
+
+A virtualizálás-alapú biztonság (VBS) a hypervisor használatával hoz létre és különít el egy olyan biztonságos régiót, amely nem érhető el az operációs rendszer számára. Hypervisor-Protected kód integritása (HVCI) és a Windows Defender hitelesítőadat-őr is a VBS használatával biztosít fokozott védelmet a biztonsági rések ellen. 
+
+#### <a name="hypervisor-protected-code-integrity"></a>Hypervisor-Protected kód integritása
+
+A HVCI egy hatékony rendszerenyhítés, amely a Windows kernel módú folyamatainak a kártékony vagy nem ellenőrzött kódok injektálásával és végrehajtásával szembeni védelmet nyújt a VBS használatával.
+
+#### <a name="windows-defender-credential-guard"></a>Windows Defender Credential Guard
+
+A Windows Defender hitelesítőadat-őr a VBS használatával elkülöníti és megvédi a titkokat, így csak a rendszerjogosultságú rendszerszoftverek férhetnek hozzájuk. Ez megakadályozza a titkos kulcsokhoz és a hitelesítő adatok ellopásához való illetéktelen hozzáférést, például a pass-The-hash típusú támadásokat.
+
+### <a name="deploy-trusted-launch-in-your-windows-virtual-desktop-environment"></a>Megbízható indítás központi telepítése Windows rendszerű virtuális asztali környezetben
+
+A Windows virtuális asztal jelenleg nem támogatja a megbízható indítás automatikus konfigurálását a gazdagép-készlet telepítési folyamata során. Ha a megbízható indítást szeretné használni a Windows rendszerű virtuális asztali környezetben, a megbízható indítást szabályosan kell telepítenie, majd manuálisan kell hozzáadnia a virtuális gépet a kívánt gazdagép-készlethez.
+
+## <a name="nested-virtualization"></a>Beágyazott virtualizálás
+
+A következő operációs rendszerek támogatják a beágyazott virtualizálás használatát a Windows rendszerű virtuális asztali gépeken:
+
+- Windows Server 2016
+- Windows Server 2019
+- Windows 10 Enterprise
+- Windows 10 Enterprise multi-session.
 
 ## <a name="next-steps"></a>Következő lépések
 

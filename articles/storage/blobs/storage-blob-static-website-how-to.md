@@ -8,21 +8,18 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: a90251097f2b4cced5b30f5d6eea03b6ca0b1c61
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 2ba0e836f1be97681d677158f5cb81c5b033e915
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664749"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008501"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Statikus webhely üzemeltetése az Azure Storage-ban
 
-A statikus tartalom (HTML-, CSS-, JavaScript-és képfájlok) közvetlenül az Azure Storage GPv2-fiókban lévő tárolóból is kiszolgálható. További információ: [statikus webhely üzemeltetése az Azure Storage-ban](storage-blob-static-website.md).
+A statikus tartalmat (HTML-, CSS-, JavaScript-és képfájlokat) közvetlenül egy [általános célú v2-](../common/storage-account-create.md) vagy [BlockBlobStorage](storage-blob-create-account-block-blob.md) -fiókban lévő tárolóból is kiszolgálhatja. További információ: [statikus webhely üzemeltetése az Azure Storage-ban](storage-blob-static-website.md).
 
 Ez a cikk bemutatja, hogyan engedélyezheti a statikus webhelyek üzemeltetését az Azure Portal, az Azure CLI vagy a PowerShell használatával.
-
-> [!NOTE]
-> Mindenképpen hozzon létre egy általános célú v2-es standard Storage-fiókot. A statikus webhelyek semmilyen más típusú Storage-fiókban nem érhetők el.
 
 ## <a name="enable-static-website-hosting"></a>Statikus webhely üzemeltetésének engedélyezése
 

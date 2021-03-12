@@ -2,16 +2,16 @@
 title: Oktatóanyag – függvények hozzáadása Azure Resource Manager bicep-fájlokhoz
 description: Adja hozzá a függvényeket a bicep-fájlokhoz az értékek létrehozásához.
 author: mumian
-ms.date: 03/02/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: references_regions
-ms.openlocfilehash: 9c66ab132d3343115b1a9bd852d3eb3d83ae4ca7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b909beb0cce9ad04ba00068ee25247520dcff47d
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748232"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633155"
 ---
 # <a name="tutorial-add-functions-to-azure-resource-manager-bicep-file"></a>Oktatóanyag: függvények hozzáadása Azure Resource Manager bicep-fájlhoz
 
@@ -37,7 +37,7 @@ A Storage-fiók helye az **USA keleti** régiójában rögzített. Előfordulhat
 
 A függvények rugalmasságot biztosítanak a bicep-fájlhoz az üzembe helyezés során felmerülő értékek dinamikus beolvasásával. Ebben az oktatóanyagban egy függvény használatával beolvassa az üzembe helyezéshez használt erőforráscsoport helyét.
 
-Az alábbi példa kiemeli a nevű paraméter hozzáadásának változásait `location` . A paraméter alapértelmezett értéke meghívja a [resourceGroup](template-functions-resource.md#resourcegroup) függvényt. Ez a függvény egy objektumot ad vissza, amely az üzembe helyezéshez használt erőforráscsoport adatait ismerteti. Az objektum egyik tulajdonsága a Location tulajdonság. Ha az alapértelmezett értéket használja, a Storage-fiók helye megegyezik az erőforráscsoport helyével. Az erőforráscsoporthoz tartozó erőforrásoknak nem kell ugyanazt a helyet megosztaniuk. Szükség esetén másik helyet is megadhat.
+A következő példa a nevű paraméter hozzáadásának módosításait mutatja be `location` . A paraméter alapértelmezett értéke meghívja a [resourceGroup](template-functions-resource.md#resourcegroup) függvényt. Ez a függvény egy objektumot ad vissza, amely az üzembe helyezéshez használt erőforráscsoport adatait ismerteti. Az objektum egyik tulajdonsága a Location tulajdonság. Ha az alapértelmezett értéket használja, a Storage-fiók helye megegyezik az erőforráscsoport helyével. Az erőforráscsoporthoz tartozó erőforrásoknak nem kell ugyanazt a helyet megosztaniuk. Szükség esetén másik helyet is megadhat.
 
 Másolja a teljes fájlt, és cserélje le a bicep-fájlt annak tartalmára.
 

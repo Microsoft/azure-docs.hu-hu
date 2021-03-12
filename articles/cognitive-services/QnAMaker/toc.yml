@@ -32,14 +32,16 @@
       href: Concepts/data-sources-and-content.md
     - name: Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)
       href: Concepts/role-based-access-control.md
+    - name: Pontos válaszadás
+      href: reference-precise-answering.md
+    - name: Az aktív tanulás bekapcsolása
+      href: How-To/use-active-learning.md
     - name: Rangsoroló folyamat
       displayName: 'DefaultAnswer, Default answer'
       href: Concepts/query-knowledge-base.md
     - name: Fejlesztési életciklus
       href: Concepts/development-lifecycle-knowledge-base.md
       displayName: 'version control, test, index, publish, monitor usage, create'
-    - name: Pontos válaszadás
-      href: reference-precise-answering.md
     - name: Ajánlott eljárások
       href: Concepts/best-practices.md
       displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
@@ -47,15 +49,17 @@
       href: choose-natural-language-processing-service.md
 - name: Útmutatók
   items:
-    - name: Azure-erőforrások kezelése
-      href: How-To/set-up-qnamaker-service-azure.md
-      displayName: 'azure, resource, key, upgrade, pricing, tier,'
-    - name: QnA Maker erőforrások konfigurálása
-      href: How-To/configure-QnA-Maker-resources.md
-    - name: Az Azure-erőforrások hálózati elkülönítése
-      href: How-To/network-isolation.md
-    - name: QnA Maker erőforrás-hozzáférés kezelése
-      href: How-To/manage-qna-maker-app.md
+    - name: QnA Maker erőforrások kezelése
+      items:
+        - name: QnA Maker erőforrások beállítása
+          href: How-To/set-up-qnamaker-service-azure.md
+          displayName: 'azure, resource, key, upgrade, pricing, tier,'
+        - name: QnA Maker erőforrás-hozzáférés kezelése
+          href: How-To/manage-qna-maker-app.md
+        - name: QnA Maker erőforrások konfigurálása
+          href: How-To/configure-qna-maker-resources.md
+        - name: Az Azure-erőforrások hálózati elkülönítése
+          href: How-To/network-isolation.md
     - name: A tudásbázis kezelése
       items:
         - name: Tudásbázis létrehozása
@@ -65,7 +69,7 @@
         - name: Migrálás új tudásbázisra
           href: Tutorials/migrate-knowledge-base.md
           displayName: 'metadata, pair'
-        - name: Tesztelés
+        - name: Tudásbázis tesztelése
           href: How-To/test-knowledge-base.md
     - name: QnA-párok kezelése
       items:
@@ -79,15 +83,15 @@
         - name: Alapértelmezett válasz módosítása
           href: How-To/change-default-answer.md
     - name: Tudásbázis lekérdezése
-      href: How-To/metadata-generateanswer-usage.md
-      displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
-    - name: Az aktív tanulás beállítása a Tudásbázis fejlesztéséhez
       items:
-        - name: Az aktív tanulás bekapcsolása
-          href: How-To/use-active-learning.md
-        - name: Javasolt alternatív kérdések lekérése
-          href: How-to/improve-knowledge-base.md
-          displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
+        - name: A GenerateAnswer API használata
+          href: How-To/metadata-generateanswer-usage.md
+          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
+        - name: QnAs szűrése metaadatok alapján
+          href: How-To/query-knowledge-base-with-metadata.md
+    - name: Javasolt alternatív kérdések az aktív tanulás használatával
+      href: How-to/improve-knowledge-base.md
+      displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
     - name: Elemzés és telemetria
       href: How-To/get-analytics-knowledge-base.md
 - name: Referencia

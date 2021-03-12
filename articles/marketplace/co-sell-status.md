@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 02/24/2021
-ms.openlocfilehash: 114e52884ca220635085bdbb8ab19b4f9cf810c0
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 9c788109b014be244560fb652de830ba14a44d68
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120096"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225013"
 ---
 # <a name="verify-co-sell-status-of-a-commercial-marketplace-offer"></a>Kereskedelmi Piactéri ajánlat közös értékesítéssel kapcsolatos állapotának ellenőrzése
 
@@ -32,7 +32,7 @@ A következő táblázat az összes lehetséges közös értékesítési állapo
 | ------------ | ------------- |
 | Nem közös értékesítésre kész | A [közös értékesítésre kész állapotra](co-sell-requirements.md#requirements-for-co-sell-ready-status) vonatkozó minimális követelmények nem teljesültek. |
 | Közös értékesítés kész | [A közös értékesítésre kész állapotra vonatkozó összes követelmény](co-sell-requirements.md#requirements-for-co-sell-ready-status) teljesült. |
-| Azure IP közös értékesítésű incentivized | [Ezen további követelmények](co-sell-requirements.md#requirements-for-ip-co-sell-incentivized-status)mellett a közös értékesítésre kész követelmények is teljesülnek. |
+| Azure IP közös értékesítésű incentivized | [Ezen további követelmények](co-sell-requirements.md#requirements-for-azure-ip-co-sell-incentivized-status)mellett a közös értékesítésre kész követelmények is teljesülnek. |
 | Biz apps ISV – prémium ösztönző  | Ez az állapot a Dynamics 365-es és a Power apps-ajánlatokra vonatkozik, és azt jelzi, hogy az [adott állapotra vonatkozó összes követelmény](co-sell-requirements.md#requirements-for-biz-apps-isv-connect-premium-incentive-status) teljesült. |
 |||
 

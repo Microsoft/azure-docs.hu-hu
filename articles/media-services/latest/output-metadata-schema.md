@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 1a27db81866760bff56c900a908162f356c01a66
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: f26905366949c2c198e52f78bc7adb734cbb7f90
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895203"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612456"
 ---
 # <a name="output-metadata"></a>Kimeneti metaadatok
 
@@ -52,8 +52,8 @@ Minden fizikai AssetFile tartalmazhatnak nulla vagy több, a megfelelő tároló
 | Név | Leírás |
 | --- | --- |
 | **ID**<br /> Kötelező |A videó nyomon követésének nulla alapú indexe. **Megjegyzés:**  Ez az **azonosító** nem feltétlenül az MP4-fájlban használt TrackID. <br /><br />Például: `"Id": 1`|
-| **FourCC**<br />Kötelező | Az FFmpeg által jelentett video codec FourCC-kód.  <br /><br />Például: `"FourCC": "avc1"`|
-| **Profil** |H264-profil (csak H264-kodekre alkalmazható).  <br /><br />Például: `"Profile": "High"` |
+| **FourCC**<br />Kötelező | Az FFmpeg által jelentett video codec FourCC-kód.  <br /><br />Például: `"FourCC": "avc1" | "hev1" | "hvc1"`|
+| **Profil** |H264-profil (csak H264-kodekre alkalmazható)  <br /><br />Például: `"Profile": "High"` |
 | **Szintű** |H264-szint (csak H264-kodekre alkalmazható).  <br /><br />Például: `"Level": "3.2"`|
 | **Szélesség**<br />Kötelező |Kódolt videó szélessége képpontban megadva  <br /><br />Például: `"Width": "1280"`|
 | **Magasság**<br />Kötelező |Kódolt videó magassága képpontban megadva.  <br /><br />Például: `"Height": "720"`|

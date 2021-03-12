@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9abed17f5a3d23f811c7cec0d4fd31e4433f651d
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: df90857bf30b6fff3c18faf126efabe8c959c0c6
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177019"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633427"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>A Azure Active Directory újdonságai
 
@@ -211,7 +211,7 @@ A **termék képességei:** Access Control
  
 10 az Azure AD beépített szerepkörei át lettek nevezve, hogy a [Microsoft 365 felügyeleti központban](https://docs.microsoft.com/microsoft-365/admin/microsoft-365-admin-center-preview), az [Azure ad-portálon](https://portal.azure.com/)és a [Microsoft Graphn](https://developer.microsoft.com/graph/)legyenek igazítva. Ha többet szeretne megtudni az új szerepkörökről, tekintse meg a [rendszergazdai szerepkörre vonatkozó engedélyeket Azure Active Directory](../roles/permissions-reference.md#all-roles).
 
-![Új szerepkör-nevek táblázata](media/whats-new/roles-table-rbac.png)
+![Az MS Graph APIban és a Azure Portalban található szerepkörök nevét, valamint az API, a Azure Portal és a Mac rendszerekben javasolt végső nevet bemutató táblázat.](media/whats-new/roles-table-rbac.png)
 
 ---
 
@@ -968,7 +968,7 @@ A **termék képességei:** Access Control
  
 Néhány Azure Active Directory (AD) beépített szerepkör olyan névvel rendelkezik, amely különbözik a Microsoft 365 felügyeleti központban, az Azure AD-Portálon és a Microsoft Graphban megjelenő nevektől. Ez az inkonzisztencia problémákat okozhat az automatizált folyamatokban. Ezzel a frissítéssel a rendszer 10 szerepkör-nevet átnevez, hogy azok konzisztensek legyenek. Az új szerepkörök nevei a következő táblázatban láthatók:
 
-![Új szerepkör-nevek táblázata](media/whats-new/azure-role.png)
+![Az MS Graph APIban és a Azure Portalban található szerepkörök nevei, valamint a M365 felügyeleti központban, a Azure Portal és az API-ban javasolt új szerepkör neve.](media/whats-new/azure-role.png)
 
 ---
 

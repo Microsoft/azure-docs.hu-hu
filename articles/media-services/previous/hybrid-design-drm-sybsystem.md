@@ -3,7 +3,7 @@ title: A DRM alrendszer (ök) hibrid tervezése Azure Media Services használat�
 description: Ez a témakör a DRM-alrendszer (k) hibrid kialakítását ismerteti Azure Media Services használatával.
 services: media-services
 documentationcenter: ''
-author: willzhan
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 18213fc1-74f5-4074-a32b-02846fe90601
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/31/2020
+ms.date: 03/10/2021
 ms.author: willzhan
 ms.reviewer: juliako
-ms.openlocfilehash: 1bf01e98e418edfe8f15043d16a199b276b71020
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a48e761c4fb74802c6b1db63884ee192446720a4
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266901"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016270"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>A DRM-alrendszerek hibrid tervezése
 
@@ -97,10 +97,10 @@ Az eszközök kézbesítési házirendjének konfigurálásával szabályozhatja
 
 Az előző szakaszban ismertetett magyarázat alapján a következő öt hibrid forgatókönyv a megfelelő **tartalmi kulcsú** - **eszközök kézbesítési szabályzatának** konfigurációs kombinációit használja (az utolsó oszlopban említett minták követik a táblázatot):
 
-|**& forrást üzemeltető tartalom**|**DRM-titkosítás**|**DRM-licenckézbesítés**|**Tartalom kulcsának konfigurálása**|**Objektumtovábbítási szabályzat konfigurálása**|**Minta**|
+|**& forrást üzemeltető tartalom**|**DRM-titkosítás**|**DRM-licenckézbesítés**|**Tartalom kulcsának konfigurálása**|**Objektumtovábbítási szabályzat konfigurálása**|**Sample**|
 |---|---|---|---|---|---|
-|AMS|AMS|AMS|Igen|Igen|1. példa|
-|AMS|AMS|Harmadik féltől származó|Igen|Igen|2. példa|
+|AMS|AMS|AMS|Igen|Yes|1. példa|
+|AMS|AMS|Harmadik féltől származó|Igen|Yes|2. példa|
 |AMS|Harmadik féltől származó|AMS|Igen|Nem|3. példa|
 |AMS|Harmadik féltől származó|Kívül|Nem|Nem|4. példa|
 |Harmadik féltől származó|Harmadik féltől származó|AMS|Igen|Nem|    
@@ -133,7 +133,7 @@ A mintákban a PlayReady-védelem mind a DASH, mind a Smooth streaming esetében
 
 * A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Összefoglalva, Azure Media Services DRM-összetevők rugalmasak, a jelen témakörben leírtaknak megfelelően a tartalom és az eszköz kézbesítési szabályzatának megfelelő konfigurálásával hibrid forgatókönyvekben is használhatók.
 

@@ -3,7 +3,7 @@ title: A tartalomvédelem házirendjeinek konfigurálása a Azure Portal haszná
 description: Ez a cikk azt mutatja be, hogyan használható a Azure Portal a tartalomvédelem házirendjeinek konfigurálásához. A cikk azt is bemutatja, hogyan lehet engedélyezni a dinamikus titkosítást az eszközei számára.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 270b3272-7411-40a9-ad42-5acdbba31154
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 5ddd31f96ca88a02fa667f8809a00e2a4e3ecc50
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: c6620158965271ba99f80c2fbd36504fdbea7ecf
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695424"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010779"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>A tartalomvédelem házirendjeinek konfigurálása a Azure Portal használatával
 
@@ -130,7 +130,7 @@ Az AES Clear Key encryption minden folyamatos átviteli protokollon engedélyezv
 
 * A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése

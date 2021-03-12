@@ -103,6 +103,12 @@
           href: ./samples/nist-sp-800-53-r4.md
         - name: NIST SP 800-171 R2
           href: ./samples/nist-sp-800-171-r2.md
+    - name: Vendég alapkonfigurációk
+      items:
+        - name: Linux alapkonfiguráció Azure biztonsági teljesítményteszthez
+          href: ./samples/guest-configuration-baseline-linux.md
+        - name: Az Azure biztonsági Teljesítménytesztének Windows-alapterve
+          href: ./samples/guest-configuration-baseline-windows.md
 - name: Alapelvek
   items:
     - name: Definíciók struktúrája

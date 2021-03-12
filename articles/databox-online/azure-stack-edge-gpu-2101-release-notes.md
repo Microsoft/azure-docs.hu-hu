@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/22/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: e8005bbf0373c91cf9f3515059544b9af3d52384
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 922480eb2f4795729919c6ed039ccf61f19875b3
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102443794"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630367"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Azure Stack Edge 2101 kibocsátási megjegyzései
 
@@ -29,7 +29,7 @@ Ez a cikk a **Azure stack Edge 2101** kiadásra vonatkozik, amely a szoftver ver
 
 A következő új szolgáltatások érhetők el az Azure Stack Edge 2101 kiadásban. 
 
-- **A Azure stack Edge Pro r és a Azure stack Edge mini r-eszközök általános elérhetősége** – ettől a kiadástól kezdve Azure stack Edge Pro r és Azure stack Edge mini r-eszközök lesznek elérhetők. További információ: [What is Azure stack Edge Pro r](azure-stack-edge-j-series-overview.md) és [mi az a Azure stack Edge mini r](azure-stack-edge-k-series-overview.md).  
+- **A Azure stack Edge Pro r és a Azure stack Edge mini r-eszközök általános elérhetősége** – ettől a kiadástól kezdve Azure stack Edge Pro r és Azure stack Edge mini r-eszközök lesznek elérhetők. További információ: [What is Azure stack Edge Pro r](azure-stack-edge-pro-r-overview.md) és [mi az a Azure stack Edge mini r](azure-stack-edge-mini-r-overview.md).  
 - **Virtual Machines Felhőbeli kezelése** – a jelen kiadás megkezdése után az eszközön létrehozhatja és kezelheti a virtuális gépeket az eszközön a Azure Portal használatával. További információ: [virtuális gépek üzembe helyezése a Azure Portal használatával](azure-stack-edge-gpu-deploy-virtual-machine-portal.md).
 - **Integráció a Azure monitor** használatával – mostantól a Azure monitor segítségével figyelheti az eszközön futó számítási alkalmazások tárolóit. Ebben a kiadásban nem támogatott a Azure Monitor metrikák tárolója. További információ: [Azure monitor engedélyezése az eszközön](azure-stack-edge-gpu-enable-azure-monitor.md).
 - **Edge Container Registry** – ebben a kiadásban egy Edge Container Registry áll rendelkezésre, amely az eszköz szélén található tárházat biztosít. Ezt a beállításjegyzéket használhatja a tároló lemezképek tárolásához és kezeléséhez. További információ: az [Edge Container Registry engedélyezése](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md). 

@@ -1,23 +1,18 @@
 ---
 title: Fontos változások a Azure Security Center
 description: Előfordulhat, hogy a Azure Security Center közelgő módosításaival tisztában kell lennie a szolgáltatással, és amelyre szükség lehet a tervezéshez
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/04/2021
+ms.date: 03/10/2021
 ms.author: memildin
-ms.openlocfilehash: 6bec9f0a1c22691d818566cec3f59c1ec0f3d3bb
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 49141f7f11c0e8ead090459238e15b56f57b990b
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102051616"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633716"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>A Azure Security Center fontos jövőbeli módosításai
 
@@ -32,7 +27,6 @@ Ha a legújabb kibocsátási megjegyzéseket keresi, a [Azure Security Center ú
 ## <a name="planned-changes"></a>Tervezett változások
 
 - [Az AWS javaslatai az általánosan elérhetővé tételhez lesznek közzétéve](#recommendations-from-aws-will-be-released-for-general-availability-ga)
-- [Két örökölt javaslat nem fog közvetlenül az Azure-beli tevékenység naplóba írni.](#two-legacy-recommendations-will-no-longer-write-data-directly-to-azure-activity-log)
 - [A System Updates (rendszerfrissítések alkalmazása) biztonsági ellenőrzésének két javaslata elavult](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [Az SQL-adatbesorolásra vonatkozó javaslat továbbfejlesztése](#enhancements-to-sql-data-classification-recommendation)
 - [11 Azure Defender-riasztás elavult](#deprecation-of-11-azure-defender-alerts)
@@ -53,21 +47,6 @@ Ezzel a módosítással az AWS-javaslatok két halmaza kerül át a GA-ra:
 
 Ha ezek a GA és a felmérések az AWS-erőforrásokon futnak, az eredmények az összes multi-és hibrid Felhőbeli erőforrás együttes biztonsági pontszámát is befolyásolják. 
 
-
-
-### <a name="two-legacy-recommendations-will-no-longer-write-data-directly-to-azure-activity-log"></a>Két örökölt javaslat nem fog közvetlenül az Azure-beli tevékenység naplóba írni. 
-
-**Változás becsült dátuma:** Március 2021
-
-A Security Center szinte minden biztonsági javaslathoz átadja az adatot, hogy Azure Advisor, amely viszont azt írja az [Azure-tevékenység naplójába](../azure-monitor/essentials/activity-log.md).
-
-Két javaslat esetében az adatgyűjtés egyidejűleg közvetlenül az Azure-tevékenység naplójában történik. Ezzel a módosítással a Security Center leállítja a korábbi biztonsági javaslatok adatírását közvetlenül a tevékenységi naplóba. Ehelyett exportáljuk az adatAzure Advisor, ahogy az összes többi javaslat esetében. 
-
-A két örökölt javaslat a következők:
-- Az Endpoint Protection állapotával kapcsolatos problémákat fel kell oldani a gépeken
-- A gépek biztonsági beállításainak sebezhetőségeit szervizelni kell
-
-Ha a következő két javaslathoz fér hozzá a tevékenység naplójának "TaskDiscovery típusú javaslat" kategóriájában, akkor ez a továbbiakban nem lesz elérhető.
 
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>A System Updates (rendszerfrissítések alkalmazása) biztonsági ellenőrzésének két javaslata elavult 
 

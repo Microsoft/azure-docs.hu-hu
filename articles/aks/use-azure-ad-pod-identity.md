@@ -3,13 +3,13 @@ title: Azure Active Directory Pod által felügyelt identitások használata az 
 description: Ismerje meg, hogyan használhatja a HRE Pod által felügyelt identitásokat az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 ms.topic: article
-ms.date: 12/01/2020
-ms.openlocfilehash: e7c8a96ad012afdcd724a4a242c27018563f3a10
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 3/12/2021
+ms.openlocfilehash: 8b94c859800c3757842ad56df6e20f215bb13a7d
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176314"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103233496"
 ---
 # <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>Azure Active Directory Pod által felügyelt identitások használata az Azure Kubernetes Service-ben (előzetes verzió)
 
@@ -24,13 +24,13 @@ Azure Active Directory Pod által felügyelt identitások a Kubernetes primitív
 
 A következő erőforrást kell telepítenie:
 
-* Az Azure CLI, a 2.8.0 vagy újabb verzió
-* A `azure-preview` bővítmény 0.4.68 vagy újabb verziója
+* Az Azure CLI, 2.20.0 vagy újabb verzió
+* A `azure-preview` bővítmény 0.5.5 vagy újabb verziója
 
 ### <a name="limitations"></a>Korlátozások
 
-* Fürthöz legfeljebb 50 Pod identitás adható meg.
-* Fürt esetében legfeljebb 50 Pod Identity-kivétel engedélyezett.
+* Fürthöz legfeljebb 200 Pod identitás adható meg.
+* Fürt esetében legfeljebb 200 Pod Identity-kivétel engedélyezett.
 * A pod által felügyelt identitások csak Linux rendszerű csomópont-készleteken érhetők el.
 
 ### <a name="register-the-enablepodidentitypreview"></a>Regisztrálja a `EnablePodIdentityPreview`
@@ -66,6 +66,21 @@ Az [az AK Get-hitelesítő adatok][az-aks-get-credentials] használatával jelen
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
+```
+## <a name="create-an-aks-cluster-with-kubenet-network-plugin"></a>AK-fürt létrehozása a Kubenet hálózati beépülő modullal
+
+Hozzon létre egy AK-fürtöt a Kubenet hálózati beépülő modullal és a pod által felügyelt identitással.
+
+```azurecli-interactive
+az aks create -g $MY_RESOURCE_GROUP -n $MY_CLUSTER --enable-pod-identity --enable-pod-identity-with-kubenet
+```
+
+## <a name="update-an-existing-aks-cluster-with-kubenet-network-plugin"></a>Meglévő AK-fürt frissítése Kubenet hálózati beépülő modullal
+
+Frissítsen egy meglévő AK-fürtöt a Kubnet hálózati beépülő modullal, hogy tartalmazza a pod által felügyelt identitást.
+
+```azurecli-interactive
+az aks update -g $MY_RESOURCE_GROUP -n $MY_CLUSTER --enable-pod-identity --enable-pod-identity-with-kubenet
 ```
 
 ## <a name="create-an-identity"></a>Identitás létrehozása

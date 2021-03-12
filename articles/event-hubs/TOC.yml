@@ -136,9 +136,13 @@
           href: ./security-controls-policy.md
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
-    - name: AMQP 1.0 protokoll – útmutató
-      href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
-      maintainContext: true
+    - name: AMQP
+      items:
+        - name: AMQP 1.0 protokoll – útmutató
+          href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
+          maintainContext: true
+        - name: AMQP-hibák
+          href: event-hubs-amqp-troubleshoot.md
 - name: Útmutatók
   items:
     - name: Sémajegyzék létrehozása

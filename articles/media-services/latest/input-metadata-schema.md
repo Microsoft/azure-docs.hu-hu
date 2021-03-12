@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 1ca526b7ecbe20a54ec115521cdfbc93c713e0da
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 0acb882410d103cf6f6c34bbecf2006094437b04
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360054"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634685"
 ---
 # <a name="input-metadata"></a>Bemeneti metaadatok
 
@@ -39,9 +39,7 @@ A JSON-séma példáját a cikk végén találja.
 A kódolási feladatokhoz tartozó AssetFile-elemek gyűjteményét tartalmazza.  
 
 > [!NOTE]
-> A következő négy alárendelt elemnek egy sorozatban kell megjelennie.  
-> 
-> 
+> A következő négy alárendelt elemnek egy sorozatban kell megjelennie.
 
 | Név  | Leírás |
 | --- | --- | 
@@ -67,7 +65,7 @@ A kódolási feladatokhoz tartozó AssetFile-elemek gyűjteményét tartalmazza.
 
 | Név | Leírás |
 | --- | --- |
-| **FourCC**<br />Kötelező |Az FFmpeg által jelentett video codec FourCC-kód.<br /><br />Például: `"FourCC": "avc1"` |
+| **FourCC**<br />Kötelező |Az FFmpeg által jelentett video codec FourCC-kód.<br /><br />Például: `"FourCC": "avc1" | "hev1" | "hvc1"` |
 | **Profil** |A Video Track profilja. <br /><br />Például: `"Profile": "Main"`|
 | **Szintű** |A videó követési szintje. <br /><br />Például: `"Level": "3.2"`|
 | **PixelFormat** |A Video Track képpontjának formátuma <br /><br />Például: `"PixelFormat": "yuv420p"`|
@@ -82,9 +80,9 @@ A kódolási feladatokhoz tartozó AssetFile-elemek gyűjteményét tartalmazza.
 | **HasBFrames** |A B képkockák számának nyomon követése. <br /><br />Például: `"HasBFrames": 2`|
 | **Metaadatok** |Általános kulcs/érték karakterláncok, amelyek különféle információk tárolására használhatók. <br />Tekintse meg a cikk végén található teljes példát. |
 | **ID**<br />Kötelező |A hang-vagy videó nyomon követésének nulla alapú indexe.<br /><br /> Ez az **azonosító** nem feltétlenül az MP4-fájlban használt TrackID. <br /><br />Például: `"Id": 2`|
-| **Codec** |Videó Track kodek karakterlánca <br /><br />Például: `"Codec": "h264"`|
+| **Codec** |Videó Track kodek karakterlánca <br /><br />Például: `"Codec": "h264 | hev1"`|
 | **CodecLongName** |Hang-vagy Video Track-kodek hosszú neve. <br /><br />Például: `"CodecLongName": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10"`|
-| **Codec** |Videó Track kodek karakterlánca <br /><br />Például: `"Codec": "h264"`|
+| **Codec** |Videó Track kodek karakterlánca <br /><br />Például: `"Codec": "h264 | hev1"`|
 | **Időalap**<br />Kötelező |Idő alapja.<br /><br />Például: `"TimeBase": "1/30000"`|
 | **NumberOfFrames** |Képkockák száma (a videó sávok esetében). <br /><br />Például: `"NumberOfFrames": 2107`|
 | **StartTime** |A kezdési idő nyomon követése.<br /><br />Például: `"StartTime": "PT0.033S"` |

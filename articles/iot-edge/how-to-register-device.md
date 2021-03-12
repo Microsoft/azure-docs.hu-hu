@@ -9,14 +9,16 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: kgremban
-ms.openlocfilehash: 97faf5eff7187bbabe23bbcab60514eef4acc063
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: d75f184a324a9d418b0af2e3cf5790205af0fa42
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98634192"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200721"
 ---
 # <a name="register-an-iot-edge-device-in-iot-hub"></a>IoT Edge eszköz regisztrálása IoT Hub
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Ez a cikk az új IoT Edge eszköz IoT Hub-ben való regisztrálásának lépéseit ismerteti.
 
@@ -79,7 +81,7 @@ A Azure Portal IoT hub-ban IoT Edge eszközöket a rendszer külön hozza létre
    * A hitelesítési típusként válassza a **szimmetrikus kulcs** lehetőséget.
    * Használja az alapértelmezett beállításokat a hitelesítési kulcsok automatikus létrehozásához és az új eszköz csatlakoztatásához a központhoz.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -175,7 +177,7 @@ A Azure Portal IoT hub-ban IoT Edge eszközöket a rendszer külön hozza létre
    * Válassza az **X. 509 önaláírt** hitelesítési típusként lehetőséget.
    * Adja meg az elsődleges és a másodlagos identitás tanúsítványának ujjlenyomatai megfelelnek. Az ujjlenyomatok értéke 40 – hexadecimális karakter az SHA-1 kivonatokhoz, vagy 64 – hexadecimális karakter az SHA-256 kivonatokhoz.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 

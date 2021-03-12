@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre gyorsan Kubernetes-fürtöt, hogy
 services: container-service
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 4d429b7136158723fa6110975326217c5540bc2e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 13b4fbd21bb348d1ef79a3ca68128869115745cc
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180972"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200909"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Windows Server-tároló létrehozása Azure Kubernetes szolgáltatásbeli (ak) fürtön az Azure CLI használatával
 
@@ -69,32 +69,35 @@ A következő példa kimenete azt mutatja, hogy az erőforráscsoport sikeresen 
 
 Ha olyan AK-fürtöt szeretne futtatni, amely támogatja a Windows Server-tárolók csomópont-készleteit, a fürtnek az [Azure CNI][azure-cni-about] (Advanced) hálózati beépülő modult használó hálózati házirendet kell használnia. További információ a szükséges alhálózati tartományok és hálózati megfontolások megtervezéséhez: az [Azure CNI hálózatkezelésének konfigurálása][use-advanced-networking]. Az az [AK Create][az-aks-create] paranccsal hozzon létre egy *myAKSCluster* nevű AK-fürtöt. Ez a parancs létrehozza a szükséges hálózati erőforrásokat, ha nem léteznek.
 
-* A fürt két csomóponttal van konfigurálva
-* A *Windows-admin-password* és a *Windows-admin-username* paraméterek beállítja a fürtön létrehozott Windows Server-tárolók rendszergazdai hitelesítő adatait, és meg kell felelniük a [Windows Server-jelszó követelményeinek][windows-server-password].
-* A csomópont-készlet használja `VirtualMachineScaleSets`
+* A fürt két csomóponttal van konfigurálva.
+* A `--windows-admin-password` és a `--windows-admin-username` paraméterek a fürtön létrehozott Windows Server-tárolók rendszergazdai hitelesítő adatait, valamint a [Windows Server-jelszóra vonatkozó követelményeket][windows-server-password]is kielégítik. Ha nem adja meg a *Windows-admin-password* paramétert, a rendszer kérni fogja egy érték megadását.
+* A csomópont-készletet használja `VirtualMachineScaleSets` .
 
 > [!NOTE]
 > Annak biztosítása érdekében, hogy a fürt megbízhatóan működjön, legalább 2 (két) csomópontot kell futtatnia az alapértelmezett csomópont-készletben.
 
-Saját biztonságos *PASSWORD_WIN* megadása (ne feledje, hogy a cikkben szereplő parancsok egy bash-rendszerhéjba kerülnek):
+Hozzon létre egy felhasználónevet, amelyet rendszergazdai hitelesítő adatként kell használni a Windows Server-tárolók számára a fürtön. A következő parancsok megkérik a felhasználónevek megadására és a későbbi parancsokban való használatra WINDOWS_USERNAME (ne feledje, hogy a cikkben szereplő parancsok egy BASH-rendszerhéjba kerülnek).
 
 ```azurecli-interactive
-PASSWORD_WIN="P@ssw0rd1234"
+echo "Please enter the username to use as administrator credentials for Windows Server containers on your cluster: " && read WINDOWS_USERNAME
+```
 
+Hozzon létre egy fürtöt, amely biztosítja a paraméter megadását `--windows-admin-username` . A következő példában a parancs létrehoz egy fürtöt az előző parancsban beállított *WINDOWS_USERNAME* értékének használatával. Egy másik felhasználónevet is megadhat közvetlenül a paraméterben a *WINDOWS_USERNAME* használata helyett. A következő parancs azt is kéri, hogy hozzon létre egy jelszót a Windows Server-tárolók rendszergazdai hitelesítő adataihoz a fürtön. Másik lehetőségként használhatja a *Windows-admin-password* paramétert, és megadhatja a saját értékét is.
+
+```azurecli-interactive
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
     --node-count 2 \
     --enable-addons monitoring \
     --generate-ssh-keys \
-    --windows-admin-password $PASSWORD_WIN \
-    --windows-admin-username azureuser \
+    --windows-admin-username $WINDOWS_USERNAME \
     --vm-set-type VirtualMachineScaleSets \
     --network-plugin azure
 ```
 
 > [!NOTE]
-> Ha jelszó-érvényesítési hibát kap, ellenőrizze, hogy a *Windows-admin-password* paraméter megfelel-e a [Windows Server jelszó követelményeinek][windows-server-password]. Ha a Jelszó megfelel a követelményeknek, próbálja meg létrehozni az erőforráscsoportot egy másik régióban. Ezután próbálja meg létrehozni a fürtöt az új erőforrás-csoporttal.
+> Ha jelszó-érvényesítési hibát kap, ellenőrizze, hogy a beállított jelszó megfelel-e a [Windows Server-jelszó követelményeinek][windows-server-password]. Ha a Jelszó megfelel a követelményeknek, próbálja meg létrehozni az erőforráscsoportot egy másik régióban. Ezután próbálja meg létrehozni a fürtöt az új erőforrás-csoporttal.
 
 Néhány perc elteltével a parancs befejeződik, és a fürthöz tartozó JSON-formátumú adatokat adja vissza. A fürt esetenként több percig is eltarthat. Ezekben az esetekben akár 10 percet is igénybe vehet.
 

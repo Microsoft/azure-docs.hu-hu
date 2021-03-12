@@ -12,27 +12,22 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 5b74c817a974378a7fefc71e4eed67e6564765be
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 372efa217e400ffd4bcecd286f3c3dc7b81f64d6
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756559"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103007964"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Webes API-kat meghívó asztali alkalmazás: kód konfigurálása
 
 Most, hogy létrehozta az alkalmazást, megtudhatja, hogyan konfigurálhatja a kódot az alkalmazás koordinátáival.
 
-## <a name="microsoft-authentication-libraries"></a>Microsoft hitelesítési kódtárak
+## <a name="microsoft-libraries-supporting-desktop-apps"></a>Asztali alkalmazásokat támogató Microsoft-kódtárak
 
-A következő Microsoft Authentication librarys (MSALs) támogatja az asztali alkalmazásokat.
+A következő Microsoft-kódtárak támogatják az asztali alkalmazásokat:
 
-  Microsoft Authentication Library | Leírás
-  ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Támogatja az asztali alkalmazások több platformon, például a Linux, a Windows és a macOS rendszerben történő létrehozását.
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | A támogatja az asztali alkalmazások több platformon történő összeállítását.
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | A támogatja az asztali alkalmazások több platformon történő összeállítását.
-  ![MSAL iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL iOS | A csak macOS rendszeren futó asztali alkalmazásokat támogatja.
+[!INCLUDE [active-directory-develop-libraries-desktop](../../../includes/active-directory-develop-libraries-desktop.md)]
 
 ## <a name="public-client-application"></a>Nyilvános ügyfélalkalmazás
 
@@ -104,7 +99,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-### <a name="learn-more"></a>Részletek
+### <a name="learn-more"></a>Tudjon meg többet
 
 További információ a MSAL.NET asztali alkalmazások konfigurálásáról:
 
@@ -260,6 +255,6 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 ```
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a forgatókönyvben a következő cikkre léphet be, amely [egy jogkivonat beszerzését kéri az asztali alkalmazás számára](scenario-desktop-acquire-token.md).

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb138ade0f579a7545c0910646b6adfb7d5ac02a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4b69daf9e9fbbb3f6d6597a8e8349dc8bec61fbf
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996661"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008774"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Arculat hozzáadása a szervezet Azure Active Directory bejelentkezési lapjához
 A szervezet emblémájának és egyéni színsémáinak használatával egységes megjelenést és működést biztosíthat a Azure Active Directory (Azure AD) bejelentkezési oldalain. A bejelentkezési oldalai akkor jelennek meg, amikor a felhasználók bejelentkeznek a szervezet webalapú alkalmazásaiba, például a Microsoft 365ba, amely az Azure AD-t használja az identitás-szolgáltatóként.
@@ -58,7 +58,7 @@ Az egyéni arculat nem jelenik meg azonnal, amikor a felhasználók olyan webhel
 
         - **Szalagcím emblémája** Válassza ki az embléma egy. png vagy. jpg verzióját, amely a bejelentkezési oldalon jelenik meg, miután a felhasználó bejelentkezett a Felhasználónév és a **saját alkalmazások** portál oldalon.
             
-            A rendszerkép nem lehet magasabb, mint 60 képpont, vagy nagyobb, mint 280 képpont. Javasoljuk, hogy transzparens képet használjon, mivel előfordulhat, hogy a háttér nem felel meg az embléma hátterének. Azt javasoljuk továbbá, hogy ne adja meg a kitöltés körét a képen, vagy hogy az embléma kicsi legyen.
+            A rendszerkép nem lehet nagyobb, mint 60 képpont vagy nagyobb, mint 280 képpont, és a fájl nem lehet nagyobb, mint 10KB. Javasoljuk, hogy transzparens képet használjon, mivel előfordulhat, hogy a háttér nem felel meg az embléma hátterének. Azt javasoljuk továbbá, hogy ne adja meg a kitöltés körét a képen, vagy hogy az embléma kicsi legyen. 
 
         - **Felhasználónév-emlékeztető.** Írja be a felhasználók számára megjelenő tipp szövegét, ha elfelejtik a felhasználónevét. A szövegnek Unicode formátumúnak kell lennie, hivatkozás vagy kód nélkül, és nem lehet hosszabb 64 karakternél. Ha a vendégek bejelentkeznek az alkalmazásba, javasoljuk, hogy ne adja hozzá ezt a tippet.
 
