@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 01/04/2021
+ms.date: 03/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 5f39f727deaf3a53db5e2928e5af23779c298318
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 0c7e011cf8445164e0931f71e390813c9134dd89
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97911531"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200934"
 ---
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a Azure stack Edge-erőforrást, majd lépjen az **Áttekintés** elemre. Az eszköznek online állapotban kell lennie. Nyissa meg a **Cloud Storage-átjáró > Storage-fiókok** lapot.
 
@@ -19,18 +19,17 @@ ms.locfileid: "97911531"
 
 3. Az **Edge Storage-fiók hozzáadása** panelen adja meg a következő beállításokat:
 
-    a. Az eszköz peremhálózati tárolási fiókjának egyedi neve. A Storage-fiókok nevei csak kisbetűket és betűket tartalmazhatnak. A speciális karakterek használata nem engedélyezett. A Storage-fiók nevének egyedinek kell lennie az eszközön belül (az eszközökön kívül).
+    1. Adja meg az eszközön az Edge Storage-fiók egyedi nevét. A Storage-fiókok nevei csak kisbetűket és betűket tartalmazhatnak. A speciális karakterek használata nem engedélyezett. A Storage-fiók nevének egyedinek kell lennie az eszközön belül (az eszközökön kívül).
 
-    b. A Storage-fiókban tárolt adatokra vonatkozó információk opcionális leírása.  
+    2. Adja meg a Storage-fiókban tárolt adatokra vonatkozó információk opcionális leírását.  
     
-    c. Alapértelmezés szerint a Edge Storage-fiók a felhőben egy Azure Storage-fiókra van leképezve, és a Storage-fiókból származó adatok automatikusan a felhőbe kerülnek. Adja meg azt az Azure Storage-fiókot, amelyhez a peremhálózati tárolóeszköz hozzá van rendelve.  
+    3. Alapértelmezés szerint a Edge Storage-fiók a felhőben egy Azure Storage-fiókra van leképezve, a Storage-fiókból származó adatok pedig automatikusan a felhőbe kerülnek. Adja meg azt az Azure Storage-fiókot, amelyhez a peremhálózati tárolóeszköz hozzá van rendelve.
 
-    d. Ezután hozzon létre egy új tárolót, vagy válasszon egy meglévő tárolóból az Azure Storage-fiókban. A rendszer automatikusan feltölti az eszközről az Edge Storage-fiókba írt összes olyan adatforrást, amely a hozzárendelt Azure Storage-fiókban található kiválasztott tárolóba kerül.
+    4. Hozzon létre egy új tárolót, vagy válasszon egy meglévő tárolóból az Azure Storage-fiókban. A rendszer automatikusan feltölti az eszközről az Edge Storage-fiókba írt összes olyan adatforrást, amely a hozzárendelt Azure Storage-fiókban található kiválasztott tárolóba kerül.
 
-    <!--![Add a storage account](media/azure-stack-edge-gateway-add-storage-account/add-storage-account-2.png)-->
+    5. Miután megadta a Storage-fiók összes beállítását, kattintson a **Hozzáadás** gombra a peremhálózati Storage-fiók létrehozásához. A rendszer értesítést küld, ha a peremhálózati Storage-fiók létrehozása sikeres volt. Ekkor megjelenik az új Edge Storage-fiók a Azure Portal a Storage-fiókok listájában.
 
-    e. Miután megadta a Storage-fiók összes beállítását, kattintson a **Hozzáadás** gombra a peremhálózati Storage-fiók létrehozásához. A rendszer értesítést küld, ha a peremhálózati Storage-fiók létrehozása sikeres volt. Ekkor megjelenik az új Edge Storage-fiók a Azure Portal a Storage-fiókok listájában. 
-
+    <!--[Add a storage account](media/azure-stack-edge-gateway-add-storage-account/add-storage-account-2.png)-->
     
 4. Ha ezt az új Storage-fiókot választja, és a **hozzáférési kulcsok** lehetőségre kattint, megkeresheti a blob Service-végpontot és a hozzá tartozó Storage-fiók nevét. Másolja ezeket az adatokat, mivel ezek az értékek és a hozzáférési kulcsok is segítenek csatlakozni az Edge Storage-fiókhoz.
 

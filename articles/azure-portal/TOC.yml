@@ -21,13 +21,6 @@
         - name: ARM-sablon
           displayName: Resource Manager
           href: quick-create-template.md
-- name: Alapelvek
-  items:
-    - name: Irányítópultok megosztása Azure szerepköralapú hozzáférés-vezérléssel
-      href: azure-portal-dashboard-share-access.md
-    - name: Azure-irányítópultok létrehozása programozott módon
-      href: azure-portal-dashboards-create-programmatically.md
-      displayName: 'Azure CLI, az portal dashboard, az portal'
 - name: Útmutatók
   items:
     - name: Az Azure Portal beállításainak kezelése
@@ -38,8 +31,13 @@
       href: manage-filter-resource-views.md
     - name: Azure-beli irányítópultok létrehozása
       items:
-        - name: Azure-irányítópultok létrehozása és megosztása
+        - name: Azure-irányítópult létrehozása
           href: azure-portal-dashboards.md
+        - name: Azure-irányítópult megosztása
+          href: azure-portal-dashboard-share-access.md
+        - name: Azure-irányítópult programozott létrehozása
+          href: azure-portal-dashboards-create-programmatically.md
+          displayName: 'Azure CLI, az portal dashboard, az portal'
         - name: Egyéni Markdown-csempe használata
           href: azure-portal-markdown-tile.md
     - name: Az Azure Portal útmutató videósorozata

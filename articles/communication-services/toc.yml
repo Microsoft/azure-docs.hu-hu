@@ -63,6 +63,8 @@
       href: tutorials/hmac-header-tutorial.md
     - name: Webes alkalmazás előkészítése kommunikációs szolgáltatásokhoz (Node.js)
       href: tutorials/building-app-start.md
+    - name: Az ACS SMS API aláírása és kérése a Poster használatával
+      href: tutorials/postman-tutorial.md
 - name: Fogalmak
   expanded: false
   items:
@@ -145,9 +147,9 @@
     - name: Hívási kódtárak
       items:
         - name: Hívás (JavaScript)
-          href: /javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js
+          href: /javascript/api/azure-communication-services/@azure/communication-calling/
         - name: Hívás (Android/Java)
-          href: /java/api/com.azure.communication.calling?view=communication-services-java-android
+          href: /java/api/com.azure.communication.calling
         - name: Hívás (iOS)
           href: /objectivec/communication-services/calling/
     - name: Csevegési kódtárak

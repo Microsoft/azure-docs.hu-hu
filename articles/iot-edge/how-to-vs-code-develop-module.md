@@ -9,14 +9,16 @@ ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-js
-ms.openlocfilehash: ebc12e6d64d015267497497bebc22c8586adf999
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: eae6f1ec8cb6917d0d51deca8c9e88725c9b01a7
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995913"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200639"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Modulok fejlesztése és hibakeresése a Visual Studio Code használatával Azure IoT Edge
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Az üzleti logikát bekapcsolhatja Azure IoT Edge moduljaiba. Ebből a cikkből megtudhatja, hogyan használhatja a Visual Studio Code-ot a modulok fejlesztésére és hibakeresésére szolgáló fő eszközként.
 
@@ -79,7 +81,7 @@ A modul eszközön való teszteléséhez egy aktív IoT hub szükséges legaláb
 
 A következő lépések bemutatják, hogyan hozhat létre IoT Edge modult az előnyben részesített fejlesztői nyelvben (beleértve a C# nyelven írt Azure Functionsokat) a Visual Studio Code és az Azure IoT Tools használatával. Először hozzon létre egy megoldást, majd hozza létre a megoldás első modulját. Minden megoldás több modult is tartalmazhat.
 
-1. Válassza **View** a  >  **parancs-paletta** megtekintése lehetőséget.
+1. Válassza a  >  **parancs-paletta** megtekintése lehetőséget.
 
 1. A Command paletta írja be és futtassa a parancsot **Azure IoT Edge: új IoT Edge megoldás**.
 
@@ -160,7 +162,7 @@ A szimulátor beállításához és elindításához futtassa a **következő pa
 
 1. Készítse elő a környezetet a hibakereséshez a fejlesztési nyelv követelményeinek megfelelően, állítson be egy töréspontot a modulban, és válassza ki a használni kívánt hibakeresési konfigurációt:
    - **C#**
-     - A Visual Studio Code integrált terminálban módosítsa a könyvtárat a **_&lt; a modul neve &gt;_* _ mappába, majd futtassa a következő parancsot a .net Core-alkalmazás létrehozásához.
+     - A Visual Studio Code integrált terminálban módosítsa a könyvtárat a ***&lt; saját modul neve &gt;*** mappájába, majd futtassa a következő parancsot a .net Core-alkalmazás létrehozásához.
 
        ```cmd
        dotnet build
@@ -168,13 +170,13 @@ A szimulátor beállításához és elindításához futtassa a **következő pa
 
      - Nyissa meg a fájlt `Program.cs` , és adjon hozzá egy töréspontot.
 
-     - Navigáljon a Visual Studio Code debug nézethez a _* > hibakeresése * * megtekintése lehetőség kiválasztásával. Válassza a hibakeresési konfiguráció * *_ &lt; a modul neve &gt; _ local debug (.net Core) * * elemet a legördülő listából.
+     - Navigáljon a Visual Studio Code hibakeresés nézetéhez, és válassza a **megtekintés > hibakeresés** lehetőséget. Válassza ki a hibakeresési konfigurációt a **_&lt; modul neve &gt;_ helyi hibakeresés (.net Core)** alapján a legördülő listából.
 
         > [!NOTE]
         > Ha a .NET Core `TargetFramework` nem konzisztens a program elérési útjával `launch.json` , manuálisan kell frissítenie a program elérési útját, `launch.json` hogy az megfeleljen a `TargetFramework` . csproj fájlnak, hogy a Visual Studio Code sikeresen el tudja indítani a programot.
 
    - **Node.js**
-     - A Visual Studio Code integrált terminálban módosítsa a könyvtárat a **_&lt; a modul neve &gt;_* _ mappába, majd futtassa a következő parancsot a csomópont-csomagok telepítéséhez.
+     - A Visual Studio Code integrált terminálban módosítsa a könyvtárat a ***&lt; saját modul neve &gt;*** mappájába, majd futtassa a következő parancsot a csomópont-csomagok telepítéséhez.
 
        ```cmd
        npm install
@@ -182,7 +184,7 @@ A szimulátor beállításához és elindításához futtassa a **következő pa
 
      - Nyissa meg a fájlt `app.js` , és adjon hozzá egy töréspontot.
 
-     - Navigáljon a Visual Studio Code debug nézethez a _* > hibakeresése * * megtekintése lehetőség kiválasztásával. Válassza a hibakeresési konfiguráció * *_ &lt; a modul neve &gt; _ Local debug (Node.js) * * elemet a legördülő listából.
+     - Navigáljon a Visual Studio Code hibakeresés nézetéhez, és válassza a **megtekintés > hibakeresés** lehetőséget. Válassza ki a **_&lt; modul neve &gt;_ helyi hibakeresés (Node.js)** hibakeresési konfigurációját a legördülő listából.
    - **Java**
      - Nyissa meg a fájlt `App.java` , és adjon hozzá egy töréspontot.
 
@@ -190,7 +192,7 @@ A szimulátor beállításához és elindításához futtassa a **következő pa
 
 1. A hibakeresési munkamenet elindításához kattintson a **hibakeresés indítása** elemre, vagy nyomja le az **F5** billentyűt.
 
-1. A Visual Studio Code integrált terminálján futtassa a következő parancsot, hogy **„Helló világ!” alkalmazás** üzenetet küldjön a modulnak. Ez a parancs IoT Edge szimulátor beállításakor az előző lépésekben látható.
+1. A Visual Studio Code integrált terminálján futtassa a következő parancsot, hogy **Hello World** üzenetet küldjön a modulnak. Ez a parancs IoT Edge szimulátor beállításakor az előző lépésekben látható.
 
     ```bash
     curl --header "Content-Type: application/json" --request POST --data '{"inputName": "input1","data":"hello world"}' http://localhost:53000/api/v1/messages
@@ -234,7 +236,7 @@ A fejlesztői gépen elindíthat egy IoT Edge szimulátort a IoT Edge biztonság
 
    ![Változók megtekintése](media/how-to-vs-code-develop-module/view-log.png)
 
-1. Navigáljon a Visual Studio Code hibakeresés nézetéhez, és válassza ki a modul hibakeresési konfigurációs fájlját. A hibakeresési beállítás neve nem lehet hasonló a **_&lt; modul neve &gt;_ távoli hibakereséshez**
+1. Navigáljon a Visual Studio Code hibakeresés nézetéhez, és válassza ki a modul hibakeresési konfigurációs fájlját. A hibakeresési beállítás neve nem lehet hasonló a ***&lt; modul neve &gt;* távoli hibakereséshez**
 
 1. Válassza a **hibakeresés elindítása** vagy az **F5** billentyűt. Válassza ki a csatolni kívánt folyamatot.
 
@@ -322,13 +324,13 @@ Ezt a szakaszt kihagyhatja, ha a modulok ugyanazon a gépen futnak, mint a Visua
 
   - Ellenőrizze, hogy fut-e a számítógép modulja, és készen áll-e a Hibakeresők csatolására, és hogy az 9229-es port külsőleg elérhető-e. Ezt `http://<target-machine-IP>:9229/json` a hibakereső gép megnyitásával ellenőrizheti. Ennek az URL-címnek meg kell jelenítenie a hibakereső Node.js modul információit.
   
-  - A fejlesztői gépen nyissa meg a Visual Studio Code-ot, majd szerkessze úgy, hogy a modul `launch.json` **_&lt; neve &gt;_ távoli hibakeresési (Node.js)** profil (vagy **a Távoli hibakeresési _&lt; modul neve &gt;_ (Node.js a Windows-tárolóban)** cím értéke, ha a modul Windows-tárolóként fut, a hibakereső gép IP-címe.
+  - A fejlesztői gépen nyissa meg a Visual Studio Code-ot, majd szerkessze úgy, hogy a modul `launch.json` ***&lt; neve &gt;* távoli hibakeresési (Node.js)** profil (vagy **a Távoli hibakeresési _&lt; modul neve &gt;_ (Node.js a Windows-tárolóban)** cím értéke, ha a modul Windows-tárolóként fut, a hibakereső gép IP-címe.
 
 - **Java**
 
   - Hozzon létre egy SSH-alagutat a számítógépnek a futtatásával való hibakereséshez `ssh -f <username>@<target-machine> -L 5005:127.0.0.1:5005 -N` .
   
-  - A fejlesztői gépen nyissa meg a Visual Studio Code-ot, és szerkessze a **_&lt; modul neve &gt;_ távoli hibakeresési (Java)** profilt `launch.json` úgy, hogy az a célszámítógépen is csatolható legyen. A Java és a Visual Studio Code használatával kapcsolatos további tudnivalókért `launch.json` tekintse meg a [hibakereső konfigurálásának](https://code.visualstudio.com/docs/java/java-debugging#_configuration)szakaszát.
+  - A fejlesztői gépen nyissa meg a Visual Studio Code-ot, és szerkessze a ***&lt; modul neve &gt;* távoli hibakeresési (Java)** profilt `launch.json` úgy, hogy az a célszámítógépen is csatolható legyen. A Java és a Visual Studio Code használatával kapcsolatos további tudnivalókért `launch.json` tekintse meg a [hibakereső konfigurálásának](https://code.visualstudio.com/docs/java/java-debugging#_configuration)szakaszát.
 
 - **Python**
 
@@ -336,11 +338,11 @@ Ezt a szakaszt kihagyhatja, ha a modulok ugyanazon a gépen futnak, mint a Visua
 
   - A `ptvsd.enable_attach(('0.0.0.0', 5678))` korábban beszúrt kódban `main.py` módosítsa a **0.0.0.0** -et a hibakereső számítógép IP-címére. Hozza létre, küldje el és telepítse újra IoT Edge modulját.
 
-  - A fejlesztői gépen nyissa meg a Visual Studio Code-ot, majd szerkessze `launch.json` úgy, hogy a `host` **_&lt; &gt;_ Remote debug (Python)** profil értéke a cél gép IP-címét használja a helyett `localhost` .
+  - A fejlesztői gépen nyissa meg a Visual Studio Code-ot, majd szerkessze `launch.json` úgy, hogy a `host` ***&lt; &gt;* Remote debug (Python)** profil értéke a cél gép IP-címét használja a helyett `localhost` .
 
 ### <a name="debug-your-module"></a>A modul hibakeresése
 
-1. A Visual Studio Code hibakeresés nézetében válassza ki a modul hibakeresési konfigurációs fájlját. A hibakeresési beállítás neve nem lehet hasonló a **_&lt; modul neve &gt;_ távoli hibakereséshez**
+1. A Visual Studio Code hibakeresés nézetében válassza ki a modul hibakeresési konfigurációs fájlját. A hibakeresési beállítás neve nem lehet hasonló a ***&lt; modul neve &gt;* távoli hibakereséshez**
 
 1. Nyissa meg a modul-fájlt a fejlesztési nyelvhez, és adjon hozzá egy töréspontot:
 
@@ -364,7 +366,7 @@ Az SSH-kapcsolatok támogatásához a Docker és a Moby Engine legújabb változ
 
 További információért és részletes utasításokért tekintse meg ezt a [IoT fejlesztői blogbejegyzését](https://devblogs.microsoft.com/iotdev/easily-build-and-debug-iot-edge-modules-on-your-remote-device-with-azure-iot-edge-for-vs-code-1-9-0/) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A modul létrehozása után megtudhatja, hogyan [helyezhet üzembe Azure IoT Edge modulokat a Visual Studio Code-ból](how-to-deploy-modules-vscode.md).
 

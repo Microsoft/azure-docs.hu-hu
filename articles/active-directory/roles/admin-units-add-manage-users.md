@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3dc7b37c96d2d82ae42d9bce32a97beab2d91e9
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 7a9d80344a31023d174935e7f785e36102e99eba
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740516"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011546"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Felhasználók hozzáadása és kezelése egy felügyeleti egységben Azure Active Directory
 
@@ -70,9 +70,9 @@ A felhasználókat a felügyeleti egységekhez egyenként vagy tömeges művelet
 A PowerShellben a `Add-AzureADAdministrativeUnitMember` következő példában szereplő parancsmag használatával adja hozzá a felhasználót a felügyeleti egységhez. Annak a felügyeleti egységnek az azonosítója, amelyhez hozzá szeretné adni a felhasználót és a hozzáadni kívánt felhasználó objektumazonosítóát argumentumként. Módosítsa a Kiemelt szakaszt az adott környezethez szükséges módon.
 
 ```powershell
-$administrativeunitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
-$UserObj = Get-AzureADUser -Filter "UserPrincipalName eq 'billjohn@fabidentity.onmicrosoft.com'"
-Add-AzureADMSAdministrativeUnitMember -Id $administrativeunitObj.ObjectId -RefObjectId $UserObj.ObjectId
+$adminUnitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
+$userObj = Get-AzureADUser -Filter "UserPrincipalName eq 'bill@example.onmicrosoft.com'"
+Add-AzureADMSAdministrativeUnitMember -Id $adminUnitObj.ObjectId -RefObjectId $userObj.ObjectId
 ```
 
 
@@ -80,20 +80,25 @@ Add-AzureADMSAdministrativeUnitMember -Id $administrativeunitObj.ObjectId -RefOb
 
 Cserélje le a helyőrzőt a tesztelési adatokra, és futtassa a következő parancsot:
 
+Kérés
+
 ```http
-Http request
-POST /administrativeUnits/{Admin Unit id}/members/$ref
-Request body
+POST /administrativeUnits/{admin-unit-id}/members/$ref
+```
+
+Törzs
+
+```http
 {
-  "@odata.id":"https://graph.microsoft.com/v1.0/users/{id}"
+  "@odata.id":"https://graph.microsoft.com/v1.0/users/{user-id}"
 }
 ```
 
-Példa:
+Példa
 
 ```http
 {
-  "@odata.id":"https://graph.microsoft.com/v1.0/users/johndoe@fabidentity.com"
+  "@odata.id":"https://graph.microsoft.com/v1.0/users/john@example.com"
 }
 ```
 
@@ -118,6 +123,7 @@ Futtassa az alábbi parancsot:
 ```powershell
 Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember -Id $_.ObjectId | where {$_.RefObjectId -eq $userObjId} }
 ```
+
 > [!NOTE]
 > Alapértelmezés szerint a `Get-AzureADAdministrativeUnitMember` csak a felügyeleti egység 100 tagjait adja vissza. További tagok beolvasásához hozzáadhatja a következőt: `"-All $true"` .
 
@@ -126,7 +132,7 @@ Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember 
 Cserélje le a helyőrzőt a tesztelési adatokra, és futtassa a következő parancsot:
 
 ```http
-https://graph.microsoft.com/v1.0/users/{id}/memberOf/$/Microsoft.Graph.AdministrativeUnit
+https://graph.microsoft.com/v1.0/users/{user-id}/memberOf/$/Microsoft.Graph.AdministrativeUnit
 ```
 
 ## <a name="remove-a-single-user-from-an-administrative-unit"></a>Egyetlen felhasználó eltávolítása egy felügyeleti egységből
@@ -152,14 +158,16 @@ A felhasználókat kétféleképpen távolíthatja el egy felügyeleti egységb�
 Futtassa az alábbi parancsot:
 
 ```powershell
-Remove-AzureADMSAdministrativeUnitMember -Id $auId -MemberId $memberUserObjId
+Remove-AzureADMSAdministrativeUnitMember -Id $adminUnitId -MemberId $memberUserObjId
 ```
 
 ### <a name="use-microsoft-graph"></a>Microsoft Graph használata
 
 Cserélje le a helyőrzőket a tesztelési adatokkal, és futtassa a következő parancsot:
 
-`https://graph.microsoft.com/v1.0/directory/administrativeUnits/{adminunit-id}/members/{user-id}/$ref`
+```http
+https://graph.microsoft.com/v1.0/directory/administrativeUnits/{admin-unit-id}/members/{user-id}/$ref
+```
 
 ## <a name="remove-multiple-users-as-a-bulk-operation"></a>Több felhasználó eltávolítása tömeges műveletként
 
@@ -179,7 +187,7 @@ Ha több felhasználót szeretne eltávolítani egy felügyeleti egységből, te
 
 1. Mentse a módosításokat, töltse fel a fájlt, majd válassza a **Submit (Küldés**) lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Szerepkör társítása egy felügyeleti egységhez](admin-units-assign-roles.md)
 - [Csoportok hozzáadása egy felügyeleti egységhez](admin-units-add-manage-groups.md)

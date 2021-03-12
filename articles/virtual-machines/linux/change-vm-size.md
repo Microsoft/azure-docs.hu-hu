@@ -2,16 +2,17 @@
 title: Linux rendszerű virtuális gép átméretezése az Azure CLI-vel
 description: Linux rendszerű virtuális gépek vertikális felskálázása vagy leskálázása a virtuális gép méretének módosításával.
 author: DavidCBerry13
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 02/10/2017
 ms.author: daberry
-ms.openlocfilehash: a93b1dcfe803fdead0d741553c45894f1675372b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.collection: linux
+ms.openlocfilehash: 290c42cadd840e5a292201247b1555059b5b4381
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372263"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556638"
 ---
 # <a name="resize-a-linux-virtual-machine-using-azure-cli"></a>Linuxos virtuális gép újraméretezése Azure CLI használatával 
 
@@ -45,7 +46,7 @@ A virtuális gépek átméretezéséhez a legújabb [Azure CLI](/cli/azure/insta
    > [!WARNING]
    > A virtuális gép felszabadítása a virtuális géphez hozzárendelt dinamikus IP-címeket is felszabadítja. Az operációs rendszer és az adatlemezek nem érintettek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További méretezhetőség érdekében futtasson több virtuálisgép-példányt és horizontális felskálázást. További információ: [Linux rendszerű gépek automatikus méretezése virtuálisgép-méretezési csoportokban][scale-set]. 
 
 <!-- links -->

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/02/2021
 ms.author: timlt
-ms.openlocfilehash: 93278a2c8e83541f49ca76542de1c352fbc02239
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 3f0ec053d806208b4a3c15604714f6bdb87399e7
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524244"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613221"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 sorozat: hibrid felhőalapú tárolási megoldás
 
@@ -60,7 +60,7 @@ A Microsoft Azure StorSimple megoldás a következő összetevőket tartalmazza:
 * **StorSimple Cloud Appliance** – más néven a StorSimple virtuális készülék. A StorSimple-eszköz szoftveres verziója, amely a fizikai hibrid tárolóeszköz architektúráját és képességeit replikálja. A StorSimple Cloud Appliance egy Azure-beli virtuális gép egyetlen csomópontján fut. Az Azure Premium Storage előnyeit kihasználó prémium szintű virtuális eszközök a 2. frissítésben és az újabb verziókban is elérhetők.
 * **StorSimple Eszközkezelő Service** – a Azure Portal egy bővítménye, amely lehetővé teszi egy StorSimple-eszköz vagy-StorSimple Cloud Appliance kezelését egyetlen webes felületen. A StorSimple Eszközkezelő szolgáltatással szolgáltatásokat hozhat létre és kezelhet, eszközöket tekinthet meg és kezelhet, megtekintheti a riasztásokat, kezelheti a köteteket, valamint megtekintheti és kezelheti a biztonsági mentési házirendeket és a biztonsági mentési katalógust.
 * **Windows PowerShell StorSimple-bővítménye** – parancssori felület, amely a StorSimple-eszköz felügyeletére használható. Windows PowerShell StorSimple-bővítménye rendelkezik olyan funkciókkal, amelyek lehetővé teszik a StorSimple-eszköz regisztrálását, a hálózati adapter konfigurálását az eszközön, bizonyos típusú frissítések telepítését, az eszköz hibakeresését a támogatási munkamenet elérésével, és az eszköz állapotának módosítását. Windows PowerShell StorSimple-bővítménye a soros konzolhoz való csatlakozással vagy a Windows PowerShell-távelérés használatával érhető el.
-* **Azure PowerShell StorSimple-parancsmagok** – olyan Windows PowerShell-parancsmagok gyűjteménye, amelyek segítségével automatizálhatja a szolgáltatás-és áttelepítési feladatokat a parancssorból. A StorSimple Azure PowerShell-parancsmagokkal kapcsolatos további információkért nyissa meg a [parancsmag-referenciát](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0&preserve-view=true#azure).
+* **Azure PowerShell StorSimple-parancsmagok** – olyan Windows PowerShell-parancsmagok gyűjteménye, amelyek segítségével automatizálhatja a szolgáltatás-és áttelepítési feladatokat a parancssorból. A StorSimple Azure PowerShell-parancsmagokkal kapcsolatos további információkért nyissa meg a [parancsmag-referenciát](/powershell/module/servicemanagement/azure.service/#azure).
 * **StorSimple Snapshot Manager** – egy MMC beépülő modul, amely mennyiségi csoportokat és a Windows Kötet árnyékmásolata szolgáltatás használ az alkalmazással konzisztens biztonsági másolatok létrehozásához. Emellett a StorSimple Snapshot Manager használatával biztonsági mentési ütemterveket hozhat létre, illetve klónozott vagy helyreállíthatja a köteteket.
 * **StorSimple-adapter a sharepointhoz** – ez egy olyan eszköz, amely transzparens módon kiterjeszti Microsoft Azure StorSimple tárolót és az adatvédelmet a SharePoint Server-farmokra, miközben a StorSimple-tárolót megtekintheti és kezelheti a SharePoint központi felügyeleti portálján.
 
@@ -129,7 +129,7 @@ A Windows PowerShell StorSimple-bővítménye egy soros konzolról (közvetlenü
 További információért látogasson el a [Windows PowerShell StorSimple-bővítménye használatára az eszköz felügyeletéhez](storsimple-8000-windows-powershell-administration.md).
 
 ## <a name="azure-powershell-storsimple-cmdlets"></a>Azure PowerShell StorSimple-parancsmagok
-A Azure PowerShell StorSimple-parancsmagok olyan Windows PowerShell-parancsmagok gyűjteményei, amelyek lehetővé teszik a parancssorból a szolgáltatás-és áttelepítési feladatok automatizálását. A StorSimple Azure PowerShell-parancsmagokkal kapcsolatos további információkért nyissa meg a [parancsmag-referenciát](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0&preserve-view=true).
+A Azure PowerShell StorSimple-parancsmagok olyan Windows PowerShell-parancsmagok gyűjteményei, amelyek lehetővé teszik a parancssorból a szolgáltatás-és áttelepítési feladatok automatizálását. A StorSimple Azure PowerShell-parancsmagokkal kapcsolatos további információkért nyissa meg a [parancsmag-referenciát](/powershell/module/servicemanagement/azure.service/).
 
 ## <a name="storsimple-snapshot-manager"></a>StorSimple Snapshot Manager
 A StorSimple Snapshot Manager egy Microsoft Management Console (MMC) beépülő modul, amely a helyi és a Felhőbeli adatbiztonsági másolatok konzisztens, időponthoz kötött biztonsági másolatának létrehozásához használható. A beépülő modul egy Windows Server-alapú gazdagépen fut. A StorSimple Snapshot Manager a következőre használhatja:
@@ -213,10 +213,10 @@ Az alábbi táblázat a támogatott StorSimple-számítási feladatok összefogl
 
 | Eset | Számítási feladat | Támogatott | Korlátozások | Verzió |
 | --- | --- | --- | --- | --- |
-| Együttműködés |Fájlmegosztás |Igen | |Az összes verzió |
-| Együttműködés |Elosztott fájlmegosztás |Igen | |Az összes verzió |
+| Együttműködés |Fájlmegosztás |Yes | |Az összes verzió |
+| Együttműködés |Elosztott fájlmegosztás |Yes | |Az összes verzió |
 | Együttműködés |SharePoint |Igen* |Csak helyileg rögzített kötetekkel támogatott |2. frissítés és újabb |
-| Archiválási |Egyszerű fájl archiválása |Igen | |Az összes verzió |
+| Archiválási |Egyszerű fájl archiválása |Yes | |Az összes verzió |
 | Virtualizáció |Virtual machines (Virtuális gépek) |Igen* |Csak helyileg rögzített kötetekkel támogatott |2. frissítés és újabb |
 | Adatbázis |SQL |Igen* |Csak helyileg rögzített kötetekkel támogatott |2. frissítés és újabb |
 | Videó-megfigyelés |Videó-megfigyelés |Igen* |Csak akkor támogatott, ha a StorSimple-eszköz csak erre a számítási feladatra van dedikált |2. frissítés és újabb |
@@ -240,11 +240,11 @@ A következő lista a StorSimple által támogatott infrastruktúra-összetevők
 
 | Eset | Számítási feladat | Támogatott | Korlátozások | Verzió |
 | --- | --- | --- | --- | --- |
-| Általános |Express Route |Igen | |Az összes verzió |
-| Általános |DataCore FC |Igen* |Támogatott a DataCore SANsymphony |Az összes verzió |
-| Általános |DFSR |Igen* |Csak helyileg rögzített kötetekkel támogatott |Az összes verzió |
-| Általános |Indexelés |Igen* |A többszintes kötetek esetében csak a metaadatok indexelése támogatott (nincs adat).<br>A helyileg rögzített kötetek esetében a teljes indexelés támogatott. |Az összes verzió |
-| Általános |Víruskereső |Igen* |A többszintes kötetek esetében csak a Megnyitás és bezárás vizsgálat támogatott.<br> A helyileg rögzített kötetek esetében a teljes vizsgálat támogatott. |Az összes verzió |
+| Általános kérdések |Express Route |Yes | |Az összes verzió |
+| Általános kérdések |DataCore FC |Igen* |Támogatott a DataCore SANsymphony |Az összes verzió |
+| Általános kérdések |DFSR |Igen* |Csak helyileg rögzített kötetekkel támogatott |Az összes verzió |
+| Általános kérdések |Indexelés |Igen* |A többszintes kötetek esetében csak a metaadatok indexelése támogatott (nincs adat).<br>A helyileg rögzített kötetek esetében a teljes indexelés támogatott. |Az összes verzió |
+| Általános kérdések |Víruskereső |Igen* |A többszintes kötetek esetében csak a Megnyitás és bezárás vizsgálat támogatott.<br> A helyileg rögzített kötetek esetében a teljes vizsgálat támogatott. |Az összes verzió |
 
 *Igen&#42; – a megoldásra vonatkozó irányelvek és korlátozások érvényesek.*
 

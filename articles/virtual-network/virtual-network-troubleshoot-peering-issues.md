@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: f3e1ea8861646490875667f6238b3f8813bd6c4b
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 608f3d72aecb0c6d53325c0d082b1779822e9c80
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518164"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200531"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Virtuális hálózatok közötti társviszony-létesítési problémák hibaelhárítása
 
@@ -44,7 +44,7 @@ Az azonos előfizetésben található virtuális hálózatok virtuális hálóza
 >
 > * Virtuális gépek (VM) az alapszintű belső terheléselosztó (ILB) SKU mögött
 > * Redis cache (alapszintű ILB SKU-t használ)
-> * Application Gateway (alapszintű ILB SKU-t használ)
+> * Application Gateway v1 (alapszintű ILB SKU-t használ)
 > * Virtuálisgép-méretezési csoportok (alapszintű ILB SKU-t használ)
 > * Azure Service Fabric-fürtök (alapszintű ILB SKU-t használ)
 > * SQL Server always on (alapszintű ILB SKU-t használ)

@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: e383896e50ccf06ef6d1b5caaeb0ef36ece2ce3b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c947bee0b702797a86d1e038f74c6c10e2b23eb4
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348296"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103197478"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>A Microsoft Authenticator alkalmazás beállítása ellenőrzési módszerként
 
@@ -46,10 +46,10 @@ A biztonsági információ módszereit a kéttényezős biztonsági ellenőrzés
 
 A szervezet beállításaitól függően előfordulhat, hogy egy hitelesítési alkalmazást is használhat a biztonsági adatok egyik módszere. Nem kell a Microsoft Authenticator alkalmazást használnia, és a beállítás során másik alkalmazást is választhat. Ez a cikk azonban az Microsoft Authenticator alkalmazást használja.
 
->[!Important]
-> Ha a telepítő Microsoft Authenticator alkalmazást 5 különböző eszközön vagy 5 hardveres jogkivonaton, akkor nem lehet beállítani a hatodikat, és a következő hibaüzenet jelenik meg.
+> [!IMPORTANT]
+> Ha a Microsoft Authenticator alkalmazást öt különböző eszközön állította be, vagy ha öt hardveres tokent használt, akkor nem fog tudni hatodikt beállítani, és a következő hibaüzenet jelenhet meg:
 > 
-> **A Microsoft Authenticator nem állítható be, mert már rendelkezik öt hitelesítő alkalmazással vagy hardver jogkivonatokkal. Kérje meg a rendszergazdát, hogy törölje az egyik hitelesítő alkalmazást vagy hardver jogkivonatot.**
+> **Nem állítható be Microsoft Authenticator, mert már rendelkezik öt hitelesítő alkalmazással vagy hardver jogkivonatokkal. Kérje meg a rendszergazdát, hogy törölje az egyik hitelesítő alkalmazást vagy hardver jogkivonatot.**
 
 ### <a name="to-set-up-the-microsoft-authenticator-app"></a>A Microsoft Authenticator alkalmazás beállítása
 
@@ -57,7 +57,7 @@ A szervezet beállításaitól függően előfordulhat, hogy egy hitelesítési 
 
     ![Saját profil oldal, kiemelt biztonsági információs hivatkozások megjelenítése](media/security-info/securityinfo-myprofile-page.png)
 
-2. Válassza a bal oldali navigációs ablaktábla **biztonsági adatok** elemét, vagy a biztonsági **információ** blokkban található hivatkozásra, majd válassza a **metódus hozzáadása** elemet a **biztonsági adatok** lapon.
+2. A bal oldali menüben vagy a **biztonsági adatok** ablaktáblán található hivatkozás használatával válassza a **biztonsági adatok** elemet. Ha már regisztrált, a rendszer a kétfaktoros ellenőrzésre kéri. Ezután válassza a **Hozzáadás metódus** elemet a **biztonsági adatok** ablaktáblán.
 
     ![Biztonsági adatok lap Kiemelt hozzáadási módszer lehetőséggel](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
@@ -161,7 +161,7 @@ További beállításokkal is megtudhatja, hogy a szervezet hogyan forduljon a s
     >[!Note]
     >Ha a lehetőségek némelyike hiányzik, valószínűleg azért, mert a szervezet nem engedélyezi ezeket a metódusokat. Ebben az esetben ki kell választania egy elérhető módszert, vagy kapcsolatba kell lépnie a rendszergazdával további segítségért.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Jelentkezzen be a Microsoft Authenticator alkalmazással, a [Bejelentkezés kétlépéses ellenőrzés vagy biztonsági információ használatával](security-info-setup-signin.md) című szakaszának lépéseit követve.
 

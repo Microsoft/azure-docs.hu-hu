@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 01/13/2021
 ms.author: banders
-ms.openlocfilehash: 8117f3ca70f51f2d9b11c479803ac33b49f416e7
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
-ms.translationtype: HT
+ms.openlocfilehash: ecc5c8ebef0d2add365d128e11caedaa173d9d63
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540043"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232143"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>A Microsoft Azure-számlák befizetésének módja
 
@@ -59,6 +59,18 @@ Az Azure Portalon történő fizetéshez a megfelelő [MCA-engedélyekkel](../ma
 1. Miután kiválasztotta a fizetési módot, válassza az **Azonnali fizetés** lehetőséget.
 
 A számla állapota 24 órán belül *Kifizetve* lesz.
+
+## <a name="pay-now-for-customers-in-india"></a>Fizessen most az indiai vásárlók számára
+
+Az indiai tartalék Bank [új szabályozást](https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=12002&Mode=0) adott ki, amely a 2021. április 1. után lép érvénybe. Ezen időpont után az indiai bankok elindíthatják az automatikus ismétlődő befizetéseket, és manuálisan kell befizetni a Azure Portal.
+
+Ha a bankja elutasítja az automatikus ismétlődő fizetést, e-mailben értesítjük Önt, és útmutatást nyújtanak a folytatáshoz.
+
+2021. április 1-től az alábbi lépéseket követve bármikor kifizetheti a fennmaradó egyenleget: 
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) fiókadminisztrátorként.
+1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
+1. Az Áttekintés lapon kattintson a **fizetés most** gombra. (Ha nem jelenik meg a **fizetés most** gomb, nem rendelkezik a fennmaradó egyenleggel.)
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft-ügyfélszerződéshez való hozzáférés ellenőrzése
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]

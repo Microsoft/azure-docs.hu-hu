@@ -5,19 +5,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: 1dc8e3a78e681947a70ad96638d1d6e09f0bbc88
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8b3b1d39766d556b820f21c1775210611b995d92
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050664"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199908"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics-ügynök áttekintése
 
 Az Azure Log Analytics-ügynök a Windows-és Linux-alapú virtuális gépekről gyűjt telemetria a Felhőbeli, a helyszíni gépeken, valamint a [System Center Operations Manager](/system-center/scom/) által figyelt, és az összegyűjtött adatokat a Azure monitor log Analytics munkaterületére küldi el. A Log Analytics ügynök az Azure Monitor, például a [virtuális](../vm/vminsights-enable-overview.md)gépekkel, [Azure Security Centerekkel](../../security-center/index.yml)és [Azure Automationekkel](../../automation/automation-intro.md)kapcsolatos bepillantást és egyéb szolgáltatásokat is támogatja. Ez a cikk részletes áttekintést nyújt az ügynökről, a rendszerről és a hálózati követelményekről, valamint az üzembe helyezési módszerekről.
 
 > [!NOTE]
-> Azt is megteheti, hogy a Microsoft monitoring Agent (MMA) vagy a OMS Linux Agent néven ismert Log Analytics ügynök.
+> Előfordulhat, hogy a Microsoft monitoring Agent (MMA) néven is látható Log Analytics ügynök.
 
 ## <a name="comparison-to-azure-diagnostics-extension"></a>Összehasonlítás az Azure Diagnostics bővítménnyel
 Az [Azure Diagnostics bővítmény](./diagnostics-extension-overview.md) a Azure monitorban is használható a figyelési adatok gyűjtésére az Azure-beli virtuális gépek vendég operációs rendszeréről. Dönthet úgy is, hogy a követelményektől függően vagy mindkettőt használja. A Azure Monitor-ügynökök részletes összehasonlítását lásd [a Azure monitor ügynökök áttekintésében](../agents/agents-overview.md) . 
@@ -116,10 +116,10 @@ A következő táblázat a Linux és a Windows-ügynökök Azure Monitor naplók
 
 |Ügynök erőforrása|Portok |Irány |HTTPS-ellenőrzés kihagyása|
 |------|---------|--------|--------|
-|*.ods.opinsights.azure.com |443-es port |Kimenő|Igen |  
-|*.oms.opinsights.azure.com |443-es port |Kimenő|Igen |  
-|*.blob.core.windows.net |443-es port |Kimenő|Igen |
-|*.azure-automation.net |443-es port |Kimenő|Igen |
+|*.ods.opinsights.azure.com |443-es port |Kimenő|Yes |  
+|*.oms.opinsights.azure.com |443-es port |Kimenő|Yes |  
+|*.blob.core.windows.net |443-es port |Kimenő|Yes |
+|*.azure-automation.net |443-es port |Kimenő|Yes |
 
 A Azure Governmentához szükséges tűzfal-információk: [Azure Government Management](../../azure-government/compare-azure-government-global-azure.md#azure-monitor). 
 

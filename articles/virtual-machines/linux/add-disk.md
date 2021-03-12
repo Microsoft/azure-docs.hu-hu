@@ -2,17 +2,18 @@
 title: Adatlemez hozzáadása Linux rendszerű virtuális géphez az Azure CLI használatával
 description: Megtudhatja, hogyan vehet fel állandó adatlemezt a linuxos virtuális gépre az Azure CLI-vel
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: cynthn
-ms.subservice: disks
-ms.openlocfilehash: 1155b4274b97f540fd97bf39e51fd41c37bc9627
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a4e0cee7a46e3f61f95e87f7cba1fb3595ace3c5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98730621"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556808"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Add a disk to a Linux VM (Lemez hozzáadása Linux rendszerű virtuális géphez)
 
@@ -179,7 +180,7 @@ A Linux rendszerű virtuális gépen kétféleképpen engedélyezhető a TRIM-t�
 
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A linuxos virtuális gép megfelelő konfigurálásának biztosítása érdekében tekintse át a Linux rendszerű [gépek teljesítményével kapcsolatos javaslatok optimalizálását](/previous-versions/azure/virtual-machines/linux/optimization) ismertető oktatóanyagot.
 * Bővítse a tárolókapacitást további lemezek hozzáadásával és a [RAID konfigurálásával](/previous-versions/azure/virtual-machines/linux/configure-raid) a további teljesítmény érdekében.

@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan lehet elhárítani a Java-ügynököt a Azure M
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 45f45e71546909b71c71c66303c1459edd74548f
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: f971466f25c2b7a4bd28e5b7eec6268f1b2e8b3d
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102199611"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225574"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Hibaelhárítási útmutató: Azure Monitor Application Insights Javához
 
@@ -41,7 +41,9 @@ Ezek a változások a következők:
 
 ## <a name="some-logging-is-not-auto-collected"></a>Egyes naplózások nem lesznek automatikusan begyűjtve
 
-A rendszer csak akkor rögzíti a naplózást, ha először megfelel a naplózási keretrendszerek konfigurált küszöbértékének, a második pedig megfelel a Application Insights konfigurált küszöbértéknek is.
+A naplózás csak akkor rögzítve van, ha először megfelel a naplózási keretrendszerhez konfigurált szintnek, másrészt pedig megfelel a Application Insightshoz konfigurált szintnek is.
+
+Ha például a naplózási keretrendszer úgy van konfigurálva, hogy a `WARN` csomagból (vagy felette) naplózza a csomagot `com.example` , és Application Insights úgy van beállítva, hogy rögzítse `INFO` (és a fentiket), akkor Application Insights csak `WARN` a csomagból (és felett) rögzíti `com.example` .
 
 A legjobb módszer annak megállapítására, hogy egy adott naplózási utasítás megfelel-e a naplózási keretrendszerek konfigurált küszöbértékének, annak ellenőrzéséhez, hogy megjelenik-e a normál alkalmazási naplóban (például fájl vagy konzol).
 

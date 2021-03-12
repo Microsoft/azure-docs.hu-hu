@@ -14,20 +14,79 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: 7d52d49ab5d3a47dd69fdc1708f9e52f4f796a92
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e51b247f8c1a5a9ed8f6ec8e24363015afb2f7de
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390640"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614411"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>A Windows operációs rendszer javítása a Service Fabric-fürtben
 
-> [!IMPORTANT]
-> 2019. április 30-ig a patch-előkészítési alkalmazás 1,2. * verziója már nem támogatott. Ügyeljen arra, hogy a legújabb verzióra frissítsen. A virtuális gépek, amelyeknél a "Windows Update" az operációs rendszer javításait az operációsrendszer-lemez cseréje nélkül alkalmazza, nem támogatottak. 
+## <a name="automatic-os-image-upgrades"></a>Operációs rendszer rendszerképének automatikus frissítése
 
-> [!NOTE]
-> Az operációs rendszer javításának az Azure-ban való megtartásának ajánlott módja a [virtuális gépi méretezési csoport automatikus operációsrendszer-rendszerkép-frissítéseinek](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) beszerzése. A virtuálisgép-méretezési csoporton alapuló automatikus operációsrendszer-képek frissítése a méretezési csoportokon ezüst vagy nagyobb tartósságot igényel. A tartóssági szinttel rendelkező csomópontok esetében ez nem támogatott, ebben az esetben használja a patch-előkészítési alkalmazást.
+Az operációs rendszer javításának az Azure-ban való megtartásához az ajánlott eljárás az, hogy automatikusan Virtual Machine Scale Sets az operációsrendszer- [képek frissítését](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) . A virtuálisgép-méretezési csoporton alapuló automatikus operációsrendszer-képek frissítése a méretezési csoportokon ezüst vagy nagyobb tartósságot igényel.
+
+Az operációs rendszer rendszerképének automatikus frissítésére vonatkozó követelmények Virtual Machine Scale Sets szerint
+-   Service Fabric [tartóssági szint](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) Silver vagy Gold, és nem bronz.
+-   A méretezési csoport modelljének definíciójában a Service Fabric-bővítménynek TypeHandlerVersion 1,1 vagy újabb értékűnek kell lennie.
+-   A tartóssági szintnek azonosnak kell lennie a Service Fabric-fürtön, és Service Fabric bővítményt a méretezési csoport modelljének definíciójában.
+- Nem szükséges egy további állapot-mintavétel vagy az alkalmazás-állapot kiterjesztésének használata Virtual Machine Scale Setshoz.
+
+Győződjön meg arról, hogy a tartóssági beállítások nem egyeznek meg a Service Fabric-fürtön, és Service Fabric a bővítményt, mivel az eltérés a frissítési hibákat eredményezi. A tartóssági szintek az [ezen az oldalon](../service-fabric/service-fabric-cluster-capacity.md#changing-durability-levels)vázolt irányelvek szerint módosíthatók.
+
+A bronz tartóssággal az operációs rendszer rendszerképének automatikus frissítése nem érhető el. A [patch](#patch-orchestration-application ) -összehangoló alkalmazás (csak a nem Azure-beli üzemeltetett fürtök esetében) *nem ajánlott* ezüst vagy nagyobb tartóssági szint esetén, ezért az egyetlen lehetőség a Windows-frissítések automatizálására Service Fabric frissítési tartományok tekintetében.
+
+> [!IMPORTANT]
+> A virtuális gépeken történő verziófrissítések, ahol a "Windows Update" az operációsrendszer-lemez cseréje nélkül az operációs rendszerre vonatkozó javításokat alkalmaz, az Azure Service Fabric nem támogatottak.
+
+Két lépés szükséges ahhoz, hogy a szolgáltatás a letiltott Windows Update megfelelően legyen engedélyezve az operációs rendszeren.
+
+1. Az operációsrendszer-rendszerkép automatikus frissítésének engedélyezése, a Windows Updates ARM letiltása 
+    ```json
+    "virtualMachineProfile": { 
+        "properties": {
+          "upgradePolicy": {
+            "automaticOSUpgradePolicy": {
+              "enableAutomaticOSUpgrade":  true
+            }
+          }
+        }
+      }
+    ```
+    
+    ```json
+    "virtualMachineProfile": { 
+        "osProfile": { 
+            "windowsConfiguration": { 
+                "enableAutomaticUpdates": false 
+            }
+        }
+    }
+    ```
+
+    Azure PowerShell
+    ```azurepowershell-interactive
+    Update-AzVmss -ResourceGroupName $resourceGroupName -VMScaleSetName $scaleSetName -AutomaticOSUpgrade $true -EnableAutomaticUpdate $false
+    ``` 
+    
+1. A méretezési csoport modell frissítése a konfiguráció módosítása után a méretezési csoport modelljének frissítéséhez szükség van az összes gép rendszerképének módosítására, hogy a módosítás érvénybe lépjen.
+    
+    Azure PowerShell
+    ```azurepowershell-interactive
+    $scaleSet = Get-AzVmssVM -ResourceGroupName $resourceGroupName -VMScaleSetName $scaleSetName
+    $instances = foreach($vm in $scaleSet)
+    {
+        Set-AzVmssVM -ResourceGroupName $resourceGroupName -VMScaleSetName $scaleSetName -InstanceId $vm.InstanceID -Reimage
+    }
+    ``` 
+    
+További útmutatásért tekintse meg [Virtual Machine Scale sets automatikus operációsrendszer-rendszerkép frissítéseit](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) .
+
+## <a name="patch-orchestration-application"></a>Javítás-előkészítési alkalmazás
+
+> [!IMPORTANT]
+> 2019. április 30-ig a patch-előkészítési alkalmazás 1,2. * verziója már nem támogatott. Ügyeljen arra, hogy a legújabb verzióra frissítsen.
 
 A javítási előkészítési alkalmazás (POA) az Azure Service Fabric javításkezelő szolgáltatás egyik burkolója, amely lehetővé teszi a konfiguráció-alapú operációsrendszer-javítások ütemezését a nem Azure-beli üzemeltetett fürtökhöz. A POA nem szükséges a nem Azure-beli üzemeltetett fürtökhöz, de a frissítési tartományon belüli javítás telepítésének ütemezése szükséges ahhoz, hogy leállást ne kelljen kijavítani Service Fabric-fürtöt.
 
@@ -311,7 +370,7 @@ Ha meg szeretné ismerni, hogy a frissítések hogyan folytatódnak egy adott cs
 
    Ha további problémák is megtalálhatók, jelentkezzen be a virtuális gépre vagy virtuális gépekre, és ismerkedjen meg velük a Windows-eseménynaplók használatával. A korábban említett javítási feladat csak a következő végrehajtó alállapotokban létezhet:
 
-      ExecutorSubState | Description
+      ExecutorSubState | Leírás
     -- | -- 
       Nincs = 1 |  Azt jelenti, hogy nem volt folyamatban művelet a csomóponton. Lehet, hogy az állapot átmeneti állapotban van.
       DownloadCompleted = 2 | Azt jelenti, hogy a letöltési művelet sikerrel, részleges meghibásodással vagy meghibásodással fejeződött be.

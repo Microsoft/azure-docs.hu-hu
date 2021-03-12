@@ -9,12 +9,12 @@ ms.date: 02/19/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 22f4db04f37985e49065f80da6e4578ed71c5db1
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: b00956a6fb5a79b09602ca1752cc547595f32db6
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102428439"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224594"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Hálózati fájlrendszer (NFS) 3,0 protokoll támogatása az Azure Blob Storage-ban (előzetes verzió)
 
@@ -112,7 +112,7 @@ A következő Azure Storage-funkciók nem támogatottak, ha engedélyezi az NFS 
   
 ## <a name="nfs-30-features-not-yet-supported"></a>Az NFS 3,0-funkciók még nem támogatottak
 
-A következő NFS 3,0-funkciók még nem támogatottak a Azure Data Lake Storage Gen2.
+A következő NFS 3,0-funkciók még nem támogatottak.
 
 - NFS 3,0 UDP-n keresztül. Csak a TCP protokollon keresztüli NFS 3,0 támogatott.
 
@@ -127,6 +127,12 @@ A következő NFS 3,0-funkciók még nem támogatottak a Azure Data Lake Storage
 - Rögzített hivatkozás
 
 - Tároló exportálása írásvédettként
+
+## <a name="nfs-30-clients-not-yet-supported"></a>Az NFS 3,0-ügyfelek még nem támogatottak
+
+A következő NFS 3,0-ügyfelek még nem támogatottak.
+
+- Windows-ügyfél NFS-hez
 
 ## <a name="pricing"></a>Díjszabás
 

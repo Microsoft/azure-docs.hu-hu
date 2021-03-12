@@ -5,33 +5,31 @@
   items:
     - name: Mi a Content Moderator?
       href: overview.md
+    - name: Nyelvi támogatás
+      href: language-support.md
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator'
       expanded: true
     - name: Újdonságok
       href: whats-new.md
 - name: Rövid útmutatók
   items:
-    - name: A Content Moderator kipróbálása az interneten
-      href: quick-start.md
     - name: Az ügyfélkódtár vagy a REST API használata
       href: client-libraries.md
-- name: Oktatóanyagok
+    - name: A webalapú felhasználói felület használata
+      href: quick-start.md
+- name: Példák
   items:
-    - name: E-kereskedelmi képek moderálása
-      href: ecommerce-retail-catalog-moderation.md
-    - name: Facebook-tartalmak moderálása
-      href: facebook-post-moderation.md
-- name: Alapelvek
-  items:
-    - name: Képmoderálás
-      href: image-moderation-api.md
-    - name: Szövegmoderálás
-      href: text-moderation-api.md
-    - name: Videomoderálás
-      href: video-moderation-human-review.md
-    - name: Felülvizsgálati eszköz
-      href: Review-Tool-User-Guide/human-in-the-loop.md
-    - name: 'Felülvizsgálatok, munkafolyamatok és feladatok'
-      href: review-api.md
+    - name: Minták böngésző
+      href: 'https://docs.microsoft.com/samples/browse/?terms=content%20moderator'
+    - name: .NET SDK-minták
+      href: samples-dotnet.md
+    - name: Python SDK-minták
+      href: 'https://github.com/Azure-Samples/cognitive-services-python-sdk-samples'
+    - name: Node.js SDK-minták
+      href: 'https://github.com/Azure-Samples/cognitive-services-node-sdk-samples'
+    - name: REST API-minták C# nyelven
+      href: samples-rest.md
 - name: Útmutatók
   items:
     - name: Tartalom moderálása
@@ -80,47 +78,53 @@
       href: Review-Tool-User-Guide/Configure.md
     - name: Fiókadatok exportálása vagy törlése
       href: ./export-delete-data.md
+    - name: Content Moderator testreszabása
+      items:
+        - name: 'Felülvizsgálatok, munkafolyamatok és feladatok'
+          href: review-api.md
+- name: Alapelvek
+  items:
+    - name: Képmoderálás
+      href: image-moderation-api.md
+    - name: Szövegmoderálás
+      href: text-moderation-api.md
+    - name: Videomoderálás
+      href: video-moderation-human-review.md
+    - name: Felülvizsgálati eszköz
+      href: Review-Tool-User-Guide/human-in-the-loop.md
+- name: Oktatóanyagok
+  items:
+    - name: E-kereskedelmi képek moderálása
+      href: ecommerce-retail-catalog-moderation.md
+    - name: Facebook-tartalmak moderálása
+      href: facebook-post-moderation.md
 - name: Referencia
   items:
-    - name: Content Moderator API
+    - name: Content Moderator REST API
       href: api-reference.md
-    - name: SDK-k
-      items:
-        - name: .NET
-          href: /dotnet/api/overview/azure/cognitiveservices/client/contentmoderator
-        - name: Java
-          href: /java/api/overview/azure/cognitiveservices/client/contentmoderator
-        - name: Node.js
-          href: /javascript/api/@azure/cognitiveservices-contentmoderator/
-        - name: Python
-          href: /python/api/overview/azure/cognitiveservices/contentmoderator
-        - name: Indítás
-          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/contentmoderator'
+    - name: .NET
+      href: /dotnet/api/overview/azure/cognitiveservices/client/contentmoderator
+    - name: Java
+      href: /java/api/overview/azure/cognitiveservices/client/contentmoderator
+    - name: Node.js
+      href: /javascript/api/@azure/cognitiveservices-contentmoderator/
+    - name: Python
+      href: /python/api/overview/azure/cognitiveservices/contentmoderator
+    - name: Indítás
+      href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/contentmoderator'
 - name: További források
   items:
-    - name: Támogatási lehetőségek
-      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/content-moderator/context/context
-    - name: Példák
-      items:
-        - name: .NET SDK-minták
-          href: samples-dotnet.md
-        - name: Python SDK-minták
-          href: 'https://github.com/Azure-Samples/cognitive-services-python-sdk-samples'
-        - name: Node.js SDK-minták
-          href: 'https://github.com/Azure-Samples/cognitive-services-node-sdk-samples'
-        - name: REST API-minták C# nyelven
-          href: samples-rest.md
-        - name: Egyéb Azure-minták
-          href: /samples/browse/?products=azure&term=content-moderator
     - name: Azure webinárium-sorozat
       href: 'https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html'
-    - name: Díjszabás és korlátok
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator'
-    - name: Nyelvi támogatás
-      href: language-support.md
-    - name: Régiónkénti rendelkezésre állás
+    - name: Régiós támogatás
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Azure-ütemterv
+    - name: Microsoft Learn modulok
+      href: 'https://docs.microsoft.com/learn/browse/?terms=content%20moderator'
+    - name: Támogatási lehetőségek
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/content-moderator/context/context
+    - name: Azure Government és globális Azure
+      href: 'https://docs.microsoft.com/en-us/azure/azure-government/compare-azure-government-global-azure'
+    - name: Azure-frissítések
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Megfelelőség
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 1d435c3b15433b7fec00d5dfa80970c04323e635
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 8e14b22895c4734f1efd8688a5b20c946422a080
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/12/2021
-ms.locfileid: "103199366"
+ms.locfileid: "103225625"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Régiók közötti Load Balancer (előzetes verzió)
 
@@ -94,7 +94,7 @@ A régiók közötti terheléselosztó háttér-készlete egy vagy több region�
 
 A meglévő terheléselosztó-környezetek hozzáadása egy régiós terheléselosztó számára egy magasan elérhető, régiók közötti környezetben történő üzembe helyezéshez.
 
-A **hazai régió** , ahol a régiók közötti terheléselosztó üzembe van helyezve. Ez a régió nem befolyásolja a forgalom irányításának módját. Ha egy otthoni régió leáll, a forgalmi folyamat nem érinti a forgalmat.
+A **hazai régió** a globális réteg régiók közötti terheléselosztó vagy nyilvános IP-címe. Ez a régió nem befolyásolja a forgalom irányításának módját. Ha egy otthoni régió leáll, a forgalmi folyamat nem érinti a forgalmat.
 
 ### <a name="home-regions"></a>Otthoni régiók
 * USA 2. keleti régiója
@@ -106,7 +106,7 @@ A **hazai régió** , ahol a régiók közötti terheléselosztó üzembe van he
 * Kelet-Ázsia
 
 > [!NOTE]
-> A régiók közötti terheléselosztó csak a fenti 7 régió egyikében helyezhető üzembe.
+> A régiók közötti terheléselosztó vagy nyilvános IP-cím csak a fenti 7 régió egyikében helyezhető üzembe globális szinten.
 
 A **bevett régió** az a hely, ahol a terheléselosztó globális nyilvános IP-címe elérhető. 
 

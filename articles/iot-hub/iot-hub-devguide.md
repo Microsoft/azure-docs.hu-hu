@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.custom: mqtt
-ms.openlocfilehash: 03e05eb2bc56a07c2bda3d3fb224012abb3c9e4a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 1fcf560ba1fef137a28ab1872635cc2182cd07e1
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735927"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009198"
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Azure IoT Hub – fejlesztői útmutató
 
@@ -75,5 +75,3 @@ Ez a IoT Hub fejlesztői útmutató a következő cikkeket tartalmazza:
 * Az [eszköz-és szolgáltatási SDK-](iot-hub-devguide-sdks.md) k az Azure IoT SDK-kat listázza az IoT hub-t használó eszköz-és szolgáltatás-alkalmazások fejlesztéséhez. A cikk az online API-dokumentációra mutató hivatkozásokat tartalmaz.
 
 * A [Reference-IOT hub MQTT támogatása](iot-hub-mqtt-support.md) részletes információkat nyújt arról, hogy a IoT hub hogyan támogatja a MQTT protokollt. A cikk az Azure IoT SDK-k beépített MQTT protokolljának támogatását ismerteti, és információt nyújt az MQTT protokoll közvetlen használatáról.
-
-* [Szószedet](iot-hub-devguide-glossary.md) – a közös IoT hub kapcsolatos feltételek listája.

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 16fecf5ce0d4551125ded4ba05fcbc41530efaf1
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 7329962d547fcb0635e3a9af3d80e562da59f7f2
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102430564"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199775"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Durable Functions-példányok kezelése az Azure-ban
 
@@ -202,6 +202,9 @@ A metódus egy olyan objektumot ad vissza, amely a következő tulajdonságokkal
   * **Sikertelen**: a példány hibával meghiúsult.
   * Leállítva: a példány leállítása váratlanul **megszakadt**.
 * **Előzmények**: a folyamat végrehajtási előzményei. Ez a mező csak akkor van feltöltve, ha a értéke `showHistory` `true` .
+
+> [!NOTE]
+> Egy Orchestrator nincs megjelölve mindaddig, `Completed` amíg az összes ütemezett feladat be nem fejeződik _, és_ a Orchestrator visszatért. Más szóval nem elegendő ahhoz, hogy egy Orchestrator el lehessen érni az `return` utasítását, hogy meg lehessen adni a jelölést `Completed` . Ez különösen fontos azokban az esetekben, amikor a `WhenAny` használatban van, ezek a hangszerelók gyakran az `return` összes ütemezett feladat végrehajtása előtt.
 
 Ez a metódus `null` a (.net), `undefined` (JavaScript) vagy `None` (Python) értéket adja vissza, ha a példány nem létezik.
 

@@ -7,12 +7,12 @@ author: stuartatmicrosoft
 ms.author: stkirk
 ms.service: azure-redhat-openshift
 keywords: titkosítás, byok, ARO, CMK, openshift, Red Hat
-ms.openlocfilehash: ca69594952c9fa547390e9a73b48ec8165145378
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: fa84096dcc44e668a6cf7ebd0369c6d3631c28d2
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505222"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555618"
 ---
 # <a name="encrypt-persistent-volume-claims-with-a-customer-managed-key-cmk-on-azure-red-hat-openshift-aro-preview"></a>Az állandó mennyiségi jogcímek titkosítása ügyfél által felügyelt kulccsal (CMK) az Azure Red Hat OpenShift (ARO) (előzetes verzió)
 
@@ -29,7 +29,7 @@ Ez a cikk azt feltételezi, hogy:
 
 * Már van egy meglévő ARO-fürt a 4,4-es OpenShift-verzióban (vagy nagyobb).
 
-* Az **oC** OpenShift parancssori eszköz, a Base64 (a Core utils része) és az **Az Azure CLI** telepítve van.
+* Az **oC** OpenShift parancssori eszköz, a Base64 (a coreutils része) és az **Az Azure CLI** telepítve van.
 
 * Az ARO-fürtre a globális fürt – rendszergazda felhasználó (kubeadmin **) használatával van** bejelentkezve.
 
@@ -43,8 +43,8 @@ Ez a cikk azt feltételezi, hogy:
 ## <a name="declare-cluster--encryption-variables"></a>Fürt & titkosítási változók deklarálása
 Az alábbi változókat úgy kell konfigurálnia, hogy a felhasználó által felügyelt titkosítási kulcsok lehetővé tételéhez használt ARO-fürtön legyenek.
 ```
-aroCluster="mycluster"             # The name of the ARO cluster that you wish to enable CMK on. This may be obtained from *az aro list -o table*
-buildRG="mycluster-rg"             # The name of the resource group used when you initially built the ARO cluster. This may be obtained from *az aro list -o table*
+aroCluster="mycluster"             # The name of the ARO cluster that you wish to enable CMK on. This may be obtained from **az aro list -o table**
+buildRG="mycluster-rg"             # The name of the resource group used when you initially built the ARO cluster. This may be obtained from **az aro list -o table**
 desName="aro-des"                  # Your Azure Disk Encryption Set name. This must be unique in your subscription.
 vaultName="aro-keyvault-1"         # Your Azure Key Vault name. This must be unique in your subscription.
 vaultKeyName="myCustomAROKey"      # The name of the key to be used within your Azure Key Vault. This is the name of the key, not the actual value of the key that you will rotate.
@@ -58,18 +58,19 @@ subId="$(az account list -o tsv | grep True | awk '{print $3}')"
 ```
 
 ## <a name="create-an-azure-key-vault-instance"></a>Azure Key Vault példány létrehozása
-A kulcsok tárolására Azure Key Vault példányt kell használni. Hozzon létre egy új Key Vault a kiürítési védelemmel, és engedélyezze a helyreállítható törlést. Ezután hozzon létre egy új kulcsot a tárolóban a saját egyéni kulcsának tárolásához:
+A kulcsok tárolására Azure Key Vault példányt kell használni. Hozzon létre egy új Key Vault, amelyen engedélyezve van a kiürítési védelem. Ezután hozzon létre egy új kulcsot a tárolóban a saját egyéni kulcsának tárolásához:
 
 ```azurecli-interactive
 # Create an Azure Key Vault resource in a supported Azure region
 az keyvault create -n $vaultName -g $buildRG --enable-purge-protection true -o table
+
 # Create the actual key within the Azure Key Vault
 az keyvault key create --vault-name $vaultName --name $vaultKeyName --protection software -o jsonc
 ```
 
 ## <a name="create-an-azure-disk-encryption-set"></a>Azure Disk Encryption-készlet létrehozása
 
-Az Azure Disk Encryption-készletet az ARO lemezek hivatkozási pontjaként használják. Csatlakoztatva van az előző lépésben létrehozott Azure Key Vaulthoz, és lekéri az ügyfél által felügyelt kulcsokat az adott helyről.
+A rendszer az ARO-ban lévő lemezek hivatkozási pontként használja a Azure Disk Encryption készletet. Csatlakoztatva van az előző lépésben létrehozott Azure Key Vaulthoz, és lekéri az ügyfél által felügyelt kulcsokat az adott helyről.
 
 ```azurecli-interactive
 # Retrieve the Key Vault Id and store it in a variable
@@ -86,20 +87,21 @@ az disk-encryption-set create -n $desName -g $buildRG --source-vault $keyVaultId
 Használja az előző lépésekben létrehozott lemezes titkosítási készletet, és adja meg a lemez titkosítási készletének hozzáférését Azure Key Vault:
 
 ```azurecli-interactive
-# First, find the disk encryption set's AppId value.
+# First, find the disk encryption set's Azure Application ID value.
 desIdentity="$(az disk-encryption-set show -n $desName -g $buildRG --query [identity.principalId] -o tsv)"
 
 # Next, update the Key Vault security policy settings to allow access to the disk encryption set.
 az keyvault set-policy -n $vaultName -g $buildRG --object-id $desIdentity --key-permissions wrapkey unwrapkey get -o table
 
-# Now, ensure the disk encryption set can read the contents of the Azure Key Vault.
+# Now, ensure the Disk Encryption Set can read the contents of the Azure Key Vault.
 az role assignment create --assignee $desIdentity --role Reader --scope $keyVaultId -o jsonc
 ```
 
 ### <a name="obtain-other-ids-required-for-role-assignments"></a>A szerepkör-hozzárendelésekhez szükséges egyéb azonosítók beszerzése
 Lehetővé kell tenni az ARO-fürt számára, hogy a lemez titkosítási készletét használja az állandó mennyiségi jogcímek (PVC-EK) az ARO-fürtben való titkosításához. Ehhez létre kell hozni egy új Managed Service Identity (MSI). Emellett az ARO MSI-hez és a lemezes titkosítási készlethez is meg kell adni egyéb engedélyeket.
-```
-# First, get the application ID of the service principal used in the ARO cluster.
+
+```azurecli-interactive
+# First, get the Azure Application ID of the service principal used in the ARO cluster.
 aroSPAppId="$(oc get secret azure-credentials -n kube-system -o jsonpath='{.data.azure_client_id}' | base64 --decode)"
 
 # Next, get the object ID of the service principal used in the ARO cluster.
@@ -111,7 +113,7 @@ msiName="$aroCluster-msi"
 # Create the Managed Service Identity (MSI) required for disk encryption.
 az identity create -g $buildRG -n $msiName -o jsonc
 
-# Get the ARO Managed Service Identity application ID.
+# Get the ARO Managed Service Identity Azure Application ID.
 aroMSIAppId="$(az identity show -n $msiName -g $buildRG -o tsv --query [clientId])"
 
 # Get the resource ID for the disk encryption set and the Key Vault resource group.
@@ -132,9 +134,10 @@ az role assignment create --assignee $aroMSIAppId --role Reader --scope $buildRG
 az role assignment create --assignee $aroSPObjId --role Contributor --scope $buildRGResourceId -o jsonc
 ```
 
-## <a name="create-a-k8s-storage-class-for-encrypted-premium--ultra-disks-optional"></a>K8s tárolási osztály létrehozása a titkosított prémium & Ultra-lemezek számára (opcionális)
+## <a name="create-a-k8s-storage-class-for-encrypted-premium--ultra-disks"></a>K8s tárolási osztály létrehozása a titkosított prémium & Ultra-lemezek számára
 Premium_LRS-és UltraSSD_LRS-lemezek CMK használandó tárolási osztályok előállítása:
-```
+
+```azurecli-interactive
 # Premium Disks
 cat > managed-premium-encrypted-cmk.yaml<< EOF
 kind: StorageClass
@@ -174,13 +177,15 @@ EOF
 ```
 
 Ezután futtassa ezt az üzemelő példányt az ARO-fürtön a tárolási osztály konfigurációjának alkalmazásához:
-```
+
+```azurecli-interactive
 # Update cluster with the new storage classes
 oc apply -f managed-premium-encrypted-cmk.yaml
 oc apply -f managed-ultra-encrypted-cmk.yaml
 ```
-## <a name="test-encryption-with-customer-managed-keys"></a>Titkosítás tesztelése az ügyfél által felügyelt kulcsokkal
-Annak megadásához, hogy a fürt használ-e egy ügyfél által felügyelt kulcsot a PVC-titkosításhoz, egy állandó mennyiségi jogcímet hozunk létre a megfelelő tárolási osztály használatával. Az alábbi kódrészlet létrehoz egy Pod-t, és állandó mennyiségi jogcímet csatlakoztat a standard lemezekkel
+
+## <a name="test-encryption-with-customer-managed-keys-optional"></a>Titkosítás tesztelése az ügyfél által felügyelt kulcsokkal (nem kötelező)
+Annak a megkereséséhez, hogy a fürt a PVC-titkosításhoz használt ügyfél által felügyelt kulcsot használ-e, állandó mennyiségi jogcímet hozunk létre az új tárolási osztály használatával. Az alábbi kódrészlet létrehoz egy Pod-t, és a prémium szintű lemezekkel csatlakoztat egy állandó mennyiségi jogcímet.
 ```
 # Create a pod which uses a persistent volume claim referencing the new storage class
 cat > test-pvc.yaml<< EOF
@@ -220,9 +225,9 @@ spec:
         claimName: mypod-with-cmk-encryption-pvc
 EOF
 ```
-### <a name="apply-the-test-pod-configuration-file"></a>A teszt Pod konfigurációs fájl alkalmazása
+### <a name="apply-the-test-pod-configuration-file-optional"></a>A teszt Pod konfigurációs fájl alkalmazása (nem kötelező)
 Hajtsa végre az alábbi parancsokat a test Pod konfigurációjának alkalmazásához, és az új állandó mennyiségi jogcím UID azonosítójának visszaküldéséhez. A rendszer a UID azonosítóval ellenőrzi, hogy a lemez titkosítva van-e a CMK használatával.
-```
+```azurecli-interactive
 # Apply the test pod configuration file and set the PVC UID as a variable to query in Azure later.
 pvcUid="$(oc apply -f test-pvc.yaml -o jsonpath='{.items[0].metadata.uid}')"
 
@@ -230,8 +235,9 @@ pvcUid="$(oc apply -f test-pvc.yaml -o jsonpath='{.items[0].metadata.uid}')"
 pvName="$(oc get pv pvc-$pvcUid -o jsonpath='{.spec.azureDisk.diskName}')"
 ```
 > [!NOTE]
-> Alkalmanként némi késés fordul elő, amikor Azure Active Directoryon belül alkalmazza a szerepkör-hozzárendeléseket. Attól függően, hogy ezek a parancsok milyen sebességgel futnak, a parancs "a teljes Azure-lemez nevének megállapítása" sikertelen lehet. Ha ez történik, tekintse meg az oC kimenetét, és **írja le a PVC mypod-with-CMK-encryption-PVC-** t a lemez sikeres üzembe helyezésének biztosításához. Ha a szerepkör-hozzárendelés propagálása nem fejeződött be, *törölnie* kell és *alkalmaznia* kell a pod & PVC-YAML.
-### <a name="verify-pvc-disk-is-configured-with-encryptionatrestwithcustomerkey"></a>Ellenőrizze, hogy a PVC-lemez "EncryptionAtRestWithCustomerKey"-vel van-e konfigurálva 
+> Alkalmanként előfordulhat, hogy a szerepkör-hozzárendelések Azure Active Directoryon belüli alkalmazása némi késéssel jár. Attól függően, hogy milyen sebességgel hajtja végre ezeket az utasításokat, az "a teljes Azure-lemez nevének megállapítása" parancs sikertelen lehet. Ha ez történik, tekintse át az oC kimenetét, és **írja le a PVC mypod-with-CMK-encryption-PVC** -t a lemez sikeres üzembe helyezésének biztosításához. Ha a szerepkör-hozzárendelés propagálása nem fejeződött be, előfordulhat, hogy *törölnie* kell, majd újra *alkalmaznia* kell a pod & PVC-YAML.
+
+### <a name="verify-pvc-disk-is-configured-with-encryptionatrestwithcustomerkey-optional"></a>Ellenőrizze, hogy a PVC lemez konfigurálva van-e a "EncryptionAtRestWithCustomerKey" (opcionális)
 A pod olyan állandó mennyiségi jogcímet hoz létre, amely a CMK tárolási osztályra hivatkozik. A következő parancs futtatása ellenőrzi, hogy a PVC a várt módon lett-e telepítve:
 ```azurecli-interactive
 # Describe the OpenShift cluster-wide persistent volume claims

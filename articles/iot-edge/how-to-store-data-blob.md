@@ -8,14 +8,16 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6cefb60d794defcce54766b9c7f71e7fbf40fe5c
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 5954c3083afc73fb25c796086f8fb8809af03ec1
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539433"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200667"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Adatok tárolása a peremhálózaton az Azure Blob Storage az IoT Edge-ben segítségével
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Az Azure Blob Storage on IoT Edge egy [blokk blobot](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) és egy [blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) Storage-megoldást is tartalmaz a peremen. A IoT Edge eszközön található blob Storage-modul úgy viselkedik, mint egy Azure Blob Service, a Blobok kivételével a IoT Edge eszközön helyileg tárolódnak. A blobokhoz ugyanazokat az Azure Storage SDK-metódusokat vagy blob API-hívásokat használhatja, amelyeken már használatban van. Ez a cikk ismerteti az Azure Blob Storage IoT Edge-tárolóval kapcsolatos fogalmakat, amelyek a IoT Edge eszközön futó blob-szolgáltatást futtatnak.
 
@@ -291,7 +293,7 @@ Támogatott
 
 Ez az Azure-Blob Storage IoT Edge modulban mostantól a IoT Edge Event Grid-integrációt is biztosít. Az integrációval kapcsolatos részletes információkért tekintse meg a [modulok üzembe helyezésére, az események közzétételére és az esemény kézbesítésének ellenőrzésére vonatkozó oktatóanyagot](../event-grid/edge/react-blob-storage-events-locally.md).
 
-## <a name="release-notes"></a>Kibocsátási megjegyzések
+## <a name="release-notes"></a>Release Notes (Kibocsátási megjegyzések)
 
 Ebben a modulban a [Docker hub kibocsátási megjegyzései](https://hub.docker.com/_/microsoft-azure-blob-storage) találhatók. Előfordulhat, hogy további információkat talál a hibajavításokkal és szervizeléssel kapcsolatban egy adott verzió kibocsátási megjegyzései között.
 

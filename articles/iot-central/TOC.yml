@@ -211,8 +211,6 @@
           href: core/howto-connect-rigado-cascade-500.md
         - name: Más IoT-felhők csatlakoztatása
           href: core/howto-build-iotc-device-bridge.md
-        - name: Eszközök kezelése
-          href: core/how-to-move-device-to-iot.md
     - name: Integrált megoldások készítése
       items:
         - name: Csempék hozzáadása az irányítópulthoz
@@ -245,6 +243,8 @@
           href: core/howto-manage-devices.md
         - name: Feladat futtatása
           href: core/howto-run-a-job.md
+        - name: Eszközök áthelyezése IoT Hub
+          href: core/how-to-move-device-to-iot.md
     - name: A megoldás felügyelete
       items:
         - name: Alkalmazásbeállítások módosítása
@@ -303,6 +303,8 @@
       href: /samples/browse/?expanded=azure&products=azure-iot-central
     - name: Támogatási és súgólehetőségek
       href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json
+    - name: IoT Szószedet
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json
     - name: Azure IoT-szolgáltatások
       items:
         - name: IoT Hub

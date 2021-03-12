@@ -9,12 +9,12 @@ ms.date: 11/11/2020
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: f340a06f3b6b7c8fc0d78051fb0496dcab11fb5d
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: bc5bcca394fa66cea9cbf6bc20ac7d164c671cf7
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102122748"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632951"
 ---
 # <a name="back-up-to-azure-with-commvault"></a>Biztonsági mentés az Azure-ba a CommVault használatával
 
@@ -84,7 +84,7 @@ Az Azure biztonsági mentési célként való használatakor az ügyfelek az [az
 |A másolatok tényleges száma     | 3         | 3         | 6         | 6 |
 |Availability Zones száma     | 1         | 3         | 2         | 4 |
 |Régiók száma     | 1         | 1         | 2         | 2 |
-|Manuális feladatátvétel másodlagos régióba     | NA         | NA         | Igen         | Igen |
+|Manuális feladatátvétel másodlagos régióba     | NA         | NA         | Igen         | Yes |
 
 **Az Azure Blob Storage szintjei:**
 
@@ -161,11 +161,11 @@ Ez a szakasz rövid útmutatót nyújt az Azure Storage helyszíni CommVault-tel
 
 9. Ezután navigáljon a "Storage" – > "Cloud" kifejezésre a CommVault-parancssorban. Válassza a Hozzáadás lehetőséget. Adjon egy rövid nevet a Storage-fióknak, majd válassza a "Microsoft Azure Storage" lehetőséget a "típus" listából. Válassza ki a biztonsági másolatok Azure Storage-ba történő átviteléhez használni kívánt Media Agent-kiszolgálót. Adja hozzá a létrehozott tárolót, válassza ki az Azure Storage-fiókban használni kívánt tárolási szintet, majd válassza ki a #8 lépésben létrehozott hitelesítő adatokat. Végezetül adja meg, hogy a deduplikált biztonsági mentéseket vagy sem, sem a deduplikált adatbázis helyét szeretné-e átvinni.
     
-     ![CommVault hozzáadása](../media/commvault-add-storage.png)
+     ![Képernyőkép a Felhőbeli felhasználói felület hozzáadásáról. Az Archive (archiválás) legördülő menüben a * * Archive * * (Archívum * *) lehetőség van kiválasztva.](../media/commvault-add-storage.png)
 
 10. Végül adja hozzá az új Azure Storage-erőforrást egy meglévő vagy új csomaghoz a CommVault-ben a "Manage"--> "Plans" (biztonsági mentés célhelye) használatával.
 
-    ![CommVault hozzáadása](../media/commvault-plan.png)
+    ![Képernyőkép a COMMVAULT Command Center felhasználói felületéről. A bal oldali navigációs menüben válassza a * * felügyelet * * * * * csomagok * * lehetőséget.](../media/commvault-plan.png)
 
 11. ***(Nem kötelező)*** Ha az Azure-t helyreállítási helyként vagy CommVault szeretné használni a kiszolgálók és alkalmazások Azure-ba való áttelepítéséhez, ajánlott a VSA-proxy üzembe helyezése az Azure-ban. Részletes útmutatást [itt](https://documentation.commvault.com/commvault/v11/article?p=106208.htm)talál.  
 
