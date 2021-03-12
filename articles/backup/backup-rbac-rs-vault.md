@@ -4,12 +4,12 @@ description: Az Azure szerepköralapú hozzáférés-vezérlés használatával 
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 03/09/2021
-ms.openlocfilehash: 179cb6efcff4bcf50a64a6d58f861622e853b02b
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 0b321a5f33bd75ce8615d6d2a90442a83d9fff67
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/10/2021
-ms.locfileid: "102553408"
+ms.locfileid: "102613442"
 ---
 # <a name="use-azure-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Az Azure szerepköralapú hozzáférés-vezérlés használata Azure Backup helyreállítási pontok kezeléséhez
 
@@ -39,7 +39,7 @@ Az alábbi táblázat a művelet végrehajtásához szükséges biztonságimáso
 | | Virtuális gépek közreműködője | VM-erőforrás |  A beépített szerepkör helyett a következő engedélyekkel rendelkező egyéni szerepkört is megtekintheti: Microsoft. számítás/virtualMachines/írás |
 | Virtuális gép igény szerinti biztonsági mentése | Biztonságimásolat-felelős | Recovery Services-tároló |   |
 | Virtuális gép visszaállítása | Biztonságimásolat-felelős | Recovery Services-tároló |   |
-| | Közreműködő | Az erőforráscsoport, amelyben a virtuális gép üzembe lesz helyezve |   A beépített szerepkör helyett olyan egyéni szerepkört is megadhat, amely a következő engedélyekkel rendelkezik: Microsoft. Resources/Subscriptions/resourceGroups/Write Microsoft. DomainRegistration/Domains/Write, Microsoft. számítás/virtualMachines/Write Microsoft. Network/virtualNetworks/Read Microsoft. Network/virtualNetworks/alhálózatok/csatlakozás/művelet | 
+| | Közreműködő | Az erőforráscsoport, amelyben a virtuális gép üzembe lesz helyezve |   A beépített szerepkör helyett olyan egyéni szerepkört is megadhat, amely a következő engedélyekkel rendelkezik: Microsoft. Resources/Subscriptions/resourceGroups/Write Microsoft. DomainRegistration/Domains/Write, Microsoft. számítás/virtualMachines/Write Microsoft. Network/virtualNetworks/Read Microsoft. Network/virtualNetworks/alhálózatok/csatlakozás/művelet |
 | | Virtuális gépek közreműködője | A forrásként szolgáló virtuális gép, amelyről biztonsági mentés készül |   A beépített szerepkör helyett a következő engedélyekkel rendelkező egyéni szerepkört is megtekintheti: Microsoft. számítás/virtualMachines/írás |
 | Nem felügyelt lemezek visszaállítása virtuális gép biztonsági mentése | Biztonságimásolat-felelős | Recovery Services-tároló |
 | | Virtuális gépek közreműködője | A forrásként szolgáló virtuális gép, amelyről biztonsági mentés készül | A beépített szerepkör helyett a következő engedélyekkel rendelkező egyéni szerepkört is megtekintheti: Microsoft. számítás/virtualMachines/írás |
@@ -50,6 +50,7 @@ Az alábbi táblázat a művelet végrehajtásához szükséges biztonságimáso
 | | Közreműködő | Az erőforráscsoport, amelybe a felügyelt lemez (ek) vissza lesz állítva | A beépített szerepkör helyett a következő engedélyekkel rendelkező egyéni szerepkört is megtekintheti: Microsoft. Resources/Subscriptions/resourceGroups/Write|
 | Egyedi fájlok visszaállítása a virtuális gép biztonsági másolatából | Biztonságimásolat-felelős | Recovery Services-tároló |
 | | Virtuális gépek közreműködője | A forrásként szolgáló virtuális gép, amelyről biztonsági mentés készül | A beépített szerepkör helyett a következő engedélyekkel rendelkező egyéni szerepkört is megtekintheti: Microsoft. számítás/virtualMachines/írás |
+| Régiók közötti visszaállítás | Biztonságimásolat-felelős | A Recovery Services-tároló előfizetése | Ez a fent említett visszaállítási engedélyek mellett történik. A beépített szerepkör helyett a CRR esetében egy egyéni szerepkört is megadhat, amely a következő engedélyekkel rendelkezik: Microsoft. Recoveryservices szolgáltatónál/Locations/backupAadProperties/Read "" Microsoft. Recoveryservices szolgáltatónál/Locations/backupCrrJobs/Action "" Microsoft. Recoveryservices szolgáltatónál/Locations/backupCrrJob/Action "" Microsoft. Recoveryservices szolgáltatónál/Locations/backupCrossRegionRestore/Action "" Microsoft. Recoveryservices szolgáltatónál/Locations/backupCrrOperationResults/Read "" Microsoft. Recoveryservices szolgáltatónál/Locations/backupCrrOperationsStatus/Read " |
 | Biztonsági mentési szabályzat létrehozása az Azure-beli virtuális gépek biztonsági mentéséhez | Biztonsági mentési közreműködő | Recovery Services-tároló |
 | Azure-beli virtuális gép biztonsági mentési szabályzatának módosítása | Biztonsági mentési közreműködő | Recovery Services-tároló |
 | Azure-beli virtuális gép biztonsági mentési szabályzatának törlése | Biztonsági mentési közreműködő | Recovery Services-tároló |

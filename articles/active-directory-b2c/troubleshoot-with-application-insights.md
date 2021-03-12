@@ -8,20 +8,20 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 10/16/2020
+ms.date: 03/10/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d4a68b492bad4ac091b4600c9ec81ac0de27cc05
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 435a0b85d205328d10f8762498c7a981d7ee45f5
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572900"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611827"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Azure Active Directory B2C naplók gyűjtése Application Insights
 
-Ez a cikk a naplók Active Directory B2Cból (Azure AD B2C) való összegyűjtésének lépéseit ismerteti, így diagnosztizálhatja az egyéni házirendekkel kapcsolatos problémákat. Application Insights lehetővé teszi a kivételek diagnosztizálását és az alkalmazások teljesítményével kapcsolatos problémák megjelenítését. Azure AD B2C tartalmaz egy funkciót, amely az adatok Application Insights történő küldésére használható.
+Ez a cikk a naplók Active Directory B2Cból (Azure AD B2C) való összegyűjtésének lépéseit ismerteti, így diagnosztizálhatja az egyéni házirendekkel kapcsolatos problémákat. Az Application Insights lehetőséget nyújt a kivételek diagnosztizálására és az alkalmazás teljesítményproblémáinak vizualizálására. Az Azure AD B2C tartalmaz egy funkciót az adatok Application Insightsba való elküldéséhez.
 
 Az itt leírt részletes tevékenység-naplókat **csak** az egyéni szabályzatok fejlesztése során lehet engedélyezni.
 
@@ -51,7 +51,7 @@ Ha még nem rendelkezik ilyennel, hozzon létre egy Application Insights példá
    UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
    ```
 
-1. Ha még nem létezik, adjon hozzá egy `<UserJourneyBehaviors>` alárendelt csomópontot a `<RelyingParty>` csomóponthoz. Ezt közvetlenül a után kell elhelyezni `<DefaultUserJourney ReferenceId="UserJourney Id" from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />` .
+1. Ha még nem létezik, adjon hozzá egy `<UserJourneyBehaviors>` alárendelt csomópontot a `<RelyingParty>` csomóponthoz. Ezt követően kell elhelyezni `<DefaultUserJourney ReferenceId="UserJourney Id" from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />` .
 1. Adja hozzá a következő csomópontot az elem gyermekének `<UserJourneyBehaviors>` . Ügyeljen arra, hogy `{Your Application Insights Key}` a korábban feljegyzett Application Insights rendszerállapot- **kulcsot** cserélje le.
 
     ```xml
@@ -94,7 +94,7 @@ Az új naplók a Application Insightsban való megtekintése előtt rövid késl
 
 Az alábbi lista felsorolja a naplók megtekintésére használható lekérdezéseket:
 
-| Lekérdezés | Description |
+| Lekérdezés | Leírás |
 |---------------------|--------------------|
 `traces` | A Azure AD B2C által generált naplók megtekintése |
 `traces | where timestamp > ago(1d)` | Az elmúlt nap Azure AD B2C által generált naplók megtekintése
@@ -130,7 +130,7 @@ Az éles környezet teljesítményének és jobb felhasználói élményének ja
 
 ## <a name="next-steps"></a>Következő lépések
 
-A Közösség kidolgozta a felhasználói útvonalak megjelenítőjét, hogy segítse az identitás-fejlesztőket. Beolvassa a Application Insights példányát, és jól strukturált áttekintést nyújt a felhasználói útvonalak eseményeiről. Szerezze be a forráskódot, és telepítse azt a saját megoldásában.
+Az identitásfejlesztők munkájának megkönnyítése érdekében a közösség kidolgozott egy megtekintőt a felhasználói interakciósorozatokhoz. Az Application Insights-példányból olvassa be a felhasználói interakciósorozatot, és jól strukturált áttekintést biztosít róla. Ön beszerezheti a forráskódot, és üzembe helyezheti a saját megoldásában.
 
 A Microsoft nem támogatja a felhasználói utazási lejátszót, és a szolgáltatás szigorúan elérhetővé válik.
 

@@ -3,7 +3,7 @@ title: Élő stream a többszörös átviteli sebességű streameket létrehozó
 description: Ez a témakör azt ismerteti, hogyan állíthat be egy olyan csatornát, amely több-sávszélességű élő streamet fogad egy helyszíni kódolóból.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: d9f0912d-39ec-4c9c-817b-e5d9fcf1f7ea
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 746fe9132dcb06678e2a0a975c8eed0aba6c3fad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 316372f091833519f0479d07355d2845c82743b6
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269624"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014842"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>A helyszíni kódolók többszörös átviteli sebességű streamjét fogadó csatornák használata
 
@@ -31,7 +31,7 @@ ms.locfileid: "89269624"
 ## <a name="overview"></a>Áttekintés
 Azure Media Services a *csatorna* az élő közvetítéssel végzett tartalom feldolgozásának folyamatát jelöli. A csatorna az élő bemeneti streameket kétféleképpen fogadja el:
 
-* A helyszíni élő kódoló egy többszörös sávszélességű RTMP vagy Smooth Streaming (töredezett MP4) streamet küld a csatornára, amely nincs engedélyezve az élő kódolás végrehajtásához Media Services. A betöltött adatfolyamok további feldolgozás nélkül haladnak át a csatornákon. Ezt a metódust *áteresztőnek*nevezzük. Egy élő kódoló olyan csatornára is küldhet egysebességű streamet, amely nem engedélyezett az élő kódoláshoz, de ezt nem javasoljuk. Media Services továbbítja a streamet a kérelmező ügyfeleknek.
+* A helyszíni élő kódoló egy többszörös sávszélességű RTMP vagy Smooth Streaming (töredezett MP4) streamet küld a csatornára, amely nincs engedélyezve az élő kódolás végrehajtásához Media Services. A betöltött adatfolyamok további feldolgozás nélkül haladnak át a csatornákon. Ezt a metódust *áteresztőnek* nevezzük. Egy élő kódoló olyan csatornára is küldhet egysebességű streamet, amely nem engedélyezett az élő kódoláshoz, de ezt nem javasoljuk. Media Services továbbítja a streamet a kérelmező ügyfeleknek.
 
   > [!NOTE]
   > Az átmenő módszer használata a leggazdaságosabb módja az élő közvetítésnek.
@@ -189,9 +189,9 @@ Az alábbi táblázat azt mutatja be, hogy a csatorna állapotai hogyan képezhe
 | Csatorna állapota | A portál felhasználói felületének kijelzői | Számlázása? |
 | --- | --- | --- |
 | **Indítás** |**Indítás** |Nem (átmeneti állapot) |
-| **Futó** |**Kész** (nincs futó program)<p><p>vagy<p>**Streaming** (legalább egy futó program) |Igen |
+| **Futó** |**Kész** (nincs futó program)<p><p>vagy<p>**Streaming** (legalább egy futó program) |Yes |
 | **Leállítás** |**Leállítás** |Nem (átmeneti állapot) |
-| **Leállítva** |**Leállítva** |Nem |
+| **Leállítva** |**Leállítva** |No |
 
 ## <a name="closed-captioning-and-ad-insertion"></a><a id="cc_and_ads"></a>Kódolt feliratok és ad-Beszúrás
 Az alábbi táblázat a kódolt feliratozás és az ad-Beszúrás támogatott szabványait mutatja be.

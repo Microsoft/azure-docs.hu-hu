@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: c12dbeb81fd2b3d67863b5b84fa30cf77e165549
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 812bfcc8d82c08600bd7391cdf70661585ceaf2f
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123190"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015182"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>A Linux rendszerhez készült Azure IoT Edge telepítése és üzembe helyezése Windows-eszközön (előzetes verzió)
 
@@ -43,18 +43,11 @@ Ez a cikk a IoT Edge Windows-eszközökön való beállításának lépéseit so
   * Minimális RAM: 4 GB (ajánlott 8 GB)
   * Minimális tárterület: 10 GB
 
-* Hozzáférés a Windows felügyeleti központ bennfentes buildhez a Windows felügyeleti központhoz telepített Azure IoT Edge bővítménnyel:  <!-- The link below needs the language localization to work; otherwise broken -->
-   1. Látogasson el a [Windows Insider előzetes](https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewserver)verziójára.
+* Hozzáférés a Windows felügyeleti központhoz a Windows felügyeleti központhoz telepített Azure IoT Edge bővítménnyel:
 
-   1. Az előnézetek legördülő menüben válassza a **Windows felügyeleti központ előzetes verziója – Build 2012** lehetőséget, majd kattintson a **Confirm (megerősítés**) gombra.
+   1. Töltse le a [Windows felügyeleti központ telepítőjét](https://aka.ms/wacdownload).
 
-      ![Válassza a Windows felügyeleti központ Előnézet – Build 2012 lehetőséget az elérhető előzetesek legördülő menüből.](./media/how-to-install-iot-edge-on-windows/select-windows-admin-center-preview-build.png)
-
-   1. A **nyelv kiválasztása** legördülő menüben válassza az **angol** lehetőséget, majd kattintson a **Confirm (megerősítés**) gombra.
-
-   1. Válassza a **Letöltés most** lehetőséget a *WindowsAdminCenterPreview2012.msi* letöltéséhez.
-
-   1. Futtassa a *WindowsAdminCenterPreview2012.msi* , és kövesse a telepítés varázsló utasításait a Windows felügyeleti központ telepítéséhez. A telepítés után nyissa meg a Windows felügyeleti központot.
+   1. Futtassa a letöltött telepítőt, és kövesse a telepítés varázsló utasításait a Windows felügyeleti központ telepítéséhez. A telepítés után nyissa meg a Windows felügyeleti központot.
 
    1. A Windows felügyeleti központ első használatakor a rendszer kérni fogja a használni kívánt tanúsítvány kiválasztását. Tanúsítványként válassza a **Windows felügyeleti központ ügyfele** lehetőséget.
 
@@ -143,7 +136,7 @@ Ha még nem tette meg, telepítse a Windows rendszerhez készült Linux-IoT Edge
    ```azurepowershell-interactive
    $msiPath = $([io.Path]::Combine($env:TEMP, 'AzureIoTEdge.msi'))
    $ProgressPreference = 'SilentlyContinue'
-   Invoke-WebRequest "https://aka.ms/AzureEdgeForLinuxOnWindowsMSI" -OutFile $msiPath
+   Invoke-WebRequest "https://aka.ms/AzEflowMSI" -OutFile $msiPath
    ```
 
 1. Telepítse a Linux rendszerhez készült IoT Edget az eszközön.

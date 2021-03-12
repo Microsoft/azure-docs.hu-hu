@@ -3,14 +3,14 @@ title: Azure Automation runbookok futtatása hibrid Runbook-feldolgozón
 description: Ez a cikk azt ismerteti, hogyan futtathatók a runbookok a helyi adatközpontban vagy más Felhőbeli szolgáltatónál a hibrid Runbook-feldolgozóval.
 services: automation
 ms.subservice: process-automation
-ms.date: 01/29/2021
+ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: a6827f8629423b9ed3adc362d3d05fd740e25a65
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 6d1f504458aed440464015a34479d75992fe5c45
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633308"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149375"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Runbookok futtatása hibrid runbook-feldolgozón
 
@@ -56,10 +56,10 @@ Az Azure-beli virtuális gépeken futó hibrid Runbook-feldolgozók felügyelt i
 A következő lépésekkel felügyelt identitást használhat egy hibrid Runbook-feldolgozón az Azure-erőforrásokhoz:
 
 1. Hozzon létre egy Azure-beli virtuális gépet.
-2. Felügyelt identitások konfigurálása az Azure-erőforrásokhoz a virtuális gépen. Lásd: [felügyelt identitások konfigurálása egy virtuális gépen az Azure-erőforrásokhoz a Azure Portal használatával](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm).
-3. Adjon hozzáférést a virtuális géphez egy erőforráscsoporthoz a Resource Managerben. A [Resource Manager eléréséhez tekintse meg a Windows rendszerű virtuális gépekhez rendelt felügyelt identitás használatát](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)ismertető témakört.
-4. Telepítse a hibrid Runbook-feldolgozót a virtuális gépre. Lásd: [Windows Hybrid Runbook Worker telepítése](automation-windows-hrw-install.md) vagy [Linux Hybrid Runbook Worker üzembe helyezése](automation-linux-hrw-install.md).
-5. Frissítse a runbook, [hogy a AzAccount parancsmagot](/powershell/module/az.accounts/connect-azaccount) használja a `Identity` paraméterrel az Azure-erőforrásokban való hitelesítéshez. Ez a konfiguráció csökkenti a futtató fiók használatának és a társított Fiókkezelés elvégzésének szükségességét.
+1. Felügyelt identitások konfigurálása az Azure-erőforrásokhoz a virtuális gépen. Lásd: [felügyelt identitások konfigurálása egy virtuális gépen az Azure-erőforrásokhoz a Azure Portal használatával](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm).
+1. Adjon hozzáférést a virtuális géphez egy erőforráscsoporthoz a Resource Managerben. A [Resource Manager eléréséhez tekintse meg a Windows rendszerű virtuális gépekhez rendelt felügyelt identitás használatát](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)ismertető témakört.
+1. Telepítse a hibrid Runbook-feldolgozót a virtuális gépre. Lásd: [Windows Hybrid Runbook Worker telepítése](automation-windows-hrw-install.md) vagy [Linux Hybrid Runbook Worker üzembe helyezése](automation-linux-hrw-install.md).
+1. Frissítse a runbook, [hogy a AzAccount parancsmagot](/powershell/module/az.accounts/connect-azaccount) használja a `Identity` paraméterrel az Azure-erőforrásokban való hitelesítéshez. Ez a konfiguráció csökkenti a futtató fiók használatának és a társított Fiókkezelés elvégzésének szükségességét.
 
     ```powershell
     # Connect to Azure using the managed identities for Azure resources identity configured on the Azure VM that is hosting the hybrid runbook worker
@@ -76,20 +76,24 @@ A következő lépésekkel felügyelt identitást használhat egy hibrid Runbook
 
 Ahelyett, hogy a runbook saját hitelesítéssel lássa el a helyi erőforrásokat, megadhat egy futtató fiókot egy hibrid Runbook-feldolgozói csoport számára. Futtató fiók megadásához meg kell adnia egy olyan [hitelesítőadat-eszközt](./shared-resources/credentials.md) , amely hozzáfér a helyi erőforrásokhoz. Ezek az erőforrások közé tartoznak a tanúsítványtárolók, és minden runbookok ezen hitelesítő adatok alatt fut a csoport egy hibrid Runbook-feldolgozóján.
 
-A hitelesítő adatok felhasználónevének a következő formátumok egyikében kell lennie:
+- A hitelesítő adatok felhasználónevének a következő formátumok egyikében kell lennie:
 
-* tartomány \ Felhasználónév
-* username@domain
-* username (a helyszíni számítógép helyi számítógépén lévő fiókok esetében)
+   * tartomány \ Felhasználónév
+   * username@domain
+   * username (a helyszíni számítógép helyi számítógépén lévő fiókok esetében)
+
+- Az **export-RunAsCertificateToHybridWorker PowerShell-** runbook használatához telepítenie kell az az modulokat a helyi gépre Azure Automation.
+
+#### <a name="use-a-credential-asset-to-specify-a-run-as-account"></a>Hitelesítő eszköz használata futtató fiók megadásához
 
 A következő eljárással adhatja meg a futtató fiókot egy hibrid Runbook Worker csoport számára:
 
 1. Hozzon létre egy [hitelesítő eszközt](./shared-resources/credentials.md) a helyi erőforrásokhoz való hozzáféréssel.
-2. Nyissa meg az Automation-fiókot a Azure Portal.
-3. Válassza a **hibrid feldolgozói csoportok** lehetőséget, majd válassza ki az adott csoportot.
-4. Válassza a **minden beállítás** elemet, majd a **hibrid feldolgozói csoport beállításait**.
-5. Módosítsa a **Futtatás** **alapértelmezett** értékét az **Egyéni** értékre.
-6. Válassza ki a hitelesítő adatokat, majd kattintson a **Mentés** gombra.
+1. Nyissa meg az Automation-fiókot a Azure Portal.
+1. Válassza a **hibrid feldolgozói csoportok** lehetőséget, majd válassza ki az adott csoportot.
+1. Válassza a **minden beállítás** elemet, majd a **hibrid feldolgozói csoport beállításait**.
+1. Módosítsa a **Futtatás** **alapértelmezett** értékét az **Egyéni** értékre.
+1. Válassza ki a hitelesítő adatokat, majd kattintson a **Mentés** gombra.
 
 ## <a name="install-run-as-account-certificate"></a><a name="runas-script"></a>Futtató fiók tanúsítványának telepítése
 
@@ -178,11 +182,11 @@ Get-AzAutomationAccount | Select-Object AutomationAccountName
 A futtató fiók előkészítésének befejezése:
 
 1. Mentse az **export-RunAsCertificateToHybridWorker** runbook a számítógépre **. ps1** kiterjesztéssel.
-2. Importálja az Automation-fiókjába.
-3. Szerkessze a runbook, és módosítsa a változó értékét a `Password` saját jelszavára.
-4. Tegye közzé a runbook.
-5. Futtassa a runbook, amely a futtató fiók használatával futtatja és hitelesíti a runbookok a hibrid Runbook-munkavégző csoportot. 
-6. Vizsgálja meg a folyamat adatfolyamát, és figyelje meg, hogy a tanúsítvány importálására tett kísérlet a helyi számítógép tárolójába, majd több sor után. Ez a viselkedés attól függ, hogy hány Automation-fiókot határoz meg az előfizetésében, valamint a hitelesítés sikerességének fokát.
+1. Importálja az Automation-fiókjába.
+1. Szerkessze a runbook, és módosítsa a változó értékét a `Password` saját jelszavára.
+1. Tegye közzé a runbook.
+1. Futtassa a runbook, amely a futtató fiók használatával futtatja és hitelesíti a runbookok a hibrid Runbook-munkavégző csoportot. 
+1. Vizsgálja meg a folyamat adatfolyamát, és figyelje meg, hogy a tanúsítvány importálására tett kísérlet a helyi számítógép tárolójába, majd több sor után. Ez a viselkedés attól függ, hogy hány Automation-fiókot határoz meg az előfizetésében, valamint a hitelesítés sikerességének fokát.
 
 ## <a name="work-with-signed-runbooks-on-a-windows-hybrid-runbook-worker"></a>Aláírt runbookok használata Windows hibrid Runbook-feldolgozón
 
@@ -267,13 +271,13 @@ A GPG kulcstartó és a kulcspár létrehozásához használja a hibrid Runbook 
     sudo su – nxautomation
     ```
 
-2. A **nxautomation** használata után létrehozza a GPG-kulcspárt. A GPG végigvezeti Önt a lépéseken. Meg kell adnia a nevet, az e-mail-címet, a lejárati időt és a hozzáférési kódot. Ezután várjon, amíg nincs elég entrópia a gépen a kulcs generálásához.
+1. A **nxautomation** használata után létrehozza a GPG-kulcspárt. A GPG végigvezeti Önt a lépéseken. Meg kell adnia a nevet, az e-mail-címet, a lejárati időt és a hozzáférési kódot. Ezután várjon, amíg nincs elég entrópia a gépen a kulcs generálásához.
 
     ```bash
     sudo gpg --generate-key
     ```
 
-3. Mivel a GPG-könyvtár a sudo-val lett létrehozva, a következő parancs használatával módosítania kell a tulajdonosát a **nxautomation** .
+1. Mivel a GPG-könyvtár a sudo-val lett létrehozva, a következő parancs használatával módosítania kell a tulajdonosát a **nxautomation** .
 
     ```bash
     sudo chown -R nxautomation ~/.gnupg

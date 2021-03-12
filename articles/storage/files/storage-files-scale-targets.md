@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ffc5f49e357591b41a18ae15c5551c1f447095fb
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: aa24989103cca5bb7031a21ca106b93ada0c3904
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102440309"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149460"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Az Azure Files méretezhetőségi és teljesítménycéljai
 A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az SMB-és NFS fájlrendszer-protokollok használatával érhető el. Ez a cikk a Azure Files és Azure File Sync méretezhetőségi és teljesítménybeli céljait ismerteti.
@@ -138,9 +138,9 @@ Míg a Sync adatok feltöltése az Azure-fájlmegosztásba, a helyi fájlkiszolg
 
 A kezdeti szinkronizálást a szinkronizálási csoport másodpercenkénti 20 fájljának kezdeti feltöltési sebessége korlátozza. Az ügyfelek a következő képletekkel tudják megbecsülni az összes adat Azure-ba való feltöltésének időpontját napokban:  
 
-   **A fájlok szinkronizálási csoportba való feltöltésének időpontja (napokban) = (objektumok száma a Felhőbeli végpontban)/(20 * 60 * 60 * 24)**
+   **A fájlok szinkronizálási csoportba való feltöltésének időpontja (napokban) = (objektumok száma a kiszolgálói végpontban)/(20 * 60 * 60 * 24)**
 
-Az adatok több kiszolgálói végpontba és szinkronizálási csoportba való felosztása felgyorsíthatja ezt a kezdeti adatfeltöltést, mivel a feltöltés párhuzamosan hajtható végre több szinkronizálási csoport számára, másodpercenként 20 elemnél. Így a két szinkronizálási csoport a másodpercenként 40-as összesített sebességgel fut. A teljes befejezési idő az a szinkronizálási csoportra vonatkozó becsült idő, amelyet a legtöbb fájl szinkronizál
+Az adatok több kiszolgálói végpontba és szinkronizálási csoportba való felosztása felgyorsíthatja ezt a kezdeti adatfeltöltést, mivel a feltöltés párhuzamosan hajtható végre több szinkronizálási csoport számára, másodpercenként 20 elemnél. Így a két szinkronizálási csoport a másodpercenként 40-as összesített sebességgel fut. A teljes befejezési idő az a szinkronizálási csoportra vonatkozó becsült idő, amelyet a legtöbb fájl szinkronizál.
 
 **Névtér letöltési átviteli sebessége** Ha új kiszolgálói végpontot ad hozzá egy meglévő szinkronizálási csoporthoz, a Azure File Sync ügynök nem tölti le a fájl tartalmát a Felhőbeli végpontból. Először szinkronizálja a teljes névteret, majd elindítja a háttérben való visszahívást, hogy letöltse a fájlokat, akár teljes egészében, akár a felhőalapú rétegek engedélyezése esetén a kiszolgálói végponton beállított felhő-előállítási házirendhez.
 

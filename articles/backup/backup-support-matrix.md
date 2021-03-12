@@ -4,12 +4,12 @@ description: Összefoglalja a Azure Backup szolgáltatás támogatási beállít
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 9e20c21694678acf7be13ccbbe9cce9af38c32c5
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: d8ffaf2c5aa32e8e0f851510adb58a78167abccb
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98915709"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149035"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup támogatási mátrixa
 
@@ -150,8 +150,8 @@ Azure Backup hozzáadta a régiók közötti visszaállítási szolgáltatást a
 
 | Biztonságimásolat-kezelés típusa | Támogatott                                                    | Támogatott régiók |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | Az Azure-beli virtuális gépek felügyelt és nem felügyelt lemezekkel egyaránt támogatottak. Klasszikus virtuális gépek esetén nem támogatott. | Az összes nyilvános Azure-régióban elérhető, kivéve a Közép-ausztráliai, Közép-Ausztrália, Dél-Afrika északi régiója, Észak-Európa, Észak-Svájc, Középnyugat-Németország, Kelet-Norvégia. <br>Az ezekben a régiókban használattal kapcsolatos információkért forduljon a következőhöz: [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
-| SQL/SAP HANA | Előzetes verzióban                                                      | Az összes nyilvános Azure-régióban elérhető, kivéve a Közép-ausztráliai, Közép-Ausztrália, Dél-Afrika északi régiója, Észak-Európa, Észak-Svájc, Középnyugat-Németország, Kelet-Norvégia. <br>Az ezekben a régiókban használattal kapcsolatos információkért forduljon a következőhöz: [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
+| Azure VM               | Az Azure-beli virtuális gépek felügyelt és nem felügyelt lemezekkel egyaránt támogatottak. Klasszikus virtuális gépek esetén nem támogatott. | Az összes Azure-beli nyilvános régióban és szuverén régióban elérhető, kivéve a közép-Ausztrália, Közép-Ausztrália, Dél-Afrika északi régiója, Észak-Európa, Észak-Svájc, Középnyugat-Németország, Norvégia keleti régiójában. <br>Az ezekben a régiókban használattal kapcsolatos információkért forduljon a következőhöz: [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
+| SQL/SAP HANA | Előzetes verzióban                                                      | Az összes Azure-beli nyilvános régióban és szuverén régióban elérhető, kivéve a közép-Ausztrália, Közép-Ausztrália, Dél-Afrika északi régiója, Észak-Európa, Észak-Svájc, Középnyugat-Németország, Norvégia keleti régiójában. <br>Az ezekben a régiókban használattal kapcsolatos információkért forduljon a következőhöz: [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
 | MARS-ügynök/helyszíni  | No                                                           | N/A               |
 | AFS (Azure-fájlmegosztás)                 | No                                                           | N/A               |
 

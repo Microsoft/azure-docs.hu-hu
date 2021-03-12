@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9ecc14aa9591d6e62dccd9899a80de44411928a1
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 3223a1c8e20d8b0caced5d940132c32fa0aba97c
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051088"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149087"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>IoT Hub telemetria betöltése az Azure digitális Twinsba
 
@@ -26,13 +26,12 @@ Ez a dokumentum végigvezeti a telemetria IoT Hub-ből betölthető függvény �
 
 A példának való továbblépés előtt a következő erőforrásokat kell beállítania előfeltételekként:
 * **Egy IoT hub**. Útmutatásért tekintse meg a [IoT hub](../iot-hub/quickstart-send-telemetry-cli.md)rövid útmutató *IoT hub létrehozása* című szakaszát.
-* A digitális kettős példány meghívásához megfelelő engedélyekkel rendelkező **függvény** . Útmutatásért tekintse meg a következő témakört [*: útmutató: funkció beállítása az Azure-ban az adatfeldolgozáshoz*](how-to-create-azure-function.md). 
 * **Egy Azure digitális Twins-példány** , amely az eszköz telemetria fogja fogadni. Útmutatásért lásd [*: útmutató: Azure digitális Twins-példány és-hitelesítés beállítása*](./how-to-set-up-instance-portal.md).
 
 ### <a name="example-telemetry-scenario"></a>Példa telemetria forgatókönyvre
 
 Ez a útmutató ismerteti, hogyan küldhet üzeneteket IoT Hubról Azure digitális Twins-ra az Azure-függvény használatával. Számos lehetséges konfiguráció és megfelelő stratégia használható az üzenetek küldéséhez, de a cikk példája a következő részeket tartalmazza:
-* Egy IoT Hub hőmérő eszköz, egy ismert eszköz azonosítójával
+* Egy IoT Hub termosztáttal rendelkező eszköz, egy ismert eszköz azonosítójával
 * Egy digitális Twin, amely az eszközt a megfelelő AZONOSÍTÓval jelöli
 
 > [!NOTE]
@@ -42,26 +41,41 @@ Ha a termosztátos eszköz egy hőmérséklet-telemetria eseményt küld, a füg
 
 :::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="Egy folyamatábrát ábrázoló diagram. A diagramon egy IoT Hub eszköz hőmérséklet-telemetria küld a IoT Hub az Azure-ban egy függvénynek, amely egy, az Azure-beli digitális Ikrekben lévő Twin értékre frissíti a hőmérséklet-tulajdonságot." border="false":::
 
-## <a name="add-a-model-and-twin"></a>Modell hozzáadása és Twin
+## <a name="add-a-model-and-twin"></a>Modell és ikerpéldány felvétele
 
-Hozzáadhat/feltölthet egy modellt az alábbi CLI-paranccsal, majd létrehozhat egy IKeret a modell használatával, amely a IoT Hubból származó információkkal lesz frissítve.
+Ebben a szakaszban egy [Digital Twin](concepts-twins-graph.md) -et állít be az Azure Digital ikrek szolgáltatásban, amely a termosztát-eszközt jelképezi, és a IoT hubról származó információkkal fog frissülni.
+
+A következő típusú termosztát létrehozásához először fel kell töltenie a termosztát [modelljét](concepts-models.md) a példányba, amely leírja a termosztát tulajdonságait, és később a Twin létrehozásához lesz használva. 
 
 A modell így néz ki:
 :::code language="json" source="~/digital-twins-docs-samples/models/Thermostat.json":::
 
-A **modell az ikrek-példányba való feltöltéséhez** nyissa meg az Azure CLI-t, és futtassa a következő parancsot:
+A **modell az ikrek-példányba való feltöltéséhez** futtassa az alábbi Azure CLI-parancsot, amely a fenti MODELLT beágyazott JSON-ként tölti fel. A (z) [Azure Cloud Shell](/cloud-shell/overview.md) a böngészőben futtathatja a parancsot, vagy a gépen, ha a CLI telepítve van a [helyi](/cli/azure/install-azure-cli.md)számítógépen.
 
 ```azurecli-interactive
 az dt model create --models '{  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",  "@type": "Interface",  "@context": "dtmi:dtdl:context;2",  "contents": [    {      "@type": "Property",      "name": "Temperature",      "schema": "double"    }  ]}' -n {digital_twins_instance_name}
 ```
 
-Ezután **létre kell hoznia egy IKeret a modell használatával**. A következő parancs használatával hozzon létre egy dupla értéket, és állítsa be a 0,0 kezdeti hőmérsékleti értékként.
+Ezután **létre kell hoznia egy IKeret a modell használatával**. A következő parancs használatával hozzon létre egy **thermostat67** nevű termosztátot, és állítsa be a 0,0 értéket kezdeti hőmérsékletként.
 
 ```azurecli-interactive
 az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}' --dt-name {digital_twins_instance_name}
 ```
 
-A sikeres Twin Create parancs kimenetének a következőhöz hasonlóan kell kinéznie:
+>[!NOTE]
+> Ha Cloud Shellt használ a PowerShell-környezetben, akkor előfordulhat, hogy el kell kerülnie az idézőjelek karaktereit a beágyazott JSON-mezőkben az értékek megfelelő elemzéséhez. A következő parancsokkal töltheti fel a modellt, és létrehozhatja a Twin-et ezzel a módosítással:
+>
+> Modell feltöltése:
+> ```azurecli-interactive
+> az dt model create --models '{  \"@id\": \"dtmi:contosocom:DigitalTwins:Thermostat;1\",  \"@type\": \"Interface\",  \"@context\": \"dtmi:dtdl:context;2\",  \"contents\": [    {      \"@type\": \"Property\",      \"name\": \"Temperature\",      \"schema\": \"double\"    }  ]}' -n {digital_twins_instance_name}
+> ```
+>
+> Dupla létrehozás:
+> ```azurecli-interactive
+> az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{\"Temperature\": 0.0,}' --dt-name {digital_twins_instance_name}
+> ```
+
+Ha a Twin létrehozása sikeresen megtörtént, a parancssori felület kimenetének a következőhöz hasonlóan kell kinéznie:
 ```json
 {
   "$dtId": "thermostat67",
@@ -82,74 +96,61 @@ A sikeres Twin Create parancs kimenetének a következőhöz hasonlóan kell kin
 
 ## <a name="create-a-function"></a>Függvény létrehozása
 
-Ez a szakasz ugyanazokat a Visual Studio indítási lépéseket és függvény-csontvázat használja, mint a következő [*: függvény beállítása az adatok feldolgozásához*](how-to-create-azure-function.md). A csontváz kezeli a hitelesítést, és létrehoz egy szolgáltatási ügyfelet, amely készen áll arra, hogy feldolgozza az adatfeldolgozást, és az Azure Digital Twins API-kat hívja 
+Ebben a szakaszban egy Azure-függvényt hoz létre az Azure Digital Twins eléréséhez és az ikrek frissítéséhez a kapott IoT telemetria-események alapján. A függvény létrehozásához és közzétételéhez kövesse az alábbi lépéseket.
 
-Az alábbi lépéseket követve hozzá kell adnia egy adott kódot a IoT telemetria-események feldolgozásához IoT Hub.  
+#### <a name="step-1-create-a-function-app-project"></a>1. lépés: a Function app-projekt létrehozása
 
-### <a name="add-telemetry-processing"></a>Telemetria-feldolgozás hozzáadása
-    
-A telemetria események üzenetek formájában érkeznek az eszközről. A telemetria-feldolgozási kód hozzáadásának első lépéseként kinyeri az üzenet megfelelő részét az Event Grid eseményből. 
+Először hozzon létre egy új Function app-projektet a Visual Studióban. Ennek módjával kapcsolatos útmutatásért tekintse meg a [**Function alkalmazás létrehozása a Visual Studióban**](how-to-create-azure-function.md#create-a-function-app-in-visual-studio) című szakaszt az *útmutató: függvény beállítása az adat feldolgozásához* című cikkben.
 
-A különböző eszközök eltérő módon strukturálják az üzeneteiket, így a lépéshez tartozó kód a **csatlakoztatott eszköztől függ.** 
+#### <a name="step-2-fill-in-function-code"></a>2. lépés: töltse ki a függvény kódját
 
-A következő kód példát mutat be egy egyszerű eszközre, amely a telemetria JSON-ként küldi el. Ez a minta teljes körűen fel van derítve az [*oktatóanyagban: végpontok közötti megoldás összekötése*](./tutorial-end-to-end.md). A következő kód megkeresi az üzenetet elküldő eszköz AZONOSÍTÓját, valamint a hőmérséklet értékét.
+Adja hozzá a következő csomagokat a projekthez:
+* [Azure. DigitalTwins. Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core/)
+* [Azure. Identity](https://www.nuget.org/packages/Azure.Identity/)
+* [Microsoft. Azure. webjobs. Extensions. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid/)
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/IoTHubToTwins.cs" id="Find_device_ID_and_temperature":::
-
-A következő mintakód az azonosító és a hőmérséklet értékét veszi fel, és a "javítás" (a frissítések elvégzése) elemre használja a Twin.
-
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/IoTHubToTwins.cs" id="Update_twin_with_device_temperature":::
-
-### <a name="update-your-function-code"></a>A függvény kódjának frissítése
-
-Most, hogy megértette a korábbi minták kódját, nyissa meg a függvényt a Visual Studio [*Előfeltételek*](#prerequisites) szakaszában. (Ha nem rendelkezik az Azure-ban létrehozott függvénnyel, az előfeltételekben található hivatkozásra kattintva hozzon létre egyet most).
-
-Cserélje le a függvény kódját ezzel a mintakód.
+Nevezze át a *Function1.cs* minta függvényt, amelyet a Visual Studio generált az új projekttel a *IoTHubtoTwins.cs*. Cserélje le a fájlban található kódot a következő kódra:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/IoTHubToTwins.cs":::
 
-Mentse a függvény kódját, és tegye közzé a Function alkalmazást az Azure-ban. Ebből a cikkből megtudhatja, hogyan hozhat létre egy függvényt az Azure [*-ban az*](./how-to-create-azure-function.md#publish-the-function-app-to-azure) [*adatfeldolgozáshoz*](how-to-create-azure-function.md).
+Mentse a függvény kódját.
 
-Sikeres közzététel után az alábbi ábrán látható kimenet jelenik meg a Visual Studio-parancsablakban:
+#### <a name="step-3-publish-the-function-app-to-azure"></a>3. lépés: a Function alkalmazás közzététele az Azure-ban
 
-```cmd
-1>------ Build started: Project: adtIngestFunctionSample, Configuration: Release Any CPU ------
-1>adtIngestFunctionSample -> C:\Users\source\repos\Others\adtIngestFunctionSample\adtIngestFunctionSample\bin\Release\netcoreapp3.1\bin\adtIngestFunctionSample.dll
-2>------ Publish started: Project: adtIngestFunctionSample, Configuration: Release Any CPU ------
-2>adtIngestFunctionSample -> C:\Users\source\repos\Others\adtIngestFunctionSample\adtIngestFunctionSample\bin\Release\netcoreapp3.1\bin\adtIngestFunctionSample.dll
-2>adtIngestFunctionSample -> C:\Users\source\repos\Others\adtIngestFunctionSample\adtIngestFunctionSample\obj\Release\netcoreapp3.1\PubTmp\Out\
-2>Publishing C:\Users\source\repos\Others\adtIngestFunctionSample\adtIngestFunctionSample\obj\Release\netcoreapp3.1\PubTmp\adtIngestFunctionSample - 20200911112545669.zip to https://adtingestfunctionsample20200818134346.scm.azurewebsites.net/api/zipdeploy...
-========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
-========== Publish: 1 succeeded, 0 failed, 0 skipped ==========
-```
-A közzétételi folyamat állapotát a [Azure Portal](https://portal.azure.com/)is ellenőrizheti. Keresse meg az _erőforráscsoportot_ , és navigáljon a _tevékenység naplóhoz_ , és keresse meg a _Get Web App Publishing profilt_ a listából, és ellenőrizze, hogy az állapot sikeres-e.
+A projekt közzététele egy Azure-beli Function alkalmazásban.
 
-:::image type="content" source="media/how-to-ingest-iot-hub-data/azure-function-publish-activity-log.png" alt-text="A közzétételi folyamat állapotát megjelenítő Azure Portal képernyőképe.":::
+Ennek módjával kapcsolatos útmutatásért tekintse meg a [**Function alkalmazás közzététele az Azure**](how-to-create-azure-function.md#publish-the-function-app-to-azure) -ban című szakaszt az *útmutató: funkció beállítása az adat feldolgozásához* című cikkben.
+
+#### <a name="step-4-configure-the-function-app"></a>4. lépés: a Function alkalmazás konfigurálása
+
+Ezután **rendeljen hozzá egy hozzáférési szerepkört** a függvényhez, és **konfigurálja az alkalmazás beállításait** , hogy hozzáférhessen az Azure Digital Twins-példányhoz. Ennek módjáról a következő témakörben talál útmutatást: a [**biztonsági hozzáférés beállítása a Function alkalmazáshoz**](how-to-create-azure-function.md#set-up-security-access-for-the-function-app) az *adatfeldolgozáshoz* című cikkben.
 
 ## <a name="connect-your-function-to-iot-hub"></a>A függvény összekapcsolásával IoT Hub
 
-Esemény célhelyének beállítása a hub-adatként.
+Ebben a szakaszban a függvényt a IoT hub-eszköz adataihoz tartozó eseményként fogja beállítani. Ezzel biztosíthatja, hogy a IoT Hub termosztát eszközének adatait a rendszer a feldolgozásra az Azure-függvénynek küldje el.
+
 A [Azure Portal](https://portal.azure.com/)navigáljon az [*előfeltételek*](#prerequisites) szakaszban létrehozott IoT hub-példányhoz. Az **események** területen hozzon létre egy előfizetést a függvényhez.
 
 :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Képernyőkép az esemény-előfizetés hozzáadását bemutató Azure Portalról.":::
 
 Az **esemény-előfizetés létrehozása** lapon töltse ki a mezőket a következőképpen:
-  1. A **név** mezőben adja meg az előfizetés nevét.
-  2. Az **esemény sémája** területen válassza ki _Event Grid sémát_.
-  3. Az **eseménytípus** területen válassza az _eszköz telemetria_ jelölőnégyzetet, és törölje a többi eseménytípus jelölését.
-  4. A **végpont típusa** területen válassza az _Azure-függvény_ lehetőséget.
-  5. A **végpont területen** válassza _a végpont kiválasztása_ lehetőséget a végpont létrehozásához.
+  1. A **név** mezőben adja meg az esemény-előfizetés kívánt nevét.
+  2. Az **Event Schema** esetében válassza _Event Grid sémát_.
+  3. A **Rendszertéma neve** mezőben adja meg a kívánt nevet.
+  1. Az **eseménytípus szűréséhez** válassza az _eszköz telemetria_ jelölőnégyzetet, és törölje a többi eseménytípus jelölését.
+  1. A **végpont típusa** beállításnál válassza az _Azure-függvény_ lehetőséget.
+  1. A **végpont** esetében a _válasszon egy végpontot_ hivatkozásra kattintva válassza ki, hogy melyik Azure-függvényt szeretné használni a végponthoz.
     
 :::image type="content" source="media/how-to-ingest-iot-hub-data/create-event-subscription.png" alt-text="Képernyőkép a Azure Portalról az esemény-előfizetés részleteinek létrehozásához":::
 
-A megnyíló _Azure-függvény kiválasztása_ oldalon ellenőrizze az alábbi adatokat.
- 1. **Előfizetés**: Az Ön Azure-előfizetése
- 2. **Erőforráscsoport**: az erőforráscsoport
- 3. **Function alkalmazás**: a Function alkalmazás neve
- 4. **Tárolóhely**: _éles üzem_
- 5. **Függvény**: válassza ki a függvényt a legördülő listából.
+Az alábbi részleteket az _Azure-függvény kiválasztása_ oldalon nyithatja meg, ellenőrizheti vagy kitöltheti.
+ 1. **Előfizetés**: az Azure-előfizetése.
+ 2. **Erőforráscsoport**: az erőforráscsoport.
+ 3. **Function alkalmazás**: a Function alkalmazás neve.
+ 4. **Tárolóhely**: _éles üzem_.
+ 5. **Függvény**: válassza ki a függvényt a korábbi, *IoTHubtoTwins*, a legördülő listából.
 
-Mentse a részleteket a _kijelölés megerősítése_ gombra kattintva.            
+Mentse a részleteket a _kijelölés megerősítése_ gombbal.            
       
 :::image type="content" source="media/how-to-ingest-iot-hub-data/select-azure-function.png" alt-text="Képernyőkép a Azure Portalről a függvény kiválasztásához.":::
 
@@ -197,7 +198,7 @@ A kimenetnek az alábbihoz hasonló hőmérsékleti értéket kell tartalmaznia:
 
 Az érték változásának megtekintéséhez futtassa többször a fenti lekérdezési parancsot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure Digital Twins szolgáltatással való bejövő és kimenő adatforgalomról:
 * [*Fogalmak: integráció más szolgáltatásokkal*](concepts-integration.md)

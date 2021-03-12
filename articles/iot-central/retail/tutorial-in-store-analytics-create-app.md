@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 112039b9227d5ff34e68b6dc6643597f335fbdb5
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: caa61170504c3ee4b7162cc06db4df16d1232395
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832232"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014366"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Oktatóanyag: áruházbeli elemzési alkalmazás létrehozása az Azure-ban IoT Central
 
@@ -228,8 +228,8 @@ Ebben az oktatóanyagban a következő valós és szimulált eszközöket haszn�
 
 A Real Rigado Gateway és a RuuviTag érzékelők összekapcsolásához hajtsa végre a következő két cikk lépéseit. Ha elkészült, térjen vissza ehhez az oktatóanyaghoz. Mivel ebben az oktatóanyagban már létrehozta az eszközöket, a következő irányokba nem kell újból létrehoznia őket.
 
-- A Rigado-átjárók összekapcsolásával kapcsolatban lásd: [Rigado Cascade 500 összekötése az Azure IoT Central-alkalmazással](../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json).
-- A RuuviTag-érzékelők összekapcsolásával kapcsolatban lásd: [RuuviTag-érzékelő összekötése az Azure IoT Central-alkalmazással](../core/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json). Ezeket az utasításokat két szimulált érzékelő létrehozásához is használhatja, ha szükséges.
+- A Rigado-átjárók összekapcsolásával kapcsolatban lásd: [Rigado Cascade 500 összekötése az Azure IoT Central-alkalmazással](../core/howto-connect-rigado-cascade-500.md).
+- A RuuviTag-érzékelők összekapcsolásával kapcsolatban lásd: [RuuviTag-érzékelő összekötése az Azure IoT Central-alkalmazással](../core/howto-connect-ruuvi.md). Ezeket az utasításokat két szimulált érzékelő létrehozásához is használhatja, ha szükséges.
 
 ## <a name="add-rules-and-actions"></a>Szabályok és műveletek hozzáadása
 Az Azure IoT Central-alkalmazásban a feltételek figyelésére szolgáló érzékelők használatának részeként szabályokat hozhat létre, amelyekkel bizonyos feltételek teljesülése esetén futtathat műveleteket. Egy szabály társítva van egy eszköz sablonhoz és egy vagy több eszközhöz, és olyan feltételeket tartalmaz, amelyeknek az eszköz telemetria vagy eseményei alapján kell teljesülniük. Egy szabályhoz egy vagy több társított művelet is tartozik. A műveletek tartalmazhatják e-mail-értesítések küldését vagy egy webhook-művelet aktiválását, amely adatokat küld más szolgáltatásoknak. Az **in-store Analytics-Checkout** alkalmazás sablonja tartalmaz néhány előre meghatározott szabályt az alkalmazásban lévő eszközökhöz.

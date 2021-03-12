@@ -6,14 +6,14 @@ ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.subservice: common
 ms.topic: reference
-ms.date: 11/19/2020
+ms.date: 03/10/2021
 ms.author: banders
-ms.openlocfilehash: 93dda4fc3a152b0a07a95ff327c9ea619f25787c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: HT
+ms.openlocfilehash: 24fbf52c8fd0338537862a54e15e8a249541a701
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96355820"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102635790"
 ---
 # <a name="migrate-from-enterprise-reporting-to-azure-resource-manager-apis"></a>Migrálás az Enterprise Reporting API-ból az Azure Resource Manager API-kba
 
@@ -51,28 +51,7 @@ Miután létrehoz egy szolgáltatásnevet az Azure Resource Manager API-k progra
 
 ### <a name="azure-billing-hierarchy-access"></a>Azure Billing hierarchia-hozzáférés
 
-Ha szolgáltatásnév-engedélyeket szeretne hozzárendelni a nagyvállalati számlázási fiók, a részlegek vagy a regisztrációs fiók hatóköreihez, használja a [Billing Permissions](/rest/api/billing/2019-10-01-preview/billingpermissions), a [Billing Role Definitions](/rest/api/billing/2019-10-01-preview/billingroledefinitions) és a [Billing Role Assignments](/rest/api/billing/2019-10-01-preview/billingroleassignments) API-kat.
-
-- A Billing Permissions API-kkal azonosíthatja azokat az engedélyeket, amelyekkel a szolgáltatásnév már rendelkezik az adott hatókörön, például a számlázási fiókon vagy részlegen.
-- A Billing Role Definitions API-kkal felsorolhatja az elérhető szerepköröket, amelyek hozzárendelhetők a szolgáltatásnévhez.
-  - Jelenleg kizárólag a csak olvasási engedéllyel rendelkező EA-rendszergazdai és a csak olvasási engedéllyel rendelkező részlegszintű rendszergazdai szerepkörök rendelhetők hozzá a szolgáltatásnevekhez.
-- A Billing Role Assignments API-kkal szerepkört rendelhet hozzá a szolgáltatásnévhez.
-
-A következő példa bemutatja, hogyan hívhatja meg a Role Assigments API-t és biztosíthat hozzáférést a számlázási fiókhoz a szolgáltatásnév számára. Az engedélyek ezen egyszeri konfigurálásához a [PostMan](https://postman.com) használatát javasoljuk.
-
-```json
-POST https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/createBillingRoleAssignment?api-version=2019-10-01-preview
-```
-
-#### <a name="request-body"></a>Kérelem törzse
-
-```json
-{
-  "principalId": "00000000-0000-0000-0000-000000000000",
-  "billingRoleDefinitionId": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/providers/Microsoft.Billing/billingRoleDefinition/10000000-aaaa-bbbb-cccc-100000000000"
-}
-
-```
+Ha egyszerű szolgáltatásnév-jogosultságokat szeretne hozzárendelni a vállalati számlázási fiókhoz, részlegekhez vagy a beléptetési fiókok hatóköréhez, tekintse meg a [szerepkörök hozzárendelésének engedélyezése az Azure-ban nagyvállalati szerződés egyszerű szolgáltatásnév](../manage/assign-roles-azure-service-principals.md)
 
 ### <a name="azure-role-based-access-control"></a>Azure-beli szerepköralapú hozzáférés-vezérlés
 

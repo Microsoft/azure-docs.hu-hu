@@ -6,17 +6,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: krsh
-ms.date: 1/5/2021
-ms.openlocfilehash: 560699296b8cae83413c36820106eedf7fef7414
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.date: 02/19/2021
+ms.openlocfilehash: 870482ca7894c5e260a78270fb036d6a6b22ee41
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914161"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630061"
 ---
 # <a name="how-to-generate-a-sas-uri-for-a-vm-image"></a>SAS URI létrehozása virtuálisgép-rendszerképhez
 
-A közzétételi folyamat során meg kell adnia egy SAS (Shared Access Signature) URI azonosítót a csomagokhoz társított minden virtuális merevlemezhez (korábban SKU-nak nevezik). A minősítési folyamat során a Microsoftnak hozzá kell férnie a virtuális merevlemezekhez. Ezt az URI-t a partner Center **csomagok** lapján adhatja meg.
+> [!NOTE]
+> A virtuális gép közzétételéhez nincs szükség SAS URI-ra. Egyszerűen megoszthat egy rendszerképet a parter Centerben. Lásd: [virtuális gép létrehozása jóváhagyott alap használatával](https://docs.microsoft.com/azure/marketplace/azure-vm-create-using-approved-base) vagy [virtuális gép létrehozása saját rendszerkép](https://docs.microsoft.com/azure/marketplace/azure-vm-create-using-own-image) -utasítások használatával.
 
 Az SAS URI-k létrehozása a VHD-k számára a következő követelményekkel rendelkezik:
 
@@ -24,6 +25,71 @@ Az SAS URI-k létrehozása a VHD-k számára a következő követelményekkel re
 - Csak a lista és az olvasási engedélyek szükségesek. Ne adjon meg írási vagy törlési hozzáférést.
 - A hozzáférés időtartamának (lejárati dátum) legalább három héttel a SAS URI létrehozása után kell lennie.
 - Az UTC-időváltozások elleni védelem érdekében állítsa be a kezdési dátumot az aktuális dátum előtt egy nappal. Ha például az aktuális dátum június 16., 2020, válassza a 6/15/2020 elemet.
+
+## <a name="extract-vhd-from-a-vm"></a>Virtuális merevlemez kinyerése virtuális gépről
+
+> [!NOTE]
+> Ezt a lépést kihagyhatja, ha már rendelkezik egy Storage-fiókban feltöltött VHD-vel.
+
+A virtuális merevlemeznek a virtuális gépről való kinyeréséhez pillanatképet kell készítenie a VM-lemezről, és ki kell bontania a virtuális merevlemezt a pillanatképből.
+
+Kezdés: pillanatkép készítése a virtuálisgép-lemezről:
+
+1. Jelentkezzen be az Azure portálra.
+2. A bal felső sarokban válassza az erőforrás létrehozása elemet, majd keresse meg és válassza a pillanatkép lehetőséget.
+3. A pillanatkép panelen válassza a létrehozás lehetőséget.
+4. Adja meg a pillanatkép nevét.
+5. Válasszon ki egy meglévő erőforráscsoportot, vagy adja meg egy új csoport nevét.
+6. A forrásoldali lemez lapon válassza ki a felügyelt lemezt a pillanatképhez.
+7. Válassza ki a pillanatkép tárolására használni kívánt fiókot. A standard HDD csak akkor használja, ha nagy teljesítményű SSD-meghajtón tárolja.
+8. Válassza a Létrehozás lehetőséget.
+
+### <a name="extract-the-vhd"></a>A VHD kibontása
+
+A következő parancsfájl használatával exportálja a pillanatképet egy virtuális merevlemezre a Storage-fiókjában.
+
+```azurecli
+#Provide the subscription Id where the snapshot is created
+$subscriptionId=yourSubscriptionId
+
+#Provide the name of your resource group where the snapshot is created
+$resourceGroupName=myResourceGroupName
+
+#Provide the snapshot name
+$snapshotName=mySnapshot
+
+#Provide Shared Access Signature (SAS) expiry duration in seconds (such as 3600)
+#Know more about SAS here: https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1
+$sasExpiryDuration=3600
+
+#Provide storage account name where you want to copy the underlying VHD file. 
+$storageAccountName=mystorageaccountname
+
+#Name of the storage container where the downloaded VHD will be stored.
+$storageContainerName=mystoragecontainername
+
+#Provide the key of the storage account where you want to copy the VHD 
+$storageAccountKey=mystorageaccountkey
+
+#Give a name to the destination VHD file to which the VHD will be copied.
+$destinationVHDFileName=myvhdfilename.vhd
+
+az account set --subscription $subscriptionId
+
+sas=$(az snapshot grant-access --resource-group $resourceGroupName --name $snapshotName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv)
+
+az storage blob copy start --destination-blob $destinationVHDFileName --destination-container $storageContainerName --account-name $storageAccountName --account-key $storageAccountKey --source-uri $sas
+```
+
+### <a name="script-explanation"></a>Szkript ismertetése
+Ez a szkript a következő parancsokat használja egy pillanatkép SAS URI-kódjának létrehozásához, és a mögöttes VHD-t egy Storage-fiókba másolja a SAS URI használatával. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+
+
+|Parancs  |Jegyzetek  |
+|---------|---------|
+| az disk grant-access    |     Létrehoz egy írásvédett SAS-t, amelynek használatával a mögöttes VHD-fájl átmásolható egy tárfiókba, vagy letölthető a helyszíni rendszerre    |
+|  az storage blob copy start   |    Aszinkron módon másol egy blobot az egyik Storage-fiókból a másikba. Az az Storage blob show paranccsal tekintheti meg az új blob állapotát.     |
+|
 
 ## <a name="generate-the-sas-address"></a>SAS-címek előállítása
 

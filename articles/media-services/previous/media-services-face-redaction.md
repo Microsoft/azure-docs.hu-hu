@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/17/2020
+ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2029ec2d0b0f27d7078f381880cf7ca177d24ca0
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 7d416810f6a39fb36bfa3c5225301fe87fdd128c
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020203"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013465"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Arcok kivonása a Azure Media Analytics
 
@@ -44,7 +44,7 @@ A teljesen automatikus mód mellett van egy kétlépéses munkafolyamat is, amel
 
 Ez automatikusan létrehoz egy kivont MP4-t manuális bevitel nélkül.
 
-| Fázis | Fájlnév | Megjegyzések |
+| Fázis | Fájlnév | Jegyzetek |
 | --- | --- | --- |
 | Bemeneti eszköz |foo. bar |Videó WMV, MOV vagy MP4 formátumban |
 | Bemeneti konfiguráció |Feladatokhoz beállított konfiguráció |{"version": "1.0", "Options": {"Mode": "combined"}} |
@@ -54,7 +54,7 @@ Ez automatikusan létrehoz egy kivont MP4-t manuális bevitel nélkül.
 
 A kétlépéses munkafolyamat **elemzése** átveszi a videó bemenetét, és az összes észlelt arc egy JSON-fájlját, valamint a jpg-képeket hozza létre.
 
-| Fázis | Fájlnév | Megjegyzések |
+| Fázis | Fájlnév | Jegyzetek |
 | --- | --- | --- |
 | Bemeneti eszköz |foo. bar |Videó WMV, MPV vagy MP4 formátumban |
 | Bemeneti konfiguráció |Feladatokhoz beállított konfiguráció |{"version": "1.0", "Options": {"Mode": "elemzés"}} |
@@ -120,7 +120,7 @@ Ide tartozik az életlenítés, az eredeti videó és a jegyzetek JSON-azonosít
 
 Az elemzés menetének kimenete nem tartalmazza az eredeti videót. A videót fel kell tölteni a bemeneti eszközbe a kivonási mód feladathoz, és az elsődleges fájlként kell kiválasztani.
 
-| Fázis | Fájlnév | Megjegyzések |
+| Fázis | Fájlnév | Jegyzetek |
 | --- | --- | --- |
 | Bemeneti eszköz |foo. bar |Videó WMV-, MPV-vagy MP4-formátumban. Ugyanaz a videó, mint az 1. lépésben. |
 | Bemeneti eszköz |foo_annotations.jsbekapcsolva |Megjegyzések metaadatainak fájlja az első fázisból, választható módosításokkal. |
@@ -376,7 +376,7 @@ namespace FaceRedaction
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

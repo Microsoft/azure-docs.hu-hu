@@ -1,7 +1,7 @@
 ---
 title: Media Services entitások kezelése REST-tel | Microsoft Docs
 description: Ez a cikk bemutatja, hogyan kezelheti Media Services entitásokat a REST APIokkal.
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 95124f101b1f14a70dabedd7d44077c5c1b6e99c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 2821c4c2b13edaf5dfb34664c4b9f78ab56d98a7
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89264251"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015556"
 ---
 # <a name="managing-media-services-entities-with-rest"></a>Media Services entitások kezelése a REST-tel
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 24d27859aad7642392a5702ab7ddbb727b538d51
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: d76fd3b30d823efbf85e84a74a21c694f5a0e6fb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025010"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565563"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>A Windows 10 Enterprise több munkamenetes használata – gyakori kérdések
 
@@ -81,7 +81,7 @@ A legtöbb virtualizált környezet alapértelmezés szerint úgy van konfigurá
 
 - [Beépített alkalmazások közzététele a Windows rendszerű virtuális asztalon](publish-apps.md)
 - [DISM-alkalmazáscsomag karbantartási parancssori kapcsolói](/windows-hardware/manufacture/desktop/dism-app-package--appx-or-appxbundle--servicing-command-line-options)
-- [Add-AppxProvisionedPackage](/powershell/module/dism/add-appxprovisionedpackage?view=win10-ps)
+- [Add-AppxProvisionedPackage](/powershell/module/dism/add-appxprovisionedpackage)
 
 ## <a name="how-do-i-make-sure-users-dont-download-and-install-apps-from-the-microsoft-store"></a>Hogyan győződjön meg arról, hogy a felhasználók nem töltik le és nem telepítik az alkalmazásokat a Microsoft Storeból?
 
@@ -94,7 +94,7 @@ Az áruházbeli alkalmazás letiltása:
 3. Válassza az **áruház** lehetőséget.
 4. Válassza az **áruházbeli alkalmazás** lehetőséget.
 5. Válassza a **Letiltva** lehetőséget, majd kattintson **az OK gombra**.
-6. Kattintson az **Alkalmaz** elemre.
+6. Kattintson az **Alkalmaz** gombra.
 
 ## <a name="next-steps"></a>Következő lépések
 

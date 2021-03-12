@@ -3,7 +3,7 @@ title: Adategység kódolása a Media Encoder Standard .NET használatával | Mi
 description: Ez a cikk bemutatja, hogyan lehet a .NET használatával kódolni az eszközöket Media Encoder Standard használatával.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 03431b64-5518-478a-a1c2-1de345999274
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.reviewer: anilmur
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f49b951473db4b331bc42de3fb72829270822d5
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b94ec0b50182381d2a4e1bca09f4c8bc482d13ee
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014375"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014094"
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Adategység kódolása Media Encoder Standard a .NET használatával
 

@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: a Visual Studio Code használatának első lépései'
+title: 'Gyors útmutató: Azure Cognitive Search használatának első lépései a Visual Studio Code használatával'
 titleSuffix: Azure Cognitive Search
 description: Ismerje meg, hogyan telepítheti és használhatja a Visual Studio Code-bővítményt az Azure Cognitive Searchhoz.
 author: dereklegenzoff
@@ -7,21 +7,19 @@ manager: luisca
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 01/12/2021
-ms.openlocfilehash: 7a613dd6cba55831b02a60f833088b6c34bfc4a7
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.date: 03/10/2021
+ms.openlocfilehash: 3237a32a90e3964644ff84958a065656cdf7f3ab
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122705"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015845"
 ---
-# <a name="get-started-with-visual-studio-code-and-azure-cognitive-search"></a>Ismerkedés a Visual Studio Code és az Azure Cognitive Search
+# <a name="get-started-with-azure-cognitive-search-using-visual-studio-code"></a>Ismerkedés az Azure Cognitive Search a Visual Studio Code használatával
 
-Ez a cikk azt ismerteti, hogyan lehet interaktív módon kialakítani REST API kérelmeket az [Azure Cognitive Search REST API](/rest/api/searchservice) -kkal és egy API-ügyféllel a kérelmek küldéséhez és fogadásához. Az API-ügyféllel és ezekkel az utasításokkal bármilyen kód írása előtt elküldheti a kérelmeket, és megtekintheti a válaszokat.
+Ez a cikk azt ismerteti, hogyan lehet interaktív módon kialakítani REST API kérelmeket az [Azure Cognitive Search REST API](/rest/api/searchservice) -k és a [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurecognitivesearch)használatával. Az [Azure Cognitive Search (előzetes verzió) Visual Studio Code bővítménnyel](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurecognitivesearch) és ezekkel az utasításokkal bármilyen kód írása előtt elküldheti a kérelmeket, és megtekintheti a válaszokat.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
-
-A cikk a Visual Studio Code bővítményt (előzetes verzió) használja az Azure Cognitive Search REST API-khoz.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!IMPORTANT] 
 > Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
@@ -35,18 +33,6 @@ Ehhez a rövid útmutatóhoz a következő szolgáltatások és eszközök szük
 + [Azure Cognitive Search a Visual Studio Code-hoz (előzetes verzió)](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurecognitivesearch)
 
 + [Hozzon létre egy Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez a rövid útmutatóhoz ingyenes szolgáltatást is használhat. 
-
-## <a name="copy-a-key-and-url"></a>Kulcs és URL-cím másolása
-
-A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-címét és egy hozzáférési kulcsot. A Search szolgáltatás mindkettővel jön létre, így ha az előfizetéshez hozzáadta az Azure Cognitive Searcht, kövesse az alábbi lépéseket a szükséges információk beszerzéséhez:
-
-1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
-
-1. A **Beállítások**  >  **kulcsaiban** kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
-
-![HTTP-végpont és elérési kulcs beszerzése](media/search-get-started-rest/get-url-key.png "HTTP-végpont és elérési kulcs beszerzése")
-
-Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kéréshez. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
 ## <a name="install-the-extension"></a>A bővítmény telepítése
 

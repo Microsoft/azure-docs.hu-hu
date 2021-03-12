@@ -1,7 +1,7 @@
 ---
 title: Az Azure-ban támogatott mainframe-munkaterhelések | Microsoft Docs
 description: A Microsoft partnereitől származó mainframe-emulátorral és más szolgáltatásokkal a nagyvállalati munkaterheléseket, például az IBM Z-alapú rendszereket Microsoft Azure használatával helyezheti át.
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: ''
 author: njray
 manager: edprice
@@ -10,12 +10,12 @@ ms.author: larryme
 ms.date: 05/09/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 07234e5f456a5467adde4d899341a6124d128567
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 679cc68a0f43d6bff74fef85d705544db2f2585b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83006120"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558253"
 ---
 # <a name="mainframe-workloads-supported-on-azure"></a>Az Azure-ban támogatott nagyszámítógépi munkaterhelések
 
