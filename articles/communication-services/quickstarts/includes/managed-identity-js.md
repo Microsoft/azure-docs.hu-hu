@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: a51121b9dd9c7dcb894399fd9ad5f49cc5e07f3a
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 0d45e04bbafc7b2480abdcb2ab21bdb219a09b9e
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102486609"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103020994"
 ---
 ## <a name="add-managed-identity-to-your-communication-services-solution-js"></a>Felügyelt identitás hozzáadása a kommunikációs szolgáltatások megoldásához (JS)
 
@@ -24,7 +24,7 @@ Adja hozzá a következő `import` irányelveket a kódhoz az Azure Identity és
 ```typescript
 import { DefaultAzureCredential } from "@azure/identity";
 import { CommunicationIdentityClient } from "@azure/communication-identity";
-import { SmsClient } from "@azure/communication-sms";
+import { SmsClient, SmsSendRequest } from "@azure/communication-sms";
 ```
 
 Az alábbi példák a [DefaultAzureCredential](/javascript/api/azure.identity.defaultazurecredential)használják. Ez a hitelesítő adat megfelelő az éles és a fejlesztési környezetekhez.
@@ -51,7 +51,7 @@ A következő mintakód bemutatja, hogyan hozhat létre egy felügyelt identitá
 export async function sendSms(resourceEndpoint: string, fromNumber: any, toNumber: any, message: string) {
      let credential = new DefaultAzureCredential();
      const smsClient = new SmsClient(resourceEndpoint, credential);
-     const sendRequest: SendRequest = { 
+     const sendRequest: SmsSendRequest = { 
           from: fromNumber, 
           to: [toNumber], 
           message: message 

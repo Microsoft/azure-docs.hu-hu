@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 02/18/2021
 ms.author: kenwith
 ms.reviewer: mifarca
-ms.openlocfilehash: 46297f7f0f648c8bebc887a9093e25dfea99f695
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: f5f7ec8245a43440a400b9ca6b55bf1093eb62cc
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102561500"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636188"
 ---
 # <a name="azure-active-directory-powershell-examples-for-application-management"></a>Azure Active Directory PowerShell-példák az alkalmazások kezeléséhez
 
@@ -31,5 +31,5 @@ A példákban használt parancsmagokkal kapcsolatos további információkért l
 |**Application Management-parancsfájlok**||
 | [Titkok és tanúsítványok exportálása (alkalmazás-regisztrációk)](scripts/powershell-export-all-app-registrations-secrets-and-certs.md) | A titkok és tanúsítványok exportálása Azure Active Directory bérlőben az alkalmazások regisztrálásához. |
 | [Titkok és tanúsítványok exportálása (vállalati alkalmazások)](scripts/powershell-export-all-enterprise-apps-secrets-and-certs.md) | A Azure Active Directory bérlőben lévő nagyvállalati alkalmazásokhoz tartozó titkok és tanúsítványok exportálása. |
-| [A lejáró titkok és tanúsítványok exportálása](scripts/powershell-export-apps-with-expriring-secrets.md) | Alkalmazások exportálása lejáró titkokkal és tanúsítványokkal Azure Active Directory bérlőben. |
-| [A titkok és tanúsítványok exportálása a szükséges dátum után lejár](scripts/powershell-export-apps-with-secrets-beyond-required.md) | A titkokat és tanúsítványokat tartalmazó alkalmazások exportálása a Azure Active Directory bérlőn megkövetelt időpontnál tovább lejár. |
+| [A lejáró titkok és tanúsítványok exportálása](scripts/powershell-export-apps-with-expriring-secrets.md) | Az alkalmazások regisztrációjának exportálása a lejáró titkokkal és tanúsítványokkal, valamint azok tulajdonosainak Azure Active Directory bérlőben. |
+| [A titkok és tanúsítványok exportálása a szükséges dátum után lejár](scripts/powershell-export-apps-with-secrets-beyond-required.md) | A titkokat és tanúsítványokat tartalmazó alkalmazás-regisztrációk exportálása a Azure Active Directory bérlőn a szükséges dátumon túl lejár. Ez a nem interaktív Client_Credentials OAuth folyamatot használja. |

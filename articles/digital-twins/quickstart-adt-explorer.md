@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: f1b25b853977b3a1f4871e232a562d6a3cfd2fae
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: c1c1b5f58aa0e760ff626af4607cf8e2d1e13910
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102434202"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232421"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-azure-digital-twins-explorer"></a>Gyors útmutató – a minta Azure digitális Twins-forgatókönyvek megismerése az Azure Digital Twins Explorer használatával
 
@@ -93,13 +93,16 @@ Nyisson meg egy konzol ablakot a mappa helyére **Azure_Digital_Twins__ADT__expl
 
 1. Adja meg az Azure Digital Twins-példány [beállítása](#set-up-an-azure-digital-twins-instance) szakaszban korábban összegyűjtött Azure digitális Twins-példány URL-címét, a *https://{instance Host Name}* formátumban.
 
->[!NOTE]
-> Bármikor újra megtekintheti vagy szerkesztheti ezeket az adatokat. Ehhez jelölje ki ugyanazt az ikont, ha újra megnyitja a **bejelentkezési** mezőt. A rendszer megtartja a beadott értékeket.
-
 > [!TIP]
 > Ha a `SignalRService.subscribe` csatlakozáskor hibaüzenet jelenik meg, győződjön meg arról, hogy az Azure digitális Twins URL-címe a *https://*-vel kezdődik.
 
+> [!TIP]
+> Ha hitelesítési hiba jelenik meg, érdemes lehet ellenőrizni a környezeti változókat, hogy minden hitelesítő adat érvényes legyen az Azure Digital Twins szolgáltatásban. A DefaultAzureCredential egy megadott sorrendben kísérli meg a [hitelesítő adatokkal](/dotnet/api/overview/azure/identity-readme#defaultazurecredential) történő hitelesítést, és először a környezeti változókat értékeli ki.
+
 Ha megjelenik a Microsoft előugró ablakát **kérő engedély** , adja meg az alkalmazás jóváhagyását, és fogadja el a folytatást.
+
+>[!NOTE]
+> Bármikor újra megtekintheti vagy szerkesztheti ezeket az adatokat. Ehhez jelölje ki ugyanazt az ikont, ha újra megnyitja a **bejelentkezési** mezőt. A rendszer megtartja a beadott értékeket.
 
 ## <a name="add-the-sample-data"></a>A mintaadatok hozzáadása
 

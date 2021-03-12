@@ -3,14 +3,14 @@ title: JavaScript fejlesztői referenciája Azure Functions
 description: Ismerje meg, hogyan fejlesztheti a függvényeket a JavaScript használatával.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 11/17/2020
+ms.date: 03/07/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 71fe2d342f928c9d50a3fcf3f5367c21d7fba2ff
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 971fb2a3239614a708e14c109e567081f1ec9ff6
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591037"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614904"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript fejlesztői útmutató
 
@@ -201,7 +201,7 @@ module.exports = (context) => {
 
 A függvénynek átadott környezet egy tulajdonságot tesz elérhetővé `executionContext` , amely egy olyan objektum, amely a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság neve  | Típus  | Description |
+| Tulajdonság neve  | Típus  | Leírás |
 |---------|---------|---------|
 | `invocationId` | Sztring | Egyedi azonosítót biztosít az adott függvény meghívásához. |
 | `functionName` | Sztring | A futó függvény nevét adja meg. |
@@ -507,20 +507,20 @@ A következő táblázat az operációs rendszer által támogatott Node.js-verz
 
 | Függvények verziója | Csomópont verziója (Windows) | Csomópont verziója (Linux) |
 |---|---| --- |
+| 3. x (ajánlott) | `~14` ajánlott<br/>`~12`<br/>`~10` | `node|14` ajánlott<br/>`node|12`<br/>`node|10` |
+| 2. x  | `~12`<br/>`~10`<br/>`~8` | `node|10`<br/>`node|8`  |
 | 1. x | 6.11.2 (a futtatókörnyezet zárolta) | n.a. |
-| 2. x  | `~8`<br/>`~10` ajánlott<br/>`~12` | `node|8`<br/>`node|10` ajánlott  |
-| 3. x | `~10`<br/>`~12` ajánlott<br/>`~14` előnézet  | `node|10`<br/>`node|12` ajánlott<br/>`node|14` előnézet |
 
 A futtatókörnyezet által használt aktuális verziót `process.version` bármely függvényből megtekintheti.
 
 ### <a name="setting-the-node-version"></a>A csomópont verziójának beállítása
 
-A Windows Function apps esetében az `WEBSITE_NODE_DEFAULT_VERSION` [alkalmazás beállítását](functions-how-to-use-azure-function-app-settings.md#settings) egy támogatott LTS-verzióra kell beállítania az Azure-ban `~12` .
+A Windows Function apps esetében az `WEBSITE_NODE_DEFAULT_VERSION` [alkalmazás beállítását](functions-how-to-use-azure-function-app-settings.md#settings) egy támogatott LTS-verzióra kell beállítania az Azure-ban `~14` .
 
 Linux Function-alkalmazások esetén futtassa a következő Azure CLI-parancsot a csomópont verziójának frissítéséhez.
 
 ```bash
-az functionapp config set --linux-fx-version "node|12" --name "<MY_APP_NAME>" --resource-group "<MY_RESOURCE_GROUP_NAME>"
+az functionapp config set --linux-fx-version "node|14" --name "<MY_APP_NAME>" --resource-group "<MY_RESOURCE_GROUP_NAME>"
 ```
 
 ## <a name="dependency-management"></a>Függőségkezelés
@@ -597,6 +597,23 @@ module.exports = async function (context, myTimer) {
 
     context.log("AzureWebJobsStorage: " + process.env["AzureWebJobsStorage"]);
     context.log("WEBSITE_SITE_NAME: " + process.env["WEBSITE_SITE_NAME"]);
+};
+```
+
+## <a name="ecmascript-modules-preview"></a><a name="ecmascript-modules"></a>ECMAScript modulok (előzetes verzió)
+
+> [!NOTE]
+> Mivel a ECMAScript-modulok jelenleg Node.js 14-ben *kísérleti* módon vannak megjelölve, Node.js 14 Azure functions előzetes verzióként érhetők el. Amíg Node.js 14 ECMAScript-modul támogatása *stabilra* vált, az API-nak vagy működésének lehetséges változásai várhatók.
+
+A [ECMAScript-modulok](https://nodejs.org/docs/latest-v14.x/api/esm.html#esm_modules_ecmascript_modules) (es-modulok) a Node.js új hivatalos standard moduljának rendszere. Az ebben a cikkben szereplő kódrészletek a CommonJS szintaxist használják. Node.js 14 Azure Functions futtatásakor választhat, hogy az ES modulok szintaxisát használja-e a függvények írásához.
+
+Ha az ES-modulokat egy függvényben szeretné használni, módosítsa a fájlnevét egy `.mjs` bővítmény használatára. A következő *index. mjs* fájl példa egy http-triggert használó függvény, amely az es modulok szintaxisát használja a könyvtár importálásához `uuid` és egy érték visszaadásához.
+
+```js
+import { v4 as uuidv4 } from 'uuid';
+
+export default async function (context, req) {
+    context.res.body = uuidv4();
 };
 ```
 

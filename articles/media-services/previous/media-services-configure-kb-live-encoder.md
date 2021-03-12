@@ -3,7 +3,7 @@ title: Konfigurálja a Haivision KB-kódolót úgy, hogy egyetlen sávszélessé
 description: Ebből a témakörből megtudhatja, hogyan konfigurálhatja az Haivision KB élő kódolót úgy, hogy egyetlen sávszélességű adatfolyamot küldjön az élő kódoláshoz engedélyezett AMS-csatornákra.
 services: media-services
 documentationcenter: ''
-author: dbgeorge
+author: IngridAtMicrosoft
 manager: vsood
 editor: ''
 ms.assetid: 0d2f1e81-51a6-4ca9-894a-6dfa51ce4c70
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/14/2019
-ms.author: juliako
-ms.openlocfilehash: ab73b22e927ad1bbcc8a07173e1548157de03cdd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 20c75672bc7198fb028278dc5432cc6a77e3766e
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89258095"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016865"
 ---
 # <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>Egyetlen bitráta élő stream küldése a Haivision KB Live Encoder használatával
 
@@ -48,8 +48,8 @@ Ez az oktatóanyag bemutatja, hogyan kezelheti Azure Media Services (AMS) eszkö
 ## <a name="create-a-channel"></a>Csatorna létrehozása
 1. A AMSE eszközben navigáljon az **élő** lapra, és kattintson a jobb gombbal a csatorna területére. Válassza a **csatorna létrehozása... lehetőséget.** a menüből.
 [Haivision](./media/media-services-configure-kb-live-encoder/channel.png)
-2. Adja meg a csatorna nevét, a Description (Leírás) mező megadása nem kötelező. A Channel Settings (csatorna beállításai) területen válassza a **standard** lehetőséget a Live Encoding beállításnál, a bemeneti protokollt pedig az **RTMP**értékre állítva. Az összes többi beállítást is meghagyhatja. Győződjön meg arról, hogy az **új csatorna elindítása most** lehetőség van kiválasztva.
-3. Kattintson a **csatorna létrehozása**gombra.
+2. Adja meg a csatorna nevét, a Description (Leírás) mező megadása nem kötelező. A Channel Settings (csatorna beállításai) területen válassza a **standard** lehetőséget a Live Encoding beállításnál, a bemeneti protokollt pedig az **RTMP** értékre állítva. Az összes többi beállítást is meghagyhatja. Győződjön meg arról, hogy az **új csatorna elindítása most** lehetőség van kiválasztva.
+3. Kattintson a **csatorna létrehozása** gombra.
 [Haivision](./media/media-services-configure-kb-live-encoder/livechannel.png)
 
 > [!NOTE]

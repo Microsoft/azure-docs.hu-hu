@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6fbc20ec7145a474d9f3aada153f2d012aba34f8
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 4e9ea1ec85067a59c5ee6bcd27993e294559f410
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102561347"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232086"
 ---
 # <a name="region-availability-and-data-residency"></a>Regionális elérhetőség és adattárolási hely
 
@@ -51,12 +51,14 @@ A kommunikációs szolgáltatásokkal rendelkező Azure Portal vagy Azure Resour
 
 ### <a name="telephone-number-management"></a>Telefonos szám kezelése
 
-Az Azure kommunikációs szolgáltatások fenntartják a kommunikációs szolgáltatások erőforrásaihoz társított telefonszámok könyvtárát. Ezen API-k használatával lekérheti a telefonszámokat, és törölheti őket:
+Az Azure kommunikációs szolgáltatások fenntartják a kommunikációs szolgáltatások erőforrásaihoz társított telefonszámok könyvtárát. Telefonszámok beolvasásához használja a [telefonszám-felügyeleti API-kat](/rest/api/communication/phonenumberadministration) , és törölje azokat:
+
+- `Get All Phone Numbers`
 - `Release Phone Number`
 
 ### <a name="chat"></a>Csevegés
 
-A csevegési szálak és üzenetek csak explicit törlés után maradnak meg. A rendszer 30 nap után automatikusan törli A teljesen üresjáratban lévő szálat. Üzenetek beolvasása, listázása, frissítése és törlése [csevegési API](/rest/api/communication/chat/deletechatmessage/deletechatmessage) -k használatával.
+A csevegési szálak és üzenetek csak explicit törlés után maradnak meg. A rendszer 30 nap után automatikusan törli A teljesen üresjáratban lévő szálat. Üzenetek beolvasása, listázása, frissítése és törlése [csevegési API](/rest/api/communication/chat/chatthread) -k használatával.
 
 - `Get Thread`
 - `Get Message`

@@ -3,7 +3,7 @@ title: Adatfolyam-végpontok kezelése a Azure Portalokkal | Microsoft Docs
 description: Ez a cikk bemutatja, hogyan kezelheti a folyamatos átviteli végpontokat a Azure Portal.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 writer: juliako
 manager: femila
 editor: ''
@@ -13,14 +13,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 496c5de8f9ead0773dfef7e65051344645ffa9de
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: bda244267e81d959abbc4ae0a8532ddce68d5726
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041971"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017392"
 ---
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Streamvégpontok kezelése az Azure Portalon
 

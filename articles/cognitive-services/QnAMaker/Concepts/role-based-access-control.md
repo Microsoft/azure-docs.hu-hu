@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: 5d5a580e2b7be4699933b43687dcf164bf8f4a4a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 512ae470d3c9068b9d284095a18013fc84dbf36e
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101700082"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232545"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>Együttműködés más szerzőkkel és szerkesztőkkel
 
@@ -18,7 +18,7 @@ Együttműködik más szerzőkkel és szerkesztőkkel az Azure szerepköralapú 
 
 ## <a name="access-is-provided-on-the-qna-maker-resource"></a>A hozzáférés a QnA Maker erőforráson van megadva
 
-Minden engedélyt a QnA Maker erőforrásra helyezett engedélyek szabályoznak. Ezek az engedélyek az olvasási, írási, közzétételi és teljes hozzáférésre vannak igazítva.
+Minden engedélyt a QnA Maker erőforrásra helyezett engedélyek szabályoznak. Ezek az engedélyek az olvasási, írási, közzétételi és teljes hozzáférésre vannak igazítva. A QnA Maker erőforráshoz [való RBAC-hozzáférés frissítésével](../how-to/manage-qna-maker-app.md) több felhasználó között is engedélyezheti az együttműködést.
 
 Ez az Azure RBAC szolgáltatás a következőket tartalmazza:
 * A Azure Active Directory (HRE) 100%-os visszamenőleges kompatibilitást biztosít a tulajdonosok és a közreműködők kulcs alapú hitelesítésével. A felhasználók a kérelmekben kulcs alapú hitelesítést vagy Azure RBAC-alapú hitelesítést használhatnak.

@@ -9,14 +9,16 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 42c79526288fb7e05959ac60cddc6f468656ffd4
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 52cd7817594c5c2a1d4e3a4ca9c56891df594cd6
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972543"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201111"
 ---
 # <a name="communicate-with-edgeagent-using-built-in-direct-methods"></a>Kommunikáció a edgeAgent a beépített közvetlen módszerek használatával
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 IoT Edge központi telepítések figyelése és kezelése az IoT Edge Agent modulban foglalt közvetlen módszerek használatával. A közvetlen metódusok implementálva vannak az eszközön, majd a felhőből is meghívhatók. A IoT Edge ügynök olyan közvetlen metódusokat tartalmaz, amelyek segítségével távolról figyelheti és kezelheti IoT Edge eszközeit.
 

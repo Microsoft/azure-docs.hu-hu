@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: alkohli
-ms.openlocfilehash: d2fa464214f6a4201b1ecd62ee1a5dacdd7ec158
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: e72ad50b495dec7e3a647bb7bcbdeafd53f5de7b
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832453"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636623"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>A GPU-val Azure Stack Edge Pro rendszerkövetelményei 
 
@@ -38,7 +38,7 @@ Az Azure Stack Edge Pro rendszerkövetelményei a következők:
 
 ## <a name="supported-edge-storage-accounts"></a>Támogatott Edge Storage-fiókok
 
-A következő Edge Storage-fiókok támogatottak az eszköz REST-felületével. Az Edge Storage-fiókok az eszközön jönnek létre. További információ: [Edge Storage-fiókok](azure-stack-edge-j-series-manage-storage-accounts.md#about-edge-storage-accounts).
+A következő Edge Storage-fiókok támogatottak az eszköz REST-felületével. Az Edge Storage-fiókok az eszközön jönnek létre. További információ: [Edge Storage-fiókok](azure-stack-edge-gpu-manage-storage-accounts.md#about-edge-storage-accounts).
 
 |Típus  |A(z)  |Megjegyzések  |
 |---------|---------|---------|
@@ -81,7 +81,7 @@ Használja a következő táblázatot a port konfigurálásához a Azure IoT Edg
 
 | Port nem. | Be vagy ki | Port hatóköre | Kötelező | Útmutató |
 |----------|-----------|------------|----------|----------|
-| TCP 443 (HTTPS)| Ki       | WAN        | Igen      | A kimenő Megnyitás IoT Edge kiépítés esetén. Ez a konfiguráció kézi parancsfájlok vagy Azure IoT Device kiépítési szolgáltatás (DPS) használata esetén szükséges.|
+| TCP 443 (HTTPS)| Ki       | WAN        | Yes      | A kimenő Megnyitás IoT Edge kiépítés esetén. Ez a konfiguráció kézi parancsfájlok vagy Azure IoT Device kiépítési szolgáltatás (DPS) használata esetén szükséges.|
 
 A teljes információ: a [tűzfal és a port konfigurációs szabályai IoT Edge központi telepítéshez](../iot-edge/troubleshoot.md).
 

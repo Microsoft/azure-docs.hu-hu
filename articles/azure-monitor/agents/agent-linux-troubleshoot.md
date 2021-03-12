@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 202182d6485bc340a7f9bb34622e483dcc9ff891
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: f8558644fc24f3190247e57b4de7228af161a2a8
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041875"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631166"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>A Linuxhoz készült Log Analytics-ügynökkel kapcsolatos hibák elhárítása 
 
@@ -82,7 +82,7 @@ Láttuk, hogy az ügynök tiszta újratelepítése megoldja a legtöbb problém�
 
  >[!NOTE]
  >A teljesítményszámlálók és a syslog konfigurációs fájljainak szerkesztése felül van írva, ha a gyűjtemény az [adatok menüben log Analytics speciális beállítások](../agents/agent-data-sources.md#configuring-data-sources) elemre van állítva a munkaterület Azure Portal. Az összes ügynök konfigurációjának letiltásához tiltsa le a gyűjteményt Log Analytics **Speciális beállítások** közül, vagy egyetlen ügynöknél futtassa a következőt:  
-> `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
+> `sudo /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable && sudo rm /etc/opt/omi/conf/omsconfig/configuration/Current.mof* /etc/opt/omi/conf/omsconfig/configuration/Pending.mof*`
 
 ## <a name="installation-error-codes"></a>Telepítési hibakódok
 

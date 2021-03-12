@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c73f6884a0bf9dc1e12e97439166c8aeabe6e35a
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 9bdba36e2ff4721bd024369788c7dc04f066e9a5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102504558"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565580"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>A Windows rendszerű virtuális asztali (klasszikus) diagnosztika eszköz üzembe helyezése
 
@@ -39,7 +39,7 @@ Az eszközhöz tartozó Azure Resource Manager sablon üzembe helyezéséhez lé
 Ezt a két PowerShell-modult is telepítenie kell az első lépések előtt:
 
 - [Azure PowerShell-modul](/powershell/azure/install-az-ps)
-- [Azure AD-modul](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0&preserve-view=true)
+- [Azure AD-modul](/powershell/azure/active-directory/install-adv2)
 
 Győződjön meg arról, hogy az előfizetés-azonosítója készen áll a bejelentkezéskor.
 

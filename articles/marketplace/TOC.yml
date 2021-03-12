@@ -13,6 +13,8 @@
       href: partner-center-portal/company-work-accounts.md
     - name: Fiók migrálása a CPP-ből a Partnerközpontba
       href: partner-center-portal/account-migration-from-cpp-to-pc.md
+    - name: A Microsoft értesítése
+      href: submit-legal-notice.md
 - name: Fogalmak
   items:
     - name: Terméklistázási lehetőségek
@@ -41,7 +43,7 @@
           href: test-drive-hosted-detailed-config.md
         - name: Az Azure-előfizetés beállítása szolgáltatott tesztverziókhoz
           href: test-drive-azure-subscription-setup.md
-    - name: Az Azure-partnererőforrások ügyfelek általi használatának nyomon követése
+    - name: Azure Customer használati jóváírás
       href: azure-partner-customer-usage-attribution.md
     - name: Piaci bevezetési beállítások
       items:

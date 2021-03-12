@@ -2,17 +2,18 @@
 title: Adatlemez csatolása Linux rendszerű virtuális géphez
 description: A portál használatával új vagy meglévő adatlemezt csatolhat egy linuxos virtuális géphez.
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 647564a9b9ca909d2f45ae66673d8beac168a4aa
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.collection: linux
+ms.openlocfilehash: a6ef2cd62fc14958e8505a03e69e4b20cf6ce49f
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575974"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556825"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Adatlemez csatlakoztatása Linux rendszerű virtuális géphez a portál használatával 
 Ez a cikk bemutatja, hogyan csatolhat új és meglévő lemezeket egy linuxos virtuális géphez a Azure Portal keresztül. [Adatlemezt a Azure Portal egy Windows rendszerű virtuális géphez is csatolhat](../windows/attach-managed-disk-portal.md). 

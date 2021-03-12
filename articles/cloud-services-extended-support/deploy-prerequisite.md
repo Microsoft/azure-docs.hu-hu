@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 1473305d7da57d1216ef05c0b88a0f69d586784b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6e5994f05187cd25996bcc007d27a7e10eb76427
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728110"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232528"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Az Azure Cloud Services üzembe helyezésének előfeltételei (bővített támogatás)
 
@@ -120,7 +120,7 @@ A régi távoli asztali bővítményeket használó központi telepítéseknek e
 
 ## <a name="key-vault-creation"></a>Key Vault létrehozása 
 
-A Key Vault a Cloud Serviceshoz társított tanúsítványok (kiterjesztett támogatás) tárolására szolgál. Adja hozzá a tanúsítványokat a Key Vaulthoz, majd hivatkozzon a tanúsítvány ujjlenyomatai megfelelnek a szolgáltatás konfigurációs fájljában. Emellett engedélyeznie kell Key Vault a megfelelő engedélyekhez, hogy a Cloud Services (bővített támogatás) erőforrás beolvassa a titkos kulcsként tárolt tanúsítványt Key Vault. A Key Vault a [Azure Portal](../key-vault/general/quick-create-portal.md)és a  [PowerShell](../key-vault/general/quick-create-powershell.md)használatával hozható létre. A Key Vault ugyanabban a régióban és előfizetésben kell létrehozni, mint a Cloud Service. További információ: [tanúsítványok használata az Azure Cloud Services (bővített támogatás)](certificates-and-key-vault.md).
+A Key Vault a Cloud Serviceshoz társított tanúsítványok (kiterjesztett támogatás) tárolására szolgál. Adja hozzá a tanúsítványokat a Key Vaulthoz, majd hivatkozzon a tanúsítvány ujjlenyomatai megfelelnek a szolgáltatás konfigurációs fájljában. Emellett engedélyeznie kell Key Vault a megfelelő engedélyekhez, hogy a Cloud Services (bővített támogatás) erőforrás beolvassa a titkos kulcsként tárolt tanúsítványt Key Vault. Kulcstartót a [Azure Portal](../key-vault/general/quick-create-portal.md) vagy a [PowerShell](../key-vault/general/quick-create-powershell.md)használatával hozhat létre. A Key vaultot ugyanabban a régióban és előfizetésben kell létrehozni, mint a Cloud Service. További információ: [tanúsítványok használata az Azure Cloud Services (bővített támogatás)](certificates-and-key-vault.md).
 
 ## <a name="next-steps"></a>Következő lépések 
 - Tekintse át a Cloud Services [üzembe helyezésének előfeltételeit](deploy-prerequisite.md) (kiterjesztett támogatás).

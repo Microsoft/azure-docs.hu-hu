@@ -116,6 +116,16 @@
           href: fix-deployment-provisioning-failures.md
     - name: GYIK
       href: faq.yml
+    - name: Videók
+      items:
+        - name: Lejátszási lista
+          href: 'https://youtube.com/playlist?list=PL1NLwHeM6ewbZu0dC0guj-OSpIoZnnJin'
+        - name: Integráció az Azure-szolgáltatással
+          href: 'https://youtu.be/m26iLu6DHbU'
+        - name: Integráció az Azure Application Gateway
+          href: 'https://youtu.be/BoQYvqzb6Y8'
+        - name: Áttelepítés és kapacitás megtervezése
+          href: 'https://youtu.be/NoNG-hkksrA'
 - name: Referencia
   items:
     - name: Azure CLI

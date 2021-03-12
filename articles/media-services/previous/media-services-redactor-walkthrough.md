@@ -3,7 +3,7 @@ title: Arcok kivonása a Azure Media Analytics walkthroughvel | Microsoft Docs
 description: Ez a témakör részletesen bemutatja, hogyan futtathat teljes kivonási munkafolyamatot a Azure Media Services Explorer (AMSE) és a Azure Media Redactor megjelenítő (nyílt forráskódú eszköz) használatával.
 services: media-services
 documentationcenter: ''
-author: Lichard
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: d6fa21b8-d80a-41b7-80c1-ff1761bc68f2
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 03/10/2021
 ms.author: ril
 ms.reviewer: juliako
-ms.openlocfilehash: 048635a33c3d84416dae00b731b386572aa3f89d
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 1a7e20681dfa7da7ce30f46a7c4b0b6df6f78916
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802575"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009556"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Arcok kivonása Azure Media Analytics bemutatóval
 
@@ -123,7 +123,7 @@ Ha a fejlesztők a JSON-megjegyzési adatokat szeretnék elemezni, tekintse meg 
 6.  Töltse fel ezt a fájlt a kimeneti eszközre az 1. lépésben. Töltse fel az eredeti videót az eszközre, és állítsa be elsődleges eszközként. 
 7.  A kivonási feladatoknak az objektumon való futtatása "kivonás" módban a végső kitakart videó lekéréséhez. 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

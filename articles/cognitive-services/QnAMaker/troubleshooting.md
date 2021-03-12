@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: troubleshooting
 ms.date: 11/09/2020
-ms.openlocfilehash: aea205bee41aed232b8453417dca521d2dfc83ab
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 7b7ac20672ee653cbf6d2b82b7a9454c1d742b2c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233780"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612694"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker hibaelhárítása
 
@@ -389,7 +389,7 @@ Ha több nyelvből származó tartalommal rendelkezik, ügyeljen arra, hogy mind
 <details>
 <summary><b>Szükség van a bot Framework használatára a QnA Maker használatához?</b></summary>
 
-**Válasz**: nem, a [bot Framework](https://github.com/Microsoft/botbuilder-dotnet) -et nem kell használnia QnA Maker. QnA Maker azonban a [Azure bot Service](/azure/bot-service/?preserve-view=true&view=azure-bot-service-4.0)számos sablonjának egyikét kínálja. A bot Service lehetővé teszi a gyors intelligens robot-fejlesztést a Microsoft bot Framework segítségével, és egy kiszolgáló nélküli környezetben fut.
+**Válasz**: nem, a [bot Framework](https://github.com/Microsoft/botbuilder-dotnet) -et nem kell használnia QnA Maker. QnA Maker azonban a [Azure bot Service](/azure/bot-service/)számos sablonjának egyikét kínálja. A bot Service lehetővé teszi a gyors intelligens robot-fejlesztést a Microsoft bot Framework segítségével, és egy kiszolgáló nélküli környezetben fut.
 
 </details>
 
@@ -438,7 +438,7 @@ A Tudásbázis Endpoint Key címkéje `QnAAuthkey` az ABS szolgáltatásban tal�
 <details>
 <summary><b>Szükség van a bot Framework használatára a QnA Maker használatához?</b></summary>
 
-**Válasz**: nem, a [bot Framework](https://github.com/Microsoft/botbuilder-dotnet) -et nem kell használnia QnA Maker. QnA Maker azonban a [Azure bot Service](/azure/bot-service/?preserve-view=true&view=azure-bot-service-4.0)számos sablonjának egyikét kínálja. A bot Service lehetővé teszi a gyors intelligens robot-fejlesztést a Microsoft bot Framework segítségével, és egy kiszolgáló nélküli környezetben fut.
+**Válasz**: nem, a [bot Framework](https://github.com/Microsoft/botbuilder-dotnet) -et nem kell használnia QnA Maker. QnA Maker azonban a [Azure bot Service](/azure/bot-service/)számos sablonjának egyikét kínálja. A bot Service lehetővé teszi a gyors intelligens robot-fejlesztést a Microsoft bot Framework segítségével, és egy kiszolgáló nélküli környezetben fut.
 
 </details>
 

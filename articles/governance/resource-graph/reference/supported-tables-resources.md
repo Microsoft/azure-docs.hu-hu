@@ -1,15 +1,15 @@
 ---
 title: Támogatott Azure Resource Manager erőforrástípusok
 description: Adja meg az Azure Resource Graph és a Change History által támogatott Azure Resource Manager-erőforrástípusok listáját.
-ms.date: 02/04/2021
+ms.date: 03/10/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 865aed468f8a6bcb848b77a82467efc2c531398b
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: d7b4be0b35fdfebd2f680a299bc7b90375e36afc
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594333"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633767"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Az Azure Resource Graph táblázat-és erőforrástípus-referenciája
 
@@ -26,9 +26,18 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 
 - Microsoft. alertsmanagement/riasztások
 
+## <a name="extendedlocationresources"></a>extendedlocationresources
+
+- Microsoft. extendedlocation/customlocations/enabledresourcetypes
+
 ## <a name="guestconfigurationresources"></a>guestconfigurationresources
 
 - Microsoft. guestconfiguration/guestconfigurationassignments
+
+## <a name="kubernetesconfigurationresources"></a>kubernetesconfigurationresources
+
+- Microsoft. kubernetesconfiguration/bővítmények
+- Microsoft. kubernetesconfiguration/sourcecontrolconfigurations
 
 ## <a name="maintenanceresources"></a>maintenanceresources
 
@@ -118,6 +127,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. AzureArcData/postgresInstances (Azure Database for PostgreSQL-kiszolgálócsoportok – Azure arc)
 - Microsoft. AzureArcData/sqlManagedInstances (SQL felügyelt példányok – Azure arc)
 - Microsoft. AzureArcData/sqlServerInstances (SQL Server – Azure arc)
+- Microsoft. azurecis/autopilotenvironments
 - Microsoft. azuredata/datacontrollers
 - Microsoft. azuredata/hybriddatamanagers
 - Microsoft. azuredata/postgresinstances
@@ -132,6 +142,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. AzureStackHCI/fürtök (Azure Stack HCI)
 - Microsoft. azurestackhci/galleryimages
 - Microsoft. azurestackhci/networkinterfaces
+- Microsoft. AzureStackHCI/virtualmachines (Azure Stack HCI virtuális gép – Azure arc)
 - Microsoft. azurestackhci/virtualnetworks
 - Microsoft. baremetal/consoleconnections
 - Microsoft. BareMetal/crayServers (Cray-kiszolgálók)
@@ -151,12 +162,13 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. BotService/botServices (bot Services)
 - Microsoft. cache/Redis (Azure cache a Redis-hoz)
 - Microsoft. cache/RedisEnterprise (Redis Enterprise)
+- Microsoft. Cascade/helyek
 - Microsoft. CDN/CdnWebApplicationFirewallPolicies (webalkalmazási tűzfal házirendjei (WAF))
-- Microsoft. CDN/profilok (CDN-profilok)
+- Microsoft. CDN/profilok (első ajtók standard/prémium (előzetes verzió))
 - Microsoft. CDN/profilok/afdendpoints
 - Microsoft. CDN/profilok/végpontok (végpontok)
 - Microsoft. CertificateRegistration/Tanúsítványrendelések (App Service tanúsítványok)
-- Microsoft. Chaos/chaosexperiments
+- Microsoft. Chaos/chaosexperiments (Chaos-kísérletek)
 - Microsoft. classicCompute/tartománynév (Cloud Services (klasszikus))
 - Microsoft. ClassicCompute/VirtualMachines (Virtual Machines (klasszikus))
 - Microsoft. ClassicNetwork/networkSecurityGroups (hálózati biztonsági csoportok (klasszikus))
@@ -169,6 +181,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. CloudTest/hostedpools (1ES üzemeltetett készletek)
 - Microsoft. CloudTest/images (CloudTest-lemezképek)
 - Microsoft. CloudTest/készletek (CloudTest-készletek)
+- Microsoft. ClusterStor/csomópontok (ClusterStors)
 - Microsoft. codespaces/csomagok
 - Microsoft. Cognition/syntheticsAccounts (szintetikus fiókok)
 - Microsoft. CognitiveServices/fiókok (Cognitive Services)
@@ -204,6 +217,11 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. Fluent/szervezetek (Fluent szervezetek)
 - Microsoft. ConnectedCache/cacheNodes (csatlakoztatott gyorsítótár-erőforrások)
 - Microsoft. connectedvehicle/platformaccounts
+- Microsoft. connectedvmwarevsphere/resourcepools
+- Microsoft. connectedvmwarevsphere/vCenter
+- Microsoft. connectedvmwarevsphere/virtualmachines
+- Microsoft. connectedvmwarevsphere/virtualmachinetemplates
+- Microsoft. connectedvmwarevsphere/virtualnetworks
 - Microsoft. ContainerInstance/containerGroups (Container instances)
 - Microsoft. ContainerRegistry/nyilvántartók (tároló-nyilvántartók)
 - Microsoft. containerregistry/nyilvántartók/agentpools
@@ -226,7 +244,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. Databricks/munkaterületek (Azure Databricks szolgáltatások)
 - Microsoft. DataCatalog/katalógusok (Data Catalog)
 - Microsoft. datacatalog/datacatalogs
-- Microsoft. DataCollaboration/munkaterületek (adategyüttműködések)
+- Microsoft. DataCollaboration/workspaces (Project CI)
 - Microsoft. Datadoggal/figyelők (Datadoggal)
 - Microsoft. DataFactory/dataFactories (adatfeldolgozók)
 - Microsoft. DataFactory/gyárak (adatgyárak (v2))
@@ -244,6 +262,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. DBforMySQL/Servers (Azure Database for MySQL-kiszolgálók)
 - Microsoft. DBforPostgreSQL/flexibleServers (Azure Database for PostgreSQL rugalmas kiszolgálók)
 - Microsoft. DBforPostgreSQL/serverGroups (Azure Database for PostgreSQL Server groups)
+- Microsoft. dbforpostgresql/servergroupsv2
 - Microsoft. DBforPostgreSQL/Servers (Azure Database for PostgreSQL-kiszolgálók)
 - Microsoft. DBforPostgreSQL/serversv2 (Azure Database for PostgreSQL Servers v2)
 - Microsoft. dbforpostgresql/singleservers
@@ -258,7 +277,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. deploymentmanager/lépések
 - Microsoft. DesktopVirtualization/ApplicationGroups (alkalmazáscsoport)
 - Microsoft. DesktopVirtualization/HostPools (alkalmazáskészletek)
-- Microsoft. desktopvirtualization/scalingplans
+- Microsoft. DesktopVirtualization/ScalingPlans (skálázási tervek)
 - Microsoft. DesktopVirtualization/munkaterületek (munkaterületek)
 - Microsoft. Devices/elasticpools
 - Microsoft. Devices/elasticpools/iothubtenants
@@ -274,9 +293,13 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. segédösszetevője/Labs/virtualMachines (Virtual machines)
 - Microsoft. segédösszetevője/ütemtervek
 - Microsoft. DigitalTwins/digitalTwinsInstances (Azure digitális ikrek)
+- Microsoft.DocumentDB/cassandraClusters (Azure felügyelt példány az Apache Cassandra-hoz)
 - Microsoft.DocumentDb/databaseAccounts (Azure Cosmos DB fiókok)
 - Microsoft. DomainRegistration/tartományok (App Service tartományok)
-- Microsoft. rugalmas/figyelők (rugalmas)
+- Microsoft. edgeorder/címek
+- Microsoft. edgeorder/ordercollections
+- Microsoft. edgeorder/megrendelések
+- Microsoft. rugalmas/figyelők (Elasticsearch)
 - Microsoft. enterpriseknowledgegraph/szolgáltatások
 - Microsoft. EventGrid/tartományok (Event Grid tartományok)
 - Microsoft. EventGrid/partnerNamespaces (Event Grid partneri névterek)
@@ -306,8 +329,8 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. hybridcompute/gépek/bővítmények
 - Microsoft. HybridCompute/privateLinkScopes (Azure arc Private link Scopes)
 - Microsoft. HybridData/dataManagers (StorSimple-adatkezelők)
-- Microsoft. HybridNetwork/eszközök (Azure Network Function Manager – eszközök)
-- Microsoft. HybridNetwork/networkFunctions (Azure Network Function Manager – hálózati függvények)
+- Microsoft. HybridNetwork/eszközök (Azure Network Function Manager – eszközök (előzetes verzió))
+- Microsoft. HybridNetwork/networkFunctions (Azure Network Function Manager – hálózati függvények (előzetes verzió))
 - Microsoft. hybridnetwork/virtualnetworkfunctions
 - Microsoft. ImportExport/feladatok (importálási/exportálási feladatok)
 - Microsoft. industrydatalifecycle/basemodels
@@ -333,10 +356,10 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. bepillantások/munkafüzetek (Azure-munkafüzetek)
 - Microsoft. ininsights/workbooktemplates (Azure munkafüzet-sablonok)
 - Microsoft. IntelligentITDigitalTwin/digitalTwins (Minerva)
-- Microsoft. intelligentitdigitaltwin/digitaltwins/eszközök
-- Microsoft. intelligentitdigitaltwin/digitaltwins/executionplans
-- Microsoft. intelligentitdigitaltwin/digitaltwins/testplans
-- Microsoft. intelligentitdigitaltwin/digitaltwins/tesztek
+- Microsoft. IntelligentITDigitalTwin/digitalTwins/assets (eszközök)
+- Microsoft. IntelligentITDigitalTwin/digitalTwins/executionPlans (üzemelő példányok)
+- Microsoft. IntelligentITDigitalTwin/digitalTwins/testPlans (Suite)
+- Microsoft. IntelligentITDigitalTwin/digitalTwins/tesztek (parancsfájlok)
 - Microsoft. IoTCentral/IoTApps (IoT Central alkalmazások)
 - Microsoft. IoTSpaces/Graph (digitális ikrek (elavult))
 - Microsoft. kulcstartó/hsmpools
@@ -352,14 +375,15 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. Logic/integrationServiceEnvironments/król (felügyelt összekötő)
 - Microsoft. Logic/munkafolyamatok (Logic apps)
 - Microsoft. Logz/figyelők (Logz fő fiók)
-- Microsoft. Logz/figyelők/fiókok (Logz-fiók)
+- Microsoft. Logz/figyelők/fiókok (Logz sub-fiók)
 - Microsoft. MachineLearning/commitmentPlans (Machine Learning Studio (klasszikus) webszolgáltatás-csomagok)
 - Microsoft. MachineLearning/webszolgáltatás (Machine Learning Studio (klasszikus) webszolgáltatások)
 - Microsoft. MachineLearning/munkaterületek (Machine Learning Studio (klasszikus) munkaterületek)
 - Microsoft. machinelearningcompute/operationalizationclusters
 - Microsoft. machinelearningservices/modelinventories
 - Microsoft. machinelearningservices/modelinventory
-- Microsoft. MachineLearningServices/munkaterületek (Machine Learning)
+- Microsoft. machinelearningservices/virtualclusters
+- Microsoft. MachineLearningServices/munkaterületek (gépi tanulás)
 - Microsoft. machinelearningservices/munkaterületek/batchendpoints
 - Microsoft. machinelearningservices/munkaterületek/batchendpoints/központi telepítések
 - Microsoft. machinelearningservices/munkaterületek/inferenceendpoints
@@ -383,16 +407,22 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. Media/Mediaservices/liveevents (élő események)
 - Microsoft. Media/Mediaservices/streamingEndpoints (folyamatos átviteli végpontok)
 - Microsoft. Media/Mediaservices/átalakítások
+- Microsoft. Media/videoanalyzers
 - Microsoft. microservices4spring/appclusters
 - Microsoft. Migrálás/assessmentprojects
 - Microsoft. Migrálás/migrateprojects
 - Microsoft. Migrálás/movecollections
 - Microsoft. Migrálás/projektek (áttelepítési projektek)
 - Microsoft. MixedReality/holographicsBroadcastAccounts (Holographics-szórásos fiókok)
+- Microsoft. MixedReality/objectAnchorsAccounts (objektum-horgonyok fiókjai)
 - Microsoft. MixedReality/objectUnderstandingAccounts (objektum-megértési fiókok)
 - Microsoft. MixedReality/remoteRenderingAccounts (távoli renderelési fiókok)
 - Microsoft. MixedReality/spatialAnchorsAccounts (térbeli horgonyok fiókjai)
 - Microsoft. mixedreality/surfacereconstructionaccounts
+- Microsoft. mobilenetwork/hálózatok
+- Microsoft. mobilenetwork/hálózatok/helyek
+- Microsoft. mobilenetwork/Sims
+- Microsoft. mobilenetwork/Sims/simprofiles
 - Microsoft. NetApp/netAppAccounts (NetApp-fiókok)
 - Microsoft. NetApp/netappaccounts/backuppolicies
 - Microsoft. NetApp/netAppAccounts/capacityPools (Capacity Pools)
@@ -485,6 +515,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. powerbi/privatelinkservicesforpowerbi
 - Microsoft. powerbi/bérlők
 - Microsoft. powerbi/workspacecollections
+- Microsoft. powerbidedicated/autoscalevcores
 - Microsoft. PowerBIDedicated/kapacitások (Power BI Embedded)
 - Microsoft. ProjectBabylon/fiókok (Babylon-fiókok)
 - Microsoft. hatáskörébe/fiókok (hatáskörébe tartozó fiókok)
@@ -494,13 +525,13 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. Relay/névterek (Relays)
 - Microsoft. RemoteApp/gyűjtemények
 - Microsoft. rugalmasság/chaosexperiments
-- Microsoft. resourceconnector/berendezések
+- Microsoft. ResourceConnector/berendezések (berendezések)
 - Microsoft. resourcegraph/lekérdezések (Resource Graph-lekérdezések)
 - Microsoft. Resources/deploymentScripts (üzembehelyezési parancsfájlok)
 - Microsoft. Resources/templateSpecs (sablon specifikációi)
 - Microsoft. Resources/templatespecs/Versions
 - Microsoft. SaaS/alkalmazások (szoftveres szolgáltatás (klasszikus))
-- Microsoft. SaaS/erőforrások (CPX-helyőrző)
+- Microsoft. SaaS/erőforrások (SaaS)
 - Microsoft. Scheduler/Feladatgyűjtemények (ütemező feladatok gyűjteményei)
 - Microsoft. SCVMM/felhők
 - Microsoft. SCVMM/virtualMachines (SCVMM virtuális gép – Azure arc)
@@ -514,7 +545,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. ServiceBus/névterek (Service Bus névterek)
 - Microsoft. ServiceFabric/fürtök (Service Fabric fürtök)
 - Microsoft. servicefabric/containergroupsets
-- Microsoft. ServiceFabric/managedclusters (felügyelt Service Fabric-fürtök)
+- Microsoft. ServiceFabric/managedclusters (felügyelt fürtök Service Fabric)
 - Microsoft. ServiceFabricMesh/alkalmazások (mesh-alkalmazások)
 - Microsoft. servicefabricmesh/átjárók
 - Microsoft. servicefabricmesh/hálózatok
@@ -542,6 +573,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. SqlVirtualMachine/SqlVirtualMachines (SQL virtuális gépek)
 - Microsoft. sqlvm/dwvm
 - Microsoft. Storage/StorageAccounts (Storage-fiókok)
+- Microsoft. storagecache/amlfilesystems
 - Microsoft. StorageCache/cache (HPC-gyorsítótárak)
 - Microsoft. storagepool/diskpools
 - Microsoft. StorageSync/storageSyncServices (Storage Sync Services)
@@ -558,12 +590,13 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. szinapszis/munkaterületek/sqldatabases
 - Microsoft. szinapszis/munkaterületek/sqlPools (dedikált SQL-készletek)
 - Microsoft. terraformoss/providerregistrations
+- Microsoft. testbase/testbases
 - Microsoft. TimeSeriesInsights/Environments (Time Series Insights környezetek)
 - Microsoft. TimeSeriesInsights/Environments/eventsources (Time Series Insights Event sources)
 - Microsoft. TimeSeriesInsights/Environments/referenceDataSets (Time Series Insights hivatkozási adatkészletek)
 - Microsoft. token/áruházak
 - Microsoft. tokenvault/tárolók
-- Microsoft. virtualmachineimages/imagetemplates
+- Microsoft. VirtualMachineImages/imageTemplates (képsablonok)
 - Microsoft. VisualStudio/fiók (Azure DevOps-szervezetek)
 - Microsoft. VisualStudio/fiók/bővítmény
 - Microsoft. VisualStudio/Account/Project (DevOps Starter)
@@ -628,7 +661,8 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 
 - Microsoft. Security/értékelések
 - Microsoft. Security/értékelések/alértékelések
-- Microsoft. Security/Locations/riasztások (biztonsági riasztások (előzetes verzió))
+- Microsoft. Security/iotalerts
+- Microsoft. Security/Locations/riasztások (biztonsági riasztások)
 - Microsoft. Security/díjszabás
 - Microsoft. Security/regulatorycompliancestandards
 - Microsoft. Security/regulatorycompliancestandards/regulatorycompliancecontrols
@@ -639,6 +673,10 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 ## <a name="servicehealthresources"></a>servicehealthresources
 
 - Microsoft. resourcehealth/események
+
+## <a name="workloadmonitorresources"></a>workloadmonitorresources
+
+- Microsoft. workloadmonitor/figyelők
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -5,62 +5,33 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 8fe8c07866b23e5d990b71bfc9cd556c338634d3
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 731d94aa76146bf06a03842e8f3907d1762eeca3
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102203368"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225608"
 ---
 # <a name="recommended-settings-for-network-isolation"></a>A hálózati elkülönítés ajánlott beállításai
 
-A QnA Maker erőforrásaihoz való nyilvános hozzáférés korlátozásához kövesse az alábbi lépéseket. [A virtuális hálózat konfigurálásával](../../cognitive-services-virtual-networks.md?tabs=portal)a Cognitive Services-erőforrást a nyilvános eléréssel védi.
-
-## <a name="restrict-access-to-cognitive-search-resource"></a>Cognitive Search erőforráshoz való hozzáférés korlátozása
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
-
-Cognitive Search konfigurálása privát végpontként egy VNET belül. Ha egy QnA Maker erőforrás létrehozása során hoz létre keresési példányt, akkor kényszerítheti a Cognitive Searcht, hogy támogassa a teljes mértékben az ügyfél VNet létrehozott privát végpont-konfigurációt.
-
-A privát végpontok használatához minden erőforrást ugyanabban a régióban kell létrehozni.
-
-* Erőforrás QnA Maker
-* új Cognitive Search erőforrás
-* új Virtual Network erőforrás
-
-Hajtsa végre a következő lépéseket a [Azure Portalban](https://portal.azure.com):
-
-1. [QnA Maker erőforrás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)létrehozása.
-2. Hozzon létre egy új Cognitive Search erőforrást a végponti kapcsolat ( adatforrások) beállításával. Hozza létre az erőforrást ugyanabban a régióban, mint az 1. lépésben létrehozott QnA Maker erőforrást. További információ [Cognitive Search erőforrás létrehozásáról](../../../search/search-create-service-portal.md), majd a hivatkozás használatával közvetlenül az [erőforrás létrehozás lapjára](https://ms.portal.azure.com/#create/Microsoft.Search)léphet.
-3. Hozzon létre egy új [Virtual Network erőforrást](https://ms.portal.azure.com/#create/Microsoft.VirtualNetwork-ARM).
-4. Konfigurálja a VNET az eljárás 1. lépésében létrehozott app Service-erőforráson. Hozzon létre egy új DNS-bejegyzést a VNET a 2. lépésben létrehozott új Cognitive Search-erőforráshoz. a Cognitive Search IP-címhez.
-5. [Rendelje hozzá az App Service-t a 2. lépésben létrehozott új Cognitive Search erőforráshoz](../how-to/set-up-qnamaker-service-azure.md) . Ezután törölheti az 1. lépésben létrehozott eredeti Cognitive Search-erőforrást.
-    
-Az [QnA Maker portálon](https://www.qnamaker.ai/)hozza létre első tudásbázisát.
-
-#  <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
-
-[Hozzon létre privát végpontokat](../reference-private-endpoint.md) a Azure Search erőforráshoz.
-
----
+Kövesse az alábbi lépéseket a QnA Maker erőforrásokhoz való nyilvános hozzáférés korlátozásához. [A virtuális hálózat konfigurálásával](../../cognitive-services-virtual-networks.md?tabs=portal)a Cognitive Services-erőforrást a nyilvános eléréssel védi.
 
 ## <a name="restrict-access-to-app-service-qna-runtime"></a>App Service elérésének korlátozása (QnA Runtime)
 
-IP-címeket adhat hozzá az App Service engedélyezési, amelyekkel korlátozhatja a hozzáférést, vagy konfigurálhatja App Service Environemnt QnA Maker App Service gazdagépre.
+IP-címeket adhat hozzá az App Service engedélyezési listájához, hogy korlátozza a hozzáférést, vagy konfigurálja a App Service Environment QnA Maker App Service gazdagépre.
 
-#### <a name="add-ips-to-app-service-allowlist"></a>IP-címek hozzáadása App Service engedélyezési
+#### <a name="add-ips-to-app-service-allow-list"></a>IP-címek hozzáadása App Service engedélyezési listához
 
-1. Csak Cognitive Services IP-címekről érkező forgalom engedélyezése. Ezek már szerepelnek a Service címkében `CognitiveServicesManagement` . Ez szükséges az API-k létrehozásához (létrehozás/frissítés KB) az App Service meghívásához és ennek megfelelően a Azure Search szolgáltatás frissítéséhez. [További információ a szolgáltatási címkékről.](../../../virtual-network/service-tags-overview.md)
+1. 
+csak Cognitive Services IP-címekről érkező forgalom. Ezek már szerepelnek a Service címkében `CognitiveServicesManagement` . Ez szükséges az API-k létrehozásához (létrehozás/frissítés KB) az App Service meghívásához és ennek megfelelően a Azure Search szolgáltatás frissítéséhez. [További információ a szolgáltatási címkékről.](../../../virtual-network/service-tags-overview.md)
 2. Győződjön meg arról, hogy más belépési pontokat is engedélyez, például a Azure Bot Servicet, QnA Maker portált stb.) a "GenerateAnswer" API-hozzáférés előrejelzéséhez.
-3. Az IP-címtartományok engedélyezési való hozzáadásához kövesse az alábbi lépéseket:
+3. Az IP-címtartományok engedélyezési listához való hozzáadásához kövesse az alábbi lépéseket:
 
    1. Töltse le [az IP-tartományokat az összes szolgáltatás címkéhez](https://www.microsoft.com/download/details.aspx?id=56519).
    2. Válassza ki a "CognitiveServicesManagement" IP-címeit.
-   3. Nyissa meg a App Service erőforrás hálózatkezelés szakaszát, és kattintson a "hozzáférési korlátozás konfigurálása" lehetőségre az IP-címek engedélyezési való hozzáadásához.
+   3. Nyissa meg a App Service erőforrás hálózatkezelés szakaszát, és kattintson a "hozzáférési korlátozás konfigurálása" lehetőségre az IP-címek engedélyezési listához való hozzáadásához.
 
-    ![bejövő portok kivételeinek](../media/inbound-ports.png)
-
-Egy automatikus szkripttel is rendelkezünk, hogy megegyezzenek a App Service. A [engedélyezési konfigurálására szolgáló PowerShell-parancsfájlt](https://github.com/pchoudhari/QnAMakerBackupRestore/blob/master/AddRestrictedIPAzureAppService.ps1) a githubon találhatja meg. Az előfizetés azonosítóját, az erőforráscsoportot és a tényleges App Service nevet kell megadni parancsfájl-paraméterként. A parancsfájl futtatásakor a rendszer automatikusan hozzáadja az IP-címeket App Service engedélyezési.
+Egy automatikus szkripttel is rendelkezünk, hogy megegyezzenek a App Service. Az engedélyezési lista a GitHubon [való konfigurálásához a PowerShell-parancsfájlt](https://github.com/pchoudhari/QnAMakerBackupRestore/blob/master/AddRestrictedIPAzureAppService.ps1) találja. Az előfizetés azonosítóját, az erőforráscsoportot és a tényleges App Service nevet kell megadni parancsfájl-paraméterként. A parancsfájl futtatásakor a rendszer automatikusan hozzáadja az IP-címeket App Service engedélyezési listához.
 
 #### <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>App Service Environment konfigurálása a gazdagép QnA Maker App Service
     
@@ -75,6 +46,25 @@ A App Service Environment (a bemutató) QnA Maker app Service üzemeltetésére 
 3.  A App Service Environment társított hálózati biztonsági csoport frissítése
     1. Frissítse az előre létrehozott bejövő biztonsági szabályokat az igényeinek megfelelően.
     2. Vegyen fel egy új bejövő biztonsági szabályt a forrásként a "Service tag" és a forrásoldali szolgáltatás címkével "CognitiveServicesManagement" néven.
+       
+    ![bejövő portok kivételeinek](../media/inbound-ports.png)
+
 4.  Hozzon létre egy QnA Maker kognitív szolgáltatási példányt (Microsoft. CognitiveServices/accounts) Azure Resource Manager használatával, ahol QnA Maker végpontot a fent létrehozott App Service végpontra kell beállítani (https://mywebsite.myase.p.azurewebsite.net).
     
+---
+
+## <a name="restrict-access-to-cognitive-search-resource"></a>Cognitive Search erőforráshoz való hozzáférés korlátozása
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
+
+A Cognitive Search példány egy privát végponton keresztül különíthető el a QnA Maker erőforrások létrehozása után. A magánhálózati végpontok kapcsolataihoz olyan VNet van szükség, amelyen keresztül a Search Service-példány elérhető. 
+
+Ha a QnA Maker App Service App Service Environment használatával van korlátozva, használja ugyanazt a VNet, és hozzon létre egy privát végponti kapcsolódást az Cognitive Search-példánnyal. Hozzon létre egy új DNS-bejegyzést a VNet, hogy az Cognitive Search végpontot a Cognitive Search magánhálózati végpont IP-címére képezze. 
+
+Ha nem használ App Service Environment a QnAMaker App Servicehoz, először hozzon létre egy új VNet-erőforrást, majd hozza létre a Cognitive Search példányhoz tartozó magánhálózati végponti kapcsolódást. Ebben az esetben a QnA Maker App Service [integrálni kell a VNet](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet) az Cognitive Search-példányhoz való kapcsolódáshoz. 
+
+#  <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
+
+[Hozzon létre privát végpontokat](../reference-private-endpoint.md) a Azure Search erőforráshoz.
+
 ---

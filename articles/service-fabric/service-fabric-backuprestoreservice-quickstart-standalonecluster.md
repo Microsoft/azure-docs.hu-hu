@@ -3,12 +3,12 @@ title: Rendszeres biztonsági mentés/visszaállítás az önálló Azure-Servic
 description: Az alkalmazásadatok rendszeres biztonsági mentésének engedélyezéséhez használjon önálló Service Fabric rendszeres biztonsági mentési és visszaállítási funkcióját.
 ms.topic: conceptual
 ms.date: 5/24/2019
-ms.openlocfilehash: d4abf1cd4561a40aaafa5c01865eb12882884422
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: d78a627c0c50a3e2ec57138e40cb5bc97486d6f7
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927949"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103198708"
 ---
 # <a name="periodic-backup-and-restore-in-a-standalone-service-fabric"></a>Rendszeres biztonsági mentés és visszaállítás önálló Service Fabric
 > [!div class="op_single_selector"]
@@ -103,6 +103,10 @@ Először engedélyeznie kell a _biztonsági mentési és visszaállítási szol
             "parameters":  [{
                 "name": "SecretEncryptionCertThumbprint",
                 "value": "[Thumbprint]"
+            },
+            {
+                "name": "SecretEncryptionCertX509StoreName",
+                "value": "My"
             }]
         }
         ...

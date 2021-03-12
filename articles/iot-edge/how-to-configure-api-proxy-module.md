@@ -12,14 +12,16 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 894398d63e326db3c6ee9de9bebc426a6e621600
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1070a4c8daecfedae513f2fd8738c27abfb33078
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024670"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200580"
 ---
 # <a name="configure-the-api-proxy-module-for-your-gateway-hierarchy-scenario-preview"></a>Az API-proxy modul konfigurálása az átjáró-hierarchia forgatókönyvéhez (előzetes verzió)
+
+[!INCLUDE [iot-edge-version-202011](../../includes/iot-edge-version-202011.md)]
 
 Az API-proxy modul lehetővé teszi, hogy IoT Edge eszközök HTTP-kéréseket küldjenek az átjárón keresztül a Cloud Services közvetlen kapcsolatainak használata helyett. Ez a cikk végigvezeti a konfigurációs beállításokon, így testreszabhatja a modult az átjáró-hierarchia követelményeinek támogatásához.
 
@@ -50,7 +52,7 @@ Az API-proxy modul egy alapértelmezett konfigurációt tartalmaz, amely támoga
 
 Az alapértelmezett környezeti változók jelenleg a következők:
 
-| Környezeti változó | Description |
+| Környezeti változó | Leírás |
 | -------------------- | ----------- |
 | `PROXY_CONFIG_ENV_VAR_LIST` | Sorolja fel az összes frissítendő változót egy vesszővel elválasztott listában. Ez a lépés megakadályozza a helytelen konfigurációs beállítások véletlen módosítását.
 | `NGINX_DEFAULT_PORT` | Megváltoztatja az Nginx-proxy által figyelt portot. Ha frissíti ezt a környezeti változót, győződjön meg arról, hogy a kiválasztott port a modul Docker is elérhető, és port Kötésként van deklarálva az üzembe helyezési jegyzékben.<br><br>Az alapértelmezett érték a 443.<br><br>Az Azure Marketplace-en való üzembe helyezéskor az alapértelmezett portot 8000-re frissíti a rendszer az edgeHub modullal való ütközések elkerülése érdekében. További információ: a [nyitott portok csökkentése](#minimize-open-ports). |
@@ -109,7 +111,7 @@ Ha nincs szükség a nyitott portok minimalizálására, a edgeHub modul a 443-a
 
 Az API-proxy modul általános használati esete, ha lehetővé szeretné tenni, hogy a tárolók lemezképeit az alsóbb rétegekben lévő IoT Edge eszközök lehívhatják. Ez a forgatókönyv a [Docker beállításjegyzék-modullal](https://hub.docker.com/_/registry) kéri le a tároló lemezképeit a felhőből, és gyorsítótárazza azokat a felső rétegben. Az API-proxy továbbítja az összes HTTPS-kérést, hogy az alsó rétegből töltsön le egy tároló-rendszerképet, amelyet a felső réteg beállításjegyzék-modulja fog kiszolgálni.
 
-Ehhez a forgatókönyvhöz az alsóbb rétegbeli IoT Edge-eszközöknek a tartomány nevére kell mutatniuk, `$upstream` majd az API-proxy modul portszámát a rendszerkép tároló-beállításjegyzéke helyett. Például: `$upstream:8000/azureiotedge-api-proxy:1.0`.
+Ehhez a forgatókönyvhöz az alsóbb rétegbeli IoT Edge-eszközöknek a tartomány nevére kell mutatniuk, `$upstream` majd az API-proxy modul portszámát a rendszerkép tároló-beállításjegyzéke helyett. Példa: `$upstream:8000/azureiotedge-api-proxy:1.0`.
 
 Ez a használati eset az oktatóanyagban az [átjárók használatával IoT Edge-eszközök hierarchiájának létrehozása](tutorial-nested-iot-edge.md)című cikkben látható.
 

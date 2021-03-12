@@ -13,12 +13,12 @@ ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: a0543905f41abc9c21327159d63f7adaa5b025dc
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e04884c078bd9a5693ddcbc4e71470bb23e13d60
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101645891"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199795"
 ---
 # <a name="how-to-remove-an-application-registered-with-the-microsoft-identity-platform"></a>A Microsoft Identity platformmal regisztrált alkalmazások eltávolítása
 
@@ -47,7 +47,8 @@ Egy alkalmazás törléséhez az alkalmazás tulajdonosaként vagy rendszergazda
 1. Keresse meg és válassza ki a **Azure Active Directory**. 
 1. A **kezelés** területen válassza a **Alkalmazásregisztrációk**  lehetőséget, majd válassza ki a konfigurálni kívánt alkalmazást. Miután kiválasztotta az alkalmazást, megjelenik annak **Áttekintés** lapja.
 1. Az **Áttekintés** lapon válassza a **Törlés** elemet.
-1. Kattintson az **Igen** gombra az alkalmazás törlésének megerősítéséhez.
+1. Olvassa el a törlés következményeit.  Jelölje be a jelölőnégyzetet, ha a panel alján megjelenik egy.
+1. A **Törlés** lehetőség kiválasztásával erősítse meg, hogy törölni kívánja az alkalmazást.
 
 ## <a name="remove-an-application-authored-by-another-organization"></a>Más szervezet által fejlesztett alkalmazás eltávolítása
 

@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: overview
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 17674c1a5d7acff50a3dd17b9d98f5295c2e1b19
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 60dfd448a66ca67a241f97570c91f683323a7d6d
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102633036"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232375"
 ---
 # <a name="device-update-for-iot-hub-preview-overview"></a>A IoT Hub eszköz frissítése (előzetes verzió) – áttekintés
 
@@ -23,7 +23,8 @@ Az IoT-kompatibilis digitális átalakítás teljes előnyeinek kihasználásáh
 
 ## <a name="support-for-a-wide-range-of-iot-devices"></a>Számos IoT-eszköz támogatása
 
-A IoT Hub eszközének frissítése úgy lett kialakítva, hogy az [Azure IoT hub](https://azure.microsoft.com/en-us/services/iot-hub/)-nal való integráció révén optimalizálható legyen az optimalizált frissítések telepítése és az egyszerűsített műveletek. Ez az integráció megkönnyíti az eszköz frissítésének elfogadását bármely meglévő megoldáson. Felhőalapú megoldást kínál a gyakorlatilag bármilyen eszköz csatlakoztatására. Az eszköz frissítése a IoT operációs rendszerek széles körét támogatja – például a Linux és az [Azure RTOS](https://azure.microsoft.com/en-us/services/rtos/) (valós idejű operációs rendszer) –, és a nyílt forráskódon keresztül bővíthető. A NXP, a STMicroelectronics, a Renesas és a microchip szolgáltatással együtt fejlesztjük az eszközök frissítését IoT Hub ajánlatokhoz. Tekintse meg a Key Semiconductors próbaverziós táblák [mintáit](https://github.com/azure-rtos/samples/tree/PublicPreview/ADU) , amely tartalmazza az első lépéseket ismertető útmutatót, amelyből megtudhatja, hogyan konfigurálhatja, építheti és helyezheti üzembe a over-the-Air (OTA) frissítéseket az MCU osztályú eszközökhöz.
+
+A IoT Hub eszközének frissítése úgy lett kialakítva, hogy az [Azure IoT hub](https://azure.microsoft.com/en-us/services/iot-hub/)-nal való integráció révén optimalizálható legyen az optimalizált frissítések telepítése és az egyszerűsített műveletek. Ez az integráció megkönnyíti az eszköz frissítésének elfogadását bármely meglévő megoldáson. Felhőalapú megoldást kínál a gyakorlatilag bármilyen eszköz csatlakoztatására. Az eszköz frissítése a IoT operációs rendszerek széles körét támogatja – például a Linux és az [Azure RTOS](https://azure.microsoft.com/en-us/services/rtos/) (valós idejű operációs rendszer) –, és a nyílt forráskódon keresztül bővíthető. A NXP, a STMicroelectronics, a Renesas és a microchip szolgáltatással együtt fejlesztjük az eszközök frissítését IoT Hub ajánlatokhoz. Tekintse meg a Key Semiconductors próbaverziós táblák [mintáit](https://github.com/azure-rtos/samples/tree/PublicPreview/ADU) , amely tartalmazza az első lépéseket ismertető útmutatót, amelyből megtudhatja, hogyan konfigurálhatja, építheti és helyezheti üzembe a over-the-Air (OTA) frissítéseket az MCU osztályú eszközökhöz. 
 
 Az eszköz Update Agent Simulator bináris és málna PI-Yocto lemezképek is elérhetők.
 A IoT Hub eszköz frissítése támogatja a Azure IoT Edge-eszközök frissítését is. Az Ubuntu Server 18,04 amd64 platformhoz egy eszköz-frissítési ügynök van megadva. A IoT Hub eszköz frissítése is biztosít nyílt forráskódot, ha nem a fenti platformok egyikét futtatja. Az ügynököt az Ön által futtatott disztribúcióhoz is elvégezheti.
@@ -79,7 +80,7 @@ Ha egy eszközön egy frissítési parancs érkezik, a rendszer végrehajtja a f
 
 ### <a name="importing"></a>Importálás
 
-Az importálás lehetővé teszi a frissítés importálását az eszköz Frissítéseibe. Az eszköz frissítése minden eszközön egyetlen frissítést támogat. Ez ideális olyan teljes képfrissítésekhez, amelyek egy teljes operációsrendszer-partíciót egyszerre frissítenek, vagy egy olyan apt-jegyzékfájlt, amely az eszközön frissíteni kívánt összes csomagot leírja. A frissítések eszköz frissítésbe való importálásához először létre kell hoznia egy, a frissítést leíró importálási jegyzékfájlt, majd fel kell töltenie a frissítési fájl (oka) t és az importálási jegyzékfájlt egy internetről elérhető helyre. Ezt követően használhatja a Azure Portal vagy az eszköz frissítésének importálási REST API az importálás aszinkron folyamatának elindításához. Az eszköz frissítése feltölti a fájlokat, feldolgozza őket, és elérhetővé teszi azokat a IoT-eszközök számára történő terjesztéshez.
+Az importálás módja, hogy a frissítések hogyan kerülnek be az eszköz frissítéseibe, hogy azok üzembe helyezhetők legyenek az eszközökön. Az eszköz frissítése minden eszközön egyetlen frissítést támogat. Ez ideális olyan teljes képfrissítésekhez, amelyek egy teljes operációsrendszer-partíciót egyszerre frissítenek, vagy egy olyan apt-jegyzékfájlt, amely az eszközön frissíteni kívánt összes csomagot leírja. A frissítések eszköz frissítésbe való importálásához először létre kell hoznia egy, a frissítést leíró importálási jegyzékfájlt, majd fel kell töltenie a frissítési fájl (oka) t és az importálási jegyzékfájlt egy internetről elérhető helyre. Ezt követően használhatja a Azure Portal vagy az [eszköz frissítésének importálási REST API](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) az importálás aszinkron folyamatának elindításához. Az eszköz frissítése feltölti a fájlokat, feldolgozza őket, és elérhetővé teszi azokat a IoT-eszközök számára történő terjesztéshez.
 
 Bizalmas tartalom esetén a letöltést egy közös hozzáférési aláírás (SAS) használatával, például az Azure Blob Storage ad-hoc SAS-vel kell ellátni. [További információ az SAS-ról](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
 

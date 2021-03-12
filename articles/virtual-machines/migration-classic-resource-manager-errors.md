@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 02bf0430892490b5d3cfe35a6da4bf0973373fd3
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6d803d1a66c069f5eb42deead453a8526577f76b
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101676141"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615210"
 ---
 # <a name="errors-that-commonly-occur-during-classic-to-azure-resource-manager-migration"></a>A Klasszikusnál gyakran előforduló hibák Azure Resource Manager áttelepítésre
 
@@ -42,7 +42,7 @@ Ez a cikk összegyűjti az IaaS-erőforrások klasszikus Azure üzemi modellből
 | Az {üzemeltetett szolgáltatás neve} üzemeltetett szolgáltatás {üzemelő példány neve} üzemelő példányában lévő {virtuális gép neve} virtuális gép {adatlemez neve} adatlemezének {adatlemez mögötti vhd blob mérete} bájtos fizikai blobmérete nem egyezik a virtuális gép adatlemezének {az adatlemez vm api-ban megadott mérete} bájtos logikai méretével. A migrálás során nem lesz megadva méret az Azure Resource Manager virtuális gép adatlemeze számára. | Ez a hiba akkor lép fel, ha anélkül méretezte át a virtuálismerevlemez-blobot, hogy frissítette volna a méretet a virtuális gép API modelljében. A hibakezelés részletes lépéseit az [alábbi szakasz](#vm-with-data-disk-whose-physical-blob-size-bytes-does-not-match-the-vm-data-disk-logical-size-bytes) ismerteti.|
 | Tárolási hiba lépett fel a {felhőszolgáltatás neve} felhőszolgáltatásban lévő {virtuális gép neve} virtuális gépre mutató {adatlemez URI azonosítója} adathordozó-hivatkozással rendelkező {adatlemez neve} adatlemez érvényesítése során. Győződjön meg róla, hogy a virtuális merevlemez adathordozó-hivatkozása elérhető erről a virtuális gépről | Ez a hiba akkor léphet fel, ha a virtuális gép lemezei törölve lettek, és már nem érhetőek el. Gondoskodjon róla, hogy a virtuális gép lemezei léteznek.|
 | A {felhőszolgáltatás neve} üzemeltetett szolgáltatás {virtuális gép neve} virtuális gépe tartalmazza a(z) {virtuális merevlemez uri-azonosítója} adathordozó-hivatkozással rendelkező lemezt, amely a {virtuális merevlemez blob neve} nevű blobot tartalmazza, amely az Azure Resource Managerben nem támogatott. | Ez a hiba akkor fordul elő, ha a blob neve tartalmazza a „/” karaktert, ami jelenleg nem támogatott a Compute erőforrás-szolgáltatóban. |
-| A migrálás a {felhőszolgáltatás neve} üzemeltetett szolgáltatás {üzemelő példány neve} üzemelő példánya esetében nem engedélyezett, mivel az nem regionális hatókörű. A \/ központi telepítés regionális hatókörbe való áthelyezéséhez a https:/aka.MS/regionalscope címen tájékozódhat. | Az Azure 2014-ben jelentette be, hogy a hálózati erőforrások a fürtszintű hatókörből átkerülnek a regionális hatókörbe. [https://aka.ms/regionalscope](https://aka.ms/regionalscope)További részletekért tekintse meg a következőt:. Ez a hiba akkor lép fel, ha a migrált üzemelő példányhoz nincs definiálva egy olyan frissítési művelet, amely automatikusan átmozgatná regionális hatókörbe. A legjobb megoldás, ha egy végpontot ad hozzá egy virtuális géphez vagy egy adatlemezt a virtuális géphez, majd próbálja megismételni az áttelepítést. <br> Lásd: [Végpontok beállítása klasszikus Windows virtuális gépeken az Azure-ban](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#create-an-endpoint) vagy [Adatlemez csatolása a klasszikus üzemi modellel létrehozott Windows virtuális gépekhez](./linux/attach-disk-portal.md)|
+| A migrálás a {felhőszolgáltatás neve} üzemeltetett szolgáltatás {üzemelő példány neve} üzemelő példánya esetében nem engedélyezett, mivel az nem regionális hatókörű. A \/ központi telepítés regionális hatókörbe való áthelyezéséhez a https:/aka.MS/regionalscope címen tájékozódhat. | Az Azure 2014-ben jelentette be, hogy a hálózati erőforrások a fürtszintű hatókörből átkerülnek a regionális hatókörbe. [https://aka.ms/regionalscope](https://aka.ms/regionalscope)További részletekért tekintse meg a következőt:. Ez a hiba akkor lép fel, ha a migrált üzemelő példányhoz nincs definiálva egy olyan frissítési művelet, amely automatikusan átmozgatná regionális hatókörbe. A legjobb megoldás, ha egy végpontot ad hozzá egy virtuális géphez vagy egy adatlemezt a virtuális géphez, majd próbálja megismételni az áttelepítést. <br> Tekintse meg, [Hogyan lehet végpontokat beállítani egy klasszikus virtuális gépen az Azure-ban](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#create-an-endpoint) , vagy [adatlemezt csatlakoztatni a klasszikus üzemi modellel létrehozott virtuális géphez](./linux/attach-disk-portal.md)|
 | A (z) {vnet} Virtual Network nem támogatja az áttelepítést, mert az átjárón kívüli Pásti üzemelő példányokkal rendelkezik. | Ez a hiba akkor fordul elő, ha olyan nem átjárós Pásti-telepítésekkel rendelkezik, mint például a Application Gateway vagy API Management a Virtual Networkhoz csatlakoztatott szolgáltatások.|
 
 

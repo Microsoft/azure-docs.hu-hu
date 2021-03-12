@@ -7,12 +7,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: f50737bdefc9065c9b16633ba3360bda1d028cd6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 41476c5f8165729caa6780f8e74eb6c3ae30a59c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043048"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614632"
 ---
 # <a name="whats-new-in-azure-migrate"></a>A Azure Migrate újdonságai
 
@@ -20,7 +20,9 @@ A [Azure Migrate](migrate-services-overview.md) segítségével helyszíni kiszo
 
 ## <a name="update-march-2021"></a>Frissítés (2021. március)
 - Több kiszolgálói hitelesítő adat biztosítása Azure Migrate készüléken a telepített alkalmazások (szoftverek leltározása), az ügynök nélküli függőségek elemzése, valamint a VMware-környezetekben SQL Server példányok és adatbázisok felderítése céljából. [További információ](tutorial-discover-vmware.md#provide-server-credentials)
-- A VMware-környezetben futó SQL Server példányok és adatbázisok felderítése és értékelése már előzetes verzióban érhető el. [További információ](concepts-azure-sql-assessment-calculation.md)<br/>A szolgáltatás kipróbálásához használja ezt a [hivatkozást](https://aka.ms/AzureMigrate/SQL) **Kelet-Ausztrália** régióban található projekt létrehozásához. Az első lépésekhez tekintse meg a [felderítési](tutorial-discover-vmware.md) és [értékelési](tutorial-assess-sql.md) oktatóanyagokat.
+- A VMware-környezetben futó SQL Server példányok és adatbázisok felderítése és értékelése már előzetes verzióban érhető el. [További információ](concepts-azure-sql-assessment-calculation.md)<br/>A funkció kipróbálásához hozzon létre egy projektet a **Kelet-Ausztrália** régióban [ezzel a hivatkozással](https://aka.ms/AzureMigrate/SQL). A kezdéshez tekintse meg a [felderítéssel](tutorial-discover-vmware.md) és az [értékeléssel](tutorial-assess-sql.md) kapcsolatos oktatóanyagokat.
+- Az ügynök nélküli VMware Migrálás mostantól támogatja a 500 virtuális gépek egyidejű replikálását vCenter.
+- Azure Migrate mostantól automatikusan telepíti az Azure virtuálisgép-ügynököt a VMware virtuális gépekre, miközben az Azure-ba való Migrálás során a VMware Migration ügynök nélküli módszerét használja.
 
 ## <a name="update-january-2021"></a>Frissítés (január 2021)
 -  Azure Migrate: a kiszolgáló áttelepítési eszköze lehetővé teszi a VMware virtuális gépek, fizikai kiszolgálók és virtuális gépek áttelepítését más felhőből az Azure-beli virtuális gépekre, az ügyfél által felügyelt kulcsokkal (CMK) kiszolgálóoldali titkosítással titkosított lemezekkel.

@@ -9,14 +9,16 @@ ms.date: 1/8/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9ae7009468b548cb9386fd405abfbe110d62f9a3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a20992ef26b74bcc37a7403e4ee77cacc0f8f66e
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100377516"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200298"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>IoT Edge modulok méretezése a Visual Studio Code használatával
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 A Visual Studio Code használatával létrehozhat egy **IoT Edge automatikus üzembe** helyezést, amellyel egyszerre több eszközön is kezelheti a folyamatban lévő központi telepítéseket. A IoT Edge automatikus központi telepítései a IoT Hub [automatikus Eszközkezelő](../iot-hub/iot-hub-automatic-device-management.md) funkciójának részét képezik. A központi telepítések olyan dinamikus folyamatok, amelyek lehetővé teszik több modul üzembe helyezését több eszközön. Emellett nyomon követheti a modulok állapotát és állapotát, és szükség esetén módosításokat hajthat végre.
 

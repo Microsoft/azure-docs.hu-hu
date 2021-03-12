@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 5289f9b558a200bf3dbefdf584eab59d1792439b
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: ddbf3c99845f4c38f511260f4dec274903a9d586
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102437740"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631956"
 ---
 # <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes-fürt csatlakoztatása és kezelése a Azure Stack Edge Pro GPU-eszközön a kubectl használatával
 
@@ -105,7 +105,7 @@ Ebben a megközelítésben létre kell hoznia egy névteret és egy felhasznál�
 
 4. A konfigurációs fájlnak a `.kube` helyi számítógépen lévő felhasználói profil mappájában kell lennie. Másolja a fájlt a mappába a felhasználói profilban.
 
-    ![A konfigurációs fájl helye az ügyfélen](media/azure-stack-edge-j-series-create-kubernetes-cluster/location-config-file.png)
+    ![A konfigurációs fájl helye az ügyfélen](media/azure-stack-edge-gpu-create-kubernetes-cluster/location-config-file.png)
 
 5. Társítsa a névteret a létrehozott felhasználóval. Típus:
 
@@ -169,9 +169,9 @@ Mostantól üzembe helyezheti az alkalmazásait a névtérben, majd megtekinthet
 
 A Kubernetes-fürt eltávolításához el kell távolítania a IoT Edge konfigurációt.
 
-Részletes útmutatást a [IoT Edge konfigurációjának eltávolítása](azure-stack-edge-j-series-manage-compute.md#remove-iot-edge-service)című témakörben talál.
+Részletes útmutatásért lásd: a [IoT Edge konfigurációjának kezelése](azure-stack-edge-gpu-manage-compute.md#manage-iot-edge-configuration).
    
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Állapot nélküli alkalmazás üzembe helyezése a Azure stack Edge Pro](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md)-ban.
+- [Állapot nélküli alkalmazás üzembe helyezése a Azure stack Edge Pro](azure-stack-edge-gpu-deploy-stateless-application-kubernetes.md)-ban.

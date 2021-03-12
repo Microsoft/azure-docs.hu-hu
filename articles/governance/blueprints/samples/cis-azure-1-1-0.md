@@ -1,26 +1,26 @@
 ---
-title: A CIS Microsoft Azure alapítványok teljesítményteszt-tervezetének mintája
-description: A CIS Microsoft Azure Foundations Benchmark tervmintájának áttekintése. Ennek a tervmintának a segítségével az ügyfelek adott vezérlőket mérhetnek fel.
-ms.date: 01/27/2021
+title: CIS Microsoft Azure alapítványok teljesítményteszt v 1.1.0 Blueprint minta
+description: A CIS Microsoft Azure alapítványok benchmark v 1.1.0 Blueprint minta áttekintése. Ennek a tervmintának a segítségével az ügyfelek adott vezérlőket mérhetnek fel.
+ms.date: 03/11/2021
 ms.topic: sample
-ms.openlocfilehash: fc9e2443cd1e413588487646d6400ae1f2185208
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: b6188d96971329a83bc82042a1f840bd893354eb
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918416"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103197807"
 ---
-# <a name="cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>A CIS Microsoft Azure alapítványok teljesítményteszt-tervezetének mintája
+# <a name="cis-microsoft-azure-foundations-benchmark-v110-blueprint-sample"></a>CIS Microsoft Azure alapítványok teljesítményteszt v 1.1.0 Blueprint minta
 
-A CIS Microsoft Azure Foundations Benchmark-tervminta az [Azure Policy](../../policy/overview.md) használatával biztosít irányítási védőkorlátokat, amelyekkel felmérheti a CIS Microsoft Azure Foundations Benchmark adott ajánlásait. Ez a terv lehetővé teszi az ügyfelek számára, hogy bármely olyan, Azure által üzembe helyezett architektúrához üzembe helyezzenek egy alapvető szabályzatkészletet, amelyhez meg kell valósítani a CIS Microsoft Azure Foundations Benchmark ajánlásait.
+A CIS Microsoft Azure alapítványok teljesítményteszt v 1.1.0 tervrajzi mintája az irányítási őr-síneket olyan [Azure Policy](../../policy/overview.md) segítségével biztosítja, amelyek segítenek felmérni az egyes CIS Microsoft Azure alapítványok teljesítményteszt-javaslatait. Ez a terv segít az ügyfeleknek az olyan Azure-beli üzembe helyezett architektúrák alapkészletének üzembe helyezésében, amelyeknek be kell vezetniük a CIS Microsoft Azure Founds benchmark v 1.1.0 javaslatait.
 
 ## <a name="recommendation-mapping"></a>Az ajánlások leképezése
 
-A [Azure Policy ajánlás-hozzárendelés](../../policy/samples/cis-azure-1-1-0.md) részletesen ismerteti az ebben a tervben található szabályzat-definíciókat, valamint azt, hogy a **szabályzat-** definíciók hogyan képezik le a **megfelelőségi tartományokat** és a CIS Microsoft Azure a founds benchmark v 1.1.0t Architektúrához való hozzárendeléskor a rendszer kiértékeli az erőforrásokat a hozzárendelt szabályzat-definíciókkal való meg nem felelés esetén Azure Policy. További információ: [Azure Policy](../../policy/overview.md).
+A [Azure Policy ajánlás-hozzárendelés](../../policy/samples/cis-azure-1-1-0.md) részletesen ismerteti a tervben szereplő szabályzat-definíciókat, valamint azt, hogy ezek a szabályzat-definíciók hogyan képezhetők le a CIS **-ben Microsoft Azure** founds benchmark v 1.1.0-ben. Architektúrához való hozzárendeléskor a rendszer kiértékeli az erőforrásokat a hozzárendelt szabályzat-definíciókkal való meg nem felelés esetén Azure Policy. További információ: [Azure Policy](../../policy/overview.md).
 
 ## <a name="deploy"></a>Üzembe helyezés
 
-Az Azure-Microsoft Azure tervezetek az alábbi lépéseket kell végrehajtania:
+Az Azure-Microsoft Azure tervekkel kapcsolatban az alábbi lépéseket kell elvégeznie:
 
 > [!div class="checklist"]
 > - Új terv létrehozása a mintából
@@ -50,7 +50,7 @@ Először a tervminta implementálásához hozzon létre egy új tervet a körny
 
 ### <a name="publish-the-sample-copy"></a>Ugyanazon másolat közzététele
 
-A tervminta másolata létrejött a környezetében. **Piszkozat** módban jött létre, és **közzé kell tenni**, mielőtt hozzárendelhetné és üzembe helyezhetné. A terv mintájának másolata testreszabható a környezet és a szükséges igények alapján, de ez a módosítás a CIS Microsoft Azure alapítványok teljesítményértékelési javaslatai alapján áthelyezhető.
+A tervminta másolata létrejött a környezetében. **Piszkozat** módban jött létre, és **közzé kell tenni**, mielőtt hozzárendelhetné és üzembe helyezhetné. A terv mintájának másolata testreszabható a környezet és a szükséges igények alapján, de ez a módosítás a CIS Microsoft Azure Founds benchmark v 1.1.0 ajánlásainak megfelelően áthelyezhető.
 
 1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **Tervek** elemet.
 
@@ -101,8 +101,8 @@ A következő táblázat a terv összetevő-paramétereinek listáját tartalmaz
 
 |Összetevő neve|Összetevő típusa|Paraméter neve|Leírás|
 |-|-|-|-|
-|Az audit CIS Microsoft Azure alapítványok teljesítményteszt 1.1.0-javaslatait és a konkrét támogató virtuálisgép-bővítmények üzembe helyezését|Szabályzat-hozzárendelés|Azon régiók listája, amelyeken engedélyezni kell a Network Watcher|Régiók pontosvesszővel tagolt listája. A régiók teljes listájának megtekintéséhez használja a Get-AzLocation. Pl.: eastus; eastus2|
-|Az audit CIS Microsoft Azure alapítványok teljesítményteszt 1.1.0-javaslatait és a konkrét támogató virtuálisgép-bővítmények üzembe helyezését|Szabályzat-hozzárendelés|A használatra jóváhagyott virtuálisgép-bővítmények listája|A bővítmények pontosvesszővel tagolt listája. A virtuálisgép-bővítmények teljes listájának megtekintéséhez használja a Get-AzVMExtensionImage. Pl.: AzureDiskEncryption; IaaSAntimalware|
+|A CIS Microsoft Azure alapítványok teljesítményteszt v 1.1.0 javaslatainak és a speciális támogató virtuálisgép-bővítmények üzembe helyezésének naplózása|Szabályzat-hozzárendelés|Azon régiók listája, amelyeken engedélyezni kell a Network Watcher|Régiók pontosvesszővel tagolt listája. A régiók teljes listájának megtekintéséhez használja a Get-AzLocation. Pl.: eastus; eastus2|
+|A CIS Microsoft Azure alapítványok teljesítményteszt v 1.1.0 javaslatainak és a speciális támogató virtuálisgép-bővítmények üzembe helyezésének naplózása|Szabályzat-hozzárendelés|A használatra jóváhagyott virtuálisgép-bővítmények listája|A bővítmények pontosvesszővel tagolt listája. A virtuálisgép-bővítmények teljes listájának megtekintéséhez használja a Get-AzVMExtensionImage. Pl.: AzureDiskEncryption; IaaSAntimalware|
 
 ## <a name="next-steps"></a>Következő lépések
 

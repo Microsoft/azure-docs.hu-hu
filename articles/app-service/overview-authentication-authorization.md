@@ -6,16 +6,16 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 1b95b1e96dc26fb72338518fc969c69b035d5f68
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 83758f63b7e60d08a31f1da9da4a6eec6ba7d4a4
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095236"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632067"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Hitelesítés és engedélyezés Azure App Service és Azure Functions
 
-A Azure App Service beépített hitelesítési és engedélyezési támogatást biztosít, így a felhasználók bejelentkezhetnek és hozzáférhetnek az adatokhoz a webalkalmazásban, a REST API-ban és a mobil háttérben, valamint [Azure functions](../azure-functions/functions-overview.md)is. Ez a cikk azt ismerteti, hogyan egyszerűsíthető a App Service az alkalmazás hitelesítésének és engedélyezésének egyszerűsítése.
+A Azure App Service beépített hitelesítési és engedélyezési támogatást (más néven "egyszerű hitelesítés") biztosít, így a felhasználók bejelentkezhetnek, és az adatokhoz való hozzáféréshez a webalkalmazás, a REST API és a mobil háttérrendszer minimális vagy egyetlen kód írása, valamint a [Azure functions](../azure-functions/functions-overview.md)is használható. Ez a cikk azt ismerteti, hogyan egyszerűsíthető a App Service az alkalmazás hitelesítésének és engedélyezésének egyszerűsítése.
 
 A biztonságos hitelesítés és az engedélyezés a biztonság alapos megismerését igényli, beleértve az összevonás, a titkosítás, a [JSON webes tokenek (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) kezelését, a [támogatás típusát](https://oauth.net/2/grant-types/)és így tovább. App Service biztosítja ezeket a segédprogramokat, így több időt és energiát is igénybe vehet, hogy üzleti értéket biztosítson az ügyfelek számára.
 
@@ -24,9 +24,6 @@ A biztonságos hitelesítés és az engedélyezés a biztonság alapos megismer�
 >
 > A App Service által üzemeltetett ASP.NET Core 2,1-es és újabb verziók már nem javítottak ehhez a feltörési változáshoz, és a Chrome 80 és a régebbi böngészők megfelelő kezelését végzik. Emellett a ASP.NET Framework 4.7.2 ugyanezt a javítást is telepítette a App Service példányokra az egész januári 2020-ben. További információ: [Azure app Service SameSite cookie Update](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/).
 >
-
-> [!NOTE]
-> A hitelesítési/engedélyezési funkciót más néven "egyszerű hitelesítésnek" is nevezzük.
 
 > [!NOTE]
 > Ha engedélyezi ezt a funkciót, a rendszer az alkalmazásnak **nem biztonságos** http-kérelmeket automatikusan átirányítja a https-re, függetlenül a HTTPS-t [kikényszerítő](configure-ssl-bindings.md#enforce-https)app Service konfigurációs beállításától. Ha szükséges, letilthatja ezt az `requireHttps` [Auth-beállítások konfigurációs fájljának](app-service-authentication-how-to.md#configuration-file-reference)beállításával, de ügyelnie kell arra, hogy ne legyenek továbbítva biztonsági tokenek a nem biztonságos http-kapcsolatokon keresztül.

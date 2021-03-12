@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 8ec1ac5d804721e9af50a70a29cdcaf40d3375be
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: ce6d2c34c48a26f99f78c364db5f06f9931c9dd7
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102623508"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103021714"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 Az első lépések előtt ügyeljen a következőre:
@@ -68,10 +68,10 @@ Ez a rövid útmutató nem fedi le a csevegési alkalmazás jogkivonatait kezel�
 
 Másolja a következő kódrészleteket, és illessze be a forrásfájlban: **program.cs**
 ```csharp
-using Azure.Communication.Identity;
-using Azure.Communication.Chat;
 using Azure;
 using Azure.Communication;
+using Azure.Communication.Chat;
+using System;
 
 namespace ChatQuickstart
 {
@@ -98,12 +98,12 @@ namespace ChatQuickstart
 A metódus válasz objektuma `createChatThread` tartalmazza a `chatThread` részleteket. A csevegési szál műveleteivel, például a résztvevők hozzáadásával, üzenet küldésével, üzenet törlésével stb. az `chatThreadClient` ügyfél példányát az `GetChatThreadClient` ügyfél metódusának használatával kell létrehoznia `ChatClient` .
 
 ```csharp
-var chatParticipant = new ChatParticipant(communicationIdentifier: new CommunicationUserIdentifier(id: "<Access_ID>"))
+var chatParticipant = new ChatParticipant(identifier: new CommunicationUserIdentifier(id: "<Access_ID>"))
 {
     DisplayName = "UserDisplayName"
 };
 CreateChatThreadResult createChatThreadResult = await chatClient.CreateChatThreadAsync(topic: "Hello world!", participants: new[] { chatParticipant });
-ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(createChatThreadResult.ChatThread.Id);
+ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(threadId: createChatThreadResult.ChatThread.Id);
 string threadId = chatThreadClient.Id;
 ```
 
@@ -112,7 +112,7 @@ A `GetChatThreadClient` metódus egy szál-ügyfelet ad vissza egy már létező
 
 ```csharp
 string threadId = "<THREAD_ID>";
-ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(threadId);
+ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(threadId: threadId);
 ```
 
 ## <a name="send-a-message-to-a-chat-thread"></a>Üzenet küldése csevegési szálnak
@@ -134,7 +134,7 @@ A használatával `GetMessage` kérhet le üzenetet a szolgáltatásból.
 `ChatMessage` a válasz visszakapott egy üzenetet, amely tartalmaz egy azonosítót, amely az üzenet egyedi azonosítója a többi mező között. Tekintse meg az Azure. Communication. chat. ChatMessage
 
 ```csharp
-ChatMessage chatMessage = await chatThreadClient.GetMessageAsync(messageId);
+ChatMessage chatMessage = await chatThreadClient.GetMessageAsync(messageId: messageId);
 ```
 
 ## <a name="receive-chat-messages-from-a-chat-thread"></a>Csevegési üzenetek fogadása csevegési szálból
@@ -174,7 +174,7 @@ A következő meghívásával frissítheti a már elküldött üzeneteket `Updat
 ```csharp
 string id = "id-of-message-to-edit";
 string content = "updated content";
-await chatThreadClient.UpdateMessageAsync(id, content);
+await chatThreadClient.UpdateMessageAsync(messageId: id, content: content);
 ```
 
 ## <a name="deleting-a-message"></a>Üzenet törlése
@@ -183,7 +183,7 @@ Az üzenetet úgy törölheti, hogy meghívja a következőt: `DeleteMessage` `C
 
 ```csharp
 string id = "id-of-message-to-delete";
-await chatThreadClient.DeleteMessageAsync(id);
+await chatThreadClient.DeleteMessageAsync(messageId: id);
 ```
 
 ## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>Felhasználó felvétele a csevegési szálba résztvevőként
@@ -207,7 +207,7 @@ var participants = new[]
     new ChatParticipant(amy) { DisplayName = "Amy" }
 };
 
-await chatThreadClient.AddParticipantsAsync(participants);
+await chatThreadClient.AddParticipantsAsync(participants: participants);
 ```
 ## <a name="remove-user-from-a-chat-thread"></a>Felhasználó eltávolítása csevegési szálból
 
@@ -215,7 +215,7 @@ A felhasználók egy szálhoz való hozzáadásához hasonlóan a csevegési sz�
 
 ```csharp
 var gloria = new CommunicationUserIdentifier(id: "<Access_ID_For_Gloria>");
-await chatThreadClient.RemoveParticipantAsync(gloria);
+await chatThreadClient.RemoveParticipantAsync(identifier: gloria);
 ```
 
 ## <a name="get-thread-participants"></a>Hozzászóláslánc résztvevőinek beolvasása
@@ -243,7 +243,7 @@ await chatThreadClient.SendTypingNotificationAsync();
 A használatával `SendReadReceipt` értesítheti a többi résztvevőt, hogy a felhasználó beolvassa az üzenetet.
 
 ```csharp
-await chatThreadClient.SendReadReceiptAsync(messageId);
+await chatThreadClient.SendReadReceiptAsync(messageId: messageId);
 ```
 
 ## <a name="get-read-receipts"></a>Olvasási visszaigazolások beolvasása

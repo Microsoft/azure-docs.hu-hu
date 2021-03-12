@@ -3,7 +3,7 @@ title: A tartalom Azure Media Servicessal való védelemmel való ellátása | M
 description: Ez a cikk áttekintést nyújt a tartalomvédelem Azure Media Services v2-vel történő védelméről.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 81bc00e1-dcda-4d69-b9ab-8768b793422b
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/01/2019
-ms.author: juliako
-ms.openlocfilehash: 287f93a60a1c44b29b75def8cc3ee9adc577971c
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: edffa2dddd0ec877a4b825a69a76fb158928c89f
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695924"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016763"
 ---
 # <a name="content-protection-overview"></a>Tartalomvédelem – áttekintés
 
@@ -113,7 +113,7 @@ A következő szempontokat kell figyelembe venni:
 
 * A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkek a tartalomvédelem megkezdéséhez szükséges lépéseket ismertetik:
 
 * [Védelem a Storage encryption szolgáltatással](media-services-rest-storage-encryption.md)

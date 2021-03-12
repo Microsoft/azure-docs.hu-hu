@@ -2,19 +2,20 @@
 title: 'Oktatóanyag: Windows-webkiszolgáló védelme TLS/SSL-tanúsítványokkal az Azure-ban'
 description: Ebből az oktatóanyagból megtudhatja, hogyan használható a Azure PowerShell egy olyan Windows rendszerű virtuális gép biztonságossá tételéhez, amely az IIS-webkiszolgálót a Azure Key Vault tárolt TLS/SSL-tanúsítványokkal futtatja.
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.subservice: security
 ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4e5bbe179c43508033e0747bc2c03089f283b6e2
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: a1009d24c1fb8712e88075097460ad179629f478
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98873079"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557403"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Oktatóanyag: webkiszolgáló védelme Azure-beli Windows rendszerű virtuális gépen a Key Vault tárolt TLS/SSL-tanúsítványokkal
 
@@ -165,7 +166,7 @@ Ekkor a biztonságos IIS-webhely a következő példához hasonlóan jelenik meg
 ![Futó biztonságos IIS-hely megtekintése](./media/tutorial-secure-web-server/secured-iis.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban egy olyan IIS-webkiszolgálót biztosított, amely Azure Key Vaultban tárolt TLS/SSL-tanúsítvánnyal rendelkezik. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]

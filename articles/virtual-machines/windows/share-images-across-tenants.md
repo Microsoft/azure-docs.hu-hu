@@ -3,18 +3,18 @@ title: Katalógusbeli rendszerképek megosztása az Azure-beli bérlők között
 description: Megtudhatja, hogyan oszthat meg virtuálisgép-lemezképeket az Azure-bérlők között megosztott képtárak és PowerShell használatával.
 author: axayjo
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 07/15/2019
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 84998182081c6a681668fbd9bc05446357beb959
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: e78cb29551bf7eb3f713edb755464eb7696106e8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96781045"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556128"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants-using-powershell"></a>Katalógusbeli virtuálisgép-lemezképek megosztása az Azure-bérlők között a PowerShell használatával
 
@@ -83,6 +83,6 @@ Add-AzVMNetworkInterface -Id $nic.Id
 New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [Azure Portal](shared-images-portal.md)használatával közös rendszerkép-katalógusbeli erőforrásokat is létrehozhat.
