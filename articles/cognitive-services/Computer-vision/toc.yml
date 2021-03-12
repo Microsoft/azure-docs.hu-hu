@@ -1,46 +1,26 @@
-- name: Computer Vision API-dokumentáció
+- name: Számítógépes látástechnológiai dokumentáció
   href: index.yml
 - name: Áttekintés
   expanded: true
   items:
     - name: Mi a Computer Vision?
       href: overview.md
+    - name: Nyelvi támogatás
+      href: language-support.md
+    - name: Díjszabás és korlátok
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision'
     - name: Újdonságok
       href: whats-new.md
-- name: Rövid útmutatók
+    - name: Computer Vision GYIK
+      href: FAQ.md
+- name: Computer Vision rövid útmutató
+  href: quickstarts-sdk/client-library.md
+- name: Példák
   items:
-    - name: A REST API vagy az ügyfélkódtárak használata
-      href: quickstarts-sdk/client-library.md
-- name: Oktatóanyagok
-  items:
-    - name: Képek metaadatainak előállítása
-      href: Tutorials/storage-lab-tutorial.md
-- name: Alapelvek
-  items:
-    - name: Optikai karakterfelismerés (OCR)
-      href: concept-recognizing-text.md
-    - name: Objektumészlelés
-      href: concept-object-detection.md
-    - name: Márkaészlelés
-      href: concept-brand-detection.md
-    - name: Tartalomcímkék
-      href: concept-tagging-images.md
-    - name: Képek kategorizálása
-      href: concept-categorizing-images.md
-    - name: Képleírások
-      href: concept-describing-images.md
-    - name: Arcfelismerés
-      href: concept-detecting-faces.md
-    - name: Képtípus észlelése
-      href: concept-detecting-image-types.md
-    - name: Tartományspecifikus tartalom
-      href: concept-detecting-domain-content.md
-    - name: Színséma észlelése
-      href: concept-detecting-color-schemes.md
-    - name: Intelligens körbevágású miniatűrök
-      href: concept-generating-thumbnails.md
-    - name: Felnőtteknek szóló tartalom észlelése
-      href: concept-detecting-adult-content.md
+    - name: Képfeldolgozó alkalmazás felfedezése
+      href: Tutorials/CSharpTutorial.md
+    - name: Egyéb Computer Vision-minták
+      href: /samples/browse/?products=azure&terms=computer-vision
 - name: Az MI felelős használata
   items:
     - name: Térbeli elemzés
@@ -48,111 +28,139 @@
         - name: Átláthatósági megjegyzések
           items:
             - name: Térbeli elemzési használati esetek
-              href: /legal/cognitive-services/computer-vision/transparency-note-spatial-analysis?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+              href: /legal/cognitive-services/computer-vision/transparency-note-spatial-analysis?context=/azure/cognitive-services/computer-vision/context/context
             - name: Jellemzők és korlátozások
-              href: /legal/cognitive-services/computer-vision/accuracy-and-limitations?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+              href: /legal/cognitive-services/computer-vision/accuracy-and-limitations?context=/azure/cognitive-services/computer-vision/context/context
         - name: Integráció és felelős használat
           items:
             - name: Felelős használat mesterséges intelligencia üzemeltetésekor
-              href: /legal/cognitive-services/computer-vision/responsible-use-deployment?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+              href: /legal/cognitive-services/computer-vision/responsible-use-deployment?context=/azure/cognitive-services/computer-vision/context/context
             - name: Közzététel-tervezési irányelvek
-              href: /legal/cognitive-services/computer-vision/disclosure-design?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+              href: /legal/cognitive-services/computer-vision/disclosure-design?context=/azure/cognitive-services/computer-vision/context/context
             - name: Kutatási megállapítások
-              href: /legal/cognitive-services/computer-vision/research-insights?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+              href: /legal/cognitive-services/computer-vision/research-insights?context=/azure/cognitive-services/computer-vision/context/context
         - name: 'Adatok, adatvédelem és biztonság'
-          href: /legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
-- name: Tárolók
-  items:
-    - name: API-tároló olvasása
-      items:
-        - name: Tárolók telepítése és futtatása
-          href: computer-vision-how-to-install-containers.md
-          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
-        - name: Tárolók konfigurálása
-          href: computer-vision-resource-container-config.md
-        - name: Migrálás a Read tároló 3-as verziójára
-          href: read-container-migration-guide.md
-          displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
-        - name: Használat Kubernetesszel és Helmmel
-          href: deploy-computer-vision-on-premises.md
-          displayName: 'kubectl, docker, helm, kubernetes, K8s, tiller, container, image, on-prem, on-premises'
-        - name: A Container Instances használata
-          maintainContext: true
-          href: ../containers/azure-container-instance-recipe.md
-          displayName: 'container instances, container, containers, images'
-    - name: Térbeli elemzések tárolója
-      items:
-        - name: A térbeli elemzés áttekintése
-          href: intro-to-spatial-analysis-public-preview.md
-        - name: A gazdagép beállítása és a tároló futtatása
-          href: spatial-analysis-container.md
-        - name: Műveletek konfigurálása
-          href: spatial-analysis-operations.md
-        - name: Személyszámláló webalkalmazás üzembe helyezése
-          href: Spatial-analysis-web-app.md
-        - name: Naplózás és hibaelhárítás
-          href: spatial-analysis-logging.md
-        - name: Zónák és sorok elhelyezése
-          href: spatial-analysis-zone-line-placement.md
-        - name: Kamera elhelyezése
-          href: spatial-analysis-camera-placement.md
-    - name: Cognitive Services-tárolók – dokumentáció
-      href: ../containers/index.yml
+          href: /legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=/azure/cognitive-services/computer-vision/context/context
 - name: Útmutatók
   items:
     - name: A Computer Vision API meghívása
       href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
     - name: Videók valós idejű elemzése
       href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
-- name: Referencia
-  items:
-    - name: Azure CLI
-      href: /cli/azure/cognitiveservices#az_cognitiveservices_list
-    - name: Azure PowerShell
-      href: /powershell/module/azurerm.cognitiveservices/
-    - name: Computer Vision API 3.2 – előzetes verzió
-      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b'
-    - name: Computer Vision API 3.1-es verzió
-      href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005'
-    - name: Computer Vision API 2.1
-      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641'
-    - name: Computer Vision API 1.0-s verzió
-      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739'
-    - name: SDK-k
-      items:
-        - name: .NET
-          href: /dotnet/api/overview/azure/cognitiveservices/client/computervision
-        - name: Node.js
-          href: /javascript/api/@azure/cognitiveservices-computervision/
-        - name: Python
-          href: /python/api/overview/azure/cognitiveservices/computervision
-        - name: Indítás
-          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision'
-        - name: Java
-          href: /java/api/overview/azure/cognitiveservices/client/computervision
-- name: További források
-  items:
-    - name: Támogatási lehetőségek
-      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context
-    - name: Példák
-      items:
-        - name: Képfeldolgozó alkalmazás felfedezése
-          href: Tutorials/CSharpTutorial.md
-        - name: Egyéb Computer Vision-minták
-          href: /samples/browse/?products=azure&terms=computer-vision
-    - name: GYIK
-      href: FAQ.md
-    - name: Kategóriaelnevezési rendszer
-      href: Category-Taxonomy.md
-    - name: Nyelvi támogatás
-      href: language-support.md
-    - name: Díjszabás és korlátok
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision'
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: Régiónkénti rendelkezésre állás
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: Megfelelőség
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Virtuális hálózatok konfigurálása
+      href: /azure/cognitive-services/cognitive-services-virtual-networks?context=/azure/cognitive-services/computer-vision/context/context
     - name: Frissítés a Read 2.x verziójáról a Read 3.x verziójára
       href: upgrade-api-versions.md
+    - name: HRE-hitelesítés konfigurálása
+      href: /azure/cognitive-services/authentication?tabs=powershell#authenticate-with-azure-active-directory?context=/azure/cognitive-services/computer-vision/context/context
+    - name: Az ügyfél által felügyelt kulcsok használata
+      href: /azure/cognitive-services/encryption/cognitive-services-encryption-keys-portal?context=/azure/cognitive-services/computer-vision/context/context
+- name: Computer Vision üzembe helyezése
+  items:
+    - name: Tárolók
+      items:
+        - name: Cognitive Services-tárolók – dokumentáció
+          href: ../containers/index.yml
+        - name: API-tároló olvasása
+          items:
+            - name: Tárolók telepítése és futtatása
+              href: computer-vision-how-to-install-containers.md
+              displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
+            - name: Tárolók konfigurálása
+              href: computer-vision-resource-container-config.md
+            - name: Migrálás a Read tároló 3-as verziójára
+              href: read-container-migration-guide.md
+              displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
+            - name: Használat Kubernetesszel és Helmmel
+              href: deploy-computer-vision-on-premises.md
+              displayName: 'kubectl, docker, helm, kubernetes, K8s, tiller, container, image, on-prem, on-premises'
+            - name: A Container Instances használata
+              maintainContext: true
+              href: ../containers/azure-container-instance-recipe.md
+              displayName: 'container instances, container, containers, images'
+        - name: Térbeli elemzések tárolója
+          items:
+            - name: A térbeli elemzés áttekintése
+              href: intro-to-spatial-analysis-public-preview.md
+            - name: A gazdagép beállítása és a tároló futtatása
+              href: spatial-analysis-container.md
+            - name: Műveletek konfigurálása
+              href: spatial-analysis-operations.md
+            - name: Személyszámláló webalkalmazás üzembe helyezése
+              href: Spatial-analysis-web-app.md
+            - name: Naplózás és hibaelhárítás
+              href: spatial-analysis-logging.md
+            - name: Zónák és sorok elhelyezése
+              href: spatial-analysis-zone-line-placement.md
+            - name: Kamera elhelyezése
+              href: spatial-analysis-camera-placement.md
+- name: Alapelvek
+  items:
+    - name: Módok
+      items:
+        - name: Optikai karakterfelismerés (OCR)
+          href: concept-recognizing-text.md
+        - name: Objektumészlelés
+          href: concept-object-detection.md
+        - name: Márkaészlelés
+          href: concept-brand-detection.md
+        - name: Tartalomcímkék
+          href: concept-tagging-images.md
+        - name: Képek kategorizálása
+          href: concept-categorizing-images.md
+        - name: Kategóriaelnevezési rendszer
+          href: Category-Taxonomy.md
+        - name: Képleírások
+          href: concept-describing-images.md
+        - name: Arcfelismerés
+          href: concept-detecting-faces.md
+        - name: Képtípus észlelése
+          href: concept-detecting-image-types.md
+        - name: Tartományspecifikus tartalom
+          href: concept-detecting-domain-content.md
+        - name: Színséma észlelése
+          href: concept-detecting-color-schemes.md
+        - name: Intelligens körbevágású miniatűrök
+          href: concept-generating-thumbnails.md
+        - name: Felnőtteknek szóló tartalom észlelése
+          href: concept-detecting-adult-content.md
+- name: Oktatóanyagok
+  items:
+    - name: Képek metaadatainak előállítása
+      href: Tutorials/storage-lab-tutorial.md
+- name: Referencia
+  items:
+    - name: Computer Vision REST API v 3.2 előzetes verzió
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b'
+    - name: Computer Vision REST API v 3.1
+      href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005'
+    - name: Computer Vision REST API v 2.1
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641'
+    - name: Computer Vision REST API 1.0-s verzió
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739'
+    - name: .NET
+      href: /dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet
+    - name: Node.js
+      href: /javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest
+    - name: Python
+      href: /python/api/overview/azure/cognitiveservices/computervision?view=azure-python
+    - name: Indítás
+      href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision'
+    - name: Java
+      href: /java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable
+    - name: Azure CLI
+      href: /cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.cognitiveservices/
+- name: További források
+  items:
+    - name: Régiós támogatás
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: A modulok MEGISMERÉSe
+      href: 'https://docs.microsoft.com/en-us/learn/paths/explore-computer-vision-microsoft-azure/'
+    - name: Támogatási & Súgó
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context
+    - name: Megfelelőség
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Azure-frissítések
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'

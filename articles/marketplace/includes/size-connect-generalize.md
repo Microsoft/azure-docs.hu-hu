@@ -7,12 +7,12 @@ ms.topic: include
 author: mingshen-ms
 ms.author: krsh
 ms.date: 10/20/2020
-ms.openlocfilehash: addc18a0ebf9e49d3474d3f40cb1e2a6e0f0b272
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: c60d2a9b13cce9251ff0f730081a9d677206770d
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97826586"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630110"
 ---
 ## <a name="generalize-the-image"></a>A rendszerkép általánosítása
 
@@ -38,60 +38,31 @@ A következő folyamat általánosít egy Linux rendszerű virtuális gépet, é
     1. A Azure Portal válassza ki az erőforráscsoportot (RG) és a virtuális gép lefoglalását.
     2. A virtuális gép már általánosítva van, és létrehozhat egy új virtuális gépet a virtuálisgép-lemez használatával.
 
-### <a name="take-a-snapshot-of-the-vm-disk"></a>Pillanatkép készítése a virtuális gép lemezéről
+### <a name="capture-image"></a>Rendszerkép rögzítése
 
-1. Jelentkezzen be az [Azure Portalra](https://ms.portal.azure.com/).
-2. A bal felső sarokban válassza az **erőforrás létrehozása** elemet, majd keresse meg és válassza a **Pillanatkép** lehetőséget.
-3. A pillanatkép panelen válassza a  **Létrehozás** lehetőséget.
-4. Adja meg a pillanatkép **nevét** .
-5. Válasszon ki egy meglévő erőforráscsoportot, vagy adja meg egy új csoport nevét.
-6. A **forrásoldali lemez** lapon válassza ki a felügyelt lemezt a pillanatképhez.
-7. Válassza ki a pillanatkép tárolására használni kívánt **fiókot** . A **standard HDD** csak akkor használja, ha nagy teljesítményű SSD-meghajtón tárolja.
-8. Kattintson a **Létrehozás** gombra.
+Miután a virtuális gép elkészült, rögzítheti azt egy Azure-beli megosztott rendszerkép-katalógusban. A rögzítéshez kövesse az alábbi lépéseket:
 
-#### <a name="extract-the-vhd"></a>A VHD kibontása
+1. [Azure Portalon](https://ms.portal.azure.com/)nyissa meg a virtuális gép lapját.
+2. Válassza a **rögzítés** lehetőséget.
+3. A **rendszerkép megosztása megosztott képtárban** területen válassza az **Igen, a képverzióként megoszthatja a gyűjteményt a** katalógusban.
+4. Az **operációs rendszer állapota** területen válassza az általánosítva lehetőséget.
+5. Válasszon ki egy cél képtárat, vagy **hozzon létre újat**.
+6. Válassza ki a cél rendszerkép definícióját, vagy **hozzon létre újat**.
+7. Adja meg a rendszerkép **verziószámát** .
+8. Válassza a **felülvizsgálat + létrehozás** lehetőséget a választási lehetőségek áttekintéséhez.
+9. Az érvényesítés után válassza a **Létrehozás** lehetőséget.
 
-A következő parancsfájl használatával exportálja a pillanatképet egy virtuális merevlemezre a Storage-fiókjában.
+A közzétételhez a közzétevő fióknak tulajdonosi hozzáféréssel kell rendelkeznie a SIG-hoz. Hozzáférés biztosítása:
 
-```azurecli-interactive
-#Provide the subscription Id where the snapshot is created
-$subscriptionId=yourSubscriptionId
+1. Nyissa meg a megosztott képtárat.
+2. A bal oldali panelen válassza a **hozzáférés-vezérlés** (iam) lehetőséget.
+3. Válassza a **Hozzáadás** lehetőséget, majd **adja hozzá a szerepkör-hozzárendelést**.
+4. Válasszon egy **szerepkört** vagy **tulajdonost**.
+5. **A hozzáférés társítása lehetőségnél** válassza a **felhasználó, csoport vagy egyszerű szolgáltatásnév** lehetőséget.
+6. Válassza ki a képet közzétevő személy Azure-beli e-mail-címét.
+7. Kattintson a **Mentés** gombra.
 
-#Provide the name of your resource group where the snapshot is created
-$resourceGroupName=myResourceGroupName
+:::image type="content" source="../media/create-vm/add-role-assignment.png" alt-text="Megjeleníti a szerepkör-hozzárendelés hozzáadása ablakot.":::
 
-#Provide the snapshot name
-$snapshotName=mySnapshot
-
-#Provide Shared Access Signature (SAS) expiry duration in seconds (such as 3600)
-#Know more about SAS here: https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1
-$sasExpiryDuration=3600
-
-#Provide storage account name where you want to copy the underlying VHD file. 
-$storageAccountName=mystorageaccountname
-
-#Name of the storage container where the downloaded VHD will be stored.
-$storageContainerName=mystoragecontainername
-
-#Provide the key of the storage account where you want to copy the VHD 
-$storageAccountKey=mystorageaccountkey
-
-#Give a name to the destination VHD file to which the VHD will be copied.
-$destinationVHDFileName=myvhdfilename.vhd
-
-az account set --subscription $subscriptionId
-
-sas=$(az snapshot grant-access --resource-group $resourceGroupName --name $snapshotName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv)
-
-az storage blob copy start --destination-blob $destinationVHDFileName --destination-container $storageContainerName --account-name $storageAccountName --account-key $storageAccountKey --source-uri $sas
-```
-
-#### <a name="script-explanation"></a>Szkript ismertetése
-
-Ez a szkript a következő parancsokat használja egy pillanatkép SAS URI-kódjának létrehozásához, és a mögöttes VHD-t egy Storage-fiókba másolja a SAS URI használatával. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
-
-| Parancs | Jegyzetek |
-| --- | --- |
-| az disk grant-access | Létrehoz egy írásvédett SAS-t, amelynek használatával a mögöttes VHD-fájl átmásolható egy tárfiókba, vagy letölthető a helyszíni rendszerre
-| az storage blob copy start | Aszinkron módon másol egy blobot az egyik Storage-fiókból a másikba. Az `az storage blob show` új blob állapotának vizsgálatára használható. |
-|
+> [!NOTE]
+> Nem kell SAS URI-ket létrehoznia, mivel most már közzétehet egy SIG-rendszerképet a partner Centerben. Ha azonban továbbra is szüksége van a SAS URI-létrehozási lépéseire, tekintse meg a következőt: [sas URI létrehozása virtuálisgép-rendszerképhez](../azure-vm-get-sas-uri.md).

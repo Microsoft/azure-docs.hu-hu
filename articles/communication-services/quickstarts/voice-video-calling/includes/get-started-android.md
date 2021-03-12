@@ -6,12 +6,12 @@ ms.author: marobert
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: a387261b392ea6718941f5eabe889e0c1a41fd5a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: cde9dd719bb614d9838e50080d4bd9cd758389f4
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750384"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103021357"
 ---
 Ebből a rövid útmutatóból megtudhatja, hogyan indíthat el hívást az Android rendszerhez készült ügyféloldali kódtárat hívó Azure kommunikációs szolgáltatással.
 
@@ -305,7 +305,7 @@ private void startCall() {
     
     StartCallOptions options = new StartCallOptions();
 
-    callAgent.call(
+    callAgent.startCall(
         getApplicationContext(),
         new CommunicationUserIdentifier[] {new CommunicationUserIdentifier(calleeId)},
         options);

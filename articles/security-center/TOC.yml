@@ -108,7 +108,10 @@
         - name: Javaslatokra adott válaszok automatizálása
           displayName: workflow
           href: workflow-automation.md
-        - name: Erőforrás kivonása egy javaslatból
+        - name: Javaslat letiltása
+          href: tutorial-security-policy.md#disable-security-policies-and-disable-recommendations
+        - name: 'Erőforrások, előfizetések vagy felügyeleti csoportok alóli mentesítési javaslatok'
+          displayName: disable
           href: exempt-resource.md
         - name: Egyéni biztonsági kezdeményezések és szabályzatok létrehozása
           href: custom-security-policies.md
@@ -233,7 +236,8 @@
       href: security-center-partner-integration.md
     - name: Hálózati erőforrások védelme
       href: security-center-network-recommendations.md
-    - name: Identitás és hozzáférés védelme
+    - name: MFA betartatása és kezelése
+      displayName: 'identity, access, AAD, active directory, multi-factor, authentication, multifactor, users, passwords'
       href: security-center-identity-access.md
     - name: Security Center további veszélyforrások elleni védelem használata
       href: other-threat-protections.md

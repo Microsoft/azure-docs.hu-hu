@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 56d9c621579e19cf2c32562560e40fe42ff3989b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5fcf688bbe8a5be2fc10b70950990b7b6ca71df8
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677521"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225591"
 ---
 # <a name="query-json-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>JSON-fájlok lekérdezése kiszolgáló nélküli SQL-készlettel az Azure szinapszis Analyticsben
 
@@ -126,12 +126,13 @@ A lekérdezés példákkal olvassa be a dokumentumokat tartalmazó *JSON* -fájl
 
 ### <a name="query-json-files-using-json_value"></a>JSON-fájlok lekérdezése JSON_VALUE használatával
 
-Az alábbi lekérdezés azt mutatja be, hogyan használhatók a [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest&preserve-view=true) a skaláris értékek (cím, KÖZZÉTEVŐ) JSON-dokumentumokból való lekéréséhez:
+Az alábbi lekérdezés azt mutatja be, hogyan használhatók a [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest&preserve-view=true) a skaláris értékek ( `date_rep` , `countries_and_territories` , `cases` ) JSON-dokumentumokból való lekéréséhez:
 
 ```sql
 select
     JSON_VALUE(doc, '$.date_rep') AS date_reported,
     JSON_VALUE(doc, '$.countries_and_territories') AS country,
+    CAST(JSON_VALUE(doc, '$.deaths') AS INT) as fatal,
     JSON_VALUE(doc, '$.cases') as cases,
     doc
 from openrowset(
@@ -143,6 +144,8 @@ from openrowset(
     ) with (doc nvarchar(max)) as rows
 order by JSON_VALUE(doc, '$.geo_id') desc
 ```
+
+Miután kicsomagolta a JSON-tulajdonságokat egy JSON-dokumentumból, megadhatja az oszlopok aliasait, és igény szerint elvégezheti a szöveges értéket valamilyen típusra.
 
 ### <a name="query-json-files-using-openjson"></a>JSON-fájlok lekérdezése a OPENJSON UTASÍTÁSSAL használatával
 
@@ -166,6 +169,10 @@ from openrowset(
 where country = 'Serbia'
 order by country, date_rep desc;
 ```
+Az eredmények ugyanúgy működnek, mint a függvény használatával visszaadott eredmények `JSON_VALUE` . Bizonyos esetekben a `OPENJSON` következőket teheti előnyben `JSON_VALUE` :
+- A `WITH` záradékban explicit módon állíthatja be az oszlop aliasneveit és az összes tulajdonság típusát. A függvényt nem kell a `CAST` lista minden oszlopában elhelyeznie `SELECT` .
+- `OPENJSON` gyorsabb lehet, ha nagy számú tulajdonságot ad vissza. Ha csak a 1-2-es tulajdonságokat adja vissza, lehet, hogy a `OPENJSON` függvény terhelést okoz.
+- `OPENJSON`Ha az egyes dokumentumokból össze kell elemezni a tömböt, akkor a függvényt kell használnia, és a fölérendelt sorhoz kell csatlakoztatnia.
 
 ## <a name="next-steps"></a>Következő lépések
 

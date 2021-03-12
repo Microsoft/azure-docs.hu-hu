@@ -53,48 +53,50 @@
         - name: Szolgáltatói tevékenység megtekintése
           displayName: 'monitor, log, customer, visibility, transparency, control'
           href: ./how-to/view-service-provider-activity.md
-    - name: Ügyfél előkészítése az Azure Lighthouse-hoz
-      displayName: resource management
-      href: ./how-to/onboard-customer.md
-    - name: Felügyelt szolgáltatási ajánlatok közzététele az Azure Marketplace-en
-      displayName: 'managed services offer, azure marketplace, publish, marketplace'
-      href: ./how-to/publish-managed-services-offers.md
+    - name: Bevezetési és delegálási felügyelet
+      items:
+        - name: Felhasználók beléptetése
+          displayName: 'ARM, template, delegation, authorization, resource management'
+          href: ./how-to/onboard-customer.md
+        - name: Felügyelt szolgáltatási ajánlatok közzététele az Azure Marketplace-en
+          displayName: 'managed services offer, azure marketplace, publish, marketplace'
+          href: ./how-to/publish-managed-services-offers.md
+        - name: Delegálások frissítése
+          displayName: upgrade
+          href: ./how-to/update-delegation.md
+        - name: Delegálások hozzáférésének megszüntetése
+          displayName: 'delete, undelegate'
+          href: ./how-to/remove-delegation.md
+        - name: Delegálási módosítások monitorozása
+          displayName: activity log
+          href: ./how-to/monitor-delegation-changes.md
     - name: Ügyfelek megtekintése és kezelése
       displayName: my customers
       href: ./how-to/view-manage-customers.md
     - name: A partnerazonosító összekapcsolása
       displayName: 'partner earned credit, pec, mpn'
       href: ./how-to/partner-earned-credit.md
-    - name: Delegálás frissítése
-      displayName: upgrade
-      href: ./how-to/update-delegation.md
-    - name: Delegáláshoz való hozzáférés eltávolítása
-      displayName: 'delete, undelegate'
-      href: ./how-to/remove-delegation.md
-    - name: Azure Arc integrálása
-      displayName: 'server, kubernetes, hybrid, infrastructure'
-      href: ./how-to/manage-hybrid-infrastructure-arc.md
-    - name: Azure Migrate-integráció
-      displayName: 'migration, project, on-prem'
-      href: ./how-to/migration-at-scale.md
-    - name: Azure Monitor-integráció
+    - name: Azure-szolgáltatás integrációja
       items:
-        - name: Az Azure Monitor-naplók nagy léptékű használata
+        - name: Azure Arc integrálása
+          displayName: 'server, kubernetes, hybrid, infrastructure'
+          href: ./how-to/manage-hybrid-infrastructure-arc.md
+        - name: Azure Migrate-integráció
+          displayName: 'migration, project, on-prem'
+          href: ./how-to/migration-at-scale.md
+        - name: Azure Monitor-integráció
           displayName: 'log, analytics, analyze, activity'
           href: ./how-to/monitor-at-scale.md
-        - name: Delegálási módosítások monitorozása
-          displayName: activity log
-          href: ./how-to/monitor-delegation-changes.md
-    - name: Azure Policy-integráció
-      items:
-        - name: Szabályzat nagy léptékű üzembe helyezése
-          displayName: storage
-          href: ./how-to/policy-at-scale.md
-        - name: Javítható szabályzat telepítése
-          displayName: 'deployIfNotExists, modify, managed identities, managed identity'
-          href: ./how-to/deploy-policy-remediation.md
-    - name: Azure Sentinel-integráció
-      href: ./how-to/manage-sentinel-workspaces.md
+        - name: Azure Policy-integráció
+          items:
+            - name: Szabályzat nagy léptékű üzembe helyezése
+              displayName: storage
+              href: ./how-to/policy-at-scale.md
+            - name: Javítható szabályzat telepítése
+              displayName: 'deployIfNotExists, modify, managed identities, managed identity'
+              href: ./how-to/deploy-policy-remediation.md
+        - name: Azure Sentinel-integráció
+          href: ./how-to/manage-sentinel-workspaces.md
 - name: Referencia
   items:
     - name: Azure CLI

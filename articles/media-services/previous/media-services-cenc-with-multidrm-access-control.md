@@ -3,7 +3,7 @@ title: Hozzáférés-vezérlést biztosító tartalomkezelő rendszer tervezése
 description: Ismerje meg, hogyan lehet licencet beépíteni a Microsoft Smooth Streaming ügyfél-Porting Kit csomagba.
 services: media-services
 documentationcenter: ''
-author: willzhan
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 03/10/2021
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b98b66d8f0350c32e89d62d776ee1288d9271712
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1a4f151b597b57b77fa6517c6ea0d586c1106986
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010911"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017137"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Hozzáférés-vezérlést használó tartalomkezelő rendszer tervezése Azure Media Services
 
@@ -157,7 +157,7 @@ A következő táblázat a leképezést mutatja be.
 | **DRM-védelem munkafolyamata** |Media Services dinamikus védelem |
 | **DRM-licenckézbesítés** |* Media Services licenc kézbesítése (PlayReady, Widevine, FairPlay) <br/>* Axinom-licenckiszolgáló <br/>* Egyéni PlayReady-licenckiszolgáló |
 | **Származási** |Media Services streaming végpont |
-| **Kulcskezelő** |A hivatkozás megvalósításához nem szükséges |
+| **Kulcskezelés** |A hivatkozás megvalósításához nem szükséges |
 | **Tartalomkezelés** |C# konzolos alkalmazás |
 
 Más szóval a IDENTITÁSSZOLGÁLTATÓ és az STS is az Azure AD-vel együtt használható. A lejátszóhoz a [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/) használatos. Mind a Media Services, mind a Media Player támogatja a DASH és a CENC-et több DRM-mel.

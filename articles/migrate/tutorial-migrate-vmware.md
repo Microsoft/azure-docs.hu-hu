@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 17d9d3bf787b67716fb2270cd055e30a4fefbe0f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bebc2e629193944c840948c9c573462a43e3032e
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702198"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201702"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware virtuális gépek migrálása az Azure-ba (ügynök nélkül)
 
@@ -111,7 +111,7 @@ A replikációt a következők szerint engedélyezheti:
     > Ha egy másik rendelkezésre állási lehetőséget szeretne kiválasztani egy virtuális gép készletéhez, ugorjon az 1. lépésre, és ismételje meg a lépéseket a különböző rendelkezésre állási beállítások kiválasztásával, miután megkezdte egy virtuális gép replikálását.
 
 
- ![VIRTUÁLIS gépek számítási beállításai](./media/tutorial-migrate-vmware/compute-settings.png)
+
 
 12. A **Lemezek** területen adja meg, hogy a virtuálisgép-lemezek replikálva legyenek-e az Azure-ba, majd válassza ki a lemez típusát (standard SSD/HDD vagy prémium felügyelt lemez) az Azure-ban. Ezután kattintson a **Tovább** gombra.
    
@@ -189,7 +189,7 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
 ## <a name="complete-the-migration"></a>Az áttelepítés befejezése
 
 1. Az áttelepítés befejezése után kattintson a jobb gombbal a virtuális gépre > a **replikáció leállítása** elemre. Ez leállítja a helyszíni gép replikálását, és megtisztítja a virtuális gép replikációs állapotával kapcsolatos információkat.
-2. Telepítse az Azure-beli VM [Linux](../virtual-machines/extensions/agent-linux.md) -ügynököt az áttelepített gépekre, ha a gépen van Linux operációs rendszer. Az áttelepítés során automatikusan telepíti a Windows rendszerű virtuális gépekhez készült virtuálisgép-ügynököt.
+2. Az áttelepítés során a rendszer automatikusan telepíti a virtuálisgép-ügynököt a Windows-alapú virtuális gépekhez és Linuxra. Tekintse át az Azure-beli virtuális gép Linux-ügynökének [követelményeit](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements) az áttelepített gépeken, ha a gép Linux operációs rendszerrel rendelkezik a linuxos virtuális gép ügynökének telepítésének biztosításához. 
 3. Hajtson végre minden áttelepítés utáni módosítást az alkalmazáson (például adatbázis-kapcsolati sztringek frissítése és webes kiszolgálók konfigurálása).
 4. Végezze el a végső alkalmazás- és áttelepítés-elfogadás teszteket az Azure-on jelenleg futó alkalmazásoknál.
 5. Az áttelepített Azure virtuálisgép-példány felé irányuló forgalom kivágása.

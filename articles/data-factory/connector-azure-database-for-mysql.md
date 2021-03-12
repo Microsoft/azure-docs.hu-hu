@@ -1,24 +1,24 @@
 ---
-title: Adatok másolása Azure Database for MySQL
-description: Megtudhatja, hogyan másolhat adatok Azure Database for MySQLba és onnan a Azure Data Factory folyamat másolási tevékenységének használatával.
+title: Adatmásolás és átalakítás Azure Database for MySQL
+description: megtudhatja, hogyan másolhat és alakíthat át Azure Database for MySQLba Azure Data Factory használatával.
 ms.author: jingwang
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/25/2019
-ms.openlocfilehash: 4b6cc13343a7ca7af1bba84ed84d2ce5c8387b1f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/10/2021
+ms.openlocfilehash: 4d13f6f435a21b467cae1b8e14211a001792787f
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381375"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103012605"
 ---
-# <a name="copy-data-to-and-from-azure-database-for-mysql-using-azure-data-factory"></a>Adatok másolása Azure Database for MySQLba és onnan a Azure Data Factory használatával
+# <a name="copy-and-transform-data-in-azure-database-for-mysql-by-using-azure-data-factory"></a>Azure Database for MySQL adatmásolása és átalakítása a Azure Data Factory használatával
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok Azure Database for MySQLból való másolásához. A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében található, amely a másolási tevékenység általános áttekintését jeleníti meg.
+Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok másolásához és a Azure Database for MySQLához, valamint az adatfolyamatok használata az adatok Azure Database for MySQLban való átalakításához. A Azure Data Factoryről a [bevezető cikkben](introduction.md)olvashat bővebben.
 
 Ez az összekötő [Azure Database for MySQL szolgáltatásra](../mysql/overview.md)specializálódott. A helyszínen vagy a felhőben található általános MySQL-adatbázisból származó adatok másolásához használja a [MySQL-összekötőt](connector-mysql.md).
 
@@ -27,11 +27,8 @@ Ez az összekötő [Azure Database for MySQL szolgáltatásra](../mysql/overview
 Ez az Azure Database for MySQL-összekötő a következő tevékenységek esetén támogatott:
 
 - [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
+- [Adatfolyam hozzárendelése](concepts-data-flow-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
-
-Azure Database for MySQL adatait átmásolhatja bármely támogatott fogadó adattárba. Vagy bármilyen támogatott forrás adattárból is másolhat adatok Azure Database for MySQLba. A másolási tevékenység által a forrásként/mosogatóként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
-
-A Azure Data Factory egy beépített illesztőprogramot biztosít a kapcsolat engedélyezéséhez, ezért nem kell manuálisan telepítenie az adott összekötőt használó illesztőprogramokat.
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -217,6 +214,63 @@ Az adatAzure Database for MySQLba való másoláshoz a másolási tevékenység 
         }
     }
 ]
+```
+
+## <a name="mapping-data-flow-properties"></a>Adatfolyam-tulajdonságok leképezése
+
+Az adatoknak a leképezési folyamatba való átalakításakor a táblázatok Azure Database for MySQLból való olvasását és írását is elvégezheti. További információ: a forrás- [átalakítás](data-flow-source.md) és a fogadó [transzformáció](data-flow-sink.md) a leképezési adatfolyamatokban. Dönthet úgy, hogy Azure Database for MySQL adatkészletet vagy egy [beágyazott adatkészletet](data-flow-source.md#inline-datasets) használ forrásként és fogadó típusúként.
+
+### <a name="source-transformation"></a>Forrás-átalakítás
+
+Az alábbi táblázat a Azure Database for MySQL forrás által támogatott tulajdonságokat sorolja fel. Ezeket a tulajdonságokat a **forrás beállításai** lapon módosíthatja.
+
+| Név | Leírás | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Tábla | Ha a tábla bemenetként lehetőséget választja, az adatfolyam beolvassa az adatkészletben megadott tábla összes adatát. | No | - |*(csak a beágyazott adatkészletek esetében)*<br>tableName |
+| Lekérdezés | Ha a lekérdezés bemenetként lehetőséget választja, adjon meg egy SQL-lekérdezést az adatok forrásból való beolvasásához, amely felülbírálja az adatkészletben megadott összes táblát. A lekérdezések használatával csökkentheti a sorok tesztelési vagy keresési lehetőségeit.<br><br>Az **Order by** záradék nem támogatott, de beállíthat egy teljes select from utasítást. A felhasználó által definiált Table functions is használható. a **select * from udfGetData ()** egy olyan UDF, amely az SQL-ben egy olyan táblázatot ad vissza, amely az adatfolyamban használható.<br>Példa lekérdezésre: `select * from mytable where customerId > 1000 and customerId < 2000` vagy `select * from "MyTable"` .| Nem | Sztring | lekérdezés |
+| Köteg mérete | A nagyméretű adathalmazok kötegbe való darabolásához Definiáljon egy batch-méretet. | No | Egész szám | batchSize |
+| Elkülönítési szint | Válasszon egyet a következő elkülönítési szintek közül:<br>– Olvasás véglegesítve<br>– Nem véglegesített olvasás (alapértelmezett)<br>– Ismételhető olvasás<br>– Szerializálható<br>-None (az elkülönítési szint figyelmen kívül hagyása) | No | <small>READ_COMMITTED<br/>READ_UNCOMMITTED<br/>REPEATABLE_READ<br/>SZERIALIZÁLHATÓ<br/>NEZ egy</small> |isolationLevel |
+
+#### <a name="azure-database-for-mysql-source-script-example"></a>Példa Azure Database for MySQL forrás parancsfájlra
+
+A Azure Database for MySQL forrásként való használatakor a társított adatfolyam-parancsfájl a következő:
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    isolationLevel: 'READ_UNCOMMITTED',
+    query: 'select * from mytable',
+    format: 'query') ~> AzureMySQLSource
+```
+
+### <a name="sink-transformation"></a>Fogadó transzformáció
+
+Az alábbi táblázat felsorolja a Azure Database for MySQL fogadó által támogatott tulajdonságokat. Ezeket a tulajdonságokat a fogadó **beállításai** lapon módosíthatja.
+
+| Név | Leírás | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Frissítési módszer | Adja meg, hogy milyen műveletek engedélyezettek az adatbázis célhelyén. Az alapértelmezett érték a beszúrások engedélyezése.<br>Sorok frissítéséhez, upsert vagy törléséhez [módosítási sor átalakítására](data-flow-alter-row.md) van szükség a műveletek sorainak címkézéséhez. | Yes | `true` vagy `false` | törölhető <br/>Insertable <br/>frissíthető <br/>upsertable |
+| Kulcsok oszlopai | A frissítések, a upsert és a törlések esetében meg kell adni a kulcs oszlop (oka) t, hogy meghatározza, melyik sort kell megváltoztatni.<br>A kulcsként kiválasztott oszlopnevet a következő frissítés, upsert, törlés részeként fogja használni a rendszer. Ezért ki kell választania egy oszlopot, amely szerepel a fogadó leképezésében. | No | Tömb | keys |
+| Kulcsok oszlopainak kihagyása | Ha nem szeretné az értéket a kulcs oszlopba írni, válassza a "kulcs oszlopainak kihagyása" lehetőséget. | No | `true` vagy `false` | skipKeyWrites |
+| Tábla művelete |Meghatározza, hogy a rendszer az összes sort újra létrehozza vagy eltávolítja a célhelyről az írás előtt.<br>- **Nincs**: a rendszer nem hajt végre műveletet a táblán.<br>- **Újból létrehozva**: a tábla eldobása és újbóli létrehozása megtörténik. Új tábla dinamikus létrehozásakor szükséges.<br>- **Csonkítás**: a céltábla összes sora el lesz távolítva. | No | `true` vagy `false` | hozza létre újra<br/>truncate |
+| Köteg mérete | Itt adhatja meg, hogy hány sort kell írni az egyes kötegekben. A nagyobb méretű kötegek növelik a tömörítési és a memória-optimalizálást, de a gyorsítótárban tárolt adatmennyiség miatt kifogytak a memória | No | Egész szám | batchSize |
+| SQL-parancsfájlok előtti és utáni | Adja meg azokat a többsoros SQL-parancsfájlokat, amelyeket a rendszer a (pre-Processing) és a (post-Processing) (utómunka) adatainak a fogadó adatbázisba való írása előtt hajt végre. | Nem | Sztring | preSQLs<br>postSQLs |
+
+#### <a name="azure-database-for-mysql-sink-script-example"></a>Példa Azure Database for MySQL fogadó parancsfájlra
+
+Ha a Azure Database for MySQL a fogadó típusaként használja, a társított adatfolyam-parancsfájl a következő:
+
+```
+IncomingStream sink(allowSchemaDrift: true,
+    validateSchema: false,
+    deletable:false,
+    insertable:true,
+    updateable:true,
+    upsertable:true,
+    keys:['keyColumn'],
+    format: 'table',
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> AzureMySQLSink
 ```
 
 ## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai

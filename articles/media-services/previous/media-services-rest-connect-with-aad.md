@@ -3,7 +3,7 @@ title: Az Azure AD-hitelesítés használata az Azure Media Services API REST-te
 description: Megtudhatja, hogyan érheti el Azure Media Services API-t Azure Active Directory hitelesítéssel a REST használatával.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: 28719046c9a8ccc65d231244ef8b5b3f8e116282
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: a2b4e7bf03ebb1fbc197b78287cb50b3f421d713
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98694730"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017307"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>A Media Services API és a REST hozzáférése Azure AD-hitelesítéssel
 
@@ -198,7 +198,7 @@ Ez a szakasz bemutatja, hogyan érheti el az **assets** API-t a **Poster** haszn
 
 A visszaadott válasz tartalmazza a fiókjában található eszközöket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Próbálja ki ezt a mintakód az [Azure ad-hitelesítésben Azure Media Services hozzáféréshez: mindkettőn keresztül REST API](https://github.com/willzhan/WAMSRESTSoln)
 * [Fájlok feltöltése a .NET-tel](media-services-dotnet-upload-files.md)

@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 7c477655dfb24eebab9a2669697d9ef610088198
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 3fe6ee8336872c04e85b732713494adf0fefa28a
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99592024"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011442"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Az aktív tanulás javasolt kérdéseinek elfogadása a Tudásbázisban
 
@@ -79,25 +79,24 @@ Ha újraimportálja az alkalmazást, az aktív tanulás továbbra is gyűjti az 
 
 A bot vagy más ügyfélalkalmazás a következő építészeti folyamatot használja az aktív tanulás használatához:
 
-* A robot a GenerateAnswer API-val beolvassa [a Tudásbázisból a választ](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) , és a `top` tulajdonság használatával számos választ kaphat.
+1. A robot a GenerateAnswer API-val beolvassa [a Tudásbázisból a választ](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) , és a `top` tulajdonság használatával számos választ kaphat.
 
-    #### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>A GenerateAnswer kérelemben szereplő Top tulajdonsággal több egyező választ kaphat
-
-    Ha egy kérdés beküldésekor QnA Maker választ, a JSON- `top` törzs tulajdonsága beállítja a visszaadott válaszok számát.
-
-    ```json
-    {
-        "question": "wi-fi",
-        "isTest": false,
-        "top": 3
-    }
-    ```
-
-* A bot explicit visszajelzést határoz meg:
+2. A bot explicit visszajelzést határoz meg:
     * A saját [egyéni üzleti logikájának](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user)használatával kiszűrheti az alacsony pontszámot.
     * A bot vagy az ügyfél alkalmazásban a lehetséges válaszok megjelenítése a felhasználó számára, és a felhasználó kiválasztott válaszának beolvasása.
-* A robot a [betanítási API](#train-api) [használatával visszaküldi a kiválasztott választ a QnA Makerra](#bot-framework-sample-code) .
+3. A robot a [betanítási API](#train-api) [használatával visszaküldi a kiválasztott választ a QnA Makerra](#bot-framework-sample-code) .
 
+### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>A GenerateAnswer kérelemben szereplő Top tulajdonsággal több egyező választ kaphat
+
+Ha egy kérdés beküldésekor QnA Maker választ, a JSON- `top` törzs tulajdonsága beállítja a visszaadott válaszok számát.
+
+```json
+{
+    "question": "wi-fi",
+    "isTest": false,
+    "top": 3
+}
+```
 
 ### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>A score (pontszám) tulajdonság és az üzleti logika használata a felhasználók számára megjelenített válaszok listájának lekéréséhez
 

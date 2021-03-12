@@ -3,7 +3,7 @@ title: Az Azure AD-hitelesítés használata az Azure Media Services API .NET-te
 description: Ez a témakör bemutatja, hogyan használható a Azure Active Directory (Azure AD) hitelesítés a Azure Media Services (AMS) API .NET-tel való eléréséhez.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: 9de7505ffaab244713706984bdeb9ab395766321
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: fd19bce05d18eb8f9b8fd3806082caeebe98bdad
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695738"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013992"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>Az Azure AD-hitelesítés használata Azure Media Services API .NET-tel való eléréséhez
 
@@ -207,6 +207,6 @@ namespace AzureADAuthSample
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedés a [fájlok feltöltésével a fiókjába](media-services-dotnet-upload-files.md).

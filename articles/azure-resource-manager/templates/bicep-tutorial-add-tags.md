@@ -2,16 +2,16 @@
 title: Oktatóanyag – Címkék hozzáadása a Azure Resource Manager bicep fájlban lévő erőforrásokhoz
 description: Címkék hozzáadása a bicep-fájlokban üzembe helyezett erőforrásokhoz. Címkék lehetővé teszik az erőforrások logikai rendszerezését.
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 05bb68609705ac4c13ad77d2c74db7c105ba23fb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ea5e078eb692d002b3f86cd43663dd042d692611
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748168"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632602"
 ---
 # <a name="tutorial-add-tags-in-azure-resource-manager-bicep-files"></a>Oktatóanyag: Címkék hozzáadása Azure Resource Manager bicep-fájlokban
 
@@ -37,7 +37,7 @@ Az erőforrások telepítése után lehetséges, hogy nyomon kell követnie a k�
 
 Az erőforráscímkékkel az erőforrások felhasználási célját azonosító értékeket adhat meg. Hozzáadhat például olyan címkéket, amelyek felsorolják a környezetet és a projektet. Hozzáadhat olyan címkéket, amelyek azonosítják a Cost centert vagy az erőforrást birtokló csapatot. Adjon hozzá olyan értékeket, amelyek a szervezet szempontjából jelentéssel bírnak.
 
-A következő példa kiemeli a bicep fájl módosításait. Másolja a teljes fájlt, és cserélje le a bicep-fájlt annak tartalmára.
+A következő példa a bicep-fájl módosításait mutatja be. Másolja a teljes fájlt, és cserélje le a bicep-fájlt annak tartalmára.
 
 :::code language="bicep" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.bicep" range="1-81" highlight="27-30,38,51,71":::
 

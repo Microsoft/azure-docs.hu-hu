@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 03/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: 34546e74c9d066af20ece834275732d55b8d6277
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 53f0063d1458c218324d867c1942ae0e044f10d0
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695458"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011918"
 ---
 # <a name="create-a-media-services-account-using-the-azure-portal"></a>Media Services fiók létrehozása a Azure Portal használatával
 
@@ -68,7 +68,7 @@ A jelen szakaszban ismertetett lépések bemutatják az AMS-fiók létrehozásá
 
 Az AMS-fiók kezeléséhez (például az AMS API-hoz való programozott kapcsolódáshoz, videók feltöltéséhez, objektumok kódolásához, tartalomvédelem konfigurálásához, a feladatok előrehaladásának figyeléséhez) válassza a portál bal oldalán lévő **Beállítások** elemet. A **Beállítások** területen keresse meg az egyik elérhető panelt (például: **API-hozzáférés**, **Objektumok**, **Feladatok**, **Tartalomvédelem**).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már feltölthet fájlokat AMS-fiókjába. További információk: [Fájlok feltöltése](media-services-portal-upload-files.md).
 

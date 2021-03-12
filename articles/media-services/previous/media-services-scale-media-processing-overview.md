@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/30/2020
+ms.date: 3/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: 5353cf841663d70f2fce6662964358b7828610d8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: d0692996c27f969ffc90078db2ddcc849ee15ab1
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020895"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103012717"
 ---
 # <a name="media-reserved-units"></a>Fenntartott médiaegységek
 
@@ -30,7 +30,7 @@ A Azure Media Services lehetővé teszi a médiafájlok feldolgozását a Media 
 
 A következő táblázat segít dönteni a különböző kódolási sebességek kiválasztásakor.  Egy 7 perces, a használatban lévő MRU-től függően 1080p-videóként jeleníti meg a kódolás időtartamát.
 
-|RU-típus|Használati eset|Példa a 7 perces 1080p videó eredményeire |
+|RU-típus|Eset|Példa a 7 perces 1080p videó eredményeire |
 |---|---|---|
 | **S1**|Egyetlen bitráta kódolása. <br/>A fájlok SD-vagy alacsonyabb felbontásban, nem érzékenyek, alacsonyak.|A "H264 Single bitráta SD 16x9" használatával az egyetlen sávszélességű SD-feloldási MP4-fájl kódolása körülbelül 7 percet vesz igénybe.|
 | **S2**|Egyetlen bitráta és több bitráta-kódolás.<br/>Normál használat SD és HD kódoláshoz.|A "H264 Single bitráta 720p" beállítású kódolás körülbelül 6 percet vesz igénybe.<br/><br/>A "H264 Multiple bitráta 720p" beállítású kódolás körülbelül 12 percet vesz igénybe.|
@@ -52,7 +52,7 @@ A számlázás a fiókban a Media szolgáltatás számára fenntartott egységek
 
 A kvótákkal és korlátozásokkal, valamint a támogatási jegyek megnyitásával kapcsolatos információkért lásd: [kvóták és korlátozások](media-services-quotas-and-limitations.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbálja ki a médiafájlok feldolgozását az alábbi technológiák egyikével:
 

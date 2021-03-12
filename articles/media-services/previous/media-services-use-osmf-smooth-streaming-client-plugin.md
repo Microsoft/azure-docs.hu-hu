@@ -3,7 +3,7 @@ title: Smooth Streaming beépülő modul a nyílt forráskódú adathordozó-ker
 description: Ismerje meg, hogyan használhatja a Azure Media Services Smooth Streaming beépülő modult az Adobe nyílt forráskódú adathordozó-keretrendszerhez.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 6068151f-b6b0-4507-9346-f03416d3d572
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
+ms.date: 3/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9b71a2064887cc2b6099ead2e59f9fa3113d2f0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70042a5c4c27ec5d163e5f05089ae50b92140c28
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269012"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011255"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>A Microsoft Smooth Streaming beépülő modul használata az Adobe nyílt forráskódú adathordozó-keretrendszerhez
 

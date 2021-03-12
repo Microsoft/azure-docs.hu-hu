@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: d09f27eebba5db2edb56185b658c8ae2b06e42d3
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 21038a8d1eabfcca21329c093b866607f0343070
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102552269"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200003"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Windows-ügyfél használata az Azure-ban fejlesztési/tesztelési helyzetekben
 A fejlesztői és tesztelési forgatókönyvekhez használhatja a Windows 7, Windows 8 vagy Windows 10 Enterprise (x64) rendszert az Azure-ban, amennyiben rendelkezik a megfelelő Visual Studio (korábbi MSDN) előfizetéssel. 
@@ -41,10 +41,10 @@ Az alábbi táblázat a Windows-rendszerképek Azure piactéren való üzembe he
 | [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/) |0148P | Windows 10 Enterprise N (x64) <br> Windows 8,1 Enterprise N (x64) <br> Windows 7 Enterprise N SP1 (x64) |
 
 ## <a name="check-your-azure-subscription"></a>Azure-előfizetés keresése
-Ha nem ismeri az ajánlat AZONOSÍTÓját, az alábbi két módszer egyikével szerezheti be a Azure Portal:  
+Ha nem ismeri az ajánlat AZONOSÍTÓját, a Azure Portal keresztül szerezheti be.  
 - Az *előfizetések* ablakban: ![ az ajánlat azonosítójának részletei a Azure Portal](./media/client-images/offer-id-azure-portal.png) 
-- Vagy kattintson a **számlázás** lehetőségre, majd az előfizetés-azonosítóra. Az ajánlat azonosítója megjelenik a *Számlázási* ablakban.
-Az ajánlat AZONOSÍTÓját az Azure-fiók portál [előfizetés lapján](https://account.windowsazure.com/Subscriptions) is megtekintheti: az ![ ajánlat azonosítójának részletei az Azure-fiók portálján](./media/client-images/offer-id-azure-account-portal.png) 
+- Vagy kattintson a **számlázás** lehetőségre, majd az előfizetés-azonosítóra. Az ajánlat azonosítója megjelenik a *Számlázási* ablakban. 
+- Az ajánlat AZONOSÍTÓját az Azure-fiók portál [előfizetés lapján](https://account.windowsazure.com/Subscriptions) is megtekintheti: az ![ ajánlat azonosítójának részletei az Azure-fiók portálján](./media/client-images/offer-id-azure-account-portal.png) 
 
 ## <a name="next-steps"></a>Következő lépések
 Most már üzembe helyezheti a virtuális gépeket a [PowerShell](quick-create-powershell.md), a [Resource Manager-sablonok](ps-template.md)vagy a [Visual Studio](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md)használatával.

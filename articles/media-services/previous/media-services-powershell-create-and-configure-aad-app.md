@@ -3,7 +3,7 @@ title: Azure AD-alkalmazás létrehozása a PowerShell használatával a Azure M
 description: Megtudhatja, hogyan hozhat létre Azure Active Directory (Azure AD-) alkalmazást a PowerShell használatával, és hogyan állíthatja be a Azure Media Services API eléréséhez.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 1be3de87493db61ebc901fe240b9eb109a3a90a3
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: d16c2bbb16a19e5cb22b2b2b0378880ec9aa48b5
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695154"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009657"
 ---
 # <a name="use-powershell-to-create-an-azure-ad-app-to-use-with-the-azure-media-services-api"></a>A PowerShell használatával hozzon létre egy Azure AD-alkalmazást a Azure Media Services API-val való használatra
 
@@ -66,6 +66,6 @@ További információért tekintse át a következő cikkeket:
 - [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure PowerShell használatával](../../role-based-access-control/role-assignments-powershell.md)
 - [Daemon-alkalmazások manuális konfigurálása tanúsítványok használatával](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedés a [fájlok feltöltésével a fiókjába](media-services-portal-upload-files.md).

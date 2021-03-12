@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/08/2021
+ms.date: 03/10/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e867fee753fb9db530db2b2015c3aea9280bc16f
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: b60b447d8302b89813ca462c3220603ef926eb26
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448644"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631183"
 ---
 # <a name="localization-string-ids"></a>Honosítási sztringazonosítók
 
@@ -356,7 +356,7 @@ A következő egy [ellenőrzési megjelenítési vezérlő](display-control-veri
 
 | ID (Azonosító) | Alapértelmezett érték |
 | -- | ------------- |
-|intro_msg| Ellenőrzés szükséges. Kattintson a Küldés gombra.|
+|intro_msg <sup>*</sup>| Ellenőrzés szükséges. Kattintson a Küldés gombra.|
 |success_send_code_msg | Az ellenőrző kód elküldése megtörtént. Másolja az alábbi beviteli mezőbe.|
 |failure_send_code_msg | Nem sikerül ellenőrizni az e-mail-címét. Adjon meg egy érvényes e-mail-címet, és próbálkozzon újra.|
 |success_verify_code_msg | Az E-mail cím ellenőrizve. Most már folytathatja.|
@@ -365,6 +365,12 @@ A következő egy [ellenőrzési megjelenítési vezérlő](display-control-veri
 |but_verify_code | Kód ellenőrzése|
 |but_send_new_code | Új kód küldése|
 |but_change_claims | E-mail módosítása|
+
+Megjegyzés: az `intro_msg` elem rejtett, és nem jelenik meg az önérvényesített oldalon. Ennek láthatóvá tételéhez használja a [HTML-customiztion](customize-ui-with-html.md) egymásra épülő stíluslapok. Például:
+    
+```css
+.verificationInfoText div{display: block!important}
+```
 
 ### <a name="verification-display-control-example"></a>Példa ellenőrző megjelenítési vezérlőelemre
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 163bd7dbdac4de7b7d9c1657ac3debf45382a27a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: 746845004a7a1baf1cafb872aae9322177879b6b
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027271"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011102"
 ---
 # <a name="about-transferring-billing-ownership-for-an-azure-subscription"></a>Tudnivalók az Azure-előfizetés számlázási tulajdonjogának átadásáról
 
@@ -30,16 +30,30 @@ A Nagyvállalati Szerződéssel (EA) rendelkező ügyfelek esetében a vállalat
 
 Az előfizetés tulajdonjogát csak egy fiók számlázási rendszergazdája adhatja át.
 
-## <a name="determine-account-billing-administrator"></a>Fiók számlázási rendszergazdájának megállapítása
+## <a name="determine-if-you-are-a-billing-administrator"></a>Annak megállapítása, hogy számlázási rendszergazda-e
 
 <a name="whoisaa"></a>
 
-A számlázási rendszergazda az a személy, aki jogosult kezelni a fiók számlázási feladatait. Ő férhet hozzá a számlákhoz az [Azure Portalon](https://portal.azure.com), és ő végzi el a különböző számlázási feladatokat, mint az előfizetések létrehozása, a számlák áttekintése és kifizetése, valamint a fizetési módok frissítése.
+Az átvitel elvégzése érdekében keresse meg azt a személyt, aki hozzáfér a fiók számlázásának kezeléséhez. Ő férhet hozzá a számlákhoz az [Azure Portalon](https://portal.azure.com), és ő végzi el a különböző számlázási feladatokat, mint az előfizetések létrehozása, a számlák áttekintése és kifizetése, valamint a fizetési módok frissítése.
 
-Azokat a fiókokat, amelyeknek Ön a számlázási rendszergazdája, [az Azure Portal Költségkezelés + számlázás oldalán](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview) tekintheti meg. A bal oldali panelen válassza a **Minden számlázási hatókör** lehetőséget. Az Előfizetések lapon megtalálható az összes olyan előfizetés, amelynek Ön a számlázási rendszergazdája.
+### <a name="check-if-you-have-billing-access"></a>Ellenőrizze, hogy van-e számlázási hozzáférése
 
-Ha nem biztos benne, hogy egy adott előfizetésnek ki a fiókadminisztrátora, lépjen [az Azure Portal Előfizetések oldalára](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Válassza ki az ellenőrizni kívánt előfizetést, majd lépjen a **Beállítások** területre. Válassza ki a **Tulajdonságok** elemet. Az előfizetés fiókadminisztrátora a **Fiókadminisztrátor** mezőben látható.
+1. A számlázási hozzáféréssel rendelkező fiókok azonosításához látogasson el [Azure Portal Cost Management + számlázási oldalára](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview).
 
+2. A bal oldali menüben válassza a **Számlázási fiókok** elemet.
+
+3. A **Számlázási hatókör** listázása lap megjeleníti az összes olyan előfizetést, amelyhez hozzáférése van a számlázási adatokhoz.
+
+### <a name="check-by-subscription"></a>Ellenőrzés előfizetés szerint
+
+1. Ha nem biztos benne, hogy egy adott előfizetésnek ki a fiókadminisztrátora, lépjen [az Azure Portal Előfizetések oldalára](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). 
+
+2. Válassza ki az előfizetést, amelyet szeretne megtekinteni.
+
+3. A **Beállítások** fejléc alatt válassza a **Tulajdonságok** lehetőséget. A **fiók** rendszergazdája mezőben megtudhatja, hogy ki az előfizetés rendszergazdai fiókja.
+
+   > [!NOTE]
+   > Nem minden előfizetési típus jeleníti meg a tulajdonságokat.
 
 ## <a name="supported-subscription-types"></a>Támogatott előfizetési típusok
 

@@ -7,14 +7,14 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 01/29/2021
+ms.date: 03/12/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: eb5de33fd41d3a454f4d0b8d44325ed30f9c5d47
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 8b9c4792fa6dbdc70f657ce3c5f1757473a22fda
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071630"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225217"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebook"></a>Gyors útmutató: Azure Cognitive Search index létrehozása a Pythonban Jupyter Notebook használatával
 
@@ -271,9 +271,9 @@ Dokumentumok betöltéséhez hozzon létre egy dokumentum-gyűjteményt a művel
 
 ## <a name="3---search-an-index"></a>3 – Keresés az indexekben
 
-Ez a lépés bemutatja, hogyan kérdezheti le az indexeket a [keresési dokumentumok (REST)](/rest/api/searchservice/search-documents)használatával.
+Ez a lépés bemutatja, hogyan kérdezheti le az indexeket a [Search. Client osztály](/python/api/azure-search-documents/azure.search.documents.searchclient) **keresési** metódusának használatával.
 
-1. Ehhez a művelethez használja a search_client. Ez a lekérdezés egy üres keresést () hajt végre `search=*` , és nem rangsorolt listát (keresési pontszám = 1,0) ad vissza tetszőleges dokumentumokhoz. Mivel nincsenek feltételek, a rendszer az összes dokumentumot belefoglalja az eredményekbe. Ez a lekérdezés csak két mezőt nyomtat ki az egyes dokumentumokban. Emellett hozzáadja az `include_total_count=True` összes dokumentum (4) számát az eredményekben.
+1. A következő lépés egy üres keresést () hajt végre `search=*` , és nem rangsorolt listát (keresési pontszám = 1,0) ad vissza tetszőleges dokumentumokhoz. Mivel nincsenek feltételek, a rendszer az összes dokumentumot belefoglalja az eredményekbe. Ez a lekérdezés csak két mezőt nyomtat ki az egyes dokumentumokban. Emellett hozzáadja az `include_total_count=True` összes dokumentum (4) számát az eredményekben.
 
     ```python
     results =  search_client.search(search_text="*", include_total_count=True)

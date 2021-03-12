@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 91f93faded7c18a1bc24f17053231f9011080c57
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 014bbe4421bf00f35b2d80505cea288e75f8ca94
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036248"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224673"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Gyakori kérdések az Azure-beli virtuális gépek SQL Serveréről
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -244,6 +244,10 @@ Ez a cikk a [Windows Azure Virtual Machines (VM) SQL Server](https://azure.micro
 1. **Támogatottak-e a SQL Server virtuális gépeken futó MSDTC-vel rendelkező elosztott tranzakciók?**
    
     Igen. A helyi DTC SQL Server 2016 SP2 és újabb rendszereken támogatott. Az Always On rendelkezésre állási csoportok használatakor azonban meg kell vizsgálni az alkalmazásokat, mivel a feladatátvétel során a repülés során végzett tranzakciók sikertelenek lesznek, és újra kell próbálkozni. A fürtözött DTC a Windows Server 2019-től kezdődően érhető el. 
+    
+1. **Az Azure SQL-alapú virtuális gépek régiónként helyezik át vagy tárolják az ügyféladatokat?**
+
+   Nem. Valójában az Azure SQL-alapú virtuális gép és az SQL IaaS-ügynök bővítmény nem tárolja az ügyféladatokat.
 
 ## <a name="sql-server-iaas-agent-extension"></a>Az SQL Server IaaS-ügynök bővítménye
 
@@ -334,7 +338,7 @@ Ez a cikk a [Windows Azure Virtual Machines (VM) SQL Server](https://azure.micro
 
    Távolítsa el a bővítményt a SQL Server VM SQL IaaS-ügynök bővítményből való [regisztrációjának](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension) törlésével. 
 
-## <a name="resources"></a>Források
+## <a name="resources"></a>További források
 
 **Windows rendszerű virtuális gépek**:
 

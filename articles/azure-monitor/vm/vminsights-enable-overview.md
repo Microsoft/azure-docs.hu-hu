@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 12/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7aa8221c960685149a5d475665be105acaf7aa15
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: bb2e12082b80c397eec27409b1177379a92fdd7d
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046669"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634158"
 ---
 # <a name="enable-vm-insights-overview"></a>A VM-információk áttekintésének engedélyezése
 
@@ -43,9 +43,9 @@ A virtuális gépekről elérhető Azure arc-kiszolgálók olyan régiókban ér
 
 | Csatlakoztatott forrás | Támogatott | Leírás |
 |:--|:--|:--|
-| Windows-ügynökök | Igen | A Windows [log Analytics ügynökével](../agents/log-analytics-agent.md)együtt a Windows-ügynököknek szüksége van a függőségi ügynökre. További információ: [támogatott operációs rendszerek](../agents/agents-overview.md#supported-operating-systems). |
-| Linux-ügynökök | Igen | A [Linux rendszerhez készült log Analytics-ügynökkel](../agents/log-analytics-agent.md)együtt a Linux-ügynököknek szüksége van a függőségi ügynökre. További információ: [támogatott operációs rendszerek](#supported-operating-systems). |
-| System Center Operations Manage felügyeleti csoport | Nem | |
+| Windows-ügynökök | Yes | A Windows [log Analytics ügynökével](../agents/log-analytics-agent.md)együtt a Windows-ügynököknek szüksége van a függőségi ügynökre. További információ: [támogatott operációs rendszerek](../agents/agents-overview.md#supported-operating-systems). |
+| Linux-ügynökök | Yes | A [Linux rendszerhez készült log Analytics-ügynökkel](../agents/log-analytics-agent.md)együtt a Linux-ügynököknek szüksége van a függőségi ügynökre. További információ: [támogatott operációs rendszerek](#supported-operating-systems). |
+| System Center Operations Manage felügyeleti csoport | No | |
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
@@ -54,6 +54,7 @@ A VM-alapú adatvizsgálatok minden olyan operációs rendszert támogatnak, ame
 > [!IMPORTANT]
 > A virtuálisgép-megállapítások vendég állapotának funkciói korlátozott operációsrendszer-támogatást biztosítanak a nyilvános előzetes verzióban. A részletes listához lásd: a [virtuális gépek bepillantást tevő vendég állapotának engedélyezése (előzetes verzió)](../vm/vminsights-health-enable.md) .
 
+### <a name="linux-considerations"></a>Linux-megfontolások
 Tekintse meg a következő, a virtuális gépeket támogató függőségi ügynök Linux-támogatásával kapcsolatos szempontokat:
 
 - Csak az alapértelmezett és az SMP Linux kernelű kiadások támogatottak.
@@ -61,7 +62,22 @@ Tekintse meg a következő, a virtuális gépeket támogató függőségi ügyn�
 - Az egyéni kernelek, beleértve a standard kernelek újrafordítását, nem támogatottak.
 - Az 9,4-es verziótól eltérő Debian-disztribúciók esetén a Map funkció nem támogatott, és a teljesítmény funkció csak a Azure Monitor menüből érhető el. Nem érhető el közvetlenül az Azure-beli virtuális gép bal oldali paneljéről.
 - A CentOSPlus kernel támogatott.
-- A Linux-kernelt a fantom biztonsági rések számára kell javítani. További részletekért tekintse meg a Linux-disztribúció gyártóját.
+
+A Linux-kernelt javítani kell a kísértet és az összeomlást okozó biztonsági rések esetében. További részletekért tekintse meg a Linux-disztribúció gyártóját. A következő parancs futtatásával ellenőrizze, hogy elérhető-e a fantom/Meltdown szolgáltatás:
+
+```
+$ grep . /sys/devices/system/cpu/vulnerabilities/*
+```
+
+A parancs kimenete az alábbihoz hasonlóan fog kinézni, és megadja, hogy a gép sebezhető-e a probléma megoldásával. Ha ezek a fájlok hiányoznak, a gép nincs kitöltve.
+
+```
+/sys/devices/system/cpu/vulnerabilities/meltdown:Mitigation: PTI
+/sys/devices/system/cpu/vulnerabilities/spectre_v1:Vulnerable
+/sys/devices/system/cpu/vulnerabilities/spectre_v2:Vulnerable: Minimal generic ASM retpoline
+```
+
+
 ## <a name="log-analytics-workspace"></a>Log Analytics-munkaterület
 A VM-ismeretek Log Analytics munkaterületet igényelnek. Lásd: [log Analytics munkaterület konfigurálása a virtuális](vminsights-configure-workspace.md) gépekkel kapcsolatos információkhoz a munkaterület részleteinek és követelményeinek megfelelően.
 ## <a name="agents"></a>Ügynökök

@@ -11,19 +11,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 02d9edd555566f86fd8bb09cf4acef4956ae53e4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 88fd575d40cc31f12f052158bda0aed9a5335555
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041212"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009266"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Hitelesítés és engedélyezés az Azure Time Series Insights API-hoz
 
-Az üzleti igényektől függően előfordulhat, hogy a megoldás egy vagy több ügyfélalkalmazások közé tartozik, amelyet a Azure Time Series Insights-környezet [API-jai](/rest/api/time-series-insights/reference-data-access-overview)segítségével szeretne kezelni. [A Azure Time Series Insights az Azure ad biztonsági jogkivonatok használatával hajtja végre a hitelesítést az OAUTH 2,0 alapján](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims). Az ügyfél (ek) hitelesítéséhez be kell szereznie a megfelelő engedélyekkel rendelkező tulajdonosi jogkivonatot, és át kell adnia az API-hívásokkal. Ez a dokumentum több hitelesítő adat beszerzésére szolgáló módszert ismertet, amelyek segítségével tulajdonosi jogkivonatot és hitelesítést végezhet.
-
-
-  alkalmazások regisztrálása Azure Active Directory az új Azure Active Directory panel használatával. A Azure Active Directory regisztrált alkalmazások lehetővé teszik a felhasználók számára, hogy hitelesítsék magukat a Azure Time Series Insights-környezethez társított Azure Time Series Insight API használatával.
+Az üzleti igényektől függően előfordulhat, hogy a megoldás egy vagy több ügyfélalkalmazások közé tartozik, amelyet a Azure Time Series Insights-környezet [API-jai](/rest/api/time-series-insights/reference-data-access-overview)segítségével szeretne kezelni. [A Azure Time Series Insights az Azure ad biztonsági jogkivonatok használatával hajtja végre a hitelesítést az OAUTH 2,0 alapján](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims). Az ügyfél (ek) hitelesítéséhez be kell szereznie a megfelelő engedélyekkel rendelkező tulajdonosi jogkivonatot, és át kell adnia az API-hívásokkal. Ez a dokumentum számos módszert ismertet a hitelesítő adatok beszerzéséhez, amelyek segítségével tulajdonosi jogkivonatot és hitelesítést végezhet, beleértve a felügyelt identitás használatát és Azure Active Directory az alkalmazások regisztrálását.
 
 ## <a name="managed-identities"></a>Felügyelt identitások
 
@@ -108,10 +105,7 @@ Miután a felügyelt identitása vagy az alkalmazás regisztrálása megtörtén
 
 Ha Azure App Service vagy functions szolgáltatáshoz fér hozzá, kövesse az [Azure-erőforrások jogkivonatok beszerzése](../app-service/overview-managed-identity.md)című témakör útmutatását.
 
-> [!TIP]
-> A .NET-alkalmazások és-függvények esetében a felügyelt identitással való munka legegyszerűbb módja a .NET-hez készült [Azure Identity ügyféloldali kódtár](/dotnet/api/overview/azure/identity-readme) . 
-
-A .NET-alkalmazások és-függvények esetében a felügyelt identitással való munka legegyszerűbb módja a Microsoft. Azure. Services. AppAuthentication csomag. Ez a csomag az egyszerűség és a biztonsági előnyök miatt népszerű. A fejlesztők egyszer is írhatnak kódot, és lehetővé teszik az ügyféloldali kódtár számára az alkalmazási környezet alapján történő hitelesítést – akár fejlesztői munkaállomáson, akár fejlesztői fiók használatával, akár az Azure-ban, felügyelt szolgáltatás identitásával. Áttelepítési útmutató a megelőző AppAuthentication könyvtárában olvassa el a AppAuthentication az Azure-ba című témakört. [identitás-áttelepítési útmutató](/dotnet/api/overview/azure/app-auth-migration).
+A .NET-alkalmazások és-függvények esetében a felügyelt identitással való munka legegyszerűbb módja a .NET-hez készült [Azure Identity ügyféloldali kódtár](/dotnet/api/overview/azure/identity-readme) . Ez az ügyféloldali kódtár az egyszerűség és a biztonsági előnyök miatt népszerű. A fejlesztők egyszer is írhatnak kódot, és lehetővé teszik az ügyféloldali kódtár számára az alkalmazási környezet alapján történő hitelesítést – akár fejlesztői munkaállomáson, akár fejlesztői fiók használatával, akár az Azure-ban, felügyelt szolgáltatás identitásával. Áttelepítési útmutató a megelőző AppAuthentication könyvtárában olvassa el a AppAuthentication az Azure-ba című témakört. [identitás-áttelepítési útmutató](/dotnet/api/overview/azure/app-auth-migration).
 
 Jogkivonatot kér Azure Time Series Insights C# és a .NET-hez készült Azure Identity ügyféloldali kódtár használatával:
 

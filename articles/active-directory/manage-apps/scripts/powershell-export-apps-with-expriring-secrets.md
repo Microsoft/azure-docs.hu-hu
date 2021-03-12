@@ -11,16 +11,16 @@ ms.topic: sample
 ms.date: 03/09/2021
 ms.author: kenwith
 ms.reviewer: mifarca
-ms.openlocfilehash: 7123c87d8883d9ac309797255152611fb9fb81d2
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: c8a37b08db5cdb35bc9328cbc29caa04a5cdf412
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102584323"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010830"
 ---
 # <a name="export-apps-with-expiring-secrets-and-certificates"></a>Alkalmazások exportálása lejáró titkokkal és tanúsítványokkal
 
-Ez a PowerShell-parancsfájl példaként exportálja az összes alkalmazást egy CSV-fájlban lévő címtárból a megadott alkalmazások lejárati titkával és tanúsítványával.
+Ez a PowerShell-parancsfájl például az összes olyan alkalmazás-regisztrációt exportálja, amely lejáró titkokkal, tanúsítványokkal és tulajdonosokkal rendelkezik a megadott alkalmazásokhoz a címtárból egy CSV-fájlban.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -33,6 +33,7 @@ Ehhez a mintához a Graph modul (AzureAD) [AzureAD v2 PowerShell](/powershell/az
 ## <a name="script-explanation"></a>Szkript ismertetése
 
 A "tag hozzáadása" parancs feladata az oszlopok létrehozása a CSV-fájlban.
+A "New-Object" parancs létrehoz egy objektumot, amelyet a CSV-fájl exportálásának oszlopaihoz kíván használni.
 A "$Path" változót közvetlenül a PowerShellben, a CSV-fájl elérési útjával módosíthatja, ha azt szeretné, hogy az exportálás nem interaktív.
 
 | Parancs | Jegyzetek |

@@ -12,26 +12,22 @@ ms.workload: identity
 ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 5cbb576a7fcfb2daf492a149130aa7c99fe10ac5
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: fe73832ec5eaee62a2dc2d397c12f82334e2efd8
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753605"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010702"
 ---
 # <a name="single-page-application-code-configuration"></a>Egyoldalas alkalmazás: kód konfigurálása
 
 Megtudhatja, hogyan konfigurálhatja az egyoldalas alkalmazás (SPA) kódját.
 
-## <a name="msal-libraries-for-spas-and-supported-authentication-flows"></a>MSAL-kódtárak a gyógyfürdők és a támogatott hitelesítési folyamatok számára
+## <a name="microsoft-libraries-supporting-single-page-apps"></a>Egyoldalas alkalmazásokat támogató Microsoft-kódtárak 
 
-A Microsoft Identity platform a következő Microsoft-hitelesítési függvénytárat biztosítja a JavaScripthez (MSAL.js), hogy támogassa az implicit flow és az engedélyezési kód áramlását a PKCE az iparág által ajánlott biztonsági eljárások használatával:
+A következő Microsoft-kódtárak támogatják az egyoldalas alkalmazásokat:
 
-| MSAL-könyvtár | Folyamat | Leírás |
-|--------------|------|-------------|
-| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js (2. x)](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser) | Engedélyezési kód folyamatábrája (PKCE) | Egyszerű JavaScript-függvénytár bármely olyan ügyféloldali webalkalmazásban, amelyet JavaScript vagy SPA keretrendszerek, például szögletes, Vue.js és React.js használatával építettek. |
-| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js (1. x)](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core) | Implicit folyamat | Egyszerű JavaScript-függvénytár bármely olyan ügyféloldali webalkalmazásban, amelyet JavaScript vagy SPA keretrendszerek, például szögletes, Vue.js és React.js használatával építettek. |
-| ![MSAL szögletes](media/sample-v2-code/logo_angular.png) <br/> [MSAL szögletes](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | Implicit folyamat | A Core MSAL.js könyvtár burkolója, amely egyszerűbbé teszi a szögletes keretrendszeren alapuló egyoldalas alkalmazásokban való használatát. |
+[!INCLUDE [active-directory-develop-libraries-spa](../../../includes/active-directory-develop-libraries-spa.md)]
 
 ## <a name="application-code-configuration"></a>Alkalmazás kódjának konfigurálása
 
@@ -74,6 +70,6 @@ export class AppModule { }
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lépjen be a következő cikkbe ebben a forgatókönyvben: [Bejelentkezés és kijelentkezés](scenario-spa-sign-in.md).

@@ -10,12 +10,12 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: a00e5d262724f4799f8b7b91a54e4b2710f4ce2b
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 6170f91d11b47a43e15488bcbb0e91ff3f7c906e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008077"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102616094"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-windows-device-preview"></a>Rövid útmutató: az első IoT Edge modul üzembe helyezése Windows-eszközön (előzetes verzió)
 
@@ -51,9 +51,16 @@ Hozzon létre egy felhőalapú erőforráscsoportot az ebben a rövid útmutató
 
 Győződjön meg arról, hogy a IoT Edge eszköz megfelel a következő követelményeknek:
 
-* Windows rendszerű számítógép vagy kiszolgáló, 1809-es vagy újabb verzió
-* Legalább 4 GB memória, ajánlott 8 GB memória
-* 10 GB szabad lemezterület
+* Kiadások
+  * Windows 10 1809-es vagy újabb verzió; Build 17763 vagy újabb
+    * Professional, Enterprise, IoT Enterprise
+  * Windows Server 2019 Build 17763 vagy újabb
+
+  
+* Hardverkövetelmények
+  * Minimális szabad memória: 2 GB
+  * Minimális szabad lemezterület: 10 GB
+
 
 >[!NOTE]
 >Ez a rövid útmutató a Windows felügyeleti központot használja a Linux rendszerhez készült IoT Edge központi telepítésének létrehozásához Windows rendszeren. Használhatja a PowerShellt is. Ha a PowerShell használatával szeretné létrehozni a központi telepítést, kövesse a útmutató a Windows rendszerű [eszközök Linux rendszerhez való telepítéséhez Azure IoT Edge és](how-to-install-iot-edge-on-windows.md)üzembe helyezéséhez című témakör lépéseit.
@@ -108,7 +115,7 @@ Telepítse a Linux rendszerhez készült IoT Edget az eszközön, és konfigurá
 
 ![A IoT Edge futtatókörnyezet elindításának lépéseit bemutató diagram.](./media/quickstart/start-runtime.png)
 
-1. [Töltse le a Windows felügyeleti központot](https://aka.ms/WACDownloadEFLOW).
+1. [Töltse le a Windows felügyeleti központot](https://aka.ms/wacdownload).
 
 1. Kövesse a telepítővarázsló utasításait a Windows felügyeleti központ beállításához az eszközön.
 

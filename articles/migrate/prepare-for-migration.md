@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: 543fb7474c0a9efc41667945c89489054a44d657
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8083b9edd49f65f29fe9c9b2cfa30edfacf89507
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724489"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614887"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Helyszíni gépek előkészítése az Azure-ba való áttelepítésre
 
@@ -111,11 +111,12 @@ Konfigurálja a beállítást manuálisan a következőképpen:
 
 A Azure Migrate automatikusan végrehajtja ezeket a műveleteket ezen verziók esetében
 
-- Red Hat Enterprise Linux 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x
-- Cent OS 7,7, 7,6, 7,5, 7,4, 6. x
+- Red Hat Enterprise Linux 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x (az Azure Linux rendszerű virtuális gép ügynöke is automatikusan települ az áttelepítés során)
+- Cent OS 7,7, 7,6, 7,5, 7,4, 6. x (az Azure Linux VM-ügynök is automatikusan települ az áttelepítés során)
 - SUSE Linux Enterprise Server 12 SP1 +
 - SUSE Linux Enterprise Server 15 SP1
-- Ubuntu 19,04, 19,10, 18.04 LTS, 16.04 LTS, 14.04 LTS
+- Ubuntu 19,04, 19,10, 18.04 LTS, 16.04 LTS, 14.04 LTS (az Azure Linux VM Agent az áttelepítés során is automatikusan települ)
+- Ubuntu 18.04 LTS, 16.04 LTS
 - Debian 9, 8, 7
 - Oracle Linux 7,7, 7,7-CI
 
@@ -137,7 +138,7 @@ A következő táblázat összefoglalja a fent felsorolt operációs rendszerek 
 
 | Művelet                                      | Ügynökön \- alapuló VMware-áttelepítés | Ügynök nélküli VMware-áttelepítés | Hyper\-V   |
 |---------------------------------------------|-------------------------------|----------------------------|------------|
-| A Hyper \- V Linux Integration Services telepítése | Igen                           | Igen                        | Nem szükséges |
+| A Hyper \- V Linux Integration Services telepítése | Igen                           | Yes                        | Nem szükséges |
 | Az Azure soros konzol naplózásának engedélyezése         | Igen                           | Igen                        | Nem         |
 | Eszköz-hozzárendelési fájl frissítése                      | Igen                           | Nem                         | Nem         |
 | Fstab-bejegyzések frissítése                        | Igen                           | Igen                        | Nem         |
@@ -147,6 +148,7 @@ A következő táblázat összefoglalja a fent felsorolt operációs rendszerek 
 
 További információ a [Linux rendszerű virtuális gépek Azure-beli futtatásáról](../virtual-machines/linux/create-upload-generic.md), valamint a népszerű Linux-disztribúciók használati lépéseiről.
 
+Tekintse át a Linux rendszerű virtuális gép ügynökének telepítéséhez [szükséges csomagok](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements) listáját. Azure Migrate a Linux rendszerű virtuális gép ügynökét automatikusan telepíti a 64 bites RHEL6, a RHEL7, a CentOS7 (6), az Ubuntu 14,04, az Ubuntu 16,04, az Ubuntu 18.04 pedig a VMware-áttelepítés ügynök nélküli módszerének használata esetén.
 
 ## <a name="check-azure-vm-requirements"></a>Az Azure-beli virtuális gépekre vonatkozó követelmények keresése
 

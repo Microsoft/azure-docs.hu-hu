@@ -1,0 +1,59 @@
+### YamlMime:Landing
+title: Az Azure API for FHIR dokumentációja
+summary: Az Azure API for FHIR egy klinikai egészségügyi adatokhoz készült, felügyelt, szabványokon alapuló megfelelő API, amely döntéstámogató elemzési és gépi tanulási megoldások használatát teszi lehetővé.
+metadata:
+  title: Az Azure API for FHIR dokumentációja – oktatóanyagok, útmutatók
+  description: Az Azure API for FHIR egy klinikai egészségügyi adatokhoz készült, felügyelt, szabványokon alapuló megfelelő API, amely döntéstámogató elemzési és gépi tanulási megoldások használatát teszi lehetővé.
+  services: healthcare-apis
+  ms.service: healthcare-apis
+  ms.subservice: fhir
+  ms.topic: landing-page
+  ms.collection: collection
+  author: matjazl
+  ms.author: matjazl
+  ms.date: 08/13/2020
+  ms.openlocfilehash: d633b5376832672ecc7c917e24728666b889e16c
+  ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+  ms.translationtype: MT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 03/11/2021
+  ms.locfileid: "103017436"
+landingContent:
+- title: Bevezetés az Azure API for FHIR használatába
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure API for FHIR?
+      url: overview.md
+    - text: Mi az az FHIR-hez készült Azure IoT-összekötő (előzetes verzió)?
+      url: overview.md#azure-iot-connector-for-fhir-preview
+  - linkListType: quickstart
+    links:
+    - text: Az API Server for FHIR üzembe helyezése
+      url: fhir-paas-portal-quickstart.md
+    - text: Az FHIR-hez készült Azure IoT-összekötő üzembe helyezése (előzetes verzió)
+      url: iot-fhir-portal-quickstart.md
+- title: Beállítási oktatóanyagok
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: JavaScript-alkalmazás üzembe helyezése az FHIR-szolgáltatásból származó adatok beolvasásához
+      url: tutorial-web-app-fhir-server.md
+    - text: Az FHIR API elérése a Postman használatával
+      url: access-fhir-postman-tutorial.md
+    - text: SMART-integráció külső alkalmazásokhoz és egészségügyi rekordokhoz
+      url: use-smart-on-fhir-proxy.md
+    - text: Adatok fogadása az Azure IoT Hubon keresztül
+      url: device-data-through-iot-hub.md
+- title: Alkalmazások regisztrálása AD-hitelesítéshez
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Erőforrás-alkalmazás regisztrálása
+      url: register-resource-azure-ad-client-app.md
+    - text: Bizalmas ügyfélalkalmazás regisztrálása
+      url: register-confidential-azure-ad-client-app.md
+    - text: Nyilvános ügyfélalkalmazás regisztrálása
+      url: register-public-azure-ad-client-app.md
+    - text: Szolgáltatásoldali ügyfélalkalmazás regisztrálása
+      url: register-service-azure-ad-client-app.md

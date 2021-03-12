@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 03/04/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d5671626e05145f79c3ad5fc0ecdb5628ac9421
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 7f316b17096e1241fe23cbf2c965122fd8966522
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102427130"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630877"
 ---
 # <a name="conditional-access-users-and-groups"></a>Feltételes hozzáférés: felhasználók és csoportok
 
@@ -38,7 +38,7 @@ A feltételes hozzáférési szabályzat létrehozásakor a következő beállí
    - Minden vendég és külső felhasználó
       - Ez a beállítás tartalmazza a B2B-vendégeket és a külső felhasználókat, beleértve az attribútummal rendelkező összes felhasználót `user type` `guest` . Ez a kijelölés minden olyan külső felhasználóra érvényes, amely egy másik szervezettől, például egy felhőalapú megoldás-szolgáltatótól (CSP) bejelentkezett. 
    - Címtárbeli szerepkörök
-      - Lehetővé teszi a rendszergazdák számára, hogy kiválasszanak bizonyos Azure AD-címtárbeli szerepköröket a hozzárendelés meghatározásához. Előfordulhat például, hogy a szervezetek szigorúbb házirendet hoznak létre a globális rendszergazdai szerepkörrel rendelkező felhasználók számára.
+      - Lehetővé teszi a rendszergazdák számára a szabályzat-hozzárendelés meghatározásához használt, beépített Azure AD-címtárbeli szerepkörök kiválasztását. Előfordulhat például, hogy a szervezetek szigorúbb házirendet hoznak létre a globális rendszergazdai szerepkörrel rendelkező felhasználók számára. Más szerepkör-típusok nem támogatottak, beleértve a felügyeleti egység hatókörű címtárbeli szerepköreit, az egyéni szerepköröket.
    - Felhasználók és csoportok
       - Engedélyezi a felhasználók meghatározott csoportjainak célzását. Például a szervezetek kiválaszthatnak egy csoportot, amely a HR-részleg összes tagját tartalmazza, ha egy HR-alkalmazás van kiválasztva a felhőalapú alkalmazásként. Egy csoport bármilyen típusú csoport lehet az Azure AD-ben, beleértve a dinamikus vagy a hozzárendelt biztonsági és terjesztési csoportokat is. A házirend a beágyazott felhasználókra és csoportokra lesz alkalmazva.
 
