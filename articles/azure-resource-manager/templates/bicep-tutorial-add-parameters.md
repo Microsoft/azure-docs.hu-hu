@@ -2,15 +2,15 @@
 title: Oktatóanyag – paraméterek hozzáadása Azure Resource Manager bicep-fájlhoz
 description: Adjon hozzá paramétereket a bicep-fájlhoz, hogy újrafelhasználható legyen.
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 603aa8f8bdb8136f4418d8f9a77bb40ec39243c0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 00df2ffc6272011127c5a1eb0c1e302011f8de5f
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748209"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632781"
 ---
 # <a name="tutorial-add-parameters-to-azure-resource-manager-bicep-file"></a>Oktatóanyag: paraméterek hozzáadása Azure Resource Manager bicep-fájlhoz
 
@@ -34,7 +34,7 @@ Előfordulhat, hogy észrevette, hogy probléma merült fel a bicep-fájllal kap
 
 ## <a name="make-bicep-file-reusable"></a>A bicep-fájl újrafelhasználhatóvé tétele
 
-A bicep-fájl újrafelhasználhatóvé tételéhez vegyünk fel egy paramétert, amely segítségével átadható a Storage-fiók neve. Az alábbi példában látható bicep a következő példában a fájl változásait mutatja be. A `storageName` paraméter karakterláncként van azonosítva. A maximális hossz 24 karakter, ami megakadályozza a túl hosszú nevek megadását.
+A bicep-fájl újrafelhasználhatóvé tételéhez vegyünk fel egy paramétert, amely segítségével átadható a Storage-fiók neve. A következő bicep-fájl azt mutatja be, hogy mi módosult a fájlban. A `storageName` paraméter karakterláncként van azonosítva. A maximális hossz 24 karakter, ami megakadályozza a túl hosszú nevek megadását.
 
 Másolja a teljes fájlt, és cserélje le a következő tartalomra.
 

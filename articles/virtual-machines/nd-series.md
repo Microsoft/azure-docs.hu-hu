@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 750d99655098628ef0d72ae3208289f57e625f3d
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 5516e17a74fffd28f432df305dfa7f592644d4a7
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/10/2021
-ms.locfileid: "102562265"
+ms.locfileid: "102611572"
 ---
 # <a name="nd-series"></a>ND sorozat
 
@@ -24,7 +24,7 @@ Az ND sorozatú Virtual Machines az AI-hoz készült GPU-család, valamint a Dee
 [Memória-megőrzési frissítések](maintenance-and-updates.md): nem támogatott<br>
 [VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
 [Gyorsított hálózatkezelés](../virtual-network/create-vm-accelerated-networking-cli.md): nem támogatott<br>
-[Ideiglenes operációsrendszer-lemezek](ephemeral-os-disks.md): nem támogatott <br>
+[Ideiglenes operációsrendszer-lemezek](ephemeral-os-disks.md): támogatott <br>
 NVIDIA NVLink Interconnect: nem támogatott<br>
 
 > [!IMPORTANT]

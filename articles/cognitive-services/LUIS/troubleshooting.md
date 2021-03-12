@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
-ms.openlocfilehash: e4de77a8a56ce21511ad099af59a77e10ab1815d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: b5e25e9ed25ced96d38994928bcb6275ce79420f
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787536"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612796"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding – Gyakori kérdések (GYIK)
 
@@ -286,7 +286,7 @@ Ha a Azure Bot Service használja, és a probléma az, hogy a **webes csevegésb
 
 #### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>Probléma megoldása a helyi gépen a bot Framework-mel való hibakeresés során.
 
-Ha többet szeretne megtudni a robot helyi hibakereséséről, olvassa el [a robot hibakeresése](/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0)című témakört.
+Ha többet szeretne megtudni a robot helyi hibakereséséről, olvassa el [a robot hibakeresése](/azure/bot-service/bot-service-debug-bot)című témakört.
 
 ## <a name="integrating-luis"></a>A LUIS integrálása
 
@@ -330,7 +330,7 @@ Videók:
 
 * [Az Azure társalgási AI használata az üzlet méretezésére a következő generáció számára](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A LUIS-vel kapcsolatos további tudnivalókért tekintse meg a következő forrásokat:
 * [A LUIS-mel kapcsolatos kérdések Stack Overflow](https://stackoverflow.com/questions/tagged/luis)

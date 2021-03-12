@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 11/17/2020
 ms.author: alkohli
-ms.openlocfilehash: 763ccd397d8cd704ca161032e65f17979bccb53b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9fa4c678a04342b47601f81ede7c49ab841f42ba
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466904"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630962"
 ---
 # <a name="configure-vpn-on-your-azure-stack-edge-mini-r-device-via-azure-powershell"></a>Konfigurálja a VPN-t az Azure Stack Edge mini R-eszközön a Azure PowerShell használatával
 
@@ -303,7 +303,7 @@ Kövesse az alábbi lépéseket az Azure Stack Edge-eszköz helyi felhasználói
 
 ## <a name="validate-data-transfer-through-vpn"></a>A VPN-en keresztüli adatátvitel ellenőrzése
 
-A VPN működésének megerősítéséhez másolja az adatmásolt SMB-megosztásba. Kövesse a [megosztás hozzáadása](azure-stack-edge-j-series-manage-shares.md#add-a-share) az Azure stack Edge-eszközön című témakör lépéseit. 
+A VPN működésének megerősítéséhez másolja az adatmásolt SMB-megosztásba. Kövesse a [megosztás hozzáadása](azure-stack-edge-gpu-manage-shares.md#add-a-share) az Azure stack Edge-eszközön című témakör lépéseit. 
 
 1. Másoljon egy fájlt, például \data\pictures\waterfall.jpg az ügyfél rendszerére csatlakoztatott SMB-megosztásra. 
 2. Annak ellenőrzéséhez, hogy az adatátvitel a VPN-en keresztül történik-e, az Adatmásolás közben:
@@ -382,6 +382,6 @@ Outputs                 :
 Get-AzResourceGroupDeploymentOperation -ResourceGroupName $ResourceGroupName -DeploymentName $AzureDeploymentName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Konfigurálja a VPN-t a Azure stack Edge-eszköz helyi felhasználói felületén keresztül](azure-stack-edge-mini-r-deploy-configure-certificates-vpn-encryption.md#configure-vpn).

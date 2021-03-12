@@ -2,17 +2,17 @@
 title: Azure Resource Manager sablonban található virtuális gépek | Microsoft Azure
 description: További információ arról, hogyan van definiálva a virtuális gép erőforrása egy Azure Resource Manager sablonban.
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 2726ba3b337dc785de58b06fb5e8372058f71879
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 32b73be3faf6eedb92220725b292a3e69cf7f965
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202096"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555992"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuális számítógépek egy Azure Resource Manager-sablonban
 

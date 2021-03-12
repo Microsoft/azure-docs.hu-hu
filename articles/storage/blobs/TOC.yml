@@ -153,18 +153,18 @@
               href: ../common/network-routing-preference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Adatvédelem
           items:
+            - name: Tárolók helyreállítható törlése
+              href: soft-delete-container-overview.md
             - name: Verziókezelés
               href: versioning-overview.md
             - name: Blobok helyreállítható törlése
               href: soft-delete-blob-overview.md
-            - name: Tárolók helyreállítható törlése
-              href: soft-delete-container-overview.md
+            - name: Adott időpontnak megfelelő helyreállítás
+              href: point-in-time-restore-overview.md
             - name: Pillanatképek
               href: snapshots-overview.md
             - name: Csatorna módosítása
               href: storage-blob-change-feed.md
-            - name: Adott időpontnak megfelelő helyreállítás
-              href: point-in-time-restore-overview.md
             - name: Nem módosítható blobok
               href: storage-blob-immutable-storage.md
         - name: Redundancia és vész-helyreállítás
@@ -401,18 +401,20 @@
               href: ../common/azure-defender-storage-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Blobok adatainak védelme
           items:
+            - name: Storage-fiók zárolása
+              href: ../common/lock-account-resource.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Tárolók helyreállítható törlésének engedélyezése
+              href: soft-delete-container-enable.md
             - name: Blob verziószámozásának engedélyezése
               href: versioning-enable.md
             - name: Blobok helyreállítható törlésének engedélyezése
               href: soft-delete-blob-enable.md
-            - name: Tárolók helyreállítható törlésének engedélyezése
-              href: soft-delete-container-enable.md
+            - name: Időponthoz kötött visszaállítás engedélyezése
+              href: point-in-time-restore-manage.md
             - name: Pillanatképek készítése (.NET)
               href: snapshots-manage-dotnet.md
             - name: Változáscsatorna-naplók feldolgozása
               href: storage-blob-change-feed-how-to.md
-            - name: Időponthoz kötött visszaállítás engedélyezése
-              href: point-in-time-restore-manage.md
             - name: Módosíthatatlansági szabályzatok beállítása és kezelése
               href: storage-blob-immutability-policies-manage.md
         - name: A redundancia és a feladatátvétel kezelése

@@ -8,14 +8,16 @@ ms.author: kgremban
 ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 2ae6d46198d979f91de5bf31d389f75961b4ab88
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 6e5b5c021eb6a83de9ecfb31757855065b70c290
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437167"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103196931"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Azure IoT Edge-modulok fejlesztése és hibakeresése a Visual Studio 2019 használatával
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Az üzleti logikát bekapcsolhatja Azure IoT Edge moduljaiba. Ebből a cikkből megtudhatja, hogyan használhatja a Visual Studio 2019-et a modulok fejlesztésére és hibakeresésére szolgáló fő eszközként.
 
@@ -166,7 +168,7 @@ Az egyes modulokat általában tesztelni és hibakeresést végezni, mielőtt eg
 
 Miután befejezte egyetlen modul fejlesztését, érdemes lehet egy teljes megoldást futtatni és hibakeresést végezni több modullal.
 
-1. A **Megoldáskezelőban** adjon hozzá egy második modult a megoldáshoz, kattintson a jobb gombbal a **AzureIoTEdgeApp1** elemre, és válassza az **Add**  >  **új IoT Edge modul** hozzáadása lehetőséget. A második modul alapértelmezett neve **IotEdgeModule2** , és egy másik pipe-modulként fog működni.
+1. A **Megoldáskezelőban** adjon hozzá egy második modult a megoldáshoz, kattintson a jobb gombbal a **AzureIoTEdgeApp1** elemre, és válassza az   >  **új IoT Edge modul** hozzáadása lehetőséget. A második modul alapértelmezett neve **IotEdgeModule2** , és egy másik pipe-modulként fog működni.
 
 1. Nyissa meg a fájlt `deployment.template.json` , és látni fogja, hogy a **IotEdgeModule2** hozzá lett adva a **modulok** szakaszhoz. Cserélje le az **útvonalak** szakaszt az alábbira. Ha testre szabta a modulok nevét, ügyeljen rá, hogy a neveket a megfelelő értékre frissítse.
 
@@ -222,7 +224,7 @@ Miután befejezte egyetlen modul fejlesztését, érdemes lehet egy teljes megol
 
 Az IoT Edge-eszköz beállításához használt rövid útmutatóban egy modult helyezett üzembe az Azure Portal segítségével. A Visual studióhoz készült Cloud Explorer használatával a modulokat is üzembe helyezheti. Már rendelkezik egy, a forgatókönyvhöz előkészített üzembe helyezési jegyzékfájlval, a `deployment.json` fájlnak és az összes szükséges műveletnek ki kell választania egy eszközt az üzemelő példány fogadásához.
 
-1. Nyissa meg a **Cloud Explorert** a **View**  >  **Cloud Explorer** megtekintése elemre kattintva. Győződjön meg arról, hogy bejelentkezett a Visual Studio 2019-ba.
+1. Nyissa meg a **Cloud Explorert** a   >  **Cloud Explorer** megtekintése elemre kattintva. Győződjön meg arról, hogy bejelentkezett a Visual Studio 2019-ba.
 
 1. A **Cloud Explorerben** bontsa ki az előfizetését, keresse meg az Azure-IoT hub és a telepíteni kívánt Azure IoT Edge eszközt.
 
@@ -236,6 +238,6 @@ Az IoT Edge-eszköz beállításához használt rövid útmutatóban egy modult 
 
 1. A figyelési információk leállításához jelölje be a **beépített esemény végpontjának figyelése** a **műveleti** ablakban jelölőnégyzetet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egyéni modulok fejlesztése a IoT Edge-eszközökhöz, az [Azure IoT hub SDK-k megismerése és használata](../iot-hub/iot-hub-devguide-sdks.md).

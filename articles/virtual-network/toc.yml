@@ -411,13 +411,11 @@
       items:
         - name: NAT-átjáró létrehozása és ellenőrzése – PowerShell
           href: tutorial-create-nat-gateway-powershell.md
-        - name: NAT-átjáró létrehozása – CLI
-          href: quickstart-create-nat-gateway-cli.md
+        - name: NAT-átjáró létrehozása és ellenőrzése – CLI
+          href: tutorial-create-nat-gateway-cli.md
         - name: NAT-átjáró létrehozása – ARM-sablon
           displayname: Resource Manager
           href: quickstart-create-nat-gateway-template.md
-        - name: NAT-átjáró létrehozása és ellenőrzése – CLI
-          href: tutorial-create-validate-nat-gateway-cli.md
     - name: Hibaelhárítás
       items:
         - name: Virtuális hálózatok közötti társviszony-létesítési problémák hibaelhárítása

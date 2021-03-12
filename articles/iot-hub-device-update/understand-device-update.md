@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: overview
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 0d12ce74cb961148776d81b3d7cabc281bbc59fc
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 17674c1a5d7acff50a3dd17b9d98f5295c2e1b19
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665485"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633036"
 ---
 # <a name="device-update-for-iot-hub-preview-overview"></a>A IoT Hub eszköz frissítése (előzetes verzió) – áttekintés
 
@@ -23,10 +23,10 @@ Az IoT-kompatibilis digitális átalakítás teljes előnyeinek kihasználásáh
 
 ## <a name="support-for-a-wide-range-of-iot-devices"></a>Számos IoT-eszköz támogatása
 
-A IoT Hub eszközének frissítése úgy lett kialakítva, hogy az [Azure IoT hub](https://azure.microsoft.com/en-us/services/iot-hub/)-nal való integráció révén optimalizálható legyen az optimalizált frissítések telepítése és az egyszerűsített műveletek. Ez az integráció megkönnyíti az eszköz frissítésének elfogadását bármely meglévő megoldáson. Felhőalapú megoldást kínál a gyakorlatilag bármilyen eszköz csatlakoztatására. Az eszköz frissítése a IoT operációs rendszerek széles körét támogatja – például a Linux és az [Azure RTOS](https://azure.microsoft.com/en-us/services/rtos/) (valós idejű operációs rendszer) –, és a nyílt forráskódon keresztül bővíthető. 
+A IoT Hub eszközének frissítése úgy lett kialakítva, hogy az [Azure IoT hub](https://azure.microsoft.com/en-us/services/iot-hub/)-nal való integráció révén optimalizálható legyen az optimalizált frissítések telepítése és az egyszerűsített műveletek. Ez az integráció megkönnyíti az eszköz frissítésének elfogadását bármely meglévő megoldáson. Felhőalapú megoldást kínál a gyakorlatilag bármilyen eszköz csatlakoztatására. Az eszköz frissítése a IoT operációs rendszerek széles körét támogatja – például a Linux és az [Azure RTOS](https://azure.microsoft.com/en-us/services/rtos/) (valós idejű operációs rendszer) –, és a nyílt forráskódon keresztül bővíthető. A NXP, a STMicroelectronics, a Renesas és a microchip szolgáltatással együtt fejlesztjük az eszközök frissítését IoT Hub ajánlatokhoz. Tekintse meg a Key Semiconductors próbaverziós táblák [mintáit](https://github.com/azure-rtos/samples/tree/PublicPreview/ADU) , amely tartalmazza az első lépéseket ismertető útmutatót, amelyből megtudhatja, hogyan konfigurálhatja, építheti és helyezheti üzembe a over-the-Air (OTA) frissítéseket az MCU osztályú eszközökhöz.
 
 Az eszköz Update Agent Simulator bináris és málna PI-Yocto lemezképek is elérhetők.
-A IoT Hub eszköz frissítése támogatja a Azure IoT Edge-eszközök frissítését is. Az Ubuntu Server 18,04 amd64 platformhoz egy eszköz-frissítési ügynök van megadva. A IoT Hub eszköz frissítése is biztosít nyílt forráskódot, ha nem a fenti platformok egyikét futtatja. Ez lehetővé teszi, hogy az ügynököt az Ön által futtatott eloszlásba porton.
+A IoT Hub eszköz frissítése támogatja a Azure IoT Edge-eszközök frissítését is. Az Ubuntu Server 18,04 amd64 platformhoz egy eszköz-frissítési ügynök van megadva. A IoT Hub eszköz frissítése is biztosít nyílt forráskódot, ha nem a fenti platformok egyikét futtatja. Az ügynököt az Ön által futtatott disztribúcióhoz is elvégezheti.
 
 Az eszköz frissítése IoT Plug and Play (PnP) működik, és képes a szükséges PnP-felületeket támogató bármely eszköz kezelésére. További információ: [IoT hub-és IoT-Plug and Play eszköz frissítése](device-update-plug-and-play.md).
 

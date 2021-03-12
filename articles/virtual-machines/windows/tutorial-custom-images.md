@@ -2,19 +2,19 @@
 title: Oktatóanyag – egyéni virtuálisgép-rendszerképek létrehozása a Azure PowerShell
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Azure PowerShellt egy Azure megosztott rendszerkép-katalógusban tárolt egyéni Windowsos virtuálisgép-rendszerkép létrehozásához.
 author: cynthn
-ms.service: virtual-machines-windows
-ms.subservice: imaging
+ms.service: virtual-machines
+ms.subservice: shared-image-gallery
 ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0e3521603c4651133f1420809e4921ad27279860
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 145b7300272243099cfccad0c99d8f69e83e6762
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98873187"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555822"
 ---
 # <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>Oktatóanyag: Windowsos virtuális gépek rendszerképeinek létrehozása a Azure PowerShell
 
@@ -209,7 +209,7 @@ Remove-AzResourceGroup -Name myResoureceGroup
 
 Az Azure a csomagoló, az [Azure VM rendszerkép-készítő](../image-builder-overview.md)szolgáltatásra épülő szolgáltatást is kínál. Egyszerűen írja le a testreszabásokat egy sablonban, és kezeli a képek létrehozását. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy speciális virtuálisgép-rendszerképet. Megtanulta végrehajtani az alábbi műveleteket:
 

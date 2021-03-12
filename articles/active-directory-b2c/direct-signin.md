@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: b2342ed978204284bee4d2be0f1c983aa10ade36
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 35e8efa269ab72477b06e86824d368d0a3dced03
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585037"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103197328"
 ---
 # <a name="set-up-direct-sign-in-using-azure-active-directory-b2c"></a>Közvetlen bejelentkezés beállítása Azure Active Directory B2C használatával
 
@@ -79,7 +79,7 @@ A domain hint lekérdezési karakterlánc paramétere a következő tartományok
 
 ::: zone pivot="b2c-custom-policy"
 
-A tartomány Hing paraméterének támogatásához a tartománynevet a `<Domain>domain name</Domain>` tetszőleges XML-elem használatával állíthatja be `<ClaimsProvider>` .
+A domain hint paraméter támogatásához a tartománynevet a `<Domain>domain name</Domain>` tetszőleges XML-elem használatával állíthatja be `<ClaimsProvider>` .
 
 ```xml
 <ClaimsProvider>

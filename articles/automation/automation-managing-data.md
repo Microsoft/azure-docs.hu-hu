@@ -3,14 +3,14 @@ title: Adatbiztonság Azure Automation
 description: Ebből a cikkből megtudhatja, hogyan védi a Azure Automation az adatvédelmet, és gondoskodik az adatok védelméről.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 03/02/2021
+ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2bdf25ef24f1fbf4aaf4dec154ea6af3421b915a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: e41e9af418b08210f5f0f40de9951d03711dc8e7
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050817"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102616116"
 ---
 # <a name="management-of-azure-automation-data"></a>Azure Automation-adatok kezelése
 
@@ -26,7 +26,7 @@ A Azure Automation felé irányuló adatforgalom biztosításához határozottan
 
 * DSC-csomópontok
 
-A TLS/SSL (SSL) régebbi verziói sebezhetőnek találták, és miközben jelenleg is működnek a visszamenőleges kompatibilitás érdekében, **nem ajánlottak**. Nem ajánlott explicit módon beállítani az ügynököt úgy, hogy csak a TLS 1,2-et használja, kivéve, ha ez nem feltétlenül szükséges, mivel ez a platform szintű biztonsági funkciókat is lehetővé teszi, amelyekkel automatikusan észlelhetők és kihasználhatják az elérhetővé váló újabb biztonságosabb protokollokat, például a TLS 1,3.
+A TLS/SSL (SSL) régebbi verziói sebezhetőnek találták, és miközben jelenleg is működnek a visszamenőleges kompatibilitás érdekében, **nem ajánlottak**. Nem ajánlott explicit módon beállítani az ügynököt úgy, hogy csak a TLS 1,2-et használja, kivéve, ha a szükséges, mivel ez a platform szintű biztonsági funkciókat is lehetővé teszi, amelyekkel automatikusan észlelhetők és kihasználhatják az elérhetővé váló újabb biztonságosabb protokollokat, például a TLS 1,3.
 
 További információ a Windows és Linux rendszerhez készült Log Analytics ügynökkel való TLS 1,2-támogatásról, amely a hibrid Runbook-feldolgozói szerepkörtől függ: [log Analytics ügynök áttekintése – TLS 1,2](..//azure-monitor/agents/log-analytics-agent.md#tls-12-protocol).
 
@@ -41,7 +41,7 @@ További információ a Windows és Linux rendszerhez készült Log Analytics ü
 
 ## <a name="data-retention"></a>Adatmegőrzés
 
-Amikor töröl egy erőforrást a Azure Automationban, a rendszer a végleges eltávolítás előtt több napra megőrzi a naplózási célokat. Ebben az időszakban nem tekintheti meg és nem használhatja az erőforrást. Ez a szabályzat a törölt Automation-fiókhoz tartozó erőforrásokra is vonatkozik. Az adatmegőrzési szabályzat minden felhasználóra érvényes, és jelenleg nem szabható testre. Ha azonban hosszabb ideig kell megtartania az adatokra vonatkozó adatmegőrzést, [Azure Automation feladataikat Azure monitor naplókhoz továbbíthatja](automation-manage-send-joblogs-log-analytics.md).
+Ha Azure Automationban töröl egy erőforrást, a rendszer a végleges eltávolítás előtt több napig megőrzi a naplózási célokra. Ebben az időszakban nem tekintheti meg és nem használhatja az erőforrást. Ez a szabályzat a törölt Automation-fiókhoz tartozó erőforrásokra is vonatkozik. Az adatmegőrzési szabályzat minden felhasználóra érvényes, és jelenleg nem szabható testre. Ha azonban hosszabb ideig kell megtartania az adatokra vonatkozó adatmegőrzést, [Azure Automation feladataikat Azure monitor naplókhoz továbbíthatja](automation-manage-send-joblogs-log-analytics.md).
 
 A következő táblázat összefoglalja a különböző erőforrások adatmegőrzési szabályzatát.
 
@@ -68,7 +68,7 @@ A runbookok a Windows PowerShell Azure Portal vagy a [Get-AzureAutomationRunbook
 
 ### <a name="integration-modules"></a>Integrációs modulok
 
-Azure Automationból nem exportálhatja az integrációs modulokat. Ezeket az Automation-fiókon kívül is elérhetővé kell tenni.
+Az integrációs modulokat nem exportálhatja Azure Automationból, hanem elérhetővé kell tenni az Automation-fiókon kívül.
 
 ### <a name="assets"></a>Objektumok
 
@@ -84,7 +84,10 @@ A DSC-konfigurációkat a Windows PowerShell Azure Portal vagy [export-AzAutomat
 
 A Geo-replikáció a Azure Automation fiókokban szabványos. A fiók beállításakor ki kell választania egy elsődleges régiót. A belső Automation geo-Replication szolgáltatás automatikusan hozzárendel egy másodlagos régiót a fiókhoz. A szolgáltatás ezután folyamatosan biztonsági mentést készít az elsődleges régióból a másodlagos régióba. Az elsődleges és másodlagos régiók teljes listája megtalálható az [üzletmenet folytonossága és a vész-helyreállítási (BCDR): Azure párosított régiók](../best-practices-availability-paired-regions.md)között.
 
-Az Automation geo-Replication szolgáltatás által létrehozott biztonsági másolat az Automation-eszközök, konfigurációk és hasonlók teljes másolata. Ez a biztonsági másolat akkor használható, ha az elsődleges régió leáll, és elveszíti az adatvesztést. Abban az esetben, ha az elsődleges régió adatainak elvesztése nem valószínű, a Microsoft megkísérli a helyreállítást. Ha a vállalat nem tudja helyreállítani az elsődleges adatokat, automatikus feladatátvételt használ, és az Azure-előfizetésén keresztül tájékoztatja Önt a helyzetről.
+Az Automation geo-Replication szolgáltatás által létrehozott biztonsági másolat az Automation-eszközök, konfigurációk és hasonlók teljes másolata. Ez a biztonsági másolat akkor használható, ha az elsődleges régió leáll, és elveszíti az adatvesztést. Abban az esetben, ha az elsődleges régió adatainak elvesztése nem valószínű, a Microsoft megkísérli a helyreállítást.
+
+> [!NOTE]
+> A Azure Automation az ügyfél által kiválasztott régióban tárolja az ügyféladatokat. A BCDR esetében minden régió esetében, kivéve Dél-és Délkelet-Ázsiában, Azure Automation az adat egy másik régióban (Azure párosított régió) tárolódik. A Ázsia és a Csendes-óceáni térség földrajzban található Brazília déli régiója (Sao Paulo állam) régiója és Délkelet-ázsiai régiója (Szingapúr) esetében az adatAzure Automation tárolásra vonatkozó követelményeket az adott régióban tároljuk.
 
 Az Automation geo-Replication szolgáltatás nem érhető el közvetlenül a külső ügyfelek számára, ha van regionális hiba. Ha az Automation-konfigurációt és a runbookok a regionális hibák során szeretné fenntartani:
 

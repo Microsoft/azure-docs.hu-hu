@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4889744347b72603a0f6318f981bc2db4906b835
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 7bb9b6d4a6ca006952d709244e6526345d44431e
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433539"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630266"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Function Apps-alkalmazások összekapcsolhatók az Azure-ban az adatfeldolgozáshoz
 
@@ -63,7 +63,7 @@ Az SDK használatához a következő csomagokat kell felvennie a projektbe. A cs
 * [System .net. http](https://www.nuget.org/packages/System.Net.Http/)
 * [Azure. Core](https://www.nuget.org/packages/Azure.Core/)
 
-Ezután a Visual Studio Megoldáskezelőban nyissa meg azt a _Function1.cs_ -fájlt, amelyben a mintakód szerepel, és adja hozzá a következő `using` utasításokat ezekhez a csomagokhoz a függvényhez. 
+Ezután a Visual Studio Megoldáskezelőban nyissa meg azt a _Function1.cs_ -fájlt, amelyben a mintakód szerepel, és adja hozzá a következő `using` utasításokat ezekhez a csomagokhoz a függvényhez.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="Function_dependencies":::
 
@@ -96,6 +96,20 @@ Most, hogy megtörtént az alkalmazása, közzéteheti az Azure-ban a következ�
 ## <a name="publish-the-function-app-to-azure"></a>A függvényalkalmazás közzététele az Azure-ban
 
 [!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
+
+### <a name="verify-function-publish"></a>A függvény közzétételének ellenőrzése
+
+1. Jelentkezzen be a hitelesítő adataival a [Azure Portal](https://portal.azure.com/).
+2. Az ablak tetején található keresési sávban keresse meg a **Function app-nevet**.
+
+    :::image type="content" source="media/how-to-create-azure-function/search-function-app.png" alt-text="Keresse meg a Function alkalmazást a nevével a Azure Portalban." lightbox="media/how-to-create-azure-function/search-function-app.png":::
+
+3. A megnyíló *Function alkalmazás* oldalon válassza a bal oldali menüben a *függvények* lehetőséget. Ha a függvény sikeresen közzé lett téve, a függvény neve megjelenik a listában.
+Vegye figyelembe, hogy előfordulhat, hogy néhány percig várnia kell, vagy frissítenie kell a lapot, mielőtt látni tudja a funkciót a közzétett függvények listájában.
+
+    :::image type="content" source="media/how-to-create-azure-function/view-published-functions.png" alt-text="A Azure Portal közzétett funkcióinak megtekintése." lightbox="media/how-to-create-azure-function/view-published-functions.png":::
+
+Ahhoz, hogy a Function alkalmazás hozzáférhessen az Azure digitális Twins-hoz, rendelkeznie kell egy, a rendszer által felügyelt identitással, amely jogosult az Azure Digital Twins-példány elérésére. Ezt követően állítsa be a következőt.
 
 ## <a name="set-up-security-access-for-the-function-app"></a>Biztonsági hozzáférés beállítása a Function alkalmazáshoz
 
@@ -155,7 +169,7 @@ A rendszerhez rendelt felügyelt identitás lehetővé teszi, hogy az Azure-erő
 
     :::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Képernyőkép a Azure Portalról: a függvény alkalmazás neve a portálon, a keresési eredmény pedig ki van jelölve.":::
 
-1. A függvény alkalmazás lapján válassza a bal oldali navigációs sáv _identitás_ elemét, hogy működjön a függvény felügyelt identitásával. A _rendszer által hozzárendelt_ lapon ellenőrizze, hogy az _állapot_ be **van-e kapcsolva (ha** nem, állítsa be most, és *mentse* a változást).
+1. A függvény alkalmazás lapján válassza a bal oldali navigációs sáv _identitás_ elemét, hogy működjön a függvény felügyelt identitásával. A _rendszer által hozzárendelt_ lapon ellenőrizze, hogy az _állapot_ be van-e **kapcsolva** (ha nem, állítsa be most, és *mentse* a változást).
 
     :::image type="content" source="media/how-to-create-azure-function/verify-system-managed-identity.png" alt-text="Képernyőkép a Azure Portalról: a Function alkalmazás Identity (identitás) lapján az állapot beállítás be értékre van állítva." lightbox="media/how-to-create-azure-function/verify-system-managed-identity.png":::
 

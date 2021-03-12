@@ -2,24 +2,23 @@
 title: Azure bejárati ajtó | Microsoft Docs
 description: Ez a cikk az Azure Front Doorról nyújt áttekintést.
 services: frontdoor
-documentationcenter: ''
 author: duongau
-editor: ''
 ms.service: frontdoor
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/27/2020
+ms.date: 03/09/2021
 ms.author: duau
-ms.openlocfilehash: e9d719a29bc9a4b3e0428913e5bc1a91bec16623
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 2a5c298c201aa2a1f968c2a96dcfd6963a410cf7
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183165"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149222"
 ---
 # <a name="what-is-azure-front-door"></a>Mi az az Azure Front Door?
+
+> [!IMPORTANT]
+> Ez a dokumentáció az Azure-előtérben található. Információt keres az Azure bejárati ajtó standard/Premium (előzetes verzió) szolgáltatásáról? Megtekintés [itt](/standard-premium/overview.md).
 
 Az Azure bejárati ajtó egy globális, méretezhető belépési pont, amely a Microsoft globális peremhálózati hálózatát használja gyors, biztonságos és széles körben méretezhető webalkalmazások létrehozásához. A bejárati ajtóval a globális fogyasztói és nagyvállalati alkalmazásokat robusztus, nagy teljesítményű, személyre szabott modern alkalmazásokkal alakíthatja át, amelyek az Azure-on keresztül globális közönséget érnek el.
 

@@ -6,17 +6,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: emuench
 ms.author: krsh
-ms.date: 01/06/2021
-ms.openlocfilehash: 9164c1e2542024a02bf4868658d0f29728f32c7b
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.date: 02/18/2021
+ms.openlocfilehash: 7ed3f707ad69c60111bcc97e139c0825fd503d8e
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976860"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630109"
 ---
 # <a name="how-to-create-a-virtual-machine-using-an-approved-base"></a>Virtuális gép létrehozása jóváhagyott alap használatával
 
-Ez a cikk azt ismerteti, hogyan használható az Azure egy olyan virtuális gép (VM) létrehozásához, amely egy előre konfigurált, támogatott operációs rendszert tartalmaz. Ha ez nem kompatibilis a megoldással, [létrehozhat és konfigurálhat egy helyszíni virtuális gépet](azure-vm-create-using-own-image.md) egy jóváhagyott operációs rendszer használatával, majd beállíthatja és előkészítheti a feltöltéshez a [Windows VHD vagy VHDX felkészítése az Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md)-ba való feltöltésre című témakörben leírtak szerint.
+Ez a cikk azt ismerteti, hogyan használható az Azure egy olyan virtuális gép (VM) létrehozásához, amely egy előre konfigurált, támogatott operációs rendszert tartalmaz. Ha ez nem kompatibilis a megoldással, lehetséges, hogy a helyszíni virtuális gépet egy jóváhagyott operációs rendszer használatával [hozza létre és konfigurálja](azure-vm-create-using-own-image.md) .
 
 > [!NOTE]
 > Az eljárás megkezdése előtt tekintse át az Azure-beli virtuális gépekre vonatkozó [technikai követelményeket](marketplace-virtual-machines.md#technical-requirements) , beleértve a virtuális merevlemez (VHD) követelményeit.
@@ -78,5 +78,5 @@ A Windows vagy [Linux](../virtual-machines/linux/ssh-from-windows.md#connect-to-
 ## <a name="next-steps"></a>Következő lépések
 
 - Javasolt következő lépés: [a virtuálisgép-rendszerkép tesztelése](azure-vm-image-test.md) , hogy az megfeleljen az Azure Marketplace közzétételi követelményeinek. Ez nem kötelező.
-- Ha nem teszteli a virtuálisgép-rendszerképet, folytassa [a sas URI előállításával](azure-vm-get-sas-uri.md).
+- Ha nem szeretné tesztelni a virtuálisgép-rendszerképet, jelentkezzen be a [partner Centerbe](https://partner.microsoft.com/) a rendszerkép közzétételéhez.
 - Ha nehézségekbe ütközött az új Azure-alapú virtuális merevlemez létrehozása során, tekintse meg [Az Azure Marketplace-hez készült virtuális gépekkel kapcsolatos gyakori kérdéseket](azure-vm-create-faq.md).

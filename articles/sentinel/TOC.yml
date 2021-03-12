@@ -23,6 +23,8 @@
       href: tutorial-investigate-cases.md
     - name: Reagálás a fenyegetésekre
       href: tutorial-respond-threats-playbook.md
+    - name: KQL-lekérdezések létrehozása (Learn modul)
+      href: /learn/paths/sc-200-utilize-kql-for-azure-sentinel/
 - name: Alapelvek
   items:
     - name: Az adatbesorolás entitások használatával
@@ -311,6 +313,8 @@
           href: /azure/data-explorer/kusto/query/
         - name: Kusto lekérdezési nyelv rövid leírása
           href: /azure/data-explorer/kql-quick-reference
+        - name: Azure Monitor log-lekérdezések optimalizálása
+          href: /azure/azure-monitor/logs/query-optimization
     - name: UEBA-bővítések
       href: ueba-enrichments.md
 - name: További források

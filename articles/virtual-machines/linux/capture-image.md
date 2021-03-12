@@ -9,12 +9,12 @@ ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
 ms.collection: linux
-ms.openlocfilehash: 6b345f159ca30d93e43aae8fe34e7d469c57795b
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 8e81c204c1f05b7fc6bdf1efc7060e2094c648e5
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102556655"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630622"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>Virtuális gép vagy VHD felügyelt rendszerképének létrehozása
 
@@ -40,7 +40,7 @@ A cikk egyszerűsített verziójához, valamint az Azure-beli virtuális gépek 
 
 
 ## <a name="step-1-deprovision-the-vm"></a>1. lépés: a virtuális gép kiépítése
-Először távolítsa el a virtuális gépet az Azure virtuálisgép-ügynök használatával a gép-specifikus fájlok és az adatfájlok törléséhez. Használja a `waagent` parancsot a `-deprovision+user` forrás linuxos virtuális gépen található paraméterrel. További információk: [Azure Linux-ügynök – felhasználói útmutató](../extensions/agent-linux.md).
+Először távolítsa el a virtuális gépet az Azure virtuálisgép-ügynök használatával a gép-specifikus fájlok és az adatfájlok törléséhez. Használja a `waagent` parancsot a `-deprovision+user` forrás linuxos virtuális gépen található paraméterrel. További információk: [Azure Linux-ügynök – felhasználói útmutató](../extensions/agent-linux.md). Ez a folyamat nem vonható vissza.
 
 1. Kapcsolódjon Linux rendszerű virtuális géphez egy SSH-ügyféllel.
 2. Az SSH ablakban adja meg a következő parancsot:

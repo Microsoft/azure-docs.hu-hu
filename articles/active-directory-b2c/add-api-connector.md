@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: b63db3d02b471a577586ecd54f56caa59af504d6
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: facdb99a49c3778a75e733abf1fc72eed67549ab
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805512"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611614"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>API-összekötő hozzáadása egy regisztrációs felhasználói folyamathoz (előzetes verzió)
 
@@ -34,12 +34,36 @@ Az API- [Összekötők](api-connectors-overview.md)használatához először lé
 
 5. Adja meg a hívás megjelenítendő nevét. Például **érvényesítse a felhasználói adatokat**.
 6. Adja meg az API **-hívás végpontjának URL-címét** .
-7. Adja meg az API hitelesítési adatait.
+7. Válassza ki a **hitelesítési típust** , és konfigurálja a hitelesítési adatokat az API meghívásához. Az API biztonságossá tételéhez tekintse meg az alábbi szakaszt.
 
-   - Jelenleg csak az alapszintű hitelesítés támogatott. Ha alapszintű hitelesítés nélküli API-t szeretne használni fejlesztési célokra, egyszerűen adja meg az API által figyelmen kívül hagyható "dummy" **felhasználónevet** és **jelszót** . Ha egy API-kulccsal rendelkező Azure-függvényt használ, a kódot lekérdezési paraméterként is megadhatja a **végpont URL-címében** (például: `https://contoso.azurewebsites.net/api/endpoint?code=0123456789` ).
+    ![API-összekötő konfigurálása](./media/add-api-connector/api-connector-config.png)
 
-   ![Új API-összekötő konfigurálása](./media/add-api-connector/api-connector-config.png)
 8. Kattintson a **Mentés** gombra.
+
+## <a name="securing-the-api-endpoint"></a>Az API-végpont biztonságossá tétele
+Az API-végpontot a HTTP alapszintű hitelesítés vagy a HTTPS ügyféltanúsítvány-alapú hitelesítés (előzetes verzió) használatával biztosíthatja. Mindkét esetben meg kell adnia azokat a hitelesítő adatokat, amelyeket Azure AD B2C az API-végpont meghívásakor fog használni. Az API-végpont ezután ellenőrzi a hitelesítő adatokat, és végrehajtja az engedélyezési döntéseket.
+
+### <a name="http-basic-authentication"></a>Egyszerű HTTP-hitelesítés
+Az egyszerű HTTP-hitelesítés az [RFC 2617](https://tools.ietf.org/html/rfc2617)-ben van meghatározva. Azure AD B2C HTTP-kérést küld az ügyfél hitelesítő adataival ( `username` és `password` ) a `Authorization` fejlécben. A hitelesítő adatok Base64 kódolású karakterláncként vannak formázva `username:password` . Az API ezután ellenőrzi ezeket az értékeket annak meghatározására, hogy el kell-e utasítani egy API-hívást.
+
+### <a name="https-client-certificate-authentication-preview"></a>HTTPS-ügyféltanúsítvány hitelesítése (előzetes verzió)
+
+> [!IMPORTANT]
+> Ez a funkció előzetes verzióban érhető el, és szolgáltatói szerződés nélkül is elérhető. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Az ügyféltanúsítvány-alapú hitelesítés kölcsönös tanúsítványalapú hitelesítés, amelyben az ügyfél egy ügyféltanúsítványt biztosít a kiszolgálónak az identitásának igazolásához. Ebben az esetben a Azure AD B2C az API-összekötő konfigurációjának részeként feltöltött tanúsítványt fogja használni. Ez az SSL-kézfogás részeként történik. Csak a megfelelő tanúsítvánnyal rendelkező szolgáltatások férhetnek hozzá a REST API szolgáltatáshoz. Az ügyféltanúsítvány egy X. 509 digitális tanúsítvány. Éles környezetekben a tanúsítványt egy hitelesítésszolgáltatónak kell aláírnia. 
+
+
+Tanúsítvány létrehozásához használhatja a [Azure Key Vault](../key-vault/certificates/create-certificate.md), amely az aláírt tanúsítványokhoz tartozó tanúsítvány-kiállítói szolgáltatókkal rendelkező önaláírt tanúsítványok és integrációs lehetőségeket is tartalmaz. Ezután [exportálhatja a tanúsítványt](../key-vault/certificates/how-to-export-certificate.md) , és feltöltheti az API-összekötők konfigurációjában való használatra. Vegye figyelembe, hogy a jelszó csak jelszóval védett tanúsítványfájl esetén szükséges. Önaláírt tanúsítvány létrehozásához a PowerShell [New-SelfSignedCertificate parancsmagját](./secure-rest-api.md#prepare-a-self-signed-certificate-optional) is használhatja.
+
+Azure App Service és Azure Functions esetén tekintse meg a [TLS kölcsönös hitelesítés beállítása](../app-service/app-service-web-configure-tls-mutual-auth.md) című témakört, amelyből megtudhatja, hogyan engedélyezheti és érvényesítheti a tanúsítványt az API-végpontból.
+
+Javasoljuk, hogy emlékeztető riasztásokat állítson be, amikor a tanúsítvány lejár. Új tanúsítvány meglévő API-összekötőbe való feltöltéséhez válassza ki az API-összekötőt az API-összekötők **(előzetes verzió)** területen, majd kattintson az **új tanúsítvány feltöltése** elemre. A legutóbb feltöltött tanúsítvány, amely nem járt le, és a Azure AD B2C automatikusan a kezdő dátumot fogja használni.
+
+### <a name="api-key"></a>API-kulcs
+Egyes szolgáltatások "API-kulcs" mechanizmus használatával nehezítik a HTTP-végpontok elérését a fejlesztés során. A [Azure functions](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)a `code` **végpont URL-címében** a as a lekérdezési paraméterrel is elvégezhető. Például: `https://contoso.azurewebsites.net/api/endpoint` <b>`?code=0123456789`</b> ). 
+
+Ez nem olyan mechanizmus, amelyet csak éles környezetben lehet használni. Ezért az alapszintű vagy a Tanúsítványos hitelesítés konfigurálására mindig szükség van. Ha a hitelesítési módszereket (nem javasolt) fejlesztési célokra szeretné megvalósítani, válassza az egyszerű hitelesítést, és használja az ideiglenes értékeket, `username` valamint `password` azt, hogy az API figyelmen kívül hagyhatja az engedélyezést az API-ban.
 
 ## <a name="the-request-sent-to-your-api"></a>Az API-nak továbbított kérelem
 Az API-összekötők **http post** -kérelemként valósulnak meg, felhasználói attribútumok ("jogcímek") küldésével kulcs-érték párokként egy JSON-törzsben. Az attribútumok a [Microsoft Graph](/graph/api/resources/user#properties) felhasználó tulajdonságaihoz hasonlóan lesznek szerializálva. 
@@ -75,7 +99,7 @@ Content-type: application/json
 
 A kérelemben csak a felhasználói tulajdonságok és az **Azure ad B2C**  >  **felhasználói attribútumok** című részben felsorolt egyéni attribútumok küldhetők el.
 
-Az egyéni attribútumok a címtár **extension_ \<extensions-app-id> _CustomAttribute**  formátumában találhatók. Az API-nak meg kell várnia, hogy a jogcímeket ugyanabban a szerializált formátumban fogadja. Az egyéni attribútumokkal kapcsolatos további információkért lásd: [Egyéni attribútumok definiálása a Azure Active Directory B2Cban](user-flow-custom-attributes.md).
+Az egyéni attribútumok a címtár **extension_ \<extensions-app-id> _CustomAttribute**  formátumában találhatók. Az API-nak meg kell várnia, hogy a jogcímeket ugyanabban a szerializált formátumban fogadja. Az egyéni attribútumokkal kapcsolatos további információkért lásd: [Egyéni attribútumok definiálása a Azure ad B2Cban](user-flow-custom-attributes.md).
 
 Emellett a **felhasználói felület területi beállítása ("ui_locales")** jogcímet alapértelmezés szerint minden kérelemben elküldjük. A felhasználó az eszközön konfigurált területi beállításokat biztosít, amelyeket az API használhat a nemzetközi válaszok visszaküldéséhez.
 
@@ -155,13 +179,6 @@ A [blokkolási válasz](#example-of-a-blocking-response)példáját lásd:.
 
 A regisztrációs folyamat ezen lépésében található API-összekötőt a rendszer az attribútum-gyűjtemény lap után hívja meg, ha van ilyen. Ezt a lépést mindig a rendszer a felhasználói fiók létrehozása előtt hívja meg.
 
-<!-- The following are examples of scenarios you might enable at this point during sign-up: -->
-<!-- 
-- Validate user input data and ask a user to resubmit data.
-- Block a user sign-up based on data entered by the user.
-- Perform identity verification.
-- Query external systems for existing data about the user and overwrite the user-provided value. -->
-
 ### <a name="example-request-sent-to-the-api-at-this-step"></a>Példa erre a lépésre az API-nak küldendő kérelem
 
 ```http
@@ -239,7 +256,6 @@ Content-type: application/json
 
 | Paraméter                                          | Típus              | Kötelező | Leírás                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| version                                            | Sztring            | Yes      | Az API verziója.                                                                                                                                                                                                                                                                |
 | művelet                                             | Sztring            | Yes      | Az értéknek a számnak kell lennie `Continue` .                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | No       | A visszaadott értékek felülírhatják a felhasználó által összegyűjtött értékeket. A tokenben is visszaadhatók, ha **alkalmazási jogcímként** van kiválasztva.                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | No       | A jogcímnek nem kell tartalmaznia `_<extensions-app-id>_` . A visszaadott értékek felülírhatják a felhasználó által összegyűjtött értékeket. A tokenben is visszaadhatók, ha **alkalmazási jogcímként** van kiválasztva.  |
@@ -269,8 +285,6 @@ Content-type: application/json
 ![Példa blokk oldalra](./media/add-api-connector/blocking-page-response.png)
 
 ### <a name="example-of-a-validation-error-response"></a>Érvényesítési hiba – példa
-
-
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -311,7 +325,7 @@ Győződjön meg a következőket:
 * Az API explicit módon ellenőrzi a fogadott jogcímek null értékeit.
 * Az API a lehető leggyorsabban reagál a folyadékok felhasználói élményének biztosítására.
     * Ha kiszolgáló nélküli függvényt vagy méretezhető webszolgáltatást használ, használjon olyan üzemeltetési tervet, amely az "ébren" vagy "Warm" API-t tartja. éles környezetben. Azure Functions esetén a [Prémium csomag](../azure-functions/functions-scale.md) használata ajánlott
-
+ 
 
 ### <a name="use-logging"></a>Naplózás használata
 Általánosságban elmondható, hogy a webes API szolgáltatás által engedélyezett naplózási eszközöket használja, például az [Application bepillantást](../azure-functions/functions-monitoring.md), hogy FIGYELJE az API-t váratlan hibakódok, kivételek és gyenge teljesítmény érdekében.
@@ -321,5 +335,4 @@ Győződjön meg a következőket:
 * Az API figyelése hosszú válaszidő esetén.
 
 ## <a name="next-steps"></a>Következő lépések
-<!-- - Learn how to [add a custom approval workflow to sign-up](add-approvals.md) -->
 - Ismerkedjen meg a [mintákkal](code-samples.md#api-connectors).

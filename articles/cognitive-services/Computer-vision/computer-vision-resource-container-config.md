@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 0539f37fe15f68d8bfd47bf426333f9d5c67c37d
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: ee2e4fca697c086b95e83feb9d40ce8e07dc344c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96006872"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611895"
 ---
 # <a name="configure-read-ocr-docker-containers"></a>Az OCR Docker-tárolók olvasásának konfigurálása
 
@@ -39,6 +39,8 @@ A tároló a következő tároló-specifikus konfigurációs beállításokkal i
 |No|Üzenetsor: Azure: QueueVisibilityTimeoutInMilliseconds | csak v3. x tárolók. Az az idő, ameddig az üzenet láthatatlan lesz, ha egy másik feldolgozó feldolgozza azt. |
 |No|Tárolás::D ocumentStore:: MongoDB|csak a v 2.0 tárolók. Engedélyezi a MongoDB az állandó eredményű tároláshoz. |
 |No|Storage: ObjectStore: AzureBlob: ConnectionString| csak v3. x tárolók. Azure Blob Storage-beli kapcsolatok karakterlánca. |
+|No|Tárolás: TimeToLiveInDays| csak v3. x tárolók. Eredmény lejárati ideje (nap). A beállítás azt határozza meg, hogy a rendszeren Mikor kell törölni a felismerési eredményeket. Az alapértelmezett érték 2 nap (48 óra), ami azt jelenti, hogy az adott időszaknál hosszabb élettartamok nem garantáltak a sikeres lekéréshez. |
+|No|Feladat: MaxRunningTimeSpanInMinutes| csak v3. x tárolók. Egyetlen kérelem maximális futási ideje. Az alapértelmezett érték 60 perc. |
 
 ## <a name="apikey-configuration-setting"></a>ApiKey konfigurációs beállítás
 
@@ -62,7 +64,7 @@ Ez a beállítás a következő helyen érhető el:
 
 Ne felejtse el hozzáadni az `vision/v1.0` útválasztást a VÉGPONT URI-hoz az alábbi táblázatban látható módon. 
 
-|Kötelező| Név | Adattípus | Leírás |
+|Kötelező| Name | Adattípus | Leírás |
 |--|------|-----------|-------------|
 |Igen| `Billing` | Sztring | Számlázási végpont URI-ja<br><br>Példa:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 
@@ -90,7 +92,7 @@ A Computer Vision tárolók nem használnak bemeneti vagy kimeneti csatlakoztat�
 
 A gazdagép csatlakoztatási helyének pontos szintaxisa a gazda operációs rendszertől függően változhat. Emellett előfordulhat, hogy a [gazdaszámítógép](computer-vision-how-to-install-containers.md#the-host-computer)csatlakoztatási helye nem érhető el, mert a Docker-szolgáltatásfiók és a gazdagép csatlakoztatási helye engedélyekkel kapcsolatos engedélyek ütköznek. 
 
-|Választható| Név | Adattípus | Leírás |
+|Választható| Name | Adattípus | Leírás |
 |-------|------|-----------|-------------|
 |Nem engedélyezett| `Input` | Sztring | Computer Vision tárolók nem használják ezt.|
 |Választható| `Output` | Sztring | A kimeneti csatlakoztatás célja. Az alapértelmezett érték `/output`. Ez a naplók helye. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -113,7 +115,7 @@ Cserélje le a {_argument_name_} értéket a saját értékeire:
 
 > [!IMPORTANT]
 > A `Eula` , a `Billing` és a `ApiKey` beállításokat meg kell adni a tároló futtatásához; egyéb esetben a tároló nem indul el.  További információ: [számlázás](computer-vision-how-to-install-containers.md#billing).
-> A ApiKey értéke az Azure **Key** `Cognitive Services` Resource Keys oldal kulcsa.
+> A ApiKey értéke az Azure  `Cognitive Services` Resource Keys oldal kulcsa.
 
 ## <a name="container-docker-examples"></a>Tárolók Docker-példák
 
@@ -170,6 +172,6 @@ Logging:Console:LogLevel:Default=Information
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A tárolók telepítésének és futtatásának](computer-vision-how-to-install-containers.md)áttekintése.

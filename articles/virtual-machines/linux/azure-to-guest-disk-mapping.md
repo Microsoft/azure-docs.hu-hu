@@ -2,18 +2,19 @@
 title: Azure-lemezek leképezése Linux rendszerű virtuális gép vendég lemezekre
 description: A Linux rendszerű virtuális gépekhez tartozó vendég lemezeket leképező Azure-lemezek meghatározása.
 author: timbasham
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: disks
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: tibasham
-ms.openlocfilehash: 4f0e48bf1c14728c54d4e89f30700017b0420d7d
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.collection: linux
+ms.openlocfilehash: bc6c6273ab3d1a4403763e4ed0a8c491995fb2df
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523615"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556723"
 ---
 # <a name="how-to-map-azure-disks-to-linux-vm-guest-disks"></a>Azure-lemezek leképezése Linux rendszerű virtuális gép vendég lemezekre
 
@@ -23,7 +24,7 @@ Előfordulhat, hogy meg kell határoznia a virtuális gép vendég lemezeit tám
 
 A logikai egységek száma (LUN) egy adott tárolóeszköz azonosítására szolgáló szám. Minden tárolóeszközhöz egyedi numerikus azonosító van rendelve, amely nullával kezdődik. Az eszköz teljes elérési útját a busz száma, a célként megadott azonosító száma és a logikai egység száma (LUN) jelképezi. 
 
-Például: ***0. számú busz, cél azonosítója 0, LUN 3** _
+Például: ***Bus Number 0, cél azonosítója 0, LUN 3***
 
 A gyakorlatban csak a LUN-t kell használnia.
 
@@ -36,7 +37,7 @@ Alább két módszert ismertetünk, amelyekkel megtalálhatja a lemez LUN-jét L
 1. Kapcsolódás a virtuális géphez
 1. `sudo lsscsi`
 
-A felsorolt első oszlop tartalmazza a LUN-t, a formátum: [gazdagép: csatorna: Target: _ * LUN * *].
+A felsorolt első oszlop tartalmazza a LUN-t, a formátum: [gazdagép: csatorna: Target:**LUN**].
 
 ### <a name="listing-block-devices"></a>Blokkos eszközök listázása
 

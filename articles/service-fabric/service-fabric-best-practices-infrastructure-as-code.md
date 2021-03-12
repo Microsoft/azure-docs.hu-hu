@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: a0f0324d1f7308eb1392c4f7a98a6a5d226026be
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: b765d92778df40caec0864dc6f547324216fdb07
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705506"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611980"
 ---
 # <a name="infrastructure-as-code"></a>Infrastruktúra mint kód
 
@@ -91,7 +91,7 @@ microservices_sfpkg.close()
 ```
 
 ## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Azure-beli virtuális gép operációs rendszerének automatikus frissítési konfigurációja 
-A virtuális gépek frissítése egy felhasználó által kezdeményezett művelet, ezért javasolt a [virtuálisgép-méretezési csoport automatikus verziófrissítése](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) az Azure Service Fabric-fürtökön, amelyeken a javítások kezelése történik. A patch-előkészítési alkalmazás egy alternatív megoldás, amely az Azure-on kívüli üzemeltetéshez készült, bár a POA az Azure-ban is használható, és az Azure-ban a szolgáltatási terv általános oka az, hogy a virtuális gép operációs rendszerének automatikus frissítése javasolt a cselekvési terv keretében. A következő a számítási virtuálisgép-méretezési csoport Resource Manager-sablonjának tulajdonságai az automatikus operációs rendszer frissítésének engedélyezéséhez:
+A virtuális gépek frissítése egy felhasználó által kezdeményezett művelet, ezért javasolt a [virtuálisgép-méretezési csoport automatikus verziófrissítése](service-fabric-patch-orchestration-application.md) az Azure Service Fabric-fürtökön, amelyeken a javítások kezelése történik. A patch-előkészítési alkalmazás egy alternatív megoldás, amely az Azure-on kívüli üzemeltetéshez készült, bár a POA az Azure-ban is használható, és az Azure-ban a szolgáltatási terv általános oka az, hogy a virtuális gép operációs rendszerének automatikus frissítése javasolt a cselekvési terv keretében. A következő a számítási virtuálisgép-méretezési csoport Resource Manager-sablonjának tulajdonságai az automatikus operációs rendszer frissítésének engedélyezéséhez:
 
 ```json
 "upgradePolicy": {
@@ -131,7 +131,7 @@ Register-ServiceFabricClusterPackage -Code -CodePackagePath "ServiceFabric.msi"
 Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion <"msi_code_version">
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Fürt létrehozása a Windows Servert futtató virtuális gépeken vagy számítógépeken: [Service Fabric Windows Server-fürt létrehozása](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 * Fürt létrehozása virtuális gépeken vagy Linuxon futó számítógépeken: [Linux-fürt létrehozása](service-fabric-tutorial-create-vnet-and-linux-cluster.md)

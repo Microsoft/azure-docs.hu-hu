@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 1/21/2021
 ms.author: baanders
-ms.openlocfilehash: 59506b1d1d3fbbc5a532c597d46dc92ee3c2e98e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9f8ca9ab6dc184abb8d9dcd25ebe87cbd7761722
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750440"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630285"
 ---
 Ha közzé szeretné tenni a projektet egy Azure-beli Function alkalmazásban, kattintson a jobb gombbal *megoldáskezelő* a projektre, és válassza a **Közzététel** lehetőséget.
 
@@ -57,6 +57,4 @@ A Visual Studio fő ablakában megnyíló *Közzététel* ablaktáblán győződ
 >
 > Az utasításokat követve frissítsen a legújabb Azure Functions futtatókörnyezet-verzióra. Ez a probléma akkor fordulhat elő, ha a Visual Studio egy régebbi verzióját használja.
 
-A Function alkalmazás most már közzé van téve az Azure-ban. 
-
-Ahhoz, hogy a Function alkalmazás hozzáférhessen az Azure digitális Twins-hoz, rendelkeznie kell egy, a rendszer által felügyelt identitással, amely jogosult az Azure Digital Twins-példány elérésére. Ezt követően állítsa be a következőt.
+A Function alkalmazás most már közzé van téve az Azure-ban.

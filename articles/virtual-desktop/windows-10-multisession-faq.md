@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d76fd3b30d823efbf85e84a74a21c694f5a0e6fb
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: aafac1133b2bee54624d5f0b00061c5332fcd90b
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102565563"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631880"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>A Windows 10 Enterprise több munkamenetes használata – gyakori kérdések
 
@@ -63,7 +63,7 @@ A Windows 10 Enterprise multi-session, a 1809-es és újabb verziói támogatott
 
 ## <a name="which-profile-management-solution-should-i-use-for-windows-10-enterprise-multi-session"></a>Milyen profil-felügyeleti megoldást használhatok a Windows 10 Enterprise multi-session szolgáltatáshoz?
 
-Javasoljuk, hogy használjon FSLogix-profilok tárolókat, ha a Windows 10-es vállalatot nem állandó környezetekben konfigurálja, vagy olyan egyéb helyzetekben, amelyeknek központilag tárolt profilra van szükségük. A FSLogix biztosítja a felhasználói profil elérhetőségét és naprakészen tartása minden felhasználói munkamenethez. Javasoljuk továbbá, hogy a FSLogix-profil tárolójában tárolja a megfelelő engedélyekkel rendelkező SMB-megosztásokban lévő felhasználói profilokat, de szükség esetén a felhasználói profilokat az Azure-oldal blob Storage-ban is tárolhatja. A Windows rendszerű virtuális asztali felhasználók további díjak nélkül használhatják a FSLogix.
+Javasoljuk, hogy használjon FSLogix-profilok tárolókat, ha a Windows 10-es vállalatot nem állandó környezetekben konfigurálja, vagy olyan egyéb helyzetekben, amelyeknek központilag tárolt profilra van szükségük. A FSLogix biztosítja a felhasználói profil elérhetőségét és naprakészen tartása minden felhasználói munkamenethez. Javasoljuk továbbá, hogy a FSLogix-profil tárolójában tárolja a megfelelő engedélyekkel rendelkező SMB-megosztásokban lévő felhasználói profilokat, de szükség esetén a felhasználói profilokat az Azure-oldal blob Storage-ban is tárolhatja. A Windows rendszerű virtuális asztali felhasználók további díjak nélkül használhatják a FSLogix.  A FSLogix előre telepítve van az összes Windows 10 Enterprise többmunkamenetes lemezképen, de a rendszergazda továbbra is felelős a FSLogix-profil tárolójának konfigurálásához.
 
 A FSLogix-profilok tárolójának konfigurálásával kapcsolatos további információkért lásd: [a FSLogix-profil tárolójának konfigurálása](create-host-pools-user-profile.md#configure-the-fslogix-profile-container).
 

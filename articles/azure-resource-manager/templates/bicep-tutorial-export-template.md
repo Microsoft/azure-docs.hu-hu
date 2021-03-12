@@ -2,15 +2,15 @@
 title: Oktatóanyag – JSON-sablon exportálása a Azure Portal for bicep fejlesztéshez
 description: Megtudhatja, hogyan használható egy exportált JSON-sablon a bicep-fejlesztés befejezéséhez.
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0cba91a8c021f4baa90d1a4264bf84d3c56930ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3bc7ed4ada4f7810e9864778c7f76a0573c9dc89
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748078"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632549"
 ---
 # <a name="tutorial-use-exported-json-template-from-the-azure-portal"></a>Oktatóanyag: az exportált JSON-sablon használata a Azure Portal
 
@@ -79,7 +79,7 @@ Jelenleg a Azure Portal csak a JSON-sablonok exportálását támogatja. Vannak 
 
 A decomplied exportált sablon a szükséges bicep nagy részét biztosítja, de testre kell szabnia a bicep-fájlhoz. Fordítson különös figyelmet a bicep-fájl és az exportált bicep-fájl paramétereinek és változóinak különbségére. Az exportálási folyamat természetesen nem ismeri a bicep fájlban már definiált paramétereket és változókat.
 
-Az alábbi példa kiemeli a bicep-fájl kiegészítéseit. Az exportált kódot és néhány módosítást is tartalmaz. Először is megváltoztatja a paraméter nevét, hogy az megfeleljen az elnevezési konvenciónak. Másodszor, a Location paramétert használja az App Service-csomag helyéhez. Harmadszor, eltávolítja azokat a tulajdonságokat, amelyekben az alapértelmezett érték rendben van.
+A következő példában a bicep-fájl kiegészítései láthatók. Az exportált kódot és néhány módosítást is tartalmaz. Először is megváltoztatja a paraméter nevét, hogy az megfeleljen az elnevezési konvenciónak. Másodszor, a Location paramétert használja az App Service-csomag helyéhez. Harmadszor, eltávolítja azokat a tulajdonságokat, amelyekben az alapértelmezett érték rendben van.
 
 Másolja a teljes fájlt, és cserélje le a bicep-fájlt annak tartalmára.
 

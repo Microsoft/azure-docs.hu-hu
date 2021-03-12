@@ -1,6 +1,6 @@
 ---
-title: PowerShell-minta – alkalmazás-regisztrációk, titkos kódok és tanúsítványok exportálása Azure Active Directory bérlőben.
-description: PowerShell-példa, amely az összes alkalmazás regisztrációját, titkos kulcsát és tanúsítványát exportálja a Azure Active Directory bérlő megadott alkalmazásaihoz.
+title: PowerShell-minta – titkok és tanúsítványok exportálása az alkalmazások regisztrálásához Azure Active Directory bérlőben.
+description: PowerShell-példa, amely a Azure Active Directory-bérlőben a megadott alkalmazás-regisztrációhoz tartozó összes titkot és tanúsítványt exportálja.
 services: active-directory
 author: kenwith
 manager: daveba
@@ -8,19 +8,19 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: sample
-ms.date: 02/18/2021
+ms.date: 03/09/2021
 ms.author: kenwith
 ms.reviewer: mifarca
-ms.openlocfilehash: 768f2f3241144085acb7a218b60034cdfa9e45b9
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: d0de96d0d8a5edc6fbacc25dcbcb868073e57183
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102185389"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556553"
 ---
-# <a name="export-app-registrations-secrets-and-certificates"></a>Alkalmazás-regisztrációk, titkos kulcsok és tanúsítványok exportálása
+# <a name="export-secrets-and-certificates-for-app-registrations"></a>Az alkalmazások regisztrálásához szükséges titkok és tanúsítványok exportálása
 
-Ez a PowerShell-parancsfájl például a címtárban lévő megadott alkalmazások összes alkalmazás-regisztrációját, titkos kulcsát és tanúsítványát exportálja.
+Ez a PowerShell-parancsfájl például a megadott alkalmazás-regisztrációk összes titkát és tanúsítványát exportálja a címtárból egy CSV-fájlba.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -28,13 +28,17 @@ Ehhez a mintához a Graph modul (AzureAD) [AzureAD v2 PowerShell](/powershell/az
 
 ## <a name="sample-script"></a>Példaszkript
 
-[!code-azurepowershell[main](~/powershell_scripts/application-management/export-all-app-registrations-secrets-and-certs.ps1 "Exports all app registrations, secrets, and certificates for the specified apps in your directory.")]
+[!code-azurepowershell[main](~/powershell_scripts/application-management/export-all-app-registrations-secrets-and-certs.ps1 "Exports all secrets and certificates for the specified app registrations in your directory.")]
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
+A "tag hozzáadása" parancs feladata az oszlopok létrehozása a CSV-fájlban.
+A "$Path" változót közvetlenül a PowerShellben, a CSV-fájl elérési útjával módosíthatja, ha azt szeretné, hogy az exportálás nem interaktív.
+
 | Parancs | Jegyzetek |
 |---|---|
-| [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0&preserve-view=true) | A címtárban lévő megadott alkalmazások összes alkalmazás-regisztrációjának, titkos kulcsának és tanúsítványának exportálása. |
+| [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) | Beolvas egy alkalmazást a címtárból. |
+| [Get-AzureADApplicationOwner](/powershell/module/azuread/Get-AzureADApplicationOwner) | Egy alkalmazás tulajdonosait kérdezi le a címtárból. |
 
 ## <a name="next-steps"></a>Következő lépések
 

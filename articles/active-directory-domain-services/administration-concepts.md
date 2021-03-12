@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 06/05/2020
+ms.date: 03/10/2021
 ms.author: justinha
-ms.openlocfilehash: 76af477af8290634d2658c58574b8f96cff7b1fb
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 5473ef46751d64fdbbf1d52f39c66f49d707e615
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620341"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631387"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Felügyeleti fogalmak a felhasználói fiókokhoz, jelszavakhoz és felügyelethez Azure Active Directory Domain Services
 
@@ -64,7 +64,7 @@ A megfelelő konfigurálást követően a rendszer a használható jelszavak kiv
 
 ## <a name="forests-and-trusts"></a>Erdők és megbízhatóságok
 
-Az *erdők* Active Directory tartományi szolgáltatások (AD DS) által használt logikai szerkezetek egy vagy több *tartomány* csoportosításához. A tartományok ezután objektumokat tárolnak a felhasználók vagy csoportok számára, és biztosítják a hitelesítési szolgáltatásokat.
+Az *erdők* Active Directory Domain Services (AD DS) által használt logikai szerkezetek egy vagy több *tartomány* csoportosításához. A tartományok ezután objektumokat tárolnak a felhasználók vagy csoportok számára, és biztosítják a hitelesítési szolgáltatásokat.
 
 Az Azure AD DSban az erdő csak egy tartományt tartalmaz. A helyszíni AD DS erdők gyakran sok tartományt tartalmaznak. A nagyméretű szervezeteknél – különösen az összevonások és a beszerzések után – előfordulhat, hogy több helyszíni erdővel is rendelkezik, amelyek mindegyike több tartományt tartalmaz.
 
@@ -80,7 +80,7 @@ Az Azure AD DS a rendelkezésre álló teljesítmény és szolgáltatások az SK
 
 | SKU neve   | Objektumok maximális száma | Biztonsági mentés gyakorisága | Kimenő erdőszintű Megbízhatóságok maximális száma |
 |------------|----------------------|------------------|----|
-| Standard   | Korlátlan            | 7 naponta     | 0  |
+| Standard   | Korlátlan            | 5 naponta     | 0  |
 | Enterprise | Korlátlan            | 3 naponta     | 5  |
 | Prémium    | Korlátlan            | Napi            | 10 |
 
@@ -104,7 +104,7 @@ Az SKU szintjének növekedésével a biztonsági mentési Pillanatképek gyakor
 
 Az előző szakaszban az egyirányú kimenő erdő megbízhatónak tekinti a felügyelt tartományból egy helyszíni AD DS környezetet. Az SKU meghatározza a felügyelt tartományhoz létrehozható erdőszintű megbízhatósági kapcsolatok maximális számát. Tekintse át az üzleti és az alkalmazásra vonatkozó követelményeket, hogy meghatározza, hány megbízhatónak kell lennie, és válassza ki a megfelelő Azure AD DS SKU-t. Ha az üzleti követelmények megváltoznak, és további erdőszintű megbízhatósági kapcsolatokat kell létrehoznia, váltson át egy másik SKU-ra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépésként [hozzon létre egy Azure AD DS felügyelt tartományt][create-instance].
 
