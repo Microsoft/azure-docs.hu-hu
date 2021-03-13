@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 7778607b533a836eb5a47a12b73374c2a8299621
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 55f8d37d435aa8adeb4d97246ce7b2c7811140be
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590569"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557998"
 ---
 # <a name="security-alerts-schemas"></a>Biztonsági riasztások sémái
 
@@ -173,7 +173,7 @@ A biztonsági riasztások eseményeit a tevékenység naplójában tekintheti me
 
 A Microsoft Graph az adatokhoz és az intelligenciához tartozó átjáró a Microsoft 365ban. Egy egységesített programozható modellt biztosít, amellyel a Microsoft 365, a Windows 10 és a Enterprise Mobility + Security rengeteg adatmennyiségét érheti el. A Microsoft Graphban található adatmennyiség használatával olyan szervezeteknek és fogyasztóknak készült alkalmazásokat hozhat létre, amelyek több millió felhasználóval működnek.
 
-Az MS Graphba elküldett biztonsági riasztások sémája és JSON-ábrázolása [a Microsoft Graph dokumentációjában](/graph/api/resources/alert?preserve-view=true&view=graph-rest-1.0)érhető el.
+Az MS Graphba elküldett biztonsági riasztások sémája és JSON-ábrázolása [a Microsoft Graph dokumentációjában](/graph/api/resources/alert)érhető el.
 
 ---
 

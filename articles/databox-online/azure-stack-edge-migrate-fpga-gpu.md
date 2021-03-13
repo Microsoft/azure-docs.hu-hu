@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.author: alkohli
-ms.openlocfilehash: 1db6574f8ca22b6fe60899f00700ee19d61eab3b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5b68ab545e87035d138558ba1911294ef805af6d
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382820"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630741"
 ---
 # <a name="migrate-workloads-from-an-azure-stack-edge-pro-fpga-to-an-azure-stack-edge-pro-gpu"></a>Számítási feladatok migrálása Azure Stack Edge Pro-FPGA egy Azure Stack Edge Pro GPU-ra
 
@@ -157,10 +157,10 @@ Ekkor a forrás eszközről másolja át az adatait a Felhőbeli megosztásokra 
 
 Az alábbi lépéseket követve szinkronizálhatja a felhőben lévő felhőalapú megosztások adatait a céleszköz:
 
-1. [Adja hozzá](azure-stack-edge-j-series-manage-shares.md#add-a-share) a forrás eszközön létrehozott megosztási neveknek megfelelő megosztásokat. Győződjön meg arról, hogy a megosztások létrehozásakor a **blob Container** a **meglévő lehetőség használatára** van beállítva, majd válassza ki az előző eszközzel használt tárolót.
-1. [Adja hozzá](azure-stack-edge-j-series-manage-users.md#add-a-user) az előző eszközhöz hozzáféréssel rendelkező felhasználókat.
-1. [A megosztási adatok frissítése](azure-stack-edge-j-series-manage-shares.md#refresh-shares) az Azure-ból. Ezzel lekéri a meglévő tároló összes Felhőbeli adatait a megosztásokra.
-1. Hozza létre újra a megosztásokhoz társítandó sávszélesség-ütemterveket. Lásd: [sávszélesség-ütemterv hozzáadása](azure-stack-edge-j-series-manage-bandwidth-schedules.md#add-a-schedule) a részletes lépésekhez.
+1. [Adja hozzá](azure-stack-edge-gpu-manage-shares.md#add-a-share) a forrás eszközön létrehozott megosztási neveknek megfelelő megosztásokat. Győződjön meg arról, hogy a megosztások létrehozásakor a **blob Container** a **meglévő lehetőség használatára** van beállítva, majd válassza ki az előző eszközzel használt tárolót.
+1. [Adja hozzá](azure-stack-edge-gpu-manage-users.md#add-a-user) az előző eszközhöz hozzáféréssel rendelkező felhasználókat.
+1. [A megosztási adatok frissítése](azure-stack-edge-gpu-manage-shares.md#refresh-shares) az Azure-ból. Ezzel lekéri a meglévő tároló összes Felhőbeli adatait a megosztásokra.
+1. Hozza létre újra a megosztásokhoz társítandó sávszélesség-ütemterveket. Lásd: [sávszélesség-ütemterv hozzáadása](azure-stack-edge-gpu-manage-bandwidth-schedules.md#add-a-schedule) a részletes lépésekhez.
 
 
 ### <a name="2-from-edge-local-shares"></a>2. a peremhálózat helyi megosztásai
@@ -172,7 +172,7 @@ Miután a helyettesítő eszköz teljesen konfigurálva van, engedélyezze az es
 A helyi megosztásokból származó adatok helyreállításához kövesse az alábbi lépéseket:
 
 1. [Állítsa be a számítást az eszközön](azure-stack-edge-gpu-deploy-configure-compute.md).
-1. Adja hozzá az összes helyi megosztást a céleszköz. Tekintse meg a [helyi megosztás hozzáadása](azure-stack-edge-j-series-manage-shares.md#add-a-local-share)című témakör részletes lépéseit.
+1. Adja hozzá az összes helyi megosztást a céleszköz. Tekintse meg a [helyi megosztás hozzáadása](azure-stack-edge-gpu-manage-shares.md#add-a-local-share)című témakör részletes lépéseit.
 1. Ha hozzáfér az SMB-megosztásokhoz a forrásoldali eszközön, akkor az IP-címeket fogja használni, a céleszköz pedig az eszköz nevét fogja használni. Lásd: [Kapcsolódás SMB-megosztáshoz Azure stack Edge Pro GPU](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-smb-share)-val. A céleszköz NFS-megosztásokhoz való kapcsolódáshoz az eszközhöz társított új IP-címeket kell használnia. Lásd: [Kapcsolódás NFS-megosztáshoz Azure stack Edge Pro GPU](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-nfs-share)-val. 
 
     Ha a megosztási adatait egy köztes kiszolgálóra másolta az SMB/NFS protokollon keresztül, ezeket az adatait átmásolhatja a célként megadott eszközön található megosztásokra. Az adatok közvetlenül a forrás eszközről is másolhatók, ha a forrás és a cél eszköz is *online állapotban* van.

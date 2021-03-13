@@ -7,12 +7,12 @@ ms.author: andyriv
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 1501153b73683081dfac0684d6714eb537c03380
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0128d0de4f078b62bc9571c8758d80cb26585354
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664762"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615380"
 ---
 # <a name="microsoft-connected-cache-preview-deployment-scenario-sample-two-level-nested-azure-iot-edge-gateway-with-outbound-unauthenticated-proxy"></a>A Microsoft csatlakoztatott gyorsítótár előzetes telepítési forgatókönyvének mintája: kétszintű beágyazott Azure IoT Edge átjáró kimenő, nem hitelesített proxyval
 
@@ -70,7 +70,7 @@ Az alábbi ábra azt a forgatókönyvet ismerteti, amelyben az egyik Azure IoT E
 ## <a name="child-gateway-configuration"></a>Alárendelt átjáró konfigurációja
 
 >[!Note]
->Ha a saját privát beállításjegyzékében a konfigurációban használt replikált tárolók vannak, akkor módosítani kell a config. toml beállításait és a futásidejű beállításokat a modul üzembe helyezésében. További információkért tekintse meg az [oktatóanyag – IoT Edge eszközök hierarchiájának létrehozása – Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-nested-iot-edge?view=iotedge-2020-11&tabs=azure-portal#deploy-modules-to-the-lower-layer-device&preserve-view=true) további részleteket.
+>Ha a saját privát beállításjegyzékében a konfigurációban használt replikált tárolók vannak, akkor módosítani kell a config. toml beállításait és a futásidejű beállításokat a modul üzembe helyezésében. További információkért tekintse meg az [oktatóanyag – IoT Edge eszközök hierarchiájának létrehozása – Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-nested-iot-edge?view=iotedge-2020-11&tabs=azure-portal&preserve-view=true#deploy-modules-to-the-lower-layer-device) további részleteket.
 
 1. Módosítsa a peremhálózati ügynök rendszerképének elérési útját az alábbi példában bemutatott módon:
 

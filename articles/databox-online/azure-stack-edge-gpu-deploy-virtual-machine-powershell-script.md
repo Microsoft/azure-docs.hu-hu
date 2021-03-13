@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 82019031eab4c17465115c4a24598f43d4620148
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 36c7078a79cf8b0b7414c5031acb79b9a2c2453c
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102436448"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630486"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell-script"></a>Virtuális gépek üzembe helyezése Azure Stack Edge Pro GPU-eszközön Azure PowerShell parancsfájl használatával
 
@@ -41,7 +41,7 @@ Mielőtt megkezdi a virtuális gép létrehozását és felügyeletét a Azure S
 
     1. Indítsa el a **jegyzettömböt** rendszergazdaként (rendszergazdai jogosultság szükséges a fájl mentéséhez), majd nyissa meg a következő helyen található **hosts** fájlt: `C:\Windows\System32\Drivers\etc` .
     
-        ![Windows Intéző – fájl](media/azure-stack-edge-j-series-connect-resource-manager/hosts-file.png)
+        ![Windows Intéző – fájl](media/azure-stack-edge-gpu-connect-resource-manager/hosts-file.png)
     
     2. Adja hozzá a következő bejegyzéseket a **gazdagépek** fájljához a megfelelő értékekkel helyettesítve az eszközön:
     
@@ -54,7 +54,7 @@ Mielőtt megkezdi a virtuális gép létrehozását és felügyeletét a Azure S
 
     3. Használja az alábbi képet a hivatkozáshoz. Mentse a **hosts** fájlt.
 
-        ![tároló fájl a Jegyzettömbben](media/azure-stack-edge-j-series-deploy-virtual-machine-cli-python/hosts-screenshot-boxed.png)
+        ![tároló fájl a Jegyzettömbben](media/azure-stack-edge-gpu-deploy-virtual-machine-cli-python/hosts-screenshot-boxed.png)
 
 2. [Töltse le az](https://aka.ms/ase-vm-powershell) ebben az eljárásban használt PowerShell-szkriptet.
 

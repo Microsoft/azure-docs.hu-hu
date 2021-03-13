@@ -10,6 +10,8 @@
       href: iot-services-and-technologies.md
     - name: Támogatási és súgólehetőségek
       href: iot-support-help.md
+    - name: IoT Szószedet
+      href: iot-glossary.md
 - name: Biztonság
   items:
     - name: Javaslatok

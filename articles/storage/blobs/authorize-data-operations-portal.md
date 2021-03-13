@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 319bbdd7809e224ca608fdac06d4b304c2052e86
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a12936f8f9f84dacfab4850253df665ae7758be1
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391541"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613246"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-in-the-azure-portal"></a>Válassza ki, hogyan engedélyezze a blob-adathozzáférést a Azure Portal
 
@@ -66,9 +66,9 @@ Az egyéni szerepkörök a beépített szerepkörök által biztosított azonos 
 
 ## <a name="navigate-to-blobs-in-the-azure-portal"></a>Navigáljon a Azure Portal lévő blobokhoz
 
-A portálon található blob-információk megtekintéséhez navigáljon a Storage-fiók **áttekintéséhez** , és kattintson a **blobokra** mutató hivatkozásokra. Másik lehetőségként megnyithatja a menü **blob Service** szakaszát.
+A portálon található blob-információk megtekintéséhez navigáljon a Storage-fiók **áttekintéséhez** , és kattintson a **blobokra** mutató hivatkozásokra. Azt is megteheti, hogy a menü **tárolók** szakaszára navigál.
 
-:::image type="content" source="media/anonymous-read-access-configure/blob-public-access-portal.png" alt-text="A blob-adatAzure Portalban való böngészést bemutató képernyőkép":::
+:::image type="content" source="media/authorize-data-operations-portal/blob-access-portal.png" alt-text="A blob-adatAzure Portalban való böngészést bemutató képernyőkép":::
 
 ## <a name="determine-the-current-authentication-method"></a>Az aktuális hitelesítési módszer meghatározása
 

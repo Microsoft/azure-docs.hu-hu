@@ -5,23 +5,20 @@ services: container-service
 ms.topic: article
 ms.date: 09/24/2020
 author: palma21
-ms.openlocfilehash: 94edf35cc16d4967449af15797f6ecccba60be4b
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 87d51f9c1d084faf79c7ec1cf1255a6fb3c8245d
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181091"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201002"
 ---
-# <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster-preview"></a>Azure Kubernetes Service (ak) fürt leállítása és elindítása (előzetes verzió)
+# <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (ak) fürt leállítása és elindítása
 
 Előfordulhat, hogy az AK-beli számítási feladatait nem kell folyamatosan futtatni, például egy fejlesztési fürtöt, amely csak munkaidőn belül használatos. Ez olyan időpontokat eredményez, amikor az Azure Kubernetes-szolgáltatás (ak) fürtje tétlen lehet, és nem fut tovább a rendszerösszetevőknél. Csökkentheti a fürt lábnyomát úgy, hogy az [összes `User` csomópont-készletet 0-ra](scale-cluster.md#scale-user-node-pools-to-0)méretezi, de a [ `System` készlet](use-system-pools.md) továbbra is szükséges a rendszerösszetevők futtatásához a fürt futása közben. A költségek ezen időszakok alatti optimalizálása érdekében teljes mértékben kikapcsolhatja (leállíthatja) a fürtöt. Ez a művelet teljes mértékben leállítja a vezérlő-és az ügynök-csomópontokat, így az összes számítási költséget mentheti, miközben az összes objektumot és a fürt állapotát az újraindításkor tárolja. Ezután felveheti a jogot, hogy egy hétvége után maradjon, vagy hogy a fürt csak a Batch-feladatok futtatásakor fusson.
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
-
 
 ### <a name="limitations"></a>Korlátozások
 
@@ -29,42 +26,7 @@ A fürt indítási/leállítási funkciójának használatakor a következő kor
 
 - Ez a funkció csak Virtual Machine Scale Sets-alapú fürtök esetén támogatott.
 - A leállított AK-fürtök fürtjének állapota akár 12 hónapig is megmarad. Ha a fürt 12 hónapnál hosszabb ideig leáll, a fürt állapota nem állítható helyre. További információ: [AK-támogatási szabályzatok](support-policies.md).
-- Az előzetes verzió ideje alatt le kell állítania a fürt automéretezőjét (CA), mielőtt megpróbálja leállítani a fürtöt.
 - Csak leállított AK-fürtöket lehet elindítani vagy törölni. Az olyan műveletek elvégzéséhez, mint a skálázás vagy a frissítés, először indítsa el a fürtöt.
-
-### <a name="install-the-aks-preview-azure-cli"></a>Az `aks-preview` Azure CLI telepítése 
-
-Szüksége lesz az *AK-előnézeti* Azure CLI-bővítmény 0.4.64 vagy újabb verziójára is. Telepítse az *AK – előzetes* verzió Azure CLI-bővítményét az az [Extension Add][az-extension-add] paranccsal. Vagy telepítse az elérhető frissítéseket az az [Extension Update][az-extension-update] paranccsal.
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-``` 
-
-### <a name="register-the-startstoppreview-preview-feature"></a>Az `StartStopPreview` előzetes verzió funkciójának regisztrálása
-
-A fürt indítása/leállítása funkció használatához engedélyeznie kell a `StartStopPreview` szolgáltatás jelölőjét az előfizetésén.
-
-Regisztrálja a `StartStopPreview` szolgáltatás jelölőjét az az [Feature Register][az-feature-register] paranccsal, az alábbi példában látható módon:
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService" --name "StartStopPreview"
-```
-
-Néhány percet vesz igénybe, amíg az állapot *regisztrálva* jelenik meg. Ellenőrizze a regisztrációs állapotot az az [Feature List][az-feature-list] parancs használatával:
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/StartStopPreview')].{Name:name,State:properties.state}"
-```
-
-Ha elkészült, frissítse a *Microsoft. tárolószolgáltatás* erőforrás-szolgáltató regisztrációját az az [Provider Register][az-provider-register] parancs használatával:
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
 
 ## <a name="stop-an-aks-cluster"></a>AK-fürt leállítása
 
@@ -95,7 +57,6 @@ Ha az `provisioningState` azt `Stopping` jelenti, hogy a fürt még nem lett tel
 > [!IMPORTANT]
 > Ha [Pod-megszakadási költségvetést](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/) használ, a leállítási művelet hosszabb időt vehet igénybe, mert a kiürítési folyamat több időt vesz igénybe.
 
-
 ## <a name="start-an-aks-cluster"></a>AK-fürt indítása
 
 A `az aks start` paranccsal elindíthatja egy leállított AK-fürt csomópontjait és a vezérlési síkot. A fürt újra lett indítva az előző vezérlő síkja állapottal és az ügynök csomópontjainak számával.  
@@ -122,7 +83,6 @@ Ellenőrizze, hogy a fürt elindult-e az az [AK show][az-aks-show] paranccsal, �
 ```
 
 Ha az `provisioningState` azt `Starting` jelenti, hogy a fürt még nem lett teljesen elindítva.
-
 
 ## <a name="next-steps"></a>Következő lépések
 

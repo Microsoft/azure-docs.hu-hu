@@ -3,14 +3,14 @@ title: Windows Server-tároló létrehozása AK-fürtön a PowerShell használat
 description: Megtudhatja, hogyan hozhat létre gyorsan Kubernetes-fürtöt, hogyan helyezhet üzembe egy alkalmazást egy Windows Server-tárolóban az Azure Kubernetes szolgáltatásban (ak) a PowerShell használatával.
 services: container-service
 ms.topic: article
-ms.date: 05/26/2020
+ms.date: 03/12/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 56fc11583bcdd271d0225de90ef7ab06bcf87cbf
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: b877ecbdca06ff73d152e1b491e993798a99f98a
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625114"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103233514"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>Windows Server-tároló létrehozása Azure Kubernetes-szolgáltatásbeli (ak-) fürtön a PowerShell használatával
 
@@ -83,8 +83,9 @@ Ha olyan AK-fürtöt szeretne futtatni, amely támogatja a Windows Server-tárol
 > Annak biztosítása érdekében, hogy a fürt megbízhatóan működjön, legalább 2 (két) csomópontot kell futtatnia az alapértelmezett csomópont-készletben.
 
 ```azurepowershell-interactive
-$Password = Read-Host -Prompt 'Please enter your password' -AsSecureString
-New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 2 -KubernetesVersion 1.16.7 -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets -WindowsProfileAdminUserName akswinuser -WindowsProfileAdminUserPassword $Password
+$Username = Read-Host -Prompt 'Please create a username for the administrator credentials on your Windows Server containers: '
+$Password = Read-Host -Prompt 'Please create a password for the administrator credentials on your Windows Server containers: ' -AsSecureString
+New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 2 -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets -WindowsProfileAdminUserName $Username -WindowsProfileAdminUserPassword $Password
 ```
 
 > [!Note]
@@ -97,7 +98,7 @@ Néhány perc elteltével a parancs befejeződik, és visszaadja a fürtre vonat
 Alapértelmezés szerint a rendszer egy AK-fürtöt hoz létre egy olyan csomópont-készlettel, amely képes Linux-tárolók futtatására. A `New-AzAksNodePool` parancsmag használatával hozzáadhat egy olyan csomópont-készletet, amely Windows Server-tárolókat is futtathat a Linux-csomópontos készlettel együtt.
 
 ```azurepowershell-interactive
-New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myAKSCluster -VmSetType VirtualMachineScaleSets -OsType Windows -Name npwin -KubernetesVersion 1.16.7
+New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myAKSCluster -VmSetType VirtualMachineScaleSets -OsType Windows -Name npwin
 ```
 
 A fenti parancs létrehoz egy **npwin** nevű új csomópont-készletet, és hozzáadja azt a **myAKSCluster**. Ha Windows Server-tárolók futtatásához hoz létre csomópont-készletet, a **VmSize** alapértelmezett értéke **Standard_D2s_v3**. Ha úgy dönt, hogy beállítja a **VmSize** paramétert, ellenőrizze a [korlátozott][restricted-vm-sizes]virtuálisgép-méretek listáját. A minimális ajánlott méret **Standard_D2s_v3**. Az előző parancs az alapértelmezett alhálózatot is használja a futtatáskor létrehozott alapértelmezett vnet `New-AzAks` .

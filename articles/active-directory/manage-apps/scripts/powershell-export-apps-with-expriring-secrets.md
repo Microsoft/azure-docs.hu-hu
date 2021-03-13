@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/09/2021
 ms.author: kenwith
 ms.reviewer: mifarca
-ms.openlocfilehash: c8a37b08db5cdb35bc9328cbc29caa04a5cdf412
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: def9b55a1d873cccda5d1c48921e3f098beeced1
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/11/2021
-ms.locfileid: "103010830"
+ms.locfileid: "103149715"
 ---
 # <a name="export-apps-with-expiring-secrets-and-certificates"></a>Alkalmazások exportálása lejáró titkokkal és tanúsítványokkal
 
@@ -31,6 +31,8 @@ Ehhez a mintához a Graph modul (AzureAD) [AzureAD v2 PowerShell](/powershell/az
 [!code-azurepowershell[main](~/powershell_scripts/application-management/export-apps-with-expiring-secrets.ps1 "Exports all apps with expiring secrets and certificates for the specified apps in your directory.")]
 
 ## <a name="script-explanation"></a>Szkript ismertetése
+
+A szkript a módosítások nélkül közvetlenül is használható. A rendszergazda a lejárati dátummal kapcsolatos információkat, valamint azt, hogy szeretné-e már lejárt titkokat vagy tanúsítványokat látni.
 
 A "tag hozzáadása" parancs feladata az oszlopok létrehozása a CSV-fájlban.
 A "New-Object" parancs létrehoz egy objektumot, amelyet a CSV-fájl exportálásának oszlopaihoz kíván használni.

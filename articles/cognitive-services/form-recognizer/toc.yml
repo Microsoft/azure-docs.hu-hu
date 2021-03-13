@@ -20,6 +20,8 @@
       href: ../../search/cognitive-search-custom-skill-form.md
     - name: A Form Recognizer használata AI Builderrel
       href: tutorial-ai-builder.md
+    - name: Űrlap-felismerő használata Azure Functions
+      href: tutorial-azure-function.md
     - name: Űrlapadatok tömeges kinyerése
       href: tutorial-bulk-processing.md
 - name: Alapelvek

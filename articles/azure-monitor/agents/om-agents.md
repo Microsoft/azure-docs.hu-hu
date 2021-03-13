@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2020
-ms.openlocfilehash: e429b87397b91de28f7fea14729b0d18187fa8ff
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 99a8e331e265e686d1de06f8143d2345e51143f1
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102031378"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102613000"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager összekötése a Azure Monitor
 
@@ -71,15 +71,15 @@ Az alábbi információk a Operations Manager ügynökhöz, a felügyeleti kiszo
 |Erőforrás | Portszám| HTTP-ellenőrzés kihagyása|  
 |---------|------|-----------------------|  
 |**Ügynök**|||  
-|\*.ods.opinsights.azure.com| 443 |Igen|  
-|\*.oms.opinsights.azure.com| 443|Igen|  
-|\*.blob.core.windows.net| 443|Igen|  
-|\*.azure-automation.net| 443|Igen|  
+|\*.ods.opinsights.azure.com| 443 |Yes|  
+|\*.oms.opinsights.azure.com| 443|Yes|  
+|\*.blob.core.windows.net| 443|Yes|  
+|\*.azure-automation.net| 443|Yes|  
 |**Felügyeleti kiszolgáló**|||  
 |\*.service.opinsights.azure.com| 443||  
-|\*.blob.core.windows.net| 443| Igen|  
-|\*.ods.opinsights.azure.com| 443| Igen|  
-|*.azure-automation.net | 443| Igen|  
+|\*.blob.core.windows.net| 443| Yes|  
+|\*.ods.opinsights.azure.com| 443| Yes|  
+|*.azure-automation.net | 443| Yes|  
 |**Konzol Operations Manager Azure Monitor**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
@@ -99,6 +99,10 @@ A Azure Monitor felé irányuló adatforgalom biztosításához határozottan ja
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>Operations Manager csatlakoztatása Azure Monitor
 
 Az alábbi lépések végrehajtásával konfigurálhatja Operations Manager felügyeleti csoportját, hogy a Log Analytics munkaterületei egyikéhez csatlakozzon.
+
+> [!NOTE]
+> Ha azt tapasztalja, hogy Log Analytics adatok nem érkeznek meg egy adott ügynökből vagy felügyeleti kiszolgálóról, akkor próbálja meg alaphelyzetbe állítani a Winsock-katalógust (használja `netsh winsock reset` ), majd indítsa újra a kiszolgálót. A Winsock-katalógus alaphelyzetbe állítása lehetővé teszi, hogy a hálózati kapcsolatok újra létrejöttek legyenek.
+
 
 A Operations Manager felügyeleti csoport Log Analytics munkaterületre való kezdeti regisztrációja során a felügyeleti csoport proxy-konfigurációjának megadására szolgáló beállítás nem érhető el az operatív konzolon.  A felügyeleti csoportot sikeresen regisztrálni kell a szolgáltatásban ahhoz, hogy ez a lehetőség rendelkezésre álljon.  Ennek megkerüléséhez frissítenie kell a rendszerproxy konfigurációját a netsh használatával azon a rendszeren, amelyen az operatív konzolt futtatja az integráció konfigurálásához, valamint a felügyeleti csoport összes felügyeleti kiszolgálóját.  
 

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8b1c4077c036cbb75738115437d29ffd14b160ff
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c898444659c2ce071163e9ab774a4534f8c51a9c
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723673"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632050"
 ---
 # <a name="entity-functions"></a>Entitás-függvények
 
@@ -18,7 +18,7 @@ Az Entity functions olyan műveleteket határoz meg, amelyek olyan kis méretű 
 Az entitások lehetővé teszik az alkalmazások méretezését azáltal, hogy számos entitáson keresztül terjesztik a munkát, amelyek mindegyike szerény méretű állapotú.
 
 > [!NOTE]
-> Az Entity functions és a kapcsolódó funkciók csak Durable Functions 2,0-es és újabb verziókban érhetők el. A .NET és a JavaScript jelenleg támogatott.
+> Az Entity functions és a kapcsolódó funkciók csak [Durable Functions 2,0](durable-functions-versions.md#migrate-from-1x-to-2x) -es és újabb verziókban érhetők el. Jelenleg a .NET, a JavaScript és a Python támogatja őket.
 
 ## <a name="general-concepts"></a>Általános fogalmak
 
@@ -189,7 +189,6 @@ def entity_function(context: df.DurableEntityContext):
     elif operation == "get":
         context.set_result(current_value)
     context.set_state(current_value)
-
 
 
 main = df.Entity.create(entity_function)

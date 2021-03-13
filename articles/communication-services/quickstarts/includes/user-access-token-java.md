@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 27c68e7410c312354dde91a8ee4cab0dd844b8de
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 0665a4ca80f7cf1b15ba432bfce68b42db36ddaa
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102623359"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103021813"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -60,6 +60,8 @@ A projekt könyvtárából:
 A kezdéshez használja a következő kódot:
 
 ```java
+package com.communication.quickstart;
+
 import com.azure.communication.common.*;
 import com.azure.communication.identity.*;
 import com.azure.communication.identity.models.*;
@@ -67,6 +69,7 @@ import com.azure.core.credential.*;
 import com.azure.core.http.*;
 import com.azure.core.http.netty.*;
 
+import java.io.IOException;
 import java.time.*;
 import java.util.*;
 
@@ -111,6 +114,8 @@ A teljes kapcsolati karakterláncot a függvény használatával is megadhatja a
 ```java
 // Your can find your connection string from your resource in the Azure portal
 String connectionString = "<connection_string>";
+HttpClient httpClient = new NettyAsyncHttpClientBuilder().build();
+
 CommunicationIdentityClient communicationIdentityClient = new CommunicationIdentityClientBuilder()
     .connectionString(connectionString)
     .httpClient(httpClient)

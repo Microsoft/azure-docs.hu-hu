@@ -3,14 +3,14 @@ title: A verziókövetés integrációjának használata Azure Automation
 description: Ez a cikk azt ismerteti, hogyan lehet szinkronizálni Azure Automation a verziókövetés más adattárakkal.
 services: automation
 ms.subservice: process-automation
-ms.date: 11/12/2020
+ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: e7a6b6d3e753352820cdcb910dcbfa9362793493
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 281da27ce95649e85dae5d0795bb743f21fdb578
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050770"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631744"
 ---
 # <a name="use-source-control-integration"></a>Verziókövetés-integrálás használata
 
@@ -30,7 +30,7 @@ A Azure Automation háromféle verziókövetés használatát támogatja:
 
 * Egy forrásoldali vezérlő adattár (GitHub vagy Azure Repos)
 * [Futtató fiók](automation-security-overview.md#run-as-accounts)
-* A [legújabb Azure-modulok](automation-update-azure-modules.md) az Automation-fiókban, beleértve a `Az.Accounts` modult (az a modul megfelelője `AzureRM.Profile` )
+* A [ `AzureRM.Profile` modult](/powershell/module/azurerm.profile/) az Automation-fiókjába kell importálni. Vegye figyelembe, hogy az egyenértékű az Module ( `Az.Accounts` ) nem fog működni az Automation-verziókövetés esetében.
 
 > [!NOTE]
 > A verziókövetés szinkronizációs feladatai a felhasználó Automation-fiókjában futnak, és a többi Automation-feladattal megegyező sebességgel lesznek számlázva.
@@ -62,7 +62,7 @@ Ezzel az eljárással konfigurálhatja a verziókövetés használatát a Azure 
     |Mappa elérési útja     | A szinkronizálni kívánt runbookok tartalmazó mappa, például **/Runbooks**. A rendszer csak a megadott mappában lévő runbookok szinkronizálja. A rekurzió nem támogatott.        |
     |<sup>1</sup> . automatikus szinkronizálás     | Az automatikus szinkronizálás bekapcsolásának vagy kikapcsolásának beállítása a verziókövetés adattárában.        |
     |Runbook közzététele     | Annak beállítása, hogy a runbookok automatikusan közzé legyenek-e téve a forrás-vezérlőelemről való szinkronizálás után, vagy más módon.           |
-    |Description     | A verziókövetés további részleteit megadó szöveg        |
+    |Leírás     | A verziókövetés további részleteit megadó szöveg        |
 
     <sup>1</sup> ha engedélyezni szeretné az automatikus szinkronizálást a verziókövetés Azure Repos-integrációjának konfigurálásakor, a projekt rendszergazdájának kell lennie.
 

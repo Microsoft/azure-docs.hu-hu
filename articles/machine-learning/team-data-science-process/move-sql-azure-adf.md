@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/03/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 02fd6c1d4cbd1c2db287a38e086045042b5f220a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e477e4bb3b31477f9407e981d4c8da2340411f55
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309534"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615737"
 ---
 # <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>Adatok áthelyezése SQL Server-adatbázisból a SQL Databaseba Azure Data Factory
 
@@ -87,7 +87,7 @@ A társított szolgáltatások létrehozásához szükséges lépésenkénti elj
 Olyan táblákat hozhat létre, amelyek a következő parancsfájl-alapú eljárásokkal határozzák meg az adatkészletek szerkezetét, helyét és rendelkezésre állását. A táblák definiálásához a JSON-fájlok használhatók. További információ a fájlok struktúrájáról: [adatkészletek](../../data-factory/concepts-datasets-linked-services.md).
 
 > [!NOTE]
-> A `Add-AzureAccount` [New-AzureDataFactoryTable](/previous-versions/azure/dn835096(v=azure.100)) parancsmag végrehajtása előtt futtassa a parancsmagot annak ellenőrzéséhez, hogy a megfelelő Azure-előfizetés van-e kiválasztva a parancs végrehajtásához. A parancsmag dokumentációját lásd: [Add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount?view=azuresmps-3.7.0).
+> A `Add-AzureAccount` [New-AzureDataFactoryTable](/previous-versions/azure/dn835096(v=azure.100)) parancsmag végrehajtása előtt futtassa a parancsmagot annak ellenőrzéséhez, hogy a megfelelő Azure-előfizetés van-e kiválasztva a parancs végrehajtásához. A parancsmag dokumentációját lásd: [Add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount).
 >
 >
 
@@ -138,7 +138,7 @@ A SQL Server tábla definíciója a következő JSON-fájlban van megadva:
 
 Az oszlopnevek nem szerepelnek itt. Az oszlopnevek kiválasztásához adja meg azokat itt is (a részletekért tekintse meg az [ADF dokumentációs](../../data-factory/copy-activity-overview.md) témakört.
 
-Másolja a táblázat JSON-definícióját egy *onpremtabledef.js* fájl nevű fájlba, és mentse azt egy ismert helyre (ezt feltételezi, hogy *C:\temp\onpremtabledef.jsbe* ). Hozza létre a táblát az ADF-ben a következő Azure PowerShell parancsmaggal:
+Másolja a táblázat JSON-definícióját egy *onpremtabledef.js* fájl nevű fájlba, és mentse azt egy ismert helyre (ezt feltételezi, hogy *C:\temp\onpremtabledef.jsbe*). Hozza létre a táblát az ADF-ben a következő Azure PowerShell parancsmaggal:
 
 ```azurepowershell
 New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
@@ -173,7 +173,7 @@ A kimeneti blob helyéhez tartozó táblázat definíciója a következő (ez k�
 }
 ```
 
-Másolja a táblázat JSON-definícióját egy *bloboutputtabledef.js* fájl nevű fájlba, és mentse azt egy ismert helyre (ezt feltételezi, hogy *C:\temp\bloboutputtabledef.jsbe* ). Hozza létre a táblát az ADF-ben a következő Azure PowerShell parancsmaggal:
+Másolja a táblázat JSON-definícióját egy *bloboutputtabledef.js* fájl nevű fájlba, és mentse azt egy ismert helyre (ezt feltételezi, hogy *C:\temp\bloboutputtabledef.jsbe*). Hozza létre a táblát az ADF-ben a következő Azure PowerShell parancsmaggal:
 
 ```azurepowershell
 New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json
@@ -207,7 +207,7 @@ A SQL Azure kimenetéhez tartozó táblázat definíciója a következő (ez a s
 }
 ```
 
-Másolja a táblázat JSON-definícióját egy *AzureSqlTable.js* fájl nevű fájlba, és mentse azt egy ismert helyre (ezt feltételezi, hogy *C:\temp\AzureSqlTable.jsbe* ). Hozza létre a táblát az ADF-ben a következő Azure PowerShell parancsmaggal:
+Másolja a táblázat JSON-definícióját egy *AzureSqlTable.js* fájl nevű fájlba, és mentse azt egy ismert helyre (ezt feltételezi, hogy *C:\temp\AzureSqlTable.jsbe*). Hozza létre a táblát az ADF-ben a következő Azure PowerShell parancsmaggal:
 
 ```azurepowershell
 New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json
@@ -294,7 +294,7 @@ A korábban megadott táblázat-definíciók használatával az ADF-hez tartozó
 }
 ```
 
-Másolja a folyamat JSON-definícióját egy *pipelinedef.js* fájl nevű fájlba, és mentse azt egy ismert helyre (ezt feltételezi, hogy *C:\temp\pipelinedef.jsbe* ). Hozza létre a folyamatot az ADF-ben a következő Azure PowerShell parancsmaggal:
+Másolja a folyamat JSON-definícióját egy *pipelinedef.js* fájl nevű fájlba, és mentse azt egy ismert helyre (ezt feltételezi, hogy *C:\temp\pipelinedef.jsbe*). Hozza létre a folyamatot az ADF-ben a következő Azure PowerShell parancsmaggal:
 
 ```azurepowershell
 New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json

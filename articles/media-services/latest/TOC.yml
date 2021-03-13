@@ -49,8 +49,6 @@
       items:
         - name: Fiók létrehozása az ARM használatával
           href: quickstart-arm-template-account.md
-    - name: Python alapszintű kódolási útmutató
-      href: quickstart-basic-encoding-python.md
 - name: Oktatóanyagok
   items:
     - name: .NET
@@ -86,6 +84,10 @@
       items:
         - name: Egy távoli fájl kódolása és streamelése Node.js használatával
           href: stream-files-nodejs-quickstart.md
+    - name: Python
+      items:
+        - name: Python alapszintű kódolási útmutató
+          href: quickstart-basic-encoding-python.md
     - name: Azure Portal
       items:
         - name: Felhasználó által kezelt kulcsok vagy BYOK-oktatóanyag

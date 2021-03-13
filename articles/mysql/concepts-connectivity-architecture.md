@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/11/2021
-ms.openlocfilehash: 3ec582a429008fc073f68cbc9795e264d6814ccb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 263d27f4236ba43f6514f6a084e58cfe0a13a9d2
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101730014"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199517"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Kapcsolati architektúra a Azure Database for MySQLban
 Ez a cikk ismerteti a Azure Database for MySQL kapcsolati architektúrát, valamint azt, hogy a forgalom hogyan legyen átirányítva a Azure Database for MySQL-példányra az Azure-on belüli és kívüli ügyfelektől.
@@ -59,7 +59,9 @@ A következő táblázat az összes adatterület Azure Database for MySQL átjá
 | Közép-Franciaország | 40.79.137.0, 40.79.129.1  | | |
 | Dél-Franciaország | 40.79.177.0     | | |
 | Közép-Németország | 51.4.144.100     | | |
+| Észak-Németország | 51.116.56.0 | |
 | Kelet-Észak-Németország | 51.5.144.179  | | |
+| Középnyugat-Németország | 51.116.152.0 | |
 | Közép-India | 104.211.96.159     | | |
 | Dél-India | 104.211.224.146  | | |
 | Nyugat-India | 104.211.160.80    | | |
@@ -73,6 +75,8 @@ A következő táblázat az összes adatterület Azure Database for MySQL átjá
 | Dél-Afrika nyugati régiója | 102.133.24.0   | | |
 | USA déli középső régiója |104.214.16.39, 20.45.120.0  |13.66.62.124  |23.98.162.75 |
 | Délkelet-Ázsia | 40.78.233.2, 23.98.80.12     | 104.43.15.0 | |
+| Észak-Svájc | 51.107.56.0 ||
+| Nyugat-Svájc | 51.107.152.0||
 | UAE középső régiója | 20.37.72.64  | | |
 | Észak-Egyesült Arab | 65.52.248.0    | | |
 | Az Egyesült Királyság déli régiója | 51.140.184.11   | | |
@@ -85,17 +89,48 @@ A következő táblázat az összes adatterület Azure Database for MySQL átjá
 
 ## <a name="connection-redirection"></a>Kapcsolatok átirányítása
 
-Azure Database for MySQL támogatja a további kapcsolati házirendet, az **átirányítást**, amely segít csökkenteni a hálózati késést az ügyfélalkalmazások és a MySQL-kiszolgálók között. Ezzel a szolgáltatással, miután a kezdeti TCP-munkamenet létrejött a Azure Database for MySQL-kiszolgálón, a kiszolgáló visszaadja a MySQL-kiszolgálót futtató csomópont háttérbeli címeit az ügyfélnek. Ezt követően az összes további csomag közvetlenül a kiszolgálóra áramlik, és megkerüli az átjárót. Mivel a csomagok közvetlenül a kiszolgálóra áramlanak, a késés és az átviteli sebesség jobb teljesítményt biztosít.
+Azure Database for MySQL támogatja a további kapcsolati házirendet, az **átirányítást**, amely segít csökkenteni a hálózati késést az ügyfélalkalmazások és a MySQL-kiszolgálók között. Az átirányítással és a kezdeti TCP-munkamenetnek a Azure Database for MySQL-kiszolgálóhoz való létrehozása után a kiszolgáló visszaadja a MySQL-kiszolgálót üzemeltető csomópont háttérbeli címeit az ügyfélnek. Ezt követően az összes további csomag közvetlenül a kiszolgálóra áramlik, és megkerüli az átjárót. Mivel a csomagok közvetlenül a kiszolgálóra áramlanak, a késés és az átviteli sebesség jobb teljesítményt biztosít.
 
 Ez a funkció a 5,6-es, 5,7-as és 8,0-os motorral rendelkező Azure Database for MySQL-kiszolgálókon támogatott.
 
 Az átirányítás támogatása a Microsoft által fejlesztett PHP [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) -bővítményben érhető el, és a [PECL](https://pecl.php.net/package/mysqlnd_azure)-ben érhető el. Az átirányítás az alkalmazásokban való használatáról további információt az [átirányítás konfigurálása](./howto-redirection.md) című cikkben talál.
 
+
 > [!IMPORTANT]
 > Az átirányítás támogatása a PHP [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) bővítményben jelenleg előzetes verzióban érhető el.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
+### <a name="what-you-need-to-know-about-this-planned-maintenance"></a>Mit kell tudnia a tervezett karbantartásról?
+Ez egy DNS-módosítás, amely transzparensvé teszi az ügyfelek számára. Míg a DNS-kiszolgálón a teljes tartománynév IP-címe megváltozik, a helyi DNS-gyorsítótár 5 percen belül frissül, és az operációs rendszerek automatikusan elvégzik. A helyi DNS-frissítés után az összes új kapcsolat csatlakozni fog az új IP-címhez, az összes meglévő kapcsolat továbbra is a régi IP-címhez lesz csatlakoztatva megszakítás nélkül, amíg a régi IP-címeket nem szereli le teljesen. A leszerelés megkezdése előtt a régi IP-cím nagyjából három-négy hetet vesz igénybe; ezért nem befolyásolhatja az ügyfélalkalmazások alkalmazását.
+
+### <a name="what-are-we-decommissioning"></a>Mi a leszerelés?
+Csak az átjáró csomópontjai lesznek leszerelve. Amikor a felhasználók csatlakoznak a kiszolgálókhoz, a kapcsolat első leállítása az átjáró csomópontja, a kapcsolatnak a kiszolgálóra való továbbítása előtt. A régi átjárós gyűrűk leszerelése (nem a bérlői gyűrűk, ahol a kiszolgáló fut) a további pontosítás érdekében tekintse meg a [kapcsolati architektúrát](#connectivity-architecture) .
+
+### <a name="how-can-you-validate-if-your-connections-are-going-to-old-gateway-nodes-or-new-gateway-nodes"></a>Hogyan ellenőrizheti, hogy a kapcsolatok a régi átjáró-csomópontok vagy az új átjáró-csomópontok?
+Pingelje a kiszolgáló teljes tartománynevét, például:  ``ping xxx.mysql.database.azure.com`` . Ha a visszaadott IP-cím az átjáró IP-címei (leszerelése) alatt felsorolt IP-címek egyike a fenti dokumentumban, az azt jelenti, hogy a kapcsolatok a régi átjárón keresztül mennek keresztül. Tervezőrendszer, ha a visszaadott IP-cím az átjáró IP-címei területen felsorolt IP-címek egyike, akkor a kapcsolatok az új átjárón keresztül fognak haladni.
+
+Azt is megteheti, hogy [PSPing](https://docs.microsoft.com/sysinternals/downloads/psping) vagy TCPPing az adatbázis-kiszolgálót az ügyfélalkalmazás az 3306-as porton keresztül, és gondoskodik arról, hogy a VISSZATÉRÉSi IP-cím ne legyen a leszerelési IP-címek egyike
+
+### <a name="how-do-i-know-when-the-maintenance-is-over-and-will-i-get-another-notification-when-old-ip-addresses-are-decommissioned"></a>Hogyan tudni, hogy mikor történik a karbantartás, és kapok egy másik értesítést a régi IP-címek leszerelése után?
+Egy e-mailt fog kapni, amely tájékoztatja Önt, amikor elkezdjük a karbantartási munkát. A karbantartás akár egy hónapig is eltarthat attól függően, hogy hány kiszolgálót kell migrálni az Al-régiókban. Készítse elő az ügyfelet az adatbázis-kiszolgálóhoz való csatlakozásra a teljes tartománynév használatával vagy az új IP-cím használatával a fenti táblázatból. 
+
+### <a name="what-do-i-do-if-my-client-applications-are-still-connecting-to-old-gateway-server-"></a>Mi a teendő, ha az ügyfélalkalmazások továbbra is a régi átjáró kiszolgálóhoz csatlakoznak?
+Ez azt jelzi, hogy az alkalmazások a teljes tartománynév helyett statikus IP-cím használatával csatlakoznak a kiszolgálóhoz. Tekintse át a kapcsolatok karakterláncait és a kapcsolatok készletezési beállításait, az AK-beállításokat vagy akár a forráskódot.
+
+### <a name="is-there-any-impact-for-my-application-connections"></a>Hatással van az alkalmazás kapcsolataira?
+Ez a karbantartás csak DNS-változás, ezért transzparens az ügyfél számára. Miután a DNS-gyorsítótár frissült az ügyfélben (az operációs rendszer automatikusan elvégzi), az összes új kapcsolat csatlakozni fog az új IP-címhez, és az összes meglévő kapcsolat továbbra is jól működik, amíg a régi IP-cím le nem fejeződik, és ez általában több héttel később. Az újrapróbálkozási logika nem szükséges ebben az esetben, de érdemes megtekinteni az alkalmazást, hogy az újrapróbálkozási logika konfigurálva van. Használja a teljes tartománynevet az adatbázis-kiszolgálóhoz való kapcsolódáshoz, vagy engedélyezze az új "átjáró IP-címeinek" listáját az alkalmazás kapcsolati karakterláncában.
+Ez a karbantartási művelet nem fogja eldobni a meglévő kapcsolatokat. Az új kapcsolódási kérelmek csak az új átjáró gyűrűjét teszik lehetővé.
+
+### <a name="can-i-request-for-a-specific-time-window-for-the-maintenance"></a>Igényelhetek egy adott időablakot a karbantartáshoz? 
+Mivel a migrációnak transzparensnek kell lennie, és nincs hatással az ügyfél kapcsolatára, a felhasználók többsége számára nem lesz probléma. Tekintse át az alkalmazást proaktív módon, és győződjön meg arról, hogy a teljes tartománynevet használja az adatbázis-kiszolgálóhoz való kapcsolódáshoz, vagy ha engedélyezi az új "átjáró IP-címeinek" listáját az alkalmazás kapcsolati karakterláncában.
+
+### <a name="i-am-using-private-link-will-my-connections-get-affected"></a>Privát hivatkozást használok, a kapcsolatom hatással lesz a kapcsolatokra?
+Nem, ez az átjáró hardveres leszerelése, és nincs kapcsolata a magánhálózati vagy magánhálózati IP-címekkel, csak a leszerelési IP-címek alatt említett nyilvános IP-címeket fogja érinteni.
+
+
+
+## <a name="next-steps"></a>Következő lépések
 * [Azure Database for MySQL tűzfalszabályok létrehozása és kezelése a Azure Portal használatával](./howto-manage-firewall-using-portal.md)
 * [Azure Database for MySQL tűzfalszabályok létrehozása és kezelése az Azure CLI-vel](./howto-manage-firewall-using-cli.md)
 * [Átirányítás konfigurálása Azure Database for MySQL](./howto-redirection.md)

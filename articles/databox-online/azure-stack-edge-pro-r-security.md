@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: 922ef24bff7d6e60a3ba3b91113003f8206b8177
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: bd90a16c09dce65115cea2f097d18f2e0ced931a
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100548641"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632033"
 ---
 # <a name="security-and-data-protection-for-azure-stack-edge-pro-r-and-azure-stack-edge-mini-r"></a>Biztonság és adatvédelem Azure Stack Edge Pro R és Azure Stack Edge mini R rendszerhez
 
@@ -133,7 +133,7 @@ Ha az eszközön a merevlemez alaphelyzetbe áll, biztonságos törlés történ
 
 [!INCLUDE [azure-stack-edge-gateway-data-rest](../../includes/azure-stack-edge-gateway-protect-data-storage-accounts.md)]
 
-- Forgassa el és [szinkronizálja rendszeresen a Storage-fiók kulcsait](azure-stack-edge-j-series-manage-storage-accounts.md) , hogy megvédje a Storage-fiókját a jogosulatlan felhasználóktól.
+- Forgassa el és [szinkronizálja rendszeresen a Storage-fiók kulcsait](azure-stack-edge-gpu-manage-storage-accounts.md) , hogy megvédje a Storage-fiókját a jogosulatlan felhasználóktól.
 
 ## <a name="manage-personal-information"></a>Személyes adatok kezelése
 
@@ -141,7 +141,7 @@ Az Azure Stack Edge szolgáltatás a következő helyzetekben gyűjt személyes 
 
 [!INCLUDE [azure-stack-edge-gateway-data-rest](../../includes/azure-stack-edge-gateway-manage-personal-data.md)]
 
-A megosztásokat elérő vagy törlő felhasználók listájának megtekintéséhez kövesse a [megosztások kezelése az Azure stack Edge](azure-stack-edge-j-series-manage-shares.md)-ben című témakör lépéseit.
+A megosztásokat elérő vagy törlő felhasználók listájának megtekintéséhez kövesse a [megosztások kezelése az Azure stack Edge](azure-stack-edge-gpu-manage-shares.md)-ben című témakör lépéseit.
 
 További információkért tekintse át a Microsoft adatvédelmi szabályzatát a [megbízhatósági központban](https://www.microsoft.com/trustcenter).
 

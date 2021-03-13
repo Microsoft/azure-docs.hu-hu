@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: bec221f762213fa8576ccef30e9b6a27aa708f01
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a1651ef1b49ecedb8070f32c56e9d23a0f8fd0da
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944148"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201586"
 ---
 # <a name="get-started-with-azcopy"></a>Bevezetés az AzCopy használatába
 
@@ -100,6 +100,9 @@ Ha többet szeretne megtudni az SAS-jogkivonatokról és a beszerzéséről, tek
 ## <a name="transfer-data"></a>Adatátvitel
 
 Miután engedélyezte a személyazonosságát, vagy SAS-tokent kapott, megkezdheti az adatok átvitelét.
+
+> [!NOTE]
+> A Storage-fiók [biztonságos átviteléhez szükséges](storage-require-secure-transfer.md) beállítás határozza meg, hogy a Storage-fiókhoz való kapcsolódás TRANSPORT Layer Security (TLS) védelemmel van-e ellátva. Alapértelmezés szerint ez a beállítás engedélyezett.   
 
 A parancsok megkereséséhez tekintse meg a cikkek bármelyikét.
 

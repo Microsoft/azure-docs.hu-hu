@@ -7,14 +7,16 @@ ms.date: 3/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
-ms.openlocfilehash: 12f0af5f051d02945eeb9b1f7d4bfc50ef98f281
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f766a77ee55351e498a379146826ba1d5507bc93
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014686"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201172"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Az Azure Blob Storage az IoT Edge-ben modul üzembe helyezése az eszközön
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 A modulok több módon is üzembe helyezhetők egy IoT Edge eszközön, és mindegyikük az Azure Blob Storage IoT Edge-modulokban való működéséhez. A két legegyszerűbb módszer a Azure Portal vagy a Visual Studio Code-sablonok használata.
 
@@ -48,7 +50,7 @@ Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely mod
 
 2. A **modul beállításai** lapon adja meg a modul nevét, majd adja meg a tároló rendszerképének URI-ját:
 
-   Példák:
+   Angol nyelvű Példák:
   
    - **IoT Edge modul neve**: `azureblobstorageoniotedge`
    - **Rendszerkép URI-ja**: `mcr.microsoft.com/azure-blob-storage:latest`
@@ -131,7 +133,7 @@ Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely mod
 
    További információ a deviceToCloudUploadProperties és a deviceAutoDeleteProperties konfigurálásáról a modul üzembe helyezése után: [a különálló modul szerkesztése](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin). A kívánt tulajdonságokkal kapcsolatos további információkért lásd: a [kívánt tulajdonságok megadása vagy frissítése](module-composition.md#define-or-update-desired-properties).
 
-6. Válassza a **Hozzáadás** elemet.
+6. Válassza a **Hozzáadás** lehetőséget.
 
 7. Válassza a **Tovább: útvonalak** szakaszt az útvonalak szakaszhoz.
 
@@ -158,7 +160,7 @@ Néhány percet is igénybe vehet, amíg a modul elindult az eszközön, majd vi
 
 A Azure IoT Edge a Visual Studio Code-ban biztosít sablonokat, amelyek segítenek az Edge-megoldások fejlesztésében. A következő lépésekkel hozzon létre egy új IoT Edge-megoldást egy blob Storage-modullal, és konfigurálja az üzembe helyezési jegyzéket.
 
-1. Válassza **View** a  >  **parancs-paletta** megtekintése lehetőséget.
+1. Válassza a  >  **parancs-paletta** megtekintése lehetőséget.
 
 1. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** parancsot.
 
@@ -296,7 +298,7 @@ Emellett a blob Storage-modulhoz a HTTPS_PROXY beállítás is szükséges a jeg
 
       ![Képernyőfelvétel: környezeti változók lap.](./media/how-to-deploy-blob/verify-proxy-config.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az [Azure Blob Storage on IoT Edge](how-to-store-data-blob.md).
 

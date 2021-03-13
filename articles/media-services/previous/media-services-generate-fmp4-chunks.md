@@ -3,7 +3,7 @@ title: FMP4-adattömböket generáló Azure Media Services kódolási feladat l�
 description: Ez a témakör bemutatja, hogyan hozhat létre fMP4-adattömböket generáló kódolási feladatot. Ha ezt a feladatot a Media Encoder Standard vagy Media Encoder Premium Workflow kódolóval együtt használja, a kimeneti eszköz az ISO MP4-fájlok helyett fMP4-adattömböket fog tartalmazni.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a247ef24104d9ecb9c827896d2bbfda8c50b9958
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6311aa6d0bfca133925f27b5ea4849769d9e0ec4
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269403"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013363"
 ---
 # <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>FMP4-adattömböket generáló kódolási feladat létrehozása
 
