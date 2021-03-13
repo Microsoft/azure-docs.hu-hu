@@ -3,18 +3,18 @@ title: Rövid útmutató – Az Azure-költségek feltérképezése költségele
 description: Ez a rövid útmutató bemutatja, hogyan vizsgálhatja meg és elemezheti vállalata Azure-költségeit a Költségelemzés szolgáltatás használatával.
 author: bandersmsft
 ms.author: banders
-ms.date: 01/04/2021
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 83f2d87e3f4a03ff17526ea5706e4f87b8f39487
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
-ms.translationtype: HT
+ms.openlocfilehash: 86f7bbbb52b1596e20fb1f3a67e42b2dd27c501a
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882449"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103012606"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Gyorsútmutató: Költségek feltérképezése és elemzése költségelemzés használatával
 
@@ -68,11 +68,9 @@ A kezdő költségelemzési nézet a következő területeket foglalja magába.
 
 ### <a name="understand-forecast"></a>Az előrejelzés ismertetése
 
-A költség-előrejelzés a becsült költségek kivetítése a kiválasztott időszakra. A modell egy idősoros regressziós modellen alapul. Legalább 10 napnyi előzetes költség- és felhasználási adat szükséges a költségek pontos előrejelzéséhez. Egy adott időszakra vonatkozóan az előrejelzési modellnek az időszak hosszával megegyező mennyiségű betanítási adatra van szüksége. Például a három hónapos előrejelzéshez legalább három hónapnyi friss költség- és felhasználási adat szükséges.
+A legutóbbi használat alapján a Cost-előrejelzések a kiválasztott időszak becsült költségeinek kivetítését mutatják. Ha egy költségvetést a Cost Analysis szolgáltatásban állítanak be, akkor megtekintheti, hogy az előre jelzett kiadások várhatóan túllépik-e a költségvetési küszöbértéket. Az előrejelzési modell akár egy évig is megjósolhatja a jövőbeli költségeket. Válassza a szűrők elemet a kiválasztott dimenzióhoz tartozó részletes előre jelzett díj megtekintéséhez.
 
-A modell legfeljebb hat hónapos betanítási adatmennyiséget használ a költségek egy éves előrevetítéséhez. Legalább hét napnyi betanítási adatra van szüksége az előrejelzés megváltoztatásához. Az előrejelzés a költség- és felhasználási mintákban végbemenő jelentős változásokon, pl. kiugróan magas és alacsony értékeken alapul. Az előrejelzés nem hoz létre előrevetítést a **Csoportosítási szempont** tulajdonság alatt található minden egyes elemhez. Csak az összesített költségekről ad előrejelzést. Ha több pénznemet használ, a modell csak amerikai dollárban biztosítja a költségek előrejelzését.
-
-Mivel a modell az adatokban jelentkező mélypontokra és csúcsokra támaszkodik, a fenntartott példányokhoz hasonló nagyméretű vásárlások miatt az előrejelzés mérete mesterségesen meg fog növekedni. Az előrejelzési időszak és a vásárlások mérete befolyásolja az előrejelzés érintettségének időtartamát. Az előrejelzés visszaáll a normál állapotra, ha a kiadások stabilizálódnak.
+Az előrejelzési modell egy idősorozat-regressziós modellen alapul. Legalább 10 napnyi előzetes költség- és felhasználási adat szükséges a költségek pontos előrejelzéséhez. Egy adott időszakra vonatkozóan az előrejelzési modellnek az időszak hosszával megegyező mennyiségű betanítási adatra van szüksége. Például a három hónapos előrejelzéshez legalább három hónapnyi friss költség- és felhasználási adat szükséges.
 
 ## <a name="customize-cost-views"></a>Költségnézetek testreszabása
 

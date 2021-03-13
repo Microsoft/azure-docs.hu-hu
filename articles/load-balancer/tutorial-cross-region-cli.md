@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 03/04/2021
-ms.openlocfilehash: c41dc65b920c80d25a81a09f4550e76a8fd1095a
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 83efb428a94d49b77ecd923d4868afe034374b5f
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204546"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225183"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-azure-cli"></a>Oktatóanyag: régiók közötti Azure Load Balancer létrehozása az Azure CLI-vel
 
@@ -81,23 +81,6 @@ Régiók közötti terheléselosztó létrehozása az [az Network Cross-region-L
     --backend-pool-name myBackEndPool-CR     
 ```
 
-### <a name="create-the-health-probe"></a>Az állapotminta létrehozása
-
-Régiók közötti terheléselosztó állapotának vizsgálata az [az Network Cross-region LB Probe Create](/cli/azure/network/cross-region-lb/probe#az_network_cross_region_lb_probe_create)paranccsal:
-
-* **MyHealthProbe-CR** névvel ellátott.
-* **TCP** protokoll.
-* **80**-es port.
-
-```azurecli-interactive
-  az network cross-region lb probe create \
-    --lb-name myLoadBalancer-CR \
-    --name myHealthProbe-CR \
-    --port 80 \
-    --protocol Tcp \
-    --resource-group myResourceGroupLB-CR
-```
-
 ### <a name="create-the-load-balancer-rule"></a>A terheléselosztási szabály létrehozása
 
 A terheléselosztó szabálya az alábbiakat határozza meg:
@@ -122,8 +105,7 @@ Terheléselosztó-szabály létrehozása az [az Network Cross-region-LB Rule Cre
     --protocol tcp \
     --resource-group myResourceGroupLB-CR \
     --backend-pool-name myBackEndPool-CR \
-    --frontend-ip-name myFrontEnd-CR \
-    --probe-name myHealthProbe-CR
+    --frontend-ip-name myFrontEnd-CR
 ```
 
 ## <a name="create-backend-pool"></a>Háttérkészlet létrehozása
@@ -204,7 +186,6 @@ Ha már nincs rá szükség, az az [Group delete](/cli/azure/group#az-group-dele
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 * Létrehozta a régiók közötti Load balancert.
-* Létrehozott egy állapot-mintavételt.
 * Létrehozott egy terheléselosztási szabályt.
 * Regionális terheléselosztó hozzáadása a régiók közötti terheléselosztó háttér-készletéhez.
 * Tesztelte a terheléselosztó.

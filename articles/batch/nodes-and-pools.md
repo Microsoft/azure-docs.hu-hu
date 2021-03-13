@@ -2,13 +2,13 @@
 title: Csomópontok és készletek a Azure Batchban
 description: Ismerje meg a számítási csomópontokat és készleteket, valamint azt, hogyan használják őket egy Azure Batch munkafolyamatban fejlesztési szempontból.
 ms.topic: conceptual
-ms.date: 11/20/2020
-ms.openlocfilehash: be38d4f91afcaa1ac31e9b9bbc6d2547da2ee99e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 03/11/2021
+ms.openlocfilehash: e1edcc805e0e8c59d189a4622e494101fb31bb6d
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183658"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200224"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Csomópontok és készletek a Azure Batchban
 
@@ -65,7 +65,7 @@ Batch-készlet létrehozásakor meg kell adnia az Azure-beli virtuális gép kon
 A Batch-ben két típusú készlet-konfiguráció érhető el.
 
 > [!IMPORTANT]
-> A készleteket a "virtuális gép konfigurációja" és nem "Cloud Services konfiguráció" használatával kell konfigurálni. Az összes batch-funkciót a "virtuálisgép-konfiguráció" készletei támogatják, és az új funkciók hozzáadása folyamatban van. A "Cloud Services Configuration" készletek nem támogatják az összes funkciót, és nem terveznek új képességeket.
+> Habár a készleteket jelenleg a konfigurációval is létrehozhatja, az új készleteket a virtuális gép konfigurációjának használatával kell konfigurálni, és nem Cloud Services konfigurációt. A virtuálisgép-konfigurációs készletek minden aktuális és új batch-funkciót támogatni fognak. Cloud Services konfigurációs készletek nem támogatják az összes funkciót, és nem terveznek új képességeket. Az új "CloudServiceConfiguration" készleteket nem lehet létrehozni, vagy új csomópontokat hozzáadni a meglévő készletekhez a [2024. február 29. után](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/).
 
 ### <a name="virtual-machine-configuration"></a>Virtuális gép konfigurációja
 
@@ -76,13 +76,13 @@ A [Batch-csomóponti ügynök](https://github.com/Azure/Batch/blob/master/change
 ### <a name="cloud-services-configuration"></a>Cloud Services konfiguráció
 
 > [!WARNING]
-> A Cloud Service-konfigurációs készletek elavultak. Használja helyette a virtuális gépek konfigurációs készleteit.
+> Cloud Services konfigurációs készletek [elavultak](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/). Használja helyette a virtuális gépek konfigurációs készleteit. További információ: batch- [készlet konfigurációjának Áttelepítése Cloud Servicesról virtuális gépre](batch-pool-cloud-service-to-virtual-machine-configuration.md).
 
 A **Cloud Services konfiguráció** azt adja meg, hogy a készlet az Azure Cloud Services-csomópontokból tevődik össze. Cloud Services csak Windows számítási csomópontokat biztosít.
 
 A Cloud Services konfigurációs készletekhez elérhető operációs rendszerek az [Azure vendég operációs rendszer kiadásainak és az SDK-kompatibilitási mátrixnak](../cloud-services/cloud-services-guestos-update-matrix.md)vannak felsorolva, és az elérhető számítási csomópontok méretei a [Cloud Services méretében](../cloud-services/cloud-services-sizes-specs.md)vannak felsorolva. Cloud Services csomópontokat tartalmazó készlet létrehozásakor meg kell adnia a csomópont méretét és az operációsrendszer- *családját* (amely meghatározza, hogy a .net mely verzióit telepíti az operációs rendszer). Cloud Services a Windows rendszerű virtuális gépeknél gyorsabban üzembe helyezhető az Azure-ban. Ha windowsos számítási csomópontok készleteire van szükség, előfordulhat, hogy a Cloud Services üzembe helyezési idő szempontjából teljesítményelőnyt nyújt.
 
-Ahogy a Cloud Services feldolgozói szerepkörei esetében, itt is megadhatja az *operációs rendszer verzióját* (a feldolgozói szerepkörökkel kapcsolatos további információkért olvassa el [a Cloud Services áttekintésével](../cloud-services/cloud-services-choose-me.md) foglalkozó cikket). Azt javasoljuk, hogy az `Latest (*)` *operációs rendszer verziójának* megadásával a csomópontok automatikusan frissüljenek, és nem szükséges dolgozni az újonnan kiadott verziókhoz. Azért tanácsos megadni a konkrét operációsrendszer-verziót, mert így garantálható az alkalmazások kompatibilitása, hogy így a korábbi verziókkal való kompatibilitási tesztet lehessen végezni a verziófrissítés engedélyezése előtt. Az ellenőrzés után frissítheti a készlet *operációsrendszer-verzióját* , és telepítheti az új operációsrendszer-rendszerképet is. A rendszer megszakítja a futó feladatokat, és újból várólistára helyezi őket.
+A Cloud Serviceson belüli feldolgozói szerepkörökhöz hasonlóan megadhat egy *operációsrendszer-verziót* is. Azt javasoljuk, hogy az `Latest (*)` *operációs rendszer verziójának* megadásával a csomópontok automatikusan frissüljenek, és nem szükséges dolgozni az újonnan kiadott verziókhoz. Azért tanácsos megadni a konkrét operációsrendszer-verziót, mert így garantálható az alkalmazások kompatibilitása, hogy így a korábbi verziókkal való kompatibilitási tesztet lehessen végezni a verziófrissítés engedélyezése előtt. Az ellenőrzés után frissítheti a készlet *operációsrendszer-verzióját* , és telepítheti az új operációsrendszer-rendszerképet is. A rendszer megszakítja a futó feladatokat, és újból várólistára helyezi őket.
 
 ### <a name="node-agent-skus"></a>Csomóponti ügynök SKU-i
 

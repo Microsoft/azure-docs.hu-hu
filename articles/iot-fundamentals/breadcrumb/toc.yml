@@ -1,0 +1,7 @@
+- name: Azure
+  tocHref: /azure
+  topicHref: /azure/index
+  items:
+    - name: Eszközök internetes hálózata
+      tocHref: /azure/iot-fundamentals/
+      topicHref: /azure/iot-fundamentals/index

@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 828f0ff81048ca0b6f07b7fdee9ed29c87991db4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: dc0655aba424d29a4055f0d50a20057f22d084ed
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032636"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015455"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Csatlakozás az Azure IoT Centralhoz
 
@@ -178,7 +178,7 @@ Ez a megközelítés akkor lehet hasznos, ha IoT Central vagy tesztelési eszkö
 
 ## <a name="associate-a-device-with-a-device-template"></a>Eszköz hozzárendelése eszköz sablonnal
 
-IoT Central automatikusan társít egy eszközt egy eszközhöz, amikor az eszköz csatlakozik. Az eszköz a csatlakozáskor a [modell azonosítóját](../../iot-pnp/iot-plug-and-play-glossary.md#model-id) küldi el. IoT Central a modell AZONOSÍTÓját használja az adott eszközhöz tartozó sablon azonosítására. A felderítési folyamat a következőképpen működik:
+IoT Central automatikusan társít egy eszközt egy eszközhöz, amikor az eszköz csatlakozik. Az eszköz a csatlakozáskor a [modell azonosítóját](../../iot-fundamentals/iot-glossary.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json#model-id) küldi el. IoT Central a modell AZONOSÍTÓját használja az adott eszközhöz tartozó sablon azonosítására. A felderítési folyamat a következőképpen működik:
 
 1. Ha az eszköz sablonja már közzé van téve a IoT Central alkalmazásban, az eszköz társítva van az eszköz sablonnal.
 1. Ha az eszköz sablonja még nincs közzétéve a IoT Central alkalmazásban, IoT Central az eszköz modelljét keresi a [nyilvános modell adattárában](https://github.com/Azure/iot-plugandplay-models). Ha IoT Central megkeresi a modellt, azt használja egy alapszintű eszköz sablonjának létrehozásához.

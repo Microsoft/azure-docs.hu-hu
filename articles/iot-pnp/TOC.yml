@@ -51,8 +51,6 @@
       href: concepts-model-discovery.md
     - name: Modellelemző
       href: concepts-model-parser.md
-    - name: Szószedet
-      href: iot-plug-and-play-glossary.md
 - name: Útmutatók
   items:
     - name: IoT Explorer telepítése és használata
@@ -83,6 +81,8 @@
   items:
     - name: Támogatási és súgólehetőségek
       href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-pnp/toc.json&bc=/azure/iot-pnp/breadcrumb/toc.json
+    - name: IoT Szószedet
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-pnp/toc.json&bc=/azure/iot-pnp/breadcrumb/toc.json
     - name: Azure IoT-szolgáltatások
       items:
         - name: IoT Hub

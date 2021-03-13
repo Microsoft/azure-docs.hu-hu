@@ -6,14 +6,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 03/02/2021
+ms.date: 03/12/2021
 ms.custom: references_regions
-ms.openlocfilehash: 36f10bebfc42ae5e9e75206392e8a5f8ccef563a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b4dc8ab44d341b293c044843e6dff2a3b6d3102c
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694597"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103233548"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
@@ -23,7 +23,7 @@ Ismerje meg a szolgáltatás újdonságait. Könyvjelző ezen az oldalon naprak�
 
 |Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  Leírás | Rendelkezésre állás  |
 |------------------------------|---------------|---------------|
-| [Szemantikus keresés](semantic-search-overview.md) | Lekérdezésekkel kapcsolatos szolgáltatások gyűjteménye, amelyek nagyon kevés erőfeszítéssel javítják a keresési eredmények jelentőségét. A keresési kérések kisebb módosításaival kipróbálhatja a meglévő indexeken található szolgáltatásokat.</br></br>A [szemantikai lekérdezés](semantic-how-to-query-request.md) egy új lekérdezési típus, amely a természetes nyelvi feldolgozás terén kihasználja az előrehaladást a rangsorolás javítása érdekében, valamint a válaszok, a feliratok és a szemantikai csúcsfények megadására szolgáló lekérdezési szándék megismerését.</br></br>A [szemantikai rangsorolás és válaszok (válaszok, feliratok és csúcsfények)](semantic-how-to-query-response.md) az eredményeket kiértékelő modellre, valamint a modell azon képességére utalnak, hogy a válaszhoz struktúrát adjanak hozzá. | Nyilvános előzetes verzió ([kérés szerint](https://aka.ms/SemanticSearchPreviewSignup)). </br></br>Használja a [Search Documents (REST)](/rest/api/searchservice/preview-api/search-documents) API-Version = 2020-06 -30-Preview és a [search Explorert](search-explorer.md) a Azure Portal. </br></br>A régió és a rétegek korlátozásai érvényesek. |
+| [Szemantikus keresés](semantic-search-overview.md) | A lekérdezésekkel kapcsolatos olyan funkciók gyűjteménye, amelyek jelentősen javítják a keresési eredmények jelentőségét nagyon kevés erőfeszítéssel. </br></br>A [szemantikai rangsorolás](semantic-ranking.md) a szavak és a tartalom mögötti szemantikai jelentésekkel számítja ki a releváns pontszámokat. </br></br>A [szemantikai feliratok](semantic-how-to-query-request.md) a dokumentum legjobban összefoglaló, a legfontosabb kifejezésekre vagy kifejezésekre vonatkozó részei. </br></br>A [szemantikai válaszok](semantic-answers.md) a keresési dokumentumokból kinyert kulcsfontosságú részek, amelyek közvetlen választ adnak egy olyan lekérdezésnek, amely egy adott kérdésre hasonlít. | Nyilvános előzetes verzió ([kérés szerint](https://aka.ms/SemanticSearchPreviewSignup)). </br></br>Használja a [Search Documents (REST)](/rest/api/searchservice/preview-api/search-documents) API-Version = 2020-06 -30-Preview és a [search Explorert](search-explorer.md) a Azure Portal. </br></br>A régió és a rétegek korlátozásai érvényesek. |
 | [Helyesírás-ellenőrzés lekérdezési feltételei](speller-how-to-add.md) | Mielőtt a lekérdezési feltételek elérnék a keresőmotort, megadhatja őket a helyesírási hibák ellenőrzéséhez. A `speller` beállítás bármilyen típusú lekérdezéssel használható (egyszerű, teljes vagy szemantikai). |  Nyilvános előzetes verzió, csak REST, API-Version = 2020-06 -30-előzetes verzió|
 | [SharePoint Online-indexelő](search-howto-index-sharepoint-online.md) | Ez az indexelő egy SharePoint Online-webhelyhez kapcsolódik, így a tartalom indexelhető egy dokumentumtárból. | Nyilvános előzetes verzió, csak REST, API-Version = 2020-06 -30-előzetes verzió |
 

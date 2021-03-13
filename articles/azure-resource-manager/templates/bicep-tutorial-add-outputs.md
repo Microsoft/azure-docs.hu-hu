@@ -2,16 +2,16 @@
 title: Oktatóanyag – kimenetek hozzáadása Azure Resource Manager bicep-fájlhoz
 description: Adja hozzá a kimeneteket a bicep-fájlhoz, hogy leegyszerűsítse a szintaxist.
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 279417f22ded89db21abddad7a91a4cce520c6bd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ce2d1044fb0e45a72ce34b14bb654974d29051dc
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101748208"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636234"
 ---
 # <a name="tutorial-add-outputs-to-azure-resource-manager-bicep-file"></a>Oktatóanyag: kimenetek hozzáadása Azure Resource Manager bicep-fájlhoz
 
@@ -37,7 +37,7 @@ Az előző oktatóanyag végén a bicep-fájl a következő tartalmakat használ
 
 A kimenetek segítségével adhat vissza értékeket a központi telepítésből. Előfordulhat például, hogy hasznos lehet az új Storage-fiókhoz tartozó végpontok beszerzése.
 
-A következő példa kiemeli a bicep-fájl módosítását a kimeneti érték hozzáadásához. Másolja a teljes fájlt, és cserélje le a bicep-fájlt annak tartalmára.
+A következő példa a bicep-fájl módosítását mutatja a kimeneti érték hozzáadásához. Másolja a teljes fájlt, és cserélje le a bicep-fájlt annak tartalmára.
 
 :::code language="bicep" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.bicep" range="1-33" highlight="33":::
 
@@ -45,7 +45,9 @@ Néhány fontos elemet érdemes megjegyezni a hozzáadott kimeneti értékről.
 
 A visszaadott érték típusa `object` , ami azt jelenti, hogy egy sablon objektumot ad vissza.
 
-A tulajdonságnak a Storage-fiókból való beszerzéséhez `primaryEndpoints` használja a Storage-fiók szimbolikus nevét.
+A tulajdonságnak a Storage-fiókból való beszerzéséhez `primaryEndpoints` használja a Storage-fiók szimbolikus nevét. A Visual Studio Code automatikus kiegészítés funkciója a tulajdonságok teljes listáját jeleníti meg:
+
+   ![Visual Studio Code bicep szimbolikus név objektum tulajdonságai](./media/bicep-tutorial-add-outputs/visual-studio-code-bicep-output-properties.png)
 
 ## <a name="deploy-bicep-file"></a>Bicep-fájl üzembe helyezése
 

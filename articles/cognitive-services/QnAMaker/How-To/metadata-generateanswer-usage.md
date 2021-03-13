@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 7e8d1b13dfd802df820bea4015e411dbb85540ba
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 9d2100dbc2c5f24742a949778a1b7450bf303c5f
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103011425"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232205"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api"></a>Válasz kérése a GenerateAnswer API-val
 
@@ -174,9 +174,13 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 
 Az előző JSON-kérelem csak a 30%-os vagy a küszöbérték feletti válaszokat kérte.
 
-## <a name="return-precise-answers"></a>Pontos válaszok visszaadása
+## <a name="get-precise-answers-with-generateanswer-api"></a>Pontos válaszok a GenerateAnswer API-val
 
-### <a name="generate-answer-api"></a>Válasz API-k előállítása 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/v1)
+
+A pontos válasz funkció csak a QnA Maker felügyelt verzióval biztosítható.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/v2)
 
 A felhasználó a QnA Maker felügyelt erőforrás használatakor is engedélyezheti a [pontos válaszokat](../reference-precise-answering.md) . A answerSpanRequest paramétert azonos értékre kell frissíteni.
 
@@ -211,6 +215,8 @@ Ha a bot szolgáltatás pontos beállításait szeretné konfigurálni, navigál
 |Csak pontos válaszok|true|true|
 |Csak hosszú válaszok|hamis|hamis|
 |Hosszú és pontos válaszok|true|hamis|
+
+---
 
 ## <a name="common-http-errors"></a>Gyakori HTTP-hibák
 

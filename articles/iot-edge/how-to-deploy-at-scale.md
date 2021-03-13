@@ -9,14 +9,16 @@ ms.date: 10/13/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9d03b6f4a512c22564480405ec0f0e0c0e62a958
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: db27a466ca5f1370e8b43ceb472f5deeaba509f1
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048423"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200318"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>IoT Edge modulok méretezése a Azure Portal használatával
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Hozzon létre egy **IoT Edge automatikus központi telepítést** a Azure Portalban, hogy egyszerre több eszközön is kezelhesse a folyamatban lévő központi telepítéseket. A IoT Edge automatikus központi telepítései a IoT Hub [automatikus Eszközkezelő](../iot-hub/iot-hub-automatic-device-management.md) funkciójának részét képezik. A központi telepítések olyan dinamikus folyamatok, amelyek lehetővé teszik több modul üzembe helyezését több eszközön, nyomon követni a modulok állapotát és állapotát, és szükség esetén módosításokat hajthat végre.
 
@@ -48,8 +50,8 @@ A IoT Edge két különböző típusú automatikus központi telepítést biztos
 Az üzembe helyezés és a rétegzett központi telepítés létrehozásának lépései nagyon hasonlóak. A különbségeket az alábbi lépésekben hívja meg.
 
 1. A [Azure Portal](https://portal.azure.com)lépjen a IoT hub.
-1. A bal oldali ablaktábla menüjében válassza a **IoT Edge** lehetőséget az **automatikus eszközkezelés**területen.
-1. A felső sávon válassza a **központi telepítés létrehozása** vagy a **rétegzett központi telepítés létrehozása**lehetőséget.
+1. A bal oldali ablaktábla menüjében válassza a **IoT Edge** lehetőséget az **automatikus eszközkezelés** területen.
+1. A felső sávon válassza a **központi telepítés létrehozása** vagy a **rétegzett központi telepítés létrehozása** lehetőséget.
 
 Az üzemelő példány létrehozásának öt lépése van. A következő szakasz végigvezeti a műveletet.
 
@@ -73,7 +75,7 @@ A központi telepítések során a IoT Edge ügynök és IoT Edge hub-modulok be
 Egyéni kód modulként való hozzáadásához, illetve Azure-szolgáltatási modul manuális hozzáadásához kövesse az alábbi lépéseket:
 
 1. A lap **Container Registry beállítások** szakaszában adja meg a modul lemezképeit tartalmazó privát tároló-nyilvántartók eléréséhez szükséges hitelesítő adatokat.
-1. A lap **IoT Edge modulok** szakaszában válassza a **Hozzáadás**lehetőséget.
+1. A lap **IoT Edge modulok** szakaszában válassza a **Hozzáadás** lehetőséget.
 1. A legördülő menüből válasszon a következő három típusú modul közül:
 
    * **IoT Edge modul** – megadja a modul nevét és a tároló rendszerképének URI-ját. A minta SimulatedTemperatureSensor-modul képuri-ja például a következő: `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0` . Ha a modul rendszerképét egy privát tároló beállításjegyzékében tárolja, adja hozzá a hitelesítő adatokat ezen a lapon a rendszerkép eléréséhez.
@@ -102,15 +104,15 @@ Az élő paraméterek **prioritása** és **ideje** választható paraméterek, 
 
 Az útvonalak létrehozásával kapcsolatos további információkért lásd: [útvonalak deklarálása](module-composition.md#declare-routes).
 
-Válassza a **Next (tovább): metrikák**lehetőséget.
+Válassza a **Next (tovább): metrikák** lehetőséget.
 
 ### <a name="step-4-metrics"></a>4. lépés: mérőszámok
 
 A metrikák a konfigurációs tartalom alkalmazásának eredményeképpen a különböző állapotok összegzési számát adják meg.
 
-1. Adja meg a **metrika nevének**nevét.
+1. Adja meg a **metrika nevének** nevét.
 
-1. Adja meg a **mérőszám feltételeinek**lekérdezését. A lekérdezés IoT Edge hub-modul Twin [jelentett tulajdonságain](module-edgeagent-edgehub.md#edgehub-reported-properties)alapul. A metrika a lekérdezés által visszaadott sorok számát jelöli.
+1. Adja meg a **mérőszám feltételeinek** lekérdezését. A lekérdezés IoT Edge hub-modul Twin [jelentett tulajdonságain](module-edgeagent-edgehub.md#edgehub-reported-properties)alapul. A metrika a lekérdezés által visszaadott sorok számát jelöli.
 
    Például:
 
@@ -132,13 +134,13 @@ Ha több üzemelő példány ugyanazt az eszközt célozza, akkor a rendszer csa
 Az eszközre irányuló összes rétegzett telepítésnek magasabb prioritással kell rendelkeznie, mint az alapszintű üzemelő példány alkalmazása.
 
 1. Adjon meg egy pozitív egész számot a központi telepítési **prioritáshoz**.
-1. Adja meg a **cél feltételt** annak meghatározásához, hogy mely eszközök lesznek megcélozva a központi telepítéssel.A feltétel a Device Twin-címkék vagy az eszközök Twin jelentett tulajdonságain alapul, és meg kell egyeznie a kifejezés formátumával.Például `tags.environment='test'` vagy `properties.reported.devicemodel='4000x'`.
+1. Adja meg a **cél feltételt** annak meghatározásához, hogy mely eszközök lesznek megcélozva a központi telepítéssel. A feltétel a Device Twin-címkék vagy az eszközök Twin jelentett tulajdonságain alapul, és meg kell egyeznie a kifejezés formátumával. Például `tags.environment='test'` vagy `properties.reported.devicemodel='4000x'`.
 
 Válassza a **Next (tovább): felülvizsgálat + létrehozás** elemet az utolsó lépésre való áttéréshez.
 
 ### <a name="step-6-review-and-create"></a>6. lépés: Áttekintés és létrehozás
 
-Tekintse át az üzembe helyezési adatokat, majd kattintson a **Létrehozás**gombra.
+Tekintse át az üzembe helyezési adatokat, majd kattintson a **Létrehozás** gombra.
 
 Az üzemelő példány figyeléséhez lásd: [IoT Edge központi telepítések figyelése](how-to-monitor-iot-edge-deployments.md).
 
@@ -156,7 +158,7 @@ Amikor módosít egy központi telepítést, a módosítások azonnal replikál�
 
 1. Az IoT központban válassza a bal oldali ablaktábla menüjének **IoT Edge** elemét.
 1. Válassza a **IoT Edge központi telepítések** fület, majd válassza ki a konfigurálni kívánt központi telepítést.
-1. Válassza ki a **cél feltétel** lapot. Módosítsa a **cél feltételt** a kívánt eszközök célzásához. Módosíthatja a **prioritást**is.  Kattintson a **Mentés** gombra.
+1. Válassza ki a **cél feltétel** lapot. Módosítsa a **cél feltételt** a kívánt eszközök célzásához. Módosíthatja a **prioritást** is.  Kattintson a **Mentés** gombra.
 
     Ha frissíti a célként megadott feltételt, a következő frissítések történnek:
 
@@ -168,21 +170,21 @@ Amikor módosít egy központi telepítést, a módosítások azonnal replikál�
 
     ![Egyéni metrikák szerkesztése egy központi telepítésben](./media/how-to-deploy-monitor/metric-list.png)
 
-1. Válassza a **címkék** fület, és végezze el a kívánt módosításokat, majd kattintson a **Mentés**gombra.
+1. Válassza a **címkék** fület, és végezze el a kívánt módosításokat, majd kattintson a **Mentés** gombra.
 
 ## <a name="delete-a-deployment"></a>Központi telepítés törlése
 
 Ha töröl egy központi telepítést, minden telepített eszköz a következő legmagasabb prioritású üzemelő példányra kerül. Ha az eszközök nem felelnek meg az egyéb üzemelő példányok céljának, akkor a rendszer nem távolítja el a modulokat a központi telepítés törlésekor.
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és navigáljon a IoT hub.
-1. Válassza a **IoT Edge**lehetőséget.
+1. Válassza a **IoT Edge** lehetőséget.
 1. Válassza a **IoT Edge központi telepítések** fület.
 
    ![IoT Edge üzemelő példányok megtekintése](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. A jelölőnégyzet használatával válassza ki a törölni kívánt központi telepítést.
 1. Válassza a **Törlés** elemet.
-1. A rendszer értesíti arról, hogy ez a művelet törli ezt a központi telepítést, és az összes eszköz előző állapotára vált vissza.Alacsonyabb prioritású üzemelő példány lesz érvényben.Ha nincs más központi telepítés megcélozva, a rendszer nem távolítja el a modulokat. Ha el szeretné távolítani az összes modult az eszközről, hozzon létre egy üzembe helyezést nulla modulokkal, és telepítse azt ugyanarra az eszközre.Válassza az **Igen** lehetőséget a folytatáshoz.
+1. A rendszer értesíti arról, hogy ez a művelet törli ezt a központi telepítést, és az összes eszköz előző állapotára vált vissza. Alacsonyabb prioritású üzemelő példány lesz érvényben. Ha nincs más központi telepítés megcélozva, a rendszer nem távolítja el a modulokat. Ha el szeretné távolítani az összes modult az eszközről, hozzon létre egy üzembe helyezést nulla modulokkal, és telepítse azt ugyanarra az eszközre. Válassza az **Igen** lehetőséget a folytatáshoz.
 
 ## <a name="next-steps"></a>Következő lépések
 

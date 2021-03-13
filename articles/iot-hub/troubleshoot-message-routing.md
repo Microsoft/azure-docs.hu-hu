@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: asrastog
-ms.openlocfilehash: 29127a9dff42c0f733e3721d1ea5fea7350e774e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3abff5645775d724042acba3ee2461c7cad771a7
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547357"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149664"
 ---
 # <a name="troubleshooting-message-routing"></a>Üzenetek útválasztásának hibaelhárítása
 
@@ -37,11 +37,11 @@ A probléma megoldásához elemezze a következőket.
 
 #### <a name="the-routing-metrics-for-this-endpoint"></a>A végpont útválasztási metrikái
 
-Az [útválasztással kapcsolatos összes IoT hub-metrika](monitor-iot-hub-reference.md#routing-metrics) előre van meghatározva az *útválasztással* . Több mérőszámból is egyesítheti az információkat, így azonosíthatja a problémák alapvető okát. A metrikus **útválasztási kézbesítési kísérletekkel** például azonosíthatja, hogy hány üzenet lett kézbesítve egy végpontnak, vagy el lett dobva, ha nem felelnek meg a lekérdezéseknek valamelyik útvonalon és a tartalék útvonalon. Tekintse át az **útválasztási késés** metrikáját, és figyelje meg, hogy az üzenetek kézbesítésének késése állandó vagy növekvő. A növekvő késés egy adott végponttal kapcsolatos problémát jelezhet, és azt javasoljuk, hogy ellenőrizze [a végpont állapotát](#the-health-of-the-endpoint). Ezek az útválasztási mérőszámok olyan [dimenziókkal](monitor-iot-hub-reference.md#metric-dimensions) is rendelkeznek, amelyek részletezik a metrikát, például a végpont típusát, az adott végpont nevét és az üzenet kézbesítésének okát.
+Az [útválasztással kapcsolatos összes IoT hub-metrika](monitor-iot-hub-reference.md#routing-metrics) előre van meghatározva az *útválasztással*. Több mérőszámból is egyesítheti az információkat, így azonosíthatja a problémák alapvető okát. A metrikus **útválasztási kézbesítési kísérletekkel** például azonosíthatja, hogy hány üzenet lett kézbesítve egy végpontnak, vagy el lett dobva, ha nem felelnek meg a lekérdezéseknek valamelyik útvonalon és a tartalék útvonalon. Tekintse át az **útválasztási késés** metrikáját, és figyelje meg, hogy az üzenetek kézbesítésének késése állandó vagy növekvő. A növekvő késés egy adott végponttal kapcsolatos problémát jelezhet, és azt javasoljuk, hogy ellenőrizze [a végpont állapotát](#the-health-of-the-endpoint). Ezek az útválasztási mérőszámok olyan [dimenziókkal](monitor-iot-hub-reference.md#metric-dimensions) is rendelkeznek, amelyek részletezik a metrikát, például a végpont típusát, az adott végpont nevét és az üzenet kézbesítésének okát.
 
 #### <a name="the-resource-logs-for-any-operational-issues"></a>A működési problémákhoz tartozó erőforrás-naplók
 
-Figyelje meg az [ **útvonalak** erőforrás-naplóit](monitor-iot-hub-reference.md#routes) , hogy további információkat kapjon az útválasztási és végponti [műveletekről](#operation-names) , vagy azonosítsa a hibákat és a vonatkozó [hibakódot](#common-error-codes) a probléma további megismeréséhez. A naplóban szereplő művelet neve például azt jelzi, hogy az útvonal nem értékelhető ki az **RouteEvaluationError** miatt. A probléma megoldásához használja az adott [művelet neveként](#operation-names) megadott tippeket. Ha egy esemény hibát jelez, a napló további információkat is tartalmaz arról, hogy miért nem sikerült a kiértékelés. Ha például a művelet neve **EndpointUnhealthy** , a 403004 [hibakód](#common-error-codes) azt jelzi, hogy a végpont elfogyott.
+Figyelje meg az [ **útvonalak** erőforrás-naplóit](monitor-iot-hub-reference.md#routes) , hogy további információkat kapjon az útválasztási és végponti [műveletekről](#operation-names) , vagy azonosítsa a hibákat és a vonatkozó [hibakódot](#common-error-codes) a probléma további megismeréséhez. A naplóban szereplő művelet neve például azt jelzi, hogy az útvonal nem értékelhető ki az **RouteEvaluationError** miatt. A probléma megoldásához használja az adott [művelet neveként](#operation-names) megadott tippeket. Ha egy esemény hibát jelez, a napló további információkat is tartalmaz arról, hogy miért nem sikerült a kiértékelés. Ha például a művelet neve **EndpointUnhealthy**, a 403004 [hibakód](#common-error-codes) azt jelzi, hogy a végpont elfogyott.
 
 #### <a name="the-health-of-the-endpoint"></a>A végpont állapota
 
@@ -82,4 +82,4 @@ A következő műveletek nevei és hibakódok vannak naplózva az [útvonalak er
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha további segítségre van szüksége, vegye fel a kapcsolatot az Azure [-szakértőkkel az MSDN Azure-ban, és stack overflow fórumokon](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése** lehetőséget.
+Ha további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel a [Microsoft Q&a és stack overflow fórumokon](https://azure.microsoft.com/support/forums/). Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése** lehetőséget.

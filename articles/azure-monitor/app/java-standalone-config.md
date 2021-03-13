@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 4ed3b3d60be0e5e4bedcb604ce021f6a64002120
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: e58d69634712a9cc640ba9e4785a7bf1effaf88c
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/12/2021
-ms.locfileid: "103201258"
+ms.locfileid: "103224656"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurációs beállítások – Azure Monitor Application Insights Javához
 
@@ -184,9 +184,11 @@ További információkért tekintse meg a [telemetria-feldolgozó](./java-standa
 
 A Log4j, a Logback és a Java. util. Logging automatikusan lett kialakítva, és ezekkel a naplózási keretrendszerekkel végrehajtott naplózás automatikusan begyűjtve lesz.
 
-A rendszer csak akkor rögzíti a naplózást, ha először megfelel a naplózási keretrendszerek konfigurált küszöbértékének, a második pedig megfelel a Application Insights konfigurált küszöbértéknek is.
+A naplózás csak akkor rögzítve van, ha először megfelel a naplózási keretrendszerhez konfigurált szintnek, másrészt pedig megfelel a Application Insightshoz konfigurált szintnek is.
 
-Az alapértelmezett Application Insights küszöbérték: `INFO` . Ha módosítani szeretné ezt a szintet:
+Ha például a naplózási keretrendszer úgy van konfigurálva, hogy a `WARN` csomagból (vagy felette) naplózza a csomagot `com.example` , és Application Insights úgy van beállítva, hogy rögzítse `INFO` (és a fentiket), akkor Application Insights csak `WARN` a csomagból (és felett) rögzíti `com.example` .
+
+Application Insightshoz konfigurált alapértelmezett szint `INFO` . Ha módosítani szeretné ezt a szintet:
 
 ```json
 {

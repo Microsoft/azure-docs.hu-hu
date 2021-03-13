@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: bbab5463f0d022cb9bf155c7d33e2d81c8bdd448
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: a8f1f902b14dda7d95e3643c335e82ed7c7e5a3f
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/12/2021
-ms.locfileid: "103199690"
+ms.locfileid: "103232919"
 ---
 # <a name="optimize-traffic-flow-with-azure-active-directory-application-proxy"></a>A forgalom optimalizálása Azure Active Directory Application Proxy
 
@@ -41,6 +41,9 @@ Ha például az Azure AD-bérlő országa vagy régiója az Egyesült Királysá
 Ha az összekötők az alapértelmezett régiótól eltérő régiókban vannak telepítve, érdemes lehet megváltoztatni, hogy az összekötő-csoport melyik régióra legyen optimalizálva az alkalmazások eléréséhez szükséges teljesítmény javítása érdekében. Miután megadta a régiót egy összekötő csoport számára, a rendszer a kijelölt régióban lévő Application proxy Cloud Serviceshez csatlakozik.
 
 A forgalom optimalizálása és a késés csökkentése érdekében egy összekötő csoporthoz rendelje hozzá az összekötő csoportot a legközelebbi régióhoz. Régió hozzárendeléséhez:
+
+> [!IMPORTANT]
+> Ennek a funkciónak a használatához az összekötőknek legalább 1.5.1975.0 verzióval kell rendelkezniük.
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) az alkalmazásproxy-t használó címtár alkalmazás-rendszergazdájaként. Ha például a bérlő tartománya contoso.com, akkor a rendszergazdának admin@contoso.com vagy más rendszergazdai aliasnak kell lennie az adott tartományban.
 1. Válassza ki a felhasználónevét a jobb felső sarokban. Ellenőrizze, hogy be van-e jelentkezve az alkalmazásproxy-t használó könyvtárba. Ha módosítania kell a címtárakat, válassza a **váltás könyvtárat** , és válasszon egy, az alkalmazásproxy-t használó könyvtárat.

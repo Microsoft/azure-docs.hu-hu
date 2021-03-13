@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/25/2020
-ms.openlocfilehash: 7063452d23d2975cf0c26a89e7a08a422de54942
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.date: 03/10/2021
+ms.openlocfilehash: 77927472dae6c8e7e6fddacf9088b479636edd37
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751937"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224330"
 ---
 # <a name="train-model-module"></a>Betanítási modell modul
 
@@ -60,12 +60,34 @@ Azure Machine Learning a Machine learning-modellek létrehozása és használata
     > [!TIP] 
     > Ha problémája van az oszlop Választójának használatával, tekintse meg a tippek az [Oszlopok kiválasztása az adatkészletben](./select-columns-in-dataset.md) című cikket. Ismertet néhány gyakori forgatókönyvet és tippet a **with Rules** és a **Name** beállítások használatával.
   
-1.  A folyamat elküldése. Ha sok adattal rendelkezik, ez hosszabb időt is igénybe vehet.
+1.  A folyamat elküldése. Ha sok adattal rendelkezik, eltarthat egy darabig.
 
     > [!IMPORTANT] 
     > Ha van olyan azonosító oszlopa, amely az egyes sorok azonosítója, vagy egy olyan szöveges oszlop, amely túl sok egyedi értéket tartalmaz, a **betanítási modell** hibát eredményezhet, például: "a (z)" {column_name} "oszlop egyedi értékeinek száma nagyobb, mint az engedélyezett.
     >
     > Ennek az az oka, hogy az oszlop megnyomja az egyedi értékek küszöbértékét, és a memóriából is okozhat. A [metaadatok szerkesztése](edit-metadata.md) lehetőséggel megadhatja, hogy az oszlop **egyértelmű szolgáltatásként** legyen felhasználva, és nem használható a betanításban, vagy az [N-Gram funkciók kinyerése a szöveges modulból](extract-n-gram-features-from-text.md) a Text (szöveg) oszlop előfeldolgozásához További részletekért tekintse meg a [Designer hibakódot](././designer-error-codes.md) .
+
+## <a name="model-interpretability"></a>Modell értelmezése
+
+A modell értelmezése lehetővé teszi a ML modell megértését, valamint a döntéshozatal alapjául szolgáló döntéseket olyan módon, amely az emberek számára érthető.
+
+A **betanítási** modul jelenleg támogatja [az adatelemzési csomagok használatát az ml-modellek elmagyarázása érdekében](https://docs.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability-aml#generate-feature-importance-values-via-remote-runs). A következő beépített algoritmusok támogatottak:
+
+- Lineáris regresszió
+- Neurális hálózat típusú regresszió
+- Kétosztályos logisztikai regresszió
+- Kétosztályos támogató vektorgép
+- Többosztályos döntési erdő
+
+A modell magyarázatának létrehozásához válassza az **igaz** lehetőséget a **modell magyarázatának** legördülő listában a betanítási modell modulban. Alapértelmezés szerint a **Train Model** modulban hamis értékre van állítva. Vegye figyelembe, hogy a létrehozás magyarázata további számítási költségeket igényel.
+
+![Képernyőkép a modell magyarázatát jelző jelölőnégyzetről](./media/module/train-model-explanation-checkbox.png)
+
+A folyamat futásának befejeződése után a **betanítási modell** moduljának jobb oldali ablaktábláján meglátogathatja a **magyarázatok** lapot, és megismerheti a modell teljesítményét, az adatkészletet és a funkció fontosságát.
+
+![Képernyőkép a modell magyarázatait bemutató diagramokról](./media/module/train-model-explanations-tab.gif)
+
+Ha többet szeretne megtudni a modell magyarázatának használatáról Azure Machine Learningban, tekintse meg a következő témakört: a [ml modellek értelmezése](https://docs.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability-aml#generate-feature-importance-values-via-remote-runs).
 
 ## <a name="results"></a>Results (Eredmények)
 
@@ -77,6 +99,6 @@ A modell képzése után:
 + Ha a modellt az új értékek előrejelzéséhez szeretné használni, akkor a [pontszám modell](./score-model.md) modulhoz kell csatlakoznia, az új bemeneti adatokkal együtt.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

@@ -5,22 +5,22 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: 6c597e8fd48eb157b69c918ae5fd5f699611ad75
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9c7b265118e395dde2b4b5f3959ba397d75ddac5
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703405"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232188"
 ---
 # <a name="precise-answering"></a>Pontos válaszadás
 
 A QnA Maker felügyelt (előzetes verzió) szolgáltatásban bevezetett pontos hívásfogadás funkció lehetővé teszi, hogy pontosan rövid választ kapjon a Tudásbázisban a felhasználói lekérdezésekhez elérhető legjobb válasz-átlépésből. Ez a funkció egy olyan mély tanulási modellt használ, amely a Futtatás során megérti a felhasználói lekérdezés célját, és a válasz áthaladásának pontos rövid válaszát észleli, ha egy rövid válasz van jelen a válasz-átjáróban. 
 
-Ez a szolgáltatás alapértelmezés szerint be van kapcsolva a teszt ablaktáblán, így tesztelheti a forgatókönyvhöz kapcsolódó funkciókat. Ez a funkció rendkívül hasznos a fejlesztők és a végfelhasználók számára egyaránt. Mostantól a tartalmi fejlesztőknek nem kell manuálisan megadniuk a konkrét QnA párokat a tudásbázisban található minden egyes tényhez, és a végfelhasználónak nem kell megvizsgálnia a szolgáltatás által visszaadott teljes válasz-áthaladást, hogy megkeresse a felhasználó lekérdezésére adott tényleges tényt. 
+Ez a szolgáltatás alapértelmezés szerint be van kapcsolva a teszt ablaktáblán, így tesztelheti a forgatókönyvhöz kapcsolódó funkciókat. Ez a funkció rendkívül hasznos a fejlesztők és a végfelhasználók számára egyaránt. Mostantól a tartalmi fejlesztőknek nem kell manuálisan megadniuk a konkrét QnA párokat a tudásbázisban található minden egyes tényhez, és a végfelhasználónak nem kell megvizsgálnia a szolgáltatás által visszaadott teljes válasz-áthaladást, hogy megkeresse a felhasználó lekérdezésére adott tényleges tényt. [A pontos válaszokat a válaszok létrehozása API-n keresztül](How-To/metadata-generateanswer-usage.md#get-precise-answers-with-generateanswer-api)olvashatja be.
 
 ## <a name="precise-answering-on-qna-maker-portal"></a>Pontos válaszadás QnA Maker portálon
 
-A QnA Maker-portálon a test-panel megnyitásakor megjelenik egy lehetőség a **rövid válasz megjelenítéséhez** a tetején. Ez a beállítás alapértelmezés szerint ki lesz választva. Amikor lekérdezést ad meg a teszt ablaktáblán, egy rövid válasz jelenik meg a válasz áthaladásával együtt, ha a válaszban van egy rövid válasz. 
+A QnA Maker-portálon a test-panel megnyitásakor megjelenik egy lehetőség a **rövid válasz megjelenítéséhez** a tetején. Ez a beállítás alapértelmezés szerint ki lesz választva. Amikor lekérdezést ad meg a teszt ablaktáblán, egy rövid válasz jelenik meg a válasz áthaladásával együtt, ha a válaszban van egy rövid válasz.
  
 ![Felügyelt engedélyezett teszt panel](../QnAMaker/media/conversational-context/test-pane-with-managed.png)
 
