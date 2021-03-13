@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 093e069fa7a3eab06c61f796421a3253d9b92cb1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6f7359b2b2fb0a1ea6ce92ec52bba15fc74fc75a
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727498"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017154"
 ---
 # <a name="continuous-patient-monitoring-architecture"></a>A folyamatos betegfigyelés architektúrája
 
@@ -37,7 +37,7 @@ A mobiltelefonos alkalmazás elsődleges funkciója az, hogy az orvostechnikai e
 
 ### <a name="export-to-azure-api-for-fhirreg"></a>Exportálás az Azure API-ba FHIR&reg;
 
-Az Azure IoT Central HIPAA-kompatibilis és HITRUST &reg; tanúsítvánnyal rendelkezik. A [FHIR készült Azure API](../../healthcare-apis/overview.md)használatával más szolgáltatásokhoz is küldhet beteg-egészségügyi adataikat. A FHIR készült Azure API egy szabványon alapuló API a klinikai egészségügyi adatkezeléshez. A [FHIR készült Azure IoT-összekötő](../../healthcare-apis/iot-fhir-portal-quickstart.md) lehetővé teszi, hogy a FHIR Azure API-ját folyamatos adatexportálási célként használja IoT Central.
+Az Azure IoT Central HIPAA-kompatibilis és HITRUST &reg; tanúsítvánnyal rendelkezik. A [FHIR készült Azure API](../../healthcare-apis/fhir/overview.md)használatával más szolgáltatásokhoz is küldhet beteg-egészségügyi adataikat. A FHIR készült Azure API egy szabványon alapuló API a klinikai egészségügyi adatkezeléshez. A [FHIR készült Azure IoT-összekötő](../../healthcare-apis/fhir/iot-fhir-portal-quickstart.md) lehetővé teszi, hogy a FHIR Azure API-ját folyamatos adatexportálási célként használja IoT Central.
 
 ### <a name="machine-learning"></a>Gépi tanulás
 

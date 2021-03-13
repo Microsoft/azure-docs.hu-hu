@@ -55,7 +55,7 @@
     - name: Áttekintés
       items:
         - name: Mi az Azure Stack Edge Pro R?
-          href: azure-stack-edge-j-series-overview.md
+          href: azure-stack-edge-pro-r-overview.md
     - name: Alapelvek
       items:
         - name: Kész biztonság
@@ -171,7 +171,7 @@
         - name: IoT Edge-minták üzembe helyezése
           items:
             - name: Modul az Nvidia-katalógusból
-              href: azure-stack-edge-j-series-configure-gpu-modules.md
+              href: azure-stack-edge-gpu-configure-gpu-modules.md
             - name: GPU-modul a GIT-adattárból
               href: azure-stack-edge-gpu-deploy-sample-module.md
             - name: GPU-modul a piactéren keresztül
@@ -189,7 +189,7 @@
                 - name: Számításgyorsítás
                   href: azure-stack-edge-gpu-deploy-compute-acceleration.md
                 - name: Állapot nélküli alkalmazás
-                  href: azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md
+                  href: azure-stack-edge-gpu-deploy-stateless-application-kubernetes.md
                 - name: Statikusan kiépített állapotalapú alkalmazás
                   href: azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md
                 - name: Dinamikusan kiépített állapotalapú alkalmazás
@@ -199,7 +199,7 @@
                 - name: Állapot nélküli alkalmazás
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
                 - name: C#-modul fejlesztése
-                  href: azure-stack-edge-j-series-create-iot-edge-module.md
+                  href: azure-stack-edge-gpu-create-iot-edge-module.md
             - name: Azure Arc használatával (előzetes verzió)
               items:
                 - name: Az Arc engedélyezése a Kubernetes-fürtön
@@ -211,11 +211,11 @@
         - name: Az Azure Resource Manager konfigurálása (előzetes verzió)
           items:
             - name: Csatlakozás az Azure PowerShell használatával
-              href: azure-stack-edge-j-series-connect-resource-manager.md
+              href: azure-stack-edge-gpu-connect-resource-manager.md
             - name: Azure Resource Manager-jelszó beállítása
-              href: azure-stack-edge-j-series-set-azure-resource-manager-password.md
+              href: azure-stack-edge-gpu-set-azure-resource-manager-password.md
             - name: Ügyfél TLS-beállításainak konfigurálása
-              href: azure-stack-edge-j-series-configure-tls-settings.md
+              href: azure-stack-edge-gpu-configure-tls-settings.md
         - name: Azure-beli virtuális gépek üzembe helyezése (előzetes verzió)
           items:
             - name: Virtuális gépek üzembe helyezése – Azure Portal
@@ -229,7 +229,7 @@
             - name: Virtuális gépek üzembe helyezése – Azure PowerShell-szkript
               href: azure-stack-edge-gpu-deploy-virtual-machine-powershell-script.md
             - name: Virtuális gépek üzembe helyezése – Azure CLI/Python
-              href: azure-stack-edge-j-series-deploy-virtual-machine-cli-python.md
+              href: azure-stack-edge-gpu-deploy-virtual-machine-cli-python.md
             - name: Egyéni szkriptbővítmények üzembe helyezése virtuális gépeken
               href: azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md
             - name: Virtuálisgép-rendszerkép létrehozása
@@ -247,23 +247,23 @@
             - name: Tanúsítványhibák elhárítása
               href: azure-stack-edge-gpu-certificate-troubleshooting.md
         - name: Peremhálózati számítás felügyelete
-          href: azure-stack-edge-j-series-manage-compute.md
+          href: azure-stack-edge-gpu-manage-compute.md
         - name: A peremhálózati tárolóregisztrációs adatbázis kezelése
           href: azure-stack-edge-gpu-edge-container-registry.md
         - name: Tárhelyátjáró felügyelete
           items:
             - name: 'Hozzáadás, csatlakozás a megosztáshoz'
-              href: azure-stack-edge-j-series-deploy-add-shares.md
+              href: azure-stack-edge-gpu-deploy-add-shares.md
             - name: 'Hozzáadás, csatlakozás a tárfiókokhoz'
-              href: azure-stack-edge-j-series-deploy-add-storage-accounts.md
+              href: azure-stack-edge-gpu-deploy-add-storage-accounts.md
             - name: Megosztások
-              href: azure-stack-edge-j-series-manage-shares.md
+              href: azure-stack-edge-gpu-manage-shares.md
             - name: Felhasználók
-              href: azure-stack-edge-j-series-manage-users.md
+              href: azure-stack-edge-gpu-manage-users.md
             - name: Tárfiókok
-              href: azure-stack-edge-j-series-manage-storage-accounts.md
+              href: azure-stack-edge-gpu-manage-storage-accounts.md
             - name: Sávszélesség-ütemezések
-              href: azure-stack-edge-j-series-manage-bandwidth-schedules.md
+              href: azure-stack-edge-gpu-manage-bandwidth-schedules.md
         - name: Eszköz felügyelete
           items:
             - name: 'Teljesítmény, hozzáférés és kapcsolatok'
@@ -318,6 +318,9 @@
           href: /rest/api/databoxedgegateway
         - name: .NET SDK
           href: /dotnet/api/overview/azure/databoxedge/databoxgateway
+        - name: Az Azure Policy beépített elemei
+          displayName: 'samples, policies, definitions'
+          href: ./policy-reference.md
 - name: Azure Stack Edge Pro – FPGA
   items:
     - name: Áttekintés
@@ -403,23 +406,10 @@
           href: ../databox-gateway/data-box-gateway-1905-release-notes.md?toc=/azure/databox-online/toc.json&bc=/azure/databox-online/breadcrumb/toc.json
         - name: Általános rendelkezésre állás (GA)
           href: ../databox-gateway/data-box-gateway-release-notes.md?toc=/azure/databox-online/toc.json&bc=/azure/databox-online/breadcrumb/toc.json
-    - name: Referencia
-      items:
-        - name: Azure PowerShell
-          href: /powershell/module/az.stackedge/#stack_edge
-        - name: REST API
-          href: /rest/api/databoxedgegateway
-        - name: .NET SDK
-          href: /dotnet/api/overview/azure/databoxedge/databoxgateway
 - name: Biztonság
   items:
     - name: Biztonsági alapkonfiguráció
       href: security-baseline.md
-- name: Hivatkozások
-  items:
-    - name: Az Azure Policy beépített elemei
-      displayName: 'samples, policies, definitions'
-      href: ./policy-reference.md
 - name: További források
   items:
     - name: Azure Stack Edge Pro C#-mintamodulok (.NET)

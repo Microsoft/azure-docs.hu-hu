@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 32b1558bf4af2ee151fef33a8c0cbe7df82f1e84
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 4ed3b3d60be0e5e4bedcb604ce021f6a64002120
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201753"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201258"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurációs beállítások – Azure Monitor Application Insights Javához
 
@@ -61,7 +61,7 @@ A kapcsolatok karakterláncának megadása kötelező. A Application Insights er
 }
 ```
 
-A környezeti változó használatával is beállíthatja a kapcsolatok karakterláncát `APPLICATIONINSIGHTS_CONNECTION_STRING` .
+A környezeti változóval is beállíthatja a kapcsolatok karakterláncát `APPLICATIONINSIGHTS_CONNECTION_STRING` (ez a beállítás elsőbbséget élvez, ha a rendszer a JSON-konfigurációban is megadja a kapcsolatok karakterláncát).
 
 Ha nem állítja be a kapcsolatok karakterláncát, akkor letiltja a Java-ügynököt.
 
@@ -81,7 +81,7 @@ Ha be szeretné állítani a Felhőbeli szerepkör nevét:
 
 Ha nincs beállítva a Felhőbeli szerepkör neve, a rendszer a Application Insights erőforrás nevét fogja használni az alkalmazás térképén lévő összetevő címkézéséhez.
 
-A Felhőbeli szerepkör nevét a környezeti változó használatával is beállíthatja `APPLICATIONINSIGHTS_ROLE_NAME` .
+A Felhőbeli szerepkör nevét a környezeti változó használatával is beállíthatja `APPLICATIONINSIGHTS_ROLE_NAME` (amely elsőbbséget élvez, ha a Felhőbeli szerepkör neve is meg van adva a JSON-konfigurációban).
 
 ## <a name="cloud-role-instance"></a>Felhőalapú szerepkör-példány
 
@@ -98,7 +98,7 @@ Ha a Felhőbeli szerepkör-példányt a gép neve helyett más értékre szeretn
 }
 ```
 
-A Felhőbeli szerepkör-példányt a környezeti változó használatával is beállíthatja `APPLICATIONINSIGHTS_ROLE_INSTANCE` .
+A Felhőbeli szerepkör-példányt a környezeti változóval is beállíthatja `APPLICATIONINSIGHTS_ROLE_INSTANCE` (amely elsőbbséget élvez, ha a Felhőbeli szerepkör példánya is meg van adva a JSON-konfigurációban).
 
 ## <a name="sampling"></a>Mintavételezés
 
@@ -117,7 +117,7 @@ Az alábbi példa bemutatja, hogyan állíthatja be a mintavételezést úgy, ho
 }
 ```
 
-A mintavételezési százalékot a környezeti változó használatával is beállíthatja `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` .
+A mintavételezési százalékot a környezeti változóval is beállíthatja `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` (amely akkor elsőbbséget élvez, ha a mintavételi százalék a JSON-konfigurációban is meg van adva).
 
 > [!NOTE]
 > A mintavételezési százaléknál válasszon egy olyan százalékot, amely a 100/N értéknél közelebb van, ahol N egész szám. A mintavétel jelenleg nem támogatja a többi értéket.
@@ -150,9 +150,6 @@ Ha további JMX-metrikákat szeretne gyűjteni:
 `attribute` az attribútum neve a JMX-MBean belül, amelyet össze kíván gyűjteni.
 
 A numerikus és a logikai JMX metrikájának értékei támogatottak. A logikai JMX metrikái a hamis értékre vannak leképezve `0` , és `1` igaz.
-
-[//]: # "Megjegyzés: nem dokumentálja APPLICATIONINSIGHTS_JMX_METRICS itt"
-[//]: # "az ENV var-ban beágyazott JSON-fájl zavaros, és csak a kód nem szükséges csatolása esetén dokumentálható"
 
 ## <a name="custom-dimensions"></a>Egyéni dimenziók
 
@@ -201,7 +198,7 @@ Az alapértelmezett Application Insights küszöbérték: `INFO` . Ha módosíta
 }
 ```
 
-A küszöbértéket a környezeti változó használatával is megadhatja `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` .
+A szintet a környezeti változóval is beállíthatja `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` (amely akkor elsőbbséget élvez, ha a szint a JSON-konfigurációban is meg van adva).
 
 Ezek az érvényes `level` értékek, amelyeket megadhat a `applicationinsights.json` fájlban, és hogyan felelnek meg a naplózási szintnek a különböző naplózási keretrendszerek esetében:
 
@@ -284,7 +281,7 @@ Alapértelmezés szerint a Application Insights Java 3,0 15 percenként küld sz
 ```
 
 > [!NOTE]
-> A szívverés gyakorisága nem csökkenthető, mivel a szívverési adatok a Application Insights használatának nyomon követésére is használhatók.
+> Az intervallum nem növelhető 15 percnél hosszabb ideig, mert a szívverési adatok a Application Insights használatának nyomon követésére is használhatók.
 
 ## <a name="http-proxy"></a>HTTP-proxy
 
@@ -300,6 +297,30 @@ Ha az alkalmazás tűzfal mögött található, és nem tud közvetlenül kapcso
 ```
 
 Application Insights a Java 3,0 is tiszteletben tartja a globális `-Dhttps.proxyHost` és a `-Dhttps.proxyPort` beállított értékeit.
+
+## <a name="metric-interval"></a>Metrika intervalluma
+
+Ez a funkció előzetes verzióban érhető el.
+
+Alapértelmezés szerint a metrikák 60 másodpercenként lesznek rögzítve.
+
+A 3.0.3-BETA verziótól kezdődően megváltoztathatja ezt az intervallumot:
+
+```json
+{
+  "preview": {
+    "metricIntervalSeconds": 300
+  }
+}
+```
+
+A beállítás az összes alábbi metrikára vonatkozik:
+
+* Alapértelmezett teljesítményszámlálók, például CPU és memória
+* Alapértelmezett egyéni metrikák, például a szemét gyűjtésének időzítése
+* Konfigurált JMX-metrikák ([lásd fent](#jmx-metrics))
+* Mikrométer metrikái ([lásd fent](#auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics))
+
 
 [//]: # "Megjegyzés: a OpenTelemetry-támogatás privát előzetes verzióban érhető el, amíg a OpenTelemetry API eléri a 1,0-et"
 
@@ -349,7 +370,7 @@ Alapértelmezés szerint a Application Insights Java 3,0 `INFO` a fájlra `appli
 
 `maxHistory` a megőrzött naplófájlok száma (az aktuális naplófájlon kívül).
 
-A 3.0.2 verziótól kezdődően a környezeti változó használatával is beállíthatja az öndiagnosztika lehetőséget `level` `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` .
+Az 3.0.2 verziótól kezdődően a környezeti változóval is beállíthatja az öndiagnosztika beállítást `level` `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` (amely elsőbbséget élvez, ha az öndiagnosztika a `level` JSON-konfigurációban is meg van adva).
 
 ## <a name="an-example"></a>Példa
 

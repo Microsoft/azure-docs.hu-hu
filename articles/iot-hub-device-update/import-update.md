@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 6502728a14ea825fadfde107e61f235db5619ae0
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: b9d40848abdd85beeca592001b697e3c50b7cd59
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102507279"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008562"
 ---
 # <a name="import-new-update"></a>Új frissítés importálása
 Ismerje meg, hogyan importálhat új frissítést a IoT Hub eszköz frissítésében. Ha még nem tette meg, mindenképpen ismerkedjen meg az alapszintű [importálási fogalmakkal](import-concepts.md).
@@ -33,9 +33,9 @@ Ismerje meg, hogyan importálhat új frissítést a IoT Hub eszköz frissítés�
 
 1. Győződjön meg arról, hogy a frissítési lemezképfájl vagy az APT manifest fájl a PowerShellből elérhető címtárban található.
 
-2. Az [eszköz klónozása IoT hub adattárhoz](https://github.com/azure/iot-hub-device-update), vagy töltse le. zip-fájlként a powershellből elérhető helyre (a zip-fájl letöltése után kattintson a jobb gombbal a `Properties`  >  `General` Tab > `Unblock` a `Security` PowerShell biztonsági figyelmeztetési kérésének elkerüléséhez) szakaszra.
+2. Hozzon létre egy **AduUpdate. psm1** nevű szövegfájlt abban a könyvtárban, ahol a frissítési lemezképfájl vagy az apt manifest fájl található. Ezután nyissa meg a [AduUpdate. psm1](https://github.com/Azure/iot-hub-device-update/tree/main/tools/AduCmdlets) PowerShell-parancsmagot, másolja a tartalmat a szövegfájlba, majd mentse a szövegfájlt.
 
-3. A PowerShellben navigáljon a `tools/AduCmdlets` könyvtárhoz, és futtassa a következő parancsot:
+3. A PowerShellben navigáljon ahhoz a könyvtárhoz, ahol a 2. lépésben létrehozta a PowerShell-parancsmagot. Majd futtassa ezt:
 
     ```powershell
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
@@ -57,11 +57,11 @@ Ismerje meg, hogyan importálhat új frissítést a IoT Hub eszköz frissítés�
 
     | Paraméter | Leírás |
     | --------- | ----------- |
-    | deviceManufacturer | Az eszköz gyártója, amelyen a frissítés kompatibilis, például: contoso. Meg kell egyeznie a _gyártó_ [eszköz tulajdonságával](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties)
-    | deviceModel | Az eszköz modellje, amely kompatibilis a frissítéssel, például kenyérpirítóval. Meg kell egyeznie a _modell_ [eszköz tulajdonságával](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties)
+    | deviceManufacturer | Az eszköz gyártója, amelyen a frissítés kompatibilis, például: contoso. Meg kell egyeznie a _gyártó_ [eszköz tulajdonságával](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties).
+    | deviceModel | Az eszköz modellje, amely kompatibilis a frissítéssel, például kenyérpirítóval. Egyeznie kell a _modell_ [eszköz tulajdonságával](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties).
     | updateProvider | A frissítéshez létrehozott vagy közvetlenül felelős entitás. Ez gyakran a vállalat neve lesz.
     | updateName | A frissítések osztályának azonosítója. Az osztály tetszőlegesen kiválasztható. Ez gyakran az eszköz vagy a modell neve lesz.
-    | updateVersion | A frissítést megkülönbözteti a többitől, és ugyanazzal a szolgáltatóval és névvel. Előfordulhat, hogy az eszközön az egyes szoftver-összetevők verziója nem egyezik.
+    | updateVersion | A frissítést megkülönbözteti a többitől, és ugyanazzal a szolgáltatóval és névvel. Nem felel meg az eszközön lévő egyes szoftver-összetevők verziójának (de ha Ön is választhatja).
     | Frissítés típusa | <ul><li>`microsoft/swupdate:1`Rendszerkép frissítésének megadása</li><li>`microsoft/apt:1`Csomag frissítésének megadása</li></ul>
     | installedCriteria | <ul><li>SWVersion értékének megadása a `microsoft/swupdate:1` frissítési típushoz</li><li>Adja meg a `microsoft/apt:1` frissítési típus javasolt értékét.
     | updateFilePath (ok) | A frissítési fájl (ok) elérési útja a számítógépen
@@ -111,6 +111,9 @@ Példa:
 ```
 
 ## <a name="import-update"></a>Frissítés importálása
+
+[!NOTE]
+Az alábbi utasítások bemutatják, hogyan importálhat egy frissítést a Azure Portal felhasználói felületén keresztül. A frissítés importálásához használhatja [IoT hub API-k eszközének frissítését](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) is. 
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és navigáljon a IoT hub az eszköz frissítésével.
 

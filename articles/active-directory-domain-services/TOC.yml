@@ -149,6 +149,10 @@
               href: alert-service-principal.md
             - name: Biztonságos LDAP-riasztások
               href: alert-ldaps.md
+- name: Referencia
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/az.addomainservices/
 - name: További források
   items:
     - name: Gyakori kérdések

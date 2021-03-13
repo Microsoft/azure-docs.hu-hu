@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: c54a56843be5121e16449d95fb18c24901a95a8d
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: b19c37a45131e3689fdc9726d186f220ab5ba9fe
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650565"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149528"
 ---
 # <a name="quickstart-building-your-first-static-site-in-the-azure-portal"></a>Rövid útmutató: az első statikus hely felépítése a Azure Portal
 
@@ -116,8 +116,8 @@ Ha nem folytatja az alkalmazás használatát, az alábbi lépésekkel törölhe
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com)
 1. Keresés az **én-első-web-static-app** a felső keresési sávon
 1. Válassza ki az alkalmazás nevét
-1. Válassza a **Törlés** gombot
-1. Válassza az **Igen** lehetőséget a törlési művelet megerősítéséhez
+1. Kattintson a **Törlés** gombra
+1. Válassza az **Igen** lehetőséget a törlési művelet megerősítéséhez (ez a művelet eltarthat néhány másodpercig)
 
 ## <a name="next-steps"></a>Következő lépések
 

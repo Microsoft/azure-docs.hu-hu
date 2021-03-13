@@ -98,9 +98,9 @@
     - name: Az Azure AD PowerShell-parancsmagjai jelentéskészítéshez
       href: reference-powershell-reporting.md
     - name: Auditnaplók API-referenciája
-      href: /graph/api/resources/directoryaudit?view=graph-rest-1.0
+      href: /graph/api/resources/directoryaudit
     - name: Bejelentkezési naplók API-referenciája
-      href: /graph/api/resources/signin?view=graph-rest-1.0
+      href: /graph/api/resources/signin
     - name: Naplózási tevékenységek
       href: reference-audit-activities.md
     - name: Adatmegőrzési szabályzatok

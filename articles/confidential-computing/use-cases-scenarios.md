@@ -4,15 +4,16 @@ description: Ismerje meg, hogyan használható a bizalmas számítástechnika a 
 services: virtual-machines
 author: JBCook
 ms.service: virtual-machines
+ms.subservice: confidential-computing
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: jencook
-ms.openlocfilehash: e1280ac90032869616830ccb931b367ff22f8bfb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 47938f3a44c3a47f8b444b59d7e2f0867a274f33
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91000970"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566617"
 ---
 # <a name="common-scenarios-for-azure-confidential-computing"></a>Az Azure bizalmas számítástechnika gyakori forgatókönyvei
 
@@ -33,7 +34,7 @@ Több forrás is feltöltheti az adatok egy enklávéba egy virtuális gépen. A
 A biztonságos többrésztvevős számítástechnika esetében a titkosított adatok bekerülnek az enklávéba, az enklávé pedig visszafejti az adatokat egy kulccsal, elemzést végez, eredményt kap, és titkosított eredményt küld, amelyet a fél visszafejt a kijelölt kulccsal. 
 
 **A használatban lévő adatai védelme**: 
-- Használjon DCsv2-sorozatú virtuális gépet (VM) az Azure-ban, amelyen engedélyezve van az Intel SGX ENKLÁVÉHOZ támogatása. Ezek a virtuális gépek olyan megbízható végrehajtási környezetekkel (TEEs) rendelkeznek, amelyek az alkalmazásadatok és a kód egyes részeit védik és elszigetelik.
+- Használjon DCsv2-Series virtuális gépet (VM) az Azure-ban az engedélyezett Intel SGX ENKLÁVÉHOZ-támogatással. Ezek a virtuális gépek olyan megbízható végrehajtási környezetekkel (TEEs) rendelkeznek, amelyek az alkalmazásadatok és a kód egyes részeit védik és elszigetelik.
 - Az enklávét támogató SDK használatával létrehozhat egy enklávét a virtuális gépen belül. Az enklávéban az adattárolók nem lesznek elérhetők a virtuális gép szolgáltatója számára sem. Az enklávéban tárolt adatszolgáltatások hardveres támogatással lesznek titkosítva.
     - Használhatja például az [OE SDK](https://github.com/openenclave/openenclave) -t a kiszolgálóoldali feldolgozáshoz. 
 
@@ -67,9 +68,9 @@ A [CCF](https://www.microsoft.com/research/project/confidential-consortium-frame
 
 ![Csomópontok hálózata](./media/use-cases-scenarios/ccf.png)
 
-A CCF-ban a decentralizált főkönyvek az összes hálózati csomóponton replikált kulcs-érték tárolóban rögzített módosításokat végeznek. Ezen csomópontok mindegyike egy tranzakciós motort futtat, amely a blockchain felhasználói által aktiválható a TLS protokollon keresztül. Amikor elindítja a végpontot, a kulcs-érték tárolót a rendszer átváltja. A titkosított módosítások a decentralizált főkönyvbe való rögzítése előtt bizonyos számú csomópontnak meg kell egyeznie a konszenzus eléréséhez. 
+A CCF-ban a decentralizált Főkönyv az összes hálózati csomóponton replikált Key-Value-tárolóban rögzített módosításokat hajt végre. Ezen csomópontok mindegyike egy tranzakciós motort futtat, amely a blockchain felhasználói által aktiválható a TLS protokollon keresztül. Ha egy végpontot indít el, az Key-Value-tárolót. A titkosított módosítások a decentralizált főkönyvbe való rögzítése előtt bizonyos számú csomópontnak meg kell egyeznie a konszenzus eléréséhez. 
 
 ## <a name="next-steps"></a>Következő lépések
-[Helyezzen üzembe](quick-create-marketplace.md) egy DCsv2-sorozatú virtuális gépet.
+DCsv2-Series virtuális gép [üzembe helyezése](quick-create-marketplace.md) .
 
 

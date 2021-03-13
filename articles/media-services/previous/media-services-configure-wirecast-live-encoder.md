@@ -3,7 +3,7 @@ title: A Wirecast-kódoló beállítása egyetlen bitráta élő stream küldés
 description: 'Ebből a témakörből megtudhatja, hogyan konfigurálhatja a Wirecast élő kódolót úgy, hogy egyetlen sávszélességű adatfolyamot küldjön az élő kódoláshoz engedélyezett AMS-csatornákra. '
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 0d2f1e81-51a6-4ca9-894a-6dfa51ce4c70
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/14/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.reviewer: cenkdin;anilmur
-ms.openlocfilehash: ecab0ee67dd1d5cee3fd9927c00c9f9d827b2f47
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: a736270919f36cb7d4bbd4e686a98ddc57f402fa
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910049"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016831"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Egyetlen bitráta élő stream küldése a Wirecast Encoder használatával
 
@@ -76,7 +76,7 @@ A csatorna elindítása után beállíthatja [a kódolót](media-services-config
 ## <a name="configure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" />A Wirecast-kódoló konfigurálása
 Ebben az oktatóanyagban a következő kimeneti beállítások használatosak. A szakasz további részében részletesen ismertetjük a konfigurációs lépéseket.
 
-**Videó** :
+**Videó**:
 
 * Kodek: H.264
 * Profil: Jó minőség (4.0-ás szint)
@@ -84,7 +84,7 @@ Ebben az oktatóanyagban a következő kimeneti beállítások használatosak. A
 * Kulcsképek: 2 másodperc (60 másodperc)
 * Képkocka sebessége: 30
 
-**Hang** :
+**Hang**:
 
 * Kodek: AAC (LC)
 * Átviteli sebesség: 192 kbps
@@ -135,7 +135,7 @@ Ebben az oktatóanyagban a következő kimeneti beállítások használatosak. A
 
     ![A képernyőképen a kimeneti beállítások láthatók.](./media/media-services-wirecast-live-encoder/media-services-wirecast5.png)
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 2. A fő **Wirecast** képernyőn ellenőrizze, hogy a videó és hang bemeneti forrásai készen állnak-e, majd kattintson a bal felső sarokban található **stream** elemre.
 
     ![Képernyőfelvétel: a Wirecast stream gomb.](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)

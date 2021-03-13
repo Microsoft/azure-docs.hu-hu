@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: 9074480f44e75a90c202f0d0813c43aed1f7ba95
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: ac2b535b2e6b7a6b4169d08dd1768d69e685a216
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488205"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562010"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Áttelepítési Áttekintés: SQL Server a felügyelt SQL-példányhoz
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -64,6 +64,8 @@ Az üzembe helyezés során kiválaszthatja a számítási és tárolási erőfo
 
 > [!IMPORTANT]
 > A [felügyelt példányok virtuális hálózati követelményeinek](../../managed-instance/connectivity-architecture-overview.md#network-requirements) bármilyen eltérése megakadályozhatja, hogy új példányokat hozzon létre vagy meglévőket használjon. További információ a meglévő hálózatok [létrehozásáról](../../managed-instance/virtual-network-subnet-create-arm-template.md)   és [konfigurálásáról](../../managed-instance/vnet-existing-add-subnet.md)   . 
+
+Az Azure SQL felügyelt példányaiban (általános célú vs üzletileg kritikus) egy másik fontos szempont, hogy elérhetők-e olyan szolgáltatások, mint például a In-Memory OLTP, amely csak üzletileg kritikus szinten érhető el. 
 
 ### <a name="sql-server-vm-alternative"></a>SQL Server VM alternatív megoldás
 
@@ -191,6 +193,26 @@ Ha transzparens adattitkosítás által védett adatbázisokat  [](../../datab
 #### <a name="system-databases"></a>Rendszeradatbázisok
 
 A rendszeradatbázisok visszaállítása nem támogatott. A (Master vagy msdb) adatbázisokban tárolt példány-szintű objektumok áttelepíthetők a Transact-SQL (T-SQL) használatával, majd újból létre kell őket hozni a cél felügyelt példányon. 
+
+#### <a name="in-memory-oltp-memory-optimized-tables"></a>In-Memory OLTP (memóriára optimalizált táblák)
+
+A SQL Server In-Memory OLTP képességet biztosít, amely lehetővé teszi a memóriára optimalizált táblák, a memóriára optimalizált táblázatok és a natív módon lefordított SQL-modulok használatát a nagy átviteli sebességű és kis késésű tranzakciós feldolgozási követelményekkel rendelkező munkaterhelések futtatásához. 
+
+> [!IMPORTANT]
+> In-Memory OLTP csak az Azure SQL felügyelt példányának üzletileg kritikus szintjében támogatott (és a általános célú szinten nem támogatott).
+
+Ha a helyszíni SQL Server memóriára optimalizált táblákat vagy memóriára optimalizált táblázatokat használ, és az Azure SQL felügyelt példányára szeretne áttérni, akkor a következők egyikét kell tennie:
+
+- Válassza ki üzletileg kritikus szintet a cél Azure SQL felügyelt példányához, amely támogatja a In-Memory OLTP, vagy
+- Ha az Azure SQL felügyelt példányának általános célú szintjére kíván áttérni, távolítsa el a memóriára optimalizált táblákat, a memóriára optimalizált táblázatos típusokat és a natív módon lefordított SQL-modulokat, amelyek az adatbázis (ok) áttelepítése előtt a memóriára optimalizált objektumokat használják. A következő T-SQL-lekérdezéssel azonosíthatók az összes olyan objektum, amelyet el kell távolítani a általános célúi rétegbe való áttelepítés előtt:
+
+```tsql
+SELECT * FROM sys.tables WHERE is_memory_optimized=1
+SELECT * FROM sys.table_types WHERE is_memory_optimized=1
+SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
+```
+
+A memórián belüli technológiákkal kapcsolatos további információkért lásd: [a teljesítmény optimalizálása a memóriában lévő technológiák használatával Azure SQL Database és az Azure SQL felügyelt példányain](https://docs.microsoft.com/azure/azure-sql/in-memory-oltp-overview) .
 
 ## <a name="leverage-advanced-features"></a>Speciális funkciók kihasználása 
 

@@ -76,7 +76,7 @@
 - name: További források
   items:
     - name: Támogatási és súgólehetőségek
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-develop/toc.json&bc=/azure/iot-develop/breadcrumb/toc.json
     - name: Azure IoT-minták
       items:
         - name: C# (.NET)

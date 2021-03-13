@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/09/2021
+ms.date: 03/10/2021
 ms.author: jeedes
-ms.openlocfilehash: 7ae447a9577feba8b43b5b03a757ec4095ee2cb4
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3f5c189e63a8be3c9c46c406ab7bd0250dc75ec5
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177946"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633495"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sharingcloud"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a SharingCloud
 
@@ -26,14 +26,13 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a SharingCloud a A
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a SharingCloud az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory](../manage-apps/what-is-single-sign-on.md)használatával című témakört.
-
 ## <a name="prerequisites"></a>Előfeltételek
 
 Első lépésként a következő elemeket kell megadnia:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [itt](https://azure.microsoft.com/pricing/free-trial/)kérhet egy hónapos ingyenes próbaverziót.
-* SharingCloud egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* Tudálékos egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
+
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -46,30 +45,19 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 A SharingCloud Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a SharingCloud a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-
-    ![A Azure Active Directory gomb](common/select-azuread.png)
-    
 1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
-
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
-    
 1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
-
-    ![Az új alkalmazás gomb](common/add-new-app.png)
-    
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **SharingCloud** kifejezést a keresőmezőbe.
-
-    ![SharingCloud az eredmények listájában](common/search-new-app.png)
-    
 1. Válassza ki a **SharingCloud** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-sharingcloud"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a SharingCloud
+
+## <a name="configure-and-test-azure-ad-sso-for-sharingcloud"></a>Azure AD SSO konfigurálása és tesztelése a SharingCloud-hez
 
 Konfigurálja és tesztelje az Azure AD SSO-t a SharingCloud a **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a SharingCloud-ben.
 
-Az Azure AD SSO és a SharingCloud konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO és a SharingCloud konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
@@ -82,15 +70,9 @@ Az Azure AD SSO és a SharingCloud konfigurálásához és teszteléséhez hajts
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/) **SharingCloud** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
-    
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
-    
+1. A Azure Portal **SharingCloud** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
-
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
-
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** **Szerkesztés** ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -98,15 +80,15 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     Töltse fel a metaadat-fájlt a SharingCloud által biztosított XML-fájllal. A fájl beszerzéséhez vegye fel a kapcsolatot a [SharingCloud ügyfél-támogatási csapatával](mailto:support@sharingcloud.com) .
 
-    ![image](common/upload-metadata.png)
+    ![Képernyőkép az alapszintű SAML-konfiguráció felhasználói felületéről, a * * metaadatok feltöltése * * hivatkozás kiemelve.](common/upload-metadata.png)
     
     Válassza ki a megadott metaadat-fájlt, és kattintson a **feltöltés** gombra.
 
-    ![image](common/browse-upload-metadata.png)
+    ![Képernyőfelvétel a metaadatok megadott felhasználói felületéről: a fájl kiválasztása ikon és * * feltöltés * * gomb kiemelve.](common/browse-upload-metadata.png)
 
 1. A SharingCloud alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
-    ![image](common/edit_attribute.png)
+    ![Képernyőfelvétel a felhasználói attribútumok felhasználói felületéről a Szerkesztés ikon kiemelve.](common/edit_attribute.png)
 
 1. A fentiek mellett a SharingCloud alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre is fel vannak töltve, de a követelménynek megfelelően áttekintheti őket.
 
@@ -119,10 +101,6 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Másolás** ikonra az **összevonási metaadatok URL-címének** a megadott beállítások alapján történő másolásához a követelmények szerint.
 
     ![A másolandó metaadatok URL-címe](common/copy_metadataurl.png)
-
-## <a name="configure-sharingcloud-sso"></a>SharingCloud SSO konfigurálása
-
-Az egyszeri bejelentkezés **SharingCloud** -oldalon való konfigurálásához el kell küldenie a másolt **összevonási metaadatok Url-címét** Azure Portalról a [SharingCloud támogatási csapatához](mailto:support@sharingcloud.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -143,16 +121,14 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
 1. Az alkalmazások listában válassza a **SharingCloud** lehetőséget.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
-
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
 1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
-
-   ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
-
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+
+## <a name="configure-sharingcloud-sso"></a>SharingCloud SSO konfigurálása
+
+Az egyszeri bejelentkezés **SharingCloud** -oldalon való konfigurálásához el kell küldenie a másolt **összevonási metaadatok Url-címét** Azure Portalról a [SharingCloud támogatási csapatához](mailto:support@sharingcloud.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
 ### <a name="create-sharingcloud-test-user"></a>SharingCloud-tesztelési felhasználó létrehozása
 
@@ -160,7 +136,20 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a SharingClo
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-* Lépjen közvetlenül a SharingCloud URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
+
+#### <a name="sp-initiated"></a>Az SP inicializálva:
+
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja a SharingCloud bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot.  
+
+* Lépjen közvetlenül a SharingCloud bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
+
+#### <a name="idp-initiated"></a>IDENTITÁSSZOLGÁLTATÓ kezdeményezve:
+
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie arra a SharingCloud, amelyhez be szeretné állítani az egyszeri bejelentkezést 
+
+A Microsoft My Apps használatával bármilyen módban tesztelheti az alkalmazást. Ha a saját alkalmazások SharingCloud csempére kattint, ha az SP módban van konfigurálva, a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat kezdeményezéséhez, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie arra a SharingCloud, amelyhez be szeretné állítani az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
+
 
 ## <a name="next-steps"></a>Következő lépések
 

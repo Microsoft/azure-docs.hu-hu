@@ -1,39 +1,43 @@
 ---
-title: Rangsorolási hasonlósági algoritmus konfigurálása
+title: A hasonlósági algoritmus konfigurálása
 titleSuffix: Azure Cognitive Search
-description: A hasonlósági algoritmus beállítása az új hasonlósági algoritmus kipróbálható a rangsoroláshoz
+description: Megtudhatja, hogyan engedélyezheti a BM25 a régebbi keresési szolgáltatásokban, és hogyan módosítható a BM25 paraméterek, hogy jobban megfeleljen az indexek tartalmának.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: 9f806b512ae8e118fca8f32115c8be3b493fd681
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.date: 03/12/2021
+ms.openlocfilehash: 52b3523d3c092f1b9375f53038cc3b20d0ddedcc
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677780"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232834"
 ---
-# <a name="configure-ranking-algorithms-in-azure-cognitive-search"></a>Rangsoroló algoritmusok konfigurálása az Azure-ban Cognitive Search
+# <a name="configure-the-similarity-ranking-algorithm-in-azure-cognitive-search"></a>A hasonlósági rangsorolási algoritmus konfigurálása az Azure-ban Cognitive Search
 
 Az Azure Cognitive Search két hasonlósági besorolási algoritmust támogat:
 
 + Egy *klasszikus hasonlósági* algoritmus, amelyet az összes keresési szolgáltatás a 2020-ig terjedően használ.
 + A *OKAPI BM25* algoritmus implementációja, amelyet az összes, a július 15. után létrehozott keresési szolgáltatásban használ.
 
-A BM25 ranking az új alapértelmezett érték, mivel általában olyan keresési rangsorokat hoz létre, amelyek jobban illeszkednek a felhasználói elvárásokhoz. Emellett a konfigurációs beállításokat is lehetővé teszi az eredmények hangolásához olyan tényezők alapján, mint a dokumentumok mérete. A 2020. július 15. után létrehozott új szolgáltatások esetében az BM25 automatikusan használatos, és az egyetlen hasonlósági algoritmus. Ha a ClassicSimilarity hasonlóságot próbál beállítani egy új szolgáltatáson, a rendszer HTTP 400-es hibát ad vissza, mert a szolgáltatás nem támogatja ezt az algoritmust.
+A BM25 ranking az új alapértelmezett érték, mivel általában olyan keresési rangsorokat hoz létre, amelyek jobban illeszkednek a felhasználói elvárásokhoz. A [Paraméterek](#set-bm25-parameters) az eredmények hangolásához használhatók, például a dokumentum méretétől függően. 
 
-A 2020. július 15. előtt létrehozott régebbi szolgáltatások esetében a klasszikus hasonlóság az alapértelmezett algoritmus marad. A régebbi szolgáltatások a BM25 meghívásához a keresési index tulajdonságait is megadhatják az alább leírtak szerint. Ha klasszikusról BM25-re vált, a keresési eredmények sorrendjét is láthatja.
+A 2020. július 15. után létrehozott új szolgáltatások esetében az BM25 automatikusan használatos, és az egyetlen hasonlósági algoritmus. Ha a ClassicSimilarity hasonlóságot próbál beállítani egy új szolgáltatáson, a rendszer HTTP 400-es hibát ad vissza, mert a szolgáltatás nem támogatja ezt az algoritmust.
+
+A 2020. július 15. előtt létrehozott régebbi szolgáltatások esetében a klasszikus hasonlóság az alapértelmezett algoritmus marad. A régebbi szolgáltatások az alábbi módon frissíthetik a BM25-ra index alapján. Ha klasszikusról BM25-re vált, a keresési eredmények sorrendjét is láthatja.
 
 > [!NOTE]
-> A szemantikai keresés egy további szemantikai újrarangsoroló algoritmus, amely az elvárások és az eredmények közti különbségeket is leszűkíti. A többi algoritmustól eltérően ez egy kiegészítő funkció, amely egy meglévő eredményhalmaz megismétlésére szolgál. Az előnézeti szemantikai keresési algoritmus használatához létre kell hoznia egy új szolgáltatást, és meg kell adnia egy [szemantikai lekérdezési típust](semantic-how-to-query-request.md). További információ: [szemantikai keresés – áttekintés](semantic-search-overview.md).
+> A kiválasztott régiókban a standard szolgáltatások esetében jelenleg előzetes verzióban elérhető szemantikai rangsor további előrelépést eredményez a további releváns eredmények előállításában. A többi algoritmustól eltérően ez egy kiegészítő funkció, amely egy meglévő eredményhalmaz megismétlésére szolgál. További információ: [szemantikai keresés áttekintése](semantic-search-overview.md) és [szemantikai rangsorolás](semantic-ranking.md).
 
-## <a name="create-a-search-index-for-bm25-scoring"></a>Keresési index létrehozása a BM25 pontozáshoz
+## <a name="enable-bm25-scoring-on-older-services"></a>BM25-pontozás engedélyezése a régebbi szolgáltatásokban
 
-Ha olyan keresési szolgáltatást futtat, amelyet 2020. július 15. előtt hozott létre, beállíthatja a hasonlóság tulajdonságot BM25Similarity vagy ClassicSimilarity értékre az index definíciójában. Ha a hasonlóság tulajdonság nincs megadva vagy NULL értékre van állítva, az index a klasszikus algoritmust használja.
+Ha olyan keresési szolgáltatást futtat, amely 2020. július 15. előtt lett létrehozva, akkor engedélyezheti a BM25 az új indexek hasonlósági tulajdonságának beállításával. A tulajdonság csak az új indexeken érhető el, így ha egy meglévő indexre szeretné BM25, el kell dobnia és [újra kell építenie az indexet](search-howto-reindex.md) egy új hasonlóság tulajdonsággal, amely a "Microsoft. Azure. Search. BM25Similarity" értékre van állítva.
 
-A hasonlósági algoritmus csak az index létrehozási idején állítható be. Ha azonban az indexet a BM25 együtt hozza létre, a meglévő indexet frissítheti a BM25 paramétereinek beállításához vagy módosításához.
+Ha egy index hasonlósági tulajdonsággal rendelkezik, válthat a BM25Similarity vagy a ClassicSimilarity között. 
+
+Az alábbi hivatkozások az Azure SDK-k hasonlósági tulajdonságát írják le. 
 
 | Ügyfélkódtár | Hasonlósági tulajdonság |
 |----------------|---------------------|
@@ -70,7 +74,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 }
 ```
 
-## <a name="bm25-similarity-parameters"></a>BM25-hasonlósági paraméterek
+## <a name="set-bm25-parameters"></a>BM25 paramétereinek beállítása
 
 A BM25 hasonlósága két felhasználó által testreszabható paramétert hoz létre a számított relevanciás pontszám szabályozása érdekében. A BM25 paramétereket az index létrehozásakor, vagy index-frissítésként is megadhatja, ha a BM25 algoritmus meg lett adva az index létrehozásakor.
 

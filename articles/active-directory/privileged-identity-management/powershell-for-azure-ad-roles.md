@@ -16,12 +16,12 @@ ms.date: 09/15/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7d04a2941888592ffa37acfe6cba52a33fda528
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2774c63d34de3de951aa8076b56d203b976158ec
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92365510"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548750"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>PowerShell Azure AD-szerepkörökhöz Privileged Identity Management
 
@@ -49,12 +49,12 @@ Ez a cikk a Azure Active Directory (Azure AD) PowerShell-parancsmagok használat
     Connect-AzureAD -Credential $AzureAdCred
     ```
 
-1. Keresse meg az Azure ad-szervezet bérlői azonosítóját **Azure Active Directory**  >  **Tulajdonságok**  >  **könyvtár-azonosítójának**megkeresésével. A parancsmagok szakaszban ezt az azonosítót kell használnia, amikor meg kell adnia a resourceId.
+1. Keresse meg az Azure ad-szervezet bérlői azonosítóját **Azure Active Directory**  >  **Tulajdonságok**  >  **könyvtár-azonosítójának** megkeresésével. A parancsmagok szakaszban ezt az azonosítót kell használnia, amikor meg kell adnia a resourceId.
 
     ![A szervezet AZONOSÍTÓjának megkeresése az Azure AD-szervezet tulajdonságainál](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
 
 > [!Note]
-> A következő fejezetekben egyszerű példákat talál, amelyek segítségével megkezdheti a működést. A következő parancsmagokkal kapcsolatos részletesebb dokumentációt itt talál: [https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true](/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true) . A providerID paraméterben azonban a "aadRoles" értékkel kell helyettesíteni a "azureResources" kifejezést. Arra is emlékeznie kell, hogy az Azure AD-szervezet bérlői AZONOSÍTÓját resourceId paraméterként használja.
+> A következő fejezetekben egyszerű példákat talál, amelyek segítségével megkezdheti a működést. A következő parancsmagokkal kapcsolatos részletesebb dokumentációt itt talál: [https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#privileged_role_management](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#privileged_role_management) . A providerID paraméterben azonban a "aadRoles" értékkel kell helyettesíteni a "azureResources" kifejezést. Arra is emlékeznie kell, hogy az Azure AD-szervezet bérlői AZONOSÍTÓját resourceId paraméterként használja.
 
 ## <a name="retrieving-role-definitions"></a>Szerepkör-definíciók beolvasása
 

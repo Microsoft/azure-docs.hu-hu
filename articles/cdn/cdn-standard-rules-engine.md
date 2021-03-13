@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: how-to
 ms.date: 11/01/2019
 ms.author: allensu
-ms.openlocfilehash: 1c596bf10d8afbce504b5abf04eacb877989521a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b94798580b2d4ba746c152486c0de753cf64d2c9
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84887534"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564900"
 ---
 # <a name="set-up-the-standard-rules-engine-for-azure-cdn"></a>A Standard Rules Engine beállítása Azure CDN
 
@@ -44,9 +44,9 @@ A Standard Rules Engine for Azure CDN a HTTP-kérések kezelésének testreszab�
 1. Válassza a **szabály hozzáadása** lehetőséget, és írja be a szabály nevét. A szabályok nevének betűvel kell kezdődnie, és csak számokból és betűkből állhat.
 
 1. A szabály által érintett kérelmek típusának megállapításához hozzon létre egy egyeztetési feltételt:
-    1. Válassza a **feltétel hozzáadása**lehetőséget, majd válassza a **kérelem protokolljának** egyeztetése feltételt.
+    1. Válassza a **feltétel hozzáadása** lehetőséget, majd válassza a **kérelem protokolljának** egyeztetése feltételt.
     1. A **Operátor** területen válassza az **Egyenlő** lehetőséget.
-    1. Az **érték**mezőben válassza a **http**lehetőséget.
+    1. Az **érték** mezőben válassza a **http** lehetőséget.
    
    [![Azure CDN szabály egyeztetési feltétele](./media/cdn-standard-rules-engine/cdn-match-condition.png)](./media/cdn-standard-rules-engine/cdn-match-condition.png#lightbox)
    
@@ -54,9 +54,9 @@ A Standard Rules Engine for Azure CDN a HTTP-kérések kezelésének testreszab�
    > A **feltétel hozzáadása** legördülő listában több egyezési feltétel közül választhat. Az egyeztetési feltételek részletes listáját lásd: [feltételek egyeztetése a standard szabályok motorban](cdn-standard-rules-engine-match-conditions.md).
    
 1. Válassza ki az egyeztetési feltételnek megfelelő kérelmekre alkalmazni kívánt műveletet:
-   1. Válassza a **művelet hozzáadása**lehetőséget, majd az **URL-átirányítás**elemet.
-   1. A **Típus mezőben**válassza a **Found (302)** elemet.
-   1. A **protokoll**területen válassza a **https**lehetőséget.
+   1. Válassza a **művelet hozzáadása** lehetőséget, majd az **URL-átirányítás** elemet.
+   1. A **Típus mezőben** válassza a **Found (302)** elemet.
+   1. A **protokoll** területen válassza a **https** lehetőséget.
    1. A bejövő értékek használatához hagyja üresen az összes többi mezőt.
    
    [![Azure CDN szabály művelete](./media/cdn-standard-rules-engine/cdn-action.png)](./media/cdn-standard-rules-engine/cdn-action.png#lightbox)
@@ -71,7 +71,7 @@ A Standard Rules Engine for Azure CDN a HTTP-kérések kezelésének testreszab�
    >
    
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure CDN áttekintése](cdn-overview.md)
 - [A Standard szabálymotor referenciája](cdn-standard-rules-engine-reference.md)

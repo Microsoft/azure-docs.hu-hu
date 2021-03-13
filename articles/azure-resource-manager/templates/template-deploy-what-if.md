@@ -3,14 +3,14 @@ title: Template deployment mi a teendő
 description: A Azure Resource Manager-sablon telepítése előtt határozza meg, hogy milyen változások történnek az erőforrásokban.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 02/05/2021
+ms.date: 03/09/2021
 ms.author: tomfitz
-ms.openlocfilehash: 8122fa5c00a61017b5f358a112c94a5299539cee
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 3f35f00e5fcd26c7aa4bb685dc80f48eabb88b6d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99591624"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547934"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>ARM-sablon üzembe helyezése what-if művelettel
 
@@ -391,8 +391,6 @@ Az Azure SDK-k használatával a mi-if művelet is használható.
 
 ## <a name="next-steps"></a>Következő lépések
 
+- Ha a mi-if műveletet egy folyamaton szeretné használni, olvassa el a következő témakört: [ARM-sablonok tesztelése What-If egy folyamaton belül](https://4bes.nl/2021/03/06/test-arm-templates-with-what-if/).
 - Ha a mi-if művelet helytelen eredményeit észleli, jelentse a hibákat a következő helyen: [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
 - Ha olyan Microsoft Learn modult használ, amely tartalmazza a mi a teendőt, olvassa el az [előzetes verzió módosításait és az Azure-erőforrások érvényesítését a mi és az ARM-sablon tesztelési eszközkészlet használatával](/learn/modules/arm-template-test/).
-- A sablonok Azure PowerShell használatával történő telepítéséhez lásd: [erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShell](deploy-powershell.md).
-- A sablonok Azure CLI-vel történő üzembe helyezéséhez lásd: [erőforrások üzembe helyezése ARM-sablonokkal és az Azure CLI-vel](deploy-cli.md).
-- A sablonok REST-tel történő üzembe helyezéséhez lásd: [erőforrások üzembe helyezése ARM-sablonokkal és Resource Manager-Rest APIokkal](deploy-rest.md).

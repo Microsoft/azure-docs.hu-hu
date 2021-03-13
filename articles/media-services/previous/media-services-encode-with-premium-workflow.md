@@ -3,7 +3,7 @@ title: Speciális kódolás a Media Encoder Premium Workflowkal | Microsoft Docs
 description: Útmutató a Media Encoder Premium Workflow való kódoláshoz. A kód minták C# nyelven íródtak, és a .NET-hez készült Media Services SDK-t használják.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7f3efa23ad0b5e79e84a2436aaf56b67a805d05f
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b58a1ae2a20afb357f6363077e70b692256d2ce7
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017233"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013499"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>Speciális kódolás a Media Encoder Premium-munkafolyamattal
 
@@ -33,10 +33,10 @@ ms.locfileid: "92017233"
 ## <a name="overview"></a>Áttekintés
 Microsoft Azure Media Services bevezeti a **Media Encoder Premium workflow** adathordozó-processzort. Ez a processzor a prémium szintű igény szerinti munkafolyamatokhoz nyújt előzetes kódolási képességeket.
 
-A következő témakörök a **Media Encoder Premium workflow**kapcsolatos részleteket ismertetik:
+A következő témakörök a **Media Encoder Premium workflow** kapcsolatos részleteket ismertetik:
 
-* [A Media Encoder Premium workflow által támogatott formátumok](./media-services-encode-asset.md) – a **Media Encoder Premium workflow**által támogatott fájlformátumokat és kodekeket tárgyalja.
-* Az [Azure on-demand adathordozó-kódolók áttekintése és összehasonlítása](media-services-encode-asset.md) a **Media Encoder Premium workflow** és **Media Encoder standard**kódolási képességeit hasonlítja össze.
+* [A Media Encoder Premium workflow által támogatott formátumok](./media-services-encode-asset.md) – a **Media Encoder Premium workflow** által támogatott fájlformátumokat és kodekeket tárgyalja.
+* Az [Azure on-demand adathordozó-kódolók áttekintése és összehasonlítása](media-services-encode-asset.md) a **Media Encoder Premium workflow** és **Media Encoder standard** kódolási képességeit hasonlítja össze.
 
 Ez a cikk bemutatja, hogyan kódolható a **Media Encoder Premium workflow** a .NET használatával.
 

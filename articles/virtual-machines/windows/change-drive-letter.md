@@ -1,22 +1,23 @@
 ---
 title: 'A D: virtuális gép meghajtójának elkészítése adatlemezként '
 description: 'Útmutató a Windows rendszerű virtuális gépek meghajtóbetűjelének módosításához, hogy a D: meghajtót adatmeghajtóként használhassa.'
-services: virtual-machines-windows
+services: virtual-machines
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.subservice: disks
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: cae29954211e62601debb35d76f938fb6a92779e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 87aa1344b3fbe0d11c1c5cdfa8a56560d67eb54f
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019803"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555550"
 ---
-# <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>A D: meghajtó használata adatmeghajtóként Windows-alapú virtuális gépen
+# <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>A D: meghajtó adatmeghajtóként való használata Windows rendszerű virtuális gépeken
 Ha az alkalmazásnak a D meghajtót kell használnia az adattároláshoz, kövesse az alábbi utasításokat, hogy az ideiglenes lemezhez egy másik meghajtóbetűjelet használjon. Soha ne használja az ideiglenes lemezt a megőrizni kívánt adatmennyiség tárolására.
 
 Ha átméretezi vagy **leállítja (felszabadítja)** a virtuális gépet, akkor ez a virtuális gép új hypervisorba való elhelyezését eredményezheti. Előfordulhat, hogy a tervezett vagy nem tervezett karbantartási esemény is aktiválhatja ezt az elhelyezést. Ebben az esetben az ideiglenes lemezt az első elérhető meghajtóbetűjelhez rendeli hozzá a rendszer. Ha olyan alkalmazással rendelkezik, amelyhez kifejezetten a D: meghajtó szükséges, akkor az alábbi lépéseket követve ideiglenesen helyezze át a pagefile.sys, csatoljon egy új adatlemezt, és rendelje hozzá a D betűt, majd helyezze vissza a pagefile.syst az ideiglenes meghajtóra. Ha elkészült, az Azure nem veszi vissza a D-t: Ha a virtuális gép egy másik hypervisorba kerül.
@@ -57,5 +58,5 @@ Először csatlakoztatnia kell az adatlemezt a virtuális géphez. Ha ezt a port
 8. Kattintson az **Alkalmaz** gombra. A módosítások érvénybe lépéséhez figyelmeztetést kap, hogy a számítógépet újra kell indítani.
 9. Indítsa újra a virtuális gépet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A virtuális gép számára elérhető tárterületet [további adatlemez csatolásával](attach-managed-disk-portal.md)növelheti.

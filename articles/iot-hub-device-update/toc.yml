@@ -56,8 +56,6 @@
       href: create-update-group.md
     - name: Eszköz frissítésének központi telepítése
       href: deploy-update.md
-    - name: Eszköz frissítésének központi telepítése
-      href: deploy-update.md
     - name: Egyetlen szintű Microsoft csatlakoztatott gyorsítótár
       href: connected-cache-single-level.md
     - name: Beágyazott szint – Microsoft csatlakoztatott gyorsítótár
@@ -75,7 +73,7 @@
 - name: További források
   items:
     - name: Támogatási és súgólehetőségek
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-hub-device-update/toc.json&bc=/azure/iot-hub-device-update/breadcrumb/toc.json
     - name: Azure IoT-szolgáltatások
       items:
         - name: IoT Hub
