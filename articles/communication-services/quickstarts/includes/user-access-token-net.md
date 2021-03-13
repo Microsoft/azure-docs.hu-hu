@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: a8d2a06f5b0ec7ed9a0ef563d7f65e62ef99f3b6
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: e6b92ef17e351c398c958bd7ef4430a002c1ae84
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102623407"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103439269"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,7 +45,7 @@ dotnet build
 Miközben még mindig az alkalmazás könyvtárában van, telepítse a .NET-csomaghoz készült Azure Communication Services Identity Library-t a `dotnet add package` paranccsal.
 
 ```console
-dotnet add package Azure.Communication.Identity --version 1.0.0
+dotnet add package Azure.Communication.Identity --version 1.0.0-beta.5
 ```
 
 ### <a name="set-up-the-app-framework"></a>Az alkalmazás-keretrendszer beállítása
@@ -133,7 +133,7 @@ A hozzáférési jogkivonatok olyan rövid élettartamú hitelesítő adatok, am
 
 A `CreateUserAndTokenAsync` metódus használatával hozzon létre egy kommunikációs szolgáltatások identitását, és adja meg a hozzá tartozó hozzáférési jogkivonatot. A paraméter olyan `scopes` primitívek készletét határozza meg, amelyek engedélyezik ezt a hozzáférési jogkivonatot. Tekintse meg a [támogatott műveletek listáját](../../concepts/authentication.md).
 
-```csharp  
+```csharp
 // Issue an identity and an access token with the "voip" scope for the new identity
 var identityAndTokenResponse = await client.CreateUserAndTokenAsync(scopes: new[] { CommunicationTokenScope.VoIP });
 var identity = identityAndTokenResponse.Value.User;

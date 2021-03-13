@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 245998fb7229c483fb7f664ea000b62abf07eda9
-ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
+ms.openlocfilehash: f7e12567269304b33a98ff1eb9727cfdf0afbdc4
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103149783"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418640"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-package-agent-on-ubuntu-server-1804-x64"></a>Eszköz frissítése az Azure IoT Hub oktatóanyaghoz az Ubuntu Server 18,04 x64-es csomag ügynökének használatával
 
@@ -128,9 +128,11 @@ A licencfeltételek elolvasása a csomag használata előtt. A csomagok telepít
 
 ## <a name="import-update"></a>Frissítés importálása
 
-1. Töltse le a következő [apt manifest-fájlt](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/libcurl4-doc-apt-manifest.json) , és [importálja a jegyzékfájlt](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/sample-package-update-1.0.1-importManifest.json). Ez az apt-jegyzékfájl telepíti az eszköz legújabb elérhető verzióját `libcurl4-doc package` .
+1. Nyissa meg az [eszköz frissítési kiadásait](https://github.com/Azure/iot-hub-device-update/releases) a githubon, és kattintson az "eszközök" legördülő listára.
 
-   Azt is megteheti, hogy letölti ezt az [apt manifest-fájlt](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/libcurl4-doc-7.58-apt-manifest.json) , és [importálja a jegyzékfájlt](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/sample-package-update-2-2.0.1-importManifest.json). Ezzel telepíti az eszközre az adott verziójú v `libcurl4-doc package` -7.58.0.
+3. A letöltéséhez `apt-update-import-samples.zip` kattintson rá.
+
+5. Bontsa ki a mappa tartalmát a különböző frissítési minták és a hozzájuk tartozó importálási jegyzékfájlok felderítéséhez. 
 
 2. Azure Portal válassza ki az eszközök frissítései lehetőséget az automatikus eszközkezelés lehetőségnél a IoT Hub bal oldali navigációs sávján.
 
@@ -138,7 +140,10 @@ A licencfeltételek elolvasása a csomag használata előtt. A csomagok telepít
 
 4. Válassza az "+ új frissítés importálása" lehetőséget.
 
-5. Válassza ki a mappa ikont vagy szövegmezőt a "Select a manifest file List" (fájl importálása) elem alatt. Ekkor megjelenik egy fájl-választó párbeszédpanel. Válassza ki a korábban letöltött importálási jegyzékfájlt. Ezután válassza a mappa ikont vagy a szövegmezőt a "válasszon ki egy vagy több frissítési fájlt" területen. Ekkor megjelenik egy fájl-választó párbeszédpanel. Válassza ki a korábban letöltött apt manifest-frissítési fájlt.
+5. Válassza ki a mappa ikont vagy szövegmezőt a "Select a manifest file List" (fájl importálása) elem alatt. Ekkor megjelenik egy fájl-választó párbeszédpanel. Válassza ki az `sample-package-update-1.0.1-importManifest.json` importálási jegyzékfájlt a korábban letöltött mappából. Ezután válassza a mappa ikont vagy a szövegmezőt a "válasszon ki egy vagy több frissítési fájlt" területen. Ekkor megjelenik egy fájl-választó párbeszédpanel. Válassza ki az `sample-1.0.1-libcurl4-doc-apt-manifest.json` apt manifest Update fájlt a korábban letöltött mappából.
+A frissítés a legújabb elérhető verziót telepíti az `libcurl4-doc package` eszközre.
+
+   Azt is megteheti, hogy kijelöli a `sample-package-update-2-2.0.1-importManifest.json` jegyzékfájl importálása és `sample-2.0.1-libcurl4-doc-7.58-apt-manifest.json` az apt jegyzékfájl frissítése fájlt a korábban letöltött mappából. Ezzel telepíti az eszközre az adott verziójú v `libcurl4-doc package` -7.58.0.
 
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="A frissítési fájl kijelölését bemutató képernyőkép." lightbox="media/import-update/select-update-files.png":::
 
@@ -213,9 +218,9 @@ Sikeresen befejezte a teljes csomag frissítését az eszköz frissítésével I
 
 ## <a name="bonus-steps"></a>Bónusz lépései
 
-1. Töltse le a következő [apt manifest-fájlt](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/libcurl4-doc-remove-apt-manifest.json) , és [importálja a jegyzékfájlt](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/sample-package-update-1.0.2-importManifest.json). Ez az apt-jegyzékfájl eltávolítja a telepített `libcurl4-doc package` eszközt az eszközről.
-
 1. Ismételje meg a "frissítés importálása" és a "frissítés központi telepítése" szakaszt.
+
+3. A "frissítés importálása" lépésben válassza a `sample-package-update-1.0.2-importManifest.json` jegyzékfájl importálása és az `sample-1.0.2-libcurl4-doc-remove-apt-manifest.json` apt manifest-frissítési fájl elemet a korábban letöltött mappából. Ezzel a frissítéssel törlődik a telepített `libcurl4-doc package` eszközről.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

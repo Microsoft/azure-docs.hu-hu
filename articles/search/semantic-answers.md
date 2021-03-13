@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: 1bccfa4d36ad39aec79a50c8a6b6c50260370223
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: b99cbf91d7fc1c5d90753dfa1461a58eda055180
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103235022"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418895"
 ---
 # <a name="return-a-semantic-answer-in-azure-cognitive-search"></a>Szemantikai válasz visszaadása az Azure Cognitive Searchban
 
@@ -63,7 +63,7 @@ A "searchFields" paraméter kritikus fontosságú a magas minőségi válaszok v
 
 + A lekérdezési karakterlánc nem lehet null értékű, és kérdésként kell megfogalmazni. Ebben az előzetes verzióban a "queryType" és a "queryLanguage" beállításnak pontosan a példában látható módon kell megadnia.
 
-+ A "searchFields" paraméter határozza meg, hogy mely mezők biztosítanak jogkivonatot a kinyerési modellnek. A jogkivonat-bevitel során a rendszer legfeljebb 20 000 tokent használ, ezért a mezőlista tömör mezőkkel kezdődik, majd előrehaladást jelent a szöveggel formázott mezőkben. A mező beállításával kapcsolatos pontos útmutatásért lásd: [SearchFields beállítása](semantic-how-to-query-request.md#searchfields).
++ A "searchFields" paraméter határozza meg, hogy mely mezők biztosítanak jogkivonatot a kinyerési modellnek. Ügyeljen rá, hogy ezt a paramétert adja meg. Legalább egy sztring mezőnek szerepelnie kell, de tartalmaznia kell egy olyan karakterlánc-mezőt, amelyet úgy gondol, hogy a válasz megadásához hasznos. A rendszer csak körülbelül 8 000 tokent ad át a modellnek. A mezőlista rövid mezőkkel indítható el, majd haladjon át a szöveggel formázott mezőkkel. A mező beállításával kapcsolatos pontos útmutatásért lásd: [SearchFields beállítása](semantic-how-to-query-request.md#searchfields).
 
 + A "válaszok" esetében az alapszintű paraméterek építése az `"answers": "extractive"` , ahol a visszaadott válaszok alapértelmezett száma egy. Megnövelheti a válaszok számát egy szám hozzáadásával, legfeljebb öt értékkel.  Akár egynél több válaszra van szüksége, az alkalmazás felhasználói élménytől függ, és hogyan szeretné megjeleníteni az eredményeket.
 

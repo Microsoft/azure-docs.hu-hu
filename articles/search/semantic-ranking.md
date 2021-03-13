@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: a008551ac6f149617feedd01e256b637f83e975d
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: e3078c8f71f8862cacad552bb3176c08530e79bb
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103235014"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418844"
 ---
 # <a name="semantic-ranking-in-azure-cognitive-search"></a>Szemantikai rangsorolás az Azure Cognitive Search
 
@@ -30,9 +30,9 @@ A szemantikai rangsoroláshoz a modell a gépi olvasást és a tanulást is hasz
 
 1. A szemantikai rangsor minden dokumentum esetében kiértékeli a mezőket a searchFields paraméterben, és összevonja a tartalmakat egy nagy sztringbe.
 
-1. A rendszer ezt követően kivágja a karakterláncot, hogy a teljes hossz ne legyen több, mint 20 000 token. Ha nagyon nagy méretű dokumentumokkal rendelkezik, és a tartalom mező vagy merged_content mező több tartalommal rendelkezik, a rendszer csak az első 20 000 tokent fogja használni.
+1. A rendszer ezt követően kivágja a karakterláncot, hogy a teljes hossz ne legyen több, mint 8 000 token. Ha nagyon nagy méretű dokumentumokkal rendelkezik, a tartalom mező vagy merged_content mező, amely több oldalnyi tartalmat tartalmaz, akkor a rendszer figyelmen kívül hagyja a jogkivonat-korlátot.
 
-1. Az 50-dokumentumok mindegyikét egyetlen hosszú karakterlánc jelöli, amely legfeljebb 20 000 tokent képvisel. Ezt a karakterláncot a rendszer elküldi az összefoglaló modellnek. Az összefoglaló modell feliratokat (és válaszokat) hoz létre a gépi olvasási felolvasással, hogy azonosítsa a tartalmat összefoglaló és a kérdés megválaszolásához szükséges részeket. Az összefoglaló modell kimenete egy tovább csökkentett karakterlánc, amely legfeljebb 128 tokenből áll.
+1. Az 50-dokumentumok mindegyikét már egyetlen hosszú karakterlánc jelöli. Ezt a karakterláncot a rendszer elküldi az összefoglaló modellnek. Az összefoglaló modell feliratokat (és válaszokat) hoz létre a gépi olvasási felolvasással, hogy azonosítsa a tartalmat összefoglaló és a kérdés megválaszolásához szükséges részeket. Az összefoglaló modell kimenete egy tovább csökkentett karakterlánc, amely legfeljebb 128 tokenből áll.
 
 1. A kisebb sztring lesz a dokumentum felirata, és a nagyobb karakterláncban található leglényegesebb szakaszokat jelöli. Ezt követően a 50 (vagy kevesebb) feliratot rendezi a rendszer. 
 

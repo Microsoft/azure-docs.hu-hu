@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: e95cd313d341844eabf4f5c5feae8a8ca3dc9c2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab41a336c32a1827c23f4c4619f47dc294a4d2ea
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826543"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419286"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Az Azure Static Web Apps előzetes verziójának hitelesítése és engedélyezése
 
@@ -62,7 +62,7 @@ A meghívások egyediek az egyes engedélyezési szolgáltatók számára, ezér
 | Twitter                | username          |
 
 1. Navigáljon a [Azure Portal](https://portal.azure.com)statikus Web Apps erőforrásához.
-1. A _Beállítások_területen kattintson a **szerepkör-kezelés**elemre.
+1. A _Beállítások_ területen kattintson a **szerepkör-kezelés** elemre.
 1. Kattintson a **meghívás** gombra.
 1. Válasszon ki egy _engedélyezési szolgáltatót_ a lehetőségek listájából.
 1. Adja hozzá a címzett felhasználónevét vagy e-mail-címét a _Meghívási részletek_ mezőben.
@@ -84,7 +84,7 @@ Amikor a felhasználó a meghívóban található hivatkozásra kattint, a rends
 ### <a name="update-role-assignments"></a>Szerepkör-hozzárendelések frissítése
 
 1. Navigáljon a [Azure Portal](https://portal.azure.com)statikus Web Apps erőforrásához.
-1. A _Beállítások_területen kattintson a **szerepkör-kezelés**elemre.
+1. A _Beállítások_ területen kattintson a **szerepkör-kezelés** elemre.
 1. Kattintson a listában szereplő felhasználóra.
 1. Szerkessze a szerepkörök listáját a _szerepkör_ mezőben.
 1. Kattintson a **frissítés** gombra.
@@ -92,7 +92,7 @@ Amikor a felhasználó a meghívóban található hivatkozásra kattint, a rends
 ### <a name="remove-user"></a>Felhasználó eltávolítása
 
 1. Navigáljon a [Azure Portal](https://portal.azure.com)statikus Web Apps erőforrásához.
-1. A _Beállítások_területen kattintson a **szerepkör-kezelés**elemre.
+1. A _Beállítások_ területen kattintson a **szerepkör-kezelés** elemre.
 1. Keresse meg a felhasználót a listában.
 1. Jelölje be a jelölőnégyzetet a felhasználó sorában.
 1. Kattintson a **Törlés** gombra.
@@ -145,19 +145,18 @@ Például a GitHub használatával való bejelentkezéshez a következő kódré
 
 Ha úgy döntött, hogy egynél több szolgáltatót támogat, akkor az egyes webhelyekhez tartozó szolgáltatói hivatkozást kell közzétennie.
 
-Egy [útvonal-szabály](routes.md) használatával leképezheti az alapértelmezett szolgáltatót egy olyan barátságos útvonalra _, mint például_a (z).
+Egy [útvonal-szabály](./configuration.md#routes) használatával leképezheti az alapértelmezett szolgáltatót egy olyan barátságos útvonalra _, mint például_ a (z).
 
 ```json
 {
   "route": "/login",
-  "serve": "/.auth/login/github"
+  "redirect": "/.auth/login/github"
 }
 ```
 
 ### <a name="post-login-redirect"></a>Bejelentkezés utáni átirányítás
 
 Ha azt szeretné, hogy a felhasználó a bejelentkezés után egy adott oldalra térjen vissza, adjon meg egy URL-címet a `post_login_redirect_uri` lekérdezési karakterlánc paraméterben.
-
 
 ## <a name="logout"></a>Kijelentkezés
 
@@ -167,12 +166,12 @@ Az `/.auth/logout` útvonal naplózza a felhasználókat a webhelyről. Hozzáad
 <a href="/.auth/logout">Log out</a>
 ```
 
-Egy [útvonal-szabály](routes.md) segítségével rövid útvonalat (például _/logout_) képezhető le.
+Egy [útvonal-szabály](./configuration.md#routes) segítségével rövid útvonalat (például _/logout_) képezhető le.
 
 ```json
 {
   "route": "/logout",
-  "serve": "/.auth/logout"
+  "redirect": "/.auth/logout"
 }
 ```
 

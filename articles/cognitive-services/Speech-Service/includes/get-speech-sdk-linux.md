@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: d0298bcd675b1b94999dab3a1ad1c40a6feb7438
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 2466b9b9b812ae9fb590a6678d840661c74f47bd
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93136257"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103439221"
 ---
 :::row:::
     :::column span="3":::
-        A Speech SDK csak az **Ubuntu 16.04/18.04/20.04** , a **Debian 9/10** , a **Red Hat Enterprise Linux (RHEL) 7/8** és a **CentOS 7/8** használatát támogatja a következő megcélzott architektúrák esetén, amikor Linux rendszeren használja:
+        A Speech SDK csak az **Ubuntu 16.04/18.04/20.04**, a **Debian 9/10**, a **Red Hat Enterprise Linux (RHEL) 7/8** és a **CentOS 7/8** használatát támogatja a következő megcélzott architektúrák esetén, amikor Linux rendszeren használja:
     :::column-end:::
     :::column:::
         <br>
@@ -31,7 +31,10 @@ ms.locfileid: "93136257"
 > [!IMPORTANT]
 > A C# Linux ARM64 esetében a .NET Core 3. x (DotNet-SDK-3. x csomag) szükséges.
 
-### <a name="system-requirements"></a>Rendszerkövetelmények
+> [!NOTE]
+> Ha a Speech SDK-t az alpesi Linuxban szeretné használni, hozzon létre egy Debian kromát-környezetet az alpesi Linux wiki alkalmazásban dokumentálva [https://wiki.alpinelinux.org/wiki/Running_glibc_programs](running glibc programs) , majd kövesse a Debian-utasításokat itt.
+
+### <a name="system-requirements"></a>System requirements (Rendszerkövetelmények)
 
 Natív alkalmazások esetén a Speech SDK a következőre támaszkodik: `libMicrosoft.CognitiveServices.Speech.core.so` . Győződjön meg arról, hogy a célként megadott architektúra (x86, x64) megfelel az alkalmazásnak. A Linux-verziótól függően további függőségekre lehet szükség.
 

@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: 8e97fe287335837ad79e6446bb7abf196cda6f75
-  ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+  ms.openlocfilehash: be3cbee5bee706bc10036349950c3b128d007a34
+  ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 02/03/2021
-  ms.locfileid: "99508116"
+  ms.lasthandoff: 03/13/2021
+  ms.locfileid: "103419626"
 highlightedContent:
   items:
   - title: Mi az a beszédszolgáltatás?
@@ -44,7 +44,7 @@ conceptualContent:
       text: A diktálás használatának első lépései
       url: get-started-speech-to-text.md
     - itemType: overview
-      text: Tudnivalók a Custom Speechről
+      text: Pontosság javítása Custom Speech segítségével
       url: custom-speech-overview.md
     footerLink:
       text: Továbbiak
@@ -60,6 +60,12 @@ conceptualContent:
     - itemType: how-to-guide
       text: Szintézis javítása az SSML-lel
       url: speech-synthesis-markup.md
+    - itemType: overview
+      text: Egyéni hang létrehozása
+      url: custom-neural-voice.md
+    - itemType: how-to-guide
+      text: Szöveg-beszéd hang természetesvé tétele
+      url: how-to-audio-content-creation.md
     footerLink:
       text: Továbbiak
       url: index-text-to-speech.yml
@@ -74,20 +80,6 @@ conceptualContent:
     footerLink:
       text: Továbbiak
       url: index-speech-translation.yml
-  - title: Szándékfelismerés
-    links:
-    - itemType: quickstart
-      text: Beszéd, szándékok és entitások felismerése
-      url: quickstarts/intent-recognition.md
-    - itemType: how-to-guide
-      text: A beszélő szándékának felismerése a LUIS szolgáltatással és a C#-pal
-      url: how-to-recognize-intents-from-speech-csharp.md
-    - itemType: reference
-      text: A Language Understanding (LUIS) portálja
-      url: https://www.luis.ai
-    footerLink:
-      text: Továbbiak
-      url: index-intent-recognition.yml
   - title: Beszélőfelismerés
     links:
     - itemType: overview
@@ -107,6 +99,20 @@ conceptualContent:
     - itemType: quickstart
       text: Bevezetés az egyéni kulcsszavak használatába
       url: custom-keyword-basics.md
+  - title: Szándékfelismerés
+    links:
+    - itemType: quickstart
+      text: Beszéd, szándékok és entitások felismerése
+      url: quickstarts/intent-recognition.md
+    - itemType: how-to-guide
+      text: A beszélő szándékának felismerése a LUIS szolgáltatással és a C#-pal
+      url: how-to-recognize-intents-from-speech-csharp.md
+    - itemType: reference
+      text: A Language Understanding (LUIS) portálja
+      url: https://www.luis.ai
+    footerLink:
+      text: Továbbiak
+      url: index-intent-recognition.yml
   - title: Forgatókönyvek részletes ismertetése
     links:
     - itemType: overview
@@ -138,7 +144,7 @@ conceptualContent:
     - itemType: overview
       text: Tudnivalók a Speech Studióról (testreszabások)
       url: https://speech.microsoft.com
-  - title: Hosting
+  - title: Üzemeltetés
     links:
     - itemType: how-to-guide
       text: Speech-szolgáltatástárolók

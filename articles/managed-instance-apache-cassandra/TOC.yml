@@ -9,6 +9,7 @@
     - name: Fürt létrehozása – portál
       href: create-cluster-portal.md
     - name: Fürt létrehozása – parancssori felület
+      displayName: 'az managed-cassandra, cluster, datacenter, connect'
       href: create-cluster-cli.md
     - name: Hibrid fürt konfigurálása
       href: configure-hybrid-cluster.md
@@ -17,12 +18,14 @@
 - name: Alapelvek
   items:
     - name: Gyakori kérdések
+      displayName: 'cost, region, monitor, backup'
       href: faq.md
     - name: Felügyelt példány vs Azure Cosmos DB Cassandra API
       href: compare-cosmosdb-managed-instance.md
 - name: Útmutatók
   items:
     - name: Kezelés az Azure CLI-vel
+      displayName: 'az managed-cassandra, cluster, datacenter'
       href: manage-resources-cli.md
     - name: Metrikák megjelenítése a Prometheus-ben a Grafana
       href: visualize-prometheus-grafana.md

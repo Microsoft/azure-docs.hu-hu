@@ -1,14 +1,14 @@
 ---
 title: A hibrid infrastruktúra kezelése az Azure arc skálával
 description: Ismerje meg, hogyan kezelheti hatékonyan az ügyfelek számítógépeit és a Kubernetes-fürtöket az Azure-on kívül.
-ms.date: 09/22/2020
+ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 66a798265683045d7ff9f3d8d811141800d08f9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec32389cd7444405580530a00c8b7c5bc48bcd56
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336615"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419320"
 ---
 # <a name="manage-hybrid-infrastructure-at-scale-with-azure-arc"></a>A hibrid infrastruktúra kezelése az Azure arc skálával
 
@@ -18,9 +18,9 @@ Az [Azure arc](../../azure-arc/overview.md) megkönnyíti az összetett és elos
 
 Az [Azure arc-kompatibilis kiszolgálók](../../azure-arc/servers/overview.md)esetében az ügyfelek az Azure-on kívül üzemeltetett Windows-és Linux-gépeket is kezelhetik a vállalati hálózaton, ugyanúgy, mint a natív Azure-beli virtuális gépeket. Ha egy hibrid gépet az Azure-hoz csatolunk, az csatlakoztatva lesz, és Azure-erőforrásként lesz kezelve. A szolgáltatók ezután kezelhetik ezeket a nem Azure-beli gépeket az ügyfelek Azure-erőforrásaival együtt.
 
-Az [Azure arc-kompatibilis Kubernetes (előzetes verzió)](../../azure-arc/kubernetes/overview.md) lehetővé teszi, hogy az ügyfelek az Azure-on belüli vagy kívül Kubernetes-fürtöket csatlakoztassanak Ha egy Kubernetes-fürt csatlakozik az Azure arc-hoz, akkor az a Azure Portal fog megjelenni, egy Azure Resource Manager AZONOSÍTÓval és egy felügyelt identitással. A fürtök szabványos Azure-előfizetésekhez vannak csatolva, és egy erőforráscsoport alatt találhatók, és ugyanúgy fogadhatnak címkéket, mint bármely más Azure-erőforrást.
+Az [Azure arc-kompatibilis Kubernetes](../../azure-arc/kubernetes/overview.md) lehetővé teszi, hogy az ügyfelek az Azure-on belüli vagy kívül Kubernetes-fürtöket csatlakoztassanak és konfiguráljanak Ha egy Kubernetes-fürt csatlakozik az Azure arc-hoz, akkor az a Azure Portal fog megjelenni, egy Azure Resource Manager AZONOSÍTÓval és egy felügyelt identitással. A fürtök szabványos Azure-előfizetésekhez vannak csatolva, és egy erőforráscsoport alatt találhatók, és ugyanúgy fogadhatnak címkéket, mint bármely más Azure-erőforrást.
 
-Ez a témakör áttekintést nyújt arról, hogy a szolgáltatók hogyan használhatják az Azure arc-kompatibilis kiszolgálókat és az Azure arc-kompatibilis Kubernetes (előzetes verzió) méretezhető módon az ügyfelek hibrid környezetének kezeléséhez, az összes felügyelt ügyfél-bérlőn keresztül.
+Ez a témakör áttekintést nyújt arról, hogy a szolgáltatók hogyan használhatják az Azure arc-kompatibilis kiszolgálókat és az Azure arc-kompatibilis Kubernetes méretezhető módon az ügyfelek hibrid környezetének kezeléséhez az összes felügyelt ügyfél-bérlőn.
 
 > [!TIP]
 > Bár a jelen témakörben a szolgáltatók és az ügyfelekre is hivatkozunk, ez az útmutató az [Azure Lighthouse-t használó vállalatoknak is vonatkozik több bérlő kezelésére](../concepts/enterprise.md).
@@ -29,14 +29,11 @@ Ez a témakör áttekintést nyújt arról, hogy a szolgáltatók hogyan haszná
 
 Szolgáltatóként az Azure-on kívüli helyszíni Windows Server-vagy Linux-gépeket is kezelhet, amelyekkel az ügyfelek az [Azure Connected Machine Agent](../../azure-arc/servers/agent-overview.md)használatával csatlakoztak az előfizetéséhez.
 
-Ha a Azure Portalben lévő delegált előfizetéshez tartozó erőforrásokat tekinti meg, akkor ezek az **Azure arc**nevű csatlakoztatott gépeket fogják látni. Ezeket a csatlakoztatott gépeket az Azure-konstrukciók, például a Azure Policy és a címkézés használatával kezelheti, ugyanúgy, mint az ügyfél Azure-erőforrásainak kezeléséhez. A kapcsolódó hibrid gépeket együtt is kezelheti az ügyfél-bérlők között.
+Ha a Azure Portalben lévő delegált előfizetéshez tartozó erőforrásokat tekinti meg, akkor ezek az **Azure arc** nevű csatlakoztatott gépeket fogják látni. Ezeket a csatlakoztatott gépeket az Azure-konstrukciók, például a Azure Policy és a címkézés használatával kezelheti, ugyanúgy, mint az ügyfél Azure-erőforrásainak kezeléséhez. A kapcsolódó hibrid gépeket együtt is kezelheti az ügyfél-bérlők között.
 
 Megadhatja például, hogy [ugyanazok a házirendek legyenek alkalmazva az ügyfelek hibrid gépei között](../../azure-arc/servers/learn/tutorial-assign-policy-portal.md). A Azure Security Center használatával figyelheti az összes ügyfél hibrid környezetének megfelelőségét, vagy a [Azure monitor használatával adatokat gyűjthet közvetlenül a hibrid gépekről](../../azure-arc/servers/learn/tutorial-enable-vm-insights.md) egy log Analytics munkaterületre. A [virtuálisgép-bővítmények](../../azure-arc/servers/manage-vm-extensions.md) üzembe helyezhetők a nem Azure-beli Windows-és Linux-alapú virtuális gépeken, leegyszerűsítve az ügyfél hibrid gépei felügyeletét.
 
-## <a name="manage-hybrid-kubernetes-clusters-at-scale-with-azure-arc-enabled-kubernetes-preview"></a>Hibrid Kubernetes-fürtök kezelése az Azure arc-kompatibilis Kubernetes (előzetes verzió)
-
-> [!NOTE]
-> Az Azure arc-kompatibilis Kubernetes jelenleg előzetes verzióban érhető el. Jelenleg nem ajánlott éles környezetben üzemelő számítási feladatokhoz.
+## <a name="manage-hybrid-kubernetes-clusters-at-scale-with-azure-arc-enabled-kubernetes"></a>Hibrid Kubernetes-fürtök kezelése az Azure arc-kompatibilis Kubernetes
 
 Olyan Kubernetes-fürtöket kezelhet, amelyek az [Azure arc használatával csatlakoztak az ügyfél előfizetéséhez](../../azure-arc/kubernetes/connect-cluster.md), ugyanúgy, mintha az Azure-ban futnak.
 
@@ -48,9 +45,8 @@ A csatlakoztatott fürtöket Azure Monitor is figyelheti, és a [Azure Policy ha
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Ismerje meg a Jumpstart és a mintákat az [Azure arc GitHub-adattárában](https://github.com/microsoft/azure_arc). 
+- Ismerje meg a Jumpstart és a mintákat az [Azure arc GitHub-adattárában](https://github.com/microsoft/azure_arc).
 - Ismerje meg [Az Azure arc-kompatibilis kiszolgálók támogatott forgatókönyveit](../../azure-arc/servers/overview.md#supported-scenarios).
 - Ismerje meg az [Azure arc által támogatott Kubernetes-disztribúciókat](../../azure-arc/kubernetes/overview.md#supported-kubernetes-distributions).
 - Megtudhatja, hogyan [helyezhet üzembe egy házirendet a skálán](policy-at-scale.md).
 - Megtudhatja, hogyan [használhatja a Azure monitor-naplókat a skálán](monitor-at-scale.md).
-

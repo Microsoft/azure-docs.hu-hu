@@ -1,32 +1,34 @@
 ---
 title: Az Azure Lighthouse nagyvállalati forgatókönyvekben
 description: Az Azure Lighthouse képességeinek használatával egyszerűsítheti a több-bérlős felügyeletet egy olyan vállalaton belül, amely több Azure AD-bérlőt használ.
-ms.date: 08/12/2020
+ms.date: 03/12/2021
 ms.topic: conceptual
-ms.openlocfilehash: ca3d73a6c5b88f7531c3d76eb3bd348fdfe8fa39
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 97b44f71750bdb533e889546f370a9b36ea5d3b4
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573023"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419354"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Az Azure Lighthouse nagyvállalati forgatókönyvekben
 
-Az [Azure Lighthouse](../overview.md) általános forgatókönyve az ügyfelek Azure Active Directory (Azure ad) bérlők erőforrásait kezelő szolgáltató. Az Azure Lighthouse képességei azonban a több-bérlős felügyelet egyszerűsítését is lehetővé teszik egy olyan vállalaton belül, amely több Azure AD-bérlőt használ.
+Az [Azure Lighthouse](../overview.md) gyakori forgatókönyve, amikor egy szolgáltató az ügyfelekhez tartozó Azure Active Directory (Azure ad) bérlők erőforrásait kezeli. Az Azure Lighthouse képességei is felhasználhatók a több-bérlős felügyelet egyszerűsítésére egy olyan vállalaton belül, amely több Azure AD-bérlőt is használ.
 
 ## <a name="single-vs-multiple-tenants"></a>Egyetlen és több bérlő
 
-A legtöbb szervezet számára egyszerűbb a felügyelet egyetlen Azure AD-Bérlővel. Az egyik bérlőn belüli összes erőforrás lehetővé teszi a felügyeleti feladatok központosított kezelését a kijelölt felhasználók, felhasználói csoportok vagy az adott bérlőn belüli egyszerű szolgáltatásnév alapján. Ha lehetséges, javasoljuk, hogy egy bérlőt használjon a szervezete számára. Néhány szervezet azonban több Azure AD-Bérlővel is rendelkezhet. Néha ez lehet egy ideiglenes helyzet, ahogy a beszerzések megtörténtek, és a hosszú távú bérlői konszolidációs stratégia még nincs definiálva. Más esetekben előfordulhat, hogy a szervezeteknek a teljes független leányvállalatok, földrajzi vagy jogi követelmények, illetve egyéb megfontolások miatt folyamatosan több bérlőt kell fenntartaniuk.
+A legtöbb szervezet számára egyszerűbb a felügyelet egyetlen Azure AD-Bérlővel. Az egyik bérlőn belüli összes erőforrás lehetővé teszi a felügyeleti feladatok központosított kezelését a kijelölt felhasználók, felhasználói csoportok vagy az adott bérlőn belüli egyszerű szolgáltatásnév alapján. Ha lehetséges, javasoljuk, hogy egy bérlőt használjon a szervezete számára.
+
+Előfordulhat, hogy néhány szervezetnek több Azure AD-bérlőt kell használnia. Ez lehet egy ideiglenes helyzet, ahogy a beszerzések megtörténtek, és a hosszú távú bérlői konszolidációs stratégia még nincs definiálva. Más esetekben előfordulhat, hogy a szervezeteknek a teljes független leányvállalatok, földrajzi vagy jogi követelmények, illetve egyéb megfontolások miatt folyamatosan több bérlőt kell fenntartaniuk.
 
 Ha több-bérlős architektúrára van szükség, az Azure Lighthouse segítségével központosíthatja és egyszerűsítheti a felügyeleti műveleteket. Az Azure-beli [delegált erőforrás-kezelés](azure-delegated-resource-management.md)használatával a bérlők egy központi, méretezhető módon hajthatják végre a [több-bérlős felügyeleti funkciókat](cross-tenant-management-experience.md) .
 
 ## <a name="tenant-management-architecture"></a>Bérlői felügyeleti architektúra
 
-Az Azure Lighthouse vállalaton belüli használatához meg kell határoznia, hogy melyik bérlő fogja tartalmazni a többi bérlőn felügyeleti műveleteket végrehajtó felhasználókat. Más szóval meg kell határoznia, hogy melyik bérlő lesz a bérlők felügyelete a többi bérlő számára.
+Az Azure Lighthouse vállalaton belüli használatához meg kell határoznia, hogy melyik bérlő fogja tartalmazni a többi bérlőn felügyeleti műveleteket végrehajtó felhasználókat. Más szóval meg kell jelölnie egy bérlőt, mint a többi bérlőt kezelő bérlőt.
 
-Tegyük fel például, hogy a szervezet egyetlen Bérlővel rendelkezik, amely az *a bérlőt* hívja meg. A szervezet ezután beolvassa a *B bérlőt* és a *C bérlőt*, és olyan üzleti okokból áll rendelkezésére, amelyekkel külön bérlőként kell karbantartani őket.
+Tegyük fel például, hogy a szervezet egyetlen Bérlővel rendelkezik, amely az *a bérlőt* hívja meg. A szervezet ezután beolvassa a *B bérlőt* és a *C bérlőt*, és Önnek üzleti oka van, amely megköveteli, hogy külön bérlőként tartsák karban őket. Azonban ugyanazokat a házirend-definíciókat, biztonsági mentési eljárásokat és biztonsági folyamatokat szeretné használni, az azonos felhasználók által végrehajtott felügyeleti feladatokkal.
 
-A szervezet ugyanazt a házirend-definíciót, biztonsági mentési gyakorlatot és biztonsági folyamatokat kívánja használni az összes bérlőn. Mivel a bérlő már tartalmazza a feladatok végrehajtásáért felelős felhasználókat, a B bérlőn és a C bérlőn belüli előfizetéseket is bevezetheti, így a feladatok elvégzéséhez ugyanazokat a felhasználókat használhatja az A bérlőn.
+Mivel a bérlő már tartalmaz olyan felhasználókat a szervezetben, akik az A bérlőnek teljesítik ezeket a feladatokat, a B bérlőn belüli előfizetéseket és a C bérlőt is bevezetheti, amely lehetővé teszi, hogy ugyanazokat a felhasználókat a bérlők végezzék el a feladatok elvégzéséhez.
 
 ![Ábra: A bérlő felhasználóinak kezelése A B bérlő és A C bérlő erőforrásaival.](../media/enterprise-azure-lighthouse.jpg)
 
@@ -54,7 +56,7 @@ A vállalaton belüli több-bérlős felügyelet esetén az Azure Lighthouse dok
 
 Például a fent ismertetett példában az A bérlő a szolgáltató bérlője (a bérlők kezelése) és a B bérlő, a C bérlő pedig az ügyfél bérlője lehet.
 
-Ebben a példában a bérlő a megfelelő engedélyekkel rendelkező felhasználók [megtekinthetik és kezelhetik a delegált erőforrásokat](../how-to/view-manage-customers.md) a Azure Portal **saját ügyfelek** lapján. Hasonlóképpen, a B bérlő és a bérlő C felhasználója a megfelelő engedélyekkel [megtekintheti és kezelheti az a bérlőhöz delegált erőforrásokat](../how-to/view-manage-service-providers.md) a Azure Portal **szolgáltató** lapján.
+Ennek a példának a folytatásaként a bérlő A megfelelő engedélyekkel rendelkező felhasználók [megtekinthetik és kezelhetik a delegált erőforrásokat](../how-to/view-manage-customers.md) a Azure Portal **saját ügyfelek** lapján. Hasonlóképpen, a B bérlő és a bérlő C felhasználója a megfelelő engedélyekkel [megtekintheti és kezelheti az a bérlőhöz delegált erőforrásokat](../how-to/view-manage-service-providers.md) a Azure Portal **szolgáltató** lapján.
 
 ## <a name="next-steps"></a>Következő lépések
 

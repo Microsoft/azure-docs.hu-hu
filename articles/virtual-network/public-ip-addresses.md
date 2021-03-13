@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: f2818965013e44cbbe3202887bf79a737dbbbb58
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: ffdd673cc8a357a7156fb3b3e932c524c831db15
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806960"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418062"
 ---
 # <a name="public-ip-addresses"></a>Nyilvános IP-címek
 
@@ -54,7 +54,7 @@ Standard SKU nyilvános IP-címei:
 - Egy állítható bejövő, 4-30 perces üresjárati időkorláttal rendelkezik, amely alapértéke 4 perc, a rögzített kimenő folyamat pedig 4 perces üresjárati időkorlátot tartalmaz.
 - Alapértelmezés szerint biztonságos és a bejövő forgalomhoz zárva van. Engedélyezi a bejövő forgalom listázását egy [hálózati biztonsági csoporttal](./network-security-groups-overview.md#network-security-groups).
 - A hálózati adapterekhez, a standard nyilvános terheléselosztóhoz vagy az Application Gatewayhez van rendelve. További információ a standard Load balancerről: [Azure standard Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- A zóna redundáns lehet (amely az összes 3 zónából elérhető), a (az adott előre kiválasztott rendelkezésre állási zónában garantált), vagy a nem zónában (a megadott előre kiválasztott rendelkezésre állási zónához nincs társítva). További információ a rendelkezésre állási zónákról: [A rendelkezésre állási zónák áttekintése](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és [A Standard Load Balancer és a rendelkezésre állási zónák](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json). **A zóna redundáns IP-címei csak olyan régiókban hozhatók létre, [amelyekben 3 rendelkezésre állási zóna](../availability-zones/az-region.md) él.** A zónák élő létrehozása előtt létrehozott IP-címek nem lesznek redundáns zónában.
+- A zóna redundáns lehet (az összes 3 zónából meghirdetve), a (megadott előre kiválasztott rendelkezésre állási zónában garantált), vagy nem zónában (egy adott előre kiválasztott rendelkezésre állási zónához nem társítva). További információ a rendelkezésre állási zónákról: [A rendelkezésre állási zónák áttekintése](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és [A Standard Load Balancer és a rendelkezésre állási zónák](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json). **A zóna redundáns IP-címei csak olyan régiókban hozhatók létre, [amelyekben 3 rendelkezésre állási zóna](../availability-zones/az-region.md) él.** A zónák élő létrehozása előtt létrehozott IP-címek nem lesznek redundáns zónában.
 - A többrégiós terheléselosztó (előzetes verzió) számára is használható a [többhelyes terheléselosztási](../load-balancer/cross-region-overview.md) IP-címekhez.
  
 > [!NOTE]
@@ -162,14 +162,17 @@ Az [azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2faz
 * Azure-beli virtuális hálózatok
 * Helyszíni hálózat (ok). 
 
-A távoli hálózattal való kommunikáció engedélyezéséhez egy nyilvános IP-cím van hozzárendelve a VPN Gatewayhoz. A VPN-átjárókhoz csak *dinamikus* alapszintű nyilvános IP-címeket rendelhet.
+A távoli hálózattal való kommunikáció engedélyezéséhez egy nyilvános IP-cím van hozzárendelve a VPN Gatewayhoz. 
+
+* Rendeljen egy **dinamikus** alapszintű nyilvános IP-címet egy VPNGW 1-5 SKU előtér-konfigurációhoz.
+* Rendeljen **statikus** szabványos nyilvános IP-címet egy VPNGWAZ 1-5 SKU előtér-konfigurációhoz.
 
 ## <a name="application-gateways"></a>Alkalmazásátjárók
 
 A nyilvános IP-címet társíthatja egy [Azure Application Gateway átjáróval](../application-gateway/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), ha hozzárendeli az átjáró **előtér**-konfigurációjához. 
 
 * Rendeljen egy **dinamikus** alapszintű nyilvános IP-címet egy Application Gateway v1 kezelőfelületi konfigurációhoz. 
-* Rendeljen **statikus** szabványos SKU-címeket egy v2 előtér-konfigurációhoz.
+* Rendeljen **statikus** szabványos nyilvános IP-címet egy v2 előtér-konfigurációhoz.
 
 ## <a name="azure-firewall"></a>Azure Firewall
 

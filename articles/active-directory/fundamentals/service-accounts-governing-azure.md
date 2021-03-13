@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4311d0acc7c417bf31c71f46e6c25c65312b894d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: ee6ac21d67f32fbc61db19b348fc29cdf3ee9fd7
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034531"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418181"
 ---
 # <a name="governing-azure-ad-service-accounts"></a>Az Azure AD-szolgáltatásfiókok szabályozása
 
@@ -172,7 +172,7 @@ Hozzon létre egy felülvizsgálati folyamatot annak biztosítására, hogy a sz
 
 **A megszüntetési folyamatoknak a következő feladatokat kell tartalmazniuk.**
 
-1. Ha a társított alkalmazást vagy parancsfájlt kiépítik, [Figyelje](../reports-monitoring/concept-all-sign-ins.md#sign-ins-report) a szolgáltatás fiókjának bejelentkezési és erőforrás-hozzáférését.
+1. Ha a társított alkalmazást vagy parancsfájlt kiépítik, [Figyelje](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins#sign-ins-report) a szolgáltatás fiókjának bejelentkezési és erőforrás-hozzáférését.
 
    * Ha a fiók továbbra is aktív, határozza meg, hogyan használja a rendszer a következő lépések megkezdése előtt.
  

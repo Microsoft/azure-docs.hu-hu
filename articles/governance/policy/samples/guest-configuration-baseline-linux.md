@@ -1,19 +1,19 @@
 ---
 title: Referencia – Azure Policy vendég alapkonfiguráció a Linux rendszerhez
 description: Az Azure-ban megvalósított Linux-alapkonfiguráció részletei Azure Policy Guest Configuration használatával.
-ms.date: 02/26/2021
+ms.date: 03/12/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 20f589b02f2a43bb3feb954dc4eac2dd6a9c3925
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: 6b1d3048fdc0945e1ee64e211d2f7b1f9de5e6e6
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103234999"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419864"
 ---
 # <a name="azure-policy-guest-configuration-baseline-for-linux"></a>A Linux rendszerhez készült Azure Policy vendég alapkonfiguráció
 
-A következő cikk részletesen ismerteti, hogy az **\[ előzetes verziójú \] linuxos gépeknek milyen követelményeknek kell megfelelniük az Azure Security** alapkonfiguráció házirend-kezdeményezési naplózása követelményeinek. További információkért lásd: [Azure Policy vendég konfiguráció](../concepts/guest-configuration.md) és [Az Azure biztonsági teljesítményteszt (v2) áttekintése](../../../security/benchmarks/overview.md).
+A következő cikk részletesen ismerteti, hogy az **\[ előzetes verziójú \] linuxos gépeknek milyen követelményeknek kell megfelelniük az Azure biztonsági** alapkonfigurációjának vendég konfigurációs házirend-definíciós naplózási követelményeinek További információkért lásd: [Azure Policy vendég konfiguráció](../concepts/guest-configuration.md) és [Az Azure biztonsági teljesítményteszt (v2) áttekintése](../../../security/benchmarks/overview.md).
 
 ## <a name="general-security-controls"></a>Általános biztonsági vezérlők
 

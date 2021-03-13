@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: allensu
-ms.openlocfilehash: 3fd0cfe644ad78059e25d5386cd1a01f56ad9fba
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 1df132e558421d2ec6e26c3883c89457716dfc42
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216988"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419014"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Azure hálózati adapter IP-címének hozzáadása, módosítása vagy eltávolítása
 
@@ -54,10 +54,10 @@ A hálózati adapterekhez szükség szerint annyi [magán](#private) -és [nyilv
 
    |Beállítás|Kötelező?|Részletek|
    |---|---|---|
-   |Name|Igen|Egyedinek kell lennie a hálózati adapterhez|
-   |Típus|Igen|Mivel IP-konfigurációt ad hozzá egy meglévő hálózati adapterhez, és az egyes hálózati adaptereknek [elsődleges](#primary) IP-konfigurációval kell rendelkezniük, az egyetlen lehetőség a **másodlagos**.|
-   |Magánhálózati IP-cím hozzárendelési módszere|Igen|[**Dinamikus**](#dynamic): az Azure a következő elérhető címeket rendeli hozzá a hálózati adapterhez tartozó alhálózat-címtartomány számára. [**Statikus**](#static): Ha a hálózati adaptert a (z) rendszerhez tartozó alhálózat-címtartomány számára nem használt címeket rendel hozzá.|
-   |Nyilvános IP-cím|Nem|**Letiltva:** A nyilvános IP-cím erőforrás jelenleg nincs társítva az IP-konfigurációhoz. **Engedélyezve:** Válasszon egy meglévő IPv4 nyilvános IP-címet, vagy hozzon létre egy újat. Ha meg szeretné tudni, hogyan hozható létre nyilvános IP-cím, olvassa el a [nyilvános IP-címekkel](virtual-network-public-ip-address.md#create-a-public-ip-address) foglalkozó cikket.|
+   |Name|Yes|Egyedinek kell lennie a hálózati adapterhez|
+   |Típus|Yes|Mivel IP-konfigurációt ad hozzá egy meglévő hálózati adapterhez, és az egyes hálózati adaptereknek [elsődleges](#primary) IP-konfigurációval kell rendelkezniük, az egyetlen lehetőség a **másodlagos**.|
+   |Magánhálózati IP-cím hozzárendelési módszere|Yes|[**Dinamikus**](#dynamic): az Azure a következő elérhető címeket rendeli hozzá a hálózati adapterhez tartozó alhálózat-címtartomány számára. [**Statikus**](#static): Ha a hálózati adaptert a (z) rendszerhez tartozó alhálózat-címtartomány számára nem használt címeket rendel hozzá.|
+   |Nyilvános IP-cím|No|**Letiltva:** A nyilvános IP-cím erőforrás jelenleg nincs társítva az IP-konfigurációhoz. **Engedélyezve:** Válasszon egy meglévő IPv4 nyilvános IP-címet, vagy hozzon létre egy újat. Ha meg szeretné tudni, hogyan hozható létre nyilvános IP-cím, olvassa el a [nyilvános IP-címekkel](virtual-network-public-ip-address.md#create-a-public-ip-address) foglalkozó cikket.|
 6. Manuálisan adja hozzá a másodlagos magánhálózati IP-címeket a virtuális gép operációs rendszeréhez a [több IP-cím társítása a virtuális gép operációs](virtual-network-multiple-ip-addresses-portal.md#os-config) rendszeréhez című cikk utasításait követve. Az IP-címek virtuális gépi operációs rendszerhez való manuális hozzáadása előtt tekintse meg a [magánhálózati](#private) IP-címek című témakört. Ne adjon meg nyilvános IP-címeket a virtuális gép operációs rendszeréhez.
 
 **Parancsok**
@@ -76,7 +76,7 @@ Előfordulhat, hogy módosítania kell egy IPv4-cím hozzárendelési módszeré
 3. A **Beállítások** területen válassza az **IP-konfigurációk** elemet.
 4. Válassza ki a listából a módosítani kívánt IP-konfigurációt.
 5. Szükség szerint módosítsa a beállításokat az [IP-konfiguráció hozzáadása](#add-ip-addresses)az 5. lépésben megadott beállításokkal.
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
 
 >[!NOTE]
 >Ha az elsődleges hálózati adapter több IP-konfigurációval rendelkezik, és megváltoztatja az elsődleges IP-konfiguráció magánhálózati IP-címét, akkor manuálisan kell hozzárendelni az elsődleges és másodlagos IP-címeket a Windowson belüli hálózati adapterhez (Linux esetén nem szükséges). Ha az IP-címeket manuálisan szeretné hozzárendelni egy operációs rendszeren belüli hálózati adapterhez, tekintse meg a [több IP-cím társítása virtuális gépekhez](virtual-network-multiple-ip-addresses-portal.md#os-config)című témakört. Az IP-címek virtuális gépi operációs rendszerhez való manuális hozzáadását megelőző szempontokat lásd: [magánhálózati](#private) IP-címek. Ne adjon meg nyilvános IP-címeket a virtuális gép operációs rendszeréhez.
@@ -192,8 +192,6 @@ A hálózati adapterek egy másodlagos IP-konfigurációjához nulla vagy egy ma
 
 > [!NOTE]
 > Bár a portál használatával létrehozhat egy IPv6-cím hálózati adaptert, nem adhat hozzá meglévő hálózati adaptert új vagy meglévő virtuális géphez a portál használatával. A PowerShell vagy az Azure CLI használatával hozzon létre egy magánhálózati IPv6-címekkel rendelkező hálózati adaptert, majd csatlakoztassa a hálózati adaptert a virtuális gép létrehozásakor. Nem csatolhat olyan hálózati adaptert, amelyhez hozzá van rendelve egy magánhálózati IPv6-cím egy meglévő virtuális géphez. Nem adhat hozzá magánhálózati IPv6-címet a virtuális géphez csatlakoztatott bármely hálózati adapter IP-konfigurációjához bármilyen eszköz (portál, CLI vagy PowerShell) használatával.
-
-Nyilvános IPv6-cím nem rendelhető hozzá elsődleges vagy másodlagos IP-konfigurációhoz.
 
 ## <a name="skus"></a>Termékváltozatok
 

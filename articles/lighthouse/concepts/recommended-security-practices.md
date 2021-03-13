@@ -1,14 +1,14 @@
 ---
 title: Ajánlott biztonsági eljárások
 description: Az Azure Lighthouse használatakor fontos figyelembe venni a biztonságot és a hozzáférés-vezérlést.
-ms.date: 08/12/2020
+ms.date: 03/12/2021
 ms.topic: conceptual
-ms.openlocfilehash: ef2c41cf052e5f79ecf4abf01c8f3fab3dd1de14
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 3aa50833b547882506bfad125992bb1c2f4e85bc
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843723"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419303"
 ---
 # <a name="recommended-security-practices"></a>Ajánlott biztonsági eljárások
 
@@ -17,11 +17,11 @@ Az [Azure Lighthouse](../overview.md)használatakor fontos figyelembe venni a bi
 > [!TIP]
 > Ezek az ajánlások a [több bérlőt kezelő vállalatoknak](enterprise.md) is érvényesek az Azure Lighthouse használatával.
 
-## <a name="require-azure-ad-multi-factor-authentication"></a>Azure AD-Multi-Factor Authentication megkövetelése
+## <a name="require-azure-ad-multi-factor-authentication"></a>Azure AD többtényezős hitelesítés szükséges
 
 Az [Azure AD multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (más néven kétlépéses ellenőrzés) segít megakadályozni, hogy a támadók több hitelesítési lépés megkövetelésével hozzáférjenek a fiókokhoz. Multi-Factor Authenticationt kell megkövetelni a felügyeleti bérlő összes felhasználója számára, beleértve azokat a felhasználókat is, akik hozzáférhetnek a delegált ügyfelek erőforrásaihoz.
 
-Javasoljuk, hogy kérje ügyfeleit, hogy az Azure AD Multi-Factor Authentication a bérlők számára is megvalósítsák.
+Javasoljuk, hogy az ügyfeleket az Azure AD-Multi-Factor Authentication megvalósítására is kérje a bérlők számára.
 
 ## <a name="assign-permissions-to-groups-using-the-principle-of-least-privilege"></a>Engedélyek társítása csoportokhoz a legalacsonyabb jogosultsági szint elve alapján
 
@@ -47,5 +47,6 @@ Ne feledje, hogy ha az [ügyfeleket nyilvános felügyelt szolgáltatáson keres
 
 ## <a name="next-steps"></a>Következő lépések
 
+- Tekintse át a [biztonsági alapinformációkat](../security-baseline.md) , amelyekkel megismerheti, hogy az Azure-beli biztonsági teljesítményteszt hogyan vonatkozik az Azure Lighthouse-ra.
 - Az [Azure AD multi-Factor Authentication üzembe helyezése](../../active-directory/authentication/howto-mfa-getstarted.md).
 - További információ a [bérlők közötti felügyeleti élményekről](cross-tenant-management-experience.md).

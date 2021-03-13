@@ -286,6 +286,8 @@
           items:
             - name: Egyéni képesség integrálása
               href: cognitive-search-custom-skill-interface.md
+            - name: Egyéni képességek felskálázása
+              href: cognitive-search-custom-skill-scale.md
             - name: Példa – Azure Functions (Python)
               href: cognitive-search-custom-skill-python.md
             - name: Példa – Azure Functions

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 86e4bb52f2a97bf36dc4be86289bd513a9f05091
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: bb7769298940095900da25e61e13612b92bad00c
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538255"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419099"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Mi az az IPv6 for Azure Virtual Network?
 
@@ -77,8 +77,7 @@ Az Azure Virtual Network jelenlegi IPv6-kiadása a következő korlátozásokkal
 - Az Azure Virtual Network IPv6 az összes globális Azure kereskedelmi és USA-beli kormányzati régióban elérhető az összes üzembe helyezési módszer használatával.  
 - A ExpressRoute-átjárók csak IPv4-alapú forgalomhoz használhatók olyan VNET, amelyeken engedélyezve van az IPv6.  Az IPv6-alapú forgalom támogatása az ütemtervünk szerint történik.   
 - A VPN-átjárók nem használhatók olyan VNET, amelyeken engedélyezve van az IPv6, vagy közvetlenül, vagy a "UseRemoteGateway".
-- Az Azure platform (ak stb.) nem támogatja az IPv6-alapú kommunikációt a tárolók esetében.  
-- Az IPv6 csak az Azure-beli virtuális gépek elsődleges hálózati adapteréhez (NIC) állítható be. A másodlagos hálózati adapterek felé irányuló IPv6-forgalom terheléselosztása nem támogatott.    
+- Az Azure platform (ak stb.) nem támogatja az IPv6-alapú kommunikációt a tárolók esetében. 
 - Az csak IPv6 Virtual Machines vagy Virtual Machines méretezési csoportok nem támogatottak, minden hálózati adapternek tartalmaznia kell legalább egy IPv4 IP-konfigurációt. 
 - IPv6 meglévő IPv4-környezetekhez való hozzáadásakor az IPv6-tartományokat nem lehet felvenni egy meglévő erőforrás-navigációs hivatkozásokkal rendelkező VNET.  
 - A Forward DNS for IPv6 támogatja az Azure nyilvános DNS-t, de a fordított DNS még nem támogatott.   

@@ -156,6 +156,9 @@
       href: container-instances-reference-yaml.md
     - name: Összekötő
       href: /connectors/aci
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: További források
   items:
     - name: Fejlessze a készségeit a Microsoft Learnnel

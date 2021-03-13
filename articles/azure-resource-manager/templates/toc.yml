@@ -328,7 +328,9 @@
       items:
         - name: A bicep telepítése
           href: bicep-install.md
-        - name: JSON összehasonlítása a bicep
+        - name: Konvertálás a JSON és a bicep között
+          href: bicep-decompile.md
+        - name: A JSON és a bicep összehasonlítása
           href: compare-template-syntax.md
     - name: Adattípusok
       href: data-types.md

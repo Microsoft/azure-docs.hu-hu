@@ -3,12 +3,12 @@ title: Bicep nyelv a Azure Resource Manager-sablonokhoz
 description: Leírja az infrastruktúra Azure-beli üzembe helyezéséhez Azure Resource Manager sablonokon keresztül.
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: 11ba562fa3d91ffc7baeca647ed05e839f9c8013
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: 599cb378da51c5d13e7db3cf45cacf750c5843cc
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103232970"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419830"
 ---
 # <a name="what-is-bicep-preview"></a>Mi az a bicep (előzetes verzió)?
 
@@ -24,7 +24,7 @@ Az eszközök telepítése után próbálja ki a [bicep oktatóanyagot](./bicep-
 
 Az egyenértékű JSON-és bicep-fájlok egymás melletti megtekintéséhez tekintse meg a [bicep játszóteret](https://aka.ms/bicepdemo).
 
-Ha van egy meglévő ARM-sablonja, amelyet a bicep-re szeretne átalakítani, tekintse meg a [JSON defordítása a bicep](compare-template-syntax.md#decompile-json-to-bicep).
+Ha van egy meglévő ARM-sablonja, amelyet a bicep-re szeretne átalakítani, olvassa el a [ARM-sablonok konvertálása JSON és a bicep között](bicep-decompile.md)című témakört.
 
 ## <a name="bicep-improvements"></a>A bicep fejlesztése
 
@@ -89,7 +89,7 @@ A bicep egy olyan DSL, amely teljes körű megoldásokat helyez üzembe az Azure
 
 Továbbra is pontosan úgy működnek, ahogy mindig rendelkeznek. Semmilyen módosítást nem kell végeznie. Továbbra is támogatjuk az alapul szolgáló ARM-sablon JSON-nyelvét. A bicep-fájlok a JSON-be lettek lefordítva, és a JSON-t az Azure-ba történő telepítésre küldik.
 
-Ha elkészült, [átalakíthatja a JSON-fájlokat a bicep](compare-template-syntax.md#decompile-json-to-bicep).
+Ha elkészült, [átalakíthatja a JSON-fájlokat a bicep](bicep-decompile.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

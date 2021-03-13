@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/03/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 24baa0dc7444f632040ddaf9fcc2266f9e4ccae5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: e64253aa79cfaeb2655bb091d038dc7c98b198bd
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036140"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419405"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>Az ARM-sablonokkal kapcsolatos gyakori kérdések
 
@@ -100,7 +100,7 @@ Ez a cikk a Azure Resource Manager-sablonokkal (ARM-sablonokkal) kapcsolatos gya
 
 * **Olyan eszközt is kínál, amely a JSON-sablonokat az új sablon nyelvére konvertálja?**
 
-  Igen. Lásd: [JSON lefordítása a bicep](compare-template-syntax.md#decompile-json-to-bicep).
+  Igen. Lásd: [ARM-sablonok konvertálása JSON és bicep](bicep-decompile.md).
 
 ## <a name="template-specs"></a>Sablonspecifikációk
 

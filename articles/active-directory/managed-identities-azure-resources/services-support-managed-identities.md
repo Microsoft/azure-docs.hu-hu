@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 7b9ae52a0d62da6a8637f63f15d8680b54aeefd1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0531305364b3e6f914a6de00614a3f9af4be3531
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688569"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418776"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Az Azure-erőforrások felügyelt identitásait támogató szolgáltatások
 
@@ -74,6 +74,18 @@ Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azur
 | Felhasználó által hozzárendelt | Nem érhető el | Nem érhető el | Nem érhető el | Nem érhető el |
 
 Az Azure arc-kompatibilis Kubernetes jelenleg [támogatja a rendszerhez rendelt identitást](../../azure-arc/kubernetes/connect-cluster.md#azure-arc-agents-for-kubernetes). A felügyelt szolgáltatás identitásának tanúsítványát minden Azure arc-kompatibilis Kubernetes-ügynök használja az Azure-nal való kommunikációhoz.
+
+### <a name="azure-arc-enabled-servers"></a>Azure Arc-kompatibilis kiszolgálók
+
+| Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális Azure-régiók | Azure Government | Azure Germany | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Rendszer által hozzárendelt | ![Elérhető][check] | ![Elérhető][check] | Nem érhető el | Nem érhető el |
+| Felhasználó által hozzárendelt | Nem érhető el | Nem érhető el | Nem érhető el | Nem érhető el |
+
+Minden Azure arc-kompatibilis kiszolgálónak van egy rendszerhez rendelt identitása. Egy Azure arc-kompatibilis kiszolgálón nem tiltható le, illetve nem módosítható a rendszerhez rendelt identitás. Az alábbi forrásokból megtudhatja, hogyan használhatja a felügyelt identitásokat az Azure arc-kompatibilis kiszolgálókon:
+
+- [Hitelesítés az Azure-erőforrásokkal az ív használatára képes kiszolgálók használatával](../../azure-arc/servers/managed-identity-authentication.md)
+- [Felügyelt identitás használata ív-kompatibilis kiszolgálókkal](../../azure-arc/servers/security-overview.md#using-a-managed-identity-with-arc-enabled-servers)
 
 ### <a name="azure-automanage"></a>Azure Automanage
 

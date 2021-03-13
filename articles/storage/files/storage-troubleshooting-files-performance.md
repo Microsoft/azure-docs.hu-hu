@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 388a4f06d79116c42bf80cb25d0b133474c02192
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9f858549f36d196c6412aec549d0ab2e2d864145
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737630"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417671"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Az Azure file shares teljesítményével kapcsolatos problémák elhárítása
 
@@ -39,7 +39,8 @@ Annak ellenőrzéséhez, hogy a megosztást szabályozzák-e, elérheti és hasz
     Szabványos fájlmegosztás esetén a rendszer a következő típusú válaszokat naplózza, ha a rendszer leszabályozza a kérelmet:
 
     - SuccessWithThrottling
-    - ClientThrottlingError
+    - SuccessWithShareIopsThrottling
+    - ClientShareIopsThrottlingError
 
     A prémium szintű fájlmegosztás esetén a rendszer a következő típusú válaszokat naplózza, ha a kérelem szabályozása megtörténik:
 
@@ -244,7 +245,8 @@ A megerősítéshez használhatja az Azure-mérőszámokat a portálon –
     A standard fájlmegosztás esetében válassza ki a következő válaszokat:
 
     - SuccessWithThrottling
-    - ClientThrottlingError
+    - SuccessWithShareIopsThrottling
+    - ClientShareIopsThrottlingError
 
     A prémium fájlmegosztás esetében válassza ki a következő válaszokat:
 

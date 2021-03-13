@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 11/30/2020
-ms.openlocfilehash: 77da3406897c31e48d808541f1f9d579eb0a9cb7
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 3fadfa9d4467209ddbe997afabba27a3752f685d
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401542"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419932"
 ---
 # <a name="what-is-azure-purview"></a>Mi az az Azure Purview?
 
@@ -69,6 +69,9 @@ Az adatforrások regisztrálását követően bővítheti a metaadatokat. Vagy a
 Az adatforrások regisztrálásának elsődleges célja, hogy a források felfedezhetők, értelmezhetők és felhasználhatók legyenek. A vállalati felhasználóknak adatokra lehet szükségük az üzleti intelligencia, az alkalmazásfejlesztés, az adattudomány és minden más olyan tevékenység terén, ahol fontos a megfelelő adatok használata. A adatkatalógus-felderítési élményt használva gyorsan megtalálják az igényeiknek megfelelő adatmennyiségeket, megismerhetik az adatmennyiséget, és az adatforrást a választott eszközön nyitják meg.
 
 Ezzel egy időben a regisztrált adatforrások címkézésével, dokumentáció, illetve jegyzetek készítésével a felhasználók közre is tudnak működni a katalógus készítésében. Emellett új adatforrásokat is regisztrálhatnak, amelyeket a katalógus felhasználói közössége felderít, megértett és felhasználhat.
+
+## <a name="in-region-data-residency"></a>Régión belüli adattárolás
+Az Azure-beli hatáskörébe nem helyezi át vagy nem tárolja az ügyféladatokat azon a régión belül, ahol központilag telepítették.
 
 ## <a name="next-steps"></a>Következő lépések
 

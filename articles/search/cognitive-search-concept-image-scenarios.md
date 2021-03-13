@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 56ec893de159f4c8a90c5a229ccf7669856fb066
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e77bbd6e82d0d4a48b72e13e60b60608f2d7674
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020218"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419591"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>Információk feldolgozása és kinyerése a képekből mesterséges intelligencia-gazdagító forgatókönyvekben
 
@@ -72,7 +72,7 @@ Ha a *imageAction* egy másik értékre van állítva, akkor az új *normalized_
 | contentOffset | Az a tartalom mezőn belüli eltolás, amelyből a képet kinyerték. Ez a mező csak beágyazott rendszerképekkel rendelkező fájlokra alkalmazható. |
 | pageNumber | Ha a képet kibontották vagy PDF-fájlként állították ki, akkor ez a mező tartalmazza a PDF-fájl oldalszámát, amelyet a program kinyert vagy megjelenített, 1-től kezdődően.  Ha a rendszerkép nem PDF-fájlból származik, ez a mező 0 lesz.  |
 
- *Normalized_images*mintájának értéke:
+ *Normalized_images* mintájának értéke:
 ```json
 [
   {
@@ -88,7 +88,7 @@ Ha a *imageAction* egy másik értékre van állítva, akkor az új *normalized_
 ]
 ```
 
-## <a name="image-related-skills"></a>Képekkel kapcsolatos képességek
+## <a name="image-related-skills"></a>Képekkel kapcsolatos ismeretek
 
 Két beépített kognitív képességgel rendelkezik, amelyek bemenetként készítenek képeket: [OCR](cognitive-search-skill-ocr.md) és [Image Analysis](cognitive-search-skill-image-analysis.md). 
 
@@ -213,6 +213,77 @@ Segítőként, ha a normalizált koordinátákat át kell alakítani az eredeti 
             return original;
         }
 ```
+## <a name="passing-images-to-custom-skills"></a>Képek átadása egyéni képességekhez
+
+Olyan forgatókönyvek esetén, ahol egyéni képességre van szükség a képeken való munkához, képeket adhat át az egyéni képességek számára, és szöveget vagy képeket adhat vissza. A [Python minta](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Image-Processing) rendszerképének feldolgozása a munkafolyamatot mutatja be. A következő készségkészlet a mintából származnak.
+
+A következő készségkészlet a normalizált képet (amely a dokumentum repedése során kapott), és megjeleníti a képekből származó szeleteket.
+
+#### <a name="sample-skillset"></a>Minta készségkészlet
+```json
+{
+  "description": "Extract text from images and merge with content text to produce merged_text",
+  "skills":
+  [
+    {
+          "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
+          "name": "ImageSkill",
+          "description": "Segment Images",
+          "context": "/document/normalized_images/*",
+          "uri": "https://your.custom.skill.url",
+          "httpMethod": "POST",
+          "timeout": "PT30S",
+          "batchSize": 100,
+          "degreeOfParallelism": 1,
+          "inputs": [
+            {
+              "name": "image",
+              "source": "/document/normalized_images/*"
+            }
+          ],
+          "outputs": [
+            {
+              "name": "slices",
+              "targetName": "slices"
+            }
+          ],
+          "httpHeaders": {}
+        }
+  ]
+}
+```
+
+#### <a name="custom-skill"></a>Egyéni szaktudás
+
+Maga az egyéni szaktudás kívül esik a készségkészlet. Ebben az esetben ez a Python-kód, amely az első ciklusban a rekordok kötegét az egyéni szakértelem formátumában, majd átalakítja a Base64 kódolású karakterláncot egy képre.
+
+```python
+# deserialize the request, for each item in the batch
+for value in values:
+  data = value['data']
+  base64String = data["image"]["data"]
+  base64Bytes = base64String.encode('utf-8')
+  inputBytes = base64.b64decode(base64Bytes)
+  # Use numpy to convert the string to an image
+  jpg_as_np = np.frombuffer(inputBytes, dtype=np.uint8)
+  # you now have an image to work with
+```
+A rendszerkép visszaküldéséhez hasonlóan egy Base64 kódolású karakterláncot ad vissza egy JSON-objektumon belül egy `$type` tulajdonsággal `file` .
+
+```python
+def base64EncodeImage(image):
+    is_success, im_buf_arr = cv2.imencode(".jpg", image)
+    byte_im = im_buf_arr.tobytes()
+    base64Bytes = base64.b64encode(byte_im)
+    base64String = base64Bytes.decode('utf-8')
+    return base64String
+
+ base64String = base64EncodeImage(jpg_as_np)
+ result = { 
+  "$type": "file", 
+  "data": base64String 
+}
+```
 
 ## <a name="see-also"></a>Lásd még
 + [Indexelő létrehozása (REST)](/rest/api/searchservice/create-indexer)
@@ -221,3 +292,4 @@ Segítőként, ha a normalizált koordinátákat át kell alakítani az eredeti 
 + [Szöveg egyesítésének képessége](cognitive-search-skill-textmerger.md)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
 + [A dúsított mezők leképezése](cognitive-search-output-field-mapping.md)
++ [Képek átadása egyéni szakembereknek](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Image-Processing)

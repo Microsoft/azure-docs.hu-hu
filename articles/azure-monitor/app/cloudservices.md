@@ -4,12 +4,12 @@ description: Webes és feldolgozói szerepkörök hatékony figyelése az Applic
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: 1f9204534fcdfbf7c393eaafdbae62c4c4321f2f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 264d6d4b0b397a29b5dc1db4bb299297c1e30584
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573874"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419235"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services-Application Insights
 A [Application Insights][start] képes figyelni az [Azure Cloud Service-alkalmazásokat](https://azure.microsoft.com/services/cloud-services/) a rendelkezésre állásra, a teljesítményre, a hibákra és a használatra, ha Application Insights SDK-ból származó adatokat egyesít a cloud servicesből származó [Azure Diagnostics](../agents/diagnostics-extension-overview.md) adatokkal. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.
@@ -52,9 +52,8 @@ Az alkalmazás telemetria tárolása, elemzése és megjelenítése Application 
 Mindegyik erőforrás egy erőforráscsoportba tartozik. Az erőforráscsoportok a költségek kezelésére, a csoporttagok hozzáférésének biztosítására, valamint a frissítések egyetlen koordinált tranzakcióban történő központi telepítésére szolgálnak. [Írhat például egy parancsfájlt](../../azure-resource-manager/templates/deploy-powershell.md) egy Azure Cloud Service üzembe helyezéséhez és annak Application Insights figyelési erőforrásaihoz egy művelettel.
 
 ### <a name="resources-for-components"></a>Az összetevők erőforrásai
-Javasoljuk, hogy hozzon létre egy külön erőforrást az alkalmazás minden összetevőjéhez. Így minden webes szerepkörhöz és feldolgozói szerepkörhöz létre kell hoznia egy erőforrást. Az egyes összetevőket külön is elemezheti, de létrehozhat egy [irányítópultot](./overview-dashboard.md) , amely összefoglalja az összes összetevőből származó legfontosabb diagramokat, így egyetlen nézetben összehasonlíthatja és figyelheti azokat. 
 
-Egy másik megoldás, ha a telemetria több szerepkörből ugyanarra az erőforrásra küldi, de [egy dimenzió tulajdonságot ad hozzá minden olyan telemetria-elemhez](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) , amely azonosítja a forrás szerepkörét. Ebben a megközelítésben a mérőszám-diagramok, például a kivételek, általában a különböző szerepkörökből származó számlálások összesítését mutatják, de a diagramot szükség szerint a szerepkör-azonosító alapján is szegmentálhatja. A kereséseket ugyanezen dimenzió alapján is szűrheti. Ez a alternatíva megkönnyíti az összes adat megtekintését, de a szerepkörök közötti zavart is okozhat.
+Azt javasoljuk, hogy [vegyen fel egy dimenzió tulajdonságot minden olyan telemetria-elemhez](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) , amely azonosítja a forrás szerepkörét. Ebben a megközelítésben a mérőszám-diagramok, például a kivételek, általában a különböző szerepkörökből származó számlálások összesítését mutatják, de a diagramot szükség szerint a szerepkör-azonosító alapján is szegmentálhatja. A kereséseket ugyanezen dimenzió alapján is szűrheti. Ez a alternatíva megkönnyíti az összes adat megtekintését, de a szerepkörök közötti zavart is okozhat.
 
 A böngészőtelemetria általában ugyanabban az erőforrásban jelenik meg, mint a kiszolgálóoldali webes szerepköre.
 

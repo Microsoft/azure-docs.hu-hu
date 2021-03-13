@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/29/2020
 ms.author: allensu
-ms.openlocfilehash: 3d98107075c215c0a00bc2035325a6ad8bf5bfc5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 874cb283f0076905393aa529e4ff9e1bad3ae047
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222428"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419677"
 ---
 # <a name="public-ip-address-prefix"></a>Nyilvános IP-cím előtagja
 
@@ -58,12 +58,12 @@ Ha a nyilvános IP-cím előtagból oszt ki címeket az erőforrásokhoz, a tűz
 ## <a name="scenarios"></a>Forgatókönyvek
 A következő erőforrásokat a statikus nyilvános IP-címekhez rendelheti hozzá egy előtagból:
 
-|Erőforrás|Használati eset|Lépések|
+|Erőforrás|Eset|Lépések|
 |---|---|---|
 |Virtual machines (Virtuális gépek)| A nyilvános IP-címek az Azure-beli virtuális gépekhez való társítása csökkenti a felügyeleti terhelést, amikor IP-címeket ad hozzá a tűzfal engedélyezési listájához. Egyetlen tűzfalszabály használatával teljes előtagot adhat hozzá. Az Azure-beli virtuális gépekkel való skálázás során az IP-címeket ugyanahhoz az előtagokhoz társíthatja, így a költségek, az idő és a felügyelet terhelése is megtakarítható.| IP-címek hozzárendelése egy előtagból a virtuális géphez: </br> 1. [hozzon létre egy előtagot.](manage-public-ip-address-prefix.md) </br> 2. [hozzon létre egy IP-címet az előtagból.](manage-public-ip-address-prefix.md) </br> 3. [rendelje hozzá az IP-címet a virtuális gép hálózati adapteréhez.](virtual-network-network-interface-addresses.md#add-ip-addresses) </br> [Az IP-címeket egy virtuálisgép-méretezési csoporthoz is hozzárendelheti](https://azure.microsoft.com/resources/templates/101-vmms-with-public-ip-prefix/).
 | Standard Load Balancer | A nyilvános IP-címek egy előtagból az előtérbeli IP-konfigurációba való társítása vagy a terheléselosztó kimenő szabálya biztosítja az Azure nyilvános IP-címtartomány egyszerűsítését. Egyszerűsítse a forgatókönyvet, ha a kimenő kapcsolatokat számos összefüggő IP-címről szeretné kiszolgálni. | IP-címek hozzárendelése egy előtagból a terheléselosztó számára: </br> 1. [hozzon létre egy előtagot.](manage-public-ip-address-prefix.md) </br> 2. [hozzon létre egy IP-címet az előtagból.](manage-public-ip-address-prefix.md) </br> 3. a terheléselosztó létrehozásakor válassza ki vagy frissítse a fenti 2. lépésben létrehozott IP-címet a terheléselosztó előtérbeli IP-címével. |
 | Azure Firewall | A kimenő SNAT előtagjaként nyilvános IP-címet is használhat. Minden kimenő virtuális hálózati forgalom a [Azure Firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nyilvános IP-címére van lefordítva. | IP-cím hozzárendelése egy előtagból a tűzfalhoz: </br> 1. [hozzon létre egy előtagot.](manage-public-ip-address-prefix.md) </br> 2. [hozzon létre egy IP-címet az előtagból.](manage-public-ip-address-prefix.md) </br> 3. [Az Azure tűzfal telepítésekor](../firewall/tutorial-firewall-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-the-firewall)ügyeljen arra, hogy az előtagja által korábban megadott IP-címet válassza ki.|
-| Application Gateway v2 | A nyilvános IP-címet az automatikus skálázás és a Zone-redundáns Application Gateway v2 előtaggal is használhatja. | IP-cím hozzárendelése egy előtagból az átjáróhoz: </br> 1. [hozzon létre egy előtagot.](manage-public-ip-address-prefix.md) </br> 2. [hozzon létre egy IP-címet az előtagból.](manage-public-ip-address-prefix.md) </br> 3. [a Application Gateway központi telepítésekor](../application-gateway/quick-create-portal.md#create-an-application-gateway)ügyeljen arra, hogy az előtagja által korábban megadott IP-címet válassza ki.|
+| VPN Gateway (AZ SKU) vagy Application Gateway v2 | Nyilvános IP-címet is használhat a zóna – redundáns VPN vagy Application Gateway v2 előtaggal. | IP-cím hozzárendelése egy előtagból az átjáróhoz: </br> 1. [hozzon létre egy előtagot.](manage-public-ip-address-prefix.md) </br> 2. [hozzon létre egy IP-címet az előtagból.](manage-public-ip-address-prefix.md) </br> 3. a [VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/tutorial-create-gateway-portal) vagy [Application Gateway](../application-gateway/quick-create-portal.md#create-an-application-gateway)központi telepítésekor ügyeljen arra, hogy az előtagja által korábban megadott IP-címet válassza ki.|
 
 ## <a name="constraints"></a>Korlátozások
 

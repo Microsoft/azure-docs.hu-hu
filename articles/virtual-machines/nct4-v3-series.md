@@ -7,12 +7,12 @@ author: vikancha-MSFT
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: vikancha
-ms.openlocfilehash: b7418825b4f22bfe4fe1941cb1f70ffb9f0a939b
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: d73bd81f15263c79e16b574eb961d4ae0ac61175
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102609209"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417807"
 ---
 # <a name="ncast4_v3-series"></a>NCasT4_v3 sorozat 
 
@@ -46,6 +46,8 @@ NVIDIA NVLink Interconnect: támogatott<br>
 A Windows vagy Linux rendszerű Azure NCasT4_v3 sorozatú virtuális gépek GPU-képességeinek kihasználásához az NVIDIA GPU-illesztőprogramokat kell telepíteni.
 
 Ha manuálisan szeretné telepíteni az NVIDIA GPU-illesztőprogramokat, tekintse meg a következő témakört: [N-sorozat GPU-illesztőprogram beállítása a Windows](./windows/n-series-driver-setup.md) rendszerhez támogatott operációs rendszerek, illesztőprogramok, telepítési és ellenőrzési lépések.
+
+Az Azure NVIDIA GPU illesztőprogram-bővítmény a NCasT4_v3 sorozatú virtuális gépeken telepíti a CUDA-illesztőprogramokat. Grafikus és vizualizációs munkaterhelések esetén manuálisan telepítse az Azure által támogatott GRID-illesztőprogramokat.
 
 ## <a name="other-sizes"></a>Egyéb méretek
 

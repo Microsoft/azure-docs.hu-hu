@@ -3,12 +3,12 @@ title: Azure Event Grid eseményeinek szűrése
 description: Ismerteti, hogyan szűrhetők az események Azure Event Grid előfizetés létrehozásakor.
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: 94445341891149d5d02c7f33caef20bf45123e9b
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: fa63296f97bfa888cb0f425d0c03a5e4a7e46525
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197775"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419847"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Event Grid-előfizetések esemény-szűrésének ismertetése
 
@@ -355,6 +355,7 @@ FOR_EACH filter IN (a, b, c)
         IF key CONTAINS filter
             FAIL_MATCH
 ```
+A kezelő aktuális korlátozásával kapcsolatban lásd: [korlátozások](#limitations) szakasz.
 
 ## <a name="stringbeginswith"></a>StringBeginsWith
 A **StringBeginsWith** operátor igaz értéket ad vissza, ha a **kulcs** értéke a megadott **szűrési** értékek bármelyikével **kezdődik** . A következő példában ellenőrzi, hogy a szakaszban szereplő attribútum értéke a vagy a karakterrel kezdődik-e `key1` `data` `event` `grid` . Például a következővel `event hubs` kezdődik: `event` .  
@@ -634,6 +635,7 @@ A speciális szűrés a következő korlátozásokkal rendelkezik:
 * 5 speciális szűrő és 25 szűrő érték az összes szűrő/Event Grid-előfizetés alapján
 * 512 karakter/karakterlánc érték
 * Öt érték a **-ben** és **nem az** operátorokban
+* Az `StringNotContains` operátor jelenleg nem érhető el a portálon.
 * Kulcsok **`.` (pont)** karakterrel. Például: `http://schemas.microsoft.com/claims/authnclassreference` vagy `john.doe@contoso.com` . Jelenleg nem támogatottak az Escape-karakterek a kulcsokban. 
 
 Ugyanaz a kulcs több szűrőben is használható.

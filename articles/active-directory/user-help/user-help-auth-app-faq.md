@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 01/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 84dde96276414e98cbde05d6e046dce03227f60d
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 8ddc02075d2cdeba4a4fa83a2475ec20c3f18d6e
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547859"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418079"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Gyakran ismételt kérdések (GYIK) a Microsoft Authenticator alkalmazásról
 
@@ -260,7 +260,7 @@ Válasz **: a** hitelesítő hozzáadása az új eszközhöz nem távolítja el 
 
 **K**: az alkalmazottak vagy a tanulók a jelszó automatikus kitöltését használják a hitelesítő alkalmazásban?
 
-Válasz **: igen**, az automatikus kitöltés mostantól a legtöbb vállalati felhasználó számára is működik, még akkor is, ha a hitelesítő alkalmazáshoz munkahelyi vagy iskolai fiók van hozzáadva. Kitöltheti a szervezete számára az automatikus kitöltés (Engedélyezés vagy megtagadás) beállítást, és [elküldheti azt a hitelesítő csapatnak](https://aka.ms/ConfigureAutofillInAuthenticator).
+Válasz **: igen**, a [személyes Microsoft-fiókjainak](https://go.microsoft.com/fwlink/?linkid=2144423) automatikus kitöltése mostantól a legtöbb vállalati felhasználó számára is működik, még akkor is, ha egy munkahelyi vagy iskolai fiókot ad hozzá a hitelesítő alkalmazáshoz. Az űrlap kitöltésével engedélyezheti vagy megtagadhatja az automatikus kitöltés használatát a szervezet számára, és [elküldheti azt a hitelesítő csapatnak](https://aka.ms/ConfigureAutofillInAuthenticator). Az automatikus kitöltés jelenleg nem érhető el munkahelyi vagy iskolai fiókokhoz.
 
 **K**: a felhasználók munkahelyi vagy iskolai fiókjának jelszava automatikusan szinkronizálva lesz?
 

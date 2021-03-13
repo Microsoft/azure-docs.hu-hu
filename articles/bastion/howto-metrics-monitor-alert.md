@@ -6,14 +6,14 @@ services: bastion
 author: mialdrid
 ms.service: bastion
 ms.topic: how-to
-ms.date: 03/09/2021
+ms.date: 03/12/2021
 ms.author: mialdrid
-ms.openlocfilehash: dc16b9007c381f1bb0dce9332243842d8d4af9cd
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 3a5beba3938b5a845a378ede155f2f64e6baac7a
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103202556"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417943"
 ---
 # <a name="how-to-configure-monitoring-and-metrics-for-azure-bastion-using-azure-monitor"></a>Az Azure Bastion figyelésének és metrikáinak konfigurálása Azure Monitor használatával
 
@@ -72,7 +72,7 @@ Megtekintheti az egyes megerősített példányok memóriájának kihasználtsá
 
 #### <a name="session-count"></a>Munkamenetek száma
 
-Megtekintheti az aktív munkamenetek számát az egyes munkamenet-típusoknál (RDP és SSH) összesítve. Az egyes Azure-alapú megerősített kapcsolatok számos aktív RDP-és SSH-munkamenetet támogatnak. A mérőszám figyelése segít megérteni, hogy módosítani kell-e a megerősített szolgáltatást futtató példányok számát. Az Azure Bastion-munkamenetek számának támogatásával kapcsolatos további információkért tekintse meg az [Azure Bastion – gyakori kérdések](bastion-faq.md)című témakört. Ha többet szeretne megtudni arról, hogy mely megerősített SKU-ket támogatja a példány skálázása, tekintse meg a következő [témakört](bastion-connect-vm-scale-set.md):.
+Megtekintheti az aktív munkamenetek számát az egyes munkamenet-típusoknál (RDP és SSH) összesítve. Az egyes Azure-alapú megerősített kapcsolatok számos aktív RDP-és SSH-munkamenetet támogatnak. A mérőszám figyelése segít megérteni, hogy módosítani kell-e a megerősített szolgáltatást futtató példányok számát. Az Azure Bastion-munkamenetek számának támogatásával kapcsolatos további információkért tekintse meg az [Azure Bastion – gyakori kérdések](bastion-faq.md)című témakört.
 
 :::image type="content" source="./media/metrics-monitor-alert/session-count.png" alt-text="A munkamenetek darabszámát ábrázoló képernyőkép.":::
 

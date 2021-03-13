@@ -2,13 +2,13 @@
 title: Sablonok – Áttekintés
 description: A Azure Resource Manager-sablonok (ARM-sablonok) használatának előnyeit ismerteti az erőforrások üzembe helyezéséhez.
 ms.topic: conceptual
-ms.date: 03/08/2021
-ms.openlocfilehash: 3a144b69f69c90b997b17d9526c9c3e0f259c554
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.date: 03/12/2021
+ms.openlocfilehash: 14bcbbd7a7ae7315dbb8e9d3e7e44ce0ffe0a4b4
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102455735"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419983"
 ---
 # <a name="what-are-arm-templates"></a>Mik azok az ARM-sablonok?
 
@@ -19,6 +19,10 @@ Ezeknek a kihívásoknak a kielégítéséhez automatizálhatja az üzembe helye
 Az infrastruktúra kódként való megvalósításához az Azure-megoldásokhoz használja Azure Resource Manager-sablonokat (ARM-sablonok). A sablon egy JavaScript Object Notation (JSON) fájl, amely meghatározza a projekt infrastruktúráját és konfigurációját. A sablon olyan deklaratív szintaxist használ, amellyel anélkül határozhatja meg, hogy mit szeretne üzembe helyezni, hogy ehhez programozási parancsok sorozatát kellene megírnia. A sablonban megadhatja a telepítendő erőforrásokat és az erőforrások tulajdonságait.
 
 Új nyelvet vezettünk be az ARM-sablonok fejlesztéséhez. A nyelv neve bicep, és jelenleg előzetes verzióban érhető el. A bicep és a JSON-sablonok ugyanazokat a képességeket kínálnak. A sablont a két nyelv között alakíthatja át. A bicep olyan szintaxist biztosít, amely könnyebben használható a sablonok létrehozásához. További információ: [Mi az a bicep (előzetes verzió)?](bicep-overview.md).
+
+Ha szeretné megtudni, hogyan kezdheti meg az ARM-sablonokat, tekintse meg az alábbi videót.
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Enablement/How-and-why-to-learn-about-ARM-templates/player]
 
 ## <a name="why-choose-arm-templates"></a>Miért érdemes ARM-sablonokat választani?
 

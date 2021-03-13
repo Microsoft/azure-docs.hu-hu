@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 0d45e04bbafc7b2480abdcb2ab21bdb219a09b9e
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 3626ca4cc3e7377f1c6778bc77e5e48ef0dcad0c
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103020994"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103439105"
 ---
 ## <a name="add-managed-identity-to-your-communication-services-solution-js"></a>Felügyelt identitás hozzáadása a kommunikációs szolgáltatások megoldásához (JS)
 
@@ -23,7 +23,7 @@ Adja hozzá a következő `import` irányelveket a kódhoz az Azure Identity és
 
 ```typescript
 import { DefaultAzureCredential } from "@azure/identity";
-import { CommunicationIdentityClient } from "@azure/communication-identity";
+import { CommunicationIdentityClient, CommunicationUserToken } from "@azure/communication-identity";
 import { SmsClient, SmsSendRequest } from "@azure/communication-sms";
 ```
 
@@ -39,7 +39,7 @@ A következő mintakód bemutatja, hogyan hozhat létre egy felügyelt identitá
 export async function createIdentityAndIssueToken(resourceEndpoint: string): Promise<CommunicationUserToken> {
      let credential = new DefaultAzureCredential();
      const client = new CommunicationIdentityClient(resourceEndpoint, credential);
-     return await client.createUserWithToken(["chat"]);
+     return await client.createUserAndToken(["chat"]);
 }
 ```
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: 621cfa8977d4d0ed987b7d38407bbf5bbb370950
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: 9ff98a2613143474afd6041ccf52d4eb509d646b
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103232739"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418878"
 ---
 # <a name="create-a-semantic-query-in-cognitive-search"></a>Szemantikai lekérdezés létrehozása Cognitive Search
 
@@ -141,7 +141,7 @@ Kövesse az alábbi irányelveket az optimális eredmények biztosításához, h
 
 + Ezeket a mezőket olyan leíró mezők követik, amelyekben a szemantikai lekérdezésekre adott válasz, például a dokumentum fő tartalma található.
 
-Ha csak egy mező van megadva, használjon olyan leíró mezőt, amelyben a szemantikai lekérdezésekre adott válasz található, például a dokumentum fő tartalma. Olyan mezőt válasszon, amely elegendő tartalmat biztosít. Az időben történő feldolgozás biztosításához csak a searchFields kollektív tartalmának első 20 000-tokenje legyen szemantikai kiértékelés és rangsorolás.
+Ha csak egy mező van megadva, használjon olyan leíró mezőt, amelyben a szemantikai lekérdezésekre adott válasz található, például a dokumentum fő tartalma. Olyan mezőt válasszon, amely elegendő tartalmat biztosít. Az időben történő feldolgozás biztosítása érdekében csak a searchFields kollektív tartalmának körülbelül 8 000 jogkivonatát kell szemantikai kiértékeléssel és rangsorolással elvégeznie.
 
 #### <a name="step-3-remove-orderby-clauses"></a>3. lépés: az orderBy záradékok eltávolítása
 

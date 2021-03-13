@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: a8f1ca1da54c816199a0504eb17fa0a7bbfc441b
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 54b1fd14f97855dd42afde9a4bb34795373ff229
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102522189"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417637"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning-adathalmazok létrehozása
 
@@ -182,9 +182,55 @@ titanic_ds.take(3).to_pandas_dataframe()
 
 Az adatkészletek a munkaterületen végzett kísérletek közötti újrafelhasználásához és megosztásához [regisztrálja az adatkészletet](#register-datasets).
 
+## <a name="wrangle-data"></a>Vitatkozik-adathalmazok
+Az adatkészlet létrehozása és [regisztrálása](#register-datasets) után a modell betanítása előtt betöltheti a notebookba az adathuzavona és a [felderítési](#explore-data) szolgáltatásba. 
+
+Ha nincs szükség semmilyen adat huzavona vagy feltárására, olvassa el a következő témakört: adatkészletek használata a betanítási parancsfájlokban ML kísérletek beküldéséhez a [vonaton adatkészletekkel](how-to-train-with-datasets.md).
+
+### <a name="filter-datasets-preview"></a>Adatkészletek szűrése (előzetes verzió)
+A szűrési képességek az adatkészlet típusától függenek. 
+> [!IMPORTANT]
+> Az adatkészletek nyilvános előzetes módszerrel történő szűrése [`filter()`](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) [kísérleti](/python/api/overview/azure/ml/#stable-vs-experimental) előzetes verzióként érhető el, és bármikor megváltozhat. 
+> 
+A **TabularDatasets** a [keep_columns ()](/python/api/azureml-core/azureml.data.tabulardataset#keep-columns-columns--validate-false-) és a [drop_columns ()](/python/api/azureml-core/azureml.data.tabulardataset#drop-columns-columns-) metódussal rendelkező oszlopokat is megtarthatja vagy eltávolíthatja.
+
+Ha egy TabularDataset egy adott oszlop értéke alapján szeretné kiszűrni a sorokat, használja a [Filter ()](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) metódust (előzetes verzió). 
+
+A következő példák egy nem regisztrált adatkészletet adnak vissza a megadott kifejezések alapján.
+
+```python
+# TabularDataset that only contains records where the age column value is greater than 15
+tabular_dataset = tabular_dataset.filter(tabular_dataset['age'] > 15)
+
+# TabularDataset that contains records where the name column value contains 'Bri' and the age column value is greater than 15
+tabular_dataset = tabular_dataset.filter((tabular_dataset['name'].contains('Bri')) & (tabular_dataset['age'] > 15))
+```
+
+**A FileDatasets-ben** minden sor egy fájl elérési útjához tartozik, ezért az oszlop érték szerinti szűrés nem hasznos. A sorokat azonban a metaadatok (például a CreationTime, a méret stb. [) alapján szűrheti](/python/api/azureml-core/azureml.data.filedataset#filter-expression-) .
+
+A következő példák egy nem regisztrált adatkészletet adnak vissza a megadott kifejezések alapján.
+
+```python
+# FileDataset that only contains files where Size is less than 100000
+file_dataset = file_dataset.filter(file_dataset.file_metadata['Size'] < 100000)
+
+# FileDataset that only contains files that were either created prior to Jan 1, 2020 or where 
+file_dataset = file_dataset.filter((file_dataset.file_metadata['CreatedTime'] < datetime(2020,1,1)) | (file_dataset.file_metadata['CanSeek'] == False))
+```
+
+Az [adatcímkéző projektekben](how-to-create-labeling-projects.md) létrehozott **címkézett adatkészletek** speciális esetek. Ezek az adatkészletek képfájlokból álló TabularDataset-típusok. Az ilyen típusú adatkészletek esetében a metaadatok alapján [szűrheti a ()](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) lemezképeket, valamint a (z) és az oszlop értékeit `label` `image_details` .
+
+```python
+# Dataset that only contains records where the label column value is dog
+labeled_dataset = labeled_dataset.filter(labeled_dataset['label'] == 'dog')
+
+# Dataset that only contains records where the label and isCrowd columns are True and where the file size is larger than 100000
+labeled_dataset = labeled_dataset.filter((labeled_dataset['label']['isCrowd'] == True) & (labeled_dataset.file_metadata['Size'] > 100000))
+```
+
 ## <a name="explore-data"></a>Adatok feltárása
 
-Az adatkészlet létrehozása és [regisztrálása](#register-datasets) után a modell betanítása előtt betöltheti a notebookba az adatfeltáráshoz. Ha nem kell adatfeltárást végeznie, olvassa el a következő témakört: adatkészletek használata a betanítási parancsfájlokban ML kísérletek beküldéséhez az [adatkészletekben](how-to-train-with-datasets.md).
+Miután végzett az huzavona, [regisztrálhatja](#register-datasets) az adatkészletet, majd betöltheti a notebookba az adatfeltáráshoz a modell betanítása előtt.
 
 A FileDatasets **csatlakoztathatja** vagy **letöltheti** az adatkészletet, és alkalmazhatja azokat a Python-kódtárakat, amelyeket általában az adatfeltáráshoz használ. [További információ a Mount vs letöltésről](how-to-train-with-datasets.md#mount-vs-download).
 

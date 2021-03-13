@@ -2,26 +2,24 @@
 title: 'SQL Server az Azure szinapszis Analytics szolgáltatáshoz: áttelepítési útmutató'
 description: Az alábbi útmutató segítségével áttelepítheti az SQL-adatbázisokat az Azure szinapszis Analytics SQL-készletbe.
 ms.service: synapse-analytics
-ms.subservice: ''
-ms.custom: ''
-ms.devlang: ''
+ms.subservice: sql
 ms.topic: conceptual
 author: julieMSFT
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.date: 03/10/2021
-ms.openlocfilehash: 09914b409c7d8412f6ba30d4412e28e264bd50f6
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: 9a7888d3ccf7e033f15f184227c65c746780aa12
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225737"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418028"
 ---
 # <a name="migration-guide-sql-server-to-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Áttelepítési útmutató: SQL Server egy dedikált SQL-készlethez az Azure szinapszis Analyticsben 
-A következő szakasz áttekintést nyújt a meglévő SQL Server adattárház-megoldásnak az Azure szinapszis Analytics SQL-készletbe való áttelepítésével kapcsolatban.
+A következő szakaszokban áttekintheti, hogy mi történik a meglévő SQL Server adattárház-megoldásnak az Azure szinapszis Analytics SQL-készletbe való áttelepítésével kapcsolatban.
 
 ## <a name="overview"></a>Áttekintés
-Az áttelepítés előtt ellenőriznie kell, hogy az Azure szinapszis Analytics a legjobb megoldás-e a számítási feladatokhoz. Az Azure szinapszis Analytics egy elosztott rendszer, amely a nagyméretű adatok elemzését végzi. Az Azure szinapszis Analytics szolgáltatásba való Migrálás olyan tervezési változásokat igényel, amelyeknek nem nehéz megértenünk, de ez eltarthat egy ideig. Ha vállalata nagyvállalati szintű adattárházat igényel, az előnyök hasznosak. Ha azonban nincs szüksége az Azure szinapszis Analytics teljesítményére, akkor a [SQL Server](https://docs.microsoft.com/sql/sql-server/) vagy [Azure SQL Database](https://docs.microsoft.com/azure/azure-sql/)használata költséghatékonyabb.
+Az áttelepítés előtt ellenőriznie kell, hogy az Azure szinapszis Analytics a legjobb megoldás-e a számítási feladatokhoz. Az Azure szinapszis Analytics egy elosztott rendszer, amely a nagyméretű adatok elemzését végzi. Az Azure szinapszis Analytics szolgáltatásba való Migrálás olyan tervezési változásokat igényel, amelyek nem nehezen érthetőek, de a megvalósítás eltarthat egy ideig. Ha vállalata nagyvállalati szintű adattárházat igényel, az előnyök hasznosak. Ha azonban nincs szüksége az Azure szinapszis Analytics teljesítményére, akkor a [SQL Server](/sql/sql-server/) vagy [Azure SQL Database](/azure/azure-sql/database/sql-database-paas-overview)használata költséghatékonyabb.
 
 Vegye fontolóra az Azure szinapszis Analytics használatát, ha:
 - Legalább egy terabájt adattal rendelkezik.
@@ -44,10 +42,10 @@ A SQL Server az Azure szinapszis Analytics szolgáltatásba való áttelepítés
 - Egy [DEDIKÁLT SQL-készlet](../get-started-create-workspace.md) az Azure szinapszis munkaterületen. 
 
 ## <a name="pre-migration"></a>A migrálás előtt
-Miután elvégezte a meglévő megoldás áttelepítését az Azure szinapszis Analyticsre, fontos, hogy megtervezze az áttelepítést az első lépések előtt. A tervezés elsődleges célja annak biztosítása, hogy az adatai, a táblák sémái és a kódok kompatibilisek legyenek az Azure szinapszis Analytics szolgáltatással. A jelenlegi rendszer és a SQL Data Warehouse között bizonyos kompatibilitási különbségek vannak, amelyeket érdemes megkerülni. Emellett a nagy mennyiségű adatok áttelepítése az Azure-ba időt vesz igénybe. A gondos tervezés felgyorsítja az Azure-ba való adatszerzés folyamatát. A tervezés egy másik fő célja, hogy a tervezést úgy állítsa be, hogy a megoldás teljes mértékben kihasználja az Azure szinapszis Analytics által biztosított nagy lekérdezési teljesítményt. Az adattárházak méretezésének megtervezése egyedi tervezési mintákat vezet be, így a hagyományos megközelítések nem mindig a legjobbak. Míg az áttelepítés után egyes tervezési módosítások elvégezhető, a folyamat korábbi módosításait később is megtakaríthatja.
+Miután elvégezte egy meglévő megoldás áttelepítését az Azure szinapszis Analytics szolgáltatásba, fontos, hogy megtervezze az áttelepítést az első lépések előtt. A tervezés elsődleges célja annak biztosítása, hogy az adatai, a táblák sémái és a kódok kompatibilisek legyenek az Azure szinapszis Analytics szolgáltatással. A jelenlegi rendszer és SQL Data Warehouse között bizonyos kompatibilitási különbségek vannak, amelyeket érdemes megkerülni. Emellett nagy mennyiségű adattal is áttelepíthet az Azure-ba. A gondos tervezés felgyorsítja az Azure-ba való adatszerzés folyamatát. A tervezés egy másik fő célja, hogy a tervezést úgy állítsa be, hogy a megoldás teljes mértékben kihasználja az Azure szinapszis Analytics által biztosított nagy lekérdezési teljesítményt. Az adattárházak méretezésének megtervezése egyedi tervezési mintákat vezet be, így a hagyományos megközelítések nem mindig a legjobbak. Míg az áttelepítés után egyes tervezési módosítások elvégezhető, a folyamat korábbi módosításait később is megtakaríthatja.
 
 ## <a name="azure-synapse-pathway"></a>Az Azure szinapszis útja
-Az egyik kritikus blokkoló ügyfeleinek az egyik rendszerről a másikra történő áttelepítésekor az SQL-kód fordítása történik. Az [Azure szinapszis útvonala](https://docs.microsoft.com/sql/tools/synapse-pathway/azure-synapse-pathway-overview) segítséget nyújt a modern adattárház-platformra való frissítéshez a meglévő adattárház kód fordításának automatizálásával. Ez egy ingyenes, intuitív és könnyen kezelhető eszköz, amely automatizálja a kód fordítását, ami lehetővé teszi az Azure szinapszis Analytics-re való gyorsabb áttelepítést.
+Az egyik kritikus blokkoló ügyfeleinek az egyik rendszerről a másikra történő áttelepítésekor az SQL-kód fordítása történik. Az [Azure szinapszis útvonala](/sql/tools/synapse-pathway/azure-synapse-pathway-overview) segítséget nyújt a modern adattárház-platformra való frissítéshez a meglévő adattárház kód fordításának automatizálásával. Ez egy ingyenes, intuitív és könnyen kezelhető eszköz, amely automatizálja a kód fordítását, ami lehetővé teszi az Azure szinapszis Analytics-re való gyorsabb áttelepítést.
 
 ## <a name="migrate"></a>Migrate
 A sikeres áttelepítés végrehajtásához át kell telepítenie a tábla sémáit, kódját és adatait. A témakörökkel kapcsolatos részletesebb útmutatásért lásd:

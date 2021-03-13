@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: peshultz
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 6cc6e6a9739b8b06ab3c48dd3fd75f19de8d0787
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 6c96c5b03a3561ae57807ad2788064f2a568f84c
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106274"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418708"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>Oktatóanyag: Python-parancsfájlok futtatása Azure Data Factory használatával Azure Batch
 
@@ -34,7 +34,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 * Telepített [Python](https://www.python.org/downloads/) -eloszlás helyi teszteléshez.
 * Az [Azure-Storage-blob](https://pypi.org/project/azure-storage-blob/) `pip` csomag.
-* Az [iris.csv adatkészlet](https://www.kaggle.com/uciml/iris/version/2#Iris.csv)
+* Az [iris.csv adatkészlet](https://github.com/Azure-Samples/batch-adf-pipeline-tutorial/blob/master/iris.csv)
 * Egy Azure Batch-fiók és egy társított Azure Storage-fiók. A Batch-fiókok Storage-fiókokhoz való létrehozásával és összekapcsolásával kapcsolatos további információkért tekintse meg [a Batch-fiók létrehozása](quick-create-portal.md#create-a-batch-account) című témakört.
 * Egy Azure Data Factory-fiók. A adat-előállító létrehozásával kapcsolatos további információkért tekintse meg Azure Portal az adat-előállító [létrehozása](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory) című témakört.
 * [Batch Explorer](https://azure.github.io/BatchExplorer/).
@@ -67,7 +67,7 @@ Itt olyan blob-tárolókat hoz létre, amelyek a bemeneti és kimeneti fájljait
 1. Jelentkezzen be Storage Explorer Azure-beli hitelesítő adataival.
 1. A Batch-fiókhoz csatolt Storage-fiók használatával hozzon létre két BLOB-tárolót (egyet a bemeneti fájlokhoz, egyet a kimeneti fájlokhoz) a [blob-tároló létrehozása](../vs-azure-tools-storage-explorer-blobs.md#create-a-blob-container)című témakör lépéseit követve.
     * Ebben a példában a bemeneti tárolót `input` és a kimeneti tárolót hívjuk `output` .
-1. Töltse fel a [`iris.csv`](https://www.kaggle.com/uciml/iris/version/2#Iris.csv) beviteli tárolóba a `input` Storage Explorer használatával a [Blobok blob-tárolóban való kezelésének](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container) lépéseit követve.
+1. Töltse fel a [`iris.csv`](https://github.com/Azure-Samples/batch-adf-pipeline-tutorial/blob/master/iris.csv) beviteli tárolóba a `input` Storage Explorer használatával a [Blobok blob-tárolóban való kezelésének](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container) lépéseit követve.
 
 ## <a name="develop-a-script-in-python"></a>Parancsfájl fejlesztése a Pythonban
 
@@ -75,32 +75,28 @@ A következő Python-szkript betölti az `iris.csv` adatkészletet a `input` tá
 
 ``` python
 # Load libraries
-from azure.storage.blob import BlobServiceClient
+from azure.storage.blob import BlobClient
 import pandas as pd
 
 # Define parameters
-storageAccountURL = "<storage-account-url>"
-storageKey         = "<storage-account-key>"
-containerName      = "output"
+connectionString = "<storage-account-connection-string>"
+containerName = "output"
+outputBlobName  = "iris_setosa.csv"
 
 # Establish connection with the blob storage account
-blob_service_client = BlockBlobService(account_url=storageAccountURL,
-                               credential=storageKey
-                               )
+blob = BlobClient.from_connection_string(conn_str=connectionString, container_name=containerName, blob_name=outputBlobName)
 
 # Load iris dataset from the task node
 df = pd.read_csv("iris.csv")
 
-# Subset records
+# Take a subset of the records
 df = df[df['Species'] == "setosa"]
 
 # Save the subset of the iris dataframe locally in task node
-df.to_csv("iris_setosa.csv", index = False)
+df.to_csv(outputBlobName, index = False)
 
-# Upload iris dataset
-container_client = blob_service_client.get_container_client(containerName)
-with open("iris_setosa.csv", "rb") as data:
-    blob_client = container_client.upload_blob(name="iris_setosa.csv", data=data)
+with open(outputBlobName, "rb") as data:
+    blob.upload_blob(data)
 ```
 
 Mentse a parancsfájlt, `main.py` és töltse fel az **Azure Storage** - `input` tárolóba. A blob-tárolóba való feltöltés előtt ügyeljen arra, hogy a funkcionalitását helyileg tesztelje és érvényesítse:
@@ -119,19 +115,17 @@ Ebben a szakaszban egy folyamatot hoz létre és érvényesít a Python-parancsf
 
     ![Az Általános lapon állítsa be a folyamat nevét "Python futtatása" értékre.](./media/run-python-batch-azure-data-factory/create-pipeline.png)
 
-1. A **tevékenységek** mezőben bontsa ki a **Batch szolgáltatás** elemet. Húzza az egyéni tevékenységet a **tevékenységek** eszközkészletből a folyamat tervező felületére.
-1. Az **általános** lapon adja meg a **testPipeline** nevet
-
-    ![Az Általános lapon adja meg a testPipeline nevet](./media/run-python-batch-azure-data-factory/create-custom-task.png)
-1. A **Azure batch** lapon adja hozzá az előző lépésekben létrehozott **Batch-fiókot** , és **tesztelje a kapcsolódást** annak érdekében, hogy sikeres legyen.
-
+1. A **tevékenységek** mezőben bontsa ki a **Batch szolgáltatás** elemet. Húzza az egyéni tevékenységet a **tevékenységek** eszközkészletből a folyamat tervező felületére. Töltse ki az alábbi lapokat az egyéni tevékenységhez:
+    1. Az általános **lapon** adja meg a **TestPipeline** nevet az ![ Általános lapon, és adja meg a testPipeline nevet.](./media/run-python-batch-azure-data-factory/create-custom-task.png)
+    1. A **Azure batch** lapon adja hozzá az előző lépésekben létrehozott **Batch-fiókot** , és **tesztelje a kapcsolódást** , hogy az sikeres legyen.
     ![A Azure Batch lapon adja hozzá az előző lépésekben létrehozott batch-fiókot, majd tesztelje a kapcsolatokat.](./media/run-python-batch-azure-data-factory/integrate-pipeline-with-azure-batch.png)
+    1. A **Beállítások** lapon:
+        1. Adja meg a **parancsot** a következőképpen: `python main.py` .
+        1. Az **erőforráshoz társított szolgáltatáshoz** adja hozzá az előző lépésekben létrehozott Storage-fiókot. Ellenőrizze, hogy a kapcsolódás sikeres volt-e.
+        1. A **mappa elérési útja** mezőben válassza ki a Python-parancsfájlt és a hozzá tartozó bemeneti adatokat tartalmazó **Azure Blob Storage** tároló nevét. Ezzel letölti a kiválasztott fájlokat a tárolóból a készlet csomópont példányaira a Python-szkript végrehajtása előtt.
 
-1. A **Beállítások** lapon adja meg a parancsot `python main.py` .
-1. Az **erőforráshoz társított szolgáltatáshoz** adja hozzá az előző lépésekben létrehozott Storage-fiókot. Ellenőrizze, hogy a kapcsolódás sikeres volt-e.
-1. A **mappa elérési útja** mezőben válassza ki a Python-parancsfájlt és a hozzá tartozó bemeneti adatokat tartalmazó **Azure Blob Storage** tároló nevét. Ezzel letölti a kiválasztott fájlokat a tárolóból a készlet csomópont példányaira a Python-szkript végrehajtása előtt.
+        ![A mappa elérési útja lapon válassza ki az Azure Blob Storage tároló nevét.](./media/run-python-batch-azure-data-factory/create-custom-task-py-script-command.png)
 
-    ![A mappa elérési útja lapon válassza ki az Azure Blob Storage tároló nevét.](./media/run-python-batch-azure-data-factory/create-custom-task-py-script-command.png)
 1. A folyamat beállításainak érvényesítéséhez a vászon fölött kattintson az **Érvényesítés** elemre a folyamat eszköztárán. Győződjön meg róla, hogy a folyamat érvényesítése sikerült. Az érvényesítés kimenetének bezárásához kattintson a &gt;&gt; (jobbra mutató nyíl) gombra.
 1. A folyamat teszteléséhez kattintson a **hibakeresés** elemre, és győződjön meg róla, hogy az megfelelően működik-e.
 1. A folyamat közzétételéhez kattintson a **Közzététel** gombra.

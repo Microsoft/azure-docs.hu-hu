@@ -9,16 +9,18 @@ ms.subservice: hpc
 ms.date: 03/05/2021
 ms.author: amverma
 ms.custom: include file
-ms.openlocfilehash: b07d0563a392cc3f86179f7bfa002f4bcf0d2300
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 3ed618d60a575fa6c747e1ddf9ebcc083cddbb20
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102485698"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103439119"
 ---
 ## <a name="get-started"></a>Első lépések
 
-- A HPC on InfiniBand-kompatibilis H-sorozatú és N sorozatú virtuális gépek [áttekintése](../overview.md) .
-- Virtuális gépek és HPC virtuálisgép-lemezképek [konfigurálása](../configure.md) .
-- [InfiniBand engedélyezése](../enable-infiniband.md).
-- [MPI beállítása](../setup-mpi.md).
+- A HPC on InfiniBand-kompatibilis H-sorozatú és N sorozatú virtuális gépek [áttekintése](../overview.md)
+- Virtuális gépek és HPC virtuálisgép-rendszerképeinek [konfigurálása](../configure.md)
+- [InfiniBand engedélyezése](../enable-infiniband.md)
+- [MPI beállítása](../setup-mpi.md)
+- [Fürt konfigurációs beállításai](../../../sizes-hpc.md#cluster-configuration-options)
+- [Telepítési szempontok](../../../sizes-hpc.md#deployment-considerations)

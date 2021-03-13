@@ -6,13 +6,13 @@ ms.author: susabat
 ms.reviewer: susabat
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 12/03/2020
-ms.openlocfilehash: d96c467807af868c07be12f52d913f881b82f732
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 03/12/2021
+ms.openlocfilehash: 4be015b1a8ba4b6fc6ea3acc74318f9a8b298e8e
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175872"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418096"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>A CI-CD-k, az Azure DevOps és a GitHub-problémák hibaelhárítása Az ADF-ben 
 
@@ -178,19 +178,21 @@ Azure Resource Manager korlátozza a sablon méretének 4MB nál. Korlátozza a 
 
 Kis és közepes mérető megoldások esetében könnyebb egyetlen sablont megérteni és karbantartani. Így az összes erőforrás és értéke egyetlen fájlban látható. Speciális felhasználási helyzetekben a megoldás csatolt sablonokkal bontható fel a kívánt összetevőkre. A [csatolt és beágyazott sablonok használata esetén](../azure-resource-manager/templates/linked-templates.md?tabs=azure-powershell)kövesse az ajánlott eljárásokat.
 
-### <a name="cannot-connect-to-git-enterprise"></a>Nem lehet csatlakozni a GIT Enterprise-hoz 
+### <a name="cannot-connect-to-git-enterprise-cloud"></a>Nem lehet csatlakozni a GIT vállalati felhőhöz 
 
 ##### <a name="issue"></a>Probléma
 
-Engedélyekkel kapcsolatos problémák miatt nem lehet csatlakozni a GIT Enterprise-hoz. A következőhöz hasonló hiba látható: **422 – feldolgozható entitás.**
+Engedélyekkel kapcsolatos problémák miatt nem lehet csatlakozni a GIT vállalati felhőhöz. A következőhöz hasonló hiba látható: **422 – feldolgozható entitás.**
 
 #### <a name="cause"></a>Ok
 
-Nem konfigurálta a OAuth az ADF-hez. Az URL-cím helytelenül van konfigurálva.
+* A git Enterprise szolgáltatást használja a Prem-kiszolgálón. 
+* Nem konfigurálta a OAuth az ADF-hez. 
+* Az URL-cím helytelenül van konfigurálva.
 
 ##### <a name="resolution"></a>Feloldás
 
-Először a OAuth-hozzáférést kell megadnia az ADF-hez. Ezután a GIT Enterprise-hoz való kapcsolódáshoz a helyes URL-címet kell használnia. A konfigurációt az ügyfél Szervezete (ke) t kell beállítani. Az ADF például először próbálkozik. *https://hostname/api/v3/search/repositories?q=user%3 <customer credential> ...* és sikertelen lesz. Ezután megpróbálja *https://hostname/api/v3/orgs/ <org> / <repo> ...* és sikeres lesz. 
+Először a OAuth-hozzáférést kell megadnia az ADF-hez. Ezután a GIT Enterprise-hoz való kapcsolódáshoz a helyes URL-címet kell használnia. A konfigurációt az ügyfél Szervezete (ke) t kell beállítani. Az ADF például először a. *https://hostname/api/v3/search/repositories?q=user%3 <customer credential> ...* időpontban próbálkozik, és sikertelen lesz. Ezután megpróbálja *https://hostname/api/v3/orgs/ <org> / <repo> ...* és sikeres lesz. 
  
 ### <a name="recover-from-a-deleted-data-factory"></a>Helyreállítás a törölt adatok gyárból
 

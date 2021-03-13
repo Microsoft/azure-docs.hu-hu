@@ -5,14 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 03/08/2021
+ms.date: 03/12/2021
 ms.author: victorh
-ms.openlocfilehash: a3f72d235d6c52ce91ae351c2606ee6cf4285159
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.custom: references_regions
+ms.openlocfilehash: 22ee920c38a8cacaf37a1e3a6cfc5165dfa0bb44
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102453427"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419949"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Azure Firewall Premium előzetes verziójának funkciói
 
@@ -100,6 +101,44 @@ vagy
 
 Szívesen küld egy kérelmet a következő címen: [https://aka.ms/azfw-webcategories-request](https://aka.ms/azfw-webcategories-request) .
  
+## <a name="supported-regions"></a>Támogatott régiók
+
+A Premium Preview Azure Firewall a következő régiókban támogatott:
+
+- Nyugat-Európa (állami/európai)
+- USA keleti régiója (nyilvános/Egyesült Államok)
+- Kelet-Ausztrália (nyilvános/ausztráliai)
+- Délkelet-Ázsia (nyilvános/Ázsia és a Csendes-óceáni térség)
+- Egyesült Királyság déli régiója (Public/Egyesült Királyság)
+- Észak-Európa (nyilvános/európai)
+- USA 2. keleti régiója (nyilvános/Egyesült Államok)
+- USA déli középső régiója (nyilvános/Egyesült Államok)
+- USA 2. nyugati régiója (nyilvános/Egyesült Államok)
+- USA nyugati régiója (nyilvános/Egyesült Államok)
+- USA középső régiója (nyilvános/Egyesült Államok)
+- USA északi középső régiója (nyilvános/Egyesült Államok)
+- Kelet-Japán (nyilvános/Japán)
+- Kelet-Ázsia (nyilvános/Ázsia és a Csendes-óceáni térség)
+- Közép-Kanada (nyilvános/Kanada)
+- Közép-Franciaország (nyilvános/Franciaország)
+- Dél-Afrika északi régiója (nyilvános/Dél-Afrika)
+- Észak-Egyesült Arab (Public/UAE)
+- Észak-Svájc (nyilvános/svájci)
+- Dél-Brazília (nyilvános/Brazília)
+- Kelet-Norvégia (Public/Norvégia)
+- Ausztrália középső régiója (nyilvános/ausztráliai)
+- Közép-Ausztrália 2 (nyilvános/ausztráliai)
+- Délkelet-Ausztrália (állami/ausztráliai)
+- Kelet-Kanada (nyilvános/Kanada)
+- USA középső – EUAP (Public/Canary) (USA)
+- Dél-Franciaország (nyilvános/Franciaország)
+- Nyugat-Japán (nyilvános/Japán)
+- Dél-Korea (Public/Korea)
+- UAE Central (Public/UAE)
+- Egyesült Királyság nyugati régiója (Public/Egyesült Királyság)
+- USA nyugati középső régiója (nyilvános/Egyesült Államok)
+- Nyugat-India (nyilvános/indiai)
+
 
 ## <a name="known-issues"></a>Ismert problémák
 
