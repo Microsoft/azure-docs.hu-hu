@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 50df3424892594a6817d481aa4a3d540a342854f
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 25320fb8cde0cc5a38f1edf4019a2f0e07cefe14
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932319"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461096"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Oktatóanyag: az adatküldés transzparens átjárón keresztül
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Ebben a cikkben ismét szimulált eszközként használjuk a fejlesztői virtuális gépet. Azonban ahelyett, hogy közvetlenül a IoT Hub küld adatokat, az eszköz átküldi az adatokat a IoT Edge eszközre, amely transzparens átjáróként van konfigurálva.
 

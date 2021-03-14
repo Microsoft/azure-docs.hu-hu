@@ -14,7 +14,7 @@
 - name: Oktatóanyagok
   items:
     - name: A Time Series Insights Gen2-környezet beállítása
-      href: tutorials-set-up-tsi-environment.md
+      href: tutorial-set-up-environment.md
     - name: Modellszinkronizálás az Azure Digital Twins és a Time Series Insights Gen2 között
       href: tutorials-model-sync.md
 - name: Alapelvek
@@ -95,9 +95,13 @@
           items:
             - name: A környezet megtervezése
               href: how-to-plan-your-environment.md
-        - name: A környezet kezelése
+        - name: Kezelés
           items:
-            - name: Kiépítés és kezelés
+            - name: Környezet létrehozása az Azure CLI használatával
+              href: how-to-create-environment-using-cli.md
+            - name: Környezet létrehozása a Azure Portal használatával
+              href: how-to-create-environment-using-portal.md
+            - name: Környezetek kezelése
               href: how-to-provision-manage.md
             - name: Egy TSID kiválasztása
               href: how-to-select-tsid.md

@@ -1,27 +1,26 @@
 ---
-title: Az Azure AD App Developers támogatási és Súgó lehetőségei
-description: Ismerje meg, hogyan szerezhet segítséget és támogatást a fejlesztéssel kapcsolatos kérdésekre és problémákról a Microsoft-identitásokkal integrálható alkalmazások létrehozásakor (Azure Active Directory és Microsoft-fiók)
+title: Támogatás és Súgó lehetőségek a Microsoft Identity platform fejlesztői számára | Azure
+description: Ismerje meg, hogy hol találhat segítséget, és választ kaphat kérdéseire az olyan identitás-és hozzáférés-kezelési (IAM) megoldások létrehozása során, amelyek integrálva vannak a Azure Active Directory (Azure AD) és a Microsoft Identity platform egyéb összetevőivel.
 services: active-directory
-author: rwike77
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/23/2019
-ms.author: ryanwi
+ms.date: 03/09/2021
+ms.author: marsma
 ms.reviewer: jmprieur, saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 43990952f6cbe90c729ac2df421c682fe8d42b1b
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 8b0d6ffc00a140073c2dfb5789fbf9760e1767c9
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102517937"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462762"
 ---
 # <a name="support-and-help-options-for-developers"></a>Támogatási és súgó lehetőségek fejlesztőknek
 
-Ha most kezdi az integrációt a Azure Active Directory (Azure AD), a Microsoft-identitásokkal vagy a Microsoft Graph API-val, vagy ha új funkciót valósít meg az alkalmazáshoz, akkor a Közösség segítségére van szüksége, vagy megismerheti a fejlesztőknek nyújtott támogatási lehetőségeket. Itt találja azokat a javaslatokat, amelyekkel segítséget kaphat a Microsoft Identity platform-megoldások fejlesztésekor.
+Ha kérdése van, vagy segítségre van szüksége a dokumentációban nem tárgyalt probléma megoldásához, akkor lehet, hogy a szakértők segítséget nyújtanak a segítséghez. Az alábbiakban néhány javaslatot talál a kérdésekre adott válaszok beszerzésére a Microsoft Identity platformmal integrált alkalmazások fejlesztése során.
 
 ## <a name="create-an-azure-support-request"></a>Azure-támogatáskérés létrehozása
 
@@ -33,9 +32,10 @@ Fedezze fel az [Azure-támogatási lehetőségek körét, és válassza ki a](ht
 
 - Ha már rendelkezik Azure-támogatási csomaggal, [Nyisson meg egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-- Ha Ön nem Azure-ügyfél, akkor a Microsoft [kereskedelmi támogatási szolgálatán](https://support.serviceshub.microsoft.com/supportforbusiness)keresztül is megnyithatja a támogatási kérést.
+- Ha Ön nem Azure-ügyfél, akkor a [Microsoft ügyfélszolgálata for Business](https://support.serviceshub.microsoft.com/supportforbusiness)támogatási kérelmét nyithatja meg.
 
 ## <a name="post-a-question-to-microsoft-qa"></a>Kérdés közzététele a Microsoft Q&A
+
 <div class='icon is-large'>
     <img alt='Microsoft Q&A' src='./media/common/question-mark-icon.png'>
 </div>             

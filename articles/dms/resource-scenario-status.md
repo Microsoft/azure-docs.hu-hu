@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: 719dcecf3091e03fbcbe6a82d4c618f54243c4e1
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: fc2ab86a318086750b11780a7802aa3591065264
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215340"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463510"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>A Azure Database Migration Service által támogatott áttelepítési forgatókönyvek állapota
 
@@ -69,11 +69,11 @@ Az alábbi táblázat az online áttelepítések Azure Database Migration Servic
 
 | Cél  | Forrás | Támogatás | Állapot |
 | ------------- | ------------- |:-------------:|:-------------:|
-| **Azure SQL DB** | SQL Server | X | FE |
-|   | RDS SQL | X | FE |
+| **Azure SQL DB** | SQL Server | X |  |
+|   | RDS SQL | X |  |
 |   | Oracle | X |  |
 | **Azure SQL DB MI** | SQL Server | ✔ | FE |
-|   | RDS SQL | X | FE |
+|   | RDS SQL | X |  |
 |   | Oracle | X |  |
 | **Azure SQL virtuális gép** | SQL Server | X |   |
 |   | Oracle  | X |  |
@@ -88,7 +88,7 @@ Az alábbi táblázat az online áttelepítések Azure Database Migration Servic
 |   | RDS PostgreSQL | ✔ | FE |
 
 > [!IMPORTANT]
-> Az "Oracle to Azure Database for PostgreSQL" áttelepítési forgatókönyv (jelenleg előzetes verzióban érhető el) az 2021. május 1. után már nem lesz elérhető. Továbbra is biztosítunk támogatást az alternatív eszközök (például a Ora2pg) segítségével, és a lehető legjobb migrációs élményt nyújtják az Oracle és a PostgreSQL közötti áttelepítéshez. Az áttelepítéssel kapcsolatos ajánlott eljárásokért lásd: [Oracle Azure Database for PostgreSQL áttelepítési Útmutató] ( https://aka.ms/OracletoPGguide) .
+> Az "Oracle to Azure Database for PostgreSQL" áttelepítési forgatókönyv (jelenleg előzetes verzióban érhető el) az 2021. május 1. után már nem lesz elérhető. Továbbra is biztosítunk támogatást az alternatív eszközök (például a Ora2pg) segítségével, és a lehető legjobb migrációs élményt nyújtják az Oracle és a PostgreSQL közötti áttelepítéshez. Az áttelepítéssel kapcsolatos ajánlott eljárásokért tekintse [meg az Oracle Azure Database for PostgreSQL áttelepítési útmutatót](https://aka.ms/OracletoPGguide).
 
 
 ## <a name="next-steps"></a>Következő lépések

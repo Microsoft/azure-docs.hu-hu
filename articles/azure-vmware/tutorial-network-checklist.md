@@ -2,13 +2,13 @@
 title: Oktatóanyag – hálózati tervezési ellenőrzőlista
 description: Ismerje meg a hálózati kapcsolat és a hálózati portok hálózati követelményeit az Azure VMware megoldásban.
 ms.topic: tutorial
-ms.date: 01/27/2021
-ms.openlocfilehash: f493443da617f5f76771e5d1b2b3b190b37f9b5d
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.date: 03/13/2021
+ms.openlocfilehash: 8cee5fa24aab8bd7fe6a9527f9c8e7cdff997511
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918585"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462065"
 ---
 # <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Hálózatkezelési tervezési ellenőrzőlista az Azure VMware-megoldáshoz 
 
@@ -67,7 +67,7 @@ Az alhálózatok:
 
 ## <a name="required-network-ports"></a>Szükséges hálózati portok
 
-| Forrás | Cél | Protokoll | Port | Description  | 
+| Forrás | Cél | Protokoll | Port | Leírás  | 
 | ------ | ----------- | :------: | :---:| ------------ | 
 | Saját Felhőbeli DNS-kiszolgáló | Helyszíni DNS-kiszolgáló | UDP | 53 | DNS-ügyfél – a számítógépek vCenter érkező, a helyszíni DNS-lekérdezésekre vonatkozó kérések (lásd az alábbi DNS-szakaszt) |  
 | Helyszíni DNS-kiszolgáló   | Saját Felhőbeli DNS-kiszolgáló | UDP | 53 | DNS-ügyfelek – helyszíni szolgáltatásokból származó, saját Felhőbeli DNS-kiszolgálókra irányuló kérések (a DNS-t lásd alább) |  
@@ -89,13 +89,12 @@ A privát felhőalapú környezetekben futó alkalmazások és munkaterhelések 
 
 A DHCP-szolgáltatás beépített használatával NSX vagy használhat helyi DHCP-kiszolgálót a privát felhőben ahelyett, hogy útválasztást továbbít a DHCP-forgalomnak a WAN-on keresztül a helyszíni környezetbe.
 
+További részletekért tekintse meg a [DHCP-szolgáltatások NSX-T hálózati szegmensre való ellátását](deploy-azure-vmware-solution.md#optional-provide-dhcp-services-to-nsx-t-network-segment) ismertető cikket.
+
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban megismerte az Azure VMware-megoldás saját felhő üzembe helyezésének szempontjait és követelményeit. 
-
-
-Ha a megfelelő hálózatkezelés van érvényben, folytassa a következő oktatóanyaggal, amely az Azure VMware-megoldás saját felhőjét hozza létre.
+Ebben az oktatóanyagban megismerte az Azure VMware-megoldás saját felhő üzembe helyezésének szempontjait és követelményeit. Ha a megfelelő hálózatkezelés van érvényben, folytassa a következő oktatóanyaggal, amely az Azure VMware-megoldás saját felhőjét hozza létre.
 
 > [!div class="nextstepaction"]
 > [Azure VMware-megoldás saját felhő létrehozása](tutorial-create-private-cloud.md)

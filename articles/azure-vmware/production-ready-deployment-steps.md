@@ -2,19 +2,19 @@
 title: Az Azure VMware-megoldás üzembe helyezésének megtervezése
 description: Ez a cikk egy Azure VMware-megoldás üzembe helyezési munkafolyamatát ismerteti.  A végeredmény egy olyan környezet, amely készen áll a virtuális gép (VM) létrehozására és áttelepítésére.
 ms.topic: tutorial
-ms.date: 02/22/2021
-ms.openlocfilehash: f9d49d7ff8109364c9fc1eee4388b30ccc1a61b6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/13/2021
+ms.openlocfilehash: f1895f14361b7121ae0d78950cdf8eca3cf7eb52
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733660"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462422"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Az Azure VMware-megoldás üzembe helyezésének megtervezése
 
-Ez a cikk az üzembe helyezés során használt adatok azonosításának és gyűjtésének tervezési folyamatát ismerteti. Az üzembe helyezés megtervezése során ügyeljen arra, hogy az üzembe helyezés során könnyen elérhető információkat jegyezze fel.
+Ez a cikk az üzembe helyezés során használni kívánt információk azonosításának és gyűjtésének tervezési folyamatát ismerteti. Az üzembe helyezés megtervezése során ügyeljen arra, hogy az üzembe helyezés során könnyen elérhető információkat jegyezze fel.
 
-Ennek a rövid útmutatónak a folyamatai a virtuális gépek (VM-EK) és a Migrálás létrehozására szolgáló, éles használatra kész környezetet eredményeznek. 
+Az ebben a rövid útmutatóban ismertetett lépések a virtuális gépek (VM-EK) és a Migrálás létrehozására szolgáló, éles környezetben felkészített környezetet biztosítanak. 
 
 >[!IMPORTANT]
 >Az Azure VMware-megoldási erőforrás létrehozása előtt kövesse az [Azure VMware megoldás-erőforrás engedélyezése](enable-azure-vmware-solution.md) című cikket egy támogatási jegy elküldéséhez, hogy a gazdagépek le legyenek foglalva. Miután a támogatási csapat megkapja a kérést, akár öt munkanapot is igénybe vesz, hogy erősítse meg kérelmét, és foglalja le a gazdagépeket. Ha van egy meglévő Azure VMware-megoldás saját felhője, és több gazdagépet szeretne lefoglalni, akkor ugyanezt a folyamatot kell megtennie. 
@@ -46,21 +46,30 @@ Adja meg az üzembe helyezés során használni kívánt erőforrás nevét.  Az
 
 Azonosítsa az Azure VMware-megoldás telepítésekor használni kívánt gazdagépek méretét.  A teljes listát az [Azure VMware megoldás privát felhők és fürtök](concepts-private-clouds-clusters.md#hosts) dokumentációjában találja.
 
-## <a name="number-of-hosts"></a>Gazdagépek száma
+## <a name="number-of-clusters-and-hosts"></a>Fürtök és gazdagépek száma
 
-Adja meg az Azure VMware-megoldás saját felhőbe telepíteni kívánt gazdagépek számát.  A gazdagépek minimális száma három, a maximális érték pedig a fürt 16.  További információkért tekintse meg az [Azure VMware Solution Private Cloud és a Clusters](concepts-private-clouds-clusters.md#clusters) dokumentációját.
+Az Azure VMware megoldásban egy privát felhőt kell üzembe helyeznie, és több fürtöt is létre kell hoznia. Az üzembe helyezéshez meg kell határoznia a fürtök számát és az egyes fürtökben telepíteni kívánt f-állomásokat. A fürtben lévő gazdagépek minimális száma három, a maximális érték pedig 16. A fürtök maximális száma a saját felhőben négy. A privát felhőben a csomópontok maximális száma 64.
 
-Később is kiterjesztheti a fürtöt, ha a kezdeti üzembe helyezési számon túl kell lépnie.
+További információkért tekintse meg az [Azure VMware Solution Private Cloud és a Clusters](concepts-private-clouds-clusters.md#clusters) dokumentációját.
 
-## <a name="ip-address-segment"></a>IP-cím szegmense
+>[!TIP]
+>Később is kiterjesztheti a fürtöt, ha a kezdeti üzembe helyezési számon túl kell lépnie.
 
-Az üzembe helyezés megtervezésének első lépése az IP-szegmentálás megtervezése.  Az Azure VMware-megoldás az Ön által megadott/22 hálózat betöltését teszi lehetővé. Ezután kisebb szegmensekre Faragja, majd ezeket az IP-szegmenseket használja a vCenter, a VMware HCX, a NSX-T és a vMotion.
+## <a name="vcenter-admin-password"></a>vCenter rendszergazdai jelszava
+Adja meg a vCenter rendszergazdai jelszavát. Az üzembe helyezés során létre kell hoznia egy vCenter-rendszergazdai jelszót. A cloudadmin@vsphere.local vCenter létrehozása során a rendszer a rendszergazdai fiókhoz rendeli a jelszót. Ezeket a hitelesítő adatokat fogja használni a vCenter való bejelentkezéshez.
 
-Az Azure VMware-megoldás egy belső ExpressRoute áramkörön keresztül csatlakozik a Microsoft Azure Virtual Networkhoz. A legtöbb esetben a ExpressRoute-Global Reach keresztül csatlakozik az adatközponthoz. 
+## <a name="nsx-t-admin-password"></a>NSX-T rendszergazdai jelszó
+Adja meg a NSX-T rendszergazdai jelszót. Az üzembe helyezés során létre fog hozni egy NSX-T rendszergazdai jelszót. A jelszó a NSX-fiókban a rendszergazda felhasználóhoz van hozzárendelve a NSX Build során. Ezeket a hitelesítő adatokat fogja használni a NSX-T kezelőjébe való bejelentkezéshez.
 
-Azure VMware-megoldás, a meglévő Azure-környezet és a helyszíni környezet minden Exchange-útvonal (jellemzően). Ebben az esetben az ebben a lépésben definiált/22 CIDR hálózati címterület nem fedi át a helyszíni vagy az Azure-ban már meglévőket.
+## <a name="ip-address-segment-for-private-cloud-management"></a>IP-cím szegmens a saját felhőalapú felügyelethez
+
+Az üzembe helyezés megtervezésének első lépése az IP-szegmentálás megtervezése. Az Azure VMware-megoldáshoz egy/22 CIDR-hálózat szükséges. Ez a Címterület kisebb hálózati szegmensekre (alhálózatokra), valamint a vCenter, a VMware HCX, a NSX-T és a vMotion funkciókhoz használatos.
+
+Ez a/22 CIDR hálózati címterület nem fedi át a már meglévő hálózati szegmenseket a helyszínen vagy az Azure-ban.
 
 **Példa:** 10.0.0.0/22
+
+Az Azure VMware-megoldás egy belső ExpressRoute-Global Reach áramkörön keresztül kapcsolódik a Microsoft Azure Virtual Networkhoz (D-MSEE a vizualizáció alatt). Ez a funkció az Azure VMware megoldás szolgáltatás részét képezi, és nem számítunk fel díjat.
 
 További információ: [Network Planning ellenőrzőlista](tutorial-network-checklist.md#routing-and-subnet-considerations).
 
@@ -68,12 +77,12 @@ További információ: [Network Planning ellenőrzőlista](tutorial-network-chec
 
 ## <a name="ip-address-segment-for-virtual-machine-workloads"></a>A virtuális gépek számítási feladataihoz tartozó IP-címek szegmense
 
-Azonosítson egy IP-szegmenst az első hálózat (NSX szegmens) létrehozásához a privát felhőben.  Más szóval egy hálózati szegmenst szeretne létrehozni az Azure VMware-megoldásban, hogy virtuális gépeket helyezzen üzembe az Azure VMware megoldásban.   
+Azonosítson egy IP-szegmenst, hogy az első hálózatot létrehozza a saját felhőben lévő számítási feladatok (NSX-szegmens) számára. Más szóval létre kell hoznia egy hálózati szegmenst az Azure VMware megoldásban, hogy üzembe helyezheti a virtuális gépeket az Azure VMware megoldásban.
 
-Akkor is hozzon létre egy olyan hálózati szegmenst, amely ellenőrzi a környezetet, még akkor is, ha az L2 hálózatok kibővítését tervezi.
+Még akkor is létre kell hoznia egy hálózati szegmenst, amely ellenőrzi a helyi hálózatokat az Azure VMware-megoldásban (L2).
 
-Ne feledje, hogy a létrehozott IP-szegmenseknek egyedinek kell lenniük az Azure-ban és a helyszíni adatlábnyomban.  
-
+Ne feledje, hogy a létrehozott IP-szegmenseknek egyedinek kell lenniük az Azure-ban és a helyszíni adatlábnyomban.
+  
 **Példa:** 10.0.4.0/24
 
 :::image type="content" source="media/pre-deployment/nsx-segment-diagram.png" alt-text="A virtuális gépek számítási feladataihoz tartozó IP-címek szegmensének azonosítása" border="false":::     
@@ -87,9 +96,9 @@ Ne feledje, hogy:
 - Ha a helyi hálózatok kibővítését tervezi, ezeknek a hálózatoknak csatlakozniuk kell egy [vSphere elosztott kapcsolóhoz (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html) a helyszíni VMware-környezetben.  
 - Ha a hálózat (ok) [vSphere standard kapcsolón](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html)szeretné kiterjeszteni az élő hálózatot, akkor nem bővíthetők.
 
-## <a name="attach-virtual-network-to-azure-vmware-solution"></a>Virtuális hálózat csatlakoztatása az Azure VMware-megoldáshoz
+## <a name="attach-azure-virtual-network-to-azure-vmware-solution"></a>Azure-Virtual Network csatlakoztatása Azure VMware-megoldáshoz
 
-Ebben a lépésben egy ExpressRoute virtuális hálózati átjárót fog azonosítani, és támogatja az Azure VMware Solution ExpressRoute áramkör csatlakoztatásához használt Azure-Virtual Network.  A ExpressRoute áramkör lehetővé teszi, hogy az Azure VMware-megoldás saját felhőjét más Azure-szolgáltatásokhoz, Azure-erőforrásokhoz és helyszíni környezetekhez lehessen csatlakoztatni.
+Ebben a lépésben egy ExpressRoute virtuális hálózati átjárót és az Azure VMware Solution ExpressRoute áramkörhöz való kapcsolódáshoz használt támogató Azure-Virtual Network fogja azonosítani.  A ExpressRoute áramkör lehetővé teszi, hogy az Azure VMware-megoldás saját felhőjét más Azure-szolgáltatásokhoz, Azure-erőforrásokhoz és helyszíni környezetekhez lehessen csatlakoztatni.
 
 *Meglévő* vagy *új* ExpressRoute virtuális hálózati átjárót is használhat.
 

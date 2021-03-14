@@ -1,16 +1,16 @@
 ---
 title: Az Azure arc-kompatibilis kiszolgálók helyszíni üzembe helyezésének tervezése
 description: Megtudhatja, hogyan engedélyezheti a nagy számú gépet az Azure arc használatára képes kiszolgálókon az Azure-ban az alapvető biztonsági, felügyeleti és monitorozási képességek konfigurálásának egyszerűbbé tételéhez.
-ms.date: 02/23/2021
+ms.date: 03/12/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0e77fc00f94f2f46c60bb2c5dcecc10a4e2e3bc5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 63e224180cff8cab6e700bc72b8a5c39a7f26857
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032228"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461300"
 ---
-# <a name="planing-for-an-at-scale-deployment-of-azure-arc-enabled-servers"></a>Az Azure arc-kompatibilis kiszolgálók helyszíni üzembe helyezésének megtervezése
+# <a name="plan-and-deploy-arc-enabled-servers-at-scale"></a>Arc-kompatibilis kiszolgálók tervezése és üzembe helyezése méretezéssel
 
 Egy informatikai infrastruktúra-szolgáltatás vagy üzleti alkalmazás üzembe helyezése bármely vállalat számára kihívást jelenthet. Annak érdekében, hogy megfelelően fusson, és elkerülje az esetleges váratlan meglepetéseket és a nem tervezett költségeket, alaposan tervezze meg, hogy a lehető leghamarabb készen álljon. Az Azure arc-kompatibilis kiszolgálók méretezésének megtervezéséhez meg kell felelnie azokat a tervezési és telepítési feltételeket, amelyeket teljesíteni kell ahhoz, hogy sikeresen végre lehessen hajtani a feladatokat, hogy támogassa a nagy léptékű üzembe helyezést.
 
@@ -67,7 +67,7 @@ Ebben a fázisban a rendszermérnökök vagy a rendszergazdák lehetővé teszik
 
 ## <a name="phase-2-deploy-arc-enabled-servers"></a>2. fázis: az ív használatára képes kiszolgálók üzembe helyezése
 
-Ezt követően az 1. fázisban az üzembe helyezés előkészítésével és az ügynök telepítésének elvégzésével hozzáadjuk az alapítványhoz.
+Ezután hozzáadjuk az 1. fázisban meghatározott alapítványhoz az arc-kompatibilis kiszolgálók csatlakoztatott számítógép-ügynökének előkészítésével és üzembe helyezésével.
 
 |Feladat |Részletek |Időtartam |
 |-----|-------|---------|
@@ -77,7 +77,7 @@ Ezt követően az 1. fázisban az üzembe helyezés előkészítésével és az 
 
 ## <a name="phase-3-manage-and-operate"></a>3. fázis: kezelés és üzemeltetés
 
-A 3. fázis olyan rendszergazdákat vagy rendszermérnököket lát el, amelyek lehetővé teszik a manuális feladatok automatizálását a csatlakoztatott gép ügynökének és a gépnek az életciklusuk alatt történő kezeléséhez
+A 3. fázis azt látja, hogy a rendszergazdák vagy a rendszermérnökök lehetővé teszik a manuális feladatok automatizálását a csatlakoztatott gépi ügynök és a gép kezeléséhez és működtetéséhez az életciklusuk során.
 
 |Feladat |Részletek |Időtartam |
 |-----|-------|---------|

@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 195e8fefbf0dbf3ff55e1bd4d043de772000248b
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 7d694ba15379dcb16f881d23712c64ead2ff6e7d
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103439208"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103464964"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -559,6 +559,8 @@ console.log(result.video);
 
 
 ## <a name="call-recording-management"></a>Call Recording Management
+
+[!INCLUDE [Private Preview Notice](../../../includes/private-preview-include-section.md)]
 
 A Call Recording a Core API kiterjesztett funkciója `Call` . Először be kell szereznie a rögzítési funkció API-objektumát:
 

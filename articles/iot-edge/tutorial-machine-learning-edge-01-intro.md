@@ -8,16 +8,21 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b23324a7226d4b3de4908bd78a8f19c799e59f06
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 67cc470b4f7f119b7f5b86bcb82ea284ab662dfe
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932183"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463238"
 ---
 # <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>Oktatóanyag: teljes körű megoldás Azure Machine Learning és IoT Edge használatával
 
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
+
 A IoT-alkalmazások gyakran szeretnék kihasználni az intelligens felhő és az intelligens peremhálózat előnyeit. Ebben az oktatóanyagban bemutatjuk a gépi tanulási modellek betanítását a felhőben lévő IoT-eszközökről gyűjtött adatokkal, a modell üzembe helyezésével IoT Edge, valamint a modell karbantartásával és finomításával rendszeresen.
+
+>[!NOTE]
+>Az ebben az oktatóanyagban szereplő fogalmak a IoT Edge összes verziójára érvényesek, de a forgatókönyv kipróbálásához létrehozott minta-eszköz IoT Edge 1,1-es verzióban fut.
 
 Az oktatóanyag elsődleges célja, hogy bevezesse a IoT-adatfeldolgozást a gépi tanulással, különösen a szélén. Habár az általános gépi tanulási munkafolyamatok számos aspektusát érintik, ez az oktatóanyag nem a gépi tanulás részletes bevezetését célozza. Ebben az esetben a használati esethez nem próbálunk meg kiválóan optimalizált modellt létrehozni – csak annyit teszünk, hogy egy életképes modell létrehozására és használatára vonatkozó folyamatot IoT az adatfeldolgozáshoz.
 
@@ -69,9 +74,9 @@ Az oktatóanyagban használt adatok a [Turbofan motor degradációs szimuláció
 
 A readme fájlból:
 
-***Kísérleti forgatókönyv** _
+***Kísérleti forgatókönyv***
 
-_Data a készletek több többváltozós idősorozatból állnak. Az egyes adatkészletek tovább vannak osztva a betanítási és tesztelési részhalmazokra. Az egyes idősorozatok egy másik motortól származnak, azaz az adatok ugyanabba a típusba tartozó hajtóművekből származnak. Az egyes motorok a kezdeti kopás és a gyártási variáció különböző mértékével kezdődnek, ami ismeretlen a felhasználó számára. Ez a kopás és a változás normálisnak számít, azaz nem minősül hibás feltételnek. Három működési beállítás van, amelyek jelentős hatással vannak a motor teljesítményére. Ezeket a beállításokat az adatközpont is tartalmazza. Az adatfertőzés az érzékelő zaja szerint történik. *
+*Az adatkészletek több többváltozós idősorozatból állnak. Az egyes adatkészletek tovább vannak osztva a betanítási és tesztelési részhalmazokra. Az egyes idősorozatok egy másik motortól származnak, azaz az adatok ugyanabba a típusba tartozó hajtóművekből származnak. Az egyes motorok a kezdeti kopás és a gyártási variáció különböző mértékével kezdődnek, ami ismeretlen a felhasználó számára. Ez a kopás és a változás normálisnak számít, azaz nem minősül hibás feltételnek. Három működési beállítás van, amelyek jelentős hatással vannak a motor teljesítményére. Ezeket a beállításokat az adatközpont is tartalmazza. Az adatsérülést érzékelő zaj okozta.*
 
 *A motor általában az egyes idősorok elején működik, és az adatsorozat során egy bizonyos ponton hibát dolgoz fel. A betanítási készletben a hiba a rendszerhibaig növekszik. A tesztelési készletben az idősorozat a rendszerhiba előtt némi időt ér el. A verseny célja, hogy előre megjósolja a hátralévő működési ciklusok számát a tesztelési csoport meghibásodása előtt, azaz a motor utolsó ciklusa utáni működési ciklusok számát. A tesztelési adatok valódi hátralévő hasznos élettartamának (RUL) a vektorát is biztosította.*
 

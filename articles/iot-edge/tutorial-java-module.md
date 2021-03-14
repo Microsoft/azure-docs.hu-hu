@@ -12,16 +12,18 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-java
-ms.openlocfilehash: cbe4942b63389faab00861438a0149b68c0e89c0
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3f24f38db7704557894d866b789890763f9e1316
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177300"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463255"
 ---
-# <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>Oktatóanyag: Java-IoT Edge modul létrehozása Linux-eszközökhöz
+# <a name="tutorial-develop-a-java-iot-edge-module-using-linux-containers"></a>Oktatóanyag: Java-IoT Edge modul fejlesztése Linux-tárolók használatával
 
-Az Azure IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. Azt a szimulált IoT Edge eszközt fogja használni, amelyet a Azure IoT Edge üzembe helyezése szimulált eszközön a [Linux](quickstart-linux.md) rendszerű Gyorsindítás szolgáltatásban hozott létre. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
+
+Az Azure IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. A gyors üzembe helyezési útmutatóban az Azure IoT Edge központi telepítése szimulált IoT Edge eszközét fogja használni. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -36,7 +38,7 @@ Az ebben az oktatóanyagban létrehozott IoT Edge-modul szűri az eszköze álta
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az oktatóanyag bemutatja, hogyan fejleszthet **Java** -modult a **Visual Studio Code** használatával, és hogyan telepítheti azt egy **Linux-eszközre**. A IoT Edge nem támogatja a Windows-eszközökhöz készült Java-modulokat.
+Ez az oktatóanyag bemutatja, hogyan fejleszthet **Java** -modult a **Visual Studio Code** használatával, és hogyan helyezheti üzembe azt egy IoT Edge eszközön. A IoT Edge nem támogatja a Windows-tárolóként létrehozott Java-modulokat.
 
 A következő táblázat segítségével megismerheti a Java-modulok fejlesztésének és üzembe helyezésének lehetőségeit:
 
@@ -48,12 +50,12 @@ A következő táblázat segítségével megismerheti a Java-modulok fejlesztés
 Az oktatóanyag megkezdése előtt el kellett volna végeznie az előző oktatóanyagot a fejlesztői környezet létrehozásához a Linux-tárolók fejlesztéséhez: [IoT Edge modulok létrehozása Linux-eszközökhöz](tutorial-develop-for-linux.md). Ezeknek az oktatóanyagoknak a végrehajtásával a következő előfeltételek szükségesek:
 
 * Egy ingyenes vagy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban.
-* [Azure IoT Edge rendszert futtató Linux-eszköz](quickstart-linux.md)
+* Azure IoT Edge rendszert futtató eszköz. A rövid útmutatók segítségével [Linux-eszközt](quickstart-linux.md) vagy [Windows-eszközt](quickstart.md)állíthat be.
 * Egy tároló-beállításjegyzék, például [Azure Container Registry](../container-registry/index.yml).
 * A [Visual Studio Code](https://code.visualstudio.com/) az [Azure IoT-eszközökkel](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)van konfigurálva.
 * A [Docker CE](https://docs.docker.com/install/) Linux-tárolók futtatására van konfigurálva.
 
-IoT Edge modul javában történő fejlesztéséhez telepítse a következő további előfeltételeket a fejlesztői gépre: 
+IoT Edge modul javában történő fejlesztéséhez telepítse a következő további előfeltételeket a fejlesztői gépre:
 
 * A Visual Studio Code-hoz készült [Java-bővítménycsomag](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack).
 * [Java SE Development Kit 11](/azure/developer/java/fundamentals/java-jdk-long-term-support), és [állítsa be a `JAVA_HOME` környezeti változót](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) , hogy a JDK-telepítésre mutasson.

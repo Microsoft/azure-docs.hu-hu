@@ -2,13 +2,13 @@
 title: Oktatóanyag – VMware HCX üzembe helyezése és konfigurálása
 description: Ismerje meg, hogyan helyezhet üzembe és konfigurálhat VMware HCX-megoldást az Azure VMware-megoldás privát felhője számára.
 ms.topic: tutorial
-ms.date: 11/25/2020
-ms.openlocfilehash: a8b089ce834d5b49e4ad32081a58e371835e8602
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.date: 03/13/2021
+ms.openlocfilehash: d1b0792ab9b9975edf45ab8addb81410e1da4107
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488304"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462293"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>A VMware HCX üzembe helyezése és konfigurálása
 
@@ -183,7 +183,7 @@ A VMware HCX Cloud Managert az adatközpont VMware HCX-összekötője segítség
 
 1. Az **infrastruktúra** területen válassza a **hely párosítása** elemet, majd válassza a **Kapcsolódás távoli helyhez** lehetőséget (a képernyő közepén). 
 
-1. Adja meg a korábban feljegyzett Cloud Manager URL-címet vagy IP-címet az Azure VMware-megoldás HCX `https://x.x.x.9` , az Azure VMware-megoldás cloudadmin@vsphere.local felhasználónevét és a jelszavát. Ezután válassza a **Csatlakozás** lehetőséget.
+1. Adja meg a korábban feljegyzett Cloud Manager URL-címet vagy IP-címet az Azure VMware-megoldás HCX `https://x.x.x.9` , az Azure VMware-megoldás cloudadmin \@ vSphere. local Felhasználónév és a jelszó. Ezután válassza a **Csatlakozás** lehetőséget.
 
    > [!NOTE]
    > Hely párosításának sikeres létrehozása:

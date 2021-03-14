@@ -2,13 +2,13 @@
 title: Oktatóanyag – NSX-T hálózati szegmens hozzáadása az Azure VMware-megoldásban
 description: Megtudhatja, hogyan hozhat létre NSX-T hálózati szegmenst a virtuális gépekhez a vCenter-ben.
 ms.topic: tutorial
-ms.date: 11/09/2020
-ms.openlocfilehash: 8ecb37a42e2986bd1c6261b8fe6c23382323b31d
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.date: 03/13/2021
+ms.openlocfilehash: 9125e552f9641a2d26b9584b66a4447f9c152161
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335048"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462123"
 ---
 # <a name="tutorial-add-a-network-segment-in-azure-vmware-solution"></a>Oktatóanyag: hálózati szegmens hozzáadása az Azure VMware megoldásban 
 
@@ -29,7 +29,7 @@ Egy Azure VMware-megoldás saját felhője, amely hozzáféréssel rendelkezik a
 
 [!INCLUDE [add-network-segment-steps](includes/add-network-segment-steps.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy NSX-T hálózati szegmenst, amelyet a vCenter-ben lévő virtuális gépekhez használhat. 
 

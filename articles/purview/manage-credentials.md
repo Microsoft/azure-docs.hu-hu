@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/11/2021
-ms.openlocfilehash: 1857eab485e8651c05959f82cf11e69b6353c575
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3802d25ebd8f21ab5b8991a66ceb6650f2f276a9
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101673524"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461708"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Az Azure hatáskörébe tartozó forrás-hitelesítés hitelesítő adatai
 
@@ -41,7 +41,7 @@ Ha a hatáskörébe tartozó felügyelt identitást használja a vizsgálatok be
 
 A hitelesítő adatok létrehozása előtt először társítson egy vagy több meglévő Azure Key Vault példányt az Azure hatáskörébe tartozó fiókjával.
 
-1. A [Azure Portal](https://portal.azure.com)válassza ki az Azure-beli hatáskörébe tartozó fiókot. Navigáljon a **felügyeleti központhoz** , és navigáljon a **hitelesítő adatokhoz**.
+1. A [Azure Portal](https://portal.azure.com)válassza ki az Azure-beli hatáskörébe tartozó fiókját, és nyissa meg az Azure hatáskörébe Studio alkalmazást. Navigáljon a **felügyeleti központhoz** az Azure hatáskörébe Studióban, majd navigáljon a **hitelesítő adatokhoz**.
 
 2. A **hitelesítő adatok** lapon válassza a **Key Vault kapcsolatok kezelése** lehetőséget.
 

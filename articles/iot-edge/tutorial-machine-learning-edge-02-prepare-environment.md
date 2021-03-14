@@ -8,14 +8,16 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d86a273a69203a92a9b437f021486feb3bcb31da
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 723d7b6ae5b96cf6dc622be1b1bb98065151787f
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932370"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463153"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Oktatóanyag: környezet beállítása a gépi tanuláshoz IoT Edge
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Ez a cikk segít felkészülni a környezet fejlesztésére és üzembe helyezésére. Először állítson be egy fejlesztői gépet minden szükséges eszközzel. Ezután hozza létre a szükséges Felhőbeli erőforrásokat az Azure-ban.
 
@@ -80,7 +82,7 @@ A virtuális gép létrehozása és konfigurálása körülbelül 30 percet vesz
     .\Create-AzureDevVm.ps1
     ```
 
-    Ha a rendszer kéri, adja meg a következő információkat:
+    Ha a rendszer kéri, adja meg az alábbi információkat:
 
     * **Azure-előfizetés azonosítója**: az előfizetés-azonosítója, amely az [Azure-előfizetésekben](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) található a portálon.
     * **Erőforráscsoport neve**: egy új vagy meglévő erőforráscsoport neve az Azure-ban.

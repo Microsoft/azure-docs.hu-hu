@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan használhatja a tervezési szakaszban összegy�
 ms.topic: tutorial
 ms.custom: contperf-fy21q3
 ms.date: 02/17/2021
-ms.openlocfilehash: 6f1e587894d51eae2af4e9f76114f53f27ffefe1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 48b6927407a95d41603c3032f298ffc28def9693
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703858"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462456"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Azure VMware-megoldás üzembe helyezése és konfigurálása
 
@@ -35,7 +35,7 @@ Az Azure VMware-megoldás üzembe helyezése után létre kell hoznia a virtuál
 
 :::image type="content" source="media/pre-deployment/jump-box-diagram.png" alt-text="Az Azure VMware-megoldás Jump Box létrehozása" border="false" lightbox="media/pre-deployment/jump-box-diagram.png":::
 
-A virtuális gép (VM) a [telepítési folyamat részeként azonosított vagy létrehozott](production-ready-deployment-steps.md#attach-virtual-network-to-azure-vmware-solution)virtuális hálózatban történő létrehozásához kövesse az alábbi utasításokat: 
+A virtuális gép (VM) a [telepítési folyamat részeként azonosított vagy létrehozott](production-ready-deployment-steps.md#attach-azure-virtual-network-to-azure-vmware-solution)virtuális hálózatban történő létrehozásához kövesse az alábbi utasításokat: 
 
 [!INCLUDE [create-avs-jump-box-steps](includes/create-jump-box-steps.md)]
 
@@ -52,7 +52,7 @@ Ha nem adott meg virtuális hálózatot az üzembe helyezési lépésben, és a 
 
 A Jump Box abban a virtuális hálózaton található, ahol az Azure VMware megoldás a ExpressRoute áramkörén keresztül csatlakozik.  Az Azure-ban nyissa meg a Jump Box hálózati adapterét, és [tekintse meg a hatályos útvonalakat](../virtual-network/manage-route-table.md#view-effective-routes).
 
-Az érvényben lévő útvonalak listájában az Azure VMware-megoldás üzembe helyezésének részeként létrehozott hálózatokat kell látnia. A [privát felhő létrehozásakor](#create-an-azure-vmware-solution-private-cloud) [ `/22` megadott hálózatról](production-ready-deployment-steps.md#ip-address-segment) több hálózatot is láthat.  
+Az érvényben lévő útvonalak listájában az Azure VMware-megoldás üzembe helyezésének részeként létrehozott hálózatokat kell látnia. A [privát felhő létrehozásakor](#create-an-azure-vmware-solution-private-cloud) [ `/22` megadott hálózatról](production-ready-deployment-steps.md#ip-address-segment-for-private-cloud-management) több hálózatot is láthat.  
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="Az Azure VMware-megoldásból az Azure-ba hirdetett hálózati útvonalak ellenőrzése Virtual Network" lightbox="media/pre-deployment/azure-vmware-solution-effective-routes.png":::
 

@@ -214,14 +214,18 @@
           href: content-key-policy-concept.md
     - name: Figyelés
       items:
-        - name: Események az Event Griddel
-          href: reacting-to-media-services-events.md
-        - name: Event Grid-sémák
-          href: media-services-event-schemas.md
-        - name: Metrikák és diagnosztikai naplók
-          href: media-services-metrics-diagnostic-logs.md
-        - name: Diagnosztikai naplók sémái
-          href: media-services-diagnostic-logs-schema.md
+        - name: Monitorozás az Azure Monitorral
+          items:
+            - name: Figyelő Media Services
+              href: monitoring/monitor-media-services.md
+            - name: Media Services adathivatkozás figyelése
+              href: monitoring/monitor-media-services-data-reference.md
+        - name: Figyelés Event Grid
+          items:
+            - name: Események az Event Griddel
+              href: reacting-to-media-services-events.md
+            - name: Event Grid-sémák
+              href: media-services-event-schemas.md
     - name: Kompatibilis játékosok
       items:
         - name: Media Services médialejátszók

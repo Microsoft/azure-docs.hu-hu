@@ -3,24 +3,24 @@ title: Fogalmak – hálózati kapcsolat
 description: Ismerkedjen meg az Azure VMware megoldás legfontosabb szempontjaival és hálózati és kapcsolódási eseteivel.
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: 9531e08ea4e50ae30058b0630cd12c2383d90fde
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: cd62949c13b1f12e635d8d7bf07518a94c4e8d4b
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103197178"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462583"
 ---
 # <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Azure VMware megoldás hálózatkezelési és összekapcsolási fogalmak
 
 [!INCLUDE [avs-networking-description](includes/azure-vmware-solution-networking-description.md)]
 
-Az összekapcsolhatóság hasznos perspektívája az Azure VMware-megoldás saját felhőalapú megvalósításának két típusa:
+Az Azure VMware-megoldás saját felhőben kétféleképpen lehet összekapcsolást létesíteni:
 
 1. Alapszintű, kizárólag az Azure [**-beli összekapcsolással**](#azure-virtual-network-interconnectivity) az Azure-ban csak egyetlen virtuális hálózattal kezelheti és használhatja a saját felhőjét. Ez a megvalósítás az Azure VMware megoldás-értékelések és olyan implementációk esetében ajánlott, amelyek nem igénylik a helyszíni környezetek elérését.
 
 1. A teljes helyszíni és a [**privát felhő közötti kapcsolat**](#on-premises-interconnectivity) kibővíti az alapszintű Azure-alapú megvalósítást, amely magában foglalja a helyszíni és az Azure VMware-megoldás privát felhők közötti összekapcsolást.
  
-Ebben a cikkben a Hálózatkezelés és az összekapcsolhatóság, valamint a követelmények és korlátozások kialakításával kapcsolatos főbb fogalmakat mutatjuk be. Emellett további információkhoz is tájékozódhat az Azure VMware megoldás saját felhőalapú összekapcsolási implementációjának két típusáról. Ebből a cikkből megtudhatja, hogy milyen információkra van szüksége ahhoz, hogy a hálózatkezelést megfelelően konfigurálja az Azure VMware-megoldással.
+Ebben a cikkben azokat a főbb fogalmakat mutatjuk be, amelyek a hálózatkezelést és az összekapcsolást, beleértve a követelményeket és a korlátozásokat is. Ez a cikk ismerteti azokat az információkat, amelyeket tudnia kell a hálózatkezelés konfigurálásához az Azure VMware-megoldással való együttműködéshez.
 
 ## <a name="azure-vmware-solution-private-cloud-use-cases"></a>Azure VMware-megoldás saját Felhőbeli használati esetei
 
@@ -36,26 +36,29 @@ Az Azure VMware-megoldás privát felhők használati esetei a következők:
 
 ## <a name="azure-virtual-network-interconnectivity"></a>Azure-beli virtuális hálózatok összekapcsolása
 
-A virtuális hálózatban a saját felhő megvalósításához kezelheti az Azure VMware-megoldás saját felhőjét, felhasználhatja a saját Felhőbeli munkaterheléseket, és hozzáférhet az Azure-szolgáltatásokhoz a ExpressRoute-kapcsolaton keresztül. 
+Az Azure-beli virtuális hálózatot összekapcsolhatja az Azure VMware-megoldás saját Felhőbeli megvalósításával. Kezelheti az Azure VMware-megoldás saját felhőjét, felhasználhatja a saját Felhőbeli munkaterheléseket, és hozzáférhet más Azure-szolgáltatásokhoz.
 
-Az alábbi ábra a privát Felhőbeli üzembe helyezés időpontjában kialakított hálózati összekapcsolást mutatja be. Az Azure-beli virtuális hálózatok és a privát felhő közötti logikai, ExpressRoute-alapú hálózatkezelést jeleníti meg. Az összekapcsolási funkció három elsődleges használati esetet teljesít:
-* Bejövő hozzáférés a vCenter-kiszolgálóhoz és a NSX-T kezelőhöz, amely elérhető az Azure-előfizetésében lévő virtuális gépekről, és nem a helyszíni rendszerekből. 
-* Kimenő hozzáférés a virtuális gépekről az Azure-szolgáltatásokba. 
-* A privát felhőt futtató munkaterhelések bejövő hozzáférése és felhasználása.
+Az alábbi ábra a privát Felhőbeli üzembe helyezés időpontjában kialakított hálózati összekapcsolást mutatja be. Az Azure-beli virtuális hálózatok és a privát felhő közötti logikai hálózatkezelést jeleníti meg. Ez a kapcsolat egy, az Azure VMware megoldás szolgáltatás részét képező háttér-ExpressRoute keresztül lett létrehozva. Az összekapcsolási funkció a következő elsődleges használati eseteket teljesíti:
+
+- Bejövő hozzáférés a vCenter-kiszolgálóhoz és a NSX-T kezelőhöz, amely elérhető az Azure-előfizetésében lévő virtuális gépekről.
+- Kimenő hozzáférés a saját Felhőbeli virtuális gépekről az Azure-szolgáltatásokhoz.
+- A privát felhőben futó számítási feladatok bejövő hozzáférése.
+
 
 :::image type="content" source="media/concepts/adjacency-overview-drawing-single.png" alt-text="Alapszintű virtuális hálózat privát Felhőbeli kapcsolathoz" border="false":::
 
 ## <a name="on-premises-interconnectivity"></a>Helyszíni kapcsolat
 
-A virtuális hálózatban és a helyszínen a teljes körű felhőalapú megvalósítás érdekében az Azure VMware-megoldás saját felhőit is elérheti a helyszíni környezetekben. Ez a megvalósítás az előző szakaszban leírt alapszintű implementáció kiterjesztése. Az alapszintű implementációhoz hasonlóan egy ExpressRoute áramkörre van szükség, de ezzel a megvalósítással a helyszíni környezetek és az Azure-beli privát felhő közötti kapcsolat is használható. 
+A teljes mértékben összekapcsolt forgatókönyvekben az Azure VMware-megoldást az Azure-beli virtuális hálózat (ok) ból és a helyszínen is elérheti. Ez a megvalósítás az előző szakaszban leírt alapszintű implementáció kiterjesztése. A helyszíni rendszerről az Azure VMware megoldás saját Azure-beli saját felhőbe való kapcsolódásához ExpressRoute áramkör szükséges.
 
 Az alábbi ábra a helyszíni és a saját felhő közötti összekapcsolást mutatja be, amely a következő használati eseteket teszi lehetővé:
-* VCenter vMotion gyors/hideg
-* Helyszíni Azure VMware-megoldás saját felhőalapú felügyeleti hozzáférés
+
+- A gyors/hideg vCenter vMotion a helyszíni és az Azure VMware megoldás között.
+- Helyszíni Azure VMware-megoldás saját felhőalapú felügyeleti hozzáférés.
 
 :::image type="content" source="media/concepts/adjacency-overview-drawing-double.png" alt-text="Virtuális hálózat és helyszíni teljes Private Cloud connectivity" border="false":::
 
-A privát felhővel való teljes összekapcsoláshoz engedélyezze a ExpressRoute Global Reach, majd kérjen egy engedélyezési kulcsot és egy privát társ-AZONOSÍTÓt a Azure Portal Global Reachhoz. Az engedélyezési kulcs és a társítási azonosító segítségével Global Reach lehet létrehozni az előfizetésben található ExpressRoute-áramkör és az új privát felhőhöz tartozó ExpressRoute áramkör között. A csatolást követően a két ExpressRoute áramkör a helyi környezetek közötti hálózati forgalmat átirányítja a saját felhőbe.  Az engedélyezési kulcs és a társ-azonosító kérésére és használatára vonatkozó eljárásokkal kapcsolatos további információkért tekintse meg a [ExpressRoute Global REACH-társítások privát felhőbe való létrehozását ismertető oktatóanyagot](tutorial-expressroute-global-reach-private-cloud.md).
+A privát felhőhöz való teljes összekapcsoláshoz engedélyeznie kell a ExpressRoute-Global Reach, majd a Azure Portal a Global Reach az engedélyezési kulcsot és a privát társ-létrehozási azonosítót kell kérnie. Az engedélyezési kulcs és a társ-azonosító használatával Global Reach lehet létrehozni az előfizetésben található ExpressRoute-áramkör és a saját felhő ExpressRoute áramköre között. A csatolást követően a két ExpressRoute áramkör a helyi környezetek közötti hálózati forgalmat átirányítja a saját felhőbe. Az eljárásokkal kapcsolatos további információkért tekintse meg a [ExpressRoute létrehozásához Global REACH a privát felhőbe való kapcsolódáshoz című oktatóanyagot](tutorial-expressroute-global-reach-private-cloud.md).
 
 ## <a name="limitations"></a>Korlátozások
 [!INCLUDE [azure-vmware-solutions-limits](includes/azure-vmware-solutions-limits.md)]

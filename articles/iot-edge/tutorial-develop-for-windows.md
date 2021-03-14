@@ -9,18 +9,23 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: e46105f5889f4925be9873fd8613021fe5e8ac2d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: b5ff515f5a6d25285009f6579570aa3afa5a711f
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920771"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463357"
 ---
-# <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Oktatóanyag: IoT Edge-modulok fejlesztése Windows-eszközökhöz
+# <a name="tutorial-develop-iot-edge-modules-using-windows-containers"></a>Oktatóanyag: IoT Edge-modulok fejlesztése Windows-tárolók használatával
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 A Visual Studióval hozhat létre és helyezhet üzembe programkódot a IoT Edge rendszert futtató Windows-eszközökön.
 
-A gyors útmutatóban létrehozott egy IoT Edge eszközt egy Windows rendszerű virtuális géppel, és üzembe helyezett egy előre elkészített modult az Azure piactéren. Ez az oktatóanyag végigvezeti a saját programkódjának IoT Edge eszközön való fejlesztéséhez és üzembe helyezéséhez szükséges lépéseken. Ez az oktatóanyag hasznos előfeltételt nyújt a többi oktatóanyaghoz, amely részletesen ismerteti az egyes programozási nyelveket és az Azure-szolgáltatásokat.
+>[!NOTE]
+>IoT Edge 1,1 LTS az utolsó kiadási csatorna, amely támogatni fogja a Windows-tárolókat. A 1,2-es verziótól kezdődően a Windows-tárolók nem támogatottak. A Windows rendszerű eszközökön [IoT Edge Linux rendszeren](iot-edge-for-linux-on-windows.md) való használatának vagy áthelyezésének megfontolnia, hogy Windows-eszközökön fusson IoT Edge.
+
+Ez az oktatóanyag végigvezeti a saját programkódjának IoT Edge eszközön való fejlesztéséhez és üzembe helyezéséhez szükséges lépéseken. Ez az oktatóanyag hasznos előfeltételt nyújt a többi oktatóanyaghoz, amely részletesen ismerteti az egyes programozási nyelveket és az Azure-szolgáltatásokat.
 
 Ez az oktatóanyag egy **C#-modul Windows-eszközre** történő központi telepítésének példáját használja. Ez a példa azért lett kiválasztva, mert ez a leggyakoribb fejlesztési forgatókönyv. Ha más nyelven fejleszti a fejlesztést, vagy az Azure-szolgáltatások modulként való üzembe helyezését tervezi, akkor ez az oktatóanyag továbbra is hasznos lehet a fejlesztői eszközök megismeréséhez. A fejlesztési fogalmak megismerése után kiválaszthatja az Ön által választott nyelvet vagy Azure-szolgáltatást, és megismerheti a részleteket.
 
@@ -44,8 +49,8 @@ Egy fejlesztői gép:
 
 Egy Azure IoT Edge eszköz a Windows rendszerben:
 
-* Javasoljuk, hogy ne futtasson IoT Edge a fejlesztői gépen, hanem használjon külön eszközt. A fejlesztési gép és a IoT Edge eszköz közötti különbségtétel pontosabban tükrözi a valódi üzembe helyezési forgatókönyvet, és segít a különböző fogalmak közvetlen megtartásában.
-* Ha nem érhető el második eszköz, a rövid útmutatóval IoT Edge eszközt hozhat létre az Azure-ban egy [Windows rendszerű virtuális géppel](quickstart.md).
+* [Azure IoT Edge telepítése és kezelése Windows-tárolókkal](how-to-install-iot-edge-windows-on-windows.md).
+* Javasoljuk, hogy ne futtasson IoT Edge a fejlesztői gépen, hanem ha lehetséges, használjon külön eszközt. A fejlesztési gép és a IoT Edge eszköz közötti különbségtétel pontosabban tükrözi a valódi üzembe helyezési forgatókönyvet, és segít a különböző fogalmak közvetlen megtartásában.
 
 Felhőerőforrások:
 
@@ -101,7 +106,7 @@ Ez az oktatóanyag a Visual Studio 2019 fejlesztési lépéseit tanítja. Ha a V
 
 3. A telepítések befejezése után nyissa meg a Visual Studio 2019 alkalmazást, és válassza a **Folytatás kód nélkül** lehetőséget.
 
-4. Válassza **View** a  >  **Cloud Explorer** megtekintése lehetőséget.
+4. Válassza a  >  **Cloud Explorer** megtekintése lehetőséget.
 
 5. Válassza a profil ikont a Cloud Explorerben, és jelentkezzen be az Azure-fiókjába, ha még nincs bejelentkezve.
 

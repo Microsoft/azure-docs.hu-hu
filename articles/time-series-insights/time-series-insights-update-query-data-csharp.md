@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 81725a28102caf0d69a9fb303eaccdcf2151587d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: aecd18fd0d568904f9704b749525204ced05f3ef
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020027"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463425"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c-sharp"></a>Adatok lekérdezése a Azure Time Series Insights Gen2-környezetből C Sharp használatával
 
@@ -25,7 +25,7 @@ Ez a C# példa azt szemlélteti, hogyan lehet lekérdezni a [Gen2 adatelérési 
 > [!TIP]
 > A C#-Gen2 megtekintése a következő helyen: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen2-sample/csharp-tsi-gen2-sample) .
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Az alábbi mintakód a következő funkciókat mutatja be:
 
@@ -48,7 +48,7 @@ Az alábbi mintakód a következő funkciókat mutatja be:
 
 A mintakód fordítása és futtatása előtt végezze el a következő lépéseket:
 
-1. [Gen2 Azure Time Series Insights-környezet kiépítése](./how-to-provision-manage.md#create-the-environment) .
+1. [Gen2 Azure Time Series Insights-környezet kiépítése](./how-to-create-environment-using-portal.md) .
 1. Konfigurálja Azure Time Series Insights-környezetét Azure Active Directory a [hitelesítés és engedélyezés](time-series-insights-authentication-and-authorization.md)című témakörben leírtak szerint.
 1. Futtassa a [readme.MD](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClient/Readme.md) megadott [GenerateCode.bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClient/GenerateCode.bat) a Azure Time Series Insights Gen2-ügyfél függőségeinek létrehozásához.
 1. Nyissa meg a `TSIPreviewDataPlaneclient.sln` megoldást, és állítsa be `DataPlaneClientSampleApp` alapértelmezett projektként a Visual Studióban.

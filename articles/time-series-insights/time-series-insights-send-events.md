@@ -11,26 +11,26 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9a9115b5400cc6d6c1ecc5740af796d831f5dee3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8ee2cc5473d83eafc2443f3aea7cab6a2e77727c
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023258"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463561"
 ---
 # <a name="send-events-to-an-azure-time-series-insights-gen1-environment-by-using-an-event-hub"></a>Események küldése egy Azure Time Series Insights Gen1-környezetbe az Event hub használatával
 
 > [!CAUTION]
 > Ez egy Gen1-cikk.
 
-Ez a cikk bemutatja, hogyan hozhat létre és konfigurálhat egy Event hub-t az Azure Event Hubsban. Azt is leírja, hogyan futtathat egy minta alkalmazást, hogy leküldéses eseményeket Azure Time Series Insights a Event Hubsról. Ha van egy meglévő Event hub JSON formátumú eseményekkel, ugorja át ezt az oktatóanyagot, és tekintse meg a környezetét [Azure Time Series Insightsban](./tutorials-set-up-tsi-environment.md).
+Ez a cikk bemutatja, hogyan hozhat létre és konfigurálhat egy Event hub-t az Azure Event Hubsban. Azt is leírja, hogyan futtathat egy minta alkalmazást, hogy leküldéses eseményeket Azure Time Series Insights a Event Hubsról. Ha van egy meglévő Event hub JSON formátumú eseményekkel, ugorja át ezt az oktatóanyagot, és tekintse meg a környezetét [Azure Time Series Insightsban](./tutorial-set-up-environment.md).
 
 ## <a name="configure-an-event-hub"></a>Eseményközpont konfigurálása
 
 1. Az Event hub létrehozásának megismeréséhez olvassa el a [Event Hubs dokumentációját](../event-hubs/index.yml).
 1. A keresőmezőbe keressen **Event Hubs**. A visszaadott listában válassza a **Event Hubs** lehetőséget.
 1. Válassza ki az Event hub-t.
-1. Az Event hub létrehozásakor egy Event hub-névteret hoz létre. Ha még nem hozott létre egy Event hubot a névtéren belül, a menüben az **entitások** alatt hozzon létre egy Event hubot.  
+1. Az Event hub létrehozásakor egy Event hub-névteret hoz létre. Ha még nem hozott létre egy Event hubot a névtéren belül, a menüben az **entitások** alatt hozzon létre egy Event hubot.
 
     [![Az Event hubok listája](media/send-events/tsi-connect-event-hub-namespace.png)](media/send-events/tsi-connect-event-hub-namespace.png#lightbox)
 
@@ -78,7 +78,7 @@ Azure Time Series Insights Gen2 az idősorozat-modell (TSM) használatával a be
 
 1. Nyissa meg a következőt: <https://tsiclientsample.azurewebsites.net/windFarmGen.html>. Az URL-cím szimulált szélmalom-eszközöket hoz létre és futtat.
 1. A weblap **esemény hub kapcsolati sztring** mezőjébe illessze be a [szélmalom beviteli mezőjébe](#push-events-to-windmills-sample)másolt kapcsolati karakterláncot.
-  
+
     [![Illessze be az elsődleges kulcs kapcsolati karakterláncát az Event hub kapcsolati sztring mezőjébe](media/send-events/configure-wind-mill-sim.png)](media/send-events/configure-wind-mill-sim.png#lightbox)
 
 1. Válassza **a Start gombra**.

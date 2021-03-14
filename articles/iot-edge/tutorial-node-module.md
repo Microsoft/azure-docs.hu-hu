@@ -9,18 +9,20 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-python, devx-track-js
-ms.openlocfilehash: 5c8918995675cae8e70ca9fc1efb0cf4c7cb233b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a8a6d09819aaa65645da3d4d697866609c226723
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959407"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461147"
 ---
-# <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>Oktatóanyag: Node.js IoT Edge modul fejlesztése és üzembe helyezése Linux-eszközökhöz
+# <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-using-linux-containers"></a>Oktatóanyag: Node.js IoT Edge modul fejlesztése és üzembe helyezése Linux-tárolók használatával
 
-A Visual Studio Code segítségével fejlesztheti Node.js kódot, és telepítheti azt egy Azure IoT Edge rendszert futtató linuxos eszközre.
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-Az IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. A rövid útmutatókban létrehozott szimulált IoT Edge-eszközt fogja használni. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+A Visual Studio Code segítségével fejlesztheti Node.js kódot, és telepítheti azt egy Azure IoT Edge rendszert futtató eszközre.
+
+Az IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. A rövid útmutatókban létrehozott IoT Edge eszközt fogja használni. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -35,7 +37,9 @@ Az ebben az oktatóanyagban létrehozott IoT Edge-modul szűri az eszköze álta
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az oktatóanyag bemutatja, hogyan fejleszthet egy modult **Node.js** a **Visual Studio Code** használatával, és hogyan telepítheti azt egy **Linux-eszközre**. A IoT Edge nem támogatja Node.js modulokat Windows-eszközökhöz.
+Ez az oktatóanyag bemutatja, hogyan fejleszthet egy modult **Node.js** a **Visual Studio Code** használatával, és hogyan helyezheti üzembe azt egy IoT Edge eszközön.
+
+A IoT Edge nem támogatja a Windows-tárolókat használó Node.js modulokat.
 
 A következő táblázat segítségével megismerheti a Node.js modulok fejlesztésének és üzembe helyezésének lehetőségeit:
 
@@ -44,10 +48,10 @@ A következő táblázat segítségével megismerheti a Node.js modulok fejleszt
 | **Linux AMD64** | ![A VS Code használata a Linux AMD64 Node.js moduljaihoz](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![A VS Code használata a Linux ARM32 Node.js moduljaihoz](./media/tutorial-c-module/green-check.png) |  |
 
-Az oktatóanyag megkezdése előtt el kellett volna végeznie az előző oktatóanyagot a fejlesztői környezet létrehozásához a Linux-tárolók fejlesztéséhez: [IoT Edge modulok létrehozása Linux-eszközökhöz](tutorial-develop-for-linux.md). Ezeknek az oktatóanyagoknak a végrehajtásával a következő előfeltételek szükségesek:
+Az oktatóanyag megkezdése előtt el kellett volna végeznie az előző oktatóanyagot a fejlesztői környezet létrehozásához a Linux-tárolók fejlesztéséhez: [IoT Edge modulok létrehozása Linux-tárolók használatával](tutorial-develop-for-linux.md). Az oktatóanyag elvégzésével a következő előfeltételek szükségesek:
 
 * Egy ingyenes vagy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban.
-* [Azure IoT Edge rendszert futtató Linux-eszköz](quickstart-linux.md)
+* Azure IoT Edge rendszert futtató eszköz. A rövid útmutatók segítségével [Linux-eszközt](quickstart-linux.md) vagy [Windows-eszközt](quickstart.md)állíthat be.
 * Egy tároló-beállításjegyzék, például [Azure Container Registry](../container-registry/index.yml).
 * A [Visual Studio Code](https://code.visualstudio.com/) az [Azure IoT-eszközökkel](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)van konfigurálva.
 * A [Docker CE](https://docs.docker.com/install/) Linux-tárolók futtatására van konfigurálva.
@@ -64,7 +68,7 @@ A következő lépések bemutatják, hogyan hozhat létre IoT Edge Node.js modul
 
 Az **npm** használatával létrehozhat egy Node.js-megoldást, amelyre majd építkezhet.
 
-1. A Visual Studio Code-ban **View** válassza  >  az **integrált terminál** megtekintése lehetőséget a vs Code integrált terminál megnyitásához.
+1. A Visual Studio Code-ban válassza  >  az **integrált terminál** megtekintése lehetőséget a vs Code integrált terminál megnyitásához.
 
 2. Az integrált terminálon írja be a következő parancsot a **yeoman** és a Node.js Azure IoT Edge-modul generátorának telepítéséhez:
 
@@ -72,7 +76,7 @@ Az **npm** használatával létrehozhat egy Node.js-megoldást, amelyre majd ép
     npm install -g yo generator-azure-iot-edge-module
     ```
 
-3. **View**  >  A vs Code parancs paletta megnyitásához kattintson a **parancs paletta** megtekintése elemre.
+3.   >  A vs Code parancs paletta megnyitásához kattintson a **parancs paletta** megtekintése elemre.
 
 4. A parancskatalógusban írja be és futtassa az **Azure: Sign in** (Azure: bejelentkezés) parancsot, és az utasításokat követve jelentkezzen be Azure-fiókjába. Ha már be van jelentkezve, ezt a lépést kihagyhatja.
 
@@ -185,7 +189,7 @@ Minden sablonhoz tartozik egy mintakód, amely a **SimulatedTemperatureSensor** 
 
 Az előző szakaszban létrehozott egy IoT Edge megoldást, és hozzáadta a kódot a NodeModule, amely kiszűri azokat az üzeneteket, amelyekben a jelentett gépi hőmérséklet az elfogadható határértékeken belül van. Most létre kell hoznia a megoldást tárolórendszerképként, és le kell küldenie a tárolóregisztrációs adatbázisba.
 
-1. Nyissa meg a vs Code integrált terminált a terminál **megtekintése** lehetőség kiválasztásával  >  **Terminal**.
+1. Nyissa meg a vs Code integrált terminált a terminál **megtekintése** lehetőség kiválasztásával  >  .
 
 2. Jelentkezzen be a Docker-be a következő parancs beírásával a terminálon. Jelentkezzen be a felhasználónévvel, a jelszóval és a bejelentkezési kiszolgálóval az Azure Container registryből. Ezeket az értékeket a beállításjegyzék **hozzáférési kulcsok** részéből kérheti le a Azure Portal.
 

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 03/03/2021
-ms.openlocfilehash: 39d7516b9cec1a3b9aa4484c2ff93564bd5772da
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/18/2021
+ms.openlocfilehash: f4336350af92c27760369d668c6babddc4d4ea30
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034285"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462916"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Információ az Azure Logic Apps korlátozásaival és konfigurálásával kapcsolatban
 
@@ -50,7 +50,7 @@ Egyetlen logikai alkalmazás futtatásának korlátai:
 | Name | Több-bérlős korlát | Integrációs szolgáltatás környezeti korlátja | Jegyzetek |
 |------|--------------------|---------------------------------------|-------|
 | Futtatás időtartama | 90 nap | 366 nap | A futtatási időtartam kiszámítása a futtatási kezdési idő és a munkafolyamat-beállításban megadott korlát alapján történik, a [**futtatási Előzmények megőrzése napokban**](#change-duration) , a kezdés időpontjában. <p><p>Az alapértelmezett korlát módosításához tekintse meg a [futtatási időtartam és az előzmények megőrzésének módosítása a tárolóban](#change-duration)című témakört. |
-| Futtatási Előzmények megőrzése a tárolóban | 90 nap | 366 nap | Ha a Futtatás időtartama meghaladja a jelenlegi futtatási előzmények megőrzési korlátját, a rendszer eltávolítja a futtatást a tárolóban lévő futtatási előzményekből. Függetlenül attól, hogy fut-e a Futtatás vagy időtúllépés, a futtatási Előzmények megőrzése mindig a Futtatás kezdő időpontját és a munkafolyamat-beállításban megadott aktuális korlátot használja, a [**futtatási Előzmények megőrzése napokban**](#change-retention). Az előző korláttól függetlenül a rendszer mindig az aktuális korlátot használja a megőrzés kiszámításához. <p><p>Az alapértelmezett korlát módosításához és további információért lásd: az [időtartam módosítása és a futtatási Előzmények megőrzése a tárolóban](#change-retention). A maximális korlát növeléséhez [vegye fel a kapcsolatot az Logic apps csapatával](mailto://logicappsemail@microsoft.com) a követelményekkel kapcsolatos segítségért. |
+| Futtatási Előzmények megőrzése a tárolóban | 90 nap | 366 nap | Ha a Futtatás időtartama meghaladja a jelenlegi futtatási előzmények megőrzési korlátját, a rendszer eltávolítja a futtatást a tárolóban lévő futtatási előzményekből. Függetlenül attól, hogy fut-e a Futtatás vagy időtúllépés, a futtatási Előzmények megőrzése mindig a Futtatás kezdő időpontját és a munkafolyamat-beállításban megadott aktuális korlátot használja, a [**futtatási Előzmények megőrzése napokban**](#change-retention). Az előző korláttól függetlenül a rendszer mindig az aktuális korlátot használja a megőrzés kiszámításához. <p><p>Az alapértelmezett korlát módosításához és további információért lásd: az [időtartam módosítása és a futtatási Előzmények megőrzése a tárolóban](#change-retention). A maximális korlát növeléséhez [vegye fel a kapcsolatot az Logic apps csapatával](mailto://logicappspm@microsoft.com) a követelményekkel kapcsolatos segítségért. |
 | Minimális ismétlődési időköz | 1 másodperc | 1 másodperc ||
 | Maximális ismétlődési időköz | 500 nap | 500 nap ||
 |||||
@@ -203,8 +203,8 @@ A logikai alkalmazás erőforrás-definíciójának részletes ismertetését az
 
   | Name | Korlát | Jegyzetek |
   |------|-------|-------|
-  | Alapegység végrehajtási korlátja | Rendszer által szabályozott, ha az infrastruktúra kapacitása eléri a 80%-ot | Percenként ~ 4 000 művelet-végrehajtást biztosít, ami ~ 160 000 000 művelet-végrehajtás havonta | |
-  | Skálázási egység végrehajtási korlátja | Rendszer által szabályozott, ha az infrastruktúra kapacitása eléri a 80%-ot | Minden egyes méretezési egység percenként 2 000 további művelet-végrehajtást biztosít, ami ~ 80 000 000 további műveletek végrehajtása havonta | |
+  | Alapegység végrehajtási korlátja | Rendszer által szabályozott, ha az infrastruktúra kapacitása eléri a 80%-ot | Percenként ~ 4 000 művelet-végrehajtást biztosít, ami ~ 160 000 000 művelet-végrehajtás havonta |
+  | Skálázási egység végrehajtási korlátja | Rendszer által szabályozott, ha az infrastruktúra kapacitása eléri a 80%-ot | Minden egyes méretezési egység percenként 2 000 további művelet-végrehajtást biztosít, ami ~ 80 000 000 további műveletek végrehajtása havonta |
   | Felvehető maximális méretezési egységek | 10 | |
   ||||
 
@@ -244,11 +244,11 @@ Egyes összekötők aszinkron hívásokat végeznek, vagy figyelik a webhook-ké
 
 #### <a name="character-limits"></a>Karakterek korlátai
 
-| Name | Jegyzetek |
-|------|-------|
+| Name | Korlát | Jegyzetek |
+|------|-------|-------|
 | Kifejezések kiértékelési korlátja | 131 072 karakter | A `@concat()` , `@base64()` a `@string()` kifejezés nem lehet hosszabb ennél a korlátnál. |
-| Kérelem URL-karakterének korlátja | 16 384 karakter |
-|||
+| Kérelem URL-karakterének korlátja | 16 384 karakter | |
+||||
 
 <a name="retry-policy-limits"></a>
 

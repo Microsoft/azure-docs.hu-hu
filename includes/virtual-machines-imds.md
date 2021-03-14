@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 554730919d4226c07e099d5e457cd0fd20dbad30
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 357223751112af03bf797ae9a0e6352a10132ab9
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102510683"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103464966"
 ---
 Az Azure Instance Metadata Service (IMDS) információt nyújt a jelenleg futó virtuálisgép-példányokról. Használhatja a virtuális gépek felügyeletére és konfigurálására.
 Ezen információk közé tartozik a SKU, a Storage, a hálózati konfigurációk és a közelgő karbantartási események. Az elérhető adatmennyiségek teljes listájáért tekintse meg a [végpontok kategóriáinak összegzése](#endpoint-categories)című témakört.
@@ -1140,174 +1140,168 @@ Ha nem található adatelem vagy helytelenül formázott kérelem, a Instance Me
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-**Hibaüzenetet kapok `400 Bad Request, Required metadata header not specified` . Mit jelent ez?**
+- Hibaüzenetet kapok `400 Bad Request, Required metadata header not specified` . Mit jelent ez?
+  - A IMDS megköveteli a fejléc átadását a `Metadata: true` kérelemben. Ha ezt a fejlécet a REST-hívásban adja át, a IMDS hozzáférése is elérhetővé válik.
 
-A IMDS megköveteli a fejléc átadását a `Metadata: true` kérelemben. Ha ezt a fejlécet a REST-hívásban adja át, a IMDS hozzáférése is elérhetővé válik.
+- Miért nem kapok számítási információt a virtuális géphez?
+  - A IMDS jelenleg csak a Azure Resource Manager-vel létrehozott példányokat támogatja.
 
-**Miért nem kapok számítási információt a virtuális géphez?**
+- Létrehoztam a virtuális gépet Azure Resource Manager néhány évvel ezelőtt. Miért nem jelenik meg a számítási metaadatokkal kapcsolatos információ?
+  - Ha a virtuális gépet a 2016 szeptember után hozta létre, vegyen fel egy [címkét](../articles/azure-resource-manager/management/tag-resources.md) a számítási metaadatok megjelenítésének megkezdéséhez. Ha a virtuális gépet 2016 szeptembere előtt hozta létre, akkor a metaadatok frissítéséhez adjon hozzá vagy távolítson el bővítményeket vagy adatlemezeket a virtuálisgép-példányhoz.
 
-A IMDS jelenleg csak a Azure Resource Manager-vel létrehozott példányokat támogatja.
+- Miért nem látok az új verzióhoz feltöltött összes adatot?
+  - Ha a virtuális gépet a 2016 szeptember után hozta létre, vegyen fel egy [címkét](../articles/azure-resource-manager/management/tag-resources.md) a számítási metaadatok megjelenítésének megkezdéséhez. Ha a virtuális gépet 2016 szeptembere előtt hozta létre, akkor a metaadatok frissítéséhez adjon hozzá vagy távolítson el bővítményeket vagy adatlemezeket a virtuálisgép-példányhoz.
 
-**Létrehoztam a virtuális gépet Azure Resource Manager néhány évvel ezelőtt. Miért nem jelenik meg a számítási metaadatokkal kapcsolatos információ?**
+- Miért kapok hibát `500 Internal Server Error` vagy `410 Resource Gone` ?
+  - Próbálja megismételni a kérést. További információ: [átmeneti hibák kezelésére](/azure/architecture/best-practices/transient-faults). Ha a probléma továbbra is fennáll, hozzon létre egy támogatási problémát a virtuális gép Azure Portaljában.
 
-Ha a virtuális gépet a 2016 szeptember után hozta létre, vegyen fel egy [címkét](../articles/azure-resource-manager/management/tag-resources.md) a számítási metaadatok megjelenítésének megkezdéséhez. Ha a virtuális gépet 2016 szeptembere előtt hozta létre, akkor a metaadatok frissítéséhez adjon hozzá vagy távolítson el bővítményeket vagy adatlemezeket a virtuálisgép-példányhoz.
+- Működne a virtuálisgép-méretezési csoport példányai?
+  - Igen, a virtuálisgép-méretezési csoport példányaihoz elérhető a IMDS.
 
-**Miért nem látok az új verzióhoz feltöltött összes adatot?**
+- Frissítettem a címkéket a virtuálisgép-méretezési csoportokban, de nem jelennek meg a példányokban (az Egypéldányos virtuális gépektől eltérően). Valami hiba történt?
+  - Jelenleg a virtuálisgép-méretezési csoportokhoz tartozó címkék csak a virtuális GÉPRE mutatnak a példány újraindításakor, rendszerképének vagy lemezének változásakor.
 
-Ha a virtuális gépet a 2016 szeptember után hozta létre, vegyen fel egy [címkét](../articles/azure-resource-manager/management/tag-resources.md) a számítási metaadatok megjelenítésének megkezdéséhez. Ha a virtuális gépet 2016 szeptembere előtt hozta létre, akkor a metaadatok frissítéséhez adjon hozzá vagy távolítson el bővítményeket vagy adatlemezeket a virtuálisgép-példányhoz.
+- Miért nem jelenik meg a virtuális géphez tartozó SKU-információ a `instance/compute` részletek között?
+  - Az Azure Marketplace-en létrehozott egyéni lemezképek esetében az Azure platform nem őrzi meg az egyéni lemezkép SKU-információit és az egyéni rendszerképből létrehozott virtuális gépek részleteit. Ez a kialakítás, így a virtuális gép részletei nem jelennek meg a felületen `instance/compute` .
 
-**Miért kapok hibát `500 Internal Server Error` vagy `410 Resource Gone` ?**
+- Miért van időtúllépés a kérésem a szolgáltatáshoz való meghívásakor?
+  - A metaadat-hívásokat a virtuális gép elsődleges hálózati kártyához rendelt elsődleges IP-címről kell elvégezni. Emellett, ha módosította az útvonalakat, a virtuális gép helyi útválasztási táblázatában a 169.254.169.254/32-címnek is szerepelnie kell egy útvonalnak.
 
-Próbálja megismételni a kérést. További információ: [átmeneti hibák kezelésére](/azure/architecture/best-practices/transient-faults). Ha a probléma továbbra is fennáll, hozzon létre egy támogatási problémát a virtuális gép Azure Portaljában.
+    ### <a name="windows"></a>[Windows](#tab/windows/)
 
-**Működne a virtuálisgép-méretezési csoport példányai?**
+    1. Írja le a helyi útválasztási táblázatot, és keresse meg a IMDS bejegyzést. Például:
+        ```console
+        > route print
+        IPv4 Route Table
+        ===========================================================================
+        Active Routes:
+        Network Destination        Netmask          Gateway       Interface  Metric
+                0.0.0.0          0.0.0.0      172.16.69.1      172.16.69.7     10
+                127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
+                127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
+        127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+            168.63.129.16  255.255.255.255      172.16.69.1      172.16.69.7     11
+        169.254.169.254  255.255.255.255      172.16.69.1      172.16.69.7     11
+        ... (continues) ...
+        ```
+    1. Ellenőrizze, hogy létezik-e útvonal a következőhöz `169.254.169.254` , és jegyezze fel a megfelelő hálózati adaptert (például `172.16.69.7` ).
+    1. Az illesztőfelület konfigurációjának kiírása, valamint az útválasztási táblázatban hivatkozott, a MAC (fizikai) címek megadásával megegyező felület megkeresése.
+        ```console
+        > ipconfig /all
+        ... (continues) ...
+        Ethernet adapter Ethernet:
 
-Igen, a virtuálisgép-méretezési csoport példányaihoz elérhető a IMDS.
+        Connection-specific DNS Suffix  . : xic3mnxjiefupcwr1mcs1rjiqa.cx.internal.cloudapp.net
+        Description . . . . . . . . . . . : Microsoft Hyper-V Network Adapter
+        Physical Address. . . . . . . . . : 00-0D-3A-E5-1C-C0
+        DHCP Enabled. . . . . . . . . . . : Yes
+        Autoconfiguration Enabled . . . . : Yes
+        Link-local IPv6 Address . . . . . : fe80::3166:ce5a:2bd5:a6d1%3(Preferred)
+        IPv4 Address. . . . . . . . . . . : 172.16.69.7(Preferred)
+        Subnet Mask . . . . . . . . . . . : 255.255.255.0
+        ... (continues) ...
+        ```
+    1. Győződjön meg arról, hogy a csatoló megfelel a virtuális gép elsődleges hálózati adapterének és elsődleges IP-címének. Az elsődleges hálózati adapter és az IP-cím megkereséséhez tekintse meg a Azure Portal hálózati konfigurációját, vagy az Azure CLI-vel megtekintve. Jegyezze fel a magánhálózati IP-címeket (és a MAC-címet, ha a CLI-t használja). Íme egy PowerShell CLI-példa:
+        ```powershell
+        $ResourceGroup = '<Resource_Group>'
+        $VmName = '<VM_Name>'
+        $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
+        foreach($NicName in $NicNames)
+        {
+            $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
+            Write-Host $NicName, $Nic.primary, $Nic.macAddress
+        }
+        # Output: wintest767 True 00-0D-3A-E5-1C-C0
+        ```
+    1. Ha nem egyeznek, frissítse az útválasztási táblázatot úgy, hogy az elsődleges NIC és az IP-címet célozza meg.
 
-**Frissítettem a címkéket a virtuálisgép-méretezési csoportokban, de nem jelennek meg a példányokban (az Egypéldányos virtuális gépektől eltérően). Valami hiba történt?**
+    ### <a name="linux"></a>[Linux](#tab/linux/)
 
-Jelenleg a virtuálisgép-méretezési csoportokhoz tartozó címkék csak a virtuális GÉPRE mutatnak a példány újraindításakor, rendszerképének vagy lemezének változásakor.
+    1. Írja le a helyi útválasztási táblázatot egy paranccsal, `netstat -r` és keresse meg a IMDS bejegyzést (például):
+        ```console
+        ~$ netstat -r
+        Kernel IP routing table
+        Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+        default         _gateway        0.0.0.0         UG        0 0          0 eth0
+        168.63.129.16   _gateway        255.255.255.255 UGH       0 0          0 eth0
+        169.254.169.254 _gateway        255.255.255.255 UGH       0 0          0 eth0
+        172.16.69.0     0.0.0.0         255.255.255.0   U         0 0          0 eth0
+        ```
+    1. Ellenőrizze, hogy létezik-e útvonal a következőhöz `169.254.169.254` , és jegyezze fel a megfelelő hálózati adaptert (például `eth0` ).
+    1. Az útválasztási táblázatban található megfelelő csatoló felületi konfigurációjának kiírása (Megjegyzés: a konfigurációs fájl pontos neve eltérő lehet)
+        ```console
+        ~$ cat /etc/netplan/50-cloud-init.yaml
+        network:
+        ethernets:
+            eth0:
+                dhcp4: true
+                dhcp4-overrides:
+                    route-metric: 100
+                dhcp6: false
+                match:
+                    macaddress: 00:0d:3a:e4:c7:2e
+                set-name: eth0
+        version: 2
+        ```
+    1. Dinamikus IP-cím használata esetén jegyezze fel a MAC-címet. Ha statikus IP-címet használ, akkor a felsorolt IP-címek és/vagy a MAC-cím is megjegyezhető.
+    1. Győződjön meg arról, hogy a csatoló megfelel a virtuális gép elsődleges hálózati adapterének és elsődleges IP-címének. Az elsődleges hálózati adapter és az IP-cím megkereséséhez tekintse meg a Azure Portal hálózati konfigurációját, vagy az Azure CLI-vel megtekintve. Jegyezze fel a magánhálózati IP-címeket (és a MAC-címet, ha a CLI-t használja). Íme egy PowerShell CLI-példa:
+        ```powershell
+        $ResourceGroup = '<Resource_Group>'
+        $VmName = '<VM_Name>'
+        $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
+        foreach($NicName in $NicNames)
+        {
+            $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
+            Write-Host $NicName, $Nic.primary, $Nic.macAddress
+        }
+        # Output: ipexample606 True 00-0D-3A-E4-C7-2E
+        ```
+    1. Ha nem egyeznek, frissítse az útválasztási táblázatot úgy, hogy az elsődleges NIC/IP-címet célozza meg.
 
-**Miért van időtúllépés a kérésem a szolgáltatáshoz való meghívásakor?**
+    ---
 
-A metaadat-hívásokat a virtuális gép elsődleges hálózati kártyához rendelt elsődleges IP-címről kell elvégezni. Emellett, ha módosította az útvonalakat, a virtuális gép helyi útválasztási táblázatában a 169.254.169.254/32-címnek is szerepelnie kell egy útvonalnak.
+- Feladatátvételi fürtszolgáltatás a Windows Server rendszerben
+  - Ha feladatátvételi fürtszolgáltatással kérdez le IMDS, időnként szükség van egy útvonal hozzáadására az útválasztási táblához. Ezt a következőképpen teheti meg:
 
-#### <a name="windows"></a>[Windows](#tab/windows/)
+    1. Nyisson meg egy parancssort rendszergazdai jogosultságokkal.
 
-1. Írja le a helyi útválasztási táblázatot, és keresse meg a IMDS bejegyzést. Például:
-    ```console
-    > route print
+    1. Futtassa a következő parancsot, és jegyezze fel az `0.0.0.0` IPv4-útválasztási táblázatban található Hálózati célhely () adapterének a címeit.
+
+    ```bat
+    route print
+    ```
+
+    > [!NOTE]
+    > A következő példa kimenete egy Windows Server rendszerű virtuális gép, amelyen engedélyezve van a feladatátvevő fürt. Az egyszerűség kedvéért a kimenet csak az IPv4-útválasztási táblázatot tartalmazza.
+
+    ```
     IPv4 Route Table
     ===========================================================================
     Active Routes:
     Network Destination        Netmask          Gateway       Interface  Metric
-              0.0.0.0          0.0.0.0      172.16.69.1      172.16.69.7     10
+            0.0.0.0          0.0.0.0         10.0.1.1        10.0.1.10    266
+            10.0.1.0  255.255.255.192         On-link         10.0.1.10    266
+            10.0.1.10  255.255.255.255         On-link         10.0.1.10    266
+            10.0.1.15  255.255.255.255         On-link         10.0.1.10    266
+            10.0.1.63  255.255.255.255         On-link         10.0.1.10    266
             127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
             127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
-      127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
-        168.63.129.16  255.255.255.255      172.16.69.1      172.16.69.7     11
-      169.254.169.254  255.255.255.255      172.16.69.1      172.16.69.7     11
-    ... (continues) ...
+    127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+        169.254.0.0      255.255.0.0         On-link     169.254.1.156    271
+        169.254.1.156  255.255.255.255         On-link     169.254.1.156    271
+    169.254.255.255  255.255.255.255         On-link     169.254.1.156    271
+            224.0.0.0        240.0.0.0         On-link         127.0.0.1    331
+            224.0.0.0        240.0.0.0         On-link     169.254.1.156    271
+    255.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+    255.255.255.255  255.255.255.255         On-link     169.254.1.156    271
+    255.255.255.255  255.255.255.255         On-link         10.0.1.10    266
     ```
-1. Ellenőrizze, hogy létezik-e útvonal a következőhöz `169.254.169.254` , és jegyezze fel a megfelelő hálózati adaptert (például `172.16.69.7` ).
-1. Az illesztőfelület konfigurációjának kiírása, valamint az útválasztási táblázatban hivatkozott, a MAC (fizikai) címek megadásával megegyező felület megkeresése.
-    ```console
-    > ipconfig /all
-    ... (continues) ...
-    Ethernet adapter Ethernet:
 
-       Connection-specific DNS Suffix  . : xic3mnxjiefupcwr1mcs1rjiqa.cx.internal.cloudapp.net
-       Description . . . . . . . . . . . : Microsoft Hyper-V Network Adapter
-       Physical Address. . . . . . . . . : 00-0D-3A-E5-1C-C0
-       DHCP Enabled. . . . . . . . . . . : Yes
-       Autoconfiguration Enabled . . . . : Yes
-       Link-local IPv6 Address . . . . . : fe80::3166:ce5a:2bd5:a6d1%3(Preferred)
-       IPv4 Address. . . . . . . . . . . : 172.16.69.7(Preferred)
-       Subnet Mask . . . . . . . . . . . : 255.255.255.0
-    ... (continues) ...
+    Futtassa a következő parancsot, és használja a Hálózati célhely () adapterének címe () `0.0.0.0` , amely ebben a példában () van `10.0.1.10` .
+
+    ```bat
+    route add 169.254.169.254/32 10.0.1.10 metric 1 -p
     ```
-1. Győződjön meg arról, hogy a csatoló megfelel a virtuális gép elsődleges hálózati adapterének és elsődleges IP-címének. Az elsődleges hálózati adapter és az IP-cím megkereséséhez tekintse meg a Azure Portal hálózati konfigurációját, vagy az Azure CLI-vel megtekintve. Jegyezze fel a magánhálózati IP-címeket (és a MAC-címet, ha a CLI-t használja). Íme egy PowerShell CLI-példa:
-    ```powershell
-    $ResourceGroup = '<Resource_Group>'
-    $VmName = '<VM_Name>'
-    $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
-    foreach($NicName in $NicNames)
-    {
-        $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
-        Write-Host $NicName, $Nic.primary, $Nic.macAddress
-    }
-    # Output: wintest767 True 00-0D-3A-E5-1C-C0
-    ```
-1. Ha nem egyeznek, frissítse az útválasztási táblázatot úgy, hogy az elsődleges NIC és az IP-címet célozza meg.
-
-#### <a name="linux"></a>[Linux](#tab/linux/)
-
- 1. Írja le a helyi útválasztási táblázatot egy paranccsal, `netstat -r` és keresse meg a IMDS bejegyzést (például):
-    ```console
-    ~$ netstat -r
-    Kernel IP routing table
-    Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
-    default         _gateway        0.0.0.0         UG        0 0          0 eth0
-    168.63.129.16   _gateway        255.255.255.255 UGH       0 0          0 eth0
-    169.254.169.254 _gateway        255.255.255.255 UGH       0 0          0 eth0
-    172.16.69.0     0.0.0.0         255.255.255.0   U         0 0          0 eth0
-    ```
-1. Ellenőrizze, hogy létezik-e útvonal a következőhöz `169.254.169.254` , és jegyezze fel a megfelelő hálózati adaptert (például `eth0` ).
-1. Az útválasztási táblázatban található megfelelő csatoló felületi konfigurációjának kiírása (Megjegyzés: a konfigurációs fájl pontos neve eltérő lehet)
-    ```console
-    ~$ cat /etc/netplan/50-cloud-init.yaml
-    network:
-    ethernets:
-        eth0:
-            dhcp4: true
-            dhcp4-overrides:
-                route-metric: 100
-            dhcp6: false
-            match:
-                macaddress: 00:0d:3a:e4:c7:2e
-            set-name: eth0
-    version: 2
-    ```
-1. Dinamikus IP-cím használata esetén jegyezze fel a MAC-címet. Ha statikus IP-címet használ, akkor a felsorolt IP-címek és/vagy a MAC-cím is megjegyezhető.
-1. Győződjön meg arról, hogy a csatoló megfelel a virtuális gép elsődleges hálózati adapterének és elsődleges IP-címének. Az elsődleges hálózati adapter és az IP-cím megkereséséhez tekintse meg a Azure Portal hálózati konfigurációját, vagy az Azure CLI-vel megtekintve. Jegyezze fel a magánhálózati IP-címeket (és a MAC-címet, ha a CLI-t használja). Íme egy PowerShell CLI-példa:
-    ```powershell
-    $ResourceGroup = '<Resource_Group>'
-    $VmName = '<VM_Name>'
-    $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
-    foreach($NicName in $NicNames)
-    {
-        $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
-        Write-Host $NicName, $Nic.primary, $Nic.macAddress
-    }
-    # Output: ipexample606 True 00-0D-3A-E4-C7-2E
-    ```
-1. Ha nem egyeznek, frissítse az útválasztási táblázatot úgy, hogy az elsődleges NIC/IP-címet célozza meg.
-
----
-
-**Feladatátvételi fürtszolgáltatás a Windows Server rendszerben**
-
-Ha feladatátvételi fürtszolgáltatással kérdez le IMDS, időnként szükség van egy útvonal hozzáadására az útválasztási táblához. Ezt a következőképpen teheti meg:
-
-1. Nyisson meg egy parancssort rendszergazdai jogosultságokkal.
-
-1. Futtassa a következő parancsot, és jegyezze fel az `0.0.0.0` IPv4-útválasztási táblázatban található Hálózati célhely () adapterének a címeit.
-
-```bat
-route print
-```
-
-> [!NOTE]
-> A következő példa kimenete egy Windows Server rendszerű virtuális gép, amelyen engedélyezve van a feladatátvevő fürt. Az egyszerűség kedvéért a kimenet csak az IPv4-útválasztási táblázatot tartalmazza.
-
-```
-IPv4 Route Table
-===========================================================================
-Active Routes:
-Network Destination        Netmask          Gateway       Interface  Metric
-          0.0.0.0          0.0.0.0         10.0.1.1        10.0.1.10    266
-         10.0.1.0  255.255.255.192         On-link         10.0.1.10    266
-        10.0.1.10  255.255.255.255         On-link         10.0.1.10    266
-        10.0.1.15  255.255.255.255         On-link         10.0.1.10    266
-        10.0.1.63  255.255.255.255         On-link         10.0.1.10    266
-        127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
-        127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
-  127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
-      169.254.0.0      255.255.0.0         On-link     169.254.1.156    271
-    169.254.1.156  255.255.255.255         On-link     169.254.1.156    271
-  169.254.255.255  255.255.255.255         On-link     169.254.1.156    271
-        224.0.0.0        240.0.0.0         On-link         127.0.0.1    331
-        224.0.0.0        240.0.0.0         On-link     169.254.1.156    271
-  255.255.255.255  255.255.255.255         On-link         127.0.0.1    331
-  255.255.255.255  255.255.255.255         On-link     169.254.1.156    271
-  255.255.255.255  255.255.255.255         On-link         10.0.1.10    266
-```
-
-Futtassa a következő parancsot, és használja a Hálózati célhely () adapterének címe () `0.0.0.0` , amely ebben a példában () van `10.0.1.10` .
-
-```bat
-route add 169.254.169.254/32 10.0.1.10 metric 1 -p
-```
 
 ## <a name="support"></a>Támogatás
 
@@ -1315,12 +1309,12 @@ Ha több kísérlet után nem tud metaadat-választ kapni, létrehozhat egy tám
 
 ## <a name="product-feedback"></a>Termékkel kapcsolatos visszajelzés
 
-A felhasználói visszajelzési csatornára vonatkozó visszajelzéseket és ötleteket a Virtual Machines > Instance Metadata Service itt találja: https://feedback.azure.com/forums/216843-virtual-machines?category_id=394627
+A felhasználói visszajelzési csatornára vonatkozó visszajelzéseket és ötleteket a Virtual Machines > Instance Metadata Service [itt](https://feedback.azure.com/forums/216843-virtual-machines?category_id=394627) talál
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Hozzáférési jogkivonat beszerzése a virtuális géphez](../articles/active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)
+- [Hozzáférési jogkivonat beszerzése a virtuális géphez](../articles/active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)
 
-[Ütemezett események Linuxra](../articles/virtual-machines/linux/scheduled-events.md)
+- [Ütemezett események Linuxra](../articles/virtual-machines/linux/scheduled-events.md)
 
-[Ütemezett események a Windows rendszerhez](../articles/virtual-machines/windows/scheduled-events.md)
+- [Ütemezett események a Windows rendszerhez](../articles/virtual-machines/windows/scheduled-events.md)

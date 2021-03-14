@@ -9,16 +9,18 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 5b5d60a014cf63bd28f3097ac3131ad4c7018208
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 85bc54402237ff8e9c82c43ab9cdbe2dc6658af1
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621246"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103464105"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Oktatóanyag: Azure Functions üzembe helyezése IoT Edge modulként
 
-Az Azure Functions használatával olyan kódot helyezhet üzembe, amely közvetlenül az Azure IoT Edge-eszközökön valósítja meg az üzleti logikát. Ez az oktatóanyag végigvezeti egy olyan Azure-függvény létrehozásának és üzembe helyezésének lépésein, amely az érzékelőket a szimulált IoT Edge eszközön szűri. Az Azure IoT Edge üzembe helyezése szimulált eszközön [Windows](quickstart.md) vagy [Linux](quickstart-linux.md) rendszeren című rövid útmutatóban létrehozott szimulált IoT Edge-eszközt fogja használni. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
+
+Az Azure Functions használatával olyan kódot helyezhet üzembe, amely közvetlenül az Azure IoT Edge-eszközökön valósítja meg az üzleti logikát. Ez az oktatóanyag végigvezeti egy olyan Azure-függvény létrehozásának és üzembe helyezésének lépésein, amely az érzékelőket a szimulált IoT Edge eszközön szűri. A rövid útmutatókban létrehozott szimulált IoT Edge eszközt használja. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -38,10 +40,10 @@ Az oktatóanyagban létrehozott Azure-függvény az eszköz által generált hő
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag megkezdése előtt el kellett volna végeznie az előző oktatóanyagot a fejlesztői környezet létrehozásához a Linux-tárolók fejlesztéséhez: [IoT Edge modulok létrehozása Linux-eszközökhöz](tutorial-develop-for-linux.md). Az oktatóanyag elvégzésével a következő előfeltételek szükségesek:
+Az oktatóanyag megkezdése előtt el kellett volna végeznie az előző oktatóanyagot a fejlesztői környezet létrehozásához a Linux-tárolók fejlesztéséhez: [IoT Edge modulok létrehozása Linux-tárolók használatával](tutorial-develop-for-linux.md). Az oktatóanyag elvégzésével a következő előfeltételek szükségesek:
 
 * Egy ingyenes vagy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban.
-* [Azure IoT Edge rendszert futtató Linux-eszköz](quickstart-linux.md)
+* Azure IoT Edge rendszert futtató eszköz. A rövid útmutatók segítségével [Linux-eszközt](quickstart-linux.md) vagy [Windows-eszközt](quickstart.md)állíthat be.
 * Egy tároló-beállításjegyzék, például [Azure Container Registry](../container-registry/index.yml).
 * A [Visual Studio Code](https://code.visualstudio.com/) az [Azure IoT-eszközökkel](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)van konfigurálva.
 * A [Docker CE](https://docs.docker.com/install/) Linux-tárolók futtatására van konfigurálva.
@@ -61,7 +63,7 @@ Hozzon létre egy C#-függvény megoldási sablont, amelyet testreszabhat saját
 
 1. Nyissa meg a Visual Studio Code-ot a fejlesztői gépen.
 
-2. Nyissa meg a vs Code parancs- **View** palettát a  >  **parancs-paletta** megtekintése lehetőség kiválasztásával.
+2. Nyissa meg a vs Code parancs- palettát a  >  **parancs-paletta** megtekintése lehetőség kiválasztásával.
 
 3. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** parancsot. Kövesse a parancskatalógusban található utasításokat a megoldás létrehozásához.
 
@@ -178,7 +180,7 @@ Vegyünk fel néhány további kódot, hogy a modul feldolgozza az üzeneteket a
 
 Az előző szakaszban létrehozott egy IoT Edge megoldást, és módosította a **CSharpFunction** , hogy kiszűrje az üzeneteket a jelentett gépi hőmérséklettel az elfogadható küszöbérték alatt. Most létre kell hoznia a megoldást tárolórendszerképként, és le kell küldenie a tárolóregisztrációs adatbázisba.
 
-1. Nyissa meg a vs Code integrált terminált a terminál **megtekintése** lehetőség kiválasztásával  >  **Terminal**.
+1. Nyissa meg a vs Code integrált terminált a terminál **megtekintése** lehetőség kiválasztásával  >  .
 
 2. Jelentkezzen be a Docker-be a következő parancs beírásával a terminálon. Jelentkezzen be a felhasználónévvel, a jelszóval és a bejelentkezési kiszolgálóval az Azure Container registryből. Ezeket az értékeket a beállításjegyzék **hozzáférési kulcsok** részéből kérheti le a Azure Portal.
 
@@ -235,7 +237,7 @@ Ellenkező esetben a díjak elkerülése érdekében törölheti a jelen cikkben
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy Azure Function modult hozott létre kóddal a IoT Edge-eszköz által generált nyers adat szűréséhez.
 

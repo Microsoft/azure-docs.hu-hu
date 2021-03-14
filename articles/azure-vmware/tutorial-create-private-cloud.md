@@ -1,18 +1,18 @@
 ---
-title: Oktatóanyag – Azure VMware-megoldás saját Felhőbeli létrehozása és üzembe helyezése
+title: Oktatóanyag – Azure VMware-megoldás saját Felhőbeli üzembe helyezése
 description: Ismerje meg, hogyan hozhat létre és helyezhet üzembe egy Azure VMware-megoldást saját felhőben
 ms.topic: tutorial
 ms.date: 02/22/2021
-ms.openlocfilehash: 2afd88bca05a9bcab309faff373bedf6a22e9f4b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ed916305cd1a67162f07c24e3bf97766e5389b74
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101725424"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462167"
 ---
-# <a name="tutorial-create-an-azure-vmware-solution-private-cloud"></a>Oktatóanyag: Azure VMware-megoldás – saját felhő létrehozása
+# <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud"></a>Oktatóanyag: Azure VMware-megoldás saját Felhőbeli üzembe helyezése
 
-Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és helyezhet üzembe egy Azure VMware-megoldás saját felhőjét. A gazdagépek minimális kezdeti telepítése három. A további gazdagépek egyenként is hozzáadhatók, legfeljebb 16 gazdagépre. 
+Az Azure VMware megoldás lehetővé teszi, hogy vSphere-fürtöt helyezzen üzembe az Azure-ban. A minimális kezdeti üzembe helyezés három gazdagép. A további gazdagépek egyenként is hozzáadhatók, legfeljebb 16 gazdagépre.
 
 Mivel az Azure VMware-megoldás nem teszi lehetővé, hogy az indításkor a helyszíni vCenter kezelhesse saját felhőjét, további konfigurálásra van szükség. Ezek az eljárások és a kapcsolódó előfeltételek az oktatóanyagban találhatók.
 
@@ -48,7 +48,7 @@ Válassza a **kipróbálás** lehetőséget a kódrészlet jobb felső sarkában
 
 #### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy erőforráscsoportot az `[az group create](/cli/azure/group)` paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
+Hozzon létre egy erőforráscsoportot az az [Group Create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
 
 ```azurecli-interactive
 

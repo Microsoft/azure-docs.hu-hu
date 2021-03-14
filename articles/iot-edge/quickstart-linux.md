@@ -4,27 +4,29 @@ description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Io
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/02/2020
+ms.date: 03/12/2021
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: ff9ba73e71e4525fe56a3cbb54626030f57e990b
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 37f4a63d0a901fd70e0a60bb435efdaf08868616
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920805"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463463"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Rövid útmutató: az első IoT Edge modul üzembe helyezése egy virtuális Linux-eszközön
 
-Kipróbálhatja Azure IoT Edge ebben a rövid útmutatóban, ha egy virtuális Linux IoT Edge eszközre helyez üzembe tároló kódot. IoT Edge lehetővé teszi a kódok távoli kezelését az eszközökön, így több számítási feladatot is elküldhet a peremhálózat számára. Ebben a rövid útmutatóban azt javasoljuk, hogy használjon egy Azure-beli virtuális gépet a IoT Edge eszközhöz, amely lehetővé teszi, hogy gyorsan hozzon létre egy tesztelési gépet a telepített IoT Edge szolgáltatással, majd törölje azt, ha elkészült.
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
+
+Kipróbálhatja Azure IoT Edge ebben a rövid útmutatóban, ha egy virtuális Linux IoT Edge eszközre helyez üzembe tároló kódot. IoT Edge lehetővé teszi a kódok távoli kezelését az eszközökön, így több számítási feladatot is elküldhet a peremhálózat számára. Ebben a rövid útmutatóban azt javasoljuk, hogy használjon egy Azure-beli virtuális gépet a IoT Edge eszközhöz, amely lehetővé teszi, hogy gyorsan hozzon létre egy tesztelési gépet, majd törölje azt, ha elkészült.
 
 Ennek a rövid útmutatónak a segítségével megtanulhatja az alábbiakat:
 
 * IoT Hub létrehozása
 * IoT Edge-eszköz regisztrálása az IoT Hubon
-* Telepítse és indítsa el a IoT Edge futtatókörnyezetet a virtuális eszközön.
+* Telepítse és indítsa el a IoT Edge futtatókörnyezetet egy virtuális eszközön.
 * Modul távoli üzembe helyezése IoT Edge-eszközön.
 
 ![Diagram – az eszköz és a felhő gyors üzembe helyezési architektúrája](./media/quickstart-linux/install-edge-full.png)
@@ -41,7 +43,7 @@ Készítse elő a környezetet az Azure CLI-hez.
 
 Felhőerőforrások:
 
-- Egy erőforráscsoport a rövid útmutató során létrehozott összes erőforrás kezelésére. Ebben a rövid útmutatóban a példa nevű erőforráscsoport-nevet használjuk, és a következő oktatóanyagokat **IoTEdgeResources** .
+* Egy erőforráscsoport a rövid útmutató során létrehozott összes erőforrás kezelésére. Ebben a rövid útmutatóban a példa nevű erőforráscsoport-nevet használjuk, és a következő oktatóanyagokat **IoTEdgeResources** .
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus2
@@ -103,6 +105,9 @@ A futtatókörnyezet konfigurálása során meg kell adnia egy eszközkapcsolati
 
 Ez a szakasz egy Azure Resource Manager sablont használ egy új virtuális gép létrehozásához és a IoT Edge futtatókörnyezet telepítéséhez. Ha ehelyett a saját linuxos eszközét szeretné használni, kövesse a telepítési lépéseket a [Azure IoT Edge futtatókörnyezet telepítése](how-to-install-iot-edge.md)című témakörben, majd térjen vissza ehhez a rövid útmutatóhoz.
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 A következő CLI-paranccsal hozhatja létre IoT Edge eszközét az előre elkészített [iotedge-VM-Deploy](https://github.com/Azure/iotedge-vm-deploy) sablon alapján.
 
 * Bash-vagy Cloud Shell-felhasználók esetén másolja a következő parancsot egy szövegszerkesztőbe, cserélje le a helyőrző szövegét az adataira, majd másolja be a bash vagy Cloud Shell ablakába:
@@ -113,8 +118,7 @@ A következő CLI-paranccsal hozhatja létre IoT Edge eszközét az előre elké
    --template-uri "https://aka.ms/iotedge-vm-deploy" \
    --parameters dnsLabelPrefix='<REPLACE_WITH_VM_NAME>' \
    --parameters adminUsername='azureUser' \
-   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name
-   <REPLACE_WITH_HUB_NAME> -o tsv) \
+   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) \
    --parameters authenticationType='password' \
    --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
    ```
@@ -131,6 +135,42 @@ A következő CLI-paranccsal hozhatja létre IoT Edge eszközét az előre elké
    --parameters authenticationType='password' `
    --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
    ```
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+A következő CLI-paranccsal hozhatja létre IoT Edge eszközét az előre elkészített [iotedge-VM-Deploy](https://github.com/Azure/iotedge-vm-deploy/tree/1.2.0-rc4) sablon alapján.
+
+* Bash-vagy Cloud Shell-felhasználók esetén másolja a következő parancsot egy szövegszerkesztőbe, cserélje le a helyőrző szövegét az adataira, majd másolja be a bash vagy Cloud Shell ablakába:
+
+   ```azurecli-interactive
+   az deployment group create \
+   --resource-group IoTEdgeResources \
+   --template-uri "https://raw.githubusercontent.com/Azure/iotedge-vm-deploy/1.2.0-rc4/edgeDeploy.json" \
+   --parameters dnsLabelPrefix='<REPLACE_WITH_VM_NAME>' \
+   --parameters adminUsername='azureUser' \
+   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) \
+   --parameters authenticationType='password' \
+   --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
+   ```
+
+* PowerShell-felhasználók esetén másolja a következő parancsot a PowerShell ablakába, majd cserélje le a helyőrző szöveget a saját adataira:
+
+   ```azurecli
+   az deployment group create `
+   --resource-group IoTEdgeResources `
+   --template-uri "https://raw.githubusercontent.com/Azure/iotedge-vm-deploy/1.2.0-rc4/edgeDeploy.json" `
+   --parameters dnsLabelPrefix='<REPLACE_WITH_VM_NAME>' `
+   --parameters adminUsername='azureUser' `
+   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) `
+   --parameters authenticationType='password' `
+   --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
+   ```
+:::moniker-end
+<!-- end 1.2 -->
 
 A sablon a következő paramétereket veszi figyelembe:
 
@@ -158,6 +198,9 @@ Az ebben a rövid útmutatóban szereplő további parancsok a IoT Edge eszköz�
 
 A virtuális géphez való csatlakozás után ellenőrizze, hogy a futtatókörnyezet telepítése és konfigurálása sikeres volt-e a IoT Edge eszközön.
 
+<!--1.1 -->
+:::moniker range="iotedge-2018-06"
+
 1. Ellenőrizze, hogy a IoT Edge biztonsági démon rendszerszolgáltatásként fut-e.
 
    ```bash
@@ -182,6 +225,35 @@ A virtuális géphez való csatlakozás után ellenőrizze, hogy a futtatókörn
    ```
 
    ![Egy modul megtekintése az eszközön](./media/quickstart-linux/iotedge-list-1.png)
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. Ellenőrizze, hogy a IoT Edge fut-e. A következő parancsnak az **OK** állapotot kell visszaadnia, ha IoT Edge fut, vagy szolgáltatási hibát ad meg.
+
+   ```bash
+   sudo iotedge system status
+   ```
+
+   >[!TIP]
+   >Az `iotedge` parancsok futtatásához megemelt jogosultsági szint szükséges. Amikor az IoT Edge-futtatókörnyezet telepítése után kijelentkezik, majd először újra bejelentkezik a gépre, az engedélyei automatikusan frissülnek. Addig használja `sudo` a parancsot a parancsok előtt.
+
+2. Ha hibaelhárításra van szükség, kérje le a szolgáltatás naplóit.
+
+   ```bash
+   sudo iotedge system logs
+   ```
+
+3. Tekintse meg az IoT Edge-eszközön futó összes modult. Mivel első alkalommal indította el ezt a szolgáltatást, csak az **edgeAgent** modulnak szabad futnia. A edgeAgent modul alapértelmezés szerint fut, és az eszközre telepített további modulok telepítését és elindítását is lehetővé teszi.
+
+   ```bash
+   sudo iotedge list
+   ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 Ezzel konfigurálta az IoT Edge-eszközt. Az eszköz készen áll a felhőben üzembe helyezett modulok futtatására.
 
@@ -192,6 +264,31 @@ Azure IoT Edge-eszközeit kezelheti a felhőből, és üzembe helyezhet egy olya
 ![Diagram – modul üzembe helyezése a felhőből az eszközre](./media/quickstart-linux/deploy-module.png)
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+Mivel a IoT Edge 1,2-es verziója nyilvános előzetes verzióban érhető el, a futásidejű modulok a nyilvános előzetes verzióra való frissítésének további lépése is szükséges.
+
+1. Az eszköz adatai lapon válassza a modulok újbóli **beállítása** lehetőséget.
+
+1. Válassza a **futtatókörnyezet beállításait**.
+
+1. Frissítse a **képmezőt** mind az IoT Edge hub, mind a IoT Edge Agent-modulok esetében, hogy az 1.2.0-RC4 verzió címkét használja. Például:
+
+   * `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4`
+   * `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4`
+
+1. A szimulált hőmérséklet-érzékelő modulnak továbbra is szerepelnie kell a modulok szakaszban. Nem kell módosítania a modult a nyilvános előzetes verzióra.
+
+1. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
+
+1. Válassza a **Létrehozás** lehetőséget.
+
+1. Az eszköz részletei lapon kiválaszthatja a **$edgeAgent** vagy **$edgeHub** lehetőséget, hogy a modul részletei megjelenjenek a rendszerkép nyilvános előzetes verziójában.
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="view-generated-data"></a>A létrejött adatok megtekintése
 
@@ -205,7 +302,15 @@ Nyissa meg ismét a parancssort a IoT Edge-eszközön, vagy használja az SSH-ka
    sudo iotedge list
    ```
 
-   ![Három modul megtekintése az eszközön](./media/quickstart-linux/iotedge-list-2.png)
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+   ![Három modul megtekintése az eszközön](./media/quickstart-linux/iotedge-list-2-version-201806.png)
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+   ![Három modul megtekintése az eszközön](./media/quickstart-linux/iotedge-list-2-version-202011.png)
+:::moniker-end
 
 Tekintse meg a hőmérséklet-érzékelő modulból küldött üzeneteket:
 
@@ -232,7 +337,7 @@ Ha a virtuális gépet és az IoT Hubot egy új erőforráscsoportban hozta lét
 Távolítsa el az **IoTEdgeResources** csoportot. Egy erőforráscsoport törlése eltarthat néhány percig.
 
 ```azurecli-interactive
-az group delete --name IoTEdgeResources
+az group delete --name IoTEdgeResources --yes
 ```
 
 Az erőforráscsoport törlését az erőforráscsoportok listájának megtekintésével ellenőrizheti.

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.custom: seodec18
-ms.openlocfilehash: 55e102cc7e27cbcd9a65999f590c8264f1ad4434
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 77c6e8790451ef830b37cc5914ce9de8e92174f5
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736852"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103464088"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights Explorer
 
@@ -25,7 +25,7 @@ Ez a cikk a Azure Time Series Insights Gen2 [bemutató környezetében](https://
 
 A Azure Time Series Insights Explorer megkezdéséhez a következőket kell tennie:
 
-* Azure Time Series Insights Gen2-környezet van kiépítve. További információ a példányok üzembe helyezéséről: [Azure Time Series Insights Gen2](./tutorials-set-up-tsi-environment.md) oktatóanyag.
+* Azure Time Series Insights Gen2-környezet van kiépítve. További információ a példányok üzembe helyezéséről: [Azure Time Series Insights Gen2](./tutorial-set-up-environment.md) oktatóanyag.
 * Adja meg a fiókhoz létrehozott Azure Time Series Insights Gen2-környezet [adathozzáférését](./concepts-access-policies.md) . Mások számára is biztosíthat hozzáférést.
 * Adjon hozzá egy eseményforrás a Azure Time Series Insights Gen2-környezethez az adatküldés a környezetbe:
   * További információ az [Event hub-hoz való kapcsolódásról](./how-to-ingest-data-event-hub.md)
@@ -92,7 +92,7 @@ A jól jeleníti meg a példányok mezőit és a kiválasztott idősorozat-model
 
 A jelenlegi adatokból is eltávolíthat bizonyos adatelemeket, ha kiválasztja a vörös **Törlés** (kuka) vezérlőt az elem bal oldalán. A jól szabályozza azt is, hogy az egyes elemek hogyan jelenjenek meg a diagramon. Dönthet úgy, hogy felveszi a min/max árnyékot, az adatpontokat, átváltja az elemet, és láthatóvá teszi a példányt egy lépcsőzetes módon.
 
-Emellett a feltárások vezérlőelem lehetővé teszi, hogy könnyedén hozza létre az időeltolódásokat és a scatter-ábrákat.  
+Emellett a feltárások vezérlőelem lehetővé teszi, hogy könnyedén hozza létre az időeltolódásokat és a scatter-ábrákat.
 
   [![Kiváló elrendezési beállítások](media/v2-update-explorer/well-layout-options.png)](media/v2-update-explorer/well-layout-options.png#lightbox)
 
@@ -237,7 +237,7 @@ A diagram panel elemeinek megjelenítéséhez és elrejtéséhez válassza a lá
 
   [![Lekérdezett és szűrt lehetőség megszakítása](media/v2-update-explorer/s1-s2-preview-filtered-view-cancel.png)](media/v2-update-explorer/s1-s2-preview-filtered-view-cancel.png#lightbox)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók az [adatfeldolgozásról](./concepts-ingestion-overview.md) a környezetbe.
 

@@ -10,16 +10,18 @@ ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 402b61bb0845532d601e9f5dcaaf55eacce685d1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d6a95dae91ef3e6aa7d39cf8af51c355a87ea73a
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959373"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462728"
 ---
-# <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>Oktatóanyag: Python IoT Edge modul fejlesztése és üzembe helyezése Linux-eszközökhöz
+# <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-using-linux-containers"></a>Oktatóanyag: Python IoT Edge modul fejlesztése és üzembe helyezése Linux-tárolók használatával
 
-A Visual Studio Code használatával Python-kódokat fejleszthet, és üzembe helyezheti Azure IoT Edge-t futtató linuxos eszközön.
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
+
+A Visual Studio Code használatával Python-kódokat fejleszthet, és üzembe helyezheti a Azure IoT Edge rendszert futtató eszközökön.
 
 Az Azure IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti egy IoT Edge modul létrehozásán és üzembe helyezésén, amely a gyors útmutatóban beállított IoT Edge eszközön szűri az érzékelőket. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -36,19 +38,21 @@ Az ebben az oktatóanyagban létrehozott IoT Edge-modul szűri az eszköze álta
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az oktatóanyag bemutatja, hogyan fejleszthet a **Python** modult a **Visual Studio Code** használatával, és hogyan telepítheti azt egy **Linux-eszközre**. A IoT Edge nem támogatja a Windows-eszközökhöz készült Python-modulokat.
+Ez az oktatóanyag bemutatja, hogyan fejleszthet a **Python** modult a **Visual Studio Code** használatával, és hogyan helyezheti üzembe azt egy IoT Edge eszközön.
 
-A következő táblázat segítségével megismerheti a Python-modulok Linux rendszeren történő fejlesztésének és üzembe helyezésének lehetőségeit:
+A IoT Edge nem támogatja a Windows-tárolókat használó Python-modulokat.
+
+A következő táblázat segítségével megismerheti a Python-modulok Linux-tárolók használatával történő fejlesztésének és üzembe helyezésének lehetőségeit:
 
 | Python | Visual Studio Code | Visual Studio 2017/2019 |
 | - | ------------------ | ------------------ |
 | **Linux AMD64** | ![A VS Code használata Python-modulokhoz Linux AMD64 rendszeren](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![A VS Code használata Python-modulokhoz Linux ARM32](./media/tutorial-c-module/green-check.png) |  |
 
-Az oktatóanyag megkezdése előtt el kellett volna végeznie az előző oktatóanyagot a fejlesztői környezet létrehozásához a Linux-tárolók fejlesztéséhez: [IoT Edge modulok létrehozása Linux-eszközökhöz](tutorial-develop-for-linux.md). Az oktatóanyag elvégzésével a következő előfeltételek szükségesek:
+Az oktatóanyag megkezdése előtt el kellett volna végeznie az előző oktatóanyagot a fejlesztői környezet létrehozásához a Linux-tárolók fejlesztéséhez: [IoT Edge modulok létrehozása Linux-tárolók használatával](tutorial-develop-for-linux.md). Az oktatóanyag elvégzésével a következő előfeltételek szükségesek:
 
 * Egy ingyenes vagy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban.
-* [Azure IoT Edge rendszert futtató Linux-eszköz](quickstart-linux.md)
+* Azure IoT Edge rendszert futtató eszköz. A rövid útmutatók segítségével [Linux-eszközt](quickstart-linux.md) vagy [Windows-eszközt](quickstart.md)állíthat be.
 * Egy tároló-beállításjegyzék, például [Azure Container Registry](../container-registry/index.yml).
 * A [Visual Studio Code](https://code.visualstudio.com/) az [Azure IoT-eszközökkel](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)van konfigurálva.
 * A [Docker CE](https://docs.docker.com/install/) Linux-tárolók futtatására van konfigurálva.
@@ -70,7 +74,7 @@ Az alábbi lépések egy IoT Edge Python-modult hoznak létre a Visual Studio Co
 
 Hozzon létre egy Python-megoldási sablont, amelyet testreszabhat saját kódjával.
 
-1. A Visual Studio Code-ban **View** kattintson  >  a **parancs paletta** megtekintése elemre a vs Code parancs paletta megnyitásához.
+1. A Visual Studio Code-ban kattintson  >  a **parancs paletta** megtekintése elemre a vs Code parancs paletta megnyitásához.
 
 2. A parancskatalógusban írja be és futtassa az **Azure: Sign in** parancsot, és az utasításokat követve jelentkezzen be az Azure-fiókjába. Ha már be van jelentkezve, ezt a lépést kihagyhatja.
 
@@ -199,7 +203,7 @@ Minden sablon tartalmaz egy mintakód-t, amely szimulált érzékelői adatokhoz
 
 Az előző szakaszban létrehozott egy IoT Edge megoldást, és hozzáadta a kódot a PythonModule, amely kiszűri azokat az üzeneteket, amelyekben a jelentett gépi hőmérséklet az elfogadható határértékeken belül van. Most létre kell hoznia a megoldást tárolórendszerképként, és le kell küldenie a tárolóregisztrációs adatbázisba.
 
-1. Nyissa meg a vs Code integrált terminált a terminál **megtekintése** lehetőség kiválasztásával  >  **Terminal**.
+1. Nyissa meg a vs Code integrált terminált a terminál **megtekintése** lehetőség kiválasztásával  >  .
 
 2. Jelentkezzen be a Docker-be a következő parancs beírásával a terminálon. Jelentkezzen be a felhasználónévvel, a jelszóval és a bejelentkezési kiszolgálóval az Azure Container registryből. Ezeket az értékeket a beállításjegyzék **hozzáférési kulcsok** részéből kérheti le a Azure Portal.
 

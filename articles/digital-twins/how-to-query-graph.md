@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: a38af4c942de280e7b1c094885a1ede6774ead56
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 3fd504ec36abae3f00cd2a7eb4e1f7b639be0cea
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433216"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462677"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Az Azure Digital Twins Twin gráf lekérdezése
 
@@ -36,8 +36,10 @@ Digitális ikrek beolvasása **Tulajdonságok** alapján (beleértve az azonosí
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty1":::
 
-> [!NOTE]
-> Egy digitális ikerpéldány azonosítója a `$dtId` metaadat-mezővel kérdezhető le.
+Ahogy az a fenti lekérdezésben is látható, a rendszer lekérdezi a digitális Twin AZONOSÍTÓját a metaadatok mező használatával `$dtId` .
+
+>[!TIP]
+> Ha Cloud Shellt használ egy, a-val kezdődő metaadatokat tartalmazó lekérdezés futtatásához `$` , akkor a kezdő-mel kell elmenekülnie, `$` hogy a Cloud Shell tudja, hogy nem változó, és a lekérdezési szövegben literálként kell használni.
 
 Azt is megteheti, **hogy egy bizonyos tulajdonság definiálva van-e**. Itt látható egy olyan lekérdezés, amely a megadott *Location* tulajdonsággal rendelkező ikreket tartalmaz:
 

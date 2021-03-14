@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: bb13df0f87cd10719f33afe4ec080c4c785df720
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 85773ec66dbe567afcfd1afca1d14aa0119fb8f6
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695560"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103464020"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-azure-time-series-insight-environment"></a>IoT hub-eseményforrás hozzáadása az Azure Time Series Insight-környezethez
 
@@ -27,7 +27,7 @@ Ez a cikk azt ismerteti, hogyan használható a Azure Portal egy olyan eseményf
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Hozzon létre egy [Azure Time Series Insights környezetet](./tutorials-set-up-tsi-environment.md).
+* Hozzon létre egy [Azure Time Series Insights környezetet](./tutorial-set-up-environment.md).
 * Hozzon létre egy [IoT hubot a Azure Portal használatával](../iot-hub/iot-hub-create-through-portal.md).
 * Az IoT hub-nak aktív üzenetküldési eseményekkel kell rendelkeznie.
 * Hozzon létre egy dedikált fogyasztói csoportot az IoT hub-ban az Azure Time Series Insight-környezet számára, hogy az a következőt használja:. Minden Azure-beli idősorozat-betekintési esemény forrásának saját dedikált fogyasztói csoportjának kell lennie, amely nincs más fogyasztóval megosztva. Ha több olvasó is felhasználja az azonos fogyasztói csoportból származó eseményeket, az összes olvasó valószínűleg hibákat fog kimutatni. Részletekért olvassa el az [Azure IoT hub fejlesztői útmutatóját](../iot-hub/iot-hub-devguide.md).
@@ -105,7 +105,7 @@ Az alkalmazások fogyasztói csoportokat használnak az adatok Azure-IoT Hubból
 
 1. Az eseményforrás létrehozása után az Azure Time Series Insight automatikusan elindítja a streaming-adatátvitelt a környezetbe.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Adathozzáférési szabályzatok definiálása](./concepts-access-policies.md) az adatvédelme érdekében.
 

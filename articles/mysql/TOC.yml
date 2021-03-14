@@ -9,7 +9,7 @@
       href: select-right-deployment-type.md
     - name: Támogatott verziók
       href: concepts-supported-versions.md
-    - name: Verziókezelési szabályzat
+    - name: Verzió támogatási szabályzata
       href: concepts-version-policy.md
       displayName: version policy
 - name: Önálló kiszolgáló

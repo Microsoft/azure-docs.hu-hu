@@ -2,13 +2,13 @@
 title: Fogalmak – privát felhők és fürtök
 description: Ismerje meg az Azure VMware Solution szoftver által meghatározott adatközpontok és vSphere-fürtök főbb képességeit.
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: 87bd2592da681726227f89b403916a12593a9db8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/13/2021
+ms.openlocfilehash: d1837ae7cf01fcb9642e0cafe4e0430e403b9899
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391388"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462515"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware-megoldás – saját felhő és fürt – fogalmak
 
@@ -20,8 +20,6 @@ Ez a cikk az alábbi fogalmakat ismerteti.
 
 ![Az ügyfél-előfizetés két privát felhők képe](./media/hosts-clusters-private-clouds-final.png)
 
->[!NOTE]
->A fejlesztési környezet alacsonyabb lehetséges igényei miatt alacsonyabb kapacitású gazdagépeket használó kisebb fürtöket használjon. 
 
 ## <a name="private-clouds"></a>Magánfelhők
 
@@ -30,7 +28,7 @@ A privát felhők dedikált, operációs rendszer nélküli Azure-gazdagépekkel
 Más erőforrásokhoz hasonlóan a privát felhők telepítése és felügyelete egy Azure-előfizetésen belül történik. Az előfizetésen belüli privát felhők száma méretezhető. Kezdetben egy privát felhő korlátja van egy előfizetéshez.
 
 ## <a name="clusters"></a>Fürtök
-Minden létrehozott privát felhőhöz alapértelmezés szerint egy vSAN-fürt van. A fürtöket a Azure Portal vagy az API segítségével adhatja hozzá, törölheti és méretezheti.  Az összes fürt alapértelmezett mérete három gazdagép, és akár 16 gazdagép is méretezhető.  A fürtben használt gazdagépeknek azonos típusúnak kell lenniük.
+Minden létrehozott privát felhőhöz alapértelmezés szerint egy vSAN-fürt van. A fürtöket a Azure Portal vagy az API segítségével adhatja hozzá, törölheti és méretezheti.  Az összes fürt alapértelmezett mérete három gazdagép, és akár 16 gazdagép is méretezhető. Saját felhőben legfeljebb négy fürt lehet.
 
 A próbaverziós fürtök kiértékelésre és három gazdagépre korlátozódnak. Privát felhőben egyetlen próbaverziós fürt van. A próbaidőszak alatt egyetlen gazdagépen is méretezheti a próbaverziós fürtöt.
 
@@ -38,11 +36,11 @@ A vSphere és a NSX-T Manager használatával kezelheti a fürtkonfiguráció va
 
 ## <a name="hosts"></a>Hosts
 
-Az Azure VMware-megoldás saját felhőalapú fürtök Hyper-konvergens, operációs rendszer nélküli infrastruktúra-gazdagépeket használnak. A következő táblázat a gazdagép RAM-, CPU-és lemezterület-kapacitását mutatja be. 
+Az Azure VMware megoldási fürtök Hyper-konvergens, operációs rendszer nélküli infrastruktúrán alapulnak. A következő táblázat a gazdagép RAM-, CPU-és lemezterület-kapacitását mutatja be.
 
 | Állomás típusa              |             CPU             |   Memória (GB)   |  vSAN NVMe gyorsítótárazási szintje (TB, nyers)  |  vSAN SSD kapacitási szintje (TB, nyers)  |
 | :---                   |            :---:            |    :---:     |               :---:              |                :---:               |
-| High-End ()          |  Dual Intel 18 Core 2,3 GHz  |     576      |                3.2               |                15,20               |
+| AVS36          |  Dual Intel 18 Core 2,3 GHz  |     576      |                3.2               |                15,20               |
 
 A fürtök létrehozásához vagy méretezéséhez használt gazdagépek a gazdagépek elkülönített készletéből származnak. Ezek a gazdagépek hardveres teszteket adtak át, és minden adattal biztonságosan törölve lettek. 
 
@@ -55,10 +53,7 @@ A fürtök létrehozásához vagy méretezéséhez használt gazdagépek a gazda
 
 A gazdagép-karbantartási és életciklus-kezelés nincs hatással a saját Felhőbeli fürtök kapacitására vagy teljesítményére.  Az automatizált gazdagépek karbantartására például a belső vezérlőprogram frissítése és a hardver javítása vagy cseréje tartozik.
 
-A Microsoft felelős a NSX-T készülékek életciklus-kezelésért, például a NSX-T Manager és a NSX-T Edge. Emellett a hálózati konfiguráció rendszerindításához is felelősek, például a 0. rétegbeli átjáró létrehozása és a North-South útválasztás engedélyezése. Ön felelős a NSX-T SDN-konfigurációért. Ilyenek például a hálózati szegmensek, az elosztott tűzfalszabályok, az 1. rétegbeli átjárók és a terheléselosztó.
-
-> [!IMPORTANT]
-> Ne módosítsa a NSX-T Edge vagy a 0. rétegbeli átjáró konfigurációját, mivel ez a szolgáltatás elvesztését eredményezheti.
+A Microsoft felelős a NSX-T készülékek életciklus-kezelésért, például a NSX-T Manager és a NSX-T Edge. A Microsoft feladata a hálózati konfiguráció beindításának elvégzése, például a 0. rétegbeli átjáró létrehozása és az North-South útválasztás engedélyezése. Ön felelős a NSX-T SDN-konfigurációért. Ilyenek például a hálózati szegmensek, az elosztott tűzfalszabályok, az 1. rétegbeli átjárók és a terheléselosztó.
 
 ## <a name="backup-and-restoration"></a>Biztonsági mentés és helyreállítás
 

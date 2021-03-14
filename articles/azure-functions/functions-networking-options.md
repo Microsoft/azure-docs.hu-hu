@@ -5,12 +5,12 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 1/21/2021
 ms.author: cachai
-ms.openlocfilehash: f826c947b1e47c1c996a8e9102492e85adafa326
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 0267184a921c92c3dc092908a09467ef3a090175
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215153"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463034"
 ---
 # <a name="azure-functions-networking-options"></a>Az Azure Functions hálózatkezelési lehetőségei
 
@@ -87,7 +87,7 @@ További információ: [Virtual Network szolgáltatás-végpontok](../virtual-ne
 
 ## <a name="restrict-your-storage-account-to-a-virtual-network"></a>A Storage-fiók korlátozása virtuális hálózatra 
 
-Egy Function-alkalmazás létrehozásakor létre kell hoznia egy általános célú Azure Storage-fiókot, amely támogatja a blobot, a várólistát és a Table Storage-t. Ezt a Storage-fiókot lecserélheti egy, a szolgáltatási végpontokkal vagy privát végponttal védett tárolóval. Ez a funkció jelenleg az összes olyan virtuális hálózat támogatott SKU-jának része, amely standard és prémium szintű, kivéve azokat a Flex-bélyegeket, amelyekben a virtuális hálózatok csak prémium SKU-hoz érhetők el. Egy privát hálózatra korlátozódó Storage-fiókkal rendelkező függvény beállítása:
+Egy Function-alkalmazás létrehozásakor létre kell hoznia egy általános célú Azure Storage-fiókot, amely támogatja a blobot, a várólistát és a Table Storage-t. Ezt a Storage-fiókot lecserélheti egy, a szolgáltatási végpontokkal vagy privát végponttal védett tárolóval. Ez a funkció jelenleg az összes olyan Windows Virtual Network támogatott SKU-t támogatja, amely tartalmazza a standard és a prémium szintet, kivéve a Flex-bélyegzőket, amelyekben a virtuális hálózatok csak prémium SKU-hoz érhetők el. Egy privát hálózatra korlátozódó Storage-fiókkal rendelkező függvény beállítása:
 
 1. Hozzon létre egy olyan függvényt, amely nem rendelkezik engedélyezett szolgáltatási végpontokkal.
 1. Konfigurálja a függvényt a virtuális hálózathoz való kapcsolódáshoz.

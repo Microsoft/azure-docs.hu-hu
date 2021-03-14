@@ -9,14 +9,16 @@ ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: a8d09f762002c89d225ccc00eac83da336850a3c
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: e5aeda35ed4110807f17c11e93b31d0b3998846e
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047947"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461113"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Oktatóanyag: Adatok tárolása a peremhálózaton SQL Server-adatbázisokkal
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 SQL Server modul üzembe helyezése Azure IoT Edge-t futtató linuxos eszközön tárolt adattároláshoz.
 
@@ -24,7 +26,7 @@ Az Azure IoT Edge és az SQL Server segítségével adatokat tárolhat és kér
 
 A jelen cikk az SQL Server-adatbázisok IoT Edge-eszközön történő üzembe helyezésének utasításait tartalmazza. Az IoT Edge-eszközön futó Azure Functions-függvények elvégzik a bejövő adatok rendszerezését, majd elküldik azokat az adatbázisnak. A cikkben szereplő lépések a tárolókban üzemeltetett egyéb adatbázisokra (például MySQL vagy PostgreSQL) is alkalmazhatók.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -40,7 +42,7 @@ Az oktatóanyag a következőket ismerteti:
 Az oktatóanyag megkezdése előtt el kellett volna végeznie az előző oktatóanyagot a fejlesztői környezet létrehozásához a Linux-tárolók fejlesztéséhez: [IoT Edge modulok létrehozása Linux-eszközökhöz](tutorial-develop-for-linux.md). Az oktatóanyag elvégzésével a következő előfeltételek szükségesek:
 
 * Egy ingyenes vagy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban.
-* Egy [Azure IoT Edge rendszert futtató amd64 Linux-eszköz](quickstart-linux.md).
+* Azure IoT Edge rendszert futtató AMD64-eszköz. A rövid útmutatók segítségével [Linux-eszközt](quickstart-linux.md) vagy [Windows-eszközt](quickstart.md)állíthat be.
   * Az ARM-eszközök (például a málna PiS) nem futhatnak SQL Server. Ha az SQL-t egy ARM-eszközön szeretné használni, regisztráljon az [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/) előzetes verziójának kipróbálásához.
 * Egy tároló-beállításjegyzék, például [Azure Container Registry](../container-registry/index.yml).
 * A [Visual Studio Code](https://code.visualstudio.com/) az [Azure IoT-eszközökkel](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)van konfigurálva.
@@ -61,7 +63,7 @@ A következő lépések bemutatják, hogyan hozhat létre IoT Edge függvényt a
 
 1. Nyissa meg a Visual Studio Code-ot.
 
-2. Nyissa meg a vs Code parancs- **View**palettát a  >  **parancs-paletta**megtekintése lehetőség kiválasztásával.
+2. Nyissa meg a vs Code parancs- palettát a  >  **parancs-paletta** megtekintése lehetőség kiválasztásával.
 
 3. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: új IoT Edge-megoldás) parancsot. A parancskatalógusban adja meg az alábbi információkat a megoldás létrehozásához:
 
@@ -208,7 +210,7 @@ Ki kell választania, hogy melyik architektúrát célozza meg az egyes megoldá
 
 Az IoT Edge-futtatókörnyezet által az IoT Edge-eszközön telepítendő modulokat az [üzembehelyezési jegyzékfájl](module-composition.md) határozza meg. Az előző szakaszban létrehozott egy testreszabott Function modult, de a SQL Server modul már fel van építve és elérhető az Azure piactéren. Utasítsa az IoT Edge-futtatókörnyezetet ennek belefoglalására, majd végezze el a konfigurálást az eszközön.
 
-1. A Visual Studio Code-ban nyissa meg a parancssort a **View**  >  **parancs paletta**megtekintése lehetőség kiválasztásával.
+1. A Visual Studio Code-ban nyissa meg a parancssort a   >  **parancs paletta** megtekintése lehetőség kiválasztásával.
 
 2. Írja be a parancsot a parancssorba, és futtassa a következő parancsot **Azure IoT Edge: IoT Edge modul hozzáadása**. Az új modul hozzáadásához a parancssorban adja meg a következő információkat:
 
@@ -236,7 +238,7 @@ Az IoT Edge-futtatókörnyezet által az IoT Edge-eszközön telepítendő modul
 
 Az előző szakaszokban egyetlen modullal hozott létre megoldást, majd hozzáadott egy másik modult az üzembehelyezési jegyzéksablonfájlhoz. A SQL Server modult nyilvánosan a Microsoft üzemelteti, de a functions modulban kell tárolóba helyezése a kódot. Ebben a szakaszban felépíti a megoldást, létrehozza a sqlFunction modulhoz tartozó tároló lemezképeket, és leküldi a lemezképet a tároló-beállításjegyzékbe.
 
-1. A Visual Studio Code-ban nyissa meg az integrált terminált a terminál **megtekintése**lehetőség kiválasztásával  >  **Terminal**.  
+1. A Visual Studio Code-ban nyissa meg az integrált terminált a terminál **megtekintése** lehetőség kiválasztásával  >  .  
 
 1. Jelentkezzen be a tárolóregisztrációs adatbázisba a Visual Studio Code felületén, hogy le tudja küldeni a rendszerképeket a regisztrációs adatbázisba. Használja ugyanazt a Azure Container Registry (ACR) hitelesítő adatokat, amelyeket a. env fájlhoz adott hozzá. Az integrált terminálon írja be a következő parancsot:
 
@@ -260,9 +262,9 @@ Az IoT Hub felületén keresztül modulokat állíthat be egy eszközön, de az 
 
 1. A Visual Studio Code Explorer **Azure IoT hub** szakasza alatt bontsa ki az **eszközök** elemet a IoT-eszközök listájának megtekintéséhez.
 
-2. Kattintson a jobb gombbal arra az eszközre, amelyet a központi telepítéssel kíván megcélozni, és válassza a **központi telepítés létrehozása egyetlen eszközhöz**lehetőséget.
+2. Kattintson a jobb gombbal arra az eszközre, amelyet a központi telepítéssel kíván megcélozni, és válassza a **központi telepítés létrehozása egyetlen eszközhöz** lehetőséget.
 
-3. Válassza ki a **konfigurációs** mappában található fájl **deployment.amd64.jsét** , majd kattintson az **Edge központi telepítési jegyzék kiválasztása**elemre. Ne használja a deployment.template.json fájlt.
+3. Válassza ki a **konfigurációs** mappában található fájl **deployment.amd64.jsét** , majd kattintson az **Edge központi telepítési jegyzék kiválasztása** elemre. Ne használja a deployment.template.json fájlt.
 
 4. Az eszköz alatt bontsa ki a **modulok** elemet a telepített és futó modulok listájának megtekintéséhez. Kattintson a frissítés gombra. Meg kell jelennie az új **SQL** -és **sqlFunction** -moduloknak, valamint a **SimulatedTemperatureSensor** modulnak, valamint a **$edgeAgent** és **$edgeHubnak**.
 

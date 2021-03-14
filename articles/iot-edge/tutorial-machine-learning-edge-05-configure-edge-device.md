@@ -9,16 +9,21 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, devx-track-azurecli
-ms.openlocfilehash: 0ed085a161ced22efb1e5022e34b6f9b0344f942
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b59f8343c9dff07a32accd471f70ddf9f5309b8d
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721429"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463085"
 ---
 # <a name="tutorial-configure-an-azure-iot-edge-device"></a>Oktatóanyag: Azure IoT Edge-eszköz konfigurálása
 
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
+
 Ebben a cikkben egy Linux rendszerű Azure-beli virtuális gépet konfigurálunk olyan Azure IoT Edge eszközként, amely transzparens átjáróként működik. Egy transzparens átjáró konfigurációja lehetővé teszi az eszközök számára, hogy az átjárón keresztül csatlakozzanak az Azure IoT Hubhoz, és nem tudta, hogy az átjáró létezik. Ugyanakkor a IoT Hub eszközzel kommunikáló felhasználók nem ismerik a köztes átjáró eszközét. Végső soron az Edge Analytics szolgáltatást hozzáadjuk a rendszerhez, ha IoT Edge modulokat adunk hozzá az átlátszó átjáróhoz.
+
+>[!NOTE]
+>Az oktatóanyagban szereplő fogalmak a IoT Edge összes verziójára érvényesek, de a forgatókönyv kipróbálásához létrehozott minta-eszköz IoT Edge 1,1-es verzióban fut.
 
 A cikkben ismertetett lépéseket általában egy felhőalapú fejlesztő hajtja végre.
 

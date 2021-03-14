@@ -9,20 +9,25 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 1f346e1b737075fa79dc1146152125a6c5a3ec1a
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 8f019c8f3c560fdfdc0c8e5992389c253c9b0d74
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704681"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463374"
 ---
-# <a name="tutorial-develop-c-iot-edge-modules-for-windows-devices"></a>Oktatóanyag: C IoT Edge-modulok fejlesztése Windows-eszközökhöz
+# <a name="tutorial-develop-c-iot-edge-modules-using-windows-containers"></a>Oktatóanyag: C IoT Edge-modulok fejlesztése Windows-tárolók használatával
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Ebből a cikkből megtudhatja, hogyan használhatja a Visual studiót a C kód fejlesztéséhez, és hogyan helyezheti üzembe azt egy Azure IoT Edge rendszert futtató Windows-eszközön.
 
-Azure IoT Edge-modulok használatával olyan programkódot helyezhet üzembe, amely közvetlenül a IoT Edge-eszközökön valósítja meg az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. 
+>[!NOTE]
+>IoT Edge 1,1 LTS az utolsó kiadási csatorna, amely támogatni fogja a Windows-tárolókat. A 1,2-es verziótól kezdődően a Windows-tárolók nem támogatottak. A Windows rendszerű eszközökön [IoT Edge Linux rendszeren](iot-edge-for-linux-on-windows.md) való használatának vagy áthelyezésének megfontolnia, hogy Windows-eszközökön fusson IoT Edge.
 
-Az oktatóanyag a következőket ismerteti:
+Azure IoT Edge-modulok használatával olyan programkódot helyezhet üzembe, amely közvetlenül a IoT Edge-eszközökön valósítja meg az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein.
+
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -37,18 +42,18 @@ Az ebben az oktatóanyagban létrehozott IoT Edge-modul szűri az eszköze álta
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az oktatóanyag bemutatja, hogyan fejleszthet a C modulban a Visual Studio 2019 segítségével, majd hogyan telepítheti azt egy Windows-eszközre. Ha Linux-eszközökhöz fejleszt modulokat, ugorjon a [C IoT Edge-modulok fejlesztése linuxos eszközökhöz](tutorial-csharp-module.md) című lépésre.
+Ez az oktatóanyag bemutatja, hogyan fejleszthet a C modulban a Visual Studio 2019 segítségével, majd hogyan telepítheti azt egy Windows-eszközre. Ha Linux-tárolókat használó modulokat fejleszt, ugorjon a [C IoT Edge-modulok fejlesztése Linux-tárolók használatával](tutorial-csharp-module.md) című lépésre.
 
-A C modulok Windows-eszközökre való fejlesztésének és üzembe helyezésének lehetőségeiről a következő táblázatban talál további információt:
+A C modulok Windows-tárolókkal való fejlesztésének és üzembe helyezésének lehetőségeiről a következő táblázatban talál további információt:
 
-| C# | Visual &nbsp; Studio &nbsp; Code | Visual Studio 2017 &nbsp; és &nbsp; 2019 |
+| C | Visual &nbsp; Studio &nbsp; Code | Visual Studio 2017 &nbsp; és &nbsp; 2019 |
 | -- | ------------------ | :------------------: |
 | Windows AMD64 |  | ![C modulok fejlesztése a WinAMD64 a Visual Studióban](./media/tutorial-c-module/green-check.png) |
 
-Mielőtt elkezdené ezt az oktatóanyagot, állítsa be a fejlesztési környezetet a [Windows-eszközök fejlesztése IoT Edge-modulok](tutorial-develop-for-windows.md) oktatóanyagban című témakör útmutatásait követve. A befejezése után a környezet a következő előfeltételeket fogja tartalmazni:
+Mielőtt elkezdené ezt az oktatóanyagot, állítsa be a fejlesztési környezetet a [IoT Edge modulok fejlesztése a Windows-tárolók használatával](tutorial-develop-for-windows.md) című oktatóanyag utasításait követve. A befejezése után a környezet a következő előfeltételeket fogja tartalmazni:
 
 * Egy ingyenes vagy standard szintű [IoT hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban.
-* [Azure IoT Edge rendszert futtató Windows-eszköz](quickstart.md).
+* [Azure IoT Edge rendszert futtató Windows-eszköz](how-to-install-iot-edge-windows-on-windows.md).
 * Egy tároló-beállításjegyzék, például [Azure Container Registry](../container-registry/index.yml).
 * A [Visual Studio 2019](/visualstudio/install/install-visual-studio), amely a [Azure IoT Edge Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) bővítménnyel van konfigurálva.
 * A [Docker Desktop](https://docs.docker.com/docker-for-windows/install/), amely Windows-tárolók futtatására van konfigurálva.
@@ -407,7 +412,7 @@ Ellenkező esetben a felmerülő költségek elkerülése érdekében törölhet
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban IoT Edge-modult hozott létre olyan kóddal, amely szűri az IoT Edge-eszköz által létrehozott nyers adatokat.
 

@@ -10,14 +10,16 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 6170f91d11b47a43e15488bcbb0e91ff3f7c906e
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: aa8c4abf57308ca3da05db6ecede7a330af04bdb
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102616094"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463544"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-windows-device-preview"></a>Rövid útmutató: az első IoT Edge modul üzembe helyezése Windows-eszközön (előzetes verzió)
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Próbálja ki Azure IoT Edge ebben a rövid útmutatóban, ha a Windows IoT Edge eszközön egy Linux rendszerbe helyez üzembe egy tároló kódot. IoT Edge lehetővé teszi a kódok távoli kezelését az eszközökön, így több számítási feladatot is elküldhet a peremhálózat számára. Ebben a rövid útmutatóban azt javasoljuk, hogy használja a saját eszközét, hogy megtekintse, milyen egyszerűen használható Azure IoT Edge Linux rendszerhez Windows rendszeren.
 

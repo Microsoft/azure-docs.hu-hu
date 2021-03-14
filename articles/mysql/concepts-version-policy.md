@@ -1,5 +1,5 @@
 ---
-title: Verziószámozási házirend – Azure Database for MySQL – egyetlen kiszolgáló és egy rugalmas kiszolgáló (előzetes verzió)
+title: A verzió támogatási szabályzata – Azure Database for MySQL – egyetlen kiszolgáló és egy rugalmas kiszolgáló (előzetes verzió)
 description: A MySQL főbb és alverzióinak házirendjét ismerteti Azure Database for MySQL
 author: sr-msft
 ms.author: srranga
@@ -7,14 +7,14 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6acb3268ba40399612940b395437fde3beffda1a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9f34e1ff7134788d064a82ec7b646df915dbe24e
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732870"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462558"
 ---
-# <a name="azure-database-for-mysql-versioning-policy"></a>Azure Database for MySQL verziószámozási házirend
+# <a name="azure-database-for-mysql-version-support-policy"></a>Azure Database for MySQL verzió támogatási szabályzata
 
 Ez az oldal leírja a Azure Database for MySQL verziószámozási házirendjét, és alkalmazható az Azure Database for MySQL-Single Server és a Azure Database for MySQL-rugalmas kiszolgáló (előzetes verzió) üzembe helyezési módjaira.
 

@@ -9,18 +9,20 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: b352bd92ecc69ca68a6870d3a59ef5e0cdd1daba
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: fea8f52ebf40ba8195de134098693f90315bb384
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920846"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461419"
 ---
-# <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Oktatóanyag: IoT Edge-modulok fejlesztése linuxos eszközökhöz
+# <a name="tutorial-develop-iot-edge-modules-with-linux-containers"></a>Oktatóanyag: IoT Edge-modulok fejlesztése Linux-tárolókkal
 
-A Visual Studio Code használatával a IoT Edge rendszert futtató Linux rendszerű eszközökön hozhat létre és telepíthet programkódot.
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-A gyors útmutatóban létrehozott egy IoT Edge eszközt egy linuxos virtuális géppel, és üzembe helyezett egy modult az Azure piactéren. Ez az oktatóanyag végigvezeti a saját programkódjának a IoT Edge eszközön való fejlesztésén és üzembe helyezésén. Ez a cikk hasznos előfeltételként szolgál a többi oktatóanyaghoz, amely részletesen ismerteti az egyes programozási nyelveket és az Azure-szolgáltatásokat.
+A Visual Studio Code használatával a IoT Edge rendszert futtató eszközökhöz programkódot fejleszthet és helyezhet üzembe.
+
+A rövid útmutatóban létrehozott egy IoT Edge eszközt, és üzembe helyezett egy modult az Azure piactéren. Ez az oktatóanyag végigvezeti a saját programkódjának a IoT Edge eszközön való fejlesztésén és üzembe helyezésén. Ez a cikk hasznos előfeltételként szolgál a többi oktatóanyaghoz, amely részletesen ismerteti az egyes programozási nyelveket és az Azure-szolgáltatásokat.
 
 Ez az oktatóanyag a **C#-modulok Linux rendszerű eszközre való** üzembe helyezésének példáját használja. Ez a példa azért lett kiválasztva, mert ez a leggyakoribb fejlesztői forgatókönyv IoT Edge megoldásokhoz. Az oktatóanyag még akkor is hasznos, ha más nyelvet használ, vagy egy Azure-szolgáltatást helyez üzembe. Ez az oktatóanyag továbbra is hasznos a fejlesztői eszközök és fogalmak megismeréséhez. Fejezze be ezt a bevezetést a fejlesztési folyamatba, majd válassza ki az előnyben részesített nyelvet vagy az Azure-szolgáltatást.
 
@@ -44,7 +46,7 @@ Egy fejlesztői gép:
 * [C# bővítmény a Visual Studio Code-hoz (szolgáltató: OmniSharp) ](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
 
-Egy Azure IoT Edge Linux rendszerű eszközön:
+Egy Azure IoT Edge-eszköz:
 
 * Javasoljuk, hogy ne futtasson IoT Edge a fejlesztői gépen, hanem használjon külön eszközt. A fejlesztési gép és a IoT Edge eszköz közötti különbségtétel pontosabban tükrözi a valódi üzembe helyezési forgatókönyvet, és segít a különböző fogalmak közvetlen megtartásában.
 * Ha nem érhető el második eszköz, a gyors üzembe helyezési cikk használatával hozzon létre egy IoT Edge-eszközt az Azure-ban egy Linux rendszerű [virtuális géppel](quickstart-linux.md).
@@ -61,7 +63,10 @@ Ez az oktatóanyag végigvezeti egy IoT Edge modul fejlesztésén. Egy *IoT Edge
 
 IoT Edge modulok fejlesztésekor fontos megérteni a fejlesztési gép és a cél IoT Edge eszköz közötti különbséget, ahol a modul végül üzembe lesz helyezve. A modul kódjának tárolására felépített tárolónak meg kell egyeznie a *céleszköz* operációs rendszerével (os). Például a leggyakoribb forgatókönyv egy olyan modul létrehozása a Windows rendszerű számítógépen, amely a IoT Edge rendszert futtató linuxos eszközt célozza meg. Ebben az esetben a tároló operációs rendszer Linux lenne. Ebben az oktatóanyagban ne feledje, hogy a *fejlesztői gép operációs rendszere* és a *tároló operációs rendszer* közötti különbség.
 
-Ez az oktatóanyag a IoT Edge rendszert futtató linuxos eszközöket célozza meg. Használhatja az előnyben részesített operációs rendszert, ha a fejlesztői számítógép Linux-tárolókat futtat. Javasoljuk, hogy a Visual Studio Code használatával fejlesszen a Linux-eszközökhöz, hogy ezt az oktatóanyagot fogjuk használni. Használhatja a Visual studiót is, de a két eszköz között eltérések vannak.
+>[!TIP]
+>Ha Windows rendszeren használja a Linux rendszerhez készült [IoT Edge](iot-edge-for-linux-on-windows.md), akkor a forgatókönyvben a *célként megadott eszköz* a Linux rendszerű virtuális gép, nem pedig a Windows-gazdagép.
+
+Ez az oktatóanyag a Linux-tárolókkal IoT Edget futtató eszközöket célozza meg. Használhatja az előnyben részesített operációs rendszert, ha a fejlesztői számítógép Linux-tárolókat futtat. Javasoljuk, hogy a Visual Studio Code használatával fejlesszen a Linux-tárolókat, hogy ezt az oktatóanyagot fogjuk használni. Használhatja a Visual studiót is, de a két eszköz között eltérések vannak.
 
 A következő táblázat a **Linux-tárolók** támogatott fejlesztési forgatókönyveit sorolja fel a Visual Studio Code és a Visual Studio alkalmazásban.
 
@@ -97,19 +102,19 @@ A Visual Studio Code-hoz készült IoT Extensions használatával IoT Edge modul
 
 1. Telepítse a [Visual Studio Code](https://code.visualstudio.com/) -ot a fejlesztői gépére.
 
-2. A telepítés befejezése után válassza a **View**  >  **bővítmények** megtekintése lehetőséget.
+2. A telepítés befejezése után válassza a   >  **bővítmények** megtekintése lehetőséget.
 
 3. Keressen olyan **Azure IoT-eszközöket**, amelyek tulajdonképpen olyan bővítmények gyűjteményei, amelyek segítséget nyújtanak a IoT hub és a IoT eszközök használatához, valamint IoT Edge modulok fejlesztéséhez.
 
-4. Válassza a **Telepítés** lehetőséget. Az egyes mellékelt bővítmények egyenként települnek.
+4. Válassza a **Telepítés** gombot. Az egyes mellékelt bővítmények egyenként települnek.
 
-5. A bővítmények telepítésének befejezése után nyissa meg a parancssort **View** a  >  **parancs-paletta** megtekintése lehetőség kiválasztásával.
+5. A bővítmények telepítésének befejezése után nyissa meg a parancssort a  >  **parancs-paletta** megtekintése lehetőség kiválasztásával.
 
 6. A parancs palettáján keresse meg és válassza ki az **Azure: bejelentkezés** lehetőséget. Az utasításokat követve jelentkezzen be Azure-fiókjába.
 
 7. A parancssorban keresse meg és válassza ki az **Azure IoT hub: válassza a IoT hub lehetőséget**. Kövesse az utasításokat az Azure-előfizetés és az IoT hub kiválasztásához.
 
-8. Nyissa meg a Visual Studio Code Explorer szakaszát úgy, hogy kiválasztja a bal oldali tevékenység sávján található ikont, vagy az Intéző **megtekintése** lehetőségre kattint  >  **Explorer**.
+8. Nyissa meg a Visual Studio Code Explorer szakaszát úgy, hogy kiválasztja a bal oldali tevékenység sávján található ikont, vagy az Intéző **megtekintése** lehetőségre kattint  >  .
 
 9. Az Explorer szakasz alján bontsa ki az összecsukott **Azure IoT hub/eszközök** menüt. A IoT hubhoz kiválasztott eszközöket és IoT Edge eszközöket a parancssorban kell megtekinteni.
 
@@ -212,7 +217,7 @@ A Project sablonhoz tartozó C#-kód a [ModuleClient osztályt](/dotnet/api/micr
 
 Adja meg a tároló beállításjegyzékbeli hitelesítő adatait a Docker számára, hogy a tároló rendszerképét leküldheti a beállításjegyzékben.
 
-1. Nyissa meg a Visual Studio Code integrált terminált a terminál **megtekintése** lehetőség kiválasztásával  >  **Terminal**.
+1. Nyissa meg a Visual Studio Code integrált terminált a terminál **megtekintése** lehetőség kiválasztásával  >  .
 
 2. Jelentkezzen be a Docker-be a beállításjegyzék létrehozása után mentett Azure Container Registry hitelesítő adatokkal.
 

@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: ae07f51a91745acdaf2601d3a50bf282129dac71
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 7b7e29b6e2ebb3b229045df439848264540b59b1
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881805"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461623"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2-esemény forrásai
 
@@ -27,7 +27,7 @@ Az eseményeket UTF-8 kódolású JSON-ként kell elküldeni.
 
 ## <a name="create-or-edit-event-sources"></a>Eseményforrás létrehozása vagy szerkesztése
 
-Az eseményforrás-erőforrás (ok) ugyanabban az Azure-előfizetésben is elérhetők, mint a Azure Time Series Insights Gen2-környezet vagy egy másik előfizetés. A környezete eseményforrás létrehozásához, szerkesztéséhez és eltávolításához használhatja a [Azure Portal](./tutorials-set-up-tsi-environment.md#create-an-azure-time-series-insights-gen2-environment), az [Azure CLI](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights), az [ARM-sablonokat](time-series-insights-manage-resources-using-azure-resource-manager-template.md)és a [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) .
+Az eseményforrás-erőforrás (ok) ugyanabban az Azure-előfizetésben is elérhetők, mint a Azure Time Series Insights Gen2-környezet vagy egy másik előfizetés. A környezete eseményforrás létrehozásához, szerkesztéséhez és eltávolításához használhatja a [Azure Portal](./tutorial-set-up-environment.md#create-an-azure-time-series-insights-gen2-environment), az [Azure CLI](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights), az [ARM-sablonokat](time-series-insights-manage-resources-using-azure-resource-manager-template.md)és a [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) .
 
 Egy eseményforrás összekapcsolásakor a Azure Time Series Insights Gen2-környezete a legrégebbi eseménytől kezdve beolvassa az IOT vagy az Event hub-ban jelenleg tárolt összes eseményt.
 
@@ -92,7 +92,7 @@ Az időzóna-eltolást a következők egyikének kell megformáznia:
 ± HH: PP</br>
 ± HH: MMZ</br>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Olvassa el a [JSON-összeolvasztási és-Escape-szabályokat](./concepts-json-flattening-escaping-rules.md) , hogy megtudja, hogyan lesznek tárolva az események.
 

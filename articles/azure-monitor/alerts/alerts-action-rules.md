@@ -3,12 +3,12 @@ title: Azure Monitor riasztásokra vonatkozó műveleti szabályok
 description: Megtudhatja, hogyan konfigurálhatja és kezelheti a Azure Monitorban szereplő műveleti szabályokat.
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 1a86493b4b478e8ebc75545bf80dafa425132fe4
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: bf254249f5b347d32255820da370a499c84da212
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103015998"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463068"
 ---
 # <a name="action-rules-preview"></a>Műveleti szabályok (előzetes verzió)
 
@@ -65,18 +65,25 @@ Megadhat szűrőket is, hogy a szabály a riasztások egy adott részhalmazára 
 
 A rendelkezésre álló szűrők a következők:
 
-* **Súlyosság**: Ez a szabály csak a kijelölt megszakításokkal rendelkező riasztásokra vonatkozik.  
+* **Súlyosság**  
+Ez a szabály csak a kijelölt megszakításokkal rendelkező riasztásokra vonatkozik.  
 Például a **Súlyosság = Sev1** azt jelenti, hogy a szabály csak a Sev1 súlyosságú riasztásokra vonatkozik.
-* **Figyelő szolgáltatás**: Ez a szabály csak a kiválasztott figyelési szolgáltatásokból érkező riasztásokra vonatkozik.  
+* **Szolgáltatás figyelése**  
+Ez a szabály csak a kiválasztott figyelési szolgáltatásokból érkező riasztásokra vonatkozik.  
 A (z) **"Azure Backup" figyelő** például azt jelenti, hogy a szabály csak a biztonsági mentési riasztásokra vonatkozik (Azure Backup).
-* **Erőforrás típusa**: Ez a szabály csak a kiválasztott erőforrástípusok riasztásokra vonatkozik.  
+* **Erőforrás típusa**  
+Ez a szabály csak a kiválasztott erőforrástípusok riasztására vonatkozik.  
 A (z) **"Virtual Machines" erőforrástípus** például azt jelenti, hogy a szabály csak a virtuális gépeken lévő riasztásokra lesz érvényes.
-* **Riasztási szabály azonosítója**: Ez a szabály csak az adott riasztási szabálytól érkező riasztásokra vonatkozik. Az értéknek a riasztási szabály Resource Manager-AZONOSÍTÓjának kell lennie.  
-Például a **riasztási szabály azonosítója = "/Subscriptions/SubId1/resourceGroups/ResourceGroup1/Providers/Microsoft.Insights/metricalerts/MyAPI-highLatency"** azt jelenti, hogy ez a szabály csak az "MyAPI-highLatency" metrika riasztási szabályból érkező riasztásokra vonatkozik.
-* **Figyelési feltétel**: Ez a szabály csak a megadott figyelési feltétellel rendelkező riasztási eseményekre vonatkozik – vagy **kilőtt** vagy **megoldott**.
-* **Leírás**: Ez a szabály csak olyan riasztásokra vonatkozik, amelyek egy adott karakterláncot tartalmaznak a riasztás leírása mezőben. Ez a mező tartalmazza a riasztási szabály leírását.  
+* **Riasztási szabály azonosítója**  
+Ez a szabály csak az adott riasztási szabálytól érkező riasztásokra vonatkozik. Az értéknek a riasztási szabály Resource Manager-AZONOSÍTÓjának kell lennie.  
+Például a **riasztási szabály azonosítója = "/Subscriptions/SubId1/resourceGroups/ResourceGroup1/Providers/Microsoft.Insights/metricalerts/API-latency"** azt jelenti, hogy ez a szabály csak az "API-késleltetés" metrikai szabályból érkező riasztásokra vonatkozik.
+* **Figyelési feltétel**  
+Ez a szabály csak a megadott figyelési feltétellel rendelkező riasztási eseményekre vonatkozik – vagy **kilőtt** vagy **megoldott**.
+* **Leírás**  
+Ez a szabály csak olyan riasztásokra vonatkozik, amelyek egy adott karakterláncot tartalmaznak a riasztás leírása mezőben. Ez a mező tartalmazza a riasztási szabály leírását.  
 Például a **Leírás tartalmazza a "Prod"** kifejezést, amely azt jelenti, hogy a szabály csak a "Prod" karakterláncot tartalmazó riasztásokat fogja használni a leírásában.
-* **Riasztási környezet (hasznos adat)**: Ez a szabály csak olyan riasztásokra vonatkozik, amelyek egy vagy több meghatározott értéket tartalmaznak a riasztás környezeti mezőiben.  
+* **Riasztási környezet (hasznos adat)**  
+Ez a szabály csak olyan riasztásokra vonatkozik, amelyek egy vagy több meghatározott értéket tartalmaznak a riasztás környezeti mezőiben.  
 Például a **riasztási környezet (hasznos adat) tartalmazza a "Computer-01"** karakterláncot, amely azt jelenti, hogy a szabály csak azokra a riasztásokra vonatkozik, amelyek hasznos adatai tartalmazzák a "Computer-01" karakterláncot.
 
 Ha egy szabályban több szűrőt is beállít, mindegyiket alkalmazza. Ha például a **"= Virtual Machines** és **Súlyosság" = Sev0** értéket állítja be, akkor a szabály csak a virtuális gépeken futó Sev0-riasztásokra lesz érvényes.

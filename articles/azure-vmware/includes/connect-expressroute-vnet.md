@@ -3,12 +3,12 @@ title: A ExpressRoute és a virtuális hálózati átjáró összekötése
 description: A ExpressRoute virtuális hálózati átjáróhoz való kapcsolódásának lépései.
 ms.topic: include
 ms.date: 12/08/2020
-ms.openlocfilehash: 5f9a565a7662041dbd85e61388129496fa376962
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: cea07f9a75e91b2b8ff444c9dda4a59d421ca37c
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861517"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462339"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-configure-networking.md -->
 
@@ -31,6 +31,8 @@ ms.locfileid: "96861517"
    | **Engedélyezési kulcs**  | Másolja és illessze be az engedélyezési kulcsot az erőforráscsoport ExpressRoute lapjáról. |
    | **Társ áramkör URI-ja**  | Másolja és illessze be a ExpressRoute-azonosítót az erőforráscsoport ExpressRoute lapjáról.  |
 
-   :::image type="content" source="../media/expressroute-global-reach/open-cloud-shell.png" alt-text="A kapcsolatok hozzáadása lapon adja meg a mezők értékeit, majd kattintson az OK gombra." border="true" lightbox="../media/expressroute-global-reach/open-cloud-shell.png":::
+   :::image type="content" source="../media/expressroute-global-reach/expressroute-add-connection.png" alt-text="Képernyőkép a kapcsolat hozzáadása lapról a ExpressRoute a virtuális hálózati átjáróhoz való csatlakoztatásához.":::
 
 Létrejön a ExpressRoute-áramkör és a Virtual Network közötti kapcsolat.
+
+:::image type="content" source="../media/expressroute-global-reach/virtual-network-gateway-connections.png" alt-text="Képernyőfelvétel a virtuális hálózati átjáró kapcsolatairól.":::

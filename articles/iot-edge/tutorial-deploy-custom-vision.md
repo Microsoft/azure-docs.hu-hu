@@ -9,14 +9,16 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 8e64233ce1d59512e38ce6c366eba889392c4623
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8da5c24265a43eaaf1ecfe80649b6f4fea588b3f
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736491"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103464062"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Oktatóanyag: Képosztályozás végrehajtása a peremhálózaton a Custom Vision Service használatával
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Az Azure IoT Edge hatékonyabbá teheti IoT-megoldását a felhőben található számítási feladatok peremhálózatra történő áthelyezése által. Ez a képesség hasznos a nagy mennyiségű adatot feldolgozó szolgáltatások, például számítógépes látástechnológiai modellek esetében. A [Custom Vision Service](../cognitive-services/custom-vision-service/overview.md) szolgáltatással egyéni képosztályozókat hozhat létre és helyezhet üzembe tárolóként egy eszközön. Ezzel a két szolgáltatással megállapításokat tehet képekről vagy videostreamekről anélkül, hogy az adatokat először át kellene helyeznie az oldalról. A Custom Vision egy olyan osztályozót biztosít, amely a megállapítások létrehozásához összehasonlítja a képet egy betanított modellel.
 
@@ -42,10 +44,10 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 >[!TIP]
 >Ez az oktatóanyag a Custom Vision egyszerűsített változata, amely [egy málna PI 3](https://github.com/Azure-Samples/custom-vision-service-iot-edge-raspberry-pi) minta projektben Azure IoT Edge. Ez az oktatóanyag úgy lett kialakítva, hogy egy felhőalapú virtuális gépen fusson, és statikus képeket használ a képosztályozó betanítására és tesztelésére, ami akkor hasznos, ha valaki kiértékeli a Custom Vision IoT Edge. A minta projekt fizikai hardvert használ, és beállítja az élő kamera-hírcsatornát a képosztályozó betanítására és tesztelésére, ami olyan személy számára hasznos, aki részletesebb, valós helyzetet szeretne kipróbálni.
 
-Az oktatóanyag megkezdése előtt el kellett volna végeznie az előző oktatóanyagot, amellyel beállíthatja a környezetét a Linux-tárolók fejlesztéséhez: [IoT Edge modulok létrehozása Linux-eszközökhöz](tutorial-develop-for-linux.md). Az oktatóanyag elvégzésével a következő előfeltételek szükségesek:
+Az oktatóanyag megkezdése előtt el kellett volna végeznie az előző oktatóanyagot, amellyel beállíthatja a környezetét a Linux-tárolók fejlesztéséhez: [IoT Edge modulok létrehozása Linux-tárolók használatával](tutorial-develop-for-linux.md). Az oktatóanyag elvégzésével a következő előfeltételek szükségesek:
 
 * Egy ingyenes vagy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban.
-* [Azure IoT Edge rendszert futtató Linux-eszköz](quickstart-linux.md)
+* Azure IoT Edge rendszert futtató eszköz. A rövid útmutatók segítségével [Linux-eszközt](quickstart-linux.md) vagy [Windows-eszközt](quickstart.md)állíthat be.
 * Egy tároló-beállításjegyzék, például [Azure Container Registry](../container-registry/index.yml).
 * A [Visual Studio Code](https://code.visualstudio.com/) az [Azure IoT-eszközökkel](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)van konfigurálva.
 * A [Docker CE](https://docs.docker.com/install/) Linux-tárolók futtatására van konfigurálva.

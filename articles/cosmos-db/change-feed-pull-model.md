@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.reviewer: sngun
-ms.openlocfilehash: 979194efc5ea956c99943cba15efc4a5e3fea2f9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9279dddc92629b17a2a73f3a41fe261d322d677e
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691603"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463680"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>A hírcsatorna lekérési modelljének módosítása Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -48,7 +48,7 @@ Az alábbi helyzetekben érdemes megfontolni a lekéréses modell használatát:
 | A jövőbeli változások lekérdezése | Automatikusan ellenőrzi a módosításokat a felhasználó által megadott érték alapján `WithPollInterval` | Kézi |
 | Olyan viselkedés, ahol nincsenek új módosítások | Automatikus várakozás `WithPollInterval` és ismételt vizsgálat | Meg kell fognia a kivételt, és manuálisan újra kell ellenőriznie |
 | A teljes tároló változásainak feldolgozása | Igen, és automatikusan párhuzamosan, több szálon/gépen, ugyanarról a tárolóból| Igen, és manuálisan párhuzamosan a FeedTokens használatával |
-| Csak egyetlen partíciós kulcs változásainak feldolgozása | Nem támogatott | Igen|
+| Csak egyetlen partíciós kulcs változásainak feldolgozása | Nem támogatott | Yes|
 | Támogatási szint | Általánosan elérhető | Előnézet |
 
 > [!NOTE]
@@ -65,19 +65,19 @@ A `FeedIterator` két ízeket tartalmaz. Az entitás-objektumokat visszaadó len
 Az alábbi példa egy olyan objektum beszerzését szemlélteti `FeedIterator` , amely entitás-objektumokat ad vissza, ebben az esetben egy `User` objektumot:
 
 ```csharp
-FeedIterator<User> InteratorWithPOCOS = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning());
+FeedIterator<User> InteratorWithPOCOS = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(), ChangeFeedMode.Incremental);
 ```
 
 Az alábbi példa egy `FeedIterator` , a értéket visszaadó beszerzését szemlélteti `Stream` :
 
 ```csharp
-FeedIterator iteratorWithStreams = container.GetChangeFeedStreamIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning());
+FeedIterator iteratorWithStreams = container.GetChangeFeedStreamIterator<User>(ChangeFeedStartFrom.Beginning(), ChangeFeedMode.Incremental);
 ```
 
 Ha nem ad meg a `FeedRange` -t `FeedIterator` , a teljes tároló változási csatornáját saját tempójában is feldolgozhatja. Íme egy példa, amely az aktuális időponttól kezdődően elkezdi az összes módosítás olvasását:
 
 ```csharp
-FeedIterator iteratorForTheEntireContainer = container.GetChangeFeedStreamIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Now());
+FeedIterator iteratorForTheEntireContainer = container.GetChangeFeedStreamIterator<User>(ChangeFeedStartFrom.Now(), ChangeFeedMode.Incremental);
 
 while (iteratorForTheEntireContainer.HasMoreResults)
 {
@@ -104,8 +104,7 @@ Bizonyos esetekben előfordulhat, hogy csak egy adott partíciós kulcs módosí
 
 ```csharp
 FeedIterator<User> iteratorForPartitionKey = container.GetChangeFeedIterator<User>(
-    ChangeFeedMode.Incremental, 
-    ChangeFeedStartFrom.Beginning(FeedRange.FromPartitionKey(new PartitionKey("PartitionKeyValue"))));
+    ChangeFeedStartFrom.Beginning(FeedRange.FromPartitionKey(new PartitionKey("PartitionKeyValue")), ChangeFeedMode.Incremental));
 
 while (iteratorForThePartitionKey.HasMoreResults)
 {
@@ -149,7 +148,7 @@ Abban az esetben, ha a FeedRanges-t szeretné használni, rendelkeznie kell egy 
 1. gép:
 
 ```csharp
-FeedIterator<User> iteratorA = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning(ranges[0]));
+FeedIterator<User> iteratorA = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(ranges[0]), ChangeFeedMode.Incremental);
 while (iteratorA.HasMoreResults)
 {
     try {
@@ -171,7 +170,7 @@ while (iteratorA.HasMoreResults)
 2. gép:
 
 ```csharp
-FeedIterator<User> iteratorB = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning(ranges[1]));
+FeedIterator<User> iteratorB = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(ranges[1]), ChangeFeedMode.Incremental);
 while (iteratorB.HasMoreResults)
 {
     try {
@@ -195,7 +194,7 @@ while (iteratorB.HasMoreResults)
 `FeedIterator`Egy folytatási token létrehozásával mentheti a pozícióját. A folytatási token olyan karakterlánc-érték, amely nyomon követi a FeedIterator legutóbbi feldolgozott módosításait. Ez lehetővé teszi `FeedIterator` , hogy később folytassa a folytatást. A következő kód beolvassa a változási csatornát a tároló létrehozása óta. Ha nem áll rendelkezésre több módosítás, a rendszer továbbra is megőrzi a folytatási jogkivonatot, így később folytathatja a módosítást.
 
 ```csharp
-FeedIterator<User> iterator = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.Beginning());
+FeedIterator<User> iterator = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(), ChangeFeedMode.Incremental);
 
 string continuation = null;
 
@@ -218,7 +217,7 @@ while (iterator.HasMoreResults)
 }
 
 // Some time later
-FeedIterator<User> iteratorThatResumesFromLastPoint = container.GetChangeFeedIterator<User>(ChangeFeedMode.Incremental, ChangeFeedStartFrom.ContinuationToken(continuation));
+FeedIterator<User> iteratorThatResumesFromLastPoint = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.ContinuationToken(continuation), ChangeFeedMode.Incremental);
 ```
 
 Amíg a Cosmos-tároló továbbra is létezik, a FeedIterator folytatási tokenje soha nem jár le.

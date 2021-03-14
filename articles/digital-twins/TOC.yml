@@ -13,8 +13,12 @@
   items:
     - name: Ügyfélalkalmazás kódolása
       href: tutorial-code.md
-    - name: Az alapok megismerése egy minta-ügyfélalkalmazással
-      href: tutorial-command-line-app.md
+    - name: Gráf létrehozása
+      items:
+        - name: Minta ügyfélalkalmazás használata
+          href: tutorial-command-line-app.md
+        - name: Az Azure CLI-parancsok használata
+          href: tutorial-command-line-cli.md
     - name: Teljes körű megoldás csatlakoztatása
       href: tutorial-end-to-end.md
 - name: Alapelvek
