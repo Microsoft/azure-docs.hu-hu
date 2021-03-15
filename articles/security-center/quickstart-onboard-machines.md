@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: b5dd06c148c53517214b47b39f083c99d0f37e0b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 68fcf8a8feb046fca2c26041d92264dd8b3a638e
+ms.sourcegitcommit: 33ac5cd254c33659f668a76a2e295fddcd5d194d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712198"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103465497"
 ---
 # <a name="connect-your-non-azure-machines-to-security-center"></a>Nem Azure-beli gépek összekapcsolásának Security Center
 
@@ -75,24 +75,24 @@ További információ az [Azure arc használatára képes kiszolgálókról](../
 
     Innen válassza ki az alábbi megfelelő eljárást a bevezetéshez használt gépek típusától függően:
 
-    - [A Azure Stack virtuális gépek előkészítése](#onboard-your-azure-stack-vms)
+    - [Az Azure Stack hub-beli virtuális gépek előkészítése](#onboard-your-azure-stack-hub-vms)
     - [A Linux rendszerű gépek előkészítése](#onboard-your-linux-machines)
     - [Windows rendszerű gépek előkészítése](#onboard-your-windows-machines)
 
-### <a name="onboard-your-azure-stack-vms"></a>A Azure Stack virtuális gépek előkészítése
+### <a name="onboard-your-azure-stack-hub-vms"></a>Az Azure Stack hub-beli virtuális gépek előkészítése
 
-Azure Stack virtuális gépek hozzáadásához szüksége lesz az **ügynökök kezelése** oldalon található információkra, valamint a **Azure monitor, a frissítés és a konfiguráció kezelése** virtuálisgép-bővítmény konfigurálására a Azure stack futó virtuális gépeken.
+Azure Stack hub-alapú virtuális gépek hozzáadásához szükség van az **ügynökök kezelése** oldalon található információkra, valamint a **Azure monitor, a frissítés és a konfiguráció kezelése** virtuálisgép-bővítmény konfigurálására az Azure stack hub-példányon futó virtuális gépeken.
 
 1. Az **ügynökök kezelése** lapon másolja a munkaterület- **azonosítót** és az **elsődleges kulcsot** a Jegyzettömbbe.
-1. Jelentkezzen be **Azure stack** -portálra, és nyissa meg a **virtuális gépek** lapot.
+1. Jelentkezzen be **Azure stack hub** -portálra, és nyissa meg a **virtuális gépek** lapot.
 1. Válassza ki a Security Center védelemmel ellátni kívánt virtuális gépet.
     >[!TIP]
-    > A virtuális gépek Azure Stackon való létrehozásával kapcsolatos információkért tekintse meg ezt a rövid útmutatót [a Windows rendszerű virtuális gépekről](/azure-stack/user/azure-stack-quick-windows-portal) , illetve [a Linux rendszerű virtuális gépekről](/azure-stack/user/azure-stack-quick-linux-portal).
+    > A virtuális gépek Azure Stack hub-on való létrehozásával kapcsolatos információkért tekintse meg a [Windows rendszerű virtuális gépekkel kapcsolatos](/azure-stack/user/azure-stack-quick-windows-portal) rövid útmutatót, vagy a Linux rendszerű [virtuális gépekhez](/azure-stack/user/azure-stack-quick-linux-portal)készült rövid útmutatót.
 1. Válassza a **Bővítmények** lehetőséget. Megjelenik a virtuális gépen telepített virtuálisgép-bővítmények listája.
 1. Válassza a **Hozzáadás** lapot. Az **új erőforrás** menü megjeleníti az elérhető virtuálisgép-bővítmények listáját.
 1. Válassza ki a **Azure monitor, a frissítés és a konfiguráció kezelése** bővítményt, és válassza a **Létrehozás** lehetőséget. Megnyílik a **telepítési bővítmény** konfigurációja lap.
     >[!NOTE]
-    > Ha nem látja a piactéren felsorolt **Azure monitor, frissítés és konfigurálás felügyeleti** bővítményt, forduljon a Azure stack-kezelőhöz, hogy elérhető legyen.
+    > Ha nem látja a piactéren felsorolt **Azure monitor, frissítés és konfigurálás felügyeleti** bővítményt, forduljon a Azure stack hub-kezelőhöz, hogy elérhető legyen.
 1. A **bővítmény** konfigurálása lapon illessze be az előző lépésben a Jegyzettömbbe másolt **munkaterület-azonosítót** és a **munkaterület kulcsát (elsődleges kulcs)** .
 1. A konfiguráció befejezése után kattintson **az OK gombra**. A bővítmény állapota a **kiépítés sikerességének** megfelelően jelenik meg. Akár egy óráig is eltarthat, amíg a virtuális gép megjelenik Security Center.
 
