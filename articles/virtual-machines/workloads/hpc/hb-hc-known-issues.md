@@ -5,23 +5,27 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 1/19/2021
+ms.date: 03/12/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 83f9778da91cebb651d98e2e85748cda7435230a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0a0eaa18f5b120fcc9cbf0e4da470ee46772c925
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674670"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470404"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>A H- és N-sorozatú virtuális gépek ismert problémái
 
 Ez a cikk a [H-sorozat](../../sizes-hpc.md) és az [N-sorozat](../../sizes-gpu.md) HPC-és GPU-alapú virtuális gépek használatának leggyakoribb problémáit és megoldásait ismerteti.
 
+## <a name="known-issues-on-hbv3"></a>A HBv3 ismert problémái
+- A InfiniBand jelenleg csak az 120-Core virtuális gépen (Standard_HB120rs_v3) támogatott. A többi virtuális gép méretének támogatása hamarosan engedélyezve lesz.
+- Az Azure gyorsított hálózatkezelés nem támogatott minden régióban a HBv3-sorozatban. Ez a funkció hamarosan elérhető lesz.
+
 ## <a name="accelerated-networking-on-hb-hc-hbv2-and-ndv2"></a>Gyorsított hálózatkezelés a HB, a HC, a HBv2 és a NDv2
 
-Az [Azure gyorsított hálózatkezelés](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) mostantól elérhető az RDMA és InfiniBand-kompatibilis, valamint az SR-IOV-kompatibilis VM-méretek [HB](../../hb-series.md), [HC](../../hc-series.md), [HBv2](../../hbv2-series.md) és [NDv2](../../ndv2-series.md). Ez a funkció mostantól lehetővé teszi az Azure Ethernet-hálózaton keresztüli (akár 30 GB/s) és késleltetési szintű bővítést. Bár ez elkülönül a RDMA képességeitől a InfiniBand-hálózaton keresztül, bizonyos platform-változások hatással lehetnek bizonyos MPI-implementációk viselkedésére, amikor a InfiniBand-en keresztül felveszik a feladatokat. Az egyes virtuális gépek InfiniBand felülete némileg eltérő névvel rendelkezhet (mlx5_1 a korábbi mlx5_0hoz képest), és ez szükségessé teheti az MPI-parancssorok csípését, különösen a UCX felület (általában OpenMPI és HPC-X) használata esetén.
+Az [Azure gyorsított hálózatkezelés](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) mostantól elérhető a RDMA és InfiniBand-kompatibilis, valamint az SR-IOV-kompatibilis VM-méretek [HB](../../hb-series.md), [HC](../../hc-series.md), [HBv2](../../hbv2-series.md)és [NDv2](../../ndv2-series.md). Ez a funkció mostantól lehetővé teszi az Azure Ethernet-hálózaton keresztüli (akár 30 GB/s) és késleltetési szintű bővítést. Bár ez elkülönül a RDMA képességeitől a InfiniBand-hálózaton keresztül, bizonyos platform-változások hatással lehetnek bizonyos MPI-implementációk viselkedésére, amikor a feladatok a InfiniBand-en keresztül futnak. Az egyes virtuális gépek InfiniBand felülete némileg eltérő névvel rendelkezhet (mlx5_1 a korábbi mlx5_0hoz képest), és ez szükségessé teheti az MPI-parancssorok csípését, különösen a UCX felület (általában OpenMPI és HPC-X) használata esetén.
 Erről a [blogbejegyzésről](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-and-hbv2/ba-p/2067965) további részleteket a megfigyelt problémák megoldását ismertető cikkben talál.
 
 ## <a name="infiniband-driver-installation-on-n-series-vms"></a>InfiniBand-illesztőprogram telepítése N sorozatú virtuális gépeken
@@ -54,11 +58,7 @@ Ez egy ismert probléma a "duplikált MAC with Cloud-init on Ubuntu" néven. A m
 
 ## <a name="dram-on-hb-series"></a>DRAM on HB sorozat
 
-A HB sorozatú virtuális gépek jelenleg csak 228 GB RAM-ot tudnak kiszolgálni a vendég virtuális gépeknek. Ennek az az oka, hogy az Azure hypervisor ismert korlátozása miatt a lapok nem rendelhetők hozzá a vendég virtuális géphez fenntartott AMD CCX (NUMA-tartományok) helyi DRAM-hoz.
-
-## <a name="accelerated-networking"></a>Gyorsított hálózatkezelés
-
-Az Azure-alapú gyorsított hálózatkezelés az IB-kompatibilis HPC-és GPU-alapú virtuális gépeken jelenleg nincs engedélyezve. Ha ezt a funkciót támogatja, értesítjük az ügyfeleket.
+A HB sorozatú virtuális gépek jelenleg csak 228 GB RAM-ot tudnak kiszolgálni a vendég virtuális gépeknek. Hasonlóképpen, 458 GB HBv2 és 448 GB HBv3 virtuális gépeken. Ennek az az oka, hogy az Azure hypervisor ismert korlátozása miatt a lapok nem rendelhetők hozzá a vendég virtuális géphez fenntartott AMD CCX (NUMA-tartományok) helyi DRAM-hoz.
 
 ## <a name="qp0-access-restriction"></a>qp0 hozzáférési korlátozás
 
@@ -114,5 +114,5 @@ A következő kernel figyelmeztető üzenetek figyelmen kívül hagyhatók egy H
 ## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a [HB-sorozat áttekintését](hb-series-overview.md) és a [HC-sorozat áttekintését](hc-series-overview.md) , amelyből megismerheti a számítási feladatok optimális konfigurálását a teljesítmény és a méretezhetőség érdekében.
-- Olvassa el a legújabb bejelentéseket és néhány HPC-példát, valamint az eredményeket az [Azure számítási technikai Közösség blogjában](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Olvassa el a legújabb bejelentéseket, a HPC számítási feladatait és a teljesítmény eredményeit az [Azure számítási technikai közösségi blogokban](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - A HPC-munkaterhelések futtatásának magasabb szintű építészeti nézetét lásd: [nagy teljesítményű számítástechnika (HPC) az Azure](/azure/architecture/topics/high-performance-computing/)-ban.

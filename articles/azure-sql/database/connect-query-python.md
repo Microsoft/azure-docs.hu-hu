@@ -12,14 +12,15 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/19/2020
-ms.openlocfilehash: 8fb6d319cacf85630b2c400cd18d14487725f925
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: f21e11e33d3ddf1489dba3419766a8adaa878d5f
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97703967"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491962"
 ---
 # <a name="quickstart-use-python-to-query-a-database"></a>Gyors útmutató: adatbázisok lekérdezése a Python használatával
+
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Ebben a rövid útmutatóban a Python használatával kapcsolódhat Azure SQL Databasehoz, az Azure SQL felügyelt példányához vagy a szinapszis SQL Database-hez, és T-SQL-utasítások használatával adatokat lehet lekérdezni.
@@ -35,28 +36,16 @@ Ennek a rövid útmutatónak az elvégzéséhez a következőkre lesz szüksége
   [!INCLUDE[create-configure-database](../includes/create-configure-database.md)]
 
 - [Python](https://python.org/downloads) 3 és kapcsolódó szoftverek
+    
 
-  # <a name="macos"></a>[macOS](#tab/macos)
+    |**Művelet**|**macOS**|**Ubuntu**|**Windows**|
+    |----------|-----------|------------|---------|
+    |Telepítse az ODBC-illesztőt, a SQLCMD-t és a SQL Server Python-illesztőprogramját|Használja a **1,2**, **1,3** és **2,1** lépéseket a [Python-alkalmazások létrehozása a MacOS rendszeren SQL Server használatával](https://www.microsoft.com/sql-server/developer-get-started/python/mac/). Emellett telepíti a Homebrew-t és a Pythont is.       |[Környezet konfigurálása a pyodbc Python-fejlesztéshez](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#linux)|[Környezet konfigurálása a Pyodbc Python-fejlesztéshez](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#windows).|
+    |Python-és egyéb szükséges csomagok telepítése|    |Használja az `sudo apt-get install python python-pip gcc g++ build-essential` parancsot.|    |
+    |További információ|[Microsoft ODBC-illesztőprogram macOS rendszeren](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)  |[Microsoft ODBC-illesztőprogram Linux rendszeren](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)|[Microsoft ODBC-illesztőprogram Linux rendszeren](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)|
 
-  A Homebrew és a Python, az ODBC-illesztő és a SQLCMD, valamint a SQL Server Python-illesztőprogramjának telepítéséhez használja a **1,2**, **1,3** és **2,1** lépéseket a [python-alkalmazások létrehozása a MacOS rendszeren SQL Server használatával](https://www.microsoft.com/sql-server/developer-get-started/python/mac/).
 
-  További információ: [Microsoft ODBC-illesztőprogram MacOS rendszeren](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server).
 
-  # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
-
-  A Python és az egyéb szükséges csomagok telepítéséhez használja a következőt: `sudo apt-get install python python-pip gcc g++ build-essential` .
-
-  Az ODBC-illesztő, a SQLCMD és a SQL Server Python-illesztőprogram telepítéséhez lásd: [környezet konfigurálása Pyodbc Python-fejlesztéshez](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#linux).
-
-  További információ: [Microsoft ODBC-illesztőprogram Linux rendszeren](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server).
-
-  # <a name="windows"></a>[Windows](#tab/windows)
-
-  A Python, az ODBC-illesztő és a SQLCMD, valamint a SQL Server Python-illesztőprogramjának telepítéséhez tekintse meg a [környezet konfigurálása a Pyodbc Python-fejlesztéshez](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#windows)című témakört.
-
-  További információ: [Microsoft ODBC-illesztő](/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
-
----
 A Python és az adatbázis Azure SQL Databaseban való megismeréséhez lásd: [Azure SQL Database kódtárak a Pythonhoz](/python/api/overview/azure/sql), a [pyodbc adattárhoz](https://github.com/mkleehammer/pyodbc/wiki/)és egy [pyodbc-mintához](https://github.com/mkleehammer/pyodbc/wiki/Getting-started).
 
 ## <a name="create-code-to-query-your-database"></a>Kód létrehozása az adatbázis lekérdezéséhez 
@@ -93,7 +82,7 @@ A Python és az adatbázis Azure SQL Databaseban való megismeréséhez lásd: [
 
 1. Győződjön meg arról, hogy az adatbázisokat és azok rendezéseit adja vissza, majd a parancsablakban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az első adatbázis megtervezése Azure SQL Database](design-first-database-tutorial.md)
 - [Microsoft Python-illesztőprogramok a SQL Server](/sql/connect/python/python-driver-for-sql-server/)

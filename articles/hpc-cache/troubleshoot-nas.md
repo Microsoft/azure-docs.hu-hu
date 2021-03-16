@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: troubleshooting
 ms.date: 03/18/2020
 ms.author: v-erkel
-ms.openlocfilehash: efa163a2c10a7dc93bf5d26865a0e7eb43f11dea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2a5ffa337f789c4edc3a34b3be81285337473e2
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082766"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471722"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>A NAS-konfiguráció és az NFS-tárolási cél problémáinak elhárítása
 
@@ -64,7 +64,7 @@ A különböző tárolási rendszerek különböző módszereket használnak a h
 Exportálási szabályok használata esetén ne feledje, hogy a gyorsítótár több különböző IP-címet is használhat a gyorsítótár alhálózatáról. Engedélyezi a hozzáférést a lehetséges alhálózati IP-címek teljes tartományából.
 
 > [!NOTE]
-> Alapértelmezés szerint az Azure HPC cache a gyökér-hozzáférést. További részletek a [gyorsítótár további beállításainak konfigurálása című cikkből](configuration.md#configure-root-squash) olvashatók.
+> Bár a gyorsítótárnak rendszergazdai hozzáférésre van szüksége a háttér-tárolási rendszerhez, korlátozhatja a hozzáférést a gyorsítótáron keresztül csatlakozó ügyfelek számára. Részletekért olvassa el az [ügyfél-hozzáférés vezérlése](access-policies.md#root-squash) című leírást.
 
 A NAS-tároló gyártójával együttműködve engedélyezze a megfelelő szintű hozzáférést a gyorsítótárhoz.
 
@@ -145,6 +145,6 @@ Ha a rendszer az "ACL" betűszó nélkül jelenti a biztonsági stílusát UNIX 
 
 Az ACL-eket használó rendszerek esetében az Azure HPC cache-nek további felhasználóspecifikus értékeket kell követnie a fájlokhoz való hozzáférés szabályozása érdekében. Ezt a hozzáférési gyorsítótár engedélyezésével teheti meg. Nincs egy felhasználó felé irányuló vezérlőelem a hozzáférési gyorsítótár bekapcsolásához, de egy támogatási jegyet is megnyitva kérheti, hogy engedélyezze az érintett tárolási célokat a gyorsítótár-rendszeren.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha problémája van, amely nem szerepel ebben a cikkben, [Nyisson meg egy támogatási jegyet](hpc-cache-support-ticket.md) a szakértői segítség kéréséhez.

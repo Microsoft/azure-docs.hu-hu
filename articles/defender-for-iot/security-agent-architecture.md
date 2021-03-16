@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: aceeaec63eb637002352f5c503f57890033b0381
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: de8c52372b2ef92dcf2abe357a40ef8947439a8a
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449237"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493961"
 ---
 # <a name="quickstart-security-agent-reference-architecture"></a>Gyors útmutató: biztonsági ügynök hivatkozási architektúrája
 
@@ -57,7 +57,7 @@ A IoT Defender különböző telepítő ügynököket kínál a 32 bites és a 6
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben a IoT biztonsági modul architektúrájának és a rendelkezésre álló telepítőknek a magas szintű áttekintése található.
+Ebben a cikkben a IoT Defender-IoT-Micro-Agent architektúrával és a rendelkezésre álló telepítők magas szintű áttekintését olvashatja.
 
 A Defender IoT-telepítéssel való használatának folytatásához használja a következő cikkeket:
 

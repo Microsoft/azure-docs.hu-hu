@@ -241,6 +241,8 @@
               href: hb-series.md
             - name: HBv2 sorozat
               href: hbv2-series.md
+            - name: HBv3 sorozat
+              href: hbv3-series.md
             - name: HC-sorozat
               href: hc-series.md
         - name: vCPU-kvóták

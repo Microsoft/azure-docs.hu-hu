@@ -4,14 +4,14 @@ description: A Microsoft Azure DNS-szolgáltatásának áttekintése. Saját tar
 author: rohinkoul
 ms.service: dns
 ms.topic: overview
-ms.date: 3/21/2019
+ms.date: 3/15/2021
 ms.author: rohink
-ms.openlocfilehash: 7c3aa5505ca15238b2f9e84069de58ab6b700521
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 5d81e24d344d04ea59bc6c9e6141109bf66da3c3
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608487"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491095"
 ---
 # <a name="what-is-azure-dns"></a>Mi az Azure DNS?
 
@@ -63,7 +63,7 @@ Emellett most már megadhatja a csúcspontját vagy a meztelen tartományát egy
 
 További információért lásd: [Az Azure DNS-aliasrekordok áttekintése](dns-alias.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További tudnivalókat a DNS-zónákról és -rekordokról [a DNS-zónák és -rekordok áttekintésében](dns-zones-records.md) olvashat.
 

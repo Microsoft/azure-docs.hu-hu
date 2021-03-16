@@ -3,20 +3,20 @@ title: Az Azure Event Hubs AMQP hibáinak elhárítása | Microsoft Docs
 description: Az Azure Event Hubs használatakor esetlegesen megjelenő AMQP-hibák listáját jeleníti meg, valamint a hibák okát.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 409552bb6176f2023901b4518646fbfcb2d51adf
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: 51b96792f6921bae9364212c6e5f9c987ff05e2a
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103235011"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466065"
 ---
 # <a name="amqp-errors-in-azure-event-hubs"></a>AMQP hibák az Azure-ban Event Hubs
 Ez a cikk néhány olyan hibát tartalmaz, amelyeket a AMQP Azure Event Hubs használatával történő használatakor kapott. A szolgáltatás minden szabványos viselkedése. Elkerülheti őket úgy, hogy küldési/fogadási hívásokat végez a kapcsolaton/hivatkozáson, amely automatikusan újra létrehozza a kapcsolatot vagy a hivatkozást.
 
 ## <a name="link-is-closed"></a>A hivatkozás be van zárva 
-A következő hiba jelenik meg, amikor a AMQP-kapcsolat és a hivatkozás aktív, de nem (például a Send vagy a Receive) hívás a hivatkozással 10 percet vesz igénybe. Tehát a hivatkozás le van zárva. A hálózat továbbra is nyitva van.
+A következő hiba jelenik meg, amikor a AMQP-kapcsolat és a hivatkozás aktív, de nem (például a Send vagy a Receive) hívásokat a hivatkozással 30 percre lehet használni. Tehát a hivatkozás le van zárva. A hálózat továbbra is nyitva van.
 
-"AMQP: link: leválasztásra kényszerítve: a (z)" G2:7223832: user.tenant0.cud_00000000000-0000-0000-0000-00000000000000 "hivatkozás le van választva a-közvetítőtől, mert hibák történtek a közzétevőben (link164614). Leválasztási forrás: AmqpMessagePublisher. IdleTimerExpired: Üresjárati időkorlát: 00:10:00. TrackingId: 00000000000000000000000000000000000000_G2_B3, SystemTracker: mynamespace: topic: MyTopic, időbélyeg: 2/16/2018 11:10:40 PM "
+"AMQP: link: leválasztásra kényszerítve: a (z)" G2:7223832: user.tenant0.cud_00000000000-0000-0000-0000-00000000000000 "hivatkozás le van választva a-közvetítőtől, mert hibák történtek a közzétevőben (link164614). Leválasztási forrás: AmqpMessagePublisher. IdleTimerExpired: Üresjárati időkorlát: 00:30:00. TrackingId: 00000000000000000000000000000000000000_G2_B3, SystemTracker: mynamespace: topic: MyTopic, időbélyeg: 2/16/2018 11:10:40 PM "
 
 ## <a name="connection-is-closed"></a>A csatlakoztatás be van zárva
 A AMQP-kapcsolaton a következő hiba jelenik meg, ha a kapcsolat összes hivatkozása le van zárva, mert nem volt tevékenység (inaktív), és egy új hivatkozás nem jött létre 5 percen belül.

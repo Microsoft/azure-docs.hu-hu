@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: a8f1f902b14dda7d95e3643c335e82ed7c7e5a3f
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: 2873bd9668bfba887ad9add061e68f36a747d5b8
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103232919"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492319"
 ---
 # <a name="optimize-traffic-flow-with-azure-active-directory-application-proxy"></a>A forgalom optimalizálása Azure Active Directory Application Proxy
 
@@ -181,7 +181,7 @@ Az összekötő helyezhető az Azure-adatközpontba. Mivel az összekötő tová
 
 **Forgatókönyv:** Az alkalmazás az Európai szervezet hálózatában található, az alapértelmezett bérlői régió pedig az Európa legtöbb felhasználója.
 
-**Javaslat:** Helyezze el az összekötőt az alkalmazás közelében. Frissítse az összekötő csoportot, hogy az a Europe Application proxy szolgáltatás példányaira legyen optimalizálva. A lépéseket lásd: [összekötő-csoportok optimalizálása a legközelebbi alkalmazásproxy felhőalapú szolgáltatás használatára](application-proxy-network-topology#Optimize connector-groups-to-use-closest-Application-Proxy-cloud-service).
+**Javaslat:** Helyezze el az összekötőt az alkalmazás közelében. Frissítse az összekötő csoportot, hogy az a Europe Application proxy szolgáltatás példányaira legyen optimalizálva. A lépéseket lásd: [összekötő-csoportok optimalizálása a legközelebbi alkalmazásproxy felhőalapú szolgáltatás használatára](application-proxy-network-topology.md#optimize-connector-groups-to-use-closest-application-proxy-cloud-service-preview).
 
 Mivel az Európai felhasználók egy olyan alkalmazásproxy-példányhoz férnek hozzá, amely ugyanabban a régióban található, az 1. Ugrás nem drága. A hop 3 optimalizált. A 2. Ugrás optimalizálásához érdemes a ExpressRoute-t használni.
 
@@ -189,7 +189,7 @@ Mivel az Európai felhasználók egy olyan alkalmazásproxy-példányhoz férnek
 
 **Forgatókönyv:** Az alkalmazás az Európai szervezet hálózatában található, az alapértelmezett bérlői régió pedig az USA legtöbb felhasználója.
 
-**Javaslat:** Helyezze el az összekötőt az alkalmazás közelében. Frissítse az összekötő csoportot, hogy az a Europe Application proxy szolgáltatás példányaira legyen optimalizálva. A lépéseket lásd: [összekötő-csoportok optimalizálása a legközelebbi alkalmazásproxy felhőalapú szolgáltatás használatára](/application-proxy-network-topology#Optimize connector-groups-to-use-closest-Application-Proxy-cloud-service). Az 1. Ugrás drágább lehet, mivel az összes felhasználónak hozzá kell férnie az Application proxy-példányhoz Európában.
+**Javaslat:** Helyezze el az összekötőt az alkalmazás közelében. Frissítse az összekötő csoportot, hogy az a Europe Application proxy szolgáltatás példányaira legyen optimalizálva. A lépéseket lásd: [összekötő-csoportok optimalizálása a legközelebbi alkalmazásproxy felhőalapú szolgáltatás használatára](application-proxy-network-topology.md#optimize-connector-groups-to-use-closest-application-proxy-cloud-service-preview). Az 1. Ugrás drágább lehet, mivel az összes felhasználónak hozzá kell férnie az Application proxy-példányhoz Európában.
 
 Ebben a helyzetben érdemes lehet egy másik változatot is használni. Ha a szervezet legtöbb felhasználója az Egyesült Államokban van, akkor valószínű, hogy a hálózat az USA-ra is kiterjed. Helyezze el az összekötőt az USA-ban, folytassa az alapértelmezett US régiót az összekötő-csoportok számára, és használja a dedikált belső vállalati hálózati vonalat az alkalmazáshoz Európában. Így a 2. és a 3. Ugrás is optimalizálva van.
 

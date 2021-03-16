@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/12/2021
+ms.date: 03/15/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd2a38e3d59af18477a1e5bb11e8b58dbbe81e0b
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 8e9052502eba71f025bb6724278b7001173c5217
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103471658"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491617"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory"></a>Felhasználók konfigurálása és engedélyezése SMS-alapú hitelesítéshez Azure Active Directory használatával 
 
@@ -36,6 +36,7 @@ A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van sz
 * Az SMS-hitelesítési módszer házirendjében engedélyezett összes felhasználónak licenccel kell rendelkeznie, még akkor is, ha nem használják azt. Minden engedélyezett felhasználónak rendelkeznie kell a következő Azure AD-, EMS-és Microsoft 365-licencek egyikével:
     * [Microsoft 365 (M365) F1 vagy F3][m365-firstline-workers-licensing]
     * [Enterprise Mobility + Security (EMS) E3 vagy E5][ems-licensing] vagy [Microsoft 365 (M365) E3 vagy E5][m365-licensing]
+    * [Office 365 F3][o365-f3]
 
 ## <a name="limitations"></a>Korlátozások
 

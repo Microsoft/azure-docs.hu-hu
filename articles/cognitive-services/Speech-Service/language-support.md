@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: ebdb6a44a1f20ce0835fc5d7358d99c8224d3d77
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 43456655d057ee79ed347e4a94c008d825bfa639
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102044935"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470234"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
 
@@ -194,8 +194,8 @@ A neurális hangokat felhasználhatja az csevegőrobotok-és hangsegédekkel val
 | angol (Egyesült Királyság) | `en-GB` | Nő | `en-GB-MiaNeural` | Általános kérdések |
 | angol (Egyesült Királyság) | `en-GB` | Férfi | `en-GB-RyanNeural` | Általános kérdések |
 | angol (Egyesült Államok) | `en-US` | Nő | `en-US-AriaNeural` | Általános, több hangstílus érhető el [a SSML használatával](speech-synthesis-markup.md#adjust-speaking-styles)  |
-| angol (Egyesült Államok) | `en-US` | Nő | `en-US-JennyNeural` | Általános kérdések |
-| angol (Egyesült Államok) | `en-US` | Férfi | `en-US-GuyNeural` | Általános kérdések |
+| angol (Egyesült Államok) | `en-US` | Nő | `en-US-JennyNeural` | Általános, több hangstílus érhető el [a SSML használatával](speech-synthesis-markup.md#adjust-speaking-styles)  |
+| angol (Egyesült Államok) | `en-US` | Férfi | `en-US-GuyNeural` | Általános, több hangstílus érhető el [a SSML használatával](speech-synthesis-markup.md#adjust-speaking-styles)  |
 | Finn (Finnország) | `fi-FI` | Nő | `fi-FI-NooraNeural` | Általános kérdések |
 | Finn (Finnország) | `fi-FI` | Nő | `fi-FI-SelmaNeural` <sup>Új</sup> | Általános kérdések |
 | Finn (Finnország) | `fi-FI` | Férfi | `fi-FI-HarriNeural` <sup>Új</sup> | Általános kérdések |

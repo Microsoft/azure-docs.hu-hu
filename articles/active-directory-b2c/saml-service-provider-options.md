@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: adfe5318949ffa624ebe3548944b558bd0dda9e1
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 09cfdd026105a34db976118f38b011e2c4578a24
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198472"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470771"
 ---
 # <a name="options-for-registering-a-saml-application-in-azure-ad-b2c"></a>Az SAML-alkalmazások Azure AD B2C-ben való regisztrálásának lehetőségei
 
@@ -278,6 +278,19 @@ Példa:
 ## <a name="session-management"></a>Munkamenet-kezelés
 
 A munkamenetet kezelheti Azure AD B2C és az SAML függő entitás alkalmazás között az `UseTechnicalProfileForSessionManagement` elem és a [SamlSSOSessionProvider](custom-policy-reference-sso.md#samlssosessionprovider)használatával.
+
+## <a name="force-users-to-re-authenticate"></a>A felhasználók ismételt hitelesítésének kényszerítése 
+
+A felhasználók ismételt hitelesítésének kényszerítéséhez az alkalmazás az `ForceAuthn` SAML hitelesítési kérelemben szereplő attribútumot is tartalmazhatja. Az `ForceAuthn` attribútum logikai érték. Ha igaz értékre van állítva, a rendszer a felhasználók munkamenetét érvényteleníti Azure AD B2Ckor, és a felhasználónak újra hitelesítenie kell magát. A következő SAML-hitelesítési kérelem bemutatja, hogyan állíthatja igaz értékre az `ForceAuthn` attribútumot. 
+
+
+```xml
+<samlp:AuthnRequest 
+       Destination="https://contoso.b2clogin.com/contoso.onmicrosoft.com/B2C_1A_SAML2_signup_signin/samlp/sso/login"
+       ForceAuthn="true" ...>
+    ...
+</samlp:AuthnRequest>
+```
 
 ## <a name="debug-the-saml-protocol"></a>Az SAML protokoll hibakeresése
 

@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: b937dad6c3c8f5a5773ca7779493b41c905307b1
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 787e600df4185346b250d9a96bdb89927e134075
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226505"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472024"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules"></a>Az Azure szinapszis Analytics IP-tűzfalszabályok
 
@@ -42,10 +42,6 @@ A szinapszis-munkaterülethez a szinapszis Studio használatával csatlakozhat. 
 Győződjön meg arról, hogy a hálózat és a helyi számítógép tűzfala lehetővé teszi a kimenő kommunikációt a 80, 443 és 1443 TCP-portokon a szinapszis studióhoz.
 
 Emellett engedélyeznie kell a kimenő kommunikációt a 53-es UDP-porton a szinapszis studióhoz. Ha a SSMS és a Power BI eszközzel szeretne csatlakozni, engedélyeznie kell a kimenő kommunikációt az 1433-as TCP-porton.
-
-Az SQL-kapcsolódási házirend az *alapértelmezett* értékre van állítva a munkaterületen. Ha többet szeretne megtudni azokról az IP-címekről és portokról, amelyeket az ügyfeleknek engedélyezniük [kell a kimenő kommunikációhoz.](../../azure-sql/database/connectivity-architecture.md#connection-policy)
-
-
 
 
 ## <a name="next-steps"></a>Következő lépések

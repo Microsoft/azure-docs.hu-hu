@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/22/2021
+ms.date: 03/15/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 0bbaf5fa4f3404b0e4fdb4dc016b703c58910457
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ee10aa7c461aca65f385c735f6e9aaa28af7f9e5
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101652079"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471693"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Milyen hitelesítési és ellenőrzési módszerek érhetők el az Azure Active Directoryban?
 
@@ -43,7 +43,7 @@ Az alábbi táblázat az elérhető hitelesítési módszerek biztonsági szempo
 | Vállalati Windows Hello     | Magas     | Magas      | Magas         |
 | A Microsoft Authenticator alkalmazás    | Magas     | Magas      | Magas         |
 | FIDO2 biztonsági kulcs             | Magas     | Magas      | Magas         |
-| OATH hardveres jogkivonatok           | Közepes   | Közepes    | Magas         |
+| A hardver-tokenek ESKÜje (előzetes verzió) | Közepes   | Közepes    | Magas         |
 | Az eskü szoftver jogkivonatai           | Közepes   | Közepes    | Magas         |
 | SMS                            | Közepes   | Magas      | Közepes       |
 | Hang                          | Közepes   | Közepes    | Közepes       |
@@ -68,7 +68,7 @@ A következő táblázat azt ismerteti, hogy mikor lehet hitelesítési módszer
 | Vállalati Windows Hello     | Igen                    | MFA                       |
 | A Microsoft Authenticator alkalmazás    | Igen                    | MFA és SSPR              |
 | FIDO2 biztonsági kulcs             | Igen                    | MFA                       |
-| OATH hardveres jogkivonatok           | Nem                     | MFA                       |
+| A hardver-tokenek ESKÜje (előzetes verzió) | Nem                     | MFA                       |
 | Az eskü szoftver jogkivonatai           | Nem                     | MFA                       |
 | SMS                            | Igen                    | MFA és SSPR              |
 | Hanghívás                     | Nem                     | MFA és SSPR              |
@@ -81,7 +81,7 @@ Ha többet szeretne megtudni az egyes hitelesítési módszerek működéséről
 * [Vállalati Windows Hello](/windows/security/identity-protection/hello-for-business/hello-overview)
 * [A Microsoft Authenticator alkalmazás](concept-authentication-authenticator-app.md)
 * [FIDO2 biztonsági kulcs](concept-authentication-passwordless.md#fido2-security-keys)
-* [OATH hardveres jogkivonatok](concept-authentication-oath-tokens.md#oath-hardware-tokens)
+* [A hardver-tokenek ESKÜje (előzetes verzió)](concept-authentication-oath-tokens.md#oath-hardware-tokens-preview)
 * [Az eskü szoftver jogkivonatai](concept-authentication-oath-tokens.md#oath-software-tokens)
 * [SMS-bejelentkezés](howto-authentication-sms-signin.md) és- [ellenőrzés](concept-authentication-phone-options.md#mobile-phone-verification)
 * [Telefonhívás ellenőrzése](concept-authentication-phone-options.md)

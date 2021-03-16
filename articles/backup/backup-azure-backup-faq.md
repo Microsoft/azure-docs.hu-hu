@@ -3,12 +3,12 @@ title: Gyakori kérdésekre adott válaszok
 description: 'Gyakori kérdésekre adott válaszok a következő témakörökben: az Azure Backup szolgáltatásai, mint például a Recovery Services-tárolók, a biztonsági mentés lehetséges elemei, működése, titkosítás és korlátozások. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: f819440001180a3c446f366e61e3ac0f983fa67f
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: ac58cee66aa2a89efb7194a051801b068628d3bc
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806645"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467629"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Gyakori kérdések
 
@@ -65,6 +65,13 @@ Az adatok közvetlenül a Recovery Services-tárolóból a helyszíni rendszerbe
 ### <a name="what-is-the-difference-between-a-geo-redundant-storage-grs-vault-with-and-without-the-cross-region-restore-crr-capability-enabled"></a>Mi a különbség a Geo-redundáns tárolási (GRS) tárolók között, és nem engedélyezett a régiók közötti visszaállítási (CRR) képesség?
 
 Ha engedélyezve van a [CRR](azure-backup-glossary.md#cross-region-restore-crr) képesség nélküli [GRS](azure-backup-glossary.md#grs) -tár, a másodlagos régióban lévő adatmennyiség nem érhető el, amíg az Azure be nem jelent egy katasztrófát az elsődleges régióban. Ilyen esetben a visszaállítás a másodlagos régióból történik. Ha a CRR engedélyezve van, még akkor is, ha az elsődleges régió működik, és a másodlagos régióban is aktiválhatja a visszaállítást.
+
+### <a name="can-i-move-a-subscription-that-contains-a-vault-to-a-different-azure-active-directory"></a>Áthelyezhetek egy tárolót tartalmazó előfizetést egy másik Azure Active Directoryra?
+
+Igen. Ha egy olyan előfizetést szeretne áthelyezni (amely tárolót tartalmaz) egy másik Azure Active Directoryba (AD), tekintse meg az [előfizetés átvitele egy másik könyvtárba](../role-based-access-control/transfer-subscription.md)című témakört.
+
+>[!IMPORTANT]
+>Az előfizetés áthelyezése után győződjön meg arról, hogy a következő műveleteket hajtja végre:<ul><li>A szerepköralapú hozzáférés-vezérlési engedélyek és az egyéni szerepkörök nem ruházhatók át. Az új Azure AD-ben újra létre kell hoznia az engedélyeket és a szerepköröket.</li><li>Újból létre kell hoznia a tároló felügyelt identitását (MI) a letiltásával és engedélyezésével. Emellett ki kell értékelnie és újra létre kell hoznia a MI engedélyeit.</li><li>Ha a tároló olyan funkciókat használ, amelyek a MI, például a [privát végpontok](private-endpoints.md#before-you-start) és az [ügyfél által felügyelt kulcsok](encryption-at-rest-with-cmk.md#before-you-start)használatát használják, újra kell konfigurálnia a szolgáltatásokat.</li></ul>
 
 ## <a name="azure-backup-agent"></a>Az Azure Backup ügynöke
 
@@ -232,7 +239,7 @@ A Microsoft Azure Recovery Services-(MARS-) ügynök által használt titkosít�
 
 Az adatok biztonsági másolatának titkosításához használt kulcs csak Önnek van meg. A Microsoft nem tart fenn másolatot az Azure-ban, és nem rendelkezik hozzáféréssel a kulcshoz. Ha elveszíti a kulcsot, a Microsoft nem tudja helyreállítani az adatok biztonsági másolatát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További gyakori kérdéseket is áttekinthet:
 

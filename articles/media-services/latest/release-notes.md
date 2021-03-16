@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: fc48c9b8a0a7510dd8792c959c1f63a0340f89ce
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 5a36b5c8b0c8f24d093d887ad788c4ce9857d355
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103011205"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492674"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
 
@@ -100,7 +100,7 @@ A csomagkezelő használatával frissítsen a kódban szereplő legújabb ügyf�
 - **[Felügyelt identitások](concept-managed-identities.md)**: az ügyfelek engedélyezhetik a rendszerhez rendelt felügyelt identitást egy Media Services fiók számára, hogy hozzáférést biztosítson a kulcstartóhoz (az ügyfelek által felügyelt kulcsokhoz) és a Storage-fiókokhoz (a megbízható tároláshoz).
 
 
-### <a name="updated-typescript-nodejs-samples-using-isomorphic-sdk-for-javascript"></a>Frissített írógéppel Node.js mintákat a Javascripthez készült isomorphic SDK használatával
+### <a name="updated-typescript-nodejs-samples-using-isomorphic-sdk-for-javascript"></a>Frissített írógéppel Node.js mintákat a JavaScripthez készült isomorphic SDK használatával
 
 A Node.js minták frissítve lettek a legújabb isomorphic SDK használatára. A minták mostantól az írógéppel használatát mutatják be. Emellett új élő adatfolyam-továbbítási minta lett hozzáadva Node.js/Typescript.
 
@@ -312,7 +312,7 @@ Mostantól Azure Monitor használatával megtekintheti a Media Services által k
 * A Media Services kulcs kézbesítési végpontja által küldött kérelmek figyeléséhez használja a Azure Monitor diagnosztikai naplókat. 
 * Media Services [streaming-végpontok](streaming-endpoint-concept.md)által kibocsátott mérőszámok figyelése.   
 
-Részletekért lásd: [Media Services metrikák és diagnosztikai naplók figyelése](media-services-metrics-diagnostic-logs.md).
+Részletekért lásd: [Media Services metrikák és diagnosztikai naplók figyelése](monitoring/monitor-media-services-data-reference.md).
 
 ### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>Többszörös hangsávok támogatják a dinamikus csomagolást 
 

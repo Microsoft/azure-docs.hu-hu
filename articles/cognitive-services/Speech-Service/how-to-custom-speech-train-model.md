@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 4da93503c32e380adb82028e7c5e11dddb247d6f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 166fb94f5a3aea505c0d20df861b8bc4de9ad8aa
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373368"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491112"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>A Custom Speech-modellek betanítása és üzembe helyezése
 
@@ -61,7 +61,7 @@ A **betanítási** táblázat egy új bejegyzést jelenít meg, amely megfelel a
 A Custom Speech modell pontosságának kiértékelésével és javításával kapcsolatban lásd: [útmutató](how-to-custom-speech-evaluate-data.md) . Ha a pontosság tesztelését választja, fontos, hogy olyan akusztikai adatkészletet válasszon, amely eltér a modell teljesítményének reális értelmezéséhez.
 
 > [!NOTE]
-> Az alapmodelleket és az egyéni modelleket csak egy adott dátummal lehet használni (lásd a [modell életciklusát](custom-speech-overview.md#model-lifecycle)). A Speech Studio ezt a dátumot jeleníti meg az egyes modellek és végpontok **lejárati** oszlopában. Ezt követően a kérelem egy végpontra vagy egy batch-átírásra sikertelen lehet, vagy visszaesik az alapmodellbe.
+> Az alapmodelleket és az egyéni modelleket csak egy adott dátummal lehet használni (lásd a [modell-és végponti életciklust](./how-to-custom-speech-model-and-endpoint-lifecycle.md)). A Speech Studio ezt a dátumot jeleníti meg az egyes modellek és végpontok **lejárati** oszlopában. Ezt követően a kérelem egy végpontra vagy egy batch-átírásra sikertelen lehet, vagy visszaesik az alapmodellbe.
 >
 > A modell újratanítása a legújabb alapmodellel a pontossági eredmények kihasználása és a modell lejáratának elkerülése érdekében.
 

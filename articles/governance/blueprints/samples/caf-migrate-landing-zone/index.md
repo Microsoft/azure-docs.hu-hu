@@ -1,14 +1,14 @@
 ---
 title: A felhőbevezetési keretrendszer migrálási célzónára vonatkozó tervének mintája – Áttekintés
 description: Az Azure Migrate-hez készült felhőbevezetési keretrendszer migrálási célzónára vonatkozó tervmintájának áttekintése és architektúrája.
-ms.date: 09/14/2020
+ms.date: 03/12/2021
 ms.topic: sample
-ms.openlocfilehash: 6b8e3484690d263a43d3824c054b28344ea07fb1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
+ms.openlocfilehash: 9cbf1c1a4ac4cf7a58ed27ec05cc77997da1366d
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531678"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472193"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Az Azure-beli migráláshoz készült Microsoft Cloud bevezetési keretrendszer migrálási célzónára vonatkozó tervmintájának áttekintése
 

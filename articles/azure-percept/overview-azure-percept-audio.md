@@ -7,16 +7,19 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 85eb4ed0832c9384fcd05154833bc21f83f4adf2
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 8f57c63868d6f70094cf040a92c0124b46477758
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102426348"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490194"
 ---
 # <a name="introduction-to-azure-percept-audio"></a>Az Azure Percept audio bemutatása
 
 Az Azure Percept audio egy kiegészítő eszköz, amely a Speech AI-képességeket hozzáadja az Azure Percept DK-hoz. Egy előre konfigurált hangprocesszort és egy négy mikrofonos lineáris tömböt tartalmaz, amely lehetővé teszi a hangutasítások alkalmazását, a kulcsszavak beolvasását és az Azure-Cognitive Services használó helyi figyelőket. Az Azure Percept audio szolgáltatása lehetővé teszi, hogy az eszközök gyártói az Azure Percept DK-t az új, intelligens hangvezérelt eszközökre is kiterjessze. Az Azure Percept DK, az Azure Percept Studio és más Azure Edge felügyeleti szolgáltatásokkal integráltan integrálható. A [Microsoft online áruházban](https://go.microsoft.com/fwlink/p/?LinkId=2155270)megvásárolható.
+
+> [!div class="nextstepaction"]
+> [Vásárlás](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 
 :::image type="content" source="./media/overview-azure-percept-audio/percept-audio.png" alt-text="Azure Percept hangeszköz.":::
 
@@ -67,4 +70,5 @@ Hozzon létre egy [kód nélküli beszédfelismerési megoldást](./tutorial-no-
 
 ## <a name="next-steps"></a>Következő lépések
 
-Rendeljen egy Azure Percept hangeszközt a [Microsoft online áruházban](https://go.microsoft.com/fwlink/p/?LinkId=2155270).
+> [!div class="nextstepaction"]
+> [Azure Percept hangeszköz vásárlása a Microsoft online áruházból](https://go.microsoft.com/fwlink/p/?LinkId=2155270)

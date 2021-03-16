@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 02/28/2021
-ms.author: anfeldma
+ms.date: 03/15/2021
+ms.author: kuthapar
 ms.custom: devx-track-java
-ms.openlocfilehash: 9c3209895902a11ad0b9f29ff28e9ac7f845b101
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3c740aa00b158c7ddbca3e4f61d79e37978223c2
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692725"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493611"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>Spring-adatAzure Cosmos DB v3 for Core (SQL) API: kibocsátási megjegyzések és erőforrások
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,7 +40,13 @@ ms.locfileid: "101692725"
 
 A Spring-adatAzure Cosmos DB a Core (SQL) 3-as verziójának köszönhetően a fejlesztők a Azure Cosmos DBt a Spring Applications szolgáltatásban használhatják. A Spring-adatAzure Cosmos DB teszi elérhetővé a Spring-adatfelületet az adatbázisok és gyűjtemények, a dokumentumok kezelése és a lekérdezések kiállítása során. A szinkronizálási és aszinkron (reaktív) API-k ugyanabban a Maven-összetevőben támogatottak. 
 
-A Spring-adatAzure Cosmos DB a Spring adatkeretrendszertől függ. A Azure Cosmos DB SDK csapata a 2,2-es és a 2,3-os tavaszi adatverziók Maven-összetevőit bocsátja ki.
+> [!IMPORTANT]
+> A Spring-adatAzure Cosmos DB a Spring adatkeretrendszertől függ.
+> 
+> Azure-Spring-adatok-Cosmos-verziók a 3.0.0-től a 3.4.0 támogatásához a Spring-adatok 2,2-es és 2,3-es verziói.
+> 
+> Az Azure-Spring-3.5.0 és újabb verziói támogatják a Spring-adatváltozatok 2.4.3-es és újabb verzióit.
+>
 
 A [Spring Framework](https://spring.io/projects/spring-framework) egy programozási és konfigurációs modell, amely megkönnyíti a Java-alkalmazások fejlesztését. A Spring leegyszerűsíti az alkalmazások "vízmennyiségét" a függőségi befecskendezés használatával. Számos fejlesztő, mint például a Spring, egyszerűbbvé teszi az alkalmazások létrehozását és tesztelését. A [Spring boot](https://spring.io/projects/spring-boot) kiterjeszti a vízvezetékek kezelését a webalkalmazások és a szolgáltatások fejlesztésének szem előtt tartásával. A [Spring-adatok](https://spring.io/projects/spring-data) egy programozási modell és keretrendszer az adattárolók eléréséhez, például a Azure Cosmos db egy Spring vagy Spring rendszerindítási alkalmazás kontextusában. 
 

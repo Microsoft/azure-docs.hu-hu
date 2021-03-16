@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 12/22/2020
 ms.author: v-erkel
-ms.openlocfilehash: 28265861c98cceaedf7d2662f6526a9f62fe68de
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 4f1499c9a86999bac86fb7bf185f195e9ba5f690
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803765"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472064"
 ---
 # <a name="configure-directory-services"></a>Címtárszolgáltatások konfigurálása
 
@@ -75,7 +75,7 @@ A kiszolgáló és az Alap DN az egyetlen szükséges beállítás az LDAP-műk�
 
 A **biztonságos hozzáférés** szakaszban engedélyezheti az LDAP-kapcsolat titkosítását és tanúsítvány-ellenőrzését. Miután az **Igen** gombra kattintott a titkosítás engedélyezéséhez, a következő lehetőségek közül választhat:
 
-* **Érvényes tanúsítvány megkövetelése** – ha be van állítva, az LDAP-kiszolgáló tanúsítványát a rendszer az alábbi URI-mezőben ellenőrzi a hitelesítésszolgáltatótól.
+* **Tanúsítvány érvényesítése** – ha be van állítva, az LDAP-kiszolgáló tanúsítványát a rendszer az alábbi URI-mezőben ellenőrzi a hitelesítésszolgáltatótól.
 
 * **Hitelesítésszolgáltatói tanúsítvány URI-ja** – megadja a mérvadó tanúsítvány elérési útját. Ez lehet egy HITELESÍTÉSSZOLGÁLTATÓ által hitelesített tanúsítványra vagy egy önaláírt tanúsítványra mutató hivatkozás. Ez a mező a külsőleg érvényesített tanúsítványok beállításának használatához szükséges.
 
@@ -86,7 +86,7 @@ Adja meg a **hitelesítő adatok** szakaszt, ha statikus hitelesítő adatokat s
 * **Kötési DN** – adja meg az LDAP-kiszolgáló hitelesítéséhez használandó kötési megkülönböztető nevet. (DN formátum használata.)
 * **Kötési jelszó** – adja meg a kötési DN jelszavát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az [Azure HPC cache csatlakoztatásával](hpc-cache-mount.md) kapcsolatos ügyfél-hozzáférésről
 * Ha nem megfelelően tölti le a hitelesítő adatait, a hitelesítő adatok forrásának rendszergazdájával forduljon a rendszergazdához. Ha szükséges, nyisson meg egy [támogatási jegyet](hpc-cache-support-ticket.md) .

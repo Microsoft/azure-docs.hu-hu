@@ -4,89 +4,68 @@
   items:
     - name: Mi az Azure AD RBAC?
       href: custom-overview.md
-    - name: Az Azure AD-szerepkörök ismertetése
-      href: concept-understand-roles.md
 - name: Rövid útmutatók
   items:
-    - name: Korlátlan számú alkalmazásregisztráció létrehozása
-      href: quickstart-app-registration-limits.md
-- name: Oktatóanyagok
-  expanded: true
-  items:
-    - name: Felhasználók hozzárendelése rendszergazdai szerepkörökhöz
+    - name: Szerepkörök hozzárendelése felhasználókhoz
       href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
 - name: Alapelvek
-  expanded: true
   items:
-    - name: Azure AD rendszergazdai szerepkörök delegálása
-      href: concept-delegation.md
-    - name: Alapértelmezett felhasználói engedélyek összehasonlítása
-      href: ../fundamentals/users-default-permissions.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-    - name: Az Azure és az Azure AD szerepköreinek összehasonlítása
-      href: ../../role-based-access-control/rbac-and-directory-admin-roles.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-    - name: Az Azure AD felügyeleti egységeinek ismertetése
+    - name: Az Azure AD-szerepkörök ismertetése
+      href: concept-understand-roles.md
+    - name: Szerepkörök összehasonlítása
+      items:
+        - name: Az Azure és az Azure AD szerepköreinek összehasonlítása
+          href: ../../role-based-access-control/rbac-and-directory-admin-roles.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
+        - name: Microsoft 365-szerepkörök
+          href: m365-workload-docs.md
+    - name: Csoport alapú szerepkör-hozzárendelések
+      href: groups-concept.md
+    - name: Felügyeleti egységek
       href: administrative-units.md
-- name: Útmutatók
-  expanded: true
-  items:
-    - name: Szerepkörök és engedélyek
-      expanded: true
-      items:
-        - name: Szerepkörök és engedélyek
-          href: permissions-reference.md
-        - name: Szerepkörök megtekintése és hozzárendelése
-          href: manage-roles-portal.md
-        - name: Saját alkalmazottak delegálása
-          href: my-staff-configure.md
-    - name: Egyéni szerepkörök
-      expanded: true
-      items:
-        - name: Egyéni szerepkör létrehozása
-          href: custom-create.md
-        - name: Egyéni szerepkör-hozzárendelések megtekintése
-          href: custom-view-assignments.md
-        - name: Egyéni szerepkörök hozzárendelése az Azure Portalon
-          href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: Egyéni szerepkörök hozzárendelése a PowerShellben
-          href: custom-assign-powershell.md
-        - name: Egyéni szerepkörök hozzárendelése vállalati alkalmazásokhoz
-          href: custom-enterprise-apps.md
-        - name: Egyéni szerepkörengedélyek
-          items:
-            - name: Alkalmazásregisztráció engedélyei
-              href: custom-available-permissions.md
-            - name: Nagyvállalati alkalmazás engedélyei
-              href: custom-enterprise-app-permissions.md
-            - name: Alkalmazás hozzájárulási engedélyei
-              href: custom-consent-permissions.md
-        - name: Alkalmazás rendszergazdai szerepkörének delegálása
-          href: delegate-app-roles.md
-    - name: Szerepkörök hozzárendelése csoportokhoz
-      items:
-        - name: Csoportalapú szerepkör-hozzárendelés előnézete
-          href: groups-concept.md
-        - name: Szerepkörhöz hozzárendelhető csoport létrehozása
-          href: groups-create-eligible.md
-        - name: Szerepkörök hozzárendelése csoportokhoz
-          href: groups-assign-role.md
-        - name: Szerepkör-hozzárendelések eltávolítása csoportokból
-          href: groups-remove-assignment.md
-        - name: Csoportok szerepkör-hozzárendeléseinek megtekintése
-          href: groups-view-assignments.md
-        - name: Csoportok jogosulttá tétele szerepkörökre a PIM-ben
-          href: groups-pim-eligible.md
-        - name: Gyakori kérdések és hibaelhárítás
-          href: groups-faq-troubleshooting.md
-    - name: A szerepkörök védelme
+    - name: Biztonság
       items:
         - name: Szerepkör biztonsági tervezése
           href: security-planning.md
         - name: Vészelérési fiókok létrehozása
           href: security-emergency-access.md
+- name: Útmutatók
+  items:
+    - name: Szerepkör-definíciók felsorolása
+      href: role-definitions-list.md
+    - name: Szerepkör-hozzárendelések felsorolása
+      items:
+        - name: Szerepkör-hozzárendelések felsorolása
+          href: view-assignments.md
+        - name: Csoportok szerepkör-hozzárendeléseinek listázása
+          href: groups-view-assignments.md
+    - name: Szerepkörök hozzárendelése
+      items:
+        - name: Szerepkörök hozzárendelése felhasználókhoz
+          href: manage-roles-portal.md
+        - name: Szerepkörhöz hozzárendelhető csoport létrehozása
+          href: groups-create-eligible.md
+        - name: Szerepkörök hozzárendelése csoportokhoz
+          href: groups-assign-role.md
+        - name: Csoportok jogosulttá tétele szerepkörökre a PIM-ben
+          href: groups-pim-eligible.md
+        - name: Szerepkörök társítása hatókörrel a PowerShell használatával
+          href: custom-assign-powershell.md
+        - name: Szerepkörök hozzárendelése a Graph API használatával
+          href: custom-assign-graph.md
+    - name: Szerepkör-hozzárendelések eltávolítása
+      items:
+        - name: Szerepkör-hozzárendelések eltávolítása csoportokból
+          href: groups-remove-assignment.md
+    - name: Egyéni szerepkörök létrehozása
+      items:
+        - name: Egyéni szerepkör létrehozása
+          href: custom-create.md
+        - name: Egyéni szerepkörök létrehozása nagyvállalati alkalmazásokhoz
+          href: custom-enterprise-apps.md
+        - name: Korlátlan számú alkalmazásregisztráció létrehozása
+          href: quickstart-app-registration-limits.md
     - name: Felügyeleti egységek
       items:
-        - name: Felügyeleti egységek áttekintése
-          href: administrative-units.md
         - name: Hozzáadás és kezelés
           href: admin-units-manage.md
         - name: Felhasználók hozzáadása és kezelése
@@ -95,23 +74,39 @@
           href: admin-units-add-manage-groups.md
         - name: Szerepkör hozzárendelése hatókörrel
           href: admin-units-assign-roles.md
-        - name: Gyakori kérdések és hibaelhárítás
-          href: admin-units-faq-troubleshoot.md
+    - name: Delegált
+      items:
+        - name: Alkalmazás rendszergazdai szerepkörének delegálása
+          href: delegate-app-roles.md
+        - name: Saját alkalmazottak delegálása
+          href: my-staff-configure.md
     - name: Hibaelhárítás
       items:
+        - name: Csoportokhoz rendelt szerepkörök – problémamegoldás
+          href: groups-faq-troubleshooting.md
+        - name: Felügyeleti egységek hibakeresése
+          href: admin-units-faq-troubleshoot.md
         - name: Támogatás kérése az Azure AD-hez
           href: ../fundamentals/active-directory-troubleshooting-support-howto.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
 - name: Referencia
   items:
+    - name: Beépített szerepkörök
+      href: permissions-reference.md
     - name: Legkisebb jogosultságú szerepkörök feladatonként
       href: delegate-by-task.md
-    - name: A Microsoft 365-szerepkörök dokumentációja
-      href: m365-workload-docs.md
-    - name: Graph API
-      href: /graph/api/resources/directoryrole
-    - name: Azure AD CLI
-      href: /cli/azure/ad
-    - name: Azure AD PowerShell for Graph
-      href: /powershell/azure/active-directory/install-adv2
+    - name: Alapértelmezett felhasználói engedélyek
+      href: ../fundamentals/users-default-permissions.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
+    - name: Egyéni szerepkörengedélyek
+      items:
+        - name: Alkalmazásregisztráció engedélyei
+          href: custom-available-permissions.md
+        - name: Nagyvállalati alkalmazás engedélyei
+          href: custom-enterprise-app-permissions.md
+        - name: Alkalmazás hozzájárulási engedélyei
+          href: custom-consent-permissions.md
     - name: Azure AD szolgáltatási korlátozások
       href: ../enterprise-users/directory-service-limits-restrictions.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
+    - name: Azure AD PowerShell
+      href: /powershell/azure/active-directory/overview
+    - name: Graph API
+      href: /graph/api/overview

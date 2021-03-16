@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/2/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 49a0129ff26d4a12392066aa6304317d71fdb0f1
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 1e361ad14f79ea32d83e8cff9dd9bb8607b7c766
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247590"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470686"
 ---
 # <a name="defender-for-iot-installation"></a>Defender a IoT telepítéséhez
 
@@ -42,12 +42,12 @@ A Defender for IoT Appliance-érzékelő egy SPAN porthoz vagy egy hálózati KO
 
 A következő rack Mount készülékek érhetők el:
 
-| **Központi telepítés típusa** | **Vállalat** | **Vállalat** | **SMB** |  |
+| **Központi telepítés típusa** | **Vállalat** | **Vállalat** | **SMB** | **Vonal** |
 |--|--|--|--|--|
 | **Modellezés** | HPE ProLiant DL360 | Dell PowerEdge R340 XL | HPE ProLiant DL20 | HPE ProLiant DL20 |
 | **Portok figyelése** | legfeljebb 15 RJ45 vagy 8 OPT | legfeljebb 9 RJ45 vagy 6 OPT | legfeljebb 8 RJ45 vagy 6 OPT | 4 RJ45 |
-| **Maximális sávszélesség \** _ | 3 GB/mp | 1 GB/s | 1 GB/s | 100 MB/s |
-| *Maximálisan védett eszközök** | 30 000 | 10,000 | 15 000 | 1,000 |
+| **Maximális sávszélesség\*** | 3 GB/mp | 1 GB/s | 1 GB/s | 100 MB/s |
+| **Maximálisan védett eszközök** | 30 000 | 10,000 | 15 000 | 1,000 |
 
 * A sávszélesség maximális kapacitása a protokollok eloszlása függvényében változhat.
 
@@ -58,8 +58,8 @@ A következő virtuális készülékek érhetők el:
 | **Központi telepítés típusa** | **Vállalat** | **SMB** | **Vonal** |
 |--|--|--|--|
 | **Leírás** | Virtuális berendezés vállalati telepítésekhez | Virtuális berendezés SMB-telepítésekhez | Virtuális berendezés a vonalas üzembe helyezésekhez |
-| **Maximális sávszélesség \** _ | 150 MB/s | 15 MB/s | 3 MB/s |
-| *Maximálisan védett eszközök** | 3,000 | 300 | 100 |
+| **Maximális sávszélesség\*** | 150 MB/s | 15 MB/s | 3 MB/s |
+| **Maximálisan védett eszközök** | 3,000 | 300 | 100 |
 | **Központi telepítés típusa** | Enterprise | SMB | Vonal |
 | **Leírás** | Virtuális berendezés vállalati telepítésekhez | Virtuális berendezés SMB-telepítésekhez | Virtuális berendezés a vonalas üzembe helyezésekhez |
 
@@ -84,7 +84,7 @@ A fájl elérése:
 
 1. Jelentkezzen be a Defender IoT-fiókjába.
 
-2. Lépjen a **hálózati érzékelő** vagy **a helyszíni felügyeleti konzol** lapra, és válassza ki a letölteni kívánt verziót.
+1. Lépjen a **hálózati érzékelő** vagy **a helyszíni felügyeleti konzol** lapra, és válassza ki a letölteni kívánt verziót.
 
 ### <a name="install-from-dvd"></a>Telepítés DVD-ről
 
@@ -116,9 +116,9 @@ Lemez előkészítése a kulcsra:
 
 1. Futtassa a Rufus parancsot, és válassza az **érzékelő ISO** elemet.
 
-2. Csatlakoztassa egy kulcs lemezét az előlapon.
+1. Csatlakoztassa egy kulcs lemezét az előlapon.
 
-3. Állítsa be a kiszolgáló BIOS-át úgy, hogy az USB-ről induljon el.
+1. Állítsa be a kiszolgáló BIOS-át úgy, hogy az USB-ről induljon el.
 
 ## <a name="dell-poweredger340xl-installation"></a>Dell PowerEdgeR340XL telepítése
 
@@ -149,27 +149,27 @@ A Dell PowerEdge R340XL készülék telepítéséhez a következők szükségese
 :::image type="content" source="media/tutorial-install-components/view-of-dell-poweredge-r340-front-panel.jpg" alt-text="Dell PowerEdge R340 előlapján.":::
 
  1. Bal oldali Vezérlőpult 
- 2. Optikai meghajtó (nem kötelező) 
- 3. Jobb oldali Vezérlőpult 
- 4. Információs címke 
- 5. Meghajtók  
+ 1. Optikai meghajtó (nem kötelező) 
+ 1. Jobb oldali Vezérlőpult 
+ 1. Információs címke 
+ 1. Meghajtók  
 
 ### <a name="dell-poweredge-r340-back-panel"></a>Dell PowerEdge R340 háttér panelje
 
 :::image type="content" source="media/tutorial-install-components/view-of-dell-poweredge-r340-back-panel.jpg" alt-text="Dell PowerEdge R340 hátlapja":::
 
 1. Soros port 
-2. NIC-port (GB 1) 
-3. NIC-port (GB 1) 
-4. Fél magasságú PCIe 
-5. Teljes magasságú PCIe kiegészítő kártya tárolóhelye 
-6. Tápegység 1. egysége 
-7. Tápegység 2. egysége 
-8. Rendszerazonosítás 
-9. Rendszerállapot jelző kábel portja (CMA) gomb 
-10. USB 3,0 port (2) 
-11. iDRAC9 dedikált hálózati port 
-12. VGA-port 
+1. NIC-port (GB 1) 
+1. NIC-port (GB 1) 
+1. Fél magasságú PCIe 
+1. Teljes magasságú PCIe kiegészítő kártya tárolóhelye 
+1. Tápegység 1. egysége 
+1. Tápegység 2. egysége 
+1. Rendszerazonosítás 
+1. Rendszerállapot jelző kábel portja (CMA) gomb 
+1. USB 3,0 port (2) 
+1. iDRAC9 dedikált hálózati port 
+1. VGA-port 
 
 ### <a name="dell-bios-configuration"></a>Dell BIOS-konfiguráció
 
@@ -189,28 +189,28 @@ A Dell BIOS konfigurálása:
 
 1. [A iDRAC IP-címének konfigurálása](#configure-idrac-ip-address)
 
-2. [A BIOS konfigurációs fájljának importálása](#import-the-bios-configuration-file)
+1. [A BIOS konfigurációs fájljának importálása](#import-the-bios-configuration-file)
 
 #### <a name="configure-idrac-ip-address"></a>IDRAC IP-cím konfigurálása
 
 1. Kapcsolja be az érzékelőt.
 
-2. Ha az operációs rendszer már telepítve van, válassza az F2 billentyűt a BIOS-konfiguráció megadásához.
+1. Ha az operációs rendszer már telepítve van, válassza az F2 billentyűt a BIOS-konfiguráció megadásához.
 
-3. Válassza ki a **IDRAC beállításait**.
+1. Válassza ki a **IDRAC beállításait**.
 
-4. Válassza a **hálózat** lehetőséget.
+1. Válassza a **hálózat** lehetőséget.
 
    > [!NOTE]
    > A telepítés során konfigurálnia kell a következő lépésekben említett alapértelmezett iDRAC IP-címet és jelszót. A telepítés után módosítania kell ezeket a definíciókat.
 
-5. Módosítsa a statikus IPv4-címeket a **10.100.100.250**.
+1. Módosítsa a statikus IPv4-címeket a **10.100.100.250**.
 
-6. Módosítsa a statikus alhálózati maszkot a **255.255.255.0** értékre.
+1. Módosítsa a statikus alhálózati maszkot a **255.255.255.0** értékre.
 
    :::image type="content" source="media/tutorial-install-components/idrac-network-settings-screen-v2.png" alt-text="A statikus alhálózati maszkot megjelenítő képernyőkép.":::
 
-7. Válassza a **vissza**  >  **Befejezés** lehetőséget.
+1. Válassza a **vissza**  >  **Befejezés** lehetőséget.
 
 #### <a name="import-the-bios-configuration-file"></a>A BIOS konfigurációs fájljának importálása
 
@@ -220,15 +220,15 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a BIOS-t a konfigurációs fájl ha
 
    :::image type="content" source="media/tutorial-install-components/idrac-port.png" alt-text="Képernyőkép az előre konfigurált IP-cím portról.":::
 
-2. Nyisson meg egy böngészőt, és írja be a **10.100.100.250** -t a iDRAC webes felületéhez való kapcsolódáshoz.
+1. Nyisson meg egy böngészőt, és írja be a **10.100.100.250** -t a iDRAC webes felületéhez való kapcsolódáshoz.
 
-3. Jelentkezzen be a Dell alapértelmezett rendszergazdai jogosultságokkal:
+1. Jelentkezzen be a Dell alapértelmezett rendszergazdai jogosultságokkal:
 
    - Felhasználónév: **gyökér**
 
    - Jelszó: **Calvin**
 
-4. A készülék hitelesítő adatai a következők:
+1. A készülék hitelesítő adatai a következők:
 
    - Felhasználónév: **xxx**
 
@@ -241,7 +241,7 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a BIOS-t a konfigurációs fájl ha
      > - Ön az egyetlen felhasználó, aki jelenleg csatlakozik a iDRAC-hez.
      > - A rendszer nem a BIOS menüben található.
 
-5. Nyissa meg a **konfigurációs**  >  **kiszolgáló konfigurációs profilját**. Állítsa be a következő paramétereket:
+1. Nyissa meg a **konfigurációs**  >  **kiszolgáló konfigurációs profilját**. Állítsa be a következő paramétereket:
 
    :::image type="content" source="media/tutorial-install-components/configuration-screen.png" alt-text="A kiszolgáló profiljának konfigurációját bemutató képernyőkép.":::
 
@@ -252,9 +252,9 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a BIOS-t a konfigurációs fájl ha
    | Összetevők importálása | Válassza a **BIOS, NIC, RAID** lehetőséget. |
    | Maximális várakozási idő | Válasszon **20 percet**. |
 
-6. Válassza az **Importálás** lehetőséget.
+1. Válassza az **Importálás** lehetőséget.
 
-7. A folyamat figyeléséhez nyissa meg a **karbantartási**  >  **feladatok várólistáját**.
+1. A folyamat figyeléséhez nyissa meg a **karbantartási**  >  **feladatok várólistáját**.
 
    :::image type="content" source="media/tutorial-install-components/view-the-job-queue.png" alt-text="A feladatok várólistáját megjelenítő képernyőkép.":::
 
@@ -276,33 +276,33 @@ A manuális konfiguráláshoz:
 
    - Ha a készülék a IoT készülék Defenderje, jelentkezzen be a felhasználónévvel és **xxx** -nal a jelszóhoz. 
 
-2. A BIOS-hozzáférés után lépjen az **eszközbeállítások** menüpontra.
+1. A BIOS-hozzáférés után lépjen az **eszközbeállítások** menüpontra.
 
-3. Válassza ki a RAID-vezérelt konfigurációt az **integrált RAID-vezérlő 1: Dell perc \<PERC H330 Adapter\> konfigurációs segédprogram** kiválasztásával.
+1. Válassza ki a RAID-vezérelt konfigurációt az **integrált RAID-vezérlő 1: Dell perc \<PERC H330 Adapter\> konfigurációs segédprogram** kiválasztásával.
 
-4. Válassza a **konfiguráció kezelése** lehetőséget.
+1. Válassza a **konfiguráció kezelése** lehetőséget.
 
-5. Válassza a **virtuális lemez létrehozása** lehetőséget.
+1. Válassza a **virtuális lemez létrehozása** lehetőséget.
 
-6. A **RAID szintjének kiválasztása** mezőben válassza a **RAID5** lehetőséget. A **virtuális lemez neve** mezőben adja meg a **root** értéket, és válassza a **fizikai lemezek** lehetőséget.
+1. A **RAID szintjének kiválasztása** mezőben válassza a **RAID5** lehetőséget. A **virtuális lemez neve** mezőben adja meg a **root** értéket, és válassza a **fizikai lemezek** lehetőséget.
 
-7. Jelölje be **az összes kijelölése jelölőnégyzetet** , majd válassza a **módosítások alkalmazása** lehetőséget.
+1. Jelölje be **az összes kijelölése jelölőnégyzetet** , majd válassza a **módosítások alkalmazása** lehetőséget.
 
-8. Kattintson az **OK** gombra.
+1. Kattintson az **OK** gombra.
 
-9. Görgessen le, és válassza a **virtuális lemez létrehozása** lehetőséget.
+1. Görgessen le, és válassza a **virtuális lemez létrehozása** lehetőséget.
 
-10. Jelölje be a **Confirm (megerősítés** ) jelölőnégyzetet, és válassza az **Igen** lehetőséget.
+1. Jelölje be a **Confirm (megerősítés** ) jelölőnégyzetet, és válassza az **Igen** lehetőséget.
 
-11. Válassza az **OK** lehetőséget.
+1. Válassza az **OK** lehetőséget.
 
-12. Térjen vissza a fő képernyőre, és válassza a **rendszer BIOS**-t.
+1. Térjen vissza a fő képernyőre, és válassza a **rendszer BIOS**-t.
 
-13. Válassza a **rendszerindítási beállítások** lehetőséget.
+1. Válassza a **rendszerindítási beállítások** lehetőséget.
 
-14. A **rendszerindítási mód** beállításnál válassza a **BIOS** lehetőséget.
+1. A **rendszerindítási mód** beállításnál válassza a **BIOS** lehetőséget.
 
-15. Válassza a **vissza** lehetőséget, majd kattintson a **Befejezés** gombra a BIOS-beállítások kilépéséhez.
+1. Válassza a **vissza** lehetőséget, majd kattintson a **Befejezés** gombra a BIOS-beállítások kilépéséhez.
 
 ### <a name="software-installation-dell-r340"></a>Szoftvertelepítés (Dell R340)
 
@@ -316,25 +316,25 @@ Telepítés:
 
    - Csatlakoztassa az ISO-lemezképet a iDRAC használatával. Miután bejelentkezett a iDRAC, válassza ki a virtuális konzolt, majd válassza a **virtuális média** elemet.
 
-2. A **map CD/DVD** szakaszban válassza a **fájl kiválasztása** lehetőséget.
+1. A **map CD/DVD** szakaszban válassza a **fájl kiválasztása** lehetőséget.
 
-3. A megnyíló párbeszédpanelen válassza ki a verzió ISO-lemezképfájlját.
+1. A megnyíló párbeszédpanelen válassza ki a verzió ISO-lemezképfájlját.
 
-4. Kattintson a **Térkép eszköz** gombra.
+1. Kattintson a **Térkép eszköz** gombra.
 
    :::image type="content" source="media/tutorial-install-components/mapped-device-on-virtual-media-screen-v2.png" alt-text="A leképezett eszközt megjelenítő képernyőkép.":::
 
-5. Az adathordozó csatlakoztatva van. Válassza a **Bezárás** gombot.
+1. Az adathordozó csatlakoztatva van. Válassza a **Bezárás** gombot.
 
-6. Indítsa el a készüléket. A iDRAC használatakor a **konzuli vezérlő** gombra kattintva indíthatja újra a kiszolgálókat. Ezután a **billentyűzet makrók** területen válassza az **alkalmaz** gombot, amely elindítja a CTRL + ALT + DELETE sorozatot.
+1. Indítsa el a készüléket. A iDRAC használatakor a **konzuli vezérlő** gombra kattintva indíthatja újra a kiszolgálókat. Ezután a **billentyűzet makrók** területen válassza az **alkalmaz** gombot, amely elindítja a CTRL + ALT + DELETE sorozatot.
 
-7. Válassza az **angol** lehetőséget.
+1. Válassza az **angol** lehetőséget.
 
-8. Válassza ki az **érzékelő-kiadás- \<version\> Enterprise** elemet.
+1. Válassza ki az **érzékelő-kiadás- \<version\> Enterprise** elemet.
 
    :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="A verzió kijelölését bemutató képernyőkép.":::   
 
-9. Adja meg a berendezés profilját és a hálózati tulajdonságokat:
+1. Adja meg a berendezés profilját és a hálózati tulajdonságokat:
 
    :::image type="content" source="media/tutorial-install-components/appliance-profile-screen-v2.png" alt-text="Képernyőkép, amely megjeleníti a berendezés profilját.":::   
 
@@ -348,13 +348,13 @@ Telepítés:
    | **berendezés állomásneve:** | - |
    | **DNS** | - |
    | **alapértelmezett átjáró IP-címe:** | - |
-   | **bemeneti felületek:** |  A rendszer létrehozza a bemeneti felületek listáját. A bemeneti felületek tükrözéséhez másolja a listában bemutatott összes elemet egy vesszővel elválasztó karakterrel. Vegye figyelembe, hogy nem kell konfigurálnia a híd felületet. Ez a beállítás csak különleges használati esetekben használható. |
+   | **bemeneti felületek:** |  A rendszer létrehozza a bemeneti felületek listáját. A bemeneti felületek tükrözéséhez másolja a listában bemutatott összes elemet egy vesszővel elválasztó karakterrel. Nem kell konfigurálnia a híd felületet. Ez a beállítás csak különleges használati esetekben használható. |
 
-10. Körülbelül 10 perc elteltével megjelenik a hitelesítő adatok két halmaza. Az egyik egy **CyberX** -felhasználó, az egyik pedig egy **támogatási** felhasználó számára.  
+1. Körülbelül 10 perc elteltével megjelenik a hitelesítő adatok két halmaza. Az egyik egy **CyberX** -felhasználó, az egyik pedig egy **támogatási** felhasználó számára.  
 
-11. Mentse a készülék AZONOSÍTÓját és jelszavát. Ezekre a hitelesítő adatokra akkor van szükség, amikor először használja a platformot.
+1. Mentse a készülék AZONOSÍTÓját és jelszavát. Ezekre a hitelesítő adatokra akkor van szükség, amikor először használja a platformot.
 
-12. A folytatáshoz válassza az **ENTER billentyűt** .
+1. A folytatáshoz válassza az **ENTER billentyűt** .
 
 ## <a name="hpe-proliant-dl20-installation"></a>HPE ProLiant DL20 telepítése
 
@@ -389,7 +389,7 @@ A jelszó engedélyezése és frissítése:
 
     :::image type="content" source="media/tutorial-install-components/hpe-proliant-screen-v2.png" alt-text="Képernyőkép, amely a HPE ProLiant ablakot jeleníti meg.":::
 
-2. Lépjen a **System Utilities**  >  **rendszerkonfiguráció**  >  **ILO 5 konfigurációs segédprogram**  >  **hálózati beállítások** menüpontra.
+1. Lépjen a **System Utilities**  >  **rendszerkonfiguráció**  >  **ILO 5 konfigurációs segédprogram**  >  **hálózati beállítások** menüpontra.
 
     :::image type="content" source="media/tutorial-install-components/system-configuration-window-v2.png" alt-text="A rendszer konfigurációs ablakát megjelenítő képernyőkép.":::
 
@@ -399,13 +399,13 @@ A jelszó engedélyezése és frissítése:
     
     1.  Adja meg az IP-címet, az alhálózati maszkot és az átjáró IP-címét.
 
-3. Válassza az **F10: Save** elemet.
+1. Válassza az **F10: Save** elemet.
 
-4. Válassza az **ESC** lehetőséget az **ILO 5 konfigurációs segédprogramjának** visszaszerzéséhez, majd válassza a **felhasználói kezelés** lehetőséget.
+1. Válassza az **ESC** lehetőséget az **ILO 5 konfigurációs segédprogramjának** visszaszerzéséhez, majd válassza a **felhasználói kezelés** lehetőséget.
 
-5. Válassza a **felhasználó szerkesztése/eltávolítása** lehetőséget. A rendszergazda az egyetlen alapértelmezett felhasználó által definiált. 
+1. Válassza a **felhasználó szerkesztése/eltávolítása** lehetőséget. A rendszergazda az egyetlen alapértelmezett felhasználó által definiált. 
 
-6. Módosítsa az alapértelmezett jelszót, és válassza az **F10: Save** lehetőséget.
+1. Módosítsa az alapértelmezett jelszót, és válassza az **F10: Save** lehetőséget.
 
 ### <a name="configure-the-hpe-bios"></a>A HPE BIOS konfigurálása
 
@@ -415,41 +415,41 @@ A HPE BIOS konfigurálása:
 
 1. Válassza a **rendszersegédprogramok**  >  **rendszerkonfiguráció**  >  **BIOS/platform konfigurálása (RBSU)** elemet.
 
-2. A **BIOS/platform konfigurálása (RBSU)** képernyőn válassza a **rendszerindítási beállítások** lehetőséget.
+1. A **BIOS/platform konfigurálása (RBSU)** képernyőn válassza a **rendszerindítási beállítások** lehetőséget.
 
-3. Módosítsa a **rendszerindítási módot** **örökölt BIOS módra**, majd válassza az **F10: Save** lehetőséget.
+1. Módosítsa a **rendszerindítási módot** **örökölt BIOS módra**, majd válassza az **F10: Save** lehetőséget.
 
-4. A **rendszerkonfiguráció** űrlap bezárásához kattintson kétszer az **ESC** gombra.
+1. A **rendszerkonfiguráció** űrlap bezárásához kattintson kétszer az **ESC** gombra.
 
 #### <a name="for-the-enterprise-appliance"></a>A vállalati készülék esetében
 
 1. Válassza **a beágyazott RAID 1: HPE Smart Array P408i – egy SR Gen 10**  >  **tömb konfigurációjának**  >  **létrehozása tömböt**.
 
-2. A **tömb létrehozása** űrlapon válassza az összes lehetőséget. A **vállalati** készülék három lehetőség közül választhat.
+1. A **tömb létrehozása** űrlapon válassza az összes lehetőséget. A **vállalati** készülék három lehetőség közül választhat.
 
 #### <a name="for-the-smb-appliance"></a>Az SMB-készülék esetében
 
 1. Válassza **a beágyazott RAID 1: HPE Smart Array P208i – egy SR Gen 10**  >  **tömb konfigurációjának**  >  **létrehozása tömböt**.
 
-2. Válassza **a folytatás a következő űrlapra** lehetőséget.
+1. Válassza **a folytatás a következő űrlapra** lehetőséget.
 
-3. A **RAID-szint beállítása** űrlapon állítsa a szintet a **RAID 5** értékre a vállalati telepítések és a **RAID 1** esetében az SMB-telepítések esetében.
+1. A **RAID-szint beállítása** űrlapon állítsa a szintet a **RAID 5** értékre a vállalati telepítések és a **RAID 1** esetében az SMB-telepítések esetében.
 
-4. Válassza **a folytatás a következő űrlapra** lehetőséget.
+1. Válassza **a folytatás a következő űrlapra** lehetőséget.
 
-5. A **logikai meghajtó címkéje** űrlapon adja meg az **1. logikai meghajtót**.
+1. A **logikai meghajtó címkéje** űrlapon adja meg az **1. logikai meghajtót**.
 
-6. Válassza a **módosítások elküldése** lehetőséget.
+1. Válassza a **módosítások elküldése** lehetőséget.
 
-7. A **Küldés** űrlapon válassza a **vissza a főmenübe** lehetőséget.
+1. A **Küldés** űrlapon válassza a **vissza a főmenübe** lehetőséget.
 
-8. Válassza az **F10: Save** , majd az **ESC billentyűt** kétszer.
+1. Válassza az **F10: Save** , majd az **ESC billentyűt** kétszer.
 
-9. A **Rendszersegédprogramok** ablakban válassza az **egyszeri rendszerindítás menüt**.
+1. A **Rendszersegédprogramok** ablakban válassza az **egyszeri rendszerindítás menüt**.
 
-10. Az **egyszeri rendszerindítási menü** űrlapján válassza a **régi BIOS One-Time rendszerindító menü** lehetőséget.
+1. Az **egyszeri rendszerindítási menü** űrlapján válassza a **régi BIOS One-Time rendszerindító menü** lehetőséget.
 
-11. Ekkor megjelenik a **rendszerindítás a régi** és a **rendszerindítás felülbírálásával** ablak. Válasszon egy rendszerindítási felülbírálási lehetőséget; például CD-ROM-, USB-, HDD-vagy UEFI-rendszerhéjhoz.
+1. Ekkor megjelenik a **rendszerindítás a régi** és a **rendszerindítás felülbírálásával** ablak. Válasszon egy rendszerindítási felülbírálási lehetőséget; például CD-ROM-, USB-, HDD-vagy UEFI-rendszerhéjhoz.
 
     :::image type="content" source="media/tutorial-install-components/boot-override-window-one-v2.png" alt-text="Képernyőkép, amely az első rendszerindítási felülbírálási ablakot mutatja.":::
 
@@ -462,19 +462,19 @@ A szoftver telepítése:
 
 1. Kapcsolja össze a képernyőt és a billentyűzetet a berendezéssel, majd kapcsolódjon a CLI-hez.
 
-2. Csatlakoztasson egy külső CD-t vagy lemezt a kulcshoz a Defender for IoT portál **frissítések** lapjáról letöltött ISO-lemezképpel.
+1. Csatlakoztasson egy külső CD-t vagy lemezt a kulcshoz a Defender for IoT portál **frissítések** lapjáról letöltött ISO-lemezképpel.
 
-3. Indítsa el a készüléket.
+1. Indítsa el a készüléket.
 
-4. Válassza az **angol** lehetőséget.
+1. Válassza az **angol** lehetőséget.
 
     :::image type="content" source="media/tutorial-install-components/select-english-screen.png" alt-text="Az angol nyelv kiválasztása a CLI-ablakban.":::
 
-5. Válassza ki az **érzékelő-kiadás- <version> Enterprise** elemet.
+1. Válassza ki az **érzékelő-kiadás- <version> Enterprise** elemet.
 
     :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="Képernyőkép a képernyőről a verzió kiválasztásához.":::
 
-6. A telepítővarázsló adja meg a berendezés profilját és a hálózati tulajdonságokat:
+1. A telepítővarázsló adja meg a berendezés profilját és a hálózati tulajdonságokat:
 
     :::image type="content" source="media/tutorial-install-components/installation-wizard-screen-v2.png" alt-text="A telepítő varázslót bemutató képernyőkép.":::
 
@@ -485,11 +485,11 @@ A szoftver telepítése:
     | **Alapértelmezett hálózati paraméterek (általában az ügyfél által megadott paramétereket)** | **felügyeleti hálózati IP-cím:** <br/> <br/>**berendezés állomásneve:** <br/>**DNS** <br/>**az alapértelmezett átjáró IP-címe:**|
     | **bemeneti felületek:** | A rendszer létrehozza a bemeneti felületek listáját.<br/><br/>A bemeneti felületek tükrözéséhez másolja a listában bemutatott összes elemet egy vesszővel elválasztó karakterrel: **eno5, eno3, eno1, eno6, eno4**<br/><br/>**HPE DL20 esetében: ne sorolja fel a eno1, a enp1s0f4u4 (iLo-felületek) listáját**<br/><br/>**Híd**: nincs szükség a híd interfész konfigurálására. Ez a beállítás csak különleges használati esetekben használható. A folytatáshoz nyomja le az **Enter** billentyűt. |
 
-7. Körülbelül 10 perc elteltével megjelenik a hitelesítő adatok két halmaza. Az egyik egy **CyberX** -felhasználó, az egyik pedig egy **támogatási** felhasználó számára.
+1. Körülbelül 10 perc elteltével megjelenik a hitelesítő adatok két halmaza. Az egyik egy **CyberX** -felhasználó, az egyik pedig egy **támogatási** felhasználó számára.
 
-8. Mentse a készülék AZONOSÍTÓját és jelszavát. A platform első alkalommal való eléréséhez szüksége lesz a hitelesítő adatokra.
+1. Mentse a készülék AZONOSÍTÓját és jelszavát. A platform első alkalommal való eléréséhez szüksége lesz a hitelesítő adatokra.
 
-9. A folytatáshoz válassza az **ENTER billentyűt** .
+1. A folytatáshoz válassza az **ENTER billentyűt** .
 
 ## <a name="hpe-proliant-dl360-installation"></a>HPE ProLiant DL360 telepítése
 
@@ -528,17 +528,17 @@ Telepítés:
 
 1. Jelentkezzen be az iLO-konzolra, majd kattintson a jobb gombbal a kiszolgálók képernyőjére.
 
-2. Válassza a **HTML5-konzol** lehetőséget.
+1. Válassza a **HTML5-konzol** lehetőséget.
 
-3. A konzolon válassza a CD ikont, majd válassza a CD/DVD lehetőséget.
+1. A konzolon válassza a CD ikont, majd válassza a CD/DVD lehetőséget.
 
-4. Válassza a **helyi ISO-fájl** lehetőséget.
+1. Válassza a **helyi ISO-fájl** lehetőséget.
 
-5. A párbeszédpanelen válassza ki a megfelelő ISO-fájlt.
+1. A párbeszédpanelen válassza ki a megfelelő ISO-fájlt.
 
-6. Nyissa meg a bal oldali ikont, válassza a **teljesítmény** lehetőséget, majd kattintson az **Alaphelyzetbe állítás** elemre.
+1. Nyissa meg a bal oldali ikont, válassza a **teljesítmény** lehetőséget, majd kattintson az **Alaphelyzetbe állítás** elemre.
 
-7. A készülék újraindul, és futtatja az érzékelő telepítési folyamatát.
+1. A készülék újraindul, és futtatja az érzékelő telepítési folyamatát.
 
 ### <a name="software-installation-hpe-dl360"></a>Szoftver telepítése (HPE DL360)
 
@@ -548,17 +548,17 @@ Telepítés:
 
 1. Kapcsolja össze a képernyőt és a billentyűzetet a berendezéssel, majd kapcsolódjon a CLI-hez.
 
-2. Csatlakoztasson egy külső CD-t vagy lemezt egy kulcson a IoT portál **frissítések** lapjáról letöltött ISO-lemezképpel.
+1. Csatlakoztasson egy külső CD-t vagy lemezt egy kulcson a IoT portál **frissítések** lapjáról letöltött ISO-lemezképpel.
 
-3. Indítsa el a készüléket.
+1. Indítsa el a készüléket.
 
-4. Válassza az **angol** lehetőséget.
+1. Válassza az **angol** lehetőséget.
 
-5. Válassza ki az **érzékelő-kiadás- <version> Enterprise** elemet.
+1. Válassza ki az **érzékelő-kiadás- <version> Enterprise** elemet.
 
     :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="A verzió kijelölését bemutató képernyőkép.":::
 
-6. A telepítővarázsló adja meg a berendezés profilját és a hálózat tulajdonságait.
+1. A telepítővarázsló adja meg a berendezés profilját és a hálózat tulajdonságait.
 
     :::image type="content" source="media/tutorial-install-components/installation-wizard-screen-v2.png" alt-text="A telepítő varázslót bemutató képernyőkép.":::
 
@@ -567,13 +567,13 @@ Telepítés:
     | **Hardverprofil** | Válassza a **vállalati** lehetőséget. |
     | **Felügyeleti felület** | **eno2** |
     | **Alapértelmezett hálózati paraméterek (az ügyfél által biztosított)** | **felügyeleti hálózati IP-cím:** <br/>**alhálózati maszk:** <br/>**berendezés állomásneve:** <br/>**DNS** <br/>**az alapértelmezett átjáró IP-címe:**|
-    | **bemeneti felületek:**  | A rendszer létrehoz egy listát a bemeneti felületek listájáról.<br/><br/>A bemeneti felületek tükrözéséhez másolja a listában bemutatott összes elemet egy vesszővel elválasztó karakterrel.<br/><br/>Vegye figyelembe, hogy nem kell konfigurálnia a híd felületet. Ez a beállítás csak különleges használati esetekben használható. |
+    | **bemeneti felületek:**  | A rendszer létrehoz egy listát a bemeneti felületek listájáról.<br/><br/>A bemeneti felületek tükrözéséhez másolja a listában bemutatott összes elemet egy vesszővel elválasztó karakterrel.<br/><br/> Nem kell konfigurálnia a híd felületet. Ez a beállítás csak különleges használati esetekben használható. |
 
-7. Körülbelül 10 perc elteltével megjelenik a hitelesítő adatok két halmaza. Az egyik egy **CyberX** -felhasználó, az egyik pedig egy **támogatási** felhasználó számára.
+1. Körülbelül 10 perc elteltével megjelenik a hitelesítő adatok két halmaza. Az egyik egy **CyberX** -felhasználó, az egyik pedig egy **támogatási** felhasználó számára.
 
-8. Mentse a készülék AZONOSÍTÓját és jelszavát. Ezekre a hitelesítő adatokra akkor van szükség, amikor először szeretné elérni a platformot.
+1. Mentse a készülék AZONOSÍTÓját és jelszavát. Ezekre a hitelesítő adatokra akkor van szükség, amikor először szeretné elérni a platformot.
 
-9. A folytatáshoz válassza az **ENTER billentyűt** .
+1. A folytatáshoz válassza az **ENTER billentyűt** .
 
 ## <a name="sensor-installation-for-the-virtual-appliance"></a>A virtuális berendezés érzékelő-telepítése
 
@@ -602,13 +602,13 @@ Győződjön meg arról, hogy a hypervisor fut.
 
 1. Jelentkezzen be az ESXi- **be, válassza ki a megfelelő** adattárat, majd válassza az **adattárbeli böngésző** elemet.
 
-2. **Töltse fel** a képet, és válassza a **Bezárás** lehetőséget.
+1. **Töltse fel** a képet, és válassza a **Bezárás** lehetőséget.
 
-3. Nyissa meg a **Virtual Machines**, majd válassza a **virtuális gép létrehozása/regisztrálása** lehetőséget.
+1. Nyissa meg a **Virtual Machines**, majd válassza a **virtuális gép létrehozása/regisztrálása** lehetőséget.
 
-4. Válassza az **új virtuális gép létrehozása** lehetőséget, majd kattintson a **tovább** gombra.
+1. Válassza az **új virtuális gép létrehozása** lehetőséget, majd kattintson a **tovább** gombra.
 
-5. Adja meg az érzékelő nevét, és válassza a következőket:
+1. Adja meg az érzékelő nevét, és válassza a következőket:
 
    - Kompatibilitás: **&lt; legújabb ESXi- &gt; verzió**
 
@@ -616,15 +616,15 @@ Győződjön meg arról, hogy a hypervisor fut.
 
    - Vendég operációs rendszer verziója: **Ubuntu Linux (64 bites)**
 
-6. Kattintson a **Tovább** gombra.
+1. Kattintson a **Tovább** gombra.
 
-7. Válassza ki a megfelelő adattárt, és válassza a **tovább** lehetőséget.
+1. Válassza ki a megfelelő adattárt, és válassza a **tovább** lehetőséget.
 
-8. Módosítsa a virtuális hardver paramétereit a szükséges architektúrának megfelelően.
+1. Módosítsa a virtuális hardver paramétereit a szükséges architektúrának megfelelően.
 
-9. Az **1. CD/DVD-meghajtó** esetében válassza az **adattár ISO-fájlja** elemet, és válassza ki a korábban feltöltött ISO-fájlt.
+1. Az **1. CD/DVD-meghajtó** esetében válassza az **adattár ISO-fájlja** elemet, és válassza ki a korábban feltöltött ISO-fájlt.
 
-10. Válassza a **Tovább** > **Befejezés** lehetőséget.
+1. Válassza a **Tovább** > **Befejezés** lehetőséget.
 
 ### <a name="create-the-virtual-machine-hyper-v"></a>A virtuális gép létrehozása (Hyper-V)
 
@@ -634,43 +634,43 @@ Virtuális gép létrehozása:
 
 1. Hozzon létre egy virtuális lemezt a Hyper-V kezelőjében.
 
-2. Válassza a **Format = VHDX** elemet.
+1. Válassza a **Format = VHDX** elemet.
 
-3. Válassza a **típus = dinamikus bővítés** lehetőséget.
+1. Válassza a **típus = dinamikus bővítés** lehetőséget.
 
-4. Adja meg a virtuális merevlemez nevét és helyét.
+1. Adja meg a virtuális merevlemez nevét és helyét.
 
-5. Adja meg a szükséges méretet (az architektúra szerint).   
+1. Adja meg a szükséges méretet (az architektúra szerint).   
 
-6. Tekintse át az összegzést, és válassza a **Befejezés** lehetőséget.
+1. Tekintse át az összegzést, és válassza a **Befejezés** lehetőséget.
 
-7. A **műveletek** menüben hozzon létre egy új virtuális gépet.
+1. A **műveletek** menüben hozzon létre egy új virtuális gépet.
 
-8. Adja meg a virtuális gép nevét.
+1. Adja meg a virtuális gép nevét.
 
-9. Válassza az  >  **1**. generációs generáció megadása lehetőséget.
+1. Válassza az  >  **1**. generációs generáció megadása lehetőséget.
 
-10. Adja meg a memória kiosztását (az architektúra szerint), és jelölje be a dinamikus memória jelölőnégyzetét.
+1. Adja meg a memória kiosztását (az architektúra szerint), és jelölje be a dinamikus memória jelölőnégyzetét.
 
-11. Konfigurálja a hálózati adaptert a kiszolgáló hálózati topológiája alapján.
+1. Konfigurálja a hálózati adaptert a kiszolgáló hálózati topológiája alapján.
 
-12. Kapcsolódjon a korábban létrehozott VHDX a virtuális géphez.
+1. Kapcsolódjon a korábban létrehozott VHDX a virtuális géphez.
 
-13. Tekintse át az összegzést, és válassza a **Befejezés** lehetőséget.
+1. Tekintse át az összegzést, és válassza a **Befejezés** lehetőséget.
 
-14. Kattintson a jobb gombbal az új virtuális gépre, és válassza a **Beállítások** lehetőséget.
+1. Kattintson a jobb gombbal az új virtuális gépre, és válassza a **Beállítások** lehetőséget.
 
-15. Válassza a **hardver hozzáadása** lehetőséget, és adjon hozzá egy új hálózati adaptert.
+1. Válassza a **hardver hozzáadása** lehetőséget, és adjon hozzá egy új hálózati adaptert.
 
-16. Válassza ki azt a virtuális kapcsolót, amely csatlakozni fog az érzékelő felügyeleti hálózatához.
+1. Válassza ki azt a virtuális kapcsolót, amely csatlakozni fog az érzékelő felügyeleti hálózatához.
 
-17. A CPU-erőforrások (az architektúra alapján) foglalása.
+1. A CPU-erőforrások (az architektúra alapján) foglalása.
 
-18. A felügyeleti konzol ISO-rendszerképének csatlakoztatása egy virtuális DVD-meghajtóhoz.
+1. A felügyeleti konzol ISO-rendszerképének csatlakoztatása egy virtuális DVD-meghajtóhoz.
 
-19. Indítsa el a virtuális gépet.
+1. Indítsa el a virtuális gépet.
 
-20. A Szoftvertelepítés folytatásához a **műveletek** menüben válassza a **Kapcsolódás** lehetőséget.
+2. A Szoftvertelepítés folytatásához a **műveletek** menüben válassza a **Kapcsolódás** lehetőséget.
 
 ### <a name="software-installation-esxi-and-hyper-v"></a>Szoftvertelepítés (ESXi és Hyper-V)
 
@@ -680,11 +680,11 @@ Telepítés:
 
 1. Nyissa meg a virtuális gép konzolját.
 
-2. A virtuális gép az ISO-rendszerképből indul el, és a nyelv kiválasztása képernyő fog megjelenni. Válassza az **angol** lehetőséget.
+1. A virtuális gép az ISO-rendszerképből indul el, és a nyelv kiválasztása képernyő fog megjelenni. Válassza az **angol** lehetőséget.
 
-3. Válassza ki a szükséges architektúrát.
+1. Válassza ki a szükséges architektúrát.
 
-4. Adja meg a berendezés profilját és a hálózati tulajdonságokat:
+1. Adja meg a berendezés profilját és a hálózati tulajdonságokat:
 
     | Paraméter | Konfiguráció |
     | ----------| ------------- |
@@ -693,17 +693,17 @@ Telepítés:
     | **Hálózati paraméterek (az ügyfél által biztosított)** | **felügyeleti hálózati IP-cím:** <br/>**alhálózati maszk:** <br/>**berendezés állomásneve:** <br/>**DNS** <br/>**alapértelmezett átjáró:** <br/>**bemeneti felületek:**|
     | **híd felületek:** | Nincs szükség a híd felületének konfigurálására. Ez a beállítás csak a különleges használati esetekben használható. |
 
-5. A beállítások elfogadásához adja meg az **Y** értéket.
+1. A beállítások elfogadásához adja meg az **Y** értéket.
 
-6. A bejelentkezési hitelesítő adatok automatikusan jönnek létre és jelennek meg. Másolja a felhasználónevet és a jelszót egy biztonságos helyre, mert a bejelentkezéshez és a felügyelethez szükséges.
+1. A bejelentkezési hitelesítő adatok automatikusan jönnek létre és jelennek meg. Másolja a felhasználónevet és a jelszót egy biztonságos helyre, mert a bejelentkezéshez és a felügyelethez szükséges.
 
-   - **Támogatás**: a rendszergazda felhasználó a felhasználók felügyeletéhez.
+    - **Támogatás**: a rendszergazda felhasználó a felhasználók felügyeletéhez.
 
-   - **CyberX**: a berendezéshez való hozzáférés gyökerének megfelelője.
+    - **CyberX**: a berendezéshez való hozzáférés gyökerének megfelelője.
 
-7. A készülék újraindul.
+1. A készülék újraindul.
 
-8. A felügyeleti konzolt a korábban konfigurált IP-címen keresztül érheti el: `https://ip_address` .
+1. A felügyeleti konzolt a korábban konfigurált IP-címen keresztül érheti el: `https://ip_address` .
 
     :::image type="content" source="media/tutorial-install-components/defender-for-iot-sign-in-screen.png" alt-text="Képernyőkép, amely a felügyeleti konzolhoz való hozzáférést mutatja.":::
 
@@ -735,15 +735,15 @@ Hozzon létre egy virtuális gépet (ESXi):
 
 1. Jelentkezzen be az ESXi- **be, válassza ki a megfelelő** adattárat, majd válassza az **adattárbeli böngésző** elemet.
 
-2. Töltse fel a képet, és válassza a **Bezárás** lehetőséget.
+1. Töltse fel a képet, és válassza a **Bezárás** lehetőséget.
 
-3. Lépjen **Virtual Machines**.
+1. Lépjen **Virtual Machines**.
 
-4. Válassza a **virtuális gép létrehozása/regisztrálása** lehetőséget.
+1. Válassza a **virtuális gép létrehozása/regisztrálása** lehetőséget.
 
-5. Válassza az **új virtuális gép létrehozása** lehetőséget, és kattintson a **tovább** gombra.
+1. Válassza az **új virtuális gép létrehozása** lehetőséget, és kattintson a **tovább** gombra.
 
-6. Adja meg az érzékelő nevét, és válassza a következőket:
+1. Adja meg az érzékelő nevét, és válassza a következőket:
 
    - Kompatibilitási \<latest ESXi version>
 
@@ -751,15 +751,15 @@ Hozzon létre egy virtuális gépet (ESXi):
 
    - Vendég operációs rendszer verziója: Ubuntu Linux (64 bites)
 
-7. Kattintson a **Tovább** gombra.
+1. Kattintson a **Tovább** gombra.
 
-8. Válassza a megfelelő adattár lehetőséget, majd kattintson a **Tovább gombra**.
+1. Válassza a megfelelő adattár lehetőséget, majd kattintson a **Tovább gombra**.
 
-9. Módosítsa a virtuális hardver paramétereit a szükséges architektúrának megfelelően.
+1. Módosítsa a virtuális hardver paramétereit a szükséges architektúrának megfelelően.
 
-10. Az **1. CD/DVD-meghajtó** esetében válassza az **adattár ISO-fájlja** elemet, és válassza ki a korábban feltöltött ISO-fájlt.
+1. Az **1. CD/DVD-meghajtó** esetében válassza az **adattár ISO-fájlja** elemet, és válassza ki a korábban feltöltött ISO-fájlt.
 
-11. Válassza a **Tovább** > **Befejezés** lehetőséget.
+1. Válassza a **Tovább** > **Befejezés** lehetőséget.
 
 ### <a name="create-the-virtual-machine-hyper-v"></a>A virtuális gép létrehozása (Hyper-V)
 
@@ -767,85 +767,97 @@ Virtuális gép létrehozása a Hyper-V használatával:
 
 1. Hozzon létre egy virtuális lemezt a Hyper-V kezelőjében.
 
-2. Válassza ki a **VHDX** formátumát.
+1. Válassza ki a **VHDX** formátumát.
 
-3. Kattintson a **Tovább** gombra.
+1. Kattintson a **Tovább** gombra.
 
-4. Válassza a **dinamikus bővítés** típust.
+1. Válassza a **dinamikus bővítés** típust.
 
-5. Kattintson a **Tovább** gombra.
+1. Kattintson a **Tovább** gombra.
 
-6. Adja meg a virtuális merevlemez nevét és helyét.
+1. Adja meg a virtuális merevlemez nevét és helyét.
 
-7. Kattintson a **Tovább** gombra.
+1. Kattintson a **Tovább** gombra.
 
-8. Adja meg a szükséges méretet (az architektúra szerint).
+1. Adja meg a szükséges méretet (az architektúra szerint).
 
-9. Kattintson a **Tovább** gombra.
+1. Kattintson a **Tovább** gombra.
 
-10. Tekintse át az összegzést, és válassza a **Befejezés** lehetőséget.
+1. Tekintse át az összegzést, és válassza a **Befejezés** lehetőséget.
 
-11. A **műveletek** menüben hozzon létre egy új virtuális gépet.
+1. A **műveletek** menüben hozzon létre egy új virtuális gépet.
 
-12. Kattintson a **Tovább** gombra.
+1. Kattintson a **Tovább** gombra.
 
-13. Adja meg a virtuális gép nevét.
+1. Adja meg a virtuális gép nevét.
 
-14. Kattintson a **Tovább** gombra.
+1. Kattintson a **Tovább** gombra.
 
-15. Válassza a **Létrehozás** lehetőséget, és állítsa az **1. generációra**.
+1. Válassza a **Létrehozás** lehetőséget, és állítsa az **1. generációra**.
 
-16. Kattintson a **Tovább** gombra.
+1. Kattintson a **Tovább** gombra.
 
-17. Adja meg a memória kiosztását (az architektúra szerint), és jelölje be a dinamikus memória jelölőnégyzetét.
+1. Adja meg a memória kiosztását (az architektúra szerint), és jelölje be a dinamikus memória jelölőnégyzetét.
 
-18. Kattintson a **Tovább** gombra.
+1. Kattintson a **Tovább** gombra.
 
-19. Konfigurálja a hálózati adaptert a kiszolgáló hálózati topológiája alapján.
+1. Konfigurálja a hálózati adaptert a kiszolgáló hálózati topológiája alapján.
 
-20. Kattintson a **Tovább** gombra.
+1. Kattintson a **Tovább** gombra.
 
-21. Kapcsolódjon a korábban létrehozott VHDX a virtuális géphez.
+1. Kapcsolódjon a korábban létrehozott VHDX a virtuális géphez.
 
-22. Kattintson a **Tovább** gombra.
+1. Kattintson a **Tovább** gombra.
 
-23. Tekintse át az összegzést, és válassza a **Befejezés** lehetőséget.
+1. Tekintse át az összegzést, és válassza a **Befejezés** lehetőséget.
 
-24. Kattintson a jobb gombbal az új virtuális gépre, majd válassza a **Beállítások** lehetőséget.
+1. Kattintson a jobb gombbal az új virtuális gépre, majd válassza a **Beállítások** lehetőséget.
 
-25. Válassza a **hardver hozzáadása** lehetőséget, és adjon hozzá egy új adaptert a **hálózati adapterhez**.
+1. Válassza a **hardver hozzáadása** lehetőséget, és adjon hozzá egy új adaptert a **hálózati adapterhez**.
 
-26. A **virtuális kapcsolónál** válassza ki azt a kapcsolót, amely csatlakozni fog az érzékelő felügyeleti hálózatához.
+1. A **virtuális kapcsolónál** válassza ki azt a kapcsolót, amely csatlakozni fog az érzékelő felügyeleti hálózatához.
 
-27. A CPU-erőforrások (az architektúra alapján) foglalása.
+1. A CPU-erőforrások (az architektúra alapján) foglalása.
 
-28. A felügyeleti konzol ISO-rendszerképének csatlakoztatása egy virtuális DVD-meghajtóhoz.
+1. A felügyeleti konzol ISO-rendszerképének csatlakoztatása egy virtuális DVD-meghajtóhoz.
 
-29. Indítsa el a virtuális gépet.
+1. Indítsa el a virtuális gépet.
 
-30. A Szoftvertelepítés folytatásához a **műveletek** menüben válassza a **Kapcsolódás** lehetőséget.
+1. A Szoftvertelepítés folytatásához a **műveletek** menüben válassza a **Kapcsolódás** lehetőséget.
 
 ### <a name="software-installation-esxi-and-hyper-v"></a>Szoftvertelepítés (ESXi és Hyper-V)
 
-A virtuális gép indításakor a rendszer elindítja a telepítési folyamatot az ISO-rendszerképből.
+A virtuális gép indításakor a rendszer elindítja a telepítési folyamatot az ISO-rendszerképből. A biztonság növelése érdekében létrehozhat egy második hálózati adaptert a helyszíni felügyeleti konzolon. Az egyik hálózati adapter dedikált a felhasználók számára, és támogatja az átjáró konfigurálását az átirányított hálózatokhoz. A második hálózati adapter egy IP-címtartomány összes csatlakoztatott érzékelőjét dedikálta.
+
+Mindkét hálózati csatolón engedélyezve van a felhasználói felület (UI), és a felhasználói felület által támogatott összes funkció elérhető lesz a másodlagos hálózati adapteren, ha az Útválasztás nem szükséges. A magas rendelkezésre állás a másodlagos hálózati adapteren fog futni.
+
+Ha úgy dönt, hogy nem telepít másodlagos hálózati adaptert, az összes funkció elérhető lesz az elsődleges hálózati adapteren keresztül. 
 
 A szoftver telepítése:
 
 1. Válassza az **angol** lehetőséget.
 
-2. Válassza ki az üzemelő példányhoz szükséges architektúrát.
+1. Válassza ki az üzemelő példányhoz szükséges architektúrát.
 
-3. Adja meg az érzékelő felügyeleti hálózat hálózati adapterét: Interface, IP, alhálózat, DNS-kiszolgáló és alapértelmezett átjáró.
+1. Adja meg az érzékelő felügyeleti hálózat hálózati adapterét: Interface, IP, alhálózat, DNS-kiszolgáló és alapértelmezett átjáró.
 
-4. A bejelentkezési hitelesítő adatok automatikusan jönnek létre és jelennek meg. Tartsa meg ezeket a hitelesítő adatokat biztonságos helyen, mert a bejelentkezéshez és az adminisztrációhoz szükségesek.
+1. Választható Adjon hozzá egy második hálózati adaptert a helyszíni felügyeleti konzolhoz.
+
+    1. `Please type sensor monitoring interface (Optional. Applicable when sensors are on a different network segment. For more information see the Installation instructions): <name of interface>`
+    
+    1. `Please type an IP address for the sensor monitoring interface (accessible by the sensors): <ip address>`
+    
+    1. `Please type a subnet mask for the sensor monitoring interface (accessible by the sensors): <subnet>`
+
+1. A bejelentkezési hitelesítő adatok automatikusan jönnek létre és jelennek meg. Tartsa meg ezeket a hitelesítő adatokat biztonságos helyen, mert a bejelentkezéshez és az adminisztrációhoz szükségesek.
 
   - **Támogatás**: a rendszergazda felhasználó a felhasználók felügyeletéhez.
 
   - **CyberX**: a berendezéshez való hozzáférés gyökerének megfelelője.
 
-5. A készülék újraindul.
+1. A készülék újraindul.
 
-6. A felügyeleti konzolt a korábban konfigurált IP-címen keresztül érheti el: `<https://ip_address>` .
+1. A felügyeleti konzolt a korábban konfigurált IP-címen keresztül érheti el: `<https://ip_address>` .
 
     :::image type="content" source="media/tutorial-install-components/defender-for-iot-management-console-sign-in-screen.png" alt-text="A felügyeleti konzol bejelentkezési képernyőjén látható képernyőkép.":::
 
@@ -899,7 +911,7 @@ A telepítés utáni ellenőrzésnek tartalmaznia kell a következő teszteket:
   - A biztonsági mentési mappa mérete
   - A biztonsági mentési mappa korlátai
   - Az utolsó biztonsági mentés megtörténte után
-  - Mennyi hely van a további biztonságimásolat-fájlokhoz
+  - Mennyi hely van a további biztonsági mentési fájlok számára
 
 - **ifconfig**: megjeleníti a berendezés fizikai felületeinek paramétereit.
 
@@ -911,7 +923,7 @@ Az eszköz elérése:
 
 1. Jelentkezzen be az érzékelőbe a **támogatási** felhasználó hitelesítő adataival.
 
-2. Válassza ki a **rendszerstatisztika** elemet a **Rendszerbeállítások** ablakban.
+1. Válassza ki a **rendszerstatisztika** elemet a **Rendszerbeállítások** ablakban.
 
     :::image type="icon" source="media/tutorial-install-components/system-statistics-icon.png" border="false":::
 
@@ -923,13 +935,13 @@ Ellenőrizze, hogy a rendszer működik-e:
 
 1. Kapcsolódjon a CLI-hez a Linux-terminállal (például a PuTTY) és a felhasználó **támogatásával**.
 
-2. Írja be a következő szöveget: `system sanity`.
+1. Írja be a következő szöveget: `system sanity`.
 
-3. Győződjön meg arról, hogy az összes szolgáltatás zöld (fut).
+1. Győződjön meg arról, hogy az összes szolgáltatás zöld (fut).
 
     :::image type="content" source="media/tutorial-install-components/support-screen.png" alt-text="A futó szolgáltatásokat bemutató képernyőkép.":::
 
-4. Ellenőrizze, hogy a **rendszer működik-e. (éles)** alul látható.
+1. Ellenőrizze, hogy a **rendszer működik-e. (éles)** alul látható.
 
 **2. teszt: verzió ellenőrzése**
 
@@ -937,9 +949,9 @@ Ellenőrizze, hogy a megfelelő verzió van-e használatban:
 
 1. Kapcsolódjon a CLI-hez a Linux-terminállal (például a PuTTY) és a felhasználó **támogatásával**.
 
-2. Írja be a következő szöveget: `system version`.
+1. Írja be a következő szöveget: `system version`.
 
-3. Győződjön meg arról, hogy a megfelelő verzió jelenik meg.
+1. Győződjön meg arról, hogy a megfelelő verzió jelenik meg.
 
 **3. teszt: hálózati ellenőrzés**
 
@@ -947,9 +959,9 @@ Ellenőrizze, hogy a telepítési folyamat során konfigurált összes bemeneti 
 
 1. Kapcsolódjon a CLI-hez a Linux-terminállal (például a PuTTY) és a felhasználó **támogatásával**.
 
-2. Adja meg a `network list` (a Linux-parancs megfelelőjét `ifconfig` ).
+1. Adja meg a `network list` (a Linux-parancs megfelelőjét `ifconfig` ).
 
-3. Ellenőrizze, hogy megjelenik-e a szükséges bemeneti felületek. Ha például két négymagos réz hálózati adapter van telepítve, akkor a listában 10 illesztőfelületnek kell szerepelnie.
+1. Ellenőrizze, hogy megjelenik-e a szükséges bemeneti felületek. Ha például két négymagos réz hálózati adapter van telepítve, akkor a listában 10 illesztőfelületnek kell szerepelnie.
 
     :::image type="content" source="media/tutorial-install-components/interface-list-screen.png" alt-text="Képernyőkép, amely a felületek listáját jeleníti meg.":::
 
@@ -959,17 +971,17 @@ Ellenőrizze, hogy el tudja-e érni a konzol webes grafikus felhasználói felü
 
 1. Csatlakoztasson egy laptopot egy Ethernet-kábellel a felügyeleti porthoz (**Gb1**).
 
-2. Adja meg a laptop hálózati adapterének a berendezéssel megegyező tartományba tartozó címeit.
+1. Adja meg a laptop hálózati adapterének a berendezéssel megegyező tartományba tartozó címeit.
 
     :::image type="content" source="media/tutorial-install-components/access-to-ui.png" alt-text="Képernyőkép, amely a KEZELŐFELÜLEThez való felügyeleti hozzáférést mutatja.":::
 
-3. Pingelje a készülék IP-címét a laptopról a kapcsolat ellenőrzéséhez (alapértelmezett: 10.100.10.1).
+1. Pingelje a készülék IP-címét a laptopról a kapcsolat ellenőrzéséhez (alapértelmezett: 10.100.10.1).
 
-4. Nyissa meg a Chrome böngészőt a laptopon, és adja meg a készülék IP-címét.
+1. Nyissa meg a Chrome böngészőt a laptopon, és adja meg a készülék IP-címét.
 
-5. A **saját kapcsolatok nem privát** ablakban válassza a **speciális** és a Folytatás lehetőséget.
+1. A **saját kapcsolatok nem privát** ablakban válassza a **speciális** és a Folytatás lehetőséget.
 
-6. A teszt sikeres, ha megjelenik a Defender for IoT bejelentkezési képernyője.
+1. A teszt sikeres, ha megjelenik a Defender for IoT bejelentkezési képernyője.
 
    :::image type="content" source="media/tutorial-install-components/defender-for-iot-sign-in-screen.png" alt-text="Képernyőkép, amely a felügyeleti konzolhoz való hozzáférést mutatja.":::
 
@@ -979,9 +991,9 @@ Ellenőrizze, hogy el tudja-e érni a konzol webes grafikus felhasználói felü
 
 1. Ellenőrizze, hogy a csatlakoztatni kívánt számítógép ugyanazon a hálózaton van-e, mint a készülék.
 
-2. Ellenőrizze, hogy a GUI-hálózat csatlakoztatva van-e a felügyeleti porthoz.
+1. Ellenőrizze, hogy a GUI-hálózat csatlakoztatva van-e a felügyeleti porthoz.
 
-3. Pingelje a készülék IP-címét. Ha nincs pingelés:
+1. Pingelje a készülék IP-címét. Ha nincs pingelés:
 
    1. Csatlakoztasson egy figyelőt és egy billentyűzetet a készülékhez.
 
@@ -991,7 +1003,7 @@ Ellenőrizze, hogy el tudja-e érni a konzol webes grafikus felhasználói felü
 
       :::image type="content" source="media/tutorial-install-components/network-list.png" alt-text="A hálózat listáját bemutató képernyőkép.":::
 
-4. Ha a hálózati paraméterek helytelenül vannak konfigurálva, akkor a következő eljárással módosíthatja azokat:
+1. Ha a hálózati paraméterek helytelenül vannak konfigurálva, akkor a következő eljárással módosíthatja azokat:
 
    1. Használja az parancsot `network edit-settings` .
 
@@ -1007,17 +1019,17 @@ Ellenőrizze, hogy el tudja-e érni a konzol webes grafikus felhasználói felü
 
    1. A beállítások alkalmazásához válassza az **Y** lehetőséget.
 
-5. Az újraindítás után kapcsolódjon a támogatási felhasználó hitelesítő adataival, és a `network list` parancs használatával ellenőrizze, hogy a paraméterek módosultak-e.
+1. Az újraindítás után kapcsolódjon a támogatási felhasználó hitelesítő adataival, és a `network list` parancs használatával ellenőrizze, hogy a paraméterek módosultak-e.
 
-6. Próbálkozzon újra a pingeléssel, és kapcsolódjon újra a grafikus felhasználói felületről.
+1. Próbálkozzon újra a pingeléssel, és kapcsolódjon újra a grafikus felhasználói felületről.
 
 ### <a name="the-appliance-isnt-responding"></a>A készülék nem válaszol
 
 1. Csatlakoztasson egy figyelőt és egy billentyűzetet a berendezéshez, vagy használja a PuTTY-t a CLI-hez való távoli kapcsolódáshoz.
 
-2. A bejelentkezéshez használja a **támogatási** felhasználó hitelesítő adatait.
+1. A bejelentkezéshez használja a **támogatási** felhasználó hitelesítő adatait.
 
-3. Használja a `system sanity` parancsot, és győződjön meg arról, hogy az összes folyamat fut.
+1. Használja a `system sanity` parancsot, és győződjön meg arról, hogy az összes folyamat fut.
 
     :::image type="content" source="media/tutorial-install-components/system-sanity-screen.png" alt-text="Képernyőkép, amely a rendszerjózanság parancsot mutatja.":::
 
@@ -1027,33 +1039,33 @@ Bármilyen egyéb probléma esetén forduljon [Microsoft ügyfélszolgálatahoz]
 
 ### <a name="configure-a-span-port-on-an-existing-vswitch"></a>SPAN port konfigurálása meglévő vSwitch
 
-A vSwitch nem rendelkezik tükrözési képességekkel, de egy egyszerű megkerülő megoldással implementálhat egy SPAN portot.
+A vSwitch nem rendelkezik tükrözési képességekkel, de használhat egy megkerülő megoldást is a SPAN port megvalósításához.
 
 A SPAN port konfigurálása:
 
 1. Nyissa meg a vSwitch tulajdonságait.
 
-2. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
-3. Válassza a  >  **következőt**: virtuális gép.
+1. Válassza a  >  **következőt**: virtuális gép.
 
-4. Helyezzen be egy hálózati feliratú **tartományba tartozó hálózatot**, válassza   >  **az összes** VLAN-azonosító lehetőséget, majd kattintson a **tovább** gombra.
+1. Helyezzen be egy hálózati feliratú **tartományba tartozó hálózatot**, válassza   >  **az összes** VLAN-azonosító lehetőséget, majd kattintson a **tovább** gombra.
 
-5. Válassza a **Befejezés** gombot.
+1. Válassza a **Befejezés** gombot.
 
-6. Válassza a **span Network** > **Szerkesztés* lehetőséget.
+1. Válassza a **span Network** > **Szerkesztés* lehetőséget.
 
-7. Válassza a **Biztonság** lehetőséget, és győződjön meg arról, hogy a **kevert mód** házirendje az **elfogadás** módra van beállítva.
+1. Válassza a **Biztonság** lehetőséget, és győződjön meg arról, hogy a **kevert mód** házirendje az **elfogadás** módra van beállítva.
 
-8. Válassza az **OK**, majd a **Bezárás** lehetőséget a vSwitch tulajdonságainak bezárásához.
+1. Válassza az **OK**, majd a **Bezárás** lehetőséget a vSwitch tulajdonságainak bezárásához.
 
-9. Nyissa meg a **XSense virtuális gép** tulajdonságait.
+1. Nyissa meg a **XSense virtuális gép** tulajdonságait.
 
-10. A **2. hálózati adapter** esetében válassza ki a **span** hálózatot.
+1. A **2. hálózati adapter** esetében válassza ki a **span** hálózatot.
 
-11. Válassza az **OK** lehetőséget.
+1. Válassza az **OK** lehetőséget.
 
-12. Kapcsolódjon az érzékelőhöz, és ellenőrizze, hogy a tükrözés működik-e.
+1. Kapcsolódjon az érzékelőhöz, és ellenőrizze, hogy a tükrözés működik-e.
 
 ## <a name="appendix-b-access-sensors-from-the-on-premises-management-console"></a>B függelék: hozzáférés érzékelők a helyszíni felügyeleti konzolról
 
@@ -1065,12 +1077,12 @@ Bújtatás engedélyezése:
 
 1. Jelentkezzen be a helyszíni felügyeleti konzol CLI- **CyberX** , vagy **támogassa** a felhasználói hitelesítő adatokat.
 
-2. Írja be a következő szöveget: `sudo cyberx-management-tunnel-enable`.
+1. Írja be a következő szöveget: `sudo cyberx-management-tunnel-enable`.
 
-3. Nyomja le az **Enter** billentyűt.
+1. Nyomja le az **Enter** billentyűt.
 
-4. Írja be a következő szöveget: `--port 10000`.
+1. Írja be a következő szöveget: `--port 10000`.
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
 [A hálózat beállítása](how-to-set-up-your-network.md)

@@ -11,14 +11,16 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: a3e646f44978e8897c22d579639efcef0fcd2205
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: cc6d7491d9c38f1ddf4aba2adecad4aaee3c344b
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045972"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489562"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 Ebből a cikkből megtudhatja, milyen lépéseket lehet a IoT Edge megoldások telepítésekor felmerülő gyakori problémák megoldásához. Ha meg szeretné tudni, hogyan találhatja meg a naplókat és a hibákat a IoT Edge eszközéről, tekintse meg [a IoT Edge eszköz hibaelhárítása](troubleshoot.md)című témakört.
 
@@ -43,7 +45,7 @@ A gazdagép hálózatán a hálózati konfiguráció megakadályozza, hogy a IoT
 
 Az IoT Edge-futtatókörnyezet minden modulon beállít egy-egy hálózatot a kommunikációhoz. Linux rendszeren ez a hálózat egy hídhálózat. Windows rendszeren NAT-ot használ. Ez a probléma gyakoribb a NAT-hálózatot használó Windows-tárolókat igénybe vevő windowsos eszközökön.
 
-**Felbontás**
+**Megoldás:**
 
 Győződjön meg arról, hogy elérhető egy útvonal az internethez az ehhez a híd-/NAT-hálózathoz rendelt IP-címek esetén. Néha a gazdagépen lévő VPN-konfiguráció felülbírálja az IoT Edge-hálózatot.
 
@@ -57,7 +59,7 @@ Egy tároló nem fut, és a edgeAgent-naplók 403 hibát jeleznek.
 
 A IoT Edge ügynöknek nincs engedélye a modul rendszerképének elérésére.
 
-**Felbontás**
+**Megoldás:**
 
 Győződjön meg arról, hogy a beállításjegyzékbeli hitelesítő adatok helyesen vannak megadva a telepítési jegyzékben.
 
@@ -71,7 +73,7 @@ Az eszköz nem rendelkezik a telepítésben definiált modulok indításával. C
 
 Alapértelmezés szerint a IoT Edge elindítják a modulokat a saját elkülönített tároló hálózatában. Előfordulhat, hogy az eszköz problémát észlelt a DNS-névfeloldás ezen a magánhálózaton belül.
 
-**Felbontás**
+**Megoldás:**
 
 **1. lehetőség: DNS-kiszolgáló beállítása a tároló motorjának beállításaiban**
 
@@ -143,7 +145,7 @@ warn: edgelet_utils::logging --     caused by: failed to create endpoint edgeHub
 
 A gazdagép egy másik folyamata egy olyan portot kötött, amelyet a edgeHub modul megpróbál kötni. Az IoT Edge hub a 443, 5671 és 8883 portot használja az átjárói forgatókönyvekben való használatra. A modul nem indul el, ha egy másik folyamat már kötött egy ilyen portot.
 
-**Felbontás**
+**Megoldás:**
 
 A probléma kétféleképpen oldható fel:
 
@@ -212,7 +214,7 @@ Error parsing user input data: invalid hostname. Hostname cannot be empty or gre
 
 A IoT Edge futtatókörnyezet csak 64 karakternél rövidebb gazdagépeket támogat. A fizikai gépek általában nem rendelkeznek hosszú állomásnévvel, de a probléma gyakoribb a virtuális gépen. Az Azure-ban üzemeltetett Windows rendszerű virtuális gépek automatikusan generált állomásneve általában hosszúak.
 
-**Felbontás**
+**Megoldás:**
 
 Ha ezt a hibát látja, akkor a virtuális gép DNS-nevének konfigurálásával, majd a DNS-név beállítása állomásnévként a telepítési parancsban is megoldható.
 
@@ -283,7 +285,7 @@ A Windows rendszeren való használatakor EventLogException kap `Get-WinEvent` .
 
 A `Get-WinEvent` PowerShell-parancs egy beállításjegyzékbeli bejegyzésre támaszkodik, amely a naplók egy adott alapján való megtalálásához szükséges `ProviderName` .
 
-**Felbontás**
+**Megoldás:**
 
 Adja meg a IoT Edge démon beállításjegyzékbeli bejegyzését. Hozzon létre egy **iotedge. reg** fájlt a következő tartalommal, és importálja a Windows beállításjegyzékbe úgy, hogy duplán rákattint rá, vagy használja a `reg import iotedge.reg` parancsot:
 
@@ -306,7 +308,7 @@ Az erőforrás által korlátozott eszközök, például a málna PI stabilitás
 
 A IoT Edge futtatókörnyezet részét képező IoT Edge hub alapértelmezés szerint a teljesítményre van optimalizálva, és nagy mennyiségű memóriát próbál lefoglalni. Ez az optimalizálás nem ideális a korlátozott peremhálózat-eszközökhöz, és stabilitási problémákat okozhat.
 
-**Felbontás**
+**Megoldás:**
 
 Az IoT Edge hub esetében állítsa be a **OptimizeForPerformance** környezeti változót **hamis** értékre. A környezeti változók két módon állíthatók be:
 
@@ -346,7 +348,7 @@ Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/ada
 
 A IoT Edge démon a edgeHub csatlakozó összes modulhoz biztonsági okokból kényszeríti a folyamat azonosítását. Ellenőrzi, hogy a modul által küldött összes üzenet a modul fő folyamatának azonosítójával származik-e. Ha egy modul egy másik, az eredetileg létrejött folyamat-AZONOSÍTÓtól érkező üzenetet küld, a rendszer 404-es hibaüzenettel elutasítja az üzenetet.
 
-**Felbontás**
+**Megoldás:**
 
 A verzió 1.0.7 kezdve az összes modul-folyamat jogosult a kapcsolódásra. További információ: a [1.0.7 kiadásának changelog](https://github.com/Azure/iotedge/blob/master/CHANGELOG.md#iotedged-1).
 
@@ -362,7 +364,7 @@ Miután beállította a modulokat egy IoT Edge eszközhöz, a modulok üzembe he
 
 Ha az automatikus központi telepítés egy eszközt céloz meg, akkor az egy adott eszközhöz tartozó modulok manuális beállításával elsőbbséget élvez. A **modulok beállítása** a Azure Portal, vagy a Visual Studio Code-ban egy **eszközre történő központi telepítés létrehozása** egy pillanatra lép érvénybe. A megadott modulok megjelennek az eszközön. Ezután az automatikus központi telepítés prioritása beindul, és felülírja az eszköz kívánt tulajdonságait.
 
-**Felbontás**
+**Megoldás:**
 
 Eszközökön csak egyféle telepítési mechanizmust használhat, automatikus központi telepítéssel vagy egyedi eszközök telepítésével. Ha több automatikus központi telepítéssel is rendelkezik egy eszközhöz, megváltoztathatja a prioritási vagy a cél leírását, hogy a megfelelő egy adott eszközre vonatkozzon. Az eszköz két példányát is frissítheti, ha már nem egyezik az automatikus központi telepítés céljának leírásával.
 
@@ -381,7 +383,7 @@ A IoT Edge démon érvényes konfigurációs fájllal aktív, de nem tudja elind
 
 Az átjáró mögött található eszközök IoT Edge a `parent_hostname` konfigurációs fájl mezőjében megadott szülő IoT Edge eszközről kapják meg a modul lemezképeit. A `Could not perform HTTP request` hiba azt jelenti, hogy az alárendelt eszköz nem tudja elérni a szülő eszközét http-n keresztül.
 
-**Felbontás**
+**Megoldás:**
 
 Győződjön meg arról, hogy a szülő IoT Edge eszköz fogadhat bejövő kéréseket a gyermek IoT Edge eszközről. Nyissa meg a hálózati forgalmat a 443-es és a 6617-es porton a gyermek eszközről érkező kérelmek esetében.
 

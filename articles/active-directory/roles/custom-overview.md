@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b66b004a0371b76f82d525972feefab9c89efb2d
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 3fad2c683890776908afbfbf15ee91d46d564783
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742046"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466762"
 ---
 # <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>A Azure Active Directory szerepköralapú hozzáférés-vezérlésének áttekintése
 
@@ -60,7 +60,7 @@ A szerepkör-hozzárendelés egy olyan Azure AD-erőforrás, amely egy *szerepk�
 - Szerepkör-definíció
 - Erőforrás hatóköre
 
-Szerepkör- [hozzárendeléseket](custom-create.md) a Azure Portal, az Azure ad PowerShell vagy a Graph API használatával hozhat létre. [Megtekintheti az egyéni szerepkörhöz tartozó hozzárendeléseket](custom-view-assignments.md#view-the-assignments-of-a-role)is.
+Szerepkör- [hozzárendeléseket](custom-create.md) a Azure Portal, az Azure ad PowerShell vagy a Graph API használatával hozhat létre. [A szerepkör-hozzárendeléseket is listázhatja](view-assignments.md).
 
 Az alábbi ábrán egy példa látható szerepkör-hozzárendelésre. Ebben a példában a Chris Green hozzá lett rendelve az alkalmazás-regisztrációs rendszergazda egyéni szerepkörhöz a contoso widget Builder alkalmazás-regisztráció hatókörében. A hozzárendelés csak az adott alkalmazás regisztrálásához engedélyezi az alkalmazás-regisztrációs rendszergazda szerepkör engedélyeit.
 
@@ -85,8 +85,8 @@ A hatókör egy adott Azure AD-erőforrásra vonatkozó engedélyezett művelete
 
 Az Azure AD beépített szerepköreinek használata ingyenes, míg az egyéni szerepkörök prémium szintű Azure AD P1-licencet igényelnek. A követelményeinek leginkább megfelelő licenc kiválasztásáról lásd [az ingyenes, alapszintű és prémium kiadások általánosan elérhető szolgáltatásait összehasonlító cikket](https://azure.microsoft.com/pricing/details/active-directory).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure AD-szerepkörök ismertetése](concept-understand-roles.md)
 - Egyéni szerepkör-hozzárendelések létrehozása [a Azure Portal, az Azure ad PowerShell és a Graph API](custom-create.md) használatával
-- [Egyéni szerepkör hozzárendeléseinek megtekintése](custom-view-assignments.md)
+- [Szerepkör-hozzárendelések felsorolása](view-assignments.md)

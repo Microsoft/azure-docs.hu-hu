@@ -10,12 +10,12 @@ keywords: kognitív szolgáltatások, kognitív intelligencia, kognitív megold�
 ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: 95d74601ca912647eadd1bd4e1045108be6b2adb
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: c1e8b260f6c06d8f26f5ba99b4fb02edfa5e8656
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050069"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472103"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Rövid útmutató: Cognitive Services-erőforrás létrehozása az Azure Command-Line Interface (CLI) használatával
 
@@ -99,16 +99,6 @@ az group create \
 | Form Recognizer            | `FormRecognizer`          |
 | Ink Recognizer             | `InkRecognizer`           |
 
-### <a name="search"></a>Keresés
-
-| Szolgáltatás            | Altípus                  |
-|--------------------|-----------------------|
-| Bing Autosuggest   | `Bing.Autosuggest.v7` |
-| Bing – Egyéni keresés | `Bing.CustomSearch`   |
-| Bing – Entitáskeresés | `Bing.EntitySearch`   |
-| Bing Search        | `Bing.Search.v7`      |
-| Bing – Helyesírás-ellenőrzés   | `Bing.SpellCheck.v7`  |
-
 ### <a name="speech"></a>Speech
 
 | Szolgáltatás            | Altípus                 |
@@ -181,7 +171,7 @@ A kognitív szolgáltatás erőforrásaihoz tartozó kulcsok beszerzéséhez has
 A díjszabási szintek (és a felszámított összeg) a hitelesítési adatok használatával elküldött tranzakciók számától függenek. Az egyes díjszabási szintek a következőket határozzák meg:
 * a másodpercenként engedélyezett tranzakciók maximális száma (TPS).
 * a szolgáltatási funkciók a díjszabási szinten engedélyezve vannak.
-* Az előre meghatározott mennyiségű tranzakció díja. Ezen összeg fölött a szolgáltatás [díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) szerint külön díjat számítunk fel.
+* Az előre meghatározott számú tranzakció díja. Ezen összeg fölött a szolgáltatás [díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) szerint külön díjat számítunk fel.
 
 ## <a name="get-current-quota-usage-for-your-resource"></a>Az erőforrás aktuális kvótájának beolvasása
 

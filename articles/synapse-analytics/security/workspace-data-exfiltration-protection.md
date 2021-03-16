@@ -1,19 +1,19 @@
 ---
 title: Az Azure szinapszis Analytics-munkaterületek kiszűrése-védelme
 description: Ez a cikk az Azure szinapszis Analytics kiszűrése-védelmét ismerteti
-author: NanditaV
+author: nanditavalsan
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: 71210cdcc2b3758a59a1b41816e6468556e94808
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: e4067d5acf55f94cd46e629792312af1547c5901
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518260"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489373"
 ---
 # <a name="data-exfiltration-protection-for-azure-synapse-analytics-workspaces"></a>Az Azure szinapszis Analytics-munkaterületek kiszűrése-védelme
 Ez a cikk az Azure szinapszis Analytics kiszűrése-védelmét ismerteti
@@ -25,7 +25,7 @@ Az Azure szinapszis Analytics-munkaterületek támogatják a munkaterületek kis
 >A felügyelt virtuális hálózat és a kiszűrése-védelem munkaterület-konfigurációja nem módosítható a munkaterület létrehozása után.
 
 ## <a name="managing-synapse-workspace-data-egress-to-approved-targets"></a>A szinapszis-munkaterület kimenő adatforgalmának kezelése jóváhagyott célokkal
-Miután a munkaterületet engedélyezte az adatkiszűrése, a munkaterület-erőforrás tulajdonosai kezelhetik a jóváhagyott Azure AD-bérlők listáját a munkaterületen. A munkaterületen a [megfelelő engedélyekkel](./synapse-workspace-access-control-overview.md) rendelkező felhasználók a szinapszis Studio használatával hozhatnak létre felügyelt magánhálózati végponti kapcsolódási kérelmeket a munkaterület jóváhagyott Azure ad-bérlői erőforrásaihoz. A felügyelt magánhálózati végpontok létrehozása le lesz tiltva, ha a felhasználó egy nem jóváhagyott bérlőben lévő erőforráshoz kísérel meg létrehozni egy magánhálózati végponti kapcsolódást.
+Miután a munkaterület engedélyezve lett a kiszűrése Protection szolgáltatással, a munkaterület-erőforrás tulajdonosai kezelhetik a jóváhagyott Azure AD-bérlők listáját a munkaterületen. A munkaterületen a [megfelelő engedélyekkel](./synapse-workspace-access-control-overview.md) rendelkező felhasználók a szinapszis Studio használatával hozhatnak létre felügyelt magánhálózati végponti kapcsolódási kérelmeket a munkaterület jóváhagyott Azure ad-bérlői erőforrásaihoz. A felügyelt magánhálózati végpontok létrehozása le lesz tiltva, ha a felhasználó egy nem jóváhagyott bérlőben lévő erőforráshoz kísérel meg létrehozni egy magánhálózati végponti kapcsolódást.
 
 ## <a name="sample-workspace-with-data-exfiltration-protection-enabled"></a>Minta munkaterület, amelyen engedélyezve van az kiszűrése-védelem
 Tegyük fel, hogy példát mutatunk be a szinapszis-munkaterületek kiszűrése védelmére. A contoso Azure-erőforrásokkal rendelkezik az A bérlőn és A B bérlőn, és szükség van ezekre az erőforrásokra a biztonságos kapcsolódáshoz. Egy szinapszis-munkaterület lett létrehozva az A bérlőn, a B bérlő pedig jóváhagyott Azure AD-bérlőként lett hozzáadva. A diagramon az A bérlő és a B bérlő által jóváhagyott Azure Storage-fiókokhoz tartozó privát végponti kapcsolatok láthatók, amelyeket a Storage-fiók tulajdonosai jóváhagytak. A diagram emellett a letiltott privát végpontok létrehozását is megjeleníti. A privát végpont létrehozása le lett tiltva, mert egy Azure Storage-fiókot céloz meg a fabrikam Azure AD-bérlőben, amely nem jóváhagyott Azure AD-bérlő a contoso munkaterülethez. 

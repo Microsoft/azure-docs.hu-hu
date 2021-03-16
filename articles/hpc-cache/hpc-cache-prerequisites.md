@@ -4,14 +4,14 @@ description: Az Azure HPC cache használatának előfeltételei
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 03/11/2021
 ms.author: v-erkel
-ms.openlocfilehash: a31aee3f4548d3137fa1241aaa3a0f6171cf6895
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 7a91cf5f9341d2b42f1c8f242d288b4ee59b632d
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412510"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471791"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Az Azure HPC cache használatának előfeltételei
 
@@ -91,14 +91,18 @@ A gyorsítótár létrehozásának megkezdése előtt olvassa el ezeket az enged
   A szerepkörök hozzáadásához kövesse a [tárolási célok hozzáadása](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) című témakör utasításait.
 
 ## <a name="storage-infrastructure"></a>Tárolási infrastruktúra
+<!-- heading is linked in create storage target GUI as aka.ms/hpc-cache-prereq#storage-infrastructure - make sure to fix that if you change the wording of this heading -->
 
-A gyorsítótár támogatja az Azure Blob-tárolókat vagy az NFS hardveres tárolók exportálását. Adja hozzá a tárolási célokat a gyorsítótár létrehozása után.
+A gyorsítótár támogatja az Azure Blob-tárolókat, az NFS hardveres tárolók exportálását és az NFS-hez csatlakoztatott ADLS blob-tárolókat (jelenleg előzetes verzióban). Adja hozzá a tárolási célokat a gyorsítótár létrehozása után.
 
 Mindegyik tárolási típushoz konkrét előfeltételek vonatkoznak.
 
 ### <a name="blob-storage-requirements"></a>BLOB Storage-követelmények
 
 Ha az Azure Blob Storage-t a gyorsítótárral szeretné használni, egy kompatibilis Storage-fiókra és egy üres blob-tárolóra vagy egy olyan tárolóra van szükség, amely az [adatok áthelyezése az Azure Blob Storage](hpc-cache-ingest.md)-ba című témakörben leírtak szerint feltölti az Azure HPC gyorsítótárral formázott adatokat.
+
+> [!NOTE]
+> A különböző követelmények az NFS-hez csatlakoztatott blob Storage-tárolóra vonatkoznak. A részletekért olvassa el a [ADLS-NFS Storage szolgáltatásra vonatkozó követelményeket](#nfs-mounted-blob-adls-nfs-storage-requirements-preview) .
 
 A tárolási cél hozzáadása előtt hozza létre a fiókot. A cél hozzáadásakor új tárolót is létrehozhat.
 
@@ -170,10 +174,41 @@ További információt a [NAS-konfiguráció és az NFS-tárolási cél problém
 
 * Az NFS-háttérbeli tárterületnek kompatibilis hardver/szoftver platformnak kell lennie. Részletekért forduljon az Azure HPC cache csapatához.
 
+### <a name="nfs-mounted-blob-adls-nfs-storage-requirements-preview"></a>Az NFS-hez csatlakoztatott blob (ADLS-NFS) tárolási követelményei (előzetes verzió)
+
+Az Azure HPC cache tárolási célként is használhat egy NFS protokollal csatlakoztatott BLOB-tárolót.
+
+> [!NOTE]
+> Az NFS 3,0 protokoll támogatása az Azure Blob Storage-hoz nyilvános előzetes verzióban érhető el. A rendelkezésre állás korlátozott, és előfordulhat, hogy a funkciók mostantól változnak, és a szolgáltatás általánosan elérhetővé válik. Az előnézeti technológiákat ne használja éles rendszerekben.
+>
+> További információk az [Azure Blob Storage-ban az NFS 3,0 protokoll támogatásával](../storage/blobs/network-file-system-protocol-support.md)kapcsolatos előzetes funkcióról.
+
+A Storage-fiókra vonatkozó követelmények eltérőek a ADLS-NFS blob Storage-tárolók és a szabványos blob Storage-tárolók esetében. Az NFS-kompatibilis Storage-fiók létrehozásához és konfigurálásához kövesse a [blob Storage csatlakoztatása a hálózati fájlrendszer (NFS) 3,0 protokoll használatával](../storage/blobs/network-file-system-protocol-support-how-to.md) című témakör útmutatását.
+
+Ez a lépések általános áttekintése:
+
+1. Ügyeljen arra, hogy a szükséges funkciók elérhetők legyenek azokon a régiókban, ahol dolgozni szeretne.
+
+1. Engedélyezze az NFS protokoll szolgáltatást az előfizetéséhez. Ezt a Storage-fiók létrehozása *előtt* tegye meg.
+
+1. Hozzon létre egy biztonságos virtuális hálózatot (VNet) a Storage-fiókhoz. Ugyanazt a virtuális hálózatot kell használnia az NFS-kompatibilis Storage-fiókhoz és az Azure HPC-gyorsítótárhoz.
+
+1. Hozza létre a Storage-fiókot.
+
+   * A standard blob Storage-fiókhoz tartozó Storage-fiók beállításainak használata helyett kövesse az útmutató [dokumentum](../storage/blobs/network-file-system-protocol-support-how-to.md)utasításait. A támogatott Storage-fiók típusa az Azure-régiótól függően változhat.
+
+   * A **hálózatkezelés** szakaszban válasszon egy privát végpontot a létrehozott biztonságos virtuális hálózatban (ajánlott), vagy válasszon egy nyilvános végpontot, amely korlátozott hozzáféréssel rendelkezik a biztonságos VNet.
+
+   * Ne felejtse el befejezni a **speciális** szakaszt, ahol engedélyezheti az NFS-hozzáférést.
+
+   * Adja meg a gyorsítótár-alkalmazás hozzáférését az Azure Storage-fiókjához a fent említett [engedélyekben](#permissions)leírtak szerint. Ezt akkor teheti meg, amikor első alkalommal hoz létre tárolási célt. Kövesse a [tárolási célok hozzáadása](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) lehetőséget a szükséges hozzáférési szerepkörök gyorsítótárazásához.
+
+     Ha Ön nem a Storage-fiók tulajdonosa, akkor a tulajdonos ezt a lépést hajtja végre.
+
 ## <a name="set-up-azure-cli-access-optional"></a>Azure CLI-hozzáférés beállítása (nem kötelező)
 
 Ha Azure HPC-gyorsítótárat szeretne létrehozni vagy kezelni az Azure parancssori felületéről (Azure CLI), telepítenie kell a CLI-szoftvert és a HPC-cache kiterjesztést. Kövesse az Azure [parancssori felület beállítása az Azure HPC cache-hez](az-cli-prerequisites.md)című témakör utasításait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure HPC cache-példány létrehozása](hpc-cache-create.md) a Azure Portal

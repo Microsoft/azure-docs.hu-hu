@@ -1,6 +1,6 @@
 ---
-title: Biztonsági modul és eszköz ikrek
-description: Ismerje meg az ikrek biztonsági moduljának fogalmát, valamint azt, hogy azok hogyan használhatók a Defenderben a IoT.
+title: Defender-IoT-Micro-Agent és Device Twins
+description: Ismerje meg a Defender-IoT-Micro-Agent ikrek fogalmát, valamint azt, hogyan használják őket a Defender for IoT.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2019
 ms.author: mlottner
-ms.openlocfilehash: feb84a1261e37600c68d8e372162033d4021f564
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 552da329b90b102a13ef53158ec81be87684c1fc
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522920"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493186"
 ---
-# <a name="security-module"></a>Biztonsági modul
+# <a name="defender-iot-micro-agent"></a>Defender-IoT-Micro-Agent
 
 Ez a cikk azt ismerteti, hogyan használja a Defender for IoT az eszköz-ikreket és modulokat.
 
@@ -32,15 +32,15 @@ A IoT Defender teljes körű integrációt biztosít a meglévő IoT-eszközkeze
 
 Tudjon meg többet az Azure IoT Hub [eszközön található ikrek](../iot-hub/iot-hub-devguide-device-twins.md) koncepciójának megismeréséről.
 
-## <a name="security-module-twins"></a>Biztonsági modul ikrek
+## <a name="defender-iot-micro-agent-twins"></a>Defender-IoT-Micro-Agent ikrek
 
-A IoT Defender a szolgáltatás minden eszközéhez külön biztonsági modult tart fenn.
-A biztonsági modul Twin tartalmazza az eszköz biztonságával kapcsolatos összes információt a megoldás minden egyes eszközén.
-Az eszköz biztonsági tulajdonságait egy külön biztonsági modulban, a biztonságosabb kommunikációhoz, valamint a kevesebb erőforrást igénylő frissítések és karbantartás engedélyezéséhez kell megőrizni.
+A IoT Defender a szolgáltatás minden eszközén fenntart egy Defender-IoT-Micro-Agent-ügynököt.
+A Defender-IoT-Micro-Agent Twin tartalmazza az eszköz biztonságával kapcsolatos összes információt a megoldásban.
+Az eszköz biztonsági tulajdonságait egy dedikált Defender-IoT-Micro-Agent Twin biztosítja a biztonságos kommunikációhoz, és lehetővé teszi a kevesebb erőforrást igénylő frissítések és karbantartás engedélyezését.
 
-Lásd: a [biztonsági modul létrehozása](quickstart-create-security-twin.md) és a [biztonsági ügynökök konfigurálása](how-to-agent-configuration.md) , amelyekből megtudhatja, hogyan hozhatja létre, testreszabhatja és konfigurálhatja a Twin-et. Tekintse meg az ikrek [modul ismertetése](../iot-hub/iot-hub-devguide-module-twins.md) című témakört, amely részletesebben ismerteti a IoT hub-ben az ikrek koncepcióját.
+Lásd: [Defender létrehozása – IoT-Micro-Agent Twin](quickstart-create-security-twin.md) és a [biztonsági ügynökök konfigurálása](how-to-agent-configuration.md) a Twin-elemek létrehozásának, testreszabásának és konfigurálásának megismeréséhez. Tekintse meg az ikrek [modul ismertetése](../iot-hub/iot-hub-devguide-module-twins.md) című témakört, amely részletesebben ismerteti a IoT hub-ben az ikrek koncepcióját.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="see-also"></a>Lásd még
 
 - [Defender for IoT – áttekintés](overview.md)
 - [Biztonsági ügynökök üzembe helyezése](how-to-deploy-agent.md)

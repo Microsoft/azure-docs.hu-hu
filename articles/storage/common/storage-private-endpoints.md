@@ -10,12 +10,12 @@ ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 16d3d50d5ade298e2ca22f271466c70e74724381
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 67480786e963235d4d3c010bea72e551a8be7bbc
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102613561"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493798"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Privát végpontok használata az Azure Storage-hoz
 
@@ -146,6 +146,12 @@ Ez a megkötés a DNS-módosítások eredményeként történt, amikor az A2-es 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Hálózat biztonsági csoportok szabályai a privát végpontokkal rendelkező alhálózatok esetében
 
 Jelenleg nem konfigurálhatja a [hálózati biztonsági csoport](../../virtual-network/network-security-groups-overview.md) (NSG) szabályait és a felhasználó által megadott útvonalakat a privát végpontokhoz. A privát végpontot működtető alhálózatra alkalmazott NSG-szabályok nem lesznek alkalmazva a privát végpontra. Ezeket csak más végpontokra alkalmazza a rendszer (például hálózati adapter-vezérlők). A probléma korlátozott megkerülő megoldásként implementálja a privát végpontok hozzáférési szabályait a forrás alhálózatokon, bár ennél a megközelítésnél magasabb szintű felügyeleti terhelésre lehet szükség.
+
+### <a name="copying-blobs-between-storage-accounts"></a>Blobok másolása a Storage-fiókok között
+
+A Storage-fiókok között csak akkor másolhat blobokat, ha az Azure REST API vagy a REST API használó eszközöket használja. Ezek az eszközök a következők: AzCopy, Storage Explorer, Azure PowerShell, Azure CLI és az Azure Blob Storage SDK-k. 
+
+Csak a blob Storage-erőforrást tároló privát végpontok támogatottak. A Data Lake Storage Gen2 vagy a fájl erőforrást célzó privát végpontok még nem támogatottak. Emellett a Storage-fiókok a hálózati fájlrendszer (NFS) protokoll használatával történő másolása még nem támogatott. 
 
 ## <a name="next-steps"></a>Következő lépések
 

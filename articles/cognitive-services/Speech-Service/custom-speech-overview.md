@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
 ms.custom: contperf-fy21q2; references_regions
-ms.openlocfilehash: 39370659e71a7d281914b360eea83eb0b68b25ba
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 13bf0f2430e0d58dd9ef28061aad897acf94ac3f
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101716567"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493050"
 ---
 # <a name="what-is-custom-speech"></a>Mi az a Custom Speech?
 
@@ -79,43 +79,9 @@ Az első projekt létrehozásához válassza a **beszéd-szöveg/egyéni beszéd
 > [!IMPORTANT]
 > A korábban "Custom Speech portál" néven ismert [Speech Studio](https://aka.ms/custom-speech) nemrég frissült! Ha korábban létrehozott, modelleket, teszteket és közzétett végpontokat hozott létre a CRIS.ai-portálon vagy API-kkal, létre kell hoznia egy új projektet az új portálon a régi entitásokhoz való kapcsolódáshoz.
 
-## <a name="model-lifecycle"></a>Modell életciklusa
+## <a name="model-and-endpoint-lifecycle"></a>Modell és végpont életciklusa
 
-Custom Speech az *alapmodelleket* és az *Egyéni modelleket* is használja. Minden nyelvhez egy vagy több alapmodell tartozik. Általánosságban elmondható, hogy amikor egy új beszédfelismerési modellt bocsátanak ki a normál beszédfelismerési szolgáltatásba, azt a rendszer új alapmodellként is importálja a Custom Speech szolgáltatásba. 3 – 6 havonta frissülnek. A régebbi modellek általában kevésbé hasznosak az idő múlásával, mert a legújabb modell általában nagyobb pontossággal rendelkezik.
-
-Ezzel szemben az egyéni modellek úgy jönnek létre, hogy egy kiválasztott alapmodellt egy adott felhasználói forgatókönyvhöz igazítanak. Egy adott egyéni modellt sokáig használhat, miután az igényei szerint megfelelt. Azt javasoljuk azonban, hogy rendszeresen frissítsen a legújabb alapmodellre, és az idő múlásával újra betanítsa a további adatokkal. 
-
-A modell életciklusával kapcsolatos egyéb kulcsfontosságú feltételek a következők:
-
-* **Alkalmazkodás**: alapmodell készítése és testreszabása a tartományhoz/forgatókönyvhöz szöveges adatok és/vagy hangadatok használatával.
-* **Dekódolás**: modell használata és beszédfelismerés végrehajtása (hang kódolása szöveggé).
-* **Endpoint (végpont**): egy alapmodell vagy egy egyéni modell felhasználó-specifikus telepítése, amely *csak* egy adott felhasználó számára érhető el.
-
-### <a name="expiration-timeline"></a>Lejárat idővonala
-
-Ahogy az új modellek és az új funkciók elérhetővé válnak, és a régebbi, kevésbé pontos modellek kimaradnak, tekintse meg a modell és a végpont lejáratának következő ütemterveit:
-
-**Alapmodellek** 
-
-* Alkalmazkodás: egy évig elérhető. A modell importálása után az egy évig elérhetővé válik egyéni modellek létrehozásához. Egy év elteltével új egyéni modelleket kell létrehozni az alapmodell újabb verziójából.  
-* Dekódolás: az importálás után két évig elérhető. Így létrehozhat egy végpontot, és két évig használhatja a Batch-átírást ezzel a modellel. 
-* Végpontok: a dekódolással megegyező idővonalon érhető el.
-
-**Egyéni modellek**
-
-* Dekódolás: a modell létrehozása után két évig elérhető. Így az egyéni modellt két évig használhatja (batch/Realtime/tesztelés) a létrehozása után. Két év elteltével *újra be kell tanítania a modellt* , mert az alapmodell általában elavulttá válik az átalakításhoz.  
-* Végpontok: a dekódolással megegyező idővonalon érhető el.
-
-Ha egy alapmodell vagy egy egyéni modell lejár, akkor mindig vissza fog térni a *legújabb alapmodell-verzióra*. Így a megvalósítás soha nem fog megszakadni, de előfordulhat, hogy kevésbé pontosak lesznek a *konkrét adatai* , ha az egyéni modellek elérik a lejáratot. A modell lejáratát a következő helyeken tekintheti meg a Speech Studio Custom Speech területén:
-
-* Modell képzésének összefoglalása
-* Modell betanításának részletei
-* A központi telepítés összegzése
-* Központi telepítés részletei
-
-A lejárati dátumokat a JSON- [`GetModel`](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetModel) [`GetBaseModel`](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetBaseModel) Válasz tulajdonság alatt található és az egyéni beszédfelismerési API-k segítségével is megtekintheti `deprecationDates` .
-
-Vegye figyelembe, hogy a modellt egy egyéni beszéd végponton, állásidő nélkül is frissítheti, ha megváltoztatja a végpont által a Speech Studio üzembe helyezés szakaszában vagy a Custom Speech API-n keresztül használt modellt.
+A régebbi modellek általában kevésbé hasznosak az idő múlásával, mert a legújabb modell általában nagyobb pontossággal rendelkezik. Ezért az alapmodelleket, valamint a portálon keresztül létrehozott egyéni modelleket és végpontokat az 1. év és a dekódolás 2 év után kell lejáratni. Részletes leírást a [modell és a végpont életciklusáról](./how-to-custom-speech-model-and-endpoint-lifecycle.md) szóló cikkben talál.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -3,12 +3,12 @@ title: A Azure Backup ügynök hibáinak megoldása
 description: Ebből a cikkből megtudhatja, hogyan lehet elhárítani a Azure Backup ügynök telepítését és regisztrálását.
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: c08a146d91a128dc48fa4c379055b8c0efc1df0c
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 3203d5604f1bd5db9cf579af01b2ae6f34032d89
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986649"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467612"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>A Microsoft Azure Recovery Services-(MARS-) ügynök hibáinak megoldása
 
@@ -22,7 +22,7 @@ Javasoljuk, hogy a Microsoft Azure Recovery Services (MARS) ügynökével kapcso
 - [Győződjön meg arról, hogy van hálózati kapcsolat a Mars-ügynök és az Azure között](#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup).
 - Győződjön meg arról, hogy a MARS fut (a szolgáltatás konzolján). Ha szükséges, indítsa újra, majd próbálja megismételni a műveletet.
 - Ügyeljen arra, hogy a kihelyezett [mappa helyén 5% – 10% szabad lemezterület álljon rendelkezésre](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder).
-- [Ellenőrizze, hogy egy másik folyamat vagy víruskereső szoftver zavarja-e Azure Backup](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup).
+- [Ellenőrizze, hogy egy másik folyamat vagy víruskereső szoftver nem zavarja-e az Azure Backup működését](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup).
 - Ha a biztonsági mentési feladat figyelmeztetésekkel fejeződött be, olvassa el a [biztonsági mentési feladatok befejezése figyelmeztetéssel](#backup-jobs-completed-with-warning) című témakört.
 - Ha az ütemezett biztonsági mentés sikertelen, de a manuális biztonsági mentés működik, [a biztonsági mentések nem az ütemezés szerint futnak](#backups-dont-run-according-to-schedule).
 - Győződjön meg arról, hogy az operációs rendszer rendelkezik a legújabb frissítésekkel.
@@ -41,7 +41,7 @@ Javasoljuk, hogy a Microsoft Azure Recovery Services (MARS) ügynökével kapcso
 
 | Ok | Ajánlott műveletek |
 | ---     | ---    |
-| **A tár hitelesítő adatai nem érvényesek** <br/> <br/> Előfordulhat, hogy a tár hitelesítő adatai sérültek, esetleg lejártak, vagy a *. vaultCredentials* eltérő fájlkiterjesztés van. (Előfordulhat például, hogy a regisztráció időpontja előtt több mint 48 órával korábban töltötték le.)| [Töltse le az új hitelesítő adatokat](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file) a Azure Portal Recovery Services tárból. Ezután hajtsa végre az alábbi lépéseket a megfelelő módon: <ul><li> Ha már telepítette és regisztrálta a MARSot, nyissa meg a Microsoft Azure Backup Agent MMC konzolt. Ezután válassza a **kiszolgáló regisztrálása** lehetőséget a **műveletek** ablaktáblán a regisztráció az új hitelesítő adatokkal való elvégzéséhez. <br/> <li> Ha az új telepítés meghiúsul, próbálja meg újratelepíteni az új hitelesítő adatokkal.</ul> **Megjegyzés**: Ha több tároló hitelesítő adatait letöltötte, csak a legújabb fájl érvényes a következő 48 órán belül. Azt javasoljuk, hogy töltsön le egy új, a tároló hitelesítő adatait tartalmazó fájlt.
+| **A tár hitelesítő adatai nem érvényesek** <br/> <br/> Előfordulhat, hogy a tár hitelesítő adatai sérültek, esetleg lejártak, vagy a *. vaultCredentials* eltérő fájlkiterjesztés van. (Előfordulhat például, hogy a regisztráció időpontja előtt több mint 10 nappal letöltötte őket.)| [Töltse le az új hitelesítő adatokat](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file) a Azure Portal Recovery Services tárból. Ezután hajtsa végre az alábbi lépéseket a megfelelő módon: <ul><li> Ha már telepítette és regisztrálta a MARSot, nyissa meg a Microsoft Azure Backup Agent MMC konzolt. Ezután válassza a **kiszolgáló regisztrálása** lehetőséget a **műveletek** ablaktáblán a regisztráció az új hitelesítő adatokkal való elvégzéséhez. <br/> <li> Ha az új telepítés meghiúsul, próbálja meg újratelepíteni az új hitelesítő adatokkal.</ul> **Megjegyzés**: Ha több tároló hitelesítő adatait letöltötte, csak a legújabb fájl érvényes a következő 10 napra. Azt javasoljuk, hogy töltsön le egy új, a tároló hitelesítő adatait tartalmazó fájlt.
 | **A proxykiszolgáló/tűzfal blokkolja a regisztrációt** <br/>vagy <br/>**Nincs internetkapcsolat** <br/><br/> Ha a számítógép vagy a proxykiszolgáló korlátozott internetkapcsolattal rendelkezik, és nem biztosít hozzáférést a szükséges URL-címekhez, a regisztráció sikertelen lesz.| Hajtsa végre a következő lépéseket:<br/> <ul><li> Az informatikai csapattal együttműködve gondoskodhat arról, hogy a rendszeren legyen internetkapcsolat.<li> Ha nincs proxykiszolgáló, győződjön meg arról, hogy a proxy beállítás nincs kiválasztva az ügynök regisztrálása során. [Keresse meg a proxybeállításokat](#verifying-proxy-settings-for-windows).<li> Ha tűzfal-vagy proxykiszolgáló van, a hálózati csapattal együttműködve biztosíthatja, hogy ezek az URL-címek és IP-címek hozzáférhessenek:<br/> <br> **URL-címek**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>`www.msftconnecttest.com`<br><br>**IP-címek**<br>  20.190.128.0/18 <br>  40.126.0.0/18<br> <br/></ul></ul>Az előző hibaelhárítási lépések elvégzése után próbálkozzon újra a regisztrálással.<br></br> Ha a kapcsolatai az Azure ExpressRoute keresztül érhetők el, győződjön meg arról, hogy a beállítások az [Azure ExpressRoute-támogatás](backup-support-matrix-mars-agent.md#azure-expressroute-support)című témakörben leírtak szerint vannak konfigurálva.
 | **A víruskereső szoftver blokkolja a regisztrációt** | Ha a kiszolgálón telepítve van víruskereső szoftver, adja hozzá a szükséges kizárási szabályokat a következő fájlokhoz és mappákhoz tartozó víruskereső vizsgálathoz: <br/><ul> <li> CBengine.exe <li> CSC.exe<li> A Scratch mappa. Alapértelmezett helye a C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch. <li> A bin mappa a C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
 

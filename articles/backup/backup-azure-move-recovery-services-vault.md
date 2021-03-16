@@ -4,12 +4,12 @@ description: Útmutatás az Recovery Services-tárolók Azure-előfizetések és
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 12c276b861e7db8e93e60eea7e9cd7f3aba04860
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 4f75bec533181b29625fb0a10cc26d03f2875036
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325774"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466371"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services-tároló áthelyezése az Azure-előfizetések és-erőforráscsoportok között
 
@@ -21,9 +21,9 @@ Az összes nyilvános régió és szuverén régió támogatott, kivéve a köz�
 
 ## <a name="prerequisites-for-moving-recovery-services-vault"></a>Recovery Services-tároló áthelyezésének előfeltételei
 
-- A tárolóban az erőforráscsoportok között a forrás-és a célként megadott erőforráscsoportok is zárolva vannak az írási és törlési műveletek megakadályozása érdekében. További információkért tekintse meg [ezt a cikket](../azure-resource-manager/management/move-resource-group-and-subscription.md).
+- A tárolóban az erőforráscsoportok között a forrás-és a célként megadott erőforráscsoportok is zárolva vannak az írási és törlési műveletek megakadályozása érdekében. További információkért tekintse meg ezt a [cikket](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 - Csak a rendszergazdai előfizetés rendelkezik a tároló áthelyezéséhez szükséges engedélyekkel.
-- A tárolók előfizetések közötti áthelyezéséhez a cél előfizetésnek ugyanabban a bérlőben kell lennie, mint a forrás-előfizetésnek, és annak állapotát engedélyezni kell.
+- A tárolók előfizetések közötti áthelyezéséhez a cél előfizetésnek ugyanabban a bérlőben kell lennie, mint a forrás-előfizetésnek, és annak állapotát engedélyezni kell. Ha egy tárolót egy másik Azure AD-címtárba szeretne áthelyezni, tekintse meg az [előfizetés átvitele egy másik könyvtárba](../role-based-access-control/transfer-subscription.md) és helyreállítási tárolóba – [Gyakori kérdések](backup-azure-backup-faq.md#recovery-services-vault)című témakört.
 - A cél erőforráscsoporthoz írási műveletek végrehajtásához engedéllyel kell rendelkeznie.
 - A tár áthelyezése csak az erőforráscsoportot módosítja. A Recovery Services-tároló ugyanazon a helyen fog megjelenni, és nem módosítható.
 - Régiónként egyszerre csak egy Recovery Services-tárolót lehet áthelyezni.
@@ -31,7 +31,7 @@ Az összes nyilvános régió és szuverén régió támogatott, kivéve a köz�
 - Azt jelzi, hogy a virtuális gép a tárolóval van-e áthelyezve, vagy sem, bármikor visszaállíthatja a virtuális gépet a tár megőrzött biztonsági mentési előzményeiből.
 - A Azure Disk Encryption megköveteli, hogy a Key Vault és a virtuális gépek ugyanabban az Azure-régióban és-előfizetésben legyenek tárolva.
 - Ha felügyelt lemezekkel rendelkező virtuális gépet szeretne áthelyezni, tekintse meg ezt a [cikket](../azure-resource-manager/management/move-resource-group-and-subscription.md).
-- A klasszikus modellben üzembe helyezett erőforrások áthelyezésének lehetőségei eltérnek attól függően, hogy az adott előfizetésen belül vagy egy új előfizetésre helyezi át az erőforrásokat. További információkért tekintse meg [ezt a cikket](../azure-resource-manager/management/move-resource-group-and-subscription.md).
+- A klasszikus modellben üzembe helyezett erőforrások áthelyezésének lehetőségei eltérnek attól függően, hogy az adott előfizetésen belül vagy egy új előfizetésre helyezi át az erőforrásokat. További információkért tekintse meg ezt a [cikket](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 - A tárolóhoz definiált biztonsági mentési szabályzatok megmaradnak, miután a tár előfizetések vagy egy új erőforráscsoport között mozog.
 - Csak olyan tárolót helyezhet át, amely a következő típusú biztonsági másolati elemeket tartalmazza. Az alább nem felsorolt típusú biztonsági másolati elemeket le kell állítani, és az adatokat véglegesen törölni kell a tár áthelyezése előtt.
   - Azure Virtual Machines
@@ -183,7 +183,7 @@ Ha meg kell őriznie a jelenlegi védett adatok védelmét a régi tárolóban, 
   - Szükség esetén visszaállíthatja a virtuális gépet a régi tárból.
   - Az új erőforrásban található virtuális gép új tárolójának első biztonsági mentése kezdeti replika lesz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Több különböző típusú erőforrást is áthelyezhet az erőforráscsoportok és az előfizetések között.
 

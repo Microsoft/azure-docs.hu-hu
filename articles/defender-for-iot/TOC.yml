@@ -35,7 +35,7 @@
         - name: A IoT Micro Agent Defender létrehozása a forráskódból (előzetes verzió)
           displayName: 'baseline, configuration, customize, distribution'
           href: quickstart-building-the-defender-micro-agent-from-source.md
-        - name: Az Azure RTOS biztonsági moduljának konfigurálása
+        - name: A Defender-IoT-Micro-Agent konfigurálása az Azure RTOS
           href: quickstart-azure-rtos-security-module.md
         - name: Azure-erőforrások hozzáadása a IoT-megoldáshoz
           displayName: 'resources, monitored, resource'
@@ -79,10 +79,10 @@
           href: concept-recommendations.md
         - name: Klasszikus
           items:
-            - name: Biztonsági modul
-              displayName: 'device twins, security module twin'
+            - name: Defender-IoT-Micro-Agent
+              displayName: 'device twins, Defender-IoT-micro-agent twin'
               href: concept-security-module.md
-            - name: Biztonsági Edge-modul
+            - name: Edge Defender – IoT-Micro-Agent
               href: security-edge-architecture.md
             - name: Biztonsági ügynökök
               href: overview-security-agents.md
@@ -95,7 +95,7 @@
             - name: Azure Security alapkonfiguráció a IoT készült Azure Defender számára
               displayName: 'identity management, active directory, privileged access, data protection, asset management, incident response, posture, vulnerability, governance'
               href: security-baseline.md
-            - name: A biztonsági modul klasszikus eseményének összesítése
+            - name: Defender-IoT-Micro-Agent klasszikus esemény összesítése
               displayName: 'twin, default, configuration, alerts'
               href: event-aggregation.md
             - name: Ügynök-alapú biztonsági riasztások
@@ -253,14 +253,14 @@
         - name: Egyéni riasztások létrehozása
           displayName: security group
           href: quickstart-create-custom-alerts.md
-        - name: Az Azure RTOS biztonsági moduljai
+        - name: Defender-IoT-Micro-Agent az Azure RTOS
           href: iot-security-azure-rtos.md
           items:
-            - name: Az Azure RTOS biztonsági moduljának használata
+            - name: A Defender-IoT-Micro-Agent használata az Azure RTOS
               href: how-to-azure-rtos-security-module.md
-            - name: Az Azure RTOS biztonsági moduljának bemutatása
+            - name: Az Azure RTOS Defender-IoT-Micro-Agent megismerése
               href: concept-rtos-security-module.md
-            - name: Az Azure RTOS biztonsági moduljával kapcsolatosa riasztások és javaslatok
+            - name: Defender-IoT-Micro-Agent Azure RTOS-riasztások és-javaslatok
               href: concept-rtos-security-alerts-recommendations.md
         - name: Klasszikus
           items:
@@ -282,7 +282,7 @@
                   href: azure-iot-security-local-configuration-c.md
                 - name: Helyi konfiguráció – C#
                   href: azure-iot-security-local-configuration-csharp.md
-            - name: Biztonsági Edge-modul üzembe helyezése
+            - name: Edge Defender üzembe helyezése – IoT-Micro-Agent
               href: how-to-deploy-edge.md
             - name: Biztonsági ügynökök konfigurálása
               displayName: property
@@ -319,7 +319,7 @@
           href: resources-frequently-asked-questions.md
     - name: Ügynökalapú megoldás eszközkészítők számára
       items:
-        - name: Az Azure RTOS biztonsági moduljának API-ja
+        - name: Defender-IoT-Micro-Agent az Azure RTOS API-hoz
           displayNAme: 'prototype, disable'
           href: azure-rtos-security-module-api.md
         - name: Gyakori kérdések – ügynök
@@ -344,7 +344,7 @@
           href: ../security-center/
         - name: Az Azure biztonsági dokumentációja
           href: ../security/index.yml
-        - name: Azure RTOS biztonsági modul a Stack Overflow-n
+        - name: Azure RTOS Defender – IoT-Micro-Agent Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-rtos+azure-iot-security-module'
         - name: 'Azure IoT biztonsági, adatvédelmi és megfelelőségi blog'
           href: 'https://techcommunity.microsoft.com/t5/iot-security/bd-p/IoTSecurity'

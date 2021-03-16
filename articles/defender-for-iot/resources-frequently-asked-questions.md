@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/07/2020
+ms.date: 03/02/2021
 ms.author: rkarlin
-ms.openlocfilehash: 678b50ffb2df2cd16312548109b93f6f1a7f08ff
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 89da9ed378118875f0c09d3c23799349a4d093b0
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247465"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467697"
 ---
 # <a name="azure-defender-for-iot-frequently-asked-questions"></a>Azure Defender a IoT-hez – gyakori kérdések
 
@@ -57,29 +57,23 @@ Például:
 
 ## <a name="how-does-defender-for-iot-compare-to-the-competition"></a>Hogyan hasonlítja össze a Defender a IoT a versenyt?
 
-Míg más megoldások olyan képességeket biztosítanak, amelyek lehetővé teszik, hogy az ügyfelek saját megoldásaikat hozzanak létre, a Defender for IoT egyedi, teljes körű IoT biztonsági megoldást nyújt, amely átfogó képet nyújt az összes kapcsolódó Azure-erőforrás biztonságáról. Az Azure lehetővé teszi a gyors üzembe helyezést és a teljes integrációt IoT Hub Modulos ikrek használatával, így könnyen integrálható a meglévő eszközök felügyeleti eszközeivel.
+A IoT készült Azure Defender átfogó biztonságot nyújt az összes IoT/OT-eszközön. A **végfelhasználói szervezetek** számára a IoT készült Azure Defender ügynök nélküli, a gyors üzembe helyezést biztosító, különböző tulajdonosi eszközök és örökölt Windows rendszerű rendszerek, valamint az Azure Sentinel és más SoC-eszközök együttműködésével működik. Helyszíni vagy Azure-kapcsolattal rendelkező környezetekben is üzembe helyezhető. A **IoT-eszközökhöz** készült Azure Defender for IoT egyszerűsített ügynököket kínál az eszközök rétegbeli biztonságának új IOT/ot kezdeményezésekbe való beágyazásához.
 
+## <a name="do-i-have-to-be-an-azure-customer"></a>Azure-ügyfélnek kell lennie?
 
-## <a name="do-i-have-to-be-an-azure-iot-customer"></a>Egy Azure IoT-ügyfélnek kell lennie?
+Nem, a IoT készült Azure Defender ügynök nélküli verziójához nem szükséges Azure-ügyfélnek lennie. Ha azonban riasztásokat szeretne küldeni az Azure Sentinelnek; hálózati érzékelők kiépítése és a felhőből való állapotának monitorozása; az automatikus szoftver-és veszélyforrások elleni védelem előnyeinek kihasználása érdekében az érzékelőt az Azure-IoT Hub keresztül kell összekötnie az Azure-ban.
 
-Igen. A felhőben csatlakoztatott üzemelő példányok esetében az Azure Defender for IoT az Azure IoT-kapcsolaton és-infrastruktúrán alapul.
+Az Azure Defender IoT-hez készült ügynök-alapú verziójának Azure-ügyfélnek kell lennie.
+
 ## <a name="can-i-create-my-own-alerts"></a>Létrehozhatom a saját riasztásokat?
 
-Igen. Az előre meghatározott viselkedések, például az IP-címek és a nyitott portok esetében beállíthatja a testreszabott riasztásokat. Az egyéni riasztásokkal és azok létrehozásával kapcsolatos további tudnivalókért tekintse meg az [egyéni riasztások létrehozása](quickstart-create-custom-alerts.md) című témakört.
-
-## <a name="where-can-i-see-logs-can-i-customize-logs"></a>Hol láthatom a naplókat? Testreszabhatók a naplók?
-
-- Riasztások és javaslatok megtekintése a csatlakoztatott Log Analytics munkaterületen. Konfigurálja a tárterület méretét és időtartamát a munkaterületen.
-
-- A biztonsági ügynökből származó nyers adatok a Log Analytics-fiókban is tárolhatók. A beállítás konfigurációjának módosítása előtt vegye figyelembe a méretet, az időtartamot, a tárolási követelményeket és a kapcsolódó költségeket.
-
-
+Igen, több paraméteren alapuló egyéni riasztásokat is létrehozhat, például az IP/MAC-címet, a protokoll típusát, az osztályt, a szolgáltatást, a függvényt, a parancsot stb., valamint a hasznos adatokban szereplő egyéni címkék értékeit.  Az egyéni riasztásokkal és azok létrehozásával kapcsolatos további tudnivalókért tekintse meg az [egyéni riasztások létrehozása](quickstart-create-custom-alerts.md) című témakört.
 
 ## <a name="what-happens-when-the-internet-connection-stops-working"></a>Mi történik, ha az internetkapcsolat leáll?
 
 Az érzékelők és ügynökök továbbra is futtatják és tárolják az adataikat, amíg az eszköz fut. A rendszer a biztonsági üzenet gyorsítótárában tárolja az adatmennyiséget a méret konfigurációjának megfelelően. Amikor az eszköz visszanyeri a kapcsolatot, a biztonsági üzenetek folytatják a küldést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni arról, hogyan kezdheti meg a Defendert a IoT-hez, tekintse meg a következő cikkeket:
 

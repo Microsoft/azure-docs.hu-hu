@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: 8c876a09c77a2ed5441a2f40acc2da508697febb
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 04ed2e76797474a65d5c7c669066926225c1c1f9
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102608682"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471745"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
@@ -26,7 +26,7 @@ __RSS-hírcsatorna__: értesítést kap az oldal frissítésekor, ha a következ
 ## <a name="2021-03-08"></a>2021-03-08
 
 ### <a name="azure-machine-learning-sdk-for-python-v1240"></a>Azure Machine Learning SDK a Python v 1.24.0
-+ **Új funkciók**
++ **Hibajavítások és javítások**
   + **azureml-automl-core**
     + A visszamenőlegesen kompatibilis importálások eltávolítva a rendszerből `azureml.automl.core.shared` . A modulban nem található hibák a `azureml.automl.core.shared` névtérben való importálással oldhatók fel `azureml.automl.runtime.shared` .
   + **azureml-automl-DNN-vízió**
@@ -75,7 +75,7 @@ __RSS-hírcsatorna__: értesítést kap az oldal frissítésekor, ha a következ
 ## <a name="2021-02-16"></a>2021-02-16
 
 ### <a name="azure-machine-learning-sdk-for-python-v1230"></a>Azure Machine Learning SDK a Python v 1.23.0
-+ **Új funkciók**
++ **Hibajavítások és javítások**
   + **azureml-core**
     + [Kísérleti funkció] Támogatás hozzáadása a szinapszis-munkaterület a pénzmosás-hez társított szolgáltatásként való összekapcsolásához
     + [Kísérleti funkció] Támogatás hozzáadása a szinapszis Spark-készlet a pénzmosás-hez való csatlakoztatásához számítási feladatokhoz

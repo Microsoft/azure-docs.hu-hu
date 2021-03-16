@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/21/2021
 ms.author: shhazam
-ms.openlocfilehash: 832c8e426b57e6b447ef805f2868a6d42abe3d9d
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: cfd5192a78c34caf5acbe4576f5a00ab314acb61
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449696"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489896"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Gyors útmutató: azureiotsecurity-modul létrehozása – Twin
 
@@ -39,9 +39,9 @@ További információ az IoT Hub Azure-beli modulbeli ikrek általános fogalmá
 
 A IoT Defender a modul Twin mechanizmusát használja, és minden eszközhöz fenntart egy _azureiotsecurity_ nevű biztonsági modult.
 
-A biztonsági modul Twin az eszközök biztonságára vonatkozó összes információt tartalmazza.
+A Defender-IoT-Micro-Agent Twin az eszközök biztonságára vonatkozó összes információt tartalmazza.
 
-Ahhoz, hogy teljes mértékben használhassa a Defendert a IoT-funkciókhoz, létre kell hoznia, konfigurálnia és használnia kell ezt a biztonsági modult a szolgáltatás minden eszközéhez.
+Ahhoz, hogy a Defender teljes mértékben használhassa a IoT funkciókat, létre kell hoznia, konfigurálnia és használniuk kell ezt a Defender-IoT-Micro-Agent ikreket a szolgáltatás minden eszközén.
 
 ## <a name="create-azureiotsecurity-module-twin"></a>Twin azureiotsecurity-modul létrehozása
 

@@ -3,12 +3,12 @@ title: Azure Monitor riasztásokra vonatkozó műveleti szabályok
 description: Megtudhatja, hogyan konfigurálhatja és kezelheti a Azure Monitorban szereplő műveleti szabályokat.
 ms.topic: conceptual
 ms.date: 03/15/2021
-ms.openlocfilehash: 2ad87cce668555ece0eba6479bf9d21db312bfcf
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: f70d798270ad82193f7ae5935d34f8f418d35e05
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/15/2021
-ms.locfileid: "103466728"
+ms.locfileid: "103471675"
 ---
 # <a name="action-rules-preview"></a>Műveleti szabályok (előzetes verzió)
 
@@ -76,8 +76,8 @@ Ez a szabály csak a kiválasztott erőforrástípusok riasztására vonatkozik.
 A (z) **"Virtual Machines" erőforrástípus** például azt jelenti, hogy a szabály csak a virtuális gépeken lévő riasztásokra lesz érvényes.
 * **Riasztási szabály azonosítója**  
 Ez a szabály csak az adott riasztási szabálytól érkező riasztásokra vonatkozik. Az értéknek a riasztási szabály Resource Manager-AZONOSÍTÓjának kell lennie.  
-Például a **riasztási szabály azonosítója = "/Subscriptions/SubId1/resourceGroups/RG1/Providers/Microsoft.Insights/metricalerts/API-latency"** azt jelenti, hogy ez a szabály csak az "API-késleltetés" metrikai szabályból érkező riasztásokra vonatkozik.
-A riasztási szabályok helyes AZONOSÍTÓjának beszerzéséhez adja meg a riasztási szabályokat a parancssori felületről, vagy nyisson meg egy adott riasztási szabályt a portálon, majd kattintson a Tulajdonságok elemre, és másolja az "erőforrás-azonosító" értéket.
+Például a **riasztási szabály azonosítója = "/Subscriptions/SubId1/resourceGroups/RG1/Providers/Microsoft.Insights/metricalerts/API-latency"** azt jelenti, hogy ez a szabály csak az "API-késleltetés" metrikai szabályból érkező riasztásokra vonatkozik.  
+_Megjegyzés – a riasztási szabályok megfelelő AZONOSÍTÓjának beszerzéséhez adja meg a riasztási szabályokat a parancssori felületről, vagy nyisson meg egy adott riasztási szabályt a portálon, majd kattintson a Tulajdonságok elemre, és másolja az "erőforrás-azonosító" értéket._
 * **Figyelési feltétel**  
 Ez a szabály csak a megadott figyelési feltétellel rendelkező riasztási eseményekre vonatkozik – vagy **kilőtt** vagy **megoldott**.
 * **Leírás**  

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 63288bca124959463dc6ea16cb9d681c68ad00da
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: e740fdb9cd232892dadfe98c4d739759be66bf55
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448192"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488720"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-saml-protocol-in-azure-active-directory-b2c"></a>Salesforce SAML-szolgáltatóval való bejelentkezés beállítása SAML protokoll használatával Azure Active Directory B2C
 
@@ -60,11 +60,24 @@ Ez a cikk bemutatja, hogyan engedélyezheti a bejelentkezést egy Salesforce-sze
       https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase
       ```
 
+      [Egyéni tartomány](custom-domain.md)használatakor használja a következő formátumot:
+
+      ```
+      https://your-domain-name/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase
+      ```
+
 6. Az **ACS URL-címe** mezőbe írja be a következő URL-címet. Győződjön meg arról, hogy az értékét a `your-tenant` Azure ad B2C bérlő nevére cseréli.
 
       ```
       https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer
       ```
+
+      [Egyéni tartomány](custom-domain.md)használatakor használja a következő formátumot:
+
+      ```
+      https://your-domain-name/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer
+      ```
+
 7. Görgessen a lista aljára, majd kattintson a **Mentés** gombra.
 
 ### <a name="get-the-metadata-url"></a>A metaadatok URL-címének beolvasása

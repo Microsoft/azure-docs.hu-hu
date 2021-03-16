@@ -14,39 +14,24 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a65b91e3dff3ef412dad8bbe57383a9dbf8c7765
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: b7a0f50a7f84b89d7c048e57eadc85635df10f77
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032245"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467680"
 ---
 # <a name="azure-ad-built-in-roles"></a>Beépített Azure AD-szerepkörök
 
-A Azure Active Directory (Azure AD) használatával korlátozott rendszergazdákat jelölhet ki a kevésbé Kiemelt szerepkörökben lévő Identity Tasks-feladatok kezelésére. A rendszergazdák olyan célokra rendelhetők hozzá, mint a felhasználók hozzáadása vagy módosítása, a rendszergazdai szerepkörök hozzárendelése, a felhasználói jelszavak alaphelyzetbe állítása, a felhasználói licencek kezelése és a tartománynevek kezelése. Az [alapértelmezett felhasználói engedélyeket](../fundamentals/users-default-permissions.md) csak az Azure ad felhasználói beállításaiban lehet módosítani.
+Azure Active Directory (Azure AD) esetén, ha egy másik rendszergazdának vagy nem rendszergazdának az Azure AD-erőforrások felügyeletére van szüksége, hozzá kell rendelnie egy Azure AD-szerepkört, amely biztosítja a szükséges engedélyeket. Például hozzárendelhet szerepköröket a felhasználók hozzáadásához vagy módosításához, a felhasználói jelszavak visszaállításához, a felhasználói licencek kezeléséhez vagy a tartománynevek kezeléséhez.
+
+Ez a cikk felsorolja az Azure ad-erőforrások kezelésének engedélyezéséhez hozzárendelhető Azure AD beépített szerepköröket. További információ a szerepkörök hozzárendeléséről: [Azure ad-szerepkörök kiosztása a felhasználók számára](manage-roles-portal.md).
 
 ## <a name="limit-use-of-global-administrator"></a>Globális rendszergazda használatának korlátozása
 
 A globális rendszergazdai szerepkörhöz hozzárendelt felhasználók elolvashatják és módosíthatják az Azure AD-szervezet minden felügyeleti beállítását. Alapértelmezés szerint, amikor egy felhasználó regisztrál a Microsoft Cloud Service szolgáltatásra, létrejön egy Azure AD-bérlő, és a felhasználó tagja lesz a globális rendszergazdák szerepkörnek. Ha egy meglévő bérlőhöz ad hozzá egy előfizetést, nincs hozzárendelve a globális rendszergazdai szerepkörhöz. Csak a globális rendszergazdák és a Kiemelt szerepkörű rendszergazdák delegálják a rendszergazdai szerepköröket. Az üzleti kockázat csökkentése érdekében javasoljuk, hogy ezt a szerepkört a szervezete legkevesebb lehetséges személyéhez rendelje.
 
 Ajánlott eljárásként Azt javasoljuk, hogy a szerepkört a szervezetnél kevesebb mint öt személyhez rendelje hozzá. Ha több mint öt adminisztrátora van hozzárendelve a globális rendszergazdai szerepkörhöz a szervezetében, a következő módokon csökkentheti annak használatát.
-
-### <a name="find-the-role-you-need"></a>Keresse meg a szükséges szerepkört
-
-Ha nem szeretné megkeresni a sok szerepkörből álló listáról származó szerepkört, az Azure AD a szerepkör-kategóriák alapján jeleníti meg a szerepkörök részhalmazait. Tekintse meg az [Azure ad-szerepkörök és-rendszergazdák](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) új **típusú** szűrőjét, hogy csak a kiválasztott típus szerepkörei jelenjenek meg.
-
-### <a name="a-role-exists-now-that-didnt-exist-when-you-assigned-the-global-administrator-role"></a>Már létezik olyan szerepkör, amely nem létezett a globális rendszergazdai szerepkör hozzárendelésekor
-
-Lehetséges, hogy egy szerepkört vagy szerepkört adtak hozzá az Azure AD-hez, amely olyan részletesebb engedélyeket biztosít, amelyek nem voltak elérhetők, amikor a felhasználók a globális rendszergazdához emeltek. Az idő múlásával további szerepköröket vezetünk be, amelyek csak a globális rendszergazdai szerepkörrel ellátott feladatokat hajtják végre. Ezek a következő [szerepkörökben](#all-roles)láthatók.
-
-## <a name="assign-or-remove-administrator-roles"></a>Rendszergazdai szerepkörök kiosztása vagy eltávolítása
-
-Ha meg szeretné tudni, hogyan rendelhet hozzá rendszergazdai szerepköröket egy felhasználóhoz Azure Active Directoryban, tekintse meg [a rendszergazdai szerepkörök megtekintése és társítása a Azure Active Directory](manage-roles-portal.md).
-
-> [!Note]
-> Ha rendelkezik egy prémium szintű Azure AD-licenccel, és Ön már Privileged Identity Management (PIM) felhasználó, az összes szerepkör-felügyeleti feladat elvégzése a Privilege Identity Management szolgáltatásban történik, nem az Azure AD-ben.
->
-> ![A PIM-ben felügyelt Azure AD-szerepkörök olyan felhasználók számára, akik már használják a PIM-t, és prémium P2 licenccel rendelkeznek](./media/permissions-reference/pim-manages-roles-for-p2.png)
 
 ## <a name="all-roles"></a>Minden szerepkör
 
@@ -243,7 +228,7 @@ A [hitelesítési házirend rendszergazdai](#authentication-policy-administrator
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | Hitelesítés rendszergazdája | Igen, egyes felhasználók számára (lásd fent) | Igen, egyes felhasználók számára (lásd fent) | Nem | Nem | Nem |
 | Kiemelt jogosultságú hitelesítés rendszergazdája| Igen minden felhasználó számára | Igen minden felhasználó számára | Nem | Nem | Nem |
-| Hitelesítési házirend rendszergazdája | Nem |Nem | Igen | Igen | Igen |
+| Hitelesítési házirend rendszergazdája | Nem |Nem | Igen | Igen | Yes |
 
 > [!IMPORTANT]
 > Az ezzel a szerepkörrel rendelkező felhasználók megváltoztathatják azoknak a személyeknek a hitelesítő adatait, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz, illetve a Azure Active Directoryon belüli és kívüli kritikus konfigurációhoz. A felhasználók hitelesítő adatainak módosítása azt jelentheti, hogy a felhasználó identitását és engedélyeit feltételezi. Például:
@@ -278,7 +263,7 @@ A [hitelesítési rendszergazda](#authentication-administrator) és az emelt [sz
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | Hitelesítés rendszergazdája | Igen, egyes felhasználók számára (lásd fent) | Igen, egyes felhasználók számára (lásd fent) | Nem | Nem | Nem |
 | Kiemelt jogosultságú hitelesítés rendszergazdája| Igen minden felhasználó számára | Igen minden felhasználó számára | Nem | Nem | Nem |
-| Hitelesítési házirend rendszergazdája | Nem | Nem | Igen | Igen | Igen |
+| Hitelesítési házirend rendszergazdája | Nem | Nem | Igen | Igen | Yes |
 
 > [!IMPORTANT]
 > Ez a szerepkör jelenleg nem képes kezelni az MFA-beállításokat az örökölt MFA felügyeleti portálon.
@@ -1390,7 +1375,7 @@ A [hitelesítési házirend rendszergazdai](#authentication-policy-administrator
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | Hitelesítés rendszergazdája | Igen, egyes felhasználók számára (lásd fent) | Igen, egyes felhasználók számára (lásd fent) | Nem | Nem | Nem |
 | Kiemelt jogosultságú hitelesítés rendszergazdája| Igen minden felhasználó számára | Igen minden felhasználó számára | Nem | Nem | Nem |
-| Hitelesítési házirend rendszergazdája | Nem | Nem | Igen | Igen | Igen |
+| Hitelesítési házirend rendszergazdája | Nem | Nem | Igen | Igen | Yes |
 
 > [!IMPORTANT]
 > Az ezzel a szerepkörrel rendelkező felhasználók megváltoztathatják azoknak a személyeknek a hitelesítő adatait, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz, illetve a Azure Active Directoryon belüli és kívüli kritikus konfigurációhoz. A felhasználók hitelesítő adatainak módosítása azt jelentheti, hogy a felhasználó identitását és engedélyeit feltételezi. Például:
@@ -1879,6 +1864,6 @@ Használati összesítő jelentések olvasója | &nbsp; | :heavy_check_mark: | :
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Ha többet szeretne megtudni arról, hogyan rendeljen hozzá egy felhasználót egy Azure-előfizetés rendszergazdájaként, tekintse meg a következőt: [felhasználó kijelölése Azure-előfizetés rendszergazdájának](../../role-based-access-control/role-assignments-portal-subscription-admin.md)
-* Ha többet szeretne megtudni a Microsoft Azure erőforrás-hozzáférés szabályozásáról, tekintse meg [a különböző szerepkörök megismerése](../../role-based-access-control/rbac-and-directory-admin-roles.md) című témakört.
-* Az előfizetések és az Azure AD-bérlők közötti kapcsolatról, illetve az előfizetés hozzárendelésével vagy hozzáadásával kapcsolatos információkért lásd: [Azure-előfizetés hozzárendelése vagy hozzáadása a Azure Active Directory bérlőhöz](../fundamentals/active-directory-how-subscriptions-associated-directory.md)
+- [Azure AD-szerepkörök társítása csoportokhoz](groups-assign-role.md)
+- [A különböző szerepkörök ismertetése](../../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [Azure-előfizetés rendszergazdai szerepkörének felhasználóhoz rendelése](../../role-based-access-control/role-assignments-portal-subscription-admin.md)

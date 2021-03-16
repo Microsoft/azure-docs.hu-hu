@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 11/30/2020
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: 7b609fec2a47dc0685b30dac12f43263127f70ef
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 4b5db049e6d1cfe76bdd0d5cd6d7360e0b98bad0
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523209"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489811"
 ---
 # <a name="system-prerequisites"></a>Rendszer-előfeltételek
 Ez a cikk az Azure Defender IoT való futtatásának rendszerkövetelményeit sorolja fel.
@@ -23,7 +23,7 @@ Ez a cikk az Azure Defender IoT való futtatásának rendszerkövetelményeit so
 - Hardvereszközök a NTA-érzékelőkhöz.
 - Az Azure-előfizetés közreműködői szerepköre. Csak a véglegesített eszközök definiálásához és az Azure Sentinelhez való csatlakozáshoz szükséges.
 - Azure IoT Hub (ingyenes vagy standard szintű) **közreműködő** szerepkör, felhőalapú felügyelethez. Győződjön meg arról, hogy az **Azure Defender for IoT** funkció engedélyezve van.
-- Az eszköz szintű biztonsági modul támogatásához a Defender for IoT-ügynökök támogatják az eszközök és platformok egyre bővülő listáját. Tekintse meg a [támogatott platformok listáját](how-to-deploy-agent.md).
+- Az eszköz szintű Defender-IoT-Micro-Agent támogatáshoz a Defender for IoT-ügynökök támogatják az eszközök és platformok egyre bővülő listáját. Tekintse meg a [támogatott platformok listáját](how-to-deploy-agent.md).
 
 ## <a name="supported-service-regions"></a>Támogatott szolgáltatási régiók
 
@@ -31,7 +31,7 @@ A IoT Defender az összes európai régióból érkező forgalmat a Nyugat-euró
 
 További információ: [IoT hub támogatott régiók](https://azure.microsoft.com/global-infrastructure/services/?products=iot-hub).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="see-also"></a>Lásd még
 
-[Szükséges berendezések azonosítása](how-to-identify-required-appliances.md) 
- [Tudnivalók az Azure Defender for IoT Network telepítőről](how-to-set-up-your-network.md)
+- [A szükséges berendezések azonosítása](how-to-identify-required-appliances.md)
+- [Tudnivalók az Azure Defender for IoT Network telepítőről](how-to-set-up-your-network.md)

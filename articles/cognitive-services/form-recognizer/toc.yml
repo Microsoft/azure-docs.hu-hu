@@ -8,7 +8,7 @@
     - name: Újdonságok
       href: whats-new.md
 - name: Bevezetés a Form Recognizer használatába
-  expaned: true
+  expanded: true
   items:
     - name: Az ügyfélkódtár vagy a REST API használata
       href: quickstarts/client-library.md
@@ -26,18 +26,27 @@
       href: tutorial-bulk-processing.md
 - name: Alapelvek
   items:
-    - name: Elrendezés kinyerése
-      href: concept-layout.md
+    - name: Elrendezési API
+      expanded: true
+      items:
+        - name: Űrlapadatok kinyerése
+          href: concept-layout.md
+    - name: Egyéni modellek
+      href: concept-custom.md
     - name: Nyugták
       href: concept-receipts.md
     - name: Névjegykártyák
       href: concept-business-cards.md
     - name: Számlák
       href: concept-invoices.md
+    - name: Azonosító kártyák
+      href: concept-identification-cards.md
 - name: Útmutatók
   items:
     - name: Betanítási adathalmaz létrehozása
       href: build-training-data-set.md
+    - name: Táblázatos címkék használata az egyéni modell betanításához
+      href: supervised-table-tags.md
     - name: A mintacímkézési eszköz üzembe helyezése
       href: deploy-label-tool.md
     - name: Tárolók használata
@@ -57,8 +66,8 @@
       href: disaster-recovery.md
 - name: Referencia
   items:
-    - name: 'Form Recognizer API 2.1, előzetes verzió'
-      href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync'
+    - name: Űrlap-felismerő API v 2.1 előzetes verzió. 3
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm'
     - name: Form Recognizer API 2.0
       href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm'
     - name: SDK-k
