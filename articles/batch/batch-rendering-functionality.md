@@ -3,14 +3,14 @@ title: Renderelési képességek
 description: A standard Azure Batch funkciói a renderelési munkaterhelések és alkalmazások futtatására szolgálnak. A Batch speciális funkciókat tartalmaz a renderelési feladatok támogatásához.
 author: mscurrell
 ms.author: markscu
-ms.date: 02/01/2021
+ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: c748c51311a70cd3b4fc6d435e97a33d709467b9
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: a2e2cfb71999bd5ab83591448342d4bac1dabdd5
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429802"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496337"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Renderelési képességek Azure Batch
 
@@ -27,6 +27,9 @@ A feladat parancssori karakterláncának az egyéni virtuálisgép-rendszerkép 
 A legtöbb renderelési alkalmazáshoz meg kell adni a licenckiszolgáló által beszerzett licenceket. Ha van meglévő helyszíni licenckiszolgáló, akkor a készletnek és a licenckiszolgálóra is ugyanazon a [virtuális hálózaton](../virtual-network/virtual-networks-overview.md)kell lennie. Az is lehetséges, hogy egy Azure-beli virtuális GÉPEN futtatja a licenckiszolgálót, és a Batch-készlet és a licenckiszolgáló virtuális gépe ugyanazon a virtuális hálózaton található.
 
 ## <a name="batch-pools-using-rendering-vm-images"></a>Batch-készletek a virtuálisgép-rendszerképek renderelésével
+
+> [!IMPORTANT]
+> A renderelési virtuálisgép-lemezképek és a használati licencek [elavultak, és az 2024. február 29-én](https://azure.microsoft.com/updates/azure-batch-rendering-vm-images-licensing-will-be-retired-on-29-february-2024/)megszűnik. A Batch for rendering használatához [Egyéni virtuálisgép-rendszerképet és normál alkalmazás-licencelést kell használni.](batch-rendering-functionality.md#batch-pools-using-custom-vm-images-and-standard-application-licensing)
 
 ### <a name="rendering-application-installation"></a>Alkalmazás telepítésének megjelenítése
 

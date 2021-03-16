@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
-ms.openlocfilehash: e3d8d6529eb943566118cc67eab549cb32891cd8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: fee71f9ebfc69c19adc026fce5cd78b6a8b5240b
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102037234"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490293"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Bevezetés az Azure Metrikaböngésző használatába
 
@@ -63,6 +63,20 @@ A [szűrés](../essentials/metrics-charts.md#filters) és a [felosztás](../esse
 - A **felosztás** azt szabályozza, hogy a diagram külön sorokat jelenít-e meg egy dimenzió minden értékéhez, vagy összesíti az értékeket egyetlen sorba. Láthatja például, hogy egy sor az összes kiszolgálópéldány átlagos válaszideje, vagy az egyes kiszolgálókhoz külön sorok találhatók. A különálló sorok megjelenítéséhez a *kiszolgálópéldány* -dimenzióra kell alkalmaznia a felosztást.
 
 Tekintse át a szűrést és a felosztást alkalmazó [diagramok példáit](../essentials/metric-chart-samples.md) . A cikk a diagramok konfigurálásához szükséges lépéseket mutatja be.
+
+## <a name="share-your-metric-chart"></a>A metrika diagramjának megosztása
+A metrikai diagramot jelenleg két módon lehet megosztani. Az alábbiakban megtudhatja, hogyan oszthat meg információkat a metrikák diagramjairól az Excelben és egy hivatkozással.
+ 
+### <a name="download-to-excel"></a>Letöltés az Excel programba
+Kattintson a megosztás gombra, és válassza a "Letöltés az Excelbe" lehetőséget. A letöltés azonnal elindul.
+
+![a metrikai diagram Excel használatával történő megosztásának képernyőképe](./media/metrics-getting-started/share-excel.png)
+
+### <a name="share-a-link"></a>Hivatkozás megosztása
+Kattintson a megosztás gombra, és válassza a "hivatkozás másolása" lehetőséget. Értesítést kap arról, hogy a hivatkozás másolása sikeresen megtörtént.
+
+![a metrikai diagram hivatkozáson keresztüli megosztásának képernyőképe](./media/metrics-getting-started/share-link.png)
+
 
 ## <a name="advanced-chart-settings"></a>Speciális diagram beállításai
 

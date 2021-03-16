@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 9549e6ea30be0cd9eb1a8c200a5af4a4721793a6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: fc9cd95063f84a9af7f989af9a65ce8f99852dc1
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034676"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490976"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>Az Azure Digital Twins lekérdezési nyelvének ismertetése
 
@@ -85,7 +85,7 @@ Ez a szakasz a lekérdezési nyelv korlátozásait ismerteti.
 * Az utasítás nem támogatja az allekérdezéseket `FROM` .
 * `OUTER JOIN` a szemantika nem támogatott, ami azt jelenti, hogy ha a kapcsolat nulla rangú, akkor a rendszer a teljes "sort" kizárja a kimeneti eredményhalmaz alapján.
 * A gráf bejárási mélysége `JOIN` lekérdezési szintenként legfeljebb öt szintre van korlátozva.
-* A műveletek forrása `JOIN` korlátozott: a lekérdezésnek deklarálnia kell azokat az ikreket, amelyeken a lekérdezés elindul.
+* Az Azure Digital Twins kapcsolatai nem kérhetők le független entitásként; Emellett meg kell adnia a forráshoz tartozó, a kapcsolatból származó külön adatokat is. Ez azt jelenti, hogy a művelethez bizonyos korlátozások vonatkoznak, `JOIN` amelyek a kapcsolatok lekérdezésére szolgálnak, hogy megbizonyosodjon arról, hogy a lekérdezés elkezdődik-e a kettős (ak). Erre példákat a következő témakörben talál: [*lekérdezés kapcsolat alapján*](how-to-query-graph.md#query-by-relationship) című rész, *útmutató: lekérdezés a Twin Graph* -ról.
 
 ## <a name="next-steps"></a>Következő lépések
 

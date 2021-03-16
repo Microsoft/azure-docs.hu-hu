@@ -8,14 +8,16 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
-ms.openlocfilehash: d07a1d1ab0d3b1f4315c09f1c403126139b34612
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 0388520903e208b3225375d5cee81e8321740a1b
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043901"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103487734"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Modbus TCP-eszközök csatlakoztatása IoT Edge Device Gateway-átjárón keresztül
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Ha Modbus TCP-vagy RTU-protokollt használó IoT-eszközöket szeretne csatlakoztatni egy Azure IoT hub-hoz, használhat egy IoT Edge eszközt átjáróként. Az átjáróeszköz beolvassa az adatokat a Modbus-eszközökből, majd elküldi ezeket az adatokat a felhőbe egy támogatott protokoll használatával.
 
@@ -49,10 +51,10 @@ Ez a szakasz végigvezeti a Microsoft minta-Modbus moduljának a IoT Edge eszkö
 
 4. A **IoT Edge-modulok** szakaszban adja hozzá a Modbus modult:
 
-   1. Kattintson a legördülő **listára** , és válassza a **piactér modul**elemet.
+   1. Kattintson a legördülő **listára** , és válassza a **piactér modul** elemet.
    2. Keresse meg `Modbus` és válassza ki a **Modbus TCP-modult** a Microsoft által.
-   3. A modul automatikusan konfigurálva van a IoT Hubhoz, és megjelenik a IoT Edge modulok listájában. Az útvonalak is automatikusan konfigurálva vannak. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
-   4. Tekintse át a központi telepítési jegyzéket, és válassza a **Létrehozás**lehetőséget.
+   3. A modul automatikusan konfigurálva van a IoT Hubhoz, és megjelenik a IoT Edge modulok listájában. Az útvonalak is automatikusan konfigurálva vannak. Válassza az **Áttekintés + létrehozás** lehetőséget.
+   4. Tekintse át a központi telepítési jegyzéket, és válassza a **Létrehozás** lehetőséget.
 
 5. Válassza ki a Modbus modult, `ModbusTCPModule` majd a listából, és válassza ki a **modul Twin beállítások** lapot. A modulhoz tartozó, dupla kívánt tulajdonságok esetében a szükséges JSON automatikusan ki van töltve.
 
@@ -60,7 +62,7 @@ Ez a szakasz végigvezeti a Microsoft minta-Modbus moduljának a IoT Edge eszkö
 
 7. Válassza a **Frissítés** lehetőséget.
 
-8. Válassza a **felülvizsgálat + létrehozás**lehetőséget, tekintse át a központi telepítést, majd válassza a **Létrehozás**lehetőséget.
+8. Válassza a **felülvizsgálat + létrehozás** lehetőséget, tekintse át a központi telepítést, majd válassza a **Létrehozás** lehetőséget.
 
 9. Térjen vissza az eszköz részleteit tartalmazó oldalra, és kattintson a **Frissítés** elemre. Az új `ModbusTCPModule` modulnak a IoT Edge futtatókörnyezettel együtt kell megjelennie.
 

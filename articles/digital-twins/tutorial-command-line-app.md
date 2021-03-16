@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 54f3004c190c104f2f869b2878b50f5b6c88856b
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: c18366fd4bc510f32ac0ef255b27709797a3b626
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103463806"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493704"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-a-sample-client-app"></a>Oktatóanyag: Azure digitális Twins-gráf létrehozása minta ügyfélalkalmazás használatával
 
@@ -37,18 +37,17 @@ Ebben az oktatóanyagban a következő lesz:...
 
 Most, hogy az alkalmazás és a hitelesítés be van állítva, futtassa a projektet ezzel a gombbal az eszköztáron:
 
-:::image type="content" source="media/tutorial-command-line/app/start-button-sample.png" alt-text="A Visual Studio Start gombja (SampleClientApp projekt)":::
+:::image type="content" source="media/tutorial-command-line/app/start-button-sample.png" alt-text="Képernyőfelvétel a Visual Studio Start gombjáról (SampleClientApp projekt)." lightbox="media/tutorial-command-line/app/start-button-sample.png":::
 
 Megnyílik a konzol ablaka, majd hajtsa végre a hitelesítést, és várjon egy parancsot. 
 * A hitelesítés a böngészőben történik: az alapértelmezett webböngésző egy hitelesítési kérdéssel fog megnyílni. Ezzel a kérdéssel jelentkezhet be az Azure-beli hitelesítő adataival. Ezután lezárhatja a böngésző lapja vagy ablakát.
 
 Itt látható egy képernyőkép arról, hogy a Project Console hogyan néz ki:
 
-:::image type="content" source="media/tutorial-command-line/app/command-line-app.png" alt-text="Üdvözlő üzenet a parancssori alkalmazásból":::
+:::image type="content" source="media/tutorial-command-line/app/command-line-app.png" alt-text="Képernyőkép az üdvözlő üzenetről a parancssori alkalmazásból." lightbox="media/tutorial-command-line/app/command-line-app.png":::
 
 > [!TIP]
 > A projekttel használható összes lehetséges parancs listáját a `help` projekt konzolon írja be, majd nyomja le az ENTER billentyűt.
-> :::image type="content" source="media/tutorial-command-line/app/command-line-app-help.png" alt-text="A Súgó parancs kimenete":::
 
 Az oktatóanyag további lépéseinek megtartása érdekében futtassa a Project Console-t.
 
@@ -83,7 +82,7 @@ A modellek tervezése után fel kell töltenie őket az Azure Digital Twins-pél
 
 1. Ellenőrizze, hogy a modellek létrejöttek-e a parancs futtatásával `GetModels true` . Ez lekérdezi az Azure Digital Twins-példányt minden feltöltött modellhez, és kinyomtatja a teljes információt. Keresse meg a szerkesztett *Room* modellt az eredmények között:
 
-    :::image type="content" source="media/tutorial-command-line/app/output-get-models.png" alt-text="A GetModels eredményei, amely a frissített helyiség modelljét mutatja":::
+    :::image type="content" source="media/tutorial-command-line/app/output-get-models.png" alt-text="Képernyőkép a GetModels eredményéről, amely a frissített helyiség modelljét mutatja." lightbox="media/tutorial-command-line/app/output-get-models.png":::
 
 ### <a name="errors"></a>Hibák
 
@@ -128,7 +127,7 @@ Digitális dupla létrehozásához használja az `CreateDigitalTwin` parancsot. 
 
     A parancsok kimenetének jeleznie kell, hogy az ikrek sikeresen létrejöttek. 
     
-    :::image type="content" source="media/tutorial-command-line/app/output-create-digital-twin.png" alt-text="A CreateDigitalTwin parancsok eredményeiből származó részlet, amely az floor0, a floor1, a room0 és a room1 mutatja":::
+    :::image type="content" source="media/tutorial-command-line/app/output-create-digital-twin.png" alt-text="Képernyőfelvétel: a CreateDigitalTwin parancsok eredményeiből származó részlet, amely magában foglalja a floor0, a floor1, a room0 és a room1." lightbox="media/tutorial-command-line/app/output-create-digital-twin.png":::
 
 1. A parancs futtatásával ellenőrizheti, hogy az ikrek létre lettek-e hozva `Query` . Ez a parancs lekérdezi az Azure Digital Twins-példányt az összes olyan digitális Twins esetében, amelyet tartalmaz. Az eredmények között keresse meg a *room0*, a *room1*, a *floor0* és a *floor1* ikreket.
 
@@ -180,7 +179,7 @@ Kapcsolat hozzáadásához használja az `CreateRelationship` parancsot. Adja me
     
     A parancsok kimenete megerősíti, hogy a kapcsolatok sikeresen létrejöttek:
     
-    :::image type="content" source="media/tutorial-command-line/app/output-create-relationship.png" alt-text="A CreateRelationship parancsok eredményeiből származó részlet, amely a relationship0 és a relationship1 mutatja":::
+    :::image type="content" source="media/tutorial-command-line/app/output-create-relationship.png" alt-text="Képernyőkép a CreateRelationship parancsok eredményéről, amely tartalmazza a relationship0 és a relationship1." lightbox="media/tutorial-command-line/app/output-create-relationship.png":::
 
 1. A következő parancsok bármelyikével ellenőrizheti a kapcsolatokat, amelyek az Azure Digital Twins-példányban lévő kapcsolatokat kérdezik le.
     * Az egyes emeletekről érkező kapcsolatok megtekintéséhez (az egyik oldal kapcsolatainak megtekintése):
@@ -201,7 +200,7 @@ Kapcsolat hozzáadásához használja az `CreateRelationship` parancsot. Adja me
 
 Az ebben az oktatóanyagban beállított ikrek és kapcsolatok a következő koncepcionális diagramot alkotják:
 
-:::image type="content" source="media/tutorial-command-line/app/sample-graph.png" alt-text="A relationship0 és a room0 között összekapcsolt floor0, valamint a relationship1-room1 keresztül csatlakoztatott floor1" border="false":::
+:::image type="content" source="media/tutorial-command-line/app/sample-graph.png" alt-text="Egy elméleti gráfot bemutató diagram. a floor0 a relationship0-on keresztül csatlakozik a room0-hez, és a floor1 a relationship1-on keresztül csatlakozik a room1-hoz." border="false" lightbox="media/tutorial-command-line/app/sample-graph.png":::
 
 ## <a name="query-the-twin-graph-to-answer-environment-questions"></a>A Twin gráf lekérdezése a környezeti kérdések megválaszolásához
 
@@ -217,7 +216,7 @@ Futtassa a következő parancsokat a futó projekt konzolon a minta környezette
 
     Ez lehetővé teszi, hogy a környezetét egy pillantással átvegye, és győződjön meg róla, hogy minden úgy képviselteti magát, mintha az Azure digitális Ikreken belül lenne. Ennek eredménye az, hogy az egyes digitális Twin termékek a részleteket tartalmazzák. Íme egy részlet:
 
-    :::image type="content" source="media/tutorial-command-line/app/output-query-all.png" alt-text="A kettős lekérdezés részleges eredménye, amely megjeleníti a room0 és a floor1":::
+    :::image type="content" source="media/tutorial-command-line/app/output-query-all.png" alt-text="A kettős lekérdezés részleges eredményét ábrázoló képernyőkép, beleértve a room0 és a floor1.":::
 
     >[!NOTE]
     >A minta projektben a parancs a `Query` további argumentumok nélkül is megegyezik `Query SELECT * FROM DIGITALTWINS` . Ha a példányban lévő összes ikreket le szeretné kérdezni a [lekérdezési API](/rest/api/digital-twins/dataplane/query) -k vagy a [CLI-parancsok](how-to-use-cli.md)használatával, használja a hosszú (teljes) lekérdezést.
@@ -230,7 +229,7 @@ Futtassa a következő parancsokat a futó projekt konzolon a minta környezette
 
     A lekérdezés bizonyos típusú ikrekre korlátozható, így pontosabb információkhoz juthat a megjelenített adatokról. Ennek eredménye a *room0* és a *room1*, de nem jeleníti meg a *floor0* vagy a *floor1* (mivel ezek padlók **, nem szobák** ).
     
-    :::image type="content" source="media/tutorial-command-line/app/output-query-model.png" alt-text="A modell lekérdezésének eredménye, amely csak a room0 és a room1 jeleníti meg":::
+    :::image type="content" source="media/tutorial-command-line/app/output-query-model.png" alt-text="Képernyőkép a modell lekérdezés eredményéről, amely csak a room0 és a room1 jeleníti meg.":::
 
 1. **Mi a *floor0* összes Terme?** (lekérdezés kapcsolat alapján)
 
@@ -240,7 +239,7 @@ Futtassa a következő parancsokat a futó projekt konzolon a minta környezette
 
     A diagramon létesített kapcsolatok alapján lekérdezheti a lekérdezéseket, így információkat kaphat arról, hogy az ikrek hogyan vannak csatlakoztatva, vagy hogy a lekérdezés egy bizonyos területen legyen korlátozva. Csak *room0* van a *floor0*, így az egyetlen hely az eredményben.
 
-    :::image type="content" source="media/tutorial-command-line/app/output-query-relationship.png" alt-text="A room0 mutató kapcsolati lekérdezés eredményei":::
+    :::image type="content" source="media/tutorial-command-line/app/output-query-relationship.png" alt-text="Képernyőkép a kapcsolati lekérdezés eredményéről, amely a room0 mutatja.":::
 
 1. **Mi a környezetem minden olyan kisvárosa, amely 75 fölötti hőmérséklettel rendelkezik?** (lekérdezés tulajdonság alapján)
 
@@ -250,7 +249,7 @@ Futtassa a következő parancsokat a futó projekt konzolon a minta környezette
 
     A diagramot a tulajdonságok alapján kérdezheti le, hogy különböző kérdésekre válaszoljon, beleértve a kiugró értékek megkeresését a környezetben, amelyeknek szüksége lehet a beavatkozásra. Más összehasonlító operátorok (,,, *<* *>* *=* vagy *! =*) is támogatottak. az eredmények itt jelennek meg, mert a *room1* 80-as hőmérséklettel rendelkezik.
 
-    :::image type="content" source="media/tutorial-command-line/app/output-query-property.png" alt-text="A tulajdonság-lekérdezés eredménye, amely csak a room1 jeleníti meg":::
+    :::image type="content" source="media/tutorial-command-line/app/output-query-property.png" alt-text="Képernyőkép a tulajdonság-lekérdezés eredményéről, amely csak a room1 jeleníti meg.":::
 
 1. **Mi a *floor0* található összes szoba 75-nál magasabb hőmérséklettel?** (összetett lekérdezés)
 
@@ -260,7 +259,7 @@ Futtassa a következő parancsokat a futó projekt konzolon a minta környezette
 
     Azt is megteheti, hogy kombinálja a korábbi lekérdezéseket, mint például az SQL-ben, az olyan kombinációs operátorok használatával, mint a `AND` , `OR` `NOT` . A lekérdezés `AND` azt használja, hogy az előző lekérdezés a két hőmérséklet konkrétabb legyen. Az eredmény mostantól csak a 75-nál nagyobb hőmérsékletű szobákat tartalmazza, amelyek a *floor0* vannak – ami ebben az esetben egyikük sem. Az eredményhalmaz üres.
 
-    :::image type="content" source="media/tutorial-command-line/app/output-query-compound.png" alt-text="Az összetett lekérdezés eredménye, amely nem mutat eredményt":::
+    :::image type="content" source="media/tutorial-command-line/app/output-query-compound.png" alt-text="Képernyőkép az összetett lekérdezés eredményéről, amely nem jeleníti meg az eredményeket." lightbox="media/tutorial-command-line/app/output-query-compound.png":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

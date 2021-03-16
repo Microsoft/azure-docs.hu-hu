@@ -4,14 +4,14 @@ description: Az Azure HPC cache kezelése és frissítése az Azure Portal vagy 
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 03/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: 40d091782f37a32b75659cd274e49798dbe527cb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b34beb65bb8c4136887651d8365c937b17718572
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590792"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471903"
 ---
 # <a name="manage-your-cache"></a>A gyorsítótár kezelése
 
@@ -254,6 +254,20 @@ Az Áttekintés oldalon néhány alapszintű gyorsítótár-statisztika – a gy
 ![képernyőfelvétel a fent említett statisztikai adatokat bemutató három vonalas gráfról](media/hpc-cache-overview-stats.png)
 
 Ezek a diagramok az Azure beépített monitorozási és elemzési eszközeinek részét képezik. A portál oldalsávjának **figyelés** fejléce alatt további eszközök és riasztások érhetők el. További információt az [Azure monitoring dokumentációjának](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-in-the-azure-portal)portál szakasza tartalmaz.
+
+## <a name="view-warnings"></a>Figyelmeztetések megtekintése
+
+Ha a gyorsítótár sérült állapotba kerül, ellenőrizze a **figyelmeztetések** lapot. Ezen az oldalon a gyorsítótár-szoftverek értesítései láthatók, amelyek segíthetnek az állapotának megértésében.
+
+Ezek az értesítések nem jelennek meg a tevékenység naplójában, mert nem Azure Portal vezérlik. Gyakran az esetlegesen létrehozott egyéni beállításokhoz vannak társítva.
+
+Az itt látható figyelmeztetések típusai például a következők lehetnek:
+
+* A gyorsítótár nem tudja elérni az NTP-kiszolgálóját
+* A gyorsítótár nem tudta letölteni a kiterjesztett csoportok felhasználónevének adatait
+* Az egyéni DNS-beállítások módosultak a tárolási célra
+
+![képernyőkép a figyelési > figyelmeztetésekről, amely egy üzenetet jelenít meg arról, hogy a kiterjesztett csoportok felhasználónevei nem tölthetők le](media/warnings-page.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

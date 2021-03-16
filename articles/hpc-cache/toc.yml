@@ -8,6 +8,8 @@
   items:
     - name: Az aggregált névtér tervezése
       href: hpc-cache-namespace.md
+    - name: Gyorsítótár-használati modellek ismertetése
+      href: cache-usage-models.md
     - name: Biztonság
       items:
         - name: Biztonsági alapkonfiguráció

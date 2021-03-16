@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: 5cc3c4a07cc698f3592a2ff2fd76e9f4bbef441b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 727e744c59d0a8d90cf320e1ee2e2a17e10ff847
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036452"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471526"
 ---
 # <a name="connector-status-errors-in-the-itsmc-dashboard"></a>Az összekötő állapotával kapcsolatos hibák a ITSMC irányítópultján
 
@@ -88,3 +88,11 @@ A következő szakaszok ismertetik az irányítópult összekötő állapota sza
 
 * Új ITSMC-példány létrehozásakor elkezdi szinkronizálni az adatokat a ITSM rendszerből, például a munkaelemek sablonjait és a munkaelemeket. [ITSMC szinkronizálása új frissítési jogkivonat létrehozásához](./itsmc-resync-servicenow.md).
 * [Tekintse át a kapcsolat részleteit a ITSMC](./itsmc-connections-servicenow.md#create-a-connection) , és ellenőrizze, hogy a ITSMC sikeresen tud-e [szinkronizálni](./itsmc-resync-servicenow.md).
+
+
+## <a name="ip-restrictions"></a>IP-korlátozások
+**Hiba**: "nem sikerült hozzáadni a (z)" xxx "nevű ITSM-kapcsolódást a helytelen kérelem miatt. Hiba: hibás kérelem. Érvénytelen paraméterek vannak megadva a kapcsolatok számára. Http-kivétel: tiltott állapotkód. "
+
+**OK**: a ITSM-alkalmazás IP-címe nem teszi lehetővé a ITSM-kapcsolatok elérését a partnerek ITSM eszközeiből.
+
+**Megoldás**: a ITSM IP-címeinek listázásához, hogy az ITSM-kapcsolatok elérhetők legyenek a partnerek ITSM eszközeitől, javasoljuk, hogy az Azure-régió teljes nyilvános IP-tartományát sorolja fel, ahol a LogAnalytics-munkaterület tartozik. [részletek](https://www.microsoft.com/download/details.aspx?id=56519) A EUS/NYEU/EUS2/WUS2/USA déli középső régiójában az ügyfél csak a ActionGroup hálózati címkét listázhatja.

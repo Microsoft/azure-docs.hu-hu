@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 110da0a12336415d9d9c781e24684d7e2af8bc9d
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: d2159540c688a63082efb792fd4d261062ef65d9
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741655"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466793"
 ---
 # <a name="enterprise-application-permissions-for-custom-roles-in-azure-active-directory"></a>Vállalati alkalmazások engedélyei a Azure Active Directory egyéni szerepköreihez
 
@@ -33,7 +33,7 @@ További információ az engedélyek használatáról: [Egyéni szerepkörök t�
 
 ### <a name="assigning-users-or-groups-to-an-application"></a>Felhasználók vagy csoportok társítása egy alkalmazáshoz
 
-Azon felhasználók és csoportok hozzárendelésének delegálása, amelyek hozzáférhetnek az SAML-alapú egyszeri bejelentkezési alkalmazásokhoz. Szükséges engedélyek
+Azon felhasználók és csoportok hozzárendelésének delegálása, amelyek hozzáférhetnek az SAML-alapú egyszeri bejelentkezési alkalmazásokhoz. A szükséges engedélyek
 
 - Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Update
 
@@ -166,7 +166,7 @@ Microsoft. Directory/servicePrincipals/szinkronizálás/standard/olvasás | Az e
 Microsoft. Directory/servicePrincipals/synchronizationSchema/Manage | A séma-szinkronizálás összes aspektusának kezelése a szolgáltatás egyszerű erőforrásaihoz
 Microsoft. Directory/provisioningLogs/allProperties/READ | A kiépítési naplók összes tulajdonságának olvasása
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni szerepkörök létrehozása a Azure Portal, az Azure AD PowerShell és a Graph API használatával](custom-create.md)
-- [Egyéni szerepkör hozzárendeléseinek megtekintése](custom-view-assignments.md)
+- [Szerepkör-hozzárendelések felsorolása](view-assignments.md)

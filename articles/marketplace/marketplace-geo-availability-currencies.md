@@ -6,19 +6,21 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 author: keferna
 ms.author: keferna
-ms.date: 12/07/2020
-ms.openlocfilehash: c71c13701d064110be0ef976920c0cc01f2fa308
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 03/08/2021
+ms.openlocfilehash: e583d39e2eed1b08dfeb17cafc1e12c583176d7b
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879764"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493033"
 ---
 # <a name="geographic-availability-and-currency-support-for-the-commercial-marketplace"></a>Földrajzi Elérhetőség és pénznemek támogatása a kereskedelmi piactéren
 
 ## <a name="supported-geographic-locations"></a>Támogatott földrajzi helyszínek
 
 A kereskedelmi Piactéri ajánlatok az ügyfél számlázási címe által meghatározott 141 földrajzi helyen vásárolhatók meg, a tranzakciók pedig 17 pénznemben végezhetők el. A következő táblázat felsorolja az egyes támogatott földrajzi helyeket, az [ISO 3166 2 számjegyű alfa-kódot](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)és a hozzárendelt pénznemet.
+
+A CSP a végfelhasználó pénznemében vásárolhat egy ajánlatot a partner Centerben, így ugyanezen pénznemben számlázhatja őket. Erről a [Gyakori kérdések](https://partner.microsoft.com/resources/detail/eu-efta-change-of-partner-billing-currency-faq-pdf)között találhat további információt.
 
 |   Ország/régió neve               |   ISO-2   |   Pénznem</br>(Az összes ajánlat típusa)  |    Pénznem</br>(Csak tanácsadási szolgáltatás ajánlata)    |
 |-------------------------------------|-----------|--------------|---------------------------------------------|
