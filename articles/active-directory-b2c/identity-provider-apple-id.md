@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/09/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: cc385c3a7ceb0245e3a4acbedb037b1b28bde7b3
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 24377cf02b30a550043ee63267229039d680cd1c
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102518109"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489134"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-apple-id--using-azure-active-directory-b2c-preview"></a>Az Apple ID-vel való regisztráció és bejelentkezés beállítása Azure Active Directory B2C (előzetes verzió) használatával
 
@@ -57,8 +57,8 @@ Ha engedélyezni szeretné a bejelentkezést Azure Active Directory B2C (Azure A
 1. Az **azonosítók** listából válassza ki a létrehozott azonosítót.
 1. Válassza **a bejelentkezés az Apple-szel** lehetőséget, majd válassza a **Konfigurálás** lehetőséget.
     1. Válassza ki azt az **elsődleges alkalmazás-azonosítót** , amelyhez be szeretné állítani az Apple-vel való bejelentkezést.
-    1. A **tartományok és altartományok** területen adja meg a értéket `your-tenant-name.b2clogin.com` . Cserélje le a-bérlő nevét a bérlő nevére.
-    1. A **visszatérési URL-címek** mezőben adja meg a értéket `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Cserélje le a-bérlő nevét a bérlő nevére.
+    1. A **tartományok és altartományok** területen adja meg a értéket `your-tenant-name.b2clogin.com` . Cserélje le a-bérlő nevét a bérlő nevére. Ha [Egyéni tartományt](custom-domain.md)használ, írja be a értéket `https://your-domain-name` .
+    1. A **visszatérési URL-címek** mezőben adja meg a értéket `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Ha [Egyéni tartományt](custom-domain.md)használ, írja be a értéket `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Cserélje le a `your-tenant-name` nevet a bérlő nevére, és az `your-domain-name` Egyéni tartományra.
     1. Válassza a **tovább**, majd a **kész** lehetőséget.
     1. Az előugró ablak bezárásakor válassza a **Folytatás** lehetőséget, majd kattintson a **Mentés** gombra.
 

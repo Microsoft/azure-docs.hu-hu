@@ -1,5 +1,5 @@
 ---
-title: A biztonsági modul klasszikus eseményének összesítése
+title: Defender-IoT-Micro-Agent klasszikus esemény összesítése
 description: Ismerje meg a Defender for IoT esemény összesítését.
 services: defender-for-iot
 ms.service: defender-for-iot
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/20/2021
 ms.author: shhazam
-ms.openlocfilehash: 0718c2637658e5519760a68f29c7a816b2aa61a1
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 01333da3041cc93154c46fb45a39bb209fd30f91
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809218"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493073"
 ---
-# <a name="security-module-classic-event-aggregation"></a>A biztonsági modul klasszikus eseményének összesítése
+# <a name="defender-iot-micro-agent-classic-event-aggregation"></a>Defender-IoT-Micro-Agent klasszikus esemény összesítése
 
 A Defender for IoT biztonsági ügynökök adatokat és rendszereseményeket gyűjtenek a helyi eszközről, és ezeket az adatokat az Azure-felhőbe küldik feldolgozásra és elemzésre. A biztonsági ügynök számos típusú eseményt gyűjt, beleértve az új folyamatot és az új kapcsolatok eseményeit. Az új folyamat és az új kapcsolódási események is jogszerűen előfordulhatnak egy adott eszközön egy másodpercen belül, és noha fontos a robusztus és teljes biztonság szempontjából, az üzenetek biztonsági ügynökei számára a küldésre kényszerített mennyiség gyorsan elérheti vagy meghaladhatja a IoT Hub kvótát és a költségeket. Ezek az események azonban rendkívül értékes biztonsági információkat tartalmaznak, amelyek elengedhetetlenek az eszköz védelméhez.
 

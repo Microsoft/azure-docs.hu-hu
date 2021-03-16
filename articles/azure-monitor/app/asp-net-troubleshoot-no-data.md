@@ -4,12 +4,12 @@ description: Nem látja az Azure Application Insightsban tárolt adatmegjelenít
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: e41b0a9ce1ff86bc6010e12fdf5d3320f303fd87
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 40fbe4d08676d7cc56478d3740424fccaa7addc0
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092451"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562195"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>A .NET/.NET Core rendszerhez nem szükséges adatApplication Insightsek hibaelhárítása
 
@@ -68,11 +68,11 @@ Ha a (2,4)-nál régebbi SDK-ból frissít, meg kell győződnie arról, hogy a 
     </TelemetryModules>
     ```
 
-**_A frissítés nem megfelelő lehet, ha váratlan kivételeket vagy telemetria nem gyűjt._* _
+***A frissítés nem megfelelő lehet, ha váratlan kivételeket vagy telemetria nem gyűjt.***
 
 
 ## <a name="no-add-application-insights-option-in-visual-studio"></a><a name="q01"></a>Nincs "Application Insights hozzáadása" lehetőség a Visual Studióban
-_When a jobb gombbal egy meglévő projektre kattintok Megoldáskezelő, nem látok semmilyen Application Insights lehetőséget. *
+*Ha a jobb gombbal egy meglévő projektre kattintok Megoldáskezelő, nem látok semmilyen Application Insights lehetőséget.*
 
 * Az eszközök nem támogatják az összes típusú .NET-projektet. A web-és WCF-projektek támogatottak. Más projekttípus, például asztali vagy szolgáltatási alkalmazások esetén [manuálisan is hozzáadhat egy Application INSIGHTS SDK-t a projekthez](./windows-desktop.md).
 * Győződjön meg arról, hogy a [Visual Studio 2013 Update 3 vagy újabb verzió](/visualstudio/releasenotes/vs2013-update3-rtm-vs)van. A fejlesztői elemzési eszközökkel előre telepítve van, amelyek biztosítják a Application Insights SDK-t.
@@ -224,7 +224,7 @@ Az alábbi útmutatást követve rögzítheti a keretrendszer hibaelhárítási 
 
     ```xml
     <TelemetryModules>
-      <Add Type="Microsoft.ApplicationInsights.Extensibility.HostingStartup.FileDiagnosticsTelemetryModule, Microsoft.AspNet.ApplicationInsights.HostingStartup">
+      <Add Type="Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.FileDiagnosticsTelemetryModule, Microsoft.ApplicationInsights">
         <Severity>Verbose</Severity>
         <LogFileName>mylog.txt</LogFileName>
         <LogFilePath>C:\\SDKLOGS</LogFilePath>

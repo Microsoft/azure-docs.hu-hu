@@ -140,6 +140,20 @@
         - name: Katalógusadatok
           displayName: export
           href: ai-gallery-control-personal-data-dsr.md
+    - name: Migrálás az Azure Machine Learningbe
+      items:
+        - name: Migrálás áttekintése
+          href: migrate-overview.md
+        - name: Adatkészletek migrálása
+          href: migrate-register-dataset.md
+        - name: Kísérletek újraépítése
+          href: migrate-rebuild-experiment.md
+        - name: Webszolgáltatások újraépítése
+          href: migrate-rebuild-web-service.md
+        - name: Ügyfélalkalmazások migrálása
+          href: migrate-rebuild-integrate-with-client-app.md
+        - name: R-parancsfájl-modulok újraépítése
+          href: migrate-execute-r-script.md
 - name: Referencia
   items:
     - name: Algoritmusokra és modulokra vonatkozó referenciák

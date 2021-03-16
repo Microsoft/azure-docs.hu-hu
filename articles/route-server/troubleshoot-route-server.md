@@ -5,14 +5,14 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/15/2021
 ms.author: duau
-ms.openlocfilehash: 9fa0f73d06bda02d784628823ee70bc538b375e2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 83f1e83653c5674988cadcb5b54d3c675ae0b8b8
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695804"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489440"
 ---
 # <a name="troubleshooting-azure-route-server-issues"></a>Az Azure Route Server problémáinak elhárítása
 
@@ -31,7 +31,7 @@ Amikor a NVA meghirdeti az alapértelmezett útvonalat, az Azure Route Server a 
 | 0.0.0.0/0 | Internet |
 
 
-### <a name="why-can-i-ping-from-my-nva-to-the-bgp-peer-ip-on-azure-route-server-but-after-i-set-up-the-bgp-peering-between-them-i-cant-ping-the-same-ip-anymore-why-does-the-bgp-peering-goes-down"></a>Miért tudok pingelni a NVA a BGP partneri IP-címmel az Azure Route Serveren, de miután beállítottam a BGP-társítást a között, nem tudom pingelni egyazon IP-címet? Miért leáll a BGP-társak?
+### <a name="why-can-i-ping-from-my-nva-to-the-bgp-peer-ip-on-azure-route-server-but-after-i-set-up-the-bgp-peering-between-them-i-cant-ping-the-same-ip-anymore-why-does-the-bgp-peering-go-down"></a>Miért tudok pingelni a NVA a BGP partneri IP-címmel az Azure Route Serveren, de miután beállítottam a BGP-társítást a között, nem tudom pingelni egyazon IP-címet? Miért megy le a BGP-társ?
 
 Egyes NVA statikus útvonalat kell hozzáadnia az Azure Route Server alhálózathoz. Ha például az Azure Route Server a 10.0.255.0/27-ben van, és a NVA a 10.0.1.0/24-ben van, akkor a következő útvonalat kell felvennie a NVA útválasztási táblájába:
 

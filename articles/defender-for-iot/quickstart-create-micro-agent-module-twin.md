@@ -1,5 +1,5 @@
 ---
-title: Defender IoT Micro Agent-modul létrehozása – Twin
+title: Defender IoT Micro Agent-modul létrehozása twin (előzetes verzió)
 titleSuffix: Azure Defender for IoT
 description: Megtudhatja, hogyan hozhat létre egyedi DefenderIotMicroAgent-modult az új eszközökhöz.
 author: shhazam-ms
@@ -8,14 +8,14 @@ ms.author: shhazam
 ms.date: 1/20/2021
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: ea82fea89a9e81e66be6b3060aad067d3ceb8f5f
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: e1c2f4e79b9f0f0ba1ec0da0c5a2a29cdc8bc6d7
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123003"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489879"
 ---
-# <a name="create-a-defender-iot-micro-agent-module-twin"></a>Defender IoT Micro Agent-modul létrehozása – Twin 
+# <a name="create-a-defender-iot-micro-agent-module-twin-preview"></a>Defender IoT Micro Agent-modul létrehozása twin (előzetes verzió)
 
 Az új eszközökhöz egyedi **DefenderIotMicroAgent** -modult hozhat létre. Az ikrek modult a IoT Hubban lévő összes eszközhöz is létrehozhatja. 
 
@@ -27,9 +27,9 @@ A IoT Defender teljes mértékben integrálható a meglévő IoT-eszközkezelés
 
 Tudjon meg többet az Azure IoT Hub [eszközön található ikrek](../iot-hub/iot-hub-devguide-device-twins.md)koncepciójának megismeréséről   . 
 
-## <a name="security-module-twins"></a>Biztonsági modul ikrek 
+## <a name="defender-iot-micro-agent-twins"></a>Defender-IoT-Micro-Agent ikrek 
 
-A IoT Defender minden eszközhöz külön biztonsági modult használ. A biztonsági modul külön tartalmazza az eszköz biztonságával kapcsolatos összes információt a megoldás minden egyes eszközén. Az eszköz biztonsági tulajdonságai egy külön biztonsági modulon keresztül konfigurálhatók a biztonságosabb kommunikációhoz, a frissítések engedélyezéséhez és a kevesebb erőforrást igénylő karbantartáshoz. 
+A IoT Defender a Defender-IoT-Micro-Agent Twin eszközöket használja minden eszközhöz. A Defender-IoT-Micro-Agent Twin tartalmazza az eszköz biztonságával kapcsolatos összes információt a megoldás minden egyes eszközén. Az eszköz biztonsági tulajdonságai egy dedikált Defender-IoT-Micro-Agent Twin használatával konfigurálhatók a biztonságosabb kommunikációhoz, a frissítések engedélyezéséhez és a kevesebb erőforrást igénylő karbantartáshoz. 
 
 ## <a name="understanding-defenderiotmicroagent-module-twins"></a>Az ikrek DefenderIotMicroAgent-moduljának ismertetése 
 
@@ -39,9 +39,9 @@ A IoT Defender lehetővé teszi a meglévő IoT-eszközkezelés platform teljes 
 
 Ha többet szeretne megtudni az Azure IoT Hub-modulban található ikrek általános koncepciójának megismeréséről, tekintse meg a [IoT hub modul ikrek](../iot-hub/iot-hub-devguide-module-twins.md)című témakört.
 
-A IoT Defender a modul Twin mechanizmusát használja, és `DefenderIotMicroAgent` minden egyes eszközhöz külön nevű biztonsági modult tart fenn. 
+A IoT Defender a modul Twin mechanizmusát használja, és `DefenderIotMicroAgent` minden egyes eszközhöz fenntart egy Defender-IoT-Micro-Agent nevű külön nevet. 
 
-Ahhoz, hogy teljes mértékben kihasználhassa a IoT összes Defender-szolgáltatását, létre kell hoznia, konfigurálnia és használnia kell az ikrek biztonsági modulját a szolgáltatás minden eszközén. 
+Ahhoz, hogy teljes mértékben ki tudja használni a IoT összes Defender-szolgáltatását, létre kell hoznia, konfigurálnia és használniuk kell a Defender-IoT-Micro-Agent ikreket a szolgáltatás minden eszközén. 
 
 ## <a name="create-defenderiotmicroagent-module-twin"></a>Twin DefenderIotMicroAgent-modul létrehozása 
 
@@ -49,7 +49,7 @@ A **DefenderIotMicroAgent** -modul ikrek az egyes modulok egyenkénti szerkeszt�
 
 Új **DefenderIotMicroAgent** -modul manuális létrehozása egy eszközhöz: 
 
-1. A IoT Hubban keresse meg és válassza ki azt az eszközt, amelyen létre kívánja hozni a biztonsági modult (Twin). 
+1. A IoT Hub keresse meg és válassza ki azt az eszközt, amelyen létre szeretné hozni a Defender-IoT-Micro-Agent Twin elemet. 
 
 1. Válassza a **modul-identitás hozzáadása** lehetőséget. 
 
@@ -59,7 +59,7 @@ A **DefenderIotMicroAgent** -modul ikrek az egyes modulok egyenkénti szerkeszt�
 
 ## <a name="verify-the-creation-of-a-module-twin"></a>Két modul létrehozásának ellenőrzése 
 
-Annak ellenőrzése, hogy van-e különálló biztonsági modul egy adott eszközhöz: 
+Annak ellenőrzése, hogy egy Defender-IoT-Micro-Agent Twin létezik-e egy adott eszközhöz: 
 
 1. Az Azure-IoT Hub válassza a **IoT eszközök** lehetőséget   a **felfedezők**   menüből. 
 

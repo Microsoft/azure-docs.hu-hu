@@ -1,5 +1,5 @@
 ---
-title: Egyéni szerepkör-engedélyek vállalati alkalmazás-hozzáférési hozzárendelésekhez – Azure Active Directory | Microsoft Docs
+title: Egyéni szerepkörök létrehozása vállalati alkalmazások kezeléséhez Azure Active Directory
 description: Egyéni Azure AD-szerepkörök létrehozása és társítása a vállalati alkalmazások eléréséhez Azure Active Directory
 services: active-directory
 author: rolyon
@@ -13,14 +13,14 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb04616fb442f4a6c000e11919638231e3ddf64c
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 1a76e2d37e9dcdd285a8608fdbfd715bfb834eb8
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103012173"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467748"
 ---
-# <a name="assign-custom-roles-to-manage-enterprise-apps-in-azure-active-directory"></a>Egyéni szerepkörök hozzárendelésével felügyelheti a vállalati alkalmazásokat Azure Active Directory
+# <a name="create-custom-roles-to-manage-enterprise-apps-in-azure-active-directory"></a>Egyéni szerepkörök létrehozása vállalati alkalmazások kezeléséhez Azure Active Directory
 
 Ez a cikk azt ismerteti, hogyan lehet egyéni szerepkört létrehozni a Azure Active Directory (Azure AD) felhasználói és csoportjai számára a vállalati alkalmazás-hozzárendelések kezeléséhez szükséges engedélyekkel. A szerepkörök hozzárendeléseinek elemeihez, valamint a kifejezések, például altípusok, engedélyek és tulajdonságértékek jelentéséhez tekintse meg az [Egyéni szerepkörök áttekintése](custom-overview.md)című témakört.
 

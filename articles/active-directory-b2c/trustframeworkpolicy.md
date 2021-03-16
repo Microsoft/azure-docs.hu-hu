@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/31/2020
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a87b4c6b845006a9f9f3cf82815277c67c09bef0
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 9bf1cc197a7d6977ccb6ef69e157d9f8a76a58d5
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178840"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470727"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -29,9 +29,9 @@ Az egyéni szabályzatok egy vagy több XML-formátumú fájlként jelennek meg,
   xmlns:xsd="https://www.w3.org/2001/XMLSchema"
   xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
   PolicySchemaVersion="0.3.0.0"
-  TenantId="mytenant.onmicrosoft.com"
+  TenantId="yourtenant.onmicrosoft.com"
   PolicyId="B2C_1A_TrustFrameworkBase"
-  PublicPolicyUri="http://mytenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
+  PublicPolicyUri="http://yourtenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
   ...
 ```
 
@@ -40,13 +40,13 @@ A **TrustFrameworkPolicy** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 |---------- | -------- | ----------- |
-| PolicySchemaVersion | Yes | A szabályzat végrehajtásához használandó séma verziója. Az értéknek meg kell felelnie `0.3.0.0` |
-| TenantObjectId | No | A Azure Active Directory B2C (Azure AD B2C) bérlő egyedi objektumazonosító. |
-| TenantId | Yes | Annak a bérlőnek az egyedi azonosítója, amelyhez ez a szabályzat tartozik. |
-| PolicyId | Yes | A házirend egyedi azonosítója. Ezt az azonosítót *B2C_1A_* kell előállítani |
-| PublicPolicyUri | Yes | A házirend URI-ja, amely a bérlői azonosító és a házirend-azonosító kombinációja. |
-| Deploymentmode beállítása | No | Lehetséges értékek: `Production` , vagy `Development` . A `Production` az alapértelmezett formátum. Ezt a tulajdonságot használhatja a szabályzat hibakereséséhez. További információkért lásd: [naplók gyűjtése](troubleshoot-with-application-insights.md). |
-| UserJourneyRecorderEndpoint | No | A naplózáshoz használt végpont. Az értéket úgy kell beállítani, hogy `urn:journeyrecorder:applicationinsights` az attribútum létezik. További információkért lásd: [naplók gyűjtése](troubleshoot-with-application-insights.md). |
+| PolicySchemaVersion | Igen | A szabályzat végrehajtásához használandó séma verziója. Az értéknek meg kell felelnie `0.3.0.0` |
+| TenantObjectId | Nem | A Azure Active Directory B2C (Azure AD B2C) bérlő egyedi objektumazonosító. |
+| TenantId | Igen | Annak a bérlőnek az egyedi azonosítója, amelyhez ez a szabályzat tartozik. |
+| PolicyId | Igen | A házirend egyedi azonosítója. Ezt az azonosítót *B2C_1A_* kell előállítani |
+| PublicPolicyUri | Igen | A házirend URI-ja, amely a bérlői azonosító és a házirend-azonosító kombinációja. |
+| Deploymentmode beállítása | Nem | Lehetséges értékek: `Production` , vagy `Development` . A `Production` az alapértelmezett formátum. Ezt a tulajdonságot használhatja a szabályzat hibakereséséhez. További információkért lásd: [naplók gyűjtése](troubleshoot-with-application-insights.md). |
+| UserJourneyRecorderEndpoint | Nem | A naplózáshoz használt végpont. Az értéket úgy kell beállítani, hogy `urn:journeyrecorder:applicationinsights` az attribútum létezik. További információkért lásd: [naplók gyűjtése](troubleshoot-with-application-insights.md). |
 
 
 Az alábbi példa bemutatja, hogyan adhatja meg a **TrustFrameworkPolicy** elemet:
@@ -57,9 +57,9 @@ Az alábbi példa bemutatja, hogyan adhatja meg a **TrustFrameworkPolicy** eleme
    xmlns:xsd="https://www.w3.org/2001/XMLSchema"
    xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
    PolicySchemaVersion="0.3.0.0"
-   TenantId="mytenant.onmicrosoft.com"
+   TenantId="yourtenant.onmicrosoft.com"
    PolicyId="B2C_1A_TrustFrameworkBase"
-   PublicPolicyUri="http://mytenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
+   PublicPolicyUri="http://yourtenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
 ```
 
 A **TrustFrameworkPolicy** elem a következő elemeket tartalmazza:
@@ -90,9 +90,9 @@ Az alábbi példa azt szemlélteti, hogyan lehet alapszintű szabályzatot megad
    xmlns:xsd="https://www.w3.org/2001/XMLSchema"
    xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
    PolicySchemaVersion="0.3.0.0"
-   TenantId="mytenant.onmicrosoft.com"
+   TenantId="yourtenant.onmicrosoft.com"
    PolicyId="B2C_1A_TrustFrameworkExtensions"
-   PublicPolicyUri="http://mytenant.onmicrosoft.com/B2C_1A_TrustFrameworkExtensions">
+   PublicPolicyUri="http://yourtenant.onmicrosoft.com/B2C_1A_TrustFrameworkExtensions">
 
   <BasePolicy>
     <TenantId>yourtenant.onmicrosoft.com</TenantId>

@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/19/2017
+ms.date: 02/17/2021
 ms.author: apimpm
-ms.openlocfilehash: 312a496a5acda05a6b04a0bb47abb101f4ffcc8e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: e809efa9da32da5fe9ca296608c602e770f78265
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107589"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562348"
 ---
 # <a name="api-management-policies"></a>API Management házirendek
 Ez a szakasz a következő API Management szabályzatokra mutató hivatkozást tartalmaz. A házirendek hozzáadásával és konfigurálásával kapcsolatos információkért lásd: [szabályzatok API Management](api-management-howto-policies.md).
@@ -81,10 +81,16 @@ Ez a szakasz a következő API Management szabályzatokra mutató hivatkozást t
     - [Kérelem küldése a szolgáltatásnak](api-management-dapr-policies.md#invoke) – a Dapr Runtime használatával megkeresheti és megbízhatóan kommunikálhat egy Dapr-szolgáltatással.
     -  [Üzenet küldése a pub/sub témakörbe](api-management-dapr-policies.md#pubsub) – a Dapr Runtime használatával tesz közzé egy üzenetet közzététel/előfizetés témakörben.
     -  [Kimeneti kötés kiváltása](api-management-dapr-policies.md#bind) – a Dapr Runtime használatával külső rendszereket hívhat meg kimeneti kötés használatával.
+- [Ellenőrzési házirendek](validation-policies.md)
+    - [Tartalom érvényesítése](validation-policies.md#validate-content) – egy kérelem vagy válasz törzsének méretét vagy JSON-sémáját ellenőrzi az API-sémán.
+. 
+    - [Paraméterek érvényesítése](validation-policies.md#validate-parameters) – a kérelem fejlécének, lekérdezésének vagy elérési útjának paramétereinek ellenőrzése az API-sémán keresztül.
+    - [Fejlécek ellenőrzése](validation-policies.md#validate-headers) – ellenőrzi a válasz fejléceit az API-sémán.
+    - [Állapotkód ellenőrzése](validation-policies.md#validate-status-code) – érvényesíti a http-ÁLLAPOTKÓDOT az API-sémára adott válaszokban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a házirendek használatáról:
 
 + [Szabályzatok API Management](api-management-howto-policies.md)
 + [API-k átalakítása](transform-api.md)
-+ [Házirend-minták](./policy-reference.md)
++ [Szabályzatminták](./policy-reference.md)

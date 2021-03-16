@@ -1,17 +1,17 @@
 ---
-title: Windows rendszerű virtuális asztali Linux Support – Azure
-description: A Windows rendszerű virtuális asztali Linux-támogatás rövid áttekintése.
+title: Windowsos virtuális asztali vékony ügyfelek támogatása – Azure
+description: A Windows rendszerű virtuális asztalok vékony ügyfelek általi támogatásának rövid áttekintése.
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 502a89c5a2c0384e34ee35346332a4dd6adc38aa
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 90459c3eb171e03b1c28c91e766d3a6b765565b8
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185427"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491469"
 ---
 # <a name="linux-support"></a>Linux-támogatás
 
@@ -23,10 +23,11 @@ A következő partnerek jóváhagyták a Windows rendszerű virtuális asztali �
 
 |Partner|Partneri dokumentáció|Partneri támogatás|
 |:------|:--------------------|:--------------|
-|![DELL embléma](./media/partners/dell.png)|[Dell-ügyfél dokumentációja](https://www.delltechnologies.com/en-us/collaterals/unauth/data-sheets/products/thin-clients/dell-thinos-9-for-microsoft-wvd.pdf)|[Dell-támogatás](https://www.dell.com/support)|
-|![IGEL embléma](./media/partners/igel.png)|[IGEL-ügyfél dokumentációja](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[IGEL-támogatás](https://www.igel.com/support/)|
-|![NComputing embléma](./media/partners/ncomputing.png)|[NComputing-ügyfél dokumentációja](https://www.ncomputing.com/microsoft)|[NComputing-támogatás](https://www.ncomputing.com/support/support-options)|
-|![Stratodesk embléma](./media/partners/stratodesk.png)|[Stratodesk-ügyfél dokumentációja](https://www.stratodesk.com/kb/Microsoft_Windows_Virtual_Desktop_(WVD))|[Stratodesk-támogatás](https://www.stratodesk.com/support/)|
+|Dell |[Dell-ügyfél dokumentációja](https://www.delltechnologies.com/en-us/collaterals/unauth/data-sheets/products/thin-clients/dell-thinos-9-for-microsoft-wvd.pdf)|[Dell-támogatás](https://www.dell.com/support)|
+|IGEL |[IGEL-ügyfél dokumentációja](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[IGEL-támogatás](https://www.igel.com/support/)|
+|NComputing |[NComputing-ügyfél dokumentációja](https://www.ncomputing.com/microsoft)|[NComputing-támogatás](https://www.ncomputing.com/support/support-options)|
+|Stratodesk |[Stratodesk-ügyfél dokumentációja](https://www.stratodesk.com/kb/Microsoft_Windows_Virtual_Desktop_(WVD))|[Stratodesk-támogatás](https://www.stratodesk.com/support/)|
+|HP |[A HP-ügyfél dokumentációja](https://h20195.www2.hp.com/v2/GetDocument.aspx?docname=c07051097)|[HP-támogatás](https://support.hp.com/us-en/products/workstations-thin-clients)|
 
 ## <a name="next-steps"></a>Következő lépések
 

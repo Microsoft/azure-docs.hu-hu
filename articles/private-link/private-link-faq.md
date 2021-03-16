@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: 4e81d8f88a7c01b6d302bcdaa88559159bed04ea
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d06e90a691389b99d8f439364203b921f49b2305
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101709409"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496473"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure Private Link – gyakori kérdések (GYIK)
 
@@ -54,6 +54,11 @@ Igen. A privát végpontok Azure Pásti-erőforrásokhoz is csatlakozhatnak az A
 
 ### <a name="can-i-modify-my-private-endpoint-network-interface-nic-"></a>Módosíthatom a privát végpont hálózati adapterét (NIC)?
 Privát végpont létrehozásakor a rendszer egy írásvédett hálózati adaptert rendel hozzá. Ez nem módosítható, és továbbra is a privát végpont életciklusa alatt marad.
+
+### <a name="how-do-i-achieve-availability-while-using-private-endpoints-in-case-of-regional-failures-"></a>Hogyan a rendelkezésre állást a saját végpontok használatakor a regionális hibák esetén?
+
+A privát végpontok a 99,99%-os SLA-val rendelkező, magasan rendelkezésre álló erőforrások, amelyek [Az Azure Private-kapcsolatra vonatkozó SLA](https://azure.microsoft.com/support/legal/sla/private-link/v1_0/)-t Mivel azonban regionális erőforrások, az Azure-régiók kiesése hatással lehet a rendelkezésre állásra. Ha regionális meghibásodás esetén szeretné elérni a rendelkezésre állást, különböző régiókban is üzembe helyezhető több PEs-kapcsolat ugyanahhoz a cél erőforráshoz. Így ha az egyik régió leáll, továbbra is átirányíthatja a helyreállítási forgatókönyvek forgalmát a különböző régiókban lévő PE-n keresztül a cél erőforrás eléréséhez. A regionális hibák a rendeltetési szolgáltatási oldalon való kezelésével kapcsolatos információkért tekintse át a szolgáltatás dokumentációját a feladatátvételről és a helyreállításról. A magánhálózati kapcsolati forgalom a cél végpont Azure DNS feloldását követi. 
+
 
 ## <a name="private-link-service"></a>Privát kapcsolati szolgáltatás
  
