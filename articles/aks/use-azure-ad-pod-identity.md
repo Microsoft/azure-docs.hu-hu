@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan használhatja a HRE Pod által felügyelt ident
 services: container-service
 ms.topic: article
 ms.date: 3/12/2021
-ms.openlocfilehash: 8b94c859800c3757842ad56df6e20f215bb13a7d
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: f3d0db5b085fcdb9a24310cb2fe310d390b1790a
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103233496"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574373"
 ---
 # <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>Azure Active Directory Pod által felügyelt identitások használata az Azure Kubernetes Service-ben (előzetes verzió)
 
@@ -53,13 +53,16 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-## <a name="create-an-aks-cluster-with-managed-identities"></a>AK-fürt létrehozása felügyelt identitásokkal
+## <a name="create-an-aks-cluster-with-azure-cni"></a>AK-fürt létrehozása az Azure CNI
 
-Hozzon létre egy AK-fürtöt a felügyelt identitás és a pod által felügyelt identitás engedélyezésével. A következő parancsok az [az Group Create][az-group-create] paranccsal létrehoznak egy *myResourceGroup* nevű erőforráscsoportot és az az az [AK Create][az-aks-create] parancsot egy *myAKSCluster* nevű AK-fürt létrehozásához a *myResourceGroup* erőforráscsoporthoz.
+> [!NOTE]
+> Ez az alapértelmezett ajánlott konfiguráció
+
+Hozzon létre egy AK-alapú fürtöt az Azure CNI és a pod által felügyelt identitással. A következő parancsok az [az Group Create][az-group-create] paranccsal létrehoznak egy *myResourceGroup* nevű erőforráscsoportot és az az az [AK Create][az-aks-create] parancsot egy *myAKSCluster* nevű AK-fürt létrehozásához a *myResourceGroup* erőforráscsoporthoz.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
-az aks create -g myResourceGroup -n myAKSCluster --enable-managed-identity --enable-pod-identity --network-plugin azure
+az aks create -g myResourceGroup -n myAKSCluster --enable-pod-identity --network-plugin azure
 ```
 
 Az [az AK Get-hitelesítő adatok][az-aks-get-credentials] használatával jelentkezzen be az AK-fürtbe. Ez a parancs az ügyféltanúsítványt is letölti és konfigurálja a `kubectl` fejlesztői számítógépen.
@@ -67,6 +70,44 @@ Az [az AK Get-hitelesítő adatok][az-aks-get-credentials] használatával jelen
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
+
+## <a name="update-an-existing-aks-cluster-with-azure-cni"></a>Meglévő AK-fürt frissítése az Azure CNI
+
+Frissítsen egy meglévő AK-fürtöt az Azure CNI, hogy tartalmazza a pod által felügyelt identitást.
+
+```azurecli-interactive
+az aks update -g $MY_RESOURCE_GROUP -n $MY_CLUSTER --enable-pod-identity --network-plugin azure
+```
+## <a name="using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities"></a>A Kubenet hálózati beépülő modul használata Azure Active Directory Pod által felügyelt identitásokkal 
+
+> [!IMPORTANT]
+> A HRE-Pod-Identity futtatása a Kubenet-ben lévő fürtben nem ajánlott konfiguráció a biztonsági következmények miatt. Kövesse a kockázatcsökkentő lépéseket, és konfigurálja a házirendeket, mielőtt engedélyezi a HRE-Pod-Identity-t egy Kubenet-alapú fürtben.
+
+## <a name="mitigation"></a>Kockázatcsökkentés
+
+A biztonsági rés a fürt szintjén való enyhítéséhez használhatja a OpenPolicyAgent-belépésvezérlés és a forgalomirányító ellenőrzése a webhookot. Ha a fürtben már telepítve van a forgalomirányító, adja hozzá a K8sPSPCapabilities típusú ConstraintTemplate:
+
+```
+kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/capabilities/template.yaml
+```
+Adjon hozzá egy sablont a hüvelyek ívásának korlátozásához a NET_RAW képességgel:
+
+```
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sPSPCapabilities
+metadata:
+  name: prevent-net-raw
+spec:
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]
+    excludedNamespaces:
+      - "kube-system"
+  parameters:
+    requiredDropCapabilities: ["NET_RAW"]
+```
+
 ## <a name="create-an-aks-cluster-with-kubenet-network-plugin"></a>AK-fürt létrehozása a Kubenet hálózati beépülő modullal
 
 Hozzon létre egy AK-fürtöt a Kubenet hálózati beépülő modullal és a pod által felügyelt identitással.

@@ -3,26 +3,28 @@ title: Azure-fiók frissítése
 description: Ismerje meg, hogyan frissítheti ingyenes Azure-fiókját vagy Azure for Students Starter-fiókját. Tekintse meg az Azure-támogatási csomagokkal kapcsolatos további információkat ismertető szakaszt.
 keywords: frissítés használatalapú fizetésre
 author: bandersmsft
-ms.reviewer: sasrin
+ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 03/11/2021
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8d348c6a26404f7adbf89cd107a1f0ad0a1cacd5
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
-ms.translationtype: HT
+ms.openlocfilehash: 432330ae06b2e1c19401456dc05f87d0dd908f2d
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590834"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574132"
 ---
 # <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-account"></a>Ingyenes Azure-fiók vagy Azure for Students Starter-fiók frissítése
 
-Frissítheti [ingyenes Azure-fiókját](https://azure.microsoft.com/free/) vagy [Azure for Students Starter-fiókját](https://azure.microsoft.com/offers/ms-azr-0144p/)[használatalapú fizetéses díjszabásra](https://azure.microsoft.com/offers/ms-azr-0003p/) az Azure Portalon.
+Az [ingyenes Azure-fiókját](https://azure.microsoft.com/free/) a Azure Portal utólagos elszámolású [díjszabással](https://azure.microsoft.com/offers/ms-azr-0003p/) is frissítheti.
 
-Ha [Azure for Students Starter-fiókkal](https://azure.microsoft.com/offers/ms-azr-0144p/) rendelkezik, és jogosult [ingyenes Azure-fiókra](https://azure.microsoft.com/free/), frissíthet az ingyenes fiókra. 200 dollár értékű Azure-kreditet és 12 hónapig ingyenes szolgáltatásokat kap a frissítéshez.
+Ha rendelkezik [Azure for Students Starter-fiókkal](https://azure.microsoft.com/offers/ms-azr-0144p/) , és jogosult az [ingyenes Azure-fiókra](https://azure.microsoft.com/free/), frissítheti azt egy [ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 200 dollár értékű Azure-kreditet és 12 hónapig ingyenes szolgáltatásokat kap a frissítéshez. Ha nem rendelkezik ingyenes fiókkal, a [támogatási kéréssel](https://go.microsoft.com/fwlink/?linkid=2083458)frissítheti az utólagos elszámolású [díjszabást](https://azure.microsoft.com/offers/ms-azr-0003p/) .
+
+Ha rendelkezik egy [Azure for Students](https://azure.microsoft.com/offers/ms-azr-0170p/) -fiókkal, az utólagos elszámolású [díjszabásra](https://azure.microsoft.com/offers/ms-azr-0003p/) frissíthet a [támogatási kéréssel](https://go.microsoft.com/fwlink/?linkid=2083458)
 
 <a id="freetrial"></a>
 
@@ -32,14 +34,14 @@ Az ingyenes Azure-fiók frissítésekor a fennmaradó kreditek a regisztrációt
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Keressen rá az **Előfizetések** kifejezésre.  
-    ![A keresést megjelenítő képernyőkép](./media/upgrade-azure-subscription/search-subscriptions-ibiza.png)
+    :::image type="content" source="./media/upgrade-azure-subscription/search-subscriptions.png" alt-text="A keresést bemutató képernyőkép." lightbox="./media/upgrade-azure-subscription/search-subscriptions.png" :::
 1. Válassza ki azt az előfizetést, amelyet az ingyenes Azure-fiók regisztrációjakor hozott létre.
-1. Az előfizetés áttekintésénél válassza a **Magasabb szintű előfizetésre váltás** lehetőséget a parancssávon. Ha nem látja a magasabb szintű előfizetésre váltás gombját, válassza ki a frissítés szalagot a lap tetején.  
-    ![A frissítési gombot megjelenítő képernyőkép](./media/upgrade-azure-subscription/free-upgrade-button.png)
-1. Ha még nem adott hozzá fizetési módot a fiókjához, a rendszer felkéri erre.
+1. Az előfizetés áttekintésénél válassza a **Magasabb szintű előfizetésre váltás** lehetőséget a parancssávon. Ha nem jelenik meg a frissítési előfizetés lehetőség, válassza a lap tetején található frissítés szalagcímet.  
+    :::image type="content" source="./media/upgrade-azure-subscription/free-upgrade-button.png" alt-text="A frissítési lehetőséget megjelenítő képernyőkép." lightbox="./media/upgrade-azure-subscription/free-upgrade-button.png" :::
+1. Ha nem rendelkezik fizetési móddal a fiókjához, a rendszer kéri, hogy adjon hozzá egyet.
 1. Előfordulhat, hogy a személyazonossága igazolásához meg kell adnia a telefonszámát is.
 1. Írja be az előfizetése nevét.  
-     ![A nevet megjelenítő képernyőkép](./media/upgrade-azure-subscription/free-upgrade-name.png)
+     :::image type="content" source="./media/upgrade-azure-subscription/free-upgrade-name.png" alt-text="Az előfizetés nevét megjelenítő ALTScreenshot. SZÖVEG" lightbox="./media/upgrade-azure-subscription/free-upgrade-name.png" :::
 1. Válasszon támogatási csomagot az előfizetéshez. További információt a támogatási csomagokról az [Azure-támogatási csomagok](https://azure.microsoft.com/us/support/plans/) ismertetésében talál.
 1. Válassza a **Frissítés** lehetőséget.
 
@@ -55,19 +57,11 @@ Ha jogosult a frissítésre, kövesse az alábbi lépéseket az ingyenes Azure-f
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Keressen rá az **Előfizetések** kifejezésre.  
-    ![A keresést megjelenítő képernyőkép](./media/upgrade-azure-subscription/search-subscriptions-ibiza.png)
+    :::image type="content" source="./media/upgrade-azure-subscription/search-subscriptions.png" alt-text="A keresést bemutató képernyőkép." lightbox="./media/upgrade-azure-subscription/search-subscriptions.png" :::
 1. Válassza ki azt az előfizetést, amely az Azure for Students Starter-fiók regisztrációjakor jött létre.
-1. Az előfizetés áttekintésénél válassza a **Magasabb szintű előfizetésre váltás** lehetőséget a parancssávon.  
-    ![A tanulóknak szóló frissítési gombot megjelenítő képernyőkép](./media/upgrade-azure-subscription/student-upgrade-ibiza.png)
-
-### <a name="upgrade-to-pay-as-you-go-rates"></a>Frissítés használatalapú fizetésre
-
-1. Ha használatalapú fizetésre frissít, és még nem adott hozzá fizetési módot az előfizetéshez, a rendszer felkéri erre.
-1. Előfordulhat, hogy a személyazonossága igazolásához meg kell adnia a telefonszámát is.
-1. Írja be az előfizetése nevét.
-1. Válasszon támogatási csomagot az előfizetéshez. További információt a támogatási csomagokról az [Azure-támogatási csomagok](https://azure.microsoft.com/us/support/plans/) ismertetésében talál.
-1. Válassza a **Frissítés** lehetőséget.
+1. Az előfizetés áttekintése lapon válassza a parancssorban a **frissítés** lehetőséget.  
+    :::image type="content" source="./media/upgrade-azure-subscription/student-upgrade.png" alt-text="Képernyőkép, amely a tanulók frissítési lehetőségét mutatja." lightbox="./media/upgrade-azure-subscription/student-upgrade.png" :::
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy frissítette a fiókját, tekintse meg, [hogyan tervezheti meg az Azure-költségek kezelését](../understand/plan-manage-costs.md).
+- Most, hogy frissítette a fiókját, tekintse meg, [hogyan tervezheti meg az Azure-költségek kezelését](../understand/plan-manage-costs.md).

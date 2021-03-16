@@ -4,14 +4,14 @@ description: Ismerje meg, hogy mely portokra és címekre van szükség a kimen�
 services: container-service
 ms.topic: article
 ms.author: jpalma
-ms.date: 11/09/2020
+ms.date: 01/12/2021
 author: palma21
-ms.openlocfilehash: 93c8d1392de8f502a829276287a4687476dd36de
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 9e65e2736578ce04dfa79d5a7827e190d47fb312
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505058"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573829"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>A fürtcsomópontok kimenő forgalmának szabályozása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -214,6 +214,24 @@ A következő teljes tartománynevek/alkalmazási szabályok szükségesek azon 
 | **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | Ez a címe Azure Policy helyes működéséhez használatos.  |
 | **`raw.githubusercontent.com`**               | **`HTTPS:443`** | Ez a címe a beépített szabályzatok GitHubról történő lekérésére szolgál a Azure Policy megfelelő működésének biztosítása érdekében. |
 | **`dc.services.visualstudio.com`**            | **`HTTPS:443`** | Azure Policy bővítmény, amely telemetria adatokat küld az Applications-elemzések végpontjának. |
+
+#### <a name="azure-china-21vianet-required-fqdn--application-rules"></a>Az Azure China 21Vianet szükséges teljes tartományneve/alkalmazási szabályok 
+
+A következő teljes tartománynevek/alkalmazási szabályok szükségesek azon AK-fürtök esetében, amelyeken engedélyezve van a Azure Policy.
+
+| FQDN                                          | Port      | Használat      |
+|-----------------------------------------------|-----------|----------|
+| **`data.policy.azure.cn`** | **`HTTPS:443`** | Ez a címe a Kubernetes házirendek lekérésére és a fürt megfelelőségi állapotának a házirend-szolgáltatásba való bejelentésére szolgál. |
+| **`store.policy.azure.cn`** | **`HTTPS:443`** | Ez a címe a beépített szabályzatok forgalomirányító összetevőinek lekérésére szolgál. |
+
+#### <a name="azure-us-government-required-fqdn--application-rules"></a>Azure USA kormányának kötelező teljes tartományneve/alkalmazási szabályok
+
+A következő teljes tartománynevek/alkalmazási szabályok szükségesek azon AK-fürtök esetében, amelyeken engedélyezve van a Azure Policy.
+
+| FQDN                                          | Port      | Használat      |
+|-----------------------------------------------|-----------|----------|
+| **`data.policy.azure.us`** | **`HTTPS:443`** | Ez a címe a Kubernetes házirendek lekérésére és a fürt megfelelőségi állapotának a házirend-szolgáltatásba való bejelentésére szolgál. |
+| **`store.policy.azure.us`** | **`HTTPS:443`** | Ez a címe a beépített szabályzatok forgalomirányító összetevőinek lekérésére szolgál. |
 
 ## <a name="restrict-egress-traffic-using-azure-firewall"></a>Kimenő forgalom korlátozása az Azure Firewall használatával
 

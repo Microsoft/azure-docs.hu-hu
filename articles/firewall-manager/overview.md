@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 01/12/2021
+ms.date: 03/16/2021
 ms.author: victorh
-ms.openlocfilehash: 63e2aac4c12ecc5d832cb037fda91bd2c6ad0bf1
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 506799f94676be007cf94320e3958bd305ce85f0
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132443"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573455"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Mi az az Azure Firewall Manager?
 
@@ -76,7 +76,7 @@ A Azure Firewall házirendek a régiók között is használhatók. Létrehozhat
 
 Azure Firewall Manager a következő ismert problémákkal rendelkezik:
 
-|Probléma  |Leírás  |Kockázatcsökkentés  |
+|Probléma  |Description  |Kockázatcsökkentés  |
 |---------|---------|---------|
 |Forgalom felosztása|A Microsoft 365 és az Azure nyilvános Pásti forgalom felosztása jelenleg nem támogatott. Így például a V2I vagy a B2I harmadik féltől származó szolgáltatójának kiválasztásával az összes Azure nyilvános Pásti és Microsoft 365 forgalmat a partner szolgáltatáson keresztül küldi el.|A forgalom felosztásának kivizsgálása a központban.
 |Egy biztonságos virtuális központ régiónként|Régiónként legfeljebb egy biztonságos virtuális központ lehet.|Több virtuális WAN-t hozhat létre egy régióban.|
@@ -88,7 +88,6 @@ Azure Firewall Manager a következő ismert problémákkal rendelkezik:
 |A tömeges IP-cím hozzáadása nem sikerül|Ha több nyilvános IP-címet ad hozzá, a biztonságos központ tűzfala sikertelen állapotba kerül.|Kisebb nyilvános IP-cím növekmények hozzáadása. Például adjon hozzá 10-et egyszerre.|
 |A DDoS Protection standard nem támogatott a biztonságos virtuális hubok esetében|A DDoS Protection standard nincs integrálva a vWANs.|Kivizsgálás|
 |A tevékenységek naplói nem teljes mértékben támogatottak|A tűzfalszabályok jelenleg nem támogatják a tevékenységek naplóit.|Kivizsgálás|
-|SNAT magánhálózati IP-címtartományok konfigurálása|A [magánhálózati IP-címtartomány beállításai](../firewall/snat-private-range.md) figyelmen kívül lesznek hagyva, ha Azure Firewall házirend konfigurálva van. A rendszer az alapértelmezett Azure Firewall viselkedést használja, ahol nem SNAT hálózati szabályokat, ha a célként megadott IP-cím egy [IANA RFC 1918](https://tools.ietf.org/html/rfc1918)-beli magánhálózati IP-címtartomány része.|Kivizsgálás|
 |Bizonyos tűzfalbeállítások nem települnek át, ha a tűzfalat a tűzfal-házirend használatára telepíti át.|A Availability Zones és a SNAT magánhálózati címeket a rendszer nem telepíti át Azure Firewall házirendre való Migrálás során.|Kivizsgálás| 
 
 ## <a name="next-steps"></a>Következő lépések

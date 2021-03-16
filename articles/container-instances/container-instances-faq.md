@@ -5,12 +5,12 @@ author: macolso
 ms.author: macolso
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 5de1188ee018e796f918d7559c0e2c24c77834f4
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 2645c3f183e2217dff28a96c9c0d376eb82a6476
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186192"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573132"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Gyakori kérdések a Azure Container Instances
 
@@ -45,7 +45,7 @@ A tároló indítási idejének csökkentésével kapcsolatos részletesebb [út
 > [!NOTE]
 > A Semi-Annual Channel 1709-es vagy 1803-es kiadásán alapuló Windows-rendszerképek nem támogatottak.
 
-#### <a name="windows-server-2019-and-client-base-images-preview"></a>Windows Server 2019 és ügyféloldali lemezképek (előzetes verzió)
+#### <a name="windows-server-2019-and-client-base-images"></a>Windows Server 2019 és ügyféloldali lemezképek
 
 * [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809` `10.0.17763.1040` vagy újabb
 * [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019` , `1809` `10.0.17763.1040` vagy újabb
@@ -55,9 +55,12 @@ A tároló indítási idejének csökkentésével kapcsolatos részletesebb [út
 
 Használja a legkisebb rendszerképet, amely megfelel a követelményeinek. A Linux esetében használhat egy *Runtime-Alpine* .net Core-rendszerképet, amelyet a .net Core 2,1 kiadása óta támogattak. Windows esetén, ha a teljes .NET-keretrendszert használja, akkor Windows Server Core rendszerképet kell használnia (csak futásidejű rendszerkép, például  *4.7.2-windowsservercore-ltsc2016*). A csak futásidejű lemezképek kisebbek, de nem támogatják a .NET SDK-t igénylő munkaterheléseket.
 
+> [!NOTE]
+> Az ACI nem tudja lekérni a képeket a nem OCI-kompatibilis beállításjegyzékből.
+
 ### <a name="what-types-of-container-registries-are-compatible-with-aci"></a>Milyen típusú tároló-nyilvántartások kompatibilisek az ACI-val?
 
-Az ACI támogatja az ACR és más külső gyártótól származó, például a DockerHub által készített képek lekérését. Az ACI Emellett támogatja a helyszíni beállításjegyzékből származó képek lekérését, amennyiben azok OCR-kompatibilisek, és olyan végponttal rendelkeznek, amely nyilvánosan elérhető az interneten.
+Az ACI támogatja az ACR és más külső gyártótól származó, például a DockerHub által készített képek lekérését. Az ACI támogatja az ACR-ből és más, harmadik féltől származó OCI kompatibilis tároló-beállításjegyzékből származó képek lekérését, például a DockerHub egy olyan végponttal, amely nyilvánosan elérhető az interneten.
 
 ## <a name="availability-and-quotas"></a>Rendelkezésre állás és kvóták
 

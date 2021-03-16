@@ -5,12 +5,12 @@ ms.assetid: f9a5cfa1-fbb0-41e6-95d1-75d457347a35
 ms.topic: article
 ms.date: 01/14/2016
 ms.custom: seodec18
-ms.openlocfilehash: 92e893fe9f74d51856faf39d3e4800dd5a8155db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3ae342e7cbd8a9c2e126de7666d07f0664be407
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88815385"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573642"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>Alkalmazások klónozásának Azure App Service a PowerShell használatával
 
@@ -123,6 +123,7 @@ Az alkalmazások klónozásának ismert korlátozásai:
 * Az adatbázis tartalmának klónozása nem történik meg
 * A kimenő IP-címek akkor változnak, ha egy másik méretezési egység klónozása
 * Linux-alkalmazásokhoz nem érhető el
+* A felügyelt identitások nincsenek klónozott
 
 ### <a name="references"></a>Hivatkozások
 * [App Service klónozás](app-service-web-app-cloning.md)

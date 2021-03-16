@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 5d029f4328f955d64c5ce479e553769f8a107e45
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 1a1a9158c06a12caaeb5702f2fdf7da3c801c143
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102518568"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573438"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Azure Machine Learning következtetési környezet biztonságossá tétele virtuális hálózatokkal
 
@@ -278,3 +278,5 @@ Ez a cikk egy öt részből álló virtuális hálózati sorozat negyedik része
 * [2. rész: a munkaterület erőforrásainak védelme](how-to-secure-workspace-vnet.md)
 * [3. rész: a képzési környezet biztonságossá tétele](how-to-secure-training-vnet.md)
 * [5. rész: a Studio funkcióinak engedélyezése](how-to-enable-studio-virtual-network.md)
+
+Tekintse meg az [Egyéni DNS](how-to-custom-dns.md) használata névfeloldáshoz című cikket is.

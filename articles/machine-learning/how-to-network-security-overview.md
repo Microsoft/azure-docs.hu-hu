@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: fcb678efe29178784c9233e79b307f705c40e3f7
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 1c3d9b286a8262efa126ba9c661c50dd88e78b64
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102518677"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573472"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Virtual Network elkülönítés és Adatvédelem – áttekintés
 
@@ -36,7 +36,6 @@ Ez a cikk azt feltételezi, hogy a következő témakörök ismerete szükséges
 + [Azure Private Link](how-to-configure-private-link.md)
 + [Hálózati biztonsági csoportok (NSG)](../virtual-network/network-security-groups-overview.md)
 + [Hálózati tűzfalak](../firewall/overview.md)
-
 ## <a name="example-scenario"></a>Példaforgatókönyv
 
 Ebben a szakaszban megtudhatja, hogyan történik a közös hálózati forgatókönyv beállítása a magánhálózati IP-címekkel való Azure Machine Learning kommunikáció biztonságossá tételére.
@@ -62,8 +61,8 @@ A következő öt szakasz bemutatja, hogyan védheti meg a fent ismertetett hál
 1. Gondoskodjon a [**képzési környezet**](#secure-the-training-environment)védelméről.
 1. Gondoskodjon a [**következtetési környezet**](#secure-the-inferencing-environment)védelméről.
 1. Opcionálisan: a [**Studio funkciójának engedélyezése**](#optional-enable-studio-functionality).
-1. [ **Tűzfalbeállítások** konfigurálása](#configure-firewall-settings)
-
+1. Adja meg a [**tűzfalbeállítások beállításait**](#configure-firewall-settings).
+1. [DNS-névfeloldás](#custom-dns)konfigurálása.
 ## <a name="secure-the-workspace-and-associated-resources"></a>A munkaterület és a kapcsolódó erőforrások védelme
 
 A munkaterület és a kapcsolódó erőforrások védelméhez kövesse az alábbi lépéseket. Ezek a lépések lehetővé teszik, hogy a szolgáltatások kommunikálhassanak a virtuális hálózaton.
@@ -186,3 +185,5 @@ Ez a cikk egy öt részből álló virtuális hálózati sorozat első része. A
 * [3. rész: a képzési környezet biztonságossá tétele](how-to-secure-training-vnet.md)
 * [4. rész: a következtetési környezet biztonságossá tétele](how-to-secure-inferencing-vnet.md)
 * [5. rész: a Studio funkcióinak engedélyezése](how-to-enable-studio-virtual-network.md)
+
+Tekintse meg az [Egyéni DNS](how-to-custom-dns.md) használata névfeloldáshoz című cikket is.

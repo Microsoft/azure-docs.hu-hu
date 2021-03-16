@@ -4,16 +4,16 @@ description: Az Azure-ban kiválóan elérhető és rugalmas alkalmazások hozha
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 01/26/2021
+ms.date: 03/16/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: fee000009be90a083406725fe7f1e8c4382af3e9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7aff8320186ada53772fc4ff2232e8cf55585a77
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101701450"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573030"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>A rendelkezésreállási zónákat támogató Azure-szolgáltatások
 
@@ -50,12 +50,13 @@ Az Azure-ban elérhető átfogó Üzletmenet-folytonosság érdekében az Azure 
 | Amerika           | Európa               | Afrika              | Ázsia és a Csendes-óceáni térség   |
 |--------------------|----------------------|---------------------|----------------|
 |                    |                      |                     |                |
-| Közép-Kanada     | Közép-Franciaország       | Dél-Afrika északi régiója * | Kelet-Japán     |
-| Az USA középső régiója         | Középnyugat-Németország |                     | Délkelet-Ázsia |
-| USA keleti régiója            | Észak-Európa         |                     | Kelet-Ausztrália |
-| USA 2. keleti régiója          | Az Egyesült Királyság déli régiója             |                     |                |
-| USA déli középső régiója | Nyugat-Európa          |                     |                |
-| USA-beli államigazgatás – Virginia    |                      |                     |                |
+| Dél-Brazília       | Közép-Franciaország       | Dél-Afrika északi régiója * | Kelet-Japán     |
+| Közép-Kanada     | Középnyugat-Németország |                     | Délkelet-Ázsia |
+| Az USA középső régiója         | Észak-Európa         |                     | Kelet-Ausztrália |
+| USA keleti régiója            | Az Egyesült Királyság déli régiója             |                     |                |
+| USA 2. keleti régiója          | Nyugat-Európa          |                     |                |
+| USA déli középső régiója |                      |                     |                |
+| USA-beli államigazgatás – Virginia     |                      |                     |                |
 | USA 2. nyugati régiója        |                      |                     |                |
 
 
@@ -125,6 +126,7 @@ Az Azure-ban elérhető átfogó Üzletmenet-folytonosság érdekében az Azure 
 | Azure Database for MySQL – rugalmas kiszolgáló      |      : large_blue_diamond:  |
 | Azure Database for PostgreSQL – rugalmas kiszolgáló |      : large_blue_diamond:  |
 | Azure DDoS Protection                           |      : large_blue_diamond:  |
+| Azure Disk Encryption                           |      : large_blue_diamond:  |
 | Azure Firewall                                  |      : large_blue_diamond:  |
 | Azure Firewall Manager                          |      : large_blue_diamond:  |
 | Azure Kubernetes Service (AKS)                  |      : large_blue_diamond:  |
@@ -169,6 +171,7 @@ Az Azure-ban elérhető átfogó Üzletmenet-folytonosság érdekében az Azure 
 |     Azure Advisor                             |     : globe_with_meridians:             |
 |     Azure Blueprints                          |     : globe_with_meridians:             |
 |     Azure Bot Services                        |     : globe_with_meridians:             |
+|     Azure Front Door                          |     : globe_with_meridians:             |
 |     Azure Defender a IoT                  |     : globe_with_meridians:             |
 |     Azure Front Door                           |     : globe_with_meridians:             |
 |     Azure Information Protection            |     : globe_with_meridians:             |

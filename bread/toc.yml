@@ -924,6 +924,9 @@
         - name: Lefoglalások
           tocHref: /azure/cost-management-billing/reservations/
           topicHref: /azure/cost-management-billing/reservations/
+        - name: Microsoft-ügyfélszerződés
+          tocHref: /azure/cost-management-billing/microsoft-customer-agreement/
+          topicHref: /azure/cost-management-billing/microsoft-customer-agreement/
     - name: Purview
       tocHref: /azure/purview/
       topicHref: /azure/purview/

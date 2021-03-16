@@ -11,16 +11,18 @@ ms.topic: how-to
 ms.date: 03/16/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fd4724fc19814a5ffd35380c0b326e035a340ef2
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 9e248c10c15ba0318c6b23fcbf88be04dd9896a2
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2021
-ms.locfileid: "103561515"
+ms.locfileid: "103573064"
 ---
 # <a name="embedded-sign-in-experience"></a>Beágyazott bejelentkezési élmény
 
 Az egyszerűbb bejelentkezési élmény érdekében elkerülheti a felhasználók átirányítását egy külön bejelentkezési oldalra, vagy előugró ablakot hozhat létre. A beágyazott keret elem használatával közvetlenül a `<iframe>` webalkalmazásba ágyazhatja be a Azure ad B2C bejelentkezési felhasználói felületét.
+
+[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="web-application-embedded-sign-in"></a>Webalkalmazás beágyazott bejelentkezési lapja
 
@@ -32,7 +34,12 @@ IFrame használatakor vegye figyelembe a következőket:
 
 - A beágyazott bejelentkezés csak a helyi fiókokat támogatja. A legtöbb közösségi identitás-szolgáltató (például a Google és a Facebook) blokkolja a bejelentkezési oldalaikat a beágyazott keretek között.
 - Mivel az IFRAME-en belüli Azure AD B2C munkamenet-cookie-k harmadik féltől származó cookie-k, bizonyos böngészők (például a Safari vagy a Chrome inkognitóban módban), vagy letilthatják vagy törölhetik ezeket a cookie-kat, ami nem kívánatos felhasználói élményt eredményez. A probléma elkerülése érdekében győződjön meg arról, hogy az alkalmazás tartományneve és a Azure AD B2C tartománya *azonos eredetű*. Ha ugyanazt a forrást szeretné használni, [engedélyezze az egyéni tartományokat](custom-domain.md) Azure ad B2C bérlő számára, majd konfigurálja a webalkalmazást ugyanazzal a forrással. Például a on futtatott alkalmazásnak https://app.contoso.com ugyanaz a forrása, mint a Azure ad B2C fut https://login.contoso.com .
- 
+
+## <a name="perquisites"></a>Perquisites
+
+* Hajtsa végre az [első lépések az egyéni házirendek Active Directory B2Cban](custom-policy-get-started.md)című témakör lépéseit.
+* [Engedélyezze az egyéni tartományokat](custom-domain.md) a szabályzatok számára.
+
 ## <a name="configure-your-policy"></a>A házirend konfigurálása
 
 Annak engedélyezéséhez, hogy a Azure AD B2C felhasználói felülete iframe-be legyen ágyazva, meg kell adni a tartalom biztonsági házirendjét `Content-Security-Policy` és a keret beállításait `X-Frame-Options` a Azure ad B2C http-válasz fejlécei között. Ezek a fejlécek lehetővé teszik, hogy az Azure AD B2C felhasználói felülete az alkalmazás tartománynevénél fusson.

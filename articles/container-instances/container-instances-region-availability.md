@@ -4,12 +4,12 @@ description: A Azure Container Instances szolgáltatás számítási és memóri
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: a415a739cd9c1e2ca39ebeaef1d8903ab72cf0c4
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 4decf29be23c2f1ed51f422052869e99abe4a511
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831280"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573608"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Erőforrások rendelkezésre állása Azure Container Instances Azure-régiókban
 
@@ -48,6 +48,7 @@ A következő régiók és maximális erőforrások elérhetők a Linux-tároló
 | USA déli középső régiója | 4 | 16 | 4 | 16 | 50 | N/A |
 | Délkelet-Ázsia | 4 | 16 | 4 | 16 | 50 | P100, V100 |
 | Dél-India | 4 | 16 | N.A. | N.A. | 50 | N/A |
+| Észak-Svájc | 3 | 16 | N.A. | N.A. | 50 | N/A |
 | Az Egyesült Királyság déli régiója | 4 | 16 | 4 | 16 | 50 | N/A |
 | Észak-Egyesült Arab | 3 | 16 | N.A. | N.A. | 50 | N/A |
 | USA nyugati középső régiója| 4 | 16 | 4 | 16 | 50 | N/A |

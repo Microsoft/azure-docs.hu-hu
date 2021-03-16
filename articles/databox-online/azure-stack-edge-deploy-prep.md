@@ -6,21 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/22/2021
+ms.date: 03/16/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 07b526d443b5f1b41bc6f811b7cccc0fbc6165ee
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 9ceba84cb3bbe52dc5ba51d0f4945f5bad0a5034
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761706"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573963"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>Oktatóanyag: Felkészülés a Azure Stack Edge Pro üzembe helyezésére  
 
-Ez az első oktatóanyag az üzembe helyezési oktatóanyagok sorozatában, amelyek a Azure Stack Edge Pro teljes körű telepítéséhez szükségesek. Ez az oktatóanyag leírja, hogyan készítheti elő a Azure Portal egy Azure Stack Edge-erőforrás üzembe helyezéséhez.
+Ez az első oktatóanyag az üzembe helyezési oktatóanyagok sorozatában, amelyek a Azure Stack Edge Pro teljes körű telepítéséhez szükségesek. Ez az oktatóanyag leírja, hogyan készítheti elő a Azure Portal egy Azure Stack Edge-erőforrás üzembe helyezéséhez. 
 
-A beállítási és konfigurációs folyamat befejezéséhez rendszergazdai jogosultságok szükségesek. A portál előkészítése kevesebb mint 10 percet vesz igénybe.
+A beállítási és konfigurációs folyamat befejezéséhez rendszergazdai jogosultságok szükségesek. A portál előkészítése kevesebb mint 10 percet vesz igénybe.  
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -53,7 +53,7 @@ A következő konfigurációs előfeltételek vonatkoznak az Azure Stack Edge-er
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-* A Microsoft Azure-előfizetés engedélyezve lett egy Azure Stack Edge-erőforráshoz. Győződjön meg arról, hogy olyan támogatott előfizetést használt, mint például a [Microsoft nagyvállalati szerződés (EA)](https://azure.microsoft.com/overview/sales-number/), a [Cloud Solution Provider (CSP)](/partner-center/azure-plan-lp)vagy a [Microsoft Azure szponzorálás](https://azure.microsoft.com/offers/ms-azr-0036p/). A használatalapú fizetéses előfizetések nem támogatottak.
+* A Microsoft Azure-előfizetés engedélyezve lett egy Azure Stack Edge-erőforráshoz. Győződjön meg arról, hogy olyan támogatott előfizetést használt, mint például a [Microsoft nagyvállalati szerződés (EA)](https://azure.microsoft.com/overview/sales-number/), a [Cloud Solution Provider (CSP)](/partner-center/azure-plan-lp)vagy a [Microsoft Azure szponzorálás](https://azure.microsoft.com/offers/ms-azr-0036p/). Az utólagos elszámolású előfizetések nem támogatottak.
 
 * Az Azure Stack Edge/Data Box Gateway, a IoT Hub és az Azure Storage-erőforrások esetében tulajdonosi vagy közreműködői hozzáférése van az erőforráscsoport szintjén.
 
@@ -84,71 +84,67 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 * A Azure Stack Edge Pro normál működési feltételei:
 
-  * Legalább 10 MB/s letöltési sávszélesség, hogy az eszköz naprakész maradjon.
-  * A fájlok átviteléhez legalább 20 Mbps dedikált feltöltési és letöltési sávszélesség szükséges.
+  * Legalább 10 Mbps letöltési sávszélesség, hogy az eszköz naprakész maradjon.
+  * Legalább 20 Mbps dedikált feltöltési és letöltési sávszélesség a fájlok átviteléhez.
 
-## <a name="create-a-new-resource"></a>Új erőforrás létrehozása
+## <a name="create-new-resource-for-existing-device"></a>Új erőforrás létrehozása meglévő eszközhöz
 
-Ha rendelkezik meglévő Azure Stack Edge-erőforrással a fizikai eszköz kezeléséhez, hagyja ki ezt a lépést, és lépjen [az aktiválási kulcs lekérése](#get-the-activation-key)elemre.
+Ha Ön már meglévő Azure Stack Edge Pro-ügyfél, akkor az alábbi eljárással hozhat létre új erőforrást, ha a meglévő eszközt le kell cserélnie vagy alaphelyzetbe kell állítania.
 
-Azure Stack peremhálózati erőforrás létrehozásához hajtsa végre a következő lépéseket a Azure Portal.
+Ha Ön új ügyfél, javasoljuk, hogy vizsgálja meg Azure Stack Edge Pro-GPU-eszközök használatát a számítási feladatokhoz. További információért látogasson el a [Mi az Azure stack Edge Pro és a GPU](azure-stack-edge-gpu-overview.md). További információ a Azure Stack Edge Pro és a GPU eszköz megrendeléséről [: új erőforrás létrehozása Azure stack Edge Pro-GPU-](azure-stack-edge-gpu-deploy-prep.md?tabs=azure-portal#create-a-new-resource)hoz.
 
-1. A Microsoft Azure hitelesítő adataival jelentkezzen be 
+Ha új Azure Stack Edge Pro-erőforrást szeretne létrehozni egy meglévő eszközhöz, hajtsa végre a következő lépéseket a Azure Portal.
+
+1. A Microsoft Azure hitelesítő adataival jelentkezzen be:
 
     - A Azure Portal ezen az URL-címen: [https://portal.azure.com](https://portal.azure.com) .
     - Vagy a Azure Government portál ezen az URL-címen: [https://portal.azure.us](https://portal.azure.us) . További részletekért lépjen a [kapcsolódás Azure Government a portál használatával](../azure-government/documentation-government-get-started-connect-with-portal.md).
 
-2. A bal oldali panelen válassza az **+ erőforrás létrehozása** lehetőséget. Keresse meg és válassza ki **Azure stack Edge/Data Box Gateway**. Válassza a **Létrehozás** lehetőséget.
-3. Válassza ki az Azure Stack Edge Pro-eszközhöz használni kívánt előfizetést. Válassza ki azt a régiót, ahol az Azure Stack Edge-erőforrást telepíteni kívánja. Az Azure Stack Edge-erőforrást tartalmazó régiók listáját itt tekintheti meg: [régiónként elérhető Azure-termékek](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all).
+1. Válassza a **+ Erőforrás létrehozása** lehetőséget. Keresse meg és válassza ki **Azure stack Edge** elemet. Ezután kattintson a **Létrehozás** elemre.
 
-    Az eszköz üzembe helyezésének földrajzi régiójához legközelebb eső helyet válasszon. A régió csak az eszközkezelés metaadatait tárolja. A tényleges adatok bármilyen Storage-fiókban tárolhatók.
+1. Válassza ki az előfizetést az Azure Stack Edge Pro-eszköz és az ország számára, ahová az eszközt szállítja a **szállításhoz**.
+
+   ![Válassza ki az eszközhöz tartozó előfizetést és szállítási országot](media/azure-stack-edge-deploy-prep/create-fpga-existing-resource-01.png)
+
+
+1. A megjelenített eszközbeállítások listájában válassza a **Azure stack Edge Pro-FPGA** elemet. Ezután kattintson a **Kiválasztás** gombra. 
+
+   Az **Azure stack Edge Pro-FPGA** típusú eszköz csak akkor jelenik meg, ha rendelkezik meglévő eszközzel. Ha új eszközt kell megrendelnie, lépjen az [új erőforrás létrehozása Azure stack Edge Pro-GPU-](azure-stack-edge-gpu-deploy-prep.md?tabs=azure-portal#create-a-new-resource)hoz című lépésre.
+
+   ![Keresés Azure Stack Edge szolgáltatásban](media/azure-stack-edge-deploy-prep/create-fpga-existing-resource-02.png)
+
+1. Az **Alapszintű beállítások** lapon:
+
+   1. Adja meg vagy válassza ki a következő **projekt részleteit**.
     
-    Az **Azure stack Edge Pro** lehetőségnél válassza a **Létrehozás** lehetőséget.
+       |Beállítás  |Érték  |
+       |---------|---------|
+       |Előfizetés    |Ezt az értéket a rendszer automatikusan kitölti a korábbi kiválasztás alapján. A számlázási fiókhoz társított előfizetés. |
+       |Erőforráscsoport  |Válasszon ki egy meglévő csoportot, vagy hozzon létre egy újat.<br>Itt tekinthet meg további információt az [Azure-erőforráscsoportokkal](../azure-resource-manager/management/overview.md) kapcsolatban.     |
 
-    ![Keresés Azure Stack Edge szolgáltatásban](media/azure-stack-edge-deploy-prep/data-box-edge-sku.png)
+   1. Adja meg vagy válassza ki a következő **példány részleteit**.
 
-3. Az **alapvető beállítások** lapon adja meg vagy válassza ki a következő **projekt részleteit**.
-    
-    |Beállítás  |Érték  |
-    |---------|---------|
-    |Előfizetés    |Ezt a rendszer automatikusan kitölti a korábbi kiválasztás alapján. A számlázási fiókhoz társított előfizetés. |
-    |Erőforráscsoport  |Válasszon ki egy meglévő csoportot, vagy hozzon létre egy újat.<br>Itt tekinthet meg további információt az [Azure-erőforráscsoportokkal](../azure-resource-manager/management/overview.md) kapcsolatban.     |
+       |Beállítás  |Érték  |
+       |---------|---------|
+       |Név   | Az erőforrást azonosító valódi név.<br>A név 2 és 50 karakterből áll, beleértve a betűket, számokat és kötőjeleket.<br> A névnek betűvel vagy számmal kell kezdődnie és végződnie.        |
+       |Region     |Az Azure Stack Edge-erőforrást tartalmazó régiók listáját itt tekintheti meg: [régiónként elérhető Azure-termékek](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Government használata esetén az összes kormányzati régió elérhető az [Azure-régiókban](https://azure.microsoft.com/global-infrastructure/regions/)látható módon.<br> Az eszköz üzembe helyezésének földrajzi régiójához legközelebb eső helyet válasszon.|
 
-4. Adja meg vagy válassza ki a következő **példány részleteit**.
+   1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
-    |Beállítás  |Érték  |
-    |---------|---------|
-    |Név   | Az erőforrást azonosító valódi név.<br>A név 2 és 50 karakterből áll, beleértve a betűket, számokat és kötőjeleket.<br> A névnek betűvel vagy számmal kell kezdődnie és végződnie.        |
-    |Régió     |Az Azure Stack Edge-erőforrást tartalmazó régiók listáját itt tekintheti meg: [régiónként elérhető Azure-termékek](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Government használata esetén az összes kormányzati régió elérhető az [Azure-régiókban](https://azure.microsoft.com/global-infrastructure/regions/)látható módon.<br> Az eszköz üzembe helyezésének földrajzi régiójához legközelebb eső helyet válasszon.|
+    ![Projekt és példány részletei](media/azure-stack-edge-deploy-prep/create-fpga-existing-resource-03.png)
 
-    ![Projekt és példány részletei](media/azure-stack-edge-deploy-prep/data-box-edge-resource.png)
+1. A **felülvizsgálat + létrehozás** lapon tekintse át a **használati feltételek**, a **díjszabás részleteit** és az erőforrás részleteit. Ezután kattintson a **Létrehozás** elemre.
 
-5. Válassza a **Next (tovább): szállítási címet**.
+    ![Tekintse át Azure Stack Edge-erőforrás részleteit és adatvédelmi feltételeit](media/azure-stack-edge-deploy-prep/create-fpga-existing-resource-04.png)
 
-    - Ha már rendelkezik egy eszközzel, válassza az **Azure stack Edge-eszközhöz** tartozó kombinált listát.
-    - Ha ez az új eszköz, amelyet Ön megrendelt, adja meg a kapcsolattartó nevét, a vállalatot, az eszköz szállítását és a kapcsolattartási adatokat.
+1. Az erőforrás létrehozása néhány percet vesz igénybe. Az erőforrás sikeres létrehozása és üzembe helyezése után értesítést kap. Válassza az **Erőforrás megnyitása** lehetőséget.
 
-    ![Az új eszköz szállítási címe](media/azure-stack-edge-deploy-prep/data-box-edge-resource1.png)
+   ![Ugrás az Azure Stack Edge-erőforrásra](media/azure-stack-edge-deploy-prep/data-box-edge-resource-01.png)
 
-6. Válassza a **Tovább: Ellenőrzés és létrehozás** lehetőségre.
+A megrendelés elhelyezése után a Microsoft áttekinti a rendelést és a kapcsolattartási adatokat (e-mailben) a szállítási adatokkal.
 
-7. A **felülvizsgálat + létrehozás** lapon tekintse át a **díjszabás részleteit**, **használati feltételek** és az erőforrás részleteit. Válassza ki az **adatvédelmi feltételeket áttekintő** kombinált listát.
+![Értesítés az Azure Stack Edge Pro-sorrend áttekintéséhez](media/azure-stack-edge-deploy-prep/data-box-edge-resource-02.png)
 
-    ![Tekintse át Azure Stack Edge-erőforrás részleteit és adatvédelmi feltételeit](media/azure-stack-edge-deploy-prep/data-box-edge-resource2.png)
-
-8. Válassza a **Létrehozás** lehetőséget.
-
-   Az erőforrás létrehozása néhány percet vesz igénybe. Az erőforrás sikeres létrehozása és üzembe helyezése után értesítést kap. Válassza az **Erőforrás megnyitása** lehetőséget.
-
-   ![Ugrás az Azure Stack Edge-erőforrásra](media/azure-stack-edge-deploy-prep/data-box-edge-resource3.png)
-
-A megrendelés elhelyezése után a Microsoft áttekinti a rendelést, és elküldi Önt (e-mailben) a szállítási adatokkal.
-
-![Értesítés az Azure Stack Edge Pro-sorrend áttekintéséhez](media/azure-stack-edge-deploy-prep/data-box-edge-resource4.png)
-
-
-> [!NOTE]
-> Ha egyszerre több rendelést kíván létrehozni vagy egy meglévő rendelés klónozását, használhatja a [szkripteket az Azure-mintákban](https://github.com/Azure-Samples/azure-stack-edge-order). További információkért tekintse meg a README fájlt.
 
 ## <a name="get-the-activation-key"></a>Az aktiválási kulcs lekérése
 
@@ -156,7 +152,7 @@ Az Azure Stack Edge-erőforrás működésének megkezdése után le kell kérni
 
 1. Lépjen a létrehozott erőforráshoz, és válassza az **Áttekintés** lehetőséget. Ekkor megjelenik egy értesítés, amely a megrendelés feldolgozásának hatására vonatkozik.
 
-    ![Az Áttekintés kiválasztása](media/azure-stack-edge-deploy-prep/data-box-edge-select-devicesetup.png)
+    ![Az Áttekintés kiválasztása](media/azure-stack-edge-deploy-prep/data-box-edge-select-device-setup.png)
 
 2. A rendelés feldolgozását és az eszközt a saját módjára, az **Áttekintés** frissítéseire. Fogadja el az alapértelmezett **Azure Key Vault nevet** , vagy adjon meg egy újat. Válassza az **aktiválási kulcs előállítása** lehetőséget. Kattintson a másolás ikonra a kulcs másolásához és a későbbi használatra mentéséhez.
 
@@ -167,7 +163,7 @@ Az Azure Stack Edge-erőforrás működésének megkezdése után le kell kérni
 > * Az aktiválási kulcs három nappal a létrehozása után lejár.
 > * Ha a kulcs lejárt, állítson be egy új kulcsot. A régebbi kulcs nem lesz érvényes.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte Azure Stack Edge Pro-témaköröket, például a következőket:
 

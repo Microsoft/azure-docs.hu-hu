@@ -5,13 +5,13 @@ author: jseb225
 ms.author: jeanb
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/16/2020
-ms.openlocfilehash: b9768bacf8d29b37f479ea080afddd494b506262
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.date: 01/15/2021
+ms.openlocfilehash: 1ee1411aba7724d76ed8626de9b8b038d02339dc
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013940"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574254"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>A Stream Analytics-feladatok skálázása Azure Machine Learning Studio (klasszikus) függvényekkel
 
@@ -24,7 +24,7 @@ Ez a cikk a Azure Machine Learning Studio (klasszikus) függvényeket használó
 
 A Stream Analytics Machine Learning Studio (klasszikus) függvénye az Stream Analytics lekérdezési nyelvben, például egy normál függvény hívásához is használható. A színfalak mögött azonban ezek a függvények valójában a Studio (klasszikus) webszolgáltatás-kérések.
 
-A Studio (klasszikus) webszolgáltatási kérelmek átviteli sebességét a "batching" több sorból is javíthatja ugyanabban a webszolgáltatás API-hívásban. Ezt a csoportosítást mini-batch-nek nevezzük. További információ: [Azure Machine learning Studio (klasszikus) webszolgáltatások](../machine-learning/classic/consume-web-services.md). A Studio (klasszikus) támogatása a Stream Analytics előzetes verzióban érhető el.
+A Studio (klasszikus) webszolgáltatási kérelmek átviteli sebességét a "batching" több sorból is javíthatja ugyanabban a webszolgáltatás API-hívásban. Ezt a csoportosítást mini-batch-nek nevezzük. További információ: [Azure Machine learning Studio (klasszikus) webszolgáltatások](../machine-learning/classic/consume-web-services.md). A Studio (klasszikus) támogatása a Stream Analyticsban.
 
 ## <a name="configure-a-stream-analytics-job-with-studio-classic-functions"></a>Stream Analytics-feladatok konfigurálása a Studio (klasszikus) függvények segítségével
 
@@ -51,7 +51,7 @@ Az 200 000-események másodpercenkénti feldolgozásához a Stream Analytics fe
 
 ![Stream Analytics méretezése a Studio (klasszikus) függvényekben két feladatra példa](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-00.png "Stream Analytics méretezése a Studio (klasszikus) függvényekben két feladatra példa")
 
-Általánosságban: **_b_* _ a Batch mérethez, _*_L_*_ a webszolgáltatás késéséhez a B köteg mérete ezredmásodpercben, az _*_N_*_ SUs stream Analytics-feladatok átviteli sebessége a következő:
+Általánosságban: ***b** _ a Batch mérethez, _*_L_*_ a webszolgáltatás késéséhez a B köteg mérete ezredmásodpercben, a stream Analytics-feladatok átviteli sebessége (_ *_N_** SUs):
 
 ![Stream Analytics méretezése a Studio (klasszikus) függvények képlettel](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-02.png "Stream Analytics méretezése a Studio (klasszikus) függvények képlettel")
 
@@ -62,7 +62,7 @@ A beállítással kapcsolatos további információkért tekintse át a [Machine
 ## <a name="example--sentiment-analysis"></a>Példa – Hangulatelemzés
 Az alábbi példa egy Stream Analytics feladatot tartalmaz az "a klasszikus", az [Stream Analytics Machine learning Studio (klasszikus) integrációs oktatóanyagban](stream-analytics-machine-learning-integration-tutorial.md)leírtaknak megfelelően.
 
-A lekérdezés egy egyszerű, teljes particionált lekérdezés, amelyet a _ *hangulat** függvény követ, ahogy az az alábbi példában is látható:
+A lekérdezés egy egyszerű, teljes particionált lekérdezés, amelyet az **érzelem** függvény követ, ahogy az az alábbi példában is látható:
 
 ```SQL
     WITH subquery AS (
@@ -141,7 +141,7 @@ Ha egy Stream Analytics feladatot Studio (klasszikus) függvényekkel szeretne m
 
 Példaként egy teljesen particionált Stream Analytics lekérdezést használtak. Ha összetettebb lekérdezésre van szükség, a [Microsoft Q&a Azure stream Analytics egy kérdés oldalát](/answers/topics/azure-stream-analytics.html) , amellyel további segítséget kaphat a stream Analytics csapattól.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Stream Analyticsról további információt a következő témakörben talál:
 
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)

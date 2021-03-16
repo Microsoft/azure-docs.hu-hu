@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 0462dac12d41fff667212902152b420d1460186d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f3184602bad8aabf654c8fa94d33372d08c11a66
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383636"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573200"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Adatok másolása HTTP-végpontból Azure Data Factory használatával
 
@@ -221,7 +221,7 @@ A HTTP a következő tulajdonságokat támogatja a `storeSettings` Format-alapú
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | típus                     | A Type tulajdonságot a `storeSettings` **HttpReadSettings** értékre kell állítani. | Yes      |
 | requestMethod            | A HTTP-metódus. <br>Az engedélyezett értékek: **Get** (alapértelmezett) és **post**. | No       |
-| addtionalHeaders         | További HTTP-kérelmek fejlécei.                             | No       |
+| additionalHeaders         | További HTTP-kérelmek fejlécei.                             | No       |
 | requestBody              | A HTTP-kérelem törzse.                               | No       |
 | httpRequestTimeout           | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). Ez az érték a válasz lekérésének időtúllépése, nem pedig a válaszüzenetek olvasásának időtúllépése. Az alapértelmezett érték a **00:01:40**. | No       |
 | maxConcurrentConnections | A tárolási tárolóhoz való kapcsolódáshoz szükséges kapcsolatok száma egyidejűleg. Csak akkor kell megadni, ha az egyidejű kapcsolódást szeretné korlátozni az adattárral. | No       |

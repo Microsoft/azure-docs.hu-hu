@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 3b1e102385f43dd9a1ba6996e657f49d435038a2
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: b4422c664071087ccae73a5b6f642b53dcca74bf
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503613"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574645"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Mik a számítási célok az Azure Machine Learningben?
 
@@ -98,30 +98,30 @@ A virtuális gépek méretének kiválasztására néhány kivétel és korláto
 
 A támogatott adatsorozatokkal és korlátozásokkal kapcsolatos további információkért tekintse meg a következő táblázatot.
 
-| **Támogatott VM-sorozat**  | **Korlátozások** |
-|------------|------------|
-| T | Nincsenek. |
-| DDSv4 | Nincsenek. |
-| Dv2 | Nincsenek. |  
-| Dv3 | Nincsenek.|
-| DSv2 | Nincsenek. | 
-| DSv3 | Nincsenek.|
-| EAv4 | Nincsenek. |
-| Ev3 | Nincsenek. |
-| FSv2 | Nincsenek. | 
-| H | Nincsenek. |
-| HB | Jóváhagyást igényel. |
-| HBv2 | Jóváhagyást igényel. |  
-| HCS FRISSÍTŐÜGYNÖK | Jóváhagyást igényel. |  
-| M | Jóváhagyást igényel. |
-| NC | Nincsenek. |  
-| NC – promo | Nincsenek. |
-| NCsv2 | Jóváhagyást igényel. |
-| NCsv3 | Jóváhagyást igényel. |  
-| NDs | Jóváhagyást igényel. |
-| NDv2 | Jóváhagyást igényel. |
-| NV | Nincsenek. |
-| NVv3 | Jóváhagyást igényel. | 
+| **Támogatott VM-sorozat**  | **Korlátozások** | **Kategória** | **Támogató** |
+|------------|------------|------------|------------|
+| T | Nincsenek. | Általános célú | Számítási fürtök és példány |
+| DDSv4 | Nincsenek. | Általános célú | Számítási fürtök és példány |
+| Dv2 | Nincsenek. | Általános célú | Számítási fürtök és példány |
+| Dv3 | Nincsenek.| Általános célú | Számítási fürtök és példány |
+| DSv2 | Nincsenek. | Általános célú | Számítási fürtök és példány |
+| DSv3 | Nincsenek.| Általános célú | Számítási fürtök és példány |
+| EAv4 | Nincsenek. | Memóriaoptimalizált | Számítási fürtök és példány |
+| Ev3 | Nincsenek. | Memóriaoptimalizált | Számítási fürtök és példány |
+| FSv2 | Nincsenek. | Számításra optimalizált | Számítási fürtök és példány |
+| H | Nincsenek. | Nagy teljesítményű számítás | Számítási fürtök és példány |
+| HB | Jóváhagyást igényel. | Nagy teljesítményű számítás | Számítási fürtök és példány |
+| HBv2 | Jóváhagyást igényel. |  Nagy teljesítményű számítás | Számítási fürtök és példány |
+| HCS FRISSÍTŐÜGYNÖK | Jóváhagyást igényel. |  Nagy teljesítményű számítás | Számítási fürtök és példány |
+| M | Jóváhagyást igényel. | Memóriaoptimalizált | Számítási fürtök és példány |
+| NC | Nincsenek. |  GPU | Számítási fürtök és példány |
+| NC – promo | Nincsenek. | GPU | Számítási fürtök és példány |
+| NCsv2 | Jóváhagyást igényel. | GPU | Számítási fürtök és példány |
+| NCsv3 | Jóváhagyást igényel. | GPU | Számítási fürtök és példány |  
+| NDs | Jóváhagyást igényel. | GPU | Számítási fürtök és példány | 
+| NDv2 | Jóváhagyást igényel. | GPU | Számítási fürtök és példány | 
+| NV | Nincsenek. | GPU | Számítási fürtök és példány | 
+| NVv3 | Jóváhagyást igényel. | GPU | Számítási fürtök és példány | 
 
 
 Habár a Azure Machine Learning támogatja ezeket a virtuálisgép-sorozatokat, előfordulhat, hogy az összes Azure-régióban nem érhetők el. Annak ellenőrzéséhez, hogy elérhetők-e a virtuálisgép-sorozatok, tekintse meg a [régiók által elérhető termékeket](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).

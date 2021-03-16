@@ -6,36 +6,36 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 02/10/2021
+ms.date: 03/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 5b68ab545e87035d138558ba1911294ef805af6d
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 24d6528a105d593d1cb4c9c66d981c8787f85633
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102630741"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573276"
 ---
 # <a name="migrate-workloads-from-an-azure-stack-edge-pro-fpga-to-an-azure-stack-edge-pro-gpu"></a>Számítási feladatok migrálása Azure Stack Edge Pro-FPGA egy Azure Stack Edge Pro GPU-ra
 
-Ez a cikk azt ismerteti, hogyan telepíthetők át munkaterhelések és adatok egy Azure Stack Edge Pro FPGA-eszközről egy Azure Stack Edge Pro GPU-eszközre. Az áttelepítési eljárás áttekintést nyújt az áttelepítésről, beleértve a két eszköz közötti összehasonlítást, az áttelepítési szempontokat, a részletes lépéseket és az ellenőrzést, majd a tisztítást.
+Ez a cikk azt ismerteti, hogyan telepíthetők át munkaterhelések és adatok egy Azure Stack Edge Pro FPGA-eszközről egy Azure Stack Edge Pro GPU-eszközre. Az áttelepítési folyamat a két eszköz összehasonlításával kezdődik, egy áttelepítési terv és az áttelepítési megfontolások áttekintése. Az áttelepítési eljárás részletesen ismerteti az ellenőrzés és az eszköz tisztításának lépéseit.
 
-<!--Azure Stack Edge Pro FPGA devices will reach end-of-life in February 2024. If you are considering new deployments, we recommend that you explore Azure Stack Edge Pro GPU devices for your workloads.-->
+[!INCLUDE [Azure Stack Edge Pro FPGA end-of-life](../../includes/azure-stack-edge-fpga-eol.md)]
 
 ## <a name="about-migration"></a>A migrálás ismertetése
 
 Az áttelepítés a számítási feladatok és az alkalmazásadatok egyik tárolóhelyről a másikra történő áthelyezésének folyamata. Ez azt eredményezi, hogy a szervezet aktuális adatait egy tárolóeszközről egy másik tárolóeszközre kell másolni – lehetőleg az aktív alkalmazások megszakítása vagy letiltása nélkül –, majd az összes bemeneti/kimeneti (I/O) tevékenység átirányítása az új eszközre. 
 
-Ez az áttelepítési útmutató részletesen ismerteti az adatok Azure Stack Edge Pro FPGA-eszközről egy Azure Stack Edge Pro GPU-eszközre történő áttelepítéséhez szükséges lépéseket. Ez a dokumentum olyan informatikai (IT) szakemberek és szakemberek számára készült, akik az adatközpontban Azure Stack Edge-eszközök üzemeltetéséhez, üzembe helyezéséhez és kezeléséhez felelősek. 
+Ez az áttelepítési útmutató részletesen ismerteti az adatok Azure Stack Edge Pro FPGA-eszközről egy Azure Stack Edge Pro GPU-eszközre történő áttelepítéséhez szükséges lépéseket. Ez a dokumentum olyan informatikai (IT) szakemberek és szakemberek számára készült, akik az adatközpontban Azure Stack Edge-eszközök üzemeltetéséhez, üzembe helyezéséhez és kezeléséhez felelősek.
 
 Ebben a cikkben a Azure Stack Edge Pro FPGA eszközt a *forrásként* szolgáló eszköznek nevezzük, és az Azure stack Edge Pro GPU-eszköz a *céleszköz* . 
 
 ## <a name="comparison-summary"></a>Összehasonlító összefoglalás
 
-Ez a szakasz az Azure Stack Edge Pro GPU és a Azure Stack Edge Pro FPGA-eszközök közötti képességek összehasonlító összegzését tartalmazza. A forrás-és a célként megadott eszköz hardvere nagyjából azonos, és csak a hardveres gyorsítási kártyára és a tárolókapacitásra vonatkozik. 
+Ez a szakasz az Azure Stack Edge Pro GPU és a Azure Stack Edge Pro FPGA-eszközök közötti képességek összehasonlító összegzését tartalmazza. A forrás-és a célként megadott eszköz hardvere nagyjából azonos; csak a hardveres gyorsítási kártya és a tárolókapacitás eltérő lehet.<!--Please verify: These components MAY, but need not necessarily, differ?-->
 
 |    Képesség  | Azure Stack Edge Pro GPU (megcélzott eszköz)  | Azure Stack Edge Pro-FPGA (forrásoldali eszköz)|
 |----------------|-----------------------|------------------------|
-| Hardver       | Hardveres gyorsítás: 1 vagy 2 NVIDIA T4 GPU <br> A számítás, a memória, a hálózati adapter, az áramellátási egység, a tápkábelek specifikációi azonosak az eszközzel a FPGA.  | Hardveres gyorsítás: Intel Arria 10 FPGA <br> A számítás, a memória, a hálózati adapter, az áramellátási egység, a tápkábelek specifikációi azonosak az eszköz GPU-val.          |
+| Hardver       | Hardveres gyorsítás: 1 vagy 2 NVIDIA T4 GPU <br> A számítás, a memória, a hálózati adapter, az áramellátási egység és a tápkábelek specifikációi azonosak az eszköz FPGA.  | Hardveres gyorsítás: Intel Arria 10 FPGA <br> A számítás, a memória, a hálózati adapter, az áramellátási egység és a tápkábelek specifikációi azonosak az eszköz GPU-val.          |
 | Használható tároló | 4,19 TB <br> A paritásos rugalmasság és a belső használat területének megőrzése után | 12,5 TB <br> Miután belső használatra megérdemelte a területet |
 | Biztonság       | Tanúsítványok |                                                     |
 | Számítási feladatok      | Munkaterhelések IoT Edge <br> Virtuális gépek számítási feladatai <br> A Kubernetes számítási feladatai| Munkaterhelések IoT Edge |
@@ -55,11 +55,11 @@ Az áttelepítési terv létrehozásához vegye figyelembe a következő inform�
 
 Az áttelepítés folytatása előtt vegye figyelembe a következő információkat: 
 
-- Azure Stack Edge Pro GPU-eszköz nem aktiválható Azure Stack Edge Pro FPGA-erőforrással. Létre kell hozni egy új erőforrást az Azure Stack Edge Pro GPU-eszközhöz az [Azure stack Edge Pro GPU-rendelés létrehozása](azure-stack-edge-gpu-deploy-prep.md#create-a-new-resource)című témakörben leírtak szerint.
+- Azure Stack Edge Pro GPU-eszköz nem aktiválható Azure Stack Edge Pro FPGA-erőforrással. Hozzon létre egy új erőforrást az Azure Stack Edge Pro GPU-eszközhöz a következő témakörben leírtak szerint: [Azure stack Edge Pro GPU-sorrend létrehozása](azure-stack-edge-gpu-deploy-prep.md#create-a-new-resource).
 - A FPGA használó forrásoldali eszközön üzembe helyezett Machine Learning modelleket a GPU-val módosítani kell a céleszköz számára. A modellekkel kapcsolatos segítségért forduljon Microsoft ügyfélszolgálatahoz. A forrásoldali eszközön központilag telepített egyéni modellek, amelyek nem használták a FPGA (csak a használt CPU-t), a cél eszközön kell működniük (CPU használatával).
-- A forrásoldali eszközön telepített IoT Edge-modulok módosítása szükséges lehet ahhoz, hogy a cél eszközön sikeresen üzembe lehessen őket. 
+- A forrásoldali eszközön üzembe helyezett IoT Edge-modulok módosítása szükséges lehet, mielőtt a modulok sikeresen üzembe helyezhetők a célszámítógépen. 
 - A forrásoldali eszköz támogatja az NFS 3,0 és 4,1 protokollokat. A célként megadott eszköz csak az NFS 3,0 protokollt támogatja.
-- A forrásoldali eszköz támogatja az SMB-és NFS-protokollokat. A célként megadott eszköz a Storage-fiókok mellett a REST protokollon keresztül támogatja a tárterületet a megosztásokhoz tartozó SMB-és NFS-protokollok mellett.
+- A forrásoldali eszköz támogatja az SMB-és NFS-protokollokat. A cél eszköz a REST protokollon keresztül támogatja a Storage-fiókokat a megosztásokhoz tartozó SMB-és NFS-protokollok mellett.
 - A forrásoldali eszközön lévő megosztási hozzáférés az IP-címen keresztül történik, míg a megcélzott eszközön a megosztás hozzáférése az eszköz nevén keresztül történik.
 
 ## <a name="migration-steps-at-a-glance"></a>Áttelepítési lépések – áttekintés
@@ -99,15 +99,15 @@ Az Edge Cloud Share-adatok az eszközről az Azure-ba kerülnek. Hajtsa végre e
 
 - Készítse el a forrás-eszközön található összes Felhőbeli megosztást és felhasználót tartalmazó listát.
 - Készítse el az összes rendelkezésre álló sávszélesség-ütemterv listáját. Ezeket a sávszélesség-ütemterveket újra létre fogja hozni a megcélzott eszközön.
-- A rendelkezésre álló hálózati sávszélességtől függően konfigurálja a sávszélesség-ütemterveket az eszközön úgy, hogy maximalizálja a felhőbe irányuló adatszinteket. Ez a beállítás a helyi adatméretet fogja csökkenteni az eszközön.
-- Győződjön meg arról, hogy a megosztások teljes mértékben a felhőbe vannak bontva. Ezt megerősítheti, ha ellenőrzi a megosztás állapotát a Azure Portalban.  
+- A rendelkezésre álló hálózati sávszélességtől függően konfigurálja a sávszélesség-ütemtervet az eszközön, hogy maximalizálja a felhőbe irányuló adatszinteket. Ezzel a beállítással csökkenthető az eszköz helyi adatvédelme.
+- Győződjön meg arról, hogy a megosztások teljes mértékben a felhőbe vannak bontva. A rétegek megerősíthető a megosztás állapotának ellenőrzésével a Azure Portalban.  
 
 #### <a name="data-in-edge-local-shares"></a>A peremhálózati helyi megosztásokban lévő adatforgalom
 
 Az Edge helyi megosztásokban tárolt adatmennyiség az eszközön marad. Hajtsa végre ezeket a lépéseket a *forrásoldali* eszközön a Azure Portalon keresztül. 
 
-- Készítse el az eszközön található helyi helyi megosztások listáját.
-- Mivel ez az adat egyszeri áttelepítése, hozzon létre egy másolatot a peremhálózat helyi megosztási adatáról egy másik helyszíni kiszolgálóra. Az adatmásoláshoz használhatja a másolási eszközöket, például az `robocopy` (SMB) vagy az `rsync` (NFS) fájlokat. Előfordulhat, hogy már telepített egy harmadik féltől származó adatvédelmi megoldást a helyi megosztásokban lévő adatbiztonsági mentéshez. A következő harmadik féltől származó megoldások támogatottak Azure Stack Edge Pro FPGA-eszközökkel való használatra:
+- Az eszközön lévő helyi megosztások listájának létrehozása.
+- Mivel az adatgyűjtés egyszeri áttelepítést hajt végre, hozzon létre egy másolatot a helyi megosztási adatbázisról egy másik helyszíni kiszolgálóra. Az adatmásoláshoz használhatja a másolási eszközöket, például az `robocopy` (SMB) vagy az `rsync` (NFS) fájlokat. Előfordulhat, hogy már telepített egy harmadik féltől származó adatvédelmi megoldást a helyi megosztásokban lévő adatbiztonsági mentéshez. A következő harmadik féltől származó megoldások támogatottak Azure Stack Edge Pro FPGA-eszközökkel való használatra:
 
     | Külső gyártótól származó szoftverek           | Hivatkozás a megoldásra                               |
     |--------------------------------|---------------------------------------------------------|
@@ -157,10 +157,10 @@ Ekkor a forrás eszközről másolja át az adatait a Felhőbeli megosztásokra 
 
 Az alábbi lépéseket követve szinkronizálhatja a felhőben lévő felhőalapú megosztások adatait a céleszköz:
 
-1. [Adja hozzá](azure-stack-edge-gpu-manage-shares.md#add-a-share) a forrás eszközön létrehozott megosztási neveknek megfelelő megosztásokat. Győződjön meg arról, hogy a megosztások létrehozásakor a **blob Container** a **meglévő lehetőség használatára** van beállítva, majd válassza ki az előző eszközzel használt tárolót.
-1. [Adja hozzá](azure-stack-edge-gpu-manage-users.md#add-a-user) az előző eszközhöz hozzáféréssel rendelkező felhasználókat.
-1. [A megosztási adatok frissítése](azure-stack-edge-gpu-manage-shares.md#refresh-shares) az Azure-ból. Ezzel lekéri a meglévő tároló összes Felhőbeli adatait a megosztásokra.
-1. Hozza létre újra a megosztásokhoz társítandó sávszélesség-ütemterveket. Lásd: [sávszélesség-ütemterv hozzáadása](azure-stack-edge-gpu-manage-bandwidth-schedules.md#add-a-schedule) a részletes lépésekhez.
+1. [Adja hozzá](azure-stack-edge-j-series-manage-shares.md#add-a-share) a forrás eszközön létrehozott megosztási neveknek megfelelő megosztásokat. A megosztások létrehozásakor győződjön meg arról, hogy a **blob-tároló** beállítása **meglévő** értékre van állítva, majd válassza ki az előző eszközzel használt tárolót.
+1. [Adja hozzá](azure-stack-edge-j-series-manage-users.md#add-a-user) az előző eszközhöz hozzáféréssel rendelkező felhasználókat.
+1. [A megosztási adatok frissítése](azure-stack-edge-j-series-manage-shares.md#refresh-shares) az Azure-ból. A megosztás frissítése lekéri a meglévő tároló összes Felhőbeli adatait a megosztásokra.
+1. Hozza létre újra a megosztásokhoz társítandó sávszélesség-ütemterveket. Lásd: [sávszélesség-ütemterv hozzáadása](azure-stack-edge-j-series-manage-bandwidth-schedules.md#add-a-schedule) a részletes lépésekhez.
 
 
 ### <a name="2-from-edge-local-shares"></a>2. a peremhálózat helyi megosztásai
@@ -175,9 +175,9 @@ A helyi megosztásokból származó adatok helyreállításához kövesse az al�
 1. Adja hozzá az összes helyi megosztást a céleszköz. Tekintse meg a [helyi megosztás hozzáadása](azure-stack-edge-gpu-manage-shares.md#add-a-local-share)című témakör részletes lépéseit.
 1. Ha hozzáfér az SMB-megosztásokhoz a forrásoldali eszközön, akkor az IP-címeket fogja használni, a céleszköz pedig az eszköz nevét fogja használni. Lásd: [Kapcsolódás SMB-megosztáshoz Azure stack Edge Pro GPU](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-smb-share)-val. A céleszköz NFS-megosztásokhoz való kapcsolódáshoz az eszközhöz társított új IP-címeket kell használnia. Lásd: [Kapcsolódás NFS-megosztáshoz Azure stack Edge Pro GPU](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-nfs-share)-val. 
 
-    Ha a megosztási adatait egy köztes kiszolgálóra másolta az SMB/NFS protokollon keresztül, ezeket az adatait átmásolhatja a célként megadott eszközön található megosztásokra. Az adatok közvetlenül a forrás eszközről is másolhatók, ha a forrás és a cél eszköz is *online állapotban* van.
+    Ha a megosztási adatait egy közbenső kiszolgálóra másolta az SMB vagy az NFS protokollon keresztül, a köztes kiszolgáló adatait átmásolhatja a célként megadott eszközön található megosztásokra. Ha a forrás és a cél eszköz is *online állapotban* van, az adatok közvetlenül a forrás eszközről is másolhatók.
 
-    Ha harmadik féltől származó szoftvert használt a helyi megosztásokban lévő információk biztonsági mentésére, akkor futtatnia kell a választott adatvédelmi megoldás által biztosított helyreállítási eljárást. Tekintse meg a következő táblázatban található hivatkozásokat.
+    Ha harmadik féltől származó szoftvert használ a helyi megosztásokban lévő információk biztonsági mentésére, akkor futtatnia kell a választott adatvédelmi megoldás által biztosított helyreállítási eljárást. Tekintse meg a következő táblázatban található hivatkozásokat.
 
     | Külső gyártótól származó szoftverek           | Hivatkozás a megoldásra                               |
     |--------------------------------|---------------------------------------------------------|

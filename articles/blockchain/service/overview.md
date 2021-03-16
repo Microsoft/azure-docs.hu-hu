@@ -1,15 +1,15 @@
 ---
 title: Az Azure Blockchain szolgáltatás áttekintése
 description: Az Azure Blockchain Service áttekintése
-ms.date: 01/04/2021
+ms.date: 03/15/2021
 ms.topic: overview
-ms.reviewer: ravastra
-ms.openlocfilehash: 15d1126a98a4d3194a256ed07de3918cb066a4e2
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.reviewer: patricka
+ms.openlocfilehash: 035e2c1df5912f291ad241ade25361f9cc098b22
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963878"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573625"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Mi az az Azure Blockchain Service?
 
@@ -19,7 +19,7 @@ Az Azure Blockchain Service egy teljes körűen felügyelt Főkönyv szolgáltat
 * Beépített konzorciumok felügyelete
 * Intelligens szerződések fejlesztése ismerős fejlesztői eszközökkel
 
-Az Azure Blockchain szolgáltatás több Főkönyv protokoll támogatására lett kialakítva. Jelenleg a Ethereum [kvórum](https://www.goquorum.com/) főkönyvének támogatást nyújt az [isztambuli bizánci hibatűrési (IBFT)](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) konszenzusi mechanizmus használatával.
+Az Azure Blockchain szolgáltatás több Főkönyv protokoll támogatására lett kialakítva. Jelenleg a Ethereum [kvórum](https://www.goquorum.com/) főkönyvének támogatást nyújt az [isztambuli bizánci hibatűrési (IBFT)](https://docs.goquorum.consensys.net/en/stable/Concepts/Consensus/IBFT/) konszenzusi mechanizmus használatával.
 
 Ezen képességek szinte semmilyen felügyeletet nem igényelnek, és mindegyik további költség nélkül érhető el. Az alkalmazások fejlesztésére és az üzleti logikára összpontosíthat, és nem kell időt és erőforrásokat lefoglalnia a virtuális gépek és az infrastruktúra kezeléséhez. Emellett továbbra is fejlesztheti alkalmazását az Ön által választott nyílt forráskódú eszközökkel és platformmal anélkül, hogy új ismeretekkel kellene elsajátítani a megoldásokat.
 
@@ -79,7 +79,7 @@ Folytassa a Microsoft-mérnökökkel és az Azure Blockchain közösségi szaké
 * [A Microsoft technikai közössége](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-service)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépésként próbálkozzon egy rövid útmutatóval, vagy további részletekért tekintse meg ezeket az erőforrásokat.
 * [Blockchain-tag létrehozása a Azure Portal használatával](create-member.md) vagy [blockchain-tag létrehozása az Azure CLI használatával](create-member-cli.md)

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 960c00f516aac0c804718e439ae3ed9691759329
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: dbd4923dd2843ab2c043da69f1b72efd8e1eb701
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103010677"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573047"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>Forgatókönyv: a felhasználók által bejelentkezett webalkalmazás
 
@@ -55,7 +55,7 @@ Ha Python-fejlesztést végez, próbálja ki a következő rövid útmutatót:
 
 A webalkalmazáshoz olyan hitelesítést adhat hozzá, amellyel bejelentkezhet a felhasználókba. A hitelesítés hozzáadásával a webalkalmazás elérheti a korlátozott profilokra vonatkozó információkat, így testre szabhatja a felhasználói élményt.
 
-A webalkalmazások a felhasználókat egy böngészőben hitelesítik. Ebben az esetben a webalkalmazás irányítja a felhasználó böngészőjében, hogy bejelentkezzen a Azure Active Directoryba (Azure AD). Az Azure AD egy bejelentkezési választ ad vissza a felhasználó böngészőjén keresztül, amely a felhasználóhoz tartozó jogcímeket tartalmaz egy biztonsági jogkivonatban. A felhasználók bejelentkezésekor a rendszer kihasználja a [nyílt ID-kapcsolat](./v2-protocols-oidc.md) szabványos protokolljának előnyeit, amelyet a middleware- [kódtárak](scenario-web-app-sign-user-app-configuration.md#microsoft libraries supporting web apps)használatával egyszerűsített.
+A webalkalmazások a felhasználókat egy böngészőben hitelesítik. Ebben az esetben a webalkalmazás irányítja a felhasználó böngészőjében, hogy bejelentkezzen a Azure Active Directoryba (Azure AD). Az Azure AD egy bejelentkezési választ ad vissza a felhasználó böngészőjén keresztül, amely a felhasználóhoz tartozó jogcímeket tartalmaz egy biztonsági jogkivonatban. A felhasználók bejelentkezésekor a rendszer kihasználja a [nyílt ID-kapcsolat](./v2-protocols-oidc.md) szabványos protokolljának előnyeit, amelyet a middleware- [kódtárak](scenario-web-app-sign-user-app-configuration.md#microsoft-libraries-supporting-web-apps)használatával egyszerűsített.
 
 ![Webalkalmazás-jelek a felhasználókban](./media/scenario-webapp/scenario-webapp-signs-in-users.svg)
 

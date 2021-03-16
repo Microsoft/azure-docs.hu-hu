@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/2/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 1e361ad14f79ea32d83e8cff9dd9bb8607b7c766
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 175f006adbc18d21e0f0c5d859737aedb00bc457
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103470686"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574662"
 ---
 # <a name="defender-for-iot-installation"></a>Defender a IoT telepítéséhez
 
@@ -697,9 +697,9 @@ Telepítés:
 
 1. A bejelentkezési hitelesítő adatok automatikusan jönnek létre és jelennek meg. Másolja a felhasználónevet és a jelszót egy biztonságos helyre, mert a bejelentkezéshez és a felügyelethez szükséges.
 
-    - **Támogatás**: a rendszergazda felhasználó a felhasználók felügyeletéhez.
+      - **Támogatás**: a rendszergazda felhasználó a felhasználók felügyeletéhez.
 
-    - **CyberX**: a berendezéshez való hozzáférés gyökerének megfelelője.
+      - **CyberX**: a berendezéshez való hozzáférés gyökerének megfelelője.
 
 1. A készülék újraindul.
 
@@ -851,9 +851,10 @@ A szoftver telepítése:
 
 1. A bejelentkezési hitelesítő adatok automatikusan jönnek létre és jelennek meg. Tartsa meg ezeket a hitelesítő adatokat biztonságos helyen, mert a bejelentkezéshez és az adminisztrációhoz szükségesek.
 
-  - **Támogatás**: a rendszergazda felhasználó a felhasználók felügyeletéhez.
-
-  - **CyberX**: a berendezéshez való hozzáférés gyökerének megfelelője.
+    | Felhasználónév | Description |
+    |--|--|
+    | Támogatás | A rendszergazda felhasználó a felhasználói felügyelethez. |
+    | CyberX | A berendezéshez való hozzáférés gyökerének megfelelője. |
 
 1. A készülék újraindul.
 

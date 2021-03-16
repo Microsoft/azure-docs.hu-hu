@@ -4,12 +4,12 @@ description: A Azure Container Instances szolgáltatás az elkülönített táro
 ms.topic: overview
 ms.date: 08/10/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: bd68fab380754eca38eebf3fd52634508f282cf6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 873f7cc51d1b369503a72501ae000000ff06f805
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88121663"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573013"
 ---
 # <a name="what-is-azure-container-instances"></a>Mi az az Azure Container Instances?
 
@@ -21,10 +21,7 @@ Az Azure Container Instances ideális megoldás minden olyan forgatókönyv eset
 
 A tárolók jelentős előnyöket nyújtanak a virtuális gépekkel (VM-ekkel) szemben az indítás terén. Az Azure Container Instanceszel másodpercek alatt elindíthat egy tárolót az Azure-ban anélkül, hogy virtuális gépeket kellene kiépítenie és kezelnie.
 
-Linux-vagy Windows-tárolói rendszerképeket hozhat a Docker hub, egy privát [Azure Container Registry](../container-registry/index.yml)vagy más felhőalapú Docker-beállításjegyzékből. Azure Container Instances gyorsítótárba helyezi az egyes általános operációsrendszer-lemezképeket, így gyorsíthatja az egyéni alkalmazások lemezképének üzembe helyezését.
-
-> [!NOTE]
-> Jelenleg nem telepíthet lemezképet helyszíni beállításjegyzékből Azure Container Instancesba.
+Linux-vagy Windows-tárolói rendszerképeket hozhat a Docker hub, egy privát [Azure Container Registry](../container-registry/index.yml)vagy más felhőalapú Docker-beállításjegyzékből. Látogasson el a [GYIK](container-instances-faq.md) -ra, és Ismerje meg, hogy mely beállításjegyzékeket támogatja az ACI. Azure Container Instances gyorsítótárba helyezi az egyes általános operációsrendszer-lemezképeket, így gyorsíthatja az egyéni alkalmazások lemezképének üzembe helyezését.
 
 ## <a name="container-access"></a>Tároló-hozzáférés
 
@@ -43,7 +40,7 @@ Korábban a tárolók biztosítottak ugyan alkalmazásfüggőség-elkülöníté
 
 ### <a name="customer-data"></a>Ügyféladatok
 
-Az ACI szolgáltatás tárolja azokat a minimális ügyféladatokat, amelyek szükségesek ahhoz, hogy a tároló-csoportok a várt módon fussanak. Az ügyféladatok egyetlen régióban való tárolása jelenleg csak a Ázsia és a Csendes-óceáni térség geo Délkelet-ázsiai régiójában (Szingapúr) érhető el. Az összes többi régió esetében az ügyféladatokat a [geo](https://azure.microsoft.com/global-infrastructure/geographies/)tárolja. További információért vegye fel velünk a kapcsolatot az Azure-támogatással.
+Az ACI szolgáltatás tárolja azokat a minimális ügyféladatokat, amelyek szükségesek ahhoz, hogy a tároló-csoportok a várt módon fussanak. Az ügyféladatok egyetlen régióban való tárolása jelenleg csak az Ázsia és a Csendes-óceáni térség geo és Dél-Brazília (Sao Paulo állam) régiójában, a Geo régióban, a Délkelet-ázsiai régióban (Szingapúr) érhető el. Az összes többi régió esetében az ügyféladatokat a [geo](https://azure.microsoft.com/global-infrastructure/geographies/)tárolja. További információért vegye fel velünk a kapcsolatot az Azure-támogatással.
 
 ## <a name="custom-sizes"></a>Egyéni méretek
 
@@ -69,9 +66,6 @@ Egyes funkciók jelenleg csak Linux-tárolók:
 
 A Windows-tárolók központi telepítése esetén a lemezképeket a gyakori [Windows alapképek](container-instances-faq.md#what-windows-base-os-images-are-supported)alapján kell használni.
 
-> [!NOTE]
-> A Windows Server 2019-alapú rendszerképek használata a Azure Container Instances előzetes verzióban érhető el.
-
 ## <a name="co-scheduled-groups"></a>Együttesen ütemezett csoportok
 
 Az Azure Container Instances támogatja az olyan [több tárolóból álló csoportok](container-instances-container-groups.md) ütemezését, amelyek osztoznak a gazdagépen, a helyi hálózaton és a tárolón, valamint azonos az életciklusuk. Ennek segítéségével kombinálhatja a fő alkalmazástárolóját más, támogató szerepű tárolókkal, például naplózó oldalkocsikkal.
@@ -80,7 +74,7 @@ Az Azure Container Instances támogatja az olyan [több tárolóból álló csop
 
 Azure Container Instances lehetővé teszi [a Container instances üzembe helyezését egy Azure-beli virtuális hálózatban](container-instances-vnet.md). A virtuális hálózatban lévő alhálózatba való üzembe helyezéskor a tároló példányai biztonságosan kommunikálhatnak a virtuális hálózatban lévő más erőforrásokkal, beleértve a helyszíni ( [VPN-átjárón](../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy [ExpressRoute](../expressroute/expressroute-introduction.md)) keresztül elérhető erőforrásokat is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbáljon üzembe helyezni egy tárolót az Azure-ban egyetlen parancs használatával a rövid útmutatónk alapján:
 

@@ -254,6 +254,8 @@
           href: how-to-connect-health-adfs.md
         - name: Kockázatos IP jelentés az Azure AD Connect Health és az AD FS együttes használatakor
           href: how-to-connect-health-adfs-risky-ip.md
+        - name: AD FS Sign-Ins az Azure AD-ben a összekapcsolási állapottal
+          href: how-to-connect-health-ad-fs-sign-in.md
         - name: Az Azure AD Connect Health használata szinkronizáláshoz
           href: how-to-connect-health-sync.md
         - name: Az Azure AD Connect Health használata az AD DS szolgáltatással

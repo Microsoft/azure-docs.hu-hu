@@ -7,18 +7,18 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: a75ecac20c553f697585648c5654d375b85e5183
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.openlocfilehash: 25f00024fb7371fd08bf6c4ceec3177cfaca029b
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100535195"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103572808"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Key Vault – hitelesítési alapok
 
 A Azure Key Vault lehetővé teszi az alkalmazások hitelesítő adatainak, például a titkok, kulcsok és tanúsítványok biztonságos tárolását és kezelését egy központi és biztonságos Felhőbeli tárházban. Key Vault szükségtelenné teszi a hitelesítő adatok tárolását az alkalmazásokban. Az alkalmazások a hitelesítő adatok lekéréséhez futtatás közben Key Vault a hitelesítést.
 
-Rendszergazdaként szigorúan szabályozhatja, hogy mely felhasználók és alkalmazások férhetnek hozzá a kulcstartóhoz, és korlátozhatja és naplózhatja az általuk végrehajtott műveleteket. Ez a dokumentum ismerteti a Key Vault-hozzáférési modell alapvető fogalmait. A szolgáltatás bevezető szintű ismereteket nyújt, és bemutatja, hogyan hitelesítheti a felhasználót vagy az alkalmazást a Key vaultban a kezdéstől a befejezésig.
+Rendszergazdaként szigorúan szabályozhatja, hogy mely felhasználók és alkalmazások férhetnek hozzá a kulcstartóhoz, és korlátozhatja és naplózhatja az általuk végrehajtott műveleteket. Ez a dokumentum ismerteti a Key Vault-hozzáférési modell alapvető fogalmait. Az útmutató bevezető szintű ismereteket nyújt, és bemutatja, hogyan hitelesítheti a felhasználót vagy alkalmazást a Key vaultban a kezdéstől a befejezésig.
 
 ## <a name="required-knowledge"></a>Szükséges ismeretek
 

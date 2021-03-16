@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: c1c1b5f58aa0e760ff626af4607cf8e2d1e13910
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: feeb3e63375e918498e704add6dac672d6a46de3
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103232421"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574577"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-azure-digital-twins-explorer"></a>Gyors útmutató – a minta Azure digitális Twins-forgatókönyvek megismerése az Azure Digital Twins Explorer használatával
 
@@ -95,9 +95,8 @@ Nyisson meg egy konzol ablakot a mappa helyére **Azure_Digital_Twins__ADT__expl
 
 > [!TIP]
 > Ha a `SignalRService.subscribe` csatlakozáskor hibaüzenet jelenik meg, győződjön meg arról, hogy az Azure digitális Twins URL-címe a *https://*-vel kezdődik.
-
-> [!TIP]
-> Ha hitelesítési hiba jelenik meg, érdemes lehet ellenőrizni a környezeti változókat, hogy minden hitelesítő adat érvényes legyen az Azure Digital Twins szolgáltatásban. A DefaultAzureCredential egy megadott sorrendben kísérli meg a [hitelesítő adatokkal](/dotnet/api/overview/azure/identity-readme#defaultazurecredential) történő hitelesítést, és először a környezeti változókat értékeli ki.
+>
+> Ha hitelesítési hiba jelenik meg, érdemes lehet ellenőrizni a **környezeti változókat** , hogy minden hitelesítő adat érvényes legyen az Azure Digital Twins szolgáltatásban. A `DefaultAzureCredential` hitelesítő adatoknak a [megadott sorrendben](/dotnet/api/overview/azure/identity-readme#defaultazurecredential)való hitelesítésére irányuló kísérleteket a rendszer először a környezeti változók alapján értékeli ki.
 
 Ha megjelenik a Microsoft előugró ablakát **kérő engedély** , adja meg az alkalmazás jóváhagyását, és fogadja el a folytatást.
 

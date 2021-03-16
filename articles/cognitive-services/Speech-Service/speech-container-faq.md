@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 86c8943531171094600bc7d93b8694bdd1c6e051
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: 16158b4ecfb46ea9092fe9eeb31cc4dee259b1ab
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225805"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573744"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Speech Service-tárolók – gyakori kérdések (GYIK)
 
@@ -344,20 +344,6 @@ Csak hogy tisztázza az interaktív, a beszélgetést és a diktálást; Ez egy 
 - A MIC esetében a szolgáltatás 1x valós időben fog megjelenni. Az általános használatnak körülbelül 1 mag kell lennie egyetlen felismeréshez.
 
 Ez a Docker-naplókból is ellenőrizhető. Tulajdonképpen a munkamenetet és a kifejezési/kiírási statisztikát tartalmazó sort, valamint az RTF-számokat is tartalmazza.
-
-
-<br>
-</details>
-
-<details>
-<summary>
-<b>Gyakori a hangfájlok felosztása a hangtárolók általi használatra?</b>
-</summary>
-
-A jelenlegi tervem egy meglévő hangfájl elkészítése, és 10 másodperces darabokra osztása és a tárolón keresztüli elküldése. Elfogadható a forgatókönyv?  Van jobb módszer a tárolóban lévő nagyobb hangfájlok feldolgozására?
-
-**Válasz:** Csak használja a Speech SDK-t, és adja meg a fájlt, és tegye meg a megfelelő dolgot. Miért van szükség a fájl kidarabolására?
-
 
 <br>
 </details>

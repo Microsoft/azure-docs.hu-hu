@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 09/23/2020
+ms.date: 03/16/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36e6642e230fa809630751e224ff9384ea8524d1
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 185638d683699403c304603d968cfe84e32a55b5
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319777"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574560"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Azure Active Directory bejelentkezési tevékenységgel kapcsolatos jelentések – előzetes verzió
 
@@ -125,7 +125,12 @@ A bejelentkezések panel minden lapja az alábbi alapértelmezett oszlopokat jel
 
 Az interaktív felhasználói bejelentkezések olyan bejelentkezések, amelyekben a felhasználó hitelesítési tényezőt biztosít az Azure AD-hez, vagy közvetlenül az Azure AD-vel vagy egy segítő alkalmazással, például a Microsoft Authenticator alkalmazással kommunikál. A felhasználók által biztosított tényezők közé tartoznak a jelszavak, az MFA-kihívásokra, a biometrikus tényezőkre, valamint a felhasználók által az Azure AD-be vagy egy segítő alkalmazásba küldött QR-kódokra adott válaszok.
 
-Ez a jelentés az Azure AD-ba összevont identitás-szolgáltatók összevont bejelentkezéseit is tartalmazza.  
+> [!NOTE]
+> Ez a jelentés az Azure AD-ba összevont identitás-szolgáltatók összevont bejelentkezéseit is tartalmazza.  
+
+
+
+Megjegyzés: az interaktív felhasználói bejelentkezések jelentésében a Microsoft Exchange-ügyfelektől nem interaktív bejelentkezések is szerepelnek. Habár ezek a bejelentkezések nem interaktívak voltak, az interaktív felhasználói bejelentkezések jelentésében további láthatóságot is tartalmaz. Ha a nem interaktív felhasználói bejelentkezések jelentésének nyilvános előzetes verziója 2020 novemberében lépett fel, akkor a nem interaktív bejelentkezési eseménynaplók a nem interaktív felhasználói bejelentkezési jelentésbe kerültek a nagyobb pontosság érdekében. 
 
 
 **Jelentés mérete:** kicsi <br> 
@@ -205,7 +210,7 @@ Az adatelemzés egyszerűbbé tétele érdekében a nem interaktív bejelentkez�
 
 - Alkalmazás
 
-- Felhasználó
+- User
 
 - IP-cím
 
@@ -364,7 +369,7 @@ Az új bejelentkezési jelentések nem interaktív és alkalmazás-bejelentkezé
 
     ![Az Azure AD kiválasztása](./media/concept-all-sign-ins/azure-services.png)
 
-2. A **figyelés** szakaszban kattintson a **bejelentkezések**elemre.
+2. A **figyelés** szakaszban kattintson a **bejelentkezések** elemre.
 
     ![Bejelentkezések kiválasztása](./media/concept-all-sign-ins/sign-ins.png)
 
