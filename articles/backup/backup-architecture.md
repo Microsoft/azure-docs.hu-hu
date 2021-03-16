@@ -3,12 +3,12 @@ title: Az architektúra áttekintése
 description: Áttekintést nyújt a Azure Backup szolgáltatás által használt architektúráról, összetevőkről és folyamatokról.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 288b073c20b93bf1802f34f5dcd17b12430bb279
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 1e5a61bd4e3287c1100ff1f54fda797c1add438b
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427734"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466411"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektúra és összetevők Azure Backup
 
@@ -22,11 +22,11 @@ Azure Backup biztonsági másolatot készít az adatokról, a gépi állapotról
 
 Több módszer használatával biztonsági mentést készíthet a gépekről és az adatairól:
 
-- Helyszíni **gépek biztonsági mentése** :
+- Helyszíni **gépek biztonsági mentése**:
   - A helyszíni Windows-gépek biztonsági mentését közvetlenül az Azure-ba végezheti a Azure Backup Microsoft Azure Recovery Services (MARS) ügynök használatával. A Linux rendszerű gépek nem támogatottak.
   - A helyszíni gépek biztonsági mentését a System Center Data Protection Manager (DPM) vagy a Microsoft Azure Backup Server (MABS) szolgáltatással végezheti el. Ezután biztonsági mentést készíthet a Backup-kiszolgálóról egy Recovery Services-tárolóra az Azure-ban.
 
-- **Azure-beli virtuális gépek biztonsági mentése** :
+- **Azure-beli virtuális gépek biztonsági mentése**:
   - Az Azure-beli virtuális gépek biztonsági mentését közvetlenül is elvégezheti. Azure Backup telepít egy biztonsági mentési bővítményt a virtuális gépen futó Azure VM-ügynökre. Ez a bővítmény biztonsági mentést készít a teljes virtuális gépről.
   - A MARS-ügynök futtatásával biztonsági mentést készíthet az Azure-beli virtuális gépen lévő adott fájlokról és mappákról.
   - Az Azure-beli virtuális gépekről biztonsági mentést készíthet az Azure-ban futó MABS, és biztonsági mentést készíthet a MABS egy Recovery Services-tárolóra.
@@ -43,9 +43,9 @@ A tárolók a következő funkciókkal rendelkeznek:
 - Megfigyelheti a tárolóban lévő biztonsági másolati elemeket, beleértve az Azure-beli virtuális gépeket és a helyszíni gépeket is.
 - A tár hozzáférését az [Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC)](../role-based-access-control/role-assignments-portal.md)kezelheti.
 - Megadhatja, hogyan replikálja a rendszer a tárolóban lévő adattárakat:
-  - **Helyileg redundáns tárolás (LRS)** : az adatközpontok meghibásodása elleni védelem érdekében a LRS-t használhatja. A LRS replikálja az adatmennyiséget egy tárolási méretezési egységbe. [További információ](../storage/common/storage-redundancy.md#locally-redundant-storage).
-  - **Geo-redundáns tárolás (GRS)** : az egész régióra kiterjedő kimaradások elleni védelemhez használhatja a GRS. A GRS egy másodlagos régióba replikálja az adatait. [További információ](../storage/common/storage-redundancy.md#geo-redundant-storage).
-  - **Zone-redundáns tárolás (ZRS)** : a [rendelkezésre állási zónákban](../availability-zones/az-overview.md#availability-zones)replikálja az adatait, így garantálva az adattárolást és a rugalmasságot ugyanabban a régióban. [További információ](../storage/common/storage-redundancy.md#zone-redundant-storage)
+  - **Helyileg redundáns tárolás (LRS)**: az adatközpontok meghibásodása elleni védelem érdekében a LRS-t használhatja. A LRS replikálja az adatmennyiséget egy tárolási méretezési egységbe. [További információk](../storage/common/storage-redundancy.md#locally-redundant-storage).
+  - **Geo-redundáns tárolás (GRS)**: az egész régióra kiterjedő kimaradások elleni védelemhez használhatja a GRS. A GRS egy másodlagos régióba replikálja az adatait. [További információk](../storage/common/storage-redundancy.md#geo-redundant-storage).
+  - **Zone-redundáns tárolás (ZRS)**: a [rendelkezésre állási zónákban](../availability-zones/az-overview.md#availability-zones)replikálja az adatait, így garantálva az adattárolást és a rugalmasságot ugyanabban a régióban. [További információ](../storage/common/storage-redundancy.md#zone-redundant-storage)
   - Recovery Services tárolók alapértelmezés szerint a GRS használják.
 
 Recovery Services-tárolók a következő további funkciókkal rendelkeznek:
@@ -96,7 +96,7 @@ A tárterület-használat, a helyreállítási időre vonatkozó célkitűzés (
 
 A következő táblázat összefoglalja a különböző típusú biztonsági másolatok támogatott funkcióit:
 
-**Jellemző** | **Fájlok és mappák közvetlen biztonsági mentése (a MARS-ügynök használatával)** | **Azure-beli virtuális gép biztonsági mentése** | **Gépek vagy alkalmazások DPM/MABS**
+**Szolgáltatás** | **Fájlok és mappák közvetlen biztonsági mentése (a MARS-ügynök használatával)** | **Azure-beli virtuális gép biztonsági mentése** | **Gépek vagy alkalmazások DPM/MABS**
 --- | --- | --- | ---
 Biztonsági mentés a tárba | ![Igen][green] | ![Igen][green] | ![Yes][green]
 Biztonsági mentés DPM-vagy MABS-lemezre, majd az Azure-ba | | | ![Yes][green]
@@ -167,7 +167,7 @@ Nem kell explicit módon engedélyeznie az internetkapcsolatot az Azure-beli vir
 1. A MARS-ügynök a VSS-t használja a biztonsági mentésre kijelölt kötetek időpontra vonatkozó pillanatképének elkészítéséhez.
     - A MARS-ügynök csak a Windows rendszer írási műveletét használja a pillanatkép rögzítéséhez.
     - Mivel az ügynök semmilyen Application VSS-írót nem használ, nem rögzíti az alkalmazás-konzisztens pillanatképeket.
-1. A pillanatképnek a VSS-vel való elkészítése után a MARS-ügynök létrehoz egy virtuális merevlemezt (VHD) a biztonsági mentés konfigurálásakor megadott gyorsítótár-mappában. Az ügynök az egyes adatblokkok ellenőrzőösszegeit is tárolja.
+1. A pillanatképnek a VSS-vel való elkészítése után a MARS-ügynök létrehoz egy virtuális merevlemezt (VHD) a biztonsági mentés konfigurálásakor megadott gyorsítótár-mappában. Az ügynök az egyes adatblokkok ellenőrzőösszegeit is tárolja. Ezek a későbbi növekményes biztonsági másolatok változási blokkjának észlelésére szolgálnak.
 1. A növekményes biztonsági mentések az Ön által megadott ütemezés szerint futnak, kivéve, ha igény szerinti biztonsági mentést futtatnak.
 1. A növekményes biztonsági mentések során a rendszer a módosított fájlokat azonosítja, és létrehoz egy új virtuális merevlemezt. A virtuális merevlemez tömörítve és titkosítva van, majd a rendszer elküldje a tárolónak.
 1. A növekményes biztonsági mentés befejeződése után az új VHD a kezdeti replikáció után létrehozott VHD-vel lesz egyesítve. Ez az egyesített VHD biztosítja a legújabb, a folyamatban lévő biztonsági mentéshez való összehasonlításhoz használt állapotot.

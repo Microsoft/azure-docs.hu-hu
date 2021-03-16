@@ -6,12 +6,12 @@ ms.date: 02/04/2021
 ms.service: media-services
 ms.author: faneerde
 author: fvneerden
-ms.openlocfilehash: 282ab76c34405f19e7f81b2a8069c178b17ee0c1
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 20a22d11973f5bb01e2c1345538d5d94ce311dc7
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124414"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103465759"
 ---
 # <a name="tutorial-analyze-live-video-by-using-intel-openvino-dl-streamer--edge-ai-extension"></a>Oktatóanyag: élő videó elemzése Intel OpenVINO™ DL stream – Edge AI bővítmény használatával 
 
@@ -128,7 +128,7 @@ Az előfeltételek részeként letöltötte a mintakód egy mappába. A mintaada
     A manifest-fájl *deployment.openvino.grpc.cpu.amd64.js* a *src/Edge/config* mappában jön létre.
 
 > [!NOTE]
-Emellett olyandeployment.openvino.grpc.gpu.template.jsis tartalmazott *a* sablonon, amely lehetővé teszi a GPU támogatását az Intel OpenVINO DL streaming-Edge AI bővítmény modulhoz. Ezek a sablonok az Intel Docker hub-rendszerképére mutatnak.
+> Emellett olyandeployment.openvino.grpc.gpu.template.jsis tartalmazott *a* sablonon, amely lehetővé teszi a GPU támogatását az Intel OpenVINO DL streaming-Edge AI bővítmény modulhoz. Ezek a sablonok az Intel Docker hub-rendszerképére mutatnak.
 
 A fent említett sablonok az Intel Docker hub-rendszerképre mutatnak. Ha inkább egy másolatot szeretne üzemeltetni a saját Azure Container Registry, kövesse az alábbi 1. és 2. lépést:
 1. SSH-t egy olyan eszközre, amely Docker CLI-eszközöket telepített (azaz az peremhálózati eszközét), és lekéri/felcímkézi vagy leküldi a tárolót a következő lépésekkel:

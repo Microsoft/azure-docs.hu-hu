@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: f91ff691948f2c55dd469ad121fab10d3a920eae
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: a01d5f48ca3b10f4c49ee621398ae87392dc34a6
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102548427"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493458"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-forgatókönyvek Windows rendszerű virtuális gépekhez
 
@@ -266,7 +266,6 @@ A Azure Disk Encryption a következő forgatókönyvek, funkciók és technológ
 - Az M sorozatú virtuális gépek írásgyorsító lemezzel.
 - Az ADE alkalmazása olyan virtuális gépre, amely kiszolgálóoldali titkosítással titkosított lemezeket tartalmaz [az ügyfél által felügyelt kulcsokkal](../disk-encryption.md) (SSE + CMK). Az SSE és a CMK az ADE-sel titkosított virtuális gépek adatlemezére való alkalmazása nem támogatott forgatókönyv is.
 - Az ADE-sel titkosított virtuális gépek áttelepítése, vagy az ADE-sel való titkosítása már **megtörtént,** az [ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosításhoz](../disk-encryption.md).
-- Azure-beli virtuálisgép- [méretek helyi ideiglenes lemez nélkül](../azure-vms-no-temp-disk.md); pontosabban a DV4, a Dsv4, a Ev4 és a Esv4.
 - Virtuális gépek titkosítása feladatátvevő fürtökben.
 
 ## <a name="next-steps"></a>Következő lépések

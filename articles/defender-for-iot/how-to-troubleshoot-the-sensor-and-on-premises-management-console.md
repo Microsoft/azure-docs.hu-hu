@@ -4,15 +4,15 @@ description: Az érzékelő és a helyszíni felügyeleti konzol hibaelhárítá
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 1/3/2021
+ms.date: 03/14/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 624f60441f56646c3633a2afa79d326c92ba1a37
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: ba68bc3eee94689236792f0270d779357dffde9f
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523719"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103465776"
 ---
 # <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>Az érzékelő és a helyszíni felügyeleti konzol hibaelhárítása
 
@@ -54,7 +54,7 @@ A jelszó helyreállítása:
 1. Ezután a **tovább** gombra, a felhasználó és a rendszer által létrehozott jelszó jelenik meg a felügyeleti konzolon.
 
     > [!NOTE]
-    > Ha első alkalommal jelentkezik be az érzékelőbe vagy a helyszíni felügyeleti konzolba, akkor ahhoz az előfizetéshez lesz csatolva, amelyhez csatlakoztatta. Ha alaphelyzetbe kell állítania a CyberX vagy a támogató felhasználó jelszavát, ki kell választania az előfizetést. A CyberX helyreállításával vagy a felhasználói jelszavak támogatásával kapcsolatos további információkért lásd: a [felhasználó jelszavának alaphelyzetbe állítása az érzékelő vagy a helyszíni felügyeleti konzol](how-to-create-and-manage-users.md#resetting-a-users-password-for-the-sensor-or-on-premises-management-console) számára
+    > Ha első alkalommal jelentkezik be az érzékelőbe vagy a helyszíni felügyeleti konzolba, akkor ahhoz az előfizetéshez lesz csatolva, amelyhez csatlakoztatta. Ha alaphelyzetbe kell állítania a CyberX vagy a támogató felhasználó jelszavát, ki kell választania az előfizetést. A CyberX helyreállításával vagy a felhasználói jelszavak támogatásával kapcsolatos további információkért lásd: [jelszavak alaphelyzetbe állítása](how-to-create-and-manage-users.md#resetting-passwords).
 
 ### <a name="investigate-a-lack-of-traffic"></a>Forgalom hiányának vizsgálata
 
@@ -258,7 +258,7 @@ Naplók exportálása:
 
 1. Az exportálni kívánt adatkategóriák meghatározásához válassza ki az adatkategóriákat:  
 
-    | Exportálási kategória | Description |
+    | Exportálási kategória | Leírás |
     |--|--|
     | **Operációs rendszer naplói** | Válassza ezt a lehetőséget az operációs rendszer állapotával kapcsolatos információk lekéréséhez. |
     | **Telepítési/frissítési naplók** | Válassza ezt a lehetőséget a telepítési és frissítési konfigurációs paraméterek vizsgálatához. |
@@ -283,7 +283,7 @@ Az exportált naplók bekerülnek az **archivált naplók** listájára. Küldje
 
 Az archivált naplók listája legfeljebb öt elemet tartalmazhat. Ha a listában szereplő elemek száma túllépi ezt a számot, a rendszer a legkorábbi elemet törli.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="see-also"></a>Lásd még
 
 - [Riasztások megtekintése](how-to-view-alerts.md)
 

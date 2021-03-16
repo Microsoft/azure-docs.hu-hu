@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9f34e1ff7134788d064a82ec7b646df915dbe24e
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: 8ad79f2f27864b4fbc78b7c104828230ff7f93bc
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103462558"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103465657"
 ---
 # <a name="azure-database-for-mysql-version-support-policy"></a>Azure Database for MySQL verzió támogatási szabályzata
 
@@ -29,10 +29,11 @@ A Azure Database for MySQL jelenleg a MySQL következő fő és másodlagos verz
 
 | Verzió | Önálló kiszolgáló <br/> Aktuális alverzió |Rugalmas kiszolgáló (előzetes verzió) <br/> Aktuális alverzió  |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|
-|MySQL 5,6-es verzió |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html) | Nem támogatott|
+|MySQL 5,6-es verzió |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html)(kivonva) | Nem támogatott|
 |MySQL 5,7-es verzió | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)|
 |MySQL 8,0-es verzió | [8.0.15](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html) | [8.0.21](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html)|
 
+Tekintse meg a verzió támogatási szabályzatát a verziók [támogatásával kapcsolatos szabályzat dokumentációjában.](concepts-version-policy.md#retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql)
 
 ## <a name="major-version-support"></a>Főverzió támogatása
 A MySQL minden jelentős verzióját a Azure Database for MySQL fogja támogatni attól az időponttól kezdve, amikor az Azure megkezdi a verzió támogatását, egészen addig, amíg a MySQL-Közösség el nem távolítja a verziót, ahogy azt a [verziószámozási házirend](https://www.mysql.com/support/eol-notice.html)biztosítja.

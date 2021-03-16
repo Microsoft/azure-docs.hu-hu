@@ -3,31 +3,29 @@ title: Nyugták – űrlap-felismerő
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg a beérkezési elemzéssel kapcsolatos fogalmakat az űrlap-felismerő API-használat és-korlátok alapján.
 services: cognitive-services
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 08/17/2019
-ms.author: pafarley
-ms.openlocfilehash: 565ba3f7cd02a5ca8a3a858dc29a8fa6c7df16c1
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.date: 03/15/2021
+ms.author: lajanuar
+ms.openlocfilehash: 81e8cd5cf4af8da76ae4eb09bed5a4ee0368da4b
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546006"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467357"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>Űrlap-felismerő előre összeépített bevételezési modellje
 
-Az Azure-űrlap felismerője az előre elkészített beérkezési modell használatával elemezheti és kinyerheti az értékesítési nyugták adatait. A nagy teljesítményű [optikai karakterfelismerési (OCR)](../computer-vision/concept-recognizing-text.md) képességeket kombinálja a részletes tanulási modellek bevezetésével, hogy kinyerje a legfontosabb információkat a nyugták angol nyelven. A beérkezési API Kinyeri a legfontosabb információkat az értékesítési visszaigazolásokból az angol nyelven, például a kereskedelmi név, a tranzakció dátuma, a tranzakciók összege, a sorok és egyebek. 
+Az Azure-űrlap felismerője az előre elkészített beérkezési modell használatával elemezheti és kinyerheti az értékesítési nyugták adatait. A hatékony optikai karakterfelismerési [(OCR)](../computer-vision/concept-recognizing-text.md) képességeket kombinálja a részletes tanulási modellekkel, hogy kinyerje a legfontosabb információkat az angol nyelven írt nyugták alapján.
 
-## <a name="understanding-receipts"></a>A visszaigazolások ismertetése 
+## <a name="understanding-receipts"></a>A visszaigazolások ismertetése
 
-Számos vállalat és személy továbbra is az értékesítési visszaigazolásokból származó adatok manuális kinyerésére támaszkodik, akár üzleti költségekről szóló jelentésekre, térítésekre, naplózásra, adózási célokra, költségvetésre, marketingre vagy más célra. Ezekben a forgatókönyvekben gyakran a fizikai visszaigazolás képei szükségesek az érvényesítéshez.  
+Számos vállalat és személy továbbra is az értékesítési visszaigazolásokból származó, manuálisan kinyert adatokra támaszkodik. Az adatok e nyugtából való automatikus kinyerése bonyolult lehet. Előfordulhat, hogy a visszaigazolások gyűrött, nehezen olvasható, kézírásos részekkel rendelkeznek, és alacsony minőségi okostelefon-rendszerképeket tartalmaznak. Emellett a beérkezési sablonok és a mezők nagy mértékben a piac, a régió és a kereskedő szerint változhatnak. Ezek az adatok kinyerése és a mező-észlelési kihívások egy egyedi probléma feldolgozását teszik elérhetővé.  
 
-Az adatok e nyugtából való automatikus kinyerése bonyolult lehet. A visszaigazolások lehetnek gyűrött és nehezen olvasható, nyomtatott vagy kézírásos részek, valamint a beérkezések smartphone-képei alacsony színvonalúak lehetnek. Emellett a beérkezési sablonok és a mezők nagy mértékben a piac, a régió és a kereskedő szerint változhatnak. Ezek a kihívások mind az kinyerési, mind a helyszíni észlelési folyamat során egyedi problémát jelentenek.  
-
-Az optikai karakterfelismerés (OCR) és az előre összevont beérkezési modell használatával a beérkezési API lehetővé teszi ezen bevételezés-feldolgozási forgatókönyvek és az adatok kinyerését a visszaigazolásokból, például a kereskedelmi név, a tipp, a Total, a line Item és egyebek. Ezzel az API-val nincs szükség a modell betanítására, csak küldje el a beérkezési képet az elemzési beérkezési API-nak, és kinyeri az adatok kinyerését.
+A beérkezési API az optikai karakterfelismerés (OCR) és az előre elkészített modell használatával lehetővé teszi a nagy mennyiségű bevételezés-feldolgozási forgatókönyvek használatát. A beérkezési API-val nem kell modelleket betanítani. Küldje el a beérkezési képet az elemzés beérkezési API-nak, és az adatok kibontása.
 
 ![minta nyugtája](./media/receipts-example.jpg)
 
@@ -73,12 +71,12 @@ Az űrlap-felismerő beérkezési szolgáltatás kipróbálásához nyissa meg a
 
 ## <a name="input-requirements"></a>Bemeneti követelmények
 
-[!INCLUDE [input reqs](./includes/input-requirements-receipts.md)]
+[!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
 ## <a name="supported-locales"></a>Támogatott területi beállítások 
 
 * Az előre összeállított **beérkezési v 2.0** (GA) támogatja a Sales nyugtákat az en-us területi beállításban
-* A **Pre-builded v 2.1 – preview. 2** (nyilvános előzetes verzió) további támogatást nyújt a következő en beérkezési területi beállításokhoz: 
+* **Előzetesen kiépített beérkezési v 2.1 – előzetes verzió. 3** (nyilvános előzetes) további támogatás a következő en beérkezési területi beállításokhoz: 
   * EN-AU 
   * EN-CA 
   * EN-GB 
@@ -87,12 +85,12 @@ Az űrlap-felismerő beérkezési szolgáltatás kipróbálásához nyissa meg a
   > [!NOTE]
   > Nyelvi bevitel 
   >
-  > Előre összeállított beérkezés: v 2.1 – előzetes verzió. 2 egy opcionális kérési paraméterrel megadható a további angol piacoktól érkező bevételezési területi beállítás. Az ausztrál (EN-AU), Kanada (EN-CA), Nagy-Britannia (EN-GB) és India (en-IN) típusú értékesítési nyugták esetében megadhatja a területi beállításokat a jobb eredmények eléréséhez. Ha nincs megadva területi beállítás a v 2.1-ben – előzetes verzió. 2, a modell alapértelmezett értéke az EN-US modell lesz.
+  > Az előre elkészített beérkezés v 2.1-es verziója – előzetes verzió. 3 egy opcionális kérési paraméterrel megadhatja a további angol piacoktól érkező bevételezési területi beállításokat. Az ausztrál (EN-AU), Kanada (EN-CA), Nagy-Britannia (EN-GB) és India (en-IN) típusú értékesítési nyugták esetében megadhatja a területi beállításokat a jobb eredmények eléréséhez. Ha nincs megadva területi beállítás a v 2.1 – preview. 3 esetében, a modell alapértelmezett értéke az EN-US modell lesz.
 
 
 ## <a name="the-analyze-receipt-operation"></a>A Bevételezés elemzése művelet
 
-Az [elemzés visszaigazolása](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeReceiptAsync) egy nyugtát tartalmazó képet vagy PDF-fájlt vesz fel bemenetként, és Kinyeri a kamat és a szöveg értékeit. A hívás egy válasz fejléc nevű mezőt ad vissza `Operation-Location` . Az `Operation-Location` érték egy URL-cím, amely a következő lépésben használandó eredmény-azonosítót tartalmazza.
+Az [elemzés visszaigazolása](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeReceiptAsync) egy nyugtát tartalmazó képet vagy PDF-fájlt vesz fel bemenetként, és Kinyeri a kamat és a szöveg értékeit. A hívás egy válasz fejléc nevű mezőt ad vissza `Operation-Location` . Az `Operation-Location` érték egy URL-cím, amely a következő lépésben használandó eredmény-azonosítót tartalmazza.
 
 |Válasz fejléce| Eredmény URL-címe |
 |:-----|:----|
@@ -100,16 +98,16 @@ Az [elemzés visszaigazolása](https://westcentralus.dev.cognitive.microsoft.com
 
 ## <a name="the-get-analyze-receipt-result-operation"></a>Az elemzés visszaigazolási eredményének lekérése művelet
 
-A második lépés az [elemzés visszaigazolási eredményének beolvasása](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeReceiptResult) művelet hívása. Ez a művelet az elemzés-visszaigazolási művelettel létrehozott eredmény-azonosítót veszi figyelembe. Egy olyan JSON-választ ad vissza, amely tartalmazza az **állapot** mezőt a következő lehetséges értékekkel. Ezt a műveletet a iteratív hívja meg, amíg vissza nem tér a **sikeres** értékkel. A kérések másodpercenkénti (RPS) arányának meghaladása érdekében használjon 3 – 5 másodperces intervallumot.
+A második lépés az [elemzés visszaigazolási eredményének beolvasása](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetAnalyzeReceiptResult) művelet hívása. Ez a művelet az elemzés-visszaigazolási művelettel létrehozott eredmény-azonosítót veszi figyelembe. Egy olyan JSON-választ ad vissza, amely tartalmazza az **állapot** mezőt a következő lehetséges értékekkel. Ezt a műveletet a iteratív hívja meg, amíg vissza nem tér a **sikeres** értékkel. A kérések másodpercenkénti (RPS) arányának meghaladása érdekében használjon 3 – 5 másodperces intervallumot.
 
 |Mező| Típus | Lehetséges értékek |
 |:-----|:----:|:----|
-|status | sztring | notStarted: az elemzési művelet nem indult el. |
+|status | sztring | notStarted: a művelet nem indult el. |
 | |  | fut: az elemzési művelet folyamatban van. |
 | |  | sikertelen: az elemzési művelet meghiúsult. |
 | |  | sikeres: az elemzési művelet sikeresen befejeződött. |
 
-Ha az **állapot** mező értéke **sikeres** , a JSON-válasz tartalmazni fogja a bevételezési és a szöveges felismerési eredményeket. A nyugta megértésének eredménye a megnevezett mezőértékek szótára lesz, ahol minden érték tartalmazza a kinyert szöveget, normalizált értéket, a határolókeret, a megbízhatóság és a hozzá tartozó szó elemeit. A szöveg-felismerés eredményét vonalak és szavak hierarchiája rendezi, szöveg, határolókeret és bizalmas adatok formájában.
+Ha az **állapot** mező értéke **sikeres** , a JSON-válasz tartalmazni fogja a bevételezési és a szöveges felismerési eredményeket. A nyugta megértésének eredménye a megnevezett mezőértékek szótára. Minden érték tartalmazza a kinyert szöveget, a normalizált értéket, a határoló mezőt, a megbízhatóságot és a megfelelő szavakat. A szöveg-felismerés eredményét vonalak és szavak hierarchiája rendezi, szöveg, határolókeret és bizalmas adatok formájában.
 
 ![Példa a Bevételezés eredményeire](./media/contoso-receipt-2-information.png)
 
@@ -447,18 +445,17 @@ Tekintse meg a sikeres JSON-válasz következő példáját:
 }
 ```
 
-
 ## <a name="customer-scenarios"></a>Felhasználói forgatókönyvek  
 
-A beérkezési API-val kinyert adatok különféle feladatok elvégzésére használhatók. Az alábbiakban néhány példát láthat arra, hogy ügyfeleink hogyan teljesítik a beérkezési API-t. 
+A beérkezési API-val kinyert adatok különféle feladatok elvégzésére használhatók. Az alábbiakban néhány példát láthat arra, hogy ügyfeleink hogyan teljesítik a beérkezési API-t.
 
 ### <a name="business-expense-reporting"></a>Üzleti költségek jelentése  
 
 Gyakran az üzleti költségek bejelentése magában foglalja a beérkezési képekből származó adatok manuális bevitelét. A beérkezési API-val a kibontott mezők használatával részben automatizálhatja ezt a folyamatot, és gyorsan elemezheti a nyugtákat.  
 
-Mivel a beérkezési API egyszerű JSON-kimenettel rendelkezik, több módon is használhatja a kinyert mezők értékeit. Integrálja a költségeket a belső költségekkel rendelkező alkalmazásokkal a költségelszámolás előzetes kitöltéséhez. Ennél a forgatókönyvnél további információért olvassa el, hogy a Acumatica hogyan használja a beérkezési API-t, hogy [a költségek kevésbé fájdalmas folyamaton](https://customers.microsoft.com/story/762684-acumatica-partner-professional-services-azure)alapulnak.  
+A beérkezési API egy egyszerű JSON-kimenet, amely lehetővé teszi a kinyert mezőértékek több módon történő használatát. Integrálja a költségeket a belső költségekkel rendelkező alkalmazásokkal a költségelszámolás előzetes kitöltéséhez. Ennél a forgatókönyvnél további információért olvassa el, hogy a Acumatica hogyan használja a beérkezési API-t, hogy [a költségek kevésbé fájdalmas folyamaton](https://customers.microsoft.com/story/762684-acumatica-partner-professional-services-azure)alapulnak.  
 
-### <a name="auditing-and-accounting"></a>Naplózás és nyilvántartás 
+### <a name="auditing-and-accounting"></a>Naplózás és nyilvántartás
 
 A beérkezési API kimenete nagy számú, a költség-jelentési és a költségtérítési folyamat különböző pontjain elvégezhető kiadások elemzésére is használható. A visszaigazolásokat feldolgozhatja manuális audit vagy gyors jóváhagyások osztályozásához.  
 
@@ -472,9 +469,13 @@ A beérkezési API a [mesterséges intelligencia-készítő bevételezés feldol
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Az [űrlap](quickstarts/client-library.md) -felismerő gyors üzembe helyezésével megkezdheti a nyugtát feldolgozó alkalmazás írását a választott fejlesztői nyelven.
+ . Első lépésként írja le a nyugtát feldolgozó alkalmazást a választott fejlesztői nyelven.
+
+> [!div class="nextstepaction"]
+> [Űrlap-felismerő rövid útmutatójának befejezése](quickstarts/client-library.md)
 
 ## <a name="see-also"></a>Lásd még
 
-* [Mi a Form Recognizer?](./overview.md)
-* [REST API dokumentációs dokumentumok](./index.yml)
+* [Mi a Form Recognizer?](overview.md)
+* [Űrlap-felismerő API-referenciája](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeReceiptAsync)
+>

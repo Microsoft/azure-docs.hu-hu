@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a3b0be062025681af2b03dfd2e57f1af2d99d701
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 433e44e9998376d0bea57264f3daeaff7499a3cf
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448353"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488839"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés beállítása Google-fiókkal Azure Active Directory B2C használatával
 
@@ -47,7 +47,9 @@ Ha Azure Active Directory B2C (Azure AD B2C) Google-fiókkal rendelkező felhasz
 Adja meg az alkalmazás **nevét** . Adja meg a *b2clogin.com* a **jogosultsággal rendelkező tartományok** szakaszban, majd válassza a **Mentés** lehetőséget.
 1. Válassza a bal oldali menüben a **hitelesítő adatok** lehetőséget, majd válassza a **hitelesítő adatok létrehozása**  >  **OAuth-ügyfél-azonosító** lehetőséget.
 1. Az **alkalmazás típusa** területen válassza a **webalkalmazás** lehetőséget.
-1. Adja meg az alkalmazás **nevét** , adja meg `https://your-tenant-name.b2clogin.com` a megfelelő **JavaScript-eredetet**, és `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` a **jóváhagyott átirányítási URI**-k között. Cserélje le a helyére a `your-tenant-name` bérlő nevét. A bérlő nevének megadásakor használja az összes kisbetűt, még akkor is, ha a bérlőt nagybetűvel definiálják Azure AD B2Cban.
+    1. Adja meg az alkalmazás **nevét** .
+    1. A **JavaScript-jogosultságok engedélyezéséhez** írja be a következőt: `https://your-tenant-name.b2clogin.com` . Ha [Egyéni tartományt](custom-domain.md)használ, írja be a értéket `https://your-domain-name` .
+    1. A **jóváhagyott átirányítási URI**-k esetében adja meg a következőt: `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Ha [Egyéni tartományt](custom-domain.md)használ, írja be a értéket `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Cserélje le az `your-domain-name` -t az egyéni tartományra, és `your-tenant-name` a bérlő nevét. A bérlő nevének megadásakor használja az összes kisbetűt, még akkor is, ha a bérlőt nagybetűvel definiálják Azure AD B2Cban.
 1. Kattintson a **Létrehozás** lehetőségre.
 1. Másolja ki az **ügyfél-azonosító** és az **ügyfél titkos kulcsának** értékeit. Mindkettőre szüksége lesz a Google identitás-szolgáltatóként való konfigurálásához a bérlőben. Az **ügyfél titkos kulcsa** fontos biztonsági hitelesítő adat.
 

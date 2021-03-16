@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: b94cb6d6302cd92816fe25f6e672b1ce3bb9398d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 34f54bb30e959ecc2fa27fba5ab7392b9eddc68e
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791997"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494512"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>Adatok másolása az Amazon S3-ból az Azure Storage-ba a AzCopy használatával
 
@@ -70,7 +70,7 @@ Használja ugyanazt az URL-szintaxist ( `blob.core.windows.net` ) olyan fiókokh
 >
 > Emellett használhatja a virtuálisan üzemeltetett stílusú URL-címeket is (például: `http://bucket.s3.amazonaws.com` ). 
 >
-> Ha többet szeretne megtudni a gyűjtők virtuális üzemeltetéséről, tekintse meg a következőt: [a gyűjtők virtuális üzemeltetése]] ( https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html) .
+> Ha többet szeretne megtudni a gyűjtők virtuális üzemeltetéséről, tekintse meg [a gyűjtők virtuális üzemeltetését](https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html)ismertető témakört.
 
 ### <a name="copy-a-directory"></a>Könyvtár másolása
 
@@ -103,7 +103,7 @@ Használja ugyanazt az URL-szintaxist ( `blob.core.windows.net` ) olyan fiókokh
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive=true` |
 | **Példa** | `azcopy copy 'https://s3.amazonaws.com/mybucket' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive=true` |
-| **Példa** (hierarchikus névtér)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+| **Példa** (hierarchikus névtér)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive=true` |
 
 ### <a name="copy-all-buckets-in-all-regions"></a>Összes gyűjtő másolása minden régióban
 
@@ -113,7 +113,7 @@ Használja ugyanazt az URL-szintaxist ( `blob.core.windows.net` ) olyan fiókokh
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://s3.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **Példa** | `azcopy copy 'https://s3.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
-| **Példa** (hierarchikus névtér)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+| **Példa** (hierarchikus névtér)| `azcopy copy 'https://s3.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
 
 ### <a name="copy-all-buckets-in-a-specific-s3-region"></a>Az összes gyűjtő másolása egy adott S3 régióban
 
@@ -123,7 +123,7 @@ Használja ugyanazt az URL-szintaxist ( `blob.core.windows.net` ) olyan fiókokh
 |--------|-----------|
 | **Syntax** | `azcopy copy 'https://s3-<region-name>.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **Példa** | `azcopy copy 'https://s3-rds.eu-north-1.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
-| **Példa** (hierarchikus névtér)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+| **Példa** (hierarchikus névtér)| `azcopy copy 'https://s3.amazonaws.com/mybucket' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ## <a name="handle-differences-in-object-naming-rules"></a>Az objektumok elnevezési szabályai közötti különbségek kezelése
 
@@ -161,14 +161,12 @@ A AzCopy a következő lépéseket hajtja végre:
    Ezt a kulcsot fogja használni a rendszer az eredeti metaadatok érvénytelen **kulcsának** mentéséhez.
    Ezzel a kulccsal megpróbálhatja helyreállítani a metaadatokat az Azure-ban, mivel a metaadat-kulcsot a blob Storage szolgáltatás értékeként megőrzi a rendszer.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További példákat a következő cikkekben talál:
 
 - [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md)
 
 - [Adatátvitel](storage-use-azcopy-v10.md#transfer-data)
-
-- [Adatok átvitele az AzCopy használatával és fájltárolás](storage-use-azcopy-files.md)
 
 - [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)

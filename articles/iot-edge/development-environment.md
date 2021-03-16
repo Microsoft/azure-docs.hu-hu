@@ -8,14 +8,16 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4064acd6d2857ebc00a38ea7f6ff5d5e30bbd699
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 517bcdab375db819b0942306df82e7285b9473b1
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041384"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103487700"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>A fejlesztési és tesztelési környezet előkészítése IoT Edge
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure IoT Edge áthelyezi a meglévő üzleti logikát a peremhálózati eszközökre. Az alkalmazások és munkaterhelések [IoT Edge modulként](iot-edge-modules.md)való futtatásához tárolóként kell létrehoznia őket. Ez a cikk útmutatást nyújt a fejlesztési környezet konfigurálásához, hogy sikeresen létrehozzon egy IoT Edge megoldást. Miután beállította a fejlesztési környezetet, megtudhatja, hogyan [fejlesztheti saját IoT Edge modulait](module-development.md).
 
@@ -56,7 +58,7 @@ Egyes nyelvekhez és szolgáltatásokhoz tartozó modul-sablonok előfeltételei
 | Modulsablon | Előfeltétel |
 | --------------- | ------------ |
 | Azure Functions | [.NET Core 2,1 SDK](https://www.microsoft.com/net/download) |
-| C# | [Git](https://git-scm.com/) |
+| C | [Git](https://git-scm.com/) |
 | C# | [.NET Core 2,1 SDK](https://www.microsoft.com/net/download) |
 | Java | <ul><li>[Java SE Development Kit 10](/azure/developer/java/fundamentals/java-jdk-long-term-support) <li> [A JAVA_HOME környezeti változó beállítása](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) <li> [Maven](https://maven.apache.org/)</ul> |
 | Node.js | <ul><li>[Node.js](https://nodejs.org/) <li> [Yeoman](https://www.npmjs.com/package/yo) <li> [Azure IoT Edge Node.js modul generátora](https://www.npmjs.com/package/generator-azure-iot-edge-module)</ul> |

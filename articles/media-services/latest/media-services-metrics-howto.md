@@ -14,25 +14,25 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ab89c222648a66ad7451f9bb47e254c55b925630
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ab5871749630b047f6498a2439f77693a999c798
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590763"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493921"
 ---
 # <a name="monitor-media-services-metrics"></a>A Media Services metrikáinak monitorozása
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-[Azure monitor](../../azure-monitor/overview.md) lehetővé teszi a metrikák és diagnosztikai naplók figyelését, amelyek segítenek megérteni az alkalmazások teljesítményét. A szolgáltatás részletes ismertetését és a Azure Media Services metrikák és diagnosztikai naplók használatának okát a következő témakörben tekintheti meg: [Media Services metrikák és diagnosztikai naplók figyelése](media-services-metrics-diagnostic-logs.md).
+[Azure monitor](../../azure-monitor/overview.md) lehetővé teszi a metrikák és diagnosztikai naplók figyelését, amelyek segítenek megérteni az alkalmazások teljesítményét. A szolgáltatás részletes ismertetését és a Azure Media Services metrikák és diagnosztikai naplók használatának okát a következő témakörben tekintheti meg: [Media Services metrikák és diagnosztikai naplók figyelése](monitoring/monitor-media-services-data-reference.md).
 
 A Azure Monitor számos lehetőséget kínál a metrikák használatára, például a portálon való ábrázolásra, a REST API való hozzáférésre, vagy az Azure CLI használatával történő lekérdezésre. Ez a cikk bemutatja, hogyan figyelheti a metrikákat a Azure Portal-diagramokkal és az Azure CLI-vel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - [Media Services-fiók létrehozása](./create-account-howto.md)
-- [Figyelő Media Services mérőszámok és diagnosztikai naplók](media-services-metrics-diagnostic-logs.md) áttekintése
+- [Figyelő Media Services mérőszámok és diagnosztikai naplók](monitoring/monitor-media-services-data-reference.md) áttekintése
 
 ## <a name="view-metrics-in-azure-portal"></a>Metrikák megtekintése Azure Portal
 
@@ -46,7 +46,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
     * &lt;Media Services fiók neve &gt; / &lt; streaming Endpoint neve&gt;
     * &lt;Storage-fiók neve&gt;
 
-    Válassza ki az erőforrást, majd nyomja le az **alkalmaz** gombot. A támogatott erőforrásokkal és mérőszámokkal kapcsolatos részletekért lásd: [Media Services mérőszámok figyelése](media-services-metrics-diagnostic-logs.md).
+    Válassza ki az erőforrást, majd nyomja le az **alkalmaz** gombot. A támogatott erőforrásokkal és mérőszámokkal kapcsolatos részletekért lásd: [Media Services mérőszámok figyelése](monitoring/monitor-media-services-data-reference.md).
 
     > [!NOTE]
     > Ha váltani szeretne a figyelni kívánt erőforrások között, kattintson ismét a **forrás** mezőre, és ismételje meg ezt a lépést.

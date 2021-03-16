@@ -52,78 +52,76 @@
     - name: Frissítés a Read 2.x verziójáról a Read 3.x verziójára
       href: upgrade-api-versions.md
     - name: HRE-hitelesítés konfigurálása
-      href: /azure/cognitive-services/authentication?tabs=powershell#authenticate-with-azure-active-directory?context=/azure/cognitive-services/computer-vision/context/context
+      href: /azure/cognitive-services/authentication?tabs=powershell?context=/azure/cognitive-services/computer-vision/context/context
     - name: Az ügyfél által felügyelt kulcsok használata
       href: /azure/cognitive-services/encryption/cognitive-services-encryption-keys-portal?context=/azure/cognitive-services/computer-vision/context/context
-- name: Computer Vision üzembe helyezése
-  items:
-    - name: Tárolók
+    - name: Computer Vision üzembe helyezése
       items:
-        - name: Cognitive Services-tárolók – dokumentáció
-          href: ../containers/index.yml
-        - name: API-tároló olvasása
+        - name: Tárolók
           items:
-            - name: Tárolók telepítése és futtatása
-              href: computer-vision-how-to-install-containers.md
-              displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
-            - name: Tárolók konfigurálása
-              href: computer-vision-resource-container-config.md
-            - name: Migrálás a Read tároló 3-as verziójára
-              href: read-container-migration-guide.md
-              displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
-            - name: Használat Kubernetesszel és Helmmel
-              href: deploy-computer-vision-on-premises.md
-              displayName: 'kubectl, docker, helm, kubernetes, K8s, tiller, container, image, on-prem, on-premises'
-            - name: A Container Instances használata
-              maintainContext: true
-              href: ../containers/azure-container-instance-recipe.md
-              displayName: 'container instances, container, containers, images'
-        - name: Térbeli elemzések tárolója
-          items:
-            - name: A térbeli elemzés áttekintése
-              href: intro-to-spatial-analysis-public-preview.md
-            - name: A gazdagép beállítása és a tároló futtatása
-              href: spatial-analysis-container.md
-            - name: Műveletek konfigurálása
-              href: spatial-analysis-operations.md
-            - name: Személyszámláló webalkalmazás üzembe helyezése
-              href: Spatial-analysis-web-app.md
-            - name: Naplózás és hibaelhárítás
-              href: spatial-analysis-logging.md
-            - name: Zónák és sorok elhelyezése
-              href: spatial-analysis-zone-line-placement.md
-            - name: Kamera elhelyezése
-              href: spatial-analysis-camera-placement.md
+            - name: Cognitive Services-tárolók – dokumentáció
+              href: ../containers/index.yml
+            - name: API-tároló olvasása
+              items:
+                - name: Tárolók telepítése és futtatása
+                  href: computer-vision-how-to-install-containers.md
+                  displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
+                - name: Tárolók konfigurálása
+                  href: computer-vision-resource-container-config.md
+                - name: Migrálás a Read tároló 3-as verziójára
+                  href: read-container-migration-guide.md
+                  displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
+                - name: Használat Kubernetesszel és Helmmel
+                  href: deploy-computer-vision-on-premises.md
+                  displayName: 'kubectl, docker, helm, kubernetes, K8s, tiller, container, image, on-prem, on-premises'
+                - name: A Container Instances használata
+                  maintainContext: true
+                  href: ../containers/azure-container-instance-recipe.md
+                  displayName: 'container instances, container, containers, images'
+            - name: Térbeli elemzések tárolója
+              items:
+                - name: A térbeli elemzés áttekintése
+                  href: intro-to-spatial-analysis-public-preview.md
+                - name: A gazdagép beállítása és a tároló futtatása
+                  href: spatial-analysis-container.md
+                - name: Műveletek konfigurálása
+                  href: spatial-analysis-operations.md
+                - name: Személyszámláló webalkalmazás üzembe helyezése
+                  href: Spatial-analysis-web-app.md
+                - name: Naplózás és hibaelhárítás
+                  href: spatial-analysis-logging.md
+                - name: Zónák és sorok elhelyezése
+                  href: spatial-analysis-zone-line-placement.md
+                - name: Kamera elhelyezése
+                  href: spatial-analysis-camera-placement.md
 - name: Alapelvek
   items:
-    - name: Módok
-      items:
-        - name: Optikai karakterfelismerés (OCR)
-          href: concept-recognizing-text.md
-        - name: Objektumészlelés
-          href: concept-object-detection.md
-        - name: Márkaészlelés
-          href: concept-brand-detection.md
-        - name: Tartalomcímkék
-          href: concept-tagging-images.md
-        - name: Képek kategorizálása
-          href: concept-categorizing-images.md
-        - name: Kategóriaelnevezési rendszer
-          href: Category-Taxonomy.md
-        - name: Képleírások
-          href: concept-describing-images.md
-        - name: Arcfelismerés
-          href: concept-detecting-faces.md
-        - name: Képtípus észlelése
-          href: concept-detecting-image-types.md
-        - name: Tartományspecifikus tartalom
-          href: concept-detecting-domain-content.md
-        - name: Színséma észlelése
-          href: concept-detecting-color-schemes.md
-        - name: Intelligens körbevágású miniatűrök
-          href: concept-generating-thumbnails.md
-        - name: Felnőtteknek szóló tartalom észlelése
-          href: concept-detecting-adult-content.md
+    - name: Optikai karakterfelismerés (OCR)
+      href: concept-recognizing-text.md
+    - name: Objektumészlelés
+      href: concept-object-detection.md
+    - name: Márkaészlelés
+      href: concept-brand-detection.md
+    - name: Tartalomcímkék
+      href: concept-tagging-images.md
+    - name: Képek kategorizálása
+      href: concept-categorizing-images.md
+    - name: Kategóriaelnevezési rendszer
+      href: Category-Taxonomy.md
+    - name: Képleírások
+      href: concept-describing-images.md
+    - name: Arcfelismerés
+      href: concept-detecting-faces.md
+    - name: Képtípus észlelése
+      href: concept-detecting-image-types.md
+    - name: Tartományspecifikus tartalom
+      href: concept-detecting-domain-content.md
+    - name: Színséma észlelése
+      href: concept-detecting-color-schemes.md
+    - name: Intelligens körbevágású miniatűrök
+      href: concept-generating-thumbnails.md
+    - name: Felnőtteknek szóló tartalom észlelése
+      href: concept-detecting-adult-content.md
 - name: Oktatóanyagok
   items:
     - name: Képek metaadatainak előállítása

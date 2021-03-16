@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 01/29/2021
+ms.date: 03/15/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: dokumentumok feldolgozása
-ms.openlocfilehash: f07e3b6142ad99ba3b9e64e4733109a7e5ae04f9
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 89de0752b3015fb8132bfa50c7dbdce174061bcc
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102425740"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467277"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -33,7 +33,7 @@ Ebben a rövid útmutatóban az űrlap-felismerő REST APIt fogja használni a m
 A rövid útmutató elvégzéséhez a következőket kell tennie:
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" hozzon létre egy űrlap-felismerő erőforrást "  target="_blank"> </a> Az Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" hozzon létre egy űrlap-felismerő erőforrást "  target="_blank"> </a> Az Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően válassza **az Ugrás erőforráshoz** lehetőséget.
   * Az alkalmazás az űrlap-felismerő API-hoz való összekapcsolásához szüksége lesz a létrehozott erőforrás kulcsára és végpontra. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
   * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
 * Legalább hat egyforma típusú formátumból álló készlet. Ezeket az adattípusokat fogja használni a modell betanításához és egy űrlap teszteléséhez. Ehhez a rövid útmutatóhoz használhat egy [minta adatkészletet](https://go.microsoft.com/fwlink/?linkid=2090451) ( *sample_data.zip* letöltése és kibontása). Töltse fel a betanítási fájlokat egy blob Storage-tároló gyökerébe egy standard teljesítményű Azure Storage-fiókban.
@@ -124,7 +124,7 @@ Először győződjön meg arról, hogy az összes betanítási dokumentum form�
 
 ### <a name="configure-cross-domain-resource-sharing-cors"></a>Tartományok közötti erőforrás-megosztás (CORS) konfigurálása
 
-Engedélyezze a CORS a Storage-fiókban. Válassza ki a Storage-fiókját a Azure Portalban, és kattintson a bal oldali ablaktábla **CORS** fülére. Az alsó sorban adja meg a következő értékeket. Ezután kattintson a felső **Mentés** gombra.
+Engedélyezze a CORS a Storage-fiókban. Válassza ki a Storage-fiókját a Azure Portal, majd a bal oldali ablaktáblán kattintson a **CORS** fülre. Az alsó sorban adja meg a következő értékeket. Kattintson a felső **Mentés** elemre.
 
 * Engedélyezett Origins = *
 * Engedélyezett metódusok = \[ összes kijelölése\]
@@ -137,11 +137,11 @@ Engedélyezze a CORS a Storage-fiókban. Válassza ki a Storage-fiókját a Azur
 
 ## <a name="connect-to-the-sample-labeling-tool"></a>Kapcsolódás a minta feliratozási eszközhöz
 
-A minta feliratozási eszköz egy forráshoz (az eredeti űrlapokhoz) és egy célhoz (ahol a létrehozott címkék és a kimeneti adatokat exportálja) csatlakozik.
+ A mintául szolgáló címkéző eszköz egy forráshoz (az eredeti feltöltött űrlapokhoz) és egy célhoz (létrehozott címkék és kimeneti adatokat) csatlakozik.
 
 A kapcsolatok beállítható és megoszthatók a projektek között. Egy bővíthető szolgáltatói modellt használnak, így egyszerűen hozzáadhat új forrás-és célkiszolgáló-szolgáltatókat.
 
-Új kapcsolat létrehozásához kattintson az **új kapcsolatok** (beépülő) ikonra a bal oldali navigációs sávon.
+Új kapcsolat létrehozásához válassza az **új kapcsolatok** (plug) ikont a bal oldali navigációs sávon.
 
 Töltse ki a mezőket a következő értékekkel:
 
@@ -152,7 +152,6 @@ Töltse ki a mezőket a következő értékekkel:
    :::image type="content" source="../media/quickstarts/get-sas-url.png" alt-text="SAS URL-cím lekérése":::
 
 :::image type="content" source="../media/label-tool/connections.png" alt-text="A mintául szolgáló címkéző eszköz csatlakoztatási beállításai.":::
-
 
 ## <a name="create-a-new-project"></a>Új projekt létrehozása
 
@@ -176,26 +175,28 @@ Amikor létrehoz vagy megnyit egy projektet, megnyílik a fő címke-szerkesztő
 * A főszerkesztő ablaktábla, amely lehetővé teszi a címkék alkalmazását.
 * A címkék szerkesztő panelje lehetővé teszi a felhasználók számára címkék módosítását, zárolását, átrendezését és törlését.
 
-### <a name="identify-text-elements"></a>Szöveges elemek azonosítása
+### <a name="identify-text-and-tables"></a>Szöveg és táblák azonosítása 
 
-Kattintson az OCR futtatása elemre a bal oldali ablaktábla **összes fájlján** az egyes dokumentumok szöveg-elrendezési adatainak lekéréséhez. A címkézési eszköz az egyes szöveges elemek köré rajzolja meg a határoló mezőket.
+Válassza az OCR futtatása lehetőséget a bal oldali ablaktábla **összes fájlján** az egyes dokumentumok szöveg-és táblázat-elrendezési adatainak lekéréséhez. A címkézési eszköz az egyes szöveges elemek köré rajzolja meg a határoló mezőket.
 
-Azt is megmutatja, hogy mely táblákat kell automatikusan kibontani. A kibontott táblázat megjelenítéséhez kattintson a dokumentum bal oldalán található tábla/rács ikonra. Ebben a rövid útmutatóban, mivel a táblázat tartalma automatikusan ki van kibontva, a táblázat tartalma nem lesz felcímkézve, hanem az automatikus kivonásra támaszkodik.
+A címkézési eszköz azt is megjeleníti, hogy mely táblákat kell automatikusan kibontani. A kibontott táblázat megjelenítéséhez válassza a tábla bal oldalán található táblázat/rács ikont. Ebben a rövid útmutatóban, mivel a táblázat tartalma automatikusan ki van kibontva, a táblázat tartalma nem lesz felcímkézve, hanem az automatikus kivonásra támaszkodik.
 
 :::image type="content" source="../media/label-tool/table-extraction.png" alt-text="Táblázat vizualizációja a minta címkézési eszközben.":::
+
+V 2.1 esetén, ha a betanítási dokumentum nem rendelkezik kitöltött értékkel, akkor megrajzolhat egy mezőt, ahol az értéknek kell lennie. Az ablak bal felső sarkában található **rajzolási régió** használatával teheti meg a régió taggable elemét.
 
 ### <a name="apply-labels-to-text"></a>Feliratok alkalmazása szövegre
 
 Ezután létre kell hoznia címkéket (címkéket), és alkalmaznia kell azokat a szöveges elemekre, amelyeket elemezni kíván a modellben.
 
-### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)
+### <a name="v20"></a>[2.0-s verzió](#tab/v2-1)  
 
-1. Először a címkék szerkesztő paneljén hozza létre a azonosítani kívánt címkéket:
-   * Kattintson ide **+** új címke létrehozásához.
-   * Adja meg a címke nevét.
-   * Nyomja le az ENTER billentyűt a címke mentéséhez.
-1. A főszerkesztőben kattintson ide a Kiemelt szöveges elemek szavainak kiválasztásához. A _v 2.1 preview. 2_ API-ban a _kiválasztási jelek_ , például a választógombok és a jelölőnégyzetek megadására is lehetőség van. Az űrlap-felismerő azonosítja, hogy a kijelölési jel "kijelölt" vagy "nem kijelölt" értékű-e.
-1. Kattintson az alkalmazni kívánt címkére, vagy nyomja le a megfelelő billentyűt. A kulcsok az első 10 címkéhez gyorsbillentyűként vannak hozzárendelve. A címkéket átrendezheti a címke-szerkesztő ablaktábla fel és le nyíl ikonjának használatával.
+1. Először a címkék szerkesztő paneljén hozza létre az azonosítani kívánt címkéket.
+   1. **+** Új címke létrehozásához válassza a lehetőséget.
+   1. Adja meg a címke nevét.
+   1. Nyomja le az ENTER billentyűt a címke mentéséhez.
+1. A főszerkesztőben válassza a szavak elemet a Kiemelt szöveges elemek közül, vagy válasszon ki egy régiót.
+1. Válassza ki az alkalmazni kívánt címkét, vagy nyomja le a megfelelő billentyűt. A kulcsok az első 10 címkéhez gyorsbillentyűként vannak hozzárendelve. A címkéket átrendezheti a címke-szerkesztő ablaktábla fel és le nyíl ikonjának használatával.
     > [!Tip]
     > Az űrlapok címkézése során tartsa szem előtt az alábbi tippeket:
     >
@@ -212,11 +213,11 @@ Ezután létre kell hoznia címkéket (címkéket), és alkalmaznia kell azokat 
 ### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
 
 1. Először a címkék szerkesztő paneljén hozza létre az azonosítani kívánt címkéket.
-   1. Kattintson ide **+** új címke létrehozásához.
+   1. **+** Új címke létrehozásához válassza a lehetőséget.
    1. Adja meg a címke nevét.
    1. Nyomja le az ENTER billentyűt a címke mentéséhez.
-1. A főszerkesztőben kattintson ide a Kiemelt szöveges elemek szavainak kiválasztásához.
-1. Kattintson az alkalmazni kívánt címkére, vagy nyomja le a megfelelő billentyűt. A kulcsok az első 10 címkéhez gyorsbillentyűként vannak hozzárendelve. A címkéket átrendezheti a címke-szerkesztő ablaktábla fel és le nyíl ikonjának használatával.
+1. A főszerkesztőben válassza a szavak elemet a Kiemelt szöveges elemek közül.
+1. Válassza ki az alkalmazni kívánt címkét, vagy nyomja le a megfelelő billentyűt. A kulcsok az első 10 címkéhez gyorsbillentyűként vannak hozzárendelve. A címkéket átrendezheti a címke-szerkesztő ablaktábla fel és le nyíl ikonjának használatával.
     > [!Tip]
     > Az űrlapok címkézése során tartsa szem előtt az alábbi tippeket:
     >
@@ -231,6 +232,7 @@ Ezután létre kell hoznia címkéket (címkéket), és alkalmaznia kell azokat 
 >
 
 ---
+---
 
 :::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="A minta-címkéző eszköz főszerkesztő ablaka.":::
 
@@ -238,7 +240,7 @@ Kövesse a fenti lépéseket az űrlapok legalább öt megjelöléséhez.
 
 ### <a name="specify-tag-value-types"></a>Címke típusú értékek megadása
 
-Opcionálisan megadhatja az egyes címkék várt adattípusát. Nyissa meg a címke jobb oldalán a helyi menüt, és válasszon egy típust a menüből. Ez a funkció lehetővé teszi, hogy az észlelési algoritmus bizonyos feltételezéseket tegyen elérhetővé, amelyek javítják a szöveg-észlelési pontosságot. Azt is biztosítja, hogy a rendszer az észlelt értékeket a végső JSON-kimenet szabványosított formátumában adja vissza. Az érték típusának adatait a rendszer a (z) fájlban lévő *fields.js* menti, a címkézett fájlokkal megegyező elérési úton.
+Megadhatja az egyes címkék várt adattípusát. Nyissa meg a címke jobb oldalán a helyi menüt, és válasszon egy típust a menüből. Ez a funkció lehetővé teszi, hogy az észlelési algoritmus olyan feltételezéseket hozzon, amelyek javítják a szöveg-észlelési pontosságot. Azt is biztosítja, hogy a rendszer az észlelt értékeket a végső JSON-kimenet szabványosított formátumában adja vissza. Az érték típusának adatait a rendszer a (z) fájlban lévő **fields.js** menti, a címkézett fájlokkal megegyező elérési úton.
 
 > [!div class="mx-imgBorder"]
 > ![Értéktípus kiválasztása a minta címkézési eszközzel](../media/whats-new/value-type.png)
@@ -285,12 +287,22 @@ A következő típusú értékek és változatok jelenleg támogatottak:
 > * 01Jan2020
 > * 01 Jan 2020
 
+### <a name="label-tables-v21-only"></a>Címkézési táblázatok (csak a 2.1-es verzióban)
+
+Időnként előfordulhat, hogy az adatai a kulcs-érték párok helyett inkább táblázatként vannak megjelölve. Ebben az esetben létrehozhat egy tábla címkét úgy, hogy az "új tábla hozzáadása" címkére kattint, és meghatározza, hogy a tábla rögzített számú sorból vagy változó számú sorból áll-e a dokumentumtól függően, és meghatározza a sémát.
+
+:::image type="content" source="../media/label-tool/table-tag.png" alt-text="Egy tábla címkéjének konfigurálása.":::
+
+Ha meghatározta a tábla címkéjét, címkézze fel a cella értékeit.
+
+:::image type="content" source="../media/table-labeling.png" alt-text="Tábla címkézése":::
+
 ## <a name="train-a-custom-model"></a>Egyéni modell betanítása
 
-Kattintson a vonat ikonra a bal oldali ablaktáblán a képzés lap megnyitásához. Ezután kattintson a **vonat** gombra a modell tanításának megkezdéséhez. A betanítási folyamat befejezése után a következő információk láthatók:
+Válassza a vonat ikont a bal oldali ablaktáblán a betanítás lap megnyitásához. Ezután válassza a **vonat** gombot a modell tanításának megkezdéséhez. A betanítási folyamat befejezése után a következő információk láthatók:
 
 * **Modell azonosítója** – a létrehozott és betanított modell azonosítója. Minden betanítási hívás létrehoz egy új modellt a saját azonosítójával. A karakterlánc másolása biztonságos helyre; szüksége lesz rá, ha az [REST API](./client-library.md?pivots=programming-language-rest-api) vagy az [ügyféloldali függvénytáron](./client-library.md)keresztül szeretne előrejelzési hívásokat végezni.
-* **Átlagos pontosság** – a modell átlagos pontossága. A modell pontosságát úgy javíthatja, ha további űrlapokat és képzést is felcímkéz, és új modellt hoz létre. Javasoljuk, hogy öt űrlap feliratozásával kezdjen hozzá, és szükség esetén további űrlapokat adjon hozzá.
+* **Átlagos pontosság** – a modell átlagos pontossága. Új modellek létrehozásához további űrlapokat és újraképzéseket is használhat a modell pontosságának növelésére. Javasoljuk, hogy öt űrlap feliratozásával kezdjen hozzá, és szükség esetén további űrlapokat adjon hozzá.
 * A címkék és a becsült pontosság a címkén.
 
 
@@ -305,10 +317,10 @@ A betanítás befejezése után vizsgálja meg az **átlagos pontossági** ért�
 
 ### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)
 
-A Model Compose segítségével akár 100 modellt is létrehozhat egyetlen modellazonosítóhoz. Ha ezzel a létrehozott modellazonosítóval hívja meg az Elemzés funkciót, a Form Recognizer először besorolja a beküldött űrlapot, párosítja a neki leginkább megfelelő modellel, majd az adott modell eredményeit adja vissza. Ez akkor hasznos, ha a beérkező űrlapok számos sablon egyikéhez tartozhatnak.
+A Model Compose segítségével akár 100 modellt is létrehozhat egyetlen modellazonosítóhoz. Ha az elemzést a komponált `modelID` , az űrlap-felismerő először az elküldött űrlapot sorolja be, válassza ki a legmegfelelőbb modellt, majd adja vissza a modell eredményét. Ez a művelet akkor lehet hasznos, ha a bejövő űrlapok több sablon egyikéhez tartozhatnak.
 
-A minta feliratozási eszköz modelljeinek összeállításához kattintson a bal oldalon található Model levélírás (egyesítési nyíl) ikonra. A bal oldalon válassza ki azokat a modelleket, amelyeket össze szeretne állítani. A Arrows ikonnal rendelkező modellek már modellekből állnak.
-Kattintson a "levélírás" gombra. Az előugró ablakban nevezze el az új komponált modellt, majd kattintson a "levélírás" elemre. Ha a művelet befejeződik, az új komponált modellnek szerepelnie kell a listában.
+Ha modelleket szeretne összeállítani a minta feliratozási eszközben, válassza a bal oldalon a modell összeállítása (egyesítési nyíl) ikont. A bal oldalon válassza ki azokat a modelleket, amelyeket össze szeretne állítani. A Arrows ikonnal rendelkező modellek már modellekből állnak.
+Kattintson a **levélírás gombra**. Az előugró ablakban nevezze el az új komponált modellt, és válassza az **összeállítás** lehetőséget. Ha a művelet befejeződik, az újonnan komponált modellnek szerepelnie kell a listában.
 
 :::image type="content" source="../media/label-tool/model-compose.png" alt-text="Model komponált UX nézet.":::
 
@@ -320,16 +332,16 @@ Ez a funkció jelenleg a 2.1-es verzióban érhető el. előnézet.
 
 ## <a name="analyze-a-form"></a>Űrlap elemzése
 
-Kattintson a bal oldali előrejelzés (villanykörte) ikonra a modell teszteléséhez. Töltse fel a betanítási folyamatban még nem használt űrlap-dokumentumot. Ezután kattintson a jobb oldali **Előrejelzés** gombra az űrlaphoz tartozó kulcs/érték előrejelzések beszerzéséhez. Az eszköz címkét fog alkalmazni a határolókeret mezőiben, és az egyes címkék megbízhatóságát fogja jelenteni.
+Válassza a bal oldali előrejelzés (villanykörte) ikont a modell teszteléséhez. Töltse fel a betanítási folyamatban még nem használt űrlap-dokumentumot. Ezután a jobb oldali **Előrejelzés** gomb megnyomásával lekérheti az űrlaphoz tartozó kulcs/érték előrejelzéseket. Az eszköz címkét fog alkalmazni a határolókeret mezőiben, és az egyes címkék megbízhatóságát fogja jelenteni.
 
 > [!TIP]
 > Az elemzés API-t REST-hívással is futtathatja. Ennek megismeréséhez tekintse meg a [címkék a Python használatával történő betanítását](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)ismertető témakört.
 
 ## <a name="improve-results"></a>Az eredmények javítása
 
-A jelentett pontosságtól függően érdemes lehet további képzést végezni a modell fejlesztéséhez. Miután elvégezte az előrejelzést, vizsgálja meg az egyes alkalmazott címkék megbízhatósági értékeit. Ha az átlagos pontossági érték magas volt, de a megbízhatósági pontszámok alacsonyak (vagy az eredmények pontatlanok), adja hozzá az előrejelzéshez használt fájlt a betanítási készlethez, címkézze fel, és ismételje meg a betanítást.
+A jelentett pontosságtól függően érdemes lehet további képzést végezni a modell fejlesztéséhez. Miután elvégezte az előrejelzést, vizsgálja meg az egyes alkalmazott címkék megbízhatósági értékeit. Ha az átlagos pontossági érték magas, de a megbízhatósági pontszámok alacsonyak (vagy az eredmények pontatlanok), adja hozzá az előrejelzési fájlt a betanítási készlethez, címkézze fel, és ismét betanítsa.
 
-A jelentett átlagos pontosság, a megbízhatósági pontszám és a tényleges pontosság inkonzisztens lehet, ha az elemzett dokumentumok eltérnek a betanításban használt adatoktól. Ne feledje, hogy egyes dokumentumok ugyanúgy néznek ki, mint a felhasználók, de az AI-modellre is kitűnnek. Előfordulhat például, hogy a betanítás két változattal rendelkezik, ahol a betanítási készlet 20%-os és 80%-os változatot tartalmaz. Az előrejelzés során az A variációs dokumentumok megbízhatósági pontszámai valószínűleg alacsonyabbak lesznek.
+A jelentett átlagos pontosság, a megbízhatósági pontszám és a tényleges pontosság inkonzisztens lehet, ha az elemzett dokumentumok eltérnek a betanításban használt dokumentumtól. Ne feledje, hogy egyes dokumentumok ugyanúgy néznek ki, mint a felhasználók, de az AI-modellre is kitűnnek. Előfordulhat például, hogy a betanítás két változattal rendelkezik, ahol a betanítási készlet 20%-os és 80%-os változatot tartalmaz. Az előrejelzés során az A variációs dokumentumok megbízhatósági pontszámai valószínűleg alacsonyabbak lesznek.
 
 ## <a name="save-a-project-and-resume-later"></a>Projekt mentése és későbbi folytatás
 
@@ -341,11 +353,11 @@ Lépjen a Project Settings (csúszka ikon) lapra, és jegyezze fel a biztonsági
 
 ### <a name="restore-project-credentials"></a>A projekt hitelesítő adatainak visszaállítása
 
-Ha folytatni szeretné a projekt folytatását, először létre kell hoznia egy kapcsolódást ugyanahhoz a blob Storage-tárolóhoz. Ehhez ismételje meg a fenti lépéseket. Ezután nyissa meg az Alkalmazásbeállítások lapot (fogaskerék ikon), és ellenőrizze, hogy van-e a projekt biztonsági jogkivonata. Ha nem, adjon hozzá egy új biztonsági jogkivonatot, és másolja át a token nevét és kulcsát az előző lépésből. Ezután kattintson a beállítások mentése gombra.
+Ha folytatni szeretné a projekt folytatását, először létre kell hoznia egy kapcsolódást ugyanahhoz a blob Storage-tárolóhoz. Ehhez ismételje meg a fenti lépéseket. Ezután nyissa meg az Alkalmazásbeállítások lapot (fogaskerék ikon), és ellenőrizze, hogy van-e a projekt biztonsági jogkivonata. Ha nem, adjon hozzá egy új biztonsági jogkivonatot, és másolja át a token nevét és kulcsát az előző lépésből. A beállítások megőrzése érdekében válassza a **Mentés** lehetőséget.
 
 ### <a name="resume-a-project"></a>Projekt folytatása
 
-Végül nyissa meg a Főoldalt (ház ikon), és kattintson a Cloud Project megnyitása lehetőségre. Ezután válassza ki a blob Storage-kapcsolatokat, és válassza ki a projekt *. fott* fájlját. Az alkalmazás betölti a projekt összes beállítását, mert a biztonsági jogkivonattal rendelkezik.
+Végül nyissa meg a Főoldalt (ház ikon), és válassza a **Felhőbeli projekt megnyitása** lehetőséget. Ezután válassza ki a blob Storage-kapcsolatokat, és válassza ki a projekt **. fott** fájlját. Az alkalmazás betölti a projekt összes beállítását, mert a biztonsági jogkivonattal rendelkezik.
 
 ## <a name="next-steps"></a>Következő lépések
 

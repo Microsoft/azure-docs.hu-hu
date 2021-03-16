@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e94b14584f8eece3d772f67b680df4a2ffb8b5cd
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: aafeb7ebd939805ae18e29670f359660db12e2e1
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102603301"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103555829"
 ---
 Jelenleg az ultra-lemezek további korlátozásokkal rendelkeznek, ezek a következők:
 
@@ -65,11 +65,11 @@ Az alábbi táblázat az ultra lemezek régióit ismerteti, valamint a hozzájuk
     - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
 - Nem minden virtuálisgép-méret érhető el minden olyan támogatott régióban, amely Ultra-lemezekkel rendelkezik.
 - Csak adatlemezként érhetők el. 
-- A 4k-os fizikai szektor méretének támogatása alapértelmezés szerint. a 512E szektor mérete általánosan elérhető ajánlatként érhető el (nincs szükség regisztrációra), de jelenleg csak a CLI vagy a PowerShell használatával érhető el. A legtöbb alkalmazás kompatibilis a 4k-os szektor méretével, de egyesek 512 bájtos szektort igényelnek. Az egyik példa Oracle Database, amely a 12,2-as vagy újabb kiadást igényli a 4k natív lemezek támogatásához. A Oracle DB régebbi verzióihoz a 512 bájtos szektor mérete szükséges.
+- A 4k-os fizikai szektor méretének támogatása alapértelmezés szerint. a 512E szektor mérete általánosan elérhető ajánlatként érhető el (nincs szükség regisztrációra). A legtöbb alkalmazás kompatibilis a 4k-os szektor méretével, de egyesek 512 bájtos szektort igényelnek. Az egyik példa Oracle Database, amely a 12,2-as vagy újabb kiadást igényli a 4k natív lemezek támogatásához. A Oracle DB régebbi verzióihoz a 512 bájtos szektor mérete szükséges.
 - Csak üres lemezként hozható létre.
 - Jelenleg nem támogatja a lemezes pillanatképeket, a virtuálisgép-lemezképeket, a rendelkezésre állási csoportokat, az Azure dedikált gazdagépeket vagy az Azure Disk encryptiont.
 - Jelenleg nem támogatja a Azure Backup-vagy Azure Site Recovery-integrációt.
 - Csak a nem gyorsítótárazott olvasási és nem gyorsítótárazott írásokat támogatja.
 - A GA virtuális gépek IOPS jelenlegi maximális korlátja 80 000.
 
-Az Azure Ultra Disks szolgáltatás alapértelmezés szerint akár 16 TiB-előfizetést is kínál, de az ultra-lemezek kéréssel magasabb szintű kapacitást is nyújtanak. A kapacitás növelésének igényléséhez forduljon az Azure ügyfélszolgálatához.
+Az Azure Ultra Disks szolgáltatás alapértelmezés szerint akár 32 TiB-t is kínál, de az ultra-lemezek igény szerint nagyobb kapacitást biztosítanak. A kapacitás növelésének igényléséhez kvótát kell megemelni, vagy kapcsolatba kell lépnie az Azure ügyfélszolgálatával.

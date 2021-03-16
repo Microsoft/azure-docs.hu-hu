@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 578a248de3ee6aacc0db7c5116b66031b404c9ae
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: d445a4e1d0fd39788c18f80b25ce02a7c5d0a243
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448166"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488686"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-salesforce-account-using-azure-active-directory-b2c"></a>Salesforce-fiókkal történő regisztráció és bejelentkezés beállítása Azure Active Directory B2C
 
@@ -48,7 +48,7 @@ Ha Azure Active Directory B2C (Azure AD B2C) Salesforce-fiókkal rendelkező fel
     1. **API neve** 
     1. **Kapcsolattartási E-mail cím** – a Salesforce tartozó kapcsolattartási e-mail cím
 1. Az **API (OAuth-beállítások engedélyezése)** területen válassza a **OAuth-beállítások engedélyezése** lehetőséget.
-    1. A **visszahívási URL-cím** mezőbe írja be a értéket `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Cserélje le a helyére a `your-tenant-name` bérlő nevét. A bérlő nevének megadásakor az összes kisbetűt kell használnia, még akkor is, ha a bérlőt nagybetűvel definiálták Azure AD B2C.
+    1. A **visszahívás URL-címéhez** írja be a következőt: `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Ha [Egyéni tartományt](custom-domain.md)használ, írja be a értéket `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Cserélje le a `your-tenant-name` nevet a bérlő nevére, és az `your-domain-name` Egyéni tartományra. A bérlő nevének megadásakor az összes kisbetűt kell használnia, még akkor is, ha a bérlőt nagybetűvel definiálták Azure AD B2C.
     1. A **kiválasztott OAuth-hatókörökben** válassza **a hozzáférés az alapvető információkhoz (azonosító, profil, e-mail cím, telefonszám)** lehetőséget, és **engedélyezze az egyedi azonosítóhoz (OpenID) való hozzáférést**.
     1. Válassza **a titkos kód megkövetelése webkiszolgálói folyamathoz** lehetőséget.
 1. Adja meg a **configure ID tokent** 

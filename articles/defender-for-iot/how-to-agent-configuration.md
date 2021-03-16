@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: aa863ce556840903d16238d6afef32136ba2b80d
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: b59d9079b6d0fe0ab3fe61eacf43f3a99eb46686
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090845"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495776"
 ---
 # <a name="tutorial-configure-security-agents"></a>Oktatóanyag: biztonsági ügynökök konfigurálása
 
@@ -86,9 +86,9 @@ Az alapértelmezett tulajdonság értékének használatához távolítsa el a t
 
 1. Kattintson az eszközre, majd a **azureiotsecurity** modulban.
 
-1. Kattintson a **modul Identity Twin**elemre.
+1. Kattintson a **modul Identity Twin** elemre.
 
-1. Szerkessze a biztonsági modulban módosítani kívánt tulajdonságokat.
+1. Szerkessze a Defender-IoT-Micro-agentben módosítani kívánt tulajdonságokat.
 
    Ha például a kapcsolódási eseményeket magas prioritással szeretné konfigurálni, és 7 percenként magas prioritású eseményeket szeretne gyűjteni, használja a következő konfigurációt.
 
@@ -117,7 +117,7 @@ A következő táblázat a Defender által a IoT biztonsági ügynökök számá
 
 Az alapértelmezett értékek a [GitHub](https\://aka.ms/iot-security-module-default)megfelelő sémájában érhetők el.
 
-| Név| Állapot | Érvényes értékek| Alapértelmezett értékek| Leírás |
+| Name| Állapot | Érvényes értékek| Alapértelmezett értékek| Leírás |
 |----------|--------|--|-------|----|
 |highPriorityMessageFrequency|Kötelező: hamis |Érvényes értékek: időtartam ISO 8601 formátumban |Alapértelmezett érték: PT7M |A magas prioritású üzenetek küldése előtti maximális időtartam.|
 |lowPriorityMessageFrequency |Kötelező: hamis|Érvényes értékek: időtartam ISO 8601 formátumban |Alapértelmezett érték: PT5H |Az alacsony prioritású üzenetek küldésének maximális ideje.|

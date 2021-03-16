@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: 85a5edc1485cb5a1eeb4428b201380ad9ca89422
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 4aeaa703b5e3203eeb7bc355051e0e8f48f898ac
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449169"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494121"
 ---
 # <a name="security-agent-authentication-methods"></a>Biztonsági ügynök hitelesítési módszerei
 
 Ez a cikk ismerteti a különböző hitelesítési módszereket, amelyekkel a AzureIoTSecurity-ügynökkel végezheti el a hitelesítést a IoT Hub.
 
-Egy biztonsági modulra van szükség minden olyan eszközhöz, amely a Defender IoT Hub IoT van bevezetve. Az eszköz hitelesítéséhez a Defender for IoT két módszer egyikét használhatja. Válassza ki a meglévő IoT-megoldáshoz legjobban illő módszert.
+A Defender által a IoT Hub IoT bekészített összes eszközhöz a Defender-IoT-Micro-Agent szükséges. Az eszköz hitelesítéséhez a Defender for IoT két módszer egyikét használhatja. Válassza ki a meglévő IoT-megoldáshoz legjobban illő módszert.
 
 - SecurityModule beállítás
 - Eszköz beállítás
@@ -33,12 +33,12 @@ Egy biztonsági modulra van szükség minden olyan eszközhöz, amely a Defender
 
 Az IoT AzureIoTSecurity-ügynök két módszere a hitelesítés elvégzéséhez:
 
-- **SecurityModule** hitelesítési mód<br>
-Az ügynököt a biztonsági modul identitása alapján hitelesíti a rendszer az eszköz identitástól függetlenül.
-Akkor használja ezt a hitelesítési típust, ha azt szeretné, hogy a biztonsági ügynök egy dedikált hitelesítési módszert használjon a biztonsági modulon keresztül (csak szimmetrikus kulcs).
+- **Defender-IoT-Micro-Agent** hitelesítési mód<br>
+Az ügynök hitelesítése a Defender-IoT-Micro-Agent identitástól függetlenül történik az eszköz identitása alapján.
+Akkor használja ezt a hitelesítési típust, ha azt szeretné, hogy a biztonsági ügynök dedikált hitelesítési módszert használjon a Defender-IoT-Micro-Agent használatával (csak szimmetrikus kulcs esetén).
 
 - **Eszköz** hitelesítési módja<br>
-Ebben a metódusban a biztonsági ügynök először hitelesíti magát az eszköz identitásával. A kezdeti hitelesítés után a Defender for IoT-ügynök **Rest** -hívást hajt végre a IoT hub az eszköz hitelesítési adataival REST API használatával. A Defender for IoT-ügynök ezután kéri a biztonsági modul hitelesítési módszerét és adatait a IoT Hubból. Az utolsó lépésben a Defender for IoT ügynök hitelesítést végez a Defender for IoT modulban.
+Ebben a metódusban a biztonsági ügynök először hitelesíti magát az eszköz identitásával. A kezdeti hitelesítés után a Defender for IoT-ügynök **Rest** -hívást hajt végre a IoT hub az eszköz hitelesítési adataival REST API használatával. A Defender for IoT Agent ezt követően kéri a Defender-IoT-Micro-Agent hitelesítési módszert és a IoT Hub adatait. Az utolsó lépésben a Defender for IoT ügynök hitelesítést végez a Defender for IoT modulban.
 
 Akkor használja ezt a hitelesítési típust, ha azt szeretné, hogy a biztonsági ügynök felhasználja a meglévő eszköz-hitelesítési módszert (önaláírt tanúsítvány vagy szimmetrikus kulcs).
 
@@ -54,7 +54,7 @@ A konfigurálásának megismeréséhez tekintse meg a [biztonsági ügynök tele
 [Biztonsági ügynök telepítésekor a](how-to-deploy-agent.md)hitelesítési adatokat argumentumként kell megadni.
 Ezek az argumentumok a következő táblázatban vannak dokumentálva.
 
-|Linux-paraméter neve | Windows-paraméter neve | Gyorsírás paraméter |Description|Beállítások|
+|Linux-paraméter neve | Windows-paraméter neve | Gyorsírás paraméter |Leírás|Beállítások|
 |---------------------|---------------|---------|---------------|---------------|
 |hitelesítés – identitás|AuthenticationIdentity|AUI|Hitelesítési identitás| **SecurityModule** vagy- **eszköz**|
 |hitelesítés – metódus|AuthenticationMethod|Aum|Hitelesítési módszer|**SymmetricKey** vagy **SelfSignedCertificate**|

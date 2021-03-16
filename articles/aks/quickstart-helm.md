@@ -4,20 +4,20 @@ description: Az alkalmazás-tárolók fürtben való kicsomagolásához és futt
 services: container-service
 author: zr-msft
 ms.topic: article
-ms.date: 01/12/2021
+ms.date: 03/15/2021
 ms.author: zarhoads
-ms.openlocfilehash: 5656051ecd6e3fd39b051d2d0288e9762c83d9ad
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 4f5232920853908aa5ad714313ead201494caa0d
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249924"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493077"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>Gyors útmutató: fejlesztés az Azure Kubernetes Service-ben (ak) a Helmtal
 
-A [Helm][helm] egy nyílt forráskódú csomagolási eszköz, amely segítséget nyújt a Kubernetes-alkalmazások életciklusának telepítéséhez és kezeléséhez. A Linux-csomagkezelő, például az *apt* és a *yum* hasonlóan a Helm a Kubernetes-diagramok kezelésére szolgál, amelyek előre konfigurált Kubernetes-erőforrások csomagjai.
+A [Helm][helm] egy nyílt forráskódú csomagolási eszköz, amely segítséget nyújt a Kubernetes-alkalmazások életciklusának telepítéséhez és kezeléséhez. A Linux-csomagkezelő, például az *apt* és a *yum* hasonlóan a Helm kezeli a Kubernetes-diagramokat, amelyek előre konfigurált Kubernetes-erőforrások csomagjai.
 
-Ebből a cikkből megtudhatja, hogyan használhatja a Helm csomagot és futtathat egy alkalmazást az AK-ban. Egy meglévő alkalmazás Helm használatával történő telepítésével kapcsolatos további információkért lásd: [meglévő alkalmazások telepítése az AK-ban Helm-ben][helm-existing].
+Ebben a rövid útmutatóban a Helm használatával csomagolja ki és futtatja az alkalmazást az AK-on. Egy meglévő alkalmazás Helm használatával történő telepítésével kapcsolatos további információkért tekintse meg a [meglévő alkalmazások telepítése az AK-ban][helm-existing] című témakört, útmutató.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -26,14 +26,16 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Helm csomagot és futtatha
 * A [Helm v3 telepítve van][helm-install].
 
 ## <a name="create-an-azure-container-registry"></a>Azure Container Registry létrehozása
-Ha a Helm használatával szeretné futtatni az alkalmazást az AK-fürtben, szüksége lesz egy Azure Container Registry a tároló lemezképének tárolására. Az alábbi példa az [az ACR Create][az-acr-create] paranccsal hoz létre egy *MyHelmACR* nevű ACR-t a *MyResourceGroup* -erőforráscsoporthoz az *alapszintű* SKU használatával. Adja meg a saját egyedi regisztrációs nevét. A tárolóregisztrációs adatbázis nevének egyedinek kell lennie az Azure-ban, és 5–50 alfanumerikus karaktert kell tartalmaznia. Az *Alapszintű* termékváltozat költséghatékony, fejlesztési célú belépési pontként szolgál, és kiegyenlített tárolási kapacitást és teljesítményt biztosít.
+A tároló rendszerképeit egy Azure Container Registry (ACR) tárolóban kell tárolnia, hogy az alkalmazás az AK-fürtben fusson a Helm használatával. Az Azure-ban egyedi, 5-50 alfanumerikus karaktereket tartalmazó beállításjegyzékbeli nevet adjon meg. Az *Alapszintű* termékváltozat költséghatékony, fejlesztési célú belépési pontként szolgál, és kiegyenlített tárolási kapacitást és teljesítményt biztosít.
+
+Az alábbi példa az [az ACR Create][az-acr-create] paranccsal hoz létre egy *MyHelmACR* nevű ACR-t a *MyResourceGroup* -ben az *alapszintű* SKU használatával.
 
 ```azurecli
 az group create --name MyResourceGroup --location eastus
 az acr create --resource-group MyResourceGroup --name MyHelmACR --sku Basic
 ```
 
-A kimenet a következő példához hasonló. Jegyezze fel az ACR *lekéréséhez* értékét, mivel azt egy későbbi lépésben fogja használni. Az alábbi példában a *myhelmacr.azurecr.IO* a *myhelmacr* *lekéréséhez* .
+A kimenet az alábbi példához hasonló lesz. Jegyezze fel az ACR *lekéréséhez* értékét, mivel ezt egy későbbi lépésben fogja használni. Az alábbi példában a *myhelmacr.azurecr.IO* a *myhelmacr* *lekéréséhez* .
 
 ```console
 {
@@ -57,31 +59,32 @@ A kimenet a következő példához hasonló. Jegyezze fel az ACR *lekéréséhez
 }
 ```
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service-fürt létrehozása
+## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 
-Hozzon létre egy AK-fürtöt. Az alábbi parancs létrehoz egy MyAKS nevű AK-fürtöt, és csatolja a MyHelmACR.
+Az új AK-fürtnek hozzá kell férnie az ACR-hez a tároló lemezképének lekéréséhez és futtatásához. Az alábbi paranccsal végezze el a következőket:
+* Hozzon létre egy *MyAKS* nevű AK-fürtöt, és csatolja a *MyHelmACR*.
+* Adja meg a *MyAKS* -fürt hozzáférését a *MyHelmACR* ACR-hez.
+
 
 ```azurecli
 az aks create -g MyResourceGroup -n MyAKS --location eastus  --attach-acr MyHelmACR --generate-ssh-keys
 ```
 
-Az AK-fürtnek hozzá kell férnie az ACR-hez a tároló lemezképének lekéréséhez és futtatásához. A fenti parancs azt is megadja, hogy a *MyAKS* -fürt hozzáférjen a *MyHelmACR* ACR-hez.
-
 ## <a name="connect-to-your-aks-cluster"></a>Kapcsolódás az AK-fürthöz
 
-Ahhoz, hogy csatlakozni tudjon a Kubernetes-fürthöz a helyi számítógépről, használja a Kubernetes [kubectl][kubectl] nevű parancssori ügyfelét.
+Egy Kubernetes-fürt helyi összekapcsolásához használja a [Kubectl][kubectl]Kubernetes parancssori ügyfelet. `kubectl` már telepítve van a Azure Cloud Shell használata esetén. 
 
-Ha az Azure Cloud Shellt használja, a `kubectl` már telepítve van. Helyben is telepítheti az [az aks install-cli][] paranccsal:
+1. Telepítse `kubectl` helyileg a `az aks install-cli` parancsot a parancs használatával:
 
-```azurecli
-az aks install-cli
-```
+    ```azurecli
+    az aks install-cli
+    ```
 
-Az [az aks get-credentials][] paranccsal konfigurálható `kubectl` a Kubernetes-fürthöz való csatlakozásra. A következő példa a *MyAKS* nevű AK-fürt hitelesítő adatait kéri le a *MyResourceGroup*:
+2. Konfigurálja a `kubectl` parancsot a Kubernetes-fürthöz való kapcsolódáshoz a `az aks get-credentials` parancs használatával. A következő parancs például a *MyAKS* nevű AK-fürt hitelesítő adatait kéri le a *MyResourceGroup*:  
 
-```azurecli
-az aks get-credentials --resource-group MyResourceGroup --name MyAKS
-```
+    ```azurecli
+    az aks get-credentials --resource-group MyResourceGroup --name MyAKS
+    ```
 
 ## <a name="download-the-sample-application"></a>A mintaalkalmazás letöltése
 
@@ -94,7 +97,7 @@ cd dev-spaces/samples/nodejs/getting-started/webfrontend
 
 ## <a name="create-a-dockerfile"></a>Dockerfile létrehozása
 
-Hozzon létre egy új *Docker* -fájlt a következő használatával:
+Hozzon létre egy új *Docker* -fájlt a következő parancsok használatával:
 
 ```dockerfile
 FROM node:latest
@@ -113,7 +116,7 @@ CMD ["node","server.js"]
 
 ## <a name="build-and-push-the-sample-application-to-the-acr"></a>A minta alkalmazás létrehozása és leküldése az ACR-be
 
-Az az [ACR Build][az-acr-build] paranccsal hozzon létre és küldjön le egy rendszerképet a beállításjegyzékbe az előző Docker használatával. A `.` parancs végén adja meg a Docker helyét, ebben az esetben az aktuális könyvtárat.
+Az előző Docker használatával futtassa az az [ACR Build][az-acr-build] parancsot egy rendszerkép létrehozásához és a beállításjegyzékbe való leküldéséhez. A `.` parancs végén a Docker helye (ebben az esetben az aktuális könyvtár) van beállítva.
 
 ```azurecli
 az acr build --image webfrontend:v1 \
@@ -129,8 +132,8 @@ A Helm-diagramot a parancs használatával hozhatja ki `helm create` .
 helm create webfrontend
 ```
 
-Végezze el a következő frissítéseket a *webfrontend/Values. YAML*. Helyettesítse be a beállításjegyzék egy korábbi lépésben feljegyzett lekéréséhez, például a *myhelmacr.azurecr.IO*:
-
+*Webfrontend/Values. YAML* frissítése:
+* Cserélje le a beállításjegyzék egy korábbi lépésben feljegyzett lekéréséhez, például *myhelmacr.azurecr.IO*.
 * Módosítás `image.repository` ide `<loginServer>/webfrontend`
 * Módosítás `service.type` ide `LoadBalancer`
 
@@ -166,13 +169,13 @@ appVersion: v1
 
 ## <a name="run-your-helm-chart"></a>A Helm-diagram futtatása
 
-Az `helm install` parancs használatával telepítse az alkalmazást a Helm-diagram használatával.
+Telepítse az alkalmazást a Helm-diagram használatával a `helm install` paranccsal.
 
 ```console
 helm install webfrontend webfrontend/
 ```
 
-Néhány percet vesz igénybe, hogy a szolgáltatás egy nyilvános IP-címet ad vissza. A folyamat figyeléséhez használja az `kubectl get service` parancsot a *Watch* paraméterrel:
+Néhány percet vesz igénybe, hogy a szolgáltatás egy nyilvános IP-címet ad vissza. Figyelje a folyamatot az `kubectl get service` argumentummal a parancs használatával `--watch` .
 
 ```console
 $ kubectl get service --watch
@@ -183,18 +186,20 @@ webfrontend         LoadBalancer  10.0.141.72   <pending>     80:32150/TCP   2m
 webfrontend         LoadBalancer  10.0.141.72   <EXTERNAL-IP> 80:32150/TCP   7m
 ```
 
-Nyissa meg az alkalmazás terheléselosztó eszközét egy böngészőben a használatával `<EXTERNAL-IP>` , és tekintse meg a minta alkalmazást.
+Nyissa meg az alkalmazás Load balancerét egy böngészőben a használatával a `<EXTERNAL-IP>` alkalmazásban.
 
 ## <a name="delete-the-cluster"></a>A fürt törlése
 
-Ha a fürtre már nincs szükség, az az [Group delete][az-group-delete] paranccsal távolítsa el az erőforráscsoportot, az AK-fürtöt, a tároló-beállításjegyzéket, az ott tárolt tároló-lemezképeket és az összes kapcsolódó erőforrást.
+Az az [Group delete][az-group-delete] paranccsal eltávolíthatja az erőforráscsoportot, az AK-fürtöt, a tároló-beállításjegyzéket, az ACR-ben tárolt tároló-lemezképeket és az összes kapcsolódó erőforrást.
 
 ```azurecli-interactive
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. A szolgáltatásnév eltávolításának lépéseiért lásd [az AKS-szolgáltatásnevekre vonatkozó szempontokat és a szolgáltatásnevek törlését][sp-delete] ismertető cikket. Felügyelt identitás használata esetén az identitást a platform felügyeli, és nem szükséges az eltávolítás.
+> A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. A szolgáltatásnév eltávolításának lépéseiért lásd [az AKS-szolgáltatásnevekre vonatkozó szempontokat és a szolgáltatásnevek törlését][sp-delete] ismertető cikket.
+> 
+> Felügyelt identitás használata esetén az identitást a platform felügyeli, és nem szükséges az eltávolítás.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,5 +1,5 @@
 ---
-title: IoT Edge biztonsági modul üzembe helyezése
+title: IoT Edge Defender üzembe helyezése – IoT-Micro-Agent
 description: Ismerje meg, hogyan helyezhet üzembe egy Defendert a IoT biztonsági ügynökön IoT Edgeon.
 services: defender-for-iot
 ms.service: defender-for-iot
@@ -13,24 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: cd79c928afdb3563b47374869cff577f9221d360
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e4117c3c0f1016da616a88a36a1b8c926b790c62
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705772"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495113"
 ---
-# <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Biztonsági modul üzembe helyezése a IoT Edge eszközön
+# <a name="deploy-a-defender-iot-micro-agent-on-your-iot-edge-device"></a>Defender-IoT-Micro-Agent üzembe helyezése a IoT Edge eszközön
 
 A **Defender for IoT** modul átfogó biztonsági megoldást nyújt a IoT Edge-eszközökhöz.
-A biztonsági modul az operációs rendszer és a tárolórendszer nyers biztonsági adatainak gyűjtését, összesítését és elemzését végezheti el a gyakorlatban használható biztonsági javaslatokkal és riasztásokkal.
-További információ: [IoT Edge biztonsági modulja](security-edge-architecture.md).
+A Defender-IoT-Micro-Agent a nyers biztonsági adatokat gyűjti, összesíti és elemzi az operációs rendszer és a tároló rendszerből a gyakorlatban használható biztonsági javaslatokkal és riasztásokkal.
+További információ: [Defender-IoT-Micro-agent IoT Edge](security-edge-architecture.md).
 
-Ebből a cikkből megtudhatja, hogyan helyezhet üzembe egy biztonsági modult a IoT Edge eszközön.
+Ebből a cikkből megtudhatja, hogyan helyezhet üzembe egy Defender-IoT-Micro-Agent eszközt a IoT Edge eszközön.
 
-## <a name="deploy-security-module"></a>Biztonsági modul telepítése
+## <a name="deploy-defender-iot-micro-agent"></a>Defender üzembe helyezése – IoT-Micro-Agent
 
-A következő lépésekkel telepítheti a Defendert a IoT biztonsági moduljának IoT Edge.
+A következő lépésekkel telepítheti a Defendert a IoT Defender-IoT-Micro-Agent használatára a IoT Edgehoz.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
@@ -169,7 +169,7 @@ Hajtsa végre az egyes lépéseket, hogy elvégezze a IoT IoT Edge-telepítésé
 
 ## <a name="diagnostic-steps"></a>Diagnosztikai lépések
 
-Ha problémába ütközik, a tároló naplói a legjobb módszer a IoT Edge biztonsági modul eszközének állapotának megismerésére. Az ebben a szakaszban szereplő parancsokkal és eszközökkel további információt gyűjthet.
+Ha problémába ütközik, a tároló naplói a legjobb módszer a IoT Edge Defender-IoT-Micro-Agent eszköz állapotának megismerésére. Az ebben a szakaszban szereplő parancsokkal és eszközökkel további információt gyűjthet.
 
 ### <a name="verify-the-required-containers-are-installed-and-functioning-as-expected"></a>Ellenőrizze, hogy a szükséges tárolók telepítve vannak-e, és megfelelően működnek-e.
 

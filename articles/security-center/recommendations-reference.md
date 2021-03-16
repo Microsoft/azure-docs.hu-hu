@@ -4,15 +4,15 @@ description: Ez a cikk Azure Security Center biztonsági javaslatait sorolja fel
 author: memildin
 ms.service: security-center
 ms.topic: reference
-ms.date: 02/16/2021
+ms.date: 03/14/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: d484802b35ffec26d1248e51b365ac9041fc7934
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: b4fe575039c6e913ca20198f204b6529f6c482c7
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100406"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466193"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Biztonsági javaslatok – gyorsútmutató
 
@@ -28,9 +28,17 @@ A biztonságos pontszám a befejezett Security Center javaslatok számán alapul
 > Ha egy javaslat leírása "nincs kapcsolódó szabályzat", ez általában azért van, mert a javaslat egy másik javaslattól és _annak_ házirendjétől függ. Tegyük fel például, hogy "az Endpoint Protection állapotával kapcsolatos hibák elhárítása szükséges..." arra a javaslatra támaszkodik, amely ellenőrzi, hogy az Endpoint Protection-megoldás még _telepítve_ van-e ("Endpoint Protection-megoldás telepítése..."). Az alapul szolgáló _javaslat szabályzattal rendelkezik._
 > A házirendek csak az alapszintű javaslatokra való korlátozása egyszerűsíti a házirendek kezelését.
 
+## <a name="appservices-recommendations"></a><a name='recs-appservices'></a>AppServices javaslatok
+
+[!INCLUDE [asc-recs-appservices](../../includes/asc-recs-appservices.md)]
+
 ## <a name="compute-recommendations"></a><a name='recs-compute'></a>Számítási javaslatok
 
 [!INCLUDE [asc-recs-compute](../../includes/asc-recs-compute.md)]
+
+## <a name="container-recommendations"></a><a name='recs-container'></a>Tárolójavaslatok
+
+[!INCLUDE [asc-recs-container](../../includes/asc-recs-container.md)]
 
 ## <a name="data-recommendations"></a><a name='recs-data'></a>Az adatjavaslatok
 

@@ -314,16 +314,16 @@
           href: references-work-with-defender-for-iot-cli-commands.md
         - name: Saját fejlesztésű protokollok kezelése (Horizon)
           href: resources-manage-proprietary-protocols.md
+        - name: Gyakori kérdések – szolgáltatás
+          displayName: 'FAQ, regulation, internet, connection, hardware, appliances, ports, logs'
+          href: resources-frequently-asked-questions.md
     - name: Ügynökalapú megoldás eszközkészítők számára
       items:
         - name: Az Azure RTOS biztonsági moduljának API-ja
           displayNAme: 'prototype, disable'
           href: azure-rtos-security-module-api.md
-        - name: Gyakori kérdések – szolgáltatás
-          displayName: 'regulation, internet, connection, hardware, appliances, ports, logs'
-          href: resources-frequently-asked-questions.md
         - name: Gyakori kérdések – ügynök
-          displayName: 'embedded, dependencies, data, quota, internet,'
+          displayName: 'FAQ, embedded, dependencies, data, quota, internet,'
           href: resources-agent-frequently-asked-questions.md
         - name: Azure-ütemterv
           href: 'https://azure.microsoft.com/roadmap/?category=security-identity'

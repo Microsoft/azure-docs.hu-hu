@@ -1,6 +1,6 @@
 ---
-title: Rendszergazdai szerepkör engedélyeinek megtekintése és társítása – Azure AD | Microsoft Docs
-description: Most már megtekintheti és kezelheti az Azure AD rendszergazdai szerepkör tagjait a portálon. Azok számára, akik gyakran kezelik a szerepkör-hozzárendeléseket.
+title: Azure AD-szerepkörök kiosztása a felhasználók számára – Azure Active Directory
+description: Megtudhatja, hogyan biztosíthat hozzáférést az Azure Active Directory lévő felhasználóknak Azure AD-szerepkörök hozzárendelésével.
 services: active-directory
 author: rolyon
 manager: daveba
@@ -8,41 +8,49 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 03/07/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26217930b79b958ae86d976d06a28ba4a4852ab6
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 36ced586db1b4e417e623431c137c43dac8ba56f
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742012"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466644"
 ---
-# <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Rendszergazdai szerepkörök megtekintése és kiosztása az Azure Active Directoryban
+# <a name="assign-azure-ad-roles-to-users"></a>Azure AD-szerepkörök kiosztása a felhasználók számára
 
-Most már megtekintheti és kezelheti a rendszergazdai szerepkörök összes tagját a Azure Active Directory-portálon. Ha gyakran felügyeli a szerepkör-hozzárendeléseket, valószínűleg ezt a folyamatot fogja előnyben részesíteni. És ha már megértette, hogy "mi a fene do ezek a szerepkörök?", az egyes Azure AD-rendszergazdai szerepkörök engedélyeinek részletes listáját láthatja.
+Most már megtekintheti és kezelheti a rendszergazdai szerepkörök összes tagját az Azure AD felügyeleti központban. Ha gyakran felügyeli a szerepkör-hozzárendeléseket, valószínűleg ezt a folyamatot fogja előnyben részesíteni. Ez a cikk azt ismerteti, hogyan rendelhet hozzá Azure AD-szerepköröket az Azure AD felügyeleti központon keresztül.
 
-## <a name="view-all-roles"></a>Az összes szerepkör megtekintése
+## <a name="assign-a-role"></a>Szerepkör kiosztása
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza a **Azure Active Directory** lehetőséget.
+1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) globális rendszergazdai vagy Kiemelt szerepkörű rendszergazdai jogosultságokkal.
+
+1. Válassza a **Azure Active Directory** lehetőséget.
 
 1. Válassza a **szerepkörök és rendszergazdák** lehetőséget az összes elérhető szerepkör listájának megtekintéséhez.
 
-1. Válassza ki az egyes sorok jobb oldalán lévő három pontot a szerepkör engedélyeinek megtekintéséhez. Válasszon egy szerepkört a szerepkörhöz hozzárendelt felhasználók megtekintéséhez. Ha az alábbi ábrán nem látható, olvassa el a [Kiemelt szerepkörökhöz tartozó hozzárendelések megtekintése](#view-assignments-for-privileged-roles) című témakört annak ellenőrzéséhez, hogy PRIVILEGED Identity Management (PIM) van-e.
+    ![Képernyőkép a szerepkörökről és a rendszergazdák lapról](./media/manage-roles-portal/roles-and-administrators.png)
 
-    ![szerepkörök listája az Azure AD-portálon](./media/manage-roles-portal/view-roles-in-azure-active-directory.png)
+1. Válasszon ki egy szerepkört a hozzárendelések megtekintéséhez.
 
-## <a name="view-my-roles"></a>Saját szerepkörök megtekintése
+    Ha segítségre van szüksége a szükséges szerepkör megtalálásához, az Azure AD a szerepkör-kategóriák alapján jeleníti meg a szerepkörök részhalmazait. Tekintse meg a **típus** szűrőt, hogy csak a kiválasztott típusú szerepkörök jelenjenek meg.
 
-Egyszerűen megtekintheti saját engedélyeit is. Válassza ki a **szerepkört** a **szerepkörök és rendszergazdák** lapon, hogy megtekintse a jelenleg Önhöz rendelt szerepköröket.
+1. Válassza a **hozzárendelések hozzáadása** lehetőséget, majd válassza ki a szerepkörhöz hozzárendelni kívánt felhasználókat.
 
-## <a name="view-assignments-for-privileged-roles"></a>Kiemelt szerepkörök hozzárendeléseinek megtekintése
+    Ha az alábbi ábrán nem látható, olvassa el a [Privileged Identity Management (PIM)](#privileged-identity-management-pim) megjegyzését annak ellenőrzéséhez, hogy a PIM-t használja-e.
 
-A felügyelet **a PIM-ben** lehetőségre kattintva további felügyeleti lehetőségeket biztosíthat. A Kiemelt szerepkörű rendszergazdák az "állandó" (a szerepkörben mindig aktív) hozzárendeléseket "jogosult" értékre módosíthatják (csak akkor, ha emelt szintű). Ha nem rendelkezik Privileged Identity Managementval, akkor továbbra is kiválaszthatja a **felügyelet a PIM-ben** lehetőséget a próbaverzióra való feliratkozáshoz. A Privileged Identity Management [prémium szintű Azure ad P2-licencet](../privileged-identity-management/subscription-requirements.md)igényel.
+    ![rendszergazdai szerepkör engedélyeinek listája](./media/manage-roles-portal/add-assignments.png)
 
-![rendszergazdai szerepkör tagjainak listája](./media/manage-roles-portal/member-list.png)
+1. A szerepkör hozzárendeléséhez válassza a **Hozzáadás** lehetőséget.
+
+## <a name="privileged-identity-management-pim"></a>Privileged Identity Management (PIM)
+
+Az [Azure ad Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md)használatával további felügyeleti képességeket adhat meg a **PIM** szolgáltatásban. A Kiemelt szerepkörű rendszergazdák az "állandó" (a szerepkörben mindig aktív) hozzárendeléseket "jogosult" értékre módosíthatják (csak akkor, ha emelt szintű). Ha nem rendelkezik Privileged Identity Managementval, akkor továbbra is kiválaszthatja a **felügyelet a PIM-ben** lehetőséget a próbaverzióra való feliratkozáshoz. A Privileged Identity Management [prémium szintű Azure ad P2-licencet](../privileged-identity-management/subscription-requirements.md)igényel.
+
+![Képernyőfelvétel: a "felhasználói rendszergazda – hozzárendelések" lap, amelyen a "kezelés a PIM-ban" művelet be van jelölve](./media/manage-roles-portal/member-list-pim.png)
 
 Ha Ön globális rendszergazda vagy Kiemelt szerepkörű rendszergazda, egyszerűen hozzáadhat vagy eltávolíthat tagokat, szűrheti a listát, vagy kijelölhet egy tagot az aktív hozzárendelt szerepkörök megjelenítéséhez.
 
@@ -51,34 +59,8 @@ Ha Ön globális rendszergazda vagy Kiemelt szerepkörű rendszergazda, egyszer�
 >
 > ![A PIM-ben felügyelt Azure AD-szerepkörök olyan felhasználók számára, akik már használják a PIM-t, és prémium P2 licenccel rendelkeznek](./media/manage-roles-portal/pim-manages-roles-for-p2.png)
 
-## <a name="view-a-users-role-permissions"></a>Felhasználó szerepkör-engedélyeinek megtekintése
-
-A szerepkör tagjainak megtekintésekor válassza a **Leírás** lehetőséget a szerepkör-hozzárendelés által biztosított engedélyek teljes listájának megtekintéséhez. A lap a kapcsolódó dokumentációra mutató hivatkozásokat tartalmaz, amelyek segítséget nyújtanak a címtár szerepköreinek kezelésében.
-
-![Képernyőkép, amely a "globális rendszergazda – Leírás" lapot jeleníti meg.](./media/manage-roles-portal/role-description.png)
-
-## <a name="download-role-assignments"></a>Szerepkör-hozzárendelések letöltése
-
-Egy adott szerepkör összes hozzárendelésének letöltéséhez a **szerepkörök és rendszergazdák** lapon válasszon ki egy szerepkört, majd válassza a **szerepkör-hozzárendelések letöltése** lehetőséget. Egy CSV-fájl, amely felsorolja a szerepkör összes hatókörében lévő hozzárendeléseket.
-
-![szerepkör összes hozzárendelésének letöltése](./media/manage-roles-portal/download-role-assignments.png)
-
-## <a name="assign-a-role"></a>Szerepkör kiosztása
-
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) globális rendszergazda vagy Kiemelt szerepkörű rendszergazdai jogosultságokkal, és válassza a **Azure Active Directory** lehetőséget.
-
-1. Válassza a **szerepkörök és rendszergazdák** lehetőséget az összes elérhető szerepkör listájának megtekintéséhez.
-
-1. Válasszon ki egy szerepkört a hozzárendelések megtekintéséhez.
-
-    ![Képernyőfelvétel: a "felhasználói rendszergazda – hozzárendelések" lap, amelyen a "Manage in PIM" művelet van kiválasztva.](./media/manage-roles-portal/member-list.png)
-
-1. Válassza a **hozzárendelések hozzáadása** lehetőséget, és válassza ki a hozzárendelni kívánt szerepköröket. A felügyelet **a PIM-ben** lehetőségre kattintva további felügyeleti lehetőségeket biztosíthat. Ha az alábbi ábrán nem látható, olvassa el a [Kiemelt szerepkörök hozzárendelésének megtekintése](#view-assignments-for-privileged-roles) című témakört annak ellenőrzéséhez, hogy a PIM-ban van-e.
-
-    ![rendszergazdai szerepkör engedélyeinek listája](./media/manage-roles-portal/directory-role-select-role.png)
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Nyugodtan ossza meg velünk az [Azure ad rendszergazdai szerepkörökkel foglalkozó fórumát](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
-* A szerepkörökkel és a rendszergazdai szerepkör-hozzárendeléssel kapcsolatos további információkért lásd: [rendszergazdai szerepkörök hozzárendelése](permissions-reference.md).
+* További információ a szerepkörökről: az [Azure ad beépített szerepkörei](permissions-reference.md).
 * Az alapértelmezett felhasználói engedélyek összehasonlítását lásd: a [vendég és a tag alapértelmezett felhasználói engedélyeinek összehasonlítása](../fundamentals/users-default-permissions.md).

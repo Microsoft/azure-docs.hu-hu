@@ -4,18 +4,21 @@ titleSuffix: Azure Kubernetes Service
 description: Megtudhatja, hogyan hozhat létre gyorsan Kubernetes-fürtöt, hogyan helyezhet üzembe egy alkalmazást, és hogyan figyelheti a teljesítményt az Azure Kubernetes szolgáltatásban (ak) a Azure Portal használatával.
 services: container-service
 ms.topic: quickstart
-ms.date: 01/13/2021
+ms.date: 03/15/2021
 ms.custom: mvc, seo-javascript-october2019, contperfq3
-ms.openlocfilehash: 5f758c0bc50b2d4f22b3dbf0efaa4ecbc3f334cb
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 4763e72e3a50bd6c84f158658b7531a25e4ceec9
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102507806"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492914"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Gyors útmutató: Azure Kubernetes Service (ak) fürt üzembe helyezése a Azure Portal használatával
 
-Az Azure Kubernetes Service (ak) egy felügyelt Kubernetes szolgáltatás, amely lehetővé teszi fürtök gyors üzembe helyezését és kezelését. Ebben a rövid útmutatóban egy AKS-fürtöt helyezünk üzembe az Azure Portal használatával. A fürtben fut egy többtárolós alkalmazás, amely tartalmazza a webes kezelőfelületet és a Redis-példányt. Ezután megtudhatja, hogyan figyelheti a fürt állapotát és az alkalmazást futtató hüvelyeket.
+Az Azure Kubernetes Service (ak) egy felügyelt Kubernetes szolgáltatás, amely lehetővé teszi fürtök gyors üzembe helyezését és kezelését. Ebben a rövid útmutatóban a következőket fogja megtekinteni:
+* A Azure Portal használatával helyezzen üzembe egy AK-fürtöt. 
+* Futtasson egy többtárolós alkalmazást webes kezelőfelülettel és Redis-példánnyal a fürtben. 
+* A fürt és az alkalmazást futtató hüvelyek állapotának figyelése.
 
 ![Az Azure Vote mintaalkalmazás keresését ábrázoló kép](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
@@ -23,180 +26,183 @@ A rövid útmutató feltételezi, hogy rendelkezik a Kubernetes használatára v
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+## <a name="prerequisites"></a>Előfeltételek
 
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 ## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 
-Az AKS-fürt létrehozásához hajtsa végre az alábbi lépéseket:
-
 1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
 
-2. Válassza a **Tárolók** >  **Kubernetes Service** lehetőséget.
+2. Válassza a **Tárolók** > **Kubernetes Service** lehetőséget.
 
 3. Az **Alapvető beállítások** lapon konfigurálja az alábbiakat:
-    - **Projekt részletei**: válasszon ki egy Azure- **előfizetést**, majd válasszon ki vagy hozzon létre egy Azure- **erőforráscsoportot**, például *myResourceGroup*.
-    - **Fürt részletei**: adjon meg egy **Kubernetes-fürtöt**, például a *myAKSCluster* nevet. Válasszon **régiót** és **Kubernetes-verziót** az AK-fürthöz.
-    - **Elsődleges csomópont-készlet**: válassza ki a virtuális gép **csomópontjának méretét** az AK-csomópontok számára. A virtuális gép mérete *nem* módosítható, ha egy AK-fürt üzembe helyezése megtörtént.
-            – Válassza ki a fürtbe telepítendő csomópontok számát. Ehhez a rövid útmutatóhoz a **Csomópontok száma** beállítás értékeként adjon meg *1*-et. A csomópontok száma a fürt telepítése után is *módosítható*.
+    - **Projekt részletei**: 
+        * Válasszon ki egy **Azure-előfizetést**.
+        * Válasszon ki vagy hozzon létre egy Azure- **erőforráscsoportot**, például *myResourceGroup*.
+    - **Fürt részletei**: 
+        * Adja meg a **Kubernetes-fürt nevét**, például *myAKSCluster*. 
+        * Válasszon **régiót** és **Kubernetes-verziót** az AK-fürthöz.
+    - **Elsődleges csomópont-készlet**: 
+        * Az AKS-csomópontokhoz válasszon egy VM-**csomópontméretet**. A virtuálisgép-méret az AKS-fürt telepítését követően *nem* módosítható.
+        * Adja meg a fürtre telepítendő csomópontok számát. Ehhez a rövid útmutatóhoz a **Csomópontok száma** beállítás értékeként adjon meg *1*-et. A csomópontok száma a fürt telepítése után is *módosítható*.
     
     ![AKS-fürt létrehozása – alapvető adatok megadása](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
-    Válassza a **Next (tovább): node Pools** (Befejezés) lehetőséget.
+4. Válassza a **Next (tovább): node Pools** (Befejezés) lehetőséget.
 
-4. A **csomópont-készletek** lapon tartsa meg az alapértelmezett beállításokat. A képernyő alján kattintson a **Tovább: hitelesítés** elemre.
+5. Tartsa meg az alapértelmezett **csomópont-készletek** beállításait. A képernyő alján kattintson a **Tovább: hitelesítés** elemre.
     > [!CAUTION]
-    > Az új fürt identitásának létrehozása több percet is igénybe vehet, és így elérhetővé válik, így az egyszerű szolgáltatásnév nem talált hibákat és érvényesítési hibákat a Azure Portal. Ha ezt tapasztalja, tekintse meg az [Azure Kubernetes-szolgáltatással kapcsolatos gyakori problémák elhárításával kapcsolatos problémákat](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster) .
+    > Az újonnan létrehozott Azure AD-szolgáltatások több percet is igénybe vehetnek, és így elérhetővé válnak, ami az "egyszerű szolgáltatásnév nem található" hibákat és az érvényesítési hibákat Azure Portal. Ha ezt a bumpet találta, tekintse meg a [hibaelhárítással](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster) foglalkozó cikket.
 
-5. A **Hitelesítés** lapon konfigurálja az alábbiakat:
-    - Hozzon létre egy új fürtöt, és hagyja a **hitelesítési** mezőt a **assinged által felügyelt identitással**. Alternatív megoldásként kiválaszthatja az **egyszerű** szolgáltatásnév használatát is. Válassza az *(új) alapértelmezett egyszerű szolgáltatásnév* lehetőséget egy alapértelmezett egyszerű szolgáltatásnév létrehozásához, vagy *konfigurálja a szolgáltatásnevet* egy meglévő használatára. Ha meglévőt használ, meg kell adnia az SPN ügyfél-azonosítót és a titkos kulcsot.
-    - Engedélyezze a Kubernetes szerepköralapú hozzáférés-vezérlés (Kubernetes RBAC) beállítását. Így részletesebben szabályozhatja az AKS-fürtben üzembe helyezett Kubernetes-erőforrásokhoz való hozzáférést.
+6. A **Hitelesítés** lapon konfigurálja az alábbiakat:
+    - Hozzon létre egy új fürtöt az alábbiak szerint:
+        * A **hitelesítési** mező kihagyása a **assinged által felügyelt identitással**, vagy
+        * Szolgáltatásnév **kiválasztása egyszerű** szolgáltatásnév használatára. 
+            * Válassza a *(új) alapértelmezett egyszerű szolgáltatásnév* lehetőséget az alapértelmezett szolgáltatásnév létrehozásához, vagy
+            * Válassza az *egyszerű szolgáltatásnév beállítása* lehetőséget egy meglévő használatára. Meg kell adnia a meglévő rendszerbiztonsági tag SPN-ügyfél-AZONOSÍTÓját és titkos kulcsát.
+    - Engedélyezze a Kubernetes szerepköralapú hozzáférés-vezérlés (Kubernetes RBAC) beállítást, hogy részletesebben szabályozható legyen az AK-fürtben üzembe helyezett Kubernetes-erőforrásokhoz való hozzáférés.
 
-Alapértelmezés szerint a rendszer *alapszintű* hálózatkezelést használ, a tárolók Azure monitor pedig engedélyezve van. Ha az ellenőrzés véget ért, kattintson az **Áttekintés és létrehozás**, majd a **Létrehozás** lehetőségre.
+    Alapértelmezés szerint a rendszer *alapszintű* hálózatkezelést használ, a tárolók Azure monitor pedig engedélyezve van. 
 
-Az AKS-fürt létrehozása eltarthat néhány percig. Ha befejeződött a telepítés, kattintson az **erőforrás** megnyitása lehetőségre, vagy keresse meg az AK-beli fürterőforrás-csoportot (például *myResourceGroup*), és válassza ki az AK-erőforrást, például *myAKSCluster*. Megjelenik az AK-fürt irányítópultja, ahogy az a következő példában látható:
+7. Ha az ellenőrzés véget ért, kattintson az **Áttekintés és létrehozás**, majd a **Létrehozás** lehetőségre. 
 
-![Példa AKS-irányítópult az Azure Portalon](media/kubernetes-walkthrough-portal/aks-portal-dashboard.png)
+
+8. Az AKS-fürt létrehozása eltarthat néhány percig. A telepítés befejezésekor navigáljon az erőforráshoz az alábbiak szerint:
+    * Kattintson **az erőforrás keresése** lehetőségre, vagy
+    * Tallózással keresse meg az AK fürterőforrás-csoportot, és válassza ki az AK-erőforrást. 
+        * Példaként használható fürt irányítópultja: Tallózás a *myResourceGroup* és a *myAKSCluster* -erőforrás kiválasztásával.
+
+        ![Példa AKS-irányítópult az Azure Portalon](media/kubernetes-walkthrough-portal/aks-portal-dashboard.png)
 
 ## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
 
-A Kubernetes-fürtök kezeléséhez a [kubectl][kubectl], a Kubernetes parancssori ügyfélprogramot kell használnia. A `kubectl` ügyfél előzetesen már telepítve van az Azure Cloud Shellben.
+Kubernetes-fürt kezeléséhez használja a [Kubectl][kubectl]Kubernetes parancssori ügyfelet. `kubectl` már telepítve van a Azure Cloud Shell használata esetén. 
 
-Nyissa meg Cloud Shell a `>_` Azure Portal tetején található gomb használatával.
+1. Nyissa meg Cloud Shell a `>_` Azure Portal tetején található gomb használatával.
 
-![Az Azure Cloud Shell megnyitása a portálon](media/kubernetes-walkthrough-portal/aks-cloud-shell.png)
+    ![Az Azure Cloud Shell megnyitása a portálon](media/kubernetes-walkthrough-portal/aks-cloud-shell.png)
 
-> [!NOTE]
-> Ha ezeket a műveleteket egy helyi rendszerhéj-telepítésben szeretné elvégezni, először ellenőriznie kell az Azure CLI-t, majd az parancs használatával kell csatlakoznia az Azure-hoz `az login` .
+    > [!NOTE]
+    > A műveletek helyi rendszerhéj-telepítéssel történő végrehajtásához tegye a következőket:
+    > 1. Ellenőrizze, hogy az Azure CLI telepítve van-e.
+    > 2. Kapcsolódjon az Azure-hoz a `az login` parancs használatával.
 
-Az [az aks get-credentials][az-aks-get-credentials] paranccsal konfigurálható `kubectl` a Kubernetes-fürthöz való csatlakozásra. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes CLI-t a használatára. A következő példa lekéri a *myResourceGroup* erőforrásban lévő *myAKSCluster* fürtnév hitelesítő adatait:
+2. Konfigurálja `kubectl` úgy a Kubernetes-fürthöz való kapcsolódást az az [AK Get-hitelesítőadats][az-aks-get-credentials] parancs használatával. A következő parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes CLI-t a használatára.
 
-```azurecli
-az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
-```
+    ```azurecli
+    az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
+    ```
 
-A fürthöz való kapcsolódás ellenőrzéséhez használja a `kubectl get` parancsot a fürtcsomópontok listájának visszaküldéséhez.
+3. Ellenőrizze a fürthöz való kapcsolódást a használatával `kubectl get` , hogy visszaadja-e a fürtcsomópontok listáját.
 
-```console
-kubectl get nodes
-```
+    ```console
+    kubectl get nodes
+    ```
 
-A következő példakimenet az előző lépésekben létrehozott csomópontot mutatja be. Győződjön meg arról, hogy a csomópont állapota *kész*:
+    A kimenet az előző lépésekben létrehozott egyetlen csomópontot jeleníti meg. Győződjön meg arról, hogy a csomópont állapota *kész*:
 
-```output
-NAME                       STATUS    ROLES     AGE       VERSION
-aks-agentpool-14693408-0   Ready     agent     15m       v1.11.5
-```
+    ```output
+    NAME                       STATUS    ROLES     AGE       VERSION
+    aks-agentpool-14693408-0   Ready     agent     15m       v1.11.5
+    ```
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-A Kubernetes jegyzékfájl a fürt kívánt állapotát határozza meg, például a tároló lemezképeit. Ebben a rövid útmutatóban egy jegyzékfájlt használunk az Azure Vote-alkalmazás futtatásához szükséges összes objektum létrehozásához. Ez a jegyzékfájl két Kubernetes-telepítést tartalmaz – egyet az Azure-beli szavazás Python-alkalmazásaihoz, a másikat pedig egy Redis-példányhoz. Két Kubernetes-szolgáltatás is létrejön – egy belső szolgáltatás a Redis-példányhoz, és egy külső szolgáltatás, amely az Azure vote alkalmazást az internetről éri el.
+A Kubernetes jegyzékfájl definiálja a fürt kívánt állapotát, például azt, hogy melyik tároló-lemezképek futnak. 
 
-A Cloud Shell egy szövegszerkesztővel hozzon létre egy nevű fájlt `azure-vote.yaml` , például: `code azure-vote.yaml` `nano azure-vote.yaml` vagy `vi azure-vote.yaml` . Ezután másolja a következő YAML-definíciót:
+Ebben a rövid útmutatóban egy jegyzékfájlt fog használni az Azure vote-alkalmazás futtatásához szükséges összes objektum létrehozásához. Ez a jegyzékfájl két Kubernetes-telepítést tartalmaz:
+* A minta Azure vote Python-alkalmazások.
+* Egy Redis-példány. 
 
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: azure-vote-back
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: azure-vote-back
-  template:
+A rendszer két Kubernetes szolgáltatást is létrehoz:
+* Belső szolgáltatás a Redis-példányhoz.
+* Egy külső szolgáltatás, amely hozzáfér az Azure vote alkalmazáshoz az internetről.
+
+1. A Cloud Shell a szerkesztő használatával hozzon létre egy nevű fájlt `azure-vote.yaml` , például:
+    * `code azure-vote.yaml`
+    * `nano azure-vote.yaml` vagy  
+    * `vi azure-vote.yaml`. 
+
+1. Másolja a következő YAML-definíciót:
+
+    ```yaml
+    apiVersion: apps/v1
+    kind: Deployment
     metadata:
-      labels:
-        app: azure-vote-back
+      name: azure-vote-back
     spec:
-      nodeSelector:
-        "beta.kubernetes.io/os": linux
-      containers:
-      - name: azure-vote-back
-        image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
-        env:
-        - name: ALLOW_EMPTY_PASSWORD
-          value: "yes"
-        resources:
-          requests:
-            cpu: 100m
-            memory: 128Mi
-          limits:
-            cpu: 250m
-            memory: 256Mi
-        ports:
-        - containerPort: 6379
-          name: redis
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: azure-vote-back
-spec:
-  ports:
-  - port: 6379
-  selector:
-    app: azure-vote-back
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: azure-vote-front
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: azure-vote-front
-  template:
-    metadata:
-      labels:
-        app: azure-vote-front
-    spec:
-      nodeSelector:
-        "beta.kubernetes.io/os": linux
-      containers:
-      - name: azure-vote-front
-        image: mcr.microsoft.com/azuredocs/azure-vote-front:v1
-        resources:
-          requests:
-            cpu: 100m
-            memory: 128Mi
-          limits:
-            cpu: 250m
-            memory: 256Mi
-        ports:
-        - containerPort: 80
-        env:
-        - name: REDIS
-          value: "azure-vote-back"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: azure-vote-front
-spec:
-  type: LoadBalancer
-  ports:
-  - port: 80
-  selector:
-    app: azure-vote-front
-```
+      replicas: 1
+      selector:
+        matchLabels:
+          app: azure-vote-back
+      template:
+        metadata:
+          name: azure-vote-back
+        spec:
+          ports:
+          - port: 6379
+          selector:
+            app: azure-vote-back
+        ---
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: azure-vote-front
+        spec:
+          replicas: 1
+          selector:
+            matchLabels:
+              app: azure-vote-front
+          template:
+            metadata:
+              labels:
+                app: azure-vote-front
+            spec:
+              nodeSelector:
+                "beta.kubernetes.io/os": linux
+              containers:
+              - name: azure-vote-front
+                image: mcr.microsoft.com/azuredocs/azure-vote-front:v1
+                resources:
+                  requests:
+                    cpu: 100m
+                    memory: 128Mi
+                  limits:
+                    cpu: 250m
+                    memory: 256Mi
+                ports:
+                - containerPort: 80
+                env:
+                - name: REDIS
+                  value: "azure-vote-back"
+        ---
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: azure-vote-front
+        spec:
+          type: LoadBalancer
+          ports:
+          - port: 80
+          selector:
+            app: azure-vote-front
+    ```
 
-Telepítse az alkalmazást a `kubectl apply` paranccsal, és adja meg a YAML-jegyzékfájl nevét:
+1. Telepítse az alkalmazást a `kubectl apply` paranccsal, és adja meg a YAML-jegyzékfájl nevét:
 
-```console
-kubectl apply -f azure-vote.yaml
-```
+    ```console
+    kubectl apply -f azure-vote.yaml
+    ```
 
-A következő példa kimenete a sikeresen létrehozott központi telepítéseket és szolgáltatásokat mutatja:
+    A kimenet a sikeresen létrehozott központi telepítéseket és szolgáltatásokat mutatja:
 
-```output
-deployment "azure-vote-back" created
-service "azure-vote-back" created
-deployment "azure-vote-front" created
-service "azure-vote-front" created
-```
+    ```output
+    deployment "azure-vote-back" created
+    service "azure-vote-back" created
+    deployment "azure-vote-front" created
+    service "azure-vote-front" created
+    ```
 
 ## <a name="test-the-application"></a>Az alkalmazás tesztelése
 
@@ -208,14 +214,15 @@ A folyamat figyeléséhez használja az `kubectl get service` `--watch` argument
 kubectl get service azure-vote-front --watch
 ```
 
-Kezdetben a *külső IP-cím* az *Azure-vote-elülső* szolgáltatáshoz *függőben* jelenik meg.
+A szolgáltatás **külső IP-** kimenete `azure-vote-front` kezdetben *függőben* jelenik meg.
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
-Ha a *külső IP-* cím *függőben* ÁLLAPOTRÓL tényleges nyilvános IP-címről változik, akkor a `CTRL-C` figyelési folyamat leállításához használja a következőt: `kubectl` . A következő példa kimenete a szolgáltatáshoz hozzárendelt érvényes nyilvános IP-címet jeleníti meg:
+Ha a **külső IP-** cím *függőben* ÁLLAPOTRÓL tényleges nyilvános IP-címről változik, akkor a `CTRL-C` figyelési folyamat leállításához használja a következőt: `kubectl` . A következő példa kimenete a szolgáltatáshoz hozzárendelt érvényes nyilvános IP-címet jeleníti meg:
+
 
 ```output
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
@@ -227,43 +234,44 @@ Az Azure vote alkalmazás működés közbeni megtekintéséhez nyisson meg egy 
 
 ## <a name="monitor-health-and-logs"></a>Állapot és naplók monitorozása
 
-A fürt létrehozásakor a tárolók Azure Monitor engedélyezve lettek. Ez a monitorozási funkció az AKS-fürt és a fürtön futó podok állapotával kapcsolatos mérőszámokat biztosít.
+A fürt létrehozásakor a tárolók Azure Monitor engedélyezve lettek. A tárolók Azure Monitor a fürtön futó AK-fürthöz és hüvelyekhez egyaránt biztosítanak állapot-metrikákat.
 
-Az adatok Azure Portalra történő feltöltése eltarthat néhány percig. Az Azure Vote-podok jelenlegi állapotának, üzemidejének és erőforrás-felhasználásának megjelenítéséhez lépjen vissza az AKS-erőforráshoz az Azure Portalon (például *myAKSCluster*). Az állapotot ezután a következő módon érheti el:
+A metrikai adatok feltöltése néhány percet vesz igénybe a Azure Portalban. Az Azure vote hüvely aktuális állapotának, üzemidőének és erőforrás-használatának megtekintéséhez:
 
-1. A bal oldali **figyelés** **területen válassza az** eredmények lehetőséget
-1. Válassza a **+ Szűrő hozzáadása** elemet a képernyő felső részén
-1. Válassza ki a *névteret* tulajdonságként, majd válassza a *\<All but kube-system\>*
-1. Válassza a **Tárolók** nézetet.
+1. Tallózzon vissza a Azure Portal AK-erőforrásához.
+1. A bal oldali **figyelés** **területen válassza az** eredmények lehetőséget.
+1. A felső részen válassza a **+ szűrő hozzáadása** elemet.
+1. Válassza a **névtér** lehetőséget a tulajdonság mezőben, majd válassza a lehetőséget *\<All but kube-system\>* .
+1. Válassza ki a **tárolókat** a megtekintéshez.
 
-Megjelenik az *azure-vote-back* és az *azure-vote-front* tároló, az alábbi példában látható módon:
+A `azure-vote-back` és a `azure-vote-front` tárolók megjelennek a következő példában látható módon:
 
 ![Futó tárolók állapotának megtekintése az AKS-ben](media/kubernetes-walkthrough-portal/monitor-containers.png)
 
-Ha meg szeretné tekinteni a `azure-vote-front` Pod-naplókat, válassza a **tárolók megjelenítése** a tárolók listájának legördülő listából. Ezek a naplók tartalmazzák az *StdOut* és a *stderr* streameket a tárolóból.
+A pod naplóinak megtekintéséhez `azure-vote-front` válassza a **tárolók megjelenítése** a tárolók listájából legördülő listát. Ezek a naplók tartalmazzák az *StdOut* és a *stderr* streameket a tárolóból.
 
 ![Tárolók naplóinak megtekintése az AKS-ben](media/kubernetes-walkthrough-portal/monitor-container-logs.png)
 
 ## <a name="delete-cluster"></a>Fürt törlése
 
-Ha a fürtre már nincs szükség, törölje az erőforráscsoportot. Ezzel törli az összes társított erőforrást is. A művelet elvégezhető a Azure Portalban, ha a **Törlés** gombra KATTINT az AK-fürt irányítópultján. Azt is megteheti, hogy az az [AK delete][az-aks-delete] parancs használható a Cloud Shellban:
+Az Azure-költségek elkerülése érdekében törölje a szükségtelen erőforrásokat. Kattintson a **Törlés** gombra az AK-fürt irányítópultján. Használhatja az az [AK delete][az-aks-delete] parancsot is a Cloud Shellban:
 
 ```azurecli
 az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait
 ```
-
 > [!NOTE]
-> A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. A szolgáltatásnév eltávolításának lépéseiért lásd [az AKS-szolgáltatásnevekre vonatkozó szempontokat és a szolgáltatásnevek törlését][sp-delete] ismertető cikket. Felügyelt identitás használata esetén az identitást a platform felügyeli, és nem szükséges az eltávolítás.
+> A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. A szolgáltatásnév eltávolításának lépéseiért lásd [az AKS-szolgáltatásnevekre vonatkozó szempontokat és a szolgáltatásnevek törlését][sp-delete] ismertető cikket.
+> 
+> Felügyelt identitás használata esetén az identitást a platform felügyeli, és nem szükséges az eltávolítás.
 
 ## <a name="get-the-code"></a>A kód letöltése
 
-Ebben a rövid útmutatóban előre létrehozott tároló-lemezképeket használtak a Kubernetes központi telepítésének létrehozásához. A kapcsolódó alkalmazáskód, Docker-fájl és Kubernetes-jegyzékfájl a GitHubon érhetőek el.
-
-[https://github.com/Azure-Samples/azure-voting-app-redis][azure-vote-app]
+Ebben a rövid útmutatóban már meglévő tárolók lemezképeit használták egy Kubernetes-telepítés létrehozásához. A kapcsolódó alkalmazás kódja, Docker és Kubernetes jegyzékfájlja [elérhető a githubon.][azure-vote-app]
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban egy Kubernetes-fürtöt és azon egy többtárolós alkalmazást helyezett üzembe.
+Ebben a rövid útmutatóban üzembe helyezett egy Kubernetes-fürtöt, majd egy többtárolós alkalmazást helyezett üzembe. Nyissa meg a Kubernetes webes irányítópultját az AK-fürthöz.
+
 
 Ha többet szeretne megtudni az AK-ról egy teljes példán keresztül, beleértve az alkalmazások létrehozását, üzembe helyezését Azure Container Registry, a futó alkalmazások frissítését és a fürt méretezését és frissítését, folytassa a Kubernetes-fürt oktatóanyagával.
 

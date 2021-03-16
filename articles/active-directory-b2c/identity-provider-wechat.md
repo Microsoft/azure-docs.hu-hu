@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d2e2680f1d679a4bd1e967e32a409b59ad992c01
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: c7538cf052fcf51d03d1ac854d4da50db02004ea
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448098"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488559"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>WeChat-fiókkal történő regisztráció és bejelentkezés beállítása Azure Active Directory B2C
 
@@ -40,7 +40,7 @@ Ha Azure Active Directory B2C (Azure AD B2C) WeChat-fiókkal rendelkező felhasz
 1. Jelentkezzen be a [https://open.weixin.qq.com/](https://open.weixin.qq.com/) WeChat hitelesítő adataival.
 1. Válassza a **管理中心** (felügyeleti központ) lehetőséget.
 1. Új alkalmazás regisztrálásához kövesse az alábbi lépéseket.
-1. Adja meg `https://your-tenant_name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` a **授权回调域** (visszahívási URL-cím). Ha például a bérlő neve contoso, állítsa be az URL-címet a következőre: `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp` .
+1. A **授权回调域** (visszahívási URL-cím) mezőbe írja be a következőt: `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Ha [Egyéni tartományt](custom-domain.md)használ, írja be a értéket `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Cserélje le a `your-tenant-name` nevet a bérlő nevére, és az `your-domain-name` Egyéni tartományra.
 1. Másolja az **alkalmazás azonosítóját** és az **alkalmazás kulcsát**. Mindkettőre szüksége van, hogy konfigurálja az identitás-szolgáltatót a bérlőhöz.
 
 ::: zone pivot="b2c-user-flow"

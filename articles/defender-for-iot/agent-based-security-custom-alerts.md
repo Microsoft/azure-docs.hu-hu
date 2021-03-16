@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/16/2021
 ms.author: shhazam
-ms.openlocfilehash: e885566dd067d70fd4800ca96b8729494464da85
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 5d0eeb046d7a4ba474a1ed4a2cfb07a07f1c3888
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100642518"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493305"
 ---
 # <a name="defender-for-iot-devices-custom-security-alerts"></a>Defender IoT-eszközökhöz egyéni biztonsági riasztások
 
@@ -31,13 +31,13 @@ A IoT-riasztások következő listáját a várt IoT-eszköz viselkedése alapj�
 
 ## <a name="agent-based-security-custom-alerts"></a>Ügynök-alapú biztonsági egyéni riasztások
 
-| Súlyosság | Riasztás neve | Adatforrás | Description | Javasolt szervizelés |
+| Súlyosság | Riasztás neve | Adatforrás | Leírás | Javasolt szervizelés |
 |--|--|--|--|--|
-| Alacsony | Egyéni riasztás – az aktív kapcsolatok száma kívül esik az engedélyezett tartományon. | Klasszikus biztonsági modul, Azure RTOS | A megadott időszakon belüli aktív kapcsolatok száma a jelenleg konfigurált és engedélyezett tartományon kívül esik. | Vizsgálja meg az eszköz naplóit. Ismerje meg, hogy a kapcsolatok honnan származnak, és hogy milyen jóindulatú vagy rosszindulatú. Ha rosszindulatú, távolítsa el a lehetséges kártevőket, és értse a forrást. Ha jóindulatú, adja hozzá a forrást az engedélyezett kapcsolatok listájához. |
-| Alacsony | Egyéni riasztás – a nem engedélyezett IP-címhez létrehozott kimenő kapcsolatok | Klasszikus biztonsági modul, Azure RTOS | Egy kimenő kapcsolat egy olyan IP-címhez lett létrehozva, amely kívül esik az engedélyezett IP-listán. | Vizsgálja meg az eszköz naplóit. Ismerje meg, hogy a kapcsolatok honnan származnak, és hogy milyen jóindulatú vagy rosszindulatú. Ha rosszindulatú, távolítsa el a lehetséges kártevőket, és értse a forrást. Ha jóindulatú, adja hozzá a forrást az engedélyezett IP-listához. |
-| Alacsony | Egyéni riasztás – a sikertelen helyi bejelentkezések száma kívül esik az engedélyezett tartományon. | Klasszikus biztonsági modul, Azure RTOS | Egy adott időszakon belül a sikertelen helyi bejelentkezések száma a jelenleg konfigurált és engedélyezett tartományon kívül esik. |  |
-| Alacsony | Egyéni riasztás – olyan felhasználó bejelentkezését, amely nem szerepel az engedélyezett felhasználók listáján | Klasszikus biztonsági modul, Azure RTOS | Az engedélyezett felhasználók listáján kívüli helyi felhasználó, amely be van jelentkezve az eszközre. | Nyers adatmentéskor keresse meg a log Analytics-fiókját, és az adataival vizsgálja meg az eszközt, azonosítsa a forrást, majd javítsa ki az engedélyezési/tiltási listát ezekhez a beállításokhoz. Ha jelenleg nem menti a nyers adatmentést, nyissa meg az eszközt, és javítsa ki az engedélyezési/tiltási listát ezekhez a beállításokhoz. |
-| Alacsony | Egyéni riasztás – A folyamat végrehajtása nem engedélyezett | Klasszikus biztonsági modul, Azure RTOS | Nem engedélyezett folyamat lett végrehajtva az eszközön. | Nyers adatmentéskor keresse meg a log Analytics-fiókját, és az adataival vizsgálja meg az eszközt, azonosítsa a forrást, majd javítsa ki az engedélyezési/tiltási listát ezekhez a beállításokhoz. Ha jelenleg nem menti a nyers adatmentést, nyissa meg az eszközt, és javítsa ki az engedélyezési/tiltási listát ezekhez a beállításokhoz. |
+| Alacsony | Egyéni riasztás – az aktív kapcsolatok száma kívül esik az engedélyezett tartományon. | Klasszikus Defender-IoT-Micro-Agent, Azure RTOS | A megadott időszakon belüli aktív kapcsolatok száma a jelenleg konfigurált és engedélyezett tartományon kívül esik. | Vizsgálja meg az eszköz naplóit. Ismerje meg, hogy a kapcsolatok honnan származnak, és hogy milyen jóindulatú vagy rosszindulatú. Ha rosszindulatú, távolítsa el a lehetséges kártevőket, és értse a forrást. Ha jóindulatú, adja hozzá a forrást az engedélyezett kapcsolatok listájához. |
+| Alacsony | Egyéni riasztás – a nem engedélyezett IP-címhez létrehozott kimenő kapcsolatok | Klasszikus Defender-IoT-Micro-Agent, Azure RTOS | Egy kimenő kapcsolat egy olyan IP-címhez lett létrehozva, amely kívül esik az engedélyezett IP-listán. | Vizsgálja meg az eszköz naplóit. Ismerje meg, hogy a kapcsolatok honnan származnak, és hogy milyen jóindulatú vagy rosszindulatú. Ha rosszindulatú, távolítsa el a lehetséges kártevőket, és értse a forrást. Ha jóindulatú, adja hozzá a forrást az engedélyezett IP-listához. |
+| Alacsony | Egyéni riasztás – a sikertelen helyi bejelentkezések száma kívül esik az engedélyezett tartományon. | Klasszikus Defender-IoT-Micro-Agent, Azure RTOS | Egy adott időszakon belül a sikertelen helyi bejelentkezések száma a jelenleg konfigurált és engedélyezett tartományon kívül esik. |  |
+| Alacsony | Egyéni riasztás – olyan felhasználó bejelentkezését, amely nem szerepel az engedélyezett felhasználók listáján | Klasszikus Defender-IoT-Micro-Agent, Azure RTOS | Az engedélyezett felhasználók listáján kívüli helyi felhasználó, amely be van jelentkezve az eszközre. | Nyers adatmentéskor keresse meg a log Analytics-fiókját, és az adataival vizsgálja meg az eszközt, azonosítsa a forrást, majd javítsa ki az engedélyezési/tiltási listát ezekhez a beállításokhoz. Ha jelenleg nem menti a nyers adatmentést, nyissa meg az eszközt, és javítsa ki az engedélyezési/tiltási listát ezekhez a beállításokhoz. |
+| Alacsony | Egyéni riasztás – A folyamat végrehajtása nem engedélyezett | Klasszikus Defender-IoT-Micro-Agent, Azure RTOS | Nem engedélyezett folyamat lett végrehajtva az eszközön. | Nyers adatmentéskor keresse meg a log Analytics-fiókját, és az adataival vizsgálja meg az eszközt, azonosítsa a forrást, majd javítsa ki az engedélyezési/tiltási listát ezekhez a beállításokhoz. Ha jelenleg nem menti a nyers adatmentést, nyissa meg az eszközt, és javítsa ki az engedélyezési/tiltási listát ezekhez a beállításokhoz. |
 |
 
 ## <a name="next-steps"></a>Következő lépések

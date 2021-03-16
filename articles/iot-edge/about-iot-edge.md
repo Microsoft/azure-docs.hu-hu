@@ -10,14 +10,16 @@ ms.topic: overview
 ms.date: 10/28/2019
 ms.author: kgremban
 ms.custom: mvc
-ms.openlocfilehash: 1ba133acda414d9779e2fb10150bbdd57285e9a5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e6c8e83838240b989c8c782840d8c771a6f6b7db
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "76511212"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103487802"
 ---
 # <a name="what-is-azure-iot-edge"></a>Az Azure IoT Edge bemutatása
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Az Azure IoT Edge szolgáltatás a felhőbeli elemzéseket és egyéni üzleti logikákat eszközökre helyezi át, hogy a szervezet az üzleti elemzésekre tudjon koncentrálni az adatkezelés helyett. Az üzleti logikát szabványos tárolóba csomagolva kibővítheti IoT-megoldását, majd bármely eszközön üzembe helyezheti ezeket a tárolókat, és figyelheti az összes felhőből.
 
@@ -72,6 +74,6 @@ Az Azure IoT Edge zökkenőmentesen integrálható az Azure IoT-megoldásgyorsí
 
 ![Az eszközök telemetria és műveletei a felhővel vannak összehangolva](./media/about-iot-edge/cloud-interface.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A fogalmak gyakorlati alkalmazását is kipróbálhatja, ha [üzembe helyezi az IoT Edge szolgáltatást egy szimulált eszközön](quickstart.md).

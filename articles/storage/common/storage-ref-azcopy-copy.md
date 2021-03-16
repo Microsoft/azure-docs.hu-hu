@@ -4,16 +4,16 @@ description: Ez a cikk a azcopy másolási parancsra vonatkozó tudnivalókat ta
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 12/11/2020
+ms.date: 03/08/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: c4e85195ace0a24aa11d4a03b8f429f2714399b0
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: c676b92fd07c6e444aa22f25c48fdb1b1957ca7a
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879156"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493764"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -31,6 +31,7 @@ A forrásadatok másolása a célhelyre. A támogatott utasítások a következ�
   - Azure Files (SAS) – > Azure Files (SAS)
   - Azure Files (SAS) – > Azure-Blob (SAS vagy OAuth-hitelesítés)
   - Amazon Web Services (AWS) S3 (hozzáférési kulcs) – > Azure Block blob (SAS vagy OAuth Authentication)
+  - Google Cloud Storage (szolgáltatásfiók kulcsa) – > Azure Block blob (SAS vagy OAuth Authentication) [előzetes verzió]
 
 További információkért tekintse meg a jelen cikk példák című szakaszát.
 
@@ -229,6 +230,36 @@ Fájlok és könyvtárak átvitele az Azure Storage-fiókba, valamint a megadott
 - A kulcsok és értékek URL-kódolású, a kulcs-érték párok pedig egy jellel ("&") vannak elválasztva.
     
 - A címkék a blobokra való beállítása során további engedélyek (nem "a címkékhez) találhatók az SAS-ben, amelyek nélkül a szolgáltatás visszaadja az engedélyezési hibát.
+
+Egyetlen objektum másolása a Google Cloud Storage-ból Blob Storage egy szolgáltatásfiók-kulcs és egy SAS-token használatával. Először állítsa be a Google Cloud Storage-forrás környezeti változóját GOOGLE_APPLICATION_CREDENTIALS.
+  
+```azcopy
+azcopy cp "https://storage.cloud.google.com/[bucket]/[object]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
+```
+
+Egy teljes könyvtár másolása a Google Cloud Storage-ból Blob Storage egy szolgáltatásfiók-kulcs és egy SAS-token használatával. Először állítsa be a Google Cloud Storage-forrás környezeti változóját GOOGLE_APPLICATION_CREDENTIALS.
+ 
+```azcopy
+  - azcopy cp "https://storage.cloud.google.com/[bucket]/[folder]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true
+```
+
+Egy teljes gyűjtő másolása Blob Storage a Google Cloud Storage szolgáltatásból egy szolgáltatásfiók-kulcs és egy SAS-token használatával. Először állítsa be a Google Cloud Storage-forrás környezeti változóját GOOGLE_APPLICATION_CREDENTIALS.
+
+```azcopy 
+azcopy cp "https://storage.cloud.google.com/[bucket]" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
+```
+
+Másolja az összes gyűjtőt a Google Cloud Storage-ból Blob Storage egy szolgáltatásfiók-kulcs és egy SAS-token használatával. Először állítsa be a környezeti változókat GOOGLE_APPLICATION_CREDENTIALS és GOOGLE_CLOUD_PROJECT =<Project-ID> a GCS-forráshoz
+
+```azcopy
+  - azcopy cp "https://storage.cloud.google.com/" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
+```
+
+Másolja ki a gyűjtők egy részhalmazát egy helyettesítő karakter (*) használatával a Google Cloud Storage-ból, egy szolgáltatásfiók-kulccsal és egy, a célhelyhez tartozó SAS-token használatával. Először állítsa be a környezeti változókat GOOGLE_APPLICATION_CREDENTIALS és GOOGLE_CLOUD_PROJECT =<Project-ID> a Google Cloud Storage-forráshoz.
+ 
+```azcopy
+azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
+```
 
 ## <a name="options"></a>Beállítások
 

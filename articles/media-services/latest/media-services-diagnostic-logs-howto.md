@@ -14,25 +14,25 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3093d20fbe0a1ded68e34e816b7fc865a237ad92
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e65ab1cdf08e51b3e2f9df49e39fdd921499f4a6
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576309"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493815"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Media Services diagnosztikai naplók figyelése
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-[Azure monitor](../../azure-monitor/overview.md) lehetővé teszi a metrikák és diagnosztikai naplók figyelését, amelyek segítenek megérteni az alkalmazások teljesítményét. A funkció részletes ismertetését és a Azure Media Services metrikák és diagnosztikai naplók használatának okát lásd: [Media Services metrikák és diagnosztikai naplók figyelése](media-services-metrics-diagnostic-logs.md).
+[Azure monitor](../../azure-monitor/overview.md) lehetővé teszi a metrikák és diagnosztikai naplók figyelését, amelyek segítenek megérteni az alkalmazások teljesítményét. A funkció részletes ismertetését és a Azure Media Services metrikák és diagnosztikai naplók használatának okát lásd: [Media Services metrikák és diagnosztikai naplók figyelése](monitoring/monitor-media-services.md).
 
 Ebből a cikkből megtudhatja, hogyan irányíthatja az adatútvonalat a Storage-fiókba, majd megtekintheti azokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - [Hozzon létre egy Media Services fiókot](./create-account-howto.md).
-- Tekintse át  [a figyelő Media Services mérőszámait és a diagnosztikai naplókat](media-services-metrics-diagnostic-logs.md).
+- Tekintse át a  [figyelő Media Services](monitoring/monitor-media-services.md).
 
 ## <a name="route-data-to-the-storage-account-using-the-portal"></a>Az adatirányítás a Storage-fiókba a portál használatával
 

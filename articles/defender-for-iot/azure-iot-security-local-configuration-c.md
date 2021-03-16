@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: v-ekrieg
-ms.openlocfilehash: d96a73c3ba996fecf24a4232e1391f0b814be868
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 161bc008076de2bba62cd65c6c9bb106f648aa47
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851254"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493237"
 ---
 # <a name="understanding-the-localconfigurationjson-file---c-agent"></a>A LocalConfiguration.json fájl ismertetése – C-ügynök
 
@@ -39,7 +39,7 @@ A konfigurációs fájl módosításai az ügynök újraindításakor lépnek é
 | TriggerdEventsInterval | ISO8601 karakterlánc | Az aktivált események gyűjtésének ütemező időköze |
 | ConnectionTimeout | ISO8601 karakterlánc | Túllépte az időkorlátot a IoThub való kapcsolódás előtt. |
 | Hitelesítés | JsonObject | Hitelesítési konfiguráció. Ez az objektum tartalmazza az IoTHub-hitelesítéshez szükséges összes információt |
-| Identitás | "DPS", "SecurityModule", "eszköz" | Hitelesítési identitás – DPS if hitelesítés a DPS-n keresztül történik, SecurityModule, ha a hitelesítés biztonsági modul hitelesítő adataival vagy eszközével történik, ha az eszköz hitelesítő adataival történik a hitelesítés. |
+| Identitás | "DPS", "SecurityModule", "eszköz" | Hitelesítési identitás – DPS if hitelesítés a DPS-n keresztül történik, SecurityModule, ha a hitelesítés a Defender-IoT-Micro-agentcredentials vagy az eszköz használatával történik, ha hitelesítés történik az eszköz hitelesítő adataival |
 | AuthenticationMethod | "SasToken", "SelfSignedCertificate" | a hitelesítő felhasználói titok – válassza a SasToken lehetőséget, ha a titok használata szimmetrikus kulcs, válassza az önaláírt tanúsítvány lehetőséget, ha a titok egy önaláírt tanúsítvány  |
 | FilePath | Fájl elérési útja (karakterlánc) | A hitelesítési titkot tartalmazó fájl elérési útja |
 | HostName | sztring | Az Azure IoT hub állomásneve. általában <My-hub>. azure-devices.net |

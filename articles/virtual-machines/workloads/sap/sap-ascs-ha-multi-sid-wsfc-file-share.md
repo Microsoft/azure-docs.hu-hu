@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/24/2020
+ms.date: 03/15/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30f2e0e96f11203633b756a320d3da503686ed9f
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 8b1a29b0f94c5009d0535ca92363c25ad5c6c884
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102504490"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493492"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>SAP ASCS/SCS instance multi-SID magas rendelkezésre állás a Windows Server feladatátvételi fürtszolgáltatással és fájlmegosztás az Azure-ban
 
@@ -59,6 +59,7 @@ _**1. ábra:** Egy SAP ASCS/SCS-példány és egy két fürtön üzembe helyezet
 > A telepítésnek meg kell felelnie a következő feltételeknek:
 > * Az SAP-ASCS/SCS-példányoknak ugyanazt a WSFC-fürtöt kell megosztaniuk.
 > * A különböző SAP-SID-fájlokhoz tartozó más SAP-gazdagépekhez tartozó fájlmegosztás-megosztásoknak azonos SOFS-fürtön kell lenniük.
+> * Az SAP ASCS/SCS-példányok és a SOFS-megosztások nem kombinálhatók ugyanabban a fürtben. 
 > * Minden adatbázis-kezelő rendszer (adatbázisok) biztonsági azonosítójának saját dedikált WSFC-fürttel kell rendelkeznie.
 > * Az egyik SAP-rendszerbiztonsági azonosítóhoz tartozó SAP-alkalmazás-kiszolgálóknak saját dedikált virtuális gépekkel kell rendelkezniük.
 > * A sorba helyezni replikációs kiszolgáló 1 és a sorba helyezni replikációs kiszolgáló 2 együttese nem támogatott ugyanazon a fürtön.  

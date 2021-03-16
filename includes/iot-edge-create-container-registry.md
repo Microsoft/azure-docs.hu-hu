@@ -31,7 +31,7 @@ Ha még nem rendelkezik tároló-beállításjegyzékkel, kövesse az alábbi l�
    | Hely | Válassza ki az Önhöz legközelebb eső helyet. |
    | Termékváltozat | Válassza az **Alapszintű** lehetőséget. |
 
-3. Kattintson a **Létrehozás** gombra.
+3. Válassza a **Létrehozás** lehetőséget.
 
 4. Miután létrehozta a tároló-beállításjegyzéket, tallózással keresse meg, majd a bal oldali panelen válassza a **hozzáférési kulcsok** lehetőséget a **Beállítások** területen található menüből. 
 

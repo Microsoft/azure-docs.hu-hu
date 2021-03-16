@@ -3,12 +3,12 @@ title: A ExpressRoute és a virtuális hálózati átjáró összekötése
 description: A ExpressRoute virtuális hálózati átjáróhoz való kapcsolódásának lépései.
 ms.topic: include
 ms.date: 12/08/2020
-ms.openlocfilehash: cea07f9a75e91b2b8ff444c9dda4a59d421ca37c
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: 6e2e3748dbfd8d69b53dcc4c3a09809756ac48dc
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103462339"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494356"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-configure-networking.md -->
 
@@ -16,7 +16,7 @@ ms.locfileid: "103462339"
 
 1. Másolja az engedélyezési kulcsot. Ha nincs engedélyezési kulcs, létre kell hoznia egyet, majd **az engedélyezési kulcs kérése** lehetőséget kell választania.
 
-   :::image type="content" source="../media/expressroute-global-reach/start-request-auth-key.png" alt-text="Másolja az engedélyezési kulcsot. Ha nincs engedélyezési kulcs, létre kell hoznia egyet, majd az engedélyezési kulcs kérése lehetőséget kell választania." border="true" lightbox="../media/expressroute-global-reach/start-request-auth-key.png":::
+   :::image type="content" source="../media/expressroute-global-reach/start-request-authorization-key.png" alt-text="Másolja az engedélyezési kulcsot. Ha nincs engedélyezési kulcs, létre kell hoznia egyet, majd az engedélyezési kulcs kérése lehetőséget kell választania." border="true" lightbox="../media/expressroute-global-reach/start-request-authorization-key.png":::
 
 1. Lépjen az előző lépésben létrehozott Virtual Network átjáróra, és a **Beállítások** területen válassza a **kapcsolatok** lehetőséget. A **kapcsolatok** lapon válassza a **+ Hozzáadás** lehetőséget.
 

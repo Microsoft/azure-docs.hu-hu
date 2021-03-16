@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 3ed5c2c1c95822717981f7d30b91edd244420c59
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: c7d06172abd696e386337e563fa29fdbd2d3cdae
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99427685"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493662"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (AKS) támogatott Kubernetes-verziók
 
@@ -151,7 +151,7 @@ A korábbi kiadási előzményekért lásd: [Kubernetes](https://en.wikipedia.or
 
 **Milyen gyakran várható a Kubernetes-verziók frissítése a támogatásban?**
 
-A Kubernetes 1,19- [ben a nyílt forráskódú közösség 1 évre kibővített támogatást](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/)nyújt. Az AK véglegesíti, hogy a javítások és a támogatás legalább a felsőbb rétegbeli kötelezettségvállalásoknak megfelelő támogatást biztosít. Ez azt jelenti, hogy a 1,19-es számú AK-fürtökkel kezdődően az évente legalább egyszer frissíthető, hogy egy támogatott verzió maradjon. A 1,18-es vagy újabb verziókban a támogatási ablak 9 hónap alatt marad, és 9 havonta egyszer kell frissíteni, hogy egy támogatott verzió maradjon. Javasoljuk, hogy rendszeresen tesztelje az új verziókat, és készüljön fel az újabb verzióra való frissítésre, hogy rögzítse a legújabb stabil fejlesztéseket a Kubernetes belül.
+A Kubernetes 1,19-től kezdődően a [nyílt forráskódú közösség 1 évre kibővített támogatást](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/)nyújt. Az AK véglegesíti, hogy a javítások és a támogatás legalább a felsőbb rétegbeli kötelezettségvállalásoknak megfelelő támogatást biztosít. Ez azt jelenti, hogy a 1,19-es számú AK-fürtökkel kezdődően az évente legalább egyszer frissíthető, hogy egy támogatott verzió maradjon. A 1,18-es vagy újabb verziókban a támogatási ablak 9 hónap alatt marad, és 9 havonta egyszer kell frissíteni, hogy egy támogatott verzió maradjon. Javasoljuk, hogy rendszeresen tesztelje az új verziókat, és készüljön fel az újabb verzióra való frissítésre, hogy rögzítse a legújabb stabil fejlesztéseket a Kubernetes belül.
 
 **Mi történik, ha egy felhasználó olyan alverzióval frissít egy Kubernetes-fürtöt, amely nem támogatott?**
 

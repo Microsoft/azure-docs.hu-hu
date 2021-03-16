@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 357ea903ed4bbc87717dfefc1c542722f5bd40c0
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 9e47171fc20ba07823e73f71713307e3a0e37278
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448404"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488924"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-saml-identity-provider-using-azure-active-directory-b2c"></a>Az SAML-identitás-szolgáltatóval való regisztráció és bejelentkezés beállítása Azure Active Directory B2C használatával
 
@@ -205,9 +205,16 @@ Az alábbi példa egy Azure AD B2C technikai profil SAML-metaadatainak URL-cím�
 https://<your-tenant-name>.b2clogin.com/<your-tenant-name>.onmicrosoft.com/<your-policy>/samlp/metadata?idptp=<your-technical-profile>
 ```
 
+[Egyéni tartomány](custom-domain.md)használatakor használja a következő formátumot:
+
+```
+https://your-domain-name/<your-tenant-name>.onmicrosoft.com/<your-policy>/samlp/metadata?idptp=<your-technical-profile>
+```
+
 Cserélje le a következő értékeket:
 
-- **a** bérlő neve, például Your-Tenant.onmicrosoft.com.
+- **saját** bérlő neve a bérlő nevével, például Your-Tenant.onmicrosoft.com.
+- **saját tartomány neve** az egyéni tartománynévvel, például login.contoso.com.
 - **az Ön** házirendje a szabályzat nevével. Például B2C_1A_signup_signin_adfs.
 - az **Ön műszaki profilja** a SAML-identitás szolgáltatójának műszaki profiljának nevével. Például: contoso-egy SAML2.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: v-ekrieg
-ms.openlocfilehash: 13c16407481d4fa6f7d468a73051cc4945e6314e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14237894a38725ee07deca3b5f46cbe0ecfce4cd
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851233"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493220"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>A helyi konfigurációs fájl (C# ügynök) ismertetése
 
@@ -84,7 +84,7 @@ Windows esetén:
 
 | Konfiguráció neve | Lehetséges értékek | Részletek |
 |:-----------|:---------------|:--------|
-| moduleName | sztring | A biztonsági modul identitásának neve. Ennek a névnek meg kell egyeznie a modul identitásának nevével az eszközön. |
+| moduleName | sztring | A Defender-IoT-Micro-Agent identitás neve. Ennek a névnek meg kell egyeznie a modul identitásának nevével az eszközön. |
 | deviceId | sztring | Az eszköz azonosítója (az Azure IoT Hubban regisztrálva). |
 | schedulerInterval | TimeSpan karakterlánc | Belső ütemező időköze |
 | gatewayHostname | sztring | Az Azure IOT hub állomásneve. Általában <My-hub>. azure-devices.net |

@@ -1,21 +1,21 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: azure-communication-services
 author: dademath
 manager: nimag
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 07/28/2020
+ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: a084295aec2cafadd07d47e85a0116a89d37c985
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: a118dfceb73aca0897ba0f116ce3c5462368f6c3
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94816601"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488318"
 ---
 Ismerkedés az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások C# SMS ügyféloldali kódtár használatával SMS-üzenetek küldéséhez.
 
@@ -41,7 +41,7 @@ A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű 
 
 ### <a name="create-a-new-c-application"></a>Új C#-alkalmazás létrehozása
 
-A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `SmsQuickstart` . Ez a parancs egy egyszerű "„Helló világ!” alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: **program.cs**.
+A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `SmsQuickstart` . Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre egyetlen forrásfájlban: **program.cs**.
 
 ```console
 dotnet new console -o SmsQuickstart

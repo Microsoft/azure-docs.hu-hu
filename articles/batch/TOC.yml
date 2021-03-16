@@ -31,15 +31,6 @@
     - name: Párhuzamos fájlfeldolgozás – Python
       displayName: 'tutorial, hpc, high-performance, large'
       href: tutorial-parallel-python.md
-    - name: Jelenetek renderelése az Arnolddal
-      displayName: tutorial
-      href: tutorial-rendering-cli.md
-    - name: Renderelés a Batch Explorer használatával
-      displayName: tutorial
-      href: tutorial-rendering-batchexplorer-blender.md
-    - name: Párhuzamos R-szimuláció
-      displayName: 'tutorial, doAzureParallel, rstudio'
-      href: tutorial-r-doazureparallel.md
     - name: OCR Batch-feladattal és Functions-függvényekkel
       displayName: 'trigger, optical'
       href: tutorial-batch-functions.md
