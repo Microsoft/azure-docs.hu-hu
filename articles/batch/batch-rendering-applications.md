@@ -1,14 +1,14 @@
 ---
 title: Alkalmazások renderelése
 description: Azure Batch használatával bármilyen renderelési alkalmazás használható. Az Azure Marketplace virtuálisgép-lemezképei azonban előre telepített általános alkalmazásokkal is elérhetők.
-ms.date: 02/12/2021
+ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 18fc142d2fa9c819b9872c64ef7aae4c73cc2428
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: c98e2e0a81051dad47c201de9eda9f89cc311cf2
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635336"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496643"
 ---
 # <a name="pre-installed-applications-on-batch-rendering-vm-images"></a>Előre telepített alkalmazások a Batch rendering virtuálisgép-rendszerképein
 
@@ -17,6 +17,9 @@ Azure Batch használatával bármilyen renderelési alkalmazás használható. A
 Ha alkalmazható, a használaton kívüli licencelés elérhető az előre telepített renderelési alkalmazásokhoz. Batch-készlet létrehozásakor a szükséges alkalmazások megadhatók, és a virtuális gép és az alkalmazások díja percenként történik. Az alkalmazások árai a [Azure batch díjszabási oldalon](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering)találhatók.
 
 Néhány alkalmazás csak a Windowst támogatja, de a legtöbb Windows és Linux rendszeren is támogatott.
+
+> [!IMPORTANT]
+> A renderelési virtuálisgép-lemezképek és a használati licencek [elavultak, és az 2024. február 29-én](https://azure.microsoft.com/updates/azure-batch-rendering-vm-images-licensing-will-be-retired-on-29-february-2024/)megszűnik. A Batch for rendering használatához [Egyéni virtuálisgép-rendszerképet és normál alkalmazás-licencelést kell használni.](batch-rendering-functionality.md#batch-pools-using-custom-vm-images-and-standard-application-licensing)
 
 ## <a name="applications-on-latest-centos-7-rendering-image"></a>Az alkalmazások a CentOS 7-es renderelési lemezképén
 

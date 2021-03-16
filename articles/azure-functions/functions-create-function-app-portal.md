@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhatja létre az első Azure-függvényét ki
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 8d394a6f71fc5d31bd72a67a876a24a500a7cf01
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6ca187181d68d7924f97ebfac08e81dec77251e9
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732181"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492120"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Az első függvény létrehozása az Azure portálon
 
@@ -42,13 +42,11 @@ Ezután hozzon létre egy függvényt az új függvény alkalmazásban.
 
 1. A **függvények** ablak bal oldali menüjében válassza a **függvények** lehetőséget, majd a felső menüben válassza a **Hozzáadás** lehetőséget. 
  
-1. Az **új függvény** ablakban válassza a **http-trigger** lehetőséget.
+1. A **függvény hozzáadása** ablakban válassza ki a **http-trigger** sablont.
 
     ![HTTP-trigger függvény kiválasztása](./media/functions-create-first-azure-function/function-app-select-http-trigger.png)
 
-1. Az **új függvény** ablakban fogadja el az **új függvény** alapértelmezett nevét, vagy adjon meg egy új nevet. 
-
-1. Válassza a **Névtelen** lehetőséget az **engedélyezési szint** legördülő listából, majd kattintson a **függvény létrehozása** elemre.
+1. Az új függvény **sablon részletei** területén `HttpExample` válassza a **Névtelen** lehetőséget az **[engedélyezési szint](functions-bindings-http-webhook-trigger.md#authorization-keys)** legördülő listából, majd kattintson a **Hozzáadás** gombra.
 
     Az Azure létrehozza a HTTP trigger függvényt. Mostantól egy HTTP-kérelem küldésével futtathatja az új függvényt.
 

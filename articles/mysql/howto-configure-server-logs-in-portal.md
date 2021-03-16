@@ -1,17 +1,17 @@
 ---
 title: Lassú lekérdezési naplók elérése – Azure Portal-Azure Database for MySQL
 description: Ez a cikk bemutatja, hogyan konfigurálhatja és érheti el a Azure Database for MySQL lassú naplóit a Azure Portal.
-author: savjani
-ms.author: pariks
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: how-to
-ms.date: 4/13/2020
-ms.openlocfilehash: 5ad4ffa99a7af592e3e93e53673d254956807c40
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 3/15/2021
+ms.openlocfilehash: 91569780aa71861e07c7e96bec5eac879642760d
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541623"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496218"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>Lassú lekérdezési naplók konfigurálása és elérése a Azure Portal
 
@@ -34,11 +34,13 @@ Konfigurálja a MySQL lassú lekérdezési napló elérését.
 
 5. **Slow_query_log** bekapcsolása **a** következőre:.
 
-6. Válassza ki, hová szeretné kiadni a naplókat a **log_output** használatához. Ha a naplókat a helyi tárolóba és Azure Monitor diagnosztikai naplókba kívánja küldeni, válassza a **fájl** elemet. 
+6. Válassza ki, hová szeretné kiadni a naplókat a **log_output** használatához. Ha a naplókat a helyi tárolóba és Azure Monitor diagnosztikai naplókba kívánja küldeni, válassza a **fájl** elemet.
 
-7. Módosítsa a többi szükséges paramétert. 
+7. Érdemes megfontolni a "long_query_time" beállítást, amely a lassú lekérdezési naplófájlban összegyűjtött lekérdezések lekérdezési idő küszöbértékét jelöli, a long_query_time minimális és alapértelmezett értéke pedig 0 és 10.
 
-8. Válassza a **Mentés** lehetőséget. 
+8. Módosítsa a más paramétereket, például a log_slow_admin_statements a felügyeleti utasítások naplózására. Alapértelmezés szerint a felügyeleti utasítások nincsenek naplózva, és nem olyan lekérdezések, amelyek nem használnak indexeket a keresésekhez. 
+
+9. Kattintson a **Mentés** gombra. 
 
    :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="Képernyőkép a lassú lekérdezési napló paramétereinek és mentéséhez.":::
 
@@ -70,17 +72,17 @@ A naplózás megkezdése után megtekintheti az elérhető lassú lekérdezési 
 
    :::image type="content" source="./media/howto-configure-server-logs-in-portal/add-diagnostic-setting.png" alt-text="A diagnosztikai beállítások beállításainak képernyőképe":::
 
-1. Adja meg a diagnosztikai beállítások nevét.
+2. Adja meg a diagnosztikai beállítások nevét.
 
-1. Itt adhatja meg, hogy mely adatnyelők küldje el a lassú lekérdezési naplókat (Storage-fiók, Event hub vagy Log Analytics munkaterület).
+3. Itt adhatja meg, hogy mely adatnyelők küldje el a lassú lekérdezési naplókat (Storage-fiók, Event hub vagy Log Analytics munkaterület).
 
-1. Válassza a **MySqlSlowLogs** lehetőséget a napló típusaként.
+4. Válassza a **MySqlSlowLogs** lehetőséget a napló típusaként.
 :::image type="content" source="./media/howto-configure-server-logs-in-portal/configure-diagnostic-setting.png" alt-text="A diagnosztikai beállítások konfigurációs beállításainak képernyőképe":::
 
-1. Miután konfigurálta az adatnyelőket a lassú lekérdezések naplóinak a csatornába való konfigurálásához, válassza a **Mentés** lehetőséget.
+5. Miután konfigurálta az adatnyelőket a lassú lekérdezések naplóinak a csatornába való konfigurálásához, válassza a **Mentés** lehetőséget.
 :::image type="content" source="./media/howto-configure-server-logs-in-portal/save-diagnostic-setting.png" alt-text="A diagnosztikai beállítások konfigurációs beállításainak képernyőképe a kijelölt mentéssel":::
 
-1. A lassú lekérdezési naplók eléréséhez vizsgálja meg őket a konfigurált adattárolók között. A naplók megjelenése akár 10 percet is igénybe vehet.
+6. A lassú lekérdezési naplók eléréséhez vizsgálja meg őket a konfigurált adattárolók között. A naplók megjelenése akár 10 percet is igénybe vehet.
 
 ## <a name="next-steps"></a>Következő lépések
 - A lassú lekérdezési naplók programozott módon történő letöltésének megismeréséhez lásd: [a lassú lekérdezési naplók elérése a CLI-ben](howto-configure-server-logs-in-cli.md) .

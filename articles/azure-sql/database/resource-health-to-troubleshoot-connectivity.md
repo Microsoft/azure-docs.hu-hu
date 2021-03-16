@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: wiassaf, sstein
 ms.date: 02/26/2019
-ms.openlocfilehash: a51840daa2c8b19c323ad761ff6e6d1dcef15f75
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1a74a2f44ac9b03e39e9fea48a3428b82111a48c
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497962"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471997"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database-and-azure-sql-managed-instance"></a>A Resource Health használata a Azure SQL Database és az Azure SQL felügyelt példányaihoz való kapcsolódással kapcsolatos problémák megoldásához
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -61,7 +61,7 @@ A Resource Health Health History (állapot előzményei) szakaszában akár 14 n
 
 ### <a name="downtime-reasons"></a>Leállás okai
 
-Ha az adatbázis leállást észlel, elemzést végez az ok megállapításához. Ha elérhető, az állásidő oka a Resource Health állapotának előzményei című szakaszban található. Az állásidő okai általában az eseményt követő 30 percen belül megjelennek.
+Ha az adatbázis leállást észlel, elemzést végez az ok megállapításához. Ha elérhető, az állásidő oka a Resource Health állapotának előzményei című szakaszban található. A leállás okai általában 45 percen belül, egy esemény után jelennek meg.
 
 #### <a name="planned-maintenance"></a>Tervezett karbantartás
 
@@ -71,7 +71,7 @@ Az Azure-infrastruktúra rendszeres időközönként tervezett karbantartást v�
 
 Az újrakonfigurálások átmeneti feltételeknek számítanak, és időről időre várhatóak. Ezeket az eseményeket terheléselosztás vagy szoftver/hardver meghibásodása esetén aktiválhatja. A felhőalapú adatbázishoz csatlakozó összes ügyfél-előállító alkalmazásnak robusztus kapcsolati [újrapróbálkozási logikát](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)kell létrehoznia, mivel ez segít az ilyen helyzetek enyhítésében, és általánosságban a hibákat általában a végfelhasználók számára transzparensvé teszi.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [átmeneti hibákra vonatkozó újrapróbálkozási logikáról](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors).
 - Az [SQL-kapcsolatok hibáinak elhárítása, diagnosztizálása és letiltása](troubleshoot-common-connectivity-issues.md).

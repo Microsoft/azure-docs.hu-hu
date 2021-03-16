@@ -1,5 +1,5 @@
 ---
-title: OWIN-alapú webes API-k migrálása a b2clogin.com-be
+title: OWIN-alapú webes API-k migrálása b2clogin.com vagy egyéni tartományba
 titleSuffix: Azure AD B2C
 description: Megtudhatja, hogyan engedélyezheti a .NET-es webes API-k számára, hogy támogassa a több jogkivonat-kiállítók által kiállított jogkivonatokat, miközben az alkalmazásokat a b2clogin.com
 services: active-directory-b2c
@@ -8,26 +8,23 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/31/2019
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c362ce256259606c85af0a7e13ccde1715bb012b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 860f167913211ee7c511e515937f29ba5bf954cf
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953933"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491567"
 ---
-# <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>OWIN-alapú webes API migrálása b2clogin.com
+# <a name="migrate-an-owin-based-web-api-to-b2clogincom-or-a-custom-domain"></a>OWIN-alapú webes API migrálása b2clogin.com vagy egyéni tartományba
 
-Ez a cikk egy olyan technikát ismertet, amely lehetővé teszi a több jogkivonat-kiállítók támogatását a webes API- [k nyílt webes felületének (OWIN)](http://owin.org/)megvalósításában. A több jogkivonat-végpont támogatása akkor hasznos, ha Azure Active Directory B2C (Azure AD B2C) API-kat és azok alkalmazásait a *login.microsoftonline.com* -ből a *b2clogin.com*-be telepíti.
+Ez a cikk egy olyan technikát ismertet, amely lehetővé teszi a több jogkivonat-kiállítók támogatását a webes API- [k nyílt webes felületének (OWIN)](http://owin.org/)megvalósításában. Több jogkivonat-végpont támogatása akkor hasznos, ha Azure Active Directory B2C (Azure AD B2C) API-kat és azok alkalmazásait az egyik tartományból egy másikba telepíti át. Például a *login.microsoftonline.com* -ből a *b2clogin.com*-be vagy egy [Egyéni tartományba](custom-domain.md).
 
-Ha az API-ban támogatást ad a b2clogin.com és a login.microsoftonline.com által kiállított jogkivonatok fogadásához, áttelepítheti a webalkalmazásokat, mielőtt eltávolítja a login.microsoftonline.com által kiadott tokenek támogatását az API-ból.
+Ha támogatást ad az API-hoz a b2clogin.com, login.microsoftonline.com vagy egyéni tartomány által kiállított jogkivonatok fogadásához, akkor az API-ból származó login.microsoftonline.com-tokenek támogatásának eltávolítása előtt áttelepítheti a webalkalmazásokat.
 
 A következő részek egy példát mutatnak arra, hogyan engedélyezhető több kiállító egy webes API-ban, amely a [Microsoft OWIN][katana] middleware-összetevőket (Katana) használja. Bár a kód például a Microsoft OWIN-alapú middleware-re vonatkozik, az általános technikának más OWIN-könyvtárakra is érvényesnek kell lennie.
-
-> [!NOTE]
-> Ez a cikk olyan Azure AD B2C ügyfelek számára készült, akik jelenleg telepített API-kkal és alkalmazásokkal rendelkeznek, `login.microsoftonline.com` és amelyek a javasolt végpontra kívánnak áttelepítést végezni `b2clogin.com` . Ha új alkalmazást állít be, használja a [b2clogin.com](b2clogin.md) utasítást.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -88,7 +85,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 Ebben a szakaszban a kód frissítésével adja meg, hogy a jogkivonat-kiállítói végpontok is érvényesek-e.
 
 1. A **B2C-WebAPI-DotNet. SLN** megoldás megnyitása a Visual Studióban
-1. A **TaskService** projektben nyissa meg a * TaskService \\ App_Start \\ **Startup.auth.cs** _ fájlt a szerkesztőben
+1. A **TaskService** projektben nyissa meg a *TaskService \\ App_Start * * \\ Startup.auth.cs** * fájlt a szerkesztőben
 1. Adja hozzá a következő `using` direktívát a fájl elejéhez:
 
     `using System.Collections.Generic;`
@@ -102,12 +99,13 @@ Ebben a szakaszban a kód frissítésével adja meg, hogy a jogkivonat-kiállít
         AuthenticationType = Startup.DefaultPolicy,
         ValidIssuers = new List<string> {
             "https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/",
-            "https://{your-b2c-tenant}.b2clogin.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/"
+            "https://{your-b2c-tenant}.b2clogin.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/"//,
+            //"https://your-custom-domain/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/"
         }
     };
     ```
 
-`TokenValidationParameters` a a MSAL.NET által biztosított, és a OWIN-alapú middleware a kód következő szakaszában található, _Startup. auth. cs *. Ha több érvényes kiállító van megadva, a OWIN-alkalmazás folyamata arról tájékoztat, hogy mindkét jogkivonat-végpont érvényes kiállító.
+`TokenValidationParameters` a MSAL.NET által biztosított, és a OWIN middleware a *Startup.auth.cs*-ben a kód következő szakaszában használja fel. Ha több érvényes kiállító van megadva, a OWIN-alkalmazás folyamata arról tájékoztat, hogy mindkét jogkivonat-végpont érvényes kiállító.
 
 ```csharp
 app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
@@ -142,6 +140,13 @@ Ezután (cserélje le a `{your-b2c-tenant}` B2C-bérlő nevét):
 ```
 
 Ha a végponti karakterláncok a webalkalmazás végrehajtása során jönnek létre, a rendszer a b2clogin.com-alapú végpontokat használja, amikor jogkivonatokat kér.
+
+Egyéni tartomány használatakor:
+
+```xml
+<!-- Custom domain -->
+<add key="ida:AadInstance" value="https://custom-domain/{0}/{1}" />
+```
 
 ## <a name="next-steps"></a>Következő lépések
 

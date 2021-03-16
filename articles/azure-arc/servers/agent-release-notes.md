@@ -2,13 +2,13 @@
 title: Az Azure arc-kompatibilis kiszolgálók ügynökének újdonságai
 description: Ebben a cikkben az Azure arc használatára képes kiszolgálók ügynökének kibocsátási megjegyzései szerepelnek. Számos összefoglaló probléma esetén további részletekre mutató hivatkozások találhatók.
 ms.topic: conceptual
-ms.date: 12/21/2020
-ms.openlocfilehash: 4b7fd97d5b7e1cddc1d78e0d24205890e74c45c1
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.date: 03/15/2021
+ms.openlocfilehash: acf606ed1ad0f54c983b14a0141d0dc11e2c45d9
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722521"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470506"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Az Azure arc-kompatibilis kiszolgálók ügynökének újdonságai
 
@@ -18,13 +18,27 @@ Az Azure arc-kompatibilis kiszolgálókhoz csatlakoztatott gépi ügynök folyam
 - Ismert problémák
 - Hibajavítások
 
+## <a name="march-2021"></a>Március 2021
+
+1,4-es verzió
+
+## <a name="new-feature"></a>Új funkció
+
+- További támogatás a privát végpontok számára.
+- A kilépési kódok kibontott listája a azcmagent.
+- Az ügynök konfigurációs paraméterei mostantól a--config paraméterrel rendelkező fájlból is beolvashatók.
+
+## <a name="fixed"></a>Rögzített méretű lemez
+
+A hálózati végpontok ellenőrzése már gyorsabb.
+
 ## <a name="december-2020"></a>2020. december
 
 Verzió: 1,3
 
 ### <a name="new-feature"></a>Új funkció
 
-A Windows Server 2008 R2 támogatása
+A Windows Server 2008 R2 támogatása.
 
 ### <a name="fixed"></a>Rögzített méretű lemez
 
@@ -47,7 +61,7 @@ Verzió: 1.1
 - Rögzített proxy-parancsfájl a másodlagos GC-démoni egység fájlok helyének kezeléséhez.
 - GuestConfig-ügynök megbízhatóságának változásai.
 - US Gov Virginia régió GuestConfig-ügynökének támogatása.
-- A GuestConfig-ügynök bővítménye a hibák esetén részletesebben részletezi a jelentés üzeneteit.
+- Ha hiba történik, a GuestConfig-ügynök bővítményei részletesebben részletezik a jelentéseket.
 
 ## <a name="september-2020"></a>2020. szeptember
 
@@ -89,6 +103,6 @@ Verzió: 0,11
 
 Ha a Linux-ügynök egy régebbi verzióját használja, és a proxykiszolgáló használatára van konfigurálva, akkor a frissítés után újra kell konfigurálnia a proxykiszolgáló-beállítást. Ehhez futtassa a parancsot `sudo azcmagent_proxy add http://proxyserver.local:83` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az arc-kompatibilis kiszolgálók több hibrid gépen való kiértékelése vagy engedélyezése előtt tekintse át a [csatlakoztatott gép ügynökének áttekintése című témakört](agent-overview.md) a követelmények megismeréséhez, az ügynök műszaki részleteihez és a telepítési módszerekhez.

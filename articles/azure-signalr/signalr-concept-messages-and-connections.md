@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: zhshang
-ms.openlocfilehash: 9d0e94cf2318db777bb44c15037f73531cd969fa
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3c4d28addac0ecfc9605678582562550a1c96b8d
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593320"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491945"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Üzenetek és kapcsolatok az Azure Signaler szolgáltatásban
 
@@ -48,9 +48,16 @@ Ha három ügyféllel és egy alkalmazás-kiszolgálóval rendelkezik. Egy ügyf
 
 Kiszolgálói kapcsolatok és ügyfélkapcsolatok érhetők el az Azure Signaler szolgáltatással. Alapértelmezés szerint minden alkalmazáskiszolgáló öt kezdeti kapcsolattal kezdődik, és minden ügyfélnek van egy ügyfélkapcsolata.
 
-A Azure Portalban látható kapcsolatok száma magában foglalja a kiszolgálói kapcsolatokat és az ügyfélkapcsolatokat is.
-
 Tegyük fel például, hogy két alkalmazás-kiszolgálóval rendelkezik, és öt hubokat határoz meg a kódban. A kiszolgáló kapcsolatának száma 50:2 alkalmazás-kiszolgáló * 5 hub * 5 kapcsolat/központ.
+
+A Azure Portalban látható kapcsolatok száma magában foglalja a kiszolgálói kapcsolatokat, az ügyfélkapcsolatokat, a diagnosztikai kapcsolatokat és az élő nyomkövetési kapcsolatokat. A kapcsolatok típusai a következő listában vannak meghatározva:
+
+- **Kiszolgáló kapcsolata**: összekapcsolja az Azure signaler szolgáltatást és az App Servert.
+- **Ügyfélkapcsolat**: az Azure signaler szolgáltatás és az ügyfélalkalmazás összekapcsolása.
+- **Diagnosztikai kapcsolatok**: olyan speciális Ügyfélkapcsolat, amely részletesebb naplót eredményezhet, ami hatással lehet A teljesítményre. Ezt a fajta ügyfelet hibaelhárításra tervezték.
+- **Élő nyomkövetési kapcsolat**: az élő nyomkövetési végponthoz csatlakozik, és az Azure signaler szolgáltatás élő nyomkövetését fogadja. 
+ 
+Figyelje meg, hogy az élő nyomkövetési kapcsolat nem ügyfél-kapcsolatként vagy kiszolgálói kapcsolatként számít. 
 
 A ASP.NET-jelző eltérő módon számítja ki a kiszolgáló kapcsolatait. Az Ön által meghatározott hubok mellett egy alapértelmezett hubot is tartalmaz. Alapértelmezés szerint minden alkalmazás-kiszolgálónak öt további kezdeti kiszolgálói kapcsolatra van szüksége. Az alapértelmezett hub kezdeti kapcsolatok száma más hubokkal konzisztens marad.
 

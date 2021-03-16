@@ -7,21 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2021
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bcdc8c448a348bf067995bf92615ceab1ac19fb4
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 5374ce59d3a599e243684c168a8d84a6434059ee
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198438"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492013"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-A **RelyingParty** elem határozza meg, hogy a felhasználó milyen útra kényszeríti az aktuális kérelem Azure Active Directory B2C (Azure ad B2C). Azon jogcímek listáját is meghatározza, amelyeknek a függő entitás (RP) alkalmazásnak a kiállított jogkivonat részeként kell szerepelnie. Egy RP-alkalmazás, például web-, mobil-vagy asztali alkalmazás, meghívja az RP-házirend fájlját. Az RP-házirend fájl egy adott feladatot hajt végre, például bejelentkezik, jelszó alaphelyzetbe állítása vagy profil szerkesztése. Több alkalmazás is használhatja ugyanazt az RP-szabályzatot, és egyetlen alkalmazás több házirendet is használhat. Minden RP-alkalmazás ugyanazt a jogkivonatot fogadja a jogcímekkel, és a felhasználó ugyanazon a felhasználói úton halad.
+A **függő entitás** (RelyingParty) elem határozza meg az Azure Active Directory B2C (Azure AD B2C) felé irányuló aktuális kérés esetén kényszerítendő felhasználói interakciósorozatot. Emellett meghatározza azon jogcímek listáját, amelyekre a függő entitás alkalmazásának szüksége van a kiadott jogkivonat részeként. Egy RP-alkalmazás, például web-, mobil-vagy asztali alkalmazás, meghívja az RP-házirend fájlját. Az RP-házirend fájl egy adott feladatot hajt végre, például bejelentkezik, jelszó alaphelyzetbe állítása vagy profil szerkesztése. Több alkalmazás is használhatja ugyanazt az RP-szabályzatot, és egyetlen alkalmazás több házirendet is használhat. Minden RP-alkalmazás ugyanazt a jogkivonatot fogadja a jogcímekkel, és a felhasználó ugyanazon a felhasználói úton halad.
 
 A következő példa egy **RelyingParty** elemet mutat be a *B2C_1A_signup_signin* -házirend fájljában:
 
@@ -145,10 +145,11 @@ A **UserJourneyBehaviors** elem a következő elemeket tartalmazza:
 | JourneyInsights | 0:1 | A használni kívánt Azure Application Insights-kialakítási kulcs. |
 | ContentDefinitionParameters | 0:1 | A Content definition Load URI-hoz hozzáfűzni kívánt kulcs érték párok listája. |
 |ScriptExecution| 0:1| A [JavaScript](javascript-and-page-layout.md) támogatott végrehajtási módjai. Lehetséges értékek: `Allow` vagy `Disallow` (alapértelmezett).
+| JourneyFraming | 0:1| Lehetővé teszi a szabályzat felhasználói felületének betöltését iframe-ben. |
 
 ### <a name="singlesignon"></a>SingleSignOn
 
-A **SingleSignon** elem a következő attribútumban szerepel:
+A **SingleSignon** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
@@ -165,7 +166,7 @@ A **JourneyInsights** elem a következő attribútumokat tartalmazza:
 | --------- | -------- | ----------- |
 | TelemetryEngine | Igen | Az értéknek a számnak kell lennie `ApplicationInsights` . |
 | InstrumentationKey | Igen | Az Application ininsights elem kialakítási kulcsát tartalmazó karakterlánc. |
-| DeveloperMode | Igen | Lehetséges értékek: `true` vagy `false` . Ha a `true` Application Insights felgyorsítja a telemetria a feldolgozási folyamaton keresztül. Ez a beállítás jó a fejlesztéshez, de nagy mennyiségű korlátozott. A részletes tevékenységi naplók csak az egyéni szabályzatok fejlesztéséhez nyújtanak segítséget. Ne használja a fejlesztési módot éles környezetben. A naplók összegyűjtik az identitás-szolgáltatók által és a fejlesztés során eljuttatott összes jogcímet. Ha éles környezetben használja, a fejlesztő vállalja a személyes azonosításra alkalmas információk beszedésének felelősségét az App bepillantást tartalmazó naplóban. Ezeket a részletes naplókat csak akkor gyűjti a rendszer, ha ez az érték be van állítva `true` .|
+| DeveloperMode | Igen | Lehetséges értékek: `true` vagy `false` . Ha a `true` Application Insights felgyorsítja a telemetria a feldolgozási folyamaton keresztül. Ez a beállítás jó a fejlesztéshez, de nagy mennyiségű korlátozott. A részletes tevékenységi naplók csak az egyéni szabályzatok fejlesztéséhez nyújtanak segítséget. Ne használja a fejlesztési módot éles környezetben. A naplók összegyűjtik az identitás-szolgáltatók által és a fejlesztés során eljuttatott összes jogcímet. Ha éles környezetben használja, a fejlesztő vállalja a személyes adatoknak a saját alkalmazásbeli elemzések naplójában gyűjtött felelősségét. Ezeket a részletes naplókat csak akkor gyűjti a rendszer, ha ez az érték be van állítva `true` .|
 | ClientEnabled | Igen | Lehetséges értékek: `true` vagy `false` . Ha `true` a a Application Insights ügyféloldali parancsfájlt küld a nyomkövetési oldal és az ügyféloldali hibák nyomon követéséhez. |
 | ServerEnabled | Igen | Lehetséges értékek: `true` vagy `false` . Ha `true` a, a a meglévő USERJOURNEYRECORDER JSON-t a Application Insights egyéni eseményként küldi el. |
 | TelemetryVersion | Igen | Az értéknek a számnak kell lennie `1.0.0` . |
@@ -193,6 +194,15 @@ A **ContentDefinitionParameter** elem a következő attribútumot tartalmazza:
 | Név | Igen | A kulcs-érték párok neve. |
 
 További információ: [a felhasználói felület konfigurálása dinamikus tartalommal egyéni házirendek használatával](customize-ui-with-html.md#configure-dynamic-custom-page-content-uri)
+
+### <a name="journeyframing"></a>JourneyFraming
+
+A **JourneyFraming** elem a következő attribútumokat tartalmazza:
+
+| Attribútum | Kötelező | Leírás |
+| --------- | -------- | ----------- |
+| Engedélyezve | Igen | Engedélyezi, hogy ez a szabályzat egy iframe-kereten belül betölthető legyen. Lehetséges értékek: `false` (alapértelmezett) vagy `true` . |
+| Források | Igen | Azokat a tartományokat tartalmazza, amelyek betöltik az IFRAME-t. További információ: [Azure B2C betöltése iframe-ben](embedded-login.md). |
 
 ## <a name="technicalprofile"></a>Kivonatjogcím
 

@@ -10,14 +10,16 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: kgremban
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 63538661cceb7e1bdd4151a3592ccbd4de0033b0
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 330eaf5c12372347917e9f3a4aeafb6a2088c592
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102612014"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492574"
 ---
 # <a name="what-is-azure-iot-edge-for-linux-on-windows-preview"></a>A Windowson futtatott Linux rendszerhez készült Azure IoT Edge bemutatása (előzetes verzió)
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 A Windows rendszerhez készült Linux-Azure IoT Edge lehetővé teszi, hogy a Windows IoT üzemelő példányokon a Windows-alkalmazások mellett is futtasson tárolós Linux-feladatokat. Azok a vállalatok, amelyek a Windows IoT használják a peremhálózat-eszközeiket, mostantól kihasználhatják a Linux rendszerbe épített felhőalapú elemzési megoldások előnyeit.
 

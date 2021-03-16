@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 89ecf26778433a3f075f76905183f3fe866cb5db
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: e35e3dd0bacc0b1e3a44d9338f612a70ca4b52bf
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102447265"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496524"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Biztonsági ügynök kiválasztása és üzembe helyezése a IoT-eszközön
 
@@ -48,10 +48,10 @@ A C-alapú biztonsági ügynök alacsonyabb memória-lábnyomot tartalmaz, és i
 | **A Linux előfeltételei** | libunwind8, libcurl3, UUID-Runtime, auditált, audispd-plugins | libunwind8, libcurl3, UUID-Runtime, auditált, audispd-plugins, sudo, netstat, iptables |
 | **Lemez lábnyoma** | 10,5 MB | 90 MB |
 | **Memória lábnyoma (átlagos)** | 5,5 MB | 33 MB |
-| **[Hitelesítés](concept-security-agent-authentication-methods.md) IoT hub** | Igen | Yes |
-| **Biztonsági adatgyűjtés [](how-to-agent-configuration.md#supported-security-events)** | Igen | Yes |
-| **Eseményösszesítés** | Igen | Yes |
-| **Távoli konfiguráció a [biztonsági modul Twin](concept-security-module.md) szolgáltatásán keresztül** | Igen | Yes |
+| **[Hitelesítés](concept-security-agent-authentication-methods.md) IoT hub** | Igen | Igen |
+| **Biztonsági adatgyűjtés [](how-to-agent-configuration.md#supported-security-events)** | Igen | Igen |
+| **Eseményösszesítés** | Igen | Igen |
+| **Távoli konfiguráció [Defender-IoT-Micro-Agent Twin](concept-security-module.md) használatával** | Igen | Igen |
 
 ## <a name="security-agent-installation-guidelines"></a>Biztonsági ügynök telepítési útmutatója
 

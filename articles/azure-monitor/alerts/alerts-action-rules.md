@@ -2,13 +2,13 @@
 title: Azure Monitor riasztásokra vonatkozó műveleti szabályok
 description: Megtudhatja, hogyan konfigurálhatja és kezelheti a Azure Monitorban szereplő műveleti szabályokat.
 ms.topic: conceptual
-ms.date: 04/25/2019
-ms.openlocfilehash: bf254249f5b347d32255820da370a499c84da212
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.date: 03/15/2021
+ms.openlocfilehash: 2ad87cce668555ece0eba6479bf9d21db312bfcf
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103463068"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466728"
 ---
 # <a name="action-rules-preview"></a>Műveleti szabályok (előzetes verzió)
 
@@ -76,7 +76,8 @@ Ez a szabály csak a kiválasztott erőforrástípusok riasztására vonatkozik.
 A (z) **"Virtual Machines" erőforrástípus** például azt jelenti, hogy a szabály csak a virtuális gépeken lévő riasztásokra lesz érvényes.
 * **Riasztási szabály azonosítója**  
 Ez a szabály csak az adott riasztási szabálytól érkező riasztásokra vonatkozik. Az értéknek a riasztási szabály Resource Manager-AZONOSÍTÓjának kell lennie.  
-Például a **riasztási szabály azonosítója = "/Subscriptions/SubId1/resourceGroups/ResourceGroup1/Providers/Microsoft.Insights/metricalerts/API-latency"** azt jelenti, hogy ez a szabály csak az "API-késleltetés" metrikai szabályból érkező riasztásokra vonatkozik.
+Például a **riasztási szabály azonosítója = "/Subscriptions/SubId1/resourceGroups/RG1/Providers/Microsoft.Insights/metricalerts/API-latency"** azt jelenti, hogy ez a szabály csak az "API-késleltetés" metrikai szabályból érkező riasztásokra vonatkozik.
+A riasztási szabályok helyes AZONOSÍTÓjának beszerzéséhez adja meg a riasztási szabályokat a parancssori felületről, vagy nyisson meg egy adott riasztási szabályt a portálon, majd kattintson a Tulajdonságok elemre, és másolja az "erőforrás-azonosító" értéket.
 * **Figyelési feltétel**  
 Ez a szabály csak a megadott figyelési feltétellel rendelkező riasztási eseményekre vonatkozik – vagy **kilőtt** vagy **megoldott**.
 * **Leírás**  

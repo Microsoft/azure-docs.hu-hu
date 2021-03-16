@@ -4,20 +4,20 @@ description: Tárolási célok meghatározása úgy, hogy az Azure HPC-gyorsít�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 01/28/2021
+ms.date: 03/11/2021
 ms.author: v-erkel
-ms.openlocfilehash: b4df5863cc746490f13685a8d412232217af3bc8
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 4e6c5b5ea69c55c09887528f1723414f53fcb0f9
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054365"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471953"
 ---
 # <a name="add-storage-targets"></a>Céltárak hozzáadása
 
 A *tárolási célok* az Azure HPC-gyorsítótáron keresztül elért fájlok háttérbeli tárolói. Hozzáadhat NFS-tárolót (például helyszíni hardverrendszer), vagy tárolhat adattárolást az Azure blobban.
 
-Akár tíz különböző tárolási célt is meghatározhat egy gyorsítótárhoz. A gyorsítótár egy összesített névtérben jeleníti meg az összes tárolási célt.
+Egy gyorsítótárhoz legfeljebb 20 különböző tárolási célt adhat meg. A gyorsítótár egy összesített névtérben jeleníti meg az összes tárolási célt.
 
 A névtér elérési útjai külön vannak konfigurálva a tárolási célok hozzáadása után. Általánosságban elmondható, hogy egy NFS-tárolási cél akár tíz névtér elérési úttal is rendelkezhet, vagy akár több nagy konfiguráció esetén is. A részletek az [NFS-névtér elérési útjai](add-namespace-paths.md#nfs-namespace-paths) olvashatók.
 
@@ -29,7 +29,7 @@ Adja hozzá a tárolási célokat a gyorsítótár létrehozása után. Kövesse
 1. Tárolási cél definiálása (a cikkben található információk)
 1. [Az ügyfél felé irányuló elérési utak létrehozása](add-namespace-paths.md) (az [összesített névtérhez](hpc-cache-namespace.md))
 
-A tárolási cél hozzáadására szolgáló eljárás némileg eltér attól függően, hogy az Azure Blob Storage-t vagy egy NFS-exportálást ad hozzá. A részleteket az alábbiakban találja.
+A tárolási cél hozzáadására szolgáló eljárás némileg eltér attól függően, hogy milyen típusú tárolót használ. A részleteket az alábbiakban találja.
 
 Az alábbi képre kattintva megtekintheti a gyorsítótár létrehozásának és tárolási céljának a Azure Portal való hozzáadásának [bemutató videóját](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/) .
 
@@ -40,6 +40,9 @@ Az alábbi képre kattintva megtekintheti a gyorsítótár létrehozásának és
 Egy új blob Storage-célnak szüksége van egy üres blob-tárolóra vagy egy olyan tárolóra, amely az Azure HPC cache Cloud File System formátumában található adatokkal van feltöltve. További információ a blob-tárolók [Azure Blob Storage-ba való áthelyezésének](hpc-cache-ingest.md)előzetes betöltéséről.
 
 A Azure Portal **tároló hozzáadása** lapon lehetőség van egy új blob-tároló létrehozására is, közvetlenül a hozzáadása előtt.
+
+> [!NOTE]
+> Az NFS-hez csatlakoztatott blob Storage esetében használja a [ADLS-NFS tárolási cél](#) típust.
 
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -161,38 +164,48 @@ Egy NFS-tárolási cél különböző beállításokkal rendelkezik a blob Stora
 > Az NFS-tárolási cél létrehozása előtt győződjön meg arról, hogy a tárolási rendszer elérhető az Azure HPC-gyorsítótárból, és megfelel az engedélyek követelményeinek. A tárolási cél létrehozása sikertelen lesz, ha a gyorsítótár nem fér hozzá a tárolási rendszerhez. A részletekért olvassa el az [NFS-tárolási követelmények](hpc-cache-prerequisites.md#nfs-storage-requirements) , valamint a [NAS-konfiguráció és az NFS-tárolási cél hibaelhárítása](troubleshoot-nas.md) című cikk
 
 ### <a name="choose-a-usage-model"></a>Használati modell kiválasztása
-<!-- referenced from GUI - update aka.ms link if you change this heading -->
+<!-- referenced from GUI - update aka.ms link to point at new article when published -->
 
-Amikor egy NFS Storage rendszerre mutató tárolási célt hoz létre, ki kell választania az adott cél használati modelljét. Ez a modell határozza meg, hogyan gyorsítótárazza az adatait.
+Amikor olyan tárolási célt hoz létre, amely az NFS-t használja a tárolási rendszer eléréséhez, ki kell választania a cél használati modelljét. Ez a modell határozza meg, hogyan gyorsítótárazza az adatait.
 
-A beépített használati modellek segítségével kiválaszthatja, hogyan egyenlítheti ki a gyors választ az elavult adatok beszerzésének kockázatával. Ha optimalizálni szeretné a fájl olvasási sebességét, előfordulhat, hogy nem érdekli, hogy a gyorsítótárban lévő fájlok be vannak-e jelölve a háttérbeli fájlokban. Ha azonban azt szeretné, hogy a fájlok mindig naprakészek legyenek a távoli tárterülettel, válasszon olyan modellt, amely gyakran ellenőrzi a fájlokat.
+A beállításokkal kapcsolatos további információkért olvassa el a [használati modellek megismerése](cache-usage-models.md) című témakört.
 
-Három beállítás érhető el:
+A beépített használati modellek segítségével kiválaszthatja, hogyan egyenlítheti ki a gyors választ az elavult adatok beszerzésének kockázatával. Ha optimalizálni szeretné a fájlok olvasásának sebességét, előfordulhat, hogy nem biztos benne, hogy a gyorsítótárban lévő fájlok be vannak-e jelölve a háttérbeli fájlokban. Ha azonban azt szeretné, hogy a fájlok mindig naprakészek legyenek a távoli tárterülettel, válasszon olyan modellt, amely gyakran ellenőrzi a fájlokat.
 
-* **Súlyos, ritka írások olvasása** – ezt a beállítást akkor használja, ha a statikus vagy ritkán módosított fájlok olvasási hozzáférését szeretné felgyorsítani.
+Ez a három lehetőség a legtöbb esetben a következőket fedi le:
 
-  Ez a beállítás gyorsítótárazza az ügyfelek által olvasott fájlokat, de azonnal átadja az írást a háttér-tárolóra. A gyorsítótárban tárolt fájlok nincsenek automatikusan összehasonlítva az NFS-tároló kötetén található fájlokkal. (További információért olvassa el az alábbi megjegyzést a háttér-ellenőrzésről.)
+* **Gyakori, ritka írások olvasása** – felgyorsítja a statikus vagy ritkán módosított fájlok olvasási hozzáférését.
+
+  Ezzel a beállítással a rendszer gyorsítótárazza a fájlokat az ügyfél olvasásai között, de azonnal továbbítja az ügyfeleket a háttérbeli tárolóba. A gyorsítótárban tárolt fájlok nincsenek automatikusan összehasonlítva az NFS-tároló kötetén található fájlokkal.
 
   Ne használja ezt a beállítást, ha fennáll a kockázata annak, hogy egy fájl közvetlenül a tárolási rendszeren módosul, anélkül, hogy először a gyorsítótárba kellene írni. Ha ez történik, a fájl gyorsítótárazott verziója nem lesz szinkronizálva a háttér-fájllal.
 
-* **15%-nál nagyobb írások** – ez a beállítás az olvasási és írási teljesítményt is felgyorsítja. Ha ezt a beállítást használja, az összes ügyfélnek az Azure HPC cache-en keresztül kell hozzáférnie a fájlokhoz ahelyett, hogy közvetlenül a háttér-tárolót kellene csatlakoztatnia. A gyorsítótárazott fájlok legutóbbi módosításai a háttérben nem tárolódnak.
+* **15%-nál nagyobb írások** – ez a beállítás az olvasási és írási teljesítményt is felgyorsítja.
 
-  Ebben a használati modellben a gyorsítótárban lévő fájlokat a rendszer csak a háttérbeli tároló fájljain, nyolc óránként ellenőrzi. A rendszer azt feltételezi, hogy a fájl gyorsítótárazott verziója nagyobb áramerősséget mutat. A gyorsítótárban lévő módosított fájl a háttér-tárolási rendszerbe kerül, miután a gyorsítótárban egy óra elteltével további módosítások nélkül megtörtént.
+  A rendszer gyorsítótárazza az ügyfél olvasását és az ügyfél írását. A gyorsítótárban lévő fájlok újabbak, mint a háttér-tárolási rendszer fájljai. A gyorsítótárazott fájlok csak a háttérbeli tároló fájljain, nyolc óránként lesznek automatikusan bejelölve. A gyorsítótárban lévő módosított fájlokat a rendszer a háttérbeli tárolóba írja, miután a gyorsítótárban 20 percen belül megtörtént a további módosítások nélkül.
 
-* Az **ügyfelek az NFS-célhelyre írhatnak, és megkerülik a gyorsítótárat** – ezt a beállítást akkor válassza, ha a munkafolyamatban lévő bármelyik ügyfél közvetlenül a tárolási rendszerbe írja az adatait anélkül, hogy először a gyorsítótárba írna, vagy ha az adatkonzisztenciát szeretné optimalizálni. Az ügyfelek által igényelt fájlok gyorsítótárazva vannak, de a fájloknak az ügyfélről történő módosításai azonnal visszakerülnek a háttérrendszer-tároló rendszerbe.
+  Ne használja ezt a beállítást, ha bármelyik ügyfél közvetlenül csatlakoztatja a háttérbeli tároló kötetét, mert fennáll a kockázata annak, hogy elavult fájlokkal fog rendelkezni.
 
-  Ezzel a használati modellel a gyorsítótárban lévő fájlokat a rendszer gyakran ellenőrzi a frissítések háttérbeli verzióiban. Ez az ellenőrzés lehetővé teszi, hogy a fájlok a gyorsítótáron kívülre legyenek módosítva az adatkonzisztencia fenntartása mellett.
+* Az **ügyfelek az NFS-célhelyre írhatnak, és megkerülik a gyorsítótárat** – ezt a beállítást akkor válassza, ha a munkafolyamatban lévő bármelyik ügyfél közvetlenül a tárolási rendszerbe írja az adatait anélkül, hogy először a gyorsítótárba írna, vagy ha az adatkonzisztenciát szeretné optimalizálni.
 
-Ez a táblázat a használati modell eltéréseit foglalja össze:
+  Az ügyfelek által igényelt fájlok gyorsítótárazva vannak, de a fájloknak az ügyfélről történő módosításai azonnal átkerülnek a háttérrendszer-tároló rendszerbe. A gyorsítótárban lévő fájlokat a rendszer gyakran ellenőrzi a frissítések háttérbeli verzióin. Ez az ellenőrzés fenntartja az adatkonzisztenciaot, ha a fájlok közvetlenül a tárolási rendszeren változnak a gyorsítótáron keresztül.
 
-| Használati modell                   | Gyorsítótárazási mód | Háttér-ellenőrzés | Maximális írási késleltetés |
-|-------------------------------|--------------|-----------------------|--------------------------|
-| Súlyos, ritka írások olvasása | Olvasás         | Soha                 | Nincs                     |
-| 15%-nál nagyobb írások       | Olvasás/írás   | 8 óra               | 1 óra                   |
-| Az ügyfelek megkerülik a gyorsítótárat      | Olvasás         | 30 másodperc            | Nincs                     |
+A többi lehetőségről a [használati modellek](cache-usage-models.md)ismertetése című témakörben olvashat bővebben.
+
+Ez a táblázat a használati modellek közötti különbségeket foglalja össze:
+
+| Használati modell | Gyorsítótárazási mód | Háttér-ellenőrzés | Maximális írási késleltetés |
+|--|--|--|--|
+| Súlyos, ritka írások olvasása | Olvasás | Soha | Nincs |
+| 15%-nál nagyobb írások | Olvasás/írás | 8 óra | 20 perc |
+| Az ügyfelek megkerülik a gyorsítótárat | Olvasás | 30 másodperc | Nincs |
+| 15%-nál nagyobb írások, gyakori háttér-ellenőrzés (30 másodperc) | Olvasás/írás | 30 másodperc | 20 perc |
+| 15%-nál nagyobb írások, gyakori háttér-ellenőrzés (60 másodperc) | Olvasás/írás | 60 másodperc | 20 perc |
+| 15%-nál nagyobb írások, gyakori visszaírások | Olvasás/írás | 30 másodperc | 30 másodperc |
+| Nagy mennyiségű, a kiszolgáló biztonsági mentése 3 óránként | Olvasás | 3 óra | Nincs |
 
 > [!NOTE]
-> A **háttér-ellenőrzési** érték azt jelzi, hogy a gyorsítótár automatikusan összehasonlítja-e a fájljait a távoli tárolóban lévő forrásfájlokat. Azonban az Azure HPC cache-gyorsítótárat kényszerítheti a fájlok összehasonlítására egy readdirplus kérelmet tartalmazó címtár-művelet végrehajtásával. A Readdirplus egy szabványos NFS API (más néven kiterjesztett olvasás), amely a címtár metaadatait adja vissza, ami miatt a gyorsítótár összehasonlítja és frissíti a fájlokat.
+> A **háttér-ellenőrzési** érték azt jelzi, hogy a gyorsítótár automatikusan összehasonlítja-e a fájljait a távoli tárolóban lévő forrásfájlokat. Az összehasonlítást azonban elindíthatja egy olyan ügyfélalkalmazás elküldésével, amely readdirplus műveletet tartalmaz a háttér-tárolási rendszeren. A Readdirplus egy szabványos NFS API (más néven kiterjesztett olvasás), amely a címtár metaadatait adja vissza, ami miatt a gyorsítótár összehasonlítja és frissíti a fájlokat.
 
 ### <a name="create-an-nfs-storage-target"></a>NFS-tárolási cél létrehozása
 
@@ -291,6 +304,43 @@ Kimenet:
 ```
 
 ---
+
+## <a name="add-a-new-adls-nfs-storage-target-preview"></a>Új ADLS-NFS Storage-cél hozzáadása (előzetes verzió)
+
+A ADLS-NFS tárolási célok olyan Azure Blob-tárolókat használnak, amelyek támogatják a hálózati fájlrendszer (NFS) 3,0-es protokollját.
+
+> [!NOTE]
+> Az NFS 3,0 protokoll támogatása az Azure Blob Storage-hoz nyilvános előzetes verzióban érhető el. A rendelkezésre állás korlátozott, és előfordulhat, hogy a funkciók mostantól változnak, és a szolgáltatás általánosan elérhetővé válik. Az előnézeti technológiákat ne használja éles rendszerekben.
+>
+> A legfrissebb információkért olvassa el az [NFS 3,0 protokoll támogatása](../storage/blobs/network-file-system-protocol-support.md) című témakört.
+
+A ADLS-NFS tárolási célpontok némelyike hasonlóságot mutat a blob Storage-célokkal és néhány NFS-tárolási célokkal. Például:
+
+* A blob Storage-tárolóhoz hasonlóan meg kell adnia az Azure HPC cache engedélyt a [Storage-fiók eléréséhez](#add-the-access-control-roles-to-your-account).
+* Az NFS Storage-tárolóhoz hasonlóan a gyorsítótár [használati modelljét](#choose-a-usage-model)is be kell állítania.
+* Mivel az NFS-t támogató blob-tárolók NFS-kompatibilis hierarchikus struktúrával rendelkeznek, nem kell a gyorsítótárat használnia az adat betöltéséhez, és a tárolókat más NFS-rendszerek is olvasni tudják. Az adatok előre tölthetők be egy ADLS-NFS-tárolóba, majd hozzáadhatók egy HPC-gyorsítótárhoz tárolási célként, majd később is elérhetők az adatok a HPC-gyorsítótáron kívülről. Ha standard BLOB-tárolót használ HPC cache Storage-tárolóként, az adatok tulajdonosi formában vannak megírva, és csak más Azure HPC cache-kompatibilis termékekből érhetők el.
+
+A ADLS-NFS tárolási cél létrehozása előtt létre kell hoznia egy NFS-kompatibilis Storage-fiókot. Kövesse az [Azure HPC cache előfeltételeinek](hpc-cache-prerequisites.md#nfs-mounted-blob-adls-nfs-storage-requirements-preview) és a [blob Storage csatlakoztatása az NFS használatával](../storage/blobs/network-file-system-protocol-support-how-to.md)című témakör útmutatásait. A Storage-fiók beállítása után létrehozhat egy új tárolót a tárolási cél létrehozásakor.
+
+ADLS-NFS tárolási cél létrehozásához nyissa meg a **tároló hozzáadása** lapot a Azure Portal. (A további módszerek fejlesztés alatt állnak.)
+
+![Képernyőfelvétel a tárolási cél hozzáadása oldalról a ADLS-NFS-célhoz definiált](media/add-adls-target.png)
+
+Adja meg ezt az információt.
+
+* **Tárolási cél neve** – adjon meg egy nevet, amely azonosítja ezt a tárolási célt az Azure HPC cache-ben.
+* **Cél típusa** – válassza a **ADLS – NFS** elemet.
+* **Storage-fiók** – válassza ki a használni kívánt fiókot. Ha az NFS-kompatibilis Storage-fiók nem jelenik meg a listában, ellenőrizze, hogy az megfelel-e az előfeltételeknek, és hogy a gyorsítótár el tudja-e érni.
+
+  Engedélyeznie kell a gyorsítótár-példányt a Storage-fiók eléréséhez a [hozzáférési Szerepkörök hozzáadása](#add-the-access-control-roles-to-your-account)című témakörben leírtak szerint.
+
+* **Storage-tároló** – válassza ki az NFS-kompatibilis BLOB-tárolót ehhez a célhoz, vagy kattintson az **új létrehozása** lehetőségre.
+
+* **Használati modell** – válassza ki az egyik adatgyorsítótárazási profilt a munkafolyamat alapján, a fenti [használati modell kiválasztása](#choose-a-usage-model) című részben leírtak szerint.
+
+Ha elkészült, kattintson az **OK** gombra a tárolási cél hozzáadásához.
+
+<!-- **** -->
 
 ## <a name="view-storage-targets"></a>Tárolási célok megtekintése
 

@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: 02b8d72ab88f9eca2e1fac4858c14826dae57dbe
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 698b4ebedfc9b41e8c5732a0a81226a971d65585
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629172"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470758"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Harmadik rész: a könyvtár-és a fájl szintű engedélyek konfigurálása SMB protokollon keresztül 
 
@@ -93,19 +93,6 @@ Miután a fájlmegosztás csatlakoztatva lett a Storage-fiók kulcsához, konfig
 
 Ha a helyi fájlkiszolgálón lévő címtárakkal vagy fájlokkal rendelkezik a AD DS identitásokkal konfigurált Windows DACL-ekkel, akkor átAzure Files másolhatja az ACL-eket a hagyományos fájlmásolás-eszközökkel, például a Robocopy vagy az [Azure AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases)használatával. Ha a címtárakat és a fájlokat a rendszer a Azure File Syncon Azure Fileson, akkor az ACL-eket a rendszer a natív formában tartja át és őrzi meg.
 
-### <a name="configure-windows-acls-with-windows-file-explorer"></a>Windows-ACL-ek konfigurálása a Windows fájlkezelővel
-
-A Windows fájlkezelővel teljes hozzáférést biztosíthat a fájlmegosztás alatt lévő összes könyvtárhoz és fájlhoz, beleértve a gyökérkönyvtárat is.
-
-1. Nyissa meg a Windows fájlkezelő alkalmazást, és kattintson a jobb gombbal a fájlra/könyvtárra, és válassza a **Tulajdonságok** lehetőséget.
-1. Válassza a **Biztonság** fület.
-1. Válassza a **Szerkesztés lehetőséget.** az engedélyek módosításához.
-1. Módosíthatja a meglévő felhasználók engedélyeit, vagy kiválaszthatja a **Hozzáadás...** lehetőséget az új felhasználók engedélyeinek megadásához.
-1. Az új felhasználók hozzáadására szolgáló kérdés ablakban adja meg azt a cél felhasználónevet, amely számára engedélyezni kívánja az engedélyek megadását az **adja meg a kijelölendő objektumok nevét** mezőbe, **majd válassza a Névellenőrzés lehetőséget** a MEGcélzott felhasználó teljes UPN-nevének megkereséséhez.
-1.    Kattintson az **OK** gombra.
-1.    A **Biztonság** lapon válassza ki az összes olyan engedélyt, amely számára engedélyezni szeretné az új felhasználót.
-1.    Kattintson az **Alkalmaz** elemre.
-
 ### <a name="configure-windows-acls-with-icacls"></a>Windows ACL-ek konfigurálása icacls-val
 
 A következő Windows-paranccsal teljes körű engedélyeket adhat meg a fájlmegosztás alatt lévő összes könyvtárhoz és fájlhoz, beleértve a gyökérkönyvtárat is. Ne felejtse el lecserélni a példában szereplő helyőrző értékeket a saját értékeire.
@@ -116,7 +103,21 @@ icacls <mounted-drive-letter>: /grant <user-email>:(f)
 
 A Windows ACL-ek és a különböző típusú támogatott engedélyek beállításával kapcsolatos további információkért tekintse meg [az icacls parancssori útmutatója](/windows-server/administration/windows-commands/icacls)című témakört.
 
-## <a name="next-steps"></a>További lépések
+### <a name="configure-windows-acls-with-windows-file-explorer"></a>Windows-ACL-ek konfigurálása a Windows fájlkezelővel
+
+A Windows fájlkezelővel teljes hozzáférést biztosíthat a fájlmegosztás alatt lévő összes könyvtárhoz és fájlhoz, beleértve a gyökérkönyvtárat is. Ha nem tudja megfelelően betölteni az AD-tartomány adatait a Windows fájlkezelőben, ez valószínűleg a helyszíni Active Directory-környezet megbízhatósági beállításai miatt fordul elő. Az ügyfélszámítógép nem tudta elérni Azure Files hitelesítéshez regisztrált AD-tartományvezérlőt. Ebben az esetben a Windows ACL-ek configurating használjon icacls-ket.
+
+1. Nyissa meg a Windows fájlkezelő alkalmazást, és kattintson a jobb gombbal a fájlra/könyvtárra, és válassza a **Tulajdonságok** lehetőséget.
+1. Válassza a **Biztonság** fület.
+1. Válassza a **Szerkesztés lehetőséget.** az engedélyek módosításához.
+1. Módosíthatja a meglévő felhasználók engedélyeit, vagy kiválaszthatja a **Hozzáadás...** lehetőséget az új felhasználók engedélyeinek megadásához.
+1. Az új felhasználók hozzáadására szolgáló kérdés ablakban adja meg azt a cél felhasználónevet, amely számára engedélyezni kívánja az engedélyek megadását az **adja meg a kijelölendő objektumok nevét** mezőbe, **majd válassza a Névellenőrzés lehetőséget** a MEGcélzott felhasználó teljes UPN-nevének megkereséséhez.
+1.    Válassza az **OK** lehetőséget.
+1.    A **Biztonság** lapon válassza ki az összes olyan engedélyt, amely számára engedélyezni szeretné az új felhasználót.
+1.    Kattintson az **Alkalmaz** gombra.
+
+
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy a funkció engedélyezve és konfigurálva van, folytassa a következő cikkel, amelyben csatlakoztathatja az Azure-fájlmegosztást egy tartományhoz csatlakoztatott virtuális gépről.
 

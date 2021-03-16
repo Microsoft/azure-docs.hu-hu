@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2fa8c2ea990644fa82ae79114322fa087259378b
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 0f09b4557f9bbf2f074948bd7c8dbd349cd397bc
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448189"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488669"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Egy QQ-fiókkal történő bejelentkezés és bejelentkezés beállítása Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ Ha egy QQ-fiókkal rendelkező felhasználók számára szeretné engedélyezni 
 1. Ugrás a következőre: [https://connect.qq.com/index.html](https://connect.qq.com/index.html) .
 1. Válassza a **应用管理** (alkalmazás-kezelés) lehetőséget.
 1. Válassza a **创建应用** (alkalmazás létrehozása) lehetőséget, és adja meg a szükséges információkat.
-1. Adja meg `https://your-tenant-name.b2clogin.com/your-tenant-name}.onmicrosoft.com/oauth2/authresp` a **授权回调域** (visszahívási URL-cím). Ha például a `tenant_name` contoso, állítsa be az URL-címet a következőre: `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp` .
+1. A **授权回调域** (visszahívási URL-cím) mezőbe írja be a következőt: `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Ha [Egyéni tartományt](custom-domain.md)használ, írja be a értéket `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Cserélje le a `your-tenant-name` nevet a bérlő nevére, és az `your-domain-name` Egyéni tartományra.
 1. Válassza a **创建应用** (alkalmazás létrehozása) lehetőséget.
 1. A jóváhagyás lapon válassza a **应用管理** (alkalmazás-kezelés) lehetőséget az alkalmazás-kezelés lapra való visszatéréshez.
 1. A létrehozott alkalmazás mellett válassza a **查看** (nézet) elemet.

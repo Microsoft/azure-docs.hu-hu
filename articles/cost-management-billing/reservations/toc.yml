@@ -124,6 +124,8 @@
           href: reservation-renew.md?toc=/azure/cost-management-billing/reservations/toc.json
     - name: Hibaelhárítás
       items:
+        - name: Foglalási vásárló keresése az Azure-naplókból
+          href: find-reservation-purchaser-from-logs.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: A bérlők közötti átvitel hibáinak megoldása
           href: troubleshoot-reservation-transfers-between-tenants.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Nincs jogosult előfizetés

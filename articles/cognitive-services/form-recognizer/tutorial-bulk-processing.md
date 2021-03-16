@@ -2,19 +2,19 @@
 title: 'Oktatóanyag: űrlapos adatok tömeges kinyerése Azure Data Factory-űrlap felismerő használatával'
 titleSuffix: Azure Cognitive Services
 description: Azure Data Factory tevékenységek beállításával aktiválhatja az űrlap-felismerő modellek betanítását és futtatását, és digitalizálhatja a dokumentumok nagy számát.
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 01/04/2021
-ms.author: pafarley
-ms.openlocfilehash: 5b220652009f54482c757f01232517569596c562
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.author: lajanuar
+ms.openlocfilehash: 0c009a87a5834997cdc489efc75ebb16f9459754
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102423896"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467102"
 ---
 # <a name="tutorial-extract-form-data-in-bulk-by-using-azure-data-factory"></a>Oktatóanyag: adatok tömeges kinyerése Azure Data Factory használatával
 
@@ -511,4 +511,4 @@ Ha új típusú új űrlapokat ad hozzá, egy betanítási adatkészletet is fel
 
 Ebben az oktatóanyagban Azure Data Factory folyamatokat állít be, hogy aktiválja az űrlap-felismerő modellek betanítását és futtatását, és digitalizálja a fájlok nagy számát. Ezután tekintse át az űrlap-felismerő API-t, hogy megtudja, mi a teendő.
 
-* [Űrlap-felismerő REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)
+* [Űrlap-felismerő REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeBusinessCardAsync)

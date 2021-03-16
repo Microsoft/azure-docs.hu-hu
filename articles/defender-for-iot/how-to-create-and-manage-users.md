@@ -4,15 +4,15 @@ description: Érzékelők és a helyszíni felügyeleti konzol felhasználóinak
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 1/3/2021
+ms.date: 03/03/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: fd0c7b74bea979737644824f93b4dce7a2364b99
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: dff379c99fa7383c7f7844cf8d195a345e88a335
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522342"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466269"
 ---
 # <a name="about-defender-for-iot-console-users"></a>A IoT-konzol felhasználói
 
@@ -162,7 +162,7 @@ Az LDAP-alapú hitelesítés két típusa támogatott:
 
 ### <a name="active-directory-and-defender-for-iot-permissions"></a>A IoT engedélyeinek Active Directory és Defender
 
-Az itt definiált Active Directory-csoportokat társíthatja konkrét jogosultsági szintekhez. Beállíthat például egy adott Active Directory csoportot, és a csoport összes felhasználója számára kijelölheti a RO engedélyeket. További részleteket a [felhasználók létrehozása és kezelése](how-to-create-and-manage-users.md) című témakörben talál.
+Az itt definiált Active Directory-csoportokat társíthatja konkrét jogosultsági szintekhez. Beállíthat például egy adott Active Directory csoportot, és csak olvasási engedélyeket rendelhet a csoportban lévő összes felhasználóhoz.
 
 Active Directory konfigurálása:
 
@@ -170,11 +170,11 @@ Active Directory konfigurálása:
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-system-settings-v2.png" alt-text="Megtekintheti Active Directory rendszerbeállításait.":::
 
-1. A **Rendszerbeállítások** panelen válassza a **Active Directory** lehetőséget.
+2. A **Rendszerbeállítások** panelen válassza a **Active Directory** lehetőséget.
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-configurations-v2.png" alt-text="Szerkessze Active Directory konfigurációját.":::
 
-1. Az **Active Directory konfigurációjának szerkesztése** párbeszédpanelen válassza a **Active Directory integráció engedélyezve**  >  **Mentés** lehetőséget. A **Active Directory konfigurációjának szerkesztése** párbeszédpanel kibontja, és megadhatja a Active Directory konfigurálásához szükséges paramétereket.
+3. Az **Active Directory konfigurációjának szerkesztése** párbeszédpanelen válassza a **Active Directory integráció engedélyezve**  >  **Mentés** lehetőséget. A **Active Directory konfigurációjának szerkesztése** párbeszédpanel kibontja, és megadhatja a Active Directory konfigurálásához szükséges paramétereket.
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-integration-enabled-v2.png" alt-text="Adja meg a Active Directory konfigurálásához szükséges paramétereket.":::
 
@@ -183,9 +183,9 @@ Active Directory konfigurálása:
     > - Az összes Active Directory paraméternél csak kisbetűset használjon. A kisbetűset akkor is használja, ha a Active Directory konfigurációi nagybetűket használnak.
     > - Ugyanahhoz a tartományhoz nem állítható be az LDAP és az LDAP. Ugyanakkor a különböző tartományokhoz is használhat egyszerre egy időben.
 
-1. Állítsa be a Active Directory kiszolgáló paramétereit az alábbiak szerint:
+4. Állítsa be a Active Directory kiszolgáló paramétereit az alábbiak szerint:
 
-   | Kiszolgáló paraméter | Description |
+   | Kiszolgáló paraméter | Leírás |
    |--|--|
    | Tartományvezérlő teljes tartományneve | Állítsa a teljes tartománynevet (FQDN) pontosan úgy, ahogy az az LDAP-kiszolgálón megjelenik. Adja meg például a következőt: `host1.subdomain.domain.com`. |
    | Tartományvezérlő portja | Adja meg azt a portot, amelyen az LDAP konfigurálva van. |
@@ -193,11 +193,15 @@ Active Directory konfigurálása:
    | Active Directory csoportok | Adja meg az LDAP-kiszolgálón Active Directory konfigurációjában definiált csoportnevet. |
    | Megbízható tartományok | Megbízható tartomány hozzáadásához adja hozzá a tartománynevet és a megbízható tartomány kapcsolódási típusát. <br />A megbízható tartományokat csak a felhasználók által definiált felhasználók számára állíthatja be. |
 
+#### <a name="activedirectory-groups-for-the-on-premises-management-console"></a>ActiveDirectory-csoportok a helyszíni felügyeleti konzolhoz
+
+Ha Active Directory-csoportokat hoz létre a helyszíni felügyeleti konzol felhasználói számára, minden Active Directory csoporthoz létre kell hoznia egy hozzáférési csoporthoz tartozó szabályt. A helyszíni felügyeleti konzol Active Directory a hitelesítő adatok nem fognak működni, ha nem létezik hozzáférési csoport szabály a Active Directory felhasználói csoport számára. Lásd: [globális hozzáférés-vezérlés meghatározása](how-to-define-global-user-access-control.md).
+
 1. Kattintson a **Mentés** gombra.
 
-1. Megbízható kiszolgáló hozzáadásához válassza a **kiszolgáló hozzáadása** lehetőséget, és konfigurálja a másik kiszolgálót.
+2. Megbízható kiszolgáló hozzáadásához válassza a **kiszolgáló hozzáadása** lehetőséget, és konfigurálja a másik kiszolgálót.
 
-## <a name="resetting-a-users-password-for-the-sensor-or-on-premises-management-console"></a>A felhasználó jelszavának alaphelyzetbe állítása az érzékelő vagy a helyszíni felügyeleti konzol esetében
+## <a name="resetting-passwords"></a>Jelszavak alaphelyzetbe állítása
 
 ### <a name="cyberx-or-support-user"></a>CyberX vagy támogató felhasználó
 
@@ -265,7 +269,7 @@ A felhasználó jelszavának alaphelyzetbe állítása a helyszíni felügyeleti
 
 1. Válassza a **Frissítés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="see-also"></a>Lásd még
 
 [Az érzékelő](how-to-activate-and-set-up-your-sensor.md) 
  aktiválása és beállítása [A helyszíni felügyeleti konzol](how-to-activate-and-set-up-your-on-premises-management-console.md) 

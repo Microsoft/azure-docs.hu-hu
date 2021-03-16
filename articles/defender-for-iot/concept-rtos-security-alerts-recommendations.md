@@ -1,6 +1,6 @@
 ---
-title: Biztonsági modul az Azure RTOS beépített & testreszabható riasztások és javaslatok
-description: Ismerje meg a biztonsági riasztásokat és a javasolt szervizelést az Azure IoT biztonsági modul – RTOS használatával.
+title: Defender-IoT-Micro-Agent Azure RTOS beépített & testreszabható riasztások és javaslatok
+description: Ismerje meg a biztonsági riasztásokat és az ajánlott szervizelést az Azure IoT Defender-IoT-Micro-Agent-RTOS használatával.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,24 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/07/2020
 ms.author: mlottner
-ms.openlocfilehash: cf4924f8a9b97487e64e12ab80df92f2b2a81de2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6dfeb01e174d71c926e9fcf7f5f1ee078524cf9
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936286"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494274"
 ---
-# <a name="security-module-for-azure-rtos-security-alerts-and-recommendations-preview"></a>Biztonsági modul Azure RTOS – biztonsági riasztások és javaslatok (előzetes verzió)
+# <a name="defender-iot-micro-agent-for-azure-rtos-security-alerts-and-recommendations-preview"></a>Defender-IoT-Micro-Agent Azure RTOS biztonsági riasztások és javaslatok (előzetes verzió)
 
-Az Azure RTOS biztonsági modulja folyamatosan elemzi a IoT-megoldást a fejlett Analitika és a fenyegetések felderítése révén, hogy figyelmeztesse Önt a lehetséges kártékony tevékenységekre és a gyanús rendszermódosításokra. Egyéni riasztásokat is létrehozhat a várt eszköz viselkedésének és alapértékének ismerete alapján.
+A Defender-IoT-Micro-Agent for Azure RTOS folyamatosan elemzi a IoT-megoldást a fejlett analitikai és fenyegetési intelligenciával, hogy figyelmeztesse Önt a lehetséges rosszindulatú tevékenységekre és a gyanús rendszermódosításokra. Egyéni riasztásokat is létrehozhat a várt eszköz viselkedésének és alapértékének ismerete alapján.
 
-Az Azure RTOS-riasztás biztonsági modulja a lehetséges kompromisszumok jelzése működik, és meg kell vizsgálni és szervizelni kell. Az Azure RTOS ajánlott biztonsági modulja a gyenge biztonsági helyzet javítását és frissítését azonosítja. 
+Az Azure RTOS-alapú Defender-IoT-Micro-Agent riasztás a lehetséges kompromisszumok jeleként működik, és meg kell vizsgálni és szervizelni kell. Az Azure RTOS-hez készült Defender-IoT-Micro-Agent ajánlás a gyenge biztonsági helyzet javítását és frissítését azonosítja. 
 
 Ebben a cikkben a beépített riasztások és javaslatok listáját találja, amelyeket az alapértelmezett tartományok alapján indít el, és testreszabható a saját értékekkel a várt vagy az alapkonfiguráció alapján. 
 
-Ha többet szeretne megtudni arról, hogyan működik a riasztások testreszabása a Defender for IoT szolgáltatásban, tekintse meg a [testreszabható riasztásokat](concept-customizable-security-alerts.md). Az Azure RTOS biztonsági moduljának használatakor elérhető konkrét riasztások és javaslatok az alábbi táblázatokban vannak részletezve. 
+Ha többet szeretne megtudni arról, hogyan működik a riasztások testreszabása a Defender for IoT szolgáltatásban, tekintse meg a [testreszabható riasztásokat](concept-customizable-security-alerts.md). Az Azure RTOS Defender-IoT-Micro-Agent használatakor az alábbi táblázatokban részletesen ismertetett riasztások és javaslatok érhetők el a testreszabáshoz. 
 
-## <a name="security-module-for-azure-rtos-supported-security-alerts"></a>Security-modul az Azure RTOS-ben – támogatott biztonsági riasztások
+## <a name="defender-iot-micro-agent-for-azure-rtos-supported-security-alerts"></a>Defender-IoT-Micro-Agent Azure RTOS – támogatott biztonsági riasztások
 
 ### <a name="device-related-security-alerts"></a>Eszközhöz kapcsolódó biztonsági riasztások
 
@@ -53,7 +53,7 @@ Ha többet szeretne megtudni arról, hogyan működik a riasztások testreszabá
 |Tanúsítvány törölve    | Tanúsítvány észlelése egy IoT Hubból        |
 |Új tanúsítvány     |  Új tanúsítvány hozzáadásának észlelése egy IoT Hub       |
 
-## <a name="security-module-for-azure-rtos-supported-customizable-alerts"></a>Az Azure RTOS biztonsági modulja által támogatott testreszabható riasztások
+## <a name="defender-iot-micro-agent-for-azure-rtos-supported-customizable-alerts"></a>Defender-IoT-Micro-Agent Azure RTOS – támogatott testreszabható riasztások
 
 ### <a name="device-related-customizable-alerts"></a>Eszközhöz kapcsolódó testreszabható riasztások
 
@@ -75,7 +75,7 @@ Ha többet szeretne megtudni arról, hogyan működik a riasztások testreszabá
 |A Twin modulok frissítései     |  Az engedélyezett tartományon kívüli Twin modulok frissítéseinek száma       |
 |Jogosulatlan műveletek    |  Az engedélyezett tartományon kívüli jogosulatlan műveletek száma       |
 
-## <a name="security-module-for-azure-rtos-supported-recommendations"></a>Biztonsági modul az Azure RTOS-hez – támogatott javaslatok
+## <a name="defender-iot-micro-agent-for-azure-rtos-supported-recommendations"></a>Defender-IoT-Micro-Agent Azure RTOS – támogatott javaslatok
 
 ### <a name="device-related-recommendations"></a>Eszközhöz kapcsolódó javaslatok
 
@@ -97,6 +97,6 @@ A IoT szolgáltatással kapcsolatos riasztások és javaslatok teljes listáját
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Gyors útmutató: biztonsági modul az Azure RTOS](quickstart-azure-rtos-security-module.md)
-- [Az Azure RTOS biztonsági moduljának konfigurálása és testreszabása](how-to-azure-rtos-security-module.md)
-- Tekintse meg az [Azure RTOS API biztonsági modulját](azure-rtos-security-module-api.md)
+- [Gyors útmutató: Defender-IoT-Micro-Agent Azure RTOS](quickstart-azure-rtos-security-module.md)
+- [Defender-IoT-Micro-Agent konfigurálása és testreszabása az Azure RTOS](how-to-azure-rtos-security-module.md)
+- Tekintse meg a [Defender-IoT-Micro-Agent Azure RTOS API](azure-rtos-security-module-api.md) -t

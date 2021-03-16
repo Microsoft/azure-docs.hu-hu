@@ -8,14 +8,16 @@ ms.date: 08/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3212493963805de3c8845ec494d87fc92d72998a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ff154eee6c6174a8f1a3aa7bea37ef62273bb1a
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76760113"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489502"
 ---
 # <a name="security-standards-for-azure-iot-edge"></a>A Azure IoT Edge biztonsági előírásai
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 A Azure IoT Edge az adatai és az elemzések intelligens peremhálózatba való áthelyezésekor rejlő kockázatokat kezeli. A IoT Edge biztonsági szabványok rugalmasságot biztosítanak a különböző üzembe helyezési forgatókönyvek számára az összes Azure-szolgáltatástól várt védelemmel.
 
@@ -87,6 +89,6 @@ A IoT technológia különböző típusú üzleti átalakításokat vezet be, a 
 
 Az intelligens peremhálózat biztonságossá tétele érdekében a IoT védelmének közös érdeke a nyílt Közösségtől származó együttműködésen alapuló hozzájárulásokat igényel. Ezek a hozzájárulások biztonságos technológiák vagy szolgáltatások formájában lehetnek. A Azure IoT Edge biztonsági keretrendszer egy stabil alapot biztosít a biztonság számára, amely a maximális lefedettség érdekében bővíthető, és az Azure-felhővel megegyező megbízhatóságot és integritást biztosít az intelligens környezetekben.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure IoT Edge az [intelligens peremhálózat biztonságossá](https://azure.microsoft.com/blog/securing-the-intelligent-edge/)tételéről.

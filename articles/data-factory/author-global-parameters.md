@@ -5,13 +5,13 @@ ms.service: data-factory
 ms.topic: conceptual
 author: dcstwh
 ms.author: weetok
-ms.date: 03/04/2021
-ms.openlocfilehash: 06d04eb8679b4484f330b69a8cffb263d353bdcd
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.date: 03/15/2021
+ms.openlocfilehash: 3110ce8cb97379fd4690903ec769cc1dfc7f1326
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197875"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492761"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Globális paraméterek a Azure Data Factory
 
@@ -49,7 +49,10 @@ A globális paraméterek kétféleképpen integrálhatók a folyamatos integrác
 A legtöbb felhasználási eset esetében javasoljuk, hogy globális paramétereket tartalmazzon az ARM-sablonban. Ez natív módon integrálható a [CI/CD doc](continuous-integration-deployment.md)-ban ismertetett megoldással. Alapértelmezés szerint a globális paraméterek az ARM-sablon paraméterként lesznek hozzáadva, mivel azok gyakran változnak a környezetből a környezetbe. A globális paraméterek felvételét az ARM-sablonban engedélyezheti a **kezelés** központban.
 
 > [!NOTE]
-> Az **ARM-sablon konfigurációjának belefoglalása** csak "git módban" lehetséges. Jelenleg le van tiltva "élő mód" vagy "Data Factory" módban.
+> Az **ARM-sablon konfigurációjának belefoglalása** csak "git módban" lehetséges. Jelenleg le van tiltva "élő mód" vagy "Data Factory" módban. 
+
+> [!WARNING]
+>A paraméter nevében nem használható a "-". "{" Code ":" BadRequest "," üzenet ":" ErrorCode = InvalidTemplate, ErrorMessage = The Expression > "folyamat (). globalParameters. myparam-DBTEST nevű-URL ' érvénytelen:.....}" errorcode. A paraméter neve azonban a "_" nevet is használhatja.
 
 ![Belefoglalás az ARM-sablonba](media/author-global-parameters/include-arm-template.png)
 

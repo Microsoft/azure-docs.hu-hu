@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan állíthatja helyre a fájlok
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: c5a027773a55347b71c1e6a66d24d7fdb99220d0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 63714773d1b6f84b88bd2207aca4196fa16f1a94
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101725509"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493526"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gép biztonsági mentéséből
 
@@ -60,18 +60,18 @@ A fájlok vagy mappák helyreállítási pontról történő visszaállításáh
 
 ## <a name="step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script"></a>2. lépés: Győződjön meg arról, hogy a gép megfelel a követelményeknek, mielőtt végrehajtja a parancsfájlt.
 
-A parancsfájl sikeres letöltése után ellenőrizze, hogy rendelkezik-e a megfelelő géppel a parancsfájl végrehajtásához. A virtuális gép, amelyen a parancsfájlt szeretné végrehajtani, nem rendelkezhet a következő nem támogatott konfigurációk egyikével sem. Ha igen, válasszon egy másik gépet, lehetőleg ugyanabból a régióból, amely megfelel a követelményeknek.  
+A parancsfájl sikeres letöltése után ellenőrizze, hogy rendelkezik-e a megfelelő géppel a parancsfájl végrehajtásához. A virtuális gép, amelyen a parancsfájlt szeretné végrehajtani, nem rendelkezhet a következő nem támogatott konfigurációk egyikével sem. **Ha igen, válasszon egy másik gépet, lehetőleg ugyanabból a régióból, amely megfelel a követelményeknek**.  
 
 ### <a name="dynamic-disks"></a>Dinamikus lemezek
 
-A végrehajtható parancsfájl nem futtatható a virtuális gépen a következő jellemzők bármelyikével:
+A végrehajtható parancsfájl nem futtatható a virtuális gépen a következő jellemzők bármelyikével: válasszon másik gépet
 
 - Több lemezre kiterjedő kötetek (átfedő és csíkozott kötetek).
 - Hibatűrő kötetek (tükrözött és RAID-5 kötetek) dinamikus lemezeken.
 
 ### <a name="windows-storage-spaces"></a>Windows-tárhelyek
 
-A letöltött végrehajtható fájlt nem futtathatja a Windows-tárolóhelyekhez konfigurált virtuális gépen.
+A letöltött végrehajtható fájlt nem futtathatja ugyanazon a biztonsági másolattal rendelkező virtuális gépen, ha a biztonsági másolattal rendelkező virtuális gépen Windows-tárolóhelyek vannak. Válasszon másik számítógépet.
 
 ### <a name="virtual-machine-backups-having-large-disks"></a>Nagyméretű lemezekkel rendelkező virtuális gépek biztonsági mentései
 

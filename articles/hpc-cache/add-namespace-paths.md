@@ -4,14 +4,14 @@ description: Ügyfelek felé irányuló elérési utak létrehozása a háttérb
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 12/22/2020
+ms.date: 03/11/2021
 ms.author: v-erkel
-ms.openlocfilehash: 5549670dbd1f302bdb17b8b94cbd1fb5c4c1a1d9
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: f45d5710f6feb8af2347ca298e07e8a4870d3d4f
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760540"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470462"
 ---
 # <a name="set-up-the-aggregated-namespace"></a>Az összesített névtér beállítása
 
@@ -133,7 +133,31 @@ A frissítési parancshoz használt beállítások hasonlóak a "Create" parancs
 
 ---
 
-## <a name="next-steps"></a>További lépések
+### <a name="adls-nfs-namespace-paths-preview"></a>ADLS – NFS-névtér elérési útjai (előzetes verzió)
+
+A normál blob Storage-tárolóhoz hasonlóan a ADLS-NFS tárolási cél csak egy exportálással rendelkezik, így csak egy névtér elérési útja lehet.
+
+Az alábbi útmutatást követve állíthatja be vagy módosíthatja az elérési utat a Azure Portal.
+
+Töltse be a **névtér** beállításait tartalmazó lapot.
+
+* **Új elérési út hozzáadása:** Kattintson a felül található **+ Hozzáadás** gombra, és adja meg az adatokat a szerkesztési panelen.
+
+  ![Képernyőkép a névtér-szerkesztési mezők hozzáadásáról egy kiválasztott ADLS-NFS-tároló céljával. Az exportálási és alkönyvtári elérési utak a következőre vannak beállítva:/és nem szerkeszthető.](media/namespace-add-adls.png)
+
+  * Adja meg azt az elérési utat, amellyel az ügyfelek hozzáférnek ehhez a tárolási célhoz.
+
+  * Válassza ki, hogy melyik hozzáférési házirendet szeretné használni ehhez az elérési úthoz. További információ az ügyfél-hozzáférés [ügyfél-hozzáférési házirendekben](access-policies.md)való testreszabásáról.
+
+  * Válassza ki a tárolási célt a legördülő listából. Ha egy ADLS-NFS tárolási célnak már van névtérbeli elérési útja, nem választható ki.
+
+  * A ADLS-NFS tárolási célpont esetében az exportálási és alkönyvtári elérési utak automatikusan értékre vannak állítva ``/`` .
+
+* **Meglévő elérési út módosítása:** Kattintson a névtér elérési útjára. Megnyílik a szerkesztési panel. Módosíthatja az elérési utat és a hozzáférési házirendet, de nem válthat másik tárolási célra.
+
+* **Névtér elérési útjának törlése:** Jelölje be az elérési út bal oldalán található jelölőnégyzetet, majd kattintson a **Törlés** gombra.
+
+## <a name="next-steps"></a>Következő lépések
 
 Miután létrehozta a tárolási célok összesített névterét, csatlakoztathatja az ügyfeleket a gyorsítótárhoz. További információért olvassa el ezeket a cikkeket.
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 2a1c0c0685ab5a908a89f4a43073f9f773cd58c3
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 2d388cf6c776e6d30a487ce9e14ba1601dce1d23
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102631999"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491605"
 ---
 # <a name="media-services-terminology-and-concepts"></a>Media Services terminológia és fogalmak
 
@@ -47,7 +47,7 @@ A fejlesztés megkezdése előtt tekintse át az alábbi témakörökben ismerte
 |Tartalomvédelem|A Media Services használatával dinamikusan titkosíthatja az élő és igény szerinti tartalmat Advanced Encryption Standard (AES-128) vagy/és a három fő DRM-rendszer valamelyikével: Microsoft PlayReady, Google Widevine és Apple FairPlay. A Media Services egy szolgáltatást is biztosít az AES-kulcsok és a DRM (PlayReady, Widevine és FairPlay) licencek továbbítására a hitelesítő ügyfelek számára. <br/><br/>Ha az adatfolyamban titkosítási beállításokat ad meg, hozza létre a **tartalmi kulcs házirendjét** , és társítsa azt a **folyamatos átviteli lokátorhoz**. A **tartalmi kulcs házirendje** lehetővé teszi annak konfigurálását, hogy a rendszer hogyan továbbítsa a tartalmi kulcsot a végfelhasználók számára.<br/><br/> Próbálja meg újból felhasználni a szabályzatokat, amikor ugyanazok a beállítások szükségesek.| [Tartalmi kulcs házirendjei](content-key-policy-concept.md)<br/><br/>[Tartalomvédelem](content-protection-overview.md)|
 |Live streaming (Élő adatfolyam)|A Media Services lehetővé teszi, hogy élő eseményeket nyújtson az ügyfeleknek az Azure-felhőben. Az **élő események** az élő videóadatok betöltését és feldolgozását végzik. Ha **élő eseményt** hoz létre, a rendszer létrehoz egy bemeneti végpontot, amelynek használatával élő jeleket küldhet egy távoli kódolóból. Ha a stream az **élő eseménybe** áramlik, megkezdheti a folyamatos átviteli eseményt egy **eszköz**, egy **élő kimenet** és a **folyamatos átviteli lokátor** létrehozásával. Az **élő kimenet** archiválja a streamet az objektumba **, és** elérhetővé teszi a nézők számára a **folyamatos átviteli végponton** keresztül. Egy élő esemény lehet egy *átmenő* (egy helyszíni élő kódoló több bitrátás streamet küld) vagy *élő kódolást* (a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld). |[Élő közvetítés – áttekintés](live-streaming-overview.md)<br/><br/>[Élő események és élő kimenetek](live-events-outputs-concept.md)|
 |Figyelés Event Grid|A feladatok előrehaladásának megtekintéséhez használja a **Event Grid**. A Media Services az élő események típusát is kibocsátja. Az Event Grid segítségével az alkalmazások figyelhetik gyakorlatilag az összes Azure-szolgáltatásból és az egyéni forrásokból származó eseményeket, és reagálhatnak azokra. |[Event Grid-események kezelése](reacting-to-media-services-events.md)<br/><br/>[Sémák](media-services-event-schemas.md)|
-|Figyelés Azure Monitor|Figyelje a metrikákat és a diagnosztikai naplókat, amelyek segítségével megismerheti, hogy az alkalmazások hogyan működnek együtt a Azure Monitorokkal.|[Metrikák és diagnosztikai naplók](media-services-metrics-diagnostic-logs.md)<br/><br/>[Diagnosztikai naplók sémái](media-services-diagnostic-logs-schema.md)|
+|Figyelés Azure Monitor|Figyelje a metrikákat és a diagnosztikai naplókat, amelyek segítségével megismerheti, hogy az alkalmazások hogyan működnek együtt a Azure Monitorokkal.|[Metrikák és diagnosztikai naplók](monitoring/monitor-media-services-data-reference.md)<br/><br/>[Diagnosztikai naplók sémái](monitoring/monitor-media-services-data-reference.md)|
 |Lejátszóügyfelek|A Azure Media Player használatával a különböző böngészők és eszközök Media Services által továbbított médiatartalom lejátszását is elvégezheti. A Azure Media Player az iparági szabványokat, például a HTML5-t, a Media Source Extensions (MSE) és a titkosított adathordozó-bővítményeket (EME) használja a dúsított Adaptív átviteli élmény biztosításához. |[Az Azure Media Player áttekintése](use-azure-media-player.md)|
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Kérdések feltevése, visszajelzés küldése, frissítések beszerzése
