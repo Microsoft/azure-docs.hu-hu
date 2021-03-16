@@ -5,13 +5,13 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
-ms.date: 03/02/2021
-ms.openlocfilehash: 6de2e0f1744b333a830fbe500e2df51e7eaca62d
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.date: 03/15/2021
+ms.openlocfilehash: 3890b06b2d085cea57b59cfe34d8b961918471c5
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103419077"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562382"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-using-azure-cli-preview"></a>Gyors útmutató: Azure felügyelt példány létrehozása az Apache Cassandra-fürthöz az Azure CLI használatával (előzetes verzió)
 
@@ -31,7 +31,7 @@ Ez a rövid útmutató azt ismerteti, hogyan használható az Azure CLI-parancso
 * Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!IMPORTANT]
-> Ehhez a cikkhez az Azure CLI 2.12.1 vagy újabb verziójára van szükség. Ha Azure Cloud Shell használ, a legújabb verzió már telepítve van.
+> Ehhez a cikkhez az Azure CLI 2.17.1 vagy újabb verziójára van szükség. Ha Azure Cloud Shell használ, a legújabb verzió már telepítve van.
 
 ## <a name="create-a-managed-instance-cluster"></a><a id="create-cluster"></a>Felügyelt példány fürt létrehozása
 
@@ -58,7 +58,7 @@ Ez a rövid útmutató azt ismerteti, hogyan használható az Azure CLI-parancso
    > [!NOTE]
    > Az `assignee` `role` előző parancs és értékei rögzített értékek, pontosan a parancsban említett értékeket adja meg. Ha ezt nem teszi meg, a rendszer hibákat fog eredményezni a fürt létrehozásakor. Ha hibát tapasztal a parancs végrehajtásakor, előfordulhat, hogy nem rendelkezik a futtatásához szükséges engedélyekkel, forduljon a rendszergazdához.
 
-1. Ezután hozza létre a fürtöt az újonnan létrehozott Virtual Networkban. Futtassa a következő parancsot, és győződjön meg arról, hogy az `Resource ID` előző parancsban beolvasott értéket használja a változó értékeként `delegatedManagementSubnetId` :
+1. Ezután hozza létre a fürtöt az újonnan létrehozott Virtual Network az az [Managed-Cassandra cluster Create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_create) parancs használatával. Futtassa a következő parancsot, és győződjön meg arról, hogy az `Resource ID` előző parancsban beolvasott értéket használja a változó értékeként `delegatedManagementSubnetId` :
 
    ```azurecli-interactive
    resourceGroupName='<Resource_Group_Name>'
@@ -76,7 +76,7 @@ Ez a rövid útmutató azt ismerteti, hogyan használható az Azure CLI-parancso
       --debug
    ```
 
-1. Végül hozzon létre egy adatközpontot a fürthöz három csomóponttal:
+1. Végül hozzon létre egy adatközpontot a fürthöz három csomóponttal az az [Managed-Cassandra Datacenter Create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_create) parancs használatával:
 
    ```azurecli-interactive
    dataCenterName='dc1'
@@ -92,7 +92,7 @@ Ez a rövid útmutató azt ismerteti, hogyan használható az Azure CLI-parancso
       --node-count 3 
    ```
 
-1. Ha létrehozta az adatközpontot, vagy vertikálisan szeretné méretezni az adatközpont csomópontjait, futtassa a következő parancsot. Módosítsa a paraméter értékét `node-count` a kívánt értékre:
+1. Ha létrehozta az adatközpontot, vagy vertikálisan szeretné méretezni az adatközpont csomópontjait, futtassa az az [Managed-Cassandra Datacenter Update](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_update) parancsot. Módosítsa a paraméter értékét `node-count` a kívánt értékre:
 
    ```azurecli-interactive
    resourceGroupName='<Resource_Group_Name>'

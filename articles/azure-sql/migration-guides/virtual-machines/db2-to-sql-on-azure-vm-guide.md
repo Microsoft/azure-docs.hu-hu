@@ -1,6 +1,6 @@
 ---
-title: DB2 – SQL Server Azure-beli virtuális gépeken (áttelepítési útmutató)
-description: Kövesse ezt az útmutatót a DB2-kiszolgáló áttelepítéséhez SQL Server Azure-beli virtuális gépeken.
+title: 'DB2 – SQL Server Azure-beli virtuális gépeken: áttelepítési útmutató'
+description: Ez az útmutató a DB2-adatbázis áttelepítését mutatja be SQL Server Azure-beli virtuális gépeken a DB2-SQL Server Migration Assistant használatával.
 ms.custom: ''
 ms.service: virtual-machines-sql
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: c3f3af6a1c114d6587992f79e95dcc0c1ccb41e6
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: aadfd2d96e2ed610ee1e3eaaec9276212e912b0d
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797469"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562229"
 ---
 # <a name="migration-guide-db2-to-sql-server-on-azure-vms"></a>Áttelepítési útmutató: DB2 – SQL Server Azure-beli virtuális gépeken
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -144,8 +144,6 @@ Az adatbázis-áttelepítés tesztelési módszere a következő tevékenységek
 1. **Ellenőrzési tesztek futtatása**: futtassa az ellenőrző teszteket a forráson és a célhelyen, majd elemezze az eredményeket.
 1. **Teljesítménytesztek futtatása**: futtasson teljesítménytesztet a forráson és a célhelyen, majd elemezze és hasonlítsa össze az eredményeket.
 
-   > [!NOTE]
-   > A Migrálás utáni ellenőrzési tesztek fejlesztésére és futtatására vonatkozó segítségért vegye figyelembe a partner [QuerySurge](https://www.querysurge.com/company/partners/microsoft)elérhető adatminőségi megoldást. 
 
 ## <a name="migration-assets"></a>Áttelepítési eszközök 
 
@@ -160,7 +158,7 @@ További segítségért tekintse meg a következő erőforrásokat, amelyeket a 
 
 Ezek az erőforrások az Azure adatcsoport-mérnöki csapat által szponzorált adatsql ninja program részeként lettek kifejlesztve. Az adatelemzési program alapszintű alapokmánya az, hogy feloldja az összetett modernizációt, és az adatplatform-migrációs lehetőségeket a Microsoft Azure-beli adatplatformján is felgyorsítja. Ha úgy gondolja, hogy a szervezete szeretne részt venni az adatsql ninja programban, forduljon a fiókhoz, és kérje meg, hogy küldje el a jelölést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az áttelepítés után tekintse át az [áttelepítés utáni érvényesítési és optimalizálási útmutatót](/sql/relational-databases/post-migration-validation-and-optimization-guide). 
 
@@ -169,5 +167,4 @@ A Microsoft és a harmadik féltől származó szolgáltatások és eszközök e
 Más áttelepítési útmutatókért lásd: [adatbázis-áttelepítés](https://datamigration.microsoft.com/). 
 
 A videó tartalma:
-- [Az adatbázis-áttelepítési útmutató használata](https://azure.microsoft.com/resources/videos/how-to-use-the-azure-database-migration-guide/)
 - [Az áttelepítési út áttekintése](https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/)

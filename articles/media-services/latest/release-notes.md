@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 5a36b5c8b0c8f24d093d887ad788c4ce9857d355
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: d7cfb4cf9b6b061f5fb53667e968cb0403f22bfc
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2021
-ms.locfileid: "103492674"
+ms.locfileid: "103562569"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
 
@@ -29,7 +29,32 @@ A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő
 * Hibajavítások
 * Elavult funkciók
 
-## <a name="known-issues"></a>Ismert problémák
+## <a name="march-2021"></a>Március 2021
+
+### <a name="new-language-support-added-to-the-audioanalyzer-preset"></a>Új nyelvi támogatás hozzáadva a AudioAnalyzer-készlethez
+
+A videók átírására és feliratozására szolgáló további nyelvek mostantól elérhetők a AudioAnalyzer-készletben (alapszintű és standard módban is).
+
+* Angol (Ausztrália), "en-AU"
+* Francia (Kanada), "fr-CA"
+* Arab (Bahrein) modern standard, "AR-BH"
+* Arab (Egyiptom), "AR-EG"
+* Arab (Irak), "AR-IQ"
+* Arab (Izrael), "AR-IL"
+* Arab (Jordánia), "AR-JO"
+* Arab (Kuvait), "AR-KW"
+* Arab (Libanon), "AR-LB"
+* Arab (Omán), "AR-OM"
+* Arab (Katar), "AR-QA"
+* Arab (Szaúd-Arábiai), AR-SA
+* Dán, "da-DK"
+* Norvég, "NB-NO"
+* Svéd, "SV-SE"
+* Finn, "fi-FI"
+* Thai, "th-TH"
+* Török, "TR-TR"
+
+Tekintse meg a legújabb elérhető nyelveket a [videó-és hangfájlok fogalmának elemzése című cikkben.](analyzing-video-audio-files-concept.md)
 
 ## <a name="february-2021"></a>2021. február
 

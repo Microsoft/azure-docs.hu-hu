@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/20/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: a91a4f3a2e686c8d502093dc41520df32b313209
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 2e06375441d6540d6630cfe9d4d8c3beec558879
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520633"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562722"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Automatizált gépi tanulási modellek létrehozása, áttekintése és üzembe helyezése Azure Machine Learning
 
@@ -37,7 +37,7 @@ Python-kód alapú felhasználói felület esetén [konfigurálja az automatizá
 
 ## <a name="get-started"></a>Bevezetés
 
-1. Jelentkezzen be Azure Machine Learning a következő címen: https://ml.azure.com . 
+1. Jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com). 
 
 1. Válassza ki az előfizetést és a munkaterületet. 
 
@@ -198,6 +198,11 @@ Egy adott modell magyarázatának megismeréséhez
 ## <a name="deploy-your-model"></a>A modell üzembe helyezése
 
 Ha már kéznél van a legjobb modell, új adatok előrejelzéséhez helyezze üzembe webszolgáltatásként.
+
+>[!TIP]
+> Ha olyan modellt kíván üzembe helyezni, amely a `automl` PYTHON SDK-val a csomagban lett létrehozva, [regisztrálnia](how-to-deploy-and-where.md?tabs=python#register-a-model-from-an-azure-ml-training-run-1) kell a modellt a munkaterületre. 
+>
+> A modell regisztrálása után keresse meg a stúdióban a bal oldali panelen található **modellek** kiválasztásával. A modell megnyitása után kiválaszthatja az **üzembe helyezés** gombot a képernyő tetején, majd a **modell üzembe helyezése** szakasz **2. lépésében** leírtak szerint kövesse az utasításokat.
 
 Az automatizált ML segít programozás nélkül üzembe helyezni a modellt:
 

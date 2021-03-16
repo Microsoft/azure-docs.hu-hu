@@ -5,12 +5,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: cfef510646489e65f5cbc5d0d3e14c468301f48e
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 5ee38fa4b005cf053890c223dfec9244c637bd00
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103199953"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561821"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Útmutató a függvények futtatásához a .NET 5,0-ben az Azure-ban
 
@@ -122,7 +122,7 @@ A .NET elkülönített egy `FunctionContext` objektumot továbbít a függvénye
 
 A kötések meghatározása a metódusok, paraméterek és visszatérési típusok attribútumainak használatával történik. A Function metódus egy olyan metódus, amelynek a `Function` és egy trigger attribútuma egy bemeneti paraméterre van alkalmazva, az alábbi példában látható módon:
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Queue/QueueFunction.cs" id="docsnippet_queue_trigger" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Queue/QueueFunction.cs" id="docsnippet_queue_trigger" :::
 
 Az trigger attribútum meghatározza az trigger típusát, és a bemeneti adatokat egy metódus paraméteréhez köti. Az előző példa függvényt egy üzenetsor-üzenet indítja el, és a várólista-üzenet a paraméterben megadott metódusnak lesz átadva `myQueueItem` .
 
@@ -140,7 +140,7 @@ A függvények nulla vagy több bemeneti kötést tartalmazhatnak, amelyek adato
 
 Ha kimeneti kötést szeretne írni, egy kimeneti kötési attribútumot kell alkalmaznia a Function metódusra, amely azt határozza meg, hogyan írhat a kötött szolgáltatásba. A metódus által visszaadott érték a kimeneti kötésbe íródik. Például a következő példa egy karakterlánc-értéket ír egy nevű üzenet-várólistába egy `functiontesting2` kimeneti kötés használatával:
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Queue/QueueFunction.cs" id="docsnippet_queue_output_binding" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Queue/QueueFunction.cs" id="docsnippet_queue_output_binding" :::
 
 ### <a name="multiple-output-bindings"></a>Több kimeneti kötés
 
@@ -156,7 +156,7 @@ Hasonlóképpen, a függvény egy objektumot ad vissza `HttpReponseData` , amely
 
 A következő kód egy HTTP-trigger 
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Http/HttpFunction.cs" id="docsnippet_http_trigger" :::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Http/HttpFunction.cs" id="docsnippet_http_trigger" :::
 
 ## <a name="logging"></a>Naplózás
 
@@ -164,7 +164,7 @@ A .NET elkülönített szolgáltatásban a [`ILogger`](/dotnet/api/microsoft.ext
 
 Az alábbi példa bemutatja, hogyan kérhet le `ILogger` és írhat naplókat egy függvényen belül:
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/SampleApp/Http/HttpFunction.cs" id="docsnippet_logging" ::: 
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Http/HttpFunction.cs" id="docsnippet_logging" ::: 
 
 Különféle `ILogger` naplózási szintek írására különböző módszerekkel, például `LogWarning` vagy `LogError` . A naplózási szintekkel kapcsolatos további tudnivalókért tekintse meg a [figyelési cikket](functions-monitoring.md#log-levels-and-categories).
 

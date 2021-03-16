@@ -2,14 +2,14 @@
 title: Az Azure Portal áttekintése
 description: Az Azure Portal egy grafikus felhasználói felület, amelyet az Azure-szolgáltatások kezeléséhez használhat. Megtudhatja, hogyan navigálhat és kereshet erőforrásokat a Azure Portalban.
 keywords: portál
-ms.date: 12/20/2019
+ms.date: 03/12/2021
 ms.topic: overview
-ms.openlocfilehash: 1e9cf1a9609b9d4f30e51094f1d0542335ead0e2
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 8f61934e6af150c18d1331c2b28e2686641967d1
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745927"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563994"
 ---
 # <a name="azure-portal-overview"></a>Az Azure Portal áttekintése
 
@@ -75,7 +75,7 @@ Az alábbi ábra a Azure Portal alapvető elemeit címkézi, amelyek mindegyike 
 
 ## <a name="get-started-with-services"></a>Ismerkedés a szolgáltatásokkal
 
-Ha Ön új előfizető, létre kell hoznia egy erőforrást, mielőtt bármit kezelnie kellene. Válassza az **+ erőforrás létrehozása** lehetőséget az Azure piactéren elérhető szolgáltatások megtekintéséhez. Itt több száz szolgáltatótól származó alkalmazásokat és szolgáltatásokat találhat, amelyek mindegyike az Azure-ban fut.
+Ha Ön új előfizető, létre kell hoznia egy erőforrást, mielőtt bármit kezelnie kellene. Válassza az **+ erőforrás létrehozása** lehetőséget az Azure piactéren elérhető szolgáltatások megtekintéséhez. Itt több száz alkalmazás és szolgáltatás közül választhat, amelyek mindegyike az Azure-ban fut.
 
 A gyakran használt szolgáltatásokra mutató hivatkozásokkal előre kitöltöttük kedvenceit az oldalsávon.  Az összes elérhető szolgáltatás megtekintéséhez válassza a **minden szolgáltatás** lehetőséget az oldalsávon.
 
@@ -89,7 +89,7 @@ Tekintse meg ezt a videót, amely bemutatja, hogyan használható a globális ke
 
 [A globális keresés használata a Azure Portalban](https://www.youtube.com/watch?v=nZ7WwTZcQbo)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a Azure Portal futtatásáról a [támogatott böngészőkben és eszközökön](../azure-portal/azure-portal-supported-browsers-devices.md)
 * Útközben is kapcsolódhat [Azure Mobile App](https://azure.microsoft.com/features/azure-portal/mobile-app/)

@@ -4,14 +4,14 @@ description: Ismerteti a gyorsítótár-használat különböző modelljeit, val
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 856f2c15d2bd0b39212e8962a92b1df50cada29e
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: b23afb17b9b7152e82049ca4f6127e2811913296
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103472855"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563453"
 ---
 # <a name="understand-cache-usage-models"></a>Gyorsítótár-használati modellek ismertetése
 
@@ -29,7 +29,7 @@ A fájl gyorsítótárazásával az Azure HPC cache felgyorsítja az ügyfelek k
 
   Ha az írási gyorsítótárazás le van tiltva, a gyorsítótár nem tárolja a módosított fájlt, és azonnal a háttér-tárolási rendszerbe írja azt.
 
-* **Visszaírási késleltetés** – az írási gyorsítótárazást engedélyező gyorsítótár esetén a visszaírási késleltetés azt az időtartamot írja le, ameddig a gyorsítótár további módosításokat vár a fájlnak a háttérbeli tárolási rendszerbe való áthelyezése előtt.
+* **Visszaírási késleltetés** – az írási gyorsítótárazást engedélyező gyorsítótár esetén a visszaírási késleltetés azt az időtartamot írja le, ameddig a gyorsítótár további módosításokat vár a fájlnak a háttérbeli tárolási rendszerbe való másolása előtt.
 
 * **Háttér-** ellenőrzés – a háttér-ellenőrzési beállítás határozza meg, hogy a gyorsítótár milyen gyakran hasonlítja össze a fájl helyi példányát a háttér-tárolási rendszeren található távoli verzióval. Ha a háttérbeli másolat újabb, mint a gyorsítótárazott másolat, a gyorsítótár beolvassa a távoli másolatot, és a későbbi kérelmekhez tárolja azt.
 
@@ -43,7 +43,7 @@ Az összes használt NFS-tárolási cél használati modelljét ki kell választ
 
 A HPC gyorsítótár-használati modelljei lehetővé teszik a gyors reagálás egyensúlyának kiválasztását az elavult adatok beszerzésének kockázatával. Ha optimalizálni szeretné a fájlok olvasásának sebességét, előfordulhat, hogy nem biztos benne, hogy a gyorsítótárban lévő fájlok be vannak-e jelölve a háttérbeli fájlokban. Ha azonban azt szeretné, hogy a fájlok mindig naprakészek legyenek a távoli tárterülettel, válasszon olyan modellt, amely gyakran ellenőrzi a fájlokat.
 
-Több lehetőség közül választhat:
+A használati modell beállításai:
 
 * **Súlyos, ritka írások olvasása** – ezt a beállítást akkor használja, ha a statikus vagy ritkán módosított fájlok olvasási hozzáférését szeretné felgyorsítani.
 
@@ -53,13 +53,16 @@ Több lehetőség közül választhat:
 
   Ne használja ezt a beállítást, ha fennáll a kockázata annak, hogy egy fájl közvetlenül a tárolási rendszeren módosul, anélkül, hogy először a gyorsítótárba kellene írni. Ha ez történik, a fájl gyorsítótárazott verziója nem lesz szinkronizálva a háttér-fájllal.
 
-* **15%-nál nagyobb írások** – ez a beállítás az olvasási és írási teljesítményt is felgyorsítja. Ha ezt a beállítást használja, az összes ügyfélnek az Azure HPC cache-en keresztül kell hozzáférnie a fájlokhoz ahelyett, hogy közvetlenül a háttér-tárolót kellene csatlakoztatnia. A gyorsítótárazott fájlok legutóbbi módosításai a háttérben nem tárolódnak.
+* **15%-nál nagyobb írások** – ez a beállítás az olvasási és írási teljesítményt is felgyorsítja. Ha ezt a beállítást használja, az összes ügyfélnek az Azure HPC cache-en keresztül kell hozzáférnie a fájlokhoz ahelyett, hogy közvetlenül a háttér-tárolót kellene csatlakoztatnia. A gyorsítótárazott fájlok olyan legutóbbi módosításokat fognak tartalmazni, amelyek még nem lettek átmásolva a háttérbe.
 
   Ebben a használati modellben a gyorsítótárban lévő fájlokat a rendszer csak a háttérbeli tároló fájljain, nyolc óránként ellenőrzi. A rendszer azt feltételezi, hogy a fájl gyorsítótárazott verziója nagyobb áramerősséget mutat. A gyorsítótárban lévő módosított fájl a háttér-tárolási rendszerbe kerül, miután a gyorsítótárban 20 percen át lett írva.<!-- an hour --> További módosítások nélkül.
 
 * Az **ügyfelek az NFS-célhelyre írhatnak, és megkerülik a gyorsítótárat** – ezt a beállítást akkor válassza, ha a munkafolyamatban lévő bármelyik ügyfél közvetlenül a tárolási rendszerbe írja az adatait anélkül, hogy először a gyorsítótárba írna, vagy ha az adatkonzisztenciát szeretné optimalizálni. Az ügyfelek által kért fájlok gyorsítótárazva vannak (olvasások), de az ügyfélen (írásokban) lévő fájlok módosításai nincsenek gyorsítótárazva. Ezeket közvetlenül a háttér-tárolási rendszer továbbítja.
 
-  Ezzel a használati modellel a gyorsítótárban lévő fájlokat a rendszer gyakran ellenőrzi a frissítések háttérbeli verzióiban. Ez az ellenőrzés lehetővé teszi, hogy a fájlok a gyorsítótáron kívülre legyenek módosítva az adatkonzisztencia fenntartása mellett.
+  Ezzel a használati modellel a gyorsítótárban lévő fájlokat gyakran ellenőrzik a frissítések háttér-verzióiban – 30 másodpercenként. Ez az ellenőrzés lehetővé teszi, hogy a fájlok a gyorsítótáron kívülre legyenek módosítva az adatkonzisztencia fenntartása mellett.
+
+  > [!TIP]
+  > Ezek az első három alapszintű használati modellek az Azure HPC cache-munkafolyamatok többségének kezelésére használhatók. A következő lehetőségek kevésbé gyakori forgatókönyvekre vonatkoznak.
 
 * **15%-nál nagyobb írások, a biztonsági mentést biztosító kiszolgáló ellenőrzése 30 másodpercenként** , **15%-nál nagyobb írási műveletek esetén, a biztonsági mentést kiszolgáló változásának ellenőrzése 60 másodpercenként** – ezek a beállítások olyan munkafolyamatokhoz lettek kialakítva, ahol az olvasások és az írások felgyorsítására van szükség, de van esély arra, hogy egy másik felhasználó közvetlenül a háttérrendszer-tároló Ha például több ügyfél is dolgozik ugyanazokon a fájlokon különböző helyekről, ezek a használati modellek a forrástól származó elavult tartalomhoz való gyors hozzáférés szükségességét is érdemes ellensúlyozni.
 
@@ -71,16 +74,18 @@ Több lehetőség közül választhat:
 
 Ez a táblázat a használati modell eltéréseit foglalja össze:
 
-| Használati modell                   | Gyorsítótárazási mód | Háttér-ellenőrzés | Maximális írási késleltetés |
-|-------------------------------|--------------|-----------------------|--------------------------|
-| Súlyos, ritka írások olvasása | Olvasás         | Soha                 | Nincs                     |
-| 15%-nál nagyobb írások       | Olvasás/írás   | 8 óra               | 20 perc               |
-| Az ügyfelek megkerülik a gyorsítótárat      | Olvasás         | 30 másodperc            | Nincs                     |
-| 15%-nál nagyobb írások, gyakori háttér-ellenőrzés (30 másodperc) | Olvasás/írás | 30 másodperc | 20 perc |
-| 15%-nál nagyobb írások, gyakori háttér-ellenőrzés (60 másodperc) | Olvasás/írás | 60 másodperc | 20 perc |
-| 15%-nál nagyobb írások, gyakori visszaírások | Olvasás/írás | 30 másodperc | 30 másodperc |
-| Nagy mennyiségű, a kiszolgáló biztonsági mentése 3 óránként | Olvasás | 3 óra | Nincs |
+[!INCLUDE [usage-models-table.md](includes/usage-models-table.md)]
 
+<!-- | Usage model                   | Caching mode | Back-end verification | Maximum write-back delay |
+|-------------------------------|--------------|-----------------------|--------------------------|
+| Read heavy, infrequent writes | Read         | Never                 | None                     |
+| Greater than 15% writes       | Read/write   | 8 hours               | 20 minutes               |
+| Clients bypass the cache      | Read         | 30 seconds            | None                     |
+| Greater than 15% writes, frequent back-end checking (30 seconds) | Read/write | 30 seconds | 20 minutes |
+| Greater than 15% writes, frequent back-end checking (60 seconds) | Read/write | 60 seconds | 20 minutes |
+| Greater than 15% writes, frequent write-back | Read/write | 30 seconds | 30 seconds |
+| Read heavy, checking the backing server every 3 hours | Read | 3 hours | None |
+-->
 Ha kérdése van az Azure HPC gyorsítótár-munkafolyamatának legjobb használati modelljével kapcsolatban, forduljon az Azure-képviselőjéhez, vagy nyisson meg egy támogatási kérést a segítségért.
 
 ## <a name="next-steps"></a>Következő lépések

@@ -3,12 +3,12 @@ title: Ajánlott eljárások
 description: Ismerje meg az ajánlott eljárásokat és hasznos tippeket a Azure Batch-megoldások fejlesztéséhez.
 ms.date: 03/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 15ff46ad74c4c48c6b5f320622bc364adf59d4cc
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: d1040762c171af486c7f5d66daca44ec65602aff
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2021
-ms.locfileid: "103496286"
+ms.locfileid: "103561838"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch ajánlott eljárások
 
@@ -238,6 +238,6 @@ A munkakönyvtár automatikus tisztítása le lesz tiltva, ha a Windows rendszer
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Hozzon létre egy Azure batch fiókot a Azure Portal használatával](batch-account-create-portal.md).
 - Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.
 - Ismerje meg az [alapértelmezett Azure batch kvótákat, korlátozásokat és korlátozásokat, valamint a kvóta növelésének módját](batch-quota-limit.md).
+- Ismerje meg, hogyan lehet [észlelni és elkerülni a készletek és csomópontok háttérben végzett műveleteinek hibáit ](batch-pool-node-error-checking.md).

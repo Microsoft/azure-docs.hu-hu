@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 55fa106f0515405dcad969f05d28e0bc7b975b40
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: c38e4681c76fb0dd52d77c7dc1438b87a9571a80
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922289"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562059"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Mi az Azure-SQL-adatszinkronizálás?
 
@@ -58,7 +58,7 @@ Az adatszinkronizálás olyan esetekben hasznos, amikor a Azure SQL Database vag
 
 Az adatszinkronizálás nem az előnyben részesített megoldás a következő esetekben:
 
-| Forgatókönyv | Néhány ajánlott megoldás |
+| Eset | Néhány ajánlott megoldás |
 |----------|----------------------------|
 | Vészhelyreállítás | [Azure geo-redundáns biztonsági mentések](automated-backups-overview.md) |
 | Olvasási skála | [Csak olvasható replikák használata az írásvédett lekérdezési feladatok terheléselosztásához (előzetes verzió)](read-scale-out.md) |
@@ -100,6 +100,9 @@ Az új privát hivatkozás (előzetes verzió) funkció lehetővé teszi, hogy k
 
 - [Több adatbázis közötti szinkronizálás a Azure SQL Database-ben a PowerShell használatával](scripts/sql-data-sync-sync-data-between-sql-databases.md)
 - [A PowerShell használata a Azure SQL Database adatbázisa és egy SQL Server példányban található adatbázisok közötti szinkronizáláshoz](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
+
+### <a name="set-up-data-sync-with-rest-api"></a>Adatszinkronizálás beállítása REST API
+- [REST API használata több adatbázis közötti szinkronizáláshoz Azure SQL Database](scripts/sql-data-sync-sync-data-between-sql-databases-rest-api.md)
 
 ### <a name="review-the-best-practices-for-data-sync"></a>Az adatszinkronizálás ajánlott eljárásainak áttekintése
 
@@ -165,7 +168,7 @@ Az adatszinkronizálás nem tudja szinkronizálni a csak olvasható vagy a rends
 
 #### <a name="limitations-on-service-and-database-dimensions"></a>A szolgáltatás-és adatbázis-méretek korlátozásai
 
-| **Méretek**                                                  | **Korlát**              | **Áthidaló megoldás**              |
+| **Méretek**                                                  | **Korlátot**              | **Áthidaló megoldás**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
 | A szinkronizált csoportok maximális száma, amelyhez bármely adatbázis tartozhat.       | 5                      |                             |
 | Végpontok maximális száma egyetlen szinkronizálási csoportban              | 30                     |                             |

@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 12/10/2020
-ms.openlocfilehash: 01ee890fe77abebfdec8d3d643773b42cb54187e
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 1529d2d546227880fee71d1823482e040d2e57c1
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606181"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564320"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Az adatfolyamatok leképezése Azure Data Factory
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 ## <a name="what-are-mapping-data-flows"></a>Mik azok a leképezési adatfolyamok?
 
@@ -110,7 +110,7 @@ A Azure Data Factory csapat létrehozta a [teljesítmény-hangolási útmutatót
 | Dél-Brazília  | ✓ |
 | Közép-Kanada | ✓ |
 | Közép-India | ✓ |
-| USA középső régiója    | ✓ |
+| Az USA középső régiója    | ✓ |
 | Kelet-Kína |      |
 | Kelet-Kína 2  |   |
 | Kína nem regionális | |
@@ -157,7 +157,7 @@ A Azure Data Factory csapat létrehozta a [teljesítmény-hangolási útmutatót
 | USA nyugati régiója   | ✓ |
 | USA 2. nyugati régiója | ✓ |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan hozhat létre [forrás-átalakítást](data-flow-source.md).
 * Megtudhatja, hogyan hozhat létre adatfolyamatokat [hibakeresési módban](concepts-data-flow-debug-mode.md).

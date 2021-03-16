@@ -6,15 +6,15 @@ ms.author: maquaran
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: tutorial
-ms.date: 09/21/2020
+ms.date: 03/15/2021
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6cf0e77657175449b126eeca02a12c164478e568
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1c178f57a31e02b3dac712a5425db226720200c5
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548069"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563623"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>Az Azure Cosmos DB SQL API-fiókba való tömeges importálás a .NET SDK használatával
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -112,7 +112,7 @@ Kezdjük azzal, hogy felülírja az alapértelmezett `Main` metódust, és defin
         private const string AuthorizationKey = "<your-account-key>";
         private const string DatabaseName = "bulk-tutorial";
         private const string ContainerName = "items";
-        private const int ItemsToInsert = 300000;
+        private const int AmountToInsert = 300000;
 
         static async Task Main(string[] args)
         {
@@ -150,14 +150,11 @@ Ezután hozzon létre egy segítő függvényt az `Program` osztályban. Ez a se
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Bogus)]
 
-Olvassa el az elemeket, és szerializálja őket adatfolyam-példányokra a `System.Text.Json` osztály használatával. Az automatikusan létrehozott adathalmazok jellegéből adódóan adatfolyamként kell szerializálni az adathalmazokat. Közvetlenül is használhatja az item-példányt, de a streamekre konvertálva kihasználhatja a stream API-k teljesítményét a CosmosClient. Az adattípust általában közvetlenül is használhatja, ha ismeri a partíciós kulcsot. 
-
-
-Az adatfolyam-példányokra történő átalakításhoz a `Main` metóduson belül adja hozzá a következő kódot közvetlenül a tároló létrehozása után:
+Használja a Helper függvényt a következőhöz használható dokumentumok listájának inicializálásához:
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Operations)]
 
-Ezután az adatfolyamok használatával hozzon létre egyidejű feladatokat, és töltse fel a feladatlistát az elemek tárolóba való beszúrásához. A művelet végrehajtásához adja hozzá a következő kódot a `Program` osztályhoz:
+Ezután használja a dokumentumok listáját az egyidejű feladatok létrehozásához és a Feladatlista feltöltéséhez, hogy beszúrja az elemeket a tárolóba. A művelet végrehajtásához adja hozzá a következő kódot a `Program` osztályhoz:
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=ConcurrentTasks)]
 

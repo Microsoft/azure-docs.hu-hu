@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 5f82e8b7359b90d5127e2c20a2b89cc5ad739a56
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: de3738573bb9bb6f045a45d290c74ba9e6902a5e
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99624759"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561957"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Folyamatos integráció és kézbesítés az Azure szinapszis-munkaterülethez
 
@@ -125,6 +125,140 @@ A [szinapszis munkaterület üzembe](https://marketplace.visualstudio.com/items?
 Az összes módosítás mentése után kiválaszthatja, hogy a kiadás **létrehozása** lehetőséggel manuálisan hozzon létre egy kiadást. A kiadások létrehozásának automatizálásához tekintse meg az [Azure DevOps kiadási eseményindítók](/azure/devops/pipelines/release/triggers) című témakört.
 
    ![Válassza a kiadás létrehozása lehetőséget](media/release-creation-manually.png)
+
+## <a name="use-custom-parameters-of-the-workspace-template"></a>A munkaterület-sablon egyéni paramétereinek használata 
+
+Automatikus CI/CD-t használ, és az üzembe helyezés során módosítani kíván néhány tulajdonságot, de a tulajdonságok alapértelmezés szerint nem paraméteresen vannak kiválasztva. Ebben az esetben felülbírálhatja az alapértelmezett paraméter sablonját.
+
+Az alapértelmezett paraméter-sablon felülbírálásához létre kell hoznia egy egyéni paraméter-sablont, egy **template-parameters-definition.js** nevű fájlt a git együttműködési ág gyökérkönyvtárában. Pontosan ezt a fájlnevet kell használnia. Az együttműködési ág közzétételét követően a szinapszis munkaterület beolvassa ezt a fájlt, és a konfigurációját használja a paraméterek létrehozásához. Ha nem található fájl, a rendszer az alapértelmezett paraméter-sablont használja.
+
+### <a name="custom-parameter-syntax"></a>Egyéni paraméter szintaxisa
+
+Az alábbi útmutató az egyéni paraméterek fájljának létrehozásához nyújt útmutatást:
+
+* Adja meg a tulajdonság elérési útját a megfelelő entitás típusa mezőben.
+* A tulajdonságnév beállítása `*` azt jelzi, hogy az összes tulajdonságot meg szeretné parametrizálja (csak az első szintre, nem rekurzív módon). Kivételeket is megadhat ehhez a konfigurációhoz.
+* Egy tulajdonság értékének karakterláncként való megadása azt jelzi, hogy meg kívánja parametrizálja a tulajdonságot. Használja a következő formátumot: `<action>:<name>:<stype>`.
+   *  `<action>` a következő karakterek egyike lehet:
+      * `=` azt jelenti, hogy az aktuális értéket a paraméter alapértelmezett értékeként tárolja.
+      * `-` azt jelenti, hogy nem tartja meg a paraméter alapértelmezett értékét.
+      * `|` a Azure Key Vault titkos kódokhoz vagy kulcsokhoz tartozó titkok esetében különleges eset.
+   * `<name>` a paraméter neve. Ha üres, akkor a tulajdonság nevét veszi fel. Ha az érték egy `-` karakterrel kezdődik, a név lerövidítve lesz. Például `AzureStorage1_properties_typeProperties_connectionString` lerövidítheti a következőt: `AzureStorage1_connectionString` .
+   * `<stype>` a paraméter típusa. Ha a `<stype>` értéke üres, az alapértelmezett típus: `string` . Támogatott értékek:,,,, `string` `securestring` `int` `bool` `object` `secureobject` és `array` .
+* Egy tömb megadása a fájlban azt jelzi, hogy a sablonban szereplő egyező tulajdonság egy tömb. A szinapszis megismétli a tömbben lévő összes objektumot a megadott definíció használatával. A második objektum, egy karakterlánc, a tulajdonság neve lesz, amely az egyes iterációk paraméterének neveként szerepel.
+* Egy definíció nem lehet egy adott erőforrás-példányra jellemző. Bármely definíció az adott típusú összes erőforrásra vonatkozik.
+* Alapértelmezés szerint az összes biztonságos karakterlánc, például a Key Vault titkos kódok, valamint a biztonságos karakterláncok, például a kapcsolati karakterláncok, kulcsok és tokenek paraméterei.
+
+### <a name="parameter-template-definition-samples"></a>A paraméterérték definíciós mintái 
+
+Íme egy példa arra, hogyan néz ki a paraméter-sablon definíciója:
+
+```json
+{
+"Microsoft.Synapse/workspaces/notebooks": {
+        "properties":{
+            "bigDataPool":{
+                "referenceName": "="
+            }
+        }
+    },
+    "Microsoft.Synapse/workspaces/sqlscripts": {
+     "properties": {
+         "content":{
+             "currentConnection":{
+                    "*":"-"
+                 }
+            } 
+        }
+    },
+    "Microsoft.Synapse/workspaces/pipelines": {
+        "properties": {
+            "activities": [{
+                 "typeProperties": {
+                    "waitTimeInSeconds": "-::int",
+                    "headers": "=::object"
+                }
+            }]
+        }
+    },
+    "Microsoft.Synapse/workspaces/integrationRuntimes": {
+        "properties": {
+            "typeProperties": {
+                "*": "="
+            }
+        }
+    },
+    "Microsoft.Synapse/workspaces/triggers": {
+        "properties": {
+            "typeProperties": {
+                "recurrence": {
+                    "*": "=",
+                    "interval": "=:triggerSuffix:int",
+                    "frequency": "=:-freq"
+                },
+                "maxConcurrency": "="
+            }
+        }
+    },
+    "Microsoft.Synapse/workspaces/linkedServices": {
+        "*": {
+            "properties": {
+                "typeProperties": {
+                     "*": "="
+                }
+            }
+        },
+        "AzureDataLakeStore": {
+            "properties": {
+                "typeProperties": {
+                    "dataLakeStoreUri": "="
+                }
+            }
+        }
+    },
+    "Microsoft.Synapse/workspaces/datasets": {
+        "properties": {
+            "typeProperties": {
+                "*": "="
+            }
+        }
+    }
+}
+```
+Íme egy magyarázat arról, hogy az előző sablon hogyan épül fel, az erőforrástípus szerinti bontásban.
+
+#### <a name="notebooks"></a>Notebooks 
+
+* Az elérési út bármely tulajdonsága az `properties/bigDataPool/referenceName` alapértelmezett értékkel van paraméterben. Az egyes jegyzetfüzet-fájlokhoz csatolt Spark-készletet is parametrizálja. 
+
+#### <a name="sql-scripts"></a>SQL-parancsfájlok 
+
+* Az elérési úthoz tartozó tulajdonságok (poolName és databaseName) `properties/content/currentConnection` karakterláncként vannak paraméterként a sablon alapértelmezett értékei nélkül. 
+
+#### <a name="pipelines"></a>Pipelines
+
+* Az elérési út bármely tulajdonsága `activities/typeProperties/waitTimeInSeconds` paraméterrel van elfoglalva. A folyamatokban lévő minden olyan tevékenység, amelynek a neve `waitTimeInSeconds` (például a `Wait` tevékenység), egy alapértelmezett névvel van ellátva. A Resource Manager-sablonban azonban nem szerepel alapértelmezett érték. A Resource Manager üzembe helyezése során kötelezően megadandó adatok lesznek.
+* Hasonlóképpen, egy nevű tulajdonság `headers` (például egy `Web` tevékenység) paraméterének típusa `object` (Object) van. Alapértelmezett értékkel rendelkezik, amely megegyezik a forrás-előállítóval megegyező értékkel.
+
+#### <a name="integrationruntimes"></a>IntegrationRuntimes
+
+* Az elérési út alatti összes tulajdonság a `typeProperties` megfelelő alapértelmezett értékekkel van ellátva. Például két tulajdonság van a `IntegrationRuntimes` típus tulajdonságainál: `computeProperties` és `ssisProperties` . Mindkét tulajdonság típusa a megfelelő alapértelmezett értékekkel és típusokkal (objektummal) jön létre.
+
+#### <a name="triggers"></a>Eseményindítók
+
+* A `typeProperties` rendszerben a két tulajdonság paraméteres. Az első a `maxConcurrency` , amely az alapértelmezett értékkel van megadva, és típusa `string` . Az alapértelmezett paraméter neve `<entityName>_properties_typeProperties_maxConcurrency` .
+* A `recurrence` tulajdonság paraméterrel is rendelkezik. Ebben az esetben az adott szinten lévő összes tulajdonságot karakterláncként kell megadni, alapértelmezett értékekkel és paraméterek nevével. Kivételt képez a `interval` tulajdonság, amely típusként van paraméterként `int` . A paraméter neve utótaggal van ellátva `<entityName>_properties_typeProperties_recurrence_triggerSuffix` . Hasonlóképpen, a `freq` tulajdonság egy karakterlánc, és karakterláncként van paraméterként. A tulajdonság azonban `freq` alapértelmezett érték nélkül van paraméterben. A név rövidítve és utótaggal van elnevezve. Például: `<entityName>_freq`.
+
+#### <a name="linkedservices"></a>LinkedServices
+
+* A társított szolgáltatások egyediek. Mivel a társított szolgáltatások és adatkészletek sokféle típusúak, a típus-specifikus testreszabást is megadhatja. Ebben a példában az összes típusú társított szolgáltatás esetében `AzureDataLakeStore` egy adott sablon lesz alkalmazva. Minden más (a szolgáltatáson keresztül `*` ) egy másik sablon lesz alkalmazva.
+* A `connectionString` tulajdonság értéke paraméterként fog megjelenni `securestring` . Nem rendelkezik alapértelmezett értékkel. Egy rövidített paraméter neve lesz, amely a (z) utótaggal van ellátva `connectionString` .
+* A tulajdonság `secretAccessKey` egy `AzureKeyVaultSecret` (például egy Amazon S3-beli társított szolgáltatás) esetében történik. Automatikusan Azure Key Vault titokként van konfigurálva, és a konfigurált kulcstartóból beolvasva. Saját maga is parametrizálja a kulcstartót.
+
+#### <a name="datasets"></a>Adathalmazok
+
+* Bár a típus-specifikus Testreszabás elérhető az adatkészletekhez, a konfigurációt explicit módon nem lehet konfigurálni \* . Az előző példában az összes adatkészlet-tulajdonság `typeProperties` paraméterrel van elfoglalva.
+
 
 ## <a name="best-practices-for-cicd"></a>Ajánlott eljárások CI/CD-hez
 

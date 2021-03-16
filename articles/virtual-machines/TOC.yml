@@ -1053,6 +1053,8 @@
                     - name: Azure Portal
                       displayname: 'Azure disk encryption, encryption, ADE'
                       href: ./linux/disk-encryption-portal-quickstart.md
+                - name: Lemeztitkosítási forgatókönyvek Linux rendszerre
+                  href: ./linux/disk-encryption-linux.md
                 - name: Key Vault az Azure Disk Encryptionhöz
                   displayname: 'Azure disk encryption, encryption, ADE, Key vault'
                   href: ./linux/disk-encryption-key-vault.md
@@ -1081,8 +1083,8 @@
                       href: ./linux/disk-encryption-linux-aad.md
             - name: Windows
               items:
-                - name: Lemeztitkosítási forgatókönyvek Windowson
-                  href: ./windows/disk-encryption-windows.md
+                - name: Áttekintés
+                  href: ./windows/disk-encryption-overview.md
                 - name: Rövid útmutatók
                   items:
                     - name: Azure CLI
@@ -1091,6 +1093,8 @@
                       href: ./windows/disk-encryption-powershell-quickstart.md
                     - name: Azure Portal
                       href: ./windows/disk-encryption-portal-quickstart.md
+                - name: Lemeztitkosítási forgatókönyvek Windowson
+                  href: ./windows/disk-encryption-windows.md
                 - name: Key Vault az Azure Disk Encryptionhöz
                   href: ./windows/disk-encryption-key-vault.md
                 - name: Lemeztitkosítási mintaszkriptek

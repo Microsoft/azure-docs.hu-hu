@@ -9,12 +9,12 @@ author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
 adobe-target: true
-ms.openlocfilehash: 320840277483776dfc74b98ab70410503008df67
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 48c4b2a73628ab2105e23054d747e28acc105d01
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374235"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563188"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Mi az Azure Machine Learning Studio?
 
@@ -76,31 +76,26 @@ Még ha tapasztalt fejlesztő is, a Studio leegyszerűsítheti a munkaterület-e
 
 ## <a name="ml-studio-classic-vs-azure-machine-learning-studio"></a>ML Studio (klasszikus) vs Azure Machine Learning Studio
 
-Az 2015-as kiadásban megjelent **ml Studio (klasszikus)** volt az első drag-and-drop Machine learning-szerkesztő. Ez egy önálló szolgáltatás, amely csak vizuális élményt nyújt. A Studio (klasszikus) nem működik együtt Azure Machine Learningokkal.
+Az 2015-as kiadásban megjelent **ml Studio (klasszikus)** volt az első drag-and-drop Machine learning-szerkesztő. 
+
+A **ml Studio (klasszikus)** egy önálló szolgáltatás, amely csak vizuális élményt nyújt. A Studio (klasszikus) nem működik együtt Azure Machine Learningokkal.
 
 A **Azure Machine learning** egy különálló és modernizált szolgáltatás, amely teljes adatelemzési platformot biztosít. Támogatja mind a Code-First, mind az alacsony kódú élményt.
 
 A **Azure Machine learning Studio** *egy Azure Machine learning* webportálja, amely alacsony kódú és kód nélküli lehetőségeket tartalmaz a projektek készítéséhez és az eszközök kezeléséhez. 
 
-Azt javasoljuk, hogy az új felhasználók ML Studio (klasszikus) helyett **Azure Machine learning** válasszanak az adatelemzési eszközök legújabb tartományához.
+Azt javasoljuk, hogy az új felhasználók ML Studio (klasszikus) helyett **Azure Machine learning** válasszanak az adatelemzési eszközök legújabb tartományához. Ha Ön egy meglévő ML Studio (klasszikus) felhasználó, érdemes [áttelepítenie a Azure Machine Learningra](classic/migrate-overview.md).
+
+Íme néhány előny a Azure Machine Learningre való áttéréshez:
+
+- Méretezhető számítási fürtök nagy léptékű képzéshez.
+- Vállalati biztonság és irányítás.
+- Együttműködés a népszerű nyílt forráskódú eszközökkel.
+- Végpontok közötti MLOps.
 
 ### <a name="feature-comparison"></a>Szolgáltatások összehasonlítása
 
-Az alábbi táblázat összefoglalja ML Studio (klasszikus) és Azure Machine Learning közötti fő különbségeket.
-
-| Szolgáltatás | ML Studio (klasszikus) | Azure Machine Learning |
-|---| --- | --- |
-| Húzási interfész | Klasszikus felhasználói élmény | Frissített tapasztalat – [Azure Machine learning Designer](concept-designer.md)| 
-| SDK-kód | Nem támogatott | Teljes mértékben integrált [Azure Machine learning Python](/python/api/overview/azure/ml/) és [R](https://github.com/Azure/azureml-sdk-for-r) SDK-k |
-| Experiment | Skálázható (10 GB-os betanítási adatkorlát) | Méretezés számítási céllal |
-| Számítási célok betanítása | Tulajdonosi számítási cél, csak CPU-támogatás | Testreszabható [képzési számítási célok](concept-compute-target.md#train)széles köre. GPU-val és CPU-támogatással rendelkezik | 
-| Üzembe helyezési számítási célok | Tulajdonosi webszolgáltatás formátuma, nem testreszabható | Testreszabható [üzembe helyezési számítási célok](concept-compute-target.md#deploy)széles köre. GPU-val és CPU-támogatással rendelkezik |
-| ML-folyamat | Nem támogatott | Rugalmas, moduláris [folyamatok](concept-ml-pipelines.md) készítése a munkafolyamatok automatizálására |
-| MLOps | Alapszintű modell kezelése és üzembe helyezése; Csak CPU-telepítések | Entitások verziószámozása (modell, adattárolás, munkafolyamatok), munkafolyamat-automatizálás, integráció a vel-eszközökkel, processzor-és GPU-környezetek, [valamint egyebek](concept-model-management-and-deployment.md) |
-| Modell formátuma | Saját formátum, Studio (klasszikus) csak | Több támogatott formátum a betanítási feladattípustól függően |
-| Automatizált modellek betanítása és hiperparaméter finomhangolása |  Nem támogatott | [Támogatott](concept-automated-ml.md). Kód – az első és a kód nélküli beállítások. | 
-| Adateltolódás észlelése | Nem támogatott | [Támogatott](how-to-monitor-datasets.md) |
-| Adatcímkéző projektek | Nem támogatott | [Támogatott](how-to-create-labeling-projects.md) |
+[!INCLUDE [aml-compare-classic](../../includes/machine-learning-compare-classic-aml.md)]
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

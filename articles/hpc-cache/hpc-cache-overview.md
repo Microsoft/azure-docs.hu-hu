@@ -4,15 +4,15 @@ description: Leírja az Azure HPC cache-t, amely egy fájl-hozzáférési gyors�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 03/11/2021
 ms.author: v-erkel
 ms.custom: references_regions
-ms.openlocfilehash: 0568d9b7fea2e4e048c0c1d1b2d6f81d64a9b114
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bbb0ca345dc76f566dd55956911703e2c9bf0183
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519336"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471819"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Mi az az Azure HPC Cache?
 
@@ -55,15 +55,6 @@ Az Azure HPC cache üzembe helyezésével felgyorsíthatja a mennyiségi elemzé
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
 Az Azure [globális infrastruktúra-termékek régiónként](https://azure.microsoft.com/global-infrastructure/services/?products=hpc-cache) lapon megtudhatja, hol érhető el az Azure HPC cache.
-
-Az [ügyfél által felügyelt kulcsok funkció](customer-keys.md) csak az alábbi Azure-régiókban támogatott:
-
-* USA keleti régiója
-* USA déli középső régiója
-* USA 2. nyugati régiója
-* West Europe
-* USA-beli államigazgatás – Arizona
-* USA-beli államigazgatás – Virginia
 
 Az Azure HPC cache egyetlen régióban található. Más régiókban tárolt adataihoz is hozzáférhet, ha az ott található blob-tárolóhoz csatlakozik. A gyorsítótár nem tárolja véglegesen az ügyféladatokat.
 

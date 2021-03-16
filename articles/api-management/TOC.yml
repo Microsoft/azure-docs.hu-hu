@@ -245,6 +245,8 @@
           href: api-management-transformation-policies.md
         - name: A Distributed Application Runtime (Dapr) integrálási szabályzatai
           href: api-management-dapr-policies.md
+        - name: Ellenőrzési házirendek
+          href: validation-policies.md
     - name: Kezelés éles környezetben
       items:
         - name: API-k exportálása a Power Platformra

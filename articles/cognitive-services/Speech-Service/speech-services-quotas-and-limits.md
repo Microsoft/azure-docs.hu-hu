@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/24/2021
+ms.date: 03/15/2021
 ms.author: alexeyo
-ms.openlocfilehash: f6c7ec3f66d0ab9186645654adf3c062c241e5d0
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 78e40250710c133cbed53c05137971247663b0df
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449849"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564422"
 ---
 # <a name="speech-services-quotas-and-limits"></a>A Speech Services kvótái és korlátai
 
@@ -27,6 +27,7 @@ Ugrás [szöveg – beszéd kvótára és korlátokra](#text-to-speech-quotas-an
 Az alábbi táblázatokban az "állítható" sor nélkül **nem** állítható be az összes ár szintje.
 
 #### <a name="online-transcription"></a>Online átírás
+A [beszédfelismerési SDK](speech-sdk.md) -val és/vagy [beszéd-szöveg REST API rövid hangfelvételsel](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio).
 
 | Kvóta | Ingyenes (F0)<sup>1</sup> | Standard (S0) |
 |--|--|--|
@@ -74,7 +75,7 @@ Az alábbi táblázatban az "állítható" sor nélküli paraméterek **nem** á
 | **WebSocket-specifikus kvóták** |  |  |
 |Másodpercenként előállított maximális hanghossz | 10 perc | 10 perc |
 |Maximális SSML üzenet mérete másodpercenként |64 KB |64 KB |
-| **REST API korlát** | 20 kérelem percenként | 25 kérelem/5 másodperc |
+| **REST API korlát** | 20 kérelem percenként | 300 kérelem percenként |
 
 
 <sup>3</sup> az **ingyenes (F0)** díjszabási szinten a [díjszabási oldalon](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)a havi kedvezmények is szerepelnek.<br/>

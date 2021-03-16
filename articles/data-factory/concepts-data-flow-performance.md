@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 01/29/2021
-ms.openlocfilehash: 01c448165e6d1f4d6103c61387298f2d9eb40254
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.date: 03/15/2021
+ms.openlocfilehash: dd5b857c274e757f70920f244786df61c2770085
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222939"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561685"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Adatfolyamatok teljesítményének és hangolási útmutatójának leképezése
 
@@ -41,7 +41,7 @@ Az adatfolyamok teljesítményének figyelése során négy lehetséges szűk ke
 * Átalakítási idő
 * Írás egy fogadóba 
 
-![Adatfolyam-figyelés](media/data-flow/monitoring-performance.png "Adatfolyam-figyelő 3")
+![Adatfolyam-monitorozás](media/data-flow/monitoring-performance.png "Adatfolyam-figyelő 3")
 
 A fürt indítási ideje az Apache Spark-fürt felgyorsításához szükséges idő. Ez az érték a figyelési képernyő jobb felső sarkában található. Az adatfolyamatok egy igény szerinti modellen futnak, ahol az egyes feladatok elkülönített fürtöt használnak. Ez az indítási idő általában 3-5 percet vesz igénybe. Szekvenciális feladatokhoz ez a művelet csökkentheti az élettartam értékét. További információ: [a Azure Integration Runtime optimalizálása](#ir).
 
@@ -181,7 +181,7 @@ Ha ugyanazokat az adatfolyamatokat futtatja egy adott fájlon, azt javasoljuk, h
 
 Ha lehetséges, ne használja a For-Each tevékenységet, hogy adatfolyamatokat futtasson a fájlok egy adott készletén. Ennek hatására a for-each minden egyes iterációja saját Spark-fürtöt hoz létre, ami gyakran nem szükséges, és költséges lehet. 
 
-## <a name="optimizing-sinks"></a>A mosogatók optimalizálása
+## <a name="optimizing-sinks"></a>Fogadók optimalizálása
 
 Amikor az adatfolyamatok elsüllyednek, az egyéni particionálások azonnal megtörténnek az írás előtt. A forráshoz hasonlóan a legtöbb esetben azt javasoljuk, hogy a **jelenlegi particionálást használja** a kiválasztott partíciós beállításként. A particionált adatai jelentősen gyorsabban fognak megjelenni, mint a nem particionált adatértékek, még a cél sincs particionálva. Az alábbiakban láthatók a különböző fogadó típusok egyedi szempontjai. 
 
@@ -259,6 +259,8 @@ A CosmosDB való íráskor az átviteli sebesség és a köteg méretének módo
 Az illesztések, a keresések és a meglévő átalakítások esetében, ha az egyik vagy mindkét adatfolyam elég kicsi ahhoz, hogy illeszkedjenek a munkavégző csomópont memóriához, a **szórás** engedélyezésével optimalizálhatja a teljesítményt. A szórás akkor történik meg, amikor kisméretű adatkereteket küld a fürt összes csomópontjára. Ez lehetővé teszi, hogy a Spark-motor a nagyméretű adatfolyamban lévő adatok újrakeverése nélkül hajtson végre egy illesztést. Alapértelmezés szerint a Spark-motor automatikusan eldönti, hogy a csatlakoztatás egyik oldalát sugározza-e a rendszer. Ha ismeri a bejövő adatait, és biztos lehet benne, hogy az egyik stream jelentősen kisebb lesz, mint a másik, válassza a **rögzített** szórás lehetőséget. A rögzített műsorszórási kényszeríti a Sparkot a kiválasztott adatfolyam szórására. 
 
 Ha a sugárzott adat mérete túl nagy a Spark-csomóponthoz, előfordulhat, hogy kevés a memória. A memóriabeli hibák elkerülése érdekében használja a **memóriára optimalizált** fürtöket. Ha az adatfolyam-végrehajtás során szórási időtúllépéseket tapasztal, kikapcsolhatja a szórásos optimalizálást. Ez azonban lassabban fogja végrehajtani az adatfolyamatokat.
+
+Ha olyan adatforrásokkal dolgozik, amelyek hosszabb időt vehetnek igénybe a lekérdezéshez, például nagyméretű adatbázis-lekérdezésekhez, akkor azt javasoljuk, hogy kapcsolja ki a szórást az illesztésekhez. A hosszú lekérdezési idővel rendelkező forrás a Spark időtúllépését okozhatja, ha a fürt a számítási csomópontok számára kísérli meg a szórást. Egy másik lehetőség a szórás kikapcsolására, ha olyan adatfolyamot használ az adatáramlásban, amely az értékeket egy későbbi keresési átalakításban való használatra összesíti. Ez a minta megzavarhatja a Spark-optimalizáló, és időtúllépéseket okozhat.
 
 ![Összekapcsolási átalakítás optimalizálása](media/data-flow/joinoptimize.png "Csatlakozás optimalizálása")
 

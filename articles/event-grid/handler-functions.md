@@ -2,13 +2,13 @@
 title: Függvény használata az Azure-ban Azure Event Grid események eseménykezelője
 description: Azt ismerteti, hogyan használhatók a Azure Functions által létrehozott és a Event Grid események eseménykezelői által üzemeltetett függvények.
 ms.topic: conceptual
-ms.date: 09/18/2020
-ms.openlocfilehash: beddc35f2dd8db974492d14aec27ce754a74737c
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.date: 03/15/2021
+ms.openlocfilehash: f547b09fe7e62eb3fa9e02bd17298a936350f871
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632512"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496541"
 ---
 # <a name="use-a-function-as-an-event-handler-for-event-grid-events"></a>Függvény használata Event Grid eseményekhez eseménykezelőként
 
@@ -79,6 +79,9 @@ A Batch szolgáltatáshoz kapcsolódó beállításokat az az [eventgrid Event-e
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 A [New-AzEventGridSubscription](/powershell/module/az.eventgrid/new-azeventgridsubscription) vagy az [Update-AzEventGridSubscription](/powershell/module/az.eventgrid/update-azeventgridsubscription) parancsmaggal konfigurálhatja a Batch szolgáltatáshoz kapcsolódó beállításokat a következő paraméterekkel: `-MaxEventsPerBatch` vagy `-PreferredBatchSizeInKiloBytes` .
+
+> [!NOTE]
+> Event Grid trigger használatakor a Event Grid szolgáltatás lekéri az ügyfél titkos kulcsát a cél Azure-függvényhez, és felhasználja az események Azure-függvénybe való továbbítására. Ha az Azure-függvényt egy Azure Active Directory alkalmazással védik, el kell végeznie az általános webhook megközelítését, és a HTTP-triggert kell használnia.
 
 ## <a name="next-steps"></a>Következő lépések
 A támogatott eseménykezelők listáját az [eseménykezelők](event-handlers.md) című cikkben tekintheti meg.

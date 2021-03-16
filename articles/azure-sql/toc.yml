@@ -345,8 +345,16 @@
               href: database/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial.md
     - name: Migrálási útmutatók
       items:
+        - name: Hozzáférés
+          href: migration-guides/database/access-to-sql-database-guide.md
         - name: DB2-ről
           href: migration-guides/database/db2-to-sql-database-guide.md
+        - name: Oracle-ből
+          href: migration-guides/database/oracle-to-sql-database-guide.md
+        - name: MySQL-ből
+          href: migration-guides/database/mysql-to-sql-database-guide.md
+        - name: SAP-központból
+          href: migration-guides/database/sap-ase-to-sql-database.md
         - name: SQL Serverről
           items:
             - name: Áttekintés
@@ -753,6 +761,8 @@
       items:
         - name: DB2-ről
           href: migration-guides/managed-instance/db2-to-managed-instance-guide.md
+        - name: Oracle-ből
+          href: migration-guides/managed-instance/oracle-to-managed-instance-guide.md
         - name: SQL Serverről
           items:
             - name: Áttekintés
@@ -1252,10 +1262,12 @@
       items:
         - name: Áttekintés
           href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-migration-overview.md
-        - name: SQL Serverről
-          href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-individual-databases-guide.md
         - name: DB2-ről
           href: migration-guides/virtual-machines/db2-to-sql-on-azure-vm-guide.md
+        - name: Oracle-ből
+          href: migration-guides/virtual-machines/oracle-to-sql-on-azure-vm-guide.md
+        - name: SQL Serverről
+          href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-individual-databases-guide.md
 - name: Referencia
   items:
     - name: T-SQL nyelvi referencia

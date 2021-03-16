@@ -966,8 +966,6 @@
           items:
             - name: F5-információk
               href: app/visual-studio.md
-            - name: Trendek
-              href: app/visual-studio-trends.md
             - name: CodeLens
               href: app/visual-studio-codelens.md
         - name: Más platformok
@@ -1038,6 +1036,8 @@
           href: vm/vminsights-workbooks.md
         - name: Monitorozás letiltása
           href: vm/vminsights-optout.md
+        - name: Hibaelhárítás
+          href: vm/vminsights-troubleshoot.md
     - name: Tároló-felismerések
       items:
         - name: Áttekintés

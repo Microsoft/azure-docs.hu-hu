@@ -4,12 +4,12 @@ description: Webalkalmazások teljesítményelemzése és diagnosztikája hibake
 ms.topic: conceptual
 ms.date: 03/17/2017
 ms.custom: vs-azure
-ms.openlocfilehash: d2de29d897c84496fd44d74d88d58decbc64b7f8
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 2507dbf7bb8294c949f434d5fa96ccc0af9a7eb3
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532902"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563538"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Alkalmazások hibakeresése az Azure Application Insights a Visual Studióban
 A Visual Studio 2015-ös és újabb verzióiban elemezheti az ASP.NET-webalkalmazások teljesítményét és diagnosztizálhatja a problémákat hibakeresés közben és éles környezetben is az [Azure Application Insights](./app-insights-overview.md) telemetriájával.
@@ -65,17 +65,6 @@ Az egyes kezelői módszerek fölötti kód Lencsés sorban megtekintheti az elm
 >
 
 [További információk az Application Insights-telemetriáról a Code Lensben](./visual-studio-codelens.md)
-
-## <a name="trends"></a>Trendek
-A Trendek használatával megjelenítheti az alkalmazás időbeni működésének a módját. 
-
-Válassza az **Explore Telemetry Trends** (Telemetriatrendek megtekintése) elemet az Application Insights eszköztárgombjáról vagy az Application Insights Keresés ablakában. A kezdéshez válasszon egyet az öt gyakori lekérdezés közül. A különböző adatkészleteket telemetriatípusok, időintervallumok és egyéb tulajdonságok szerint elemezheti. 
-
-Az adatokban előforduló rendellenességek felderítéséhez válassza valamelyik rendellenességi lehetőséget a „View Type” (Nézettípus) legördülő menüben. Az ablak alján található szűrőbeállítások megkönnyítik a telemetria bizonyos részhalmazainak alaposabb vizsgálatát.
-
-![Trendek](./media/visual-studio/51.png)
-
-[További információ a Trendekről](./visual-studio-trends.md).
 
 ## <a name="local-monitoring"></a>Helyi figyelés
 (A Visual Studio 2015 Update 2) Ha nem konfigurálta az SDK-t, hogy telemetria küldjön a Application Insights portálra (így nincs rendszerállapot-kulcs a ApplicationInsights.config), akkor a diagnosztika ablak a legújabb hibakeresési munkamenetből származó telemetria jeleníti meg. 

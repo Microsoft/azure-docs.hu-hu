@@ -4,14 +4,14 @@ description: Címtárszolgáltatások konfigurálása a tárolási célokhoz val
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 12/22/2020
+ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 4f1499c9a86999bac86fb7bf185f195e9ba5f690
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: fd5dce0760953bf19c72e1a1062a9c03ffe861e7
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103472064"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563372"
 ---
 # <a name="configure-directory-services"></a>Címtárszolgáltatások konfigurálása
 
@@ -81,7 +81,7 @@ A **biztonságos hozzáférés** szakaszban engedélyezheti az LDAP-kapcsolat ti
 
 * **Tanúsítvány automatikus letöltése** – válassza az **Igen** lehetőséget, ha a beállítások elküldésekor azonnal le szeretné tölteni a tanúsítványt.
 
-Adja meg a **hitelesítő adatok** szakaszt, ha statikus hitelesítő adatokat szeretne használni az LDAP-biztonsághoz.
+Adja meg a **hitelesítő adatok** szakaszt, ha statikus hitelesítő adatokat szeretne használni az LDAP-biztonsághoz. Ezeket az információkat a rendszer a tároláskor titkosítja, és nem kérdezheti le.
 
 * **Kötési DN** – adja meg az LDAP-kiszolgáló hitelesítéséhez használandó kötési megkülönböztető nevet. (DN formátum használata.)
 * **Kötési jelszó** – adja meg a kötési DN jelszavát.

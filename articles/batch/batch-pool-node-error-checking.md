@@ -3,14 +3,14 @@ title: Készlet-és csomópont-hibák keresése
 description: Ez a cikk az esetlegesen előforduló háttér-műveleteket, valamint a készletek és csomópontok létrehozásakor fellépő hibákat és azok elkerülését ismerteti.
 author: mscurrell
 ms.author: markscu
-ms.date: 02/03/2020
+ms.date: 03/15/2021
 ms.topic: how-to
-ms.openlocfilehash: 2b67eada5dfa89f95e2c9ae045c6bbe3fa0bb1ce
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 4a0d3e017f36f580024b77fbd23145d7447f336d
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576312"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564405"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Készlet-és csomópont-hibák keresése
 
@@ -62,6 +62,13 @@ Csomópontokat tartalmazó készlet törlésekor az első köteg törli a csomó
 
 A Batch beállítja a [készlet állapotát](/rest/api/batchservice/pool/get#poolstate) **a törlési folyamat során.** A hívó alkalmazás képes megállapítani, hogy a készlet törlése túl hosszú időt vesz igénybe az **állapot** és a **stateTransitionTime** tulajdonság használatával.
 
+Ha a készlet a vártnál hosszabb időt vesz igénybe, a köteg a készlet sikeres törlése után rendszeresen újrapróbálkozik. Bizonyos esetekben a késést egy Azure-szolgáltatás kimaradása vagy más ideiglenes probléma okozza. A készlet sikeres törlését megakadályozó egyéb tényezők szükségessé tehetik a probléma megoldásához szükséges műveletek elvégzését. Ezek a tényezők többek között a következők:
+
+- Az erőforrás-zárolások a Batch által létrehozott erőforrásokra, illetve a Batch által használt hálózati erőforrásokra vannak helyezve.
+- A létrehozott erőforrások függőségi viszonyban vannak egy batch által létrehozott erőforrással. Ha például [létrehoz egy készletet egy virtuális hálózatban](batch-virtual-network.md), a Batch létrehoz egy hálózati biztonsági CSOPORTOT (NSG), egy nyilvános IP-címet és egy terheléselosztó-t. Ha ezeket az erőforrásokat a készleten kívül használja, a készlet nem törölhető, amíg el nem távolítja a függőséget.
+- A Microsoft.BatCH erőforrás-szolgáltató regisztrációja törölve lett a készletet tartalmazó előfizetésből.
+- A (z) "Microsoft Azure Batch" már nem rendelkezik [közreműködői vagy tulajdonosi szerepkörrel](batch-account-create-portal.md#allow-azure-batch-to-access-the-subscription-one-time-operation) a készletet tartalmazó előfizetéshez (felhasználói előfizetés mód batch-fiókok esetén).
+
 ## <a name="node-errors"></a>Csomóponti hibák
 
 Ha a Batch sikeresen foglal le csomópontokat egy készletben, a különböző problémák miatt előfordulhat, hogy a csomópontok némelyike nem kifogástalan állapotú, és nem tudja futtatni a feladatokat. Ezek a csomópontok továbbra is díjkötelesek, ezért fontos, hogy észlelje a nem használható csomópontok kifizetésének elkerülésével kapcsolatos problémákat. Az általános csomópont-hibák mellett a jelenlegi [feladatok állapotának](/rest/api/batchservice/job/get#jobstate) ismerete is hasznos lehet a hibaelhárításhoz.
@@ -105,15 +112,10 @@ Ha a Batch meghatározhatja az okot, a Node [errors](/rest/api/batchservice/comp
 További példák a **használhatatlan** csomópontok okaira:
 
 - Egy egyéni virtuálisgép-rendszerkép érvénytelen. Például egy nem megfelelően előkészített rendszerkép.
-
 - Egy virtuális gép az infrastruktúra meghibásodása vagy egy alacsony szintű frissítés miatt kerül áthelyezésre. A Batch helyreállítja a csomópontot.
-
 - A virtuálisgép-lemezképek olyan hardveren lettek telepítve, amely nem támogatja azt. Ha például egy CentOS HPC-rendszerképet szeretne futtatni egy [Standard_D1_v2](../virtual-machines/dv2-dsv2-series.md) virtuális gépen.
-
 - A virtuális gépek egy Azure-beli [virtuális hálózatban](batch-virtual-network.md)találhatók, és a forgalom le lett tiltva a legfontosabb portok számára.
-
 - A virtuális gépek virtuális hálózaton vannak, de az Azure Storage-ba irányuló kimenő forgalom le van tiltva.
-
 - A virtuális gépek egy ügyfél-DNS-konfigurációval rendelkező virtuális hálózaton vannak, és a DNS-kiszolgáló nem tudja feloldani az Azure Storage-t.
 
 ### <a name="node-agent-log-files"></a>Csomópont-ügynök naplófájljai

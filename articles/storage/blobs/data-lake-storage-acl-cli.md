@@ -10,12 +10,12 @@ ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9814dc06e7e570a923ba3ea5b3b0df7ade99bb28
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 5ec7d2b243a5eadab2d22dea14ebeac8eabb1722
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100654244"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563164"
 ---
 # <a name="use-azure-cli-to-manage-acls-in-azure-data-lake-storage-gen2"></a>Az ACL-ek kezelése az Azure CLI használatával Azure Data Lake Storage Gen2
 
@@ -31,7 +31,7 @@ Az ACL öröklése már elérhető az új alárendelt elemekhez, amelyeket a ren
 
 - Olyan Storage-fiók, amelyen engedélyezve van a hierarchikus névtér. Az [alábbi](create-data-lake-storage-account.md) útmutatást követve hozzon létre egyet.
 
-- Az Azure CLI verziója `2.6.0` vagy újabb.
+- Az Azure CLI verziója `2.14.0` vagy újabb.
 
 - A következő biztonsági engedélyek egyike:
 
@@ -137,6 +137,9 @@ Ez a példa egy fájl ACL-fájlját állítja be a tulajdonos felhasználó, tul
 az storage fs access set --acl "user::rw-,group::rw-,other::-wx" -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
+> [!NOTE]
+> Egy adott csoport vagy felhasználó hozzáférés-vezérlési listájának beállításához használja a megfelelő objektumazonosítót. Például `group:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` vagy `user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.
+
 Az alábbi képen egy fájl ACL-listájának beállítása után a kimenet látható.
 
 ![A 2. ACL-kimenet beolvasása](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
@@ -184,6 +187,9 @@ Ez a példa egy **fájl** ACL-listáját frissíti.
 ```azurecli
 az storage fs access set --permissions rwxrwxrwx -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
+
+> [!NOTE]
+> Egy adott csoport vagy felhasználó hozzáférés-vezérlési listájának frissítéséhez használja a megfelelő objektumazonosítót. Például `group:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` vagy `user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.
 
 Egy könyvtár vagy fájl tulajdonos felhasználóját és csoportját úgy is frissítheti, ha az `--owner` vagy a `group` paramétereket egy felhasználó entitás-azonosító vagy egyszerű felhasználónév (UPN) értékére állítja be.
 

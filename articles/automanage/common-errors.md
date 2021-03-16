@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: alsin
-ms.openlocfilehash: df5133ad4bb3155afdc9d43e595591d9cfda4ea0
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 2bdf04143121e1286ffc7bfa86b4a9ee291ae6ef
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644442"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561862"
 ---
 # <a name="troubleshoot-common-automanage-onboarding-errors"></a>Gyakori autokezelési hibák elhárítása
 Előfordulhat, hogy az automanage utasítás nem tud bejelentkezni egy gépet a szolgáltatásba. Ez a dokumentum ismerteti, hogyan lehet elhárítani az üzembe helyezési hibákat, és megoszthatja azokat a gyakori okokat, amelyek miatt előfordulhat, hogy a központi telepítések meghiúsulnak, és leírja a lehetséges
@@ -21,7 +21,7 @@ Előfordulhat, hogy az automanage utasítás nem tud bejelentkezni egy gépet a 
 ## <a name="troubleshooting-deployment-failures"></a>Telepítési hibák elhárítása
 Egy gép az automanage-be történő bevezetéséhez egy Azure Resource Manager központi telepítés jön létre. Ha a bevezetési művelet sikertelen, hasznos lehet a központi telepítéssel kapcsolatos további részletekért tájékozódni, hogy miért nem sikerült. A hiba részletei menüben található központi telepítések hivatkozásai a lenti ábrán láthatók.
 
-:::image type="content" source="media\automanage-common-errors\failure-flyout.png" alt-text="Hiba az automanage művelet részleteinek megjelenítéséhez.":::
+:::image type="content" source="media\common-errors\failure-flyout.png" alt-text="Hiba az automanage művelet részleteinek megjelenítéséhez.":::
 
 ### <a name="check-the-deployments-for-the-resource-group-containing-the-failed-vm"></a>Győződjön meg arról, hogy a meghibásodott virtuális gépet tartalmazó erőforráscsoport központi telepítései vannak
 A leállási hiba a (z) rendszer azon erőforráscsoporthoz tartozó központi telepítésekre mutató hivatkozást tartalmaz, amely a sikertelen bevezetést tartalmazó gépet és egy előtag nevét tartalmazza, amellyel szűrheti a központi telepítéseket. A hivatkozásra kattintva megtekintheti a központi telepítések panelt, ahol szűrheti az üzemelő példányokat, és megtekintheti a központi telepítések automatikus kezelését a gépen. Ha több régióban végez üzembe helyezést, győződjön meg arról, hogy a megfelelő régióban található központi telepítésre kattint.
@@ -38,6 +38,7 @@ Hiba |  Kockázatcsökkentés
 :-----|:-------------|
 Nem megfelelő engedélyekkel rendelkező fiókra vonatkozó engedélyek hibájának kezelése | Ez akkor fordulhat elő, ha nemrég áthelyezett egy új, egy új bérlőbe egy új automanage-fiókot tartalmazó előfizetést. A megoldásának lépései [itt](./repair-automanage-account.md)találhatók.
 Munkaterület-régió nem felel meg a régió megfeleltetési követelményeinek | Az automatikus felügyelet nem tudta bekészíteni a gépet, de a Log Analytics munkaterületet, amelyhez a gép jelenleg kapcsolódik, nincs leképezve támogatott Automation-régióra. Győződjön meg arról, hogy a meglévő Log Analytics munkaterület és az Automation-fiók egy [támogatott régió-hozzárendelésben](../automation/how-to/region-mappings.md)található.
+"A hozzáférés megtagadva a (z)" {0} "nevű, felügyelt alkalmazás által létrehozott rendszer-megtagadási hozzárendelés miatt | A rendszer létrehoz egy [denyAssignment](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments) az erőforráson, amely megakadályozta, hogy az automanage hozzáférjen az erőforráshoz. Ezt egy [tervezet](https://docs.microsoft.com/azure/governance/blueprints/concepts/resource-locking) vagy egy [felügyelt alkalmazás](https://docs.microsoft.com/azure/azure-resource-manager/managed-applications/overview)okozta.
 "A hozzárendelés sikertelen; nem érhető el további információ " | Nyisson meg egy esetet Microsoft Azure támogatással.
 
 ## <a name="next-steps"></a>Következő lépések

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/16/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 526d8bfa0124fba75eb33518acd83169ff020698
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: fd4724fc19814a5ffd35380c0b326e035a340ef2
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2021
-ms.locfileid: "103555305"
+ms.locfileid: "103561515"
 ---
 # <a name="embedded-sign-in-experience"></a>Beágyazott bejelentkezési élmény
 
@@ -31,7 +31,7 @@ A beágyazott keret elem a `<iframe>` dokumentumok HTML5-weblapokon való beágy
 IFrame használatakor vegye figyelembe a következőket:
 
 - A beágyazott bejelentkezés csak a helyi fiókokat támogatja. A legtöbb közösségi identitás-szolgáltató (például a Google és a Facebook) blokkolja a bejelentkezési oldalaikat a beágyazott keretek között.
-- Mivel az IFRAME-en belüli Azure AD B2C munkamenet-cookie-k harmadik féltől származó cookie-k, bizonyos böngészők (például a Safari vagy a Chrome inkognitóban módban), vagy letilthatják vagy törölhetik ezeket a cookie-kat, ami nem kívánatos felhasználói élményt eredményez. A probléma elkerülése érdekében győződjön meg arról, hogy az alkalmazás tartományneve és a Azure AD B2C tartománya *azonos eredetű*. Például a on futtatott alkalmazásnak https://app.contoso.com ugyanaz a forrása, mint a Azure ad B2C fut https://login.contoso.com .
+- Mivel az IFRAME-en belüli Azure AD B2C munkamenet-cookie-k harmadik féltől származó cookie-k, bizonyos böngészők (például a Safari vagy a Chrome inkognitóban módban), vagy letilthatják vagy törölhetik ezeket a cookie-kat, ami nem kívánatos felhasználói élményt eredményez. A probléma elkerülése érdekében győződjön meg arról, hogy az alkalmazás tartományneve és a Azure AD B2C tartománya *azonos eredetű*. Ha ugyanazt a forrást szeretné használni, [engedélyezze az egyéni tartományokat](custom-domain.md) Azure ad B2C bérlő számára, majd konfigurálja a webalkalmazást ugyanazzal a forrással. Például a on futtatott alkalmazásnak https://app.contoso.com ugyanaz a forrása, mint a Azure ad B2C fut https://login.contoso.com .
  
 ## <a name="configure-your-policy"></a>A házirend konfigurálása
 

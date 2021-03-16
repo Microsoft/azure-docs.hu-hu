@@ -3,19 +3,19 @@ title: Azure Durable Functions-egység tesztelése
 description: Ismerje meg, hogyan lehet a test Durable Functions.
 ms.topic: conceptual
 ms.date: 11/03/2019
-ms.openlocfilehash: 7786a0a2e2d31086e1938b70e63fe2374e16fe7f
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 89b6419e95b3971b0d272490e19354f300204e1e
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601356"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491044"
 ---
 # <a name="durable-functions-unit-testing"></a>Durable Functions egység tesztelése
 
 Az egység tesztelése a modern szoftverfejlesztési eljárások fontos részét képezi. Az egység-tesztek ellenőrzik az üzleti logikát és a védelemtől való megfelelést, és a jövőben nem figyelt feltörési változásokat jelentenek. A Durable Functions könnyedén növelheti a bonyolultságot, így az egységek tesztelésének bevezetésével elkerülhető a változások megszakítása. A következő szakaszokban bemutatjuk, hogyan kell tesztelni a három függvényt – a-összehangoló ügyfelet, a Orchestrator és a tevékenységi funkciókat.
 
 > [!NOTE]
-> Ez a cikk útmutatást nyújt az Durable Functions alkalmazások Durable Functions 1. x célra való célzásához. Még nem frissült a Durable Functions 2. x verzióban bevezetett változások miatt. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+> Ez a cikk útmutatást nyújt a Durable Functions alkalmazásokhoz Durable Functions 2. x. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,20 +31,17 @@ A cikkben szereplő példák a következő fogalmakat és keretrendszerek ismere
 
 ## <a name="base-classes-for-mocking"></a>A modellezés alaposztályai
 
-A kigúnyolás a Durable Functions 1. x három absztrakt osztályán keresztül támogatott:
+A kigúnyolás a következő felületen keresztül támogatott:
 
-* `DurableOrchestrationClientBase`
+* [IDurableOrchestrationClient](/dotnet/api/microsoft.azure.webjobs.IDurableOrchestrationClient), [IDurableEntityClient](/dotnet/api/microsoft.azure.webjobs.IDurableEntityClient) és [IDurableClient](/dotnet/api/microsoft.azure.webjobs.IDurableClient)
 
-* `DurableOrchestrationContextBase`
+* [IDurableOrchestrationContext](/dotnet/api/microsoft.azure.webjobs.IDurableOrchestrationContext)
 
-* `DurableActivityContextBase`
+* [IDurableActivityContext](/dotnet/api/microsoft.azure.webjobs.IDurableActivityContext)
+  
+* [IDurableEntityContext](/dotnet/api/microsoft.azure.webjobs.IDurableEntityContext)
 
-Ezek az osztályok a, a, a `DurableOrchestrationClient` `DurableOrchestrationContext` és a Orchestrator, valamint a `DurableActivityContext` tevékenységi módszereket definiáló alaposztályok. A kigúnyolja az alaposztály-metódusok várt viselkedését állítja be, így az egység tesztelése ellenőrizheti az üzleti logikát. Az egység kétlépéses munkafolyamata az üzleti logikát teszteli az összehangoló ügyfélben és a Orchestrator:
-
-1. Az alaposztályok használata a konkrét implementáció helyett az előkészítési ügyfél és a Orchestrator függvény aláírásának meghatározásakor.
-2. A Unit-tesztek során az alaposztályok viselkedését és az üzleti logikát kell ellenőrizni.
-
-A következő bekezdésekben talál további részleteket az előkészítési ügyfél kötését és a Orchestrator trigger kötést használó függvények teszteléséhez.
+Ezek a felületek a Durable Functions által támogatott különböző triggerekkel és kötésekkel használhatók. A Azure Functions végrehajtásakor a functions Runtime a következő felületek konkrét megvalósításával fogja futtatni a függvény kódját. Az egység tesztelésekor a felületek kigúnyolt változatát átadhatja az üzleti logikájának teszteléséhez.
 
 ## <a name="unit-testing-trigger-functions"></a>Unit Testing trigger functions
 
@@ -52,71 +49,77 @@ Ebben a szakaszban az egység tesztelése ellenőrzi a következő HTTP-trigger 
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-Az egység teszt feladata a `Retry-After` Válasz adattartalomban megadott fejléc értékének ellenőrzése. Így az egység tesztelése kigúnyol néhány `DurableOrchestrationClientBase` módszert a kiszámítható működés biztosítása érdekében.
+Az egység teszt feladata a `Retry-After` Válasz adattartalomban megadott fejléc értékének ellenőrzése. Így az egység tesztelése kigúnyol néhány `IDurableClient` módszert a kiszámítható működés biztosítása érdekében.
 
-Először is szükség van az alaposztály mintájának kiírására `DurableOrchestrationClientBase` . A modell lehet egy új osztály, amely megvalósítja `DurableOrchestrationClientBase` . Azonban a [MOQ](https://github.com/moq/moq4) , például a következő modellezési keretrendszer használatával egyszerűsíti a folyamatot:
+Először egy kigúnyoló keretrendszert (ebben az esetben[MOQ](https://github.com/moq/moq4) ) használunk a következő modellezéshez `IDurableClient` :
 
 ```csharp
-    // Mock DurableOrchestrationClientBase
-    var durableOrchestrationClientBaseMock = new Mock<DurableOrchestrationClientBase>();
+// Mock IDurableClient
+var durableClientMock = new Mock<IDurableClient>();
 ```
+
+> [!NOTE]
+> Habár a felületek kiépítéséhez közvetlenül az illesztőfelületet osztályként kell megvalósítani, a modellezési keretrendszerek különböző módokon egyszerűsítik a folyamatot. Ha például egy új metódust ad hozzá a csatolóhoz a kisebb kiadások között, a MOQ nem igénylik a kód módosításait a konkrét implementációkkal szemben.
 
 Ezt követően a `StartNewAsync` rendszer kigúnyolja a metódust, hogy egy jól ismert példány azonosítóját adja vissza.
 
 ```csharp
-    // Mock StartNewAsync method
-    durableOrchestrationClientBaseMock.
-        Setup(x => x.StartNewAsync(functionName, It.IsAny<object>())).
-        ReturnsAsync(instanceId);
+// Mock StartNewAsync method
+durableClientMock.
+    Setup(x => x.StartNewAsync(functionName, It.IsAny<object>())).
+    ReturnsAsync(instanceId);
 ```
 
 A következő `CreateCheckStatusResponse` a kigúnyolva, hogy mindig üres HTTP 200 választ ad vissza.
 
 ```csharp
-    // Mock CreateCheckStatusResponse method
-    durableOrchestrationClientBaseMock
-        .Setup(x => x.CreateCheckStatusResponse(It.IsAny<HttpRequestMessage>(), instanceId))
-        .Returns(new HttpResponseMessage
+// Mock CreateCheckStatusResponse method
+durableClientMock
+    // Notice that even though the HttpStart function does not call IDurableClient.CreateCheckStatusResponse() 
+    // with the optional parameter returnInternalServerErrorOnFailure, moq requires the method to be set up
+    // with each of the optional parameters provided. Simply use It.IsAny<> for each optional parameter
+    .Setup(x => x.CreateCheckStatusResponse(It.IsAny<HttpRequestMessage>(), instanceId, returnInternalServerErrorOnFailure: It.IsAny<bool>())
+    .Returns(new HttpResponseMessage
+    {
+        StatusCode = HttpStatusCode.OK,
+        Content = new StringContent(string.Empty),
+        Headers =
         {
-            StatusCode = HttpStatusCode.OK,
-            Content = new StringContent(string.Empty),
-            Headers =
-            {
-                RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromSeconds(10))
-            }
-        });
+            RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromSeconds(10))
+        }
+    });
 ```
 
 `ILogger` szintén kigúnyolva:
 
 ```csharp
-    // Mock ILogger
-    var loggerMock = new Mock<ILogger>();
+// Mock ILogger
+var loggerMock = new Mock<ILogger>();
 ```  
 
 Most a `Run` metódust az egység tesztből kell hívni:
 
 ```csharp
-    // Call Orchestration trigger function
-    var result = await HttpStart.Run(
-        new HttpRequestMessage()
-        {
-            Content = new StringContent("{}", Encoding.UTF8, "application/json"),
-            RequestUri = new Uri("http://localhost:7071/orchestrators/E1_HelloSequence"),
-        },
-        durableOrchestrationClientBaseMock.Object,
-        functionName,
-        loggerMock.Object);
+// Call Orchestration trigger function
+var result = await HttpStart.Run(
+    new HttpRequestMessage()
+    {
+        Content = new StringContent("{}", Encoding.UTF8, "application/json"),
+        RequestUri = new Uri("http://localhost:7071/orchestrators/E1_HelloSequence"),
+    },
+    durableClientMock.Object,
+    functionName,
+    loggerMock.Object);
  ```
 
  Az utolsó lépés a kimenet összehasonlítása a várt értékkel:
 
 ```csharp
-    // Validate that output is not null
-    Assert.NotNull(result.Headers.RetryAfter);
+// Validate that output is not null
+Assert.NotNull(result.Headers.RetryAfter);
 
-    // Validate output's Retry-After header value
-    Assert.Equal(TimeSpan.FromSeconds(10), result.Headers.RetryAfter.Delta);
+// Validate output's Retry-After header value
+Assert.Equal(TimeSpan.FromSeconds(10), result.Headers.RetryAfter.Delta);
 ```
 
 Az összes lépés egyesítése után az egység tesztelése a következő kódot fogja tartalmazni:
@@ -134,30 +137,30 @@ Ebben a szakaszban az egység tesztek ellenőrzik a Orchestrator függvény kime
 Az egység tesztelési kódja a modell létrehozásával kezdődik:
 
 ```csharp
-    var durableOrchestrationContextMock = new Mock<DurableOrchestrationContextBase>();
+var durableOrchestrationContextMock = new Mock<IDurableOrchestrationContext>();
 ```
 
 Ezt követően a tevékenység metódusának hívásait a rendszer kigúnyolja:
 
 ```csharp
-    durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "Tokyo")).ReturnsAsync("Hello Tokyo!");
-    durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "Seattle")).ReturnsAsync("Hello Seattle!");
-    durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "London")).ReturnsAsync("Hello London!");
+durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "Tokyo")).ReturnsAsync("Hello Tokyo!");
+durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "Seattle")).ReturnsAsync("Hello Seattle!");
+durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "London")).ReturnsAsync("Hello London!");
 ```
 
 Ezután az egység tesztelése a következő `HelloSequence.Run` metódust fogja hívni:
 
 ```csharp
-    var result = await HelloSequence.Run(durableOrchestrationContextMock.Object);
+var result = await HelloSequence.Run(durableOrchestrationContextMock.Object);
 ```
 
 Végül a rendszer érvényesíti a kimenetet:
 
 ```csharp
-    Assert.Equal(3, result.Count);
-    Assert.Equal("Hello Tokyo!", result[0]);
-    Assert.Equal("Hello Seattle!", result[1]);
-    Assert.Equal("Hello London!", result[2]);
+Assert.Equal(3, result.Count);
+Assert.Equal("Hello Tokyo!", result[0]);
+Assert.Equal("Hello Seattle!", result[1]);
+Assert.Equal("Hello London!", result[2]);
 ```
 
 Az összes lépés egyesítése után az egység tesztelése a következő kódot fogja tartalmazni:
@@ -172,11 +175,11 @@ Ebben a szakaszban az egység tesztelése ellenőrzi a `E1_SayHello` tevékenys�
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
-Az egység tesztek pedig ellenőrzik a kimenet formátumát. Az egység tesztek közvetlenül vagy Mock osztályt használhatnak a paraméterek típusával `DurableActivityContextBase` :
+Az egység tesztek pedig ellenőrzik a kimenet formátumát. Az egység tesztek közvetlenül vagy Mock osztályt használhatnak a paraméterek típusával `IDurableActivityContext` :
 
 [!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HelloSequenceActivityTests.cs)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ a xUnit](https://xunit.net/docs/getting-started/netcore/cmdline)

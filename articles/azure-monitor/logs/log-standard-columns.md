@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/25/2021
-ms.openlocfilehash: 3e12bef7569110084cd059b0dfde8562bd914823
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 5b906bdbd07d59d2acc88f6b30f0db6b6cbc961a
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030766"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562246"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Szabványos oszlopok a Azure Monitor-naplókban
 Azure Monitor naplókban lévő adatokat egy [log Analytics munkaterületen vagy Application Insights alkalmazásban található rekordok halmaza tárolja](../logs/data-platform-logs.md), amelyek mindegyike egy adott adattípussal rendelkezik, amely egyedi oszlopokkal rendelkezik. Számos adattípus szabványos oszlopokat tartalmaz, amelyek több típusra is jellemzőek. Ez a cikk ezeket az oszlopokat ismerteti, és példákat tartalmaz arra, hogyan használhatja őket a lekérdezésekben.
@@ -132,7 +132,7 @@ Ezeket a `union withsource = tt *` lekérdezéseket takarékosan használhatja a
 
 Mindig hatékonyabb a \_ SubscriptionId oszlop használata, mint a kinyerése a \_ ResourceId oszlop elemzésével.
 
-## <a name="_substriptionid"></a>\_SubstriptionId
+## <a name="_subscriptionid"></a>\_SubscriptionId
 A **\_ SubscriptionId** oszlop tartalmazza annak az erőforrásnak az előfizetési azonosítóját, amelyhez a rekord társítva van. Ez egy szabványos oszlopot biztosít, amellyel a lekérdezés hatókörét csak egy adott előfizetésből származó rekordokra vagy a különböző előfizetések összehasonlítására használhatja.
 
 Az Azure-erőforrások esetében **__SubscriptionId** értéke az [Azure Resource id URL-cím](../../azure-resource-manager/templates/template-functions-resource.md)előfizetés része. Az oszlop az Azure-erőforrások, például az [Azure arc](../../azure-arc/overview.md) -erőforrások, illetve az erőforrás-azonosítót a betöltés során jelzett egyéni naplókra korlátozódik.

@@ -7,13 +7,13 @@ metadata:
   services: Azure portal
   ms.topic: landing-page
   ms.collection: collection
-  ms.date: 08/05/2020
-  ms.openlocfilehash: c1617f295a101ae645743d60fdbe82a09d936ea2
-  ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
-  ms.translationtype: HT
+  ms.date: 03/15/2021
+  ms.openlocfilehash: 7b7727d1fdf550b3ab3341bd0dc852f343b00791
+  ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+  ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 12/07/2020
-  ms.locfileid: "96749011"
+  ms.lasthandoff: 03/16/2021
+  ms.locfileid: "103563912"
 landingContent:
 - title: Tudnivalók az Azure Portalról
   linkLists:
@@ -21,18 +21,44 @@ landingContent:
     links:
     - text: Mi az az Azure Portal?
       url: azure-portal-overview.md
+    - text: Előkészítés az Azure Gyorskonfigurálási központban
+      url: azure-portal-quickstart-center.md
     - text: Támogatott böngészők és eszközök
       url: azure-portal-supported-browsers-devices.md
-- title: Az Azure Portal testreszabása
+- title: Bevezetés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Virtuális gép létrehozása a portálon
+      url: ../virtual-machines/windows/quick-create-portal.md?toc=/azure/azure-portal/toc.json&bc=/azure/azure-portal/breadcrumb/toc.json
+    - text: Irányítópult létrehozása – Azure CLI
+      url: quickstart-portal-dashboard-azure-cli.md
+    - text: Irányítópult létrehozása – Azure PowerShell
+      url: quickstart-portal-dashboard-powershell.md
+    - text: Irányítópult létrehozása – ARM-sablon
+      url: quick-create-template.md
+  - linkListType: how-to-guide
+    links:
+    - text: Az Azure Portal útmutató videósorozata
+      url: azure-portal-video-series.md
+- title: Támogatási kérések létrehozása és kezelése
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: A portál beállításainak megadása
-      url: set-preferences.md
-    - text: Egyéni irányítópultok létrehozása és megosztása
-      url: azure-portal-dashboards.md
-    - text: Kedvencek kezelése
-      url: azure-portal-add-remove-sort-favorites.md
+    - text: Azure-támogatáskérés létrehozása
+      url: supportability/how-to-create-azure-support-request.md
+    - text: Azure-támogatáskérés kezelése
+      url: supportability/how-to-manage-azure-support-request.md
+- title: Kisegítő lehetőségek használata
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Billentyűparancsok
+      url: azure-portal-keyboard-shortcuts.md
+  - linkListType: how-to-guide
+    links:
+    - text: Kontrasztos megjelenítés bekapcsolása
+      url: set-preferences.md#choose-a-theme-or-enable-high-contrast
 - title: Az Azure Portalhoz való hozzáférés kezelése
   linkLists:
   - linkListType: reference
@@ -45,39 +71,17 @@ landingContent:
     links:
     - text: Erőforrások kezelése az Azure-ban
       url: /learn/paths/manage-resources-in-azure/
-    - text: Azure-erőforrások védelme Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC-vel)
-      url: /learn//modules/secure-azure-resources-with-rbac/
-- title: Bevezetés
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: Előkészítés az Azure Gyorskonfigurálási központban
-      url: azure-portal-quickstart-center.md
-  - linkListType: how-to-guide
-    links:
-    - text: Az Azure Portal útmutató videósorozata
-      url: azure-portal-video-series.md
-  - linkListType: learn
-    links:
-    - text: Az Azure alapjai
-      url: /learn/paths/azure-fundamentals/
-    - text: Felhőfogalmak - A felhőalapú számítástechnika alapelvei
-      url: /learn/modules/principles-cloud-computing/
-- title: Kisegítő lehetőségek használata
-  linkLists:
-  - linkListType: reference
-    links:
-    - text: Billentyűparancsok
-      url: azure-portal-keyboard-shortcuts.md
-  - linkListType: how-to-guide
-    links:
-    - text: Kontrasztos megjelenítés bekapcsolása
-      url: set-preferences.md#choose-a-theme-or-enable-high-contrast
-- title: Támogatási kérések létrehozása és kezelése
+    - text: Erőforrások biztonságossá tétele az Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC)
+      url: /learn/modules/secure-azure-resources-with-rbac
+- title: Az Azure Portal testreszabása
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Azure-támogatáskérés létrehozása
-      url: ../azure-portal/supportability/how-to-create-azure-support-request.md
-    - text: A régióval vagy termékváltozattal kapcsolatos előfizetési problémák elhárítása
-      url: ../azure-portal/supportability/sku-series-unavailable.md
+    - text: Az Azure Portal beállításainak kezelése
+      url: set-preferences.md
+    - text: Erőforrás információinak megtekintése és szűrése
+      url: manage-filter-resource-views.md
+    - text: Irányítópult létrehozása – Azure Portal felhasználói felület
+      url: azure-portal-dashboards.md
+    - text: Kedvencek hozzáadása, eltávolítása és rendezése
+      url: azure-portal-add-remove-sort-favorites.md

@@ -4,14 +4,14 @@ description: Tárolási célok meghatározása úgy, hogy az Azure HPC-gyorsít�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/11/2021
+ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 4e6c5b5ea69c55c09887528f1723414f53fcb0f9
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: bba6745a4cc0be30648e23501f9a9e2f0cc6c8db
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103471953"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563240"
 ---
 # <a name="add-storage-targets"></a>Céltárak hozzáadása
 
@@ -194,15 +194,17 @@ A többi lehetőségről a [használati modellek](cache-usage-models.md)ismertet
 
 Ez a táblázat a használati modellek közötti különbségeket foglalja össze:
 
-| Használati modell | Gyorsítótárazási mód | Háttér-ellenőrzés | Maximális írási késleltetés |
+[!INCLUDE [usage-models-table.md](includes/usage-models-table.md)]
+
+<!-- | Usage model | Caching mode | Back-end verification | Maximum write-back delay |
 |--|--|--|--|
-| Súlyos, ritka írások olvasása | Olvasás | Soha | Nincs |
-| 15%-nál nagyobb írások | Olvasás/írás | 8 óra | 20 perc |
-| Az ügyfelek megkerülik a gyorsítótárat | Olvasás | 30 másodperc | Nincs |
-| 15%-nál nagyobb írások, gyakori háttér-ellenőrzés (30 másodperc) | Olvasás/írás | 30 másodperc | 20 perc |
-| 15%-nál nagyobb írások, gyakori háttér-ellenőrzés (60 másodperc) | Olvasás/írás | 60 másodperc | 20 perc |
-| 15%-nál nagyobb írások, gyakori visszaírások | Olvasás/írás | 30 másodperc | 30 másodperc |
-| Nagy mennyiségű, a kiszolgáló biztonsági mentése 3 óránként | Olvasás | 3 óra | Nincs |
+| Read heavy, infrequent writes | Read | Never | None |
+| Greater than 15% writes | Read/write | 8 hours | 20 minutes |
+| Clients bypass the cache | Read | 30 seconds | None |
+| Greater than 15% writes, frequent back-end checking (30 seconds) | Read/write | 30 seconds | 20 minutes |
+| Greater than 15% writes, frequent back-end checking (60 seconds) | Read/write | 60 seconds | 20 minutes |
+| Greater than 15% writes, frequent write-back | Read/write | 30 seconds | 30 seconds |
+| Read heavy, checking the backing server every 3 hours | Read | 3 hours | None | -->
 
 > [!NOTE]
 > A **háttér-ellenőrzési** érték azt jelzi, hogy a gyorsítótár automatikusan összehasonlítja-e a fájljait a távoli tárolóban lévő forrásfájlokat. Az összehasonlítást azonban elindíthatja egy olyan ügyfélalkalmazás elküldésével, amely readdirplus műveletet tartalmaz a háttér-tárolási rendszeren. A Readdirplus egy szabványos NFS API (más néven kiterjesztett olvasás), amely a címtár metaadatait adja vissza, ami miatt a gyorsítótár összehasonlítja és frissíti a fájlokat.
