@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
 ms.custom: data4ml
-ms.openlocfilehash: 77edac14ef13901725eed656835e1a937d4f4ddf
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 5ab7bac635a0b670087800212727b0d2e2b96934
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360819"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472206"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Az adatfeldolgozás optimalizálása Azure Machine Learning
 
@@ -36,7 +36,7 @@ A CSV-fájlokat általában az adatimportáláshoz és-exportáláshoz használj
 
 A [pandák dataframes](https://pandas.pydata.org/pandas-docs/stable/getting_started/overview.html) általában adatkezeléshez és elemzéshez használják. `Pandas` az 1 GB-nál kisebb adatméretek esetében is jól működik, de a dataframes feldolgozási ideje `pandas` lelassul, ha a fájlméretek körülbelül 1 GB-ot érnek el. Ez a lassulás azért van, mert a tárolóban tárolt adatai mérete nem egyezik meg a dataframe lévő adatmérettel. Például a CSV-fájlokban lévő adat akár 10 alkalommal is kiterjeszthető egy dataframe, így egy 1 GB-os CSV-fájl 10 GB-nyi lehet dataframe.
 
-`Pandas` egyszálas, ami azt jelenti, hogy a műveleteket egyetlen PROCESSZORon, egyszerre hajtják végre. Egyszerűen integrálással a számítási feladatokat több virtuális processzorra egyetlen Azure Machine Learning számítási példányon olyan csomagokkal, mint például [Modin](https://modin.readthedocs.io/en/latest/) az `Pandas` elosztott háttérrendszer használatával burkolt Modin.
+`Pandas` egyszálas, ami azt jelenti, hogy a műveleteket egyetlen PROCESSZORon, egyszerre hajtják végre. Egyszerűen integrálással a számítási feladatokat több virtuális processzorra egyetlen Azure Machine Learning számítási példányon olyan csomagokkal, mint például [](https://modin.readthedocs.io/en/latest/) az `Pandas` elosztott háttérrendszer használatával burkolt Modin.
 
 Ahhoz, hogy integrálással a feladatait `Modin` és [Dask](https://dask.org), egyszerűen módosítsa a kód ezen sorát a következőre: `import pandas as pd` `import modin.pandas as pd` .
 
@@ -86,8 +86,6 @@ Ha már ismeri a `Pandas`| `Modin` vagy `Dask` dataframe
 Ha szeretné `Spark` | `PySpark`
 1 GB-nál kisebb adatmennyiség esetén | `Pandas` helyi **vagy** távoli Azure Machine learning számítási példány
 10 GB-nál nagyobb adatmennyiség esetén| Áthelyezés fürtre a `Ray` , `Dask` , vagy rendszer használatával `Spark`
-
-Létrehozhat `Dask` fürtöket az Azure ml számítási fürtön a [dask-cloudprovider](https://cloudprovider.dask.org/en/latest/#azure) csomaggal. Vagy helyileg is futtatható `Dask` számítási példányon.
 
 ## <a name="next-steps"></a>Következő lépések
 

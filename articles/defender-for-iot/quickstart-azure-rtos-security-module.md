@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: az Azure RTOS biztonsági moduljának konfigurálása és engedélyezése'
-description: Ebből a rövid útmutatóból megtudhatja, hogyan telepítheti és engedélyezheti az Azure RTOS szolgáltatás biztonsági modulját az Azure-IoT Hub.
+title: 'Rövid útmutató: a Defender-IoT-Micro-Agent konfigurálása és engedélyezése az Azure RTOS'
+description: Ismerje meg, hogyan hozhatja be és engedélyezheti a Defender-IoT-Micro-Agent Azure RTOS szolgáltatást az Azure-IoT Hub.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: 19a439ec48d4a8705ffb46db7ca037b51449083d
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 3c1af1128b99cbd3263ddffc834eb27ab9dec564
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102447299"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489845"
 ---
-# <a name="quickstart-security-module-for-azure-rtos"></a>Gyors útmutató: biztonsági modul az Azure RTOS 
+# <a name="quickstart-defender-iot-micro-agent-for-azure-rtos-preview"></a>Gyors útmutató: Defender-IoT-Micro-Agent Azure RTOS (előzetes verzió)
 
-Ez a cikk az első lépések előtt ismerteti az előfeltételeket, és bemutatja, hogyan engedélyezheti az Azure RTOS Service biztonsági modulját egy IoT Hub. Ha jelenleg nem rendelkezik IoT Hubval, a kezdéshez tekintse meg [a IoT hub létrehozása a Azure Portal használatával](../iot-hub/iot-hub-create-through-portal.md) című témakört.
+Ez a cikk az első lépések előtt ismerteti az előfeltételeket, és bemutatja, hogyan engedélyezheti a Defender-IoT-Micro-Agent for Azure RTOS szolgáltatást egy IoT Hub. Ha jelenleg nem rendelkezik IoT Hubval, a kezdéshez tekintse meg [a IoT hub létrehozása a Azure Portal használatával](../iot-hub/iot-hub-create-through-portal.md) című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
@@ -32,7 +32,7 @@ Ez a cikk az első lépések előtt ismerteti az előfeltételeket, és bemutatj
 - NXP i.MX RT1060 EVK
 - Microchip SAM E54 Xplained Pro EVK
 
-Az [Azure RTOS GitHub-erőforrás biztonsági moduljának](https://github.com/azure-rtos/azure-iot-preview/releases)használatával letöltheti, lefordíthatja és futtathatja az adott tábla és eszköz (IAR, fél ide vagy számítógép) egyik. zip fájlját.
+Az [Azure RTOS GitHub-erőforráshoz tartozó Defender-IoT-Micro-Agent](https://github.com/azure-rtos/azure-iot-preview/releases)használatával letöltheti, lefordíthatja és futtathatja az adott tábla és eszköz (IAR, fél ide vagy számítógép) egyik. zip fájlját.
 
 ### <a name="azure-resources"></a>Azure-erőforrások
 
@@ -52,11 +52,11 @@ A kezdéshez IoT Hub-kapcsolatok szükségesek.
 
 A kapcsolatok hitelesítő adatai a felhasználói alkalmazás konfigurációjának **HOST_NAME**, **DEVICE_ID** és **DEVICE_SYMMETRIC_KEY**.
 
-Az Azure RTOS biztonsági modulja az Azure IoT middleware-kapcsolatokat használja a **MQTT** protokoll alapján.
+Az Azure RTOS készült Defender-IoT-Micro-Agent Azure IoT middleware-kapcsolatokat használ a **MQTT** protokoll alapján.
 
 ## <a name="next-steps"></a>Következő lépések
 
 Folytassa a következő cikkel a megoldás konfigurálásának és testreszabásának befejezéséhez.
 
 > [!div class="nextstepaction"]
-> [Az Azure RTOS biztonsági moduljának konfigurálása](how-to-azure-rtos-security-module.md)
+> [Defender-IoT-Micro-Agent konfigurálása és testreszabása az Azure RTOS (előzetes verzió)](how-to-azure-rtos-security-module.md)

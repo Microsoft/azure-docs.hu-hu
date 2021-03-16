@@ -4,16 +4,16 @@ description: Egyéni hozzáférési házirendek létrehozása és alkalmazása a
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 12/28/2020
+ms.date: 03/11/2021
 ms.author: v-erkel
-ms.openlocfilehash: 795b194eb7cd31e633128c22ddffe808b32e07da
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: eb9e71cc8ec463077e3b12b8738203a4945a2eab
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802412"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471775"
 ---
-# <a name="use-client-access-policies"></a>Ügyfél-hozzáférési házirendek használata
+# <a name="control-client-access"></a>Ügyfél-hozzáférés vezérlése
 
 Ez a cikk bemutatja, hogyan hozhat létre és alkalmazhat egyéni ügyfél-hozzáférési házirendeket a tárolási célokhoz.
 
@@ -23,7 +23,7 @@ A hozzáférési házirendek a névtér elérési útjára lesznek alkalmazva, a
 
 Ez a szolgáltatás olyan munkafolyamatokhoz használható, ahol meg kell határozni, hogy az ügyfelek különböző csoportjai hogyan férhessenek hozzá a tárolási célokhoz.
 
-Ha nincs szüksége a tárolási cél elérésének részletes szabályozására, használhatja az alapértelmezett házirendet, vagy az alapértelmezett szabályzatot további szabályokkal is testreszabhatja.
+Ha nincs szüksége a tárolási cél elérésének részletes szabályozására, használhatja az alapértelmezett házirendet, vagy az alapértelmezett szabályzatot további szabályokkal is testreszabhatja. Ha például engedélyezni szeretné a root squash-t a gyorsítótáron keresztül csatlakozó összes ügyfél számára, akkor az **alapértelmezett** nevű szabályzatot a legfelső szintű squash-beállítás hozzáadásához is módosíthatja.
 
 ## <a name="create-a-client-access-policy"></a>Ügyfél-hozzáférési házirend létrehozása
 
@@ -81,15 +81,21 @@ Jelölje be ezt a jelölőnégyzetet, ha engedélyezni szeretné, hogy a megadot
 
 Adja meg, hogy a legfelső szintű squash legyen-e beállítva a szabálynak megfelelő ügyfelek számára.
 
-Ezzel az értékkel engedélyezheti a root squash használatát a tároló exportálási szintjén. [A legfelső szintű squash is beállítható a gyorsítótár szintjén](configuration.md#configure-root-squash).
+Ezzel a beállítással szabályozható, hogy az Azure HPC cache hogyan kezelje az ügyfélszámítógépeken a legfelső szintű felhasználótól érkező kéréseket. Ha a root squash engedélyezve van, a rendszer automatikusan egy nem Kiemelt felhasználóhoz rendeli hozzá a root felhasználókat, amikor az Azure HPC cache-n keresztül küldenek kéréseket. Azt is megakadályozza, hogy az ügyfelek kérései a set-UID engedélyezési biteket használják.
 
-Ha bekapcsolja a bekapcsolást, a névtelen azonosító felhasználói értékét is be kell állítania a következő lehetőségek egyikére:
+Ha a root squash le van tiltva, a rendszer az ügyfél gyökérszintű felhasználójának (UID 0) kérelmét átadja egy háttérként szolgáló NFS Storage rendszernek. Ez a konfiguráció a nem megfelelő fájlok elérését is lehetővé teheti.
 
-* **-2** (senki)
-* **65534** (senki)
-* **-1** (nincs hozzáférés)
-* **65535** (nincs hozzáférés)
+A root squash beállítása az ügyfelek kéréseinek megoldásával kompenzálhatja a szükséges ``no_root_squash`` beállítást a tárolási célként használt NAS-rendszereken. (További információ az [NFS-tárolási cél előfeltételeiről](hpc-cache-prerequisites.md#nfs-storage-requirements).) Emellett az Azure Blob Storage-célokkal való használatkor is javíthatja a biztonságot.
+
+Ha bekapcsolja a bekapcsolást, akkor a névtelen azonosító felhasználói értékét is be kell állítania. A portál 0 és 4294967295 közötti egész értékeket fogad el. (A régi értékek-2 és-1 a visszamenőleges kompatibilitás érdekében támogatottak, de új konfigurációk esetén nem ajánlott.)
+
+Ezek az értékek meghatározott felhasználói értékekre vannak leképezve:
+
+* **-2** vagy **65534** (senki)
+* **-1** vagy **65535** (nincs hozzáférés)
 * **0** (nem rendszerjogosultságú gyökér)
+
+Előfordulhat, hogy a tárolási rendszere más, speciális jelentésekkel rendelkező értékekkel rendelkezik.
 
 ## <a name="update-access-policies"></a>Hozzáférési szabályzatok frissítése
 
@@ -102,6 +108,6 @@ Ha törölni szeretne egy házirendet, jelölje be a neve melletti jelölőnégy
 > [!NOTE]
 > Nem törölhet olyan hozzáférési szabályzatot, amely használatban van. Távolítsa el a szabályzatot minden olyan névtérbeli elérési útról, amely tartalmazza azt a törlés megkísérlése előtt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A tárolási célok névterének elérési útjain alkalmazza a hozzáférési házirendeket. Olvassa el [az összesített névtér beállítása](add-namespace-paths.md) című témakört.

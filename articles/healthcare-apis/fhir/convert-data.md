@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 01/19/2021
 ms.author: ranku
-ms.openlocfilehash: 7518f5e2984029c087eec1e6697f3237410bda4b
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 2a34cfee57ecc1870c420c4c0f3c9261aa02f192
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103019233"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490925"
 ---
 # <a name="how-to-convert-data-to-fhir-preview"></a>Az adatátalakítás FHIR (előzetes verzió)
 
@@ -125,6 +125,12 @@ Adja meg a AcrPull-szerepkört az Azure API-hoz a FHIR Service-példányhoz.
 
 ### <a name="register-the-acr-servers-in-azure-api-for-fhir"></a>Az ACR-kiszolgálók regisztrálása az Azure API-ban FHIR
 
+Az ACR-kiszolgálót a Azure Portal vagy a parancssori felület használatával regisztrálhatja.
+
+#### <a name="registering-the-acr-server-using-azure-portal"></a>Az ACR-kiszolgáló regisztrálása a Azure Portal használatával
+Navigáljon a FHIR-példányhoz tartozó Azure API _Adatátalakítási_ _területén található összetevők_ panelre. Ekkor megjelenik a jelenleg regisztrált ACR-kiszolgálók listája. Kattintson a _Hozzáadás_ gombra, és válassza ki a beállításjegyzék-kiszolgálót a legördülő listából. A regisztráció érvénybe léptetéséhez a _Mentés_ gombra kell kattintania. A módosítás alkalmazása és a példány újraindítása néhány percet is igénybe vehet.
+
+#### <a name="registering-the-acr-server-using-cli"></a>Az ACR-kiszolgáló regisztrálása a parancssori felület használatával
 A FHIR Azure API-ban legfeljebb húsz ACR-kiszolgálót regisztrálhat.
 
 Szükség esetén telepítse a healthcareapis CLI-t Azure PowerShellról:
@@ -135,13 +141,13 @@ az extension add -n healthcareapis
 
 Regisztrálja az ACR-kiszolgálókat az Azure API-hoz a FHIR az alábbi példákat követve:
 
-#### <a name="register-a-single-acr-server"></a>Egyetlen ACR-kiszolgáló regisztrálása
+##### <a name="register-a-single-acr-server"></a>Egyetlen ACR-kiszolgáló regisztrálása
 
 ```powershell
 az healthcareapis acr add --login-servers "fhiracr2021.azurecr.io" --resource-group fhir-test --resource-name fhirtest2021
 ```
 
-#### <a name="register-multiple-acr-servers"></a>Több ACR-kiszolgáló regisztrálása
+##### <a name="register-multiple-acr-servers"></a>Több ACR-kiszolgáló regisztrálása
 
 ```powershell
 az healthcareapis acr add --login-servers "fhiracr2021.azurecr.io fhiracr2020.azurecr.io" --resource-group fhir-test --resource-name fhirtest2021
@@ -152,8 +158,3 @@ az healthcareapis acr add --login-servers "fhiracr2021.azurecr.io fhiracr2020.az
 Hívja meg a $convert-adatapi-t, amely megadja a sablon hivatkozását a templateCollectionReference paraméterben.
 
 `<RegistryServer>/<imageName>@<imageDigest>`
-
-## <a name="known-issues-and-workarounds"></a>Ismert problémák és megkerülő megoldások
-
-- Néhány alapértelmezett sablonfájl UTF-8 ANYAGJEGYZÉKet tartalmaz. Ennek eredményeképpen a generált azonosító értékek AJ-karaktert fognak tartalmazni. Ez problémát okozhat a FHIR-kiszolgálóval. A megkerülő megoldás az, hogy a Microsoft sablonjait a VS Code bővítmény használatával húzza le, és a _ID/_eljárás. Liquid_, _ID/_Proving. liquid_, and _ID/_immunizálás. Liquid_ fájl eltávolítása után LEküldi azokat a saját ACR-hez.
-

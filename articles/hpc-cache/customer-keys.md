@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: v-erkel
-ms.openlocfilehash: 90af33a01450002c7d36a4ab4cf4a3da647068c5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e8f1b3fffefcdf1d2ec8bd3e9b1aaea93697ca8a
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444568"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471972"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Ügyfél által felügyelt titkosítási kulcsok használata az Azure HPC cache-hez
 
@@ -22,7 +22,7 @@ A Azure Key Vault használatával szabályozhatja az Azure HPC cache-ben tárolt
 
 Az Azure HPC cache-t a [virtuális gépek gazdagépének titkosítása](../virtual-machines/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data) is védi a gyorsítótárazott adatait tároló felügyelt lemezeken, még akkor is, ha felvesznek egy ügyfél-kulcsot a gyorsítótár-lemezekhez. Az ügyfél által felügyelt kulcs dupla titkosításhoz való hozzáadásával további biztonsági szint biztosítható a magas biztonsági igényeket kielégítő ügyfelek számára. A részletekért olvassa el az [Azure Disk Storage kiszolgálóoldali titkosítását ismertető oldalt](../virtual-machines/disk-encryption.md) .
 
-Ez a funkció csak néhány olyan Azure-régióban érhető el, ahol elérhető az Azure HPC cache. A részletekért tekintse meg a [régió elérhetőségét](hpc-cache-overview.md#region-availability) ismertető listát.
+<!-- This feature is available only in some of the Azure regions where Azure HPC Cache is available. Refer to the [Region availability](hpc-cache-overview.md#region-availability) list for details. -->
 
 Három lépésben engedélyezheti az ügyfél által felügyelt kulcsos titkosítást az Azure HPC cache-ben:
 
@@ -146,7 +146,7 @@ Ezek a cikkek részletesen ismertetik a Azure Key Vault és az ügyfél által f
 * [Az Azure Storage-titkosítás áttekintése](../storage/common/storage-service-encryption.md)
 * [Lemezek titkosítása az ügyfél által felügyelt kulcsokkal](../virtual-machines/disk-encryption.md#customer-managed-keys) – dokumentáció a Azure Key Vault felügyelt lemezekkel való használatához, amely hasonló forgatókönyv az Azure HPC cache-hez
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután létrehozta az Azure HPC-gyorsítótárat és a jogosult Key Vault-alapú titkosítást, folytassa a gyorsítótár beállítását úgy, hogy hozzáférést biztosít az adatforrásokhoz.
 

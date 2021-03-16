@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 8d518d540e50d96486fa98eea3c3267685776668
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c2c2b57ebf4e2a5cd96efce49da87cf42929e96c
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101706282"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472050"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Természetes nyelvi támogatás az Azure Cognitive Services
 
@@ -48,16 +48,6 @@ Ezek a Cognitive Services nyelvtől függetlenek, és nem rendelkeznek az emberi
 * [Beszédfelismerési szolgáltatás: beszéd – szöveg](./speech-service/language-support.md#speech-to-text)
 * [Beszédfelismerési szolgáltatás: szövegről beszédre](./speech-service/language-support.md#text-to-speech)
 * [Beszédfelismerési szolgáltatás: beszéd fordítása](./speech-service/language-support.md#speech-translation)
-
-## <a name="search"></a>Keresés
-
-* [Bing – Egyéni keresés](./bing-custom-search/language-support.md)
-* [Bing – Képkeresés](./bing-image-search/language-support.md)
-* [Bing – Hírkeresés](./bing-news-search/language-support.md)
-* [Bing Autosuggest](./bing-autosuggest/language-support.md)
-* [Bing – Helyesírás-ellenőrzés](./bing-spell-check/language-support.md)
-* [Bing vizuális keresés](./bing-visual-search/language-support.md)
-* [Bing Web Search](./bing-web-search/language-support.md)
 
 ## <a name="decision"></a>Döntés
 

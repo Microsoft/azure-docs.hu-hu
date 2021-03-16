@@ -28,6 +28,12 @@
               href: hbv2-series-overview.md
             - name: Teljesítmény
               href: hbv2-performance.md
+        - name: HBv3 sorozat
+          items:
+            - name: Áttekintés
+              href: hbv3-series-overview.md
+            - name: Teljesítmény
+              href: hbv3-performance.md
         - name: HC-sorozat
           items:
             - name: Áttekintés

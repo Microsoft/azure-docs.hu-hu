@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fea9662b6f5890c6240e91b26cf641d6166d560a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d1e8a0f1919da125a571429e1efff06589c7e85a
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102051191"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466711"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Alkalmazás-regisztrációs engedélyek delegálása Azure Active Directory
 
@@ -30,7 +30,7 @@ Ez a cikk azt ismerteti, hogyan használhatók a Azure Active Directory (Azure A
 - [Egy beépített rendszergazdai szerepkör kiosztása](#assign-built-in-application-admin-roles) , amely hozzáférést biztosít az Azure ad-ben az összes alkalmazás konfigurációjának kezeléséhez. Ez az ajánlott módszer arra, hogy az informatikai szakértők hozzáférjenek a széles körű alkalmazás-konfigurációs engedélyek kezeléséhez anélkül, hogy hozzáférést kellene biztosítani az Azure AD más részeihez, amelyek nem kapcsolódnak az alkalmazás konfigurációjához.
 - [Egyéni szerepkör létrehozása](#create-and-assign-a-custom-role-preview) , amely a nagyon konkrét engedélyeket definiálja, és hozzárendeli azt valakihöz, vagy egyetlen alkalmazás hatóköréhez korlátozott tulajdonosként, vagy a címtár hatókörében (az összes alkalmazás) korlátozott rendszergazdaként.
 
-Fontos figyelembe venni a hozzáférést a fenti módszerek egyikének két okból való megadásával. Először is a felügyeleti feladatok elvégzésére való jogosultságok delegálása csökkenti a globális rendszergazda terhelését. Másodszor, a korlátozott engedélyek használata javítja a biztonsági helyzeteket, és csökkenti a jogosulatlan hozzáférés lehetséges lehetőségét. A delegálással kapcsolatos problémákat és az általános irányelveket a [Azure Active Directory felügyeletének delegálása](concept-delegation.md)című szakaszban tárgyaljuk.
+Fontos figyelembe venni a hozzáférést a fenti módszerek egyikének két okból való megadásával. Először is a felügyeleti feladatok elvégzésére való jogosultságok delegálása csökkenti a globális rendszergazda terhelését. Másodszor, a korlátozott engedélyek használata javítja a biztonsági helyzeteket, és csökkenti a jogosulatlan hozzáférés lehetséges lehetőségét. A szerepkör-biztonsági tervezéssel kapcsolatos útmutatásért lásd: az [Azure ad-ben az emelt szintű hozzáférés biztonságossá tétele a hibrid és a Felhőbeli](security-planning.md)környezetekben.
 
 ## <a name="restrict-who-can-create-applications"></a>Alkalmazások létrehozására jogosult felhasználók korlátozása
 

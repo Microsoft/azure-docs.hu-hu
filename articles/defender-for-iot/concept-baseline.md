@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2019
 ms.author: mlottner
-ms.openlocfilehash: 04fe87cd69efc4c064b8fbdc596a5f9e187abbb1
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: bced45474a3a851bc5785f662c0b2e50ae3a380c
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102240"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491078"
 ---
 # <a name="azure-defender-for-iot-baseline-and-custom-checks"></a>Azure Defender a IoT alapkonfigurációhoz és egyéni ellenőrzésekhez
 
@@ -42,7 +42,7 @@ Az alapkonfiguráció egyéni ellenőrzése az eszközhöz tartozó **Identity T
 
 1. Töltse fel az alapkonfiguráció **Egyéni ellenőrzési** fájlját az eszközre.
 
-1. Adja hozzá az alapkonfiguráció tulajdonságait a biztonsági modulhoz, és kattintson a **Mentés** gombra.
+1. Adja hozzá az alapkonfiguráció tulajdonságait a Defender-IoT-Micro-agenthez, majd kattintson a **Mentés** gombra.
 
 ### <a name="baseline-custom-check-file-example"></a>Példa alapterv egyéni ellenőrzési fájlra
 
@@ -66,7 +66,7 @@ Az alapkonfiguráció egyéni ellenőrzésének konfigurálása:
 
 ## <a name="baseline-custom-check-properties"></a>Alapterv egyéni ellenőrzési tulajdonságai
 
-| Name| Állapot | Érvényes értékek| Alapértelmezett értékek| Description |
+| Name| Állapot | Érvényes értékek| Alapértelmezett értékek| Leírás |
 |------|-----|------|-----|-----|
 |baselineCustomChecksEnabled|Kötelező: igaz |Érvényes értékek: **Boolean** |Alapértelmezett érték: **false** |A magas prioritású üzenetek küldése előtti maximális időtartam.|
 |baselineCustomChecksFilePath |Kötelező: igaz|Érvényes értékek: **karakterlánc**, **Null** |Alapértelmezett érték: **Null** |Az eredeti XML-konfiguráció teljes elérési útja|

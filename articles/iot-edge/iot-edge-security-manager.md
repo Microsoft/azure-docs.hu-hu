@@ -9,14 +9,16 @@ ms.author: eustacea
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: d50ff37c3d29ae8e9e25d8759ef3c55787a58047
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 468f1b91d6c6157cd2af6de9599bad7f43c1ad8f
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043000"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492557"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge Security Manager
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 A Azure IoT Edge Security Manager egy jól körülhatárolt biztonsági mag, amely az IoT Edge eszköz és annak összes összetevőjének védelmét biztosítja a biztonságos szilícium-hardver eltulajdonítása révén. A Security Manager a biztonság megerősítésének középpontja, és technológiai integrációs pontot biztosít az eredeti berendezésgyártó (OEM) számára.
 

@@ -8,22 +8,22 @@ ms.author: shhazam
 ms.date: 1/21/2021
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: 2779a73d3a5f77e3a3b144309baf6d2788565443
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: a33e7ff230292d4ceb14610e3cf00935dc1a67a0
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809874"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493169"
 ---
 # <a name="feature-support-and-retirement"></a>Szolgáltatások támogatása és kivonulás
 
 Ez a cikk az Azure Defender IoT funkcióit és támogatását ismerteti a Defender for IoT különböző képességeihez.
 
-## <a name="defender-for-iot-c-c-and-edge-security-module-deprecation"></a>Defender a IoT C, C# és Edge biztonsági moduljának elavulása esetén
+## <a name="defender-for-iot-c-c-and-edge-defender-iot-micro-agent-deprecation"></a>Defender a IoT C, C# és Edge Defender számára – IoT-Micro-Agent elavulás
 
-Az új Micro Agent az aktuális C, C# és Edge biztonsági modult fogja cserélni.  
+Az új Micro Agent az aktuális C, C# és Edge Defender-IoT-Micro-Agent helyére kerül.  
 
-Az új Micro Agent az ismereteken alapul, és a kilépő biztonsági modul fejlesztését, az ügyfeleket és a partnerek visszajelzéseit négy fontos fejlesztéssel gyűjtötte: 
+Az új Micro Agent a tudásbázison alapul, és a kilépési Defender-IoT-Micro-Agent fejlesztés, az ügyfelek és a partnerek visszajelzéseit négy fontos fejlesztéssel gyűjti: 
 
 - **Mélységi biztonsági érték**: az új ügynök a gazdagép szintjén fog futni, ami nagyobb láthatóságot biztosít az eszköz mögöttes műveletei számára, és lehetővé teszi a jobb biztonsági lefedettséget.
 

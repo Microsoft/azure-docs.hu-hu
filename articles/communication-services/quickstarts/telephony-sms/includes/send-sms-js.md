@@ -1,21 +1,21 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: azure-communication-services
 author: dademath
 manager: nimag
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 07/28/2020
+ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: ad8266d936c272ee2f6bad254738622c3f81bf03
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: fc20396053dee32ac7976139a634b4592389ab5f
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91757141"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488315"
 ---
 Ismerkedés az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások JavaScript SMS ügyféloldali kódtár használatával SMS-üzenetek küldéséhez.
 
@@ -79,7 +79,7 @@ A következő osztályok és felületek kezelik az Azure kommunikációs szolgá
 
 Importálja a **SmsClient** az ügyfél-függvénytárból, és hozza létre azt a kapcsolatok karakterláncával. Az alábbi kód egy nevű környezeti változóból kérdezi le az erőforráshoz tartozó kapcsolatok karakterláncát `COMMUNICATION_SERVICES_CONNECTION_STRING` . Ismerje meg, hogyan [kezelheti az erőforrás kapcsolódási karakterláncát](../../create-communication-resource.md#store-your-connection-string).
 
-Adja hozzá a következő kódot a **send-sms.jshoz **:
+Adja hozzá a következő kódot a **send-sms.jshoz**:
 
 ```javascript
 const { SmsClient } = require('@azure/communication-sms');
@@ -94,7 +94,7 @@ const smsClient = new SmsClient(connectionString);
 
 ## <a name="send-an-sms-message"></a>SMS küldése
 
-SMS-üzenet küldése a metódus meghívásával `send` . Adja hozzá ezt a kódot a **send-sms.js**végéhez:
+SMS-üzenet küldése a metódus meghívásával `send` . Adja hozzá ezt a kódot a **send-sms.js** végéhez:
 
 ```javascript
 async function main() {

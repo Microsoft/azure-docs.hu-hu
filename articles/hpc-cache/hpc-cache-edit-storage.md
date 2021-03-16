@@ -4,14 +4,14 @@ description: Az Azure HPC cache tárolási céljainak szerkesztése
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 03/10/2021
 ms.author: v-erkel
-ms.openlocfilehash: f97ff1c20b7edbf24e5a2c58e22097f88883ae4f
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 78010ef2d93b23a12fc7f3e988a536b4993b4dd4
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204031"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471871"
 ---
 # <a name="edit-storage-targets"></a>Céltárolók szerkesztése
 
@@ -19,13 +19,16 @@ A tárolási célokat a Azure Portal vagy az Azure CLI használatával távolít
 
 A tároló típusától függően módosíthatja a tárolási célértékek értékét:
 
-* A blob Storage-célok esetében módosíthatja a névtér elérési útját.
+* A blob Storage-célok esetében módosíthatja a névtér elérési útját és a hozzáférési házirendet.
 
 * Az NFS-tárolási célok esetében a következő értékeket módosíthatja:
 
   * Névtér elérési útjai
+  * Hozzáférési szabályzat
   * A névtér elérési útjához társított tároló exportálása vagy exportálása
   * Használati modell
+
+* A ADLS-NFS tárolási célok esetében módosíthatja a névtér elérési útját, a hozzáférési házirendet és a használati modellt.
 
 Nem szerkesztheti a tárolási cél nevét, típusát vagy háttérbeli tárolási rendszerét (blob-tároló vagy NFS-állomásnév/IP-cím). Ha módosítania kell ezeket a tulajdonságokat, törölje a tárolási célt, és hozzon létre egy cserét az új értékkel.
 
@@ -94,10 +97,13 @@ Ha módosítani szeretné a blob Storage-tároló névterét az Azure CLI-vel, h
 
 Az NFS-tárolási célok esetében megváltoztathatja vagy hozzáadhatja a virtuális névtér elérési útját, módosíthatja az NFS-exportálás vagy alkönyvtár értékeit, amelyeket a névtér elérési útja mutat, és megváltoztatja a használati modellt.
 
+Az egyes egyéni DNS-beállításokkal rendelkező gyorsítótárban tárolt tárolási célokhoz az IP-címek frissítésére szolgáló vezérlő is tartozik. (Az ilyen típusú konfiguráció ritka.)
+
 A részletek a következők:
 
-* [Összesített névtér értékeinek módosítása](#change-aggregated-namespace-values) (virtuális névtér elérési útja, exportálás és exportálás alkönyvtára)
+* [Összesített névtér értékeinek](#change-aggregated-namespace-values) (virtuális névtér elérési útja, hozzáférési házirend, exportálás és exportálás alkönyvtár) módosítása
 * [A használati modell módosítása](#change-the-usage-model)
+* [DNS frissítése](#update-ip-address-custom-dns-configurations-only)
 
 ### <a name="change-aggregated-namespace-values"></a>Összesített névtér értékeinek módosítása
 
@@ -112,7 +118,7 @@ A névtér értékeinek frissítéséhez használja az Azure HPC-gyorsítótár 
 ![képernyőkép a portál névtér oldaláról az NFS-frissítési oldal megnyitásával a jobb oldalon](media/update-namespace-nfs.png)
 
 1. Kattintson a módosítani kívánt elérési út nevére.
-1. A szerkesztési ablak használatával új virtuális elérési utat, exportálást vagy alkönyvtárbeli értékeket írhat be.
+1. A szerkesztési ablak használatával beírhatja az új virtuális elérési utat, az exportálást vagy az alkönyvtár értékeit, vagy kijelölhet egy másik hozzáférési házirendet.
 1. A módosítások elvégzése után kattintson **az OK** gombra a tárolási cél frissítéséhez vagy a **Mégse** gombra a módosítások elvetéséhez.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -174,6 +180,37 @@ Ha ellenőrizni szeretné a használati modellek nevét, használja az parancsot
 Ha a gyorsítótár leáll, vagy nem kifogástalan állapotban van, a frissítés a gyorsítótár Kifogástalan állapotba helyezése után fog vonatkozni.
 
 ---
+
+### <a name="update-ip-address-custom-dns-configurations-only"></a>IP-cím frissítése (csak egyéni DNS-konfigurációk esetén)
+
+Ha a gyorsítótár nem alapértelmezett DNS-konfigurációt használ, lehetséges, hogy az NFS-tárolási cél IP-címe megváltozik a háttérbeli DNS-változások miatt. Ha a DNS-kiszolgáló megváltoztatja a háttérrendszer IP-címét, akkor az Azure HPC cache elveszítheti a hozzáférést a tárolási rendszerhez.
+
+Ideális esetben a gyorsítótár egyéni DNS-rendszerének kezelőjével együttműködve tervezze meg a frissítéseket, mert ezek a módosítások nem teszik elérhetővé a tárterületet.
+
+Ha frissítenie kell egy tárolási cél DNS-beli IP-címét, akkor a tárolási célok listában megjelenik egy gomb. A **DNS frissítése** lehetőségre kattintva lekérdezheti az egyéni DNS-kiszolgálót az új IP-címekre.
+
+![Képernyőfelvétel a tárolási célhelyek listájáról. Egy tárolási cél esetén a "..." a jobb szélső oszlopban lévő menü megnyílik, és két lehetőség jelenik meg: delete és refresh DNS.](media/refresh-dns.png)
+
+Ha a művelet sikeres, a frissítés kevesebb, mint két percet vesz igénybe. Egyszerre csak egy tárolási cél frissítése végezhető el. Várjon, amíg az előző művelet befejeződik, mielőtt próbálkozik egy másikkal.
+
+## <a name="update-an-adls-nfs-storage-target-preview"></a>ADLS-NFS tárolási cél frissítése (előzetes verzió)
+
+Az NFS-célokhoz hasonlóan a névtér elérési útja és a ADLS-NFS tárolási célok használati modellje is módosítható.
+
+### <a name="change-an-adls-nfs-namespace-path"></a>ADLS-NFS-névtér elérési útjának módosítása
+
+A névtér értékeinek frissítéséhez használja az Azure HPC-gyorsítótár **névter** lapját. A lap részletes ismertetését az [összesített névtér beállítása](add-namespace-paths.md)című cikkben találja.
+
+![képernyőkép a portál névtér oldaláról a jobb oldalon található ADS-NFS-frissítési oldal megnyitásával](media/update-namespace-adls.png)
+
+1. Kattintson a módosítani kívánt elérési út nevére.
+1. A szerkesztési ablak használatával beírhatja az új virtuális elérési utat, vagy frissítheti a hozzáférési házirendet.
+1. A módosítások elvégzése után kattintson **az OK** gombra a tárolási cél frissítéséhez vagy a **Mégse** gombra a módosítások elvetéséhez.
+
+### <a name="change-adls-nfs-usage-models"></a>ADLS módosítása – NFS-használati modellek
+
+A ADLS-NFS-használati modellek konfigurációja megegyezik az NFS használati modell kiválasztásával. Olvassa el a portálon megjelenő utasításokat a [használati modell módosítása](#change-the-usage-model) a fenti NFS-címen című részben. A ADLS-NFS tárolási célok frissítésének további eszközei fejlesztés alatt állnak.
+
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure RTOS biztonsági moduljának API-ja
-description: Az Azure RTOS biztonsági moduljának hivatkozási API-ját.
+title: Defender-IoT-Micro-Agent az Azure RTOS API-hoz
+description: Az Azure RTOS készült Defender-IoT-Micro-Agent hivatkozási API-ját.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/07/2020
 ms.author: mlottner
-ms.openlocfilehash: cec28f9290808836ec2dfd334b23fe8c76df03fc
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 9a285636ba10f7ca0668f597d0e9016cff73494a
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120062"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494291"
 ---
-# <a name="security-module-for-azure-rtos-api"></a>Az Azure RTOS biztonsági moduljának API-ja 
+# <a name="defender-iot-micro-agent-for-azure-rtos-api-preview"></a>Defender-IoT-Micro-Agent Azure RTOS API-hoz (előzetes verzió)
 
-Ez az API kizárólag az Azure RTOS biztonsági moduljának használatára szolgál. További forrásokért tekintse meg az [Azure RTOS GitHub-erőforrás biztonsági modulját](https://github.com/azure-rtos/azure-iot-preview/releases). 
+Ez az API kizárólag az Azure RTOS készült Defender-IoT-Micro-Agent használatával használható. További forrásokért tekintse meg a [Defender-IoT-Micro-Agent for Azure RTOS GitHub-erőforrást](https://github.com/azure-rtos/azure-iot-preview/releases). 
 
-## <a name="enable-security-module-for-azure-rtos"></a>Az Azure RTOS biztonsági moduljának engedélyezése
+## <a name="enable-defender-iot-micro-agent-for-azure-rtos"></a>A Defender-IoT-Micro-Agent engedélyezése az Azure RTOS
 
 **nx_azure_iot_security_module_enable**
 
@@ -36,7 +36,7 @@ UINT nx_azure_iot_security_module_enable(NX_AZURE_IOT *nx_azure_iot_ptr);
 
 ### <a name="description"></a>Leírás
 
-Ez a rutin engedélyezi az Azure IoT biztonsági moduljának alrendszerét. A belső állapotú gép felügyeli a biztonsági események gyűjteményét, és elküldi őket az Azure IoT Hubba. Az adatgyűjtés kezeléséhez csak egy NX_AZURE_IOT_SECURITY_MODULE példány szükséges és szükséges.
+Ez a rutin lehetővé teszi az Azure IoT Defender-IoT-Micro-Agent alrendszer használatát. A belső állapotú gép felügyeli a biztonsági események gyűjteményét, és elküldi őket az Azure IoT Hubba. Az adatgyűjtés kezeléséhez csak egy NX_AZURE_IOT_SECURITY_MODULE példány szükséges és szükséges.
 
 ### <a name="parameters"></a>Paraméterek
 
@@ -56,7 +56,7 @@ Ez a rutin engedélyezi az Azure IoT biztonsági moduljának alrendszerét. A be
 
 Szálak
 
-## <a name="disable-azure-iot-security-module"></a>Az Azure IoT biztonsági modul letiltása
+## <a name="disable-azure-iot-defender-iot-micro-agent"></a>Az Azure IoT Defender letiltása – IoT-Micro-Agent
 
 **nx_azure_iot_security_module_disable**
 
@@ -69,7 +69,7 @@ UINT nx_azure_iot_security_module_disable(NX_AZURE_IOT *nx_azure_iot_ptr);
 
 ### <a name="description"></a>Leírás
 
-Ez a rutin letiltja az Azure IoT biztonsági moduljának alrendszerét.
+Ez a rutin letiltja az Azure IoT Defender-IoT-Micro-Agent alrendszert.
 
 ### <a name="parameters"></a>Paraméterek
 
@@ -92,6 +92,6 @@ Szálak
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha többet szeretne megtudni az Azure RTOS biztonsági moduljának használatáról, tekintse meg a következő cikkeket:
+Ha többet szeretne megtudni az Azure RTOS Defender-IoT-Micro-Agent használatáról, tekintse meg a következő cikkeket:
 
-- Tekintse át a Defender for IoT RTOS biztonsági moduljának [áttekintését](iot-security-azure-rtos.md).
+- Tekintse át a Defender for IoT RTOS Defender – IoT-Micro-Agent [áttekintése című témakört](iot-security-azure-rtos.md).

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ce5e8cfda4a9f51a90c8f26133a710f4d1c258b6
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: dd87b58c604b0bb2141c29d3b2227e9a81668a75
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448268"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488822"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Bejelentkezés és bejelentkezés beállítása LinkedIn-fiókkal Azure Active Directory B2C használatával
 
@@ -43,8 +43,8 @@ Ha Azure Active Directory B2C (Azure AD B2C) LinkedIn-fiókkal rendelkező felha
 1. Adja meg az **alkalmazás nevét**, a **LinkedIn oldalt**, az **adatvédelmi szabályzat URL-címét** és az **alkalmazás emblémáját**.
 1. Fogadja el a LinkedIn **API használati feltételeit** , és kattintson az **alkalmazás létrehozása** elemre.
 1. Válassza az **Auth (hitelesítés** ) fület. A **hitelesítési kulcsok** területen másolja ki az **ügyfél-azonosító** és az **ügyfél titkos** kulcsának értékeit. Mindkettőre szüksége lesz a LinkedIn identitás-szolgáltatóként való konfigurálásához a bérlőben. Az **ügyfél titkos kulcsa** fontos biztonsági hitelesítő adat.
-1. Jelölje be az **alkalmazáshoz tartozó, a hitelesítő átirányítási URL-címek** melletti ceruza szerkesztése elemet, majd válassza az **átirányítási URL-cím hozzáadása** lehetőséget Adja meg a `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` kifejezést a `your-tenant-name` bérlő nevével. A bérlő nevének megadásakor az összes kisbetűt kell használnia, még akkor is, ha a bérlőt nagybetűvel definiálták Azure AD B2C. Válassza a **Frissítés** lehetőséget.
-2. Alapértelmezés szerint a LinkedIn alkalmazás nem rendelkezik jóváhagyással a bejelentkezéshez kapcsolódó hatókörökhöz. Ha felülvizsgálatot szeretne kérni, válassza a **termékek** lapot, majd válassza a **Bejelentkezés a LinkedIn** használatával lehetőséget. A felülvizsgálat befejezésekor a rendszer hozzáadja a szükséges hatóköröket az alkalmazáshoz.
+1. Jelölje be az **alkalmazáshoz tartozó, a hitelesítő átirányítási URL-címek** melletti ceruza szerkesztése elemet, majd válassza az **átirányítási URL-cím hozzáadása** lehetőséget Írja be a következő szöveget: `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`. Ha [Egyéni tartományt](custom-domain.md)használ, írja be a értéket `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Cserélje le a `your-tenant-name` nevet a bérlő nevére, és az `your-domain-name` Egyéni tartományra. A bérlő nevének megadásakor az összes kisbetűt kell használnia, még akkor is, ha a bérlőt nagybetűvel definiálták Azure AD B2C. Válassza a **Frissítés** lehetőséget.
+1. Alapértelmezés szerint a LinkedIn alkalmazás nem rendelkezik jóváhagyással a bejelentkezéshez kapcsolódó hatókörökhöz. Ha felülvizsgálatot szeretne kérni, válassza a **termékek** lapot, majd válassza a **Bejelentkezés a LinkedIn** használatával lehetőséget. A felülvizsgálat befejezésekor a rendszer hozzáadja a szükséges hatóköröket az alkalmazáshoz.
    > [!NOTE]
    > Az alkalmazáshoz jelenleg engedélyezett hatóköröket az **OAuth 2,0-hatókörök** szakaszban található **hitelesítés** lapon tekintheti meg.
 

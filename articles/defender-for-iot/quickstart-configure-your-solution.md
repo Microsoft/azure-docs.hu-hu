@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: shhazam
-ms.openlocfilehash: afe62e5cf255df28ea395405fc894ec5c15bb18c
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: e6d83dafbe4b7f7013ab32039acaff7d8faa4a91
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449713"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103487751"
 ---
 # <a name="quickstart-configure-your-azure-defender-for-iot-solution"></a>Gyors útmutató: Azure Defender konfigurálása IoT-megoldáshoz
 
@@ -60,7 +60,7 @@ A IoT Defender mostantól figyeli az újonnan hozzáadott erőforráscsoportokat
 
 ## <a name="next-steps"></a>Következő lépések
 
-A következő cikkből megtudhatja, hogyan hozhat létre biztonsági modulokat...
+A következő cikkből megtudhatja, hogyan hozhat létre Defender-IoT-Micro-agentet...
 
 > [!div class="nextstepaction"]
-> [Biztonsági modulok létrehozása](quickstart-create-security-twin.md)
+> [Defender-IoT létrehozása – Micro-Agents](quickstart-create-security-twin.md)

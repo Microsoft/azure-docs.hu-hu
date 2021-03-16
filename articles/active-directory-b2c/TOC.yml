@@ -209,6 +209,9 @@
           href: customize-ui-with-html.md
         - name: JavaScript és oldalelrendezések
           href: javascript-and-page-layout.md
+        - name: Beágyazott bejelentkezés iframe-sel
+          displayName: iframe
+          href: embedded-login.md
         - name: Nyelv testreszabása
           href: language-customization.md
           displayName: localization
@@ -420,11 +423,13 @@
           href: partner-whoiam.md
         - name: Zscaler
           href: partner-zscaler.md
-    - name: A b2clogin.com használata
+    - name: Tartománynév
       items:
         - name: b2clogin.com – áttekintés
           href: b2clogin.md
-        - name: Webes API migrálása a b2clogin.com-ra
+        - name: Egyéni tartomány konfigurálása
+          href: custom-domain.md
+        - name: Webes API-tartományok konfigurálása
           href: multiple-token-endpoints.md
           displayName: 'migrate, b2clogin, owin'
     - name: Automation

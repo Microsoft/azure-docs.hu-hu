@@ -2,19 +2,19 @@
 title: Vész-helyreállítási útmutató az Azure Form felismerőhöz
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan készíthet biztonsági másolatot az űrlap-felismerő erőforrásairól a copy Model API használatával.
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
-ms.date: 05/27/2020
-ms.author: pafarley
-ms.openlocfilehash: 0343402d92498bff56250027086cbf2ceb258f0f
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.date: 03/15/2021
+ms.author: lajanuar
+ms.openlocfilehash: b5eb776a7807f48ae6c1a0e3c5879da1f6823830
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102427164"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466915"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Az űrlap-felismerő modelljeinek biztonsági mentése és helyreállítása
 
@@ -39,9 +39,6 @@ Az egyéni modellek másolásának folyamata a következő lépésekből áll:
 1. Először egy másolási engedélyezési kérelmet kell kiadnia a célként megadott erőforráshoz &mdash; , amely a másolt modellt fogadó erőforrás. A rendszer visszaküldi az újonnan létrehozott cél modell URL-címét, amely megkapja a másolt adattípust.
 1. Ezután elküldi a másolási kérést a forrás erőforrásnak &mdash; , amely a másolandó modellt tartalmazó erőforrást tartalmazza. Egy URL-címet fog visszakapni, amelyet a művelet előrehaladásának nyomon követéséhez tud lekérdezni.
 1. Ha a művelet sikeres, a forrás-erőforrás hitelesítő adataival kérdezheti le a folyamatjelző URL-címet. Az új modell állapotának lekéréséhez az új modell AZONOSÍTÓját is lekérdezheti a cél erőforrásban.
-
-> [!CAUTION]
-> A copy API jelenleg nem támogatja a [komponált egyéni modellekhez](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/Compose)tartozó modell-azonosítókat. A Model levélírás egy előzetes verziójú funkció a v 2.1-ben – előzetes verzió: 2. előzetes verzió. 
 
 ## <a name="generate-copy-authorization-request"></a>Másolási engedélyezési kérelem előállítása
 
@@ -165,4 +162,4 @@ curl -i GET "https://<SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT>/formrecognizer/v
 ## <a name="next-steps"></a>Következő lépések
 
 Ebben az útmutatóban megtanulta, hogyan használhatja a copy API-t az egyéni modellek másodlagos űrlap-felismerő erőforrásra történő biztonsági mentésére. Ezután tekintse meg az API-referenciák dokumentációját, hogy megtudja, mit tehet az űrlap-felismerővel.
-* [REST API dokumentáció](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)
+* [REST API dokumentáció](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)

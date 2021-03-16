@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 2d4286cc8bc08eaf7d0b376a8b7789c8c8db183d
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 81cabe8dea178b2988039640065cb0eabc3287af
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202637"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470899"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Filesszal kapcsolatos gyakori kérdések (GYIK)
 A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az iparági szabványnak megfelelő [SMB protokollon](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) és a [Network File System (NFS) protokollon](https://en.wikipedia.org/wiki/Network_File_System) (előzetes verzió) keresztül érhető el. Az Azure-fájlmegosztás párhuzamosan csatlakoztatható a Felhőbeli vagy a Windows, Linux és macOS rendszerű helyszíni környezetekhez. Az Azure-fájlmegosztás a Windows Server rendszerű gépeken is gyorsítótárazható a Azure File Sync használatával a gyors eléréshez, ahol az adott adatforgalomhoz közeledik.
@@ -308,6 +308,18 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 **Vannak olyan REST API-k, amelyek támogatják a lekérési/beállítási/másolási és a fájlok Windows ACL-jeit?**
 
     Igen, támogatjuk a REST API-kat, amelyek a könyvtárakra vagy fájlokra vonatkozó NTFS ACL-ek beszerzését, beállítását vagy másolását használják az [2019-07-07](/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (vagy újabb) REST API használatakor. A Windows ACL-ek továbbra is támogatottak a REST-alapú eszközökön: [AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases).
+
+* <a id="ad-support-rest-apis"></a>
+**A gyorsítótárazott hitelesítő adatok eltávolítása a Storage-fiók kulcsával, valamint a meglévő SMB-kapcsolatok törlése az Azure AD-vel vagy az AD-beli hitelesítő adatokkal való új kapcsolat inicializálása előtt**
+
+    A következő két lépésből álló folyamattal eltávolíthatja a Storage-fiók kulcsához társított mentett hitelesítő adatokat, és eltávolíthatja az SMB-kapcsolatokat: 
+    1. A hitelesítő adatok eltávolításához futtassa az alábbi parancsmagot a Windows Cmd.exeban. Ha nem találja az egyiket, az azt jelenti, hogy nem tartotta meg a hitelesítő adatokat, és ki tudja hagyni ezt a lépést.
+    
+       cmdkey/DELETE: tartomány: Target = Storage-Account-name.file.core.windows.net
+    
+    2. Törölje a fájlmegosztás meglévő kapcsolódását. A csatlakoztatási útvonalat a csatlakoztatott meghajtóbetűjel vagy a storage-account-name.file.core.windows.net elérési útjaként is megadhatja.
+    
+       net use <meghajtóbetűjel/megosztás – elérési út>/delete
 
 ## <a name="network-file-system"></a>Hálózati fájlrendszer
 

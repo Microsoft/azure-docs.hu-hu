@@ -9,14 +9,16 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: 9b066dfd260a18f35149822b4107ea2c37db931c
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: ffe2f2b7f94d546cdfe393170da2fd2ca6ac0149
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200242"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490993"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>A Azure IoT Edge tanúsítványok használatának ismertetése
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 IoT Edge a tanúsítványokat a modulok és az alsóbb rétegbeli IoT eszközök használják az [IoT Edge hub](iot-edge-runtime.md#iot-edge-hub) Runtime modul identitásának és törvényességének ellenőrzéséhez. Ezek az ellenőrzések lehetővé teszik a TLS (Transport Layer Security) biztonságos kapcsolatot a futtatókörnyezet, a modulok és a IoT eszközök között. A IoT Hubhoz hasonlóan a IoT Edgenak biztonságos és titkosított kapcsolatra van szüksége a IoT alsóbb rétegbeli (vagy levél) eszközök és IoT Edge modulok esetében. A biztonságos TLS-kapcsolat létrehozásához az IoT Edge hub modul egy kiszolgálói tanúsítványláncot jeleníti meg az ügyfelek csatlakoztatásához, hogy azok személyazonosságát ellenőrizzék.
 

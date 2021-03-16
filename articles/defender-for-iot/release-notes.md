@@ -11,33 +11,39 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/08/2021
+ms.date: 03/14/2021
 ms.author: shhazam
-ms.openlocfilehash: f15c4ed6bb7da5cd33eca96c171bfada68092b35
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: ef72be60b6294ad4e1fca2ce9c0e3c66b64ac687
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820670"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493957"
 ---
 # <a name="whats-new-in-azure-defender-for-iot"></a>Az Azure Defender IoT újdonságai
 
 Ez a cikk felsorolja a Defender új szolgáltatásait és funkcióinak fejlesztéseit a IoT.
 
 A feljegyzett funkciók előzetes verzióban érhetők el. Az [Azure előzetes verziójának kiegészítő feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) közé tartoznak az olyan Azure-funkciókra vonatkozó további jogi feltételek, amelyek a bétaverzióban, az előzetes verzióban vagy más esetben még nem jelennek meg az általánosan elérhetővé tételben.
-## <a name="february-2021"></a>Február 2021
+## <a name="march-2021"></a>Március 2021
 
-### <a name="sensor---enhanced-custom-alert-rules"></a>Érzékelő – bővített egyéni riasztási szabályok
+### <a name="sensor---enhanced-custom-alert-rules-public-preview"></a>Érzékelő – bővített egyéni riasztási szabályok (nyilvános előzetes verzió)
 
 Mostantól létrehozhat egyéni riasztási szabályokat a nap alapján, a napok csoportját és az időpontot hálózati tevékenységet észlelve.  A nap-és időszabályi feltételek használata hasznos lehet, például azokban az esetekben, amikor a riasztás súlyossága a riasztási esemény időpontjában van származtatva. Létrehozhat például egy olyan egyéni szabályt, amely magas súlyosságú riasztást indít el, ha egy hétvégén vagy esténként a hálózati tevékenységet észlel.
 
-Ez a funkció az érzékelőn érhető el az 10,1-es verzió kiadásával.
+Ez a funkció az érzékelőn érhető el az 10,2-es verzió kiadásával.
 
-### <a name="on-premises-management-console---export-alerts"></a>Helyszíni felügyeleti konzol – riasztások exportálása
+### <a name="on-premises-management-console---export-alerts-public-preview"></a>Helyszíni felügyeleti konzol – riasztások exportálása (nyilvános előzetes verzió)
 
 A riasztási adatok mostantól egy. csv-fájlba exportálhatók a helyszíni felügyeleti konzolról. Exportálhatja az összes észlelt riasztás adatait, vagy exportálhatja az adatokat a szűrt nézet alapján.
 
-Ez a szolgáltatás a helyszíni felügyeleti konzolon érhető el, az 10,1-es verzió kiadásával.
+Ez a szolgáltatás a helyszíni felügyeleti konzolon érhető el, az 10,2-es verzió kiadásával.
+
+### <a name="add-second-network-interface-to-on-premises-management-console-public-preview"></a>Második hálózati adapter hozzáadása a helyszíni felügyeleti konzolhoz (nyilvános előzetes verzió)
+
+Most már javíthatja a központi telepítés biztonságát úgy, hogy hozzáad egy második hálózati adaptert a helyszíni felügyeleti konzolhoz. Ez a funkció lehetővé teszi, hogy a helyszíni felügyelet egy biztonságos hálózaton lévő csatlakoztatott érzékelőkkel rendelkezzen, miközben lehetővé teszi a felhasználók számára, hogy egy második különálló hálózati adapteren keresztül hozzáférjenek a helyszíni felügyeleti konzolhoz.
+
+Ez a szolgáltatás a helyszíni felügyeleti konzolon érhető el, az 10,2-es verzió kiadásával.
 ### <a name="device-builder---new-micro-agent-public-preview"></a>Device Builder – új Micro Agent (nyilvános előzetes verzió)
 
 Új Eszközkezelő modul érhető el. A modul, amelyet a Micro-Agent is nevez, lehetővé teszi a következőket:
@@ -48,7 +54,7 @@ Ez a szolgáltatás a helyszíni felügyeleti konzolon érhető el, az 10,1-es v
 - **Biztonsági állapot kezelése** – proaktív módon figyeli a IoT-eszközök biztonsági állapotát.
 - **Folyamatos, valós idejű IoT/s veszélyforrások észlelése** – olyan fenyegetések észlelése, mint például a botnetek, a találgatásos támadások, a kriptográfiai bányászok és a gyanús hálózati tevékenységek
 
-Az elavult biztonsági modul dokumentációját a rendszer áthelyezi az *eszköz-építők számára>klasszikus* mappába.
+Az elavult Defender-IoT-Micro-Agent dokumentáció át lesz helyezve az *ügynök-alapú megoldásba az eszköz-építők számára>klasszikus* mappába.
 
 Ez a szolgáltatáskészlet a jelenleg elérhető nyilvános előzetes verziójú felhőben érhető el.
 

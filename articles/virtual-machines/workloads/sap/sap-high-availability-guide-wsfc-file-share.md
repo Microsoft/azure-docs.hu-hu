@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/24/2019
+ms.date: 03/15/2021
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 608401858c0119d281ab6ff46156fc7bdccd9d84
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a51f874d09aebfcb2c0b73e0b484f68042d1bb6d
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675332"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496201"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>SAP ASCS-/SCS-példány fürthöz való fürtözése Windows feladatátvevő fürtön egy Azure-beli fájlmegosztás használatával
 
@@ -147,10 +147,14 @@ A kibővített fájlmegosztás használatához a rendszernek meg kell felelnie a
 
 ### <a name="configure-sap-ascsscs-instances-and-a-scale-out-file-share-in-two-clusters"></a>Az SAP ASCS/SCS-példányok és a kibővíthető fájlmegosztás konfigurálása két fürtben
 
-Az SAP ASCS/SCS-példányokat egy fürtön helyezheti üzembe, saját SAP- \<SID\> fürt szerepkörével. Ebben az esetben a kibővíthető fájlmegosztást egy másik fürtön konfigurálja, egy másik fürt szerepkörrel.
+Az SAP ASCS/SCS-példányokat külön fürtben kell telepítenie, a saját SAP- \<SID\> fürt szerepkörével. Ebben az esetben a kibővíthető fájlmegosztást egy másik fürtön konfigurálja, egy másik fürt szerepkörrel.
+
 
 > [!IMPORTANT]
->Ebben az esetben az SAP ASCS/SCS-példány úgy van konfigurálva, hogy az SAP globális gazdagépet az UNC elérési út \\ \\ &lt; SAP Global Host &gt; \sapmnt \\ &lt; SID &gt; \SYS használatával elérje.\.
+> A telepítőnek meg kell felelnie a következő követelményeknek: az SAP ASCS/SCS-példányokat és a SOFS-megosztást külön fürtökben kell telepíteni.    
+>
+> [!IMPORTANT] 
+> Ebben az esetben az SAP ASCS/SCS-példány úgy van konfigurálva, hogy az SAP globális gazdagépet az UNC elérési út \\ \\ &lt; SAP Global Host &gt; \sapmnt \\ &lt; SID &gt; \SYS használatával elérje.\.
 >
 
 ![5. ábra: SAP ASCS/SCS-példány és két fürtön üzembe helyezett kibővített fájlmegosztás][sap-ha-guide-figure-8007]

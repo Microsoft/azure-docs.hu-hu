@@ -3,12 +3,12 @@ title: Oktatóanyag – a VMware Private Cloud hálózatkezelésének konfigurá
 description: Megtudhatja, hogyan hozhatja létre és konfigurálhatja a privát felhő üzembe helyezéséhez szükséges hálózatkezelést az Azure-ban
 ms.topic: tutorial
 ms.date: 03/13/2021
-ms.openlocfilehash: 0fc934cfec17d8d3bb69c21d324f06bee3f9515c
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: c609d191191cd9de111e83fe62761b149405cccc
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103462340"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494358"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Oktatóanyag: az Azure-beli VMware Private-felhő hálózatkezelésének konfigurálása
 
@@ -94,7 +94,7 @@ A vCenter és a NSX Manager alkalmazásba való bejelentkezéshez szüksége les
 
 Navigáljon az Azure VMware-megoldás saját felhőhöz, a **kezelés** alatt válassza az **identitás** lehetőséget, itt megtalálja a szükséges információkat.
 
-:::image type="content" source="./media/tutorial-access-private-cloud/generate-vcenter-nsxt-passwords.png" alt-text="Képernyőkép a vCenter és a NSX-T hitelesítő adatokról és a webes ügyfél URL-címeiről." border="true" lightbox="media/tutorial-access-private-cloud/generate-vcenter-nsxt-passwords.png":::
+:::image type="content" source="./media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Képernyőkép a vCenter és a NSX-T hitelesítő adatokról és a webes ügyfél URL-címeiről." border="true" lightbox="media/tutorial-access-private-cloud/ss4-display-identity.png":::
 
 ## <a name="next-steps"></a>További lépések
 

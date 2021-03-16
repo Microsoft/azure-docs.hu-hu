@@ -7,12 +7,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: b601a3586cfa971b2e8337a914f4e10bb0178ba0
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: f62b4c354ffa90bf1a03651fccf8780074344e46
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014246"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466422"
 ---
 # <a name="use-azure-devops-to-create-a-cicd-pipeline-for-a-stream-analytics-job"></a>Az Azure DevOps használata CI/CD-folyamat létrehozásához Stream Analytics feladatokhoz
 
@@ -55,6 +55,22 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre Build-folyamatot. A minta
    ```
 
    :::image type="content" source="media/set-up-cicd-pipeline/npm-config.png" alt-text="Adja meg a NPM feladat konfigurációit":::
+
+Ha üzemeltetett linuxos ügynököt szeretne használni, kövesse az alábbi lépéseket:
+1.  Az **ügynök specifikációjának** kiválasztása
+   
+    :::image type="content" source="media/set-up-cicd-pipeline/select-linux-agent.png" alt-text="Képernyőkép az ügynök specifikációjának kiválasztásáról.":::
+
+2.  A **feladatok** lapon válassza ki a plusz jelet a **Agent 1. feladat** mellett. Adja meg a *parancssort* a feladat keresése területen, és válassza a **parancssor** lehetőséget.
+   
+    :::image type="content" source="media/set-up-cicd-pipeline/cmd-search.png" alt-text="Képernyőkép a parancssori feladat kereséséről. ":::
+
+3.  Adja meg a feladat **megjelenítendő nevét**. adja meg a következő parancsot a **szkriptben**. Hagyja meg a többi alapértelmezett beállítást.
+
+      ```bash
+      sudo npm install -g azure-streamanalytics-cicd --unsafe-perm=true --allow-root
+      ```
+      :::image type="content" source="media/set-up-cicd-pipeline/cmd-scripts.png" alt-text="Képernyőkép a cmd-feladat parancsfájljának beírásáról.":::
 
 ## <a name="add-a-build-task"></a>Felépítési feladat hozzáadása
 
@@ -106,7 +122,7 @@ A fájl másolása feladatot fel kell vennie, hogy átmásolja a teszt összefog
 
 1. A **feladatok** lapon válassza a **+** következőt az **ügynök feladatához: 1**. **Fájlok másolásának** keresése. Ezután adja meg a következő konfigurációkat. A `**` **tartalom** hozzárendelésével a rendszer a teszteredmények összes fájlját átmásolja.
 
-   |Paraméter|Input (Bemenet)|
+   |Paraméter|Bevitel|
    |-|-|
    |Megjelenített név|Fájlok másolása ide: $ (Build. artifactstagingdirectory)|
    |Forrás mappája|`$(system.defaultworkingdirectory)/$(outputPath)/`|
@@ -164,8 +180,8 @@ Nyisson meg egy webböngészőt, és navigáljon a Azure Stream Analytics Visual
    |Paraméter|Érték|
    |-|-|
    |Megjelenített név| *MyASAProject üzembe helyezése*|
-   |az Azure-előfizetést| Válassza ki az előfizetését.|
-   |Műveletek| *Erőforráscsoport létrehozása vagy frissítése*|
+   |Azure-előfizetés| Válassza ki az előfizetését.|
+   |Művelet| *Erőforráscsoport létrehozása vagy frissítése*|
    |Erőforráscsoport| Válassza ki a Stream Analytics feladatot tartalmazó tesztelési erőforráscsoport nevét.|
    |Hely|Válassza ki a tesztelési erőforráscsoport helyét.|
    |Sablon helye| Társított összetevő|
@@ -181,8 +197,8 @@ Nyisson meg egy webböngészőt, és navigáljon a Azure Stream Analytics Visual
    |Paraméter|Érték|
    |-|-|
    |Megjelenített név| *MyASAProject üzembe helyezése*|
-   |az Azure-előfizetést| Válassza ki az előfizetését.|
-   |Műveletek| *Erőforráscsoport létrehozása vagy frissítése*|
+   |Azure-előfizetés| Válassza ki az előfizetését.|
+   |Művelet| *Erőforráscsoport létrehozása vagy frissítése*|
    |Erőforráscsoport| Válassza ki az üzemi erőforráscsoport nevét, amely a Stream Analytics feladatot fogja tartalmazni.|
    |Hely|Válassza ki az üzemi erőforráscsoport helyét.|
    |Sablon helye| *Társított összetevő*|
@@ -197,7 +213,7 @@ A kiadás létrehozásához válassza a jobb felső sarokban található **kiad�
 
 :::image type="content" source="media/set-up-cicd-pipeline/create-release.png" alt-text="Kiadás létrehozása az Azure-folyamatokkal":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Folyamatos integráció és folyamatos üzembe helyezés a Azure Stream Analytics számára](cicd-overview.md)
 * [Azure Stream Analytics feladatok felépítésének, tesztelésének és üzembe helyezésének automatizálása CI/CD-eszközök használatával](cicd-tools.md)

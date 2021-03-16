@@ -3,12 +3,12 @@ title: Fogalmak – hálózati kapcsolat
 description: Ismerkedjen meg az Azure VMware megoldás legfontosabb szempontjaival és hálózati és kapcsolódási eseteivel.
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: cd62949c13b1f12e635d8d7bf07518a94c4e8d4b
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: 4c964151c49e2fea56031dd24bacf4655753a18d
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103462583"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491809"
 ---
 # <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Azure VMware megoldás hálózatkezelési és összekapcsolási fogalmak
 
@@ -16,9 +16,9 @@ ms.locfileid: "103462583"
 
 Az Azure VMware-megoldás saját felhőben kétféleképpen lehet összekapcsolást létesíteni:
 
-1. Alapszintű, kizárólag az Azure [**-beli összekapcsolással**](#azure-virtual-network-interconnectivity) az Azure-ban csak egyetlen virtuális hálózattal kezelheti és használhatja a saját felhőjét. Ez a megvalósítás az Azure VMware megoldás-értékelések és olyan implementációk esetében ajánlott, amelyek nem igénylik a helyszíni környezetek elérését.
+- Alapszintű, kizárólag az Azure [**-beli összekapcsolással**](#azure-virtual-network-interconnectivity) az Azure-ban csak egyetlen virtuális hálózattal kezelheti és használhatja a saját felhőjét. Ez a megvalósítás az Azure VMware megoldás-értékelések és olyan implementációk esetében ajánlott, amelyek nem igénylik a helyszíni környezetek elérését.
 
-1. A teljes helyszíni és a [**privát felhő közötti kapcsolat**](#on-premises-interconnectivity) kibővíti az alapszintű Azure-alapú megvalósítást, amely magában foglalja a helyszíni és az Azure VMware-megoldás privát felhők közötti összekapcsolást.
+- A teljes helyszíni és a [**privát felhő közötti kapcsolat**](#on-premises-interconnectivity) kibővíti az alapszintű Azure-alapú megvalósítást, amely magában foglalja a helyszíni és az Azure VMware-megoldás privát felhők közötti összekapcsolást.
  
 Ebben a cikkben azokat a főbb fogalmakat mutatjuk be, amelyek a hálózatkezelést és az összekapcsolást, beleértve a követelményeket és a korlátozásokat is. Ez a cikk ismerteti azokat az információkat, amelyeket tudnia kell a hálózatkezelés konfigurálásához az Azure VMware-megoldással való együttműködéshez.
 

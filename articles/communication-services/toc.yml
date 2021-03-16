@@ -132,6 +132,8 @@
       href: concepts/known-issues.md
 - name: Példák
   items:
+    - name: Áttekintés
+      href: samples/overview.md
     - name: Csoportos hívás kiemelt mintája
       href: samples/calling-hero-sample.md
     - name: Csoportos csevegés kiemelt mintája

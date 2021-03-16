@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 77bd5e3b7a258ef83e5de4ec645ea70578fb9dfb
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 50fdab1fa8def1b4e3b9a9d59d3b2593e5526c65
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657091"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472042"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC-gyorsítótár létrehozása
 
@@ -59,7 +59,7 @@ Az Azure HPC gyorsítótára felügyeli, hogy mely fájlok vannak gyorsítótár
 
 ## <a name="enable-azure-key-vault-encryption-optional"></a>Azure Key Vault titkosítás engedélyezése (nem kötelező)
 
-Ha a gyorsítótár olyan régióban található, amely támogatja az ügyfél által felügyelt titkosítási kulcsokat, a **lemez titkosítási kulcsainak** lapja a **gyorsítótár** és a **címkék** lapok között jelenik meg. A régió támogatásával kapcsolatos további információkért olvassa el a [regionális elérhetőséget](hpc-cache-overview.md#region-availability) ismertető témakört.
+A **lemez titkosítási kulcsainak** lapja a **gyorsítótár** és a **címkék** lapok között jelenik meg.<!-- Read [Regional availability](hpc-cache-overview.md#region-availability) to learn more about region support. -->
 
 Ha szeretné kezelni a gyorsítótár-tárolóhoz használt titkosítási kulcsokat, adja meg a Azure Key Vault adatait a **lemez titkosítási kulcsainak** oldalán. A kulcstárolónak ugyanabban a régióban és ugyanabban az előfizetésben kell lennie, mint a gyorsítótárnak.
 
@@ -105,7 +105,7 @@ A létrehozás befejeződése után egy értesítés jelenik meg az új Azure HP
 [Állítsa be az Azure CLI-t az Azure HPC cache-hez](./az-cli-prerequisites.md).
 
 > [!NOTE]
-> Az Azure CLI jelenleg nem támogatja az ügyfél által felügyelt titkosítási kulcsokkal rendelkező gyorsítótár létrehozását. Használja a Azure Portal.
+> Az Azure CLI jelenleg nem támogatja az ügyfél által felügyelt titkosítási kulcsokkal rendelkező gyorsítótár létrehozását. Használja az Azure Portalt.
 
 Hozzon létre egy új Azure HPC-gyorsítótárat az az [HPC-cache Create](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-create) paranccsal.
 
@@ -208,7 +208,7 @@ Install-Module -Name Az.HPCCache
 ## <a name="create-the-cache-with-azure-powershell"></a>A gyorsítótár létrehozása Azure PowerShell
 
 > [!NOTE]
-> Azure PowerShell jelenleg nem támogatja az ügyfél által felügyelt titkosítási kulcsokkal rendelkező gyorsítótár létrehozását. Használja a Azure Portal.
+> Azure PowerShell jelenleg nem támogatja az ügyfél által felügyelt titkosítási kulcsokkal rendelkező gyorsítótár létrehozását. Használja az Azure Portalt.
 
 Új Azure HPC-gyorsítótár létrehozásához használja a [New-AzHpcCache](/powershell/module/az.hpccache/new-azhpccache) parancsmagot.
 

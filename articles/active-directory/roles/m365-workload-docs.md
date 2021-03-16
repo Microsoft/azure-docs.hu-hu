@@ -14,16 +14,16 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 310dd82f9a5f7f98fbca720b48212b7963e25a63
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: f56f8ac42f0db3d2cd27453cd023a2e869b0cde0
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102551504"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466082"
 ---
 # <a name="roles-for-microsoft-365-services-in-azure-active-directory"></a>A Azure Active Directory Microsoft 365 szolgáltatásainak szerepkörei
 
-A Microsoft 365ban található összes termék felügyelhető a Azure Active Directory (Azure AD) felügyeleti szerepköreivel. Egyes termékek a termékre vonatkozó további szerepköröket is biztosítanak. Az egyes termékek által támogatott szerepkörökkel kapcsolatos információkért tekintse meg az alábbi táblázatot. A delegálással kapcsolatos problémák általános megbeszélései a Azure Active Directory-ben a [szerepkör-delegálás megtervezésében](concept-delegation.md)találhatók.
+A Microsoft 365ban található összes termék felügyelhető a Azure Active Directory (Azure AD) felügyeleti szerepköreivel. Egyes termékek a termékre vonatkozó további szerepköröket is biztosítanak. Az egyes termékek által támogatott szerepkörökkel kapcsolatos információkért tekintse meg az alábbi táblázatot. A szerepkör-biztonsági tervezéssel kapcsolatos útmutatásért lásd: az [Azure ad-ben az emelt szintű hozzáférés biztonságossá tétele a hibrid és a Felhőbeli](security-planning.md)környezetekben.
 
 ## <a name="where-to-find-content"></a>Hol található a tartalom?
 

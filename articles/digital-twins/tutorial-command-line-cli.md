@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/26/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 16425c1f15b78e2d0aaa7a8a1f55ff47a44d56dd
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: d155d0c4a18b254f66ff5fb58ea91dbee22d2c34
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103464786"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496609"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-the-azure-cli"></a>Oktatóanyag: Azure digitális Twins-gráf létrehozása az Azure CLI használatával
 
@@ -64,7 +64,7 @@ A példányhoz mindkét értéket elérheti a következő Azure CLI-parancs kime
 az dt show -n <ADT_instance_name>
 ```
 
-:::image type="content" source="media/tutorial-command-line/cli/instance-details.png" alt-text="Cloud Shell ablak, amely az az DT show parancs kimenetét jeleníti meg. Ki van emelve az állomásnév mező és az előfizetés azonosítója (az azonosító mező része).":::
+:::image type="content" source="media/tutorial-command-line/cli/instance-details.png" alt-text="Képernyőkép: Cloud Shell böngészőablak, amely az az DT show parancs kimenetét jeleníti meg. Ki van emelve az állomásnév mező és az előfizetés azonosítója (az azonosító mező része).":::
 
 ## <a name="model-a-physical-environment-with-dtdl"></a>Fizikai környezet modellezése a DTDL
 
@@ -87,7 +87,7 @@ A modellek tervezése után fel kell töltenie őket az Azure Digital Twins-pél
 
 1. Ha Cloud Shell használatával szeretne modelleket hozzáadni, fel kell töltenie a modell fájljait Cloud Shell tárhelyére, hogy a fájlok elérhetők legyenek az azokat használó Cloud Shell parancs futtatásakor. Ehhez válassza a "fájlok feltöltése/letöltése" ikont, és válassza a "feltöltés" lehetőséget.
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Cloud Shell a feltöltés ikon kijelölését bemutató ablak":::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Képernyőkép: Cloud Shell böngészőablak, amely a feltöltés ikon kiválasztását mutatja.":::
     
     Navigáljon a számítógépen található fájl *Room.js* , és válassza a "Megnyitás" lehetőséget. Ezt követően ismételje meg ezt a lépést a *Floor.js*.
 
@@ -111,7 +111,7 @@ A modellek tervezése után fel kell töltenie őket az Azure Digital Twins-pél
     
     Keresse meg a szerkesztett *Room* modellt az eredmények között:
     
-    :::image type="content" source="media/tutorial-command-line/cli/output-get-models.png" alt-text="A Model LIST parancs eredménye, amely a frissített helyiség modelljét jeleníti meg" lightbox="media/tutorial-command-line/cli/output-get-models.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-get-models.png" alt-text="Képernyőkép a Cloud Shell a Model LIST parancs eredményét mutatja, amely tartalmazza a frissített szobatípus-modellt." lightbox="media/tutorial-command-line/cli/output-get-models.png":::
 
 ### <a name="errors"></a>Hibák
 
@@ -159,7 +159,7 @@ Digitális Twin létrehozásához használja az az [**DT Twin Create**](/cli/azu
     
     Az eredmények között keresse meg a *room0*, a *room1*, a *floor0* és a *floor1* ikreket. Itt látható egy olyan részlet, amely a lekérdezés eredményének egy részét mutatja.
     
-    :::image type="content" source="media/tutorial-command-line/cli/output-query-all.png" alt-text="A kettős lekérdezés részleges eredménye, amely megjeleníti a room0 és a room1" lightbox="media/tutorial-command-line/cli/output-query-all.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-query-all.png" alt-text="Képernyőkép Cloud Shell a kettős lekérdezés részleges eredményét mutatja, beleértve a room0 és a room1." lightbox="media/tutorial-command-line/cli/output-query-all.png":::
 
 ### <a name="modify-a-digital-twin"></a>Digitális Twin módosítása
 
@@ -181,7 +181,7 @@ Módosíthatja a létrehozott Twin-példányok tulajdonságait is.
     
     A parancs kimenete megjeleníti a Twin aktuális adatait, és az eredményben az új értéket kell látnia `RoomName` .
 
-    :::image type="content" source="media/tutorial-command-line/cli/output-update-twin.png" alt-text="A frissítési parancs eredménye, amely a PresidentialSuite RoomName jeleníti meg" lightbox="media/tutorial-command-line/cli/output-update-twin.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-update-twin.png" alt-text="Képernyőkép Cloud Shell a frissítési parancs eredményéről, amely tartalmazza a PresidentialSuite RoomName." lightbox="media/tutorial-command-line/cli/output-update-twin.png":::
 
 1. A frissítés sikeres ellenőrzéséhez futtassa az az [**DT Twin show**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_show) parancsot a *room0* információinak megtekintéséhez:
 
@@ -236,7 +236,7 @@ Kapcsolat hozzáadásához használja az az [**DT Twin kapcsolat létrehozása**
 
 Az ebben az oktatóanyagban beállított ikrek és kapcsolatok a következő koncepcionális diagramot alkotják:
 
-:::image type="content" source="media/tutorial-command-line/app/sample-graph.png" alt-text="A relationship0 és a room0 között összekapcsolt floor0, valamint a relationship1-room1 keresztül csatlakoztatott floor1" border="false" lightbox="media/tutorial-command-line/app/sample-graph.png":::
+:::image type="content" source="media/tutorial-command-line/app/sample-graph.png" alt-text="Egy elméleti gráfot bemutató diagram. a floor0 a relationship0-on keresztül csatlakozik a room0-hez, és a floor1 a relationship1-on keresztül csatlakozik a room1-hoz." border="false" lightbox="media/tutorial-command-line/app/sample-graph.png":::
 
 ## <a name="query-the-twin-graph-to-answer-environment-questions"></a>A Twin gráf lekérdezése a környezeti kérdések megválaszolásához
 
@@ -252,7 +252,7 @@ Futtassa az alábbi lekérdezéseket a Cloud Shellban, hogy válaszoljon a minta
 
     Ez lehetővé teszi, hogy a környezetét egy pillantással átvegye, és győződjön meg róla, hogy minden úgy képviselteti magát, mintha az Azure digitális Ikreken belül lenne. Ennek eredménye az, hogy az egyes digitális Twin termékek a részleteket tartalmazzák. Íme egy részlet:
 
-    :::image type="content" source="media/tutorial-command-line/cli/output-query-all.png" alt-text="A kettős lekérdezés részleges eredménye, amely megjeleníti a room0 és a room1" lightbox="media/tutorial-command-line/cli/output-query-all.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-query-all.png" alt-text="Képernyőkép Cloud Shell a kettős lekérdezés részleges eredményét mutatja, beleértve a room0 és a room1." lightbox="media/tutorial-command-line/cli/output-query-all.png":::
 
     >[!TIP]
     >Előfordulhat, hogy ez ugyanaz a parancs, amelyet korábban a [*digitális Twins létrehozása*](#create-digital-twins) szakaszban használt, hogy megkeresse az összes Azure digitális ikreket a példányban.
@@ -265,7 +265,7 @@ Futtassa az alábbi lekérdezéseket a Cloud Shellban, hogy válaszoljon a minta
 
     A lekérdezés bizonyos típusú ikrekre korlátozható, így pontosabb információkhoz juthat a megjelenített adatokról. Ennek eredménye a *room0* és a *room1*, de nem jeleníti meg a *floor0* vagy a *floor1* (mivel ezek padlók **, nem szobák** ).
     
-    :::image type="content" source="media/tutorial-command-line/cli/output-query-model.png" alt-text="A modell lekérdezésének eredménye, amely csak a room0 és a room1 jeleníti meg" lightbox="media/tutorial-command-line/cli/output-query-model.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-query-model.png" alt-text="Képernyőkép – Cloud Shell, amely a modell lekérdezésének eredményét mutatja, amely csak a room0 és a room1 tartalmazza." lightbox="media/tutorial-command-line/cli/output-query-model.png":::
 
 1. **Mi a *floor0* összes Terme?** (lekérdezés kapcsolat alapján)
 
@@ -275,7 +275,7 @@ Futtassa az alábbi lekérdezéseket a Cloud Shellban, hogy válaszoljon a minta
 
     A diagramon létesített kapcsolatok alapján lekérdezheti a lekérdezéseket, így információkat kaphat arról, hogy az ikrek hogyan vannak csatlakoztatva, vagy hogy a lekérdezés egy bizonyos területen legyen korlátozva. Csak *room0* van a *floor0*, így az egyetlen hely az eredményben.
 
-    :::image type="content" source="media/tutorial-command-line/cli/output-query-relationship.png" alt-text="A room0 mutató kapcsolati lekérdezés eredményei" lightbox="media/tutorial-command-line/cli/output-query-relationship.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-query-relationship.png" alt-text="Képernyőkép a Cloud Shellről, amely a kapcsolati lekérdezés eredményét mutatja, beleértve a room0 is." lightbox="media/tutorial-command-line/cli/output-query-relationship.png":::
 
     > [!NOTE]
     > Figyelje meg, hogy a Twins azonosító (például a fenti lekérdezés *floor0* ) a metaadatok mező használatával kérdezi le `$dtId` . 
@@ -290,7 +290,7 @@ Futtassa az alábbi lekérdezéseket a Cloud Shellban, hogy válaszoljon a minta
 
     A diagramot a tulajdonságok alapján kérdezheti le, hogy különböző kérdésekre válaszoljon, beleértve a kiugró értékek megkeresését a környezetben, amelyeknek szüksége lehet a beavatkozásra. Más összehasonlító operátorok (,,, *<* *>* *=* vagy *! =*) is támogatottak. az eredmények itt jelennek meg, mert a *room1* 80-as hőmérséklettel rendelkezik.
 
-    :::image type="content" source="media/tutorial-command-line/cli/output-query-property.png" alt-text="A tulajdonság-lekérdezés eredménye, amely csak a room1 jeleníti meg" lightbox="media/tutorial-command-line/cli/output-query-property.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-query-property.png" alt-text="Képernyőkép – Cloud Shell, amely a tulajdonság lekérdezésének eredményét mutatja, amely csak room1 tartalmaz." lightbox="media/tutorial-command-line/cli/output-query-property.png":::
 
 1. **Mi a *floor0* található összes szoba 75-nál magasabb hőmérséklettel?** (összetett lekérdezés)
 
@@ -300,7 +300,7 @@ Futtassa az alábbi lekérdezéseket a Cloud Shellban, hogy válaszoljon a minta
 
     Azt is megteheti, hogy kombinálja a korábbi lekérdezéseket, mint például az SQL-ben, az olyan kombinációs operátorok használatával, mint a `AND` , `OR` `NOT` . A lekérdezés `AND` azt használja, hogy az előző lekérdezés a két hőmérséklet konkrétabb legyen. Az eredmény mostantól csak a 75-nál nagyobb hőmérsékletű szobákat tartalmazza, amelyek a *floor0* vannak – ami ebben az esetben egyikük sem. Az eredményhalmaz üres.
 
-    :::image type="content" source="media/tutorial-command-line/cli/output-query-compound.png" alt-text="Az összetett lekérdezés eredménye, amely nem mutat eredményt" lightbox="media/tutorial-command-line/cli/output-query-compound.png":::
+    :::image type="content" source="media/tutorial-command-line/cli/output-query-compound.png" alt-text="Képernyőkép a Cloud Shell az összetett lekérdezés eredményét mutatja, amely nem tartalmaz elemeket." lightbox="media/tutorial-command-line/cli/output-query-compound.png":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

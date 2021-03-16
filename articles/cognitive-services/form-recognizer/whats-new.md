@@ -2,29 +2,58 @@
 title: A Form Recognizer újdonságai
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg az űrlap-felismerő API legújabb módosításait.
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.author: pafarley
-ms.openlocfilehash: f194f0bc7ec8d0bf2265c0863f93bfd11337b5f4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.author: lajanuar
+ms.openlocfilehash: 6760194fea71cd97b4d206ccd2ccc281e18ea279
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703388"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467048"
 ---
+<!-- markdownlint-disable MD024 -->
 # <a name="whats-new-in-form-recognizer"></a>A Form Recognizer újdonságai
 
 Az űrlap-felismerő szolgáltatás folyamatosan frissül. Ebből a cikkből megtudhatja, hogyan maradhat naprakészen a funkciók fejlesztései, a javítások és a dokumentációs frissítések segítségével.
+
+## <a name="march-2021"></a>Március 2021
+
+**Az űrlap-felismerő v 2.1 nyilvános előzetes verziója már elérhető.** v 2.1 – előzetes verzió (3), a következő funkciókkal együtt:
+
+- **Új előre elkészített azonosító modell** Az új, előre elkészített azonosító modell lehetővé teszi, hogy az ügyfelek a feldolgozás automatizálása érdekében az azonosítókat és a strukturált adatként adják vissza. Kombinálja a hatékony optikai karakterfelismerési (OCR) képességeket, amelyekkel az AZONOSÍTÓval megismerheti a főbb információkat a Passport és az Egyesült államokbeli illesztőprogram-licencek, például a név, a születési idő, a kiadás dátuma, a lejárati dátum és egyebek tekintetében.
+
+  [További információ az előre elkészített azonosító modellről](concept-identification-cards.md)
+
+   :::image type="content" source="./media/id-canada-passport-example.png" alt-text="Passport-példa" lightbox="./media/id-canada-passport-example.png":::
+
+- Az előre elkészített **számla modellje – az** előre elkészített számla modellje már támogatja a sorok kinyerését. most Kinyeri a teljes elemet és azok részeit – leírás, mennyiség, mennyiség, termék azonosítója, dátum és egyebek. Egy egyszerű API-/SDK-hívással hasznos adatokat nyerhet ki a számlákon – szöveg, tábla, kulcs-érték párok és sorok.
+
+   [További információ az előre elkészített számla modelljéről](concept-invoices.md)
+
+- **Felügyelt tábla címkézése és betanítása, üres értékek címkézése** – az űrlap-felismerő [legmodernebb, részletes, táblázatos kinyerési képességei](https://techcommunity.microsoft.com/t5/azure-ai/enhanced-table-extraction-from-documents-with-form-recognizer/ba-p/2058011)mellett lehetővé teszi az ügyfelek számára a táblázatok címkézését és betanítását. Ez az új kiadás lehetővé teszi az elemek/táblák (dinamikus és rögzített) címkézését és betanítását, valamint egy egyéni modell betanítását a kulcs-érték párok és a sorok kinyeréséhez. A modell betanítása után a modell kibontja a sorok elemeit a documentResults szakaszban található JSON-kimenet részeként.
+
+    :::image type="content" source="./media/table-labeling.png" alt-text="Tábla címkézése" lightbox="./media/table-labeling.png":::
+
+    A táblázatok címkézésén kívül az üres értékeket és régiókat is címkével látja el; Ha a betanítási készlet egyes dokumentumai nem rendelkeznek bizonyos mezők értékeivel, akkor használhatja azt, hogy a modellje tudni fogja, hogy az elemzett dokumentumokból megfelelően kinyeri az értékeket.
+
+- **Támogatás a 66 új nyelvekhez – a** Form felismerő az elrendezési API és az egyéni modellek mostantól támogatják a 73 nyelveket.
+
+  [További információ az űrlap-felismerő nyelvi támogatásáról](language-support.md)
+
+- **Természetes olvasási sorrend, kézírás-besorolás és-kijelölés** – ezzel a frissítéssel lekérheti a szöveges vonal kimeneteit a természetes olvasási sorrendben, az alapértelmezett balról jobbra és a legalsó sorrend helyett. Használja az új readingOrder lekérdezési paramétert, és állítsa "természetes" értékre egy emberi felhasználóbarát olvasási sorrendi kimenetnél. Emellett a latin nyelveken az űrlap-felismerő a szöveges sorokat a kézírásos stílusként osztályozza, és nem ad meg megbízhatósági pontszámot.
+
+- **Előre elkészített bevételezési modell minőségi fejlesztései** Ez a frissítés számos minőségi fejlesztést tartalmaz az előre elkészített beérkezési modellhez, különösen a sorok kinyeréséhez.
 
 ## <a name="november-2020"></a>2020. november
 
 ### <a name="new-features"></a>Új funkciók
 
-**Az űrlap-felismerő v 2.1 nyilvános előzetes verziója már elérhető.** V 2.1 – előzetes verzió: 2, a következő funkciókkal együtt: 
+**Az űrlap-felismerő v 2.1 nyilvános előzetes verziója már elérhető.** v 2.1 – előzetes verzió: 2, a következő funkciókkal együtt: 
 
 - **Új előre elkészített számla modell** – az új, előre elkészített számla modell lehetővé teszi, hogy az ügyfelek különböző formátumokban számlázzák a számlákat, és a feldolgozott adatmennyiséget a számla feldolgozásának automatizálásához adják vissza. A nagy teljesítményű optikai karakterfelismerési (OCR) képességeket ötvözi a részletes tanulási modellekkel, hogy kinyerje a legfontosabb információkat a számlákból angol nyelven. Kibontja a szöveget, a táblákat és az információkat, például az ügyfelet, a szállítót, a számla AZONOSÍTÓját, a számla esedékes dátumát, a végösszeget, az esedékes összeget, az adó mennyiségét, a szállítást és a számlázást.
 
@@ -68,36 +97,33 @@ Az űrlap-felismerő szolgáltatás folyamatosan frissül. Ebből a cikkből meg
 - **[Új területi beállítások az előre elkészített visszaigazolásokhoz](concept-receipts.md)** az en-us mellett a támogatás mostantól elérhető az EN-au, az en-CA, az en-GB, az EN-in
 - **Minőségi fejlesztése** `Layout` , `Train Custom Model`  -  _címkék nélküli betanítás_ , _címkék_ nélkül.
 
-
 a 2.0-s **verzió** a következő frissítést tartalmazza:
 
 - A NET, a Python, a Java és a JavaScript [ügyféloldali kódtárai](quickstarts/client-library.md) általánosan elérhetővé léptek. 
 
-
 Az **új minták** a githubon érhetők el. 
+
 - A [Knowledge Extracting-receptek – az űrlapok](https://github.com/microsoft/knowledge-extraction-recipes-forms) forgatókönyve az ajánlott eljárásokat a valós Form-felismerő ügyfelek bevonásával gyűjti, és a projektek fejlesztéséhez használt, használható mintakód-mintákat, ellenőrzőlistákat és mintavételi folyamatokat biztosít. 
 - A [mintául szolgáló címkéző eszköz](https://github.com/microsoft/OCR-Form-Tools) frissítve lett az új v 2.1 funkció támogatásához. Ebben a rövid útmutatóban [megismerheti az eszköz](quickstarts/label-tool.md) első lépéseit. 
 - Az [intelligens kioszk](https://github.com/microsoft/Cognitive-Samples-IntelligentKiosk/blob/master/Documentation/FormRecognizer.md) űrlap felismerő mintája azt mutatja be, hogyan integrálható `Analyze Receipt` és `Train Custom Model`  -  _betanítható címkék nélkül_.
 
-
-
 ## <a name="july-2020"></a>2020. július
 
 ### <a name="new-features"></a>Új funkciók
-
+<!-- markdownlint-disable MD004 -->
 * a 2.0-s verzió **referenciája** – tekintse meg a [v 2.0 API-referenciát](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) és a [.net](/dotnet/api/overview/azure/ai.formrecognizer-readme), [Python](/python/api/overview/azure/), [Java](/java/api/overview/azure/ai-formrecognizer-readme)és [JavaScript](/javascript/api/overview/azure/)rendszerhez készült frissített SDK-kat.
 * A **tábla fejlesztései és a kinyerési fejlesztések** – tartalmazza a pontossági fejlesztéseket és a táblázatos kivonások fejlesztéseit, és lehetővé teszik a táblázatok fejlécének és struktúráinak megtanulását _címkék nélkül_. 
 
 * **Pénznem-támogatás** – globális pénznemű szimbólumok észlelése és kinyerése.
 * Az **Azure gov** -Form felismerő mostantól elérhető az Azure gov-ben is.
 * **Fokozott biztonsági funkciók**: 
-   * A **saját kulcs** -űrlap felismerője automatikusan titkosítja az adatait, amikor a felhőben megőrzi a védelmet, és segít a szervezeti biztonsági és megfelelőségi kötelezettségvállalások teljesítésében. Alapértelmezés szerint az előfizetés a Microsoft által felügyelt titkosítási kulcsokat használja. Mostantól a saját titkosítási kulcsaival is kezelheti az előfizetését. Az [ügyfél által felügyelt kulcsok – más néven saját kulcs használata (BYOK)](./encrypt-data-at-rest.md)– nagyobb rugalmasságot biztosítanak a hozzáférés-vezérlések létrehozásához, forgatásához, letiltásához és visszavonásához. Továbbá az adatok védelméhez használt titkosítási kulcsok naplózására is lehetősége van.  
-   * **Privát végpontok** – lehetővé teszi, hogy egy virtuális hálózaton (VNet) [biztonságosan hozzáférjenek az adathoz egy privát kapcsolaton keresztül.](../../private-link/private-link-overview.md)
-
+  * A **saját kulcs** -űrlap felismerője automatikusan titkosítja az adatait, amikor a felhőben megőrzi a védelmet, és segít a szervezeti biztonsági és megfelelőségi kötelezettségvállalások teljesítésében. Alapértelmezés szerint az előfizetés a Microsoft által felügyelt titkosítási kulcsokat használja. Mostantól a saját titkosítási kulcsaival is kezelheti az előfizetését. Az [ügyfél által felügyelt kulcsok – más néven saját kulcs használata (BYOK)](./form-recognizer-encryption-of-data-at-rest.md)– nagyobb rugalmasságot biztosítanak a hozzáférés-vezérlések létrehozásához, forgatásához, letiltásához és visszavonásához. Továbbá az adatok védelméhez használt titkosítási kulcsok naplózására is lehetősége van.  
+  * **Privát végpontok** – lehetővé teszi, hogy egy virtuális hálózaton (VNet) [biztonságosan hozzáférjenek az adathoz egy privát kapcsolaton keresztül.](../../private-link/private-link-overview.md)
 
 ## <a name="june-2020"></a>2020. június
 
 ### <a name="new-features"></a>Új funkciók
+
 * **COPYMODEL API az ügyfél SDK** -k számára – mostantól az ügyfél SDK-k segítségével másolhat modelleket az egyik előfizetésből a másikba. A szolgáltatással kapcsolatos általános információkért tekintse meg a [modellek biztonsági mentése és helyreállítása](./disaster-recovery.md) című témakört.
 * **Azure Active Directory integráció** – mostantól az Azure ad-beli hitelesítő adataival hitelesítheti az űrlap-felismerő ügyféloldali objektumait az SDK-k használatával.
 * **SDK-specifikus változások** – ez magában foglalja mind az alszolgáltatások, mind a megszakított módosításokat. További információért tekintse meg az SDK-naplókat.
@@ -109,24 +135,26 @@ Az **új minták** a githubon érhetők el.
 ## <a name="april-2020"></a>2020. április
 
 ### <a name="new-features"></a>Új funkciók
+
 * **SDK-támogatás az űrlap-FELISMERŐ API 2.0** -s verziójának nyilvános előzetes verziójához – ebben a hónapban kibővítettük a szolgáltatás támogatását, amely tartalmaz egy előzetes verziójú SDK-t a Form felismerő v 2.0 (előzetes verzió) kiadásához. Használja az alábbi hivatkozásokat a választott nyelv megkezdéséhez: 
-   * [.NET SDK](/dotnet/api/overview/azure/ai.formrecognizer-readme)
-   * [Java SDK](/java/api/overview/azure/ai-formrecognizer-readme)
-   * [Python SDK](/python/api/overview/azure/ai-formrecognizer-readme)
-   * [JavaScript SDK](/javascript/api/overview/azure/ai-form-recognizer-readme)
+  * [.NET SDK](/dotnet/api/overview/azure/ai.formrecognizer-readme)
+  * [Java SDK](/java/api/overview/azure/ai-formrecognizer-readme)
+  * [Python SDK](/python/api/overview/azure/ai-formrecognizer-readme)
+  * [JavaScript SDK](/javascript/api/overview/azure/ai-form-recognizer-readme)
 
   Az új SDK a v 2.0 REST API összes funkcióját támogatja az űrlap-felismerőhöz. Például betaníthat egy modellt címkékkel vagy anélkül, és kinyerheti a szöveget, a kulcs érték párokat és táblákat az űrlapokból, kinyerheti a nyugták adatait az előre elkészített visszaigazolási szolgáltatással, és kinyerheti a szöveget és a táblákat az elrendezési szolgáltatással a dokumentumaiból. Az [SDK-visszajelzési űrlapon](https://aka.ms/FR_SDK_v1_feedback)megoszthatja az SDK-kat.
- 
+
 * **Egyéni modell másolása** Most már másolhat modelleket régiók és előfizetések között az új másolás egyéni modell használatával. Az egyéni modell-API másolásának megkezdése előtt be kell szereznie az engedélyt, hogy a cél erőforrásba másolja a másolás engedélyezési műveletét a cél erőforrás-végponton.
-   * [Másolási engedély létrehozása](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModelAuthorization) REST API
-   * [Egyéni modell másolása](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModel) REST API 
+
+  * [Másolási engedély létrehozása](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModelAuthorization) REST API
+  * [Egyéni modell másolása](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModel) REST API 
 
 ### <a name="security-improvements"></a>Biztonsági fejlesztések
 
 * Mostantól elérhetők a FormRecognizer Customer-Managed kulcsai. További információ: az adattitkosítás inaktív állapotban [az űrlap-felismerő számára](./encrypt-data-at-rest.md).
 * Felügyelt identitások használata az Azure-erőforrásokhoz való hozzáféréshez Azure Active Directory. További információ: [hozzáférés engedélyezése a felügyelt identitásokhoz](../authentication.md#authorize-access-to-managed-identities).
 
-## <a name="march-2020"></a>2020. március 
+## <a name="march-2020"></a>2020. március
 
 ### <a name="new-features"></a>Új funkciók
 

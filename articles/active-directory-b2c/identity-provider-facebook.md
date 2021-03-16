@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a43551adf8dbe1a03ac7f7b22d58d63aa8c2c503
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 49abd2cc62ff7a2eab3d95265f3db8f5c894ebb6
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448421"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488941"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés beállítása Facebook-fiókkal Azure Active Directory B2C használatával
 
@@ -55,7 +55,8 @@ Ha Azure Active Directory B2C (Azure AD B2C) Facebook-fiókkal rendelkező felha
 1. Válassza az **alkalmazás titkos kulcsának** **megjelenítése** és másolása lehetőséget. Mindkettőt használja a Facebook identitás-szolgáltatóként való konfigurálásához a bérlőben. Az **alkalmazás titkos kulcsa** fontos biztonsági hitelesítő adat.
 1. A menüben válassza ki a **termékek** melletti **plusz** jelet. A **termékek hozzáadása az alkalmazáshoz** területen válassza a **beállítás** a **Facebook-Bejelentkezés** alatt lehetőséget.
 1. A menüben válassza a **Facebook-Bejelentkezés** lehetőséget, majd válassza a **Beállítások** lehetőséget.
-1. Az **érvényes OAuth átirányítási URI**-k mezőben adja meg a értéket `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Cserélje le a helyére a `your-tenant-name` bérlő nevét. A lap alján kattintson a **módosítások mentése** gombra.
+1. Az **érvényes OAuth átirányítási URI**-k mezőben adja meg a értéket `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Ha [Egyéni tartományt](custom-domain.md)használ, írja be a értéket `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Cserélje le a `your-tenant-name` nevet a bérlő nevére, és az `your-domain-name` Egyéni tartományra. 
+1. A lap alján kattintson a **módosítások mentése** gombra.
 1. Ha szeretné, hogy a Facebook-alkalmazás elérhető legyen a Azure AD B2C számára, válassza ki a lap jobb felső sarkában található állapotjelzőt, és kapcsolja be **, hogy az** alkalmazás nyilvános legyen, majd válassza a **váltás mód** lehetőséget.  Ezen a ponton az állapotnak a **fejlesztéstől** az **élő** értékre kell váltania.
 
 ::: zone pivot="b2c-user-flow"

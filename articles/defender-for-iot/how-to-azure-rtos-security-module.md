@@ -1,6 +1,6 @@
 ---
-title: Az Azure RTOS biztonsági moduljának konfigurálása és testreszabása
-description: Ismerje meg, hogyan konfigurálhatja és testreszabhatja az Azure RTOS biztonsági modulját.
+title: Defender-IoT-Micro-Agent konfigurálása és testreszabása az Azure RTOS
+description: Ismerje meg, hogyan konfigurálhatja és szabhatja testre a Defender-IoT-Micro-Agent Azure-RTOS.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/07/2021
 ms.author: shhazam
-ms.openlocfilehash: 524286fa7a923485d0085fb63f3ef9669db1a4d5
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 874a783763882a28f2fe7078e3a264d09107808a
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449815"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495096"
 ---
-# <a name="configure-and-customize-defender-iot-micro-agent-for-azure-rtos-ga"></a>Defender-IoT-Micro-Agent konfigurálása és testreszabása az Azure RTOS GA-ban
+# <a name="configure-and-customize-defender-iot-micro-agent-for-azure-rtos-preview"></a>Defender-IoT-Micro-Agent konfigurálása és testreszabása az Azure RTOS (előzetes verzió)
 
 Ez a cikk azt ismerteti, hogyan konfigurálható a Defender-IoT-Micro-Agent az Azure RTOS-eszközhöz, hogy megfeleljen a hálózat, a sávszélesség és a memória követelményeinek.
 
@@ -89,5 +89,6 @@ Az eszközök eseményeinek és tevékenységeinek vizsgálatához Log Analytics
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Az Azure RTOS [biztonsági riasztások és javaslatok](concept-rtos-security-alerts-recommendations.md) biztonsági moduljának áttekintése és testreszabása
-- Szükség szerint tekintse meg az [Azure RTOS API biztonsági modulját](azure-rtos-security-module-api.md) .
+
+- A Defender-IoT-Micro-Agent Azure RTOS [biztonsági riasztások és javaslatok](concept-rtos-security-alerts-recommendations.md) áttekintése és testreszabása
+- Szükség szerint tekintse meg a [Defender-IoT-Micro-Agent Azure RTOS API](azure-rtos-security-module-api.md) -t.

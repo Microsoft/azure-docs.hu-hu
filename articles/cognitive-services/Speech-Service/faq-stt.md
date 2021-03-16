@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: panosper
-ms.openlocfilehash: 1ebba3231a7b3a86b98bcc14d1257412d1557ff3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bcb4408df08f3854b067c8b805b78433a3d5075c
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738191"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491248"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Beszéd szöveggel kapcsolatos gyakori kérdések
 
@@ -57,7 +57,7 @@ A többi eredmény valószínűleg rosszabb, és előfordulhat, hogy nem rendelk
 
 **K: Miért vannak különböző alapmodellek?**
 
-Válasz **: több** alapmodell közül választhat a beszédfelismerési szolgáltatásban. Minden modell neve tartalmazza a hozzáadásának dátumát. Az egyéni modellek betanításakor a legújabb modell segítségével érheti el a legjobb pontosságot. A régebbi alapmodellek továbbra is elérhetők egy új modell elérhetővé tételének ideje alatt. Továbbra is használhatja azt a modellt, amelyet már dolgozott a kivonásig (lásd a [modell életciklusát](custom-speech-overview.md#model-lifecycle)). A jobb pontosság érdekében továbbra is ajánlott a legújabb alapmodellre váltani.
+Válasz **: több** alapmodell közül választhat a beszédfelismerési szolgáltatásban. Minden modell neve tartalmazza a hozzáadásának dátumát. Az egyéni modellek betanításakor a legújabb modell segítségével érheti el a legjobb pontosságot. A régebbi alapmodellek továbbra is elérhetők egy új modell elérhetővé tételének ideje alatt. Továbbra is használhatja azt a modellt, amelyet már dolgozott a kivonásig (lásd a [modell és a végpont életciklusát](./how-to-custom-speech-model-and-endpoint-lifecycle.md)). A jobb pontosság érdekében továbbra is ajánlott a legújabb alapmodellre váltani.
 
 **K: frissíthetem a meglévő modellt (a modell halmozását)?**
 
@@ -71,7 +71,7 @@ A régi adatkészletet és az új adatkészletet egyetlen. zip fájlban (akuszti
 
 Ha kiigazította és telepítette a modellt, akkor az üzemelő példány a következőképpen marad. Leszerelheti az üzembe helyezett modellt, újraigazíthatja az alapmodell újabb verzióját, és a jobb pontosság érdekében újból üzembe helyezheti azokat.
 
-Egy kis idő elteltével az alapmodelleket és az egyéni modelleket is kivonják (lásd a [modell életciklusát](custom-speech-overview.md#model-lifecycle)).
+Egy kis idő elteltével az alapmodelleket és az egyéni modelleket is kivonják (lásd [a modell és a végpont életciklusát](./how-to-custom-speech-model-and-endpoint-lifecycle.md)).
 
 **K: le tudom tölteni a modellt, és helyileg futtatom?**
 

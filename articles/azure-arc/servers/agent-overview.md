@@ -1,14 +1,14 @@
 ---
-title: A csatlakoztatott számítógép Windows-ügynökének áttekintése
+title: A csatlakoztatott számítógép ügynökének áttekintése
 description: Ez a cikk részletes áttekintést nyújt az Azure arc-kompatibilis kiszolgálók ügynökéről, amely támogatja a hibrid környezetekben üzemeltetett virtuális gépek figyelését.
-ms.date: 02/18/2021
+ms.date: 03/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: ebd9412849b4a0b3081e892d7472e598ca6e8365
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 1fd863ccacc7768401e35254a98c7bb494b3d358
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651093"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470489"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Az Azure arc használatára képes kiszolgálók ügynökének áttekintése
 
@@ -90,9 +90,11 @@ A Windows és a Linux operációs rendszer következő verziói hivatalosan tám
 
 ### <a name="required-permissions"></a>Szükséges engedélyek
 
-* A gépek bevezetéséhez Ön az **Azure Connected Machine** bevezetési szerepkör tagja.
+* A gépek bevezetéséhez Ön az **Azure Connected Machine** bevezetési vagy [közreműködői](../../role-based-access-control/built-in-roles.md#contributor) szerepkör tagja az erőforráscsoporthoz.
 
-* Egy gép olvasásához, módosításához és törléséhez az **Azure Connected machine erőforrás-rendszergazdai** szerepkör tagja. 
+* Egy gép olvasásához, módosításához és törléséhez az erőforráscsoport Azure-beli **csatlakoztatott számítógép-erőforrás-rendszergazdai** szerepkör tagja.
+
+* Ha a **parancsfájl létrehozása** módszer használatakor ki szeretne választani egy erőforráscsoportot a legördülő listából, akkor legalább Ön az adott erőforráscsoporthoz tartozó [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkör tagja.
 
 ### <a name="azure-subscription-and-service-limits"></a>Az Azure-előfizetések és -szolgáltatások korlátozásai
 

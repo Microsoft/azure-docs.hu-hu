@@ -1,16 +1,16 @@
 ---
-author: PatrickFarley
+author: laujan
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/12/2019
-ms.author: pafarley
-ms.openlocfilehash: f0761847c3677b324ef16c5987eb9a1561dbcbe0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: lajanuar
+ms.openlocfilehash: 89b035397ea2050ae7e61f2a19310b6a7fb4192c
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "75379291"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467246"
 ---
 Vizsgálja `"confidence"` meg az egyes kulcsok/értékek eredményének értékét a `"pageResults"` csomópont alatt. Tekintse meg a csomópontban található megbízhatósági pontszámokat is `"readResults"` , amelyek a szöveges olvasási műveletnek felelnek meg. Az olvasási eredmények megbízhatósága nem befolyásolja a kulcs/érték kinyerési eredményeinek megbízhatóságát, ezért mindkettőt ellenőriznie kell.
 * Ha az olvasási művelet megbízhatósági pontszáma alacsony, próbálja meg javítani a bemeneti dokumentumok minőségét (lásd a [bemeneti követelményeket](../overview.md#input-requirements)).

@@ -17,12 +17,12 @@ ms.date: 01/04/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b0771687aa7ccf9b749c107a6b1c507cb3ba08d
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 1f7466931537745fb188a3bdb05646bff19912e8
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881939"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466252"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Fiókok és engedélyek
 
@@ -44,7 +44,7 @@ A Azure AD Connect futtatásához használt három fiókon kívül a Azure AD Co
 
 - **AD DS vállalati rendszergazdai fiók**: igény szerint a "AD DS Connector-fiók" létrehozásához.
 
-- **Azure ad globális rendszergazdai fiók**: az Azure ad Connector-fiók létrehozásához és az Azure ad konfigurálásához használatos.  A globális rendszergazdai fiókok az Azure Portalon tekinthetők meg.  Lásd: [szerepkörök megtekintése](../../active-directory/roles/manage-roles-portal.md#view-all-roles).
+- **Azure ad globális rendszergazdai fiók**: az Azure ad Connector-fiók létrehozásához és az Azure ad konfigurálásához használatos.  A Azure Portal globális rendszergazdai fiókokat is megtekintheti.  Lásd: [Azure ad-szerepkör-hozzárendelések listázása](../../active-directory/roles/view-assignments.md).
 
 - **SQL SA-fiók (nem kötelező)**: a AdSync-adatbázis létrehozásához használatos az SQL Server teljes verziójának használatakor.  Ez a SQL Server lehet helyi vagy távoli a Azure AD Connect telepítéshez.  Ez a fiók lehet a vállalati rendszergazda fiókja.  Az adatbázis üzembe helyezése mostantól az SQL-rendszergazda sávon kívül is elvégezhető, majd a Azure AD Connect rendszergazdája telepítheti az adatbázis-tulajdonosi jogosultságokkal.  További információ: [Install Azure ad Connect az SQL meghatalmazott rendszergazdai engedélyeivel](how-to-connect-install-sql-delegation.md)
 
@@ -102,7 +102,7 @@ A következő összefoglalás az expressz telepítővarázsló lapjairól, a gy�
 
 | Varázsló lapja | Összegyűjtött hitelesítő adatok | Szükséges engedélyek | Használatban |
 | --- | --- | --- | --- |
-| N.A. |A telepítő varázslót futtató felhasználó |A helyi kiszolgáló rendszergazdája |<li>Létrehozza a szinkronizálási szolgáltatás futtatásához használt ADSync-szolgáltatásfiókot. |
+| N/A |A telepítő varázslót futtató felhasználó |A helyi kiszolgáló rendszergazdája |<li>Létrehozza a szinkronizálási szolgáltatás futtatásához használt ADSync-szolgáltatásfiókot. |
 | Csatlakozás az Azure AD szolgáltatáshoz |Azure AD-címtár hitelesítő adatai |Globális rendszergazdai szerepkör az Azure AD-ben |<li>A szinkronizálás engedélyezése az Azure AD-címtárban.</li>  <li>A folyamatban lévő szinkronizálási műveletekhez használt Azure AD Connector-fiók létrehozása az Azure AD-ben.</li> |
 | Csatlakozás az AD DS szolgáltatáshoz |Helyszíni Active Directory hitelesítő adatok |A vállalati rendszergazdák (EA) csoport tagja Active Directory |<li>Létrehozza a AD DS-összekötő fiókot a Active Directoryban, és engedélyt ad hozzá. Ez a létrehozott fiók a címtáradatok olvasására és írására szolgál a szinkronizálás során.</li> |
 
@@ -119,7 +119,7 @@ A következő összefoglalja az egyéni telepítővarázsló oldalait, a gyűjt�
 
 | Varázsló lapja | Összegyűjtött hitelesítő adatok | Szükséges engedélyek | Használatban |
 | --- | --- | --- | --- |
-| N.A. |A telepítő varázslót futtató felhasználó |<li>A helyi kiszolgáló rendszergazdája</li><li>Ha teljes SQL Server használ, a felhasználónak rendszergazda (SA) értékűnek kell lennie az SQL-ben</li> |Alapértelmezés szerint a a szinkronizálási motor szolgáltatásfiókként használt helyi fiókot hozza létre. A fiók csak akkor jön létre, ha a rendszergazda nem ad meg egy adott fiókot. |
+| N/A |A telepítő varázslót futtató felhasználó |<li>A helyi kiszolgáló rendszergazdája</li><li>Ha teljes SQL Server használ, a felhasználónak rendszergazda (SA) értékűnek kell lennie az SQL-ben</li> |Alapértelmezés szerint a a szinkronizálási motor szolgáltatásfiókként használt helyi fiókot hozza létre. A fiók csak akkor jön létre, ha a rendszergazda nem ad meg egy adott fiókot. |
 | Szinkronizálási szolgáltatások telepítése, szolgáltatásfiók beállítás |AD-vagy helyi felhasználói fiók hitelesítő adatai |Felhasználó, a telepítővarázsló engedélyeket kap |Ha a rendszergazda megad egy fiókot, a rendszer ezt a fiókot használja a szinkronizálási szolgáltatáshoz. |
 | Csatlakozás az Azure AD szolgáltatáshoz |Azure AD-címtár hitelesítő adatai |Globális rendszergazdai szerepkör az Azure AD-ben |<li>A szinkronizálás engedélyezése az Azure AD-címtárban.</li>  <li>A folyamatban lévő szinkronizálási műveletekhez használt Azure AD Connector-fiók létrehozása az Azure AD-ben.</li> |
 | Csatlakoztassa a címtárakat |Helyszíni Active Directory hitelesítő adatok az Azure AD-hez csatlakozó összes erdőhöz |Az engedélyek attól függnek, hogy mely szolgáltatásokat engedélyezte, és hol található az AD DS-összekötő fiók létrehozása |Ez a fiók a címtár adatainak a szinkronizálás során történő olvasására és írására szolgál. |
@@ -158,7 +158,7 @@ Ha a Azure AD Connect egyik verziójáról egy új kiadásra frissít, a követk
 >A build 1.1.484 kezdve a Azure AD Connect egy regressziós hibát vezetett be, amelyhez rendszergazdai jogosultság szükséges az SQL-adatbázis frissítéséhez.  Ezt a hibát kijavítottuk a build 1.1.647.  Ha erre a buildre frissít, rendszergazdai jogosultságokra lesz szüksége.  A dbo engedélyei nem elegendőek.  Ha rendszergazdai jogosultságok nélkül kísérli meg Azure AD Connect frissítését, a frissítés sikertelen lesz, és a Azure AD Connect nem fog megfelelően működni.  A Microsoft tisztában van ezzel, és ezzel a megoldással működik.
 
 
-| Rendszerbiztonsági tag | Szükséges engedélyek | Alkalmazási cél |
+| Rendszerbiztonsági tag | A szükséges engedélyek | Alkalmazási cél |
 | --- | --- | --- |
 | A telepítő varázslót futtató felhasználó |A helyi kiszolgáló rendszergazdája |Bináris fájlok frissítése. |
 | A telepítő varázslót futtató felhasználó |ADSyncAdmins tagja |Módosítsa a szinkronizálási szabályokat és az egyéb beállításokat. |
@@ -267,5 +267,5 @@ Ha nem olvassa be a helyszíni [identitások Azure Active Directory használatá
 |Frissítés a DirSync szolgáltatásról | [Frissítés az Azure AD szinkronizáló eszközéről (DirSync)](how-to-dirsync-upgrade-get-started.md)|
 |A telepítés után | [A telepítés ellenőrzése és licencek hozzárendelése](how-to-connect-post-installation.md)|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).
