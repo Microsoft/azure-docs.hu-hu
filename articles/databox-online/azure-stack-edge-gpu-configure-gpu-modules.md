@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 8be0a444dca4cae9b8f7a1e7c04be8a3046e56be
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 348ddff56ed61cd608d6b9f28417e7cd4c4e6b13
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102638565"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563963"
 ---
 # <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-pro-device"></a>Modul konfigurálása és futtatása GPU-ban Azure Stack Edge Pro-eszközön
 
@@ -50,7 +50,7 @@ Egy modul konfigurálásához, hogy a GPU-t használja a Azure Stack Edge Pro-es
    |--------|---------|
    |Előfizetés      | Az Azure Stack Edge-erőforrás által használt előfizetés. |
    |Erőforráscsoport    | Az Azure Stack peremhálózati erőforrás által használt erőforráscsoport. |
-   |IoT Hub           | Válassza az **új létrehozása** lehetőséget, vagy **használja a meglévőt**. <br> Alapértelmezés szerint IoT-erőforrás létrehozásához a rendszer Standard szintet (S1) használ. Ingyenes szintű IoT-erőforrás használatához hozzon létre egyet, majd válassza ki a létrehozott erőforrást. <br> A IoT Hub erőforrás minden esetben ugyanazt az előfizetést és erőforráscsoportot használja, amelyet az Azure Stack Edge-erőforrás használ.     |
+   |IoT Hub           | Válassza az **új létrehozása** lehetőséget, vagy **használja a meglévőt**. <br> Alapértelmezés szerint IoT-erőforrás létrehozásához a rendszer Standard szintet (S1) használ. Ingyenes szintű IoT-erőforrás használatához hozzon létre egyet, majd válassza ki a létrehozott erőforrást. <br> Az IoT Hub-erőforrás mindig ugyanazt az előfizetést és erőforráscsoportot használja, mint az Azure Stack Edge-erőforrás.     |
    |Name              | Ha nem szeretné használni az új IoT Hub erőforráshoz megadott alapértelmezett nevet, adjon meg egy másik nevet. |
 
    A beállítások befejezését követően válassza a **felülvizsgálat + létrehozás** lehetőséget. Tekintse át a IoT Hub erőforrás beállításait, és válassza a **Létrehozás** lehetőséget.
@@ -104,7 +104,7 @@ Egy modul konfigurálásához, hogy a GPU-t használja a Azure Stack Edge Pro-es
        További információ az NVIDIA GPU-val használható környezeti változókról: [NVIDIA Container Runtime](https://github.com/NVIDIA/nvidia-container-runtime#environment-variables-oci-spec).
 
     > [!NOTE]
-    > Egy GPU csak egy modulhoz rendelhető hozzá. Egy modul azonban a GPU-k egyikét is használhatja.
+    > A modulok használhatnak egy GPU-t is.
 
 12. Adja meg a modul nevét. Ezen a ponton dönthet úgy, hogy a tároló létrehozása lehetőséget adja meg, és módosítja a modul különálló beállításait, vagy ha elkészült, válassza a **Hozzáadás** lehetőséget. 
 

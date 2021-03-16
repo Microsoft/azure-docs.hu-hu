@@ -10,15 +10,15 @@ ms.service: batch
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
-ms.date: 01/13/2021
+ms.date: 02/16/2021
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: c625253585cc99c035852b8b9042f939284bad19
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: baf146bdd89d45c5d7e1ed359822a35d383b7b6c
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101751039"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561914"
 ---
 ### <a name="general-requirements"></a>Általános követelmények
 
@@ -42,10 +42,10 @@ A virtuális hálózat további követelményei eltérhetnek attól függően, h
 
 **Engedélyek** – Ellenőrizze, hogy a virtuális hálózat előfizetésén vagy erőforráscsoportján lévő biztonsági szabályzatok vagy zárolások korlátozzák-e egy felhasználó virtuális hálózat kezelésére vonatkozó engedélyét.
 
-**További hálózati erőforrások** – A Batch automatikusan további hálózati erőforrásokat foglal le a virtuális hálózatot tartalmazó erőforráscsoportban.
+**További hálózati erőforrások** – a Batch automatikusan további hálózati erőforrásokat hoz létre a VNet tartalmazó erőforráscsoporthoz.
 
 > [!IMPORTANT]
-> Minden 100 dedikált vagy alacsony prioritású csomópont esetében a Batch foglalások: egy hálózati biztonsági csoport (NSG), egy nyilvános IP-cím és egy terheléselosztó. Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) vonatkoznak. Nagy készletekhez szükség lehet a kvóta egy vagy több erőforrásra való megemelésének igénylésére.
+> Minden 100 dedikált vagy alacsony prioritású csomópont esetében a Batch a következőt hozza létre: egy hálózati biztonsági csoport (NSG), egy nyilvános IP-cím és egy terheléselosztó. Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) vonatkoznak. Nagy készletekhez szükség lehet a kvóta egy vagy több erőforrásra való megemelésének igénylésére.
 
 #### <a name="network-security-groups-batch-default"></a>Hálózati biztonsági csoportok: Batch-alapértelmezés
 

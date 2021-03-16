@@ -1,6 +1,6 @@
 ---
-title: Az Azure RTOS biztonsági moduljának áttekintése
-description: További információ az Azure RTOS-támogatással és-megvalósítással kapcsolatos biztonsági modulról a IoT készült Azure Defender részeként.
+title: Defender-IoT-Micro-Agent az Azure RTOS – áttekintés
+description: További információ a Defender-IoT-Micro-Agent Azure RTOS támogatásáról és megvalósításáról az Azure Defender for IoT részeként.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2021
 ms.author: shhazam
-ms.openlocfilehash: 47b2b49a21a82be13c987b95c7c775f5014a532e
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: ae1ae941dcb1af73286a4865089b1be227c484fc
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809082"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496048"
 ---
-# <a name="overview-defender-for-iot-security-module-for-azure-rtos-preview"></a>Áttekintés: Defender az Azure RTOS készült IoT biztonsági modulhoz (előzetes verzió)
+# <a name="overview-defender-for-iot-defender-iot-micro-agent-for-azure-rtos-preview"></a>Áttekintés: Defender for IoT Defender – IoT-Micro-Agent Azure RTOS (előzetes verzió)
 
-Az Azure Defender for IoT Micro modul átfogó biztonsági megoldást nyújt az Azure RTOS-t használó eszközökhöz. A valós idejű operációs rendszer (RTOS) eszközein a gyakori fenyegetések és a lehetséges kártékony tevékenységek lefedettségét biztosítja. Az Azure RTOS mostantól a beépített Azure IoT biztonsági modullal rendelkezik.
+Az Azure Defender for IoT Micro modul átfogó biztonsági megoldást nyújt az Azure RTOS-t használó eszközökhöz. A valós idejű operációs rendszer (RTOS) eszközein a gyakori fenyegetések és a lehetséges kártékony tevékenységek lefedettségét biztosítja. Az Azure RTOS mostantól a beépített Azure IoT Defender-IoT-Micro-Agent szolgáltatással rendelkezik.
 
 :::image type="content" source="./media/architecture/azure-rtos-security-monitoring.png" alt-text="A Defender vizualizációja az Azure RTOS IoT.":::
 
@@ -47,11 +47,11 @@ A IoT által biztosított ajánlott infrastruktúra-Defender segítségével ism
 
 ## <a name="get-started-protecting-azure-rtos-devices"></a>Az Azure RTOS-eszközök védelmének megkezdése
 
-Az Azure RTOS biztonsági modulja ingyenes letöltést biztosít az eszközei számára. A IoT Cloud Service Defender egy 30 napos próbaidőszakot biztosít az Azure-előfizetések esetében. Első lépésként töltse le az [Azure RTOS biztonsági modulját](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/defender-for-iot/iot-security-azure-rtos.md). 
+Az Azure RTOS készült Defender-IoT-Micro-Agent ingyenes letöltést biztosít az eszközei számára. A IoT Cloud Service Defender egy 30 napos próbaidőszakot biztosít az Azure-előfizetések esetében. Első lépésként töltse le a [Defender-IoT-Micro-Agent Azure RTOS](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/defender-for-iot/iot-security-azure-rtos.md). 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben megtanulta az Azure RTOS biztonsági modulját. Ha többet szeretne megtudni a biztonsági modulról és az első lépésekről, tekintse meg a következő cikkeket:
+Ebben a cikkben megtanulta az Azure RTOS készült Defender-IoT-Micro-agentet. Ha többet szeretne megtudni a Defender-IoT-Micro-agentről és az első lépésekről, tekintse meg a következő cikkeket:
 
-- [Az Azure RTOS IoT biztonsági moduljának fogalmak](concept-rtos-security-module.md)
-- [Gyors útmutató: Azure RTOS IoT biztonsági modul](quickstart-azure-rtos-security-module.md)
+- [Azure RTOS IoT Defender – IoT-Micro-Agent fogalmak](concept-rtos-security-module.md)
+- [Gyors útmutató: Azure RTOS IoT Defender – IoT-Micro-Agent](quickstart-azure-rtos-security-module.md)

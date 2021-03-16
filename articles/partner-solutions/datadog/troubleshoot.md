@@ -6,16 +6,26 @@ ms.topic: conceptual
 ms.date: 02/19/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: a8bb28892fe42215876b5cc8771ae73c7d2aab7f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0e3c82f711de4cd9710c9aafe798a986e3403ed4
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101746016"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563708"
 ---
-# <a name="troubleshooting-datadog-on-azure"></a>Az Azure-beli Datadoggal hibaelhárítása
+# <a name="troubleshooting-datadog-on-azure"></a>A Datadog hibaelhárítása az Azure-ban
 
 Ez a dokumentum a Datadoggal-t használó megoldások hibaelhárításával kapcsolatos információkat tartalmaz.
+
+## <a name="purchase-errors"></a>Vásárlási hibák
+
+* A vásárlás sikertelen, mert egy érvényes bankkártya nincs csatlakoztatva az Azure-előfizetéshez, vagy egy fizetési mód nincs társítva az előfizetéshez.
+
+  Használjon másik Azure-előfizetést. Vagy adja hozzá vagy frissítse a hitelkártyát vagy a fizetési módot az előfizetéshez. További információ: [a kreditek és a fizetési mód frissítése](../../cost-management-billing/manage/change-credit-card.md).
+
+* Az EA-előfizetés nem teszi lehetővé a piactéren történő vásárlást.
+
+  Használjon másik előfizetést. Vagy ellenőrizze, hogy engedélyezve van-e az EA-előfizetés a piactéren történő vásárláshoz. További információ: a [Piactéri vásárlások engedélyezése](../../cost-management-billing/manage/ea-azure-marketplace.md#enabling-azure-marketplace-purchases). Ha ezek a beállítások nem oldják meg a problémát, forduljon a [datadoggal támogatási szolgálatához](https://www.datadoghq.com/support).
 
 ## <a name="unable-to-create-datadog-resource"></a>Nem sikerült létrehozni a Datadoggal-erőforrást
 

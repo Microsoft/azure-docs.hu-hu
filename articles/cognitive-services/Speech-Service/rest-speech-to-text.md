@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 24cc7773d281d98b6a0943f5e0a61b6f547991ee
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 90a4ad068f332b198696d96bddbb794c820f42f5
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032823"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564388"
 ---
 # <a name="speech-to-text-rest-api"></a>Diktálás REST API
 
@@ -28,7 +28,7 @@ A beszéd – szöveg REST API-k a következők:
 
 ## <a name="speech-to-text-rest-api-v30"></a>Beszéd – szöveg REST API v 3.0
 
-A beszédfelismerés és a szöveg közötti REST API v 3.0 használatos a [kötegelt átíráshoz](batch-transcription.md) és a [Custom Speechhoz](custom-speech-overview.md). Ha a REST-on keresztül kell kommunikálnia az OnLine átírással, a [rövid hangfelvételhez használjon beszéd-szöveges REST API](#speech-to-text-rest-api-for-short-audio).
+A beszédfelismerés és a szöveg közötti REST API v 3.0 használatos a [kötegelt átíráshoz](batch-transcription.md) és a [Custom Speechhoz](custom-speech-overview.md). Ha a REST-on keresztül kell kommunikálnia az online átírással, a [rövid hangfelvételhez használjon beszéd-szöveges REST API](#speech-to-text-rest-api-for-short-audio).
 
 REST API v 3.0 használata a következőhöz:
 - Modellek másolása más előfizetésekre arra az esetre, ha azt szeretné, hogy a munkatársak hozzáférjenek a létrehozott modellhez, vagy olyan esetekben, amikor egy modellt több régióra kíván telepíteni

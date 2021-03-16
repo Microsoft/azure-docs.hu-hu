@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aea468c64f70bd7f35dd25206faa9ea33459999
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 23c74a8a35255162c7c9ddee6c917d4d98d83b89
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688909"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561651"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Eszközidentitások kezelése az Azure Portal használatával
 
@@ -169,6 +169,10 @@ A Azure Portal eszköz beállításainak megtekintéséhez vagy kezeléséhez a 
 
 > [!NOTE]
 > Az Azure ad- **hez csatlakoztatott vagy az Azure ad-ben regisztrált eszközökre multi-Factor Authentication** beállítás az Azure ad-hez csatlakoztatott (bizonyos kivételekkel rendelkező) vagy az Azure ad által regisztrált eszközökre vonatkozik. Ez a beállítás nem vonatkozik a hibrid Azure AD-hez csatlakoztatott eszközökre, az Azure [ad-hez csatlakoztatott virtuális gépekre az Azure-ban és az](./howto-vm-sign-in-azure-ad-windows.md#enabling-azure-ad-login-in-for-windows-vm-in-azure) Azure ad-hez csatlakoztatott eszközökön a [Windows Autopilot öntelepítő üzemmód](/mem/autopilot/self-deploying)használatával.
+
+> [!IMPORTANT]
+> - Javasoljuk, hogy a feltételes hozzáférésben a ["regisztráció vagy csatlakozás eszközökhöz" felhasználói beavatkozást](../conditional-access/concept-conditional-access-cloud-apps.md#user-actions) használja a többtényezős hitelesítés kényszerítéséhez az eszközök csatlakoztatásához vagy regisztrálásához. 
+> - Ezt a beállítást a **nem** értékre kell állítani, ha feltételes hozzáférési szabályzatot használ a multi-Factor authencation megköveteléséhez. 
 
 - **Eszközök maximális száma** – ez a beállítás lehetővé teszi, hogy kiválassza az Azure ad-hez csatlakoztatott vagy az Azure ad-ban regisztrált eszközök maximális számát, amelyet a felhasználók az Azure ad-ben használhatnak. Ha a felhasználó eléri ezt a kvótát, nem tud további eszközöket hozzáadni, amíg a meglévő eszközök közül egy vagy több el nem távolítva. Az alapértelmezett érték a **50**.
 

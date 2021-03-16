@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: ec26cd0b66b6d08d8bd686d8f3e5ad8011df10b1
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: f2251ef79f568677d6ef09d918cb61ffeba07888
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449764"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494546"
 ---
 # <a name="deploy-defender-for-iot-c-based-security-agent-for-linux"></a>A Defender üzembe helyezése a IoT C#-alapú biztonsági ügynökének Linuxra
 
@@ -38,7 +38,7 @@ Más platformokon és ügynöki Ízeknél tekintse meg [a megfelelő biztonsági
 
 1. A biztonsági ügynök telepítéséhez helyi rendszergazdai jogosultságok szükségesek azon a gépen, amelyre telepíteni kívánja a szolgáltatást.
 
-1. [Hozzon létre egy biztonsági modult](quickstart-create-security-twin.md) az eszközhöz.
+1. [Hozzon létre egy Defender-IoT-Micro-Agent](quickstart-create-security-twin.md) eszközt az eszközhöz.
 
 ## <a name="installation"></a>Telepítés
 

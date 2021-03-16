@@ -4,14 +4,15 @@ description: Ismerteti, hogyan lehet kibontani egy PostgreSQL-adatbázist egy me
 author: sr-msft
 ms.author: srranga
 ms.service: postgresql
+ms.subservice: migration-guide
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 4fe15d1bd23f36b7289c54bedf575ae4760600e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16166183b56b371fe8338894f83dbacf2e659c53
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710804"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563555"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>PostgreSQL-adatbázis migrálása memóriakép és visszaállítás használatával
 [!INCLUDE[applies-to-postgres-single-flexible-server](includes/applies-to-postgres-single-flexible-server.md)]
@@ -50,7 +51,7 @@ A--No-Owner paraméterrel együtt a visszaállítás során létrehozott összes
 > A Windows-parancssorban futtassa a parancsot a `SET PGSSLMODE=require` pg_restore parancs futtatása előtt. A Linux vagy a bash futtatása előtt futtassa a parancsot a `export PGSSLMODE=require` pg_restore parancs futtatása előtt.
 >
 
-Ebben a példában a **testdb. dump** fájlból származó adatok visszaállítását a célkiszolgáló **mydemoserver.postgres.database.Azure.com**adatbázis- **mypgsqldb** .
+Ebben a példában a **testdb. dump** fájlból származó adatok visszaállítását a célkiszolgáló **mydemoserver.postgres.database.Azure.com** adatbázis- **mypgsqldb** .
 
 Íme egy példa arra, hogyan használhatja ezt a **pg_restore** az **önálló kiszolgálókhoz**:
 
@@ -73,7 +74,7 @@ A meglévő PostgreSQL-adatbázis Azure Database for PostgreSQL szolgáltatásba
 >
 
 ### <a name="for-the-backup"></a>A biztonsági mentéshez
-- A biztonsági mentést a-FC kapcsolóval hajtsa végre, így a visszaállítás párhuzamosan is elvégezhető. Példa:
+- A biztonsági mentést a-FC kapcsolóval hajtsa végre, így a visszaállítás párhuzamosan is elvégezhető. Például:
 
     ```bash
     pg_dump -h my-source-server-name -U source-server-username -Fc -d source-databasename -f Z:\Data\Backups\my-database-backup.dump
@@ -84,7 +85,7 @@ A meglévő PostgreSQL-adatbázis Azure Database for PostgreSQL szolgáltatásba
 
 - Alapértelmezés szerint már el kell végeznie, de meg kell nyitnia a memóriaképet annak ellenőrzéséhez, hogy a Create index utasítások az adatokat szúrják-e be. Ha nem ez a helyzet, helyezze át a Create index utasítást az adatbeszúrás után.
 
-- Restore with the switchs-FC és-j kapcsolóval *#* integrálással a visszaállítást. *#* a célkiszolgálón lévő magok száma. Azt is megteheti, *#* hogy a beállítás megadásával kétszer is megpróbálkozik a célkiszolgáló magok számával, hogy a hatás megjelenjen. Példa:
+- Restore with the switchs-FC és-j kapcsolóval *#* integrálással a visszaállítást. *#* a célkiszolgálón lévő magok száma. Azt is megteheti, *#* hogy a beállítás megadásával kétszer is megpróbálkozik a célkiszolgáló magok számával, hogy a hatás megjelenjen. Például:
 
 Íme egy példa arra, hogyan használhatja ezt a **pg_restore** az **önálló kiszolgálókhoz**:
 ```bash

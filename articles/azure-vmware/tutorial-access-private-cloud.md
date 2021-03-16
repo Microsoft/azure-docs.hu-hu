@@ -3,12 +3,12 @@ title: Oktatóanyag – hozzáférés saját felhőhöz
 description: Ismerje meg, hogyan férhet hozzá egy Azure VMware-megoldás saját felhőhöz
 ms.topic: tutorial
 ms.date: 03/13/2021
-ms.openlocfilehash: f689a0c706b6427497c80dabb01579ace161d1e2
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: f2af1cffda08bf4b9c62e63f32d36cc9bbd7024a
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103462249"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494393"
 ---
 # <a name="tutorial-access-an-azure-vmware-solution-private-cloud"></a>Oktatóanyag: Azure VMware-megoldás privát felhőhöz való hozzáférése
 
@@ -34,10 +34,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
    A Private Cloud vCenter és a NSX-T Manager kijelző URL-címei és felhasználói hitelesítő adatai.
 
-   >[!TIP]
-   >Válassza az **új jelszó létrehozása** lehetőséget új VCENTER és NSX-T jelszavak létrehozásához.
-
-   :::image type="content" source="media/tutorial-access-private-cloud/generate-vcenter-nsxt-passwords.png" alt-text="Saját Felhőbeli vCenter és NSX-kezelő URL-címek és hitelesítő adatok megjelenítése." border="true" lightbox="media/tutorial-access-private-cloud/generate-vcenter-nsxt-passwords.png":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="Saját Felhőbeli vCenter és NSX-kezelő URL-címek és hitelesítő adatok megjelenítése." border="true" lightbox="media/tutorial-access-private-cloud/ss4-display-identity.png":::
 
 1. Navigáljon az előző lépésben létrehozott virtuális GÉPRE, és kapcsolódjon a virtuális géphez. 
 

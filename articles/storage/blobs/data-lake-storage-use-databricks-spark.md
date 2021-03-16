@@ -9,12 +9,12 @@ ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
 ms.custom: devx-track-python
-ms.openlocfilehash: 5fce5871b4bd6c3e2353f7df04018e88b86ec4c7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 232e28d3cc8b0bc7427dd035d51743f623e54259
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912518"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564303"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Oktatóanyag: Azure Data Lake Storage Gen2, Azure Databricks & Spark
 
@@ -54,7 +54,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 Ez az oktatóanyag repülési adatokat használ az Bureau of közlekedési statisztikából, hogy bemutassa, hogyan hajthat végre ETL-műveletet. Az oktatóanyag befejezéséhez le kell töltenie ezeket az adatfájlokat.
 
-1. Látogasson el a [Research and innovatív Technology Administration, a közlekedés statisztikáit ismertető irodára](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time).
+1. Látogasson el a [Research and innovatív Technology Administration, a közlekedés statisztikáit ismertető irodára](https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ).
 
 2. Jelölje be az **előtömörített fájl** jelölőnégyzetet az összes adatmező kiválasztásához.
 
@@ -144,7 +144,7 @@ Ebben a szakaszban egy tárolót és egy mappát fog létrehozni a Storage-fiók
 
 3. A **Jegyzetfüzet létrehozása** párbeszédpanelen adja meg a jegyzetfüzet nevét. Válassza a **Python** nyelvet, majd válassza ki a korábban létrehozott Spark-fürtöt.
 
-4. Kattintson a **Létrehozás** gombra.
+4. Válassza a **Létrehozás** lehetőséget.
 
 5. Másolja és illessze be az alábbi kódrészletet az első cellába, de még ne futtassa ezt a kódot.
 
@@ -275,7 +275,7 @@ print('Airlines that fly to/from Texas: ', out1.show(100, False))
 
 Ha már nincs rájuk szükség, törölje az erőforráscsoportot és az összes kapcsolódó erőforrást. Ehhez válassza ki a Storage-fiókhoz tartozó erőforráscsoportot, és válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"] 
 > [Adatok kinyerése, átalakítása és betöltése az Azure HDInsight-alapú Apache Hive használatával](data-lake-storage-tutorial-extract-transform-load-hive.md)

@@ -4,18 +4,21 @@ description: Ez a cikk az adatbázisok Azure Database for MySQL-ben történő i
 author: savjani
 ms.author: pariks
 ms.service: mysql
+ms.subservice: migration-guide
 ms.topic: conceptual
 ms.date: 10/30/2020
-ms.openlocfilehash: af9f0f65e01a786d478fac0adde6174b8f03b2fd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 391a38cd3d1e2ffb790587b6c60ed54992d14d2d
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019896"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561991"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>A MySQL-adatbázis migrálása Importálás és exportálás használatával
 [!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
 Ez a cikk két gyakori megközelítést ismertet az adatAzure Database for MySQL-kiszolgálóra való importálásához és exportálásához a MySQL Workbench használatával.
+
+Részletes és átfogó áttelepítési útmutató: a [MySQL és az Azure Database áttelepítési útmutatója](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide). 
 
 Az [adatbázis-áttelepítési útmutatóban](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide) részletes információkat találhat az adatbázisok Azure Database for MySQLba való áttelepítésével kapcsolatos információkról és használatáról. Ez az útmutató útmutatást nyújt az Azure-ba való MySQL-áttelepítés sikeres megtervezéséhez és végrehajtásához.
 
@@ -40,7 +43,7 @@ Adja hozzá a kapcsolódási adatokat a MySQL Workbenchhez.
 > [!TIP]
 > A teljes adatbázis kiírására és visszaállítására szolgáló forgatókönyvek esetén Ehelyett a [dump és a Restore](concepts-migrate-dump-restore.md) megközelítést kell használnia.
 
-A MySQL Tools használatával adatbázisok importálhatók és exportálhatók az Azure MySQL-adatbázisba az alábbi esetekben.
+A MySQL Tools használatával adatbázisok importálhatók és exportálhatók az Azure MySQL-adatbázisba az alábbi esetekben. Más eszközök esetében lásd: a [MySQL és az Azure Database áttelepítési útmutatójának](https://github.com/Azure/azure-mysql/blob/master/MigrationGuide/MySQL%20Migration%20Guide_v1.1.pdf)22. lapja. 
 
 - Ha szelektíven kell választania néhány táblázatot egy meglévő MySQL-adatbázisból az Azure MySQL-adatbázisba való importáláshoz, ajánlott az importálási és exportálási módszer használata.  Ezzel kihagyhatja az áttelepítés felesleges tábláit, így időt és erőforrásokat takaríthat meg. Használja például a vagy a `--include-tables` `--exclude-tables` kapcsolót a [mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) és a `--tables` kapcsolót a [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables).
 - Ha a táblázatokon kívül más adatbázis-objektumokat helyez át, explicit módon hozza létre ezeket az objektumokat. Belefoglalja a korlátozásokat (elsődleges kulcs, idegen kulcs, indexek), nézeteket, függvényeket, eljárásokat, eseményindítókat és bármely más, az áttelepíteni kívánt adatbázis-objektumot.
@@ -115,6 +118,6 @@ Az **adatimportálás** lapon importálhatja vagy visszaállíthatja az exportá
 1. Válassza ki a Project mappát vagy az önálló SQL-fájlt, válassza ki az importálni kívánt sémát, vagy válassza az **új** lehetőséget egy új séma definiálásához.
 2. Az importálási folyamat megkezdéséhez kattintson az **Importálás megkezdése** elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Egy másik áttelepítési módszerként olvassa el [a MySQL-adatbázis áttelepítése a dump használatával és a visszaállítás a Azure Database for MySQLban című részt](concepts-migrate-dump-restore.md).
 - Az adatbázisok Azure Database for MySQLre való áttelepítésével kapcsolatos további információkért tekintse meg az [adatbázis-áttelepítési útmutatót](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide).

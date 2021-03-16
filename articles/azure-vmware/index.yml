@@ -9,12 +9,12 @@ metadata:
   author: shortpatti
   ms.author: v-patsho
   ms.date: 03/12/2021
-  ms.openlocfilehash: 9014dbbfdb9d1f0ef4af975da917abdcf71d8b2a
-  ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+  ms.openlocfilehash: edf9adfa316407eb0bf1270bae93d7cfa273d50f
+  ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/12/2021
-  ms.locfileid: "103232953"
+  ms.lasthandoff: 03/16/2021
+  ms.locfileid: "103490090"
 landingContent:
 - title: Az Azure VMware Solution ismertetése
   linkLists:
@@ -74,12 +74,6 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: A gazdagép kvótájának kérése és az Azure VMware-megoldás engedélyezése
-      url: enable-azure-vmware-solution.md
-    - text: Költségcsökkentés fenntartott példánnyal
-      url: reserved-instance.md
-    - text: Migrálás kiértékelése
-      url: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
     - text: DHCP kezelése
       url: manage-dhcp.md
     - text: NSX hálózati összetevők konfigurálása
@@ -94,6 +88,16 @@ landingContent:
       url: public-ip-usage.md
     - text: IPSec-alagút létrehozása
       url: create-ipsec-tunnel.md
+  - linkListType: reference
+    links:
+    - text: Azure VMware-megoldás kérése a gazda számára
+      url: enable-azure-vmware-solution.md
+    - text: EA-és CSP-előfizetések áthelyezése
+      url: move-ea-csp-subscriptions.md
+    - text: Költségcsökkentés fenntartott példánnyal
+      url: reserved-instance.md
+    - text: Migrálás kiértékelése
+      url: /azure/migrate/how-to-create-azure-vmware-solution-assessment?context=/azure/azure-vmware/context/context
 - title: Azure natív integrációja
   linkLists:
   - linkListType: how-to-guide

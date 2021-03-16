@@ -1,6 +1,6 @@
 ---
 title: 'DB2 – SQL felügyelt példány: áttelepítési útmutató'
-description: Kövesse ezt az útmutatót, ha a DB2-adatbázisait át szeretné telepíteni az Azure SQL felügyelt példányára.
+description: Ez az útmutató bemutatja, hogyan migrálhatja a DB2-adatbázisokat az Azure SQL felügyelt példányára a DB2 SQL Server Migration Assistant használatával.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
 ms.custom: ''
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 3902661553bbb390e6e999e0f67cd043eee8df09
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 9ad838b8c5f54d3ecdd5c8ce56b197cdb6cec1ba
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359183"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563861"
 ---
 # <a name="migration-guide-db2-to-sql-managed-instance"></a>Áttelepítési útmutató: DB2 – SQL felügyelt példány
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -61,7 +61,7 @@ Az értékelés létrehozásához kövesse az alábbi lépéseket:
 
 1. A HTML-jelentés áttekintésével megismerheti a konverziós statisztikákat és az esetleges hibákat vagy figyelmeztetéseket. A jelentés az Excelben is megnyitható a DB2-objektumok leltárának beszerzéséhez, valamint a séma átalakításához szükséges erőfeszítésekhez. A jelentés alapértelmezett helye a SSMAProjects belüli jelentési mappában található.
 
-   Például: `drive:\<username>\Documents\SSMAProjects\MyDB2Migration\report\report_<date>`. 
+   Példa: `drive:\<username>\Documents\SSMAProjects\MyDB2Migration\report\report_<date>`. 
 
    :::image type="content" source="media/db2-to-managed-instance-guide/report.png" alt-text="A hibák vagy figyelmeztetések azonosítására szolgáló jelentés áttekintése":::
 
@@ -142,9 +142,6 @@ Az adatbázis-áttelepítés tesztelési módszere a következő tevékenységek
 1. **Tesztkörnyezet beállítása**: a tesztkörnyezet a forrás-adatbázis és a céladatbázis másolatát is tartalmazza. Ügyeljen arra, hogy elkülönítse a tesztkörnyezet.
 1. **Ellenőrzési tesztek futtatása**: futtassa az ellenőrző teszteket a forráson és a célhelyen, majd elemezze az eredményeket.
 1. **Teljesítménytesztek futtatása**: futtasson teljesítménytesztet a forráson és a célhelyen, majd elemezze és hasonlítsa össze az eredményeket.
-
-   > [!NOTE]
-   > A Migrálás utáni ellenőrzési tesztek fejlesztésére és futtatására vonatkozó segítségért vegye figyelembe a partner [QuerySurge](https://www.querysurge.com/company/partners/microsoft)elérhető adatminőségi megoldást. 
 
 
 ## <a name="leverage-advanced-features"></a>Speciális funkciók kihasználása 

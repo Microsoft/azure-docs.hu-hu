@@ -10,16 +10,23 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: af66f2ec56551a5177cd9323d216e9bf4b0c41be
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1b2418b248e995b0f64eec82ccb477b15583c81e
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021847"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562331"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Kibocsátási megjegyzések: beszédfelismerési eszközök SDK
 
 A következő fejezetek a legutóbbi kiadások változásait sorolja fel.
+
+## <a name="speech-devices-sdk-1150"></a>Beszédfelismerési eszközök SDK-1.15.0:
+
+- Frissítve az új Microsoft audio stack (MAS) szolgáltatással, amely továbbfejlesztett beamforming és zajcsökkentést biztosít a beszédfelismeréshez.
+- A bináris méretet a célként megadott mennyiségtől 70%-kal csökkentve.
+- Az [Azure Percept hangjának](https://docs.microsoft.com/azure/azure-percept/overview-azure-percept-audio) támogatása [bináris kiadással](https://aka.ms/sdsdk-download-APAudio).
+- Frissítette a [SPEECH SDK](./speech-sdk.md) összetevőjét a 1.15.0 verzióra. További információt a [kibocsátási megjegyzései](./releasenotes.md)című témakörben talál.
 
 ## <a name="speech-devices-sdk-1110"></a>Beszédfelismerési eszközök SDK-1.11.0:
 

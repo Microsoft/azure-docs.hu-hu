@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 02/17/2021
+ms.date: 03/13/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7a0f50a7f84b89d7c048e57eadc85635df10f77
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: a2c327154e2f4eae735e7078be3b057b1d8cf1c5
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103467680"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490874"
 ---
 # <a name="azure-ad-built-in-roles"></a>Beépített Azure AD-szerepkörök
 
@@ -76,6 +76,7 @@ Ajánlott eljárásként Azt javasoljuk, hogy a szerepkört a szervezetnél keve
 > | [Üzleti vezető](#insights-business-leader) | Megtekintheti és megoszthatja az irányítópultokat és az ismereteket az M365-bepillantást használó alkalmazással. | 31e939ad-9672-4796-9c2e-873181342d2d |
 > | [Intune-rendszergazda](#intune-administrator) | Az Intune-termék minden aspektusát képes kezelni. | 3a2c62db-5318-420d-8d74-23affee5d9d5 |
 > | [Kaizala-rendszergazda](#kaizala-administrator) | Kezelheti a Microsoft Kaizala beállításait. | 74ef975b-6605-40af-a5d2-b9539d836353 |
+> | [Knowledge Administrator](#knowledge-administrator) | Képes az ismeretek, a tanulás és az egyéb intelligens funkciók konfigurálására. | b5a8dcf3-09d5-43a9-a639-8e29ef291470 |
 > | [Licenc rendszergazdája](#license-administrator) | A a felhasználókra és a csoportokra vonatkozó licenceket is képes kezelni. | 4d6ac14f-3453-41d0-bef9-a3e0c569773a |
 > | [A Message Center adatvédelmi olvasója](#message-center-privacy-reader) | Csak az Office 365 Message Center biztonsági üzeneteinek és frissítéseinek olvasására van lehetőség. | ac16e43d-7b2d-40e0-ac05-243ff356ab5b |
 > | [Üzenetközpont-olvasó](#message-center-reader) | A szervezete üzenetei és frissítései csak az Office 365 Message Centerben olvashatók. | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b |
@@ -228,7 +229,7 @@ A [hitelesítési házirend rendszergazdai](#authentication-policy-administrator
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | Hitelesítés rendszergazdája | Igen, egyes felhasználók számára (lásd fent) | Igen, egyes felhasználók számára (lásd fent) | Nem | Nem | Nem |
 | Kiemelt jogosultságú hitelesítés rendszergazdája| Igen minden felhasználó számára | Igen minden felhasználó számára | Nem | Nem | Nem |
-| Hitelesítési házirend rendszergazdája | Nem |Nem | Igen | Igen | Yes |
+| Hitelesítési házirend rendszergazdája | Nem |Nem | Igen | Igen | Igen |
 
 > [!IMPORTANT]
 > Az ezzel a szerepkörrel rendelkező felhasználók megváltoztathatják azoknak a személyeknek a hitelesítő adatait, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz, illetve a Azure Active Directoryon belüli és kívüli kritikus konfigurációhoz. A felhasználók hitelesítő adatainak módosítása azt jelentheti, hogy a felhasználó identitását és engedélyeit feltételezi. Például:
@@ -263,7 +264,7 @@ A [hitelesítési rendszergazda](#authentication-administrator) és az emelt [sz
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | Hitelesítés rendszergazdája | Igen, egyes felhasználók számára (lásd fent) | Igen, egyes felhasználók számára (lásd fent) | Nem | Nem | Nem |
 | Kiemelt jogosultságú hitelesítés rendszergazdája| Igen minden felhasználó számára | Igen minden felhasználó számára | Nem | Nem | Nem |
-| Hitelesítési házirend rendszergazdája | Nem | Nem | Igen | Igen | Yes |
+| Hitelesítési házirend rendszergazdája | Nem | Nem | Igen | Igen | Igen |
 
 > [!IMPORTANT]
 > Ez a szerepkör jelenleg nem képes kezelni az MFA-beállításokat az örökölt MFA felügyeleti portálon.
@@ -401,7 +402,7 @@ Ez a szerepkör a delegált engedélyek és az alkalmazás engedélyeinek megad�
 > | Microsoft. Directory/servicePrincipals/synchronizationJobs/Manage | Alkalmazás-kiépítési szinkronizálás feladatok elindítása, újraindítása és szüneteltetése |
 > | Microsoft. Directory/servicePrincipals/synchronizationSchema/Manage | Alkalmazás-kiépítési szinkronizálás-feladatok és-séma létrehozása és kezelése |
 > | Microsoft. Directory/servicePrincipals/managePasswordSingleSignOnCredentials | Jelszó egyszeri bejelentkezési hitelesítő adatainak beolvasása az egyszerű szolgáltatásokban |
-> | Microsoft. Directory/servicePrincipals/managePermissionGrantsForAll. Microsoft-Application-admin | Az alkalmazás engedélyeinek és a delegált engedélyeknek a jóváhagyása bármely felhasználó vagy minden felhasználó nevében, a Microsoft Graph és az Azure AD Graph alkalmazás engedélyeinek kivételével  |
+> | Microsoft. Directory/servicePrincipals/managePermissionGrantsForAll. Microsoft-Application-admin | Az alkalmazás engedélyeinek és a delegált engedélyeknek a jóváhagyása bármely felhasználó vagy minden felhasználó nevében, a Microsoft Graph és az Azure AD Graph alkalmazás engedélyeinek kivételével |
 > | Microsoft. Directory/servicePrincipals/appRoleAssignedTo/Update | Egyszerű szolgáltatás szerepkör-hozzárendeléseinek frissítése |
 > | Microsoft. Directory/servicePrincipals/hallgatóság/frissítés | A célközönség tulajdonságainak frissítése az egyszerű szolgáltatásokban |
 > | Microsoft. Directory/servicePrincipals/hitelesítés/frissítés | Az egyszerű szolgáltatások hitelesítési tulajdonságainak frissítése |
@@ -730,7 +731,7 @@ Az ehhez a szerepkörhöz tartozó felhasználók globális engedélyekkel rende
 > | Microsoft. Directory/groups. Unified/owners/Update | Microsoft 365 csoportok tulajdonosainak frissítése a szerepkörhöz hozzárendelhető csoportok kizárásával |
 > | Microsoft. Azure. serviceHealth/allEntities/allTasks | Azure Service Health olvasása és konfigurálása |
 > | Microsoft. Azure. supportTickets/allEntities/allTasks | Azure-támogatási jegyek létrehozása és kezelése |
-> | Microsoft. Office 365. Exchange/allEntities/allTasks | Az Exchange Online összes aspektusának kezelése |
+> | Microsoft. Office 365. Exchange/allEntities/Basic/allTasks | Az Exchange Online összes aspektusának kezelése |
 > | Microsoft. Office 365. Network/Performance/allProperties/READ | Az összes hálózati teljesítmény tulajdonságainak olvasása a Microsoft 365 felügyeleti központban |
 > | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Service Health olvasása és konfigurálása a Microsoft 365 felügyeleti központban |
 > | Microsoft. Office 365. supportTickets/allEntities/allTasks | Microsoft 365 szolgáltatási kérelmek létrehozása és kezelése |
@@ -774,6 +775,7 @@ Az ehhez a szerepkörhöz tartozó felhasználók hozzáférhetnek a Azure Activ
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |
 > | --- | --- |
+> | Microsoft. Directory/accessReviews/allProperties/allTasks | Hozzáférési felülvizsgálatok létrehozása és törlése, valamint a hozzáférési felülvizsgálatok összes tulajdonságának olvasása és frissítése az Azure AD-ben |
 > | Microsoft. Directory/Administrativeunit/allProperties/allTasks | Felügyeleti egységek létrehozása és kezelése (beleértve a tagokat) |
 > | Microsoft. Directory/alkalmazások/allProperties/allTasks | Alkalmazások létrehozása és törlése, valamint az összes tulajdonság olvasása és frissítése |
 > | Microsoft. Directory/alkalmazások/szinkronizálás/standard/olvasás | Az alkalmazásobjektum-objektumhoz társított kiépítési beállítások olvasása |
@@ -801,9 +803,10 @@ Az ehhez a szerepkörhöz tartozó felhasználók hozzáférhetnek a Azure Activ
 > | Microsoft. Directory/tartományok/allProperties/allTasks | Tartományok létrehozása és törlése, valamint az összes tulajdonság olvasása és frissítése |
 > | Microsoft. Directory/entitlementManagement/allProperties/allTasks | Erőforrások létrehozása és törlése, valamint az összes tulajdonság olvasása és frissítése az Azure AD-jogosultságok kezelésében |
 > | Microsoft. Directory/csoportok/allProperties/allTasks | Csoportok létrehozása és törlése, valamint az összes tulajdonság olvasása és frissítése |
-> | Microsoft. Directory/groupsAssignableToRoles/allProperties/Update | A isAssignableToRole tulajdonsággal rendelkező csoportok frissítése True értékre |
-> | Microsoft. Directory/groupsAssignableToRoles/Create | IsAssignableToRole tulajdonsággal rendelkező csoportok létrehozása True értékre |
-> | Microsoft. Directory/groupsAssignableToRoles/delete | A isAssignableToRole tulajdonsággal rendelkező csoportok törlése igaz értékre |
+> | Microsoft. Directory/groupsAssignableToRoles/Create | Szerepkörhöz hozzárendelhető csoportok létrehozása |
+> | Microsoft. Directory/groupsAssignableToRoles/delete | Szerepkörhöz hozzárendelhető csoportok törlése |
+> | Microsoft. Directory/groupsAssignableToRoles/Restore | Szerepkör-hozzárendelhető csoportok visszaállítása |
+> | Microsoft. Directory/groupsAssignableToRoles/allProperties/Update | Szerepkör-hozzárendelhető csoportok frissítése |
 > | Microsoft. Directory/groupSettings/allProperties/allTasks | Csoportházirend-beállítások létrehozása és törlése, valamint az összes tulajdonság olvasása és frissítése |
 > | Microsoft. Directory/groupSettingTemplates/allProperties/allTasks | Csoport-beállítási sablonok létrehozása és törlése, valamint az összes tulajdonság olvasása és frissítése |
 > | Microsoft. Directory/identityProtection/allProperties/allTasks | Az összes erőforrás létrehozása és törlése, valamint az általános tulajdonságok olvasása és frissítése Azure AD Identity Protection |
@@ -823,7 +826,7 @@ Az ehhez a szerepkörhöz tartozó felhasználók hozzáférhetnek a Azure Activ
 > | Microsoft. Directory/serviceAction/getAvailableExtentionProperties | Végrehajthatja a Getavailableextentionproperties szolgáltatás műveletét |
 > | Microsoft. Directory/servicePrincipals/allProperties/allTasks | Egyszerű szolgáltatásnév létrehozása és törlése, valamint az összes tulajdonság olvasása és frissítése |
 > | Microsoft. Directory/servicePrincipals/managePermissionGrantsForAll. Microsoft-Company-admin | Hozzájárulás engedélyezése bármely alkalmazáshoz bármely engedélyhez |
-> | Microsoft. Directory/servicePrincipals/managePermissionGrantsForGroup. Microsoft-all-Application-permissions | A szolgáltatás közvetlen hozzáférésének biztosítása a pricipal  |
+> | Microsoft. Directory/servicePrincipals/managePermissionGrantsForGroup. Microsoft-all-Application-permissions | A szolgáltatás közvetlen hozzáférésének biztosítása a pricipal |
 > | Microsoft. Directory/servicePrincipals/szinkronizálás/standard/olvasás | Az egyszerű szolgáltatáshoz társított kiépítési beállítások olvasása |
 > | Microsoft. Directory/signInReports/allProperties/READ | A bejelentkezési jelentések összes tulajdonságának olvasása, beleértve a privilegizált tulajdonságokat is |
 > | Microsoft. Directory/subscribedSkus/allProperties/allTasks | Előfizetések vásárlása és kezelése, előfizetések törlése |
@@ -832,6 +835,10 @@ Az ehhez a szerepkörhöz tartozó felhasználók hozzáférhetnek a Azure Activ
 > | Microsoft. Directory/permissionGrantPolicies/delete | Engedély-engedélyezési szabályzatok törlése |
 > | Microsoft. Directory/permissionGrantPolicies/standard/olvasás | Engedély-engedélyezési házirendek szabványos tulajdonságainak olvasása |
 > | Microsoft. Directory/permissionGrantPolicies/Basic/Update | Engedély-engedélyezési szabályzatok alapszintű tulajdonságainak frissítése |
+> | Microsoft. Directory/servicePrincipalCreationPolicies/Create | Egyszerű szolgáltatás-létrehozási szabályzatok létrehozása |
+> | Microsoft. Directory/servicePrincipalCreationPolicies/delete | Egyszerű szolgáltatásnév-létrehozási szabályzatok törlése |
+> | Microsoft. Directory/servicePrincipalCreationPolicies/standard/olvasás | Egyszerű szolgáltatásnév-létrehozási házirendek szabványos tulajdonságainak olvasása |
+> | Microsoft. Directory/servicePrincipalCreationPolicies/Basic/Update | Egyszerű szolgáltatásnév-létrehozási szabályzatok alapszintű tulajdonságainak frissítése |
 > | Microsoft. Azure. advancedThreatProtection/allEntities/allTasks | Az Azure komplex veszélyforrások elleni védelem összes aspektusának kezelése |
 > | Microsoft. Azure. informationProtection/allEntities/allTasks | Azure Information Protection összes aspektusának kezelése |
 > | Microsoft. Azure. serviceHealth/allEntities/allTasks | Azure Service Health olvasása és konfigurálása |
@@ -842,11 +849,12 @@ Az ehhez a szerepkörhöz tartozó felhasználók hozzáférhetnek a Azure Activ
 > | Microsoft. Intune/allEntities/allTasks | Microsoft Intune összes aspektusának kezelése |
 > | Microsoft. Office 365. complianceManager/allEntities/allTasks | Az Office 365 megfelelőség-kezelő összes aspektusának kezelése |
 > | Microsoft. Office 365. desktopAnalytics/allEntities/allTasks | Az asztali elemzések összes aspektusának kezelése |
-> | Microsoft. Office 365. Exchange/allEntities/allTasks | Az Exchange Online összes aspektusának kezelése |
+> | Microsoft. Office 365. Exchange/allEntities/Basic/allTasks | Az Exchange Online összes aspektusának kezelése |
 > | Microsoft. Office 365. kulcstároló/allEntities/allTasks | Ügyfélszéf összes aspektusának kezelése |
 > | Microsoft. Office 365. messageCenter/messages/READ | Üzenetek olvasása az üzenetsor-központban a Microsoft 365 felügyeleti központban, a biztonsági üzenetek kivételével |
 > | Microsoft. Office 365. messageCenter/securityMessages/READ | Az üzenetközpont biztonsági üzeneteinek beolvasása a Microsoft 365 felügyeleti központban |
-> | Microsoft. Office 365. protectionCenter/allEntities/allProperties/allTasks | Az Office 365 Protection Center összes aspektusának kezelése |
+> | Microsoft. Office 365. Network/Performance/allProperties/READ | Az összes hálózati teljesítmény tulajdonságainak olvasása a Microsoft 365 felügyeleti központban |
+> | Microsoft. Office 365. protectionCenter/allEntities/allProperties/allTasks | A biztonsági és megfelelőségi központok összes aspektusának kezelése |
 > | Microsoft. Office 365. Search/Content/Manage | Tartalom létrehozása és törlése, valamint az összes tulajdonság olvasása és frissítése a Microsoft Search szolgáltatásban |
 > | Microsoft. Office 365. securityComplianceCenter/allEntities/allTasks | Az összes erőforrás létrehozása és törlése, valamint az általános tulajdonságok olvasása és frissítése a Microsoft 365 biztonsági és megfelelőségi központban |
 > | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Service Health olvasása és konfigurálása a Microsoft 365 felügyeleti központban |
@@ -902,11 +910,11 @@ Az ebben a szerepkörben lévő felhasználók beolvashatják a beállításokat
 > | Microsoft. Directory/signInReports/allProperties/READ | A bejelentkezési jelentések összes tulajdonságának olvasása, beleértve a privilegizált tulajdonságokat is |
 > | Microsoft. Directory/felhasználók/strongAuthentication/olvasás | A felhasználók erős hitelesítési tulajdonságának beolvasása |
 > | Microsoft. Commerce. számlázás/allEntities/olvasás | Az Office 365-számlázás összes erőforrásának olvasása |
-> | Microsoft. Office 365. Exchange/allEntities/READ | Az Exchange Online összes erőforrásának olvasása |
+> | Microsoft. Office 365. Exchange/allEntities/standard/READ | Az Exchange Online összes erőforrásának olvasása |
 > | Microsoft. Office 365. messageCenter/messages/READ | Üzenetek olvasása az üzenetsor-központban a Microsoft 365 felügyeleti központban, a biztonsági üzenetek kivételével |
 > | Microsoft. Office 365. messageCenter/securityMessages/READ | Az üzenetközpont biztonsági üzeneteinek beolvasása a Microsoft 365 felügyeleti központban |
 > | Microsoft. Office 365. Network/Performance/allProperties/READ | Az összes hálózati teljesítmény tulajdonságainak olvasása a Microsoft 365 felügyeleti központban |
-> | Microsoft. Office 365. protectionCenter/allEntities/allProperties/READ | Az Office 365 Protection Center összes aspektusának olvasása |
+> | Microsoft. Office 365. protectionCenter/allEntities/allProperties/READ | A biztonsági és megfelelőségi központok összes tulajdonságának olvasása |
 > | Microsoft. Office 365. securityComplianceCenter/allEntities/READ | Általános tulajdonságok olvasása Microsoft 365 biztonsági és megfelelőségi központban |
 > | Microsoft. Office 365. usageReports/allEntities/allProperties/READ | Office 365-használati jelentések olvasása |
 > | Microsoft. Office 365. Webportal/allEntities/standard/olvasás | A Microsoft 365 felügyeleti központban található összes erőforrás alapszintű tulajdonságainak olvasása |
@@ -933,7 +941,7 @@ A szerepkör felhasználói létrehozhatnak és kezelhetnek csoportokat és azok
 > | Microsoft. Directory/csoportok/tulajdonosok/frissítés | Csoportok tulajdonosainak frissítése, a szerepkörhöz hozzárendelhető csoportok kizárása |
 > | Microsoft. Directory/csoportok/beállítások/frissítés | Csoportok beállításainak frissítése |
 > | Microsoft. Directory/csoportok/láthatóság/frissítés | A csoportok láthatósági tulajdonságának frissítése |
-> | Microsoft. Directory/servicePrincipals/managePermissionGrantsForGroup. Microsoft-all-Application-permissions | A szolgáltatás közvetlen hozzáférésének biztosítása a pricipal  |
+> | Microsoft. Directory/servicePrincipals/managePermissionGrantsForGroup. Microsoft-all-Application-permissions | A szolgáltatás közvetlen hozzáférésének biztosítása a pricipal |
 > | Microsoft. Azure. serviceHealth/allEntities/allTasks | Azure Service Health olvasása és konfigurálása |
 > | Microsoft. Azure. supportTickets/allEntities/allTasks | Azure-támogatási jegyek létrehozása és kezelése |
 > | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Service Health olvasása és konfigurálása a Microsoft 365 felügyeleti központban |
@@ -1092,7 +1100,6 @@ Ez a szerepkör az összes biztonsági csoportot képes létrehozni és kezelni.
 > | Microsoft. Directory/groups. Security/Basic/Update | A biztonsági csoportok alapszintű tulajdonságainak frissítése a szerepkörhöz hozzárendelhető csoportok kizárásával |
 > | Microsoft. Directory/csoportok. biztonság/besorolás/frissítés | A biztonsági csoportok Update besorolási tulajdonsága a szerepkörhöz hozzárendelhető csoportok kizárásával |
 > | Microsoft. Directory/groups. Security/dynamicMembershipRule/Update | A biztonsági csoportok dynamicMembershipRule tulajdonságának frissítése a szerepkörhöz hozzárendelhető csoportok kizárásával |
-> | Microsoft. Directory/groups. Security/groupType/Update | A biztonsági csoportok csoport típusa tulajdonságának frissítése a szerepkörhöz hozzárendelhető csoportok kizárásával |
 > | Microsoft. Directory/csoportok. biztonság/tagok/frissítés | Biztonsági csoportok tagjainak frissítése a szerepkörhöz hozzárendelhető csoportok kizárásával |
 > | Microsoft. Directory/csoportok. biztonság/tulajdonosok/frissítés | Biztonsági csoportok tulajdonosainak frissítése a szerepkörhöz hozzárendelhető csoportok kizárásával |
 > | Microsoft. Directory/csoportok. biztonság/láthatóság/frissítés | A biztonsági csoportok láthatósági tulajdonságának frissítése a szerepkörhöz hozzárendelhető csoportok kizárásával |
@@ -1111,6 +1118,26 @@ Az ehhez a szerepkörhöz tartozó felhasználók globális engedélyekkel rende
 > | Műveletek | Leírás |
 > | --- | --- |
 > | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Service Health olvasása és konfigurálása a Microsoft 365 felügyeleti központban |
+> | Microsoft. Office 365. supportTickets/allEntities/allTasks | Microsoft 365 szolgáltatási kérelmek létrehozása és kezelése |
+> | Microsoft. Office 365. Webportal/allEntities/standard/olvasás | A Microsoft 365 felügyeleti központban található összes erőforrás alapszintű tulajdonságainak olvasása |
+
+## <a name="knowledge-administrator"></a>Knowledge Administrator
+
+Az ebben a szerepkörben lévő felhasználók teljes hozzáféréssel rendelkeznek a Microsoft 365 felügyeleti központban található összes tudás, tanulási és intelligens szolgáltatás beállításaihoz. Általános ismeretekkel rendelkeznek a termékek csomagjáról, a licencelés részleteiről és a hozzáférés szabályozásáról. A tudás-rendszergazda létrehozhat és kezelhet tartalmakat, például témákat, betűszókat és tanulási erőforrásokat. Emellett ezek a felhasználók létrehozhatnak a tartalom-központokat, figyelheti a szolgáltatás állapotát, és létrehozhatnak szolgáltatási kérelmeket.
+
+> [!div class="mx-tableFixed"]
+> | Műveletek | Leírás |
+> | --- | --- |
+> | Microsoft. Directory/csoportok. biztonság/létrehozás | Biztonsági csoportok létrehozása a szerepkörhöz hozzárendelhető csoportok kizárásával |
+> | Microsoft. Directory/groups. Security/createAsOwner | Hozzon létre biztonsági csoportokat a szerepkörhöz hozzárendelhető csoportok és létrehozók kizárásával az első tulajdonosként. |
+> | Microsoft. Directory/csoportok. biztonság/törlés | Biztonsági csoportok törlése a szerepkörhöz hozzárendelhető csoportok kizárásával |
+> | Microsoft. Directory/groups. Security/Basic/Update | A biztonsági csoportok alapszintű tulajdonságainak frissítése a szerepkörhöz hozzárendelhető csoportok kizárásával |
+> | Microsoft. Directory/csoportok. biztonság/tagok/frissítés | Biztonsági csoportok tagjainak frissítése a szerepkörhöz hozzárendelhető csoportok kizárásával |
+> | Microsoft. Directory/csoportok. biztonság/tulajdonosok/frissítés | Biztonsági csoportok tulajdonosainak frissítése a szerepkörhöz hozzárendelhető csoportok kizárásával |
+> | Microsoft. Office 365. Knowledge/contentUnderstanding/allProperties/allTasks | A tartalom megismerésének összes tulajdonságának olvasása és frissítése Microsoft 365 felügyeleti központban |
+> | Microsoft. Office 365. Knowledge/knowledgeNetwork/allProperties/allTasks | A Knowledge Network összes tulajdonságának olvasása és frissítése Microsoft 365 felügyeleti központban |
+> | Microsoft. Office 365. protectionCenter/sensitivityLabels/allProperties/READ | A biztonsági és megfelelőségi központban található érzékenységi címkék olvasása |
+> | Microsoft. Office 365. sharePoint/allEntities/allTasks | Az összes erőforrás létrehozása és törlése, valamint az általános tulajdonságok olvasása és frissítése a SharePointban |
 > | Microsoft. Office 365. supportTickets/allEntities/allTasks | Microsoft 365 szolgáltatási kérelmek létrehozása és kezelése |
 > | Microsoft. Office 365. Webportal/allEntities/standard/olvasás | A Microsoft 365 felügyeleti központban található összes erőforrás alapszintű tulajdonságainak olvasása |
 
@@ -1375,7 +1402,7 @@ A [hitelesítési házirend rendszergazdai](#authentication-policy-administrator
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | Hitelesítés rendszergazdája | Igen, egyes felhasználók számára (lásd fent) | Igen, egyes felhasználók számára (lásd fent) | Nem | Nem | Nem |
 | Kiemelt jogosultságú hitelesítés rendszergazdája| Igen minden felhasználó számára | Igen minden felhasználó számára | Nem | Nem | Nem |
-| Hitelesítési házirend rendszergazdája | Nem | Nem | Igen | Igen | Yes |
+| Hitelesítési házirend rendszergazdája | Nem | Nem | Igen | Igen | Igen |
 
 > [!IMPORTANT]
 > Az ezzel a szerepkörrel rendelkező felhasználók megváltoztathatják azoknak a személyeknek a hitelesítő adatait, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz, illetve a Azure Active Directoryon belüli és kívüli kritikus konfigurációhoz. A felhasználók hitelesítő adatainak módosítása azt jelentheti, hogy a felhasználó identitását és engedélyeit feltételezi. Például:
@@ -1415,9 +1442,10 @@ Az ezzel a szerepkörrel rendelkező felhasználók a szerepkör-hozzárendelés
 > | Microsoft. Directory/appRoleAssignments/allProperties/allTasks | AppRoleAssignments létrehozása és törlése, valamint az összes tulajdonság olvasása és frissítése |
 > | Microsoft. Directory/authorizationPolicy/allProperties/allTasks | Az engedélyezési házirendek összes aspektusának kezelése |
 > | Microsoft. Directory/directoryRoles/allProperties/allTasks | Címtárbeli szerepkörök létrehozása és törlése, valamint az összes tulajdonság olvasása és frissítése |
-> | Microsoft. Directory/groupsAssignableToRoles/allProperties/Update | A isAssignableToRole tulajdonsággal rendelkező csoportok frissítése True értékre |
-> | Microsoft. Directory/groupsAssignableToRoles/Create | IsAssignableToRole tulajdonsággal rendelkező csoportok létrehozása True értékre |
-> | Microsoft. Directory/groupsAssignableToRoles/delete | A isAssignableToRole tulajdonsággal rendelkező csoportok törlése igaz értékre |
+> | Microsoft. Directory/groupsAssignableToRoles/Create | Szerepkörhöz hozzárendelhető csoportok létrehozása |
+> | Microsoft. Directory/groupsAssignableToRoles/delete | Szerepkörhöz hozzárendelhető csoportok törlése |
+> | Microsoft. Directory/groupsAssignableToRoles/Restore | Szerepkör-hozzárendelhető csoportok visszaállítása |
+> | Microsoft. Directory/groupsAssignableToRoles/allProperties/Update | Szerepkör-hozzárendelhető csoportok frissítése |
 > | Microsoft. Directory/Oauth2permissiongrant objektumok/allProperties/allTasks | OAuth 2,0 engedélyek létrehozása és törlése, valamint az összes tulajdonság olvasása és frissítése |
 > | Microsoft. Directory/privilegedIdentityManagement/allProperties/allTasks | Az összes erőforrás létrehozása és törlése, valamint az általános tulajdonságok olvasása és frissítése Privileged Identity Management |
 > | Microsoft. Directory/roleAssignments/allProperties/allTasks | Szerepkör-hozzárendelések létrehozása és törlése, valamint az összes szerepkör-hozzárendelési tulajdonság olvasása és frissítése |
@@ -1439,6 +1467,7 @@ Az ezzel a szerepkörrel rendelkező felhasználók megtekinthetik a használati
 > | Microsoft. Directory/provisioningLogs/allProperties/READ | A kiépítési naplók összes tulajdonságának olvasása |
 > | Microsoft. Directory/signInReports/allProperties/READ | A bejelentkezési jelentések összes tulajdonságának olvasása, beleértve a privilegizált tulajdonságokat is |
 > | Microsoft. Azure. serviceHealth/allEntities/allTasks | Azure Service Health olvasása és konfigurálása |
+> | Microsoft. Office 365. Network/Performance/allProperties/READ | Az összes hálózati teljesítmény tulajdonságainak olvasása a Microsoft 365 felügyeleti központban |
 > | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Service Health olvasása és konfigurálása a Microsoft 365 felügyeleti központban |
 > | Microsoft. Office 365. usageReports/allEntities/allProperties/READ | Office 365-használati jelentések olvasása |
 > | Microsoft. Office 365. Webportal/allEntities/standard/olvasás | A Microsoft 365 felügyeleti központban található összes erőforrás alapszintű tulajdonságainak olvasása |
@@ -1514,8 +1543,8 @@ Windows Defender ATP és EDR | Szerepkörök hozzárendelése<br>Számítógépc
 > | Microsoft. Directory/signInReports/allProperties/READ | A bejelentkezési jelentések összes tulajdonságának olvasása, beleértve a privilegizált tulajdonságokat is |
 > | Microsoft. Azure. serviceHealth/allEntities/allTasks | Azure Service Health olvasása és konfigurálása |
 > | Microsoft. Azure. supportTickets/allEntities/allTasks | Azure-támogatási jegyek létrehozása és kezelése |
-> | Microsoft. Office 365. protectionCenter/allEntities/standard/READ | Az Office 365 Protection Center összes erőforrásának általános tulajdonságainak olvasása |
-> | Microsoft. Office 365. protectionCenter/allEntities/Basic/Update | Az Office 365 Protection Center összes erőforrásának alapszintű tulajdonságainak frissítése |
+> | Microsoft. Office 365. protectionCenter/allEntities/standard/READ | A biztonsági és megfelelőségi központok összes erőforrásának általános tulajdonságainak olvasása |
+> | Microsoft. Office 365. protectionCenter/allEntities/Basic/Update | A biztonsági és megfelelőségi központok összes erőforrásának alapszintű tulajdonságainak frissítése |
 > | Microsoft. Office 365. protectionCenter/attackSimulator/hasznos adat/allProperties/allTasks | Támadási hasznos adatok létrehozása és kezelése a támadási szimulátorban |
 > | Microsoft. Office 365. protectionCenter/attackSimulator/Reports/allProperties/READ | A támadási szimulációval, a válaszokkal és a kapcsolódó képzésekkel kapcsolatos jelentések olvasása |
 > | Microsoft. Office 365. protectionCenter/attackSimulator/szimulációs/allProperties/allTasks | Támadási szimulációs sablonok létrehozása és kezelése a támadási szimulátorban |
@@ -1545,6 +1574,7 @@ Windows Defender ATP és EDR | A biztonsági olvasó szerepkörre vonatkozó ös
 > | Microsoft. Directory/cloudAppSecurity/allProperties/allTasks | Az összes erőforrás létrehozása és törlése, valamint az általános tulajdonságok olvasása és frissítése Microsoft Cloud App Security |
 > | Microsoft. Directory/identityProtection/allProperties/allTasks | Az összes erőforrás létrehozása és törlése, valamint az általános tulajdonságok olvasása és frissítése Azure AD Identity Protection |
 > | Microsoft. Directory/privilegedIdentityManagement/allProperties/READ | Privileged Identity Management összes erőforrásának olvasása |
+> | Microsoft. Directory/provisioningLogs/allProperties/READ | A kiépítési naplók összes tulajdonságának olvasása |
 > | Microsoft. Directory/signInReports/allProperties/READ | A bejelentkezési jelentések összes tulajdonságának olvasása, beleértve a privilegizált tulajdonságokat is |
 > | Microsoft. Azure. advancedThreatProtection/allEntities/allTasks | Az Azure komplex veszélyforrások elleni védelem összes aspektusának kezelése |
 > | Microsoft. Azure. supportTickets/allEntities/allTasks | Azure-támogatási jegyek létrehozása és kezelése |
@@ -1586,7 +1616,7 @@ Windows Defender ATP és EDR | Riasztások megtekintése és kivizsgálása. Ha 
 > | Microsoft. Directory/provisioningLogs/allProperties/READ | A kiépítési naplók összes tulajdonságának olvasása |
 > | Microsoft. Directory/signInReports/allProperties/READ | A bejelentkezési jelentések összes tulajdonságának olvasása, beleértve a privilegizált tulajdonságokat is |
 > | Microsoft. Azure. serviceHealth/allEntities/allTasks | Azure Service Health olvasása és konfigurálása |
-> | Microsoft. Office 365. protectionCenter/allEntities/standard/READ | Az Office 365 Protection Center összes erőforrásának általános tulajdonságainak olvasása |
+> | Microsoft. Office 365. protectionCenter/allEntities/standard/READ | A biztonsági és megfelelőségi központok összes erőforrásának általános tulajdonságainak olvasása |
 > | Microsoft. Office 365. protectionCenter/attackSimulator/hasznos adat/allProperties/olvasás | A támadásokkal kapcsolatos adattartalom összes tulajdonságának olvasása a támadási szimulátorban |
 > | Microsoft. Office 365. protectionCenter/attackSimulator/Reports/allProperties/READ | A támadási szimulációval, a válaszokkal és a kapcsolódó képzésekkel kapcsolatos jelentések olvasása |
 > | Microsoft. Office 365. protectionCenter/attackSimulator/szimulációs/allProperties/olvasás | A támadási szimulátorban található Attack szimulációs sablonok összes tulajdonságának olvasása |
@@ -1605,6 +1635,7 @@ Az ezzel a szerepkörrel rendelkező felhasználók megnyithatják a Microsoft A
 > | --- | --- |
 > | Microsoft. Azure. serviceHealth/allEntities/allTasks | Azure Service Health olvasása és konfigurálása |
 > | Microsoft. Azure. supportTickets/allEntities/allTasks | Azure-támogatási jegyek létrehozása és kezelése |
+> | Microsoft. Office 365. Network/Performance/allProperties/READ | Az összes hálózati teljesítmény tulajdonságainak olvasása a Microsoft 365 felügyeleti központban |
 > | Microsoft. Office 365. serviceHealth/allEntities/allTasks | Service Health olvasása és konfigurálása a Microsoft 365 felügyeleti központban |
 > | Microsoft. Office 365. supportTickets/allEntities/allTasks | Microsoft 365 szolgáltatási kérelmek létrehozása és kezelése |
 > | Microsoft. Office 365. Webportal/allEntities/standard/olvasás | A Microsoft 365 felügyeleti központban található összes erőforrás alapszintű tulajdonságainak olvasása |
@@ -1669,7 +1700,7 @@ A szerepkör felhasználói a Microsoft Teams munkaterhelésének minden aspektu
 > | Microsoft. Directory/csoportok. Unified/Basic/Update | Microsoft 365 csoportok alapszintű tulajdonságainak frissítése a szerepkörhöz hozzárendelhető csoportok kizárásával |
 > | Microsoft. Directory/csoportok. Unified/tagok/frissítés | Microsoft 365 csoportok tagjainak frissítése a szerepkörhöz hozzárendelhető csoportok kizárásával |
 > | Microsoft. Directory/groups. Unified/owners/Update | Microsoft 365 csoportok tulajdonosainak frissítése a szerepkörhöz hozzárendelhető csoportok kizárásával |
-> | Microsoft. Directory/servicePrincipals/managePermissionGrantsForGroup. Microsoft-all-Application-permissions | A szolgáltatás közvetlen hozzáférésének biztosítása a pricipal  |
+> | Microsoft. Directory/servicePrincipals/managePermissionGrantsForGroup. Microsoft-all-Application-permissions | A szolgáltatás közvetlen hozzáférésének biztosítása a pricipal |
 > | Microsoft. Azure. serviceHealth/allEntities/allTasks | Azure Service Health olvasása és konfigurálása |
 > | Microsoft. Azure. supportTickets/allEntities/allTasks | Azure-támogatási jegyek létrehozása és kezelése |
 > | Microsoft. Office 365. Network/Performance/allProperties/READ | Az összes hálózati teljesítmény tulajdonságainak olvasása a Microsoft 365 felügyeleti központban |
@@ -1741,6 +1772,7 @@ Az ezzel a szerepkörrel rendelkező felhasználók hozzáférhetnek a bérlői 
 > [!div class="mx-tableFixed"]
 > | Műveletek | Leírás |
 > | --- | --- |
+> | Microsoft. Office 365. Network/Performance/allProperties/READ | Az összes hálózati teljesítmény tulajdonságainak olvasása a Microsoft 365 felügyeleti központban |
 > | Microsoft. Office 365. usageReports/allEntities/standard/READ | Bérlői szintű összesített Office 365 használati jelentések olvasása |
 > | Microsoft. Office 365. Webportal/allEntities/standard/olvasás | A Microsoft 365 felügyeleti központban található összes erőforrás alapszintű tulajdonságainak olvasása |
 

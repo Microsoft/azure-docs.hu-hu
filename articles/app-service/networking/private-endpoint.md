@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 4534a315429a120af45dfd495df4a8c29b233de7
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 8d471b680a6ff97b4b96a9c5f90f5548488dd35f
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98763034"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563611"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>Az Azure-webalkalmazás privát végpontjainak használata
 
@@ -122,9 +122,11 @@ A bővítőhelyek nem használhatják a privát végpontot.
 
 A Távoli hibakeresési funkció nem érhető el, ha a magánhálózati végpont engedélyezve van a webalkalmazáshoz. A javaslat a kód üzembe helyezése egy tárolóhelyre és a távoli hibakeresés.
 
+Az FTP-hozzáférés a bejövő nyilvános IP-címen keresztül érhető el. A magánhálózati végpont nem támogatja az FTP-hozzáférést a webalkalmazáshoz.
+
 Rendszeresen fejlesztjük a privát kapcsolat funkciót és a privát végpontot, és a korlátozásokról a [jelen cikkben][pllimitations] tájékozódhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha privát végpontot szeretne telepíteni a webalkalmazáshoz a portálon keresztül, tekintse meg a [webalkalmazásokhoz való privát kapcsolódás a portálon][howtoguide1] című témakört.
 - Ha privát végpontot szeretne üzembe helyezni a webalkalmazáshoz az Azure CLI használatával, tekintse meg a [webalkalmazásokhoz való privát kapcsolódás az Azure CLI-vel][howtoguide2] című témakört.

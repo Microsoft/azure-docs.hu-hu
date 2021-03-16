@@ -8,21 +8,22 @@ ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
+ms.subservice: migration-guide
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/24/2020
-ms.openlocfilehash: 09bcc85c0640bf0061ec0c872161cbc9afe51da6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2be824c89ac1e6b900dc9b67e046e2be2c7f8919
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742126"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562824"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Oktatóanyag: Oracle migrálása Azure Database for PostgreSQL online-ba a DMS használatával (előzetes verzió)
 
 > [!IMPORTANT]
-> Az "Oracle to Azure Database for PostgreSQL" áttelepítési forgatókönyv (jelenleg előzetes verzióban érhető el) az 2021. május 1. után már nem lesz elérhető. Továbbra is biztosítunk támogatást az alternatív eszközök (például a Ora2pg) segítségével, és a lehető legjobb migrációs élményt nyújtják az Oracle és a PostgreSQL közötti áttelepítéshez. Az áttelepítéssel kapcsolatos ajánlott eljárásokért lásd: [Oracle Azure Database for PostgreSQL áttelepítési Útmutató] ( https://aka.ms/OracletoPGguide) . 
+> **Az Oracle – Azure Database for PostgreSQL** áttelepítési forgatókönyv (jelenleg előzetes verzióban) már nem lesz elérhető a 2021. május 1. után. Továbbra is biztosítunk támogatást az alternatív eszközök (például a Ora2pg) segítségével, és a lehető legjobb migrációs élményt nyújtják az Oracle és a PostgreSQL közötti áttelepítéshez. Az áttelepítéssel kapcsolatos ajánlott eljárásokért tekintse [meg az Oracle Azure Database for PostgreSQL áttelepítési útmutatót](https://aka.ms/OracletoPGguide). 
 
 A Azure Database Migration Service segítségével áttelepítheti az adatbázisokat a helyszíni vagy virtuális gépeken üzemeltetett Oracle-adatbázisokból, hogy minimális állásidővel [Azure Database for PostgreSQL](../postgresql/index.yml) . Más szóval az áttelepítés minimális állásidővel is elvégezhető az alkalmazáshoz. Ebben az oktatóanyagban a **HR** mintaadatbázis helyszíni vagy virtuálisgép-példányáról telepíti át a Azure Database for PostgreSQL a Azure Database Migration Service Online áttelepítési tevékenységének használatával.
 

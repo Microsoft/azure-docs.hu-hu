@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.custom: project-no-code
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 5880b6f44caec053aef292960cecbf64f25c6743
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 3e1eaf4f97b9b04ed02aeb3c6de65b90bf4947e1
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448574"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489151"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Egy Amazon-fiókkal történő regisztráció és bejelentkezés beállítása Azure Active Directory B2C
 
@@ -38,12 +38,17 @@ ms.locfileid: "102448574"
 
 Az Azure Active Directory B2C (Azure AD B2C) Amazon-fiókkal rendelkező felhasználók bejelentkezésének engedélyezéséhez létre kell hoznia egy alkalmazást az [Amazon fejlesztői szolgáltatásokban és technológiákban](https://developer.amazon.com). További információ: [regisztráció az Amazon](https://developer.amazon.com/docs/login-with-amazon/register-web.html)-ba való bejelentkezéshez. Ha még nem rendelkezik Amazon-fiókkal, regisztrálhat a következő címen: [https://www.amazon.com/](https://www.amazon.com/) .
 
-> [!NOTE]  
-> Használja a következő URL-címeket az alábbi **8. lépésben** , a helyére pedig `your-tenant-name` a bérlő nevét. A bérlő nevének megadásakor használja az összes kisbetűt, még akkor is, ha a bérlő nagybetűvel van definiálva Azure AD B2Cban.
-> - Az **engedélyezett eredetek** mezőben adja meg a következőt: `https://your-tenant-name.b2clogin.com` 
-> - Az **engedélyezett visszatérési URL-címek** esetében adja meg a `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`
-
-[!INCLUDE [identity-provider-amazon-idp-register.md](../../includes/identity-provider-amazon-idp-register.md)]
+1. Jelentkezzen be az [Amazon fejlesztői konzolba](https://developer.amazon.com/dashboard) az Amazon-fiókja hitelesítő adataival.
+1. Ha még nem tette meg, válassza a regisztráció **lehetőséget,** kövesse a fejlesztői regisztráció lépéseit, majd fogadja el a szabályzatot.
+1. Az irányítópulton válassza a **Bejelentkezés az Amazon**-ban lehetőséget.
+1. Válassza **az új biztonsági profil létrehozása** lehetőséget.
+1. Adja meg a **biztonsági profil nevét**, a **biztonsági profil leírását** és a belefoglalt **adatvédelmi nyilatkozat URL-címét**, például `https://www.contoso.com/privacy` az adatvédelmi nyilatkozat URL-címe a felügyelni kívánt oldal, amely adatvédelmi információkat biztosít a felhasználóknak. Ezután kattintson a **Mentés** gombra.
+1. A **Bejelentkezés az Amazon-konfigurációk** szakaszban válassza ki a létrehozott **biztonsági profil nevét** , válassza a **kezelés** ikont, majd válassza a **webes beállítások** lehetőséget.
+1. A **webes beállítások** szakaszban másolja ki az **ügyfél-azonosító** értékét. Válassza a **titok megjelenítése** lehetőséget az ügyfél titkos kódjának beolvasásához, majd másolja azt. Egy Amazon-fióknak a bérlőben való identitás-szolgáltatóként való konfigurálásához mindkét érték szükséges. Az **ügyfél titkos kulcsa** fontos biztonsági hitelesítő adat.
+1. A **webes beállítások** szakaszban válassza a **Szerkesztés** lehetőséget. 
+    1. Az **engedélyezett eredetek** mezőbe írja be a értéket `https://your-tenant-name.b2clogin.com` . Cserélje le a helyére a `your-tenant-name` bérlő nevét. Ha [Egyéni tartományt](custom-domain.md)használ, írja be a értéket `https://your-domain-name` .
+    1.  **Engedélyezett visszatérési URL-címek** , írja be a értéket `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` .  Ha [Egyéni tartományt](custom-domain.md)használ, írja be a értéket `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` .  Cserélje le a `your-tenant-name` nevet a bérlő nevére, és az `your-domain-name` Egyéni tartományra.
+1. Kattintson a **Mentés** gombra.
 
 ::: zone pivot="b2c-user-flow"
 

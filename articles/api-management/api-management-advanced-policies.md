@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 3a37cde79cef59eaf9c3ef130bfbae9cff958bd7
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 03529fd3c0231617c477f4f16773039a02386683
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96919447"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562484"
 ---
 # <a name="api-management-advanced-policies"></a>API Management – Speciális szabályzatok
 
@@ -305,8 +305,8 @@ Az alábbi példa bemutatja, hogyan korlátozható a háttérbe továbbított k�
 
 | Attribútum | Leírás                                                                                        | Kötelező | Alapértelmezett |
 | --------- | -------------------------------------------------------------------------------------------------- | -------- | ------- |
-| kulcs       | Egy karakterlánc. A kifejezés engedélyezett. Megadja a Egyidejűség hatókörét. Több házirend is megosztható. | Igen      | N.A.     |
-| maximális darabszám | Egész szám. Megadja a szabályzat megadására jogosult kérelmek maximális számát.           | Igen      | N.A.     |
+| kulcs       | Egy karakterlánc. A kifejezés engedélyezett. Megadja a Egyidejűség hatókörét. Több házirend is megosztható. | Igen      | N/A     |
+| maximális darabszám | Egész szám. Megadja a szabályzat megadására jogosult kérelmek maximális számát.           | Igen      | N/A     |
 
 ### <a name="usage"></a>Használat
 
@@ -462,11 +462,11 @@ A következő példában a kérelmek továbbítása egy exponenciális újrapró
 
 | Attribútum        | Leírás                                                                                                                                           | Kötelező | Alapértelmezett |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| feltétel        | Logikai literál vagy [kifejezés](api-management-policy-expressions.md) , amely meghatározza, hogy az újrapróbálkozásokat le kell-e állítani ( `false` ) vagy a folytatást ( `true` ).      | Igen      | N.A.     |
-| count            | Egy pozitív szám, amely megadja a kísérlethez szükséges újrapróbálkozások maximális számát.                                                                                | Igen      | N.A.     |
-| interval         | Az újrapróbálkozási kísérletek közötti várakozási időközt másodpercben kifejezett pozitív szám.                                                                 | Igen      | N.A.     |
-| maximális időköz     | Az újrapróbálkozási kísérletek közötti maximális várakozási időközt megadó pozitív szám másodpercben. Egy exponenciális újrapróbálkozási algoritmus megvalósítására szolgál. | Nem       | N.A.     |
-| delta            | A várakozási időköz növekményét megadó pozitív szám másodpercben. A lineáris és exponenciális újrapróbálkozási algoritmusok megvalósítására szolgál.             | Nem       | N.A.     |
+| feltétel        | Logikai literál vagy [kifejezés](api-management-policy-expressions.md) , amely meghatározza, hogy az újrapróbálkozásokat le kell-e állítani ( `false` ) vagy a folytatást ( `true` ).      | Igen      | N/A     |
+| count            | Egy pozitív szám, amely megadja a kísérlethez szükséges újrapróbálkozások maximális számát.                                                                                | Igen      | N/A     |
+| interval         | Az újrapróbálkozási kísérletek közötti várakozási időközt másodpercben kifejezett pozitív szám.                                                                 | Igen      | N/A     |
+| maximális időköz     | Az újrapróbálkozási kísérletek közötti maximális várakozási időközt megadó pozitív szám másodpercben. Egy exponenciális újrapróbálkozási algoritmus megvalósítására szolgál. | Nem       | N/A     |
+| delta            | A várakozási időköz növekményét megadó pozitív szám másodpercben. A lineáris és exponenciális újrapróbálkozási algoritmusok megvalósítására szolgál.             | Nem       | N/A     |
 | első – gyors újrapróbálkozás | Ha a értékre `true` van állítva, a rendszer azonnal végrehajtja az első újrapróbálkozási kísérletet.                                                                                  | Nem       | `false` |
 
 > [!NOTE]
@@ -595,7 +595,7 @@ Ez a példa egy olyan példát mutat be, amely a `send-one-way-request` háziren
 | Attribútum     | Leírás                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Kötelező | Alapértelmezett  |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
 | Mode = "string" | Meghatározza, hogy ez egy új kérelem vagy az aktuális kérelem másolata. Kimenő módban a Mode = Copy nem inicializálja a kérelem törzsét.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Nem       | Új      |
-| name          | Megadja a beállítandó fejléc nevét.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Igen      | N.A.      |
+| name          | Megadja a beállítandó fejléc nevét.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Igen      | N/A      |
 | létező – művelet | Meghatározza, hogy milyen műveletet kell végrehajtani, ha a fejléc már meg van adva. Az attribútumnak a következő értékek egyikével kell rendelkeznie.<br /><br /> -felülbírálás – lecseréli a meglévő fejléc értékét.<br />-Skip – nem helyettesíti a meglévő fejléc értékét.<br />-append – hozzáfűzi az értéket a meglévő fejléc értékéhez.<br />-delete – eltávolítja a fejlécet a kérelemből.<br /><br /> Ha úgy van beállítva, hogy `override` több bejegyzést is megadjon ugyanazzal a névvel, a fejléc az összes bejegyzésnek megfelelően be lesz állítva (amelyek többször is megjelennek); a rendszer csak a felsorolt értékeket adja meg az eredményben. | Nem       | felülbírálás |
 
 ### <a name="usage"></a>Használat
@@ -679,10 +679,10 @@ Ez a példa egy hivatkozási token engedélyezési kiszolgálóval való ellenő
 | Attribútum                       | Leírás                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Kötelező | Alapértelmezett  |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
 | Mode = "string"                   | Meghatározza, hogy ez egy új kérelem vagy az aktuális kérelem másolata. Kimenő módban a Mode = Copy nem inicializálja a kérelem törzsét.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Nem       | Új      |
-| Response-változó-Name = "string" | A válasz objektumot fogadó környezeti változó neve. Ha a változó nem létezik, akkor a szabályzat sikeres végrehajtása után jön létre, és a gyűjteményen keresztül lesz elérhető [`context.Variable`](api-management-policy-expressions.md#ContextVariables) .                                                                                                                                                                                                                                                                                                                          | Igen      | N.A.      |
+| Response-változó-Name = "string" | A válasz objektumot fogadó környezeti változó neve. Ha a változó nem létezik, akkor a szabályzat sikeres végrehajtása után jön létre, és a gyűjteményen keresztül lesz elérhető [`context.Variable`](api-management-policy-expressions.md#ContextVariables) .                                                                                                                                                                                                                                                                                                                          | Igen      | N/A      |
 | timeout = "egész"               | Az URL-cím meghívása előtti időtúllépési időköz (másodpercben).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Nem       | 60       |
 | Mellőzés – hiba                    | Ha az értéke TRUE (igaz), és a kérelem hibát eredményez:<br /><br /> – Ha a Response-változó neve meg lett adva, akkor null értéket fog tartalmazni.<br />-If válasz-változó – a név nincs megadva, kontextus. A kérelmet nem frissíti a rendszer.                                                                                                                                                                                                                                                                                                                                                                                   | Nem       | hamis    |
-| name                            | Megadja a beállítandó fejléc nevét.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Igen      | N.A.      |
+| name                            | Megadja a beállítandó fejléc nevét.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Igen      | N/A      |
 | létező – művelet                   | Meghatározza, hogy milyen műveletet kell végrehajtani, ha a fejléc már meg van adva. Az attribútumnak a következő értékek egyikével kell rendelkeznie.<br /><br /> -felülbírálás – lecseréli a meglévő fejléc értékét.<br />-Skip – nem helyettesíti a meglévő fejléc értékét.<br />-append – hozzáfűzi az értéket a meglévő fejléc értékéhez.<br />-delete – eltávolítja a fejlécet a kérelemből.<br /><br /> Ha úgy van beállítva, hogy `override` több bejegyzést is megadjon ugyanazzal a névvel, a fejléc az összes bejegyzésnek megfelelően be lesz állítva (amelyek többször is megjelennek); a rendszer csak a felsorolt értékeket adja meg az eredményben. | Nem       | felülbírálás |
 
 ### <a name="usage"></a>Használat
@@ -723,9 +723,9 @@ Figyelje meg, hogy a [Tulajdonságok](api-management-howto-properties.md) a Felh
 
 | Attribútum         | Leírás                                            | Kötelező | Alapértelmezett |
 | ----------------- | ------------------------------------------------------ | -------- | ------- |
-| URL = "karakterlánc"      | A proxy URL-címe a formájában http://host:port .             | Igen      | N.A.     |
-| username = "string" | A proxyval történő hitelesítéshez használandó Felhasználónév. | Nem       | N.A.     |
-| password = "string" | A proxyval történő hitelesítéshez használandó jelszó. | Nem       | N.A.     |
+| URL = "karakterlánc"      | A proxy URL-címe a formájában http://host:port .             | Igen      | N/A     |
+| username = "string" | A proxyval történő hitelesítéshez használandó Felhasználónév. | Nem       | N/A     |
+| password = "string" | A proxyval történő hitelesítéshez használandó jelszó. | Nem       | N/A     |
 
 ### <a name="usage"></a>Használat
 
@@ -829,8 +829,8 @@ Ez a példa azt szemlélteti, hogyan lehet visszaadni egy 401-es választ, ha az
 
 | Attribútum       | Leírás                                                | Kötelező | Alapértelmezett |
 | --------------- | ---------------------------------------------------------- | -------- | ------- |
-| code = "egész_szám"  | A visszaadni kívánt HTTP-állapotkód.                            | Igen      | N.A.     |
-| OK = "string" | Az állapotkód visszaküldési okának leírása. | Igen      | N.A.     |
+| code = "egész_szám"  | A visszaadni kívánt HTTP-állapotkód.                            | Igen      | N/A     |
+| OK = "string" | Az állapotkód visszaküldési okának leírása. | Igen      | N/A     |
 
 ### <a name="usage"></a>Használat
 
@@ -918,7 +918,7 @@ A szabályzatban használt kifejezéseknek `set-variable` a következő alapvet�
 A `trace` házirend egy egyéni nyomkövetést ad az API Inspector kimenetéhez, Application Insights telemetriáiról és/vagy erőforrás-naplókhoz.
 
 -   A házirend egy egyéni nyomkövetést ad hozzá az [API Inspector](./api-management-howto-api-inspector.md) kimenetéhez a nyomkövetés indításakor, azaz a `Ocp-Apim-Trace` kérelem fejléce létezik, és igaz értékre van állítva, és `Ocp-Apim-Subscription-Key` a kérelem fejléce tartalmaz egy érvényes kulcsot, amely lehetővé teszi a nyomkövetést.
--   A házirend [nyomkövetési](../azure-monitor/app/data-model-trace-telemetry.md) telemetria hoz létre Application Insightsban, amikor a [Application Insights integráció](./api-management-howto-app-insights.md) engedélyezve van, és a `severity` házirendben megadott szint a `verbosity` diagnosztikai beállításban megadott szintnél vagy annál nagyobb.
+-   A házirend [nyomkövetési](../azure-monitor/app/data-model-trace-telemetry.md) telemetria hoz létre Application Insightsban, ha a [Application Insights integráció](./api-management-howto-app-insights.md) engedélyezve van, és a `severity` házirendben megadott érték egyenlő vagy nagyobb, mint a `verbosity` diagnosztikai beállításban megadott érték.
 -   A házirend egy tulajdonságot ad a naplóbejegyzés számára, ha az [erőforrás-naplók](./api-management-howto-use-azure-monitor.md#activity-logs) engedélyezve vannak, és a házirendben megadott súlyossági szint a diagnosztikai beállításban megadott részletességi szintnél vagy annál nagyobb.
 
 ### <a name="policy-statement"></a>Szabályzati utasítás
@@ -953,10 +953,10 @@ A `trace` házirend egy egyéni nyomkövetést ad az API Inspector kimenetéhez,
 
 | Attribútum | Leírás                                                                                                               | Kötelező | Alapértelmezett |
 | --------- | ------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| source    | A nyomkövetési megjelenítőnek megfelelő karakterlánc, amely az üzenet forrását határozza meg.                                   | Igen      | N.A.     |
+| source    | A nyomkövetési megjelenítőnek megfelelő karakterlánc, amely az üzenet forrását határozza meg.                                   | Igen      | N/A     |
 | súlyosság  | Meghatározza a nyomkövetés súlyossági szintjét. Az engedélyezett értékek:, `verbose` `information` `error` (a legalacsonyabbtól a legmagasabbig). | Nem       | Részletes |
-| name      | A tulajdonság neve.                                                                                                     | Igen      | N.A.     |
-| érték     | A tulajdonság értéke.                                                                                                    | Igen      | N.A.     |
+| name      | A tulajdonság neve.                                                                                                     | Igen      | N/A     |
+| érték     | A tulajdonság értéke.                                                                                                    | Igen      | N/A     |
 
 ### <a name="usage"></a>Használat
 

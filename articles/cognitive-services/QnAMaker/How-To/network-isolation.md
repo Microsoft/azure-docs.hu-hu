@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 731d94aa76146bf06a03842e8f3907d1762eeca3
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: afb396bc364a2fa2db923fbcbe6bfe1b7aedbc26
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225608"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467544"
 ---
 # <a name="recommended-settings-for-network-isolation"></a>A hálózati elkülönítés ajánlott beállításai
 
@@ -22,8 +22,7 @@ IP-címeket adhat hozzá az App Service engedélyezési listájához, hogy korl�
 
 #### <a name="add-ips-to-app-service-allow-list"></a>IP-címek hozzáadása App Service engedélyezési listához
 
-1. 
-csak Cognitive Services IP-címekről érkező forgalom. Ezek már szerepelnek a Service címkében `CognitiveServicesManagement` . Ez szükséges az API-k létrehozásához (létrehozás/frissítés KB) az App Service meghívásához és ennek megfelelően a Azure Search szolgáltatás frissítéséhez. [További információ a szolgáltatási címkékről.](../../../virtual-network/service-tags-overview.md)
+1. Csak Cognitive Services IP-címekről érkező forgalom engedélyezése. Ezek már szerepelnek a Service címkében `CognitiveServicesManagement` . Ez szükséges az API-k létrehozásához (létrehozás/frissítés KB) az App Service meghívásához és ennek megfelelően a Azure Search szolgáltatás frissítéséhez. [További információ a szolgáltatási címkékről.](../../../virtual-network/service-tags-overview.md)
 2. Győződjön meg arról, hogy más belépési pontokat is engedélyez, például a Azure Bot Servicet, QnA Maker portált stb.) a "GenerateAnswer" API-hozzáférés előrejelzéséhez.
 3. Az IP-címtartományok engedélyezési listához való hozzáadásához kövesse az alábbi lépéseket:
 

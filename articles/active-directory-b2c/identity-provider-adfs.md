@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 3082c249b04b5efc71187dd03515bc8c875b7c2f
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 292a244a4804f97e8622d6841c33b153af373290
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448591"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489168"
 ---
 # <a name="add-ad-fs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>AD FS hozzáadása SAML-identitás-szolgáltatóként egyéni szabályzatok használatával Azure Active Directory B2C
 
@@ -156,9 +156,16 @@ Ha AD FS identitás-szolgáltatóként szeretné használni a Azure AD B2Cban, l
 https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/your-policy/samlp/metadata?idptp=your-technical-profile
 ```
 
+[Egyéni tartomány](custom-domain.md)használatakor használja a következő formátumot:
+
+```
+https://your-domain-name/your-tenant-name.onmicrosoft.com/your-policy/samlp/metadata?idptp=your-technical-profile
+```
+
 Cserélje le a következő értékeket:
 
-- **a** bérlő neve, például Your-Tenant.onmicrosoft.com.
+- **saját** bérlő neve a bérlő nevével, például Your-Tenant.onmicrosoft.com.
+- **saját tartomány neve** az egyéni tartománynévvel, például login.contoso.com.
 - **az Ön** házirendje a szabályzat nevével. Például B2C_1A_signup_signin_adfs.
 - az **Ön műszaki profilja** a SAML-identitás szolgáltatójának műszaki profiljának nevével. Például: contoso-egy SAML2.
 

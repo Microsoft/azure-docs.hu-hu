@@ -3,12 +3,12 @@ title: 800-os korláttal nem rendelkező erőforrások száma
 description: Azokat az Azure-erőforrásokat sorolja fel, amelyek több mint 800 példányt tartalmazhatnak egy erőforráscsoporthoz.
 ms.topic: conceptual
 ms.date: 01/08/2021
-ms.openlocfilehash: 6a63fd7e41c03b542f4a43b483243702c5be5f14
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 6736118f0713a27a91618173e06423530e6f10cb
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034934"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563113"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Az erőforrások nem korlátozódnak 800 példányra az erőforráscsoport esetében
 
@@ -80,7 +80,6 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 
 ## <a name="microsoftdevtestlab"></a>Microsoft. segédösszetevője
 
-* Labs/virtualMachines – alapértelmezés szerint 800 példányra korlátozódik. 
 * menetrend
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft. EnterpriseKnowledgeGraph
@@ -215,6 +214,6 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 * apiManagementAccounts/API-k
 * helyek
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kvóták és korlátok teljes listáját az Azure- [előfizetés és a szolgáltatás korlátai, kvótái és megkötései](azure-subscription-service-limits.md)című témakörben tekintheti meg.

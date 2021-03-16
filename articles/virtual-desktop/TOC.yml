@@ -36,7 +36,7 @@
           href: connect-ios.md
         - name: Kapcsolódás a Microsoft Store-ügyfélhez
           href: connect-microsoft-store.md
-        - name: Kapcsolódás Linux-eszközökhöz
+        - name: Kapcsolat a vékony ügyfelekkel
           href: linux-overview.md
     - name: Eszközátirányítások konfigurálása
       href: configure-device-redirections.md

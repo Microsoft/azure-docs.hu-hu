@@ -162,6 +162,8 @@
               href: azure-stack-edge-gpu-kubernetes-rbac.md
             - name: A Kubernetes számítási feladatai
               href: azure-stack-edge-gpu-kubernetes-workload-management.md
+        - name: Mi az a GPU-megosztás?
+          href: azure-stack-edge-gpu-sharing.md
         - name: Key Vault-integráció megtekintése
           href: azure-stack-edge-gpu-activation-key-vault.md
         - name: Proaktív naplózás engedélyezése
@@ -194,10 +196,14 @@
                   href: azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md
                 - name: Dinamikusan kiépített állapotalapú alkalmazás
                   href: azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md
+                - name: GPU-val megosztott munkaterhelés
+                  href: azure-stack-edge-gpu-deploy-kubernetes-gpu-sharing.md
             - name: IoT Edge használatával
               items:
                 - name: Állapot nélküli alkalmazás
                   href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
+                - name: GPU-val megosztott munkaterhelés
+                  href: azure-stack-edge-gpu-deploy-iot-edge-gpu-sharing.md
                 - name: C#-modul fejlesztése
                   href: azure-stack-edge-gpu-create-iot-edge-module.md
             - name: Azure Arc használatával (előzetes verzió)

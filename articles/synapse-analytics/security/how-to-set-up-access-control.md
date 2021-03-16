@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 513d23de3d7f823ec934af32e5f3776e876f02d8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 97f9d0e0037090a8c058eb6e2393451d975e79c6
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368999"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472256"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>Hozzáférés-vezérlés beállítása a szinapszis-munkaterülethez 
 
@@ -43,7 +43,7 @@ A szinapszis-munkaterület biztonságossá tételéhez kövesse az alábbi eleme
 
 Ez a dokumentum szabványos neveket használ az utasítások egyszerűsítéséhez. Cserélje le őket a választott nevekre.
 
-|Beállítás | Normál név | Description |
+|Beállítás | Normál név | Leírás |
 | :------ | :-------------- | :---------- |
 | **Szinapszis-munkaterület** | `workspace1` |  A szinapszis munkaterület neve. |
 | **ADLSGEN2-fiók** | `storage1` | A munkaterülethez használni kívánt ADLS-fiók. |
@@ -124,7 +124,7 @@ A folyamatok futtatásához és a rendszerfeladatok végrehajtásához a szinaps
 
 ## <a name="step-5-grant-synapse-administrators-the-azure-contributor-role-on-the-workspace"></a>5. lépés: a szinapszis-rendszergazdák számára az Azure közreműködő szerepkör megadása a munkaterületen 
 
-SQL-készletek, Apache Spark készletek és integrációs modulok létrehozásához a felhasználóknak legalább Azure közreműködői hozzáféréssel kell rendelkezniük a munkaterülethez. A közreműködői szerepkör lehetővé teszi a felhasználók számára az erőforrások kezelését, beleértve a felfüggesztést és a skálázást is.
+SQL-készletek, Apache Spark készletek és integrációs modulok létrehozásához a felhasználóknak legalább Azure közreműködő szerepkörrel kell rendelkezniük a munkaterületen. A közreműködői szerepkör lehetővé teszi a felhasználók számára az erőforrások kezelését, beleértve a felfüggesztést és a skálázást is. Ha a Azure Portal vagy a szinapszis Studio használatával hoz létre SQL-készleteket, Apache Spark készleteket és integrációs modulokat, akkor az erőforráscsoport szintjén kell lennie az Azure közreműködői szerepkörnek. 
 
 - Nyissa meg az Azure Portalt
 - Keresse meg a munkaterületet, `workspace1`

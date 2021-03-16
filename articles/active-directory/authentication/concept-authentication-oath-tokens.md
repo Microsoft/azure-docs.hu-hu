@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/22/2021
+ms.date: 03/15/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2270ff360c7bb923555c9b4ffb0c35ccd4382d0e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 568048597f83616ed07954af744c94761250b5c0
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101647489"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471614"
 ---
-# <a name="authentication-methods-in-azure-active-directory---oath-tokens"></a>Hitelesítési módszerek a Azure Active Directory-eskü-tokenekben
+# <a name="authentication-methods-in-azure-active-directory---oath-tokens"></a>Hitelesítési módszerek a Azure Active Directory-eskü-tokenekben 
 
 Az eskü TOTP (időalapú egyszeri jelszó) egy nyílt szabvány, amely meghatározza, hogy az egyszeri jelszavas (OTP) kódok hogyan jönnek létre. Az eskü TOTP a kódok létrehozásához szoftver vagy hardver használatával valósítható meg. Az Azure AD nem támogatja az eskü HOTP, amely egy másik kód generálási szabvány.
 
@@ -29,13 +29,15 @@ A hitelesítő alkalmazás automatikusan generál kódokat, ha úgy állítja be
 
 Néhány ESKÜt TOTP, ami azt jelenti, hogy a hardver-jogkivonatok programozhatók, ezért nem tartoznak hozzá előre programozott titkos kulcs vagy mag. Ezek a programozható hardveres tokenek a szoftver-jogkivonat telepítési folyamata által beszerzett titkos kulccsal vagy mag használatával állíthatók be. Az ügyfelek vásárolhatják meg ezeket a jogkivonatokat a választott gyártótól, és a titkos kulcsot vagy magot használják a gyártó telepítési folyamatában.
 
-## <a name="oath-hardware-tokens"></a>OATH hardveres jogkivonatok
+## <a name="oath-hardware-tokens-preview"></a>A hardver-tokenek ESKÜje (előzetes verzió)
 
 Az Azure AD az eskü-TOTP SHA-1 tokenek használatát támogatja, amelyek 30 vagy 60 másodpercenként frissítik a kódokat. Az ügyfelek megvásárolhatják ezeket a jogkivonatokat a választott gyártótól.
 
 Az eskü TOTP-tokenek általában titkos kulccsal, vagy a tokenben előre programozott magokkal rendelkeznek. Ezeket a kulcsokat az alábbi lépésekben leírtaknak megfelelően be kell állítani az Azure AD-be. A titkos kulcsok legfeljebb 128 karakterből állhatnak, amelyek nem kompatibilisek az összes jogkivonattal. A titkos kulcs csak az *a-z* , a-z és *a-z* , valamint a *2-7* karakterből állhat, és a *Base32*-ben kell kódolni.
 
 A feldolgozható, programozható eskü TOTP a szoftveres jogkivonat telepítési folyamatában is beállítható az Azure AD-ben.
+
+A nyilvános előzetes verzió részeként a rendszer a hardveres jogkivonatokat is támogatja. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ![ESKÜ-tokenek feltöltése az MFA-eskü tokenek paneljére](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 

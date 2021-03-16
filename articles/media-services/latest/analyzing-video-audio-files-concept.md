@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
-ms.date: 10/21/2020
+ms.date: 03/15/2021
 ms.author: inhenkel
-ms.openlocfilehash: 25b5c3163b657633ca78215468f4c2a2e40949b7
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 198abf70ae4350a3b410c11d8360e44a37555d8e
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897224"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564371"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Videó-és hangfájlok elemzése Azure Media Services
 
@@ -43,7 +43,7 @@ A Media Services jelenleg a következő beépített analizátor-beállításkés
 
 |**Előre definiált név**|**Forgatókönyv**|**Részletek**|
 |---|---|---|
-|[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Audio standard elemzése|Az előre definiált AI-alapú elemzési műveletek, beleértve a beszédfelismerést, előre meghatározott készletet alkalmaznak. Jelenleg az előre definiált tartalom egyetlen hangfelvételsel támogatja a tartalmat, amely egyetlen nyelven tartalmaz beszédet. Megadhatja a bemenetben lévő hangtartalom nyelvét a "Language tag-Region" BCP-47 formátumával. A támogatott nyelvek: angol ("en-US" és "en-GB"), spanyol ("es-ES" és "es-MX"), francia ("fr-FR"), olasz ("It"), Japán ("ja-JP"), Portugál ("PT-BR"), Kínai ("zh-CN"), német ("de-DE"), Arab ("AR-EG" és "AR-SY"), Orosz ("ru-RU"), hindi ("Hi-IN") és koreai ("ko-KR").<br/><br/> Ha a nyelv nincs megadva vagy NULL értékre van állítva, az automatikus nyelvfelismerés kiválasztja az első nyelvet, és a fájl időtartamára folytatja a kiválasztott nyelvet. Az automatikus nyelvfelismerés funkció jelenleg a következőket támogatja: angol, kínai, francia, német, olasz, Japán, spanyol, orosz és portugál. Az első nyelv észlelése után nem támogatja a nyelvek közötti dinamikus váltást. Az automatikus nyelvfelismerés funkció a hangfelvételek és a jól felismerhető beszédek esetében a legjobban működik. Ha az automatikus nyelvfelismerés nem találja a nyelvet, az átirat visszatérhet az angol nyelvre.|
+|[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Audio standard elemzése|Az előre definiált AI-alapú elemzési műveletek, beleértve a beszédfelismerést, előre meghatározott készletet alkalmaznak. Jelenleg az előre definiált tartalom egyetlen hangfelvételsel támogatja a tartalmat, amely egyetlen nyelven tartalmaz beszédet. Megadhatja a bemenetben lévő hangtartalom nyelvét a "Language tag-Region" BCP-47 formátumával. A támogatott nyelvek: angol ("en-US", "en-GB" és "en-AU"), spanyol ("es-ES" és "es-MX"), francia ("fr-FR" és "fr-CA"), olasz ("It"), Japán ("ja-JP"), Portugál ("PT-BR"), Kínai ("zh-CN"), német ("de-DE"), Arab ("AR-BH", "ar-", "AR-IQ", "AR-JO", "AR-KW", "AR-LB ', ' AR-OM ', ' AR-QA ', ' AR-SA ' és ' AR-SY '), Orosz (' ru-RU '), hindi (' Hi-IN '), Koreai (' ko-KR '), dán (" da-DK "), norvég (" NB-NO "), svéd (" SV-SE "), finn (" fi-FI "), thai (" th-TH ") és török (" TR-TR ").<br/><br/> Ha a nyelv nincs megadva vagy NULL értékre van állítva, az automatikus nyelvfelismerés kiválasztja az első nyelvet, és a fájl időtartamára folytatja a kiválasztott nyelvet. Az automatikus nyelvfelismerés funkció jelenleg a következőket támogatja: angol, kínai, francia, német, olasz, Japán, spanyol, orosz és portugál. Az első nyelv észlelése után nem támogatja a nyelvek közötti dinamikus váltást. Az automatikus nyelvfelismerés funkció a hangfelvételek és a jól felismerhető beszédek esetében a legjobban működik. Ha az automatikus nyelvfelismerés nem találja a nyelvet, az átirat visszatérhet az angol nyelvre.|
 |[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Az alapszintű hang elemzése|Ez a mód beszéd – szöveg típusú átírást és VTT alcím/képaláírás-fájl létrehozását végzi. A mód kimenete tartalmaz egy bepillantást nem tartalmazó JSON-fájlt, amely csak a kulcsszavakat, az átírást és az időzítési adatokat tartalmazza. Ez a mód nem tartalmazza az automatikus nyelvfelismerés és a hangszórók diarization. A támogatott nyelvek listája [itt](#built-in-presets) érhető el|
 |[VideoAnalyzerPreset](/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Hang és videó elemzése|Kinyeri az elemzéseket (gazdag metaadatokat) a hang-és a videóból, és egy JSON formátumú fájlt ad kimenetként. Megadhatja, hogy a videofájl feldolgozásakor csak hangelemzéseket szeretne-e kinyerni. További információt a [videó elemzése](analyze-videos-tutorial-with-api.md)című témakörben talál.|
 |[FaceDetectorPreset](/rest/api/media/transforms/createorupdate#facedetectorpreset)|A videóban lévő arcok észlelése|Ismerteti azokat a beállításokat, amelyeket a rendszer a videó elemzésekor használ a jelen lévő összes arc észleléséhez.|

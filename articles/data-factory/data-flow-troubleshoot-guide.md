@@ -6,13 +6,13 @@ author: kromerm
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/11/2020
-ms.openlocfilehash: f8a852a8c4197169061a9c7633f4f363ad057337
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.date: 03/15/2021
+ms.openlocfilehash: fe65a9528e35416d537f3aecd3a44f8b4e568afe
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505800"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467731"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory adatforgalmának hibáinak megoldása
 
@@ -165,36 +165,6 @@ Ez a cikk az adatfolyamatok Azure Data Factoryban történő leképezésének gy
 - **OK**: nem meghatározott.
 - **Javaslat**: a paraméter érték-hozzárendelésének ellenőrzését a folyamatban. Egy paraméter kifejezése érvénytelen karaktereket tartalmazhat.
 
-### <a name="error-code-df-excel-invalidconfiguration"></a>Hibakód: DF-Excel-InvalidConfiguration
-- **Üzenet**: az Excel-lapok neve vagy indexe kötelező.
-- **OK**: nem meghatározott.
-- **Javaslat**: keresse meg a paraméter értékét. Adja meg a munkalap nevét vagy indexét az Excel-információk olvasásához.
-
-- **Üzenet**: az Excel-lapok neve és indexe nem létezhet egyszerre.
-- **OK**: nem meghatározott.
-- **Javaslat**: keresse meg a paraméter értékét. Adja meg a munkalap nevét vagy indexét az Excel-információk olvasásához.
-
-- **Üzenet**: érvénytelen tartomány van megadva.
-- **OK**: nem meghatározott.
-- **Javaslat**: keresse meg a paraméter értékét. Érvényes tartományt válasszon a hivatkozás alapján. További információ: Excel- [Tulajdonságok](./format-excel.md#dataset-properties).
-
-- **Üzenet**: érvénytelen Excel-fájl van megadva, amíg csak az. xlsx és az. xls támogatott
-- **OK**: nem meghatározott.
-- **Javaslat**: Győződjön meg arról, hogy az Excel-fájlkiterjesztés vagy. xlsx vagy. xls.
-
-
- ### <a name="error-code-df-excel-invaliddata"></a>Hibakód: DF-Excel-InvalidData
-- **Üzenet**: az Excel-munkalap nem létezik.
-- **OK**: nem meghatározott.
-- **Javaslat**: keresse meg a paraméter értékét. Adjon meg egy érvényes munkalap-nevet vagy-indexet az Excel-információk olvasásához.
-
-- **Üzenet**: az Excel-fájlok más sémával való olvasása most nem támogatott.
-- **OK**: nem meghatározott.
-- **Javaslat**: támogatott Excel-fájl használata.
-
-- **Üzenet**: az adattípus nem támogatott.
-- **OK**: nem meghatározott.
-- **Javaslat**: használja az Excel-fájlok támogatott adattípusait.
 
 ### <a name="error-code-4502"></a>Hibakód: 4502
 - **Üzenet**: jelentős egyidejű MappingDataflow-végrehajtás történt, amely a Integration Runtime alatti szabályozás miatt hibákat okoz.
@@ -211,6 +181,206 @@ Ez a cikk az adatfolyamatok Azure Data Factoryban történő leképezésének gy
 - **Üzenet**: a tevékenység Azure Integration Runtime fut, és nem tudta visszafejteni a saját üzemeltetésű Integration Runtime keresztül csatlakoztatott adattár vagy számítás hitelesítő adatait. Ellenőrizze az ehhez a tevékenységhez társított társított szolgáltatások konfigurációját, és győződjön meg arról, hogy az integrációs modul megfelelő típusát használja.
 - **OK**: az adatfolyam nem támogatja a társított szolgáltatásokat a saját üzemeltetésű integrációs modulokon.
 - **Javaslat**: állítsa be az adatfolyamot felügyelt Virtual Network integrációs futtatókörnyezeten való futtatásra.
+
+### <a name="error-code-df-xml-invalidvalidationmode"></a>Hibakód: DF-XML-InvalidValidationMode
+- **Üzenet**: érvénytelen XML-érvényesítési mód van megadva.
+- **Javaslat**: a paraméter értékének ellenőrzése és a megfelelő ellenőrzési mód megadása.
+
+### <a name="error-code-df-xml-invaliddatafield"></a>Hibakód: DF-XML-InvalidDataField
+- **Üzenet**: a sérült rekordok mezőjének karakterlánc típusúnak és üresnek kell lennie.
+- **Javaslat**: Győződjön meg arról, hogy a `\"_corrupt_record\"` forrás projektben szereplő oszlop sztring adattípussal rendelkezik.
+
+### <a name="error-code-df-xml-malformedfile"></a>Hibakód: DF-XML-MalformedFile
+- **Üzenet**: helytelen formátumú XML a következőben: "FailFastMode".
+- **Javaslat**: frissítse az XML-fájl tartalmát a megfelelő formátumra.
+
+### <a name="error-code-df-xml-invaliddatatype"></a>Hibakód: DF-XML-InvalidDataType
+- **Üzenet**: az XML-elem alelemekkel vagy attribútumokkal rendelkezik, és nem konvertálható.
+
+### <a name="error-code-df-xml-invalidreferenceresource"></a>Hibakód: DF-XML-InvalidReferenceResource
+- **Üzenet**: az XML-adatfájlban szereplő hivatkozási erőforrás nem oldható fel.
+- **Javaslat**: az XML-adatfájlban tekintse meg a hivatkozási erőforrást.
+
+### <a name="error-code-df-xml-invalidschema"></a>Hibakód: DF-XML-InvalidSchema
+- **Üzenet**: a séma ellenőrzése nem sikerült.
+
+### <a name="error-code-df-xml-unsupportedexternalreferenceresource"></a>Hibakód: DF-XML-UnsupportedExternalReferenceResource
+- **Üzenet**: az XML-adatfájlban található külső hivatkozási erőforrás nem támogatott.
+- **Javaslat**: az XML-fájl tartalmának frissítése, ha a külső hivatkozási erőforrás jelenleg nem támogatott.
+
+### <a name="error-code-df-gen2-invalidaccountconfiguration"></a>Hibakód: DF-GEN2-InvalidAccountConfiguration
+- **Üzenet**: meg kell adni a fiók vagy a bérlő/SpnId/SpnCredential/spnCredentialType vagy a MiServiceUri/miServiceToken egyikét.
+- **Javaslat**: a megfelelő fiók konfigurálása a kapcsolódó GEN2 társított szolgáltatásban.
+
+### <a name="error-code-df-gen2-invalidauthconfiguration"></a>Hibakód: DF-GEN2-InvalidAuthConfiguration
+- **Üzenet**: a három hitelesítési módszer (Key, SERVICEPRINCIPAL és mi) közül csak az egyik adható meg. 
+- **Javaslat**: válassza ki a megfelelő hitelesítési típust a kapcsolódó GEN2 társított szolgáltatásban.
+
+### <a name="error-code-df-gen2-invalidserviceprincipalcredentialtype"></a>Hibakód: DF-GEN2-InvalidServicePrincipalCredentialType
+- **Üzenet**: a ServicePrincipalCredentialType érvénytelen.
+
+### <a name="error-code-df-gen2-invaliddatatype"></a>Hibakód: DF-GEN2-InvalidDataType
+- **Üzenet**: a felhő típusa érvénytelen.
+
+### <a name="error-code-df-blob-invalidaccountconfiguration"></a>Hibakód: DF-blob-InvalidAccountConfiguration
+- **Üzenet**: a fiók kulcsa vagy sas_token megadása kötelező.
+
+### <a name="error-code-df-blob-invalidauthconfiguration"></a>Hibakód: DF-blob-InvalidAuthConfiguration
+- **Üzenet**: a két hitelesítési módszer (kulcs, SAS) közül csak az egyik adható meg.
+
+### <a name="error-code-df-blob-invaliddatatype"></a>Hibakód: DF-blob-InvalidDataType
+- **Üzenet**: a felhő típusa érvénytelen.
+
+### <a name="error-code-df-cosmos-partitionkeymissed"></a>Hibakód: DF-Cosmos-PartitionKeyMissed
+- **Üzenet**: a partíciós kulcs elérési útját meg kell adni a frissítési és törlési műveletekhez.
+- **Javaslat**: a partíció megadása a Cosmos mosogató beállításaiban.
+
+### <a name="error-code-df-cosmos-invalidpartitionkey"></a>Hibakód: DF-Cosmos-InvalidPartitionKey
+- **Üzenet**: a partíciós kulcs elérési útja nem lehet üres a frissítési és törlési műveletekhez.
+- **Javaslat**: a partíció megadása a Cosmos mosogató beállításaiban.
+
+### <a name="error-code-df-cosmos-idpropertymissed"></a>Hibakód: DF-Cosmos-IdPropertyMissed
+- **Üzenet**: az "id" tulajdonságot le kell képezni a törlési és frissítési műveletekhez.
+- **Javaslat**: Ellenőrizze, hogy a bemeneti adatok rendelkeznek `id` -e oszlopokkal a Cosmos-fogadó beállításaiban. Ha nem, használja az **átalakítás kiválasztása vagy származtatása lehetőséget** az oszlop létrehozásához a fogadó előtt.
+
+### <a name="error-code-df-cosmos-invalidpartitionkeycontent"></a>Hibakód: DF-Cosmos-InvalidPartitionKeyContent
+- **Üzenet**: a partíciós kulcsnak/értékkel kell kezdődnie.
+- **Javaslat**: a partíciós kulcs kezdetének `/` beállítása a Cosmos fogadó beállításaiban, például: `/movieId` .
+
+### <a name="error-code-df-cosmos-invalidpartitionkey"></a>Hibakód: DF-Cosmos-InvalidPartitionKey
+- **Üzenet**: a partitionKey nincs leképezve a fogadóban a törlési és frissítési műveletekhez.
+- **Javaslat**: a Cosmos-fogadó beállításaiban használja a tároló partíciós kulcsával megegyező partíciós kulcsot.
+
+### <a name="error-code-df-cosmos-invalidconnectionmode"></a>Hibakód: DF-Cosmos-InvalidConnectionMode
+- **Üzenet**: érvénytelen connectionMode.
+- **Javaslat**: Győződjön meg arról, hogy a támogatott mód az **átjáró** -és **DirectHttps** a Cosmos-beállításokban.
+
+### <a name="error-code-df-cosmos-invalidaccountconfiguration"></a>Hibakód: DF-Cosmos-InvalidAccountConfiguration
+- **Üzenet**: meg kell adni a accountName vagy a accountEndpoint értéket.
+
+### <a name="error-code-df-github-writenotsupported"></a>Hibakód: DF-GitHub-WriteNotSupported
+- **Üzenet**: a GitHub-tároló nem engedélyezi az írást.
+
+### <a name="error-code-df-pgsql-invalidcredential"></a>Hibakód: DF-PGSQL-InvalidCredential
+- **Üzenet**: meg kell adni a felhasználót és a jelszót.
+- **Javaslat**: Győződjön meg arról, hogy megfelelő hitelesítőadat-beállítások vannak a kapcsolódó PostgreSQL társított szolgáltatásban.
+
+### <a name="error-code-df-snowflake-invalidstageconfiguration"></a>Hibakód: DF-hópehely-InvalidStageConfiguration
+- **Üzenet**: csak a blob Storage-típus használható a hópehely írási/olvasási műveletben.
+
+### <a name="error-code-df-snowflake-invalidstageconfiguration"></a>Hibakód: DF-hópehely-InvalidStageConfiguration
+- **Üzenet**: a hópehely szakasz tulajdonságait meg kell adni az Azure Blob + sas hitelesítéssel.
+
+### <a name="error-code-df-snowflake-invaliddatatype"></a>Hibakód: DF-hópehely-InvalidDataType
+- **Üzenet**: a Spark típusa nem támogatott a hópehely-ban.
+- **Javaslat**: a **származtatás átalakításával** módosítsa a bemeneti adatok kapcsolódó oszlopát a string típusba a hópehely fogadó előtt. 
+
+### <a name="error-code-df-hive-invalidblobstagingconfiguration"></a>Hibakód: DF-kaptár-InvalidBlobStagingConfiguration
+- **Üzenet**: a blob Storage átmeneti tulajdonságait meg kell adni.
+
+### <a name="error-code-df-hive-invalidgen2stagingconfiguration"></a>Hibakód: DF-kaptár-InvalidGen2StagingConfiguration
+- **Üzenet**: ADLS Gen2 a tárterület átmeneti beállítása csak a szolgáltatás egyszerű kulcsának hitelesítő adatait támogatja.
+- **Javaslat**: Ellenőrizze, hogy az egyszerű szolgáltatásnév hitelesítő adatait alkalmazza-e az átmenetiként használt ADLS Gen2 társított szolgáltatásban.
+
+### <a name="error-code-df-hive-invalidgen2stagingconfiguration"></a>Hibakód: DF-kaptár-InvalidGen2StagingConfiguration
+- **Üzenet**: ADLS Gen2 tárterület-átmeneti tulajdonságokat meg kell adni. A kulcs vagy a bérlő/spnId/spnKey, illetve a miServiceUri/miServiceToken egyike szükséges.
+- **Javaslat**: alkalmazza a megfelelő hitelesítő adatokat, amelyet átmenetiként használ a rendszer a kapcsolódó ADLS Gen2 társított szolgáltatásban a struktúrában. 
+
+### <a name="error-code-df-hive-invaliddatatype"></a>Hibakód: DF-kaptár-InvalidDataType
+- **Üzenet**: nem támogatott oszlop (ok).
+- **Javaslat**: frissítse a bemeneti adatok oszlopát a struktúra által támogatott adattípusnak megfelelő értékre.
+
+### <a name="error-code-df-hive-invalidstoragetype"></a>Hibakód: DF-kaptár-InvalidStorageType
+- **Üzenet**: a tárolási típus lehet blob vagy Gen2.
+
+### <a name="error-code-df-delimited-invalidconfiguration"></a>Hibakód: DF-tagolt-InvalidConfiguration
+- **Üzenet**: az egyik üres sort vagy egyéni fejlécet kell megadni.
+- **Javaslat**: üres sorok vagy egyéni fejlécek megadása a CSV-beállításokban.
+
+### <a name="error-code-df-delimited-columndelimitermissed"></a>Hibakód: DF-tagolt-ColumnDelimiterMissed
+- **Üzenet**: az elemzéshez az oszlop elválasztója szükséges.
+- **Javaslat**: Ellenőrizze, hogy rendelkezik-e az oszlop elválasztóval a CSV-beállításokban.
+
+### <a name="error-code-df-mssql-invalidcredential"></a>Hibakód: DF-MSSQL-InvalidCredential
+- **Üzenet**: a User/pwd, a bérlő/SpnId/spnKey vagy a MiServiceUri/miServiceToken egyikét meg kell adni.
+- **Javaslat**: a megfelelő hitelesítő adatok alkalmazása a kapcsolódó MSSQL társított szolgáltatásban.
+
+### <a name="error-code-df-mssql-invaliddatatype"></a>Hibakód: DF-MSSQL-InvalidDataType
+- **Üzenet**: nem támogatott mező (k).
+- **Javaslat**: módosítsa a bemeneti adatok OSZLOPOT az MSSQL által támogatott adattípusnak megfelelően.
+
+### <a name="error-code-df-mssql-invalidauthconfiguration"></a>Hibakód: DF-MSSQL-InvalidAuthConfiguration
+- **Üzenet**: a három hitelesítési módszer (Key, SERVICEPRINCIPAL és mi) közül csak az egyik adható meg.
+- **Javaslat**: csak a három hitelesítési módszer (Key, SERVICEPRINCIPAL és mi) egyikét adhatja meg a kapcsolódó MSSQL társított szolgáltatásban.
+
+### <a name="error-code-df-mssql-invalidcloudtype"></a>Hibakód: DF-MSSQL-InvalidCloudType
+- **Üzenet**: a felhő típusa érvénytelen.
+- **Javaslat**: vizsgálja meg a felhő típusát a kapcsolódó MSSQL társított szolgáltatásban.
+
+### <a name="error-code-df-sqldw-invalidblobstagingconfiguration"></a>Hibakód: DF-SQLDW-InvalidBlobStagingConfiguration
+- **Üzenet**: a blob Storage átmeneti tulajdonságait meg kell adni.
+
+### <a name="error-code-df-sqldw-invalidstoragetype"></a>Hibakód: DF-SQLDW-InvalidStorageType
+- **Üzenet**: a tárolási típus lehet blob vagy Gen2.
+
+### <a name="error-code-df-sqldw-invalidgen2stagingconfiguration"></a>Hibakód: DF-SQLDW-InvalidGen2StagingConfiguration
+- **Üzenet**: ADLS Gen2 a tárterület átmeneti beállítása csak a szolgáltatás egyszerű kulcsának hitelesítő adatait támogatja.
+
+### <a name="error-code-df-sqldw-invalidconfiguration"></a>Hibakód: DF-SQLDW-InvalidConfiguration
+- **Üzenet**: ADLS Gen2 tárterület-átmeneti tulajdonságokat meg kell adni. A kulcs vagy a bérlő/spnId/spnCredential/spnCredentialType vagy a miServiceUri/miServiceToken egyike szükséges.
+
+### <a name="error-code-df-delta-invalidconfiguration"></a>Hibakód: DF-DELTA-InvalidConfiguration
+- **Üzenet**: az időbélyeg és a verzió nem állítható be egyszerre.
+
+### <a name="error-code-df-delta-keycolumnmissed"></a>Hibakód: DF-DELTA-KeyColumnMissed
+- **Üzenet**: a nem beilleszthető műveletekhez meg kell adni a kulcs oszlop (oka) t.
+
+### <a name="error-code-df-delta-invalidtableoperationsettings"></a>Hibakód: DF-DELTA-InvalidTableOperationSettings
+- **Üzenet**: az újbóli létrehozás és a csonkolt beállítások nem adhatók meg egyszerre.
+
+### <a name="error-code-df-excel-worksheetconfigmissed"></a>Hibakód: DF-Excel-WorksheetConfigMissed
+- **Üzenet**: az Excel-lapok neve vagy indexe kötelező.
+- **Javaslat**: Tekintse meg a paraméter értékét, és adja meg a lapok nevét vagy indexét az Excel-adatok olvasásához.
+
+### <a name="error-code-df-excel-invalidworksheetconfiguration"></a>Hibakód: DF-Excel-InvalidWorksheetConfiguration
+- **Üzenet**: az Excel-lapok neve és indexe nem létezhet egyszerre.
+- **Javaslat**: Tekintse meg a paraméter értékét, és adja meg a lapok nevét vagy indexét az Excel-adatok olvasásához.
+
+### <a name="error-code-df-excel-invalidrange"></a>Hibakód: DF-Excel-InvalidRange
+- **Üzenet**: érvénytelen tartomány van megadva.
+- **Javaslat**: a paraméter értékének megadásához és az érvényes tartományt a következő hivatkozással kell megadnia: [Excel-formátum az Azure-beli adatFactory-Dataset tulajdonságaiban](https://docs.microsoft.com/azure/data-factory/format-excel#dataset-properties).
+
+### <a name="error-code-df-excel-worksheetnotexist"></a>Hibakód: DF-Excel-WorksheetNotExist
+- **Üzenet**: az Excel-munkalap nem létezik.
+- **Javaslat**: Tekintse meg a paraméter értékét, és az Excel-adatok olvasásához adja meg az érvényes Sheet-nevet vagy-indexet.
+
+### <a name="error-code-df-excel-differentschemanotsupport"></a>Hibakód: DF-Excel-DifferentSchemaNotSupport
+- **Üzenet**: az Excel-fájlok más sémával való olvasása most nem támogatott.
+
+### <a name="error-code-df-excel-invaliddatatype"></a>Hibakód: DF-Excel-InvalidDataType
+- **Üzenet**: az adattípus nem támogatott.
+
+### <a name="error-code-df-excel-invalidfile"></a>Hibakód: DF-Excel-InvalidFile
+- **Üzenet**: érvénytelen Excel-fájl van megadva, amíg csak az. xlsx és az. xls támogatott.
+
+### <a name="error-code-df-adobeintegration-invalidmaptofilter"></a>Hibakód: DF-AdobeIntegration-InvalidMapToFilter
+- **Üzenet**: az egyéni erőforrás csak egy, a szűréshez hozzárendelt kulcs/azonosítóval rendelkezhet.
+
+### <a name="error-code-df-adobeintegration-invalidpartitionconfiguration"></a>Hibakód: DF-AdobeIntegration-InvalidPartitionConfiguration
+- **Üzenet**: csak egyetlen partíció támogatott. A partíciós séma lehet RoundRobin vagy hash.
+- **Javaslat**: a AdobeIntegration beállításaiban ellenőrizze, hogy csak egyetlen partícióval rendelkezik-e. Lehet, hogy a partíciós séma RoundRobin vagy kivonat.
+
+### <a name="error-code-df-adobeintegration-keycolumnmissed"></a>Hibakód: DF-AdobeIntegration-KeyColumnMissed
+- **Üzenet**: a kulcsot meg kell adni a nem beszúrt műveletekhez.
+- **Javaslat**: adja meg a kulcs oszlopait a AdobeIntegration-beállításokban nem beilleszthető műveletekhez.
+
+### <a name="error-code-df-adobeintegration-invalidpartitiontype"></a>Hibakód: DF-AdobeIntegration-InvalidPartitionType
+- **Üzenet**: a partíció típusának roundRobin kell lennie.
+- **Javaslat**: Ellenőrizze, hogy a partíció típusa roundRobin-e a AdobeIntegration-beállításokban.
+
+### <a name="error-code-df-adobeintegration-invalidprivacyregulation"></a>Hibakód: DF-AdobeIntegration-InvalidPrivacyRegulation
+- **Üzenet**: jelenleg csak az GDPR támogatott adatvédelmi szabályozás érhető el.
+- **Javaslat**: erősítse meg, hogy a AdobeIntegration-beállítások adatvédelmi rendelete **"GDPR"**.
 
 ## <a name="miscellaneous-troubleshooting-tips"></a>Egyéb hibaelhárítási tippek
 - **Probléma**: váratlan kivétel történt, és a végrehajtás nem sikerült.

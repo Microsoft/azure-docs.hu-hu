@@ -6,15 +6,15 @@ author: chriswhilar
 manager: mariusu-msft
 services: azure-communication-services
 ms.author: mariusu
-ms.date: 10/15/2020
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c3ceb866d9ca817299929b9a811915b82ccfbd48
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 824fd19e8acfed75ab3d64048a00f579b70286d2
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102614744"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496235"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Ismerkedés a webes hívási mintával
 
@@ -93,7 +93,7 @@ További információért tekintse át a következő cikkeket:
 
 ## <a name="additional-reading"></a>További információ
 
-- [Azure Communication GitHub](https://github.com/Azure/communication) – további példákat és információkat talál a hivatalos GitHub-oldalon
+- [Minták](./overview.md) – további mintákat és példákat talál a minták áttekintése oldalon.
 - [Redux](https://redux.js.org/) – ügyféloldali állapot kezelése
 - [FluentUI](https://aka.ms/fluent-ui) – Microsoft powered UI Library
 - [Reagálás](https://reactjs.org/) – függvénytár a felhasználói felületek létrehozásához

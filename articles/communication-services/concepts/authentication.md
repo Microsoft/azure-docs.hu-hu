@@ -9,24 +9,38 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: b3cd0643a74ccadb8390ce906eb391420de15a29
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 83976ed9d6f80b6c785cb84e74a0755472f9579f
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2021
-ms.locfileid: "103490789"
+ms.locfileid: "103561804"
 ---
 # <a name="authenticate-to-azure-communication-services"></a>Hitelesítés az Azure kommunikációs szolgáltatásokban
 
-Az Azure kommunikációs szolgáltatásokkal való kommunikációt minden ügyfélnek hitelesíteni kell. Egy tipikus architektúrában az [ügyfél és a kiszolgáló architektúrája](./client-and-server-architecture.md), a *hozzáférési kulcsok* vagy a *felügyelt identitás* használatos a megbízható felhasználói hozzáférési szolgáltatásban a felhasználók létrehozásához és a jogkivonatok kibocsátásához. A megbízható felhasználói hozzáférési szolgáltatás által kiadott *felhasználói hozzáférési jogkivonat* az ügyfélalkalmazások számára más kommunikációs szolgáltatásokhoz, például csevegéshez vagy híváshoz való hozzáféréshez használatos.
+Az Azure kommunikációs szolgáltatásokkal való kommunikációt minden ügyfélnek hitelesíteni kell. Egy tipikus architektúrában az [ügyfél és a kiszolgáló architektúrája](./client-and-server-architecture.md), a *hozzáférési kulcsok* vagy a *felügyelt identitások* használhatók a hitelesítéshez.
 
-Az Azure Communication Services SMS szolgáltatás *hozzáférési kulcsokat* vagy *felügyelt identitást* is elfogad a hitelesítéshez. Ez általában egy megbízható szolgáltatási környezetben futó szolgáltatásalkalmazás esetében fordul elő.
+A hitelesítés egy másik típusa *felhasználói hozzáférési jogkivonatokat* használ a felhasználói részvételt igénylő szolgáltatásokkal való hitelesítéshez. A csevegés vagy a hívási szolgáltatás például *felhasználói hozzáférési jogkivonatokat* használ, hogy a felhasználók felvehetők legyenek egy szálba, és beszélgetni lehessen egymással.
+
+## <a name="authentication-options"></a>Hitelesítési beállítások:
+
+A következő táblázat az Azure kommunikációs szolgáltatások ügyféloldali kódtárait és hitelesítési lehetőségeit mutatja be:
+
+| Ügyféloldali kódtár    | Hitelesítési beállítás                               |
+| ----------------- | ----------------------------------------------------|
+| Identitás          | Hozzáférési kulcs vagy felügyelt identitás                      |
+| SMS               | Hozzáférési kulcs vagy felügyelt identitás                      |
+| Telefonszámok     | Hozzáférési kulcs vagy felügyelt identitás                      |
+| Hívó           | Felhasználói hozzáférési jogkivonat                                   |
+| Csevegés              | Felhasználói hozzáférési jogkivonat                                   |
 
 Az egyes engedélyezési beállítások rövid ismertetését az alábbiakban találja:
 
-- **Hozzáférési kulcs** hitelesítése SMS-és identitás-műveletekhez. A hozzáférési kulcs hitelesítése megbízható szolgáltatási környezetben futó szolgáltatásalkalmazás számára megfelelő. A hozzáférési kulcs az Azure Communication Services portálon található. Egy hozzáférési kulccsal való hitelesítéshez a szolgáltatásalkalmazás a hozzáférési kulcsot használja hitelesítő adatként a megfelelő SMS-vagy identitás-ügyféloldali kódtárak inicializálásához. a [hozzáférési jogkivonatok létrehozása és kezelése](../quickstarts/access-tokens.md)című témakörben talál további információt. Mivel a hozzáférési kulcs az erőforrás kapcsolati karakterláncának része, lásd: [kommunikációs szolgáltatások erőforrásainak létrehozása és kezelése](../quickstarts/create-communication-resource.md), a kapcsolati karakterlánccal való hitelesítés egyenértékű a hozzáférési kulccsal való hitelesítéssel.
-- **Felügyelt identitások** hitelesítése az SMS-ben és az Identity műveletekben. Felügyelt identitás: a [felügyelt identitás](../quickstarts/managed-identity.md)a megbízható szolgáltatási környezetben futó alkalmazások számára megfelelő. A felügyelt identitással történő hitelesítéshez a szolgáltatásalkalmazás létrehoz egy hitelesítő adatot az azonosítóval és a felügyelt identitás titkos kódjával, majd inicializálja a megfelelő SMS-vagy identitás-ügyféloldali kódtárakat. a [hozzáférési tokenek létrehozása és kezelése](../quickstarts/access-tokens.md)című témakörben talál további információt.
-- **Felhasználói hozzáférési jogkivonat** hitelesítése csevegéshez és híváshoz. A felhasználói hozzáférési tokenek lehetővé teszik az ügyfélalkalmazások számára az Azure kommunikációs csevegés és a hívási szolgáltatások hitelesítését. Ezek a tokenek a létrehozott "megbízható felhasználói hozzáférés" szolgáltatásban jönnek létre. Ezeket a rendszer a tokent használó ügyféleszközök számára adja meg a csevegés inicializálásához és az ügyféloldali kódtárak meghívásához. További információ: [csevegés hozzáadása az alkalmazáshoz](../quickstarts/chat/get-started.md) például.
+- A **hozzáférési kulcs** hitelesítése megbízható szolgáltatási környezetben futó szolgáltatásalkalmazás számára megfelelő. A hozzáférési kulcs az Azure Communication Services portálon található, és a szolgáltatásalkalmazás hitelesítő adatként használja a megfelelő ügyféloldali kódtárak inicializálásához. Tekintse meg, hogyan használja a rendszer az [Identity ügyféloldali függvénytárban](../quickstarts/access-tokens.md). Mivel a hozzáférési kulcs az erőforrás kapcsolati karakterláncának része, a kapcsolati karakterlánccal való hitelesítés egyenértékű a hozzáférési kulccsal való hitelesítéssel.
+
+- A **felügyelt identitások** hitelesítése kiváló biztonságot és egyszerű használatot biztosít a többi engedélyezési lehetőséghez képest. Az Azure AD-vel például nem kell a fiók hozzáférési kulcsát a kóddal tárolnia, ahogy a hozzáférési kulcs engedélyezésével. Noha a kommunikációs szolgáltatások alkalmazásaival továbbra is használhatja a hozzáférési kulcs engedélyezését, a Microsoft javasolja az Azure AD-re való áttérést, ahol lehetséges. Felügyelt identitás beállításához [hozzon létre egy regisztrált alkalmazást az Azure CLI-ből](../quickstarts/managed-identity-from-cli.md). Ezután a végpont és a hitelesítő adatok használhatók az ügyféloldali kódtárak hitelesítésére. Tekintse át a [felügyelt identitás](../quickstarts/managed-identity.md) használatára vonatkozó példákat.
+
+- A **felhasználói hozzáférési jogkivonatok** az Identity ügyféloldali kódtár használatával jönnek létre, és az identitás ügyféloldali függvénytárában létrehozott felhasználókhoz vannak társítva. Tekintse meg a [felhasználók létrehozásának és a jogkivonatok létrehozásának](../quickstarts/access-tokens.md)példáját. Ezt követően a felhasználói hozzáférési tokenek a csevegésben vagy a hívó SDK-ban a beszélgetésekbe felvett résztvevők hitelesítésére használhatók. További információ: [csevegés hozzáadása az alkalmazáshoz](../quickstarts/chat/get-started.md). A felhasználói hozzáférési jogkivonat hitelesítése különbözik a hozzáférés kulcsa és a felügyelt identitás hitelesítése között, és nem biztonságos Azure-erőforrás helyett a felhasználó hitelesítésére szolgál.
 
 ## <a name="next-steps"></a>Következő lépések
 

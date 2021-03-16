@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: 3767a16656ac4d11511c0928be8b2703c4e94c7c
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: eb19005019a6e4e878f6b0bd6a145048d4a2804c
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680603"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563776"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>Azure Service Fabric-fürt üzembe helyezése csak állapot nélküli csomópont-típusokkal (előzetes verzió)
 Service Fabric a csomópontok típusai feltételezik, hogy bizonyos időpontban az állapot-nyilvántartó szolgáltatások a csomópontokra helyezhetők. Az állapot nélküli csomópontok típusai kipihenhetik ezt a feltételezést a csomópontok típusához, így a csomópont típusa más funkciók használatát teszi lehetővé, például gyorsabb horizontális Felskálázási műveleteket, az automatikus operációsrendszer-frissítések támogatását a bronz tartósságon, és több mint 100 csomópontra méretezheti egyetlen virtuálisgép-méretezési csoporton belül.
@@ -72,9 +72,13 @@ Ha egy vagy több csomópontot állapot nélküliként szeretne beállítani a f
 Az állapot nélküli csomópontok típusának engedélyezéséhez a következő módon kell konfigurálnia az alapul szolgáló virtuálisgép-méretezési csoport erőforrásait:
 
 * A Value  **singlePlacementGroup** tulajdonság, amelyet **false** értékre kell állítani, ha több mint 100 virtuális gépre kell méreteznie.
-* A méretezési csoport **upgradePolicy** , mely **üzemmódot** a **gördülő** értékre kell beállítani.
+* A méretezési csoport **upgradePolicy** **módját** a **Rolling** értékre kell beállítani.
 * A működés közbeni frissítési üzemmódhoz az alkalmazás állapotának vagy a beállított állapotának beállítása szükséges. Az állapot nélküli csomópont-típusok alapértelmezett konfigurációjának beállítása az alábbi módon ajánlott. Miután telepítette az alkalmazásokat a csomópont típusára, az állapot-mintavételi/állapotfigyelő portok módosíthatók az alkalmazás állapotának figyeléséhez.
 
+>[!NOTE]
+> Szükség van arra, hogy a platform tartalék tartományának száma 5-öt, ha egy állapot nélküli csomópont típusa olyan virtuálisgép-méretezési csoporttal rendelkezik, amely több zónára kiterjed. További részletekért tekintse meg ezt a [sablont](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-2-NodeTypes-Windows-Stateless-CrossAZ-Secure) .
+> 
+> **platformFaultDomainCount: 5**
 ```json
 {
     "apiVersion": "2018-10-01",

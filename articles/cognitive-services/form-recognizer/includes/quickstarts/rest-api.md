@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 12/15/2020
+ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 2cff960e2dfe6a85b7e16395a167b77f66690c56
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: cd785af1bbe374bd1d1c0c353a4162b61e47d870
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102510835"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467223"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -53,7 +53,7 @@ curl -v -i POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyze
 ### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
 
 ```bash
-curl -v -i POST "https://{Endpoint}/formrecognizer/v2.0/layout/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
+curl -v -i POST "https://{Endpoint}/formrecognizer/v2.1-preview.3/layout/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{'source': '{your-document-url}'}"
 ```
 
 ---
@@ -61,12 +61,12 @@ curl -v -i POST "https://{Endpoint}/formrecognizer/v2.0/layout/analyze" -H "Cont
 Olyan választ fog kapni `202 (Success)` , amely tartalmazza a am **Operation-Location** fejlécet. A fejléc értéke olyan műveleti azonosítót tartalmaz, amelynek segítségével lekérdezheti az aszinkron művelet állapotát, és lekérheti az eredményeket. A következő példában az azt követő karakterlánc a `analyzeResults/` művelet azonosítója.
 
 ```console
-https://cognitiveservice/formrecognizer/v2.1-preview.2/layout/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.1-preview.3/layout/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
 ### <a name="get-layout-results"></a>Elrendezés eredményeinek beolvasása
 
-Az elemzési **[elrendezési](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeLayoutAsync)** API meghívása után hívja meg az elemzési **[elrendezés eredményének beolvasása](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeLayoutResult)** API-t a művelet és a kinyert adatmennyiség állapotának lekéréséhez. A parancs futtatása előtt végezze el a következő módosításokat:
+Az elemzési **[elrendezési](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeLayoutAsync)** API meghívása után hívja meg az elemzési **[elrendezés eredményének beolvasása](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetAnalyzeLayoutResult)** API-t a művelet és a kinyert adatmennyiség állapotának lekéréséhez. A parancs futtatása előtt végezze el a következő módosításokat:
 
 1. Cserélje le `{Endpoint}` a helyére az űrlap-felismerő előfizetéshez kapott végpontot.
 1. Cserélje le az `{subscription key}` elemet az előző lépésből másolt előfizetési kulcsra.
@@ -82,7 +82,7 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyzeR
 ### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
 
 ```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/layout/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.3/layout/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 
 ---
@@ -339,25 +339,25 @@ A számla elemzésének megkezdéséhez használja az alábbi cURL-parancsot. A 
 1. A `{subscription key}` helyére írja be az előfizetési kulcsot.
 
 ```bash
-curl -v -i POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key:  {subscription key}" --data-ascii "{'source': '{your invoice URL}'}"
+curl -v -i POST "https://{Endpoint}/formrecognizer/v2.1-preview.3/prebuilt/invoice/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key:  {subscription key}" --data-ascii "{'source': '{your invoice URL}'}"
 ```
 
 Olyan választ fog kapni `202 (Success)` , amely tartalmazza a am **Operation-Location** fejlécet. A fejléc értéke olyan műveleti azonosítót tartalmaz, amelynek segítségével lekérdezheti az aszinkron művelet állapotát, és lekérheti az eredményeket.
 
 ```console
-https://cognitiveservice/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.1-preview.3/prebuilt/invoice/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
 ### <a name="get-invoice-results"></a>Számla eredményeinek beolvasása
 
-Miután megismerte az elemzési **[számla](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9843c2794cbb1a96291)** API-t, hívja meg a **[Get elemzése számla eredménye](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9acb78c40a2533aee83)** API-t a művelet és a kinyert adatmennyiség állapotának lekéréséhez. A parancs futtatása előtt végezze el a következő módosításokat:
+Miután megismerte az elemzési **[számla](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5ed8c9843c2794cbb1a96291)** API-t, hívja meg a **[Get elemzése számla eredménye](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5ed8c9acb78c40a2533aee83)** API-t a művelet és a kinyert adatmennyiség állapotának lekéréséhez. A parancs futtatása előtt végezze el a következő módosításokat:
 
 1. Cserélje le `{Endpoint}` az helyére az űrlapot felismerő előfizetési kulccsal beszerzett végpontot. Az űrlap-felismerő erőforrás- **Áttekintés** lapon találhatja meg.
 1. Cserélje le az `{resultId}` elemet az előző lépésben szereplő műveleti azonosítóra.
 1. A `{subscription key}` helyére írja be az előfizetési kulcsot.
 
 ```bash
-curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/invoice/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.3/prebuilt/invoice/analyzeResults/{resultId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 
 ### <a name="examine-the-response"></a>A válasz vizsgálata
@@ -546,7 +546,7 @@ A címkézett adatbevitel nélküli képzés az alapértelmezett művelet, és e
 
 ### <a name="train-a-model-without-labels"></a>Modell betanítása címkék nélkül
 
-Ha az Azure Blob-tárolóban található dokumentumokkal szeretne betanítani egy űrlap-felismerő modellt, hívja meg az **[Egyéni modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)** API-ját a következő curl-parancs futtatásával. A parancs futtatása előtt végezze el a következő módosításokat:
+Ha az Azure Blob-tárolóban található dokumentumokkal szeretne betanítani egy űrlap-felismerő modellt, hívja meg az **[Egyéni modell](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/TrainCustomModelAsync)** API-ját a következő curl-parancs futtatásával. A parancs futtatása előtt végezze el a következő módosításokat:
 
 1. Cserélje le `{Endpoint}` a helyére az űrlap-felismerő előfizetéshez kapott végpontot.
 1. Cserélje le az `{subscription key}` elemet az előző lépésből másolt előfizetési kulcsra.
@@ -563,7 +563,7 @@ curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models"
 ### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
 
 ```bash
-curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}'}"
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.3/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}'}"
 ```
 
 ---
@@ -572,7 +572,7 @@ A `201 (Success)` Válasz egy **Location** fejlécet kap. Ennek a fejlécnek az 
 
 ### <a name="train-a-model-with-labels"></a>Modell betanítása címkékkel
 
-Ha címkéket szeretne betanítani, `\<filename\>.pdf.labels.json` a blob Storage-tárolóban speciális címke-információs fájlokkal () kell rendelkeznie a betanítási dokumentumok mellett. Az [űrlap-felismerő minta címkéző eszköz](../../quickstarts/label-tool.md) egy felhasználói felületet biztosít a címkék létrehozásához. Ha megkapta őket, meghívhatja az **[Egyéni modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)** -API-t a `"useLabelFile"` `true` JSON-törzsben beállított paraméterrel.
+Ha címkéket szeretne betanítani, `\<filename\>.pdf.labels.json` a blob Storage-tárolóban speciális címke-információs fájlokkal () kell rendelkeznie a betanítási dokumentumok mellett. Az [űrlap-felismerő minta címkéző eszköz](../../quickstarts/label-tool.md) egy felhasználói felületet biztosít a címkék létrehozásához. Ha megkapta őket, meghívhatja az **[Egyéni modell](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/TrainCustomModelAsync)** -API-t a `"useLabelFile"` `true` JSON-törzsben beállított paraméterrel.
 
 A parancs futtatása előtt végezze el a következő módosításokat:
 
@@ -591,7 +591,11 @@ curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models"
 ### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
 
 ```bash
+<<<<<<< HEAD
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.3/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}', 'useLabelFile':true}"
+=======
 curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{SAS URL}', 'useLabelFile':true }"
+>>>>>>> upstream/master
 ```
 
 ---
@@ -600,7 +604,7 @@ A `201 (Success)` Válasz egy **Location** fejlécet kap. Ennek a fejlécnek az 
 
 ### <a name="get-training-results"></a>Képzési eredmények beolvasása
 
-Miután elindította a vonatok műveletét, új műveletet fog használni, **[Egyéni modell beszerzésével](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetCustomModel)** ellenőrizhető a betanítási állapot. Adja át a modell AZONOSÍTÓját ebbe az API-hívásba a betanítási állapot megtekintéséhez:
+Miután elindította a vonatok műveletét, új műveletet fog használni, **[Egyéni modell beszerzésével](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetCustomModel)** ellenőrizhető a betanítási állapot. Adja át a modell AZONOSÍTÓját ebbe az API-hívásba a betanítási állapot megtekintéséhez:
 
 1. Cserélje le `{Endpoint}` az helyére az űrlapot felismerő előfizetési kulccsal beszerzett végpontot.
 1. Lecserélés az `{subscription key}` előfizetési kulccsal
@@ -615,7 +619,11 @@ curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{mod
 ### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
 
 ```bash
+<<<<<<< HEAD
+curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.3/custom/models/{model ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+=======
 curl -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+>>>>>>> upstream/master
 ```
 
 ---
@@ -692,7 +700,7 @@ A `"modelId"` mező tartalmazza a betanított modell azonosítóját. Ezt a köv
 
 ## <a name="analyze-forms-with-a-custom-model"></a>Űrlapok elemzése egyéni modellel
 
-Ezután az újonnan betanított modellt fogja használni a dokumentumok elemzéséhez és a kulcs-érték párok és táblák kinyeréséhez. Hívja meg az **[elemzés űrlap](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)** API-t a következő curl-parancs futtatásával. A parancs futtatása előtt végezze el a következő módosításokat:
+Ezután az újonnan betanított modellt fogja használni a dokumentumok elemzéséhez és a kulcs-érték párok és táblák kinyeréséhez. Hívja meg az **[elemzés űrlap](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)** API-t a következő curl-parancs futtatásával. A parancs futtatása előtt végezze el a következő módosításokat:
 
 1. Cserélje le `{Endpoint}` az elemet az űrlap-felismerő előfizetési kulcsból beszerzett végpontra. Az űrlap-felismerő erőforrás- **Áttekintés** lapon találhatja meg.
 1. Cserélje le az értékét az `{model ID}` előző szakaszban kapott modell-azonosítóra.
@@ -708,7 +716,11 @@ curl -v "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{model I
 ### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
 
 ```bash
+<<<<<<< HEAD
+curl -v "https://{Endpoint}/formrecognizer/v2.1-preview.3/custom/models/{model ID}/analyze?includeTextDetails=true" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ 'source': '{SAS URL}' } "
+=======
 curl -v "https://{Endpoint}/formrecognizer/v2.0/custom/models/{model ID}/analyze?includeTextDetails=true" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" -d "{ 'source': '{SAS URL}' } "
+>>>>>>> upstream/master
 ```
 
 ---
@@ -717,7 +729,7 @@ Választ fog kapni egy `202 (Success)` **műveleti hely** fejlécével. Ennek a 
 
 ### <a name="get-the-analyze-results"></a>Az elemzés eredményeinek beolvasása
 
-Az elemzési művelet eredményeinek lekérdezéséhez hívja meg az elemzési űrlap beolvasása **[eredmény](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeFormResult)** API-t.
+Az elemzési művelet eredményeinek lekérdezéséhez hívja meg az elemzési űrlap beolvasása **[eredmény](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetAnalyzeFormResult)** API-t.
 
 1. Cserélje le `{Endpoint}` az elemet az űrlap-felismerő előfizetési kulcsból beszerzett végpontra. Az űrlap-felismerő erőforrás- **Áttekintés** lapon találhatja meg.
 1. Cserélje le az `{result ID}` azonosítót az előző szakaszban kapott azonosítóra.
@@ -1025,7 +1037,7 @@ Ez a JSON-kimenet lerövidítve az egyszerűség kedvéért. Tekintse [meg a tel
 
 ## <a name="analyze-receipts"></a>Visszaigazolások elemzése
 
-Ez a szakasz bemutatja, hogyan elemezheti és kinyerheti az Egyesült államokbeli nyugták közös mezőit egy előre képzett beérkezési modell használatával. További információ a bevételezési elemzésről: a [nyugták fogalmi útmutatója](../../concept-receipts.md). A nyugták elemzésének megkezdéséhez hívja meg az **[elemzés visszaigazolása](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeReceiptAsync)** API-t az alábbi curl-parancs használatával. A parancs futtatása előtt végezze el a következő módosításokat:
+Ez a szakasz bemutatja, hogyan elemezheti és kinyerheti az Egyesült államokbeli nyugták közös mezőit egy előre képzett beérkezési modell használatával. További információ a bevételezési elemzésről: a [nyugták fogalmi útmutatója](../../concept-receipts.md). A nyugták elemzésének megkezdéséhez hívja meg az **[elemzés visszaigazolása](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeReceiptAsync)** API-t az alábbi curl-parancs használatával. A parancs futtatása előtt végezze el a következő módosításokat:
 
 1. Cserélje le `{Endpoint}` a helyére az űrlap-felismerő előfizetéshez kapott végpontot.
 1. Cserélje le a értékét `{your receipt URL}` egy nyugtát ábrázoló rendszerkép URL-címére.
@@ -1040,7 +1052,11 @@ curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/recei
 ### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
 
 ```bash
+<<<<<<< HEAD
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.3/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
+=======
 curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
+>>>>>>> upstream/master
 ```
 
 ---
@@ -1048,12 +1064,12 @@ curl -i -X POST "https://{Endpoint}/formrecognizer/v2.0/prebuilt/receipt/analyze
 Olyan választ fog kapni `202 (Success)` , amely tartalmazza a am **Operation-Location** fejlécet. A fejléc értéke olyan műveleti azonosítót tartalmaz, amelynek segítségével lekérdezheti az aszinkron művelet állapotát, és lekérheti az eredményeket. A következő példában az azt követő karakterlánc a `operations/` művelet azonosítója.
 
 ```console
-https://cognitiveservice/formrecognizer/v2.1-preview.2/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.1-preview.3/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
 ### <a name="get-the-receipt-results"></a>A Bevételezés eredményeinek beolvasása
 
-Az **elemzés visszaigazolási** API meghívása után hívja meg az **[elemzés visszaigazolásának eredményét](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeReceiptResult)** API-t a művelet és a kinyert adatmennyiség állapotának lekéréséhez. A parancs futtatása előtt végezze el a következő módosításokat:
+Az **elemzés visszaigazolási** API meghívása után hívja meg az **[elemzés visszaigazolásának eredményét](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetAnalyzeReceiptResult)** API-t a művelet és a kinyert adatmennyiség állapotának lekéréséhez. A parancs futtatása előtt végezze el a következő módosításokat:
 
 1. Cserélje le `{Endpoint}` az helyére az űrlapot felismerő előfizetési kulccsal beszerzett végpontot. Az űrlap-felismerő erőforrás- **Áttekintés** lapon találhatja meg.
 1. Cserélje le az `{operationId}` elemet az előző lépésben szereplő műveleti azonosítóra.
@@ -1068,7 +1084,11 @@ curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/receipt/a
 ### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
 
 ```bash
+<<<<<<< HEAD
+curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.3/prebuilt/receipt/analyzeResults/{operationId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+=======
 curl -X GET "https://{Endpoint}/formrecognizer/v2.0/prebuilt/receipt/analyzeResults/{operationId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+>>>>>>> upstream/master
 ```
 
 ---
@@ -1414,32 +1434,36 @@ Ezt a kimenetet lerövidíti az olvashatóság érdekében. Tekintse [meg a telj
 
 ### <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)  
 
-Ez a szakasz bemutatja, hogyan elemezheti és kinyerheti az angol üzleti kártyákból származó általános mezőket egy előre betanított modell használatával. További információ a névjegykártya-elemzésről: a [Business Cards fogalmi útmutatója](../../concept-business-cards.md). A névjegykártya elemzésének megkezdéséhez hívja meg a **[Business Card API elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)** az alábbi curl-parancs használatával. A parancs futtatása előtt végezze el a következő módosításokat:
+Ez a szakasz bemutatja, hogyan elemezheti és kinyerheti az angol üzleti kártyákból származó általános mezőket egy előre betanított modell használatával. További információ a névjegykártya-elemzésről: a [Business Cards fogalmi útmutatója](../../concept-business-cards.md). A névjegykártya elemzésének megkezdéséhez hívja meg a **[Business Card API elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeBusinessCardAsync)** az alábbi curl-parancs használatával. A parancs futtatása előtt végezze el a következő módosításokat:
 
 1. Cserélje le `{Endpoint}` a helyére az űrlap-felismerő előfizetéshez kapott végpontot.
 1. Cserélje le a értékét `{your business card URL}` egy nyugtát ábrázoló rendszerkép URL-címére.
 1. Cserélje le az `{subscription key}` elemet az előző lépésből másolt előfizetési kulcsra.
 
 ```bash
+<<<<<<< HEAD
+curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.3/prebuilt/businessCard/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your receipt URL}'}"
+=======
 curl -i -X POST "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your business card URL}'}"
+>>>>>>> upstream/master
 ```
 
 Olyan választ fog kapni `202 (Success)` , amely tartalmazza a am **Operation-Location** fejlécet. A fejléc értéke olyan műveleti azonosítót tartalmaz, amelynek segítségével lekérdezheti az aszinkron művelet állapotát, és lekérheti az eredményeket.
 
 ```console
-https://cognitiveservice/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.1-preview.3/prebuilt/businessCard/analyzeResults/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
 ### <a name="get-business-card-results"></a>Névjegykártya eredményeinek beolvasása
 
-Miután megismerte a **Business Card elemzése** API-t, hívja meg a **[Get elemezze Business Card result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeBusinessCardResult)** API-t, hogy lekérje a művelet állapotát és a kinyert adatmennyiséget. A parancs futtatása előtt végezze el a következő módosításokat:
+Miután megismerte a **Business Card elemzése** API-t, hívja meg a **[Get elemezze Business Card result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetAnalyzeBusinessCardResult)** API-t, hogy lekérje a művelet állapotát és a kinyert adatmennyiséget. A parancs futtatása előtt végezze el a következő módosításokat:
 
 1. Cserélje le `{Endpoint}` az helyére az űrlapot felismerő előfizetési kulccsal beszerzett végpontot. Az űrlap-felismerő erőforrás- **Áttekintés** lapon találhatja meg.
 1. Cserélje le az `{resultId}` elemet az előző lépésben szereplő műveleti azonosítóra.
 1. A `{subscription key}` helyére írja be az előfizetési kulcsot.
 
 ```bash
-curl -v -X GET "https://westcentralus.api.cognitive.microsoft.com/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyzeResults/{resultId}"
+curl -v -X GET "https://westcentralus.api.cognitive.microsoft.com/formrecognizer/v2.1-preview.3/prebuilt/businessCard/analyzeResults/{resultId}"
 -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 
@@ -1578,7 +1602,7 @@ A parancsfájl addig kinyomtatja a válaszokat a konzolra, amíg be nem fejeződ
 
 ### <a name="get-a-list-of-custom-models"></a>Egyéni modellek listájának beolvasása
 
-Az alábbi parancs **[Custom models (egyéni modellek](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetCustomModels)** ) API-ját használva visszaállíthatja az előfizetéshez tartozó egyéni modellek listáját.
+Az alábbi parancs **[Custom models (egyéni modellek](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetCustomModels)** ) API-ját használva visszaállíthatja az előfizetéshez tartozó egyéni modellek listáját.
 
 1. Cserélje le `{Endpoint}` a helyére az űrlap-felismerő előfizetéshez kapott végpontot.
 1. Cserélje le az `{subscription key}` elemet az előző lépésből másolt előfizetési kulcsra.
@@ -1593,7 +1617,11 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models?o
 ### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
 
 ```bash
+<<<<<<< HEAD
+curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.3/custom/models?op=full"
+=======
 curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models?op=full"
+>>>>>>> upstream/master
 -H "Ocp-Apim-Subscription-Key: {subscription key}"
 ```
 
@@ -1622,7 +1650,7 @@ A `200` következőhöz hasonló JSON-adatkérések sikeresek lesznek. A `"model
 
 ### <a name="get-a-specific-model"></a>Adott modell beszerzése
 
-Egy adott egyéni modell részletes adatainak beolvasásához használja az **[Egyéni modell beolvasása](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetCustomModel)** API-t a következő parancsban.
+Egy adott egyéni modell részletes adatainak beolvasásához használja az **[Egyéni modell beolvasása](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/GetCustomModel)** API-t a következő parancsban.
 
 1. Cserélje le `{Endpoint}` a helyére az űrlap-felismerő előfizetéshez kapott végpontot.
 1. Cserélje le az `{subscription key}` elemet az előző lépésből másolt előfizetési kulcsra.
@@ -1637,7 +1665,11 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/models/{
 ### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
 
 ```bash
+<<<<<<< HEAD
+curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.3/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+=======
 curl -v -X GET "https://{Endpoint}/formrecognizer/v2.0/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+>>>>>>> upstream/master
 ```
 
 ---
@@ -1684,7 +1716,7 @@ A `200` következőhöz hasonló JSON-adatkérések sikeresek lesznek.
 
 ### <a name="delete-a-model-from-the-resource-account"></a>Modell törlése az erőforrás-fiókból
 
-Az AZONOSÍTÓra hivatkozva egy modellt is törölhet a fiókjából. Ez a parancs meghívja az **[Egyéni modell törlése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/DeleteCustomModel)** API-t az előző szakaszban használt modell törléséhez.
+Az AZONOSÍTÓra hivatkozva egy modellt is törölhet a fiókjából. Ez a parancs meghívja az **[Egyéni modell törlése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/DeleteCustomModel)** API-t az előző szakaszban használt modell törléséhez.
 
 1. Cserélje le `{Endpoint}` a helyére az űrlap-felismerő előfizetéshez kapott végpontot.
 1. Cserélje le az `{subscription key}` elemet az előző lépésből másolt előfizetési kulcsra.
@@ -1699,7 +1731,11 @@ curl -v -X DELETE "https://{Endpoint}/formrecognizer/v2.1-preview.2/custom/model
 ### <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
 
 ```bash
+<<<<<<< HEAD
+curl -v -X DELETE "https://{Endpoint}/formrecognizer/v2.1-preview.3/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+=======
 curl -v -X DELETE "https://{Endpoint}/formrecognizer/v2.0/custom/models/{modelId}" -H "Ocp-Apim-Subscription-Key: {subscription key}"
+>>>>>>> upstream/master
 ```
 
 ---
@@ -1711,6 +1747,6 @@ curl -v -X DELETE "https://{Endpoint}/formrecognizer/v2.0/custom/models/{modelId
 Ebben a rövid útmutatóban az űrlap-felismerő REST API használatával különböző módokon taníthatja ki a modelleket és elemezheti az űrlapokat. Következő lépésként tekintse meg a dokumentációt az űrlap-felismerő API részletesebb megismeréséhez.
 
 > [!div class="nextstepaction"]
-> [REST API dokumentáció](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)
+> [REST API dokumentáció](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)
 
 * [Mi a Form Recognizer?](../../overview.md)

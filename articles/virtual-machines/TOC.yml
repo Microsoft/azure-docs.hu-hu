@@ -49,6 +49,8 @@
           href: ./linux/tutorial-load-balancer.md
         - name: 8 – Hálózatkezelés
           href: ./linux/tutorial-virtual-network.md
+        - name: 9 – erőforrások kezelése
+          href: ./linux/tutorial-govern-resources.md
     - name: Windows
       items:
         - name: 1 – Virtuális gép létrehozása/kezelése
@@ -67,6 +69,8 @@
           href: ./windows/tutorial-load-balancer.md
         - name: 8 – Hálózatkezelés
           href: ./windows/tutorial-virtual-network.md
+        - name: 9 – erőforrások kezelése
+          href: ./windows/tutorial-govern-resources.md
 - name: Számítási feladatok
   items:
     - name: Red Hat
@@ -313,99 +317,100 @@
           displayName: 'Azure Hybrid Benefit, Linux, AHB'
           href: ./linux/azure-hybrid-benefit-linux.md
         - name: Windows
-          items:
-            - name: Azure Hybrid Benefit-licenc használata
-              displayName: 'Azure Hybrid Benefit, AHB'
-              href: ./windows/hybrid-use-benefit-licensing.md
-            - name: "Többvállalatos üzemeltetési jogosultságok használata Windows\_10-hez"
-              displayName: 'MTHR, multi-tenant, multitenant, hosting, rights'
-              href: ./windows/windows-desktop-multitenant-hosting-deployment.md
+          displayName: 'Azure Hybrid Benefit, AHB'
+          href: ./windows/hybrid-use-benefit-licensing.md
     - name: Fenntartott példányok
       items:
+        - name: Mi az az Azure Reservations?
+          displayName: 'Reserved Instances, RI, prepay, flexibility'
+          href: ../cost-management-billing/reservations/save-compute-costs-reservations.md?context=/azure/virtual-machines/context/context
         - name: Előre fizetés virtuális gépekért
           displayName: 'Reserved Instances, RI, prepay, flexibility'
           href: ./prepay-reserved-vm-instances.md
         - name: Előre fizetés dedikált gazdagépekért
           displayName: 'Reserved Instances, RI, prepay, flexibility'
           href: prepay-dedicated-hosts-reserved-instances.md
-        - name: Mi az az Azure Reservations?
-          displayName: 'Reserved Instances, RI, prepay, flexibility'
-          href: ../cost-management-billing/reservations/save-compute-costs-reservations.md?context=/azure/virtual-machines/context/context
         - name: Virtuálisgép-példányok méretrugalmassága
           displayName: 'Reserved Instances, RI, prepay'
           href: reserved-vm-instance-size-flexibility.md
-    - name: Linux rendszerű virtuális gépek létrehozása
+    - name: Virtuális gépek létrehozása
       items:
-        - name: Támogatott disztribúciók
-          href: ./linux/endorsed-distros.md
-        - name: A parancssori felület (CLI) használata
-          href: ./linux/create-cli-complete.md
-        - name: ARM-sablon használata
-          displayName: Azure Resource Manager
-          href: ./linux/create-ssh-secured-vm-from-template.md
-        - name: A REST API használata
-          href: ./linux/create-vm-rest-api.md
-        - name: Virtuális gép másolása a CLI használatával
-          href: ./linux/copy-vm.md
-        - name: Létrehozás a Jenkins-szel
-          href: /azure/developer/jenkins/pipeline-with-github-and-docker
-        - name: A Jenkins integrálása az Azure DevOps
-          href: /azure/developer/jenkins/deploy-to-linux-vm-using-azure-devops-services
-        - name: A működés közbeni üzembe helyezési stratégia konfigurálása
-          href: ./linux/tutorial-devops-azure-pipelines-classic.md
-        - name: A Kanári üzembe helyezési stratégia konfigurálása
-          href: ./linux/tutorial-azure-devops-canary-strategy.md
-        - name: Blue-Green telepítési stratégia konfigurálása
-          href: ./linux/tutorial-azure-devops-blue-green-strategy.md
-        - name: CI/CD Azure-folyamatokkal (YAML)
-          href: ./linux/tutorial-build-deploy-azure-pipelines.md
-        - name: LAMP-verem létrehozása
-          href: ./linux/tutorial-lamp-stack.md
-        - name: Biztonságos webkiszolgáló a TLS\SSL
+        - name: Linux
           items:
-            - name: Linux
+            - name: Támogatott disztribúciók
+              href: ./linux/endorsed-distros.md
+            - name: parancssori felület
+              displayName: 'Create VM, Create'
+              href: ./linux/create-cli-complete.md
+            - name: ARM-sablon
+              displayName: 'Create VM, Create, ARM'
+              href: ./linux/create-ssh-secured-vm-from-template.md
+            - name: REST
+              displayName: 'Create VM, Create, REST'
+              href: ./linux/create-vm-rest-api.md
+            - name: LAMP verem
+              href: ./linux/tutorial-lamp-stack.md
+            - name: Folyamatos teljesítés
+              items:
+                - name: A működés közbeni üzembe helyezési stratégia konfigurálása
+                  href: ./linux/tutorial-devops-azure-pipelines-classic.md
+                - name: A Kanári üzembe helyezési stratégia konfigurálása
+                  href: ./linux/tutorial-azure-devops-canary-strategy.md
+                - name: Blue-Green telepítési stratégia konfigurálása
+                  href: ./linux/tutorial-azure-devops-blue-green-strategy.md
+                - name: CI/CD Azure-folyamatokkal (YAML)
+                  href: ./linux/tutorial-build-deploy-azure-pipelines.md
+            - name: Biztonságos webkiszolgáló a TLS\SSL
               href: ./linux/tutorial-secure-web-server.md
-            - name: Windows
-              href: ./windows/tutorial-secure-web-server.md
-          displayname: SSL TLS
-    - name: Kapcsolódás Linux rendszerű virtuális gépekhez
-      items:
-        - name: SSH Linux rendszerű virtuális gépekhez
+        - name: Windows
           items:
-            - name: Linux vagy macOS rendszeren
-              href: ./linux/mac-create-ssh-keys.md
-            - name: Windows rendszeren
-              href: ./linux/ssh-from-windows.md
-            - name: A portálon
-              href: ssh-keys-portal.md
-            - name: Részletes lépések
-              href: ./linux/create-ssh-keys-detailed.md
-        - name: Linux-Távoli asztal
-          href: ./linux/use-remote-desktop.md
-    - name: Windows rendszerű virtuális gépek létrehozása
-      items:
-        - name: A C# használata
-          href: ../azure-resource-manager/templates/deploy-rest.md?context=/azure/virtual-machines/context/context
-        - name: Speciális lemez használata
-          items:
-            - name: Portál
+            - name: Speciális lemez – portál
+              displayName: 'Create VM, Create'
               href: ./windows/create-vm-specialized-portal.md
-            - name: PowerShell
+            - name: Speciális lemez – PowerShell
+              displayName: 'Create VM, Create'
               href: ./windows/create-vm-specialized.md
-        - name: Virtuális gép létrehozása Chef használatával
-          href: /azure/developer/chef/windows-vm-configure
-        - name: Java használata
-          href: ./windows/java.md
-        - name: Python
-          href: /samples/azure-samples/virtual-machines-python-manage/azure-virtual-machines-management-samples---python/?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
-        - name: ARM-sablon használata
-          displayName: Azure Resource Manager template
-          href: ./windows/ps-template.md
-    - name: Kapcsolódás Windows rendszerű virtuális gépekhez
-      href: ./windows/connect-logon.md
+            - name: ARM-sablon
+              displayName: 'Create VM, Create, ARM'
+              href: ./windows/ps-template.md
+            - name: Biztonságos webkiszolgáló a TLS\SSL
+              href: ./windows/tutorial-secure-web-server.md
+    - name: Kapcsolódás Virtual Machineshoz
       items:
-        - name: WinRM
-          href: ./windows/winrm.md
+        - name: Linux
+          items:
+            - name: SSH-kulcsok helyi létrehozása és kezelése
+              href: ./linux/create-ssh-keys-detailed.md
+            - name: SSH-kulcsok létrehozása és kezelése a portálon
+              href: ssh-keys-portal.md
+            - name: SSH Linux vagy macOS rendszeren
+              href: ./linux/mac-create-ssh-keys.md
+            - name: SSH Windows rendszeren
+              href: ./linux/ssh-from-windows.md
+            - name: Linux-Távoli asztal
+              href: ./linux/use-remote-desktop.md
+        - name: Windows
+          items:
+            - name: Windows Távoli asztal
+              href: ./windows/connect-logon.md
+            - name: WinRM
+              href: ./windows/winrm.md
+    - name: Időszinkronizálás
+      items:
+        - name: Linux
+          displayName: Time sync
+          href: ./linux/time-sync.md
+        - name: Windows
+          displayName: Time sync
+          href: ./windows/time-sync.md
+    - name: Parancs futtatása
+      items:
+        - name: Linux
+          displayName: Run command
+          href: ./linux/run-command.md
+        - name: Windows
+          displayName: Run command
+          href: ./windows/run-command.md
     - name: Bővítmények
       items:
         - name: Áttekintés
@@ -554,6 +559,8 @@
           href: ./extensions/troubleshoot.md
         - name: A Python 3-kompatibilis Linux rendszerekkel kapcsolatos problémák
           href: ./extensions/issues-using-vm-extensions-python-3.md
+    - name: Beágyazott virtualizálás
+      href: ./windows/nested-virtualization.md
     - name: Migrálás Azure Resource Managerre
       items:
         - name: 2023. március 1-től kezdődő kivezetések
@@ -583,54 +590,6 @@
         - name: GYIK
           displayName: 'classic, migration, classic to ARM, CSES, Cloud Services'
           href: migration-classic-resource-manager-faq.md
-    - name: Felügyeleti alapismeretek
-      items:
-        - name: Erőforrások kezelése
-          items:
-            - name: Linux
-              href: ./linux/tutorial-govern-resources.md
-            - name: Windows
-              href: ./windows/tutorial-govern-resources.md
-        - name: Időszinkronizálás
-          items:
-            - name: Linux
-              href: ./linux/time-sync.md
-            - name: Windows
-              href: ./windows/time-sync.md
-        - name: Szkriptek futtatása virtuális gépeken
-          items:
-            - name: Egyéni szkriptbővítmény
-              items:
-                - name: Linux
-                  href: ./extensions/custom-script-linux.md
-                - name: Windows
-                  href: ./extensions/custom-script-windows.md
-            - name: Parancs futtatása
-              items:
-                - name: Linux
-                  href: ./linux/run-command.md
-                - name: Windows
-                  href: ./windows/run-command.md
-            - name: hibrid runbook-feldolgozó
-              href: ../automation/automation-hybrid-runbook-worker.md
-            - name: Soros konzol
-              items:
-                - name: Linux
-                  href: ./troubleshooting/serial-console-linux.md
-                - name: Windows
-                  href: ./troubleshooting/serial-console-windows.md
-        - name: Beágyazott virtualizálás engedélyezése
-          href: ./windows/nested-virtualization.md
-        - name: File Storage
-          items:
-            - name: Linux-csatlakoztatás SMB használatával
-              href: ./linux/mount-azure-file-storage-on-linux-using-smb.md
-            - name: Fájlok másolása Linux rendszerű virtuális gépre
-              href: ./linux/copy-files-to-linux-vm-using-scp.md
-        - name: Frissítések és javítások
-          items:
-            - name: A Red Hat frissítési infrastruktúrája
-              href: ./workloads/redhat/redhat-rhui.md
 - name: Képek
   items:
     - name: Azure Marketplace-rendszerképek keresése
@@ -644,6 +603,9 @@
         - name: Windows-ügyfél lemezképei
           displayName: 'Images, imaging, marketplace, Windows, Client'
           href: ./windows/client-images.md
+        - name: Több-bérlős üzemeltetési jogosultságok a Windows 10 rendszerhez
+          displayName: 'MTHR, multi-tenant, multitenant, hosting, rights'
+          href: ./windows/windows-desktop-multitenant-hosting-deployment.md
     - name: Egyéni Linux-rendszerképek
       items:
         - name: Áttekintés
@@ -1205,6 +1167,8 @@
             - name: PowerShell
               displayName: Unmanaged VM to Managed Disks
               href: ./windows/convert-unmanaged-to-managed-disks.md
+        - name: Virtuális gép másolása a CLI használatával
+          href: ./linux/copy-vm.md
     - name: Adatlemez hozzáadása
       items:
         - name: Linux
@@ -1274,6 +1238,12 @@
           href: ./linux/azure-to-guest-disk-mapping.md
         - name: Felügyelt lemez leképezése a vendég lemezre – Windows
           href: ./windows/azure-to-guest-disk-mapping.md
+        - name: File Storage
+          items:
+            - name: Linux-csatlakoztatás SMB használatával
+              href: ./linux/mount-azure-file-storage-on-linux-using-smb.md
+            - name: Fájlok másolása Linux rendszerű virtuális gépre
+              href: ./linux/copy-files-to-linux-vm-using-scp.md
         - name: Nem csatlakozó lemezek megkeresése
           items:
             - name: parancssori felület
@@ -1317,7 +1287,7 @@
               href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-vhd.md'
             - name: Pillanatkép létrehozása VHD-ből
               href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-snapshot-from-vhd.md'
-- name: Hálózat
+- name: Hálózatkezelés
   items:
     - name: Áttekintés
       displayName: Networking Overview
