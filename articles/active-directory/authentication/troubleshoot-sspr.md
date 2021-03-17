@@ -11,18 +11,20 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7099de23b825fa7af203dff9696bb53e23a099c8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: a1dee21182349108c44f9d498417d3b760ac4913
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741116"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103600862"
 ---
 # <a name="troubleshoot-self-service-password-reset-in-azure-active-directory"></a>Az önkiszolgáló jelszó-visszaállítás hibáinak megoldása Azure Active Directory
 
 Azure Active Directory (Azure AD) önkiszolgáló jelszó-visszaállítás (SSPR) lehetővé teszi a felhasználók számára, hogy a felhőben visszaállítsa a jelszavukat.
 
-Ha problémái vannak az SSPR-mel, a következő hibaelhárítási lépések és gyakori hibák segíthetnek. Ha nem találja a választ a problémájára, a [támogatási csapatunk mindig](#contact-microsoft-support) szívesen segít Önnek.
+Ha problémái vannak az SSPR-mel, a következő hibaelhárítási lépések és gyakori hibák segíthetnek. Ezt a rövid videót is megnézheti, [hogyan oldja meg a hat leggyakoribb SSPR végfelhasználói hibaüzeneteket](https://www.youtube.com/watch?v=9RPrNVLzT8I&list=PL3ZTgFEc7LyuS8615yo39LtXR7j1GCerW&index=1).
+
+Ha nem találja a választ a problémájára, a [támogatási csapatunk mindig](#contact-microsoft-support) szívesen segít Önnek.
 
 ## <a name="sspr-configuration-in-the-azure-portal"></a>SSPR-konfiguráció a Azure Portal
 
@@ -144,6 +146,6 @@ A megfelelő segítség érdekében kérjük, hogy az esetek megnyitásakor a le
 * **Licencelés**: van-e hozzárendelve a felhasználó Azure ad-licenccel?
 * **Alkalmazás-eseménynapló**: ha jelszó-visszaírási használ, és a hiba a helyszíni infrastruktúrában található, az alkalmazás eseménynaplójának tömörített másolatát adja meg az Azure ad Connect-kiszolgálóról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a SSPR-ről [: Hogyan működik az Azure ad önkiszolgáló jelszó-visszaállítás](concept-sspr-howitworks.md) , vagy [Hogyan működik az önkiszolgáló jelszó-visszaállítási VISSZAÍRÁSI az Azure ad-ben?](concept-sspr-writeback.md).

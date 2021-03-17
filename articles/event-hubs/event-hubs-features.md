@@ -2,13 +2,13 @@
 title: A funkciók áttekintése – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk részletesen ismerteti az Azure Event Hubs funkcióit és terminológiáját.
 ms.topic: article
-ms.date: 02/19/2021
-ms.openlocfilehash: 8bb63bfdbeb5b875b1e461fbd93fb48dcbb43054
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/15/2021
+ms.openlocfilehash: fbfc2a23a7cde50172b80769558c2dfd6fd5ec84
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101739075"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601304"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Az Azure Event Hubs funkciói és terminológiája
 
@@ -53,6 +53,13 @@ A közzétett események el lesznek távolítva az Event hub-ból egy konfigurá
 - Event Hubs **standard** esetén a maximális megőrzési időtartam **7 nap**. 
 - Event Hubs **dedikált** esetében a maximális megőrzési időtartam **90 nap**.
 - Ha megváltoztatja a megőrzési időtartamot, az minden üzenetre vonatkozik, beleértve az Event hub-ban már szereplő üzeneteket is. 
+
+Event Hubs megőrzi az összes partícióra vonatkozó beállított megőrzési idő eseményeit. Az események automatikusan törlődnek a megőrzési időtartam elérésekor. Ha egy nap megőrzési időtartamot ad meg, az esemény az elfogadás után nem lesz elérhető pontosan 24 órával. Az eseményeket nem lehet explicit módon törölni. 
+
+Ha az eseményeket az engedélyezett megőrzési időtartamon túl kell archiválni, automatikusan az [Azure Storage-ban vagy a Azure Data Lakeban is tárolhatók a Event Hubs rögzítési funkciójának bekapcsolásával](event-hubs-capture-overview.md), és ha ilyen mély archívumokat kell keresnie vagy elemezni, [egyszerűen importálhatja őket az Azure szinapszisba](store-captured-data-data-warehouse.md) vagy más hasonló áruházakba és elemzési platformokba. 
+
+A Event Hubs "az adatok megőrzésének időbeli korlátozásának oka az, hogy megakadályozza a nagy mennyiségű korábbi ügyféladatok betöltését egy olyan mély tárolóban, amely csak egy időbélyeg által indexelt, és csak szekvenciális hozzáférést tesz lehetővé. Az építészeti filozófia itt azt mutatja be, hogy a múltbeli adatindexelésnek és a Event Hubs vagy Kafka által nyújtott valós idejű eseményeknek jobb közvetlen hozzáférésre van szüksége. Az Event stream-motorok nem alkalmasak arra, hogy az események beszerzéséhez szükséges adattavak vagy hosszú távú archívumok szerepét játsszák. 
+ 
 
 > [!NOTE]
 > A Event Hubs valós idejű esemény-adatfolyam-motor, és nem az adatbázis és/vagy állandó tárolóként használható a végtelenül tartott esemény-adatfolyamok számára. 

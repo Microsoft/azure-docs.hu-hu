@@ -2,20 +2,20 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: azure-communication-services
-author: danieldoolabh
-manager: nimag
+author: lakshmans
+manager: ankita
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
-ms.author: dadoolab
-ms.openlocfilehash: 442fff11c2ce95ca5cc665b016631cab9048ab50
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.author: lakshmans
+ms.openlocfilehash: e8424f6b5b7617b00de6dedbece3325f3c5513c8
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488316"
+ms.locfileid: "103622315"
 ---
 Ismerkedés az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások Python SMS ügyféloldali kódtár használatával SMS-üzenetek küldéséhez.
 
@@ -51,8 +51,6 @@ Szövegszerkesztő használatával hozzon létre egy **Send-SMS.py** nevű fájl
 
 ```python
 import os
-from azure.communication.sms import PhoneNumber
-from azure.communication.sms import SendSmsOptions
 from azure.communication.sms import SmsClient
 
 try:
@@ -76,8 +74,8 @@ A következő osztályok és felületek a Pythonhoz készült Azure kommunikáci
 
 | Név                                  | Leírás                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| SmsClient | Ez az osztály minden SMS-funkcióhoz szükséges. Létrehozhatja az előfizetési adataival, és SMS-üzenetek küldéséhez használhatja azt. |
-| SendSmsOptions | Ez az osztály a kézbesítési jelentéskészítés konfigurálásának lehetőségeit tartalmazza. Ha a enable_delivery_report értéke TRUE (igaz), akkor a sikeres kézbesítés után egy esemény lesz kibocsátva |
+| SmsClient | Ez az osztály minden SMS-funkcióhoz szükséges. Létrehozhatja az előfizetési adataival, és SMS-üzenetek küldéséhez használhatja azt.                                                                                                                 |
+| SmsSendResult               | Ez az osztály az SMS szolgáltatás eredményét tartalmazza.                                          |
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
@@ -92,24 +90,47 @@ connection_string = os.getenv('COMMUNICATION_SERVICES_CONNECTION_STRING')
 sms_client = SmsClient.from_connection_string(connection_string)
 ```
 
-## <a name="send-an-sms-message"></a>SMS küldése
+## <a name="send-a-11-sms-message"></a>1:1 SMS-üzenet küldése
 
-SMS-üzenet küldése a küldési metódus meghívásával. Adja hozzá ezt a kódot a blokk végéhez a `try` **Send-SMS.py**-ben:
+Ha SMS-üzenetet szeretne küldeni egyetlen címzettnek, hívja meg a ```send``` metódust a **SmsClient** egyetlen címzett telefonszámával. A választható paramétereket is megadhatja annak megadásához, hogy a kézbesítési jelentést engedélyezni kell-e, és egyéni címkéket kell-e beállítani. Adja hozzá ezt a kódot a blokk végéhez a `try` **Send-SMS.py**-ben:
 
 ```python
 
 # calling send() with sms values
-sms_response = sms_client.send(
-        from_phone_number=PhoneNumber("<leased-phone-number>"),
-        to_phone_numbers=[PhoneNumber("<to-phone-number>")],
-        message="Hello World via SMS",
-        send_sms_options=SendSmsOptions(enable_delivery_report=True)) # optional property
+sms_responses = sms_client.send(
+    from_="<from-phone-number>",
+    to="<to-phone-number>,
+    message="Hello World via SMS",
+    enable_delivery_report=True, # optional property
+    tag="custom-tag") # optional property
 
 ```
 
-`<leased-phone-number>`Egy SMS-kompatibilis telefonszámot kell cserélnie a kommunikációs szolgáltatáshoz, valamint `<to-phone-number>` azt a telefonszámot, amelyhez üzenetet kíván küldeni. 
+`<from-phone-number>`Egy SMS-kompatibilis telefonszámot kell cserélnie a kommunikációs szolgáltatáshoz, valamint `<to-phone-number>` azt a telefonszámot, amelyhez üzenetet kíván küldeni. 
 
-A `send_sms_options` paraméter egy opcionális paraméter, amely a kézbesítési jelentéskészítés konfigurálására használható. Ez olyan esetekben hasznos, amikor az SMS-üzenetek kézbesítése során eseményeket szeretne kibocsátani. Tekintse meg az [SMS-események kezelése](../handle-sms-events.md) rövid útmutatót az SMS-üzenetek kézbesítési jelentéskészítésének konfigurálásához.
+## <a name="send-a-1n-sms-message"></a>1: N SMS-üzenet küldése
+
+Ha SMS-üzenetet szeretne küldeni a címzettek listájára, hívja ```send``` meg a metódust a **SmsClient** a címzett telefonszámait tartalmazó listával. A választható paramétereket is megadhatja annak megadásához, hogy a kézbesítési jelentést engedélyezni kell-e, és egyéni címkéket kell-e beállítani. Adja hozzá ezt a kódot a blokk végéhez a `try` **Send-SMS.py**-ben:
+
+```python
+
+# calling send() with sms values
+sms_responses = sms_client.send(
+    from_="<from-phone-number>",
+    to=["<to-phone-number-1>", "<to-phone-number-2>"],
+    message="Hello World via SMS",
+    enable_delivery_report=True, # optional property
+    tag="custom-tag") # optional property
+
+```
+
+`<from-phone-number>`Egy SMS-kompatibilis telefonszámot kell cserélnie a kommunikációs szolgáltatáshoz, valamint `<to-phone-number-1>` `<to-phone-number-2>` azokat a telefonszámokat, amelyekről üzenetet szeretne küldeni. 
+
+## <a name="optional-parameters"></a>Opcionális paraméterek
+
+A `enable_delivery_report` paraméter egy opcionális paraméter, amely a kézbesítési jelentéskészítés konfigurálására használható. Ez olyan esetekben hasznos, amikor az SMS-üzenetek kézbesítése során eseményeket szeretne kibocsátani. Tekintse meg az [SMS-események kezelése](../handle-sms-events.md) rövid útmutatót az SMS-üzenetek kézbesítési jelentéskészítésének konfigurálásához.
+
+A `tag` paraméter egy nem kötelező paraméter, amely az egyéni címkézés konfigurálására használható.
 
 ## <a name="run-the-code"></a>A kód futtatása
 

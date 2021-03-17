@@ -2,13 +2,13 @@
 title: Erőforrások központi telepítése a felügyeleti csoportba
 description: Ismerteti, hogyan lehet erőforrásokat telepíteni a felügyeleti csoport hatókörében egy Azure Resource Manager sablonban.
 ms.topic: conceptual
-ms.date: 01/13/2021
-ms.openlocfilehash: a203dd2c52bdc889452a6755fb025c7ed5721a59
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.date: 03/16/2021
+ms.openlocfilehash: b14dc3622a6ad6519968bd2998aa354a850f2515
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491623"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601593"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>Felügyeleti csoportok üzembe helyezése ARM-sablonokkal
 
@@ -219,6 +219,8 @@ A következő példa létrehoz egy új felügyeleti csoportot a szülőként meg
     }
 }
 ```
+
+Meglévő Azure-előfizetést egy új felügyeleti csoportba áthelyező sablon üzembe helyezéséhez lásd: [előfizetések áthelyezése az ARM-sablonban](../../governance/management-groups/manage.md#move-subscriptions-in-arm-template) .
 
 ## <a name="azure-policy"></a>Azure Policy
 

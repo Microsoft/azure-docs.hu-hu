@@ -7,16 +7,10 @@
       href: what-are-cognitive-services.md
     - name: A Cognitive Services-dokumentumok újdonságai
       href: whats-new-docs.md
-    - name: Cognitive Services és Machine Learning
-      href: cognitive-services-and-machine-learning.md
-    - name: Cognitive Services – fejlesztési lehetőségek
-      href: cognitive-services-development-options.md
-    - name: Egyéni altartományok a Cognitive Serviceshez
-      href: cognitive-services-custom-subdomains.md
     - name: Nyelvi támogatás
       href: language-support.md
-    - name: Költségtervezés és a költségek kezelése
-      href: plan-manage-costs.md
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/'
 - name: Rövid útmutatók
   items:
     - name: Új erőforrás létrehozása az Azure Portal használatával
@@ -28,68 +22,82 @@
     - name: Új erőforrás létrehozása ARM-sablonnal
       displayName: Resource Manager
       href: create-account-resource-manager-template.md
+- name: Útmutató
+  items:
+    - name: Költségtervezés és a költségek kezelése
+      href: plan-manage-costs.md
     - name: Diagnosztikai naplózás
       href: diagnostic-logging.md
-- name: Biztonság
+    - name: Üzembe helyezés
+      items:
+        - name: Tárolók
+          items:
+            - name: Tárolótámogatás
+              href: cognitive-services-container-support.md
+            - name: Tárolórendszerképek címkéi és kibocsátási megjegyzései
+              href: ./containers/container-image-tags.md
+            - name: Tároló – GYIK
+              href: ./containers/container-faq.yml
+            - name: Tárolóreceptek
+              items:
+                - name: Tárolók újrahasznosítása
+                  href: ./containers/container-reuse-recipe.md
+                - name: Üzembe helyezés az Azure Container Instancesben
+                  href: ./containers/azure-container-instance-recipe.md
+                - name: Üzembe helyezés az Azure Kubernetesben
+                  href: ./containers/azure-kubernetes-recipe.md
+                - name: Üzembe helyezés a Docker Compose-zal
+                  href: ./containers/docker-compose-recipe.md
+            - name: Egyéb tárolószolgáltatások
+              items:
+                - name: Azure Container Instances
+                  href: ../container-instances/container-instances-tutorial-prepare-app.md
+                - name: Azure Container Registry
+                  href: ../container-registry/container-registry-get-started-azure-cli.md
+                - name: Azure Kubernetes Service (AKS)
+                  href: ../aks/tutorial-kubernetes-prepare-app.md
+            - name: Cognitive Services-tárolók – dokumentáció
+              href: containers/index.yml
+    - name: Biztonság
+      items:
+        - name: Cognitive Services – biztonság
+          href: cognitive-services-security.md
+        - name: Virtuális hálózatok a Cognitive Serviceshez
+          href: cognitive-services-virtual-networks.md
+        - name: Ügyfél által felügyelt kulcsok konfigurálása
+          href: ./encryption/cognitive-services-encryption-keys-portal.md
+        - name: A Cognitive Services felé küldött kérelmek hitelesítése
+          href: authentication.md
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
+        - name: Az Azure Policy biztonsági vezérlői
+          href: ./security-controls-policy.md
+    - name: Használat big data
+      items:
+        - name: Cognitive Services big data jellegű adatokhoz
+          href: ./big-data/cognitive-services-for-big-data.md
+        - name: Első lépések
+          href: ./big-data/getting-started.md
+        - name: Példák
+          items:
+            - name: Python
+              href: ./big-data/samples-python.md
+            - name: Scala
+              href: ./big-data/samples-scala.md
+        - name: Receptek
+          items:
+            - name: 'Recept: Anomaly Detector'
+              href: ./big-data/recipes/anomaly-detection.md
+            - name: 'Recept: Art Explorer'
+              href: ./big-data/recipes/art-explorer.md
+- name: Alapelvek
   items:
-    - name: Cognitive Services – biztonság
-      href: cognitive-services-security.md
-    - name: Virtuális hálózatok a Cognitive Serviceshez
-      href: cognitive-services-virtual-networks.md
-    - name: Ügyfél által felügyelt kulcsok konfigurálása
-      href: ./encryption/cognitive-services-encryption-keys-portal.md
-    - name: A Cognitive Services felé küldött kérelmek hitelesítése
-      href: authentication.md
-    - name: Biztonsági alapkonfiguráció
-      href: security-baseline.md
-    - name: Az Azure Policy biztonsági vezérlői
-      href: ./security-controls-policy.md
-- name: Tárolótámogatás
-  items:
-    - name: Tárolótámogatás
-      href: cognitive-services-container-support.md
-    - name: Tárolórendszerképek címkéi és kibocsátási megjegyzései
-      href: ./containers/container-image-tags.md
-    - name: Tároló – GYIK
-      href: ./containers/container-faq.yml
-    - name: Tárolóreceptek
-      items:
-        - name: Tárolók újrahasznosítása
-          href: ./containers/container-reuse-recipe.md
-        - name: Üzembe helyezés az Azure Container Instancesben
-          href: ./containers/azure-container-instance-recipe.md
-        - name: Üzembe helyezés az Azure Kubernetesben
-          href: ./containers/azure-kubernetes-recipe.md
-        - name: Üzembe helyezés a Docker Compose-zal
-          href: ./containers/docker-compose-recipe.md
-    - name: Egyéb tárolószolgáltatások
-      items:
-        - name: Azure Container Instances
-          href: ../container-instances/container-instances-tutorial-prepare-app.md
-        - name: Azure Container Registry
-          href: ../container-registry/container-registry-get-started-azure-cli.md
-        - name: Azure Kubernetes Service (AKS)
-          href: ../aks/tutorial-kubernetes-prepare-app.md
-    - name: Cognitive Services-tárolók – dokumentáció
-      href: containers/index.yml
-- name: Big Data
-  items:
-    - name: Cognitive Services big data jellegű adatokhoz
-      href: ./big-data/cognitive-services-for-big-data.md
-    - name: Első lépések
-      href: ./big-data/getting-started.md
-    - name: Példák
-      items:
-        - name: Python
-          href: ./big-data/samples-python.md
-        - name: Scala
-          href: ./big-data/samples-scala.md
-    - name: Receptek
-      items:
-        - name: 'Recept: Anomaly Detector'
-          href: ./big-data/recipes/anomaly-detection.md
-        - name: 'Recept: Art Explorer'
-          href: ./big-data/recipes/art-explorer.md
+    - name: Cognitive Services – fejlesztési lehetőségek
+      href: cognitive-services-development-options.md
+    - name: Cognitive Services és Machine Learning
+      href: cognitive-services-and-machine-learning.md
+    - name: Egyéni altartományok a Cognitive Serviceshez
+      href: cognitive-services-custom-subdomains.md
 - name: Referencia
   items:
     - name: Az Azure Policy beépített elemei
@@ -99,23 +107,19 @@
   items:
     - name: Támogatási lehetőségek
       href: cognitive-services-support-options.md
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/?category=cognitive-services'
-    - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/'
+    - name: Régiós támogatás
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Azure-frissítések
+      href: 'https://azure.microsoft.com/updates/?query=cognitive%20services'
     - name: Díjkalkulátor
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Megfelelőség
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Szolgáltatói szerződés (SLA)
       href: 'https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/'
+    - name: Azure Government
+      href: 'https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure'
     - name: Videók
       href: 'https://azure.microsoft.com/resources/videos/index/?services=cognitive-services'
     - name: Blog
       href: 'https://azure.microsoft.com/blog/topics/cognitive-services/'
-    - name: Szolgáltatási hírek
-      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: Termékkel kapcsolatos visszajelzés küldése
-      href: 'https://cognitive.uservoice.com/'
-    - name: Etikai kódex
-      href: 'https://go.microsoft.com/fwlink/?LinkId=698895'

@@ -148,6 +148,8 @@
               href: manage/understand-mca-roles.md
             - name: Hivatkozás partnerazonosítóra
               href: manage/link-partner-id.md
+            - name: Partner-azonosító csatolása a Power apps-fiókokhoz
+              href: manage/link-partner-id-power-apps-accounts.md
         - name: Előfizetések adminisztrálása
           items:
             - name: Hozzáférések hozzárendelése költségkezelési adatokhoz

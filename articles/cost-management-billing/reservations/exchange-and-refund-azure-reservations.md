@@ -5,14 +5,14 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 02/24/2021
+ms.date: 03/16/2021
 ms.author: banders
-ms.openlocfilehash: 9015cbcd669665467d3836112b152aa504176f2b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: bd16bbbe33876a3c44b20c5d1756b83814f9b17d
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102035993"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601950"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai
 
@@ -105,6 +105,7 @@ Az Azure-ban a következő szabályzatok érvényesek a lemondásokra, cserékre
 - Jelenleg nem számítunk fel korai felmondási díjat, de lehetséges, hogy a jövőbeli lemondásokért 12%-os korai felmondási díj lesz felszámítva.
 - Egy számlázási profil vagy egy regisztráció esetében a lemondott kötelezettségvállalás teljes összege nem haladhatja meg az 50 000 USD-t az elmúlt 12 hónapra vonatkozóan. Például egy hároméves, havi 100 USD összegű, a 18. hónapban visszatérítendő foglalás esetén a lemondott kötelezettségvállalás értéke 1800 USD. A visszatérítés után az új visszatérítési korlát 48 200 USD lesz. Ezen visszatérítéstől számított 365 nap múlva a 48 200 USD korlátot megnöveljük 1800 USD-vel, így az új keret 50 000 USD lesz. A számlázási profilhoz vagy az EA-regisztrációhoz tartozó minden más foglaláslemondás ugyanezt a keretet csökkenti, és ugyanez a feltöltési logika érvényesül.
 - Az Azure nem dolgozza fel azokat a visszatérítéseket, amelyek egy számlázási profil vagy EA-regisztráció esetében meghaladják az 50 000 USD-t az elmúlt 12 hónapra vonatkozóan.
+    - Az Exchange-ből eredő visszatérítések nem számítanak bele a visszatérítési korlátba.
 - A visszatérítést a rendszer a vételár vagy a foglalás jelenlegi ára közül az alacsonyabb összeg alapján számítja ki.
 - A visszatérítéseket csak a foglalásrendelések tulajdonosai dolgozhatják fel. További tudnivalók: [A foglalást kezelő felhasználók hozzáadása vagy módosítása](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default).
 

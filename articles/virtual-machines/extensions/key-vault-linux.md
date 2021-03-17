@@ -10,25 +10,27 @@ ms.collection: linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a674f4a2a31fd217307ff373cba2b883a4d129f8
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 23a0d7cd45ceef8f97bb56d65f4807f8d60735dc
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102557063"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601049"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>A Linux rendszerhez készült virtuálisgép-bővítmény Key Vault
 
-A Key Vault virtuálisgép-bővítmény az Azure Key vaultban tárolt tanúsítványok automatikus frissítését teszi lehetővé. Pontosabban a bővítmény figyeli a Key vaultban tárolt megfigyelt tanúsítványok listáját.  A módosítás észlelése után a bővítmény lekéri és telepíti a megfelelő tanúsítványokat. A Key Vault VM-bővítményt a Microsoft közzétette és támogatja, jelenleg Linux rendszerű virtuális gépeken. Ez a dokumentum részletesen ismerteti a Linux rendszerhez készült Key Vault virtuálisgép-bővítmény támogatott platformokat, konfigurációkat és telepítési lehetőségeit. 
+A Key Vault virtuálisgép-bővítmény az Azure Key vaultban tárolt tanúsítványok automatikus frissítését teszi lehetővé. Pontosabban a bővítmény figyeli a Key vaultban tárolt megfigyelt tanúsítványok listáját.  A módosítás észlelése után a bővítmény lekéri és telepíti a megfelelő tanúsítványokat. A bővítmény a teljes tanúsítványláncot telepíti a virtuális gépre. A Key Vault VM-bővítményt a Microsoft közzétette és támogatja, jelenleg Linux rendszerű virtuális gépeken. Ez a dokumentum részletesen ismerteti a Linux rendszerhez készült Key Vault virtuálisgép-bővítmény támogatott platformokat, konfigurációkat és telepítési lehetőségeit. 
 
 ### <a name="operating-system"></a>Operációs rendszer
 
 A Key Vault virtuálisgép-bővítmény támogatja ezeket a Linux-disztribúciókat:
 
-- Ubuntu – 1604
 - Ubuntu – 1804
-- Debian – 9
 - SUSE – 15 
+
+> [!NOTE]
+> A bővített biztonsági funkciók beszerzéséhez készítse elő az Ubuntu-1604 és a Debian-9 rendszerek frissítését, mivel ezek a verziók elérik a kijelölt támogatási időszak végét.
+> 
 
 ### <a name="supported-certificate-content-types"></a>Támogatott tanúsítvány-tartalomtípusok
 

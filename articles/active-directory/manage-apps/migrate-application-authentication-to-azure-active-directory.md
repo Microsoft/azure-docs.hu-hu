@@ -14,12 +14,12 @@ ms.date: 02/05/2021
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac3ea7ea6b3ed0bb8e1e9f7575b34f9dbf116a04
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: db695b55fbef16cb67dce6dc2d3c81ad177c9db6
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102453255"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601797"
 ---
 # <a name="migrate-application-authentication-to-azure-active-directory"></a>Alkalmazás-hitelesítés migrálása Azure Active Directoryre
 
@@ -45,7 +45,7 @@ Alkalmazásai valószínűleg a következő típusú hitelesítést használják
 
 - Helyszíni összevonási megoldások (például Active Directory összevonási szolgáltatások (AD FS) (ADFS) és ping)
 
-- Active Directory (például Kerberos-hitelesítés és integrált Windows-hitelesítés)
+- Active Directory (például Kerberos-hitelesítés és Windows-Integrated hitelesítés)
 
 - Más felhőalapú identitás-és hozzáférés-kezelési (IAM) megoldások (például okta vagy Oracle)
 
@@ -61,7 +61,7 @@ A [Azure Active Directory (Azure ad)](../fundamentals/active-directory-whatis.md
 
 Az Azure AD [teljes körű Identitáskezelés-kezelési képességekkel](../fundamentals/active-directory-whatis.md#which-features-work-in-azure-ad)rendelkezik. Az alkalmazás-hitelesítés és az Azure AD-engedélyezés egységesítése lehetővé teszi, hogy ezek a képességek milyen előnyöket biztosítanak.
 
-További áttelepítési erőforrások: [https://aka.ms/migrateapps](./migration-resources.md)
+További áttelepítési erőforrások a következő helyen találhatók: [https://aka.ms/migrateapps](./migration-resources.md)
 
 ## <a name="benefits-of-migrating-app-authentication-to-azure-ad"></a>Az alkalmazások hitelesítésének az Azure AD-be való áttelepítésének előnyei
 
@@ -81,7 +81,7 @@ Az alkalmazások védelme megköveteli, hogy teljes mértékben megtekinthesse a
 
 ### <a name="manage-cost"></a>A Cost kezelése
 
-Előfordulhat, hogy a szervezete több Identity Access-felügyeleti (IAM) megoldással rendelkezik. Az egyik Azure AD-infrastruktúrába való Migrálás lehetősége van arra, hogy csökkentse az IAM-licencek (helyszíni vagy Felhőbeli) és az infrastrukturális költségek függőségeit. Azokban az esetekben, amikor az Azure AD-t a M365-licenceken keresztül már kifizette, nem kell fizetnie egy másik IAM megoldás hozzáadott költségeinek.
+Előfordulhat, hogy a szervezete több Identity Access-felügyeleti (IAM) megoldással rendelkezik. Az egyik Azure AD-infrastruktúrába való Migrálás lehetősége van arra, hogy csökkentse az IAM-licencek (helyszíni vagy Felhőbeli) és az infrastrukturális költségek függőségeit. Azokban az esetekben, amikor az Azure AD-t a Microsoft 365 licencek keretében már kifizette, nem kell fizetnie egy másik IAM megoldás hozzáadott költségeiért.
 
 **Az Azure AD-vel csökkentheti az infrastrukturális költségeket:**
 
@@ -95,7 +95,7 @@ A gazdaságosság és a biztonság előnye, hogy a szervezetek az Azure AD-t fog
 
 - A végfelhasználói [egyszeri Sign-On (SSO)](./what-is-single-sign-on.md) felhasználói élményének javítása bármely alkalmazáshoz, bármely eszközről és helyről való zökkenőmentes és biztonságos hozzáférés révén.
 
-- Használja ki az önkiszolgáló IAM-képességeket, például az önkiszolgáló [jelszavak alaphelyzetbe](../authentication/concept-sspr-howitworks.md) állítását és a [SelfService](../enterprise-users/groups-self-service-management.md).
+- Önkiszolgáló IAM-képességeket használhat, mint például az önkiszolgáló [jelszavak alaphelyzetbe állítása](../authentication/concept-sspr-howitworks.md) és a [SelfService](../enterprise-users/groups-self-service-management.md).
 
 - Csökkentse az adminisztrációs terhelést úgy, hogy csak egyetlen identitást kezel az egyes felhasználók számára a felhőben és a helyszíni környezetekben:
 
@@ -104,11 +104,11 @@ A gazdaságosság és a biztonság előnye, hogy a szervezetek az Azure AD-t fog
 
 - Lehetővé teheti a fejlesztők számára, hogy hozzáférjenek az alkalmazásaihoz, és javítsák a végfelhasználói élményt a Microsoft [Identity platform](../develop/v2-overview.md) és a Microsoft Authentication Library (MSAL) használatával.
 
-- A Felhőbeli erőforrásokhoz való hozzáférést az [Azure ad B2B együttműködés](../external-identities/what-is-b2b.md)segítségével teheti elérhetővé. Ezzel megszűnik a pont-pont típusú összevonások a partnereivel való konfigurálásának terhelése.
+- A Felhőbeli erőforrásokhoz való hozzáférést az [Azure ad B2B együttműködés](../external-identities/what-is-b2b.md)segítségével teheti elérhetővé. A Felhőbeli erőforrások megszüntetik a pont-pont típusú összevonások a partnerekkel való konfigurálásának terhelését.
 
 ### <a name="address-compliance-and-governance"></a>A címek megfelelősége és irányítása
 
-A vállalati hozzáférési házirendek betartatásával, valamint az alkalmazásokhoz és a kapcsolódó adatokhoz való felhasználói hozzáférés figyelése integrált auditálási eszközök és API-k használatával gondoskodhat a szabályozási követelményeknek való megfelelésről. Az Azure AD használatával a [biztonsági incidensek és események figyelése (SIEM) eszközöket](../reports-monitoring/plan-monitoring-and-reporting.md)használó jelentések segítségével figyelheti az alkalmazás-bejelentkezéseket. A jelentéseket elérheti a portálról vagy az API-król, valamint programozott módon naplózhatja, hogy ki férhet hozzá az alkalmazásaihoz, és hogyan távolíthatja el az inaktív felhasználók hozzáférését hozzáférési felülvizsgálatok útján.
+A vállalati hozzáférési házirendek betartatásával, valamint az alkalmazásokhoz és a kapcsolódó adatokhoz való felhasználói hozzáférés figyelése integrált auditálási eszközök és API-k használatával gondoskodhat a szabályozási követelményeknek való megfelelésről. Az Azure AD használatával a [biztonsági incidenseket és az esemény-figyelési (SIEM) eszközöket](../reports-monitoring/plan-monitoring-and-reporting.md)használó jelentések segítségével figyelheti az alkalmazás-bejelentkezéseket. A jelentéseket elérheti a portálról vagy az API-król, valamint programozott módon naplózhatja, hogy ki férhet hozzá az alkalmazásaihoz, és hogyan távolíthatja el az inaktív felhasználók hozzáférését hozzáférési felülvizsgálatok útján.
 
 ## <a name="plan-your-migration-phases-and-project-strategy"></a>Tervezze meg az áttelepítési fázisokat és a Project stratégiát
 
@@ -276,7 +276,7 @@ A korszerűsítéshez kiválasztott örökölt alkalmazások
 
 A modernizálni kívánt örökölt alkalmazások esetében az Azure AD-be az alapszintű hitelesítéshez és az engedélyezéshez a [Microsoft Graph](https://developer.microsoft.com/graph/gallery/?filterBy=Samples,SDKs) és [intelligens biztonsági gráf](https://www.microsoft.com/security/operations/intelligence?rtc=1) által kínált összes energiaellátási és adatmennyiséget feloldja.
 
-Javasoljuk, hogy az örökölt protokoll (például a Windows integrált hitelesítés, a Kerberos által korlátozott delegálás, a HTTP-fejlécek alapú hitelesítés) egy modern protokollhoz (például SAML vagy OpenID Connect) **frissítse a hitelesítési verem kódját** .
+Javasoljuk, hogy **frissítse az alkalmazások hitelesítési verem kódját** az örökölt protokollból (például Windows-Integrated hitelesítés, Kerberos által korlátozott DELEGÁLÁS, HTTP-fejlécek alapú hitelesítés) egy modern protokollra (például SAML vagy OpenID Connect).
 
 ### <a name="legacy-apps-that-you-choose-not-to-modernize"></a>Örökölt alkalmazások, amelyek nem modernizálják
 
@@ -304,7 +304,7 @@ Az alkalmazások tiszta tulajdonosok nélkül, a karbantartás és a monitorozá
 
 - egyértelműen **nincs használat**.
 
-Természetesen a **nagy hatású, üzleti szempontból kritikus fontosságú alkalmazások nem elavultak**. Ezekben az esetekben a megfelelő stratégiát a vállalat tulajdonosai határozzák meg.
+Javasoljuk, hogy ne **érvénytelenítse a nagy hatású, üzleti szempontból kritikus fontosságú alkalmazásokat**. Ezekben az esetekben a megfelelő stratégiát a vállalat tulajdonosai határozzák meg.
 
 ### <a name="exit-criteria"></a>Kilépési feltételek
 
@@ -315,7 +315,7 @@ Ebben a fázisban sikeres:
 - A következőket tartalmazó alkalmazások listája:
 
   - Azok a rendszerek, amelyekre ezek az alkalmazások csatlakoznak
-
+  - Honnan és milyen eszközökön férhetnek hozzá a felhasználókhoz
   - Azt határozza meg, hogy a rendszer áttelepíti, elavult vagy [Azure ad Connecthoz](../hybrid/whatis-azure-ad-connect.md)kapcsolódik-e.
 
 > [!NOTE]
@@ -365,13 +365,13 @@ Az áttelepítési döntéshez fontos információk a következők:
 
 - **Alkalmazás neve** – Mit nevezünk az alkalmazásnak a vállalatnak?
 
-- **Alkalmazás típusa** – ez egy harmadik féltől származó SaaS-alkalmazás? Egyéni üzletági webalkalmazás? Egy API-t?
+- **Alkalmazás típusa** – harmadik féltől származó SaaS-alkalmazás? Egyéni üzletági webes alkalmazás? Egy API-t?
 
 - **Üzleti kritikusság** – magas a kritikusság? Alacsony? Vagy valahol a között?
 
 - **Felhasználói hozzáférés mennyisége** – mindenki hozzáférhet ehhez az alkalmazáshoz, vagy csak néhány ember?
 
-- **Tervezett élettartam** – mennyi ideig tart az alkalmazás? Kevesebb, mint 6 hónap? Több mint 2 éve?
+- **Tervezett élettartam** – mennyi ideig tart az alkalmazás? Kevesebb mint hat hónap? Több mint két éve?
 
 - **Aktuális identitás-szolgáltató** – mi az alkalmazás elsődleges identitásszolgáltató? Vagy helyi tárterületre támaszkodik?
 
@@ -379,7 +379,7 @@ Az áttelepítési döntéshez fontos információk a következők:
 
 - Az alkalmazás a tervezett vagy az aktív fejlesztés alatt van-e az alkalmazás **kódjának frissítéséhez** ?
 
-- **Függetlenül attól** , hogy szeretné-e megtartani az alkalmazást a helyszínen, kívánja-e az alkalmazást hosszú távon megőrizni?
+- **Függetlenül attól** , hogy szeretné-e megtartani az alkalmazást a helyszínen? – kívánja megőrizni az alkalmazást az adatközpontban?
 
 - Azt **jelzi, hogy az alkalmazás más alkalmazásokból vagy API** -kkal függ-e, az alkalmazás jelenleg más alkalmazásokba vagy API-khoz hív?
 
@@ -401,7 +401,7 @@ Miután besorolta az alkalmazást, és dokumentálta a részleteket, ügyeljen a
 
 A teszteléshez kiválasztott alkalmazás (ok) a szervezet legfontosabb identitási és biztonsági követelményeinek felel meg, és az alkalmazás tulajdonosainak egyértelmű bevezetéssel kell rendelkeznie. A pilóták általában külön tesztkörnyezetben futnak. Lásd: [ajánlott eljárások a pilóták számára](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot) a központi telepítési tervek lapon.
 
-**Ne felejtse el a külső partnereit.** Győződjön meg arról, hogy részt vesznek az áttelepítési ütemtervekben és a tesztelésben. Végezetül ellenőrizze, hogy van-e lehetőség az ügyfélszolgálat elérésére a problémák elhárítása esetén.
+**Ne felejtse el a külső partnereit.** Győződjön meg arról, hogy részt vesznek az áttelepítési ütemtervekben és a tesztelésben. Végezetül ellenőrizze, hogy van-e lehetőség a segélyszolgálat elérésére, ha problémák léptek fel.
 
 ### <a name="plan-for-limitations"></a>A korlátozások megtervezése
 
@@ -417,13 +417,13 @@ Az üzleti szempontból kritikus és általánosan használt alkalmazásokhoz sz
 
 ### <a name="plan-the-security-posture"></a>A biztonsági testhelyzet megtervezése
 
-Az áttelepítési folyamat megkezdése előtt Szánjon időt arra, hogy teljes mértékben mérlegelje a vállalati identitás rendszerének fejlesztéséhez szükséges biztonsági helyzeteket. Ez a következő értékes adatkészletek összegyűjtésén alapul: az **adatokhoz hozzáférő identitások és adatok, valamint eszközök és helyszínek**.
+Az áttelepítési folyamat megkezdése előtt Szánjon időt arra, hogy teljes mértékben mérlegelje a vállalati identitás rendszerének fejlesztéséhez szükséges biztonsági helyzeteket. Ez a következő értékes adatkészletek összegyűjtésén alapul: **az adatokhoz hozzáférő identitások, eszközök és helyszínek.**
 
 ### <a name="identities-and-data"></a>Identitások és adatkezelés
 
 A legtöbb szervezet konkrét követelményekkel rendelkezik az iparági szegmensek és a szervezeteken belüli feladatok által érintett identitások és adatvédelem terén. Tekintse meg az [identitás-és eszköz-hozzáférési konfigurációkat](/microsoft-365/enterprise/microsoft-365-policies-configurations) , beleértve a [feltételes hozzáférési szabályzatok](../conditional-access/overview.md) és a kapcsolódó képességek előírt készletét.
 
-Ezeket az információkat az Azure AD-vel integrált összes szolgáltatáshoz való hozzáféréshez használhatja fel. A javaslatok összhangban vannak a Microsoft biztonságos pontszámával, valamint az [Azure ad-beli identitások pontszámával](../fundamentals/identity-secure-score.md). A pontszám az alábbiakban nyújt segítséget:
+Ezeket az információkat az Azure AD-vel integrált összes szolgáltatáshoz való hozzáféréshez használhatja fel. Ezek az ajánlások a Microsoft biztonságos pontszámával és az [Azure ad-beli identitási pontszámával](../fundamentals/identity-secure-score.md)összhangban vannak. A pontszám az alábbiakban nyújt segítséget:
 
 - Az identitásbiztonsági rendszer objektív felmérése
 
@@ -443,7 +443,7 @@ Az Azure AD által támogatott alkalmazások és erőforrások felhasználóinak
 
 Ezekhez a felhasználókhoz csoportokat határozhat meg, és különböző módokon töltheti fel ezeket a csoportokat. Dönthet úgy is, hogy a rendszergazdának manuálisan kell felvennie a tagokat egy csoportba, vagy engedélyezheti a selfservice csoport tagságát. Létrehozhatók olyan szabályok, amelyek a [dinamikus csoportok](../enterprise-users/groups-dynamic-membership.md)használatával a megadott feltételek alapján automatikusan hozzáadhatják a tagokat a csoportokhoz.
 
-A külső felhasználók a speciális szempontokat igénylő ügyfelekre is vonatkozhatnak. [Azure ad B2C](../../active-directory-b2c/overview.md)egy külön termék támogatja az ügyfél-hitelesítést. Azonban a dokumentum hatókörén kívül esik.
+Előfordulhat, hogy a külső felhasználók is hivatkozhatnak az ügyfelekre. [Azure ad B2C](../../active-directory-b2c/overview.md)egy külön termék támogatja az ügyfél-hitelesítést. Azonban a dokumentum hatókörén kívül esik.
 
 ### <a name="devicelocation-used-to-access-data"></a>Az adateléréshez használt eszköz/hely
 
@@ -481,7 +481,7 @@ Az alábbi eszközök és útmutatás segítségével követheti az alkalmazáso
 
 - **A helyszínen futó alkalmazások** – megismerheti [Az Azure ad Application Proxyét](./application-proxy.md) , és a teljes [Azure ad Application proxy üzembe helyezési terv](https://aka.ms/AppProxyDPDownload) használatával gyorsan elsajátíthatja a munkát.
 
-- A fejlesztés alatt álló **alkalmazások** – olvassa el a lépésenkénti [integrációs](../develop/quickstart-register-app.md) és [regisztrációs](../develop/quickstart-register-app.md) útmutatót.
+- **Fejlesztett alkalmazások** – olvassa el a lépésenkénti [integrációs](../develop/quickstart-register-app.md) és [regisztrációs](../develop/quickstart-register-app.md) útmutatót.
 
 Az áttelepítés után dönthet úgy, hogy elküldi a sikeres üzembe helyezést a felhasználókat, és emlékezteti őket a szükséges új lépésekre.
 
@@ -491,7 +491,7 @@ Az áttelepítés folyamata során előfordulhat, hogy az alkalmazás már rende
 
 Az alkalmazások teszteléséhez jelentkezzen be egy teszt felhasználóval, és győződjön meg arról, hogy az összes funkció ugyanaz, mint az áttelepítés előtt. Ha a tesztelés során azt állapítja meg, hogy a felhasználóknak frissíteniük kell az [MFA](/active-directory/authentication/howto-mfa-userstates) -vagy [SSPR](../authentication/tutorial-enable-sspr.md)-beállításokat, vagy ha ezt a funkciót az áttelepítés során adja hozzá, ne felejtse el hozzáadni a végfelhasználói kommunikációs tervhez. Lásd: [MFA](https://aka.ms/mfatemplates) és [SSPR](https://aka.ms/ssprtemplates) végfelhasználói kommunikációs sablonok.
 
-Az alkalmazások áttelepítése után lépjen az [Azure Portalra](https://aad.portal.azure.com/) , és ellenőrizze, hogy sikeres volt-e az áttelepítés. Kövesse az alábbi utasításokat:
+Miután áttelepítette az alkalmazásokat, lépjen a [Azure Portal](https://aad.portal.azure.com/) annak teszteléséhez, hogy sikeres volt-e az áttelepítés. Kövesse az alábbi utasításokat:
 
 - Válassza a **vállalati alkalmazások &gt; minden alkalmazás** lehetőséget, és keresse meg az alkalmazást a listából.
 
@@ -511,7 +511,7 @@ Az alkalmazás konfigurálásának módjától függően ellenőrizze, hogy az S
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
-Ha problémákat tapasztal, tekintse meg az [alkalmazások hibaelhárítási útmutatóját](../app-provisioning/isv-automatic-provisioning-multi-tenant-apps.md) , ahol segítséget kaphat. Lásd még: [az egyéni fejlesztésű alkalmazásba való bejelentkezéssel kapcsolatos problémák](./application-sign-in-problem-federated-sso-gallery.md).
+Ha problémákat tapasztal, tekintse meg az [alkalmazások hibaelhárítási útmutatóját](../app-provisioning/isv-automatic-provisioning-multi-tenant-apps.md) , ahol segítséget kaphat. Emellett megtekintheti a hibaelhárítási cikkeket is: [problémák az SAML-alapú egyszeri bejelentkezésre konfigurált alkalmazásokban való bejelentkezéssel](/troubleshoot/azure/active-directory/troubleshoot-sign-in-saml-based-apps)kapcsolatban.
 
 ### <a name="plan-rollback"></a>Terv visszaállítása
 
@@ -519,13 +519,13 @@ Ha az áttelepítés sikertelen, a legjobb stratégia a visszaállítás és a t
 
 - **Képernyőkép készítése** az alkalmazás meglévő konfigurációjáról. Ha ismét újra kell konfigurálnia az alkalmazást, tekintse át a következőt:.
 
-- A Felhőbeli hitelesítéssel kapcsolatos problémák esetén érdemes lehet **az örökölt hitelesítésre mutató hivatkozásokat is biztosítani**.
+- Érdemes lehet megfontolni **az örökölt hitelesítésre mutató hivatkozásokat** is, ha problémák merültek fel a Felhőbeli hitelesítéssel.
 
 - Az áttelepítés befejezése előtt **Ne módosítsa a meglévő konfigurációt** a korábbi identitás-szolgáltatóval.
 
 - Kezdje el áttelepíteni **a több IDP támogató alkalmazásokat**. Ha valami hiba lép fel, bármikor módosíthatja az előnyben részesített identitásszolgáltató konfigurációját.
 
-- Ha problémák merülnek fel, győződjön meg arról, hogy az alkalmazáshoz tartozó élmény **visszajelzési gomb** vagy mutató az **ügyfélszolgálatnak** .
+- Győződjön meg arról, hogy az alkalmazás felhasználói felületén van egy **visszajelzés gomb** vagy mutató az **ügyfélszolgálati** problémákra.
 
 ### <a name="exit-criteria"></a>Kilépési feltételek
 
@@ -595,7 +595,7 @@ Az Azure AD egy központi hozzáférési helyet biztosít az áttelepített alka
 
 - **Biztonságos felhasználói hozzáférés az alkalmazásokhoz.** A [feltételes hozzáférési szabályzatok](../conditional-access/overview.md)vagy az [identitások védelme](../identity-protection/overview-identity-protection.md)lehetővé teszi az alkalmazásokhoz való felhasználói hozzáférés biztosítását az eszköz állapota, helye és egyéb adatai alapján.
 
-- **Automatikus kiépítés.** A felhasználók a különböző külső SaaS-alkalmazásokkal való [automatikus kiépítés](../app-provisioning/user-provisioning.md) beállítása, amelyekhez a felhasználóknak hozzáférésre van szükségük. A felhasználói identitások létrehozása mellett a felhasználói identitások karbantartását és eltávolítását is magában foglalja az állapot vagy a szerepkörök változása miatt.
+- **Automatikus kiépítés.** A felhasználók [automatikus kiépítés](../app-provisioning/user-provisioning.md) beállítása különböző, harmadik féltől származó SaaS-alkalmazásokkal, amelyekhez a felhasználóknak hozzá kell férniük. A felhasználói identitások létrehozása mellett a felhasználói identitások karbantartását és eltávolítását is magában foglalja az állapot vagy a szerepkörök változása miatt.
 
 - A **felhasználói hozzáférés** **felügyeletének** delegálása. Szükség esetén engedélyezze az önkiszolgáló alkalmazások hozzáférését az alkalmazásokhoz, és *rendeljen hozzá egy üzleti jóváhagyót az alkalmazásokhoz való hozzáférés jóváhagyásához*. Az [önkiszolgáló csoportok kezelése](../enterprise-users/groups-self-service-management.md)az alkalmazások gyűjteményéhez rendelt csoportokhoz.
 
@@ -605,13 +605,13 @@ Az Azure AD egy központi hozzáférési helyet biztosít az áttelepített alka
 
 A [Azure Portal](https://portal.azure.com/) az összes alkalmazás központi helyről történő naplózására is használható.
 
-- Az **alkalmazás** az [Azure ad REporting API](../reports-monitoring/concept-reporting-api.md) -val való integrálásával **, vállalati alkalmazásokkal, naplózással** és a kedvenc eszközeibe való integrációval kapcsolatos információkat naplózhatja.
+- Az alkalmazást * * vállalati alkalmazásokkal, naplózással vagy az [Azure ad Reporting API](../reports-monitoring/concept-reporting-api.md) -val való integrációval, a kedvenc eszközeibe való integrálással **naplózhatja** .
 
 - **Megtekintheti a** **vállalati alkalmazásokat** használó alkalmazások engedélyeit, a OAuth/OpenID connectet használó alkalmazásokra vonatkozó engedélyeket.
 
 - **Vállalati alkalmazások, bejelentkezések és** bejelentkezési eredmények **beszerzése** . Ugyanazokat az információkat érheti el az [Azure ad Reporting API](../reports-monitoring/concept-reporting-api.md) -ból.
 
-- Az **alkalmazás használatának megjelenítése** az [Azure ad PowerBI](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
+- Az **alkalmazás használatának megjelenítése** az [Azure ad Power bi Content Pack csomagból](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
 ### <a name="exit-criteria"></a>Kilépési feltételek
 

@@ -2,20 +2,20 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: azure-communication-services
-author: dademath
-manager: nimag
+author: peiliu
+manager: rejooyan
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
-ms.author: dademath
-ms.openlocfilehash: a118dfceb73aca0897ba0f116ce3c5462368f6c3
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.author: peiliu
+ms.openlocfilehash: 96cdeb7c35cd1ccd503f7ce01e1098a6b83884c3
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488318"
+ms.locfileid: "103622108"
 ---
 Ismerkedés az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások C# SMS ügyféloldali kódtár használatával SMS-üzenetek küldéséhez.
 
@@ -27,7 +27,7 @@ A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Az operációs rendszerhez tartozó legújabb [.net Core ügyféloldali kódtár](https://dotnet.microsoft.com/download/dotnet-core) .
 - Aktív kommunikációs szolgáltatások erőforrás-és kapcsolati karakterlánca. [Hozzon létre egy kommunikációs szolgáltatások erőforrást](../../create-communication-resource.md).
 - SMS-kompatibilis telefonszám. [Telefonszám beolvasása](../get-phone-number.md).
@@ -59,13 +59,17 @@ dotnet build
 Miközben az alkalmazás könyvtára továbbra is elérhető, telepítse az Azure Communication Services SMS ügyféloldali kódtárat a .NET-csomaghoz a `dotnet add package` parancs használatával.
 
 ```console
-dotnet add package Azure.Communication.Sms --version 1.0.0-beta.3
+dotnet add package Azure.Communication.Sms --version 1.0.0-beta.4
 ```
 
 Adjon hozzá egy `using` direktívát a **program.cs** tetejéhez, hogy tartalmazza a `Azure.Communication` névteret.
 
 ```csharp
 
+using System;
+using System.Collections.Generic;
+
+using Azure;
 using Azure.Communication;
 using Azure.Communication.Sms;
 
@@ -78,7 +82,8 @@ A következő osztályok és felületek a C#-hoz készült Azure kommunikációs
 | Név                                       | Leírás                                                                                                                                                       |
 | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | SmsClient     | Ez az osztály minden SMS-funkcióhoz szükséges. Létrehozhatja az előfizetési adataival, és SMS-üzenetek küldéséhez használhatja azt.                           |
-| SendSmsOptions | Ez az osztály a kézbesítési jelentéskészítés konfigurálásának lehetőségeit tartalmazza. Ha a enable_delivery_report értéke TRUE (igaz), akkor a sikeres kézbesítés után egy esemény lesz kibocsátva |
+| SmsSendResult               | Ez az osztály az SMS szolgáltatás eredményét tartalmazza.                                          |
+| SmsSendOptions | Ez az osztály a kézbesítési jelentéskészítés konfigurálásának lehetőségeit tartalmazza. Ha a enable_delivery_report értéke TRUE (igaz), akkor a sikeres kézbesítés után egy esemény lesz kibocsátva |
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
@@ -93,22 +98,43 @@ string connectionString = Environment.GetEnvironmentVariable("COMMUNICATION_SERV
 SmsClient smsClient = new SmsClient(connectionString);
 ```
 
-## <a name="send-an-sms-message"></a>SMS küldése
+## <a name="send-a-11-sms-message"></a>1:1 SMS-üzenet küldése
 
-SMS-üzenet küldése a küldési metódus meghívásával. Adja hozzá ezt a kódot a metódus végéhez a `Main` **program.cs**-ben:
+Ha SMS-üzenetet szeretne küldeni egyetlen címzettnek, hívja meg a `Send` vagy a `SendAsync` függvényt a SmsClient. Adja hozzá ezt a kódot a metódus végéhez a `Main` **program.cs**-ben:
 
 ```csharp
-smsClient.Send(
-    from: new PhoneNumber("<leased-phone-number>"),
-    to: new PhoneNumber("<to-phone-number>"),
-    message: "Hello World via SMS",
-    new SendSmsOptions { EnableDeliveryReport = true } // optional
+SmsSendResult sendResult = smsClient.Send(
+    from: "<from-phone-number>", // Your E.164 formatted from phone number used to send SMS
+    to: "<to-phone-number>", // E.164 formatted recipient phone number
+    message: "Hello World via SMS"
 );
+
+Console.WriteLine($"Sms id: {sendResult.MessageId}");
+```
+A lecserélni kívánt `<from-phone-number>` SMS-kompatibilis telefonszámot a kommunikációs szolgáltatások erőforrásaihoz és `<to-phone-number>` azon telefonszámhoz kell cserélni, amelyhez üzenetet szeretne küldeni.
+
+## <a name="send-a-1n-sms-message-with-options"></a>1: N SMS-üzenet küldése a következő beállításokkal
+Ha SMS-üzenetet szeretne küldeni a címzettek listájára, hívja `Send` meg a vagy a `SendAsync` függvényt a címzett telefonszámait tartalmazó SmsClient. A választható paramétereket is megadhatja annak megadásához, hogy a kézbesítési jelentést engedélyezni kell-e, és egyéni címkéket kell-e beállítani.
+
+```csharp
+Response<IEnumerable<SmsSendResult>> response = smsClient.Send(
+    from: "<from-phone-number>", // Your E.164 formatted from phone number used to send SMS
+    to: new string[] { "<to-phone-number-1>", "<to-phone-number-2>" }, // E.164 formatted recipient phone numbers
+    message: "Weekly Promotion!",
+    options: new SmsSendOptions(enableDeliveryReport: true) // OPTIONAL
+    {
+        Tag = "marketing", // custom tags
+    });
+
+IEnumerable<SmsSendResult> results = response.Value;
+foreach (SmsSendResult result in results)
+{
+    Console.WriteLine($"Sms id: {result.MessageId}");
+    Console.WriteLine($"Send Result Successful: {result.Successful}");
+}
 ```
 
-A lecserélni kívánt `<leased-phone-number>` SMS-kompatibilis telefonszámot a kommunikációs szolgáltatások erőforrásaihoz és `<to-phone-number>` azon telefonszámhoz kell cserélni, amelyhez üzenetet szeretne küldeni.
-
-A `EnableDeliveryReport` paraméter egy opcionális paraméter, amely a kézbesítési jelentéskészítés konfigurálására használható. Ez olyan esetekben hasznos, amikor az SMS-üzenetek kézbesítése során eseményeket szeretne kibocsátani. Tekintse meg az [SMS-események kezelése](../handle-sms-events.md) rövid útmutatót az SMS-üzenetek kézbesítési jelentéskészítésének konfigurálásához.
+A `enableDeliveryReport` paraméter egy opcionális paraméter, amely a kézbesítési jelentéskészítés konfigurálására használható. Ez olyan esetekben hasznos, amikor az SMS-üzenetek kézbesítése során eseményeket szeretne kibocsátani. Tekintse meg az [SMS-események kezelése](../handle-sms-events.md) rövid útmutatót az SMS-üzenetek kézbesítési jelentéskészítésének konfigurálásához.
 
 ## <a name="run-the-code"></a>A kód futtatása
 
