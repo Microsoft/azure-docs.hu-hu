@@ -40,6 +40,8 @@
           href: whatis-phs.md
         - name: A jelszókivonat-szinkronizálás működése
           href: how-to-connect-password-hash-synchronization.md
+        - name: Szelektív jelszó kivonatának szinkronizálása
+          href: how-to-connect-selective-password-hash-synchronization.md
     - name: Átmenő hitelesítés
       items:
         - name: Mi az az átmenő hitelesítés?

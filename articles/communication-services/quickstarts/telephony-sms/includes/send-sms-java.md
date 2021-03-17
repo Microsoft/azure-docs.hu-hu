@@ -2,28 +2,24 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: azure-communication-services
-author: chrwhit
-manager: nimag
+author: pvicencio
+manager: ankita
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 03/12/2021
 ms.topic: include
 ms.custom: include file
-ms.author: chrwhit
-ms.openlocfilehash: 313832c29eb3f3f175fb20a60ba712937fdede0a
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.author: pvicencio
+ms.openlocfilehash: 2739079b67d80f3e4a9f367aaa58f6dcbbb650ca
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488317"
+ms.locfileid: "103622272"
 ---
 Ismerkedés az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások Java SMS ügyféloldali kódtár használatával SMS-üzenetek küldéséhez.
 
 A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű vagy annál kisebb költséggel jár.
-
-<!--**TODO: update all these reference links as the resources go live**
-
-[API reference documentation](../../../references/overview.md) | [Library source code](https://github.com/Azure/azure-sdk-for-net-pr/tree/feature/communication/sdk/communication/Azure.Communication.Sms#todo-update-to-public) | [Artifact (Maven)](#todo-nuget) | [Samples](#todo-samples)-->
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -58,7 +54,7 @@ Nyissa meg a **pom.xml** fájlt a szövegszerkesztőben. Adja hozzá a függős�
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-sms</artifactId>
-    <version>1.0.0-beta.3</version>
+    <version>1.0.0-beta.4</version>
 </dependency>
 ```
 
@@ -70,7 +66,12 @@ Adja hozzá a `azure-core-http-netty` függőséget a **pom.xml** -fájlhoz.
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-core-http-netty</artifactId>
-    <version>1.3.0</version>
+    <version>1.8.0</version>
+</dependency>
+<dependency>
+    <groupId>com.azure</groupId>
+    <artifactId>azure-core</artifactId>
+    <version>1.13.0</version> <!-- {x-version-update;com.azure:azure-core;dependency} -->
 </dependency>
 ```
 
@@ -79,23 +80,17 @@ Nyissa meg a **/src/Main/Java/com/Communication/Quickstart/app.Java** egy szöve
 ```java
 package com.communication.quickstart;
 
-import java.io.IOException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.azure.communication.common.PhoneNumber;
-import com.azure.communication.sms.SmsClient;
-import com.azure.communication.sms.SmsClientBuilder;
-import com.azure.communication.sms.models.SendSmsOptions;
-import com.azure.communication.sms.models.SendSmsResponse;
+import com.azure.communication.sms.models.*;
+import com.azure.core.credential.AzureKeyCredential;
+import com.azure.communication.sms.*;
 import com.azure.core.http.HttpClient;
 import com.azure.core.http.netty.NettyAsyncHttpClientBuilder;
+import com.azure.core.util.Context;
+import java.util.Arrays;
 
 public class App
 {
-    public static void main( String[] args ) throws IOException, NoSuchAlgorithmException, InvalidKeyException
+    public static void main( String[] args )
     {
         // Quickstart code goes here
     }
@@ -111,71 +106,88 @@ A következő osztályok és felületek kezelik az Azure kommunikációs szolgá
 | ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | SmsClientBuilder              | Ez az osztály hozza létre a SmsClient. Ezt a végponttal, a hitelesítő adatokkal és egy http-ügyféllel biztosíthatja. |
 | SmsClient                    | Ez az osztály minden SMS-funkcióhoz szükséges. Az SMS-üzenetek küldésére használható.                |
-| SendSmsResponse               | Ez az osztály az SMS szolgáltatás válaszát tartalmazza.                                          |
-| PhoneNumber                   | Ez az osztály a telefonszámra vonatkozó információkat tartalmazza.
+| SmsSendResult                | Ez az osztály az SMS szolgáltatás eredményét tartalmazza.                                          |
+| SmsSendOptions               | Ez az osztály lehetőséget biztosít egyéni címkék hozzáadására és a kézbesítési jelentéskészítés konfigurálására. Ha a deliveryReportEnabled értéke TRUE (igaz), akkor egy esemény lesz kibocsátva, ha a kézbesítés sikeres volt.|                           |
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Példány létrehozása `SmsClient` a-val a kapcsolatok karakterláncával. Az alábbi kód lekéri a végpont és a hitelesítő adatok karakterláncait az erőforráshoz a (z) nevű környezeti változók alapján, a `COMMUNICATION_SERVICES_ENDPOINT_STRING` `COMMUNICATION_SERVICES_CREDENTIAL_STRING` hitelesítő adat pedig a `Key` Azure Portal. Ismerje meg, hogyan [kezelheti az erőforrás kapcsolódási karakterláncát](../../create-communication-resource.md#store-your-connection-string).
+Példány létrehozása `SmsClient` a-val a kapcsolatok karakterláncával. (A hitelesítő adatok a `Key` Azure Portalból származnak. Ismerje meg, hogyan [kezelheti az erőforrás kapcsolódási karakterláncát](../../create-communication-resource.md#store-your-connection-string).
 
 Adja hozzá a következő kódot a `main` metódushoz:
 
 ```java
-// Your can find your endpoint and access key from your resource in the Azure Portal
-String endpoint = "https://<RESOURCE_NAME>.communication.azure.com";
-String accessKey = "SECRET";
+// You can find your endpoint and access key from your resource in the Azure Portal
+String endpoint = "https://<resource-name>.communication.azure.com/";
+AzureKeyCredential azureKeyCredential = new AzureKeyCredential("<access-key-credential>");
 
 // Create an HttpClient builder of your choice and customize it
 HttpClient httpClient = new NettyAsyncHttpClientBuilder().build();
 
-// Configure and build a new SmsClient
-SmsClient client = new SmsClientBuilder()
-    .endpoint(endpoint)
-    .accessKey(accessKey)
-    .httpClient(httpClient)
-    .buildClient();
+SmsClient smsClient = new SmsClientBuilder()
+                .endpoint(endpoint)
+                .credential(azureKeyCredential)
+                .httpClient(httpClient)
+                .buildClient();
 ```
 
 Az ügyfelet bármely olyan egyéni HTTP-ügyféllel inicializálhatja, amely megvalósítja a `com.azure.core.http.HttpClient` felületet. A fenti kód azt mutatja be, hogy az [Azure alapszintű](/java/api/overview/azure/core-http-netty-readme) , az által biztosított http-ügyfelet használja `azure-core` .
 
 A teljes kapcsolati karakterláncot a connectionString () függvény használatával is megadhatja a végpont és a hozzáférési kulcs megadása helyett. 
 ```java
-// Your can find your connection string from your resource in the Azure Portal
-String connectionString = "<connection_string>";
-SmsClient client = new SmsClientBuilder()
-    .connectionString(connectionString)
-    .httpClient(httpClient)
-    .buildClient();
+// You can find your connection string from your resource in the Azure Portal
+String connectionString = "https://<resource-name>.communication.azure.com/;<access-key>";
+
+// Create an HttpClient builder of your choice and customize it
+HttpClient httpClient = new NettyAsyncHttpClientBuilder().build();
+
+SmsClient smsClient = new SmsClientBuilder()
+            .connectionString(connectionString)
+            .httpClient(httpClient)
+            .buildClient();
 ```
 
-## <a name="send-an-sms-message"></a>SMS küldése
+## <a name="send-a-11-sms-message"></a>1:1 SMS-üzenet küldése
 
-SMS-üzenet küldése a üzenetküldés metódus meghívásával. Adja hozzá ezt a kódot a metódus végéhez `main` :
+Ha SMS-üzenetet szeretne küldeni egyetlen címzettnek, hívja meg a `send` metódust a SmsClient egyetlen címzett telefonszámával. A választható paramétereket is megadhatja annak megadásához, hogy a kézbesítési jelentést engedélyezni kell-e, és egyéni címkéket kell-e beállítani.
 
 ```java
-List<PhoneNumber> to = new ArrayList<PhoneNumber>();
-to.add(new PhoneNumber("<to-phone-number>"));
+SmsSendResult sendResult = smsClient.send(
+                "<from-phone-number>",
+                "<to-phone-number>",
+                "Weekly Promotion");
 
-// SendSmsOptions is an optional field. It can be used
-// to enable a delivery report to the Azure Event Grid
-SendSmsOptions options = new SendSmsOptions();
-options.setEnableDeliveryReport(true);
+System.out.println("Message Id: " + sendResult.getMessageId());
+System.out.println("Recipient Number: " + sendResult.getTo());
+System.out.println("Send Result Successful:" + sendResult.isSuccessful());
+```
+## <a name="send-a-1n-sms-message-with-options"></a>1: N SMS-üzenet küldése a következő beállításokkal
+Ha SMS-üzenetet szeretne küldeni a címzettek listájára, hívja meg a `send` metódust a címzett telefonszámok listájával. A választható paramétereket is megadhatja annak megadásához, hogy a kézbesítési jelentést engedélyezni kell-e, és egyéni címkéket kell-e beállítani.
+```java
+SmsSendOptions options = new SmsSendOptions();
+options.setDeliveryReportEnabled(true);
+options.setTag("Marketing");
 
-// Send the message and check the response for a message id
-SendSmsResponse response = client.sendMessage(
-    new PhoneNumber("<leased-phone-number>"),
-    to,
-    "<message-text>",
-    options);
+Iterable<SmsSendResult> sendResults = smsClient.send(
+    "<from-phone-number>",
+    Arrays.asList("<to-phone-number1>", "<to-phone-number2>"),
+    "Weekly Promotion",
+    options /* Optional */,
+    Context.NONE);
 
-System.out.println("MessageId: " + response.getMessageId());
+for (SmsSendResult result : sendResults) {
+    System.out.println("Message Id: " + result.getMessageId());
+    System.out.println("Recipient Number: " + result.getTo());
+    System.out.println("Send Result Successful:" + result.isSuccessful());
+}
 ```
 
-`<leased-phone-number>`Egy SMS-kompatibilis telefonszámot kell cserélnie a kommunikációs szolgáltatások erőforrásához, és `<to-phone-number>` azt a telefonszámot, amelyhez üzenetet kíván küldeni.
+A lecserélni kívánt `<from-phone-number>` SMS-kompatibilis telefonszámot a kommunikációs szolgáltatások erőforrásaihoz és `<to-phone-number>` a telefonszámhoz, illetve azon telefonszámok listájához kell cserélni, amelyekről üzenetet szeretne küldeni.
 
-A `enableDeliveryReport` paraméter egy opcionális paraméter, amely a kézbesítési jelentéskészítés konfigurálására használható. Ez olyan esetekben hasznos, amikor az SMS-üzenetek kézbesítése során eseményeket szeretne kibocsátani. Tekintse meg az [SMS-események kezelése](../handle-sms-events.md) rövid útmutatót az SMS-üzenetek kézbesítési jelentéskészítésének konfigurálásához.
+## <a name="optional-parameters"></a>Opcionális paraméterek
 
-<!--todo: the signature of the `sendMessage` method changes when configuring delivery reporting. Need to confirm that this is how our client library is to be used.-->
+A `deliveryReportEnabled` paraméter egy opcionális paraméter, amely a kézbesítési jelentéskészítés konfigurálására használható. Ez olyan esetekben hasznos, amikor az SMS-üzenetek kézbesítése során eseményeket szeretne kibocsátani. Tekintse meg az [SMS-események kezelése](../handle-sms-events.md) rövid útmutatót az SMS-üzenetek kézbesítési jelentéskészítésének konfigurálásához.
+
+A `tag` paraméter egy opcionális paraméter, amelynek használatával címkét alkalmazhat a kézbesítési jelentésre.
 
 ## <a name="run-the-code"></a>A kód futtatása
 

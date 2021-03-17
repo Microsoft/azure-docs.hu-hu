@@ -2,13 +2,13 @@
 title: Skálázhatóság – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk az Azure-Event Hubs partíciók és átviteli egységek használatával történő skálázását ismerteti.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 4dacb24ace2332f590db54959cbf1f06694b982b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/16/2021
+ms.openlocfilehash: f258ee2a3b4162dabf7a8e615db82b9b889d628b
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86521955"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601278"
 ---
 # <a name="scaling-with-event-hubs"></a>Méretezés Event Hubs
 
@@ -18,7 +18,7 @@ Két tényező befolyásolja a skálázást Event Hubs.
 
 ## <a name="throughput-units"></a>Átviteli egységek
 
-A Event Hubs átviteli kapacitását az *átviteli egységek*vezérlik. Az átviteli egységek előre megvásárolt kapacitásegységek. Egyetlen átviteli sebesség A következőket teszi lehetővé:
+A Event Hubs átviteli kapacitását az *átviteli egységek* vezérlik. Az átviteli egységek előre megvásárolt kapacitásegységek. Egyetlen átviteli sebesség A következőket teszi lehetővé:
 
 * Bejövő forgalom: másodpercenként legfeljebb 1 MB vagy 1000 esemény másodpercenként (amelyik előbb bekövetkezik).
 * Kimenő forgalom: másodpercenként legfeljebb 2 MB vagy 4096 esemény másodpercenként.
@@ -39,14 +39,10 @@ További információ az automatikus kiosztási szolgáltatásról: az [átvitel
 ## <a name="partitions"></a>Partíciók
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
-### <a name="partition-key"></a>Partíciókulcs
-
-A [partíciós kulcs](event-hubs-programming-guide.md#partition-key) használatával a bejövő események adatait meghatározott partíciókhoz rendelheti az adatszervezet céljára. A partíciókulcs az eseményközpontnak átadott, a küldő által megadott érték. A feldolgozása egy statikus kivonatoló függvénnyel történik, amely létrehozza a partíció-hozzárendelést. Ha nem ad meg partíciókulcsot az események közzétételekor, a rendszer ciklikus időszeleteléses hozzárendelést használ.
-
-Az esemény-közzétevő csak a partíciókulcsot ismeri, azt a partíciót nem, amelyre az esemény közzé lesz téve. A kulcs és a partíció szétválasztása révén a küldőnek nem szükséges behatóan ismernie az alárendelt feldolgozási folyamatokat. Az eszközszintű vagy egyedi felhasználói identitás remek partíciókulcs lehet, de más tulajdonságok, például a földrajzi hely alapján szintén lehetséges az események csoportosítása egyetlen partícióra.
 
 
-## <a name="next-steps"></a>További lépések
+
+## <a name="next-steps"></a>Következő lépések
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
 - [Átviteli egységek automatikus skálázása](event-hubs-auto-inflate.md)
