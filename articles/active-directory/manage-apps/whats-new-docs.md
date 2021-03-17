@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: ebd8839fd17f79bc53b5093af83d457bb23712d9
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: cd46bb1c6905747ffb98c7e950f66e648c541534
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102452050"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601763"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory Application Management: Újdonságok
 
@@ -33,7 +33,6 @@ ms.locfileid: "102452050"
 - [Bérlőszintű rendszergazdai jóváhagyás megadása egy alkalmazáshoz](grant-admin-consent.md)
 - [Alkalmazáshitelesítés áthelyezése az Active Directory Federation Servicesből az Azure Active Directoryba](migrate-adfs-apps-to-azure.md)
 - [Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory](application-proxy-add-on-premises-application.md)
-- [Problémák az SAML-alapú egyszeri bejelentkezésre konfigurált alkalmazásokba való bejelentkezés során](application-sign-in-problem-federated-sso-gallery.md)
 - [A bérlői korlátozások használata a SaaS-Felhőbeli alkalmazásokhoz való hozzáférés kezelésére](tenant-restrictions.md)
 
 ## <a name="january-2021"></a>2021. január
@@ -84,7 +83,6 @@ ms.locfileid: "102452050"
 
 ### <a name="updated-articles"></a>Frissített cikkek
 - [Azure Active Directory Application Management: Újdonságok](whats-new-docs.md)
-- [Problémák az SAML-alapú egyszeri bejelentkezésre konfigurált alkalmazásokba való bejelentkezés során](application-sign-in-problem-federated-sso-gallery.md)
 
 
 ## <a name="october-2020"></a>2020. október
@@ -99,7 +97,6 @@ ms.locfileid: "102452050"
 
 ### <a name="updated-articles"></a>Frissített cikkek
 
-- [Problémák az SAML-alapú egyszeri bejelentkezésre konfigurált alkalmazásokba való bejelentkezés során](application-sign-in-problem-federated-sso-gallery.md)
 - [Probléma az alkalmazásproxy-ügynök összekötőjének telepítésekor](application-proxy-connector-installation-problem.md)
 - [Alkalmazáshitelesítés áthelyezése az Active Directory Federation Servicesből az Azure Active Directoryba](migrate-adfs-apps-to-azure.md)
 - [A végfelhasználók alkalmazásokra vonatkozó hozzájárulásának konfigurálása](configure-user-consent.md)

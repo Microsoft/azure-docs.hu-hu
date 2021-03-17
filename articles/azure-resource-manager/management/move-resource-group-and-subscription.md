@@ -4,12 +4,12 @@ description: Az erőforrások új erőforráscsoporthoz vagy előfizetésbe val�
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: aca1e5255c89e99a2c996e072e5106da8dc3eef9
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 1218df618f7f5fa0787505cb4fcee67dd264ea76
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101093621"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601389"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -34,6 +34,7 @@ Néhány fontos lépést végre kell hajtani az erőforrások áthelyezése elő
    * [Útmutató a hálózatkezelés áthelyezéséhez](./move-limitations/networking-move-limitations.md)
    * [Útmutató Recovery Services](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [Útmutató Virtual Machines](./move-limitations/virtual-machines-move-limitations.md)
+   * Ha egy Azure-előfizetést egy új felügyeleti csoportba szeretne áthelyezni, tekintse meg az [előfizetések áthelyezése](../../governance/management-groups/manage.md#move-subscriptions)című
 
 1. Ha olyan erőforrást helyez át, amely közvetlenül az erőforráshoz (vagy egy alárendelt erőforráshoz) van hozzárendelve egy Azure-szerepkörrel, a szerepkör-hozzárendelés nem kerül át, és nem lesz árva. Az áthelyezés után újra létre kell hoznia a szerepkör-hozzárendelést. Végül a rendszer automatikusan eltávolítja az árva szerepkör-hozzárendelést, de ez az ajánlott eljárás a szerepkör-hozzárendelés eltávolítására az erőforrás áthelyezése előtt.
 

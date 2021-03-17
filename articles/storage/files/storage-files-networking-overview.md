@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7164c3dd5c98544f3cb2944cb33cfd0e9703e36d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cec386b798b843a5badc9d52d9c71bd7df54b59a
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90563335"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601933"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure Files hálózati megfontolások 
 Az Azure-fájlmegosztás két módon is kapcsolódhat:
@@ -25,6 +25,15 @@ Ez a cikk azt ismerteti, hogyan kell konfigurálni a hálózatkezelést, ha a ha
 Az Azure-fájlmegosztás hálózati konfigurációja az Azure Storage-fiókon történik. A Storage-fiók egy olyan felügyeleti szerkezet, amely egy megosztott tárolót jelöl, amelyben több fájlmegosztást is üzembe helyezhet, valamint más tárolási erőforrásokat, például blob-tárolókat vagy várólistákat. A Storage-fiókok több olyan beállítást tesznek elérhetővé, amelyek segítenek a fájlmegosztás hálózati hozzáférésének biztonságossá tételében: hálózati végpontok, a Storage-fiók tűzfalának beállításai és az átvitel közbeni titkosítás. 
 
 Javasoljuk, hogy a fogalmi útmutató elolvasása előtt olvassa el a [Azure Files központi telepítésének megtervezését](storage-files-planning.md) .
+
+:::row:::
+    :::column:::
+        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/jd49W33DxkQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    :::column-end:::
+    :::column:::
+        Ebből a videóból megtudhatja, hogyan teheti lehetővé az Azure-fájlmegosztás közvetlen biztonságos kihelyezését az információkkal dolgozó szakemberek és alkalmazások számára öt egyszerű lépésben. Az alábbi szakasz hivatkozásokat és további kontextust biztosít a videóban hivatkozott dokumentációhoz.
+   :::column-end:::
+:::row-end:::
 
 ## <a name="accessing-your-azure-file-shares"></a>Az Azure-fájlmegosztás elérése
 Amikor egy Azure-fájlmegosztást telepít egy Storage-fiókon belül, a fájlmegosztás azonnal elérhető lesz a Storage-fiók nyilvános végpontján keresztül. Ez azt jelenti, hogy a hitelesített kérések, például a felhasználó bejelentkezési identitása által engedélyezett kérések, biztonságosan származhatnak az Azure-on belül vagy kívül is. 
@@ -137,7 +146,7 @@ A tűzfal egy hálózati házirend, amely azt szabályozza, hogy mely kérések 
 
 A Storage-fiókokhoz való hozzáférés korlátozásának két módja van:
 - Hozzon létre egy vagy több privát végpontot a Storage-fiókhoz, és korlátozza a nyilvános végponthoz való hozzáférést. Ez biztosítja, hogy csak a kívánt virtuális hálózatokból származó forgalom férhessenek hozzá az Azure-fájlmegosztás számára a Storage-fiókon belül.
-- Korlátozza a nyilvános végpontot egy vagy több virtuális hálózatra. Ez a *szolgáltatás végpontok*nevű virtuális hálózat funkciójának használatával működik. Ha egy szolgáltatási végponton keresztül korlátozza a forgalmat egy Storage-fiókra, akkor továbbra is a nyilvános IP-cím használatával fér hozzá a Storage-fiókhoz.
+- Korlátozza a nyilvános végpontot egy vagy több virtuális hálózatra. Ez a *szolgáltatás végpontok* nevű virtuális hálózat funkciójának használatával működik. Ha egy szolgáltatási végponton keresztül korlátozza a forgalmat egy Storage-fiókra, akkor továbbra is a nyilvános IP-cím használatával fér hozzá a Storage-fiókhoz.
 
 > [!NOTE]
 > Az NFS-megosztások a nyilvános IP-címen keresztül nem férhetnek hozzá a Storage-fiók nyilvános végpontja számára, a virtuális hálózatok használatával csak a Storage-fiók nyilvános végpontját érhetik el. Az NFS-megosztások privát végpontok használatával is hozzáférhetnek a Storage-fiókhoz.

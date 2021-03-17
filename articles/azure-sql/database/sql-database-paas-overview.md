@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/21/2020
-ms.openlocfilehash: 0bd6300f4b9dbcf76b5447a0fb58502b7aebf311
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c6b1129ca4a63e9adc8bb679dce53ff728456f42
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451426"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601831"
 ---
 # <a name="what-is-azure-sql-database"></a>Mi az Azure SQL Database?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -32,6 +32,9 @@ A SQL Database lehetővé teszi a teljesítmény egyszerű meghatározását és
 
 Ha még nem ismeri a Azure SQL Database, tekintse meg a részletes [Azure SQL-videó sorozatának](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner) *Azure SQL Database áttekintő* videóját:
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Database-Overview-7-of-61/player]
+
+> [!TIP]
+> Hogyan lehet jobbá tenni az Azure SQL-t? [Vegye fel a kérdőívet](https://aka.ms/AzureSQLSurvey).
 
 ## <a name="deployment-models"></a>Üzembe helyezési modellek
 
@@ -222,7 +225,7 @@ Nem. A javítások hatása általában nem észlelhető, ha az alkalmazásban [�
 - [Visszajelzés](https://aka.ms/sqlfeedback): hibák jelentése és funkciók kérése.
 - [Reddit](https://www.reddit.com/r/SQLServer/): beszéljen SQL Server.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/sql-database/) , amely az önálló adatbázisokra és a rugalmas készletekre vonatkozó költség-összehasonlításokat és számológépeket tartalmazza.
 - Az első lépésekhez tekintse meg ezeket a rövid útmutatókat:

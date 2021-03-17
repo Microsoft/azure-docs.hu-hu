@@ -2,20 +2,20 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: azure-communication-services
-author: dademath
-manager: nimag
+author: bertong
+manager: ankita
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
-ms.author: dademath
-ms.openlocfilehash: fc20396053dee32ac7976139a634b4592389ab5f
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.author: bertong
+ms.openlocfilehash: 0d142c477e1de2a2a34a8abfd948800cc0b607ee
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488315"
+ms.locfileid: "103622191"
 ---
 Ismerkedés az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások JavaScript SMS ügyféloldali kódtár használatával SMS-üzenetek küldéséhez.
 
@@ -72,8 +72,9 @@ A következő osztályok és felületek kezelik az Azure kommunikációs szolgá
 | Név                                  | Leírás                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | SmsClient | Ez az osztály minden SMS-funkcióhoz szükséges. Létrehozhatja az előfizetési adataival, és SMS-üzenetek küldéséhez használhatja azt. |
-| SendSmsOptions | Ez az interfész lehetőséget biztosít a kézbesítési jelentéskészítés konfigurálására. Ha `enable_delivery_report` a értéke `true` , akkor egy esemény lesz kibocsátva, ha a kézbesítés sikeres volt. |
-| SendMessageRequest | Ez az interfész az SMS-kérelem létrehozási modellje (például adja meg a telefonszámokat és az SMS-tartalmat. |
+| SmsSendResult               | Ez az osztály az SMS szolgáltatás eredményét tartalmazza.                                          |
+| SmsSendOptions | Ez az interfész lehetőséget biztosít a kézbesítési jelentéskészítés konfigurálására. Ha `enableDeliveryReport` a értéke `true` , akkor egy esemény lesz kibocsátva, ha a kézbesítés sikeres. |
+| SmsSendRequest | Ez az interfész az SMS-kérelem létrehozási modellje (például adja meg a telefonszámokat és az SMS-tartalmat. |
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
@@ -92,27 +93,66 @@ const connectionString = process.env['COMMUNICATION_SERVICES_CONNECTION_STRING']
 const smsClient = new SmsClient(connectionString);
 ```
 
-## <a name="send-an-sms-message"></a>SMS küldése
+## <a name="send-a-1n-sms-message"></a>1: N SMS-üzenet küldése
 
-SMS-üzenet küldése a metódus meghívásával `send` . Adja hozzá ezt a kódot a **send-sms.js** végéhez:
+Ha SMS-üzenetet szeretne küldeni a címzettek listájára, hívja meg a `send` függvényt a SmsClient a címzettek telefonszámait tartalmazó listával (ha üzenetet szeretne küldeni egyetlen címzettnek, csak egy számot adjon meg a listában). Adja hozzá ezt a kódot a **send-sms.js** végéhez:
 
 ```javascript
 async function main() {
-  await smsClient.send({
-    from: "<leased-phone-number>",
-    to: ["<to-phone-number>"],
-    message: "Hello World 👋🏻 via Sms"
-  }, {
-    enableDeliveryReport: true //Optional parameter
+  const sendResults = await smsClient.send({
+    from: "<from-phone-number>",
+    to: ["<to-phone-number-1>", "<to-phone-number-2>"],
+    message: "Hello World 👋🏻 via SMS"
   });
+
+  // individual messages can encounter errors during sending
+  // use the "successful" property to verify
+  for (const sendResult of sendResults) {
+    if (sendResult.successful) {
+      console.log("Success: ", sendResult);
+    } else {
+      console.error("Something went wrong when trying to send this message: ", sendResult);
+    }
+  }
+}
+
+main();
+```
+A lecserélni kívánt `<from-phone-number>` SMS-kompatibilis telefonszámot a kommunikációs szolgáltatások erőforrásaihoz és `<to-phone-number>` azon telefonszámhoz kell cserélni, amelyhez üzenetet szeretne küldeni.
+
+## <a name="send-a-1n-sms-message-with-options"></a>1: N SMS-üzenet küldése a következő beállításokkal
+
+Egy Options objektum is megadható annak megadásához, hogy a kézbesítési jelentést engedélyezni kell-e, és egyéni címkéket kell-e beállítani.
+
+```javascript
+
+async function main() {
+  await smsClient.send({
+    from: "<from-phone-number>",
+    to: ["<to-phone-number-1>", "<to-phone-number-2>"],
+    message: "Weekly Promotion!"
+  }, {
+    //Optional parameter
+    enableDeliveryReport: true,
+    tag: "marketing"
+  });
+
+  // individual messages can encounter errors during sending
+  // use the "successful" property to verify
+  for (const sendResult of sendResults) {
+    if (sendResult.successful) {
+      console.log("Success: ", sendResult);
+    } else {
+      console.error("Something went wrong when trying to send this message: ", sendResult);
+    }
+  }
 }
 
 main();
 ```
 
-A lecserélni kívánt `<leased-phone-number>` SMS-kompatibilis telefonszámot a kommunikációs szolgáltatások erőforrásaihoz és `<to-phone-number>` azon telefonszámhoz kell cserélni, amelyhez üzenetet szeretne küldeni.
-
 A `enableDeliveryReport` paraméter egy opcionális paraméter, amely a kézbesítési jelentéskészítés konfigurálására használható. Ez olyan esetekben hasznos, amikor az SMS-üzenetek kézbesítése során eseményeket szeretne kibocsátani. Tekintse meg az [SMS-események kezelése](../handle-sms-events.md) rövid útmutatót az SMS-üzenetek kézbesítési jelentéskészítésének konfigurálásához.
+`tag` a egy opcionális paraméter, amelynek használatával címkét alkalmazhat a kézbesítési jelentésre.
 
 ## <a name="run-the-code"></a>A kód futtatása
 

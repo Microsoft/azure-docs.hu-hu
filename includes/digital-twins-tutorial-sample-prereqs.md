@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 1/20/2021
 ms.author: baanders
-ms.openlocfilehash: 56cda6158b7eeabaf0ce9e71decd0a9aa9f0419c
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: 43cc3dfc5b425df6d9dd5e2c2f35a792907ccdea
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103463771"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103621964"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -21,6 +21,9 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt **hozzon létre egy [
 ### <a name="get-required-resources"></a>Szükséges erőforrások beolvasása
 
 Az oktatóanyag elvégzéséhez **telepítse a [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/), 16,5-es vagy újabb verzióját** a fejlesztői gépére. Ha már telepítve van egy régebbi verziója, megnyithatja a *Visual Studio Installer* alkalmazást a gépen, és az utasításokat követve frissítheti a telepítést.
+
+>[!NOTE]
+> Győződjön meg arról, hogy a Visual Studio 2019 telepítése magában foglalja az **[Azure-fejlesztési számítási feladatokat](/dotnet/azure/configure-visual-studio)**. Ez a munkaterhelés lehetővé teszi az alkalmazások számára az Azure functions közzétételét és más Azure-fejlesztési feladatok elvégzését.
 
 Az oktatóanyagot C# nyelven írt minta projekt vezérli. A minta itt található: [Azure digitális Twins végpontok közötti minták](/samples/azure-samples/digital-twins-samples/digital-twins-samples). **Szerezze be a minta projektet** a gépen a minta hivatkozásra való navigálással, majd a cím alatt található *tallózási kód* gombra kattintva. Ekkor megnyílik a minták GitHub-tárháza, amelyet a-ként tölthet le *. ZIP* -t a *Code (kód* ) gomb kiválasztásával és a *zip letöltésével*.
 

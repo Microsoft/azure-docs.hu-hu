@@ -12,12 +12,12 @@ ms.date: 02/01/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b82d3963ed12e0d5dc6acd75555a3a7e8f20eeb0
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 606704621a4904dd0fb7b6f55e753dbe77e39cb5
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175345"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601015"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD-hitelesítési és -engedélyezési hibakódok
 
@@ -60,7 +60,7 @@ Itt látható egy példa a hibaüzenetre:
 
 A `error` mezőnek több lehetséges értéke van – tekintse át a protokoll dokumentációs hivatkozásait és a OAuth 2,0 specifikációkat, hogy többet tudjon meg az adott hibákról (például `authorization_pending` az [eszköz kódjának folyamatában](v2-oauth2-device-code.md)), és hogyan reagáljon rájuk.  Néhány gyakori érték itt látható:
 
-| Hibakód         | Leírás        | Ügyfél művelete    |
+| Hibakód         | Description        | Ügyfél művelete    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | Protokollhiba, például hiányzó kötelező paraméter. | Javítsa ki és küldje el újra a kérelmet.|
 | `invalid_grant`    | Bizonyos hitelesítési anyagok (Auth-kód, frissítési token, hozzáférési jogkivonat, PKCE Challenge) érvénytelenek voltak, nem elemezhető, hiányzik vagy egyéb módon használhatatlan | Új engedélyezési kód beszerzéséhez próbáljon ki egy új kérelmet a `/authorize` végponthoz.  Érdemes áttekinteni és érvényesíteni az alkalmazás által használt protokollokat. |
@@ -96,13 +96,13 @@ Ha például a "AADSTS50058" hibakódot kapta, keressen rá a [https://login.mic
 | AADSTS50001 | InvalidResource – az erőforrás le van tiltva vagy nem létezik. Ellenőrizze az alkalmazás kódjában, hogy megadta-e az elérni kívánt erőforrás URL-címét.  |
 | AADSTS50002 | NotAllowedTenant – a bejelentkezés sikertelen volt, mert a bérlőn korlátozott a proxy hozzáférése. Saját bérlői szabályzat esetén módosíthatja a korlátozott bérlői beállításokat a probléma megoldásához. |
 | AADSTS500021 | A (z) {bérlő} bérlő hozzáférése megtagadva. A AADSTS500021 azt jelzi, hogy a bérlői korlátozási szolgáltatás konfigurálva van, és a felhasználó olyan bérlőhöz próbál hozzáférni, amely nem szerepel a fejlécben megadott engedélyezett bérlők listáján `Restrict-Access-To-Tenant` . További információ: a [bérlői korlátozások használata a SaaS-Felhőbeli alkalmazásokhoz való hozzáférés kezeléséhez](../manage-apps/tenant-restrictions.md).|
-| AADSTS50003 | MissingSigningKey – a bejelentkezés nem sikerült, mert hiányzik az aláíró kulcs vagy tanúsítvány. Ennek az lehet az oka, hogy az alkalmazásban nem volt konfigurálva aláíró kulcs. Tekintse át a következő helyen ismertetett felbontásokat: [.. /Manage-apps/Application-Sign-in-problem-Federated-SSO-Gallery.MD # tanúsítvány-vagy kulcs-nincs konfigurálva](../manage-apps/application-sign-in-problem-federated-sso-gallery.md#certificate-or-key-not-configured). Ha továbbra is problémákat tapasztal, lépjen kapcsolatba az alkalmazás tulajdonosával vagy az alkalmazás rendszergazdájával. |
+| AADSTS50003 | MissingSigningKey – a bejelentkezés nem sikerült, mert hiányzik az aláíró kulcs vagy tanúsítvány. Ennek az lehet az oka, hogy az alkalmazásban nem volt konfigurálva aláíró kulcs. További információt a hiba [AADSTS50003](/troubleshoot/azure/active-directory/error-code-aadsts50003-cert-or-key-not-configured)kapcsolatos hibaelhárítási cikkben talál. Ha továbbra is problémákat tapasztal, lépjen kapcsolatba az alkalmazás tulajdonosával vagy az alkalmazás rendszergazdájával. |
 | AADSTS50005 | DevicePolicyError – a felhasználó olyan platformról próbált meg bejelentkezni egy eszközre, amelyet jelenleg nem támogat a feltételes hozzáférési házirend. |
 | AADSTS50006 | Az InvalidSignature-aláírás ellenőrzése sikertelen volt, mert érvénytelen az aláírás. |
 | AADSTS50007 | PartnerEncryptionCertificateMissing – a partner titkosítási tanúsítványa nem található ehhez az alkalmazáshoz. [Nyisson meg egy támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) a Microsofttal a rögzített megoldás eléréséhez. |
 | AADSTS50008 | InvalidSamlToken – az SAML-állítás hiányzik vagy helytelenül van konfigurálva a jogkivonatban. Forduljon az összevonási szolgáltatójához. |
 | AADSTS50010 | AudienceUriValidationFailed – a célközönség URI-ellenőrzése nem sikerült az alkalmazáshoz, mert nem lettek konfigurálva jogkivonat-célközönségek. |
-| AADSTS50011 | InvalidReplyTo – a válasz címe hiányzik, helytelenül van konfigurálva, vagy nem felel meg az alkalmazáshoz konfigurált válaszoknak.  A probléma megoldásához adja hozzá ezt a hiányzó választ a Azure Active Directory alkalmazáshoz, vagy ha valakinek van engedélye az alkalmazás kezeléséhez Active Directory tegye ezt meg.|
+| AADSTS50011 | InvalidReplyTo – a válasz címe hiányzik, helytelenül van konfigurálva, vagy nem felel meg az alkalmazáshoz konfigurált válaszoknak.  A probléma megoldásához adja hozzá ezt a hiányzó választ a Azure Active Directory alkalmazáshoz, vagy ha valakinek van engedélye az alkalmazás kezeléséhez Active Directory tegye ezt meg. További információt a hiba [AADSTS50011](/troubleshoot/azure/active-directory/error-code-aadsts50011-reply-url-mismatch)kapcsolatos hibaelhárítási cikkben talál.|
 | AADSTS50012 | AuthenticationFailed – a következő okok egyike miatt sikertelen volt a hitelesítés:<ul><li>Az aláíró tanúsítvány tulajdonosának neve nincs engedélyezve</li><li>Nem található megfelelő megbízható szolgáltatói szabályzat a meghatalmazott tulajdonos nevéhez</li><li>A tanúsítványlánc érvénytelen.</li><li>Az aláíró tanúsítvány érvénytelen.</li><li>A házirend nincs konfigurálva a bérlőn</li><li>Az aláíró tanúsítvány ujjlenyomata nincs engedélyezve</li><li>Az ügyfél-érvényesítés érvénytelen aláírást tartalmaz</li></ul> |
 | AADSTS50013 | A InvalidAssertion-állítás különböző okok miatt érvénytelen – a jogkivonat kiállítója nem felel meg az API-verziónak az érvényes időtartományon belül – a lejárt – hibásan formázott – frissítési jogkivonat az állításban nem elsődleges frissítési jogkivonat. |
 | AADSTS50014 | GuestUserInPendingState – a felhasználó beváltási állapota függőben van. A vendég felhasználói fiók még nincs teljesen létrehozva. |
@@ -140,7 +140,7 @@ Ha például a "AADSTS50058" hibakódot kapta, keressen rá a [https://login.mic
 | AADSTS50089 | A folyamat jogkivonata lejárt – a hitelesítés nem sikerült. Próbálkozzon újra a felhasználóval a Felhasználónév-jelszó megadásával. |
 | AADSTS50097 | DeviceAuthenticationRequired-eszköz hitelesítésre van szükség. |
 | AADSTS50099 | PKeyAuthInvalidJwtUnauthorized – a JWT aláírása érvénytelen. |
-| AADSTS50105 | EntitlementGrantsNotFound – a bejelentkezett felhasználó nincs hozzárendelve szerepkörhöz a bejelentkezett alkalmazáshoz. Rendelje hozzá a felhasználót az alkalmazáshoz. További információ:[.. /Manage-apps/Application-Sign-in-problem-Federated-SSO-Gallery.MD # felhasználó – nem hozzárendelt szerepkör](../manage-apps/application-sign-in-problem-federated-sso-gallery.md#user-not-assigned-a-role). |
+| AADSTS50105 | EntitlementGrantsNotFound – a bejelentkezett felhasználó nincs hozzárendelve szerepkörhöz a bejelentkezett alkalmazáshoz. Rendelje hozzá a felhasználót az alkalmazáshoz. További információt a hiba [AADSTS50105](/troubleshoot/azure/active-directory/error-code-aadsts50105-user-not-assigned-role)kapcsolatos hibaelhárítási cikkben talál. |
 | AADSTS50107 | InvalidRealmUri – a kért összevonási tartomány objektum nem létezik. Lépjen kapcsolatba a bérlő rendszergazdájával. |
 | AADSTS50120 | ThresholdJwtInvalidJwtFormat – probléma a JWT fejléctel. Lépjen kapcsolatba a bérlő rendszergazdájával. |
 | AADSTS50124 | ClaimsTransformationInvalidInputParameter – a jogcím-átalakítás érvénytelen bemeneti paramétert tartalmaz. Lépjen kapcsolatba a bérlő rendszergazdájával a szabályzat frissítése érdekében. |
@@ -191,11 +191,11 @@ Ha például a "AADSTS50058" hibakódot kapta, keressen rá a [https://login.mic
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist – a felhasználó vagy a rendszergazda nem egyezett bele az alkalmazás X AZONOSÍTÓval való használatára. küldjön egy interaktív engedélyezési kérést ehhez a felhasználóhoz és erőforráshoz. |
 | AADSTS65004 | UserDeclinedConsent – a felhasználó beleegyezett az alkalmazás elérésére. Kérje meg a felhasználót, hogy jelentkezzen be újra, és hagyja jóvá az alkalmazást|
-| AADSTS65005 | MisconfiguredApplication – az alkalmazáshoz szükséges erőforrás-hozzáférési lista nem tartalmazza az erőforrás által észlelt alkalmazásokat, vagy az ügyfélalkalmazás hozzáférést kért az erőforráshoz, amely nem lett megadva a szükséges erőforrás-hozzáférési listán, vagy a Graph szolgáltatás helytelen kérelmet adott vissza, vagy az erőforrás nem található. Ha az alkalmazás támogatja az SAML-t, előfordulhat, hogy az alkalmazást nem megfelelő azonosítóval (entitással) konfigurálta. Próbálja ki az SAML-ban felsorolt felbontást az alábbi hivatkozás használatával: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](../manage-apps/application-sign-in-problem-federated-sso-gallery.md?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
+| AADSTS65005 | MisconfiguredApplication – az alkalmazáshoz szükséges erőforrás-hozzáférési lista nem tartalmazza az erőforrás által észlelt alkalmazásokat, vagy az ügyfélalkalmazás hozzáférést kért az erőforráshoz, amely nem lett megadva a szükséges erőforrás-hozzáférési listán, vagy a Graph szolgáltatás helytelen kérelmet adott vissza, vagy az erőforrás nem található. Ha az alkalmazás támogatja az SAML-t, előfordulhat, hogy az alkalmazást nem megfelelő azonosítóval (entitással) konfigurálta. További információt a hiba [AADSTS650056](/troubleshoot/azure/active-directory/error-code-aadsts650056-misconfigured-app)kapcsolatos hibaelhárítási cikkben talál. |
 | AADSTS650052 | Az alkalmazásnak hozzá kell férnie egy olyan szolgáltatáshoz, `(\"{name}\")` amelyet a szervezet `\"{organization}\"` nem fizetett elő vagy engedélyezett. Kérje meg a rendszergazdát, hogy tekintse át a szolgáltatás-előfizetések konfigurációját. |
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant – a hitelesítés sikertelen volt. A frissítési jogkivonat érvénytelen. A hiba oka a következő lehet:<ul><li>A jogkivonat-kötési fejléc üres</li><li>A jogkivonat kötési kivonata nem egyezik</li></ul> |
-| AADSTS70001 | UnauthorizedClient – az alkalmazás le van tiltva. |
+| AADSTS70001 | UnauthorizedClient – az alkalmazás le van tiltva. További információt a hiba [AADSTS70001](/troubleshoot/azure/active-directory/error-code-aadsts70001-app-not-found-in-directory)kapcsolatos hibaelhárítási cikkben talál. |
 | AADSTS70002 | InvalidClient – hiba történt a hitelesítő adatok érvényesítése során. A megadott client_secret nem felel meg az ügyfél várt értékének. Javítsa ki a client_secret, és próbálkozzon újra. További információ: [hozzáférési jogkivonat igénylése az engedélyezési kód használatával](v2-oauth2-auth-code-flow.md#request-an-access-token). |
 | AADSTS70003 | UnsupportedGrantType – az alkalmazás nem támogatott engedélyezési típust adott vissza. |
 | AADSTS70004 | InvalidRedirectUri – az alkalmazás érvénytelen átirányítási URI-t adott vissza. Az ügyfél által megadott átirányítási cím nem egyezik meg egyik konfigurált címmel sem, illetve az OIDC jóváhagyási listán szereplő címekkel sem. |
@@ -209,10 +209,11 @@ Ha például a "AADSTS50058" hibakódot kapta, keressen rá a [https://login.mic
 | AADSTS70019 | CodeExpired – az ellenőrző kód lejárt. A felhasználó próbálja meg újra a bejelentkezést. |
 | AADSTS75001 | BindingSerializationError – hiba történt az SAML-üzenetek kötése közben. |
 | AADSTS75003 | UnsupportedBindingError – az alkalmazás a nem támogatott kötéshez kapcsolódó hibát adott vissza (az SAML protokoll válasza nem küldhető el a HTTP-POSTon kívüli kötéseken keresztül). |
-| AADSTS75005 | Saml2MessageInvalid – az Azure AD nem támogatja az alkalmazás által az SSO-hoz továbbított SAML-kérelmet. |
+| AADSTS75005 | Saml2MessageInvalid – az Azure AD nem támogatja az alkalmazás által az SSO-hoz továbbított SAML-kérelmet. További információt a hiba [AADSTS75005](/troubleshoot/azure/active-directory/error-code-aadsts75005-not-a-valid-saml-request)kapcsolatos hibaelhárítási cikkben talál. |
 | AADSTS7500514 | Nem található egy támogatott típusú SAML-válasz. A támogatott válaszok a következők: "Response" (XML-névtér "urn: Oasis: Names: TC: SAML: 2.0: protokoll") vagy "Érvényesítés" (XML-névtérben: "urn: Oasis: nevek: TC: SAML: 2.0: Érvényesítés"). Alkalmazáshiba – a fejlesztő ezt a hibát fogja kezelni.|
+| AADSTS750054 | A SAMLRequest vagy a SAMLResponse szolgáltatásnak lekérdezési karakterlánc paraméterként kell szerepelnie a HTTP-kérelemben az SAML-átirányítási kötéshez. További információt a hiba [AADSTS750054](/troubleshoot/azure/active-directory/error-code-aadsts750054-saml-request-not-present)kapcsolatos hibaelhárítási cikkben talál. |
 | AADSTS75008 | RequestDeniedError – az alkalmazástól érkező kérést a rendszer megtagadta, mert az SAML-kérelem nem várt céllal volt. |
-| AADSTS75011 | NoMatchedAuthnContextInOutputClaims – az a hitelesítési módszer, amellyel a felhasználó által hitelesített hitelesítés nem felel meg a kért hitelesítési módszernek. |
+| AADSTS75011 | NoMatchedAuthnContextInOutputClaims – az a hitelesítési módszer, amellyel a felhasználó által hitelesített hitelesítés nem felel meg a kért hitelesítési módszernek. További információt a hiba [AADSTS75011](/troubleshoot/azure/active-directory/error-code-aadsts75011-auth-method-mismatch)kapcsolatos hibaelhárítási cikkben talál. |
 | AADSTS75016 | A Saml2AuthenticationRequestInvalidNameIDPolicy-egy SAML2 hitelesítési kérelem érvénytelen NameIdPolicy rendelkezik. |
 | AADSTS80001 | OnPremiseStoreIsNotAvailable – a hitelesítési ügynök nem tud kapcsolódni a Active Directoryhoz. Győződjön meg arról, hogy az ügynök-kiszolgálók ugyanahhoz az AD-erdőhöz tartoznak, mint azok a felhasználók, akiknek a jelszavát érvényesíteni kell, és képesek csatlakozni a Active Directoryhoz. |
 | AADSTS80002 | OnPremisePasswordValidatorRequestTimedout – a jelszó-érvényesítési kérelem időkorlátja lejárt. Győződjön meg arról, hogy a Active Directory elérhető, és válaszol az ügynökök kéréseire. |

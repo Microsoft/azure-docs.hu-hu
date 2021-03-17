@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 89f234ece2f7437e4a9d4092334e3dd3690e288d
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: a7949324cd4ad0459aa5ba111037b2f580da9cf8
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258099"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601712"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Egyszeri bejelentkezés üzembe helyezésének tervezése
 
@@ -235,11 +235,11 @@ Mindig a legkevesebb engedélyekkel rendelkező szerepkört használja a szüks�
 
 | Persona| Szerepkörök | Azure AD-szerepkör (ha szükséges) |
 |--------|-------|-----------------------------|
-| Ügyfélszolgálati rendszergazda | 1. szintű támogatás | Nincs |
+| Ügyfélszolgálati rendszergazda | 1. szintű támogatás | Nincsenek |
 | Identity admin | Konfigurálás és hibakeresés az Azure AD-t érintő problémák esetén | Globális rendszergazda |
-| Alkalmazás-rendszergazda | Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja | Nincs |
+| Alkalmazás-rendszergazda | Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja | Nincsenek |
 | Infrastruktúra-rendszergazdák | Tanúsítvány-átváltási tulajdonos | Globális rendszergazda |
-| Üzleti tulajdonos/érintett fél | Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja | Nincs |
+| Üzleti tulajdonos/érintett fél | Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja | Nincsenek |
 
 Javasoljuk, hogy az [Privileged Identity Management](../privileged-identity-management/pim-configure.md) (PIM) használatával kezelje a szerepköröket, hogy további naplózási, vezérlési és hozzáférési felülvizsgálatot nyújtson a felhasználók számára a címtár-jogosultságokkal.
 
@@ -291,17 +291,12 @@ A következő hivatkozások hibaelhárítási forgatókönyveket mutatnak be. El
 
 - [Probléma a Microsoft-alkalmazásba való bejelentkezéskor](./application-sign-in-problem-first-party-microsoft.md)
 
-#### <a name="sso-issues-for-applications-listed-in-the-azure-application-gallery"></a>Az Azure Application Galleryben felsorolt alkalmazások SSO-problémái
+#### <a name="sso-issues-for-applications"></a>Egyszeri bejelentkezéssel kapcsolatos problémák az alkalmazásokhoz
 
-- [Probléma az Azure-beli alkalmazás-katalógusban felsorolt alkalmazások jelszavas bejelentkezési jelszavával](./troubleshoot-password-based-sso.md) 
+- [Probléma a jelszó egyszeri bejelentkezésével az alkalmazásokhoz](./troubleshoot-password-based-sso.md) 
 
-- [Probléma az Azure Application Galleryben felsorolt alkalmazások összevont egyszeri bejelentkezésével](./application-sign-in-problem-federated-sso-gallery.md)   
+- [Problémák az SAML-alapú egyszeri bejelentkezésre konfigurált alkalmazásokba való bejelentkezés során](/troubleshoot/azure/active-directory/troubleshoot-sign-in-saml-based-apps)   
 
-#### <a name="sso-issues-for-applications-not-listed-in-the-azure-application-gallery"></a>Az Azure Application Galleryben nem szereplő alkalmazások SSO-problémái
-
-- [Probléma a jelszó egyszeri bejelentkezésével az Azure Application Galleryben nem szereplő alkalmazásokhoz](./troubleshoot-password-based-sso.md) 
-
-- [Probléma az összevont egyszeri bejelentkezéssel az Azure Application Galleryben nem szereplő alkalmazásokhoz](./application-sign-in-problem-federated-sso-gallery.md)
 
 ## <a name="next-steps"></a>Következő lépések
 

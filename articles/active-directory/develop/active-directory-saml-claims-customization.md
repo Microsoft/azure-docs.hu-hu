@@ -13,12 +13,12 @@ ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 05447f41ca891adfe14533a74dfedf153e3c5773
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 0cccf45037320b476b1a44cafa8074bacadacbc8
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102699"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103600949"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: az SAML-jogkivonatban kiadott jogcímek testreszabása nagyvállalati alkalmazásokhoz
 
@@ -71,7 +71,7 @@ Válassza ki a kívánt forrást a `NameIdentifier` (vagy NameID) jogcím szám�
 |------|-------------|
 | E-mail | A felhasználó e-mail címe |
 | userprincipalName | A felhasználó egyszerű felhasználóneve (UPN) |
-| onpremisessamaccount | A helyszíni Azure AD-ből szinkronizált SAM-fiók neve |
+| onpremisessamaccountname | A helyszíni Azure AD-ből szinkronizált SAM-fiók neve |
 | ObjectId | A felhasználó ObjectId az Azure AD-ben |
 | Alkalmazottkód | A felhasználó alkalmazott azonosítója |
 | Címtárbővítmények | A helyszíni [Active Directory szinkronizált címtárszolgáltatás-bővítmények Azure ad Connect Sync használatával](../hybrid/how-to-connect-sync-feature-directory-extensions.md) |

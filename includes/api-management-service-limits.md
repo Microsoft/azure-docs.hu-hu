@@ -6,15 +6,15 @@ author: vladvino
 ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
 ms.service: api-management
 ms.topic: include
-ms.date: 01/11/2021
+ms.date: 02/19/2021
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 78890c0596642b629482a6d24d17d83fb8ebc9a0
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: ebaca1f39b16e4a06b5dcaa4e5f1de07122c6c89
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98147484"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103621958"
 ---
 | Erőforrás | Korlát |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -34,6 +34,8 @@ ms.locfileid: "98147484"
 | Maximálisan pufferelt hasznos adatok mérete<sup>8</sup> | 2 MiB |
 | Kérelem URL-címének maximális mérete (<sup>9</sup> ) | 4096 bájt |
 | URL-cím elérési útjának maximális hossza<sup>10</sup> | 260 karakter |
+| Az [érvényesítési házirend](../articles/api-management/validation-policies.md)által használt API-séma maximális mérete<sup>10</sup> | 4 MB |
+| Kérelem vagy válasz törzsének maximális mérete a [validate-Content Policy-](../articles/api-management/validation-policies.md#validate-content) ben | 100 KB |
 | Saját üzemeltetésű átjárók maximális száma<sup>11</sup> | 25 |
 
 <sup>1</sup> A skálázási korlátok az árképzési szinttől függenek. A díjszabási szintek és a skálázási korlátok részletes ismertetését lásd: [API Management díjszabás](https://azure.microsoft.com/pricing/details/api-management/).<br/>
@@ -45,5 +47,5 @@ ms.locfileid: "98147484"
 <sup>7</sup> A CA-tanúsítványok nem támogatottak a felhasználási szinten.<br/>
 <sup>8</sup> Ez a korlát csak a felhasználási szinten érvényes. A kategóriákban nincsenek korlátok.<br/>
 <sup>9</sup> Csak a felhasználási szintjére vonatkozik. Akár 2048 bájt hosszú lekérdezési karakterláncot tartalmaz.<br/>
-<sup>10</sup> ha ezt a korlátot emelni szeretné, forduljon az [ügyfélszolgálathoz](https://azure.microsoft.com/support/options/).<br/>
+<sup>10</sup> a korlát növeléséhez forduljon az [ügyfélszolgálathoz](https://azure.microsoft.com/support/options/).<br/>
 <sup>11</sup> A saját üzemeltetésű átjárók csak a fejlesztői és a prémium szinteken támogatottak. A korlát a saját üzemeltetésű [átjáró erőforrásainak](/rest/api/apimanagement/2019-12-01/gateway)számára vonatkozik. A korlát növeléséhez forduljon az [ügyfélszolgálathoz](https://azure.microsoft.com/support/options/). Vegye figyelembe, hogy a saját üzemeltetésű átjáró erőforráshoz társított csomópontok (vagy replikák) száma korlátlan a prémium szinten, és a fejlesztői szint egyetlen csomópontján van korlátozva.

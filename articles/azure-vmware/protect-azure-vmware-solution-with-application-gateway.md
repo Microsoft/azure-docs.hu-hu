@@ -3,12 +3,12 @@ title: Az Azure Application Gateway használatával biztosíthatja webalkalmazá
 description: Az Azure Application Gateway konfigurálása az Azure VMware-megoldáson futó webalkalmazások biztonságos megjelenítéséhez.
 ms.topic: how-to
 ms.date: 02/10/2021
-ms.openlocfilehash: 1ad615efe0de86a49714914507227b7cc1dca4cb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f92027ee46fdaae275939acaea10e144b6bde101
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733584"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601916"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Az Azure Application Gateway használatával biztosíthatja webalkalmazásait az Azure VMware-megoldásban
 
@@ -193,4 +193,4 @@ Most, hogy a Application Gateway használatával gondoskodik az Azure VMware-meg
 - [Az Azure Application Gateway konfigurálása különböző forgatókönyvekhez](../application-gateway/configuration-overview.md).
 - [Traffic Manager üzembe helyezése az Azure VMware-megoldás](deploy-traffic-manager-balance-workloads.md)számítási feladatainak terheléselosztásához.
 - [Azure NetApp Files integrálása az Azure VMware megoldás-alapú munkaterhelésekkel](netapp-files-with-azure-vmware-solution.md).
-- [Azure-erőforrások védelme virtuális hálózatokban](../ddos-protection/ddos-protection-overview.md)
+- [Azure-erőforrások védelme virtuális hálózatokban](../ddos-protection/ddos-protection-overview.md).
