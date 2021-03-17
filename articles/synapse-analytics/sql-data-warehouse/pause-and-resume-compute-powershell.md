@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: a számítások szüneteltetése és folytatása a szinapszis SQL-készletben Azure PowerShell'
-description: Azure PowerShell használatával szüneteltetheti és folytathatja a szinapszis SQL-készletet (adattárház). számítási erőforrások.
+title: 'Rövid útmutató: a számítási feladat szüneteltetése és folytatása a dedikált SQL-készletben (korábban SQL DW) Azure PowerShell'
+description: A Azure PowerShell használatával szüneteltetheti és folytathatja a dedikált SQL-készletet (korábban SQL DW). számítási erőforrások.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,23 +11,23 @@ ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse, devx-track-azurepowershell
-ms.openlocfilehash: 6022974b80a7f691edc9b9a11b972035b203187c
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 0851bbf990e78e32a1b4330719ad82bd6a7d3703
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121039"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103600913"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-with-azure-powershell"></a>Rövid útmutató: a számítások szüneteltetése és folytatása a szinapszis SQL-készletben Azure PowerShell
+# <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>Rövid útmutató: a számítási feladat szüneteltetése és folytatása a dedikált SQL-készletben (korábban SQL DW) Azure PowerShell
 
-A Azure PowerShell használatával szüneteltetheti és folytathatja a szinapszis SQL-készlet (adatraktár) számítási erőforrásait.
+A Azure PowerShell használatával szüneteltetheti és folytathatja a dedikált SQL-készlet (korábban SQL DW) számítási erőforrásait.
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Ez a rövid útmutató azt feltételezi, hogy már rendelkezik egy olyan SQL-készlettel, amelyet szüneteltetni és folytatni tud. Ha létre kell hoznia egyet, a [create and összekapcsolás-Portal](create-data-warehouse-portal.md) használatával létrehozhat egy **mySampleDataWarehouse** nevű SQL-készletet.
+Ez a rövid útmutató azt feltételezi, hogy már rendelkezik egy dedikált SQL-készlettel (korábban SQL DW), amelyet szüneteltetheti és folytathatja. Ha létre kell hoznia egyet, a [create és a összekapcsolás-Portal](create-data-warehouse-portal.md) használatával létrehozhat egy **MYSAMPLEDATAWAREHOUSE** nevű dedikált SQL-készletet (korábban SQL DW).
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
@@ -49,11 +49,11 @@ Ha az alapértelmezettnél eltérő előfizetést kell használnia, futtassa a [
 Set-AzContext -SubscriptionName "MySubscription"
 ```
 
-## <a name="look-up-sql-pool-information"></a>SQL-készlet adatainak megkeresése
+## <a name="look-up-dedicated-sql-pool-formerly-sql-dw-information"></a>Dedikált SQL-készlet (korábban SQL DW) adatainak megkeresése
 
-Keresse meg a szüneteltetni és folytatni kívánt SQL-készlet adatbázisának nevét, a kiszolgáló nevét és az erőforráscsoportot.
+Keresse meg a szüneteltetni és folytatni kívánt dedikált SQL-készlet (korábban SQL DW) adatbázisának nevét, a kiszolgáló nevét és az erőforráscsoportot.
 
-Az alábbi lépéseket követve megkeresheti az SQL-készlet helyének adatait:
+A következő lépésekkel megkeresheti a dedikált SQL-készlet (korábban SQL DW) tartózkodási helyének adatait:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. Az Azure Portal bal oldalán kattintson az **Azure szinapszis Analytics (korábban SQL DW)** elemre.
@@ -61,7 +61,7 @@ Az alábbi lépéseket követve megkeresheti az SQL-készlet helyének adatait:
 
     ![Kiszolgálónév és erőforráscsoport](./media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
-1. Jegyezze fel az SQL-készlet nevét, amely az adatbázis neve. Írja fel a kiszolgáló nevét és az erőforráscsoportot is.
+1. Jegyezze fel a dedikált SQL-készlet (korábban SQL DW) nevét, amely az adatbázis neve. Írja fel a kiszolgáló nevét és az erőforráscsoportot is.
 1. A PowerShell-parancsmagokban csak a kiszolgáló nevének első részét használja. Az előző képen a teljes kiszolgáló neve sqlpoolservername.database.windows.net. A PowerShell-parancsmagban a **sqlpoolservername** -t használjuk a kiszolgáló neveként.
 
 ## <a name="pause-compute"></a>Számítás szüneteltetése
@@ -75,7 +75,7 @@ Egy adatbázis szüneteltetéséhez használja a [felfüggesztés-AzSqlDatabase]
 
 ```Powershell
 Suspend-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
-–ServerName "nsqlpoolservername" –DatabaseName "mySampleDataWarehouse"
+–ServerName "sqlpoolservername" –DatabaseName "mySampleDataWarehouse"
 ```
 
 A következő példa lekéri az adatbázist a $database objektumba. Ezután átadja az objektumot a [felfüggesztéshez – AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Az eredményeket az objektum resultDatabase tárolja. Az utolsó parancs az eredményeket jeleníti meg.
@@ -107,7 +107,7 @@ $resultDatabase
 
 ## <a name="check-status-of-your-sql-pool-operation"></a>Az SQL-készlet művelet állapotának ellenõrzése
 
-Az SQL-készlet állapotának megtekintéséhez használja a [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/Get-AzSqlDatabaseActivity?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) parancsmagot.
+A dedikált SQL-készlet (korábban SQL DW) állapotának megtekintéséhez használja a [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/Get-AzSqlDatabaseActivity?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) parancsmagot.
 
 ```Powershell
 Get-AzSqlDatabaseActivity -ResourceGroupName "myResourceGroup" -ServerName "sqlpoolservername" -DatabaseName "mySampleDataWarehouse"
@@ -115,7 +115,7 @@ Get-AzSqlDatabaseActivity -ResourceGroupName "myResourceGroup" -ServerName "sqlp
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az adatraktár-egységek és az SQL-készletben tárolt adatmennyiség után kell fizetnie. Ezek a számítási és tárolási erőforrások elkülönítve lesznek kiszámlázva.
+Az adatraktár-egységek és a dedikált SQL-készlet (korábbi nevén SQL DW) tárolt adataiért kell fizetnie. Ezek a számítási és tárolási erőforrások elkülönítve lesznek kiszámlázva.
 
 - Ha meg szeretné őrizni az adatok tárolását, szüneteltetheti a számítást.
 - Ha el szeretné távolítani a jövőbeli díjakat, törölheti az SQL-készletet.
@@ -136,4 +136,4 @@ Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolí
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha többet szeretne megtudni az SQL-készletről, folytassa az [adatgyűjtés az SQL-készletbe](./load-data-from-azure-blob-storage-using-copy.md) című cikket. A számítási képességek kezelésével kapcsolatos további információkért tekintse meg a [számítás áttekintését](sql-data-warehouse-manage-compute-overview.md) ismertető cikket.
+Ha többet szeretne megtudni az SQL-készletről, folytassa a [betöltési adat a DEDIKÁLT SQL-készletbe (korábban SQL DW)](./load-data-from-azure-blob-storage-using-copy.md) című cikkbe. A számítási képességek kezelésével kapcsolatos további információkért tekintse meg a [számítás áttekintését](sql-data-warehouse-manage-compute-overview.md) ismertető cikket.
