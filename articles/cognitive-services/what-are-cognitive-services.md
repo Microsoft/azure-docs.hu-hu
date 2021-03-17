@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 10/22/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 1a7e1cc2303438a904b95a378a14bd02ac88c179
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 85bcdb319431f1079cdbc8b94f0313f1dd6b67d6
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736633"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103602001"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Mi az Azure Cognitive Services?
 
@@ -43,7 +43,6 @@ A cikk következő fejezetei az öt pillér részét képező szolgáltatások l
 |[Egyéni vizuális szolgáltatás](./custom-vision-service/overview.md "Egyéni vizuális szolgáltatás")|A Custom Vision Service segítségével egyéni rendszerkép-osztályozók hozhatók létre.|
 |[Face](./face/index.yml "Arcfelismerés")| A Face szolgáltatás hozzáférést biztosít a speciális arc-algoritmusokhoz, lehetővé téve a Face attribútumok észlelését és felismerését.|
 |[Form Recognizer](./form-recognizer/index.yml "Form Recognizer")|Az űrlap-felismerő azonosítja és kigyűjti a kulcs-érték párokat és a táblák adatait az űrlap dokumentumaiból. Ezután a a strukturált adatokat is megjeleníti, beleértve az eredeti fájlban lévő kapcsolatokat is.|
-|[Kézírás-felismerő](/previous-versions/azure/cognitive-services/Ink-Recognizer/ "Ink Recognizer") (kivonás)|A kézírás-felismerő lehetővé teszi a digitális tollvonási adat, az alakzatok és a kézírásos tartalom felismerését és elemzését, valamint a dokumentum-struktúra kimenetét az összes felismert entitással.|
 |[Video Indexer](../media-services/video-indexer/video-indexer-overview.md "Video Indexer")|A Video Indexer lehetővé teszi a videóból származó adatok kinyerését.|
 
 ## <a name="speech-apis"></a>Beszédfelismerési API-k

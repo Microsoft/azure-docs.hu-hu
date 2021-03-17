@@ -6,12 +6,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 30be0343b7c3282e3ce4da165225ab8209d07f4a
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 98f53ec1b6506a6d47146377e837576254f445e2
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102452407"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601066"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-solution"></a>Az Azure és az ITSM-eszközök összekötése az informatikai szolgáltatás-kezelési megoldás használatával
 
@@ -90,7 +90,7 @@ A műveleti csoportok moduláris és újrafelhasználható módot biztosítanak 
 
 ## <a name="define-a-template"></a>Sablon definiálása
 
-Bizonyos munkaelem-típusok használhatják a ITSM eszközben definiált sablonokat. A sablonok segítségével megadhatja azokat a mezőket, amelyeket a rendszer automatikusan kitölt a műveleti csoport rögzített értékei szerint. Megadhatja, hogy melyik sablont szeretné használni a műveleti csoport definíciójának részeként.
+Bizonyos munkaelem-típusok használhatják a ITSM eszközben definiált sablonokat. A sablonok segítségével megadhatja azokat a mezőket, amelyeket a rendszer automatikusan kitölt a műveleti csoport rögzített értékei szerint. Megadhatja, hogy melyik sablont szeretné használni a műveleti csoport definíciójának részeként. A sablonok létrehozásáról a ServiceNow docs (itt) [] című témakörben talál további információt https://docs.servicenow.com/bundle/paris-platform-administration/page/administer/form-administration/task/t_CreateATemplateUsingTheTmplForm.html .
 
 Műveleti csoport létrehozása:
 

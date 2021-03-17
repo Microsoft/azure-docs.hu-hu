@@ -1,0 +1,58 @@
+---
+title: VSphere hitelesítő adatok alaphelyzetbe állítása Azure VMware-megoldáshoz
+description: Ismerje meg, hogyan állíthatja alaphelyzetbe az Azure VMware-megoldás vSphere hitelesítő adatait, és gondoskodjon arról, hogy a HCX-összekötő a legújabb vSphere hitelesítő adatokkal rendelkezik.
+ms.topic: how-to
+ms.date: 03/16/2021
+ms.openlocfilehash: e5a15caa98a46b0ae75b68ee7b568dabdbf1956c
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103603200"
+---
+# <a name="reset-vsphere-credentials-for-azure-vmware-solution"></a>VSphere hitelesítő adatok alaphelyzetbe állítása Azure VMware-megoldáshoz
+
+Ebből a cikkből megtudhatja, hogyan állíthatja alaphelyzetbe a vSphere hitelesítő adatait az Azure VMware-megoldás privát felhője számára. Ezzel biztosíthatja, hogy a HCX-összekötő a legújabb vSphere hitelesítő adatokkal rendelkezik.
+
+## <a name="reset-your-vsphere-credentials"></a>VSphere hitelesítő adatainak alaphelyzetbe állítása
+
+ Először állítsa alaphelyzetbe a vSphere hitelesítő adatait. A vCenter CloudAdmin és a NSX-T rendszergazdai hitelesítő adatai nem járnak le; az alábbi lépéseket követve azonban új jelszavakat is létrehozhat ezekhez a fiókokhoz.
+
+> [!NOTE]
+> Ha a CloudAdmin hitelesítő adatait használja a csatlakoztatott szolgáltatásokhoz, például a HCX, a vCenter Orchestrator, a vCloud Director vagy a vRealize, a kapcsolatok a jelszó frissítése után nem fognak működni.  Ezeket a szolgáltatásokat le kell állítani a jelszó elforgatásának megkezdése előtt.  Ennek elmulasztása miatt ideiglenes zárolást eredményezhet a vCenter-CloudAdmin és a NSX-T rendszergazdai fiókokkal, mivel ezek a szolgáltatások folyamatosan a régi hitelesítő adataik használatával fognak megszólítani.  A csatlakoztatott szolgáltatások különálló fiókjainak beállításával kapcsolatos további információkért lásd: [hozzáférés és identitás fogalmai](https://docs.microsoft.com/azure/azure-vmware/concepts-identity).
+
+1. Nyisson meg egy parancssort az Azure VMware Solutions-portálon.
+
+2. Futtassa a következő parancsot a vCenter-CloudAdmin jelszavának frissítéséhez.  Le kell cserélnie a ({SubscriptionID}, {ResourceGroup} és {PrivateCloudName}) értéket azon privát felhő tényleges értékeivel, amelyhez a CloudAdmin-fiók tartozik.
+
+```
+az resource invoke-action --action rotateVcenterPassword --ids "/subscriptions/{SubscriptionID}/resourceGroups/{ResourceGroup}/providers/Microsoft.AVS/privateClouds/{PrivateCloudName}" --api-version "2020-07-17-preview"
+```
+          
+3. Futtassa a következő parancsot a NSX-T rendszergazdai jelszavának frissítéséhez. Le kell cserélnie a ({SubscriptionID}, {ResourceGroup} és {PrivateCloudName}) értéket a saját felhő tényleges értékeivel, amelyek a NSX-T rendszergazdai fiókhoz tartoznak.
+
+```
+az resource invoke-action --action rotateNSXTPassword --ids "/subscriptions/{SubscriptionID}/resourceGroups/{ResourceGroup}/providers/Microsoft.AVS/privateClouds/{PrivateCloudName}" --api-version "2020-07-17-preview"
+```
+
+## <a name="ensure-the-hcx-connector-has-your-latest-vsphere-credentials"></a>Győződjön meg arról, hogy a HCX-összekötő rendelkezik a legújabb vSphere-hitelesítő adatokkal
+
+Most, hogy alaphelyzetbe állítja a hitelesítő adatait, kövesse az alábbi lépéseket annak biztosításához, hogy a HCX-összekötő rendelkezik a frissített hitelesítő adataival.
+
+1. A jelszó módosítása után nyissa meg a helyszíni HCX-összekötő webes felületét az HCX-összekötő berendezés https://{IP-címének használatával}: 443. Ügyeljen arra, hogy a 443-es portot használja. Jelentkezzen be az új hitelesítő adataival.
+
+2. A VMware HCX irányítópulton válassza a **hely párosítása** lehetőséget.
+    
+    :::image type="content" source="media/reset-vsphere-credentials/hcx-site-pairing.png" alt-text="Képernyőkép a VMware HCX-irányítópultról a hely párosításával kiemelve.":::
+ 
+3. Válassza ki a megfelelő kapcsolódást az AVS-hez (ha van több), és válassza a **Kapcsolódás szerkesztése** lehetőséget.
+ 
+4. Adja meg az új vSphere hitelesítő adatait, és válassza a **Szerkesztés** lehetőséget, amely menti a hitelesítő adatokat. A mentésnek sikeresnek kell lennie.
+
+## <a name="next-steps"></a>Következő lépések
+
+Most, hogy lefedette az Azure VMware-megoldás vSphere hitelesítő adatait, érdemes megismernie az alábbiakat:
+
+- [NSX hálózati összetevők konfigurálása az Azure VMware megoldásban](configure-nsx-network-components-azure-portal.md).
+- [Azure VMware-megoldás virtuális gépek életciklus-kezelése](lifecycle-management-of-azure-vmware-solution-vms.md).
+- [Virtuális gépek vész-helyreállításának üzembe helyezése az Azure VMware megoldással](disaster-recovery-for-virtual-machines.md).

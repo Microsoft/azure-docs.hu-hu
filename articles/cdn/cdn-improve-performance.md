@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: 7c84d8129e1d0d88601495dec41883077784bb71
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 11a2dbfc9c6da60e4dd96f65d2a20165a3663e8c
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728195"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601542"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Teljesítmény javítása fájltömörítéssel az Azure CDN-ben
 A fájltömörítés egy egyszerű és hatékony módszer a fájlátvitel sebességének javítására, valamint a lapozófájl teljesítményének növelésére azáltal, hogy a fájl méretét a kiszolgálóról való elküldésük előtt csökkenti. A fájltömörítés csökkentheti a sávszélesség-költségeket, és rugalmasabb felhasználói élményt nyújt a felhasználóknak.
@@ -63,10 +63,6 @@ A standard és a prémium szintű CDN-csomagok ugyanazt a tömörítési funkci�
 
    > [!TIP]
    > Bár lehetséges, nem ajánlott tömörítést alkalmazni tömörített formátumokra. Például: ZIP, MP3, MP4 vagy JPG.
-   > 
-
-   > [!NOTE]
-   > A MIME-típusok alapértelmezett listájának módosítása jelenleg nem támogatott a Microsoft Azure CDN standard verziójában.
    > 
 
 5. A módosítások végrehajtása után válassza a **Mentés** lehetőséget.

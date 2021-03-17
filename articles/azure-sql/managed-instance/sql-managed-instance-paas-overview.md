@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 83f38797e406ff7e62503f59ef979b9ce4f07f97
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 81d4527817d637e7b764cc83160153d974ced5c0
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917936"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103600961"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Mi az az Azure SQL felügyelt példánya?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -35,6 +35,9 @@ Az alábbi ábra az SQL felügyelt példányának főbb funkcióit vázolja fel:
 
 Az Azure SQL felügyelt példánya olyan ügyfelek számára készült, akik nagy mennyiségű alkalmazást kívánnak áttelepíteni egy helyszíni vagy IaaS, önálló vagy független szoftvergyártó által biztosított környezetből egy teljes körűen felügyelt, kihelyezett Felhőbeli környezetbe, a lehető legkevesebb migrációs erőfeszítéssel. A teljes mértékben automatizált [Azure-adatáttelepítési szolgáltatással](../../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance)az ügyfelek megemelik és áthelyezhetik meglévő SQL Server-példányát az SQL felügyelt példányára, amely a SQL Serverekkel való kompatibilitást és a natív VNet-támogatással rendelkező vásárlói példányok elkülönítését biztosítja Az áttelepítési lehetőségekkel és eszközökkel kapcsolatos további információkért lásd [: áttelepítési Áttekintés: SQL Server az Azure SQL felügyelt példányára](../migration-guides/managed-instance/sql-server-to-managed-instance-overview.md).</br> A frissítési garanciával lehetősége van arra, hogy az SQL felügyelt példányain a meglévő licenceket a [SQL Server Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)használatával, kedvezményes díjszabással cserélje le. A felügyelt SQL-példány a legjobb áttelepítési cél a felhőben olyan SQL Server-példányok esetén, amelyek magas biztonságot és sokoldalú programozható felületet igényelnek.
 
+> [!TIP]
+> Hogyan lehet jobbá tenni az Azure SQL-t? [Vegye fel a kérdőívet](https://aka.ms/AzureSQLSurvey).
+
 ## <a name="key-features-and-capabilities"></a>Főbb funkciók és képességek
 
 Az SQL felügyelt példánya a Azure SQL Database és az SQL Server adatbázismotor egyik legjobb funkcióját ötvözi.
@@ -46,7 +49,7 @@ Az SQL felügyelt példánya a Azure SQL Database és az SQL Server adatbázismo
 | --- | --- |
 |Nincs hardveres vásárlás és felügyelet <br>Nincs felügyeleti terhelés a mögöttes infrastruktúra kezeléséhez <br>Gyors kiépítés és a szolgáltatás skálázása <br>Automatikus javítás és verziófrissítés <br>Integráció más Pásti adatszolgáltatásokkal |99,99%-os rendelkezésre állási SLA  <br>Beépített [magas rendelkezésre állás](../database/high-availability-sla.md) <br>[Automatizált biztonsági mentéssel](../database/automated-backups-overview.md) védett adatvédelem <br>Ügyfél által konfigurálható biztonsági másolatok megőrzési ideje <br>Felhasználó által kezdeményezett [biztonsági másolatok](/sql/t-sql/statements/backup-transact-sql?preserve-view=true&view=azuresqldb-mi-current) <br>[Időponthoz tartozó adatbázis-visszaállítási](../database/recovery-using-backups.md#point-in-time-restore) képesség |
 |**Biztonság és megfelelőség** | **Felügyelet**|
-|Elszigetelt környezet ([VNet-integráció](connectivity-architecture-overview.md), egybérlős szolgáltatás, dedikált számítás és tárolás) <br>[Transzparens adattitkosítás (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure Active Directory (Azure ad) hitelesítés](../database/authentication-aad-overview.md), egyszeri bejelentkezés támogatása <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezések)</a>  <br>Megfelel a megfelelőségi szabványoknak, mint a Azure SQL Database <br>[SQL-naplózás](auditing-configure.md) <br>[Advanced Threat Protection](threat-detection-configure.md) |Azure Resource Manager API a szolgáltatások kiosztásának és méretezésének automatizálásához <br>A szolgáltatás kézi üzembe helyezéséhez és méretezéséhez Azure Portal funkció <br>Data Migration Service
+|Elszigetelt környezet ([VNet-integráció](connectivity-architecture-overview.md), egybérlős szolgáltatás, dedikált számítás és tárolás) <br>[Transzparens adattitkosítás (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure Active Directory (Azure ad) hitelesítés](../database/authentication-aad-overview.md), egyszeri bejelentkezés támogatása <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true">Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezések)</a>  <br>Megfelel a megfelelőségi szabványoknak, mint a Azure SQL Database <br>[SQL-naplózás](auditing-configure.md) <br>[Advanced Threat Protection](threat-detection-configure.md) |Azure Resource Manager API a szolgáltatások kiosztásának és méretezésének automatizálásához <br>A szolgáltatás kézi üzembe helyezéséhez és méretezéséhez Azure Portal funkció <br>Data Migration Service
 
 > [!IMPORTANT]
 > Az Azure SQL felügyelt példánya számos megfelelőségi szabványnak megfelelő minősítéssel rendelkezik. További információkért tekintse meg a [Microsoft Azure megfelelőségi ajánlatait](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuideV3?command=Download&downloadType=Document&downloadId=44bbae63-bf4d-4e3b-9d3d-c96fb25ec363&tab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb&docTab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb_FAQ_and_White_Papers), ahol megtalálhatja az SQL felügyelt példányok megfelelőségi tanúsítások legfrissebb listáját, amely a **SQL Database** alatt található.
@@ -56,15 +59,15 @@ Az SQL felügyelt példány legfontosabb funkciói az alábbi táblázatban lát
 |Szolgáltatás | Leírás|
 |---|---|
 | SQL Server verzió/Build | SQL Server adatbázismotor (legújabb stabil) |
-| Felügyelt automatizált biztonsági másolatok | Igen |
-| Beépített példány-és adatbázis-figyelés és-metrikák | Igen |
-| Szoftver automatikus javítása | Igen |
-| Az adatbázismotor legújabb funkciói | Igen |
+| Felügyelt automatizált biztonsági másolatok | Yes |
+| Beépített példány-és adatbázis-figyelés és-metrikák | Yes |
+| Szoftver automatikus javítása | Yes |
+| Az adatbázismotor legújabb funkciói | Yes |
 | Adatfájlok (sorok) száma az adatbázisban | Többszörös |
 | Naplófájlok (napló) száma adatbázisban | 1 |
-| VNet – Azure Resource Manager üzemelő példány | Igen |
-| VNet – klasszikus üzembe helyezési modell | Nem |
-| Portál támogatása | Igen|
+| VNet – Azure Resource Manager üzemelő példány | Yes |
+| VNet – klasszikus üzembe helyezési modell | No |
+| Portál támogatása | Yes|
 | Beépített integrációs szolgáltatás (SSIS) | Nem – a SSIS a [Azure Data Factory Péter](../../data-factory/tutorial-deploy-ssis-packages-azure.md) részét képezi |
 | Beépített Analysis Service (SSAS) | Nem – a SSAS külön [Péter](../../analysis-services/analysis-services-overview.md) |
 | Beépített jelentéskészítési szolgáltatás (SSRS) | Nem – használjon [Power bi](/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) többoldalas jelentéseket, vagy az SSRS-t egy Azure-beli virtuális gépen üzemelteti. A felügyelt SQL-példányok nem futtathatják az SSRS-t szolgáltatásként, SQL Server hitelesítéssel az Azure-beli virtuális gépen telepített jelentéskészítő kiszolgálókhoz is tárolhatnak [SSRS-katalógus-adatbázisokat](/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements) . |
@@ -158,7 +161,7 @@ A titkosított adatbázisok SQL felügyelt példányra történő áttelepítés
 
 Az SQL felügyelt példánya támogatja a hagyományos SQL Server adatbázismotor-bejelentkezéseket és az Azure AD-vel integrált bejelentkezéseket. Az Azure AD-kiszolgáló rendszerbiztonsági tagjai (bejelentkezések) (**nyilvános előzetes** verzió) a helyszíni adatbázis-bejelentkezések Azure-beli felhőalapú verziója, amelyet a helyszíni környezetben használ. Az Azure AD-kiszolgáló rendszerbiztonsági tagjai (bejelentkezések) lehetővé teszik, hogy az Azure AD-bérlőből származó felhasználókat és csoportokat az igaz példányra kiterjedő rendszerbiztonsági tagként adja meg, amely képes bármely példány szintű művelet végrehajtására, beleértve az azonos felügyelt példányon belüli adatbázis-lekérdezéseket is.
 
-Új szintaxist vezetünk be az Azure AD Server-rendszerbiztonsági tag (bejelentkezések) létrehozásához **a külső szolgáltatótól**. A szintaxissal kapcsolatos további információkért tekintse meg a <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Bejelentkezés létrehozása</a>című témakört, és tekintse át a [Azure Active Directory-rendszergazda létesítése az SQL felügyelt példányhoz](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) című cikket.
+Új szintaxist vezetünk be az Azure AD Server-rendszerbiztonsági tag (bejelentkezések) létrehozásához **a külső szolgáltatótól**. A szintaxissal kapcsolatos további információkért tekintse meg a <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true">Bejelentkezés létrehozása</a>című témakört, és tekintse át a [Azure Active Directory-rendszergazda létesítése az SQL felügyelt példányhoz](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) című cikket.
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory-integráció és többtényezős hitelesítés
 
