@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: d45b2ec8814ec2b7f02da99500aa1e72ec525d65
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 987b850d569c238902f57baaed4a2178f51bd79d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695702"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589616"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>A OPENROWSET használata kiszolgáló nélküli SQL-készlettel az Azure szinapszis Analyticsben
 
@@ -241,7 +241,7 @@ A kódolást adja meg: az UTF8-hoz használt char ((widechar)) a UTF16-fájlok e
 
 KÓDLAP = {"ACP" | "OEM" | "NYERS" | "code_page"}
 
-Megadja az adatfájlban szereplő adatkód oldalát. Az alapértelmezett érték 65001 (UTF-8 kódolás). Erről a lehetőségről [itt](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15#codepage)talál további információt.
+Megadja az adatfájlban szereplő adatkód oldalát. Az alapértelmezett érték 65001 (UTF-8 kódolás). Erről a lehetőségről [itt](/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15#codepage)talál további információt.
 
 ## <a name="fast-delimited-text-parsing"></a>Gyors tagolt szöveg elemzése
 

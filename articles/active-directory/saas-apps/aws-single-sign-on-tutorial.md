@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 906c7e00cba1e0feb85289e8f2a46e74924dc0c3
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e890ff1cb64961c7747b8865b68504ff0a266a3e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664750"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599695"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-single-sign-on"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az AWS egyszeri bejelentkezéssel
 
@@ -39,7 +39,7 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 * Az AWS egyszeri bejelentkezés támogatja az **SP** -t és a identitásszolgáltató kezdeményezett SSO-t
 
-* Az AWS egyszeri bejelentkezés támogatja a [**felhasználók automatikus üzembe**](https://docs.microsoft.com/azure/active-directory/saas-apps/aws-single-sign-on-provisioning-tutorial)helyezését.
+* Az AWS egyszeri bejelentkezés támogatja a [**felhasználók automatikus üzembe**](./aws-single-sign-on-provisioning-tutorial.md)helyezését.
 
 ## <a name="adding-aws-single-sign-on-from-the-gallery"></a>AWS egyszeri bejelentkezés hozzáadása a katalógusból
 
@@ -196,7 +196,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 10. Válassza a **Befejezés** lehetőséget.
 
 > [!NOTE]
-> Az AWS egyszeri bejelentkezés a felhasználók automatikus üzembe helyezését is támogatja. [További részletekért](https://docs.microsoft.com/azure/active-directory/saas-apps/aws-single-sign-on-provisioning-tutorial) tekintse meg az automatikus felhasználó-kiépítés konfigurálását ismertető témakört.
+> Az AWS egyszeri bejelentkezés a felhasználók automatikus üzembe helyezését is támogatja. [További részletekért](./aws-single-sign-on-provisioning-tutorial.md) tekintse meg az automatikus felhasználó-kiépítés konfigurálását ismertető témakört.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
@@ -212,11 +212,9 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 * Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie az AWS egyszeri bejelentkezésre, amelyhez be kell állítania az egyszeri bejelentkezést 
 
-A Microsoft My Apps használatával bármilyen módban tesztelheti az alkalmazást. Ha a saját alkalmazásokban az AWS egyszeri bejelentkezés csempére kattint, ha az SP módban van konfigurálva, a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat elindításához, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie az AWS egyszeri Bejelentkezésbe, amelyhez be kell állítania az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
+A Microsoft My Apps használatával bármilyen módban tesztelheti az alkalmazást. Ha a saját alkalmazásokban az AWS egyszeri bejelentkezés csempére kattint, ha az SP módban van konfigurálva, a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat elindításához, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie az AWS egyszeri Bejelentkezésbe, amelyhez be kell állítania az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az AWS egyszeri bejelentkezés konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+Az AWS egyszeri bejelentkezés konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: robinsh
 ms.openlocfilehash: 96c3a7b2cfda23f173f4caeff4fb7a92b1ddc438
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "61440233"
 ---
 # <a name="how-to-upgrade-your-iot-hub"></a>Az IoT Hub frissítése
@@ -41,11 +41,11 @@ Ezek a példák arra szolgálnak, hogy megtudja, hogyan módosíthatja a IoT hub
 
    ![Díjszabás és méretezés](./media/iot-hub-upgrade/pricing-scale.png)
 
-3. Ha módosítani szeretné a hub szintjét, válassza a **díjszabás és a skála szintje**lehetőséget. Válassza ki az új szintet, majd kattintson a **kiválasztás**elemre.
+3. Ha módosítani szeretné a hub szintjét, válassza a **díjszabás és a skála szintje** lehetőséget. Válassza ki az új szintet, majd kattintson a **kiválasztás** elemre.
 
    ![Tarifacsomag és méret](./media/iot-hub-upgrade/select-tier.png)
 
-4. A hub egységei számának módosításához adjon meg egy új értéket **IoT hub egység**alatt.
+4. A hub egységei számának módosításához adjon meg egy új értéket **IoT hub egység** alatt.
 
 5. A módosítások mentéséhez válassza a **Mentés** gombot.
 
@@ -53,6 +53,6 @@ Az IoT hub már be van állítva, és a konfigurációk változatlanok maradnak.
 
 Az alapszintű csomag IoT Hub és a standard szintű IoT Hub maximális partíciós korlátja 32. A legtöbb IoT-hubhoz csak 4 partíció szükséges. A partíciós korlátot a rendszer a IoT Hub létrehozásakor választja ki, és az eszközről a felhőbe irányuló üzeneteket az üzenetek egyidejű olvasóinak számához kapcsolja. Ez az érték változatlan marad az alapszintről a standard csomagra való Migrálás során.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További részletek [a megfelelő IoT hub-szintek kiválasztásáról](iot-hub-scaling.md).

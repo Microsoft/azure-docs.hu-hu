@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 4951e86b7fd14809811ebc2cb8e50442a8d28248
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: a2e41ef8ba318c77b5f21613e72b14e8a400e96d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102609445"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582508"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Azure Key Vault felügyelt HSM-nek engedélyezve kell lennie a kiürítési védelemmel](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc39ba22d-4428-4149-b981-70acb31fc383) |Egy Azure Key Vault felügyelt HSM rosszindulatú törlése állandó adatvesztéshez vezethet. A szervezet rosszindulatú bennfentes a felügyelt HSM Azure Key Vault törlésére és törlésére is képes. A védelem törlésével megvédheti a bennfentes támadásoktól a Azure Key Vault felügyelt HSM-hez tartozó, nem kötelező megőrzési időtartam kikényszerítésével. A szervezeten belül a Microsoft nem tudja törölni a Azure Key Vault felügyelt HSM-et a helyreállítható törlés megőrzési ideje alatt. |Naplózás, megtagadás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/ManagedHsm_Recoverable_Audit.json) |
 |[A tanúsítványokat a megadott integrált hitelesítésszolgáltatónak kell kiállítania](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8e826246-c976-48f6-b03e-619bb92b3d82) |A szervezeti megfelelőségi követelmények kezelése az Azure-beli integrált hitelesítésszolgáltatók megadásával, amelyek tanúsítványokat bocsáthatnak ki a kulcstartóban (például Digicert vagy GlobalSign). |naplózás, megtagadás, letiltva |[2.0.0 – előzetes verzió](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_Issuers_SupportedCAs.json) |

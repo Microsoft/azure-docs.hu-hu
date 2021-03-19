@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: 539e420cb9085fad10ea3972ba0e9e5ffb9d0622
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: b225ad7e12a95b4dcbb8656f54f8a9e9562b2ee8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103419762"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604695"
 ---
 # <a name="managing-public-network-access-for-your-iot-hub"></a>A IoT hub nyilvános hálózati hozzáférésének kezelése
 
@@ -32,7 +32,7 @@ A nyilvános hálózati hozzáférés bekapcsolásához válassza a **minden há
 
 ## <a name="accessing-the-iot-hub-after-disabling-public-network-access"></a>A IoT Hub elérése a nyilvános hálózati hozzáférés letiltása után
 
-Ha a nyilvános hálózati hozzáférés le van tiltva, a IoT Hub csak [Az Azure Private link használatával érhető el az VNet privát végpontján](virtual-network-support.md)keresztül. Ez a korlátozás magában foglalja a Azure Portalon keresztüli hozzáférését, mert az IoT Hub szolgáltatáshoz tartozó API-hívások közvetlenül a böngészőjében, a hitelesítő adataival lesznek elérhetők. 
+Ha a nyilvános hálózati hozzáférés le van tiltva, a IoT Hub csak [Az Azure Private link használatával érhető el az VNet privát végpontján](virtual-network-support.md)keresztül.
 
 ## <a name="iot-hub-endpoint-ip-address-and-ports-after-disabling-public-network-access"></a>Végpontok, IP-címek és portok IoT Hub a nyilvános hálózati hozzáférés letiltása után
 

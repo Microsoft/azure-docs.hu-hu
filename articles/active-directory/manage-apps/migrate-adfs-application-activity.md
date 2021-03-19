@@ -13,18 +13,18 @@ ms.devlang: na
 ms.date: 01/14/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3665c5b82095004ddf7dc1f503b54f5164d49c7f
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 88a4d0f108d4e3c27ce17aaa83aafca38063c9ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99260062"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589463"
 ---
-# <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>Alkalmazások áttelepíthetők az Azure AD-be a AD FS alkalmazás-tevékenységi jelentés (előzetes verzió) használatával
+# <a name="use-the-ad-fs-application-activity-report-to-migrate-applications-to-azure-ad"></a>Alkalmazások migrálása az Azure AD-be a AD FS alkalmazás-tevékenység jelentés használatával
 
 Számos szervezet Active Directory összevonási szolgáltatások (AD FS) (AD FS) használatával teszi lehetővé az egyszeri bejelentkezést a felhőalapú alkalmazásokhoz. Jelentős előnyökkel jár a AD FS-alkalmazások Azure AD-ba való áthelyezése a hitelesítéshez, különösen a Cost Management, a kockázatkezelés, a termelékenység, a megfelelőség és a szabályozás szempontjából. Az Azure AD-vel kompatibilis alkalmazások és az áttelepítési lépések azonosítása azonban időigényes lehet.
 
-A Azure Portal AD FS alkalmazás-tevékenység jelentés (előzetes verzió) segítségével gyorsan azonosíthatja, hogy mely alkalmazások képesek áttelepíteni az Azure AD-be. Az Azure AD-vel való kompatibilitás érdekében az összes AD FS alkalmazást értékeli, ellenőrzi a problémákat, és útmutatást ad az egyes alkalmazások áttelepítésre való előkészítéséhez. A AD FS alkalmazás-tevékenység jelentéssel a következőket teheti:
+A AD FS alkalmazás-tevékenység jelentés a Azure Portal lehetővé teszi, hogy gyorsan azonosítsa, hogy mely alkalmazások képesek áttelepíteni az Azure AD-be. Az Azure AD-vel való kompatibilitás érdekében az összes AD FS alkalmazást értékeli, ellenőrzi a problémákat, és útmutatást ad az egyes alkalmazások áttelepítésre való előkészítéséhez. A AD FS alkalmazás-tevékenység jelentéssel a következőket teheti:
 
 * **Fedezze fel AD FS alkalmazásait és hatókörét az áttelepítés során.** A AD FS alkalmazás-tevékenység jelentés felsorolja a szervezetben lévő összes olyan AD FS alkalmazást, amelynek az elmúlt 30 napban aktív felhasználói bejelentkezés volt. A jelentés az Azure AD-be való áttelepítésre felkészültséget jelző alkalmazások. A jelentés nem jeleníti meg a Microsoft kapcsolódó függő entitásait AD FS például az Office 365-ben. Például a "urn: Federation: MicrosoftOnline" nevű függő entitások.
 
@@ -52,7 +52,7 @@ A AD FS alkalmazás tevékenységéről szóló jelentés az Azure AD- **haszná
 
 2. Válassza a **Azure Active Directory** lehetőséget, majd válassza a **vállalati alkalmazások** lehetőséget.
 
-3. A **tevékenység** területen válassza a **használat & elemzése (előzetes verzió)** lehetőséget, majd válassza a **AD FS alkalmazás tevékenység** lehetőséget, hogy megnyissa a szervezet összes AD FS alkalmazásának listáját.
+3. A **tevékenység** területen válassza a **használat &** az elemzése lehetőséget, majd válassza a **AD FS alkalmazás tevékenység** elemet a szervezetben lévő összes AD FS alkalmazás listájának megnyitásához.
 
    ![AD FS alkalmazási tevékenység](media/migrate-adfs-application-activity/adfs-application-activity.png)
 
@@ -78,7 +78,7 @@ A AD FS alkalmazás tevékenységéről szóló jelentés az Azure AD- **haszná
 
 A következő táblázat felsorolja a AD FS alkalmazásokon végrehajtott összes konfigurációs tesztet.
 
-|Eredmény  |Továbbítás/figyelmeztetés/sikertelen  |Leírás  |
+|Eredmény  |Továbbítás/figyelmeztetés/sikertelen  |Description  |
 |---------|---------|---------|
 |Test-ADFSRPAdditionalAuthenticationRules <br> A AdditionalAuthentication legalább egy nem áttelepíthető szabályt észlelt a rendszer.       | Továbbítás/figyelmeztetés          | A függő entitásnak szabályokkal kell megkérnie a többtényezős hitelesítést (MFA). Az Azure AD-ba való áttéréshez ezeket a szabályokat feltételes hozzáférési házirendekbe kell lefordítani. Ha helyszíni MFA-t használ, javasoljuk, hogy váltson át az Azure AD MFA-re. [További információ a feltételes hozzáférésről](../authentication/concept-mfa-howitworks.md).        |
 |Test-ADFSRPAdditionalWSFedEndpoint <br> A függő entitás AdditionalWSFedEndpoint értéke TRUE (igaz).       | Sikeres/sikertelen          | A AD FS függő entitása több WS-Fed kiállítási végpontot is lehetővé tesz.Az Azure AD jelenleg csak egyet támogat.Ha van olyan forgatókönyv, ahol ez az eredmény blokkolja az áttelepítést, [tudassa velünk](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints).     |

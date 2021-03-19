@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 65af5810152034fd7b6014041edd07835eebd194
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 76c6d7caf3c63779e12443304688192f7311720a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102101477"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594563"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Hálózatok biztonságos csatlakoztatása az Azure Monitorhoz az Azure Private Linkkel
 
@@ -51,14 +51,16 @@ Egyes Azure Monitor szolgáltatások globális végpontokat használnak, ami azt
 Amikor beállít egy magánhálózati kapcsolati kapcsolatot, a rendszer úgy frissíti a DNS-t, hogy Azure Monitor végpontokat a VNet IP-tartományában lévő magánhálózati IP-címekre képezze. Ez a változás felülbírálja a végpontok korábbi leképezéseit, amelyek a következőkben ismertetett hasznos következményekkel járhatnak. 
 
 ### <a name="azure-monitor-private-link-applies-to-all-azure-monitor-resources---its-all-or-nothing"></a>Azure Monitor privát hivatkozás az összes Azure Monitor erőforrásra vonatkozik – ez az összes vagy semmi
-Mivel egyes Azure Monitor végpontok globálisak, nem lehet létrehozni egy adott összetevőhöz vagy munkaterülethez tartozó magánhálózati kapcsolati kapcsolatot. Ehelyett, amikor egyetlen Application Insights összetevőhöz állít be egy magánhálózati hivatkozást, a DNS-rekordok frissülnek az **összes** Application Insights összetevő esetében. Az összetevők betöltésére vagy lekérdezésére tett kísérletek a privát kapcsolaton keresztül mennek keresztül, és valószínűleg sikertelenek lesznek. Hasonlóképpen, ha egyetlen munkaterületre vonatkozó privát hivatkozást állít be, az összes Log Analytics lekérdezés a privát kapcsolat lekérdezési végpontján halad át (de nem a betöltési kérelmeket, amelyek munkaterület-specifikus végpontokkal rendelkeznek).
+Mivel egyes Azure Monitor végpontok globálisak, nem lehet létrehozni egy adott összetevőhöz vagy munkaterülethez tartozó magánhálózati kapcsolati kapcsolatot. Ehelyett, amikor egy Application Insights összetevőhöz vagy Log Analytics munkaterülethez hoz létre privát hivatkozást, a rendszer frissíti a DNS-rekordokat az **összes** Application Insights-összetevőnél. Az összetevők betöltésére vagy lekérdezésére tett kísérletek a privát kapcsolaton keresztül mennek keresztül, és valószínűleg sikertelenek lesznek. A Log Analytics, a betöltési és a konfigurációs végpontok a munkaterület-specifikusak, ami azt jelenti, hogy a magánhálózati beállítás csak a megadott munkaterületekre lesz érvényes. A más munkaterületek betöltését és konfigurálását az alapértelmezett nyilvános Log Analytics végpontokra irányítja a rendszer.
 
 ![DNS-felülbírálások diagramja egyetlen VNet](./media/private-link-security/dns-overrides-single-vnet.png)
 
 Ez nem csak egy adott VNet érvényes, hanem minden olyan virtuális hálózatok esetében, amely ugyanazt a DNS-kiszolgálót használja (lásd [a DNS-felülbírálások problémát](#the-issue-of-dns-overrides)). Így például a naplók betöltésére irányuló kéréseket a rendszer mindig a privát kapcsolat útvonalán keresztül küldi el a Application Insights-összetevőknek. A AMPLS nem kapcsolódó összetevők sikertelenek lesznek a privát kapcsolat érvényesítése, és nem haladnak át.
 
 > [!NOTE]
-> Megkötés: Ha a beállítás egy önálló erőforráshoz való magánhálózati kapcsolattal rendelkezik, a hálózat összes Azure Monitor erőforrására vonatkozik – ez mind vagy semmi. Ez gyakorlatilag azt jelenti, hogy a hálózatban lévő összes Azure Monitor erőforrást fel kell vennie a AMPLS, vagy egyiket sem.
+> Megkötés: Ha a beállítás egy önálló erőforráshoz való magánhálózati kapcsolaton keresztüli kapcsolatot létesít, az a hálózaton Azure Monitor erőforrásokra vonatkozik. Application Insights erőforrások esetében ez az "All vagy Nothing". Ez gyakorlatilag azt jelenti, hogy a hálózatban lévő összes Application Insights erőforrást fel kell vennie a AMPLS, vagy egyiket sem.
+> 
+> A kiszűrése kockázatok kezeléséhez javasoljuk, hogy vegye fel az összes Application Insights és Log Analytics erőforrást a AMPLS, és a lehető legnagyobb mértékben tiltsa le a hálózat kimenő forgalmát.
 
 ### <a name="azure-monitor-private-link-applies-to-your-entire-network"></a>Azure Monitor privát hivatkozás a teljes hálózatra vonatkozik
 Néhány hálózat több virtuális hálózatok áll. Ha a virtuális hálózatok ugyanazt a DNS-kiszolgálót használja, a rendszer felülírja egymás DNS-leképezéseit, és esetleg megszakítja egymás kommunikációját a Azure Monitorsal (lásd [a DNS-felülbírálások problémáját](#the-issue-of-dns-overrides)). Végső soron csak az utolsó VNet tud kommunikálni a Azure Monitorval, mivel a DNS az ettől a virtuális hálózatok-tartományból Azure Monitor végpontokat képez le a privát IP-címekhez (ami esetleg nem érhető el más virtuális hálózatok).

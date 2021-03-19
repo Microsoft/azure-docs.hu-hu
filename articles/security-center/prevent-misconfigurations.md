@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 02/04/2021
+ms.date: 03/17/2021
 ms.author: memildin
-ms.openlocfilehash: 5d172a73674195e7f64f5ef02322e2bd2d6314df
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: fabbd255f64e5614ae052c9d7c8d65fc35d45856
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102439527"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600496"
 ---
 # <a name="prevent-misconfigurations-with-enforcedeny-recommendations"></a>Helytelen konfigurációk megelőzése Kényszerítés/Megtagadás javaslatokkal
 
@@ -68,6 +68,7 @@ A következő javaslatok használhatók a **kényszerítő** beállítással:
 - Az SQL Server naplózását engedélyezni kell
 - Azure Backup engedélyezni kell a virtuális gépeket
 - Az SQL-alapú Azure Defender-t engedélyeznie kell az SQL-kiszolgálókon
+- A Kubernetes Azure Policy bővítményét telepíteni és engedélyezni kell a fürtökön
 - A Azure Stream Analytics lévő diagnosztikai naplókat engedélyezni kell
 - A Batch-fiókokban lévő diagnosztikai naplókat engedélyezni kell
 - A Data Lake Analytics lévő diagnosztikai naplókat engedélyezni kell

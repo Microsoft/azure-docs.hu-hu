@@ -1,18 +1,18 @@
 ---
 title: Azure Policy az Azure-ra vonatkozó szabályozási megfelelőségi szabályozások Service Fabric
 description: Felsorolja Azure Policy az Azure Service Fabric számára elérhető megfelelőségi szabályozásokat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.topic: sample
 author: erikadoyle
 ms.author: edoyle
 ms.service: service-fabric
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 2ab8aaa11ac86142222663d93fee1502c6c45d36
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 0ba6e0a4e0b840aa325004ddc01f344dd41d7e3c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102635339"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606437"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-service-fabric"></a>Azure Policy az Azure-ra vonatkozó szabályozási megfelelőségi szabályozások Service Fabric
 

@@ -9,12 +9,12 @@ ms.subservice: trusted-launch
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: f5e361d32cf2ab436f92ce2ca86a054a6dd3337e
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: dec9c7581bbcf55196b04e0a76e9e61f81a27244
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102553748"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582068"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>Megbízható indítást engedélyező virtuális gép üzembe helyezése (előzetes verzió)
 
@@ -134,13 +134,13 @@ Az alábbi gombra kattintva helyezheti üzembe a szabályzatokat az előfizetés
 
 A sablont csak egyszer kell központilag telepíteni. A rendszer automatikusan telepíti és bővíti `GuestAttestation` `AzureSecurity` az összes támogatott virtuális gépre. Ha hibákat kap, próbálkozzon újra a sablon ismételt üzembe helyezésével.
 
-A megbízható indítási virtuális gépek vTPM és biztonságos rendszerindítási javaslatainak beszerzéséhez tekintse [meg az egyéni kezdeményezés hozzáadása az előfizetéshez](https://docs.microsoft.com/azure/security-center/custom-security-policies#to-add-a-custom-initiative-to-your-subscription)című témakört.
+A megbízható indítási virtuális gépek vTPM és biztonságos rendszerindítási javaslatainak beszerzéséhez tekintse [meg az egyéni kezdeményezés hozzáadása az előfizetéshez](../security-center/custom-security-policies.md#to-add-a-custom-initiative-to-your-subscription)című témakört.
  
 ## <a name="sign-things-for-secure-boot-on-linux"></a>A biztonságos rendszerindításhoz szükséges dolgok aláírása Linux rendszeren
 
 Bizonyos esetekben előfordulhat, hogy alá kell írnia az UEFI biztonságos rendszerindításhoz szükséges dolgokat.  Előfordulhat például, hogy át kell lépnie [az Ubuntu biztonságos rendszerindításához szükséges dolgokkal](https://ubuntu.com/blog/how-to-sign-things-for-secure-boot) . Ezekben az esetekben meg kell adnia a virtuális géphez tartozó MOK-regisztráció kulcsait. Ehhez az Azure soros konzolt kell használnia az MOK segédprogram eléréséhez.
 
-1. A Linux rendszerhez készült Azure soros konzol engedélyezése. További információ: [soros konzol Linux rendszerhez](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/serial-console-linux).
+1. A Linux rendszerhez készült Azure soros konzol engedélyezése. További információ: [soros konzol Linux rendszerhez](/troubleshoot/azure/virtual-machines/serial-console-linux).
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 1. Keressen rá a **virtuális gépekre** , és válassza ki a virtuális gépet a listából.
 1. A bal oldali menüben a **támogatás + hibaelhárítás** területen válassza a **Serial Console** lehetőséget. Egy oldal jobbra, a soros konzollal fog megnyílni.

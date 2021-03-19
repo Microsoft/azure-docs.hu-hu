@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 218803d0b7e1f5add2f033a7ce01e0a8f6ffc956
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 450a089c6cc1c77ac26cb0aa339277d5c49b41c8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674089"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594784"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statisztika a szinapszis SQL-ben
 
@@ -90,9 +90,9 @@ Előfordulhat, hogy az ügyfél tábla ország vagy régió oszlopának statiszt
 
 Ha azonban az adattárház csak egy országot vagy régiót tartalmaz, és az adatokat egy új országból vagy régióból hozza, akkor frissítenie kell az ország vagy régió oszlop statisztikáit.
 
-A következő javaslatok frissítik a statisztikát:
+A következő javaslatok frissülnek a statisztikák frissítéséhez:
 
-|||
+|Típus|Ajánlás|
 |-|-|
 | **A statisztika frissítéseinek gyakorisága**  | Konzervatív: naponta </br> Az adatai betöltése vagy átalakítása után |
 | **Mintavételezés** |  Kevesebb mint 1 000 000 000 sor, használja az alapértelmezett mintavételezést (20 százalék). </br> A több mint 1 000 000 000 sorral a mintavételezést két százalékkal kell használni. |
@@ -443,7 +443,7 @@ A statisztikával kapcsolatos információk megkereséséhez számos rendszerné
 
 Ezek a rendszernézetek a statisztikával kapcsolatos információkat tartalmaznak:
 
-| Katalógus nézet | Leírás |
+| Katalógus nézet | Description |
 |:--- |:--- |
 | [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?view=azure-sqldw-latest&preserve-view=true) |Egy sor az egyes oszlopokhoz. |
 | [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?view=azure-sqldw-latest&preserve-view=true) |Egy sor az adatbázis minden objektumához. |
@@ -457,7 +457,7 @@ Ezek a rendszernézetek a statisztikával kapcsolatos információkat tartalmazn
 
 Ezek a rendszerfunkciók a statisztikákkal való munkavégzéshez hasznosak:
 
-| System függvény | Leírás |
+| System függvény | Description |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?view=azure-sqldw-latest&preserve-view=true) |A statisztikai objektum utolsó frissítésének dátuma. |
 | [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest&preserve-view=true) |Összegző szint és részletes információk az értékek eloszlásáról a statisztikai objektum által értelmezett módon. |
@@ -825,7 +825,7 @@ A statisztikával kapcsolatos információk megkereséséhez számos rendszerné
 
 Ezek a rendszernézetek a statisztikával kapcsolatos információkat tartalmaznak:
 
-| Katalógus nézet                                                 | Leírás                                                  |
+| Katalógus nézet                                                 | Description                                                  |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Egy sor az egyes oszlopokhoz.                                     |
 | [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Egy sor az adatbázis minden objektumához.                     |
@@ -839,7 +839,7 @@ Ezek a rendszernézetek a statisztikával kapcsolatos információkat tartalmazn
 
 Ezek a rendszerfunkciók a statisztikákkal való munkavégzéshez hasznosak:
 
-| System függvény                                              | Leírás                                  |
+| System függvény                                              | Description                                  |
 | :----------------------------------------------------------- | :------------------------------------------- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?view=azure-sqldw-latest&preserve-view=true) | A statisztikai objektum utolsó frissítésének dátuma. |
 
@@ -884,6 +884,6 @@ WHERE   st.[user_created] = 1
 
 ## <a name="next-steps"></a>Következő lépések
 
-A dedikált SQL-készlet lekérdezési teljesítményének növeléséhez lásd: a számítási feladatok és ajánlott eljárások [figyelése](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) [dedikált SQL-készlethez](best-practices-sql-pool.md#maintain-statistics).
+A dedikált SQL-készlet lekérdezési teljesítményének növeléséhez lásd: a számítási feladatok és ajánlott eljárások [figyelése](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) [dedikált SQL-készlethez](best-practices-dedicated-sql-pool.md#maintain-statistics).
 
-A kiszolgáló nélküli SQL-készlet lekérdezési teljesítményének növeléséhez tekintse meg az [ajánlott eljárások a kiszolgáló nélküli SQL-készlethez](best-practices-sql-on-demand.md) című témakört.
+A kiszolgáló nélküli SQL-készlet lekérdezési teljesítményének növeléséhez tekintse meg az [ajánlott eljárások a kiszolgáló nélküli SQL-készlethez](best-practices-serverless-sql-pool.md) című témakört.

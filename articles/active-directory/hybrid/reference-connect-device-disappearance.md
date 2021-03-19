@@ -11,10 +11,10 @@ ms.date: 09/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.openlocfilehash: bc159452c81a673ca4a7ed46aa7eff19fd9209eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73176025"
 ---
 # <a name="understanding-azure-ad-connect-14xxx-and-device-disappearance"></a>Az Azure AD Connect 1.4. xx. x és az eszközön való megjelenés ismertetése
@@ -44,5 +44,5 @@ Ellenőrzi az AD-ben található számítógép-objektum UserCertificate tulajdo
 Mielőtt a Azure AD Connect az Azure AD-vel szinkronizálja azokat a számítógépeket, amelyek legalább egy érvényes tanúsítványt tartalmaznak, de a Azure AD Connect 1,4-es verziótól kezdődően a szinkronizációs motor képes azonosítani a hibrid Azure AD JOIN-tanúsítványokat, és "cloudfilter" a számítógép-objektumot az Azure AD-be való szinkronizálással, hacsak nincs érvényes hibrid Azure AD JOIN tanúsítvány.
 Azok az Azure AD-eszközök, amelyek már szinkronizálva lettek az Active Directoryval, de nem rendelkeznek érvényes hibrid Azure AD JOIN tanúsítvánnyal, a Szinkronizáló motor törli a (CloudFiltered = TRUE) értéket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Azure AD Connect korábbi verziók](reference-connect-version-history.md)

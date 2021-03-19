@@ -358,6 +358,8 @@
           href: search-query-understand-collection-filters.md
         - name: Szűrés nyelv szerint
           href: search-filters-language.md
+        - name: Szöveg normalizálása
+          href: search-normalizers.md
     - name: Relevancia
       items:
         - name: Hasonlósági rangsor

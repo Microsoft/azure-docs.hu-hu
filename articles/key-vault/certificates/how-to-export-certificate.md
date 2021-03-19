@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: mvc
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: e10812290fa06e94419a1b4f27845f9b04ebb049
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: ad3e5bcda0fb03af0637a309b4dbfd248b54f1a0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102508843"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587202"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>Tanúsítványok exportálása Azure Key Vaultból
 
@@ -101,8 +101,8 @@ $pfxFileByte = $x509Cert.Export($type, $password)
 [System.IO.File]::WriteAllBytes("KeyVault.pfx", $pfxFileByte)
 ```
 
-Ez a parancs a tanúsítványok teljes láncát exportálja a titkos kulccsal. A tanúsítvány jelszavas védelemmel van ellátva.
-További információ a **Get-AzKeyVaultCertificate** parancsról és paraméterekről: [Get-AzKeyVaultCertificate – example 2](/powershell/module/az.keyvault/Get-AzKeyVaultCertificate).
+Ez a parancs a tanúsítványok teljes láncát exportálja a titkos kulccsal (azaz ugyanaz, mint az importált). A tanúsítvány jelszavas védelemmel van ellátva.
+További információ a **Get-AzKeyVaultCertificate** parancsról és paraméterekről: [Get-AzKeyVaultCertificate – example 2](/powershell/module/az.keyvault/Get-AzKeyVaultCertificate?view=azps-4.4.0).
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 

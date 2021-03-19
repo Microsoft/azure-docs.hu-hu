@@ -3,12 +3,12 @@ title: 'Rövid útmutató: a .NET-hez készült ügyféloldali kódtár QnA Make
 description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a QnA Maker .NET-hez készült ügyféloldali kódtárat. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.  A QnA Maker lehetővé teszi egy kérdés-válasz szolgáltatás működtetését olyan félig strukturált tartalomból, mint a GYIK-dokumentumok, URL-címek és termékútmutatók.
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: d14c137150b802c734a0386536fbe32a6917cd92
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3b2bbf30fcd93bdd8e3d8bdefcbf863df30d9017
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101730960"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583187"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/version-1)
 
@@ -66,21 +66,9 @@ A .NET-hez készült QnA Maker ügyféloldali kódtára a következőre használ
 
 ## <a name="setting-up"></a>Beállítás
 
-### <a name="visual-studio-ide"></a>Visual Studio IDE
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/version-1)
-
-A Visual Studióval hozzon létre egy .NET Core-alkalmazást, és telepítse az ügyféloldali kódtárat úgy, hogy a **megoldáskezelő** a megoldásra kattint, és kiválasztja a **NuGet-csomagok kezelése** lehetőséget. A megnyíló csomagkezelő területen válassza a **Tallózás** lehetőséget, és keresse meg a következőt: `Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker` . Válassza `2.0.1` a verzió, majd a **telepítés** lehetőséget.
-
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker felügyelt (előzetes verzió)](#tab/version-2)
-
-A Visual Studióval hozzon létre egy .NET Core-alkalmazást, és telepítse az ügyféloldali kódtárat úgy, hogy a **megoldáskezelő** a megoldásra kattint, és kiválasztja a **NuGet-csomagok kezelése** lehetőséget. A megnyíló csomagkezelő válassza a **Tallózás** lehetőséget, jelölje be az **előzetes verzió** használata jelölőnégyzetet, és keressen rá `Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker` . Válassza `3.0.0-preview.1` a verzió, majd a **telepítés** lehetőséget.
-
----
-
 ### <a name="cli"></a>parancssori felület
 
-A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `qna-maker-quickstart` . Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre egyetlen forrásfájlban: *program.cs*.
+A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `qna-maker-quickstart` . Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre egyetlen forrásfájl: *program. cs*.
 
 ```console
 dotnet new console -n qna-maker-quickstart
@@ -132,7 +120,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker --versio
 
 ### <a name="using-directives"></a>Irányelvek használata
 
-A projekt könyvtárában nyissa meg a *program.cs* fájlt, és adja hozzá a következő `using` irányelveket:
+A projekt könyvtárában nyissa meg a *program. cs* fájlt, és adja hozzá a következő `using` irányelveket:
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/version-1)
 
@@ -155,9 +143,11 @@ Az alkalmazás `Main` metódusában adja hozzá a következő szakaszban láthat
 
 Az előfizetési kulcsot és a szerzői kulcsot is felhasználjuk. A kulcs létrehozásával kapcsolatos további részletekért kövesse [a QnA Maker kulcsait](../concepts/azure-resources.md?tabs=v1#keys-in-qna-maker).
 
-- Hozzon létre QNA_MAKER_SUBSCRIPTION_KEY, QNA_MAKER_ENDPOINT és QNA_MAKER_RUNTIME_ENDPOINT nevű környezeti változókat az értékek tárolásához.
 - A QNA_MAKER_ENDPOINT értékének formátuma `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . 
-- A QNA_MAKER_RUNTIME_ENDPOINT értékének formátuma `https://YOUR-RESOURCE-NAME.azurewebsites.net` .
+- A QNA_MAKER_RUNTIME_ENDPOINT értékének formátuma `https://YOUR-RESOURCE-NAME.azurewebsites.net` . Miután közzétette a tudásbázist a QnA Maker-portálon, megkeresheti a futásidejű végpontot az alábbi ábrán látható módon.
+  
+  ![QnA Maker futtatókörnyezet végpontja](../media/endpoint.png)
+      
 - Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. Az [Azure Key Vault](../../../key-vault/general/overview.md) például biztonságos kulcstároló-tárolót biztosít.
 
 [!code-csharp[Set the resource key and resource name](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=Resourcevariables)]
@@ -169,7 +159,6 @@ Az előfizetési kulcsot és a szerzői kulcsot is felhasználjuk. A kulcs létr
 
 Az előfizetési kulcsot és a szerzői kulcsot is felhasználjuk. A kulcs létrehozásával kapcsolatos további részletekért kövesse [a QnA Maker kulcsait](../concepts/azure-resources.md?tabs=v2#keys-in-qna-maker).
 
-- Hozzon létre QNA_MAKER_SUBSCRIPTION_KEY és QNA_MAKER_ENDPOINT nevű környezeti változót az értékek tárolásához.
 - A QNA_MAKER_ENDPOINT értékének formátuma `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . 
 - Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. Az [Azure Key Vault](../../../key-vault/general/overview.md) például biztonságos kulcstároló-tárolót biztosít.
 

@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: ceb242dcd05105b533e365e91afd9601cc550392
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 8af6802f785718ca6064a34c98d9f6dafc046a2c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116728"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594767"
 ---
 # <a name="use-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Tranzakciók használata dedikált SQL-készlettel az Azure szinapszis Analyticsben
 
@@ -204,4 +204,4 @@ A dedikált SQL-készletnek van néhány más, a tranzakcióhoz kapcsolódó kor
 
 ## <a name="next-steps"></a>Következő lépések
 
-A tranzakciók optimalizálásával kapcsolatos további tudnivalókért tekintse meg a [tranzakciók ajánlott eljárásai](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)című témakört. További ajánlott eljárásokat ismertető útmutatók a [DEDIKÁLT SQL-készlet](best-practices-sql-pool.md) és a [kiszolgáló nélküli SQL-készlet](best-practices-sql-on-demand.md)számára is elérhetők.
+A tranzakciók optimalizálásával kapcsolatos további tudnivalókért tekintse meg a [tranzakciók ajánlott eljárásai](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)című témakört. További ajánlott eljárásokat ismertető útmutatók a [DEDIKÁLT SQL-készlet](best-practices-dedicated-sql-pool.md) és a [kiszolgáló nélküli SQL-készlet](best-practices-serverless-sql-pool.md)számára is elérhetők.

@@ -6,12 +6,12 @@ ms.author: yexu
 ms.service: data-factory
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: 48624e415649be2fb76aed99c5cb0e1b3b12f04b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 78bc815aff195124d3e79a83445b8d12506fc70d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372858"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104613090"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Gyors útmutató: az Adatok másolása eszközzel másolhatja az Adatmásolást
 
@@ -57,7 +57,7 @@ Ebben a rövid útmutatóban egy adat-előállítót hoz létre az Azure Portal 
 
 1. A létrehozás befejezése után megjelenik a **Data Factory** lap. Az Azure Data Factory felhasználói felületi (UI) alkalmazás külön lapon történő elindításához kattintson a **Létrehozás és monitorozás** csempére.
    
-   ![Az adat-előállító kezdőlapja a „Létrehozás és monitorozás” csempével](./media/doc-common-process/data-factory-home-page.png)
+:::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="A Azure Data Factory kezdőlapja, a szerző & monitor csempével.":::
 
 ## <a name="start-the-copy-data-tool"></a>Az Adatok másolása eszköz elindítása
 

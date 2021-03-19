@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 05/07/2020
+ms.date: 03/17/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0f88b310bc00881e66ee8e8b5f2d40616d60315
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01deae46c442fc95c6aead0f11de929f47163c3c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87905898"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586557"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>Oktatóanyag: Azure AD B2B együttműködési felhasználók tömeges meghívása
 
@@ -40,8 +40,8 @@ Töltse le és töltse ki a CSV-fájl tömeges feltöltése sablont, amely segí
 A letöltött CSV-sablon sorai a következők:
 
 - **Verziószám**: a verziószámot tartalmazó első sornak szerepelnie kell a CSV-fájl feltöltésekor.
-- **Oszlopfejlécek**: az oszlopfejlécek formátuma a (z &lt; *Item name* &gt; ) [PropertyName] elemnév &lt; *kötelező vagy üres* &gt; . Például: `Email address to invite [inviteeEmail] Required`. Előfordulhat, hogy a sablon néhány régebbi verziója némileg eltérő változatot tartalmaz.
-- **Példák sora**: a sablonban szerepel egy sor, amely tartalmazza az egyes oszlopok elfogadható értékeit. El kell távolítania a példákat tartalmazó sort, és le kell cserélnie a saját bejegyzéseire.
+- **Oszlopfejlécek**: az oszlopfejlécek formátuma a (z &lt;  &gt; ) [PropertyName] elemnév &lt; *kötelező vagy üres* &gt; . Például: `Email address to invite [inviteeEmail] Required`. Előfordulhat, hogy a sablon néhány régebbi verziója némileg eltérő változatot tartalmaz.
+- **Példák sora**: a sablonban szerepel az egyes oszlopok értékeire mutató példák sora. El kell távolítania a példákat tartalmazó sort, és le kell cserélnie a saját bejegyzéseire.
 
 ### <a name="additional-guidance"></a>További útmutatás
 
@@ -56,18 +56,22 @@ Szüksége lesz kettő vagy több e-mail-tesztfiókra, ahova a meghívókat kül
 
 ## <a name="invite-guest-users-in-bulk"></a>Vendég felhasználóinak meghívása ömlesztve
 
-1. Jelentkezzen be a Azure Portalba egy olyan fiókkal, amely a szervezet felhasználói rendszergazdája.
-2. A navigációs ablaktáblán válassza a **Azure Active Directory**lehetőséget.
-3. A **kezelés**területen válassza a **felhasználók**  >  **tömeges meghívás**lehetőséget.
+1. Jelentkezzen be a Azure Portalba egy olyan fiókkal, amely a szervezet globális rendszergazdája.
+2. A navigációs ablaktáblán válassza a **Azure Active Directory** lehetőséget.
+3. A **kezelés** területen válassza a **minden felhasználó** lehetőséget.
+4. Válassza a **tömeges műveletek**  >  **tömeges meghívása** lehetőséget.
+
+    ![Tömeges meghívás gomb](media/tutorial-bulk-invite/bulk-invite-button.png)
+
 4. A **felhasználók tömeges meghívása** lapon válassza a **Letöltés** lehetőséget, hogy érvényes. csv sablont Kérjen a Meghívási tulajdonságokkal.
 
-    ![Tömeges meghívás letöltése gomb](media/tutorial-bulk-invite/bulk-invite-button.png)
+     ![A CSV-fájl letöltése](media/tutorial-bulk-invite/download-button.png)
 
-5. Nyissa meg a. csv-sablont, és adjon hozzá egy sort minden vendég felhasználóhoz. A szükséges értékek a következők:
+1. Nyissa meg a. csv-sablont, és adjon hozzá egy sort minden vendég felhasználóhoz. A szükséges értékek a következők:
 
    * **Meghívó e-mail-cím** – a meghívót kérő felhasználó
 
-   * **Átirányítási URL** -cím – az az URL-cím, amelyre a meghívott felhasználó továbbítva lett a meghívó elfogadása után
+   * **Átirányítási URL** -cím – az az URL-cím, amelyre a meghívott felhasználó továbbítva lett a meghívó elfogadása után. Ha továbbítani szeretné a felhasználót a saját alkalmazások lapra, ezt az értéket a vagy a értékre kell módosítania https://myapps.microsoft.com https://myapplications.microsoft.com .
 
     ![Példa a vendég felhasználókat tartalmazó CSV-fájlra](media/tutorial-bulk-invite/bulk-invite-csv.png)
 
@@ -75,10 +79,10 @@ Szüksége lesz kettő vagy több e-mail-tesztfiókra, ahova a meghívókat kül
    > Ne használjon vesszőket a **testreszabott Meghívási üzenetben** , mert megakadályozza, hogy az üzenet elemzése sikeres legyen.
 
 6. Mentse a fájlt.
-7. A **felhasználók tömeges meghívása** lapon a **CSV-fájl feltöltése**területen keresse meg a fájlt. A fájl kiválasztásakor elindul a. csv-fájl érvényesítése. 
-8. A fájl tartalmának ellenőrzésekor a **fájl feltöltése sikeresen**megtörténik. Ha hibák léptek fel, ezeket a feladatok elküldése előtt ki kell javítania.
+7. A **felhasználók tömeges meghívása** lapon a **CSV-fájl feltöltése** területen keresse meg a fájlt. A fájl kiválasztásakor elindul a. csv-fájl érvényesítése. 
+8. A fájl tartalmának ellenőrzésekor a **fájl feltöltése sikeresen** megtörténik. Ha hibák léptek fel, ezeket a feladatok elküldése előtt ki kell javítania.
 9. Ha a fájl érvényesíti az ellenőrzést, válassza a **Submit (Küldés** ) lehetőséget a meghívókat felvenni kívánó Azure tömeges művelet elindításához. 
-10. A feladatok állapotának megtekintéséhez válassza a **kattintson ide az egyes műveletek állapotának megtekintéséhez**. Vagy kiválaszthatja a **tömeges művelet eredményeit** is a **tevékenység** szakaszban. A tömeges művelet minden egyes sorával kapcsolatos részletekért jelölje ki az értékeket a **# sikeres**, **# sikertelen**vagy az **összes kérelem** oszlopban. Ha hiba történt, a hiba okai lesznek felsorolva.
+10. A feladatok állapotának megtekintéséhez válassza a **kattintson ide az egyes műveletek állapotának megtekintéséhez**. Vagy kiválaszthatja a **tömeges művelet eredményeit** is a **tevékenység** szakaszban. A tömeges művelet minden egyes sorával kapcsolatos részletekért jelölje ki az értékeket a **# sikeres**, **# sikertelen** vagy az **összes kérelem** oszlopban. Ha hiba történt, a hiba okai lesznek felsorolva.
 
     ![Példa tömeges művelet eredményeire](media/tutorial-bulk-invite/bulk-operation-results.png)
 
@@ -91,9 +95,9 @@ Ellenőrizze, hogy a hozzáadott vendég felhasználók szerepelnek-e a könyvt�
 ### <a name="view-guest-users-in-the-azure-portal"></a>Vendég felhasználók megtekintése a Azure Portalban
 
 1. Jelentkezzen be a Azure Portalba egy olyan fiókkal, amely a szervezet felhasználói rendszergazdája.
-2. A navigációs ablaktáblán válassza a **Azure Active Directory**lehetőséget.
+2. A navigációs ablaktáblán válassza a **Azure Active Directory** lehetőséget.
 3. A **Kezelés** menüpontban válassza a **Felhasználók** lehetőséget.
-4. A **Megjelenítés**területen válassza ki a **csak vendég felhasználók** elemet, és ellenőrizze, hogy a hozzáadott felhasználók szerepelnek-e a listáján.
+4. A **Megjelenítés** területen válassza ki a **csak vendég felhasználók** elemet, és ellenőrizze, hogy a hozzáadott felhasználók szerepelnek-e a listáján.
 
 ### <a name="view-guest-users-with-powershell"></a>Vendég felhasználók megtekintése a PowerShell-lel
 
@@ -107,7 +111,7 @@ A meghívott felhasználókat a következő formátumban kell megjelennie: *emai
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, törölheti a felhasználói fiókokat a Azure Portal a felhasználók lapon, ha bejelöli a vendég felhasználó melletti jelölőnégyzetet, majd kiválasztja a **Törlés**lehetőséget. 
+Ha már nincs rá szükség, törölheti a felhasználói fiókokat a Azure Portal a felhasználók lapon, ha bejelöli a vendég felhasználó melletti jelölőnégyzetet, majd kiválasztja a **Törlés** lehetőséget. 
 
 Vagy futtathatja a következő PowerShell-parancsot egy felhasználói fiók törléséhez:
 
@@ -117,7 +121,7 @@ Vagy futtathatja a következő PowerShell-parancsot egy felhasználói fiók tö
 
 Például: `Remove-AzureADUser -ObjectId "lstokes_fabrikam.com#EXT#@contoso.onmicrosoft.com"`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban tömeges meghívókat küldött szervezeten kívüli vendégfelhasználóknak. A következő szakaszban megtudhatja, hogyan működik a meghívások érvényesítési folyamata.
 

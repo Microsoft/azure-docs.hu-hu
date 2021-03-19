@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/03/2019
 ms.author: mayg
 ms.openlocfilehash: c721234f2e1d806d51d31f3466e441bf8360f6b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73693168"
 ---
 # <a name="prepare-the-target-environment-for-disaster-recovery-of-vmware-vms-or-physical-servers-to-azure"></a>A cél környezet előkészítése VMware virtuális gépek vagy fizikai kiszolgálók Azure-beli vész-helyreállítására
@@ -27,7 +27,7 @@ A cikk a következőket feltételezi:
 
 ## <a name="prepare-target"></a>Cél előkészítése
 
-Miután befejezte az **1. lépést: válassza a védelmi cél** és a **2. lépés: forrás előkészítése**lehetőséget, a **3. lépés: cél**
+Miután befejezte az **1. lépést: válassza a védelmi cél** és a **2. lépés: forrás előkészítése** lehetőséget, a **3. lépés: cél**
 
 ![Cél előkészítése](./media/vmware-azure-set-up-target/prepare-target-vmware-to-azure.png)
 
@@ -40,5 +40,5 @@ Az érvényesítés sikeres befejezése után kattintson az OK gombra a követke
 
 Ha nem rendelkezik virtuális hálózattal, a lap tetején található **+ hálózat** gombra kattintva létrehozhat egyet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Konfigurálja a replikációs beállításokat](vmware-azure-set-up-replication.md).

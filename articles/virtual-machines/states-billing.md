@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/8/2021
 ms.author: mimckitt
 ms.reviewer: cynthn
-ms.openlocfilehash: 0325dcf16c8e637a58365311a4ebd37a442d6b8c
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: c206cba3b23a0bf41ce32481980aa466e869bcde
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102522452"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596297"
 ---
 # <a name="states-and-billing-of-azure-virtual-machines"></a>Az Azure Virtual Machines állapotai és számlázása
 
@@ -41,7 +41,7 @@ A Power állapot a virtuális gép utolsó ismert állapotát jelöli.
 
 A következő táblázat ismerteti az egyes példányok állapotát, és azt jelzi, hogy a példány használatban van-e, vagy sem.
 
-| Energiaellátási állapot | Leírás | Számlázás |  
+| Energiaellátási állapot | Description | Számlázás |  
 |---|---|---|
 | Indítás| A virtuális gép be van kapcsolva. |Nem számlázott * | 
 | Futó | A virtuális gép teljesen fel van készülve. Ez a szabványos Munkaállapot. | Számlázása | 
@@ -59,7 +59,7 @@ A kiépítési állapot a felhasználó által kezdeményezett, vezérlő-sík m
 
 :::image type="content" source="./media/virtual-machines-common-states-lifecycle/vm-provisioning-states.png" alt-text="A képen láthatók azok a kiépítési állapotok, amelyek a virtuális gépek átmehetnek.":::
 
-| Kiépítési állapot | Leírás | Energiaellátási állapot | Számlázás | 
+| Kiépítési állapot | Description | Energiaellátási állapot | Számlázás | 
 |---|---|---|---|
 | Létrehozás | Virtuális gépek létrehozása. | Indítás | Nem számlázott * | 
 | Frissítés | Frissíti egy meglévő virtuális gép modelljét. Néhány nem Modelles változás egy virtuális gépen, például az Indítás és az újraindítás a frissítési állapot alá esik. | Futó | Számlázása | 
@@ -73,7 +73,7 @@ Az operációs rendszer kiépítési állapota csak az operációsrendszer-lemez
 
 :::image type="content" source="./media/virtual-machines-common-states-lifecycle/os-provisioning-states.png" alt-text="A rendszerkép megjeleníti az operációs rendszer kiépítési állapotát, amelyet a virtuális gép átmehet.":::
 
-| Operációs rendszer kiépítési állapota | Leírás | Energiaellátási állapot | Számlázás | 
+| Operációs rendszer kiépítési állapota | Description | Energiaellátási állapot | Számlázás | 
 |---|---|---|---|
 | OSProvisioningInProgress | A virtuális gép fut, és a vendég operációs rendszer telepítése folyamatban van. | Futó | Számlázása | 
 | OSProvisioningComplete | Ez egy rövid életű állapot. A virtuális gép gyorsan át tud térni ettől az állapottól a **sikerig**. Ha a bővítmények telepítése még folyamatban van, akkor továbbra is ezt az állapotot fogja látni, amíg be nem fejeződik. | Futó | Számlázása | 
@@ -82,6 +82,6 @@ Az operációs rendszer kiépítési állapota csak az operációsrendszer-lemez
 
 
 ## <a name="next-steps"></a>Következő lépések
-- Tekintse át a [Azure Cost Management és a számlázási dokumentációt](https://docs.microsoft.com/azure/cost-management-billing/)
+- Tekintse át a [Azure Cost Management és a számlázási dokumentációt](../cost-management-billing/index.yml)
 - Az [Azure díjszabási kalkulátor](https://azure.microsoft.com/pricing/calculator/) használatával tervezze meg az üzemelő példányokat.
-- További információ a virtuális gép figyeléséről: [Virtual Machines in Azure (virtuális gépek figyelése az Azure-ban](../azure-monitor/insights/monitor-vm-azure.md)).
+- További információ a virtuális gép figyeléséről: [Virtual Machines in Azure (virtuális gépek figyelése az Azure-ban](../azure-monitor/vm/monitor-vm-azure.md)).

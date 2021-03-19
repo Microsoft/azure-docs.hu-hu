@@ -7,10 +7,10 @@ ms.author: joanpo
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.openlocfilehash: 33532380d8f98df44029eeea998130d1da5fdafd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73468554"
 ---
 # <a name="azure-data-share-concepts"></a>Az Azure-adatmegosztás fogalmai 
@@ -27,11 +27,11 @@ Az adatfogyasztó az a szervezet, amely adatszolgáltatótól fogadja az adatfor
 
 ## <a name="data-share"></a>Data Share
 
-Az adatmegosztások olyan adatkészletek csoportja, amelyek egyetlen entitásként vannak megosztva. Az adatkészletek több Azure-adatforrásból is származhatnak, amelyeket az Azure-adatmegosztás támogat. Az Azure-beli adatmegosztás jelenleg az Azure Blob Storage és Azure Data Lake Store használatát is támogatja. 
+Adatmegosztásoknak nevezzük az egy entitásként megosztott adatkészletekből álló csoportokat. Több olyan Azure-adatforrásból is származhatnak az adatkészletek, amelyek használhatók az Azure Data Share szolgáltatással. Egyelőre csak az Azure Blob Storage és az Azure Data Lake Store lehet ilyen adatforrás az Azure Data Share használatakor. 
 
 ## <a name="share-subscription"></a>Előfizetés megosztása 
 
-A megosztási előfizetések akkor jönnek létre, amikor az adatfogyasztó elfogad egy adatmegosztási meghívást egy adatszolgáltatótól. Az adatszolgáltatók megtekinthetik az aktív megosztás-előfizetéseket **, ha az**Azure-beli adatmegosztási fiókjában navigálnak az **Elküldett megosztásokhoz**
+A megosztási előfizetések akkor jönnek létre, amikor az adatfogyasztó elfogad egy adatmegosztási meghívást egy adatszolgáltatótól. Az adatszolgáltatók megtekinthetik az aktív megosztás-előfizetéseket **, ha az** Azure-beli adatmegosztási fiókjában navigálnak az **Elküldett megosztásokhoz**
 
 Egy adatfogyasztó megtekintheti, hogy rendelkezik-e aktív megosztási előfizetéssel, ha a **kapott megosztásokra** navigál, és megtekinti a kapott megosztások állapotát. 
 
@@ -61,6 +61,6 @@ A meghívások naponta akár ötször is elküldhetők.
 
 A címzett olyan személy, aki meghívót kap egy adatmegosztásra. Egy adatszolgáltató jellemzően a létrehozott adatmegosztáshoz adja hozzá a címzetteket. Ha egy meghívás címzettjei elfogadják a meghívót, az adatfogyasztónak lesznek.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adatmegosztás megkezdésének megismeréséhez folytassa az [adatgyűjtés megosztása](share-your-data.md) című oktatóanyagot.

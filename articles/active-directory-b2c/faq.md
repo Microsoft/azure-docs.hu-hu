@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 722f3158c8eca4cec4dbf23658f9d8d4cb68c3ed
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: d84c5fff41a7f00405c29ab4b4921ed2e28bdfde
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102517990"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580096"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: gyakori kérdések (GYIK)
 
@@ -103,7 +103,7 @@ Nem, a Azure AD Connect nem a Azure AD B2C való működésre lett tervezve. Ér
 
 ### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>Megnyithatom az alkalmazásom Azure AD B2C oldalakat egy iFrame-kereten belül?
 
-Nem, biztonsági okokból Azure AD B2C lapok nem nyithatók meg iFrame-kereten belül. A szolgáltatás kommunikál a böngészővel az iFrame-elemek tiltásához. A biztonsági Közösség általánosságban és a OAUTH2-specifikációban ajánlott, hogy a kattintások és a csatlakozás kockázata miatt a személyazonossági tapasztalatok iFrame-alapú használatát ajánljuk.
+Ez a funkció nyilvános előzetes verzióban érhető el. Részletekért lásd: [beágyazott bejelentkezési élmény](https://docs.microsoft.com/azure/active-directory-b2c/embedded-login).
 
 ### <a name="does-azure-ad-b2c-work-with-crm-systems-such-as-microsoft-dynamics"></a>Működik Azure AD B2C olyan CRM-rendszerekkel, mint a Microsoft Dynamics?
 
@@ -131,7 +131,7 @@ Igen, lásd: [nyelvi Testreszabás](language-customization.md). 36 nyelvű ford�
 
 ### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-contosob2clogincom-to-logincontosocom"></a>Használhatom a saját URL-címeket az Azure AD B2C által kiszolgált regisztrációs és bejelentkezési lapokon? Megváltoztathatom például a contoso.b2clogin.com és a login.contoso.com URL-címét?
 
-Jelenleg nincs. Ez a funkció az ütemterven található. A tartomány ellenőrzése a **tartományok** lapon, a Azure Portal nem hajtja végre ezt a célt. A b2clogin.com azonban [semleges legfelső szintű tartományt](b2clogin.md)kínálunk, így a külső megjelenés a Microsoft megemlítése nélkül is megvalósítható.
+Ez a funkció nyilvános előzetes verzióban érhető el. Részletekért lásd: [Azure ad B2C egyéni tartományok](https://docs.microsoft.com/azure/active-directory-b2c/custom-domain?pivots=b2c-user-flow).
 
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Hogyan törölni a Azure AD B2C bérlőt?
 

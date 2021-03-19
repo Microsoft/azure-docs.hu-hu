@@ -3,21 +3,21 @@ title: Azure Functions IP-címei
 description: Megtudhatja, hogyan keresheti meg a beérkező és a kimenő IP-címeket a Function apps számára, és hogy mi okoz változást.
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: fcc92e61e180d25bc67d5ca3f9e2bff4af01fd3f
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 2c248756899459e17082bcab863a4e857b594909
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98726731"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104608231"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions IP-címei
 
-Ez a cikk a Function apps IP-címeivel kapcsolatos alábbi témaköröket ismerteti:
+Ez a cikk a Function apps IP-címeivel kapcsolatos alábbi fogalmakat ismerteti:
 
 * A Function app által jelenleg használt IP-címek megkeresése.
-* Mi okozza a Function alkalmazás IP-címeinek módosítását.
+* Azok a feltételek, amelyek a Function app IP-címeinek módosítását okozzák.
 * A Function alkalmazáshoz hozzáférő IP-címek korlátozása.
-* Dedikált IP-címek lekérése egy Function alkalmazáshoz.
+* Dedikált IP-címek definiálása egy Function alkalmazáshoz.
 
 Az IP-címek a Function apps szolgáltatáshoz vannak társítva, nem az egyes függvényekhez. A bejövő HTTP-kérések nem használhatják a bejövő IP-címet az egyes függvények meghívásához. az alapértelmezett tartománynevet (functionappname.azurewebsites.net) vagy egy egyéni tartománynevet kell használniuk.
 
@@ -54,9 +54,9 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 ## <a name="data-center-outbound-ip-addresses"></a>Az adatközpont kimenő IP-címei
 
-Ha hozzá kell adnia a Function apps által használt kimenő IP-címeket egy engedélyezési listához, egy másik lehetőség, hogy hozzáadja az alkalmazások adatközpontját (Azure Region) az engedélyezési listához. [Letöltheti az összes Azure-adatközpont IP-címeit felsoroló JSON-fájlt](https://www.microsoft.com/en-us/download/details.aspx?id=56519). Ezután keresse meg azt a JSON-kódrészletet, amely arra a régióra vonatkozik, amelyen a Function alkalmazás fut.
+Ha hozzá kell adnia a Function apps által használt kimenő IP-címeket egy engedélyezési, egy másik lehetőség, hogy hozzáadja a Function apps adatközpontját (Azure Region) egy engedélyezési. [Letöltheti az összes Azure-adatközpont IP-címeit felsoroló JSON-fájlt](https://www.microsoft.com/en-us/download/details.aspx?id=56519). Ezután keresse meg azt a JSON-kódrészletet, amely arra a régióra vonatkozik, amelyen a Function alkalmazás fut.
 
-A Nyugat-európai JSON-töredék például a következőhöz hasonló lehet:
+A következő JSON-kódrészlet például a Nyugat-Európa engedélyezési hasonló lehet:
 
 ```
 {
@@ -99,10 +99,12 @@ A Function app számára elérhető kimenő IP-címek készlete a következő es
 
 Ha a Function alkalmazás egy használati [tervben](consumption-plan.md) vagy egy [prémium](functions-premium-plan.md)csomagban fut, a kimenő IP-cím akkor is változhat, ha nem végeztek olyan műveleteket, mint például a [fent felsoroltak](#inbound-ip-address-changes).
 
-A kimenő IP-címek módosításának szándékos kényszerítése:
+A kimenő IP-címek változásának szándékos kényszerítéséhez kövesse az alábbi eljárást:
 
 1. A standard és a prémium v2 díjszabási szintjeinek méretezése App Service.
+
 2. Várjon 10 percet.
+
 3. Méretezés vissza, ahol elindította.
 
 ## <a name="ip-address-restrictions"></a>IP-címekre vonatkozó korlátozások
@@ -111,7 +113,15 @@ Konfigurálhatja azon IP-címek listáját, amelyeknek engedélyezni vagy megtag
 
 ## <a name="dedicated-ip-addresses"></a>Dedikált IP-címek
 
-Ha statikus, dedikált IP-címekre van szüksége, javasoljuk [app Service környezetek](../app-service/environment/intro.md) használatát (App Service-csomagok [elkülönített szintje](https://azure.microsoft.com/pricing/details/app-service/) ). További információ: [app Service Environment IP-címek](../app-service/environment/network-info.md#ase-ip-addresses) és a [Bejövő forgalom vezérlése egy app Service Environment](../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md).
+Ha a Function alkalmazás statikus, dedikált IP-címeket igényel, több stratégia is megvizsgálható. 
+
+### <a name="virtual-network-nat-gateway-for-outbound-static-ip"></a>Virtual Network NAT Gateway a kimenő statikus IP-címekhez
+
+A függvények kimenő forgalmának IP-címét egy virtuális hálózati NAT-átjáró használatával irányíthatja a statikus nyilvános IP-címeken keresztüli közvetlen forgalomhoz. Ezt a topológiát [prémium](functions-premium-plan.md)csomagban futtatva használhatja. További információ: [oktatóanyag: Azure functions kimenő IP-cím szabályozása Azure Virtual Network NAT-átjáróval](functions-how-to-use-nat-gateway.md).
+
+### <a name="app-service-environments"></a>App Service-környezetek
+
+A bejövő és kimenő IP-címek teljes vezérléséhez a [app Service-környezetek](../app-service/environment/intro.md) (App Service-csomagok [elkülönített szintje](https://azure.microsoft.com/pricing/details/app-service/) ) használatát javasoljuk. További információ: [app Service Environment IP-címek](../app-service/environment/network-info.md#ase-ip-addresses) és a [Bejövő forgalom vezérlése egy app Service Environment](../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md).
 
 Annak megállapítása, hogy a függvény alkalmazás fut-e egy App Service Environmentban:
 
@@ -128,6 +138,6 @@ az webapp show --resource-group <group_name> --name <app_name> --query sku --out
 
 A App Service Environment `sku` `Isolated` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az IP-változások gyakori oka az alkalmazások méretezésének változásai. [További információ a Function app skálázásról](functions-scale.md).

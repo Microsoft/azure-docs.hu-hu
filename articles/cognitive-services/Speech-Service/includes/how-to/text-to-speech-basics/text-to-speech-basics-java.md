@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: bb2d9b04e6366b17cfb0ee4b8586359035be910d
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 80384662789e9dad979566715672c15a8648ea9a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102428222"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104611776"
 ---
 Ebben a rövid útmutatóban megtudhatja, hogyan végezheti el a szöveg-beszéd szintézist a Speech SDK használatával. Első lépésként alapkonfigurációt és szintézist kell elvégeznie, és az egyéni alkalmazások fejlesztéséhez további speciális példákra kell lépnie, például:
 
@@ -67,7 +67,7 @@ Az alábbiakat többféleképpen lehet inicializálni [`SpeechConfig`](/java/api
 Ebben a példában egy [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig) előfizetési kulcsot és egy régiót hoz létre. Szerezze be ezeket a hitelesítő adatokat a [beszédfelismerési szolgáltatás ingyenes kipróbálásához](../../../overview.md#try-the-speech-service-for-free)szükséges lépések követésével. Emellett a cikk további részében is létrehozhat egy alapszintű, a különböző testreszabási beállításokkal módosítható egyszerű kiírási kódot.
 
 ```java
-public class Program 
+public class Program
 {
     public static void main(String[] args) {
         SpeechConfig speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
@@ -124,7 +124,7 @@ A beszédfelismerés számos forgatókönyve esetében valószínű, hogy az ere
 * Az eredmény integrálása más API-k vagy szolgáltatások használatával.
 * A hangadatok módosítása, egyéni `.wav` fejlécek írása stb.
 
-Ezt a változást egyszerűen elvégezheti az előző példából. Először távolítsa el a `AudioConfig` blokkot, mivel a kimeneti viselkedést ettől kezdve manuálisan fogja kezelni a jobb szabályozás érdekében. Ezután adja át a-t a `null` `AudioConfig` `SpeechSynthesizer` konstruktorban. 
+Ezt a változást egyszerűen elvégezheti az előző példából. Először távolítsa el a `AudioConfig` blokkot, mivel a kimeneti viselkedést ettől kezdve manuálisan fogja kezelni a jobb szabályozás érdekében. Ezután adja át a-t a `null` `AudioConfig` `SpeechSynthesizer` konstruktorban.
 
 > [!NOTE]
 > `null`A ( `AudioConfig` z) helyett, ahelyett, hogy kihagyja, mint a fenti hangsugárzó-kimeneti példában, a nem játssza le alapértelmezés szerint a hangot a jelenlegi aktív kimeneti eszközön.
@@ -135,7 +135,7 @@ Ezúttal egy változóba menti az eredményt [`SpeechSynthesisResult`](/java/api
 public static void main(String[] args) {
     SpeechConfig speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
     SpeechSynthesizer synthesizer = new SpeechSynthesizer(speechConfig, null);
-    
+
     SpeechSynthesisResult result = synthesizer.SpeakText("Getting the response as an in-memory stream.");
     AudioDataStream stream = AudioDataStream.fromResult(result);
     System.out.print(stream.getStatus());
@@ -254,3 +254,10 @@ Ha egy neurális hangra szeretne váltani, módosítsa a `name` beállítást az
   </voice>
 </speak>
 ```
+
+## <a name="visemes"></a>Visemes
+
+A beszédfelismerés általában jó módszer az arc-kifejezések animálására.
+A [visemes](../../../how-to-speech-synthesis-viseme.md) gyakran a megfigyelt beszédben (például az ajkak, az állkapocs és a nyelv pozíciójában) jelennek meg egy adott fonéma készítésekor.
+Az Viseme esemény a Speech SDK-ban előfizethet az arc-animálási adatgyűjtés létrehozásához. Ezt követően alkalmazhatja az ilyen jellegű adatbevitelt egy karakterre az arc-animáció kihasználása érdekében.
+Ismerje meg [, hogyan szerezhet be viseme-kimeneteket](../../../how-to-speech-synthesis-viseme.md#get-viseme-outputs-with-the-speech-sdk).

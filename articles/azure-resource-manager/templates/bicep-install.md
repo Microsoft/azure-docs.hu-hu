@@ -2,13 +2,13 @@
 title: A bicep fejlesztési és üzembe helyezési környezetek beállítása
 description: A bicep fejlesztési és üzembe helyezési környezetek konfigurálása
 ms.topic: conceptual
-ms.date: 03/09/2021
-ms.openlocfilehash: 0434c08a4427d2549a9adf4e4ab1e7e73a465ad8
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.date: 03/17/2021
+ms.openlocfilehash: d665a863affdec2009fc208f76b85a7f25de451d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102620052"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594393"
 ---
 # <a name="setup-bicep-development-and-deployment-environment"></a>A bicep fejlesztési és üzembe helyezési környezet beállítása
 
@@ -18,7 +18,7 @@ Megtudhatja, hogyan lehet beállítani a bicep fejlesztési és üzembe helyezé
 
 A legjobb bicep-szerzői élmény eléréséhez két összetevőre van szükség:
 
-- **A bicep bővítmény a Visual Studio Code**-hoz. A bicep-fájlok létrehozásához jó bicep szerkesztőre van szükség. Javasoljuk, hogy a [Visual Studio Code](https://code.visualstudio.com/) -ot a [bicep kiterjesztéssel](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep). Ezek az eszközök nyelvi támogatást és erőforrás-újratöltést biztosítanak. Segítenek létrehozni és érvényesíteni a bicep-fájlokat. További információ: rövid útmutató [: a bicep-fájlok létrehozása a Visual Studio Code](./quickstart-create-bicep-use-visual-studio-code.md)-ban.
+- **A bicep bővítmény a Visual Studio Code**-hoz. A bicep-fájlok létrehozásához jó bicep szerkesztőre van szükség. Javasoljuk, hogy a [Visual Studio Code](https://code.visualstudio.com/) -ot a [bicep kiterjesztéssel](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep). Ezek az eszközök nyelvi támogatást és erőforrás-újratöltést biztosítanak. Segítenek létrehozni és érvényesíteni a bicep-fájlokat. További információ a Visual Studio Code és a bicep bővítménnyel kapcsolatban: gyors útmutató [: a bicep-fájlok létrehozása a Visual Studio Code](./quickstart-create-bicep-use-visual-studio-code.md)használatával.
 - **BICEP parancssori** felület. A bicep parancssori felület használatával lefordíthatja a bicep-fájlokat az ARM JSON-sablonokba, és visszafordíthatja az ARM JSON-sablonokat a bicep-fájlokba. További információ: a [BICEP CLI telepítése](#install-bicep-cli).
 
 ## <a name="deployment-environment"></a>Üzembehelyezési környezet

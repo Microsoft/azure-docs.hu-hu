@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: jeedes
-ms.openlocfilehash: 8838e3c92a2c7ccc77794973b3cb8e67128e3c71
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a22a214104357b9ad99238a8db157839a1c9fd46
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101654820"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591945"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Akamai
 
@@ -478,11 +478,11 @@ Rendelje hozzá az identitás-szolgáltatót.
 
 1. Ellenőrizze a címtár létrehozását.
 
-    ![Képernyőkép a Akamai EAA konzol könyvtárainak ablakáról, amely azt mutatja, hogy a könyvtár-főbemutató. Live hozzá lett adva.](./media/header-akamai-tutorial/directory-domain.png)
+    ![Képernyőkép a Akamai EAA konzol könyvtárainak ablakáról, amely azt mutatja, hogy a címtár superdemo.live lett hozzáadva.](./media/header-akamai-tutorial/directory-domain.png)
 
 1. Adja hozzá azokat a csoportokat/szervezeti egységeket, akiknek hozzáférésre van szükségük.
 
-    ![Képernyőkép a könyvtár főbemutatójának beállításairól. élő. A csoportok vagy szervezeti egységek hozzáadására kiválasztott ikon ki van emelve.](./media/header-akamai-tutorial/add-group.png)
+    ![Képernyőkép a címtár superdemo.live beállításairól. A csoportok vagy szervezeti egységek hozzáadására kiválasztott ikon ki van emelve.](./media/header-akamai-tutorial/add-group.png)
 
 1. Az alábbi csoport neve EAAGroup, és 1 taggal rendelkezik.
 
@@ -490,7 +490,7 @@ Rendelje hozzá az identitás-szolgáltatót.
 
 1. Adja hozzá a könyvtárat a személyazonosság-szolgáltatóhoz az **identitás**  >  -**szolgáltatók** elemre kattintva, majd kattintson a **címtárak** fülre, és kattintson a **hozzárendelés könyvtár** elemre.
 
-    ![Képernyőkép az Azure AD SSO-hez készült Akamai EAA konzol könyvtárainak lapról, amely a főbemutatót jeleníti meg. az aktuálisan hozzárendelt könyvtárak listájának megjelenítése.](./media/header-akamai-tutorial/assign-directory.png)
+    ![Képernyőkép az Azure AD SSO-hoz készült Akamai EAA konzol könyvtárainak lapról, amely az aktuálisan hozzárendelt könyvtárak listájában megjeleníti a superdemo.live.](./media/header-akamai-tutorial/assign-directory.png)
 
 ### <a name="configure-kcd-delegation-for-eaa-walkthrough"></a>KCD delegálás konfigurálása az EAA-hoz – útmutató
 
@@ -498,7 +498,7 @@ Rendelje hozzá az identitás-szolgáltatót.
 
 1. A példában a **EAADelegation** nevű fiókot fogjuk használni. Ezt a **Active Directory felhasználók és számítógépek** snappin hajthatja végre.
 
-    ![Képernyőkép az Azure AD SSO-hoz készült Akamai EAA konzol könyvtárainak lapról. A könyvtár-főbemutató. Live a jelenleg hozzárendelt könyvtárak területen található.](./media/header-akamai-tutorial/assign-directory.png)
+    ![Képernyőkép az Azure AD SSO-hoz készült Akamai EAA konzol könyvtárainak lapról. A címtár superdemo.live az aktuálisan hozzárendelt könyvtárak területen jelenik meg.](./media/header-akamai-tutorial/assign-directory.png)
 
     > [!NOTE]
     > A felhasználónévnek megadott formátumúnak kell lennie az **identitást elfogó név** alapján. Az 1. ábrán láthatjuk, hogy **corpapps.login.go.Akamai-Access.com**
@@ -583,8 +583,8 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 * Kattintson az alkalmazás tesztelése Azure Portal lehetőségre, és automatikusan be kell jelentkeznie arra a Akamai, amelyhez be szeretné állítani az egyszeri bejelentkezést.
 
-* Használhatja a Microsoft saját alkalmazásait. Amikor a saját alkalmazások Akamai csempére kattint, automatikusan be kell jelentkeznie arra a Akamai, amelyhez be szeretné állítani az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
+* Használhatja a Microsoft saját alkalmazásait. Amikor a saját alkalmazások Akamai csempére kattint, automatikusan be kell jelentkeznie arra a Akamai, amelyhez be szeretné állítani az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
 
 ## <a name="next-steps"></a>Következő lépések
 
-A Akamai konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+A Akamai konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

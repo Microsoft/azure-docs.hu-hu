@@ -9,20 +9,20 @@ ms.reviewer: ''
 ms.date: 03/08/2021
 author: ruxu
 ms.author: ruxu
-ms.openlocfilehash: ad6f0d5ad55716e19e4e0c571056d18641e23d21
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: a3899b83133b3f951547fae0b11c044bfa85a5fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102620248"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589599"
 ---
 # <a name="tutorial-build-machine-learning-applications-using-microsoft-machine-learning-for-apache-spark-preview"></a>Oktatóanyag: gépi tanulási alkalmazások készítése a Microsoft Machine Learning for Apache Spark (előzetes verzió)
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre gépi tanulási alkalmazásokat a Microsoft Machine Learning for Apache Spark ([MMLSpark](https://github.com/Azure/mmlspark)) használatával. A MMLSpark számos mély tanulási és adatelemzési eszközt, például az [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/big-data/cognitive-services-for-big-data), a [OpenCV](https://opencv.org/), a [LightGBM](https://github.com/Microsoft/LightGBM) és sok más, a Apache Spark elosztott gépi tanulási megoldását bővíti ki.  A MMLSpark lehetővé teszi, hogy a különböző Spark-adatforrásokból származó hatékony és rugalmasan méretezhető prediktív és analitikai modelleket építsen ki.
+Ebből a cikkből megtudhatja, hogyan hozhat létre gépi tanulási alkalmazásokat a Microsoft Machine Learning for Apache Spark ([MMLSpark](https://github.com/Azure/mmlspark)) használatával. A MMLSpark számos mély tanulási és adatelemzési eszközt, például az [Azure Cognitive Services](../../cognitive-services/big-data/cognitive-services-for-big-data.md), a [OpenCV](https://opencv.org/), a [LightGBM](https://github.com/Microsoft/LightGBM) és sok más, a Apache Spark elosztott gépi tanulási megoldását bővíti ki.  A MMLSpark lehetővé teszi, hogy a különböző Spark-adatforrásokból származó hatékony és rugalmasan méretezhető prediktív és analitikai modelleket építsen ki.
 A szinapszis Spark beépített MMLSpark-kódtárakat biztosít, többek között a következőket:
 
 - [Vowpal Wabbit](https://github.com/VowpalWabbit/vowpal_wabbit) – a gépi tanuláshoz készült Library-szolgáltatások lehetővé teszik a szöveges elemzések, például a tweetek elemzését.
-- [Cognitive Services a Sparkban](https://docs.microsoft.com/azure/cognitive-services/big-data/cognitive-services-for-big-data) – az Azure Cognitive Services funkcióinak SparkML-folyamatokban való összevonásához a megoldás kialakításához a kognitív adatmodellezési szolgáltatások, például a anomáliák észlelése érdekében.
+- [Cognitive Services a Sparkban](../../cognitive-services/big-data/cognitive-services-for-big-data.md) – az Azure Cognitive Services funkcióinak SparkML-folyamatokban való összevonásához a megoldás kialakításához a kognitív adatmodellezési szolgáltatások, például a anomáliák észlelése érdekében.
 - [LightBGM](https://github.com/Azure/mmlspark/blob/master/docs/lightgbm.md) – gépi tanulási modell lehetővé teszi a modell betanítását a prediktív elemzésekhez, például a Face ID észleléséhez.
 - Feltételes KNN – skálázható KNN-modellek feltételes lekérdezésekkel.
 - [Http on Spark](https://github.com/Azure/mmlspark/blob/master/docs/http.md) – a Spark és a HTTP protokollon alapuló kisegítő lehetőségek integrálásával lehetővé teszi az elosztott szolgáltatások előkészítését.
@@ -38,9 +38,9 @@ Ha nem rendelkezik Azure-előfizetéssel, [a Kezdés előtt hozzon létre egy in
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-- Az [Azure szinapszis Analytics-munkaterület](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace) egy Azure Data Lake Storage Gen2 Storage-fiókkal, amely alapértelmezett tárolóként van konfigurálva. A Data Lake Storage Gen2 fájlrendszer *tárolási blob-Adatközreműködőinek* kell lennie.
-- Spark-készlet az Azure szinapszis Analytics-munkaterületen. Részletekért lásd: [Spark-készlet létrehozása az Azure szinapszisban](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-sql-pool-studio).
-- Az oktatóanyag [konfigurálása Cognitive Services az Azure szinapszisban](https://docs.microsoft.com/azure/synapse-analytics/machine-learning/tutorial-configure-cognitive-services-synapse)című témakörben leírt előzetes konfigurációs lépések.
+- Az [Azure szinapszis Analytics-munkaterület](../get-started-create-workspace.md) egy Azure Data Lake Storage Gen2 Storage-fiókkal, amely alapértelmezett tárolóként van konfigurálva. A Data Lake Storage Gen2 fájlrendszer *tárolási blob-Adatközreműködőinek* kell lennie.
+- Spark-készlet az Azure szinapszis Analytics-munkaterületen. Részletekért lásd: [Spark-készlet létrehozása az Azure szinapszisban](../quickstart-create-sql-pool-studio.md).
+- Az oktatóanyag [konfigurálása Cognitive Services az Azure szinapszisban](./tutorial-configure-cognitive-services-synapse.md)című témakörben leírt előzetes konfigurációs lépések.
 
 
 ## <a name="get-started"></a>Bevezetés
@@ -69,7 +69,7 @@ anomalydetector_key = mssparkutils.credentials.getSecret("keyvaultForSynapse", a
 
 ## <a name="text-analytics-sample"></a>Text Analytics-minta
 
-A [text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) szolgáltatás számos algoritmust biztosít az intelligens adatok szövegből való kinyeréséhez. Megtalálhatja például az adott bemeneti szöveg hangulatát. A szolgáltatás 0,0 és 1,0 közötti pontszámot ad vissza, ahol az alacsony pontszámok negatív hangulatot és magas pontszámot jeleznek a pozitív hangulat alapján. Ez a példa három egyszerű mondatot használ, és visszaadja az egyes minták hangulatát.
+A [text Analytics](../../cognitive-services/text-analytics/index.yml) szolgáltatás számos algoritmust biztosít az intelligens adatok szövegből való kinyeréséhez. Megtalálhatja például az adott bemeneti szöveg hangulatát. A szolgáltatás 0,0 és 1,0 közötti pontszámot ad vissza, ahol az alacsony pontszámok negatív hangulatot és magas pontszámot jeleznek a pozitív hangulat alapján. Ez a példa három egyszerű mondatot használ, és visszaadja az egyes minták hangulatát.
 
 ```python
 from pyspark.sql.functions import col
@@ -104,7 +104,7 @@ display(sentiment.transform(df_sentences).select("text", col("sentiment")[0].get
 | Boldog vagyok, ma, a napsütötte! | pozitív |
 
 ## <a name="computer-vision-sample"></a>Számítógépes jövőkép minta
-[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) a lemezképek elemzésével azonosíthatja a struktúrát, például az arcokat, az objektumokat és a természetes nyelvi leírásokat. Ebben a példában a következő képet címkézjük. A címkék egyszavas leírások a képen látható dolgokról, például a felismerhető objektumokról, a személyekről, a díszletekről és a műveletekről.
+[Computer Vision](../../cognitive-services/computer-vision/index.yml) a lemezképek elemzésével azonosíthatja a struktúrát, például az arcokat, az objektumokat és a természetes nyelvi leírásokat. Ebben a példában a következő képet címkézjük. A címkék egyszavas leírások a képen látható dolgokról, például a felismerhető objektumokról, a személyekről, a díszletekről és a műveletekről.
 
 
 ![image](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/objects.jpg)
@@ -134,7 +134,7 @@ display(analysis.transform(df_images).select("image", "analysis_results.descript
 | `https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/objects.jpg` | [korcsolyázás, személy, férfi, Outdoor, lovaglás, sport, gördeszka, fiatal, tábla, ing, levegő, Park, fiú, oldal, ugrás, rámpa, trükk, művelet, repülés] |
 
 ## <a name="bing-image-search-sample"></a>Bing képkeresési minta
-[Bing Image Search](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview) megkeresi a weben a felhasználó természetes nyelvi lekérdezéséhez kapcsolódó rendszerképek lekéréséhez. Ebben a példában egy szöveges lekérdezést használunk, amely idézőjelekkel rendelkező képeket keres. A lekérdezéshez kapcsolódó fényképeket tartalmazó kép URL-címeinek listáját adja vissza.
+[Bing Image Search](../../cognitive-services/bing-image-search/overview.md) megkeresi a weben a felhasználó természetes nyelvi lekérdezéséhez kapcsolódó rendszerképek lekéréséhez. Ebben a példában egy szöveges lekérdezést használunk, amely idézőjelekkel rendelkező képeket keres. A lekérdezéshez kapcsolódó fényképeket tartalmazó kép URL-címeinek listáját adja vissza.
 
 
 ```python
@@ -185,7 +185,7 @@ display(res_bingsearch.dropDuplicates())
 
 ## <a name="anomaly-detector-sample"></a>Rendellenesség-érzékelő minta
 
-Az [anomália detektor](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/) kiválóan használható a szabálytalanságok észlelésére az idősorozat-adataiban. Ebben a példában a szolgáltatást használjuk a teljes idősorozatban található anomáliák keresésére.
+Az [anomália detektor](../../cognitive-services/anomaly-detector/index.yml) kiválóan használható a szabálytalanságok észlelésére az idősorozat-adataiban. Ebben a példában a szolgáltatást használjuk a teljes idősorozatban található anomáliák keresésére.
 
 ```python
 from pyspark.sql.functions import lit

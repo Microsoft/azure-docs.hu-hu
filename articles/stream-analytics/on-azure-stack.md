@@ -1,23 +1,20 @@
 ---
-title: Azure Stream Analytics futtatása Azure Stack (előzetes verzió)
+title: Azure Stream Analytics futtatása Azure Stack
 description: Hozzon létre egy Azure Stream Analytics Edge-feladatot, és telepítse azt Azure Stack hubhoz a IoT Edge Runtime használatával.
 ms.service: stream-analytics
 author: an-emma
 ms.author: raan
 ms.topic: how-to
-ms.date: 08/21/2020
+ms.date: 03/15/2021
 ms.custom: seodec18
-ms.openlocfilehash: 3463b3eae96c0a65206023ed0f21efe44294d4eb
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 315b2efa042721a19fa779794c4921f9ced1fc83
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020128"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589803"
 ---
-# <a name="run-azure-stream-analytics-on-azure-stack-preview"></a>Azure Stream Analytics futtatása Azure Stack (előzetes verzió)
-
-> [!IMPORTANT]
-> Ez a funkció előzetes verzióban érhető el, ezért nem ajánlott éles környezetben használni.
+# <a name="run-azure-stream-analytics-on-azure-stack"></a>Azure Stream Analytics futtatása Azure Stack 
 
 A Azure Stream Analytics Azure Stack hub-on IoT Edge modulként is futtatható. A konfigurációk hozzá lettek adva a IoT Edge modulhoz, amely lehetővé teszi, hogy egy Azure Stack hub-előfizetésben futó blob Storage-, Event Hubs-és IoT-Hubokkal működjön együtt azáltal, hogy engedélyezi az összes Azure Stack hub-beli alkalmazásban található Egyéni URL-címeket
 
@@ -63,7 +60,7 @@ Amikor Azure Stream Analytics-feladatot hoz létre egy IoT Edge-eszköz futtatá
 
    | Mező | Érték |
    | --- | --- |
-   | Name (Név) | Adja meg a tárfiók egyedi nevét. |
+   | Név | Adja meg a tárfiók egyedi nevét. |
    | Hely | Válassza ki az Önhöz legközelebb eső helyet.|
    | Előfizetés | Válassza ugyanazt az előfizetést, mint az IoT Hub esetében.|
    | Erőforráscsoport | Azt javasoljuk, hogy ugyanazt az erőforráscsoportot használja az [IoT Edge](../iot-edge/quickstart.md) rövid útmutatók és oktatóanyagok során létrehozott összes tesztelési erőforráshoz. Például: **IoTEdgeResources**. |
@@ -84,7 +81,7 @@ Amikor Azure Stream Analytics-feladatot hoz létre egy IoT Edge-eszköz futtatá
    | Hely | Válassza ki az Önhöz legközelebb eső helyet. |
    | Üzemeltetési környezet | Válassza az **Edge** lehetőséget. |
 
-3. Kattintson a **Létrehozás** gombra.
+3. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="configure-your-job"></a>A feladat konfigurálása
 
@@ -150,7 +147,7 @@ Miután létrejött a Stream Analytics-feladat az Azure Portalon, konfigurálhat
    | Mező | Érték |
    | --- | --- |
    | Kimeneti alias | Egy rövid név, amely lekérdezésekben a lekérdezés kimenetének a blob-tárolóba történő irányítására szolgál. |
-   | Tárfiók | Annak a Storage-fióknak a neve, ahová a kimenetet küldi. (Példa: *<Storage Account Name> . blob.Shanghai.azurestack.Corp.microsoft.com*) |
+   | A(z) | Annak a Storage-fióknak a neve, ahová a kimenetet küldi. (Példa: *<Storage Account Name> . blob.Shanghai.azurestack.Corp.microsoft.com*) |
    | Storage-fiók kulcsa | A Storage-fiókhoz társított titkos kulcs. Ezt a beállítást automatikusan kitölti a rendszer, hacsak nem kiválasztja a blob Storage-beállítások manuális megadásának lehetőségét. |
 
 > [!NOTE]
@@ -174,6 +171,6 @@ Miután létrejött a Stream Analytics-feladat az Azure Portalon, konfigurálhat
    > [!div class="mx-imgBorder"]
    > [![Üzembe helyezés lap ](media/on-azure-stack/edge-deployment.png)](media/on-azure-stack/edge-deployment.png#lightbox)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [IoT Edge-eszközökön futó Azure Stream Analytics](./stream-analytics-edge.md)
 - [Stream Analytics Edge-feladatok fejlesztése](/stream-analytics-query/stream-analytics-query-language-reference)

@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 12/26/2020
-ms.openlocfilehash: 91375f4460b55617ace0b18b60d59d961a762f4c
-ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
+ms.openlocfilehash: e0b9eea7be97b9b67e75c314c4a1d9e69322e5b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2020
-ms.locfileid: "97792500"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594257"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -36,7 +36,7 @@ Ha automatikus feladatátvételi házirenddel rendelkező automatikus feladatát
 - [Azure Portal](geo-distributed-application-configure-tutorial.md)
 - [Azure CLI: feladatátvételi csoport](scripts/add-database-to-failover-group-cli.md)
 - [PowerShell: feladatátvételi csoport](scripts/add-database-to-failover-group-powershell.md)
-- [REST API: feladatátvételi csoport](/rest/api/sql/failovergroups).
+- [REST API: feladatátvételi csoport](/rest/api/sql/failovergroups)
 
 A feladatátvételt követően győződjön meg arról, hogy az adatbázis és a kiszolgáló, illetve a példány hitelesítési követelményei az új elsődleges kiszolgálón vannak konfigurálva. Részletekért lásd: [SQL Database biztonság a katasztrófa utáni helyreállítás után](active-geo-replication-security-configure.md).
 
@@ -115,7 +115,7 @@ A valós Üzletmenet-folytonosság eléréséhez az adatközpontok közötti ada
 
   - Vész-helyreállítási (DR) gyakorlatok készítése az éles környezetben, ha az adatvesztés nem fogadható el
   - Adatbázisok áthelyezése másik régióba
-  - Az adatbázisok visszaküldése az elsődleges régióba a leállás csökkentése után (feladat-visszavétel).
+  - Az adatbázisok visszaküldése az elsődleges régióba a leállás csökkentése után (feladat-visszavétel)
 
 - **Nem tervezett feladatátvétel**
 
@@ -127,7 +127,7 @@ A valós Üzletmenet-folytonosság eléréséhez az adatközpontok közötti ada
 
 - **Türelmi időszak adatvesztéssel**
 
-  Mivel az elsődleges és másodlagos adatbázisok aszinkron replikálással vannak szinkronizálva, a feladatátvétel adatvesztést okozhat. Testreszabhatja az automatikus feladatátvételi szabályzatot, hogy tükrözze az alkalmazás adatvesztési tűréshatárát. A konfigurálásával `GracePeriodWithDataLossHours` szabályozhatja, hogy a rendszer mennyi ideig várjon, mielőtt elindítja a feladatátvételt, amely valószínűleg adatvesztést okoz.
+  Mivel az elsődleges és másodlagos adatbázisok aszinkron replikálással vannak szinkronizálva, a feladatátvétel adatvesztést okozhat. Testreszabhatja az automatikus feladatátvételi szabályzatot, hogy tükrözze az alkalmazás adatvesztési tűréshatárát. A konfigurálásával `GracePeriodWithDataLossHours` szabályozhatja, hogy a rendszer mennyi ideig várjon, mielőtt elindítja a feladatátvételt, amely valószínűleg adatvesztést eredményezhet.
 
 - **Több feladatátvételi csoport**
 
@@ -176,7 +176,7 @@ OLTP műveletek végrehajtásakor használja `<fog-name>.database.windows.net` a
 
 ### <a name="using-read-only-listener-for-read-only-workload"></a>Írásvédett munkaterheléshez csak olvasási figyelő használata
 
-Ha az adatok bizonyos elavulása érdekében logikailag elszigetelt írásvédett munkaterheléssel rendelkezik, használhatja az alkalmazás másodlagos adatbázisát. Csak olvasási munkamenetek esetén használja `<fog-name>.secondary.database.windows.net` a kiszolgáló URL-címét, a kapcsolat pedig automatikusan a másodlagosra lesz irányítva. Azt is javasoljuk, hogy a használatával adja meg a következőt: `ApplicationIntent=ReadOnly` .
+Ha az adatok bizonyos elavulása érdekében logikailag elszigetelt írásvédett munkaterheléssel rendelkezik, használhatja az alkalmazás másodlagos adatbázisát. Csak olvasási munkamenetek esetén használja `<fog-name>.secondary.database.windows.net` a kiszolgáló URL-címét, a kapcsolat pedig automatikusan a másodlagosra lesz irányítva. Azt is javasoljuk, hogy a használatával adja meg az olvasási szándékot a kapcsolatok karakterláncában `ApplicationIntent=ReadOnly` .
 
 ### <a name="preparing-for-performance-degradation"></a>A teljesítmény romlásának előkészítése
 
@@ -485,7 +485,7 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Részletes oktatóanyagok:
   - [SQL Database hozzáadása feladatátvételi csoporthoz](failover-group-add-single-database-tutorial.md)

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: aa6c0d9035f172cc7fb520ff58f233a82fca228a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 26703920fda8746badf085f96686f922ee250513
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741072"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606633"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Az új fájlok növekményes másolása a Adatok másolása eszköz használatával, az időparticionált fájl neve alapján
 
@@ -58,7 +58,7 @@ Készítse elő a blob Storage-t az oktatóanyaghoz az alábbi lépések végreh
 
     Az adat-előállító nevének _globálisan egyedinek_ kell lennie. A következő hibaüzenet jelenhet meg:
 
-   ![Új adat-előállító hibaüzenete](./media/doc-common-process/name-not-available-error.png)
+   :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="Új adatelőállító-hibaüzenet az ismétlődő névhez.":::
 
    Ha a név értékével kapcsolatos hibaüzenet kap, adjon meg másik nevet az adat-előállítóhoz. Például: _**sajátneve**_**ADFTutorialDataFactory**. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
 3. Válassza ki az Azure-**előfizetést** az új adat-előállító létrehozásához.
@@ -76,8 +76,7 @@ Készítse elő a blob Storage-t az oktatóanyaghoz az alábbi lépések végreh
 8. A létrehozás befejezése után a **Data Factory** kezdőlapja jelenik meg.
 9. Az Azure Data Factory felhasználói felületének (UI) külön lapon történő megnyitásához kattintson a **Tartalomkészítés és monitorozás** csempére.
 
-    ![Data factory kezdőlap](./media/doc-common-process/data-factory-home-page.png)
-
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="A Azure Data Factory kezdőlapja, a szerző & monitor csempével.":::
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>Folyamat létrehozása az Adatok másolása eszközzel
 

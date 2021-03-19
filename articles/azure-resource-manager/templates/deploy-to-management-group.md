@@ -2,13 +2,13 @@
 title: Erőforrások központi telepítése a felügyeleti csoportba
 description: Ismerteti, hogyan lehet erőforrásokat telepíteni a felügyeleti csoport hatókörében egy Azure Resource Manager sablonban.
 ms.topic: conceptual
-ms.date: 03/16/2021
-ms.openlocfilehash: b14dc3622a6ad6519968bd2998aa354a850f2515
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.date: 03/18/2021
+ms.openlocfilehash: 79020e8e24cb43697a44ac9accd4e777bffe959e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601593"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594206"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>Felügyeleti csoportok üzembe helyezése ARM-sablonokkal
 
@@ -219,6 +219,14 @@ A következő példa létrehoz egy új felügyeleti csoportot a szülőként meg
     }
 }
 ```
+
+## <a name="subscriptions"></a>Előfizetések
+
+Ha egy ARM-sablon segítségével szeretne új Azure-előfizetést létrehozni egy felügyeleti csoportban, tekintse meg a következőt:
+
+* [Azure Nagyvállalati Szerződés-előfizetések programozott létrehozása](../../cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement.md)
+* [Azure-előfizetések programozott létrehozása Microsoft-ügyfél szerződéshez](../../cost-management-billing/manage/programmatically-create-subscription-microsoft-customer-agreement.md)
+* [Azure-előfizetések programozott létrehozása Microsoft partneri szerződéshez](../../cost-management-billing/manage/programmatically-create-subscription-microsoft-partner-agreement.md)
 
 Meglévő Azure-előfizetést egy új felügyeleti csoportba áthelyező sablon üzembe helyezéséhez lásd: [előfizetések áthelyezése az ARM-sablonban](../../governance/management-groups/manage.md#move-subscriptions-in-arm-template) .
 

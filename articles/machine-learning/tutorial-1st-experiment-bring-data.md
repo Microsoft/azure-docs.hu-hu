@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 02/11/2021
 ms.custom: tracking-python
-ms.openlocfilehash: bbe28f4fda32ce7d55a437e4ac944dc206f436ee
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: ecabfde624ba6d3393bbf6d5480b83dbb5303c5e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102522359"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604558"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Oktatóanyag: saját adatai használata (4. rész)
 
@@ -39,7 +39,12 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A sorozat [3. részének](tutorial-1st-experiment-sdk-train.md) befejezése.
+Szüksége lesz az előző oktatóanyagban létrehozott pytorch-környezetre vonatkozó adatmennyiségre és frissített verzióra.  Győződjön meg arról, hogy végrehajtotta a következő lépéseket:
+
+1. [A betanítási szkript létrehozása](tutorial-1st-experiment-sdk-train.md#create-training-scripts)
+1. [Új Python-környezet létrehozása](tutorial-1st-experiment-sdk-train.md#environment)
+1. [Helyi tesztelés](tutorial-1st-experiment-sdk-train.md#test-local)
+1. [A Conda-környezet fájljának frissítése](tutorial-1st-experiment-sdk-train.md#update-the-conda-environment-file)
 
 ## <a name="adjust-the-training-script"></a>A betanítási parancsfájl módosítása
 
@@ -75,6 +80,7 @@ optimizer = optim.SGD(
     momentum=args.momentum,    # get momentum from command-line argument
 )
 ```
+
 > [!div class="nextstepaction"]
 > [Kiigazítottam a betanítási szkriptet](?success=adjust-training-script#test-locally) [egy hibába ütközött](https://www.research.net/r/7C6W7BQ?issue=adjust-training-script)
 
@@ -84,28 +90,27 @@ A szkript mostantól argumentumként fogadja az _adatelérési utat_ . A-től ke
 
 :::image type="content" source="media/tutorial-1st-experiment-bring-data/directory-structure.png" alt-text="A címtár szerkezete a. azureml, az adat és az src alkönyvtárakat mutatja.":::
 
+1. Lépjen ki a jelenlegi környezetből.
 
-Ha `train.py` az előző oktatóanyagban nem futtatta helyileg a szolgáltatást, nem lesz a `data/` könyvtára. Ebben az esetben futtassa a `torchvision.datasets.CIFAR10` metódust helyileg a `download=True` `train.py` parancsfájlban.
+    ```bash
+    conda deactivate
 
-Továbbá a helyi futtatáshoz győződjön meg róla, hogy kilép az oktatóanyag-környezetből, és aktiválja az új Conda-környezetet:
+1. Now create and activate the new environment.  This will rebuild the pytorch-aml-env with the [updated environment file](tutorial-1st-experiment-sdk-train.md#update-the-conda-environment-file)
 
-```bash
-conda deactivate                # If you are still using the tutorial environment, exit it
-```
 
-```bash
-conda env create -f .azureml/pytorch-env.yml    # create the new conda environment with updated dependencies
-```
+    ```bash
+    conda env create -f .azureml/pytorch-env.yml    # create the new conda environment with updated dependencies
+    ```
 
-```bash
-conda activate pytorch-aml-env          # activate new conda environment
-```
+    ```bash
+    conda activate pytorch-aml-env          # activate new conda environment
+    ```
 
-A módosított betanítási parancsfájl helyi futtatásához hívja a következőt:
+1. Végül futtassa helyileg a módosított betanítási parancsfájlt.
 
-```bash
-python src/train.py --data_path ./data --learning_rate 0.003 --momentum 0.92
-```
+    ```bash
+    python src/train.py --data_path ./data --learning_rate 0.003 --momentum 0.92
+    ```
 
 Nem kell letöltenie a CIFAR10-adatkészletet az adat helyi elérési útjának átadásával. A _tanulási sebesség_ és a _lendület_ hiperparaméterek beállítása különböző értékeivel is kísérletezhet, anélkül, hogy a betanítási szkriptben kellene őket feldolgoznia.
 

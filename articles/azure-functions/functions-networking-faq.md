@@ -4,12 +4,12 @@ description: Válaszok a Azure Functions-vel való hálózatkezeléssel kapcsola
 ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.reviewer: glenga
-ms.openlocfilehash: 3e8a992aac95b6c2688cb45aa980bf0b01883a53
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 24afeeee3207127bb9404156dc390433671dd5da
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578229"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592302"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Gyakori kérdések a hálózatkezeléssel kapcsolatban Azure Functions
 
@@ -17,7 +17,9 @@ Ez a cikk a hálózatkezeléssel kapcsolatos gyakori kérdéseket ismerteti Azur
 
 ## <a name="how-do-i-set-a-static-ip-in-functions"></a>Hogyan statikus IP-címet beállítani a functions szolgáltatásban?
 
-Egy függvény üzembe helyezése egy App Service Environmentban jelenleg az egyetlen módszer a függvény statikus bejövő és kimenő IP-címének kiosztására. App Service Environment használatáról a [belső terheléselosztó létrehozása és használata app Service Environment](../app-service/environment/create-ilb-ase.md)használatával című cikk nyújt tájékoztatást.
+A függvények üzembe helyezése egy App Service Environment elsődleges módja, hogy statikus bejövő és kimenő IP-címeket lehessen alkalmazni a függvényekhez. App Service Environment használatáról a [belső terheléselosztó létrehozása és használata app Service Environment](../app-service/environment/create-ilb-ase.md)használatával című cikk nyújt tájékoztatást.
+
+A virtuális hálózati NAT-átjáró használatával a kimenő forgalmat egy Ön által felügyelt nyilvános IP-címen irányíthatja. További információ: [oktatóanyag: Azure functions kimenő IP-cím szabályozása Azure Virtual Network NAT-átjáróval](functions-how-to-use-nat-gateway.md). 
 
 ## <a name="how-do-i-restrict-internet-access-to-my-function"></a>Hogyan korlátozza az internet-hozzáférést a függvényhez?
 
@@ -33,7 +35,7 @@ Ne feledje, hogy a Azure Portal-szerkesztőnek közvetlen hozzáférésre van sz
 
 A [szolgáltatási végpontok](./functions-networking-options.md#use-service-endpoints)használatával korlátozhatja a functions-alkalmazások **bejövő** forgalmát egy virtuális hálózatra. Ez a konfiguráció továbbra is lehetővé teszi, hogy a Function alkalmazás kimenő hívásokat hajtson végre az interneten.
 
-Ha egy olyan függvényt szeretne teljes mértékben korlátozni, amely az összes forgalmat egy virtuális hálózaton keresztül hajtja végre, a kimenő virtuális hálózati integrációval vagy egy App Service Environment rendelkező [privát végpontokat](./functions-networking-options.md#private-endpoint-connections) használhat.
+Ha egy olyan függvényt szeretne teljes mértékben korlátozni, amely az összes forgalmat egy virtuális hálózaton keresztül hajtja végre, a kimenő virtuális hálózati integrációval vagy egy App Service Environment rendelkező [privát végpontokat](./functions-networking-options.md#private-endpoint-connections) használhat. További információ: [Azure functions integrálása Azure-beli virtuális hálózattal privát végpontok használatával](functions-create-vnet.md).
 
 ## <a name="how-can-i-access-resources-in-a-virtual-network-from-a-function-app"></a>Hogyan lehet hozzáférni egy virtuális hálózat erőforrásaihoz egy Function alkalmazásból?
 

@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.custom: template-concept
-ms.openlocfilehash: d0cdabb3b22d642a7903810181106b09c549e1a2
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: e31a696dfb443c20566f13f5a228eefac7af5ecc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102218162"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595923"
 ---
 # <a name="azure-percept-ai-models"></a>Azure Percept AI-modellek
 
@@ -40,6 +40,10 @@ A rendszer szintén elérhetővé teszi A [felhasználók számlálására szolg
 Az Azure Percept Studio segítségével egyéni [jövőkép](./tutorial-nocode-vision.md) -és beszédfelismerési megoldásokat fejleszthet, és nincs szükség kódolásra.
 
 Az egyéni látási megoldások esetében mind az objektum-észlelési, mind a besorolási AI-modellek elérhetők. Egyszerűen töltse fel és címkézze fel a betanítási lemezképeket, amelyek igény szerint közvetlenül az Azure Percept DK Azure Percept-víziójának használatával hozhatók létre. A modell betanítása és kiértékelése könnyen elvégezhető az [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/#overview)részét képező [Custom Visionban](https://www.customvision.ai/).
+
+</br>
+
+> [!VIDEO https://www.youtube.com/embed/9LvafyazlJM]
 
 Az egyéni beszédfelismerési megoldások esetében a hangsegéd-sablonok jelenleg a következő alkalmazásokhoz érhetők el:
 

@@ -3,15 +3,15 @@ title: Parametrizálja társított szolgáltatások Azure Data Factory
 description: Megtudhatja, hogyan parametrizálja a társított szolgáltatásokat a Azure Data Factoryban, és hogyan adhat át dinamikus értékeket a futási időben.
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 01/15/2021
+ms.date: 03/18/2021
 author: dcstwh
 ms.author: weetok
-ms.openlocfilehash: fbb7cb6fd0041ab77e649b14712907d916eaa449
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: df26b77f37100ae41b26c013c57cccbfa0d7e205
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372926"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595583"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametrizálja társított szolgáltatások Azure Data Factory
 
@@ -38,18 +38,21 @@ A társított szolgáltatás felhasználói felületen való létrehozásakor Da
 
 - Amazon Redshift
 - Amazon S3
+- Azure Blob Storage
 - Azure Cosmos DB (SQL API)
+- 2. generációs Azure Data Lake Storage
 - Azure Database for MySQL
 - Azure Databricks
 - Azure Key Vault
 - Azure SQL Database
 - Felügyelt Azure SQL-példányok
 - Azure Synapse Analytics 
+- Azure Table Storage
+- Általános HTTP
+- Általános REST
 - MySQL
 - Oracle
 - SQL Server
-- Általános HTTP
-- Általános REST
 
 A fenti listában nem szereplő egyéb társított szolgáltatások esetében a parametrizálja a JSON-t a felhasználói felületen:
 

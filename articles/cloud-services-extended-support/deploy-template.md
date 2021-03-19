@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: a606956483ddb7c7f3a4f3cef8728ade508ab461
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: b3fd8dcd5f2e73b798f6e9529b5811b9935bc393
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103574271"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104605766"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Cloud Service (kiterjesztett támogatás) üzembe helyezése ARM-sablonok használatával
 
@@ -45,7 +45,7 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre felhőalapú szolgáltatást 
 ## <a name="deploy-a-cloud-service-extended-support"></a>Cloud Service üzembe helyezése (kiterjesztett támogatás)
 
 > [!NOTE]
-> A felhőalapú szolgáltatás (bővített támogatás) üzembe helyezésének másik módja a [Azure Portalon](https://portal.azure.com)keresztül történik. A létrehozott ARM-sablon a portálon keresztül tölthető le a jövőbeli üzembe helyezésekhez
+> A felhőalapú szolgáltatás (bővített támogatás) üzembe helyezésének másik módja a [Azure Portalon](https://portal.azure.com)keresztül történik. A [létrehozott ARM-sablon](generate-template-portal.md) a portálon keresztül tölthető le a jövőbeli üzembe helyezésekhez
  
 1. Hozzon létre egy virtuális hálózatot. A virtuális hálózat nevének meg kell egyeznie a szolgáltatás konfigurációs (. cscfg) fájljának hivatkozásaival. Ha meglévő virtuális hálózatot használ, hagyja ki ezt a szakaszt az ARM-sablonból.
 

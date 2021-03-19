@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: trbye
-ms.openlocfilehash: ae2f37cd84904aff33c4752bd54c815b74bb71c8
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 78639386c9d836055d80566f4b84565c2c3b8e80
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102428205"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104611859"
 ---
 Ebben a rövid útmutatóban megtudhatja, hogyan végezheti el a szöveg-beszéd szintézist a Speech SDK használatával. Első lépésként alapkonfigurációt és szintézist kell elvégeznie, és az egyéni alkalmazások fejlesztéséhez további speciális példákra kell lépnie, például:
 
@@ -78,8 +78,8 @@ int wmain()
     }
     return 0;
 }
-    
-void synthesizeSpeech() 
+
+void synthesizeSpeech()
 {
     auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 }
@@ -92,7 +92,7 @@ Ezután létrehoz egy [`SpeechSynthesizer`](/cpp/cognitive-services/speech/speec
 Az indításhoz hozzon létre egy `AudioConfig` -t, hogy a függvény használatával automatikusan megírja a kimenetet egy `.wav` fájlba `FromWavFileOutput()` .
 
 ```cpp
-void synthesizeSpeech() 
+void synthesizeSpeech()
 {
     auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     auto audioConfig = AudioConfig::FromWavFileOutput("path/to/write/file.wav");
@@ -102,7 +102,7 @@ void synthesizeSpeech()
 Ezután hozza létre az a példányt `SpeechSynthesizer` , és adja át az `config` objektum és az `audioConfig` objektum paraméterként való átadását. Ezután a beszédfelismerés végrehajtása és a fájlba való írás olyan egyszerű, mintha `SpeakTextAsync()` egy szöveges karakterláncot futtasson.
 
 ```cpp
-void synthesizeSpeech() 
+void synthesizeSpeech()
 {
     auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     auto audioConfig = AudioConfig::FromWavFileOutput("path/to/write/file.wav");
@@ -118,7 +118,7 @@ Futtassa a programot, és a rendszer a `.wav` megadott helyre írja a szintetiz�
 Bizonyos esetekben érdemes közvetlenül a szintetizált beszédet közvetlenül a beszélőhöz adni. Ehhez egyszerűen hagyja `AudioConfig` ki a paramétert a `SpeechSynthesizer` fenti példában szereplő példa létrehozásakor. Ez a kimenet az aktuális aktív kimeneti eszközre mutat.
 
 ```cpp
-void synthesizeSpeech() 
+void synthesizeSpeech()
 {
     auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     auto synthesizer = SpeechSynthesizer::FromConfig(config);
@@ -134,7 +134,7 @@ A beszédfelismerés számos forgatókönyve esetében valószínű, hogy az ere
 * Az eredmény integrálása más API-k vagy szolgáltatások használatával.
 * A hangadatok módosítása, egyéni `.wav` fejlécek írása stb.
 
-Ezt a változást egyszerűen elvégezheti az előző példából. Először távolítsa el a `AudioConfig` -t, mert ezzel a lépéssel manuálisan fogja kezelni a kimeneti viselkedést a jobb szabályozás érdekében. Ezután adja át a-t a `NULL` `AudioConfig` `SpeechSynthesizer` konstruktorban. 
+Ezt a változást egyszerűen elvégezheti az előző példából. Először távolítsa el a `AudioConfig` -t, mert ezzel a lépéssel manuálisan fogja kezelni a kimeneti viselkedést a jobb szabályozás érdekében. Ezután adja át a-t a `NULL` `AudioConfig` `SpeechSynthesizer` konstruktorban.
 
 > [!NOTE]
 > `NULL`A ( `AudioConfig` z) helyett, ahelyett, hogy kihagyja, mint a fenti hangsugárzó-kimeneti példában, a nem játssza le alapértelmezés szerint a hangot a jelenlegi aktív kimeneti eszközön.
@@ -142,11 +142,11 @@ Ezt a változást egyszerűen elvégezheti az előző példából. Először tá
 Ezúttal egy változóba menti az eredményt [`SpeechSynthesisResult`](/cpp/cognitive-services/speech/speechsynthesisresult) . A `GetAudioData` beolvasó a `byte []` kimeneti adatokat adja vissza. Ezt manuálisan is elvégezheti `byte []` , vagy a [`AudioDataStream`](/cpp/cognitive-services/speech/audiodatastream) osztály használatával kezelheti a memóriában lévő adatfolyamot. Ebben a példában a `AudioDataStream.FromResult()` statikus függvény használatával kap egy streamet az eredményből.
 
 ```cpp
-void synthesizeSpeech() 
+void synthesizeSpeech()
 {
     auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     auto synthesizer = SpeechSynthesizer::FromConfig(config, NULL);
-    
+
     auto result = synthesizer->SpeakTextAsync("Getting the response as an in-memory stream.").get();
     auto stream = AudioDataStream::FromResult(result);
 }
@@ -172,14 +172,14 @@ A követelményektől függően különböző fájltípusok választhatók. Vegy
 Ebben a példában egy magas hűségű RIFF formátumot kell megadnia az `Riff24Khz16BitMonoPcm` objektumra vonatkozó beállítással `SpeechSynthesisOutputFormat` `SpeechConfig` . Az előző szakaszban szereplő példához hasonlóan a [`AudioDataStream`](/cpp/cognitive-services/speech/audiodatastream) segítségével beolvashatja az eredmény memóriában lévő adatfolyamát, majd megírhatja azt egy fájlba.
 
 ```cpp
-void synthesizeSpeech() 
+void synthesizeSpeech()
 {
     auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     config->SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat::Riff24Khz16BitMonoPcm);
 
     auto synthesizer = SpeechSynthesizer::FromConfig(config, NULL);
     auto result = synthesizer->SpeakTextAsync("A simple test to write to a file.").get();
-    
+
     auto stream = AudioDataStream::FromResult(result);
     stream->SaveToWavFileAsync("path/to/write/file.wav").get();
 }
@@ -205,11 +205,11 @@ Először hozzon létre egy új XML-fájlt a SSML config-hoz a legfelső szintű
 Ezután módosítania kell a beszédfelismerési kérést az XML-fájlra való hivatkozáshoz. A kérelem többnyire azonos, de a függvény használata helyett használja a parancsot `SpeakTextAsync()` `SpeakSsmlAsync()` . Ez a függvény egy XML-karakterláncot vár, így először be kell töltenie a SSML config karakterláncként. Innen az eredmény objektum pontosan megegyezik az előző példákkal.
 
 ```cpp
-void synthesizeSpeech() 
+void synthesizeSpeech()
 {
     auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     auto synthesizer = SpeechSynthesizer::FromConfig(config, NULL);
-    
+
     std::ifstream file("./ssml.xml");
     std::string ssml, line;
     while (std::getline(file, line))
@@ -218,7 +218,7 @@ void synthesizeSpeech()
         ssml.push_back('\n');
     }
     auto result = synthesizer->SpeakSsmlAsync(ssml).get();
-    
+
     auto stream = AudioDataStream::FromResult(result);
     stream->SaveToWavFileAsync("path/to/write/file.wav").get();
 }
@@ -254,3 +254,11 @@ Ha egy neurális hangra szeretne váltani, módosítsa a `name` beállítást az
   </voice>
 </speak>
 ```
+
+## <a name="visemes"></a>Visemes
+
+A beszédfelismerés általában jó módszer az arc-kifejezések animálására.
+A [visemes](../../../how-to-speech-synthesis-viseme.md) gyakran a megfigyelt beszédben (például az ajkak, az állkapocs és a nyelv pozíciójában) jelennek meg egy adott fonéma készítésekor.
+Az Viseme esemény a Speech SDK-ban előfizethet az arc-animálási adatgyűjtés létrehozásához.
+Ezt követően alkalmazhatja az ilyen jellegű adatbevitelt egy karakterre az arc-animáció kihasználása érdekében.
+Ismerje meg [, hogyan szerezhet be viseme-kimeneteket](../../../how-to-speech-synthesis-viseme.md#get-viseme-outputs-with-the-speech-sdk).
