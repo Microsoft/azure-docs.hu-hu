@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
@@ -9,17 +9,17 @@ ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: ace42278269ff6af31902dbecead81329815af12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "67179355"
 ---
 ## <a name="create-a-topic-using-the-azure-portal"></a>Üzenettéma létrehozása az Azure Portal használatával
 1. A **Service Bus névtér** lapon válassza a bal oldali menü **témakörök** elemét.
 2. Válassza a **+ témakör** lehetőséget az eszköztáron. 
 4. Adja meg a témakör **nevét** . A többi beállítást hagyja az alapértelmezett értékükön.
-5. Kattintson a **Létrehozás** gombra.
+5. Válassza a **Létrehozás** lehetőséget.
 
     ![Témakör létrehozása](./media/service-bus-create-topics-subscriptions-portal/create-topic.png)
 
@@ -30,7 +30,7 @@ ms.locfileid: "67179355"
 2. A **Service Bus témakör** lapon válassza az **előfizetések** lehetőséget a bal oldali menüben, majd válassza a **+ előfizetés** elemet az eszköztáron. 
     
     ![Előfizetés hozzáadása gomb](./media/service-bus-create-topics-subscriptions-portal/add-subscription-button.png)
-3. Az **előfizetés létrehozása** lapon adja meg az **S1** nevet az előfizetés **neveként** , majd válassza a **Létrehozás**lehetőséget. 
+3. Az **előfizetés létrehozása** lapon adja meg az **S1** nevet az előfizetés **neveként** , majd válassza a **Létrehozás** lehetőséget. 
 
     ![Előfizetés létrehozása lap](./media/service-bus-create-topics-subscriptions-portal/create-subscription-page.png)
-4. Ismételje meg az előző lépést kétszer az **S2** és **S3**nevű előfizetések létrehozásához.
+4. Ismételje meg az előző lépést kétszer az **S2** és **S3** nevű előfizetések létrehozásához.

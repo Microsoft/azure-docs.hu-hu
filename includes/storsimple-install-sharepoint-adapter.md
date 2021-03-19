@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: e2d258f327ade2149adc92bdb7fb4bcc87cdd58c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "67179160"
 ---
 #### <a name="to-install-the-storsimple-adapter-for-sharepoint"></a>A SharePoint rendszerhez készült StorSimple-adapter telepítése
@@ -17,10 +17,10 @@ ms.locfileid: "67179160"
 3. Kattintson duplán a telepítőre. Elindul a StorSimple-adapter a SharePoint rendszerhez telepítővarázslója. A telepítés megkezdéséhez kattintson a **tovább** gombra.
    
     ![StorSimple-adapter telepítésének kezdőlapja](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup1-include.png)
-4. A SharePoint telepítő konfigurációjának StorSimple-adaptere lapon válassza ki a telepítési helyet, írja be a StorSimple-eszközön található adat0 hálózati adapter IP-címét, majd kattintson a **tovább**gombra. 
+4. A SharePoint telepítő konfigurációjának StorSimple-adaptere lapon válassza ki a telepítési helyet, írja be a StorSimple-eszközön található adat0 hálózati adapter IP-címét, majd kattintson a **tovább** gombra. 
    
     ![StorSimple-adapter beállításának beállítása lap](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup2-include.png) 
-5. A telepítés megerősítése lapon kattintson a **telepítés**elemre.
+5. A telepítés megerősítése lapon kattintson a **telepítés** elemre.
    
     ![StorSimple-adapter beállításának megerősítése lap](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Confirm_Setup-include.png) 
 6. A telepítővarázsló bezárásához kattintson a **Befejezés** gombra.

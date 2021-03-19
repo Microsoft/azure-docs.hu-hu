@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
 ms.openlocfilehash: 73b9533fa00c783e1cfb85270198f5c00c66afd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86540383"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>A 2. Azure Functions-futtatókörnyezet előzetes verziójának telepítése
@@ -47,8 +47,8 @@ A Azure Functions-futtatókörnyezet előzetes verziójának telepítője végig
     ![Azure Functions-futtatókörnyezet előzetes verziójának telepítője][1]
 
 1. Kattintson a **Tovább** gombra.
-1. Ha elolvasta a **végfelhasználói licencszerződés**feltételeit, **jelölje be a jelölőnégyzetet** a feltételek elfogadásához, majd kattintson a **tovább** gombra.
-1. Válassza ki azokat a szerepköröket, amelyeket telepíteni kíván a Machine **functions felügyeleti szerepkör** és/vagy **functions feldolgozói szerepkörre** , majd kattintson a **tovább**gombra.
+1. Ha elolvasta a **végfelhasználói licencszerződés** feltételeit, **jelölje be a jelölőnégyzetet** a feltételek elfogadásához, majd kattintson a **tovább** gombra.
+1. Válassza ki azokat a szerepköröket, amelyeket telepíteni kíván a Machine **functions felügyeleti szerepkör** és/vagy **functions feldolgozói szerepkörre** , majd kattintson a **tovább** gombra.
 
     ![Azure Functions-futtatókörnyezet előzetes verziójának telepítője – szerepkör kiválasztása][3]
 
@@ -71,15 +71,15 @@ A Azure Functions-futtatókörnyezet telepítésének befejezéséhez végre kel
 
     ![Azure Functions-futtatókörnyezet előnézet konfigurációs eszköz][7]
 
-1. Kattintson az **adatbázis** lapra, adja meg SQL Server példányának kapcsolati adatait, beleértve az [adatbázis főkulcsának](/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine)megadását, majd kattintson az **alkalmaz**gombra.  SQL Server-példányhoz való kapcsolódásra van szükség ahhoz, hogy a Azure Functions-futtatókörnyezet adatbázist hozzon létre a futtatókörnyezet támogatásához.
+1. Kattintson az **adatbázis** lapra, adja meg SQL Server példányának kapcsolati adatait, beleértve az [adatbázis főkulcsának](/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine)megadását, majd kattintson az **alkalmaz** gombra.  SQL Server-példányhoz való kapcsolódásra van szükség ahhoz, hogy a Azure Functions-futtatókörnyezet adatbázist hozzon létre a futtatókörnyezet támogatásához.
 
     ![Azure Functions-futtatókörnyezet előnézeti adatbázis konfigurálása][8]
 
-1. Kattintson a **hitelesítő adatok** fülre.  Itt két új hitelesítő adatot kell létrehoznia egy fájlmegosztás használatával az összes Function-alkalmazás üzemeltetéséhez.  Adja meg a **fájlmegosztás tulajdonosának** és a **fájlmegosztás felhasználójának** **felhasználónevét** és **jelszavát** , majd kattintson az **alkalmaz**gombra.
+1. Kattintson a **hitelesítő adatok** fülre.  Itt két új hitelesítő adatot kell létrehoznia egy fájlmegosztás használatával az összes Function-alkalmazás üzemeltetéséhez.  Adja meg a **fájlmegosztás tulajdonosának** és a **fájlmegosztás felhasználójának** **felhasználónevét** és **jelszavát** , majd kattintson az **alkalmaz** gombra.
 
     ![Azure Functions-futtatókörnyezet előzetes verziójú hitelesítő adatok][9]
 
-1. Kattintson a **fájlmegosztás** fülre.  Itt meg kell adnia a fájlmegosztás helyének részleteit.  A fájlmegosztás létrehozható, vagy használhat egy meglévő fájlmegosztást, és kattintson az **alkalmaz**gombra.  Ha új fájlmegosztási helyet választ, meg kell adnia egy könyvtárat, amelyet a Azure Functions-futtatókörnyezet használhat.
+1. Kattintson a **fájlmegosztás** fülre.  Itt meg kell adnia a fájlmegosztás helyének részleteit.  A fájlmegosztás létrehozható, vagy használhat egy meglévő fájlmegosztást, és kattintson az **alkalmaz** gombra.  Ha új fájlmegosztási helyet választ, meg kell adnia egy könyvtárat, amelyet a Azure Functions-futtatókörnyezet használhat.
 
     ![Azure Functions-futtatókörnyezet előnézet-fájlmegosztás][10]
 
@@ -87,7 +87,7 @@ A Azure Functions-futtatókörnyezet telepítésének befejezéséhez végre kel
 
     ![Azure Functions-futtatókörnyezet előnézet IIS][11]
 
-1. Kattintson a **szolgáltatások** fülre.  Ezen a lapon láthatók a Azure Functions-futtatókörnyezet konfigurációs eszköz szolgáltatásainak állapota.  Ha a  **Azure functions gazdagép aktiválási szolgáltatása** nem fut a kezdeti konfigurálás után, kattintson a **szolgáltatás indítása**lehetőségre.
+1. Kattintson a **szolgáltatások** fülre.  Ezen a lapon láthatók a Azure Functions-futtatókörnyezet konfigurációs eszköz szolgáltatásainak állapota.  Ha a  **Azure functions gazdagép aktiválási szolgáltatása** nem fut a kezdeti konfigurálás után, kattintson a **szolgáltatás indítása** lehetőségre.
 
     ![Azure Functions-futtatókörnyezet előzetes verzió konfigurációjának befejezése][12]
 
@@ -109,7 +109,7 @@ Az első függvény létrehozása Azure Functions-futtatókörnyezet előzetes v
 
     ![Azure Functions-futtatókörnyezet betekintő portál előfizetései][15]
 
-1. Válassza a **DefaultPlan**lehetőséget, adja meg az előfizetés nevét, majd kattintson a **Létrehozás**gombra.
+1. Válassza a **DefaultPlan** lehetőséget, adja meg az előfizetés nevét, majd kattintson a **Létrehozás** gombra.
 
     ![Azure Functions-futtatókörnyezet betekintő portál előfizetési terve és neve][16]
 

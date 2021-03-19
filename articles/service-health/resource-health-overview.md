@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan segít a Azure Resource Health az Azure-erőfor
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.openlocfilehash: 25425eadfaf54ba56cde3b377a44cd85c2b68959
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90967867"
 ---
 # <a name="resource-health-overview"></a>Resource Health áttekintése
@@ -70,7 +70,7 @@ A különböző erőforrásoknak a saját feltételeiket kell megadniuk, amikor 
 
 ## <a name="reporting-an-incorrect-status"></a>Helytelen állapot jelentése
 
-Ha úgy gondolja, hogy az aktuális állapot helytelen, a **jelentés helytelen állapot állapotának**kiválasztásával megadhatja a számunkra. Abban az esetben, ha egy Azure-probléma hatással van az Ön számára, javasoljuk, hogy forduljon a Resource Health támogatási szolgálatához.
+Ha úgy gondolja, hogy az aktuális állapot helytelen, a **jelentés helytelen állapot állapotának** kiválasztásával megadhatja a számunkra. Abban az esetben, ha egy Azure-probléma hatással van az Ön számára, javasoljuk, hogy forduljon a Resource Health támogatási szolgálatához.
 
 ![Helytelen állapottal kapcsolatos adatok beküldésére szolgáló űrlap](./media/resource-health-overview/incorrect-status.png)
 
@@ -84,9 +84,9 @@ A Resource Health **állapotának előzményei** részben akár 30 napig is elé
 
 Resource Health megnyitása egy erőforráshoz:
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 2. Keresse meg az erőforrást.
-3. A bal oldali ablaktábla erőforrás menüjében válassza az **erőforrás állapota**lehetőséget.
+3. A bal oldali ablaktábla erőforrás menüjében válassza az **erőforrás állapota** lehetőséget.
 
 ![Resource Health megnyitása az erőforrás nézetből](./media/resource-health-overview/from-resource-blade.png)
 

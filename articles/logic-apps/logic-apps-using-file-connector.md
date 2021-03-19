@@ -7,13 +7,13 @@ author: derek1ee
 ms.author: deli
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 01/13/2019
-ms.openlocfilehash: 65b6b1f783dbabc9ad2e1a4bf79008240d1b2726
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/08/2020
+ms.openlocfilehash: 4715d7173dd959d12350229e457717c908a83756
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89659914"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "91873234"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Csatlakozás helyszíni fájlrendszerekhez az Azure Logic Appsből
 
@@ -22,6 +22,9 @@ A Azure Logic Apps és a fájlrendszer-összekötővel olyan automatizált felad
 - Fájlok létrehozása, beolvasása, hozzáfűzése, frissítése és törlése.
 - Mappákban vagy gyökérkönyvtárban található fájlok listázása.
 - Fájl tartalmának és metaadatainak beolvasása.
+
+  > [!IMPORTANT]
+  > A fájlrendszer-összekötő jelenleg csak Windows-fájlrendszereket támogat a Windows operációs rendszereken.  
 
 Ez a cikk bemutatja, hogyan kapcsolódhat a helyi fájlrendszerhez a példa példája szerint: másolja a Dropboxba feltöltött fájlt egy fájlmegosztásba, majd küldjön egy e-mailt. A helyszíni rendszerek biztonságos csatlakoztatásához és eléréséhez a Logic apps a helyszíni [adatátjárót](../logic-apps/logic-apps-gateway-connection.md)használja. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a következőt: [Mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md). Az összekötő-specifikus technikai információk a fájlrendszer- [összekötő dokumentációjában](/connectors/filesystem/)találhatók.
 
@@ -60,7 +63,7 @@ Ez a cikk bemutatja, hogyan kapcsolódhat a helyi fájlrendszerhez a példa pél
 
 ## <a name="add-actions"></a>Műveletek hozzáadása
 
-1. A trigger alatt válassza a **következő lépés**lehetőséget. A keresőmezőbe írja be szűrőként a "File System" (fájlrendszer) kifejezést. A műveletek listából válassza a következő műveletet: **fájl létrehozása**
+1. A trigger alatt válassza a **következő lépés** lehetőséget. A keresőmezőbe írja be szűrőként a "File System" (fájlrendszer) kifejezést. A műveletek listából válassza a következő műveletet: **fájl létrehozása**
 
    ![Fájlrendszer-összekötő keresése](media/logic-apps-using-file-connector/find-file-system-action.png)
 
@@ -70,12 +73,12 @@ Ez a cikk bemutatja, hogyan kapcsolódhat a helyi fájlrendszerhez a példa pél
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    | -------- | -------- | ----- | ----------- |
-   | **Kapcsolat neve** | Igen | <*kapcsolattípus*> | A kapcsolatok kívánt neve |
-   | **Gyökérmappa** | Igen | <*gyökér-mappa neve*> | A fájlrendszer gyökérkönyvtára, például ha telepítette a helyszíni adatátjárót, például egy helyi mappát azon a számítógépen, amelyen a helyszíni adatátjáró telepítve van, vagy egy hálózati megosztás mappája, amelyhez a számítógép hozzáférhet. <p>Például: `\\PublicShare\\DropboxFiles` <p>A gyökérmappa a fő szülő mappa, amely a fájlokkal kapcsolatos összes művelet relatív elérési útjaihoz használható. |
-   | **Hitelesítés típusa** | Nem | <*hitelesítés típusa*> | A fájlrendszer által használt hitelesítés típusa: **Windows** |
-   | **Felhasználónév** | Igen | <*domain* > \\ tartomány < *Felhasználónév*> <p>-vagy- <p><*helyi – számítógép* > \\ < *Felhasználónév*> | Annak a számítógépnek a felhasználóneve, amelyen a fájlrendszer mappája található. <p>Ha a fájlrendszer mappája ugyanazon a számítógépen található, mint a helyszíni adatátjáró, akkor <*helyi számítógép* > \\ < *felhasználónevét*> használhatja. |
-   | **Jelszó** | Igen | <*saját jelszó*> | A fájlrendszert futtató számítógép jelszava |
-   | **átjáró** | Igen | <*telepítve – átjáró – név*> | A korábban telepített átjáró neve |
+   | **Kapcsolat neve** | Yes | <*kapcsolattípus*> | A kapcsolatok kívánt neve |
+   | **Gyökérmappa** | Yes | <*gyökér-mappa neve*> | A fájlrendszer gyökérkönyvtára, például ha telepítette a helyszíni adatátjárót, például egy helyi mappát azon a számítógépen, amelyen a helyszíni adatátjáró telepítve van, vagy egy hálózati megosztás mappája, amelyhez a számítógép hozzáférhet. <p>Például: `\\PublicShare\\DropboxFiles` <p>A gyökérmappa a fő szülő mappa, amely a fájlokkal kapcsolatos összes művelet relatív elérési útjaihoz használható. |
+   | **Hitelesítés típusa** | No | <*hitelesítés típusa*> | A fájlrendszer által használt hitelesítés típusa: **Windows** |
+   | **Felhasználónév** | Yes | < > \\ tartomány < *Felhasználónév*> <p>-vagy- <p><*helyi – számítógép* > \\ < *Felhasználónév*> | Annak a számítógépnek a felhasználóneve, amelyen a fájlrendszer mappája található. <p>Ha a fájlrendszer mappája ugyanazon a számítógépen található, mint a helyszíni adatátjáró, akkor <*helyi számítógép* > \\ < *felhasználónevét*> használhatja. |
+   | **Jelszó** | Yes | <*saját jelszó*> | A fájlrendszert futtató számítógép jelszava |
+   | **átjáró** | Yes | <*telepítve – átjáró – név*> | A korábban telepített átjáró neve |
    |||||
 
 1. Ha elkészült, kattintson a **Létrehozás** gombra.

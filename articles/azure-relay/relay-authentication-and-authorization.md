@@ -4,10 +4,10 @@ description: Ez a cikk áttekintést nyújt a közös hozzáférésű aláírás
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 4b0a5c7a092155a006419eedd170a63abed42bb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87033377"
 ---
 # <a name="azure-relay-authentication-and-authorization"></a>Hitelesítés és engedélyezés Azure Relay
@@ -35,7 +35,7 @@ Egy entitás eléréséhez az ügyfélnek egy adott [SharedAccessAuthorizationRu
 
 A Azure Relay SAS-hitelesítésének támogatása az Azure .NET SDK 2,0-as és újabb verzióiban érhető el. Az SAS a [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)támogatását is támogatja. Minden olyan API-t, amely a paramétert fogadja, az SAS-kapcsolatok karakterláncok támogatását tartalmazza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A SAS-vel kapcsolatos további részletekért olvassa [el Service Bus hitelesítés közös hozzáférési aláírásokkal](../service-bus-messaging/service-bus-sas.md) című cikkét.
 - A Hibrid kapcsolatok képességgel kapcsolatos részletes információkért tekintse meg a [Azure Relay hibrid kapcsolatok protokoll útmutatóját](relay-hybrid-connections-protocol.md) .

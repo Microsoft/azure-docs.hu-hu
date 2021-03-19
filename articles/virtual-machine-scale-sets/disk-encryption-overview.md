@@ -10,10 +10,10 @@ ms.date: 10/10/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 6b9805d66149a18216a200bc89a79b3e06106c9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83195105"
 ---
 # <a name="azure-disk-encryption-for-virtual-machine-scale-sets"></a>Virtual Machine Scale Sets Azure Disk Encryption
@@ -27,7 +27,7 @@ A Azure Disk Encryption a Windows és a Linux rendszerű virtuálisgép-méretez
 
 A virtuálisgép-méretezési csoportokra vonatkozó Azure Disk Encryption alapjai néhány perc alatt megismerhetik a [virtuálisgép-méretezési csoportok titkosítása az Azure CLI használatával](disk-encryption-cli.md) vagy a [virtuálisgép-méretezési csoportok titkosítása az Azure PowerShell oktatóanyagok használatával](disk-encryption-powershell.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Virtuálisgép-méretezési csoportok titkosítása a Azure Resource Manager használatával](disk-encryption-azure-resource-manager.md)
 - [Kulcstartó létrehozása és konfigurálása Azure Disk Encryptionhoz](disk-encryption-key-vault.md)

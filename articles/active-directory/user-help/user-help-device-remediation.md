@@ -14,15 +14,15 @@ ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: df3941c895ce67862eb53b8e96bc7a6d53c1ed02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88799417"
 ---
 # <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>A "nem érhető el innen" hibaüzenet lehetséges javításai
 
-A szervezet belső webes alkalmazásaihoz vagy szolgáltatásaihoz való hozzáférés **során a következő**hibaüzenet jelenhet meg: Ez az üzenet azt jelenti, hogy a szervezete olyan szabályzatot állított be, amely megakadályozza, hogy az eszköz hozzáférjen a szervezet erőforrásaihoz. Habár előfordulhat, hogy a probléma megoldásához kapcsolatba kell lépnie az ügyfélszolgálattal, íme néhány dolog, amelyet először is kipróbálhat.
+A szervezet belső webes alkalmazásaihoz vagy szolgáltatásaihoz való hozzáférés **során a következő** hibaüzenet jelenhet meg: Ez az üzenet azt jelenti, hogy a szervezete olyan szabályzatot állított be, amely megakadályozza, hogy az eszköz hozzáférjen a szervezet erőforrásaihoz. Habár előfordulhat, hogy a probléma megoldásához kapcsolatba kell lépnie az ügyfélszolgálattal, íme néhány dolog, amelyet először is kipróbálhat.
 
 ## <a name="make-sure-youre-using-a-supported-browser"></a>Győződjön meg arról, hogy támogatott böngészőt használ
 Ha úgy látja, hogy **nem tud** innen üzenetet kapni, mondván, hogy nem támogatott böngészőből próbál hozzáférni a szervezet webhelyeihez, ellenőrizze, hogy melyik böngészőt futtatja.
@@ -67,7 +67,7 @@ Ha az eszköz nincs csatlakoztatva a szervezet hálózatához, akkor két dolog 
 
 - **Regisztrálja a személyes eszközét a munkához.** Regisztrálja személyes eszközét (jellemzően telefon vagy Tablet) a szervezet hálózatán. Az eszköz regisztrálása után hozzáférhet a szervezet korlátozott erőforrásaihoz. További információk és részletes útmutatás: [személyes eszköz regisztrálása a szervezet hálózatán](user-help-register-device-on-network.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Mi a MyApps-portál?](./my-apps-portal-end-user-access.md)
 
 - [Bejelentkezés telefonnal a jelszó helyett](user-help-auth-app-sign-in.md)

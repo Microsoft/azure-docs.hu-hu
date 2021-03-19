@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
 ms.openlocfilehash: 6454bc863cb5fd628d581fff380c5ab61354f762
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87053051"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>Smooth Streaming protokoll (MS-SSTR) HEVC vonatkozó módosítása 
@@ -46,11 +46,11 @@ A következő kifejezések a dokumentumra vonatkoznak:
 > 
 >   **dekódolási idő:** A minta a (z)   [[ISO/IEC 14496-12:2008]](https://go.microsoft.com/fwlink/?LinkId=183695)által definiált, az ügyfélen való dekódolásához szükséges idő.
 
-**töredék:** Egy vagy több **mintát**tartalmazó, független módon letölthető **adathordozó** .
+**töredék:** Egy vagy több **mintát** tartalmazó, független módon letölthető **adathordozó** .
 
 >   **HEVC:** Nagy hatékonyságú videó kódolása az [ISO/IEC 23008-2] meghatározása szerint
 > 
->   **jegyzékfájl:** A **bemutató** metaadatainak, amely lehetővé teszi, hogy az ügyfél **adathordozóra**vonatkozó kéréseket készítsen. **adathordozó:** Az ügyfél által a **bemutató**lejátszásához használt tömörített hang-, videó-és szöveges adatok. **adathordozó formátuma:** Egy jól definiált formátum, amely a hanganyagot vagy a videót tömörített **mintaként**jelöli.
+>   **jegyzékfájl:** A **bemutató** metaadatainak, amely lehetővé teszi, hogy az ügyfél **adathordozóra** vonatkozó kéréseket készítsen. **adathordozó:** Az ügyfél által a **bemutató** lejátszásához használt tömörített hang-, videó-és szöveges adatok. **adathordozó formátuma:** Egy jól definiált formátum, amely a hanganyagot vagy a videót tömörített **mintaként** jelöli.
 > 
 >   **bemutató:** Az összes **stream** és az ahhoz kapcsolódó metaadatok készlete, amely egyetlen film lejátszásához szükséges. **kérelem:** Az ügyfél és a kiszolgáló között a (z [) [RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) **válaszban** meghatározott HTTP-üzenet, amely a kiszolgálóról az ügyfélnek küldött HTTP-üzenet, a következő módon: [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) .
 > 
@@ -66,10 +66,10 @@ A következő kifejezések a dokumentumra vonatkoznak:
 
 >  [MS-SSTR] Smooth Streaming protokoll *v20140502*[https://msdn.microsoft.com/library/ff469518.aspx](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)
 > 
->   [ISO/IEC 14496-12] Nemzetközi Szabványügyi Szervezet, "Information Technology--a hang-vizuális objektumok kódolása – 12. rész: ISO-alap médiafájl formátuma", ISO/IEC 14496-12:2014, 4. kiadás, plusz helyesbítés 1, 1 & 2. módosítás.
+>   [ISO/IEC 14496-12] International Organization for Standardization, "Information Technology--a hang-vizuális objektumok kódolása – 12. rész: ISO-alap médiafájl formátuma", ISO/IEC 14496-12:2014, 4. kiadás, plusz helyesbítés 1, 1 & 2. módosítás.
 >   <https://standards.iso.org/ittf/PubliclyAvailableStandards/c061988_ISO_IEC_14496-12_2012.zip>
 > 
->   [ISO/IEC 14496-15] Nemzetközi Szabványügyi Szervezet, "információtechnológia – hangvezérelt objektumok kódolása – 15. rész: a külső egység strukturált Videójának szállítása az ISO-alapú adathordozó-fájlformátumban", ISO 14496-15:2015, 3. kiadás.
+>   [ISO/IEC 14496-15] International Organization for Standardization, "információtechnológia – hangvezérelt objektumok kódolása – 15. rész: a külső egység strukturált Videójának szállítása az ISO-alapú adathordozó-fájlformátumban", ISO 14496-15:2015, 3. kiadás.
 >   <https://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=65216>
 > 
 >   [ISO/IEC 23008-2] Információtechnológia – nagy hatékonyságú kódolás és média-kézbesítés heterogén környezetekben – 2. rész: nagy hatékonyságú videó kódolása: 2013 vagy legújabb kiadás   <https://standards.iso.org/ittf/PubliclyAvailableStandards/c035424_ISO_IEC_23008-2_2013.zip>
@@ -107,7 +107,7 @@ A következő kifejezések a dokumentumra vonatkoznak:
 
 >   A következő módszert kell használni a streamek azonosítására a HEVC-formátum használatával:
 > 
->   * **Egyéni leíró kódok adathordozó-formátumokhoz:** Ezt a képességet a **FourCC** mező adja meg a *2.2.2.5*szakaszban megadott módon.
+>   * **Egyéni leíró kódok adathordozó-formátumokhoz:** Ezt a képességet a **FourCC** mező adja meg a *2.2.2.5* szakaszban megadott módon.
 >   A megvalósítások biztosítják, hogy a bővítmények ne ütköznek az [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695) paraméterben megadott kiterjesztési kódok az MPEG4-ra-vel való regisztrálásával.
 
 ## <a name="19-standards-assignments"></a>1,9 Standard hozzárendelés 
@@ -278,7 +278,7 @@ CompatibleBrands = "ccff" "iso8" 0\*(STRING_UINT32)
 
 >   A bemutató leírása adatelem a bemutató összes metaadatát beágyazza.
 > 
->   Megjelenítési metaadatok: a bemutatóban lévő összes adatfolyamra jellemző metaadatok összessége. A megjelenítési metaadatok a következő mezőkből állnak, amelyek a *2.2.2.1*szakaszban vannak megadva:
+>   Megjelenítési metaadatok: a bemutatóban lévő összes adatfolyamra jellemző metaadatok összessége. A megjelenítési metaadatok a következő mezőkből állnak, amelyek a *2.2.2.1* szakaszban vannak megadva:
 > 
 > * **MajorVersion**
 > * **MinorVersion**
@@ -303,15 +303,15 @@ MinorVersion = 2
 TimeScale = 90000
 ```
 
->   Stream Collection: A *3.1.1.1.2*szakaszban meghatározott stream Description adatelemek gyűjteménye.
+>   Stream Collection: A *3.1.1.1.2* szakaszban meghatározott stream Description adatelemek gyűjteménye.
 > 
->   Védelem leírása: A védelmi rendszer metaadatait leíró adatelemek gyűjteménye a *3.1.1.1.1*szakaszban meghatározottak szerint.
+>   Védelem leírása: A védelmi rendszer metaadatait leíró adatelemek gyűjteménye a *3.1.1.1.1* szakaszban meghatározottak szerint.
 
 ##### <a name="31111-protection-system-metadata-description"></a>3.1.1.1.1-védelmi rendszermetaadatok leírása 
 
 >   A védelmi rendszer metaadatainak Leírás adateleme egyetlen Content Protection rendszerhez tartozó metaadatokat ágyaz be. (Nincs változás)
 > 
->   Protection header Description: az egyetlen Content Protection rendszerre vonatkozó tartalomvédelem metaadatai. A védelmi fejléc leírása a következő mezőkből áll, amelyek a *2.2.2.2*szakaszban vannak megadva:
+>   Protection header Description: az egyetlen Content Protection rendszerre vonatkozó tartalomvédelem metaadatai. A védelmi fejléc leírása a következő mezőkből áll, amelyek a *2.2.2.2* szakaszban vannak megadva:
 > 
 >   * **SystemID**
 >   * **ProtectionHeaderContent**

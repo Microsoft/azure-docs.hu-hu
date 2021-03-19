@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: a5a286753e438b7d65f3d33a82669c4f7e79a282
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86544626"
 ---
 #### <a name="to-create-public-endpoints-on-the-cloud-appliance"></a>Nyilvános végpontok létrehozása a felhőalapú készüléken
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 2. Lépjen a **Virtuális gépek** elemre, majd válassza ki a felhőalapú készülékként használt virtuális gépet, és kattintson rá.
     
 3. Létre kell hozni egy hálózati biztonság csoportra (network security group, NSG) vonatkozó szabályt a virtuális gépbe és gépből irányuló forgalom szabályozásához. Az NSG-re vonatkozó szabály létrehozásához hajtsa végre az alábbi lépéseket.
@@ -31,7 +31,7 @@ ms.locfileid: "86544626"
 
         A Bejövő biztonsági szabály felvétele panelen:
 
-        1. A **név**mezőbe írja be a következő végpont nevét: WinRMHttps.
+        1. A **név** mezőbe írja be a következő végpont nevét: WinRMHttps.
         
         2. A **Prioritás** értékhez válasszon egy 1000-nél (amely az alapértelmezett szabálynak van fenntartva) kisebb számot. Minél magasabb az érték, annál alacsonyabb a prioritás.
 

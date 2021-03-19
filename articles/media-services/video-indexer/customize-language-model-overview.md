@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: kumud
 ms.openlocfilehash: 29490e08748a37f7eb93fbb8804f55f74c53df35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87047127"
 ---
 # <a name="customize-a-language-model-with-video-indexer"></a>Nyelvi modell testreszabása Video Indexer
@@ -40,7 +40,7 @@ Video Indexer a Word-kombinációk valószínűsége alapján tanul, így a legm
 * Kerülje a nem gyakori szimbólumok (~, # @% &) elkerülését, mivel azok el lesznek vetve. A megjelenő mondatok is elvesznek.
 * Ne helyezze túl nagy mennyiségű bemenetet, például több százezer mondatot, mert ezzel a művelettel felhígította a növelés hatását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Nyelvi modell testreszabása API-k használatával](customize-language-model-with-api.md)
 

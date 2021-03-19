@@ -5,10 +5,10 @@ ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.openlocfilehash: e49c235e11eea17fdd1a7ff7751cc0493934d725
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83123673"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions – folyamatos üzembe helyezés
@@ -36,13 +36,13 @@ A sikeres üzembe helyezéshez a címtár struktúrájának kompatibilisnek kell
 
 Egy meglévő Function alkalmazás folyamatos üzembe helyezésének konfigurálásához végezze el a következő lépéseket. A lépések bemutatják a GitHub-adattárral való integrációt, de a hasonló lépések érvényesek az Azure Repos vagy más forráskód-Tárházak esetében.
 
-1. A [Azure Portal](https://portal.azure.com)a Function alkalmazásban válassza ki a **központi telepítési központ**elemet, válassza a **GitHub**lehetőséget, majd válassza az **Engedélyezés**lehetőséget. Ha már engedélyezte a GitHubot, válassza a **Folytatás** lehetőséget, és hagyja ki a következő lépést. 
+1. A [Azure Portal](https://portal.azure.com)a Function alkalmazásban válassza ki a **központi telepítési központ** elemet, válassza a **GitHub** lehetőséget, majd válassza az **Engedélyezés** lehetőséget. Ha már engedélyezte a GitHubot, válassza a **Folytatás** lehetőséget, és hagyja ki a következő lépést. 
 
     :::image type="content" source="./media/functions-continuous-deployment/github.png" alt-text="Azure App Service központi telepítési központ":::
 
-3. A GitHubon válassza a **AzureAppService engedélyezése**lehetőséget.
+3. A GitHubon válassza a **AzureAppService engedélyezése** lehetőséget.
 
-    :::image type="content" source="./media/functions-continuous-deployment/authorize.png" alt-text="Azure App Service központi telepítési központ":::
+    :::image type="content" source="./media/functions-continuous-deployment/authorize.png" alt-text="Engedélyezés Azure App Service":::
 
     Adja meg a GitHub-jelszavát, majd kattintson a **Continue (folytatás**) gombra.
 
@@ -53,9 +53,9 @@ Egy meglévő Function alkalmazás folyamatos üzembe helyezésének konfigurál
 
     Válassza a **Folytatás** lehetőséget.
 
-5. Konfigurálja a megadott verziókövetés-beállításra vonatkozó adatokat. A GitHub esetében meg kell adnia vagy ki kell választania a **szervezet**, a **tárház**és az **ág**értékeit. Az értékek a kód helyétől függenek. Ezután válassza a **Folytatás**lehetőséget.
+5. Konfigurálja a megadott verziókövetés-beállításra vonatkozó adatokat. A GitHub esetében meg kell adnia vagy ki kell választania a **szervezet**, a **tárház** és az **ág** értékeit. Az értékek a kód helyétől függenek. Ezután válassza a **Folytatás** lehetőséget.
 
-    :::image type="content" source="./media/functions-continuous-deployment/github-specifics.png" alt-text="Azure App Service központi telepítési központ":::
+    :::image type="content" source="./media/functions-continuous-deployment/github-specifics.png" alt-text="A GitHub konfigurálása":::
 
 6. Tekintse át az összes adatot, majd a **Befejezés** gombra kattintva fejezze be a telepítési konfigurációt.
 
@@ -64,7 +64,7 @@ A folyamat befejezésekor a rendszer a megadott forrásból származó összes k
 > [!NOTE]
 > A folyamatos integráció konfigurálása után már nem szerkesztheti a forrásfájlokat a functions portálon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Functions – ajánlott eljárások](functions-best-practices.md)

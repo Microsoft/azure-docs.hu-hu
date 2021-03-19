@@ -12,10 +12,10 @@ ms.reviewer: ''
 ms.author: sstein
 ms.date: 03/12/2019
 ms.openlocfilehash: bc6054292d1a4f73bd12d90b877fc639e81802fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87084993"
 ---
 # <a name="use-powershell-to-create-elastic-pools-and-move-a-database-between-them"></a>Rugalmas készletek létrehozása a PowerShell használatával és az adatbázisok áthelyezése közöttük
@@ -56,7 +56,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure PowerShellről: [Azure PowerShell dokumentáció](/powershell/azure/).
 

@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: b-juche
 ms.openlocfilehash: 9a07c6ae48cdca68a95db7770d90076eb8f10f95
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91929456"
 ---
 # <a name="faqs-about-smb-performance-for-azure-netapp-files"></a>A Azure NetApp Files SMB-teljesítményével kapcsolatos gyakori kérdések
@@ -122,7 +122,7 @@ A következő diagramon a szekvenciális I/O eredményei láthatók:
 
 A FIO-ben való teszteléshez használt egyik stratégia beállítása a következő: `numjobs=16` . Így az egyes feladatok 16 adott példányra vannak kiosztva a Microsoft Hyper-V hálózati adapter maximalizálása érdekében.
 
-A Windows Teljesítményfigyelőben lévő egyes adapterek tevékenységeit a **teljesítményfigyelő > a teljesítményszámlálók hozzáadása > hálózati adapter > Microsoft Hyper-V hálózati adapter**lehetőségre kattintva ellenőrizheti.
+A Windows Teljesítményfigyelőben lévő egyes adapterek tevékenységeit a **teljesítményfigyelő > a teljesítményszámlálók hozzáadása > hálózati adapter > Microsoft Hyper-V hálózati adapter** lehetőségre kattintva ellenőrizheti.
 
 ![Képernyőfelvétel: a Teljesítményfigyelő hozzáadása számláló felület.](../media/azure-netapp-files/smb-performance-performance-monitor-add-counter.png)
 

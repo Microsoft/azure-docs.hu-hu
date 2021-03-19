@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4c020a9be7683bf045dbcc747dad3cb45058dd7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93077676"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Útmutató: az MFA megkövetelése a nem megbízható hálózatokból való hozzáféréshez feltételes hozzáféréssel   
@@ -58,7 +58,7 @@ Ahelyett, hogy az összes olyan helyet meg kellene határozni, amely nem megbíz
 
 - Az összes megbízható helyszín kizárása 
 
-   :::image type="content" source="./media/untrusted-networks/01.png" alt-text="Képernyőkép az Azure A D-helyek panelről, a beállítás értéke Igen, az include (Belefoglalás) fül látható, a bármely kiválasztott és Kiemelt hely beállítás." border="false":::
+   :::image type="content" source="./media/untrusted-networks/01.png" alt-text="Képernyőkép az Azure A D-helyek panelről, a beállítás értéke Igen, a kizárás lap látható, és a minden megbízható helyek lehetőség ki van választva." border="false":::
 
 ## <a name="policy-deployment"></a>Szabályzat érvénybe léptetése
 

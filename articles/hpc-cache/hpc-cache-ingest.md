@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: v-erkel
 ms.openlocfilehash: 0da8a4fc1b59976c50cd96f2155715a4cb178cc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87072771"
 ---
 # <a name="move-data-to-azure-blob-storage"></a>Az Azure Blob Storage-ba irányuló adatáthelyezés
@@ -81,7 +81,7 @@ Az Azure HPC cache-vel való párhuzamos adatfeldolgozási stratégiák a követ
 
 * Parancsfájlba foglalt másolás ``parallelcp`` – megtudhatja, hogyan hozhat létre és futtathat párhuzamos másolási parancsfájlokat az [Azure HPC cache-adatokban – párhuzamos másolási parancsfájl-metódussal](hpc-cache-ingest-parallelcp.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A tárterület beállítása után megismerheti, hogyan csatlakoztathatók az ügyfelek a gyorsítótárhoz.
 

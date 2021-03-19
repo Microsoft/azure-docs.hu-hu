@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: 8a459d1fba4353b4b3e092e83a759314cc455ead
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87087288"
 ---
 # <a name="azure-media-player-localization"></a>Honosítás Azure Media Player #
@@ -32,18 +32,18 @@ A Azure Media Player jelenleg a következő nyelveket támogatja a megfelelő ny
 | Arab              | AR   | Magyar               | hu     | Szlovák                  | sk           |
 | Bolgár           | BG   | Indonéz              | id     | Szlovén                 | SL           |
 | Katalán             | CA   | Izlandi               | is     | Szerb – cirillbetűs      | SR-Cyrl-cs   |
-| Cseh               | CS   | Olasz                 | Ez     | Szerb – latinbetűs         | sr-latn-rs   |
-| Dán              | da   | Japán                | Japán     | Orosz                 | ru           |
-| Német              | de   | Kazak                  | KK     | Svéd                 | Sv           |
+| cseh               | CS   | Olasz                 | Ez     | Szerb – latinbetűs         | sr-latn-rs   |
+| dán              | da   | Japán                | Japán     | Orosz                 | ru           |
+| Német              | de   | Kazak                  | KK     | svéd                 | Sv           |
 | Görög               | el   | Koreai                  | Ko     | Thai                    | adik           |
 | spanyol             | es   | Litván              | lt     | Tagalog                 | TL           |
 | Észt            | et   | Lett                 | lv     | Török                 | TR           |
 | Baszk              | EU   | Malajziai               | MS     | Ukrán               | uk           |
 | Perzsa               | h   | Norvég – BokmÃ ¥ l     | NB     | urdu                    | a           |
-| Finn             | Fi   | Holland                   | nl     | Vietnámi              | VI           |
+| finn             | Fi   | Holland                   | nl     | Vietnámi              | VI           |
 | Francia              | fr   | Norvég – nynorsk     | pp     | Egyszerűsített kínai    | zh-Hans      |
 | Gallego            | GL   | Lengyel                  | pl     | Kínai – hagyományos   | zh-Hant      |
-| Héber              | ő   | Portugál - Brazília     | pt-br  |                         |              |
+| héber              | ő   | Portugál - Brazília     | pt-br  |                         |              |
 | Hindi               | szia   | Portugál - Portugália   | pt-pt  |                         |              |
 
 

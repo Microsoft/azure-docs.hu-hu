@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan engedélyezheti az adatmegőrzési szabályzato
 ms.topic: article
 ms.date: 10/02/2019
 ms.openlocfilehash: 5dda85934bb10cf16fd90381539b892df4f5445c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83683457"
 ---
 # <a name="set-a-retention-policy-for-untagged-manifests"></a>Adatmegőrzési szabályzat beállítása a címkézetlen jegyzékekhez
@@ -86,18 +86,18 @@ A beállításjegyzék adatmegőrzési házirendjét is beállíthatja a [Azure 
 
 ### <a name="enable-a-retention-policy"></a>Adatmegőrzési szabályzat engedélyezése
 
-1. Navigáljon az Azure Container Registry szolgáltatáshoz. A **házirendek**területen válassza a **megőrzés** (előzetes verzió) lehetőséget.
-1. Az **állapot**területen válassza az **engedélyezve**lehetőséget.
+1. Navigáljon az Azure Container Registry szolgáltatáshoz. A **házirendek** területen válassza a **megőrzés** (előzetes verzió) lehetőséget.
+1. Az **állapot** területen válassza az **engedélyezve** lehetőséget.
 1. A címkézetlen jegyzékfájlok megőrzéséhez válassza ki a 0 és 365 közötti napok számát. Kattintson a **Mentés** gombra.
 
 ![Adatmegőrzési szabályzat engedélyezése Azure Portal](media/container-registry-retention-policy/container-registry-retention-policy01.png)
 
 ### <a name="disable-a-retention-policy"></a>Adatmegőrzési szabály letiltása
 
-1. Navigáljon az Azure Container Registry szolgáltatáshoz. A **házirendek**területen válassza a **megőrzés** (előzetes verzió) lehetőséget.
-1. Az **állapot**területen válassza a **Letiltva**lehetőséget. Kattintson a **Mentés** gombra.
+1. Navigáljon az Azure Container Registry szolgáltatáshoz. A **házirendek** területen válassza a **megőrzés** (előzetes verzió) lehetőséget.
+1. Az **állapot** területen válassza a **Letiltva** lehetőséget. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [lemezképek és adattárak Azure Container Registry való törlésének](container-registry-delete.md) lehetőségeiről
 

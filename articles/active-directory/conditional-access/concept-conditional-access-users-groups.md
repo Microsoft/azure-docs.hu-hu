@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/04/2021
+ms.date: 03/17/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f316b17096e1241fe23cbf2c965122fd8966522
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: b878abbead68b3268891e1f35087e5942969730c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102630877"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579059"
 ---
 # <a name="conditional-access-users-and-groups"></a>Feltételes hozzáférés: felhasználók és csoportok
 
-A feltételes hozzáférési szabályzatnak tartalmaznia kell egy felhasználói hozzárendelést a döntési folyamat egyik jeleként. A felhasználók belefoglalhatják vagy kizárhatják a feltételes hozzáférési szabályzatokat. Azure Active Directory kiértékeli az összes házirendet, és biztosítja, hogy minden követelmény teljesül, mielőtt hozzáférést adna a felhasználóhoz. A jelen cikken kívül egy videót is talál arról, [Hogyan foglalhat be vagy zárhat ki felhasználókat olyan feltételes hozzáférési szabályzatokból](https://www.youtube.com/watch?v=5DsW1hB3Jqs) , amelyek végigvezetik az alább vázolt folyamaton. 
+A feltételes hozzáférési szabályzatnak tartalmaznia kell egy felhasználói hozzárendelést a döntési folyamat egyik jeleként. A felhasználók belefoglalhatják vagy kizárhatják a feltételes hozzáférési szabályzatokat. Azure Active Directory kiértékeli az összes házirendet, és biztosítja, hogy minden követelmény teljesül, mielőtt hozzáférést adna a felhasználóhoz. 
 
-![A felhasználó mint jel a feltételes hozzáférés által hozott döntésekben](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups.png)
+> [!VIDEO https://www.youtube.com/embed/5DsW1hB3Jqs]
 
 ## <a name="include-users"></a>Felhasználók belefoglalása
 
@@ -30,7 +30,7 @@ A felhasználók ezen listája általában a feltételes hozzáférési szabály
 
 A feltételes hozzáférési szabályzat létrehozásakor a következő beállítások érhetők el.
 
-- Nincs
+- Nincsenek
    - Nincs kijelölt felhasználó
 - Minden felhasználó
    - Minden olyan felhasználó, aki szerepel a címtárban, beleértve a B2B vendégeket is.
@@ -77,7 +77,7 @@ Alapértelmezés szerint a házirend lehetővé teszi az aktuális felhasználó
 
 ![Figyelmeztetés, ne zárja ki magát!](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups-lockout-warning.png)
 
-[Mi a teendő, ha ki van zárva a Azure Portal?](troubleshoot-conditional-access.md#what-to-do-if-you-are-locked-out-of-the-azure-portal)
+Ha úgy találja magát, hogy kizárta,[Mi a teendő, ha ki van zárva a Azure Portal?](troubleshoot-conditional-access.md#what-to-do-if-you-are-locked-out-of-the-azure-portal)
 
 ## <a name="next-steps"></a>Következő lépések
 

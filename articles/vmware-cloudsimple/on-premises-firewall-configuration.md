@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6ff057d99e29c7c6fe30e77f38a0bff265dbe7bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86998891"
 ---
 # <a name="accessing-your-cloudsimple-private-cloud-environment-and-applications-from-on-premises"></a>Hozzáférés a CloudSimple saját felhőalapú környezetéhez és a helyszíni alkalmazásokhoz
@@ -58,7 +58,7 @@ A privát felhőben futó számítási feladatok virtuális gépei számára sz�
 | 389 (TCP/UDP) | Saját Felhőbeli számítási feladatok hálózata | Helyszíni Active Directory-hálózat | Csatlakoztassa a Windows munkaterhelés virtuális gépeket a helyszíni Active Directory-tartományhoz.       |
 | 53 (UDP)      | Saját Felhőbeli számítási feladatok hálózata | Helyszíni hálózat                  | DNS-szolgáltatás elérése a számítási feladatok virtuális gépei számára a helyszíni DNS-kiszolgálókra.         |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [VLAN-ok és alhálózatok létrehozása és kezelése](./create-vlan-subnet.md)
 * [Kapcsolódás helyszíni hálózathoz az Azure ExpressRoute](./on-premises-connection.md)

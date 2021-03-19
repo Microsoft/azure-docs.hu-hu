@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: juliako
 ms.openlocfilehash: 0961aa3e573e511a6941bc59ddc335f64799abb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87047345"
 ---
 # <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>Azure Media Services v3 alapkészletek és Video Indexer összehasonlítása 
@@ -38,7 +38,7 @@ Jelenleg a [video Indexer API](https://api-portal.videoindexer.ai/) -k és a [Me
 |Ingyenes próba|USA keleti régiója|Nem elérhető|
 |Régiónkénti elérhetőség|Tekintse meg [a Cognitive Services elérhetőségét régiónként](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)|Tekintse meg [a Media Services elérhetőségét régiónként](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A Video Indexer áttekintése](video-indexer-overview.md)
 

@@ -4,10 +4,10 @@ description: 'Gyors útmutató: Ez a cikk bemutatja, hogyan hozhat létre olyan 
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 59cd0d757108e7579ce389d216b0ee4d569e12fd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87002454"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>Rövid útmutató: események küldése vagy fogadása Event Hubsról a go használatával
@@ -23,7 +23,7 @@ Ez az oktatóanyag azt ismerteti, hogyan írhat go-alkalmazásokat események k�
 Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szüksége:
 
 - A go telepítése helyileg. Ha szükséges, kövesse [ezeket az utasításokat](https://golang.org/doc/install) .
-- Aktív Azure-fiók. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot][], mielőtt hozzákezd.
+- Aktív Azure-fiók. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot][].
 - **Hozzon létre egy Event Hubs névteret és egy Event hubot**. A [Azure Portal](https://portal.azure.com) használatával hozzon létre Event Hubs típusú névteret, és szerezze be azokat a felügyeleti hitelesítő adatokat, amelyekre az alkalmazásnak szüksége van az Event hub-vel való kommunikációhoz. A névtér és az Event hub létrehozásához kövesse az [ebben a cikkben](event-hubs-create.md)ismertetett eljárást.
 
 ## <a name="send-events"></a>Események küldése
@@ -274,7 +274,7 @@ if err != nil {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Olvassa el a következő cikkeket:
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)

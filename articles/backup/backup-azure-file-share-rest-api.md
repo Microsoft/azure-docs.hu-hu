@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan használhatja a REST API az Azure-fájlmegoszt�
 ms.topic: conceptual
 ms.date: 02/16/2020
 ms.openlocfilehash: 8d2d8ed88da133986540a293185c8e37000ab87b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88824865"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>Azure-fájlmegosztás biztonsági mentése a Azure Backup használatával REST API-n keresztül
@@ -237,7 +237,7 @@ protectionContainers/StorageContainer;Storage;AzureFiles;testvault2",
 }
 ```
 
-A válasz törzsében ellenőrizheti, hogy a regisztráció sikeres volt-e a *registrationstatus* paraméter értéke alapján. Esetünkben a *testvault2*regisztrált állapota jelenik meg, így a regisztrálási művelet sikeres volt.
+A válasz törzsében ellenőrizheti, hogy a regisztráció sikeres volt-e a *registrationstatus* paraméter értéke alapján. Esetünkben a *testvault2* regisztrált állapota jelenik meg, így a regisztrálási művelet sikeres volt.
 
 ### <a name="inquire-all-unprotected-files-shares-under-a-storage-account"></a>Az összes nem védett fájl megosztásának lekérdezése egy Storage-fiókban
 
@@ -467,7 +467,7 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 Az igény szerinti biztonsági mentés elindításához kövesse a kérelem törzsének összetevőit.
 
-| Név       | Típus                       | Leírás                       |
+| Név       | Típus                       | Description                       |
 | ---------- | -------------------------- | --------------------------------- |
 | Tulajdonságok | AzurefilesharebackupReques | BackupRequestResource tulajdonságai |
 

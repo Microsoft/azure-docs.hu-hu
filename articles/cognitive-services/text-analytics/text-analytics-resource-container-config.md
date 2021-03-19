@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: f6a1bc652125990a7daf3414895f34b95c544912
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83590554"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Text Analytics Docker-tárolók konfigurálása
@@ -43,13 +43,13 @@ Ez a beállítás a következő helyen érhető el:
 
 ## <a name="billing-configuration-setting"></a>Számlázási konfigurációs beállítás
 
-A `Billing` beállítás határozza meg az Azure-beli _text Analytics_ erőforrás végpontjának URI-ját, amely a tároló számlázási adatainak mérésére szolgál. Meg kell adnia egy értéket ehhez a konfigurációs beállításhoz, és az értéknek érvényes végponti URI-nak kell lennie egy __text Analytics_ erőforráshoz az Azure-ban. A tároló 10 – 15 percen belül jelentést készít a használatról.
+A `Billing` beállítás határozza meg az Azure-beli _text Analytics_ erőforrás végpontjának URI-ját, amely a tároló számlázási adatainak mérésére szolgál. Meg kell adnia egy értéket ehhez a konfigurációs beállításhoz, és az értéknek érvényes végponti URI-nak kell lennie egy _ _text Analytics_ erőforráshoz az Azure-ban. A tároló 10 – 15 percen belül jelentést készít a használatról.
 
 Ez a beállítás a következő helyen érhető el:
 
 * Azure Portal: **text Analytics** áttekintés, címkézett `Endpoint`
 
-|Kötelező| Name (Név) | Adattípus | Leírás |
+|Kötelező| Name | Adattípus | Leírás |
 |--|------|-----------|-------------|
 |Igen| `Billing` | Sztring | Számlázási végpont URI-ja. A számlázási URI beszerzésével kapcsolatos további információkért lásd: a [szükséges paraméterek összegyűjtése](how-tos/text-analytics-how-to-install-containers.md#gathering-required-parameters). További információk és a regionális végpontok teljes listája: [Cognitive Services egyéni altartománynevei nevei](../cognitive-services-custom-subdomains.md). |
 
@@ -77,12 +77,12 @@ A Text Analytics tárolók nem használnak bemeneti vagy kimeneti csatlakoztatá
 
 A gazdagép csatlakoztatási helyének pontos szintaxisa a gazda operációs rendszertől függően változhat. Emellett előfordulhat, hogy a [gazdaszámítógép](how-tos/text-analytics-how-to-install-containers.md#the-host-computer)csatlakoztatási helye nem érhető el, mert a Docker-szolgáltatásfiók és a gazdagép csatlakoztatási helye engedélyekkel kapcsolatos engedélyek ütköznek. 
 
-|Választható| Name (Név) | Adattípus | Leírás |
+|Választható| Name | Adattípus | Leírás |
 |-------|------|-----------|-------------|
 |Nem engedélyezett| `Input` | Sztring | Text Analytics tárolók nem használják ezt.|
 |Választható| `Output` | Sztring | A kimeneti csatlakoztatás célja. Az alapértelmezett érték `/output`. Ez a naplók helye. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A tárolók telepítésének és futtatásának](how-tos/text-analytics-how-to-install-containers.md) áttekintése
 * További [Cognitive Services tárolók](../cognitive-services-container-support.md) használata

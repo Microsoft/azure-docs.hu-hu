@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 84b786a1701892823554a83fa2015ac88d6eff4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "60295143"
 ---
 # <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitási megoldás hozzáférés-vezérlési követelményeinek meghatározása
@@ -78,7 +78,7 @@ A hitelesítés és az engedélyezés olyan alapszintű elemek, amelyek lehetőv
 > 
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Az incidensmegoldáshoz kapcsolódó követelmények meghatározása](plan-hybrid-identity-design-considerations-incident-response-requirements.md)
 
 ## <a name="see-also"></a>Lásd még:

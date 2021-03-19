@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/31/2019
 ms.author: allensu
 ms.openlocfilehash: a49912bc2275e478d657f06587c4ddc830210d3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87040212"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>HTTP-viselkedés felülbírálása a Verizon Premium Rules Engine Azure CDN használatával
@@ -22,19 +22,19 @@ ms.locfileid: "87040212"
 
 A Azure CDN Rules Engine lehetővé teszi a HTTP-kérések kezelésének testreszabását. Például letilthatja bizonyos tartalomtípusok kézbesítését, a gyorsítótárazási házirend meghatározását vagy egy HTTP-fejléc módosítását. Ez az oktatóanyag bemutatja, hogyan hozhat létre olyan szabályt, amely megváltoztatja a CDN-eszközök gyorsítótárazási viselkedését. A szabályok motor szintaxisával kapcsolatos további információkért lásd a [Azure CDN Rules Engine-referenciát](cdn-verizon-premium-rules-engine-reference.md).
 
-## <a name="access"></a>Hozzáférés
+## <a name="access"></a>Access
 
 A szabályok motor eléréséhez először a **CDN-profil** oldal tetején lévő **kezelés** elemre kell kiválasztania a Azure CDN felügyeleti oldalának eléréséhez. Attól függően, hogy a végpont a dinamikus hely gyorsítására van-e optimalizálva (DSA), akkor a szabályok motorját a megadott típusú végpontnak megfelelő szabályokkal érheti el:
 
 - Általános webes kézbesítésre vagy más, nem DSA-optimalizálásra optimalizált végpontok:
     
-    Válassza ki a **http nagyméretű** lapot, majd válassza a **szabályok motor**elemet.
+    Válassza ki a **http nagyméretű** lapot, majd válassza a **szabályok motor** elemet.
 
     ![A HTTP-re vonatkozó szabályok motorja](./media/cdn-rules-engine/cdn-http-rules-engine.png)
 
 - DSA-ra optimalizált végpontok:
     
-    Válassza az **ADN** lapot, majd a **szabályok motor**elemet.
+    Válassza az **ADN** lapot, majd a **szabályok motor** elemet.
     
     Az ADN olyan kifejezés, amelyet a Verizon a DSA-tartalom megadására használ. Az itt létrehozott szabályokat a rendszer figyelmen kívül hagyja a profil egyik olyan végpontján sem, amely nem a DSA-ra van optimalizálva.
 
@@ -42,13 +42,13 @@ A szabályok motor eléréséhez először a **CDN-profil** oldal tetején lév�
 
 ## <a name="tutorial"></a>Oktatóanyag
 
-1. A **CDN-profil** lapon válassza a **kezelés**lehetőséget.
+1. A **CDN-profil** lapon válassza a **kezelés** lehetőséget.
    
     ![CDN-profil kezelése gomb](./media/cdn-rules-engine/cdn-manage-btn.png)
    
     Megnyílik a CDN felügyeleti portál.
 
-2. Válassza ki a **http nagyméretű** lapot, majd válassza a **szabályok motor**elemet.
+2. Válassza ki a **http nagyméretű** lapot, majd válassza a **szabályok motor** elemet.
    
     Megjelenik egy új szabály beállításai.
    
@@ -73,14 +73,14 @@ A szabályok motor eléréséhez először a **CDN-profil** oldal tetején lév�
    >
    >
 
-5. Új szolgáltatás hozzáadásához kattintson a szolgáltatások elem **+** melletti gombra **Features**.  A bal oldali legördülő menüben válassza a **kényszerített belső Max-Age**lehetőséget.  A megjelenő szövegmezőbe írja be a **300**értéket. Ne módosítsa a fennmaradó alapértelmezett értékeket.
+5. Új szolgáltatás hozzáadásához kattintson a szolgáltatások elem **+** melletti gombra .  A bal oldali legördülő menüben válassza a **kényszerített belső Max-Age** lehetőséget.  A megjelenő szövegmezőbe írja be a **300** értéket. Ne módosítsa a fennmaradó alapértelmezett értékeket.
    
    ![CDN-szabály funkció](./media/cdn-rules-engine/cdn-new-feature.png)
    
    > [!NOTE]
    > Több funkció is elérhető a legördülő listában. Az aktuálisan kiválasztott szolgáltatással kapcsolatos információkért válassza ki a kék információs ikont a bal oldalon.
    >
-   > A **belső Max-Age kényszerítéséhez**az eszköz `Cache-Control` és a `Expires` fejlécek felülbírálva vannak, amikor a CDN peremhálózati csomópontja frissíti az eszközt a forrástól. Ebben a példában a CDN peremhálózati csomópontja 300 másodpercig vagy 5 percen belül gyorsítótárazza az adategységet, mielőtt frissíti az eszközt a forrástól.
+   > A **belső Max-Age kényszerítéséhez** az eszköz `Cache-Control` és a `Expires` fejlécek felülbírálva vannak, amikor a CDN peremhálózati csomópontja frissíti az eszközt a forrástól. Ebben a példában a CDN peremhálózati csomópontja 300 másodpercig vagy 5 percen belül gyorsítótárazza az adategységet, mielőtt frissíti az eszközt a forrástól.
    >
    > A szolgáltatások részletes listáját a [szabályok motor funkciói](cdn-verizon-premium-rules-engine-reference-features.md)című témakörben tekintheti meg.
    >
@@ -97,7 +97,7 @@ A szabályok motor eléréséhez először a **CDN-profil** oldal tetején lév�
 
 - [Azure CDN áttekintése](cdn-overview.md)
 - [Szabályok motor referenciája](cdn-verizon-premium-rules-engine-reference.md)
-- [Szabályok motorjának egyeztetési feltételei](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
+- [Szabálymotor egyezési feltételei](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
 - [Szabálymotor feltételes kifejezései](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
 - [Szabálymotor funkciói](cdn-verizon-premium-rules-engine-reference-features.md)
 - [Azure Fridays: Azure CDN hatékony új funkciói](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/) (videó)

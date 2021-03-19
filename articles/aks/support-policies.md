@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 09/18/2020
 ms.openlocfilehash: 86b1c0bba30b41a2ee17cfbdf05286c4d2b3fb8a
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91892710"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Támogatási szabályzatok az Azure Kubernetes Service-hez
@@ -24,7 +24,7 @@ Ez a cikk részletesen ismerteti az Azure Kubernetes Service (ak) technikai tám
 
 Az alap infrastruktúra szolgáltatásként (IaaS) Felhőbeli összetevői, például a számítási vagy hálózatkezelési összetevők lehetővé teszik az alacsony szintű vezérlők és a testreszabási lehetőségek elérését. Ezzel szemben az AK egy kulcsrakész Kubernetes üzembe helyezést biztosít, amely a fürthöz szükséges konfigurációk és képességek közös készletét biztosítja. Egy AK-felhasználóként korlátozott testreszabási és üzembe helyezési lehetőségek állnak rendelkezésre. Az Exchange-ben nem kell aggódnia, vagy közvetlenül a Kubernetes-fürtöket kell kezelnie.
 
-Az AK-val teljes körűen felügyelt *vezérlési síkot*kap. A vezérlő síkja tartalmazza az összes szükséges összetevőt és szolgáltatást, és Kubernetes-fürtöket biztosít a végfelhasználók számára. Az összes Kubernetes-összetevőt a Microsoft tartja karban és üzemelteti.
+Az AK-val teljes körűen felügyelt *vezérlési síkot* kap. A vezérlő síkja tartalmazza az összes szükséges összetevőt és szolgáltatást, és Kubernetes-fürtöket biztosít a végfelhasználók számára. Az összes Kubernetes-összetevőt a Microsoft tartja karban és üzemelteti.
 
 A Microsoft a következő összetevőket felügyeli és figyeli a vezérlés ablaktáblán:
 
@@ -34,7 +34,7 @@ A Microsoft a következő összetevőket felügyeli és figyeli a vezérlés abl
 * Kubernetes proxy vagy hálózatkezelés
 * Minden további addon vagy rendszerösszetevő, amely a Kube-System névtérben fut
 
-Az AK nem a szolgáltatásként nyújtott platform ("Pásti") megoldás. Egyes összetevők, például az ügynökök csomópontjai *megosztott felelősséggel*rendelkeznek, ahol a felhasználóknak segíteniük kell az AK-fürt fenntartásában. Felhasználói bevitelre van szükség, például az ügynök csomópont operációs rendszer (OS) biztonsági javításának alkalmazásához.
+Az AK nem a szolgáltatásként nyújtott platform ("Pásti") megoldás. Egyes összetevők, például az ügynökök csomópontjai *megosztott felelősséggel* rendelkeznek, ahol a felhasználóknak segíteniük kell az AK-fürt fenntartásában. Felhasználói bevitelre van szükség, például az ügynök csomópont operációs rendszer (OS) biztonsági javításának alkalmazásához.
 
 A szolgáltatások *kezelése* abban az értelemben történik, hogy a Microsoft és az AK-csoport üzembe helyezi, működteti és felelős a szolgáltatás rendelkezésre állásának és működésének biztosításáért. Az ügyfelek nem változtathatják meg ezeket a felügyelt összetevőket. A Microsoft korlátozza a testreszabást, hogy konzisztens és skálázható felhasználói élményt biztosítson. A teljes mértékben testreszabható megoldásért lásd: [AK-motor](https://github.com/Azure/aks-engine).
 

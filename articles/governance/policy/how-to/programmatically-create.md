@@ -1,14 +1,14 @@
 ---
 title: Szabályzatok létrehozása programozott módon
 description: Ez a cikk bemutatja, hogyan hozhat létre és kezelhet szabályzatokat az Azure CLI-vel, a Azure PowerShelltal és a REST APIokkal Azure Policy.
-ms.date: 08/17/2020
+ms.date: 03/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 4c3a503e8d48573441093879511490608437b1e1
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: b4f15241799469da2e479cb758f648ec3131a149
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033863"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598490"
 ---
 # <a name="programmatically-create-policies"></a>Szabályzatok létrehozása programozott módon
 
@@ -237,12 +237,12 @@ Az Ön által létrehozott szabályzat-definíció AZONOSÍTÓjának a következ
 
 Az erőforrás-házirendek Azure CLI-vel való kezelésével kapcsolatos további információkért lásd: [Azure CLI erőforrás-házirendek](/cli/azure/policy).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A cikkben szereplő parancsokkal és lekérdezésekkel kapcsolatos további információkért tekintse át a következő cikkeket.
 
 - [Azure REST API-erőforrások](/rest/api/resources/)
 - [Azure PowerShell modulok](/powershell/module/az.resources/#policy)
 - [Azure CLI-házirend parancsai](/cli/azure/policy)
-- [Azure Policy az erőforrás-szolgáltató REST API referenciája](/rest/api/policy-insights)
+- [Azure Policy erőforrás-szolgáltató REST API-referenciája](/rest/api/policy)
 - [Erőforrások rendszerezése az Azure-beli felügyeleti csoportokkal](../../management-groups/overview.md).

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: duau
-ms.openlocfilehash: eefc42fb8e66e66c6388599df65c59ff642a6b59
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: c953668d6b2e364e6e703b1769317f1c520317ca
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124108"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654373"
 ---
 # <a name="about-expressroute-fastpath"></a>Az ExpressRoute FastPath ismertetése
 
@@ -42,7 +42,7 @@ A FastPath konfigurálásához a virtuális hálózati átjárónak a következ�
 
 Míg a FastPath támogatja a legtöbb konfigurációt, nem támogatja a következő funkciókat:
 
-* UDR az átjáró alhálózatán: Ha UDR alkalmaz a virtuális hálózat átjáró-alhálózatára, a helyszíni hálózatról érkező hálózati forgalom továbbra is a virtuális hálózati átjárónak lesz elküldve.
+* UDR: Ez a UDR nem befolyásolja a hálózati forgalmat, amelyet a FastPath közvetlenül a helyszíni hálózatról küld az Azure virtuális hálózatban lévő virtuális gépekre. 
 
 * VNet-társítás: Ha más virtuális hálózatokkal rendelkezik, amelyek az ExpressRoute-hez csatlakoznak, a helyszíni hálózatról a másik virtuális hálózatra irányuló hálózati forgalmat (azaz az úgynevezett "küllős" virtuális hálózatok) továbbra is a virtuális hálózati átjárónak küldi a rendszer. A megkerülő megoldás az összes virtuális hálózat közvetlen összekapcsolása a ExpressRoute-áramkörrel.
 

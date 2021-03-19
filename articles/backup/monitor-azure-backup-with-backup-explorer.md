@@ -5,10 +5,10 @@ ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: a50b9ee05be48113221f2a12f968540bd3a00b3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88824412"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>Biztonsági másolatok figyelése a Backup Explorerrel
@@ -54,19 +54,19 @@ Az **Összefoglalás** lap gyors áttekintést nyújt a Backup Estate általáno
 
 ### <a name="the-backup-items-tab"></a>A biztonsági mentési elemek lap
 
-Az egyes biztonsági mentési elemeket az előfizetés, a tár és egyéb jellemzők alapján szűrheti és tekintheti meg. A biztonsági másolati elem nevének kiválasztásával megnyithatja az adott elemhez tartozó Azure-ablaktáblát. A táblából például megfigyelheti, hogy az *X*elem utolsó biztonsági mentése meghiúsult. Az *X*lehetőség kiválasztásával megnyithatja az elem **Backup (biztonsági** mentés) paneljét, ahol elindíthat egy igény szerinti biztonsági mentési műveletet.
+Az egyes biztonsági mentési elemeket az előfizetés, a tár és egyéb jellemzők alapján szűrheti és tekintheti meg. A biztonsági másolati elem nevének kiválasztásával megnyithatja az adott elemhez tartozó Azure-ablaktáblát. A táblából például megfigyelheti, hogy az *X* elem utolsó biztonsági mentése meghiúsult. Az *X* lehetőség kiválasztásával megnyithatja az elem **Backup (biztonsági** mentés) paneljét, ahol elindíthat egy igény szerinti biztonsági mentési műveletet.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nQYc]
 
 ### <a name="the-jobs-tab"></a>A feladatok lap
 
-A **feladatok** lapon megtekintheti az elmúlt 7 napban indított összes feladat részleteit. Itt szűrheti a *feladat művelet*, a *feladat állapota*és a *hibakód* (sikertelen feladatok esetén) szerinti szűrést.
+A **feladatok** lapon megtekintheti az elmúlt 7 napban indított összes feladat részleteit. Itt szűrheti a *feladat művelet*, a *feladat állapota* és a *hibakód* (sikertelen feladatok esetén) szerinti szűrést.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nOrh]
 
 ### <a name="the-alerts-tab"></a>A riasztások lap
 
-A **riasztások** lapon megtekintheti az elmúlt 7 napban a tárolókban generált összes riasztás részleteit. A riasztások típus szerint szűrhetők (*biztonsági mentési hiba* vagy *visszaállítási hiba*), az aktuális állapot (*aktív* vagy *megoldott*) és a súlyosság (*kritikus*, *Figyelmeztetés*vagy *információ*). Kiválaszthat egy hivatkozást is az Azure-beli virtuális gép ugrásához, és megteheti a szükséges lépéseket.
+A **riasztások** lapon megtekintheti az elmúlt 7 napban a tárolókban generált összes riasztás részleteit. A riasztások típus szerint szűrhetők (*biztonsági mentési hiba* vagy *visszaállítási hiba*), az aktuális állapot (*aktív* vagy *megoldott*) és a súlyosság (*kritikus*, *Figyelmeztetés* vagy *információ*). Kiválaszthat egy hivatkozást is az Azure-beli virtuális gép ugrásához, és megteheti a szükséges lépéseket.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4nTxe]
 
@@ -96,6 +96,6 @@ Az egyes táblázatok vagy diagramok tetején található "PIN" ikon kiválaszt�
 
 Ha egy Azure Lighthouse-felhasználó delegált hozzáféréssel rendelkezik több bérlői környezetben lévő előfizetésekhez, használhatja az alapértelmezett előfizetési szűrőt. Megjeleníti azokat az előfizetéseket, amelyek adatait meg szeretné jeleníteni, ha a Azure Portal jobb felső sarkában található "szűrő" ikonra kattint. Ha ezt a funkciót használja, a Backup Explorer összesíti a kiválasztott előfizetések összes tárolójának adatait. További információ: [Mi az az Azure Lighthouse?](../lighthouse/overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Megtudhatja, hogyan használhatja a Azure Monitort a biztonsági mentési adataival kapcsolatos elemzések lekéréséhez](./backup-azure-monitoring-use-azuremonitor.md)

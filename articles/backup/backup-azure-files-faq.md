@@ -4,10 +4,10 @@ description: Ebből a cikkből megismerheti az Azure-fájlmegosztás Azure Backu
 ms.date: 04/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: e2b6afb25e189ee2848f25c0ba59d843baf37090
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91940835"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Kérdések az Azure Files biztonsági mentéséről
@@ -122,8 +122,8 @@ Ha módosítja a napi biztonsági mentési szabályzatot a GFS házirendre (hete
 | -------------- | ------------------------------ | --------- |
 | Napi          | Minden nap 21:00 órakor              | 50 nap   |
 | Heti         | Vasárnap, 21:00 órakor              | 3 hét   |
-| havonta        | Az utolsó hétfőn, 9 ÓRAKOR         | 1 hónap   |
-| Évi         | Januártól harmadik vasárnap, 21:00-kor | 4 év   |
+| Havonta        | Az utolsó hétfőn, 9 ÓRAKOR         | 1 hónap   |
+| Éves         | Januártól harmadik vasárnap, 21:00-kor | 4 év   |
 
 #### <a name="impact"></a>Hatás
 
@@ -157,7 +157,7 @@ Amikor új házirendet alkalmaznak a fájlmegosztás esetében, az összes jöv�
 | -------------- | ---------------------- | --------- |
 | Napi          | Minden nap 21:00 órakor     | 10 nap   |
 | Heti         | Hétfőn, 21:00 órakor      | 2 hét   |
-| havonta        | Az utolsó hétfőn, 9 ÓRAKOR | 2 hónap  |
+| Havonta        | Az utolsó hétfőn, 9 ÓRAKOR | 2 hónap  |
 
 #### <a name="impact-of-change"></a>A változás hatása
 

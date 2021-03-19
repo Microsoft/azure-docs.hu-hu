@@ -8,10 +8,10 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
 ms.openlocfilehash: 65a88f309602462e77336181316c0d5bf19a8a1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90980683"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>A Threat Modeling Tool funkcióinak áttekintése
@@ -21,7 +21,7 @@ A Threat Modeling Tool segíthet a veszélyforrások modellezési igényeiben. A
 > [!NOTE]
 >A Threat Modeling Tool gyakran frissülnek, ezért ebben az útmutatóban gyakran tekintheti meg a legújabb funkciókat és a továbbfejlesztett szolgáltatásokat.
 
-Üres lap megnyitásához válassza **a modell létrehozása**lehetőséget.
+Üres lap megnyitásához válassza **a modell létrehozása** lehetőséget.
 
 ![Üres lap](./media/threat-modeling-tool-feature-overview/tmtstart.png)
 
@@ -112,7 +112,7 @@ Az alkalmazás megnyitásakor megjelenik az **üdvözlőképernyő** .
 
 ### <a name="open-a-model"></a>Modell megnyitása
 
-Két lehetőség megjelenítéséhez vigye a kurzort a **nyílt modell** fölé, és nyissa meg **ezt a számítógépet** , és **nyissa**meg a OneDrive. Az első lehetőség megnyitja a **fájl megnyitása** képernyőt. A második lehetőség végigvezeti a bejelentkezési folyamaton a OneDrive. A sikeres hitelesítés után kiválaszthatja a mappákat és a fájlokat.
+Két lehetőség megjelenítéséhez vigye a kurzort a **nyílt modell** fölé, és nyissa meg **ezt a számítógépet** , és **nyissa** meg a OneDrive. Az első lehetőség megnyitja a **fájl megnyitása** képernyőt. A második lehetőség végigvezeti a bejelentkezési folyamaton a OneDrive. A sikeres hitelesítés után kiválaszthatja a mappákat és a fájlokat.
 
 ![Modell megnyitása](./media/threat-modeling-tool-feature-overview/openmodel.png)
 
@@ -120,7 +120,7 @@ Két lehetőség megjelenítéséhez vigye a kurzort a **nyílt modell** fölé,
 
 ### <a name="feedback-suggestions-and-issues"></a>Visszajelzések, javaslatok és problémák
 
-Ha a **visszajelzések, javaslatok és problémák**lehetőségre kattint, az MSDN-fórumba LÉPHET az SDL-eszközökhöz. Elolvashatja, hogy mások mit mondanak az eszközről, beleértve a megkerülő megoldásokat és az új ötleteket is.
+Ha a **visszajelzések, javaslatok és problémák** lehetőségre kattint, az MSDN-fórumba LÉPHET az SDL-eszközökhöz. Elolvashatja, hogy mások mit mondanak az eszközről, beleértve a megkerülő megoldásokat és az új ötleteket is.
 
 ![A képernyőképen egy, a szöveges visszajelzéseket, a javaslatokat és a problémákat tartalmazó gomb látható.](./media/threat-modeling-tool-feature-overview/feedback.png)
 
@@ -133,14 +133,14 @@ Ha a **visszajelzések, javaslatok és problémák**lehetőségre kattint, az MS
 A rácson a következő két módon adhat hozzá elemeket:
 
 - **Drag and drop**: húzza a kívánt elemet a rácsra. Ezután használja az elem tulajdonságait további információk megadásához.
-- **Kattintson a jobb**gombbal: kattintson a jobb gombbal a rács tetszőleges pontjára, és válassza az elemek elemet a legördülő menüből. A képernyőn megjelenik a kiválasztott elem általános ábrázolása.
+- **Kattintson a jobb** gombbal: kattintson a jobb gombbal a rács tetszőleges pontjára, és válassza az elemek elemet a legördülő menüből. A képernyőn megjelenik a kiválasztott elem általános ábrázolása.
 
 ### <a name="connect-elements"></a>Elemek összekapcsolása
 
 Az elemek kétféleképpen is csatlakoztathatók:
 
 - **Drag and drop**: húzza a kívánt adatfolyam a rácsra, és mindkét végpontot a megfelelő elemekhez kapcsolja.
-- **Kattintson a + SHIFT**gombra: kattintson az első elemre (adatok küldése), nyomja le és tartsa lenyomva a SHIFT billentyűt, majd válassza ki a második elemet (adatok fogadása). Kattintson a jobb gombbal, majd válassza a **kapcsolat**lehetőséget. Ha kétirányú adatfolyamot használ, a sorrend nem annyira fontos.
+- **Kattintson a + SHIFT** gombra: kattintson az első elemre (adatok küldése), nyomja le és tartsa lenyomva a SHIFT billentyűt, majd válassza ki a második elemet (adatok fogadása). Kattintson a jobb gombbal, majd válassza a **kapcsolat** lehetőséget. Ha kétirányú adatfolyamot használ, a sorrend nem annyira fontos.
 
 ### <a name="properties"></a>Tulajdonságok
 

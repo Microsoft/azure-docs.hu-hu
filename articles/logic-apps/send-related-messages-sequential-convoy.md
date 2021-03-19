@@ -7,10 +7,10 @@ ms.reviewer: apseth, divswa, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.openlocfilehash: 8c00d2e4f622bcfad7b2468013336f0d936e318c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87048656"
 ---
 # <a name="send-related-messages-in-order-by-using-a-sequential-convoy-in-azure-logic-apps-with-azure-service-bus"></a>Kapcsolódó üzenetek küldése sorrendben a Azure Logic Appsban szekvenciális konvoj használatával Azure Service Bus
@@ -49,34 +49,34 @@ Ha nem biztos abban, hogy a logikai alkalmazás rendelkezik-e jogosultsággal a 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Keresse meg és válassza ki a Service Bus *névteret*.
 
-1. A névtér menü **Beállítások**területén válassza a **megosztott elérési házirendek**elemet. A **jogcímek**területen győződjön meg arról, hogy rendelkezik az adott névtérhez **tartozó jogosultságokkal** .
+1. A névtér menü **Beállítások** területén válassza a **megosztott elérési házirendek** elemet. A **jogcímek** területen győződjön meg arról, hogy rendelkezik az adott névtérhez **tartozó jogosultságokkal** .
 
    ![Service Bus névtér engedélyeinek kezelése](./media/send-related-messages-sequential-convoy/check-service-bus-permissions.png)
 
 1. Most szerezze be a Service Bus névtérhez tartozó kapcsolatok karakterláncát. Ezt a karakterláncot később is használhatja, amikor létrehozza a logikai alkalmazás névterével létesített kapcsolatokat.
 
-   1. A **megosztott hozzáférési házirendek** ablaktábla **házirend**területén válassza a **RootManageSharedAccessKey**lehetőséget.
+   1. A **megosztott hozzáférési házirendek** ablaktábla **házirend** területén válassza a **RootManageSharedAccessKey** lehetőséget.
    
    1. Az elsődleges kapcsolódási karakterlánc mellett kattintson a Másolás gombra. Mentse a kapcsolatok karakterláncát későbbi használatra.
 
       ![Service Bus névtérbeli kapcsolatok karakterláncának másolása](./media/send-related-messages-sequential-convoy/copy-service-bus-connection-string.png)
 
    > [!TIP]
-   > Annak ellenőrzéséhez, hogy a kapcsolódási karakterlánc társítva van-e a Service Bus névteréhez vagy egy üzenetküldési entitáshoz, például egy várólistához, keresse meg a paraméterhez tartozó kapcsolódási karakterláncot `EntityPath`   . Ha megtalálta ezt a paramétert, a kapcsolódási karakterlánc egy adott entitásra vonatkozik, és nem a megfelelő karakterláncot használja a logikai alkalmazáshoz.
+   > Annak ellenőrzéséhez, hogy a kapcsolódási karakterlánc társítva van-e a Service Bus névteréhez vagy egy üzenetküldési entitáshoz, például egy várólistához, keresse meg a paraméterhez tartozó kapcsolódási karakterláncot `EntityPath` . Ha megtalálta ezt a paramétert, a kapcsolódási karakterlánc egy adott entitásra vonatkozik, és nem a megfelelő karakterláncot használja a logikai alkalmazáshoz.
 
 ## <a name="create-logic-app"></a>Logikai alkalmazás létrehozása
 
 Ebben a szakaszban egy logikai alkalmazást hoz létre a **korrelált sorrend szerinti kézbesítés a Service Bus-munkamenetek** sablonnal, amely magában foglalja a munkafolyamat-minta megvalósításának triggerét és műveleteit. Hozzon létre egy kapcsolódást a Service Bus névtérhez is, és adja meg a használni kívánt Service Bus-várólista nevét.
 
-1. A [Azure Portal](https://portal.azure.com)hozzon létre egy üres logikai alkalmazást. Az Azure kezdőlapján válassza az **erőforrás létrehozása**  >  **integrációs**  >  **logikai alkalmazás**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)hozzon létre egy üres logikai alkalmazást. Az Azure kezdőlapján válassza az **erőforrás létrehozása**  >  **integrációs**  >  **logikai alkalmazás** lehetőséget.
 
 1. A sablon-gyűjtemény megjelenése után görgessen a videó és a Common triggers (gyakori eseményindítók) szakaszban. A **sablonok** szakaszban válassza ki a sablont, **korrelált sorrend szerinti kézbesítést a Service Bus-munkamenetek használatával**.
 
    ![Válassza a "korrelációs sorrendben történő kézbesítés a Service Bus-munkamenetek használatával" sablont](./media/send-related-messages-sequential-convoy/select-correlated-in-order-delivery-template.png)
 
-1. Amikor megjelenik a megerősítő mező, válassza a **sablon használata**lehetőséget.
+1. Amikor megjelenik a megerősítő mező, válassza a **sablon használata** lehetőséget.
 
-1. A Logic app Designer **Service Bus** alakzatában válassza a **Folytatás**lehetőséget, majd válassza ki az **+** alakzatban megjelenő pluszjelet ().
+1. A Logic app Designer **Service Bus** alakzatában válassza a **Folytatás** lehetőséget, majd válassza ki az **+** alakzatban megjelenő pluszjelet ().
 
    ![Válassza a "Folytatás" lehetőséget a Azure Service Bushoz való kapcsolódáshoz](./media/send-related-messages-sequential-convoy/connect-to-service-bus.png)
 
@@ -84,9 +84,9 @@ Ebben a szakaszban egy logikai alkalmazást hoz létre a **korrelált sorrend sz
 
    * A Service Bus névtérből korábban átmásolt kapcsolódási karakterlánc használatához kövesse az alábbi lépéseket:
 
-     1. Válassza a **kapcsolatfelvételi adatok manuális megadása**lehetőséget.
+     1. Válassza a **kapcsolatfelvételi adatok manuális megadása** lehetőséget.
 
-     1. A **kapcsolatok neve**mezőben adja meg a kapcsolatok nevét. A **kapcsolatok karakterláncához**illessze be a névtér-kapcsolatok karakterláncát, és válassza a **Létrehozás**lehetőséget, például:
+     1. A **kapcsolatok neve** mezőben adja meg a kapcsolatok nevét. A **kapcsolatok karakterláncához** illessze be a névtér-kapcsolatok karakterláncát, és válassza a **Létrehozás** lehetőséget, például:
 
         ![Adja meg a kapcsolatok nevét és Service Bus a kapcsolatok karakterláncát](./media/send-related-messages-sequential-convoy/provide-service-bus-connection-string.png)
 
@@ -95,15 +95,15 @@ Ebben a szakaszban egy logikai alkalmazást hoz létre a **korrelált sorrend sz
 
    * Ha Service Bus névteret szeretne kiválasztani az aktuális Azure-előfizetésből, kövesse az alábbi lépéseket:
 
-     1. A **kapcsolatok neve**mezőben adja meg a kapcsolatok nevét. **Service Bus névtér**esetében válassza ki a Service Bus névteret, például:
+     1. A **kapcsolatok neve** mezőben adja meg a kapcsolatok nevét. **Service Bus névtér** esetében válassza ki a Service Bus névteret, például:
 
         ![Adja meg a kapcsolatok nevét, és válassza ki Service Bus névteret](./media/send-related-messages-sequential-convoy/create-service-bus-connection.png)
 
-     1. Amikor megjelenik a következő ablaktábla, válassza ki a Service Bus szabályzatot, és válassza a **Létrehozás**lehetőséget.
+     1. Amikor megjelenik a következő ablaktábla, válassza ki a Service Bus szabályzatot, és válassza a **Létrehozás** lehetőséget.
 
         ![Válassza ki Service Bus szabályzatot, majd a "létrehozás" lehetőséget.](./media/send-related-messages-sequential-convoy/create-service-bus-connection-2.png)
 
-1. Ha elkészült, válassza a **Folytatás**lehetőséget.
+1. Ha elkészült, válassza a **Folytatás** lehetőséget.
 
    A Logic app Designer mostantól megjeleníti a **korrelált sorrend szerinti kézbesítést a Service Bus-munkamenetek** sablonnal, amely egy előre feltöltött munkafolyamatot tartalmaz egy triggerrel és műveletekkel, beleértve két olyan hatókört is, amelyek a mintázatot követő hibákat kezelik `Try-Catch` .
 
@@ -195,11 +195,11 @@ Az alábbi lépéseket követve megadhatja az triggert és a műveleteket a **ko
 
   | Tulajdonság | Ehhez a forgatókönyvhöz szükséges | Érték | Leírás |
   |----------|----------------------------|-------|-------------|
-  | **Üzenetsor neve** | Igen | <*üzenetsor – név*> | A korábban létrehozott Service Bus üzenetsor neve. Ez a példa a "Fabrikam-Service-Bus-üzenetsor" protokollt használja. |
-  | **Várólista típusa** | Igen | **Fő** | Az elsődleges Service Bus üzenetsor |
-  | **Munkamenet-azonosító** | Igen | **Következő elérhető** | Ez a beállítás az egyes triggerekhez tartozó munkameneteket az Service Bus üzenetsor üzenetében található munkamenet-azonosító alapján kapja meg. A munkamenet zárolása is megtörténik, így más logikai alkalmazások vagy más ügyfelek nem dolgozhatják fel az ehhez a munkamenethez kapcsolódó üzeneteket. A munkafolyamat későbbi műveletei az adott munkamenethez társított összes üzenetet feldolgozzák a jelen cikk későbbi részében leírtak szerint. <p><p>További információ a **munkamenet-azonosító** további lehetőségeiről: <p>- **Nincs**: az alapértelmezett beállítás, amely nem használ munkameneteket, és nem használható a szekvenciális konvoj mintázatának megvalósításához. <p>- **Adja meg az egyéni értéket**: akkor használja ezt a beállítást, ha ismeri a használni kívánt munkamenet-azonosítót, és mindig az adott munkamenet-azonosítóhoz tartozó triggert szeretné futtatni. <p>**Megjegyzés**: az Service Bus-összekötő egyszerre csak korlátozott számú egyedi munkamenetet tud menteni Azure Service Busról az összekötő gyorsítótárába. Ha a munkamenetek száma meghaladja ezt a korlátot, a rendszer eltávolítja a régi munkameneteket a gyorsítótárból. További információ: [Exchange-üzenetek a felhőben Azure Logic apps és Azure Service Bus](../connectors/connectors-create-api-servicebus.md#connector-reference). |
-  | **Intervallum** | Igen | <*intervallumok száma*> | Az ismétlődések közötti időegységek száma az üzenet ellenőrzése előtt. |
-  | **Gyakoriság** | Igen | **Másodperc**, **perc**, **óra**, **nap**, **hét**vagy **hónap** | Az üzenet keresésekor használandó időegység. <p>**Tipp**: **időzóna** vagy **Kezdési idő**hozzáadásához válassza ki ezeket a tulajdonságokat az **új paraméter hozzáadása** listáról. |
+  | **Üzenetsor neve** | Yes | <*üzenetsor – név*> | A korábban létrehozott Service Bus üzenetsor neve. Ez a példa a "Fabrikam-Service-Bus-üzenetsor" protokollt használja. |
+  | **Várólista típusa** | Yes | **Fő** | Az elsődleges Service Bus üzenetsor |
+  | **Munkamenet-azonosító** | Yes | **Következő elérhető** | Ez a beállítás az egyes triggerekhez tartozó munkameneteket az Service Bus üzenetsor üzenetében található munkamenet-azonosító alapján kapja meg. A munkamenet zárolása is megtörténik, így más logikai alkalmazások vagy más ügyfelek nem dolgozhatják fel az ehhez a munkamenethez kapcsolódó üzeneteket. A munkafolyamat későbbi műveletei az adott munkamenethez társított összes üzenetet feldolgozzák a jelen cikk későbbi részében leírtak szerint. <p><p>További információ a **munkamenet-azonosító** további lehetőségeiről: <p>- **Nincs**: az alapértelmezett beállítás, amely nem használ munkameneteket, és nem használható a szekvenciális konvoj mintázatának megvalósításához. <p>- **Adja meg az egyéni értéket**: akkor használja ezt a beállítást, ha ismeri a használni kívánt munkamenet-azonosítót, és mindig az adott munkamenet-azonosítóhoz tartozó triggert szeretné futtatni. <p>**Megjegyzés**: az Service Bus-összekötő egyszerre csak korlátozott számú egyedi munkamenetet tud menteni Azure Service Busról az összekötő gyorsítótárába. Ha a munkamenetek száma meghaladja ezt a korlátot, a rendszer eltávolítja a régi munkameneteket a gyorsítótárból. További információ: [Exchange-üzenetek a felhőben Azure Logic apps és Azure Service Bus](../connectors/connectors-create-api-servicebus.md#connector-reference). |
+  | **Intervallum** | Yes | <*intervallumok száma*> | Az ismétlődések közötti időegységek száma az üzenet ellenőrzése előtt. |
+  | **Gyakoriság** | Yes | **Másodperc**, **perc**, **óra**, **nap**, **hét** vagy **hónap** | Az üzenet keresésekor használandó időegység. <p>**Tipp**: **időzóna** vagy **Kezdési idő** hozzáadásához válassza ki ezeket a tulajdonságokat az **új paraméter hozzáadása** listáról. |
   |||||
 
   További információ az aktiválásról: [Service Bus – ha üzenet érkezik egy várólistába (betekintés – zárolás)](/connectors/servicebus/#when-a-message-is-received-in-a-queue-(peek-lock)). Az trigger kimenete egy [ServiceBusMessage](/connectors/servicebus/#servicebusmessage).
@@ -261,7 +261,7 @@ Ez [ **egészen addig, amíg** a ciklus nem](../logic-apps/logic-apps-control-fl
 
    ![Feltétel – az üzenetek feldolgozása, ha van ilyen](./media/send-related-messages-sequential-convoy/process-messages-if-any.png)
 
-   Ha az **IF false (hamis** ) szakaszban az **egyes** ciklusok mindegyike feldolgozza az egyes üzeneteket, először a kezdeti sorrendben (FIFO). A hurok **beállításaiban**a **Egyidejűség vezérlőelem** beállítása a (z) értékre van állítva `1` , így egyszerre csak egyetlen üzenet lesz feldolgozva.
+   Ha az **IF false (hamis** ) szakaszban az **egyes** ciklusok mindegyike feldolgozza az egyes üzeneteket, először a kezdeti sorrendben (FIFO). A hurok **beállításaiban** a **Egyidejűség vezérlőelem** beállítása a (z) értékre van állítva `1` , így egyszerre csak egyetlen üzenet lesz feldolgozva.
 
    !["Az egyes" hurok-feldolgozáshoz minden egyes üzenet egyszerre](./media/send-related-messages-sequential-convoy/for-each-additional-message.png)
 
@@ -301,7 +301,7 @@ Ez a Service Bus művelet megújítja a munkamenet zárolását a várólistán,
 
   ![Service Bus művelet – "zárolás megújítása a várólistán"](./media/send-related-messages-sequential-convoy/renew-lock-on-session-in-queue.png)
 
-Ezután meg kell adnia a Service Bus művelethez szükséges adatokat, **lezárta a munkamenetet egy várólistában, és sikeres**lesz.
+Ezután meg kell adnia a Service Bus művelethez szükséges adatokat, **lezárta a munkamenetet egy várólistában, és sikeres** lesz.
 
 <a name="close-session-succeed"></a>
 
@@ -309,7 +309,7 @@ Ezután meg kell adnia a Service Bus művelethez szükséges adatokat, **lezárt
 
 Ez a Service Bus művelet lezárja a munkamenetet a várólistán, miután a munkafolyamat befejezte a várólistán lévő összes elérhető üzenet feldolgozását, vagy a munkafolyamat elhagyja a kezdeti üzenetet.
 
-* A Service Bus műveletben **zárjuk be a munkamenetet egy várólistában, és a sikerhez**adja meg a Service Bus üzenetsor nevét.
+* A Service Bus műveletben **zárjuk be a munkamenetet egy várólistában, és a sikerhez** adja meg a Service Bus üzenetsor nevét.
 
   ![Service Bus művelet – "munkamenet lezárása egy várólistában és sikeres"](./media/send-related-messages-sequential-convoy/close-session-in-queue-succeed.png)
 
@@ -321,7 +321,7 @@ A következő szakaszok ismertetik a szakasz azon műveleteit `Catch` , amelyek 
 
 Ez a Service Bus művelet mindig a hatókör első műveletének megfelelően fut, `Catch` és bezárja a munkamenetet a várólistán.
 
-* A Service Bus műveletben **zárjuk be a munkamenetet egy várólistában, és a hiba**esetén adja meg a Service Bus üzenetsor nevét.
+* A Service Bus műveletben **zárjuk be a munkamenetet egy várólistában, és a hiba** esetén adja meg a Service Bus üzenetsor nevét.
 
   ![Service Bus művelet – "munkamenet lezárása egy várólistában és sikertelen"](./media/send-related-messages-sequential-convoy/close-session-in-queue-fail.png)
 
@@ -388,7 +388,7 @@ Ezután a munkafolyamat leállítja a logikai alkalmazás futtatását, és viss
 
 ### <a name="terminate-logic-app-run"></a>Logikai alkalmazás futtatásának leállítása
 
-Ez a leállítási [ **Terminate** művelet](../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action) leállítja a logikai alkalmazás futtatását, és visszaadja a `Failed` logikai alkalmazás futtatásának állapotát a munkamenet-azonosítóval és a művelet hibájának eredményével együtt `Select error details` .
+Ez a leállítási [  művelet](../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action) leállítja a logikai alkalmazás futtatását, és visszaadja a `Failed` logikai alkalmazás futtatásának állapotát a munkamenet-azonosítóval és a művelet hibájának eredményével együtt `Select error details` .
 
 ![A logikai alkalmazás futtatásának leállítására szolgáló művelet leállítása](./media/send-related-messages-sequential-convoy/terminate-logic-app-run.png)
 
@@ -416,10 +416,10 @@ A művelet JSON-definíciója a következő:
 
 ## <a name="save-and-run-logic-app"></a>Logikai alkalmazás mentése és futtatása
 
-A sablon befejezése után már mentheti a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget.
+A sablon befejezése után már mentheti a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés** lehetőséget.
 
 A logikai alkalmazás teszteléséhez küldje el az üzeneteket a Service Bus-várólistába. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az [Service Bus-összekötő eseményindítóinak és műveleteiről](/connectors/servicebus/)

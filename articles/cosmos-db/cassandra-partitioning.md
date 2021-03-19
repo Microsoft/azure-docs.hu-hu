@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: ba615d3e41393afe007238a0fe1e694732ad123e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93087638"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>Particionálás Azure Cosmos DB Cassandra API
@@ -84,11 +84,11 @@ insert into uprofile.user (user, id, message) values ('theo', 2, 'hello again');
 
 Az adatvisszaadás során a rendszer a fürtszolgáltatási kulcs szerint rendezi az Apache Cassandra-ban elvárt módon:
 
-:::image type="content" source="./media/cassandra-partitioning/select-from-pk.png" alt-text="partíciók":::
+:::image type="content" source="./media/cassandra-partitioning/select-from-pk.png" alt-text="Képernyőkép, amely a fürtözési kulcs alapján rendezett visszaadott értékeket jeleníti meg.":::
 
 Az ily módon létrehozott adatokkal több rekord is hozzárendelhető minden partícióhoz, felhasználó szerint csoportosítva. Így egy `partition key` `user` adott felhasználó összes üzenetének lekéréséhez egy olyan lekérdezést adhatunk ki, amely hatékonyan irányítja a (jelen esetben). 
 
-:::image type="content" source="./media/cassandra-partitioning/cassandra-partitioning2.png" alt-text="partíciók" border="false":::
+:::image type="content" source="./media/cassandra-partitioning/cassandra-partitioning2.png" alt-text="Diagram, amely azt mutatja, hogy a rendszer hogyan rendelhető hozzá több rekord az egyes partíciókhoz, felhasználónként csoportosítva." border="false":::
 
 
 ## <a name="composite-partition-key"></a>Összetett partíciós kulcs

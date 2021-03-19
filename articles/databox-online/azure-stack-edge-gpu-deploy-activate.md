@@ -10,10 +10,10 @@ ms.date: 10/07/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
 ms.openlocfilehash: a767f6f877ae22a311afdb00417efb9f28fdc8f0
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91938354"
 ---
 # <a name="tutorial-activate-azure-stack-edge-pro-with-gpu"></a>Oktatóanyag: Azure Stack Edge Pro aktiválása GPU-val
@@ -44,7 +44,7 @@ Az Azure Stack Edge Pro-eszköz GPU-val való konfigurálása előtt győződjö
 ## <a name="activate-the-device"></a>Az eszköz aktiválása
 
 1. Az eszköz helyi webes FELÜLETén válassza az **első lépések** lapot.
-2. Az **aktiválási** csempén válassza az **aktiválás**lehetőséget. 
+2. Az **aktiválási** csempén válassza az **aktiválás** lehetőséget. 
 
     ![Helyi webes felhasználói felület "felhő részletei" oldal](./media/azure-stack-edge-gpu-deploy-activate/activate-1.png)
     
@@ -86,7 +86,7 @@ Az Azure Stack Edge Pro-eszköz GPU-val való konfigurálása előtt győződjö
     |`SystemVolumeBitLockerRecoveryKey`| Ez a rendszerkötet BitLocker-kulcsa. Ez a kulcs segít az eszköz rendszerkonfigurációjának és rendszerállapotának helyreállításában. |
     |`ServiceEncryptionKey`| Ez a kulcs védi az Azure-szolgáltatáson keresztül áramló adatforgalmat. Ez a kulcs biztosítja, hogy az Azure-szolgáltatás sérülése ne veszélyeztesse a tárolt adatokat. |
 
-6. Ugrás az **Áttekintés** oldalra. Az eszköz állapotának **aktiválva**kell lennie.
+6. Ugrás az **Áttekintés** oldalra. Az eszköz állapotának **aktiválva** kell lennie.
 
     ![Helyi webes felhasználói felület – felhő részletei – 4. oldal](./media/azure-stack-edge-gpu-deploy-activate/activate-4.png)
  

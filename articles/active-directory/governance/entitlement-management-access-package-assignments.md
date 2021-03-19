@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 18bc7ca9e108a35fd27f7b3155f186221a8caae3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90980066"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomaghoz tartozó hozzárendelések megtekintése, hozzáadása és eltávolítása az Azure AD-jogosultságok kezelésében
@@ -32,13 +32,13 @@ Az Azure AD-jogosultságok kezelése szolgáltatásban megtekintheti, hogy kinek
 Az Azure AD-jogosultságok felügyeletének használatához és a felhasználók a csomagok eléréséhez való hozzárendeléséhez a következő licencek egyike szükséges:
 
 - Prémium szintű Azure AD P2
-- Enterprise Mobility + Security (EMS) E5-licenc
+- Enterprise Mobility + Security (EMS) E5 licenc
 
 ## <a name="view-who-has-an-assignment"></a>Hozzárendelést használó nézet megtekintése
 
 **Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa, Access Package Manager vagy Access Package hozzárendelés-kezelő
 
-1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás** elemre.
 
 1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
 
@@ -48,13 +48,13 @@ Az Azure AD-jogosultságok felügyeletének használatához és a felhasználók
 
 1. A további részletek megtekintéséhez kattintson egy konkrét hozzárendelésre.
 
-1. Ha meg szeretné tekinteni azoknak a hozzárendeléseknek a listáját, amelyeken nincs megfelelően kiépítve az összes erőforrás-szerepkör, kattintson a szűrő állapotára, és válassza a **kézbesítés**lehetőséget.
+1. Ha meg szeretné tekinteni azoknak a hozzárendeléseknek a listáját, amelyeken nincs megfelelően kiépítve az összes erőforrás-szerepkör, kattintson a szűrő állapotára, és válassza a **kézbesítés** lehetőséget.
 
     A kézbesítési hibákkal kapcsolatos további részletekért tekintse meg a felhasználó megfelelő kérését a **kérelmek** lapon.
 
-1. A lejárt hozzárendelések megjelenítéséhez kattintson a szűrő állapotára, és válassza a **lejárt**lehetőséget.
+1. A lejárt hozzárendelések megjelenítéséhez kattintson a szűrő állapotára, és válassza a **lejárt** lehetőséget.
 
-1. A szűrt lista CSV-fájljának letöltéséhez kattintson a **Letöltés**gombra.
+1. A szűrt lista CSV-fájljának letöltéséhez kattintson a **Letöltés** gombra.
 
 ### <a name="viewing-assignments-programmatically"></a>A hozzárendelések programozott megtekintése
 
@@ -66,11 +66,11 @@ Bizonyos esetekben előfordulhat, hogy közvetlenül egy adott felhasználót sz
 
 **Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa, Access Package Manager vagy Access Package hozzárendelés-kezelő
 
-1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás** elemre.
 
 1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
 
-1. A bal oldali menüben kattintson a **hozzárendelések**elemre.
+1. A bal oldali menüben kattintson a **hozzárendelések** elemre.
 
 1. Kattintson az **új hozzárendelés** lehetőségre a felhasználó hozzáadása a csomaghoz lehetőség megnyitásához.
 
@@ -96,11 +96,11 @@ Microsoft Graph használatával közvetlenül is hozzárendelhet egy felhasznál
 
 **Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa, Access Package Manager vagy Access Package hozzárendelés-kezelő
 
-1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás** elemre.
 
 1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
 
-1. A bal oldali menüben kattintson a **hozzárendelések**elemre.
+1. A bal oldali menüben kattintson a **hozzárendelések** elemre.
  
 1. Jelölje be azon felhasználó melletti jelölőnégyzetet, amelynek hozzárendelését el szeretné távolítani a hozzáférési csomagból. 
 

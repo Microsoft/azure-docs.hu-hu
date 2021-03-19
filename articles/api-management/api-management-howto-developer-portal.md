@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/15/2020
 ms.author: apimpm
 ms.openlocfilehash: 30487218fc95be75d22b5a9ea5a6dbc224ffd025
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93074797"
 ---
 # <a name="overview-of-the-developer-portal"></a>A fejlesztői portál áttekintése
@@ -62,7 +62,7 @@ Amikor először indította el a fejlesztői portál előzetes verzióját, kié
 
 Ha a portál előzetes verzióján alapuló, nagy mértékben testre szabott, továbbra is használhatja azt, és az új widgeteket manuálisan helyezheti el a portál oldalain. Ellenkező esetben javasoljuk, hogy cserélje le a portál tartalmát az új alapértelmezett tartalomra.
 
-A felügyelt portál tartalmának alaphelyzetbe állításához válassza a **tartalom alaphelyzetbe állítása** lehetőséget az **Operations (műveletek** ) menü szakaszban. Ez a művelet eltávolítja a portál összes tartalmát, és új alapértelmezett tartalmat fog kiépíteni. A fejlesztői portál minden testreszabását és módosítását elveszítjük. **Ez a művelet nem vonható vissza** .
+A felügyelt portál tartalmának alaphelyzetbe állításához válassza a **tartalom alaphelyzetbe állítása** lehetőséget az **Operations (műveletek** ) menü szakaszban. Ez a művelet eltávolítja a portál összes tartalmát, és új alapértelmezett tartalmat fog kiépíteni. A fejlesztői portál minden testreszabását és módosítását elveszítjük. **Ez a művelet nem vonható vissza**.
 
 ![Portál tartalmának visszaállítása](media/api-management-howto-developer-portal/reset-content.png)
 
@@ -90,11 +90,11 @@ Egy felügyelt portált és több saját üzemeltetésű portált is használhat
 
 ### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>Támogatja a portál a Azure Resource Manager sablonokat, és/vagy kompatibilis-e a API Management DevOps Resource Kit-vel?
 
-Nincs.
+Nem.
 
 ### <a name="is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management"></a>A portál tartalma a API Management biztonsági mentési/helyreállítási funkcióival lett mentve?
 
-Nincs.
+Nem.
 
 ### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-managed-portal-dependencies"></a>Engedélyezni kell további VNet-kapcsolatot a felügyelt portál függőségeihez?
 
@@ -196,7 +196,7 @@ A hívási hibát a TLS/SSL-tanúsítvány is okozhatja, amely egy egyéni tarto
 | Apple Safari                | Igen<sup>1</sup> |
 | Google Chrome               | Igen<sup>1</sup> |
 | Microsoft Edge              | Igen<sup>1</sup> |
-| Microsoft Internet Explorer | Nem              |
+| Microsoft Internet Explorer | No              |
 | Mozilla Firefox             | Igen<sup>1</sup> |
 
  <small><sup>1</sup> támogatott a két legújabb üzemi verzióban.</small>

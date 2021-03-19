@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
 ms.openlocfilehash: bca885f9b19086302fd91d29b8ff6553b7205f28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86544842"
 ---
 ## <a name="c-program-example"></a>C# program – példa
@@ -37,9 +37,9 @@ Az ERD megjeleníti a két tábla közötti kapcsolatot. Az **tabEmployee. Depar
 
 A C# program logikailag egy. cs fájl, és fizikailag több kódrészletre van osztva, hogy az egyes blokkok könnyebben érthetőek legyenek. A program fordításához és futtatásához hajtsa végre a következő lépéseket:
 
-1. C#-projekt létrehozása a Visual Studióban. A projekt típusának *konzolnak*kell lennie, amely a **sablonok**  >  **Visual C#**  >  **Windows asztali**  >  **konzol alkalmazás (.NET-keretrendszer)** területen található.
+1. C#-projekt létrehozása a Visual Studióban. A projekt típusának *konzolnak* kell lennie, amely a **sablonok**  >  **Visual C#**  >  **Windows asztali**  >  **konzol alkalmazás (.NET-keretrendszer)** területen található.
 
-1. A fájl *program.cs*cserélje le a kód kezdő sorait a következő lépésekre:
+1. A file *program. cs* fájlban cserélje le a kód kezdő sorait a következő lépésekre:
 
     1. Másolja és illessze be az alábbi kódrészleteket ugyanabban a sorozatban, amelyben megjelennek. lásd: [Kapcsolódás az adatbázishoz](#cs_1_connect), a [T-SQL létrehozása](#cs_2_return)és az [adatbázisba való elküldés](#cs_3_submit).
 

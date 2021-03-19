@@ -7,13 +7,13 @@ ms.date: 11/01/2019
 ms.author: yunjchoi
 ms.custom: na
 ms.openlocfilehash: fb329273d442c023233fee2e7e01aabe5f5bff8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83122365"
 ---
-# <a name="azure-functions-diagnostics-overview"></a>Azure Functions diagnosztika áttekintése
+# <a name="azure-functions-diagnostics-overview"></a>Az Azure Functions diagnosztikai áttekintése
 
 Ha egy Function alkalmazást futtat, elő kell készítenie az esetlegesen felmerülő problémákra a hibák 4xx. A Azure Functions Diagnostics egy intelligens és interaktív megoldás, amellyel a Function-alkalmazás nem konfigurálható és nem használható fel külön díj nélkül. Ha a Function alkalmazással kapcsolatos problémákba ütközik, Azure Functions diagnosztika kimutatja, hogy mi a probléma. A probléma megoldásához a megfelelő információkkal segít, hogy könnyebben és gyorsan hárítsa el a problémát. Ebből a cikkből megtudhatja, hogyan használhatja a Azure Functions diagnosztikát a gyakori Function app-problémák gyors diagnosztizálásához és megoldásához.
 
@@ -31,11 +31,11 @@ Azure Functions diagnosztika elindítása:
 
 Miután kiválasztott egy olyan Kezdőlap kategóriát, amely a legjobban megfelel a Function app-problémájának, Azure Functions Diagnostics interaktív felülete, a Genie nevű interaktív kezelőfelület végigvezeti Önt az alkalmazás problémáinak diagnosztizálásán és megoldásán. A Genie által biztosított csempe-parancsikonok segítségével megtekintheti a probléma kategóriájának teljes diagnosztikai jelentését. A csempék parancsikonjai közvetlen módot biztosítanak a diagnosztikai metrikák elérésére.
 
-:::image type="content" source="./media/functions-diagnostics/genie.png" alt-text="Keressen Azure Functions diagnosztikát." border="false":::
+:::image type="content" source="./media/functions-diagnostics/genie.png" alt-text="A Genie Azure Functions diagnosztikai felület." border="false":::
 
 A csempék kiválasztása után megtekintheti a csempén bemutatott problémával kapcsolatos témakörök listáját. Ezek a témakörök a teljes jelentésből származó jelentős információk részleteit tartalmazzák. Válassza ki a témakörök bármelyikét a további problémák kivizsgálásához. Azt is megteheti, hogy a **teljes jelentés megtekintése** lehetőségre kattintva egyetlen oldalon tekintheti meg az összes témakört.
 
-:::image type="content" source="./media/functions-diagnostics/preview-of-diagnostic-report.png" alt-text="Keressen Azure Functions diagnosztikát." border="false":::
+:::image type="content" source="./media/functions-diagnostics/preview-of-diagnostic-report.png" alt-text="Diagnosztikai jelentés előnézete" border="false":::
 
 ## <a name="view-a-diagnostic-report"></a>Diagnosztikai jelentés megtekintése
 
@@ -45,11 +45,11 @@ Miután kiválasztott egy témakört, megtekintheti a Function alkalmazásra jel
 
 A parancsfájl-alapú függvények esetében a **függvény végrehajtása és a hibák** **függvényalkalmazás legördülő menüben, illetve a hibák bejelentése** a kódban a kivételeket vagy hibákat okozó sorokra szűkíthető. Ezzel az eszközzel beolvashatja a kiváltó okot, és kipróbálhatja a kód adott sorában felmerülő problémákat. Ez a beállítás nem érhető el előre lefordított C#-és Java-függvényekhez.
 
-:::image type="content" source="./media/functions-diagnostics/diagnostic-report-on-function-execution-errors.png" alt-text="Keressen Azure Functions diagnosztikát." border="false":::
+:::image type="content" source="./media/functions-diagnostics/diagnostic-report-on-function-execution-errors.png" alt-text="Diagnosztikai jelentés a függvények végrehajtásával kapcsolatos hibákról" border="false":::
 
-:::image type="content" source="./media/functions-diagnostics/function-exception.png" alt-text="Keressen Azure Functions diagnosztikát." border="false":::
+:::image type="content" source="./media/functions-diagnostics/function-exception.png" alt-text="Kivétel részleteinek megtekintése." border="false":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Kérdéseket tehet fel, és visszajelzést küldhet Azure Functions diagnosztikát a következő címen: [UserVoice](https://feedback.azure.com/forums/355860-azure-functions). Belefoglalás a `[Diag]` visszajelzés címébe.
 

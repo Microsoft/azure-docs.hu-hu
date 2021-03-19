@@ -8,19 +8,19 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/22/2020
-ms.openlocfilehash: a5740e851fbd8f7ba82e179f7e5299d6c7090596
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/17/2021
+ms.openlocfilehash: 77407f253bb347160ea331bd7384d8085f21b040
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890249"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654458"
 ---
 # <a name="train-svd-recommender"></a>SVD-ajánló betanítása
 
 Ez a cikk azt ismerteti, hogyan használható a SVD ajánló modul a Azure Machine Learning Designerben. Ezzel a modullal betaníthatja a javaslat modelljét az egyértékű dekompozíció (SVD) algoritmus alapján.  
 
-A Train SVD ajánló modul beolvassa a felhasználói elemek minősítésének háromszorosát tartalmazó adatkészletet. Egy betanított SVD-ajánlót ad vissza. Ezután használhatja a betanított modellt a minősítések előrejelzéséhez vagy javaslatok létrehozásához a [score SVD ajánló](score-svd-recommender.md) modul használatával.  
+A Train SVD ajánló modul beolvassa a felhasználói elemek minősítésének háromszorosát tartalmazó adatkészletet. Egy betanított SVD-ajánlót ad vissza. Ezután használhatja a betanított modellt a minősítések előrejelzéséhez vagy javaslatok létrehozásához a [score SVD ajánló](score-svd-recommender.md) moduljának összekapcsolásával.  
 
 
   
@@ -58,18 +58,21 @@ Ebből a mintából láthatja, hogy egyetlen felhasználó értékelte a több f
 
 1.  Adja hozzá a Train SVD Ajánlói modult a folyamathoz a tervezőben, és kapcsolja össze a betanítási adataival.  
    
-2.  A **tényezők száma**mezőben adhatja meg, hogy hány tényezőt kell használni az ajánlóban.  
+2.  A **tényezők száma** mezőben adhatja meg, hogy hány tényezőt kell használni az ajánlóban.  
     
     Az egyes tényezők azt mérik, hogy a felhasználó milyen mértékben kapcsolódik az elemhez. A tényezők száma egyben a látens dimenzióját is. A felhasználók és az elemek számának növelésével jobb, ha nagyobb számú tényezőt állít be. Ha azonban a szám túl nagy, csökkenhet a teljesítmény.
     
 3.  Az **ajánlási algoritmusok Ismétlések száma** azt jelzi, hogy az algoritmus hányszor dolgozza fel a bemeneti adatokat. Minél nagyobb ez a szám, annál pontosabbak lesznek a jóslatok. A nagyobb szám azonban lassabb betanítást jelent. Az alapértelmezett érték 30.
 
-4.  A **tanulási arány**mezőben adjon meg egy 0,0 és 2,0 közötti számot, amely meghatározza a tanulási lépés méretét.
+4.  A **tanulási arány** mezőben adjon meg egy 0,0 és 2,0 közötti számot, amely meghatározza a tanulási lépés méretét.
 
     A tanulási arány meghatározza a lépés méretét az egyes iterációk során. Ha a lépés mérete túl nagy, lehet, hogy az optimális megoldást is lelövi. Ha a lépés mérete túl kicsi, a képzés továbbra is a legjobb megoldást keresi. 
   
 5.  A folyamat elküldése.  
 
+## <a name="results"></a>Results (Eredmények)
+
+A folyamat futásának befejezése után a modell a pontozáshoz való használatához a [SVD](train-svd-recommender.md) -ajánlót az új bemeneti példák értékének előrejelzéséhez kapcsolja össze a [SVD](score-svd-recommender.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

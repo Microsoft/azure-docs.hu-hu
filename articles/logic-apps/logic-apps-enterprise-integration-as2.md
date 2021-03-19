@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/08/2020
 ms.openlocfilehash: 1845de8332287f85e96b4e29c40caa66cb8704d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91856670"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>AS2-üzenetek váltása nagyvállalati integráció esetében az Azure Logic Appsben az Enterprise Integration Pack csomaggal
@@ -22,7 +22,7 @@ ms.locfileid: "91856670"
 
 Az AS2-üzenetek Azure Logic Appsban való használatához használhatja az AS2-összekötőt, amely az AS2 (1,2-es verzió) kommunikációt támogató és kezelő eseményindítókat és műveleteket biztosít. Ha például az üzenetek továbbításakor meg szeretné teremteni a biztonságot és a megbízhatóságot, a következő műveleteket használhatja:
 
-* Az [ **AS2** ](#encode) a titkosítás, a digitális aláírás és a nyugták küldését teszi lehetővé az üzenet-törlési értesítések (MDN) révén, ami segít a nem megtagadási támogatásban. Ez a művelet például az AS2/HTTP fejléceket alkalmazza, és a következő konfiguráláskor hajtja végre ezeket a feladatokat:
+* Az [ **AS2**](#encode) a titkosítás, a digitális aláírás és a nyugták küldését teszi lehetővé az üzenet-törlési értesítések (MDN) révén, ami segít a nem megtagadási támogatásban. Ez a művelet például az AS2/HTTP fejléceket alkalmazza, és a következő konfiguráláskor hajtja végre ezeket a feladatokat:
 
   * A kimenő üzeneteket aláírja.
   * Titkosítja a kimenő üzeneteket.
@@ -75,7 +75,7 @@ Ez a cikk bemutatja, hogyan adhatja hozzá az AS2-kódolást és a dekódolási 
 
 1. A tervezőben adjon hozzá egy új műveletet a logikai alkalmazáshoz.
 
-1. A **művelet kiválasztása** és a keresőmező területen válassza az **összes**lehetőséget. A keresőmezőbe írja be az "AS2 kódolása" kifejezést, és győződjön meg arról, hogy az AS2 (v2) műveletet választotta: **AS2-kódolás**
+1. A **művelet kiválasztása** és a keresőmező területen válassza az **összes** lehetőséget. A keresőmezőbe írja be az "AS2 kódolása" kifejezést, és győződjön meg arról, hogy az AS2 (v2) műveletet választotta: **AS2-kódolás**
 
    !["AS2 kódolás" kiválasztása](./media/logic-apps-enterprise-integration-as2/select-as2-encode.png)
 
@@ -88,7 +88,7 @@ Ez a cikk bemutatja, hogyan adhatja hozzá az AS2-kódolást és a dekódolási 
    | **AS2-ből** | Az AS2-szerződés által meghatározott üzenet-fogadó azonosítója |
    |||
 
-   Példa:
+   Például:
 
    ![Üzenet kódolásának tulajdonságai](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
 
@@ -103,7 +103,7 @@ Ez a cikk bemutatja, hogyan adhatja hozzá az AS2-kódolást és a dekódolási 
 
 1. A tervezőben adjon hozzá egy új műveletet a logikai alkalmazáshoz.
 
-1. A **művelet kiválasztása** és a keresőmező területen válassza az **összes**lehetőséget. A keresőmezőbe írja be az "AS2 dekódolása" lehetőséget, és győződjön meg arról, hogy az AS2 (v2) műveletet választotta: **AS2-dekódolás**
+1. A **művelet kiválasztása** és a keresőmező területen válassza az **összes** lehetőséget. A keresőmezőbe írja be az "AS2 dekódolása" lehetőséget, és győződjön meg arról, hogy az AS2 (v2) műveletet választotta: **AS2-dekódolás**
 
    ![Válassza az AS2 dekódolása lehetőséget](media/logic-apps-enterprise-integration-as2/select-as2-decode.png)
 

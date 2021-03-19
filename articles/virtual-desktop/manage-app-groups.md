@@ -7,10 +7,10 @@ ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: ec26f021ffa581b0713973904c97349df83a08ef
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91930271"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>Oktatóanyag: alkalmazás-csoportok kezelése a Azure Portal
@@ -35,13 +35,13 @@ Ha már létrehozott egy gazdagép-készletet és egy munkamenet-gazdagépet a A
     >[!NOTE]
     > Ha bejelentkezik a US Gov portálra, ugorjon a [https://portal.azure.us/](https://portal.azure.us/) helyet.
 
-2.  Keresse meg és válassza ki a **Windows virtuális asztal**elemet.
+2.  Keresse meg és válassza ki a **Windows virtuális asztal** elemet.
 
 3. Hozzáadhat közvetlenül egy alkalmazás-csoportot, vagy hozzáadhatja egy meglévő gazdagép-készletből is. Válasszon az alábbi lehetőségek közül:
 
-    - Az oldal bal oldalán található menüben válassza ki az **alkalmazáscsoport** elemet, majd válassza a **+ Hozzáadás**lehetőséget.
+    - Az oldal bal oldalán található menüben válassza ki az **alkalmazáscsoport** elemet, majd válassza a **+ Hozzáadás** lehetőséget.
 
-    - Válassza a **gazdagépek** lehetőséget a képernyő bal oldalán, válassza ki a gazdagép nevét, válassza ki az **alkalmazáscsoport** elemet a bal oldali menüben, majd válassza a **+ Hozzáadás**lehetőséget. Ebben az esetben a gazdagép-készlet már ki lesz választva az alapok lapon.
+    - Válassza a **gazdagépek** lehetőséget a képernyő bal oldalán, válassza ki a gazdagép nevét, válassza ki az **alkalmazáscsoport** elemet a bal oldali menüben, majd válassza a **+ Hozzáadás** lehetőséget. Ebben az esetben a gazdagép-készlet már ki lesz választva az alapok lapon.
 
 4. Az **alapvető beállítások** lapon válassza ki azt az **előfizetést** és **erőforráscsoportot** , amelyhez létre kívánja hozni az alkalmazás-csoportot. Azt is megteheti, hogy új erőforráscsoportot hoz létre, és nem választ ki egy meglévőt.
 
@@ -53,14 +53,14 @@ Ha már létrehozott egy gazdagép-készletet és egy munkamenet-gazdagépet a A
     > [!div class="mx-imgBorder"]
     > ![Képernyőkép a Azure Portal alapjai lapról.](media/basics-tab.png)
 
-6. Válassza ki a **RemoteApp** elemet az **alkalmazáscsoport típusa**területen, majd adja meg a RemoteApp nevét.
+6. Válassza ki a **RemoteApp** elemet az **alkalmazáscsoport típusa** területen, majd adja meg a RemoteApp nevét.
 
       > [!div class="mx-imgBorder"]
       > ![Az alkalmazáscsoport típusú mezők képernyőképe A "RemoteApp" ki van emelve.](media/remoteapp-button.png)
 
 7.  Válassza a **Tovább: hozzárendelések >** lapot.
 
-8.  Ha egyéni felhasználókat vagy felhasználói csoportokat szeretne hozzárendelni az alkalmazás csoporthoz, válassza az **+ Azure ad-felhasználók vagy felhasználói csoportok hozzáadása**elemet.
+8.  Ha egyéni felhasználókat vagy felhasználói csoportokat szeretne hozzárendelni az alkalmazás csoporthoz, válassza az **+ Azure ad-felhasználók vagy felhasználói csoportok hozzáadása** elemet.
 
 9.  Válassza ki azokat a felhasználókat, akik számára hozzáférést szeretne használni az alkalmazásokhoz. Kiválaszthat egy vagy több felhasználót és felhasználói csoportot is.
 
@@ -69,26 +69,26 @@ Ha már létrehozott egy gazdagép-készletet és egy munkamenet-gazdagépet a A
 
 10.  Válassza a **Kiválasztás** lehetőséget.
 
-11.  Válassza a **Tovább: alkalmazások >**, majd az **+ Alkalmazások hozzáadása**lehetőséget.
+11.  Válassza a **Tovább: alkalmazások >**, majd az **+ Alkalmazások hozzáadása** lehetőséget.
 
 12.  Alkalmazás hozzáadása a Start menüből:
 
-      - Az **alkalmazás forrása**területen válassza a **Start menü** lehetőséget a legördülő menüből. Ezután az **alkalmazás**alatt válassza ki az alkalmazást a legördülő menüből.
+      - Az **alkalmazás forrása** területen válassza a **Start menü** lehetőséget a legördülő menüből. Ezután az **alkalmazás** alatt válassza ki az alkalmazást a legördülő menüből.
 
      > [!div class="mx-imgBorder"]
      > ![Képernyőkép az alkalmazás hozzáadása képernyőről a Start menü kiválasztásával.](media/add-app-start.png)
 
-      - A **megjelenítendő név**mezőbe írja be annak az alkalmazásnak a nevét, amely megjelenik a felhasználó számára az ügyfélen.
+      - A **megjelenítendő név** mezőbe írja be annak az alkalmazásnak a nevét, amely megjelenik a felhasználó számára az ügyfélen.
 
-      - Hagyja meg a többi beállítást, és válassza a **Mentés**lehetőséget.
+      - Hagyja meg a többi beállítást, és válassza a **Mentés** lehetőséget.
 
 13.  Alkalmazás hozzáadása egy adott fájl elérési útjáról:
 
-      - Az **alkalmazás forrása**területen válassza a **fájl elérési útja** elemet a legördülő menüből.
+      - Az **alkalmazás forrása** területen válassza a **fájl elérési útja** elemet a legördülő menüből.
 
-      - Az **alkalmazás elérési útja**mezőben adja meg az alkalmazás elérési útját a társított gazdagép-készletben regisztrált munkamenet-gazdagépen.
+      - Az **alkalmazás elérési útja** mezőben adja meg az alkalmazás elérési útját a társított gazdagép-készletben regisztrált munkamenet-gazdagépen.
 
-      - Adja meg az alkalmazás adatait az **alkalmazás neve**, a **megjelenítendő név**, az **ikon elérési útja**és az **ikon index** mezőiben.
+      - Adja meg az alkalmazás adatait az **alkalmazás neve**, a **megjelenítendő név**, az **ikon elérési útja** és az **ikon index** mezőiben.
 
       - Kattintson a **Mentés** gombra.
 
@@ -99,9 +99,9 @@ Ha már létrehozott egy gazdagép-készletet és egy munkamenet-gazdagépet a A
 
 15.  Ezután válassza a **Tovább: munkaterület >** elemet.
 
-16.  Ha egy munkaterületre szeretné regisztrálni az erőforráscsoportot, válassza az **Igen** lehetőséget az **alkalmazáscsoport regisztrálása**lehetőségnél. Ha inkább egy későbbi időpontban regisztrálja az alkalmazást, válassza a **nem**lehetőséget.
+16.  Ha egy munkaterületre szeretné regisztrálni az erőforráscsoportot, válassza az **Igen** lehetőséget az **alkalmazáscsoport regisztrálása** lehetőségnél. Ha inkább egy későbbi időpontban regisztrálja az alkalmazást, válassza a **nem** lehetőséget.
 
-17.  Ha az **Igen**lehetőséget választja, kiválaszthat egy meglévő munkaterületet, amellyel regisztrálhatja az alkalmazás csoportját.
+17.  Ha az **Igen** lehetőséget választja, kiválaszthat egy meglévő munkaterületet, amellyel regisztrálhatja az alkalmazás csoportját.
 
        >[!NOTE]
        >Az alkalmazáscsoport csak abban a helyen létrehozott munkaterületekre regisztrálható, ahol a gazdagép található. Is. Ha korábban már regisztrált egy másik alkalmazást ugyanabból a készletből, mint az új alkalmazáscsoport egy munkaterületre, akkor azt a rendszer kijelöli, és nem szerkesztheti. Egy adott alkalmazáskészletben lévő összes alkalmazás-csoportot regisztrálni kell ugyanahhoz a munkaterülethez.
@@ -111,7 +111,7 @@ Ha már létrehozott egy gazdagép-készletet és egy munkamenet-gazdagépet a A
 
 18.  Ha címkéket szeretne létrehozni a munkaterület rendszerezéséhez, válassza a **tovább lehetőséget: címkék >** és adja meg a címke nevét.
 
-19.  Ha elkészült, válassza a **felülvizsgálat + létrehozás**elemet.
+19.  Ha elkészült, válassza a **felülvizsgálat + létrehozás** elemet.
 
 20.  Várjon egy kicsit, hogy az érvényesítési folyamat befejeződjön. Ha elkészült, válassza a **Létrehozás** lehetőséget az alkalmazás csoportjának telepítéséhez.
 

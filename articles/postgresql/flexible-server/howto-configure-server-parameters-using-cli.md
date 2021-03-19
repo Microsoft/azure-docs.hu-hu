@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 9/22/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 43b14858cc99cac41e277b03171fd4cac4d6eafa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90940737"
 ---
 # <a name="customize-server-parameters-for-azure-database-for-postgresql---flexible-server-using-azure-cli"></a>Kiszolgáló paramétereinek testreszabása Azure Database for PostgreSQL-rugalmas kiszolgálóhoz az Azure CLI használatával
@@ -29,7 +29,7 @@ A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 
 A kiszolgálók és azok értékei összes módosítható paraméterének listázásához futtassa az az [postgres flexibilis-Server paraméter List](/cli/azure/postgres/flexible-server/parameter) parancsot.
 
-A kiszolgáló **mydemoserver.postgres.database.Azure.com** a **myresourcegroup**erőforráscsoport alatt listázhatja.
+A kiszolgáló **mydemoserver.postgres.database.Azure.com** a **myresourcegroup** erőforráscsoport alatt listázhatja.
 
 ```azurecli-interactive
 az postgres flexible-server parameter list --resource-group myresourcegroup --server-name mydemoserver
@@ -49,7 +49,7 @@ az postgres flexible-server parameter show --name log_min_messages --resource-gr
 
 Egy bizonyos kiszolgálói paraméter értékét is módosíthatja, amely frissíti a PostgreSQL-kiszolgáló motorjának alapjául szolgáló konfigurációs értéket. A paraméter frissítéséhez használja az az [postgres flexibilis-Server paraméter set](/cli/azure/postgres/flexible-server/parameter) parancsot. 
 
-A kiszolgáló **mydemoserver.postgres.database.Azure.com** tartozó ** \_ percek \_ naplózása** kiszolgáló paraméterének frissítése a myresourcegroup erőforráscsoport alatt **.**
+A kiszolgáló **mydemoserver.postgres.database.Azure.com** tartozó **\_ percek \_ naplózása** kiszolgáló paraméterének frissítése a myresourcegroup erőforráscsoport alatt **.**
 
 ```azurecli-interactive
 az postgres flexible-server parameter set --name log_min_messages --value INFO --resource-group myresourcegroup --server-name mydemoserver
@@ -61,7 +61,7 @@ Ha egy paraméter értékét alaphelyzetbe szeretné állítani, egyszerűen vá
 az postgres flexible-server parameter set --name log_min_messages --resource-group myresourcegroup --server-name mydemoserver
 ```
 
-Ez a parancs alaphelyzetbe állítja a percenkénti ** \_ \_ üzenetek naplózása** paramétert az alapértelmezett érték **figyelmeztetéssel**. A kiszolgálói paraméterekkel és a megengedett értékekkel kapcsolatos további információkért lásd: PostgreSQL-dokumentáció a [Paraméterek beállításához](https://www.postgresql.org/docs/12/config-setting.html).
+Ez a parancs alaphelyzetbe állítja a percenkénti **\_ \_ üzenetek naplózása** paramétert az alapértelmezett érték **figyelmeztetéssel**. A kiszolgálói paraméterekkel és a megengedett értékekkel kapcsolatos további információkért lásd: PostgreSQL-dokumentáció a [Paraméterek beállításához](https://www.postgresql.org/docs/12/config-setting.html).
 
 ## <a name="next-steps"></a>Következő lépések
 

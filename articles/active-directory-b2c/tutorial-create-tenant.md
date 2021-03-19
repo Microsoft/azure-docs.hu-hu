@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 673e2260f358332de00a15b29729f14d62fe82a4
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: aa91851787bbb0f5570a4f439f794ee352bf0625
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102518007"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579688"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Oktatóanyag: Azure Active Directory B2C-bérlő létrehozása
 
@@ -24,7 +24,7 @@ Az alkalmazások Azure Active Directory B2C (Azure AD B2C) való interakció el�
 > [!NOTE]
 > Előfizetéshez legfeljebb 20 bérlőt hozhat létre. Ez a korlát segíti a fenyegetések elleni védelmet az erőforrásokon, például a szolgáltatásmegtagadási támadások ellen, és a Azure Portal és a mögöttes bérlői létrehozási API-ban is érvényben van. Ha több mint 20 bérlőt kell létrehoznia, vegye fel a kapcsolatot [Microsoft ügyfélszolgálata](support-options.md).
 > 
-> Ha újra fel szeretné használni a korábban törölni próbált bérlő nevét, de a tartománynév megadásakor a "már használatban van egy másik címtárban" hibaüzenet jelenik meg, az [alábbi lépéseket követve teljes mértékben törölheti a bérlőt](https://docs.microsoft.com/azure/active-directory-b2c/faq?tabs=app-reg-ga#how-do-i-delete-my-azure-ad-b2c-tenant). Legalább előfizetés-rendszergazda szerepkörre van szükség. Előfordulhat, hogy a bérlő törlése után ki kell jelentkeznie, majd újra be kell jelentkeznie, mielőtt újra felhasználja a tartománynevet.
+> Ha újra fel szeretné használni a korábban törölni próbált bérlő nevét, de a tartománynév megadásakor a "már használatban van egy másik címtárban" hibaüzenet jelenik meg, az [alábbi lépéseket követve teljes mértékben törölheti a bérlőt](./faq.md?tabs=app-reg-ga#how-do-i-delete-my-azure-ad-b2c-tenant). Legalább előfizetés-rendszergazda szerepkörre van szükség. Előfordulhat, hogy a bérlő törlése után ki kell jelentkeznie, majd újra be kell jelentkeznie, mielőtt újra felhasználja a tartománynevet.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 

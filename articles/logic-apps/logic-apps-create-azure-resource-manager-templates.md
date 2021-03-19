@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
 ms.openlocfilehash: 4535e6bf11f8c2abf20b1b323925c3fc3299d362
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90971779"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Resource Manager-sablonok létrehozása az Azure Logic Apps-alkalmazások üzembe helyezésének automatizálásához
@@ -34,7 +34,7 @@ A Azure Resource Manager-sablonokkal kapcsolatos további információkért teki
 
 A legegyszerűbben az üzembe helyezésre kész, a Visual Studio (ingyenes Community Edition vagy újabb verzió) és a Visual studióhoz készült Azure Logic Apps Tools segítségével hozhatja létre az érvényes paraméteres logikai alkalmazások sablonját. Ezután [létrehozhatja a logikai alkalmazást a Visual Studióban](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) , vagy [megkeresheti és letöltheti a Azure Portal meglévő logikai alkalmazást a Visual studióba](../logic-apps/manage-logic-apps-with-visual-studio.md).
 
-A logikai alkalmazás letöltésével olyan sablont kap, amely tartalmazza a logikai alkalmazás és más erőforrások, például a kapcsolatok definícióit. A sablon emellett *felparaméterezi*vagy paramétereket is definiál, a logikai alkalmazás és az egyéb erőforrások üzembe helyezéséhez használt értékeket. A paraméterek értékeit egy külön Parameters fájlban adhatja meg. Így könnyebben módosíthatja ezeket az értékeket a telepítési igények alapján. További információt az alábbi témakörökben talál:
+A logikai alkalmazás letöltésével olyan sablont kap, amely tartalmazza a logikai alkalmazás és más erőforrások, például a kapcsolatok definícióit. A sablon emellett *felparaméterezi* vagy paramétereket is definiál, a logikai alkalmazás és az egyéb erőforrások üzembe helyezéséhez használt értékeket. A paraméterek értékeit egy külön Parameters fájlban adhatja meg. Így könnyebben módosíthatja ezeket az értékeket a telepítési igények alapján. További információt az alábbi témakörökben talál:
 
 * [Logikai alkalmazások létrehozása a Visual Studióval](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [Logikai alkalmazások kezelése a Visual Studióval](../logic-apps/manage-logic-apps-with-visual-studio.md)
@@ -121,8 +121,8 @@ Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileN
 
 | Paraméterek | Kötelező | Leírás |
 |------------|----------|-------------|
-| TemplateFile | Igen | A sablon fájljának elérési útja |
-| KeyVault | Nem | Egy felsorolás, amely leírja, hogyan kell kezelni a lehetséges kulcstároló-értékeket. A mező alapértelmezett értéke: `None`. |
+| TemplateFile | Yes | A sablon fájljának elérési útja |
+| KeyVault | No | Egy felsorolás, amely leírja, hogyan kell kezelni a lehetséges kulcstároló-értékeket. A mező alapértelmezett értéke: `None`. |
 ||||
 
 ## <a name="next-steps"></a>Következő lépések

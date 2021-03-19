@@ -8,17 +8,17 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
 ms.openlocfilehash: 5a29fa8d60d3c581a502cded1a7e04026f768667
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86540668"
 ---
 # <a name="managing-your-academic-grant"></a>Az akadémiai támogatás kezelése
 
 Az Azure Education-központ fő kezdőlapja az Áttekintés oldalon található. Ez az oldal a tanulmányi támogatással kapcsolatos összes releváns információt tartalmazza, például a létrehozott osztályok számát és az ezekből az osztályokból lefoglalt és felhasznált teljes kreditet. Emellett a Education-központ által nyújtott egyéb előnyökre mutató parancsikonokat is megjeleníti: szoftverek, tanulási és gyors üzembe helyezési sablonok.
 
-## <a name="overview-page"></a>Áttekintő lap
+## <a name="overview-page"></a>Áttekintő oldal
 :::image type="content" source="media/hub-overview-page/overview.png" alt-text="Bejelentkezési hibaüzenet." border="false":::
 
 1. A **tanfolyamok** az oktató fiókjában lévő aktív tanfolyamok teljes számát jelenítik meg.
@@ -28,7 +28,7 @@ Az Azure Education-központ fő kezdőlapja az Áttekintés oldalon található.
 1. A Microsoft Learnon keresztül elérhető ingyenes **Azure learning-útvonalakra mutató hivatkozások** .
 1. A gyors üzembe helyezési **sablonok** Azure-sablonokkal segítik a gyakori feladatok központi telepítésének felgyorsítását és egyszerűsítését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Tanfolyam beállítása, kreditek kiosztása és diákok meghívása](create-assignment-allocate-credit.md)

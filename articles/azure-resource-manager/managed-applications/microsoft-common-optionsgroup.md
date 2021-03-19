@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: tomfitz
 ms.openlocfilehash: aa73b4cbded98291a14792a7151df9fdfb885b53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87004190"
 ---
 # <a name="microsoftcommonoptionsgroup-ui-element"></a>Microsoft. Common. OptionsGroup felhasználói felületi elem
@@ -61,7 +61,7 @@ A OptionsGroup vezérlőelem lehetővé teszi, hogy a felhasználók két vagy t
 - Ha meg van adva, az alapértelmezett értéknek szerepelnie kell a címkében `constraints.allowedValues` . Ha nincs megadva, alapértelmezés szerint az első elem `constraints.allowedValues` van kiválasztva. Az alapértelmezett érték **Null**.
 - `constraints.allowedValues` legalább egy elemmel kell rendelkeznie.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md)használatába.
 * A felhasználói felületi elemek általános tulajdonságainak leírását lásd: [CreateUiDefinition-elemek](create-uidefinition-elements.md).

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/29/2018
 ms.author: tomfitz
 ms.openlocfilehash: 47c88e08e5d2eac09fbcd5b60a8ccd73b46c9616
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87063771"
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft. számítás. CredentialsCombo FELHASZNÁLÓIFELÜLET-elem
@@ -58,7 +58,7 @@ Windows esetén használja a következő sémát:
 }
 ```
 
-**Linux**esetén használja a következő sémát:
+**Linux** esetén használja a következő sémát:
 
 ```json
 {
@@ -91,7 +91,7 @@ Windows esetén használja a következő sémát:
 
 ## <a name="sample-output"></a>Példakimenet
 
-Ha `osPlatform` a **Windows**vagy `osPlatform` **Linux** , és a felhasználó egy nyilvános SSH-kulcs helyett jelszót adott meg, a vezérlő a következő kimenetet adja vissza:
+Ha `osPlatform` a **Windows** vagy `osPlatform` **Linux** , és a felhasználó egy nyilvános SSH-kulcs helyett jelszót adott meg, a vezérlő a következő kimenetet adja vissza:
 
 ```json
 {
@@ -117,7 +117,7 @@ Ha `osPlatform` a **Linux** és a felhasználó egy nyilvános SSH-kulcsot adott
 - Ha a `options.hidePassword` értéke **true (igaz**), akkor a jelszó-hitelesítés használatának lehetősége rejtett. A szolgáltatás csak akkor használható, ha `osPlatform` a **Linux**. Az alapértelmezett érték: **hamis**.
 - Az engedélyezett jelszavakkal kapcsolatos további korlátozásokat a tulajdonság használatával lehet megvalósítani `customPasswordRegex` . A karakterlánc `customValidationMessage` akkor jelenik meg, ha egy jelszó egyéni érvényesítése sikertelen. Mindkét tulajdonság alapértelmezett értéke **Null**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md)használatába.
 * A felhasználói felületi elemek általános tulajdonságainak leírását lásd: [CreateUiDefinition-elemek](create-uidefinition-elements.md).

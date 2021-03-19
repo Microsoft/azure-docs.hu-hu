@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: ad487aa7492abcf02988c78ccfa2ba7cd4798249
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90983653"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>Virtuális központ érvényes útvonalainak megtekintése
@@ -20,7 +20,7 @@ A Azure Portalban megtekintheti a virtuális WAN-központ összes útvonalát. E
 
 ## <a name="select-connections-or-route-tables"></a><a name="routing"></a>Kapcsolatok vagy útválasztási táblák kiválasztása
 
-1. Navigáljon a virtuális hubhoz, majd válassza az **Útválasztás**elemet. Az Útválasztás lapon válassza az **érvényes útvonalak**lehetőséget.
+1. Navigáljon a virtuális hubhoz, majd válassza az **Útválasztás** elemet. Az Útválasztás lapon válassza az **érvényes útvonalak** lehetőséget.
 1. A legördülő listából kiválaszthatja az **útválasztási táblázatot**. Ha nem látja az útválasztási táblázat lehetőséget, ez azt jelenti, hogy nincs beállítva egyéni vagy alapértelmezett útválasztási tábla ebben a virtuális központban.
 
 ## <a name="view-output"></a><a name="output"></a>Kimenet megtekintése
@@ -30,7 +30,7 @@ Az oldal kimenete a következő mezőket jeleníti meg:
 * **Előtag**: az aktuális entitáshoz (a virtuális központ útválasztóján) ismert címzési előtag
 * **Következő ugrás típusa**: lehet Virtual Network kapcsolat, a VPN_S2S_Gateway, a ExpressRouteGateway, a távoli központ vagy a Azure Firewall.
 * **Következő ugrás**: Ez a következő ugrás erőforrás-azonosítójára mutató hivatkozás, vagy egyszerűen azt mutatja, hogy a hivatkozás az aktuális hubhoz utal.
-* **Forrás: az**útválasztási forrás erőforrás-azonosítója.
+* **Forrás: az** útválasztási forrás erőforrás-azonosítója.
 * **Elérési út**: a BGP attribútum as (autonóm rendszer) elérési útja felsorolja az összes olyan számot, amelyet át kell adni ahhoz, hogy elérje azt a helyet, ahol az elérési utat csatolták, a meghirdetve.
 
 ### <a name="example"></a><a name="example"></a>Például

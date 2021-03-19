@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 02/09/2021
+ms.date: 03/09/2021
 ms.author: aahi
 keywords: szöveg-adatbányászat, érzelmek elemzése, szöveges elemzés
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: cb7bdeb379ee753424d9c975a8c030b0f7890552
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7fcc030e3c63c24fa255e578c2d8aaf1b466e99c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722279"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598966"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Mi a Text Analytics API?
 
@@ -33,7 +33,7 @@ Használja ki a [hangulat elemzését](how-tos/text-analytics-how-to-sentiment-a
 
 A szolgáltatás a szolgáltatás által a legmagasabb szintű megbízhatósági pontszám alapján, a mondatok és a dokumentumok szintjén is megadja a hangulati címkéket (például "negatív", "semleges" és "pozitív"). Ez a funkció az egyes dokumentumokhoz tartozó 0 és 1 közötti megbízhatósági pontszámokat is visszaadja, & mondatokat a pozitív, semleges és negatív hangulatra. A szolgáltatást [tároló használatával](how-tos/text-analytics-how-to-install-containers.md)is futtathatja a helyszínen.
 
-A 3.1-es verziótól kezdődően a vélemény bányászati funkciója Hangulatelemzés. Ez a funkció a természetes nyelvi feldolgozásban (például a termékek vagy szolgáltatások attribútumaiban) lévő véleményekkel kapcsolatos részletesebb információkat tartalmaz a szövegben található, aspektusokon alapuló Hangulatelemzésként is.
+A 3.1-es verziótól kezdődően a vélemény bányászati funkciója Hangulatelemzés. Ez a funkció a természetes nyelvi feldolgozásban (például a termékek vagy szolgáltatások attribútumaival) kapcsolatos vélemények részletesebb információit tartalmazza a szövegben található, Aspect-alapú Hangulatelemzésként.
 
 ## <a name="key-phrase-extraction"></a>Kulcskifejezések kinyerése
 

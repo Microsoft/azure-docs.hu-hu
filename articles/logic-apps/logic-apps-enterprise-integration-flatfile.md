@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 05/09/2020
 ms.openlocfilehash: aebce8f284ed4bb21d99efffc8dd6d0c51b39533
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87001485"
 ---
 # <a name="encode-and-decode-flat-files-in-azure-logic-apps-by-using-the-enterprise-integration-pack"></a>Egybesimított fájlok kódolása és dekódolása az Azure Logic Appsben az Enterprise Integration Packkel
@@ -35,12 +35,12 @@ Mielőtt a vállalatközi (B2B) forgatókönyvben üzleti partnernek küldi az X
 
 1. A [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic app Designerben.
 
-1. A logikai alkalmazás trigger vagy művelet területén válassza az **új lépés**  >  **művelet hozzáadása**lehetőséget. Ez a példa a kérelem triggert használja, amely a **http-kérelem fogadásakor**, valamint a logikai alkalmazáson kívüli bejövő kérések kezelésével foglalkozik.
+1. A logikai alkalmazás trigger vagy művelet területén válassza az **új lépés**  >  **művelet hozzáadása** lehetőséget. Ez a példa a kérelem triggert használja, amely a **http-kérelem fogadásakor**, valamint a logikai alkalmazáson kívüli bejövő kérések kezelésével foglalkozik.
 
    > [!TIP]
-   > JSON-séma megadása nem kötelező. Ha a bejövő kérelemben minta-adattartalom szerepel, válassza a minta hasznos adatok **használata a séma létrehozásához**lehetőséget, adja meg a minta hasznos adatait, majd válassza a **kész**lehetőséget. A séma megjelenik a **kérelem törzsének JSON-sémája** mezőben.
+   > JSON-séma megadása nem kötelező. Ha a bejövő kérelemben minta-adattartalom szerepel, válassza a minta hasznos adatok **használata a séma létrehozásához** lehetőséget, adja meg a minta hasznos adatait, majd válassza a **kész** lehetőséget. A séma megjelenik a **kérelem törzsének JSON-sémája** mezőben.
 
-1. A **válasszon műveletet**területen adja meg a parancsot `flat file` . A műveletek listából válassza a következő műveletet: **egyszerű fájl kódolása**
+1. A **válasszon műveletet** területen adja meg a parancsot `flat file` . A műveletek listából válassza a következő műveletet: **egyszerű fájl kódolása**
 
    ![A "sima fájl kódolása" művelet kiválasztása](./media/logic-apps-enterprise-integration-flatfile/select-flat-file-encoding.png)
 
@@ -67,12 +67,12 @@ Ezzel befejezte a sima fájl kódolási műveletének beállítását. Egy való
 
 1. A [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic app Designerben.
 
-1. A logikai alkalmazás trigger vagy művelet területén válassza az **új lépés**  >  **művelet hozzáadása**lehetőséget. Ez a példa a kérelem triggert használja, amely a **http-kérelem fogadásakor**, valamint a logikai alkalmazáson kívüli bejövő kérések kezelésével foglalkozik.
+1. A logikai alkalmazás trigger vagy művelet területén válassza az **új lépés**  >  **művelet hozzáadása** lehetőséget. Ez a példa a kérelem triggert használja, amely a **http-kérelem fogadásakor**, valamint a logikai alkalmazáson kívüli bejövő kérések kezelésével foglalkozik.
 
    > [!TIP]
-   > JSON-séma megadása nem kötelező. Ha a bejövő kérelemben minta-adattartalom szerepel, válassza a minta hasznos adatok **használata a séma létrehozásához**lehetőséget, adja meg a minta hasznos adatait, majd válassza a **kész**lehetőséget. A séma megjelenik a **kérelem törzsének JSON-sémája** mezőben.
+   > JSON-séma megadása nem kötelező. Ha a bejövő kérelemben minta-adattartalom szerepel, válassza a minta hasznos adatok **használata a séma létrehozásához** lehetőséget, adja meg a minta hasznos adatait, majd válassza a **kész** lehetőséget. A séma megjelenik a **kérelem törzsének JSON-sémája** mezőben.
 
-1. A **válasszon műveletet**területen adja meg a parancsot `flat file` . A műveletek listából válassza a következő műveletet: **egyszerű fájl dekódolása**
+1. A **válasszon műveletet** területen adja meg a parancsot `flat file` . A műveletek listából válassza a következő műveletet: **egyszerű fájl dekódolása**
 
    ![A "lapos fájl dekódolása" művelet kiválasztása](./media/logic-apps-enterprise-integration-flatfile/select-flat-file-decoding.png)
 
@@ -94,6 +94,6 @@ Ezzel befejezte a sima fájl kódolási műveletének beállítását. Egy való
 
 Ezzel elkészült a lapos fájl dekódolása művelet beállításával. Egy valós alkalmazásban érdemes lehet egy üzletági (LOB) alkalmazásban (például Salesforce) tárolni a dekódolású adatmennyiséget. Vagy elküldheti a dekódolású adategységeket egy kereskedelmi partnernek. A dekódolási művelet kimenetének Salesforce vagy kereskedelmi partnernek történő elküldéséhez használja a [Azure Logic Appsban elérhető többi összekötőt](../connectors/apis-list.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/17/2020
 ms.openlocfilehash: e098182c000cbe05df533434a41c55b797ef876f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87086659"
 ---
 # <a name="pivot-transformation-in-mapping-data-flow"></a>Kimutatás-átalakítás a leképezési adatfolyamban
@@ -41,7 +41,7 @@ Ez a szakasz nem kötelező. Ha nincs kiválasztva csoportosítási oszlop, a re
 
 A pivot kulcs az az oszlop, amelynek a soraiban az új oszlopok bekerülnek. Alapértelmezés szerint a pivot-átalakítás új oszlopot hoz létre minden egyes egyedi sor értékhez.
 
-Az érték feliratú szakaszban megadhatja a **tagolni**kívánt sorok értékeit. A rendszer csak az ebben a szakaszban megadott sor értékeket fogja kijelölni. A **Null érték** engedélyezésekor a rendszer az oszlopban lévő null értékek esetében egy elforgatott oszlopot hoz létre.
+Az érték feliratú szakaszban megadhatja a **tagolni** kívánt sorok értékeit. A rendszer csak az ebben a szakaszban megadott sor értékeket fogja kijelölni. A **Null érték** engedélyezésekor a rendszer az oszlopban lévő null értékek esetében egy elforgatott oszlopot hoz létre.
 
 ### <a name="pivoted-columns"></a>Elforgatott oszlopok
 
@@ -107,6 +107,6 @@ BasketballPlayerStats pivot(groupBy(Tm),
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oszlopok értékeinek sorokba való bekapcsolásához próbálja meg az [unpivot transzformációt](data-flow-unpivot.md) . 

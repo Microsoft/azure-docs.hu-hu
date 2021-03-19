@@ -9,10 +9,10 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.openlocfilehash: 97ded67b9f9daa2652b2740a21a4b7d6a0ac2bdd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87068257"
 ---
 # <a name="create-an-app-service-app-and-deploy-private-endpoint-using-powershell"></a>App Service alkalmazás létrehozása és privát végpont üzembe helyezése a PowerShell használatával
@@ -122,7 +122,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [Új – AzPrivateDnsZoneConfig](/powershell/module/az.network/new-azprivatednszoneconfig) | Létrehozza a saját DNS-zóna csoportjának DNS-zóna konfigurációját. |
 | [Új – AzPrivateDnsZoneGroup](/powershell/module/az.network/new-azprivatednszonegroup) | Létrehoz egy magánhálózati DNS-zónát a megadott privát végponton. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/).
 - A Azure App Service Web Apps további Azure PowerShell mintákat talál a [Azure PowerShell mintákban](../samples-powershell.md).

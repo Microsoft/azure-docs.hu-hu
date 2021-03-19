@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: kumud
 ms.openlocfilehash: 937a73847e867e826b3a577adf0c85184d7a93d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87047237"
 ---
 # <a name="customizing-content-models-in-video-indexer"></a>Tartalmi modellek testreszabása Video Indexer
@@ -45,6 +45,6 @@ Ez a cikk olyan cikkekre mutató hivatkozásokat tartalmaz, amelyek az egyes tes
 * [Személy modellek testreszabása a Video Indexer webhely használatával](customize-person-model-with-website.md)
 * [Személy modellek testreszabása a Video Indexer API használatával](customize-person-model-with-api.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A Video Indexer áttekintése](video-indexer-overview.md)

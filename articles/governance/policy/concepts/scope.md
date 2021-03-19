@@ -4,10 +4,10 @@ description: Ismerteti Azure Resource Manager hatókörének fogalmát, valamint
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: 83eda330a35b007abfa37046a202b14728726849
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90984437"
 ---
 # <a name="understand-scope-in-azure-policy"></a>A hatókör megismerése Azure Policy
@@ -37,7 +37,7 @@ A hozzárendelések több olyan tulajdonsággal rendelkeznek, amelyek hatókört
 
 A szabályzat-hozzárendelés tulajdonságain kívül a [házirend kivételi](./exemption-structure.md) objektuma is. A kivételek növelik a hatóköri történetet azáltal, hogy a hozzárendelések egy részének azonosítására szolgáló módszert biztosítanak a kiértékeléshez.
 
-- Kivétel (előzetes verzióban**ingyenes** ) – az erőforrás-hierarchiát vagy az egyes erőforrásokat ki kell értékelni a definíciónak való megfelelőség szempontjából, de nem lesz kiértékelve olyan okból, mint például a lemondás vagy más módszerrel való enyhítés. Az ebben az állapotban lévő erőforrások a megfelelőségi jelentésekben **kivételként** jelennek meg, hogy nyomon követhetők legyenek. A kivételt képező objektum az erőforrás-hierarchiában vagy az egyes erőforrásokban alárendelt objektumként jön létre, amely meghatározza a kivétel hatókörét. Egy erőforrás-hierarchia vagy egyedi erőforrás több hozzárendelésre is felhasználható. A kivételt úgy lehet konfigurálni, hogy a tulajdonság használatával lejárjon egy ütemterven `expiresOn` . További információ: [kivételek definíciója](./exemption-structure.md).
+- Kivétel (előzetes verzióban **ingyenes** ) – az erőforrás-hierarchiát vagy az egyes erőforrásokat ki kell értékelni a definíciónak való megfelelőség szempontjából, de nem lesz kiértékelve olyan okból, mint például a lemondás vagy más módszerrel való enyhítés. Az ebben az állapotban lévő erőforrások a megfelelőségi jelentésekben **kivételként** jelennek meg, hogy nyomon követhetők legyenek. A kivételt képező objektum az erőforrás-hierarchiában vagy az egyes erőforrásokban alárendelt objektumként jön létre, amely meghatározza a kivétel hatókörét. Egy erőforrás-hierarchia vagy egyedi erőforrás több hozzárendelésre is felhasználható. A kivételt úgy lehet konfigurálni, hogy a tulajdonság használatával lejárjon egy ütemterven `expiresOn` . További információ: [kivételek definíciója](./exemption-structure.md).
 
   > [!NOTE]
   > Az erőforrás-hierarchiák vagy az egyes erőforrások kivételének megadásának következményei miatt a kivételek további biztonsági intézkedésekkel bírnak. Amellett, hogy a `Microsoft.Authorization/policyExemptions/write` műveletet az erőforrás-hierarchián vagy az egyedi erőforráson szeretné megkövetelni, a kivételek létrehozójának rendelkeznie kell a célként megadott hozzárendelésben szereplő művelettel `exempt/Action` .

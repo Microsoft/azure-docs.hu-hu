@@ -8,19 +8,57 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/23/2021
+ms.date: 03/18/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 629b40567ad9a1126413f5a97d1dc6264b4b10ca
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a2b001d34d265c8e7246b03875c32168f2c5c962
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736637"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598898"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>A Text Analytics API újdonságai.
 
 A Text Analytics API frissítése folyamatosan történik. Ha naprakészen szeretne maradni a legutóbbi fejleményekkel, ez a cikk az új kiadásokkal és szolgáltatásokkal kapcsolatos információkat tartalmaz.
+
+## <a name="march-2021"></a>Március 2021
+
+### <a name="general-api-updates"></a>Általános API-frissítések
+* Az új API v 3.1 – preview. 4 kiadása, amely tartalmazza a következőket: 
+   * Változások a vélemény bányászati JSON-válasz törzsében: 
+      * `aspects` most `targets` és most `opinions` `assessments` . 
+   * A Text Analytics for Health üzemeltetett webes API-jával kapcsolatos JSON-válasz törzsében bekövetkezett változások: 
+      * Az `isNegated` észlelt entitás-objektum logikai nevét a rendszer elavultnak nyilvánítja, és lecseréli az érvényesítési észleléssel.
+      * Egy új nevű tulajdonság `role` mostantól egy attribútum és egy entitás közötti kinyert kapcsolat része, valamint az entitások közötti kapcsolat.  Ez az észlelt kapcsolattípus sajátosságát adja meg.
+   * Az entitások összekapcsolása mostantól aszinkron feladatként érhető el a `/analyze` végponton.
+   * `pii-categories`Mostantól elérhető egy új paraméter a `/pii` végpontban.
+      * Ezzel a paraméterrel megadhatja a személyre szabási entitások kiválasztását, valamint azokat, amelyeket a bemeneti nyelv alapértelmezés szerint nem támogat.
+* Frissített ügyféloldali kódtárak, amelyek tartalmazzák az aszinkron elemzést és az Text Analytics az állapotfigyelő műveletekhez. Példákat a GitHubon talál:
+
+    * [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)
+    * [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)
+    * [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)
+    * [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples/javascript)
+    
+> [!div class="nextstepaction"]
+> [További információ: Text Analytics API v 3.1 – előzetes verzió. 4](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-4/operations/Languages)
+
+### <a name="text-analytics-for-health-updates"></a>Text Analytics az állapot frissítéseihez
+
+* A `2021-03-01` végpont és a helyszíni tároló új modell-verziója, amely a következőt `/health` biztosítja:
+    * Az `Gene` entitás típusának átnevezése a következőre: `GeneOrProtein` .
+    * Új `Date` entitás típusa
+    * Az érvényesítés észlelése, amely a tagadás észlelését váltja fel (csak az API v 3.1-es verziójában érhető el – előzetes verzió: 4).
+    * A társított entitások új előnyben részesített `name` tulajdonsága, amely különböző ontológiákat és kódolási rendszerekből van normalizálva (csak az API v 3.1-es verziójában érhető el. 4). 
+* Egy új, címkével `3.0.015370001-onprem-amd64` és az új modell-verzióval rendelkező tároló-rendszerkép `2021-03-01` lett kiadva a Container Preview adattárba. 
+* Az állapot-tároló rendszerképének Text Analytics a következő hónapban új adattárba kerül.  Tekintse meg az új kezdőlapján található e-mailes kommunikációt.
+> [!div class="nextstepaction"]
+> [További információ az Text Analyticsról az állapotról](how-tos/text-analytics-for-health.md)
+>
+
+### <a name="text-analytics-resource-portal-update"></a>Az erőforrás-portál Text Analytics frissítése
+* A **feldolgozott szöveges rekordok** mostantól mérőszámként elérhetők a Azure Portal Text Analytics erőforrásának **figyelés** szakaszában.  
 
 ## <a name="february-2021"></a>2021. február
 
@@ -46,7 +84,7 @@ Ezek a modell-verziók jelenleg nem érhetők el az USA keleti régiójában.
 
 ## <a name="december-2020"></a>2020. december
 
-* A Text Analytics API [frissített díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)
+* A Text Analytics API [frissített díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) .
 
 ## <a name="november-2020"></a>2020. november
 
@@ -59,8 +97,7 @@ Ezek a modell-verziók jelenleg nem érhetők el az USA keleti régiójában.
     * [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)
     * [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)
     * [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)
-
-
+    * 
 > [!div class="nextstepaction"]
 > [További információ: Text Analytics API v 3.1 – előzetes verzió. 3](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Languages)
 

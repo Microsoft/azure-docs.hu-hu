@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.reviewer: sngun
 ms.openlocfilehash: d986106337eb1ede2f6d61303d8a4c487bbed276
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93088471"
 ---
 # <a name="understanding-the-differences-between-nosql-and-relational-databases"></a>A NoSQL és a kapcsolati adatbázisok közötti különbségek megértése
@@ -40,7 +40,7 @@ Napjainkban azonban a dokumentum-stílusú adatbázisok népszerűsége jelentő
 
 Az [objektum-orientált kialakítás](https://en.wikipedia.org/wiki/Object-oriented_design)megjelenése, valamint az olyan [impedancia-eltérések](https://en.wikipedia.org/wiki/Object-relational_impedance_mismatch) , amelyek a viszonyítási modellekkel való összevonásakor felmerülnek, a kapcsolódó adatbázisokban bizonyos felhasználási esetekben is kiemelnek egy anti-mintát. Rejtett, de gyakran jelentős karbantartási költségek is származhatnak. Bár az [ORM-megközelítések](https://en.wikipedia.org/wiki/Object-relational_mapping) részben csökkentik ezt a megoldást, a dokumentum-orientált adatbázisok mégis sokkal jobban összefonódnak az objektumorientált megközelítésekkel. Ezzel a megközelítéssel a fejlesztők nem kénytelenek elkötelezettek lenni az ORM-illesztőprogramok vagy az adott nyelvre szabott [OO adatbázis-hajtóművek](https://en.wikipedia.org/wiki/Object_database)számára. Ha az adatai sok szülő-gyermek kapcsolatot és mély hierarchiát tartalmaznak, érdemes fontolóra venni egy NoSQL-dokumentum-adatbázis használatát, például a [Azure Cosmos db SQL API](./introduction.md)-t.
 
-:::image type="content" source="./media/relational-or-nosql/order-orderdetails.jpg" alt-text="Backend":::
+:::image type="content" source="./media/relational-or-nosql/order-orderdetails.jpg" alt-text="OrderDetails":::
 
 ## <a name="complex-networks-and-relationships"></a>Összetett hálózatok és kapcsolatok
 
@@ -50,7 +50,7 @@ A "hálózati" adatbázisok különböző formái a viszonyítási adatbázisok 
 
 Ha egy összetett hálózati kapcsolatot tart fenn az adatbázisban, érdemes lehet egy gráf-adatbázist, például az [Azure Cosmos db GREMLIN API](./graph-introduction.md) -t használni az adatkezeléshez.
 
-:::image type="content" source="./media/relational-or-nosql/graph.png" alt-text="Backend":::
+:::image type="content" source="./media/relational-or-nosql/graph.png" alt-text="Az adatbázisábrán számos alkalmazott és részleg látható egymáshoz.":::
 
 Azure Cosmos DB egy többmodelles adatbázis-szolgáltatás, amely API-kivetítést biztosít az összes főbb NoSQL-modellhez; Oszlop – család, dokumentum, gráf és kulcs-érték. A [Gremlin (gráf)](./gremlin-support.md) és az SQL (Core) Document API-rétegek teljes mértékben interoperábilisak. Ez előnyökkel jár a különböző modellek közötti váltáshoz a programozhatóság szintjén. A Graph-áruházak a komplex hálózati bejárásokat, valamint az ugyanazon tárolóban található dokumentum-rekordként modellezhető tranzakciók esetében is lekérdezhető.
 
@@ -77,7 +77,9 @@ Bár a NoSQL-adatbázisok megvalósítása során egyértelmű előnyökkel jár
 
 Az első kihívás az, hogy a NoSQL-adatbázisok szabálya általában a denormalizálás, amely a korábban megfogalmazott módon hatékonyabb beolvasást eredményez egy elosztott rendszeren. Vannak azonban olyan tervezési kihívások is, amelyek a jelen megközelítéssel együtt játszanak. Vegyük például egy olyan terméket, amely egy kategóriához és több címkéhez kapcsolódik:
 
-:::image type="content" source="./media/relational-or-nosql/many-joins.png" alt-text="Backend" kapcsolathoz, és egy JOIN az adatok lekéréséhez. 
+:::image type="content" source="./media/relational-or-nosql/many-joins.png" alt-text="Összekapcsolások":::
+
+A NoSQL-dokumentumok adatbázisának ajánlott módszere, ha a kategória neve és a címke neveit közvetlenül egy "termék dokumentumában" szeretné denormalizálni. Ahhoz azonban, hogy a kategóriák, címkék és termékek szinkronban maradjanak, a tervezési beállítások lehetővé teszik a karbantartási bonyolultság hozzáadását, mivel az adatok duplikálva vannak a termék több rekordjához, nem pedig egy "egy a többhöz" kapcsolathoz, és egy JOIN az adatok lekéréséhez. 
 
 A kikapcsolás azt eredményezi, hogy az olvasások hatékonyabbak a denormalizált rekordban, és egyre hatékonyabbá válnak, mivel a koncepcionálisan összekapcsolt entitások száma növekszik. Ugyanakkor ahogy az olvasási hatékonyság növekszik a denormalizáló rekordban lévő összekapcsolt entitások számának növekedésével, úgy is működik, hogy a karbantartás bonyolultsága szinkronban tartja az entitásokat. A kompromisszumok enyhítésének egyik módja a [hibrid adatmodell](./modeling-data.md#hybrid-data-models)létrehozása.
 

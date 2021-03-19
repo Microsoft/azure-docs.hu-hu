@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 5/19/2020
 ms.author: jejarry
 ms.openlocfilehash: b3714f8401def9bed68e4b0845d025734a480cb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83681805"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric parancssori felület
@@ -37,7 +37,7 @@ A Service Fabric parancssori felület a Service Fabric SDK legfrissebb futtatók
 | 6.0.0         | 6.3                       |
 | 5.0.0         | 6,2                       |
 | 4.0.0         | 6.1                       |
-| 3.0.0         | 6,0                       |
+| 3.0.0         | 6.0                       |
 | 1.1.0         | 5.6, 5.7                  |
 
 A parancssori felület telepítendő célverzióját úgy is megadhatja, ha a `pip install` parancsot kiegészíti a `==<version>` kifejezéssel. Például az 1.1.0-s verzió esetén a szintaxis a következő:
@@ -62,7 +62,7 @@ Windows 10, Windows Server 2016 és Windows Server 2012 R2 esetén használja a 
 
 2. Indítsa el a telepítőt.
 
-3. A parancssor alján válassza a **Python 3,7 hozzáadása az elérési útra**lehetőséget.
+3. A parancssor alján válassza a **Python 3,7 hozzáadása az elérési útra** lehetőséget.
 
 4. Válassza az **Install Now** (Telepítés) lehetőséget, és fejezze be a telepítést.
 
@@ -266,7 +266,7 @@ pip uninstall sfctl
 pip install sfctl
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Alkalmazás üzembe helyezése az Azure Service Fabric parancssori felülettel](service-fabric-application-lifecycle-sfctl.md)
 * [A Service Fabric használatának első lépései Linuxon](service-fabric-get-started-linux.md)
