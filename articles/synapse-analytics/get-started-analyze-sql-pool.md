@@ -9,18 +9,34 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 12/31/2020
-ms.openlocfilehash: 54b650d598cf19e061465b3a4fa18d50808e7f29
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.date: 03/18/2020
+ms.openlocfilehash: f03fa84c02c4b3894efe069289b0ecbb9e90dfdb
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102426161"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654628"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Az adatelemzés dedikált SQL-készletekkel
 
-Az Azure szinapszis Analytics lehetővé teszi az adatelemzést egy dedikált SQL-készlettel. Ebben az oktatóanyagban a New York-i taxi-adataival felhasználhatja a dedikált SQL-készlet képességeit.
+Ebben az oktatóanyagban a New York-i taxi-adataival felhasználhatja a dedikált SQL-készlet képességeit.
 
+## <a name="create-a-dedicated-sql-pool"></a>Dedikált SQL-készlet létrehozása
+
+1. A szinapszis Studióban a bal oldali ablaktáblán válassza az   >  **SQL-készletek** kezelése lehetőséget.
+1. **Új** kiválasztása
+1. Az **SQL-készlet neve** területen válassza a **SQLPOOL1** lehetőséget.
+1. A **teljesítmény szintjén** válassza a **DW100C** lehetőséget.
+1. Válassza a **Felülvizsgálat + létrehozás** > **Létrehozás** lehetőséget. A dedikált SQL-készlet néhány percen belül elkészül. 
+
+A dedikált SQL-készlet egy **SQLPOOL1** néven is ismert SQL-adatbázishoz van társítva.
+1. Navigáljon az  >  **adatmunkaterület** elemre.
+1. Ekkor meg kell jelennie egy **SQLPOOL1** nevű adatbázisnak. Ha nem látja, kattintson a **frissítés** gombra.
+
+A dedikált SQL-készletek számlázható erőforrásokat használnak, amíg aktívak. A készletet később is szüneteltetheti a költségek csökkentése érdekében.
+
+> [!NOTE] 
+> Amikor új dedikált SQL-készletet (korábban SQL DW-t) hoz létre a munkaterületen, megnyílik a dedikált SQL Pool kiépítési oldal. A kiépítés a logikai SQL-kiszolgálón történik.
 ## <a name="load-the-nyc-taxi-data-into-sqlpool1"></a>A New York-i taxi-szolgáltatás betöltése a SQLPOOL1
 
 1. A szinapszis Studióban navigáljon a **fejlesztés** hubhoz, kattintson a **+** gombra új erőforrás hozzáadásához, majd hozzon létre új SQL-parancsfájlt.
@@ -77,7 +93,6 @@ Az Azure szinapszis Analytics lehetővé teszi az adatelemzést egy dedikált SQ
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>A New York-i taxi adatai a dedikált SQL-készletben
 
 1. A szinapszis Studióban nyissa meg **az** adatközpontot.
-1. Ekkor meg kell jelennie egy **SQLPOOL1** nevű adatbázisnak. Ha nem látja, kattintson a **frissítés** gombra.
 1. Nyissa meg a **SQLPOOL1**  >  **táblákat**. 
 3. Kattintson a jobb gombbal a **dbo. Utazási** táblázat és válassza az **új SQL-parancsfájl** lehetőséget, majd  >  **válassza a Top 100 sort**.
 4. Várjon, amíg a rendszer létrehoz egy új SQL-parancsfájlt, és futtatja azt.
@@ -103,4 +118,4 @@ Az Azure szinapszis Analytics lehetővé teszi az adatelemzést egy dedikált SQ
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Elemzés a Spark használatával](get-started-analyze-spark.md)
+> [Azure Storage-fiókban tárolt adatelemzés](get-started-analyze-storage.md)

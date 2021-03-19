@@ -16,17 +16,17 @@ ms.date: 04/25/2017
 ms.author: kumud
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: c038f0d238646f43b93ba2a2c6a1120ab5feccee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87497290"
 ---
 # <a name="azure-cli-samples-for-networking"></a>Azure CLI-minták hálózatkezeléshez
 
 A következő táblázat az Azure CLI használatával létrehozott bash parancsfájlokra mutató hivatkozásokat tartalmaz.
 
-| Script | Leírás |
+| Script | Description |
 |-|-|
 |**Az Azure-erőforrások közötti kapcsolat**||
 | [Virtuális hálózat létrehozása többrétegű alkalmazásokhoz](./scripts/virtual-network-cli-sample-multi-tier-application.md?toc=%2fazure%2fnetworking%2ftoc.json) | Egy virtuális hálózatot hoz létre előtérbeli és háttérbeli alhálózatokkal. Az előtérbeli alhálózat felé irányuló forgalom a HTTP- és az SSH-protokollon, a háttérbeli alhálózat felé irányuló forgalom pedig a MySQL-en, a 3306-os porton keresztül engedélyezett. |

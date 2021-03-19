@@ -16,10 +16,10 @@ ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 2f835c270930734bf9963a7c7c3168b873eddaf6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84791911"
 ---
 # <a name="list-azure-deny-assignments-using-the-rest-api"></a>Azure-beli megtagadási hozzárendelések listázása a REST API használatával
@@ -80,7 +80,7 @@ A megtagadási hozzárendeléssel kapcsolatos információk lekéréséhez a kö
 1. Cserélje le a *{Filter}* helyére azt a feltételt, amelyet alkalmazni szeretne a megtagadási hozzárendelések listájának szűréséhez.
 
     > [!div class="mx-tableFixed"]
-    > | Szűrő | Leírás |
+    > | Szűrő | Description |
     > | --- | --- |
     > | (nincs szűrő) | Felsorolja az összes megtagadási hozzárendelést a (z) felett, és a megadott hatókör alá esik. |
     > | `$filter=atScope()` | Felsorolja a csak a megadott hatókörhöz és a fentiekhez tartozó megtagadási hozzárendeléseket. A nem tartalmazza a megtagadási hozzárendeléseket alhatókörben. |
@@ -102,14 +102,14 @@ A megtagadási hozzárendeléssel kapcsolatos információk lekéréséhez a kö
 1. Cserélje le a *{Filter}* helyére azt a feltételt, amelyet alkalmazni szeretne a megtagadási hozzárendelések listájának szűréséhez. Szűrő szükséges.
 
     > [!div class="mx-tableFixed"]
-    > | Szűrő | Leírás |
+    > | Szűrő | Description |
     > | --- | --- |
     > | `$filter=atScope()` | Csak a gyökérszintű hatókörhöz tartozó megtagadási hozzárendelések listázása. A nem tartalmazza a megtagadási hozzárendeléseket alhatókörben. |
     > | `$filter=denyAssignmentName+eq+'{deny-assignment-name}'` | A megadott nevű megtagadási hozzárendelések listázása. |
 
 1. Emelt szintű hozzáférés eltávolítása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure deny-hozzárendelések ismertetése](deny-assignments.md)
 - [Hozzáférési jogosultságszint emelése az összes Azure-előfizetés és felügyeleti csoport kezeléséhez](elevate-access-global-admin.md)

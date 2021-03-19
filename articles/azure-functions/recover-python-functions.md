@@ -7,13 +7,13 @@ ms.date: 07/29/2020
 ms.author: hazeng
 ms.custom: devx-track-python
 ms.openlocfilehash: 9b9f5d389eda5d74e7e78cfcfa9a46fba7276cbd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87846037"
 ---
-# <a name="troubleshoot-python-errors-in-azure-functions"></a>Python-hibák elhárítása Azure Functions
+# <a name="troubleshoot-python-errors-in-azure-functions"></a>Az Azure Functions Python-hibáinak elhárítása
 
 A következő lista a Python-függvények gyakori problémáira vonatkozó hibaelhárítási útmutatókat tartalmazza:
 
@@ -69,7 +69,7 @@ Lásd: [távoli buildek engedélyezése](#enable-remote-build) vagy [natív füg
 
 Ugrás a következőre: `.python_packages/lib/python3.6/site-packages/<package-name>-<version>-dist-info` vagy `.python_packages/lib/site-packages/<package-name>-<version>-dist-info` . Egy szövegszerkesztővel nyissa meg a METAADAT-fájlt, és keresse meg az **osztályozók:** szakaszt. Ha a szakasz nem tartalmazza `Python :: 3` , `Python :: 3.6` , `Python :: 3.7` vagy, `Python :: 3.8` Ez azt jelenti, hogy a csomag verziószáma vagy túl régi, vagy valószínűleg a csomag már karbantartás alatt áll.
 
-A Function alkalmazás Python-verzióját a [Azure Portal](https://portal.azure.com)is megtekintheti. Navigáljon a Function alkalmazáshoz, válassza az **erőforrás-kezelő**lehetőséget, és válassza az **Indítás**lehetőséget.
+A Function alkalmazás Python-verzióját a [Azure Portal](https://portal.azure.com)is megtekintheti. Navigáljon a Function alkalmazáshoz, válassza az **erőforrás-kezelő** lehetőséget, és válassza az **Indítás** lehetőséget.
 
 :::image type="content" source="media/recover-module-not-found/resource-explorer.png" alt-text="Nyissa meg a erőforrás-kezelő a Function alkalmazáshoz a portálon":::
 
@@ -114,7 +114,7 @@ Győződjön meg arról, hogy a [Azure functions Core Tools](https://github.com/
 
 ## <a name="manual-publishing"></a>[Manuális közzététel](#tab/manual)
 
-Ha a csomagot manuálisan teszi közzé a `https://<app-name>.scm.azurewebsites.net/api/zipdeploy` végponton, győződjön meg arról, hogy **a SCM_DO_BUILD_DURING_DEPLOYMENT** és a **ENABLE_ORYX_BUILD** is **igaz**értékre van állítva. További információ: az [Alkalmazásbeállítások használata](functions-how-to-use-azure-function-app-settings.md#settings).
+Ha a csomagot manuálisan teszi közzé a `https://<app-name>.scm.azurewebsites.net/api/zipdeploy` végponton, győződjön meg arról, hogy **a SCM_DO_BUILD_DURING_DEPLOYMENT** és a **ENABLE_ORYX_BUILD** is **igaz** értékre van állítva. További információ: az [Alkalmazásbeállítások használata](functions-how-to-use-azure-function-app-settings.md#settings).
 
 ---
 
@@ -124,7 +124,7 @@ Győződjön meg arról, hogy a **Docker** és a [Azure functions Core Tools](ht
 
 #### <a name="update-your-package-to-the-latest-version"></a>A csomag frissítése a legújabb verzióra
 
-Keresse meg a csomag legújabb verzióját, `https://pypi.org/project/<package-name>` és tekintse meg az **osztályozók:** szakaszt. A csomagnak vagy `OS Independent` `POSIX` `POSIX :: Linux` **operációs rendszerrel**kompatibilisnek kell lennie. Emellett a programozási nyelvnek tartalmaznia kell a, a, a `Python :: 3` `Python :: 3.6` vagy a `Python :: 3.7` `Python :: 3.8` .
+Keresse meg a csomag legújabb verzióját, `https://pypi.org/project/<package-name>` és tekintse meg az **osztályozók:** szakaszt. A csomagnak vagy `OS Independent` `POSIX` `POSIX :: Linux` **operációs rendszerrel** kompatibilisnek kell lennie. Emellett a programozási nyelvnek tartalmaznia kell a, a, a `Python :: 3` `Python :: 3.6` vagy a `Python :: 3.7` `Python :: 3.8` .
 
 Ha ezek helyesek, a csomagot a legújabb verzióra is frissítheti, ha módosítja a `<package-name>~=<latest-version>` requirements.txt lévő sort.
 

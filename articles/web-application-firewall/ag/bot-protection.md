@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 10/31/2019
 ms.author: victorh
 ms.openlocfilehash: 89c863e85d9eab27a47bc1bf7b98cd1c8d89e900
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73516863"
 ---
 # <a name="configure-bot-protection-for-web-application-firewall-on-azure-application-gateway-preview"></a>Robotvédelem konfigurálása a webalkalmazási tűzfal esetében az Azure Application Gatewayen (előzetes verzió)
@@ -29,13 +29,13 @@ Hozzon létre egy alapszintű WAF szabályzatot a Application Gateway számára 
 
 ## <a name="enable-bot-protection-rule-set"></a>Robot Protection-szabály beállításának engedélyezése
 
-1. A korábban létrehozott **alapszintű** szabályzat lapon a **Beállítások**területen válassza a **szabályok**elemet.  
+1. A korábban létrehozott **alapszintű** szabályzat lapon a **Beállítások** területen válassza a **szabályok** elemet.  
 
-2. A Részletek lapon, a **szabályok kezelése**   szakaszban, a legördülő menüben jelölje be a bot Protection-szabály jelölőnégyzetét, majd kattintson a **Mentés**gombra.
+2. A Részletek lapon, a  **szabályok kezelése**   szakaszban, a legördülő menüben jelölje be a bot Protection-szabály jelölőnégyzetét, majd kattintson a **Mentés** gombra.
 
 > [!div class="mx-imgBorder"]
 > ![Robotvédelem](../media/bot-protection/bot-protection.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az egyéni szabályokkal kapcsolatos további információkért lásd: [webalkalmazási tűzfal v2 egyéni szabályai az Azure Application Gateway](custom-waf-rules-overview.md).

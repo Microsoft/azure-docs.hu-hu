@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: 0dfde6fef7cc91edf2101095018bc031d392c4ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/17/2021
+ms.openlocfilehash: ea6673a04bf9f5f568c660658e51036f2d2712e0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898185"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654730"
 ---
 # <a name="train-clustering-model"></a>Csoportosítási modell betanítása
 
@@ -29,13 +29,13 @@ A modul olyan nem betanított fürtszolgáltatási modellt vesz igénybe, amelye
   
 ## <a name="how-to-use-train-clustering-model"></a>A vonat-fürtszolgáltatási modell használata  
 
-1.  Adja hozzá a **Train fürtözési modell** modult a folyamathoz a tervezőben. A modult **Machine learning modulok**területen találja a **vonat** kategóriában.  
+1.  Adja hozzá a **Train fürtözési modell** modult a folyamathoz a tervezőben. A modult **Machine learning modulok** területen találja a **vonat** kategóriában.  
   
 2. Adja hozzá a [K-means fürtszolgáltatási](k-means-clustering.md) modult, vagy egy másik olyan egyéni modult, amely kompatibilis fürtszolgáltatási modellt hoz létre, és állítsa be a fürtszolgáltatási modell paramétereit.  
     
-3.  Csatoljon egy betanítási adatkészletet a **vonat-fürtözési modell**jobb oldali bemenetéhez.
+3.  Csatoljon egy betanítási adatkészletet a **vonat-fürtözési modell** jobb oldali bemenetéhez.
   
-5.  Az **oszlop beállítása**területen válassza ki a fürtök létrehozásához használni kívánt adatkészlet oszlopait. Ügyeljen arra, hogy olyan oszlopokat válasszon ki, amelyek jó szolgáltatásokat tesznek elérhetővé: például ne használjon azonosítókat vagy más olyan oszlopokat, amelyek egyedi értékekkel rendelkeznek, vagy az összes azonos értékkel rendelkező oszlopokat.
+5.  Az **oszlop beállítása** területen válassza ki a fürtök létrehozásához használni kívánt adatkészlet oszlopait. Ügyeljen arra, hogy olyan oszlopokat válasszon ki, amelyek jó szolgáltatásokat tesznek elérhetővé: például ne használjon azonosítókat vagy más olyan oszlopokat, amelyek egyedi értékekkel rendelkeznek, vagy az összes azonos értékkel rendelkező oszlopokat.
 
     Ha egy címke elérhető, használhatja szolgáltatásként, vagy hagyja ki.  
   
@@ -43,7 +43,7 @@ A modul olyan nem betanított fürtszolgáltatási modellt vesz igénybe, amelye
 
     Ha kijelöli ezt a beállítást, csak a fürt hozzárendelései lesznek kimenetek. 
 
-7. Küldje el a folyamatot, vagy kattintson a **vonat-fürtszolgáltatási modell** modulra, és válassza a **kijelölt futtatása**lehetőséget.  
+7. Küldje el a folyamatot, vagy kattintson a **vonat-fürtszolgáltatási modell** modulra, és válassza a **kijelölt futtatása** lehetőséget.  
   
 ### <a name="results"></a>Results (Eredmények)
 
@@ -52,6 +52,9 @@ A betanítás befejezése után:
 + Ha menteni szeretné a betanított modell pillanatképét, válassza a **kimenetek** fület a **vonat modell** moduljának jobb oldali paneljén. Válassza az **adatkészlet regisztrálása** ikont a modell újrafelhasználható modulként való mentéséhez.
 
 + A modellből származó pontszámok létrehozásához használja az [adatok kiosztása fürtökhöz](assign-data-to-clusters.md)lehetőséget.
+
+> [!NOTE]
+> Ha a tervezőben telepítenie kell a betanított modellt, ügyeljen arra, hogy a **pontszám modell** helyett az [adatok társítása fürthöz](assign-data-to-clusters.md) legyen csatlakoztatva a [webszolgáltatás kimeneti moduljának](web-service-input-output.md) bemenetéhez a következtetési folyamatban.
 
 ## <a name="next-steps"></a>Következő lépések
 

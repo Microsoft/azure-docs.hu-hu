@@ -4,14 +4,14 @@ description: Ez a cikk bemutatja, hogyan méretezheti a labort Azure DevTest Lab
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 2166eaab073e2abc24ca24494ae13eb876db1fcf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87533954"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>Kvóták és korlátozások méretezése a DevTest Labs szolgáltatásban
-A DevTest Labs szolgáltatásban végzett munka során észreveheti, hogy egyes Azure-erőforrások esetében bizonyos alapértelmezett korlátozások vannak érvényben, ami hatással lehet a DevTest Labs szolgáltatásra. Ezeket a korlátokat **kvótáknak**nevezzük.
+A DevTest Labs szolgáltatásban végzett munka során észreveheti, hogy egyes Azure-erőforrások esetében bizonyos alapértelmezett korlátozások vannak érvényben, ami hatással lehet a DevTest Labs szolgáltatásra. Ezeket a korlátokat **kvótáknak** nevezzük.
 
 > [!NOTE]
 > A DevTest Labs szolgáltatás nem kényszeríti ki a kvótákat. Az esetlegesen felmerülő kvóták a teljes Azure-előfizetés alapértelmezett korlátai.
@@ -26,9 +26,9 @@ Az [Azure-előfizetések és-szolgáltatások korlátai](../azure-resource-manag
 Ezek a lépések bemutatják, hogyan tekintheti meg az előfizetéshez tartozó aktuális kvótákat adott Azure-erőforrásokhoz, és megtekintheti az egyes felhasznált kvóták százalékos arányát.
 
 1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Válassza a **További szolgáltatások**lehetőséget, majd válassza a **számlázás** lehetőséget a listából.
+1. Válassza a **További szolgáltatások** lehetőséget, majd válassza a **számlázás** lehetőséget a listából.
 1. A számlázás panelen válasszon egy előfizetést.
-4. Válassza a **használat + kvóták**lehetőséget.
+4. Válassza a **használat + kvóták** lehetőséget.
 
    ![Használat és kvóták gomb](./media/devtest-lab-scale-lab/devtestlab-usage-and-quotas-new.png)
 
@@ -41,7 +41,7 @@ Ha eléri a kvóta korlátját, az előfizetésben lévő erőforrások alapért
 
 Ezek a lépések bemutatják, hogyan kérheti a kvóta növelését a [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Válassza a **További szolgáltatások**lehetőséget, válassza a **számlázás**, majd a **használat + kvóták**lehetőséget.
+1. Válassza a **További szolgáltatások** lehetőséget, válassza a **számlázás**, majd a **használat + kvóták** lehetőséget.
 1. A használat + kvóták panelen válassza a **kérés növelése** gombot.
 
    ![Kérelem növelésének gombja](./media/devtest-lab-scale-lab/devtestlab-request-increase-new.png)
@@ -56,5 +56,5 @@ Az [Azure-korlátok és-növekedések megismerése](https://azure.microsoft.com/
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 * Ismerkedjen meg a [DevTest Labs Azure Resource Manager a rövid útmutató sablonjának galériájában](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).

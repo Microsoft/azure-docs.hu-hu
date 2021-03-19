@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 061194422a8c1bc449dbef0c4f04bb8e1db10dea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68965288"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>A StorSimple-eszköz műszaki specifikációi és megfelelőségi adatai
@@ -38,7 +38,7 @@ A EBOD-kamra 580 W PCM-et használ, és az elsődleges kamra 764 W PCM-t haszná
 | Specifikáció | 580 W PCM (EBOD) | 764 W PCM (elsődleges) |
 | --- | --- | --- |
 | Maximális kimeneti teljesítmény |580 W |764 |
-| Frequency |50/60 Hz |50/60 Hz |
+| Gyakoriság |50/60 Hz |50/60 Hz |
 | Feszültség-tartomány kiválasztása |Automatikus hatókör: 90 – 264 V AC, 47/63 Hz |Automatikus hatókör: 90-264 V AC, 47/63 Hz |
 | Maximális inrush-áramerősség |20 A |20 A |
 | Teljesítménytényező javítása |>95%-os névleges bemeneti feszültség |>95%-os névleges bemeneti feszültség |
@@ -46,7 +46,7 @@ A EBOD-kamra 580 W PCM-et használ, és az elsődleges kamra 764 W PCM-t haszná
 | Kimenet |5V-os készenléti feszültség \@ 2,0 A |5V-os készenléti feszültség \@ 2,7 A |
 | + 5V \@ 42 A |+ 5V \@ 40 A | |
 | + 12V \@ 38 A |+ 12V \@ 38 A | |
-| Gyors csatlakoztatás |Igen |Igen |
+| Gyors csatlakoztatás |Igen |Yes |
 | Kapcsolók és LED-EK |AC be-és kikapcsoló kapcsoló és négy állapotjelző LED |AC be-és kikapcsoló kapcsoló és hat állapotjelző LED |
 | Ház hűtése |Axiális hűtési ventilátorok változó ventilátoros fordulatszám-vezérléssel |Axiális hűtési ventilátorok változó ventilátoros fordulatszám-vezérléssel |
 
@@ -196,7 +196,7 @@ A dugónak és a teljes tápkábel-szerelvénynek meg kell felelnie azon ország
 
 A 10 GbE hálózati adapter, a 2. és a 3. adatkapcsolat esetében tekintse meg a [támogatott hálózati kábelek és modulok listáját](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már készen áll egy StorSimple-eszköz üzembe helyezésére az adatközpontban. További információ: a [helyszíni eszköz üzembe helyezése](storsimple-8000-deployment-walkthrough-u2.md).
 

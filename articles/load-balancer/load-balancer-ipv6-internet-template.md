@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: 415c95a441ac0cc6ed2dbf2d6a37f57d7a9e7341
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90562519"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Internetkapcsolattal rendelkező terheléselosztó megoldás üzembe helyezése IPv6-sablonnal sablon használatával
@@ -72,7 +72,7 @@ Ez a cikk az [Azure gyorsindítási sablonok](https://azure.microsoft.com/docume
 
     ![A képernyőképen egy egyéni központi telepítés Firest lépése látható, amely a sablon szerkesztése.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
 
-6. Kattintson a paraméterek szerkesztése elemre. A parameters (paraméterek) panelen adja meg az értékeket a sablon paramétereinek szakaszban, majd kattintson a Save (Mentés) gombra a paraméterek panel bezárásához. Az egyéni üzembe helyezés panelen válassza ki az előfizetést, egy meglévő erőforráscsoportot, vagy hozzon létre egyet. Ha létrehoz egy erőforráscsoportot, válassza ki az erőforráscsoport helyét. Ezután kattintson a **jogi feltételek**elemre, majd a jogi feltételek **megvásárlása** elemre. Az Azure megkezdi az erőforrások üzembe helyezését. Az összes erőforrás üzembe helyezése több percet vesz igénybe.
+6. Kattintson a paraméterek szerkesztése elemre. A parameters (paraméterek) panelen adja meg az értékeket a sablon paramétereinek szakaszban, majd kattintson a Save (Mentés) gombra a paraméterek panel bezárásához. Az egyéni üzembe helyezés panelen válassza ki az előfizetést, egy meglévő erőforráscsoportot, vagy hozzon létre egyet. Ha létrehoz egy erőforráscsoportot, válassza ki az erőforráscsoport helyét. Ezután kattintson a **jogi feltételek** elemre, majd a jogi feltételek **megvásárlása** elemre. Az Azure megkezdi az erőforrások üzembe helyezését. Az összes erőforrás üzembe helyezése több percet vesz igénybe.
 
     ![Képernyőfelvétel: az egyéni üzembe helyezés lépései, a sablon paramétereinek megadásával kezdődően.](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
 

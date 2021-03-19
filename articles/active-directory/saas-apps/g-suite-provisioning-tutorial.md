@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/06/2020
+ms.date: 03/18/2021
 ms.author: Zhchia
-ms.openlocfilehash: 5243e9490c9de0d6df1520edb970da93fabef85a
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: f6ef2f91d178db01e618c19df55705bc9c1209e4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746121"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583751"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Oktatóanyag: a G Suite konfigurálása automatikus felhasználók kiépítési feladatokhoz
 
@@ -273,6 +273,7 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 * 10/17/2020 – további támogatás a G Suite-felhasználók és-csoportok további attribútumaihoz.
 * 10/17/2020 – a G Suite-beli célként megadott attribútumok neve megegyezik az [itt](https://developers.google.com/admin-sdk/directory)definiált értékkel.
 * 10/17/2020 – az alapértelmezett attribútum-hozzárendelések frissítve.
+* 03/18/2021 – a kezelő e-mail-címe mostantól az összes új felhasználó azonosítója helyett szinkronizálva lett. Minden olyan meglévő felhasználó számára, aki AZONOSÍTÓként lett kiépítve, újraindítást végezhet [Microsoft Graph](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) a "teljes" hatókörrel, hogy biztosítsa az e-mail kiosztását. Ez a módosítás csak a GSuite kiépítési feladataira van hatással, nem pedig a Goov2OutDelta-től kezdődően a régebbi probisioning-feladatokra. Vegye figyelembe, hogy a kezelő e-mail-címe a felhasználó első létrehozásakor vagy a kezelő módosításakor lett kiépítve. A kezelő e-mail-címe nincs kiépítve, ha a kezelő megváltoztatja az e-mail-címét. 
 
 ## <a name="additional-resources"></a>További források
 

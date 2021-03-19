@@ -8,10 +8,10 @@ ms.topic: guide
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: a4a5b058666fab3e9048a7d92726dccd1360ff37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74184259"
 ---
 # <a name="azure-internet-analyzer-faq-preview"></a>Azure Internet Analyzer – gyakori kérdések (előzetes verzió)
@@ -67,7 +67,7 @@ Az előzetes verzióban az alábbi előre konfigurált végpontok érhetők el:
 * **Azure-régiók**
     * Dél-Brazília
     * Közép-India
-    * USA középső régiója
+    * Az USA középső régiója
     * Kelet-Ázsia
     * USA keleti régiója
     * Nyugat-Japán
@@ -103,6 +103,6 @@ Az Internet Analyzer segítségével megismerheti a végfelhasználók teljesít
 
 Az Azure [erős biztonsági folyamatokkal rendelkezik, és megfelel a megfelelőségi szabványok széles skálájának](https://azure.microsoft.com/support/trust-center/). Csak Ön és a kijelölt csapat férhet hozzá az adataihoz. A Microsoft munkatársai csak bizonyos korlátozott körülmények között érhetik el a hozzáférést az Ön számára. Az átvitel és a nyugalmi állapotban is titkosítva van.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért tekintse meg az [Internet Analyzer áttekintése](internet-analyzer-overview.md)című témakört.

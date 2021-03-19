@@ -8,10 +8,10 @@ ms.date: 05/13/2019
 ms.author: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: f1ca4958fe2608d0c040ef5b93827a7e71a4151c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74672350"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>Nagy sűrűségű üzemeltetés Azure App Service alkalmazáson belüli skálázással
@@ -131,13 +131,13 @@ Az alkalmazások nagy sűrűségű üzemeltetésének konfigurálásához köves
 
 1. Jelöljön ki egy App Service tervet nagy sűrűségű tervként, és a kívánt kapacitásra méretezheti.
 1. Állítsa a `PerSiteScaling` jelzőt True értékre a app Service tervben.
-1. A rendszer létrehoz egy új alkalmazást, és hozzárendeli azt a App Service tervhez a **numberOfWorkers** tulajdonsággal **1**értékre állítva.
+1. A rendszer létrehoz egy új alkalmazást, és hozzárendeli azt a App Service tervhez a **numberOfWorkers** tulajdonsággal **1** értékre állítva.
    - Ennek a konfigurációnak a használata a lehető legnagyobb sűrűséget eredményezi.
 1. A feldolgozók száma az alkalmazásoktól függetlenül konfigurálható további erőforrások igény szerinti megadásához. Például:
    - Egy magas rendelkezésre állású alkalmazás beállíthatja a **numberOfWorkers** **, hogy** az alkalmazásnak több feldolgozási kapacitása legyen.
    - Az alacsony használatú alkalmazások **numberOfWorkers** értéke **1**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure App Service tervek részletes áttekintése](overview-hosting-plans.md)
 - [Az App Service Environment bemutatása](environment/app-service-app-service-environment-intro.md)

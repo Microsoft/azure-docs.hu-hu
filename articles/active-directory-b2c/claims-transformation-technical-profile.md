@@ -12,10 +12,10 @@ ms.date: 02/13/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 6553b9ec120ca0e1e479b400495b61bc68c88cf3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85201208"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Jogcím-átalakítási technikai profil definiálása egy Azure Active Directory B2C egyéni házirendben
@@ -50,7 +50,7 @@ A **OutputClaims** elem megadása kötelező. Meg kell adnia legalább egy, a te
 
 ## <a name="output-claims-transformations"></a>Kimeneti jogcímek átalakítása
 
-A **OutputClaimsTransformations** elem tartalmazhatja a jogcímek módosításához vagy újak létrehozásához használt **OutputClaimsTransformation** -elemek gyűjteményét. A következő technikai profil hívja meg a **RemoveAlternativeSecurityIdByIdentityProvider** jogcím-átalakítást. Ez a jogcím-átalakítás eltávolítja a közösségi azonosítást a **AlternativeSecurityIds**gyűjteményéből. Ennek a technikai profilnak a kimeneti jogcímei a **identityProvider2**, `facebook.com` és **AlternativeSecurityIds**, amely tartalmazza a felhasználóhoz társított közösségi identitások listáját a Facebook.com-identitás eltávolítása után.
+A **OutputClaimsTransformations** elem tartalmazhatja a jogcímek módosításához vagy újak létrehozásához használt **OutputClaimsTransformation** -elemek gyűjteményét. A következő technikai profil hívja meg a **RemoveAlternativeSecurityIdByIdentityProvider** jogcím-átalakítást. Ez a jogcím-átalakítás eltávolítja a közösségi azonosítást a **AlternativeSecurityIds** gyűjteményéből. Ennek a technikai profilnak a kimeneti jogcímei a **identityProvider2**, `facebook.com` és **AlternativeSecurityIds**, amely tartalmazza a felhasználóhoz társított közösségi identitások listáját a Facebook.com-identitás eltávolítása után.
 
 ```xml
 <ClaimsTransformations>
@@ -104,7 +104,7 @@ A jogcím-átalakítás technikai profilja lehetővé teszi, hogy a jogcímek á
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| IncludeClaimResolvingInClaimsHandling  | Nem | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true` , vagy `false`   (alapértelmezett). Ha a technikai profilban a jogcím-feloldót szeretné használni, állítsa be a következőt: `true` . |
+| IncludeClaimResolvingInClaimsHandling  | No | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true` , vagy `false` (alapértelmezett). Ha a technikai profilban a jogcím-feloldót szeretné használni, állítsa be a következőt: `true` . |
 
 ## <a name="use-a-validation-technical-profile"></a>Érvényesítési technikai profil használata
 

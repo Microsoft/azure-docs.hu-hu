@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6f48245983898c542197deb7e0b3cd53bd39be33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8fa6e108550b1417f736d1caff5cafd3e16f63a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707523"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595005"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>Korlátok Azure Database for PostgreSQL – egyetlen kiszolgáló
 Az alábbi szakaszok az adatbázis-szolgáltatás kapacitását és működési korlátait ismertetik. Ha szeretne többet megtudni az erőforrásról (számítási, memória-, tárolási) szintjeiről, tekintse meg a [díjszabási szintek](concepts-pricing-tiers.md) című cikket.
@@ -68,9 +68,12 @@ A PostgreSQL-kapcsolatok, akár tétlenek is, körülbelül 10 MB memóriát fog
 - Bizonyos esetekben az UTF-8 karakterek nem támogatottak teljes mértékben a nyílt forráskódú PostgreSQL-ben Windows rendszeren, amely hatással van a Azure Database for PostgreSQLra. További információért tekintse meg a [hiba #15476 a PostgreSQL-Archive](https://www.postgresql-archive.org/BUG-15476-Problem-on-show-trgm-with-4-byte-UTF-8-characters-td6056677.html) webhelyen.
 
 ### <a name="gss-error"></a>GSS hiba
-Ha a **GSS**kapcsolatos hiba jelenik meg, valószínű, hogy egy újabb ügyfél-vagy illesztőprogram-verziót használ, amelyet az Azure postgres egyetlen kiszolgáló még nem támogat. Ez a hiba ismert a [JDBC illesztőprogram-verziók 42.2.15 és 42.2.16](https://github.com/pgjdbc/pgjdbc/issues/1868)való befolyásolásához.
-   - A frissítés befejezését november végére tervezzük. Időközben érdemes lehet egy működő illesztőprogram-verziót használni.
-   - Vagy vegye fontolóra a GSS-kérelem letiltását.  Használjon például a következőhöz: `gssEncMode=disable` .
+Ha a **GSS-sel** kapcsolatos hibát lát, valószínűleg olyan újabb ügyfél-/illesztőverziót használ, amelyet az önálló Azure Postgres-kiszolgáló még nem támogat teljes mértékben. Ez egy ismert hiba a [JDBC-illesztő 42.2.15-ös és 42.2.16-os verziója](https://github.com/pgjdbc/pgjdbc/issues/1868) esetén.
+   - A frissítés terveink szerint november végére elkészül. Addig is fontolja meg egy működő illesztőverzió használatát.
+   - Vagy vegye fontolóra a GSS-kérelem letiltását.  Használjon a következőhöz hasonló kapcsolati paramétert: `gssEncMode=disable`.
+
+### <a name="storage-size-reduction"></a>Tárterület-méret csökkentése
+A tárterület mérete nem csökkenthető. Létre kell hoznia egy új kiszolgálót a kívánt tárterület-mérettel, manuálisan kell elvégeznie a [memóriaképet, és vissza kell állítania](./howto-migrate-using-dump-and-restore.md) és át kell telepítenie az adatbázis (oka) t az új kiszolgálóra.
 
 ## <a name="next-steps"></a>Következő lépések
 - [Az egyes díjszabási szinten elérhető](concepts-pricing-tiers.md) tartalmak ismertetése

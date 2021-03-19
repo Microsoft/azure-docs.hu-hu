@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sideeksh
 ms.openlocfilehash: 569af28f5773d843f49dd9c8143b45e308ae142e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87420413"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>A Hyper-V virtuális gépekhez tartozó DR-részletezés futtatása másodlagos helyre
@@ -119,11 +119,11 @@ Készítse elő a DNS-kiszolgálót a feladatátvételi teszthez a következők�
 
 Ez az eljárás azt ismerteti, hogyan futtathat feladatátvételi tesztet helyreállítási tervhez. Azt is megteheti, hogy a feladatátvételt egyetlen virtuális géphez futtatja a **Virtual Machines** lapon.
 
-1. Válassza a **helyreállítási tervek**  >  *recoveryplan_name*elemet. Kattintson a **feladatátvételi**  >  **teszt feladatátvétele**lehetőségre.
+1. Válassza a **helyreállítási tervek**  >  *recoveryplan_name* elemet. Kattintson a **feladatátvételi**  >  **teszt feladatátvétele** lehetőségre.
 2. A **feladatátvételi teszt** panelen határozza meg, hogy a replika virtuális gépek hogyan kapcsolódjanak a hálózatokhoz a feladatátvételi teszt után.
 3. A **feladatok** lapon nyomon követheti a feladatátvétel folyamatát.
 4. A feladatátvétel befejeződése után ellenőrizze, hogy a virtuális gépek sikeresen elindulnak-e.
-5. Ha elkészült, kattintson a helyreállítási terv **feladatátvételi teszt törlése** elemére. A **jegyzetek**területen jegyezze fel és mentse a feladatátvételi teszttel kapcsolatos megfigyeléseket. Ez a lépés törli azokat a virtuális gépeket és hálózatokat, amelyeket Site Recovery hozott létre a feladatátvételi teszt során. 
+5. Ha elkészült, kattintson a helyreállítási terv **feladatátvételi teszt törlése** elemére. A **jegyzetek** területen jegyezze fel és mentse a feladatátvételi teszttel kapcsolatos megfigyeléseket. Ez a lépés törli azokat a virtuális gépeket és hálózatokat, amelyeket Site Recovery hozott létre a feladatátvételi teszt során. 
 
 ![Feladatátvétel tesztelése](./media/hyper-v-vmm-test-failover/TestFailover.png)
  
@@ -143,7 +143,7 @@ Azt javasoljuk, hogy ne futtasson feladatátvételi tesztet a hálózati leképe
 * A teszteléshez hasonlóan az éles környezetbeli alkalmazás leállásához vezet. Kérje meg az alkalmazás felhasználóit, hogy ne használják az alkalmazást, amikor a DR-részletezés folyamatban van.  
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A DR-részletezés sikeres futtatása után [futtathatja a teljes feladatátvételt](site-recovery-failover.md).
 
 

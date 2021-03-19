@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/1/2016
+ms.date: 03/17/2021
 ms.author: alkohli
-ms.openlocfilehash: 2395e3c6f2026bc1024de38122bc20959fdcf9b7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cb5b6b1a2d890fe49d78da17d549c5676557b971
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967091"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654245"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>A StorSimple Eszközkezelő szolgáltatás használata a StorSimple virtuális tömb felügyeletéhez
 ![folyamat beállítása folyamatban](./media/storsimple-virtual-array-manager-service-administration/manage4.png)
@@ -35,14 +35,12 @@ A cikk elolvasása után a következőket fogja tudni:
 
 > [!NOTE]
 > A StorSimple 8000 Series eszközhöz elérhető felügyeleti lehetőségek megtekintéséhez lépjen a [StorSimple Manager szolgáltatás használatára a StorSimple-eszköz felügyeletéhez](./storsimple-8000-manager-service-administration.md).
-> 
-> 
 
 ## <a name="connect-to-the-storsimple-device-manager-service"></a>Kapcsolódás a StorSimple Eszközkezelő szolgáltatáshoz
 A StorSimple Eszközkezelő szolgáltatás Microsoft Azure fut, és több StorSimple virtuális tömbhöz csatlakozik. Az eszközök kezeléséhez egy böngészőben futó központi Microsoft Azure Portal fog használni. A StorSimple Eszközkezelő szolgáltatáshoz való kapcsolódáshoz tegye a következőket.
 
 #### <a name="to-connect-to-the-service"></a>Kapcsolódás a szolgáltatáshoz
-1. Ugrás a következőre: [https://ms.portal.azure.com](https://ms.portal.azure.com) .
+1. Ugrás a következőre: [https://portal.azure.com](https://portal.azure.com) .
 2. A Microsoft-fiók hitelesítő adataival jelentkezzen be a Microsoft Azure Portalba (a panel jobb felső sarkában található).
 3. Navigáljon a Tallózás gombra – > "filter" a StorSimple-Eszközkezelőben az összes Eszközkezelő egy adott előfizetésben való megtekintéséhez.
 
@@ -50,6 +48,8 @@ A StorSimple Eszközkezelő szolgáltatás Microsoft Azure fut, és több StorSi
 A következő táblázat a StorSimple Eszközkezelő szolgáltatás összefoglalási paneljén elvégezhető általános felügyeleti feladatok és összetett munkafolyamatok összegzését tartalmazza. Ezek a feladatok a kezdeményezett pengék alapján vannak rendszerezve.
 
 Az egyes munkafolyamatokkal kapcsolatos további információkért kattintson a megfelelő eljárásra a táblázatban.
+
+[!INCLUDE [StorSimple software warning](../../includes/storsimple-update-software-warning.md)]
 
 #### <a name="storsimple-device-manager-workflows"></a>StorSimple Eszközkezelő munkafolyamatok
 | Ha ezt szeretné tenni... | Az eljárás használata |

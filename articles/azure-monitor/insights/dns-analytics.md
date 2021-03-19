@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: df9efef1000ab6a824c869e6684ab1424e8462f4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f01a1204aefbcaabe0ddac254b24bc014c3d5a64
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708101"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654526"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>A DNS-infrastruktúrával kapcsolatos információk gyűjtése a DNS Analytics előzetes verziójának megoldásával
 
@@ -34,10 +34,10 @@ A következő táblázat ismerteti a megoldás által támogatott csatlakoztatot
 
 | **Csatlakoztatott forrás** | **Támogatás** | **Leírás** |
 | --- | --- | --- |
-| [Windows-ügynökök](../agents/agent-windows.md) | Igen | A megoldás DNS-információkat gyűjt a Windows-ügynököktől. |
-| [Linux-ügynökök](../vm/quick-collect-linux-computer.md) | Nem | A megoldás nem gyűjt DNS-adatokat a közvetlen Linux-ügynököktől. |
-| [System Center Operations Manage felügyeleti csoport](../agents/om-agents.md) | Igen | A megoldás a DNS-információkat a csatlakoztatott Operations Manager felügyeleti csoportban lévő ügynököktől gyűjti. Nem szükséges közvetlen kapcsolódás a Operations Manager ügynöktől a Azure Monitorhoz. Az adatok továbbítása a felügyeleti csoportból a Log Analytics munkaterületre történik. |
-| [Azure Storage-fiók](../essentials/resource-logs.md#send-to-log-analytics-workspace) | Nem | A megoldás nem használja az Azure Storage-t. |
+| [Windows-ügynökök](../agents/agent-windows.md) | Yes | A megoldás DNS-információkat gyűjt a Windows-ügynököktől. |
+| [Linux-ügynökök](../vm/quick-collect-linux-computer.md) | No | A megoldás nem gyűjt DNS-adatokat a közvetlen Linux-ügynököktől. |
+| [System Center Operations Manage felügyeleti csoport](../agents/om-agents.md) | Yes | A megoldás a DNS-információkat a csatlakoztatott Operations Manager felügyeleti csoportban lévő ügynököktől gyűjti. Nem szükséges közvetlen kapcsolódás a Operations Manager ügynöktől a Azure Monitorhoz. Az adatok továbbítása a felügyeleti csoportból a Log Analytics munkaterületre történik. |
+| [Azure Storage-fiók](../essentials/resource-logs.md#send-to-log-analytics-workspace) | No | A megoldás nem használja az Azure Storage-t. |
 
 ### <a name="data-collection-details"></a>Adatgyűjtés részletei
 
@@ -54,7 +54,7 @@ A megoldás további konfigurálás nélkül elindítja az adatok gyűjtését. 
 
 ### <a name="configure-the-solution"></a>A megoldás konfigurálása
 
-A megoldás Irányítópultján kattintson a **konfiguráció** elemre a DNS Analytics konfiguráció lap megnyitásához. A következő két típusú konfigurációs módosítást teheti:
+A Azure Portal Log Analytics munkaterületen válassza a **munkaterület összefoglalása** elemet, majd kattintson a **DNS Analytics** csempére. A megoldás Irányítópultján kattintson a **konfiguráció** elemre a DNS Analytics konfiguráció lap megnyitásához. A következő két típusú konfigurációs módosítást teheti:
 
 - **Allowlisted tartománynevek**. A megoldás nem dolgozza fel az összes keresési lekérdezést. A tartománynév-utótagok engedélyezési tartja karban. A megoldás nem dolgozza fel azokat a keresési lekérdezéseket, amelyek az ebben a engedélyezési található tartománynév-utótagoknak megfelelő tartományneveket oldják fel. A allowlisted-tartománynevek feldolgozása nem segít optimalizálni a Azure Monitorba elküldett adatgyűjtést. Az alapértelmezett engedélyezési olyan népszerű nyilvános tartományneveket tartalmaz, mint például a www.google.com és a www.facebook.com. A teljes alapértelmezett listát görgetve tekintheti meg.
 

@@ -4,18 +4,18 @@ description: Mielőtt a helyszíni adatokhoz hozzáférhessen Azure Logic Appsr�
 services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, logicappspm
-ms.topic: article
-ms.date: 05/15/2020
-ms.openlocfilehash: 799e879b4d9fd54367d54c17b3d275acfc5f34c1
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.topic: how-to
+ms.date: 03/16/2021
+ms.openlocfilehash: 4b2559ad20036870c6df5c0662bb973f35155bfa
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054771"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104576798"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Helyszíni adatátjáró telepítése az Azure Logic Appshez
 
-A helyszíni [adatforrásokhoz való kapcsolódáshoz Azure Logic apps](../logic-apps/logic-apps-gateway-connection.md)a helyi számítógépen töltse le és telepítse a helyszíni [adatátjárót](https://aka.ms/on-premises-data-gateway-installer) . Az átjáró hídként működik, amely gyors adatátvitelt és titkosítást biztosít a helyszínen található adatforrások és a logikai alkalmazások között. Ugyanezt az átjárót más felhőalapú szolgáltatásokkal is használhatja, mint például a Power BI, az automatizálás, a Power apps és a Azure Analysis Services. Az átjáró ezen szolgáltatásokkal való használatáról a következő cikkekben talál további információt:
+A helyszíni [adatforrásokhoz való kapcsolódáshoz Azure Logic apps](../logic-apps/logic-apps-gateway-connection.md)a helyi számítógépen töltse le és telepítse a helyszíni [adatátjárót](https://aka.ms/on-premises-data-gateway-installer) . Az átjáró hídként működik, amely gyors adatátvitelt és titkosítást biztosít a helyszínen található adatforrások és a logikai alkalmazások között. Ugyanezt az átjárót más felhőalapú szolgáltatásokkal is használhatja, mint például a Power automatizálás, a Power BI, a Power apps és a Azure Analysis Services. Az átjáró ezen szolgáltatásokkal való használatáról a következő cikkekben talál további információt:
 
 * [A Microsoft Power automatizálja a helyszíni adatátjárót](/power-automate/gateway-reference)
 * [Microsoft Power BI helyszíni adatátjáró](/power-bi/service-gateway-onprem)
@@ -71,7 +71,12 @@ Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a hel
 
   * Windows-hitelesítés használata esetén győződjön meg arról, hogy az átjárót olyan számítógépre telepíti, amely az adatforrásokkal megegyező Active Directory-környezet tagja.
 
-  * Az átjáró telepítéséhez kiválasztott régió ugyanaz a hely, amelyet később a logikai alkalmazáshoz tartozó Azure Gateway-erőforrás létrehozásakor ki kell választania. Alapértelmezés szerint ez a régió megegyezik az Azure-fiókját kezelő Azure AD-Bérlővel. A helyet azonban megváltoztathatja az átjáró telepítése közben is.
+  * Az átjáró telepítéséhez kiválasztott régió ugyanaz a hely, amelyet később a logikai alkalmazáshoz tartozó Azure Gateway-erőforrás létrehozásakor ki kell választania. Alapértelmezés szerint ez a régió az Azure AD-Bérlővel megegyező hely, amely az Azure-beli felhasználói fiókját kezeli. A helyet azonban megváltoztathatja az átjáró telepítésekor vagy később is.
+
+    > [!IMPORTANT]
+    > Az átjáró telepítése során a **change region** parancs nem érhető el, ha bejelentkezett a Azure Government-fiókjával, amely a [Azure Government-felhőben](../azure-government/compare-azure-government-global-azure.md)egy Azure Active Directory (Azure ad) bérlőhöz van társítva. Az átjáró automatikusan ugyanazt a régiót használja, mint a felhasználói fiók Azure AD-bérlője.
+    > 
+    > Ha továbbra is szeretné használni a Azure Government-fiókját, de az átjárót úgy kell beállítani, hogy a globális, több-bérlős Azure kereskedelmi felhőben működjön, először jelentkezzen be az átjáró telepítése során a `prod@microsoft.com` felhasználónévvel. Ez a megoldás arra kényszeríti az átjárót, hogy a globális, több-bérlős Azure-felhőt használja, de továbbra is lehetővé teszi a Azure Government-fiók használatát.
 
   * Ha frissíti az átjáró telepítését, először távolítsa el az aktuális átjárót a tisztább élmény érdekében.
 

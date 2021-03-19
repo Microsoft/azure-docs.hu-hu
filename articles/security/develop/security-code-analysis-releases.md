@@ -13,10 +13,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 33ce2a496caa52609d8bdf8c92e29064ca4ae349
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85362040"
 ---
 # <a name="microsoft-security-code-analysis-releases-and-roadmap"></a>Microsoft biztonsági kód elemzésének kiadásai és ütemterve
@@ -73,7 +73,7 @@ A Microsoft biztonsági kód Analysis Team a Fejlesztői támogatás partnerrel 
 
 Az elavult MSRD-kivonási szolgáltatást egy nyílt forráskódú, saját üzemeltetésű fejlesztői fuzzy platformmal helyettesíti az Azure-hoz. Ez a platform jelenleg fejlesztés alatt áll és tesztelve van a Microsoft alapvető termékcsoportok számos tagja számára. Ez a zavaros platform integrálja a fertőtlenítő szoftvereket, és lehetővé teszi a CI/CD-folyamatokban beépített, alkalmazkodó, tanulási fuzz-teszteket, amelyekkel idővel bővülnek a szoftverek projektjei. A platform nyílt forráskódú kiadása a 2020-as utolsó felére van ütemezve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Microsoft biztonsági kódok elemzésének bevezetésével és telepítésével kapcsolatos útmutatásért tekintse meg a bevezetési [és telepítési útmutatót](security-code-analysis-onboard.md).
 

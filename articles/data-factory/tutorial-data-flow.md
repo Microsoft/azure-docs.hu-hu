@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2021
-ms.openlocfilehash: 5deaef04330e21c8d9c580bf2a16814d4e902f6a
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 52509dbf529076eaa0af73ea48db9a7f3fd10241
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103199870"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584516"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Adatok átalakítása adatfolyamok leképezésével
 
@@ -54,7 +54,7 @@ Ebben a lépésben létrehoz egy adatelőállítót, és megnyitja a Data Factor
 
    Az Azure-beli adatgyár nevének *globálisan egyedinek* kell lennie. Ha a név értékével kapcsolatos hibaüzenet kap, adjon meg másik nevet az adat-előállítóhoz. (például Sajátneveadftutorialdatafactory). A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
 
-     ![Új adat-előállító](./media/doc-common-process/name-not-available-error.png)
+    :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="Új adatelőállító-hibaüzenet az ismétlődő névhez.":::
 4. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni.
 5. **Erőforráscsoport:** hajtsa végre a következő lépések egyikét:
 

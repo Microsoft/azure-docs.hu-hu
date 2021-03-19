@@ -4,10 +4,10 @@ description: Ez a cikk a webhookok használatakor a webhook-esemény kézbesít�
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: e9a52d0cb3e4e880d91e1b748d97ef3041298930
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87461238"
 ---
 # <a name="webhook-event-delivery"></a>Webhook-esemény kézbesítése
@@ -28,7 +28,7 @@ Ha bármilyen más típusú végpontot használ, például egy HTTP-triggeren al
 
    Az 2018-05-01-es verziótól kezdődően a Event Grid támogatja a manuális ellenőrzési kézfogást. Ha olyan SDK-val vagy eszközzel hoz létre egy esemény-előfizetést, amely az 2018-05-01-es vagy újabb API-verziót használja, akkor Event Grid egy `validationUrl` tulajdonságot küld az előfizetés-ellenőrzési esemény adatrészében. A kézfogás elvégzéséhez keresse meg az adott URL-címet az eseményekhez, és tegye meg a GET-kérést. Használhatja a REST-ügyfelet vagy a webböngészőt is.
 
-   A megadott URL-cím **5 percig**érvényes. Ebben az időszakban az esemény-előfizetés kiépítési állapota a következő: `AwaitingManualAction` . Ha nem hajtja végre a manuális ellenőrzést 5 percen belül, a kiépítési állapot értéke: `Failed` . A manuális ellenőrzés megkezdése előtt újra létre kell hoznia az esemény-előfizetést.
+   A megadott URL-cím **5 percig** érvényes. Ebben az időszakban az esemény-előfizetés kiépítési állapota a következő: `AwaitingManualAction` . Ha nem hajtja végre a manuális ellenőrzést 5 percen belül, a kiépítési állapot értéke: `Failed` . A manuális ellenőrzés megkezdése előtt újra létre kell hoznia az esemény-előfizetést.
 
    Ehhez a hitelesítési mechanizmushoz a webhook-végpontnak egy 200-es HTTP-állapotkódot kell visszaadnia, hogy az tudja, hogy az érvényesítési eseményre vonatkozó bejegyzés el lett fogadva, mielőtt a manuális érvényesítés módba kerül. Más szóval, ha a végpont 200-as értéket ad vissza, de nem ad vissza egy érvényesítési válasz szinkron módon történő visszaadását, a mód a manuális ellenőrzési módba kerül. Ha 5 percen belül lekéri az érvényesítési URL-címet, az ellenőrzési kézfogás sikeresnek tekintendő.
 
@@ -83,7 +83,7 @@ Az előfizetés-ellenőrzési kézfogás kezelésére példát a [C#-minta](http
 ## <a name="endpoint-validation-with-cloudevents-v10"></a>Végpont ellenőrzése a CloudEvents 1.0-s verziójában
 Ha már ismeri a Event Gridt, érdemes lehet Event Grid végpont-ellenőrzési kézfogását a visszaélések megelőzésére. A CloudEvents 1.0-s verziójában a HTTP-beállítások módszer használatával valósítja meg a saját [visszaélés elleni védelem szemantikai](webhook-event-delivery.md) beállításait. [Itt](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)olvashat bővebben. Ha a kimenethez a CloudEvents sémát használja, a Event Grid a Event Grid érvényesítési esemény mechanizmusa helyett az CloudEvents 1.0-s verziójának védelme szolgáltatást használja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkből megtudhatja, hogyan lehet elhárítani az esemény-előfizetés érvényességét: 
 
 [Az esemény-előfizetés érvényességi hibáinak megoldása](troubleshoot-subscription-validation.md)

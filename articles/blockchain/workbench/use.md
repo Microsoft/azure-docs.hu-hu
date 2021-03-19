@@ -5,10 +5,10 @@ ms.date: 10/14/2019
 ms.topic: tutorial
 ms.reviewer: brendal
 ms.openlocfilehash: 5761bf1294691c2d50e0e389fe69ec286df4a06c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74324042"
 ---
 # <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Oktatóanyag: alkalmazások használata az Azure Blockchain Workbenchben
@@ -36,15 +36,15 @@ A Blockchain Workbench tagjaként kell bejelentkeznie. Ha nincsenek felsorolt al
 
 ## <a name="create-new-contract"></a>Új szerződés létrehozása
 
-Új szerződés létrehozásához a szerződés **kezdeményezője**megadott tagnak kell lennie. A szerződéshez tartozó alkalmazás-szerepköröket és kezdeményezőket meghatározó információk: [munkafolyamatok a konfiguráció áttekintésében](configuration.md#workflows). További információ a tagok alkalmazási szerepkörökhöz való hozzárendeléséről: [tag hozzáadása az alkalmazáshoz](manage-users.md#add-member-to-application).
+Új szerződés létrehozásához a szerződés **kezdeményezője** megadott tagnak kell lennie. A szerződéshez tartozó alkalmazás-szerepköröket és kezdeményezőket meghatározó információk: [munkafolyamatok a konfiguráció áttekintésében](configuration.md#workflows). További információ a tagok alkalmazási szerepkörökhöz való hozzárendeléséről: [tag hozzáadása az alkalmazáshoz](manage-users.md#add-member-to-application).
 
 1. A Blockchain Workbench alkalmazás szakaszban válassza ki a létrehozni kívánt szerződést tartalmazó alkalmazás csempéjét. Megjelenik az aktív szerződések listája.
 
-2. Új szerződés létrehozásához válassza az **új szerződés**lehetőséget.
+2. Új szerződés létrehozásához válassza az **új szerződés** lehetőséget.
 
     ![Új szerződés gomb](./media/use/contract-list.png)
 
-3. Megjelenik az **új szerződés** panel. Megadhatja a kezdeti paraméterek értékeit. Kattintson a **Létrehozás** gombra.
+3. Megjelenik az **új szerződés** panel. Megadhatja a kezdeti paraméterek értékeit. Válassza a **Létrehozás** lehetőséget.
 
     ![Új szerződés panel](./media/use/new-contract.png)
 
@@ -61,14 +61,14 @@ Attól függően, hogy a szerződés milyen állapotban van, a tagok elvégezhet
 
     ![Szerződés részletei](./media/use/contract-details.png)
 
-    | Section  | Leírás  |
+    | Section  | Description  |
     |---------|---------|
-    | status | A szerződés szakaszain belüli aktuális folyamat felsorolása |
+    | Állapot | A szerződés szakaszain belüli aktuális folyamat felsorolása |
     | Részletek | A szerződés aktuális értékei |
     | Művelet | Az utolsó művelet részletei |
     | Tevékenység | A szerződés tranzakciós előzményei |
     
-3. A **művelet** szakaszban válassza a **művelet elvégzése**lehetőséget.
+3. A **művelet** szakaszban válassza a **művelet elvégzése** lehetőséget.
 
 4. A szerződés aktuális állapotával kapcsolatos részletek a panelen jelennek meg. Válassza ki a legördülő listából azt a műveletet, amelyet el szeretne végezni. 
 
@@ -81,7 +81,7 @@ Attól függően, hogy a szerződés milyen állapotban van, a tagok elvégezhet
 
 7. A művelet végrehajtásához válassza a **művelet elvégzése** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Blockchain Workbench-alkalmazás verziószámozása](version-app.md)

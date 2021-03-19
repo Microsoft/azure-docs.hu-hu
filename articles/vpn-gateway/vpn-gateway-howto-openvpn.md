@@ -1,20 +1,20 @@
 ---
 title: Az OpenVPN konfigurálása az Azure VPN Gateway
-description: Megtudhatja, hogyan használhatja a PowerShellt az OpenVPN protokoll Azure-VPN Gateway való engedélyezéséhez pont – hely környezet esetén.
+description: Megtudhatja, hogyan engedélyezheti a pont – hely környezet számára az OpenVPN protokollt az Azure VPN Gatewayban.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/05/2021
 ms.author: cherylmc
-ms.openlocfilehash: 4b48e98ab35b620030b15165d4c9341c0f11b440
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 137e4e1372ef1af3319c0b9af7ba965fffcb9e34
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393275"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584040"
 ---
-# <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway"></a>Az OpenVPN konfigurálása az Azure pont – hely kapcsolathoz VPN Gateway
+# <a name="configure-openvpn-for-point-to-site-vpn-gateways"></a>Az OpenVPN konfigurálása pont – hely típusú VPN-átjárók számára
 
 Ebből a cikkből megtudhatja, hogyan állíthatja be az **OpenVPN® protokollt** az Azure VPN Gateway-on. Használhatja a portált vagy a PowerShell-utasításokat is.
 
@@ -36,7 +36,7 @@ Ebből a cikkből megtudhatja, hogyan állíthatja be az **OpenVPN® protokollt*
    :::image type="content" source="./media/vpn-gateway-howto-openvpn/portal.png" alt-text="Válassza ki az OpenVPN SSL elemet a legördülő listából":::
 1. Mentse a módosításokat, és folytassa a **következő lépésekkel**.
 
-## <a name="enable-openvpn-on-your-gateway-using-powershell"></a>Engedélyezze az OpenVPN-t az átjárón a PowerShell használatával.
+## <a name="powershell"></a>PowerShell
 
 1. Engedélyezze az OpenVPN-t az átjárón a következő példa használatával:
 

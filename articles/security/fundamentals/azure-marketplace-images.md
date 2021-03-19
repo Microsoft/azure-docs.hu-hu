@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: terrylan
 ms.openlocfilehash: 7c317a0b4fea0c981b227bace00c1b8924fd582c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89536382"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Biztonsági javaslatok az Azure Marketplace-rendszerképekhez
@@ -39,8 +39,8 @@ Az elküldés előtt mindig futtasson biztonsági sebezhetőségi észlelést a 
 | Biztonság                                                     | Kerülje az LVM használatát.                                                                                                                                                                                                                                            |
 | Biztonság                                                     | Adja meg a szükséges kódtárak legújabb verzióit: </br> -OpenSSL 1.0 vagy újabb verzió </br> -Python 2,5 vagy újabb (Python 2.6 + ajánlott) </br> -Python pyasn1-csomag, ha még nincs telepítve </br> -d. OpenSSL v 1,0 vagy újabb                                                                |
 | Biztonság                                                     | A bash/shell History bejegyzéseinek törlése.                                                                                                                                                                                                                                             |
-| Hálózat                                                   | Adja meg az SSH-kiszolgálót alapértelmezetten. Állítsa be az SSH-t életben az sshd-konfigurációba a következő beállítással: ClientAliveInterval 180.                                                                                                                                                        |
-| Hálózat                                                   | Távolítsa el az egyéni hálózati konfigurációt a rendszerképből. Törölje a resolv. conf fájlt: `rm /etc/resolv.conf` .                                                                                                                                                                                |
+| Hálózatkezelés                                                   | Adja meg az SSH-kiszolgálót alapértelmezetten. Állítsa be az SSH-t életben az sshd-konfigurációba a következő beállítással: ClientAliveInterval 180.                                                                                                                                                        |
+| Hálózatkezelés                                                   | Távolítsa el az egyéni hálózati konfigurációt a rendszerképből. Törölje a resolv. conf fájlt: `rm /etc/resolv.conf` .                                                                                                                                                                                |
 | Üzembe helyezés                                                   | Telepítse a legújabb Azure Linux-ügynököt.</br> -Telepítés az RPM vagy a deb csomag használatával.  </br> – A manuális telepítési folyamat is használható, de a telepítő csomagok ajánlottak és előnyben részesítettek. </br> – Ha manuálisan telepíti az ügynököt a GitHub-tárházból, először másolja `waagent` `/usr/sbin` és futtassa a fájlt (root néven): </br>`# chmod 755 /usr/sbin/waagent` </br>`# /usr/sbin/waagent -install` </br>Az ügynök konfigurációs fájlját a rendszer a következő helyen helyezi el: `/etc/waagent.conf` . |
 | Üzembe helyezés                                                   | Győződjön meg arról, hogy az Azure-támogatás szükség esetén a soros konzol kimenetével biztosíthatja partnereit, és megfelelő időkorlátot biztosít a Felhőbeli tároló operációsrendszer-lemez csatlakoztatásához. Adja hozzá a következő paramétereket a rendszerkép kernel rendszerindítási sorához: `console=ttyS0 earlyprintk=ttyS0 rootdelay=300` . |
 | Üzembe helyezés                                                   | Nincs lapozófájl-partíció az operációsrendszer-lemezen. A felcserélés a Linux-ügynök által a helyi erőforrás lemezén történő létrehozáshoz kérhető le.         |

@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 8c44c39f66a0a0161eea8a7e9656bbe0e3d1015c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88140870"
 ---
 # <a name="firewall-tables-overview"></a>A tűzfal táblái – áttekintés
@@ -53,7 +53,7 @@ A forgalom fordított irányú továbbításához további szabályokra lehet sz
 
 A következő alapértelmezett szabályok jönnek létre minden tűzfal-táblában.
 
-|Prioritás|Name (Név)|Állapot követése|Irány|Forgalom típusa|Protokoll|Forrás|Forrásport|Cél|Célport|Művelet|
+|Prioritás|Name|Állapot követése|Irány|Forgalom típusa|Protokoll|Forrás|Forrásport|Cél|Célport|Művelet|
 |--------|----|--------------|---------|------------|--------|------|-----------|-----------|----------------|------|
 |65000|a-all-to-Internet engedélyezése|Állapotalapú|Kimenő|Nyilvános IP-cím vagy internetes forgalom|Összes|Bármelyik|Bármelyik|Bármelyik|Bármelyik|Engedélyezés|
 |65001|internetről történő megtagadás|Állapotalapú|Bejövő|Nyilvános IP-cím vagy internetes forgalom|Összes|Bármelyik|Bármelyik|Bármelyik|Bármelyik|Megtagadás|

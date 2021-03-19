@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 427f7ad4d6a1b9839b1197ef9f7ca15400ea0f59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87909395"
 ---
 # <a name="azure-active-directory-b2b-collaboration-for-hybrid-organizations"></a>Azure Active Directory B2B-együttműködés hibrid szervezeteknél
@@ -47,7 +47,7 @@ A megvalósítás részleteiért lásd: a [helyileg felügyelt partneri fiókok 
  
 ## <a name="next-steps"></a>Következő lépések
 
-- [B2B-felhasználók engedélyezése az Azure AD-ben a helyszíni alkalmazásokhoz való hozzáféréshez](hybrid-cloud-to-on-premises.md)
-- [Helyileg felügyelt partneri fiókok hozzáférésének biztosítása a felhőalapú erőforrásokhoz az Azure AD B2B Collaboration használatával](hybrid-on-premises-to-cloud.md)
+- [Hozzáférés biztosítása az Azure AD-beli B2B-felhasználóknak a helyszíni alkalmazásokhoz](hybrid-cloud-to-on-premises.md)
+- [Hozzáférés biztosítása helyben kezelt partnerfiókoknak felhőbeli erőforrásokhoz az Azure AD vállalatközi együttműködéssel](hybrid-on-premises-to-cloud.md)
 
 

@@ -4,10 +4,10 @@ description: 'Gyors útmutató: Ez a cikk bemutatja, hogyan hozhat létre olyan 
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: bfe1ca1a45f7b33d7431aed13446d8d72f79fb90
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85315670"
 ---
 # <a name="quickstart-send-events-to-azure-event-hubs-using-c"></a>Gyors útmutató: események küldése az Azure Event Hubs C használatával
@@ -18,7 +18,7 @@ Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgál
 Ez az oktatóanyag azt ismerteti, hogyan küldhet eseményeket egy Event hubhoz a C-ben lévő Console-alkalmazás használatával. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
+Az oktatóanyag elvégzéséhez az alábbiakra lesz szüksége:
 
 * C fejlesztési környezet. Ez az oktatóanyag feltételezi, hogy a GCC-verem egy Azure Linux rendszerű virtuális gépen, Ubuntu 14,04-mel van.
 * [Microsoft Visual Studio](https://www.visualstudio.com/).
@@ -142,7 +142,7 @@ Futtassa az alkalmazást, hogy üzeneteket küldjön az Event hub-nak.
 
 Gratulálunk! Üzeneteket küldött egy eseményközpontba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Olvassa el a következő cikkeket:
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)

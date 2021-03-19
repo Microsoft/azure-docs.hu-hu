@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 02/28/2019
 ms.openlocfilehash: 35c9e76c234e4b09fbb090eda363506ee3e11130
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88164240"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Biztonsági és kernel-frissítések alkalmazása Linux-csomópontokra az Azure Kubernetes szolgáltatásban (ak)
@@ -27,7 +27,7 @@ Ez a cikk bemutatja, hogyan használhatja a nyílt forráskódú [kured (KUberne
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
-Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra.  `az --version`A verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
 ## <a name="understand-the-aks-node-update-experience"></a>Az AK-csomópont frissítési felületének megismerése
 
@@ -35,7 +35,7 @@ Egy AK-fürtben a Kubernetes-csomópontok Azure-beli virtuális gépekként futn
 
 ![AK-csomópont frissítési és újraindítási folyamata a kured](media/node-updates-kured/node-reboot-process.png)
 
-Bizonyos biztonsági frissítések, például a kernel frissítései a folyamat véglegesítéséhez a csomópont újraindítását igénylik. Egy olyan Linux-csomópont, amely újraindítást igényel, létrehoz egy */var/Run/reboot-Required*nevű fájlt. Ez az újraindítási folyamat nem automatikusan történik.
+Bizonyos biztonsági frissítések, például a kernel frissítései a folyamat véglegesítéséhez a csomópont újraindítását igénylik. Egy olyan Linux-csomópont, amely újraindítást igényel, létrehoz egy */var/Run/reboot-Required* nevű fájlt. Ez az újraindítási folyamat nem automatikusan történik.
 
 Saját munkafolyamatokat és folyamatokat használhat a csomópont-újraindítások kezeléséhez, vagy `kured` a folyamat előkészítéséhez. A `kured` -ben egy olyan [daemonset elemet][DaemonSet] van telepítve, amely a fürt minden Linux-csomópontján egy Pod-t futtat. Ezek a hüvelyek a Daemonset elemet figyelik a */var/Run/reboot-Required* -fájl létezését, majd kezdeményeznek egy folyamatot a csomópontok újraindításához.
 
@@ -91,7 +91,7 @@ NAME                       STATUS                     ROLES     AGE       VERSIO
 aks-nodepool1-28993262-0   Ready,SchedulingDisabled   agent     1h        v1.11.7
 ```
 
-A frissítési folyamat befejeződése után megtekintheti a csomópontok állapotát a [kubectl Get Nodes][kubectl-get-nodes] paranccsal a (z `--output wide` ) paraméterrel. Ez a kiegészítő kimenet a mögöttes csomópontok *kernel-verziójában* megjelenő különbségeket is megjeleníti, ahogy az a következő példában látható. Az *AK-nodepool1-28993262-0* egy korábbi lépésben lett frissítve, és a *4.15.0-1039-Azure kernel-* verziót mutatja. A nem frissített Node *-nodepool1-28993262-1* csomópont a *4.15.0-1037-Azure*kernel-verziót jeleníti meg.
+A frissítési folyamat befejeződése után megtekintheti a csomópontok állapotát a [kubectl Get Nodes][kubectl-get-nodes] paranccsal a (z `--output wide` ) paraméterrel. Ez a kiegészítő kimenet a mögöttes csomópontok *kernel-verziójában* megjelenő különbségeket is megjeleníti, ahogy az a következő példában látható. Az *AK-nodepool1-28993262-0* egy korábbi lépésben lett frissítve, és a *4.15.0-1039-Azure kernel-* verziót mutatja. A nem frissített Node *-nodepool1-28993262-1* csomópont a *4.15.0-1037-Azure* kernel-verziót jeleníti meg.
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME

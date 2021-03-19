@@ -7,10 +7,10 @@ ms.date: 06/29/2018
 ms.custom: devx-track-java
 ms.author: pepogors
 ms.openlocfilehash: cc65deb924a9f3367c2ea1d7c71544743ccf2697
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87327361"
 ---
 # <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>Java Service Fabric-alkalmazások fejlesztése a Visual Studio Code-ban
@@ -37,7 +37,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
 
 ## <a name="open-the-application-in-vs-code"></a>Az alkalmazás megnyitása a VS Code-ban
 
-Nyissa meg a VS Code-ot.  Kattintson az Intéző ikonra a **tevékenység sávján** , majd kattintson a **mappa megnyitása**lehetőségre, vagy kattintson a  **fájl > Megnyitás mappa**elemre. Keresse meg a *./Service-Fabric-Java-Quickstart/voting* könyvtárat abban a mappában, ahová a tárházat klónozotta, majd kattintson az **OK**gombra. A munkaterületnek az alábbi képernyőképen látható fájlokat kell tartalmaznia.
+Nyissa meg a VS Code-ot.  Kattintson az Intéző ikonra a **tevékenység sávján** , majd kattintson a **mappa megnyitása** lehetőségre, vagy kattintson a  **fájl > Megnyitás mappa** elemre. Keresse meg a *./Service-Fabric-Java-Quickstart/voting* könyvtárat abban a mappában, ahová a tárházat klónozotta, majd kattintson az **OK** gombra. A munkaterületnek az alábbi képernyőképen látható fájlokat kell tartalmaznia.
 
 ![Java-szavazati alkalmazás a munkaterületen](./media/service-fabric-develop-java-applications-with-vs-code/java-voting-application.png)
 
@@ -54,7 +54,7 @@ Az alkalmazás létrehozása után üzembe helyezheti azt a helyi fürtön.
 > [!IMPORTANT]
 > A Java-alkalmazások helyi fürtön történő üzembe helyezése Windows rendszerű gépeken nem támogatott.
 
-1. A **parancs palettáján**válassza ki a **Service Fabric: Deploy Application (localhost) parancsot**. A telepítési folyamat kimenetét az integrált terminálba küldi a rendszer.
+1. A **parancs palettáján** válassza ki a **Service Fabric: Deploy Application (localhost) parancsot**. A telepítési folyamat kimenetét az integrált terminálba küldi a rendszer.
 
    ![Alkalmazás üzembe helyezése parancs a VS Code-ban](./media/service-fabric-develop-java-applications-with-vs-code/sf-deploy-application.png)
 
@@ -93,7 +93,7 @@ Tegye megjegyzésbe a parancsot a 6. sorban (használja a "#" utasítást), és 
 
    ![Hibakeresés ikon a VS Code munkaterületen](./media/service-fabric-develop-java-applications-with-vs-code/debug-icon-workspace.png)
 
-3. A launch.jsfájlon állítsa be a port értékét a **Debug (csatolás)** nevű konfigurációban a **8001**értékre. Mentse a fájlt.
+3. A launch.jsfájlon állítsa be a port értékét a **Debug (csatolás)** nevű konfigurációban a **8001** értékre. Mentse a fájlt.
 
    ![Hibakeresési konfiguráció a launch.json](./media/service-fabric-develop-java-applications-with-vs-code/launch-json-java.png)
 
@@ -111,7 +111,7 @@ Töréspont beállításához hajtsa végre a következő lépéseket:
 
    ![Hibakeresés (csatolás) konfigurálása](./media/service-fabric-develop-java-applications-with-vs-code/debug-attach-java.png)
 
-3. Egy böngészőben nyissa meg a következőt: `http://localhost:8080`. Írjon be egy új tételt a szövegmezőbe, majd kattintson a **+ Hozzáadás**gombra. A töréspontot meg kell érinteni. A VS Code tetején található hibakeresés eszköztár használatával folytathatja a végrehajtást, átadhatja a vonalakat, beléphet a metódusokra, vagy kiléphet az aktuális metódusból. 
+3. Egy böngészőben nyissa meg a következőt: `http://localhost:8080`. Írjon be egy új tételt a szövegmezőbe, majd kattintson a **+ Hozzáadás** gombra. A töréspontot meg kell érinteni. A VS Code tetején található hibakeresés eszköztár használatával folytathatja a végrehajtást, átadhatja a vonalakat, beléphet a metódusokra, vagy kiléphet az aktuális metódusból. 
    
    ![Találati töréspont](./media/service-fabric-develop-java-applications-with-vs-code/breakpoint-hit.png)
        
@@ -121,6 +121,6 @@ Töréspont beállításához hajtsa végre a következő lépéseket:
        
 5. A hibakeresés befejezésekor a **Service Fabric: Remove Application** paranccsal távolíthatja el a szavazati alkalmazást a helyi fürtből. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Útmutató [C# Service Fabric alkalmazások fejlesztéséhez és hibakereséséhez a vs Code](./service-fabric-develop-csharp-applications-with-vs-code.md)használatával.

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
 ms.openlocfilehash: c50c4faf47caf0a7519d61fdc8989ec9fd809d78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68727218"
 ---
 # <a name="azure-infrastructure-availability"></a>Azure-infrastruktúra rendelkezésre állása
@@ -43,7 +43,7 @@ Az Azure biztosítja, hogy az adatbázisok elérhetők legyenek az Internet-átj
 ## <a name="storage-availability"></a>Tárterület rendelkezésre állása
 Az Azure egy rugalmasan méretezhető és tartós tárolási szolgáltatáson keresztül biztosítja a tárterületet, amely csatlakozási végpontokat biztosít. Ez azt jelenti, hogy az alkalmazás közvetlenül is hozzáférhet a Storage szolgáltatáshoz. A tárolási szolgáltatás hatékonyan dolgozza fel a bejövő tárolási kérelmeket tranzakciós integritással.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni arról, hogy mit tesz a Microsoft az Azure-infrastruktúra biztonságossá tételéhez, tekintse meg a következőt:
 
 - [Azure-létesítmények,-telephelyek és fizikai biztonság](physical-security.md)

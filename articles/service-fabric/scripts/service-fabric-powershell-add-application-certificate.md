@@ -15,10 +15,10 @@ ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc, devx-track-azurepowershell
 ms.openlocfilehash: 0f5a7d49200c7dec08f71f9cb0256630728e4711
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90090142"
 ---
 # <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>Alkalmazástanúsítvány hozzáadása egy Service Fabric-fürthöz
@@ -108,7 +108,7 @@ A szkript a következő parancsokat használja: A táblázatban lévő összes p
 | [Add-AzVmssSecret](/powershell/module/az.compute/Add-AzVmssSecret) | Hozzáadja a tanúsítványt a virtuálisgép-méretezési csoport memóriában lévő definíciójában. |
 | [Frissítés – AzVmss](/powershell/module/az.compute/Update-AzVmss) | Üzembe helyezi a virtuálisgép-méretezési csoport új definícióját. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/).
 

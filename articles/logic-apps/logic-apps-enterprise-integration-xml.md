@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/27/2017
 ms.openlocfilehash: 3cb3472572abbd891f8d36ea036b371c1224f38c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74792151"
 ---
 # <a name="xml-messages-and-flat-files-in-azure-logic-apps-with-enterprise-integration-pack"></a>XML-üzenetek és Azure Logic Apps Enterprise Integration Pack
@@ -35,6 +35,6 @@ A Enterprise Integration Pack például a következő funkciókat tartalmazza:
 
 [Helyezzen üzembe egy teljesen működőképes Logic app-alkalmazást](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-veter-pipeline) (GitHub-mintát) a Azure Logic apps XML-szolgáltatásainak használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)

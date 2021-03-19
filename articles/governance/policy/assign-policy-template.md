@@ -5,10 +5,10 @@ ms.date: 08/17/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.openlocfilehash: c32f833520a811d47129196ae4d67c92bad7e21f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89651432"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-an-arm-template"></a>Gyors útmutató: szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához ARM-sablon használatával
@@ -28,7 +28,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
-Ebben a rövid útmutatóban egy szabályzat-hozzárendelést hoz létre, és a _felügyelt lemezeket nem használó, naplózási virtuális gépek_nevű beépített szabályzat-definíciót rendel hozzá. Az elérhető beépített szabályzatok részleges listáját lásd: [Azure Policy minták](./samples/index.md).
+Ebben a rövid útmutatóban egy szabályzat-hozzárendelést hoz létre, és a _felügyelt lemezeket nem használó, naplózási virtuális gépek_ nevű beépített szabályzat-definíciót rendel hozzá. Az elérhető beépített szabályzatok részleges listáját lásd: [Azure Policy minták](./samples/index.md).
 
 Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/) közül származik.
 
@@ -49,17 +49,17 @@ A sablonban definiált erőforrás:
 
 1. Válassza ki vagy adja meg a következő értékeket:
 
-   | Név | Érték |
+   | Name | Érték |
    |------|-------|
-   | Előfizetés | Válassza ki az Azure-előfizetését. |
-   | Erőforráscsoport | Válassza az **új létrehozása**lehetőséget, adjon meg egy nevet, majd kattintson **az OK gombra**. A képernyőképen az erőforráscsoport neve _mypolicyquickstart \<Date in MMDD\> RG_. |
+   | Előfizetés | Válassza ki Azure-előfizetését. |
+   | Erőforráscsoport | Válassza az **új létrehozása** lehetőséget, adjon meg egy nevet, majd kattintson **az OK gombra**. A képernyőképen az erőforráscsoport neve _mypolicyquickstart \<Date in MMDD\> RG_. |
    | Hely | Válasszon régiót. Például: **USA középső régiója**. |
    | Szabályzat-hozzárendelés neve | Adja meg a szabályzat-hozzárendelés nevét. Ha szeretné, használhatja a szabályzat-definíció megjelenítését. Például a _felügyelt lemezeket nem használó virtuális gépek naplózása_. |
    | RG neve | Adja meg azt az erőforráscsoport-nevet, amelyhez hozzá szeretné rendelni a szabályzatot. Ebben a rövid útmutatóban használja az alapértelmezett **[resourceGroup (). name]** értéket. a **[resourceGroup ()](../../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)** egy olyan sablon-függvény, amely lekéri az erőforráscsoportot. |
-   | Házirend-definíció azonosítója | **/Providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a**megadásához. |
+   | Házirend-definíció azonosítója | **/Providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a** megadásához. |
    | Elfogadom a fenti feltételeket és kikötéseket | Válassza |
 
-1. Válassza a **Vásárlás** lehetőséget.
+1. Válassza a **Beszerzés** lehetőséget.
 
 Néhány további erőforrás:
 
@@ -72,9 +72,9 @@ Néhány további erőforrás:
 
 A lap bal oldalán kattintson a **megfelelőség** elemre. Ezután keresse meg _azokat a naplózási virtuális gépeket, amelyek nem használják a felügyelt lemezeken_ létrehozott házirend-hozzárendelést.
 
-:::image type="content" source="./media/assign-policy-template/policy-compliance.png" alt-text="Gomb az ARM-sablon üzembe helyezéséhez Azure Policy az Azure-hoz való hozzárendeléséhez." border="false":::
+:::image type="content" source="./media/assign-policy-template/policy-compliance.png" alt-text="Képernyőkép a megfelelőségi részletekről a szabályzat megfelelősége lapon." border="false":::
 
-Ha vannak olyan meglévő erőforrások, amelyek nem felelnek meg az új hozzárendelésnek, akkor a **nem megfelelő erőforrások**alatt jelennek meg.
+Ha vannak olyan meglévő erőforrások, amelyek nem felelnek meg az új hozzárendelésnek, akkor a **nem megfelelő erőforrások** alatt jelennek meg.
 
 További információt a [megfelelőség működéséről](./how-to/get-compliance-data.md#how-compliance-works)szóló témakörben talál.
 
@@ -84,11 +84,11 @@ A létrehozott hozzárendelés eltávolításához kövesse az alábbi lépések
 
 1. Válassza a **Megfelelőség** (vagy **Hozzárendelések**) elemet az Azure Policy oldal bal oldalán, és keresse meg a létrehozott _Felügyelt lemezeket nem használó virtuális gépek naplózása_ szabályzat-hozzárendelést.
 
-1. Kattintson a jobb gombbal a felügyelt lemezek házirend-hozzárendelését _nem használó naplózási virtuális gépekre_ , és válassza a **hozzárendelés törlése**lehetőséget.
+1. Kattintson a jobb gombbal a felügyelt lemezek házirend-hozzárendelését _nem használó naplózási virtuális gépekre_ , és válassza a **hozzárendelés törlése** lehetőséget.
 
-   :::image type="content" source="./media/assign-policy-template/delete-assignment.png" alt-text="Gomb az ARM-sablon üzembe helyezéséhez Azure Policy az Azure-hoz való hozzárendeléséhez." border="false":::
+   :::image type="content" source="./media/assign-policy-template/delete-assignment.png" alt-text="Képernyőfelvétel: a helyi menü használatával törölhet egy hozzárendelést a megfelelőség lapról." border="false":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy beépített szabályzat-definíciót rendelt hozzá egy hatókörhöz, és kiértékelte a megfelelőségi jelentést. A házirend-definíció ellenőrzi, hogy a hatókör összes erőforrása megfelelő-e, és azonosítja, hogy melyek nem.
 

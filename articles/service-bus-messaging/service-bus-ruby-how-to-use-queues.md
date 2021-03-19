@@ -6,10 +6,10 @@ ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 16dda6fc4637f052514a0e78a0804bf4702ed20b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85336652"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-ruby"></a>Gyors útmutató: Service Bus várólisták használata a Ruby használatával
@@ -21,9 +21,9 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Ruby-alkalmazásoka
 ## <a name="prerequisites"></a>Előfeltételek
 1. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja MSDN- [előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) , vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 2. [Service Bus üzenetsor létrehozásához kövesse az Azure Portal használata](service-bus-quickstart-portal.md) című témakör lépéseit.
-    1. Olvassa el Service Bus **várólisták**gyors **áttekintését** . 
+    1. Olvassa el Service Bus **várólisták** gyors **áttekintését** . 
     2. Hozzon létre egy Service Bus **névteret**. 
-    3. A **kapcsolatok karakterláncának**beolvasása. 
+    3. A **kapcsolatok karakterláncának** beolvasása. 
 
         > [!NOTE]
         > Az oktatóanyagban a Ruby használatával hozzon létre egy **várólistát** a Service Bus névtérben. 
@@ -66,13 +66,13 @@ azure_service_bus_service.send_queue_message("test-queue", message)
 A Service Bus-üzenetsorok a [Standard csomagban](service-bus-premium-messaging.md) legfeljebb 256 KB, a [Prémium csomagban](service-bus-premium-messaging.md) legfeljebb 1 MB méretű üzeneteket támogatnak. A szabványos és az egyéni alkalmazástulajdonságokat tartalmazó fejléc mérete legfeljebb 64 KB lehet. Az üzenetsorban tárolt üzenetek száma korlátlan, az üzenetsor által tárolt üzenetek teljes mérete azonban korlátozva van. Az üzenetsor ezen méretét a létrehozáskor kell meghatározni, és a felső korlátja 5 GB.
 
 ## <a name="how-to-receive-messages-from-a-queue"></a>Üzenetek fogadása egy üzenetsorból
-Az üzenetek egy várólistából érkeznek az `receive_queue_message()` **Azure:: ServiceBusService** objektum metódusának használatával. Alapértelmezés szerint az üzenetek az üzenetsor törlése nélkül olvashatók és zárolva lesznek. Az üzenetek a várólistáról való törlését azonban a hamis érték beállításával is törölheti `:peek_lock` . **false**
+Az üzenetek egy várólistából érkeznek az `receive_queue_message()` **Azure:: ServiceBusService** objektum metódusának használatával. Alapértelmezés szerint az üzenetek az üzenetsor törlése nélkül olvashatók és zárolva lesznek. Az üzenetek a várólistáról való törlését azonban a hamis érték beállításával is törölheti `:peek_lock` . 
 
 Az alapértelmezett viselkedés lehetővé teszi a kétfázisú művelet olvasását és törlését, ami lehetővé teszi az olyan alkalmazások támogatását, amelyek nem tudják elviselni a hiányzó üzeneteket. Amikor a Service Bus fogad egy kérést, megkeresi és zárolja a következő feldolgozandó üzenetet, hogy más fogyasztók ne tudják fogadni, majd visszaadja az alkalmazásnak. Miután az alkalmazás befejezte az üzenet feldolgozását (vagy megbízhatóként tárolja azt a későbbi feldolgozáshoz), a metódus meghívásával végrehajtja a fogadási folyamat második szakaszát, `delete_queue_message()` és megadja az üzenet paraméterként való törlését. A `delete_queue_message()` metódus megjelöli az üzenetet, hogy a rendszer felhasználja, és eltávolítja azt a várólistából.
 
 Ha a `:peek_lock` paraméter értéke **hamis**, az olvasás és az üzenet törlése a legegyszerűbb modell lesz, és a legjobban olyan helyzetekben működik, amikor egy alkalmazás meghibásodás esetén nem dolgozza fel az üzenetet. Ennek megértéséhez képzeljen el egy forgatókönyvet, amelyben a fogyasztó kiad egy fogadási kérést, majd összeomlik a feldolgozása előtt. Mivel Service Bus az üzenetet felhasználva jelölte meg, az alkalmazás újraindításakor és az üzenetek újrafelhasználásának megkezdése után a rendszer kihagyta az összeomlás előtt felhasznált üzenetet.
 
-Az alábbi példa bemutatja, hogyan fogadhat és dolgozhat fel üzeneteket a használatával `receive_queue_message()` . A példa először fogad és töröl egy üzenetet `:peek_lock` **hamis**értékre, majd egy másik üzenetet kap, majd törli az üzenetet a következő használatával `delete_queue_message()` :
+Az alábbi példa bemutatja, hogyan fogadhat és dolgozhat fel üzeneteket a használatával `receive_queue_message()` . A példa először fogad és töröl egy üzenetet `:peek_lock` **hamis** értékre, majd egy másik üzenetet kap, majd törli az üzenetet a következő használatával `delete_queue_message()` :
 
 ```ruby
 message = azure_service_bus_service.receive_queue_message("test-queue",
@@ -91,7 +91,7 @@ Abban az esetben, ha az alkalmazás az üzenet feldolgozását követően össze
 > [!NOTE]
 > [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy megismerte a Service Bus-üzenetsorok alapjait, az alábbi hivatkozásokból tudhat meg többet.
 
 * A [várólisták, témakörök és előfizetések](service-bus-queues-topics-subscriptions.md)áttekintése.

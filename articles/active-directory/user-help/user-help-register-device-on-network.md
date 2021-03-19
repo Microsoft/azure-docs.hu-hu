@@ -14,10 +14,10 @@ ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: 0435b99525c34eb72d7cc5315ccb4359859cd528
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90033047"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>Személyes eszköz regisztrálása a szervezet hálózatán
@@ -41,28 +41,28 @@ Az eszköz a szervezet hálózatán való regisztrálása közben a következő 
 
 Az alábbi lépéseket követve regisztrálja a személyes eszközét a hálózaton.
 
-1. Nyissa meg a **Beállítások**, majd a **fiókok**elemet.
+1. Nyissa meg a **Beállítások**, majd a **fiókok** elemet.
 
     ![Fiókok a beállítások képernyőn](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
 
-2. Válassza a **hozzáférés munkahelyi**vagy iskolai rendszerhez lehetőséget, majd válassza a **Kapcsolódás** a **munkahelyi vagy iskolai** képernyőről lehetőséget.
+2. Válassza a **hozzáférés munkahelyi** vagy iskolai rendszerhez lehetőséget, majd válassza a **Kapcsolódás** a **munkahelyi vagy iskolai** képernyőről lehetőséget.
 
     ![Hozzáférés munkahelyi vagy iskolai képernyőhöz a kapcsolódási lehetőség kijelölve](./media/user-help-register-device-on-network/register-device-access-work-school-connect.png)
 
-3. A **munkahelyi vagy iskolai fiók hozzáadása** képernyőn írja be a munkahelyi vagy iskolai fiókjához tartozó e-mail-címét, majd kattintson a **tovább**gombra. Például: alain@contoso.com.
+3. A **munkahelyi vagy iskolai fiók hozzáadása** képernyőn írja be a munkahelyi vagy iskolai fiókjához tartozó e-mail-címét, majd kattintson a **tovább** gombra. Például: alain@contoso.com.
 
-4. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd válassza **a bejelentkezés**lehetőséget.
+4. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd válassza **a bejelentkezés** lehetőséget.
 
 5. Fejezze be a regisztrációs folyamat hátralévő részét, beleértve a személyazonosság-ellenőrzési kérelem jóváhagyását (ha kétlépéses ellenőrzést használ) és a Windows Hello (ha szükséges) beállítását.
 
 ## <a name="to-verify-that-youre-registered"></a>Annak ellenőrzése, hogy regisztrálva van-e
 Győződjön meg arról, hogy regisztrálta a beállításait.
 
-1. Nyissa meg a **Beállítások**, majd a **fiókok**elemet.
+1. Nyissa meg a **Beállítások**, majd a **fiókok** elemet.
 
     ![Fiókok a beállítások képernyőn](./media/user-help-register-device-on-network/register-device-settings-accounts.png)
 
-2. Válassza a **hozzáférés munkahelyi vagy iskolai**rendszerhez lehetőséget, és győződjön meg róla, hogy a munkahelyi vagy iskolai fiókja látható.
+2. Válassza a **hozzáférés munkahelyi vagy iskolai** rendszerhez lehetőséget, és győződjön meg róla, hogy a munkahelyi vagy iskolai fiókja látható.
 
     ![Munkahelyi vagy iskolai képernyő elérése csatlakoztatott contoso-fiókkal](./media/user-help-register-device-on-network/register-device-setup-verify.png)
 

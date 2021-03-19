@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 128303cb51b39db8442fdda71f949db17923bfa2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90088970"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Azure AD Connect Sync szolgáltatás árnyék-attribútumai
@@ -58,9 +58,9 @@ A postaláda-felhasználók számára, akár a helyszínen, akár az Exchange On
 | helyszíni proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie.spencer@fabrikam.com</br>smtp:abbie@fabrikamonline.com |
 | Exchange Online proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |
 
-Ebben az esetben az **SMTP: \@ ** a (z) a (z) és a (z), De az Exchange is hozzáadta a **SIP: \@ fabrikamonline.com. Spencer.** A fabrikam nem használta a Lync/Skype szolgáltatást a helyszínen, de az Azure AD és az Exchange Online előkészíti azt.
+Ebben az esetben az **SMTP: \@** a (z) a (z) és a (z), De az Exchange is hozzáadta a **SIP: \@ fabrikamonline.com. Spencer.** A fabrikam nem használta a Lync/Skype szolgáltatást a helyszínen, de az Azure AD és az Exchange Online előkészíti azt.
 
-A proxyAddresses ezt a logikát **ProxyCalc**nevezzük. A ProxyCalc a felhasználó minden módosításával meghívja a következő esetekben:
+A proxyAddresses ezt a logikát **ProxyCalc** nevezzük. A ProxyCalc a felhasználó minden módosításával meghívja a következő esetekben:
 
 - A felhasználóhoz olyan szolgáltatási csomag van rendelve, amely tartalmazza az Exchange Online-t is, ha a felhasználó nem rendelkezik Exchange-licenccel. Ha például a felhasználó hozzá van rendelve az Office E3 SKU-hoz, de csak a SharePoint Online-hoz lett hozzárendelve. Ez akkor is igaz, ha a postaláda még mindig a helyszínen van.
 - A msExchRecipientTypeDetails attribútum értéke.

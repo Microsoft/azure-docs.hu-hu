@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions
-ms.openlocfilehash: bfaee493c25f882b8beeed565a155db93efd0083
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: be2ff9d6ed908bdc0645fc713717a08674354096
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102431754"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593220"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>Azure Blob-adatkezelés és-keresés a blob-index címkékkel (előzetes verzió)
 
@@ -289,12 +289,7 @@ A blob index címkék csak általános célú v2 (GPv2) fiókokban érhetők el,
 
 A Premium Storage-fiókok nem támogatják az indexelési címkéket. A Storage-fiókokkal kapcsolatos további információkért lásd: az [Azure Storage-fiók áttekintése](../common/storage-account-overview.md).
 
-Nyilvános előzetes verzióban a blob index címkéi csak a következő régiókban érhetők el:
-
-- Közép-Kanada
-- Kelet-Kanada
-- Közép-Franciaország
-- Dél-Franciaország
+A blob index-címkék jelenleg az összes nyilvános régióban elérhetők.
 
 Első lépésként tekintse meg a [blob-index címkék használata az adatkezeléshez és az adatkereséshez](storage-blob-index-how-to.md)című témakört.
 

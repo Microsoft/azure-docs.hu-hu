@@ -8,12 +8,12 @@ ms.date: 02/23/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 4adfb63ecab72eb42e188af472bb5387a0276a79
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: dad8661de55fc90c9f3d3782c402deb519d16536
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723775"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596008"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Régiók és Availability Zones az Azure-ban
 
@@ -23,7 +23,7 @@ Microsoft Azure szolgáltatások globálisan elérhetők a Felhőbeli műveletek
 
 A régiók és Availability Zones az Azure-ban való jobb megismeréséhez segít megérteni a kulcsfontosságú feltételeket vagy fogalmakat.
 
-| Kifejezés vagy fogalom | Leírás |
+| Kifejezés vagy fogalom | Description |
 | --- | --- |
 | régió | A késés által meghatározott kerületben üzembe helyezett adatközpontok halmaza, amely egy dedikált regionális, kis késleltetésű hálózaton keresztül csatlakozik. |
 | földrajz | A világ egyik területe, amely legalább egy Azure-régiót tartalmaz. A földrajzi területek olyan diszkrét piacot határoznak meg, amely megőrizheti az adattárolási és megfelelőségi határokat. A régiócsoportok lehetővé teszik, hogy a speciális adattárolási és megfelelőségi igényekkel rendelkező ügyfelek földrajzilag közel tárolhassák adataikat és alkalmazásaikat. A földrajzi területek hibatűrők, hogy a teljes régió meghibásodása a dedikált nagy kapacitású hálózati infrastruktúrával való kapcsolaton keresztül álljanak. |
@@ -82,7 +82,7 @@ Ha egy szolgáltatási ajánlat nem érhető el egy adott régióban, a Microsof
 | Ajánlott | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Igény szerint vezérelt | :heavy_check_mark: | :heavy_check_mark: |
 | Alternatív | :heavy_check_mark: | :heavy_check_mark: | Igény szerint vezérelt | Igény szerint vezérelt | N/A | :heavy_check_mark: |
 
-### <a name="services-by-category-with-availability-zones"></a>Szolgáltatások kategóriánként Availability Zones
+### <a name="services-by-category"></a>Szolgáltatások kategóriánként
 
 Ahogy azt korábban említettük, az Azure három kategóriába sorolja a szolgáltatásokat: az alapszintű, a mainstream és a Specialized. A szolgáltatási kategóriák az általános rendelkezésre álláshoz vannak rendelve. A szolgáltatások gyakran elindítják az életciklusát speciális szolgáltatásként, és az igény és a kihasználtság növelését a mainstream vagy az Foundation is támogatja. A következő táblázat az alapszintű szolgáltatások kategóriáit sorolja fel. Vegye figyelembe a következőket a tábláról:
 
@@ -101,7 +101,7 @@ Ahogy azt korábban említettük, az Azure három kategóriába sorolja a szolg�
 > | Azure ExpressRoute                     | Azure Bastion                                     | 
 > | Azure-beli nyilvános IP-cím                        | Azure Cache for Redis                             | 
 > | Azure SQL Database                     | Azure Cognitive Search                            | 
-> | Azure SQL: felügyelt példány           | Azure Cognitive Services                          | 
+> | Felügyelt Azure SQL-példány             | Azure Cognitive Services                          | 
 > | Disk Storage                           | Azure Cognitive Services: Computer Vision         | 
 > | Event Hubs                             | Azure Cognitive Services: Content Moderator       | 
 > | Key Vault                              | Azure Cognitive Services: Face                    | 
@@ -172,7 +172,7 @@ Ahogy azt korábban említettük, az Azure három kategóriába sorolja a szolg�
 > | Azure Database Migration Service                     |
 > | Azure Dedicated HSM                                  |
 > | Azure Digital Twins                                  |
-> | Azure Health bot                                     |
+> | Azure Health Bot                                     |
 > | Azure HPC Cache                                      |
 > | Azure Lab Services                                   |
 > | Azure NetApp Files                                   |

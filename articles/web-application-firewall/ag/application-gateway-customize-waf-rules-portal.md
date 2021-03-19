@@ -8,10 +8,10 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
 ms.openlocfilehash: c4635333614ee1c0fd0322c29a659380fb4315c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74048377"
 ---
 # <a name="customize-web-application-firewall-rules-using-the-azure-portal"></a>Webalkalmazási tűzfalszabályok testreszabása a Azure Portal használatával
@@ -26,9 +26,9 @@ Az Azure Application Gateway webalkalmazási tűzfal (WAF) védelmet biztosít a
 ## <a name="view-rule-groups-and-rules"></a>Szabálykészlet és szabályok megtekintése
 
 **A szabálykészlet és a szabályok megtekintése**
-1. Keresse meg az Application Gatewayt, majd válassza a **webalkalmazási tűzfal**lehetőséget.  
+1. Keresse meg az Application Gatewayt, majd válassza a **webalkalmazási tűzfal** lehetőséget.  
 2. Válassza ki a **WAF szabályzatot**.
-2. Válassza a **felügyelt szabályok**elemet.
+2. Válassza a **felügyelt szabályok** elemet.
 
    Ez a nézet a kiválasztott szabálykészlet által biztosított összes szabálykészlet oldalának táblázatát jeleníti meg. Az összes szabály jelölőnégyzete be van jelölve.
 
@@ -63,7 +63,7 @@ CRS 3. x-specifikus:
 
 * A bejövő anomália pontszáma túllépte a küszöbértéket
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A letiltott szabályok konfigurálása után megtudhatja, hogyan tekintheti meg a WAF-naplókat. További információ: [Application Gateway diagnosztika](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging).
 

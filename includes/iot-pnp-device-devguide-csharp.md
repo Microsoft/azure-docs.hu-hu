@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/19/2020
-ms.openlocfilehash: f731e07de4936bc8de396c4f9bcd3a52913cb502
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 38a29aa765bde4adb390423a9d180132b57d4fee
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99616321"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582764"
 ---
 ## <a name="model-id-announcement"></a>Modell AZONOSÍTÓjának bejelentése
 
@@ -42,7 +42,7 @@ A [Device kiépítési szolgáltatást (DPS)](../articles/iot-dps/about-iot-dps.
 
 ## <a name="implement-telemetry-properties-and-commands"></a>Telemetria, tulajdonságok és parancsok implementálása
 
-A [IoT Plug and Play-modellek összetevőinek ismertetése](../articles/iot-pnp/concepts-components.md)című témakörben leírtak szerint az eszköz-építőknek el kell dönteniük, hogy milyen összetevőket szeretnének használni az eszközeik leírásához. Az összetevők használatakor az eszközöknek az ebben a részben ismertetett szabályokat kell követniük.
+A [IoT Plug and Play-modellek összetevőinek ismertetése](../articles/iot-pnp/concepts-modeling-guide.md)című témakörben leírtak szerint az eszköz-építőknek el kell dönteniük, hogy milyen összetevőket szeretnének használni az eszközeik leírásához. Az összetevők használatakor az eszközöknek az ebben a részben ismertetett szabályokat kell követniük.
 
 ### <a name="telemetry"></a>Telemetria
 

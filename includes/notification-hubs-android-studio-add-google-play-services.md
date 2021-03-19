@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: notification-hubs
 author: spelluru
 ms.service: notification-hubs
@@ -9,14 +9,14 @@ ms.date: 02/05/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: cd202c98ed605209f5600965ecdb6c0b4c03c17e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "67509100"
 ---
-1. A Android Studio területen válassza a menü **eszközök** elemét, majd válassza az **SDK-kezelő**elemet. 
-2. Válassza ki a projektben használt Android SDK cél verzióját. Ezután válassza a **csomag adatainak megjelenítése**lehetőséget. 
+1. A Android Studio területen válassza a menü **eszközök** elemét, majd válassza az **SDK-kezelő** elemet. 
+2. Válassza ki a projektben használt Android SDK cél verzióját. Ezután válassza a **csomag adatainak megjelenítése** lehetőséget. 
 
     ![Android SDK-kezelő – cél verziójának kiválasztása](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
 3. Válassza a **Google API**-k lehetőséget, ha még nincs telepítve.

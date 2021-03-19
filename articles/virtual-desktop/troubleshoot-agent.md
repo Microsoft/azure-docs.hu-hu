@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: b0fc5bd16aaa455ce3f6d634ce35e9a389a6f13b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 86296385a0e657246e415f326261ce401e3cdeaf
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732581"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604185"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>A Windows rendszerű virtuális asztali ügynökkel kapcsolatos gyakori problémák elhárítása
 
@@ -208,7 +208,7 @@ A probléma megoldása:
 >Ha egyszerre több virtuális gép **fReverseConnectMode** vagy **fEnableWinStation** módját szeretné módosítani, az alábbi két dolog közül választhat:
 >
 >- Exportálja a beállításkulcsot a gépről, amelyet már dolgozott, és importálja azokat a többi olyan gépre, amelyeknek szükségük van erre a módosításra.
->- Hozzon létre egy általános csoportházirend-objektumot (GPO), amely a módosítást igénylő gépek beállításkulcs értékét állítja be.
+>- Hozzon létre egy csoportházirend-objektumot (GPO), amely a módosítást igénylő gépek beállításkulcs értékét állítja be.
 
 7. Nyissa meg a **HKEY_LOCAL_MACHINE**  >  **System**  >  **CurrentControlSet**  >  **Control**  >  **Terminal Server**  >  **ClusterSettings**.
 8. A **ClusterSettings** területen keresse meg a **SessionDirectoryListener** , és győződjön meg róla, hogy az adatértéke **RDP-SxS..**..

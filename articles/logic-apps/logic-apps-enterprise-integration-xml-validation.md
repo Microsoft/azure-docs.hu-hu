@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/21/2019
 ms.openlocfilehash: ff21b059e712489c1914b2d12c6aa6a3d78d66d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74792164"
 ---
 # <a name="validate-xml-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>XML-ellenőrzés nagyvállalati integráció esetében az Azure Logic Appsben az Enterprise Integration Pack csomaggal
@@ -33,11 +33,11 @@ Gyakran B2B-forgatókönyvekben a szerződésben szereplő kereskedelmi partnere
 
 1. Ha üres logikai alkalmazással rendelkezik, a Logic app Designerben, a keresőmezőbe írja be szűrőként a kifejezést, `HTTP request` majd válassza ki a **http-kérelem fogadásának időpontját** . Ha nem, folytassa a következő lépéssel.
 
-1. A munkafolyamat utolsó lépése alatt válassza az **új lépés**lehetőséget.
+1. A munkafolyamat utolsó lépése alatt válassza az **új lépés** lehetőséget.
 
-   A meglévő lépések közötti művelet hozzáadásához vigye az egérmutatót a lépéseket összekötő nyíl fölé úgy, hogy a plusz jel ( **+** ) megjelenjen. Válassza ki ezt a plusz jelet, majd válassza **a művelet hozzáadása**lehetőséget.
+   A meglévő lépések közötti művelet hozzáadásához vigye az egérmutatót a lépéseket összekötő nyíl fölé úgy, hogy a plusz jel ( **+** ) megjelenjen. Válassza ki ezt a plusz jelet, majd válassza **a művelet hozzáadása** lehetőséget.
 
-1. A **válasszon műveletet**területen válassza a **beépített**lehetőséget. A keresőmezőbe írja be `xml validation` szűrőként a kifejezést. A műveletek listából válassza az **XML-érvényesítés**lehetőséget.
+1. A **válasszon műveletet** területen válassza a **beépített** lehetőséget. A keresőmezőbe írja be `xml validation` szűrőként a kifejezést. A műveletek listából válassza az **XML-érvényesítés** lehetőséget.
 
    ![Az "XML-Érvényesítés" művelet megkeresése és kiválasztása](./media/logic-apps-enterprise-integration-xml-validation/select-xml-validation-action.png)
 
@@ -45,7 +45,7 @@ Gyakran B2B-forgatókönyvekben a szerződésben szereplő kereskedelmi partnere
 
    ![Dinamikus tartalom listájának megnyitása](./media/logic-apps-enterprise-integration-xml-validation/open-dynamic-content-list.png)
 
-   A dinamikus tartalom lista a munkafolyamat előző lépéseinek kimeneteit képviselő tulajdonság-jogkivonatokat jeleníti meg. Ha a lista nem jeleníti meg a várt tulajdonságot, ellenőrizze az trigger vagy a művelet fejlécét, hogy kiválaszthatja-e a **továbbiak**lehetőséget.
+   A dinamikus tartalom lista a munkafolyamat előző lépéseinek kimeneteit képviselő tulajdonság-jogkivonatokat jeleníti meg. Ha a lista nem jeleníti meg a várt tulajdonságot, ellenőrizze az trigger vagy a művelet fejlécét, hogy kiválaszthatja-e a **továbbiak** lehetőséget.
 
 1. A dinamikus tartalom listából válassza ki azt a tulajdonságot, amely az érvényesíteni kívánt tartalommal rendelkezik.
 
@@ -63,6 +63,6 @@ Gyakran B2B-forgatókönyvekben a szerződésben szereplő kereskedelmi partnere
 
 1. Az érvényesítési művelet teszteléséhez elküldheti a logikai alkalmazás munkafolyamatának elindítására vonatkozó kérést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)

@@ -5,10 +5,10 @@ ms.date: 11/22/2019
 ms.topic: how-to
 ms.reviewer: janders
 ms.openlocfilehash: 337d01abc51d310d06aeea3427b770132be4824c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85208773"
 ---
 # <a name="how-to-configure-azure-active-directory-access-for-azure-blockchain-service"></a>Az Azure Blockchain Service Azure Active Directory-hozzáférésének konfigurálása
@@ -30,7 +30,7 @@ A hozzáférést a tag szintjén és a csomópont szintjén is megadhatja. A hoz
 Hozzáférési engedély megadása a tag szintjén.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Navigáljon a **hozzáférés-vezérlés (iam) > adja hozzá > szerepkör-hozzárendelés**hozzáadása lehetőséget.
+1. Navigáljon a **hozzáférés-vezérlés (iam) > adja hozzá > szerepkör-hozzárendelés** hozzáadása lehetőséget.
 1. Válassza a **Blockchain (előzetes verzió)** szerepkört, és adja hozzá azt az Azure ad ID-objektumot, amelyhez hozzáférést szeretne biztosítani. Az Azure AD ID-objektum a következőket teheti:
 
     | Azure AD-objektum | Példa |
@@ -99,12 +99,12 @@ Az alkalmazások Azure AD-ben való regisztrálásával kapcsolatos további inf
 
 Olyan mobileszköz-vagy szöveges böngésző esetén, ahol az Azure AD-hitelesítés előugró ablaka nem lehetséges, az Azure AD egyszeri jelszót hoz létre. A PIN-kódot átmásolhatja, és folytathatja az Azure AD-hitelesítést egy másik környezetben.
 
-A PIN-kód létrehozásához cserélje le a **aadauthcode** a **aaddevice**értékre. Cserélje le \<myAADDirectory\> egy Azure ad-tartományra. Például: `yourdomain.onmicrosoft.com`.
+A PIN-kód létrehozásához cserélje le a **aadauthcode** a **aaddevice** értékre. Cserélje le \<myAADDirectory\> egy Azure ad-tartományra. Például: `yourdomain.onmicrosoft.com`.
 
 ```
 connector.exe -remote <myBlockchainEndpoint>  -method aaddevice -tenant-id <myAADDirectory>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure Blockchain szolgáltatás adatbiztonságával kapcsolatos további információkért lásd: az [Azure Blockchain szolgáltatás biztonsága](data-security.md).

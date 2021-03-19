@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fc3ef7d168c17ec10fe64925adbda7044a2a4c82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87909311"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>Szervezet elhagyása vendégfelhasználóként
@@ -31,19 +31,19 @@ A szervezet elhagyásához kövesse az alábbi lépéseket.
 
 1. A következő lépések egyikével lépjen a hozzáférési panel profilja oldalra:
    
-   - A [Azure Portal](https://portal.azure.com)kattintson a jobb felső sarokban található nevére, majd válassza a **fiók megtekintése**lehetőséget.
-   - Nyissa meg a [hozzáférési panelt](https://myapps.microsoft.com), kattintson a jobb felső sarokban található nevére, majd a **szervezetek**elem mellett válassza a beállítások ikont (fogaskerék).
+   - A [Azure Portal](https://portal.azure.com)kattintson a jobb felső sarokban található nevére, majd válassza a **fiók megtekintése** lehetőséget.
+   - Nyissa meg a [hozzáférési panelt](https://myapps.microsoft.com), kattintson a jobb felső sarokban található nevére, majd a **szervezetek** elem mellett válassza a beállítások ikont (fogaskerék).
  
    ![A hozzáférési panel felhasználói beállításait bemutató képernyőkép](media/leave-the-organization/UserSettings.png) 
 
    > [!NOTE]
-   > Ha még nem jelentkezett be a meghagyni kívánt szervezetbe, a **szervezetek**területen kattintson a Bejelentkezés gombra a szervezet neve melletti **céges hivatkozás elhagyása érdekében** . Miután bejelentkezett, kattintson a nevére a jobb felső sarokban és a **szervezetek**mellett, majd válassza a beállítások ikont (fogaskerék).
+   > Ha még nem jelentkezett be a meghagyni kívánt szervezetbe, a **szervezetek** területen kattintson a Bejelentkezés gombra a szervezet neve melletti **céges hivatkozás elhagyása érdekében** . Miután bejelentkezett, kattintson a nevére a jobb felső sarokban és a **szervezetek** mellett, majd válassza a beállítások ikont (fogaskerék).
 
-3. A **szervezetek**területen keresse meg a kihagyni kívánt szervezetet, és válassza a **szervezet elhagyása**lehetőséget.
+3. A **szervezetek** területen keresse meg a kihagyni kívánt szervezetet, és válassza a **szervezet elhagyása** lehetőséget.
 
    ![A felhasználói felületen a kilépés a szervezeti felületről lehetőséget bemutató képernyőkép](media/leave-the-organization/LeaveOrg.png)
 
-4. Ha a rendszer megerősítést kér, válassza a **Kilépés**lehetőséget. 
+4. Ha a rendszer megerősítést kér, válassza a **Kilépés** lehetőséget. 
 
 ## <a name="account-removal"></a>Fiók eltávolítása
 
@@ -53,8 +53,8 @@ Ha szükséges, a bérlői rendszergazda a 30 napos időszakban bármikor végle
 
 1. Az [Azure Portalon](https://portal.azure.com) válassza az **Azure Active Directory** lehetőséget.
 2. A **Kezelés** menüpontban válassza a **Felhasználók** lehetőséget.
-3. Válassza a **törölt felhasználók**lehetőséget.
-4. Jelölje be a törölt felhasználó melletti jelölőnégyzetet, majd válassza a **véglegesen törlés**lehetőséget.
+3. Válassza a **törölt felhasználók** lehetőséget.
+4. Jelölje be a törölt felhasználó melletti jelölőnégyzetet, majd válassza a **véglegesen törlés** lehetőséget.
 
 Ha véglegesen töröl egy felhasználót, ez a művelet visszavonhatatlan.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7338fb480f76ed1a5edbf9502dc0946d08618a63
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4545e92767a427b8cd89af07ed4d06053685977a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644918"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578005"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Oktatóanyag: A hibrid Azure Active Directory-csatlakozás konfigurálása felügyelt tartományokhoz
 
@@ -58,6 +58,9 @@ Ismerkedjen meg a következő cikkekkel:
 > Az Azure AD nem támogatja a felügyelt tartományokban található intelligens kártyák vagy tanúsítványok használatát.
 
 Ellenőrizze, hogy a Azure AD Connect szinkronizálta-e azon eszközök számítógép-objektumait, amelyeket hibrid Azure AD-hez csatlakoztatni szeretne az Azure AD-hez. Ha a számítógép-objektumok meghatározott szervezeti egységekhez (OU-hoz) tartoznak, konfigurálja a szervezeti egységek szinkronizálását Azure AD Connect. Ha többet szeretne megtudni a számítógép-objektumok Azure AD Connect használatával történő szinkronizálásáról, tekintse meg a [szervezeti egység-alapú szűrés](../hybrid/how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)című témakört.
+
+> [!NOTE]
+> Ahhoz, hogy az eszköz regisztrációjának szinkronizálása sikeres legyen, az eszköz regisztrációs konfigurációjának részeként ne zárja ki az alapértelmezett eszköz attribútumokat a Azure AD Connect Sync konfigurációból. További információ a HRE szinkronizált alapértelmezett eszközök attribútumairól: [Azure ad Connect által szinkronizált attribútumok](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized#windows-10).
 
 A 1.1.819.0 verziótól kezdődően a Azure AD Connect tartalmaz egy varázslót, amellyel konfigurálhatja a hibrid Azure AD Joint. A varázsló jelentősen leegyszerűsíti a konfigurációs folyamatot. A varázsló konfigurálja az eszközök regisztrálásához szükséges szolgáltatáskapcsolódási pontokat.
 

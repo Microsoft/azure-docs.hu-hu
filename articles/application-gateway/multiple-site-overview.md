@@ -8,10 +8,10 @@ ms.date: 07/20/2020
 ms.author: surmb
 ms.topic: conceptual
 ms.openlocfilehash: 53f6f37454de886934a483b40daad24204958baf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87474325"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Application Gateway – több hely üzemeltetése
@@ -35,7 +35,7 @@ Application Gateway lehetővé teszi a gazdagép-alapú útválasztást a többh
 
 Ha helyettesítő karaktert használ az állomásnévben, több állomásnév is megegyező egyetlen figyelőben. Megadhatja például a következőt: `*.contoso.com` `ecom.contoso.com` , `b2b.contoso.com` `customer1.b2b.contoso.com` és így tovább. Az állomásnevek tömbjét használva több állomásnevet is beállíthat egy figyelőhöz, hogy átirányítsa a kéréseket egy háttérbeli készletbe. Egy figyelő például tartalmazhat, `contoso.com, fabrikam.com` amely fogadja a kérelmeket az állomásnevek esetében is.
 
-:::image type="content" source="./media/multiple-site-overview/wildcard-listener-diag.png" alt-text="Többhelyes Application Gateway":::
+:::image type="content" source="./media/multiple-site-overview/wildcard-listener-diag.png" alt-text="Helyettesítő karakteres figyelő":::
 
 >[!NOTE]
 > Ez a funkció előzetes verzióban érhető el, és csak a Application Gateway Standard_v2 és WAF_v2 SKU-ban érhető el. Az előzetes verziókkal kapcsolatos további tudnivalókért tekintse meg [a használati feltételeket itt](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -90,7 +90,7 @@ Application Gateway több, különböző portokon figyelt alkalmazást támogat,
 
 Az Application Gateway a HTTP 1.1-állomásfejlécek segítségével üzemeltet egynél több webhelyet ugyanarról a nyilvános IP-címről és portról. Az Application Gateway-ben üzemeltetett helyek támogatják a TLS-kiszervezést is Kiszolgálónév jelzése (SNI) TLS-bővítmény használatával. Ebben az esetben az RFC 6066 szabványban meghatározottak szerint az ügyfélböngészőnek és a háttérwebfarmnak támogatnia kell a HTTP/1.1-et és a TLS-bővítményt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan konfigurálhat több hely üzemeltetését Application Gateway
 * [Az Azure Portal használata](create-multiple-sites-portal.md)

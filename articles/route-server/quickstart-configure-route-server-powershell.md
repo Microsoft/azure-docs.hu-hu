@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: e302cb9da410487dbea4ec5c5b256c4cb5dd186f
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: a3ab3a801872cc20b4e41bbff02ad6474c3bab8c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102566379"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655206"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-powershell"></a>Gyors útmutató: útvonal-kiszolgáló létrehozása és konfigurálása Azure PowerShell használatával
 
@@ -40,8 +40,8 @@ Ebből a cikkből megtudhatja, hogyan konfigurálhatja az Azure Route Servert eg
 Az Azure Route Server létrehozása előtt szüksége lesz egy virtuális hálózatra az üzemelő példány üzemeltetéséhez. Az alábbi parancs használatával hozzon létre egy erőforráscsoportot és egy virtuális hálózatot. Ha már rendelkezik virtuális hálózattal, ugorjon a következő szakaszra.
 
 ```azurepowershell-interactive
-New-AzResourceGroup –Name “RouteServerRG” -Location “West US”
-New-AzVirtualNetwork –ResourceGroupName “RouteServerRG -Location “West US” -Name myVirtualNetwork –AddressPrefix 10.0.0.0/16
+New-AzResourceGroup –Name "RouteServerRG” -Location “West US"
+New-AzVirtualNetwork –ResourceGroupName "RouteServerRG" -Location "West US" -Name myVirtualNetwork –AddressPrefix 10.0.0.0/16
 ```
 
 ### <a name="add-a-subnet"></a>Alhálózat hozzáadása
@@ -49,15 +49,15 @@ New-AzVirtualNetwork –ResourceGroupName “RouteServerRG -Location “West US�
 1. Adjon hozzá egy *RouteServerSubnet* nevű alhálózatot az Azure Route-kiszolgáló üzembe helyezéséhez a alkalmazásban. Ez az alhálózat csak az Azure Route Server dedikált alhálózata. A RouteServerSubnet/27 vagy egy rövidebb előtagnak kell lennie (például/26,/25), vagy hibaüzenet jelenik meg az Azure-útválasztó kiszolgáló hozzáadásakor.
 
     ```azurepowershell-interactive
-    $vnet = Get-AzVirtualNetwork –Name “myVirtualNetwork” - ResourceGroupName “RouteServerRG”
-    Add-AzVirtualNetworkSubnetConfig –Name “RouteServerSubnet” -AddressPrefix 10.0.0.0/24 -VirtualNetwork $vnet
+    $vnet = Get-AzVirtualNetwork –Name "myVirtualNetwork" - ResourceGroupName "RouteServerRG"
+    Add-AzVirtualNetworkSubnetConfig –Name "RouteServerSubnet" -AddressPrefix 10.0.0.0/24 -VirtualNetwork $vnet
     $vnet | Set-AzVirtualNetwork
     ```
 
 1. Szerezze be a RouteServerSubnet AZONOSÍTÓját. A virtuális hálózat összes alhálózatának erőforrás-AZONOSÍTÓjának megtekintéséhez használja a következő parancsot:
 
     ```azurepowershell-interactive
-    $vnet = Get-AzVirtualNetwork –Name “vnet_name” -ResourceGroupName “
+    $vnet = Get-AzVirtualNetwork –Name "vnet_name" -ResourceGroupName "RouteServerRG"
     $vnet.Subnets
     ```
 
@@ -70,7 +70,7 @@ A RouteServerSubnet-azonosító a következőhöz hasonlóan néz ki:
 Hozza létre az útválasztási kiszolgálót a következő paranccsal:
 
 ```azurepowershell-interactive 
-New-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG -Location "West US” -HostedSubnet “RouteServerSubnet_ID”
+New-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG -Location "West US" -HostedSubnet "RouteServerSubnet_ID"
 ```
 
 A helynek meg kell egyeznie a virtuális hálózat helyével. A HostedSubnet az előző szakaszban beszerzett RouteServerSubnet-azonosító.
@@ -137,7 +137,7 @@ Ha már nincs szüksége az Azure Route Serverre, az alábbi parancsokkal távol
 1. Távolítsa el a BGP-társat az Azure Route Server és egy NVA között a következő paranccsal:
 
 ```azurepowershell-interactive 
-Remove-AzRouteServerPeer -PeerName “nva_name” -RouteServerName myRouteServer -ResourceGroupName RouteServerRG 
+Remove-AzRouteServerPeer -PeerName "nva_name" -RouteServerName myRouteServer -ResourceGroupName RouteServerRG 
 ```
 
 2. Az Azure Route Server eltávolítása ezzel a paranccsal:

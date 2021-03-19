@@ -7,22 +7,22 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/12/2021
-ms.openlocfilehash: 9ff98a2613143474afd6041ccf52d4eb509d646b
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.date: 03/18/2021
+ms.openlocfilehash: c33739124092a17acf0590f00b2f9c3c09bf894e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103418878"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654662"
 ---
-# <a name="create-a-semantic-query-in-cognitive-search"></a>Szemantikai lekérdezés létrehozása Cognitive Search
+# <a name="create-a-query-for-semantic-captions-in-cognitive-search"></a>Hozzon létre egy lekérdezést a szemantikai feliratok számára Cognitive Search
 
 > [!IMPORTANT]
-> A szemantikai lekérdezés típusa nyilvános előzetes verzióban érhető el, és az előzetes verziójú REST API és Azure Portal is elérhető. Az előzetes verziójú funkciók a [kiegészítő használati feltételek](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)mellett is elérhetők. További információkért lásd a [rendelkezésre állást és a díjszabást](semantic-search-overview.md#availability-and-pricing).
+> A szemantikai keresés nyilvános előzetes verzióban érhető el, és az előzetes verziójú REST API és Azure Portal is elérhető. Az előzetes verziójú funkciók a [kiegészítő használati feltételek](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)mellett is elérhetők. Ezek a funkciók számlázva vannak. További információkért lásd a [rendelkezésre állást és a díjszabást](semantic-search-overview.md#availability-and-pricing).
 
-Ebből a cikkből megtudhatja, hogyan alakíthat ki szemantikai rangsorolást használó keresési kéréseket. A kérés szemantikai feliratokat és opcionálisan [szemantikai válaszokat](semantic-answers.md)ad vissza, és kiemeli a legrelevánsabb kifejezéseket és kifejezéseket.
+Ebből a cikkből megtudhatja, hogyan hozhatja meg a szemantikai rangsorolást használó keresési kéréseket, és hogyan adja vissza a szemantikai feliratokat (és opcionálisan [szemantikai válaszokat](semantic-answers.md)), és kiemeli a legfontosabb feltételeket és kifejezéseket. Mindkét felirat és válasz a "szemantika" lekérdezési típussal megfogalmazott lekérdezésekben lesz visszaadva.
 
-Mindkét feliratot és választ szó szerint Kinyeri a keresési dokumentumban lévő szövegből. A szemantikai alrendszer meghatározza, hogy a tartalom milyen tulajdonságokkal rendelkezik egy felirat vagy válasz, de nem állít össze új mondatokat vagy kifejezéseket. Emiatt a magyarázatokat vagy definíciókat tartalmazó tartalom a legmegfelelőbb a szemantikai kereséshez.
+A feliratok és válaszok szövege szó szerint kinyerhető a keresési dokumentumban lévő szövegből. A szemantikai alrendszer meghatározza, hogy a tartalom milyen részét képezi a felirat vagy a válasz jellemzői, de nem állít össze új mondatokat vagy kifejezéseket. Emiatt a magyarázatokat vagy definíciókat tartalmazó tartalom a legmegfelelőbb a szemantikai kereséshez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,11 +30,11 @@ Mindkét feliratot és választ szó szerint Kinyeri a keresési dokumentumban l
 
 + Hozzáférés a szemantikai keresés előzetes verziójához: [regisztráció](https://aka.ms/SemanticSearchPreviewSignup)
 
-+ Egy meglévő keresési index, amely angol nyelvű tartalmat tartalmaz
++ Egy meglévő, angol nyelvű tartalmat tartalmazó keresési index
 
 + Lekérdezések küldésére szolgáló keresési ügyfél
 
-  A keresési ügyfélnek támogatnia kell az előzetes verziójú REST API-kat a lekérdezési kérelemben. Használhatja a [Poster](search-get-started-rest.md), a [Visual Studio Code](search-get-started-vs-code.md)vagy az Ön által módosított kódot, hogy Rest-hívásokat hajtson végre az előnézeti API-khoz. Szemantikai lekérdezés elküldéséhez használhatja a Azure Portal [keresési tallózóját](search-explorer.md) is.
+  A keresési ügyfélnek támogatnia kell az előzetes verziójú REST API-kat a lekérdezési kérelemben. Használhatja a [Poster](search-get-started-rest.md), a [Visual Studio Code](search-get-started-vs-code.md)vagy a Code, amely Rest-hívásokat tesz elérhetővé az előzetes verziójú API-khoz. Szemantikai lekérdezés elküldéséhez használhatja a Azure Portal [keresési tallózóját](search-explorer.md) is.
 
 + A [lekérdezési kérelemnek](/rest/api/searchservice/preview-api/search-documents) tartalmaznia kell a szemantikai beállítást és a jelen cikkben ismertetett egyéb paramétereket.
 
@@ -62,9 +62,13 @@ A kezdeti eredmények közül csak a legfontosabb 50-as egyezés lehet szemantik
 
 ## <a name="query-with-search-explorer"></a>Lekérdezés a keresési ablakban
 
-A [Search Explorer](search-explorer.md) frissült, hogy a szemantikai lekérdezésekre vonatkozó beállításokat is tartalmazzon. Ezek a beállítások az előzetes verzióhoz való hozzáférés után láthatóvá válnak a portálon. A lekérdezési beállítások lehetővé teszik a szemantikai lekérdezések, a searchFields és a helyesírás-javítás lehetőségét.
+A [Search Explorer](search-explorer.md) frissült, hogy a szemantikai lekérdezésekre vonatkozó beállításokat is tartalmazzon. Ezek a beállítások a következő lépések elvégzése után láthatóvá válnak a portálon:
 
-A lekérdezési karakterlánchoz is beillesztheti a szükséges lekérdezési paramétereket.
+1. A Search szolgáltatás [regisztrációja](https://aka.ms/SemanticSearchPreviewSignup) és befogadása az előzetes programba
+
+1. Nyissa meg a portált a következő szintaxissal: `https://portal.azure.com/?feature.semanticSearch=true`
+
+A lekérdezési beállítások közé tartoznak a szemantikai lekérdezések, a searchFields és a helyesírás-korrekciók engedélyezésére szolgáló kapcsolók. A lekérdezési karakterlánchoz is beillesztheti a szükséges lekérdezési paramétereket.
 
 :::image type="content" source="./media/semantic-search-overview/search-explorer-semantic-query-options.png" alt-text="Lekérdezési beállítások a keresési Explorerben" border="true":::
 
@@ -94,11 +98,11 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 A következő táblázat összefoglalja a szemantikai lekérdezésekben használt lekérdezési paramétereket, hogy azok holisztikusan lássák őket. Az összes paraméter listáját itt tekintheti meg: [dokumentumok keresése (REST előzetes verzió)](/rest/api/searchservice/preview-api/search-documents)
 
-| Paraméter | Típus | Leírás |
+| Paraméter | Típus | Description |
 |-----------|-------|-------------|
 | queryType | Sztring | Az érvényes értékek közé tartozik az egyszerű, a teljes és a szemantikai érték. Szemantikai lekérdezésekhez a "szemantika" érték szükséges. |
 | queryLanguage | Sztring | Szemantikai lekérdezésekhez szükséges. Jelenleg csak az "en-us" van implementálva. |
-| searchFields | Sztring | A kereshető mezők vesszővel tagolt listája. Nem kötelező, de ajánlott. Meghatározza azokat a mezőket, amelyeken szemantikai rangsorolás történik. </br></br>Az egyszerű és a teljes lekérdezési típusokkal szemben a listában szereplő mezők sorrendje határozza meg a sorrendet. További használati utasításokért lásd a [2. lépés: SearchFields beállítása](#searchfields)című témakört. |
+| searchFields | Sztring | A kereshető mezők vesszővel tagolt listája. Meghatározza azokat a mezőket, amelyeken a szemantikai rangsorolás bekövetkezik, amelyből a rendszer kinyeri a feliratokat és a válaszokat. </br></br>Az egyszerű és a teljes lekérdezési típusokkal szemben a listában szereplő mezők sorrendje határozza meg a sorrendet. További használati utasításokért lásd a [2. lépés: SearchFields beállítása](#searchfields)című témakört. |
 | helyesírás | Sztring | Nem kötelező megadni a szemantikai lekérdezéseket, amelyek a keresőmotor elérésének megkezdése előtt kijavítsák a hibásan írt kifejezéseket. További információ: [helyesírás-javítás hozzáadása lekérdezésekhez](speller-how-to-add.md). |
 | válaszok |Sztring | Választható paraméterek, amelyek meghatározzák, hogy az eredmény tartalmazza-e a szemantikai válaszokat. Jelenleg csak a "kinyerő" van implementálva. A válaszokat beállíthatja úgy, hogy legfeljebb öt értéket lehessen visszaadni. Az alapértelmezett érték egy. Ez a példa három válasz számát mutatja: "kinyerő \| count3". További információ: [szemantikai válaszok visszaküldése](semantic-answers.md).|
 
@@ -125,13 +129,11 @@ Míg a keresési index tartalma több nyelvből is állhat, a lekérdezés bemen
 
 #### <a name="step-2-set-searchfields"></a>2. lépés: a searchFields beállítása
 
-Ez a paraméter nem kötelező abban az esetben, ha nincs hiba, ha elhagyja, de a mezők rendezett listájának megadása kifejezetten ajánlott mindkét felirathoz és válaszhoz.
-
 A searchFields paraméterrel azonosíthatók azok a részek, amelyeket a rendszer "szemantikai hasonlóság" esetén kiértékel a lekérdezéshez. Az előzetes verzió esetében nem javasoljuk, hogy a searchFields üresen hagyja, mivel a modellhez olyan célzásra van szükség, amely a legfontosabb, hogy milyen mezőket kell feldolgoznia.
 
-A searchFields sorrendje kritikus. Ha már meglévő egyszerű vagy teljes Lucene-lekérdezésekben használja a searchFields-t, mindenképpen keresse meg ezt a paramétert a mezők sorrendjének ellenőrzéséhez a szemantikai lekérdezés típusára való váltáskor.
+A searchFields sorrendje kritikus. Ha már meglévő searchFields használja az egyszerű vagy a teljes Lucene-lekérdezéseket, akkor a paraméter megadásával keresse meg a mezők sorrendjét a szemantikai lekérdezés típusára való váltáskor.
 
-Kövesse az alábbi irányelveket az optimális eredmények biztosításához, ha két vagy több searchFields van megadva:
+Két vagy több searchFields esetén:
 
 + Csak karakterlánc típusú mezőket és legfelső szintű karakterlánc mezőket tartalmazzon a gyűjteményekben. Ha nem karakterlánc típusú mezőket vagy alacsonyabb szintű mezőket tartalmaz egy gyűjteményben, nincs hiba, de ezek a mezők nem lesznek felhasználva szemantikai rangsorban.
 
@@ -141,7 +143,7 @@ Kövesse az alábbi irányelveket az optimális eredmények biztosításához, h
 
 + Ezeket a mezőket olyan leíró mezők követik, amelyekben a szemantikai lekérdezésekre adott válasz, például a dokumentum fő tartalma található.
 
-Ha csak egy mező van megadva, használjon olyan leíró mezőt, amelyben a szemantikai lekérdezésekre adott válasz található, például a dokumentum fő tartalma. Olyan mezőt válasszon, amely elegendő tartalmat biztosít. Az időben történő feldolgozás biztosítása érdekében csak a searchFields kollektív tartalmának körülbelül 8 000 jogkivonatát kell szemantikai kiértékeléssel és rangsorolással elvégeznie.
+Ha csak egy mező van megadva, használjon olyan leíró mezőt, amelyben a szemantikai lekérdezésekre adott válasz található, például a dokumentum fő tartalma. 
 
 #### <a name="step-3-remove-orderby-clauses"></a>3. lépés: az orderBy záradékok eltávolítása
 
@@ -191,7 +193,7 @@ A fenti példában szereplő lekérdezésre adott válasz a következő egyezés
 Ne felejtse el, hogy a szemantikai rangsorolás és válaszok a kezdeti eredményhalmaz fölé épülnek. A kezdeti eredmények minőségét javító minden logika továbbítja a szemantikai keresést. A következő lépésként tekintse át azokat a funkciókat, amelyek a kezdeti eredményekhez járulnak hozzá, beleértve azokat a elemzőket is, amelyek befolyásolják a sztringek jogkivonatának módját, az eredményeket beállító pontozási profilokat és az alapértelmezett relevanciás algoritmust.
 
 + [A szöveg feldolgozásának elemzői](search-analyzers.md)
-+ [Hasonlóság és pontozás a Cognitive Search](index-similarity-and-scoring.md)
-+ [Pontozási profilok hozzáadása](index-add-scoring-profiles.md)
++ [Hasonlósági rangsor algoritmusa](index-similarity-and-scoring.md)
++ [Pontozási profilok](index-add-scoring-profiles.md)
 + [Szemantikai keresés – áttekintés](semantic-search-overview.md)
-+ [Helyesírás-ellenőrzés hozzáadása a lekérdezési feltételekhez](speller-how-to-add.md)
++ [Szemantikai rangsorolási algoritmus](semantic-ranking.md)

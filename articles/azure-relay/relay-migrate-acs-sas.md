@@ -4,10 +4,10 @@ description: Útmutató Azure Relay alkalmazások áttelepítéséhez Azure Acti
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 3b793173270b0ddf25f0e971dbb2fed97cb10a55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87532866"
 ---
 # <a name="azure-relay---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure Relay – Migrálás Azure Active Directory Access Control Serviceról a közös hozzáférésű aláírás engedélyezésére
@@ -22,7 +22,7 @@ Az ACS-től függő összes meglévő alkalmazás esetében arra buzdítjuk az �
 
 ## <a name="migration-scenarios"></a>Migrálási forgatókönyvek
 
-Az ACS és a Relay az *aláíró kulcs*közös ismeretével van integrálva. Az aláíró kulcsot egy ACS-névtér használja az engedélyezési jogkivonatok aláírásához, és a Azure Relay használja annak ellenőrzéséhez, hogy a tokent a párosított ACS-névtér adta-e ki. Az ACS-névtér a szolgáltatás identitásait és engedélyezési szabályait tartalmazza. Az engedélyezési szabályok határozzák meg, hogy melyik szolgáltatás-identitást vagy egy külső Identitáskezelő által kiállított jogkivonat adja meg a továbbítási névtér gráfjának egy részét a leghosszabb előtagú egyezés formájában.
+Az ACS és a Relay az *aláíró kulcs* közös ismeretével van integrálva. Az aláíró kulcsot egy ACS-névtér használja az engedélyezési jogkivonatok aláírásához, és a Azure Relay használja annak ellenőrzéséhez, hogy a tokent a párosított ACS-névtér adta-e ki. Az ACS-névtér a szolgáltatás identitásait és engedélyezési szabályait tartalmazza. Az engedélyezési szabályok határozzák meg, hogy melyik szolgáltatás-identitást vagy egy külső Identitáskezelő által kiállított jogkivonat adja meg a továbbítási névtér gráfjának egy részét a leghosszabb előtagú egyezés formájában.
 
 Egy ACS-szabály például megadhatja a **küldési** jogcímet az elérési út előtagjaként `/` egy szolgáltatás identitásának, ami azt jelenti, hogy az ACS által az adott szabály alapján kiadott jogkivonat megadja az ügyfél jogosultságait a névtérben lévő összes entitásnak való küldéshez. Ha az elérési út előtagja `/abc` , az identitás csak az `abc` előtagja alatt elnevezett vagy az előtag alá rendezett entitások küldésére korlátozódik. Feltételezzük, hogy az áttelepítési útmutató olvasói már ismerik ezeket a fogalmakat.
 
@@ -30,7 +30,7 @@ Az áttelepítési forgatókönyvek három széles kategóriába sorolhatók:
 
 1.  **Változatlan alapértékek**. Néhány ügyfél egy [SharedSecretTokenProvider](/dotnet/api/microsoft.servicebus.sharedsecrettokenprovider) objektumot használ, átadja az automatikusan generált **tulajdonosi** szolgáltatás identitását és annak titkos kulcsát az ACS-névtérhez, párosítva a továbbítási névtérrel, és nem vesz fel új szabályokat.
 
-2.  **Egyéni szolgáltatás-identitások egyszerű szabályokkal**. Egyes ügyfelek új szolgáltatás-identitásokat adnak hozzá, és minden új szolgáltatás identitásának **küldési**, **figyelési**és **kezelési** engedélyeit biztosítják egy adott entitáshoz.
+2.  **Egyéni szolgáltatás-identitások egyszerű szabályokkal**. Egyes ügyfelek új szolgáltatás-identitásokat adnak hozzá, és minden új szolgáltatás identitásának **küldési**, **figyelési** és **kezelési** engedélyeit biztosítják egy adott entitáshoz.
 
 3.  **Egyéni szolgáltatásbeli identitások összetett szabályokkal**. Nagyon kevés ügyfél rendelkezik olyan összetett szabályokkal, amelyekben a külsőleg kiállított jogkivonatok a továbbítási jogosultságokra vannak leképezve, vagy ha egy szolgáltatás identitása több szabályon keresztül különböző névtérbeli elérési utakon eltérő jogokat kap.
 
@@ -50,7 +50,7 @@ Ezt az új és további konfigurációt is elvégezheti a SAS-ben az ACS-vel ös
 
 Az SAS-szabályok nem jelentenek fióknak, de a jogosultságokhoz társított aláíró kulcsok névvel rendelkeznek. Ilyenek például azok a forgatókönyvek, amelyekben az alkalmazás számos szolgáltatásbeli identitást hoz létre, és hozzáférést biztosít számukra a különböző entitások számára, vagy a teljes névtér továbbra is jogkivonatot kiállító közvetítőt igényel. Ehhez [forduljon a támogatási szolgálathoz](https://azure.microsoft.com/support/options/), és kérjen útmutatást ehhez a közvetítőhöz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Relay hitelesítéssel kapcsolatos további tudnivalókért tekintse meg a következő témaköröket:
 

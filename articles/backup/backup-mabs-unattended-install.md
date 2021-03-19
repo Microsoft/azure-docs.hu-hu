@@ -4,10 +4,10 @@ description: Használjon PowerShell-szkriptet a Azure Backup Server v2 csendes t
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: 1539089e713bcf8e959707c6ff4a608f062a7c00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74172246"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>Azure Backup Server felügyelet nélküli telepítésének futtatása
@@ -55,11 +55,11 @@ Az alábbi jelzőket használhatja a telepítéshez:</br>
 **/i**: telepítési útvonal</br>
 **/x**: eltávolítási útvonal</br>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Backup Server telepítése után megtudhatja, hogyan készítheti elő a kiszolgálót, vagy megkezdheti a munkaterhelések védelmét.
 
 - [A biztonsági mentési kiszolgáló munkaterhelésének előkészítése](backup-azure-microsoft-azure-backup.md)
-- [Egy VMware-kiszolgáló biztonsági mentése a Backup Server használatával](backup-azure-backup-server-vmware.md)
-- [Biztonsági másolat készítése a Backup Server használatával SQL Server](backup-azure-sql-mabs.md)
-- [modern biztonsági másolati tárhely hozzáadása a biztonsági mentési kiszolgálóhoz](backup-mabs-add-storage.md)
+- [VMware-kiszolgáló biztonsági mentése a Backup Server használatával](backup-azure-backup-server-vmware.md)
+- [Az SQL Server biztonsági mentése a Backup Server használatával](backup-azure-sql-mabs.md)
+- [Modern biztonsági mentési hely hozzáadása a Backup Serverhez](backup-mabs-add-storage.md)

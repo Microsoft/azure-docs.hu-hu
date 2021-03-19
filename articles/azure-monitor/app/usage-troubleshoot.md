@@ -7,10 +7,10 @@ ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 02d1bd9d204d88ba90218b1254c66ac0da80be85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87323502"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>A Application Insights felhasználói viselkedési elemzési eszközeinek hibáinak megoldása
@@ -44,7 +44,7 @@ Ha az alkalmazás túl sok nézet nevét küldi el, ellenőrizze, hogy a rendsze
 
 Ha az alkalmazás túl sok egyéni eseményazonosító küldését küldi el, módosítsa a kód nevét kevésbé konkrét értékre. Az URL-címek és más, oldalanként vagy dinamikus információk az egyéni események neveiben való közvetlen üzembe helyezésének elkerülése érdekében. Ehelyett helyezze át ezeket az adatokat az egyéni esemény egyéni tulajdonságaiba az API-val `trackEvent` . Például a helyett a következőt `appInsights.trackEvent("Edit button clicked on http://www.contoso.com/index")` javasoljuk: `appInsights.trackEvent("Edit button clicked", { "Source URL": "http://www.contoso.com/index" })` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A felhasználói viselkedés elemzési eszközeinek áttekintése](usage-overview.md)
 
