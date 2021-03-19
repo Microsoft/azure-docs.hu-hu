@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: fb81960b573b5b7d28f44f7a7482c28b4ef284be
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 81c026893c3185c6c9f960cdb6acb2d0c2d49cc4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103496456"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580351"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption Linux rendszerű virtuális gépekhez 
 
@@ -108,7 +108,7 @@ Az Azure által nem támogatott Linux Server-disztribúciók nem támogatják a 
 
 Azure Disk Encryption megköveteli, hogy a dm-crypt és a VFAT modulok jelen legyenek a rendszeren. A VFAT eltávolítása vagy letiltása az alapértelmezett rendszerképből megakadályozza, hogy a rendszer beolvassa a kulcs kötetét, és beszerezze a lemezek zárolásának feloldásához szükséges kulcsot a későbbi újraindítások során. A VFAT modul a rendszerből való eltávolítására, illetve az operációsrendszer-csatolási/-mappák az adatmeghajtókon való kibővítésének betartatására szolgáló rendszer-megerősítési lépések nem kompatibilisek a Azure Disk Encryptionokkal. 
 
-A titkosítás engedélyezése előtt a titkosítani kívánt adatlemezeknek megfelelően szerepelniük kell a/etc/fstab. Bejegyzések létrehozásakor használja a "sikertelen" lehetőséget, és válassza ki az állandó blokk eszköz nevét (ahogy az "/dev/sdX" formátumban nem lehet ugyanahhoz a lemezhez hozzárendelni az újraindítások között, különösen a titkosítás után, a viselkedésről részletesebben lásd: Linux rendszerű [virtuális gép eszköz nevének módosítása](../troubleshooting/troubleshoot-device-names-problems.md)).
+A titkosítás engedélyezése előtt a titkosítani kívánt adatlemezeknek megfelelően szerepelniük kell a/etc/fstab. Bejegyzések létrehozásakor használja a "sikertelen" lehetőséget, és válassza ki az állandó blokk eszköz nevét (ahogy az "/dev/sdX" formátumban nem lehet ugyanahhoz a lemezhez hozzárendelni az újraindítások között, különösen a titkosítás után, a viselkedésről részletesebben lásd: Linux rendszerű [virtuális gép eszköz nevének módosítása](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems)).
 
 Győződjön meg arról, hogy az/etc/fstab-beállítások megfelelően vannak konfigurálva a csatlakoztatáshoz. Ezen beállítások konfigurálásához futtassa a Mount-a parancsot, vagy indítsa újra a virtuális gépet, és aktiválja az újracsatlakoztatást. Ha a művelet befejeződött, ellenőrizze a lsblk parancs kimenetét annak ellenőrzéséhez, hogy a meghajtó továbbra is csatlakoztatva van-e. 
 

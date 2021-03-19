@@ -71,10 +71,15 @@
       href: /azure/python/tutorial-vs-code-serverless-python-01
     - name: OpenAPI-definíció kiszolgáló nélküli API-khoz
       href: functions-openapi-definition.md
-    - name: Csatlakozás virtuális hálózathoz
-      href: functions-create-vnet.md
-    - name: Személyes oldalakhoz való hozzáférés beállítása
-      href: functions-create-private-site-access.md
+    - name: Hálózatkezelés
+      items:
+        - name: Csatlakozás virtuális hálózathoz
+          href: functions-create-vnet.md
+          displayName: vnet
+        - name: Személyes oldalakhoz való hozzáférés beállítása
+          href: functions-create-private-site-access.md
+        - name: Kimenő NAT-átjáró használata
+          href: functions-how-to-use-nat-gateway.md
     - name: Rendszerképek átméretezése az Event Grid használatával
       href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: Kiszolgáló nélküli webalkalmazás létrehozása
@@ -365,6 +370,8 @@
           href: set-runtime-version.md
         - name: Függvény letiltása
           href: disable-function.md
+        - name: Hálózatkezelés
+          href: configure-networking-how-to.md
         - name: Geo-vészhelyreállítás
           href: functions-geo-disaster-recovery.md
     - name: Figyelés

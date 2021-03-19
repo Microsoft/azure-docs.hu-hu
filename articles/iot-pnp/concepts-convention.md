@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 86c6ea9dded423e7bd513faf73adfd293f2bd38f
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: a8dfb3cacf798559273361ec75cab4570a8a5228
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302610"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582680"
 ---
 # <a name="iot-plug-and-play-conventions"></a>Az IoT Plug and Playhez kapcsolódó konvenciók
 
@@ -25,7 +25,7 @@ Ismerteti azokat a telemetria, tulajdonságokat és parancsokat, amelyeket egy I
 - **Nincs összetevő** – olyan modell, amely nem rendelkezik összetevőkkel. A modell az telemetria, a tulajdonságokat és a parancsokat deklarálja legfelső szintű tulajdonságokként a fő felület tartalom szakaszában. Az Azure IoT Explorer eszközében ez a modell egyetlen _alapértelmezett összetevőként_ jelenik meg.
 - **Több összetevő** – két vagy több illesztőfelületből álló modell. Egy fő felület, amely az _alapértelmezett összetevőként_ jelenik meg a telemetria, a Properties és a parancsokkal. Egy vagy több, összetevőként deklarált illesztőfelület további telemetria, tulajdonságokkal és parancsokkal.
 
-További információ: [IoT Plug and Play-összetevők a modellekben](concepts-components.md).
+További információ: [IoT Plug and Play modellezési útmutató](concepts-modeling-guide.md).
 
 ## <a name="identify-the-model"></a>A modell azonosítása
 
@@ -346,11 +346,11 @@ Az összetevő-illesztőfelületek nem a parancs nevét használják előtag né
 
 Egy eszközön vagy modulon több összetevő-illesztőfelület is a következő formátumú parancsokat használja: `componentName*commandName` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte a IoT Plug and Play konvenciókat, néhány további erőforrást is talál:
 
-- [Digitális Twins-definíciós nyelv (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
+- [A digitális ikerpéldányok definíciós nyelve (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
 - [C eszköz SDK](/azure/iot-hub/iot-c-sdk-ref/)
 - [IoT REST API](/rest/api/iothub/device)
-- [Modell összetevői](./concepts-components.md)
+- [IoT Plug and Play modellezési útmutató](concepts-modeling-guide.md)

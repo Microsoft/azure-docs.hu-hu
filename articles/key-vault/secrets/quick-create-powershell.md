@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurepowershell
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: f3b770a5790d5e9554c7bf5d7d24f1eeccff7662
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 5e3b78dfb8f08f1a596ad12884ec088cd36c4a98
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072219"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582449"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Rövid útmutató: Titkos kulcs beállítása és lekérése az Azure Key Vaultból a PowerShell használatával
 
@@ -57,7 +57,7 @@ Először alakítsa át a **hVFkk965BuUv** értékét egy biztonságos karakterl
 $secretvalue = ConvertTo-SecureString "hVFkk965BuUv" -AsPlainText -Force
 ```
 
-Ezután írja be az alábbi PowerShell-parancsokat, és hozzon létre egy titkos kulcsot Key Vault nevű **ExamplePassword** a **hVFkk965BuUv** értékkel:
+Ezután a Azure PowerShell [set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret) parancsmaggal hozzon létre egy titkos kulcsot a **ExamplePassword** nevű Key Vault a **hVFkk965BuUv** értékkel:
 
 
 ```azurepowershell-interactive
@@ -96,5 +96,6 @@ Remove-AzResourceGroup -Name ContosoResourceGroup
 Ebben a rövid útmutatóban létrehozott egy Key Vault, és egy titkos kulcsot tárolt benne. Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
 
 - [A Azure Key Vault áttekintése](../general/overview.md)
+- Megtudhatja, hogyan [tárolhat többsoros titkokat Key Vault](multiline-secrets.md)
 - Tekintse meg a [Azure PowerShell Key Vault-parancsmagok](/powershell/module/az.keyvault/#key_vault) referenciáját
 - Tekintse át a [Key Vault biztonsági áttekintést](../general/security-overview.md)

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: e3078c8f71f8862cacad552bb3176c08530e79bb
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 01c4d6475ec23b8a55d91e18f49cab27760aa907
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103418844"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604287"
 ---
 # <a name="semantic-ranking-in-azure-cognitive-search"></a>Szemantikai rangsorolás az Azure Cognitive Search
 
@@ -28,25 +28,35 @@ A szemantikai rangsorolás erőforrás-és időigényes is. A lekérdezési műv
 
 A szemantikai rangsoroláshoz a modell a gépi olvasást és a tanulást is használja a dokumentumok újbóli kiértékeléséhez, attól függően, hogy milyen jól illeszkedik a lekérdezés szándéka.
 
-1. A szemantikai rangsor minden dokumentum esetében kiértékeli a mezőket a searchFields paraméterben, és összevonja a tartalmakat egy nagy sztringbe.
+### <a name="preparation-passage-extraction-phase"></a>Előkészítési (átjáró-kinyerési) fázis
 
-1. A rendszer ezt követően kivágja a karakterláncot, hogy a teljes hossz ne legyen több, mint 8 000 token. Ha nagyon nagy méretű dokumentumokkal rendelkezik, a tartalom mező vagy merged_content mező, amely több oldalnyi tartalmat tartalmaz, akkor a rendszer figyelmen kívül hagyja a jogkivonat-korlátot.
+A kezdeti eredményekben található minden dokumentumhoz van egy, a fő részek azonosítására szolgáló kibontási gyakorlat. Ez egy leépítési gyakorlat, amely csökkenti a tartalmat egy gyorsan feldolgozható mennyiségre.
 
-1. Az 50-dokumentumok mindegyikét már egyetlen hosszú karakterlánc jelöli. Ezt a karakterláncot a rendszer elküldi az összefoglaló modellnek. Az összefoglaló modell feliratokat (és válaszokat) hoz létre a gépi olvasási felolvasással, hogy azonosítsa a tartalmat összefoglaló és a kérdés megválaszolásához szükséges részeket. Az összefoglaló modell kimenete egy tovább csökkentett karakterlánc, amely legfeljebb 128 tokenből áll.
+1. Minden 50-dokumentum esetében a searchFields paraméter minden mezője egymást követő sorrendben lesz kiértékelve. Az egyes mezők tartalma egyetlen hosszú sztringbe van összevonva. 
 
-1. A kisebb sztring lesz a dokumentum felirata, és a nagyobb karakterláncban található leglényegesebb szakaszokat jelöli. Ezt követően a 50 (vagy kevesebb) feliratot rendezi a rendszer. 
+1. A hosszú karakterláncot ezután a rendszer kivágja, hogy a teljes hossz ne legyen több, mint 8 000 token. Ezért javasoljuk, hogy először a tömör mezőket helyezze el, hogy azok szerepeljenek a karakterláncban. Ha nagyon nagy méretű, szöveggel ellátott mezőket tartalmazó dokumentumokkal rendelkezik, a rendszer figyelmen kívül hagyja a jogkivonat-korlátot.
 
-Az elméleti és szemantikai jelentőséget a vektoros ábrázolási és a kifejezési fürtök alkotják. Míg a kulcsszó hasonlósági algoritmusa a lekérdezés bármely kifejezéséhez egyenlő súlyt adhat, a szemantikai modell betanítása megtörtént a egymástól és a kapcsolatok olyan szavak közötti kapcsolatának felismerésére, amelyek egyébként nem kapcsolódnak a felülethez. Ennek eredményeképpen, ha egy lekérdezési sztring azonos fürthöz tartozó kifejezéseket tartalmaz, akkor a kettőt tartalmazó dokumentum magasabb rangú, mint egy nem.
+1. Minden dokumentumot egy olyan hosszú karakterlánc képvisel, amely legfeljebb 8 000 tokenből áll. Ezeket a karakterláncokat az összefoglaló modellbe küldi a rendszer, amely tovább csökkenti a karakterláncot. Az összefoglaló modell kiértékeli a hosszú karakterláncot a dokumentum legjobban összefoglaló mondatok vagy szövegrészek esetében, vagy válaszol a kérdésre.
 
-:::image type="content" source="media/semantic-search-overview/semantic-vector-representation.png" alt-text="A környezet vektoros ábrázolása" border="true":::
+1. A fázis kimenete egy felirat (és opcionálisan egy válasz). A felirat legfeljebb 128 tokent tartalmazó dokumentum, és a dokumentum legalkalmasabbnak számít.
+
+### <a name="scoring-and-ranking-phases"></a>Pontozási és rangsorolási fázisok
+
+Ebben a fázisban a rendszer az összes 50 feliratot kiértékeli a relevancia értékeléséhez.
+
+1. A pontozás meghatározása az egyes feliratok elméleti és szemantikai relevanciára való kiértékelésével történik, a megadott lekérdezéshez képest.
+
+   A következő ábra a "szemantikai relevancia" fogalmát mutatja be. Vegye figyelembe a "Capital" kifejezést, amely pénzügyi, jogi, földrajzi vagy nyelvtani kontextusban használható. Ha egy lekérdezés azonos vektoros területből származó kifejezéseket tartalmaz (például "Capital" és "Investment"), akkor az ugyanabban a fürtben lévő jogkivonatokat is tartalmazó dokumentumok nagyobb pontszámot kapnak, mint az egyik, ami nem.
+
+   :::image type="content" source="media/semantic-search-overview/semantic-vector-representation.png" alt-text="A környezet vektoros ábrázolása" border="true":::
+
+1. A fázis kimenete az @search.rerankerScore egyes dokumentumokhoz van rendelve. Az összes dokumentum kiértékelése után a rendszer csökkenő sorrendben sorolja fel őket, és tartalmazza a lekérdezési válasz hasznos adatait.
 
 ## <a name="next-steps"></a>Következő lépések
 
-A szemantikai rangsorolást a standard szinteken, adott régiókban kínáljuk. További információért és a regisztrációhoz tekintse meg a [rendelkezésre állást és a díjszabást](semantic-search-overview.md#availability-and-pricing).
-
-Az új lekérdezési típus lehetővé teszi a szemantikai keresés fontossági sorrendjét és reagálási struktúráját. [Hozzon létre egy szemantikai lekérdezést](semantic-how-to-query-request.md) a kezdéshez.
+A szemantikai rangsorolást a standard szinteken, adott régiókban kínáljuk. További információért és a regisztrációhoz tekintse meg a [rendelkezésre állást és a díjszabást](semantic-search-overview.md#availability-and-pricing). Az új lekérdezési típus lehetővé teszi a szemantikai keresés fontossági sorrendjét és reagálási struktúráját. Első lépésként [hozzon létre egy szemantikai lekérdezést](semantic-how-to-query-request.md).
 
 Másik megoldásként tekintse át a következő cikkek valamelyikét a kapcsolódó információkhoz.
 
-+ [Helyesírás-ellenőrzés hozzáadása a lekérdezési feltételekhez](speller-how-to-add.md)
++ [Szemantikai keresés – áttekintés](semantic-search-overview.md)
 + [Szemantikai válasz visszaadása](semantic-answers.md)

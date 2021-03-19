@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 10/06/2020
+ms.date: 03/17/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 5031d097b5d1bdef45dd4b653ae7cef06f5daca0
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: a923f65e5c6183d045f4b7455e0a01edda75d499
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573659"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584337"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Azure Machine Learning munkaterület biztonságossá tétele virtuális hálózatokkal
 
@@ -56,16 +56,12 @@ Az Azure Private link segítségével privát végponton keresztül csatlakozhat
 
 A privát kapcsolati munkaterület beállításával kapcsolatos további információkért lásd: [privát hivatkozás konfigurálása](how-to-configure-private-link.md).
 
+> [!Warning]
+> Ha privát végpontokkal rendelkező munkaterületet biztosít, a saját maga nem biztosítja a végpontok közötti biztonságot. A megoldás egyes összetevőinek biztonságossá tételéhez a cikk további részében ismertetett lépéseket és a VNet sorozatot kell követnie.
+
 ## <a name="secure-azure-storage-accounts-with-service-endpoints"></a>Azure Storage-fiókok biztonságossá tétele szolgáltatási végpontokkal
 
 Azure Machine Learning támogatja a szolgáltatás-végpontok vagy a magánhálózati végpontok használatára konfigurált Storage-fiókokat. Ebből a szakaszból megtudhatja, hogyan védheti meg az Azure Storage-fiókot a szolgáltatási végpontok használatával. Privát végpontok esetén tekintse meg a következő szakaszt.
-
-> [!IMPORTANT]
-> Az _alapértelmezett Storage-fiókot_ a virtuális hálózatban lévő Azure Machine learning vagy _nem alapértelmezett tárolási fiókok_ számára is elhelyezheti.
->
-> A munkaterület létrehozásakor a rendszer automatikusan kiépíti az alapértelmezett Storage-fiókot.
->
-> A nem alapértelmezett tárolási fiókok esetében a `storage_account` [ `Workspace.create()` függvény](/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) paramétere lehetővé teszi egyéni Storage-fiók megadását az Azure erőforrás-azonosító alapján.
 
 Ha egy virtuális hálózatban lévő munkaterülethez Azure Storage-fiókot szeretne használni, kövesse az alábbi lépéseket:
 
@@ -73,18 +69,18 @@ Ha egy virtuális hálózatban lévő munkaterülethez Azure Storage-fiókot sze
 
    [![Az Azure Machine Learning munkaterülethez csatolt tárterület](./media/how-to-enable-virtual-network/workspace-storage.png)](./media/how-to-enable-virtual-network/workspace-storage.png#lightbox)
 
-1. A Storage-szolgáltatásfiók lapon válassza a __tűzfalak és virtuális hálózatok__ lehetőséget.
+1. A Storage-szolgáltatásfiók lapon válassza a __hálózatkezelés__ lehetőséget.
 
-   ![A Azure Portal Azure Storage lapjának "tűzfalak és virtuális hálózatok" területén](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
+   ![A Azure Portal Azure Storage lapján található hálózatkezelési felület](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
 
-1. A __tűzfalak és virtuális hálózatok__ oldalon hajtsa végre a következő műveleteket:
+1. A __tűzfalak és virtuális hálózatok__ lapon végezze el a következő műveleteket:
     1. Válassza a __Kijelölt hálózatok__ lehetőséget.
     1. A __virtuális hálózatok__ területen válassza a __meglévő virtuális hálózati kapcsolat hozzáadása__ elemet. Ez a művelet hozzáadja azt a virtuális hálózatot, ahol a számítás található (lásd: 1. lépés).
 
         > [!IMPORTANT]
         > A Storage-fióknak ugyanabban a virtuális hálózatban és alhálózatban kell lennie, mint a képzéshez vagy következtetéshez használt számítási példányok vagy fürtök.
 
-    1. Jelölje be a __megbízható Microsoft-szolgáltatások számára a Storage-fiók elérésének engedélyezése__ jelölőnégyzetet. Ez nem biztosít hozzáférést az összes Azure-szolgáltatáshoz a Storage-fiókhoz.
+    1. Jelölje be a __megbízható Microsoft-szolgáltatások számára a Storage-fiók elérésének engedélyezése__ jelölőnégyzetet. Ez a változás nem biztosít hozzáférést az összes Azure-szolgáltatáshoz a Storage-fiókhoz.
     
         * Az **előfizetésében regisztrált** egyes szolgáltatások erőforrásai hozzáférhetnek az **előfizetésben található Storage-** fiókhoz a Select műveletekhez. Például naplókat írhat vagy biztonsági másolatokat készíthet.
         * Egyes szolgáltatások erőforrásai explicit módon férhetnek hozzá a Storage-fiókhoz, ha __egy Azure-szerepkört rendel__ hozzá a rendszerhez rendelt felügyelt identitáshoz.
@@ -101,12 +97,12 @@ Ha egy virtuális hálózatban lévő munkaterülethez Azure Storage-fiókot sze
 ## <a name="secure-azure-storage-accounts-with-private-endpoints"></a>Privát végpontokkal rendelkező Azure Storage-fiókok biztonságossá tétele
 
 Azure Machine Learning támogatja a szolgáltatás-végpontok vagy a magánhálózati végpontok használatára konfigurált Storage-fiókokat. Ha a Storage-fiók privát végpontokat használ, két magánhálózati végpontot kell konfigurálnia az alapértelmezett Storage-fiókhoz:
-1. Egy titkos végpont egy **blob** Target alerőforrással.
+1. Egy **blob** Target alerőforrással rendelkező privát végpont.
 1. Egy privát végpont egy **fájlmegosztási** alerőforrással (fájlmegosztás).
 
 ![A privát végpontok konfigurációs lapját bemutató képernyőfelvétel a blob és a fájl beállításaival](./media/how-to-enable-studio-virtual-network/configure-storage-private-endpoint.png)
 
-Ha olyan Storage-fiókhoz szeretne magánhálózati végpontot beállítani, amely **nem** az alapértelmezett tároló, válassza ki a hozzáadni kívánt Storage-fióknak megfelelő **alerőforrás-** típust.
+Ha olyan Storage-fiókhoz szeretne magánhálózati végpontot beállítani, amely **nem** az alapértelmezett tároló, válassza ki a hozzáadni kívánt Storage-fióknak megfelelő **cél alerőforrás** -típust.
 
 További információ: [privát végpontok használata az Azure Storage](../storage/common/storage-private-endpoints.md) -hoz
 
@@ -118,7 +114,7 @@ Az SDK-val való hozzáféréshez az egyes szolgáltatásokhoz szükséges hitel
 
 ### <a name="disable-data-validation"></a>Adatérvényesítés letiltása
 
-Alapértelmezés szerint a Azure Machine Learning az adatok érvényességét és a hitelesítő adatokat ellenőrzi, amikor az SDK használatával próbál hozzáférni az adatokhoz. Ha az adatközpont egy virtuális hálózat mögött található, Azure Machine Learning nem tudja befejezni ezeket az ellenőrzéseket. Ennek elkerüléséhez létre kell hoznia az érvényesítést kihagyó adattárolókat és adatkészleteket.
+Alapértelmezés szerint a Azure Machine Learning az adatok érvényességét és a hitelesítő adatokat ellenőrzi, amikor az SDK használatával próbál hozzáférni az adatokhoz. Ha az adatközpont egy virtuális hálózat mögött található, Azure Machine Learning nem tudja befejezni ezeket az ellenőrzéseket. Az ellenőrzés megkerüléséhez létre kell hoznia az érvényesítést kihagyó adattárokat és adatkészleteket.
 
 ### <a name="use-datastores"></a>Adattárolók használata
 
@@ -195,7 +191,13 @@ Ha Azure Container Registryt szeretne használni egy virtuális hálózaton bel�
 
     Ha az ACR egy virtuális hálózat mögött van, Azure Machine Learning nem tud közvetlenül Docker-lemezképeket felépíteni. Ehelyett a rendszer a számítási fürtöt használja a rendszerképek létrehozásához.
 
+    > [!IMPORTANT]
+    > A Docker-rendszerképek létrehozásához használt számítási fürtnek képesnek kell lennie a modellek betanításához és üzembe helyezéséhez használt csomag-Tárházak elérésére. Előfordulhat, hogy olyan hálózati biztonsági szabályokat kell felvennie, amelyek engedélyezik a nyilvános repók elérését, [privát Python-csomagokat használhatnak](how-to-use-private-python-packages.md), vagy olyan [Egyéni Docker-rendszerképeket](how-to-train-with-custom-image.md) használnak, amelyek már tartalmazzák a csomagokat
+
 A követelmények teljesítése után a következő lépésekkel engedélyezheti a Azure Container Registry.
+
+> [!TIP]
+> Ha nem használ meglévő Azure Container Registry a munkaterület létrehozásakor, akkor előfordulhat, hogy az egyik nem létezik. Alapértelmezés szerint a munkaterület nem hoz létre ACR-példányt, amíg erre szüksége van. Ha a szakasz lépéseinek használata előtt szeretné kényszeríteni egy adott modell létrehozását, betanítását vagy üzembe helyezését a munkaterületen.
 
 1. Keresse meg a munkaterülethez tartozó Azure Container Registry nevét az alábbi módszerek egyikének használatával:
 
@@ -217,6 +219,8 @@ A követelmények teljesítése után a következő lépésekkel engedélyezheti
 
 1. Korlátozza a virtuális hálózathoz való hozzáférést a [hálózati hozzáférés konfigurálása a beállításjegyzékben](../container-registry/container-registry-vnet.md#configure-network-access-for-registry)című témakör lépéseit követve. A virtuális hálózat hozzáadásakor válassza ki a virtuális hálózatot és az alhálózatot a Azure Machine Learning erőforrásaihoz.
 
+1. Konfigurálja az ACR-t a munkaterület számára a [megbízható szolgáltatások általi hozzáférés engedélyezéséhez](../container-registry/allow-access-trusted-services.md).
+
 1. A Azure Machine Learning Python SDK használatával konfigurálhat egy számítási fürtöt a Docker-rendszerképek létrehozásához. A következő kódrészlet bemutatja, hogyan teheti meg ezt:
 
     ```python
@@ -225,6 +229,8 @@ A követelmények teljesítése után a következő lépésekkel engedélyezheti
     ws = Workspace.from_config()
     # Update the workspace to use an existing compute cluster
     ws.update(image_build_compute = 'mycomputecluster')
+    # To switch back to using ACR to build (if ACR is not in the VNet):
+    # ws.update(image_build_compute = None)
     ```
 
     > [!IMPORTANT]

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2895588a5a82ec2b6c69d33ff6cea39bbe3a0372
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 8ff9fe969c90a2bb4aa9f954b984f511fb490ba3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103491996"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579144"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Feltételes hozzáférés: felhőalapú alkalmazások vagy műveletek
 
@@ -131,7 +131,7 @@ A felhasználói műveletek olyan feladatok, amelyeket a felhasználók elvégez
 
 - **Eszközök regisztrálása vagy csatlakoztatása (előzetes verzió)**: Ez a felhasználói művelet lehetővé teszi a rendszergazdák számára a feltételes hozzáférési szabályzat kikötését, amikor a felhasználók [regisztrálják](../devices/concept-azure-ad-register.md) vagy [csatlakoztatják](../devices/concept-azure-ad-join.md) az eszközöket az Azure ad Ennek a felhasználói műveletnek két fő szempontja van: 
    - `Require multi-factor authentication` az egyetlen elérhető hozzáférés-vezérlés ezzel a felhasználói művelettel, és minden más le van tiltva. Ez a korlátozás megakadályozza az olyan hozzáférés-vezérlési ütközéseket, amelyek az Azure AD-eszközök regisztrációja vagy nem alkalmazhatók az Azure AD-eszközök regisztrálására. 
-   - Ha a feltételes hozzáférési szabályzat engedélyezve van ezzel a felhasználói művelettel, a nem értékre kell állítania a **Azure Active Directory**  >  **eszköz**  >  **beállításait**  -  `Devices to be Azure AD joined or Azure AD registered require Multi-Factor Authentication` .  Ellenkező esetben az ezzel a felhasználói művelettel rendelkező feltételes hozzáférési szabályzatok nem megfelelően lettek kikényszerítve. Az eszköz beállításával kapcsolatos további információkért tekintse meg az [eszközbeállítások konfigurálása](../device-management-azure-portal.md##configure-device-settings)című részt. Ez a felhasználói művelet rugalmasságot biztosít a többtényezős hitelesítés megköveteléséhez egy adott felhasználóhoz és csoporthoz vagy feltételhez tartozó eszközök regisztrálásához vagy csatlakoztatásához ahelyett, hogy a teljes bérlőre kiterjedő szabályzatot kellene használnia az eszközbeállítások során. 
+   - Ha a feltételes hozzáférési szabályzat engedélyezve van ezzel a felhasználói művelettel, a nem értékre kell állítania a **Azure Active Directory**  >  **eszköz**  >  **beállításait**  -  `Devices to be Azure AD joined or Azure AD registered require Multi-Factor Authentication` .  Ellenkező esetben az ezzel a felhasználói művelettel rendelkező feltételes hozzáférési szabályzatok nem megfelelően lettek kikényszerítve. Az eszköz beállításával kapcsolatos további információkért tekintse meg az [eszközbeállítások konfigurálása](../devices/device-management-azure-portal.md#configure-device-settings)című részt. Ez a felhasználói művelet rugalmasságot biztosít a többtényezős hitelesítés megköveteléséhez egy adott felhasználóhoz és csoporthoz vagy feltételhez tartozó eszközök regisztrálásához vagy csatlakoztatásához ahelyett, hogy a teljes bérlőre kiterjedő szabályzatot kellene használnia az eszközbeállítások során. 
    
 ## <a name="next-steps"></a>Következő lépések
 

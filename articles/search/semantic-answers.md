@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: b99cbf91d7fc1c5d90753dfa1461a58eda055180
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: e467affd3ba1b839ce3323e3689d7f5134a0686f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103418895"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604304"
 ---
 # <a name="return-a-semantic-answer-in-azure-cognitive-search"></a>Szemantikai válasz visszaadása az Azure Cognitive Searchban
 
@@ -63,7 +63,7 @@ A "searchFields" paraméter kritikus fontosságú a magas minőségi válaszok v
 
 + A lekérdezési karakterlánc nem lehet null értékű, és kérdésként kell megfogalmazni. Ebben az előzetes verzióban a "queryType" és a "queryLanguage" beállításnak pontosan a példában látható módon kell megadnia.
 
-+ A "searchFields" paraméter határozza meg, hogy mely mezők biztosítanak jogkivonatot a kinyerési modellnek. Ügyeljen rá, hogy ezt a paramétert adja meg. Legalább egy sztring mezőnek szerepelnie kell, de tartalmaznia kell egy olyan karakterlánc-mezőt, amelyet úgy gondol, hogy a válasz megadásához hasznos. A rendszer csak körülbelül 8 000 tokent ad át a modellnek. A mezőlista rövid mezőkkel indítható el, majd haladjon át a szöveggel formázott mezőkkel. A mező beállításával kapcsolatos pontos útmutatásért lásd: [SearchFields beállítása](semantic-how-to-query-request.md#searchfields).
++ A "searchFields" paraméter határozza meg, hogy mely mezők biztosítanak jogkivonatot a kinyerési modellnek. Ügyeljen rá, hogy ezt a paramétert adja meg. Legalább egy sztring mezőnek szerepelnie kell, de tartalmaznia kell egy olyan karakterlánc-mezőt, amelyet úgy gondol, hogy a válasz megadásához hasznos. A searchFields összes mezőjébe együttesen csak körülbelül 8 000 token kerül át a modellbe. A mezőlista rövid mezőkkel indítható el, majd haladjon át a szöveggel formázott mezőkkel. A mező beállításával kapcsolatos pontos útmutatásért lásd: [SearchFields beállítása](semantic-how-to-query-request.md#searchfields).
 
 + A "válaszok" esetében az alapszintű paraméterek építése az `"answers": "extractive"` , ahol a visszaadott válaszok alapértelmezett száma egy. Megnövelheti a válaszok számát egy szám hozzáadásával, legfeljebb öt értékkel.  Akár egynél több válaszra van szüksége, az alkalmazás felhasználói élménytől függ, és hogyan szeretné megjeleníteni az eredményeket.
 
@@ -115,15 +115,15 @@ A "How Do felhők Form" lekérdezés miatt a válasz a következő választ adja
 
 A legjobb eredmények érdekében az alábbi jellemzőkkel rendelkező dokumentumokra vonatkozó szemantikai válaszokat kell visszaadnia:
 
-+ a "searchFields" tartalmaznia kell egy vagy több olyan mezőt, amely elegendő szöveget biztosít, amelyben a válasz valószínűleg található.
-
-+ A szemantikai kivonás és az összefoglalás korlátozza a tartalom időben történő elemzésének mennyiségét. Együttesen csak az első 20 000 token van elemezve. Ezt a rendszer figyelmen kívül hagyja. Ha olyan nagyméretű dokumentumokkal rendelkezik, amelyek több száz oldalra futnak, akkor először a felügyelhető részekre kell bontania a tartalmat.
++ a "searchFields" olyan mezőket kell biztosítania, amelyek elegendő szöveget biztosítanak, amelyben a válasz valószínűleg található. Csak a dokumentum Verbatim szövege lehet válaszként megjelenni.
 
 + a lekérdezési karakterláncok nem lehetnek null értékűek (Search = `*` ), és a sztringnek tartalmaznia kell egy kérdés jellemzőit, szemben a kulcsszavas kereséssel (az önkényes kifejezések vagy kifejezések szekvenciális listája). Ha a lekérdezési karakterlánc nem válaszol, a rendszer kihagyja a válasz feldolgozását, még akkor is, ha a kérelem lekérdezési paraméterként a "válaszok" kifejezést adja meg.
+
++ A szemantikai kivonás és az összefoglalás korlátozza a dokumentumok egy adott időben történő elemzéséhez szükséges jogkivonatok számát. Ha olyan nagyméretű dokumentumokkal rendelkezik, amelyek több száz oldalra futnak, érdemes a tartalmat a kisebb dokumentumokra bontani.
 
 ## <a name="next-steps"></a>Következő lépések
 
 + [Szemantikai keresés – áttekintés](semantic-search-overview.md)
 + [Szemantikai rangsorolási algoritmus](semantic-ranking.md)
-+ [Hasonlósági algoritmus](index-ranking-similarity.md)
++ [Hasonlósági rangsor algoritmusa](index-ranking-similarity.md)
 + [Szemantikai lekérdezés létrehozása](semantic-how-to-query-request.md)

@@ -3,12 +3,12 @@ title: Azure Functions – alkalmazásbeállítási referencia
 description: A Azure Functions Alkalmazásbeállítások vagy környezeti változók dokumentációja.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 6fa8e2d9fb2270d53d8c0419ac7b4d88d79f30fd
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: fb00f0fe16342bf603d534c34a860278dc21deac
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102425702"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595976"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions – alkalmazásbeállítási referencia
 
@@ -257,9 +257,17 @@ Csak Prémium csomag telepítésekor vagy Windows rendszeren futó használati t
 
 Amikor az üzembe helyezés során egy Azure Resource Manager használatával hoz létre egy Function-alkalmazást, a sablonban ne szerepeljenek WEBSITE_CONTENTSHARE. Ez az Alkalmazásbeállítás a telepítés során jön létre. További információ: az [erőforrás-telepítés automatizálása a Function alkalmazáshoz](functions-infrastructure-as-code.md#windows).   
 
+## <a name="website_dns_server"></a>WEBHELY \_ DNS- \_ kiszolgálója
+
+Az IP-címek feloldásakor az alkalmazás által használt DNS-kiszolgálót állítja be. Ez a beállítás gyakran szükséges bizonyos hálózati funkciók, például a [Azure DNS privát zónák](functions-networking-options.md#azure-dns-private-zones) és a [magánhálózati végpontok](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network)használatakor.   
+
+|Kulcs|Mintaérték|
+|---|------------|
+|WEBHELY \_ DNS- \_ kiszolgálója|168.63.129.16|
+
 ## <a name="website_max_dynamic_application_scale_out"></a>a webhely \_ maximális \_ dinamikus alkalmazás- \_ \_ felskálázása \_
 
-Azon példányok maximális száma, amelyeket a Function alkalmazás fel tud skálázásra. Az alapértelmezett érték nem korlát.
+Azon példányok maximális száma, amelyeket az alkalmazás fel tud skálázásra. Az alapértelmezett érték nem korlát.
 
 > [!IMPORTANT]
 > Ez a beállítás előzetes verzióban érhető el.  A [maximális felskálázás funkcióhoz tartozó app Property](./event-driven-scaling.md#limit-scale-out) hozzáadása megtörtént, és az ajánlott módszer a felskálázás korlátozására.
@@ -297,6 +305,14 @@ Lehetővé teszi a Function alkalmazás időzónájának beállítását.
 |WEBHELY \_ \_ időzónája|Linux|Amerika/New_York|
 
 [!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
+
+## <a name="website_vnet_route_all"></a>WEBHELY \_ VNET \_ útvonala \_
+
+Azt jelzi, hogy az alkalmazásból érkező összes kimenő forgalom a virtuális hálózaton keresztül van-e irányítva. A Setting érték `1` azt jelzi, hogy az összes forgalmat a virtuális hálózaton keresztül irányítja a rendszer. Ezt a beállítást akkor kell használni, ha a [regionális virtuális hálózati integráció](functions-networking-options.md#regional-virtual-network-integration)funkcióit használja. Ez akkor is használatos, amikor egy [virtuális hálózati NAT-átjárót használ a statikus kimenő IP-cím definiálásához](functions-how-to-use-nat-gateway.md). 
+
+|Kulcs|Mintaérték|
+|---|------------|
+|WEBHELY \_ VNET \_ útvonala \_|1|
 
 ## <a name="next-steps"></a>Következő lépések
 

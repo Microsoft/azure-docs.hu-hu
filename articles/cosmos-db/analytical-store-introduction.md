@@ -4,15 +4,15 @@ description: Ismerkedjen meg Azure Cosmos DB tranzakciós (sor-alapú) és anali
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 03/16/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 5dc233348188791404f826870b235d2bdfa4c202
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bca4eb7f5f266a639916c0f8e520f025d259c39b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452859"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577359"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Mi az Azure Cosmos DB analitikus tároló?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -65,32 +65,60 @@ Az automatikus szinkronizálás a Azure Cosmos DB teljes körűen felügyelt ké
 
 Az automatikus szinkronizálási képesség az analitikai tárolóval együtt a következő alapvető előnyöket nyújtja:
 
-#### <a name="scalability--elasticity"></a>Méretezhetőség & rugalmasság
+### <a name="scalability--elasticity"></a>Méretezhetőség & rugalmasság
 
 A horizontális particionálással a Azure Cosmos DB tranzakciós tároló rugalmasan méretezheti a tárterületet és az átviteli sebességet anélkül, hogy leállás nélkül lenne. A tranzakciós tárolóban a horizontális particionálás rugalmas & rugalmasságot biztosít az automatikus szinkronizálásban, így biztosítva, hogy az adatkezelés közel valós időben történjen az analitikai tárolóba. Az adatszinkronizálás a tranzakciós adatforgalomtól függetlenül történik, függetlenül attól, hogy 1000 művelet/mp vagy 1 000 000 művelet/mp, és nem befolyásolja a tranzakciós tárolóban kiépített átviteli sebességet. 
 
-#### <a name="automatically-handle-schema-updates"></a><a id="analytical-schema"></a>Séma frissítéseinek automatikus kezelése
+### <a name="automatically-handle-schema-updates"></a><a id="analytical-schema"></a>Séma frissítéseinek automatikus kezelése
 
 Azure Cosmos DB tranzakciós tároló a séma-agnosztikus, és lehetővé teszi, hogy a tranzakciós alkalmazásait a séma vagy az indexelés kezelése nélkül lehessen megismételni. Ezzel szemben Azure Cosmos DB Analytical Store sematikus az analitikai lekérdezési teljesítmény optimalizálása érdekében. Az automatikus szinkronizálási képességgel Azure Cosmos DB felügyeli a séma következtetéseit a tranzakciós tároló legújabb frissítésein.  Emellett a séma-ábrázolást is kezeli az analitikus tárolóban, amely magában foglalja a beágyazott adattípusok kezelését.
 
 Ahogy a séma fejlődik, és az új tulajdonságok idővel bővülnek, az analitikai tároló automatikusan a tranzakciós tároló összes korábbi sémájában egyesítő sémát jelenít meg.
 
-##### <a name="schema-constraints"></a>Séma megkötései
+#### <a name="schema-constraints"></a>Séma megkötései
 
 A következő megkötések alkalmazhatók a Azure Cosmos DB lévő operatív adatra, amikor az analitikai tároló automatikusan kikövetkeztet és helyesen jelöli meg a sémát:
 
-* Legfeljebb 200 tulajdonságot tartalmazhat a séma bármely beágyazási szintjén, és a maximális beágyazási mélység 5.
+* Legfeljebb 1000 tulajdonságot tartalmazhat a séma bármely beágyazási szintjén, valamint a maximálisan megengedett 127-os mélységet.
+  * Az analitikai tárolóban csak az első 1000-tulajdonságok jelennek meg.
+  * Az analitikai tárolóban csak az első 127 beágyazott szint jelenik meg.
+
+* Míg a JSON-dokumentumok (és Cosmos DB gyűjtemények/tárolók) az egyediség szempontjából érzékenyek a kis-és nagybetűkre, az analitikai tároló nem.
+
+  * **Ugyanebben a dokumentumban:** Az azonos szintű tulajdonságok neveinek egyedinek kell lenniük, ha a kis-és nagybetűket összehasonlítják. A következő JSON-dokumentum például azonos szinten található: "Name" és "Name". Habár érvényes JSON-dokumentum, nem felel meg az egyediségi megkötésnek, ezért a rendszer nem fogja teljes mértékben megjeleníteni az analitikai tárolóban. Ebben a példában a "név" és a "név" a kis-és nagybetűket megkülönböztető módon hasonlítja össze. Csak `"Name": "fred"` az analitikus tárolóban lesz megjelenítve, mert ez az első előfordulás. És `"name": "john"` egyáltalán nem fog megjelenni.
   
-  * A legfelső szintű 201 tulajdonságokkal rendelkező elemek nem elégítik ki ezt a korlátozást, ezért az analitikai tárolóban nem jelennek meg.
-  * A sémában ötnél több beágyazott szinttel rendelkező elemek nem elégítik ki ezt a korlátozást, ezért nem lesznek megjelenítve az analitikus tárolóban. Például a következő elem nem felel meg a követelménynek:
+  
+  ```json
+  {"id": 1, "Name": "fred", "name": "john"}
+  ```
+  
+  * **Különböző dokumentumokban:** Ugyanazon a szinten és ugyanazzal a névvel, de különböző esetekben a tulajdonságok ugyanabban az oszlopban lesznek ábrázolva, az első előfordulás nevének formátuma alapján. A következő JSON-dokumentumok például `"Name"` és `"name"` ugyanazon a szinten vannak. Mivel az első dokumentum formátuma `"Name"` , ez a tulajdonság neve lesz az analitikus tárolóban. Ez azt jelenti, hogy az analitikus tárolóban az oszlop neve lesz `"Name"` . `"fred"`A és `"john"` a is képviselteti magát az `"Name"` oszlopban.
 
-     `{"level1": {"level2":{"level3":{"level4":{"level5":{"too many":12}}}}}}`
 
-* A tulajdonságok neveinek egyedinek kell lenniük, ha a kis-és nagybetűket összehasonlítják. A következő elemek például nem elégítik ki ezt a korlátozást, ezért nem jelennek meg az analitikus tárolóban:
+  ```json
+  {"id": 1, "Name": "fred"}
+  {"id": 2, "name": "john"}
+  ```
 
-  `{"Name": "fred"} {"name": "john"}` – A "Name" és a "Name" ugyanaz, mint a kis-és nagybetűk megkülönböztetése.
 
-##### <a name="schema-representation"></a>Séma ábrázolása
+* A gyűjtemény első dokumentuma határozza meg a kezdeti analitikai tárolási sémát.
+  * A dokumentum első szintjén lévő tulajdonságok oszlopként lesznek megjelenítve.
+  * A kezdeti sémánál nagyobb tulajdonságokkal rendelkező dokumentumok új oszlopokat hoznak majd ki az analitikus tárolóban.
+  * Az oszlopok nem távolíthatók el.
+  * Egy gyűjtemény összes dokumentumának törlése nem állítja vissza az analitikai tároló sémáját.
+  * Nincs séma-verziószámozás. A tranzakciós áruházból kikövetkeztetett utolsó verzió az, amit az analitikus tárolóban fog látni.
+
+* Jelenleg nem támogatjuk az Azure szinapszis Spark olvasási oszlopának nevét, amely üres karaktereket (szóközöket) tartalmaz.
+
+* Eltérő viselkedés várható az értékek tekintetében `NULL` :
+  * Az Azure Szinapszisban található Spark-készletek ezeket az értékeket 0 (nulla) értékként fogják beolvasni.
+  * Az Azure Szinapszisban az SQL Server nélküli készletek ezeket az értékeket fogják beolvasni `NULL` .
+
+* A hiányzó oszlopok tekintetében eltérő viselkedés várható:
+  * Az Azure Szinapszisban található Spark-készletek ezeket az oszlopokat jelölik `undefined` .
+  * Az Azure Szinapszisban az SQL Server nélküli készletek ezeket az oszlopokat jelölik `NULL` .
+
+#### <a name="schema-representation"></a>Séma ábrázolása
 
 Az elemzési tárban két módon lehet ábrázolni a sémákat. Mindkettő kompromisszumos megoldást jelent az oszlopos ábrázolás egyszerűsége, a polimorf sémák kezelése és a lekérdezés egyszerűsége szempontjából:
 
@@ -106,7 +134,7 @@ A jól definiált séma-ábrázolás egy egyszerű táblázatos ábrázolást ho
 
 * Egy tulajdonságnak mindig ugyanaz a típusa több elemen belül.
 
-  * Például `{"a":123} {"a": "str"}` nem rendelkezik jól definiált sémával, mert `"a"` néha egy sztring, és néha egy szám. Ebben az esetben az analitikai tároló regisztrálja az adattípust az adattípusként `“a”` `“a”` a tároló élettartamában lévő első előfordulási elemben. Azok az elemek, amelyekben a különböző adattípusok `“a”` nem fognak szerepelni az analitikus tárolóban.
+  * Például `{"a":123} {"a": "str"}` nem rendelkezik jól definiált sémával, mert `"a"` néha egy sztring, és néha egy szám. Ebben az esetben az analitikai tároló regisztrálja az adattípust az adattípusként `"a"` `“a”` a tároló élettartamában lévő első előfordulási elemben. A dokumentum továbbra is szerepelni fog az analitikus tárolóban, de azok az elemek, amelyekben a különböző adattípusok `"a"` nem változnak.
   
     Ez az állapot nem vonatkozik a null tulajdonságokra. Például `{"a":123} {"a":null}` még mindig jól definiálva van.
 
@@ -150,12 +178,12 @@ Itt látható az összes tulajdonság adattípusa és az utótag-ábrázolások 
 | Dupla |  ".float64" |    24,99|
 | Tömb | ". Array" |    ["a", "b"]|
 |Bináris | ". Binary" |0|
-|Logikai érték    | ". bool"   |Igaz|
+|Logikai    | ". bool"   |Igaz|
 |Int32  | ". Int32"  |123|
 |Int64  | ". Int64"  |255486129307|
 |Null   | ". null"   | null|
 |Sztring|    ". String" | „ABC”|
-|Timestamp |    ". Timestamp" |  Időbélyeg (0, 0)|
+|Időbélyeg |    ". Timestamp" |  Időbélyeg (0, 0)|
 |DateTime   |". Date"    | ISODate ("2020-08-21T07:43:07.375 Z")|
 |ObjectId   |". objectId"    | ObjectId ("5f3f7b59330ec25c132623a2")|
 |Dokumentum   |". Object" |    {"a": "a"}|
@@ -226,11 +254,11 @@ Ha az analitikai tárolót egy tárolón engedélyezi:
 
 További információ: [az analitikai élettartam konfigurálása egy tárolón](configure-synapse-link.md#create-analytical-ttl).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információért lásd a következő dokumentumokat:
 
-* [Az Azure szinapszis hivatkozása Azure Cosmos DB](synapse-link.md)
+* [Azure Cosmos DB-hez készült Azure Synapse Link](synapse-link.md)
 
 * [Az Azure Cosmos DB-hez készült Azure Synapse Link használatának első lépései](configure-synapse-link.md)
 

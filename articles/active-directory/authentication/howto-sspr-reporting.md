@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a764538ebc73927b1d274b2538e123ec90ce60e
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 5ad1b8318e261c7dfef7fc125716736087a84bdc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741558"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579178"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Az Azure AD-jelszókezelés jelentéskészítési lehetőségei
 
@@ -169,9 +169,9 @@ A következő lista részletesen ismerteti ezt a tevékenységet:
      >[!NOTE]
      >A hiba nem jelenti azt, hogy a felhasználó nem tudja visszaállítani a saját jelszavát. Ez azt jelenti, hogy nem fejezték be a regisztrációs folyamatot. Ha a fiókjában nem ellenőrzött adatok szerepelnek, például a telefonszámot, amely nincs érvényesítve, még akkor is, ha nem ellenőrizte ezt a telefonszámot, továbbra is használhatja a jelszavát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [SSPR és MFA-használati és-bejelentési jelentések](howto-authentication-methods-usage-insights.md)
+* [SSPR és MFA-használati és-bejelentési jelentések](./howto-authentication-methods-activity.md)
 * [Hogyan végezhető el az SSPR sikeres bevezetése?](howto-sspr-deployment.md)
 * [Új jelszó kérése vagy jelszó módosítása](../user-help/active-directory-passwords-update-your-own-password.md).
 * [Regisztráció új jelszó önkiszolgáló kérésére](../user-help/active-directory-passwords-reset-register.md).

@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: c72ae2a2e6dbd2278bdd78f26c145386be22764e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 413f0be32b54ee6da39934cf3f8753246fbce924
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175430"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578804"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Gyors útmutató: alkalmazás regisztrálása a Microsoft Identity platformmal
 
@@ -44,7 +44,7 @@ Az alkalmazás regisztrációjának létrehozásához kövesse az alábbi lépé
     Bármikor módosíthatja a megjelenítendő nevet, és több alkalmazás-regisztráció is megosztható. Az alkalmazás regisztrációjának automatikusan generált alkalmazása (ügyfél) azonosítója, nem a megjelenítendő neve, a rendszer egyedileg azonosítja az alkalmazást az Identity platformon belül.
 1. Itt adhatja meg, hogy ki használhatja ki az alkalmazást, más néven a *bejelentkezési közönségnek*.
 
-    | Támogatott fióktípusok | Leírás |
+    | Támogatott fióktípusok | Description |
     |-------------------------|-------------|
     | **Csak az ebben a szervezeti címtárban található fiókok** | Akkor válassza ezt a lehetőséget, ha olyan alkalmazást hoz létre, amelyet csak felhasználók (vagy vendégek) használhatnak *a* bérlőben.<br><br>Gyakran *üzletági (LOB* ) alkalmazásnak nevezik, ez az alkalmazás egy *egybérlős* alkalmazás a Microsoft Identity platformon. |
     | **Tetszőleges szervezeti címtárban található fiókok** | Válassza ezt a lehetőséget, ha azt szeretné, hogy a felhasználók *bármely* Azure Active Directory (Azure ad-) bérlőben használni tudják az alkalmazást. Ez a beállítás akkor lehet hasznos, ha például olyan szoftveres (SaaS) alkalmazást készít, amelyet több szervezet számára szeretne biztosítani.<br><br>Ezt a fajta alkalmazást több- *bérlős* alkalmazásnak nevezzük a Microsoft Identity platformon. |
@@ -89,7 +89,7 @@ Alkalmazásbeállítások konfigurálása a célzott platform vagy eszköz alapj
     | **Egyoldalas alkalmazás** | Adjon meg egy **átirányítási URI** -t az alkalmazáshoz. Ez az URI az a hely, ahol a Microsoft Identity platform átirányítja a felhasználó ügyfelét, és biztonsági jogkivonatokat küld a hitelesítés után.<br/><br/>Válassza ezt a platformot, ha a JavaScript vagy egy olyan keretrendszer, például a szögletes, a Vue.js, a React.js vagy a Blazer webszerelvény használatával hoz létre ügyféloldali webalkalmazást. |
     | **iOS/macOS** | Adja meg az alkalmazáscsomag **azonosítóját**. Keresse meg a **Build Settings** vagy a Xcode in *info. plist* fájlban.<br/><br/>A rendszer létrehoz egy átirányítási URI-t a **köteg-azonosító** megadásakor. |
     | **Android** | Adja meg az **alkalmazáscsomag nevét**. Keresse meg a *AndroidManifest.xml* fájlban. Az **aláírási kivonatot** is létrehozza és adja meg.<br/><br/>A rendszer létrehoz egy átirányítási URI-t, amikor megadja ezeket a beállításokat. |
-    | **Mobil-és asztali alkalmazások** | Válassza ki a **javasolt átirányítási URI**-k egyikét. Vagy **Egyéni átirányítási URI**-t is megadunk.<br/><br/>Asztali alkalmazások esetén ajánlott<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>Válassza ki ezt a platformot olyan mobileszközök esetében, amelyek nem a legújabb Microsoft Authentication Library (MSAL) szolgáltatást használják, vagy nem használ közvetítőt. A platformot asztali alkalmazásokhoz is kiválaszthatja. |
+    | **Mobil-és asztali alkalmazások** | Válassza ki a **javasolt átirányítási URI**-k egyikét. Vagy **Egyéni átirányítási URI**-t is megadunk.<br/><br/>A beágyazott böngészőt használó asztali alkalmazások esetében ajánlott<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>A rendszerböngészőt használó asztali alkalmazások esetében ajánlott<br/>`http://localhost`<br/><br/>Válassza ki ezt a platformot olyan mobileszközök esetében, amelyek nem a legújabb Microsoft Authentication Library (MSAL) szolgáltatást használják, vagy nem használ közvetítőt. A platformot asztali alkalmazásokhoz is kiválaszthatja. |
 1. Válassza a **Konfigurálás** lehetőséget a platform konfigurációjának befejezéséhez.
 
 ### <a name="redirect-uri-restrictions"></a>Átirányítási URI-korlátozások

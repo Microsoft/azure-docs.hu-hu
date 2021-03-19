@@ -2,32 +2,32 @@
 title: Fogalmak – vSphere szerepköralapú hozzáférés-vezérlés (vSphere RBAC)
 description: Ismerje meg az Azure VMware-megoldás vSphere szerepköralapú hozzáférés-vezérlésének főbb képességeit
 ms.topic: conceptual
-ms.date: 03/16/2021
-ms.openlocfilehash: 1e49f219fba8317040bfa56f6576a7c1f5b1ae22
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.date: 03/18/2021
+ms.openlocfilehash: c2d27531f7a0acd36b4047e98aac994668f64a09
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573326"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586166"
 ---
 # <a name="vsphere-role-based-access-control-vsphere-rbac-for-azure-vmware-solution"></a>vSphere szerepköralapú hozzáférés-vezérlés (vSphere RBAC) Azure-beli VMware-megoldáshoz
 
 Az Azure VMware megoldásban a vCenter beépített helyi felhasználó nevű cloudadmin, és a beépített CloudAdmin szerepkörhöz van rendelve. A helyi cloudadmin-felhasználó a felhasználók beállítására szolgál az AD-ben. Általánosságban elmondható, hogy a CloudAdmin szerepkör a saját felhőben hozza létre és kezeli a munkaterheléseket. Az Azure VMware megoldásban a CloudAdmin szerepkör olyan vCenter-jogosultságokkal rendelkezik, amelyek eltérnek a többi VMware Cloud-megoldástól.     
 
 > [!NOTE]
-> Az Azure VMware megoldás egyéni szerepköröket kínál a vCenter, de jelenleg nem biztosít számukra az Azure VMware-megoldás portálon. További információt a cikk későbbi, [Egyéni szerepkörök létrehozása a vCenter](#create-custom-roles-on-vcenter) című szakaszában talál. 
+> Az Azure VMware megoldás egyéni szerepköröket kínál a vCenter-ben, és nem biztosítja azokat az Azure VMware Solution portálon. További információt a cikk későbbi, [Egyéni szerepkörök létrehozása a vCenter](#create-custom-roles-on-vcenter) című szakaszában talál. 
 
 A vCenter és az ESXi helyszíni üzembe helyezése során a rendszergazda hozzáférhet a vCenter- administrator@vsphere.local fiókhoz. Több Active Directory (AD) felhasználóhoz/csoporthoz is tartozhatnak. 
 
 Egy Azure VMware-megoldás üzembe helyezése esetén a rendszergazdának nincs hozzáférése a rendszergazdai felhasználói fiókhoz. Az AD-felhasználók és-csoportok azonban hozzárendelhetők a CloudAdmin szerepkörhöz a vCenter.  
 
-A saját felhőalapú felhasználó nem férhet hozzá a Microsoft által támogatott és kezelt felügyeleti összetevőkhöz. Például fürtök, gazdagépek, adattárolók és elosztott virtuális kapcsolók.
+A Private Cloud-felhasználónak nincs hozzáférése, és nem tud konfigurálni a Microsoft által támogatott és kezelt felügyeleti összetevőket. Például fürtök, gazdagépek, adattárolók és elosztott virtuális kapcsolók.
 
 ## <a name="azure-vmware-solution-cloudadmin-role-on-vcenter"></a>Azure VMware-megoldás CloudAdmin-szerepkör a vCenter
 
 Megtekintheti az Azure VMware-megoldás CloudAdmin szerepkörhöz biztosított jogosultságokat az Azure VMware-megoldás saját Felhőbeli vCenter.
 
-1. Jelentkezzen be a SDDC vSphere-ügyfelébe, és lépjen a **menü adminisztráció elemre**  >  .
+1. Jelentkezzen be a vCenter-ba, és lépjen a **menü adminisztráció elemre**  >  .
 1. A **Access Control** területen válassza a **szerepkörök** lehetőséget.
 1. A szerepkörök listájából válassza a **CloudAdmin** lehetőséget, majd válassza a **jogosultságok** lehetőséget. 
 
@@ -62,7 +62,7 @@ Az Azure VMware-megoldás támogatja a CloudAdmin szerepkörrel egyenlő vagy ki
 
 A CloudAdmin szerepkör olyan egyéni szerepköröket hozhat létre, módosíthat vagy törölhet, amelyek az aktuális szerepkörnél kisebb vagy azzal egyenlő jogosultságokkal rendelkeznek. Előfordulhat, hogy olyan szerepköröket hozhat létre, amelyek a CloudAdmin-nál nagyobb jogosultságokkal rendelkeznek, de nem tudja hozzárendelni a szerepkört bármely felhasználóhoz vagy csoporthoz, vagy törölni a szerepkört.
 
-A nem hozzárendelhető vagy nem törölhető szerepkörök létrehozásának megakadályozása érdekében az Azure VMware-megoldás azt javasolja, hogy a CloudAdmin szerepkör klónozása az új egyéni szerepkörök létrehozása alapján történjen.
+A nem hozzárendelhető és nem törölhető szerepkörök létrehozásának megakadályozásához javasolja, hogy a CloudAdmin-szerepkört az új egyéni szerepkörök létrehozása alapján hozza létre.
 
 ### <a name="create-a-custom-role"></a>Egyéni szerepkör létrehozása
 1. Jelentkezzen be a vCenter cloudadmin \@ vSphere. local vagy a cloudadmin szerepkörrel rendelkező felhasználóval.

@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac247b9dc70c565621d3544d14e2f76ff12fda47
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0277d4ce263610576178e3844a0665ab6506fbfa
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101689317"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579161"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-sync"></a>A Azure AD Connect Cloud Sync használatának előfeltételei
 Ez a cikk útmutatást nyújt az Azure Active Directory (Azure AD) felhőalapú szinkronizálásának kiválasztásához és használatához a személyazonossági megoldásként.
@@ -33,10 +33,10 @@ Azure AD Connect Cloud Sync használatához a következőkre lesz szüksége:
 A csoportosan felügyelt szolgáltatásfiók egy felügyelt tartományi fiók, amely automatikus jelszavas kezelést, egyszerűsített egyszerű szolgáltatásnév (SPN) felügyeletet, a felügyelet más rendszergazdák számára való delegálását, valamint a funkció több kiszolgálón való kibővítését is lehetővé teszi.  Azure AD Connect a Cloud Sync támogatja, és gMSA használ az ügynök futtatásához.  A fiók létrehozásához a rendszer kérni fogja a rendszergazdai hitelesítő adatok megadását a telepítés során.  A fiók a következőképpen fog megjelenni: (domain\provAgentgMSA $).  További információ a gMSA: [csoportosan felügyelt szolgáltatásfiókok](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) 
 
 ### <a name="prerequisites-for-gmsa"></a>A gMSA előfeltételei:
-1.  A gMSA tartomány erdő Active Directory sémáját frissíteni kell a Windows Server 2012-re.
+1.  A gMSA tartomány erdő Active Directory sémáját frissíteni kell a Windows Server 2016-re.
 2.  [POWERSHELL RSAT-modulok](/windows-server/remote/remote-server-administration-tools) egy tartományvezérlőn
-3.  A tartomány legalább egy tartományvezérlőjén a Windows Server 201 operációs rendszernek kell futnia.
-4.  Egy tartományhoz csatlakoztatott kiszolgáló, amelyen az ügynök telepítve van, Windows Server 2012 vagy újabb rendszernek kell lennie.
+3.  A tartomány legalább egy tartományvezérlőjén a Windows Server 2016 operációs rendszernek kell futnia.
+4.  Egy tartományhoz csatlakoztatott kiszolgáló, amelyen az ügynök telepítve van, Windows Server 2016 vagy újabb rendszernek kell lennie.
 
 ### <a name="custom-gmsa-account"></a>Egyéni gMSA-fiók
 Ha egyéni gMSA-fiókot hoz létre, gondoskodnia kell arról, hogy a fiók a következő engedélyekkel rendelkezik.

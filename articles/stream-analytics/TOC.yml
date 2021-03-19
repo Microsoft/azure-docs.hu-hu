@@ -44,7 +44,7 @@
 - name: Példák
   items:
     - name: Kódminták
-      href: 'https://docs.microsoft.com/en-us/samples/browse/?products=azure-stream-analytics'
+      href: /samples/browse/?products=azure-stream-analytics
 - name: Alapelvek
   items:
     - name: Teljes körű megoldásminták
@@ -316,13 +316,13 @@
               href: external-error-codes.md
             - name: Belső hibák
               href: internal-error-codes.md
-    - name: Integráció a Machine Learninggel
+    - name: Integrálás Machine Learning
       items:
         - name: Hangulatelemzés Machine Learning-modellekkel
           href: stream-analytics-machine-learning-integration-tutorial.md
         - name: Rendellenességek észlelése
           href: stream-analytics-machine-learning-anomaly-detection.md
-        - name: REST API-k használata
+        - name: ML REST API-k használata
           href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
     - name: Hibakeresés feladatábra segítségével
       href: stream-analytics-job-diagram-with-metrics.md

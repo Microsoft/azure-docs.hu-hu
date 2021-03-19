@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 97b0a4ca3e4fb94a21cbd30a27a3037f45fed782
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: c088625528190ad116676fbb51cec9f8de4b1578
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102487117"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600802"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Lekérdezés az Azure Cognitive Searchban
 
@@ -71,7 +71,7 @@ Cognitive Search a teljes szöveges keresés az Apache Lucene lekérdezési moto
 
 Ha a megfeleltetési feltételek teljesülnek, a lekérdezési motor egy olyan keresési dokumentumot hoz létre, amely tartalmazza a megfelelő dokumentumot vagy azonosítót a mezőértékek összeállításához, rangsorolja a dokumentumokat a megfelelő sorrendben, és visszaadja a legfontosabb 50 (alapértelmezés szerint) a válaszban, vagy egy másik számot, ha meg van adva **`top`** .
 
-Ha teljes szöveges keresést hajt végre, akkor a tartalom jogkivonatának megismerése segít a lekérdezési rendellenességek hibakeresésében. A leválasztott karakterláncok vagy speciális karakterek lekérdezése az alapértelmezett standard Lucene eltérő Analyzer használatát teszi lehetővé annak biztosítása érdekében, hogy az index tartalmazza a megfelelő jogkivonatokat. Felülbírálhatja az alapértelmezett [nyelvi elemzőket](index-add-language-analyzers.md#language-analyzer-list) vagy [speciális elemzőket](index-add-custom-analyzers.md#AnalyzerTable) , amelyek a lexikális analízist módosítják. Az egyik példa egy [kulcsszó](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) , amely egy mező teljes tartalmát egyetlen tokenként kezeli. Ez hasznos lehet például a zip-kódok, az azonosítók és a termékek neveihez. További információ: [részleges kifejezéses keresés és minták speciális karakterekkel](search-query-partial-matching.md).
+Ha teljes szöveges keresést hajt végre, akkor a tartalom jogkivonatának megismerése segít a lekérdezési rendellenességek hibakeresésében. A leválasztott karakterláncok vagy speciális karakterek lekérdezése az alapértelmezett standard Lucene eltérő Analyzer használatát teszi lehetővé annak biztosítása érdekében, hogy az index tartalmazza a megfelelő jogkivonatokat. Felülbírálhatja az alapértelmezett [nyelvi elemzőket](index-add-language-analyzers.md#language-analyzer-list) vagy [speciális elemzőket](index-add-custom-analyzers.md#built-in-analyzers) , amelyek a lexikális analízist módosítják. Az egyik példa egy [kulcsszó](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) , amely egy mező teljes tartalmát egyetlen tokenként kezeli. Ez hasznos lehet például a zip-kódok, az azonosítók és a termékek neveihez. További információ: [részleges kifejezéses keresés és minták speciális karakterekkel](search-query-partial-matching.md).
 
 Ha a logikai operátorok nagy mennyiségű használatát tervezi, ami nagyobb valószínűséggel olyan indexekben, amelyek nagy méretű szöveges blokkokat tartalmaznak (egy tartalom vagy hosszú leírások), akkor ügyeljen arra, hogy az **`searchMode=Any|All`** adott beállítás hatásának kiértékeléséhez használja a paramétert a logikai keresésnél.
 
@@ -85,7 +85,7 @@ A szűrők széles körben használatosak a Cognitive Searcht tartalmazó alkalm
 
 A következő táblázatban leírtak szerint szűrőkre is szükség lehet egy speciális lekérdezési űrlap meghívásához. A szűrőket meghatározatlan kereséssel ( **`search=*`** ) vagy olyan lekérdezési karakterlánccal használhatja, amely kifejezéseket, kifejezéseket, operátorokat és mintákat tartalmaz.
 
-| Szűrési forgatókönyv | Leírás |
+| Szűrési forgatókönyv | Description |
 |-----------------|-------------|
 | Tartomány szűrőinek | Az Azure Cognitive Searchban a Range lekérdezéseket a Filter paraméterrel kell felépíteni. További információért és Példákért lásd: [tartomány szűrő példa](search-query-simple-examples.md#example-5-range-filters). |
 | Földrajzi hely keresése | Ha egy kereshető mező [EDM. geographypoint adattípuson típusú](/rest/api/searchservice/supported-data-types), létrehozhat egy szűrési kifejezést a "keresés a közelben" vagy a térképes keresési vezérlőkben. A földrajzi keresést elvégező mezők koordinátáit tartalmaznak. További információ és példa: [földrajzi keresési példa](search-query-simple-examples.md#example-6-geo-search). |

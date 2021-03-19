@@ -5,16 +5,16 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 03/16/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 62f61549ffd6312b94589b9cabbc347edafd0ff2
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 3d71a7ad2507909dacf54e7f1c49b6e768033113
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601967"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600479"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
 
@@ -244,24 +244,31 @@ A Storage-fiókok virtuális hálózati szabályai a Azure Portal, a PowerShell 
 
 ## <a name="grant-access-from-an-internet-ip-range"></a>Hozzáférés biztosítása internetes IP-címtartományról
 
-A Storage-fiókok konfigurálásával engedélyezheti a hozzáférést a megadott nyilvános internetes IP-címtartományok eléréséhez. Ez a konfiguráció hozzáférést biztosít bizonyos internetalapú szolgáltatásokhoz és helyszíni hálózatokhoz, és blokkolja az általános internetes forgalmat.
+Az IP-hálózati szabályok segítségével IP-hálózati szabályok létrehozásával engedélyezheti a hozzáférést az adott nyilvános internetes IP-címtartományok eléréséhez. Az egyes Storage-fiókok legfeljebb 200 szabályt támogatnak. Ezek a szabályok hozzáférést biztosítanak bizonyos internetalapú szolgáltatásokhoz és helyszíni hálózatokhoz, és blokkolja az általános internetes forgalmat.
 
-Adja meg az engedélyezett IP-címtartományok [CIDR jelöléssel](https://tools.ietf.org/html/rfc4632) a *16.17.18.0/24* formátumban, illetve olyan egyedi IP-címeket, mint a *16.17.18.19*.
+Az IP-címtartományok esetében az alábbi korlátozások érvényesek.
 
-   > [!NOTE]
-   > A "/31" vagy a "/32" előtaggal rendelkező kisméretű címtartományok nem támogatottak. Ezeket a tartományokat egyedi IP-cím szabályokkal kell konfigurálni.
+- Az IP-hálózati szabályok csak a **nyilvános internetes** IP-címek esetében engedélyezettek. 
 
-Az IP-hálózati szabályok csak a **nyilvános internetes** IP-címek esetében engedélyezettek. A magánhálózati hálózatok számára fenntartott IP-címtartományok (az [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)-ben meghatározottak szerint) nem engedélyezettek az IP-szabályokban. A magánhálózati hálózatok közé tartoznak a következők: _10. *_, _172,16. *_  -  _172,31. *_ és _192,168. *_.
+  A magánhálózati hálózatok számára fenntartott IP-címtartományok (az [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)-ben meghatározottak szerint) nem engedélyezettek az IP-szabályokban. A magánhálózati hálózatok közé tartoznak a következők: _10. *_, _172,16. *_  -  _172,31. *_ és _192,168. *_.
 
-   > [!NOTE]
-   > Az IP-hálózati szabályok nem befolyásolják a Storage-fiókkal azonos Azure-régióból származó kérelmeket. A [virtuális hálózati szabályok](#grant-access-from-a-virtual-network) használatával engedélyezze az azonos régiókra vonatkozó kérelmeket.
+- A *16.17.18.0/24* formátumú [CIDR-jelöléssel](https://tools.ietf.org/html/rfc4632) vagy egyedi IP-címekkel (például *16.17.18.19*) kell megadnia az engedélyezett internetes címtartományok használatát. 
 
-  > [!NOTE]
-  > A Storage-fiókkal azonos régióban üzembe helyezett szolgáltatások saját Azure IP-címeket használnak a kommunikációhoz. Így az adott Azure-szolgáltatásokhoz való hozzáférés nem korlátozható a nyilvános kimenő IP-címtartomány alapján.
+- A "/31" vagy a "/32" előtaggal rendelkező kisméretű címtartományok nem támogatottak. Ezeket a tartományokat egyedi IP-cím szabályokkal kell konfigurálni. 
 
-A tárolási tűzfalszabályok konfigurálásához csak IPV4-címek támogatottak.
+- A tárolási tűzfalszabályok konfigurálásához csak IPV4-címek támogatottak.
 
-Az egyes Storage-fiókok legfeljebb 200 IP-hálózati szabályt támogatnak.
+Az IP-hálózati szabályok nem használhatók a következő esetekben:
+
+- A Storage-fiókkal azonos Azure-régióban lévő ügyfelekhez való hozzáférés korlátozása.
+  
+  Az IP-hálózati szabályok nem befolyásolják a Storage-fiókkal azonos Azure-régióból származó kérelmeket. A [virtuális hálózati szabályok](#grant-access-from-a-virtual-network) használatával engedélyezze az azonos régiókra vonatkozó kérelmeket. 
+
+- Egy [párosított régióban](../../best-practices-availability-paired-regions.md) lévő ügyfelek hozzáférésének korlátozása olyan VNet, amely szolgáltatási végponttal rendelkezik.
+
+- A Storage-fiókkal azonos régióban üzembe helyezett Azure-szolgáltatásokhoz való hozzáférés korlátozása.
+
+  A Storage-fiókkal azonos régióban üzembe helyezett szolgáltatások saját Azure IP-címeket használnak a kommunikációhoz. Így az adott Azure-szolgáltatásokhoz való hozzáférés nem korlátozható a nyilvános kimenő IP-címtartomány alapján.
 
 ### <a name="configuring-access-from-on-premises-networks"></a>A helyszíni hálózatokhoz való hozzáférés konfigurálása
 

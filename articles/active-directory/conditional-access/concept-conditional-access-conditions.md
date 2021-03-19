@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/10/2021
+ms.date: 03/17/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fecf3f1a302a6734d92335bc15722df4d5288a56
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ab840b46503aed1a318e3b39a4e8fe3e4d11735c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362420"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579127"
 ---
 # <a name="conditional-access-conditions"></a>Feltételes hozzáférés: feltételek
 
@@ -174,11 +174,11 @@ Ez a beállítás hatással van a következő Mobile apps és asztali ügyfelek 
 
 ### <a name="exchange-activesync-clients"></a>Exchange ActiveSync-ügyfelek
 
-- A szervezetek csak akkor választhatják ki az Exchange ActiveSync-ügyfeleket, ha szabályzatot rendelnek hozzá felhasználókhoz vagy csoportokhoz. Az összes **felhasználó**, a **vendég és a külső felhasználók**, illetve a **címtárbeli szerepkörök** kiválasztásával az összes felhasználó le lesz tiltva.
+- A szervezetek csak akkor választhatják ki az Exchange ActiveSync-ügyfeleket, ha szabályzatot rendelnek hozzá felhasználókhoz vagy csoportokhoz. Az **összes felhasználó**, a **vendég és a külső felhasználók**, illetve a **címtárbeli szerepkörök** kiválasztásával az összes felhasználó a szabályzat hatálya alá kerül.
 - Exchange ActiveSync-ügyfelekhez rendelt szabályzat létrehozásakor az **Exchange Online** csak a Szabályzathoz rendelt felhőalapú alkalmazás lehet. 
 - A szervezetek a szabályzat hatókörét meghatározott platformokra szűkítik az **eszköz platformok** feltételének használatával.
 
-Ha a házirendhez rendelt hozzáférés-vezérlés **jóváhagyott ügyfélalkalmazás használatát igényli**, a rendszer a felhasználót az Outlook Mobile-ügyfél telepítésére és használatára irányítja. Abban az esetben, ha a **többtényezős hitelesítés** szükséges, az érintett felhasználók le vannak tiltva, mert az egyszerű hitelesítés nem támogatja a többtényezős hitelesítést.
+Ha a házirendhez rendelt hozzáférés-vezérlés **jóváhagyott ügyfélalkalmazás használatát igényli**, a rendszer a felhasználót az Outlook Mobile-ügyfél telepítésére és használatára irányítja. Ha a **többtényezős hitelesítés**, **használati feltételek** vagy **Egyéni vezérlők** szükségesek, az érintett felhasználók le vannak tiltva, mert az egyszerű hitelesítés nem támogatja ezeket a vezérlőket.
 
 További információért tekintse át a következő cikkeket:
 

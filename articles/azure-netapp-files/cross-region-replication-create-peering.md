@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 03/10/2021
 ms.author: b-juche
-ms.openlocfilehash: 412724a072bfc03a67bf1005173702f757c6fdf4
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 2a3c788ce50ccc1d537fd2903fe05acffd079b0b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95249937"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591010"
 ---
 # <a name="create-volume-replication-for-azure-netapp-files"></a>Kötet-replikálás létrehozása Azure NetApp Fileshoz
 
@@ -67,7 +67,7 @@ Másik régióban is kiválaszthat egy meglévő NetApp-fiókot.
     * Kapacitási készlet
     * Mennyiségi kvóta
         > [!NOTE] 
-        > Javasoljuk, hogy a kötet kvótájának mérete tükrözze a forrás kötetet.
+        > A célként megadott kötet mennyiségi kvótájának (méretének) tükröznie kell a forrás kötetét. Ha olyan méretet ad meg, amely kisebb, mint a forrás kötet, a rendszer automatikusan átméretezi a cél kötetet a forrás kötet méretére. 
     * Virtuális hálózat 
     * Alhálózat
 
@@ -80,7 +80,7 @@ Az NFS protokoll esetében győződjön meg arról, hogy az exportálási házir
 
 8. A **replikálás** lapon illessze be a forrás mennyiségi erőforrás-azonosítóját a [forrás kötet erőforrás-azonosítója](#locate-the-source-volume-resource-id)területen, majd válassza ki a kívánt replikálási ütemtervet. A replikálási ütemterv beállításai a következők: 10 percenként, óránként, naponta, hetente és havonta.  
 
-    ![Kötet replikálásának létrehozása](../media/azure-netapp-files/cross-region-replication-create-volume-replication.png)
+    ![Kötetreplikáció létrehozása](../media/azure-netapp-files/cross-region-replication-create-volume-replication.png)
 
 9. Kattintson a **felülvizsgálat + létrehozás** elemre, majd kattintson a **Létrehozás** gombra az adatreplikálási kötet létrehozásához.   
 
@@ -113,6 +113,6 @@ A replikáció engedélyezéséhez be kell szereznie a replikálási cél kötet
 * [Replikációs kapcsolat állapotának megjelenítése](cross-region-replication-display-health-status.md)
 * [Kötet replikációs metrikái](azure-netapp-files-metrics.md#replication)
 * [Vészhelyreállítás kezelése](cross-region-replication-manage-disaster-recovery.md)
-* [Kötetek replikálásának vagy köteteinek törlése](cross-region-replication-delete.md)
+* [Kötetreplikációk vagy kötetek törlése](cross-region-replication-delete.md)
 * [Régiók közötti replikáció – replikálás](troubleshoot-cross-region-replication.md)
 

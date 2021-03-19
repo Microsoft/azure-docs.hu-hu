@@ -7,12 +7,12 @@ ms.date: 11/17/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 1a58a2f69b9c6c6742c4b9daf32dd0e13341aac1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 33ff96b4e51dbf80bfdb924bc37786a344cdfdc6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742143"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582646"
 ---
 # <a name="device-models-repository"></a>Eszköz modellek tárháza
 
@@ -47,38 +47,50 @@ A mappákban található összes felület `dtmi` a nyilvános végpontról is el
 
 ### <a name="resolve-models"></a>Modellek feloldása
 
-Ezen felületek programozott eléréséhez át kell alakítania egy DTMI egy relatív elérési útra, amelynek segítségével lekérdezheti a nyilvános végpontot.
+Ezen felületek programozott eléréséhez használhatja az `ModelsRepositoryClient` [Azure. IoT. ModelsRepository](https://www.nuget.org/packages/Azure.IoT.ModelsRepository)NuGet-csomagban elérhető lehetőséget. Ez az ügyfél alapértelmezés szerint úgy van konfigurálva, hogy lekérdezze a [devicemodels.Azure.com](https://devicemodels.azure.com/) címen elérhető nyilvános DMR, és bármely egyéni tárházra konfigurálható.
 
-A DTMI abszolút elérési útra való átalakításához használja a következő `DtmiToPath` függvényt `IsValidDtmi` :
-
-```cs
-static string DtmiToPath(string dtmi)
-{
-    if (!IsValidDtmi(dtmi))
-    {
-        return null;
-    }
-    // dtmi:com:example:Thermostat;1 -> dtmi/com/example/thermostat-1.json
-    return $"/{dtmi.ToLowerInvariant().Replace(":", "/").Replace(";", "-")}.json";
-}
-
-static bool IsValidDtmi(string dtmi)
-{
-    // Regex defined at https://github.com/Azure/digital-twin-model-identifier#validation-regular-expressions
-    Regex rx = new Regex(@"^dtmi:[A-Za-z](?:[A-Za-z0-9_]*[A-Za-z0-9])?(?::[A-Za-z](?:[A-Za-z0-9_]*[A-Za-z0-9])?)*;[1-9][0-9]{0,8}$");
-    return rx.IsMatch(dtmi);
-}
-```
-
-Az eredményül kapott elérési úttal és a tárház alap URL-címével a következő felületet tudjuk beszerezni:
+Az ügyfél a `DTMI` bemenetet fogadja, és egy olyan szótárt ad vissza, amely az összes szükséges csatolóval rendelkezik:
 
 ```cs
-const string _repositoryEndpoint = "https://devicemodels.azure.com";
+using Azure.IoT.ModelsRepository;
 
-string dtmiPath = DtmiToPath(dtmi.ToString());
-string fullyQualifiedPath = $"{_repositoryEndpoint}{dtmiPath}";
-string modelContent = await _httpClient.GetStringAsync(fullyQualifiedPath);
+var client = new ModelsRepositoryClient();
+IDictionary<string, string> models = client.GetModels("dtmi:com:example:TemperatureController;1");
+models.Keys.ToList().ForEach(k => Console.WriteLine(k));
 ```
+
+A várt kimenetnek a `DTMI` függőségi láncban található három csatolót kell megjelenítenie:
+
+```txt
+dtmi:com:example:TemperatureController;1
+dtmi:com:example:Thermostat;1
+dtmi:azure:DeviceManagement:DeviceInformation;1
+```
+
+A konfigurálható `ModelsRepositoryClient` úgy, hogy egy egyéni modell-tárházat Kérdezzen le – http (s) protokollon keresztül érhető el –, és a függőségi feloldást a rendelkezésre állók bármelyikével megadhatja `ModelDependencyResolution` :
+
+- Letiltva. Csak a megadott felületet adja vissza, függőség nélkül.
+- Engedélyezve. A függőségi lánc összes felületét adja vissza.
+- TryFromExpanded. A `.expanded.json` fájl használata az előre kiszámított függőségek lekéréséhez 
+
+> [!Tip] 
+> Előfordulhat, hogy az egyéni Tárházak nem teszik `.expanded.json` elérhetővé a fájlt, ha az ügyfél nem áll rendelkezésre az egyes függőségek helyi feldolgozásához.
+
+A következő mintakód azt mutatja be, hogyan lehet inicializálni a `ModelsRepositoryClient` -t egy egyéni adattár ALAPurl-címével, ebben az esetben a `raw` GitHub API URL-címeivel anélkül, hogy az űrlapot kellene használnia `expanded` – mivel az nem érhető el a `raw` végponton. A `AzureEventSourceListener` inicializálva van az ügyfél által végrehajtott HTTP-kérelem vizsgálatára:
+
+```cs
+using AzureEventSourceListener listener = AzureEventSourceListener.CreateConsoleLogger();
+
+var client = new ModelsRepositoryClient(
+    new Uri("https://raw.githubusercontent.com/Azure/iot-plugandplay-models/main"),
+    new ModelsRepositoryClientOptions(dependencyResolution: ModelDependencyResolution.Enabled));
+
+IDictionary<string, string> models = client.GetModels("dtmi:com:example:TemperatureController;1");
+
+models.Keys.ToList().ForEach(k => Console.WriteLine(k));
+```
+
+További minták érhetők el az Azure SDK GitHub-tárház forráskódjában: [Azure. IOT. ModelsRepository/Samples](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/modelsrepository/Azure.IoT.ModelsRepository/samples)
 
 ## <a name="publish-a-model"></a>Modell közzététele
 

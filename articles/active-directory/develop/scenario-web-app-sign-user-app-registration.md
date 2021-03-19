@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 96fbe676d4b929d2c1ee2efce0d10f3b5dc7c6ab
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 920249aa252469c3db2be284fc010d775d04c921
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103192"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578277"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Felhasználók számára bejelentkező webalkalmazás: alkalmazás regisztrálása
 
@@ -94,6 +94,21 @@ Alapértelmezés szerint a minta a következőket használja:
    1. Válassza ki a kulcs időtartamát **1 évben**.
    1. Válassza a **Hozzáadás** lehetőséget.
    1. Ha a kulcs értéke megjelenik, másolja később. Ez az érték nem jelenik meg újra, vagy bármilyen más módon lekérdezhető.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+1. Amikor megjelenik az **alkalmazás regisztrálása lap** , adja meg az alkalmazás regisztrációs adatait:
+   1. Adja meg az alkalmazás **nevét** , például: `node-webapp` . Előfordulhat, hogy az alkalmazás felhasználói láthatják ezt a nevet, és később is megváltoztathatók.
+   1. A **támogatott fióktípus** módosítása **bármely szervezeti címtárban és személyes Microsoft-fiókban (például Skype, Xbox, Outlook.com)**.
+   1. Az **átirányítási URI (nem kötelező)** szakaszban a kombinált listában válassza a **web** lehetőséget, és adja meg a következő átirányítási URI-t: `http://localhost:3000/redirect` .
+   1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
+1. Az alkalmazás **Áttekintés** lapján keresse meg az **alkalmazás (ügyfél) azonosító** értékét, és jegyezze fel később. Szüksége lesz rá a projekt konfigurációs fájljának konfigurálásához.
+1. A **Kezelés** területen válassza a **Tanúsítványok és titkos kódok** lehetőséget.
+1. Az **ügyfél titkai** szakaszban válassza az **új ügyfél titka** elemet, majd a következőket:
+   1. Adja meg a kulcs leírását.
+   1. Adja **meg az 1 év** kulcsának időtartamát.
+   1. Válassza a **Hozzáadás** lehetőséget.
+   1. Ha a kulcs értéke megjelenik, másolja. Erre később még szüksége lesz.
 
 # <a name="python"></a>[Python](#tab/python)
 

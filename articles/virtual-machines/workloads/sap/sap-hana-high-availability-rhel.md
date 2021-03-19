@@ -10,14 +10,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/16/2020
+ms.date: 03/16/2021
 ms.author: radeltch
-ms.openlocfilehash: a98fd5785174d681b333cdaa29fe53ae06f137e1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: daa0a6b15d4c187efdea96fd8067b08c89fa0e82
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675374"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599867"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>SAP HANA magas rendelkezésre állása Azure-beli virtuális gépeken Red Hat Enterprise Linux
 
@@ -647,6 +647,112 @@ Győződjön meg arról, hogy a fürt állapota ok, és hogy az összes erőforr
 #      nc_HN1_03  (ocf::heartbeat:azure-lb):      Started hn1-db-0
 #      vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hn1-db-0
 </code></pre>
+
+
+## <a name="configure-hana-activeread-enabled-system-replication-in-pacemaker-cluster"></a>A HANA aktív/olvasási engedélyezett rendszerreplikációjának konfigurálása a pacemaker-fürtben
+
+A SAP HANA 2,0 SPS 01 SAP lehetővé teszi az aktív/olvasható beállítások használatát SAP HANA rendszer-replikáláshoz, ahol az SAP HANA rendszer-replikálás másodlagos rendszerei aktívan használhatók az olvasási és intenzív munkaterhelésekhez. Ha egy fürtön szeretné támogatni a telepítést, egy második virtuális IP-cím szükséges, amely lehetővé teszi, hogy az ügyfelek hozzáférhessenek a másodlagos, írásvédett SAP HANA adatbázishoz. Annak biztosítása érdekében, hogy a másodlagos replikálási hely továbbra is elérhető legyen egy átvétel után, a fürtnek át kell helyeznie a virtuális IP-címet a SAPHana-erőforrás másodlagos helyére.
+
+Ez a szakasz azokat a további lépéseket ismerteti, amelyek szükségesek a HANA Active/Read enabled rendszerreplikáció kezeléséhez egy Red hat magas rendelkezésre állású fürtben második virtuális IP-címmel.    
+
+A folytatás előtt győződjön meg arról, hogy teljes mértékben konfigurálta a Red hat magas rendelkezésre állású fürtöt, amely a dokumentáció fenti szakaszaiban ismertetett módon felügyeli SAP HANA adatbázisát.  
+
+![Magas rendelkezésre állás SAP HANA a másodlagos olvasási engedélyezve](./media/sap-hana-high-availability/ha-hana-read-enabled-secondary.png)
+
+### <a name="additional-setup-in-azure-load-balancer-for-activeread-enabled-setup"></a>További beállítás az Azure Load balancerben az aktív/írásvédett telepítéshez
+
+A második virtuális IP-cím [kiépítésével](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#manual-deployment) kapcsolatos további lépések végrehajtásához ellenőrizze, hogy konfigurálta-e a Azure Load Balancer a manuális telepítés című szakaszban leírtak szerint.
+
+1. A **standard** Load Balancer esetében kövesse az alábbi, a korábbi szakaszban létrehozott terheléselosztó további lépéseit.
+
+   a. Második előtér-IP-címkészlet létrehozása: 
+
+   - Nyissa meg a terheléselosztó felületet, válassza a előtér **IP-készlet** lehetőséget, majd kattintson a **Hozzáadás** gombra.
+   - Adja meg a második előtér-IP-készlet nevét (például **Hana-secondaryIP**).
+   - Állítsa a **hozzárendelést** **statikus** értékre, és adja meg az IP-címet (például **10.0.0.14**).
+   - Válassza az **OK** lehetőséget.
+   - Az új előtér-IP-készlet létrehozása után jegyezze fel a készlet IP-címét.
+
+   b. Következő lépésként hozzon létre egy állapot-mintavételt:
+
+   - Nyissa meg a terheléselosztó-t, válassza az **állapot**-tesztek elemet, majd kattintson a **Hozzáadás** gombra.
+   - Adja meg az új állapot-mintavétel nevét (például **Hana-secondaryhp**).
+   - Válassza a **TCP** lehetőséget a protokoll és a **62603**-es port közül. Tartsa meg az **intervallum** értékét 5-re, a nem kifogástalan **állapot küszöbértékének** értéke pedig 2.
+   - Válassza az **OK** lehetőséget.
+
+   c. Ezután hozza létre a terheléselosztási szabályokat:
+
+   - Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok** lehetőséget, majd válassza a **Hozzáadás** lehetőséget.
+   - Adja meg az új terheléselosztó-szabály nevét (például **Hana-secondarylb**).
+   - Válassza ki az előtér-IP-címet, a háttér-készletet és a korábban létrehozott állapot-mintavételt (például **Hana-secondaryIP**, **Hana-backend** és **Hana-secondaryhp**).
+   - Válassza a **hektár portok** lehetőséget.
+   - Növelje az **üresjárati időkorlátot** 30 percre.
+   - Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
+   - Válassza az **OK** lehetőséget.
+
+### <a name="configure-hana-activeread-enabled-system-replication"></a>A HANA aktív/olvasási engedélyezett rendszerreplikációjának konfigurálása
+
+A HANA rendszerreplikáció konfigurálásának lépéseit lásd: [SAP HANA 2,0 Rendszerreplikáció konfigurálása](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#configure-sap-hana-20-system-replication) szakasz. Ha olvasási jogosultságú másodlagos forgatókönyvet telepít, miközben a második csomóponton konfigurálja a rendszerreplikációt, a következő parancsot futtassa a **hanasid** adm-ként:
+
+```
+sapcontrol -nr 03 -function StopWait 600 10 
+
+hdbnsutil -sr_register --remoteHost=hn1-db-0 --remoteInstance=03 --replicationMode=sync --name=SITE2 --operationMode=logreplay_readaccess 
+```
+
+### <a name="adding-a-secondary-virtual-ip-address-resource-for-an-activeread-enabled-setup"></a>Másodlagos virtuális IP-cím erőforrás hozzáadása aktív/írásvédett beállításhoz
+
+A második virtuális IP-címet és a megfelelő elhelyezési korlátozást a következő parancsokkal lehet konfigurálni:
+
+```
+pcs property set maintenance-mode=true
+
+pcs resource create secvip_HN1_03 ocf:heartbeat:IPaddr2 ip="10.40.0.16"
+
+pcs resource create secnc_HN1_03 ocf:heartbeat:azure-lb port=62603
+
+pcs resource group add g_secip_HN1_03 secnc_HN1_03 secvip_HN1_03
+
+RHEL 8.x: 
+pcs constraint colocation add g_secip_HN1_03 with slave SAPHana_HN1_03-clone 4000
+RHEL 7.x:
+pcs constraint colocation add g_secip_HN1_03 with slave SAPHana_HN1_03-master 4000
+
+pcs property set maintenance-mode=false
+```
+Győződjön meg arról, hogy a fürt állapota ok, és hogy az összes erőforrás el van indítva. A második virtuális IP-cím a másodlagos helyen, a SAPHana másodlagos erőforrással együtt fog futni.
+
+```
+sudo pcs status
+
+# Online: [ hn1-db-0 hn1-db-1 ]
+#
+# Full List of Resources:
+#   rsc_hdb_azr_agt     (stonith:fence_azure_arm):      Started hn1-db-0
+#   Clone Set: SAPHanaTopology_HN1_03-clone [SAPHanaTopology_HN1_03]:
+#     Started: [ hn1-db-0 hn1-db-1 ]
+#   Clone Set: SAPHana_HN1_03-clone [SAPHana_HN1_03] (promotable):
+#     Masters: [ hn1-db-0 ]
+#     Slaves: [ hn1-db-1 ]
+#   Resource Group: g_ip_HN1_03:
+#     nc_HN1_03         (ocf::heartbeat:azure-lb):      Started hn1-db-0
+#     vip_HN1_03        (ocf::heartbeat:IPaddr2):       Started hn1-db-0
+#   Resource Group: g_secip_HN1_03:
+#     secnc_HN1_03      (ocf::heartbeat:azure-lb):      Started hn1-db-1
+#     secvip_HN1_03     (ocf::heartbeat:IPaddr2):       Started hn1-db-1
+```
+
+A következő szakaszban megtekintheti a végrehajtandó feladatátvételi tesztek jellemző készletét.
+
+Vegye figyelembe a második virtuális IP-viselkedést, miközben az írásvédett másodlagos:
+
+1. **SAPHana_HN1_HDB03** fürterőforrás **HN1-db-1-** re történő áttelepítésekor a második virtuális IP-cím átkerül a másik kiszolgálóra, **HN1-db-0-ra**. Ha konfigurálta AUTOMATED_REGISTER = "false" értéket, és a HANA rendszerreplikáció nincs automatikusan regisztrálva, akkor a második virtuális IP-cím a **hn1-db-0** kiszolgálón fut, mivel a kiszolgáló elérhető, és a fürtszolgáltatás online állapotban van.  
+
+2. A kiszolgáló összeomlásának tesztelésekor a második virtuális IP-erőforrás (**rsc_secip_HN1_HDB03**) és az Azure Load Balancer port erőforrás (**rsc_secnc_HN1_HDB03**) az elsődleges kiszolgálón fog futni az elsődleges virtuális IP-erőforrások mellett.  Amíg a másodlagos kiszolgáló nem működik, az olvasási jogosultsággal rendelkező HANA-adatbázishoz csatlakozó alkalmazások csatlakozni fognak az elsődleges HANA-adatbázishoz. A működés várható, mivel nem szeretné, hogy az olvasási jogosultsággal rendelkező HANA-adatbázishoz csatlakozó alkalmazások ne legyenek elérhetők, amíg a másodlagos kiszolgáló nem érhető el.
+
+3. Ha a másodlagos kiszolgáló elérhető, és a fürtszolgáltatások online állapotban vannak, a második virtuális IP-cím és a port erőforrásai automatikusan átkerülnek a másodlagos kiszolgálóra, noha a HANA rendszerreplikáció nem lehet másodlagosként regisztrálva. Meg kell győződnie arról, hogy a másodlagos HANA-adatbázist olvasási engedélyezveként regisztrálja, mielőtt elindítja a fürtszolgáltatást a kiszolgálón. A HANA-példány fürtjének erőforrását beállíthatja úgy, hogy a (z) AUTOMATED_REGISTER = True paraméterrel automatikusan regisztrálja a másodlagos értéket.
+   
+4. A feladatátvétel és a tartalék megoldás során az alkalmazások meglévő kapcsolatai megszakadnak a második virtuális IP-cím használatával a HANA-adatbázishoz való csatlakozáshoz.  
 
 ## <a name="test-the-cluster-setup"></a>A fürt beállításának tesztelése
 

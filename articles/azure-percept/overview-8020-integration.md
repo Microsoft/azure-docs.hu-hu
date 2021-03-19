@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: f63c5e5764451fd7a03b0e68982db01330d1995c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 01196c34ea6afbaa5a1e3b81ab14dec037e1fed0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101663201"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595940"
 ---
 # <a name="azure-percept-dk-8020-integration-overview"></a>Az Azure Percept DK 80/20 integrációjának áttekintése
 
@@ -22,9 +22,11 @@ Az Azure Percept DK és a audio kiegészítő [szolgáltatás az 80/20 railing r
 
 Minden egyes hardver-összetevő az 1010 extrudálás típusának megfelelő kivágásokkal és kiemelésekkel van összeépítve. Ez az integráció lehetővé teszi, hogy az ügyfelek és a megoldások építői könnyebben kibővítsék a fogalmakat éles környezetekben.
 
-<!---
-## Check out this video for more information on how to use Azure Percept DK with 80/20
---->
+Tekintse meg ezt a videót az Azure Percept DK és a 80/20 használatával kapcsolatos további információkért:
+
+</br>
+
+> [!VIDEO https://www.youtube.com/embed/Dg6mtD9psLU]  
 
 ## <a name="next-steps"></a>Következő lépések
 

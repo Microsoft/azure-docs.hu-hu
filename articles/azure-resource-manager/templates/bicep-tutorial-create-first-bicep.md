@@ -2,16 +2,16 @@
 title: Oktatóanyag – Azure Resource Manager bicep-fájlok létrehozása & üzembe helyezése
 description: Hozza létre az első bicep-fájlt az Azure-erőforrások üzembe helyezéséhez. Az oktatóanyagban megismerheti a bicep fájl szintaxisát és a Storage-fiók üzembe helyezésének módját.
 author: mumian
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: b04dbb7f708a4019ae70c716d4faa05ca2c28720
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 8979585d7ec0fa6eac1866375fe1e80214f2d2e2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102632577"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594274"
 ---
 # <a name="tutorial-create-and-deploy-first-azure-resource-manager-bicep-file"></a>Oktatóanyag: az első Azure Resource Manager bicep-fájl létrehozása és üzembe helyezése
 
@@ -31,11 +31,11 @@ Először is győződjön meg arról, hogy rendelkezik a bicep-fájlok létrehoz
 
 ### <a name="editor"></a>Szerkesztő
 
-A bicep-fájlok létrehozásához jó szerkesztőre van szükség. Javasoljuk, hogy a Visual Studio Code-ot a bicep kiterjesztéssel. Ha telepítenie kell ezeket az eszközöket, tekintse meg a következőt: rövid útmutató [: a bicep-fájlok létrehozása a Visual Studio Code](quickstart-create-bicep-use-visual-studio-code.md)használatával.
+A bicep-fájlok létrehozásához jó szerkesztőre van szükség. Javasoljuk, hogy a Visual Studio Code-ot a bicep kiterjesztéssel. Ha telepítenie kell ezeket az eszközöket, tekintse meg a [bicep fejlesztői környezet konfigurálása](./bicep-install.md#development-environment)című témakört.
 
 ### <a name="command-line-deployment"></a>Parancssori telepítés
 
-A bicep-fájl üzembe helyezéséhez szükség van a legújabb Azure PowerShellra vagy a legújabb Azure CLI-re is. A telepítési utasításokért lásd:
+A bicep-fájlokat az Azure CLI vagy a Azure PowerShell használatával helyezheti üzembe. Az Azure CLI esetén a 2.20.0 vagy újabb verzióra van szükség; Azure PowerShell esetén a 5.6.0 vagy újabb verzióra van szükség. A telepítési utasításokért lásd:
 
 - [Az Azure PowerShell telepítése](/powershell/azure/install-az-ps)
 - [Az Azure CLI telepítése Windows rendszeren](/cli/azure/install-azure-cli-windows)

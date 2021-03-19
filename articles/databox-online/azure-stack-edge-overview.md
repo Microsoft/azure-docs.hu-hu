@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 03/15/2021
 ms.author: alkohli
-ms.openlocfilehash: 3973235991a16d118b47d7289f3a1825621a9023
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: e6cd1f8a1f7d1777e786ab91637b4065a2c5e850
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103574679"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585944"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-fpga"></a>Mi az FPGA-val rendelkező Azure Stack Edge Pro?
 
@@ -85,6 +85,8 @@ Azure Stack Edge Pro fizikai eszköz, az Azure-erőforrás és a célként megad
 - **Erőforrás rendelkezésre állása** – az összes olyan régióban, ahol az Azure stack peremhálózati erőforrás elérhető, tekintse meg a régiók [által elérhető Azure-termékek](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)listáját. A Azure Stack Edge Pro a Azure Government felhőben is üzembe helyezhető. További információ: [Mi az Azure Government?](../azure-government/documentation-government-welcome.md)
     
 - **Céloldali tárfiókok** – Az adatokat tároló tárfiókok minden Azure-régióban elérhetők. Azokat a régiókat, amelyekben a Storage-fiókok Azure Stack Edge Pro-adataikat tárolják, közel kell lennie ahhoz, hogy az eszköz az optimális teljesítmény érdekében legyen. Az eszköztől távol található tárfiók esetében hosszú késések és lassabb teljesítmény várható.
+
+Azure Stack Edge szolgáltatás nem regionális szolgáltatás. További információ: [régiók és Availability Zones az Azure-ban](https://docs.microsoft.com/azure/availability-zones/az-overview). Az Azure Stack Edge szolgáltatás nem függ egy adott Azure-régiótól, így rugalmasan kihasználható a zónákra kiterjedő kimaradások és az egész régióra kiterjedő kimaradások terén.
 
 ## <a name="next-steps"></a>Következő lépések
 

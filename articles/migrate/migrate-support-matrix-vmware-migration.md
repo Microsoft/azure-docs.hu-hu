@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: cbb1db15eed53af1d0e4590e1b228e5e47680560
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 40fcdae9a94b2b48eb4c665f4e0c9c3e58962f4b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102614921"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104576781"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>A VMware-migrálás támogatási mátrixa
 
@@ -27,14 +27,9 @@ A VMware virtuális gépeket több módon is áttelepítheti:
 
 Tekintse át [ezt a cikket](server-migrate-overview.md) , hogy kiderítse, melyik módszert szeretné használni.
 
-## <a name="migration-limitations"></a>A migrálásra vonatkozó korlátozások
-
-- Egyszerre legfeljebb 10 virtuális gépet választhat a Azure Portalon keresztüli replikáláshoz. Ha több gépet szeretne áttelepíteni, a replikálást a 10 csoportba. A PowerShell-parancsmagok használatával replikálható virtuális gépek száma nem korlátozható. Javasoljuk, hogy az optimális teljesítmény érdekében a PowerShell használatával legfeljebb 500 virtuális gépet replikáljon egyetlen vCenter keresztül.
-- A VMware ügynök nélküli Migrálás esetében akár 500 replikációt is futtathat egyszerre az egyes vCenter Serverokból.
-
 ## <a name="agentless-migration"></a>Ügynök nélküli áttelepítés 
 
-Ez a szakasz az ügynök nélküli áttelepítés követelményeit foglalja össze.
+Ez a szakasz az ügynök nélküli VMware virtuális gépek Azure-ba történő áttelepítésének követelményeit foglalja össze.
 
 ### <a name="vmware-requirements-agentless"></a>VMware-követelmények (ügynök nélküli)
 
@@ -72,8 +67,11 @@ A táblázat összefoglalja a VMware virtuális gépek ügynök nélküli áttel
 **Összevont hálózati adapterek** | Nem támogatott.
 **IPv6** | Nem támogatott.
 **Céllemez** | A virtuális gépeket csak felügyelt lemezekre lehet áttelepíteni (standard HDD, standard SSD, prémium SSD) az Azure-ban.
-**Egyidejű replikáció** | 500 virtuális gépek száma vCenter Server. Ha többre van szüksége, a 500-es kötegekben telepítse át őket.
+**Egyidejű replikáció** | Legfeljebb 300 virtuális gép egyidejű replikálása vCenter Server 1 berendezéssel. Legfeljebb 500 virtuális gép replikálása vCenter Server egy további [kibővítő berendezés](./how-to-scale-out-for-migration.md) telepítésekor. 
 **Azure VM-ügynök automatikus telepítése (Windows és Linux rendszerű ügynök)** | A Windows Server 2008 R2 és újabb verziók esetében támogatott. <br/> 64 bites RHEL6, RHEL7, CentOS7, Ubuntu 14,04, Ubuntu 16,04, Ubuntu 18.04 esetén támogatott. Tekintse át a [szükséges csomagok](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements)listáját) a Linux operációs rendszerekhez.
+
+> [!TIP]
+>  A Azure Portal használatával egyszerre legfeljebb 10 virtuális gépet választhat a replikálás konfigurálásához. Több virtuális gép replikálásához használhatja a portált, és hozzáadhatja a virtuális gépeket több kötegben 10 virtuális gépen, vagy használhatja a Azure Migrate PowerShell-felületet a replikáció konfigurálásához. Győződjön meg arról, hogy egyidejű replikáció esetén nem kell egyidejű replikációt konfigurálnia a maximális támogatott számú virtuális gépen.
 
 ### <a name="appliance-requirements-agentless"></a>Berendezésre vonatkozó követelmények (ügynök nélküli)
 
@@ -172,7 +170,7 @@ Megosztott VHD | Nem támogatott.
 FC-lemez | Nem támogatott. 
 BitLocker | Nem támogatott.<br/><br/> A számítógép migrálása előtt le kell tiltani a BitLockert.
 a virtuális gép neve | 1 – 63 karakter.<br/><br/> Csak betűket, számokat és kötőjelet tartalmazhat.<br/><br/> A gép nevének betűvel vagy számmal kell kezdődnie és végződnie. 
-Kapcsolat az áttelepítés után – Windows | Kapcsolódás a Windows rendszerű Azure-beli virtuális gépekhez a Migrálás után:<br/><br/> – Az áttelepítés előtt engedélyezze az RDP-t a helyszíni virtuális gépen.<br/><br/> Ellenőrizze, hogy a **Nyilvános** profilnál felvette-e a listára a TCP- és UDP-szabályokat, valamint hogy a **Windows-tűzfal** > **Engedélyezett alkalmazások** területén az összes profil számára engedélyezve van-e az RDP.<br/><br/> A helyek közötti VPN-hozzáféréshez engedélyezze az RDP-t, és engedélyezze az RDP használatát a **Windows tűzfal**  ->  **engedélyezett alkalmazásaiban és szolgáltatásaiban** a **tartomány és a magánhálózatok** számára.<br/><br/> Továbbá győződjön meg arról, hogy az operációs rendszer SAN-szabályzata **OnlineAll** értékre van állítva. [További információk](prepare-for-migration.md).
+Kapcsolat az áttelepítés után – Windows | Kapcsolódás a Windows rendszerű Azure-beli virtuális gépekhez a Migrálás után:<br/><br/> – Az áttelepítés előtt engedélyezze az RDP-t a helyszíni virtuális gépen.<br/><br/> Ellenőrizze, hogy a **Nyilvános** profilnál felvette-e a listára a TCP- és UDP-szabályokat, valamint hogy a **Windows-tűzfal** > **Engedélyezett alkalmazások** területén az összes profil számára engedélyezve van-e az RDP.<br/><br/> A helyek közötti VPN-hozzáféréshez engedélyezze az RDP-t, és engedélyezze az RDP használatát a **Windows tűzfal**  ->  **engedélyezett alkalmazásaiban és szolgáltatásaiban** a **tartomány és a magánhálózatok** számára.<br/><br/> Továbbá győződjön meg arról, hogy az operációs rendszer SAN-szabályzata **OnlineAll** értékre van állítva. [További információ](prepare-for-migration.md).
 Kapcsolat Migrálás után – Linux | Kapcsolódás az Azure-beli virtuális gépekhez az SSH használatával történő áttelepítés után:<br/><br/> Az áttelepítés előtt a helyszíni gépen győződjön meg arról, hogy a Secure Shell szolgáltatás indításra van beállítva, és hogy a tűzfalszabályok engedélyezik az SSH-kapcsolatokat.<br/><br/> A feladatátvételt követően az Azure-beli virtuális gépen engedélyezze az SSH-porthoz való bejövő kapcsolatokat a hálózati biztonsági csoportra vonatkozó szabályokra vonatkozóan a feladatátvételen átesett virtuális gépen, valamint azt az Azure-alhálózatot, amelyhez csatlakoztatva van.<br/><br/> Továbbá adjon hozzá egy nyilvános IP-címet a virtuális géphez.  
 
 

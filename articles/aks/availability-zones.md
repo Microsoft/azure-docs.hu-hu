@@ -4,13 +4,13 @@ description: Megtudhatja, hogyan hozhat létre olyan fürtöt, amely a csomópon
 services: container-service
 ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
-ms.date: 09/04/2020
-ms.openlocfilehash: 3eec8a6c331227d9d6298c46b272a5784080d342
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 03/16/2021
+ms.openlocfilehash: 4c5b0ceb3f8e0b96f18a67ed0c7dbf1b56ac30da
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180326"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583547"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Rendelkezésre állási zónákat használó Azure Kubernetes-szolgáltatásbeli (ak-) fürt létrehozása
 
@@ -29,6 +29,7 @@ Szüksége lesz az Azure CLI-verzió 2.0.76 vagy újabb verziójára, és konfig
 Az AK-fürtök jelenleg rendelkezésre állási zónák használatával hozhatók létre a következő régiókban:
 
 * Kelet-Ausztrália
+* Dél-Brazília
 * Közép-Kanada
 * USA középső régiója
 * USA keleti régiója 
@@ -167,7 +168,7 @@ Name:       aks-nodepool1-28993262-vmss000004
 Most két további csomópont található az 1. és a 2. zónában. Három replikából álló alkalmazást is telepíthet. Az NGINX-et példaként fogjuk használni:
 
 ```console
-kubectl create deployment nginx --image=nginx
+kubectl create deployment nginx --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
 kubectl scale deployment nginx --replicas=3
 ```
 

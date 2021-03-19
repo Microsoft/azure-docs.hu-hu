@@ -6,17 +6,17 @@ ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 03/18/2021
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: 5a5b20efbf804c2ea1097f905da1cfd62727ff15
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 3de9eccd001e421ef3255f83630716df12b7a2ee
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410691"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595260"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Hivatkozás – IoT Hub kvóták és szabályozás
 
@@ -79,13 +79,15 @@ A következő táblázat a kényszerített szabályozásokat mutatja be. Az ért
 
 ### <a name="traffic-shaping"></a>Traffic Shaping
 
-A burst adatforgalom befogadásához IoT Hub a szabályozáson felüli kérelmeket korlátozott időre fogadja el. A kérések első néhány feldolgozása azonnal megtörténik. Ha azonban a kérelmek száma továbbra is sérti a szabályozást, IoT Hub elindítja a kérelmek várólistára helyezését, és feldolgozza a határértéket. Ezt a hatást nevezzük *Traffic Shaping* -nek. Emellett a várólista mérete korlátozott. Ha a szabályozás megsértése folytatódik, végül a várólista betöltődik, és IoT Hub elindítja a kérelmek elutasítását `429 ThrottlingException` .
+A burst adatforgalom befogadásához IoT Hub a szabályozáson felüli kérelmeket korlátozott időre fogadja el. A kérések első néhány feldolgozása azonnal megtörténik. Ha azonban a kérelmek száma továbbra is sérti a szabályozást, IoT Hub elindítja a kérelmek várólistára helyezését, és feldolgozza a határértéket. Ezt a hatást nevezzük *Traffic Shaping*-nek. Emellett a várólista mérete korlátozott. Ha a szabályozás megsértése folytatódik, végül a várólista betöltődik, és IoT Hub elindítja a kérelmek elutasítását `429 ThrottlingException` .
 
 Például egy szimulált eszköz használatával 200 eszközről a felhőbe irányuló üzeneteket küldhet másodpercenként az S1 IoT Hub (amely legfeljebb 100 másodpercenkénti D2C küld). Az első vagy két percnél az üzenetek feldolgozása azonnal megtörténik. Mivel azonban az eszköz továbbra is több üzenetet küld a szabályozási korlátnál, IoT Hub megkezdi a másodpercenkénti 100-üzenetek feldolgozását, és a REST-t egy várólistán helyezi el. A megnövelt késés megkezdése. Végül elkezdi `429 ThrottlingException` az üzenetsor betöltését, és a ["sávszélesség-szabályozási hibák száma" IoT hub metrika](monitor-iot-hub-reference.md#device-telemetry-metrics) megkezdi a növekedést. A riasztások és diagramok mérőszámok alapján történő létrehozásával kapcsolatos további információkért lásd: [IoT hub figyelése](monitor-iot-hub.md).
 
 ### <a name="identity-registry-operations-throttle"></a>Identitás-beállításjegyzék működési szabályozása
 
 Az eszköz-identitás beállításjegyzékbeli műveletei az eszközkezelés és a kiépítési forgatókönyvek futtatására szolgálnak. A nagy számú eszköz identitásának olvasása vagy frissítése az [importálási és exportálási feladatok](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)használatával támogatott.
+
+Ha [tömeges eszköz-műveletekkel](iot-hub-bulk-identity-mgmt.md)kezdeményezi az identitást, ugyanezek a szabályozási korlátozások érvényesek. Ha például az 50-es eszközök létrehozásához tömeges műveletet szeretne küldeni, és 1 egységgel rendelkező S1-IoT Hub rendelkezik, akkor percenként csak kettőt fogad el. Ez azért történt, mert egy S1-es IoT Hubhoz tartozó Identity Operation szabályozása 1 egységgel 100/perc/egység. Ebben az esetben a rendszer visszautasítja a harmadik kérelmet (és azon kívül is), hogy a korlát már el lett utasítva. 
 
 ### <a name="device-connections-throttle"></a>Eszközök kapcsolatainak szabályozása
 
@@ -132,7 +134,7 @@ Több IoT Hub egység is befolyásolja a szabályozást a korábban leírtak sze
 
 Ha a művelet késése váratlan növekedést lát, forduljon a [Microsoft ügyfélszolgálatahoz](https://azure.microsoft.com/support/options/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 IoT Hub szabályozási viselkedés részletes ismertetését a következő blogbejegyzésben találja: [IoT hub szabályozás és Ön](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/).
 

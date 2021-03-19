@@ -5,13 +5,13 @@ author: jseb225
 ms.author: jeanb
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/16/2020
-ms.openlocfilehash: feea44741fbc2c81d781f0bba12b280abdb9f68a
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.date: 03/16/2021
+ms.openlocfilehash: 5ff59b0add8a9b3c48ad8ae80a50c0a816c08d6e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020248"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588077"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>Bevezetés az Stream Analytics Windowing functions használatába
 
@@ -56,7 +56,7 @@ Pillanatkép Windows-csoportok eseményei, amelyek ugyanazzal az időbélyegzőv
 
 ![Pillanatkép-ablak Stream Analytics](media/stream-analytics-window-functions/snapshot.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs (Azure Stream Analytics-feladatok méretezése)](stream-analytics-scale-jobs.md)

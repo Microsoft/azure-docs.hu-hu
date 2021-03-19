@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/24/2020
+ms.date: 03/18/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: d997c85f96fa9f87ca6d017cb555b3732007e21c
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 49590c46588ad0d0f1c1b7b095679a3c3fce96eb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256305"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579501"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Alkalmazás üzembe helyezése a karantén állapotában
 
@@ -52,7 +52,7 @@ Három módon ellenőrizhető, hogy egy alkalmazás karanténba helyezve van-e:
 
 ## <a name="why-is-my-application-in-quarantine"></a>Miért van a karanténba helyezett alkalmazásom?
 
-|Leírás|Javasolt művelet|
+|Description|Javasolt művelet|
 |---|---|
 |**Scim megfelelőségi probléma:** HTTP/404 nem található válasz lett visszaadva a várt HTTP/200 OK válasz helyett. Ebben az esetben az Azure AD kiépítési szolgáltatása kérelmet küldött a célalkalmazás számára, és váratlan választ kapott.|Keresse meg a rendszergazdai hitelesítő adatok szakaszt. Ellenőrizze, hogy az alkalmazás a bérlői URL-cím megadását igényli-e, és hogy az URL-cím helyes-e. Ha nem jelenik meg a probléma, forduljon az alkalmazás fejlesztői szolgálatához, és győződjön meg arról, hogy a szolgáltatásuk SCIM-kompatibilis. https://tools.ietf.org/html/rfc7644#section-3.4.2 |
 |**Érvénytelen hitelesítő adatok:** Ha engedélyezi a hozzáférést a célalkalmazás számára, a rendszer választ kapott a megcélzott alkalmazástól, amely jelzi, hogy a megadott hitelesítő adatok érvénytelenek.|Navigáljon a létesítési konfiguráció felhasználói felületének rendszergazdai hitelesítő adatok szakaszához, és engedélyezze újra a hozzáférést érvényes hitelesítő adatokkal. Ha az alkalmazás szerepel a katalógusban, tekintse át az alkalmazás konfigurálására vonatkozó oktatóanyagot a már szükséges lépések elvégzéséhez.|
@@ -85,7 +85,7 @@ Először javítsa ki azt a problémát, amely az alkalmazás karanténba helyez
 
 A probléma megoldása után indítsa újra a kiépítési feladatot. Az alkalmazás üzembe helyezési beállításainak (például az attribútum-hozzárendelések vagy a hatóköri szűrők) bizonyos módosításai automatikusan újraindulnak a kiépítés során. Az alkalmazás **üzembe** helyezési lapjának folyamatjelző sávján a kiépítés utolsó indításakor látható. Ha manuálisan kell újraindítani a kiépítési feladatot, használja az alábbi módszerek egyikét:  
 
-- A kiépítési feladatok újraindításához használja a Azure Portal. Az alkalmazás **kiépítési** lapján a **Beállítások** területen válassza az **állapot törlése és a szinkronizálás újraindítása** és a **kiépítési állapot** beállítása **a** következőre lehetőséget. Ez a művelet teljesen újraindítja a kiépítési szolgáltatást, amely hosszabb időt is igénybe vehet. A teljes kezdeti ciklus újra futni fog, ami törli a letéteket, eltávolítja az alkalmazást a karanténból, és törli az összes vízjelet.
+- A kiépítési feladatok újraindításához használja a Azure Portal. Az alkalmazás **üzembe** helyezése lapon válassza a **kiépítés újraindítása** lehetőséget. Ez a művelet teljesen újraindítja a kiépítési szolgáltatást, amely hosszabb időt is igénybe vehet. A teljes kezdeti ciklus újra futni fog, ami törli a letéteket, eltávolítja az alkalmazást a karanténból, és törli az összes vízjelet. A szolgáltatás ezután újra kiértékeli a forrásrendszer összes felhasználóját, és megállapítja, hogy a kiépítés hatókörében van-e. Ez akkor lehet hasznos, ha az alkalmazás jelenleg karanténban van, mivel ez a cikk azt tárgyalja, vagy módosítania kell az attribútum-hozzárendeléseket. Vegye figyelembe, hogy a kezdeti ciklus a kiértékeléshez szükséges objektumok száma miatt hosszabb időt vesz igénybe, mint a szokásos növekményes ciklus. A kezdeti és a növekményes ciklusok teljesítményéről [itt](application-provisioning-when-will-provisioning-finish-specific-user.md)olvashat bővebben.
 
 - [A kiépítési feladatok újraindításához használja a](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta&preserve-view=true)Microsoft Graph. Az újraindítást teljes mértékben szabályozhatja. Dönthet úgy, hogy törli a letéteket (a karantén állapotának újraindításához), a karantén törlését (az alkalmazás karanténból való eltávolítását) vagy a vízjelek törlését. Használja az alábbi kérelmet:
  

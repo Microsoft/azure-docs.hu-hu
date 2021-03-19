@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/18/2020
+ms.date: 03/10/2021
 ms.author: b-juche
-ms.openlocfilehash: b30ed0cca680013b85efe064d59fb7cb73d753d2
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: d3d944646689e9e6189b0343e8bf67c8fb0abcbd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95239550"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590925"
 ---
 # <a name="troubleshoot-cross-region-replication"></a>Régiók közötti replikáció hibaelhárítása
 
@@ -71,11 +71,18 @@ Ez a cikk azokat a hibaüzeneteket és megoldásokat ismerteti, amelyek segíthe
 |     `Snapshot   cannot be deleted, parent volume is a Data Protection volume with a   replication object`    |     Ellenőrizze, hogy megszakította-e a kötet replikálását, ha törölni szeretné ezt a pillanatképet.    |
 |     `Cannot delete   volume replication generated snapshot`    |     A replikációs alapterv Pillanatképek törlése nem engedélyezett.    |
 
+## <a name="errors-resizing-volumes"></a>Hibák a kötetek átméretezése közben
+
+|     Hibaüzenet    |     Feloldás    |
+|-|-|
+|   A forrás kötet átméretezésére tett kísérlet sikertelen a hiba miatt. `"PoolSizeTooSmall","message":"Pool size too small for total volume size."`  |  Győződjön meg arról, hogy a kapacitás-készletek elegendő belmagassággal rendelkeznek a régiók közötti replikálás forrásához és a célként megadott kötetekhez is. Ha átméretezi a forrás kötetet, a rendszer automatikusan átméretezi a célként megadott kötetet. Ha azonban a célként megadott kötetet üzemeltető kapacitás-készlet nem rendelkezik elegendő belmagassággal, a forrás és a cél kötetek átméretezése sikertelen lesz. A részletekért lásd [a régiók közötti replikálási cél kötetének átméretezése](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume) című témakört.   |
+
 ## <a name="next-steps"></a>Következő lépések  
 
 * [Régiók közötti replikáció](cross-region-replication-introduction.md)
 * [A régiók közötti replikáció használatára vonatkozó követelmények és szempontok](cross-region-replication-requirements-considerations.md)
-* [Kötet replikálásának létrehozása](cross-region-replication-create-peering.md)
+* [Kötetreplikáció létrehozása](cross-region-replication-create-peering.md)
 * [Replikációs kapcsolat állapotának megjelenítése](cross-region-replication-display-health-status.md)
 * [Vészhelyreállítás kezelése](cross-region-replication-manage-disaster-recovery.md)
+* [Régiók közötti replikálási cél kötetének átméretezése](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
 * [Régiók közötti replikáció hibaelhárítása](troubleshoot-cross-region-replication.md)

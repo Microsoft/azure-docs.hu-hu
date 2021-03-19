@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 11/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: dbcd6d55ee921c7fabd8e746e0fdcd6f1427733c
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: f99f9d240a0a9220d3b7f57cddd0a4f8ba6b6101
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102210706"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595991"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Időzítő trigger a Azure Functionshoz
 
@@ -365,6 +365,16 @@ Az időzítő-trigger tároló-zárolással biztosítja, hogy csak egy időzít�
 ## <a name="retry-behavior"></a>Újrapróbálkozási viselkedés
 
 A várólista-triggertől eltérően az időzítő trigger nem próbálkozik újra a függvény meghibásodása után. Ha egy függvény meghibásodik, azt a rendszer nem hívja újra az ütemezés következő időpontjáig.
+
+## <a name="manually-invoke-a-timer-trigger"></a>Időzítő eseményindító manuális meghívása
+
+A Azure Functions időzítő eseményindítója olyan HTTP webhookot biztosít, amely a függvény manuális elindítására szolgál. Ez a következő helyzetekben rendkívül hasznos lehet.
+
+* Integrációtesztelés
+* Tárolóhelyek cseréje a füst vagy a bemelegedési tevékenység részeként
+* Egy függvény kezdeti üzembe helyezése, amely azonnal feltölti a gyorsítótárat vagy a keresési táblázatot egy adatbázisban
+
+Az időzítő által aktivált függvények manuális meghívásával kapcsolatos részletekért tekintse meg a [nem http-triggert futtató függvények manuális futtatását](./functions-manually-run-non-http.md) ismertető témakört.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

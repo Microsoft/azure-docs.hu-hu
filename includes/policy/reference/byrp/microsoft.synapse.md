@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: ab47e9f01b731151ea498eae353ebebc45a8023a
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 4062375bbde1dce1e20ac04ff16562d892de808e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102611545"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600180"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Engedélyezni kell a naplózást a szinapszis munkaterületen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe04e5000-cd89-451d-bb21-a14d24ff9c73) |A szinapszis-munkaterületen való naplózást engedélyezni kell, hogy nyomon kövessék az adatbázis-tevékenységeket a dedikált SQL-készletekben lévő összes adatbázison, és egy naplóba mentse őket. |AuditIfNotExists, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceSqlAuditing_Audit.json) |
 |[Az Azure szinapszis-munkaterületek csak a jóváhagyott célokhoz engedélyezhetik a kimenő adatforgalmat.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3484ce98-c0c5-4c83-994b-c5ac24785218) |Növelje a szinapszis-munkaterület biztonságát azáltal, hogy csak a jóváhagyott célokhoz engedélyezi a kimenő adatforgalmat. Ez segít megakadályozni az adatok kiszűrése azáltal, hogy az adatok elküldése előtt érvényesíti a célt. |Naplózás, letiltva, megtagadás |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/Workspace_RestrictOutboundDataTraffic_Audit.json) |

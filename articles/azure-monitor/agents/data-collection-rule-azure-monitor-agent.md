@@ -4,13 +4,13 @@ description: Ismerteti, hogyan lehet adatgyűjtési szabályt létrehozni a virt
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/19/2020
-ms.openlocfilehash: 93e244706d6d478155ac001d20fa3ce74fa6a887
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/16/2021
+ms.openlocfilehash: 73f7ab83ea15d223b76b9f71fde2f8a6a37bdacf
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723639"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586369"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Adatgyűjtés konfigurálása a Azure Monitor-ügynökhöz (előzetes verzió)
 
@@ -68,6 +68,32 @@ Kattintson az **adatforrás hozzáadása** lehetőségre, majd **tekintse át a 
 > [!NOTE]
 > Az adatgyűjtési szabály és a társítások létrehozása után akár 5 percet is igénybe vehet, amíg a célhelyek el nem jutnak.
 
+## <a name="limit-data-collection-with-custom-xpath-queries"></a>Az adatgyűjtés korlátozása egyéni XPath-lekérdezésekkel
+Mivel egy Log Analytics munkaterületen összegyűjtött adatokért kell fizetnie, csak a szükséges adatokat kell összegyűjtenie. Az alapszintű konfiguráció használata a Azure Portalban csak korlátozott számú eseményt tud gyűjteni. Az alkalmazások és a rendszernaplók esetében ez az összes olyan napló, amely egy adott súlyossággal rendelkezik. Biztonsági naplók esetén ez az összes naplózási művelet, vagy az összes naplózási hiba naplója.
+
+További szűrők megadásához egyéni konfigurációt kell használnia, és meg kell adnia egy XPath-t, amely kiszűri a nem használt eseményeket. Az XPath-bejegyzések az űrlapon íródnak `LogName!XPathQuery` . Előfordulhat például, hogy csak az alkalmazás eseménynaplójában lévő eseményeket szeretné visszaadni az 1035-es azonosítójú eseményhez. Az események XPathQuery `*[System[EventID=1035]]` . Mivel az alkalmazás eseménynaplójában szeretné lekérni az eseményeket, az XPath a következő lesz: `Application!*[System[EventID=1035]]`
+
+> [!TIP]
+> A `Get-WinEvent` `FilterXPath` XPathQuery érvényességének teszteléséhez használja a PowerShell-parancsmagot a paraméterrel. Az alábbi parancsfájl egy példát mutat be.
+> 
+> ```powershell
+> $XPath = '*[System[EventID=1035]]'
+> Get-WinEvent -LogName 'Application' -FilterXPath $XPath
+> ```
+>
+> - Ha a rendszer visszaadja az eseményeket, a lekérdezés érvényes.
+> - Ha a *rendszer nem talált olyan eseményt, amely megfelel a megadott kiválasztási feltételeknek*, a lekérdezés érvényes lehet, de a helyi gépen nincsenek egyező események.
+> - Ha a *megadott lekérdezés érvénytelen* üzenetet kap, a lekérdezés szintaxisa érvénytelen. 
+
+A következő táblázat példákat mutat be az események egyéni XPath használatával történő szűrésére.
+
+| Description |  XPath |
+|:---|:---|
+| Csak a rendszeresemények összegyűjtése a következő azonosítójú eseménnyel: eseményazonosító = 4648 |  `System!*[System[EventID=4648]]`
+| Csak olyan rendszeresemények gyűjtése, amelyeknek az eseményazonosító = 4648 és a consent.exe folyamat neve |  `System!*[System[(EventID=4648) and (EventData[@Name='ProcessName']='C:\Windows\System32\consent.exe')]]`
+| Az összes kritikus, hiba, figyelmeztetés és információs esemény összegyűjtése a rendszer eseménynaplójában, kivéve az Event ID = 6 (az illesztőprogram betöltve) |  `System!*[System[(Level=1 or Level=2 or Level=3) and (EventID != 6)]]` |
+| Az összes sikeres és sikertelen biztonsági esemény gyűjtése a 4624-es azonosítójú esemény kivételével (sikeres bejelentkezés) |  `Security!*[System[(band(Keywords,13510798882111488)) and (EventID != 4624)]]` |
+
 
 ## <a name="create-rule-and-association-using-rest-api"></a>Szabály és társítás létrehozása REST API használatával
 
@@ -83,6 +109,8 @@ Az alábbi lépéseket követve hozzon létre egy adatgyűjtési szabályt és t
 ## <a name="create-association-using-resource-manager-template"></a>Társítás létrehozása a Resource Manager-sablonnal
 
 Resource Manager-sablonnal nem hozhatók létre adatgyűjtési szabályok, de az Azure-beli virtuális gépek vagy az Azure arc-kompatibilis kiszolgálók között egy Resource Manager-sablonnal is létrehozhatók társítások. A példákat lásd: [Resource Manager-sablonok minták a Azure monitor adatgyűjtési szabályaihoz](./resource-manager-data-collection-rules.md) a sablonokhoz.
+
+
 
 ## <a name="next-steps"></a>Következő lépések
 

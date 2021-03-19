@@ -1,18 +1,18 @@
 ---
 title: Az Azure-alkalmazások konfigurációjának Azure Policy vonatkozó megfelelőségi szabályozása
 description: Felsorolja Azure Policy az Azure app Configuration szolgáltatáshoz elérhető megfelelőségi szabályozásokat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.topic: sample
 author: AlexandraKemperMS
 ms.author: alkemper
 ms.service: azure-app-configuration
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 54166e5a830298cedb6153d56c6819f762e3b033
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 431ffd4b0f41e274e0fb91ef24cae44f4607383f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102635101"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591256"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-app-configuration"></a>Az Azure-alkalmazások konfigurációjának Azure Policy vonatkozó megfelelőségi szabályozása
 

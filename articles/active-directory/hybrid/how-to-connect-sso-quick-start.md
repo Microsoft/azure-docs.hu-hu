@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e49ed356f294baca6e339faeebe92ca02b2723df
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c320c8497506a0269e65cd79e18aea1972354729
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644782"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589522"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyors üzembe helyezés
 
@@ -41,6 +41,9 @@ Győződjön meg arról, hogy a következő előfeltételek vannak érvényben:
 
     >[!NOTE]
     >A 1.1.557.0, a 1.1.558.0, a 1.1.561.0 és a 1.1.614.0 verziók a jelszó-kivonat szinkronizálásával kapcsolatos problémával rendelkeznek. Azure AD Connect Ha _nem_ kívánja használni a jelszó-kivonatolási szinkronizálást az átmenő hitelesítéssel együtt, olvassa el a [Azure ad Connect kibocsátási megjegyzéseit](./reference-connect-version-history.md) további információért.
+    
+    >[!NOTE]
+    >Ha kimenő HTTP-proxyval rendelkezik, győződjön meg róla, hogy ez az URL-cím (autologon.microsoftazuread-sso.com) engedélyezve van az engedélyezési listán. Explicit módon meg kell adnia ezt az URL-címet, mert a helyettesítő karakterek nem fogadhatók el. 
 
 * **Támogatott Azure ad Connect topológia használata**: Ügyeljen arra, hogy az [itt](plan-connect-topologies.md)leírt Azure ad Connect által támogatott topológiák egyikét használja.
 

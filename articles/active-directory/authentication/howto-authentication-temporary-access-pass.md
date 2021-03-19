@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/03/2021
+ms.date: 03/18/2021
 ms.author: justinha
 author: inbarckms
 manager: daveba
 ms.reviewer: inbarckms
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 101e3ee9279d3560c0b561f0ea7ea695387bee15
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 44b80b9c6847cfdc8402cb3b4983f15873e367d3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102096462"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579382"
 ---
 # <a name="configure-temporary-access-pass-in-azure-ad-to-register-passwordless-authentication-methods-preview"></a>Ideiglenes hozzáférési pass beállítása az Azure AD-ben a jelszóval nem rendelkező hitelesítési módszerek regisztrálásához (előzetes verzió)
 
@@ -127,7 +127,7 @@ Tartsa szem előtt a következő korlátozásokat:
 - Ideiglenes hozzáférési pass nem használható a hálózati házirend-kiszolgáló (NPS) bővítmény és Active Directory összevonási szolgáltatások (AD FS) (AD FS) adapterrel.
 - Ha a zökkenőmentes SSO engedélyezve van a bérlőn, a rendszer felszólítja a felhasználókat a jelszó megadására. Az **ideiglenes hozzáférési pass helyett** a hivatkozás elérhető lesz a felhasználó számára, hogy egy ideiglenes hozzáférési menetben jelentkezzen be.
 
-![Képernyőkép az ideiglenes hozzáférési pass használatáról](./media/how-to-authentication-temporary-access-pass/alternative.png)
+  ![Képernyőkép az ideiglenes hozzáférési pass használatáról](./media/how-to-authentication-temporary-access-pass/alternative.png)
 
 ## <a name="troubleshooting"></a>Hibaelhárítás    
 

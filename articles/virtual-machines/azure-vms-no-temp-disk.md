@@ -8,12 +8,12 @@ ms.subservice: sizes
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: 1937b8392ee3a73ed7c268897c532c643a9151eb
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: bd4dcbdc7ab13d18ef7f2d7102c56d1bd8d8758d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102565461"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582102"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>Azure-beli virtuálisgép-méretek helyi ideiglenes lemezzel nem 
 Ez a cikk olyan Azure-beli virtuálisgép-méretekkel kapcsolatos gyakori kérdésekre adott válaszokat tartalmaz, amelyek nem rendelkeznek helyi ideiglenes lemezzel (azaz nincs helyi Temp lemez). A virtuálisgép-méretekkel kapcsolatos további információkért tekintse meg a [DV4 és Dsv4-sorozat (általános célú munkaterhelések)](dv4-dsv4-series.md) , illetve [a Ev4 és a Esv4-sorozat (memória-optimalizált számítási feladatok)](ev4-esv4-series.md)specifikációit ismertető témakört.
@@ -56,7 +56,7 @@ A lépéseket a következő lépésekkel telepítheti át:
    > Kövesse a D: meghajtó használata a Windows rendszerű virtuális gépen adatmeghajtóként a (z) "ideiglenes áthelyezés pagefile.sys a C meghajtóra" című szakasz útmutatását, és helyezze át a lapozófájlt a helyi ideiglenes lemezről (D: meghajtó) a C: meghajtóra. **Az ismertetett lépésektől való eltérés a következő hibaüzenetet eredményezi: "nem lehet átméretezni a virtuális gépet, mert az erőforrás lemezről nem az erőforrás-lemezről nem a virtuálisgép-méretre változik, és fordítva nem engedélyezett.**
 
 3. Készítse el a virtuális gép pillanatképét a [pillanatkép létrehozása a portál vagy az Azure CLI használatával](./linux/snapshot-copy-managed-disk.md)című rész lépéseit követve. 
-4. A pillanatkép használatával hozzon létre egy új lemez nélküli virtuális gépet (például:, DV4, Dsv4, Ev4, Esv4 sorozat) a [virtuális gép létrehozása pillanatképből a CLI-vel](./scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md)című rész lépéseit követve. 
+4. A pillanatkép használatával hozzon létre egy új lemez nélküli virtuális gépet (például:, DV4, Dsv4, Ev4, Esv4 sorozat) a [virtuális gép létrehozása pillanatképből a CLI-vel](/previous-versions/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot)című rész lépéseit követve. 
 
 ## <a name="do-these-vm-sizes-support-both-linux-and-windows-operating-systems-os"></a>Ezek a virtuálisgép-méretek támogatják a Linux és a Windows operációs rendszer (OS) használatát?
 Igen.

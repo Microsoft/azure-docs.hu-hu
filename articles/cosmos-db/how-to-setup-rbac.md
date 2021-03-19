@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan konfigurálhat szerepköralapú hozzáférés-v
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 03/17/2021
 ms.author: thweiss
-ms.openlocfilehash: 7c5497615ce71d0be713ef9ae28ab1e0f85b7ddb
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: efde86eac3e0830b36eabfc9e80df09daeed9f6f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177232"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586063"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Szerepköralapú hozzáférés-vezérlés konfigurálása a Azure Cosmos DB-fiókhoz Azure Active Directoryhoz (előzetes verzió)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -325,13 +325,13 @@ A példány létrehozásának módja `TokenCredential` meghaladja a jelen cikk h
 
 - [a .NET-ben](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme#credential-classes)
 - [Java-ban](https://docs.microsoft.com/java/api/overview/azure/identity-readme#credential-classes)
+- [a JavaScriptben](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme#credential-classes)
 
 Az alábbi példák egy egyszerű szolgáltatást használnak egy `ClientSecretCredential` példánnyal.
 
 ### <a name="in-net"></a>A .NET-ben
 
-> [!NOTE]
-> A `preview` szolgáltatás eléréséhez az Azure Cosmos db .net SDK verzióját kell használnia.
+Az Azure Cosmos DB RBAC jelenleg a `preview` [.net SDK v3](sql-api-sdk-dotnet-standard.md)verziója támogatja.
 
 ```csharp
 TokenCredential servicePrincipal = new ClientSecretCredential(
@@ -342,6 +342,8 @@ CosmosClient client = new CosmosClient("<account-endpoint>", servicePrincipal);
 ```
 
 ### <a name="in-java"></a>A Javában
+
+A Azure Cosmos DB RBAC jelenleg támogatott a [Java SDK v4](sql-api-sdk-java-v4.md)-ben.
 
 ```java
 TokenCredential ServicePrincipal = new ClientSecretCredentialBuilder()
@@ -354,6 +356,21 @@ CosmosAsyncClient Client = new CosmosClientBuilder()
     .endpoint("<account-endpoint>")
     .credential(ServicePrincipal)
     .build();
+```
+
+### <a name="in-javascript"></a>A JavaScriptben
+
+A Azure Cosmos DB RBAC jelenleg a [JavaScript SDK v3](sql-api-sdk-node.md)verzióban támogatott.
+
+```javascript
+const servicePrincipal = new ClientSecretCredential(
+    "<azure-ad-tenant-id>",
+    "<client-application-id>",
+    "<client-application-secret>");
+const client = new CosmosClient({
+    "<account-endpoint>",
+    aadCredentials: servicePrincipal
+});
 ```
 
 ## <a name="auditing-data-requests"></a>Adatkérések naplózása
@@ -374,23 +391,23 @@ Ez a további információ a **DataPlaneRequests** -napló kategóriájában fol
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-### <a name="which-azure-cosmos-db-apis-are-supported-by-rbac"></a>Mely Azure Cosmos DB API-kat támogatja a RBAC?
+### <a name="which-azure-cosmos-db-apis-are-supported-by-rbac"></a>Mely Azure Cosmos DB API-kat támogatja az RBAC?
 
 Jelenleg csak az SQL API támogatott.
 
-### <a name="is-it-possible-to-manage-role-definitions-and-role-assignments-from-the-azure-portal"></a>Lehetséges a szerepkör-definíciók és a szerepkör-hozzárendelések kezelése a Azure Portal?
+### <a name="is-it-possible-to-manage-role-definitions-and-role-assignments-from-the-azure-portal"></a>Elvégezhető a szerepkör-definíciók és szerepkör-hozzárendelések kezelése az Azure Portalon?
 
-A szerepkör-felügyelet Azure Portal támogatása még nem érhető el.
+A szerepkörkezelés az Azure Portalon még nem érhető el.
 
 ### <a name="which-sdks-in-azure-cosmos-db-sql-api-support-rbac"></a>Mely SDK-k támogatják a Azure Cosmos DB SQL API-t? RBAC?
 
 A [.net v3](sql-api-sdk-dotnet-standard.md) és a [Java v4](sql-api-sdk-java-v4.md) SDK-k jelenleg támogatottak.
 
-### <a name="is-the-azure-ad-token-automatically-refreshed-by-the-azure-cosmos-db-sdks-when-it-expires"></a>A Azure Cosmos DB SDK-k automatikusan frissítik az Azure AD-tokent a lejáratakor?
+### <a name="is-the-azure-ad-token-automatically-refreshed-by-the-azure-cosmos-db-sdks-when-it-expires"></a>Az Azure Cosmos DB SDK-i automatikusan frissítik az Azure AD-jogkivonatot, amikor az lejár?
 
 Igen.
 
-### <a name="is-it-possible-to-disable-the-usage-of-the-account-primary-key-when-using-rbac"></a>Le lehet tiltani a fiók elsődleges kulcsának használatát a RBAC használatakor?
+### <a name="is-it-possible-to-disable-the-usage-of-the-account-primary-key-when-using-rbac"></a>Letiltható a fiók elsődleges kulcsának használata az RBAC esetén?
 
 A fiók elsődleges kulcsának letiltása jelenleg nem lehetséges.
 

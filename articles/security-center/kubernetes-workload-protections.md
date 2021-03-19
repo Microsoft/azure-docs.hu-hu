@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 03/17/2021
 ms.author: memildin
-ms.openlocfilehash: 6d0e660ecce1d45dab4d6003cdba391ba2eb4ee9
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: eacca5573c672e9f4485c26b1b580ee4c982c5d2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102095595"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580750"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>A Kubernetes számítási feladatok védelme
 
@@ -39,7 +39,7 @@ Security Center több tároló biztonsági funkciót kínál, ha engedélyezi az
 |Árképzési|Ingyenes|
 |Szükséges szerepkörök és engedélyek:|Egy hozzárendelés szerkesztéséhez a **tulajdonos** vagy a **biztonsági rendszergazda**<br>**Olvasó** a javaslatok megtekintéséhez|
 |Környezeti követelmények:|Kubernetes v 1.14 (vagy újabb) szükséges<br>Nincs PodSecurityPolicy-erőforrás (régi PSP-modell) a fürtökön<br>A Windows-csomópontok nem támogatottak|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 
@@ -80,12 +80,12 @@ A javaslatok konfigurálásához telepítse a  **Kubernetes Azure Policy bővít
 
     | Javaslat neve                                                         | Biztonsági ellenőrzés                         | Konfiguráció szükséges |
     |-----------------------------------------------------------------------------|------------------------------------------|------------------------|
-    | A tároló CPU-és memória-korlátozásait kényszeríteni kell                          | Alkalmazások elleni védelem a DDoS-támadásokkal szemben | Nem                     |
-    | Az emelt szintű tárolókat el kell kerülni                                     | Hozzáférés és engedélyek kezelése            | Nem                     |
-    | Nem módosítható (csak olvasható) rendszerindító fájlrendszert kell kikényszeríteni a tárolók számára     | Hozzáférés és engedélyek kezelése            | Nem                     |
-    | A jogosultság-eszkalációs tárolót el kell kerülni                       | Hozzáférés és engedélyek kezelése            | Nem                     |
-    | A tárolók futtatását root felhasználóként el kell kerülni                           | Hozzáférés és engedélyek kezelése            | Nem                     |
-    | A bizalmas gazdagépek névtereit megosztó tárolókat el kell kerülni              | Hozzáférés és engedélyek kezelése            | Nem                     |
+    | A tároló CPU-és memória-korlátozásait kényszeríteni kell                          | Alkalmazások elleni védelem a DDoS-támadásokkal szemben | No                     |
+    | Az emelt szintű tárolókat el kell kerülni                                     | Hozzáférés és engedélyek kezelése            | No                     |
+    | Nem módosítható (csak olvasható) rendszerindító fájlrendszert kell kikényszeríteni a tárolók számára     | Hozzáférés és engedélyek kezelése            | No                     |
+    | A jogosultság-eszkalációs tárolót el kell kerülni                       | Hozzáférés és engedélyek kezelése            | No                     |
+    | A tárolók futtatását root felhasználóként el kell kerülni                           | Hozzáférés és engedélyek kezelése            | No                     |
+    | A bizalmas gazdagépek névtereit megosztó tárolókat el kell kerülni              | Hozzáférés és engedélyek kezelése            | No                     |
     | A minimálisan privilegizált Linux-funkciókat kell kikényszeríteni a tárolók számára       | Hozzáférés és engedélyek kezelése            | **Igen**                |
     | A pod HostPath mennyiségi csatlakoztatások használatát egy ismert listára kell korlátozni    | Hozzáférés és engedélyek kezelése            | **Igen**                |
     | A tárolóknak csak az engedélyezett portok figyelésére kell figyelniük                              | Jogosulatlan hálózati hozzáférés korlátozása     | **Igen**                |
