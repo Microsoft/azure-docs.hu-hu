@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: iot-fundamentals
 author: robinsh
 ms.service: iot-fundamentals
@@ -9,10 +9,10 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 4fdb891d668d99644d8a9ed9c15d158e65d53ba5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "72793131"
 ---
 A eszközök internetes hálózata-(IoT-) infrastruktúra biztonságossá tételéhez szigorú, részletes biztonsági stratégiát kell megadni. Ennek a stratégiának szüksége van a felhőben tárolt adatok védelmére, az adatok integritásának biztosítására a nyilvános interneten keresztül, és biztonságosan kiépíteni az eszközöket. Minden réteg nagyobb biztonsági garanciát hoz létre a teljes infrastruktúrában.
@@ -49,7 +49,7 @@ A IoT-megoldás fejlesztőknek szóló ajánlott eljárások a következők:
 
 * A **biztonságos szoftverfejlesztés módszerének követése**: a biztonságos szoftverek fejlesztéséhez a projekt kezdetétől a teljes körű működést, tesztelést és üzembe helyezést lehetővé kell tenni. A platformokra, nyelvekre és eszközökre vonatkozó döntéseket mind a módszertan befolyásolja. A Microsoft biztonsági fejlesztési életciklusa részletes megközelítést biztosít a biztonságos szoftverek létrehozásához.
 
-* **Válassza ki a nyílt forráskódú szoftvereket: a**nyílt forráskódú szoftverek lehetőséget biztosítanak a megoldások gyors fejlesztésére. Ha nyílt forráskódú szoftvert választ, vegye figyelembe a Közösség tevékenységi szintjét az egyes nyílt forráskódú összetevőknél. Az aktív Közösség gondoskodik a szoftver támogatásáról, valamint a problémák felderítéséről és megoldásáról. Másik lehetőségként előfordulhat, hogy a rendszer nem támogatja az ismeretlen és inaktív nyílt forráskódú szoftverek használatát, és a problémák valószínűleg nem észlelhetők.
+* **Válassza ki a nyílt forráskódú szoftvereket: a** nyílt forráskódú szoftverek lehetőséget biztosítanak a megoldások gyors fejlesztésére. Ha nyílt forráskódú szoftvert választ, vegye figyelembe a Közösség tevékenységi szintjét az egyes nyílt forráskódú összetevőknél. Az aktív Közösség gondoskodik a szoftver támogatásáról, valamint a problémák felderítéséről és megoldásáról. Másik lehetőségként előfordulhat, hogy a rendszer nem támogatja az ismeretlen és inaktív nyílt forráskódú szoftverek használatát, és a problémák valószínűleg nem észlelhetők.
 
 * **Integráció a Care szolgáltatással**: a tárak és API-k határán számos szoftveres biztonsági hiba létezik. Előfordulhat, hogy az aktuális telepítéshez esetlegesen nem szükséges funkciók egy API-rétegen keresztül is elérhetők. Az általános biztonság érdekében győződjön meg arról, hogy a biztonsági hibákhoz integrált összetevők összes felületét ellenőrizni kell.
 

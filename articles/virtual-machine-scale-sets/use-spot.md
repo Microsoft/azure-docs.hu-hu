@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b20a5bd9c06c3948097389d5439defa219a7931b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a176a30a1e21ec03c2da329785ab895ec67a4faf
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694988"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596416"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>Azure spot Virtual Machines a virtuálisgép-méretezési csoportokhoz 
 
@@ -46,7 +46,7 @@ Jelenleg a következő [típusú ajánlatok](https://azure.microsoft.com/support
 -   Nagyvállalati Szerződés
 -   Utólagos elszámolású ajánlat kódja 003P
 -   Szponzorált
-- A felhőalapú szolgáltató (CSP) esetében tekintse meg a [partneri központot](https://docs.microsoft.com/partner-center/azure-plan-get-started) , vagy forduljon közvetlenül a partneréhez.
+- A felhőalapú szolgáltató (CSP) esetében tekintse meg a [partneri központot](/partner-center/azure-plan-get-started) , vagy forduljon közvetlenül a partneréhez.
 
 ## <a name="eviction-policy"></a>Kiürítési szabályzat
 
@@ -202,7 +202,7 @@ Ha törölni szeretné a példányt a kizárása után, módosítsa a paraméter
 
 ## <a name="simulate-an-eviction"></a>Kizárás szimulálása
 
-Az Azure-beli helyszíni virtuális gépek [kizárását szimulálhatja](https://docs.microsoft.com/rest/api/compute/virtualmachines/simulateeviction) annak teszteléséhez, hogy az alkalmazás milyen jól reagáljon a hirtelen kizárásra. 
+Az Azure-beli helyszíni virtuális gépek [kizárását szimulálhatja](/rest/api/compute/virtualmachines/simulateeviction) annak teszteléséhez, hogy az alkalmazás milyen jól reagáljon a hirtelen kizárásra. 
 
 Cserélje le a következőt az adataira: 
 

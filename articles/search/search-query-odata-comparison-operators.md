@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: fc5803f96c30ea1df362676aa8c4104bb0b69db3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88934871"
 ---
 # <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>OData összehasonlító operátorok az Azure-ban Cognitive Search- `eq` ,,,, `ne` `gt` `lt` `ge` és `le`
@@ -81,13 +81,13 @@ Az összehasonlító operátorok mindkét oldalán lévő adattípusoknak kompat
 | --- | --- | --- |
 | `Edm.Double` | `Edm.Double` | Az összehasonlításra a [következő speciális szabályok `NaN` vonatkoznak:](#special-case-nan) |
 | `Edm.Double` | `Edm.Int64` | A konstans a értékre lett konvertálva `Edm.Double` , ami a nagy mennyiségű értékek pontosságának elvesztését eredményezi |
-| `Edm.Double` | `Edm.Int32` | n/a |
+| `Edm.Double` | `Edm.Int32` | n.a. |
 | `Edm.Int64` | `Edm.Double` | A `NaN` , `-INF` , vagy `INF` nem engedélyezett összehasonlítások |
-| `Edm.Int64` | `Edm.Int64` | n/a |
+| `Edm.Int64` | `Edm.Int64` | n.a. |
 | `Edm.Int64` | `Edm.Int32` | A konstans konvertálása az `Edm.Int64` összehasonlítás előtt történik |
 | `Edm.Int32` | `Edm.Double` | A `NaN` , `-INF` , vagy `INF` nem engedélyezett összehasonlítások |
-| `Edm.Int32` | `Edm.Int64` | n/a |
-| `Edm.Int32` | `Edm.Int32` | n/a |
+| `Edm.Int32` | `Edm.Int64` | n.a. |
+| `Edm.Int32` | `Edm.Int32` | n.a. |
 
 A nem engedélyezett összehasonlításokhoz, például a típusú mezők összehasonlításához `Edm.Int64` `NaN` az Azure Cognitive Search REST API "http 400: hibás kérés" hibaüzenetet ad vissza.
 
@@ -164,7 +164,7 @@ A dokumentumok egyeztetése olyan hoteleknél, amelyekben legalább egy szoba "D
 Rooms/any(room: room/Type eq 'Deluxe Room')
 ```
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 - [Szűrők az Azure Cognitive Search](search-filters.md)
 - [Az Azure Cognitive Search OData kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)

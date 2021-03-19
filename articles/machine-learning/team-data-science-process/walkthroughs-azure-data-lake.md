@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 2e5eb0acd2a94f7726fbacefbe6e1022c8cebae2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75864179"
 ---
 # <a name="azure-data-lake-data-science-walkthroughs-using-u-sql"></a>Adatelemzési útmutató Azure Data Lake a U-SQL használatával
@@ -30,7 +30,7 @@ A csoportos adatelemzési folyamatokat végrehajtó további adatelemzési útmu
 Az [adatelemzési útmutató Azure Data Lake használata](data-lake-walkthrough.md) című cikk azt mutatja be, hogyan használhatók az adatfelderítési és a bináris besorolási feladatok Azure Data Lake.  Az adat a New York-i taxi adatkészletének mintája.  A feladat előre jelzi, hogy az ügyfél fizetett-e borravalót. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A csoportos adatelemzési folyamat áttekintését lásd: a [csoportos adatelemzési folyamat áttekintése](overview.md).
 

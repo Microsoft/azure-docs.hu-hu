@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan indíthatja el a virtuális gépeket Azure DevT
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 231e79d594aab7c59fa21f9ee512abaa9ac67043
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87282262"
 ---
 # <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Virtuális gépek indítása tesztkörnyezetben Azure Automation runbookok használatával
@@ -128,5 +128,5 @@ Ahhoz, hogy ezt a szkriptet naponta végrehajtsa, [hozzon létre egy ütemtervet
 
 Nagyméretű helyzetekben, ahol több előfizetés is található több laborral, a paramétereket a különböző Labs-fájlokban tárolhatja, és az egyes paraméterek helyett át kell adni a fájlt a parancsfájlba. A parancsfájlt módosítani kell, de az alapszintű végrehajtás ugyanaz lenne. Habár ez a példa a Azure Automation használja a PowerShell-parancsfájl végrehajtásához, más lehetőségek is vannak, például a feladatok felépítése egy Build/Release folyamatba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkben további információt talál a Azure Automationról: [Bevezetés a Azure Automationba](../automation/automation-intro.md).

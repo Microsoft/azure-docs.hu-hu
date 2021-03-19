@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/13/2019
-ms.openlocfilehash: 8c0fe30961e8ca0f31374bfdb5c5f17d58cb7673
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/17/2021
+ms.openlocfilehash: 82f5d4f4c3f12b6e14e260fa004bb031247e1096
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385795"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597504"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>Adatmásolás Azure Cognitive Search-indexbe Azure Data Factory használatával
 
@@ -113,6 +113,7 @@ Az Azure Cognitive Searchba való másoláshoz állítsa a forrás típusát a m
 | típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **AzureSearchIndexSink** | Yes |
 | writeBehavior | Meghatározza, hogy a rendszer egyesítse vagy lecserélje, ha már létezik dokumentum az indexben. Tekintse meg a [WriteBehavior tulajdonságot](#writebehavior-property).<br/><br/>Az engedélyezett értékek: **merge** (default) és **upload**. | No |
 | writeBatchSize | Adatok feltöltése a keresési indexbe, ha a puffer mérete eléri a writeBatchSize. A részletekért tekintse meg a [WriteBatchSize tulajdonságot](#writebatchsize-property) .<br/><br/>Az engedélyezett értékek: integer 1 – 1 000; az alapértelmezett érték a 1000. | No |
+| maxConcurrentConnections |A tevékenység futtatása során az adattárhoz létesített egyidejű kapcsolatok felső határa. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolatokat.| No |
 
 ### <a name="writebehavior-property"></a>WriteBehavior tulajdonság
 

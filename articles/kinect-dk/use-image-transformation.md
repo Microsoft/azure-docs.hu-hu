@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/26/2019
 keywords: Kinect, Azure, szenzor, SDK, koordináta rendszer, kalibrálás, projekt, nem projekt, átalakítás, RGB-d, pont felhő
 ms.openlocfilehash: df7f2aa13c0e9c0241494e96e720b30f3ff1d8a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85277266"
 ---
 # <a name="use-azure-kinect-sensor-sdk-image-transformations"></a>Az Azure Kinect Sensor SDK-rendszerkép átalakításának használata
@@ -92,7 +92,7 @@ A [k4a_transformation_depth_image_to_point_cloud ()](https://microsoft.github.io
 
 [Transzformációs példa](https://github.com/Microsoft/Azure-Kinect-Sensor-SDK/tree/develop/examples/transformation)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már tudja, hogyan használhatja az Azure Kinect Sensor SDK rendszerkép-átalakítási funkcióit, továbbá megismerheti a következőt is
 

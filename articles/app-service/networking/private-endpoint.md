@@ -4,17 +4,17 @@ description: Privát kapcsolódás egy webalkalmazáshoz az Azure Private Endpoi
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 10/09/2020
+ms.date: 03/16/2021
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 8d471b680a6ff97b4b96a9c5f90f5548488dd35f
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 4de405e07a9ae9d1efb33f2cee3630a1eefdef33
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103563611"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655903"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>Az Azure-webalkalmazás privát végpontjainak használata
 
@@ -117,8 +117,6 @@ A díjszabással kapcsolatos információkért lásd: az [Azure Private link dí
 Ha az Azure-függvényt privát végponttal rendelkező rugalmas prémium szintű csomagban használja, a függvény futtatásához vagy végrehajtásához az Azure web Portalon közvetlen hálózati hozzáférésre van szükség, vagy HTTP 403-hibaüzenetet fog kapni. Más szóval a böngészőnek képesnek kell lennie arra, hogy elérje a privát végpontot, hogy végrehajtsa a függvényt az Azure web Portalon. 
 
 Egy adott webalkalmazáshoz akár 100 privát végpontot is csatlakozhat.
-
-A bővítőhelyek nem használhatják a privát végpontot.
 
 A Távoli hibakeresési funkció nem érhető el, ha a magánhálózati végpont engedélyezve van a webalkalmazáshoz. A javaslat a kód üzembe helyezése egy tárolóhelyre és a távoli hibakeresés.
 

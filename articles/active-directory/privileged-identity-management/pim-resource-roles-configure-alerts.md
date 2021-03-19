@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0bfca096eb49ee9f1807935de1dac49151cc8ac3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84743762"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-privileged-identity-management"></a>Azure-beli erőforrás-szerepkörökre vonatkozó biztonsági riasztások konfigurálása Privileged Identity Management
@@ -50,7 +50,7 @@ Válassza ki a riasztást, hogy megjelenjen egy jelentés, amely felsorolja a ri
 
 ## <a name="configure-security-alert-settings"></a>Biztonsági riasztás beállításainak konfigurálása
 
-A riasztások lapon lépjen a **Beállítások**elemre.
+A riasztások lapon lépjen a **Beállítások** elemre.
 
 ![Riasztások lap Kiemelt beállításokkal](media/pim-resource-roles-configure-alerts/rbac-navigate-settings.png)
 
@@ -58,6 +58,6 @@ A különböző riasztások beállításainak testreszabásával dolgozhat a kö
 
 ![Riasztás beállítása a beállítások engedélyezéséhez és konfigurálásához](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure erőforrás-szerepkör beállításainak konfigurálása Privileged Identity Management](pim-resource-roles-configure-role-settings.md)

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/01/2021
+ms.date: 03/17/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 606704621a4904dd0fb7b6f55e753dbe77e39cb5
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 56ffa8c33c409e274318407a70f33edaabb5073d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601015"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578498"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD-hitelesítési és -engedélyezési hibakódok
 
@@ -269,6 +269,7 @@ Ha például a "AADSTS50058" hibakódot kapta, keressen rá a [https://login.mic
 | AADSTS90094 | AdminConsentRequired – rendszergazdai engedély szükséges. |
 | AADSTS900382 | A bizalmas ügyfél nem támogatott a felhőalapú kérelemben. |
 | AADSTS90099 | A (z) {appId} alkalmazás ({appName}) nincs engedélyezve a (z) {bérlő} bérlőn. Az alkalmazásoknak jogosultsággal kell rendelkezniük ahhoz, hogy hozzáférjenek az ügyfél-bérlőhöz, mielőtt a meghatalmazott rendszergazdák is használhassák azokat. Az alkalmazás engedélyezéséhez adja meg az előfeltételt, vagy hajtsa végre a megfelelő partner Center API-t. |
+| AADSTS900971| Nincs megadva a válasz címe.|
 | AADSTS90100 | InvalidRequestParameter – a paraméter üres vagy érvénytelen. |
 | AADSTS901002 | AADSTS901002: a "Resource" kérési paraméter nem támogatott. |
 | AADSTS90101 | InvalidEmailAddress – a megadott érték nem érvényes e-mail-cím. Az e-mail-címnek formátumúnak kell lennie `someone@example.com` . |

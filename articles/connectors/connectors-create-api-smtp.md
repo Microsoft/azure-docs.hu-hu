@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 9989d0ebd95bfe5ee49be2ba76b73e07630b519a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87283945"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>E-mail küldése az SMTP-fiókból Azure Logic Apps
@@ -40,10 +40,10 @@ A Azure Logic Apps és a Simple Mail Transfer Protocol (SMTP) összekötővel au
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és nyissa meg a logikai alkalmazást a Logic app Designerben, ha már nincs megnyitva.
 
-1. Az utolsó lépésben, amelyben hozzá szeretne adni egy SMTP-műveletet, válassza az **új lépés**lehetőséget. 
+1. Az utolsó lépésben, amelyben hozzá szeretne adni egy SMTP-műveletet, válassza az **új lépés** lehetőséget. 
 
    A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. 
-   Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
+   Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása** lehetőséget.
 
 1. A keresőmezőbe írja be a "SMTP" kifejezést a szűrőként. A műveletek listában válassza ki a kívánt műveletet.
 
@@ -51,12 +51,12 @@ A Azure Logic Apps és a Simple Mail Transfer Protocol (SMTP) összekötővel au
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Kapcsolat neve** | Igen | Az SMTP-kiszolgálóhoz való kapcsolódás neve | 
-   | **SMTP-kiszolgáló címe** | Igen | Az SMTP-kiszolgáló címe | 
-   | **Felhasználónév** | Igen | Az SMTP-fiókhoz tartozó Felhasználónév | 
-   | **Jelszó** | Igen | Az SMTP-fiók jelszava | 
-   | **SMTP-kiszolgáló portja** | Nem | Egy megadott port a használni kívánt SMTP-kiszolgálón | 
-   | **Engedélyezi az SSL használatát?** | Nem | A TLS/SSL titkosítás bekapcsolása vagy kikapcsolása. | 
+   | **Kapcsolat neve** | Yes | Az SMTP-kiszolgálóhoz való kapcsolódás neve | 
+   | **SMTP-kiszolgáló címe** | Yes | Az SMTP-kiszolgáló címe | 
+   | **Felhasználónév** | Yes | Az SMTP-fiókhoz tartozó Felhasználónév | 
+   | **Jelszó** | Yes | Az SMTP-fiók jelszava | 
+   | **SMTP-kiszolgáló portja** | No | Egy megadott port a használni kívánt SMTP-kiszolgálón | 
+   | **Engedélyezi az SSL használatát?** | No | A TLS/SSL titkosítás bekapcsolása vagy kikapcsolása. | 
    |||| 
 
 1. Adja meg a kiválasztott művelethez szükséges adatokat. 
@@ -70,6 +70,6 @@ Az összekötő részletes technikai részleteiről, például az eseményindít
 > [!NOTE]
 > Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében az összekötő ISE által címkézett verziója az [ISE-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) használja helyette.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

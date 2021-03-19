@@ -5,10 +5,10 @@ ms.topic: sample
 ms.date: 02/02/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 99cd980e13b3b9b9a7a450520218c76ccf26fd69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89079863"
 ---
 # <a name="powershell-script-to-undelete-an-accidentally-deleted-file-share"></a>PowerShell-parancsfájl a véletlenül törölt fájlmegosztás törlésének visszavonásához
@@ -172,7 +172,7 @@ Restore-DeletedFileShare $sa.Context $FileShareName $DeletedShareVersion
 
 A törölni kívánt fájlmegosztás nevével megegyező nevű, több törölt verzió nem található.
 
-A következő példa törli a Storage-fiók *afsshare*lévő fájlmegosztás *share1* .
+A következő példa törli a Storage-fiók *afsshare* lévő fájlmegosztás *share1* .
 
 ```powershell
    .\UnDelete.ps1 -ResourceGroupName afsshare -StorageAccountName afsshare -SubscriptionId f75d8d8b-6735-4697-82e1-1a7a3ff0d5d4 -FileShareName share1

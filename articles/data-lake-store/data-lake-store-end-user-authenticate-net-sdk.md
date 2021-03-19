@@ -8,10 +8,10 @@ ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 67ba4f12aec9e987d79109b7197d03301bf40650
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89004782"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Végfelhasználói hitelesítés a Azure Data Lake Storage Gen1 .NET SDK használatával
@@ -19,23 +19,23 @@ ms.locfileid: "89004782"
 > * [A Java használata](data-lake-store-end-user-authenticate-java-sdk.md)
 > * [A .NET SDK használata](data-lake-store-end-user-authenticate-net-sdk.md)
 > * [A Python használata](data-lake-store-end-user-authenticate-python.md)
-> * [REST API használata](data-lake-store-end-user-authenticate-rest-api.md)
+> * [A REST API használata](data-lake-store-end-user-authenticate-rest-api.md)
 > 
 >  
 
 Ebből a cikkből megtudhatja, hogyan használhatja a .NET SDK-t a végfelhasználói hitelesítésre Azure Data Lake Storage Gen1 használatával. A szolgáltatások közötti hitelesítéshez a .NET SDK-val Data Lake Storage Gen1 használatával lásd: [szolgáltatások közötti hitelesítés a Data Lake Storage Gen1 .net SDK használatával](data-lake-store-service-to-service-authenticate-net-sdk.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
-* A **Visual Studio 2013-es vagy újabb**verzióját. Az alábbi utasítások a Visual Studio 2019-et használják.
+* A **Visual Studio 2013-es vagy újabb** verzióját. Az alábbi utasítások a Visual Studio 2019-et használják.
 
 * **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
 * **Hozzon létre egy Azure Active Directory "natív" alkalmazást**. A Data Lake Storage Gen1 a Azure Active Directory használatával végre kell hajtania a [végfelhasználói hitelesítéshez](data-lake-store-end-user-authenticate-using-active-directory.md)szükséges lépéseket.
 
 ## <a name="create-a-net-application"></a>.NET-alkalmazás létrehozása
-1. A Visual Studióban kattintson a **fájl** menüre, majd az **új**, majd a **projekt**elemre.
-2. Válassza a **konzol alkalmazás (.NET-keretrendszer)** elemet, majd kattintson a **tovább**gombra.
-3. A **Project Name (projekt neve**) mezőben adja meg a nevet `CreateADLApplication` , majd válassza a **Létrehozás**lehetőséget.
+1. A Visual Studióban kattintson a **fájl** menüre, majd az **új**, majd a **projekt** elemre.
+2. Válassza a **konzol alkalmazás (.NET-keretrendszer)** elemet, majd kattintson a **tovább** gombra.
+3. A **Project Name (projekt neve**) mezőben adja meg a nevet `CreateADLApplication` , majd válassza a **Létrehozás** lehetőséget.
 
 4. Adja hozzá a NuGet-csomagokat a projekthez.
 
@@ -49,7 +49,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a .NET SDK-t a végfelhaszn�
         ![NuGet-forrás hozzáadása](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "Új Azure Data Lake fiók létrehozása")
    4. Zárja be a **NuGet-csomagkezelőt**.
 
-5. **Program.cs** megnyitása
+5. **Program megnyitása. cs**
 6. Cserélje le a using utasításokat a következő sorokra:
 
     ```csharp

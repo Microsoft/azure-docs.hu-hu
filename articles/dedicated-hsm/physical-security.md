@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: mbaldwin
 ms.openlocfilehash: ede1af4625d06af4e280eda86d09ae1db3dfdfd1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "70881023"
 ---
 # <a name="azure-dedicated-hsm-physical-security"></a>Azure dedikált HSM fizikai biztonság
@@ -51,7 +51,7 @@ Ha egy Microsoft-mérnöknek hozzá kell férnie a HSM-eszközök által haszná
 
 A HSM az ügyfél által létrehozott virtuális hálózatra vannak kiépítve. Ez az ügyfél privát IUP-címterület.  Ez a konfiguráció értékes logikai hálózati szintű elkülönítést biztosít, és biztosítja, hogy csak az ügyfél férhessen hozzá. Ez azt jelenti, hogy az összes logikai szintű biztonsági ellenőrzés az ügyfél felelőssége.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Javasoljuk, hogy a szolgáltatás alapvető fogalmait, például a magas rendelkezésre állást és a biztonságot és a támogatást például jól megértse az eszköz kiépítése, az alkalmazások tervezése vagy üzembe helyezése előtt.
 

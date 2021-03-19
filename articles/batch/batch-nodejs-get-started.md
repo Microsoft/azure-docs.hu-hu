@@ -3,12 +3,12 @@ title: A Node.js Azure Batch ügyféloldali kódtár használata
 description: Megismerheti az Azure Batch alapvető fogalmait, és létrehozhat egy egyszerű megoldást a Node.js használatával.
 ms.topic: how-to
 ms.date: 10/08/2020
-ms.openlocfilehash: 36a127a20014e87554f0d3e3927b05679b6f72f1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a2d86582c94804a20a3a9e952bc64d60414e25a5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737286"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656022"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Ismerkedés a Node.js-hez készült Batch SDK-val
 
@@ -32,9 +32,9 @@ Az alábbi ábra bemutatja, hogyan történik a Python-szkript méretezése az A
 
 A Node.js-ügyfél üzembe helyez egy előkészítő feladattal ellátott Batch-feladatot (részletesen lásd később), valamint – a tárfiókban lévő tárolók számától függően – egy feladatkészletet. A szkripteket letöltheti a GitHub-adattárból.
 
-- [Node.js-ügyfél](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/nodejs_batch_client_sample.js)
-- [Előkészítési tevékenységhez kapcsolódó héjszkriptek](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/startup_prereq.sh)
-- [Python CSV – JSON feldolgozó](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/processcsv.py)
+- [Node.js-ügyfél](https://github.com/Azure-Samples/azure-batch-samples/blob/master/JavaScript/Node.js/sample.js)
+- [Előkészítési tevékenységhez kapcsolódó héjszkriptek](https://github.com/Azure-Samples/azure-batch-samples/blob/master/JavaScript/Node.js/startup_prereq.sh)
+- [Python CSV – JSON feldolgozó](https://github.com/Azure-Samples/azure-batch-samples/blob/master/JavaScript/Node.js/processcsv.py)
 
 > [!TIP]
 > A megadott hivatkozásban szereplő Node.js-ügyfél nem tartalmaz Azure-függvényalkalmazásként üzembe helyezendő kódot. Az alábbi hivatkozások azon útmutatásokra mutatnak, amelyek segítségével létrehozhatja azt.
@@ -334,7 +334,7 @@ A kód több tevékenységet ad hozzá a készlethez. Minden egyes tevékenység
 
 A portálon részletesen megtekinthetők a tevékenységek és a feladatok állapotai. Használhatja az Azure Node SDK listázási és lekérési funkcióit is. Részletes információkat a dokumentáció [hivatkozását](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html) megnyitva talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.
 - A Batch API megismeréséhez lásd a [Batch – Node.js-referenciát](/javascript/api/overview/azure/batch).

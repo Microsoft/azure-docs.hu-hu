@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: 786a9e26003a7afb98307e0bd7fae94c42a2f00d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84690302"
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>Az értesítések és e-mail sablonok konfigurálása az Azure API Management szolgáltatásban
@@ -75,7 +75,7 @@ A API Management értesítési sablonokat biztosít a szolgáltatás felügyelet
 
 Ezek a sablonok igény szerint módosíthatók.
 
-Az API Management példányhoz tartozó e-mail-sablonok megtekintéséhez és konfigurálásához kattintson az **értesítések sablonok**elemre.
+Az API Management példányhoz tartozó e-mail-sablonok megtekintéséhez és konfigurálásához kattintson az **értesítések sablonok** elemre.
 
 ![E-mail-sablonok][api-management-email-templates]
 
@@ -88,7 +88,7 @@ A **Parameters (paraméterek** ) lista a tulajdonos vagy a törzsbe beszúrt par
 > [!NOTE]
 > A rendszer nem cseréli le a paramétereket a tényleges értékekkel egy teszt megtekintésekor vagy küldésekor.
 
-Az e-mail sablon módosításainak mentéséhez kattintson a **Mentés**gombra, vagy a módosítások megszakításához kattintson az **Elvetés**gombra.
+Az e-mail sablon módosításainak mentéséhez kattintson a **Mentés** gombra, vagy a módosítások megszakításához kattintson az **Elvetés** gombra.
 
 [api-management-management-console]: ./media/api-management-howto-configure-notifications/api-management-management-console.png
 [api-management-publisher-notifications]: ./media/api-management-howto-configure-notifications/api-management-publisher-notifications.png

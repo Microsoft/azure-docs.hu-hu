@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: pafarley
 ms.openlocfilehash: 94ca47e6114e4f8c3485f6072facd07c25e4b96a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73647752"
 ---
 # <a name="label-images-faster-with-smart-labeler"></a>Gyorsabban címkézheti a képeket intelligens Labeler
@@ -47,7 +47,7 @@ A következő lépések bemutatják, hogyan használható az intelligens Labeler
 1. A megjelenő előugró ablakban állítsa be, hogy hány lemezképet szeretne javasolni. A címkézetlen lemezképek egy részének csak a kezdeti címkével kapcsolatos javaslatok olvashatók be. A folyamat megismétlése után jobb címkézési javaslatokat kaphat.
 1. Erősítse meg a javasolt címkéket, javítsa ki azokat, amelyek nem megfelelőek.
     > [!TIP]
-    > A javasolt címkékkel rendelkező lemezképek az előrejelzési bizonytalanság szerint vannak rendezve (az alacsonyabb értékek nagyobb megbízhatóságot jeleznek). A rendezési sorrendet a **Rendezés bizonytalansága** lehetőséggel módosíthatja. Ha a rendelést **magasról alacsonyra**állítja, akkor először javítsa ki a magas bizonytalansági előrejelzéseket, majd gyorsan erősítse meg az alacsony bizonytalanságot.
+    > A javasolt címkékkel rendelkező lemezképek az előrejelzési bizonytalanság szerint vannak rendezve (az alacsonyabb értékek nagyobb megbízhatóságot jeleznek). A rendezési sorrendet a **Rendezés bizonytalansága** lehetőséggel módosíthatja. Ha a rendelést **magasról alacsonyra** állítja, akkor először javítsa ki a magas bizonytalansági előrejelzéseket, majd gyorsan erősítse meg az alacsony bizonytalanságot.
     * A képbesorolási projektekben kiválaszthatja és jóváhagyhatja a címkéket a batchs szolgáltatásban. Egy adott javasolt címke alapján szűrheti a nézetet, törölje a helytelenül megjelölt rendszerképeket, majd erősítse meg a REST-t egy kötegben.
         > [!div class="mx-imgBorder"]
         > ![A javasolt címkék kötegelt módban jelennek meg az IC szűrőkkel.](./media/suggested-tags/ic-batch-mode.png)
@@ -65,7 +65,7 @@ A következő lépések bemutatják, hogyan használható az intelligens Labeler
 1. Indítsa el újra a betanítási folyamatot.
 1. Ismételje meg az előző lépéseket, amíg meg nem felel a javaslat minőségének.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egy rövid útmutató segítségével megkezdheti a Custom Vision projektek létrehozását és betanítását.
 

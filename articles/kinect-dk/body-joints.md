@@ -9,10 +9,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, portolás, törzs, nyomon követés, közös, hierarchia, csont, csatlakozás
 ms.openlocfilehash: 4cf6ac13a93d0674f9fa144abcc3153a2d7c3350
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85277324"
 ---
 # <a name="azure-kinect-body-tracking-joints"></a>Azure Kinect Body Tracking-kötések
@@ -75,6 +75,6 @@ A következő táblázat a szabványos közös kapcsolatokat sorolja fel.
 | 30   |EYE_RIGHT      | HEAD           |
 | 31   |EAR_RIGHT      | HEAD           |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Testkövetési indexleképezés](body-index-map.md)

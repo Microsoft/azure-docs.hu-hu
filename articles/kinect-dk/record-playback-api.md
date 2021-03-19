@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, szenzor, SDK, mélység, RGB, rekord, lejátszás, Matroska, MKV
 ms.openlocfilehash: fe403f314c1df415537d090433f34627eb1249e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85277271"
 ---
 # <a name="the-azure-kinect-playback-api"></a>Az Azure Kinect lejátszási API-ját
@@ -148,10 +148,10 @@ Ha a címke nem létezik, a rendszer azt feltételezi, hogy az alapértelmezett 
 | `K4A_DEPTH_FIRMWARE_VERSION` | ""                 | N/A                                  | Az eszköz részletes belső vezérlőprogram-verziója, például "1. x. xx"                                                            |
 | `K4A_DEVICE_SERIAL_NUMBER`   | ""                 | N/A                                  | Eszköz sorozatszámának rögzítése                                                                                 |
 | `K4A_START_OFFSET_NS`        | 0                | `start_timestamp_offset_usec`        | Lásd alább az [időbélyeg-szinkronizálást](record-playback-api.md#timestamp-synchronization) .                       |
-| `K4A_COLOR_TRACK`            | Nincs               | N/A                                  | Lásd: a [fájl formátumának rögzítése – számok azonosítása](record-file-format.md#identifying-tracks).                     |
-| `K4A_DEPTH_TRACK`            | Nincs               | N/A                                  | Lásd: a [fájl formátumának rögzítése – számok azonosítása](record-file-format.md#identifying-tracks).                     |
-| `K4A_IR_TRACK`               | Nincs               | N/A                                  | Lásd: a [fájl formátumának rögzítése – számok azonosítása](record-file-format.md#identifying-tracks).                     |
-| `K4A_IMU_TRACK`              | Nincs               | N/A                                  | Lásd: a [fájl formátumának rögzítése – számok azonosítása](record-file-format.md#identifying-tracks).                     |
+| `K4A_COLOR_TRACK`            | Nincsenek               | N/A                                  | Lásd: a [fájl formátumának rögzítése – számok azonosítása](record-file-format.md#identifying-tracks).                     |
+| `K4A_DEPTH_TRACK`            | Nincsenek               | N/A                                  | Lásd: a [fájl formátumának rögzítése – számok azonosítása](record-file-format.md#identifying-tracks).                     |
+| `K4A_IR_TRACK`               | Nincsenek               | N/A                                  | Lásd: a [fájl formátumának rögzítése – számok azonosítása](record-file-format.md#identifying-tracks).                     |
+| `K4A_IMU_TRACK`              | Nincsenek               | N/A                                  | Lásd: a [fájl formátumának rögzítése – számok azonosítása](record-file-format.md#identifying-tracks).                     |
 
 ## <a name="timestamp-synchronization"></a>Időbélyeg-szinkronizálás
 

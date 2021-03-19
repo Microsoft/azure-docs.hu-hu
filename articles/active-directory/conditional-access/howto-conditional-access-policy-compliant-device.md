@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c98269f9851272e8caa9b26ae0c57ed13e9a99f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89049128"
 ---
 # <a name="conditional-access-require-compliant-devices"></a>Feltételes hozzáférés: megfelelő eszközök megkövetelése
@@ -35,19 +35,19 @@ A következő lépések segítséget nyújtanak egy feltételes hozzáférési s
 
 1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
 1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférését**.
-1. Válassza az **új szabályzat**lehetőséget.
+1. Válassza az **új szabályzat** lehetőséget.
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
-1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
-   1. A **Belefoglalás**területen válassza a **minden felhasználó**lehetőséget.
-   1. A **kizárás**területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 
-   1. Válassza a **Done** (Kész) lehetőséget.
-1. A **Cloud apps vagy a műveletek**területen válassza a  >  **Include** **minden felhőalapú alkalmazás**lehetőséget.
-   1. Ha ki kell zárnia bizonyos alkalmazásokat a szabályzatból, kiválaszthatja őket a **kizárás lapon** a **kizárt felhőalapú alkalmazások kiválasztása** területen, majd válassza a **kiválasztás**lehetőséget.
-   1. Válassza a **Done** (Kész) lehetőséget.
-1. Az **Conditions**  >  **ügyfélalkalmazások (előzetes verzió)** feltételek alatt  >  **válassza ki azokat az alkalmazásokat, amelyekre ez a szabályzat vonatkozik**, hagyja ki az összes alapértelmezett beállítást, majd válassza a **kész**lehetőséget.
-1. A **hozzáférés-vezérlés**  >  **megadása**területen jelölje be az **eszköz megfelelőként való megjelölésének megkövetelése**jelölőnégyzetet.
+1. A **hozzárendelések** alatt válassza a **felhasználók és csoportok** lehetőséget.
+   1. A **Belefoglalás** területen válassza a **minden felhasználó** lehetőséget.
+   1. A **kizárás** területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 
+   1. Válassza a **Kész** lehetőséget.
+1. A **Cloud apps vagy a műveletek** területen válassza a  >   **minden felhőalapú alkalmazás** lehetőséget.
+   1. Ha ki kell zárnia bizonyos alkalmazásokat a szabályzatból, kiválaszthatja őket a **kizárás lapon** a **kizárt felhőalapú alkalmazások kiválasztása** területen, majd válassza a **kiválasztás** lehetőséget.
+   1. Válassza a **Kész** lehetőséget.
+1. Az   >  **ügyfélalkalmazások (előzetes verzió)** feltételek alatt  >  **válassza ki azokat az alkalmazásokat, amelyekre ez a szabályzat vonatkozik**, hagyja ki az összes alapértelmezett beállítást, majd válassza a **kész** lehetőséget.
+1. A **hozzáférés-vezérlés**  >  **megadása** területen jelölje be az **eszköz megfelelőként való megjelölésének megkövetelése** jelölőnégyzetet.
    1. Válassza a **Kiválasztás** lehetőséget.
-1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
+1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva** értékre.
 1. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
 
 > [!NOTE]

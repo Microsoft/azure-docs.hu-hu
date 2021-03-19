@@ -15,10 +15,10 @@ ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 92046b3a944a747ce76d2426855eec7b6bc2cd70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84790246"
 ---
 # <a name="list-azure-deny-assignments-using-the-azure-portal"></a>Azure-beli megtagadási hozzárendelések listázása a Azure Portal használatával
@@ -38,7 +38,7 @@ A megtagadási hozzárendeléssel kapcsolatos információk lekéréséhez a kö
 
 Kövesse az alábbi lépéseket a megtagadási hozzárendelések listázásához az előfizetés vagy a felügyeleti csoport hatókörében.
 
-1. A Azure Portal kattintson a **minden szolgáltatás** , majd a **felügyeleti csoportok** vagy **előfizetések**elemre.
+1. A Azure Portal kattintson a **minden szolgáltatás** , majd a **felügyeleti csoportok** vagy **előfizetések** elemre.
 
 1. Kattintson a listázni kívánt felügyeleti csoportra vagy előfizetésre.
 
@@ -50,7 +50,7 @@ Kövesse az alábbi lépéseket a megtagadási hozzárendelések listázásához
 
     ![Hozzáférés-vezérlés – hozzárendelések tiltása lap](./media/deny-assignments-portal/access-control-deny-assignments.png)
 
-1. További oszlopok megjelenítéséhez kattintson az **Oszlopok szerkesztése**elemre.
+1. További oszlopok megjelenítéséhez kattintson az **Oszlopok szerkesztése** elemre.
 
     ![Hozzárendelések megtagadása – oszlopok](./media/deny-assignments-portal/deny-assignments-columns.png)
 
@@ -86,11 +86,11 @@ A megtagadási hozzárendelés további részleteinek listázásához kövesse a
 
     A **rendszer által definiált rendszerbiztonsági tag** az összes felhasználót, csoportot, egyszerű szolgáltatást és felügyelt identitást jelképezi egy Azure ad-címtárban.
 
-1. A megtagadott engedélyek listájának megtekintéséhez kattintson a **megtagadott engedélyek**elemre.
+1. A megtagadott engedélyek listájának megtekintéséhez kattintson a **megtagadott engedélyek** elemre.
 
     ![Hozzárendelés-megtagadási engedélyek megtagadása](./media/deny-assignments-portal/deny-assignment-denied-permissions.png)
 
-    | Művelettípus | Leírás |
+    | Művelettípus | Description |
     | --- | --- |
     | **Műveletek**  | A rendszer megtagadta a felügyeleti műveleteket. |
     | **NotActions** | A megtagadott felügyeleti műveletből kizárt felügyeleti műveletek. |
@@ -101,13 +101,13 @@ A megtagadási hozzárendelés további részleteinek listázásához kövesse a
 
     - Az adatsíkon lévő összes tárolási művelet a számítási műveletek kivételével megtagadva.
 
-1. Egy megtagadási hozzárendelés tulajdonságainak megtekintéséhez kattintson a **Tulajdonságok**elemre.
+1. Egy megtagadási hozzárendelés tulajdonságainak megtekintéséhez kattintson a **Tulajdonságok** elemre.
 
     ![Hozzárendelés megtagadása – tulajdonságok](./media/deny-assignments-portal/deny-assignment-properties.png)
 
     A **Tulajdonságok** panelen megtekintheti a megtagadási hozzárendelés nevét, azonosítóját, leírását és hatókörét. A nem **vonatkozik a gyermekekre** kapcsoló azt jelzi, hogy a megtagadási hozzárendelés örökölt-e az alhatókörben. A **rendszer által védett** kapcsoló jelzi, hogy a megtagadási hozzárendelést az Azure felügyeli-e. Jelenleg ez minden esetben **Igen** .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure deny-hozzárendelések ismertetése](deny-assignments.md)
 * [Azure-beli megtagadási hozzárendelések listázása Azure PowerShell használatával](deny-assignments-powershell.md)

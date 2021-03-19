@@ -4,10 +4,10 @@ description: Ebből a cikkből megtudhatja, hogyan figyelheti és kezelheti a Re
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.openlocfilehash: 74351d781287d863db8be0fc7d20517e0479106c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89002130"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services-tárolók figyelése és kezelése
@@ -81,7 +81,7 @@ Az alábbi lépésekkel megkezdheti az Recovery Services-tárolóban található
 
 ## <a name="manage-backup-alerts"></a>Biztonsági mentési riasztások kezelése
 
-A biztonsági mentési riasztások menü megnyitásához a Recovery Services tároló menüjében válassza a **biztonsági mentési riasztások**lehetőséget.
+A biztonsági mentési riasztások menü megnyitásához a Recovery Services tároló menüjében válassza a **biztonsági mentési riasztások** lehetőséget.
 
 ![Biztonsági mentési riasztások](./media/backup-azure-manage-windows-server/backup-alerts-menu.png)
 
@@ -105,7 +105,7 @@ A biztonsági mentési riasztások jelentés az egyes riasztások nyolc részlet
 
 ![Biztonsági mentési riasztások kiválasztása oszlopok gomb](./media/backup-azure-manage-windows-server/backup-alerts.png)
 
-Alapértelmezés szerint az összes adat, a **legutóbbi előfordulási idő**kivételével, megjelenik a jelentésben.
+Alapértelmezés szerint az összes adat, a **legutóbbi előfordulási idő** kivételével, megjelenik a jelentésben.
 
 * Riasztás
 * Biztonsági mentési elem
@@ -113,12 +113,12 @@ Alapértelmezés szerint az összes adat, a **legutóbbi előfordulási idő**ki
 * Súlyosság
 * Időtartam
 * Létrehozás ideje
-* status
+* Állapot
 * Legutóbbi előfordulás időpontja
 
 ### <a name="change-the-details-in-alerts-report"></a>A riasztások jelentés adatainak módosítása
 
-1. A jelentés adatainak módosításához a **biztonsági mentési riasztások** menüben válassza az **Oszlopok kiválasztása**lehetőséget.
+1. A jelentés adatainak módosításához a **biztonsági mentési riasztások** menüben válassza az **Oszlopok kiválasztása** lehetőséget.
 
    ![Válassza az Oszlopok kiválasztása lehetőséget.](./media/backup-azure-manage-windows-server/alerts-menu-choose-columns.png)
 
@@ -140,7 +140,7 @@ A **szűrő** menü használatával módosíthatja a riasztások súlyosságát,
 > A biztonsági mentési riasztások szűrő szerkesztése nem módosítja a kritikus vagy figyelmeztető riasztásokat a tároló áttekintő irányítópultján.
 >  
 
-1. A biztonsági mentési riasztások szűrő módosításához a biztonsági mentési riasztások menüben válassza a **szűrő**elemet.
+1. A biztonsági mentési riasztások szűrő módosításához a biztonsági mentési riasztások menüben válassza a **szűrő** elemet.
 
    ![Szűrő menü kiválasztása](./media/backup-azure-manage-windows-server/alerts-menu-choose-filter.png)
 
@@ -160,7 +160,7 @@ Alapértelmezés szerint az e-mail-értesítések **be vannak kapcsolva**. Az e-
 
 Az **értesítési** vezérlőn válassza a **riasztást** , ha nem szeretné, hogy a csoportosítás vagy ne legyen sok olyan elem, amely riasztásokat tud előállítani. Minden riasztás egy értesítést (az alapértelmezett beállítást), a megoldási e-mailt pedig azonnal elküldi.
 
-Ha az **óránkénti kivonatoló**lehetőséget választja, a címzettek elküldenek egy e-mailt, amely ismerteti az elmúlt órában létrehozott megoldatlan riasztásokat. A rendszer az óra végén elküld egy feloldási e-mailt.
+Ha az **óránkénti kivonatoló** lehetőséget választja, a címzettek elküldenek egy e-mailt, amely ismerteti az elmúlt órában létrehozott megoldatlan riasztásokat. A rendszer az óra végén elküld egy feloldási e-mailt.
 
 Válassza ki az e-mailek létrehozásához használt riasztás súlyosságát (kritikus vagy figyelmeztetés). Jelenleg nincsenek tájékoztató riasztások.
 
@@ -174,7 +174,7 @@ Megnyílik a biztonságimásolat-kezelési típus szerint rendezett biztonsági 
 
 ![Biztonsági másolati elemek listája](./media/backup-azure-manage-windows-server/list-backup-items.png)
 
-A védett példányok egy adott típusának megismeréséhez válassza ki az elemet a biztonságimásolat-kezelés típusa oszlopban. A fenti képen például két Azure-beli virtuális gép védett ebben a tárban. Az **Azure-beli virtuális gép**lehetőség kiválasztásával megnyílik a tárolóban található védett virtuális gépek listája.
+A védett példányok egy adott típusának megismeréséhez válassza ki az elemet a biztonságimásolat-kezelés típusa oszlopban. A fenti képen például két Azure-beli virtuális gép védett ebben a tárban. Az **Azure-beli virtuális gép** lehetőség kiválasztásával megnyílik a tárolóban található védett virtuális gépek listája.
 
 ![A védett virtuális gépek listája](./media/backup-azure-manage-windows-server/list-of-protected-virtual-machines.png)
 
@@ -194,7 +194,7 @@ Ha meg szeretné tekinteni a feladatok további részleteit, válassza a **folya
 
 A **biztonsági mentési feladatok** menü megjeleníti az elem típusát, a műveletet, az állapotot, a kezdési időt és az időtartamot.  
 
-A biztonsági mentési feladatok menü megnyitásához a tároló főmenüjében válassza a **biztonsági mentési feladatok**elemet.
+A biztonsági mentési feladatok menü megnyitásához a tároló főmenüjében válassza a **biztonsági mentési feladatok** elemet.
 
 ![Biztonsági mentési feladatok kiválasztása](./media/backup-azure-manage-windows-server/backup-jobs-menu-item.png)
 
@@ -206,7 +206,7 @@ A biztonsági mentési feladatok menü az elmúlt 24 órában megjeleníti az ö
 
 A szűrők módosítása:
 
-1. A tároló biztonsági mentési feladatok menüjében válassza a **szűrő**elemet.
+1. A tároló biztonsági mentési feladatok menüjében válassza a **szűrő** elemet.
 
    ![Biztonsági mentési feladatok szűrésének kiválasztása](./media/backup-azure-manage-windows-server/vault-backup-job-menu-filter.png)
 
@@ -214,7 +214,7 @@ A szűrők módosítása:
 
    ![Megnyílik a szűrő menü a biztonsági mentési feladatokhoz](./media/backup-azure-manage-windows-server/filter-menu-backup-jobs.png)
 
-2. Válassza ki a szűrő beállításait, és válassza a **kész**lehetőséget. A szűrt lista az új beállítások alapján frissül.
+2. Válassza ki a szűrő beállításait, és válassza a **kész** lehetőséget. A szűrt lista az új beállítások alapján frissül.
 
 #### <a name="item-type"></a>Elemtípus
 
@@ -238,12 +238,12 @@ Megtekintheti az egyik műveletet vagy az összes műveletet. Két vagy három m
 * Biztonsági mentés letiltása
 * Biztonsági mentési adatok törlése
 
-#### <a name="status"></a>status
+#### <a name="status"></a>Állapot
 
 Az összes állapotot vagy egyet megtekintheti. Két vagy három állapotot nem lehet kijelölni. Az elérhető állapotok a következők:
 
 * Minden állapot
-* Befejezve
+* Befejeződött
 * Folyamatban
 * Sikertelen
 * Megszakítva
@@ -261,7 +261,7 @@ A lekérdezés befejezésének napját és időpontját.
 
 A feladatok **exportálásával** hozzon létre egy táblázatot, amely tartalmazza az összes feladat menüpontot. A számolótáblának van egy lapja, amely tartalmazza az összes feladat összegzését, valamint az egyes feladatokhoz tartozó egyes lapokat.
 
-A feladatok adatainak számolótáblába való exportálásához válassza a **feladatok exportálása**lehetőséget. A szolgáltatás létrehoz egy táblázatot a tár és a dátum nevével, de megváltoztathatja a nevet.
+A feladatok adatainak számolótáblába való exportálásához válassza a **feladatok exportálása** lehetőséget. A szolgáltatás létrehoz egy táblázatot a tár és a dátum nevével, de megváltoztathatja a nevet.
 
 ## <a name="monitor-backup-usage"></a>Biztonsági másolatok használatának figyelése
 

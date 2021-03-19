@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: tomfitz
 ms.openlocfilehash: e730201812005a9b469a964e4acd081ebe86b100
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87063929"
 ---
 # <a name="microsoftcommontagsbyresource-ui-element"></a>Microsoft. Common. TagsByResource felhasználói felületi elem
@@ -71,7 +71,7 @@ A [címkék](../management/tag-resources.md) egy központi telepítésben lévő
 
 - Használja az [IF](../templates/template-functions-logical.md#if) függvényt a tagsByResource paraméter elérésekor. Lehetővé teszi, hogy üres objektumot rendeljen hozzá, ha nem rendel hozzá címkéket a megadott erőforrás-típushoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md)használatába.
 - A felhasználói felületi elemek általános tulajdonságainak leírását lásd: [CreateUiDefinition-elemek](create-uidefinition-elements.md).

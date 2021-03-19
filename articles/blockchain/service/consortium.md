@@ -5,10 +5,10 @@ ms.date: 11/21/2019
 ms.topic: conceptual
 ms.reviewer: zeyadr
 ms.openlocfilehash: 7b8885ba08d35db20d1eb7e75141cb173913b386
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84712530"
 ---
 # <a name="azure-blockchain-service-consortium"></a>Azure Blockchain Service Consortium
@@ -33,12 +33,12 @@ A konzorcium résztvevői lehetnek magánszemélyek vagy szervezetek, és felhas
 
 | Művelet | Felhasználói szerepkör | Rendszergazdai szerepkör
 |--------|:----:|:------------:|
-| Új tag létrehozása | Igen | Igen |
+| Új tag létrehozása | Igen | Yes |
 | Új tagok meghívása | Nem | Igen |
 | Tag résztvevői szerepkörének beállítása vagy módosítása | Nem | Igen |
 | Tag megjelenítendő nevének módosítása | Csak a saját tag számára | Csak a saját tag számára |
-| Tagok eltávolítása | Csak a saját tag számára | Igen |
-| Részvétel a blockchain-tranzakciókban | Igen | Igen |
+| Tagok eltávolítása | Csak a saját tag számára | Yes |
+| Részvétel a blockchain-tranzakciókban | Igen | Yes |
 
 ### <a name="user-role"></a>Felhasználói szerepkör
 
@@ -77,6 +77,6 @@ A tag fiók megtekinthető a Azure Portalban. A tag fiók a blockchain tag Átte
 
 A Ethereum-fiók alaphelyzetbe állításához kattintson a tag fiókjára, és adjon meg egy új jelszót. A Ethereum-fiók címe és a jelszó is vissza lesz állítva.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A konzorcium-felügyeleti műveletek a PowerShellen keresztül érhetők el. További információ: a [konzorcium tagjainak kezelése az Azure Blockchain szolgáltatásban a PowerShell használatával](manage-consortium-powershell.md).

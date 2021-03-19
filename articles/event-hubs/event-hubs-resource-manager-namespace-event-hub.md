@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/23/2020
 ms.openlocfilehash: e6da5fbe3c0e269f5ceb2c3627df27ccf0e3b30b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88933851"
 ---
 # <a name="quickstart-create-an-event-hub-by-using-an-arm-template"></a>Rövid útmutató: Event hub létrehozása ARM-sablonnal
@@ -59,7 +59,7 @@ A sablon üzembe helyezése:
    Az Event hub létrehozása néhány percet vesz igénybe.
 
 1. A PowerShell-szkript másolásához válassza a **Másolás** lehetőséget.
-1. Kattintson a jobb gombbal a rendszerhéj-konzolra, majd válassza a **Beillesztés**lehetőséget.
+1. Kattintson a jobb gombbal a rendszerhéj-konzolra, majd válassza a **Beillesztés** lehetőséget.
 
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 
@@ -88,7 +88,7 @@ Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 Write-Host "Press [ENTER] to continue ..."
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben létrehozott egy Event Hubs névteret és egy Event hubot a névtérben. Az események küldése az Event hub-tól (vagy) események fogadására vonatkozó részletes utasításokért lásd a **küldési és fogadási események** oktatóanyagokat:
 

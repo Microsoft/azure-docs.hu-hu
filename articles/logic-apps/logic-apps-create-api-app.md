@@ -7,10 +7,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/26/2017
 ms.openlocfilehash: 3fe98160cc10eb3607b8309a9a263d63380dcfb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89073216"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Egyéni API-k létrehozása, melyeket hívhat Azure Logic Apps
@@ -173,8 +173,8 @@ Ha például rendszeresen szeretné ellenőrizni a szolgáltatást az új fájlo
 
 | A kérelem tartalmazza `triggerState` ? | API-válasz | 
 | -------------------------------- | -------------| 
-| Nem | Egy HTTP `202 ACCEPTED` -állapotot, valamint egy fejlécet ad vissza, amely `location` `triggerState` az aktuális időpontra, az `retry-after` intervallum pedig 15 másodpercre van állítva. | 
-| Igen | Győződjön meg arról, hogy a szolgáltatásban a `DateTime` for () után hozzáadott fájlok szerepelnek `triggerState` . | 
+| No | Egy HTTP `202 ACCEPTED` -állapotot, valamint egy fejlécet ad vissza, amely `location` `triggerState` az aktuális időpontra, az `retry-after` intervallum pedig 15 másodpercre van állítva. | 
+| Yes | Győződjön meg arról, hogy a szolgáltatásban a `DateTime` for () után hozzáadott fájlok szerepelnek `triggerState` . | 
 ||| 
 
 | Talált fájlok száma | API-válasz | 

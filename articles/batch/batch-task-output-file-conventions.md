@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017, devx-track-csharp
 ms.openlocfilehash: 1a45eed421dd8d734fcef0dd452df1d4a65fd053
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88936962"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Feladat-és tevékenységadatok megőrzése az Azure Storage-ban a Batch file Conventions Library for .NET
@@ -47,7 +47,7 @@ Ha a-t a .NET-től eltérő nyelven fejleszti, saját alkalmazásában is megval
 Ahhoz, hogy a kimeneti adatokat az Azure Storage-ba a file Conventions Library használatával megőrzi, először egy Azure Storage-fiókot kell összekapcsolnia a Batch-fiókkal. Ha még nem tette meg, csatolja a Storage-fiókot a Batch-fiókjához a [Azure Portal](https://portal.azure.com)használatával:
 
 1. Az Azure portálon lépjen Batch-fiókjára.
-1. A **Beállítások**területen válassza a **Storage-fiók**elemet.
+1. A **Beállítások** területen válassza a **Storage-fiók** elemet.
 1. Ha még nem rendelkezik a Batch-fiókjához társított Storage-fiókkal, kattintson a **Storage-fiók (nincs)** elemre.
 1. Válasszon ki egy Storage-fiókot az előfizetéséhez tartozó listából. A legjobb teljesítmény érdekében olyan Azure Storage-fiókot használjon, amely ugyanabban a régióban található, mint a feladatokat futtató batch-fiók.
 
@@ -101,10 +101,10 @@ await taskOutputStorage.SaveAsync(TaskOutputKind.TaskPreview, "frame_low_res.jpg
 
 A `kind` [TaskOutputStorage](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage)paramétere.[ A SaveAsync](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync#overloads) metódus kategorizálja a megőrzött fájlokat. Négy előre definiált [TaskOutputKind][net_taskoutputkind] -típus létezik: `TaskOutput` ,, `TaskPreview` `TaskLog` , és `TaskIntermediate.` Egyéni kimeneti kategóriákat is meghatározhat.
 
-Ezek a kimeneti típusok lehetővé teszik annak megadását, hogy a rendszer mely típusú kimeneteket sorolja fel, amikor később lekérdezi a Batch-t egy adott feladat megőrzött kimenetére. Más szóval, amikor egy tevékenység kimeneteit sorolja fel, szűrheti a listát a kimeneti típusok egyikén. Adja meg például a következőt: "az *előnézet* kimenete a *109*feladat számára". A kimenetek listázásával és lekérésével kapcsolatos további tudnivalókat a cikk későbbi, a lekérése című részében találja.
+Ezek a kimeneti típusok lehetővé teszik annak megadását, hogy a rendszer mely típusú kimeneteket sorolja fel, amikor később lekérdezi a Batch-t egy adott feladat megőrzött kimenetére. Más szóval, amikor egy tevékenység kimeneteit sorolja fel, szűrheti a listát a kimeneti típusok egyikén. Adja meg például a következőt: "az *előnézet* kimenete a *109* feladat számára". A kimenetek listázásával és lekérésével kapcsolatos további tudnivalókat a cikk későbbi, a lekérése című részében találja.
 
 > [!TIP]
-> A kimeneti típus azt is meghatározza, hogy a Azure Portal hol jelenjenek meg egy adott fájl: a *TaskOutput*kategorizált fájlok a feladat **kimeneti fájljai**alatt jelennek meg, és a *TaskLog* -fájlok megjelennek a **feladatok naplói**alatt.
+> A kimeneti típus azt is meghatározza, hogy a Azure Portal hol jelenjenek meg egy adott fájl: a *TaskOutput* kategorizált fájlok a feladat **kimeneti fájljai** alatt jelennek meg, és a *TaskLog* -fájlok megjelennek a **feladatok naplói** alatt.
 
 ### <a name="store-job-outputs"></a>A feladatok kimenetének tárolása
 
@@ -156,7 +156,7 @@ A kommentált szakasz a `Code to process data and produce output file(s)` felada
 A csomópont-ügynök egy olyan program, amely a készlet minden csomópontján fut, és a parancs-és vezérlési felületet biztosítja a csomópont és a Batch szolgáltatás között. A `Task.Delay` blokk végén meg kell hívni a hívást `using` annak biztosítására, hogy a csomópont-ügynöknek ideje legyen a standard tartalmának kiürítésére a csomóponton lévő stdout.txt fájlba. Ezen késés nélkül lehetséges a kimenet utolsó néhány másodpercének kihagyása. Előfordulhat, hogy ez a késleltetés nem szükséges minden fájlhoz.
 
 > [!NOTE]
-> Ha engedélyezi a **SaveTrackedAsync**a fájlok nyomon követését, a rendszer csak a követett fájlhoz *fűzi hozzá* az Azure Storage-ban. Ezt a metódust csak a nem forgó naplófájlok vagy más, a fájl végén hozzáfűzési művelettel írt fájlok nyomon követésére használhatja.
+> Ha engedélyezi a **SaveTrackedAsync** a fájlok nyomon követését, a rendszer csak a követett fájlhoz *fűzi hozzá* az Azure Storage-ban. Ezt a metódust csak a nem forgó naplófájlok vagy más, a fájl végén hozzáfűzési művelettel írt fájlok nyomon követésére használhatja.
 
 ## <a name="retrieve-output-data"></a>Kimeneti adatokat kér le
 
@@ -189,7 +189,7 @@ Ha engedélyezni szeretné a kimeneti fájlok megjelenítését a portálon, a k
 1. Egy Azure Storage-fiók összekapcsolása a Batch-fiókkal.
 1. Adja meg a tárolók és a fájlok előre meghatározott elnevezési konvencióit a kimenetek megőrzésekor. Ezen konvenciók definícióját a fájl-konvenciók könyvtárában találja [.][github_file_conventions_readme] Ha a [Azure batch fájl konvenciói][nuget_package] könyvtárat használja a kimenet megőrzéséhez, a fájlok a fájl-konvenciók standardnak megfelelően megmaradnak.
 
-Ha meg szeretné tekinteni a feladat kimeneti fájljait és naplóit a Azure Portalban, Navigáljon arra a feladatra, amelynek a kimenetét érdekli, majd kattintson a **mentett kimeneti fájlok** vagy a **Mentett naplók**elemre. Ez a kép a "007" AZONOSÍTÓJÚ feladat **mentett kimeneti fájljait** jeleníti meg:
+Ha meg szeretné tekinteni a feladat kimeneti fájljait és naplóit a Azure Portalban, Navigáljon arra a feladatra, amelynek a kimenetét érdekli, majd kattintson a **mentett kimeneti fájlok** vagy a **Mentett naplók** elemre. Ez a kép a "007" AZONOSÍTÓJÚ feladat **mentett kimeneti fájljait** jeleníti meg:
 
 ![Feladat kimenetei panel a Azure Portal][2]
 
@@ -204,7 +204,7 @@ A [PersistOutputs][github_persistoutputs] minta projekt a githubon lévő [Azure
 5. **Indítsa el** (futtassa) a **PersistOutputs** projektet.
 6. Amikor a rendszer felszólítja, hogy válassza ki a minta futtatásához használni kívánt adatmegőrzési technológiát, írja be az **1** értéket a minta futtatásához a fájl konvenciók könyvtár használatával a feladat kimenetének megőrzése érdekében. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 ### <a name="get-the-batch-file-conventions-library-for-net"></a>A .NET-hez készült batch file Conventions Library letöltése
 

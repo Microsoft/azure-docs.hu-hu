@@ -4,10 +4,10 @@ description: Útmutató a meglévő Azure Service Bus standard névterek prémiu
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 1ed09a077f086390c658e6650171c552b361008d
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85340746"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Meglévő Azure Service Bus standard névterek migrálása a prémium szintre
@@ -208,7 +208,7 @@ Ha azonban egy tervezett karbantartási/kitakarítási időszakban is át tud t�
     >
     > Az áttelepítés befejezése után a fogadó alkalmazások le lesznek választva a standard névtérből, és automatikusan csatlakoznak a prémium szintű névtérhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információk a [standard és a prémium szintű üzenetkezelés közötti különbségekről](./service-bus-premium-messaging.md).
 * Ismerje meg a [Service Bus Premium magas rendelkezésre állási és Geo-Disaster helyreállítási szempontjait](service-bus-outages-disasters.md#protecting-against-outages-and-disasters---service-bus-premium).

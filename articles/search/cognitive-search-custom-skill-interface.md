@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.openlocfilehash: e78f0d1e8d6d637dfebe1ff475ab8416ba49a263
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88935415"
 ---
 # <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>Egyéni képesség hozzáadása Azure Cognitive Search-bővítési folyamathoz
@@ -91,7 +91,7 @@ A valóságban a szolgáltatás több száz vagy több ezer rekorddal is meghív
 
 ### <a name="2-web-api-output-format"></a>2. webes API kimeneti formátuma
 
-A kimenet formátuma egy *recordId*tartalmazó rekordok halmaza, és egy tulajdonság táska 
+A kimenet formátuma egy *recordId* tartalmazó rekordok halmaza, és egy tulajdonság táska 
 
 ```json
 {

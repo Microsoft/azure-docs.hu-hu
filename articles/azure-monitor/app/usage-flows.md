@@ -7,10 +7,10 @@ ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: a31ab24b96fa44787d08801a0680f94ff98bb5a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87309269"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Felhasználói navigációs mintázatok elemzése Felhasználókövetésekkel Application Insights
@@ -39,7 +39,7 @@ Ha meg szeretné kezdeni a Felhasználókövetés eszközzel kapcsolatos kérdé
 
 1. Kattintson a mit csinál a **felhasználók számára...?** cím hivatkozásra, vagy kattintson a **Szerkesztés** gombra.
 2. Válassza ki az oldal nézetét, az egyéni eseményt vagy a kivételt a **kezdeti esemény** legördülő menüjéből.
-3. Kattintson a **Graph létrehozása**elemre.
+3. Kattintson a **Graph létrehozása** elemre.
 
 A vizualizáció "1. lépés" oszlopa azt mutatja, hogy a kezdeti esemény után legtöbbször a legtöbbet a legtöbbet a legtöbbet a legtöbbet a legtöbbet a legtöbbször megrendelt A "2. lépés" és az azt követő oszlopok azt mutatják be, hogy mit tettek a felhasználók, és létrehoztak egy képet arról, hogy a felhasználók milyen módon navigáltak a webhelyen.
 
@@ -87,10 +87,10 @@ Használja a **Szerkesztés** menü **felosztás** lehetőségeit:
 1. Válassza ki azt az eseményt, amelyet le szeretne bontani az **esemény** menüjében.
 2. Válasszon egy dimenziót a **dimenzió** menüben. Ha például egy "gomb rákattintáskor" nevű eseményre van szüksége, próbálja ki a "gomb neve" nevű egyéni tulajdonságot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A használat áttekintése](usage-overview.md)
 * [Felhasználók, munkamenetek és események](usage-segmentation.md)
-* [Megőrzés](usage-retention.md)
+* [Visszatartás](usage-retention.md)
 * [Egyéni események hozzáadása az alkalmazáshoz](./api-custom-events-metrics.md)
 

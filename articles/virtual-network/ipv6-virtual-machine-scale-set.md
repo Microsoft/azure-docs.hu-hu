@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: f969d7edc22c9c36481ca42449193af5f8c7b0d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84709997"
 ---
 # <a name="deploy-virtual-machine-scale-sets-with-ipv6-in-azure"></a>Virtuálisgép-méretezési csoportok üzembe helyezése IPv6-ban az Azure-ban
@@ -92,6 +92,6 @@ Az egyetlen virtuális gépről eltérő lépés a hálózati adapter (NIC) olya
 ## <a name="sample-virtual-machine-scale-set-template-json"></a>Minta virtuálisgép-méretezési csoport sablonja JSON
 
 A kettős verem (IPv4 + IPv6) virtuálisgép-méretezési csoportjának üzembe helyezéséhez hozzon létre egy kettős verem külső Load Balancer és a Virtual Network View minta sablont [itt](https://azure.microsoft.com/resources/templates/ipv6-in-vnet-vmss/).
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az Azure Virtual Networks IPv6-támogatásáról, tekintse meg a [Mi az az Azure-beli ipv6 Virtual Network?](ipv6-overview.md)című témakört.

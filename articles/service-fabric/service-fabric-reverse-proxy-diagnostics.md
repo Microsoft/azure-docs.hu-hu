@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: kavyako
 ms.openlocfilehash: bbc1fe5a76ecb5720bc49e0a082d5e9151b403d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75645463"
 ---
 # <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>A kérelmek feldolgozásának figyelése és diagnosztizálása fordított proxyn
@@ -77,8 +77,8 @@ A [fordított proxyval kapcsolatos események](service-fabric-diagnostics-event-
     
     Itt látható egy példa arra az esetre, amikor a fordított proxy a 404 értéket adja vissza, mert nem találta meg a megfelelő szolgáltatási végpontot.
     A hasznos adattartalom-bejegyzések a következők:
-   * **processRequestPhase**: azt jelzi, hogy a kérelem feldolgozása során milyen fázisban történt a hiba, a ***TryGetEndpoint*** , azaz a szolgáltatás végpontjának beolvasására irányuló kísérlet során. 
-   * **errorDetails**: a végpontok keresési feltételeit sorolja fel. Itt láthatja, hogy a megadott listenerName = **FrontEndListener** , míg a replika-végpontok listája csak a **OldListener**nevű figyelőt tartalmazza.
+   * **processRequestPhase**: azt jelzi, hogy a kérelem feldolgozása során milyen fázisban történt a hiba, a **_TryGetEndpoint_** , azaz a szolgáltatás végpontjának beolvasására irányuló kísérlet során. 
+   * **errorDetails**: a végpontok keresési feltételeit sorolja fel. Itt láthatja, hogy a megadott listenerName = **FrontEndListener** , míg a replika-végpontok listája csak a **OldListener** nevű figyelőt tartalmazza.
     
      ```
      {
@@ -189,7 +189,7 @@ A [fordított proxyval kapcsolatos események](service-fabric-diagnostics-event-
 > [!NOTE]
 > A WebSocket-kérelmek feldolgozásával kapcsolatos események jelenleg nincsenek naplózva. Ez a következő kiadásban lesz hozzáadva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Események összesítése és gyűjtése a Windows Azure Diagnostics használatával](service-fabric-diagnostics-event-aggregation-wad.md) a naplók Azure-fürtökön való engedélyezéséhez.
 * A Visual Studióban Service Fabric események megtekintéséhez lásd: [helyi figyelés és Diagnosztizálás](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md).
 * Tekintse meg a [fordított proxy konfigurálása a biztonságos szolgáltatások](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample#configure-reverse-proxy-to-connect-to-secure-services) Azure Resource Manager-sablonokhoz való csatlakozáshoz című témakört a biztonságos fordított proxy konfigurálásához a különböző szolgáltatás-tanúsítvány ellenőrzési lehetőségeivel.

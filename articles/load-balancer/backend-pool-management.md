@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: ac21e1f00dc2a5580b90a1a5eb43da05288e800a
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: c49a721a4db758965c9cf8d71f5d73b5754b6088
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103489423"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654475"
 ---
 # <a name="backend-pool-management"></a>Háttérbeli készlet kezelése
 A háttér-készlet a terheléselosztó kritikus összetevője. A háttér-készlet meghatározza azt az erőforrás-csoportot, amely egy adott terheléselosztási szabály forgalmát fogja szolgálni.
@@ -156,99 +156,6 @@ az vm create \
 --generate-ssh-keys
 ```
 
-### <a name="rest-api"></a>REST API
-A háttér-készlet létrehozása:
-
-```
-PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/loadBalancers/{load-balancer-name}/backendAddressPools/{backend-pool-name}?api-version=2020-05-01
-```
-
-Hozzon létre egy hálózati adaptert, és adja hozzá azt a háttérrendszer-készlethez, amelyet a hálózati adapter IP-konfigurációk tulajdonságán keresztül hozott létre:
-
-```
-PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/networkInterfaces/{nic-name}?api-version=2020-05-01
-```
-
-JSON-kérelem törzse:
-```json
-{
-  "properties": {
-    "enableAcceleratedNetworking": true,
-    "ipConfigurations": [
-      {
-        "name": "ipconfig1",
-        "properties": {
-          "subnet": {
-            "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualNetworks/{vnet-name}/subnets/{subnet-name}"
-          },
-          "loadBalancerBackendAddressPools": [
-            {
-              "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/loadBalancers/{load-balancer-name}/backendAddressPools/{backend-pool-name}"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  "location": "eastus"
-}
-```
-
-A terheléselosztó háttér-készletével kapcsolatos információk beolvasása annak megerősítéséhez, hogy a hálózati adapter hozzá lett adva a háttér-készlethez:
-
-```
-GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name/providers/Microsoft.Network/loadBalancers/{load-balancer-name/backendAddressPools/{backend-pool-name}?api-version=2020-05-01
-```
-
-Hozzon létre egy virtuális gépet, és csatolja a háttér-készletre hivatkozó hálózati adaptert:
-
-```
-PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Compute/virtualMachines/{vm-name}?api-version=2019-12-01
-```
-
-JSON-kérelem törzse:
-```JSON
-{
-  "location": "easttus",
-  "properties": {
-    "hardwareProfile": {
-      "vmSize": "Standard_D1_v2"
-    },
-    "storageProfile": {
-      "imageReference": {
-        "sku": "2016-Datacenter",
-        "publisher": "MicrosoftWindowsServer",
-        "version": "latest",
-        "offer": "WindowsServer"
-      },
-      "osDisk": {
-        "caching": "ReadWrite",
-        "managedDisk": {
-          "storageAccountType": "Standard_LRS"
-        },
-        "name": "myVMosdisk",
-        "createOption": "FromImage"
-      }
-    },
-    "networkProfile": {
-      "networkInterfaces": [
-        {
-          "id": "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{nic-name}",
-          "properties": {
-            "primary": true
-          }
-        }
-      ]
-    },
-    "osProfile": {
-      "adminUsername": "{your-username}",
-      "computerName": "myVM",
-      "adminPassword": "{your-password}"
-    }
-  }
-}
-```
-
 ### <a name="resource-manager-template"></a>Resource Manager-sablon
 
 Ezt a gyors útmutató [Resource Manager-sablont](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create/) követve helyezzen üzembe egy terheléselosztó és virtuális gépet, és adja hozzá a virtuális gépeket a háttér-készlethez a hálózati adapteren keresztül.
@@ -260,17 +167,6 @@ Ezt a gyors útmutató [Resource Manager-sablont](https://github.com/Azure/azure
 Az előre kitöltött háttér-készletekkel rendelkező forgatókönyvekben használja az IP-címet és a virtuális hálózatot.
 
 Az alábbi példákban látható módon az összes háttérbeli készlet kezelése közvetlenül a háttér-készlet objektumon történik.
-
-### <a name="limitations"></a>Korlátozások
-Az IP-cím által konfigurált háttér-készlet a következő korlátozásokkal rendelkezik:
-  * Csak standard Load balancerekhez használható
-  * 100 IP-cím korlátja a háttér-készletben
-  * A háttérbeli erőforrásoknak ugyanabban a virtuális hálózatban kell lenniük, mint a terheléselosztó
-  * Az IP-alapú háttér-készlettel rendelkező Load Balancer nem működhet privát hivatkozási szolgáltatásként
-  * Ez a funkció jelenleg nem támogatott a Azure Portal
-  * Ez a funkció jelenleg nem támogatja az ACI-tárolókat
-  * A terheléselosztó által ellátott terheléselosztó vagy szolgáltatások nem helyezhetők el a terheléselosztó háttér-készletében.
-  * A bejövő NAT-szabályok nem adhatók meg IP-cím szerint
 
 ### <a name="powershell"></a>PowerShell
 Új háttér-készlet létrehozása:
@@ -411,128 +307,21 @@ az vm create \
   --admin-username azureuser \
   --generate-ssh-keys
 ```
+ 
+### <a name="limitations"></a>Korlátozások
+Az IP-cím által konfigurált háttér-készlet a következő korlátozásokkal rendelkezik:
+  * Csak standard Load balancerekhez használható
+  * 100 IP-cím korlátja a háttér-készletben
+  * A háttérbeli erőforrásoknak ugyanabban a virtuális hálózatban kell lenniük, mint a terheléselosztó
+  * Az IP-alapú háttér-készlettel rendelkező Load Balancer nem működhet privát hivatkozási szolgáltatásként
+  * Ez a funkció jelenleg nem támogatott a Azure Portal
+  * Ez a funkció jelenleg nem támogatja az ACI-tárolókat
+  * A terheléselosztó vagy szolgáltatások, például a Application Gateway nem helyezhetők el a terheléselosztó háttér-készletében.
+  * A bejövő NAT-szabályok nem adhatók meg IP-cím szerint
 
-### <a name="rest-api"></a>REST API
-
-Hozza létre a háttér-készletet, és adja meg a háttérbeli címeket egy PUT háttérbeli készletre vonatkozó kérelem használatával. Konfigurálja a háttérbeli címeket a PUT kérelem JSON-törzsében:
-
-* Név
-* IP-cím
-* Virtuális hálózat azonosítója 
-
-```
-PUT https://management.azure.com/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lb/backendAddressPools/backend?api-version=2020-05-01
-```
-
-JSON-kérelem törzse:
-```JSON
-{
-  "properties": {
-    "loadBalancerBackendAddresses": [
-      {
-        "name": "address1",
-        "properties": {
-          "virtualNetwork": {
-            "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualNetworks/{vnet-name}"
-          },
-          "ipAddress": "10.0.0.4"
-        }
-      },
-      {
-        "name": "address2",
-        "properties": {
-          "virtualNetwork": {
-            "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualNetworks/{vnet-name}"
-          },
-          "ipAddress": "10.0.0.5"
-        }
-      }
-    ]
-  }
-}
-```
-
-A terheléselosztó háttér-készletével kapcsolatos információk beolvasása annak ellenőrzéséhez, hogy a háttérbeli címek hozzá vannak-e adva a háttér-készlethez:
-```
-GET https://management.azure.com/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/loadBalancers/{load-balancer-name}/backendAddressPools/{backend-pool-name}?api-version=2020-05-01
-```
-
-Hozzon létre egy hálózati adaptert, és adja hozzá a háttér-készlethez. Állítsa be az IP-címet a háttérbeli címek egyikére:
-```
-PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/networkInterfaces/{nic-name}?api-version=2020-05-01
-```
-
-JSON-kérelem törzse:
-```JSON
-{
-  "properties": {
-    "enableAcceleratedNetworking": true,
-    "ipConfigurations": [
-      {
-        "name": "ipconfig1",
-        "properties": {
-          "privateIPAddress": "10.0.0.4",
-          "subnet": {
-            "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualNetworks/{vnet-name}/subnets/{subnet-name}"
-          }
-        }
-      }
-    ]
-  },
-  "location": "eastus"
-}
-```
-
-Hozzon létre egy virtuális gépet, és csatlakoztassa a hálózati adaptert egy IP-címmel a háttér-készletben:
-
-```
-PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Compute/virtualMachines/{vm-name}?api-version=2019-12-01
-```
-
-JSON-kérelem törzse:
-```JSON
-{
-  "location": "eastus",
-  "properties": {
-    "hardwareProfile": {
-      "vmSize": "Standard_D1_v2"
-    },
-    "storageProfile": {
-      "imageReference": {
-        "sku": "2016-Datacenter",
-        "publisher": "MicrosoftWindowsServer",
-        "version": "latest",
-        "offer": "WindowsServer"
-      },
-      "osDisk": {
-        "caching": "ReadWrite",
-        "managedDisk": {
-          "storageAccountType": "Standard_LRS"
-        },
-        "name": "myVMosdisk",
-        "createOption": "FromImage"
-      }
-    },
-    "networkProfile": {
-      "networkInterfaces": [
-        {
-          "id": "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{nic-name}",
-          "properties": {
-            "primary": true
-          }
-        }
-      ]
-    },
-    "osProfile": {
-      "adminUsername": "{your-username}",
-      "computerName": "myVM",
-      "adminPassword": "{your-password}"
-    }
-  }
-}
-```
-  
 ## <a name="next-steps"></a>Következő lépések
 Ebből a cikkből megtudhatta, hogyan Azure Load Balancer végezheti el a háttérrendszer-készlet felügyeletét, és hogyan konfigurálhatja a háttér-készleteket IP-cím és virtuális hálózat alapján.
 
 További információ a [Azure Load Balancerról](load-balancer-overview.md).
+
+Tekintse át az IP-alapú háttérkészletek-felügyelet [Rest APIét](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerbackendaddresspools/createorupdate) .

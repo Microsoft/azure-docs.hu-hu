@@ -19,10 +19,10 @@ author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 13d56ec321cd257412c2b0abbe0be655c6cb4dbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85360095"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>AD FS-megbízhatóság Azure AD általi kezelése az Azure AD Connect használatával
@@ -119,5 +119,5 @@ A kiadás átalakítási szabályait a javasolt lépések alapján állíthatja 
 > [!NOTE]
 > Győződjön meg arról, hogy a további szabályok nem ütköznek a Azure AD Connect által konfigurált szabályokkal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Active Directory összevonási szolgáltatások (AD FS) kezelése és testreszabása Azure AD Connect használatával](how-to-connect-fed-management.md)

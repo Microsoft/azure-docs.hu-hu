@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/25/2019
 tags: connectors
 ms.openlocfilehash: 5348ade1ba6eec6cbd360849411b4520cb3c2b19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74787336"
 ---
 # <a name="delay-running-the-next-action-in-azure-logic-apps"></a>A következő művelet futásának késleltetése Azure Logic Apps
@@ -38,9 +38,9 @@ Ha azt szeretné, hogy a logikai alkalmazás a következő művelet futtatása e
 
 ## <a name="add-the-delay-action"></a>Késleltetési művelet hozzáadása
 
-1. A Logic app Designerben abban a lépésben, ahová hozzá szeretné adni a késleltetés műveletet, válassza az **új lépés**lehetőséget.
+1. A Logic app Designerben abban a lépésben, ahová hozzá szeretné adni a késleltetés műveletet, válassza az **új lépés** lehetőséget.
 
-   A lépések közötti késleltetési művelet hozzáadásához mozgassa a mutatót a lépéseket összekötő nyíl fölé. Válassza ki a megjelenő pluszjelet (+), majd válassza a **művelet hozzáadása**lehetőséget.
+   A lépések közötti késleltetési művelet hozzáadásához mozgassa a mutatót a lépéseket összekötő nyíl fölé. Válassza ki a megjelenő pluszjelet (+), majd válassza a **művelet hozzáadása** lehetőséget.
 
 1. A keresőmezőbe írja be a "késleltetés" kifejezést a szűrőként. A műveletek listából válassza a következő műveletet: **delay**
 
@@ -50,10 +50,10 @@ Ha azt szeretné, hogy a logikai alkalmazás a következő művelet futtatása e
 
    ![A késleltetés időtartamának megadása](./media/connectors-native-delay/delay-time-intervals.png)
 
-   | Tulajdonság | JSON-név | Kötelező | Típus | Leírás |
+   | Tulajdonság | JSON-név | Kötelező | Típus | Description |
    |----------|-----------|----------|------|-------------|
-   | Darabszám | count | Igen | Egész szám | A késleltetni kívánt időegységek száma |
-   | Egység | egység | Igen | Sztring | Az idő mértékegysége, például:,,,, `Second` `Minute` `Hour` `Day` `Week` , vagy `Month` |
+   | Darabszám | count | Yes | Egész szám | A késleltetni kívánt időegységek száma |
+   | Unit (Egység) | egység | Igen | Sztring | Az idő mértékegysége, például:,,,, `Second` `Minute` `Hour` `Day` `Week` , vagy `Month` |
    ||||||
 
 1. Adja meg a munkafolyamatban futtatni kívánt egyéb műveleteket.
@@ -64,9 +64,9 @@ Ha azt szeretné, hogy a logikai alkalmazás a következő művelet futtatása e
 
 ## <a name="add-the-delay-until-action"></a>A késleltetés hozzáadása a művelethez
 
-1. A Logic app Designerben abban a lépésben, ahová hozzá szeretné adni a késleltetés műveletet, válassza az **új lépés**lehetőséget.
+1. A Logic app Designerben abban a lépésben, ahová hozzá szeretné adni a késleltetés műveletet, válassza az **új lépés** lehetőséget.
 
-   A lépések közötti késleltetési művelet hozzáadásához mozgassa a mutatót a lépéseket összekötő nyíl fölé. Válassza ki a megjelenő pluszjelet (+), majd válassza a **művelet hozzáadása**lehetőséget.
+   A lépések közötti késleltetési művelet hozzáadásához mozgassa a mutatót a lépéseket összekötő nyíl fölé. Válassza ki a megjelenő pluszjelet (+), majd válassza a **művelet hozzáadása** lehetőséget.
 
 1. A keresőmezőbe írja be a "késleltetés" kifejezést a szűrőként. A műveletek listából válassza ki ezt a műveletet: **késleltetés, amíg**
 
@@ -76,16 +76,16 @@ Ha azt szeretné, hogy a logikai alkalmazás a következő művelet futtatása e
 
    ![Időbélyeg megadása a késleltetés befejezéséhez](./media/connectors-native-delay/delay-until-timestamp.png)
 
-   | Tulajdonság | JSON-név | Kötelező | Típus | Leírás |
+   | Tulajdonság | JSON-név | Kötelező | Típus | Description |
    |----------|-----------|----------|------|-------------|
-   | Timestamp | időbélyeg | Igen | Sztring | A munkafolyamat ezen formátummal való folytatásának befejezési dátuma és időpontja: <p>ÉÉÉÉ-hh-NNTóó: PP: ssZ <p>Tehát ha például a 2017-es szeptember 18-án, 2:00 ÓRAKOR, a "2017-09-18T14:00:00Z" parancsot kell megadnia. <p>**Megjegyzés:** Ebben az időformátumban az [ISO 8601 dátum és idő specifikációjának](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) kell megfelelnie az [UTC dátum](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)és idő formátumban, de [UTC-eltolás](https://en.wikipedia.org/wiki/UTC_offset)nélkül. Időzóna nélkül fel kell vennie a "Z" betűt a végén szóköz nélkül. Ez a "Z" a megfelelő [tengeri időpontra](https://en.wikipedia.org/wiki/Nautical_time)hivatkozik. |
+   | Időbélyeg | időbélyeg | Igen | Sztring | A munkafolyamat ezen formátummal való folytatásának befejezési dátuma és időpontja: <p>ÉÉÉÉ-hh-NNTóó: PP: ssZ <p>Tehát ha például a 2017-es szeptember 18-án, 2:00 ÓRAKOR, a "2017-09-18T14:00:00Z" parancsot kell megadnia. <p>**Megjegyzés:** Ebben az időformátumban az [ISO 8601 dátum és idő specifikációjának](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) kell megfelelnie az [UTC dátum](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)és idő formátumban, de [UTC-eltolás](https://en.wikipedia.org/wiki/UTC_offset)nélkül. Időzóna nélkül fel kell vennie a "Z" betűt a végén szóköz nélkül. Ez a "Z" a megfelelő [tengeri időpontra](https://en.wikipedia.org/wiki/Nautical_time)hivatkozik. |
    ||||||
 
 1. Adja meg a munkafolyamatban futtatni kívánt egyéb műveleteket.
 
 1. Ha elkészült, mentse a logikai alkalmazást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismétlődő feladatok és munkafolyamatok létrehozása, ütemezése és futtatása az ismétlődési eseményindítóval](../connectors/connectors-native-recurrence.md)
 * [Összekötők a Logic Apps számára](../connectors/apis-list.md)

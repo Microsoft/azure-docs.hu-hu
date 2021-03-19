@@ -11,10 +11,10 @@ ms.date: 6/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 03cbe4eb56f3b3b99f87048b699f76b30b7937c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85373964"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>Méretezési csoport sablonjának átalakítása felügyelt lemezes méretezési csoport sablonba
@@ -137,7 +137,7 @@ Ha ebben a `n` tömbben megadja a lemezeket, a méretezési csoport minden virtu
 Ha többet szeretne megtudni a méretezési csoportokkal rendelkező adatlemezek használatáról, tekintse meg [ezt a cikket](./virtual-machine-scale-sets-attached-disks.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A méretezési csoportokkal rendelkező Resource Manager-sablonok esetében például keressen rá a "vmss" kifejezésre az [Azure Gyorsindítás sablonok GitHub](https://github.com/Azure/azure-quickstart-templates)-tárházában.
 
 Általános információkért tekintse meg a [méretezési csoportok fő oldalát](https://azure.microsoft.com/services/virtual-machine-scale-sets/).

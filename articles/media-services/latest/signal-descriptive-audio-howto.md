@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 5174cb584f2e8df236725f7427b423fda1a02c88
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 01854e7636f53ec1faab157b51cc84f3539582b4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102630860"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596722"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>Jel leíró hangsávok
 
@@ -80,7 +80,7 @@ A feladat végrehajtása némi időt vesz igénybe, és fontos, hogy értesülj�
 
 A feladatok általában a következő állapotokon haladnak át: **ütemezett**, **várólistán** lévő, **feldolgozás**, **befejezett** (végső állapot). Ha a feladat hibát észlelt, a **Hiba** állapot jelenik meg. Ha a feladat megszakítás alatt áll, a **Megszakítás**, a megszakítás befejeződése után pedig a **Megszakítva** állapot jelenik meg.
 
-További információ: [Event Grid események feldolgozása](reacting-to-media-services-events.md).
+További információ: [Event Grid események feldolgozása](monitoring/reacting-to-media-services-events.md).
 
 ## <a name="upload-the-audio-only-mp4-file"></a>A csak hang MP4-fájl feltöltése
 

@@ -4,10 +4,10 @@ description: A Azure Resource Manager használatával áthelyezheti a virtuális
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.openlocfilehash: 0cd6887d3489f2ffede0f5e3d63533a33a6ccc04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75485233"
 ---
 # <a name="move-guidance-for-networking-resources"></a>Útmutató a hálózati erőforrások áthelyezéséhez
@@ -30,6 +30,6 @@ Egy társ virtuális hálózat áthelyezéséhez először le kell tiltania a vi
 
 A virtuális hálózat nem helyezhető át másik előfizetésbe, ha a virtuális hálózat olyan alhálózatot tartalmaz, amely erőforrás-navigációs hivatkozásokkal rendelkezik. Ha például egy Redis erőforráshoz tartozó Azure cache-t egy alhálózatba helyeznek üzembe, az alhálózat erőforrás-navigációs hivatkozással rendelkezik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az erőforrások áthelyezésére szolgáló parancsokért lásd: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../move-resource-group-and-subscription.md).

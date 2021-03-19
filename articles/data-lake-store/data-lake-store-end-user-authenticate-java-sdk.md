@@ -8,10 +8,10 @@ ms.date: 05/29/2018
 ms.custom: devx-track-java
 ms.author: twooley
 ms.openlocfilehash: ece996f7edb8d37cea47756c5b7e635e02409b35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87318861"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-java"></a>Végfelhasználói hitelesítés Azure Data Lake Storage Gen1 a Javával
@@ -19,7 +19,7 @@ ms.locfileid: "87318861"
 > * [A Java használata](data-lake-store-end-user-authenticate-java-sdk.md)
 > * [A .NET SDK használata](data-lake-store-end-user-authenticate-net-sdk.md)
 > * [A Python használata](data-lake-store-end-user-authenticate-python.md)
-> * [REST API használata](data-lake-store-end-user-authenticate-rest-api.md)
+> * [A REST API használata](data-lake-store-end-user-authenticate-rest-api.md)
 > 
 >   
 
@@ -77,7 +77,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Java SDK-t a végfelhaszn�
 
 A Data Lake Storage Gen1 SDK kényelmes módszereket biztosít a Data Lake Storage Gen1-fiókkal való kommunikációhoz szükséges biztonsági jogkivonatok kezeléséhez. Azonban az SDK nem írja elő, hogy kizárólag ezek a módszerek használhatók. A jogkivonat beszerzésére más eszközöket is használhat, például az [Active Directory SDK-t](https://github.com/AzureAD/azure-activedirectory-library-for-java) , vagy saját egyéni kódot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben megtanulta, hogyan használható a végfelhasználói hitelesítés a Azure Data Lake Storage Gen1 a Java SDK-val való hitelesítéshez. A következő cikkekből megtudhatja, hogyan használhatja a Java SDK-t a Azure Data Lake Storage Gen1-vel való együttműködésre.
 
 * [Az adatműveletek Data Lake Storage Gen1 a Java SDK használatával](data-lake-store-get-started-java-sdk.md)

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 7cff009d5d1e187e8d0330fadca530b57b3e3d21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88935211"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Az Azure Cognitive Search adatimportálási varázslója
@@ -75,7 +75,7 @@ A varázsló futtatása előtt létre kell hoznia ezt az egyetlen táblát vagy 
 
 A varázsló a háttérben hozza létre, konfigurálja és hívja meg a következő objektumokat. A varázsló futtatása után megkeresheti a kimenetét a portál oldalain. A szolgáltatás Áttekintés lapja indexek, indexelő, adatforrások és szakértelmével listáját tartalmazza. Az index-definíciók teljes JSON-ben megtekinthetők a portálon. Más definíciók esetén a [REST API](/rest/api/searchservice/) használatával kérhet le konkrét objektumokat.
 
-| Objektum | Leírás | 
+| Objektum | Description | 
 |--------|-------------|
 | [Adatforrás](/rest/api/searchservice/create-data-source)  | Megtartja a kapcsolódási adatokat a forrásadatok, beleértve a hitelesítő adatokat is. Az adatforrás-objektumok kizárólag indexelő alkalmazással használhatók. | 
 | [Index](/rest/api/searchservice/create-index) | A teljes szöveges kereséshez és más lekérdezésekhez használt fizikai adatstruktúra. | 
@@ -89,7 +89,7 @@ Az adatok importálása varázsló a szolgáltatás Áttekintés lapjának paran
 
 1. A [Azure Portal](https://portal.azure.com)nyissa meg a keresési szolgáltatás lapot az irányítópulton, vagy [Keresse meg a szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a szolgáltatás listában.
 
-2. A felül található szolgáltatás áttekintése lapon kattintson az **adatimportálás**elemre.
+2. A felül található szolgáltatás áttekintése lapon kattintson az **adatimportálás** elemre.
 
    ![Adatimportálási parancs a portálon](./media/search-import-data-portal/import-data-cmd2.png "Az adatimportálás varázsló elindítása")
 
@@ -105,13 +105,13 @@ A varázsló létrehoz egy hiányos indexet, amely a bemeneti adatforrásból be
 
 1. Megfelelő az adattípus a bejövő adattípusokhoz? Az Azure Cognitive Search támogatja az [Entity adatmodell-(EDM-) adattípusokat](/rest/api/searchservice/supported-data-types). Az Azure SQL-adatok esetében van olyan [leképezési diagram](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#TypeMapping) , amely egyenértékű értékeket határoz meg. További hátteret a [mező-hozzárendelések és átalakítások](search-indexer-field-mappings.md)című témakörben talál.
 
-1. Van egy mezője, amely *kulcsként*szolgálhat? A mezőnek EDM. stringnek kell lennie, és egyedi módon kell azonosítania a dokumentumot. A kapcsolódó adatértékek esetében előfordulhat, hogy az elsődleges kulcshoz van rendelve. A Blobok esetében ez lehet a következő: `metadata-storage-path` . Ha a mezőértékek szóközöket vagy kötőjeleket tartalmaznak, a **Speciális beállítások**területen a **Base-64 kódolási kulcs** beállítását kell megadnia **a következő** karakterek érvényesítési ellenőrzésének mellőzéséhez.
+1. Van egy mezője, amely *kulcsként* szolgálhat? A mezőnek EDM. stringnek kell lennie, és egyedi módon kell azonosítania a dokumentumot. A kapcsolódó adatértékek esetében előfordulhat, hogy az elsődleges kulcshoz van rendelve. A Blobok esetében ez lehet a következő: `metadata-storage-path` . Ha a mezőértékek szóközöket vagy kötőjeleket tartalmaznak, a **Speciális beállítások** területen a **Base-64 kódolási kulcs** beállítását kell megadnia **a következő** karakterek érvényesítési ellenőrzésének mellőzéséhez.
 
 1. Attribútumok beállítása annak meghatározására, hogy az adott mező hogyan használható egy indexben. 
 
-   Használja ki az időt ezzel a lépéssel, mert az attribútumok határozzák meg az index mezőinek fizikai kifejezését. Ha később módosítani kívánja az attribútumokat, még a programozott módon is, szinte mindig el kell dobnia és újra létre kell hoznia az indexet. A **kereshető** és lekérhető **Retrievable** alapvető attribútumok [elhanyagolható hatással vannak a tárterületre](search-what-is-an-index.md#index-size). A szűrők engedélyezése és a javaslatok használata növelheti a tárolási követelményeket. 
+   Használja ki az időt ezzel a lépéssel, mert az attribútumok határozzák meg az index mezőinek fizikai kifejezését. Ha később módosítani kívánja az attribútumokat, még a programozott módon is, szinte mindig el kell dobnia és újra létre kell hoznia az indexet. A **kereshető** és lekérhető  alapvető attribútumok [elhanyagolható hatással vannak a tárterületre](search-what-is-an-index.md#index-size). A szűrők engedélyezése és a javaslatok használata növelheti a tárolási követelményeket. 
    
-   + A **kereshetővé** teszi a teljes szöveges keresést. Az ingyenes űrlapos lekérdezésekben vagy a lekérdezési kifejezésekben használt összes mezőnek rendelkeznie kell ezzel az attribútummal. A rendszer fordított indexeket hoz létre minden **kereshetőként**megjelölt mezőhöz.
+   + A **kereshetővé** teszi a teljes szöveges keresést. Az ingyenes űrlapos lekérdezésekben vagy a lekérdezési kifejezésekben használt összes mezőnek rendelkeznie kell ezzel az attribútummal. A rendszer fordított indexeket hoz létre minden **kereshetőként** megjelölt mezőhöz.
 
    + A **beolvasható** érték a keresési eredményekben lévő mezőt adja vissza. A keresési eredményekhez tartalmat biztosító minden mezőnek rendelkeznie kell ezzel az attribútummal. A mező beállítása nem befolyásolja az index méretét.
 
@@ -121,14 +121,14 @@ A varázsló létrehoz egy hiányos indexet, amely a bemeneti adatforrásból be
 
    + A **rendezhető** beállítás lehetővé teszi, hogy a mező egy sorba legyen használva. Az **$OrderBy** -kifejezésben használt összes mezőnek rendelkeznie kell ezzel az attribútummal.
 
-1. Szüksége van a [lexikális analízisre](search-lucene-query-architecture.md#stage-2-lexical-analysis)? A **kereshető**EDM. String mezők esetében megadhat egy **elemzőt** , ha többnyelvű indexelést és lekérdezést szeretne használni. 
+1. Szüksége van a [lexikális analízisre](search-lucene-query-architecture.md#stage-2-lexical-analysis)? A **kereshető** EDM. String mezők esetében megadhat egy **elemzőt** , ha többnyelvű indexelést és lekérdezést szeretne használni. 
 
    Az alapértelmezett érték a *standard Lucene* , de Ön a *Microsoft angol nyelvét* is kiválaszthatja, ha a Microsoft Analyzert speciális lexikális feldolgozási folyamatra kívánja használni, például a szabálytalan főnév és a művelet-űrlapok feloldására. A portálon csak nyelvi elemzők adhatók meg. Az egyéni analizátorok vagy a nem nyelvi analizátorok, például a kulcsszavak, a mintázatok és így tovább, programozott módon hajthatók végre. További információ az elemzők használatáról: [nyelvi elemzők hozzáadása](search-language-support.md).
 
 1. Szüksége van typeahead funkcióra automatikus kiegészítés vagy javasolt eredmények formájában? Jelölje be a **javaslat** a jelölőnégyzetet a [typeahead lekérdezési javaslatainak és az automatikus kiegészítésnek](index-add-suggesters.md) a kijelölt mezőkön való engedélyezéséhez. A javaslat a tokenes kifejezések számát adja hozzá az indexhez, így több tárterületet használ fel.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A varázsló előnyeinek és korlátainak megismeréséhez a legjobb módszer a lépés. Az alábbi rövid útmutató végigvezeti az egyes lépéseken.
 

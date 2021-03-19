@@ -4,10 +4,10 @@ description: A Azure Portal használatával megtekintheti Azure Container Regist
 ms.topic: article
 ms.date: 01/05/2018
 ms.openlocfilehash: 1da72706d2554610a685f71199ab14af5e30ce1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74456294"
 ---
 # <a name="view-container-registry-repositories-in-the-azure-portal"></a>Tároló beállításjegyzékbeli Tárházak megtekintése a Azure Portal
@@ -43,7 +43,7 @@ Ha például leküldte az Nginx-rendszerképet a [leküldéses és lekéréses r
 
 ![Adattárak a portálon](./media/container-registry-repositories/container-registry-repositories.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már ismeri a Tárházak megtekintésének és használatának alapjait a portálon, próbálkozzon Azure Container Registry [Azure Kubernetes Service (ak)](../aks/tutorial-kubernetes-prepare-app.md) -fürttel való használatával.
 

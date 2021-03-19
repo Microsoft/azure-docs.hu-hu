@@ -1,22 +1,22 @@
 ---
 title: 'ExpressRoute: egyéni riasztások konfigurálása hirdetett útvonalakhoz'
-description: Ez a cikk bemutatja, hogyan használható a Azure Automation és a Logic Apps a ExpressRoute-átjáróról a helyszíni hálózatokra hirdetett útvonalak számának figyelésére, hogy megakadályozza a 200 útvonalak korlátozását.
+description: Ez a cikk bemutatja, hogyan használható a Azure Automation és a Logic Apps a ExpressRoute-átjáróról a helyszíni hálózatokra hirdetett útvonalak számának figyelésére, hogy megakadályozza a 1000 útvonalak korlátozását.
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: fed7663e2342a708aee70b9a54e6e0a6b6f97e8c
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 2291d1fa7f890296c59661060f5a823d8eb194ba
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102504401"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654390"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Egyéni riasztások konfigurálása a meghirdetett elérési utak figyeléséhez
 
-Ebből a cikkből megtudhatja, Azure Automation és Logic Apps használatával folyamatosan figyelheti a ExpressRoute-átjáróról a helyszíni hálózatokra hirdetett útvonalak számát. A figyelés segíthet megakadályozni az [200 útvonalak korlátját](expressroute-faqs.md#how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering).
+Ebből a cikkből megtudhatja, Azure Automation és Logic Apps használatával folyamatosan figyelheti a ExpressRoute-átjáróról a helyszíni hálózatokra hirdetett útvonalak számát. A figyelés segíthet megakadályozni az 1000 útvonalak korlátját] (expressroute-GYIK. MD # How-Many-előtagok-a-can-be-hirdetett-from-a-vnet-to-helyszíni-on-expressroute-Private-peering).
 
 **Azure Automation** lehetővé teszi a *Runbook* tárolt egyéni PowerShell-parancsfájlok végrehajtásának automatizálását. A jelen cikkben található konfiguráció használatakor a runbook egy PowerShell-parancsfájlt tartalmaz, amely egy vagy több ExpressRoute-átjárót kérdez le. Egy adatkészletet gyűjt, amely tartalmazza az erőforráscsoportot, a ExpressRoute és a helyszínen meghirdetett hálózati előtagok számát.
 
@@ -48,7 +48,7 @@ A konfigurálás megkezdése előtt győződjön meg a következő feltételek t
 
 * Az ebben a cikkben tárgyalt egyéni riasztás a jobb működés és irányítás érdekében egy bővítmény. Nem helyettesíti a natív riasztásokat a ExpressRoute.
 * A háttérben a ExpressRoute-átjárók adatgyűjtése fut. A futtatókörnyezet a vártnál hosszabb lehet. A feladatok várólistára helyezésének elkerülése érdekében a munkafolyamat ismétlődését megfelelően kell beállítani.
-* Parancsfájlok vagy ARM-sablonok által üzemelő példányok gyorsabban megtörténhetnek az egyéni riasztási triggernél. Ez a ExpressRoute-átjáróban a 200-es útvonalakon túlmutató hálózati előtagok számának növelését eredményezheti.
+* Parancsfájlok vagy ARM-sablonok által üzemelő példányok gyorsabban megtörténhetnek az egyéni riasztási triggernél. Ez a ExpressRoute-átjáróban a 1000-es útvonalakon túlmutató hálózati előtagok számának növelését eredményezheti.
 
 ## <a name="create-and-configure-accounts"></a><a name="accounts"></a>Fiókok létrehozása és konfigurálása
 
@@ -409,7 +409,7 @@ A JSON elemzését követően a JSON- **adatok** elemzése művelet a *törzs* k
 
    :::image type="content" source="./media/custom-route-alert-portal/peer-2.png" alt-text="numRoutesPeer2":::
 
-9. A logikai feltétel akkor igaz, ha a két dinamikus változó, a numRoute1 vagy a numRoute2 egyike meghaladja a küszöbértéket. Ebben a példában a küszöbérték 160 (a 200-útvonalak maximális értékének 80%-ában) rögzített. A küszöbértéket úgy módosíthatja, hogy az megfeleljen az igényeinek. A konzisztencia esetében az értéknek meg kell egyeznie a runbook PowerShell-parancsfájlban használt értékkel.
+9. A logikai feltétel akkor igaz, ha a két dinamikus változó, a numRoute1 vagy a numRoute2 egyike meghaladja a küszöbértéket. Ebben a példában a küszöbérték 800 (a 1000-útvonalak maximális értékének 80%-ában) rögzített. A küszöbértéket úgy módosíthatja, hogy az megfeleljen az igényeinek. A konzisztencia esetében az értéknek meg kell egyeznie a runbook PowerShell-parancsfájlban használt értékkel.
 
    :::image type="content" source="./media/custom-route-alert-portal/logic-condition.png" alt-text="Logikai feltétel":::
 

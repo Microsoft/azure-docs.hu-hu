@@ -3,12 +3,12 @@ title: Az ACR-feladatok áttekintése
 description: Az ACR-feladatok, a Azure Container Registry szolgáltatásainak egyik csomagja, amely biztonságos, automatizált tároló-rendszerképek készítését, kezelését és javítását teszi lehetővé a felhőben.
 ms.topic: article
 ms.date: 08/12/2020
-ms.openlocfilehash: b6df415bd55979ef00f6921321dbc254ef7a7e59
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 1cf9faf934cebfb5abe0d2e1b26ffd7da2d6c549
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562854"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606786"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>A tárolók rendszerképének fejlesztése és karbantartása ACR-feladatokkal
 
@@ -39,7 +39,7 @@ A belső hurok fejlesztési ciklusa, az alkalmazás kódjának írásához, kié
 
 Mielőtt elvégezte a kód első sorát, az ACR-feladatok [gyors feladatával](container-registry-tutorial-quick-task.md) integrált fejlesztési élmény biztosítható a tároló rendszerképének az Azure-ba való kiszervezésével. A gyors feladatokkal ellenőrizheti az automatizált Build-definíciókat, és elvégezheti a lehetséges problémákat a kód véglegesítése előtt.
 
-A jól ismert `docker build` formátum használatával az Azure CLI-ben az az [ACR Build][az-acr-build] parancs egy [kontextust](#context-locations) (a felépített fájlok KÉSZLETét), az ACR-feladatokat küldi el, és alapértelmezés szerint a betöltés után leküldi a létrehozott rendszerképet a beállításjegyzékbe.
+A megszokott formátum használatával az `docker build` Azure CLI-ben található az [ACR Build][az-acr-build] parancs egy [kontextust](#context-locations) (a felépített fájlok készletét), elküldi az ACR-feladatoknak, és alapértelmezés szerint leküldi a létrehozott rendszerképet a beállításjegyzékbe a befejezés után.
 
 Bevezetésért tekintse meg a Azure Container Registryban található [tároló rendszerképének elkészítéséhez és futtatásához](container-registry-quickstart-task-cli.md) szükséges rövid útmutatót.  
 
@@ -58,8 +58,8 @@ Az ACR-feladatok a következő eseményindítókat támogatják, amikor a git-t�
 
 | Eseményindító | Alapértelmezés szerint engedélyezett |
 | ------- | ------------------ |
-| Véglegesítés | Igen |
-| Lekéréses kérelem | Nem |
+| Véglegesítés | Yes |
+| Lekéréses kérelem | No |
 
 A forráskód-frissítési trigger konfigurálásához meg kell adnia a feladatot egy személyes hozzáférési jogkivonat (PAT) számára, hogy a webhookot a nyilvános vagy privát GitHub vagy az Azure DevOps-tárházban állítsa be.
 
@@ -131,7 +131,7 @@ Minden feladat futtatásakor a rendszer naplózza a napló kimenetét, amely ala
 
 További információ a [naplók megtekintéséről és kezeléséről](container-registry-tasks-logs.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha készen áll a tárolók rendszerképének és a Felhőbeli karbantartásának automatizálására, tekintse meg az [ACR feladatok oktatóanyag-sorozatát](container-registry-tutorial-quick-task.md).
 

@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 78f9e4d8fa80fdf74bdb5cd79f4489d12696fcc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88935789"
 ---
 # <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>OData teljes szöveges keresési függvények az Azure Cognitive Searchban – `search.ismatch` és `search.ismatchscoring`
@@ -69,7 +69,7 @@ A `search.ismatch` függvény egy teljes szöveges keresési lekérdezést ért�
 
 A paraméterek a következő táblázatban vannak meghatározva:
 
-| Paraméter neve | Típus | Leírás |
+| Paraméter neve | Típus | Description |
 | --- | --- | --- |
 | `search` | `Edm.String` | A keresési lekérdezés ( [egyszerű](query-simple-syntax.md) vagy [teljes](query-lucene-syntax.md) Lucene lekérdezési szintaxis). |
 | `searchFields` | `Edm.String` | A kereshető mezők vesszővel tagolt listája a kereséshez; az alapértelmezett érték az index összes kereshető mezőjénél. Ha a paraméterben a [mezőn belüli keresés](query-lucene-syntax.md#bkmk_fields) szerepel `search` , a Lucene lekérdezés mezőiben szereplő mezők felülbírálják az ebben a paraméterben megadott mezőket. |
@@ -128,7 +128,7 @@ Megkeresheti azokat a dokumentumokat, amelyekben a "Hotel" és a "repülőtér" 
     search.ismatch('"hotel airport"~5', 'Description', 'full', 'any') and Rooms/any(room: not room/SmokingAllowed)
 ```
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 - [Szűrők az Azure Cognitive Search](search-filters.md)
 - [Az Azure Cognitive Search OData kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)

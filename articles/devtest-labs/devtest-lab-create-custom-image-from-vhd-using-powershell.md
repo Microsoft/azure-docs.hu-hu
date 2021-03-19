@@ -4,10 +4,10 @@ description: Egyéni rendszerkép létrehozásának automatizálása Azure DevTe
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 4b0712fdbec1ce23ad9e09d972e425cb7941107b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87288982"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file-using-powershell"></a>Egyéni rendszerkép létrehozása VHD-fájlból a PowerShell használatával
@@ -98,6 +98,6 @@ New-AzResourceGroupDeployment -ResourceGroupName $lab.ResourceGroupName -Name Cr
 - [Egyéni lemezképek vagy képletek?](./devtest-lab-faq.md#blog-post)
 - [Egyéni rendszerképek másolása Azure DevTest Labs között](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Virtuális gép hozzáadása a laborhoz](devtest-lab-add-vm.md)

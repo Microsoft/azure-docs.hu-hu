@@ -4,10 +4,10 @@ description: A Service Fabric áttekintése és a tárolók használata a Servic
 ms.topic: conceptual
 ms.date: 7/9/2020
 ms.openlocfilehash: cd0ec7dd2247fdd791df362fa34542178c17df4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87091657"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric és tárolók
@@ -67,7 +67,7 @@ Az alábbi ábrán az elérhető virtualizációs és elkülönítési szintek k
 
 * **IIS-lift és-váltás**: egy meglévő [ASP.net MVC](https://www.asp.net/mvc) -alkalmazást helyezhet üzembe egy tárolóban ahelyett, hogy áttelepíti azt a ASP.net Coreba. Ezek a ASP.NET MVC-alkalmazások a Internet Information Servicestól (IIS) függenek. Ezeket az alkalmazásokat tároló lemezképbe csomagolhatja az előre létrehozott IIS-lemezképből, és üzembe helyezheti azokat Service Fabric használatával. A Windows-tárolókkal kapcsolatos információkért lásd: [tároló lemezképek a Windows Serveren](/virtualization/windowscontainers/quick-start/quick-start-windows-server) .
 
-* **Tárolók és Service Fabric-szolgáltatások együttes**használata: használjon egy meglévő tároló-rendszerképet az alkalmazás részeként. Használhatja például az alkalmazás és az állapot-nyilvántartó szolgáltatások webes kezelőfelületének [NGINX-tárolóját](https://hub.docker.com/_/nginx/) az intenzívebb háttérbeli számításokhoz.
+* **Tárolók és Service Fabric-szolgáltatások együttes** használata: használjon egy meglévő tároló-rendszerképet az alkalmazás részeként. Használhatja például az alkalmazás és az állapot-nyilvántartó szolgáltatások webes kezelőfelületének [NGINX-tárolóját](https://hub.docker.com/_/nginx/) az intenzívebb háttérbeli számításokhoz.
 
 * A **"zajos szomszédok" szolgáltatások hatásának csökkentése**: a tárolók erőforrás-irányítási képességével korlátozhatja a szolgáltatás által a gazdagépen használt erőforrásokat. Ha a szolgáltatások sok erőforrást használnak, és hatással vannak mások teljesítményére (például egy hosszan futó, lekérdezés-szerű művelet), fontolja meg, hogy ezek a szolgáltatások olyan tárolókban legyenek, amelyeknek erőforrás-szabályozása van.
 
@@ -95,7 +95,7 @@ A Service Fabric számos tároló-képességet biztosít, amelyek segítségéve
 
 Az Azure-beli tárolók támogatásának átfogó áttekintése, például a Kubernetes-fürt létrehozása az Azure Kubernetes szolgáltatással, a privát Docker-beállításjegyzék létrehozása a Azure Container Registry-ben és további információ: [Azure for containers](../containers/index.yml).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogy milyen támogatási Service Fabric biztosít a tárolók futtatásához. Ezután az egyes funkciók példáit követve megtudhatja, hogyan használhatja őket.
 

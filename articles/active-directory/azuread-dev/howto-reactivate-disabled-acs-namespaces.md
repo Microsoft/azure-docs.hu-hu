@@ -14,10 +14,10 @@ ms.reviewer: jlu
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 7bb572e9e22519491290e54417f5ca350d6c0b5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85383717"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Útmutató: a letiltott Access Control Service névterek újraaktiválása
@@ -124,6 +124,6 @@ A További bővítmények többé nem lesznek automatikusan jóváhagyva. Ha tov
 - Ha a fenti útmutató követése után bármilyen problémába ütközik, forduljon az [Azure ügyfélszolgálatához](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 - Ha kérdése vagy visszajelzése van az ACS kivonásáról, lépjen kapcsolatba velünk a következő címen: acsfeedback@microsoft.com .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át az ACS-kivezetéssel kapcsolatos információkat az [Azure Access Control Serviceról: Migrálás az Azure-ból](active-directory-acs-migration.md).

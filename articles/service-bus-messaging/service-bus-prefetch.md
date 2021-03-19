@@ -4,10 +4,10 @@ description: Azure Service Bus üzenetek előhívásával javíthatja a teljesí
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 05e23b0590f0c04171efda8fb561b4c2664ed096
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85341051"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>A prefektus Azure Service Bus üzenetek
@@ -18,7 +18,7 @@ Az egyszeri kezdeti [fogadási](/dotnet/api/microsoft.servicebus.messaging.queue
 
 ## <a name="enable-prefetch"></a>A prefektus engedélyezése
 
-A .NET-tel a **MessageReceiver**, a **QueueClient**vagy a **SubscriptionClient** [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) tulajdonságát nullánál nagyobb értékre állíthatja be. Ha az értéket nullára állítja, a kikapcsolja a prefektust.
+A .NET-tel a **MessageReceiver**, a **QueueClient** vagy a **SubscriptionClient** [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) tulajdonságát nullánál nagyobb értékre állíthatja be. Ha az értéket nullára állítja, a kikapcsolja a prefektust.
 
 Ezt a beállítást egyszerűen hozzáadhatja a [QueuesGettingStarted](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/QueuesGettingStarted) vagy a [ReceiveLoop](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ReceiveLoop) Samples beállítások fogadó-oldalához, így láthatja ennek hatását.
 
@@ -44,7 +44,7 @@ Ha nagy átviteli sebességre van szüksége, és az üzenetek feldolgozására 
 
 A rendszer a várólistán vagy az előfizetésen beállított maximális visszahívási időtartamot és a zárolási időtartamot úgy kell kiegyenlíteni, hogy a zárolási időkorlát legalább meghaladja a Meghívási puffer maximális méretét, valamint egy üzenetet. Ugyanakkor a zárolás időkorlátja nem lehet olyan sokáig, hogy az üzenetek túllépik a maximális [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) , amikor véletlenül eldobják őket, így a zárolást az újbóli kézbesítés előtt le kell zárni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Service Bus üzenetkezeléssel kapcsolatos további tudnivalókért tekintse meg a következő témaköröket:
 

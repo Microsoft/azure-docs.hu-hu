@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/12/2017
+ms.date: 03/17/2021
 ms.author: alkohli
-ms.openlocfilehash: 69a36f38cc76693f596b45d4df6e232bc01584d5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0e25d41fbf6a9683f178cbfd1b07fde1b6796509
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967975"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656821"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>A StorSimple-eszköz felügyeletéhez használja a StorSimple Eszközkezelő szolgáltatást
 
@@ -47,6 +47,8 @@ A StorSimple Eszközkezelő szolgáltatás Microsoft Azure fut, és több StorSi
 A következő táblázat a StorSimple Eszközkezelő szolgáltatás felhasználói felületén elvégezhető általános felügyeleti feladatok és összetett munkafolyamatok összegzését tartalmazza. Ezek a feladatok a kezdeményezett felhasználói felületi lapok alapján vannak rendszerezve.
 
 Az egyes munkafolyamatokkal kapcsolatos további információkért kattintson a megfelelő eljárásra a táblázatban.
+
+[!INCLUDE [StorSimple software warning](../../includes/storsimple-update-software-warning.md)]
 
 #### <a name="storsimple-device-manager-workflows"></a>StorSimple Eszközkezelő munkafolyamatok
 

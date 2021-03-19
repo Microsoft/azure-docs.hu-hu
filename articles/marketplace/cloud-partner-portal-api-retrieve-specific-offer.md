@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: 9f3ba6b2f13b9f2bb1d538db84723e3a9baaef12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87271841"
 ---
 # <a name="retrieve-a-specific-offer"></a>Adott ajánlat beolvasása
@@ -43,7 +43,7 @@ Lekérheti az ajánlat egy adott verzióját is, vagy lekérheti az ajánlatot P
 | offerId     | Az ajánlatot egyedileg azonosító GUID.                                                 | Sztring        |
 | version     | A beolvasott ajánlat verziója. Alapértelmezés szerint a rendszer beolvassa a legújabb ajánlat verzióját. | Egész szám       |
 | slotId      | Az a tárolóhely, amelyből az ajánlatot le kell kérni, az alábbiak egyike lehet:      <br/>  - `Draft` (alapértelmezés) lekérdezi a jelenleg vázlatos ajánlat verzióját.  <br/>  -  `Preview` a jelenleg előzetes verzióban elérhető ajánlat verziószámának beolvasása.     <br/>  -  `Production` az aktuálisan éles üzemben lévő ajánlat verziószámának beolvasása.          |      Enum |
-| api-verzió | Az API legújabb verziója                                                                    | Dátum          |
+| api-verzió | Az API legújabb verziója                                                                    | Date          |
 |  |  |  |
 
 ## <a name="header"></a>Fejléc

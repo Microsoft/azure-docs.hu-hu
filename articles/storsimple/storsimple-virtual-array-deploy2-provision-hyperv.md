@@ -16,10 +16,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d6dfc95820e911781ffa88e2207601703f165839
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87070598"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>StorSimple virtuális tömb üzembe helyezése – létesítés a Hyper-V-ben
@@ -92,7 +92,7 @@ A következő lépések végrehajtásával helyezzen üzembe egy eszközt a hipe
 
    ![Képernyőkép a Kiszolgálókezelő kibővített eszközök menüjéről, amely a Hyper-V kezelője elemre van kijelölve.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image1.png)  
 
-   Ha a Windows Server 2008 R2 rendszert futtatja, nyissa meg a Hyper-V kezelőjét. A Kiszolgálókezelőben kattintson a **szerepkörök > Hyper-v > Hyper-v kezelője**elemre.
+   Ha a Windows Server 2008 R2 rendszert futtatja, nyissa meg a Hyper-V kezelőjét. A Kiszolgálókezelőben kattintson a **szerepkörök > Hyper-v > Hyper-v kezelője** elemre.
 3. A **Hyper-V kezelője** hatókörpanelén kattintson jobb gombbal a rendszercsomópontra, majd a megnyíló helyi menüben kattintson az **Új** > **Virtuális gép** elemre.
 
    ![Képernyőkép a rendszercsomópont helyi menüjéről a Hyper-V kezelőjéről, amely az új és a virtuálisgép-elemek kiemelésére van kiemelve.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image2.png)
@@ -100,7 +100,7 @@ A következő lépések végrehajtásával helyezzen üzembe egy eszközt a hipe
 5. A **név és hely megadása** lapon adja meg a virtuális tömb **nevét** . Kattintson a **Tovább** gombra.
 
    ![Képernyőfelvétel: a név és hely megadása lap, amely a név mező kitöltését és a tovább gomb kiemelését jeleníti meg.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image4.png)
-6. A **generáció megadása** lapon válassza ki az eszköz rendszerképének típusát, majd kattintson a **tovább**gombra. Ez a lap nem jelenik meg, ha a Windows Server 2008 R2 rendszert használja.
+6. A **generáció megadása** lapon válassza ki az eszköz rendszerképének típusát, majd kattintson a **tovább** gombra. Ez a lap nem jelenik meg, ha a Windows Server 2008 R2 rendszert használja.
 
    * Válassza a **2. generáció** lehetőséget, ha a Windows Server 2012-es vagy újabb verziójához letöltötte a. vhdx-rendszerképet.
    * Válassza az **1. generáció** lehetőséget, ha letöltött egy. vhd rendszerképet a Windows Server 2008 R2 vagy újabb verzióhoz.
@@ -112,7 +112,7 @@ A következő lépések végrehajtásával helyezzen üzembe egy eszközt a hipe
 8. A **Hálózatkezelés beállítása** lapon adja meg az internetre csatlakoztatott virtuális kapcsolót, majd kattintson a **Tovább** gombra.
 
    ![Képernyőkép a hálózatkezelés beállítása oldalról, amelyen a Hyper V virtuális kapcsoló elem van kiválasztva a kapcsolat mezőben, és a tovább gomb kiemelve.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image7.png)
-9. A **virtuális merevlemez összekapcsolása** lapon válassza a **meglévő virtuális merevlemez használata**lehetőséget, adja meg a virtuális tömb rendszerképének helyét (. vhdx vagy. vhd), majd kattintson a **tovább**gombra.
+9. A **virtuális merevlemez összekapcsolása** lapon válassza a **meglévő virtuális merevlemez használata** lehetőséget, adja meg a virtuális tömb rendszerképének helyét (. vhdx vagy. vhd), majd kattintson a **tovább** gombra.
 
    ![Képernyőkép a virtuális merevlemez összekapcsolása oldalról, amely egy meglévő virtuális merevlemezt használ, egy helyet, és a Tovább gombot kiemelve.](./media/storsimple-virtual-array-deploy2-provision-hyperv/image8m.png)
 10. Tekintse át az **összefoglalást**, majd kattintson a **Befejezés** gombra a virtuális gép létrehozásához.
@@ -217,6 +217,6 @@ Ha a kezdeti konfiguráció során bármilyen más hibával szembesül a helyi w
 * Diagnosztikai tesztek futtatása a [webes felhasználói felület beállításának hibakereséséhez](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors).
 * [Naplófájlok előállítása és a naplófájlok megtekintése](storsimple-ova-web-ui-admin.md#generate-a-log-package).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A StorSimple virtuális tömb beállítása fájlkiszolgálóként](storsimple-virtual-array-deploy3-fs-setup.md)
 * [A StorSimple virtuális tömb beállítása iSCSI-kiszolgálóként](storsimple-virtual-array-deploy3-iscsi-setup.md)

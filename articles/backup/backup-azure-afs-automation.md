@@ -4,10 +4,10 @@ description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági ment�
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: 948931764769bc967b88e7942b7e8384b0f93dff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87077007"
 ---
 # <a name="back-up-an-azure-file-share-by-using-powershell"></a>Azure-fájlmegosztás biztonsági mentése a PowerShell használatával
@@ -56,10 +56,10 @@ A PowerShell beállítása a következőképpen történik:
 
     ![Recovery Services-parancsmagok listája](./media/backup-azure-afs-automation/list-of-recoveryservices-ps-az.png)
 
-4. Jelentkezzen be az Azure-fiókjába a **AzAccount**használatával.
+4. Jelentkezzen be az Azure-fiókjába a **AzAccount** használatával.
 5. A megjelenő weboldalon a rendszer kéri, hogy adja meg a fiók hitelesítő adatait.
 
-    Azt is megteheti, hogy a fiók hitelesítő adatait paraméterként adja meg a **AzAccount** parancsmagban a **-hitelesítő adatok**használatával.
+    Azt is megteheti, hogy a fiók hitelesítő adatait paraméterként adja meg a **AzAccount** parancsmagban a **-hitelesítő adatok** használatával.
 
     Ha Ön egy bérlő nevében működő CSP-partner, akkor az ügyfelet bérlőként kell megadnia. Használja a bérlői azonosítót vagy a bérlő elsődleges tartománynevét. Ilyen például a **következő: kapcsolat-AzAccount-bérlő "fabrikam.com"**.
 
@@ -81,7 +81,7 @@ A PowerShell beállítása a következőképpen történik:
     Get-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-9. A parancs kimenetében ellenőrizze, hogy a **RegistrationState** módosításai **regisztrálva**vannak-e. Ha nem, futtassa újra a **Register-AzResourceProvider** parancsmagot.
+9. A parancs kimenetében ellenőrizze, hogy a **RegistrationState** módosításai **regisztrálva** vannak-e. Ha nem, futtassa újra a **Register-AzResourceProvider** parancsmagot.
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
@@ -129,7 +129,7 @@ Számos Azure Backup parancsmagnak bemenetként kell megkövetelni a Recovery Se
 
 A tárolási környezet a tár által védett adatok típusa. Állítsa be a [set-AzRecoveryServicesVaultContext](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext)használatával. A környezet beállítása után az az összes további parancsmagra vonatkozik.
 
-Az alábbi példa a **testvault**tároló környezetét állítja be:
+Az alábbi példa a **testvault** tároló környezetét állítja be:
 
 ```powershell
 Get-AzRecoveryServicesVault -Name "testvault" | Set-AzRecoveryServicesVaultContext
@@ -194,7 +194,7 @@ A megfelelő szabályzat objektum beolvasása a [Get-AzRecoveryServicesBackupPro
 
 #### <a name="retrieve-a-policy-for-a-workload-type"></a>Házirend beolvasása egy munkaterhelés-típushoz
 
-A következő példa a **AzureFiles**számítási feladathoz tartozó szabályzatokat kérdezi le:
+A következő példa a **AzureFiles** számítási feladathoz tartozó szabályzatokat kérdezi le:
 
 ```powershell
 Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureFiles"
@@ -213,7 +213,7 @@ dailyafs             AzureFiles         AzureStorage         1/10/2018 12:30:00 
 
 #### <a name="retrieve-a-specific-policy"></a>Adott szabályzat beolvasása
 
-A következő szabályzat lekéri a **dailyafs**nevű biztonsági mentési szabályzatot:
+A következő szabályzat lekéri a **dailyafs** nevű biztonsági mentési szabályzatot:
 
 ```powershell
 $afsPol =  Get-AzRecoveryServicesBackupProtectionPolicy -Name "dailyafs"
@@ -286,7 +286,7 @@ testAzureFS       Backup               Completed            11/12/2018 2:42:07 P
 
 Az Azure-fájlmegosztás pillanatképeit a rendszer a biztonsági másolatok készítése során használja. Általában a művelet akkor fejeződik be, amikor a parancs visszaadja ezt a kimenetet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók [a Azure Portal Azure Files biztonsági mentéséről](backup-afs.md).
 * A biztonsági mentések ütemezéséhez tekintse [meg a githubon található minta parancsfájlt](https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup) egy Azure Automation runbook használatával.

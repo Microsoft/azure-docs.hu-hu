@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/02/2021
-ms.openlocfilehash: 4590129b8d0d7a63ef4291a023ea4d980c89368c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/17/2021
+ms.openlocfilehash: b86559422b6efeed666a3ae35022563a66d9c7e6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100386645"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597317"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Adatok másolása az SAP Cloud for Customer (C4C) szolgáltatásból Azure Data Factory használatával
 
@@ -162,6 +162,7 @@ Ha az ügyfél számára szeretne Adatmásolást készíteni az SAP-felhőbe, a 
 | típus | A Type tulajdonságot a következőre kell beállítani: **SapCloudForCustomerSink**  | Yes |
 | writeBehavior | A művelet írási viselkedése. Lehet "Insert", "Update". | Nem. Alapértelmezett "Beszúrás". |
 | writeBatchSize | Az írási művelet kötegének mérete. A legjobb teljesítmény eléréséhez használt köteg mérete eltérő lehet a különböző táblák vagy kiszolgálók esetében. | Nem. Alapértelmezett 10. |
+| maxConcurrentConnections |A tevékenység futtatása során az adattárhoz létesített egyidejű kapcsolatok felső határa. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolatokat.| No |
 
 **Példa**
 

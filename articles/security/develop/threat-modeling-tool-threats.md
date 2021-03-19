@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: eb006482b851e9094b82ec3d0753b74c05296994
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68727831"
 ---
 # <a name="microsoft-threat-modeling-tool-threats"></a>Fenyegetések Microsoft Threat Modeling Tool
@@ -47,6 +47,6 @@ A Microsoft a LÉPÉSHOSSZ modellt használja, amely különböző típusú feny
 | **Szolgáltatásmegtagadás** | A szolgáltatásmegtagadási (DoS) támadások megtagadják a szolgáltatást az érvényes felhasználóknak – például úgy, hogy egy webkiszolgáló átmenetileg elérhetetlenné válik vagy használhatatlan. A rendszerek rendelkezésre állásának és megbízhatóságának javítása érdekében csak bizonyos típusú DoS-fenyegetések ellen kell védekezni |
 | **Jogosultsági szint emelése** | A nem rendszerjogosultságú felhasználók emelt szintű hozzáférést nyernek, így elegendő hozzáférésük van a kompromisszumhoz, vagy megsemmisítik a teljes rendszerét. A jogosultsági fenyegetések magasabb szintre állítása olyan helyzetekben, amikor egy támadó ténylegesen behatolt a rendszervédelembe, és maga a megbízható rendszer részévé válik, a veszélyes helyzet valóban |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa **[Threat Modeling Tool enyhítésével](threat-modeling-tool-mitigations.md)** , hogy megismerje a fenyegetések enyhítésének különböző módszereit az Azure-ban.

@@ -9,10 +9,10 @@ ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: a09dbd7d778a4f7ea2a9aac9ca07b9e6d06bc1ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84463603"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>BLOB Storage-módosíthatatlansági szabályzatok beállítása és kezelése
@@ -49,7 +49,7 @@ Ez a cikk bemutatja, hogyan állíthatja be és kezelheti a blob Storage-ban lé
 
     ![A menü zárolási szabályzatának megerősítése](media/storage-blob-immutability-policies-manage/portal-image-5-lock-policy.png)
 
-7. A jogcímek engedélyezéséhez válassza a **házirend hozzáadása**lehetőséget. Válassza a **jogi megtartás** lehetőséget a legördülő menüből.
+7. A jogcímek engedélyezéséhez válassza a **házirend hozzáadása** lehetőséget. Válassza a **jogi megtartás** lehetőséget a legördülő menüből.
 
     !["Jogi megtartás" a "szabályzat típusa" alatt található menüben](media/storage-blob-immutability-policies-manage/portal-image-legal-hold-selection-7.png)
 
@@ -188,4 +188,4 @@ Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
 
 ## <a name="next-steps"></a>További lépések
 
-[Üzleti szempontból kritikus fontosságú blob-alapú adattárolás tárolása a nem módosítható tárolóval](storage-blob-immutable-storage.md)
+[Az üzlet szempontjából létfontosságú blobadatok tárolása nem módosítható tárolással](storage-blob-immutable-storage.md)
