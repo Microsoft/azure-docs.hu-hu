@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: aa24989103cca5bb7031a21ca106b93ada0c3904
-ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
+ms.openlocfilehash: 0ecfbb9053fde4ff332cbbcb6e14a84a5bbeb99a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103149460"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593152"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Az Azure Files méretezhetőségi és teljesítménycéljai
 A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az SMB-és NFS fájlrendszer-protokollok használatával érhető el. Ez a cikk a Azure Files és Azure File Sync méretezhetőségi és teljesítménybeli céljait ismerteti.
@@ -134,7 +134,7 @@ A teljesítmény sebessége 20 objektum másodpercenként. Az ügyfelek a Felhő
 
 A **Windows Serverről az Azure-ba irányuló adatok kezdeti szinkronizálása**: sok Azure file Sync üzemelő példány üres Azure-fájlmegosztás használatával kezdődik, mert az összes adatok a Windows Serveren vannak. Ezekben az esetekben a felhő kezdeti változásának számbavétele gyors, és a legtöbb időt a Windows-kiszolgálóról az Azure-fájlmegosztás (ok) ra való szinkronizálás során kell kitölteni. 
 
-Míg a Sync adatok feltöltése az Azure-fájlmegosztásba, a helyi fájlkiszolgálón nincs leállás, és a rendszergazdák [hálózati korlátozásokat](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-registration#set-azure-file-sync-network-limits) állíthatnak be a háttérbeli adatok feltöltéséhez használt sávszélesség korlátozására.
+Míg a Sync adatok feltöltése az Azure-fájlmegosztásba, a helyi fájlkiszolgálón nincs leállás, és a rendszergazdák [hálózati korlátozásokat](./storage-sync-files-server-registration.md#set-azure-file-sync-network-limits) állíthatnak be a háttérbeli adatok feltöltéséhez használt sávszélesség korlátozására.
 
 A kezdeti szinkronizálást a szinkronizálási csoport másodpercenkénti 20 fájljának kezdeti feltöltési sebessége korlátozza. Az ügyfelek a következő képletekkel tudják megbecsülni az összes adat Azure-ba való feltöltésének időpontját napokban:  
 

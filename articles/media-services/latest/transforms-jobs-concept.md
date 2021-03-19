@@ -3,7 +3,7 @@
 title: átalakítások és feladatok Media Servicesban: Azure Media Services Leírás: megtudhatja, hogyan hozhat létre átalakítókat a videók feldolgozásához szükséges szabályok leírásához Azure Media Servicesban.
 szolgáltatások: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
 
-MS. Service: Media-Services MS. munkaterhelés: MS. topic: konceptuális MS. Date: 08/19/2019 MS. Author: inhenkel
+MS. Service: Media-Services MS. munkaterhelés: MS. topic: konceptuális MS. Date: 03/17/2021 MS. Author: inhenkel
 ---
 
 # <a name="transforms-and-jobs-in-media-services"></a>Átalakítások és feladatok Media Services
@@ -77,7 +77,7 @@ Ha a bemeneti tartalom már egy eszközön van, vagy a tartalom helyi fájlban v
 
 ### <a name="checking-job-progress"></a>A feladatok állapotának ellenőrzése
 
-A feladatok előrehaladását és állapotát a Event Gridával folytatott figyelési események is beszerezhetők. További információ: [események figyelése a EventGrid használatával](job-state-events-cli-how-to.md).
+A feladatok előrehaladását és állapotát a Event Gridával folytatott figyelési események is beszerezhetők. További információ: [események figyelése a EventGrid használatával](monitoring/job-state-events-cli-how-to.md).
 
 ### <a name="updating-jobs"></a>Feladatok frissítése
 

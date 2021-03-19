@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: f8fa5532a5664741c9ddb9b78b35d5eed8e2e4e0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 10ddee404de21c5bc04672fdb6dd32c30f481ba3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937851"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578243"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Felhasználók számára bejelentkező webes alkalmazás: bejelentkezés és kijelentkezés
 
@@ -95,6 +95,16 @@ A Java gyors útmutatóban a bejelentkezési gomb a [Main/Resources/templates/in
 </html>
 ```
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+A Node.js rövid útmutatóban nincs bejelentkezési gomb. A kód mögött automatikusan bekéri a felhasználót, hogy jelentkezzen be, amikor eléri a webalkalmazás gyökerét.
+
+```javascript
+app.get('/', (req, res) => {
+    // authentication logic
+});
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 A Python rövid útmutatójában nincs bejelentkezési gomb. A kód mögött automatikusan bekéri a felhasználót, hogy jelentkezzen be, amikor eléri a webalkalmazás gyökerét. Lásd: [app. a # L14-L18](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/0.1.0/app.py#L14-L18).
@@ -113,7 +123,7 @@ def index():
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-A ASP.NET-ben a webalkalmazás **bejelentkezési** gombjára kattintva elindítja a műveletet a `SignIn` `AccountController` vezérlőn. A ASP.NET Core sablonok korábbi verzióiban a `Account` vezérlőt a webalkalmazásba ágyazták be. Ez már nem így van, mert a vezérlő már része a **Microsoft. Identity. Web. UI** NuGet csomagnak. További részletekért lásd: [AccountController.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) .
+A ASP.NET-ben a webalkalmazás **bejelentkezési** gombjára kattintva elindítja a műveletet a `SignIn` `AccountController` vezérlőn. A ASP.NET Core sablonok korábbi verzióiban a `Account` vezérlőt a webalkalmazásba ágyazták be. Ez már nem így van, mert a vezérlő már része a **Microsoft. Identity. Web. UI** NuGet csomagnak. További részletekért lásd: [AccountController. cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) .
 
 Ez a vezérlő a Azure AD B2C-alkalmazásokat is kezeli.
 
@@ -158,6 +168,43 @@ public class AuthPageController {
     }
 
     // More code omitted for simplicity
+```
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+A többi platformtól eltérően a MSAL-csomópont gondoskodik arról, hogy a felhasználó bejelentkezzen a bejelentkezési oldalról.
+
+```javascript
+
+// 1st leg of auth code flow: acquire a code
+app.get('/', (req, res) => {
+    const authCodeUrlParameters = {
+        scopes: ["user.read"],
+        redirectUri: REDIRECT_URI,
+    };
+
+    // get url to sign user in and consent to scopes needed for application
+    pca.getAuthCodeUrl(authCodeUrlParameters).then((response) => {
+        res.redirect(response);
+    }).catch((error) => console.log(JSON.stringify(error)));
+});
+
+// 2nd leg of auth code flow: exchange code for token
+app.get('/redirect', (req, res) => {
+    const tokenRequest = {
+        code: req.query.code,
+        scopes: ["user.read"],
+        redirectUri: REDIRECT_URI,
+    };
+
+    pca.acquireTokenByCode(tokenRequest).then((response) => {
+        console.log("\nResponse: \n:", response);
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log(error);
+        res.status(500).send(error);
+    });
+});
 ```
 
 # <a name="python"></a>[Python](#tab/python)
@@ -229,6 +276,10 @@ Az alkalmazás regisztrálása során regisztrálnia kell egy előtérben kijele
 Az alkalmazás regisztrálása során nem kell regisztrálnia egy extra előtérben kijelentkezési URL-címet. A rendszer visszahívja az alkalmazást a fő URL-címére. 
 
 # <a name="java"></a>[Java](#tab/java)
+
+Az alkalmazás regisztrálásához nem szükséges előtérben kijelentkezési URL-cím.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 Az alkalmazás regisztrálásához nem szükséges előtérben kijelentkezési URL-cím.
 
@@ -305,6 +356,10 @@ A Java gyors útmutatóban a kijelentkezés gomb a Main/Resources/templates/auth
 ...
 ```
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Ez a minta alkalmazás nem implementálja a kijelentkezést.
+
 # <a name="python"></a>[Python](#tab/python)
 
 A Python rövid útmutatójában a kijelentkezés gomb a [templates/index.html # L10](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/templates/index.html#L10) fájlban található.
@@ -330,13 +385,13 @@ A Python rövid útmutatójában a kijelentkezés gomb a [templates/index.html #
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-A ASP.NET Core sablonok korábbi verzióiban a `Account` vezérlőt a webalkalmazásba ágyazták be. Ez már nem így van, mert a vezérlő már része a **Microsoft. Identity. Web. UI** NuGet csomagnak. További részletekért lásd: [AccountController.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) .
+A ASP.NET Core sablonok korábbi verzióiban a `Account` vezérlőt a webalkalmazásba ágyazták be. Ez már nem így van, mert a vezérlő már része a **Microsoft. Identity. Web. UI** NuGet csomagnak. További részletekért lásd: [AccountController. cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) .
 
 - Beállítja az OpenID-átirányítási URI-t úgy, hogy `/Account/SignedOut` a vezérlőt vissza lehessen hívni, amikor az Azure ad befejezte a kijelentkezést.
 - Meghívások `Signout()` , amelyek lehetővé teszi, hogy az OpenID Connect middleware kapcsolatba lépjen a Microsoft Identity platform- `logout` végponttal. A végpont ekkor:
 
   - Törli a munkamenet-cookie-t a böngészőből.
-  - A kijelentkezés utáni átirányítási URI-t hívja vissza. Alapértelmezés szerint a kijelentkezés utáni átirányítási URI a kijelentkezett nézet [SignedOut.cshtml.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs)jeleníti meg. Ez az oldal a Microsoft. Identity. Web részeként is elérhető.
+  - A kijelentkezés utáni átirányítási URI-t hívja vissza. Alapértelmezés szerint a kijelentkezés utáni átirányítási URI a [SignedOut. cshtml. cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs)kijelentkezett nézet lapot jeleníti meg. Ez az oldal a Microsoft. Identity. Web részeként is elérhető.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -376,6 +431,10 @@ A Java-ban a kijelentkezést a Microsoft Identity platform `logout` végpontján
                 URLEncoder.encode(redirectUrl, "UTF-8"));
     }
 ```
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Ez a minta alkalmazás nem implementálja a kijelentkezést.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -420,6 +479,10 @@ public class AccountController : Controller
 # <a name="java"></a>[Java](#tab/java)
 
 A Java gyors útmutatóban a kijelentkezés utáni átirányítási URI csak a index.html oldalt jeleníti meg.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Ez a minta alkalmazás nem implementálja a kijelentkezést.
 
 # <a name="python"></a>[Python](#tab/python)
 

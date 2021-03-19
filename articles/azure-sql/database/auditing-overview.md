@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 03/09/2021
+ms.date: 03/17/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 82445ce7c1ebfc365459bbeba7e04d660221eaf2
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 8513127f4a79c9c94323140462ad2d2648a0130d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102551654"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577702"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>A Azure SQL Database és az Azure szinapszis Analytics naplózása
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -26,7 +26,7 @@ A naplózás további előnyei:
 
 - Segít a jogszabályi megfelelőség fenntartásában és az adatbázison végzett tevékenység megértésében, valamint az esetleg üzleti veszélyeket vagy biztonsági problémákat jelző rendellenességek feltárásában.
 
-- Lehetővé teszi és megkönnyíti a megfelelőségi szabványok betartását, bár nem mindig garantálja a megfelelőséget. A szabványok megfelelőségét támogató Azure-programokkal kapcsolatos további információkért tekintse meg a [Azure biztonsági és adatkezelési központ](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , ahol megtalálhatja az Azure SQL-megfelelőségi tanúsítványok legújabb listáját.
+- Lehetővé teszi és megkönnyíti a megfelelőségi szabványok betartását, bár nem mindig garantálja a megfelelőséget. A szabványoknak való megfelelést segítő Azure-programokkal kapcsolatos további információkért keresse fel az [Azure biztonsági és adatkezelési központot](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942), ahol megtalálja az Azure SQL megfelelőségi tanúsítványainak az aktuális listáját is.
 
 > [!NOTE]
 > Az Azure SQL felügyelt példányok naplózásával kapcsolatos információkért tekintse meg a következő cikket, [amely az SQL felügyelt példányok naplózásának első lépéseit](../managed-instance/auditing-configure.md)ismerteti.
@@ -99,7 +99,7 @@ A Azure SQL Database és az Azure szinapszis audit 4000 karakterből álló adat
 A következő szakasz ismerteti a naplózás konfigurációját a Azure Portal használatával.
 
   > [!NOTE]
-  > - Egy szüneteltetett dedikált SQL-készlet naplózásának engedélyezése nem lehetséges. A naplózás engedélyezéséhez szüntesse meg a dedikált SQL-készlet szüneteltetését. További információ a [DEDIKÁLT SQL-készletről](../..//synapse-analytics/sql/best-practices-sql-pool.md).
+  > - Egy szüneteltetett dedikált SQL-készlet naplózásának engedélyezése nem lehetséges. A naplózás engedélyezéséhez szüntesse meg a dedikált SQL-készlet szüneteltetését. További információ a [DEDIKÁLT SQL-készletről](../..//synapse-analytics/sql/best-practices-dedicated-sql-pool.md).
   > - Ha a naplózás a Azure Portal vagy a PowerShell-parancsmaggal egy Log Analytics munkaterületre vagy egy még hub-célhelyre van konfigurálva, akkor a rendszer a "SQLSecurityAuditEvents" kategória használatával hozza létre a [diagnosztikai beállításokat](../../azure-monitor/essentials/diagnostic-settings.md) .
 
 1. Nyissa meg az [Azure Portal](https://portal.azure.com).
@@ -134,16 +134,16 @@ AzureDiagnostics
 
 ### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>Naplózás a tárolási célhelyre
 
-A naplók a Storage-fiókba való írásának konfigurálásához válassza a **tárterület** lehetőséget, és nyissa meg a **tároló adatait**. Válassza ki azt az Azure Storage-fiókot, ahol a rendszer menti a naplókat, majd válassza ki a megőrzési időtartamot. Ezután kattintson az **OK** gombra. A megőrzési időtartamnál régebbi naplók törlődnek.
+A naplók egy Storage-fiókba való írásának konfigurálásához válassza a **tárterület** lehetőséget a **naplózás** szakaszhoz. Válassza ki azt az Azure Storage-fiókot, ahol a rendszer menti a naplókat, majd válassza ki a megőrzési időszakot a **Speciális tulajdonságok** megnyitásával. Ezután kattintson a **Mentés** gombra. A megőrzési időtartamnál régebbi naplók törlődnek.
 
-- A megőrzési időtartam alapértelmezett értéke 0 (korlátlan megőrzés). Ezt az értéket módosíthatja úgy, hogy a Storage-fiók konfigurálásakor áthelyezi a tárolási **Beállítások** **megőrzés (nap)** csúszkáját a naplózáshoz.
+- A megőrzési időtartam alapértelmezett értéke 0 (korlátlan megőrzés). Ez az érték módosítható úgy, hogy a Storage-fiók naplózáshoz való konfigurálásakor áthelyezi a **Speciális tulajdonságok** **megőrzés (nap)** csúszkáját.
   - Ha a megőrzési időszakot 0 (korlátlan megőrzés) értékre módosítja bármely más értékre, vegye figyelembe, hogy az adatmegőrzés csak a megőrzési érték módosítását követően írt naplókra vonatkozik
 
   ![tárfiók](./media/auditing-overview/auditing_select_storage.png)
 
 ### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>Naplózás Log Analytics célhelyre
   
-A naplók Log Analytics munkaterületre való írásának konfigurálásához válassza a **log Analytics** lehetőséget, majd nyissa meg **log Analytics részleteit**. Válassza ki vagy hozza létre a Log Analytics munkaterületet, ahol a naplók meg lesznek írva, majd kattintson **az OK** gombra.
+A naplók Log Analytics munkaterületre való írásának konfigurálásához válassza a **log Analytics** lehetőséget, majd nyissa meg **log Analytics részleteit**. Válassza ki a Log Analytics munkaterületet, ahol a naplók meg lesznek írva, majd kattintson **az OK** gombra. Ha nem hozott létre Log Analytics munkaterületet, tekintse meg a [log Analytics munkaterület létrehozása a Azure Portalben](../../azure-monitor/logs/quick-create-workspace.md)című témakört.
 
    ![LogAnalyticsworkspace](./media/auditing-overview/auditing_select_oms.png)
 
@@ -151,7 +151,7 @@ További információ a Azure Monitor Log Analytics munkaterületről: [a Azure 
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>Naplózás az Event hub célhelyére
 
-Ha be szeretné állítani a naplók írását az Event hub-ba, válassza az **Event hub** lehetőséget, és nyissa meg az **Event hub részleteit**. Válassza ki az Event hub-t, ahol a naplók meg lesznek írva, majd kattintson **az OK** gombra. Ügyeljen arra, hogy az Event hub ugyanabban a régióban legyen, mint az adatbázis és a kiszolgáló.
+Ha be szeretné állítani a naplók írását az Event hubhoz, válassza az **Event hub** elemet. Válassza ki az Event hub-t, ahol a naplók meg lesznek írva, majd kattintson a **Save (Mentés**) gombra. Ügyeljen arra, hogy az Event hub ugyanabban a régióban legyen, mint az adatbázis és a kiszolgáló.
 
    ![Eventhub](./media/auditing-overview/auditing_select_event_hub.png)
 
@@ -191,13 +191,12 @@ Ha úgy döntött, hogy naplózza a naplókat egy Azure Storage-fiókba, a napl�
 
 - Használja az [Azure Portalt](https://portal.azure.com).  Nyissa meg a vonatkozó adatbázist. Az adatbázis **naplózási** lapjának felső részén kattintson a **naplók megtekintése** elemre.
 
-    ![Képernyőkép: az adatbázis naplózási lapján Kiemelt naplók megtekintése gomb.](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
+    ![naplók megtekintése](./media/auditing-overview/auditing-view-audit-logs.png)
 
     Megnyílik a **naplózási rekordok** , amelyekről megtekintheti a naplókat.
 
   - Az egyes dátumokat a **naplózási rekordok** lap tetején található **szűrő** gombra kattintva tekintheti meg.
   - A naplózási **forrás** váltásával válthat a *kiszolgálói naplózási házirend* és az adatbázis- *naplózási házirend* által létrehozott naplózási rekordok között.
-  - Csak az SQL-injektálással kapcsolatos naplózási rekordokat tekintheti meg, ha az  **SQL-injektálások csak naplózási rekordok megjelenítése** jelölőnégyzetét ellenőrzi.
 
        ![A naplózási rekordok megtekintésének beállításait bemutató képernyőkép.]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
 
@@ -242,7 +241,7 @@ A földrajzilag replikált adatbázisok esetében, ha engedélyezi a naplózást
 
 Éles környezetben valószínűleg rendszeresen frissíti a tárolási kulcsokat. A naplók Azure Storage-ba írásakor újra kell mentenie a naplózási szabályzatot a kulcsok frissítésekor. A folyamat a következő:
 
-1. Nyissa meg a **tároló adatait**. A **tárolási hozzáférési kulcs** mezőben válassza a **másodlagos** lehetőséget, majd kattintson **az OK** gombra. Ezután kattintson a **Mentés** gombra a naplózási konfiguráció lap tetején.
+1. Nyissa meg a **speciális tulajdonságokat** a **tárterület** területen. A **tároló-hozzáférési kulcs** mezőben válassza a **másodlagos** lehetőséget. Ezután kattintson a **Mentés** gombra a naplózási konfiguráció lap tetején.
 
     ![A másodlagos Storage-hozzáférési kulcs kiválasztásának folyamatát bemutató képernyőkép.](./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png)
 2. Nyissa meg a tárolási konfiguráció lapot, és újból létrehozza az elsődleges hozzáférési kulcsot.

@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
-ms.openlocfilehash: 11daa548e90aa1906ba87e081fa1e0be6fe6aff8
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 6c6bbdefe666cf0dd2f1c96d783917e1874ae93d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102430768"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588698"
 ---
 # <a name="quickstart-configure-a-hybrid-cluster-with-azure-managed-instance-for-apache-cassandra-preview"></a>Gyors útmutató: hibrid fürt konfigurálása Azure felügyelt példánnyal az Apache Cassandra (előzetes verzió) szolgáltatáshoz
 
@@ -48,16 +48,17 @@ Ez a rövid útmutató bemutatja, hogyan konfigurálhat egy hibrid fürtöt az A
    > [!NOTE]
    > Az `assignee` `role` előző parancs és értékei rögzített szolgáltatási elv és szerepkör-azonosítók.
 
-1. Ezután konfigurálni fogjuk a hibrid fürt erőforrásait. Mivel már rendelkezik fürttel, a fürt neve csak logikai erőforrás lesz a meglévő fürt nevének azonosításához. Ügyeljen arra, hogy a `clusterName` következő parancsfájlban definiált és változók esetén a meglévő fürt nevét használja `clusterNameOverride` .
+1. Ezután konfigurálni fogjuk a hibrid fürt erőforrásait. Mivel már rendelkezik fürttel, a fürt neve csak logikai erőforrás lesz a meglévő fürt nevének azonosításához. Ügyeljen arra, hogy a `clusterName` következő parancsfájlban definiált és változók esetén a meglévő fürt nevét használja `clusterNameOverride` . Szüksége lesz a vetőmag-csomópontokra, a nyilvános Ügyféltanúsítványok használatára is (ha a Cassandra-végponton nyilvános/titkos kulcsot konfigurált), és a meglévő fürt pletykák-tanúsítványait.
 
-   Szüksége lesz a vetőmag-csomópontokra, a nyilvános Ügyféltanúsítványok használatára is (ha a Cassandra-végponton nyilvános/titkos kulcsot konfigurált), és a meglévő fürt pletykák-tanúsítványait. A változó megadásához a fent másolt erőforrás-azonosítót is használni kell `delegatedManagementSubnetId` .
+   > [!NOTE]
+   > Az `delegatedManagementSubnetId` alábbi módon megadható változó értéke pontosan ugyanaz, mint a `--scope` fenti parancsban megadott érték:
 
    ```azurecli-interactive
    resourceGroupName='MyResourceGroup'
    clusterName='cassandra-hybrid-cluster-legal-name'
    clusterNameOverride='cassandra-hybrid-cluster-illegal-name'
    location='eastus2'
-   delegatedManagementSubnetId='<Resource ID>'
+   delegatedManagementSubnetId='/subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>/subnets/<subnet name>'
     
    # You can override the cluster name if the original name is not legal for an Azure resource:
    # overrideClusterName='ClusterNameIllegalForAzureResource'
@@ -99,14 +100,13 @@ Ez a rövid útmutató bemutatja, hogyan konfigurálhat egy hibrid fürtöt az A
    clusterName='cassandra-hybrid-cluster'
    dataCenterName='dc1'
    dataCenterLocation='eastus2'
-   delegatedSubnetId= '<Resource ID>'
     
    az managed-cassandra datacenter create \
        --resource-group $resourceGroupName \
        --cluster-name $clusterName \
        --data-center-name $dataCenterName \
        --data-center-location $dataCenterLocation \
-       --delegated-subnet-id $delegatedSubnetId \
+       --delegated-subnet-id $delegatedManagementSubnetId \
        --node-count 9 
    ```
 
@@ -141,6 +141,15 @@ Ez a rövid útmutató bemutatja, hogyan konfigurálhat egy hibrid fürtöt az A
    ```bash
     ALTER KEYSPACE "system_auth" WITH REPLICATION = {'class': 'NetworkTopologyStrategy', ‘on-premise-dc': 3, ‘managed-instance-dc': 3}
    ```
+
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+Ha a Virtual Networkre vonatkozó engedélyek alkalmazása során hibát tapasztal, például *nem találja a felhasználó vagy az egyszerű szolgáltatásnév kifejezést a Graph adatbázisban a "e5007d2c-4b13-4a74-9b6a-605d99f03501"* értékre, akkor ugyanezt az engedélyt manuálisan is alkalmazhatja a Azure Portal. Az engedélyek a portálról való alkalmazásához lépjen a meglévő virtuális hálózat **hozzáférés-vezérlés (iam)** paneljére, és adjon hozzá egy szerepkör-hozzárendelést a "Azure Cosmos db" szerepkörhöz a "hálózati rendszergazda" szerepkörhöz. Ha két bejegyzés jelenik meg, amikor a "Azure Cosmos DB" kifejezésre keres rá, adja hozzá a bejegyzéseket a következő képen látható módon: 
+
+   :::image type="content" source="./media/create-cluster-cli/apply-permissions.png" alt-text="Engedélyek alkalmazása" lightbox="./media/create-cluster-cli/apply-permissions.png" border="true":::
+
+> [!NOTE] 
+> A Azure Cosmos DB szerepkör-hozzárendelés csak telepítési célokra szolgál. Az Apache Cassandra által felügyelt Azure-példányok nem rendelkeznek háttérbeli függőségekkel Azure Cosmos DB.  
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

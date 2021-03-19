@@ -1,20 +1,20 @@
 ---
 title: Azure-előfizetések létrehozása programozott módon Microsoft Ügyfélszerződéshez a legújabb API-kkal
-description: Megismerheti, hogyan hozhat létre Azure-előfizetéseket programozott módon Microsoft Ügyfélszerződéshez a REST API, az Azure CLI és az Azure PowerShell legújabb verziójának használatával.
+description: Megtudhatja, hogyan hozhat létre az Azure-előfizetéseket Microsoft-szerződés alapján programozott módon a REST API, az Azure CLI, a Azure PowerShell és a Azure Resource Manager sablonok legújabb verzióival.
 author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 03/12/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 61a658cc9654a93b4c92fda6cc1f38cd2e77dafa
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 779a1410641f945dc8dbf38aecf65b97d64971b1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102216088"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593965"
 ---
 # <a name="programmatically-create-azure-subscriptions-for-a-microsoft-customer-agreement-with-the-latest-apis"></a>Azure-előfizetések létrehozása programozott módon Microsoft Ügyfélszerződéshez a legújabb API-kkal
 
@@ -32,13 +32,11 @@ Előfizetések létrehozásához tulajdonosi, közreműködői vagy Azure-előfi
 
 Ha nem tudja, rendelkezik-e hozzáféréssel Microsoft Ügyfélszerződéshez, tekintse meg a [Microsoft Ügyfélszerződéshez való hozzáférés ellenőrzéséről](../understand/mca-overview.md#check-access-to-a-microsoft-customer-agreement) szóló cikket.
 
-Az alábbi példák REST API-kat használnak. A PowerShell és az Azure CLI jelenleg nem támogatottak.
-
 ## <a name="find-billing-accounts-that-you-have-access-to"></a>Azon számlázási fiókok megkeresése, amelyekhez hozzáféréssel rendelkezik
 
 Hajtsa végre az alábbi kérést az összes számlázási fiók felsorolásához.
 
-### <a name="rest"></a>[REST](#tab/rest-getBillingAccounts)
+### <a name="rest"></a>[REST](#tab/rest)
 
 ```json
 GET https://management.azure.com/providers/Microsoft.Billing/billingaccounts/?api-version=2020-05-01
@@ -70,10 +68,10 @@ Az API-válasz felsorolja azokat számlázási fiókokat, amelyekhez hozzáfér�
 
 A `displayName` tulajdonsággal azonosíthatja azt a számlázási fiókot, amelyhez előfizetéseket szeretne létrehozni. Győződjön meg arról, hogy a fiók agreementType tulajdonsága *MicrosoftCustomerAgreement*. Másolja ki a fiók `name` elemét.  Ha például a `Contoso` számlázási fiókhoz szeretne előfizetést létrehozni, másolja ki az `5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx` értéket. Illessze be valahova az értéket, hogy a következő lépésben használni tudja.
 
-### <a name="powershell"></a>[PowerShell](#tab/azure-powershell-getBillingAccounts)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-```azurepowershell-interactive
-PS C:\WINDOWS\system32> Get-AzBillingAccount
+```azurepowershell
+Get-AzBillingAccount
 ```
 A rendszer visszaküldi az összes olyan számlázási fiók listáját, amelyhez hozzáfér 
 
@@ -88,9 +86,10 @@ HasReadAccess : True
 A `displayName` tulajdonsággal azonosíthatja azt a számlázási fiókot, amelyhez előfizetéseket szeretne létrehozni. Győződjön meg arról, hogy a fiók agreementType tulajdonsága *MicrosoftCustomerAgreement*. Másolja ki a fiók `name` elemét.  Ha például a `Contoso` számlázási fiókhoz szeretne előfizetést létrehozni, másolja ki az `5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx` értéket. Illessze be valahova az értéket, hogy a következő lépésben használni tudja.
 
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-getBillingAccounts)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 ```azurecli
-> az billing account list
+az billing account list
 ```
 A rendszer visszaküldi az összes olyan számlázási fiók listáját, amelyhez hozzáfér 
 
@@ -127,7 +126,8 @@ Az előfizetésért felszámolt díjak a számlázási profilok számláinak egy
 
 Először szerezze be a számlázási profilok listáját abban a számlázási fiókban, amelyhez hozzáférése van (használja az `name` előző lépésben kapott)
 
-### <a name="rest"></a>[REST](#tab/rest-getBillingProfiles)
+### <a name="rest"></a>[REST](#tab/rest)
+
 ```json
 GET https://management.azure.com/providers/Microsoft.Billing/billingaccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingprofiles/?api-version=2020-05-01
 ```
@@ -208,10 +208,10 @@ GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/5e9
 
 Az `id` tulajdonsággal azonosíthatja azt a számlaszakaszt, amelyhez előfizetéseket szeretne létrehozni. Másolja ki az egész sztringet. Például: `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx`. 
 
-### <a name="powershell"></a>[PowerShell](#tab/azure-powershell-getBillingProfiles)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-```powershell-interactive
-PS C:\WINDOWS\system32> Get-AzBillingProfile -BillingAccountName 5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx
+```azurepowershell
+Get-AzBillingProfile -BillingAccountName 5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx
 ```
 
 A válasz részeként az ebben a fiókban lévő számlázási profilok listáját fogja kapni.
@@ -238,8 +238,8 @@ PostalCode        : 98052
 
 Jegyezze `name` fel a számlázási profilt a fenti válasz alapján. A következő lépés a számlázási profil alá tartozó számla szakasz beszerzése. Szüksége lesz a `name` Számlázási fiókra és a számlázási profilra
 
-```powershell-interactive
-PS C:\WINDOWS\system32> Get-AzInvoiceSection -BillingAccountName 5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx -BillingProfileName AW4F-xxxx-xxx-xxx
+```azurepowershell
+Get-AzInvoiceSection -BillingAccountName 5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx -BillingProfileName AW4F-xxxx-xxx-xxx
 ```
 
 Ekkor a számla szakaszt kapja vissza
@@ -249,13 +249,14 @@ Name        : SH3V-xxxx-xxx-xxx
 DisplayName : Development
 ```
 
-A `name` fenti a számla szakaszának neve, amelyet az előfizetés létrehozásához kell létrehoznia. Hozza létre a számlázási hatókörét a "/providers/Microsoft.Billing/billingAccounts/ <BillingAccountName> /BillingProfiles/ <BillingProfileName> /invoiceSections/ <InvoiceSectionName> " formátum használatával. Ebben a példában ez a következő lesz: `"/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx"` .
+A `name` fenti a számla szakaszának neve, amelyet az előfizetés létrehozásához kell létrehoznia. Hozza létre a számlázási hatókörét a "/providers/Microsoft.Billing/billingAccounts/ <BillingAccountName> /BillingProfiles/ <BillingProfileName> /invoiceSections/ <InvoiceSectionName> " formátum használatával. Ebben a példában ez az érték felel meg a következőnek: `"/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx"` .
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-getBillingProfiles)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```azurecli-interactive
-> az billing profile list --account-name "5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx" --expand "InvoiceSections"
+```azurecli
+az billing profile list --account-name "5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx" --expand "InvoiceSections"
 ```
+
 Ez az API a számlázási profilok és a számlák listáját a megadott számlázási fiók alatt fogja visszaadni.
 
 ```json
@@ -320,7 +321,7 @@ Ez az API a számlázási profilok és a számlák listáját a megadott száml�
   }
 ]
 ```
-A számla szakasz objektumban található ID tulajdonsággal azonosítsa azt a számla szakaszt, amelyhez előfizetéseket kíván létrehozni. Másolja ki az egész sztringet. Például/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx: XXXXXXXX-XXXX-XXXX-XXXX-xxxxxxxxxxxx_xxxx-XX-XX/billingProfiles/AW4F-XXXX-xxx-xxx/invoiceSections/SH3V-XXXX-xxx-xxx.
+A `id` számla szakasz objektum alatt található tulajdonsággal azonosíthatja azt a számla szakaszt, amelyhez előfizetéseket kíván létrehozni. Másolja ki az egész sztringet. Például/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx: XXXXXXXX-XXXX-XXXX-XXXX-xxxxxxxxxxxx_xxxx-XX-XX/billingProfiles/AW4F-XXXX-xxx-xxx/invoiceSections/SH3V-XXXX-xxx-xxx.
 
 ---
 
@@ -328,7 +329,7 @@ A számla szakasz objektumban található ID tulajdonsággal azonosítsa azt a s
 
 Az alábbi példa egy *Fejlesztői csapat előfizetése* nevű előfizetést hoz létre a *Fejlesztés* számlaszakaszhoz. Az előfizetés a *Contoso számlázási profil* nevű számlázási profilon lesz kiszámlázva, és a számla *Fejlesztés* szakaszában jelenik meg. Használja az előző lépésben kimásolt számlázási hatókört: `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx`. 
 
-### <a name="rest"></a>[REST](#tab/rest-MCA)
+### <a name="rest"></a>[REST](#tab/rest)
 
 ```json
 PUT  https://management.azure.com/providers/Microsoft.Subscription/aliases/sampleAlias?api-version=2020-09-01
@@ -385,19 +386,19 @@ GET https://management.azure.com/providers/Microsoft.Subscription/aliases/sample
 
 A rendszer folyamatban lévő állapotot ad vissza `Accepted` állapotként a `provisioningState` alatt.
 
-### <a name="powershell"></a>[PowerShell](#tab/azure-powershell-MCA)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 A `New-AzSubscriptionAlias` parancsmagot tartalmazó modul legújabb verziójának telepítéséhez futtassa az `Install-Module Az.Subscription` parancsot. A PowerShellGet legújabb verziójának telepítéséhez lásd a [PowerShellGet modul beszerzésével](/powershell/scripting/gallery/installing-psget) foglalkozó témakört.
 
 Futtassa az alábbi [New-AzSubscriptionAlias](/powershell/module/az.subscription/new-azsubscription) parancsot és a `"/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx"` számlázási hatókört. 
 
-```azurepowershell-interactive
+```azurepowershell
 New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx" -Workload 'Production"
 ```
 
 A parancsra adott válasz részeként megkapja a subscriptionId paramétert.
 
-```azurepowershell
+```json
 {
   "id": "/providers/Microsoft.Subscription/aliases/sampleAlias",
   "name": "sampleAlias",
@@ -409,19 +410,19 @@ A parancsra adott válasz részeként megkapja a subscriptionId paramétert.
 }
 ```
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-MCA)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Első lépésként telepítse a bővítményt az `az extension add --name account` és az `az extension add --name alias` futtatásával.
 
 Futtassa az alábbi [az account alias create](/cli/azure/ext/account/account/alias#ext_account_az_account_alias_create) parancsot.
 
-```azurecli-interactive
+```azurecli
 az account alias create --name "sampleAlias" --billing-scope "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx" --display-name "Dev Team Subscription" --workload "Production"
 ```
 
 A parancsra adott válasz részeként megkapja a subscriptionId paramétert.
 
-```azurecli
+```json
 {
   "id": "/providers/Microsoft.Subscription/aliases/sampleAlias",
   "name": "sampleAlias",
@@ -435,7 +436,115 @@ A parancsra adott válasz részeként megkapja a subscriptionId paramétert.
 
 ---
 
+## <a name="use-arm-template"></a>ARM-sablon használata
+
+Az előző szakasz azt mutatta be, hogyan lehet előfizetést létrehozni a PowerShell, a CLI vagy a REST API használatával. Ha automatizálni szeretné az előfizetések létrehozását, érdemes lehet egy Azure Resource Manager sablont (ARM-sablont) használni.
+
+A következő sablon létrehoz egy előfizetést. A esetében `billingScope` adja meg a számla szakaszának azonosítóját. A esetében adja meg azt `targetManagementGroup` a felügyeleti csoportot, amelyben létre szeretné hozni az előfizetést.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscriptionAliasName": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide a name for the alias. This name will also be the display name of the subscription."
+            }
+        },
+        "billingScope": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the full resource ID of billing scope to use for subscription creation."
+            }
+        },
+        "targetManagementGroup": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the ID of the target management group to place the subscription."
+            }
+        }
+    },
+    "resources": [
+        {
+            "scope": "/", 
+            "name": "[parameters('subscriptionAliasName')]",
+            "type": "Microsoft.Subscription/aliases",
+            "apiVersion": "2020-09-01",
+            "properties": {
+                "workLoad": "Production",
+                "displayName": "[parameters('subscriptionAliasName')]",
+                "billingScope": "[parameters('billingScope')]",
+                "managementGroupId": "[tenantResourceId('Microsoft.Management/managementGroups/', parameters('targetManagementGroup'))]"
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
+Telepítse a sablont a [felügyeleti csoport szintjén](../../azure-resource-manager/templates/deploy-to-management-group.md).
+
+### <a name="rest"></a>[REST](#tab/rest)
+
+```json
+PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/mg1/providers/Microsoft.Resources/deployments/exampledeployment?api-version=2020-06-01
+```
+
+Kérelem törzse:
+
+```json
+{
+  "location": "eastus",
+  "properties": {
+    "templateLink": {
+      "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json"
+    },
+    "parameters": {
+      "subscriptionAliasName": {
+        "value": "sampleAlias"
+      },
+      "billingScope": {
+        "value": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx"
+      },
+      "targetManagementGroup": {
+        "value": "mg2"
+      }
+    },
+    "mode": "Incremental"
+  }
+}
+```
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+New-AzManagementGroupDeployment `
+  -Name exampledeployment `
+  -Location eastus `
+  -ManagementGroupId mg1 `
+  -TemplateFile azuredeploy.json `
+  -subscriptionAliasName sampleAlias `
+  -billingScope "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx" `
+  -targetManagementGroup mg2
+```
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az deployment mg create \
+  --name exampledeployment \
+  --location eastus \
+  --management-group-id mg1 \
+  --template-file azuredeploy.json \
+  --parameters subscriptionAliasName='sampleAlias' billingScope='/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx' targetManagementGroup=mg2
+```
+
+---
+
 ## <a name="next-steps"></a>Következő lépések
 
 * Most, hogy létrehozott egy előfizetést, elérhetővé teheti ezt a képességek más felhasználók és szolgáltatásnevek számára is. További információ: [Hozzáférés biztosítása nagyvállalati Azure-előfizetés létrehozáshoz (előzetes verzió)](grant-access-to-create-subscription.md).
 * Több előfizetés felügyeleti csoportok használatával történő kezeléséről az [erőforrások Azure-beli felügyeleti csoportokkal való rendszerezését](../../governance/management-groups/overview.md) ismertető részben talál további információt.
+* Az előfizetések felügyeleti csoportjának módosításához lásd: [előfizetések áthelyezése](../../governance/management-groups/manage.md#move-subscriptions).

@@ -20,14 +20,14 @@
     - name: 1. Synapse-munkaterület létrehozása
       href: get-started-create-workspace.md
       displayName: 'get, started'
-    - name: 2. Elemzés dedikált SQL-készlettel
-      href: get-started-analyze-sql-pool.md
+    - name: 2 elemzés kiszolgáló nélküli SQL-készlet használatával
+      href: get-started-analyze-sql-on-demand.md
       displayName: 'get, started'
     - name: 3. Elemzés a Spark használatával
       href: get-started-analyze-spark.md
       displayName: 'get, started'
-    - name: 4. Elemzés kiszolgáló nélküli SQL-készlettel
-      href: get-started-analyze-sql-on-demand.md
+    - name: 4 a dedikált SQL-készlet használatának elemzése
+      href: get-started-analyze-sql-pool.md
       displayName: 'get, started'
     - name: 5. Tárfiók adatainak elemzése
       href: get-started-analyze-storage.md
@@ -187,6 +187,10 @@
               href: troubleshoot/workspaces-created-by-sdk.md
             - name: UTF-8 szöveg olvasásának hibaelhárítása
               href: troubleshoot/reading-utf8-text.md
+- name: Migrálási útmutatók
+  items:
+    - name: Migrálás dedikált SQL-készletbe
+      href: migration-guides/migrate-to-synapse-analytics-guide.md
 - name: Synapse SQL
   items:
     - name: Áttekintés
@@ -211,9 +215,9 @@
         - name: Kiszolgáló nélküli SQL-készlet költségkezelése
           href: sql/data-processed.md
         - name: A kiszolgáló nélküli SQL-készletek használatára vonatkozó ajánlott eljárások
-          href: sql/best-practices-sql-on-demand.md
+          href: sql/best-practices-serverless-sql-pool.md
         - name: A dedikált SQL-készletek használatára vonatkozó ajánlott eljárások
-          href: sql/best-practices-sql-pool.md
+          href: sql/best-practices-dedicated-sql-pool.md
     - name: Rövid útmutatók
       items:
         - name: Kiszolgáló nélküli SQL-készlet használata

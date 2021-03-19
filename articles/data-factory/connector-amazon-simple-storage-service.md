@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/14/2021
-ms.openlocfilehash: 2680c930bfa8451eec7dd518d3c535e0d04046cc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/17/2021
+ms.openlocfilehash: 03b0cd852f34e115cc5bbc60448e45fcbb680474
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387886"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601227"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Az Amazon Simple Storage szolgáltatásból származó adatok másolása Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -191,7 +191,7 @@ A következő tulajdonságok támogatottak az Amazon S3 `storeSettings` -ban a F
 | modifiedDatetimeEnd      | Lásd fentebb.                                               | No                                                          |
 | enablePartitionDiscovery | A particionált fájlok esetében adja meg, hogy szeretné-e elemezni a partíciókat a fájl elérési útján, majd adja hozzá őket további forrásként szolgáló oszlopként.<br/>Az engedélyezett értékek: **false** (alapértelmezett) és **true (igaz**). | No                                            |
 | partitionRootPath | Ha engedélyezve van a partíciók felderítése, akkor a particionált mappák adatoszlopként való olvasásához a gyökér elérési útját kell megadni.<br/><br/>Ha nincs megadva, a rendszer alapértelmezés szerint<br/>– Ha a fájl elérési útját használja az adatkészletben vagy a forrásban található fájlok listáján, a partíció gyökerének elérési útja az adatkészletben konfigurált útvonal.<br/>– Ha helyettesítő mappa szűrőt használ, a partíció gyökerének elérési útja az első helyettesítő karakter előtti Alútvonal.<br/>– Ha előtagot használ, a partíció gyökerének elérési útja az utolsó "/" előtti Alútvonal. <br/><br/>Tegyük fel például, hogy az adatkészletben az elérési utat "root/Folder/Year = 2020/hónap = 08/Day = 27" értékre konfigurálja:<br/>– Ha a partíció gyökerének elérési útját "gyökér/mappa/év = 2020" értékre állítja, a másolási tevékenység két további oszlopot fog előállítani, `month` és a `day` "08" és "27" értéket is kijelöli a fájlokban lévő oszlopokon kívül.<br/>– Ha nincs megadva a partíció gyökerének elérési útja, nem jön létre további oszlop. | No                                            |
-| maxConcurrentConnections | Az adattárhoz való egyidejű kapcsolatok száma. Csak akkor kell megadni, ha az adattárban való egyidejű kapcsolatokat szeretné korlátozni. | No                                                          |
+| maxConcurrentConnections |A tevékenység futtatása során az adattárhoz létesített egyidejű kapcsolatok felső határa. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolatokat.| No                                                          |
 
 **Példa**
 
@@ -362,7 +362,7 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [törlési tevék
 |:--- |:--- |:--- |
 | típus | A másolási tevékenység forrásának **Type** tulajdonságát **FileSystemSource** értékre kell állítani. |Yes |
 | rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. Vegye figyelembe, hogy ha a **rekurzív** értéke **true (igaz** ), a fogadó pedig egy fájl alapú tároló, akkor a fogadó nem másolja vagy hozza létre az üres mappát vagy almappát.<br/>Az engedélyezett értékek: **true** (alapértelmezett) és **false (hamis**). | No |
-| maxConcurrentConnections | Az adattárhoz való kapcsolódáshoz szükséges kapcsolatok száma. Csak akkor kell megadni, ha az adattárban való egyidejű kapcsolatokat szeretné korlátozni. | No |
+| maxConcurrentConnections |A tevékenység futtatása során az adattárhoz létesített egyidejű kapcsolatok felső határa. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolatokat.| No |
 
 **Példa**
 

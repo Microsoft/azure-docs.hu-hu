@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/11/2017
 ms.author: damaerte
 ms.openlocfilehash: bbf6c1f3049265961559ea34c8b748b2b4d263b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "60614310"
 ---
 # <a name="embed-azure-cloud-shell"></a>Beágyazás Azure Cloud Shell
@@ -56,6 +56,6 @@ Az URL-cím kibővítésével beállíthat egy adott rendszerhéj-élményt.
 |Bash                       |[shell.azure.com/bash](https://shell.azure.com/bash)       |
 |PowerShell                 |[shell.azure.com/powershell](https://shell.azure.com/powershell) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Bash Cloud Shell rövid útmutatóban](quickstart.md)<br>
 [PowerShell Cloud Shell rövid útmutató](quickstart-powershell.md)

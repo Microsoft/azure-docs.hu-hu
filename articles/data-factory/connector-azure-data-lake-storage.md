@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/28/2020
-ms.openlocfilehash: d773556352a85c125e32d0ee56b4b6f4cf11da32
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/17/2021
+ms.openlocfilehash: 7a501a86f979bb508052c8957627ebfa7950fd63
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364749"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597588"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Azure Data Lake Storage Gen2 adatmásolása és átalakítása a Azure Data Factory használatával
 
@@ -304,7 +304,7 @@ A következő tulajdonságok támogatottak Data Lake Storage Gen2 `storeSettings
 | modifiedDatetimeEnd      | Lásd fentebb.                                               | No                                            |
 | enablePartitionDiscovery | A particionált fájlok esetében adja meg, hogy szeretné-e elemezni a partíciókat a fájl elérési útján, majd adja hozzá őket további forrásként szolgáló oszlopként.<br/>Az engedélyezett értékek: **false** (alapértelmezett) és **true (igaz**). | No                                            |
 | partitionRootPath | Ha engedélyezve van a partíciók felderítése, akkor a particionált mappák adatoszlopként való olvasásához a gyökér elérési útját kell megadni.<br/><br/>Ha nincs megadva, a rendszer alapértelmezés szerint<br/>– Ha a fájl elérési útját használja az adatkészletben vagy a forrásban található fájlok listáján, a partíció gyökerének elérési útja az adatkészletben konfigurált útvonal.<br/>– Ha helyettesítő mappa szűrőt használ, a partíció gyökerének elérési útja az első helyettesítő karakter előtti Alútvonal.<br/><br/>Tegyük fel például, hogy az adatkészletben az elérési utat "root/Folder/Year = 2020/hónap = 08/Day = 27" értékre konfigurálja:<br/>– Ha a partíció gyökerének elérési útját "gyökér/mappa/év = 2020" értékre állítja, a másolási tevékenység két további oszlopot fog előállítani, `month` és a `day` "08" és "27" értéket is kijelöli a fájlokban lévő oszlopokon kívül.<br/>– Ha nincs megadva a partíció gyökerének elérési útja, nem jön létre további oszlop. | No                                            |
-| maxConcurrentConnections | A tárolási tárolóhoz való kapcsolódáshoz szükséges kapcsolatok száma egyidejűleg. Csak akkor kell megadni, ha az egyidejű kapcsolódást szeretné korlátozni az adattárral. | No                                            |
+| maxConcurrentConnections | A tevékenység futtatása során az adattárhoz létesített egyidejű kapcsolatok felső határa. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolatokat.| No                                            |
 
 **Példa**
 
@@ -358,7 +358,7 @@ A következő tulajdonságok támogatottak Data Lake Storage Gen2 a `storeSettin
 | típus                     | A Type tulajdonságot a `storeSettings` **AzureBlobFSWriteSettings** értékre kell állítani. | Yes      |
 | copyBehavior             | Meghatározza a másolási viselkedést, ha a forrás fájl-alapú adattárból származó fájlok.<br/><br/>Az engedélyezett értékek a következők:<br/><b>-PreserveHierarchy (alapértelmezett)</b>: megőrzi a fájl-hierarchiát a célmappában. A forrásfájl relatív elérési útja a forrás mappájához azonos a célfájl relatív elérési útjával.<br/><b>-FlattenHierarchy</b>: a forrás mappából származó összes fájl a célmappa első szintjén van. A célként megadott fájlok automatikusan generált névvel rendelkeznek. <br/><b>-MergeFiles</b>: az összes fájlt egyesíti a forrás mappájából egy fájlba. Ha meg van adva a fájl neve, az egyesített fájl neve a megadott név. Ellenkező esetben ez egy automatikusan létrehozott fájl neve. | No       |
 | blockSizeInMB | A blokk méretének megadása MEGABÁJTban az adatADLS Gen2ba való íráshoz. További [információ a blokkos blobokról](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs). <br/>Az engedélyezett érték **4 MB és 100 MB között** van. <br/>Alapértelmezés szerint az ADF automatikusan meghatározza a blokk méretét a forrás-áruház típusa és adatai alapján. A nem bináris másolási ADLS Gen2 az alapértelmezett blokk mérete 100 MB, hogy a legtöbb 4,95-TB adathoz illeszkedjen. Nem lehet optimális, ha az adatai nem nagyméretűak, különösen akkor, ha olyan helyi Integration Runtime használ, amely gyenge hálózattal működik, ami működési időtúllépést vagy teljesítménnyel kapcsolatos problémát okoz. Explicit módon megadhatja a blokk méretét, miközben biztosítja, hogy a blockSizeInMB * 50000 elég nagy legyen az adattároláshoz, máskülönben a másolási tevékenység futtatása sikertelen lesz. | No |
-| maxConcurrentConnections | Az adattárhoz való kapcsolódáshoz szükséges kapcsolatok száma egyszerre. Csak akkor kell megadni, ha az egyidejű kapcsolódást szeretné korlátozni az adattárral. | No       |
+| maxConcurrentConnections | A tevékenység futtatása során az adattárhoz létesített egyidejű kapcsolatok felső határa. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolatokat.| No       |
 
 **Példa**
 
@@ -598,7 +598,7 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [tevékenység t�
 |:--- |:--- |:--- |
 | típus | A másolási tevékenység forrásának Type tulajdonságát **AzureBlobFSSource** értékre kell állítani. |Yes |
 | rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. Ha a rekurzív értéke TRUE (igaz), a fogadó pedig egy fájl alapú tároló, akkor a fogadó nem másol vagy hoz létre üres mappát vagy almappát.<br/>Az engedélyezett értékek: **true** (alapértelmezett) és **false (hamis**). | No |
-| maxConcurrentConnections | Az adattárhoz való kapcsolódáshoz szükséges kapcsolatok száma egyszerre. Csak akkor kell megadni, ha az egyidejű kapcsolódást szeretné korlátozni az adattárral. | No |
+| maxConcurrentConnections | A tevékenység futtatása során az adattárhoz létesített egyidejű kapcsolatok felső határa. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolatokat.| No |
 
 **Példa**
 
@@ -638,7 +638,7 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [tevékenység t�
 |:--- |:--- |:--- |
 | típus | A másolási tevékenység fogadójának Type tulajdonságát **AzureBlobFSSink** értékre kell állítani. |Yes |
 | copyBehavior | Meghatározza a másolási viselkedést, ha a forrás fájl-alapú adattárból származó fájlok.<br/><br/>Az engedélyezett értékek a következők:<br/><b>-PreserveHierarchy (alapértelmezett)</b>: megőrzi a fájl-hierarchiát a célmappában. A forrásfájl relatív elérési útja a forrás mappájához azonos a célfájl relatív elérési útjával.<br/><b>-FlattenHierarchy</b>: a forrás mappából származó összes fájl a célmappa első szintjén van. A célként megadott fájlok automatikusan generált névvel rendelkeznek. <br/><b>-MergeFiles</b>: az összes fájlt egyesíti a forrás mappájából egy fájlba. Ha meg van adva a fájl neve, az egyesített fájl neve a megadott név. Ellenkező esetben ez egy automatikusan létrehozott fájl neve. | No |
-| maxConcurrentConnections | Az adattárhoz való kapcsolódáshoz szükséges kapcsolatok száma egyszerre. Csak akkor kell megadni, ha az egyidejű kapcsolódást szeretné korlátozni az adattárral. | No |
+| maxConcurrentConnections | A tevékenység futtatása során az adattárhoz létesített egyidejű kapcsolatok felső határa. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolatokat.| No |
 
 **Példa**
 

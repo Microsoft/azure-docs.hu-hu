@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 01/18/2021
 ms.author: alkohli
-ms.openlocfilehash: 31947ca4d5eb632998f5c50257c12ef9a52dfc66
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 8e829d149e96cf658c7a5aaf37291e84def2061e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570099"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602655"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>Mi az a GPU-val rendelkező Azure Stack Edge Pro?
 
@@ -77,7 +77,9 @@ Azure Stack Edge Pro fizikai eszköz, az Azure-erőforrás és a célként megad
     
 - **Céloldali tárfiókok** – Az adatokat tároló tárfiókok minden Azure-régióban elérhetők. Azokat a régiókat, amelyekben a Storage-fiókok Azure Stack Edge Pro-adataikat tárolják, közel kell lennie ahhoz, hogy az eszköz az optimális teljesítmény érdekében legyen. Az eszköztől távol található tárfiók esetében hosszú késések és lassabb teljesítmény várható.
 
-## <a name="next-steps"></a>További lépések
+Azure Stack Edge szolgáltatás nem regionális szolgáltatás. További információ: [régiók és Availability Zones az Azure-ban](https://docs.microsoft.com/azure/availability-zones/az-overview). Az Azure Stack Edge szolgáltatás nem függ egy adott Azure-régiótól, így rugalmasan kihasználható a zónákra kiterjedő kimaradások és az egész régióra kiterjedő kimaradások terén.
+
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át az [Azure stack Edge Pro rendszerkövetelményeit](azure-stack-edge-gpu-system-requirements.md).
 

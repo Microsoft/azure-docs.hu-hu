@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: d1607ef4ff277f9c9cdb55db3e58da1052a00756
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: cec391ba998165af4dd9339b719a3b73cb330c16
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102558397"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601790"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Azure Disk Encryption engedélyezése az Azure AD-vel Linux rendszerű virtuális gépeken (korábbi kiadás)
 
@@ -210,7 +210,7 @@ Javasoljuk, hogy legyen egy LVM-on-Crypt beállítás. Az alábbi példákban cs
 - Adja hozzá a virtuális gépet alkotó adatlemezeket.
 - Formázza, csatlakoztassa és adja hozzá ezeket a lemezeket az fstab-fájlhoz.
 
-    1. Formázza az újonnan hozzáadott lemezt. Az Azure által generált symlink-ket itt fogjuk használni. A symlink-EK használata elkerüli az eszközök nevének változásával kapcsolatos problémákat. További információ: az [eszközök neveivel kapcsolatos problémák elhárítása](../troubleshooting/troubleshoot-device-names-problems.md).
+    1. Formázza az újonnan hozzáadott lemezt. Az Azure által generált symlink-ket itt fogjuk használni. A symlink-EK használata elkerüli az eszközök nevének változásával kapcsolatos problémákat. További információ: az [eszközök neveivel kapcsolatos problémák elhárítása](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems).
     
         ```console
         mkfs -t ext4 /dev/disk/azure/scsi1/lun0
@@ -266,7 +266,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 Új adatlemezt az [az VM Disk Attach](add-disk.md) vagy [a Azure Portal](attach-disk-portal.md)használatával adhat hozzá. A titkosítás előtt először csatlakoztatnia kell az újonnan csatlakoztatott adatlemezt. Meg kell kérnie az adatmeghajtó titkosítását, mert a meghajtó használhatatlanná válik, amíg a titkosítás folyamatban van. 
 
 ### <a name="enable-encryption-on-a-newly-added-disk-with-the-azure-cli"></a>A titkosítás engedélyezése az újonnan hozzáadott lemezeken az Azure CLI-vel
- Ha a virtuális gép korábban "all" titkosítással lett titkosítva, akkor a--Volume-Type paraméternek meg kell maradnia. Mind az operációs rendszer és az adatlemezek is szerepelnek. Ha a virtuális gépet korábban az "operációs rendszer" mennyiségi típusával titkosítták, akkor a--Volume-type paramétert úgy kell módosítani, hogy az operációs rendszer és az új adatlemez is szerepeljen. Ha a virtuális gépet csak az "adatmennyiség" értékkel titkosították, akkor az itt látható módon maradhat az adatforgalomban. Egy új adatlemez egy virtuális géphez való hozzáadása és csatolása nem elegendő a titkosítás előkészítéséhez. A titkosítás engedélyezése előtt az újonnan csatlakoztatott lemeznek is formázva kell lennie, és megfelelően csatlakoztatni kell a virtuális gépen. Linux rendszeren a lemeznek egy [állandó blokk-eszköz nevével](../troubleshooting/troubleshoot-device-names-problems.md)kell csatlakoztatnia az/etc/fstab-ben. 
+ Ha a virtuális gép korábban "all" titkosítással lett titkosítva, akkor a--Volume-Type paraméternek meg kell maradnia. Mind az operációs rendszer és az adatlemezek is szerepelnek. Ha a virtuális gépet korábban az "operációs rendszer" mennyiségi típusával titkosítták, akkor a--Volume-type paramétert úgy kell módosítani, hogy az operációs rendszer és az új adatlemez is szerepeljen. Ha a virtuális gépet csak az "adatmennyiség" értékkel titkosították, akkor az itt látható módon maradhat az adatforgalomban. Egy új adatlemez egy virtuális géphez való hozzáadása és csatolása nem elegendő a titkosítás előkészítéséhez. A titkosítás engedélyezése előtt az újonnan csatlakoztatott lemeznek is formázva kell lennie, és megfelelően csatlakoztatni kell a virtuális gépen. Linux rendszeren a lemeznek egy [állandó blokk-eszköz nevével](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems)kell csatlakoztatnia az/etc/fstab-ben. 
 
 A PowerShell-szintaxissal ellentétben a CLI-nek nem kell egyedi sorozatot megadnia a titkosítás engedélyezésekor. A CLI automatikusan generálja és felhasználja a saját egyedi sorszámának értékét.
 

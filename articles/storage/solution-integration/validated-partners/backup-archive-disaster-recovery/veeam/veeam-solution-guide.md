@@ -8,12 +8,12 @@ ms.date: 03/15/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 15ab808bcb8521b0bd3a5ebd0f56bf336571d676
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 0b8bc0defd3314fcff691a049323201732644ff3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103562025"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589905"
 ---
 # <a name="backup-to-azure-with-veeam"></a>Biztonsági mentés az Azure-ba a Veeam
 
@@ -47,7 +47,7 @@ Egy kis előzetes tervezési megoldás segítségével az Azure-t külső bizton
 
 ### <a name="get-started-with-azure"></a>Az Azure használatának első lépései
 
-A Microsoft keretrendszert biztosít az Azure-ban való ismerkedéshez. A [Cloud bevezetési keretrendszer](https://docs.microsoft.com/azure/architecture/cloud-adoption/) (CAF) a nagyvállalati digitális átalakulás részletes megközelítése, és átfogó útmutató a Felhőbeli éles környezetek bevezetésének megtervezéséhez. A CAF egy lépésenkénti [Azure telepítési útmutatót](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-setup-guide/) tartalmaz, amely segít a gyors és biztonságos működésben. A [Azure Portal](https://portal.azure.com/?feature.quickstart=true#blade/Microsoft_Azure_Resources/QuickstartCenterBlade)interaktív verzióját is megtalálhatja. Megtalálhatja a minta architektúrákat, az alkalmazások üzembe helyezésére vonatkozó ajánlott eljárásokat, valamint az erőforrások ingyenes képzését, amelyekkel az Azure-szakértelem elérési útját helyezheti el.
+A Microsoft keretrendszert biztosít az Azure-ban való ismerkedéshez. A [Cloud bevezetési keretrendszer](/azure/architecture/cloud-adoption/) (CAF) a nagyvállalati digitális átalakulás részletes megközelítése, és átfogó útmutató a Felhőbeli éles környezetek bevezetésének megtervezéséhez. A CAF egy lépésenkénti [Azure telepítési útmutatót](/azure/cloud-adoption-framework/ready/azure-setup-guide/) tartalmaz, amely segít a gyors és biztonságos működésben. A [Azure Portal](https://portal.azure.com/?feature.quickstart=true#blade/Microsoft_Azure_Resources/QuickstartCenterBlade)interaktív verzióját is megtalálhatja. Megtalálhatja a minta architektúrákat, az alkalmazások üzembe helyezésére vonatkozó ajánlott eljárásokat, valamint az erőforrások ingyenes képzését, amelyekkel az Azure-szakértelem elérési útját helyezheti el.
 
 ### <a name="consider-the-network-between-your-location-and-azure"></a>Vegye figyelembe a hálózat helyét és az Azure-t
 
@@ -96,7 +96,7 @@ Ha az Azure-t biztonsági mentési célként használja, az [Azure Blob Storage]
 |**A másolatok tényleges száma**     | 3         | 3         | 6         | 6 |
 |**rendelkezésre állási zónák száma**     | 1         | 3         | 2         | 4 |
 |s **régió száma**     | 1         | 1         | 2         | 2 |
-|**Manuális feladatátvétel másodlagos régióba**     | N.A.         | N.A.         | Igen         | Igen |
+|**Manuális feladatátvétel másodlagos régióba**     | N.A.         | N.A.         | Igen         | Yes |
 
 **BLOB Storage-rétegek:**
 
@@ -202,7 +202,7 @@ Javasoljuk, hogy az Azure-erőforrások és a Veeam képes legyen a biztonsági 
 
 #### <a name="azure-portal"></a>Azure Portal
 
-Az Azure egy robusztus figyelési megoldást kínál, [Azure monitor](../../../../../azure-monitor/essentials/monitor-azure-resource.md)formájában. A [Azure monitor konfigurálhatja](../../../../common/monitor-storage.md) az Azure Storage-kapacitás, a tranzakciók, a rendelkezésre állás, a hitelesítés és egyéb műveletek nyomon követésére. A nyomon követett mérőszámok teljes referenciája [itt](../../../../blobs/monitor-blob-storage-reference.md)található. Néhány hasznos mérőszám a BlobCapacity – annak érdekében, hogy továbbra is a Storage-fiók maximális [kapacitása](../../../../common/scalability-targets-standard-account.md), a bejövő forgalom és a kimenő adatok mennyisége alatt maradjon, nyomon követheti az Azure Storage-fiókba írt és beolvasott adatok mennyiségét, és SuccessE2ELatency az Azure Storage-ba irányuló és a MediaAgent érkező kérések időpontjának nyomon követésére.
+Az Azure egy robusztus figyelési megoldást kínál, [Azure monitor](../../../../../azure-monitor/essentials/monitor-azure-resource.md)formájában. A [Azure monitor konfigurálhatja](../../../../blobs/monitor-blob-storage.md) az Azure Storage-kapacitás, a tranzakciók, a rendelkezésre állás, a hitelesítés és egyéb műveletek nyomon követésére. A nyomon követett mérőszámok teljes referenciája [itt](../../../../blobs/monitor-blob-storage-reference.md)található. Néhány hasznos mérőszám a BlobCapacity – annak érdekében, hogy továbbra is a Storage-fiók maximális [kapacitása](../../../../common/scalability-targets-standard-account.md), a bejövő forgalom és a kimenő adatok mennyisége alatt maradjon, nyomon követheti az Azure Storage-fiókba írt és beolvasott adatok mennyiségét, és SuccessE2ELatency az Azure Storage-ba irányuló és a MediaAgent érkező kérések időpontjának nyomon követésére.
 
 [Létrehozhat napló-riasztásokat](../../../../../service-health/alerts-activity-log-service-notifications-portal.md) az Azure Storage szolgáltatás állapotának nyomon követéséhez, és bármikor megtekintheti az [Azure status irányítópultját](https://status.azure.com/status) .
 

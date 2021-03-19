@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc5916cf4277935f6d7d7f453fd4dd76d7909ef2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8d4ff717a49ba9c9b4d66e54e5eae1248af3fcea
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651127"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579365"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Jelszóval nem rendelkező hitelesítés központi telepítésének megtervezése Azure Active Directory
 
@@ -93,7 +93,7 @@ Vegye figyelembe az üzleti igényeket és az egyes hitelesítési módszerek ha
 
 Az alábbi táblázat a projekt során megvalósítandó használati eseteket ismerteti.
 
-| Terület | Leírás |
+| Terület | Description |
 | --- | --- |
 | **Hozzáférés** | A jelszó nélküli bejelentkezés a vállalati hálózaton belüli vagy kívüli vállalati vagy személyes eszközről érhető el. |
 | **Naplózás** | A használati adatok a rendszergazdák számára a közel valós időben történő naplózáshoz érhetők el. <br> A használati adatokat legalább 29 naponta letölti a vállalati rendszerbe, vagy az SIEM eszközt használja. |
@@ -292,7 +292,7 @@ Kövesse az alábbi, a választott módszerhez igazított lépéseket.
 
 ### <a name="required-administrative-roles"></a>Szükséges rendszergazdai szerepkörök
 
-| Azure AD-szerepkör | Leírás |
+| Azure AD-szerepkör | Description |
 | --- | --- |
 | Globális rendszergazda|A legkevésbé magas jogosultsági szintű szerepkör lehetővé tenné a közös regisztrációs élmény megvalósítását. |
 | Hitelesítés rendszergazdája | A minimális jogosultsági szintű szerepkör képes a hitelesítési módszerek megvalósítására és kezelésére. |
@@ -330,4 +330,4 @@ Kövesse a cikk lépéseit, [engedélyezze a jelszó nélküli biztonsági kulcs
 
 - [Jelszó nélküli biztonsági kulcsok engedélyezése az Azure AD-ba való bejelentkezéshez](howto-authentication-passwordless-security-key.md)
 - [Jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator alkalmazással](howto-authentication-passwordless-phone.md)
-- [További információ a hitelesítési módszerekről & információk](howto-authentication-methods-usage-insights.md)
+- [További információ a hitelesítési módszerekről & információk](./howto-authentication-methods-activity.md)

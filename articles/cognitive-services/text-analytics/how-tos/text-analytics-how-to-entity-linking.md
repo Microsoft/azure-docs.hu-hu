@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 02/17/2021
+ms.date: 03/15/2021
 ms.author: aahi
-ms.openlocfilehash: 3fd3695490331a1f599db71bf5cafb25e957bf08
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0876dd00933203c943417d87978567cf555a3e4f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710345"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599000"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Elnevezett entitások felismerésének használata a Text Analyticsban
 
@@ -35,7 +35,7 @@ A személyre szabott funkció az egyoldalas szolgáltatás része, és képes az
 
 ## <a name="named-entity-recognition-features-and-versions"></a>Elnevezett entitás-felismerési funkciók és verziók
 
-| Szolgáltatás                                                         | V 3.0 | V 3.1 – előzetes verzió. 3 |
+| Szolgáltatás                                                         | V 3.0 | V 3.1 – előzetes verzió. 4 |
 |-----------------------------------------------------------------|--------|----------|
 | Egyszeri és batch-kérelmek módszerei                          | X      | X        |
 | Bővített entitások felismerése több kategória között           | X      | X        |
@@ -47,8 +47,8 @@ További információért lásd a [nyelvi támogatást](../language-support.md) 
 
 A nevesített entitások felismerése v3 több típusra kiterjedő kibővített észlelést biztosít. A "v 3.0" jelenleg az [általános entitások kategóriájában](../named-entity-types.md)ismeri fel az entitásokat.
 
-Elnevezett Entity Recognition v 3.1 – preview. 3 tartalmazza a v 3.0 észlelési képességeit, valamint: 
-* A személyes adatok () észlelésének lehetősége `PII` a `v3.1-preview.3/entities/recognition/pii` végpont használatával. 
+Elnevezett Entity Recognition v 3.1 – preview. 4 tartalmazza a v 3.0 észlelési képességeit, és: 
+* A személyes adatok () észlelésének lehetősége `PII` a `v3.1-preview.4/entities/recognition/pii` végpont használatával. 
 * Egy opcionális `domain=phi` paraméter a bizalmas állapottal kapcsolatos információk észleléséhez ( `PHI` ).
 * [Aszinkron művelet](text-analytics-how-to-call-api.md) a `/analyze` végpont használatával.
 
@@ -72,36 +72,40 @@ Hozzon létre egy POST kérést. A következő hivatkozásokon a [Poster](text-a
 
 ### <a name="request-endpoints"></a>Kérelmek végpontjai
 
-#### <a name="version-31-preview3"></a>[3,1-es verzió – preview. 3](#tab/version-3-preview)
+#### <a name="version-31-preview"></a>[3,1-es verzió – előzetes verzió](#tab/version-3-preview)
 
-A nevesített entitások felismerése `v3.1-preview.3` külön végpontokat használ a meghívásos, a személyes és az entitások összekapcsolására vonatkozó kérelmekhez. Az alábbi URL-formátumot használja a kérelem alapján.
+A nevesített entitások felismerése `v3.1-preview.4` külön végpontokat használ a meghívásos, a személyes és az entitások összekapcsolására vonatkozó kérelmekhez. Az alábbi URL-formátumot használja a kérelem alapján.
 
 **Entitás összekapcsolása**
-* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/linking`
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/linking`
 
-[Elnevezett entitás-felismerés verziója 3,1 – előzetes verzió referenciája a következőhöz: `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesLinking)
+[Elnevezett entitás-felismerés verziója 3,1 – előzetes verzió referenciája a következőhöz: `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-4/operations/EntitiesLinking)
 
 **Megnevezett entitások felismerése**
-* Általános entitások – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/general`
+* Általános entitások – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/recognition/general`
 
-[Elnevezett entitás-felismerés verziója 3,1 – előzetes verzió referenciája a következőhöz: `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionGeneral)
+[Elnevezett entitás-felismerés verziója 3,1 – előzetes verzió referenciája a következőhöz: `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-4/operations/EntitiesRecognitionGeneral)
 
 **Személyazonosításra alkalmas adatok**
-* Személyes ( `PII` ) információk – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/pii`
+* Személyes ( `PII` ) információk – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/recognition/pii`
 
 A nem kötelező `domain=phi` paraméterrel is felderítheti az állapotadatok ( `PHI` ) szövegben való észlelését. 
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/pii?domain=phi`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/recognition/pii?domain=phi`
 
-A-től kezdődően `v3.1-preview.3` a JSON-válasz tartalmaz egy `redactedText` tulajdonságot, amely tartalmazza azt a módosított bemeneti szöveget, amelyben a `*` rendszer az entitások egyes karakterei esetében az észlelt személyes adatokat felváltotta.
+A-től kezdődően `v3.1-preview.4` a JSON-válasz tartalmaz egy `redactedText` tulajdonságot, amely tartalmazza azt a módosított bemeneti szöveget, amelyben a `*` rendszer az entitások egyes karakterei esetében az észlelt személyes adatokat felváltotta.
 
-[Elnevezett entitás-felismerés verziója 3,1 – előzetes verzió referenciája a következőhöz: `PII`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionPii)
+[Elnevezett entitás-felismerés verziója 3,1 – előzetes verzió referenciája a következőhöz: `PII`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-4/operations/EntitiesRecognitionPii)
+
+Az API megpróbálja felderíteni a [felsorolt entitások kategóriáit](../named-entity-types.md?tabs=personal) egy adott dokumentum nyelvén. Ha meg szeretné határozni, hogy mely entitásokat fogja észlelni és visszaadni, a megfelelő entitás-kategóriákkal válassza a nem kötelező személyre vonatkozó kategóriák paramétert. Ez a paraméter lehetővé teszi azon entitások észlelését is, amelyek alapértelmezés szerint nincsenek engedélyezve a dokumentum nyelvén. Például egy francia jogosítvány száma, amely angol nyelvű szövegben fordulhat elő.
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/recognition/pii?piiCategories=[FRDriversLicenseNumber]`
 
 **Aszinkron művelet**
 
-A `v3.1-preview.3` verziótól kezdve a végpont használatával aszinkron módon küldhet adatfogadási kérelmeket `/analyze` .
+A `v3.1-preview.4` verziótól kezdődően a végpont használatával aszinkron módon küldheti el a kéréseket és az entitások összekapcsolását `/analyze` .
 
-* Aszinkron művelet – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/analyze`
+* Aszinkron művelet – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/analyze`
 
 Lásd: [a Text Analytics API meghívása](text-analytics-how-to-call-api.md) az aszinkron kérelmek küldésével kapcsolatos információkért.
 

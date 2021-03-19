@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 46f117b13909c2d9624b88e9f5d9a62c4c646e51
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: c2aceedd57bcc7cd88c4e822c7b696e36b28bd8f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102500292"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579790"
 ---
 # <a name="tutorial-configure-arkose-labs-with-azure-active-directory-b2c"></a>Oktatóanyag: a Arkóz Labs konfigurálása Azure Active Directory B2C
 
@@ -81,13 +81,13 @@ Egyéni attribútum létrehozásához kövesse az alábbi lépéseket:
 
 5. Kattintson a **Létrehozás** elemre.
 
-További információ az [Egyéni attribútumokról](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-custom-attributes?pivots=b2c-user-flow).
+További információ az [Egyéni attribútumokról](./user-flow-custom-attributes.md?pivots=b2c-user-flow).
 
 ### <a name="part-2---create-a-user-flow"></a>2. rész – felhasználói folyamat létrehozása
 
 A felhasználói folyamat lehet akár **regisztráció** , akár **Bejelentkezés** , vagy csak **regisztráció**. A Arkóz Labs felhasználói folyamata csak a regisztráció során jelenik meg.
 
-1. Tekintse meg a felhasználói folyamat létrehozásának [utasításait](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows) . Ha meglévő felhasználói folyamatot használ, az **ajánlott (következő generációs előzetes verzió)** verziószámú kell, hogy legyen.
+1. Tekintse meg a felhasználói folyamat létrehozásának [utasításait](./tutorial-create-user-flows.md) . Ha meglévő felhasználói folyamatot használ, az **ajánlott (következő generációs előzetes verzió)** verziószámú kell, hogy legyen.
 
 2. A felhasználói folyamat beállításainál lépjen a **felhasználói attribútumok** elemre, és válassza ki a **ArkoseSessionToken** jogcímet.
 
@@ -109,7 +109,7 @@ Kövesse az egyéni HTML és JavaScript használata felhasználói folyamathoz c
 
 1. Módosítsa [selfAsserted.html](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose/blob/main/Assets/selfAsserted.html) -fájlt úgy `<ARKOSE_PUBLIC_KEY>` , hogy az megfeleljen az ügyféloldali ellenőrzéshez generált értéknek, és a Arkóz Labs-parancsfájlnak a fiókjához való betöltéséhez használható.
 
-2. A HTML-oldal üzemeltetése egy több eredetű erőforrás-megosztást (CORS) használó webes végponton. [Hozzon létre egy Azure Blob Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal) , és [konfigurálja a CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services).
+2. A HTML-oldal üzemeltetése egy több eredetű erőforrás-megosztást (CORS) használó webes végponton. [Hozzon létre egy Azure Blob Storage-fiókot](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json) , és [konfigurálja a CORS](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services).
 
   >[!NOTE]
   >Ha saját egyéni HTML-kódot használ, másolja és illessze be az `<script>` elemeket a HTML-oldalra.
@@ -132,7 +132,7 @@ Kövesse az egyéni HTML és JavaScript használata felhasználói folyamathoz c
 
    ![a lap elrendezéseit ábrázoló kép](media/partner-arkose-labs/page-layouts.png)
 
-4. A felhasználói folyamatból válassza a **Tulajdonságok** lehetőséget, és jelölje be a JavaScript érvényesítésének **engedélyezése** oldal elrendezése (előzetes verzió) jelölőnégyzetet. További információért tekintse meg ezt a [cikket](https://docs.microsoft.com/azure/active-directory-b2c/javascript-and-page-layout?pivots=b2c-user-flow) .
+4. A felhasználói folyamatból válassza a **Tulajdonságok** lehetőséget, és jelölje be a JavaScript érvényesítésének **engedélyezése** oldal elrendezése (előzetes verzió) jelölőnégyzetet. További információért tekintse meg ezt a [cikket](./javascript-and-page-layout.md?pivots=b2c-user-flow) .
 
 ### <a name="part-4---create-and-deploy-your-api"></a>4. rész – az API létrehozása és üzembe helyezése
 
@@ -157,7 +157,7 @@ Ha újra szeretné telepíteni a helyi példányt a tesztelés során, ismételj
 
 Ez a minta a webes API-végpontot a [http egyszerű hitelesítés](https://tools.ietf.org/html/rfc7617)használatával védi.
 
-A Felhasználónév és a jelszó környezeti változókként van tárolva, nem pedig a tárház részeként. További információért lásd: [local.settings.js](https://docs.microsoft.com/azure/azure-functions/functions-run-local?tabs=macos%2Ccsharp%2Cbash#local-settings-file) fájl.
+A Felhasználónév és a jelszó környezeti változókként van tárolva, nem pedig a tárház részeként. További információért lásd: [local.settings.js](../azure-functions/functions-run-local.md?tabs=macos%2ccsharp%2cbash#local-settings-file) fájl.
 
 1. local.settings.jslétrehozása a gyökérkönyvtárban található fájlon
 
@@ -186,15 +186,15 @@ A az `<B2C_EXTENSIONS_APP_ID>` Azure ad B2C által használt alkalmazás azonos�
 
 #### <a name="deploy-the-application-to-the-web"></a>Az alkalmazás üzembe helyezése a weben
 
-1. Kövesse a [jelen](https://docs.microsoft.com/azure/javascript/tutorial-vscode-serverless-node-04) útmutatóban említett lépéseket az Azure-függvény Felhőbeli üzembe helyezéséhez. Másolja az Azure-függvény Endpoint web URL-címét.
+1. Kövesse a [jelen](/azure/javascript/tutorial-vscode-serverless-node-04) útmutatóban említett lépéseket az Azure-függvény Felhőbeli üzembe helyezéséhez. Másolja az Azure-függvény Endpoint web URL-címét.
 
-2. A telepítés után válassza a **feltöltési beállítások** lehetőséget. A környezeti változókat az App Service [Alkalmazásbeállítások](https://docs.microsoft.com/azure/azure-functions/functions-develop-vs-code?tabs=csharp#application-settings-in-azure) szerint tölti fel. Ezek [az Alkalmazásbeállítások a Azure Portal](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings) használatával is konfigurálhatók vagy kezelhetők.
+2. A telepítés után válassza a **feltöltési beállítások** lehetőséget. A környezeti változókat az App Service [Alkalmazásbeállítások](../azure-functions/functions-develop-vs-code.md?tabs=csharp#application-settings-in-azure) szerint tölti fel. Ezek [az Alkalmazásbeállítások a Azure Portal](../azure-functions/functions-how-to-use-azure-function-app-settings.md) használatával is konfigurálhatók vagy kezelhetők.
 
-[Ebből a cikkből](https://docs.microsoft.com/azure/azure-functions/functions-develop-vs-code?tabs=csharp#republish-project-files) megtudhatja, hogyan hozhatja Azure functions a Visual Studio Code fejlesztését.
+[Ebből a cikkből](../azure-functions/functions-develop-vs-code.md?tabs=csharp#republish-project-files) megtudhatja, hogyan hozhatja Azure functions a Visual Studio Code fejlesztését.
 
 #### <a name="configure-and-enable-the-api-connector"></a>Az API-összekötő konfigurálása és engedélyezése
 
-[Hozzon létre egy API-összekötőt](https://docs.microsoft.com/azure/active-directory-b2c/add-api-connector) , és engedélyezze azt a felhasználói folyamat számára. Az API-összekötő konfigurációjának a következőhöz hasonlóan kell kinéznie:
+[Hozzon létre egy API-összekötőt](./add-api-connector.md) , és engedélyezze azt a felhasználói folyamat számára. Az API-összekötő konfigurációjának a következőhöz hasonlóan kell kinéznie:
 
 ![A képen látható az API-összekötő konfigurálása](media/partner-arkose-labs/configure-api-connector.png)
 
@@ -232,6 +232,6 @@ Az API-összekötő engedélyezéséhez a felhasználói folyamat **API-összek�
 
 - [Mintakód](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose) Azure ad B2C regisztrációs felhasználói folyamathoz
 
-- [Egyéni szabályzatok az Azure AD B2C-ben](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Egyéni szabályzatok az Azure AD B2C-ben](./custom-policy-overview.md)
 
-- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

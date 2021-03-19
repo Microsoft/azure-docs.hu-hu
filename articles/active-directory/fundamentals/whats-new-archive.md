@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74bfd0fe8cf1d26ccf96a8a27985e456b4e0e67c
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: e820194d36d2b80fcd28de7972dd5abe8a746345
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102633478"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592948"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiválja a Azure Active Directory újdonságait?
 
@@ -227,7 +227,7 @@ A **termék képességei:** Identitás-biztonsági & védelme
  
 Ha a feltételes hozzáférésben az ügyfélalkalmazások jelennek meg a GA kiadásával, a rendszer alapértelmezés szerint új szabályzatokat alkalmaz az összes ügyfélalkalmazás számára. Ilyenek például az örökölt hitelesítési ügyfelek. A meglévő szabályzatok változatlanok maradnak, de a *configure igen/No* váltógomb el lesz távolítva a meglévő szabályzatokból, így könnyen látható, hogy mely ügyfélalkalmazások lesznek alkalmazva a szabályzat által. 
 
-Új szabályzat létrehozásakor ügyeljen arra, hogy kizárjon egy örökölt hitelesítést használó felhasználókat és szolgáltatásfiókokat; Ha nem, akkor le lesznek tiltva. [További információk](../conditional-access/concept-conditional-access-conditions.md).
+Új szabályzat létrehozásakor ügyeljen arra, hogy kizárjon egy örökölt hitelesítést használó felhasználókat és szolgáltatásfiókokat; Ha nem, akkor le lesznek tiltva. [További információ](../conditional-access/concept-conditional-access-conditions.md).
  
 ---
 
@@ -237,7 +237,7 @@ Ha a feltételes hozzáférésben az ügyfélalkalmazások jelennek meg a GA kia
 **Szolgáltatás kategóriája:** Alkalmazás kiépítés  
 A **termék képességei:** Identitás-életciklus kezelése
  
-Az Azure AD-kiépítési szolgáltatás a SCIM szabványt használja az alkalmazásokkal való integrációhoz. A SCIM standard implementációja fejlődik, és elvárjuk, hogy módosítjuk a javítási műveleteket, valamint az "Active" tulajdonságot egy erőforráson. [További információk](../app-provisioning/application-provisioning-config-problem-scim-compatibility.md).
+Az Azure AD-kiépítési szolgáltatás a SCIM szabványt használja az alkalmazásokkal való integrációhoz. A SCIM standard implementációja fejlődik, és elvárjuk, hogy módosítjuk a javítási műveleteket, valamint az "Active" tulajdonságot egy erőforráson. [További információ](../app-provisioning/application-provisioning-config-problem-scim-compatibility.md).
  
 ---
 
@@ -285,7 +285,7 @@ A rendszergazdák mostantól láthatják, hogy egy Windows-hitelesítés haszná
 **Szolgáltatás kategóriája:** Alkalmazás kiépítés  
 A **termék képességei:** Identitás-életciklus kezelése
  
-Korábban, amikor egy csoport a "hatókörből" a "hatókörön kívülre" módosult, és egy rendszergazda a módosítás befejeződése előtt újraindult, a csoport objektum nem lett törölve. Most a Group objektum törlődik a célalkalmazás területéről, ha a hatókörön kívül esik (letiltva, törölve, nincs hozzárendelve vagy nem adta meg a hatókör-szűrőt). [További információk](../app-provisioning/how-provisioning-works.md#incremental-cycles).
+Korábban, amikor egy csoport a "hatókörből" a "hatókörön kívülre" módosult, és egy rendszergazda a módosítás befejeződése előtt újraindult, a csoport objektum nem lett törölve. Most a Group objektum törlődik a célalkalmazás területéről, ha a hatókörön kívül esik (letiltva, törölve, nincs hozzárendelve vagy nem adta meg a hatókör-szűrőt). [További információ](../app-provisioning/how-provisioning-works.md#incremental-cycles).
  
 ---
 
@@ -655,7 +655,7 @@ Ha az eredeti SAML-bejelentkezési jogkivonat más formátumot használ a NameID
 **Szolgáltatás kategóriája:** Azure AD-beli felhőalapú kiépítés  
 A **termék képességei:** Identitás-életciklus kezelése
  
-A rendszergazdák az új "hibrid rendszergazda" szerepkört is elindíthatják a legkevesebb Kiemelt szerepkörrel Azure AD Connect Felhőbeli kiépítés beállításához. Ezzel az új szerepkörrel már nem kell a globális rendszergazdai szerepkört használnia a felhőalapú kiépítés beállításához és konfigurálásához. [További információk](../roles/delegate-by-task.md#connect).
+A rendszergazdák az új "hibrid rendszergazda" szerepkört is elindíthatják a legkevesebb Kiemelt szerepkörrel Azure AD Connect Felhőbeli kiépítés beállításához. Ezzel az új szerepkörrel már nem kell a globális rendszergazdai szerepkört használnia a felhőalapú kiépítés beállításához és konfigurálásához. [További információ](../roles/delegate-by-task.md#connect).
  
 ---
 
@@ -926,7 +926,7 @@ Az új [szabályzat részletei panel](../conditional-access/troubleshoot-conditi
 
 A 2020. áprilisában a következő 31 új alkalmazást bővítettük az App Gallery összevonási támogatásával: 
 
-[SincroPool-alkalmazások](https://www.sincropool.com/), [SmartDB](https://hibiki.dreamarts.co.jp/smartdb/trial/), [float](../saas-apps/float-tutorial.md), [LMS365](https://lms.365.systems/), [belvízi adatgyűjtési csomag](../saas-apps/iwt-procurement-suite-tutorial.md), [Lunni](https://lunni.fi/), [EasySSO for JIRA](../saas-apps/easysso-for-jira-tutorial.md), [Virtual Training Academy](https://vta.c3p.ca/app/en/openid?authenticate_with=microsoft), [Meraki irányítópult](../saas-apps/meraki-dashboard-tutorial.md), [Microsoft 365 mozgató](https://app.mover.io/login), [beszélő tevékenység](https://speakerengage.com/login.php), [becsületesen](../saas-apps/honestly-tutorial.md), [Ally](../saas-apps/ally-tutorial.md), [DutyFlow](https://app.dutyflow.nl/), [AlertMedia](../saas-apps/alertmedia-tutorial.md), [gr8 People](../saas-apps/gr8-people-tutorial.md), [Kata](../saas-apps/pendo-tutorial.md), [HighGround](../saas-apps/highground-tutorial.md), [Harmony](../saas-apps/harmony-tutorial.md), [Timetabling megoldások](../saas-apps/timetabling-solutions-tutorial.md), [SynchroNet Click](../saas-apps/synchronet-click-tutorial.md), [Empower](https://www.made-in-office.com/en/), [Forts Change Cloud](../saas-apps/fortes-change-cloud-tutorial.md), [Lakmusz](../saas-apps/litmus-tutorial.md) [, GroupTalk,](https://recorder.grouptalk.com/) [Frontify](../saas-apps/frontify-tutorial.md), [MongoDB felhő](../saas-apps/mongodb-cloud-tutorial.md), [TickitLMS Learn](../saas-apps/tickitlms-learn-tutorial.md), [Coco](https://hexaware.com/partnerships-and-alliances/digital-transformation-using-microsoft-azure/), [nitro hatékonyságnövelő csomag](../saas-apps/nitro-productivity-suite-tutorial.md), [Trend Micro Web Security (TMWS)](/azure/active-directory/saas-apps/trend-micro-tutorial)
+[SincroPool-alkalmazások](https://www.sincropool.com/), [SmartDB](https://hibiki.dreamarts.co.jp/smartdb/trial/), [float](../saas-apps/float-tutorial.md), [LMS365](https://lms.365.systems/), [belvízi adatgyűjtési csomag](../saas-apps/iwt-procurement-suite-tutorial.md), [Lunni](https://lunni.fi/), [EasySSO for JIRA](../saas-apps/easysso-for-jira-tutorial.md), [Virtual Training Academy](https://vta.c3p.ca/app/en/openid?authenticate_with=microsoft), [Meraki irányítópult](../saas-apps/meraki-dashboard-tutorial.md), [Microsoft 365 mozgató](https://app.mover.io/login), [beszélő tevékenység](https://speakerengage.com/login.php), [becsületesen](../saas-apps/honestly-tutorial.md), [Ally](../saas-apps/ally-tutorial.md), [DutyFlow](https://app.dutyflow.nl/), [AlertMedia](../saas-apps/alertmedia-tutorial.md), [gr8 People](../saas-apps/gr8-people-tutorial.md), [Kata](../saas-apps/pendo-tutorial.md), [HighGround](../saas-apps/highground-tutorial.md), [Harmony](../saas-apps/harmony-tutorial.md), [Timetabling megoldások](../saas-apps/timetabling-solutions-tutorial.md), [SynchroNet Click](../saas-apps/synchronet-click-tutorial.md), [Empower](https://www.made-in-office.com/en/), [Forts Change Cloud](../saas-apps/fortes-change-cloud-tutorial.md), [Lakmusz](../saas-apps/litmus-tutorial.md) [, GroupTalk,](https://recorder.grouptalk.com/) [Frontify](../saas-apps/frontify-tutorial.md), [MongoDB felhő](../saas-apps/mongodb-cloud-tutorial.md), [TickitLMS Learn](../saas-apps/tickitlms-learn-tutorial.md), [Coco](https://hexaware.com/partnerships-and-alliances/digital-transformation-using-microsoft-azure/), [nitro hatékonyságnövelő csomag](../saas-apps/nitro-productivity-suite-tutorial.md), [Trend Micro Web Security (TMWS)](../saas-apps/trend-micro-tutorial.md)
 
 Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../develop/v2-howto-app-gallery-listing.md)című témakört.
 
@@ -1288,7 +1288,7 @@ A **termék képességei:** Identitás-biztonsági & védelme
 **Szolgáltatás kategóriája:** Alkalmazás kiépítés  
 A **termék képességei:** Identitás-életciklus kezelése
  
-Az Azure AD-kiépítési szolgáltatás a konfigurációs képességek széles körét biztosítja. Az ügyfeleknek el kell tudniuk menteni a konfigurációt, hogy később is hivatkozhatnak rá, vagy visszatérhetnek egy ismert jó verzióra. Lehetőség van arra, hogy a kiépítési konfigurációt JSON-fájlként töltse le, és töltse fel, amikor szüksége van rá. [További információk](../app-provisioning/export-import-provisioning-configuration.md).
+Az Azure AD-kiépítési szolgáltatás a konfigurációs képességek széles körét biztosítja. Az ügyfeleknek el kell tudniuk menteni a konfigurációt, hogy később is hivatkozhatnak rá, vagy visszatérhetnek egy ismert jó verzióra. Lehetőség van arra, hogy a kiépítési konfigurációt JSON-fájlként töltse le, és töltse fel, amikor szüksége van rá. [További információ](../app-provisioning/export-import-provisioning-configuration.md).
 
 ---
  
@@ -1300,7 +1300,7 @@ A **termék képességei:** Identitás-biztonsági & védelme
  
 Korábban Microsoft Azure a 21Vianet (Azure China 21Vianet) által működtetett, az önkiszolgáló jelszó-visszaállítást (SSPR) használó rendszergazdák a saját jelszavaik visszaállításához csak egy "kaput" (Challenge) szükségesek az identitásuk bizonyításához. A nyilvános és más országos felhőkben a rendszergazdáknak általában két kaput kell használniuk, hogy igazolják identitásukat a SSPR használatakor. Mivel azonban nem támogatjuk az SMS-t és a telefonhívásokat az Azure China 21Vianet, a rendszergazdák az egykapus jelszó-visszaállítást engedélyezték.
 
-SSPR-szolgáltatás paritást hozunk létre az Azure China 21Vianet és a nyilvános felhő között. A jövőben a rendszergazdáknak két kaput kell használniuk a SSPR használatakor. Az SMS, a telefonhívások és a hitelesítő alkalmazások értesítései és kódjai is támogatottak lesznek. [További információk](../authentication/concept-sspr-policy.md#administrator-reset-policy-differences).
+SSPR-szolgáltatás paritást hozunk létre az Azure China 21Vianet és a nyilvános felhő között. A jövőben a rendszergazdáknak két kaput kell használniuk a SSPR használatakor. Az SMS, a telefonhívások és a hitelesítő alkalmazások értesítései és kódjai is támogatottak lesznek. [További információ](../authentication/concept-sspr-policy.md#administrator-reset-policy-differences).
 
 ---
 
@@ -1349,7 +1349,7 @@ A **termék képességei:** Identitás-biztonsági & védelme
  
 Azt tervezzük, hogy lecseréljük a jelenlegi egyéni vezérlők előzetesét egy olyan megközelítéssel, amely lehetővé teszi, hogy a partner által biztosított hitelesítési funkciók zökkenőmentesen működjenek a Azure Active Directory-rendszergazda és a végfelhasználói élményben. Napjainkban a partner MFA-megoldások a következő korlátozásokkal szembesülnek: csak jelszó megadása után működnek. más kulcsfontosságú helyzetekben nem szolgálnak MFA-ként a lépésenkénti hitelesítéshez; és nem integrálják a végfelhasználói vagy a rendszergazdai hitelesítő adatok kezelési funkcióit. Az új implementáció lehetővé teszi, hogy a partner által biztosított hitelesítési tényezők a főbb forgatókönyvek beépített tényezői mellett működjenek, beleértve a regisztrációt, a használatot, az MFA-jogcímeket, a hitelesítés lépéseit, a jelentéskészítést és a naplózást. 
 
-Az egyéni vezérlők továbbra is támogatottak az előzetes verzióban az új terv mellett, amíg az általános rendelkezésre állást nem éri el. Ezen a ponton biztosítjuk az ügyfeleknek az új tervbe való Migrálás idejét. Az aktuális megközelítés korlátai miatt nem fogunk új szolgáltatókat bevezetni, amíg az új terv elérhetővé nem válik. Szorosan együttműködünk az ügyfelekkel és a szolgáltatókkal, és a lehető legszorosabban tájékoztatjuk az ütemtervet. [További információk](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/upcoming-changes-to-custom-controls/ba-p/1144696#).
+Az egyéni vezérlők továbbra is támogatottak az előzetes verzióban az új terv mellett, amíg az általános rendelkezésre állást nem éri el. Ezen a ponton biztosítjuk az ügyfeleknek az új tervbe való Migrálás idejét. Az aktuális megközelítés korlátai miatt nem fogunk új szolgáltatókat bevezetni, amíg az új terv elérhetővé nem válik. Szorosan együttműködünk az ügyfelekkel és a szolgáltatókkal, és a lehető legszorosabban tájékoztatjuk az ütemtervet. [További információ](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/upcoming-changes-to-custom-controls/ba-p/1144696#).
 
 ---
 
@@ -2372,7 +2372,7 @@ További információ: [Azure ad Domain Services biztonsági naplózásának eng
 
 Az új hitelesítési módszerek használati & az információkkal kapcsolatos jelentések segítségével megismerheti, hogy az Azure AD Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítás hogyan legyen regisztrálva és felhasználva a szervezetében, beleértve az egyes szolgáltatások regisztrált felhasználóinak számát, a jelszavak alaphelyzetbe állításának gyakoriságát, valamint az Alaphelyzetbe állítás módját.
 
-További információ: [hitelesítési módszerek használata & információk (előzetes verzió)](../authentication/howto-authentication-methods-usage-insights.md).
+További információ: [hitelesítési módszerek használata & információk (előzetes verzió)](../authentication/howto-authentication-methods-activity.md).
 
 ---
 

@@ -4,12 +4,12 @@ description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a Node.js QnA 
 ms.topic: quickstart
 ms.date: 06/18/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 8e42a7cfe0eacf72d1e59e695ac871368a7a9731
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e4f6b52a992999bd4c3ac11225ee927c8bff90d1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101730933"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583168"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabil kiadás)](#tab/version-1)
 
@@ -125,9 +125,11 @@ Hozzon létre egy változót az erőforrás Azure-kulcsához és az erőforrás 
 > [!IMPORTANT]
 > Lépjen a Azure Portalra, és keresse meg az előfeltételekben létrehozott QnA Maker erőforrás kulcsát és végpontját. Ezek az erőforrás **kulcs és végpont** lapján, az **Erőforrás-kezelés** területen találhatók.
 
-- Hozzon létre QNA_MAKER_SUBSCRIPTION_KEY, QNA_MAKER_ENDPOINT és QNA_MAKER_RUNTIME_ENDPOINT nevű környezeti változókat az értékek tárolásához.
 - A QNA_MAKER_ENDPOINT értékének formátuma `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . 
-- A QNA_MAKER_RUNTIME_ENDPOINT értékének formátuma `https://YOUR-RESOURCE-NAME.azurewebsites.net` .
+- A QNA_MAKER_RUNTIME_ENDPOINT értékének formátuma `https://YOUR-RESOURCE-NAME.azurewebsites.net` . Miután közzétette a tudásbázist a QnA Maker-portálon, megkeresheti a futásidejű végpontot az alábbi ábrán látható módon.
+
+  ![QnA Maker futtatókörnyezet végpontja](../media/endpoint.png)
+   
 - Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. Az [Azure Key Vault](../../../key-vault/general/overview.md) például biztonságos kulcstároló-tárolót biztosít.
 
 [!code-javascript[Set the resource key and resource name](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=Resourcevariables)]
@@ -137,7 +139,6 @@ Hozzon létre egy változót az erőforrás Azure-kulcsához és az erőforrás 
 > [!IMPORTANT]
 > Lépjen a Azure Portalra, és keresse meg az előfeltételekben létrehozott QnA Maker erőforrás kulcsát és végpontját. Ezek az erőforrás **kulcs és végpont** lapján, az **Erőforrás-kezelés** területen találhatók.
 
-- Hozzon létre QNA_MAKER_SUBSCRIPTION_KEY és QNA_MAKER_ENDPOINT nevű környezeti változót az értékek tárolásához.
 - A QNA_MAKER_ENDPOINT értékének formátuma `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` . 
 - Éles környezetben érdemes lehet biztonságos módszert használni a hitelesítő adatok tárolásához és eléréséhez. Az [Azure Key Vault](../../../key-vault/general/overview.md) például biztonságos kulcstároló-tárolót biztosít.
 

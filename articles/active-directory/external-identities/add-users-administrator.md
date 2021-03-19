@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d86ddd8d0fe53599e9dce3d2fc5fa7682f2aed08
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 2566b427777aec273df17863f06040de20649d97
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897058"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581847"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Azure Active Directory B2B Collaboration-felhasználók hozzáadása a Azure Portal
 
@@ -38,7 +38,7 @@ Ha VÁLLALATKÖZI együttműködési felhasználókat szeretne hozzáadni a cím
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) olyan felhasználóként, aki korlátozott rendszergazdai címtárbeli szerepkörrel vagy a vendég meghívó szerepkörrel van társítva.
 2. Keresse meg és válassza ki a **Azure Active Directory** bármely oldalon.
 3. A **Kezelés** menüpontban válassza a **Felhasználók** lehetőséget.
-4. Válassza az **Új vendégfelhasználót** .
+4. Válassza az **Új vendégfelhasználót**.
 
    ![Azt mutatja, hogy az új vendég felhasználó hol van a felhasználói felületen](./media/add-users-administrator/new-guest-user-in-all-users.png) 
  
@@ -48,10 +48,10 @@ Ha VÁLLALATKÖZI együttműködési felhasználókat szeretne hozzáadni a cím
     > A csoportos e-mail-címek nem támogatottak; adja meg az egyéni e-mail-címet. Emellett egyes e-mail-szolgáltatók lehetővé teszik a felhasználók számára egy pluszjel (+) és egy további szöveg hozzáadását az e-mail-címükhez, így például a beérkezett fájlok szűréséhez. Az Azure AD azonban jelenleg nem támogatja az e-mail-címeken a plusz szimbólumokat. A kézbesítési problémák elkerüléséhez hagyja ki a pluszjelet és az azt követő karaktereket a @ szimbólumra.
 
    - **név.** A vendég felhasználó vezetékneve és vezetékneve.
-   - **E-mail-cím (kötelező)** . A vendég felhasználó e-mail-címe.
+   - **E-mail-cím (kötelező)**. A vendég felhasználó e-mail-címe.
    - **Személyes üzenet (nem kötelező)** Személyes üdvözlő üzenet felvétele a vendég felhasználóra.
-   - **Csoportok** : felveheti a vendég felhasználót egy vagy több meglévő csoportba, vagy később is megteheti.
-   - **Címtárbeli szerepkör** : Ha az Azure ad rendszergazdai engedélyekre van szüksége a felhasználó számára, hozzáadhat egy Azure ad-szerepkörhöz. 
+   - **Csoportok**: felveheti a vendég felhasználót egy vagy több meglévő csoportba, vagy később is megteheti.
+   - **Címtárbeli szerepkör**: Ha az Azure ad rendszergazdai engedélyekre van szüksége a felhasználó számára, hozzáadhat egy Azure ad-szerepkörhöz. 
 
 7. Válassza ki **Meghívás** elemet az meghívó automatikus elküldéséhez a vendégfelhasználó számára. 
  
@@ -113,12 +113,11 @@ Ha a vendég felhasználó még nem váltotta be a meghívót, akkor újra elkü
 3. A **Kezelés** menüpontban válassza a **Felhasználók** lehetőséget.
 5. Válassza ki a felhasználói fiókot.
 6. A **kezelés** területen válassza a **profil** lehetőséget.
-7. Ha a felhasználó még nem fogadta el a meghívót, akkor a **meghívás újraküldése** lehetőség is elérhető. Válassza ezt a gombot az újraküldéshez.
-
-   ![Meghívási lehetőség újraküldése a felhasználói profilban](./media/add-users-administrator/b2b-user-resend-invitation.png)
+7. Ha a felhasználó még nem fogadta el a meghívót, az **identitás** szakaszban a **meghívást** a **nem** értékre állítja a rendszer. A meghívó újraküldéséhez válassza a **(kezelés)** lehetőséget. Ezután a **meghívások kezelése** lapon a * * Újraküldés újraküldése lehetőség mellett Válassza az **Igen**, majd a **kész** lehetőséget.
 
 > [!NOTE]
 > Ha olyan meghívót küld újra, amely eredetileg a felhasználót egy adott alkalmazáshoz irányította, akkor az új meghívóban található hivatkozás helyett a legfelső szintű hozzáférési panelre kerül.
+> Emellett csak a meghívó engedéllyel rendelkező felhasználók küldhetik újra a meghívókat.
 
 ## <a name="next-steps"></a>Következő lépések
 

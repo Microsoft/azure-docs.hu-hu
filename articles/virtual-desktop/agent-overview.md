@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 325502255e84e38a39ca5b90ee4126354c0d425b
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: ecc4a5a17186eddd4223715462b14399bdf702df
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601238"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601890"
 ---
 # <a name="get-started-with-the-windows-virtual-desktop-agent"></a>Ismerkedés a Windows rendszerű virtuális asztali ügynökkel
 
@@ -32,7 +32,10 @@ A Windows rendszerű virtuális asztali ügynök kezdetben kétféleképpen tele
 
 ## <a name="agent-update-process"></a>Ügynök frissítési folyamata
 
-A Windows rendszerű virtuális asztali szolgáltatás automatikusan frissíti az ügynököt, amikor egy frissítés elérhetővé válik. Az ügynökök frissítései tartalmazhatnak új funkciókat, vagy javíthatják a korábbi problémákat. Miután telepítette a Windows rendszerű virtuális asztali ügynök kezdeti verzióját, az ügynök rendszeresen lekérdezi a Windows Virtual Desktop szolgáltatást annak megállapítására, hogy van-e az ügynök újabb verziója, és hogy elérhetők-e az összetevők. Ha van új verziója, az ügynök betöltője automatikusan letölti az ügynök legújabb verzióját, a párhuzamos stacket és a Genfi figyelési ügynököt.
+A Windows rendszerű virtuális asztali szolgáltatás frissíti az ügynököt, amikor egy frissítés elérhetővé válik. Az ügynökök frissítései a korábbi problémák új funkcióit vagy javításait is tartalmazhatják. Miután telepítette a Windows rendszerű virtuális asztali ügynök kezdeti verzióját, az ügynök rendszeresen lekérdezi a Windows Virtual Desktop szolgáltatást annak megállapítására, hogy elérhető-e az ügynök, a verem vagy a figyelési összetevő újabb verziója. Ha az összetevők valamelyikének újabb verziója már telepítve van, a rendszer automatikusan telepíti a frissített összetevőt.
+
+Az ügynök új verziói az Azure-előfizetések egyhetes időszakokban rendszeres időközönként üzembe helyezhetők. A frissítési időszakok neve "Flights". Ha egy repülés történik, előfordulhat, hogy a gazdagépen található virtuális gépek különböző időpontokban kapják meg az ügynök frissítését. Az összes előfizetésben szereplő összes virtuálisgép-ügynököt a központi telepítési időszak végéig frissíti a rendszer. A Windows rendszerű virtuális asztali repülési rendszer fokozza a szolgáltatás megbízhatóságát az ügynök frissítésének stabilitásának és minőségének biztosításával.
+
 
 >[!NOTE]
 >- Ha a Genfi figyelő ügynök a legújabb verzióra frissül, a régi GenevaTask feladat az új figyelési ügynökhöz tartozó új feladat létrehozása előtt található és le van tiltva. A figyelési ügynök korábbi verziója nem törlődik abban az esetben, ha a figyelési ügynök legújabb verziója olyan problémával rendelkezik, amely megköveteli a korábbi verzióra való visszaállást a javításhoz. Ha a legújabb verzióban probléma van, a régi figyelési ügynök ismét engedélyezve lesz a figyelési adattovábbítás folytatásához. A figyelő minden olyan verziója, amely korábban a frissítés előtt lett telepítve, a rendszer törli a virtuális gépről.
@@ -40,7 +43,7 @@ A Windows rendszerű virtuális asztali szolgáltatás automatikusan frissíti a
 
 A frissítés telepítése általában 2-3 percet vesz igénybe egy új virtuális gépen, és nem okozhatja, hogy a virtuális gép kapcsolata megszakadjon vagy leáll. Ez a frissítési folyamat a Windows rendszerű virtuális asztali (klasszikus) és a Windows rendszerű virtuális asztal legújabb verziójára vonatkozik Azure Resource Manager.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy jobban megértette a Windows rendszerű virtuális asztali ügynököt, íme néhány olyan erőforrás, amely segíthet:
 

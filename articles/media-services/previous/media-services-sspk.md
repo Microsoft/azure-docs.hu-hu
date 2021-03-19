@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/10/2021
 ms.author: xpouyat
-ms.openlocfilehash: f7e371f892fb0796a310be46a402781e8eb57e1a
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 36e5b020241f7be33aa4cfa473222ad301d18fbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103009419"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581099"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>A Microsoft &reg; Smooth streaming ügyféloldali Porting Kit licencelése
 
@@ -32,7 +32,7 @@ Az alábbiakban látható egy magas szintű architektúra és IIS-Smooth Streami
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
-## <a name="description"></a>Leírás
+## <a name="description"></a>Description
 A SSPK a kiváló üzleti értékkel rendelkező feltételekkel rendelkezik. A SSPK-licenc a következőket biztosítja az iparág számára:
 
 * Smooth Streaming a Porting Kit forrása a C++-ban 
@@ -149,7 +149,6 @@ Az ideiglenes és a végleges SSPK-licencek technikai kérdéseket is beküldhet
 * Szecsuán Changhong, Electric Co., Ltd.
 * Skardin Industrial Corp.
 * Sky CP Ltd
-* Sky Deutschland Fernsehen GmbH & Co. KG
 * SMARDTV GLOBÁLIS SAS
 * SoftAtHome
 * Sony Corporation

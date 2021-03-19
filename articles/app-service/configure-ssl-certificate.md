@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 03/02/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: d6f6db34239cf8c77b6e43d4426d889fa12c0690
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 99dc8cb2acf06faae16df6d3a48c4d38b1be46d8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102051344"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577784"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>TLS-/SSL-tanúsítvány hozzáadása az Azure App Service-ben
 
@@ -331,7 +331,7 @@ Az újragenerálási művelet befejezése után kattintson a **szinkronizálás*
 
 Ha bármikor be szeretné kapcsolni a tanúsítvány automatikus megújítását, válassza ki a tanúsítványt a [app Service tanúsítványok](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) lapon, majd a bal oldali navigációs menüben kattintson a **beállítások automatikus megújítása** elemre. Alapértelmezés szerint az App Service-tanúsítványok egy éves érvényességi időtartammal rendelkeznek.
 
-Válassza **a** be lehetőséget, majd kattintson a **Mentés** gombra. A tanúsítványok automatikusan megújítják a 60 nappal a lejárat előtt, ha az automatikus megújítás be van kapcsolva.
+Válassza **a** be lehetőséget, majd kattintson a **Mentés** gombra. A tanúsítványok a lejárat előtt 30 nappal automatikusan megújítva, ha az automatikus megújítás be van kapcsolva.
 
 ![App Service tanúsítvány automatikus megújítása](./media/configure-ssl-certificate/auto-renew-app-service-cert.png)
 

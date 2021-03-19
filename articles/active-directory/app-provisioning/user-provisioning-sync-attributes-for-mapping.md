@@ -1,6 +1,6 @@
 ---
 title: Attribútumok szinkronizálása az Azure AD-vel leképezéshez
-description: Ismerje meg, hogyan szinkronizálhatja a helyszíni Active Directory attribútumait az Azure AD-vel. Ha az SaaS-alkalmazásokhoz konfigurálja a felhasználók üzembe helyezését, a címtár-kiterjesztési funkcióval adhat hozzá olyan forrás-attribútumokat, amelyek alapértelmezés szerint nincsenek szinkronizálva.
+description: Ha az SaaS-alkalmazásokhoz konfigurálja a felhasználók üzembe helyezését, a címtár-kiterjesztési funkcióval adhat hozzá olyan forrás-attribútumokat, amelyek alapértelmezés szerint nincsenek szinkronizálva.
 services: active-directory
 author: kenwith
 manager: daveba
@@ -8,23 +8,23 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 03/12/2021
+ms.date: 03/17/2021
 ms.author: kenwith
-ms.openlocfilehash: 0f8369c80a7a219b159f31aacb7d10a0dd009d00
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 52f34cdafac76a9bca2b4ff0b00e0b3efaa63f5d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103418674"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579433"
 ---
-# <a name="sync-an-attribute-from-your-on-premises-active-directory-to-azure-ad-for-provisioning-to-an-application"></a>Egy attribútum szinkronizálása a helyszíni Active Directory az Azure AD-be az alkalmazásba való kiépítéshez
+# <a name="syncing-extension-attributes-attributes"></a>A bővítmény attribútumai attribútumainak szinkronizálása
 
-Ha testreszabja a felhasználók kiosztásához szükséges attribútum-hozzárendeléseket, akkor előfordulhat, hogy a leképezni kívánt attribútum nem jelenik meg a **forrás attribútum** listában. Ebből a cikkből megtudhatja, hogyan adhatja hozzá a hiányzó attribútumot a helyszíni Active Directory (AD) és a Azure Active Directory (Azure AD) közötti szinkronizálással.
+Ha testreszabja a felhasználók kiosztásához szükséges attribútum-hozzárendeléseket, akkor előfordulhat, hogy a leképezni kívánt attribútum nem jelenik meg a **forrás attribútum** listában. Ebből a cikkből megtudhatja, hogyan adhatja hozzá a hiányzó attribútumot úgy, hogy szinkronizálja azt a helyszíni Active Directory (AD)-ből Azure Active Directory (Azure AD) vagy az Azure AD-ban lévő bővítmény-attribútumok létrehozásával a Felhőbeli felhasználók számára. 
 
-Az Azure AD-nek tartalmaznia kell az összes olyan adatforrást, amely felhasználói profil létrehozásához szükséges az Azure AD-ből egy SaaS-alkalmazásba való kiépítés során. Bizonyos esetekben előfordulhat, hogy az adatok elérhetővé tételéhez szükség lehet az attribútumok szinkronizálására a helyszíni AD-ből az Azure AD-be. Azure AD Connect automatikusan szinkronizál bizonyos attribútumokat az Azure AD-be, de nem minden attribútumot. Továbbá előfordulhat, hogy egyes attribútumok (például a SAMAccountName) alapértelmezés szerint szinkronizálva vannak a Microsoft Graph API használatával. Ezekben az esetekben a Azure AD Connect Directory-bővítmény funkcióval szinkronizálhatja az attribútumot az Azure AD-vel. Így az attribútum látható lesz a Microsoft Graph API és az Azure AD kiépítési szolgáltatás számára.
+Az Azure AD-nek tartalmaznia kell az összes olyan adatforrást, amely felhasználói profil létrehozásához szükséges az Azure AD-ből egy SaaS-alkalmazásba való kiépítés során. Bizonyos esetekben előfordulhat, hogy az adatok elérhetővé tételéhez szükség lehet az attribútumok szinkronizálására a helyszíni AD-ből az Azure AD-be. Azure AD Connect automatikusan szinkronizál bizonyos attribútumokat az Azure AD-be, de nem minden attribútumot. Emellett előfordulhat, hogy az alapértelmezés szerint szinkronizált attribútumok (például SAMAccountName) nem érhetők el az Azure AD Graph API használatával. Ezekben az esetekben a Azure AD Connect Directory-bővítmény funkcióval szinkronizálhatja az attribútumot az Azure AD-vel. Így az attribútum látható lesz az Azure AD Graph API és az Azure AD kiépítési szolgáltatása számára. Ha az üzembe helyezéshez szükséges adatmennyiség Active Directory, de a fent ismertetett okok miatt nem érhető el a kiépítés során, akkor a Azure AD Connect használatával hozhat létre bővítmény-attribútumokat. 
 
-Ha az üzembe helyezéshez szükséges adatmennyiség Active Directory, de a fent ismertetett okok miatt nem érhető el a kiépítés során, a Azure AD Connect vagy a PowerShell használatával hozhatja létre a bővítmény attribútumait. 
- 
+A legtöbb felhasználó valószínűleg a Active Directory-ból szinkronizált hibrid felhasználók számára is létrehozhat bővítményeket a csak felhőalapú felhasználók számára, Azure AD Connect használata nélkül is. A PowerShell vagy a Microsoft Graph használatával kiterjesztheti egy csak Felhőbeli felhasználó sémáját. 
+
 ## <a name="create-an-extension-attribute-using-azure-ad-connect"></a>Bővítmény-attribútum létrehozása Azure AD Connect használatával
 
 1. Nyissa meg a Azure AD Connect varázslót, válassza a feladatok, majd a **szinkronizálási beállítások testreszabása lehetőséget**.
@@ -52,7 +52,47 @@ Ha az üzembe helyezéshez szükséges adatmennyiség Active Directory, de a fen
 > [!NOTE]
 > A helyszíni AD-ből (például **többé** vagy **DN/DistinguishedName**) származó hivatkozási attribútumok kiépítésének lehetősége jelenleg nem támogatott. Ezt a funkciót [felhasználói hangon](https://feedback.azure.com/forums/169401-azure-active-directory)is kérheti. 
 
-## <a name="create-an-extension-attribute-using-powershell"></a>Kiterjesztési attribútum létrehozása a PowerShell használatával
+## <a name="create-an-extension-attribute-on-a-cloud-only-user"></a>Extension attribútum létrehozása csak Felhőbeli felhasználónál
+Az ügyfelek a Microsoft Graph és a PowerShell használatával bővíthetik a felhasználói sémát. Ezek a bővítmény-attribútumok a legtöbb esetben automatikusan fel lesznek derítve, de a több mint 1000 egyszerű szolgáltatással rendelkező ügyfelek megtalálják a forrás attribútum listában hiányzó bővítményeket. Ha az alábbi lépésekkel létrehozott attribútumok nem jelennek meg automatikusan a forrás attribútum listában, ellenőrizze, hogy a Graph használatával sikeresen létrejött-e a bővítmény attribútuma, majd adja hozzá [manuálisan](https://docs.microsoft.com/azure/active-directory/app-provisioning/customize-application-attributes#editing-the-list-of-supported-attributes)a sémához. Ha az alábbi gráf-kérelmeket végzi, kattintson a továbbiak gombra a kérések elvégzéséhez szükséges engedélyek ellenőrzéséhez. A kérelmeket a [Graph Explorer](https://docs.microsoft.com/graph/graph-explorer/graph-explorer-overview) használatával teheti meg. 
+
+### <a name="create-an-extension-attribute-on-a-cloud-only-user-using-microsoft-graph"></a>Bővítmény-attribútum létrehozása csak Felhőbeli felhasználóhoz Microsoft Graph használatával
+A felhasználók sémájának kiterjesztéséhez egy alkalmazást kell használnia. Sorolja fel a bérlőben lévő alkalmazásokat annak az alkalmazásnak a azonosításához, amelyet a felhasználói séma kibővítéséhez használni kíván. [Részletek](https://docs.microsoft.com/graph/api/application-list?view=graph-rest-1.0&tabs=http)
+
+```json
+GET https://graph.microsoft.com/v1.0/applications
+```
+
+Hozza létre a kiterjesztés attribútumot. Cserélje le az alábbi **ID** tulajdonságot az előző lépésben lekért **azonosítóra** . Az **"id"** attribútumot kell használnia, nem a "AppID". [Részletek](https://docs.microsoft.com/graph/api/application-post-extensionproperty?view=graph-rest-1.0&tabs=http)
+```json
+POST https://graph.microsoft.com/v1.0/applications/{id}/extensionProperties
+Content-type: application/json
+
+{
+    "name": "extensionName",
+    "dataType": "string",
+    "targetObjects": [
+        "User"
+    ]
+}
+```
+
+Az előző kérelem létrehozta a "extension_appID_extensionName" formátumú kiterjesztési attribútumot. Egy felhasználó frissítése a Extension attribútummal. [Részletek](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0&tabs=http)
+```json
+PATCH https://graph.microsoft.com/v1.0/users/{id}
+Content-type: application/json
+
+{
+  "extension_inputAppId_extensionName": "extensionValue"
+}
+```
+Ellenőrizze, hogy a felhasználó sikeresen frissítette-e az attribútumot. [Részletek](https://docs.microsoft.com/graph/api/user-get?view=graph-rest-1.0&tabs=http#example-3-users-request-using-select)
+
+```json
+GET https://graph.microsoft.com/v1.0/users/{id}?$select=displayName,extension_inputAppId_extensionName
+```
+
+
+### <a name="create-an-extension-attribute-on-a-cloud-only-user-using-powershell"></a>Bővítmény-attribútum létrehozása csak Felhőbeli felhasználó számára a PowerShell használatával
 Hozzon létre egy egyéni bővítményt a PowerShell használatával, és rendeljen hozzá egy értéket egy felhasználóhoz. 
 
 ```

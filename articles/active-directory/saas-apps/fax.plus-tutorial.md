@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: jeedes
-ms.openlocfilehash: 3cbcafc4df1e056f098c26ae79d84892b1fe6c17
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 528e1056574379f922b5de15f442b7fd92d8cf8c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055396"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592455"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-faxplus"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a FAXSZOLGÁLTATÁSsal. PLUSZ
 
@@ -167,8 +167,8 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 * Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie a faxra. Plusz, amelyhez be kell állítania az egyszeri bejelentkezést. 
 
-A Microsoft My Apps használatával bármilyen módban tesztelheti az alkalmazást. Amikor rákattint a faxra. PLUSZ csempe a saját alkalmazásokban ha az SP módban van konfigurálva, a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat elindításához, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie a FAXHOZ. Plusz, amelyhez be kell állítania az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
+A Microsoft My Apps használatával bármilyen módban tesztelheti az alkalmazást. Amikor rákattint a faxra. PLUSZ csempe a saját alkalmazásokban ha az SP módban van konfigurálva, a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat elindításához, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie a FAXHOZ. Plusz, amelyhez be kell állítania az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
 
 ## <a name="next-steps"></a>Következő lépések
 
-A FAXSZOLGÁLTATÁS konfigurálása után. Emellett kényszerítheti a munkamenet-vezérlést is, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+A FAXSZOLGÁLTATÁS konfigurálása után. Emellett kényszerítheti a munkamenet-vezérlést is, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

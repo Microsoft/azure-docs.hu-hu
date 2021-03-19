@@ -5,15 +5,15 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 5ceaaa7ed9288299019f3e87d8c214e53013f5ec
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d241cb5d7ece260de42088eecfd669e5d3f40096
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045751"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592285"
 ---
 # <a name="resource-manager-template-samples-for-data-collection-rules-in-azure-monitor"></a>Resource Manager-sablonok minták a Azure Monitor adatgyűjtési szabályaihoz
-Ez a cikk minta [Azure Resource Manager sablonokat](../../azure-resource-manager/templates/template-syntax.md) tartalmaz a [log Analytics-ügynök](./log-analytics-agent.md) és a [diagnosztikai bővítmény](./diagnostics-extension-overview.md) üzembe helyezéséhez és konfigurálásához a Azure monitor-ben. Mindegyik minta tartalmaz egy sablonfájlt és egy, a sablonhoz adni kívánt minta értékeket tartalmazó paramétereket tartalmazó fájlt.
+Ez a cikk minta [Azure Resource Manager sablonokat](../../azure-resource-manager/templates/template-syntax.md) tartalmaz egy [adatgyűjtési szabály](data-collection-rule-overview.md) és a [Azure monitor ügynök](./azure-monitor-agent-overview.md)közötti társítás létrehozásához. Mindegyik minta tartalmaz egy sablonfájlt és egy, a sablonhoz adni kívánt minta értékeket tartalmazó paramétereket tartalmazó fájlt.
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 

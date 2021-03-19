@@ -53,11 +53,11 @@
         - name: Együttes értékesítés a Microsofttal
           items:
             - name: Közös értékesítés – áttekintés
-              href: marketplace-co-sell.md
+              href: co-sell-overview.md
             - name: Közös értékesítésre vonatkozó követelmények
               href: co-sell-requirements.md
             - name: Közös értékesítés konfigurálása
-              href: commercial-marketplace-co-sell.md
+              href: co-sell-configure.md
             - name: A közös értékesítés állapotának ellenőrzése
               href: co-sell-status.md
             - name: Együttes értékesítési megoldások migrálása az OCP GTM-ből

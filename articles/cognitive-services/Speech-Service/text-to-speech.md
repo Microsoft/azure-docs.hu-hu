@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: szöveg – beszéd
-ms.openlocfilehash: 54db794d4e9cf0cd2a049a865f2e7bb52698a4bd
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: fec90b3257ffafaf2919d2f0a41c2ade6fbc1f64
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599544"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597674"
 ---
 # <a name="what-is-text-to-speech"></a>Mi az a szövegfelolvasás?
 
@@ -40,6 +40,8 @@ Ebben az áttekintésben megismerheti a szöveg és a beszéd közötti szolgál
 * Neurális hangok – a mély neurális hálózatokkal leküzdhető a hagyományos beszédfelismerés korlátai a hangsúlyt és a hanglejtést illetően a beszélt nyelven. A Prosody előrejelzése és a hangszintézis párhuzamosan történik, ami több folyadékot és természetes hangzású kimenetet eredményez. A neurális hangokat felhasználhatja az csevegőrobotok-és hangsegédekkel való interakciót természetesebb és vonzó, digitális szövegek, például e-könyvek hangoskönyvekbe való átalakítására és az autós navigációs rendszerek fejlesztésére. Az emberi jellegű természetes prosody és a szavak egyértelmű megfogalmazásával a neurális hangok jelentősen csökkentik a figyelés fáradtságot, amikor az AI-rendszerekkel kommunikál. A neurális hangok teljes listáját lásd: [támogatott nyelvek](language-support.md#text-to-speech).
 
 * A beszédfelismerési stílusok a SSML-hangszintézis Markup Language (SSML) nyelvvel való beállítása egy XML-alapú Markup-nyelv, amely a beszéd-szöveg kimenetek testreszabására szolgál. A SSML beállíthatja a Pitch, a szüneteltetések hozzáadását, a kiejtés növelését, a sebesség növelését vagy lelassulását, a kötetek növelését és csökkentését, valamint több hang megadását egyetlen dokumentumra. Lásd: [útmutató](speech-synthesis-markup.md) a beszéd stílusainak módosításához.
+
+* A Visemes- [Visemes](how-to-speech-synthesis-viseme.md) a megfigyelt beszéd (például az ajkak, az állkapocs és a nyelv pozíciója) alapján jelent meg. Erős korrelációt mutat a hang-és fonémák. A Viseme használata a Speech SDK-ban létrehozhat arc-animálási adatforgalmat, amely általában animált LIP-olvasási kommunikációra, oktatásra, szórakozásra és ügyfélszolgálatra szolgál. 
 
 ## <a name="get-started"></a>Bevezetés
 
@@ -75,7 +77,7 @@ Részletes információkat a [díjszabásban](https://azure.microsoft.com/pricin
 - [Beszéd SDK](speech-sdk.md)
 - [REST API: szövegről beszédre](rest-text-to-speech.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Ingyenes beszédfelismerési szolgáltatás előfizetésének beszerzése](overview.md#try-the-speech-service-for-free)
 - [A Speech SDK beszerzése](speech-sdk.md)

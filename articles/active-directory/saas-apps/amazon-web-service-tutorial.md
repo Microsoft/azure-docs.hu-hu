@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/05/2021
 ms.author: jeedes
-ms.openlocfilehash: f217a13ce68b42d3f9ee2dec4bfae47a0b64b0ca
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: e390eb62f64c9ec55605525828790f15633e5f14
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200038"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589514"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-single-account-access"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az AWS Single-Account-hozzáféréssel
 
@@ -31,11 +31,11 @@ Az alábbi információk segítségével döntéseket hozhat az AWS Single Sign-
 
 **AWS egyszeri bejelentkezés**
 
-Az [AWS egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/saas-apps/aws-single-sign-on-tutorial) a 2021 februárjában lett hozzáadva az Azure ad Application Gallery-hez. Megkönnyíti a hozzáférést központilag több AWS-fiókhoz és AWS-alkalmazásokhoz, a bejelentkezést Microsoft Azure ADon keresztül. A összevonása az AWS egyszeri bejelentkezéssel Microsoft Azure AD egyszer, az AWS SSO használatával pedig egyetlen helyről kezelheti az összes AWS-fiók engedélyeit. Az AWS egyszeri bejelentkezésre vonatkozó engedélyei automatikusan, a házirendek és a hozzáférési hozzárendelések frissítésekor pedig naprakészek maradnak. A végfelhasználók Azure AD-beli hitelesítő adataikkal hitelesíthetők az AWS konzol, a parancssori felület és az AWS SSO integrált alkalmazások eléréséhez.
+Az [AWS egyszeri bejelentkezés](./aws-single-sign-on-tutorial.md) a 2021 februárjában lett hozzáadva az Azure ad Application Gallery-hez. Megkönnyíti a hozzáférést központilag több AWS-fiókhoz és AWS-alkalmazásokhoz, a bejelentkezést Microsoft Azure ADon keresztül. A összevonása az AWS egyszeri bejelentkezéssel Microsoft Azure AD egyszer, az AWS SSO használatával pedig egyetlen helyről kezelheti az összes AWS-fiók engedélyeit. Az AWS egyszeri bejelentkezésre vonatkozó engedélyei automatikusan, a házirendek és a hozzáférési hozzárendelések frissítésekor pedig naprakészek maradnak. A végfelhasználók Azure AD-beli hitelesítő adataikkal hitelesíthetők az AWS konzol, a parancssori felület és az AWS SSO integrált alkalmazások eléréséhez.
 
 **AWS Single-Account hozzáférés**
 
-Az [aws Single-Account a hozzáférést](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) az elmúlt néhány évben az ügyfelek használták, és lehetővé teszi, hogy egyetlen AWS-fiókkal összevonása az Azure ad-t, és az Azure ad segítségével kezelje az AWS iam-szerepkörökhöz való hozzáférést. Az AWS IAM-rendszergazdák minden AWS-fiókban határozzák meg a szerepköröket és a szabályzatokat. Minden AWS-fiók esetében az Azure AD-rendszergazdák összevonása az AWS IAM-t, felhasználókat vagy csoportokat rendelnek hozzá a fiókhoz, és az Azure AD-t úgy konfigurálja, hogy a szerepkör-hozzáférést engedélyező jogcímeket küldje el.  
+Az [aws Single-Account a hozzáférést]() az elmúlt néhány évben az ügyfelek használták, és lehetővé teszi, hogy egyetlen AWS-fiókkal összevonása az Azure ad-t, és az Azure ad segítségével kezelje az AWS iam-szerepkörökhöz való hozzáférést. Az AWS IAM-rendszergazdák minden AWS-fiókban határozzák meg a szerepköröket és a szabályzatokat. Minden AWS-fiók esetében az Azure AD-rendszergazdák összevonása az AWS IAM-t, felhasználókat vagy csoportokat rendelnek hozzá a fiókhoz, és az Azure AD-t úgy konfigurálja, hogy a szerepkör-hozzáférést engedélyező jogcímeket küldje el.  
 
 | Szolgáltatás | AWS egyszeri Sign-On | AWS Single-Account hozzáférés |
 |:--- |:---:|:---:|

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/12/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 22ee920c38a8cacaf37a1e3a6cfc5165dfa0bb44
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 4a8efff7ef53753e15a47e87a2bb82d0124ae997
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103419949"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590449"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Azure Firewall Premium előzetes verziójának funkciói
 
@@ -144,11 +144,11 @@ A Premium Preview Azure Firewall a következő régiókban támogatott:
 
 Az Azure Firewall Premium Preview a következő ismert problémákkal rendelkezik:
 
-|Probléma  |Leírás  |Kockázatcsökkentés  |
+|Probléma  |Description  |Kockázatcsökkentés  |
 |---------|---------|---------|
 |A TLS-ellenőrzés csak a HTTPS standard porton támogatott|A TLS-ellenőrzés csak a HTTPS/443 protokollt támogatja. |Nincsenek. A GA-ban más portok is támogatottak lesznek.|
 |ESNI-támogatás a teljes tartománynév-feloldáshoz HTTPS-ben|A titkosított SNI HTTPS-kézfogás esetén nem támogatott.|Jelenleg csak a Firefox támogatja a ESNI egyéni konfiguráción keresztül. Javasolt Áthidaló megoldás a funkció letiltása.|
-|Ügyféltanúsítványok (TLS)|Az ügyféltanúsítványok kölcsönös identitási megbízhatóság létrehozására szolgálnak az ügyfél és a kiszolgáló között. Az ügyféltanúsítványok a TLS-egyeztetés során használatosak. Az Azure Firewall újraegyeztet egy kapcsolatot a kiszolgálóval, és nem fér hozzá az Ügyféltanúsítványok titkos kulcsához.|Nincs|
+|Ügyféltanúsítványok (TLS)|Az ügyféltanúsítványok kölcsönös identitási megbízhatóság létrehozására szolgálnak az ügyfél és a kiszolgáló között. Az ügyféltanúsítványok a TLS-egyeztetés során használatosak. Az Azure Firewall újraegyeztet egy kapcsolatot a kiszolgálóval, és nem fér hozzá az Ügyféltanúsítványok titkos kulcsához.|Nincsenek|
 |QUIC/HTTP3|A QUIC a HTTP új fő verziója. Ez egy UDP-alapú protokoll 80 (csomag) és 443 (SSL). A teljes tartománynév/URL/TLS-ellenőrzés nem támogatott.|Az UDP 80/443 hálózati szabályokként való továbbításának beállítása.|
 |A biztonságos hub és a kényszerített bújtatás nem támogatott a Premiumban|A biztonságos központi telepítések és a kényszerített bújtatási konfigurációk jelenleg nem támogatják a Firewall Premium SKU-t.|Javítás ütemezése a GA-ban.|
 Nem megbízható ügyfél által aláírt tanúsítványok|Az ügyfél által aláírt tanúsítványokat a tűzfal nem bízik meg, ha az intranetes webkiszolgálóról érkezett.|Javítás ütemezése a GA-ban.
@@ -157,8 +157,7 @@ Nem megbízható ügyfél által aláírt tanúsítványok|Az ügyfél által al
 |Tanúsítvány propagálása|A HITELESÍTÉSSZOLGÁLTATÓI tanúsítványnak a tűzfalon való alkalmazása után a tanúsítvány érvénybe léptetéséhez 5-10 percet is igénybe vehet.|Javítás ütemezése a GA-ban.|
 |IDP megkerülése|A IDP megkerülése nem működik a TLS-leállított forgalom esetében, és a forrás IP-cím és a forrás IP-csoportok nem támogatottak.|Javítás ütemezése a GA-ban.|
 |TLS 1,3-támogatás|A TLS 1,3 részlegesen támogatott. Az ügyfél és a tűzfal közötti TLS-alagút a TLS 1,2-alapú, a tűzfaltól a külső webkiszolgálóig a TLS 1,3-alapú.|A frissítések vizsgálata folyamatban van.|
-
-
+|Kulcstartó magánhálózati végpontja|A kulcstartó támogatja a privát végpontok hozzáférését a hálózati kitettség korlátozására. A megbízható Azure-szolgáltatások figyelmen kívül hagyhatják ezt a korlátozást, ha a kulcstartó [dokumentációjában](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)leírtak szerint egy kivétel van konfigurálva. Azure Firewall jelenleg nem megbízható szolgáltatásként szerepel, és nem fér hozzá a Key Vaulthoz.|Javítás ütemezése a GA-ban.|
 
 
 ## <a name="next-steps"></a>Következő lépések

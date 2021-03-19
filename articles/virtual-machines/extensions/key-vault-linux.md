@@ -10,16 +10,16 @@ ms.collection: linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 23a0d7cd45ceef8f97bb56d65f4807f8d60735dc
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 9032bfca30ead56c91d7904e18b76753cf3b6dfc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601049"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582170"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>A Linux rendszerhez készült virtuálisgép-bővítmény Key Vault
 
-A Key Vault virtuálisgép-bővítmény az Azure Key vaultban tárolt tanúsítványok automatikus frissítését teszi lehetővé. Pontosabban a bővítmény figyeli a Key vaultban tárolt megfigyelt tanúsítványok listáját.  A módosítás észlelése után a bővítmény lekéri és telepíti a megfelelő tanúsítványokat. A bővítmény a teljes tanúsítványláncot telepíti a virtuális gépre. A Key Vault VM-bővítményt a Microsoft közzétette és támogatja, jelenleg Linux rendszerű virtuális gépeken. Ez a dokumentum részletesen ismerteti a Linux rendszerhez készült Key Vault virtuálisgép-bővítmény támogatott platformokat, konfigurációkat és telepítési lehetőségeit. 
+A Key Vault virtuálisgép-bővítmény az Azure Key vaultban tárolt tanúsítványok automatikus frissítését teszi lehetővé. Pontosabban a bővítmény figyeli a Key vaultban tárolt megfigyelt tanúsítványok listáját.  A módosítás észlelése után a bővítmény lekéri és telepíti a megfelelő tanúsítványokat. A Key Vault VM-bővítményt a Microsoft közzétette és támogatja, jelenleg Linux rendszerű virtuális gépeken. Ez a dokumentum részletesen ismerteti a Linux rendszerhez készült Key Vault virtuálisgép-bővítmény támogatott platformokat, konfigurációkat és telepítési lehetőségeit. 
 
 ### <a name="operating-system"></a>Operációs rendszer
 
@@ -36,6 +36,7 @@ A Key Vault virtuálisgép-bővítmény támogatja ezeket a Linux-disztribúció
 
 - PKCS #12
 - PEM
+
 
 ## <a name="prerequisities"></a>Prerequisities
   - Key Vault példány tanúsítvánnyal. Lásd: [Key Vault létrehozása](../../key-vault/general/quick-create-portal.md)
@@ -56,6 +57,20 @@ A Key Vault virtuálisgép-bővítmény támogatja ezeket a Linux-disztribúció
                     "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
                   }
    `
+## <a name="key-vault-vm-extension-version"></a>Key Vault virtuálisgép-bővítmény verziója
+* Az Ubuntu-18,04 és a SUSE-15 felhasználók a Key Vault virtuálisgép-bővítmény verzióját is frissíthetik, hogy `V2.0` a teljes tanúsítványlánc-letöltési funkciót használják. A kiállítói tanúsítványok (köztes és gyökér) a PEM-fájlban lévő levél-tanúsítványhoz lesznek hozzáfűzve.
+
+* Ha a verzióra szeretne frissíteni `v2.0` , először törölnie kell `v1.0` , majd telepítenie kell `v2.0` .
+```
+  az vm extension delete --name KeyVaultForLinux --resource-group ${resourceGroup} --vm-name ${vmName}
+  az vm extension set -n "KeyVaultForLinux" --publisher Microsoft.Azure.KeyVault --resource-group "${resourceGroup}" --vm-name "${vmName}" –settings .\akvvm.json –version 2.0
+```  
+  A (2,0-es) jelző nem kötelező, mert a legújabb verzió alapértelmezés szerint telepítve lesz.   
+
+* Ha a virtuális gépen a v 1.0 által letöltött tanúsítványok vannak, akkor a v 1.0 AKVVM-bővítmény törlése nem törli a letöltött tanúsítványokat.  A 2.0-s verzió telepítése után a meglévő tanúsítványok nem lesznek módosítva.  Törölnie kell a tanúsítvány fájljait, vagy át kell adnia a tanúsítványt, hogy a PEM-fájl teljes láncú legyen a virtuális gépen.
+
+
+
 
 ## <a name="extension-schema"></a>Bővítményséma
 
@@ -72,7 +87,7 @@ A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti 
       "properties": {
       "publisher": "Microsoft.Azure.KeyVault",
       "type": "KeyVaultForLinux",
-      "typeHandlerVersion": "1.0",
+      "typeHandlerVersion": "2.0",
       "autoUpgradeMinorVersion": true,
       "settings": {
         "secretsManagementSettings": {
@@ -109,7 +124,7 @@ A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti 
 | apiVersion | 2019-07-01 | dátum |
 | közzétevő | Microsoft.Azure.KeyVault | sztring |
 | típus | KeyVaultForLinux | sztring |
-| typeHandlerVersion | 1.0 | int |
+| typeHandlerVersion | 2.0 | int |
 | pollingIntervalInS | 3600 | sztring |
 | certificateStoreName | A Linuxon figyelmen kívül lesz hagyva | sztring |
 | linkOnRenewal | hamis | boolean |
@@ -142,7 +157,7 @@ A virtuálisgép-bővítmények JSON-konfigurációját a sablon virtuálisgép-
       "properties": {
       "publisher": "Microsoft.Azure.KeyVault",
       "type": "KeyVaultForLinux",
-      "typeHandlerVersion": "1.0",
+      "typeHandlerVersion": "2.0",
       "autoUpgradeMinorVersion": true,
       "settings": {
           "secretsManagementSettings": {
@@ -189,7 +204,7 @@ A Azure PowerShell használatával telepítheti a Key Vault virtuálisgép-bőv�
        
     
         # Start the deployment
-        Set-AzVmExtension -TypeHandlerVersion "1.0" -ResourceGroupName <ResourceGroupName> -Location <Location> -VMName <VMName> -Name $extName -Publisher $extPublisher -Type $extType -SettingString $settings
+        Set-AzVmExtension -TypeHandlerVersion "2.0" -ResourceGroupName <ResourceGroupName> -Location <Location> -VMName <VMName> -Name $extName -Publisher $extPublisher -Type $extType -SettingString $settings
     
     ```
 
@@ -209,7 +224,7 @@ A Azure PowerShell használatával telepítheti a Key Vault virtuálisgép-bőv�
         
         # Add Extension to VMSS
         $vmss = Get-AzVmss -ResourceGroupName <ResourceGroupName> -VMScaleSetName <VmssName>
-        Add-AzVmssExtension -VirtualMachineScaleSet $vmss  -Name $extName -Publisher $extPublisher -Type $extType -TypeHandlerVersion "1.0" -Setting $settings
+        Add-AzVmssExtension -VirtualMachineScaleSet $vmss  -Name $extName -Publisher $extPublisher -Type $extType -TypeHandlerVersion "2.0" -Setting $settings
 
         # Start the deployment
         Update-AzVmss -ResourceGroupName <ResourceGroupName> -VMScaleSetName <VmssName> -VirtualMachineScaleSet $vmss 
@@ -228,6 +243,7 @@ Az Azure CLI használatával telepítheti a Key Vault virtuálisgép-bővítmén
          --publisher Microsoft.Azure.KeyVault `
          -g "<resourcegroup>" `
          --vm-name "<vmName>" `
+         --version 2.0 `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
 
@@ -239,6 +255,7 @@ Az Azure CLI használatával telepítheti a Key Vault virtuálisgép-bővítmén
         --publisher Microsoft.Azure.KeyVault `
         -g "<resourcegroup>" `
         --vmss-name "<vmssName>" `
+        --version 2.0 `
         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
 Vegye figyelembe a következő korlátozásokat/követelményeket:

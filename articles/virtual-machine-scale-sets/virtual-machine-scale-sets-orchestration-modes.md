@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.date: 02/12/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: d1290b1dcc1e97d63dd41d5be8ca19b81e32f838
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: cc862759ce28c4d23dbc2197f63311e29ba82709
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225030"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607502"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>Előzetes verzió: az Azure-beli virtuálisgép-méretezési csoportok előkészítési módjai 
 
@@ -85,7 +85,7 @@ A virtuálisgép-méretezési csoport VM API-jai helyett a standard VM-parancsok
 Az alkalmazás állapotának figyelése lehetővé teszi, hogy az alkalmazás egy szívveréssel biztosítsa az Azure-nak, hogy az alkalmazás kifogástalan vagy sérült legyen. Az Azure képes automatikusan helyettesíteni a nem kifogástalan virtuálisgép-példányokat. A rugalmas méretezési csoport példányai esetében telepítenie és konfigurálnia kell az alkalmazás állapota bővítményt a virtuális gépen. Az egységes méretezési csoport példányai esetében használhatja az alkalmazás állapotát vagy az állapot mérését Azure Load Balancer egyéni állapot-mintavételsel. 
 
 ### <a name="list-scale-sets-vm-api-changes"></a>Méretezési csoportok VM API-változásainak listázása 
-Virtual Machine Scale Sets lehetővé teszi a méretezési csoporthoz tartozó példányok listázását. A rugalmas összehangolás Virtual Machine Scale Sets a virtuálisgép-parancs lista a méretezési csoportok virtuálisgép-azonosítóinak listáját tartalmazza. Ezután meghívhatja a GET Virtual Machine Scale Sets VM-parancsokat, hogy további részleteket kapjon arról, hogyan működik a méretezési csoport a virtuálisgép-példánnyal. A virtuális gép összes adatának beszerzéséhez használja a standard GET VM-parancsokat vagy az [Azure Resource Graphot](https://docs.microsoft.com/azure/governance/resource-graph/overview). 
+Virtual Machine Scale Sets lehetővé teszi a méretezési csoporthoz tartozó példányok listázását. A rugalmas összehangolás Virtual Machine Scale Sets a virtuálisgép-parancs lista a méretezési csoportok virtuálisgép-azonosítóinak listáját tartalmazza. Ezután meghívhatja a GET Virtual Machine Scale Sets VM-parancsokat, hogy további részleteket kapjon arról, hogyan működik a méretezési csoport a virtuálisgép-példánnyal. A virtuális gép összes adatának beszerzéséhez használja a standard GET VM-parancsokat vagy az [Azure Resource Graphot](../governance/resource-graph/overview.md). 
 
 ### <a name="retrieve-boot-diagnostics-data"></a>Rendszerindítási diagnosztikai adatlekérdezés 
 A standard VM API-k és parancsok használatával lekérheti a példány rendszerindítási diagnosztikai adatait és a képernyőképeket. A virtuálisgép-rendszerindítási diagnosztikai API-k és parancsok Virtual Machine Scale Sets nem használhatók rugalmas előkészítési módú példányokkal.
@@ -269,7 +269,7 @@ zones = ["1"]
 
 2. Adja hozzá a virtuális gépeket a méretezési csoporthoz.
     1. Rendelje hozzá a `virtualMachineScaleSet` tulajdonságot a korábban létrehozott méretezési készlethez. A `virtualMachineScaleSet` virtuális gép létrehozásakor meg kell adnia a tulajdonságot. 
-    1. Több virtuális gép egyidejű létrehozásához használhatja a **copy ()** Azure Resource Manager template függvényt. Lásd: [erőforrás-iteráció](https://docs.microsoft.com/azure/azure-resource-manager/templates/copy-resources#iteration-for-a-child-resource) Azure Resource Manager-sablonokban. 
+    1. Több virtuális gép egyidejű létrehozásához használhatja a **copy ()** Azure Resource Manager template függvényt. Lásd: [erőforrás-iteráció](../azure-resource-manager/templates/copy-resources.md#iteration-for-a-child-resource) Azure Resource Manager-sablonokban. 
 
     ```json
     {

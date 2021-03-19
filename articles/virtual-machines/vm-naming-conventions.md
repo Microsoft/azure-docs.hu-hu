@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 7/22/2020
 ms.author: mimckitt
 ms.custom: sttsinar
-ms.openlocfilehash: 98d35821c884ba25a109f929556087ff6ecba0ca
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 2fa362a56eb1246381fcc944e82ea85d31ff3d39
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102551014"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599901"
 ---
 # <a name="azure-virtual-machine-sizes-naming-conventions"></a>Az Azure-beli virtuális gépek méretei elnevezési konvenciói
 
@@ -28,7 +28,7 @@ Ez az oldal az Azure-beli virtuális gépekhez használt elnevezési konvenciók
 | Family (Család) | A virtuálisgép-család adatsorozatát jelzi.| 
 | * Alárendelt család | Kizárólag a speciális virtuálisgép-megkülönböztetésekhez használatos|
 | vCPU száma| A virtuális gép vCPU számát jelöli. |
-| * Korlátozott vCPU| Csak bizonyos virtuálisgép-méreteknél használatos. Azt jelzi, hogy a [korlátozott vCPU-méretre képes](https://docs.microsoft.com/azure/virtual-machines/constrained-vcpu) vCPU száma |
+| * Korlátozott vCPU| Csak bizonyos virtuálisgép-méreteknél használatos. Azt jelzi, hogy a [korlátozott vCPU-méretre képes](./constrained-vcpu.md) vCPU száma |
 | Adalékanyag-funkciók | Egy vagy több kisbetű az adalékanyag funkcióit jelöli, például: <br> a = AMD-alapú processzor <br> d = lemez (a helyi Temp lemez megtalálható); Ez az újabb Azure-beli virtuális gépek esetén: [Ddv4 és Ddsv4 sorozat](./ddv4-ddsv4-series.md) <br> h = hibernálásra alkalmas <br> i = elkülönített méret <br> l = kevés a memória; a memória méretének megfelelőnél kevesebb memóriát igényel <br> m = intenzív memória; a legnagyobb mennyiségű memória egy adott méretben <br> t = kis memória; egy adott méretű memória legkisebb mennyisége <br> r = RDMA-kompatibilis <br> s = Premium Storage képes, beleértve a [Ultra SSD](./disks-types.md#ultra-disk) lehetséges használatát is (Megjegyzés: a s attribútum nélküli néhány újabb méret továbbra is támogatja Premium Storage például M128, M64 stb.).<br> |
 | * Gyorssegéd típusa | A speciális/GPU SKU-ban lévő hardveres gyorssegéd típusát jelöli. A (z) 2020-es Q3-ből indított új speciális/GPU-SKU-ra csak a hardveres gyorssegéd lesz a névben. |
 | Verzió | A virtuálisgép-család adatsorozatának verzióját jelöli. |
@@ -79,4 +79,4 @@ Ez az oldal az Azure-beli virtuális gépekhez használt elnevezési konvenciók
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ az elérhető virtuálisgép- [méretekről](./sizes.md) az Azure-ban. 
+További információ az elérhető virtuálisgép- [méretekről](./sizes.md) az Azure-ban.

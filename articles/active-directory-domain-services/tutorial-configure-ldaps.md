@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/04/2021
 ms.author: justinha
-ms.openlocfilehash: 1619622ad9594f252c3d4cf5551704c6a788f9f8
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: fec2695c9e196a652a4166161bf012b22b0d00e6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102564084"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579552"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: biztonságos LDAP konfigurálása Azure Active Directory Domain Services felügyelt tartományhoz
 
@@ -152,7 +152,7 @@ Ahhoz, hogy az előző lépésben létrehozott digitális tanúsítványt a fel�
 
     A **Biztonság** lapon válassza a **jelszó megadását** a védelméhez *. PFX* -tanúsítványfájl. A titkosítási algoritmusnak *TripleDES-SHA1* értékűnek kell lennie. Adja meg és erősítse meg a jelszót, majd kattintson a **tovább** gombra. Ezt a jelszót a következő szakaszban lehet használni a felügyelt tartomány biztonságos LDAP-szolgáltatásának engedélyezéséhez.
 
-    Ha a [PowerShell export-pfxcertificate parancsmag](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate)használatával exportál, a *-CryptoAlgorithmOption* jelzőt kell átadnia a TripleDES_SHA1 használatával.
+    Ha a [PowerShell export-pfxcertificate parancsmag](/powershell/module/pkiclient/export-pfxcertificate)használatával exportál, a *-CryptoAlgorithmOption* jelzőt kell átadnia a TripleDES_SHA1 használatával.
 
     ![Képernyőkép a jelszó titkosításáról](./media/tutorial-configure-ldaps/encrypt.png)
 

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 110607e9da68cf131a43651b97c599873ce33cb8
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: e154e43f9e9378d6cccd23e2e5892f2a8ccf9a1e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103495266"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598881"
 ---
 # <a name="calling-client-library-overview"></a>Hívási ügyfélkódtár áttekintése
 
@@ -120,8 +120,8 @@ A kommunikációs szolgáltatások az ügyféloldali kódtárat a következő fo
 
 |           |Webes | Android/iOS|
 |-----------|----|------------|
-|**egyidejűleg elküldött kimenő adatfolyamok száma** |1 videó + 1 képernyő megosztása | 1 videó + 1 képernyő megosztása|
-|**egyidejűleg megjeleníthető bejövő adatfolyamok száma** |1 videó + 1 képernyő megosztása| 6 videó + 1 képernyő megosztása |
+|**egyidejűleg elküldött kimenő adatfolyamok száma** |1 videó vagy 1 képernyő megosztása | 1 videó + 1 képernyő megosztása|
+|**egyidejűleg megjeleníthető bejövő adatfolyamok száma** |1 videó vagy 1 képernyő megosztása| 6 videó + 1 képernyő megosztása |
 
 
 ## <a name="next-steps"></a>Következő lépések
