@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: b9e990988770e8aca015ae8b1159bb4f5e50df57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82205091"
 ---
 # <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>Azure API Management saját üzemeltetésű átjáró üzembe helyezése a Docker-ben
@@ -35,11 +35,11 @@ Ez a cikk az Azure-API Management saját üzemeltetésű átjáró-összetevőj�
 
 ## <a name="deploy-the-self-hosted-gateway-to-docker"></a>A saját üzemeltetésű átjáró üzembe helyezése a Docker-ben
 
-1. Válassza az **átjárók** lehetőséget az **üzembe helyezés és az infrastruktúra**területen.
+1. Válassza az **átjárók** lehetőséget az **üzembe helyezés és az infrastruktúra** területen.
 2. Válassza ki azt az átjáró-erőforrást, amelyet telepíteni kíván.
-3. Válassza a **telepítés**lehetőséget.
+3. Válassza a **telepítés** lehetőséget.
 4. Vegye figyelembe, hogy a **jogkivonat** szövegmezőben lévő hozzáférési jogkivonat automatikusan lett létrehozva az alapértelmezett **lejárati** és **titkos kulcs** értékeinek használatával. Ha szükséges, válassza ki a kívánt értékeket mindkét vezérlőelemben egy új jogkivonat létrehozásához.
-4. Győződjön meg arról, hogy a **Docker** ki van választva a **telepítési parancsfájlok**területen.
+4. Győződjön meg arról, hogy a **Docker** ki van választva a **telepítési parancsfájlok** területen.
 5. A fájl letöltéséhez válassza az **env. conf** fájl hivatkozását a **környezet** mellett.
 6. A **Run (Futtatás** ) szövegmező jobb oldalán található **Másolás** ikonra kattintva másolja a Docker-parancsot a vágólapra.
 7. Illessze be a parancsot a terminál (vagy a parancs) ablakába. Szükség szerint módosítsa a port-hozzárendeléseket és a tároló nevét. Vegye figyelembe, hogy a parancs feltételezi, hogy a letöltött környezeti fájl megtalálható az aktuális könyvtárban.
@@ -62,7 +62,7 @@ CONTAINER ID        IMAGE                                                 COMMAN
 >
 > <code>docker container logs --help</code>A parancs használatával megtekintheti az összes naplózási megtekintési beállítást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a saját üzemeltetésű átjáróról: az [Azure API Management saját üzemeltetésű átjárójának áttekintése](self-hosted-gateway-overview.md).
 * [Konfigurálja az egyéni tartománynevet a saját üzemeltetésű átjáróhoz](api-management-howto-configure-custom-domain-gateway.md).

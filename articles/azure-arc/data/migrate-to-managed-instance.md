@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 86563b0a44bade2cedaf76af3c247821756111fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90939633"
 ---
 # <a name="migrate-sql-server-to-azure-arc-enabled-sql-managed-instance"></a>Migrálás: SQL Server az Azure arc használatára képes SQL felügyelt példányhoz
@@ -82,7 +82,7 @@ Ebben a lépésben csatlakozni fogunk a forrás SQL Serverhoz, és létrehozjuk 
 ### <a name="step-4-restore-the-database-from-azure-blob-storage-to-sql-managed-instance---azure-arc"></a>4. lépés: az adatbázis visszaállítása az Azure Blob Storage-ból az SQL felügyelt példányára – Azure arc
 
 1. Azure Data Studio jelentkezzen be, és kapcsolódjon a felügyelt SQL-példányhoz – Azure arc.
-1. Bontsa ki a **rendszeradatbázisok**csomópontot, kattintson a jobb gombbal a **Master** adatbázisra, és válassza az **Új lekérdezés**lehetőséget.
+1. Bontsa ki a **rendszeradatbázisok** csomópontot, kattintson a jobb gombbal a **Master** adatbázisra, és válassza az **Új lekérdezés** lehetőséget.
 1. A hitelesítő adatok létrehozásához a lekérdezés-szerkesztő ablakban készítse elő és futtassa ugyanazt a lekérdezést az előző lépésből.
 
    ```sql

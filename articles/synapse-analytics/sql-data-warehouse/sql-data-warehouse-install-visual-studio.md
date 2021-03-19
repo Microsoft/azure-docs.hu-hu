@@ -4,20 +4,20 @@ description: A Visual Studio és a SQL Server fejlesztői eszközök (SSDT) tele
 services: synapse-analytics
 ms.custom: vs-azure, azure-synapse
 ms.workload: azure-vs
-author: kevinvngo
+author: gaursa
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 05/11/2020
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: igorstan
-ms.openlocfilehash: b70694011aa0467d8ca037ac309ffb0811c79c01
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: ab70ec4f7f2c313c2ae4efcc6d1ad994fbec8b03
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737948"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585570"
 ---
 # <a name="getting-started-with-visual-studio-2019"></a>Ismerkedés a Visual Studio 2019-cel
 
@@ -47,6 +47,6 @@ Előfordulhat, hogy a szinapszis SQL-hez tartozó szolgáltatás kiadásai nem t
 - Bizonyos T-SQL-funkciók, például:
    - A GROUP záradékon *belül* a [STRING_AGG](/sql/t-sql/functions/string-agg-transact-sql) string függvényben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már rendelkezik a SSDT legújabb verziójával, készen áll az SQL-készlethez való [kapcsolódásra](sql-data-warehouse-query-visual-studio.md) .

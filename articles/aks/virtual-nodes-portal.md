@@ -3,14 +3,14 @@ title: Virtuális csomópontok létrehozása a portál használatával az Azure 
 description: Megtudhatja, hogyan használhatja a Azure Portalt olyan Azure Kubernetes Services-(ak-) fürt létrehozásához, amely virtuális csomópontokat használ a hüvelyek futtatásához.
 services: container-service
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 03/15/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 06a3e7263b2e03cfc37f7ba3c733e07536b5d473
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: c1ecaa88dd5329d86818565983a6ba891a6d8424
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102501804"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577825"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Azure Kubernetes Services (ak) fürt létrehozása és konfigurálása virtuális csomópontok használatára a Azure Portalban
 
@@ -54,15 +54,15 @@ A Azure Portal bal felső sarkában válassza az **erőforrás létrehozása**  
 Az **Alapvető beállítások** lapon konfigurálja az alábbiakat:
 
 - *PROJEKT ADATAI*: Válasszon ki egy Azure-előfizetést, majd válasszon ki vagy hozzon létre egy Azure-erőforráscsoportot, például: *myResourceGroup*. Adja meg a **Kubernetes-fürt nevét**, például *myAKSCluster*.
-- *FÜRT ADATAI*: Válasszon egy régiót, Kubernetes-verziót és DNS-névelőtagot az AKS-fürthöz.
+- *Fürt adatai*: válasszon régiót és Kubernetes-verziót az AK-fürthöz.
 - *Elsődleges csomóponti készlet*: válasszon ki egy virtuálisgép-méretet az AK-csomópontok számára. A virtuálisgép-méret az AKS-fürt telepítését követően **nem** módosítható.
      - Adja meg a fürtre telepítendő csomópontok számát. Ehhez a cikkhez állítsa a **csomópontok száma** *1* értékre. A csomópontok száma a fürt telepítése után is **módosítható**.
 
-Kattintson a **Tovább: skála** lehetőségre.
+Kattintson a **Tovább: csomópont-készletek** elemre.
 
-A **skála** lapon válassza az *engedélyezve* lehetőséget a **virtuális csomópontok** alatt.
+A **csomópont-készletek** lapon válassza a *virtuális csomópontok engedélyezése* lehetőséget.
 
-![AK-fürt létrehozása és a virtuális csomópontok engedélyezése](media/virtual-nodes-portal/enable-virtual-nodes.png)
+:::image type="content" source="media/virtual-nodes-portal/enable-virtual-nodes.png" alt-text="A böngészőben egy olyan fürt létrehozása látható, amelyen engedélyezve vannak a virtuális csomópontok a Azure Portal. A &quot;virtuális csomópontok engedélyezése&quot; beállítás ki van emelve.":::
 
 Alapértelmezés szerint a rendszer létrehozza a fürt identitását. Ez a fürt-identitás a fürtök közötti kommunikációhoz és más Azure-szolgáltatásokkal való integrációhoz használatos. Alapértelmezés szerint a fürt identitása felügyelt identitás. További információ: [felügyelt identitások használata](use-managed-identity.md). A fürt identitását is használhatja egyszerű szolgáltatásnévként.
 
@@ -158,7 +158,7 @@ A pod a virtuális csomópontokkal való használatra delegált Azure virtuális
 A virtuális csomóponton futó Pod teszteléséhez keresse meg a bemutató alkalmazást egy webes ügyféllel. Mivel a pod belső IP-cím van hozzárendelve, gyorsan tesztelheti ezt a kapcsolatot egy másik Pod-on az AK-fürtön. Hozzon létre egy teszt Pod-t, és csatoljon hozzá egy terminál-munkamenetet:
 
 ```console
-kubectl run -it --rm virtual-node-test --image=debian
+kubectl run -it --rm virtual-node-test --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
 ```
 
 Telepítés `curl` a pod használatával `apt-get` :

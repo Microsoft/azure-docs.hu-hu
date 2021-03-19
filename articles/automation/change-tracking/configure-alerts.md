@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4faa7837a75bab6dfab651862754cd92394c5137
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 91be2f8641a061d009962cdcd03a8d56048594da
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100585912"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594502"
 ---
 # <a name="how-to-create-alerts-for-change-tracking-and-inventory"></a>Riasztások létrehozása Change Tracking és leltárhoz
 
@@ -50,11 +50,11 @@ Miután beállította a riasztásokat, beállíthat egy műveleti csoportot, ame
 
 3. A **műveletek** területen adjon meg egy nevet, amely megadja a műveletet, például az **e-mail értesítéseket**.
 
-4. A **Művelettípus** mezőben válassza ki a megfelelő típust, például **e-mail/SMS/leküldéses/hang**.
+4. A **Művelettípus** mezőben válassza ki a megfelelő típust, például **e-mail/SMS-üzenet/leküldéses/hang**.
 
-5. Válassza a **Részletek szerkesztése** lehetőséget.
+5. A művelet részleteinek szerkesztéséhez válassza a ceruza ikont.
 
-6. Adja meg a művelet típusát a ablaktáblán. Ha például az **e-mailek/SMS/leküldés/hang** lehetőséget használja, adja meg a művelet nevét, jelölje be az **e-mail** jelölőnégyzetet, adjon meg egy érvényes e-mail-címet, majd kattintson **az OK gombra**.
+6. Adja meg a művelet típusát a ablaktáblán. Ha például **e-mail/SMS-üzenet/leküldéses/hang** használatával küld e-mailt, írja be a művelet nevét, jelölje be az **e-mail** jelölőnégyzetet, adjon meg egy érvényes e-mail-címet, majd kattintson **az OK gombra**.
 
     ![E-mail műveletcsoport konfigurálása](./media/configure-alerts/configure-email-action-group.png)
 

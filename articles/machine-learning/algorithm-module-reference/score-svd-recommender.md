@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 08/10/2020
 ms.openlocfilehash: bf62fa995724b8e1fff757e89945cc39db3d9842
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90893713"
 ---
 # <a name="score-svd-recommender"></a>SVD-ajánló pontozása
@@ -45,7 +45,7 @@ A minősítések előrejelzése során a modell kiszámítja, hogy a felhasznál
 
 1. Adjon hozzá egy betanított javaslatot a folyamathoz, és kapcsolódjon a **betanított SVD-ajánlóhoz**. A modellt a [Train SVD ajánló](train-SVD-recommender.md) moduljának használatával kell létrehoznia.
 
-2. Az **Ajánlói előrejelző típushoz**válassza a **minősítési előrejelzés**lehetőséget. Nincs szükség más paraméterekre.
+2. Az **Ajánlói előrejelző típushoz** válassza a **minősítési előrejelzés** lehetőséget. Nincs szükség más paraméterekre.
 
 3. Adja hozzá azokat az adatokat, amelyekhez előrejelzéseket kíván készíteni, majd a **pontszámhoz kapcsolódjon az adatkészlethez**.
 
@@ -67,7 +67,7 @@ A felhasználókra vonatkozó elemek ajánlásához adja meg a felhasználók é
 
 2. A felhasználók listájának megjelenítéséhez állítsa az **Ajánlói előrejelzési típust** **elemre**.
 
-3. Az **ajánlott elemek kiválasztásához**jelezze, hogy éles környezetben vagy modell kiértékeléséhez használja-e a pontozási modult. Válasszon egyet az alábbi értékek közül:
+3. Az **ajánlott elemek kiválasztásához** jelezze, hogy éles környezetben vagy modell kiértékeléséhez használja-e a pontozási modult. Válasszon egyet az alábbi értékek közül:
 
     - **Az összes elemből**: válassza ezt a lehetőséget, ha egy webszolgáltatásban vagy éles környezetben használni kívánt folyamatot állít be.  Ez a beállítás engedélyezi az *éles üzemmódot*. A modul javaslatokat tesz a betanítás során látható összes elemről.
 
@@ -77,7 +77,7 @@ A felhasználókra vonatkozó elemek ajánlásához adja meg a felhasználók é
 
 4. Adja hozzá azt az adatkészletet, amelyhez előrejelzéseket kíván készíteni, majd a pontszámhoz kapcsolódjon az **adatkészlethez**.
 
-    - **Minden elemnél**a bemeneti adatkészletnek egy oszlopból kell állnia. Azon felhasználók azonosítóit tartalmazza, amelyekhez javaslatokat szeretne tenni.
+    - **Minden elemnél** a bemeneti adatkészletnek egy oszlopból kell állnia. Azon felhasználók azonosítóit tartalmazza, amelyekhez javaslatokat szeretne tenni.
 
       Az adatkészlet tartalmazhatja az elemek azonosítóinak és minősítésének két további oszlopát is, de ez a két oszlop figyelmen kívül lesz hagyva. 
 
@@ -95,7 +95,7 @@ A felhasználókra vonatkozó elemek ajánlásához adja meg a felhasználók é
 
    Ezt a lehetőséget csak akkor használja, ha próbaverziós módban dolgozik. A beállítás nem érhető el, ha az **összes elemből** vagy **a nem értékelt elemek közül a lehetőséget választja (új elemeket javasol a felhasználóknak)**.
 
-7.  A nem **értékelt elemek esetében (az új elemek felhasználók számára történő javaslatához)** használja a **betanítási adatok**nevű harmadik bemeneti portot, hogy eltávolítsa azokat az elemeket, amelyek már a jóslat eredményeiből lettek kiértékelve.
+7.  A nem **értékelt elemek esetében (az új elemek felhasználók számára történő javaslatához)** használja a **betanítási adatok** nevű harmadik bemeneti portot, hogy eltávolítsa azokat az elemeket, amelyek már a jóslat eredményeiből lettek kiértékelve.
 
     A szűrő alkalmazásához az eredeti betanítási adatkészletet a bemeneti porthoz kell kapcsolni.
 

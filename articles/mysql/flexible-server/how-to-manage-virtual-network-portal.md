@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.openlocfilehash: 28506ea5afe085e9f52e40495d9931ae0aeddf32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90935060"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Virtuális hálózatok létrehozása és kezelése Azure Database for MySQL-rugalmas kiszolgálókhoz a Azure Portal használatával
@@ -38,11 +38,11 @@ Egy rugalmas kiszolgáló virtuális hálózatban való létrehozásához a köv
 ## <a name="create-azure-database-for-mysql-flexible-server-in-an-already-existing-virtual-network"></a>Azure Database for MySQL rugalmas kiszolgáló létrehozása már meglévő virtuális hálózatban
 
 1. A portál bal felső sarkában válassza az **erőforrás létrehozása** (+) lehetőséget.
-2. Válassza az **adatbázisok**  >  **Azure Database for MySQL**elemet. Megadhatja a **MySQL** kifejezést is a keresőmezőbe a szolgáltatás megtalálásához.
+2. Válassza az **adatbázisok**  >  **Azure Database for MySQL** elemet. Megadhatja a **MySQL** kifejezést is a keresőmezőbe a szolgáltatás megtalálásához.
 3. Központi telepítési lehetőségként válassza a **rugalmas kiszolgáló** lehetőséget.
 4. Töltse ki az **alapvető beállítások** űrlapot.
 5. Lépjen a **hálózat** lapra, és konfigurálja, hogyan szeretne csatlakozni a kiszolgálóhoz.
-6. A **kapcsolódási módszer**területen válassza a **privát hozzáférés (VNet-integráció)** lehetőséget. Lépjen **Virtual Network** , és válassza ki a már meglévő *virtuális hálózatot* és *alhálózatot* , amely a fenti előfeltételek részeként lett létrehozva.
+6. A **kapcsolódási módszer** területen válassza a **privát hozzáférés (VNet-integráció)** lehetőséget. Lépjen **Virtual Network** , és válassza ki a már meglévő *virtuális hálózatot* és *alhálózatot* , amely a fenti előfeltételek részeként lett létrehozva.
 7. A rugalmas kiszolgáló konfigurációjának áttekintéséhez válassza a **felülvizsgálat + létrehozás** elemet.
 8. A kiszolgáló üzembe helyezéséhez válassza a **Létrehozás** lehetőséget. A kiépítés néhány percet is igénybe vehet.
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8a1a2d7f5272def78cd162da1f6ac0265d4fb30b
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 66f11b7a5124f0b9b834b79368d57443ab33e850
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102517736"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578345"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Webes API-kat meghívó asztali alkalmazás: alkalmazás regisztrálása
 
@@ -40,10 +40,14 @@ Ha az asztali alkalmazás interaktív hitelesítést használ, bármilyen [fiók
 
 Az asztali alkalmazásokban használandó átirányítási URI-k a használni kívánt folyamattól függenek.
 
-- Ha az interaktív hitelesítést vagy az eszköz kódjának folyamatát használja, használja a t `https://login.microsoftonline.com/common/oauth2/nativeclient` . A konfiguráció eléréséhez válassza ki a megfelelő URL-címet az alkalmazás **hitelesítés** szakaszában.
+Adja meg az alkalmazás átirányítási URI-JÁT úgy, hogy az Azure Portal **Alkalmazásregisztrációkban** [konfigurálja az alkalmazás platformjának beállításait](quickstart-register-app.md#add-a-redirect-uri) .
+
+- Interaktív hitelesítést használó alkalmazások esetén:
+  - Beágyazott böngészőket használó alkalmazások: `https://login.microsoftonline.com/common/oauth2/nativeclient`
+  - Rendszerböngészőket használó alkalmazások: `http://localhost`
 
   > [!IMPORTANT]
-  > `https://login.microsoftonline.com/common/oauth2/nativeclient`Ajánlott biztonsági eljárásként használni az as átirányítási URI-t.  Ha nincs megadva átirányítási URI, a MSAL.NET `urn:ietf:wg:oauth:2.0:oob` alapértelmezés szerint nem ajánlott.  Ez az alapértelmezett érték a következő jelentős kiadásban feltört változásként frissül.
+  > Biztonsági szempontból ajánlott a explicit módon beállítani, `https://login.microsoftonline.com/common/oauth2/nativeclient` vagy `http://localhost` az átirányítási URI-t. Egyes hitelesítési könyvtárak, például a MSAL.NET alapértelmezett értéket használnak `urn:ietf:wg:oauth:2.0:oob` , ha nincs megadva más átirányítási URI, ami nem ajánlott. Ez az alapértelmezett érték a következő jelentős kiadásban feltört változásként frissül.
 
 - Ha macOS-hez készült natív Objective-C vagy SWIFT alkalmazást hoz létre, regisztrálja az átirányítási URI-t az alkalmazás köteg-azonosítója alapján a következő formátumban: `msauth.<your.app.bundle.id>://auth` . Cserélje le `<your.app.bundle.id>` az alkalmazást az alkalmazás Bundle-azonosítójával.
 - Ha az alkalmazás kizárólag integrált Windows-hitelesítést vagy felhasználónevet és jelszót használ, nem kell regisztrálnia az alkalmazás átirányítási URI-JÁT. Ezek a folyamatok a Microsoft Identity platform 2.0-s végpontján keresztül egy oda-vissza. Az alkalmazás nem hívható vissza semmilyen konkrét URI-ra.

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 18b34ff466f3935cb5cd18d46e6d26e36e756a9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91774460"
 ---
 # <a name="fail-over-to-your-storsimple-cloud-appliance"></a>Feladatátvétel a StorSimple Cloud Appliance
@@ -58,14 +58,14 @@ A következő lépések végrehajtásával állítsa vissza az eszközt egy cél
 
 6. Ismételje meg az előző lépést az összes olyan mennyiségi tárolónál, amelyet át szeretne adni egy másik eszközre.
 
-7. Lépjen vissza az **eszközök** panelre. A parancssorban kattintson a **feladatátvétel**elemre.
+7. Lépjen vissza az **eszközök** panelre. A parancssorban kattintson a **feladatátvétel** elemre.
 
     ![Kattintson a feladatátvétel lehetőségre](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev8.png)
 8. A **feladatátvétel** panelen hajtsa végre a következő lépéseket:
    
-    1. Kattintson a **forrás**lehetőségre. Válassza ki a feladatátvételhez használandó mennyiségi tárolókat. **Csak a társított Felhőbeli pillanatképekkel és kapcsolat nélküli kötetekkel rendelkező tárolók jelennek meg.**
+    1. Kattintson a **forrás** lehetőségre. Válassza ki a feladatátvételhez használandó mennyiségi tárolókat. **Csak a társított Felhőbeli pillanatképekkel és kapcsolat nélküli kötetekkel rendelkező tárolók jelennek meg.**
         ![Forrás kiválasztása](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev11.png)
-    2. Kattintson a **cél**elemre. Válasszon ki egy cél felhőalapú készüléket az elérhető eszközök legördülő listájából. **A listában csak azok az eszközök jelennek meg, amelyek elegendő kapacitással rendelkeznek a forrásként szolgáló tárolók befogadásához.**
+    2. Kattintson a **cél** elemre. Válasszon ki egy cél felhőalapú készüléket az elérhető eszközök legördülő listájából. **A listában csak azok az eszközök jelennek meg, amelyek elegendő kapacitással rendelkeznek a forrásként szolgáló tárolók befogadásához.**
 
         ![Cél kiválasztása](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev12.png)
 
@@ -83,7 +83,7 @@ A következő lépések végrehajtásával állítsa vissza az eszközt egy cél
 
        ![5. eszköz kiválasztása](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
 
-    2. Kattintson a **kötetek tárolók**elemre. Az összes kötet-tárolót, valamint a régi eszköz köteteit is fel kell listázni.
+    2. Kattintson a **kötetek tárolók** elemre. Az összes kötet-tárolót, valamint a régi eszköz köteteit is fel kell listázni.
 
        Ha a feladatátvétel alatt álló kötet helyileg rögzített kötetekkel rendelkezik, akkor ezek a kötetek a lépcsőzetes kötetek felett lesznek felmentve. A helyileg rögzített kötetek nem támogatottak StorSimple Cloud Applianceon.
 

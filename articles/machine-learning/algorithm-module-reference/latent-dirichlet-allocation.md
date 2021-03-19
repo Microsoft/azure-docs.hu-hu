@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 06/05/2020
 ms.openlocfilehash: f9f239ea69aaf71e591a447feb300c13a45ba1a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90907848"
 ---
 # <a name="latent-dirichlet-allocation-module"></a>Látens Dirichlet kiosztási modul
@@ -30,7 +30,7 @@ Ez a modul a szöveg egy oszlopát veszi át, és létrehozza ezeket a kimenetek
 
 + Egy átalakítás, amelyet menthet és újra alkalmazhat a bemenetként használt új szövegre.
 
-Ez a modul a scikit-Learn könyvtárat használja. További információ a scikit-ről: [GitHub-adattár](https://github.com/scikit-learn/scikit-learn), amely oktatóanyagokat és az algoritmus magyarázatát tartalmazza.
+Ez a modul a scikit-Learn könyvtárat használja. További információ a scikit-ről: [GitHub-adattár](https://github.com/scikit-learn/scikit-learn), amely oktatóanyagokat és az algoritmus magyarázatát tartalmazza.
 
 ## <a name="more-about-latent-dirichlet-allocation"></a>További információ a látens Dirichlet kiosztásáról
 
@@ -52,17 +52,17 @@ Ehhez a modulhoz olyan adatkészlet szükséges, amely tartalmazza a nyers vagy 
 
 2. A modul bemenete adjon meg egy adatkészletet, amely egy vagy több szöveges oszlopot tartalmaz.
 
-3. A **célobjektum**mezőben válasszon ki egy vagy több olyan oszlopot, amely az elemezni kívánt szöveget tartalmazza.
+3. A **célobjektum** mezőben válasszon ki egy vagy több olyan oszlopot, amely az elemezni kívánt szöveget tartalmazza.
 
     Több oszlopot is kiválaszthat, de a **karakterlánc** adattípusnak kell lennie.
 
     Mivel a LDA egy nagyméretű szolgáltatás-mátrixot hoz létre a szövegből, általában egyetlen szöveges oszlopot fog elemezni.
 
-4. A  **modellhez tartozó témakörök számának**megadásához adjon meg egy 1 és 1000 közötti egész számot, amely azt jelzi, hogy hány kategóriát vagy témakört szeretne a bemeneti szövegből származtatni.
+4. A  **modellhez tartozó témakörök számának** megadásához adjon meg egy 1 és 1000 közötti egész számot, amely azt jelzi, hogy hány kategóriát vagy témakört szeretne a bemeneti szövegből származtatni.
 
     Alapértelmezés szerint 5 témakör jön létre.
 
-5. **N-gramm**esetén a kivonatolás során generált n-g maximális hosszát határozza meg.
+5. **N-gramm** esetén a kivonatolás során generált n-g maximális hosszát határozza meg.
 
     Az alapértelmezett érték a 2, ami azt jelenti, hogy mind a bigrams, mind a unigrams létrejön.
 
@@ -77,7 +77,7 @@ Ehhez a modulhoz olyan adatkészlet szükséges, amely tartalmazza a nyers vagy 
     > [!NOTE] 
     > Azure Machine Learning Designerben a scikit-Learn könyvtár már nem támogatja a 0,19-es verzió nem normalizált *doc_topic_distr* kimenetét. Ebben a modulban a **normalizálás** paraméter csak a *szolgáltatás témakörének mátrix* kimenetére alkalmazható. Az *átalakított adatkészlet* kimenete mindig normalizált.
 
-7. Válassza a **minden beállítás megjelenítése**lehetőséget, majd állítsa **igaz** értékre, ha a következő speciális paramétereket szeretné beállítani.
+7. Válassza a **minden beállítás megjelenítése** lehetőséget, majd állítsa **igaz** értékre, ha a következő speciális paramétereket szeretné beállítani.
 
     Ezek a paraméterek a LDA scikit-Learn megvalósítására vonatkoznak. Van néhány jó oktatóanyag a scikit-Learn LDA, valamint a hivatalos [scikit – Learn dokumentumban](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.LatentDirichletAllocation.html).
 
@@ -95,11 +95,11 @@ Ehhez a modulhoz olyan adatkészlet szükséges, amely tartalmazza a nyers vagy 
 
     + **Az adattovábbítások száma**. Adja meg, hogy az algoritmus hány alkalommal fogja átvenni az adatmennyiséget. Ez a paraméter megfelel a `max_iter` scikit-Learn paraméternek.
 
-8. Válassza a **ngrams** létrehozása vagy a ngrams létrehozása a **Lda előtt**lehetőséget, ha a szöveg osztályozása előtt létre szeretné hozni az n-Gram-listát egy kezdeti menetben.
+8. Válassza a **ngrams** létrehozása vagy a ngrams létrehozása a **Lda előtt** lehetőséget, ha a szöveg osztályozása előtt létre szeretné hozni az n-Gram-listát egy kezdeti menetben.
 
     Ha korábban hozza létre a kezdeti szótárt, később a modell áttekintéséhez használhatja a szótárt. Az eredmények szövegre való leképezése a numerikus indexek helyett általában könnyebben értelmezhető. A szótár mentése azonban hosszabb időt vesz igénybe, és további tárhelyet fog használni.
 
-9. A **ngram-szótár maximális méretének**megadásához adja meg az n-Gram-szótárban létrehozható sorok teljes számát.
+9. A **ngram-szótár maximális méretének** megadásához adja meg az n-Gram-szótárban létrehozható sorok teljes számát.
 
     Ez a beállítás a szótár méretének szabályozásához hasznos. Ha azonban a bemeneti ngrams száma meghaladja ezt a méretet, ütközések merülhetnek fel.
 
@@ -181,19 +181,19 @@ A kiszámított indexek kiszámítása után a távolság-alapú hasonlósági m
 
 ###  <a name="module-parameters"></a>Modul paramétereinek
 
-|Név|Típus|Tartomány|Választható|Alapértelmezett|Leírás|  
+|Név|Típus|Tartomány|Választható|Alapértelmezett|Description|  
 |----------|----------|-----------|--------------|-------------|-----------------|  
 |Cél oszlop (ok)|Oszlop kijelölése||Kötelező|StringFeature|Cél oszlop neve vagy indexe|  
 |A modellhez tartozó témakörök száma|Egész szám|[1; 1000]|Kötelező|5|A dokumentumok terjesztésének modellezése N témákkal.|  
 |N – gramm|Egész szám|[1; 10]|Kötelező|2|A kivonatolás során generált N-gramm sorrend.|  
 |Normalizálni|Logikai|Igaz vagy hamis|Kötelező|true|A kimenet normalizálása valószínűségek szerint.  Az átalakított adatkészlet a következő lesz: P (témakör&#124;dokumentum), és a szolgáltatás témakörének mátrixa a P (Word&#124;témakör) lesz.|  
 |Az összes beállítás megjelenítése|Logikai|Igaz vagy hamis|Kötelező|Hamis|A scikit-Learn online LDA kapcsolatos további paramétereket jelenít meg.|  
-|Rho paraméter|Lebegőpontos értékek|[0.00001; 1.0]|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve|0,01|Témakör korábbi eloszlása.|  
-|Alfa-paraméter|Lebegőpontos értékek|[0.00001; 1.0]|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve|0,01|A dokumentum korábbi eloszlása című témakör.|  
+|Rho paraméter|Float|[0.00001; 1.0]|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve|0,01|Témakör korábbi eloszlása.|  
+|Alfa-paraméter|Float|[0.00001; 1.0]|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve|0,01|A dokumentum korábbi eloszlása című témakör.|  
 |A dokumentumok becsült száma|Egész szám|[1; int. MaxValue|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve|1000|A dokumentumok becsült száma. A `total_samples` paraméternek felel meg.|  
 |A köteg mérete|Egész szám|[1; 1024]|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve|32|A köteg mérete.|  
 |A tanulási sebesség frissítési ütemtervében használt iteráció kezdeti értéke|Egész szám|[0; int. MaxValue|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve|0|Kezdeti érték, amely a korai iterációk downweights képzési arányát. A `learning_offset` paraméternek felel meg.|  
-|A frissítések során az iterációra alkalmazott teljesítmény|Lebegőpontos értékek|[0.0; 1.0]|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve|0,5|A tanulási arány szabályozása érdekében a rendszer az iterációk számára alkalmazza a szükséges teljesítményt. A `learning_decay` paraméternek felel meg. |  
+|A frissítések során az iterációra alkalmazott teljesítmény|Float|[0.0; 1.0]|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve|0,5|A tanulási arány szabályozása érdekében a rendszer az iterációk számára alkalmazza a szükséges teljesítményt. A `learning_decay` paraméternek felel meg. |  
 |Betanítási Ismétlések száma|Egész szám|[1; 1024]|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve|25|A betanítási Ismétlések száma.|  
 |Ngrams-szótár összeállítása|Logikai|Igaz vagy hamis|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet *nincs* bejelölve|Igaz|Létrehozza a ngrams szótárát a számítástechnikai LDA előtt. Modellek ellenőrzése és értelmezése hasznos.|  
 |Ngram-szótár maximális mérete|Egész szám|[1; int. MaxValue|Akkor érvényes, ha a **ngrams-összeállítási szótár** értéke **true (igaz** )|20000|A ngrams szótár maximális mérete Ha a bemeneti tokenek száma meghaladja ezt a méretet, ütközések merülhetnek fel.|  

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: areddish
 ms.openlocfilehash: c134f30b124113a23df0e73cd1bbc8209e335183
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73647505"
 ---
 # <a name="update-to-the-30-api"></a>Frissítés a 3,0 API-ra
@@ -49,11 +49,11 @@ Az iteráció betanítása után elérhetővé teheti az előrejelzést a **[Pub
 ![A Custom Vision webhely beállításai lap, amely az előrejelzési erőforrás AZONOSÍTÓját ismerteti.](./media/update-application-to-3.0-sdk/prediction-id.png)
 
 > [!TIP]
-> Ezt az információt az [Azure Portalon](https://portal.azure.com) is megtekintheti, ha a Custom Vision előrejelzési erőforrást választja, és kiválasztja a **Tulajdonságok**elemet.
+> Ezt az információt az [Azure Portalon](https://portal.azure.com) is megtekintheti, ha a Custom Vision előrejelzési erőforrást választja, és kiválasztja a **Tulajdonságok** elemet.
 
 Miután közzétette az iterációt, az alkalmazások az előrejelzési API-hívásban megadhatják a nevet az előrejelzéshez. Ha nem szeretné, hogy egy iteráció előrejelzési hívásokhoz ne legyen elérhető, használja a **[UnpublishIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c771cdcbf6a2b18a0c3b81a)** API-t.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A képzés API-referenciájának dokumentációja (REST)](https://go.microsoft.com/fwlink/?linkid=865446)
 * [Előrejelzési API-referenciák dokumentációja (REST)](https://go.microsoft.com/fwlink/?linkid=865445)

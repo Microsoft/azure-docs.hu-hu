@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: c815256e60e5ca6582220d247d587a4488c4a55a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74535313"
 ---
 # <a name="azure-active-directory-operations-reference-guide"></a>Azure Active Directory üzemeltetési útmutató
@@ -36,7 +36,7 @@ Előfordulhat, hogy néhány javaslat nem alkalmazható az összes ügyfél kör
 
 A jelen útmutató minden szakasza azt javasolja, hogy az érdekelt felek kiosztása sikeres legyen a kulcsfontosságú feladatok megtervezéséhez és megvalósításához. A következő táblázat az útmutatóban szereplő összes érintett résztvevő listáját ismerteti:
 
-| Résztvevő | Leírás |
+| Résztvevő | Description |
 | :- | :- |
 | IAM Operations csapat | Ez a csapat kezeli az identitás-és hozzáférés-kezelési rendszerek napi műveleteinek kezelését. |
 | Termelékenységi csapat | A csapat tulajdonosa és felügyeli a hatékonyságnövelő alkalmazásokat, például az e-maileket, a fájlmegosztást és az együttműködést, az azonnali üzenetküldést és a konferenciákat. |
@@ -44,6 +44,6 @@ A jelen útmutató minden szakasza azt javasolja, hogy az érdekelt felek kioszt
 | InfoSec-architektúra csapata | A csapat megtervezi és megtervezi a szervezet informatikai biztonsági gyakorlatát. |
 | InfoSec-műveleti csapat | Ez a csapat futtatja és figyeli az InfoSec-architektúra csapatának megvalósított informatikai biztonsági gyakorlatait. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedés az [identitás-és hozzáférés-kezelési ellenőrzésekkel és műveletekkel](active-directory-ops-guide-iam.md).

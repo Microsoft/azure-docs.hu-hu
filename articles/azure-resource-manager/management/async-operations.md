@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.custom: seodec18
 ms.openlocfilehash: e2c5ba137d5277466cf1b382d2b0b1bc02259f00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88723452"
 ---
 # <a name="track-asynchronous-azure-operations"></a>Aszinkron Azure-műveletek nyomon követése
@@ -203,7 +203,7 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft
 
 Ha a kérelem még fut, a 202 állapotkódot kapja meg. Ha a kérelem befejeződött, a kapott állapotkód 200, a válasz törzse pedig a létrehozott Storage-fiók tulajdonságait tartalmazza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az egyes REST-műveletekkel kapcsolatos dokumentációért lásd: [REST API dokumentáció](/rest/api/azure/).
 * A sablonok Resource Manager-REST API használatával történő telepítésével kapcsolatos információkért lásd: [erőforrások üzembe helyezése Resource Manager-sablonokkal és Resource Manager-Rest APIokkal](../templates/deploy-rest.md).

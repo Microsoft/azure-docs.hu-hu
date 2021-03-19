@@ -9,10 +9,10 @@ ms.date: 09/30/2020
 ms.author: harshacs
 ms.custom: MVC
 ms.openlocfilehash: 80ff2f3f3d5fdcf61770889dcdaaf075941b90ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91814572"
 ---
 # <a name="reprotect-from-azure-to-azure-vmware-solution-private-cloud"></a>Ismételt védelem az Azure-ból az Azure VMware-megoldás saját felhőbe
@@ -59,10 +59,10 @@ Engedélyezze a replikációt. Az adott virtuális gépek vagy helyreállítási
 
 A következőképpen engedélyezheti az ismételt védelmet:
 
-1. Válassza **a**tár  >  **replikált elemek**lehetőséget. Kattintson a jobb gombbal a feladatátvétel alatt álló virtuális gépre, majd válassza az **ismételt védelem**lehetőséget. Vagy a parancsgombok közül válassza ki a gépet, majd válassza az **ismételt védelem**lehetőséget.
+1. Válassza **a** tár  >  **replikált elemek** lehetőséget. Kattintson a jobb gombbal a feladatátvétel alatt álló virtuális gépre, majd válassza az **ismételt védelem** lehetőséget. Vagy a parancsgombok közül válassza ki a gépet, majd válassza az **ismételt védelem** lehetőséget.
 2. Ellenőrizze, hogy be van-e jelölve az **Azure és a** helyszíni védelem iránya.
-3. A **fő célkiszolgáló** és a **folyamat-kiszolgáló**területen válassza ki a helyszíni fő célkiszolgáló és a Process Server kiszolgálót.  
-4. Az **adattár**mezőben válassza ki azt az adattárolót, amelynek a lemezeit helyre szeretné állítani az Azure VMware-megoldásban. Ezt a beállítást akkor használja a rendszer, ha az Azure VMware-megoldás virtuális gépe törölve van, és új lemezeket kell létrehoznia. Ezt a beállítást a rendszer figyelmen kívül hagyja, ha a lemezek már léteznek. Továbbra is meg kell adnia egy értéket.
+3. A **fő célkiszolgáló** és a **folyamat-kiszolgáló** területen válassza ki a helyszíni fő célkiszolgáló és a Process Server kiszolgálót.  
+4. Az **adattár** mezőben válassza ki azt az adattárolót, amelynek a lemezeit helyre szeretné állítani az Azure VMware-megoldásban. Ezt a beállítást akkor használja a rendszer, ha az Azure VMware-megoldás virtuális gépe törölve van, és új lemezeket kell létrehoznia. Ezt a beállítást a rendszer figyelmen kívül hagyja, ha a lemezek már léteznek. Továbbra is meg kell adnia egy értéket.
 5. Válassza ki az adatmegőrzési meghajtót.
 6. A feladat-visszavételi szabályzat automatikusan ki van jelölve.
 7. A védelem megkezdéséhez kattintson **az OK gombra** .
@@ -75,7 +75,7 @@ A következőképpen engedélyezheti az ismételt védelmet:
     - Az ismételt védelem befejeződése után ne kapcsolja be az Azure VMware megoldás virtuális gépet.
    
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha bármilyen problémába ütközik, tekintse át a [hibaelhárítási cikket](vmware-azure-troubleshoot-failback-reprotect.md).
 - Az Azure-beli virtuális gépek védelme után elvégezheti a feladat- [visszavétel futtatását](avs-tutorial-failback.md). A feladat-visszavétel leállítja az Azure-beli virtuális gépet, és elindítja az Azure VMware megoldás virtuális gépet. Némi állásidőt vár az alkalmazáshoz, és ennek megfelelően kiválaszthatja a feladat-visszavételi időt.

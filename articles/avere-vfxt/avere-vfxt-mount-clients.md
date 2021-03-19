@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/16/2019
 ms.author: rohogue
 ms.openlocfilehash: 44a4e1293bc4c5a54e1e345d5cf95ba307a7b120
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88272571"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>Az Avere vFXT-fürt csatlakoztatása
@@ -74,7 +74,7 @@ A csatlakoztatási parancsnak három eleme van:
 
 ### <a name="junction-and-ip"></a>Elágazás és IP
 
-A VServer elérési útja az *IP-címe* és a *névtér-elágazás*elérési útja kombinációja. A névtér-összekapcsolás egy virtuális elérési út, amely a tárolási rendszer hozzáadásakor lett meghatározva.
+A VServer elérési útja az *IP-címe* és a *névtér-elágazás* elérési útja kombinációja. A névtér-összekapcsolás egy virtuális elérési út, amely a tárolási rendszer hozzáadásakor lett meghatározva.
 
 Ha a fürt blob Storage-sel lett létrehozva, a tárolóhoz tartozó névtér elérési útja `/msazure`
 
@@ -102,7 +102,7 @@ A zökkenőmentes ügyfél-csatlakoztatás biztosításához adja át ezeket a b
 
 ``mount -o hard,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
-| Szükséges beállítások | Leírás |
+| Szükséges beállítások | Description |
 --- | ---
 ``hard`` | A vFXT-fürthöz való Soft-csatlakoztatások az alkalmazás hibáival és az esetleges adatvesztéssel vannak társítva.
 ``proto=netid`` | Ez a beállítás támogatja az NFS-hálózati hibák megfelelő kezelését.

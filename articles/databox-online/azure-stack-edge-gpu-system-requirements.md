@@ -6,18 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 02/05/2021
+ms.date: 03/17/2021
 ms.author: alkohli
-ms.openlocfilehash: e72ad50b495dec7e3a647bb7bcbdeafd53f5de7b
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 67de5cce3bd5a4ca2b383e2809eb237a6e753bf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102636623"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577094"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>A GPU-val Azure Stack Edge Pro rendszerkövetelményei 
 
-Ez a cikk ismerteti az Microsoft Azure Stack Edge Pro-megoldás és a Azure Stack Edge Pro-hoz csatlakozó ügyfelek fontos rendszerkövetelményeit. Javasoljuk, hogy figyelmesen tekintse át az információkat, mielőtt telepítené a Azure Stack Edge Pro-t. Az üzembe helyezés és az azt követő művelet során szükség szerint visszatérhet ezekre az adatokra.
+Ez a cikk ismerteti a Microsoft Azure Stack Edge Pro GPU-megoldás és a Azure Stack Edge Pro-hoz csatlakozó ügyfelek fontos rendszerkövetelményeit. Javasoljuk, hogy figyelmesen tekintse át az információkat, mielőtt telepítené a Azure Stack Edge Pro-t. Az üzembe helyezés és az azt követő művelet során szükség szerint visszatérhet ezekre az adatokra.
 
 Az Azure Stack Edge Pro rendszerkövetelményei a következők:
 

@@ -6,10 +6,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 722fe393ad7637be20360463a4c3b6234224a036
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88653970"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások a tároláshoz és a biztonsági mentésekhez az Azure Kubernetes szolgáltatásban (ak)
@@ -34,7 +34,7 @@ Az alábbi táblázat a rendelkezésre álló tárolási típusokat és azok ké
 
 | Használati eset | Kötet beépülő modul | Egyszer írható/olvasható | Csak olvasható sok | Több olvasása/írása | A Windows Server-tároló támogatása |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
-| Megosztott konfiguráció       | Azure Files   | Igen | Igen | Igen | Igen |
+| Megosztott konfiguráció       | Azure Files   | Igen | Igen | Igen | Yes |
 | Strukturált alkalmazásadatok        | Azure Disks   | Igen | Nem  | Nem  | Igen |
 | Strukturálatlan adatok, fájlrendszerbeli műveletek | [BlobFuse][blobfuse] | Igen | Igen | Igen | Nem |
 
@@ -49,7 +49,7 @@ Ismerje meg az alkalmazás teljesítményére vonatkozó igényeket és a hozzá
 
 ### <a name="create-and-use-storage-classes-to-define-application-needs"></a>Tárolási osztályok létrehozása és használata az alkalmazás igényeinek meghatározásához
 
-A használt tároló típusa a Kubernetes *Storage classs*használatával van definiálva. A tárolási osztályt ezután a pod vagy a telepítés specifikációja hivatkozik. Ezek a definíciók együttműködve alkotják a megfelelő tárolót, és összekapcsolják azt a hüvelyekkel. További információ: [tárolási osztályok az AK-ban][aks-concepts-storage-classes].
+A használt tároló típusa a Kubernetes *Storage classs* használatával van definiálva. A tárolási osztályt ezután a pod vagy a telepítés specifikációja hivatkozik. Ezek a definíciók együttműködve alkotják a megfelelő tárolót, és összekapcsolják azt a hüvelyekkel. További információ: [tárolási osztályok az AK-ban][aks-concepts-storage-classes].
 
 ## <a name="size-the-nodes-for-storage-needs"></a>A csomópontok méretének méretezése a tárolási igényekhez
 

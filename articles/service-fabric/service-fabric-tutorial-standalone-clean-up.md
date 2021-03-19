@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 0d46e9068a311594f779411c3ccee2b408febb3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91842886"
 ---
 # <a name="tutorial-clean-up-your-standalone-cluster"></a>Oktatóanyag: Az önálló fürt törlése
@@ -52,11 +52,11 @@ Ebből a cikkből megtudhatja, hogy:
 1. Jelentkezzen be az AWS-fiókjába.
 2. Lépjen az EC2 konzolra.
 3. Válassza ki az oktatóanyag első részében létrehozott csomópontokat.
-4. Válassza a **műveletek**  >  **példány állapotának**  >  **leállítása**lehetőséget.
+4. Válassza a **műveletek**  >  **példány állapotának**  >  **leállítása** lehetőséget.
 
 ## <a name="delete-azure-resources"></a>Azure-erőforrások törlése
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 2. Lépjen a **Virtual Machines** szakaszra.
 3. Jelölje be az oktatóanyag első részében létrehozott három csomópont jelölőnégyzeteit.
 4. Válassza a **Törlés** elemet.

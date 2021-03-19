@@ -5,12 +5,12 @@ author: ofirmanor
 ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
-ms.openlocfilehash: d65fa03a183c15022535debee6476844192ec6bf
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 08ac23fbb29829bf2a7a46e41f9a7f646ad97915
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102037846"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586318"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Azure Monitor riasztásokkal kapcsolatos problémák elhárítása
 
@@ -21,7 +21,7 @@ Azure Monitor riasztások proaktívan értesítik Önt, ha fontos feltételek ta
 Ha problémája van egy riasztás égetésével vagy a várt módon nem égetéssel, tekintse meg az alábbi cikkeket. A Azure Portal "fired" riasztásokat láthat.
 
 - [Azure Monitor metrikai riasztások hibaelhárítása Microsoft Azure](alerts-troubleshoot-metric.md)  
-- [Azure Monitor naplózási riasztások hibaelhárítása Microsoft Azure](alerts-troubleshoot-metric.md)
+- [Azure Monitor naplózási riasztások hibaelhárítása Microsoft Azure](alerts-troubleshoot-log.md)
 
 Ha a riasztás a Azure Portal alapján, de a megfelelő értesítések nem lépnek fel, a jelen cikk további részében található információk segítségével elháríthatja a problémát.
 

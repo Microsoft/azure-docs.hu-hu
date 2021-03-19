@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 87cbb94dbab241630dc7585bdf4314d858d5b4da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74232752"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Verziószámozás Durable Functions (Azure Functions)
@@ -35,7 +35,7 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 }
 ```
 
-Ez a leegyszerűsítő függvény a **foo** eredményeit veszi át, és a **sáv**felé továbbítja azt. Tegyük fel, hogy módosítani kell a **foo** értékének visszatérési értékét a-ből a-re, `bool` `int` hogy támogassa az eredmények szélesebb választékát. Az eredmény a következőhöz hasonló:
+Ez a leegyszerűsítő függvény a **foo** eredményeit veszi át, és a **sáv** felé továbbítja azt. Tegyük fel, hogy módosítani kell a **foo** értékének visszatérési értékét a-ből a-re, `bool` `int` hogy támogassa az eredmények szélesebb választékát. Az eredmény a következőhöz hasonló:
 
 ```csharp
 [FunctionName("FooBar")]
@@ -87,7 +87,7 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 > [!NOTE]
 > Az előző C#-példák célja Durable Functions 2. x. Durable Functions 1. x esetén a helyett a értéket kell használnia `DurableOrchestrationContext` `IDurableOrchestrationContext` . A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
-Ez a változás egy új függvény hívását adja hozzá a **SendNotification** a **foo** és a **Bar**között. Nincsenek aláírási változások. A probléma akkor fordul elő, amikor egy meglévő példány folytatja a hívást a **sávra**. Ha a visszajátszáskor a rendszer visszaküldi a **foo** eredeti hívását `true` , akkor a Orchestrator visszajátszás a **SendNotification**, amely nem szerepel a végrehajtás előzményeiben. Ennek eredményeképpen a tartós feladathoz tartozó keretrendszer meghiúsul, `NonDeterministicOrchestrationException` mert a **SendNotification** meghívását észlelte a rendszer, amikor a vártnál a **sáv**hívása látható. Ugyanaz a probléma akkor fordulhat elő, ha bármilyen hívást "tartós" API-khoz, például `CreateTimer` , `WaitForExternalEvent` stb.
+Ez a változás egy új függvény hívását adja hozzá a **SendNotification** a **foo** és a **Bar** között. Nincsenek aláírási változások. A probléma akkor fordul elő, amikor egy meglévő példány folytatja a hívást a **sávra**. Ha a visszajátszáskor a rendszer visszaküldi a **foo** eredeti hívását `true` , akkor a Orchestrator visszajátszás a **SendNotification**, amely nem szerepel a végrehajtás előzményeiben. Ennek eredményeképpen a tartós feladathoz tartozó keretrendszer meghiúsul, `NonDeterministicOrchestrationException` mert a **SendNotification** meghívását észlelte a rendszer, amikor a vártnál a **sáv** hívása látható. Ugyanaz a probléma akkor fordulhat elő, ha bármilyen hívást "tartós" API-khoz, például `CreateTimer` , `WaitForExternalEvent` stb.
 
 ## <a name="mitigation-strategies"></a>Kockázatcsökkentő stratégiák
 
@@ -153,7 +153,7 @@ Javasoljuk, hogy a Function alkalmazás új verzióját egy új [üzembe helyez�
 > [!NOTE]
 > Ez a stratégia akkor működik a legjobban, ha HTTP-és webhook-eseményindítókat használ a Orchestrator functions szolgáltatáshoz. A nem HTTP-alapú eseményindítók, például a várólisták vagy a Event Hubs esetében az eseményindító definíciójának [olyan alkalmazás-beállításból kell származnia](../functions-bindings-expressions-patterns.md#binding-expressions---app-settings) , amely a swap művelet részeként frissül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ismerje meg, hogyan kezelheti a teljesítménnyel és a skálázással kapcsolatos problémákat](durable-functions-perf-and-scale.md)

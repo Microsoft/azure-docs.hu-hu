@@ -2,15 +2,15 @@
 title: Linux Python-alkalmazások konfigurálása
 description: Megtudhatja, hogyan konfigurálhatja a webalkalmazásokat futtató Python-tárolót a Azure Portal és az Azure CLI használatával.
 ms.topic: quickstart
-ms.date: 02/01/2021
+ms.date: 03/16/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: cfbbb7064fcadc06714b237066bb6a009246baac
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 11b9ab8e954827cfcc73e440bee1023504e14057
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101709087"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577612"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Linux Python-alkalmazás konfigurálása a Azure App Servicehoz
 
@@ -69,7 +69,7 @@ App Service a Oryx nevű Build-rendszer a következő lépéseket hajtja végre 
 
 1. Ha ezt a beállítást adja meg, futtasson egyéni, előkészítő parancsfájlt `PRE_BUILD_COMMAND` . (A szkript saját maga is futtathat más Python-és Node.js-parancsfájlokat, Pip-és NPM-parancsokat, valamint olyan csomópont-alapú eszközöket, mint a fonal, például a `yarn install` és a `yarn build` .)
 
-1. Futtassa a `pip install -r requirements.txt` parancsot. A *requirements.txt* fájlnak jelen kell lennie a projekt gyökérkönyvtárában. Ellenkező esetben a fordítási folyamat a következő hibát jelenti: "nem található a setup.py vagy a requirements.txt; Nem fut a pip telepítése. "
+1. Futtassa az `pip install -r requirements.txt` parancsot. A *requirements.txt* fájlnak jelen kell lennie a projekt gyökérkönyvtárában. Ellenkező esetben a fordítási folyamat a következő hibát jelenti: "nem található a setup.py vagy a requirements.txt; Nem fut a pip telepítése. "
 
 1. Ha a *Manage.py* a tárház gyökerében található (Django-alkalmazást jelez), futtassa a *Manage.py collectstatic*. Ha azonban ez a `DISABLE_COLLECTSTATIC` beállítás `true` , ez a lépés kimarad.
 
@@ -373,6 +373,7 @@ A következő szakaszokban további útmutatást talál az adott problémákkal 
 - [Az alkalmazás nem jelenik meg – a "szolgáltatás nem érhető el" üzenet](#service-unavailable)
 - [Nem található setup.py vagy requirements.txt](#could-not-find-setuppy-or-requirementstxt)
 - [ModuleNotFoundError indításkor](#modulenotfounderror-when-app-starts)
+- [Az adatbázis zárolva van](#database-is-locked)
 - [A jelszó nem jelenik meg az SSH-munkamenetben, ha be van írva](#other-issues)
 - [Úgy tűnik, hogy az SSH-munkamenetben lévő parancsok ki lesznek vágva](#other-issues)
 - [A statikus eszközök nem jelennek meg a Django alkalmazásban](#other-issues)
@@ -409,6 +410,14 @@ A következő szakaszokban további útmutatást talál az adott problémákkal 
 #### <a name="modulenotfounderror-when-app-starts"></a>ModuleNotFoundError az alkalmazás indításakor
 
 Ha a következőhöz hasonló hibaüzenet jelenik meg `ModuleNotFoundError: No module named 'example'` , ez azt jelenti, hogy a Python nem talált egy vagy több modult az alkalmazás indításakor. Ez leggyakrabban akkor fordul elő, ha a virtuális környezetet a kóddal telepíti. A virtuális környezetek nem hordozhatóek, így a virtuális környezet nem helyezhető üzembe az alkalmazás kódjával. Ehelyett Oryx hozzon létre egy virtuális környezetet, és telepítse a csomagokat a webalkalmazásba egy Alkalmazásbeállítások létrehozásával, `SCM_DO_BUILD_DURING_DEPLOYMENT` és állítsa be a következőre: `1` . Ez arra kényszeríti a Oryx, hogy telepítse a csomagokat, amikor App Service üzembe helyezését végzi. További információkért tekintse [meg ezt a cikket a virtuális környezet hordozhatóságáról](https://azure.github.io/AppService/2020/12/11/cicd-for-python-apps.html).
+
+### <a name="database-is-locked"></a>Az adatbázis zárolva van
+
+Ha az adatbázis-áttelepítést egy Django-alkalmazással kísérli meg futtatni, akkor a "sqlite3" kifejezés látható. OperationalError: az adatbázis zárolva van. " A hiba azt jelzi, hogy az alkalmazás olyan SQLite-adatbázist használ, amelyhez a Django alapértelmezés szerint konfigurálva van, és nem egy olyan felhőalapú adatbázist használ, mint például a PostgreSQL az Azure-hoz.
+
+Ellenőrizze az `DATABASES` alkalmazás *Settings.py* -fájljában lévő változót, és győződjön meg róla, hogy az alkalmazás egy felhőalapú adatbázist használ SQLite helyett.
+
+Ha ezt a hibát a következő [oktatóanyagban találja: Django-webalkalmazás telepítése a PostgreSQL](tutorial-python-postgresql-app.md)-sel, ellenőrizze, hogy végrehajtotta-e a [környezeti változók konfigurálása az adatbázishoz való kapcsolódáshoz](tutorial-python-postgresql-app.md#42-configure-environment-variables-to-connect-the-database)című témakör lépéseit.
 
 #### <a name="other-issues"></a>Egyéb problémák
 

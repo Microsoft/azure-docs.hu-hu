@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2021
-ms.openlocfilehash: a0c5e9f89b983871224e79c2fc4f518a15d42a6f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a52d6dca423565e7b5e4b6ac059bcf21b637c87c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039614"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586335"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Adatgyűjtés szabályai a Azure Monitorban (előzetes verzió)
 Az adatgyűjtési szabályok (DCR) a Azure Monitorba érkező, illetve az adatküldés és-tárolás helyét adja meg. Ez a cikk áttekintést nyújt az adatgyűjtési szabályokról, beleértve azok tartalmát és szerkezetét, valamint azt, hogy miként hozhat létre és dolgozhat velük.
@@ -39,7 +39,7 @@ Az alábbi ábrán egy adatgyűjtési szabály és a kapcsolat összetevői lát
 ### <a name="data-source-types"></a>Adatforrástípusok
 Minden adatforrás típusa adatforrással rendelkezik. Mindegyik típus egyedi tulajdonságokat határoz meg, amelyeket minden egyes adatforráshoz meg kell adni. A jelenleg elérhető adatforrás-típusok az alábbi táblázatban láthatók.
 
-| Adatforrás típusa | Leírás | 
+| Adatforrás típusa | Description | 
 |:---|:---|
 | kiterjesztés | Virtuálisgép-bővítmény-alapú adatforrás |
 | performanceCounters | Teljesítményszámlálók Windows és Linux rendszerekhez |
@@ -81,6 +81,10 @@ Az alábbi minta adatgyűjtési szabály az Azure felügyeleti ügynökkel rende
   - Riasztási, kritikus és vészhelyzeti eseményeket gyűjt a syslog létesítményből.
 - Célhelyek
   - Az összes adatokat egy centralWorkspace nevű Log Analytics-munkaterületre küldi.
+
+> [!NOTE]
+> Az adatgyűjtési szabályokban az események gyűjtésének megadásához használt XPath-információk magyarázatát lásd: az [adatgyűjtés korlátozása egyéni XPath-lekérdezésekkel](data-collection-rule-azure-monitor-agent.md#limit-data-collection-with-custom-xpath-queries)
+
 
 ```json
 {

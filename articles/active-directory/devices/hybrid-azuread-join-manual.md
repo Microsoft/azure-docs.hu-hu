@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f346b997b5e0c785d066ce3a1edaab8cbea10212
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 28cc8a858d1779e17c893d64eda5f907bb4c808e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644119"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577988"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Oktatóanyag: Az Azure Active Directoryhoz csatlakoztatott hibrid eszközök manuális konfigurálása
 
@@ -74,6 +74,9 @@ Ha a szervezet felügyelt (nem összevont) beállítást használ a helyszíni A
 A 1703-es vagy korábbi verziójú Windows 10-es eszközök esetén, ha a szervezet kimenő proxyn keresztül kíván hozzáférni az internethez, a Windows 10-es számítógépek Azure AD-ba való regisztrálásának engedélyezéséhez be kell vezetnie a webproxy automatikus felderítése (WPAD) szolgáltatást.
 
 A Windows 10 1803-től kezdve, még akkor is, ha egy összevont tartományban található eszköz hibrid Azure AD-csatlakoztatási kísérlete AD FS meghiúsul, és ha Azure AD Connect úgy van konfigurálva, hogy a számítógép/eszköz objektumait az Azure AD-be szinkronizálja, az eszköz a szinkronizált számítógép/eszköz használatával próbálja befejezni a hibrid Azure AD-csatlakozást.
+
+> [!NOTE]
+> Ahhoz, hogy az eszköz regisztrációjának szinkronizálása sikeres legyen, az eszköz regisztrációs konfigurációjának részeként ne zárja ki az alapértelmezett eszköz attribútumokat a Azure AD Connect Sync konfigurációból. Ha többet szeretne megtudni az Azure AD-vel szinkronizált alapértelmezett eszközök attribútumairól, tekintse meg az [Azure ad Connect által szinkronizált attribútumokat](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized#windows-10).
 
 Annak ellenőrzéséhez, hogy az eszköz képes-e hozzáférni a fenti Microsoft-erőforrásokhoz a rendszerfiókban, használhatja a [teszt eszköz regisztrációjának kapcsolati](/samples/azure-samples/testdeviceregconnectivity/testdeviceregconnectivity/) parancsfájlját.
 

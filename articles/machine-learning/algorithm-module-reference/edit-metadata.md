@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 06/10/2020
 ms.openlocfilehash: e279a7c9f6810ece482b043284f0be0719a3dafe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90908033"
 ---
 # <a name="edit-metadata-module"></a>Metaadat-modul szerkesztése
@@ -46,7 +46,7 @@ A metaadatok tipikus változásai a következők lehetnek:
   
 1. Válassza az **adattípus** lehetőséget, ha egy másik adattípust kell hozzárendelni a kijelölt oszlopokhoz. Előfordulhat, hogy módosítania kell az adattípust bizonyos műveletekhez. Ha például a forrás-adatkészlet szövegként kezelt számokat tartalmaz, a matematikai műveletek használata előtt módosítania kell őket egy numerikus adattípusra.
 
-    + A támogatott adattípusok a következők: **String**, **Integer**, **Double**, **Boolean**és **datetime**.
+    + A támogatott adattípusok a következők: **String**, **Integer**, **Double**, **Boolean** és **datetime**.
 
     + Ha több oszlopot választ ki, a metaadatok módosításait *minden* kijelölt oszlopra alkalmaznia kell. Tegyük fel például, hogy két vagy három numerikus oszlopot választ. Az összeset megváltoztathatja egy sztring típusú adattípusra, és átnevezheti őket egyetlen műveletben. Azonban az egyik oszlop nem módosítható karakterlánc adattípusra, és egy lebegőpontos oszlop egy egész számra.
   
@@ -87,7 +87,7 @@ A metaadatok tipikus változásai a következők lehetnek:
   
          Jelenleg nem lehet explicit módon megjelölni egy oszlopot a Azure Machine Learning pontszáma alapján. Egyes műveletek azonban egy oszlopként jelennek meg, amely a pontszám belső jelölését eredményezi. Emellett az egyéni R-modulok is kihasználhatják a pontszám értékeit.
 
-1. Az **új oszlopnevek**mezőben adja meg a kijelölt oszlop vagy oszlopok új nevét.  
+1. Az **új oszlopnevek** mezőben adja meg a kijelölt oszlop vagy oszlopok új nevét.  
   
     + Az oszlopnevek csak az UTF-8 kódolás által támogatott karaktereket használhatják. Üres karakterláncok, nullák vagy kizárólag szóközökből álló nevek nem engedélyezettek.  
   

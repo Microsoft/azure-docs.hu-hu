@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.openlocfilehash: 92333857177d33307d6997bfcbdf79787d3ab127
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90895950"
 ---
 # <a name="determining-application-type"></a>Alkalmazás típusának meghatározása
@@ -22,12 +22,12 @@ A nagy kapacitású-on (Citus) jól működő alkalmazások széles körben műk
 
 ## <a name="at-a-glance"></a>Dióhéjban
 
-| Több-bérlős alkalmazások                                 | Alkalmazások Real-Time                                |
+| Több-bérlős alkalmazások                                 | Valós idejű alkalmazások                                |
 |-----------------------------------------------------------|-------------------------------------------------------|
 | Időnként több tucat vagy több száz tábla található a sémában          | Kis számú tábla                                |
 | Egy bérlőhöz (vállalathoz/áruházhoz) kapcsolódó lekérdezések egyszerre | Viszonylag egyszerű elemzési lekérdezések összesítésekkel |
-| OLTP munkaterhelések a webes ügyfelek kiszolgálásához                    | Nagy mennyiségű, többnyire megváltoztathatatlan adatot           |
-| A bérlői analitikus lekérdezéseket kiszolgáló OLAP-munkaterhelések   | Gyakran a nagy méretű események körének középpontba helyezése            |
+| OLTP számítási feladatok a webes ügyfelek kiszolgálásához                    | Nagy mennyiségű betöltött adat, melyek többsége nem módosítható           |
+| A bérlőnkénti analitikai lekérdezéseket kiszolgáló OLAP számítási feladatok   | Gyakran az események nagy méretű táblája áll a középpontjukban            |
 
 ## <a name="examples-and-characteristics"></a>Példák és jellemzők
 

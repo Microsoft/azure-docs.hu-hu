@@ -5,12 +5,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: 5ee38fa4b005cf053890c223dfec9244c637bd00
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: b4cf3699243e990b5e7b7478ba643067ac456020
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103561821"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584703"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Útmutató a függvények futtatásához a .NET 5,0-ben az Azure-ban
 
@@ -47,7 +47,7 @@ A .net elkülönített függvények projektje alapvetően egy .NET-konzolos alka
 + [host.js](functions-host-json.md) fájlon.
 + [local.settings.js](functions-run-local.md#local-settings-file) fájlon.
 + C# projektfájl (. csproj), amely meghatározza a projektet és a függőségeket.
-+ Program.cs-fájl, amely az alkalmazás belépési pontja.
++ A program. cs fájl, amely az alkalmazás belépési pontja.
 
 ## <a name="package-references"></a>Csomagok hivatkozásai
 
@@ -68,7 +68,7 @@ Ezeket a kiterjesztési csomagokat a [Microsoft. Azure. functions. Worker. Exten
 
 ## <a name="start-up-and-configuration"></a>Indítás és konfigurálás 
 
-A .NET elkülönített függvények használatakor a Function alkalmazás elindítását, amely általában a Program.cs-ben érhető el. Ön felelős a saját gazdagép-példányának létrehozásához és elindításához. Ennek megfelelően közvetlen hozzáférést is biztosít az alkalmazás konfigurációs folyamatához. A folyamaton kívül sokkal könnyebben lehet függőségeket beszúrni és middleware-t futtatni. 
+A .NET elkülönített függvények használatakor Ön hozzáférhet a Function alkalmazás elindításához, amely általában a program. cs. Ön felelős a saját gazdagép-példányának létrehozásához és elindításához. Ennek megfelelően közvetlen hozzáférést is biztosít az alkalmazás konfigurációs folyamatához. A folyamaton kívül sokkal könnyebben lehet függőségeket beszúrni és middleware-t futtatni. 
 
 A következő kód egy folyamat példáját mutatja be `HostBuilder` :
 

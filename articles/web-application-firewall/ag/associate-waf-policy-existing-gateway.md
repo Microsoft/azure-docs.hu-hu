@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 10/25/2019
 ms.author: victorh
 ms.openlocfilehash: 1ed2e0cf8cc8cd841d8779462d62ba4852774a3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74083905"
 ---
 # <a name="associate-a-waf-policy-with-an-existing-application-gateway"></a>WAF szabályzat hozzárendelése meglévő Application Gateway
@@ -52,5 +52,5 @@ A Azure PowerShell használatával [létrehozhat egy WAF-házirendet](create-waf
       Set-AzApplicationGateway -ApplicationGateway $gw`
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [További információ az egyéni szabályokról.](configure-waf-custom-rules.md)

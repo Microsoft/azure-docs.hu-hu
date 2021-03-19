@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 16ae71294c15e0c95ce9942689584cec1b229cc5
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 23e2512d5e6d54ee40dd4b85035feaf5dda23d9b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102611300"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104605618"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Azure File Sync a magánhálózati hivatkozást kell használnia](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d320205-c6a1-4ac6-873d-46224024e8e2) |A megadott Storage Sync Service-erőforráshoz tartozó magánhálózati végpont létrehozása lehetővé teszi a Storage-szinkronizálási szolgáltatás erőforrásának a szervezet hálózatának magánhálózati IP-címén belüli, nem pedig az internetről elérhető nyilvános végponton keresztüli elérését. A privát végpontok önmagukban történő létrehozása nem tiltja le a nyilvános végpontot. |AuditIfNotExists, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageSync_PrivateEndpoint_AuditIfNotExists.json) |
 |[Azure File Sync konfigurálása privát DNS-zónák használatára](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F06695360-db88-47f6-b976-7500d4297475) |Ha egy regisztrált kiszolgálóról szeretné elérni a Storage Sync szolgáltatás erőforrás-kapcsolataihoz tartozó magánhálózati végpont (oka) t, úgy kell konfigurálnia a DNS-t, hogy a megfelelő neveket a privát végpont magánhálózati IP-címeire oldja fel. Ez a szabályzat létrehozza a szükséges Azure saját DNS zónát és a Storage Sync szolgáltatás magánhálózati végpont (ok) felületéhez tartozó rekordokat. |DeployIfNotExists, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageSync_PrivateDNSZone_DeployIfNotExists.json) |

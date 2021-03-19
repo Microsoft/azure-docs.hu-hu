@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.openlocfilehash: a473085f9c94ca42a75d01b342d60cc33836b096
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88244839"
 ---
 # <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>A tanulási hurok elemzése offline kiértékeléssel
@@ -31,13 +31,13 @@ További információért olvassa el a [kapcsolat nélküli értékeléseket](co
 ## <a name="run-an-offline-evaluation"></a>Offline kiértékelés futtatása
 
 1. A [Azure Portal](https://azure.microsoft.com/free/cognitive-services)keresse meg a személyre szabott erőforrást.
-1. A Azure Portal lépjen az **értékelések** szakaszra, és válassza az **Értékelés létrehozása**elemet.
+1. A Azure Portal lépjen az **értékelések** szakaszra, és válassza az **Értékelés létrehozása** elemet.
     ![A Azure Portal nyissa meg a * * értékelések * * szakaszt, és válassza a * * Create reértékelés * * elemet.](./media/offline-evaluation/create-new-offline-evaluation.png)
 1. Konfigurálja a következő értékeket:
 
     * Egy kiértékelés neve.
     * Kezdési és befejezési dátum – ezek a dátumok határozzák meg a kiértékelésben használandó adatok tartományát. Ezeknek az adatoknak szerepelniük kell a naplókban az [adatmegőrzési](how-to-settings.md) értékben megadott módon.
-    * Az optimalizálási felderítés az **Igen**értékre van állítva.
+    * Az optimalizálási felderítés az **Igen** értékre van állítva.
 
     > [!div class="mx-imgBorder"]
     > ![Offline kiértékelési beállítások kiválasztása](./media/offline-evaluation/create-an-evaluation-form.png)

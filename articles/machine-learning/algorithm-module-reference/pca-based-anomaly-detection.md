@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: fa90fcb9ebc17be9a658b08873234eada98b0fba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90898465"
 ---
 # <a name="pca-based-anomaly-detection-module"></a>PCA-Based rendellenesség-észlelési modul
@@ -28,7 +28,7 @@ Ha például a csalárd tranzakciókat szeretné felderíteni, gyakran nincs el�
 
 A PCA a gépi tanulásban kialakított módszer. Gyakran használják a felderítő adatelemzés során, mert az az adat belső struktúráját mutatja be, és ismerteti az adateltérést.
 
-A PEM a több változót tartalmazó adatok elemzésével működik. A változók közötti korrelációkat keres, és meghatározza, hogy a legjobban milyen értékeket kell rögzíteni a kimenetben. Ezeknek az egyesített szolgáltatásoknak a használatával a rendszer a *fő összetevőknek*nevezett, kompakt szolgáltatási terület létrehozására szolgál.
+A PEM a több változót tartalmazó adatok elemzésével működik. A változók közötti korrelációkat keres, és meghatározza, hogy a legjobban milyen értékeket kell rögzíteni a kimenetben. Ezeknek az egyesített szolgáltatásoknak a használatával a rendszer a *fő összetevőknek* nevezett, kompakt szolgáltatási terület létrehozására szolgál.
 
 A anomáliák észleléséhez minden új bemenet elemzése megtörténik. Az anomáliák észlelési algoritmusa kiszámítja a eigenvectors kivetítését, és normalizált újraépítési hibával együtt. A normalizált hiba az anomália pontszámként szolgál. Minél nagyobb a hiba, annál több rendellenes a példány.
 
@@ -46,7 +46,7 @@ A PEM működéséről és az anomáliák észlelésének megvalósításáról 
 
     Ha tudja, hogyan szeretné konfigurálni a modellt, válassza az **egyetlen paramétert** , és adjon meg egy adott értékeket argumentumként.
 
-3. A **PCA-ben használni kívánt összetevők száma**mezőben adja meg a kimeneti szolgáltatások vagy összetevők számát.
+3. A **PCA-ben használni kívánt összetevők száma** mezőben adja meg a kimeneti szolgáltatások vagy összetevők számát.
 
     A felvenni kívánt összetevők közül a megoldás a PCA-t használó Experiment design fontos részét képezi. Általános útmutató, hogy ne tartalmazzon azonos számú PCA-összetevőt, mivel vannak változók. Ehelyett kisebb számú összetevővel kell kezdődnie, és csak néhány feltétel teljesülése esetén növelheti őket.
 
@@ -54,7 +54,7 @@ A PEM működéséről és az anomáliák észlelésének megvalósításáról 
 
 4. A véletlenszerű PCA-képzés során elvégzendő túlmintavételezési mennyiség meghatározása. Az anomáliák észlelésével kapcsolatos problémák esetén a kiegyensúlyozatlan adatelemzések megnehezítik a szabványos PEM-technikák alkalmazását. Bizonyos mennyiségű túlmintavételezés megadásával növelheti a célként megadott példányok számát.
 
-    Ha az **1**érték van megadva, a rendszer nem végez túlmintavételezést. Ha **1-nél**nagyobb értéket ad meg, a modell betanításakor további minták jönnek létre.
+    Ha az **1** érték van megadva, a rendszer nem végez túlmintavételezést. Ha **1-nél** nagyobb értéket ad meg, a modell betanításakor további minták jönnek létre.
 
     Két lehetőség közül választhat, attól függően, hogy a paramétert használja-e vagy sem:
 
@@ -69,7 +69,7 @@ A PEM működéséről és az anomáliák észlelésének megvalósításáról 
 
 6. Egy címkézett betanítási adatkészletet és egy betanítási modult is csatlakoztasson.
 
-   Ha az **oktatói mód létrehozása** beállítást **egyetlen paraméterre**állítja be, használja a [Train rendellenesség-észlelési modell](train-anomaly-detection-model.md) modult.
+   Ha az **oktatói mód létrehozása** beállítást **egyetlen paraméterre** állítja be, használja a [Train rendellenesség-észlelési modell](train-anomaly-detection-model.md) modult.
 
 7. A folyamat elküldése.
 
@@ -87,7 +87,7 @@ Egy anomália-észlelési modell eredményének kiértékeléséhez:
 
     Előfordul, hogy a Label oszlophoz társított metaadatokat a folyamat gráfja eltávolítja. Ha ez történik, a [modell kiértékelése](evaluate-model.md) modul használatával összehasonlíthatja a két anomália-észlelési modell eredményét, előfordulhat, hogy a "nincs címke oszlop a pontozásos adatkészletben" hibaüzenet jelenik meg. Vagy előfordulhat, hogy a "nincs címke oszlop szerepel az összehasonlítható, a pontszámmal rendelkező adatkészletben" hibaüzenet jelenik meg.
 
-    Ezeket a hibákat a [modell kiértékelése](evaluate-model.md) modul előtt a [metaadatok szerkesztése](edit-metadata.md) modul hozzáadásával lehet elkerülni. Az oszlop kiválasztó segítségével válassza ki az osztály oszlopot, és a **mezők** listában válassza a **címke**lehetőséget.
+    Ezeket a hibákat a [modell kiértékelése](evaluate-model.md) modul előtt a [metaadatok szerkesztése](edit-metadata.md) modul hozzáadásával lehet elkerülni. Az oszlop kiválasztó segítségével válassza ki az osztály oszlopot, és a **mezők** listában válassza a **címke** lehetőséget.
 
 3. A [Python-parancsfájl végrehajtása](execute-python-script.md) modul használatával állítsa be a címke oszlopainak kategóriáit **1 (pozitív, normál)** és **0 (negatív, rendellenes)** értékre.
 

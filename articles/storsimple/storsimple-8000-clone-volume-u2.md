@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
 ms.openlocfilehash: 5ebb7f1d9440bc7a8b75afe64403762532213c1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91767579"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>Kötet klónozása az Azure Portal StorSimple-eszközkezelő szolgáltatásával
@@ -53,7 +53,7 @@ A következő lépések végrehajtásával hozza létre a kötet klónját a biz
 
 #### <a name="to-clone-a-volume"></a>Kötet klónozása
 
-1. Lépjen a StorSimple Eszközkezelő szolgáltatásra, majd kattintson a **biztonsági mentési katalógus**lehetőségre.
+1. Lépjen a StorSimple Eszközkezelő szolgáltatásra, majd kattintson a **biztonsági mentési katalógus** lehetőségre.
 
 2. Válasszon egy biztonságimásolat-készletet a következők szerint:
    
@@ -66,7 +66,7 @@ A következő lépések végrehajtásával hozza létre a kötet klónját a biz
    
       ![Biztonságimásolat-készlet 2. listája](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
      
-3. Bontsa ki a biztonságimásolat-készletet, hogy megtekintse a társított kötetet, és válasszon egy kötetet egy biztonságimásolat-készletben. Kattintson a jobb gombbal, majd a helyi menüben válassza a **klónozás**lehetőséget.
+3. Bontsa ki a biztonságimásolat-készletet, hogy megtekintse a társított kötetet, és válasszon egy kötetet egy biztonságimásolat-készletben. Kattintson a jobb gombbal, majd a helyi menüben válassza a **klónozás** lehetőséget.
 
    ![Biztonságimásolat-készlet 3. listája](./media/storsimple-8000-clone-volume-u2/clonevol3b.png) 
 
@@ -82,7 +82,7 @@ A következő lépések végrehajtásával hozza létre a kötet klónját a biz
        > [!NOTE]
        > A **klónozott kötet as** mezője akkor is fel lesz **bontva** , ha egy helyileg rögzített kötetet klónozást végez. Ez a beállítás nem módosítható; Ha azonban szükség van a klónozott kötet helyi rögzítésére is, akkor a klón sikeres létrehozása után konvertálhatja a klónozást egy helyileg rögzített kötetre. A többkötetes kötetek helyileg rögzített kötetre való konvertálásával kapcsolatos információkért lépjen [a kötet típusának módosítása](storsimple-8000-manage-volumes-u2.md#change-the-volume-type)elemre.
           
-   3. A **csatlakoztatott gazdagépek**területen határozzon meg egy hozzáférés-vezérlési REKORDOT (ACR) a klónozáshoz. Hozzáadhat egy új ACR-t, vagy választhat a meglévő listából is. Az ACR meghatározza, hogy mely gazdagépek férhetnek hozzá ehhez a klónhoz.
+   3. A **csatlakoztatott gazdagépek** területen határozzon meg egy hozzáférés-vezérlési REKORDOT (ACR) a klónozáshoz. Hozzáadhat egy új ACR-t, vagy választhat a meglévő listából is. Az ACR meghatározza, hogy mely gazdagépek férhetnek hozzá ehhez a klónhoz.
       
        ![Biztonságimásolat-készlet listája 4](./media/storsimple-8000-clone-volume-u2/clonevol3a.png) 
 
@@ -92,7 +92,7 @@ A következő lépések végrehajtásával hozza létre a kötet klónját a biz
 
     ![Biztonságimásolat-készlet 5. listája](./media/storsimple-8000-clone-volume-u2/clonevol5.png)
 
-7. A klónozási feladatok befejezése után lépjen az eszközre, majd kattintson a **kötetek**elemre. A kötetek listájában látnia kell a klónozást, amelyet az imént hozott létre ugyanabban a kötet-tárolóban, amelyben a forrás kötet található.
+7. A klónozási feladatok befejezése után lépjen az eszközre, majd kattintson a **kötetek** elemre. A kötetek listájában látnia kell a klónozást, amelyet az imént hozott létre ugyanabban a kötet-tárolóban, amelyben a forrás kötet található.
 
     ![Biztonságimásolat-készlet listája 6](./media/storsimple-8000-clone-volume-u2/clonevol6.png)
 

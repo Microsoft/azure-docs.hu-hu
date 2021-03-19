@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: ae0b343be986f4d8d5176c1f39eef6b23ca81278
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91840642"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>Oktatóanyag: Service Fabric-fürt telepítése és létrehozása
@@ -17,7 +17,7 @@ Az önálló Service Fabric-fürtök lehetővé teszik, hogy kiválassza a sajá
 
 Ez az oktatóanyag egy sorozat második része. Ez az oktatóanyag végigvezeti az önálló Service Fabric-fürt létrehozásának lépésein.
 
-Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
+Ebből a cikkből megtudhatja, hogyan:
 
 > [!div class="checklist"]
 > * Az önálló Service Fabric-csomag letöltése és telepítése
@@ -28,7 +28,7 @@ Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 
 A Service Fabric egy telepítőcsomagot biztosít az önálló Service Fabric-fürtök telepítéséhez.  [Töltse le a telepítőcsomagot](https://go.microsoft.com/fwlink/?LinkId=730690) a helyi számítógépre.  Miután sikeresen letöltötte a példányt a virtuális gépre irányuló RDP-kapcsolaton keresztül, és beilleszti az asztalra.
 
-Válassza ki a zip-fájlt, és nyissa meg a helyi menüt, és válassza az **összes**  >  **kibontása**lehetőséget.  A fájlok kibontásakor létrejön egy mappa az asztalon, amelynek neve megegyezik a ZIP-fájl nevével.
+Válassza ki a zip-fájlt, és nyissa meg a helyi menüt, és válassza az **összes**  >  **kibontása** lehetőséget.  A fájlok kibontásakor létrejön egy mappa az asztalon, amelynek neve megegyezik a ZIP-fájl nevével.
 
 További információ a [telepítőcsomag tartalmáról](service-fabric-cluster-standalone-package-contents.md).
 
@@ -124,7 +124,7 @@ Most már csatlakozhat a fürthöz Service Fabric Explorer vagy közvetlenül az
 
 Az üzleti igényei változásával hozzáadhat vagy eltávolíthat csomópontokat az önálló Service Fabric-fürtről. A lépések részletes leírása: [Csomópontok hozzáadása vagy eltávolítása egy önálló Service Fabric-fürtről](service-fabric-cluster-windows-server-add-remove-nodes.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan tölthet fel párhuzamosan nagy mennyiségű véletlenszerű információt egy Storage-fiókba, például:
 

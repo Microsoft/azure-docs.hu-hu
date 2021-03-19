@@ -9,10 +9,10 @@ ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 69cffb6000df9d8b058d92231c130ea8a601e6d2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88660631"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-arm-template"></a>Gyors útmutató: Service Bus névtér és üzenetsor létrehozása ARM-sablonnal
@@ -74,11 +74,11 @@ Ha a központi telepítést automatikusan szeretné futtatni, kattintson a köve
 
 1. A Azure Portal navigáljon az **erőforráscsoport oldalához** .
 2. Válassza az **Erőforráscsoport törlése** elemet az eszköztáron. 
-3. Írja be az erőforráscsoport nevét, és válassza a **Törlés**lehetőséget. 
+3. Írja be az erőforráscsoport nevét, és válassza a **Törlés** lehetőséget. 
 
     ![Erőforráscsoport – törlés](./media/service-bus-resource-manager-namespace-queue/resource-group-delete.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő témakört, amely bemutatja, hogyan hozhat létre egy engedélyezési szabályt a névtérhez vagy a várólistához:
 

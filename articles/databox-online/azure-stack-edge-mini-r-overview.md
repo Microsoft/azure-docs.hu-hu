@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 03/03/2021
 ms.author: alkohli
-ms.openlocfilehash: 7c28eb604de4f6e23f37b6ca2fcab3fdc976f237
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 14a425c3aca3a1c296b96855b2c920d558e89f9e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102125199"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585978"
 ---
 # <a name="what-is-the-azure-stack-edge-mini-r"></a>Mi az a Azure Stack Edge mini R?
 
@@ -79,6 +79,7 @@ Azure Stack Edge mini R fizikai eszközét, az Azure-erőforrást és a célkén
 
 - **Céloldali tárfiókok** – Az adatokat tároló tárfiókok minden Azure-régióban elérhetők. Azok a régiók, amelyekben a Storage-fiókok tárolják Azure Stack Edge mini R-adataikat, közel kell lenniük ahhoz, ahol az eszköz az optimális teljesítmény érdekében található. Az eszköztől távol található tárfiók esetében hosszú késések és lassabb teljesítmény várható.
 
+Azure Stack Edge szolgáltatás nem regionális szolgáltatás. További információ: [régiók és Availability Zones az Azure-ban](https://docs.microsoft.com/azure/availability-zones/az-overview). Az Azure Stack Edge szolgáltatás nem függ egy adott Azure-régiótól, így rugalmasan kihasználható a zónákra kiterjedő kimaradások és az egész régióra kiterjedő kimaradások terén.
 
 ## <a name="next-steps"></a>Következő lépések
 

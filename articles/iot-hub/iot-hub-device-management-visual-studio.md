@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
 ms.openlocfilehash: 6fe5a45dda6632c56b3c6714827950e25e7d26af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73953187"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>A Cloud Explorer használata az Azure-hoz készült Visual Studio IoT Hub-eszközök kezeléséhez
@@ -59,17 +59,17 @@ A Visual Studio 2017-es verziójának Cloud Explorer összetevője csak az eszk�
 
 ## <a name="sign-in-to-access-your-hub"></a>Bejelentkezés a hub eléréséhez
 
-1. A Visual Studióban kattintson a Cloud Explorer **megtekintése**elemre  >  **Cloud Explorer** a Cloud Explorer megnyitásához.
+1. A Visual Studióban kattintson a Cloud Explorer **megtekintése** elemre  >   a Cloud Explorer megnyitásához.
 
 1. Az előfizetések megjelenítéséhez válassza az Account Management (Fiókkezelés) ikont.
 
     ![Fiókkezelés ikon](media/iot-hub-visual-studio-cloud-device-messaging/account-management-icon.png)
 
-1. Ha bejelentkezett az Azure-ba, a fiókok megjelennek. Ha első alkalommal szeretne bejelentkezni az Azure-ba, válassza a **fiók hozzáadása**lehetőséget.
+1. Ha bejelentkezett az Azure-ba, a fiókok megjelennek. Ha első alkalommal szeretne bejelentkezni az Azure-ba, válassza a **fiók hozzáadása** lehetőséget.
 
-1. Válassza ki a használni kívánt Azure-előfizetéseket, majd válassza az **alkalmaz**lehetőséget.
+1. Válassza ki a használni kívánt Azure-előfizetéseket, majd válassza az **alkalmaz** lehetőséget.
 
-1. Bontsa ki az előfizetést, majd bontsa ki az **IoT hubok**elemet.  Az egyes központokban megtekintheti az adott hubhoz tartozó eszközöket. Kattintson a jobb gombbal egy eszközre a felügyeleti lehetőségek eléréséhez.
+1. Bontsa ki az előfizetést, majd bontsa ki az **IoT hubok** elemet.  Az egyes központokban megtekintheti az adott hubhoz tartozó eszközöket. Kattintson a jobb gombbal egy eszközre a felügyeleti lehetőségek eléréséhez.
 
     ![Felügyeleti beállítások](media/iot-hub-device-management-visual-studio/management-options-vs2019.png)
 
@@ -77,7 +77,7 @@ A Visual Studio 2017-es verziójának Cloud Explorer összetevője csak az eszk�
 
 A közvetlen módszerek használatához hajtsa végre a következő lépéseket:
 
-1. Kattintson a jobb gombbal az eszközre, és válassza a **közvetlen eszköz metódusának meghívása**lehetőséget.
+1. Kattintson a jobb gombbal az eszközre, és válassza a **közvetlen eszköz metódusának meghívása** lehetőséget.
 
 1. Adja meg a metódus nevét és a hasznos adatokat a **közvetlen hívási metódusban**, majd kattintson **az OK gombra**.
 
@@ -87,7 +87,7 @@ A közvetlen módszerek használatához hajtsa végre a következő lépéseket:
 
 Az eszközök kettős szerkesztéséhez hajtsa végre a következő lépéseket:
 
-1. Kattintson a jobb gombbal az eszközre, és válassza az **eszközök dupla szerkesztése**lehetőséget.
+1. Kattintson a jobb gombbal az eszközre, és válassza az **eszközök dupla szerkesztése** lehetőséget.
 
    Megnyílik egy **azure-iot-device-twin.jsa** fájlon, amely az eszköz iker tartalmát nyitja meg.
 
@@ -101,13 +101,13 @@ Az eszközök kettős szerkesztéséhez hajtsa végre a következő lépéseket:
 
 Ha üzenetet szeretne küldeni a IoT Hub az eszközére, kövesse az alábbi lépéseket:
 
-1. Kattintson a jobb gombbal az eszközre, és válassza a **C2D-üzenet küldése**lehetőséget.
+1. Kattintson a jobb gombbal az eszközre, és válassza a **C2D-üzenet küldése** lehetőséget.
 
 1. Adja meg az üzenetet a **C2D küldése üzenetben** , majd kattintson **az OK gombra**.
 
    Az eredmények megjelennek a **kimenetben**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtanulta, hogyan használhatja a Cloud Explorer for Visual Studio különböző felügyeleti lehetőségeket.
 

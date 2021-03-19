@@ -1,7 +1,7 @@
 ---
 title: 'Az adatnormalizálás: modul-hivatkozás'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan alakíthatja át az adathalmazt *normalizálás*használatával a Azure Machine learning a normalizált adatmodul segítségével.
+description: Megtudhatja, hogyan alakíthatja át az adathalmazt *normalizálás* használatával a Azure Machine learning a normalizált adatmodul segítségével.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: de0a23ca9dea210d91fe259b06622226549ba3b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90890447"
 ---
 # <a name="normalize-data-module"></a>Adatmodul normalizálása
 
 Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
-Ezzel a modullal lehet átalakítani egy adatkészletet a *normalizálás*segítségével.
+Ezzel a modullal lehet átalakítani egy adatkészletet a *normalizálás* segítségével.
 
 A normalizálás olyan technika, amelyet gyakran alkalmaznak a gépi tanuláshoz szükséges adatelőkészítés részeként. A normalizálás célja, hogy az adatkészletben lévő numerikus oszlopok értékeit közös skála használatára módosítsa, és ne torzítsa az értékek tartományán belüli különbségeket, vagy veszítse el az adatokat. Bizonyos algoritmusok esetében a normalizálás is szükséges ahhoz, hogy az adatmodell megfelelően működjön.
 
@@ -39,9 +39,9 @@ Ez a modul több lehetőséget kínál a numerikus adat átalakítására:
 
 ##  <a name="configure-normalize-data"></a>Az adatnormalizálás konfigurálása
 
-A modul használatával egyszerre csak egy normalizáló módszert alkalmazhat. Ezért ugyanazt a normalizáló módszert alkalmazza a rendszer az összes kiválasztott oszlopra. A különböző normalizáló módszerek használatához használja az **Adatnormalizálás**második példányát.
+A modul használatával egyszerre csak egy normalizáló módszert alkalmazhat. Ezért ugyanazt a normalizáló módszert alkalmazza a rendszer az összes kiválasztott oszlopra. A különböző normalizáló módszerek használatához használja az **Adatnormalizálás** második példányát.
 
-1. Adja hozzá az **adategység normalizálása** modult a folyamathoz. A modult Azure Machine Learningban, az **adatátalakítás**alatt, a **skála és a csökkentés** kategóriában találja.
+1. Adja hozzá az **adategység normalizálása** modult a folyamathoz. A modult Azure Machine Learningban, az **adatátalakítás** alatt, a **skála és a csökkentés** kategóriában találja.
 
 2. Csatlakoztasson egy olyan adatkészletet, amely legalább egy, az összes számot tartalmazó oszlopot tartalmaz.
 
@@ -52,7 +52,7 @@ A modul használatával egyszerre csak egy normalizáló módszert alkalmazhat. 
     Ha nem észlelhető numerikus oszlop, ellenőrizze az oszlop metaadatait annak ellenőrzéséhez, hogy az oszlop adattípusa támogatott numerikus típusú-e.
 
     > [!TIP]
-    > Annak érdekében, hogy a megadott típusú oszlopok bemenetként legyenek megadva, próbálja meg az **adatok normalizálása**előtt használni az [Oszlopok kiválasztása az adatkészlet](./select-columns-in-dataset.md) modulban.
+    > Annak érdekében, hogy a megadott típusú oszlopok bemenetként legyenek megadva, próbálja meg az **adatok normalizálása** előtt használni az [Oszlopok kiválasztása az adatkészlet](./select-columns-in-dataset.md) modulban.
 
 4. **Ha be van jelölve, válassza a 0 értéket az állandó oszlopoknál**: ezt a beállítást akkor válassza, ha bármely numerikus oszlop egyetlen változatlan értéket tartalmaz. Ez biztosítja, hogy az ilyen oszlopok ne legyenek használatban a normalizálás műveletekben.
 
@@ -92,13 +92,13 @@ A modul használatával egyszerre csak egy normalizáló módszert alkalmazhat. 
     
       ![normalizálás a TANH függvény használatával](media/module/aml-normalization-tanh.png "AML_normalization – TANH")
 
-6. Küldje el a folyamatot, vagy kattintson duplán az **Adatnormalizálás** modulra, és válassza a **kijelölt futtatása**lehetőséget. 
+6. Küldje el a folyamatot, vagy kattintson duplán az **Adatnormalizálás** modulra, és válassza a **kijelölt futtatása** lehetőséget. 
 
 ## <a name="results"></a>Results (Eredmények)
 
 A **normalizálás** adatmodul két kimenetet hoz létre:
 
-- Az átalakított értékek megtekintéséhez kattintson a jobb gombbal a modulra, majd válassza a **Megjelenítés**lehetőséget.
+- Az átalakított értékek megtekintéséhez kattintson a jobb gombbal a modulra, majd válassza a **Megjelenítés** lehetőséget.
 
     Alapértelmezés szerint az értékek a helyük szerint lesznek átalakítva. Ha össze szeretné hasonlítani az átalakított értékeket az eredeti értékekkel, az [Oszlopok hozzáadása](./add-columns.md) modullal egyesítheti az adatkészleteket, és megtekintheti az oszlopokat egymás mellett.
 
