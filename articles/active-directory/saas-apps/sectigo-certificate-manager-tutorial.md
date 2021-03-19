@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.openlocfilehash: c589db84b6221aa23868b3b49aea84f33623619f
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92673861"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>Oktatóanyag: Azure Active Directory integráció a Sectigo tanúsítványkezelővel
@@ -38,7 +38,7 @@ Az Azure AD-integráció a Sectigo tanúsítványkezelővel való konfigurálás
 * Sectigo tanúsítványkezelő fiók.
 
 > [!NOTE]
-> A Sectigo a Sectigo tanúsítványkezelő több példányát futtatja. A Sectigo tanúsítványkezelő fő példánya  **https: \/ /CERT-Manager.com** , és ez az URL-cím a jelen oktatóanyagban használatos.  Ha a fiókja egy másik példányon található, ennek megfelelően kell módosítania az URL-címeket.
+> A Sectigo a Sectigo tanúsítványkezelő több példányát futtatja. A Sectigo tanúsítványkezelő fő példánya  **https: \/ /CERT-Manager.com**, és ez az URL-cím a jelen oktatóanyagban használatos.  Ha a fiókja egy másik példányon található, ennek megfelelően kell módosítania az URL-címeket.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -53,7 +53,7 @@ A Sectigo tanúsítványkezelő a következő funkciókat támogatja:
 
 A Sectigo tanúsítványkezelő Azure AD-val való integrálásához hozzá kell adnia a Sectigo Tanúsítványkezelőt a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
 
@@ -121,16 +121,16 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja a Sectigo 
 
 1. A **felhasználói attribútumok & jogcímek** szakaszban hajtsa végre a következő lépéseket:
 
-    1. Törölje az összes **további jogcímet** .
+    1. Törölje az összes **további jogcímet**.
     
     1. Válassza az **új jogcím hozzáadása** lehetőséget, és adja hozzá a következő négy jogcímet:
     
-        | Name | Névtér | Forrás | Forrás attribútum | Leírás |
+        | Name | Névtér | Forrás | Forrás attribútum | Description |
         | --- | --- | --- | --- | --- |
         | eduPersonPrincipalName | üres | Attribútum | User. userPrincipalName | Meg kell egyeznie a **identitásszolgáltató személy azonosító** mezőjével a Sectigo Tanúsítványkezelőben a rendszergazdák számára. |
         | Levelezés | üres | Attribútum | User. mail | Kötelező |
-        | givenName | üres | Attribútum | User. givenName | Nem kötelező |
-        | sn | üres | Attribútum | felhasználó. vezetéknév | Nem kötelező |
+        | givenName | üres | Attribútum | User. givenName | Választható |
+        | sn | üres | Attribútum | felhasználó. vezetéknév | Választható |
 
        ![Sectigo tanúsítványkezelő – négy új jogcím hozzáadása](media/sectigo-certificate-manager-tutorial/additional-claims.png)
 
@@ -158,11 +158,11 @@ Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azur
 
     1. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    1. A **Felhasználónév** mezőbe írja be a **brittasimon \@ \<your-company-domain> . \<extension\>** . Például **brittasimon \@ contoso.com** .
+    1. A **Felhasználónév** mezőbe írja be a **brittasimon \@ \<your-company-domain> . \<extension\>**. Például **brittasimon \@ contoso.com**.
 
     1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet. Jegyezze fel a **jelszó** mezőben megjelenő értéket.
 
-    1. Kattintson a **Létrehozás** gombra.
+    1. Válassza a **Létrehozás** lehetőséget.
 
     ![A felhasználó panel](common/user-properties.png)
 

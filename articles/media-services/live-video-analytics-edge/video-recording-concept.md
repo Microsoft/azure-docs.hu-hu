@@ -4,10 +4,10 @@ description: A CCTV kamerákhoz készült videó-felügyeleti rendszer kontextus
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: c03472f577e67d5b2705a2ebe3f53e85e0849819
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84260945"
 ---
 # <a name="video-recording"></a>Videófelvétel
@@ -30,7 +30,7 @@ A CVR vagy a EVR használatának megválasztása az üzleti céloktól függ. A 
 
 A rögzítési házirend azokra a szabályzatokra vonatkozik, amelyek megírják a rögzítés kezdő/leállítási idejét (EVR esetén), a rögzítés időtartamát és a rögzítés törlését. A szabályzatok rögzítése lehetővé teszi, hogy az üzleti követelmények alapján kiegyensúlyozza a tárolási költségeket. A CVR és a EVR közötti adatrögzítési házirendek eltérőek. A CVR esetében a rögzítési házirend határozza meg, hogy hány napon belül kell tárolni a videót (például az elmúlt 7 napban). A EVR esetében a rögzítési házirend határozza meg, hogy mikor kezdődjön és fejeződik be a rögzítés, a videó időtartamával együtt. További információt a [CVR](continuous-video-recording-concept.md) és a [EVR](event-based-video-recording-concept.md) forgatókönyv cikkeiben talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mozgás észlelése, videóklipek készítése az Azure Media Servicesbe](detect-motion-record-video-clips-media-services-quickstart.md)
 * [Mozgás észlelése, videoklipek rögzítése az Edge-eszközökön](detect-motion-record-video-clips-edge-devices-quickstart.md)

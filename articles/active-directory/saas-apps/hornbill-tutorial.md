@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 4131f1d0ef36eb49641ac184cd3f72fb719ea90e
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92443402"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hornbill"></a>Oktatóanyag: Azure Active Directory a szarvascsőrű integrációja
@@ -65,13 +65,13 @@ A szarvascsőrű Azure AD-be való integrálásának konfigurálásához hozzá 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **szarvascsőrű**kifejezést, válassza a **szarvascsőrű** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **szarvascsőrű** kifejezést, válassza a **szarvascsőrű** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![Szarvascsőrű az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD-alapú egyszeri bejelentkezést a **Britta Simon**nevű teszt felhasználója állítja be és teszteli.
+Ebben a szakaszban az Azure AD-alapú egyszeri bejelentkezést a **Britta Simon** nevű teszt felhasználója állítja be és teszteli.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés a szarvascsőrű használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -89,7 +89,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés a szarvascsőrű használatával történő konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **szarvascsőrű** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **szarvascsőrű** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -120,15 +120,15 @@ Az Azure AD egyszeri bejelentkezés a szarvascsőrű használatával történő 
 
 1. Egy másik böngészőablakban jelentkezzen be a Szarvascsőrűbe biztonsági rendszergazdaként.
 
-2. A kezdőlapon kattintson a **rendszer**elemre.
+2. A kezdőlapon kattintson a **rendszer** elemre.
 
     ![Szarvascsőrű-rendszerek](./media/hornbill-tutorial/tutorial_hornbill_system.png)
 
-3. Navigáljon a **Biztonság**elemre.
+3. Navigáljon a **Biztonság** elemre.
 
     ![A szarvascsőrű biztonsága](./media/hornbill-tutorial/tutorial_hornbill_security.png)
 
-4. Kattintson az **SSO-profilok**lehetőségre.
+4. Kattintson az **SSO-profilok** lehetőségre.
 
     ![Szarvascsőrű – egyetlen](./media/hornbill-tutorial/tutorial_hornbill_sso.png)
 
@@ -136,11 +136,11 @@ Az Azure AD egyszeri bejelentkezés a szarvascsőrű használatával történő 
 
     ![Szarvascsőrű hozzáadása](./media/hornbill-tutorial/tutorial_hornbill_addlogo.png)
 
-6. A **profil részletei** sávban kattintson az **SAML meta-embléma importálása**elemre.
+6. A **profil részletei** sávban kattintson az **SAML meta-embléma importálása** elemre.
 
     ![Szarvascsőrű emblémája](./media/hornbill-tutorial/tutorial_hornbill_logo.png)
 
-7. Az **URL-cím** szövegmezőben lévő előugró lapon illessze be az **alkalmazás-összevonási metaadatok URL-címét**, amelyet a Azure Portal másolt, majd kattintson a **folyamat**elemre.
+7. Az **URL-cím** szövegmezőben lévő előugró lapon illessze be az **alkalmazás-összevonási metaadatok URL-címét**, amelyet a Azure Portal másolt, majd kattintson a **folyamat** elemre.
 
     ![Szarvascsőrű-folyamat](./media/hornbill-tutorial/tutorial_hornbill_process.png)
 
@@ -158,7 +158,7 @@ Az Azure AD egyszeri bejelentkezés a szarvascsőrű használatával történő 
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -183,15 +183,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a szarvascsőrű elérésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **szarvascsőrű**elemet.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **szarvascsőrű** elemet.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **szarvascsőrű**elemet.
+2. Az alkalmazások listában válassza a **szarvascsőrű** elemet.
 
     ![Az alkalmazások listán szereplő szarvascsőrű-hivatkozás](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 

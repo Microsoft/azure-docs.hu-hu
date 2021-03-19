@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: 119ecb3ec9c208340f09f513bf10b3ad24312cb5
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: a5d2043c29db87876cc0d5ddb5b3708abad033c5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201226"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591979"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Azure Data Factory által támogatott rendszerváltozók
 
@@ -24,7 +24,7 @@ Ez a cikk a Azure Data Factory által támogatott rendszerváltozókat ismerteti
 
 Ezeket a rendszerváltozókat a folyamat JSON-ban bárhol lehet hivatkozni.
 
-| Változó neve | Leírás |
+| Változó neve | Description |
 | --- | --- |
 | @pipeline(). DataFactory |Annak az adatelőállítónak a neve, amelyen a folyamat fut |
 | @pipeline(). Folyamat |A folyamat neve |
@@ -41,7 +41,7 @@ Ezeket a rendszerváltozókat a folyamat JSON-ban bárhol lehet hivatkozni.
 
 Ezeket a rendszerváltozókat az eseményindító JSON-ban bárhol lehet hivatkozni [ScheduleTrigger](concepts-pipeline-execution-triggers.md#schedule-trigger)típusú eseményindítók esetén.
 
-| Változó neve | Leírás |
+| Változó neve | Description |
 | --- | --- |
 | @trigger().scheduledTime |Az az idő, amikor az eseményindító ütemezve lett a folyamat futásának meghívására. |
 | @trigger(). kezdő időpont |Az az idő, amikor az eseményindító **ténylegesen** elindította a folyamat futtatását. Ez kis mértékben eltérhet a trigger ütemezett idejétől. |
@@ -50,7 +50,7 @@ Ezeket a rendszerváltozókat az eseményindító JSON-ban bárhol lehet hivatko
 
 Ezeket a rendszerváltozókat az eseményindító JSON-ban bárhol lehet hivatkozni [TumblingWindowTrigger](concepts-pipeline-execution-triggers.md#tumbling-window-trigger)típusú eseményindítók esetén.
 
-| Változó neve | Leírás |
+| Változó neve | Description |
 | --- | --- |
 | @trigger(). outputs. windowStartTime |Az trigger futtatásához társított ablak kezdete. |
 | @trigger(). outputs. windowEndTime |Az trigger futtatásához társított ablak vége. |
@@ -61,11 +61,25 @@ Ezeket a rendszerváltozókat az eseményindító JSON-ban bárhol lehet hivatko
 
 Ezeket a rendszerváltozókat az eseményindító JSON-ban bárhol lehet hivatkozni [BlobEventsTrigger](concepts-pipeline-execution-triggers.md#event-based-trigger)típusú eseményindítók esetén.
 
-| Változó neve | Leírás |
+| Változó neve | Description |
 | --- | --- |
 | @triggerBody(). fájlnév  |Annak a fájlnak a neve, amelynek létrehozása vagy törlése miatt a trigger tüzet okozott.   |
 | @triggerBody(). mappanév  |A által megadott fájlt tartalmazó mappa elérési útja `@triggerBody().fileName` . A mappa elérési útjának első szegmense az Azure Blob Storage tároló neve.  |
 | @trigger(). kezdő időpont |Az az idő, amikor a trigger kezdeményezte a folyamat futtatását. |
+
+## <a name="custom-event-trigger-scope"></a>Egyéni eseményindító hatóköre
+
+Ezeket a rendszerváltozókat az eseményindító JSON-ban bárhol lehet hivatkozni [CustomEventsTrigger](concepts-pipeline-execution-triggers.md#event-based-trigger)típusú eseményindítók esetén.
+
+>[!NOTE]
+>Azure Data Factory azt várja, hogy az egyéni esemény [Azure Event Grid eseményvezérelt sémával](../event-grid/event-schema.md)legyen formázva.
+
+| Változó neve | Description
+| --- | --- |
+| @triggerBody(). Event. eventType | Az egyéni eseményindító futtatását kiváltó események típusa. Az esemény típusa ügyfél által definiált mező, és tetszőleges karakterlánc típusú értékeket is igénybe veheti. |
+| @triggerBody(). Event. subject | Az eseményindítót a tüzet kiváltó egyéni esemény tárgya. |
+| @triggerBody(). Event. adattal. _Kulcsnév_ | Az egyéni esemény adatmezője egy ingyenes a JSON-blobtól, amelyet az ügyfél az üzenetek és adatok küldésére használhat. Használja az adathalmazt. az egyes mezőkre mutató _Kulcsnév_ . Például: @triggerBody (). az Event. revisszahívás az _adatok_ alatt tárolt _visszahívási_ mező értékét adja vissza. |
+| @trigger(). kezdő időpont | Az az idő, amikor a trigger kezdeményezte a folyamat futtatását. |
 
 ## <a name="next-steps"></a>Következő lépések
 

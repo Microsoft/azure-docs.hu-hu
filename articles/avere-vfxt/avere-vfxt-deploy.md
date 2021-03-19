@@ -7,15 +7,15 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: 110fc658ffc3b72de91bbf1c9562f3efeecaf55b
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92342416"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>A vFXT-fürt üzembe helyezése
 
-Ez az eljárás végigvezeti az Azure piactéren elérhető központi telepítési varázsló használatával. A varázsló Azure Resource Manager sablon használatával automatikusan telepíti a fürtöt. Miután megtörtént a paraméterek megadása az űrlapon, majd a **Létrehozás**gombra kattint, az Azure automatikusan végrehajtja ezeket a feladatokat:
+Ez az eljárás végigvezeti az Azure piactéren elérhető központi telepítési varázsló használatával. A varázsló Azure Resource Manager sablon használatával automatikusan telepíti a fürtöt. Miután megtörtént a paraméterek megadása az űrlapon, majd a **Létrehozás** gombra kattint, az Azure automatikusan végrehajtja ezeket a feladatokat:
 
 * Létrehozza a fürtöt, amely egy alapszintű virtuális gép, amely tartalmazza a fürt üzembe helyezéséhez és kezeléséhez szükséges szoftvert.
 * Beállítja az erőforráscsoportot és a virtuális hálózati infrastruktúrát, beleértve az új elemek létrehozását is.
@@ -147,11 +147,11 @@ Az információk megkeresése:
 
 1. Nyissa meg a fürthöz tartozó erőforráscsoportot.
 
-1. A bal oldalon kattintson a **központi telepítések**, majd a **Microsoft-avere. vfxt-template**elemre.
+1. A bal oldalon kattintson a **központi telepítések**, majd a **Microsoft-avere. vfxt-template** elemre.
 
    ![Erőforráscsoport-portál lap a bal oldalon és a Microsoft-avere. vfxt-templateben kiválasztott központi telepítések a központi telepítési név alatt lévő táblázatban](media/avere-vfxt-outputs-deployments.png)
 
-1. A bal oldalon kattintson a **kimenetek**elemre. Másolja az értékeket az egyes mezőkbe.
+1. A bal oldalon kattintson a **kimenetek** elemre. Másolja az értékeket az egyes mezőkbe.
 
    ![kimenetek oldal, amely a SSHSTRING, a RESOURCE_GROUP, a hely, a NETWORK_RESOURCE_GROUP, a hálózat, az ALHÁLÓZAT, a SUBNET_ID, a VSERVER_IPs és a MGMT_IP értékeket mutatja a címkéktől jobbra található mezőkben.](media/avere-vfxt-outputs-values.png)
 

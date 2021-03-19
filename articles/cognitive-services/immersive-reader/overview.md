@@ -12,16 +12,21 @@ ms.date: 01/4/2020
 ms.author: metang
 ms.custom: cog-serv-seo-aug-2020
 keywords: olvasók, nyelvi tanulók, képek megjelenítése, az olvasás javítása, tartalom olvasása, fordítás
-ms.openlocfilehash: 0661bd5f917a2bf071f11393ad8ac9af53ddfe97
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 6affc0a2b94c7ea950a8995981d63470722d981f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631239"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599527"
 ---
 # <a name="what-is-immersive-reader"></a>Mi az a Modern olvasó?
 
 A teljes körűen kialakított [olvasó](https://www.onenote.com/learningtools) egy kipróbált eljárás, amely az új olvasók, a nyelvi tanulók és a tanulással kapcsolatos különbségeket, például a diszlexiat is javítja. Az olvasó ügyféloldali kódtár használatával a Microsoft Wordben és a Microsoft egy megjegyzésében is használhatja a webalkalmazások fejlesztéséhez használt technológiát. 
+
+Ez a dokumentáció a következő típusú cikkeket tartalmazza:  
+
+* **[A gyors](quickstarts/client-libraries.md)** útmutatók részletes útmutatást biztosítanak, amelyekkel hívásokat indíthat a szolgáltatásba, és lekérheti az eredményeket.
+* A **[útmutatók](how-to-create-immersive-reader.md)** útmutatói a szolgáltatás részletesebb vagy testreszabott módokon történő használatára vonatkozó utasításokat tartalmaznak.  
 
 ## <a name="use-immersive-reader-to-improve-reading-accessibility"></a>A kisegítő lehetőségek kihasználása az olvasóval 
 
@@ -72,10 +77,3 @@ A lebilincselő olvasó egy önálló webalkalmazás. Ha a meghívja az olvasó 
 A gördülékeny olvasó ügyféloldali kódtára C#, JavaScript, Java (Android), Kotlin (Android) és Swift (iOS) rendszeren érhető el. Első lépések:
 
 * [Rövid útmutató: az olvasó ügyféloldali függvénytárának használata](quickstarts/client-libraries.md)
-
-## <a name="next-steps"></a>Következő lépések
-
-A Modern olvasó használatának első lépései:
-
-* Az [olvasói ügyféloldali függvénytár-referenciájának](./reference.md) elolvasása
-* Ismerje [meg az olvasói ügyféloldali kódtárat a githubon](https://github.com/microsoft/immersive-reader-sdk)

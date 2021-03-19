@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
 ms.openlocfilehash: b4d6b20e63c42616aad0f8776fae159a0f2aa455
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87088376"
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>Azure-beli virtuális hálózatok általános PowerShell-parancsai
@@ -29,8 +29,8 @@ Bizonyos változók hasznosak lehetnek, ha a cikkben szereplő parancsok közül
 
 | Feladat | Parancs |
 | ---- | ------- |
-| Alhálózat-konfigurációk létrehozása |$subnet 1 = [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) -Name "mySubnet1" – AddressPrefix XX. X. X. X/XX<BR>$subnet 2 = New-AzVirtualNetworkSubnetConfig-Name "mySubnet2" – AddressPrefix XX. X. X. X/XX<BR><BR>Egy tipikus hálózat rendelkezhet alhálózattal az [internetkapcsolattal rendelkező terheléselosztó](../../load-balancer/load-balancer-overview.md) és egy különálló alhálózat számára a [belső terheléselosztó](../../load-balancer/load-balancer-overview.md)számára. |
-| Virtuális hálózat létrehozása |$vnet = [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) -Name "myVNet"-ResourceGroupName $MyResourceGroup-Location $Location-AddressPrefix XX. X. X. X/XX – alhálózat $subnet 1, $subnet 2 |
+| Alhálózat-konfigurációk létrehozása |$subnet 1 = [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) -Name "mySubnet1"-AddressPrefix XX. X. X. x/XX<BR>$subnet 2 = New-AzVirtualNetworkSubnetConfig-Name "mySubnet2"-AddressPrefix XX. X. X. X/XX<BR><BR>Egy tipikus hálózat rendelkezhet alhálózattal az [internetkapcsolattal rendelkező terheléselosztó](../../load-balancer/load-balancer-overview.md) és egy különálló alhálózat számára a [belső terheléselosztó](../../load-balancer/load-balancer-overview.md)számára. |
+| Virtuális hálózat létrehozása |$vnet = [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) -Name "myVNet"-ResourceGroupName $MyResourceGroup-Location $Location-AddressPrefix XX. X. X. x/XX-alhálózat $subnet 1, $subnet 2 |
 | Egyedi tartománynév tesztelése |[Test-AzDnsAvailability](/powershell/module/az.network/test-azdnsavailability) -Domainnamelabel értékkel "myDNS" – hely $Location<BR><BR>Megadhat egy DNS-tartománynevet egy [nyilvános IP-erőforráshoz](../../virtual-network/public-ip-addresses.md), amely létrehoz egy leképezést a nyilvános IP-címhez az Azure által FELÜGYELt DNS-kiszolgálók domainname.location.cloudapp.Azure.com. A név csak betűket, számokat és kötőjelet tartalmazhat. Az első és az utolsó karakternek betűnek vagy számnak kell lennie, és a tartománynévnek egyedinek kell lennie az Azure-helyen belül. Ha a függvény **igaz** értéket ad vissza, a javasolt név globálisan egyedi. |
 | Hozzon létre egy nyilvános IP-címet |$pip = [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) -Name "myPublicIp"-ResourceGroupName $MyResourceGroup-Domainnamelabel értékkel "myDNS" – location $Location – AllocationMethod Dynamic<BR><BR>A nyilvános IP-cím a korábban tesztelt tartománynevet használja, amelyet a terheléselosztó előtér-konfigurációja használ. |
 | Előtér-IP-konfiguráció létrehozása |$frontendIP = [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) -Name "myFrontendIP"-PublicIpAddress $pip<BR><BR>A előtér-konfiguráció tartalmazza azt a nyilvános IP-címet, amelyet korábban a bejövő hálózati forgalomhoz hozott létre. |
@@ -39,7 +39,7 @@ Bizonyos változók hasznosak lehetnek, ha a cikkben szereplő parancsok közül
 | Terheléselosztási szabály létrehozása |$lbRule = [New-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig) -Name http-frontendipconfiguration osztály $FrontendIP-BackendAddressPool $BeAddressPool-szonda $HealthProbe-Protocol TCP-FrontendPort 80-BackendPort 80<BR><BR>Olyan szabályokat tartalmaz, amelyek a terheléselosztó nyilvános portját hozzárendelik a háttér-címkészlet egy portjához. |
 | Bejövő NAT-szabály létrehozása |$inboundNATRule = [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) -Name "myInboundRule1"-frontendipconfiguration osztály $FrontendIP-Protocol TCP-FrontendPort 3441-BackendPort 3389<BR><BR>Olyan szabályokat tartalmaz, amelyek a terheléselosztó nyilvános portját hozzárendelik egy adott virtuális gép portjához a háttér-címkészlet során. |
 | Terheléselosztó létrehozása |$loadBalancer = [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) -ResourceGroupName $MyResourceGroup-Name "myLoadBalancer"-location $Location-frontendipconfiguration osztály $FrontendIP-InboundNatRule $InboundNATRule-LoadBalancingRule $LbRule-BackendAddressPool $beAddressPool-mintavétel $healthProbe |
-| Hálózati adapter létrehozása |$nic 1 = [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) -ResourceGroupName $MyResourceGroup-Name "myNIC" – location $Location-privateipaddress tulajdonságot XX. X. X. X – alhálózat $subnet 2 – LoadBalancerBackendAddressPool $loadBalancer. BackendAddressPools [0]-LoadBalancerInboundNatRule $loadBalancer. InboundNatRules [0]<BR><BR>Hozzon létre egy hálózati adaptert a korábban létrehozott nyilvános IP-cím és virtuális hálózati alhálózat használatával. |
+| Hálózati adapter létrehozása |$nic 1 = [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) -ResourceGroupName $MyResourceGroup-Name "myNIC"-location $Location-privateipaddress tulajdonságot XX. x. X. x-alhálózat $subnet 2-LoadBalancerBackendAddressPool $LoadBalancer. BackendAddressPools [0]-LoadBalancerInboundNatRule $LoadBalancer. InboundNatRules [0]<BR><BR>Hozzon létre egy hálózati adaptert a korábban létrehozott nyilvános IP-cím és virtuális hálózati alhálózat használatával. |
 
 ## <a name="get-information-about-network-resources"></a>Hálózati erőforrásokkal kapcsolatos információk beolvasása
 
@@ -59,11 +59,11 @@ Bizonyos változók hasznosak lehetnek, ha a cikkben szereplő parancsok közül
 
 | Feladat | Parancs |
 | ---- | ------- |
-| Alhálózat hozzáadása virtuális hálózathoz |[Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) -AddressPrefix XX. X. X. X/XX – név: "mySubnet1" – VirtualNetwork $vnet<BR><BR>Alhálózatot rendel egy meglévő virtuális hálózathoz. A $vnet érték a Get-AzVirtualNetwork által visszaadott objektumot jelöli. |
+| Alhálózat hozzáadása virtuális hálózathoz |[Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) -AddressPrefix XX. X. X. x/XX – név: "mySubnet1" – VirtualNetwork $vnet<BR><BR>Alhálózatot rendel egy meglévő virtuális hálózathoz. A $vnet érték a Get-AzVirtualNetwork által visszaadott objektumot jelöli. |
 | Virtuális hálózat törlése |[Remove-AzVirtualNetwork](/powershell/module/az.network/remove-azvirtualnetwork) -Name "myVNet" – ResourceGroupName $myResourceGroup<BR><BR>Eltávolítja a megadott virtuális hálózatot az erőforráscsoporthoz. |
 | Hálózati adapter törlése |[Remove-AzNetworkInterface](/powershell/module/az.network/remove-aznetworkinterface) -Name "myNIC" – ResourceGroupName $myResourceGroup<BR><BR>Eltávolítja a megadott hálózati adaptert az erőforráscsoporthoz. |
 | Terheléselosztó törlése |[Remove-AzLoadBalancer](/powershell/module/az.network/remove-azloadbalancer) -Name "myLoadBalancer" – ResourceGroupName $myResourceGroup<BR><BR>Eltávolítja a megadott terheléselosztó-csoportot az erőforráscsoporthoz. |
 | Nyilvános IP-cím törlése |[Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress)-Name "myIPAddress" – ResourceGroupName $myResourceGroup<BR><BR>Eltávolítja a megadott nyilvános IP-címet az erőforráscsoporthoz. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Használja az imént létrehozott hálózati adaptert a [virtuális gép létrehozásakor](./quick-create-powershell.md?toc=/azure/virtual-machines/windows/toc.json).

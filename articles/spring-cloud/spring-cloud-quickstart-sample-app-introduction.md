@@ -9,10 +9,10 @@ ms.date: 09/08/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: dd36bb18e84ea299195b77286887a3b279f81469
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90903597"
 ---
 # <a name="introduction-to-the-sample-app"></a>A mintaalkalmazás bemutatása
@@ -74,7 +74,7 @@ A PiggyMetrics három Core-szolgáltatásból áll. Mindegyik az üzleti tartom�
 
 * **Szolgáltatásfiók (központilag telepítendő)**: általános felhasználói bemeneti logikát és érvényesítést tartalmaz: az adatbevitelek/kiadások elemei, megtakarítások és Fiókbeállítások.
 * **Statisztikai szolgáltatás (ebben a rövid útmutatóban nem használható)**: számításokat végez a főbb statisztikai paramétereken, és rögzíti az idősorozatokat az egyes fiókokhoz. A Datapoint az alappénznemre és az időszakra normalizált értékeket tartalmaz. Ezek az adatforgalom a pénzforgalmi dinamika a fiók élettartamában való nyomon követésére szolgálnak.
-* **Értesítési szolgáltatás (ebben a rövid útmutatóban nem használható): a**felhasználók kapcsolattartási adatait és értesítési beállításait, például az emlékeztetőket és a biztonsági mentés gyakoriságát tárolja. Az ütemezett feldolgozó más szolgáltatásokból gyűjti a szükséges információkat, és e-mail-üzeneteket küld az előfizetett ügyfeleknek.
+* **Értesítési szolgáltatás (ebben a rövid útmutatóban nem használható): a** felhasználók kapcsolattartási adatait és értesítési beállításait, például az emlékeztetőket és a biztonsági mentés gyakoriságát tárolja. Az ütemezett feldolgozó más szolgáltatásokból gyűjti a szükséges információkat, és e-mail-üzeneteket küld az előfizetett ügyfeleknek.
 
 ## <a name="infrastructure-services"></a>Infrastruktúra-szolgáltatások
 
@@ -90,7 +90,7 @@ Az elosztott rendszerekben számos gyakori minta van, amelyek segítenek az alap
 A teljes körű megvalósítás részleteiért lásd: [PiggyMetrics](https://github.com/Azure-Samples/piggymetrics). A minták szükség szerint hivatkoznak a forráskódra.
 ::: zone-end
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Spring Cloud-példány kiépítése](spring-cloud-quickstart-provision-service-instance.md)

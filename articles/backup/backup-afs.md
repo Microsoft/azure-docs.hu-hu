@@ -4,17 +4,17 @@ description: Ismerje meg, hogyan használhatja a Azure Portal az Azure-fájlmego
 ms.topic: conceptual
 ms.date: 01/20/2020
 ms.openlocfilehash: ca49f1ad48ab0534b27b91ad6a5a50b393cda782
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88890348"
 ---
 # <a name="back-up-azure-file-shares"></a>Azure-fájlmegosztások biztonsági mentése
 
 Ez a cikk azt ismerteti, hogyan lehet biztonsági másolatot készíteni az [Azure-fájlmegosztás](../storage/files/storage-files-introduction.md) Azure Portalról.
 
-Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
+Ebből a cikkből megtudhatja, hogyan:
 
 * Recovery Services-tároló létrehozása.
 * A biztonsági mentés konfigurálása a Recovery Services-tárolóból
@@ -67,14 +67,14 @@ A következő lépések bemutatják, hogyan konfigurálhatja a biztonsági ment�
 
 1. A jobb oldalon megnyílik a **fájlmegosztás helyi kiválasztása** panel. Az Azure olyan fájlmegosztás esetén keresi a Storage-fiókot, amelyekről biztonsági másolatot lehet készíteni. Ha nemrég adta hozzá a fájlmegosztást, és nem látja őket a listában, hagyjon némi időt a fájlmegosztás megjelenítésére.
 
-1. A **fájlmegosztás kiválasztása** listából válasszon ki egy vagy több olyan fájlmegosztást, amelyről biztonsági másolatot szeretne készíteni. Kattintson az **OK** gombra.
+1. A **fájlmegosztás kiválasztása** listából válasszon ki egy vagy több olyan fájlmegosztást, amelyről biztonsági másolatot szeretne készíteni. Válassza az **OK** lehetőséget.
 
    ![Fájlmegosztás kiválasztása](./media/backup-afs/select-file-shares.png)
 
 1. A fájlmegosztás biztonsági mentési szabályzatának kiválasztásához három lehetőség közül választhat:
 
    * Válassza ki az alapértelmezett házirendet.<br>
-   Ezzel a beállítással engedélyezheti a napi biztonsági mentést, amely 30 napig megőrzi a rendszerét. Ha nem rendelkezik meglévő biztonsági mentési házirenddel a tárolóban, megnyílik a Backup (biztonsági mentés) ablaktábla az alapértelmezett házirend-beállításokkal. Ha ki szeretné választani az alapértelmezett beállításokat, közvetlenül is kiválaszthatja a **biztonsági mentés engedélyezése**lehetőséget.
+   Ezzel a beállítással engedélyezheti a napi biztonsági mentést, amely 30 napig megőrzi a rendszerét. Ha nem rendelkezik meglévő biztonsági mentési házirenddel a tárolóban, megnyílik a Backup (biztonsági mentés) ablaktábla az alapértelmezett házirend-beállításokkal. Ha ki szeretné választani az alapértelmezett beállításokat, közvetlenül is kiválaszthatja a **biztonsági mentés engedélyezése** lehetőséget.
 
    * Új szabályzat létrehozása <br>
 
@@ -109,9 +109,9 @@ A következő lépések bemutatják, hogyan konfigurálhatja a biztonsági ment�
 
 1. A [Azure Portal](https://portal.azure.com/)nyissa meg azt a Storage-fiókot, amely a biztonsági mentésre használni kívánt fájlmegosztást üzemelteti.
 
-1. A Storage-fiókban válassza ki a **fájlmegosztás**feliratú csempét. A **fájlmegosztást** a Storage-fiókhoz tartozó tartalomjegyzék használatával is megnyithatja.
+1. A Storage-fiókban válassza ki a **fájlmegosztás** feliratú csempét. A **fájlmegosztást** a Storage-fiókhoz tartozó tartalomjegyzék használatával is megnyithatja.
 
-   ![Tárfiók](./media/backup-afs/storage-account.png)
+   ![A(z)](./media/backup-afs/storage-account.png)
 
 1. A fájlmegosztás listájában látnia kell a Storage-fiókban található összes fájlmegosztást. Válassza ki azt a fájlmegosztást, amelyről biztonsági másolatot szeretne készíteni.
 
@@ -182,7 +182,7 @@ Időnként előfordulhat, hogy biztonsági mentési pillanatképet vagy helyreá
 
    ![Azure Storage-(Azure Files-) biztonsági másolati elemek](./media/backup-afs/azure-files-backup-items.png)
 
-1. Az Azure-fájlmegosztás listájából válassza ki a kívánt fájlmegosztást. Megjelenik a **biztonsági mentési elemek** részletei. A **biztonsági mentési elem** menüben válassza a **biztonsági mentés**lehetőséget. Mivel ez a biztonsági mentési feladatok igény szerint vannak, a helyreállítási ponthoz nincs adatmegőrzési szabály társítva.
+1. Az Azure-fájlmegosztás listájából válassza ki a kívánt fájlmegosztást. Megjelenik a **biztonsági mentési elemek** részletei. A **biztonsági mentési elem** menüben válassza a **biztonsági mentés** lehetőséget. Mivel ez a biztonsági mentési feladatok igény szerint vannak, a helyreállítási ponthoz nincs adatmegőrzési szabály társítva.
 
    ![Biztonsági mentés kiválasztása](./media/backup-afs/backup-now.png)
 
@@ -192,7 +192,7 @@ Időnként előfordulhat, hogy biztonsági mentési pillanatképet vagy helyreá
 
 1. Az **OK** gombra kattintva erősítse meg a-t futtató igény szerinti biztonsági mentési feladatot.
 
-1. A portál értesítéseinek figyelésével nyomon követheti a biztonsági mentési feladatok futtatásának befejezését. A feladatok előrehaladását a tároló irányítópultján követheti nyomon. Válassza **Backup Jobs**  >  **a folyamatban lévő**biztonsági mentési feladatok lehetőséget.
+1. A portál értesítéseinek figyelésével nyomon követheti a biztonsági mentési feladatok futtatásának befejezését. A feladatok előrehaladását a tároló irányítópultján követheti nyomon. Válassza   >  **a folyamatban lévő** biztonsági mentési feladatok lehetőséget.
 
 ### <a name="from-the-file-share-pane"></a>A fájlmegosztás panelen
 
@@ -217,7 +217,7 @@ Időnként előfordulhat, hogy biztonsági mentési pillanatképet vagy helyreá
 
 * Ne távolítsa el Azure Backup a Storage-fiók zárolását. Ha törli a zárolást, a Storage-fiók a véletlen törléssel lesz kitéve, és ha törölve van, elveszíti a pillanatképeket vagy a biztonsági mentéseket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 

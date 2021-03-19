@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: 3bff9a91f06649487560faef3ab554b2a3d56af3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90908078"
 ---
 # <a name="enter-data-manually-module"></a>Manuálisan adja meg az adatmodult
@@ -32,7 +32,7 @@ Ez a modul a következő helyzetekben lehet hasznos:
   
 1. Adja hozzá az [adatbevitel manuálisan](./enter-data-manually.md) modult a folyamathoz. Ezt a modult a Azure Machine Learning **adatbevitel és kimenet** kategóriájában találja. 
   
-1. A **DataFormat**területen válassza az alábbi lehetőségek egyikét. Ezek a beállítások határozzák meg, hogy az Ön által megadott információ hogyan legyen elemezve. Az egyes formátumokra vonatkozó követelmények nagy mértékben különböznek, ezért mindenképpen olvassa el a kapcsolódó témaköröket.  
+1. A **DataFormat** területen válassza az alábbi lehetőségek egyikét. Ezek a beállítások határozzák meg, hogy az Ön által megadott információ hogyan legyen elemezve. Az egyes formátumokra vonatkozó követelmények nagy mértékben különböznek, ezért mindenképpen olvassa el a kapcsolódó témaköröket.  
   
    - **ARFF**: attribútum – a WEKA által használt rokon fájlformátum.   
    - **CSV**: vesszővel tagolt értékek formátuma. További információ: [Konvertálás CSV](./convert-to-csv.md)-re.    
@@ -92,7 +92,7 @@ Ez a modul a következő helyzetekben lehet hasznos:
   
 1. Kapcsolja a kimeneti portot más modulokhoz, és futtassa a folyamatot.  
   
-   Az adatkészlet megtekintéséhez kattintson a jobb gombbal a modulra, majd válassza a **Megjelenítés**lehetőséget.
+   Az adatkészlet megtekintéséhez kattintson a jobb gombbal a modulra, majd válassza a **Megjelenítés** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

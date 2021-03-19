@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: error-reference
 ms.date: 02/12/2020
 ms.author: inhenkel
-ms.openlocfilehash: b3be465c488bdd3c5dbd62f757733939d1bee393
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5463f1d8376cbe1a6e81d17c1f95a84e67f3b418
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393513"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581082"
 ---
 # <a name="media-services-live-event-error-codes"></a>Media Services élő események hibakódja
 
@@ -28,7 +28,7 @@ A következő táblázatok az [élő események](live-events-outputs-concept.md)
 
 ## <a name="liveeventconnectionrejected"></a>LiveEventConnectionRejected
 
-Amikor előfizet egy élő esemény [Event Grid](../../event-grid/index.yml) eseményeire, a következő hibák valamelyikét láthatja a [LiveEventConnectionRejected](media-services-event-schemas.md\#liveeventconnectionrejected) eseményből.
+Amikor előfizet egy élő esemény [Event Grid](../../event-grid/index.yml) eseményeire, a következő hibák valamelyikét láthatja a [LiveEventConnectionRejected](monitoring/media-services-event-schemas.md\#liveeventconnectionrejected) eseményből.
 > [!div class="mx-tdCol2BreakAll"]
 >| Hiba | Tájékoztatás |
 >|--|--|
@@ -68,7 +68,7 @@ Amikor előfizet egy élő esemény [Event Grid](../../event-grid/index.yml) ese
 
 ## <a name="liveeventencoderdisconnected"></a>LiveEventEncoderDisconnected
 
-A következő hibák valamelyikét láthatja a [LiveEventEncoderDisconnected](media-services-event-schemas.md\#liveeventencoderdisconnected) eseményből.
+A következő hibák valamelyikét láthatja a [LiveEventEncoderDisconnected](monitoring/media-services-event-schemas.md\#liveeventencoderdisconnected) eseményből.
 
 > [!div class="mx-tdCol2BreakAll"]
 >| Hiba | Tájékoztatás |

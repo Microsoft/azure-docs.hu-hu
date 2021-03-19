@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 011b50449f0a02b128bc000535f93e1809fd9777
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92673876"
 ---
 # <a name="assign-azure-resource-roles-in-privileged-identity-management"></a>Azure-beli erőforrás-szerepkörök kiosztása Privileged Identity Management
@@ -43,9 +43,9 @@ Kövesse az alábbi lépéseket, hogy a felhasználók jogosultak legyenek az Az
 
     További információ a Privileged Identity Management kezeléséhez szükséges további rendszergazdai hozzáférésről: [hozzáférés biztosítása más rendszergazdák számára a Privileged Identity Management kezeléséhez](pim-how-to-give-access-to-pim.md).
 
-1. Nyissa meg **Azure ad Privileged Identity Management** .
+1. Nyissa meg **Azure ad Privileged Identity Management**.
 
-1. Válassza ki az **Azure-erőforrásokat** .
+1. Válassza ki az **Azure-erőforrásokat**.
 
 1. Az erőforrás-szűrő segítségével keresse meg a keresett felügyelt erőforrásokat.
 
@@ -93,9 +93,9 @@ Kövesse az alábbi lépéseket, hogy a felhasználók jogosultak legyenek az Az
 
 A meglévő szerepkör-hozzárendelések frissítéséhez vagy eltávolításához kövesse az alábbi lépéseket.
 
-1. Nyissa meg **Azure ad Privileged Identity Management** .
+1. Nyissa meg **Azure ad Privileged Identity Management**.
 
-1. Válassza ki az **Azure-erőforrásokat** .
+1. Válassza ki az **Azure-erőforrásokat**.
 
 1. Válassza ki a kezelni kívánt erőforrást az Áttekintés oldal megnyitásához.
 

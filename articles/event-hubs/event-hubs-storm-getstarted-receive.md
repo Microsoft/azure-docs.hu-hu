@@ -4,10 +4,10 @@ description: 'Gyors útmutató: ebben a cikkben arról olvashat, hogyan fogadhat
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 099a3ff1ad57616de0d7929d787b82e9d55c9e00
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87087577"
 ---
 # <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>Gyors útmutató: események fogadása Event Hubs használatával Apache Storm
@@ -33,10 +33,10 @@ Ez az oktatóanyag egy [HDInsight Storm][HDInsight Storm] -telepítést használ
 4. Az Eclipse-ben hozzon létre egy új Maven-projektet (kattintson a **fájl**, majd az **új**, majd a **projekt**) elemre.
    
     ![Fájl – > New-> Project][12]
-5. Válassza **az alapértelmezett munkaterület helyének használata**lehetőséget, majd kattintson a **tovább** gombra.
+5. Válassza **az alapértelmezett munkaterület helyének használata** lehetőséget, majd kattintson a **tovább** gombra.
 6. Válassza ki a **Maven-archetípus-Gyorsindítás** archetípusot, majd kattintson a **tovább** gombra.
 7. Szúrjon be egy **GroupID** és egy **ArtifactId**, majd kattintson a **Befejezés** gombra.
-8. A **pom.xmlban **adja hozzá a következő függőségeket a `<dependency>` csomóponthoz.
+8. A **pom.xmlban** adja hozzá a következő függőségeket a `<dependency>` csomóponthoz.
 
     ```xml  
     <dependency>
@@ -230,7 +230,7 @@ Ez az oktatóanyag egy [HDInsight Storm][HDInsight Storm] -telepítést használ
 
     Ez az osztály létrehoz egy új Event Hubs kiöntőt, amely a konfigurációs fájlban található tulajdonságok használatával hozza létre. Fontos megjegyezni, hogy ez a példa annyi kiöntő feladatot hoz létre az Event hub partícióinak számaként, hogy az adott Event hub által engedélyezett maximális párhuzamosságot használja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
 * [Event Hubs áttekintése][Event Hubs overview]

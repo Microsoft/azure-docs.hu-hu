@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.openlocfilehash: 00b9cc881d9414e957d7503bb6156095bb821c06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87128148"
 ---
 # <a name="exploration-and-exploitation"></a>Feltárás és kiaknázás
@@ -41,6 +41,6 @@ A túl magas beállítás nem fogja megtagadni a felhasználói viselkedésből 
 
 Fontos, hogy ne módosítsa az alkalmazás viselkedését attól függően, hogy látható-e a személyre szabás vagy a kihasználás. Ez olyan torzulásokat eredményezne, amelyek végső soron csökkentik a lehetséges teljesítményt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Megerősítő tanulás](concepts-reinforcement-learning.md) 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dobett
 ms.openlocfilehash: e492ebf70f69c985691852a1c1f2351d1e09578e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92425007"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>Mi a Connected Factory IoT megoldás-gyorsító?
@@ -66,6 +66,6 @@ A csatlakoztatott gyár a következő funkciókat tartalmazza:
 - Testre szabhatja a megoldást, hogy megfeleljen az adott üzleti követelményeknek.
 - Teljes körű megoldás forrása – a GitHubon elérhető forráskód. Tekintse meg az [előre konfigurált csatlakoztatott gyár megoldás](https://github.com/Azure/azure-iot-connected-factory) -tárházat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a csatlakoztatott Factory megoldás-gyorssegédről, tekintse meg a gyors üzembe helyezési [kísérlet felhőalapú megoldását az ipari IoT-eszközök kezeléséhez](quickstart-connected-factory-deploy.md)című témakörben.

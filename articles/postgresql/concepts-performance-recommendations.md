@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: d547844671e6485e71be7dd8c355de08f3dec5e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91710566"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>Teljesítményre vonatkozó javaslatok Azure Database for PostgreSQL – egyetlen kiszolgálón
@@ -33,7 +33,7 @@ Válassza **az elemzés lehetőséget, és válasszon** egy adatbázist, amely m
 
 A **javaslatok** ablakban megjelennek a javaslatok listája, ha vannak ilyenek.
 
-:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="A Teljesítménnyel kapcsolatos javaslatok kezdőlapja":::
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="Teljesítményre vonatkozó javaslatok – új oldal":::
 
 A javaslatok nem lesznek automatikusan alkalmazva. A javaslat alkalmazásához másolja a lekérdezés szövegét, és futtassa azt a választott ügyfélről. A javaslat kiértékeléséhez ne felejtse el tesztelni és figyelni. 
 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8c319489fe4c884cd5de48ac2d3e47e7beb3026f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90705486"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Mi az a Azure Active Directory identitások biztonságos pontszáma?
@@ -48,7 +48,7 @@ A fejlesztési műveletek végrehajtásával a következőket érheti el:
 
 ## <a name="how-do-i-get-my-secure-score"></a>Hogyan tekinthetem meg a saját biztonsági pontszámomat?
 
-Az identitás biztonságos pontszáma az Azure AD minden kiadásában elérhető. A szervezetek a **Azure Portal**  >  **Azure Active Directory**  >  **biztonsági**  >  **identitás biztonságos pontszámával**érhetik el a személyazonosságuk biztonságos pontszámát.
+Az identitás biztonságos pontszáma az Azure AD minden kiadásában elérhető. A szervezetek a **Azure Portal**  >  **Azure Active Directory**  >  **biztonsági**  >  **identitás biztonságos pontszámával** érhetik el a személyazonosságuk biztonságos pontszámát.
 
 ## <a name="how-does-it-work"></a>Hogyan működik?
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/14/2020
 ms.openlocfilehash: 2e90a8779322cf8967ca9a194c6cc760f7c8b8f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90532030"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>Származtatott oszlop átalakítása a leképezési adatfolyamban
@@ -42,7 +42,7 @@ A leképezési adatfolyam [-Kifejezésszerkesztő](concepts-data-flow-expression
 
 ![Új oszlop létrehozása](media/data-flow/derive-add-column.png "Új oszlop létrehozása")
 
-Összetett oszlopok használatakor aloszlopokat is létrehozhat. Ehhez kattintson a plusz ikonra bármely oszlop mellett, majd válassza az **aloszlop hozzáadása**lehetőséget. Az összetett típusok az adatforgalomban való kezelésével kapcsolatos további információkért lásd: [JSON-kezelés a leképezési folyamatokban](format-json.md#mapping-data-flow-properties).
+Összetett oszlopok használatakor aloszlopokat is létrehozhat. Ehhez kattintson a plusz ikonra bármely oszlop mellett, majd válassza az **aloszlop hozzáadása** lehetőséget. Az összetett típusok az adatforgalomban való kezelésével kapcsolatos további információkért lásd: [JSON-kezelés a leképezési folyamatokban](format-json.md#mapping-data-flow-properties).
 
 ![Aloszlop hozzáadása](media/data-flow/derive-add-subcolumn.png "Aloszlop hozzáadása")
 
@@ -52,7 +52,7 @@ Az összetett típusok az adatforgalomban való kezelésével kapcsolatos továb
 
 ### <a name="locals"></a>Figyelőpontjaival
 
-Ha több oszlop között osztja meg a logikát, vagy a logikát szeretné felosztják, a származtatott oszlopok átalakításán belül is létrehozhat helyi beállításokat. A helyi olyan logikai halmaz, amely nem lesz propagálva a következő átalakításra. A helyi beállítások a kifejezés-szerkesztőben hozhatók létre, ha a **kifejezés elemek elemre** kattint, és kiválasztja a **területi beállításokat**. Hozzon létre egy újat az **új létrehozása**lehetőség kiválasztásával.
+Ha több oszlop között osztja meg a logikát, vagy a logikát szeretné felosztják, a származtatott oszlopok átalakításán belül is létrehozhat helyi beállításokat. A helyi olyan logikai halmaz, amely nem lesz propagálva a következő átalakításra. A helyi beállítások a kifejezés-szerkesztőben hozhatók létre, ha a **kifejezés elemek elemre** kattint, és kiválasztja a **területi beállításokat**. Hozzon létre egy újat az **új létrehozása** lehetőség kiválasztásával.
 
 ![Helyi létrehozása](media/data-flow/create-local.png "Helyi létrehozása")
 

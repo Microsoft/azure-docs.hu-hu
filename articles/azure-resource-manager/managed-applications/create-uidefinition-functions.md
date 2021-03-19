@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: e4255f0d42e28a72ad55d9b7f81d0dc49b2950cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87040991"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition függvények
@@ -49,7 +49,7 @@ Ezek a függvények gyűjtemények, például JSON-karakterláncok, tömbök és
 * [Térkép](create-ui-definition-collection-functions.md#map)
 * [kihagyása](create-ui-definition-collection-functions.md#skip)
 * [felosztása](create-ui-definition-collection-functions.md#split)
-* [take](create-ui-definition-collection-functions.md#take)
+* [eltarthat](create-ui-definition-collection-functions.md#take)
 
 ## <a name="conversion-functions"></a>Konverziós függvények
 
@@ -62,7 +62,7 @@ Ezek a függvények a JSON-adattípusok és a kódolások közötti értékek á
 * [encodeUriComponent](create-ui-definition-conversion-functions.md#encodeuricomponent)
 * [float](create-ui-definition-conversion-functions.md#float)
 * [int](create-ui-definition-conversion-functions.md#int)
-* [elemezni](create-ui-definition-conversion-functions.md#parse)
+* [parse](create-ui-definition-conversion-functions.md#parse)
 * [sztring](create-ui-definition-conversion-functions.md#string)
 
 ## <a name="date-functions"></a>Dátumfüggvények
@@ -82,19 +82,19 @@ Ezek a függvények feltételes használatban is használhatók. Előfordulhat, 
 * [greater](create-ui-definition-logical-functions.md#greater)
 * [greaterOrEquals](create-ui-definition-logical-functions.md#greaterorequals)
 * [Ha](create-ui-definition-logical-functions.md#if)
-* [less](create-ui-definition-logical-functions.md#less)
+* [kisebb](create-ui-definition-logical-functions.md#less)
 * [lessOrEquals](create-ui-definition-logical-functions.md#lessorequals)
 * [nem](create-ui-definition-logical-functions.md#not)
 * [vagy](create-ui-definition-logical-functions.md#or)
 
 ## <a name="math-functions"></a>Matematikai függvények
 
-* [hozzáadása](create-ui-definition-math-functions.md#add)
+* [add](create-ui-definition-math-functions.md#add)
 * [ceil](create-ui-definition-math-functions.md#ceil)
 * [div](create-ui-definition-math-functions.md#div)
 * [padló](create-ui-definition-math-functions.md#floor)
 * [Max](create-ui-definition-math-functions.md#max)
-* [min](create-ui-definition-math-functions.md#min)
+* [p](create-ui-definition-math-functions.md#min)
 * [mod](create-ui-definition-math-functions.md#mod)
 * [mul](create-ui-definition-math-functions.md#mul)
 * [Rand](create-ui-definition-math-functions.md#rand)
@@ -122,6 +122,6 @@ Ezek a függvények feltételes használatban is használhatók. Előfordulhat, 
 * [toLower](create-ui-definition-string-functions.md#tolower)
 * [toUpper](create-ui-definition-string-functions.md#toupper)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Resource Manager bevezetését lásd: [Azure Resource Manager áttekintése](../management/overview.md).

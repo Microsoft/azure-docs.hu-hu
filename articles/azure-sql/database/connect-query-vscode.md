@@ -14,10 +14,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
 ms.openlocfilehash: f823b6d04a217328fe2e825e64906460cd9cbae9
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92672495"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>Rövid útmutató: a Visual Studio Code használata a kapcsolódáshoz és a lekérdezéshez 
@@ -74,7 +74,7 @@ Nincs szükség különleges konfigurációra.
 
 Szerezze be a Azure SQL Databasehoz való kapcsolódáshoz szükséges kapcsolati adatokat. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 2. Navigáljon az **SQL-adatbázisok**  vagy az **SQL-felügyelt példányok** lapra.
 
@@ -99,9 +99,9 @@ Hozzon létre kapcsolatot a kiszolgálóval a Visual Studio Code használatával
 > [!IMPORTANT]
 > A folytatás előtt győződjön meg arról, hogy a kiszolgáló és a bejelentkezési adatok készen állnak. Ha megkezdte a kapcsolódási profil adatainak beírását, akkor a fókuszt a Visual Studio Code-ról kell újraindítani.
 
-1. A Visual Studio Code-ban nyomja le a **CTRL + SHIFT + P** (vagy **F1** ) billentyűkombinációt a parancssor megnyitásához.
+1. A Visual Studio Code-ban nyomja le a **CTRL + SHIFT + P** (vagy **F1**) billentyűkombinációt a parancssor megnyitásához.
 
-2. Válassza az **MS SQL: kapcsolat** lehetőséget, és válassza az **ENTER billentyűt** .
+2. Válassza az **MS SQL: kapcsolat** lehetőséget, és válassza az **ENTER billentyűt**.
 
 3. Válassza a **kapcsolatprofil létrehozása** lehetőséget.
 
@@ -109,7 +109,7 @@ Hozzon létre kapcsolatot a kiszolgálóval a Visual Studio Code használatával
 
    | Tulajdonság       | Ajánlott érték | Leírás |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Kiszolgáló neve** | A teljes kiszolgálónév | Valami hasonló: **mynewserver20170313.database.Windows.net** . |
+   | **Kiszolgáló neve** | A teljes kiszolgálónév | Valami hasonló: **mynewserver20170313.database.Windows.net**. |
    | **Adatbázis neve** | mySampleDatabase | Az adatbázis, amelyhez csatlakozni kíván. |
    | **Hitelesítés** | SQL-bejelentkezés| Ez az oktatóanyag SQL-hitelesítést használ. |
    | **Felhasználónév** | Felhasználónév | A kiszolgáló létrehozásához használt kiszolgálói rendszergazdai fiók felhasználóneve. |
@@ -132,7 +132,7 @@ Futtassa a következő [Select](/sql/t-sql/queries/select-transact-sql) Transact
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-2. A **CTRL** + **billentyűt** lenyomva + **E** futtassa a lekérdezést, és jelenítse meg az eredményeket a `Product` és a `ProductCategory` táblákból.
+2. A **CTRL** + **billentyűt** lenyomva +  futtassa a lekérdezést, és jelenítse meg az eredményeket a `Product` és a `ProductCategory` táblákból.
 
     ![Lekérdezés az adatok 2 táblából való lekéréséhez](./media/connect-query-vscode/query.png)
 
@@ -162,7 +162,7 @@ Futtassa az alábbi [Insert](/sql/t-sql/statements/insert-transact-sql) Transact
          ,GETDATE() );
    ```
 
-2. Nyomja le a **CTRL** + **billentyűt** + **E** , és szúrjon be egy új sort a `Product` táblázatba.
+2. Nyomja le a **CTRL** + **billentyűt** +  , és szúrjon be egy új sort a `Product` táblázatba.
 
 ## <a name="update-data"></a>Adatok frissítése
 
@@ -176,7 +176,7 @@ Futtassa a következő [frissítési](/sql/t-sql/queries/update-transact-sql) Tr
    WHERE Name = 'myNewProduct';
    ```
 
-2. Nyomja le a **CTRL** E billentyűt a + **Shift** + **E** tábla megadott sorának frissítéséhez `Product` .
+2. Nyomja le a **CTRL** E billentyűt a +  +  tábla megadott sorának frissítéséhez `Product` .
 
 ## <a name="delete-data"></a>Adat törlése
 
@@ -189,7 +189,7 @@ Futtassa az alábbi [delete](/sql/t-sql/statements/delete-transact-sql) Transact
    WHERE Name = 'myNewProduct';
    ```
 
-2. Nyomja le a **CTRL** E billentyűt a + **Shift** + **E** tábla megadott sorának törléséhez `Product` .
+2. Nyomja le a **CTRL** E billentyűt a +  +  tábla megadott sorának törléséhez `Product` .
 
 ## <a name="next-steps"></a>Következő lépések
 

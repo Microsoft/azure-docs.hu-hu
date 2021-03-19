@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5b820b8b9606795709d03414fa14ec29a1b5c519
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92441555"
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>Dinamikus csoportok és Azure Active Directory B2B-együttműködés
@@ -29,11 +29,11 @@ A megfelelő [prémium szintű Azure ad P1 vagy P2 licencelés](https://azure.mi
 Létrehozhat egy olyan csoportot, amely a bérlőn belüli összes felhasználót egy tagsági szabály használatával hozza létre. Ha a későbbiekben a felhasználókat hozzáadják vagy eltávolítják a bérlőből, a rendszer automatikusan módosítja a csoport tagságát.
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) egy olyan fiókkal, amely a bérlő globális rendszergazdai vagy felhasználói rendszergazdai szerepköréhez van rendelve.
-1. Válassza a **Azure Active Directory**lehetőséget.
-2. A **kezelés**területen válassza a **csoportok**lehetőséget, majd válassza az **új csoport**lehetőséget.
-1. Az **új csoport** lap **csoport típusa**területén válassza a **Biztonság**elemet. Adja meg a **csoport nevét** és a **csoport leírását** az új csoport számára. 
-2. A **tagság típusa**területen válassza a **dinamikus felhasználó**lehetőséget, majd válassza a **dinamikus lekérdezés hozzáadása**lehetőséget. 
-4. A **szabály szintaxisa** szövegmező felett válassza a **Szerkesztés**lehetőséget. A **szabály szintaxisának szerkesztése** lapon írja be a következő kifejezést a szövegmezőbe:
+1. Válassza a **Azure Active Directory** lehetőséget.
+2. A **kezelés** területen válassza a **csoportok** lehetőséget, majd válassza az **új csoport** lehetőséget.
+1. Az **új csoport** lap **csoport típusa** területén válassza a **Biztonság** elemet. Adja meg a **csoport nevét** és a **csoport leírását** az új csoport számára. 
+2. A **tagság típusa** területen válassza a **dinamikus felhasználó** lehetőséget, majd válassza a **dinamikus lekérdezés hozzáadása** lehetőséget. 
+4. A **szabály szintaxisa** szövegmező felett válassza a **Szerkesztés** lehetőséget. A **szabály szintaxisának szerkesztése** lapon írja be a következő kifejezést a szövegmezőbe:
 
    ```
    user.objectId -ne null
@@ -42,7 +42,7 @@ Létrehozhat egy olyan csoportot, amely a bérlőn belüli összes felhasználó
 
    ![Szabály szintaxisa az összes felhasználó dinamikus csoportjához](media/use-dynamic-groups/all-user-rule-syntax.png)
 
-1.  Válassza a **Mentés** lehetőséget. Az új dinamikus csoport mostantól tartalmazza a B2B vendég felhasználókat és a tagokat is.
+1.  Kattintson a **Mentés** gombra. Az új dinamikus csoport mostantól tartalmazza a B2B vendég felhasználókat és a tagokat is.
 
 
 1. Válassza a **Létrehozás** lehetőséget az **új csoport** lapon a csoport létrehozásához.
@@ -71,7 +71,7 @@ Az alábbi képen egy dinamikus csoport szabály-szintaxisa látható, amely csa
 
 ![Azt a szabályt mutatja, ahol a felhasználói típus egyenlő vendég](media/use-dynamic-groups/all-guest-user-rule-syntax.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [B2B-együttműködés felhasználói tulajdonságok](user-properties.md)
 - [B2B csoportmunka-felhasználó hozzáadása egy szerepkörhöz](add-guest-to-role.md)

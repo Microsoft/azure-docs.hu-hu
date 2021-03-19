@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: d28cfd533caaef3fb80a63aea932e6418dff7e55
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5943a65d61dee4fcf610b8cc45139674362995cb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724251"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600717"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -59,8 +59,8 @@ Az alkalmazások sikeres kezeléséhez proaktív módon kell figyelnie őket, é
   * [A probléma a Storage Emulator fejlesztési vagy tesztelési célú használatból ered]
   * [Problémákba ütközik a .NET-hez készült Azure SDK telepítésekor]
   * [Más probléma van a tárolási szolgáltatással]
-  * [VHD-k hibaelhárítása Windows rendszerű virtuális gépeken](../../virtual-machines/troubleshooting/index.yml)   
-  * [VHD-k hibaelhárítása Linux rendszerű virtuális gépeken](../../virtual-machines/troubleshooting/index.yml)
+  * [VHD-k hibaelhárítása Windows rendszerű virtuális gépeken](/troubleshoot/azure/virtual-machines/welcome-virtual-machines)   
+  * [VHD-k hibaelhárítása Linux rendszerű virtuális gépeken](/troubleshoot/azure/virtual-machines/welcome-virtual-machines)
   * [A Windows problémáinak elhárítása Azure Files](../files/storage-troubleshoot-windows-file-connection-problems.md)   
   * [A Linux Azure Files kapcsolatos problémák elhárítása](../files/storage-troubleshoot-linux-file-connection-problems.md)
 * [Függelékek]

@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan hozhat létre egyéni címkéket a Azure DevTes
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a4d2b328626f0d0f096082fa88bb170894ccf3e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88270733"
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Címkék hozzáadása laborhoz Azure DevTest Labs
@@ -30,14 +30,14 @@ Minden címke egy **név** / **érték** párokból áll. Létrehozhat például
 ## <a name="steps-to-manage-tags-in-an-existing-lab"></a>A címkék egy meglévő laborban való kezelésének lépései
 
 1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Ha szükséges, válassza a **minden szolgáltatás**lehetőséget, majd válassza a **DevTest Labs** elemet a listából. Előfordulhat, hogy a labor már megjelenik az irányítópulton az **összes erőforrás**területen.
+1. Ha szükséges, válassza a **minden szolgáltatás** lehetőséget, majd válassza a **DevTest Labs** elemet a listából. Előfordulhat, hogy a labor már megjelenik az irányítópulton az **összes erőforrás** területen.
 1. A Labs listából válassza ki azt a labort, amelyben címkéket szeretne felvenni vagy kezelni.
-1. A labor **Áttekintés** területén válassza a **konfiguráció és szabályzatok**lehetőséget.
+1. A labor **Áttekintés** területén válassza a **konfiguráció és szabályzatok** lehetőséget.
 
     ![Konfigurálás és házirendek gomb](./media/devtest-lab-add-tag/devtestlab-config-and-policies.png)
 
-1. A **kezelés**alatt a bal oldalon válassza a **címkék**lehetőséget.
-1. Ha új címkét szeretne létrehozni ehhez a laborhoz, adjon meg egy **név** / **érték** párt, és válassza a **Mentés**lehetőséget. Kiválaszthat egy meglévő címkét is a listából a címkéhez társított erőforrások megtekintéséhez vagy kezeléséhez.
+1. A **kezelés** alatt a bal oldalon válassza a **címkék** lehetőséget.
+1. Ha új címkét szeretne létrehozni ehhez a laborhoz, adjon meg egy **név** / **érték** párt, és válassza a **Mentés** lehetőséget. Kiválaszthat egy meglévő címkét is a listából a címkéhez társított erőforrások megtekintéséhez vagy kezeléséhez.
 
     ![Címkék kezelése](./media/devtest-lab-add-tag/devtestlab-manage-tags.png)
 

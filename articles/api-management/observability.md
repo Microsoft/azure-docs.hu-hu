@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 06/01/2020
 ms.author: apimpm
 ms.openlocfilehash: 1ebebed465952bbb5d3e8f82ae1c7776c441c6b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87096737"
 ---
 # <a name="observability-in-azure-api-management"></a>Megfigyelhető az Azure API Management
@@ -33,15 +33,15 @@ Az alábbi táblázat összefoglalja az API-k megfigyeléséhez API Management �
 |:------------- |:-------------|:---- |:----|:---- |:--- |:---- 
 | **[API-ellenőr](api-management-howto-api-inspector.md)** | Tesztelés és hibakeresés | Azonnali | Utolsó 100 nyomkövetés | Igény szerint bekapcsolva | Kérelmek nyomkövetése | Mindig
 | **Beépített Analitika** | Jelentés és monitorozás | Percek | Élettartama | 100% | Jelentések és naplók | Mindig |
-| **[Azure Monitor metrikák](api-management-howto-use-azure-monitor.md)** | Jelentés és monitorozás | Percek | 93 nap (frissítés a kiterjesztésre) | 100% | Mérőszámok | Mindig |
+| **[Azure Monitor-metrikák](api-management-howto-use-azure-monitor.md)** | Jelentés és monitorozás | Percek | 93 nap (frissítés a kiterjesztésre) | 100% | Mérőszámok | Mindig |
 | **[Azure Monitor-naplók](api-management-howto-use-azure-monitor.md)** | Jelentéskészítés, figyelés és hibakeresés | Percek | 31 nap/5 GB (frissítés a kiterjesztéshez) | 100% (állítható) | Naplók | Választható |
-| **[Azure Application Insights](api-management-howto-app-insights.md)** | Jelentéskészítés, figyelés és hibakeresés | Másodperc | 90 nap/5 GB (frissítés a kiterjesztéshez) | Egyéni | Naplók, metrikák | Választható |
+| **[Azure-Application Insights](api-management-howto-app-insights.md)** | Jelentéskészítés, figyelés és hibakeresés | Másodperc | 90 nap/5 GB (frissítés a kiterjesztéshez) | Egyéni | Naplók, metrikák | Választható |
 | **[Naplózás az Azure Event hub használatával](api-management-howto-log-event-hubs.md)** | Egyéni forgatókönyvek | Másodperc | Felhasználó által felügyelt | Egyéni | Egyéni | Választható |
 
 ### <a name="self-hosted-gateway"></a>Saját üzemeltetésű átjáró
 
 A fent említett eszközöket a felhőben a felügyelt átjáró támogatja. A [saját](self-hosted-gateway-overview.md) üzemeltetésű átjáró jelenleg nem küld Azure monitornak diagnosztikai naplókat. A helyi átjáró üzembe helyezésekor azonban helyileg is konfigurálhatja és megtarthatja a naplókat. További információkért lásd: [felhőalapú metrikák és naplók konfigurálása saját üzemeltetésű átjáróhoz](how-to-configure-cloud-metrics-logs.md) , valamint [helyi mérőszámok és naplók konfigurálása a saját üzemeltetésű átjáróhoz](how-to-configure-local-metrics-logs.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Kövesse az oktatóanyagokat, és ismerkedjen meg API Management](import-and-publish.md)

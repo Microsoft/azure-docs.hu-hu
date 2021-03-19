@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 02/17/2020
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 5b1084cfdd5995b7983badcdce71460f7bdec3d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88919454"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Feladat-előkészítési és feladat-kiadási feladatok futtatása kötegelt számítási csomópontokon
@@ -61,7 +61,7 @@ A feladat-előkészítési feladat csak a feladat futtatására ütemezett csom�
 
 >## <a name="job-release-task"></a>Feladat kiadási feladata
 
-Ha egy feladat befejezettként van megjelölve, a feladat kiadási feladata a készlet minden olyan csomópontján fut, amely legalább egy feladatot végrehajt. A feladatot befejezettként kell megjelölni egy megszakítási kérelem kiállításával. A Batch szolgáltatás ezután a feladat állapotát leállítja, leállítja a feladathoz társított aktív vagy futó *feladatokat, és*futtatja a feladat kiadási feladatát. A feladatot ezután a *befejezett* állapotba helyezi.
+Ha egy feladat befejezettként van megjelölve, a feladat kiadási feladata a készlet minden olyan csomópontján fut, amely legalább egy feladatot végrehajt. A feladatot befejezettként kell megjelölni egy megszakítási kérelem kiállításával. A Batch szolgáltatás ezután a feladat állapotát leállítja, leállítja a feladathoz társított aktív vagy futó *feladatokat, és* futtatja a feladat kiadási feladatát. A feladatot ezután a *befejezett* állapotba helyezi.
 
 > [!NOTE]
 > A feladat törlése a feladat kiadási feladatát is végrehajtja. Ha azonban egy feladat már meg van szakítva, a kiadási feladat nem fut le Másodszor, ha a feladat később törlődik.
@@ -178,7 +178,7 @@ Az alábbi képernyőképen az **előkészítési feladatok** panel látható a 
 
 ![A Azure Portal feladatok előkészítésének tulajdonságai][1]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 ### <a name="application-packages"></a>Alkalmazáscsomagok
 A feladat-előkészítési feladaton kívül a Batch [alkalmazáscsomag](batch-application-packages.md) szolgáltatásával is előkészítheti a számítási csomópontokat a feladatok végrehajtásához. Ez a funkció különösen hasznos olyan alkalmazások telepítéséhez, amelyek nem igénylik a telepítő futtatását, a sok (100 +) fájlt tartalmazó alkalmazásokat, illetve a szigorú verziókövetés használatát igénylő alkalmazásokat.
 

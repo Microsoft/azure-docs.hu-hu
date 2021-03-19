@@ -5,10 +5,10 @@ author: ecfan
 ms.author: estfan
 ms.date: 07/21/2020
 ms.openlocfilehash: 06a503e800309d8689735417931820d9f16a6e75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87102720"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
@@ -19,11 +19,11 @@ Ahhoz, hogy a OneDrive for Business-fiókot a Logic Apps használatával haszná
 
 A következő lépésekkel engedélyezheti Logic Apps számára a OneDrive for Business-fiókhoz való kapcsolódást:  
 
-1. Jelentkezzen be az Azure portálra. 
+1. Jelentkezzen be az Azure Portalra. 
 
-1. Az **Azure-szolgáltatások**területen válassza a **Logic apps**lehetőséget. Ezután válassza ki a logikai alkalmazás nevét a listából.
+1. Az **Azure-szolgáltatások** területen válassza a **Logic apps** lehetőséget. Ezután válassza ki a logikai alkalmazás nevét a listából.
 
-1. A logikai alkalmazás menüjében válassza a **Logic app Designer** elemet a **fejlesztői eszközök**területen.
+1. A logikai alkalmazás menüjében válassza a **Logic app Designer** elemet a **fejlesztői eszközök** területen.
 
 1. A Logic Apps Designerben válassza a **Microsoft felügyelt API** -k megjelenítése lehetőséget a legördülő listában, majd írja be a *OneDrive for Business* kifejezést a keresőmezőbe. Válassza ki a használni kívánt triggert vagy műveletet:  
 

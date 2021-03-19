@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 694d63dacedd8ffcd075e73bb91b5ab0a089b58c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91766492"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>A CHAP konfigurálása a StorSimple-eszközhöz
@@ -45,7 +45,7 @@ Az egyirányú hitelesítésnél a cél hitelesíti a kezdeményezőt. Ehhez a h
 
 #### <a name="to-configure-your-device-for-one-way-authentication"></a>Az eszköz konfigurálása egyirányú hitelesítéshez
 
-1. A Azure Portal lépjen a StorSimple Eszközkezelő szolgáltatáshoz. Kattintson az **eszközök** elemre, és válassza ki azt az eszközt, amelyre a CHAP-t konfigurálni kívánja. Lépjen az **eszközbeállítások > biztonság**menüpontra. A **biztonsági beállítások** panelen kattintson a **CHAP**elemre.
+1. A Azure Portal lépjen a StorSimple Eszközkezelő szolgáltatáshoz. Kattintson az **eszközök** elemre, és válassza ki azt az eszközt, amelyre a CHAP-t konfigurálni kívánja. Lépjen az **eszközbeállítások > biztonság** menüpontra. A **biztonsági beállítások** panelen kattintson a **CHAP** elemre.
    
     ![CHAP-kezdeményező](./media/storsimple-8000-configure-chap/configure-chap5.png)
 2. A **CHAP** panelen és a **CHAP-kezdeményező** szakaszban:
@@ -68,11 +68,11 @@ Az egyirányú hitelesítésnél a cél hitelesíti a kezdeményezőt. Ehhez a h
    1. Kattintson a **felderítés** fülre.
       
        ![iSCSI-kezdeményező tulajdonságai](./media/storsimple-configure-chap/IC740944.png)
-   2. Kattintson a **portál felderítése**elemre.
+   2. Kattintson a **portál felderítése** elemre.
 3. A **cél-portál felderítése** párbeszédpanelen:
    
    1. Adja meg az eszköz IP-címét.
-   2. Kattintson a **speciális**gombra.
+   2. Kattintson a **speciális** gombra.
       
        ![Cél portál felderítése](./media/storsimple-configure-chap/IC740945.png)
 4. A **Speciális beállítások** párbeszédpanelen:
@@ -83,7 +83,7 @@ Az egyirányú hitelesítésnél a cél hitelesíti a kezdeményezőt. Ehhez a h
    4. Kattintson az **OK** gombra.
       
        ![Általános speciális beállítások](./media/storsimple-configure-chap/IC740946.png)
-5. Az **iSCSI-kezdeményező tulajdonságai** ablak **Targets (célok** ) lapján az eszköz állapota **csatlakoztatottként**jelenik meg. Ha StorSimple 1200 eszközt használ, az egyes kötetek iSCSI-célként vannak csatlakoztatva. Ezért az 3-4-es lépéseket minden kötet esetében meg kell ismételni.
+5. Az **iSCSI-kezdeményező tulajdonságai** ablak **Targets (célok** ) lapján az eszköz állapota **csatlakoztatottként** jelenik meg. Ha StorSimple 1200 eszközt használ, az egyes kötetek iSCSI-célként vannak csatlakoztatva. Ezért az 3-4-es lépéseket minden kötet esetében meg kell ismételni.
    
     ![Külön célként csatlakoztatott kötetek](./media/storsimple-configure-chap/chap4.png)
    
@@ -98,7 +98,7 @@ Kétirányú hitelesítés esetén a cél hitelesíti a kezdeményezőt, majd a 
 
 #### <a name="to-configure-your-device-for-mutual-authentication"></a>Az eszköz kölcsönös hitelesítésre való konfigurálása
 
-1. A Azure Portal lépjen a StorSimple Eszközkezelő szolgáltatáshoz. Kattintson az **eszközök** elemre, és válassza ki azt az eszközt, amelyre a CHAP-t konfigurálni kívánja. Lépjen az **eszközbeállítások > biztonság**menüpontra. A **biztonsági beállítások** panelen kattintson a **CHAP**elemre.
+1. A Azure Portal lépjen a StorSimple Eszközkezelő szolgáltatáshoz. Kattintson az **eszközök** elemre, és válassza ki azt az eszközt, amelyre a CHAP-t konfigurálni kívánja. Lépjen az **eszközbeállítások > biztonság** menüpontra. A **biztonsági beállítások** panelen kattintson a **CHAP** elemre.
    
     ![CHAP-cél](./media/storsimple-8000-configure-chap/configure-chap5.png)
 2. Görgessen le ezen az oldalon, és a **CHAP-cél** szakaszban:
@@ -119,7 +119,7 @@ Kétirányú hitelesítés esetén a cél hitelesíti a kezdeményezőt, majd a 
 
 1. Indítsa el az iSCSI-kezdeményezőt a Windows-gazdagép kiszolgálóján.
 2. Az **iSCSI-kezdeményező tulajdonságai** ablakban kattintson a **konfiguráció** fülre.
-3. Kattintson a **CHAP**elemre.
+3. Kattintson a **CHAP** elemre.
 4. Az **iSCSI-kezdeményező kölcsönös CHAP-titka** párbeszédpanelen:
    
    1. Írja be a Azure Portal konfigurált **fordított CHAP-jelszót** .
@@ -128,7 +128,7 @@ Kétirányú hitelesítés esetén a cél hitelesíti a kezdeményezőt, majd a 
        ![iSCSI-kezdeményező kölcsönös CHAP-titka](./media/storsimple-configure-chap/IC740949.png)
 5. Kattintson a **célok** fülre.
 6. Kattintson a **kapcsolat** gombra. 
-7. A **Kapcsolódás a célhelyhez** párbeszédpanelen kattintson a **speciális**elemre.
+7. A **Kapcsolódás a célhelyhez** párbeszédpanelen kattintson a **speciális** elemre.
 8. A **Speciális tulajdonságok** párbeszédpanelen:
    
    1. Jelölje be a **CHAP-bejelentkezés engedélyezése** jelölőnégyzetet.
@@ -158,9 +158,9 @@ Ha a CHAP-konfiguráció nem megfelelő, akkor valószínű, hogy a **hitelesít
 A következő lépések végrehajtásával ellenőrizheti, hogy a CHAP használatban van-e.
 
 #### <a name="to-verify-your-chap-configuration"></a>A CHAP-konfiguráció ellenőrzése
-1. Kattintson a **kedvenc célok**elemre.
+1. Kattintson a **kedvenc célok** elemre.
 2. Válassza ki azt a célt, amelyhez engedélyezte a hitelesítést.
-3. Kattintson a **részletek**gombra.
+3. Kattintson a **részletek** gombra.
    
     ![iSCSI-kezdeményező tulajdonságai – kedvenc célok](./media/storsimple-configure-chap/IC740951.png)
 4. A **kedvenc cél részletei** párbeszédpanelen jegyezze fel a bejegyzést a **hitelesítés** mezőben. Ha a konfiguráció sikeres volt, azt a **CHAP**-nek kell megjelennie.

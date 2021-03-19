@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 2913869067ff138922ebb7ea1483a1132e360d29
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d91b62afacad31d78feb7d4743cd4050fcc1bd4e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382395"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581643"
 ---
 # <a name="scale-an-azure-cache-for-redis-instance"></a>Azure cache méretezése Redis-példányhoz
 A Redis készült Azure cache különböző gyorsítótár-ajánlatokat tartalmaz, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és funkcióinak kiválasztásában. Alapszintű, standard vagy prémium szintű gyorsítótár esetén megváltoztathatja annak méretét és szintjét, miután létrejött az alkalmazás igényeinek megfelelően. Ez a cikk bemutatja, hogyan méretezheti a gyorsítótárat a Azure Portal és az eszközök, például a Azure PowerShell és az Azure CLI használatával.
@@ -45,7 +45,7 @@ A következő korlátozásokkal méretezheti át egy másik díjszabási szintet
   * **Standard** szintű gyorsítótárból nem méretezhető **alapszintű** gyorsítótár.
 * **Alapszintű** gyorsítótárból **szabványos** gyorsítótárra méretezheti, de a méret nem módosítható egyszerre. Ha más méretre van szüksége, egy későbbi skálázási műveletet is végrehajthat a kívánt méretre.
 * **Alapszintű** gyorsítótárból nem lehet közvetlenül **prémium** szintű gyorsítótárra méretezni. Első lépésként az **alapszintű** és a **standard** közötti méretezés egy skálázási műveletben, majd a **standard** és a **prémium** között egy későbbi skálázási műveletben.
-* A **C0 (250 MB)** mérete nem méretezhető nagyobb méretre.
+* A **C0 (250 MB)** mérete nem méretezhető nagyobb méretre. Azonban az azonos díjszabási szinten lévő más méretekre is méretezhető. Például a C5 szabványtól a C1 szabványig méretezheti a méretezést.
  
 Míg a gyorsítótár az új díjszabási szinten méretezhető, a Redis panelhez tartozó **Azure cache** -ben egy **skálázási** állapot jelenik meg.
 

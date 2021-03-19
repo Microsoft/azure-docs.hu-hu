@@ -3,18 +3,18 @@ title: Azure Blob-adatkezelés és-keresés a blob-index címkékkel (előzetes 
 description: Megtudhatja, hogyan használhat blob-index címkéket a blob-objektumok kategorizálásához, kezeléséhez és lekérdezéséhez.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 03/05/2021
+ms.date: 03/18/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions
-ms.openlocfilehash: be2ff9d6ed908bdc0645fc713717a08674354096
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 540f6ca165c80dd90f5004fb53e1577cdc35d770
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593220"
+ms.locfileid: "104656039"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>Azure Blob-adatkezelés és-keresés a blob-index címkékkel (előzetes verzió)
 
@@ -30,7 +30,7 @@ A blob index címkéi a következőket teszik lehetővé:
 Vegyünk például egy olyan forgatókönyvet, ahol több millió blob található a Storage-fiókban, és számos különböző alkalmazás érhető el. Egyetlen projekt összes kapcsolódó adatát szeretné megkeresni. Nem biztos benne, hogy mi a hatókör, mert az adathalmaz több tárolón is átterjedhet különböző elnevezési konvenciókkal. Az alkalmazások azonban az összes, a projekten alapuló címkével feltöltik az összes adathalmazt. Ahelyett, hogy több millió blobot keres, és nem hasonlítja össze a neveket és a tulajdonságokat, használhatja `Project = Contoso` felderítési feltételként. A blob index a teljes Storage-fiókban lévő összes tárolót szűri, így gyorsan megkeresheti és visszaküldheti a 50-es Blobok készletét `Project = Contoso` .
 
 > [!IMPORTANT]
-> A blob index címkék jelenleg **előzetes** verzióban érhetők el. Tekintse meg az Azure-szolgáltatásokra vonatkozó, a bétaverzióban, az előzetes verzióban, vagy más módon még nem közzétett, általánosan elérhetővé vált jogi feltételekhez tartozó [Microsoft Azure előzetes verziójának kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) .
+> A blob index címkék jelenleg **előzetes** verzióban érhetők el, és az összes nyilvános régióban elérhetők. Tekintse meg az Azure-szolgáltatásokra vonatkozó, a bétaverzióban, az előzetes verzióban, vagy más módon még nem közzétett, általánosan elérhetővé vált jogi feltételekhez tartozó [Microsoft Azure előzetes verziójának kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) .
 
 A blob index használatára vonatkozó példákkal kapcsolatban lásd: [blob-index címkék használata az adatkezeléshez és az adatkereséshez](storage-blob-index-how-to.md).
 

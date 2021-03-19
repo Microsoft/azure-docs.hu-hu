@@ -1,6 +1,6 @@
 ---
 title: 'Gyors erdő Quantile regresszió: modul-hivatkozás'
-titleSuffix: Azure Machine Learning
+titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan hozhat létre olyan regressziós modellt a gyors erdő Quantile regressziós modullal, amely egy adott számú quantiles értékének előrejelzésére képes.
 services: machine-learning
 ms.service: machine-learning
@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
 ms.openlocfilehash: 6d59d2fabb0b74ef12e33f55467b0ba68e0b7386
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90907951"
 ---
 # <a name="fast-forest-quantile-regression"></a>Gyors erdő típusú kvantilis regresszió
@@ -43,7 +43,7 @@ A Quantile regresszió segítségével megismerheti az előre jelzett érték el
   
 ## <a name="how-to-configure-fast-forest-quantile-regression"></a>A gyors erdő Quantile-regressziójának konfigurálása
 
-1. Adja hozzá a **gyors erdő Quantile regressziós** modulját a folyamathoz a tervezőben. Ez a modul a **regressziós** kategóriában **Machine learning algoritmusok**alatt található.
+1. Adja hozzá a **gyors erdő Quantile regressziós** modulját a folyamathoz a tervezőben. Ez a modul a **regressziós** kategóriában **Machine learning algoritmusok** alatt található.
 
 2. A **gyors erdő Quantile regressziós** moduljának jobb oldali ablaktábláján határozza meg, hogyan kívánja betanítani a modellt az **oktatói mód létrehozása** lehetőség beállításával.  
   
@@ -51,7 +51,7 @@ A Quantile regresszió segítségével megismerheti az előre jelzett érték el
   
     - **Paraméter tartománya**: Ha nem biztos benne, hogy a legjobb paramétereket használja, hajtson végre egy paramétert a [Tune Model hiperparaméterek beállítása](tune-model-hyperparameters.md) modullal. Az oktató megismétli több megadott értéket az optimális konfiguráció megtalálásához.
 
-3. A **fák száma**mezőbe írja be az Ensemble-ban létrehozható fák maximális számát. Ha több fát hoz létre, az általában nagyobb pontosságot eredményez, de a hosszabb betanítási idő díja.  
+3. A **fák száma** mezőbe írja be az Ensemble-ban létrehozható fák maximális számát. Ha több fát hoz létre, az általában nagyobb pontosságot eredményez, de a hosszabb betanítási idő díja.  
 
 4. A **levelek száma**, beírhatja a bármely fában létrehozható levelek vagy terminál-csomópontok maximális számát.  
 
@@ -59,11 +59,11 @@ A Quantile regresszió segítségével megismerheti az előre jelzett érték el
   
      Az érték növelésével növelheti az új szabályok létrehozásának küszöbértékét. Ha például az alapértelmezett érték 1, akkor akár egyetlen esetben is létrehozhat egy új szabályt. Ha az értéket 5-re emeli, a betanítási adatmennyiségnek legalább 5 olyan esetet kell tartalmaznia, amely ugyanazokat a feltételeket teljesíti.
 
-6. A **poggyász frakciója**0 és 1 közötti számot ad meg, amely az egyes quantiles-csoportok kiépítésekor használandó minták töredékét jelöli. A mintákat véletlenszerűen választjuk ki, cserével.
+6. A **poggyász frakciója** 0 és 1 közötti számot ad meg, amely az egyes quantiles-csoportok kiépítésekor használandó minták töredékét jelöli. A mintákat véletlenszerűen választjuk ki, cserével.
 
 7. **Bontsa ki a frakciót**, írjon be egy 0 és 1 közötti számot, amely a fa egyes felosztásában használandó szolgáltatások töredékét jelöli. A használt funkciók mindig véletlenszerűen vannak kiválasztva.
 
-8. A **becsült Quantiles**írja be annak a Quantiles a pontosvesszővel tagolt listáját, amelynek a modelljét be szeretné képezni és előrejelzéseket szeretne készíteni.
+8. A **becsült Quantiles** írja be annak a Quantiles a pontosvesszővel tagolt listáját, amelynek a modelljét be szeretné képezni és előrejelzéseket szeretne készíteni.
   
      Ha például a quartiles becslését szeretné létrehozni, írja be a következőt: `0.25; 0.5; 0.75` .  
 
@@ -73,9 +73,9 @@ A Quantile regresszió segítségével megismerheti az előre jelzett érték el
 
 10. Kapcsolja össze a betanítási adatkészletet és a nem betanított modellt az egyik betanítási modulhoz: 
 
-    - Ha az **oktatói módot** **egyetlen paraméterként**állítja be, használja a [Train Model](train-model.md) modult.
+    - Ha az **oktatói módot** **egyetlen paraméterként** állítja be, használja a [Train Model](train-model.md) modult.
 
-    - Ha az **oktatói mód** beállítása **paraméter-tartományra**van beállítva, használja a [Model hiperparaméterek beállítása (modell hangolása](tune-model-hyperparameters.md) ) modult.
+    - Ha az **oktatói mód** beállítása **paraméter-tartományra** van beállítva, használja a [Model hiperparaméterek beállítása (modell hangolása](tune-model-hyperparameters.md) ) modult.
 
     > [!WARNING]
     > 
@@ -91,7 +91,7 @@ A Quantile regresszió segítségével megismerheti az előre jelzett érték el
 
 A betanítás befejezése után:
 
-+ Ha menteni szeretné a betanított modell pillanatképét, válassza ki a betanítási modult, majd váltson a **kimenet + naplók** lapra a jobb oldali panelen. Kattintson az ikonra az **adatkészlet regisztrálása**elemre.  A mentett modellt megtalálhatja modulként a modul fájában.
++ Ha menteni szeretné a betanított modell pillanatképét, válassza ki a betanítási modult, majd váltson a **kimenet + naplók** lapra a jobb oldali panelen. Kattintson az ikonra az **adatkészlet regisztrálása** elemre.  A mentett modellt megtalálhatja modulként a modul fájában.
 
 ## <a name="next-steps"></a>Következő lépések
 

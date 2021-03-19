@@ -6,11 +6,11 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 09/23/2020
-ms.openlocfilehash: 9d126f591da1bffebbfd29119c56927cfbb21dcd
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c63a8efc4bbcf6e5a124d439e6f9f91397e2fa53
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92370576"
 ---
 # <a name="changelog"></a>Változásnapló
@@ -198,7 +198,7 @@ Ha az Apple-eszközökön a "playsinline" HLS-lejátszást használja, az "élő
 
 ### <a name="changes"></a>Módosítások ###
 
-- Módosítása [Élő felirat] A 608 és 708 közötti CEA-feliratok API-neve módosítva. További információ: CEA708- [feliratok beállításai](/javascript/api/azuremediaplayer/cea708captionssettings)-->
+- Módosítása [Élő felirat] A 608 és 708 közötti CEA-feliratok API-neve módosítva. További információ: CEA708- [feliratok beállításai](/javascript/api/azuremediaplayer/amp.player.cea708captionssettings)-->
 
 ## <a name="220-official-release"></a>2.2.0 (hivatalos kiadás) ##
 

@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 04/11/2019
 ms.openlocfilehash: d46bf711a46e27b81a1284b5fc55cf403b7da048
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87090263"
 ---
 # <a name="get-more-data-items-or-records-by-using-pagination-in-azure-logic-apps"></a>További adatok, elemek vagy rekordok beolvasása a Azure Logic Apps tördelésének használatával
@@ -48,7 +48,7 @@ Az alábbi lista néhány olyan összekötőt mutat be, amelyeken túllépheti a
 
 Annak megállapításához, hogy egy művelet támogatja-e a tördelést a Logic app Designerben, ellenőrizze a művelet beállításait a **tördelési** beállításhoz. Ez a példa azt mutatja be, hogyan kapcsolható be a tördelés a SQL Server **sorok beolvasása** művelettel.
 
-1. A művelet jobb felső sarkában válassza a három pontot (**..**.), és válassza a **Beállítások**lehetőséget.
+1. A művelet jobb felső sarkában válassza a három pontot (**..**.), és válassza a **Beállítások** lehetőséget.
 
    ![A művelet beállításainak megnyitása](./media/logic-apps-exceed-default-page-size-with-pagination/sql-action-settings.png)
 
@@ -58,7 +58,7 @@ Annak megállapításához, hogy egy művelet támogatja-e a tördelést a Logic
 
    ![A visszaadni kívánt eredmények minimális számának meghatározása](./media/logic-apps-exceed-default-page-size-with-pagination/sql-action-settings-pagination.png)
 
-1. Ha elkészült, válassza a **kész**lehetőséget.
+1. Ha elkészült, válassza a **kész** lehetőséget.
 
 ## <a name="workflow-definition---pagination"></a>Munkafolyamat-definíció – tördelés
 

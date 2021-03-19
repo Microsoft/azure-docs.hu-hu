@@ -9,10 +9,10 @@ ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 1b233028b52175842c73660ff116ac592d8296e0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90603356"
 ---
 # <a name="choose-a-tool-for-moving-azure-resources"></a>Eszköz kiválasztása az Azure-erőforrások áthelyezéséhez
@@ -33,6 +33,6 @@ Az Azure-ban a következőképpen helyezhet el erőforrásokat:
 **Áthelyezés az erőforrás-mozgató hubhoz** | Erőforrások áthelyezése régiók között. <br/><br/> Áthelyezheti a célhelyre, vagy egy adott rendelkezésre állási zónába vagy rendelkezésre állási csoportba a célként megadott régión belül. | [Erőforrások áthelyezése a régiók között az erőforrás-mozgató központban]().
 **Virtuális gépek áthelyezése Site Recovery** | Az Azure-beli virtuális gépek kormányzati és nyilvános felhők közötti áthelyezésére használható.<br/><br/> Akkor használja, ha a virtuális gépeket ugyanabban a régióban lévő rendelkezésre állási zónák között szeretné áthelyezni. |[Erőforrások áthelyezése a kormányzati/nyilvános felhők között](../site-recovery/region-move-cross-geos.md), [az erőforrások áthelyezése a rendelkezésre állási zónákba ugyanabban a régióban](../site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További](about-move-process.md) információ az erőforrás-mozgató összetevőkről és az áthelyezési folyamatról.

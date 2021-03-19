@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.openlocfilehash: 8b97221de4921e06ddfab610618f37683b990181
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87132738"
 ---
 # <a name="what-is-reinforcement-learning"></a>Mi a megerősítő tanulás?
@@ -35,7 +35,7 @@ A megerősítő tanulás bizonyos módszereitől eltérően a személyre szabott
 
 ## <a name="what-type-of-reinforcement-learning-algorithms-does-personalizer-use"></a>Milyen típusú megerősítő tanulási algoritmusokat használ a személyre szabás?
 
-A személyre szabott felhasználó jelenlegi verziója **környezetfüggő banditákat**használ, így a megerősítő tanulás olyan megközelítést tesz elérhetővé, amely a döntések meghozatala és a különálló műveletek között egy adott kontextusban való választás.
+A személyre szabott felhasználó jelenlegi verziója **környezetfüggő banditákat** használ, így a megerősítő tanulás olyan megközelítést tesz elérhetővé, amely a döntések meghozatala és a különálló műveletek között egy adott kontextusban való választás.
 
 A _döntési memória_, a modell, amely a lehető legjobb döntés rögzítésére lett kiképezve, a kontextusban a lineáris modellek készletét használja. Ezek az üzleti eredmények többször is megjelennek, és a bevált megközelítések, részben azért, mert nagyon gyorsan tanulhatnak a valós világból anélkül, hogy többfázisú képzést kellene bevezetni, részben azért, mert a felügyelt tanulási modelleket és a mély neurális hálózati modelleket is kiegészítik.
 
@@ -66,6 +66,6 @@ A személyre szabás jelenleg a [Vowpal Wabbit](https://github.com/VowpalWabbit/
 * [Útmutatás és vizualizációs megfigyelések a megerősítő képzéssel végzett műveletekhez](https://arxiv.org/abs/1704.08795)
 * [Tanuljon jobb keresésre a tanárnál](https://arxiv.org/abs/1502.02206)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Offline értékelés](concepts-offline-evaluation.md) 

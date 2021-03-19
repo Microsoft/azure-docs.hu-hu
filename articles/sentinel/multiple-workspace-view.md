@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/20/2020
 ms.author: yelevin
 ms.openlocfilehash: 448998328ff15b74b0aa0b17e2435a7ff55c54a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83124175"
 ---
 # <a name="work-with-incidents-in-many-workspaces-at-once"></a>Incidensek használata egyszerre sok munkaterületen 
@@ -40,19 +40,19 @@ Vegye figyelembe, hogy a munkaterületek listájában megtekintheti az egyes mun
 
 ## <a name="working-with-incidents"></a>Incidensek használata
 
-**Több munkaterület nézetben**csak az **incidensek** képernyő érhető el. Úgy néz ki és működik, mint a szokásos **incidensek** képernyője. Van néhány fontos különbség, bár:
+**Több munkaterület nézetben** csak az **incidensek** képernyő érhető el. Úgy néz ki és működik, mint a szokásos **incidensek** képernyője. Van néhány fontos különbség, bár:
 
    ![Incidensek megtekintése több munkaterületen](./media/multiple-workspace-view/incidents.png)
 
-- A lap tetején lévő számlálók – *nyitott incidensek*, *új incidensek*, *folyamatban*stb. – a kiválasztott munkaterületek számait együttesen jelenítik meg.
+- A lap tetején lévő számlálók – *nyitott incidensek*, *új incidensek*, *folyamatban* stb. – a kiválasztott munkaterületek számait együttesen jelenítik meg.
 
 - A kiválasztott munkaterületekről és címtárakról (bérlők) származó incidensek egyetlen egységesített listában jelennek meg. A listát a normál **incidensek** képernyőjén lévő szűrők mellett a munkaterület és a könyvtár alapján is szűrheti.
 
 - Olvasási és írási engedélyekkel kell rendelkeznie az összes olyan munkaterületről, amelyről kiválasztotta az incidenseket. Ha csak olvasási jogosultsággal rendelkezik egyes munkaterületeken, a rendszer figyelmeztető üzeneteket jelenít meg, ha az incidensek lehetőséget választja a munkaterületeken. Ezekkel az incidensekkel vagy másokkal együtt Ön nem módosítható (még akkor is, ha rendelkezik a többire vonatkozó engedélyekkel).
 
-- Ha egyetlen incidenst választ, és a **teljes részletek megtekintése** vagy a **vizsgálat**lehetőségre kattint, akkor az adott incidens munkaterületének adatkörnyezetében lesz, mások pedig nem.
+- Ha egyetlen incidenst választ, és a **teljes részletek megtekintése** vagy a **vizsgálat** lehetőségre kattint, akkor az adott incidens munkaterületének adatkörnyezetében lesz, mások pedig nem.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudhatta, hogyan lehet párhuzamosan megtekinteni és feldolgozni az incidenseket több Azure Sentinel-munkaterületen. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

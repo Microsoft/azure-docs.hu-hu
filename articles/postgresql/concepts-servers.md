@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: c8ae129cbad56e3bb63e055f9d843cac1da22fb1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91710464"
 ---
 # <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – Önálló kiszolgáló
@@ -41,7 +41,7 @@ A következő elemek segítenek biztosítani az adatbázis biztonságos elérés
 | **Hitelesítés és engedélyezés** | Az Azure Database for PostgreSQL-kiszolgáló támogatja a natív PostgreSQL-hitelesítést. A kiszolgálóhoz történő csatlakozás és a hitelesítés rendszergazdai bejelentkezéssel végezhető el. |
 | **Protokoll** | A szolgáltatás támogatja a PostgreSQL által használt Message-alapú protokollt. |
 | **TCP/IP** | A protokoll több mint TCP/IP-cím, illetve UNIX-tartományú szoftvercsatorna esetén támogatott. |
-| **Tűzfal** | Az adatai védelme érdekében a tűzfalszabály megakadályozza az összes hozzáférést a kiszolgálóhoz és az adatbázisaihoz, amíg meg nem adja, hogy mely számítógépek rendelkeznek engedéllyel. Tekintse meg [Azure Database for PostgreSQL kiszolgáló tűzfalszabályok szabályait](concepts-firewall-rules.md). |
+| **Tűzfal** | Az adatai védelme érdekében a tűzfalszabály megakadályozza az összes hozzáférést a kiszolgálóhoz és az adatbázisaihoz, amíg meg nem adja, hogy mely számítógépek rendelkeznek engedéllyel. Tekintse meg [Azure Database for PostgreSQL kiszolgáló tűzfalszabályok szabályait](concepts-firewall-rules.md). |
 
 ## <a name="managing-your-server"></a>A kiszolgáló kezelése
 Azure Database for PostgreSQL-kiszolgálókat a [Azure Portal](https://portal.azure.com) vagy az [Azure CLI](/cli/azure/postgres)használatával kezelheti.
@@ -63,7 +63,7 @@ A postgres felügyelt szolgáltatásaként a Azure Database for PostgreSQL konfi
 
 
 ## <a name="next-steps"></a>Következő lépések
-- A szolgáltatás áttekintését itt tekintheti meg: [Azure Database for PostgreSQL Overview (áttekintés](overview.md)).
-- A **szolgáltatási szintek**alapján meghatározott erőforrás-kvótákkal és korlátozásokkal kapcsolatos információkért lásd: [szolgáltatási szintek](concepts-pricing-tiers.md).
-- További információ a szolgáltatáshoz való csatlakozásról: [Azure Database for PostgreSQL kapcsolódási kódtárai](concepts-connection-libraries.md).
+- A szolgáltatás áttekintését itt tekintheti meg: [Azure Database for PostgreSQL Overview (áttekintés](overview.md)).
+- A **szolgáltatási szintek** alapján meghatározott erőforrás-kvótákkal és korlátozásokkal kapcsolatos információkért lásd: [szolgáltatási szintek](concepts-pricing-tiers.md).
+- További információ a szolgáltatáshoz való csatlakozásról: [Azure Database for PostgreSQL kapcsolódási kódtárai](concepts-connection-libraries.md).
 - A kiszolgálói paraméterek megtekintése és szerkesztése [Azure Portal](howto-configure-server-parameters-using-portal.md) vagy az [Azure CLI](howto-configure-server-parameters-using-cli.md)használatával.

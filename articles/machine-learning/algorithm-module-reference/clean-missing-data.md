@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: 5b7943b2026d640ae7e5d119e165bd752ae2fe7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90898831"
 ---
 # <a name="clean-missing-data-module"></a>Hiányzó adatmodul törlése
@@ -52,17 +52,17 @@ Minden alkalommal, amikor a  [tiszta hiányzó](./clean-missing-data.md) adatmod
 
 1.  Vegye fel a [tiszta hiányzó](./clean-missing-data.md) adatmodult a folyamatba, és kapcsolja össze a hiányzó értékeket tartalmazó adatkészletet.  
   
-2.  A **tisztítani kívánt oszlopok**esetében válassza ki azokat az oszlopokat, amelyek tartalmazzák a hiányzó értékeket. Több oszlopot is kiválaszthat, de az összes kijelölt oszlopban ugyanazt a helyettesítő metódust kell használnia. Ezért általában a sztring oszlopokat és a numerikus oszlopokat külön kell megtisztítani.
+2.  A **tisztítani kívánt oszlopok** esetében válassza ki azokat az oszlopokat, amelyek tartalmazzák a hiányzó értékeket. Több oszlopot is kiválaszthat, de az összes kijelölt oszlopban ugyanazt a helyettesítő metódust kell használnia. Ezért általában a sztring oszlopokat és a numerikus oszlopokat külön kell megtisztítani.
 
     Például a hiányzó értékek kereséséhez az összes numerikus oszlopban:
 
     1. Válassza ki a **tiszta hiányzó** adatmodult, majd kattintson a modul jobb oldali paneljén található **Szerkesztés oszlopra** .
 
-    3. A **include (Belefoglalás**) mezőben válassza ki az **oszlopok típusai** elemet a legördülő listából, majd válassza a **numerikus**lehetőséget. 
+    3. A **include (Belefoglalás**) mezőben válassza ki az **oszlopok típusai** elemet a legördülő listából, majd válassza a **numerikus** lehetőséget. 
   
     Minden kiválasztott tisztítási vagy helyettesítési módszernek a kijelölés **összes** oszlopára érvényesnek kell lennie. Ha valamelyik oszlopban lévő adatok nem kompatibilisek a megadott művelettel, a modul hibát ad vissza, és leállítja a folyamatot.
   
-3.  A **minimális hiányzó érték aránynál**határozza meg a művelet végrehajtásához szükséges hiányzó értékek minimális számát.  
+3.  A **minimális hiányzó érték aránynál** határozza meg a művelet végrehajtásához szükséges hiányzó értékek minimális számát.  
   
     Ezt a kapcsolót a **hiányzó értékek maximális arányával** együtt használva definiálhatja azokat a feltételeket, amelyekben a tisztítási művelet elvégzése történik az adatkészleten. Ha túl sok vagy túl kevés sor hiányzik az értékek közül, a művelet nem hajtható végre. 
   
@@ -71,9 +71,9 @@ Minden alkalommal, amikor a  [tiszta hiányzó](./clean-missing-data.md) adatmod
     > [!WARNING]
     > Ezt az állapotot minden egyes oszlopnak teljesítenie kell ahhoz, hogy a megadott művelet vonatkozzon. Tegyük fel például, hogy három oszlopot jelölt ki, majd a hiányzó értékek minimális arányát .2 (20%) értékre állítja, de csak egy oszlop ténylegesen 20% hiányzó értéket tartalmaz. Ebben az esetben a karbantartási művelet csak az oszlopra vonatkozik, amely több mint 20% hiányzó értéket tartalmaz. Ezért a többi oszlop változatlan marad.
     > 
-    > Ha kétségei vannak, hogy a hiányzó értékek módosultak-e, válassza a **hiányzó érték jelző oszlop létrehozása**lehetőséget. Az adatkészlethez egy oszlop kerül, amely jelzi, hogy az egyes oszlopok megfelelnek-e a minimális és a maximális tartományhoz megadott feltételeknek.  
+    > Ha kétségei vannak, hogy a hiányzó értékek módosultak-e, válassza a **hiányzó érték jelző oszlop létrehozása** lehetőséget. Az adatkészlethez egy oszlop kerül, amely jelzi, hogy az egyes oszlopok megfelelnek-e a minimális és a maximális tartományhoz megadott feltételeknek.  
   
-4. A **hiányzó érték maximális arányához**határozza meg a művelet végrehajtásához szükséges hiányzó értékek maximális számát.   
+4. A **hiányzó érték maximális arányához** határozza meg a művelet végrehajtásához szükséges hiányzó értékek maximális számát.   
   
     Előfordulhat például, hogy a hiányzó érték-helyettesítést csak akkor szeretné végrehajtani, ha a sorok 30%-a vagy annál kevesebb értéket tartalmaz, de az értékeket a következőképpen hagyja, ha a sorok több mint 30%-a hiányzó értékkel rendelkezik.  
   
@@ -81,7 +81,7 @@ Minden alkalommal, amikor a  [tiszta hiányzó](./clean-missing-data.md) adatmod
   
    
   
-5. A **tisztítási mód**beállításnál válassza a következő lehetőségek egyikét a hiányzó értékek lecseréléséhez vagy eltávolításához:  
+5. A **tisztítási mód** beállításnál válassza a következő lehetőségek egyikét a hiányzó értékek lecseréléséhez vagy eltávolításához:  
   
   
     + **Egyéni helyettesítési érték**: ezzel a beállítással megadhat egy helyőrző értéket (például 0 vagy na), amely az összes hiányzó értékre vonatkozik. A helyettesítőként megadott értéknek kompatibilisnek kell lennie az oszlop adattípusával.
@@ -90,11 +90,11 @@ Minden alkalommal, amikor a  [tiszta hiányzó](./clean-missing-data.md) adatmod
   
         Csak olyan oszlopokra vonatkozik, amelyek egész, dupla vagy logikai adattípussal rendelkeznek.  
   
-    + **Lecserélés közepes**értékre: kiszámítja az oszlop középértékét, és a középértéket használja az oszlopban szereplő hiányzó értékek pótlására.  
+    + **Lecserélés közepes** értékre: kiszámítja az oszlop középértékét, és a középértéket használja az oszlopban szereplő hiányzó értékek pótlására.  
   
         Csak olyan oszlopokra vonatkozik, amelyek egész vagy dupla adattípussal rendelkeznek. 
   
-    + **Csere**a következő módra: kiszámítja az oszlop módját, és a módot használja helyettesítő értékként az oszlopban szereplő összes hiányzó értékhez.  
+    + **Csere** a következő módra: kiszámítja az oszlop módját, és a módot használja helyettesítő értékként az oszlopban szereplő összes hiányzó értékhez.  
   
         Egész, dupla, logikai vagy kategorikus adattípusú oszlopokra vonatkozik. 
   
@@ -104,7 +104,7 @@ Minden alkalommal, amikor a  [tiszta hiányzó](./clean-missing-data.md) adatmod
   
     
   
-6. Ha a beállítás, az **Egyéni helyettesítési**érték lehetőség van kiválasztva, a lehetőség **helyettesítő értéke** elérhető. Írjon be egy új értéket, amelyet helyettesítő értékként kíván használni az oszlopban található összes hiányzó értékhez.  
+6. Ha a beállítás, az **Egyéni helyettesítési** érték lehetőség van kiválasztva, a lehetőség **helyettesítő értéke** elérhető. Írjon be egy új értéket, amelyet helyettesítő értékként kíván használni az oszlopban található összes hiányzó értékhez.  
   
     Vegye figyelembe, hogy ezt a beállítást csak egész számmal, dupla, logikai vagy sztring típusú oszlopokban használhatja.
   

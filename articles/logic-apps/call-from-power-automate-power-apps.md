@@ -7,10 +7,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.openlocfilehash: b402dab4c6e94a7634e11f0330b5379315e43abf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91762480"
 ---
 # <a name="call-logic-apps-from-power-automate-and-power-apps"></a>Logikai alkalmazások meghívása a Power Automate-ből és a PowerAppsből
@@ -42,17 +42,17 @@ Mielőtt meghívja a logikai alkalmazást a Power automatizáló vagy a Power ap
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. A Azure Portal keresőmezőbe írja be a kifejezést `Logic Apps` . Az eredmények alatt, a **szolgáltatások**területen válassza a **Logic apps**lehetőséget.
+1. A Azure Portal keresőmezőbe írja be a kifejezést `Logic Apps` . Az eredmények alatt, a **szolgáltatások** területen válassza a **Logic apps** lehetőséget.
 
 1. Válassza ki az exportálni kívánt logikai alkalmazást.
 
-1. A logikai alkalmazás menüjében válassza az **Exportálás**lehetőséget.
+1. A logikai alkalmazás menüjében válassza az **Exportálás** lehetőséget.
 
     :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/export-logic-app.png" alt-text="Képernyőkép a Logic app oldaláról Azure Portalban, a menü &quot;Exportálás&quot; gombjának kiválasztásával.":::
 
-1. Az **Exportálás** ablaktáblán, a **név**mezőben adja meg az egyéni összekötő nevét a logikai alkalmazáshoz. A **környezet** listából válassza ki azt az energiagazdálkodási vagy energiagazdálkodási környezetet, amelyről meg szeretné hívni a logikai alkalmazást. Amikor elkészült, válassza az **OK** lehetőséget.
+1. Az **Exportálás** ablaktáblán, a **név** mezőben adja meg az egyéni összekötő nevét a logikai alkalmazáshoz. A **környezet** listából válassza ki azt az energiagazdálkodási vagy energiagazdálkodási környezetet, amelyről meg szeretné hívni a logikai alkalmazást. Amikor elkészült, válassza az **OK** lehetőséget.
 
-    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/export-logic-app2.png" alt-text="Képernyőkép a Logic app oldaláról Azure Portalban, a menü &quot;Exportálás&quot; gombjának kiválasztásával.":::
+    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/export-logic-app2.png" alt-text="Képernyőkép a logikai alkalmazás exportálási paneljéről, amely az egyéni összekötő nevének és környezetének kötelező mezőit jeleníti meg.":::
 
 1. Annak ellenőrzéséhez, hogy a logikai alkalmazás exportálása sikeres volt-e, tekintse meg az értesítések ablaktáblát.
 
@@ -70,17 +70,17 @@ A Power automatizáló folyamattal exportált logikai alkalmazáshoz való kapcs
 
 1. Jelentkezzen be a [Power Automate](https://flow.microsoft.com) szolgáltatásba.
 
-1. Az **energiagazdálkodás** kezdőlapja menüben válassza a **saját folyamatok**lehetőséget.
+1. Az **energiagazdálkodás** kezdőlapja menüben válassza a **saját folyamatok** lehetőséget.
 
 1. A **folyamatok** lapon válassza ki azt a folyamatot, amelyhez csatlakozni szeretne a logikai alkalmazáshoz.
 
-1. A folyamat oldala menüjében válassza a **Szerkesztés**lehetőséget.
+1. A folyamat oldala menüjében válassza a **Szerkesztés** lehetőséget.
 
-1. A flow-szerkesztőben válassza **&#43; új lépés**lehetőséget.
+1. A flow-szerkesztőben válassza **&#43; új lépés** lehetőséget.
 
-1. A **válasszon műveletet**területen a keresőmezőbe írja be a logikai alkalmazás-összekötő nevét. Ha nem szeretné, hogy csak az egyéni összekötők jelenjenek meg a környezetben, akkor az **Egyéni** lapra kattintva szűrheti az eredményeket.
+1. A **válasszon műveletet** területen a keresőmezőbe írja be a logikai alkalmazás-összekötő nevét. Ha nem szeretné, hogy csak az egyéni összekötők jelenjenek meg a környezetben, akkor az **Egyéni** lapra kattintva szűrheti az eredményeket.
 
-    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/power-automate-custom-connector-action.png" alt-text="Képernyőkép a Logic app oldaláról Azure Portalban, a menü &quot;Exportálás&quot; gombjának kiválasztásával.":::
+    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/power-automate-custom-connector-action.png" alt-text="Képernyőkép a Power automatizáló folyamat szerkesztőjéről, amely egy új lépést ad hozzá az egyéni összekötőhöz és az elérhető műveletekhez.":::
 
 1. Válassza ki a logikai alkalmazás-összekötővel végrehajtani kívánt műveletet. 
 
@@ -98,11 +98,11 @@ A Power automatizáló folyamattal exportált logikai alkalmazáshoz való kapcs
 
 1. Jelentkezzen be a [Power Automate](https://flow.microsoft.com) szolgáltatásba.
 
-1. Az **energiaellátás-automatizálás** kezdőlapján válassza **Data** &gt; a menü **Egyéni összekötők** elemét.
+1. Az **energiaellátás-automatizálás** kezdőlapján válassza  &gt; a menü **Egyéni összekötők** elemét.
 
-1. A listában keresse meg az egyéni összekötőt, és válassza az ellipszisek (**...**) gomb &gt; **Törlés**lehetőséget.
+1. A listában keresse meg az egyéni összekötőt, és válassza az ellipszisek (**...**) gomb &gt; **Törlés** lehetőséget.
 
-    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/delete-custom-connector.png" alt-text="Képernyőkép a Logic app oldaláról Azure Portalban, a menü &quot;Exportálás&quot; gombjának kiválasztásával.":::
+    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/delete-custom-connector.png" alt-text="Képernyőkép az &quot;egyéni összekötők&quot; oldalról, amely bemutatja a logikai alkalmazás egyéni összekötő-felügyeleti gombját.":::
 
 1. A törlés megerősítéséhez kattintson **az OK gombra**.
 
@@ -118,11 +118,11 @@ A Power apps-folyamattal exportált logikai alkalmazáshoz való kapcsolódásho
 
 1. A folyamat oldalán válassza a **Szerkesztés** lehetőséget a folyamat menüjében.
 
-1. A flow-szerkesztőben kattintson az ** új lépés&#43;** gombra.
+1. A flow-szerkesztőben kattintson az **új lépés&#43;** gombra.
 
 1. Az új lépésben **válassza a művelet lehetőséget** , majd a keresőmezőbe írja be a logikai alkalmazás-összekötő nevét. Igény szerint szűrheti az eredményeket az **Egyéni** lapon, hogy csak az egyéni összekötők megjelenjenek a környezetben.
 
-    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/power-apps-custom-connector-action.png" alt-text="Képernyőkép a Logic app oldaláról Azure Portalban, a menü &quot;Exportálás&quot; gombjának kiválasztásával.":::
+    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/power-apps-custom-connector-action.png" alt-text="Képernyőfelvétel a Power apps flow-Szerkesztőről, amely az egyéni összekötőhöz és az elérhető műveletekhez hozzáadott új lépést mutatja.":::
 
 1. Válassza ki az összekötővel végrehajtani kívánt műveletet. 
 
@@ -142,9 +142,9 @@ A Power apps-folyamattal exportált logikai alkalmazáshoz való kapcsolódásho
 
 1. A **Power apps** kezdőlapján **válassza** &gt; a menü **Egyéni összekötők** elemét.
 
-1. A listában keresse meg az egyéni összekötőt, és válassza az ellipszisek (**...**) gomb &gt; **Törlés**lehetőséget.
+1. A listában keresse meg az egyéni összekötőt, és válassza az ellipszisek (**...**) gomb &gt; **Törlés** lehetőséget.
 
-    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/delete-custom-connector.png" alt-text="Képernyőkép a Logic app oldaláról Azure Portalban, a menü &quot;Exportálás&quot; gombjának kiválasztásával.":::
+    :::image type="content" source="./media/call-logic-apps-from-power-automate-power-apps/delete-custom-connector.png" alt-text="Képernyőkép a Power apps egyéni összekötői oldaláról, amely a Logic app egyéni összekötő-felügyeleti gombjait mutatja.":::
 
 1. A törlés megerősítéséhez kattintson **az OK gombra**.
 

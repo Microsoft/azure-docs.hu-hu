@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b27055ce84bbb073045b69b942fd13f4fde4e3b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90563862"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect Sync: az architektúra megismerése
@@ -32,7 +32,7 @@ A Szinkronizáló motor a több csatlakoztatott adatforrásban tárolt objektumo
 ### <a name="connected-data-sources-and-connectors"></a>Csatlakoztatott adatforrások és összekötők
 A Szinkronizáló motor különböző adattárakból dolgozza fel az identitási adatokat, például Active Directory vagy egy SQL Server adatbázisból. Minden adattárház, amely adatbázis-szerű formátumban rendezi az adataikat, és szabványos adatelérési módszereket biztosít, a szinkronizálási motor számára lehetséges adatforrásra jelölt. A szinkronizálási motor által szinkronizált adattárházak neve **csatlakoztatott adatforrások** vagy **csatlakoztatott könyvtárak** (CD).
 
-A szinkronizálási motor egy **összekötő**nevű modulon belül beágyazza az interakciót egy csatlakoztatott adatforrással. A csatlakoztatott adatforrások mindegyik típusa egy adott összekötővel rendelkezik. Az összekötő lefordít egy szükséges műveletet a csatlakoztatott adatforrás által értelmezhető formátumba.
+A szinkronizálási motor egy **összekötő** nevű modulon belül beágyazza az interakciót egy csatlakoztatott adatforrással. A csatlakoztatott adatforrások mindegyik típusa egy adott összekötővel rendelkezik. Az összekötő lefordít egy szükséges műveletet a csatlakoztatott adatforrás által értelmezhető formátumba.
 
 Az összekötők olyan API-hívásokat tesznek elérhetővé, amelyek egy csatlakoztatott adatforrással (olvasási és írási) identitási adatokat cserélnek. Az Extensible connectivity Framework használatával egyéni összekötőt is hozzáadhat. Az alábbi ábra azt szemlélteti, hogy az összekötő hogyan kapcsol össze egy csatlakoztatott adatforrást a Szinkronizáló motorral.
 
@@ -91,7 +91,7 @@ Az előkészítési objektum a kijelölt objektumtípusok egy példányát jelö
 
 Az importált előkészítési objektumok mindig rendelkeznek a Anchor attribútum értékével. A szinkronizálási motor által újonnan kiépített átmeneti objektumok, amelyek a csatlakoztatott adatforrásban való létrehozás folyamatban vannak, nem rendelkeznek értékkel a Anchor attribútumhoz.
 
-Az előkészítési objektumok az üzleti attribútumok aktuális értékeit is végrehajtják, és a szinkronizálási folyamat végrehajtásához szükséges üzemeltetési adatokat is elvégezhetik. Az operatív információ olyan jelzőket is tartalmaz, amelyek az átmeneti objektumon előkészített frissítések típusát jelölik. Ha egy átmeneti objektum olyan új identitási adatokat kapott a csatlakoztatott adatforrásból, amelyek még nem lettek feldolgozva, az objektum az **Importálás függőben állapotában**van megjelölve. Ha egy előkészítési objektum olyan új identitási információkkal rendelkezik, amelyek még nem lettek exportálva a csatlakoztatott adatforrásba, a rendszer az **Exportálás függőben állapotba**kerül.
+Az előkészítési objektumok az üzleti attribútumok aktuális értékeit is végrehajtják, és a szinkronizálási folyamat végrehajtásához szükséges üzemeltetési adatokat is elvégezhetik. Az operatív információ olyan jelzőket is tartalmaz, amelyek az átmeneti objektumon előkészített frissítések típusát jelölik. Ha egy átmeneti objektum olyan új identitási adatokat kapott a csatlakoztatott adatforrásból, amelyek még nem lettek feldolgozva, az objektum az **Importálás függőben állapotában** van megjelölve. Ha egy előkészítési objektum olyan új identitási információkkal rendelkezik, amelyek még nem lettek exportálva a csatlakoztatott adatforrásba, a rendszer az **Exportálás függőben állapotba** kerül.
 
 Az átmeneti objektumok lehetnek importálási objektumok vagy exportálási objektumok. A szinkronizálási motor létrehoz egy importálási objektumot a csatlakoztatott adatforrásból kapott objektum-adatok használatával. Ha a szinkronizálási motor információt kap egy olyan új objektum létezéséről, amely megfelel az összekötőben kiválasztott objektumtípusok egyikének, a rendszer létrehoz egy importálási objektumot az összekötő területen az objektumnak a csatlakoztatott adatforrásban való ábrázolásával.
 
@@ -173,7 +173,7 @@ Az összekötőben megadott minden egyes objektum esetében a Szinkronizáló mo
 Ha a Szinkronizáló motor olyan átmeneti objektumot talál, amely a megkülönböztető név alapján, de nem a horgony alapján egyezik, a következő különleges viselkedés fordul elő:
 
 * Ha az összekötő területén található objektumnak nincs horgonya, akkor a szinkronizálási motor eltávolítja ezt az objektumot az összekötő területéről, és megjelöli az újrapróbálkozási kiépítést a **következő szinkronizálási futtatáskor**. Ezután létrehozza az új importálási objektumot.
-* Ha az összekötő területén található objektum horgonyt tartalmaz, akkor a Szinkronizáló motor azt feltételezi, hogy az objektum átnevezve lett vagy törölve lett a csatlakoztatott címtárban. Egy ideiglenes, új megkülönböztető nevet rendel hozzá az összekötő terület objektumhoz, hogy az a bejövő objektumot megtudja. A régi objektum **átmeneti**állapotba kerül, és arra vár, hogy az összekötő importálja az átnevezést vagy törlést a helyzet feloldásához.
+* Ha az összekötő területén található objektum horgonyt tartalmaz, akkor a Szinkronizáló motor azt feltételezi, hogy az objektum átnevezve lett vagy törölve lett a csatlakoztatott címtárban. Egy ideiglenes, új megkülönböztető nevet rendel hozzá az összekötő terület objektumhoz, hogy az a bejövő objektumot megtudja. A régi objektum **átmeneti** állapotba kerül, és arra vár, hogy az összekötő importálja az átnevezést vagy törlést a helyzet feloldásához.
 
 Ha a Szinkronizáló motor olyan átmeneti objektumot keres, amely az összekötőben megadott objektumnak felel meg, meghatározza, hogy milyen módosításokat kell alkalmazni. A szinkronizálási motor például átnevezheti vagy törölheti az objektumot a csatlakoztatott adatforrásban, vagy csak az objektum attribútum-értékeit lehet frissíteni.
 
@@ -182,7 +182,7 @@ A frissített adattal rendelkező előkészítési objektumok az importálás f�
 * **Nincs**. Nem érhető el az előkészítési objektum egyik attribútumának módosítása. A szinkronizálási motor nem jelöli meg a típust függőben lévő importálásként.
 * **Hozzáadás**. Az előkészítési objektum az összekötő terület új importálási objektuma. A szinkronizálási motor a metaverse-ben a további feldolgozáshoz függőben lévő importálási jelzőket adja meg.
 * **Frissítés**. A Szinkronizáló motor megkeresi az összekötő területének megfelelő előkészítési objektumot, és a típust függőben lévő importálásként adja meg, hogy az attribútumok frissítései a metaverse-ben is feldolgozhatók legyenek. A frissítések közé tartozik az objektum átnevezése.
-* **Törlés**. A Szinkronizáló motor talál egy megfelelő előkészítési objektumot az összekötő területén, és a típust függőben lévő importálásként adja meg, hogy az összekapcsolt objektum törölhető legyen.
+* **Delete**. A Szinkronizáló motor talál egy megfelelő előkészítési objektumot az összekötő területén, és a típust függőben lévő importálásként adja meg, hogy az összekapcsolt objektum törölhető legyen.
 * **Törlés/Hozzáadás**. A Szinkronizáló motor megkeresi az összekötő területének megfelelő előkészítési objektumot, de az Objektumtípusok nem egyeznek. Ebben az esetben a törlés hozzáadására szolgáló módosítás előkészítése folyamatban van. A DELETE-Add módosítás azt jelzi, hogy a szinkronizálási motornak az objektum teljes újraszinkronizálására van szükség, mert az objektum típusának megváltozásakor a szabályok különböző készletei érvényesek erre az objektumra.
 
 Egy átmeneti objektum függőben lévő importálási állapotának beállításával jelentősen csökkentheti a szinkronizálás során feldolgozott adatmennyiséget, mert így a rendszer csak azokat az objektumokat dolgozza fel, amelyek frissítettek.
@@ -239,7 +239,7 @@ Ha a kiépítés megköveteli, hogy a szinkronizálási motor hozzon létre egy 
 
 Ha a kiépítés megköveteli, hogy a szinkronizálási motor megvegyen egy csatlakoztatott objektumot, a rendszer kiépített objektumot hozzon létre, és kivonja a megszüntetést. A megszüntetési folyamat törli az objektumot.
 
-A kiépítés során az exportálási objektum törlése nem törli fizikailag az objektumot. Az objektum **törölve**lett megjelölve, ami azt jelenti, hogy a törlési művelet az objektumon van elrendezve.
+A kiépítés során az exportálási objektum törlése nem törli fizikailag az objektumot. Az objektum **törölve** lett megjelölve, ami azt jelenti, hogy a törlési művelet az objektumon van elrendezve.
 
 Az attribútum exportálása a kimenő szinkronizálási folyamat során is megtörténik, hasonlóan ahhoz, ahogyan az az attribútum importálása a bejövő szinkronizálás során történik. Az attribútumok exportálása csak a metaverse és a csatlakoztatott objektumok között történik.
 

@@ -7,10 +7,10 @@ ms.topic: overview
 ms.author: xujiang1
 ms.date: 07/31/2020
 ms.openlocfilehash: 6f4885594e4f67d91c595d8afdddc15e8ed4ae75
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88263180"
 ---
 # <a name="whats-new-in-data-lake-analytics"></a>A Data Lake Analytics újdonságai
@@ -45,7 +45,7 @@ Az U-SQL futásidejű hibák elhárításának megismeréséhez tekintse meg az 
 
 ## <a name="net-framework"></a>.NET-keretrendszer
 
-Azure Data Lake Analytics most a .net- **keretrendszer v 4.7.2**használja. 
+Azure Data Lake Analytics most a .net- **keretrendszer v 4.7.2** használja. 
 
 Ha a Azure Data Lake Analytics U-SQL-szkript kódja egyéni szerelvényeket használ, és ezek az egyéni szerelvények a .NET-kódtárakat használják, érvényesítse a kódot, és ellenőrizze, hogy van-e megszakítás.
 
@@ -56,7 +56,7 @@ Annak megismeréséhez, hogy miként lehet elhárítani a .NET-frissítést a [.
 A legutóbbi frissítés részleteiért tekintse meg a [Azure Data Lake Analytics kibocsátási megjegyzését](https://github.com/Azure/AzureDataLake/tree/master/docs/Release_Notes).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedés a Data Lake Analytics [Azure Portal](data-lake-analytics-get-started-portal.md)  |  [Azure PowerShell](data-lake-analytics-get-started-powershell.md)  |  [CLI](data-lake-analytics-get-started-cli.md) használatával
 

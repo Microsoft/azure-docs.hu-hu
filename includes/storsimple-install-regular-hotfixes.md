@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 8cc5dbb907c342b766cebe6da36cf580ddac5e2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "67179151"
 ---
 #### <a name="to-install-regular-hotfixes-via-windows-powershell-for-storsimple"></a>A rendszeres gyorsjavítások telepítése Windows PowerShell StorSimple-bővítménye használatával
 1. Kapcsolódjon az eszköz soros konzolhoz. További információt az 1. [lépés: Kapcsolódás a soros konzolhoz](../articles/storsimple/storsimple-update-device.md#step1)című témakörben talál.
-2. A soros konzol menüjében válassza az 1. lehetőséget, majd **Jelentkezzen be a teljes hozzáférés**lehetőséggel. Írja be a jelszót. Az alapértelmezett jelszó a **jelszó1**.
+2. A soros konzol menüjében válassza az 1. lehetőséget, majd **Jelentkezzen be a teljes hozzáférés** lehetőséggel. Írja be a jelszót. Az alapértelmezett jelszó a **jelszó1**.
 3. A parancssorba írja be a következőt:
    
     ```

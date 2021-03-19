@@ -3,12 +3,12 @@ title: Event Hubs dedikált fürt létrehozása a Azure Portal használatával
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Event Hubs-fürtöt a Azure Portal használatával.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 6ff4ee1f098407ba8b3cd2727410bdfc842db89a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 596b07210d35f648af78e45b7472c620a4361e8a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102040090"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601023"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>Rövid útmutató: dedikált Event Hubs-fürt létrehozása Azure Portal használatával 
 Event Hubs-fürtök egybérlős üzemelő példányokat biztosítanak a legigényesebb folyamatos átviteli igényű ügyfelek számára. Ez az ajánlat garantált 99,99%-os SLA-val rendelkezik, és csak a dedikált díjszabási szinten érhető el. Egy [Event Hubs fürt](event-hubs-dedicated-overview.md) másodpercenként több millió eseményt tud befogadni a garantált kapacitással és a másodpercenkénti késéssel. A fürtön belül létrehozott névterek és az Event hubok a standard ajánlat összes funkcióját tartalmazzák, többek között a bejövő korlátok nélkül. A dedikált ajánlat további díj nélkül tartalmazza a népszerű [Event Hubs Capture](event-hubs-capture-overview.md) szolgáltatást, amely lehetővé teszi, hogy automatikusan batch-és naplózza az adatstreameket az [Azure-Blob Storage](../storage/blobs/storage-blobs-introduction.md) vagy az [1. generációs Azure Data Lake Storage](../data-lake-store/data-lake-store-overview.md).
@@ -109,6 +109,6 @@ Ebben a cikkben egy Event Hubs-fürtöt hozott létre. Az Event hub eseményeine
     - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
     - [Java](event-hubs-java-get-started-send.md)
     - [Python](event-hubs-python-get-started-send.md)
-    - [JavaScript](event-hubs-java-get-started-send.md)
+    - [JavaScript](event-hubs-node-get-started-send.md)
 - [Event Hubs rögzítésének engedélyezése a Azure Portal használatával](event-hubs-capture-enable-through-portal.md)
 - [Az Azure Event Hubs használata a Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)

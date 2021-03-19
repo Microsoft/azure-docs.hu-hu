@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 08/23/2019
 ms.author: sstein
 ms.openlocfilehash: 3cc8e836d39a38f950e15d31aeb3e3acdca45acc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84045493"
 ---
 ## <a name="create-and-manage-azure-sql-resources-with-the-azure-portal"></a>Azure SQL-erőforrások létrehozása és kezelése a Azure Portal
@@ -21,11 +21,11 @@ Az **Azure SQL** -oldal eléréséhez a Azure Portal menüben válassza az **Azu
 > [!NOTE]
 > Az **Azure SQL** gyors és egyszerű módszert kínál a Azure Portal összes SQL-erőforrásának elérésére, beleértve az önálló és a készletezett adatbázist is Azure SQL Database, valamint az azokat üzemeltető logikai SQL Servert, SQL felügyelt példányokat és SQL virtuális gépeket.  Az [Azure SQL](../azure-sql-iaas-vs-paas-what-is-overview.md) nem szolgáltatás vagy erőforrás, hanem az SQL-hez kapcsolódó szolgáltatások családja. 
 
-A meglévő erőforrások kezeléséhez válassza ki a kívánt elemet a listában. Új Azure SQL-erőforrások létrehozásához válassza a **+ Hozzáadás**lehetőséget. 
+A meglévő erőforrások kezeléséhez válassza ki a kívánt elemet a listában. Új Azure SQL-erőforrások létrehozásához válassza a **+ Hozzáadás** lehetőséget. 
 
 ![Azure SQL-portál lap](./media/sql-database-create-manage-portal/add-azure-sql-resources.png)
 
-A **+ Hozzáadás gombra**kattintva további információkat jeleníthet meg a különböző beállításokról a csempék **részleteinek megjelenítése** lehetőség kiválasztásával.
+A **+ Hozzáadás gombra** kattintva további információkat jeleníthet meg a különböző beállításokról a csempék **részleteinek megjelenítése** lehetőség kiválasztásával.
 
 ![adatbázisok csempe részletei](./media/sql-database-create-manage-portal/single-sql-database-deployment-options.png)
 

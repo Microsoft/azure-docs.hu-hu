@@ -8,10 +8,10 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
 ms.openlocfilehash: 12dbd40731480a2fae294c7292112ecc5df5243b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87102081"
 ---
 # <a name="enrolling-students-in-azure-dev-tools-for-teaching"></a>Tanulók beléptetése az Azure fejlesztői eszközökbe oktatási célokra
@@ -22,7 +22,7 @@ Az Azure fejlesztői eszközökre való bejelentkezéshez használt tartomány a
 
 :::image type="content" source="media/manage-students/manage-student-access.png" alt-text="A diákok hozzáférésének kezelése." border="false":::
 
-## <a name="next-steps"></a>További lépések   
+## <a name="next-steps"></a>Következő lépések   
 - [Útmutató a bejelentkezéssel kapcsolatos problémák elhárításához](troubleshoot-login.md)
 
 - [Támogatási lehetőségek](program-support.md)

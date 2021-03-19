@@ -4,10 +4,10 @@ description: Ez a cikk a Azure Backup által biztonsági mentés alatt álló Az
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 784b22f11b57fb025f6d9401e10d527c83751898
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88757625"
 ---
 # <a name="manage-azure-file-share-backups"></a>Azure-fájlmegosztások biztonsági másolatainak kezelése
@@ -38,17 +38,17 @@ A meglévő biztonsági mentési szabályzatok megtekintéséhez:
 
    ![Minden biztonsági mentési szabályzat](./media/manage-afs-backup/all-backup-policies.png)
 
-1. Az **Azure-fájlmegosztás**egyedi házirendjeinek megtekintéséhez válassza az **Azure-fájlmegosztás** lehetőséget a jobb felső sarokban lévő legördülő listából.
+1. Az **Azure-fájlmegosztás** egyedi házirendjeinek megtekintéséhez válassza az **Azure-fájlmegosztás** lehetőséget a jobb felső sarokban lévő legördülő listából.
 
    ![Azure-fájlmegosztás kiválasztása](./media/manage-afs-backup/azure-file-share.png)
 
 Új biztonsági mentési szabályzat létrehozásához:
 
-1. A **biztonsági mentési házirendek** panelen válassza a **+ Hozzáadás**lehetőséget.
+1. A **biztonsági mentési házirendek** panelen válassza a **+ Hozzáadás** lehetőséget.
 
    ![Új biztonsági mentési szabályzat](./media/manage-afs-backup/new-backup-policy.png)
 
-1. A **Hozzáadás** ablaktáblán válassza ki a **házirend típusaként**az **Azure-fájlmegosztás** lehetőséget. Megnyílik az **Azure-fájlmegosztás** **biztonsági mentési szabályzat** panelje. Adja meg a házirend nevét, a biztonsági mentési gyakoriságot és a helyreállítási pontok megőrzési tartományát. A szabályzat meghatározása után kattintson **az OK gombra**.
+1. A **Hozzáadás** ablaktáblán válassza ki a **házirend típusaként** az **Azure-fájlmegosztás** lehetőséget. Megnyílik az **Azure-fájlmegosztás** **biztonsági mentési szabályzat** panelje. Adja meg a házirend nevét, a biztonsági mentési gyakoriságot és a helyreállítási pontok megőrzési tartományát. A szabályzat meghatározása után kattintson **az OK gombra**.
 
    ![A biztonsági mentési szabályzat megadása](./media/manage-afs-backup/define-backup-policy.png)
 
@@ -66,7 +66,7 @@ Szabályzat módosítása:
 
    ![A módosítandó Azure-fájlmegosztás](./media/manage-afs-backup/azure-file-share-modify.png)
 
-1. Megnyílik az **ütemterv** ablaktábla. Szükség szerint szerkessze a **biztonsági mentés ütemtervét** és a **megőrzési tartományt** , majd kattintson a **Mentés**gombra. Megjelenik egy "frissítés folyamatban" üzenet a panelen. Miután a szabályzat sikeresen módosult, a következő üzenet jelenik meg: "a biztonsági mentési házirend frissítése sikeresen megtörtént."
+1. Megnyílik az **ütemterv** ablaktábla. Szükség szerint szerkessze a **biztonsági mentés ütemtervét** és a **megőrzési tartományt** , majd kattintson a **Mentés** gombra. Megjelenik egy "frissítés folyamatban" üzenet a panelen. Miután a szabályzat sikeresen módosult, a következő üzenet jelenik meg: "a biztonsági mentési házirend frissítése sikeresen megtörtént."
 
    ![A módosított szabályzat mentése](./media/manage-afs-backup/save-policy.png)
 
@@ -95,7 +95,7 @@ Azure-fájlmegosztás védelmének megszüntetése:
 
    ![Válassza a biztonsági mentés leállítása lehetőséget.](./media/manage-afs-backup/stop-backup.png)
 
-1. A **biztonsági mentés leállítása** ablaktáblán válassza a **biztonsági mentési adat megőrzése** vagy a **biztonsági másolati adat törlése**lehetőséget. Ezután válassza a **biztonsági mentés leállítása**lehetőséget.
+1. A **biztonsági mentés leállítása** ablaktáblán válassza a **biztonsági mentési adat megőrzése** vagy a **biztonsági másolati adat törlése** lehetőséget. Ezután válassza a **biztonsági mentés leállítása** lehetőséget.
 
     ![Válassza a biztonsági mentési adat megőrzése vagy a biztonsági másolati adat törlése lehetőséget.](./media/manage-afs-backup/retain-or-delete-backup-data.png)
 
@@ -121,7 +121,7 @@ Az Azure-fájlmegosztás védelmének folytatása:
 
 1. Megnyílik a **biztonsági mentési házirend** panel. Válassza ki a kívánt szabályzatot a biztonsági mentés folytatásához.
 
-1. Miután kiválasztott egy biztonsági mentési szabályzatot, válassza a **Mentés**lehetőséget. Egy "frissítés folyamatban" üzenet jelenik meg a portálon. A biztonsági mentés sikeres folytatása után a következő üzenet jelenik meg: "a védett Azure-fájlmegosztás biztonsági mentési szabályzatának frissítése sikerült."
+1. Miután kiválasztott egy biztonsági mentési szabályzatot, válassza a **Mentés** lehetőséget. Egy "frissítés folyamatban" üzenet jelenik meg a portálon. A biztonsági mentés sikeres folytatása után a következő üzenet jelenik meg: "a védett Azure-fájlmegosztás biztonsági mentési szabályzatának frissítése sikerült."
 
    ![A biztonsági mentési szabályzat frissítése sikerült](./media/manage-afs-backup/successfully-updated.png)
 
@@ -137,7 +137,7 @@ Az Azure-fájlmegosztás biztonsági mentési adatfájljainak törlése:
 
    ![Biztonsági mentési adatok törlése](./media/manage-afs-backup/delete-backup-data.png)
 
-1. Megnyílik a **biztonsági mentési adattörlés** panel. A törlés megerősítéséhez írja be a fájlmegosztás nevét. Szükség esetén további információkat is megadhat az **OK** vagy **Megjegyzések** mezőkben. Ha biztos benne, hogy törli a biztonsági másolatok adatait, válassza a **Törlés**lehetőséget.
+1. Megnyílik a **biztonsági mentési adattörlés** panel. A törlés megerősítéséhez írja be a fájlmegosztás nevét. Szükség esetén további információkat is megadhat az **OK** vagy **Megjegyzések** mezőkben. Ha biztos benne, hogy törli a biztonsági másolatok adatait, válassza a **Törlés** lehetőséget.
 
    ![Az adattörlés megerősítése](./media/manage-afs-backup/confirm-delete-data.png)
 
@@ -158,11 +158,11 @@ A Storage-fiók regisztrációjának törlése:
 
    ![Storage-fiókok kiválasztása](./media/manage-afs-backup/storage-accounts.png)
 
-1. A Storage- **fiókok**kiválasztása után megjelenik a tárolóban regisztrált Storage-fiókok listája.
-1. Kattintson a jobb gombbal a törölni kívánt Storage-fiókra, majd válassza a **Regisztráció törlése**lehetőséget.
+1. A Storage- **fiókok** kiválasztása után megjelenik a tárolóban regisztrált Storage-fiókok listája.
+1. Kattintson a jobb gombbal a törölni kívánt Storage-fiókra, majd válassza a **Regisztráció törlése** lehetőséget.
 
    ![Regisztráció törlése](./media/manage-afs-backup/select-unregister.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: az [Azure-fájlmegosztás biztonsági mentésének hibája](./troubleshoot-azure-files.md).

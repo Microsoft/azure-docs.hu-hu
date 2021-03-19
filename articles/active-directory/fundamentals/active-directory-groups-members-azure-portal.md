@@ -14,10 +14,10 @@ ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: af5a85bad1e7b2a6bf645084d6b78f77e6c0d8b2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92371834"
 ---
 # <a name="add-or-remove-group-members-using-azure-active-directory"></a>Csoporttagok hozzáadása vagy eltávolítása Azure Active Directory használatával
@@ -27,7 +27,7 @@ A Azure Active Directory használatával továbbra is hozzáadhat és eltávolí
 
 1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
-2. Válassza a **Azure Active Directory**, majd a **csoportok**lehetőséget.
+2. Válassza a **Azure Active Directory**, majd a **csoportok** lehetőséget.
 
 3. A **csoportok – minden csoport** lapon keresse meg és válassza ki azt a csoportot, amelyhez hozzá kívánja adni a tagot. Ebben az esetben használja a korábban létrehozott csoportot, a **Mdm Policy-West-** t.
 
@@ -37,7 +37,7 @@ A Azure Active Directory használatával továbbra is hozzáadhat és eltávolí
 
     ![MDM házirend – Nyugat-Áttekintés lap, a tagok lehetőség kiemelve](media/active-directory-groups-members-azure-portal/group-overview-blade.png)
 
-5. Válassza a **Tagok hozzáadása**lehetőséget, majd keresse meg és válassza ki a csoportba felvenni kívánt tagokat, majd válassza a **kiválasztás**lehetőséget.
+5. Válassza a **Tagok hozzáadása** lehetőséget, majd keresse meg és válassza ki a csoportba felvenni kívánt tagokat, majd válassza a **kiválasztás** lehetőséget.
 
     Megjelenik egy üzenet, amely szerint a tagok felvétele sikeresen megtörtént.
 
@@ -49,7 +49,7 @@ A Azure Active Directory használatával továbbra is hozzáadhat és eltávolí
 
 1. A **csoportok – minden csoport** lapon keresse meg és válassza ki azt a csoportot, amelyből el szeretné távolítani a tagot. Ismét a **Mdm Policy-West-** t fogjuk használni.
 
-2. Válassza ki a **tagok** elemet a **kezelés** területen, keresse meg és válassza ki az eltávolítandó tag nevét, majd válassza az **Eltávolítás**lehetőséget.
+2. Válassza ki a **tagok** elemet a **kezelés** területen, keresse meg és válassza ki az eltávolítandó tag nevét, majd válassza az **Eltávolítás** lehetőséget.
 
     ![Tag adatai lap eltávolítási lehetőséggel](media/active-directory-groups-members-azure-portal/remove-members-from-group.png)
 

@@ -1,6 +1,6 @@
 ---
 title: Az Azure-fájlmegosztás elérésének szabályozása – helyszíni AD DS hitelesítés
-description: Megtudhatja, hogyan rendelhet hozzá engedélyeket a Storage-fiókot képviselő Active Directory tartományi szolgáltatások identitáshoz. Ez lehetővé teszi az identitás-alapú hitelesítéssel való hozzáférés szabályozását.
+description: Megtudhatja, hogyan rendelhet hozzá engedélyeket a Storage-fiókot képviselő Active Directory Domain Services identitáshoz. Ez lehetővé teszi az identitás-alapú hitelesítéssel való hozzáférés szabályozását.
 author: roygara
 ms.service: storage
 ms.subservice: files
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
 ms.openlocfilehash: af88f0b3403fb80acbb7dacebe293ac583e35799
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91716036"
 ---
 # <a name="part-two-assign-share-level-permissions-to-an-identity"></a>Második rész: megosztási szintű engedélyek kiosztása identitáshoz
 
 A cikk elkezdése előtt győződjön meg arról, hogy végrehajtotta az előző cikket, és [engedélyezze AD DS hitelesítését a fiókjához](storage-files-identity-ad-ds-enable.md).
 
-Miután engedélyezte a Active Directory tartományi szolgáltatások (AD DS) hitelesítést a Storage-fiókjában, konfigurálnia kell a megosztási szintű engedélyeket ahhoz, hogy hozzáférjen a fájlmegosztás eléréséhez. Az Azure file share-erőforrásokhoz való hozzáféréshez használt identitásnak a AD DS és az Azure AD-ben található hibrid identitásnak kell lennie. Tegyük fel például, hogy rendelkezik egy felhasználóval a AD DSban, user1@onprem.contoso.com és szinkronizálva van az Azure ad-vel user1@contoso.com Azure ad Connect Sync használatával. Ahhoz, hogy a felhasználó hozzáférhessen Azure Fileshoz, a megosztási szintű engedélyeket hozzá kell rendelnie a következőhöz: user1@contoso.com . Ugyanez a fogalom a csoportokra és az egyszerű szolgáltatásokra is vonatkozik. Emiatt szinkronizálnia kell a felhasználókat és a csoportokat a AD DS az Azure AD-be Azure AD Connect Sync használatával. 
+Miután engedélyezte a Active Directory Domain Services (AD DS) hitelesítést a Storage-fiókjában, konfigurálnia kell a megosztási szintű engedélyeket ahhoz, hogy hozzáférjen a fájlmegosztás eléréséhez. Az Azure file share-erőforrásokhoz való hozzáféréshez használt identitásnak a AD DS és az Azure AD-ben található hibrid identitásnak kell lennie. Tegyük fel például, hogy rendelkezik egy felhasználóval a AD DSban, user1@onprem.contoso.com és szinkronizálva van az Azure ad-vel user1@contoso.com Azure ad Connect Sync használatával. Ahhoz, hogy a felhasználó hozzáférhessen Azure Fileshoz, a megosztási szintű engedélyeket hozzá kell rendelnie a következőhöz: user1@contoso.com . Ugyanez a fogalom a csoportokra és az egyszerű szolgáltatásokra is vonatkozik. Emiatt szinkronizálnia kell a felhasználókat és a csoportokat a AD DS az Azure AD-be Azure AD Connect Sync használatával. 
 
 A megosztási szintű engedélyeket ahhoz az Azure AD-identitáshoz kell rendelni, amely ugyanazt a felhasználót vagy csoportot jelöli a AD DS az Azure-fájlmegosztás AD DS hitelesítésének támogatásához. Az olyan identitások hitelesítése és engedélyezése, amelyek csak az Azure AD-ben léteznek, például az Azure által felügyelt identitások (rendszercsomagok-EK), AD DS hitelesítéssel nem támogatottak. Ez a cikk bemutatja, hogyan rendelhet megosztási szintű engedélyeket egy fájlmegosztás identitásához.
 

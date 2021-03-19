@@ -13,10 +13,10 @@ ms.topic: end-user-help
 ms.date: 07/06/2020
 ms.author: curtand
 ms.openlocfilehash: e0a6c566e8e0dfb77b5899f735020d0f1facf3d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88798380"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>A kétfaktoros ellenőrzési módszer és beállítások módosítása
@@ -46,9 +46,9 @@ A **további biztonsági ellenőrzés** oldalt a következő lépésekkel is el�
 
 1. Jelentkezzen be itt: [https://myapps.microsoft.com](https://myapps.microsoft.com).
 
-1. Válassza ki a fiók nevét a jobb felső sarokban, majd válassza a **profil**lehetőséget.
+1. Válassza ki a fiók nevét a jobb felső sarokban, majd válassza a **profil** lehetőséget.
 
-1. Válassza a **további biztonsági ellenőrzés**lehetőséget.  
+1. Válassza a **további biztonsági ellenőrzés** lehetőséget.  
 
     ![Saját alkalmazások hivatkozás a további biztonsági ellenőrzés oldalára](./media/multi-factor-authentication-end-user-manage-settings/mfa-myapps-link.png)
 
@@ -98,11 +98,11 @@ Beállíthatja munkahelyi vagy iskolai fiókját az [Android](https://play.googl
 
 Ha már beállította munkahelyi vagy iskolai fiókját a Microsoft Authenticator alkalmazásban, akkor nem kell újra végrehajtania.
 
-1. A **hogyan szeretne válaszolni?** szakaszban a **további biztonsági ellenőrzés** lapon válassza a **hitelesítő alkalmazás beállítása**lehetőséget.
+1. A **hogyan szeretne válaszolni?** szakaszban a **további biztonsági ellenőrzés** lapon válassza a **hitelesítő alkalmazás beállítása** lehetőséget.
 
     ![Munkahelyi vagy iskolai fiók beállítása a Microsoft Authenticator alkalmazásban](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page-auth-app.png)
 
-1. Kövesse a képernyőn megjelenő utasításokat, például a mobileszköz használatával ellenőrizze a QR-kódot, majd válassza a **tovább**lehetőséget.
+1. Kövesse a képernyőn megjelenő utasításokat, például a mobileszköz használatával ellenőrizze a QR-kódot, majd válassza a **tovább** lehetőséget.
 
     Az adatok ellenőrzéséhez meg kell adnia, hogy jóvá kell hagynia egy értesítést a Microsoft Authenticator alkalmazáson keresztül.
 
@@ -128,9 +128,9 @@ A szervezeti beállításoktól függően előfordulhat, hogy egy jelölőnégyz
 
 ### <a name="to-turn-two-factor-verification-prompts-back-on-for-your-devices"></a>A kétfaktoros ellenőrzés bekapcsolásának visszahívása az eszközökön
 
-A [ **további biztonsági ellenőrzés** lapon](#to-get-to-the-additional-security-verification-page)válassza a **többtényezős hitelesítés visszaállítása korábban megbízható eszközökön**lehetőséget. Amikor legközelebb bejelentkezik bármelyik eszközre, a rendszer a kétfaktoros ellenőrzés elvégzésére kéri.
+A [ **további biztonsági ellenőrzés** lapon](#to-get-to-the-additional-security-verification-page)válassza a **többtényezős hitelesítés visszaállítása korábban megbízható eszközökön** lehetőséget. Amikor legközelebb bejelentkezik bármelyik eszközre, a rendszer a kétfaktoros ellenőrzés elvégzésére kéri.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kétfaktoros ellenőrzési beállítások hozzáadása vagy frissítése után kezelheti az alkalmazás jelszavait, bejelentkezhet, vagy segítséget kérhet a kétfaktoros ellenőrzésekkel kapcsolatos gyakori problémákkal kapcsolatban.
 

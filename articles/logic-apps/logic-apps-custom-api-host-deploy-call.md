@@ -7,13 +7,13 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2020
 ms.openlocfilehash: 7b4d00e8c0366d10fddafa66db699c1a59fd9ad7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83659773"
 ---
-# <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>Egyéni API-k üzembe helyezése és hívása munkafolyamatokból Azure Logic Apps
+# <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>Egyéni API-k üzembe helyezése és meghívása munkafolyamatokból az Azure Logic Appsben
 
 Miután [létrehozta saját API](./logic-apps-create-api-app.md) -jait a logikai alkalmazás munkafolyamataiban, telepítenie kell ezeket az API-kat, mielőtt meghívja őket. Az API-kat [webalkalmazásként](../app-service/overview.md)is üzembe helyezheti, de érdemes lehet [API-alkalmazásokként](../app-service/app-service-web-tutorial-rest-api.md)üzembe helyeznie az API-kat, amelyek megkönnyítik a feladatok elvégzését a felhőben és a helyszínen lévő API-k létrehozásakor, üzemeltetése és felhasználása során. Nem kell módosítania az API-kat, csak telepítse a kódot egy API-alkalmazásba. Az API-kat üzemeltetheti [Azure app Serviceon](../app-service/overview.md), egy szolgáltatásként nyújtott platformon (Pásti), amely kiválóan méretezhető, egyszerű API-üzemeltetést biztosít.
 
@@ -25,13 +25,13 @@ Ahhoz, hogy az egyéni API-t egy logikai alkalmazásból lehessen hívni, az API
 
 1. A [Azure Portal](https://portal.azure.com)válassza ki a webalkalmazást vagy az API-alkalmazást.
 
-2. A megnyíló alkalmazás menüben az **API**alatt válassza az **API-definíció**elemet. Állítsa be az **API-definíció helyét** a swagger.jsfájl URL-címére.
+2. A megnyíló alkalmazás menüben az **API** alatt válassza az **API-definíció** elemet. Állítsa be az **API-definíció helyét** a swagger.jsfájl URL-címére.
 
    Az URL-cím általában a következő formátumban jelenik meg: `https://{name}.azurewebsites.net/swagger/docs/v1)`
 
    ![Az egyéni API-hoz kapcsolódó hencegő dokumentumra mutató hivatkozás](./media/logic-apps-custom-api-deploy-call/custom-api-swagger-url.png)
 
-3. Az **API**alatt válassza a **CORS**lehetőséget. Állítsa be a CORS házirendet az **engedélyezett eredetek** számára a **"*"** értékre (az összes engedélyezése).
+3. Az **API** alatt válassza a **CORS** lehetőséget. Állítsa be a CORS házirendet az **engedélyezett eredetek** számára a **"*"** értékre (az összes engedélyezése).
 
    Ez a beállítás engedélyezi a Logic app designertől érkező kéréseket.
 
@@ -49,6 +49,6 @@ Miután beállította az API-definíció tulajdonságait és a CORS, az egyéni 
 
 *  Bármely API meghívásához, beleértve azokat az API-kat, amelyek nem rendelkeznek vagy nem tesznek elérhetővé egy hencegő dokumentumot, bármikor létrehozhat egy [http-művelettel](../connectors/connectors-native-http.md)rendelkező kérelmet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Egyéni összekötők áttekintése](../logic-apps/custom-connector-overview.md)

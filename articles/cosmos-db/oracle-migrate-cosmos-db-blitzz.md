@@ -9,10 +9,10 @@ ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
 ms.openlocfilehash: 15bcd0c54fc5f6614f4d1925759704309048acae
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93336440"
 ---
 # <a name="migrate-data-from-oracle-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Adatok migrálása az Oracle-ből Azure Cosmos DB Cassandra API-fiókba a Blitzz használatával
@@ -148,7 +148,7 @@ Ez a szakasz ismerteti azokat a lépéseket, amelyek a Blitzz beállításához 
 
 Ha többet szeretne megtudni az adatáttelepítés célhelyre való áttelepítéséről, tekintse meg a [Blitzz replikált bemutatóját](https://www.youtube.com/watch?v=y5ZeRK5A-MI).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Átviteli sebesség kiosztása tárolókra és adatbázisokra](set-throughput.md) 
 * [A partíciós kulcs ajánlott eljárásai](partitioning-overview.md#choose-partitionkey)

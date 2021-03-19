@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
 ms.openlocfilehash: 92e032eb104835788f515cc7800fe5dacfa8adaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88566131"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Felhasználói fiókok kezelése az Azure API Managementben
@@ -36,7 +36,7 @@ A cikkben található feladatok végrehajtása: [Azure API Management-példány 
 Új felhasználó hozzáadásához kövesse az ebben a szakaszban ismertetett lépéseket:
 
 1. Válassza a képernyő bal oldalán található **felhasználók** lapot.
-2. Kattintson a **+ Hozzáadás**gombra.
+2. Kattintson a **+ Hozzáadás** gombra.
 3. Adja meg a megfelelő adatokat a felhasználó számára.
 4. Nyomja meg az **Add** (Hozzáadás) gombot.
 
@@ -48,7 +48,7 @@ Alapértelmezés szerint az újonnan létrehozott fejlesztői fiókok **aktívak
 A fejlesztők meghívásához kövesse az ebben a szakaszban leírt lépéseket:
 
 1. Válassza a képernyő bal oldalán található **felhasználók** lapot.
-2. Kattintson a **+ meghívás**gombra.
+2. Kattintson a **+ meghívás** gombra.
 
 Megerősítő üzenet jelenik meg, de az újonnan meghívott fejlesztő nem jelenik meg a listán, amíg el nem fogadja a meghívót. 
 
@@ -56,15 +56,15 @@ A fejlesztő meghívásakor a rendszer e-mailt küld a fejlesztőnek. Ez az e-ma
 
 A meghívás elfogadása után a fiók aktívvá válik.
 
-## <a name="deactivate-or-reactivate-a-developer-account"></a><a name="block-developer"> </a> Fejlesztői fiók inaktiválása vagy újraaktiválása
+## <a name="deactivate-or-reactivate-a-developer-account"></a><a name="block-developer"></a> Fejlesztői fiók inaktiválása vagy újraaktiválása
 
-Alapértelmezés szerint az újonnan létrehozott vagy meghívott fejlesztői fiókok **aktívak**. Fejlesztői fiók inaktiválásához kattintson a **Letiltás**elemre. Letiltott fejlesztői fiók újraaktiválásához kattintson az **aktiválás**gombra. A letiltott fejlesztői fiókok nem férhetnek hozzá a fejlesztői portálhoz, vagy nem hívhatnak meg API-kat. Felhasználói fiók törléséhez kattintson a **Törlés**gombra.
+Alapértelmezés szerint az újonnan létrehozott vagy meghívott fejlesztői fiókok **aktívak**. Fejlesztői fiók inaktiválásához kattintson a **Letiltás** elemre. Letiltott fejlesztői fiók újraaktiválásához kattintson az **aktiválás** gombra. A letiltott fejlesztői fiókok nem férhetnek hozzá a fejlesztői portálhoz, vagy nem hívhatnak meg API-kat. Felhasználói fiók törléséhez kattintson a **Törlés** gombra.
 
 Egy felhasználó letiltásához kövesse az alábbi lépéseket.
 
 1. Válassza a képernyő bal oldalán található **felhasználók** lapot.
 2. Kattintson a letiltani kívánt felhasználóra.
-3. Nyomja meg a **Letiltás**gombot.
+3. Nyomja meg a **Letiltás** gombot.
 
 ## <a name="reset-a-user-password"></a>Új felhasználói jelszó beállítása
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 01/29/2021
-ms.openlocfilehash: 712a933276393890bf017a2517196031306233ad
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bc1dea8121d7986b8394adf6545a0b2c30afb133
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572997"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580181"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure AD B2C figyelése Azure Monitor
 
@@ -46,7 +46,7 @@ Az alábbi ábrán az Azure AD-ben és a Azure AD B2C-bérlők által konfigurá
 
 ![Erőforráscsoport-kivetítés](./media/azure-monitor/resource-group-projection.png)
 
-A telepítés során a Azure AD B2C bérlőjét és az Azure AD-bérlőt is konfigurálni fogja, ahol a Log Analytics munkaterület üzemeltetve lesz. A központi telepítés futtatásához használt fióknak mindkét bérlőhöz hozzá kell rendelnie a [globális rendszergazdai](../active-directory/roles/permissions-reference.md#limit-use-of-global-administrator) szerepkört. Fontos, hogy ellenőrizze, hogy be van-e jelentkezve a megfelelő könyvtárba az egyes lépések végrehajtásakor.
+A telepítés során a Azure AD B2C bérlőjét és az Azure AD-bérlőt is konfigurálni fogja, ahol a Log Analytics munkaterület üzemeltetve lesz. A Azure AD B2C fióknak hozzá kell rendelnie a [globális rendszergazdai](../active-directory/roles/permissions-reference.md#limit-use-of-global-administrator) szerepkört a Azure ad B2C bérlőn. A központi telepítés futtatásához használt Azure AD-fiókot az Azure AD-előfizetésben hozzá kell rendelni a [tulajdonosi](../role-based-access-control/built-in-roles.md#owner) szerepkörhöz. Fontos, hogy ellenőrizze, hogy be van-e jelentkezve a megfelelő könyvtárba az egyes lépések végrehajtásakor.
 
 ## <a name="1-create-or-choose-resource-group"></a>1. erőforráscsoport létrehozása vagy kiválasztása
 
@@ -97,7 +97,7 @@ Ezután létre fog hozni egy Azure Resource Manager sablont, amely Azure AD B2C 
 2. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely tartalmazza az **Azure ad** -bérlőt.
 3. Az **üzembe helyezés az Azure** -ban gomb használatával nyissa meg a Azure Portal, és közvetlenül a portálon telepítse a sablont. További információ: [create a Azure Resource Manager template](../lighthouse/how-to/onboard-customer.md#create-an-azure-resource-manager-template).
 
-   [![Üzembe helyezés az Azure-ban](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Lighthouse-samples%2Fmaster%2Ftemplates%2Frg-delegated-resource-management%2FrgDelegatedResourceManagement.json)
+   [![Üzembe helyezés az Azure-ban](https://aka.ms/deploytoazurebutton)](   https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure-ad-b2c%2Fsiem%2Fmaster%2Ftemplates%2FrgDelegatedResourceManagement.json)
 
 5. Az **Egyéni telepítés** lapon adja meg a következő adatokat:
 

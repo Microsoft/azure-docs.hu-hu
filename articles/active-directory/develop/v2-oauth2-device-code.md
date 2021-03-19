@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 8c757f3e067aeac5d8145ca47b2eac145daba574
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88272450"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft Identity platform és a OAuth 2,0-eszköz engedélyezési folyamata
@@ -51,7 +51,7 @@ scope=user.read%20openid%20profile
 
 ```
 
-| Paraméter | Condition (Állapot) | Leírás |
+| Paraméter | Feltétel | Leírás |
 | --- | --- | --- |
 | `tenant` | Kötelező | /Gyakori hibák,/consumers vagy/Organizations. lehet  Azt is megteheti, hogy az a címtár-bérlő, amelyhez engedélyeket szeretne kérni a GUID vagy a felhasználóbarát név formátumában.  |
 | `client_id` | Kötelező | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felület **(ügyfél) azonosítója** . |

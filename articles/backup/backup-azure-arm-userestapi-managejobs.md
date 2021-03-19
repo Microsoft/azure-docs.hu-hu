@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
 ms.openlocfilehash: ced0e0020fe955734bf6cc767480fbadd6eaffc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88890280"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>Biztonsági mentési és visszaállítási feladatok nyomon követése REST API használatával
@@ -45,7 +45,7 @@ A a `{jobName}` fent említett "jobId". A válasz mindig 200 OK az "állapot" me
 
 ### <a name="response"></a>Reagálás
 
-|Név  |Típus  |Leírás  |
+|Név  |Típus  |Description  |
 |---------|---------|---------|
 |200 OK     | [JobResource](/rest/api/backup/jobdetails/get#jobresource)        | OK        |
 

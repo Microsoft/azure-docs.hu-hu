@@ -5,10 +5,10 @@ ms.date: 08/24/2020
 ms.topic: tutorial
 ms.reviewer: ravastra
 ms.openlocfilehash: add790a069d2e0ea66d84bbd632825cf9331fd38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88784028"
 ---
 # <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>Oktatóanyag: blockchain-alkalmazás létrehozása az Azure Blockchain Workbenchhez
@@ -242,7 +242,7 @@ Adja hozzá a **Szerződés** fejlécét az `HelloBlockchain.sol` intelligens sz
 contract HelloBlockchain {
 ```
 
-### <a name="state-variables"></a>Állapot változói
+### <a name="state-variables"></a>Állapotváltozók
 
 Az állapot változói az egyes szerződési példányok állapotának értékét tárolják. A szerződésben szereplő állapot változóinak meg kell egyezniük a konfigurációs fájlban meghatározott munkafolyamat-tulajdonságokkal.
 
@@ -319,7 +319,7 @@ Ha blockchain-alkalmazást szeretne hozzáadni a Blockchain Workbenchhez, tölts
 
 1. Egy böngészőben nyissa meg a Blockchain Workbench webcímet. `https://{workbench URL}.azurewebsites.net/`A webalkalmazás például a Blockchain Workbench telepítésekor jön létre. További információ a Blockchain Workbench-webcím megkereséséről: [Blockchain Workbench webes URL-](deploy.md#blockchain-workbench-web-url) címe
 2. Jelentkezzen be [Blockchain Workbench-rendszergazdaként](manage-users.md#manage-blockchain-workbench-administrators).
-3. Válassza **Applications**az  >  **új**alkalmazások elemet. Megjelenik az **új alkalmazás** panel.
+3. Válassza az  >  **új** alkalmazások elemet. Megjelenik az **új alkalmazás** panel.
 4. Válassza a **Szerződés-konfiguráció feltöltése**  >  **Tallózás** lehetőséget, hogy megkeresse a létrehozott konfigurációs fájl **HelloBlockchain.js** . A konfigurációs fájl automatikusan érvényesítve lesz. Az érvényesítési hibák megjelenítéséhez kattintson a **Megjelenítés** hivatkozásra. Az alkalmazás üzembe helyezése előtt javítsa ki az érvényesítési hibákat.
 5. Válassza a **szerződéssablon feltöltése**  >  **Tallózás** lehetőséget a **HelloBlockchain. Sol** intelligens szerződés kódjának megkereséséhez. A rendszer automatikusan érvényesíti a kódot. Az érvényesítési hibák megjelenítéséhez kattintson a **Megjelenítés** hivatkozásra. Az alkalmazás üzembe helyezése előtt javítsa ki az érvényesítési hibákat.
 6. Válassza a **telepítés** lehetőséget a blockchain alkalmazás létrehozásához a konfiguráció és az intelligens szerződés fájljai alapján.
@@ -333,10 +333,10 @@ A blockchain alkalmazás üzembe helyezése néhány percet vesz igénybe. Az ü
 
 Alkalmazások tagjainak hozzáadása az alkalmazáshoz a szerződések elindításához és a műveletek elvégzéséhez. Az alkalmazás tagjainak hozzáadásához [Blockchain Workbench rendszergazdának](manage-users.md#manage-blockchain-workbench-administrators)kell lennie.
 
-1. Válassza **Applications**  >  **a Hello, Blockchain!** alkalmazások elemet.
+1. Válassza   >  **a Hello, Blockchain!** alkalmazások elemet.
 2. Az alkalmazáshoz társított tagok száma az oldal jobb felső sarkában jelenik meg. Új alkalmazás esetén a tagok száma nulla lesz.
 3. Válassza ki a **tagok** hivatkozást az oldal jobb felső sarkában. Megjelenik az alkalmazás tagjainak aktuális listája.
-4. A tagság listán válassza a **Tagok hozzáadása**elemet.
+4. A tagság listán válassza a **Tagok hozzáadása** elemet.
 5. Válassza ki vagy adja meg a hozzáadni kívánt tag nevét. Csak az Blockchain Workbench-bérlőben található Azure AD-felhasználók jelennek meg. Ha a felhasználó nem található, [fel kell vennie az Azure ad-felhasználókat](manage-users.md#add-azure-ad-users).
 6. Válassza ki a tag **szerepkörét** . Az első tag esetében válassza a **kérelmező** szerepkört.
 7. A **Hozzáadás** gombra kattintva adja hozzá a tagot a társított szerepkörrel az alkalmazáshoz.
@@ -344,7 +344,7 @@ Alkalmazások tagjainak hozzáadása az alkalmazáshoz a szerződések elindít�
 
 A felhasználók Blockchain Workbenchben való kezelésével kapcsolatos további információkért lásd: [felhasználók kezelése az Azure Blockchain workbenchben](manage-users.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a útmutatóban egy alapszintű kérést és egy gyorsreagáló alkalmazást hozott létre. Az alkalmazás használatának megismeréséhez folytassa a következő útmutatóval.
 

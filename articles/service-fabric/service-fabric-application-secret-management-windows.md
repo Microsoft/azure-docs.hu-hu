@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan állíthat be titkosítási tanúsítványt és
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.openlocfilehash: eb4909d62a2627c368f24dab572b25c6f1df30ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82583288"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-windows-clusters"></a>Titkosítási tanúsítvány beállítása és a titkok titkosítása Windows-fürtökön
@@ -40,7 +40,7 @@ Invoke-ServiceFabricEncryptText -CertStore -CertThumbprint "<thumbprint>" -Text 
 
 Az eredményül kapott Base-64 kódolású karakterlánc a titkos rejtjelezett is tartalmazza, valamint a titkosításhoz használt tanúsítvánnyal kapcsolatos információkat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Megtudhatja, hogyan [határozhat meg titkosított titkot egy alkalmazásban.][secret-management-specify-encrypted-secrets-link]
 
 <!-- Links -->

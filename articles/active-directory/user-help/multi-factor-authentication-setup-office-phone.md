@@ -11,10 +11,10 @@ ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
 ms.openlocfilehash: 9dd9853bae324a047c673852f14d2b4c1639d914
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83739209"
 ---
 # <a name="set-up-an-office-phone-as-your-two-factor-verification-method"></a>Irodai telefon beállítása kétfaktoros ellenőrzési módszerként
@@ -26,7 +26,7 @@ Beállíthatja, hogy az irodai telefon a kétfaktoros ellenőrzési módszerkén
 
 ## <a name="set-up-your-office-phone-number-as-your-verification-method"></a>Az irodai telefonszám beállítása ellenőrzési módszerként
 
-1. A **további biztonsági ellenőrzés** lapon válassza az **1. lépés: Hogyan lehet felvenni a kapcsolatot** a területtel, válassza ki az országot vagy régiót a legördülő listából, írja be az Office-telefonszámot, majd írja be a bővítményt, ha van ilyen. **Office phone**
+1. A **további biztonsági ellenőrzés** lapon válassza az **1. lépés: Hogyan lehet felvenni a kapcsolatot** a területtel, válassza ki az országot vagy régiót a legördülő listából, írja be az Office-telefonszámot, majd írja be a bővítményt, ha van ilyen. 
 
     ![További biztonsági ellenőrzési oldal hitelesítéssel telefon és telefonhívás](media/multi-factor-authentication-verification-methods/multi-factor-authentication-office-phone.png)
 
@@ -41,9 +41,9 @@ Beállíthatja, hogy az irodai telefon a kétfaktoros ellenőrzési módszerkén
     >[!Note]
     >További információ az alkalmazás jelszavának régebbi alkalmazásokkal való használatáról: [alkalmazások jelszavainak kezelése](multi-factor-authentication-end-user-app-passwords.md). Csak akkor kell használnia az alkalmazáshoz tartozó jelszavakat, ha továbbra is olyan régebbi alkalmazásokat használ, amelyek nem támogatják a kétfaktoros ellenőrzést.
 
-4. Válassza a **Done** (Kész) lehetőséget.
+4. Válassza a **Kész** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kétfaktoros ellenőrzési módszer beállítása után további metódusokat adhat hozzá, kezelheti a beállításokat és az alkalmazás jelszavait, bejelentkezhet, vagy segítséget kérhet a kétfaktoros ellenőrzésekkel kapcsolatos gyakori problémákkal kapcsolatban.
 

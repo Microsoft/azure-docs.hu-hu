@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: szöveg – beszéd
-ms.openlocfilehash: fec90b3257ffafaf2919d2f0a41c2ade6fbc1f64
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7722c9387e8d6475c6da4c771e9a0e355a4ac0af
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/19/2021
-ms.locfileid: "104597674"
+ms.locfileid: "104654849"
 ---
 # <a name="what-is-text-to-speech"></a>Mi az a szövegfelolvasás?
 
@@ -37,11 +37,11 @@ Ebben az áttekintésben megismerheti a szöveg és a beszéd közötti szolgál
 
 * Standard hangok – statisztikai számszerű szintézis és/vagy összefűzési technikák használatával hozhatók létre. Ezek a hangok jól érthetőek és természetesek. Egyszerűen engedélyezheti, hogy alkalmazásai több mint 45 nyelven beszéljenek, számos hanglehetőséggel. Ezek a hangok magas kiejtési pontosságot biztosítanak, beleértve a rövidítések támogatását, a rövidítések, a dátum/idő értelmezését, a telefonokat és egyebeket. A standard hangok teljes listájáért lásd: [támogatott nyelvek](language-support.md#text-to-speech).
 
-* Neurális hangok – a mély neurális hálózatokkal leküzdhető a hagyományos beszédfelismerés korlátai a hangsúlyt és a hanglejtést illetően a beszélt nyelven. A Prosody előrejelzése és a hangszintézis párhuzamosan történik, ami több folyadékot és természetes hangzású kimenetet eredményez. A neurális hangokat felhasználhatja az csevegőrobotok-és hangsegédekkel való interakciót természetesebb és vonzó, digitális szövegek, például e-könyvek hangoskönyvekbe való átalakítására és az autós navigációs rendszerek fejlesztésére. Az emberi jellegű természetes prosody és a szavak egyértelmű megfogalmazásával a neurális hangok jelentősen csökkentik a figyelés fáradtságot, amikor az AI-rendszerekkel kommunikál. A neurális hangok teljes listáját lásd: [támogatott nyelvek](language-support.md#text-to-speech).
+* Neurális hangok – a mély neurális hálózatok a hagyományos beszédfelismerés korlátainak leküzdésére szolgálnak a hangsúlyt és a hanglejtést illetően. A Prosody előrejelzése és a hangszintézis párhuzamosan történik, ami több folyadékot és természetes hangzású kimenetet eredményez. A neurális hangokat felhasználhatja az csevegőrobotok-és hangsegédekkel való interakciót természetesebb és vonzó, digitális szövegek, például e-könyvek hangoskönyvekbe való átalakítására és az autós navigációs rendszerek fejlesztésére. Az emberi jellegű természetes prosody és a szavak egyértelmű megfogalmazásával a neurális hangok jelentősen csökkentik a figyelés fáradtságot, amikor az AI-rendszerekkel kommunikál. A neurális hangok teljes listáját lásd: [támogatott nyelvek](language-support.md#text-to-speech).
 
 * A beszédfelismerési stílusok a SSML-hangszintézis Markup Language (SSML) nyelvvel való beállítása egy XML-alapú Markup-nyelv, amely a beszéd-szöveg kimenetek testreszabására szolgál. A SSML beállíthatja a Pitch, a szüneteltetések hozzáadását, a kiejtés növelését, a sebesség növelését vagy lelassulását, a kötetek növelését és csökkentését, valamint több hang megadását egyetlen dokumentumra. Lásd: [útmutató](speech-synthesis-markup.md) a beszéd stílusainak módosításához.
 
-* A Visemes- [Visemes](how-to-speech-synthesis-viseme.md) a megfigyelt beszéd (például az ajkak, az állkapocs és a nyelv pozíciója) alapján jelent meg. Erős korrelációt mutat a hang-és fonémák. A Viseme használata a Speech SDK-ban létrehozhat arc-animálási adatforgalmat, amely általában animált LIP-olvasási kommunikációra, oktatásra, szórakozásra és ügyfélszolgálatra szolgál. 
+* Visemes – a [Visemes](how-to-speech-synthesis-viseme.md) a megfigyelt beszédben jelent meg, beleértve az ajkak, az állkapocs és a nyelv pozícióját, amikor egy adott fonéma hoz létre. A Visemes erős korrelációt mutat a hang-és fonémák. Az viseme-események a Speech SDK-ban való használatával az arc-animálási információk is létrehozhatók, amelyekkel animálható az arcok az ajak-olvasási kommunikáció, az oktatás, a szórakoztatás és az ügyfélszolgálat számára. 
 
 ## <a name="get-started"></a>Bevezetés
 

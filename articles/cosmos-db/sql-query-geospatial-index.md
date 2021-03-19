@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: tisande
 ms.openlocfilehash: 47eedf1ddbb155180d364c42ec179b3e01279e44
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93336214"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Térinformatikai adatindexek indexelése Azure Cosmos DB
@@ -111,10 +111,10 @@ Ha a **geometria** adattípusa hasonló a földrajzi adattípushoz, a megfelelő
 
 A határoló mező a következő tulajdonságokat tartalmazza:
 
-- **xmin** : a minimálisan indexelt x koordináta
-- **ymin** : a minimális indexelt y koordináta
-- **Xmax** : a maximális indexelt x koordináta
-- **Ymax** : a maximális indexelt y koordináta
+- **xmin**: a minimálisan indexelt x koordináta
+- **ymin**: a minimális indexelt y koordináta
+- **Xmax**: a maximális indexelt x koordináta
+- **Ymax**: a maximális indexelt y koordináta
 
 A határolókeret megadása kötelező, mert a geometriai adat egy olyan gépet foglal, amely végtelen lehet. A térbeli indexek esetében azonban véges terület szükséges. A **földrajzi** adattípushoz a föld a határ, és nem kell megadnia egy határoló mezőt.
 
@@ -159,9 +159,9 @@ Az alábbi példa olyan indexelési házirendet mutat be, amely a **geometriai**
 A fenti indexelési házirend **boundingBox** (-10, 10) tartalmaz x koordinátákat és (-20, 20) az y koordinátákhoz. A fenti indexelési szabályzattal rendelkező tároló az összes olyan pontot, sokszöget, többsokszögű és Linestring indexeli, amely teljes egészében ebben a régióban található.
 
 > [!NOTE]
-> Ha egy adattípusú tárolóhoz próbál felvenni egy **boundingBox** tartalmazó indexelési házirendet `geography` , a művelet sikertelen lesz. A BoundingBox hozzáadása előtt módosítania kell a tároló **geospatialConfig** `geometry` . **boundingBox** A tároló térinformatikai adattípusának kiválasztását megelőzően vagy azt követően módosíthatja az indexelési szabályzat hátralévő részét (például az elérési utakat és típusokat).
+> Ha egy adattípusú tárolóhoz próbál felvenni egy **boundingBox** tartalmazó indexelési házirendet `geography` , a művelet sikertelen lesz. A BoundingBox hozzáadása előtt módosítania kell a tároló **geospatialConfig** `geometry` .  A tároló térinformatikai adattípusának kiválasztását megelőzően vagy azt követően módosíthatja az indexelési szabályzat hátralévő részét (például az elérési utakat és típusokat).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megtanulta, hogyan kezdheti meg a térinformatikai támogatás használatát Azure Cosmos DBban, a következő lehetőségekkel:
 

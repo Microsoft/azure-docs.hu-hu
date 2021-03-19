@@ -14,10 +14,10 @@ ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cbd7eecd80b528b1d20d016d51c985bc24d1301d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92371800"
 ---
 # <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Csoport hozzáadása vagy eltávolítása egy másik csoportból a Azure Active Directory használatával
@@ -36,7 +36,7 @@ Hozzáadhat egy meglévő biztonsági csoportot egy másik meglévő biztonsági
 
 1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
-2. Válassza a **Azure Active Directory**, majd a **csoportok**lehetőséget.
+2. Válassza a **Azure Active Directory**, majd a **csoportok** lehetőséget.
 
 3. A **csoportok – minden csoport** lapon keresse meg és válassza ki azt a csoportot, amelynek egy másik csoport tagjának kell lennie. Ebben a gyakorlatban a **Mdm Policy-West** csoportot használjuk.
 
@@ -45,7 +45,7 @@ Hozzáadhat egy meglévő biztonsági csoportot egy másik meglévő biztonsági
 
     ![Csoportok – minden csoport lap MDM házirenddel – West Group kiválasztva](media/active-directory-groups-membership-azure-portal/group-all-groups-screen.png)
 
-4. A **Mdm házirend-Nyugat-csoport tagsága** lapon válassza a **csoporttagságok lehetőséget, válassza a** **Hozzáadás**lehetőséget, keresse meg azt a csoportot, amelyben a csoport tagja lesz, majd válassza a **kiválasztás**lehetőséget. Ebben a gyakorlatban a **Mdm szabályzatot használjuk – az összes szervezeti** csoportot.
+4. A **Mdm házirend-Nyugat-csoport tagsága** lapon válassza a **csoporttagságok lehetőséget, válassza a** **Hozzáadás** lehetőséget, keresse meg azt a csoportot, amelyben a csoport tagja lesz, majd válassza a **kiválasztás** lehetőséget. Ebben a gyakorlatban a **Mdm szabályzatot használjuk – az összes szervezeti** csoportot.
 
     A **Mdm Policy-West** csoport most már tagja az **Mdm házirendnek – az összes szervezeti** csoportnak, a Mdm házirend összes tulajdonságának és konfigurációjának öröklése – minden szervezeti csoport.
 
