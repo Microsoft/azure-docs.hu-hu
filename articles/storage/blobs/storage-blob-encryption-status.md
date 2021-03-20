@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: ee54357250e3f31ef9db633d933d897fff362f48
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98878561"
 ---
 # <a name="check-the-encryption-status-of-a-blob"></a>BLOB titkosítási állapotának keresése
@@ -96,6 +96,6 @@ azcopy copy 'C:\temp\blob1.txt' 'https://storagesamples.blob.core.windows.net/sa
 
 A AzCopy a blob-adatok másolásával kapcsolatos további információkért lásd: [adatok átvitele a AzCopy és a blob Storage](../common/storage-use-azcopy-v10.md#transfer-data)szolgáltatással.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Inaktív adatok Azure Storage-titkosítása](../common/storage-service-encryption.md)

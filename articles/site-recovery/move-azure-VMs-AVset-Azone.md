@@ -9,10 +9,10 @@ ms.date: 01/28/2019
 ms.author: sideeksh
 ms.custom: MVC
 ms.openlocfilehash: 8224ae4a48bb4915492240c414b90edb86a4c258
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93393132"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Azure-beli virtuális gépek áthelyezése Availability Zonesba
@@ -122,9 +122,9 @@ A replikálási feladat befejeződése után ellenőrizheti a replikálás álla
 2. Válassza a **feladatátvételi teszt** ikont.
 3. A feladatátvételi **teszt** területen válassza ki a feladatátvételhez használandó helyreállítási pontot:
 
-   - **Legutóbb feldolgozott** : A virtuális gép feladatait a Site Recovery szolgáltatás által feldolgozott legutóbbi helyreállítási pontnak adja át. Megjelenik az időbélyeg. Ezzel a beállítással a rendszer nem tölt időt az adatok feldolgozásával, így a helyreállítási időre vonatkozó célkitűzés (RTO) alacsony.
-   - **Legutóbbi alkalmazáskonzisztens** : Ez a beállítás az összes virtuális gép feladatait a legutóbbi alkalmazáskonzisztens helyreállítási pontnak adja át. Megjelenik az időbélyeg.
-   - **Egyéni** : Bármelyik helyreállítási pontot kiválaszthatja.
+   - **Legutóbb feldolgozott**: A virtuális gép feladatait a Site Recovery szolgáltatás által feldolgozott legutóbbi helyreállítási pontnak adja át. Megjelenik az időbélyeg. Ezzel a beállítással a rendszer nem tölt időt az adatok feldolgozásával, így a helyreállítási időre vonatkozó célkitűzés (RTO) alacsony.
+   - **Legutóbbi alkalmazáskonzisztens**: Ez a beállítás az összes virtuális gép feladatait a legutóbbi alkalmazáskonzisztens helyreállítási pontnak adja át. Megjelenik az időbélyeg.
+   - **Egyéni**: Bármelyik helyreállítási pontot kiválaszthatja.
 
 3. Válassza ki azt a tesztelési cél Azure-beli virtuális hálózatot, amelyre át szeretné helyezni az Azure-beli virtuális gépeket a konfiguráció teszteléséhez. 
 
@@ -151,7 +151,7 @@ Nyissa meg a virtuális gépet. Válassza a **replikáció letiltása** lehetős
 > [!IMPORTANT]
 > Az előző lépésben elkerülheti, hogy az áthelyezés után Site Recovery replikáció után ne kelljen fizetni. A forrás replikálási beállításai automatikusan törlődnek. Vegye figyelembe, hogy a replikáció részeként telepített Site Recovery bővítmény nem törlődik, és manuálisan el kell távolítani.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megnövelte az Azure-beli virtuális gépek rendelkezésre állását a rendelkezésre állási csoport vagy a rendelkezésre állási zónába való áttéréssel. Most már beállíthatja az áthelyezett virtuális gép vész-helyreállítását.
 

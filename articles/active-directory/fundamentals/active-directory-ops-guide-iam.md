@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: 66bce573be5a31641bdff809b8e9a79b617a703a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92371001"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Azure Active Directory identitás-és hozzáférés-kezelési műveletek útmutatója
@@ -37,7 +37,7 @@ A Azure Active Directory kezeléséhez olyan kulcsfontosságú működési felad
 | Annak eldöntése, hogy ki kap Enterprise Mobility + Security licenceket | IAM Operations csapat |
 | Annak eldöntése, hogy ki kap Microsoft 365 licenceket | Termelékenységi csapat |
 | Döntse el, hogy ki kap más licenceket, például a Dynamics, a Visual Studio Codespaces | Alkalmazás tulajdonosa |
-| Licencek kiosztása | IAM Operations csapat |
+| Licencek hozzárendelése | IAM Operations csapat |
 | Licenc-hozzárendelési hibák elhárítása és szervizelése | IAM Operations csapat |
 | Identitások kiépítése az alkalmazásokban az Azure AD-ben | IAM Operations csapat |
 
@@ -97,7 +97,7 @@ Ha a szervezete nem rendelkezik a szinkronizáláshoz szükséges vész-helyreá
 
 ![A Azure AD Connect átmeneti üzemmód konfigurációjának képernyőképe](./media/active-directory-ops-guide/active-directory-ops-img1.png)
 
-#### <a name="stay-current"></a>Legyen naprakész
+#### <a name="stay-current"></a>Aktualitások
 
 A Microsoft frissítései rendszeresen Azure AD Connect. Maradjon naprakész, hogy kihasználhassa az egyes új verziók teljesítménybeli javításait, hibajavításait és új képességeit.
 
@@ -107,7 +107,7 @@ Ha a Azure AD Connect verziója több mint hat hónapja van hátra, frissítsen 
 
 Az **MS-DS-consistencyguid** használatakor a [forrás-horgony](../hybrid/plan-connect-design-concepts.md) lehetővé teszi az objektumok erdőkön és tartományokban való egyszerűbb áttelepítését, amely az ad-tartomány összevonása/tisztítása, összevonások, beszerzések és eladások esetében gyakori.
 
-Ha jelenleg a **ObjectGuid** használja a forrás-horgonyként, javasoljuk, hogy váltson az **MS-DS-ConsistencyGuid**használatára.
+Ha jelenleg a **ObjectGuid** használja a forrás-horgonyként, javasoljuk, hogy váltson az **MS-DS-ConsistencyGuid** használatára.
 
 #### <a name="custom-rules"></a>Egyéni szabályok
 
@@ -167,10 +167,10 @@ Ha jelenleg olyan eszközt használ, mint például a [Microsoft Identity Manage
 
 ### <a name="assignment-of-apps-with-all-users-group"></a>Alkalmazások hozzárendelése a "minden felhasználó" csoporttal
 
-Az erőforrás-tulajdonosok úgy vélik, hogy a **minden felhasználó** csoport csak **vállalati alkalmazottakat** tartalmaz, ha azok ténylegesen **vállalati alkalmazottakat** és **vendégeket**is tartalmazhatnak. Ennek eredményeképpen különleges figyelmet igényel, ha az **összes felhasználó** csoportot használja az alkalmazás-hozzárendeléshez, és hozzáférést biztosít az erőforrásokhoz, például a SharePoint-tartalomhoz vagy-alkalmazásokhoz.
+Az erőforrás-tulajdonosok úgy vélik, hogy a **minden felhasználó** csoport csak **vállalati alkalmazottakat** tartalmaz, ha azok ténylegesen **vállalati alkalmazottakat** és **vendégeket** is tartalmazhatnak. Ennek eredményeképpen különleges figyelmet igényel, ha az **összes felhasználó** csoportot használja az alkalmazás-hozzárendeléshez, és hozzáférést biztosít az erőforrásokhoz, például a SharePoint-tartalomhoz vagy-alkalmazásokhoz.
 
 > [!IMPORTANT]
-> Ha a **minden felhasználó** csoport engedélyezve van, és a feltételes hozzáférési házirendekhez, alkalmazásokhoz vagy erőforrás-hozzárendelésekhez használatos, akkor ügyeljen arra, hogy [a csoport biztonságossá](../external-identities/use-dynamic-groups.md) tétele, ha nem szeretné, hogy a vendég felhasználók is szerepeljenek. Emellett a licencelési hozzárendeléseket úgy kell kijavítania, hogy csak **vállalati alkalmazottakat** tartalmazó csoportokat hozzon létre és rendeljen hozzájuk. Ha azonban úgy találja, hogy a **minden felhasználó** csoport engedélyezve van, de nem használja az erőforrásokhoz való hozzáférést, akkor győződjön meg arról, hogy a szervezet operatív útmutatása szerint szándékosan használja ezt a csoportot (amely magában foglalja a **vállalati alkalmazottakat** és a **vendégeket**is).
+> Ha a **minden felhasználó** csoport engedélyezve van, és a feltételes hozzáférési házirendekhez, alkalmazásokhoz vagy erőforrás-hozzárendelésekhez használatos, akkor ügyeljen arra, hogy [a csoport biztonságossá](../external-identities/use-dynamic-groups.md) tétele, ha nem szeretné, hogy a vendég felhasználók is szerepeljenek. Emellett a licencelési hozzárendeléseket úgy kell kijavítania, hogy csak **vállalati alkalmazottakat** tartalmazó csoportokat hozzon létre és rendeljen hozzájuk. Ha azonban úgy találja, hogy a **minden felhasználó** csoport engedélyezve van, de nem használja az erőforrásokhoz való hozzáférést, akkor győződjön meg arról, hogy a szervezet operatív útmutatása szerint szándékosan használja ezt a csoportot (amely magában foglalja a **vállalati alkalmazottakat** és a **vendégeket** is).
 
 ### <a name="automated-user-provisioning-to-apps"></a>Automatikus felhasználó-kiépítés az alkalmazásokba
 

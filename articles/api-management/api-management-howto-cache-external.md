@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: 6288a10e111e42629abf5e09b84a6a7791dcfe95
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96018222"
 ---
 # <a name="use-an-external-redis-compatible-cache-in-azure-api-management"></a>Külső Redis-kompatibilis gyorsítótár használata az Azure-ban API Management
@@ -46,13 +46,13 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 + [Azure API Management-példány létrehozása](get-started-create-service-instance.md)
 + [Az Azure-API Management gyorsítótárazásának](api-management-howto-cache.md) megismerése
 
-## <a name="create-azure-cache-for-redis"></a><a name="create-cache"> </a> Azure cache létrehozása a Redis
+## <a name="create-azure-cache-for-redis"></a><a name="create-cache"></a> Azure cache létrehozása a Redis
 
 Ez a szakasz azt ismerteti, hogyan hozható létre Azure cache a Redis az Azure-ban. Ha már rendelkezik Azure-gyorsítótárral az Azure-on belüli vagy kívüli Redis, <a href="#add-external-cache">ugorjon</a> a következő szakaszra.
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
-## <a name="deploy-redis-cache-to-kubernetes"></a><a name="create-cache"> </a> A Redis gyorsítótár üzembe helyezése a Kubernetes-ben
+## <a name="deploy-redis-cache-to-kubernetes"></a><a name="create-cache"></a> A Redis gyorsítótár üzembe helyezése a Kubernetes-ben
 
 A gyorsítótárazáshoz a saját üzemeltetésű átjárók kizárólag külső gyorsítótárra támaszkodnak. Ahhoz, hogy a gyorsítótárazás hatékony legyen a saját üzemeltetésű átjárók számára, és a rájuk támaszkodó gyorsítótárnak egymás közelében kell lennie, a keresés és a tárolás késésének csökkentése érdekében. A Redis gyorsítótár üzembe helyezése ugyanahhoz a Kubernetes-fürthöz vagy egy különálló fürtben a legjobb választás. Ezt a [hivatkozást](https://github.com/kubernetes/examples/tree/master/guestbook) követve megtudhatja, hogyan helyezhet üzembe Redis gyorsítótárat egy Kubernetes-fürtön.
 
@@ -100,7 +100,7 @@ Kövesse az alábbi lépéseket egy külső Azure-gyorsítótár hozzáadásáho
 
 Ha a külső gyorsítótár konfigurálva van az Azure API Managementban, a gyorsítótárazási házirendek használatával is használható. A részletes lépésekért lásd: [gyorsítótár hozzáadása az Azure-API Management teljesítményének növeléséhez](api-management-howto-cache.md) .
 
-## <a name="next-steps"></a><a name="next-steps"> </a>További lépések
+## <a name="next-steps"></a><a name="next-steps"> </a>Következő lépések
 
 * További információt a gyorsítótárazási házirendekről az [API Management házirend-referencia][API Management policy reference] oktatóanyag [Gyorsítótárazási házirendek][Caching policies] szakaszában talál.
 * További információ az elemeknek a házirend-kifejezések kulcsával történő gyorsítótárazásáról: [Egyéni gyorsítótárazás az Azure API Management szolgáltatásban](api-management-sample-cache-by-key.md).

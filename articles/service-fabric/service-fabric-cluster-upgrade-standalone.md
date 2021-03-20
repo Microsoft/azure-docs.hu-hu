@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan frissítheti az Azure Service Fabric önálló 
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.openlocfilehash: 519a9163d16fda2dd9fcf49cf22fe4ad4a272e09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86260992"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Önálló Service Fabric-fürt frissítése és frissítése
@@ -36,7 +36,7 @@ Az egyes csomópont-típusoknál hozzáadhat egyéni kapacitási mérőszámokat
 A javítási előkészítési alkalmazás (POA) egy Service Fabric alkalmazás, amely az operációs rendszer javítását automatizálja egy Service Fabric-fürtön állásidő nélkül. A [Windowshoz készült patch](service-fabric-patch-orchestration-application.md) -előkészítési alkalmazás üzembe helyezhető a fürtön úgy, hogy a javításokat koordinált módon telepítse, miközben a szolgáltatások rendelkezésre állását is megőrizheti. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Megtudhatja, hogyan szabhatja testre a [Service Fabric-fürtök néhány beállítását](service-fabric-cluster-fabric-settings.md)
 * Ismerje meg, hogyan [méretezheti a fürtöt és ki](service-fabric-cluster-scale-in-out.md)
 * Az [alkalmazások frissítéseinek](service-fabric-application-upgrade.md) megismerése

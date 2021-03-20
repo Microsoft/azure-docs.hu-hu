@@ -12,10 +12,10 @@ ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 242700c05053aa9d07e3a561a21986c8451a46c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91612444"
 ---
 # <a name="check-the-last-sync-time-property-for-a-storage-account"></a>A Storage-fiók utolsó szinkronizálási ideje tulajdonságának megtekintése
@@ -48,7 +48,7 @@ $lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-A Storage-fiók Azure CLI-vel való utolsó szinkronizálási időpontjának lekéréséhez tekintse meg a Storage-fiók **geoReplicationStats. lastSyncTime** tulajdonságát. Használja a `--expand` paramétert a **geoReplicationStats**alatt beágyazott tulajdonságok értékének visszaadásához. Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire:
+A Storage-fiók Azure CLI-vel való utolsó szinkronizálási időpontjának lekéréséhez tekintse meg a Storage-fiók **geoReplicationStats. lastSyncTime** tulajdonságát. Használja a `--expand` paramétert a **geoReplicationStats** alatt beágyazott tulajdonságok értékének visszaadásához. Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire:
 
 ```azurecli-interactive
 $lastSyncTime=$(az storage account show \
@@ -63,6 +63,6 @@ $lastSyncTime=$(az storage account show \
 
 ## <a name="see-also"></a>Lásd még
 
-- [Azure Storage-redundancia](storage-redundancy.md)
+- [Redundancia az Azure Storage szolgáltatásban](storage-redundancy.md)
 - [Storage-fiók redundancia beállításának módosítása](redundancy-migration.md)
 - [A Geo-redundancia használata a magasan elérhető alkalmazások kialakításához](geo-redundant-design.md)

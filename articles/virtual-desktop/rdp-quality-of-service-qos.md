@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
 ms.openlocfilehash: b61faf74d96e2571e91f7bf9d10eac88cdbf8345
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94639374"
 ---
 # <a name="implement-quality-of-service-qos-for-windows-virtual-desktop-preview"></a>Szolgáltatásminőség (QoS) implementálása a Windows rendszerű virtuális asztali gépeken (előzetes verzió)
@@ -95,9 +95,9 @@ Ha QoS-házirendet szeretne létrehozni a tartományhoz csatlakoztatott munkamen
 
 4. Kattintson a jobb gombbal az újonnan létrehozott házirendre, majd válassza a **Szerkesztés** lehetőséget.
 
-5. A Csoportházirend-felügyeleti szerkesztő bontsa ki a **Számítógép konfigurációja** , majd a **Windows beállításai** csomópontot, kattintson a jobb gombbal a **házirend alapú QoS** elemre, majd válassza az **új házirend létrehozása** parancsot.
+5. A Csoportházirend-felügyeleti szerkesztő bontsa ki a **Számítógép konfigurációja**, majd a **Windows beállításai** csomópontot, kattintson a jobb gombbal a **házirend alapú QoS** elemre, majd válassza az **új házirend létrehozása** parancsot.
 
-6. A **házirend alapú QoS** párbeszédpanel Megnyitás lapján adja meg az új szabályzat nevét a **név** mezőben. Válassza a **DSCP érték megadása** lehetőséget, és állítsa az értéket **46** -re. Hagyja **meg a kimenő sávszélesség-szabályozási arány** kijelölését, majd válassza a **tovább** lehetőséget.
+6. A **házirend alapú QoS** párbeszédpanel Megnyitás lapján adja meg az új szabályzat nevét a **név** mezőben. Válassza a **DSCP érték megadása** lehetőséget, és állítsa az értéket **46**-re. Hagyja **meg a kimenő sávszélesség-szabályozási arány** kijelölését, majd válassza a **tovább** lehetőséget.
 
 7. A következő lapon jelölje ki a **csak az ilyen végrehajtható névvel rendelkező alkalmazásokat** , és adja meg a **svchost.exe** nevet, majd kattintson a **tovább** gombra. Ez a beállítás arra utasítja a szabályzatot, hogy csak a Távoli asztal szolgáltatásból származó egyező forgalmat rangsorolja.
 
@@ -105,11 +105,11 @@ Ha QoS-házirendet szeretne létrehozni a tartományhoz csatlakoztatott munkamen
 
 9. A négy oldalon válassza az **UDP** lehetőséget a **válassza ki** azt a protokollt, amelyre a QoS-házirend vonatkozik a legördülő listára.
 
-10. A címsor alatt **adja meg a forrásport számát** , válasszon **a forrás port vagy tartomány közül**. A kísérő szövegmezőbe írja be a **3390** karakterláncot. Válassza a **Befejezés** lehetőséget.
+10. A címsor alatt **adja meg a forrásport számát**, válasszon **a forrás port vagy tartomány közül**. A kísérő szövegmezőbe írja be a **3390** karakterláncot. Válassza a **Befejezés** gombot.
 
 Az új létrehozott házirendek nem lépnek érvénybe, amíg a Csoportházirend frissült a munkamenet-gazdagép számítógépein. Bár a Csoportházirend rendszeresen frissíti a saját példányát, a következő lépésekkel kényszerítheti az azonnali frissítést:
 
-1. Minden olyan munkamenet-gazdagépen, amelyre frissíteni kívánja Csoportházirend, nyisson meg egy parancssort rendszergazdaként ( *Futtatás rendszergazdaként* ).
+1. Minden olyan munkamenet-gazdagépen, amelyre frissíteni kívánja Csoportházirend, nyisson meg egy parancssort rendszergazdaként (*Futtatás rendszergazdaként*).
 
 1. A parancssorba írja be a következőt:
 

@@ -6,10 +6,10 @@ ms.subservice: shared-capabilities
 ms.date: 12/01/2020
 ms.topic: conceptual
 ms.openlocfilehash: 6db0c82c034aab97deee1be4aa8bdc54368521bc
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98131525"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Változók kezelése a Azure Automationban
@@ -38,7 +38,7 @@ Ha a Azure Portal változót hoz létre, meg kell adnia egy adattípust a legör
 * Sztring
 * Egész szám
 * DateTime
-* Logikai érték
+* Logikai
 * Null
 
 A változó nem korlátozódik a megadott adattípusra. A változót a Windows PowerShell használatával kell beállítani, ha más típusú értéket szeretne megadni. Ha a jelzést adja meg `Not defined` , a változó értéke null. Az értéket a [set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable) parancsmaggal vagy a belső `Set-AutomationVariable` parancsmaggal kell beállítani.
@@ -65,7 +65,7 @@ Az alábbi táblázatban található parancsmagok automatizálási változókat 
 
 A következő táblázatban található belső parancsmagok a runbookok és a DSC-konfigurációk változóinak elérésére szolgálnak. Ezek a parancsmagok a globális modulhoz tartoznak `Orchestrator.AssetManagement.Cmdlets` . További információ: [belső parancsmagok](modules.md#internal-cmdlets).
 
-| Belső parancsmag | Leírás |
+| Belső parancsmag | Description |
 |:---|:---|
 |`Get-AutomationVariable`|Egy létező változó értékét kérdezi le.|
 |`Set-AutomationVariable`|Beállítja egy létező változó értékét.|
@@ -84,7 +84,7 @@ Write-output "The encrypted value of the variable is: $mytestencryptvar"
 
 A következő táblázatban szereplő függvények a Python 2 és 3 runbook lévő változók elérésére szolgálnak. A Python 3 runbookok jelenleg előzetes verzióban érhető el.
 
-|Python-függvények|Leírás|
+|Python-függvények|Description|
 |:---|:---|
 |`automationassets.get_automation_variable`|Egy létező változó értékét kérdezi le. |
 |`automationassets.set_automation_variable`|Beállítja egy létező változó értékét. |

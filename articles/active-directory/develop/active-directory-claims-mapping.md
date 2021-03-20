@@ -14,10 +14,10 @@ ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.openlocfilehash: 2d65889a841655fe27994d3855f30f7a7e20e1ed
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94647596"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Útmutató: a jogkivonatokban kibocsátott jogcímek testreszabása egy adott alkalmazáshoz a bérlőben (előzetes verzió)
@@ -44,7 +44,7 @@ A jogcím-hozzárendelési házirend olyan **házirend** -objektum, amely módos
 
 Léteznek bizonyos jogcímek, amelyek meghatározzák, hogyan és mikor használják a jogkivonatokban.
 
-| Jogcím-készlet | Leírás |
+| Jogcím-készlet | Description |
 |---|---|
 | Alapszintű jogcímek készlete | Minden jogkivonatban jelen vannak, a szabályzattól függetlenül. Ezek a jogcímek is korlátozottnak minősülnek, és nem módosíthatók. |
 | Alapszintű jogcímek készlete | Tartalmazza azokat a jogcímeket, amelyeket a rendszer alapértelmezés szerint a jogkivonatok számára bocsát ki (az alapszintű jogcímek készletén kívül). Az alapszintű jogcímeket kihagyhatja vagy módosíthatja a jogcím-hozzárendelési szabályzatok használatával. |
@@ -287,48 +287,48 @@ Az ID elem azonosítja, hogy a forrás melyik tulajdonsága biztosítja a jogcí
 
 #### <a name="table-3-valid-id-values-per-source"></a>3. táblázat: érvényes azonosító értékek/forrás
 
-| Forrás | ID (Azonosító) | Leírás |
+| Forrás | ID (Azonosító) | Description |
 |-----|-----|-----|
-| Felhasználó | surname | Család neve |
-| Felhasználó | givenname | utónév; |
-| Felhasználó | DisplayName | Megjelenítendő név |
-| Felhasználó | ObjectId | ObjectID |
-| Felhasználó | Levelezés | E-mail-cím |
-| Felhasználó | userPrincipalName | Felhasználó egyszerű neve |
-| Felhasználó | Részleg|Részleg|
-| Felhasználó | onpremisessamaccountname | Helyszíni SAM-fiók neve |
-| Felhasználó | netbiosname| NetBios-név |
-| Felhasználó | dnsdomainname | DNS-tartománynév |
-| Felhasználó | onpremisesecurityidentifier | Helyszíni biztonsági azonosító |
-| Felhasználó | CompanyName| Szervezetnév |
-| Felhasználó | streetAddress | Utca, házszám |
-| Felhasználó | Irányítószám | Irányítószám |
-| Felhasználó | preferredlanguage | Előnyben részesített nyelv |
-| Felhasználó | onpremisesuserprincipalname | Helyszíni UPN |*
-| Felhasználó | mailnickname | Levelezési Felhasználónév |
-| Felhasználó | extensionattribute1 | 1. bővítmény-attribútum |
-| Felhasználó | extensionattribute2 | 2. bővítmény-attribútum |
-| Felhasználó | extensionattribute3 | 3. kiterjesztési attribútum |
-| Felhasználó | extensionattribute4 | 4. bővítmény-attribútum |
-| Felhasználó | extensionattribute5 | 5. bővítmény-attribútum |
-| Felhasználó | extensionattribute6 | 6. bővítmény-attribútum |
-| Felhasználó | extensionattribute7 | 7-es kiterjesztési attribútum |
-| Felhasználó | extensionattribute8 | 8. bővítmény-attribútum |
-| Felhasználó | extensionattribute9 | 9-es kiterjesztésű attribútum |
-| Felhasználó | extensionattribute10 | Kiterjesztési attribútum 10 |
-| Felhasználó | extensionattribute11 | 11. bővítmény-attribútum |
-| Felhasználó | extensionattribute12 | 12. bővítmény-attribútum |
-| Felhasználó | extensionattribute13 | 13. kiterjesztési attribútum |
-| Felhasználó | extensionattribute14 | Kiterjesztési attribútum 14 |
-| Felhasználó | extensionAttribute15 | 15. bővítmény-attribútum |
-| Felhasználó | othermail | Egyéb E-mail |
-| Felhasználó | ország | Ország/régió |
-| Felhasználó | city | City |
-| Felhasználó | állapot | Állapot |
-| Felhasználó | beosztás | Beosztás |
-| Felhasználó | Alkalmazottkód | Alkalmazott azonosítója |
-| Felhasználó | érték facsimiletelephonenumber | Fax telefonszáma |
-| Felhasználó | assignedroles | a felhasználóhoz rendelt alkalmazás-szerepkörök listája|
+| User | surname | Család neve |
+| User | givenname | utónév; |
+| User | DisplayName | Megjelenítendő név |
+| User | ObjectId | ObjectID |
+| User | Levelezés | E-mail-cím |
+| User | userPrincipalName | Felhasználó egyszerű neve |
+| User | Részleg|Részleg|
+| User | onpremisessamaccountname | Helyszíni SAM-fiók neve |
+| User | netbiosname| NetBios-név |
+| User | dnsdomainname | DNS-tartománynév |
+| User | onpremisesecurityidentifier | Helyszíni biztonsági azonosító |
+| User | CompanyName| Szervezetnév |
+| User | streetAddress | Utca, házszám |
+| User | Irányítószám | Irányítószám |
+| User | preferredlanguage | Előnyben részesített nyelv |
+| User | onpremisesuserprincipalname | Helyszíni UPN |*
+| User | mailnickname | Levelezési Felhasználónév |
+| User | extensionattribute1 | 1. bővítmény-attribútum |
+| User | extensionattribute2 | 2. bővítmény-attribútum |
+| User | extensionattribute3 | 3. kiterjesztési attribútum |
+| User | extensionattribute4 | 4. bővítmény-attribútum |
+| User | extensionattribute5 | 5. bővítmény-attribútum |
+| User | extensionattribute6 | 6. bővítmény-attribútum |
+| User | extensionattribute7 | 7-es kiterjesztési attribútum |
+| User | extensionattribute8 | 8. bővítmény-attribútum |
+| User | extensionattribute9 | 9-es kiterjesztésű attribútum |
+| User | extensionattribute10 | Kiterjesztési attribútum 10 |
+| User | extensionattribute11 | 11. bővítmény-attribútum |
+| User | extensionattribute12 | 12. bővítmény-attribútum |
+| User | extensionattribute13 | 13. kiterjesztési attribútum |
+| User | extensionattribute14 | Kiterjesztési attribútum 14 |
+| User | extensionAttribute15 | 15. bővítmény-attribútum |
+| User | othermail | Egyéb E-mail |
+| User | ország | Ország/régió |
+| User | city | City |
+| User | állapot | Állapot |
+| User | beosztás | Beosztás |
+| User | Alkalmazottkód | Alkalmazott azonosítója |
+| User | érték facsimiletelephonenumber | Fax telefonszáma |
+| User | assignedroles | a felhasználóhoz rendelt alkalmazás-szerepkörök listája|
 | alkalmazás, erőforrás, célközönség | DisplayName | Megjelenítendő név |
 | alkalmazás, erőforrás, célközönség | ObjectId | ObjectID |
 | alkalmazás, erőforrás, célközönség | tags | Egyszerű szolgáltatásnév címkéje |
@@ -364,7 +364,7 @@ A választott módszer alapján a rendszer bemenetek és kimenetek készletét v
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>4. táblázat: transzformációs módszerek és várt bemenetek és kimenetek
 
-|TransformationMethod|Várt bemenet|Várt kimenet|Leírás|
+|TransformationMethod|Várt bemenet|Várt kimenet|Description|
 |-----|-----|-----|-----|
 |Csatlakozás|karakterlánc1, karakterlánc2, elválasztó|outputClaim|Összekapcsolja a bemeneti karakterláncokat a között elválasztó használatával. Például: karakterlánc1: " foo@bar.com ", karakterlánc2: "homokozó", elválasztó: "." eredmény a következő outputClaim: " foo@bar.com.sandbox "|
 |ExtractMailPrefix|E-mail vagy egyszerű Felhasználónév|kinyert karakterlánc|A ExtensionAttributes 1-15 vagy bármely más olyan séma-bővítmény, amely UPN-vagy e-mail-cím értéket tárol a felhasználó számára, például: johndoe@contoso.com . Egy e-mail-cím helyi részének kibontása. Például: mail: " foo@bar.com " eredmény a outputClaim: "foo". Ha nincs \@ jel, akkor a rendszer az eredeti bemeneti karakterláncot adja vissza.|
@@ -390,33 +390,33 @@ A választott módszer alapján a rendszer bemenetek és kimenetek készletét v
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>5. táblázat: az SAML-NameID adatforrásként engedélyezett attribútumai
 
-|Forrás|ID (Azonosító)|Leírás|
+|Forrás|ID (Azonosító)|Description|
 |-----|-----|-----|
-| Felhasználó | Levelezés|E-mail-cím|
-| Felhasználó | userPrincipalName|Felhasználó egyszerű neve|
-| Felhasználó | onpremisessamaccountname|Helyszíni Sam-fiók neve|
-| Felhasználó | Alkalmazottkód|Alkalmazott azonosítója|
-| Felhasználó | extensionattribute1 | 1. bővítmény-attribútum |
-| Felhasználó | extensionattribute2 | 2. bővítmény-attribútum |
-| Felhasználó | extensionattribute3 | 3. kiterjesztési attribútum |
-| Felhasználó | extensionattribute4 | 4. bővítmény-attribútum |
-| Felhasználó | extensionattribute5 | 5. bővítmény-attribútum |
-| Felhasználó | extensionattribute6 | 6. bővítmény-attribútum |
-| Felhasználó | extensionattribute7 | 7-es kiterjesztési attribútum |
-| Felhasználó | extensionattribute8 | 8. bővítmény-attribútum |
-| Felhasználó | extensionattribute9 | 9-es kiterjesztésű attribútum |
-| Felhasználó | extensionattribute10 | Kiterjesztési attribútum 10 |
-| Felhasználó | extensionattribute11 | 11. bővítmény-attribútum |
-| Felhasználó | extensionattribute12 | 12. bővítmény-attribútum |
-| Felhasználó | extensionattribute13 | 13. kiterjesztési attribútum |
-| Felhasználó | extensionattribute14 | Kiterjesztési attribútum 14 |
-| Felhasználó | extensionAttribute15 | 15. bővítmény-attribútum |
+| User | Levelezés|E-mail-cím|
+| User | userPrincipalName|Felhasználó egyszerű neve|
+| User | onpremisessamaccountname|Helyszíni Sam-fiók neve|
+| User | Alkalmazottkód|Alkalmazott azonosítója|
+| User | extensionattribute1 | 1. bővítmény-attribútum |
+| User | extensionattribute2 | 2. bővítmény-attribútum |
+| User | extensionattribute3 | 3. kiterjesztési attribútum |
+| User | extensionattribute4 | 4. bővítmény-attribútum |
+| User | extensionattribute5 | 5. bővítmény-attribútum |
+| User | extensionattribute6 | 6. bővítmény-attribútum |
+| User | extensionattribute7 | 7-es kiterjesztési attribútum |
+| User | extensionattribute8 | 8. bővítmény-attribútum |
+| User | extensionattribute9 | 9-es kiterjesztésű attribútum |
+| User | extensionattribute10 | Kiterjesztési attribútum 10 |
+| User | extensionattribute11 | 11. bővítmény-attribútum |
+| User | extensionattribute12 | 12. bővítmény-attribútum |
+| User | extensionattribute13 | 13. kiterjesztési attribútum |
+| User | extensionattribute14 | Kiterjesztési attribútum 14 |
+| User | extensionAttribute15 | 15. bővítmény-attribútum |
 
 #### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>6. táblázat: az SAML-NameID engedélyezett átalakítási módszerek
 
 | TransformationMethod | Korlátozások |
 | ----- | ----- |
-| ExtractMailPrefix | Nincs |
+| ExtractMailPrefix | Nincsenek |
 | Csatlakozás | A csatlakoztatott utótagnak az erőforrás-bérlő ellenőrzött tartományának kell lennie. |
 
 ### <a name="custom-signing-key"></a>Egyéni aláíró kulcs

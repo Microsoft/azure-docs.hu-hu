@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: sharrai
 ms.openlocfilehash: 5860928d71c0e7431190908d5df5d7496e8ffb17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89426316"
 ---
 # <a name="deprecation-of-site-recovery-data-encryption-feature"></a>Site Recovery adattitkosítási funkció elavulása
@@ -22,7 +22,7 @@ Ez a dokumentum az elavultság részleteit és a Szervizelési műveletet ismert
 ## <a name="deprecation-information"></a>Elavult információ
 
 
-A Site Recovery adattitkosítási funkció elérhető volt a Hyper-V virtuális gépeket védő ügyfelek számára, így biztosítva, hogy a replikált adatok védve legyenek a biztonsági fenyegetések ellen. Ez a funkció **2022 április 30-ig**elavulttá válik. Az [Storage Service encryption](../storage/common/storage-service-encryption.md) (SSE) szolgáltatást használó [Rest-titkosítást](https://azure.microsoft.com/blog/azure-site-recovery-encryption-at-rest/) használja. Az SSE használatával a rendszer titkosítja az adatok titkosítását, mielőtt megőrzi a tárolást és visszafejti a lekérést, és az Azure-ba történő feladatátvétel után a virtuális gépek a titkosított Storage-fiókokból fognak futni, ami lehetővé teszi a helyreállítási időre vonatkozó célkitűzés (RTO) javítását.
+A Site Recovery adattitkosítási funkció elérhető volt a Hyper-V virtuális gépeket védő ügyfelek számára, így biztosítva, hogy a replikált adatok védve legyenek a biztonsági fenyegetések ellen. Ez a funkció **2022 április 30-ig** elavulttá válik. Az [Storage Service encryption](../storage/common/storage-service-encryption.md) (SSE) szolgáltatást használó [Rest-titkosítást](https://azure.microsoft.com/blog/azure-site-recovery-encryption-at-rest/) használja. Az SSE használatával a rendszer titkosítja az adatok titkosítását, mielőtt megőrzi a tárolást és visszafejti a lekérést, és az Azure-ba történő feladatátvétel után a virtuális gépek a titkosított Storage-fiókokból fognak futni, ami lehetővé teszi a helyreállítási időre vonatkozó célkitűzés (RTO) javítását.
 
 Vegye figyelembe, hogy ha Ön már használja ezt a szolgáltatást, az elavult részletekkel és a Szervizelési lépésekkel kapcsolatban kapott kommunikációt. 
 

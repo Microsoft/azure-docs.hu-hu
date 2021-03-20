@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
 ms.openlocfilehash: abb9cbb73f8957cec2cb3240bbf186623b9b2ef9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88205511"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Az API-k monitorozása az Azure API Management, a Event Hubs és a Moesif segítségével
@@ -306,7 +306,7 @@ A következő animált ábrán megtekintheti a fejlesztői portálon egy API-ra 
 
 ![A kérelem Runscope való továbbításának bemutatása](./media/api-management-log-to-eventhub-sample/apim-eventhub-runscope.gif)
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Az Azure API Management szolgáltatás ideális helyet biztosít az API-khoz érkező és onnan érkező HTTP-forgalom rögzítéséhez. Az Azure Event Hubs egy rugalmasan méretezhető, alacsony díjszabású megoldás a forgalom rögzítésére és a másodlagos feldolgozási rendszerekbe való etetésére a naplózás, figyelés és más kifinomult elemzések céljából. A harmadik féltől származó forgalom figyelési rendszereihez (például a Moesif) való csatlakozás néhány tucat sornyi kód.
 
 ## <a name="next-steps"></a>Következő lépések

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: b8dde3ed76587e2343edaec8626287853ec6ef9b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96487507"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute-titkosítás: IPsec a ExpressRoute-en keresztül a virtuális WAN-hoz
@@ -115,7 +115,7 @@ Miután létrehozta a VPN-helyet, és csatlakozik a központhoz, a következő l
 1. Az **Azure Private IP-cím használatához** válassza az **Igen** lehetőséget. A beállítás úgy konfigurálja a hub VPN-átjárót, hogy a nyilvános IP-címek helyett magánhálózati IP-címeket használjon a hub-címtartomány ezen a kapcsolaton belül. Ezzel biztosíthatja, hogy a helyszíni hálózatról érkező forgalom a nyilvános Internet helyett a VPN-kapcsolaton keresztül áthaladjon a ExpressRoute privát elágazási útjain. A következő képernyőképen a beállítás látható:
 
    :::image type="content" source="./media/vpn-over-expressroute/vpn-link-configuration.png" alt-text="Beállítás a VPN-kapcsolat magánhálózati IP-címének használatára" border="false":::
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 A módosítások mentése után a hub VPN-átjáró a VPN-átjáró magánhálózati IP-címeivel hozza létre az IPsec/IKE-kapcsolatokat a helyszíni VPN-eszközzel a ExpressRoute-en keresztül.
 
@@ -242,6 +242,6 @@ Ha már nincs szüksége ezekre az erőforrásokra, a [Remove-AzResourceGroup](/
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre VPN-kapcsolatot a ExpressRoute magánhálózati kapcsolaton keresztül a virtuális WAN használatával. Ha többet szeretne megtudni a virtuális WAN-ról és a kapcsolódó szolgáltatásokról, tekintse meg a [virtuális WAN áttekintése](virtual-wan-about.md)című témakört.

@@ -11,10 +11,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: c01da4aed9e27296ea7b570420bb190b16749848
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90939780"
 ---
 # <a name="concepts-for-distributing-data-with-arc-enabled-postgresql-hyperscale-server-group"></a>Fogalmak az adatterjesztéshez az arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoport használatával
@@ -46,7 +46,7 @@ További információ: [Azure Database for PostgreSQL-nagy kapacitású (Citus) 
 ## <a name="determine-the-application-type"></a>Az alkalmazás típusának meghatározása
 Az éppen felépített alkalmazás típusának egyértelműen azonosíthatónak kell lennie. Miért? Mivel a hatékony lekérdezések futtatása egy Azure arc-kompatibilis PostgreSQL-nagy kapacitású-kiszolgálócsoport esetében megköveteli, hogy a táblák megfelelően legyenek elosztva a kiszolgálók között. Az ajánlott terjesztés az alkalmazás típusától és a lekérdezési mintáktól függ. Az Azure arc-kompatibilis postgres-nagy kapacitású jól használható, széles körben használt alkalmazások:
 - Több-bérlős alkalmazások
-- Alkalmazások Real-Time
+- Valós idejű alkalmazások
 
 Az adatmodellezés első lépéseként meg kell határozni, hogy melyikük jobban hasonlít az alkalmazáshoz.
 

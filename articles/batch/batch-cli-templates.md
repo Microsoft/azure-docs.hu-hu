@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: seodec18, devx-track-azurecli
 ms.openlocfilehash: 845a32c2feda5a5a3b8d44d237c62db94cae1779
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91848721"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>A CLI-sablonok és a fájlátvitel Azure Batch használata
@@ -133,13 +133,13 @@ A következő példa egy olyan sablont mutat be, amely létrehozza a Linux rends
 }
 ```
 
-Ha a sablonfájl nevepool-ffmpeg.js, akkor a következő módon hívja _ meg_a sablont:
+Ha a sablonfájl nevepool-ffmpeg.js, akkor a következő módon hívja _meg_ a sablont:
 
 ```azurecli
 az batch pool create --template pool-ffmpeg.json
 ```
 
-A CLI megkéri, hogy adjon meg értékeket a `poolId` és `nodeCount` paraméterek számára. A paramétereket egy JSON-fájlban is megadhatja. Példa:
+A CLI megkéri, hogy adjon meg értékeket a `poolId` és `nodeCount` paraméterek számára. A paramétereket egy JSON-fájlban is megadhatja. Például:
 
 ```json
 {
@@ -152,7 +152,7 @@ A CLI megkéri, hogy adjon meg értékeket a `poolId` és `nodeCount` paraméter
 }
 ```
 
-Ha a paraméterek JSON-fájljának nevepool-parameters.js, akkor a következő módon hívja * meg*a sablont:
+Ha a paraméterek JSON-fájljának nevepool-parameters.js, akkor a következő módon hívja *meg* a sablont:
 
 ```azurecli
 az batch pool create --template pool-ffmpeg.json --parameters pool-parameters.json
@@ -242,7 +242,7 @@ Az alábbi példa egy olyan sablont mutat be, amely létrehoz egy feladatot, ame
 }
 ```
 
-Ha a sablonfájl nevejob-ffmpeg.js, akkor a következő módon hívja _ meg_a sablont:
+Ha a sablonfájl nevejob-ffmpeg.js, akkor a következő módon hívja _meg_ a sablont:
 
 ```azurecli
 az batch job create --template job-ffmpeg.json
@@ -256,11 +256,11 @@ Batch-készlet vagy-feladatok létrehozásához feltölthet egy batch CLI-sablon
 
 Sablon feltöltése:
 
-1. A Batch Explorer **területen válassza a**katalógus  >  **helyi sablonok**lehetőséget.
+1. A Batch Explorer **területen válassza a** katalógus  >  **helyi sablonok** lehetőséget.
 
 2. Válasszon ki vagy húzzon át egy helyi készletet vagy sablont.
 
-3. Válassza a **sablon használata**lehetőséget, és kövesse a képernyőn megjelenő utasításokat.
+3. Válassza a **sablon használata** lehetőséget, és kövesse a képernyőn megjelenő utasításokat.
 
 ## <a name="file-groups-and-file-transfer"></a>Fájlcsoportok és fájlátvitel
 

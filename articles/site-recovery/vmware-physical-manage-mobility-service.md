@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
 ms.openlocfilehash: d921bddf90c415cb244e2cc9ad98354392a537ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90530148"
 ---
 # <a name="manage-the-mobility-agent"></a>A Mobility-ügynök kezelése 
@@ -32,7 +32,7 @@ Ha Azure Site Recoveryt használ a VMware virtuális gépek és a fizikai kiszol
 
      ![Replikált elemek ablak](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 
-4. Kattintson az értesítésre, majd az **ügynök frissítése**területen válassza ki azokat a gépeket, amelyeken frissíteni kívánja a mobilitási szolgáltatást. Ezután kattintson az **OK** gombra.
+4. Kattintson az értesítésre, majd az **ügynök frissítése** területen válassza ki azokat a gépeket, amelyeken frissíteni kívánja a mobilitási szolgáltatást. Ezután kattintson az **OK** gombra.
 
      ![Replikált elemek virtuálisgép-listája](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
@@ -69,7 +69,7 @@ Site Recovery üzembe helyezése esetén a mobilitási szolgáltatás leküldés
 
 Távolítsa el a felhasználói felületet vagy a parancssorból.
 
-- **A felhasználói felületen**: a gép Vezérlőpultján válassza a **programok**lehetőséget. Válassza a **Microsoft Azure site Recovery mobilitási szolgáltatás/fő célkiszolgáló**  >  **eltávolítása**lehetőséget.
+- **A felhasználói felületen**: a gép Vezérlőpultján válassza a **programok** lehetőséget. Válassza a **Microsoft Azure site Recovery mobilitási szolgáltatás/fő célkiszolgáló**  >  **eltávolítása** lehetőséget.
 - **Parancssorból**: nyisson meg egy parancssori ablakot rendszergazdaként a gépen. Futtassa az alábbi parancsot: 
     ```
     MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"

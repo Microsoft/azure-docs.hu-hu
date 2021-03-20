@@ -14,10 +14,10 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: c1d7bf933b487c40d571f1912341b5ef771e4e67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90527326"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Szűrők létrehozása Media Services REST API
@@ -95,7 +95,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 Válassza a **törzs** fület, és illessze be a [korábban megadott](#define-a-filter)JSON-kódot.
 
-Válassza a **Küldés** lehetőséget. 
+Kattintson a **Küldés** gombra. 
 
 A szűrő létrejött.
 
@@ -103,7 +103,7 @@ További információ: [Létrehozás vagy frissítés](/rest/api/media/accountfi
 
 ## <a name="create-asset-filters"></a>Eszközcsoport-szűrők létrehozása  
 
-A letöltött "Media Services v3" Poster-gyűjteményben válassza az **eszközök** -> **Létrehozás vagy frissítés eszköz szűrő**lehetőséget.
+A letöltött "Media Services v3" Poster-gyűjteményben válassza az **eszközök** -> **Létrehozás vagy frissítés eszköz szűrő** lehetőséget.
 
 A **put** HTTP-kérelem módszere a következőhöz hasonló:
 
@@ -113,7 +113,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 Válassza a **törzs** fület, és illessze be a [korábban megadott](#define-a-filter)JSON-kódot.
 
-Válassza a **Küldés** lehetőséget. 
+Kattintson a **Küldés** gombra. 
 
 Az eszköz szűrője létrejött.
 

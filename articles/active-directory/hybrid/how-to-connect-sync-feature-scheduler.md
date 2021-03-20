@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad7b0039602add7f4cd3cdd300bd829c4f148a79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90084736"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Az Azure AD Connect szinkronizálása: ütemező
@@ -169,7 +169,7 @@ Ha egy szinkronizálási ciklus fut, nem végezheti el a konfigurációs módos�
 
    ![Képernyőfelvétel: Synchronization Service Manager kiválasztott összekötők és a kijelölt leállítás művelettel jelölt futó összekötő.](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
 
-   * Indítsa el a **szinkronizálási szolgáltatást** a Start menüből. Nyissa meg az **Összekötők**elemet, jelölje ki az összekötőt a-t **futtató**állapottal, majd válassza a **Leállítás** lehetőséget a műveletek közül.
+   * Indítsa el a **szinkronizálási szolgáltatást** a Start menüből. Nyissa meg az **Összekötők** elemet, jelölje ki az összekötőt a-t **futtató** állapottal, majd válassza a **Leállítás** lehetőséget a műveletek közül.
 
 Az ütemező továbbra is aktív, és a következő lehetőségnél újra elindul.
 

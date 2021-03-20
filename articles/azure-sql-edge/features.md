@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
 ms.openlocfilehash: 19dcbbf102a1d8d21f1b14780ea33816a1677c55
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93392027"
 ---
 # <a name="supported-features-of-azure-sql-edge"></a>Az Azure SQL Edge támogatott funkciói 
@@ -74,7 +74,7 @@ Az alábbi lista az Azure SQL Edge által jelenleg nem támogatott Linux-funkci�
 | &nbsp; | Az adatbázis automatikus zsugorodása. Az adatbázis automatikus Shrink tulajdonsága a paranccsal állítható be `ALTER DATABASE <database_name> SET AUTO_SHRINK ON` , azonban a módosításnak nincs hatása. Az automatikus Shrink feladat nem fog futni az adatbázison. A felhasználók továbbra is csökkenthetik az adatbázisfájlok használatát az "DBCC" parancsokkal. |
 | &nbsp; | Adatbázis-Pillanatképek. |
 | &nbsp; | Az állandó memória támogatása. |
-| &nbsp; | Microsoft Elosztott tranzakciók koordinátora. |
+| &nbsp; | Microsoft Distributed Transaction Coordinator. |
 | &nbsp; | Erőforrás-kormányzó és IO erőforrás-szabályozás. |
 | &nbsp; | Puffer-készlet kiterjesztése. |
 | &nbsp; | Elosztott lekérdezés külső felek kapcsolataival. |
@@ -110,7 +110,7 @@ Az alábbi lista az Azure SQL Edge által jelenleg nem támogatott Linux-funkci�
 | &nbsp; | Distributed Replay. |
 | **Kezelhetőség** | SQL Server segédprogram-vezérlő pont. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure SQL Edge üzembe helyezése](deploy-portal.md)
 - [Az Azure SQL Edge konfigurálása](configure.md)

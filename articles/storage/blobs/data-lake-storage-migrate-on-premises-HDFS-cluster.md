@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
 ms.openlocfilehash: e58137dd680ff9a2be2bd657f0969304b526873f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95913113"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Áttelepítés helyszíni HDFS áruházból az Azure Storage-ba Azure Data Box
@@ -75,7 +75,7 @@ Kövesse az alábbi lépéseket az adatok másolásához a blob/objektum tárol�
 
     Annak megállapításához, hogy ezek a fájlok léteznek-e, használja a következő parancsot: `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure` . Cserélje le a `<hadoop_install_dir>` helyőrzőt annak a könyvtárnak az elérési útjára, amelyen a Hadoop telepítette. Ügyeljen arra, hogy teljesen minősített elérési utakat használjon.
 
-    Példák:
+    Angol nyelvű Példák:
 
     `azjars=$hadoop_install_dir/share/hadoop/tools/lib/hadoop-azure-2.6.0-cdh5.14.0.jar` `azjars=$azjars,$hadoop_install_dir/share/hadoop/tools/lib/microsoft-windowsazure-storage-sdk-0.6.0.jar`
 
@@ -330,6 +330,6 @@ Bemutatunk egy példát:
 .*/hbase/data/WALs.*
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan működik a Data Lake Storage Gen2 HDInsight-fürtökkel. Lásd: [Azure Data Lake Storage Gen2 használata az Azure HDInsight-fürtökkel](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md).

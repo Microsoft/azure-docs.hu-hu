@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: chrande
 ms.openlocfilehash: d99e2e2ffd63b050e7373c98084fed3fb14727bf
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93357045"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Graph adatmodellezés Azure Cosmos DB Gremlin API-hoz
@@ -36,7 +36,7 @@ A Graph adatbázis-megoldások optimálisan alkalmazhatók, ha az adattartomány
 * Az entitások között **több-a-többhöz kapcsolat** van.
 * Az **entitások és a kapcsolatok esetében írási és olvasási követelmények** is vannak. 
 
-Ha a fenti feltételek teljesülnek, akkor valószínű, hogy a Graph-adatbázis megközelítése előnyeit biztosítja a **lekérdezések összetettsége** , az **adatmodell méretezhetősége** és a **lekérdezési teljesítmény** szempontjából.
+Ha a fenti feltételek teljesülnek, akkor valószínű, hogy a Graph-adatbázis megközelítése előnyeit biztosítja a **lekérdezések összetettsége**, az **adatmodell méretezhetősége** és a **lekérdezési teljesítmény** szempontjából.
 
 A következő lépés annak megállapítása, hogy a gráfot analitikai vagy tranzakciós célokra kívánja-e használni. Ha a gráf nagy számítási és adatfeldolgozási feladatokhoz készült, érdemes megvizsgálni a [Cosmos db Spark-összekötőt](./spark-connector.md) és a [GraphX-könyvtár](https://spark.apache.org/graphx/)használatát. 
 
@@ -72,11 +72,11 @@ A Graph adatmodell első lépése az összes azonosított entitás leképezése 
 
 Az egyik gyakori buktató az egyetlen entitás tulajdonságainak leképezése különálló csúcspontként. Vegye figyelembe az alábbi példát, ahol ugyanaz az entitás két különböző módon van ábrázolva:
 
-* **Vertex-alapú tulajdonságok** : ebben a megközelítésben az entitás három különálló csúcspontot és két szegélyt használ a tulajdonságainak leírására. Ez a megközelítés csökkentheti a redundanciát, és növeli a modell bonyolultságát. A modell bonyolultságának növekedése a késés, a lekérdezés bonyolultsága és a számítási költségeket eredményezheti. Ez a modell a particionálással kapcsolatos kihívásokat is jelenthet.
+* **Vertex-alapú tulajdonságok**: ebben a megközelítésben az entitás három különálló csúcspontot és két szegélyt használ a tulajdonságainak leírására. Ez a megközelítés csökkentheti a redundanciát, és növeli a modell bonyolultságát. A modell bonyolultságának növekedése a késés, a lekérdezés bonyolultsága és a számítási költségeket eredményezheti. Ez a modell a particionálással kapcsolatos kihívásokat is jelenthet.
 
 :::image type="content" source="./media/graph-modeling/graph-modeling-1.png" alt-text="Entitás-modell a tulajdonságok csúcspontokkal." border="false":::
 
-* **Tulajdonsággal beágyazott csúcspontok** : Ez a megközelítés kihasználja a kulcs-érték párok listáját, hogy az entitás összes tulajdonságát reprezentálja a csúcsponton belül. Ez a megközelítés csökkenti a modell bonyolultságát, ami egyszerűbb lekérdezéseket és költséghatékonyabb bejárásokat eredményez.
+* **Tulajdonsággal beágyazott csúcspontok**: Ez a megközelítés kihasználja a kulcs-érték párok listáját, hogy az entitás összes tulajdonságát reprezentálja a csúcsponton belül. Ez a megközelítés csökkenti a modell bonyolultságát, ami egyszerűbb lekérdezéseket és költséghatékonyabb bejárásokat eredményez.
 
 :::image type="content" source="./media/graph-modeling/graph-modeling-2.png" alt-text="Az ábrán az előző diagram Luis csúcspontja látható az i d, a Label és a Properties tulajdonsággal." border="false":::
 

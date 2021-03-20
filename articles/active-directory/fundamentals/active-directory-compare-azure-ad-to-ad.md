@@ -1,6 +1,6 @@
 ---
 title: Az Active Directory és az Azure Active Directory összehasonlítása
-description: Ez a dokumentum összehasonlítja Active Directory tartományi szolgáltatások (HOZZÁADJA) a Azure Active Directory (AD) szolgáltatáshoz. Ismerteti mindkét identitási megoldás legfontosabb fogalmait, és elmagyarázza, hogy miben különbözik vagy hasonlóak.
+description: Ez a dokumentum összehasonlítja Active Directory Domain Services (HOZZÁADJA) a Azure Active Directory (AD) szolgáltatáshoz. Ismerteti mindkét identitási megoldás legfontosabb fogalmait, és elmagyarázza, hogy miben különbözik vagy hasonlóak.
 services: active-directory
 author: martincoetzer
 manager: daveba
@@ -12,19 +12,19 @@ ms.subservice: fundamentals
 ms.date: 02/26/2020
 ms.author: martinco
 ms.openlocfilehash: 64a8dabaedc3922ebd8d163b1ea162b7d1584de2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92371919"
 ---
 # <a name="compare-active-directory-to-azure-active-directory"></a>Az Active Directory és az Azure Active Directory összehasonlítása
 
-A Azure Active Directory a Felhőbeli identitás-és hozzáférés-kezelési megoldások következő fejlődése. A Microsoft Active Directory tartományi szolgáltatásokt vezetett be a Windows 2000-ben, hogy a szervezetek több helyszíni infrastruktúra-összetevőt és rendszert is kezelhetnek felhasználónként egyetlen identitás használatával.
+A Azure Active Directory a Felhőbeli identitás-és hozzáférés-kezelési megoldások következő fejlődése. A Microsoft Active Directory Domain Servicest vezetett be a Windows 2000-ben, hogy a szervezetek több helyszíni infrastruktúra-összetevőt és rendszert is kezelhetnek felhasználónként egyetlen identitás használatával.
 
 Az Azure AD ezt a megközelítést a következő szintre emeli azáltal, hogy a felhőben és a helyszínen egyaránt elérhető IDaaS-megoldást biztosít a szervezetek számára.
 
-A legtöbb rendszergazda ismeri a Active Directory tartományi szolgáltatások fogalmakat. Az alábbi táblázat a Active Directory fogalmak és Azure Active Directory közötti különbségeket és hasonlóságokat ismerteti.
+A legtöbb rendszergazda ismeri a Active Directory Domain Services fogalmakat. Az alábbi táblázat a Active Directory fogalmak és Azure Active Directory közötti különbségeket és hasonlóságokat ismerteti.
 
 |Fogalom|Active Directory (AD)|Azure Active Directory |
 |:-|:-|:-|
@@ -33,7 +33,7 @@ A legtöbb rendszergazda ismeri a Active Directory tartományi szolgáltatások 
 |Kiépítés: külső identitások| A szervezetek a külső felhasználókat manuálisan, egy dedikált külső AD-erdőben lévő normál felhasználóként hoznak létre, ami adminisztrációs terhelést eredményez a külső identitások életciklusának kezeléséhez (vendég felhasználók)| Az Azure AD speciális identitási osztályt biztosít a külső identitások támogatásához. Az [Azure ad B2B](/azure/active-directory/b2b/) a külső felhasználói identitásra mutató hivatkozást fogja kezelni, hogy azok érvényesek legyenek. |
 | Jogosultságok kezelése és csoportjai| A rendszergazdák a felhasználókat a csoportok tagjai számára teszik elérhetővé. Az alkalmazás-és erőforrás-tulajdonosok ezután csoportokat biztosítanak az alkalmazásokhoz vagy erőforrásokhoz.| A [csoportok](./active-directory-groups-create-azure-portal.md) az Azure ad-ben is elérhetők, és a rendszergazdák csoportokat is használhatnak az erőforrásokra vonatkozó engedélyek megadásához. Az Azure AD-ben a rendszergazdák manuálisan is hozzárendelhetők a csoportokhoz, vagy egy lekérdezés használatával dinamikusan belefoglalhatják a felhasználókat egy csoportba. </br> A rendszergazdák a [jogosultsági felügyeletet](../governance/entitlement-management-overview.md) az Azure ad-ben használhatják a munkafolyamatok használatával, valamint szükség esetén az időalapú feltételek alapján hozzáférést biztosíthatnak a felhasználóknak az alkalmazások és erőforrások gyűjteményéhez. |
 | Felügyeleti felügyelet|A szervezetek tartományokat, szervezeti egységeket és csoportokat fognak használni az AD-ben a rendszergazdai jogosultságok delegálásához a címtár és az általa felügyelt erőforrások kezeléséhez.| Az Azure AD [beépített szerepköröket](./active-directory-users-assign-role-azure-portal.md) biztosít az Azure ad szerepköralapú hozzáférés-vezérlési (Azure ad RBAC) rendszerével, amely korlátozott támogatást nyújt az [Egyéni szerepkörök létrehozásához](../roles/custom-overview.md) , hogy az identitásrendszer, az alkalmazások és az általa felügyelt erőforrások jogosultsági szintű hozzáférését delegálja.</br>A Szerepkörök kezelése [Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) segítségével biztosítható, hogy igény szerint, időben korlátozott vagy munkafolyamat-alapú hozzáférést biztosítson a Kiemelt szerepkörökhöz. |
-| Hitelesítőadat-kezelés| A Active Directory hitelesítő adatai jelszavak, tanúsítványalapú hitelesítés és intelligens kártyás hitelesítésen alapulnak. A jelszavak a jelszó hosszán, lejáratán és összetettségén alapuló jelszóházirend használatával kezelhetők.|Az Azure AD intelligens [jelszavas védelmet](../authentication/concept-password-ban-bad.md) használ a felhőben és a helyszínen. A védelem magában foglalja az intelligens zárolást, valamint blokkolja a gyakori és az egyéni jelszavakkal kapcsolatos kifejezéseket és helyettesítéseket. </br>Az Azure AD jelentősen növeli [a biztonságot a többtényezős hitelesítés](../authentication/concept-mfa-howitworks.md) és a [jelszóval](../authentication/concept-authentication-passwordless.md) nem rendelkező technológiák, például a FIDO2 révén. </br>Az Azure AD csökkenti a támogatási költségeket azáltal, hogy az [önkiszolgáló jelszó-visszaállítási](../authentication/concept-sspr-howitworks.md) rendszerét biztosítja a felhasználóknak. |
+| Hitelesítő adatok kezelése| A Active Directory hitelesítő adatai jelszavak, tanúsítványalapú hitelesítés és intelligens kártyás hitelesítésen alapulnak. A jelszavak a jelszó hosszán, lejáratán és összetettségén alapuló jelszóházirend használatával kezelhetők.|Az Azure AD intelligens [jelszavas védelmet](../authentication/concept-password-ban-bad.md) használ a felhőben és a helyszínen. A védelem magában foglalja az intelligens zárolást, valamint blokkolja a gyakori és az egyéni jelszavakkal kapcsolatos kifejezéseket és helyettesítéseket. </br>Az Azure AD jelentősen növeli [a biztonságot a többtényezős hitelesítés](../authentication/concept-mfa-howitworks.md) és a [jelszóval](../authentication/concept-authentication-passwordless.md) nem rendelkező technológiák, például a FIDO2 révén. </br>Az Azure AD csökkenti a támogatási költségeket azáltal, hogy az [önkiszolgáló jelszó-visszaállítási](../authentication/concept-sspr-howitworks.md) rendszerét biztosítja a felhasználóknak. |
 | **Alkalmazások**|||
 | Infrastruktúra-alkalmazások|Active Directory a helyszíni infrastruktúra számos összetevőjének, például a DNS, a DHCP, az IPSec, a WiFi, a hálózati házirend-kiszolgáló és a VPN-hozzáférés alapját képezi.|Az új Felhőbeli világban az Azure AD az alkalmazások eléréséhez és a hálózatkezelési vezérlőkre támaszkodó új vezérlő síkja. Ha a felhasználók hitelesítik[, a feltételes hozzáférés (CA)](../conditional-access/overview.md)ellenőrzi, hogy mely felhasználók férhetnek hozzá a szükséges feltételekhez tartozó alkalmazásokhoz.|
 | Hagyományos és örökölt alkalmazások| A legtöbb helyszíni alkalmazás LDAP-t, Windows-Integrated hitelesítést (NTLM és Kerberos) vagy fejléc-alapú hitelesítést használ a felhasználókhoz való hozzáférés szabályozásához.| Az Azure AD a helyszínen futó [Azure ad](../manage-apps/application-proxy.md) -alkalmazásproxy-ügynökök használatával biztosít hozzáférést az ilyen típusú helyszíni alkalmazásokhoz. Ha ezt a módszert használja, az Azure AD hitelesítheti Active Directory helyszíni felhasználóit Kerberos használatával a Migrálás során, vagy az örökölt alkalmazásokkal együtt kell létezni. |
@@ -49,6 +49,6 @@ A legtöbb rendszergazda ismeri a Active Directory tartományi szolgáltatások 
 ## <a name="next-steps"></a>Következő lépések
 
 - [Mi az az Azure Active Directory?](./active-directory-whatis.md)
-- [Az önállóan felügyelt Active Directory tartományi szolgáltatások, Azure Active Directory és felügyelt Azure Active Directory Domain Services összehasonlítása](../../active-directory-domain-services/compare-identity-solutions.md)
+- [Az önállóan felügyelt Active Directory Domain Services, Azure Active Directory és felügyelt Azure Active Directory Domain Services összehasonlítása](../../active-directory-domain-services/compare-identity-solutions.md)
 - [Gyakori kérdések a Azure Active Directory](./active-directory-faq.md)
 - [A Azure Active Directory újdonságai](./whats-new.md)

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: bcc561cd5eea4372d798fff4580362ba0879c3a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91574194"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Azure Data Lake Storage Gen1i adatelemzés Power BI használatával
@@ -20,25 +20,25 @@ Ebből a cikkből megtudhatja, hogyan elemezheti és jelenítheti meg a Azure Da
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 * **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* **Egy Data Lake Storage Gen1-fiók**. Kövesse a [Azure Data Lake Storage Gen1 használatának első lépései a Azure Portal használatával](data-lake-store-get-started-portal.md)című témakör utasításait. Ez a cikk azt feltételezi, hogy már létrehozott egy **myadlsg1**nevű Data Lake Storage Gen1 fiókot, és feltöltött egy minta adatfájlt (**Drivers.txt**). Ez a mintakód [Azure Data Lake git-tárházból](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)tölthető le.
+* **Egy Data Lake Storage Gen1-fiók**. Kövesse a [Azure Data Lake Storage Gen1 használatának első lépései a Azure Portal használatával](data-lake-store-get-started-portal.md)című témakör utasításait. Ez a cikk azt feltételezi, hogy már létrehozott egy **myadlsg1** nevű Data Lake Storage Gen1 fiókot, és feltöltött egy minta adatfájlt (**Drivers.txt**). Ez a mintakód [Azure Data Lake git-tárházból](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)tölthető le.
 * **Power BI Desktop**. Ezt letöltheti a [Microsoft letöltőközpontból](https://www.microsoft.com/en-us/download/details.aspx?id=45331). 
 
 ## <a name="create-a-report-in-power-bi-desktop"></a>Jelentés készítése a Power BI Desktopban
 1. Power BI Desktop elindítása a számítógépen.
-2. A **Kezdőlap** menüszalagon kattintson az **adatok lekérése**elemre, majd kattintson a továbbiak elemre. Az **adatlekérdezés** párbeszédpanelen kattintson az **Azure**elemre, majd a **Azure Data Lake Store**elemre, végül a **kapcsolat**elemre.
+2. A **Kezdőlap** menüszalagon kattintson az **adatok lekérése** elemre, majd kattintson a továbbiak elemre. Az **adatlekérdezés** párbeszédpanelen kattintson az **Azure** elemre, majd a **Azure Data Lake Store** elemre, végül a **kapcsolat** elemre.
    
     ![Képernyőkép az adatlekérdezés párbeszédpanelről, a Kiemelt Azure Data Lake Store lehetőséggel és a csatlakozási lehetőséggel.](./media/data-lake-store-power-bi/get-data-lake-store-account.png "Kapcsolódás Data Lake Storage Gen1hoz")
 3. Ha megjelenik egy párbeszédpanel arról, hogy az összekötő egy fejlesztési fázisban van, a folytatáshoz válassza a következőt:.
-4. A **Azure Data Lake Store** párbeszédpanelen adja meg a Data Lake Storage Gen1-fiók URL-címét, majd kattintson az **OK**gombra.
+4. A **Azure Data Lake Store** párbeszédpanelen adja meg a Data Lake Storage Gen1-fiók URL-címét, majd kattintson az **OK** gombra.
    
     ![Data Lake Storage Gen1 URL-címe](./media/data-lake-store-power-bi/get-data-lake-store-account-url.png "Data Lake Storage Gen1 URL-címe")
 5. A következő párbeszédpanelen kattintson a **Bejelentkezés** gombra a Data Lake Storage Gen1 fiókba való bejelentkezéshez. A rendszer átirányítja a szervezet bejelentkezési oldalára. Az utasításokat követve jelentkezzen be a fiókba.
    
     ![Bejelentkezés Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "Bejelentkezés Data Lake Storage Gen1")
-6. Miután sikeresen bejelentkezett, kattintson a **kapcsolat**gombra.
+6. Miután sikeresen bejelentkezett, kattintson a **kapcsolat** gombra.
    
     ![Képernyőkép a Azure Data Lake Store párbeszédpanelről, a csatlakozási lehetőséggel.](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "Kapcsolódás Data Lake Storage Gen1hoz")
-7. A következő párbeszédpanel megjeleníti a Data Lake Storage Gen1-fiókjába feltöltött fájlt. Ellenőrizze az adatokat, majd kattintson a **Betöltés**elemre.
+7. A következő párbeszédpanel megjeleníti a Data Lake Storage Gen1-fiókjába feltöltött fájlt. Ellenőrizze az adatokat, majd kattintson a **Betöltés** elemre.
    
     ![Adatok betöltése a Data Lake Storage Gen1ból](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "Adatok betöltése a Data Lake Storage Gen1ból")
 8. Miután az adat sikeresen betöltődött Power BIba, a **mezők** lapon a következő mezők jelennek meg.
@@ -50,19 +50,19 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
     ![Kívánt mezők](./media/data-lake-store-power-bi/desired-fields.png "Kívánt mezők")
    
     A következő lépésekben frissíteni fogjuk a lekérdezést, hogy az importált adattípusokat a kívánt formátumban alakítsa át.
-9. A **Kezdőlap** menüszalagon kattintson a **lekérdezések szerkesztése**elemre.
+9. A **Kezdőlap** menüszalagon kattintson a **lekérdezések szerkesztése** elemre.
    
     ![Képernyőkép a Kezdőlap menüszalagról a lekérdezések szerkesztése lehetőség kiválasztásával.](./media/data-lake-store-power-bi/edit-queries.png "Lekérdezések szerkesztése")
-10. A lekérdezés-szerkesztő **tartalom** oszlopában kattintson a **bináris**elemre.
+10. A lekérdezés-szerkesztő **tartalom** oszlopában kattintson a **bináris** elemre.
     
     ![Képernyőkép: a lekérdezés-szerkesztő és a kinevezett tartalom oszlop.](./media/data-lake-store-power-bi/convert-query1.png "Lekérdezések szerkesztése")
-11. Egy fájl ikon jelenik meg, amely a feltöltött **Drivers.txt** fájlt jelöli. Kattintson a jobb gombbal a fájlra, majd kattintson a **CSV**elemre.    
+11. Egy fájl ikon jelenik meg, amely a feltöltött **Drivers.txt** fájlt jelöli. Kattintson a jobb gombbal a fájlra, majd kattintson a **CSV** elemre.    
     
     ![Képernyőkép a lekérdezési Szerkesztőről a CSV-beállítással.](./media/data-lake-store-power-bi/convert-query2.png "Lekérdezések szerkesztése")
 12. Az alább látható kimenetnek kell megjelennie. Az adatai mostantól a vizualizációk létrehozásához használható formátumban érhetők el.
     
     ![Képernyőkép a lekérdezési Szerkesztőről a várt módon megjelenített kimenettel.](./media/data-lake-store-power-bi/convert-query3.png "Lekérdezések szerkesztése")
-13. A **Kezdőlap** menüszalagon kattintson a **Bezárás**gombra, majd kattintson a **Bezárás**gombra, és válassza az alkalmaz elemet.
+13. A **Kezdőlap** menüszalagon kattintson a **Bezárás** gombra, majd kattintson a **Bezárás** gombra, és válassza az alkalmaz elemet.
     
     ![Képernyőkép a Kezdőlap menüszalagján a Bezárás és az alkalmaz lehetőséggel.](./media/data-lake-store-power-bi/load-edited-query.png "Lekérdezések szerkesztése")
 14. A lekérdezés frissítése után a **mezők** lapon megjelennek a vizualizációhoz elérhető új mezők.
@@ -79,7 +79,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
     3. A tortadiagramnak most az alább láthatóhoz hasonlónak kell lennie.
        
         ![Tortadiagram](./media/data-lake-store-power-bi/pie-chart.png "Vizualizációk létrehozása")
-16. Ha kijelöl egy adott országot vagy régiót az oldal szintjének szűrők közül, akkor a kiválasztott ország/régió minden városában megjelenik az illesztőprogramok száma. Például a **vizualizációk** lap **oldal szintű szűrők**területén válassza a **Brazília**elemet.
+16. Ha kijelöl egy adott országot vagy régiót az oldal szintjének szűrők közül, akkor a kiválasztott ország/régió minden városában megjelenik az illesztőprogramok száma. Például a **vizualizációk** lap **oldal szintű szűrők** területén válassza a **Brazília** elemet.
     
     ![Ország/régió kiválasztása](./media/data-lake-store-power-bi/select-country.png "Ország/régió kiválasztása")
 17. A tortadiagramot a rendszer automatikusan frissíti a brazil városokban lévő illesztőprogramok megjelenítéséhez.

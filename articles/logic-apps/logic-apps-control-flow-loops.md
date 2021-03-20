@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
 ms.openlocfilehash: aa4be5852b4f8af00346a3ea9a86b13a85f99824
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93358456"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Munkafolyamatok tevékenységeit ismétlő vagy tömböket feldolgozó hurkok létrehozása az Azure Logic Appsben
@@ -124,7 +124,7 @@ Ha a logikai alkalmazáshoz kód nézetben dolgozik, a `Foreach` hurok a logikai
 
 Alapértelmezés szerint a "foreach" hurokban lévő ciklusok párhuzamosan futnak. Az egyes ciklusok egymás utáni futtatásához állítsa be a hurok **szekvenciális** beállítását. A "foreach" hurkoknak szekvenciálisan kell futniuk, ha beágyazott hurkok vagy változók vannak a hurokban, ahol előre jelezhető eredmények várhatók. 
 
-1. A hurok jobb felső sarkában válassza az **ellipszisek** ( **...** ) > a **Beállítások** lehetőséget.
+1. A hurok jobb felső sarkában válassza az **ellipszisek** (**...**) > a **Beállítások** lehetőséget.
 
    ![A "foreach" ciklusban válassza a "..." > "beállítások" lehetőséget.](media/logic-apps-control-flow-loops/for-each-loop-settings.png)
 
@@ -234,7 +234,7 @@ Ez a példa minden nap 8:00-kor kezdődik, így a logikai alkalmazás egy válto
 
       | Tulajdonság | Érték | Leírás |
       | -------- | ----- | ----------- | 
-      | **Hogy** | *\<email-address\@domain>* | A címzett e-mail-címe. Teszteléshez használja a saját e-mail-címét. | 
+      | **Ide:** | *\<email-address\@domain>* | A címzett e-mail-címe. Teszteléshez használja a saját e-mail-címét. | 
       | **Tárgy** | A "Limit" jelenlegi értéke **limit** | Határozza meg az e-mail tárgyát. Ebben a példában ellenőrizze, hogy tartalmazza-e a **határérték** változót. | 
       | **Törzs** | <*e-mail – tartalom*> | Itt adhatja meg a küldeni kívánt e-mail üzenet tartalmát. Ebben a példában írjon be egy tetszőleges szöveget. | 
       |||| 
@@ -251,9 +251,9 @@ Ez a példa minden nap 8:00-kor kezdődik, így a logikai alkalmazás egy válto
 
 A "ig" hurok a következő tulajdonságok alapján leállítja a végrehajtást, ezért ügyeljen arra, hogy az értékeiket ennek megfelelően állítsa be:
 
-* **Darabszám** : ez az érték a hurkok a hurokból való kilépés előtt futtatott legnagyobb száma. A logikai alkalmazások futtatásához szükséges "ig" ciklusok alapértelmezett és maximális korlátainak megjelenítéséhez lásd: [párhuzamosságok, ismétlések és letételi korlátok](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
+* **Darabszám**: ez az érték a hurkok a hurokból való kilépés előtt futtatott legnagyobb száma. A logikai alkalmazások futtatásához szükséges "ig" ciklusok alapértelmezett és maximális korlátainak megjelenítéséhez lásd: [párhuzamosságok, ismétlések és letételi korlátok](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
 
-* **Időtúllépés** : ez az érték a huroknak a kilépés előtt futtatott legnagyobb ideje, és [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601)van megadva. Az **időtúllépési** értékre vonatkozó alapértelmezett és maximális korlátokat lásd: [párhuzamosságok, ismétlések és letételi korlátok](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
+* **Időtúllépés**: ez az érték a huroknak a kilépés előtt futtatott legnagyobb ideje, és [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601)van megadva. Az **időtúllépési** értékre vonatkozó alapértelmezett és maximális korlátokat lásd: [párhuzamosságok, ismétlések és letételi korlátok](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
 
   Az időtúllépési érték kiértékelése minden hurok ciklusakor megtörténik. Ha a hurok bármelyik művelete hosszabb időt vesz igénybe, mint az időkorlát, az aktuális ciklus nem áll le. A következő ciklus azonban nem indul el, mert a korlátozási feltétel nem teljesül.
 

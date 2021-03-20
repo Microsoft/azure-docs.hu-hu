@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 01/29/2019
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: 2f1e5f8f73f74d4b427e574b9e6a75aaf84a4211
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91529850"
 ---
 # <a name="quickstart--deploy-a-java-app-to-azure-service-fabric-on-linux"></a>Gyors útmutató: Java-alkalmazás üzembe helyezése az Azure Service Fabric Linuxon
@@ -45,12 +45,12 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
 
 2. Nyissa meg az Eclipse környezetet.
 3. Válassza a **fájl**  >  **importálása**  >  **Gradle**  >  **meglévő Gradle-projekt** lehetőséget, és kövesse a varázslót.
-4. Válassza ki a **könyvtárat** , és válassza ki a githubról klónozott **Service-Fabric-Java-Gyorsindítás** mappában található **szavazási** könyvtárat. Válassza a **Befejezés** lehetőséget.
+4. Válassza ki a **könyvtárat** , és válassza ki a githubról klónozott **Service-Fabric-Java-Gyorsindítás** mappában található **szavazási** könyvtárat. Válassza a **Befejezés** gombot.
 
     ![Gradle-projekt importálása az Eclipse-be](./media/service-fabric-quickstart-java/eclipse-import-gradle-project.png)
 
 5. Ezzel létrehozta a `Voting` projektet az Eclipse-hez készült Package Explorerben.
-6. Kattintson a jobb gombbal a projektre, és válassza az **alkalmazás közzététele** a **Service Fabric** legördülő menüben. Válassza a **célprofilnak publishprofiles/Local.js** elemet a cél profil területen, majd válassza a **Közzététel**lehetőséget.
+6. Kattintson a jobb gombbal a projektre, és válassza az **alkalmazás közzététele** a **Service Fabric** legördülő menüben. Válassza a **célprofilnak publishprofiles/Local.js** elemet a cél profil területen, majd válassza a **Közzététel** lehetőséget.
 
     ![Azure Service Fabric helyi JSON közzététele](./media/service-fabric-quickstart-java/service-fabric-publish-local-json.png)
 
@@ -71,13 +71,13 @@ Service Fabric Explorer az összes Service Fabric-fürtön fut, és a böngész�
 A webes előtér-szolgáltatás skálázásához tegye a következőket:
 
 1. Nyissa meg Service Fabric Explorer a fürtben. Például: `https://localhost:19080`.
-2. Válassza a **háló:/szavazó/VotingWeb** csomópont melletti három pontot (**..**.) a TreeView vezérlőben, és válassza a **szolgáltatás méretezése**lehetőséget.
+2. Válassza a **háló:/szavazó/VotingWeb** csomópont melletti három pontot (**..**.) a TreeView vezérlőben, és válassza a **szolgáltatás méretezése** lehetőséget.
 
     ![Szolgáltatás méretezése az Azure Service Fabricban](./media/service-fabric-quickstart-java/service-fabric-scale-service.png)
 
     Most már méretezheti a webes előtér-szolgáltatás példányainak számát.
 
-3. Módosítsa a számot **2** értékre, és válassza a **szolgáltatás méretezése**lehetőséget.
+3. Módosítsa a számot **2** értékre, és válassza a **szolgáltatás méretezése** lehetőséget.
 4. Válassza ki a **háló:/szavazás/VotingWeb** csomópontot a fanézetben, és bontsa ki a partíciós csomópontot (amelyet egy GUID képvisel).
 
     ![Skálázható szolgáltatás az Azure-ban Service Fabric](./media/service-fabric-quickstart-java/service-fabric-explorer-service-scaled.png)
@@ -86,7 +86,7 @@ A webes előtér-szolgáltatás skálázásához tegye a következőket:
 
 Ezzel az egyszerű felügyeleti eljárással megduplázta az előtér-szolgáltatás számára a felhasználói terhelések feldolgozásához rendelkezésre álló erőforrások mennyiségét. Fontos tudni, hogy nincs szükség több példányra ahhoz, hogy a szolgáltatás megbízhatóan fusson. Ha egy szolgáltatás meghibásodik, a Service Fabric gondoskodik róla, hogy egy új szolgáltatáspéldány elinduljon a fürtben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 

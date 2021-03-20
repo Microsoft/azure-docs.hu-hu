@@ -4,10 +4,10 @@ description: Ez a Azure Policy minta azt szemlélteti, hogyan helyezhet üzembe 
 ms.date: 08/17/2020
 ms.topic: sample
 ms.openlocfilehash: 0a9eec54954b8963f38b3f19a0d0cabffe1092e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89649977"
 ---
 # <a name="azure-policy-pattern-deploy-resources"></a>Azure Policy minta: erőforrások üzembe helyezése
@@ -26,7 +26,7 @@ Ez a házirend-definíció a **mező** operátort használja a `type` létrehozo
 
 :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json" range="18-23":::
 
-A **Properties. ' policyrule osztály. retails** blokk közli Azure Policy, hogy mit kell keresni a létrehozott vagy frissített erőforráshoz a **Properties. ' policyrule osztály. if** blokkban. Ebben a példában az erőforráscsoport **networkWatcherRG** lévő hálózati figyelőnek léteznie kell az új vagy **field** `location` frissített erőforrás helyével megegyező mezővel. A `field()` függvény használata lehetővé teszi, hogy a **existenceCondition** az új vagy frissített erőforrás tulajdonságait, pontosabban a `location` tulajdonságot hozzáférjenek.
+A **Properties. ' policyrule osztály. retails** blokk közli Azure Policy, hogy mit kell keresni a létrehozott vagy frissített erőforráshoz a **Properties. ' policyrule osztály. if** blokkban. Ebben a példában az erőforráscsoport **networkWatcherRG** lévő hálózati figyelőnek léteznie kell az új vagy  `location` frissített erőforrás helyével megegyező mezővel. A `field()` függvény használata lehetővé teszi, hogy a **existenceCondition** az új vagy frissített erőforrás tulajdonságait, pontosabban a `location` tulajdonságot hozzáférjenek.
 
 #### <a name="roledefinitionids"></a>roleDefinitionIds
 
@@ -44,11 +44,11 @@ A házirend-definíció **központi telepítési** része egy olyan **tulajdons�
 
   :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json" range="30-44":::
   
-- **Paraméterek** – ez a tulajdonság határozza meg a **sablonhoz**megadott paramétereket. A paraméterek nevének egyezniük kell a **sablonban**definiált értékekkel. Ebben a példában a paraméter neve **hely** az egyeztetéshez. A **hely** értéke a `field()` függvény ismételt használatával beolvassa a kiértékelt erőforrás értékét, amely a ' policyrule osztály virtuális hálózata **. Ha** a blokk meg van határozva.
+- **Paraméterek** – ez a tulajdonság határozza meg a **sablonhoz** megadott paramétereket. A paraméterek nevének egyezniük kell a **sablonban** definiált értékekkel. Ebben a példában a paraméter neve **hely** az egyeztetéshez. A **hely** értéke a `field()` függvény ismételt használatával beolvassa a kiértékelt erőforrás értékét, amely a ' policyrule osztály virtuális hálózata **. Ha** a blokk meg van határozva.
 
   :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json" range="45-49":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át [a többi mintázatot és a beépített definíciókat](./index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.

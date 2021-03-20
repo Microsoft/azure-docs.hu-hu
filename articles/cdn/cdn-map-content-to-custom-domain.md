@@ -11,10 +11,10 @@ ms.date: 02/04/2020
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: b0e8f2b14d506eb408660b939a7c925a33215cca
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99537746"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-endpoint"></a>Oktatóanyag: egyéni tartomány hozzáadása a végponthoz
@@ -184,7 +184,7 @@ Miután regisztrálta az egyéni tartományát, hozzáadhatja azt a CDN-végpont
 
     :::image type="content" source="media/cdn-map-content-to-custom-domain/cdn-add-custom-domain.png" alt-text="Egyéni tartomány hozzáadása" border="true":::
 
-6. Válassza a **Hozzáadás** elemet.
+6. Válassza a **Hozzáadás** lehetőséget.
 
    Az Azure ellenőrzi, hogy a megadott egyéni tartománynév esetében létezik-e a CNAME rekord. Ha a CNAME helyes, az egyéni tartomány érvényesítve lesz. 
 

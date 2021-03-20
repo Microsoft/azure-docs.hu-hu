@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 99c7f4ab92e4cce3937a933fec97008c281a0eae
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96018290"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>A StorSimple virtuális tömbben lévő megosztások vagy kötetek biztonsági mentése
@@ -112,6 +112,6 @@ A meglévő biztonsági másolatok megtekintéséhez hajtsa végre a következő
    
     ![Frissített biztonsági mentési katalógus](./media/storsimple-virtual-array-backup/viewbackups3.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ [a StorSimple virtuális tömb felügyeletéről](storsimple-ova-web-ui-admin.md).

@@ -13,10 +13,10 @@ ms.date: 11/4/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: b9234b27e2f08e65f569393bde342cba3f37adee
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95971348"
 ---
 # <a name="create-a-media-services-account"></a>Media Services-fiók létrehozása
@@ -47,7 +47,7 @@ Az Azure-ban tárolt médiatartalmak titkosításának, kódolásának, elemzés
 
 [!INCLUDE [Set the Azure subscription with CLI](./includes/task-set-azure-subscription-cli.md)]
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 [!INCLUDE [Create a resource group with CLI](./includes/task-create-resource-group-cli.md)]
 
@@ -61,6 +61,6 @@ Az Azure-ban tárolt médiatartalmak titkosításának, kódolásának, elemzés
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Fájl streamelése](stream-files-dotnet-quickstart.md)

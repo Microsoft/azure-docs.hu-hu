@@ -7,10 +7,10 @@ ms.author: sujie
 ms.date: 4/11/2020
 ms.topic: how-to
 ms.openlocfilehash: 988b9d364f09a4c88bcaab1fe81ae80c8de5d4d9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96491570"
 ---
 # <a name="intellisense-in-azure-stream-analytics-tools-for-visual-studio-code"></a>IntelliSense Azure Stream Analytics Visual Studio Code-eszközökön
@@ -37,7 +37,7 @@ A VS Code IntelliSense Stream Analytics eszközei különböző típusú kiegés
 |Befejezés     |  Típus       |
 | ----- | ------- |
 | Kulcsszavak | `keyword`
-| Függvények | `build-in function`, `user defined function`  |
+| Functions | `build-in function`, `user defined function`  |
 | Adathalmaz neve| `input`, `output`, `intermediate result set`|
 | Adathalmaz oszlopának neve|`input`, `intermediate result set`|
 
@@ -69,7 +69,7 @@ A nyelvi szolgáltatás által biztosítottak szerint az egyes azonosítók **gy
 
 Ezt a problémát a hiányzó bemeneti konfiguráció okozta, amely adatokat biztosít. Megtekintheti, hogy a [helyi bemenet](visual-studio-code-local-run.md#define-a-local-input) vagy az [élő bemenet](visual-studio-code-local-run-live-input.md#define-a-live-stream-input) megfelelően van-e konfigurálva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Rövid útmutató: Azure Stream Analytics-feladatok létrehozása a Visual Studio Code-ban](quick-create-visual-studio-code.md)
 * [A Visual Studio Code segítségével helyileg tesztelheti Stream Analytics lekérdezéseket a mintaadatok használatával](visual-studio-code-local-run.md)

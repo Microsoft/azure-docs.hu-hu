@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: cf9901b4e49460dd2fb91dceaf239571058c5284
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88213324"
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Egyéni gyorsítótárazás az Azure API Managementben
@@ -277,5 +277,5 @@ Nagyobb méretű, több-bérlős üzembe helyezések esetén egyes vállalatok k
 
 Ahelyett, hogy az API előnyben részesített verzióját adja vissza az egyes előfizetési kulcsokhoz, olyan azonosítót ad vissza, amely egy bérlőhöz kapcsolódik a hozzárendelt hardver csoporthoz. Ez az azonosító használható a megfelelő háttérbeli URL-cím létrehozásához.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Az Azure API Management cache bármilyen típusú adat tárolására való használatának szabadsága lehetővé teszi a konfigurációs adathoz való hatékony hozzáférést, amely hatással lehet a bejövő kérelmek feldolgozásának módjára. Emellett olyan adattöredékek tárolására is használható, amelyek a háttérben futó API által visszaadott válaszokat is kiterjeszthetik.

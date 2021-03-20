@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 4fbc79723dd484148ddf2f8836848aa9bc333341
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522587"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindflash"></a>Oktatóanyag: Azure Active Directory integráció a Mindflash
@@ -61,13 +61,13 @@ A Mindflash Azure AD-be való integrálásának konfigurálásához hozzá kell 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Mindflash**kifejezést, válassza a **Mindflash** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Mindflash** kifejezést, válassza a **Mindflash** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![Mindflash az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Mindflash-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Mindflash-mel konfigurálja és teszteli a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Mindflash kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés Mindflash való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés Mindflash való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **Mindflash** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **Mindflash** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -130,7 +130,7 @@ Ha az egyszeri bejelentkezést szeretné konfigurálni a **Mindflash** oldalon, 
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -155,15 +155,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a Mindflash hozzáférésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Mindflash**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **Mindflash** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Mindflash**lehetőséget.
+2. Az alkalmazások listában válassza a **Mindflash** lehetőséget.
 
     ![Az Mindflash hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -185,11 +185,11 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Mindflash, a Mindflash
 
 1. Jelentkezzen be a **Mindflash** vállalati webhelyre rendszergazdaként.
 
-1. Lépjen a **felhasználók kezelése**gombra.
+1. Lépjen a **felhasználók kezelése** gombra.
    
     ![Felhasználók kezelése](./media/mindflash-tutorial/ic787140.png "Felhasználók kezelése")
 
-1. Kattintson a **felhasználók hozzáadása**elemre, majd az **új**elemre.
+1. Kattintson a **felhasználók hozzáadása** elemre, majd az **új** elemre.
 
 1. Az **új felhasználók hozzáadása** szakaszban végezze el a kiépíteni kívánt érvényes Azure ad-fiók következő lépéseit:
    
@@ -197,7 +197,7 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Mindflash, a Mindflash
    
     a. Az **Utónév** szövegmezőbe írja be a felhasználó **Britta** **nevet** .
 
-    b. A **vezetéknév** szövegmezőbe írja be a felhasználó **vezetéknevét** **Simon**néven.
+    b. A **vezetéknév** szövegmezőbe írja be a felhasználó **vezetéknevét** **Simon** néven.
     
     c. Az **e-mail** szövegmezőbe írja be a felhasználó **e-mail-címét** **BrittaSimon \@ contoso.com**.
 

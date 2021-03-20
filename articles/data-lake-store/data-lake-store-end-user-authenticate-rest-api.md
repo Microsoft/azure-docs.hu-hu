@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 462cd06c9da3b1f0a57c293d52c59181372b709b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92103747"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Végfelhasználói hitelesítés Azure Data Lake Storage Gen1 használatával REST API
@@ -18,7 +18,7 @@ ms.locfileid: "92103747"
 > * [A Java használata](data-lake-store-end-user-authenticate-java-sdk.md)
 > * [A .NET SDK használata](data-lake-store-end-user-authenticate-net-sdk.md)
 > * [A Python használata](data-lake-store-end-user-authenticate-python.md)
-> * [REST API használata](data-lake-store-end-user-authenticate-rest-api.md)
+> * [A REST API használata](data-lake-store-end-user-authenticate-rest-api.md)
 > 
 >  
 
@@ -84,7 +84,7 @@ Ebben az esetben az alkalmazás bejelentkezésre kéri a felhasználót, és min
 
 További információk az interaktív felhasználói hitelesítéssel kapcsolatban: [Authorization code grant flow](/previous-versions/azure/dn645542(v=azure.100)) (Az engedélyezési kód engedélyezési folyamata).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben megtanulta, hogyan használható a szolgáltatások közötti hitelesítés a Azure Data Lake Storage Gen1 REST API használatával történő hitelesítéshez. A következő cikkekből megtudhatja, hogyan használhatja a REST API a Azure Data Lake Storage Gen1 használatához.
 
 * [Fiókkezelés Data Lake Storage Gen1 a REST API használatával](data-lake-store-get-started-rest-api.md)
