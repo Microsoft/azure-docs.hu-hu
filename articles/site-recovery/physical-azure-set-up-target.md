@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
 ms.openlocfilehash: 685f04b27cd315b04ef5c45e155e825eebe2747b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73953903"
 ---
 # <a name="prepare-target-vmware-to-azure"></a>Cél előkészítése (VMware – Azure)
@@ -26,7 +26,7 @@ A cikk a következőket feltételezi:
 
 ## <a name="prepare-target"></a>Cél előkészítése
 
-Miután befejezte az **1. lépést: válassza a védelmi cél** és a **2. lépés: forrás előkészítése**lehetőséget, a **3. lépés: cél**
+Miután befejezte az **1. lépést: válassza a védelmi cél** és a **2. lépés: forrás előkészítése** lehetőséget, a **3. lépés: cél**
 
 ![Cél előkészítése](./media/physical-azure-set-up-target/prepare-target-physical-to-azure.png)
 
@@ -39,5 +39,5 @@ Az érvényesítés sikeres befejezése után kattintson az OK gombra a követke
 
 Ha nem rendelkezik kompatibilis Resource Manager-fiókkal vagy virtuális hálózattal, a lap tetején található **+ Storage-fiókra** vagy **+ hálózati** gombokra kattintva létrehozhat egyet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Konfigurálja a replikációs beállításokat](vmware-azure-set-up-replication.md).

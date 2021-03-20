@@ -11,10 +11,10 @@ ms.date: 10/12/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 409b51682700a8b13b2840f171642bdcbee6f6d2
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93340226"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>A változáscsatorna feldolgozója az Azure Cosmos DB-ben
@@ -84,7 +84,7 @@ Előfordulhat például, hogy egy olyan központi telepítési egységgel rendel
 
 Ahogy korábban említettük, egy üzembe helyezési egységen belül egy vagy több példány is megadható. A központi telepítési egységen belüli számítási eloszlás kihasználása érdekében az egyetlen kulcsfontosságú követelmény a következő:
 
-1. Minden példánynak ugyanazzal a bérlet-tároló konfigurációval kell rendelkeznie.
+1. Minden példánynak ugyanazzal a bérlettároló-konfigurációval kell rendelkeznie.
 1. Minden példánynak azonosnak kell lennie `processorName` .
 1. Minden példánynak különböző példánynévvel kell rendelkeznie (`WithInstanceName`).
 
@@ -134,14 +134,14 @@ A módosítási hírcsatorna processzora bármely olyan platformon üzemeltethet
 
 Míg a változási csatorna processzora rövid életű környezetekben futtatható, mivel a címbérleti tároló fenntartja az állapotot, a környezetek indítási ciklusa késleltetést ad az értesítések fogadásához (a processzor a környezet indításakor fellépő terhelés miatt).
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [Minta alkalmazás teljes alkalmazása a GitHubon](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 * [További használati minták a GitHubon](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
 * [Cosmos DB workshop Labs az adatcsatornás processzor módosításához](https://azurecosmosdb.github.io/labs/dotnet/labs/08-change_feed_with_azure_functions.html#consume-cosmos-db-change-feed-via-the-change-feed-processor)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkekben további tudnivalókat olvashat a hírcsatorna-feldolgozó szolgáltatással kapcsolatos változásokról:
 

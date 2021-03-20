@@ -8,10 +8,10 @@ ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.openlocfilehash: 118b02ab694d27dbe4e13cbfa1a617a56b052772
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92043068"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Az Azure Digital Twins integrálása más szolgáltatásokkal
@@ -39,9 +39,9 @@ Az Azure Digital Twins képes az adatküldés a csatlakoztatott **végpontokra**
 * [Event Grid](../event-grid/overview.md)
 * [Szolgáltatásbusz](../service-bus-messaging/service-bus-messaging-overview.md)
 
-A végpontokat a felügyeleti API-k vagy a Azure Portal használatával csatlakoztatják az Azure Digital Twins szolgáltatáshoz. További információ a végpontok Azure digitális Ikrekhez való csatlakoztatásáról [*: végpontok és útvonalak kezelése*](how-to-manage-routes-apis-cli.md).
+A végpontok felügyeleti API-kkal vagy az Azure Portallal csatolhatók az Azure Digital Twinshez. További információ a végpontok Azure digitális Ikrekhez való csatlakoztatásáról [*: végpontok és útvonalak kezelése*](how-to-manage-routes-apis-cli.md).
 
-Számos más szolgáltatás is van, ahol érdemes lehet végső soron az adatait, például az [Azure Storage](../storage/common/storage-introduction.md), a [Azure Maps](../azure-maps/about-azure-maps.md)vagy a [Time Series Insights](../time-series-insights/overview-what-is-tsi.md). Ahhoz, hogy az Ön adatait az alábbi szolgáltatásokhoz küldje, csatolja a rendeltetési szolgáltatást egy végponthoz.
+Az adatokat számos más szolgáltatásnak is átirányíthatja, például az [Azure Storage](../storage/common/storage-introduction.md), [Azure Maps](../azure-maps/about-azure-maps.md) vagy a[Time Series Insights](../time-series-insights/overview-what-is-tsi.md) szolgáltatásnak. Ahhoz, hogy az Ön adatait az alábbi szolgáltatásokhoz küldje, csatolja a rendeltetési szolgáltatást egy végponthoz.
 
 Ha például az Azure Maps is használja, és szeretné összekapcsolni a helyet az Azure Digital Twins [Twin gráfmal](concepts-twins-graph.md), a Azure Functions a Event Grid használatával a telepítésben lévő összes szolgáltatás közötti kommunikációt is létrehozhat. További információ a következő [ *útmutatóban: az Azure Digital Twins használata Azure Maps beltéri Térkép frissítéséhez*](how-to-integrate-maps.md)
 

@@ -4,10 +4,10 @@ description: Ez a cikk végigvezeti a labor létrehozásának folyamatán a Azur
 ms.topic: article
 ms.date: 10/12/2020
 ms.openlocfilehash: 9fa33a59dd35bfe3469f30f2349f8a08c45bd5e3
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92058343"
 ---
 # <a name="create-a-lab-in-azure-devtest-labs"></a>Labor létrehozása az Azure DevTest Labs szolgáltatásban
@@ -71,7 +71,7 @@ Labor létrehozásakor a rendszer létrehoz egy alapértelmezett hálózatot. V�
 
 ### <a name="review-and-create"></a>Áttekintés és létrehozás
 
-Ha elkészült, válassza a **Létrehozás**lehetőséget. A labor létrehozási folyamatának állapotát a portál oldal jobb felső sarkában látható **értesítések** terület megtekintésével figyelheti. 
+Ha elkészült, válassza a **Létrehozás** lehetőséget. A labor létrehozási folyamatának állapotát a portál oldal jobb felső sarkában látható **értesítések** terület megtekintésével figyelheti. 
 
 ![Létrehozás lap](./media/devtest-lab-create-lab/create-1.png)
 

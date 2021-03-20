@@ -14,10 +14,10 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 28847ece3c08e93d14d381b35fc93fb16dad95a1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95973898"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Egyéni tartománynév hozzáadása a Azure Active Directory portál használatával
@@ -108,7 +108,7 @@ Ha az Azure AD nem tudja ellenőrizni az egyéni tartománynevet, próbálkozzon
 
 - **Győződjön meg arról, hogy nem rendelkezik nem felügyelt Power BI Bérlővel.** Ha a felhasználók aktiválták Power BI az önkiszolgáló regisztráción keresztül, és létrehoztak egy nem felügyelt bérlőt a szervezet számára, akkor a PowerShell használatával belső vagy külső rendszergazdaként kell átvennie a felügyeletet. További információkért tekintse meg a [nem felügyelt címtár az Azure Active Directoryban rendszergazdaként történő átvételét](../enterprise-users/domains-admin-takeover.md) ismertető cikket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Adjon hozzá egy másik globális rendszergazdát a címtárhoz. További információ: [szerepkörök és rendszergazdák társítása](active-directory-users-assign-role-azure-portal.md).
 

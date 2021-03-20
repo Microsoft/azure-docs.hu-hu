@@ -10,10 +10,10 @@ author: stevestein
 ms.author: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: 5a0dd12efb9d94bda264b3bd04b05cdc3df917e5
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92786632"
 ---
 # <a name="multi-shard-querying-using-elastic-database-tools"></a>Többrétegű lekérdezés rugalmas adatbázis-eszközök használatával
@@ -23,12 +23,12 @@ ms.locfileid: "92786632"
 
 A [Elastic Database eszközökkel](elastic-scale-introduction.md)létrehozhat szilánkokra osztott adatbázis-megoldásokat. A **több szegmenses lekérdezés** olyan feladatokhoz használható, mint például az adatgyűjtés/jelentéskészítés, amelyek több szegmensre kiterjedő lekérdezés futtatását igénylik. (Ezzel ellentétben az [adatoktól függő útválasztással](elastic-scale-data-dependent-routing.md), amely az összes munkát egyetlen szegmensen hajtja végre.)
 
-1. Szerezzen be egy **RangeShardMap** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) vagy **ListShardMap** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)) a **TryGetRangeShardMap** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetrangeshardmap), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap)), a **TryGetListShardMap** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetlistshardmap), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap)) vagy a **GetShardMap** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getshardmap), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap)) metódus használatával. Lásd: [ShardMapManager létrehozása](elastic-scale-shard-map-management.md#constructing-a-shardmapmanager) és [RangeShardMap vagy ListShardMap beszerzése](elastic-scale-shard-map-management.md#get-a-rangeshardmap-or-listshardmap).
-2. Hozzon létre egy **MultiShardConnection** ( [Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardconnection), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardconnection)) objektumot.
-3. Hozzon létre egy **MultiShardStatement vagy MultiShardCommand** ( [Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)).
-4. Állítsa a **CommandText tulajdonságot** ( [Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)) egy T-SQL-parancsra.
-5. Futtassa a parancsot a **ExecuteQueryAsync vagy a ExecuteReader** ( [Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement.executeQueryAsync), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)) metódus meghívásával.
-6. Tekintse meg az eredményeket a **MultiShardResultSet vagy a MultiShardDataReader** ( [Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardresultset), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multisharddatareader)) osztály használatával.
+1. Szerezzen be egy **RangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) vagy **ListShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)) a **TryGetRangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetrangeshardmap), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap)), a **TryGetListShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetlistshardmap), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap)) vagy a **GetShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getshardmap), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap)) metódus használatával. Lásd: [ShardMapManager létrehozása](elastic-scale-shard-map-management.md#constructing-a-shardmapmanager) és [RangeShardMap vagy ListShardMap beszerzése](elastic-scale-shard-map-management.md#get-a-rangeshardmap-or-listshardmap).
+2. Hozzon létre egy **MultiShardConnection** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardconnection), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardconnection)) objektumot.
+3. Hozzon létre egy **MultiShardStatement vagy MultiShardCommand** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)).
+4. Állítsa a **CommandText tulajdonságot** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)) egy T-SQL-parancsra.
+5. Futtassa a parancsot a **ExecuteQueryAsync vagy a ExecuteReader** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement.executeQueryAsync), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)) metódus meghívásával.
+6. Tekintse meg az eredményeket a **MultiShardResultSet vagy a MultiShardDataReader** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardresultset), [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multisharddatareader)) osztály használatával.
 
 ## <a name="example"></a>Példa
 

@@ -7,10 +7,10 @@ ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: b65560a3b10d04887040c4da1e137912810b3095
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91929591"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Meglévő gazdagép kibontása új munkamenet-gazdagépekkel
@@ -39,11 +39,11 @@ A következő információkra is szüksége lesz a gazdagép és a munkamenet-ga
 
 A gazdagép-készlet bővítése virtuális gépek hozzáadásával:
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 
-2. Keresse meg és válassza ki a **Windows virtuális asztal**elemet.
+2. Keresse meg és válassza ki a **Windows virtuális asztal** elemet.
 
-3. A képernyő bal oldali menüjében válassza a **gazdagép készletek**lehetőséget, majd válassza ki annak a gazdagépnek a nevét, amelyhez virtuális gépeket szeretne hozzáadni.
+3. A képernyő bal oldali menüjében válassza a **gazdagép készletek** lehetőséget, majd válassza ki annak a gazdagépnek a nevét, amelyhez virtuális gépeket szeretne hozzáadni.
 
 4. Válassza a **munkamenet-gazdagépek** lehetőséget a képernyő bal oldalán található menüből.
 
@@ -53,21 +53,21 @@ A gazdagép-készlet bővítése virtuális gépek hozzáadásával:
 
 7. Válassza ki azt az erőforráscsoportot, amelyben létre kívánja hozni a virtuális gépeket, majd válassza ki a régiót. Kiválaszthatja az Ön által használt aktuális régiót vagy egy új régiót.
 
-8. Adja meg a gazdagép-készletbe felvenni kívánt munkamenet-gazdagépek számát a **virtuális gépek számával**. Ha például öt gazdagépen bővíti a gazdagép-készletet, írja be az **5**értéket.
+8. Adja meg a gazdagép-készletbe felvenni kívánt munkamenet-gazdagépek számát a **virtuális gépek számával**. Ha például öt gazdagépen bővíti a gazdagép-készletet, írja be az **5** értéket.
 
     >[!NOTE]
     >Bár lehetséges a virtuális gépek lemezképének és előtagja szerkesztésének szerkesztése, nem javasoljuk a szerkesztést, ha olyan virtuális gépekkel rendelkezik, amelyeken különböző lemezképek vannak ugyanazon a gazdagépen. Csak akkor szerkessze a lemezképet és az előtagot, ha azt tervezi, hogy eltávolítja a régebbi lemezképekkel rendelkező virtuális gépeket az érintett gazdagép-készletből.
 
-9. A **virtuális hálózat adatainál**válassza ki azt a virtuális hálózatot és alhálózatot, amelyhez csatlakoztatni kívánja a virtuális gépeket. Kiválaszthatja ugyanazt a virtuális hálózatot, amelyet jelenleg használ meglévő gépe, vagy válasszon egy másikat, amely jobban megfelel a 7. lépésben kiválasztott régiónak.
+9. A **virtuális hálózat adatainál** válassza ki azt a virtuális hálózatot és alhálózatot, amelyhez csatlakoztatni kívánja a virtuális gépeket. Kiválaszthatja ugyanazt a virtuális hálózatot, amelyet jelenleg használ meglévő gépe, vagy válasszon egy másikat, amely jobban megfelel a 7. lépésben kiválasztott régiónak.
 
-10. A **rendszergazdai fióknál**adja meg a kiválasztott virtuális hálózathoz társított Active Directory tartományi felhasználónevet és jelszót. A rendszer ezeket a hitelesítő adatokat használja a virtuális gépek virtuális hálózathoz való csatlakoztatásához.
+10. A **rendszergazdai fióknál** adja meg a kiválasztott virtuális hálózathoz társított Active Directory tartományi felhasználónevet és jelszót. A rendszer ezeket a hitelesítő adatokat használja a virtuális gépek virtuális hálózathoz való csatlakoztatásához.
 
       >[!NOTE]
       >Győződjön meg arról, hogy a rendszergazda neve megfelel az itt megadott információknak. Továbbá, hogy a fiókban nincs engedélyezve az MFA.
 
 11. Válassza a **címke** fület, ha olyan címkékkel rendelkezik, amelyekhez a virtuális gépeket szeretné csoportosítani. Ellenkező esetben ugorja át ezt a lapot.
 
-12. Válassza a **felülvizsgálat + létrehozás** lapot. Tekintse át a beállításokat, és ha mindent jól néz ki, válassza a **Létrehozás**lehetőséget.
+12. Válassza a **felülvizsgálat + létrehozás** lapot. Tekintse át a beállításokat, és ha mindent jól néz ki, válassza a **Létrehozás** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

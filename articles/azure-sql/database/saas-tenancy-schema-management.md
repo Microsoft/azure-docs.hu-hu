@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
 ms.openlocfilehash: e4328be0aade0658dedb034dbbb6980b810f771a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793194"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>A sémák kezelése SaaS-alkalmazásokban az adatbázis-bérlői minta használatával Azure SQL Database
@@ -62,14 +62,14 @@ Az alkalmazás forráskódja és a felügyeleti szkriptek a [WingtipTicketsSaaS-
 
 Ehhez az oktatóanyaghoz a PowerShell használatával kell létrehoznia a feladatokhoz tartozó ügynököt és a hozzá tartozó feladatkártya-adatbázist. A feladatok ügynökének adatbázisában a feladatütemezés, a feladatok állapota és az előzmények szerepelnek. A feladat-ügynök és az adatbázis létrehozása után azonnal létrehozhatja és figyelheti a feladatokat.
 
-1. **A POWERSHELL ISE-ben** nyissa meg a... \\ Tanulási modulok – \\ séma-felügyeleti \\ *Demo-SchemaManagement.ps1* .
+1. **A POWERSHELL ISE-ben** nyissa meg a... \\ Tanulási modulok – \\ séma-felügyeleti \\ *Demo-SchemaManagement.ps1*.
 1. A szkript futtatásához nyomja le az **F5** billentyűt.
 
 A *Demo-SchemaManagement.ps1* parancsfájl meghívja a *Deploy-SchemaManagement.ps1* parancsfájlt, hogy létrehozzon egy *osagent* nevű adatbázist a katalógus-kiszolgálón. Ezután létrehozza a feladatot, amely az adatbázis paraméterként való használatával jön létre.
 
 ## <a name="create-a-job-to-deploy-new-reference-data-to-all-tenants"></a>Feladat létrehozása új referenciaadatok bevezetéséhez az összes bérlőn
 
-A Wingtip tickets alkalmazásban a bérlői adatbázisok a támogatott helyszíneket tartalmazzák. Minden helyszín egy adott típusú helyszín, amely meghatározza a üzemeltethető események típusát, és meghatározza az alkalmazásban használt háttérképet. Ahhoz, hogy az alkalmazás támogassa az új típusú eseményeket, ezeket a hivatkozási adattípusokat frissíteni kell, és új helyszíneket kell hozzáadni.  Ebben a gyakorlatban frissítést helyezhet üzembe az összes bérlői adatbázison két további helyszíntípus hozzáadásához: *Motorkerékpár-verseny* és *Úszóklub* .
+A Wingtip tickets alkalmazásban a bérlői adatbázisok a támogatott helyszíneket tartalmazzák. Minden helyszín egy adott típusú helyszín, amely meghatározza a üzemeltethető események típusát, és meghatározza az alkalmazásban használt háttérképet. Ahhoz, hogy az alkalmazás támogassa az új típusú eseményeket, ezeket a hivatkozási adattípusokat frissíteni kell, és új helyszíneket kell hozzáadni.  Ebben a gyakorlatban frissítést helyezhet üzembe az összes bérlői adatbázison két további helyszíntípus hozzáadásához: *Motorkerékpár-verseny* és *Úszóklub*.
 
 Először tekintse át az egyes bérlői adatbázisokban található helyszín típusait. Kapcsolódjon SQL Server Management Studio (SSMS) egyik bérlői adatbázisához, és vizsgálja meg a VenueTypes táblát.  Ezt a táblázatot a Azure Portal lekérdezés-szerkesztőjében is lekérdezheti, amely az adatbázis lapról érhető el. 
 

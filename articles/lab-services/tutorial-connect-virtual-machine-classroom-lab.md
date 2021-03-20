@@ -4,10 +4,10 @@ description: Ebben az oktatóanyagban egy oktató által beállított tantermi l
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.openlocfilehash: dacfa34c0d3ab637ef513342bc5ce5fe81038e11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85443468"
 ---
 # <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>Oktatóanyag: Hozzáférés egy osztályterem-tesztkörnyezethez az Azure Lab Services szolgáltatásban
@@ -45,7 +45,7 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 1. **Indítsa el** a virtuális gépet az alábbi képen látható első gomb kiválasztásával. Ez a folyamat hosszabb időt vesz igénybe.  
 
     ![A virtuális gép elindítása](./media/tutorial-connect-vm-in-classroom-lab/start-vm.png)
-4. Győződjön meg arról, hogy a virtuális gép állapota **fut**értékre van állítva. 
+4. Győződjön meg arról, hogy a virtuális gép állapota **fut** értékre van állítva. 
 
     ![Futó állapotú virtuális gép](./media/tutorial-connect-vm-in-classroom-lab/vm-running.png)
 
@@ -60,7 +60,7 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
     1. **Windows rendszerű** virtuális gépek esetén mentse az **RDP** -fájlt a merevlemezre. Nyissa meg az RDP-fájlt a virtuális géphez való kapcsolódáshoz. Használja a pedagógustól kapott **felhasználónevet** és **jelszót** , hogy bejelentkezzen a gépre. 
     3. **Linux** rendszerű virtuális gépek esetén az **SSH** vagy az **RDP** (ha engedélyezve van) használatával csatlakozhat hozzájuk. További információ: [Távoli asztali kapcsolat engedélyezése Linux rendszerű gépekhez](how-to-enable-remote-desktop-linux.md). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban egy osztályterem laborhoz fér hozzá, amely a pedagógustól kapott regisztrációs hivatkozással érhető el.
 
 A labor tulajdonosaként szeretné megtekinteni, hogy ki regisztrált a laborban, és nyomon követheti a virtuális gépek használatát. Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan követheti nyomon a labor használatát:

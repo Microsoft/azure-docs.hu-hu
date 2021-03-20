@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 09/11/2020
 ms.author: jushiman
 ms.openlocfilehash: d8acab17e9d8dfc078b46f6a279cc671a70b0a50
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91974838"
 ---
 # <a name="preview-maintenance-control-for-os-image-upgrades-on-azure-virtual-machine-scale-sets-using-powershell"></a>Előzetes verzió: az operációsrendszer-rendszerkép frissítésének karbantartási szabályozása Azure-beli virtuálisgép-méretezési csoportokon a PowerShell használatával
@@ -21,7 +21,7 @@ A karbantartási vezérléssel eldöntheti, hogy mikor alkalmazza a vendég oper
 > [!IMPORTANT]
 > Az operációsrendszer-képek Azure-beli virtuálisgép-méretezési csoportokon történő frissítésének karbantartási ellenőrzése jelenleg nyilvános előzetes verzióban érhető el.
 > Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
 ## <a name="enable-the-powershell-module"></a>A PowerShell-modul engedélyezése
@@ -40,7 +40,7 @@ Install-Module -Name Az.Maintenance
 
 Ha helyileg telepíti a rendszert, győződjön meg róla, hogy rendszergazdaként megnyitja a PowerShell-parancssort.
 
-Azt is megteheti, hogy meg kell erősítenie, hogy nem *megbízható adattárból*kíván telepíteni. Írja be, `Y` vagy válassza az **Igen** lehetőséget az összes elemre a modul telepítéséhez.
+Azt is megteheti, hogy meg kell erősítenie, hogy nem *megbízható adattárból* kíván telepíteni. Írja be, `Y` vagy válassza az **Igen** lehetőséget az összes elemre a modul telepítéséhez.
 
 ## <a name="connect-to-an-azure-account"></a>Kapcsolódás Azure-fiókhoz
 
@@ -81,7 +81,7 @@ $config = New-AzMaintenanceConfiguration `
 ```
 
 > [!IMPORTANT]
-> A karbantartás **időtartamának** *5 óra* vagy hosszabbnak kell lennie. A karbantartási **ismétlődést** *napi*értékre kell beállítani.
+> A karbantartás **időtartamának** *5 óra* vagy hosszabbnak kell lennie. A karbantartási **ismétlődést** *napi* értékre kell beállítani.
 
 A használata `-MaintenanceScope OSImage` biztosítja, hogy a karbantartási konfiguráció a vendég operációs rendszer frissítéseinek vezérlésére szolgáljon.
 

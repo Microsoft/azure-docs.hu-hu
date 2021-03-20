@@ -9,10 +9,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 2becc9216d847dfe26d8fd3a433993112fff7980
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96546352"
 ---
 # <a name="type-checking-functions-azure-cosmos-db"></a>Type Check functions (Azure Cosmos DB)
@@ -20,7 +20,7 @@ ms.locfileid: "96546352"
 
 A típus-ellenőrzési függvények lehetővé teszik egy kifejezés típusának ellenőrzését egy SQL-lekérdezésen belül. A Type-Check függvények segítségével meghatározhatja, hogy milyen típusú tulajdonságok vannak a menet közben, ha változó vagy ismeretlen. 
 
-## <a name="functions"></a>Függvények
+## <a name="functions"></a>Functions
 
 Az alábbi táblázat a támogatott beépített típus-ellenőrzési funkciókat tartalmazza:
 

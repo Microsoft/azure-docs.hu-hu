@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 11/15/2019
 ms.author: victorh
 ms.openlocfilehash: 152f3c3254ab01c8aa61acd12c39bd98c8f55038
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84808057"
 ---
 # <a name="configure-app-service-with-application-gateway-using-powershell"></a>App Service konfigurálása a Application Gateway PowerShell használatával
@@ -164,6 +164,6 @@ A példákban telepített webalkalmazások nyilvános IP-címeket használnak, a
 
 A webalkalmazásokhoz való hozzáférés korlátozásának egyik módja a [Azure app Service statikus IP-korlátozások](../app-service/app-service-ip-restrictions.md)használata. Például korlátozhatja a webalkalmazást úgy, hogy az csak az Application gatewaytől kapjon forgalmat. Az App Service IP-korlátozási funkciója segítségével az Application Gateway VIP-t csak az elérési címmel listázhatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Információk az átirányítás konfigurálásáról: [Átirányítás konfigurálása az Application Gatewayen PowerShell-lel](redirect-overview.md).

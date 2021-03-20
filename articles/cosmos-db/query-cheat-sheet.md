@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
 ms.openlocfilehash: 2ef8aed7243e8956ad9ca62b630cda0efbd2deb9
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339648"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB lekérdezési Cheat Sheets
@@ -32,7 +32,7 @@ Töltse le az [Azure Cosmos db a3 méretű lekérdezési Cheat-lapokat](https://
 
 :::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png" alt-text="Azure Cosmos DB lekérdezési Cheat Sheets – a3 méretű, SQL API, JavaScript, MongoDB, Gremlin és Table API lekérdezések és függvények" border="false":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További segítséget a lekérdezések írásához a következő cikkekben talál:
 * SQL API-lekérdezések esetén lásd: [lekérdezés az SQL API](tutorial-query-sql-api.md)-val, a [Azure Cosmos db SQL-lekérdezésekkel](./sql-query-getting-started.md)és az [SQL-szintaxissal kapcsolatos hivatkozás](./sql-query-getting-started.md)
 * A MongoDB lekérdezések esetében lásd: [lekérdezés Azure Cosmos db API-val a MongoDB](tutorial-query-mongodb.md) és a [Azure Cosmos db API-val a MongoDB szolgáltatás támogatása és szintaxisa](mongodb-feature-support.md) alapján

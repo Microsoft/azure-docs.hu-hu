@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.date: 08/18/2020
 ms.author: yunjchoi
 ms.openlocfilehash: a409ac944c51d893fc344f82ae83d97559e055ef
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92070656"
 ---
 # <a name="check-for-resource-health-events-impacting-your-aks-cluster-preview"></a>Az AK-fürtöket befolyásoló Resource Health események keresése (előzetes verzió)
@@ -39,15 +39,15 @@ Ha a tároló számítási feladatait az AK-on futtatja, azt szeretné, hogy a p
 
 Azure Resource Health segítséget nyújt az Azure-erőforrásokat érintő szolgáltatási problémák diagnosztizálásában és támogatásában. Resource Health jelentéseket az erőforrások jelenlegi és múltbeli állapotáról, és segít megállapítani, hogy a problémát egy felhasználó által kezdeményezett művelet vagy egy platform esemény okozza-e.
 
-A Resource Health jeleket fogad a felügyelt fürthöz a fürt állapotának megállapításához. Megvizsgálja az AK-fürt állapotát, és az egyes állapot-jelzésekhez szükséges műveleteket jelenti. Ezek a jelek a felhasználó által kezdeményezett műveletek által okozott problémák automatikus feloldásával, tervezett frissítésekkel, nem tervezett állapotokkal és a rendelkezésre állással kapcsolatosak. Ezeket a jeleket a Azure Resource Health állapota: *elérhető*, nem *érhető*el, *ismeretlen*és *csökkentett teljesítményű*állapotba soroltuk.
+A Resource Health jeleket fogad a felügyelt fürthöz a fürt állapotának megállapításához. Megvizsgálja az AK-fürt állapotát, és az egyes állapot-jelzésekhez szükséges műveleteket jelenti. Ezek a jelek a felhasználó által kezdeményezett műveletek által okozott problémák automatikus feloldásával, tervezett frissítésekkel, nem tervezett állapotokkal és a rendelkezésre állással kapcsolatosak. Ezeket a jeleket a Azure Resource Health állapota: *elérhető*, nem *érhető* el, *ismeretlen* és *csökkentett teljesítményű* állapotba soroltuk.
 
-- **Elérhető**: Ha nincs olyan ismert probléma, amely hatással van a fürt állapotára, Resource Health a fürtöt *elérhetőként*jelenti.
+- **Elérhető**: Ha nincs olyan ismert probléma, amely hatással van a fürt állapotára, Resource Health a fürtöt *elérhetőként* jelenti.
 
-- Nem **érhető**el: Ha a fürt állapotát érintő platform vagy nem platform típusú esemény van, Resource Health a fürtöt nem *elérhetőként*jelenti.
+- Nem **érhető** el: Ha a fürt állapotát érintő platform vagy nem platform típusú esemény van, Resource Health a fürtöt nem *elérhetőként* jelenti.
 
-- **Ismeretlen**: Ha a fürt állapot-metrikáinak ideiglenes kapcsolódási adatvesztést okoz, Resource Health a fürtöt *ismeretlenként*jelenti.
+- **Ismeretlen**: Ha a fürt állapot-metrikáinak ideiglenes kapcsolódási adatvesztést okoz, Resource Health a fürtöt *ismeretlenként* jelenti.
 
-- **Csökkentett teljesítményű**: Ha a beavatkozást igénylő állapotra vonatkozó probléma merül fel, Resource Health a fürtöt *csökkentett teljesítményű*jelenti.
+- **Csökkentett teljesítményű**: Ha a beavatkozást igénylő állapotra vonatkozó probléma merül fel, Resource Health a fürtöt *csökkentett teljesítményű* jelenti.
 
 Az egyes állapotok állapotával kapcsolatos további részletekért tekintse meg a [Resource Health áttekintését](../service-health/resource-health-overview.md#health-status).
 

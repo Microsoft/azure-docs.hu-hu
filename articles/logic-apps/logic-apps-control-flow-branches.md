@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/10/2018
 ms.openlocfilehash: 3514ce966e1de9af1741de6b966964aca2599610
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91269233"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Párhuzamos ágak létrehozása vagy csatlakoztatása a munkafolyamat-műveletekhez Azure Logic Apps
@@ -41,7 +41,7 @@ A logikai alkalmazás a munkafolyamat folytatása előtt megvárja, amíg az ös
 
 1. A <a href="https://portal.azure.com" target="_blank">Azure Portalban</a>nyissa meg a logikai alkalmazást a Logic app Designerben.
 
-1. Vigye az egérmutatót a lépés fölötti nyíl fölé, ahol párhuzamos ágakat kíván hozzáadni. Válassza ki a megjelenő **pluszjelet** ( **+** ), majd válassza a **párhuzamos ág hozzáadása**lehetőséget. 
+1. Vigye az egérmutatót a lépés fölötti nyíl fölé, ahol párhuzamos ágakat kíván hozzáadni. Válassza ki a megjelenő **pluszjelet** ( **+** ), majd válassza a **párhuzamos ág hozzáadása** lehetőséget. 
 
    ![Párhuzamos ág hozzáadása](media/logic-apps-control-flow-branches/add-parallel-branch.png)
 
@@ -53,7 +53,7 @@ A logikai alkalmazás a munkafolyamat folytatása előtt megvárja, amíg az ös
 
    ![Keresse meg és válassza ki a kívánt műveletet](media/logic-apps-control-flow-branches/added-parallel-branch.png)
 
-1. Most minden párhuzamos ág esetében adja hozzá a kívánt lépéseket. Egy másik művelet egy ágra való hozzáadásához vigye a mutatót azon művelet alá, amelyhez egy szekvenciális műveletet szeretne hozzáadni. Válassza a megjelenő **pluszjelet** ( **+** ), majd válassza a **művelet hozzáadása**lehetőséget.
+1. Most minden párhuzamos ág esetében adja hozzá a kívánt lépéseket. Egy másik művelet egy ágra való hozzáadásához vigye a mutatót azon művelet alá, amelyhez egy szekvenciális műveletet szeretne hozzáadni. Válassza a megjelenő **pluszjelet** ( **+** ), majd válassza a **művelet hozzáadása** lehetőséget.
 
    ![Szekvenciális művelet hozzáadása párhuzamos ág](media/logic-apps-control-flow-branches/add-sequential-action.png)
 
@@ -117,7 +117,7 @@ A párhuzamos ágak egyesítéséhez egyszerűen vegyen fel egy lépést az öss
 
 1. A [Azure Portal](https://portal.azure.com)a Logic app Designerben keresse meg és nyissa meg a logikai alkalmazást. 
 
-1. Válassza az **új lépés**lehetőséget a csatlakoztatni kívánt párhuzamos ágak alatt. 
+1. Válassza az **új lépés** lehetőséget a csatlakoztatni kívánt párhuzamos ágak alatt. 
 
    ![Lépés hozzáadása a csatlakozáshoz](media/logic-apps-control-flow-branches/add-join-step.png)
 

@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.openlocfilehash: 147247c663311cfb3e05a986c6fb2bffbb41158b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92675204"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Erőforrások hozzáadása az integrációs szolgáltatási környezethez (ISE) Azure Logic Apps
@@ -44,10 +44,10 @@ Az integrációs szolgáltatási környezetben (ISE) futó logikai alkalmazások
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Név** | Igen | A létrehozandó logikai alkalmazás neve |
-   | **Előfizetés** | Igen | A használni kívánt Azure-előfizetés neve |
-   | **Erőforráscsoport** | Igen | A használni kívánt Azure-erőforráscsoport (új vagy meglévő) neve |
-   | **Hely** | Igen | Az **integrációs szolgáltatási környezetek** területen válassza ki a használni kívánt ISE-t, ha még nincs kiválasztva. <p><p> **Fontos** : Ha a logikai alkalmazásokat integrációs fiókkal szeretné használni, mindkettőnek ugyanazt az ISE-t kell használnia. |
+   | **Név** | Yes | A létrehozandó logikai alkalmazás neve |
+   | **Előfizetés** | Yes | A használni kívánt Azure-előfizetés neve |
+   | **Erőforráscsoport** | Yes | A használni kívánt Azure-erőforráscsoport (új vagy meglévő) neve |
+   | **Hely** | Yes | Az **integrációs szolgáltatási környezetek** területen válassza ki a használni kívánt ISE-t, ha még nincs kiválasztva. <p><p> **Fontos**: Ha a logikai alkalmazásokat integrációs fiókkal szeretné használni, mindkettőnek ugyanazt az ISE-t kell használnia. |
    ||||
 
 1. Ha elkészült, válassza a **Létrehozás** lehetőséget.
@@ -76,11 +76,11 @@ ISE-t használó integrációs fiók létrehozásához kövesse az alábbi lép�
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Név** | Igen | A létrehozni kívánt integrációs fiók neve |
-   | **Előfizetés** | Igen | A használni kívánt Azure-előfizetés neve |
-   | **Erőforráscsoport** | Igen | A használni kívánt Azure-erőforráscsoport (új vagy meglévő) neve |
-   | **Tarifacsomag** | Igen | Az integrációs fiókhoz használandó díjszabási csomag |
-   | **Hely** | Igen | Az **integrációs szolgáltatási környezetek** területen válassza ki ugyanazt az ISE-t, amelyet a Logic apps használ, ha még nincs kiválasztva. <p><p> **Fontos** : Ha az integrációs fiókot logikai alkalmazásokkal szeretné használni, mindkettőnek ugyanazt az ISE-t kell használnia. |
+   | **Név** | Yes | A létrehozni kívánt integrációs fiók neve |
+   | **Előfizetés** | Yes | A használni kívánt Azure-előfizetés neve |
+   | **Erőforráscsoport** | Yes | A használni kívánt Azure-erőforráscsoport (új vagy meglévő) neve |
+   | **Tarifacsomag** | Yes | Az integrációs fiókhoz használandó díjszabási csomag |
+   | **Hely** | Yes | Az **integrációs szolgáltatási környezetek** területen válassza ki ugyanazt az ISE-t, amelyet a Logic apps használ, ha még nincs kiválasztva. <p><p> **Fontos**: Ha az integrációs fiókot logikai alkalmazásokkal szeretné használni, mindkettőnek ugyanazt az ISE-t kell használnia. |
    ||||
 
 1. Ha elkészült, válassza a **Létrehozás** lehetőséget.
@@ -115,7 +115,7 @@ Az ISE létrehozása után a felügyelt ISE-összekötők nem jelennek meg autom
 
    ![Felügyelt összekötők megtekintése](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
 
-1. Az **új felügyelt összekötő hozzáadása** panelen nyissa meg az **összekötő keresése** listát. Válassza ki a használni kívánt ISE-összekötőt, de még nincs telepítve az ISE-ben. Kattintson a **Létrehozás** gombra.
+1. Az **új felügyelt összekötő hozzáadása** panelen nyissa meg az **összekötő keresése** listát. Válassza ki a használni kívánt ISE-összekötőt, de még nincs telepítve az ISE-ben. Válassza a **Létrehozás** lehetőséget.
 
    ![Válassza ki az ISE-ben telepíteni kívánt ISE-összekötőt](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
 

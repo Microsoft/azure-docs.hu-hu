@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: b4a8ea5c08f66bc0c64d4762e695dd4e2822af44
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92452005"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>Oktatóanyag: Azure Active Directory integráció az előre látható CX-csomaggal
@@ -69,7 +69,7 @@ Az előre látható CX Suite Azure AD-be való integrálásának konfigurálás�
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés konfigurálását és tesztelését a **Britta Simon**nevű tesztelési felhasználó alapján, az előre meghatározott CX Suite-val.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés konfigurálását és tesztelését a **Britta Simon** nevű tesztelési felhasználó alapján, az előre meghatározott CX Suite-val.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolatra van szükség az adott CX Suite-ban.
 
 Az Azure AD egyszeri bejelentkezés konfigurálásához és teszteléséhez az alábbi építőelemeket kell végrehajtania:
@@ -87,7 +87,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés a következő lépésekkel konfigurálható az előre meghatározott CX Suite-val:
 
-1. A [Azure Portal](https://portal.azure.com/)az **előre látható CX Suite** -alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)az **előre látható CX Suite** -alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -99,13 +99,13 @@ Az Azure AD egyszeri bejelentkezés a következő lépésekkel konfigurálható 
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **alapszintű SAML-konfiguráció** szakaszban, ha **szolgáltatói metaadatokat tartalmazó fájllal**rendelkezik, hajtsa végre a következő lépéseket:
+4. Az **alapszintű SAML-konfiguráció** szakaszban, ha **szolgáltatói metaadatokat tartalmazó fájllal** rendelkezik, hajtsa végre a következő lépéseket:
 
-    a. Kattintson a **metaadat-fájl feltöltése**elemre.
+    a. Kattintson a **metaadat-fájl feltöltése** elemre.
 
     ![Metaadat-fájl feltöltése](common/upload-metadata.png)
 
-    b. Kattintson a **mappa emblémára** a metaadat-fájl kiválasztásához, majd kattintson a **feltöltés**elemre.
+    b. Kattintson a **mappa emblémára** a metaadat-fájl kiválasztásához, majd kattintson a **feltöltés** elemre.
 
     ![metaadat-fájl kiválasztása](common/browse-upload-metadata.png)
 
@@ -142,7 +142,7 @@ Ha be szeretné állítani az egyszeri bejelentkezést az **előre látható CX 
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -166,15 +166,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a várható CX Suite-hoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza az **előre megadott CX Suite**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza az **előre megadott CX Suite** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza az **előre látható CX Suite**lehetőséget.
+2. Az alkalmazások listában válassza az **előre látható CX Suite** lehetőséget.
 
     ![Az alkalmazások listájában látható CX Suite-hivatkozás](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 

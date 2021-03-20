@@ -20,15 +20,15 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 6af0f2b5221a737687578e939c14cecf3be14509
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88932916"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>A OData-gyűjtési szűrők ismertetése az Azure Cognitive Search
 
-Az Azure Cognitive Search gyűjtemény mezőinek [szűréséhez](query-odata-filter-orderby-syntax.md) a [ `any` és a `all` operátort](search-query-odata-collection-operators.md) **lambda kifejezésekkel**együtt használhatja. A lambda kifejezés olyan logikai kifejezés, amely egy **tartomány változóra**hivatkozik. A `any` és a `all` kezelők a `for` legtöbb programozási nyelvben a hurokhoz hasonlóak, és a tartomány változó a Loop változó szerepét veszi át, a lambda kifejezést pedig a hurok törzsének. A Range változó a művelet "aktuális" értékét veszi át a hurok ismétlése során.
+Az Azure Cognitive Search gyűjtemény mezőinek [szűréséhez](query-odata-filter-orderby-syntax.md) a [ `any` és a `all` operátort](search-query-odata-collection-operators.md) **lambda kifejezésekkel** együtt használhatja. A lambda kifejezés olyan logikai kifejezés, amely egy **tartomány változóra** hivatkozik. A `any` és a `all` kezelők a `for` legtöbb programozási nyelvben a hurokhoz hasonlóak, és a tartomány változó a Loop változó szerepét veszi át, a lambda kifejezést pedig a hurok törzsének. A Range változó a művelet "aktuális" értékét veszi át a hurok ismétlése során.
 
 Ezek közül legalább a fogalmi módon működik. A valóságban az Azure Cognitive Search nagyon eltérő módon valósítja meg a szűrőket a `for` hurkok működéséhez. Ideális esetben ez a különbség láthatatlan lesz, de bizonyos helyzetekben nem. Ennek végeredménye az, hogy a lambda kifejezések írásakor követni kell a szükséges szabályokat.
 
@@ -48,7 +48,7 @@ Az első ok a OData nyelv és a EDM típusának meghatározása. Az utolsó kett
 
 ## <a name="correlated-versus-uncorrelated-search"></a>Korrelált és nem korrelált keresés
 
-Ha összetett objektumok gyűjteményéhez több szűrési feltételt alkalmaz, a feltételek **korrelálnak** , mivel azok *a gyűjtemény egyes objektumaira*vonatkoznak. A következő szűrő például olyan szállodákat ad vissza, amelyek legalább egy deluxe szobával rendelkeznek, 100-nál kisebb sebességgel:
+Ha összetett objektumok gyűjteményéhez több szűrési feltételt alkalmaz, a feltételek **korrelálnak** , mivel azok *a gyűjtemény egyes objektumaira* vonatkoznak. A következő szűrő például olyan szállodákat ad vissza, amelyek legalább egy deluxe szobával rendelkeznek, 100-nál kisebb sebességgel:
 
 ```odata-filter-expr
     Rooms/any(room: room/Type eq 'Deluxe Room' and room/BaseRate lt 100)
@@ -140,7 +140,7 @@ Tegyük fel például, hogy egy szűrhető karakterlánc-gyűjtési mező, péld
 }
 ```
 
-A `seasons` mező értékét egy **fordított index**nevű struktúrában tárolja a rendszer, amely a következőhöz hasonlóan néz ki:
+A `seasons` mező értékét egy **fordított index** nevű struktúrában tárolja a rendszer, amely a következőhöz hasonlóan néz ki:
 
 | Időszak | Dokumentumok azonosítói |
 | --- | --- |
@@ -198,7 +198,7 @@ A gyakorlatban ezek azok a szűrők típusai, amelyeknek a legvalószínűbb, ho
 
 Adott példákat, amelyek esetében engedélyezett a szűrők típusa, és amelyek nem léteznek, tekintse meg az [érvényes gyűjteményi szűrők írását](search-query-troubleshoot-collection-filters.md#bkmk_examples)ismertető témakört.
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 - [OData-gyűjtési szűrők hibaelhárítása Az Azure-ban Cognitive Search](search-query-troubleshoot-collection-filters.md)
 - [Szűrők az Azure Cognitive Search](search-filters.md)

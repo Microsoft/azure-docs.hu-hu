@@ -10,10 +10,10 @@ ms.date: 10/08/2020
 ms.author: allensu
 ms.custom: ''
 ms.openlocfilehash: d2d3bd43a0f17167e855d7e678a96cd79fe42237
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92777741"
 ---
 # <a name="failover-across-multiple-endpoints-with-azure-traffic-manager"></a>Feladatátvétel több végpont között az Azure Traffic Manager
@@ -62,12 +62,12 @@ Hozzon létre egy Azure Traffic Manager-profilt, és konfigurálja a terhelésel
 
 1. Hozzon létre egy Azure Traffic Manager-profilt a [Traffic Manager profil létrehozása](../traffic-manager/quickstart-create-traffic-manager-profile.md)című témakör lépéseit követve. 
 
-    * **Útválasztási módszer** , válassza a **Priority (prioritás** ) lehetőséget.
+    * **Útválasztási módszer**, válassza a **Priority (prioritás**) lehetőséget.
 
 2. Adja hozzá a CDN-végpontokat a Traffic Manager profilhoz a Traffic Manager- [végpontok hozzáadása](../traffic-manager/quickstart-create-traffic-manager-profile.md#add-traffic-manager-endpoints) című témakör lépéseit követve.
 
-    * **Írja be** a **külső végpontokat** .
-    * **Prioritás** , adjon meg egy számot.
+    * **Írja be** a **külső végpontokat**.
+    * **Prioritás**, adjon meg egy számot.
 
     Hozzon létre például egy **1** és **cdndemo101verizon.azureedge.net** prioritással rendelkező **cdndemo101akamai.azureedge.net** a **2-es** prioritással.
 
@@ -75,7 +75,7 @@ Hozzon létre egy Azure Traffic Manager-profilt, és konfigurálja a terhelésel
 
 
 ## <a name="configure-custom-domain-on-azure-cdn-and-azure-traffic-manager"></a>Egyéni tartomány konfigurálása a Azure CDN és az Azure Traffic Manager
-A CDN-és Traffic Manager-profilok konfigurálása után kövesse az alábbi lépéseket a DNS-hozzárendelés hozzáadásához és az egyéni tartomány regisztrálásához a CDN-végpontokon. Ebben a példában az Egyéni tartománynév a **cdndemo101. dustydogpetcare. online** .
+A CDN-és Traffic Manager-profilok konfigurálása után kövesse az alábbi lépéseket a DNS-hozzárendelés hozzáadásához és az egyéni tartomány regisztrálásához a CDN-végpontokon. Ebben a példában az Egyéni tartománynév a **cdndemo101.dustydogpetcare.online**.
 
 1. Nyissa meg az egyéni tartomány (például GoDaddy) tartományi szolgáltatójának webhelyét, és hozzon létre két DNS CNAME-bejegyzést. 
 
@@ -96,7 +96,7 @@ A CDN-és Traffic Manager-profilok konfigurálása után kövesse az alábbi lé
     >
 
 
-2.  Az Azure CDN-profilban válassza ki az első CDN-végpontot (Akamai). Válassza az **egyéni tartomány hozzáadása** és a bemeneti **cdndemo101. dustydogpetcare. online** lehetőséget. Győződjön meg arról, hogy az egyéni tartomány érvényesítése zöld színnel történik. 
+2.  Az Azure CDN-profilban válassza ki az első CDN-végpontot (Akamai). Válassza az **egyéni tartomány hozzáadása** és a bemeneti **cdndemo101.dustydogpetcare.online** lehetőséget. Győződjön meg arról, hogy az egyéni tartomány érvényesítése zöld színnel történik. 
 
     Azure CDN a **cdnverify** altartomány használatával ellenőrzi a DNS-hozzárendelést a regisztrációs folyamat befejezéséhez. További információ: [CNAME DNS-rekord létrehozása](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record). Ez a lépés lehetővé teszi, hogy a Azure CDN felismerje az egyéni tartományt, hogy válaszoljon a kéréseire.
     
@@ -110,7 +110,7 @@ A CDN-és Traffic Manager-profilok konfigurálása után kövesse az alábbi lé
 
     `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101verizon.azureedge.net`  
 
-4. A Azure CDN profilban válassza a második CDN-végpontot (Verizon), és ismételje meg a 2. lépést. Válassza az **egyéni tartomány hozzáadása** lehetőséget, és írja be a **cdndemo101. dustydogpetcare. online** értéket.
+4. A Azure CDN profilban válassza a második CDN-végpontot (Verizon), és ismételje meg a 2. lépést. Válassza az **egyéni tartomány hozzáadása** lehetőséget, és adja meg a **cdndemo101.dustydogpetcare.online**.
  
 A lépések elvégzése után a többszörös CDN szolgáltatás a feladatátvételi képességekkel együtt az Azure Traffic Manager-vel van konfigurálva. 
 

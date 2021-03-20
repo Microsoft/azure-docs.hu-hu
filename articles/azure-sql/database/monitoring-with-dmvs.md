@@ -11,13 +11,13 @@ ms.topic: how-to
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
-ms.date: 1/14/2021
-ms.openlocfilehash: b87d0a2446eb2b65c20ae0bef408320686cb5165
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 03/15/2021
+ms.openlocfilehash: 5c0de2c1589bfa495ab6ad287b998c403041674c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219130"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592149"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>A Microsoft Azure SQL Database és a felügyelt Azure SQL-példány teljesítményének monitorozása dinamikus felügyeleti nézetekkel
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,6 +31,10 @@ A Microsoft Azure SQL Database és az Azure SQL felügyelt példánya részben a
 - Tranzakcióval kapcsolatos dinamikus felügyeleti nézetek.
 
 A dinamikus felügyeleti nézetekkel kapcsolatos részletes információkat a [dinamikus felügyeleti nézetek és függvények (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)című témakörben talál.
+
+## <a name="monitor-with-sql-insights"></a>Figyelés SQL-alapú adatáttekintéssel
+
+[Azure monitor SQL](../../azure-monitor/insights/sql-insights-overview.md) -adatvizsgálatok eszköz az Azure SQL felügyelt példányainak, az Azure SQL-adatbázisok és a SQL Server példányoknak az Azure SQL virtuális gépeken való figyelésére. A szolgáltatás egy távoli ügynököt használ a dinamikus felügyeleti nézetek (DMV) adatainak rögzítésére és az adatok Azure-Log Analyticsba való átadására, ahol nyomon követhető és elemezhető. Ezeket az adatok megtekinthetők [Azure monitor](../../azure-monitor/overview.md) a megadott nézetekben, vagy közvetlenül a napló adatait is elérheti a lekérdezések futtatásához és a trendek elemzéséhez. Azure Monitor SQL-információk használatának megkezdéséhez tekintse meg az [SQL-adatfelismerések engedélyezése](../../azure-monitor/insights/sql-insights-enable.md)című témakört.
 
 ## <a name="permissions"></a>Engedélyek
 
@@ -769,6 +773,6 @@ CROSS APPLY sys.dm_exec_sql_text(plan_handle) AS q
 ORDER BY highest_cpu_queries.total_worker_time DESC;
 ```
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 [A Azure SQL Database és az Azure SQL felügyelt példányának bemutatása](sql-database-paas-overview.md)

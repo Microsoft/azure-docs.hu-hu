@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/28/2020
 ms.openlocfilehash: 8883263d6ddb2fb8ddc809f464288fcd282531bd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92788825"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>Választás a virtuális mag és a DTU beszerzési modelljei közül – Azure SQL Database és az SQL felügyelt példánya
@@ -162,11 +162,11 @@ Azok az ügyfelek, akik a hardveres változásokra érzékeny munkaterhelésekke
 
 ### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-service-tier-to-a-vcore-based-service-tier"></a>Szükség van-e az alkalmazás offline állapotba való átalakítására egy DTU-alapú szolgáltatási rétegről egy virtuális mag-alapú szolgáltatási rétegre?
 
-Nem. Nem kell offline állapotba hoznia az alkalmazást. Az új szolgáltatási rétegek egy egyszerű online átalakítási módszert kínálnak, amely hasonló a standard és a prémium szolgáltatási szint adatbázisainak frissítéséhez, és fordítva. A konverziót a Azure Portal, a PowerShell, az Azure CLI, a T-SQL vagy a REST API használatával indíthatja el. Lásd: [önálló adatbázisok kezelése](single-database-scale.md) és [rugalmas készletek kezelése](elastic-pool-overview.md).
+Nem. Nem kell offline állapotba hoznia az alkalmazást. Az új szolgáltatási rétegek egy egyszerű online átalakítási módszert kínálnak, amely hasonló a standard és a prémium szolgáltatási szint adatbázisainak frissítéséhez, és fordítva. A konverziót a Azure Portal, a PowerShell, az Azure CLI, a T-SQL vagy a REST API használatával indíthatja el. Lásd az [önálló adatbázisok kezelését](single-database-scale.md) és a [rugalmas készletek kezelését](elastic-pool-overview.md) ismertető részt.
 
 ### <a name="can-i-convert-a-database-from-a-service-tier-in-the-vcore-based-purchasing-model-to-a-service-tier-in-the-dtu-based-purchasing-model"></a>Átválthatok egy adatbázist a virtuális mag-alapú vásárlási modellben egy szolgáltatási rétegre a DTU-alapú vásárlási modellben?
 
-Igen, a Azure Portal, a PowerShell, az Azure CLI, a T-SQL vagy a REST API használatával könnyedén átalakíthatja az adatbázist bármely támogatott teljesítménybeli célkitűzésre. Lásd: [önálló adatbázisok kezelése](single-database-scale.md) és [rugalmas készletek kezelése](elastic-pool-overview.md).
+Igen, a Azure Portal, a PowerShell, az Azure CLI, a T-SQL vagy a REST API használatával könnyedén átalakíthatja az adatbázist bármely támogatott teljesítménybeli célkitűzésre. Lásd az [önálló adatbázisok kezelését](single-database-scale.md) és a [rugalmas készletek kezelését](elastic-pool-overview.md) ismertető részt.
 
 ## <a name="next-steps"></a>Következő lépések
 

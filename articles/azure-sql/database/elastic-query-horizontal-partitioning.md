@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
 ms.openlocfilehash: 148c4828309738a18dbda5fd35ea634e8384bfde
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792106"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>A kibővített felhőalapú adatbázisok (előzetes verzió) közötti jelentéskészítés
@@ -163,7 +163,7 @@ A DISTRIBUTion záradék meghatározza az ehhez a táblához használt adatelosz
 2. A **replikált** érték azt jelenti, hogy a tábla azonos példányszámban szerepel az egyes adatbázisokon. Az Ön felelőssége, hogy a replikák azonosak legyenek az adatbázisok között.
 3. **Kör alakú \_ A ROBIN** azt jelenti, hogy a tábla vízszintesen particionálva van egy alkalmazás-függő terjesztési módszer használatával.
 
-**Adatcsomag-referenciák** : a külső tábla DDL egy külső adatforrásra hivatkozik. A külső adatforrás egy szegmenses térképet határoz meg, amely a külső táblát biztosítja az adatrétegben található összes adatbázis megkereséséhez szükséges információkkal.
+**Adatcsomag-referenciák**: a külső tábla DDL egy külső adatforrásra hivatkozik. A külső adatforrás egy szegmenses térképet határoz meg, amely a külső táblát biztosítja az adatrétegben található összes adatbázis megkereséséhez szükséges információkkal.
 
 ### <a name="security-considerations"></a>Biztonsági szempontok
 

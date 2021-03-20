@@ -4,10 +4,10 @@ description: Ez a cikk a két ügyfél-szerepkört és a szerepkörökhöz megad
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: abca19e686d39338fcaa2e0b0c8126913135170b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75451900"
 ---
 # <a name="role-based-access-control-for-service-fabric-clients"></a>Szerepköralapú hozzáférés-vezérlés Service Fabric ügyfelek számára
@@ -89,9 +89,9 @@ A felhasználói hozzáférés-vezérlés típusa alapértelmezés szerint a kö
 A rendszergazdai hozzáférés-vezérlés szintén hozzáfér az előző műveletekhez.
 
 ## <a name="changing-default-settings-for-client-roles"></a>Az ügyfél szerepköreinek alapértelmezett beállításainak módosítása
-A fürt jegyzékfájljának fájljában szükség esetén rendszergazdai képességeket biztosíthat az ügyfélnek. A [fürt létrehozásakor](service-fabric-cluster-creation-via-portal.md)a **háló beállításai** lehetőségre kattintva módosíthatja az alapértelmezett értékeket, és megadhatja az előző beállításokat a **név**, a **rendszergazda**, a **felhasználó**és az **érték** mezőkben.
+A fürt jegyzékfájljának fájljában szükség esetén rendszergazdai képességeket biztosíthat az ügyfélnek. A [fürt létrehozásakor](service-fabric-cluster-creation-via-portal.md)a **háló beállításai** lehetőségre kattintva módosíthatja az alapértelmezett értékeket, és megadhatja az előző beállításokat a **név**, a **rendszergazda**, a **felhasználó** és az **érték** mezőkben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Service Fabric-fürt biztonsága](service-fabric-cluster-security.md)
 
 [Service Fabric fürt létrehozása](service-fabric-cluster-creation-via-portal.md)

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/20/2018
 ms.openlocfilehash: ed8d51adf5a93b470f287383a4d3eeb866b15236
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92791460"
 ---
 # <a name="data-sync-agent-for-sql-data-sync"></a>SQL-adatszinkronizálás adatszinkronizálási ügynök
@@ -34,7 +34,7 @@ Az adatszinkronizálási ügynök letöltéséhez nyissa meg a [SQL-adatszinkron
 
 Ha az adatszinkronizálási ügynököt csendesen szeretné telepíteni a parancssorból, adjon meg egy, az alábbi példához hasonló parancsot. Keresse meg a letöltött. msi fájl fájlnevét, és adja meg a saját értékeit a **TARGETDIRCDotNet** és a **SERVICEACCOUNT** argumentumhoz.
 
-- Ha nem ad meg értéket a **TARGETDIRCDotNet** , az alapértelmezett érték: `C:\Program Files (x86)\Microsoft SQL Data Sync 2.0` .
+- Ha nem ad meg értéket a **TARGETDIRCDotNet**, az alapértelmezett érték: `C:\Program Files (x86)\Microsoft SQL Data Sync 2.0` .
 
 - Ha a `LocalSystem` **SERVICEACCOUNT** értékeként adja meg, akkor SQL Server hitelesítést kell használnia, ha úgy konfigurálja az ügynököt, hogy az SQL Serverhoz kapcsolódjon.
 
@@ -98,9 +98,9 @@ Ha a helyi ügynököt egy másik számítógépről szeretné futtatni, mint am
 
 ### <a name="the-client-agent-install-uninstall-or-repair-fails"></a><a name="agent-install"></a> Sikertelen volt az ügyfél-ügynök telepítése, eltávolítása vagy javítása
 
-- **OK** . Ennek a hibának számos oka lehet. A hiba konkrét okának meghatározásához tekintse meg a naplókat.
+- **OK**. Ennek a hibának számos oka lehet. A hiba konkrét okának meghatározásához tekintse meg a naplókat.
 
-- **Megoldás** . A hiba konkrét okának megállapításához állítson elő és tekintse meg a Windows Installer naplókat. A naplózást bekapcsolhatja a parancssorba. Ha például a letöltött telepítőfájl `SQLDataSyncAgent-2.0-x86-ENU.msi` , a naplófájlokat a következő parancssorok segítségével hozhatja meg és vizsgálhatja meg:
+- **Megoldás**. A hiba konkrét okának megállapításához állítson elő és tekintse meg a Windows Installer naplókat. A naplózást bekapcsolhatja a parancssorba. Ha például a letöltött telepítőfájl `SQLDataSyncAgent-2.0-x86-ENU.msi` , a naplófájlokat a következő parancssorok segítségével hozhatja meg és vizsgálhatja meg:
 
   - Telepítés esetén: `msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
   - Eltávolítások esetén: `msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
@@ -111,9 +111,9 @@ Ha a helyi ügynököt egy másik számítógépről szeretné futtatni, mint am
 
 Az ügyfél ügynöke nem működik, még az eltávolításának megszakítása után is.
 
-- **OK** . Ennek az az oka, hogy a SQL-adatszinkronizálás ügyfél ügynöke nem tárolja a hitelesítő adatokat.
+- **OK**. Ennek az az oka, hogy a SQL-adatszinkronizálás ügyfél ügynöke nem tárolja a hitelesítő adatokat.
 
-- **Megoldás** . A következő két megoldás kipróbálására van lehetősége:
+- **Megoldás**. A következő két megoldás kipróbálására van lehetősége:
 
     -   A Services. msc segítségével adja meg újra az ügyfél ügynökének hitelesítő adatait.
     -   Távolítsa el ezt az ügynököt, majd telepítsen egy újat. Töltse le és telepítse a legújabb ügyfél-ügynököt a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=27693).
@@ -124,16 +124,16 @@ Amikor meglévő SQL Server adatbázist próbál hozzáadni egy szinkronizálás
 
 A probléma a következő esetekben fordulhat elő:
 
-- **OK** . Az ügyfél-ügynök és a szinkronizálási csoport különböző adatközpontokban található.
+- **OK**. Az ügyfél-ügynök és a szinkronizálási csoport különböző adatközpontokban található.
 
-- **Megoldás** . Az ügyfél-ügynöknek és a szinkronizálási csoportnak ugyanabban az adatközpontban kell lennie. Ennek beállításához két lehetőség közül választhat:
+- **Megoldás**. Az ügyfél-ügynöknek és a szinkronizálási csoportnak ugyanabban az adatközpontban kell lennie. Ennek beállításához két lehetőség közül választhat:
 
     -   Hozzon létre egy új ügynököt abban az adatközpontban, amelyben a szinkronizálási csoport található. Ezután regisztrálja az adatbázist az ügynökkel.
     -   Az aktuális szinkronizálási csoport törlése. Ezután hozza létre újra a szinkronizálási csoportot abban az adatközpontban, amelyben az ügynök található.
 
-- **OK** . Az ügyfél-ügynök listája nem aktuális.
+- **OK**. Az ügyfél-ügynök listája nem aktuális.
 
-- **Megoldás** . Állítsa le, majd indítsa újra az ügyfél-ügynök szolgáltatást.
+- **Megoldás**. Állítsa le, majd indítsa újra az ügyfél-ügynök szolgáltatást.
 
     A helyi ügynök csak az ügynök kulcsának első beadásakor tölti le a társított adatbázisok listáját. Nem tölti le a társított adatbázisok listáját a következő ügynök kulcsának beküldésekor. Az ügynök áthelyezése során regisztrált adatbázisok nem jelennek meg az eredeti ügynök példányában.
 
@@ -143,17 +143,17 @@ Felderíti, hogy az ügynök nem fut SQL Server üzemeltető számítógépen. A
 
 ![Adatszinkronizálási hiba 1069 párbeszédpanel](./media/sql-data-sync-agent-overview/sync-error-1069.png)
 
-- **OK** . Ennek a hibának a valószínű oka, hogy a helyi kiszolgálón lévő jelszó megváltozott az ügynök és az ügynök jelszavának létrehozása óta.
+- **OK**. Ennek a hibának a valószínű oka, hogy a helyi kiszolgálón lévő jelszó megváltozott az ügynök és az ügynök jelszavának létrehozása óta.
 
-- **Megoldás** . Frissítse az ügynök jelszavát az aktuális kiszolgáló jelszavára:
+- **Megoldás**. Frissítse az ügynök jelszavát az aktuális kiszolgáló jelszavára:
 
   1. Keresse meg az SQL-adatszinkronizálás ügyfél-ügynök szolgáltatást.  
     a. Válassza az **Indítás** elemet.  
     b. A keresőmezőbe írja be a **Services. msc** kifejezést.  
     c. A keresési eredmények között válassza a **szolgáltatások** lehetőséget.  
     d. A **szolgáltatások** ablakban görgessen a **SQL-adatszinkronizálás-ügynök** bejegyzéséhez.  
-  1. Kattintson a jobb gombbal **SQL-adatszinkronizálás ügynökre** , majd válassza a **Leállítás** lehetőséget.
-  1. Kattintson a jobb gombbal **SQL-adatszinkronizálás ügynökre** , majd válassza a **Tulajdonságok** lehetőséget.
+  1. Kattintson a jobb gombbal **SQL-adatszinkronizálás ügynökre**, majd válassza a **Leállítás** lehetőséget.
+  1. Kattintson a jobb gombbal **SQL-adatszinkronizálás ügynökre**, majd válassza a **Tulajdonságok** lehetőséget.
   1. **SQL-adatszinkronizálás ügynök tulajdonságai** lapon válassza a **Bejelentkezés** lapot.
   1. A **jelszó** mezőbe írja be a jelszavát.
   1. A **Jelszó megerősítése** mezőbe írja be újra a jelszót.
@@ -167,7 +167,7 @@ Miután létrehozta vagy újból létrehozta az ügynök kulcsát, megpróbálja
 
 ![Szinkronizálási hiba párbeszédpanel – nem lehet elküldeni az ügynök kulcsát](./media/sql-data-sync-agent-overview/sync-error-cant-submit-agent-key.png)
 
-- **Előfeltételek** . A folytatás előtt tekintse át a következő előfeltételeket:
+- **Előfeltételek**. A folytatás előtt tekintse át a következő előfeltételeket:
 
   - A SQL-adatszinkronizálás Windows-szolgáltatás fut.
 
@@ -177,12 +177,12 @@ Miután létrehozta vagy újból létrehozta az ügynök kulcsát, megpróbálja
 
   - A rendszer hozzáadja a helyi IP-címet a szinkronizálási metaadat-adatbázis kiszolgálói vagy adatbázis-tűzfalszabály-szabályához.
 
-- **OK** . Az ügynök kulcsa egyedileg azonosítja az egyes helyi ügynököket. A kulcsnak két feltételnek kell megfelelnie:
+- **OK**. Az ügynök kulcsa egyedileg azonosítja az egyes helyi ügynököket. A kulcsnak két feltételnek kell megfelelnie:
 
   -   Az SQL-adatszinkronizálás-kiszolgálón lévő ügyfél-ügynök kulcsnak és a helyi számítógépnek azonosnak kell lennie.
   -   Az ügyfél-ügynök kulcsa csak egyszer használható.
 
-- **Megoldás** . Ha az ügynök nem működik, ez azért van, mert az egyik vagy mindkét feltétel nem teljesül. Az ügynök újbóli működésének megkezdéséhez:
+- **Megoldás**. Ha az ügynök nem működik, ez azért van, mert az egyik vagy mindkét feltétel nem teljesül. Az ügynök újbóli működésének megkezdéséhez:
 
   1. Új kulcs létrehozása.
   1. Alkalmazza az új kulcsot az ügynökre.
@@ -194,27 +194,27 @@ Miután létrehozta vagy újból létrehozta az ügynök kulcsát, megpróbálja
   1. Nyissa meg a SqlAzureDataSyncAgent alkalmazást.
   1. Válassza a **küldési ügynök kulcsa** lehetőséget.
   1. A rendelkezésre álló helyen illessze be a kulcsot a vágólapról.
-  1. Kattintson az **OK** gombra.
+  1. Válassza az **OK** lehetőséget.
   1. A program lezárása.
 
 ### <a name="the-client-agent-cant-be-deleted-from-the-portal-if-its-associated-on-premises-database-is-unreachable"></a><a name="agent-delete"></a> Az ügyfél ügynöke nem törölhető a portálról, ha a hozzá tartozó helyszíni adatbázis nem érhető el
 
 Ha egy SQL-adatszinkronizálás ügyfél-ügynökkel regisztrált helyi végpont (azaz adatbázis) nem érhető el, az ügyfél ügynöke nem törölhető.
 
-- **OK** . Nem lehet törölni a helyi ügynököt, mert a nem elérhető adatbázis még regisztrálva van az ügynökben. Amikor megpróbálja törölni az ügynököt, a törlési folyamat megkísérli elérni az adatbázist, ami nem sikerül.
+- **OK**. Nem lehet törölni a helyi ügynököt, mert a nem elérhető adatbázis még regisztrálva van az ügynökben. Amikor megpróbálja törölni az ügynököt, a törlési folyamat megkísérli elérni az adatbázist, ami nem sikerül.
 
-- **Megoldás** . Törölje a nem elérhető adatbázist a "kényszerített Törlés" paranccsal.
+- **Megoldás**. Törölje a nem elérhető adatbázist a "kényszerített Törlés" paranccsal.
 
 > [!NOTE]
 > Ha a szinkronizálási metaadatok táblái a "kényszerített Törlés" után is megmaradnak, használja a (z `deprovisioningutil.exe` ) t a (z) használatával
 
 ### <a name="local-sync-agent-app-cant-connect-to-the-local-sync-service"></a><a name="agent-connect"></a> A helyi szinkronizáló ügynök alkalmazás nem tud kapcsolódni a helyi szinkronizálási szolgáltatáshoz
 
-- **Megoldás** . Próbálja meg a következőket:
+- **Megoldás**. Próbálja meg a következőket:
 
   1. Lépjen ki az alkalmazásból.  
   1. Nyissa meg a összetevő-szolgáltatások panelt.  
-    a. A tálcán a keresőmezőbe írja be a **Services. msc parancsot** .  
+    a. A tálcán a keresőmezőbe írja be a **Services. msc parancsot**.  
     b. A keresési eredmények között kattintson duplán a **szolgáltatások** elemre.  
   1. Állítsa le a **SQL-adatszinkronizálás** szolgáltatást.
   1. Indítsa újra a **SQL-adatszinkronizálás** szolgáltatást.  

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 5fbd523a38b3c4860316e45b8b7c03a17de19499
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92678341"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>C# Service Fabric-alkalmazások fejlesztése a Visual Studio Code-ban
@@ -57,7 +57,7 @@ Az alkalmazásnak ekkor meg kell jelennie a VS Code munkaterületen.
 ## <a name="deploy-the-application-to-the-local-cluster"></a>Az alkalmazás központi telepítése a helyi fürtre
 Az alkalmazás létrehozása után üzembe helyezheti azt a helyi fürtön. 
 
-1. A **parancs palettáján** válassza ki a **Service Fabric: Deploy Application (localhost) parancsot** . A telepítési folyamat kimenetét az integrált terminálba küldi a rendszer.
+1. A **parancs palettáján** válassza ki a **Service Fabric: Deploy Application (localhost) parancsot**. A telepítési folyamat kimenetét az integrált terminálba küldi a rendszer.
 
    ![Alkalmazás üzembe helyezése parancs a VS Code-ban](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-deploy-application.png)
 
@@ -74,7 +74,7 @@ Az alkalmazás helyi fürtön való üzembe helyezése mellett közzéteheti az 
 
 1. Győződjön meg arról, hogy az alkalmazást a fenti utasítások alapján építették. Frissítse a létrehozott konfigurációs fájlt a `Cloud.json` közzétenni kívánt távoli fürt részleteivel.
 
-2. A **parancs palettáján** válassza ki a **Service Fabric: Application publish (alkalmazás közzététele) parancsot** . A telepítési folyamat kimenetét az integrált terminálba küldi a rendszer.
+2. A **parancs palettáján** válassza ki a **Service Fabric: Application publish (alkalmazás közzététele) parancsot**. A telepítési folyamat kimenetét az integrált terminálba küldi a rendszer.
 
    ![Alkalmazás közzététele parancs a VS Code-ban](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
 
@@ -101,7 +101,7 @@ Töréspont és hibakeresés beállításához hajtsa végre a következő lép�
 
    ![Elsődleges folyamat](./media/service-fabric-develop-csharp-applications-with-vs-code/select-process.png)
 
-5. A *CounterService.cs* -fájlban lévő töréspont nagyon gyorsan fog megjelenni. Ezután megismerheti a helyi változók értékeit. A VS Code tetején található hibakeresés eszköztár használatával folytathatja a végrehajtást, átléphet a vonalakon, megkezdheti a metódusokat, vagy kiléphet az aktuális metódusból. 
+5. A *CounterService. cs* fájl töréspontja nagyon gyorsan fog megjelenni. Ezután megismerheti a helyi változók értékeit. A VS Code tetején található hibakeresés eszköztár használatával folytathatja a végrehajtást, átléphet a vonalakon, megkezdheti a metódusokat, vagy kiléphet az aktuális metódusból. 
 
    ![Hibakeresési értékek](./media/service-fabric-develop-csharp-applications-with-vs-code/breakpoint-hit.png)
 

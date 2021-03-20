@@ -1,5 +1,5 @@
 ---
-title: Válaszadás az Azure Defender Key Vault riasztásokra
+title: Válaszadás a Key Vaulthoz készült Azure Defender-riasztásokra
 description: Ismerje meg, hogy milyen lépésekkel lehet reagálni az Azure Defender és a Key Vault riasztására.
 author: memildin
 ms.author: memildin
@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 67c556e44f07240b1ad1bcde61f40042da46def8
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96122203"
 ---
 # <a name="respond-to-azure-defender-for-key-vault-alerts"></a>Válaszadás Key Vaulthoz készült Azure Defender-riasztásokra
-Ha értesítést kap a Key Vault Azure Defendertől, javasoljuk, hogy vizsgálja meg a riasztást, és válaszoljon az alább leírtak szerint. Az Azure Defender for Key Vault megvédi az alkalmazásokat és a hitelesítő adatokat, így még akkor is, ha már ismeri a riasztást kiváltó alkalmazást vagy felhasználót, fontos, hogy ellenőrizze az összes riasztást körülvevő helyzetet.  
+Ha értesítést kap a Key Vault Azure Defendertől, javasoljuk, hogy vizsgálja meg a riasztást, és válaszoljon az alább leírtak szerint. Az Azure Defender for Key Vault megvédi az alkalmazásokat és a hitelesítő adatokat, így még ha ismeri is a riasztást kiváltó alkalmazást vagy felhasználót, fontos, hogy minden riasztás körülményeit ellenőrizze.  
 
 Az Azure Defender által Key Vault összes riasztása a következő elemeket tartalmazza:
 
@@ -23,7 +23,7 @@ Az Azure Defender által Key Vault összes riasztása a következő elemeket tar
 - A gyanús erőforrás egyszerű felhasználóneve vagy IP-címe
 
 > [!TIP]
-> A bekövetkezett hozzáférés *típusától* függően előfordulhat, hogy egyes mezők nem lesznek elérhetők. Ha például egy alkalmazás hozzáfért a kulcstartóhoz, akkor nem jelenik meg a hozzá tartozó egyszerű felhasználónév. Ha a forgalom az Azure-on kívülről származik, nem jelenik meg az objektum azonosítója.
+> A bekövetkezett hozzáférés *típusától* függően előfordulhat, hogy egyes mezők nem lesznek elérhetők. Ha például egy alkalmazás fért hozzá a Key Vaulthoz, nem fogja látni a társított egyszerű felhasználónevet. Ha a forgalom az Azure-on kívülről érkezett, nem fogja látni az objektumazonosítót.
 
 ## <a name="step-1-contact"></a>1. lépés Kapcsolattartó
 
@@ -66,7 +66,7 @@ Ha lefordította a gyanús felhasználó vagy alkalmazás által elért titkok, 
     1. Ha a feltört hitelesítő adatokat használták, az alkalmazás tulajdonosának azonosítania kell az elért adatokat, és csökkentenie kell a hatását.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oldal azt ismerteti, hogyan lehet reagálni az Azure Defender és a Key Vault közötti riasztásokra. A kapcsolódó információk a következő lapokon találhatók:
 

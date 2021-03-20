@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
 ms.openlocfilehash: 586dad7439cc57ed2c863ee5f6692e12f7a78c50
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92781226"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>A kibővített felhőalapú adatbázisok (előzetes verzió) közötti jelentés
@@ -125,9 +125,9 @@ Figyelje meg, hogy a lekérdezés összesíti az összes szegmens eredményét, 
 
    ![Excel-importálás más forrásokból][5]
 4. Az **adatkapcsolatok varázslóban** adja meg a kiszolgáló nevét és a bejelentkezési hitelesítő adatokat. Ezután kattintson a **Tovább** gombra.
-5. A párbeszédpanelen **válassza ki a kívánt adatkészletet tartalmazó adatbázist** , és válassza ki a **ElasticDBQuery** -adatbázist.
+5. A párbeszédpanelen **válassza ki a kívánt adatkészletet tartalmazó adatbázist**, és válassza ki a **ElasticDBQuery** -adatbázist.
 6. Válassza ki a **Customers (ügyfelek)** táblát a lista nézetben, és kattintson a **tovább** gombra. Ezután kattintson a **Befejezés** gombra.
-7. Az **adatimportálás** űrlapon a **válassza ki, hogyan szeretné megtekinteni az adatait a munkafüzetben** , válassza a **tábla** lehetőséget, majd kattintson **az OK** gombra.
+7. Az **adatimportálás** űrlapon a **válassza ki, hogyan szeretné megtekinteni az adatait a munkafüzetben**, válassza a **tábla** lehetőséget, majd kattintson **az OK** gombra.
 
 Az **ügyfelek** tábla összes sora, amely különböző szegmensekben van tárolva, feltölti az Excel-lapot.
 

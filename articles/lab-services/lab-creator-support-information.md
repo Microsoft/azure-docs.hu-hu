@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan tekinthetik meg a labor-készítők
 ms.date: 06/26/2020
 ms.topic: how-to
 ms.openlocfilehash: 3e04245c3f2d9b0a4f4e98ae21287983cf679ec6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85445049"
 ---
 # <a name="view-support-information-lab-creator-in-azure-lab-services"></a>Támogatási információk megtekintése (tesztkörnyezet-létrehozó Azure Lab Services)
@@ -24,11 +24,11 @@ Ezekkel az információkkal segítséget kaphat, ha bármilyen technikai problé
 ## <a name="view-support-information"></a>Támogatási információk megtekintése
 1. Jelentkezzen be [Azure Lab Services portálra](https://labs.azure.com).
 2. A lap jobb felső sarkában válassza a kérdőjel (**?**) lehetőséget. 
-3. Győződjön meg arról, hogy a **Megtekintés támogatási webhelyre**, **e-mail-támogatásra**és a **telefonos támogatásra**mutató hivatkozásokat lát.
+3. Győződjön meg arról, hogy a **Megtekintés támogatási webhelyre**, **e-mail-támogatásra** és a **telefonos támogatásra** mutató hivatkozásokat lát.
 
     ![Támogatási információk megtekintése](./media/lab-creator-support-information/support-information.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkből megtudhatja, hogyan tekintheti meg a tesztkörnyezet felhasználói a támogatási kapcsolattartási adatokat:
 
 - [Kapcsolattartási adatok megtekintése (tesztkörnyezet felhasználója)](lab-user-support-information.md)

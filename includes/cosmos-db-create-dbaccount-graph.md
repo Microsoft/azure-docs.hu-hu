@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.date: 01/27/2020
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: 736ab630b035ae1a668332eb5ab5aa9530ef0e88
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95972424"
 ---
 1. Egy új böngészőablakban jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
@@ -41,7 +41,7 @@ ms.locfileid: "95972424"
 
     Válassza a **felülvizsgálat + létrehozás** lehetőséget. Kihagyhatja a **hálózat** és **címkék** szakaszt. 
 
-    ![Az Azure Cosmos DB Új fiók lapja](./media/cosmos-db-create-dbaccount-graph/azure-cosmos-db-create-new-account.png)
+    ![Az Azure Cosmos DB új fiók lapja](./media/cosmos-db-create-dbaccount-graph/azure-cosmos-db-create-new-account.png)
 
 4. A fiók létrehozása eltarthat néhány percig. Várja meg, amíg a portálon megjelenik a **Gratulálunk! A Azure Cosmos DB fiók létrehozása** lap.
    

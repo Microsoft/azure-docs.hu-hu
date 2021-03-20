@@ -6,10 +6,10 @@ ms.date: 12/14/2020
 ms.topic: quickstart
 ms.author: tomfitz
 ms.openlocfilehash: 1d3e7c6ee6d19d4d2cd3828d5abf95ccb5457e76
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97511348"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Gyors útmutató: sablon létrehozása és üzembe helyezése specifikáció (előzetes verzió)
@@ -103,7 +103,7 @@ A sablon specifikációja egy nevű erőforrástípus `Microsoft.Resources/templ
     - **Hely**: válasszon egy helyet az erőforráscsoportnak. Például:  **USA 2. nyugati** régiója.
     - **Verzió**: adja meg a sablon specifikációjának verzióját. használja a **1,0**-es verziót.
 
-1. Válassza a **felülvizsgálat + létrehozás** lehetőséget.
+1. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
 1. Válassza a **Létrehozás** lehetőséget.
 
 # <a name="arm-template"></a>[ARM-sablon](#tab/azure-resource-manager)
@@ -641,6 +641,6 @@ Az ebben a rövid útmutatóban üzembe helyezett erőforrás törléséhez tör
 
 1. A felső menüben válassza az Erőforráscsoport törlése lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretne többet megtudni arról, hogyan hozható létre csatolt sablonokat tartalmazó sablon-specifikáció, tekintse meg a [csatolt sablon specifikációjának létrehozása](template-specs-create-linked.md)című témakört.

@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 12/18/2019
 ms.custom: seodec18, mvc, devx-track-azurecli
 ms.openlocfilehash: 2eda960c53fc7ba851ffcfbe96bd8e9a48844910
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92746947"
 ---
 # <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>Oktatóanyag: Azure Container Registry létrehozása és tároló-rendszerkép leküldése
@@ -40,7 +40,7 @@ Először is szerezze be az Azure Container Registry bejelentkezési kiszolgál�
 az acr show --name <acrName> --query loginServer --output table
 ```
 
-Tehát ha a tárolójegyzék neve *mycontainerregistry082* :
+Tehát ha a tárolójegyzék neve *mycontainerregistry082*:
 
 ```azurecli
 az acr show --name mycontainerregistry082 --query loginServer --output table

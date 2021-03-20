@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: bikang
 ms.openlocfilehash: 7d361d44c349bc7a6e3c041f78d00ad66182fa15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84711034"
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Azure Service Fabric-alkalmazás kezelése az Azure Service Fabric parancssori felület (sfctl) használatával
@@ -162,7 +162,7 @@ Ha egy alkalmazás frissítése folyamatban van, az állapot a parancs használa
 
 Végül, ha folyamatban van egy frissítés, és meg kell szakítani, a használatával `sfctl application upgrade-rollback` visszaállíthatja a frissítést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A CLI alapjai Service Fabric](service-fabric-cli.md)
 * [Első lépések a Service Fabric Linuxon](service-fabric-get-started-linux.md)

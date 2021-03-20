@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4fd119238476b842a4dba1efeec86544ca263920
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90980123"
 ---
 # <a name="change-lifecycle-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomag életciklus-beállításainak módosítása az Azure AD-jogosultságok kezelésében
@@ -38,7 +38,7 @@ Egy hozzáférési csomag életciklus-beállításainak módosításához meg ke
 
 **Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
 
-1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás** elemre.
 
 1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
 

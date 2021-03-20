@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 120335a7bce83bc3d4771ea64f665d67c7d1079a
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98572799"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Teljesítmény és méretezés a Durable Functionsben (Azure Functions)
@@ -264,7 +264,7 @@ Ha éles alkalmazások Durable Functions használatát tervezi használni, fonto
 
 A következő táblázat a korábban ismertetett forgatókönyvek várható *maximális* átviteli számát mutatja. A "példány" egy Orchestrator függvény egyetlen példányára hivatkozik, amely egy kisméretű ([a1](../../virtual-machines/sizes-previous-gen.md)) virtuális gépen fut Azure app Serviceban. A rendszer minden esetben feltételezi, hogy a [kiterjesztett munkamenetek](#orchestrator-function-replay) engedélyezve vannak. A tényleges eredmények a kód által végzett CPU-vagy I/O-műveletektől függően változhatnak.
 
-| Használati eset | Maximális átviteli sebesség |
+| Eset | Maximális átviteli sebesség |
 |-|-|
 | Szekvenciális tevékenységek végrehajtása | 5 tevékenység másodpercenként, a példányok száma szerint |
 | Párhuzamos tevékenységek végrehajtása (ventilátor – kimenő) | 100 tevékenység/másodperc/példány |
@@ -277,7 +277,7 @@ A következő táblázat a korábban ismertetett forgatókönyvek várható *max
 
 Ha nem látja a várt átviteli sebességet, és a CPU és a memóriahasználat állapota Kifogástalan, ellenőrizze, hogy az ok a [Storage-fiók állapotára](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance)vonatkozik-e. Az Durable Functions bővítmény jelentős terhelést helyezhet el egy Azure Storage-fiókban, és a megfelelő terhelés miatt a Storage-fiókok szabályozása is lehetséges.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Tudnivalók a vész-helyreállításról és a földrajzi eloszlásról](durable-functions-disaster-recovery-geo-distribution.md)

@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 5d85003ca7b4307c308914484502ae03269f66ac
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98741111"
 ---
 # <a name="how-to-update-an-azure-cloud-service-classic"></a>Azure Cloud Service (klasszikus) frissítése
@@ -51,18 +51,18 @@ A következő táblázat a szolgáltatásnak a frissítés során engedélyezett
 
 | Az üzemeltetés, a szolgáltatások és a szerepkörök számára engedélyezett módosítások | Helyben történő frissítés | Előkészített (VIP swap) | Törlés és újbóli üzembe helyezés |
 | --- | --- | --- | --- |
-| Operációs rendszer verziója |Igen |Igen |Igen |
-| .NET megbízhatósági szint |Igen |Igen |Igen |
-| <sup>1</sup> . virtuális gép mérete |Igen<sup>2</sup> |Igen |Igen |
-| Helyi tárolási beállítások |Csak<sup>2</sup> |Igen |Igen |
-| Szerepkörök hozzáadása vagy eltávolítása egy szolgáltatásban |Igen |Igen |Igen |
-| Egy adott szerepkör példányainak száma |Igen |Igen |Igen |
+| Operációs rendszer verziója |Igen |Igen |Yes |
+| .NET megbízhatósági szint |Igen |Igen |Yes |
+| <sup>1</sup> . virtuális gép mérete |Igen<sup>2</sup> |Igen |Yes |
+| Helyi tárolási beállítások |Csak<sup>2</sup> |Igen |Yes |
+| Szerepkörök hozzáadása vagy eltávolítása egy szolgáltatásban |Igen |Igen |Yes |
+| Egy adott szerepkör példányainak száma |Igen |Igen |Yes |
 | A szolgáltatáshoz tartozó végpontok száma vagy típusa |Igen<sup>2</sup> |Nem |Igen |
-| A konfigurációs beállítások nevei és értékei |Igen |Igen |Igen |
-| A konfigurációs beállítások értékei (de nem nevei) |Igen |Igen |Igen |
-| Új tanúsítványok hozzáadása |Igen |Igen |Igen |
-| Meglévő tanúsítványok módosítása |Igen |Igen |Igen |
-| Új kód üzembe helyezése |Igen |Igen |Igen |
+| A konfigurációs beállítások nevei és értékei |Igen |Igen |Yes |
+| A konfigurációs beállítások értékei (de nem nevei) |Igen |Igen |Yes |
+| Új tanúsítványok hozzáadása |Igen |Igen |Yes |
+| Meglévő tanúsítványok módosítása |Igen |Igen |Yes |
+| Új kód üzembe helyezése |Igen |Igen |Yes |
 
 <sup>1</sup> a méret változása a felhőalapú szolgáltatás számára elérhető méretek részhalmazára korlátozódik.
 
@@ -183,7 +183,7 @@ Az alábbi ábra azt szemlélteti, hogy a két szerepkört tartalmazó szolgált
 >
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [A Cloud Services felügyelete](cloud-services-how-to-manage-portal.md)  
 [A Cloud Services figyelése](cloud-services-how-to-monitor.md)  
 [A Cloud Services Konfigurálása](cloud-services-how-to-configure-portal.md)

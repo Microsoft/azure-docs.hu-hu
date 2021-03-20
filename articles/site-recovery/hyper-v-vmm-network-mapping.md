@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 6b68b4c943ec96620427978c2309f27e1fb1f217
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74082563"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Hálózati leképezés előkészítése a Hyper-V virtuális gép vész-helyreállítására az Azure-ba
@@ -39,7 +39,7 @@ A hálózati megfeleltetés a következőképpen működik:
 Ha másodlagos helyre végzi a replikálást, a hálózati leképezések a forrás VMM-kiszolgálón lévő virtuálisgép-hálózatok és a virtuálisgép-hálózatok között a cél VMM-kiszolgálón vannak. A leképezés a következőket hajtja végre:
 
 - **Hálózati kapcsolat**– a virtuális gépeket a megfelelő hálózatokhoz csatlakoztatja a feladatátvételt követően. A replika virtuális gép a forrás hálózatra leképezett célként megadott hálózathoz fog csatlakozni.
-- **Optimális**virtuálisgép-elhelyezés – optimálisan helyezi el a replika virtuális gépeket a Hyper-V-gazdagép-kiszolgálókon. A replika virtuális gépek olyan gazdagépekre vannak elhelyezve, amelyek hozzáférnek a leképezett virtuálisgép-hálózatokhoz.
+- **Optimális** virtuálisgép-elhelyezés – optimálisan helyezi el a replika virtuális gépeket a Hyper-V-gazdagép-kiszolgálókon. A replika virtuális gépek olyan gazdagépekre vannak elhelyezve, amelyek hozzáférnek a leképezett virtuálisgép-hálózatokhoz.
 - **Nincs hálózati leképezés**– ha nem konfigurálja a hálózati leképezést, a replika virtuális gépek nem lesznek csatlakoztatva a feladatátvételt követően bármely virtuálisgép-hálózathoz.
 
 A hálózati megfeleltetés a következőképpen működik:
@@ -120,7 +120,7 @@ A VMNetwork1-Chicago hálózati leképezése módosult. | A VM-1 a VMNetwork1-Ch
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További](hyper-v-vmm-networking.md) információ IP-címzés feladatátvétel után másodlagos VMM-helyre.
 - [További](concepts-on-premises-to-azure-networking.md) információ IP-címzés az Azure-ba történő feladatátvétel után.

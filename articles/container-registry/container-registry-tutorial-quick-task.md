@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
 ms.openlocfilehash: b218f47348d5a26297f14c4bc788a6cf6b78cc60
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96030329"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Oktatóanyag: Tárolólemezképek buildelése és üzembe helyezése a felhőben az Azure Container Registry Tasks használatával
@@ -289,7 +289,7 @@ az group delete --resource-group $RES_GROUP
 az ad sp delete --id http://$ACR_NAME-pull
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután egy gyors feladattal tesztelte a belső ciklust, konfiguráljon egy **összeállítási feladatot** a tárolórendszerképek összeállításának automatikus aktiválására, amikor forráskódot véglegesít egy Git-adattárban:
 

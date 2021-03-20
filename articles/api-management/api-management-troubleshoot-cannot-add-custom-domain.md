@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/19/2019
 ms.author: tehnoonr
 ms.openlocfilehash: a09c15466a4a9f62b2696b087cb7ab23cc767379
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75430573"
 ---
 # <a name="failed-to-update-api-management-service-hostnames"></a>Nem sikerült frissíteni API Management Service-gazdagépeket
@@ -38,12 +38,12 @@ A API Management szolgáltatásnak nincs engedélye arra, hogy hozzáférjen az 
 
 A probléma megoldásához kövesse az alábbi lépéseket:
 
-1. Nyissa meg a [Azure Portal](Https://portal.azure.com), válassza ki a API Management példányt, majd válassza a **felügyelt identitások**lehetőséget. Győződjön meg arról, hogy a **regisztráció a Azure Active Directory** beállítás értéke **Igen**. 
+1. Nyissa meg a [Azure Portal](Https://portal.azure.com), válassza ki a API Management példányt, majd válassza a **felügyelt identitások** lehetőséget. Győződjön meg arról, hogy a **regisztráció a Azure Active Directory** beállítás értéke **Igen**. 
     ![Regisztrálás az Azure Active Director-ban](./media/api-management-troubleshoot-cannot-add-custom-domain/register-with-aad.png)
 1. A Azure Portal nyissa meg a **Key Vaults** szolgáltatást, és válassza ki az egyéni tartományhoz használni kívánt kulcstartót.
-1. Válassza a **hozzáférési szabályzatok**lehetőséget, és győződjön meg arról, hogy van-e olyan egyszerű szolgáltatásnév, amely megfelel az API Management Service-példány nevével. Ha van, válassza ki a szolgáltatásnevet, és győződjön meg arról, hogy a **Get** engedély szerepel a **titkos engedélyek**területen.  
+1. Válassza a **hozzáférési szabályzatok** lehetőséget, és győződjön meg arról, hogy van-e olyan egyszerű szolgáltatásnév, amely megfelel az API Management Service-példány nevével. Ha van, válassza ki a szolgáltatásnevet, és győződjön meg arról, hogy a **Get** engedély szerepel a **titkos engedélyek** területen.  
     ![Hozzáférési szabályzat hozzáadása a szolgáltatásnév számára](./media/api-management-troubleshoot-cannot-add-custom-domain/access-policy.png)
-1. Ha a API Management szolgáltatás nem szerepel a listában, válassza a **hozzáférési házirend hozzáadása**lehetőséget, majd hozza létre a következő hozzáférési szabályzatot:
+1. Ha a API Management szolgáltatás nem szerepel a listában, válassza a **hozzáférési házirend hozzáadása** lehetőséget, majd hozza létre a következő hozzáférési szabályzatot:
     - **Konfigurálás sablonból**: nincs
     - **Válasszon rendszerbiztonsági tag**: keresse meg a API Management szolgáltatás nevét, majd válassza ki a listából.
     - **Kulcs engedélyei**: nincs
@@ -54,7 +54,7 @@ A probléma megoldásához kövesse az alábbi lépéseket:
 
 Győződjön meg arról, hogy a probléma megoldódott-e. Ehhez próbálja meg létrehozni az egyéni tartományt a API Management szolgáltatásban a Key Vault tanúsítvány használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a API Management szolgáltatásról:
 
 - További [videók](https://azure.microsoft.com/documentation/videos/index/?services=api-management) a API Managementról.

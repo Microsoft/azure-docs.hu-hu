@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: ae7fd5a7c9bc858cb18473374e7bd5589717eac6
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98742080"
 ---
 # <a name="get-started-with-azure-cloud-services-classic-and-aspnet"></a>Ismerkedés az Azure Cloud Services (klasszikus) és a ASP.NET használatába
@@ -407,7 +407,7 @@ Ha fájlokat szeretne hozzáadni egy projekthez vagy mappához, kattintson a job
 1. A ContosoAdsCommon projektben törölje a *Class1.cs* fájlt, és a helyére illessze be az *Ad.cs* és a *ContosoAdscontext.cs* fájlt a letöltött projektből.
 2. A ContosoAdsWeb projektben adja hozzá az alábbi fájlokat a letöltött projektből.
 
-   * *Global.asax.cs*.  
+   * *Global. asax. cs*.  
    * A *Views\Shared* mappában: *\_Layout.cshtml*.
    * A *Views\Home* mappában: *Layout.cshtml*.
    * A *Controllers* mappában: *AdController.cs*.
@@ -532,7 +532,7 @@ A *Views\Home\Index.cshtml* fájl kategóriahivatkozásokat jelenít meg a kezd�
 ```
 
 ### <a name="contosoadsweb---adcontrollercs"></a>ContosoAdsWeb – AdController.cs
-A *AdController.cs* fájlban a konstruktor meghívja a `InitializeStorage` metódust olyan Azure Storage ügyféloldali függvénytár-objektumok létrehozásához, amelyek API-t biztosítanak a blobok és a várólisták használatához.
+A *AdController. cs* fájlban a konstruktor meghívja a `InitializeStorage` metódust olyan Azure Storage ügyféloldali függvénytár-objektumok létrehozásához, amelyek API-t biztosítanak a blobok és a várólisták használatával való munkához.
 
 Ezután a kód lekér egy hivatkozást a *képek* blobtárolóra, ahogy azt korábban a *Global.asax.cs* esetében is láthatta. Mindeközben beállít egy webalkalmazásokhoz használható alapértelmezett [újrapróbálkozási házirendet](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling). Az alapértelmezett exponenciális leállítási újrapróbálkozási szabályzata azt eredményezheti, hogy a webalkalmazás nem válaszol egy percnél hosszabb ideig az átmeneti hibák ismételt újrapróbálkozásakor. Az itt megadott újrapróbálkozási szabályzat minden próbálkozás után három másodpercet vár, legfeljebb három alkalommal.
 
@@ -762,7 +762,7 @@ Ha a teljes emulátor használatára szeretné módosítani a projekt beállít�
 
 Az alkalmazás teljes emulátorral való futtatásához rendszergazdai jogosultságokkal kell megnyitnia a Visual Studiót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Contoso Ads alkalmazás kialakítása szándékosan egyszerű az első lépéseket ismertető oktatóanyag kedvéért. Nem valósítja meg például a [függőségi beszúrást](https://www.asp.net/mvc/tutorials/hands-on-labs/aspnet-mvc-4-dependency-injection) vagy a [működési minták adattárát és egységét](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application#repo), nem [használ felületet a naplózáshoz](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry#log), nem használ [EF Code First áttelepítést](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application) az adatmodellek kezeléséhez vagy [EF-kapcsolati rugalmasságot](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application) az átmeneti hálózati hibák kezeléséhez stb.
 
 Az alábbiakban példákat talál felhőszolgáltatás-alkalmazásokra, amelyek több valós kódolási gyakorlatot mutatnak be az egyszerűbbektől az összetettebbekig:

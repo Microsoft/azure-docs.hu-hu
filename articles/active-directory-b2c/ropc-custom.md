@@ -12,10 +12,10 @@ ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5d6fb23d7325347a1b27165d3e9bc3bf33797682
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95994356"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Az erőforrás-tulajdonosi jelszó hitelesítő adatainak konfigurálása Azure Active Directory B2C egyéni házirend használatával
@@ -30,7 +30,7 @@ Azure Active Directory B2C (Azure AD B2C) esetében az erőforrás-tulajdonos je
 
 Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az [Egyéni szabályzatokkal Azure Active Directory B2Cban](custom-policy-get-started.md).
 
-## <a name="register-an-application"></a>Alkalmazás regisztrálása
+## <a name="register-an-application"></a>Egy alkalmazás regisztrálása
 
 [!INCLUDE [active-directory-b2c-appreg-ropc](../../includes/active-directory-b2c-appreg-ropc.md)]
 
@@ -330,7 +330,7 @@ A sikeres válasz a következő példához hasonlít:
 
 Azure AD B2C megfelel a OAuth 2,0 szabványoknak a nyilvános ügyfél erőforrás-tulajdonos jelszavának hitelesítő adataihoz, és kompatibilisnek kell lennie a legtöbb ügyféloldali SDK-val. A legfrissebb információkért tekintse meg a [OAuth 2,0-hez készült natív app SDK-t és az OpenID connectet a modern ajánlott eljárások megvalósításához](https://appauth.io/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg a forgatókönyv teljes példáját a [Azure Active Directory B2C egyéni házirend alapszintű csomagban](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/source/aadb2c-ief-ropc).
 - További információ a Azure Active Directory B2C által használt jogkivonatokról a [jogkivonat-hivatkozásban](tokens-overview.md).

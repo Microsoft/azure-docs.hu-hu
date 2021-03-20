@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 64ab5901ad54e37fc05d7da757ce7f31d42fe3b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85357103"
 ---
 # <a name="using-the-sync-service-manager-operations-tab"></a>A Sync Service Manager Operations (szinkronizálási műveletek) lap használata
@@ -35,7 +35,7 @@ A felső fél az összes futtatást időrendi sorrendben jeleníti meg. Alapért
 
 Az **állapot** oszlop a legfontosabb információ, és megjeleníti a Futtatás legsúlyosabb problémáját. Itt látható a leggyakoribb állapotok rövid összefoglalása, hogy a vizsgálat elsőbbséget kapjon (ahol * több lehetséges hibát jeleznek).
 
-| status | Megjegyzés |
+| Állapot | Megjegyzés |
 | --- | --- |
 | megállt\* |A Futtatás nem fejeződött be. Ha például a távoli rendszer nem érhető el, és nem lehet kapcsolatba lépni vele. |
 | leállítva – hiba – korlát |Több mint 5 000 hiba van. A Futtatás a hibák nagy száma miatt automatikusan leállt. |
@@ -43,11 +43,11 @@ Az **állapot** oszlop a legfontosabb információ, és megjeleníti a Futtatás
 | befejezve – \* figyelmeztetések |A Futtatás befejeződött, de bizonyos adatértékek nem a várt állapotban vannak. Ha hibák léptek fel, akkor ez az üzenet általában csak tünet. Amíg nem válaszol a hibákra, ne vizsgálja meg a figyelmeztetéseket. |
 | sikeres |Nincs probléma. |
 
-Amikor kijelöl egy sort, a lenti frissítések megjelenítik a Futtatás részleteit. A lenti bal szélen egy lista jelenik meg, amely a következő **lépést**jelzi: #. Ez a lista csak akkor jelenik meg, ha az erdőben több tartománnyal rendelkezik, ahol minden tartományt egy lépés képvisel. A tartománynév a fejléc **partíció**alatt található. A **szinkronizálási statisztikák**területen további információkat talál a feldolgozott módosítások számáról. A hivatkozásokra kattintva lekérheti a módosított objektumok listáját. Ha hibás objektumok vannak, ezek a hibák a **szinkronizálási hibák**alatt jelennek meg.
+Amikor kijelöl egy sort, a lenti frissítések megjelenítik a Futtatás részleteit. A lenti bal szélen egy lista jelenik meg, amely a következő **lépést** jelzi: #. Ez a lista csak akkor jelenik meg, ha az erdőben több tartománnyal rendelkezik, ahol minden tartományt egy lépés képvisel. A tartománynév a fejléc **partíció** alatt található. A **szinkronizálási statisztikák** területen további információkat talál a feldolgozott módosítások számáról. A hivatkozásokra kattintva lekérheti a módosított objektumok listáját. Ha hibás objektumok vannak, ezek a hibák a **szinkronizálási hibák** alatt jelennek meg.
 
 További információ: [nem szinkronizált objektumok hibáinak megoldása](tshoot-connect-object-not-syncing.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a [Azure ad Connect szinkronizálási](how-to-connect-sync-whatis.md) konfigurációról.
 
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

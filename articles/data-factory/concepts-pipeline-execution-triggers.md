@@ -7,12 +7,12 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: bd36b589424a0d890fc5e1bbab3f234e9b3264c6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2dba9e4f727b56e5093171c2ea59382075563f31
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374779"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592058"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Folyamat-végrehajtás és eseményindítók az Azure Data Factoryban
 
@@ -279,11 +279,11 @@ Az alábbi táblázat nagy vonalakban áttekintést nyújt az eseményindítóva
 
 | JSON-tulajdonság | Típus | Kötelező | Alapértelmezett érték | Érvényes értékek | Példa |
 | --- | --- | --- | --- | --- | --- |
-| **startTime** | sztring | Yes | Nincs | ISO 8601 dátum-idő értékek | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **megismétlődésének** | object | Yes | Nincs | Recurrence objektum | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **startTime** | sztring | Yes | Nincsenek | ISO 8601 dátum-idő értékek | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **megismétlődésének** | object | Yes | Nincsenek | Recurrence objektum | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **időköz** | szám | No | 1 | 1–1000 | `"interval":10` |
-| **endTime** | sztring | Yes | Nincs | Egy jövőbeli időpontot jelölő dátum-idő érték | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **menetrend** | object | No | Nincs | Schedule objektum | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **endTime** | sztring | Yes | Nincsenek | Egy jövőbeli időpontot jelölő dátum-idő érték | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **menetrend** | object | No | Nincsenek | Schedule objektum | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime tulajdonság
 Az alábbi táblázatban látható, hogy a **startTime** tulajdonság hogyan irányítja a folyamatfuttatást:
@@ -323,13 +323,8 @@ Az átfedésmentes ablakos eseményindítók olyan eseményindítók, amelyek re
 
 További információ a kieséses ablak-eseményindítókkal kapcsolatban: a [kieséses ablak eseményindítójának létrehozása](how-to-create-tumbling-window-trigger.md).
 
-## <a name="event-based-trigger"></a>Eseményalapú trigger
-
-Egy eseményvezérelt eseményindító egy eseményre adott válaszként futtat folyamatokat, például egy fájl megérkezését vagy egy fájl törlését az Azure Blob Storageban.
-
-További információkat az eseményalapú triggerekkel kapcsolatban az [eseményre válaszul folyamatot futtató trigger létrehozásával](how-to-create-event-trigger.md) kapcsolatos témakörben olvashat.
-
 ## <a name="examples-of-trigger-recurrence-schedules"></a>Eseményindító-ismétlődési ütemezések példái
+
 Ez a szakasz az ismétlődésütemezésekre mutat be példákat. A **schedule** objektumra és annak elemeire koncentrál.
 
 A példák azt feltételezik, hogy az **intervallum** értéke 1, és a **gyakoriság** értéke helyes az ütemezés definíciója szerint. Például nem rendelkezhet "Day" **Frequency** értékkel, és az **monthDays** módosítás is szerepel az **ütemezett** objektumban. Ezen korlátozások leírása az előző szakaszban található táblázatban szerepel.
@@ -364,6 +359,7 @@ A példák azt feltételezik, hogy az **intervallum** értéke 1, és a **gyakor
 | `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` | Minden hónap harmadik szerdáján, 05:15-kor, 05:45-kor, 17:15-kor és 17:45-kor fut le. |
 
 ## <a name="trigger-type-comparison"></a>Eseményindító-típusok összehasonlítása
+
 Az átfedésmentes ablakos eseményindító és az ütemezési eseményindító is időszívverés alapján működik. Mi a különbség közöttük?
 
 > [!NOTE]
@@ -380,9 +376,19 @@ Az alábbi táblázatban az átfedésmentes ablakos eseményindító és az üte
 | **Rendszerváltozók** | A @trigger (). scheduledTime és (). kezdő időponttal együtt a @trigger **WindowStart** és a **WindowEnd** rendszerváltozók használatát is támogatja. A felhasználók hozzáférhetnek a `trigger().outputs.windowStartTime` és `trigger().outputs.windowEndTime` értékhez az eseményindító rendszerváltozójaként az eseményindító meghatározásában. Az értékeket az időszak kezdési és záró időpontjaként használja a rendszer. Például a minden órában lefutó átfedésmentes ablakos eseményindító esetében az 01:00 és 02:00 közötti időszakban a meghatározás `trigger().outputs.windowStartTime = 2017-09-01T01:00:00Z` és `trigger().outputs.windowEndTime = 2017-09-01T02:00:00Z`. | @triggerA csak az alapértelmezett (). scheduledTime és @trigger (). kezdő időpontokra vonatkozó változókat támogatja. |
 | **Folyamat–trigger kapcsolat** | Támogatja az egy-az-egyhez kapcsolatot. Csak egy folyamat indítható el. | Támogatja a több-a-többhöz kapcsolatokat. Egyetlen folyamatot több eseményindító is indíthat. Egyetlen eseményindító elindíthat több folyamatot is. |
 
+## <a name="event-based-trigger"></a>Eseményalapú trigger
+
+Az eseményvezérelt eseményindítók egy eseményre adott válaszként futtatják a folyamatokat. Az Event-alapú eseményindítók két változatban érhetők el.
+
+* A _tárolási esemény eseményindítója_ egy olyan folyamatot futtat, amely egy Storage-fiókban történik, például egy fájl megérkezése vagy egy fájl törlése az Azure Blob Storage-fiókban.
+* Az _egyéni esemény-eseményindítók_ feldolgozzák és kezelik az [egyéni témaköröket](../event-grid/custom-topics.md) Event Grid
+
+Az eseményvezérelt eseményindítókkal kapcsolatos további információkért lásd: [tárolási esemény eseményindítója](how-to-create-event-trigger.md) és [Egyéni](how-to-create-custom-event-trigger.md)eseményindító.
+
 ## <a name="next-steps"></a>Következő lépések
+
 Lásd az alábbi oktatóanyagokat:
 
 - [Gyors útmutató: adat-előállító létrehozása a .NET SDK-val](quickstart-create-data-factory-dot-net.md)
-- [Ütemezési eseményindító létrehozása](how-to-create-schedule-trigger.md)
+- [Ütemterv-trigger létrehozása](how-to-create-schedule-trigger.md)
 - [Átfedésmentes ablak eseményindítójának létrehozása](how-to-create-tumbling-window-trigger.md)

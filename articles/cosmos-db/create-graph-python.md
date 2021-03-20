@@ -10,10 +10,10 @@ ms.date: 01/22/2019
 ms.author: chrande
 ms.custom: devx-track-python
 ms.openlocfilehash: 91b04b05b810b2b0fc221943a73e81c49f7119dc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95972473"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Gyors útmutató: Graph-adatbázis létrehozása Azure Cosmos DB a Python és a Azure Portal használatával
@@ -187,7 +187,7 @@ A csúcspontok és élek beszúrása után visszatérhet a Adatkezelőra, és me
 
 5. Válassza a **tulajdonság hozzáadása** lehetőséget a következő tulajdonságok hozzáadásához. Egyedi tulajdonságokat hozhat létre a gráfban található minden egyes személy számára. Csak az id kulcsot kötelező megadni.
 
-    kulcs|value|Jegyzetek
+    kulcs|érték|Jegyzetek
     ----|----|----
     PK|/pk| 
     id|ashley|A csúcspont egyedi azonosítója. Ha nem ad meg azonosítót, a rendszer létrehoz egyet.
@@ -205,7 +205,7 @@ A csúcspontok és élek beszúrása után visszatérhet a Adatkezelőra, és me
 
 9. Válassza a **tulajdonság hozzáadása** lehetőséget a következő tulajdonságok hozzáadásához:
 
-    kulcs|value|Jegyzetek
+    kulcs|érték|Jegyzetek
     ----|----|----
     PK|/pk| 
     id|rakesh|A csúcspont egyedi azonosítója. Ha nem ad meg azonosítót, a rendszer létrehoz egyet.
@@ -240,7 +240,7 @@ Ezzel befejezte az oktatóanyag erőforrások létrehozásra vonatkozó részét
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre egy Azure Cosmos DB fiókot, hogyan hozhat létre egy gráfot a Adatkezelő használatával, és hogyan futtathat egy Python-alkalmazást a gráfhoz való adatfelvételhez. Az útmutató információira támaszkodva összetett lekérdezéseket hozhat létre és hatékony gráfbejárási logikákat helyezhet üzembe a Gremlin használatával. 
 

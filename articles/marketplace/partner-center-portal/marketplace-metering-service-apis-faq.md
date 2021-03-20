@@ -8,10 +8,10 @@ ms.date: 06/01/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: ddec23f695396b8322d51da62158a97456096ae8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87320000"
 ---
 # <a name="marketplace-metered-billing-apis---faq"></a>Marketplace mért számlázási API-k – GYIK
@@ -86,6 +86,6 @@ Ha például a közzétevő olyan SaaS-csomagot határoz meg, amely tartalmazza 
 
 Amikor az ügyfél megvásárolja és aktiválja az előfizetést január 6-án, az átalányban foglalt 1000-os e-mailt a rendszer ettől a naptól kezdve számítja fel. Tehát ha február 5-ig (az előfizetés első hónapjának végén) csak az 900 e-mailt küldi el, az ügyfél csak az előfizetés első hónapjára fizeti ki a rögzített díjat, és a kiadó a közzétételi eseményeket a közzétevőnek a január 6. és február 5. között fogja kiadni. Február 6-án az előfizetés automatikusan megújul, a szám pedig újra elindul. Ha február 15-én az ügyfél elérte az elküldött 1000 e-maileket, az 5. március 5-ig elküldött e-mailek fennmaradó részét a kiadó által kibocsátott túlhasználati események alapján ($1/e-mailben) számítjuk fel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ: Marketplace- [mérési szolgáltatás API](./marketplace-metering-service-apis.md)-k.

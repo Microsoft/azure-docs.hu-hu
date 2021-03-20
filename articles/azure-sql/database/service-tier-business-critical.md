@@ -13,10 +13,10 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 12/04/2018
 ms.openlocfilehash: 830ecc44d0def13e51cb06704bef429bb8860cd6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92780223"
 ---
 # <a name="business-critical-tier---azure-sql-database-and-azure-sql-managed-instance"></a>Üzletileg kritikus réteg-Azure SQL Database és az Azure SQL felügyelt példánya 
@@ -50,12 +50,12 @@ Emellett üzletileg kritikus-fürt beépített [olvasási Felskálázási](read-
 
 A legfontosabb ok, amiért érdemes kiválasztania üzletileg kritikus szolgáltatási szintet általános célú szintje helyett:
 -   **Alacsony I/O-késési követelmények** – a tárolási rétegből gyors választ igénylő munkaterhelések (átlagosan 1-2 ezredmásodperc) a üzletileg kritikus szintet kell használniuk. 
--   **Gyakori kommunikáció az alkalmazás és az adatbázis között** . Azok üzletileg kritikus az alkalmazások, amelyek nem tudják kihasználni az alkalmazás-réteg gyorsítótárazását, vagy [megkérik a kötegelt feldolgozást](../performance-improve-use-batching.md) , és sok olyan SQL-lekérdezést kell elküldeniük, amelyet gyorsan fel kell dolgozni, jó jelöltek
+-   **Gyakori kommunikáció az alkalmazás és az adatbázis között**. Azok üzletileg kritikus az alkalmazások, amelyek nem tudják kihasználni az alkalmazás-réteg gyorsítótárazását, vagy [megkérik a kötegelt feldolgozást](../performance-improve-use-batching.md) , és sok olyan SQL-lekérdezést kell elküldeniük, amelyet gyorsan fel kell dolgozni, jó jelöltek
 -   **Nagy számú frissítés** – az INSERT, a Update és a DELETE művelet módosítja a memóriában (piszkos oldal) található adatlapokat, amelyeket a művelettel rendelkező adatfájlba kell menteni `CHECKPOINT` . A lehetséges adatbázismotor-folyamatok összeomlása vagy az adatbázis nagy mennyiségű piszkos oldallal rendelkező feladatátvétele általános célú szinten növelheti a helyreállítási időt. Üzletileg kritikus réteg használata, ha olyan számítási feladattal rendelkezik, amely sok memóriában végzett módosítást okoz. 
--   **Az adatmódosítást követően hosszú ideig futó tranzakciók** . A több időt megnyitó tranzakciók meggátolják a naplófájlok csonkítása, ami növelheti a napló méretét és a [virtuális naplófájlok számát (VLF)](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch). A feladatátvétel után a VLFs nagy száma lelassíthatja az adatbázis helyreállítását.
+-   **Az adatmódosítást követően hosszú ideig futó tranzakciók**. A több időt megnyitó tranzakciók meggátolják a naplófájlok csonkítása, ami növelheti a napló méretét és a [virtuális naplófájlok számát (VLF)](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch). A feladatátvétel után a VLFs nagy száma lelassíthatja az adatbázis helyreállítását.
 -   **Munkaterhelések jelentési és elemzési lekérdezésekkel** , amelyek átirányíthatók a díjmentes másodlagos írásvédett replikára.
-- **Nagyobb rugalmasság és gyorsabb helyreállítás a hibáktól** . Rendszerhiba esetén az elsődleges példányon lévő adatbázis le lesz tiltva, és az egyik másodlagos replika azonnal új írható-olvasható elsődleges adatbázis lesz, amely készen áll a lekérdezések feldolgozására. Az adatbázismotor nem kell elemezni és megismételni a tranzakciókat a naplófájlból, és be kell töltenie a memória pufferében lévő összes adatmennyiséget.
-- **Speciális adatsérülés elleni védelem** . A üzletileg kritikus szintű adatbázis-replikákat használ az üzletmenet folytonossága érdekében, így a szolgáltatás automatikusan kihasználja az oldal javítását, ami ugyanaz, mint a SQL Server adatbázis- [tükrözési és rendelkezésre állási csoportok](/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring)esetében. Abban az esetben, ha egy replika nem tud beolvasni egy oldalt egy adatintegritási probléma miatt, a lap egy másik replikából lesz beolvasva, és az adatvesztés vagy az ügyfél leállása nélkül nem olvasható oldal jelenik meg. Ez a funkció általános célú szinten alkalmazható, ha az adatbázis rendelkezik geo-másodlagos replikával.
+- **Nagyobb rugalmasság és gyorsabb helyreállítás a hibáktól**. Rendszerhiba esetén az elsődleges példányon lévő adatbázis le lesz tiltva, és az egyik másodlagos replika azonnal új írható-olvasható elsődleges adatbázis lesz, amely készen áll a lekérdezések feldolgozására. Az adatbázismotor nem kell elemezni és megismételni a tranzakciókat a naplófájlból, és be kell töltenie a memória pufferében lévő összes adatmennyiséget.
+- **Speciális adatsérülés elleni védelem**. A üzletileg kritikus szintű adatbázis-replikákat használ az üzletmenet folytonossága érdekében, így a szolgáltatás automatikusan kihasználja az oldal javítását, ami ugyanaz, mint a SQL Server adatbázis- [tükrözési és rendelkezésre állási csoportok](/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring)esetében. Abban az esetben, ha egy replika nem tud beolvasni egy oldalt egy adatintegritási probléma miatt, a lap egy másik replikából lesz beolvasva, és az adatvesztés vagy az ügyfél leállása nélkül nem olvasható oldal jelenik meg. Ez a funkció általános célú szinten alkalmazható, ha az adatbázis rendelkezik geo-másodlagos replikával.
 - **Magasabb rendelkezésre állás** – a többszintű konfigurációban üzletileg kritikus szint az 99,995%-os rendelkezésre állást garantálja, az általános célú szint 99,99%-ában.
 - A Geo-replikációval konfigurált **gyors geo-helyreállítási** üzletileg kritikusi réteg 5 sec-os garantált helyreállítási időcélkitűzéssel (RPO) rendelkezik, és 30 mp-es helyreállítási időszakot (RTO) biztosít a telepített órák 100%-ában.
 

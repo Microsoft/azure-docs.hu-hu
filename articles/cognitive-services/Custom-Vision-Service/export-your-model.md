@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
 ms.openlocfilehash: be28a10f8a96d21d64d08cfacee4543c065168ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85391757"
 ---
 # <a name="export-your-model-for-use-with-mobile-devices"></a>A modell exportálása mobileszközökön való használatra
@@ -25,7 +25,7 @@ Custom Vision Service lehetővé teszi az osztályozók exportálását offline 
 
 A Custom Vision Service a következő exportálásokat támogatja:
 
-* __Tensorflow__ __Android__rendszerhez.
+* __Tensorflow__ __Android__ rendszerhez.
 * A __IOS11__ __CoreML__ .
 * __ONNX__ a __Windows ml__-hez.
 * A __[jövőkép AI fejlesztői csomagja](https://azure.github.io/Vision-AI-DevKit-Pages/)__.
@@ -64,16 +64,16 @@ Meglévő modell tartományának átalakításához hajtsa végre a következő 
 
 A modell átképzés utáni exportálásához kövesse az alábbi lépéseket:
 
-1. Lépjen a **teljesítmény** lapra, és válassza az __Exportálás__lehetőséget. 
+1. Lépjen a **teljesítmény** lapra, és válassza az __Exportálás__ lehetőséget. 
 
     ![Az Exportálás ikon képe](./media/export-your-model/export.png)
 
     > [!TIP]
-    > Ha az __exportálási__ bejegyzés nem érhető el, akkor a kiválasztott iteráció nem használ kompakt tartományt. A lap __iterációk__ szakaszával olyan iterációt választhat ki, amely egy kompakt tartományt használ, majd válassza az __Exportálás__lehetőséget.
+    > Ha az __exportálási__ bejegyzés nem érhető el, akkor a kiválasztott iteráció nem használ kompakt tartományt. A lap __iterációk__ szakaszával olyan iterációt választhat ki, amely egy kompakt tartományt használ, majd válassza az __Exportálás__ lehetőséget.
 
 1. Válassza ki a kívánt exportálási formátumot, majd válassza az __Exportálás__ lehetőséget a modell letöltéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Integrálja az exportált modellt egy alkalmazásba az alábbi cikkek vagy minták egyikének feltárásával:
 

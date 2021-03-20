@@ -6,10 +6,10 @@ ms.date: 06/18/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-azurecli
 ms.openlocfilehash: 038d62573b491325adc60647debf17fa87e06cfe
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92743684"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Linux Ruby-alkalmazás konfigurálása az Azure App Service-hez
@@ -65,7 +65,7 @@ ENV['WEBSITE_SITE_NAME']
 
 Ha [Git-adattárat](deploy-local-git.md) vagy egy [Zip-csomagot](deploy-zip.md) helyez üzembe bekapcsolt összeállítási folyamatokkal, az üzembehelyezési motor (Kudu) alapértelmezés szerint automatikusan futtatja az üzembe helyezés utáni következő lépéseket:
 
-1. Ellenőrzi, hogy létezik-e a *Gemfile* .
+1. Ellenőrzi, hogy létezik-e a *Gemfile*.
 1. Futtatja a `bundle clean` parancsot. 
 1. Futtatja a `bundle install --path "vendor/bundle"` parancsot.
 1. A `bundle package` futtatásával a gemeket becsomagolja a szállítói/gyorsítótármappába.

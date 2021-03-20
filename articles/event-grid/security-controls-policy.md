@@ -1,15 +1,15 @@
 ---
 title: Azure Policy szabályozási megfelelőségi szabályozása Azure Event Grid
 description: Felsorolja Azure Policy Azure Event Grid számára elérhető szabályozási megfelelőségi szabályozásokat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.topic: sample
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 19400af4932f1ab59aec8546ce1f7c8f1989f40d
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: f34c2cdaa62aa2a418273baef40f5f404c940989
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102633333"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600980"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-event-grid"></a>Azure Policy szabályozási megfelelőségi szabályozása Azure Event Grid
 

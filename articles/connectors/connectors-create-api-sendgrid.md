@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/24/2018
 tags: connectors
 ms.openlocfilehash: a140ae0f27c61959d8ebc6854c5bcb2a916a0fc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87290445"
 ---
 # <a name="send-emails-and-manage-mailing-lists-in-sendgrid-by-using-azure-logic-apps"></a>E-mailek küldése és a SendGrid lévő levelezőlisták kezelése a Azure Logic Apps használatával
@@ -47,18 +47,18 @@ Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure L
 
 1. Válasszon egy elérési utat: 
 
-   * Az utolsó lépésben, amelyben hozzá szeretne adni egy műveletet, válassza az **új lépés**lehetőséget. 
+   * Az utolsó lépésben, amelyben hozzá szeretne adni egy műveletet, válassza az **új lépés** lehetőséget. 
 
      -vagy-
 
    * A művelethez hozzáadni kívánt lépések között vigye az egérmutatót a lépések közötti nyíl fölé. 
-   Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
+   Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása** lehetőséget.
 
 1. A keresőmezőbe írja be szűrőként a "sendgrid" kifejezést. A műveletek listában válassza ki a kívánt műveletet.
 
 1. Adja meg a kapcsolat nevét. 
 
-1. Adja meg a SendGrid API-kulcsát, majd kattintson a **Létrehozás**gombra.
+1. Adja meg a SendGrid API-kulcsát, majd kattintson a **Létrehozás** gombra.
 
 1. Adja meg a kiválasztott művelethez szükséges adatokat, és folytassa a logikai alkalmazás munkafolyamatának összeállítását.
 
@@ -71,6 +71,6 @@ Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai r�
 * Ha kérdése van, látogasson el a [Microsoft Q&a Azure Logic apps vonatkozó kérdés oldalára](/answers/topics/azure-logic-apps.html).
 * A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

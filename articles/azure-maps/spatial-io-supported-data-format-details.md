@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 7227813f607ca18ee50f503a30b290414f333e21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91310169"
 ---
 # <a name="supported-data-format-details"></a>Támogatott adatformátumokra vonatkozó részletek
@@ -401,7 +401,7 @@ A fejlécsor vizsgálatakor a rendszer az oszlop nevében található bármely t
 - double
 - szám
 
-#### <a name="booleans"></a>Értékei
+#### <a name="booleans"></a>Logikai érték
 
 - EDM. Boolean
 - logikai

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.openlocfilehash: d7734fde529c24e8113ea3b019d343b7223f0122
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91929642"
 ---
 # <a name="upgrade-to-the-latest-rest-api-in-azure-cognitive-search"></a>Frissítsen a legújabb REST APIra az Azure-ban Cognitive Search
@@ -26,7 +26,7 @@ Az 2020-06-30-es verzió egy fontos új funkciót ([Knowledge Store](knowledge-s
 
 <a name="UpgradeSteps"></a>
 
-## <a name="how-to-upgrade"></a>A frissítés módja
+## <a name="how-to-upgrade"></a>A frissítés lépései
 
 Amikor új verzióra frissít, valószínűleg nem kell módosítania a kód módosításait, kivéve a verziószámot. A következő esetekben lehet szükség a kód módosítására:
 

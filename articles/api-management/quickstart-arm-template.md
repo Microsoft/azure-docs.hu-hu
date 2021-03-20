@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: danlep
 ms.date: 10/09/2020
 ms.openlocfilehash: 1610c51b613712c06410247e2eb673a50a9988b3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792242"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-using-an-arm-template"></a>Rövid útmutató: új Azure API Management Service-példány létrehozása ARM-sablonnal
@@ -50,14 +50,14 @@ További Azure API Management-sablonok az [Azure Gyorsindítás sablonjaiban](ht
     Ebben a példában a példány a fejlesztői szinten van konfigurálva, amely az Azure-API Management kiértékelésére szolgáló gazdaságos megoldás. Ez a rétegek nem használhatók éles környezetben. További információt az API Management szintjeinek skálázásáról a [frissítés és skálázás](upgrade-and-scale.md) oldalon talál.
 
 1. Válassza ki vagy adja meg a következő értékeket.
-    - **Előfizetés** : válasszon ki egy Azure-előfizetést.
-    - **Erőforráscsoport** : válassza az **új létrehozása** lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK gombra** .
-    - **Régió** : válassza ki az erőforráscsoport helyét. Példa: **USA középső** régiója.
-    - **Közzétevői e-mail** : adjon meg egy e-mail-címet az értesítések fogadásához.
-    - **Közzétevő neve** : adjon meg egy nevet, amelyet az API-közzétevőhöz választ.
-    - **SKU** : fogadja el a **fejlesztő** alapértelmezett értékét.
-    - **SKU-darabszám** : fogadja el az alapértelmezett értéket.
-    - **Hely** : fogadja el a API Management szolgáltatás létrehozott helyét.
+    - **Előfizetés**: válasszon ki egy Azure-előfizetést.
+    - **Erőforráscsoport**: válassza az **új létrehozása** lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK gombra**.
+    - **Régió**: válassza ki az erőforráscsoport helyét. Példa: **USA középső** régiója.
+    - **Közzétevői e-mail**: adjon meg egy e-mail-címet az értesítések fogadásához.
+    - **Közzétevő neve**: adjon meg egy nevet, amelyet az API-közzétevőhöz választ.
+    - **SKU**: fogadja el a **fejlesztő** alapértelmezett értékét.
+    - **SKU-darabszám**: fogadja el az alapértelmezett értéket.
+    - **Hely**: fogadja el a API Management szolgáltatás létrehozott helyét.
 
     :::image type="content" source="media/quickstart-arm-template/create-instance-template.png" alt-text="API Management sablon tulajdonságai":::
 
@@ -68,7 +68,7 @@ További Azure API Management-sablonok az [Azure Gyorsindítás sablonjaiban](ht
 
 1. A példány sikeres létrehozása után értesítést kap:
 
-    :::image type="content" source="media/quickstart-arm-template/deployment-notification.png" alt-text="API Management sablon tulajdonságai":::
+    :::image type="content" source="media/quickstart-arm-template/deployment-notification.png" alt-text="Üzembe helyezési értesítés":::
 
  Az Azure Portalon helyezhető üzembe a sablon. A Azure Portalon kívül használhatja a Azure PowerShell, az Azure CLI és a REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../azure-resource-manager/templates/deploy-cli.md).
 
@@ -79,11 +79,11 @@ A Azure Portal használatával tekintheti meg az üzembe helyezett erőforrások
 1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki **API Management szolgáltatások** elemet, majd válassza ki a létrehozott szolgáltatási példányt.
 1. Tekintse át a szolgáltatás tulajdonságait az **Áttekintés** oldalon.
 
-:::image type="content" source="media/quickstart-arm-template/service-instance-created.png" alt-text="API Management sablon tulajdonságai":::
+:::image type="content" source="media/quickstart-arm-template/service-instance-created.png" alt-text="Szolgáltatás – Áttekintés lap":::
 
 Ha a API Management Service-példány online állapotban van, készen áll a használatára. Kezdje az Oktatóanyaggal az első API [importálásához és közzétételéhez](import-and-publish.md) .
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha azt tervezi, hogy az ezt követő oktatóanyagokkal folytatja a munkát, érdemes lehet a API Management példányt a helyén hagyni. Ha már nincs rá szükség, törölje az erőforráscsoportot, amely törli az erőforráscsoport erőforrásait.
 
@@ -91,7 +91,7 @@ Ha azt tervezi, hogy az ezt követő oktatóanyagokkal folytatja a munkát, érd
 1. Az **erőforráscsoportok** lapon válassza ki az erőforráscsoportot.
 1. Az erőforráscsoport lapon válassza az **erőforráscsoport törlése** elemet.
 
-    :::image type="content" source="media/quickstart-arm-template/delete-resource-group.png" alt-text="API Management sablon tulajdonságai":::
+    :::image type="content" source="media/quickstart-arm-template/delete-resource-group.png" alt-text="Erőforráscsoport törlése":::
 1. Írja be az erőforráscsoport nevét, majd válassza a **Törlés** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések

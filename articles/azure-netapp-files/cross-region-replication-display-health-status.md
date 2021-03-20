@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 03/11/2021
 ms.author: b-juche
-ms.openlocfilehash: a14656bc1abc42fdc3e948fdae1ca07469681d21
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 2819ee3bc76c0b9ff0f35d442e52149096ddc9f7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95249852"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590976"
 ---
 # <a name="display-health-status-of-replication-relationship"></a>Replikációs kapcsolat állapotának megjelenítése 
 
@@ -57,7 +57,8 @@ Megtekintheti a replikálás állapotát a forrás köteten vagy a célként meg
 
 * [Régiók közötti replikáció](cross-region-replication-introduction.md)
 * [Vészhelyreállítás kezelése](cross-region-replication-manage-disaster-recovery.md)
+* [Régiók közötti replikálási cél kötetének átméretezése](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
 * [Kötet replikációs metrikái](azure-netapp-files-metrics.md#replication)
-* [Kötetek replikálásának vagy köteteinek törlése](cross-region-replication-delete.md)
+* [Kötetreplikációk vagy kötetek törlése](cross-region-replication-delete.md)
 * [Régiók közötti replikáció hibaelhárítása](troubleshoot-cross-region-replication.md)
 

@@ -6,10 +6,10 @@ ms.topic: sample
 ms.date: 11/23/2019
 ms.custom: devx-track-python, devx-track-azurecli
 ms.openlocfilehash: 65ea6513046cd0372720e5a9438941dda2a74877
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97934356"
 ---
 # <a name="create-a-serverless-python-function-app-using-azure-cli"></a>Kiszolgáló nélküli Python-Function-alkalmazás létrehozása az Azure CLI használatával
@@ -43,7 +43,7 @@ A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatk
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Létrehoz egy Azure Storage-fiókot. |
 | [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Létrehoz egy függvényalkalmazást. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

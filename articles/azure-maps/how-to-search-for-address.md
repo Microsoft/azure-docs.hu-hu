@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: dddf56edf2037d87a28589a59834db32f8d04a4c
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98598362"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Hely keresése Azure Maps Search Services használatával
@@ -171,7 +171,7 @@ Ebben a példában a címek koordinátái alapján keresünk egy kereszt utcát.
   
 3. Kattintson a **Küldés** gombra, és tekintse át a válasz törzsét. Figyelje meg, hogy a válasz tartalmazza a `crossStreet` értékét `South Atlantic Street` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Maps Search Service REST API](/rest/api/maps/search)

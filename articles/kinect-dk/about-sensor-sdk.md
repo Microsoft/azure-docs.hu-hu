@@ -8,17 +8,17 @@ ms.date: 06/26/2019
 ms.topic: article
 keywords: Azure, Kinect, RGB, IR, rögzítés, érzékelő, SDK, hozzáférés, mélység, videó, kamera, IMU, mozgás, érzékelő, hang, mikrofon, Matroska, Sensor SDK, Letöltés
 ms.openlocfilehash: 17c1b33120eacb5d0c6d3c02e692d1488ef474e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85277319"
 ---
 # <a name="about-azure-kinect-sensor-sdk"></a>Tudnivalók az Azure Kinect Sensor SDK-ról
 
 Ez a cikk az Azure Kinect Sensor szoftverfejlesztői készletének (SDK), funkcióinak és eszközeinek áttekintését tartalmazza.
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 Az Azure Kinect Sensor SDK többplatformos, alacsony szintű hozzáférést biztosít az Azure Kinect-eszközök konfigurálásához és a hardveres érzékelők streamekhez, beleértve a következőket:
 
@@ -42,7 +42,7 @@ Az Azure Kinect Sensor SDK többplatformos, alacsony szintű hozzáférést bizt
 - Az érzékelő SDK a [githubon nyílt forráskódban](https://github.com/microsoft/Azure-Kinect-Sensor-SDK)érhető el.
 - További információ a használatról: [Sensor SDK API-dokumentáció](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/index.html).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte az Azure Kinect Sensor SDK-t, a következőket is elvégezheti:
 >[!div class="nextstepaction"]

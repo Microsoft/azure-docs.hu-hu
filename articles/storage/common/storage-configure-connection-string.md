@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: d7ca1707c89f03683960822591065143d3f8aa4f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92783878"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Configure Azure Storage connection strings (Az Azure Storage kapcsolati sztringek konfigurálása)
@@ -57,10 +57,10 @@ A kapcsolódási karakterlánc például a következőhöz hasonló lehet:
 
 `DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=<account-key>`
 
-Bár az Azure Storage a HTTP-t és a HTTPS-t is támogatja egy kapcsolati sztringben, a *https használata kifejezetten ajánlott* .
+Bár az Azure Storage a HTTP-t és a HTTPS-t is támogatja egy kapcsolati sztringben, a *https használata kifejezetten ajánlott*.
 
 > [!TIP]
-> A Storage-fiókhoz tartozó kapcsolatok karakterláncait a [Azure Portal](https://portal.azure.com)találja. Az **SETTINGS**  >  elsődleges és másodlagos hozzáférési kulcsokhoz tartozó kapcsolati karakterláncok megjelenítéséhez nyissa meg a beállítások **hozzáférési kulcsait** a Storage-fiók menüjének paneljén.
+> A Storage-fiókhoz tartozó kapcsolatok karakterláncait a [Azure Portal](https://portal.azure.com)találja. Az   >  elsődleges és másodlagos hozzáférési kulcsokhoz tartozó kapcsolati karakterláncok megjelenítéséhez nyissa meg a beállítások **hozzáférési kulcsait** a Storage-fiók menüjének paneljén.
 >
 
 ## <a name="create-a-connection-string-using-a-shared-access-signature"></a>Kapcsolati karakterlánc létrehozása közös hozzáférési aláírás használatával

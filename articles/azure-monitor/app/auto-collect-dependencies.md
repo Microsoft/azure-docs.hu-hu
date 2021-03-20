@@ -5,10 +5,10 @@ ms.topic: reference
 ms.custom: devx-track-dotnet
 ms.date: 05/06/2020
 ms.openlocfilehash: 8a4d79e52465e93fb4db2625217cb37a06917218
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91930866"
 ---
 # <a name="dependency-auto-collection"></a>Függőségek automatikus összegyűjtése
@@ -22,7 +22,7 @@ Az alábbiakban látható a függőségi hívások jelenleg támogatott listája
 | ASP.NET webűrlapok | 4.5 + |
 | ASP.NET, MVC | 4 + |
 | ASP.NET WebAPI | 4.5 + |
-| ASP.NET-mag | 1.1 + |
+| ASP.NET Core | 1.1 + |
 | <b> Kommunikációs kódtárak</b> |
 | [HttpClient](https://www.microsoft.com/net/) | 4.5 +, .NET Core 1.1 + |
 | [SqlClient](https://www.nuget.org/packages/System.Data.SqlClient) | .NET Core 1.0 +, NuGet 4.3.0 |
@@ -43,7 +43,7 @@ Az alábbiakban látható a függőségi hívások jelenleg támogatott listája
 | [JBoss EAP](https://developers.redhat.com/products/eap/download/) | 6, 7 |
 | [Jetty](https://www.eclipse.org/jetty/) | 9 |
 | <b>Alkalmazás-keretrendszerek </b> |  |
-| [Spring](https://spring.io/) | 3,0 |
+| [Spring](https://spring.io/) | 3.0 |
 | [Spring Boot](https://spring.io/projects/spring-boot) | 1.5.9 +<sup>*</sup> |
 | Java servlet | 3.1 + |
 | <b>Kommunikációs kódtárak</b> |  |

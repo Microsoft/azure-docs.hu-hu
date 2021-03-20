@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/16/2018
 ms.openlocfilehash: 4de7e428bff0feaafdec00b0c0014bbaf6acb917
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92790967"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Horizontálisan több-bérlős alkalmazás üzembe helyezése és megismerése
@@ -41,7 +41,7 @@ Az Wingtip-jegyek C#-és PowerShell-forráskódját bárki letöltheti a [GitHub
 > - A Wingtip tickets SaaS-alkalmazás üzembe helyezése.
 > - Az alkalmazás forráskódjának és felügyeleti parancsfájljainak beszerzése.
 > - Az alkalmazást alkotó kiszolgálók és adatbázisok ismertetése.
-> - Hogyan vannak leképezve a bérlők az *adatkatalógushoz* .
+> - Hogyan vannak leképezve a bérlők az *adatkatalógushoz*.
 > - Új bérlő kiépítése.
 > - A bérlői tevékenység figyelése az alkalmazásban.
 
@@ -80,7 +80,7 @@ Válassza ki a neveket, majd írja le őket.
         - Válasszon ki egy **helyet** a legördülő listából.
     - **Felhasználó** számára – javasoljuk, hogy válasszon egy rövid **felhasználói** értéket.
 
-1. **Telepítse az alkalmazást** .
+1. **Telepítse az alkalmazást**.
 
     - Kattintson ide a feltételek és kikötések elfogadásához.
     - Kattintson a **Purchase** (Vásárlás) gombra.
@@ -108,15 +108,15 @@ A parancsfájlok a *.. \\ WingtipTicketsSaaS-MultiTenantDb – fő \\ tanulási 
 
 ## <a name="update-the-configuration-file-for-this-deployment"></a>A központi telepítés konfigurációs fájljának frissítése
 
-A parancsfájlok futtatása előtt állítsa be az *erőforráscsoportot* és a *felhasználói* értékeket a **userconfig. psm1** . Állítsa be ezeket a változókat az üzembe helyezés során beállított értékekre.
+A parancsfájlok futtatása előtt állítsa be az *erőforráscsoportot* és a *felhasználói* értékeket a **userconfig. psm1**. Állítsa be ezeket a változókat az üzembe helyezés során beállított értékekre.
 
-1. Megnyitás.. \\ . Learning-modulok \\ *userconfig. Psm1* a *PowerShell ISE* -ben.
+1. Megnyitás.. \\ . Learning-modulok \\ *userconfig. Psm1* a *PowerShell ISE*-ben.
 2. Frissítse a *ResourceGroupName* és a *nevet* az üzemelő példány megadott értékeivel (csak a 10. és a 11. sorban).
 3. Mentse a módosításokat.
 
 Az ebben a fájlban beállított értékeket az összes parancsfájl használja, ezért fontos, hogy pontosak legyenek. Ha újratelepíti az alkalmazást, különböző értékeket kell választania a felhasználói és az erőforráscsoport számára. Ezután frissítse a UserConfig. psm1 fájlt az új értékekkel.
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 A Wingtip alkalmazásban a bérlők a helyszínek. A helyszín lehet a koncertterem, a sportcsarnok vagy bármely más, az eseményeket futtató hely. A helyszínek regisztrálva vannak a Wingtip ügyfélként, és minden egyes helyszínhez létrejön egy bérlői azonosító. Minden egyes helyszín felsorolja a közelgő eseményeit a Wingtip-ben, így a nyilvános jegyeket vásárolhat az eseményekhez.
 
@@ -129,7 +129,7 @@ A központi **esemény központ** weboldala felsorolja az adott üzemelő péld�
 
      ![eseményközpont](./media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
-2. Kattintson a **Fabrikam Jazz Club** elemre az **eseményközpontban** .
+2. Kattintson a **Fabrikam Jazz Club** elemre az **eseményközpontban**.
 
    ![Események](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
 
@@ -137,7 +137,7 @@ A központi **esemény központ** weboldala felsorolja az adott üzemelő péld�
 
 A bejövő kérések eloszlásának szabályozásához a Wingtip alkalmazás az [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md)-t használja. Az egyes bérlők eseményeinek lapja tartalmazza a bérlő nevét az URL-címében. Minden URL-cím tartalmazza az adott felhasználói értéket is. Az egyes URL-címek a következő lépések alapján engedelmeskednek a megjelenített formátumnak:
 
-- http://events.wingtip-mt.&lt; User &gt; . trafficmanager.net/ *fabrikamjazzclub*
+- http://events.wingtip-mt.&lt; User &gt; . trafficmanager.net/*fabrikamjazzclub*
 
 1. Az Events alkalmazás elemzi a bérlő nevét az URL-címről. A bérlő nevét az előző példában szereplő URL-cím *fabrikamjazzclub* .
 2. Az alkalmazás ezután elkészíti a bérlő nevét egy olyan kulcs létrehozásához, amellyel hozzáfér egy katalógushoz a szegmenses [hozzárendelések kezelése](elastic-scale-shard-map-management.md)használatával.
@@ -155,7 +155,7 @@ A bejövő kérések eloszlásának szabályozásához a Wingtip alkalmazás az 
 
 Most, hogy üzembe helyezte az alkalmazást, nézzük a munkát! A *demo-LoadGenerator PowerShell-* szkript elindítja az egyes bérlők számára futó számítási feladatokat. A sok SaaS-alkalmazás valós terhelése általában szórványos és kiszámíthatatlan. Az ilyen típusú terhelés szimulálása érdekében a generátor az összes bérlőre kiterjedő terhelést hoz létre. A terhelés véletlenszerű kitöréseket tartalmaz az egyes bérlők véletlenszerűen megjelenő időközönként. A terhelési minta megjelenése több percet vesz igénybe, így a generátor a terhelés monitorozása előtt legalább három-négy percig futtatható.
 
-1. A *POWERSHELL ISE* -ben nyissa meg a... \\ Tanulási modulok \\ segédprogramjai \\ *Demo-LoadGenerator.ps1* szkript.
+1. A *POWERSHELL ISE*-ben nyissa meg a... \\ Tanulási modulok \\ segédprogramjai \\ *Demo-LoadGenerator.ps1* szkript.
 2. Nyomja le az **F5** billentyűt a szkript futtatásához és a terhelésgenerátor indításához (egyelőre nem módosítsa az alapértelmezett paraméterértékeket).
 
 A *Demo-LoadGenerator.ps1* parancsfájl egy másik PowerShell-munkamenetet nyit meg, amelyen a Load Generator fut. A betöltési folyamat ebben a munkamenetben olyan előtéri feladatként fut, amely a háttérbeli terhelés-generálási feladatokat hívja meg, egyet az egyes bérlők számára.
@@ -164,14 +164,14 @@ Az előtérbeli feladat elindítása után a feladat-Meghívási állapotban mar
 
 A PowerShell-munkamenet bezárása leállítja az összes feladatot.
 
-Előfordulhat, hogy újra kell indítania a Load Generator-munkamenetet, hogy más paramétereket használjon. Ha igen, zárjuk be a PowerShell-létrehozási munkamenetet, majd futtassa újra a *Demo-LoadGenerator.ps1* .
+Előfordulhat, hogy újra kell indítania a Load Generator-munkamenetet, hogy más paramétereket használjon. Ha igen, zárjuk be a PowerShell-létrehozási munkamenetet, majd futtassa újra a *Demo-LoadGenerator.ps1*.
 
 ## <a name="provision-a-new-tenant-into-the-sharded-database"></a>Új bérlő kiépítése a szilánkokra osztott adatbázisba
 
 A kezdeti üzembe helyezés három minta bérlőt tartalmaz a *Tenants1* -adatbázisban. Hozzunk létre egy másik bérlőt, és figyeljük meg az üzembe helyezett alkalmazás hatásait. Ebben a lépésben egy kulcsot egy új bérlő létrehozásához kell megnyomnia:
 
-1. Megnyitás.. \\ . A tanulási modulok \\ \\ a *PowerShell ISE* -ben Kiépítik és katalogizálják *Demo-ProvisionTenants.ps1* .
-2. A szkript futtatásához nyomja le az **F5** billentyűt (nem **F8** ) (most hagyja meg az alapértelmezett értékeket).
+1. Megnyitás.. \\ . A tanulási modulok \\ \\ a *PowerShell ISE*-ben Kiépítik és katalogizálják *Demo-ProvisionTenants.ps1* .
+2. A szkript futtatásához nyomja le az **F5** billentyűt (nem **F8**) (most hagyja meg az alapértelmezett értékeket).
 
    > [!NOTE]
    > A PowerShell-szkripteket csak az **F5** billentyű lenyomásával, az **F8** billentyű lenyomásával futtatva futtassa a parancsfájl kiválasztott részét. Az **F8** -as probléma az, hogy a *$PSScriptRoot* változó nincs kiértékelve. Ezt a változót számos parancsfájl igényli a mappák navigálása, más parancsfájlok meghívása vagy importálási modulok esetén.
@@ -180,7 +180,7 @@ Az új Red Maple Racing-bérlő hozzá van adva a *Tenants1* -adatbázishoz, és
 
 ![Új bérlő](./media/saas-multitenantdb-get-started-deploy/red-maple-racing.png)
 
-Frissítse az **Events hubot** , és az új bérlő most megjelenik a listában.
+Frissítse az **Events hubot**, és az új bérlő most megjelenik a listában.
 
 ## <a name="provision-a-new-tenant-in-its-own-database"></a>Új bérlő kiépítése a saját adatbázisában
 
@@ -193,7 +193,7 @@ Dönthet úgy, hogy ingyenes próbaverziós ügyfeleket vagy gazdaságbeli ügyf
 
 Ezután kiépítünk egy másik bérlőt, ezúttal a saját adatbázisában:
 
-1. A. \\ .. Tanulási modulok \\ kiépítése és katalogizálása \\ *Demo-ProvisionTenants.ps1* , *$TenantName* módosítása a **salsa Salix** , *$VenueType* a **Dance** és a *$Scenario* **2** .
+1. A. \\ .. Tanulási modulok \\ kiépítése és katalogizálása \\ *Demo-ProvisionTenants.ps1*, *$TenantName* módosítása a **salsa Salix**, *$VenueType* a **Dance** és a *$Scenario* **2**.
 
 2. A szkript ismételt futtatásához nyomja le az **F5** billentyűt.
     - Ez az **F5** billentyű lenyomásával az új bérlőt külön adatbázisban kell kiépíteni. Az adatbázis és a bérlő regisztrálva van a katalógusban. Ezután megnyílik a böngésző a bérlő események lapjára.

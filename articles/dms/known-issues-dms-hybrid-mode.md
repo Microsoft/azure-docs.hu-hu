@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
 ms.openlocfilehash: 819fe5ced6c91819c817065305a31fca456ea5c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91291843"
 ---
 # <a name="known-issuesmigration-limitations-with-using-hybrid-mode"></a>Ismert problémák/áttelepítési korlátozások hibrid mód használatával
@@ -32,7 +32,7 @@ Ha a szolgáltatás offline állapotba kerül, miután a telepítési folyamat s
 
 1. A Azure Portal Azure Database Migration Service-példányában navigáljon a **hibrid** beállítások lapra, majd ellenőrizze, hogy a feldolgozó regisztrálva van-e a regisztrált feldolgozók rácsának ellenőrzésével.
 
-    Ennek a feldolgozónak **online**állapotban kell lennie, de probléma esetén **Offline** állapotba kerülhet.
+    Ennek a feldolgozónak **online** állapotban kell lennie, de probléma esetén **Offline** állapotba kerülhet.
 
 2. A munkavégző számítógépen a következő PowerShell-parancs futtatásával vizsgálja meg a szolgáltatás állapotát:
 
@@ -73,9 +73,9 @@ Alapértelmezés szerint a Azure Database Migration Service Hybrid Worker szolg�
     - DMS Hybrid Worker telepítési kulcsa
     - DMS-forgatókönyv – motor kulcspár
 
-    b. Kattintson a jobb gombbal a **DMS Hybrid app Key** bejegyzésre, mutasson a **minden feladat**elemre, majd válassza a **titkos kulcsok kezelése**lehetőséget.
+    b. Kattintson a jobb gombbal a **DMS Hybrid app Key** bejegyzésre, mutasson a **minden feladat** elemre, majd válassza a **titkos kulcsok kezelése** lehetőséget.
 
-    c. A **Biztonság** lapon válassza a **Hozzáadás**lehetőséget, majd adja meg a fiók nevét.
+    c. A **Biztonság** lapon válassza a **Hozzáadás** lehetőséget, majd adja meg a fiók nevét.
 
     d. Ugyanazokkal a lépésekkel engedélyezheti a titkos kulcs engedélyét az új fiókhoz a **DMS-forgatókönyvhöz tartozó motor kulcspár** -tanúsítványához.
 
@@ -85,9 +85,9 @@ Ha már nincs hozzáférése a munkavégző számítógéphez, a következő lé
 
 1. A Azure Portal a Azure Database Migration Service példányra, majd navigáljon a **hibrid** beállítások lapra.
 
-   A feldolgozói bejegyzés a listában jelenik meg, az állapot pedig **kapcsolat nélküli üzemmódban**jelenik meg.
+   A feldolgozói bejegyzés a listában jelenik meg, az állapot pedig **kapcsolat nélküli üzemmódban** jelenik meg.
 
-2. A feldolgozói bejegyzés listájának jobb szélén kattintson a három pontra, majd válassza a **Regisztráció törlése**lehetőséget.
+2. A feldolgozói bejegyzés listájának jobb szélén kattintson a három pontra, majd válassza a **Regisztráció törlése** lehetőséget.
 
 ## <a name="addressing-issues-for-specific-migration-scenarios"></a>Adott áttelepítési forgatókönyvek problémáinak kezelése
 
@@ -99,4 +99,4 @@ Az alábbi szakaszok a Azure Database Migration Service hibrid mód használatá
 
 **Probléma**: az SQL felügyelt példányának online áttelepítése esetén a hibrid feldolgozót futtató számítógép magas CPU-használatot fog tapasztalni, ha túl sok biztonsági mentés van, vagy ha a biztonsági másolatok túl nagyok.
 
-Megoldás **: a probléma enyhítése**érdekében használjon tömörített biztonsági mentéseket, Ossza szét az áttelepítést, hogy az több megosztást használjon, vagy a hibrid feldolgozót futtató számítógépet.
+Megoldás **: a probléma enyhítése** érdekében használjon tömörített biztonsági mentéseket, Ossza szét az áttelepítést, hogy az több megosztást használjon, vagy a hibrid feldolgozót futtató számítógépet.

@@ -6,10 +6,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 42a5318325f9961483465357403089755feb130d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88933307"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Egyéni műveletek nyomon követése Application Insights .NET SDK-val
@@ -476,7 +476,7 @@ A tevékenységek a Application Insights és az automatikus függőségek, valam
 
 Minden Application Insights művelet (kérelem vagy függőség) magában foglalja `Activity` a-ha `StartOperation` a neve, a tevékenység a következőt hozza létre:. `StartOperation` a kérések vagy függőségi telemetriáiról manuális nyomon követése ajánlott módszer, és minden összefügg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedjen meg a [telemetria korrelációjának](correlation.md) alapjaival Application Insightsban.
 - Tekintse át a korrelált adatkezelési [tranzakciós diagnosztika](./transaction-diagnostics.md) és az [alkalmazás-hozzárendelés](./app-map.md)módját.

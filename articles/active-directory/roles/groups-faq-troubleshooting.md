@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0ff906654dc91c7b1980292efd2a737503e684e9
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98742913"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>A felhőbeli csoportokhoz hozzárendelt szerepkörökkel kapcsolatos hibák elhárítása
@@ -98,7 +98,7 @@ User | Katalógus tulajdonosa | Csak akkor, ha a csoport tulajdonosa | Csak akko
 
 **A:** Ha egy meglévő csoportot rendel hozzá egy szerepkörhöz, a meglévő csoport tulajdonosa további tagokat adhat hozzá ehhez a csoporthoz anélkül, hogy az új tagok betartják a szerepkört. Mivel a szerepkörhöz hozzárendelhető csoportok hatékonyak, számos korlátozást teszünk elérhetővé a védelemhez. Nem kell módosítania a csoportot, amely a csoportot kezelő személy számára meglepő lenne.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felhőbeli csoportok használata a szerepkör-hozzárendelések kezeléséhez](groups-concept.md)
 - [Szerepkörhöz hozzárendelhető csoport létrehozása](groups-create-eligible.md)

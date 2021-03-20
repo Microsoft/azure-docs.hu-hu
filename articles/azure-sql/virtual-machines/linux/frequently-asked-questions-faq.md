@@ -12,10 +12,10 @@ ms.date: 12/13/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: ad991974df30060e552d21a44d5796cd2ba165e2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792548"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-virtual-machines"></a>SQL Server on Linux virtuális gépekkel kapcsolatos gyakori kérdések
@@ -93,15 +93,15 @@ Ez a cikk a [SQL Server on Linux virtuális gépek](sql-server-on-linux-vm-what-
 
    Jelenleg nem. Az Always On rendelkezésre állási csoportok és a feladatátvételi fürtszolgáltatás is szükség van egy Linux-alapú fürtözési megoldásra, például a pacemakerre. A SQL Server támogatott Linux-disztribúciói nem támogatják a magas rendelkezésre állású bővítményeket a felhőben.
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Erőforrások
 
-**Linux rendszerű virtuális gépek** :
+**Linux rendszerű virtuális gépek**:
 
 * [Linux rendszerű virtuális gépen lévő SQL Server áttekintése](sql-server-on-linux-vm-what-is-iaas-overview.md)
 * [SQL Server kiépítése Linux rendszerű virtuális gépen](sql-vm-create-portal-quickstart.md)
 * [SQL Server on Linux dokumentáció](/sql/linux/sql-server-linux-overview)
 
-**Windows rendszerű virtuális gépek** :
+**Windows rendszerű virtuális gépek**:
 
 * [Windows rendszerű virtuális gépek SQL Server áttekintése](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [SQL Server kiépítése Windows rendszerű virtuális gépen](../windows/sql-vm-create-portal-quickstart.md)

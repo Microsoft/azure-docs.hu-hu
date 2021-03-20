@@ -10,10 +10,10 @@ ms.date: 08/06/2019
 ms.author: alkohli
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 96a6692524eca3a2845d648ab3df2932d00ce823
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91951145"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-with-azure-stack-edge-pro"></a>C# IoT Edge-modul fejlesztése a fájlok Azure Stack Edge Pro-vel való áthelyezéséhez
@@ -65,7 +65,7 @@ Mielőtt hozzákezd, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 Az Azure-beli tároló-beállításjegyzék egy privát Docker-tárolójegyzék az Azure-ban, amelyben tárolhatja és kezelheti privát Docker-tárolóinak rendszerképeit. A felhőben elérhető két népszerű Docker beállításjegyzék-szolgáltatás Azure Container Registry és a Docker hub. Ez a cikk a Container Registry használja.
 
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
-2. Válassza **az erőforrás létrehozása > tárolók > Container Registry**lehetőséget. Kattintson a **Létrehozás** gombra.
+2. Válassza **az erőforrás létrehozása > tárolók > Container Registry** lehetőséget. Kattintson a **Létrehozás** lehetőségre.
 3. Nyújt
 
    1. Egy egyedi, az Azure-ban található, 5 – 50 alfanumerikus karaktert tartalmazó **beállításjegyzékbeli név** .
@@ -73,11 +73,11 @@ Az Azure-beli tároló-beállításjegyzék egy privát Docker-tárolójegyzék 
    3. Hozzon létre egy új csoportot, vagy válasszon ki egy meglévő **erőforráscsoportot**.
    4. Válasszon egy **helyet**. Azt javasoljuk, hogy ez a hely azonos legyen az Azure Stack Edge-erőforráshoz társított hellyel.
    5. A **Rendszergazdai felhasználó** beállítást váltsa **Engedélyezés** értékre.
-   6. Az SKU beállítása **alapszintű**értékre.
+   6. Az SKU beállítása **alapszintű** értékre.
 
       ![Tárolóregisztrációs adatbázis létrehozása](./media/azure-stack-edge-create-iot-edge-module/create-container-registry-1.png)
  
-4. Kattintson a **Létrehozás** gombra.
+4. Válassza a **Létrehozás** lehetőséget.
 5. Miután létrejött a tárolóregisztrációs adatbázis, keresse meg, és válassza a **Hozzáférési kulcsok** elemet.
 
     ![Hozzáférési kulcsok beolvasása](./media/azure-stack-edge-create-iot-edge-module/get-access-keys-1.png)
@@ -125,8 +125,8 @@ Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
 
 ### <a name="update-the-module-with-custom-code"></a>A modul módosítása egyéni kóddal
 
-1. A VS Code Explorerben nyissa meg a **modules > FileCopyModule > program.cs**.
-2. A **FileCopyModule névtér**tetején adja hozzá a következő using utasításokat a később használt típusokhoz. A **Microsoft. Azure. Devices. Client. Transport. Mqtt** egy protokoll, amely üzeneteket küld IoT Edge hubhoz.
+1. A VS Code Explorerben nyissa meg a **modules > FileCopyModule > program. cs**.
+2. A **FileCopyModule névtér** tetején adja hozzá a következő using utasításokat a később használt típusokhoz. A **Microsoft. Azure. Devices. Client. Transport. Mqtt** egy protokoll, amely üzeneteket küld IoT Edge hubhoz.
 
     ```
     namespace FileCopyModule
@@ -160,7 +160,7 @@ Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
     }
     ```
 
-5. Az **init metódusban**a kód egy **ModuleClient** objektumot hoz létre és konfigurál. Ez az objektum lehetővé teszi, hogy a modul az üzenetek küldéséhez és fogadásához a helyi Azure IoT Edge futtatókörnyezethez kapcsolódjon MQTT protokoll használatával. Az Init metódusban használt kapcsolati sztringet az IoT Edge-futtatókörnyezet biztosítja a modulnak. A kód regisztrálja a FileCopy visszahívást, hogy üzeneteket fogadjon egy IoT Edge hubhoz az **input1** -végponton keresztül. Cserélje le az **init metódust** a következő kódra.
+5. Az **init metódusban** a kód egy **ModuleClient** objektumot hoz létre és konfigurál. Ez az objektum lehetővé teszi, hogy a modul az üzenetek küldéséhez és fogadásához a helyi Azure IoT Edge futtatókörnyezethez kapcsolódjon MQTT protokoll használatával. Az Init metódusban használt kapcsolati sztringet az IoT Edge-futtatókörnyezet biztosítja a modulnak. A kód regisztrálja a FileCopy visszahívást, hogy üzeneteket fogadjon egy IoT Edge hubhoz az **input1** -végponton keresztül. Cserélje le az **init metódust** a következő kódra.
 
     ```
     /// <summary>
@@ -182,7 +182,7 @@ Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
     }
     ```
 
-6. Távolítsa el a **PipeMessage metódus** kódját, és helyezze be a helyére a **FileCopy**kódot.
+6. Távolítsa el a **PipeMessage metódus** kódját, és helyezze be a helyére a **FileCopy** kódot.
 
     ```
         /// <summary>
@@ -240,7 +240,7 @@ Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
     ```
 
 7. Mentse el ezt a fájlt.
-8. A projekthez [egy meglévő mintakód is letölthető](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable) . Ezután érvényesítheti a minta **program.cs** fájljában mentett fájlt.
+8. A projekthez [egy meglévő mintakód is letölthető](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable) . Ezután érvényesítheti a mintában a **program. cs** fájljában mentett fájlt.
 
 ## <a name="build-your-iot-edge-solution"></a>Az IoT Edge-megoldás összeállítása
 
@@ -257,7 +257,7 @@ Az előző szakaszban létrehozott egy IoT Edge megoldást, és hozzáadta a kó
 
 2. Ha a rendszer jelszót kér, adja meg a jelszót. A bejelentkezési kiszolgáló, a Felhasználónév és a jelszó értékeit a Azure Portal tároló beállításjegyzékének **hozzáférési kulcsaiból** is lekérheti.
  
-3. A hitelesítő adatok megadása után leküldheti a modul rendszerképét az Azure Container registrybe. A VS Code Explorerben kattintson a jobb gombbal a **module.js** fájlra, és válassza a **IoT Edge megoldás létrehozása és leküldése**lehetőséget.
+3. A hitelesítő adatok megadása után leküldheti a modul rendszerképét az Azure Container registrybe. A VS Code Explorerben kattintson a jobb gombbal a **module.js** fájlra, és válassza a **IoT Edge megoldás létrehozása és leküldése** lehetőséget.
 
     ![IoT Edge 2. megoldás létrehozása és leküldése](./media/azure-stack-edge-create-iot-edge-module/build-iot-edge-solution-2.png)
  
@@ -276,6 +276,6 @@ Az előző szakaszban létrehozott egy IoT Edge megoldást, és hozzáadta a kó
 
 4. A VS Code integrált termináljában láthatja a teljes tárolórendszerképet címkével együtt. A képcímet a rendszer a module.jsfájl formátumát tartalmazó információból épül fel `<repository>:<version>-<platform>` . Ehhez a cikkhez hasonlóan kell kinéznie `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A modul Azure Stack Edge Pro platformon való üzembe helyezéséhez és futtatásához tekintse meg a [modul hozzáadása](azure-stack-edge-deploy-configure-compute.md#add-a-module)című témakör lépéseit.

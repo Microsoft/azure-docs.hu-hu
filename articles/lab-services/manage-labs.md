@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan tekintheti meg az összes labort egy tesztkörn
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: cc097e97430462e36a33b982a7394a20c308eab5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95993618"
 ---
 # <a name="manage-labs-in-a-lab-account"></a>Tesztkörnyezetek kezelése tesztkörnyezeti fiókban
@@ -36,5 +36,5 @@ Kövesse az előző szakasz utasításait a labor-fiókban található laborok l
 
     ![Tesztkörnyezet törlésének megerősítése](./media/how-to-manage-lab-accounts/confirm-lab-delete.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő cikkeket **: útmutató a**(z) tartalomjegyzék  ->  (**Lab-fiók tulajdonosa) szakaszának létrehozásához és konfigurálásához** . 

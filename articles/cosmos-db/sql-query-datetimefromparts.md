@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: da992715b5cf624592db72cacefd35c9513ac43f
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b0e7996b71e68db371201da1f0f5c93486ae4e29
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93335772"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592093"
 ---
 # <a name="datetimefromparts-azure-cosmos-db"></a>DateTimeFromParts (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -48,17 +48,17 @@ DateTimeFromParts(<numberYear>, <numberMonth>, <numberDay> [, numberHour]  [, nu
 
 Egy UTC dátum és idő ISO 8601 sztring értékét adja vissza abban a formátumban, `YYYY-MM-DDThh:mm:ss.fffffffZ` ahol:
   
-  |Formátum|Description|
-  |-|-|
-  |ÉÉÉÉ|négyjegyű év|
-  |MM|kétjegyű hónap (01 = Január stb.)|
-  |DD|hónap kétjegyű napja (01 – 31)|
-  |T|az időelemek kezdetének jelölője|
-  |óó|kétjegyű óra (00 – 23)|
-  |hh|kétjegyű perc (00 – 59)|
-  |mm|kétszámjegyű másodperc (00 – 59)|
-  |.fffffff|hét számjegyű tört másodperc|
-  |Z|UTC (egyezményes világidő) jelölő||
+|Formátum|Leírás|
+|-|-|
+|ÉÉÉÉ|négyjegyű év|
+|MM|kétjegyű hónap (01 = Január stb.)|
+|DD|hónap kétjegyű napja (01 – 31)|
+|T|az időelemek kezdetének jelölője|
+|óó|kétjegyű óra (00 – 23)|
+|hh|kétjegyű perc (00 – 59)|
+|mm|kétszámjegyű másodperc (00 – 59)|
+|.fffffff|hét számjegyű tört másodperc|
+|Z|UTC (egyezményes világidő) jelölő|
   
  Az ISO 8601 formátumával kapcsolatos további információkért lásd: [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
 
@@ -112,7 +112,7 @@ SELECT DateTimeFromParts(2020, 9, 4, 10, 52, 12, 3456789) AS DateTime
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Dátum és idő függvények Azure Cosmos DB](sql-query-date-time-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

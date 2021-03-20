@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 5755e14e53d359fd8b322939bf1325d21536d593
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89020184"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Példa: egyéni képesség létrehozása a Bing Entity Search API használatával
@@ -34,15 +34,15 @@ Bár ez a példa egy Azure-függvényt használ a webes API-k üzemeltetéséhez
 
 ### <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
-1. A Visual Studióban válassza **New**  >  a Fájl menü új**projekt** elemét.
+1. A Visual Studio Fájl menüjében válassza az **Új** > **Projekt** lehetőséget.
 
-1. Az új projekt párbeszédpanelen válassza a **telepített**elemet, majd a **Visual C#**  >  **Cloud**elemet, válassza a **Azure functions**lehetőséget, írja be a projekt nevét, majd kattintson **az OK gombra**. A Function app neve csak C# névtérként érvényes, ezért ne használjon aláhúzást, kötőjelet vagy más, nem alfanumerikus karaktereket.
+1. Az új projekt párbeszédpanelen válassza a **telepített** elemet, majd a **Visual C#**  >  **Cloud** elemet, válassza a **Azure functions** lehetőséget, írja be a projekt nevét, majd kattintson **az OK gombra**. A Function app neve csak C# névtérként érvényes, ezért ne használjon aláhúzást, kötőjelet vagy más, nem alfanumerikus karaktereket.
 
 1. Válassza a **Azure functions v2 (.net Core)** lehetőséget. Azt is megteheti az 1. verzióban, de az alább írt kód a v2-sablonon alapul.
 
 1. A **http-trigger** típusának kiválasztása
 
-1. A Storage-fiók esetében válassza a **nincs**lehetőséget, mivel ehhez a függvényhez nem lesz szüksége tárterületre.
+1. A Storage-fiók esetében válassza a **nincs** lehetőséget, mivel ehhez a függvényhez nem lesz szüksége tárterületre.
 
 1. Kattintson az **OK** gombra a függvény projekt és a http által aktivált függvény létrehozásához.
 
@@ -50,7 +50,7 @@ Bár ez a példa egy Azure-függvényt használ a webes API-k üzemeltetéséhez
 
 A Visual Studio létrehoz egy projektet, benne egy olyan osztállyal, amely tartalmazza a kiválasztott függvénytípus sablonkódját. A metódus *FunctionName* attribútuma adja meg a függvény nevét. A *HttpTrigger* attribútum adja meg, hogy a függvényt egy HTTP-kérelem aktiválja.
 
-Most cserélje le a *Function1.cs* fájl összes tartalmát a következő kódra:
+Most cserélje le a *Function1. cs* fájl összes tartalmát a következő kódra:
 
 ```csharp
 using System;
@@ -376,7 +376,7 @@ Az alábbi példához hasonló válasznak kell megjelennie:
 
 Ha elégedett a funkció működésével, közzéteheti.
 
-1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **Publish** (Közzététel) lehetőséget. Válassza az **új**  >  **Közzététel**létrehozása lehetőséget.
+1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **Publish** (Közzététel) lehetőséget. Válassza az **új**  >  **Közzététel** létrehozása lehetőséget.
 
 1. Ha még nem csatlakoztatta a Visual studiót az Azure-fiókjához, válassza a **fiók hozzáadása...** lehetőséget.
 

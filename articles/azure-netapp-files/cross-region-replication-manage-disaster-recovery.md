@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 03/10/2021
 ms.author: b-juche
-ms.openlocfilehash: eab55f881c250c2e07717604d4ba00587a8b6031
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 5b1c1a5216b7a1ad5b23167e776f2b0bbb0a578f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95243205"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590993"
 ---
 # <a name="manage-disaster-recovery-using-cross-region-replication"></a>Vész-helyreállítás kezelése a régiók közötti replikációval 
 
@@ -38,10 +38,10 @@ Ha aktiválni kell a célként megadott kötetet (például ha feladatátvételt
 1. A replikálási társítás megszakításához válassza ki a cél kötetet. Kattintson a **replikálás** lehetőségre a Storage szolgáltatás alatt.  
 
 2.  A folytatás előtt keresse meg a következő mezőket:  
-    * Győződjön meg arról, hogy a tükrözött állapot a ***tükrözött** _-t jeleníti meg.   
-        Ne próbálkozzon a replikálási társítás megszakításával, ha a tükrözés állapota _Uninitialized *.
-    * Győződjön meg arról, hogy a kapcsolat állapota a ***tétlen** _ értékre mutat.   
-        Ne kísérelje meg a replikálási társítások megszakítását, ha a kapcsolat állapota _Transferring *.   
+    * Győződjön meg arról, hogy a tükrözési állapot ***tükrözöttként*** jelenik meg.   
+        Ne kísérelje meg a replikálási társítások megszakítását, ha a tükrözés állapota nem *inicializált*.
+    * Győződjön meg arról, hogy a kapcsolat állapota ***inaktív***.   
+        Ne kísérelje meg a replikálási társítások megszakítását, ha a kapcsolat állapota *átadást* mutat.   
 
     Lásd: [a replikációs kapcsolat](cross-region-replication-display-health-status.md)állapotának megjelenítése. 
 
@@ -80,10 +80,10 @@ Miután befejeződött az újraszinkronizálási művelet a célhelyről a forr�
 1. A replikálási társítás megszüntetése:  
     a. Válassza ki a *cél* kötetet. Kattintson a **replikálás** lehetőségre a Storage szolgáltatás alatt.  
     b. A folytatás előtt keresse meg a következő mezőket:   
-    * Győződjön meg arról, hogy a tükrözött állapot a ***tükrözött** _-t jeleníti meg.   
-    Ne próbálkozzon a replikálási társítás megszakításával, ha a tükrözés állapota _uninitialized *.  
-    * Győződjön meg arról, hogy a kapcsolat állapota a ***tétlen** _ értékre mutat.   
-    Ne kísérelje meg a replikálási társítások megszakítását, ha a kapcsolat állapota _transferring *.    
+    * Győződjön meg arról, hogy a tükrözési állapot ***tükrözöttként*** jelenik meg.   
+    Ne kísérelje meg a replikálási társítások megszakítását, ha a tükrözés állapota nem *inicializált*.  
+    * Győződjön meg arról, hogy a kapcsolat állapota ***inaktív***.   
+    Ne kísérelje meg a replikálási társítások megszakítását, ha a kapcsolat állapota *átadást* mutat.    
 
         Lásd: [a replikációs kapcsolat](cross-region-replication-display-health-status.md)állapotának megjelenítése. 
 
@@ -102,7 +102,8 @@ Miután befejeződött az újraszinkronizálási művelet a célhelyről a forr�
 * [Régiók közötti replikáció](cross-region-replication-introduction.md)
 * [A régiók közötti replikáció használatára vonatkozó követelmények és szempontok](cross-region-replication-requirements-considerations.md)
 * [Replikációs kapcsolat állapotának megjelenítése](cross-region-replication-display-health-status.md)
+* [Régiók közötti replikálási cél kötetének átméretezése](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
 * [Kötet replikációs metrikái](azure-netapp-files-metrics.md#replication)
-* [Kötetek replikálásának vagy köteteinek törlése](cross-region-replication-delete.md)
+* [Kötetreplikációk vagy kötetek törlése](cross-region-replication-delete.md)
 * [Régiók közötti replikáció hibaelhárítása](troubleshoot-cross-region-replication.md)
 

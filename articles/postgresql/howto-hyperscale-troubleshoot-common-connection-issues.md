@@ -9,10 +9,10 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 10/8/2019
 ms.openlocfilehash: e1c6825820ae943d10157279dfe93922a7521b75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91295617"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL-nagy kapacitású kapcsolódási problémáinak elhárítása (Citus)
@@ -45,7 +45,7 @@ A magas rendelkezésre állású nagy kapacitású (Citus) kiszolgálói csoport
 3. Mivel a kiszolgálócsoport megközelíti az erőforrás-korlátozásokat, a hibák az átmeneti kapcsolódási problémákhoz hasonlóak lehetnek. A csomópont RAM-számának növelése vagy a feldolgozó csomópontok hozzáadása és az adatkiegyensúlyozás is segíthet.
 4. Ha a kapcsolódási problémák továbbra is fennállnak, vagy 60 másodpercnél tovább tartanak, vagy naponta többször történnek, akkor [Az Azure támogatási webhelyén válassza](https://azure.microsoft.com/support/options) a **támogatás beszerzése** lehetőséget.
 
-## <a name="troubleshoot-persistent-errors"></a>Állandó hibák elhárítása
+## <a name="troubleshoot-persistent-errors"></a>Állandó jellegű hibák elhárítása
 
 Ha az alkalmazás tartósan nem tud csatlakozni a nagy kapacitású (Citus), a leggyakoribb okok a tűzfal helytelen konfigurációja vagy felhasználói hiba.
 

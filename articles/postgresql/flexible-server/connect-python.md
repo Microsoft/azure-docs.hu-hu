@@ -9,10 +9,10 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.openlocfilehash: 89dc36a9b1b1fee9ad10d55945c7fc17bf72f476
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90947775"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---flexible-server"></a>Rövid útmutató: a Python használata a Azure Database for PostgreSQL rugalmas kiszolgálóval való kapcsolódáshoz és az adatlekérdezéshez
@@ -44,7 +44,7 @@ A telepítéséhez `psycopg2` Nyisson meg egy terminált vagy egy parancssort, �
 Azure Database for PostgreSQL-rugalmas kiszolgálóhoz való csatlakozáshoz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra van szükség. Ezt az információt a Azure Portalból kérheti le.
 
 1. A [Azure Portal](https://portal.azure.com/)keresse meg és válassza ki a rugalmas kiszolgáló nevét. 
-2. A kiszolgáló **Áttekintés** lapján másolja a teljes **kiszolgálónevet** és a **rendszergazdai felhasználónevet**. A teljes **kiszolgálónév** mindig a form * \<my-server-name> . postgres.database.Azure.com*.
+2. A kiszolgáló **Áttekintés** lapján másolja a teljes **kiszolgálónevet** és a **rendszergazdai felhasználónevet**. A teljes **kiszolgálónév** mindig a form *\<my-server-name> . postgres.database.Azure.com*.
 
    Szüksége lesz a rendszergazdai jelszavára is. Ha elfelejti, alaphelyzetbe állíthatja az áttekintés oldalról. 
 
@@ -180,6 +180,6 @@ cursor.close()
 conn.close()
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása a dump és a Restore használatával](../howto-migrate-using-dump-and-restore.md)

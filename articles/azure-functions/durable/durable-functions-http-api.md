@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4e4081ecca4714c713d105d363a83a4f96a0d3fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84697843"
 ---
 # <a name="http-api-reference"></a>HTTP API-referenciák
@@ -18,7 +18,7 @@ Az Durable Functions-bővítmény olyan beépített HTTP API-kat tesz elérhető
 
 A bővítmény által megvalósított összes HTTP API-nak a következő paramétereket kell megadni. Az összes paraméter adattípusa `string` .
 
-| Paraméter        | Paraméter típusa  | Leírás |
+| Paraméter        | Paraméter típusa  | Description |
 |------------------|-----------------|-------------|
 | **`taskHub`**    | Lekérdezési sztring    | A [feladat hub](durable-functions-task-hubs.md)neve. Ha nincs megadva, a rendszer feltételezi, hogy az aktuális Function-alkalmazás feladatának hub-neve. |
 | **`connection`** | Lekérdezési sztring    | A Storage-fiókhoz tartozó kapcsolatok karakterláncának **neve** . Ha nincs megadva, a rendszer a Function alkalmazás alapértelmezett kapcsolatok sztringjét feltételezi. |
@@ -54,7 +54,7 @@ POST /runtime/webhooks/durabletask/orchestrators/{functionName}/{instanceId?}
 
 Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett alapértelmezett készlet, valamint a következő egyedi paraméterek:
 
-| Mező              | Paraméter típusa  | Leírás |
+| Mező              | Paramétertípus  | Leírás |
 |--------------------|-----------------|-------------|
 | **`functionName`** | URL-cím             | Az elindítani kívánt Orchestrator-függvény neve. |
 | **`instanceId`**   | URL-cím             | Nem kötelező megadni. A koordináló példány azonosítója. Ha nincs megadva, a Orchestrator függvény véletlenszerűen kiválasztott AZONOSÍTÓJÚ példánnyal fog kezdődni. |
@@ -144,7 +144,7 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}
 
 Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett alapértelmezett készlet, valamint a következő egyedi paraméterek:
 
-| Mező                   | Paraméter típusa  | Leírás |
+| Mező                   | Paramétertípus  | Leírás |
 |-------------------------|-----------------|-------------|
 | **`instanceId`**        | URL-cím             | A koordináló példány azonosítója. |
 | **`showInput`**         | Lekérdezési sztring    | Nem kötelező megadni. Ha a értékre `false` van állítva, a függvény bemenete nem fog szerepelni a válasz adattartalomban.|
@@ -166,7 +166,7 @@ Több lehetséges állapotkód-érték is visszaadható.
 
 A **http 200** és a **http 202** esetek válaszának adattartalma egy JSON-objektum, amely a következő mezőket tartalmazhatja:
 
-| Mező                 | Adattípus | Leírás |
+| Mező                 | Adattípus | Description |
 |-----------------------|-----------|-------------|
 | **`runtimeStatus`**   | sztring    | A példány futtatókörnyezeti állapota. Az értékek közé tartoznak a következők: *Futtatás*, *függő*, *sikertelen*, *megszakított*, *leállított*, *befejezett*. |
 | **`input`**           | JSON      | A példány inicializálásához használt JSON-adatbázis. Ez a mező akkor van `null` beállítva, ha a `showInput` lekérdezési karakterlánc paraméter értéke `false` .|
@@ -272,7 +272,7 @@ GET /runtime/webhooks/durableTask/instances?
 
 Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett alapértelmezett készlet, valamint a következő egyedi paraméterek:
 
-| Mező                   | Paraméter típusa  | Leírás |
+| Mező                   | Paramétertípus  | Leírás |
 |-------------------------|-----------------|-------------|
 | **`instanceId`**        | URL-cím             | A koordináló példány azonosítója. |
 | **`showInput`**         | Lekérdezési sztring    | Nem kötelező megadni. Ha a értékre `false` van állítva, a függvény bemenete nem fog szerepelni a válasz adattartalomban.|
@@ -370,7 +370,7 @@ DELETE /runtime/webhooks/durabletask/instances/{instanceId}
 
 Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett alapértelmezett készlet, valamint a következő egyedi paraméterek:
 
-| Mező             | Paraméter típusa  | Leírás |
+| Mező             | Paramétertípus  | Leírás |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL-cím             | A koordináló példány azonosítója. |
 
@@ -427,7 +427,7 @@ DELETE /runtime/webhooks/durabletask/instances
 
 Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett alapértelmezett készlet, valamint a következő egyedi paraméterek:
 
-| Mező                 | Paraméter típusa  | Leírás |
+| Mező                 | Paramétertípus  | Description |
 |-----------------------|-----------------|-------------|
 | **`createdTimeFrom`** | Lekérdezési sztring    | A megadott ISO8601 időbélyegzőn vagy azt követően létrehozott kiürített példányok listájának szűrése.|
 | **`createdTimeTo`**   | Lekérdezési sztring    | Nem kötelező megadni. Ha meg van adva, szűri az adott ISO8601 időbélyegzőn vagy azt megelőzően létrehozott kiürített példányok listáját.|
@@ -483,7 +483,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}
 
 Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett alapértelmezett készlet, valamint a következő egyedi paraméterek:
 
-| Mező             | Paraméter típusa  | Leírás |
+| Mező             | Paramétertípus  | Leírás |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL-cím             | A koordináló példány azonosítója. |
 | **`eventName`**   | URL-cím             | Annak az eseménynek a neve, amelyre a cél-előkészítési példány várakozik. |
@@ -498,7 +498,7 @@ Több lehetséges állapotkód-érték is visszaadható.
 * **HTTP 404 (nem található)**: a megadott példány nem található.
 * **HTTP 410 (eltűnt)**: a megadott példány befejeződött vagy meghiúsult, és nem tudja feldolgozni a létrehozott eseményeket.
 
-Íme egy példa egy olyan kérelemre, amely a JSON-karakterláncot egy olyan példányra küldi, amely a művelet elvégzésére `"incr"` vár: **operation**
+Íme egy példa egy olyan kérelemre, amely a JSON-karakterláncot egy olyan példányra küldi, amely a művelet elvégzésére `"incr"` vár: 
 
 ```http
 POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/raiseEvent/operation?taskHub=DurableFunctionsHub&connection=Storage&code=XXX
@@ -551,7 +551,7 @@ Több lehetséges állapotkód-érték is visszaadható.
 * **HTTP 404 (nem található)**: a megadott példány nem található.
 * **HTTP 410 (eltűnt)**: a megadott példány befejeződött vagy meghiúsult.
 
-Íme egy példa egy futó példányt lezáró kérelemre, amely a **hibás**működés okát adja meg:
+Íme egy példa egy futó példányt lezáró kérelemre, amely a **hibás** működés okát adja meg:
 
 ```
 POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/terminate?reason=buggy&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
@@ -600,7 +600,7 @@ Több lehetséges állapotkód-érték is visszaadható.
 * **HTTP 404 (nem található)**: a megadott példány nem található.
 * **HTTP 410 (eltűnt)**: a megadott példány befejeződött vagy leállt.
 
-Íme egy példa egy sikertelen példány újratekercselésére, és a **rögzített**okot adja meg:
+Íme egy példa egy sikertelen példány újratekercselésére, és a **rögzített** okot adja meg:
 
 ```http
 POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/rewind?reason=fixed&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
@@ -629,7 +629,7 @@ POST /runtime/webhooks/durabletask/entities/{entityName}/{entityKey}
 
 Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett alapértelmezett készlet, valamint a következő egyedi paraméterek:
 
-| Mező             | Paraméter típusa  | Leírás |
+| Mező             | Paramétertípus  | Leírás |
 |-------------------|-----------------|-------------|
 | **`entityName`**  | URL-cím             | Az entitás neve (típusa). |
 | **`entityKey`**   | URL-cím             | Az entitás kulcsa (egyedi azonosítója). |
@@ -718,7 +718,7 @@ GET /runtime/webhooks/durabletask/entities/{entityName}
 
 Az API-hoz tartozó kérelmek paraméterei közé tartozik a korábban említett alapértelmezett készlet, valamint a következő egyedi paraméterek:
 
-| Mező                       | Paraméter típusa  | Leírás |
+| Mező                       | Paramétertípus  | Leírás |
 |-----------------------------|-----------------|-------------|
 | **`entityName`**            | URL-cím             | Választható. Ha meg van adva, az entitás neve alapján szűri a visszaadott entitások listáját (kis-és nagybetűk megkülönböztetése). |
 | **`fetchState`**            | Lekérdezési sztring    | Nem kötelező megadni. Ha a értékre `true` van állítva, az entitás állapota szerepelni fog a válasz adattartalmaban. |
@@ -791,7 +791,7 @@ A válasz JSON a következőhöz hasonlóan jelenhet meg (az olvashatóság érd
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ismerje meg, hogyan használható a Application Insights a tartós függvények figyeléséhez](durable-functions-diagnostics.md)

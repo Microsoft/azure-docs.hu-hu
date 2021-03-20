@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 94710e99fa7d04d757f2ad5fd7b2d3f6e01371d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91306342"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Azure AD Connect-adatbázis áthelyezése SQL Server Expressről SQL Serverre 
@@ -46,7 +46,7 @@ Az alábbi lépésekkel áthelyezheti az Azure AD Connect-adatbázist egy távol
     ![PowerShell](./media/how-to-connect-install-move-db/db2.png)
 11. Megjelenik az Azure AD Connect üdvözlőképernyője. A licencfeltételek és az adatvédelmi nyilatkozat elfogadása után kattintson a **Folytatás** gombra.
     ![Képernyőfelvétel: "Üdvözöljük az Azure A D-vel" oldal](./media/how-to-connect-install-move-db/db3.png)
-12. **A szükséges összetevők telepítése** képernyőn a **Meglévő SQL Server használata** lehetőség engedélyezve van. Adja meg az ADSync-adatbázist futtató SQL Server nevét. Ha az ADSync-adatbázist futtató SQL-motorpéldány nem az alapértelmezett példány az SQL Serveren, meg kell adnia az SQL-motorpéldány nevét. Ha az SQL-böngészés nincs engedélyezve, meg kell adnia az SQL-motorpéldány portszámát is. Példa:         
+12. **A szükséges összetevők telepítése** képernyőn a **Meglévő SQL Server használata** lehetőség engedélyezve van. Adja meg az ADSync-adatbázist futtató SQL Server nevét. Ha az ADSync-adatbázist futtató SQL-motorpéldány nem az alapértelmezett példány az SQL Serveren, meg kell adnia az SQL-motorpéldány nevét. Ha az SQL-böngészés nincs engedélyezve, meg kell adnia az SQL-motorpéldány portszámát is. Például:         
     ![A "szükséges összetevők telepítése" lapot megjelenítő képernyőkép.](./media/how-to-connect-install-move-db/db4.png)           
 
 13. A **Azure AD-hez való csatlakozásra** szolgáló képernyőn meg kell adnia az Azure AD-címtár globális rendszergazdájának hitelesítő adatait. Javasoljuk, hogy az alapértelmezett onmicrosoft.com tartományban található fiókot használjon. Ez a fiók kizárólag egy Azure AD-szolgáltatásfiók létrehozására lesz használva, és csak a varázsló befejeztéig.
@@ -64,7 +64,7 @@ Az alábbi lépésekkel áthelyezheti az Azure AD Connect-adatbázist egy távol
     ![A fiók hitelesítő adatainak megadása után a "címtárak összekapcsolásának" oldalát bemutató képernyőkép.](./media/how-to-connect-install-move-db/db8.png)
  
 
-17. A **konfigurálásra kész** képernyőn kattintson a **telepítés**elemre.
+17. A **konfigurálásra kész** képernyőn kattintson a **telepítés** elemre.
     ![Üdvözlőképernyő](./media/how-to-connect-install-move-db/db9.png)
  
 
