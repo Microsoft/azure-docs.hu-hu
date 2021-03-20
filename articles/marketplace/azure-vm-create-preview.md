@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/19/2020
 ms.openlocfilehash: 854d0fa9b34d495f03a0c3c6203ceb227e4712d2
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94629512"
 ---
 # <a name="how-to-add-a-preview-audience-for-a-virtual-machine-offer"></a>Előzetes verzió célközönségének hozzáadása virtuálisgép-ajánlathoz
@@ -30,6 +30,6 @@ Adjon hozzá legalább egy Azure-előfizetési azonosítót egyenként (legfelje
 
 Ha módosította a módosításokat, válassza a **Piszkozat mentése** lehetőséget, mielőtt továbblépne a bal oldali navigációs menü következő fülére, majd **tervezze meg az áttekintést**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Csomagok létrehozása](azure-vm-create-plans.md)

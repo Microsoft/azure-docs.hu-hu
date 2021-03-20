@@ -5,10 +5,10 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 ms.reviewer: chroyal
 ms.openlocfilehash: 78c93880007259267b26cf53e93de722be1c7323
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77209443"
 ---
 # <a name="what-is-blockchain-data-manager-for-azure-blockchain-service"></a>Mi az Azure Blockchain Service-hez készült Blockchain Data Manager?
@@ -41,6 +41,6 @@ A Blockchain Data Manager konfigurálhatja a megoldás igényeinek kielégítés
 * Egy Blockchain Data Manager példány Azure Blockchain szolgáltatás-tranzakciós csomóponton. Például a privát tranzakciós csomópontok rendelkezhetnek saját Blockchain Data Manager-példánnyal a titkosság fenntartása érdekében.
 * Egy Blockchain Data Manager-példány több kimeneti kapcsolatot is támogat. Egy Blockchain Data Manager-példány használatával felügyelhető az Azure Blockchain-szolgáltatás összes adatközzétételi integrációs pontja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbáljon meg [Blockchain Data Manager példányt létrehozni](data-manager-portal.md) egy Azure Blockchain-szolgáltatás tagjához.

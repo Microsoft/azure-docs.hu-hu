@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.reviewer: harelbr
 ms.openlocfilehash: 1cdfc6dc3ac74997743512ee07f9293699e3ad10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87309290"
 ---
 # <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>Riasztás az Azure Cloud Services az Azure Diagnostics Azure-beli integrációjának használatával Application Insights
@@ -80,11 +80,11 @@ EventLogs
 
 ## <a name="create-an-alert"></a>Riasztás létrehozása
 
-A Application Insights erőforrásának navigációs menüjében lépjen a **riasztások**elemre, majd válassza az **új riasztási szabály**lehetőséget.
+A Application Insights erőforrásának navigációs menüjében lépjen a **riasztások** elemre, majd válassza az **új riasztási szabály** lehetőséget.
 
 ![Képernyőfelvétel a szabály létrehozásáról](./media/proactive-cloud-services/001.png)
 
-A **szabály létrehozása** ablakban a **riasztási feltétel meghatározása** szakaszban kattintson a **feltétel hozzáadása**elemre, majd válassza az **egyéni naplók keresése**lehetőséget.
+A **szabály létrehozása** ablakban a **riasztási feltétel meghatározása** szakaszban kattintson a **feltétel hozzáadása** elemre, majd válassza az **egyéni naplók keresése** lehetőséget.
 
 ![Képernyőkép a riasztásra vonatkozó feltételek meghatározásáról](./media/proactive-cloud-services/002.png)
 
@@ -96,7 +96,7 @@ Kattintson a **Kész** gombra.
 ![A jel logikai lekérdezés konfigurálásának képernyőképe](./media/proactive-cloud-services/003.png)
 
 A **riasztás részleteinek meghatározása** szakaszban adja meg a riasztási szabály **nevét** és **leírását** , és állítsa be **súlyosságát**.
-Győződjön meg arról is, hogy a létrehozás gombon a **szabály engedélyezése után** beállítás **Igen**értékre van állítva.
+Győződjön meg arról is, hogy a létrehozás gombon a **szabály engedélyezése után** beállítás **Igen** értékre van állítva.
 
 ![Képernyőkép-riasztás részletei](./media/proactive-cloud-services/004.png)
 
@@ -105,9 +105,9 @@ Dönthet úgy, hogy a műveleti csoport több különböző típusú műveletet 
 
 ![Képernyőfelvételi műveleti csoport](./media/proactive-cloud-services/005.png)
 
-Miután definiálta a műveleti csoportot, erősítse meg a módosításokat, majd kattintson a **riasztási szabály létrehozása**elemre.
+Miután definiálta a műveleti csoportot, erősítse meg a módosításokat, majd kattintson a **riasztási szabály létrehozása** elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az automatikus észlelésről:
 

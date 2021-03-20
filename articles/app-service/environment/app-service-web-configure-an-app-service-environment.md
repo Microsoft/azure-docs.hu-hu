@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 598e43d07c213cfeb25f0ecbc7bd02b6ec54b7ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88962587"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>App Service Environment v1 konfigurálása
@@ -24,7 +24,7 @@ ms.locfileid: "88962587"
 Magas szinten az Azure App Service Environment több fő összetevőből áll:
 
 * A App Service Environment üzemeltetett szolgáltatásban futó számítási erőforrások
-* Storage
+* Tárolás
 * Egy adatbázis
 * Klasszikus (v1) vagy Resource Manager (v2) Azure Virtual Network (VNet) 
 * Olyan alhálózat, amelyen fut a App Service Environment üzemeltetett szolgáltatás
@@ -65,7 +65,7 @@ Automatikus **skálázás**: az egyik olyan eszköz, amely segíthet a számít�
 
 Ha szeretné beállítani az autoskálázási szabályokat a számítási erőforráskészlet metrikái között, akkor ne feledje, hogy milyen időpontra van szükség a kiépítés során. További információ az automatikus skálázásról App Service környezetekről: az automatikus [skálázás konfigurálása egy app Service Environment][ASEAutoscale].
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Tárolás
 Az egyes előállítók 500 GB tárhellyel vannak konfigurálva. Ez a terület a központhoz tartozó összes alkalmazásban használatos. Ez a tárolóhely a szolgáltató része, és jelenleg nem lehet átváltani a tárolóhely használatára. Ha a virtuális hálózat útválasztásának vagy biztonságának módosítását végzi, akkor továbbra is engedélyeznie kell az Azure Storage-hoz való hozzáférést, vagy a kiegészítő funkció nem tud működni.
 
 ### <a name="database"></a>Adatbázis
@@ -114,7 +114,7 @@ A diagramok lehetővé teszik különböző teljesítménymutatók megjeleníté
 
 Több App Service-csomag is használhatja a munkavégző készlet feldolgozóit. A számítási feladatok nem ugyanolyan módon oszlanak el, mint az előtér-kiszolgálókon, így a CPU és a memóriahasználat nem sokat nyújt a hasznos információkhoz. Fontos, hogy nyomon kövessük, hány alkalmazottat használtak fel, és melyek elérhetők – különösen akkor, ha a rendszer kezelését mások számára kívánja használni.  
 
-A riasztások beállításához a diagramokon nyomon követhető összes mérőszámot is használhatja. A riasztások beállítása itt ugyanúgy működik, mint a App Serviceban. Riasztást állíthat be a **riasztások** felhasználói felület részben, vagy bármely metrika felhasználói felületén, és a **riasztás hozzáadása**lehetőség választásával.
+A riasztások beállításához a diagramokon nyomon követhető összes mérőszámot is használhatja. A riasztások beállítása itt ugyanúgy működik, mint a App Serviceban. Riasztást állíthat be a **riasztások** felhasználói felület részben, vagy bármely metrika felhasználói felületén, és a **riasztás hozzáadása** lehetőség választásával.
 
 ![Metrikák felhasználói felület][3]
 
@@ -125,7 +125,7 @@ A teljes App Service csomagok dedikált App Service csomagok. Ez azt jelenti, ho
 ### <a name="settings"></a>Beállítások
 A beadási panelen egy olyan **Beállítások** szakasz található, amely számos fontos funkciót tartalmaz:
 
-**Beállítások**  >  Tulajdonságok: a **Settings (beállítások** ) panel automatikusan megnyílik, amikor felveszi a beadási **panelt**. A tetején a **Tulajdonságok**láthatók. Itt számos elem van, amelyek redundánsak az **alapvető**erőforrásoknál, de a **virtuális IP-cím**és a **kimenő IP-címek**is hasznosak.
+**Beállítások**  >  Tulajdonságok: a **Settings (beállítások** ) panel automatikusan megnyílik, amikor felveszi a beadási **panelt**. A tetején a **Tulajdonságok** láthatók. Itt számos elem van, amelyek redundánsak az **alapvető** erőforrásoknál, de a **virtuális IP-cím** és a **kimenő IP-címek** is hasznosak.
 
 ![Beállítások panel és tulajdonságok][4]
 
@@ -147,14 +147,14 @@ Három skálázási művelet létezik:
 A portálon háromféle módon szabályozhatja, hogy hány kiszolgáló van az erőforrás-készletekben:
 
 * Egy méretezési művelet a legfelső szintű bevezető panelről. Az előtér-és a munkavégző készleteknél több méretezési konfigurációt is végezhet. Mindegyiket egyetlen műveletként alkalmazza a rendszer.
-* Manuális méretezési művelet az egyes erőforráskészlet- **méretezési** panelről, amely a **Beállítások**területen található.
+* Manuális méretezési művelet az egyes erőforráskészlet- **méretezési** panelről, amely a **Beállítások** területen található.
 * Automatikus skálázás, amely az egyes erőforráskészlet- **méretezési** panelről állítható be.
 
 Ha a skálázási műveletet a kisegítő panelen szeretné használni, húzza a csúszkát a kívánt mennyiségre, és mentse. Ez a felhasználói felület támogatja a méret módosítását is.  
 
 ![Felhasználói felület méretezése][6]
 
-Ha egy adott erőforráskészlet manuális vagy automatikus méretezési képességeit szeretné használni, válassza a **Beállítások**  >  **előtér-készlet**  /  **feldolgozói készletek** lehetőséget. Ezután nyissa meg a módosítani kívánt készletet. Lépjen a **Beállítások**  >  **felskálázás** vagy a **Beállítások**vertikális felskálázás menüpontra  >  **Scale Up**. A **kibővíthető** panel lehetővé teszi a példányok mennyiségének vezérlését. A vertikális **felskálázás** lehetővé teszi az erőforrások méretének szabályozását.  
+Ha egy adott erőforráskészlet manuális vagy automatikus méretezési képességeit szeretné használni, válassza a **Beállítások**  >  **előtér-készlet**  /  **feldolgozói készletek** lehetőséget. Ezután nyissa meg a módosítani kívánt készletet. Lépjen a **Beállítások**  >  **felskálázás** vagy a **Beállítások** vertikális felskálázás menüpontra  >  . A **kibővíthető** panel lehetővé teszi a példányok mennyiségének vezérlését. A vertikális **felskálázás** lehetővé teszi az erőforrások méretének szabályozását.  
 
 ![Méretezési beállítások felhasználói felülete][7]
 

@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 08/07/2020
 ms.openlocfilehash: 2b05220081dde4db6f07f21fb9978d9e466235ca
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92740374"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-using-an-arm-template"></a>Rövid útmutató: Azure szinapszis-munkaterület létrehozása ARM-sablonnal
@@ -37,7 +37,7 @@ A sablon áttekintéséhez válassza a **Megjelenítés** hivatkozást. Ezután 
 
 A sablon két erőforrást határoz meg:
 
-- Tárfiók
+- A(z)
 - Munkaterület
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
@@ -48,15 +48,15 @@ A sablon két erőforrást határoz meg:
 
 1. Adja meg vagy frissítse a következő értékeket:
 
-   - **Előfizetés** : válasszon ki egy Azure-előfizetést.
-   - **Erőforráscsoport** : válassza az **új létrehozása** elemet, és adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK gombra** . Egy új erőforráscsoport segíti az erőforrás karbantartását.
-   - **Régió** : válasszon régiót.  Például: **USA középső régiója** .
-   - **Név** : adjon meg egy nevet a munkaterületnek.
-   - **SQL-rendszergazdai bejelentkezés** : adja meg a SQL Server rendszergazdai felhasználónevét.
-   - **SQL-rendszergazda jelszava** : adja meg a SQL Server rendszergazdai jelszavát.
-   - **Címke értékei** : fogadja el az alapértelmezett értéket.
-   - **Áttekintés és létrehozás** : válassza a lehetőséget.
-   - **Létrehozás** : válassza a lehetőséget.
+   - **Előfizetés**: válasszon ki egy Azure-előfizetést.
+   - **Erőforráscsoport**: válassza az **új létrehozása** elemet, és adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK gombra**. Egy új erőforráscsoport segíti az erőforrás karbantartását.
+   - **Régió**: válasszon régiót.  Például: **USA középső régiója**.
+   - **Név**: adjon meg egy nevet a munkaterületnek.
+   - **SQL-rendszergazdai bejelentkezés**: adja meg a SQL Server rendszergazdai felhasználónevét.
+   - **SQL-rendszergazda jelszava**: adja meg a SQL Server rendszergazdai jelszavát.
+   - **Címke értékei**: fogadja el az alapértelmezett értéket.
+   - **Áttekintés és létrehozás**: válassza a lehetőséget.
+   - **Létrehozás**: válassza a lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

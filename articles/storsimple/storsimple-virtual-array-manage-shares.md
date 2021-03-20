@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 340b910319cabe3379bdb1bad1c09bc71c17f072
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95994944"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-shares-on-the-storsimple-virtual-array"></a>Megosztások kezelése a StorSimple-eszközkezelő szolgáltatással a StorSimple Virtual Arrayben
@@ -40,7 +40,7 @@ A StorSimple-megosztások a következőket tehetik:
 
 Tekintse meg az alábbi táblázatot az egyes megosztások maximális kiosztott kapacitásához.
 
-| **Korlátazonosító** | **Korlát** |
+| **Korlátazonosító** | **Korlátot** |
 | --- | --- |
 | Többszintű megosztás minimális mérete |500 GB |
 | Lépcsőzetes megosztás maximális mérete |20 TB |
@@ -142,6 +142,6 @@ Egy megosztás törléséhez hajtsa végre az alábbi lépéseket.
 3. Tekintse meg a törölni kívánt megosztás állapotát. Ha a törölni kívánt megosztás nem offline állapotban van, először kapcsolja offline állapotba. Kövesse a [megosztás offline állapotba](#take-a-share-offline)helyezése című témakör lépéseit.
 4. Amikor a rendszer megerősítést kér a **Törlés** panelen, fogadja el a megerősítést, és kattintson a **Törlés** gombra. A megosztás törölve lesz, és a **megosztások** panel a virtuális tömbben található megosztások frissített listáját jeleníti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Útmutató StorSimple- [megosztás klónozásához](storsimple-virtual-array-clone.md).
 

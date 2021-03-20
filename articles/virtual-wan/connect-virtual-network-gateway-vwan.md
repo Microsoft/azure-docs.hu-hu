@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: 469d7ba9e86751312ebf6a6c82b35f065ee6cb50
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98880372"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>VPN Gateway (virtuális hálózati átjáró) összekötése virtuális WAN-kapcsolattal
@@ -138,7 +138,7 @@ A kapcsolat teszteléséhez hozzon létre két virtuális gépet, egyet a VPN Ga
 4. A virtuális hálózati kapcsolatok létrehozásához kattintson **az OK** gombra.
 5. A kapcsolat már be van állítva a virtuális gépek között. Képesnek kell lennie arra, hogy egy virtuális gépet Pingelje a másikból, kivéve, ha vannak olyan tűzfalak vagy más szabályzatok, amelyek blokkolja a kommunikációt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Egyéni IPsec-házirend konfigurálásának lépéseiért lásd: [Egyéni IPsec-házirend konfigurálása a virtuális WAN-](virtual-wan-custom-ipsec-portal.md)hoz.
 További információ a virtuális WAN-ról: az [Azure Virtual WAN](virtual-wan-about.md) és az [Azure Virtual WAN gyakori kérdései](virtual-wan-faq.md).

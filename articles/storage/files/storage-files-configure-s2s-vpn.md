@@ -8,10 +8,10 @@ ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 0fa3fb8040fd79d68f9260ab520d3b6823ab363d
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94629291"
 ---
 # <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>Helyek közötti VPN konfigurálása Azure Fileshoz való használatra
@@ -48,15 +48,15 @@ A Azure Portal tartalomjegyzékében válassza az **új erőforrás létrehozás
 
 Az Azure-VPN Gateway üzembe helyezéséhez fel kell töltenie a következő mezőket:
 
-- **Name (név** ): az VPN Gateway Azure-erőforrásának neve. Ez a név lehet a felügyelethez hasznos név.
-- **Régió** : az a régió, ahová a VPN Gateway telepíteni fogja.
-- **Átjáró típusa** : helyek közötti VPN üzembe helyezéséhez ki kell választania a **VPN-** t.
-- **VPN-típus** : a VPN-eszköztől függően az *útvonalon alapuló* * vagy a **házirend alapján** is választhat. Az útválasztó-alapú VPN-EK támogatják a IKEv2, míg a házirend alapú VPN-ek csak a IKEv1 támogatják. Ha többet szeretne megtudni a VPN-átjárók két típusáról, tekintse meg a [házirend-alapú és az Útválasztás-alapú VPN-átjárók](../../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md#about) című témakört.
-- **SKU** : az SKU szabályozza az engedélyezett helyek közötti alagutak számát és a VPN kívánt teljesítményét. A megfelelő SKU kiválasztásához használja a használati esetet, és nézze meg az [ÁTJÁRÓ SKU](../../vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) -listáját. A VPN Gateway SKU-jának később is módosítható, ha szükséges.
-- **Virtual Network (virtuális hálózat** ): az előző lépésben létrehozott virtuális hálózat.
-- **Nyilvános IP-cím** : az interneten elérhetővé tett VPN Gateway IP-címe. Valószínűleg létre kell hoznia egy új IP-címet, azonban szükség esetén használhat egy meglévő, nem használt IP-címet is. Ha az **új létrehozása** lehetőséget választja, akkor a rendszer létrehoz egy új IP-címet az Azure-beli erőforrásban, amelyben a VPN Gateway és a  **nyilvános IP-cím neve** lesz az újonnan létrehozott IP-cím neve. Ha a **meglévő használata** lehetőséget választja, ki kell választania a meglévő nem használt IP-címet.
-- **Aktív-aktív üzemmód engedélyezése** : csak akkor válassza az **engedélyezve** lehetőséget, ha aktív-aktív átjáró-konfigurációt hoz létre, ellenkező esetben hagyja **Letiltva** a kijelölést. Ha többet szeretne megtudni az aktív-aktív üzemmódról, tekintse meg a [magasan elérhető, létesítmények közötti és VNet – VNet kapcsolatot](../../vpn-gateway/vpn-gateway-highlyavailable.md).
-- A **BGP ASN konfigurálása** : csak akkor válassza az **engedélyezve** lehetőséget, ha a konfigurációhoz kifejezetten szükség van erre a beállításra. Ha többet szeretne megtudni erről a beállításról, tekintse meg a [BGP és az Azure VPN Gateway](../../vpn-gateway/vpn-gateway-bgp-overview.md)című témakört.
+- **Name (név**): az VPN Gateway Azure-erőforrásának neve. Ez a név lehet a felügyelethez hasznos név.
+- **Régió**: az a régió, ahová a VPN Gateway telepíteni fogja.
+- **Átjáró típusa**: helyek közötti VPN üzembe helyezéséhez ki kell választania a **VPN-** t.
+- **VPN-típus**: a VPN-eszköztől függően az *útvonalon alapuló** vagy a **házirend alapján** is választhat. Az útválasztó-alapú VPN-EK támogatják a IKEv2, míg a házirend alapú VPN-ek csak a IKEv1 támogatják. Ha többet szeretne megtudni a VPN-átjárók két típusáról, tekintse meg a [házirend-alapú és az Útválasztás-alapú VPN-átjárók](../../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md#about) című témakört.
+- **SKU**: az SKU szabályozza az engedélyezett helyek közötti alagutak számát és a VPN kívánt teljesítményét. A megfelelő SKU kiválasztásához használja a használati esetet, és nézze meg az [ÁTJÁRÓ SKU](../../vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) -listáját. A VPN Gateway SKU-jának később is módosítható, ha szükséges.
+- **Virtual Network (virtuális hálózat**): az előző lépésben létrehozott virtuális hálózat.
+- **Nyilvános IP-cím**: az interneten elérhetővé tett VPN Gateway IP-címe. Valószínűleg létre kell hoznia egy új IP-címet, azonban szükség esetén használhat egy meglévő, nem használt IP-címet is. Ha az **új létrehozása** lehetőséget választja, akkor a rendszer létrehoz egy új IP-címet az Azure-beli erőforrásban, amelyben a VPN Gateway és a  **nyilvános IP-cím neve** lesz az újonnan létrehozott IP-cím neve. Ha a **meglévő használata** lehetőséget választja, ki kell választania a meglévő nem használt IP-címet.
+- **Aktív-aktív üzemmód engedélyezése**: csak akkor válassza az **engedélyezve** lehetőséget, ha aktív-aktív átjáró-konfigurációt hoz létre, ellenkező esetben hagyja **Letiltva** a kijelölést. Ha többet szeretne megtudni az aktív-aktív üzemmódról, tekintse meg a [magasan elérhető, létesítmények közötti és VNet – VNet kapcsolatot](../../vpn-gateway/vpn-gateway-highlyavailable.md).
+- A **BGP ASN konfigurálása**: csak akkor válassza az **engedélyezve** lehetőséget, ha a konfigurációhoz kifejezetten szükség van erre a beállításra. Ha többet szeretne megtudni erről a beállításról, tekintse meg a [BGP és az Azure VPN Gateway](../../vpn-gateway/vpn-gateway-bgp-overview.md)című témakört.
 
 Válassza a **felülvizsgálat + létrehozás** lehetőséget a VPN Gateway létrehozásához. Egy VPN Gateway akár 45 percet is igénybe vehet, hogy teljesen létre lehessen hozni és telepíteni lehessen.
 
@@ -65,13 +65,13 @@ A helyi hálózati átjáró egy Azure-erőforrás, amely a helyszíni hálózat
 
 A helyi hálózati átjáró erőforrásának üzembe helyezéséhez fel kell töltenie a következő mezőket:
 
-- **Name (név** ): a helyi hálózati átjáróhoz tartozó Azure-Erőforrás neve. Ez a név lehet a felügyelethez hasznos név.
-- **IP-cím** : a helyi ÁTJÁRÓ nyilvános IP-címe a helyszínen.
-- **Címterület** : a helyi hálózati átjáró által reprezentált hálózati címtartomány. Több címtartományt is hozzáadhat, de ügyeljen arra, hogy az itt megadott tartományok ne legyenek átfedésben más hálózatok tartományával, amelyhez csatlakozni szeretne. 
-- **BGP-beállítások konfigurálása** : csak a BGP-beállítások konfigurálása, ha a konfigurációhoz ezt a beállítást kell megadni. Ha többet szeretne megtudni erről a beállításról, tekintse meg a [BGP és az Azure VPN Gateway](../../vpn-gateway/vpn-gateway-bgp-overview.md)című témakört.
-- **Előfizetés** : a kívánt előfizetés. Ennek nem kell megegyeznie a VPN Gateway vagy a Storage-fiókhoz használt előfizetéssel.
-- **Erőforráscsoport** : a kívánt erőforráscsoport. Ennek nem kell megegyeznie az VPN Gateway vagy a Storage-fiókhoz használt erőforráscsoporthoz.
-- **Hely** : az az Azure-régió, ahol a helyi hálózati átjáró erőforrását létre kell hozni. Ennek egyeznie kell a VPN Gateway és a Storage-fiók kiválasztott régiójával.
+- **Name (név**): a helyi hálózati átjáróhoz tartozó Azure-Erőforrás neve. Ez a név lehet a felügyelethez hasznos név.
+- **IP-cím**: a helyi ÁTJÁRÓ nyilvános IP-címe a helyszínen.
+- **Címterület**: a helyi hálózati átjáró által reprezentált hálózati címtartomány. Több címtartományt is hozzáadhat, de ügyeljen arra, hogy az itt megadott tartományok ne legyenek átfedésben más hálózatok tartományával, amelyhez csatlakozni szeretne. 
+- **BGP-beállítások konfigurálása**: csak a BGP-beállítások konfigurálása, ha a konfigurációhoz ezt a beállítást kell megadni. Ha többet szeretne megtudni erről a beállításról, tekintse meg a [BGP és az Azure VPN Gateway](../../vpn-gateway/vpn-gateway-bgp-overview.md)című témakört.
+- **Előfizetés**: a kívánt előfizetés. Ennek nem kell megegyeznie a VPN Gateway vagy a Storage-fiókhoz használt előfizetéssel.
+- **Erőforráscsoport**: a kívánt erőforráscsoport. Ennek nem kell megegyeznie az VPN Gateway vagy a Storage-fiókhoz használt erőforráscsoporthoz.
+- **Hely**: az az Azure-régió, ahol a helyi hálózati átjáró erőforrását létre kell hozni. Ennek egyeznie kell a VPN Gateway és a Storage-fiók kiválasztott régiójával.
 
 Válassza a **Létrehozás** lehetőséget a helyi hálózati átjáró erőforrás létrehozásához.  
 
@@ -81,11 +81,11 @@ A helyszíni hálózati berendezés konfigurálásának konkrét lépései a sze
 ## <a name="create-the-site-to-site-connection"></a>Helyek közötti kapcsolat létrehozása
 Egy S2S VPN központi telepítésének befejezéséhez létre kell hoznia egy kapcsolatot a helyszíni hálózati berendezés (amelyet a helyi hálózati átjáró erőforrása) és a VPN Gateway között. Ehhez navigáljon a fent létrehozott VPN Gateway. A VPN Gateway tartalomjegyzékében válassza a **kapcsolatok** lehetőséget, majd kattintson a **Hozzáadás** gombra. Az eredményül kapott **kapcsolat hozzáadása** panelen a következő mezők szükségesek:
 
-- **Name (név** ): a kapcsolatok neve. Egy VPN Gateway több kapcsolatot is tárolhat, ezért a felügyelethez hasznos nevet adjon meg, amely megkülönbözteti az adott kapcsolatot.
-- **Kapcsolat típusa** : mivel ez egy S2S-kapcsolat, válassza a **helyek közötti (IPSec)** lehetőséget a legördülő listában.
-- **Virtuális hálózati átjáró** : Ez a mező automatikusan ki van választva arra a VPN Gatewayre, amelyhez a kapcsolódást végzi, és amely nem módosítható.
-- **Helyi hálózati átjáró** : ez az a helyi hálózati átjáró, amelyhez csatlakozni szeretne a VPN Gatewayhoz. Az eredményül kapott kiválasztási ablaktáblának rendelkeznie kell a fent létrehozott helyi hálózati átjáró nevével.
-- **Megosztott kulcs (PSK)** : a kapcsolat titkosításának létrehozásához használt betűk és számok keveréke. Ugyanazt a megosztott kulcsot kell használni a virtuális hálózaton és a helyi hálózati átjárókban is. Ha az átjáró-eszköz nem rendelkezik ilyennel, itt létrehozhat egyet, és megadhatja az eszközének.
+- **Name (név**): a kapcsolatok neve. Egy VPN Gateway több kapcsolatot is tárolhat, ezért a felügyelethez hasznos nevet adjon meg, amely megkülönbözteti az adott kapcsolatot.
+- **Kapcsolat típusa**: mivel ez egy S2S-kapcsolat, válassza a **helyek közötti (IPSec)** lehetőséget a legördülő listában.
+- **Virtuális hálózati átjáró**: Ez a mező automatikusan ki van választva arra a VPN Gatewayre, amelyhez a kapcsolódást végzi, és amely nem módosítható.
+- **Helyi hálózati átjáró**: ez az a helyi hálózati átjáró, amelyhez csatlakozni szeretne a VPN Gatewayhoz. Az eredményül kapott kiválasztási ablaktáblának rendelkeznie kell a fent létrehozott helyi hálózati átjáró nevével.
+- **Megosztott kulcs (PSK)**: a kapcsolat titkosításának létrehozásához használt betűk és számok keveréke. Ugyanazt a megosztott kulcsot kell használni a virtuális hálózaton és a helyi hálózati átjárókban is. Ha az átjáró-eszköz nem rendelkezik ilyennel, itt létrehozhat egyet, és megadhatja az eszközének.
 
 A kapcsolat létrehozásához válassza az **OK** lehetőséget. A **kapcsolatok** lapon ellenőrizheti, hogy a kapcsolat sikeresen létrejött-e.
 
@@ -96,7 +96,7 @@ A S2S VPN konfigurálásának utolsó lépése annak ellenőrzése, hogy Azure F
 - [macOS](storage-how-to-use-files-mac.md)
 - [Linux](storage-how-to-use-files-linux.md)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 - [Azure Files hálózatkezelés – áttekintés](storage-files-networking-overview.md)
 - [Pont – hely (P2S) VPN konfigurálása Windows rendszeren a Azure Files-mel való használatra](storage-files-configure-p2s-vpn-windows.md)
 - [Pont – hely (P2S) VPN konfigurálása Linux rendszeren a Azure Files-vel való használatra](storage-files-configure-p2s-vpn-linux.md)

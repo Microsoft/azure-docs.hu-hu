@@ -7,10 +7,10 @@ author: keferna
 ms.author: keferna
 ms.date: 10/09/2020
 ms.openlocfilehash: 2b1ba0779649c4955987c7dae9802cefaba89b79
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97109341"
 ---
 # <a name="find-tenant-id-object-id-and-partner-association-details"></a>Bérlői azonosító, objektumazonosító és partneri társítás részleteinek megkeresése
@@ -24,7 +24,7 @@ Ha szeretné, hogy a rendszer képernyőképeket kapjon ezekről az elemekről A
 
 ## <a name="find-tenant-id"></a>Bérlő AZONOSÍTÓjának megkeresése
 
-1. Nyissa meg az [Azure Portalt](https://ms.portal.azure.com/).
+1. Nyissa meg az [Azure Portal](https://ms.portal.azure.com/).
 2. Válassza a **Azure Active Directory** lehetőséget.
 
     :::image type="content" source="media/tenant-and-object-id/icon-azure-ad.png" alt-text="A Azure Portal Azure Active Directory ikonja.":::
@@ -70,7 +70,7 @@ Ha szeretné, hogy a rendszer képernyőképeket kapjon ezekről az elemekről A
 
 Ez a szakasz azt ismerteti, hogyan keresheti meg a bérlő, az objektum és a partner-azonosító társítását hibakeresési célból.
 
-1. Nyissa meg az [Azure Portalt](https://ms.portal.azure.com/).
+1. Nyissa meg az [Azure Portal](https://ms.portal.azure.com/).
 2. A jobb felső sarokban található PowerShell ikonra kattintva nyissa meg Azure Cloud Shell.
 
     :::image type="content" source="media/tenant-and-object-id/icon-azure-cloud-shell-1.png" alt-text="A képernyő jobb felső részén található PowerShell-ikon.":::

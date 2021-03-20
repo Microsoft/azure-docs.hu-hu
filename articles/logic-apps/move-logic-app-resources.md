@@ -7,10 +7,10 @@ ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: aca2c51ff14b99ba41b159cf32e59dc861de7a53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87826211"
 ---
 # <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>Logikai alkalmazás erőforrásainak áthelyezése más Azure-erőforráscsoportok,-régiók vagy-előfizetések között
@@ -41,13 +41,13 @@ Ha egy erőforrást, például logikai alkalmazást vagy integrációs fiókot s
 
 1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki az áthelyezni kívánt logikai alkalmazás erőforrását.
 
-1. Az erőforrás **Áttekintés** lapján az **előfizetés**elem mellett válassza a **módosítás** hivatkozást.
+1. Az erőforrás **Áttekintés** lapján az **előfizetés** elem mellett válassza a **módosítás** hivatkozást.
 
 1. Az **erőforrások áthelyezése** lapon válassza ki a logikai alkalmazás erőforrását és az áthelyezni kívánt kapcsolódó erőforrásokat.
 
 1. Az **előfizetés** listából válassza ki a cél előfizetést.
 
-1. Az **erőforráscsoport** listában válassza ki a cél erőforráscsoportot. Másik erőforráscsoport létrehozásához válassza az **új csoport létrehozása**lehetőséget.
+1. Az **erőforráscsoport** listában válassza ki a cél erőforráscsoportot. Másik erőforráscsoport létrehozásához válassza az **új csoport létrehozása** lehetőséget.
 
 1. Ha szeretné megerősíteni, hogy az áthelyezett erőforrásokhoz társított parancsfájlok vagy eszközök nem fognak működni, amíg nem frissíti őket az új erőforrás-azonosítókkal, jelölje be a megerősítő mezőt, majd kattintson az **OK gombra**.
 
@@ -61,11 +61,11 @@ Mielőtt ténylegesen áthelyezi az erőforrásokat a csoportok között, teszte
 
 1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki az áthelyezni kívánt logikai alkalmazás erőforrását.
 
-1. Az erőforrás **Áttekintés** lapján, az **erőforráscsoport**mellett válassza a **módosítás** hivatkozást.
+1. Az erőforrás **Áttekintés** lapján, az **erőforráscsoport** mellett válassza a **módosítás** hivatkozást.
 
 1. Az **erőforrások áthelyezése** lapon válassza ki a logikai alkalmazás erőforrását és az áthelyezni kívánt kapcsolódó erőforrásokat.
 
-1. Az **erőforráscsoport** listában válassza ki a cél erőforráscsoportot. Másik erőforráscsoport létrehozásához válassza az **új csoport létrehozása**lehetőséget.
+1. Az **erőforráscsoport** listában válassza ki a cél erőforráscsoportot. Másik erőforráscsoport létrehozásához válassza az **új csoport létrehozása** lehetőséget.
 
 1. Ha szeretné megerősíteni, hogy az áthelyezett erőforrásokhoz társított parancsfájlok vagy eszközök nem fognak működni, amíg nem frissíti őket az új erőforrás-azonosítókkal, jelölje be a megerősítő mezőt, majd kattintson az **OK gombra**.
 
@@ -75,7 +75,7 @@ Mielőtt ténylegesen áthelyezi az erőforrásokat a csoportok között, teszte
 
 Ha egy logikai alkalmazást egy másik régióba szeretne áthelyezni, a lehetőségek attól függnek, hogy milyen módon hozta létre a logikai alkalmazást. A választott lehetőség alapján újra létre kell hoznia vagy újra engedélyeznie kell a logikai alkalmazásban lévő kapcsolatokat.
 
-* A Azure Portal hozza létre újra a logikai alkalmazást az új régióban, és konfigurálja újra a munkafolyamat beállításait. Időt takaríthat meg, ha átmásolja a mögöttes munkafolyamat-definíciót és a forrás alkalmazásban lévő kapcsolatokat a cél alkalmazásba. A "kód" logikai alkalmazás mögötti megtekintéséhez a Logic app Designer eszköztárán válassza a **kód nézet**lehetőséget.
+* A Azure Portal hozza létre újra a logikai alkalmazást az új régióban, és konfigurálja újra a munkafolyamat beállításait. Időt takaríthat meg, ha átmásolja a mögöttes munkafolyamat-definíciót és a forrás alkalmazásban lévő kapcsolatokat a cél alkalmazásba. A "kód" logikai alkalmazás mögötti megtekintéséhez a Logic app Designer eszköztárán válassza a **kód nézet** lehetőséget.
 
 * A Visual Studióval és a Visual studióhoz készült Azure Logic Apps eszközökkel [megnyithatja és letöltheti a logikai alkalmazást](../logic-apps/manage-logic-apps-with-visual-studio.md) a Azure Portalból [Azure Resource Manager sablonként](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md). Ez a sablon többnyire készen áll az üzembe helyezésre, és tartalmazza a logikai alkalmazáshoz tartozó erőforrás-definíciókat, beleértve a munkafolyamatot és a kapcsolatokat. A sablon a telepítéskor használandó értékek paramétereit is deklarálja. Így könnyebben megváltoztathatja, hogy hol és hogyan helyezi üzembe a logikai alkalmazást az igényei alapján. A hely és a telepítéshez szükséges egyéb információk megadásához külön paraméter-fájlt használhat.
 
@@ -102,9 +102,9 @@ A Visual studióból beolvasott sablon csak a logikai alkalmazás erőforrás-de
 
 1. A [Azure Portal](https://portal.azure.com)keresse meg és nyissa meg az integrációs fiókját.
 
-1. Az integrációs fiók menüjének **Beállítások**területén válassza a **sablon exportálása**lehetőséget.
+1. Az integrációs fiók menüjének **Beállítások** területén válassza a **sablon exportálása** lehetőséget.
 
-1. Az eszköztáron válassza a **Letöltés**lehetőséget, és mentse a sablont.
+1. Az eszköztáron válassza a **Letöltés** lehetőséget, és mentse a sablont.
 
 1. Nyissa meg és szerkessze a sablont, hogy parametrizálja a szükséges értékeket az üzembe helyezéshez.
 

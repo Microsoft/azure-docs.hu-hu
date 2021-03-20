@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: 8742b590af89954cb8480e5282827bcd5228673b
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101095833"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Az Azure-ban előre kiépített és üzembe helyezett szolgáltatások üzembe helyezése
@@ -90,7 +90,7 @@ Nem fogom leírni a JSON formátum minden részletét, de a [További erőforrá
 ### <a name="parameters"></a>Paraméterek
 Tekintse meg a parameters (paraméterek) szakaszt, amelyből megtudhatja, hogy a paraméterek többsége az, amit az **Azure-beli üzembe helyezés** gomb kér a bevitelhez. A **telepítés az Azure** -ba gomb mögötti hely feltölti a bemeneti felhasználói felületet a azuredeploy.json paraméterben meghatározott paraméterek használatával. Ezeket a paramétereket az erőforrás-definíciók, például az erőforrások neve, a tulajdonságértékek stb. használják.
 
-### <a name="resources"></a>Források
+### <a name="resources"></a>Erőforrások
 A Resources (erőforrások) csomópontban láthatja, hogy 4 legfelső szintű erőforrás van definiálva, beleértve egy SQL Server példányt, egy App Service tervet és két alkalmazást. 
 
 #### <a name="app-service-plan"></a>App Service-csomag

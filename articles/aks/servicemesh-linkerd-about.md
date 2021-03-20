@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 3181be62a14ec1b3450bd181172b5323ca176427
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77593767"
 ---
 # <a name="linkerd"></a>Linkerd
@@ -44,7 +44,7 @@ A következő architektúra-diagram azt mutatja be, hogy az adatsíkon és a vez
 Fontos megérteni és figyelembe venni a következő területeket a számítási feladatok Linkerd kiértékelése során:
 
 - [Tervezési alapelvek](#design-principles)
-- [Funkciók](#capabilities)
+- [Képességek](#capabilities)
 - [Forgatókönyvek](#scenarios)
 
 
@@ -59,7 +59,7 @@ A következő tervezési alapelvek a Linkerd-projektet [ismertetik][design-princ
 - **Csak munka** – ne szakítsa meg a meglévő alkalmazásokat, és ne igényeljen összetett konfigurációt.
 
 
-### <a name="capabilities"></a>Funkciók
+### <a name="capabilities"></a>Képességek
 
 A Linkerd a következő funkciókat biztosítja:
 
@@ -81,7 +81,7 @@ A Linkerd kiválóan alkalmas a következő helyzetekben:
 - Alacsony késés, alacsony terhelés, a megfigyelésre és az egyszerű adatforgalom kezelésére összpontosítva
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi dokumentáció ismerteti, hogyan telepítheti a Linkerd-t az Azure Kubernetes Service-ben (ak):
 

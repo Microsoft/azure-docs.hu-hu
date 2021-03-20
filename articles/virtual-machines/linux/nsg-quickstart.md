@@ -11,10 +11,10 @@ ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: a96c0f7c6fb767b96be273a615149143043e8bc1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91975127"
 ---
 # <a name="open-ports-and-endpoints-to-a-vm-with-the-azure-cli"></a>Portok és végpontok megnyitása egy virtuális gépre az Azure CLI-vel
@@ -24,11 +24,11 @@ Megnyit egy portot, vagy létrehozhat egy végpontot egy virtuális géphez (VM)
 
 Hálózati biztonsági csoport és szabályok létrehozásához a legújabb [Azure CLI](/cli/azure/install-az-cli2) -t telepíteni kell, és be kell jelentkeznie egy Azure-fiókba az [az login](/cli/azure/reference-index)használatával.
 
-Az alábbi példákban cserélje le a példában szereplő paraméterek nevét a saját értékeire. A paraméterek nevei például a következők: *myResourceGroup*, *myNetworkSecurityGroup*és *myVnet*.
+Az alábbi példákban cserélje le a példában szereplő paraméterek nevét a saját értékeire. A paraméterek nevei például a következők: *myResourceGroup*, *myNetworkSecurityGroup* és *myVnet*.
 
 
 ## <a name="quickly-open-a-port-for-a-vm"></a>Virtuális gép portjának gyors megnyitása
-Ha egy fejlesztési/tesztelési forgatókönyvben gyorsan meg kell nyitnia egy virtuális gép portját, az az [VM Open-port](/cli/azure/vm) parancsot használhatja. Ez a parancs létrehoz egy hálózati biztonsági csoportot, hozzáadja a szabályt, és alkalmazza azt egy virtuális gépre vagy alhálózatra. Az alábbi példa megnyitja a *80* -es portot a *myVM* nevű virtuális gépen a *myResourceGroup*nevű erőforráscsoport-csoportban.
+Ha egy fejlesztési/tesztelési forgatókönyvben gyorsan meg kell nyitnia egy virtuális gép portját, az az [VM Open-port](/cli/azure/vm) parancsot használhatja. Ez a parancs létrehoz egy hálózati biztonsági csoportot, hozzáadja a szabályt, és alkalmazza azt egy virtuális gépre vagy alhálózatra. Az alábbi példa megnyitja a *80* -es portot a *myVM* nevű virtuális gépen a *myResourceGroup* nevű erőforráscsoport-csoportban.
 
 ```azurecli
 az vm open-port --resource-group myResourceGroup --name myVM --port 80
@@ -61,7 +61,7 @@ az network nsg rule create \
 
 
 ## <a name="apply-network-security-group-to-vm"></a>Hálózati biztonsági csoport alkalmazása virtuális gépre
-Társítsa a hálózati biztonsági csoportot a virtuális gép hálózati adapteréhez (NIC) az [az Network NIC Update paranccsal](/cli/azure/network/nic). Az alábbi példa egy *myNic* nevű meglévő NIC-t társít a *MyNetworkSecurityGroup*nevű hálózati biztonsági csoporttal:
+Társítsa a hálózati biztonsági csoportot a virtuális gép hálózati adapteréhez (NIC) az [az Network NIC Update paranccsal](/cli/azure/network/nic). Az alábbi példa egy *myNic* nevű meglévő NIC-t társít a *MyNetworkSecurityGroup* nevű hálózati biztonsági csoporttal:
 
 ```azurecli
 az network nic update \
@@ -70,7 +70,7 @@ az network nic update \
     --network-security-group myNetworkSecurityGroup
 ```
 
-Azt is megteheti, hogy a hálózati biztonsági csoportot egy virtuális hálózati alhálózattal társítja az [az Network vnet subnet Update](/cli/azure/network/vnet/subnet) helyett, nem csupán egyetlen virtuális gép hálózati adapteréhez. Az alábbi példa egy *mySubnet* nevű meglévő alhálózatot társít a *myVnet* virtuális hálózatban a *myNetworkSecurityGroup*nevű hálózati biztonsági csoporttal:
+Azt is megteheti, hogy a hálózati biztonsági csoportot egy virtuális hálózati alhálózattal társítja az [az Network vnet subnet Update](/cli/azure/network/vnet/subnet) helyett, nem csupán egyetlen virtuális gép hálózati adapteréhez. Az alábbi példa egy *mySubnet* nevű meglévő alhálózatot társít a *myVnet* virtuális hálózatban a *myNetworkSecurityGroup* nevű hálózati biztonsági csoporttal:
 
 ```azurecli
 az network vnet subnet update \

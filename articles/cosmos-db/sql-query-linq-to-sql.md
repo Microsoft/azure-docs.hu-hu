@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: tisande
 ms.openlocfilehash: 122c95fe9ac017ad7a6957dcdb8323837be34f21
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96545383"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ to SQL fordítás
@@ -82,7 +82,7 @@ using (FeedIterator<Book> setIterator = container.GetItemLinqQueryable<Book>()
 Az SQL .NET SDK-ban található LINQ Provider a következő operátorokat támogatja:
 
 - **Válassza ki** a kivetítéseket a [kiválasztáshoz](sql-query-select.md), beleértve az objektumok kialakítását.
-- **Hol**: a szűrők a [WHERE](sql-query-where.md)és a, `&&` `||` valamint `!` az SQL-operátorok közötti fordítást támogatják.
+- **Hol**: a szűrők a [](sql-query-where.md)és a, `&&` `||` valamint `!` az SQL-operátorok közötti fordítást támogatják.
 - **SelectMany**: lehetővé teszi a tömbök felcsévélését az [JOIN](sql-query-join.md) záradékba. A paranccsal a tömb elemeinek szűréséhez használhatja a kifejezéseket.
 - **OrderBy** és **OrderByDescending**: lefordítható az ASC vagy a desc [szerinti sorrendbe](sql-query-order-by.md) .
 - Az [összesítéshez](sql-query-aggregate-functions.md)a **Count**, a **Sum**, a **min**, a **Max** és az **átlag** operátor, valamint a **CountAsync**, a **SumAsync**, a **MinAsync**, a **MaxAsync** és a **AverageAsync**.

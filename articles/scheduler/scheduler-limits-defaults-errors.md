@@ -9,10 +9,10 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
 ms.openlocfilehash: 610232dab776648bb3dcc7c301ec292e9acad9fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "78898527"
 ---
 # <a name="limits-quotas-and-throttle-thresholds-in-azure-scheduler"></a>Korlátok, kvóták és szabályozási küszöbértékek az Azure Schedulerben
@@ -28,14 +28,14 @@ ms.locfileid: "78898527"
 
 ## <a name="x-ms-request-id-header"></a>x-MS-Request-ID fejléc
 
-Minden, az ütemező szolgáltatással kapcsolatban benyújtott kérelem egy **x-MS-Request-ID**nevű válasz fejlécet ad vissza. Ez a fejléc egy átlátszatlan értéket tartalmaz, amely egyedileg azonosítja a kérést. Ha tehát a kérést a rendszer következetesen meghibásodik, és Ön megerősítette, hogy a kérés megfelelően formázott, a hibát a Microsoftnak az **x-MS-Request-ID** válasz fejlécének megadásával, valamint a következő részletekkel is jelezheti: 
+Minden, az ütemező szolgáltatással kapcsolatban benyújtott kérelem egy **x-MS-Request-ID** nevű válasz fejlécet ad vissza. Ez a fejléc egy átlátszatlan értéket tartalmaz, amely egyedileg azonosítja a kérést. Ha tehát a kérést a rendszer következetesen meghibásodik, és Ön megerősítette, hogy a kérés megfelelően formázott, a hibát a Microsoftnak az **x-MS-Request-ID** válasz fejlécének megadásával, valamint a következő részletekkel is jelezheti: 
 
 * Az **x-MS-Request-ID** érték
 * A kérelem teljesítésének becsült időpontja 
 * Az Azure-előfizetéshez, a feladathoz és a feladathoz tartozó azonosítók 
 * A kérelem által megkísérelt művelet típusa
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Scheduler alapfogalmai, entitáshierarchiája és terminológiája](scheduler-concepts-terms.md)
 * [Csomagok és számlázás az Azure Schedulerben](scheduler-plans-billing.md)

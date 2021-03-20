@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan készíthet biztonsági mentést a Windows Serv
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.openlocfilehash: 1b3573d757d2f7b1ffec9ae718aa791488960f3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91332889"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>A Windows rendszer állapotának biztonsági mentése az Azure-ba
@@ -28,10 +28,10 @@ A Recovery Services-tároló létrehozásakor győződjön meg róla, hogy a tá
 
     ![A Recovery Services-tárolók listájából válassza ki az új tárolót](./media/backup-try-azure-backup-in-10-mins/rs-vault-list.png)
 
-    Ha kijelöli a tárolót, a **Recovery Services** tároló ablaktábla szűkül, és a beállítások panel (*amely a tetején*található tároló neve) és a tár részletek ablaktáblája meg van nyitva.
+    Ha kijelöli a tárolót, a **Recovery Services** tároló ablaktábla szűkül, és a beállítások panel (*amely a tetején* található tároló neve) és a tár részletek ablaktáblája meg van nyitva.
 
     ![Az új tároló tárolási konfigurációjának beállítása](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration-2.png)
-2. Az új tár Beállítások paneljén a függőleges görgetősáv használatával görgessen lefelé a kezelés szakaszhoz, és válassza a **biztonsági mentési infrastruktúra**lehetőséget.
+2. Az új tár Beállítások paneljén a függőleges görgetősáv használatával görgessen lefelé a kezelés szakaszhoz, és válassza a **biztonsági mentési infrastruktúra** lehetőséget.
     Megnyílik a biztonsági mentési infrastruktúra panel.
 3. A biztonsági mentési infrastruktúra ablaktáblán válassza a **biztonsági mentési konfiguráció** elemet a **biztonsági mentési konfiguráció** ablaktábla megnyitásához.
 
@@ -46,7 +46,7 @@ Most, hogy létrehozott egy tárolót, konfigurálja a Windows rendszerállapot�
 
 ## <a name="configure-the-vault"></a>A tároló konfigurálása
 
-1. A Recovery Services tároló ablaktáblán (az imént létrehozott **tárolónál**) a első lépések szakaszban válassza a biztonsági mentés lehetőséget, majd a első lépések a **Backup** (biztonsági mentés) ablaktáblán kattintson a **biztonsági mentés célja**elemre.
+1. A Recovery Services tároló ablaktáblán (az imént létrehozott **tárolónál**) a első lépések szakaszban válassza a biztonsági mentés lehetőséget, majd a első lépések a **Backup** (biztonsági mentés) ablaktáblán kattintson a **biztonsági mentés célja** elemre.
 
     ![Biztonsági mentési beállítások megnyitása](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
 
@@ -58,15 +58,15 @@ Most, hogy létrehozott egy tárolót, konfigurálja a Windows rendszerállapot�
 
     Ha a Windows Server vagy a Windows rendszerű számítógép olyan fizikai gép, amely nem az Azure-ban van, akkor válassza **a** helyszíni lehetőséget.
 
-3. A **Miről szeretne biztonsági másolatot készíteni?** menüben válassza a **rendszerállapot**lehetőséget, majd kattintson **az OK gombra**.
+3. A **Miről szeretne biztonsági másolatot készíteni?** menüben válassza a **rendszerállapot** lehetőséget, majd kattintson **az OK gombra**.
 
     ![Fájlok és mappák konfigurálása](./media/backup-azure-system-state/backup-goal-system-state.png)
 
-    Ha **az OK gombra**kattint, a **biztonsági mentés célja**mellett megjelenik egy pipa, az **infrastruktúra előkészítése** panel pedig megnyílik.
+    Ha **az OK gombra** kattint, a **biztonsági mentés célja** mellett megjelenik egy pipa, az **infrastruktúra előkészítése** panel pedig megnyílik.
 
     ![Ha konfigurálta a biztonsági mentés célját, a következő lépés az infrastruktúra előkészítése](./media/backup-try-azure-backup-in-10-mins/backup-goal-configed.png)
 
-4. Az **infrastruktúra előkészítése** panelen válassza a **Windows Server vagy a Windows ügyfél ügynökének letöltése**lehetőséget.
+4. Az **infrastruktúra előkészítése** panelen válassza a **Windows Server vagy a Windows ügyfél ügynökének letöltése** lehetőséget.
 
     ![Az infrastruktúra előkészítése](./media/backup-try-azure-backup-in-10-mins/choose-agent-for-server-client.png)
 
@@ -74,7 +74,7 @@ Most, hogy létrehozott egy tárolót, konfigurálja a Windows rendszerállapot�
 
     ![MARSAgentInstaller párbeszédpanel](./media/backup-try-azure-backup-in-10-mins/mars-installer-run-save.png)
 
-5. A letöltési előugró menüben válassza a **Mentés**lehetőséget.
+5. A letöltési előugró menüben válassza a **Mentés** lehetőséget.
 
     Alapértelmezés szerint az **MARSagentinstaller.exe** fájlt a rendszer a Downloads mappába menti. Ha a telepítő befejeződik, megjelenik egy előugró ablak, amely rákérdez, hogy szeretné-e futtatni a telepítőt, vagy megnyitni a mappát.
 
@@ -82,11 +82,11 @@ Most, hogy létrehozott egy tárolót, konfigurálja a Windows rendszerállapot�
 
     Az ügynököt még nem kell telepíteni. Az ügynököt a tár hitelesítő adatainak letöltése után is telepítheti.
 
-6. Az **infrastruktúra előkészítése** panelen válassza a **Letöltés**lehetőséget.
+6. Az **infrastruktúra előkészítése** panelen válassza a **Letöltés** lehetőséget.
 
     ![a tároló hitelesítő adatainak letöltése](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-    A tár hitelesítő adatai le vannak letöltve a **letöltések** mappájába. Miután a tároló hitelesítő adatainak letöltése befejeződött, megjelenik egy előugró ablak, amely rákérdez, hogy szeretné-e megnyitni vagy menteni a hitelesítő adatokat. Kattintson a **Mentés** gombra. Ha véletlenül kiválasztja a **Megnyitás**lehetőséget, hagyja meg a párbeszédpanelt, amely a tár hitelesítő adatainak megnyitását kísérli meg. Nem fogja tudni megnyitni a tároló hitelesítő adatait. Folytassa a következő lépéssel. A tároló hitelesítő adatai a **letöltések** mappában találhatók.
+    A tár hitelesítő adatai le vannak letöltve a **letöltések** mappájába. Miután a tároló hitelesítő adatainak letöltése befejeződött, megjelenik egy előugró ablak, amely rákérdez, hogy szeretné-e megnyitni vagy menteni a hitelesítő adatokat. Kattintson a **Mentés** gombra. Ha véletlenül kiválasztja a **Megnyitás** lehetőséget, hagyja meg a párbeszédpanelt, amely a tár hitelesítő adatainak megnyitását kísérli meg. Nem fogja tudni megnyitni a tároló hitelesítő adatait. Folytassa a következő lépéssel. A tároló hitelesítő adatai a **letöltések** mappában találhatók.
 
     ![a tároló hitelesítő adatainak letöltése befejeződött](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
    > [!NOTE]
@@ -142,13 +142,13 @@ A kezdeti biztonsági mentés végrehajtásához használja a Microsoft Azure Re
 
     ![Az Azure Recovery Services-ügynök indítása](./media/backup-try-azure-backup-in-10-mins/snap-in-search.png)
 
-2. A Recovery Services ügynökben válassza a **biztonsági mentés időzítése**elemet.
+2. A Recovery Services ügynökben válassza a **biztonsági mentés időzítése** elemet.
 
     ![Windows Server biztonsági mentés ütemezése](./media/backup-try-azure-backup-in-10-mins/schedule-first-backup.png)
 
 3. A biztonsági mentés időzítése varázsló **első lépések** lapján kattintson a **Tovább gombra**.
 
-4. Az **elemek kiválasztása a biztonsági mentéshez** lapon válassza az **elemek hozzáadása**lehetőséget.
+4. Az **elemek kiválasztása a biztonsági mentéshez** lapon válassza az **elemek hozzáadása** lehetőséget.
 
 5. Válassza a **rendszerállapot** lehetőséget, majd kattintson **az OK gombra**.
 
@@ -158,7 +158,7 @@ A kezdeti biztonsági mentés végrehajtásához használja a Microsoft Azure Re
 
 8. A jóváhagyás lapon tekintse át az információkat, majd kattintson a **Befejezés gombra**.
 
-9. Miután a varázsló befejezte a biztonsági mentési ütemterv létrehozását, válassza a **Bezárás**lehetőséget.
+9. Miután a varázsló befejezte a biztonsági mentési ütemterv létrehozását, válassza a **Bezárás** lehetőséget.
 
 ### <a name="to-back-up-windows-server-system-state-for-the-first-time"></a>A Windows Server rendszer állapotának biztonsági mentése első alkalommal
 
@@ -170,7 +170,7 @@ A kezdeti biztonsági mentés végrehajtásához használja a Microsoft Azure Re
 
 3. A megjelenő **biztonsági mentési elem kiválasztása** képernyőn válassza a **rendszerállapot** lehetőséget, majd kattintson a **Tovább gombra**.
 
-4. A Jóváhagyás lapon tekintse át azokat a beállításokat, amelyeket a Biztonsági másolat készítése varázsló a gép biztonsági mentéséhez fog használni. Ezután válassza a **biztonsági mentés**lehetőséget.
+4. A Jóváhagyás lapon tekintse át azokat a beállításokat, amelyeket a Biztonsági másolat készítése varázsló a gép biztonsági mentéséhez fog használni. Ezután válassza a **biztonsági mentés** lehetőséget.
 
 5. A varázsló bezárásához kattintson a **Bezárás** gombra. Ha bezárja a varázslót a biztonsági mentési folyamat befejezése előtt, a varázsló továbbra is fut a háttérben.
     > [!NOTE]

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 79db0a7bb769d6138bfeeb4e765621a1cffb4d14
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92457860"
 ---
 # <a name="tutorial-integrate-appraisd-with-azure-active-directory"></a>Oktatóanyag: az értékelés integrálása a Azure Active Directory
@@ -45,14 +45,14 @@ Az Azure AD-ba való kiértékelésének konfigurálásához hozzá kell adnia a
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a keresőmezőbe az **értékelés** kifejezést.
 1. Válassza az **értékelés** az eredmények panelen lehetőséget, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Konfigurálja és tesztelje az Azure AD SSO-t a kiértékeléssel egy **B. Simon**nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az értékelés során.
+Konfigurálja és tesztelje az Azure AD SSO-t a kiértékeléssel egy **B. Simon** nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az értékelés során.
 
 Az Azure AD SSO az értékeléssel való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
@@ -67,15 +67,15 @@ Az Azure AD SSO az értékeléssel való konfigurálásához és teszteléséhez
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)a **kiértékelt** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **kiértékelt** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban az alkalmazás előre konfigurálva van, és a szükséges URL-címek már előre fel vannak töltve az Azure-ban. A felhasználónak mentenie kell a konfigurációt a Save (Mentés) gombra kattintva, és végre kell hajtania a következő lépéseket:
 
-    a. Kattintson a **további URL-címek beállítása**elemre.
+    a. Kattintson a **további URL-címek beállítása** elemre.
 
     b. A **továbbítási állapot** szövegmezőbe írja be az URL-címet: `<TENANTCODE>`
 
@@ -84,7 +84,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     > [!NOTE]
     > A tényleges bejelentkezési URL-címet és a továbbítási állapot értékét az oktatóanyag későbbi részében ismertetett SSO-konfiguráció lapon olvashatja.
 
-1. Az értékelt alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName**leképezéssel van leképezve. Az értékelt alkalmazás azt várja, hogy a **NameIdentifier** a **User. mail**használatával legyen leképezve, ezért az attribútum-hozzárendelést úgy kell módosítania, hogy a **Szerkesztés** ikonra kattint, és módosítja az attribútum-hozzárendelést.
+1. Az értékelt alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName** leképezéssel van leképezve. Az értékelt alkalmazás azt várja, hogy a **NameIdentifier** a **User. mail** használatával legyen leképezve, ezért az attribútum-hozzárendelést úgy kell módosítania, hogy a **Szerkesztés** ikonra kattint, és módosítja az attribútum-hozzárendelést.
 
     ![Képernyőfelvétel: a felhasználói attribútumok ablaktábla, ahol a Szerkesztés ikon ki van emelve.](common/edit-attribute.png)
 
@@ -98,7 +98,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 ### <a name="configure-appraisd"></a>Értékelés konfigurálása
 
-1. Az értékelésen belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
+1. Az értékelésen belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése** lehetőségre kattintva.
 
     ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
 
@@ -108,11 +108,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 3. Ha manuálisan szeretné beállítani az értékelést, nyisson meg egy új böngészőablakot, és jelentkezzen be az értékelt vállalati webhelyre rendszergazdaként, és hajtsa végre a következő lépéseket:
 
-4. A lap jobb felső részén kattintson a **Beállítások** ikonra, majd navigáljon a **konfiguráció**elemre.
+4. A lap jobb felső részén kattintson a **Beállítások** ikonra, majd navigáljon a **konfiguráció** elemre.
 
     ![A képernyőképen a konfigurációs hivatkozás látható.](./media/appraisd-tutorial/tutorial_appraisd_sett.png)
 
-5. A menü bal oldalán kattintson az **SAML egyszeri bejelentkezés**elemre.
+5. A menü bal oldalán kattintson az **SAML egyszeri bejelentkezés** elemre.
 
     ![A képernyőfelvételen az SAML egyszeri bejelentkezés lehetőségre Kiemelt konfigurációs beállítások láthatók.](./media/appraisd-tutorial/tutorial_appraisd_single.png)
 
@@ -124,13 +124,13 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     b. Másolja a **szolgáltatás által kezdeményezett bejelentkezési URL-címet** , és illessze be a **bejelentkezési URL** szövegmezőbe a Azure Portal **alapszintű SAML-konfigurációjában** .
 
-7. Görgessen le ugyanazon az oldalon a **felhasználók azonosítása**területen, hajtsa végre a következő lépéseket:
+7. Görgessen le ugyanazon az oldalon a **felhasználók azonosítása** területen, hajtsa végre a következő lépéseket:
 
     ![Képernyőfelvétel: a felhasználók azonosítására szolgáló hely, ahol megadhatja a lépés értékeit.](./media/appraisd-tutorial/tutorial_appraisd_identifying.png)
 
     a. Az **Identitáskezelő egyetlen Sign-On URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-címet**, amelyet a Azure Portalból másolt, majd kattintson a Save ( **Mentés**) gombra.
 
-    b. Az **Identity Provider kiállító URL-címe** szövegmezőbe illessze be az **Azure ad-azonosító**értékét, amelyet a Azure Portal másolt, majd kattintson a Save ( **Mentés**) gombra.
+    b. Az **Identity Provider kiállító URL-címe** szövegmezőbe illessze be az **Azure ad-azonosító** értékét, amelyet a Azure Portal másolt, majd kattintson a Save ( **Mentés**) gombra.
 
     c. Nyissa meg a Jegyzettömbben a Azure Portal letöltött Base-64 kódolású tanúsítványt, másolja a tartalmát, majd illessze be az **X. 509 tanúsítvány** mezőbe, és kattintson a **Save (Mentés**) gombra.
 
@@ -138,7 +138,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B. Simon`.  
@@ -150,13 +150,13 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 
 Ebben a szakaszban a B. Simon használatával engedélyezheti az Azure egyszeri bejelentkezést az értékeléshez való hozzáférés megadásával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza az **értékelés**lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza az **értékelés** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
@@ -172,7 +172,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek az �
 
 1. Jelentkezzen be a biztonsági rendszergazdaként való kiértékeléshez.
 
-2. A lap jobb felső részén kattintson a **Beállítások** ikonra, majd navigáljon a **felügyeleti központ**elemre.
+2. A lap jobb felső részén kattintson a **Beállítások** ikonra, majd navigáljon a **felügyeleti központ** elemre.
 
     ![Képernyőfelvétel: a beállítások lehetőség, ahol kiválaszthatja a felügyeleti központ elemet.](./media/appraisd-tutorial/tutorial_appraisd_admin.png)
 
@@ -184,13 +184,13 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek az �
 
     ![A képernyőképen az új felhasználó hozzáadása lap látható.](./media/appraisd-tutorial/tutorial_appraisd_newuser.png)
 
-    a. Az **Utónév** szövegmezőbe írja be a felhasználó utónevét, például a **Britta**nevet.
+    a. Az **Utónév** szövegmezőbe írja be a felhasználó utónevét, például a **Britta** nevet.
 
-    b. A **vezetéknév** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon**nevet.
+    b. A **vezetéknév** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon** nevet.
 
     c. Az **e-mail** szövege szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet `B. Simon@contoso.com` .
 
-    d. Kattintson a **felhasználó hozzáadása**elemre.
+    d. Kattintson a **felhasználó hozzáadása** elemre.
 
 ### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 

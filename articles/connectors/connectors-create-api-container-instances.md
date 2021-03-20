@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 01/14/2020
 ms.openlocfilehash: ecb1049d64197f2a60438df7eedfb244907f7327
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76046291"
 ---
 # <a name="deploy-and-manage-azure-container-instances-by-using-azure-logic-apps"></a>Azure Container Instances üzembe helyezése és kezelése Azure Logic Apps használatával
@@ -49,12 +49,12 @@ Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure L
 
 1. Válasszon egy elérési utat: 
 
-   * Az utolsó lépésben, amelyben hozzá szeretne adni egy műveletet, válassza az **új lépés**lehetőséget. 
+   * Az utolsó lépésben, amelyben hozzá szeretne adni egy műveletet, válassza az **új lépés** lehetőséget. 
 
      -vagy-
 
    * A művelethez hozzáadni kívánt lépések között vigye az egérmutatót a lépések közötti nyíl fölé. 
-   Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
+   Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása** lehetőséget.
 
 1. A keresőmezőbe írja be szűrőként a "Container instance" kifejezést. A műveletek listán válassza ki az Azure Container instance Connector kívánt műveletét.
 
@@ -70,7 +70,7 @@ Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure L
 
 Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért, amelyeket az összekötő OpenAPI (korábban hencegés) leírása ismertet, tekintse át az összekötő [hivatkozási oldalát](/connectors/aci/) vagy a [YAML-referenciát](../container-instances/container-instances-reference-yaml.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az e-mail vagy a Twitter-szöveg hangulatának elemzéséhez tekintse meg a Azure Container Instances tárolót futtató [minta logikai alkalmazást](https://github.com/Azure-Samples/aci-logicapps-integration) .
 

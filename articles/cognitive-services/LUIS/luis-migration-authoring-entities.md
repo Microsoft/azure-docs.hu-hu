@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.openlocfilehash: 667226770d25ef1687420b1c13bc71863f987e33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91324688"
 ---
 # <a name="migrate-to-v3-authoring-entity"></a>Migrálás v3 authoring entitásba
@@ -45,12 +45,12 @@ Az áttelepítés során vegye figyelembe a következőket az áttelepítési te
 * Aktuális előrejelzési sikerességi mérőszámok rögzítése
 * Aktuális irányítópult-információk rögzítése az alkalmazás állapotának pillanatképe
 * Meglévő leképezések, entitások, kifejezések listája, mintázatok és batch-tesztek áttekintése
-* A következő elemek migrálása **változtatás nélkül**történhet:
+* A következő elemek migrálása **változtatás nélkül** történhet:
     * Leképezések
     * Entitások
         * Reguláriskifejezés-entitás
         * Listaentitás
-    * Szolgáltatások
+    * Funkciók
         * Kifejezések listája
 * A következő elemeket kell áttelepíteni a **változásokkal**:
     * Entitások
@@ -149,13 +149,13 @@ Ez a módosítás a Build konferencián 2020 májusában történt, és csak a v
 
 #### <a name="automatic-migration"></a>Automatikus áttelepítés
 
-A **19 2020. júniustól**kezdődően nem lehet megkötéseket létrehozni programozott módon az előző authoring API használatával, amely ezt a funkciót feltette.
+A **19 2020. júniustól** kezdődően nem lehet megkötéseket létrehozni programozott módon az előző authoring API használatával, amely ezt a funkciót feltette.
 
 A rendszer minden meglévő korlátozási funkciót automatikusan áttelepít a szükséges szolgáltatás-jelzőbe. Az előrejelzési API-hoz nem szükségesek programozási változások, és az előrejelzési pontosság minőségének változása nem változik.
 
 #### <a name="luis-portal-changes"></a>A LUIS-portál változásai
 
-A LUIS betekintő portál ezt a funkciót a **korlátozásként**hivatkozott. A jelenlegi LUIS-portál ezt a funkciót **kötelező szolgáltatásként**jelöli meg.
+A LUIS betekintő portál ezt a funkciót a **korlátozásként** hivatkozott. A jelenlegi LUIS-portál ezt a funkciót **kötelező szolgáltatásként** jelöli meg.
 
 #### <a name="previous-authoring-api"></a>Korábbi szerzői API
 

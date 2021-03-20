@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: ffee15776a48b6495f78b6becf81c620e1dc4d69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91336309"
 ---
 # <a name="scheduled-maintenance-in-azure-database-for-postgresql--flexible-server"></a>Ütemezett karbantartás rugalmas Azure Database for PostgreSQL-kiszolgálón
@@ -29,8 +29,8 @@ Az ütemezett karbantartásra vonatkozó értesítések a következőket tehetik
 * Adott címre e-mailben
 * E-mailben egy Azure Resource Manager szerepkörbe
 * SMS-ben elküldve a mobileszközök számára
-* Értesítésként leküldve egy Azure-alkalmazáshoz
-* Kézbesítés hangüzenetként
+* Leküldéses értesítésként Azure-alkalmazásba
+* Hangüzenetként
  
 A karbantartási ütemezés beállításainak megadásakor kiválaszthatja a hét valamelyik napját és egy időszakot. Ha nem határoz meg időpontot, a rendszer a kiszolgáló régiójának időzónája szerint 23:00 és 7:00 közötti időpontot választ. Az Azure-előfizetésében minden egyes rugalmas kiszolgálóhoz különböző ütemterveket adhat meg. 
  

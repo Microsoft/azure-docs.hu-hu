@@ -10,10 +10,10 @@ ms.date: 03/24/2020
 author: mlearned
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3277fefb5615fd492b2859b741ef8e6f991eaf23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91355474"
 ---
 # <a name="deploy-to-azure-functions-with-devops-starter"></a>Üzembe helyezés Azure Functions a DevOps Starter használatával
@@ -26,7 +26,7 @@ A DevOps Starter is:
 
 * Kiadási folyamat létrehozása és konfigurálása az Azure DevOps CI/CD-hez
 
-Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
+Az oktatóanyagban a következőket végezheti el:
 
 > [!div class="checklist"]
 >* ASP.NET-alkalmazások üzembe helyezése az Azure-függvényben a DevOps Starter használatával
@@ -49,11 +49,11 @@ A DevOps Starter egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létreh
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
 
-1. A keresőmezőbe írja be a **DevOps Starter**kifejezést, majd válassza a elemet. Kattintson a **Hozzáadás** gombra egy új létrehozásához.
+1. A keresőmezőbe írja be a **DevOps Starter** kifejezést, majd válassza a elemet. Kattintson a **Hozzáadás** gombra egy új létrehozásához.
 
     ![A DevOps Starter irányítópultja](_img/azure-devops-starter-aks/search-devops-starter.png)
 
-1. Válassza a **.net**lehetőséget, majd kattintson a **tovább**gombra. Az **alkalmazás-keretrendszer kiválasztása**területen válassza a **ASP.net** elemet, majd kattintson a **tovább**gombra.
+1. Válassza a **.net** lehetőséget, majd kattintson a **tovább** gombra. Az **alkalmazás-keretrendszer kiválasztása** területen válassza a **ASP.net** elemet, majd kattintson a **tovább** gombra.
 
 1. Válassza a **függvényalkalmazás** lehetőséget, majd kattintson a **Tovább gombra**.
 
@@ -63,11 +63,11 @@ A DevOps Starter egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létreh
 
 1. Hozzon létre egy új Azure DevOps-szervezetet, vagy válasszon ki egy meglévő szervezetet.
 
-1. Válassza ki az Azure-előfizetését.
+1. Válassza ki Azure-előfizetését.
 
-1. További Azure-konfigurációs beállítások megtekintéséhez, valamint az árképzési csomag és a hely azonosításához kattintson a **További beállítások**elemre. Ez a panel az Azure-szolgáltatások díjszabási szintjeinek és helyének konfigurálására szolgáló különböző lehetőségeket jeleníti meg.
+1. További Azure-konfigurációs beállítások megtekintéséhez, valamint az árképzési csomag és a hely azonosításához kattintson a **További beállítások** elemre. Ez a panel az Azure-szolgáltatások díjszabási szintjeinek és helyének konfigurálására szolgáló különböző lehetőségeket jeleníti meg.
 
-1. Lépjen ki az Azure-beli konfigurációs területen, majd válassza a **kész**lehetőséget.
+1. Lépjen ki az Azure-beli konfigurációs területen, majd válassza a **kész** lehetőséget.
 
 1. Néhány perc elteltével a folyamat befejeződött. Egy minta ASP.NET-alkalmazás egy git-tárházban van beállítva az Azure DevOps-szervezetben, egy függvényalkalmazás és Application Insights létrejön, a CI/CD-folyamat végrehajtása folyamatban van, és az alkalmazás üzembe helyezése az Azure-ban történik.
 
@@ -93,13 +93,13 @@ A DevOps Starter automatikusan konfigurálja a CI/CD-folyamatot az Azure DevOps-
 
 1. Nyissa meg a DevOps Starter irányítópultját.
 
-1. Kattintson a **Létrehozás**alatt található hivatkozásra. Egy böngésző lap megjeleníti az új projekt összeállítási folyamatát.
+1. Kattintson a **Létrehozás** alatt található hivatkozásra. Egy böngésző lap megjeleníti az új projekt összeállítási folyamatát.
 
     ![Képernyőfelvétel: a Azure Portal DevOps Starter-irányítópultja, amely egy nyílra mutat, amely a C I/C D folyamat Build elemében található.](_img/azure-devops-project-functions/build.png)
 
 1. Válassza a **Szerkesztés** elemet. Ezen az ablaktáblán ellenőrizheti a felépítési folyamat különféle feladatait. A build különböző feladatokat hajt végre, mint például a forráskód beolvasása a git-tárházból, az alkalmazás létrehozása, az egységhez tartozó tesztek futtatása, valamint az üzembe helyezéshez használt kimenetek közzététele.
 
-1. Válassza az **Eseményindítók**lehetőséget. A DevOps Starter automatikusan létrehoz egy CI-triggert, és a tárházba való minden egyes véglegesít egy új buildet indít el. Lehetőség van arra is, hogy az ágakat belefoglalja vagy kizárja a CI-folyamatból.
+1. Válassza az **Eseményindítók** lehetőséget. A DevOps Starter automatikusan létrehoz egy CI-triggert, és a tárházba való minden egyes véglegesít egy új buildet indít el. Lehetőség van arra is, hogy az ágakat belefoglalja vagy kizárja a CI-folyamatból.
 
 1. Válassza a **Megtartást**. A forgatókönyvtől függően megadhat olyan házirendeket, amelyek bizonyos számú buildet megtartanak vagy eltávolítanak.
 
@@ -115,19 +115,19 @@ A DevOps Starter automatikusan létrehozza és konfigurálja a szükséges lép�
 
 1. Navigáljon a **folyamatokhoz | Kiadások**.
 
-1. Kattintson a **Szerkesztés**gombra.
+1. Kattintson a **Szerkesztés** gombra.
 
 1. Az **Összetevők** alatt válassza az **Elvetést**. Az előző lépések során megvizsgált összeállítási folyamat létrehozza az összetevőhöz használt kimenetet.
 
-1. A **drop** ikon jobb oldalán válassza a **folyamatos üzembe helyezés trigger**lehetőséget. Ez a kiadási folyamat egy engedélyezett CD-triggerrel rendelkezik, amely minden alkalommal végrehajt egy központi telepítést, amikor új Build-összetevő érhető el. Igény szerint letilthatja az indítást, hogy a központi telepítések manuális végrehajtást igényeljenek.
+1. A **drop** ikon jobb oldalán válassza a **folyamatos üzembe helyezés trigger** lehetőséget. Ez a kiadási folyamat egy engedélyezett CD-triggerrel rendelkezik, amely minden alkalommal végrehajt egy központi telepítést, amikor új Build-összetevő érhető el. Igény szerint letilthatja az indítást, hogy a központi telepítések manuális végrehajtást igényeljenek.
 
 1. A jobb oldalon válassza a **kiadások megtekintése** lehetőséget a kiadások előzményeinek megjelenítéséhez.
 
-1. Kattintson a kiadásra, amely megjeleníti a folyamatot. Kattintson bármelyik környezetre a kiadási **Összefoglalás, a commit**, a társított **munkaelemek**megtekintéséhez.
+1. Kattintson a kiadásra, amely megjeleníti a folyamatot. Kattintson bármelyik környezetre a kiadási **Összefoglalás, a commit**, a társított **munkaelemek** megtekintéséhez.
 
 1. Válassza a **Véglegesítéseket**. Ez a nézet a telepítéshez társított kód-véglegesítő kódokat jeleníti meg. Az üzembe helyezések közötti véglegesítési különbségek megtekintéséhez hasonlítsa össze a kiadásokat.
 
-1. Válassza a **naplók megtekintése**lehetőséget. A naplók hasznos információkat tartalmaznak az üzembehelyezési folyamattal kapcsolatban. Ezeket az üzembe helyezések során és után is megtekintheti.
+1. Válassza a **naplók megtekintése** lehetőséget. A naplók hasznos információkat tartalmaznak az üzembehelyezési folyamattal kapcsolatban. Ezeket az üzembe helyezések során és után is megtekintheti.
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>Kódmódosítások véglegesítése és a CI/CD végrehajtása
 
@@ -140,13 +140,13 @@ Most már készen áll az alkalmazásban lévő csapattal való együttműködé
 
 1. A tárház már tartalmazza a **SampleFunctionApp** nevű kódot a létrehozási folyamat során kiválasztott alkalmazás nyelve alapján. Nyissa meg az **Application/SampleFunctionApp/Function1. cs** fájlt.
 
-1. Válassza a **Szerkesztés**lehetőséget, majd végezze el a **31. számú sor** módosítását. Frissítheti például a Hello-re **! Üdvözli a Azure Functions a DevOps Starter használatával**
+1. Válassza a **Szerkesztés** lehetőséget, majd végezze el a **31. számú sor** módosítását. Frissítheti például a Hello-re **! Üdvözli a Azure Functions a DevOps Starter használatával**
 
 1. A jobb felső sarokban válassza a végrehajtás lehetőséget, majd a módosítás elküldéséhez válassza a **véglegesítés** **újra lehetőséget.**
 
 1. Nyissa meg az **Application/SampleFunctionApp. test/Function1TestRunner. cs** fájlt. 
 
-1. Válassza a **Szerkesztés**lehetőséget, majd végezze el a **21. számú sor**módosítását. Frissítheti például a Hello-re **! Üdvözöljük Azure Functions az Azure DevOps Starter használatával**.
+1. Válassza a **Szerkesztés** lehetőséget, majd végezze el a **21. számú sor** módosítását. Frissítheti például a Hello-re **! Üdvözöljük Azure Functions az Azure DevOps Starter használatával**.
 
      Néhány pillanat elteltével a buildek az Azure DevOps-ben kezdődnek, és a kiadásokat a rendszer a módosítások üzembe helyezésével hajtja végre. Figyelje a Build állapotát a DevOps Starter irányítópultján vagy a böngészőben az Azure DevOps-szervezettel.
 
@@ -154,7 +154,7 @@ Most már készen áll az alkalmazásban lévő csapattal való együttműködé
 
 A létrehozott kapcsolódó erőforrásokat törölheti, ha már nincs rájuk szükség. Használja a **delete** funkciót a DevOps Starter irányítópultján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyamatokat. Ezt a CI-/CD-mintát egyéb folyamatok sablonjaként is használhatja. Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

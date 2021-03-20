@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
 ms.openlocfilehash: 7c5e8210bc8b805d72149fd2ef3335c1d637a58f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92445239"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Oktatóanyag: Azure Active Directory integráció a help Scout segítségével
@@ -50,14 +50,14 @@ A Súgó Felderítőnek az Azure AD-be való integrálásának konfigurálásáh
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **help Scout** kifejezést a keresőmezőbe.
 1. Válassza az eredmények panel **Súgó felderítője** elemét, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést egy **B. Simon**nevű teszt felhasználó alapján konfigurálja és teszteli a súgóban.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést egy **B. Simon** nevű teszt felhasználó alapján konfigurálja és teszteli a súgóban.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség a súgóban.
 
 Az Azure AD egyszeri bejelentkezés a Súgó felderítővel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -75,7 +75,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés súgóval történő konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **Súgó Scout** -alkalmazás integrációja lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **Súgó Scout** -alkalmazás integrációja lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -122,7 +122,7 @@ Az Azure AD egyszeri bejelentkezés súgóval történő konfigurálásához haj
 
 Ennek a szakasznak a célja, hogy létrehozzon egy teszt felhasználót a B. Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -147,15 +147,15 @@ Ennek a szakasznak a célja, hogy létrehozzon egy teszt felhasználót a B. Sim
 
 Ebben a szakaszban engedélyezi, hogy a B. Simon az Azure egyszeri bejelentkezés használatára nyújtson hozzáférést a felderítők számára.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd kattintson a **Súgó felderítő**elemre.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd kattintson a **Súgó felderítő** elemre.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Válassza az alkalmazások lista **Súgó felderítő**elemét.
+2. Válassza az alkalmazások lista **Súgó felderítő** elemét.
 
     ![Az alkalmazások listájában szereplő Súgó felderítő hivatkozás](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -171,7 +171,7 @@ Ebben a szakaszban engedélyezi, hogy a B. Simon az Azure egyszeri bejelentkezé
 
 ## <a name="configure-help-scout-sso"></a>Súgó-felderítő egyszeri bejelentkezés konfigurálása
 
-1. A súgóban található konfiguráció automatizálásához a **bővítmény telepítése**lehetőségre kattintva telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** .
+1. A súgóban található konfiguráció automatizálásához a **bővítmény telepítése** lehetőségre kattintva telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** .
 
     ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
 
@@ -201,7 +201,7 @@ Ebben a szakaszban engedélyezi, hogy a B. Simon az Azure egyszeri bejelentkezé
 
     ![Képernyőfelvétel: az egységes Sign-On lapon engedélyezheti az SAML-t, és további információkat adhat hozzá.](./media/helpscout-tutorial/settings4.png)
 
-    a. Az **egyszeres Sign-On URL** szövegmezőben illessze be a **bejelentkezési URL-cím**értékét, amelyet a Azure Portalból másolt.
+    a. Az **egyszeres Sign-On URL** szövegmezőben illessze be a **bejelentkezési URL-cím** értékét, amelyet a Azure Portalból másolt.
 
     b. Kattintson a **tanúsítvány feltöltése** gombra a Azure Portalról letöltött **tanúsítvány (Base64)** feltöltéséhez.
 

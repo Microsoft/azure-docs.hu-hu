@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/28/2020
 ms.openlocfilehash: 87a3627d7820f9f456ac08e2f20b70af961f817e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87084245"
 ---
 # <a name="transport-layer-security-tls"></a>Transport Layer Security (TLS)
@@ -37,6 +37,6 @@ A [TLS protokoll kompatibilitási](https://support.globalsign.com/customer/porta
 
 További információ: a [Windowson futó TLS protokollok támogatásának](/archive/blogs/kaushal/support-for-ssltls-protocols-on-windows)áttekintése.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Notification Hubs áttekintése](notification-hubs-push-notification-overview.md)

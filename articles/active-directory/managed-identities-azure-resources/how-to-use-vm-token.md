@@ -16,10 +16,10 @@ ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 541f76ad825f492679530902c571096ca4b01902
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98726231"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Egy Azure-beli virtuális gépen található Azure-erőforrások felügyelt identitásának használata hozzáférési jogkivonat beszerzéséhez 
@@ -47,7 +47,7 @@ Ha azt tervezi, hogy a jelen cikkben szereplő Azure PowerShell példákat is ha
 
 Az ügyfélalkalmazások felügyelt identitásokat igényelhetnek az Azure-erőforrások csak az adott erőforráshoz való [hozzáféréshez használható hozzáférési jogkivonattal](../develop/developer-glossary.md#access-token) . A jogkivonat az [Azure-erőforrások egyszerű szolgáltatásának felügyelt identitásán alapul](overview.md#managed-identity-types). Ezért nincs szükség arra, hogy az ügyfél regisztrálja magát egy hozzáférési jogkivonat beszerzéséhez a saját egyszerű szolgáltatásnév keretében. A jogkivonat alkalmas tulajdonosi jogkivonatként használni az [ügyfél hitelesítő adatait igénylő szolgáltatások közötti hívásokban](../develop/v2-oauth2-client-creds-grant-flow.md).
 
-| Hivatkozás | Leírás |
+| Hivatkozás | Description |
 | -------------- | -------------------- |
 | [Token beszerzése HTTP használatával](#get-a-token-using-http) | Az Azure Resources jogkivonat-végponthoz tartozó felügyelt identitások protokolljának részletei |
 | [Jogkivonat beszerzése a .NET-hez készült Microsoft. Azure. Services. AppAuthentication kódtár használatával](#get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net) | Példa a Microsoft. Azure. Services. AppAuthentication függvénytár .NET-ügyfélről való használatára
@@ -400,6 +400,6 @@ Az újrapróbálkozáshoz a következő stratégiát javasoljuk:
 Tekintse meg az Azure ad- [hitelesítést támogató Azure-szolgáltatásokat](./services-support-managed-identities.md) az Azure ad-t támogató erőforrások listájáért, valamint az Azure-erőforrások felügyelt identitásokkal való tesztelését, valamint a hozzájuk tartozó erőforrás-azonosítókat.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure-beli virtuális gépeken található Azure-erőforrások felügyelt identitásának engedélyezéséhez lásd: [felügyelt identitások konfigurálása egy virtuális gépen az Azure-erőforrásokhoz a Azure Portal használatával](qs-configure-portal-windows-vm.md).

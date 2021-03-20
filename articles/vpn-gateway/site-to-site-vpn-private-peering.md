@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: cherylmc
 ms.openlocfilehash: 01d87bcb5697326fa87b25b20354897049900d9d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98880525"
 ---
 # <a name="configure-a-site-to-site-vpn-connection-over-expressroute-private-peering"></a>Helyek közötti VPN-kapcsolat konfigurálása ExpressRoute-alapú privát kapcsolatok használatával
@@ -109,6 +109,6 @@ Mindkét példában az Azure a VPN-kapcsolaton keresztül küldi el a forgalmat 
 1. A tűzfalon Pingelje a 2. lépésben írt privát IP-címet. A ExpressRoute privát kapcsolaton keresztül elérhetőnek kell lennie.
 1. Ezt a magánhálózati IP-címet használja távoli IP-ként a helyszíni tűzfalon, hogy a helyek közötti alagutat létrehozza a ExpressRoute privát társának.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a VPN Gatewayről: [Mi az VPN Gateway?](vpn-gateway-about-vpngateways.md)

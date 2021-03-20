@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan törölheti és exportálhatja a személyes ada
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 2c44b2f3aa6f2dfad18ed53804842a5dad8bd94a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85483516"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Személyes adatok exportálása vagy törlése Azure DevTest Labs
@@ -61,7 +61,7 @@ Labor-felhasználóként az DevTest Labs szolgáltatás által tárolt személye
 
     ![Erőforráscsoport kiválasztása](./media/personal-data-delete-export/select-resource-group.png)
 3. Válassza ki a **Storage-fiókot** az erőforráscsoporthoz.
-4. A **Storage-fiók** lapon válassza a **Blobok**lehetőséget.
+4. A **Storage-fiók** lapon válassza a **Blobok** lehetőséget.
 
     ![Blobok csempe kiválasztása](./media/personal-data-delete-export/select-blobs-tile.png)
 5. Válassza ki a **labresourceusage** nevű tárolót a tárolók listájában.
@@ -160,7 +160,7 @@ A **virtualmachines.csv** a következő adatoszlopokat tartalmazza:
 | ResourceGroupName | A virtuális gépet tartalmazó erőforráscsoport neve | 
 | ResourceId | A virtuális gép teljes erőforrás-azonosítója. |
 | ResourceUId | A virtuális gép GUID azonosítója |
-| Name (Név) | A virtuális gép neve. |
+| Name | A virtuális gép neve. |
 | CreatedTime | A virtuális gép létrehozásának dátuma és időpontja. |
 | DeletedDate | A virtuális gép törlésének dátuma és időpontja. Ha üres, a törlés még nem történt meg. |
 | ResourceOwner | A virtuális gép tulajdonosa. Ha az érték üres, akkor vagy egy lekérhető virtuális gép, vagy egy egyszerű szolgáltatásnév hozza létre. |
@@ -177,7 +177,7 @@ A **virtualmachines.csv** a következő adatoszlopokat tartalmazza:
 | GalleryImageReferenceOsType | A virtuális gép alaprendszerképének operációsrendszer-típusa |
 | CustomImageId | A virtuális gép alapszintű egyéni rendszerképének teljesen minősített azonosítója. |
 
-A **disks.csvban ** található adatoszlopok alább láthatók:
+A **disks.csvban** található adatoszlopok alább láthatók:
 
 | Oszlop neve | Leírás | 
 | ----------- | ----------- | 
@@ -188,7 +188,7 @@ A **disks.csvban ** található adatoszlopok alább láthatók:
 | ResourceGroupName | A labort tartalmazó erőforráscsoport neve | 
 | ResourceId | A virtuális gép teljes erőforrás-azonosítója. |
 | ResourceUId | A virtuális gép GUID azonosítója |
- |Name (Név) | A csatolt lemez neve |
+ |Name | A csatolt lemez neve |
 | CreatedTime |Az adatlemez létrehozásának dátuma és időpontja. |
 | DeletedDate | Az adatlemez törlésének dátuma és időpontja. |
 | ResourceStatus | Az erőforrás állapota. Aktív, ha az erőforrás létezik. Inaktív, törléskor. |
@@ -203,7 +203,7 @@ A **disks.csvban ** található adatoszlopok alább láthatók:
 
 Az exportált adatai az eszközök, például SQL Server, Power BI stb. használatával kezelhetők és megjeleníthetők. Ez a funkció különösen akkor hasznos, ha a tesztkörnyezet használatát szeretné jelenteni a felügyeleti csapatának, amely esetleg nem ugyanazt az Azure-előfizetést használja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket: 
 
 - [Tesztkörnyezet szabályzatának beállítása](devtest-lab-set-lab-policy.md)

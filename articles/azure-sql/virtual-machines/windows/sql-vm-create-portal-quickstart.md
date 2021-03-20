@@ -14,10 +14,10 @@ ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 335a63faa440e057c282f992b67b301289a7a4bb
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97356956"
 ---
 # <a name="quickstart-create-sql-server-2017-on-a-windows-virtual-machine-in-the-azure-portal"></a>Rövid útmutató: SQL Server 2017 létrehozása Windows rendszerű virtuális gépen a Azure Portal
@@ -38,7 +38,7 @@ Ez a rövid útmutató végigvezeti SQL Server virtuális gép (VM) létrehozás
 
 ## <a name="get-an-azure-subscription"></a><a id="subscription"></a> Azure-előfizetés beszerzése
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="select-a-sql-server-vm-image"></a><a id="select"></a> SQL Server virtuálisgép-rendszerkép kiválasztása
 
@@ -50,7 +50,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
    ![Képernyőfelvétel: az ingyenes SQL Server licenc kiválasztása: SQL Server 2017 Developer a Windows Server 2016-rendszerképben.](./media/sql-vm-create-portal-quickstart/select-sql-2017-vm-image.png)
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
    ![Új keresési ablak](./media/sql-vm-create-portal-quickstart/create-sql-2017-vm-image.png)
 

@@ -10,10 +10,10 @@ ms.topic: sample
 ms.date: 12/29/2020
 ms.author: fryu
 ms.openlocfilehash: dfc338844e310102447e2498ee9cce8f28a79b9f
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97809564"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>BLOB-tároló teljes számlázási méretének kiszámítása
@@ -118,7 +118,7 @@ A következő részletezés:
 
 [!code-powershell[main](../../../powershell_scripts/storage/calculate-container-size/calculate-container-size-ex.ps1 "Calculate container size")]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd: [a blob Storage-tárolók teljes méretének kiszámítása](../scripts/storage-blobs-container-calculate-size-powershell.md) egy egyszerű parancsfájlhoz, amely a tároló méretére vonatkozó becslést biztosít.
 

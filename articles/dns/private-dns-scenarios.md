@@ -8,13 +8,13 @@ ms.topic: article
 ms.date: 10/05/2019
 ms.author: rohink
 ms.openlocfilehash: ab850adb2e9a25778d5f44ba711eb0762fe562c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76939343"
 ---
-# <a name="azure-dns-private-zones-scenarios"></a>Az Azure DNS privát zónák forgatókönyvei
+# <a name="azure-dns-private-zones-scenarios"></a>Azure DNS privát zónák forgatókönyvei
 
 Azure DNS Private Zones a névfeloldást a virtuális hálózaton belül, valamint a virtuális hálózatok között. Ebben a cikkben megvizsgáljuk azokat a gyakori forgatókönyveket, amelyeket a funkció használatával lehet megvalósítani.
 
@@ -47,7 +47,7 @@ Most, amikor egy internetes ügyfél DNS-lekérdezést bocsát ki a VNETA-VM1.co
 
 ![Feldarabolt Brian-feloldás](./media/private-dns-scenarios/split-brain-resolution.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információk a saját DNS-zónákról: [Az Azure DNS használata saját tartományok esetében](private-dns-overview.md).
 
 Megtudhatja, hogyan [hozhat létre saját DNS-zónát](./private-dns-getstarted-powershell.md) a Azure DNSban.

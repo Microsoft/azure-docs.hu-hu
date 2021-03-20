@@ -4,10 +4,10 @@ description: Ismerteti az Azure Policy által a kezdeményezések vagy definíci
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: e6ced56c1dc65ca68998c5c58d3e985b63873e0b
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91950176"
 ---
 # <a name="azure-policy-exemption-structure"></a>Azure Policy kivétel struktúrája
@@ -15,7 +15,7 @@ ms.locfileid: "91950176"
 A Azure Policy kivételek (előzetes verzió) funkció használatával egy erőforrás-hierarchia vagy egy egyedi erőforrás _mentesül_ a kezdeményezések vagy definíciók kiértékelésével. A _kivételt_ képező erőforrások a teljes megfelelőségnek számítanak, de nem értékelhető ki, illetve nem rendelkezhet ideiglenes mentesítéssel. További információ: [a hatókör megismerése Azure Policy](./scope.md). Azure Policy a kivételek csak [Resource Manager-módokon](./definition-structure.md#resource-manager-modes) működnek, és nem működnek az [erőforrás-szolgáltatói módokkal](./definition-structure.md#resource-provider-modes).
 
 > [!IMPORTANT]
-> Ez a funkció **előzetes**verzióban ingyenes. A díjszabással kapcsolatos részletekért tekintse meg a [Azure Policy díjszabását](https://azure.microsoft.com/pricing/details/azure-policy/). További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ez a funkció **előzetes** verzióban ingyenes. A díjszabással kapcsolatos részletekért tekintse meg a [Azure Policy díjszabását](https://azure.microsoft.com/pricing/details/azure-policy/). További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A JSON használatával házirend-kivételt hozhat létre. A szabályzat alóli kivétel a következő elemeket tartalmazza:
 
@@ -88,7 +88,7 @@ A **DisplayName** és a **Leírás** használatával azonosíthatja a házirend-
 
 ## <a name="metadata"></a>Metaadatok
 
-A **metaadatok** tulajdonság lehetővé teszi a megfelelő információk tárolásához szükséges gyermek-tulajdonságok létrehozását. A fenti példában a Properties **requestedBy**, a **approvedBy**, a **approvedOn**és a **ticketRef** tartalmazza az ügyfelek értékeit, hogy információt szolgáltasson arról, hogy ki és mikor hagyta jóvá a kivételt, és mikor, valamint egy belső követési jegyet a kéréshez. Ezek a **metaadat** -tulajdonságok példák, de nem kötelezőek, és a **metaadatok** nem korlátozódnak ezekre a gyermek tulajdonságokra.
+A **metaadatok** tulajdonság lehetővé teszi a megfelelő információk tárolásához szükséges gyermek-tulajdonságok létrehozását. A fenti példában a Properties **requestedBy**, a **approvedBy**, a **approvedOn** és a **ticketRef** tartalmazza az ügyfelek értékeit, hogy információt szolgáltasson arról, hogy ki és mikor hagyta jóvá a kivételt, és mikor, valamint egy belső követési jegyet a kéréshez. Ezek a **metaadat** -tulajdonságok példák, de nem kötelezőek, és a **metaadatok** nem korlátozódnak ezekre a gyermek tulajdonságokra.
 
 ## <a name="policy-assignment-id"></a>Szabályzat-hozzárendelés azonosítója
 
@@ -119,7 +119,7 @@ A szabályzat-mentesítési objektumok kezeléséhez szükséges Azure RBAC-enge
 
 A kivételek a kivételek megadásának következményei miatt további biztonsági intézkedésekkel bírnak. A `Microsoft.Authorization/policyExemptions/write` műveletnek az erőforrás-hierarchián vagy az egyedi erőforráson túl kell lennie ahhoz, hogy a kivétel a `exempt/Action` cél-hozzárendelésen legyen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A szabályzat- [definíciós struktúra](./definition-structure.md)megismerése.
 - Megtudhatja, hogyan [hozhat létre programozott módon házirendeket](../how-to/programmatically-create.md).

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: tisande
 ms.openlocfilehash: 5620a9fb95fb52a487095afd75d5f30c82a8bce1
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93341467"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>WHERE záradék Azure Cosmos DB
@@ -109,7 +109,7 @@ A következő példákban látható módon használhatja az unáris operátorok 
 
 A lekérdezésekben tulajdonságok hivatkozásait is használhatja. Például `SELECT * FROM Families f WHERE f.isRegistered` visszaadja a tulajdonságot tartalmazó olyan JSON-tételt, `isRegistered` amelynek értéke egyenlő `true` . Bármely más érték, például,,,,, `false` `null` vagy, `Undefined` `<number>` `<string>` `<object>` `<array>` kizárja az elemet az eredményből. Emellett a `IS_DEFINED` Type Check függvényt is használhatja a lekérdezéshez egy adott JSON-tulajdonság jelenléte vagy hiánya alapján. Például `SELECT * FROM Families f WHERE NOT IS_DEFINED(f.isRegistered)` olyan JSON-elemeket ad vissza, amely nem rendelkezik értékkel a következőhöz: `isRegistered` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Bevezetés](sql-query-getting-started.md)
 - [A kulcsszóban](sql-query-keywords.md#in)

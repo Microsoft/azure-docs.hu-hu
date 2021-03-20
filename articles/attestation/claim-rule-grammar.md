@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 3ed5c3f8232047787c6f05628f1eef35a7533999
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91285418"
 ---
 # <a name="claim-and-claim-rules"></a>Jogcím-és jogcím-szabályok
@@ -80,7 +80,7 @@ A következő operátorok használhatók a feltételek ellenőrzési feltételé
 |--|--|
 | Egész szám | = = (egyenlő), \! = (nem egyenlő), <= (kisebb vagy egyenlő), < (kevesebb, mint), >= (nagyobb vagy egyenlő), > (nagyobb, mint) |
 | Sztring | = = (egyenlő), \! = (nem egyenlő) |
-| Logikai érték | = = (egyenlő), \! = (nem egyenlő) |
+| Logikai | = = (egyenlő), \! = (nem egyenlő) |
 
 A feltételek kiértékelése lista:
 
@@ -90,15 +90,15 @@ A feltételek kiértékelése lista:
 
 A szabályzatokban engedélyezett műveletek készletét alább találja.
 
-| Műveleti művelet | Leírás | A szabályzat azon részei, amelyekre ezek érvényesek |
+| Műveleti művelet | Description | A szabályzat azon részei, amelyekre ezek érvényesek |
 |--|--|--|
-| engedélyezés () | A bejövő jogcímek készlete a **issuancerules**számításához használható. A nem igényel jogcímet paraméterként | **engedélyezési szabályok** |
+| engedélyezés () | A bejövő jogcímek készlete a **issuancerules** számításához használható. A nem igényel jogcímet paraméterként | **engedélyezési szabályok** |
 | megtagadás () | A bejövő jogcímek készlete nem használható a **issuancerules** számításához paraméterként | **engedélyezési szabályok** |
 | Hozzáadás (jogcím) | Hozzáadja a jogcímet a bejövő jogcímek készletéhez. A bejövő jogcímek készletéhez hozzáadott bármely jogcím elérhető lesz a következő jogcím-szabályokhoz. |**engedélyezési szabályok**, **issuancerules** |
 | probléma (jogcím) | Hozzáadja a jogcímet a bejövő és a kimenő jogcímek készletéhez. | **issuancerules** |
 | issueproperty (jogcím) | Hozzáadja a jogcímet a bejövő és a tulajdonság jogcímek készletéhez. | **issuancerules**
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Igazolási szabályzat létrehozása és aláírása](author-sign-policy.md)
 - [Az Azure-igazolás beállítása a PowerShell használatával](quickstart-powershell.md)

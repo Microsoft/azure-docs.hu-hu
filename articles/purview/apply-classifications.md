@@ -8,17 +8,17 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
 ms.openlocfilehash: d12a7d52562fe32126e12a844c2d36c14cf01431
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96553112"
 ---
 # <a name="apply-classifications-on-assets-in-azure-purview"></a>Besorolások alkalmazása az eszközökön az Azure-beli hatáskörébe
 
 Ez a cikk azt ismerteti, hogyan alkalmazhatja a besorolásokat az eszközökön.
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 A besorolások lehetnek rendszerek vagy egyéni típusok. A rendszer-besorolások alapértelmezés szerint a hatáskörébe tartoznak. Az egyéni besorolások egy reguláris kifejezési minta alapján hozhatók létre. A besorolások automatikusan vagy manuálisan is alkalmazhatók az eszközökre.
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: pafarley
 ms.openlocfilehash: 58ced0c45d66223ac3e40112126e92a4539db32d
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94616076"
 ---
 # <a name="use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Custom Vision ONNX modell használata Windows ML-vel (előzetes verzió)
@@ -49,17 +49,17 @@ Saját rendszerkép-osztályozó modell használatához kövesse az alábbi lép
 
 1. Besoroló létrehozása és betanítása a Custom Vision Service használatával. Ennek módjával kapcsolatos útmutatásért tekintse meg az [osztályozó létrehozása és betanítása](./getting-started-build-a-classifier.md)című témakört. Használja az egyik **kompakt** tartományt **(például általános (Compact))**. 
    * Ha van egy másik tartományt használó meglévő osztályozó, akkor a projekt beállításai között konvertálhatja a **tömörítést** . Ezután a folytatás előtt végezze el a projekt újbóli betanítását.
-1. Exportálja a modellt. Váltson a teljesítmény lapra, és válasszon egy **kompakt** tartománnyal betanított iterációt. Kattintson a megjelenő **Exportálás** gombra. Ezután válassza a **ONNX** , majd az **Exportálás** lehetőséget. Amikor a fájl elkészült, kattintson a **Letöltés** gombra. Az exportálási lehetőségekkel kapcsolatos további információkért lásd: [a modell exportálása](./export-your-model.md).
+1. Exportálja a modellt. Váltson a teljesítmény lapra, és válasszon egy **kompakt** tartománnyal betanított iterációt. Kattintson a megjelenő **Exportálás** gombra. Ezután válassza a **ONNX**, majd az **Exportálás** lehetőséget. Amikor a fájl elkészült, kattintson a **Letöltés** gombra. Az exportálási lehetőségekkel kapcsolatos további információkért lásd: [a modell exportálása](./export-your-model.md).
 1. Nyissa meg a letöltött *. zip* fájlt, és bontsa ki a *Model. Onnx* fájlt. Ez a fájl tartalmazza az osztályozó modellt.
 1. A Visual Studióban lévő Megoldáskezelő kattintson a jobb gombbal az **eszközök** mappára, és válassza a __meglévő elem hozzáadása elemet__. Válassza ki a ONNX-fájlt.
 1. A Megoldáskezelő kattintson a jobb gombbal a ONNX fájlra, és válassza a **Tulajdonságok** lehetőséget. Módosítsa a fájl következő tulajdonságait:
    * __Felépítési művelet__  ->  __Tartalom__
    * __Másolás a kimeneti könyvtárba__  ->  __Másolás, ha újabb__
-1. Ezután nyissa meg a _MainPage.XAML.cs_ , és módosítsa az értékét `_ourOnnxFileName` a ONNX-fájl nevére.
+1. Ezután nyissa meg a _Főoldal. XAML. cs_ fájlt, és módosítsa az értékét `_ourOnnxFileName` a ONNX-fájl nevére.
 1. A projekt létrehozásához és futtatásához használja a következőt: `F5` .
 1. Kattintson a gombra az értékelni kívánt kép kiválasztásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egyéb exportálási lehetőségekről és a Custom Vision modell használatáról bővebb információt a következő dokumentumokban talál:
 

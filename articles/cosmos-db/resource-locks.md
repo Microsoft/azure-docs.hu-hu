@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: mjbrown
 ms.openlocfilehash: 1c8c766208132aec115e1fbeb15af3a057c3de3e
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94636690"
 ---
 # <a name="prevent-azure-cosmos-db-resources-from-being-deleted-or-changed"></a>Azure Cosmos DB erőforrások törlésének vagy módosításának megakadályozása
@@ -114,6 +114,6 @@ Azure Cosmos DB-erőforrásra vonatkozó zárolás alkalmazásakor használja a 
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Resource Manager zárolások áttekintése](../azure-resource-manager/management/lock-resources.md)

@@ -1,5 +1,5 @@
 ---
-title: A törölt eszközök észlelése a vizsgálatok során
+title: Hogyan észlelhetők a vizsgálatok során az eltávolított eszközök?
 description: Ez a cikk azt ismerteti, hogy az Azure-beli hatáskörébe tartozó fiókok hogyan észlelik a törölt eszközöket a vizsgálatok során.
 author: yaronyg
 ms.author: yarong
@@ -8,13 +8,13 @@ ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.openlocfilehash: 9b1515ef00355c831e161c01227678197792cc20
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96553370"
 ---
-# <a name="how-scans-detect-deleted-assets"></a>A törölt eszközök észlelése a vizsgálatok során
+# <a name="how-scans-detect-deleted-assets"></a>Hogyan észlelhetők a vizsgálatok során az eltávolított eszközök?
 
 Ez a cikk azt ismerteti, hogyan használja az Azure hatáskörébe a vizsgálati eredményeket a törölt eszközök észleléséhez.
 

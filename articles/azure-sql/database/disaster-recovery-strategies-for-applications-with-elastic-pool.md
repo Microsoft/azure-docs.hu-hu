@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: 0463d11466859c0f30901a0afd960bdc7b2599a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91357784"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-azure-sql-database-elastic-pools"></a>Vészhelyzeti helyreállítási stratégiák Azure SQL Database rugalmas készleteket használó alkalmazásokhoz
@@ -179,7 +179,7 @@ A fő kompromisszumok a következők:
 * A felügyeleti adatbázis összetettebb kialakítását igényli. Az egyes bérlői rekordok például egy olyan hely címkével rendelkeznek, amelyet a feladatátvétel és a feladat-visszavétel során módosítani kell.  
 * A fizető ügyfelek a szokásosnál alacsonyabb teljesítményt tapasztalhatnak, amíg a B régióban a készlet frissítése be nem fejeződik.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ez a cikk a SaaS ISV több-bérlős alkalmazás által használt adatbázis-rétegre vonatkozó vész-helyreállítási stratégiákra összpontosít. Az Ön által választott stratégia az alkalmazás igényeinek, például az üzleti modellnek, az ügyfeleknek felkínált SLA-nak, a költségvetési korlátozásnak stb. Mindegyik ismertetett stratégia ismerteti az előnyöket és a kompromisszumot, így tájékozott döntést hozhat. Emellett az adott alkalmazás valószínűleg más Azure-összetevőket is tartalmaz. Ezért tekintse át az üzletmenet-folytonossági útmutatót, és hangolja össze az adatbázis-rétegek helyreállítását. Az adatbázis-alkalmazások Azure-ban történő helyreállításával kapcsolatos további tudnivalókért tekintse meg a [felhőalapú megoldások tervezése a vész-helyreállításhoz](designing-cloud-solutions-for-disaster-recovery.md)című témakört.  
 

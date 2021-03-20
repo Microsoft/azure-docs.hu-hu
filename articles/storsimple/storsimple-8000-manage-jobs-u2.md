@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: dc630021cbf93074119d4feedcb3a09fae1453e3
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91949428"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-jobs-update-3-and-later"></a>Feladatok megtekintése és kezelése a StorSimple Eszközkezelő szolgáltatással (3. frissítés és újabb)
@@ -55,7 +55,7 @@ Ezen az oldalon a következő feladattal kapcsolatos műveletek végezhetők el:
 A feladatok részleteinek megtekintéséhez hajtsa végre a következő lépéseket.
 
 #### <a name="to-view-job-details"></a>A feladatok részleteinek megtekintése
-1. Lépjen a StorSimple Eszközkezelő szolgáltatásra, majd kattintson a **feladatok**lehetőségre.
+1. Lépjen a StorSimple Eszközkezelő szolgáltatásra, majd kattintson a **feladatok** lehetőségre.
 
 2. A **feladatok** panelen jelenítse meg azokat a feladatokat, amelyek érdeklik a megfelelő szűrőket tartalmazó lekérdezés futtatásával. Kereshet a befejezett, a futó és a megszakított feladatok között.
 
@@ -79,13 +79,13 @@ Egy futó feladat megszakításához hajtsa végre az alábbi lépéseket.
 ### <a name="to-cancel-a-job"></a>Feladat megszakítása
 1. A **feladatok** lapon jelenítse meg a megszakítani kívánt futó feladatokat a megfelelő szűrőket tartalmazó lekérdezés futtatásával. Válassza ki a feladatot.
 
-2. Kattintson a jobb gombbal a kiválasztott feladatokra a helyi menü meghívásához, majd kattintson a **Mégse**gombra.
+2. Kattintson a jobb gombbal a kiválasztott feladatokra a helyi menü meghívásához, majd kattintson a **Mégse** gombra.
 
     ![A feladatok részletei 2](./media/storsimple-8000-manage-jobs-u2/jobs2.png)
 
 3. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra. Ez a feladat most meg lett szakítva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, hogyan [kezelheti a StorSimple biztonsági mentési szabályzatait](storsimple-8000-manage-backup-policies-u2.md).
 * Ismerje meg, hogyan kezelheti a [StorSimple-eszközt a StorSimple Eszközkezelő szolgáltatással](storsimple-8000-manager-service-administration.md).
 

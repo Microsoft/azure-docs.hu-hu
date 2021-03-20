@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.openlocfilehash: c0e47a2943cf8c934d201f76aefc41868adf0b25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87127723"
 ---
 # <a name="feature-evaluation"></a>Szolgáltatások értékelése
@@ -77,7 +77,7 @@ A funkciók küldésével kapcsolatos gyakori hibák a következők:
 * Nagy számú felhasználó esetén nem valószínű, hogy az egyes felhasználók interakciója a népesség összes interakcióján kívül esik, így a felhasználói azonosítók (még akkor is, ha nem személyes adatok) elküldése valószínűleg nagyobb zajt eredményez, mint az érték a modellnél.
 * A dátum-idő mezők pontos időbélyegként való küldése a featurized időértékek helyett. Olyan funkciókkal rendelkezik, mint a Context. TimeStamp. Day = hétfő vagy a "Context. TimeStamp. Hour" = "13". Mindegyikhez legfeljebb 7 vagy 24 jellemző érték lesz. De a "Context. TimeStamp": "1985-04-12T23:20:50.52 Z" olyan pontos, hogy nem fog tudni tanulni belőle, mert soha nem fog megtörténni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [méretezhetőség és a teljesítmény](concepts-scalability-performance.md) megértése a személyre szabással.
 

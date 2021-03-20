@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/04/2020
 ms.author: allensu
 ms.openlocfilehash: 051737a9f5e0d4092cda26a3f7ce3df1d7f535ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87760124"
 ---
 # <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Műveletek a standard szabályok motorban Azure CDN
@@ -30,7 +30,7 @@ Ezzel a művelettel írhatja felül a végpont élettartam (TTL) értékét azon
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Gyorsítótár viselkedése |  Leírás              
+Gyorsítótár viselkedése |  Description              
 ---------------|----------------
 Gyorsítótár megkerülése | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer nem gyorsítótárazza a tartalmat.
 Felülbírálás | Ha ez a beállítás be van jelölve, és a szabály egyezést ad meg, a rendszer felülírja a forrásból visszaadott TTL-értéket a műveletben megadott értékkel. Ez a viselkedés csak akkor lesz alkalmazva, ha a válasz gyorsítótárazható. A Cache-Control Response fejlécben a "no-cache", a "Private", a "No-Store" értékekkel a művelet nem lesz alkalmazható.
@@ -48,7 +48,7 @@ Ezzel a művelettel módosíthatja a gyorsítótár-kulcsot a lekérdezési kara
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Működés | Leírás
+Működés | Description
 ---------|------------
 Belefoglalás | Ha ez a beállítás be van jelölve, és a szabály egyezik, a paraméterekben megadott lekérdezési karakterláncok a gyorsítótár kulcsának létrehozásakor is szerepelni tudnak. 
 Minden egyedi URL gyorsítótárazása | Ha ez a beállítás be van jelölve, és a szabály megfelel, minden egyedi URL-cím saját gyorsítótár-kulccsal rendelkezik. 
@@ -75,8 +75,8 @@ Ezzel a művelettel módosíthatja azokat a fejléceket, amelyek az ügyfeleknek
 
 Művelet | HTTP-fejléc neve | Érték
 -------|------------------|------
-Append (Hozzáfűzés) | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a válaszhoz a megadott **érték**használatával. Ha a fejléc már létezik, a rendszer hozzáfűzi az **értéket** a meglévő értékhez. | Sztring
-Felülírás | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a válaszhoz a megadott **érték**használatával. Ha a fejléc már létezik, az **érték** felülírja a meglévő értéket. | Sztring
+Append (Hozzáfűzés) | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a válaszhoz a megadott **érték** használatával. Ha a fejléc már létezik, a rendszer hozzáfűzi az **értéket** a meglévő értékhez. | Sztring
+Felülírás | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a válaszhoz a megadott **érték** használatával. Ha a fejléc már létezik, az **érték** felülírja a meglévő értéket. | Sztring
 Törlés | Ha ez a beállítás be van jelölve, a szabály egyezik, és a szabályban megadott fejléc jelen van, a rendszer törli a fejlécet a válaszból. | Sztring
 
 ### <a name="url-redirect"></a>URL-átirányítás
@@ -106,7 +106,7 @@ Mező | Leírás
 ------|------------
 Forrás mintája | Adja meg a forrás mintát a lecserélni kívánt URL-útvonalon. Jelenleg a forrás minta előtag-alapú egyezést használ. Az összes URL-cím eléréséhez használjon egy perjelet ( **/** ) a forrás minta értékének megfelelően.
 Cél | Adja meg az újraíráshoz használandó célhely elérési útját. A cél elérési útja felülírja a forrás mintát.
-Páratlan elérési út megőrzése | Ha az **Igen**értékre van állítva, a rendszer a forrás minta után hátralévő elérési utat hozzáfűzi az új cél elérési úthoz. 
+Páratlan elérési út megőrzése | Ha az **Igen** értékre van állítva, a rendszer a forrás minta után hátralévő elérési utat hozzáfűzi az új cél elérési úthoz. 
 
 ## <a name="next-steps"></a>Következő lépések
 
