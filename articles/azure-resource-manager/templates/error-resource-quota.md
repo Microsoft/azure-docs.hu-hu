@@ -4,10 +4,10 @@ description: Ismerteti, Hogyan oldhatók fel az erőforrás-kvótával kapcsolat
 ms.topic: troubleshooting
 ms.date: 03/09/2018
 ms.openlocfilehash: 75e8abf31d035a1e3a106bc0c6561624762db5d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90530420"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>Erőforráskvótákkal kapcsolatos hibák elhárítása
@@ -105,7 +105,7 @@ A kvóta növeléséhez lépjen a portálra, és küldjön egy támogatási prob
 
    ![Használat és kvóták kiválasztása](./media/error-resource-quota/select-usage-quotas.png)
 
-4. A jobb felső sarokban válassza a **kérelem növekedés**lehetőséget.
+4. A jobb felső sarokban válassza a **kérelem növekedés** lehetőséget.
 
    ![Kérések növekedése](./media/error-resource-quota/request-increase.png)
 

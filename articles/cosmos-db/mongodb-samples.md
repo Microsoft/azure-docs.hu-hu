@@ -10,10 +10,10 @@ author: sivethe
 ms.author: sivethe
 ms.custom: devx-track-js
 ms.openlocfilehash: c2117c535cca679d3a7a3b75491bf60ab9567ceb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93098212"
 ---
 # <a name="build-an-app-using-nodejs-and-azure-cosmos-dbs-api-for-mongodb"></a>Alkalmazások készítése a MongoDB Node.js és Azure Cosmos DB API-ját használva 
@@ -118,7 +118,7 @@ A példa használatához a következőket kell tennie:
     });
     ```
     
-    **Más lehetőség** : A **MongoDB Node.js 2.2 illesztőprogram** használata esetén cserélje ki a következő kódrészletet:
+    **Más lehetőség**: A **MongoDB Node.js 2.2 illesztőprogram** használata esetén cserélje ki a következő kódrészletet:
 
     Eredeti:
 

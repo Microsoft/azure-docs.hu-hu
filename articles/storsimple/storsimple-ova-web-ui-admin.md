@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 12/1/2016
 ms.author: alkohli
 ms.openlocfilehash: 6bea9c9b7807ffb32b6071c968d3186965477009
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96000929"
 ---
 # <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>A webes felhasználói felület használata a StorSimple virtuális tömb felügyeletéhez
@@ -61,7 +61,7 @@ Bizonyos esetekben, amikor az eszközt a helyi webes felületen konfigurálja, h
 A naplófájlok a kapcsolódó naplókból állnak, amelyek segítséget nyújthatnak Microsoft ügyfélszolgálatanek az eszközkel kapcsolatos problémák elhárításában. Ebben a kiadásban a helyi webes felületen keresztül lehet létrehozni egy naplófájlt.
 
 #### <a name="to-generate-the-log-package"></a>A naplófájl előállítása
-1. A helyi webes kezelőfelületen lépjen a **Troubleshooting**  >  **rendszernaplók** hibaelhárítása című témakörre.
+1. A helyi webes kezelőfelületen lépjen a   >  **rendszernaplók** hibaelhárítása című témakörre.
    
     ![1. log csomag előállítása](./media/storsimple-ova-web-ui-admin/image31.png)
 2. A lap alján kattintson a **naplófájl létrehozása** lehetőségre. Létrejön a rendszernaplók csomagja. Ez eltarthat néhány percig.
@@ -109,6 +109,6 @@ A virtuális eszköz a helyi webes felhasználói felületen állítható le vag
    
     Amíg az újraindítás folyamatban van, elveszíti a kapcsolódást a felhasználói felülethez. A felhasználói felület rendszeres frissítésével nyomon követheti az újraindítást. Azt is megteheti, hogy az eszköz újraindítási állapotát a Hyper-V kezelőjével figyelheti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Megtudhatja, hogyan [kezelheti az eszközt a StorSimple Manager szolgáltatással](storsimple-virtual-array-manager-service-administration.md).
 

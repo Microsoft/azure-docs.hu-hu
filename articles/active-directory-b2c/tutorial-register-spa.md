@@ -13,10 +13,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d2eaf1dce432821dcfc693dc69dcf975a3d8be8d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92503861"
 ---
 # <a name="tutorial-register-a-single-page-application-spa-in-azure-active-directory-b2c"></a>Oktatóanyag: egyoldalas alkalmazás (SPA) regisztrálása Azure Active Directory B2C
@@ -55,11 +55,11 @@ Ha még nem hozott létre saját [Azure ad B2C bérlőt](tutorial-create-tenant.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
-1. A Azure Portal keresse meg és válassza a **Azure ad B2C**lehetőséget.
-1. Válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza az **új regisztráció**lehetőséget.
+1. A Azure Portal keresse meg és válassza a **Azure ad B2C** lehetőséget.
+1. Válassza a **Alkalmazásregisztrációk** lehetőséget, majd válassza az **új regisztráció** lehetőséget.
 1. Adja meg az alkalmazás **nevét** . Például: *spaapp1*.
-1. A **támogatott fióktípus**területen válassza a **fiókok lehetőséget bármely identitás-szolgáltató vagy szervezeti címtárban (a felhasználók felhasználói folyamatokkal történő hitelesítéséhez)**
-1. Az **átirányítási URI**területen válassza az **egylapos alkalmazás (Spa)** lehetőséget, majd írja be `https://jwt.ms` az URL szövegmezőbe.
+1. A **támogatott fióktípus** területen válassza a **fiókok lehetőséget bármely identitás-szolgáltató vagy szervezeti címtárban (a felhasználók felhasználói folyamatokkal történő hitelesítéséhez)**
+1. Az **átirányítási URI** területen válassza az **egylapos alkalmazás (Spa)** lehetőséget, majd írja be `https://jwt.ms` az URL szövegmezőbe.
 
     Az átirányítási URI azt a végpontot, amelyhez a felhasználót az engedélyezési kiszolgáló Azure AD B2C (ebben az esetben) a felhasználóval való interakció befejezése után küldi el a rendszer, és a sikeres engedélyezéshez hozzáférési jogkivonatot vagy engedélyezési kódot küld. Éles alkalmazásokban ez általában egy nyilvánosan elérhető végpont, amelyben az alkalmazás fut, például: `https://contoso.com/auth-response` . Az oktatóanyaghoz hasonló tesztelési célokra beállíthatja, hogy a egy `https://jwt.ms` Microsoft tulajdonú webalkalmazás, amely egy jogkivonat dekódolású tartalmát jeleníti meg (a jogkivonat tartalma soha nem hagyja el a böngészőt). Az alkalmazásfejlesztés során hozzáadhatja azt a végpontot, amelyben az alkalmazás helyileg, például a következőt figyeli `http://localhost:5000` . A regisztrált alkalmazásokban bármikor hozzáadhat és módosíthat átirányítási URI-ket.
 
@@ -68,16 +68,16 @@ Ha még nem hozott létre saját [Azure ad B2C bérlőt](tutorial-create-tenant.
     * A válasz URL-címének a sémával kell kezdődnie `https` , hacsak nem használja `localhost` .
     * A válasz URL-címe megkülönbözteti a kis-és nagybetűket. Az esetnek egyeznie kell a futó alkalmazás URL-címének elérési útjával. Ha például az alkalmazás az elérési út részeként szerepel `.../abc/response-oidc` , ne adja meg `.../ABC/response-oidc` a válasz URL-címét. Mivel a webböngésző a kis-és nagybetűket megkülönböztető módon kezeli az elérési utakat, a hozzájuk társított cookie-k `.../abc/response-oidc` kizárható, ha a rendszer átirányítja a kis-és nagybetűket `.../ABC/response-oidc` .
 
-1. Az **engedélyek**területen jelölje be a *rendszergazdai jóváhagyás megadása az OpenID-hez és a offline_access engedélyekhez* jelölőnégyzetet.
+1. Az **engedélyek** területen jelölje be a *rendszergazdai jóváhagyás megadása az OpenID-hez és a offline_access engedélyekhez* jelölőnégyzetet.
 1. Válassza a **Regisztráció** lehetőséget.
 
 
 ## <a name="enable-the-implicit-flow"></a>Az implicit folyamat engedélyezése
 Az implicit folyamat használata esetén engedélyeznie kell az implicit engedélyezési folyamatot az alkalmazás regisztrálásakor.
 
-1. A bal oldali menüben kattintson a **kezelés**elemre, majd válassza a **hitelesítés**lehetőséget.
-1. Az **implicit engedélyezés**területen jelölje be a **hozzáférési jogkivonatok** és az **azonosító tokenek** jelölőnégyzetet.
-1. Válassza a **Mentés** lehetőséget.
+1. A bal oldali menüben kattintson a **kezelés** elemre, majd válassza a **hitelesítés** lehetőséget.
+1. Az **implicit engedélyezés** területen jelölje be a **hozzáférési jogkivonatok** és az **azonosító tokenek** jelölőnégyzetet.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="migrate-from-the-implicit-flow"></a>Migrálás az implicit folyamatból
 
@@ -85,9 +85,9 @@ Ha már van olyan alkalmazás, amely az implicit folyamatot használja, javasolj
 
 Ha az alkalmazás regisztrációja által reprezentált összes éles egyoldalas alkalmazás az engedélyezési kód folyamatát használja, tiltsa le az implicit engedélyezési folyamat beállításait. 
 
-1. A bal oldali menüben kattintson a **kezelés**elemre, majd válassza a **hitelesítés**lehetőséget.
-1. Az **implicit engedélyezés**területen törölje a **hozzáférési tokenek** és az **azonosító jogkivonatok** jelölőnégyzet jelölését.
-1. Válassza a **Mentés** lehetőséget.
+1. A bal oldali menüben kattintson a **kezelés** elemre, majd válassza a **hitelesítés** lehetőséget.
+1. Az **implicit engedélyezés** területen törölje a **hozzáférési tokenek** és az **azonosító jogkivonatok** jelölőnégyzet jelölését.
+1. Kattintson a **Mentés** gombra.
 
 Az implicit folyamatot használó alkalmazások továbbra is működőképesek maradnak, ha az implicit folyamat engedélyezve van (be van jelölve).
 

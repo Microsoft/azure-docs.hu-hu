@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c11b58954eefda67f981d618b04ab2bd69fa6b43
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93077761"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Útmutató: felügyelt eszközök megkövetelése a Cloud app Accesshez feltételes hozzáféréssel
@@ -62,17 +62,17 @@ Ezt a három lehetőséget a cikk a [Mi az eszköz identitása](../devices/overv
 
 Felügyelt eszközként a regisztrált eszköznek egy **hibrid Azure ad-hez csatlakoztatott eszköznek** vagy egy **megfelelőként megjelölt eszköznek** kell lennie.  
 
-:::image type="content" source="./media/require-managed-devices/47.png" alt-text="Képernyőfelvétel az Azure-beli eszköz panelről D. az elemek engedélyezése és letiltása kiemelve." border="false":::
+:::image type="content" source="./media/require-managed-devices/47.png" alt-text="Képernyőkép az Azure A D engedélyezési paneljéről. A hozzáférés engedélyezése beállítás be van jelölve, ahogyan az eszközök megfelelőségének és A hibrid Azure A D-vel való csatlakozásának jelölőnégyzetei." border="false":::
  
 ## <a name="require-hybrid-azure-ad-joined-devices"></a>Hibrid Azure AD-hez csatlakoztatott eszközök megkövetelése
 
 A feltételes hozzáférési szabályzatban kiválaszthatja a **hibrid Azure ad-hez csatlakoztatott eszköz megkövetelése** lehetőséget, hogy a kiválasztott felhőalapú alkalmazások csak felügyelt eszköz használatával legyenek elérhetők. 
 
-:::image type="content" source="./media/require-managed-devices/10.png" alt-text="Képernyőfelvétel az Azure-beli eszköz panelről D. az elemek engedélyezése és letiltása kiemelve." border="false":::
+:::image type="content" source="./media/require-managed-devices/10.png" alt-text="Képernyőkép az Azure A D engedélyezési paneljéről. A hozzáférés engedélyezése beállítás ki van választva. Az eszközök hibrid Azure-ra való csatlakoztatását igénylő jelölőnégyzet is be van jelölve." border="false":::
 
 Ez a beállítás csak olyan Windows 10 vagy régebbi rendszerű eszközökre vonatkozik, mint a Windows 7 vagy a Windows 8, amelyek egy helyszíni AD-hez csatlakoznak. Ezeket az eszközöket csak hibrid Azure AD-csatlakozással regisztrálhatja az Azure AD-vel, amely egy [automatizált folyamat](../devices/hybrid-azuread-join-plan.md) , amellyel regisztrálható a Windows 10-es eszköz. 
 
-:::image type="content" source="./media/require-managed-devices/45.png" alt-text="Képernyőfelvétel az Azure-beli eszköz panelről D. az elemek engedélyezése és letiltása kiemelve." border="false":::
+:::image type="content" source="./media/require-managed-devices/45.png" alt-text="A név, az engedélyezett állapot, az O, a verzió, a csatlakozás típusa, a tulajdonos, a M D M és az eszköz megfelelő állapotának listázása. A megfelelő állapot nem." border="false":::
 
 Mi teszi a hibrid Azure AD-hez csatlakoztatott eszköz felügyelt eszközét?  A helyszíni AD-hez csatlakoztatott eszközök esetében feltételezhető, hogy az eszközök vezérlését felügyeleti megoldások, például **Configuration Manager** vagy **Csoportházirend (GP)** használatával kényszerítik ki. Mivel az Azure AD nem tudja meghatározni, hogy a módszerek bármelyikét alkalmazták-e egy eszközre, a hibrid Azure AD-hez csatlakoztatott eszközök viszonylag gyenge mechanizmust igényelnek a felügyelt eszközök megköveteléséhez. Önnek rendszergazdaként kell megítélnie, hogy a helyszíni tartományhoz csatlakoztatott eszközökön alkalmazott módszerek elég erősek-e ahhoz, hogy felügyelt eszközöket képezzenek, ha az adott eszköz hibrid Azure AD-hez csatlakoztatott eszköz is.
 
@@ -80,14 +80,14 @@ Mi teszi a hibrid Azure AD-hez csatlakoztatott eszköz felügyelt eszközét?  A
 
 Az *eszköz megfelelőként való megjelölésének* lehetősége a felügyelt eszközök igénylésének legerősebb formája.
 
-:::image type="content" source="./media/require-managed-devices/11.png" alt-text="Képernyőfelvétel az Azure-beli eszköz panelről D. az elemek engedélyezése és letiltása kiemelve." border="false":::
+:::image type="content" source="./media/require-managed-devices/11.png" alt-text="Képernyőkép az Azure A D engedélyezési paneljéről. A hozzáférés engedélyezése beállítás ki van választva. Az eszköz megfelelőként való megjelölését igénylő jelölőnégyzet is be van jelölve." border="false":::
 
 Ehhez a beállításhoz az szükséges, hogy az eszköz regisztrálva legyen az Azure AD-ben, és a következő módon legyen megjelölve:
          
 - Intune
 - Egy külső gyártótól származó mobileszköz-felügyeleti (MDM) rendszer, amely az Azure AD-integráción keresztül kezeli a Windows 10-es eszközöket. A harmadik féltől származó MDM rendszerek nem Windows 10 rendszerű eszközökön használhatók.
  
-:::image type="content" source="./media/require-managed-devices/46.png" alt-text="Képernyőfelvétel az Azure-beli eszköz panelről D. az elemek engedélyezése és letiltása kiemelve." border="false":::
+:::image type="content" source="./media/require-managed-devices/46.png" alt-text="A név, az engedélyezett állapot, az O, a verzió, a csatlakozás típusa, a tulajdonos, a M D M és az eszköz megfelelő állapotának listázása. A megfelelőségi állapot ki van emelve." border="false":::
 
 A megfelelőként megjelölt eszközök esetében feltételezhető, hogy: 
 
@@ -103,13 +103,13 @@ Ebben az esetben a contoso úgy döntött, hogy Microsoft 365 erőforrásokhoz v
 A szervezeteknek a következő lépéseket kell végrehajtaniuk ahhoz, hogy megkövetelje a regisztrált mobileszköz használatát.
 
 1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
-1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférését** .
+1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférését**.
 1. Válassza az **új szabályzat** lehetőséget.
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
 1. A **hozzárendelések** alatt válassza a **felhasználók és csoportok** lehetőséget.
    1. A **Belefoglalás** területen válassza ki az **összes felhasználó** elemet, illetve azokat a **felhasználókat és csoportokat** , amelyekre alkalmazni szeretné a szabályzatot. 
-   1. Válassza a **Done** (Kész) lehetőséget.
-1. A **Cloud apps vagy a műveletek** területen  >  **Include** válassza az **Office 365** lehetőséget.
+   1. Válassza a **Kész** lehetőséget.
+1. A **Cloud apps vagy a műveletek** területen  >  válassza az **Office 365** lehetőséget.
 1. A **feltételek** területen válassza az **eszközök platformok** elemet.
    1. Állítsa **az** **Igen** értékre.
    1. **Android** és **iOS** is.

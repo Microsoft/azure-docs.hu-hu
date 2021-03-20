@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: jeedes
 ms.openlocfilehash: 1e295075a5c1ae8daa6673757770bbef01208c1d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92505725"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pulse-secure-virtual-traffic-manager"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Pulse Secure virtuális Traffic Manager
@@ -45,15 +45,15 @@ A Pulse Secure virtuális Traffic Manager Azure AD-be való integrálásának ko
 
 1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **Pulse Secure Virtual Traffic Manager** kifejezést a keresőmezőbe.
 1. Válassza a **Pulse Secure virtuális Traffic Manager** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 
 ## <a name="configure-and-test-azure-ad-sso-for-pulse-secure-virtual-traffic-manager"></a>Azure AD SSO konfigurálása és tesztelése a Pulse Secure virtuális Traffic Manager
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Pulse Secure Virtual Traffic Manager egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Pulse Secure virtuális Traffic Managerban.
+Konfigurálja és tesztelje az Azure AD SSO-t a Pulse Secure Virtual Traffic Manager egy **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Pulse Secure virtuális Traffic Managerban.
 
 Az Azure AD SSO és a Pulse Secure Virtual Traffic Manager használatával történő konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
@@ -68,8 +68,8 @@ Az Azure AD SSO és a Pulse Secure Virtual Traffic Manager használatával tört
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A Azure Portal a **Pulse Secure Virtual Traffic Manager** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A Azure Portal a **Pulse Secure Virtual Traffic Manager** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -97,7 +97,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
@@ -109,10 +109,10 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 
 Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát a Pulse Secure virtuális Traffic Manager hozzáférésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **Pulse Secure Virtual Traffic Manager**elemet.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **Pulse Secure Virtual Traffic Manager** elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
@@ -123,11 +123,11 @@ Ez a szakasz ismerteti az Azure AD SAML-hitelesítés engedélyezéséhez szüks
 
 #### <a name="create-a-saml-trusted-identity-provider"></a>SAML megbízható identitás-szolgáltató létrehozása
 
-a. Nyissa meg a **Pulse Virtual Traffic Manager készülék rendszergazdai felhasználói felületét > katalógus > SAML > megbízható azonosítók katalógusa** lapon, és kattintson a **Szerkesztés**gombra.
+a. Nyissa meg a **Pulse Virtual Traffic Manager készülék rendszergazdai felhasználói felületét > katalógus > SAML > megbízható azonosítók katalógusa** lapon, és kattintson a **Szerkesztés** gombra.
 
 ![SAML-katalógusok lapja](./media/pulse-secure-virtual-traffic-manager-tutorial/saml-catalogs.png)
 
-b. Adja meg az új SAML megbízható identitás-szolgáltató adatait, másolja az adatokat az Azure AD Enterprise alkalmazásból az egyszeri bejelentkezési beállítások lapon, majd kattintson az **új megbízható identitás-szolgáltató létrehozása**lehetőségre.
+b. Adja meg az új SAML megbízható identitás-szolgáltató adatait, másolja az adatokat az Azure AD Enterprise alkalmazásból az egyszeri bejelentkezési beállítások lapon, majd kattintson az **új megbízható identitás-szolgáltató létrehozása** lehetőségre.
 
 ![Új megbízható identitás-szolgáltató létrehozása](./media/pulse-secure-virtual-traffic-manager-tutorial/create-trusted-identity-provider.png)
 
@@ -149,7 +149,7 @@ a. Nyissa meg a **Pulse virtual Traffic Manager készülék rendszergazdai felha
 
 ![Virtuális kiszolgálók szerkesztése](./media/pulse-secure-virtual-traffic-manager-tutorial/virtual-servers.png)
 
-b. A **hitelesítés** szakaszban kattintson a **Szerkesztés**elemre. 
+b. A **hitelesítés** szakaszban kattintson a **Szerkesztés** elemre. 
 
 ![Hitelesítés szakasz](./media/pulse-secure-virtual-traffic-manager-tutorial/authentication.png)
 
@@ -159,21 +159,21 @@ c. Konfigurálja a következő hitelesítési beállításokat a virtuális kisz
 
     ![a virtuális kiszolgáló hitelesítési beállításai](./media/pulse-secure-virtual-traffic-manager-tutorial/authentication-1.png)
 
-    a. Az **Auth! típus mezőben**válassza az **SAML** -szolgáltató elemet. 
+    a. Az **Auth! típus mezőben** válassza az **SAML** -szolgáltató elemet. 
 
-    b. Az **Auth! verbose**értéknél állítsa az "igen" értéket az esetleges hitelesítési problémák elhárításához, ellenkező esetben hagyja meg az alapértelmezett értéket "nem" értékre. 
+    b. Az **Auth! verbose** értéknél állítsa az "igen" értéket az esetleges hitelesítési problémák elhárításához, ellenkező esetben hagyja meg az alapértelmezett értéket "nem" értékre. 
 
 2. Hitelesítési munkamenet kezelése –
 
     ![Hitelesítési munkamenetek kezelése](./media/pulse-secure-virtual-traffic-manager-tutorial/authentication-session.png)
 
-    a. Az **Auth! Session! cookie_name**esetében az alapértelmezett értéket hagyja "VS_SamlSP_Auth" értékre. 
+    a. Az **Auth! Session! cookie_name** esetében az alapértelmezett értéket hagyja "VS_SamlSP_Auth" értékre. 
 
-    b. Az **Auth! Session! Timeout**beállításnál hagyja meg az alapértelmezett értéket "7200" értékre. 
+    b. Az **Auth! Session! Timeout** beállításnál hagyja meg az alapértelmezett értéket "7200" értékre. 
 
-    c. Az **Auth! Session! log_external_state**beállításnál állítsa az "igen" értéket a hitelesítési problémák elhárításához, ellenkező esetben hagyja meg az alapértelmezett értéket "nem" értékre. 
+    c. Az **Auth! Session! log_external_state** beállításnál állítsa az "igen" értéket a hitelesítési problémák elhárításához, ellenkező esetben hagyja meg az alapértelmezett értéket "nem" értékre. 
 
-    d. Az **Auth! Session! cookie_attributesban**váltson a "HTTPOnly" elemre. 
+    d. Az **Auth! Session! cookie_attributesban** váltson a "HTTPOnly" elemre. 
 
 3. SAML-szolgáltató –
 
@@ -181,13 +181,13 @@ c. Konfigurálja a következő hitelesítési beállításokat a virtuális kisz
 
     a. Az **Auth! SAML! sp_entity_id** szövegmezőben az Azure ad egyszeri bejelentkezési konfigurációs azonosítójának (Entity ID) használt URL-címére kell beállítani. Hasonlóan `https://pulseweb.labb.info/saml/metadata` . 
 
-    b. Az **Auth! SAML! sp_acs_urlban**az Azure ad egyszeri bejelentkezés konfigurációjának újrajátszása URL-címéhez használt URL-cím (a felhasználói szolgáltatás URL-címe) megegyezik. Hasonlóan `https://pulseweb.labb.info/saml/consume` . 
+    b. Az **Auth! SAML! sp_acs_urlban** az Azure ad egyszeri bejelentkezés konfigurációjának újrajátszása URL-címéhez használt URL-cím (a felhasználói szolgáltatás URL-címe) megegyezik. Hasonlóan `https://pulseweb.labb.info/saml/consume` . 
 
-    c. Az **Auth! SAML! identitásszolgáltató**válassza ki az előző lépésben létrehozott **megbízható identitás-szolgáltatót** . 
+    c. Az **Auth! SAML! identitásszolgáltató** válassza ki az előző lépésben létrehozott **megbízható identitás-szolgáltatót** . 
 
     d. Az Auth! SAML! time_tolerance az alapértelmezett értéket "5" másodpercre hagyja. 
 
-    e. Az Auth! SAML! nameid_format területen válassza a **meghatározatlan**lehetőséget.
+    e. Az Auth! SAML! nameid_format területen válassza a **meghatározatlan** lehetőséget.
 
     f. A módosítások alkalmazásához kattintson a lap alján található **frissítés** elemre.
     

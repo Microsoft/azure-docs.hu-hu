@@ -4,10 +4,10 @@ description: Ez a cikk a Azure Service Bus kapcsolatos gyakori kérdések (GYIK)
 ms.topic: article
 ms.date: 01/20/2021
 ms.openlocfilehash: 3a96cf94ca4a7edd115f12b3e2eded11a5894e04
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98693400"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus – gyakran ismételt kérdések (GYIK)
@@ -174,7 +174,7 @@ Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptio
 ## <a name="is-it-possible-to-disable-tls-10-or-11-on-service-bus-namespaces"></a>Le lehet tiltani a TLS 1,0 vagy a 1,1 Service Bus névtereken?
 Nem. Nem lehet letiltani a TLS 1,0 vagy a 1,1 Service Bus névterekben. A Service Bushoz kapcsolódó ügyfélalkalmazások esetében használja a TLS 1,2-es vagy újabb verzióját. További információ: [a TLS 1,2 használatának kényszerítése Azure Service Bus-Microsoft technikai Közösséggel](https://techcommunity.microsoft.com/t5/messaging-on-azure/enforcing-tls-1-2-use-with-azure-service-bus/ba-p/370912).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni a Service Busről, tekintse meg a következő cikkeket:
 
 * [Azure Service Bus Premium bemutatása (blogbejegyzés)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)

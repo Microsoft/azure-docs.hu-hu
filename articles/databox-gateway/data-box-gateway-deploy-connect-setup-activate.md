@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
 ms.openlocfilehash: cb6ef6ac25c4afa72160ba437e0ea3b5492cfd93
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96583451"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>Oktatóanyag: Az Azure Data Box Gateway csatlakoztatása, konfigurálása és aktiválása
@@ -53,7 +53,7 @@ A Data Box Gateway konfigurálása és beállítása előtt győződjön meg az 
    
     ![Bejelentkezés a helyi webes felhasználói felületen](./media/data-box-gateway-deploy-connect-setup-activate/image3.png)
 
-4. A parancssorban módosítsa az eszköz jelszavát. Az új jelszónak 8 és 16 karakter közöttinek kell lennie. A következők közül hármat tartalmaznia kell: nagybetűk, kisbetűk, számok és speciális karakterek.
+4. A parancssorban módosítsa az eszköz jelszavát. Az új jelszó 8–16 karakterből állhat. A következők közül hármat tartalmaznia kell: nagybetűk, kisbetűk, számok és speciális karakterek.
 
     ![Az eszköz jelszavának módosítása](./media/data-box-gateway-deploy-connect-setup-activate/image4.png)
 
@@ -89,7 +89,7 @@ Az irányítópulton a virtuális eszköznek a Data Box Gateway szolgáltatássa
    A **webproxy** lapon tegye a következőket:
    
    1. A **webproxy URL-címe** mezőbe írja be az URL-címet a következő formátumban: `http://&lt;host-IP address or FQDN&gt;:Port number` . A HTTPS URL-címek nem támogatottak.
-   2. A **hitelesítés** területen válassza a **nincs** vagy az **NTLM** lehetőséget.
+   2. A **Hitelesítés** területen válassza a **Nincs** vagy az **NTLM** lehetőséget.
    3. Ha hitelesítést használ, adjon meg egy **felhasználónevet** és egy **jelszót**.
    4. A konfigurált Webproxy-beállítások érvényesítéséhez és alkalmazásához kattintson az **alkalmaz** gombra.
 

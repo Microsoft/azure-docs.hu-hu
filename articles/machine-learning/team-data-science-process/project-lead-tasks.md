@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 9d9b2546553e03d1555cf4c587d699d9a4ea7e51
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96000980"
 ---
 # <a name="project-lead-tasks-in-the-team-data-science-process"></a>Projekt-érdeklődői feladatok a csoportos adatelemzési folyamatban
@@ -91,7 +91,7 @@ A Project-tárház feltöltése a Team template-tárház tartalmával:
 
 Ha testre kell szabnia a projekt-tárház tartalmát, hogy az megfeleljen a projekt konkrét igényeinek, hozzáadhat, törölhet vagy módosíthat adattár-fájlokat és mappákat. Közvetlenül dolgozhat az Azure-adattárakban, vagy a tárházat a helyi gépre vagy DSVM, módosíthatja és véglegesítheti, és leküldheti a frissítéseket a megosztott projekt adattárba. Kövesse a Team- [Tárházak tartalmának testreszabása](team-lead-tasks.md#customize-the-contents-of-the-team-repositories)című témakör utasításait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbiakban a csoportos adatelemzési folyamat által meghatározott egyéb szerepkörök és feladatok részletes ismertetésére talál hivatkozásokat:
 

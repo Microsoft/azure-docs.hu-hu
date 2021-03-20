@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fb23e60539c704dac457ab6e8706ec0cfe350ed9
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94835322"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>Egyéni Azure AD-szerepkörök konfigurálása Privileged Identity Management
@@ -64,7 +64,7 @@ Emellett az alábbi *aktív* hozzárendelések időtartamának beállításai k�
 - **Állandó aktív hozzárendelés engedélyezése**: a rendszergazdák állandó aktív tagságot adhatnak hozzá.
 - **Aktív hozzárendelés lejárta** a következő után: a rendszergazdák megkövetelhetik, hogy az összes aktív hozzárendelés megadott kezdő és záró dátummal rendelkezzen.
 
-### <a name="require-azure-ad-multi-factor-authentication"></a>Azure AD-Multi-Factor Authentication megkövetelése
+### <a name="require-azure-ad-multi-factor-authentication"></a>Azure AD többtényezős hitelesítés szükséges
 
 A Privileged Identity Management két különböző forgatókönyv esetén az Azure AD Multi-Factor Authentication opcionális kényszerítését teszi lehetővé.
 

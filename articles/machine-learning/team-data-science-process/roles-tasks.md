@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4bcbbd9378b6ea861c926eed16d2ceed8131b913
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96000963"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Csoportos adatelemzési folyamat szerepkörei és feladatai
@@ -125,7 +125,7 @@ A projekt-végrehajtási munkafolyamattal kapcsolatos részletes utasításokér
 
 A Microsoft TDSP csapata [Project template adattárával](https://github.com/Azure/Azure-TDSP-ProjectTemplate) hatékonyan támogathatja a projektek végrehajtását és együttműködését. Az adattár a saját TDSP-projektjeihez használható szabványosított címtár-struktúrát és dokumentumtárakat biztosít.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg a csoportos adatelemzési folyamat által meghatározott szerepkörökkel és feladatokkal kapcsolatos részletesebb leírásokkal:
 

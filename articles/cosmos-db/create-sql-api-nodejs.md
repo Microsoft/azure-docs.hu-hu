@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: anfeldma
 ms.custom: devx-track-js
 ms.openlocfilehash: b4ed27e1515e898a71fb503bb0f260c608ef9f6f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93090205"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Rövid útmutató: a Node.js használata az adatok Azure Cosmos DB SQL API-fiókból való összekapcsolásához és lekérdezéséhez
@@ -58,7 +58,7 @@ Az "ingyenes Azure Cosmos DB ingyen" lehetőséghez nincs szükség Azure-előfi
 
 Most már használhatja a Azure Portal Adatkezelő eszközét egy adatbázis és egy tároló létrehozásához.
 
-1. Válassza ki **adatkezelő**  >  **új tárolót** .
+1. Válassza ki **adatkezelő**  >  **új tárolót**.
 
    A jobb szélen megjelenik a **tároló hozzáadása** felület, ezért a jobb oldali görgetéshez jobbra kell görgetni a megjelenítéshez.
 
@@ -178,15 +178,15 @@ Most lépjen vissza a Azure Portalra az Azure Cosmos-fiók kapcsolati sztring ad
 
 1. A [Azure Portal](https://portal.azure.com/)Azure Cosmos db-fiókjában válassza a bal oldali navigációs menüben a **kulcsok** elemet, majd válassza az **írási/olvasási kulcsok** elemet. A következő lépésben a képernyő jobb oldalán található másolási gombok használatával másolja az URI-t és az elsődleges kulcsot a _app.js_ fájlba.
 
-   :::image type="content" source="./media/create-sql-api-dotnet/keys.png" alt-text="Az Azure Portal Adatkezelője a Tároló hozzáadása panellel":::
+   :::image type="content" source="./media/create-sql-api-dotnet/keys.png" alt-text="Hozzáférési kulcs megtekintése és másolása az Azure Portal Kulcsok paneljén":::
 
 2. Nyissa meg a _config.js_ fájlt.
 
-3. Másolja az URI-értéket a portálról (a másolás gomb használatával), és adja meg a végpont kulcs értékét a _config.jsban_ .
+3. Másolja az URI-értéket a portálról (a másolás gomb használatával), és adja meg a végpont kulcs értékét a _config.jsban_.
 
    `endpoint: "<Your Azure Cosmos account URI>"`
 
-4. Ezután másolja ki az elsődleges kulcs értékét a portálról, és adja meg aconfig.jsértékének értékét `config.key` .  Ezzel frissítette az alkalmazást az összes olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges.
+4. Ezután másolja ki az elsődleges kulcs értékét a portálról, és adja meg aconfig.jsértékének értékét `config.key` . __ Ezzel frissítette az alkalmazást az összes olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges.
 
    `key: "<Your Azure Cosmos account key>"`
 

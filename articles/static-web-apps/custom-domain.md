@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
 ms.openlocfilehash: 578860883a108bba4b4bcd8cd04e8c08f484d474
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92173688"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Egyéni tartomány beállítása az Azure Static Web Apps előzetes verziójában
@@ -57,7 +57,7 @@ Egy CNAME rekord egy tartományt képez le egy másikra. CNAME rekord használat
 
 2. Keresse meg a DNS-rekordok kezelésére szolgáló oldalt. Minden tartományszolgáltató saját felülettel rendelkezik a DNS-rekordok kezelésére, ezért tekintse meg a szolgáltatói dokumentációt. A webhely **Tartománynév**, **DNS** vagy **Névkiszolgáló kezelése** címkével ellátott területeit keresse.
 
-3. A DNS-rekordok oldala gyakran a fiókadatok megtekintésekor jelenik meg, majd itt keresse meg például a **Saját tartományok** hivatkozást. Nyissa meg a lapot, majd keresse meg a **zónafájl**, a **DNS-rekordok**vagy a **Speciális konfiguráció**nevű hivatkozást.
+3. A DNS-rekordok oldala gyakran a fiókadatok megtekintésekor jelenik meg, majd itt keresse meg például a **Saját tartományok** hivatkozást. Nyissa meg a lapot, majd keresse meg a **zónafájl**, a **DNS-rekordok** vagy a **Speciális konfiguráció** nevű hivatkozást.
 
     A következő képernyőkép egy DNS-rekordokat tartalmazó oldalra mutat példát:
 
@@ -68,7 +68,7 @@ Egy CNAME rekord egy tartományt képez le egy másikra. CNAME rekord használat
     | Beállítás             | Érték                     |
     | ------------------- | ------------------------- |
     | Típus                | CNAME                     |
-    | Gazda                | www                       |
+    | Gazdagép                | www                       |
     | Érték               | Beillesztés a vágólapról |
     | TTL (ha van ilyen) | Kilépés alapértelmezett értékként    |
 
@@ -82,7 +82,7 @@ Egy CNAME rekord egy tartományt képez le egy másikra. CNAME rekord használat
 
 1. Kattintson az **Érvényesítés** gombra.
 
-Most, hogy az egyéni tartomány konfigurálva van, több óráig is eltarthat, amíg a DNS-szolgáltató propagálni kívánja a módosításokat világszerte. A propagálás állapotát a [dnspropagation.net](https://dnspropagation.net)címen tekintheti meg. Adja meg az egyéni tartományt, beleértve a `www` elemet, válassza ki a CNAME elemet a legördülő menüből, és válassza az **Indítás**lehetőséget.
+Most, hogy az egyéni tartomány konfigurálva van, több óráig is eltarthat, amíg a DNS-szolgáltató propagálni kívánja a módosításokat világszerte. A propagálás állapotát a [dnspropagation.net](https://dnspropagation.net)címen tekintheti meg. Adja meg az egyéni tartományt, beleértve a `www` elemet, válassza ki a CNAME elemet a legördülő menüből, és válassza az **Indítás** lehetőséget.
 
 Ha a DNS-módosítások feltöltve lettek, a webhely a statikus webalkalmazás automatikusan generált URL-címét (például _Random-Name-123456789c.azurestaticapps.net_) adja vissza.
 
@@ -102,7 +102,7 @@ Néha azt szeretné, hogy az altartományba eljuttatott összes forgalom egy má
 
 2. Keresse meg a DNS-rekordok kezelésére szolgáló oldalt. Minden tartományszolgáltató saját felülettel rendelkezik a DNS-rekordok kezelésére, ezért tekintse meg a szolgáltatói dokumentációt. A webhely **Tartománynév**, **DNS** vagy **Névkiszolgáló kezelése** címkével ellátott területeit keresse.
 
-3. A DNS-rekordok oldala gyakran a fiókadatok megtekintésekor jelenik meg, majd itt keresse meg például a **Saját tartományok** hivatkozást. Nyissa meg a lapot, majd keressen egy hasonló nevű hivatkozást a **zónafájl**, a **DNS-rekordok**vagy a **Speciális konfiguráció**elemre.
+3. A DNS-rekordok oldala gyakran a fiókadatok megtekintésekor jelenik meg, majd itt keresse meg például a **Saját tartományok** hivatkozást. Nyissa meg a lapot, majd keressen egy hasonló nevű hivatkozást a **zónafájl**, a **DNS-rekordok** vagy a **Speciális konfiguráció** elemre.
 
     A következő képernyőkép egy DNS-rekordokat tartalmazó oldalra mutat példát:
 
@@ -113,13 +113,13 @@ Néha azt szeretné, hogy az altartományba eljuttatott összes forgalom egy má
     | Beállítás | Érték                  |
     | ------- | ---------------------- |
     | Típus    | CNAME                  |
-    | Gazda    | \*                     |
+    | Gazdagép    | \*                     |
     | Érték   | www.example.com        |
     | TTL     | Kilépés alapértelmezett értékként |
 
 5. Mentse a módosításokat a DNS-szolgáltatóval.
 
-Most, hogy a helyettesítő karakteres tartomány konfigurálva van, több óráig is eltarthat, amíg a módosítások a világ bármely részén elterjednek. A propagálás állapotát a [dnspropagation.net](https://dnspropagation.net)címen tekintheti meg. Adja meg a tartomány egyéni tartományát bármely altartománnyal (kivéve `www` ), válassza ki a CNAME elemet a legördülő menüből, és válassza az **Indítás**lehetőséget.
+Most, hogy a helyettesítő karakteres tartomány konfigurálva van, több óráig is eltarthat, amíg a módosítások a világ bármely részén elterjednek. A propagálás állapotát a [dnspropagation.net](https://dnspropagation.net)címen tekintheti meg. Adja meg a tartomány egyéni tartományát bármely altartománnyal (kivéve `www` ), válassza ki a CNAME elemet a legördülő menüből, és válassza az **Indítás** lehetőséget.
 
 Ha a DNS-módosítások feltöltése megtörtént, a webhely visszaadja a statikus webalkalmazáshoz konfigurált egyéni tartományt (például: `www.example.com` ).
 

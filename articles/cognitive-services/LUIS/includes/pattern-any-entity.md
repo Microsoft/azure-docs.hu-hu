@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: cognitive-services
 manager: nitinme
 ms.custom: seodec18
@@ -9,17 +9,17 @@ ms.subservice: language-understanding
 ms.date: 02/14/2020
 ms.topic: include
 ms.openlocfilehash: 5eb2517b4b71b61dd70406f345c005d007d9e3ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91535957"
 ---
 A pattern.any entitás lehetővé teszi szabad formátumú adatok keresését olyankor, amikor az entitás szövegezése nehézzé teszi az entitás végének a kimondott szöveg fennmaradó részétől való elkülönítését.
 
 A humánerőforrás-alkalmazás segíti az alkalmazottakat A vállalati űrlapok megtalálásában.
 
-|Kimondott szöveg|
+|Beszédelem|
 |--|
 |Hol található a **HRF-123456**?|
 |Ki a szerzője ennek: **HRF-123234**?|
@@ -29,7 +29,7 @@ Ugyanakkor minden űrlapnak két neve van: egyrészt az előző táblázatban ha
 
 A könnyebb űrlapnévvel rendelkező kimondott szöveg a következőképpen néz ki:
 
-|Kimondott szöveg|
+|Beszédelem|
 |--|
 |Hol található a **2018-ban a vállalathoz került alkalmazott áthelyezési kérelme, 5. verzió**?|
 |Ki a szerzője ennek: **2018-ban a vállalathoz került alkalmazott áthelyezési kérelme, 5. verzió**?|

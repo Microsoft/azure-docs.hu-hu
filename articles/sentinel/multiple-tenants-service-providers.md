@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/29/2020
 ms.author: yelevin
 ms.openlocfilehash: 011ddb883c028a954a8b0683c220bf6341eddb66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91578146"
 ---
 # <a name="manage-multiple-tenants-in-azure-sentinel-as-an-mssp"></a>Több bérlő kezelése az Azure Sentinelben MSSP
@@ -33,17 +33,17 @@ Ha Ön felügyelt biztonsági szolgáltató (MSSP), és az [Azure Lighthouse](..
 
     1. Válassza ki az **előfizetéseket** a Azure Portal, majd válassza ki a megfelelő előfizetést a menüből.
 
-    1. Az előfizetés képernyő navigációs menüjének **Beállítások**területén válassza az **erőforrás-szolgáltatók**elemet.
+    1. Az előfizetés képernyő navigációs menüjének **Beállítások** területén válassza az **erőforrás-szolgáltatók** elemet.
 
-    1. Az ** *előfizetés nevéből* | Az erőforrás-szolgáltatók** képernyőn keresse meg és válassza ki a *Microsoft. OperationalInsights* és a *Microsoft. SecurityInsights*elemet, és jelölje be az **állapot** oszlopot. Ha a szolgáltató állapota *NotRegistered*, válassza a **regisztráció**lehetőséget.
+    1. Az ***előfizetés nevéből* | Az erőforrás-szolgáltatók** képernyőn keresse meg és válassza ki a *Microsoft. OperationalInsights* és a *Microsoft. SecurityInsights* elemet, és jelölje be az **állapot** oszlopot. Ha a szolgáltató állapota *NotRegistered*, válassza a **regisztráció** lehetőséget.
     
         :::image type="content" source="media/multiple-tenants-service-providers/check-resource-provider.png" alt-text="Erőforrás-szolgáltatók keresése":::
 
 ## <a name="how-to-access-azure-sentinel-in-managed-tenants"></a>Az Azure Sentinel elérése felügyelt bérlők számára
 
-1. A **címtár + előfizetés**területen válassza ki a delegált címtárakat (könyvtár = bérlő), valamint azokat az előfizetéseket, amelyeken az ügyfél Azure Sentinel-munkaterületei találhatók.
+1. A **címtár + előfizetés** területen válassza ki a delegált címtárakat (könyvtár = bérlő), valamint azokat az előfizetéseket, amelyeken az ügyfél Azure Sentinel-munkaterületei találhatók.
 
-    :::image type="content" source="media/multiple-tenants-service-providers/directory-subscription.png" alt-text="Erőforrás-szolgáltatók keresése":::
+    :::image type="content" source="media/multiple-tenants-service-providers/directory-subscription.png" alt-text="Bérlők és előfizetések kiválasztása":::
 
 1. Nyissa meg az Azure Sentinelt. Ekkor megjelenik a kiválasztott előfizetések összes munkaterülete, és zökkenőmentesen dolgozhat velük, például a saját bérlő bármely munkaterületével.
 

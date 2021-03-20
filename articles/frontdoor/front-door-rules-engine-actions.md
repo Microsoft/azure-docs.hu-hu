@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
 ms.openlocfilehash: ff61af192471bcfc9bdb9f1ce3970d5c22f39579
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91569774"
 ---
 # <a name="azure-front-door-rules-engine-actions"></a>Azure Front Door szabálymotor műveletei
@@ -47,8 +47,8 @@ Ezzel a művelettel módosíthatja azokat a fejléceket, amelyek az ügyfeleknek
 
 Művelet | HTTP-fejléc neve | Érték
 -------|------------------|------
-Append (Hozzáfűzés) | Ha ez a beállítás be van jelölve, és a szabály megfelel, a **fejlécben** megadott fejléc a megadott **értékkel**lesz hozzáadva a válaszhoz. Ha a fejléc már létezik, a rendszer hozzáfűzi az **értéket** a meglévő értékhez. | Sztring
-Felülírás | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a válaszhoz a megadott **érték**használatával. Ha a fejléc már létezik, az **érték** felülírja a meglévő értéket. | Sztring
+Append (Hozzáfűzés) | Ha ez a beállítás be van jelölve, és a szabály megfelel, a **fejlécben** megadott fejléc a megadott **értékkel** lesz hozzáadva a válaszhoz. Ha a fejléc már létezik, a rendszer hozzáfűzi az **értéket** a meglévő értékhez. | Sztring
+Felülírás | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a válaszhoz a megadott **érték** használatával. Ha a fejléc már létezik, az **érték** felülírja a meglévő értéket. | Sztring
 Törlés | Ha ez a beállítás be van jelölve, és a szabály megfelel a szabályban megadott fejlécnek, a rendszer törli a fejlécet a válaszból. | Sztring
 
 ## <a name="route-configuration-overrides"></a>Útválasztó-konfigurációk felülírása 
@@ -92,14 +92,14 @@ Egyéni továbbítási útvonal | Adja meg a kérések továbbításának elér�
 
 Ezekkel a beállításokkal szabályozhatja, hogy a fájlok hogyan legyenek gyorsítótárazva a lekérdezési karakterláncokat tartalmazó kérelmek esetében. Azt határozza meg, hogy az összes paraméter vagy a kijelölt paraméterek alapján gyorsítótárazza-e a tartalmakat. További beállításokkal írhatja felül az élettartam (TTL) értékét annak szabályozására, hogy a tartalom mennyi ideig marad a gyorsítótárban. A gyorsítótárazás műveletként való kényszerítéséhez állítsa a gyorsítótárazás mezőt "engedélyezve" értékre. A gyorsítótárazás kényszerítése esetén a következő lehetőségek jelennek meg: 
 
-Gyorsítótár viselkedése |  Leírás              
+Gyorsítótár viselkedése |  Description              
 ---------------|----------------
 Lekérdezési sztringek figyelmen kívül hagyása | Az eszköz gyorsítótárba helyezése után az összes további kérelem figyelmen kívül hagyja a lekérdezési karakterláncokat, amíg a gyorsítótárazott eszköz le nem jár.
 Minden egyedi URL gyorsítótárazása | Mindegyik egyedi URL-címmel rendelkező kérelem, beleértve a lekérdezési karakterláncot is, egyedi objektumként kezeli a saját gyorsítótárával.
 Megadott lekérdezési karakterláncok figyelmen kívül hagyása | A "lekérdezési paraméterek" beállításban felsorolt kérelem URL-lekérdezési karakterláncai figyelmen kívül lesznek hagyva a gyorsítótárazáshoz.
 Megadott lekérdezési karakterláncok belefoglalása | A "lekérdezési paraméterek" beállításban felsorolt kérelem URL-lekérdezési karakterláncai a gyorsítótárazáshoz használatosak.
 
-További mezők |  Leírás 
+További mezők |  Description 
 ------------------|---------------
 Dinamikus tömörítés | A bejárati ajtó dinamikusan tömörítheti a tartalmat az Edge-ben, így kisebb és gyorsabb választ kaphat.
 Lekérdezési paraméterek | A gyorsítótárazás alapjául szolgáló engedélyezett (vagy nem engedélyezett) paraméterek vesszővel tagolt listája.

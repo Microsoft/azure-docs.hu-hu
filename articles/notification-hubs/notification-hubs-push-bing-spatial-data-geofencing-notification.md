@@ -19,10 +19,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 51ad23e67a77c28d0ad8a147168a0094f5de1796
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91578002"
 ---
 # <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>Oktatóanyag: Location-alapú leküldéses értesítések küldése a Notification Hubs és a Bing térbeli adatainak
@@ -71,7 +71,7 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
       > [!NOTE]
       > Lehetséges, hogy új, a **Lekérdezési kulcstól** eltérő **Főkulcsot** kell megadnia. Csak hozzon létre egy új kulcsot az irányítópulton, és frissítse az adatforrás-feltöltési oldalt.
-6. Az adatfájl feltöltése után közzé kell tennie az adatforrást. Válassza ki **az adatforrásokat**  ->  , például**az** adatforrásokat.
+6. Az adatfájl feltöltése után közzé kell tennie az adatforrást. Válassza ki **az adatforrásokat**  ->  , például **az** adatforrásokat.
 7. Keresse meg az adatforrást a listában, majd válassza ki a **Publish** (Közzététel) elemet az **Actions** (Műveletek) oszlopban.
 
     ![Képernyőkép a Bing Maps fejlesztői központról az adatforrások kezelése oldalon, a Geokódolva-és a kiválasztott közzétételi lehetőséggel, valamint a piros színnel megadott közzététel lehetőséggel.](./media/notification-hubs-geofence/publish-button.png)
@@ -226,7 +226,7 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
     A projekt már konfigurálva van leküldéses értesítések céleszközökre történő küldésére, így csak két dolgot kell megtennie: cserélje le az értesítési központ megfelelő kapcsolati sztringjét, illetve végezzen határvonal-azonosítást, hogy az üzenetet csak a geokerítésen belül tartózkodó felhasználók kapják meg.
 
 4. A kapcsolati sztring konfigurálásához a `Models` mappában nyissa meg a következőt: `Notifications.cs`. A `NotificationHubClient.CreateClientFromConnectionString` függvénynek tartalmaznia kell az értesítési központ adatait, amelyet az [Azure Portalon](https://portal.azure.com) szerezhet be (nyissa meg a **Beállítások** menü **Hozzáférési szabályzatok** oldalát). Mentse a frissített konfigurációs fájlt.
-5. Hozzon létre egy modellt a Bing Térképek API eredményéhez. Ennek legegyszerűbb módja a mappa megnyitása, `Models` és az osztály hozzáadása lehetőség kiválasztása **Add**  >  **Class**. Nevezze el a következőképpen: `GeofenceBoundary.cs`. Ezután másolja át a JSON-t az első szakaszban kapott API-válaszból. A Visual Studióban használja a **szerkesztési**  >  **Beillesztés speciális**  >  **beillesztési JSON-t osztályokként**.
+5. Hozzon létre egy modellt a Bing Térképek API eredményéhez. Ennek legegyszerűbb módja a mappa megnyitása, `Models` és az osztály hozzáadása lehetőség kiválasztása   >  . Nevezze el a következőképpen: `GeofenceBoundary.cs`. Ezután másolja át a JSON-t az első szakaszban kapott API-válaszból. A Visual Studióban használja a **szerkesztési**  >  **Beillesztés speciális**  >  **beillesztési JSON-t osztályokként**.
 
     Így biztosítható, hogy az objektum deszerializálása pontosan a kívánt módon történjen. Az eredményül kapott osztály a következőhöz hasonló lesz:
 
@@ -349,7 +349,7 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
     > [!NOTE]
     > Állítsa be a `POST_URL` elemet az üzembe helyezett webalkalmazás helyére. Egyelőre az OK, hogy helyileg fusson, de a nyilvános verzió üzembe helyezése közben egy külső szolgáltatóval kell üzemeltetni.
-2. Regisztrálja az UWP-alkalmazást a leküldéses értesítésekre. A Visual Studióban válassza a **Project**  >  **Store**  >  **alkalmazás hozzárendelése az áruházhoz**lehetőséget.
+2. Regisztrálja az UWP-alkalmazást a leküldéses értesítésekre. A Visual Studióban válassza a **Project**  >  **Store**  >  **alkalmazás hozzárendelése az áruházhoz** lehetőséget.
 
     ![Képernyőkép a megoldásról kattintson a jobb gombbal a menüre az áruház és az alkalmazás hozzárendelése lehetőségre a Kiemelt tárolási beállításokkal.](./media/notification-hubs-geofence/vs-associate-with-store.png)
 3. Amikor bejelentkezik a fejlesztői fiókba, válasszon ki egy meglévő alkalmazást, vagy hozzon létre egy újat, és társítsa hozzá a csomagot.
@@ -389,7 +389,7 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
     ![Képernyőkép a TESZTÜZENET megjelenítéséről a Windows asztalról.](./media/notification-hubs-geofence/notification-hubs-test-notification.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További lépésekre is szükség lehet, hogy a megoldás éles környezetben is használható legyen.
 

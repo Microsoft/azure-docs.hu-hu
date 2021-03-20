@@ -8,10 +8,10 @@ ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
 ms.openlocfilehash: fdf5f25ae6f89ccc06c95ee1be021691dab0047a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96000351"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Forgatókönyv: Kivételkezelés és hibanaplózás a logikai alkalmazásokhoz kapcsolódóan
@@ -478,7 +478,7 @@ Az előző kódban szereplő kifejezés a *Create_NewPatientRecord* **sikertelen
 
 A Logic Apps kivételek kezelése API-alkalmazás forráskódja ebben a GitHub- [tárházban](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "Logic app-kivételek kezelési API-ját")érhető el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További példák és forgatókönyvek a Logic app szolgáltatásban](../logic-apps/logic-apps-examples-and-scenarios.md)
 * [Logikai alkalmazások figyelése](../logic-apps/monitor-logic-apps.md)

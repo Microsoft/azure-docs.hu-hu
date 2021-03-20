@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/18/2019
 ms.author: allensu
 ms.openlocfilehash: 68a2cb6926cb41956711a9e3c15d21c250d27f0b
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94698489"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-the-azure-portal"></a>Az Azure belső Load Balancer áthelyezése másik régióba a Azure Portal használatával
@@ -180,11 +180,11 @@ A következő lépések bemutatják, hogyan készítse elő a belső terhelésel
 
 13. Kattintson a **Save (Mentés** ) gombra az online szerkesztőben.
 
-14. Az **BASICS**  >  alapértékek **előfizetése** lehetőségre kattintva válassza ki azt az előfizetést, amelyben a cél VNET telepíteni fogja.
+14. Az   >  alapértékek **előfizetése** lehetőségre kattintva válassza ki azt az előfizetést, amelyben a cél VNET telepíteni fogja.
 
-15. Az alapszintű erőforráscsoport **elemre** kattintva  >  **Resource group** válassza ki azt az erőforráscsoportot, amelyben a cél VNET telepíteni fogja.  Az **új létrehozása** lehetőségre kattintva létrehozhat egy új erőforráscsoportot a cél VNET.  Győződjön meg arról, hogy a név nem ugyanaz, mint a meglévő VNET forrásoldali erőforráscsoport.
+15. Az alapszintű erőforráscsoport **elemre** kattintva  >   válassza ki azt az erőforráscsoportot, amelyben a cél VNET telepíteni fogja.  Az **új létrehozása** lehetőségre kattintva létrehozhat egy új erőforráscsoportot a cél VNET.  Győződjön meg arról, hogy a név nem ugyanaz, mint a meglévő VNET forrásoldali erőforráscsoport.
 
-16. Győződjön **BASICS**  >  meg arról, hogy az alapértékek **helye** arra a célhelyre van beállítva, ahol a VNET telepíteni kívánja.
+16. Győződjön   >  meg arról, hogy az alapértékek **helye** arra a célhelyre van beállítva, ahol a VNET telepíteni kívánja.
 
 17. Ellenőrizze a **Beállítások** területen, hogy a név megegyezik-e a fenti Parameters Editorban megadott névvel.
 
@@ -377,11 +377,11 @@ A következő lépések bemutatják, hogyan készítse elő a belső terhelésel
 
 12. Kattintson a **Save (Mentés** ) gombra az online szerkesztőben.
 
-13. **BASICS**  >  Az alapértékek **előfizetése** lehetőségre kattintva válassza ki azt az előfizetést, ahol a cél belső terheléselosztó üzembe lesz helyezve.
+13.   >  Az alapértékek **előfizetése** lehetőségre kattintva válassza ki azt az előfizetést, ahol a cél belső terheléselosztó üzembe lesz helyezve.
 
-15. Az alapszintű erőforráscsoport **elemre** kattintva  >  **Resource group** kiválaszthatja azt az erőforráscsoportot, amelyben a cél terheléselosztó telepítve lesz.  Az **új létrehozása** lehetőségre kattintva létrehozhat egy új erőforráscsoportot a cél belső terheléselosztó számára, vagy kiválaszthatja a virtuális hálózat felett létrehozott meglévő erőforráscsoportot.  Győződjön meg arról, hogy a név nem ugyanaz, mint a meglévő forrás belső terheléselosztó forrás-erőforráscsoport.
+15. Az alapszintű erőforráscsoport **elemre** kattintva  >   kiválaszthatja azt az erőforráscsoportot, amelyben a cél terheléselosztó telepítve lesz.  Az **új létrehozása** lehetőségre kattintva létrehozhat egy új erőforráscsoportot a cél belső terheléselosztó számára, vagy kiválaszthatja a virtuális hálózat felett létrehozott meglévő erőforráscsoportot.  Győződjön meg arról, hogy a név nem ugyanaz, mint a meglévő forrás belső terheléselosztó forrás-erőforráscsoport.
 
-16. Győződjön **BASICS**  >  meg arról, hogy az alapértékek **helye** arra a célhelyre van beállítva, ahol a belső terheléselosztó üzembe helyezését szeretné.
+16. Győződjön   >  meg arról, hogy az alapértékek **helye** arra a célhelyre van beállítva, ahol a belső terheléselosztó üzembe helyezését szeretné.
 
 17. Ellenőrizze a **Beállítások** területen, hogy a név megegyezik-e a fenti Parameters Editorban megadott névvel.  Ellenőrizze, hogy az erőforrás-azonosítók ki vannak-e töltve a konfigurációban lévő virtuális hálózatok esetében.
 

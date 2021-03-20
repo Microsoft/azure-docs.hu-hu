@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.openlocfilehash: b76c2e346adb6c2afd146b0d73c8f20165145bac
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92460359"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>Oktatóanyag: Azure Active Directory integráció a rendszerkép-továbbítóval
@@ -61,13 +61,13 @@ A képtovábbítás Azure AD-be való integrálásának konfigurálásához hozz
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **képtovábbító**kifejezést, válassza a **képtovábbítás** az eredmények panelen lehetőséget, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **képtovábbító** kifejezést, válassza a **képtovábbítás** az eredmények panelen lehetőséget, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![Képtovábbító az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a rendszerkép-továbbító kapcsolódó felhasználója közötti kapcsolati kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés a rendszerkép-továbbítóval való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés a képtovábbítóval való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **rendszerkép-továbbító** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **rendszerkép-továbbító** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -130,15 +130,15 @@ Az Azure AD egyszeri bejelentkezés a képtovábbítóval való konfigurálásá
 
     ![A képernyőképen a felhasználók & az eszköztárból kiválasztott engedélyek láthatók.](./media/imagerelay-tutorial/tutorial_imagerelay_06.png) 
 
-3. Kattintson az **új engedély létrehozása**lehetőségre.
+3. Kattintson az **új engedély létrehozása** lehetőségre.
 
     ![A képernyőképen egy szövegmező jelenik meg az engedély címének megadásához, valamint az engedély típusának kiválasztásához.](./media/imagerelay-tutorial/tutorial_imagerelay_08.png)
 
-4. Az **egyszeri bejelentkezés beállításai** munkaterhelésen jelölje be az **Ez a csoport csak egyszeri bejelentkezéssel** bejelentkezhet jelölőnégyzetet, majd kattintson a **Mentés**gombra.
+4. Az **egyszeri bejelentkezés beállításai** munkaterhelésen jelölje be az **Ez a csoport csak egyszeri bejelentkezéssel** bejelentkezhet jelölőnégyzetet, majd kattintson a **Mentés** gombra.
 
     ![A képernyőképen az egyszeri bejelentkezés beállításai láthatók, ahol kiválaszthatja a lehetőséget.](./media/imagerelay-tutorial/tutorial_imagerelay_09.png) 
 
-5. Lépjen a **Fiókbeállítások**menüpontra.
+5. Lépjen a **Fiókbeállítások** menüpontra.
 
     ![Képernyőfelvétel: a Fiókbeállítások eszköztár lehetőség.](./media/imagerelay-tutorial/tutorial_imagerelay_10.png) 
 
@@ -154,11 +154,11 @@ Az Azure AD egyszeri bejelentkezés a képtovábbítóval való konfigurálásá
 
     b. A **kijelentkezési URL**  szövegmezőben illessze be a **KIJELENTKEZÉSI URL-címet** , amelyet a Azure Portalból másolt.
 
-    c. A **név azonosítójának formátuma**beállításnál válassza az **urn: Oasis: nevek: TC: SAML: 1.1: nameid-Format: emailAddress**elemet.
+    c. A **név azonosítójának formátuma** beállításnál válassza az **urn: Oasis: nevek: TC: SAML: 1.1: nameid-Format: emailAddress** elemet.
 
-    d. **A szolgáltatótól érkező kérések kötési lehetőségeiként válassza a** **kötés küldése**lehetőséget.
+    d. **A szolgáltatótól érkező kérések kötési lehetőségeiként válassza a** **kötés küldése** lehetőséget.
 
-    e. Az **x. 509 tanúsítvány**alatt kattintson a **tanúsítvány frissítése**elemre.
+    e. Az **x. 509 tanúsítvány** alatt kattintson a **tanúsítvány frissítése** elemre.
 
     ![A képernyőképen a tanúsítvány frissítésének lehetősége látható.](./media/imagerelay-tutorial/tutorial_imagerelay_17.png)
 
@@ -166,7 +166,7 @@ Az Azure AD egyszeri bejelentkezés a képtovábbítóval való konfigurálásá
 
     ![A képernyőképen az x dot 509 tanúsítvány látható.](./media/imagerelay-tutorial/tutorial_imagerelay_18.png)
 
-    : Az igény szerinti **felhasználó üzembe** helyezése szakaszban válassza az igény szerinti **felhasználó üzembe**helyezésének engedélyezése lehetőséget.
+    : Az igény szerinti **felhasználó üzembe** helyezése szakaszban válassza az igény szerinti **felhasználó üzembe** helyezésének engedélyezése lehetőséget.
 
     ![A képernyőképen az igény szerinti felhasználó kiépítési szakasza látható, a vezérlő engedélyezése beállítással.](./media/imagerelay-tutorial/tutorial_imagerelay_19.png)
 
@@ -180,7 +180,7 @@ Az Azure AD egyszeri bejelentkezés a képtovábbítóval való konfigurálásá
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -205,15 +205,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a képtovábbításhoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **képtovábbítás**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **képtovábbítás** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **képtovábbító**elemet.
+2. Az alkalmazások listában válassza a **képtovábbító** elemet.
 
     ![A rendszerkép-továbbítási hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -235,11 +235,11 @@ Ennek a szakasznak a célja, hogy létrehozzon egy Britta Simon nevű felhaszná
 
 1. Jelentkezzen be a rendszerkép-továbbító céges webhelyre rendszergazdaként.
 
-2. Lépjen a **felhasználók & engedélyek**     elemre, és válassza az **SSO-felhasználó létrehozása**lehetőséget.
+2. Lépjen a **felhasználók & engedélyek**     elemre, és válassza az **SSO-felhasználó létrehozása** lehetőséget.
 
     ![Képernyőfelvétel: a menüből kiválasztott Create S S O-felhasználó.](./media/imagerelay-tutorial/tutorial_imagerelay_21.png) 
 
-3. Adja meg a kiépíteni kívánt felhasználó **e-mail-címét** **, utónevét,** **vezetéknevét**és **vállalatát** , és válassza ki az engedély csoportot (például: SSO Basic), amely az a csoport, amely csak egyszeri bejelentkezéssel tud bejelentkezni.
+3. Adja meg a kiépíteni kívánt felhasználó **e-mail-címét** **, utónevét,** **vezetéknevét** és **vállalatát** , és válassza ki az engedély csoportot (például: SSO Basic), amely az a csoport, amely csak egyszeri bejelentkezéssel tud bejelentkezni.
 
     ![Képernyőkép: az S S O-felhasználó létrehozása lap, ahol megadhatja a szükséges információkat.](./media/imagerelay-tutorial/tutorial_imagerelay_22.png)
 

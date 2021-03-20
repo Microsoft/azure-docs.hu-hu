@@ -6,17 +6,17 @@ manager: rochakm
 ms.date: 11/03/2019
 ms.topic: conceptual
 ms.openlocfilehash: d4fa7348df647cf699ebd55dd6415a79454ab5f1
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397950"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Gyakori kérdések: Azure-ból Azure-ba történő vészhelyreállítás
 
 Ez a cikk az Azure-beli virtuális gépeknek egy másik Azure-régióba való vész-helyreállításával kapcsolatos gyakori kérdésekre ad választ az [Azure site Recovery](site-recovery-overview.md) szolgáltatás használatával.
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="how-is-site-recovery-priced"></a>Hogyan Site Recovery díjszabása?
 
@@ -43,7 +43,7 @@ Igen. Bár a védett példányok első 31 napján Azure Site Recovery ingyenes, 
 
 A Site Recovery csapat és az Azure Capacity Management csapata megtervezi az infrastruktúra megfelelő kapacitását. A feladatátvétel indításakor a csapatok is segítenek biztosítani, hogy a Site Recovery által védett virtuálisgép-példányok a célként megadott régióban legyenek védve.
 
-## <a name="replication"></a>Replikáció
+## <a name="replication"></a>Replikálás
 
 ### <a name="can-i-replicate-vms-with-disk-encryption"></a>Replikálhatók a lemezes titkosítással rendelkező virtuális gépek?
 
@@ -182,7 +182,7 @@ Ha 24 órás replikációs házirendtel rendelkezik, és Site Recovery 24 órán
 
 ### <a name="can-i-change-the-replication-policy-after-replication-is-enabled"></a>Módosíthatom a replikációs házirendet a replikáció engedélyezése után?
 
-Igen. A tároló > **site Recovery infrastruktúra** -  >  **replikációs házirendek** területen válassza ki és szerkessze a szabályzatot. A módosítások a meglévő házirendekre is érvényesek.
+Igen. A tároló > **site Recovery infrastruktúra**-  >  **replikációs házirendek** területen válassza ki és szerkessze a szabályzatot. A módosítások a meglévő házirendekre is érvényesek.
 
 ### <a name="are-all-recovery-points-a-complete-vm-copy"></a>Az összes helyreállítási pont egy teljes virtuálisgép-példány?
 
@@ -333,7 +333,7 @@ A Site Recovery ISO 27001:2013, 27018, HIPAA és DPA tanúsítvánnyal rendelkez
 
 Igen, az Azure-ban az átvitelben és a [titkosításban](../storage/common/storage-service-encryption.md) egyaránt támogatott a titkosítás.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tekintse át az Azure-ról Azure-ra vonatkozó támogatási követelményeket](azure-to-azure-support-matrix.md).
 - [Azure – Azure replikálás beállítása](azure-to-azure-tutorial-enable-replication.md).

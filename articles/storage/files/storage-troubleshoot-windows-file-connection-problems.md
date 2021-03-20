@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: 242c0819e916f3ea7912d4d57b7d3e338152e4d9
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98878510"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>A Windows (SMB) Azure Files problémáinak elhárítása
@@ -210,7 +210,7 @@ A fájlkezelő bezárásának kényszerítéséhez használja a [Close-AzStorage
 > A Get-AzStorageFileHandle és Close-AzStorageFileHandle parancsmagok az az PowerShell-modul 2,4-es vagy újabb verziójában szerepelnek. A legújabb az PowerShell modul telepítéséhez lásd: [a Azure PowerShell modul telepítése](/powershell/azure/install-az-ps).
 
 ### <a name="cause-2"></a>2\. ok
-A fájlok bérlete megakadályozza a fájlok módosítását vagy törlését. Azt is megteheti, hogy egy fájl rendelkezik-e a következő PowerShell-lel, amely a `<resource-group>` `<storage-account>` `<file-share>` `<path-to-file>` környezet megfelelő értékeit helyettesíti:
+A fájlbérlet megakadályozza a fájlok módosítását vagy törlését. Azt is megteheti, hogy egy fájl rendelkezik-e a következő PowerShell-lel, amely a `<resource-group>` `<storage-account>` `<file-share>` `<path-to-file>` környezet megfelelő értékeit helyettesíti:
 
 ```PowerShell
 # Set variables 
@@ -245,7 +245,7 @@ LeaseStatus           : Locked
 ```
 
 ### <a name="solution-2"></a>2\. megoldás
-Ha el szeretne távolítani egy bérletet egy fájlból, felszabadíthatja a bérletet, vagy megszakíthatja a bérletet. A bérlet felszabadításához szüksége lesz a bérlet létrehozásakor beállított LeaseId. Nincs szüksége a LeaseId a bérlet megszakításához.
+Ha el szeretne távolítani egy bérletet egy fájlból, felszabadíthatja vagy megszakíthatja a bérletet. A bérlet felszabadításához szüksége lesz a bérlet létrehozásakor beállított bérletazonosítóra. A bérlet megszakításához nincs szükséges a bérletazonosítóra.
 
 Az alábbi példa bemutatja, hogyan szakíthatja meg a 2. ok által jelzett fájl bérletét (ez a példa a 2. ok PowerShell-változóit folytatja):
 

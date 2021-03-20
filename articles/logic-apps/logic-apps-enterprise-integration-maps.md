@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
 ms.openlocfilehash: 62c3d4533dd04dbb5a2ce0c73afa52b81d433913
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91570780"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>XML-átalakítás térképekkel az Azure Logic Appsben az Enterprise Integration Pack segítségével
@@ -40,7 +40,7 @@ Az integrációs fiókokkal és összetevőkkel, például a térképekkel kapcs
     |------|-------------|
     | [Azure Storage-fiók](../storage/common/storage-account-overview.md) | Ebben a fiókban hozzon létre egy Azure BLOB-tárolót a szerelvényhez. Megtudhatja [, hogyan hozhat létre egy Storage-fiókot](../storage/common/storage-account-create.md). |
     | Blobtároló | Ebben a tárolóban feltöltheti a szerelvényt. Erre a tárolóra is szüksége lesz, amikor hozzáadja a szerelvényt az integrációs fiókhoz. Megtudhatja, hogyan [hozhat létre BLOB-tárolót](../storage/blobs/storage-quickstart-blobs-portal.md). |
-    | [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) | Ezzel az eszközzel könnyebben kezelhetők a Storage-fiókok és a blob-tárolók. Storage Explorer használatához [töltse le és telepítse a Azure Storage Explorert](https://www.storageexplorer.com/). Ezután csatlakoztasson Storage Explorer a Storage-fiókjához a [Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md)első lépéseinek lépéseit követve. További információ: gyors útmutató [: blob létrehozása az objektum-tárolóban Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)használatával. <p>Vagy a Azure Portalban keresse meg és válassza ki a Storage-fiókját. A Storage-fiók menüjében válassza a **Storage Explorer**lehetőséget. |
+    | [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) | Ezzel az eszközzel könnyebben kezelhetők a Storage-fiókok és a blob-tárolók. Storage Explorer használatához [töltse le és telepítse a Azure Storage Explorert](https://www.storageexplorer.com/). Ezután csatlakoztasson Storage Explorer a Storage-fiókjához a [Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md)első lépéseinek lépéseit követve. További információ: gyors útmutató [: blob létrehozása az objektum-tárolóban Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)használatával. <p>Vagy a Azure Portalban keresse meg és válassza ki a Storage-fiókját. A Storage-fiók menüjében válassza a **Storage Explorer** lehetőséget. |
     |||
 
   * A Maps esetében jelenleg nagyobb leképezéseket adhat hozzá a [Azure Logic Apps REST API-Maps](/rest/api/logic/maps/createorupdate)használatával.
@@ -53,9 +53,9 @@ Térképek létrehozásakor és hozzáadásakor nincs szükség logikai alkalmaz
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókja hitelesítő adataival.
 
-1. Az integrációs fiók megkereséséhez és megnyitásához az Azure főmenüjében válassza a **minden szolgáltatás**lehetőséget. 
+1. Az integrációs fiók megkereséséhez és megnyitásához az Azure főmenüjében válassza a **minden szolgáltatás** lehetőséget. 
    A keresőmezőbe írja be az "integrációs fiók" kifejezést. 
-   Válassza az **integrációs fiókok**elemet.
+   Válassza az **integrációs fiókok** elemet.
 
    ![Integrációs fiók keresése](./media/logic-apps-enterprise-integration-maps/find-integration-account.png)
 
@@ -63,11 +63,11 @@ Térképek létrehozásakor és hozzáadásakor nincs szükség logikai alkalmaz
 
    ![Integrációs fiók kiválasztása](./media/logic-apps-enterprise-integration-maps/select-integration-account.png)
 
-1. Az integrációs fiók **áttekintése** oldal **összetevők**területén válassza a **szerelvények** csempét.
+1. Az integrációs fiók **áttekintése** oldal **összetevők** területén válassza a **szerelvények** csempét.
 
    !["Szerelvények" kiválasztása](./media/logic-apps-enterprise-integration-maps/select-assemblies.png)
 
-1. A **szerelvények** lap megnyitása után válassza a **Hozzáadás**lehetőséget.
+1. A **szerelvények** lap megnyitása után válassza a **Hozzáadás** lehetőséget.
 
    ![Képernyőfelvétel: a szerelvények lapon található Hozzáadás gomb kiemelése.](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
 
@@ -81,7 +81,7 @@ A szerelvények mennyiségi korlátozásai az integrációs fiókokban: [Azure L
 
 ### <a name="add-assemblies-up-to-2-mb"></a>Szerelvények hozzáadása 2 MB-ig
 
-1. A **szerelvény hozzáadása**területen adja meg a szerelvény nevét. **Kis fájlok** kiválasztásának megtartása. A **szerelvény** mező mellett válassza a mappa ikont. Keresse meg és válassza ki a feltölteni kívánt szerelvényt, például:
+1. A **szerelvény hozzáadása** területen adja meg a szerelvény nevét. **Kis fájlok** kiválasztásának megtartása. A **szerelvény** mező mellett válassza a mappa ikont. Keresse meg és válassza ki a feltölteni kívánt szerelvényt, például:
 
    ![Kisebb szerelvény feltöltése](./media/logic-apps-enterprise-integration-maps/upload-assembly-file.png)
 
@@ -93,7 +93,7 @@ A szerelvények mennyiségi korlátozásai az integrációs fiókokban: [Azure L
 
    ![Feltöltött szerelvények listája](./media/logic-apps-enterprise-integration-maps/uploaded-assemblies-list.png)
 
-   Az integrációs fiók **áttekintő** lapjának **összetevők**területén a **szerelvények** csempe most a feltöltött szerelvények számát jeleníti meg, például:
+   Az integrációs fiók **áttekintő** lapjának **összetevők** területén a **szerelvények** csempe most a feltöltött szerelvények számát jeleníti meg, például:
 
    ![Feltöltött szerelvények](./media/logic-apps-enterprise-integration-maps/uploaded-assemblies.png)
 
@@ -107,15 +107,15 @@ Nagyobb szerelvények hozzáadásához feltöltheti a szerelvényt egy Azure Blo
 
 1. Nyissa meg Azure Storage Explorer. Az Explorer ablakban bontsa ki az Azure-előfizetését, ha még nincs kibontva.
 
-1. Bontsa ki a **Storage-fiókok** > {*a-Storage-Account*} > **blob-tárolók**elemet. Válassza ki a BLOB-tárolót.
+1. Bontsa ki a **Storage-fiókok** > {*a-Storage-Account*} > **blob-tárolók** elemet. Válassza ki a BLOB-tárolót.
 
-1. A blob-tároló helyi menüjében válassza a **nyilvános hozzáférési szint beállítása**lehetőséget.
+1. A blob-tároló helyi menüjében válassza a **nyilvános hozzáférési szint beállítása** lehetőséget.
 
-   * Ha a blob-tároló legalább nyilvános hozzáféréssel rendelkezik, válassza a **Mégse**lehetőséget, majd kövesse az alábbi lépéseket ezen az oldalon: [feltöltés a nyilvános hozzáféréssel rendelkező tárolók számára](#public-access-assemblies)
+   * Ha a blob-tároló legalább nyilvános hozzáféréssel rendelkezik, válassza a **Mégse** lehetőséget, majd kövesse az alábbi lépéseket ezen az oldalon: [feltöltés a nyilvános hozzáféréssel rendelkező tárolók számára](#public-access-assemblies)
 
      ![Nyilvános hozzáférés](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
 
-   * Ha a blob-tároló nem rendelkezik nyilvános hozzáféréssel, válassza a **Mégse**lehetőséget, majd kövesse az alábbi lépéseket az oldalon: [feltöltés nyilvános hozzáférés nélküli tárolókban](#no-public-access-assemblies)
+   * Ha a blob-tároló nem rendelkezik nyilvános hozzáféréssel, válassza a **Mégse** lehetőséget, majd kövesse az alábbi lépéseket az oldalon: [feltöltés nyilvános hozzáférés nélküli tárolókban](#no-public-access-assemblies)
 
      ![Nincs nyilvános hozzáférés](media/logic-apps-enterprise-integration-schemas/azure-blob-container-no-public-access.png)
 
@@ -124,7 +124,7 @@ Nagyobb szerelvények hozzáadásához feltöltheti a szerelvényt egy Azure Blo
 #### <a name="upload-to-containers-with-public-access"></a>Nyilvános hozzáféréssel rendelkező tárolók feltöltése
 
 1. Töltse fel a szerelvényt a Storage-fiókjába. 
-   A jobb oldali ablakban válassza a **feltöltés**lehetőséget.
+   A jobb oldali ablakban válassza a **feltöltés** lehetőséget.
 
 1. A feltöltés befejezése után válassza ki a feltöltött szerelvényt. Az eszköztáron válassza az **URL másolása** lehetőséget, hogy a szerelvény URL-címét másolja.
 
@@ -138,20 +138,20 @@ Nagyobb szerelvények hozzáadásához feltöltheti a szerelvényt egy Azure Blo
    Fejezze be a szerelvény hozzáadását.
 
 Miután a szerelvény befejezte a feltöltést, a séma megjelenik a **szerelvények** listájában.
-Az integrációs fiók **áttekintő** lapjának **összetevők**területén a **szerelvények** csempe most a feltöltött szerelvények számát jeleníti meg.
+Az integrációs fiók **áttekintő** lapjának **összetevők** területén a **szerelvények** csempe most a feltöltött szerelvények számát jeleníti meg.
 
 <a name="no-public-access-assemblies"></a>
 
 #### <a name="upload-to-containers-without-public-access"></a>Nyilvános hozzáférés nélküli tárolók feltöltése
 
 1. Töltse fel a szerelvényt a Storage-fiókjába. 
-   A jobb oldali ablakban válassza a **feltöltés**lehetőséget.
+   A jobb oldali ablakban válassza a **feltöltés** lehetőséget.
 
 1. A feltöltés befejezése után létrehoz egy közös hozzáférési aláírást (SAS) a szerelvényhez. 
-   A szerelvény helyi menüjében válassza a **közös hozzáférési aláírás beolvasása**elemet.
+   A szerelvény helyi menüjében válassza a **közös hozzáférési aláírás beolvasása** elemet.
 
-1. A **közös hozzáférési aláírás** ablaktáblán válassza a **tároló szintű közös hozzáférésű aláírás-URI**  >  **létrehozása**lehetőséget. 
-   A SAS URL-cím generálása után az **URL-cím** mező mellett válassza a **Másolás**lehetőséget.
+1. A **közös hozzáférési aláírás** ablaktáblán válassza a **tároló szintű közös hozzáférésű aláírás-URI**  >  **létrehozása** lehetőséget. 
+   A SAS URL-cím generálása után az **URL-cím** mező mellett válassza a **Másolás** lehetőséget.
 
 1. Térjen vissza a Azure Portal, ahol a **szerelvény hozzáadása** panel meg van nyitva. 
    Adja meg a szerelvény nevét. 
@@ -161,7 +161,7 @@ Az integrációs fiók **áttekintő** lapjának **összetevők**területén a *
 
 1. A **tartalom URI-ja** mezőben illessze be a korábban létrehozott sas URI-t. Fejezze be a szerelvény hozzáadását.
 
-A szerelvény feltöltésének befejezése után a szerelvény megjelenik a **sémák** listájában. Az integrációs fiók **áttekintő** lapjának **összetevők**területén a **szerelvények** csempe most a feltöltött szerelvények számát jeleníti meg.
+A szerelvény feltöltésének befejezése után a szerelvény megjelenik a **sémák** listájában. Az integrációs fiók **áttekintő** lapjának **összetevők** területén a **szerelvények** csempe most a feltöltött szerelvények számát jeleníti meg.
 
 ## <a name="create-maps"></a>Térképek létrehozása
 
@@ -174,9 +174,9 @@ A térképre hivatkozó szerelvények feltöltése után már feltöltheti a té
 
 1. Ha még nem jelentkezett be, jelentkezzen be a [Azure Portalba](https://portal.azure.com) az Azure-fiókja hitelesítő adataival. 
 
-1. Ha az integrációs fiók még nincs megnyitva, az Azure fő menüjében válassza a **minden szolgáltatás**lehetőséget. 
+1. Ha az integrációs fiók még nincs megnyitva, az Azure fő menüjében válassza a **minden szolgáltatás** lehetőséget. 
    A keresőmezőbe írja be az "integrációs fiók" kifejezést. 
-   Válassza az **integrációs fiókok**elemet.
+   Válassza az **integrációs fiókok** elemet.
 
    ![Integrációs fiók keresése](./media/logic-apps-enterprise-integration-maps/find-integration-account.png)
 
@@ -184,11 +184,11 @@ A térképre hivatkozó szerelvények feltöltése után már feltöltheti a té
 
    ![Integrációs fiók kiválasztása](./media/logic-apps-enterprise-integration-maps/select-integration-account.png)
 
-1. Az integrációs fiók **áttekintése** oldal **összetevők**területén válassza a **Maps (térképek** ) csempét.
+1. Az integrációs fiók **áttekintése** oldal **összetevők** területén válassza a **Maps (térképek** ) csempét.
 
    ![Válassza a "Maps" lehetőséget.](./media/logic-apps-enterprise-integration-maps/select-maps.png)
 
-1. A **térképek** lap megnyitása után válassza a **Hozzáadás**lehetőséget.
+1. A **térképek** lap megnyitása után válassza a **Hozzáadás** lehetőséget.
 
    ![Válassza a "Hozzáadás" lehetőséget.](./media/logic-apps-enterprise-integration-maps/add-map.png)  
 
@@ -196,9 +196,9 @@ A térképre hivatkozó szerelvények feltöltése után már feltöltheti a té
 
 ### <a name="add-maps-up-to-2-mb"></a>Térképek hozzáadása legfeljebb 2 MB
 
-1. A **Térkép hozzáadása**területen adja meg a Térkép nevét. 
+1. A **Térkép hozzáadása** területen adja meg a Térkép nevét. 
 
-1. A **Térkép típusa**területen válassza ki a típust, például: **Liquid**, **XSLT**, **XSLT 2,0**vagy **XSLT 3,0**.
+1. A **Térkép típusa** területen válassza ki a típust, például: **Liquid**, **XSLT**, **XSLT 2,0** vagy **XSLT 3,0**.
 
 1. **Kis fájlok** kiválasztásának megtartása. A **Térkép** mező mellett válassza a mappa ikont. Keresse meg és válassza ki a feltölteni kívánt térképet, például:
 
@@ -212,7 +212,7 @@ A térképre hivatkozó szerelvények feltöltése után már feltöltheti a té
 
    ![Feltöltött térképek listája](./media/logic-apps-enterprise-integration-maps/uploaded-maps-list.png)
 
-   Az integrációs fiók **áttekintő** lapjának **összetevők**területén a **Maps (térképek** ) csempén a feltöltött térképek száma látható, például:
+   Az integrációs fiók **áttekintő** lapjának **összetevők** területén a **Maps (térképek** ) csempén a feltöltött térképek száma látható, például:
 
    ![Feltöltött térképek](./media/logic-apps-enterprise-integration-maps/uploaded-maps.png)
 
@@ -314,16 +314,16 @@ Egy meglévő Térkép frissítéséhez fel kell töltenie egy új leképezési 
 
 1. A [Azure Portalban](https://portal.azure.com)keresse meg és nyissa meg az integrációs fiókot, ha még nincs megnyitva.
 
-1. Az Azure fő menüjében válassza a **minden szolgáltatás**lehetőséget. A keresőmezőbe írja be az "integrációs fiók" kifejezést. Válassza az **integrációs fiókok**elemet.
+1. Az Azure fő menüjében válassza a **minden szolgáltatás** lehetőséget. A keresőmezőbe írja be az "integrációs fiók" kifejezést. Válassza az **integrációs fiókok** elemet.
 
 1. Válassza ki azt az integrációs fiókot, ahol frissíteni szeretné a térképet.
 
-1. Az integrációs fiók **áttekintése** oldal **összetevők**területén válassza a **Maps (térképek** ) csempét.
+1. Az integrációs fiók **áttekintése** oldal **összetevők** területén válassza a **Maps (térképek** ) csempét.
 
 1. A **térképek** lap megnyitása után válassza ki a térképet. 
-   Ha először szeretné letölteni és szerkeszteni a térképet, válassza a **Letöltés**lehetőséget, és mentse a térképet.
+   Ha először szeretné letölteni és szerkeszteni a térképet, válassza a **Letöltés** lehetőséget, és mentse a térképet.
 
-1. Amikor készen áll a frissített Térkép feltöltésére, a **Maps** lapon válassza ki a frissíteni kívánt térképet, és válassza a **frissítés**lehetőséget.
+1. Amikor készen áll a frissített Térkép feltöltésére, a **Maps** lapon válassza ki a frissíteni kívánt térképet, és válassza a **frissítés** lehetőséget.
 
 1. Keresse meg és válassza ki a frissített térképet, amelyet fel szeretne tölteni. 
    A leképezési fájl feltöltésének befejeződése után a frissített Térkép megjelenik a **Maps** listában.
@@ -332,17 +332,17 @@ Egy meglévő Térkép frissítéséhez fel kell töltenie egy új leképezési 
 
 1. A [Azure Portalban](https://portal.azure.com)keresse meg és nyissa meg az integrációs fiókot, ha még nincs megnyitva.
 
-1. Az Azure fő menüjében válassza a **minden szolgáltatás**lehetőséget. 
+1. Az Azure fő menüjében válassza a **minden szolgáltatás** lehetőséget. 
    A keresőmezőbe írja be az "integrációs fiók" kifejezést. 
-   Válassza az **integrációs fiókok**elemet.
+   Válassza az **integrációs fiókok** elemet.
 
 1. Válassza ki azt az integrációs fiókot, ahová a térképet törölni szeretné.
 
-1. Az integrációs fiók **áttekintése** oldal **összetevők**területén válassza a **Maps (térképek** ) csempét.
+1. Az integrációs fiók **áttekintése** oldal **összetevők** területén válassza a **Maps (térképek** ) csempét.
 
-1. A **térképek** lap megnyitása után válassza ki a térképet, és válassza a **Törlés**lehetőséget.
+1. A **térképek** lap megnyitása után válassza ki a térképet, és válassza a **Törlés** lehetőséget.
 
-1. Annak megerősítéséhez, hogy törölni kívánja a térképet, válassza az **Igen**lehetőséget.
+1. Annak megerősítéséhez, hogy törölni kívánja a térképet, válassza az **Igen** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
 ms.openlocfilehash: 3caccd6766226ce68b371856b081b052c1033f71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91542189"
 ---
 # <a name="pattern-syntax"></a>Minta szintaxisa
@@ -33,7 +33,7 @@ A minta szintaxisa a következő szintaxist támogatja:
 
 ## <a name="nesting-syntax-in-patterns"></a>Szintaxisok beágyazásának mintázata
 
-A szögletes zárójelek **választható** szintaxisa két szint beágyazására használható. Például: `[[this]is] a new form`. Ez a példa a következő hosszúságú kimondott szöveg teszi lehetővé:
+A szögletes zárójelek **választható** szintaxisa két szint beágyazására használható. Példa: `[[this]is] a new form`. Ez a példa a következő hosszúságú kimondott szöveg teszi lehetővé:
 
 |Beágyazott opcionális Kimondás – példa|Magyarázat|
 |--|--|
@@ -41,7 +41,7 @@ A szögletes zárójelek **választható** szintaxisa két szint beágyazására
 |új űrlap|megfelel a külső opcionális és nem választható szavaknak a mintában|
 |új űrlap|csak a szükséges szavakra illeszkedik|
 
-A zárójelekkel rendelkező **csoportosítási** szintaxis két szinten ágyazható be. Például: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`. Ez a funkció lehetővé teszi a három entitás összeegyeztetését.
+A zárójelekkel rendelkező **csoportosítási** szintaxis két szinten ágyazható be. Példa: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`. Ez a funkció lehetővé teszi a három entitás összeegyeztetését.
 
 Ha a Entity1 olyan hely, ahol a szerepkörök, például a Origin (Seattle) és a Destination (Kairó) és a 2. entitás egy ismert épület neve a List entitásból (RedWest-C), a következő hosszúságú kimondott szöveg az alábbi mintát képezi le:
 
@@ -57,8 +57,8 @@ A **választható** szintaxisú **Csoportosítás** kombinációja legfeljebb 3 
 
 |Engedélyezve|Példa|
 |--|--|
-|Igen|([(test1 &#x7c; teszt2)] &#x7c; test3)|
-|Nem|([([test1] &#x7c; teszt2)] &#x7c; test3)|
+|Yes|([(test1 &#x7c; teszt2)] &#x7c; test3)|
+|No|([([test1] &#x7c; teszt2)] &#x7c; test3)|
 
 ## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>A vagy-ing szintaxissal rendelkező csoportok korlátainak beágyazásával
 
@@ -66,8 +66,8 @@ A **Group** with vagy a **-ing** szintaxisának kombinációja legfeljebb 2 füg
 
 |Engedélyezve|Példa|
 |--|--|
-|Igen|(test1 &#x7c; teszt2 &#x7c; (test3 &#x7c; test4))|
-|Nem|(test1 &#x7c; teszt2 &#x7c; test3 &#x7c; (test4 &#x7c; test5)) |
+|Yes|(test1 &#x7c; teszt2 &#x7c; (test3 &#x7c; test4))|
+|No|(test1 &#x7c; teszt2 &#x7c; test3 &#x7c; (test4 &#x7c; test5)) |
 
 ## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Entitás hozzáadása egy minta sablonhoz
 Ha entitást szeretne hozzáadni a mintázat sablonhoz, az entitás nevét kapcsos zárójelekkel kell megadnia, például: `Who does {Employee} manage?` .
@@ -113,7 +113,7 @@ Vegye figyelembe a (z) [Find] e-mailt a (z) {subject} [{person}] címről.
 
 A következő hosszúságú kimondott szöveg a **tulajdonos** és a **személy** entitás helyesen és helytelenül van kibontva:
 
-|Kimondott szöveg|Entitás|Helyes extrakció|
+|Beszédelem|Entitás|Helyes extrakció|
 |--|--|:--:|
 |e-mailek a Christől érkező kutyákról|tárgy = kutyák<br>személy = Chris|✔|
 |e-mailek az embertől a La Manchatól|tárgy = a Man<br>személy = La Mancha|X|

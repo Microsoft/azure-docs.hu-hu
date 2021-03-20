@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: absha
 ms.openlocfilehash: 4a1a122eb7b5b0abcc47cd321c74267a1a4aecda
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93396855"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>Application Gateway létrehozása és a HTTP-fejlécek újraírása
@@ -41,7 +41,7 @@ Connect-AzAccount
 Select-AzSubscription -Subscription "<sub name>"
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 Hozzon létre egy erőforráscsoportot az elérhető helyek egyikén.
 
 ```azurepowershell
@@ -107,11 +107,11 @@ $setting = New-AzApplicationGatewayBackendHttpSettings -Name "BackendHttpSetting
 
 Konfigurálja a HTTP-fejlécek újraírásához szükséges új objektumokat:
 
-- **RequestHeaderConfiguration** : ezzel az objektummal megadhatja az újraírni kívánt kérelem fejlécének mezőit, valamint azt az új értéket, amelyet az eredeti fejléceknek újra kell írnia.
-- **ResponseHeaderConfiguration** : ezzel az objektummal megadhatja az újraírni kívánt válasz fejléc-mezőket, valamint azt az új értéket, amelyet az eredeti fejléceknek újra kell írnia.
-- **ActionSet** : ez az objektum tartalmazza a fent megadott kérelem és válasz fejlécek konfigurációit. 
-- **RewriteRule** : ez az objektum tartalmazza a fent megadott összes *actionSets* . 
-- **RewriteRuleSet** – ez az objektum tartalmazza az összes *rewriteRules* , és csatolni kell egy kérelem útválasztási szabályához – alapszintű vagy elérésiút-alapú.
+- **RequestHeaderConfiguration**: ezzel az objektummal megadhatja az újraírni kívánt kérelem fejlécének mezőit, valamint azt az új értéket, amelyet az eredeti fejléceknek újra kell írnia.
+- **ResponseHeaderConfiguration**: ezzel az objektummal megadhatja az újraírni kívánt válasz fejléc-mezőket, valamint azt az új értéket, amelyet az eredeti fejléceknek újra kell írnia.
+- **ActionSet**: ez az objektum tartalmazza a fent megadott kérelem és válasz fejlécek konfigurációit. 
+- **RewriteRule**: ez az objektum tartalmazza a fent megadott összes *actionSets* . 
+- **RewriteRuleSet**– ez az objektum tartalmazza az összes *rewriteRules* , és csatolni kell egy kérelem útválasztási szabályához – alapszintű vagy elérésiút-alapú.
 
    ```azurepowershell
    $requestHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-isThroughProxy" -HeaderValue "True"
@@ -171,6 +171,6 @@ Először vizsgálja meg az Application Gateway használatával létrehozott er�
 
 `Remove-AzResourceGroup -Name $rg`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Alkalmazásátjáró létrehozása URL-alapú útválasztási szabályokkal](./tutorial-url-route-powershell.md)

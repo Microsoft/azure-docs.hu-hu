@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.date: 07/23/2019
 ms.author: victorh
 ms.openlocfilehash: e60aa9f072a447af97aa7cc66534e6e893fdbcf6
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93396940"
 ---
-# <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Azure Application Gateway önaláírt tanúsítvány létrehozása egyéni legfelső szintű HITELESÍTÉSSZOLGÁLTATÓval
+# <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Önaláírt Azure Application Gateway-tanúsítvány létrehozása egyéni legfelső szintű hitelesítésszolgáltatóval
 
 A Application Gateway v2 SKU bevezeti a megbízható legfelső szintű tanúsítványok használatát a háttér-kiszolgálók engedélyezéséhez. Ezzel eltávolítja a v1 SKU-ban szükséges hitelesítési tanúsítványokat. A *Főtanúsítvány* egy Base-64 kódolású X. 509 (. CER) a főtanúsítvány formázása a háttérbeli tanúsítvány-kiszolgálóról. Ez azonosítja azt a legfelső szintű hitelesítésszolgáltatót (CA), amely kiállította a kiszolgálói tanúsítványt, és a kiszolgáló tanúsítványát a TLS/SSL-kommunikációhoz használja a rendszer.
 
@@ -270,6 +270,6 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ![HTTPS-mintavétel](media/self-signed-certificates/https-probe.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a Application Gateway SSL\TLS kapcsolatban, tekintse meg a következőt: [a TLS-megszakítás áttekintése és a végpontok közötti TLS és a Application Gateway](ssl-overview.md).

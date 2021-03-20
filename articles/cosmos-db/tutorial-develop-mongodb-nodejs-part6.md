@@ -11,10 +11,10 @@ ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
 ms.openlocfilehash: c8e2c707566b08219b495e76be7f6f6130d876ab
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93081314"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Szögletes alkalmazás létrehozása Azure Cosmos DB API-MongoDB – a szifilisz-függvények hozzáadása az alkalmazáshoz
@@ -85,15 +85,15 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [5
     });
     ```
 
-5. Az alkalmazást futtatva ellenőrizze, hogy minden működik-e. A Visual Studio Code-ban mentse az összes módosítást, **Debug** válassza a :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png"::: bal oldalon található hibakeresés gombot, majd kattintson a **hibakeresés indítása** gombra :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png"::: .
+5. Az alkalmazást futtatva ellenőrizze, hogy minden működik-e. A Visual Studio Code-ban mentse az összes módosítást,  válassza a :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png"::: bal oldalon található hibakeresés gombot, majd kattintson a **hibakeresés indítása** gombra :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png"::: .
 
 6. Most lépjen vissza a webböngészőjére, és nyissa meg a Fejlesztői eszközök Hálózat lapját – ehhez a legtöbb gépen az F12 billentyűt kell lenyomni. Lépjen a `http://localhost:3000` helyre, és tekintse meg a hálózaton keresztül végzett hívásokat.
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png" alt-text="A routes.js és a hero.service.js a Visual Studio Code-ban":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png" alt-text="Hálózat lap a Chrome böngészőben a hálózati tevékenységgel":::
 
 7. Adjon hozzá egy új fő képet az **Add New Hero** (Új fő kép hozzáadása) gomb választásával. Adja meg a „999” azonosítót, a „Fred” nevet és a „Hello” üzenetet, majd válassza a **Save** (Mentés) gombot. A Hálózat lapon látható, hogy POST-kérést küldött egy új fő képre vonatkozóan. 
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png" alt-text="A routes.js és a hero.service.js a Visual Studio Code-ban":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png" alt-text="Hálózat lap a Chrome böngészőben a Get és Post függvények hálózati tevékenységével":::
 
     Most térjünk vissza a szerkesztőre, és adjuk hozzá a Put és Delete függvényeket az alkalmazáshoz.
 
@@ -178,11 +178,11 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [5
 
     Most a Hálózat lapon az azonosítót kiválasztva megtekintheti a csomag hasznos adatait. A hasznos adatokban láthatja, hogy az üzenet most már a „Bye”.
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png" alt-text="A routes.js és a hero.service.js a Visual Studio Code-ban"::: 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png" alt-text="Fő képek alkalmazás és a Hálózat lap a hasznos adatokkal"::: 
 
     A felhasználói felületen törölheti is az egyik fő képet, és láthatja, hogy a törlési műveletek végrehajtása mennyi ideig tart. Ennek kipróbálásához válassza a „Delete” (Törlés) gombot a „Fred” nevű fő képnél.
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/times.png" alt-text="A routes.js és a hero.service.js a Visual Studio Code-ban"::: 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/times.png" alt-text="Főképalkalmazás és a Hálózat lap a függvények végrehajtásához szükséges időkkel"::: 
 
     Ha frissíti az oldalt, a Hálózat lap a fő képek lekéréséhez szükséges időt mutatja. Bár az itt látható idők rövidek, rengeteg múlik azon, hogy az adatok a világ mely részén vannak tárolva, és hogy azokat a felhasználókhoz közeli helyekre tudja-e georeplikálni. A georeplikációról további információkat a nemsokára elérhető következő oktatóanyagban talál majd.
 

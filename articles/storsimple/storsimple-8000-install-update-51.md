@@ -13,10 +13,10 @@ ms.workload: TBD
 ms.date: 03/05/2020
 ms.author: alkohli
 ms.openlocfilehash: 5b9958f3dd497aa612a92947b8d968439ef9d0e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91575962"
 ---
 # <a name="install-update-51-on-your-storsimple-device"></a>Az 5,1-es frissítés telepítése a StorSimple-eszközön
@@ -58,15 +58,15 @@ Az alábbi lépések végrehajtásával frissítheti az eszközt az 5,1-es [fris
 
     ![Eszköz kiválasztása](./media/storsimple-8000-install-update-51/update1.png)
 
-2. Navigáljon az **eszközbeállítások**  >  **eszköz frissítései**menüpontra.
+2. Navigáljon az **eszközbeállítások**  >  **eszköz frissítései** menüpontra.
 
     ![Képernyőkép a beállítások panelről, az eszköz frissítéseinek meghívása lehetőséggel.](./media/storsimple-8000-install-update-51/update2.png)
 
-3. Megjelenik egy értesítés, ha új frissítések érhetők el. Azt is megteheti, hogy az **eszköz frissítései** panelen a **frissítések keresése**lehetőségre kattint. Létrejön egy feladat, amely megkeresi az elérhető frissítéseket. A feladat sikeres befejezéséről értesítést kap.
+3. Megjelenik egy értesítés, ha új frissítések érhetők el. Azt is megteheti, hogy az **eszköz frissítései** panelen a **frissítések keresése** lehetőségre kattint. Létrejön egy feladat, amely megkeresi az elérhető frissítéseket. A feladat sikeres befejezéséről értesítést kap.
 
     ![Képernyőkép a beállítások panelről, ahol a rendszer meghívja a beállításokat, és az eszköz frissítései panel az új rendszeres frissítésekkel elérhető üzenet jelenik meg.](./media/storsimple-8000-install-update-51/update3.png)
 
-4. Azt javasoljuk, hogy mielőtt alkalmazná a frissítést az eszközön, tekintse át a kibocsátási megjegyzéseket. A frissítések alkalmazásához kattintson a **frissítések telepítése**elemre. A frissítések alkalmazása előtt tekintse át az előfeltételeket a **rendszeres frissítések megerősítése** panelen. Jelölje be a jelölőnégyzetet annak jelzéséhez, hogy készen áll az eszköz frissítésére, majd kattintson a **telepítés**gombra.
+4. Azt javasoljuk, hogy mielőtt alkalmazná a frissítést az eszközön, tekintse át a kibocsátási megjegyzéseket. A frissítések alkalmazásához kattintson a **frissítések telepítése** elemre. A frissítések alkalmazása előtt tekintse át az előfeltételeket a **rendszeres frissítések megerősítése** panelen. Jelölje be a jelölőnégyzetet annak jelzéséhez, hogy készen áll az eszköz frissítésére, majd kattintson a **telepítés** gombra.
 
     ![Képernyőkép az eszköz frissítései panelről, ahol a frissítések telepítése lehetőség ki van választva, valamint a rendszeres frissítések megerősítése az egyetértési lehetőséggel és a telepítési lehetőséggel.](./media/storsimple-8000-install-update-51/update4.png)
 
@@ -88,11 +88,11 @@ Az alábbi lépések végrehajtásával frissítheti az eszközt az 5,1-es [fris
 
     ![Képernyőkép az eszköz frissítései panelről, amelyen a szoftverfrissítések letöltése és telepítése folyamatban van, és a frissítések telepítése panel van kiválasztva.](./media/storsimple-8000-install-update-51/update8.png)
 
-     Nyomon követheti a frissítési feladat előrehaladását az **eszközbeállítások > feladatokból**is. A **feladatok** panelen láthatja a frissítés folyamatát.
+     Nyomon követheti a frissítési feladat előrehaladását az **eszközbeállítások > feladatokból** is. A **feladatok** panelen láthatja a frissítés folyamatát.
 
      ![Képernyőkép a beállítások panelről, ahol a feladatok felhívhatók, a feladatok panel pedig a frissítés előrehaladását mutatja.](./media/storsimple-8000-install-update-51/update7.png)
 
-10. A feladatok befejezése után navigáljon az eszközbeállítások **> eszköz frissítései**elemre. A szoftver verzióját most frissíteni kell.
+10. A feladatok befejezése után navigáljon az eszközbeállítások **> eszköz frissítései** elemre. A szoftver verzióját most frissíteni kell.
 
 
 Ellenőrizze, hogy az eszközön fut-e a **StorSimple 8000 Series Update 5,1 (6.3.9600.17885)**. A **legutóbbi frissítés dátumát** módosítani kell.

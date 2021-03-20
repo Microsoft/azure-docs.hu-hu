@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: container-service
 author: mlearned
 ms.service: container-service
@@ -9,10 +9,10 @@ ms.date: 11/22/2019
 ms.author: mlearned
 ms.custom: include file
 ms.openlocfilehash: a42bba1b6524825aa571e4c18319b61b97829792
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96584627"
 ---
 | Erőforrás | Korlát |

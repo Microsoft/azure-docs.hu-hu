@@ -13,10 +13,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.openlocfilehash: 3e5ab1667ee0cda459785efa624bd7f4fc6818b8
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97562956"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>A IoT fejlesztői készlet AZ3166 összekapcsolásával az Azure IoT Hub
@@ -165,7 +165,7 @@ A következő lépésekkel készítheti elő a fejlesztési környezetet a fejle
 
 1. Telepítse az [ARDUINO ide](https://www.arduino.cc/en/Main/Software)-t. Ez biztosítja a szükséges toolchain az Arduino-kódok fordításához és feltöltéséhez.
     * **Windows**: Windows Installer verzió használata. Ne telepítse az App Store-ból.
-    * **MacOS**: húzza a kibontott **Arduino. app** `/Applications` mappát a mappába.
+    * **MacOS**: húzza a kibontott **Arduino.app** a `/Applications` mappába.
     * **Ubuntu**: csomagolja ki a mappát, például `$HOME/Downloads/arduino-1.8.8`
 
 2. Telepítse a [Visual Studio Code](https://code.visualstudio.com/)-ot, amely egy platformfüggetlen forráskód-szerkesztő, amely hatékony IntelliSense-, kód-befejezési és hibakeresési támogatást, valamint sokoldalú bővítményeket is telepíthet a Piactérről.
@@ -378,7 +378,7 @@ A `DevKitMQTTClient` használt **iothub_client** burkolója az [Microsoft Azure 
 
 Ha problémákba ütközik, megkeresheti a megoldást a [IoT fejlesztői készlet GYIK](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) -ban, vagy elérheti a [Gitter](https://gitter.im/Microsoft/azure-iot-developer-kit). Visszajelzését az oldalon található Megjegyzés elküldésével is megadhatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Sikeresen csatlakoztatta a MXChip IoT fejlesztői készlet a IoT hubhoz, és elküldte a rögzített érzékelő adatait a IoT hubhoz.
 
