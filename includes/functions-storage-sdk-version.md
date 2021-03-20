@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: functions
 author: craigshoemaker
 manager: gwallace
@@ -10,10 +10,10 @@ ms.date: 01/28/2020
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: 6a37850eb6536c5399d63144e60ea210fbc194d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77198418"
 ---
 #### <a name="azure-storage-sdk-version-in-functions-1x"></a>Az Azure Storage SDK verziója a functions 1. x verziójában

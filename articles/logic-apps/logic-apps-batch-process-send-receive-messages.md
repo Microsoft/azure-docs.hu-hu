@@ -9,10 +9,10 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 07/31/2020
 ms.openlocfilehash: 0985afe3ddfd0d9de3c36ad6b030b6f259708c88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87458255"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Üzenetek küldése, fogadása és kötegelt feldolgozása Azure Logic Apps
@@ -78,7 +78,7 @@ Ahhoz, hogy üzeneteket küldhessen egy kötegbe, a kötegnek először az üzen
 
    Ebben a példában olyan műveletet adunk hozzá, amely e-mailt küld a Batch-eseményindító indításakor. Az trigger fut, és e-mailt küld, ha a köteg 10 üzenettel rendelkezik, 10 MB-nyi vagy 10 perces bérlet után.
 
-   1. A Batch-trigger alatt válassza az **új lépés**lehetőséget.
+   1. A Batch-trigger alatt válassza az **új lépés** lehetőséget.
 
    1. A keresőmezőbe írja be `send email` szűrőként a kifejezést. Az e-mail-szolgáltató alapján válasszon ki egy e-mail-összekötőt.
 
@@ -138,7 +138,7 @@ Most hozzon létre egy vagy több batch-küldő logikai alkalmazást, amely üze
 
 1. Új művelet hozzáadása az üzenetek kötegbe való küldéséhez.
 
-   1. Az **ismétlődési** eseményindító alatt válassza az **új lépés**lehetőséget.
+   1. Az **ismétlődési** eseményindító alatt válassza az **új lépés** lehetőséget.
 
    1. A keresőmezőbe írja be szűrőként a kifejezést, `batch` majd válassza a következő műveletet: **válasszon Logic apps munkafolyamatot kötegelt triggerrel**
 
@@ -153,7 +153,7 @@ Most hozzon létre egy vagy több batch-küldő logikai alkalmazást, amely üze
       > [!IMPORTANT]
       > Ha a Visual studiót használja, és nem látja a kiválasztható batch-fogadókat, ellenőrizze, hogy korábban létrehozta és telepítette-e a Batch-fogadót az Azure-ba. Ha még nem tette meg, Ismerje meg, [hogyan helyezheti üzembe a Batch-fogadó logikai alkalmazást az Azure](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure)-ban.
 
-   1. A műveletek listából válassza a következő műveletet: **Batch_messages-<*a-Logic-app-Name* > **
+   1. A műveletek listából válassza a következő műveletet: **Batch_messages-<*a-Logic-app-Name* >**
 
       ![Válassza ki ezt a műveletet: "Batch_messages-<a-Logic-app>"](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch.png)
 
@@ -172,7 +172,7 @@ Most hozzon létre egy vagy több batch-küldő logikai alkalmazást, amely üze
 
    1. Kattintson az **üzenet tartalma** mezőre.
 
-   1. Amikor megjelenik a dinamikus tartalom lista, válassza a **kifejezés**lehetőséget.
+   1. Amikor megjelenik a dinamikus tartalom lista, válassza a **kifejezés** lehetőséget.
 
    1. Adja meg a kifejezést `utcnow()` , majd kattintson **az OK gombra**.
 
@@ -190,7 +190,7 @@ Most hozzon létre egy vagy több batch-küldő logikai alkalmazást, amely üze
 
    1. Kattintson a **partíció neve** mezőre, hogy megjelenjen a dinamikus tartalmak listája.
 
-   1. A dinamikus tartalom listában válassza a **kifejezés**lehetőséget.
+   1. A dinamikus tartalom listában válassza a **kifejezés** lehetőséget.
 
    1. Adja meg a kifejezést `rand(1,6)` , majd kattintson **az OK gombra**.
 
@@ -211,7 +211,7 @@ A Batch-küldő logikai alkalmazás percenként fut, és egy véletlenszerűen g
 > [!IMPORTANT]
 > Ha végzett a teszteléssel, győződjön meg arról, hogy letiltja a `BatchSender` logikai alkalmazást az üzenetek küldésének leállításához és a beérkezett fájlok túlterhelésének elkerüléséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [EDI-üzenetek kötegelése és küldése](../logic-apps/logic-apps-scenario-edi-send-batch-messages.md)
 * [A Logic app-definíciók létrehozása JSON használatával](../logic-apps/logic-apps-author-definitions.md)

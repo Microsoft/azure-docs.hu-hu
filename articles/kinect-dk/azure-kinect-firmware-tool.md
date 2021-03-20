@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, belső vezérlőprogram, frissítés
 ms.openlocfilehash: f8b89751d27fb5a4b18d635f45f63f4f36bd05f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85277311"
 ---
 # <a name="azure-kinect-dk-firmware-tool"></a>Azure Kinect DK belső vezérlőprogram eszköz
@@ -114,7 +114,7 @@ Examples:
     AzureKinectFirmwareTool.exe -Update c:\data\firmware.bin 0123456
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 >[Részletes útmutató az eszköz belső vezérlőprogram frissítéséhez](update-device-firmware.md)

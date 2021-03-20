@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 33aa088efd7768153d4a17472d82e0826f4ffa6b
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98742641"
 ---
 # <a name="configuring-tls-for-an-application-in-azure"></a>TLS konfigurálása alkalmazáshoz az Azure-ban
@@ -79,7 +79,7 @@ Az alkalmazást a tanúsítvány használatára kell konfigurálni, és hozzá k
 
    Az engedélyek ( `permissionLevel` attribútumok) a következő értékek egyikére állíthatók be:
 
-   | Engedély értéke | Leírás |
+   | Engedély értéke | Description |
    | --- | --- |
    | limitedOrElevated |**(Alapértelmezett)** Az összes szerepkör-folyamat hozzáfér a titkos kulcshoz. |
    | emelt szintű |Csak emelt szintű folyamatok férhetnek hozzá a titkos kulcshoz. |
@@ -174,7 +174,7 @@ Most, hogy üzembe helyezése az Azure-ban működik, HTTPS használatával csat
    > Hozzon létre egy common name (CN) nevű tanúsítványt a GUID-alapú URL-címmel (például **328187776e774ceda8fc57609d404462.cloudapp.net**). A portál használatával adja hozzá a tanúsítványt a szakaszos felhőalapú szolgáltatáshoz. Ezután adja hozzá a tanúsítvány adatait a CSDEF és a CSCFG-fájlokhoz, csomagolja ki az alkalmazást, és frissítse a szakaszos üzembe helyezést az új csomag használatára.
    >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A felhőalapú szolgáltatás általános konfigurációja](cloud-services-how-to-configure-portal.md).
 * Ismerje meg, hogyan [helyezhet üzembe egy felhőalapú szolgáltatást](cloud-services-how-to-create-deploy-portal.md).
 * Konfigurálja az [Egyéni tartománynevet](cloud-services-custom-domain-name-portal.md).

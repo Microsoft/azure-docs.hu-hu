@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: mbullwin
 ms.openlocfilehash: fe3b87c733f54d8bd52c4d973977e3c8cbfefe19
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92043203"
 ---
 # <a name="how-to-onboard-your-metric-data-to-metrics-advisor"></a>Útmutató: a metrikai adatok előkészítése a metrikai TANÁCSADÓBA
@@ -45,7 +45,7 @@ A részleges adatbevitel elkerülése érdekében két módszert ajánlunk:
 
 ## <a name="add-a-data-feed-using-the-web-based-workspace"></a>Adatcsatorna hozzáadása a webalapú munkaterületről
 
-Miután bejelentkezett a metrikai tanácsadó portálra, és kiválasztja a munkaterületet, kattintson az első **lépések**elemre. Ezután a munkaterület főoldalán kattintson az **adatcsatorna hozzáadása** elemre a bal oldali menüben.
+Miután bejelentkezett a metrikai tanácsadó portálra, és kiválasztja a munkaterületet, kattintson az első **lépések** elemre. Ezután a munkaterület főoldalán kattintson az **adatcsatorna hozzáadása** elemre a bal oldali menüben.
 
 ### <a name="add-connection-settings"></a>Kapcsolatbeállítások hozzáadása
 
@@ -75,14 +75,14 @@ Ha az adatpont időbélyegzője ki van hagyva, a metrikák tanácsadója az adat
 |Kiválasztás  |Leírás  |Jegyzetek  |
 |---------|---------|---------|
 | **Megjelenítendő név** | Az eredeti oszlopnév helyett a munkaterületen megjelenítendő név. | |
-|**Timestamp**     | Egy adatpont időbélyege Ha nincs megadva, a metrikák tanácsadója az adatpont betöltésének időbélyegét fogja használni. Minden adatcsatorna esetében legfeljebb egy oszlopot adhat meg timestamp típusúként.        | Választható. Legfeljebb egy oszlopnak kell megadnia. Ha egy **oszlop nem** adható meg időbélyeg-hibaként, ellenőrizze a lekérdezést vagy az adatforrást ismétlődő időbélyegek esetén.      |
+|**Időbélyeg**     | Egy adatpont időbélyege Ha nincs megadva, a metrikák tanácsadója az adatpont betöltésének időbélyegét fogja használni. Minden adatcsatorna esetében legfeljebb egy oszlopot adhat meg timestamp típusúként.        | Választható. Legfeljebb egy oszlopnak kell megadnia. Ha egy **oszlop nem** adható meg időbélyeg-hibaként, ellenőrizze a lekérdezést vagy az adatforrást ismétlődő időbélyegek esetén.      |
 |**Measure**     |  Az adatcsatorna numerikus értékei. Minden adatcsatorna esetében több mértéket is megadhat, de legalább egy oszlopot ki kell jelölni mértékként.        | Legalább egy oszloppal kell megadni.        |
-|**Méret**     | Kategorikus értékek. A különböző értékek kombinációja egy adott egydimenziós idősorozatot azonosít, például: ország, nyelv, bérlő. Nulla vagy több oszlopot is kijelölhet dimenzióként. Megjegyzés: Ügyeljen arra, hogy a nem karakterlánc típusú oszlopok dimenzióként való kiválasztásakor legyen körültekintő. | Választható.        |
-|**Kihagyás**     | A kijelölt oszlop figyelmen kívül hagyása.        | Választható. Lásd az alábbi szöveget.       |
+|**dimenzió**     | Kategorikus értékek. A különböző értékek kombinációja egy adott egydimenziós idősorozatot azonosít, például: ország, nyelv, bérlő. Nulla vagy több oszlopot is kijelölhet dimenzióként. Megjegyzés: Ügyeljen arra, hogy a nem karakterlánc típusú oszlopok dimenzióként való kiválasztásakor legyen körültekintő. | Választható.        |
+|**Figyelmen kívül**     | A kijelölt oszlop figyelmen kívül hagyása.        | Választható. Lásd az alábbi szöveget.       |
 
-Ha figyelmen kívül szeretné hagyni az oszlopokat, javasoljuk, hogy a lekérdezés vagy az adatforrás frissítésével zárja ki ezeket az oszlopokat. Az oszlopokat figyelmen kívül hagyhatja az **oszlopok mellőzése** lehetőséggel, majd **figyelmen kívül hagyhatja** az adott oszlopokat. Ha egy oszlopnak dimenziónak kell lennie, és a rendszer tévesen állítja be a *figyelmen kívül hagyott*adatokat, a metrikák tanácsadója a részleges adatok betöltését követően végezhető el. Tegyük fel például, hogy a lekérdezés adatai a következők:
+Ha figyelmen kívül szeretné hagyni az oszlopokat, javasoljuk, hogy a lekérdezés vagy az adatforrás frissítésével zárja ki ezeket az oszlopokat. Az oszlopokat figyelmen kívül hagyhatja az **oszlopok mellőzése** lehetőséggel, majd **figyelmen kívül hagyhatja** az adott oszlopokat. Ha egy oszlopnak dimenziónak kell lennie, és a rendszer tévesen állítja be a *figyelmen kívül hagyott* adatokat, a metrikák tanácsadója a részleges adatok betöltését követően végezhető el. Tegyük fel például, hogy a lekérdezés adatai a következők:
 
-| Sor azonosítója | Timestamp | Ország | Nyelv | Bevétel |
+| Sor azonosítója | Időbélyeg | Ország | Nyelv | Bevétel |
 | --- | --- | --- | --- | --- |
 | 1 | 2019/11/10 | Kína | ZH-CN | 10000 |
 | 2 | 2019/11/10 | Kína | EN-US | 1000 |
@@ -90,7 +90,7 @@ Ha figyelmen kívül szeretné hagyni az oszlopokat, javasoljuk, hogy a lekérde
 | 4 | 2019/11/11 | USA | EN-US | 23000 |
 | ... | ...| ... | ... | ... |
 
-Ha az *ország* dimenzió és a *nyelv* a *figyelmen kívül hagyott*értékre van beállítva, akkor az első és a második sor azonos dimenziókkal fog rendelkezni. A metrikák tanácsadója tetszőlegesen használhat egy értéket a két sorból. A metrikai tanácsadó nem összesíti a sorokat ebben az esetben.
+Ha az *ország* dimenzió és a *nyelv* a *figyelmen kívül hagyott* értékre van beállítva, akkor az első és a második sor azonos dimenziókkal fog rendelkezni. A metrikák tanácsadója tetszőlegesen használhat egy értéket a két sorból. A metrikai tanácsadó nem összesíti a sorokat ebben az esetben.
 
 ### <a name="automatic-roll-up-settings"></a>Automatikus összesítő beállítások
 
@@ -107,7 +107,7 @@ Vegyük példaként a következő forgatókönyveket:
 
 * *Az adataim már fel vannak vonva, és a dimenzióérték a következő: NULL vagy üres (alapértelmezett), csak NULL, mások.*
 
-    Ez a beállítás azt jelenti, hogy a metrikai tanácsadónak nem kell felkészítenie az adatokat, mert a sorok már össze vannak összegezve. Ha például a *csak null értéket*választja, akkor az alábbi példában szereplő második adatsort az összes ország és nyelv összesítésének tekinti az *en-us*; a negyedik adatsort, amely üres értékkel rendelkezik az *ország* számára, azonban egy normál sorként jelenik meg, amely hiányos adathalmazt jelez.
+    Ez a beállítás azt jelenti, hogy a metrikai tanácsadónak nem kell felkészítenie az adatokat, mert a sorok már össze vannak összegezve. Ha például a *csak null értéket* választja, akkor az alábbi példában szereplő második adatsort az összes ország és nyelv összesítésének tekinti az *en-us*; a negyedik adatsort, amely üres értékkel rendelkezik az *ország* számára, azonban egy normál sorként jelenik meg, amely hiányos adathalmazt jelez.
     
     | Ország | Nyelv | Bevétel |
     |---------|----------|--------|
@@ -118,12 +118,12 @@ Vegyük példaként a következő forgatókönyveket:
 
 * *Metrikus tanácsadóra van szükségem az adatok összesítéséhez a Sum/max/min/Átl/Count kiszámításával, és a következő jelöléssel <some string>*
 
-    Egyes adatforrások, például a Cosmos DB vagy az Azure Blob Storage nem támogatnak bizonyos számításokat, például *a Group By vagy a* *Cube*típust. A metrikai tanácsadó biztosítja az adatkockának a betöltés során történő automatikus létrehozásához szükséges összesítő beállítást.
+    Egyes adatforrások, például a Cosmos DB vagy az Azure Blob Storage nem támogatnak bizonyos számításokat, például *a Group By vagy a* *Cube* típust. A metrikai tanácsadó biztosítja az adatkockának a betöltés során történő automatikus létrehozásához szükséges összesítő beállítást.
     Ez a beállítás azt jelenti, hogy metrikai tanácsadóra van szükség, hogy kiszámítsa a felskálázást a kiválasztott algoritmus használatával, és a megadott karakterláncot használja a metrikai tanácsadóban való megjelenítéshez. Ez nem változtatja meg az adatforrásban lévő összes adathalmazt.
     Tegyük fel például, hogy van egy idősorozata, amely a dimenzióval (ország, régió) rendelkező értékesítési mérőszámokra áll. Egy adott időbélyeg esetében a következőhöz hasonló lehet:
 
 
-    | Country       | Régió           | Sales |
+    | Country       | Region           | Sales |
     |---------------|------------------|-------|
     | Kanada        | Alberta          | 100   |
     | Kanada        | Brit Columbia | 500   |
@@ -132,7 +132,7 @@ Vegyük példaként a következő forgatókönyveket:
 
     Miután engedélyezte az automatikus összesítést az *összeggel*, a metrikus tanácsadó kiszámítja a dimenzió kombinációkat, és összegzi a metrikákat az adatok betöltése során. Az eredmény lehet:
 
-    | Country       | Régió           | Sales |
+    | Country       | Region           | Sales |
     | ------------ | --------------- | ---- |
     | Kanada        | Alberta          | 100   |
     | NULL          | Alberta          | 100   |
@@ -184,16 +184,16 @@ Adja meg az adatcsatorna egyéni nevét, amely a munkaterületen fog megjelenni.
 
 A betöltési hiba részleteinek megtekintése: 
 
-1. Kattintson a **Részletek megjelenítése**lehetőségre.
-2. Kattintson az **állapot** elemre, majd válassza a **sikertelen** vagy a **hiba**lehetőséget.
+1. Kattintson a **Részletek megjelenítése** lehetőségre.
+2. Kattintson az **állapot** elemre, majd válassza a **sikertelen** vagy a **hiba** lehetőséget.
 3. Vigye az egérmutatót egy sikertelen betöltés fölé, és tekintse meg a megjelenő részleteket tartalmazó üzenetet.
 
-:::image type="content" source="../media/datafeeds/check-failed-ingestion.png" alt-text="Betöltési folyamatjelző sáv":::
+:::image type="content" source="../media/datafeeds/check-failed-ingestion.png" alt-text="Sikertelen betöltési vizsgálat":::
 
 A *sikertelen* állapot azt jelzi, hogy az adatforrás betöltését később újra megkísérli a rendszer.
 A *hiba* állapota azt jelzi, hogy a metrikai tanácsadó nem próbálkozik újra az adatforrással. Az adatfrissítéshez manuálisan kell backfill/újratöltést indítania.
 
-A betöltés előrehaladását a **frissítés folyamata**lehetőségre kattintva is betöltheti. Az adatfeldolgozás befejezése után a metrikák elemre kattintva és a anomáliák észlelési eredményeinek ellenőrzésével is elvégezhető.
+A betöltés előrehaladását a **frissítés folyamata** lehetőségre kattintva is betöltheti. Az adatfeldolgozás befejezése után a metrikák elemre kattintva és a anomáliák észlelési eredményeinek ellenőrzésével is elvégezhető.
 
 ## <a name="next-steps"></a>Következő lépések
 - [Adatcsatornák kezelése](manage-data-feeds.md)

@@ -9,10 +9,10 @@ ms.date: 07/31/2019
 ms.author: sharrai
 ms.custom: MVC
 ms.openlocfilehash: a8cb5ec782b5932c13e321b2ba2d6513597fef52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87422640"
 ---
 # <a name="move-a-recovery-services-vault-and-azure-site-recovery-configuration-to-another-azure-region"></a>Recovery Services-tároló áthelyezése és Azure Site Recovery konfigurálása egy másik Azure-régióba
@@ -45,9 +45,9 @@ Ebben a dokumentumban a következőket fogja megtekinteni:
 ## <a name="identify-the-resources-that-were-used-by-azure-site-recovery"></a>Az Azure Site Recovery által használt erőforrások azonosítása
 Javasoljuk, hogy ezt a lépést a következőre való továbblépés előtt végezze el. A virtuális gépek replikálásakor könnyebb azonosítani a kapcsolódó erőforrásokat.
 
-Minden replikált Azure-beli virtuális gép esetében lépjen a **védett elemek**  >  **replikált**elemek  >  **tulajdonságaiba** , és azonosítsa a következő erőforrásokat:
+Minden replikált Azure-beli virtuális gép esetében lépjen a **védett elemek**  >  **replikált** elemek  >  **tulajdonságaiba** , és azonosítsa a következő erőforrásokat:
 
-- Cél erőforráscsoport
+- Cél-erőforráscsoport
 - Gyorsítótáras Storage-fiók
 - Cél Storage-fiók (nem felügyelt lemezes Azure-beli virtuális gép esetén) 
 - Célként megadott hálózat
@@ -56,7 +56,7 @@ Minden replikált Azure-beli virtuális gép esetében lépjen a **védett eleme
 ## <a name="disable-the-existing-disaster-recovery-configuration"></a>A vész-helyreállítási meglévő konfiguráció letiltása
 
 1. Nyissa meg a Recovery Services-tárolót.
-2. A **védett elemek**  >  **replikált elemek**területen kattintson a jobb gombbal a gépre, és válassza a **replikáció letiltása**lehetőséget.
+2. A **védett elemek**  >  **replikált elemek** területen kattintson a jobb gombbal a gépre, és válassza a **replikáció letiltása** lehetőséget.
 3. Ismételje meg ezt a lépést minden olyan virtuális gép esetében, amelyet át szeretne helyezni.
 
 > [!NOTE]

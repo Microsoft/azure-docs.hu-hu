@@ -9,10 +9,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
 ms.openlocfilehash: 8de7ad2808e5319819410b3125472e28496647b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91267142"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Hozzon létre egy virtuális WAN hub útválasztási táblázatot a NVA: Azure Portal
@@ -73,8 +73,8 @@ Frissítse a hubot egy hub útválasztási táblázattal. Használja a következ
 
 1. Navigáljon a virtuális WAN-ra.
 2. Kattintson arra a hubhoz, amelyhez útválasztási táblázatot kíván létrehozni.
-3. Kattintson a **...**, majd a **virtuális központ szerkesztése**elemre.
-4. A **virtuális központ szerkesztése** lapon görgessen le, és jelölje be a **tábla használata az útválasztáshoz**jelölőnégyzetet.
+3. Kattintson a **...**, majd a **virtuális központ szerkesztése** elemre.
+4. A **virtuális központ szerkesztése** lapon görgessen le, és jelölje be a **tábla használata az útválasztáshoz** jelölőnégyzetet.
 5. A **Ha cél előtagja** oszlopban adja hozzá a Címterület mezőt. A **Küldés a következő ugrásra** oszlopba adja hozzá a DMZ NVA hálózati adapter magánhálózati IP-címét.
 
    > [!NOTE]

@@ -6,10 +6,10 @@ ms.devlang: PHP
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: a7e0d1fa321f1b7c1295b5a640fe78b46adf1c72
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85341125"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-php"></a>Gyors útmutató: Service Bus Queues használata PHP-vel
@@ -20,9 +20,9 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre PHP-alkalmazásokat
 ## <a name="prerequisites"></a>Előfeltételek
 1. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja MSDN- [előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) , vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 2. Ha nem rendelkezik várólistával, hogy működjön a szolgáltatással, a várólista létrehozásához kövesse az [Azure Portal használata Service Bus üzenetsor létrehozásához](service-bus-quickstart-portal.md) című cikket.
-    1. Olvassa el Service Bus **várólisták**gyors **áttekintését** . 
+    1. Olvassa el Service Bus **várólisták** gyors **áttekintését** . 
     2. Hozzon létre egy Service Bus **névteret**. 
-    3. A **kapcsolatok karakterláncának**beolvasása. 
+    3. A **kapcsolatok karakterláncának** beolvasása. 
 
         > [!NOTE]
         > Ebben az oktatóanyagban a PHP használatával fog létrehozni egy **várólistát** a Service Bus névtérben. 
@@ -217,7 +217,7 @@ Abban az esetben, ha az alkalmazás az üzenet feldolgozását követően össze
 > [!NOTE]
 > [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy megismerte Service Bus várólisták alapjait, további információt a [várólisták, témakörök és előfizetések][Queues, topics, and subscriptions] című témakörben talál.
 
 További információért látogasson el a [php fejlesztői központba](https://azure.microsoft.com/develop/php/)is.

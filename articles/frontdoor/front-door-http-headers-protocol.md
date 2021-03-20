@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 12/04/2020
 ms.author: duau
 ms.openlocfilehash: 7f40b48473c04238d504288307039948fcacf90a
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97511144"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>A HTTP-fejlécek protokoll-támogatása az Azure-beli bejárati ajtón
@@ -64,7 +64,7 @@ Az alábbi opcionális válasz fejlécek engedélyezéséhez az "X-Azure-DebugIn
 | X – Azure – InternalError | Ez a fejléc tartalmazza azt a hibakódot, amely bevezeti az ajtót a kérelem feldolgozásakor. Ez a hiba azt jelzi, hogy a probléma belső a bejárati ajtó szolgáltatás/infrastruktúra számára. Probléma jelentése a támogatáshoz.  |
 | X – Azure – ExternalError | *X-Azure-ExternalError: 0x830c1011, a hitelesítésszolgáltató ismeretlen.* </br> Ez a fejléc azt a hibakódot jeleníti meg, amelyet a bejárati ajtó-kiszolgálók a háttér-kiszolgálóval való kapcsolat létesítése során hoznak létre a kérelem feldolgozásához. Ez a fejléc segítséget nyújt a bejárati ajtó és a háttérbeli alkalmazás közötti kapcsolat hibáinak azonosításához. Ez a fejléc részletes hibaüzenetet tartalmaz, amely segítséget nyújt a háttérbeli kapcsolati problémák azonosításában (például DNS-feloldás, érvénytelen tanúsítvány stb.). |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Bejárati ajtó létrehozása](quickstart-create-front-door.md)
 - [Az előtérben működik](front-door-routing-architecture.md)

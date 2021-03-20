@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/04/2020
 ms.openlocfilehash: b8f3a8e06bb27051417205c4dc3141948960bb00
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98567794"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Gyors útmutató: Azure Database for MySQL-kiszolgáló létrehozása a Azure Portal használatával
@@ -27,7 +27,7 @@ Azure-előfizetésre van szükség. Ha nem rendelkezik Azure-előfizetéssel, mi
    >[!div class="mx-imgBorder"]
    > :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/find-azure-mysql-in-portal.png" alt-text="Azure Database for MySQL keresése":::
 
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 2. A **Azure Database for MySQL központi telepítési lehetőség kiválasztása** lapon válassza az  **egyetlen kiszolgáló** lehetőséget:
    >[!div class="mx-imgBorder"]
@@ -149,7 +149,7 @@ A kiszolgáló törléséhez válassza a **Törlés** lehetőséget a kiszolgál
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png" alt-text="A kiszolgáló áttekintés lapján található Törlés gombot megjelenítő képernyőkép.":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 >[PHP-alkalmazás létrehozása Windowson MySQL-sel](../app-service/tutorial-php-mysql-app.md) <br/>
 

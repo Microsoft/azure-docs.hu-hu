@@ -4,10 +4,10 @@ description: Ez a cikk a SQL Server Azure-ba történő biztonsági mentését i
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.openlocfilehash: 510d9637031928e31abaa5f82a5bf58c6ef44719
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91316841"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Információk az Azure-beli virtuális gépeken futó SQL Server Backupról
@@ -62,19 +62,19 @@ Az összes többi verzió esetében javítsa ki az engedélyeket a következő l
 
       ![A fiókok megjelenítéséhez nyissa meg a biztonság/bejelentkezések mappát](./media/backup-azure-sql-database/security-login-list.png)
 
-  3. Kattintson a jobb gombbal a **bejelentkezések** mappára, és válassza az **új bejelentkezés**lehetőséget. A **Bejelentkezés – új**területen válassza a **Keresés**lehetőséget.
+  3. Kattintson a jobb gombbal a **bejelentkezések** mappára, és válassza az **új bejelentkezés** lehetőséget. A **Bejelentkezés – új** területen válassza a **Keresés** lehetőséget.
 
       ![A bejelentkezés – új párbeszédpanelen válassza a keresés lehetőséget.](./media/backup-azure-sql-database/new-login-search.png)
 
-  4. A virtuális gép regisztrálása és az SQL-felderítési fázis során létrejött a Windows Virtual Service Account **NT SERVICE\AzureWLBackupPluginSvc** . Adja meg a fiók nevét az **adja meg a kijelölendő objektum nevét mezőben**látható módon. Válassza **a Névellenőrzés lehetőséget** a név feloldásához. Kattintson az **OK** gombra.
+  4. A virtuális gép regisztrálása és az SQL-felderítési fázis során létrejött a Windows Virtual Service Account **NT SERVICE\AzureWLBackupPluginSvc** . Adja meg a fiók nevét az **adja meg a kijelölendő objektum nevét mezőben** látható módon. Válassza **a Névellenőrzés lehetőséget** a név feloldásához. Válassza az **OK** lehetőséget.
 
       ![Az ismeretlen szolgáltatásnév feloldásához válassza a Névellenőrzés lehetőséget](./media/backup-azure-sql-database/check-name.png)
 
-  5. A **kiszolgálói szerepkörök**területen ellenőrizze, hogy ki van-e választva a **sysadmin (rendszergazda** ) szerepkör. Kattintson az **OK** gombra. A szükséges engedélyeknek már léteznie kell.
+  5. A **kiszolgálói szerepkörök** területen ellenőrizze, hogy ki van-e választva a **sysadmin (rendszergazda** ) szerepkör. Válassza az **OK** lehetőséget. A szükséges engedélyeknek már léteznie kell.
 
       ![Győződjön meg arról, hogy a sysadmin kiszolgálói szerepkör van kiválasztva](./media/backup-azure-sql-database/sysadmin-server-role.png)
 
-  6. Most társítsa az adatbázist a Recovery Services-tárolóhoz. A Azure Portal a **védett kiszolgálók** listában kattintson a jobb gombbal arra a kiszolgálóra, amely hibás állapotban van > az adatbázisok újbóli **felderítése**elemre.
+  6. Most társítsa az adatbázist a Recovery Services-tárolóhoz. A Azure Portal a **védett kiszolgálók** listában kattintson a jobb gombbal arra a kiszolgálóra, amely hibás állapotban van > az adatbázisok újbóli **felderítése** elemre.
 
       ![Ellenőrizze, hogy a kiszolgáló rendelkezik-e megfelelő engedélyekkel](./media/backup-azure-sql-database/check-erroneous-server.png)
 
@@ -103,7 +103,7 @@ Adja hozzá az **NT AUTHORITY\SYSTEM** és **NT Service\AzureWLBackupPluginSvc**
 
     ![Szerepkörök kiválasztása a SSMS-ben](media/backup-azure-sql-database/sql-2k8-server-roles-ssms.png)
 
-6. Ugrás az *állapotra*. Engedély *megadása* az adatbázismotor és a bejelentkezés *engedélyezettként*való bekapcsolásához.
+6. Ugrás az *állapotra*. Engedély *megadása* az adatbázismotor és a bejelentkezés *engedélyezettként* való bekapcsolásához.
 
     ![Engedélyek megadása a SSMS-ben](media/backup-azure-sql-database/sql-2k8-grant-permission-ssms.png)
 

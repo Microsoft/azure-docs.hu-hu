@@ -9,10 +9,10 @@ ms.date: 01/18/2021
 ms.author: ronytho
 ms.reviewer: jrasnick
 ms.openlocfilehash: f55251932c8aa8f632bd3b498943ac722f006dee
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98569909"
 ---
 # <a name="azure-synapse-analytics-managed-virtual-network"></a>Azure szinapszis Analytics által felügyelt Virtual Network
@@ -70,7 +70,7 @@ A munkaterület létrehozása után megtekintheti, hogy az Azure szinapszis-munk
 
 ![A munkaterület áttekintése Azure Portal](./media/synapse-workspace-managed-vnet/enable-managed-vnet-2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure szinapszis-munkaterület](../quickstart-create-workspace.md) létrehozása
 

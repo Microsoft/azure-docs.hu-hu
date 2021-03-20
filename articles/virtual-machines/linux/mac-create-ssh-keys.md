@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 163d200573dc93f7c9e1d5e404febd4f939a6164
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: c77375782ba23114be1953d9f8ad7de31ab06f1f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102565257"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582187"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Gyors lépések: nyilvános SSH-kulcspár létrehozása és használata az Azure-ban Linux rendszerű virtuális gépekhez
 
@@ -97,4 +97,4 @@ Ha a virtuális gép az igény szerinti hozzáférési szabályzatot használja,
 
 * Az SSH-kulcspár használatával kapcsolatos további információkért tekintse meg az [SSH-kulcspár létrehozásának és kezelésének részletes lépéseit](create-ssh-keys-detailed.md).
 
-* Ha problémái vannak az Azure-beli virtuális gépek SSH-kapcsolataival, tekintse meg az [SSH-kapcsolatok Azure Linux rendszerű virtuális géppel való megoldásával kapcsolatos](../troubleshooting/troubleshoot-ssh-connection.md)problémát
+* Ha problémái vannak az Azure-beli virtuális gépek SSH-kapcsolataival, tekintse meg az [SSH-kapcsolatok Azure Linux rendszerű virtuális géppel való megoldásával kapcsolatos](/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)problémát

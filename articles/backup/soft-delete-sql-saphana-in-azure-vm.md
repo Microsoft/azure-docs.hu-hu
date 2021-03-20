@@ -4,10 +4,10 @@ description: Ismerje meg, hogy az Azure-beli virtuális gépen futó SQL Server 
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 2a442997d426ff0bf4c74b0b45f7657cc0593b82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91254295"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Az Azure-beli virtuális gépeken futó SQL Server-kiszolgáló és a SAP HANA Azure-beli virtuális gépek számítási feladatainak törlése
@@ -21,11 +21,11 @@ A [Soft delete](backup-azure-security-feature-cloud.md) egy biztonsági funkció
 >[!NOTE]
 >Ezek az utasítások az Azure virtuális gépen SAP HANAra is érvényesek.
 
-1. Egy SQL Server-adatbázis biztonsági mentési adatfájljainak törléséhez le kell állítani a biztonsági mentést. A Azure Portal nyissa meg a Recovery Services-tárolót, nyissa meg a biztonsági mentési elemet, és válassza a **biztonsági mentés leállítása**lehetőséget.
+1. Egy SQL Server-adatbázis biztonsági mentési adatfájljainak törléséhez le kell állítani a biztonsági mentést. A Azure Portal nyissa meg a Recovery Services-tárolót, nyissa meg a biztonsági mentési elemet, és válassza a **biztonsági mentés leállítása** lehetőséget.
 
    ![Biztonsági mentés leállítása](./media/soft-delete-sql-saphana-in-azure-vm/stop-backup.png)
 
-2. A következő ablakban lehetősége lesz törölni vagy megőrizni a biztonsági mentési adatait. Ha a **biztonsági másolati elemek törlése**lehetőséget választja, az adatbázis biztonsági másolata nem lesz véglegesen törölve. Ehelyett a rendszer 14 napig őrzi meg a biztonsági mentési adatait a helyreállítható törölt állapotban. A törlés a 15. napon, a normál riasztási e-mailekkel, az első, a 12. és a 15. napon értesíti a felhasználót az adatbázis biztonsági mentési állapotáról.
+2. A következő ablakban lehetősége lesz törölni vagy megőrizni a biztonsági mentési adatait. Ha a **biztonsági másolati elemek törlése** lehetőséget választja, az adatbázis biztonsági másolata nem lesz véglegesen törölve. Ehelyett a rendszer 14 napig őrzi meg a biztonsági mentési adatait a helyreállítható törölt állapotban. A törlés a 15. napon, a normál riasztási e-mailekkel, az első, a 12. és a 15. napon értesíti a felhasználót az adatbázis biztonsági mentési állapotáról.
 
    ![Biztonsági mentési adatok törlése](./media/soft-delete-sql-saphana-in-azure-vm/delete-backup-data.png)
 
@@ -33,7 +33,7 @@ A [Soft delete](backup-azure-security-feature-cloud.md) egy biztonsági funkció
 
    ![Soft törölt elemek](./media/soft-delete-sql-saphana-in-azure-vm/soft-deleted-items.png)
 
-4. A puha törlésű adatbázis visszaállításához előbb törölni kell a szolgáltatást. A törlés visszavonásához válassza a Soft-Deleted DB elemet, majd válassza a **Törlés**visszavonása lehetőséget.
+4. A puha törlésű adatbázis visszaállításához előbb törölni kell a szolgáltatást. A törlés visszavonásához válassza a Soft-Deleted DB elemet, majd válassza a **Törlés** visszavonása lehetőséget.
 
    ![Adatbázis törlésének visszavonása](./media/soft-delete-sql-saphana-in-azure-vm/undelete-database.png)
 
@@ -45,7 +45,7 @@ A [Soft delete](backup-azure-security-feature-cloud.md) egy biztonsági funkció
 
    ![Virtuális gép visszaállítása](./media/soft-delete-sql-saphana-in-azure-vm/restore-vm.png)
 
-6. A törlési folyamat befejezése után az állapot vissza fog térni a "biztonsági mentés leállítása az adatmegőrzéshez" értékre, majd a **biztonsági mentés folytatása**lehetőségre kattint. A **biztonsági mentés folytatása** művelet visszaadja az aktív állapotú biztonsági mentési elemet, amely a felhasználó által a biztonsági mentési és adatmegőrzési ütemtervet definiáló biztonsági mentési házirendhez van társítva.
+6. A törlési folyamat befejezése után az állapot vissza fog térni a "biztonsági mentés leállítása az adatmegőrzéshez" értékre, majd a **biztonsági mentés folytatása** lehetőségre kattint. A **biztonsági mentés folytatása** művelet visszaadja az aktív állapotú biztonsági mentési elemet, amely a felhasználó által a biztonsági mentési és adatmegőrzési ütemtervet definiáló biztonsági mentési házirendhez van társítva.
 
    ![Biztonsági mentés folytatása](./media/soft-delete-sql-saphana-in-azure-vm/resume-backup.png)
 

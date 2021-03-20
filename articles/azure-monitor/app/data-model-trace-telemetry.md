@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 8fea4bbf590816b2ef168a2ed16f197389ee282e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87320544"
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>Nyomkövetési telemetria: Application Insights adatmodell
@@ -29,7 +29,7 @@ Nyomkövetés súlyossági szintje Az érték lehet:,,, `Verbose` `Information` 
 
 [!INCLUDE [application-insights-data-model-properties](../../../includes/application-insights-data-model-properties.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Ismerkedjen meg a .net-nyomkövetési naplók Application Insights](./asp-net-trace-logs.md).
 - [Ismerkedjen meg a Java-nyomkövetési naplók Application Insights](./java-trace-logs.md).

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/24/2019
 ms.openlocfilehash: 66ebb81f28727c954d3b47bac6829d456d03024f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91319486"
 ---
 # <a name="use-powershell-to-import-a-bacpac-file-into-a-database-in-sql-database"></a>BACPAC-fájl importálása a PowerShell használatával SQL Database-adatbázisba
@@ -53,7 +53,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [Új – AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport) | Importál egy BACPAC-fájlt, és létrehoz egy új adatbázist a kiszolgálón. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure PowerShellről: [Azure PowerShell dokumentáció](/powershell/azure/).
 

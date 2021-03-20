@@ -12,10 +12,10 @@ ms.reviewer: fryu
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 37b8c79df5b208feea185292fa09c323b64fa27d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89001807"
 ---
 # <a name="configure-transport-layer-security-tls-for-a-client-application"></a>Transport Layer Security (TLS) konfigurálása ügyfélalkalmazás számára
@@ -80,7 +80,7 @@ Annak ellenőrzéséhez, hogy az ügyfél a megadott TLS-verziót használta-e k
 
 :::image type="content" source="media/transport-layer-security-configure-client-version/fiddler-trace-tls-version.png" alt-text="A kérelemben használt TLS-verziót jelző Hegedűs nyomkövetését bemutató képernyőkép":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Transport Layer Security (TLS) minimálisan szükséges verziójának konfigurálása a Storage-fiókhoz](transport-layer-security-configure-minimum-version.md)
 - [Biztonsági javaslatok a blob Storage-hoz](../blobs/security-recommendations.md)

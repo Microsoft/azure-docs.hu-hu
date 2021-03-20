@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
 ms.openlocfilehash: 0a3975578f3424276e3655e0ca8fba903194a2dc
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98567084"
 ---
 # <a name="tutorial-assess-hyper-v-vms-for-migration-to-azure"></a>Oktatóanyag: Hyper-V virtuális gépek felmérése az Azure-ba való áttelepítéshez
@@ -21,7 +21,7 @@ Az Azure-ba való Migrálás részeként felméri a helyszíni számítási fela
 Ez a cikk bemutatja, hogyan értékelheti a felderített Hyper-V virtuális gépeket (VM-EK) az Azure-ba való áttelepítéshez a Azure Migrate: Server Assessment Tool használatával.
 
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 - Értékelés futtatása.
 - Értékelés elemzése.
@@ -195,7 +195,7 @@ A megbízhatósági minősítések a következők.
 
 [További](concepts-assessment-calculation.md#confidence-ratings-performance-based) információ a megbízhatósági minősítésekről.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [függőségi leképezést](concepts-dependency-visualization.md)használó számítógép-függőségek keresése.
 - [Ügynök-alapú](how-to-create-group-machine-dependencies.md) függőség leképezésének beállítása.

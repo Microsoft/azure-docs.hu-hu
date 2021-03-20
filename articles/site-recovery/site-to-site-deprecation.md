@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/25/2020
 ms.author: sharrai
 ms.openlocfilehash: 9ffe7a3158b1de6828350947dcf81ef41d08708d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87421841"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>Az ügyfél által felügyelt webhelyek (VMM) közötti vész-helyreállítás elavult Azure Site Recovery használatával
@@ -42,7 +42,7 @@ Az alábbiakban azokat az alternatívákat láthatja, amelyekkel az ügyfél kiv
 - 2. lehetőség: válassza ki a helyek közötti replikálást a mögöttes [Hyper-V replika megoldás](/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica)használatával, de nem tudja kezelni a Dr-konfigurációkat a Azure Portal Azure site Recovery használatával. 
 
 
-## <a name="remediation-steps"></a>Szervizelési lépések
+## <a name="remediation-steps"></a>Megoldási lépések
 
 Ha az 1. lehetőséget választja, hajtsa végre a következő lépéseket:
 
@@ -57,11 +57,11 @@ Ha az 1. lehetőséget választja, hajtsa végre a következő lépéseket:
 
 Ha a Hyper-V replika használatának 2. lehetőségét választja, hajtsa végre a következő lépéseket:
 
-1. A **védett elemek**  >  **replikált elemek**területen kattintson a jobb gombbal a gépre > a **replikáció letiltása**lehetőségre.
-2. A **replikáció letiltása**lapon válassza az **Eltávolítás**lehetőséget.
+1. A **védett elemek**  >  **replikált elemek** területen kattintson a jobb gombbal a gépre > a **replikáció letiltása** lehetőségre.
+2. A **replikáció letiltása** lapon válassza az **Eltávolítás** lehetőséget.
 
     Ezzel eltávolítja a replikált elemet a Azure Site Recoveryról (a számlázás leállt). A helyszíni virtuális gépen a replikálási konfiguráció **nem** lesz törölve. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tervezze meg az elavult alkalmazást, és válasszon egy alternatív lehetőséget, amely az infrastruktúra és a vállalat számára legmegfelelőbb. Ha bármilyen kérdése van, forduljon Microsoft ügyfélszolgálata
 

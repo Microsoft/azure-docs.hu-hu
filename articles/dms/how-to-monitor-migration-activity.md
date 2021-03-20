@@ -12,10 +12,10 @@ ms.custom: seo-lt-2019
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.openlocfilehash: dc9123735ef65bec89e99a14d25cba881be306fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91297470"
 ---
 # <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>Áttelepítési tevékenység figyelése a Azure Database Migration Service használatával
@@ -71,7 +71,7 @@ A következő táblázat felsorolja az adatbázis szintű panel mezőit, és ism
       <td>Az áttelepítés nem sikerült. Az áttelepítési hibák megtekintéséhez kattintson az áttelepítés részletei elemre.</td>
     </tr>
     <tr>
-      <td rowspan="5" class="migration-details"><strong>A migrálás részletei</strong></td>
+      <td rowspan="5" class="migration-details"><strong>Áttelepítési adatok</strong></td>
       <td>Az áttelepítési folyamat indítása</td>
       <td>A DMS az áttelepítési folyamat beállítására szolgál.</td>
     </tr>
@@ -93,7 +93,7 @@ A következő táblázat felsorolja az adatbázis szintű panel mezőit, és ism
     </tr>
     <tr>
       <td rowspan="1" class="duration"><strong>Időtartam</strong></td>
-      <td>N.A.</td>
+      <td>N/A</td>
       <td>Az áttelepítési tevékenységnek az áttelepítésre való inicializálásának teljes ideje, vagy hiba történt az áttelepítés során.</td>
     </tr>
      </tbody>
@@ -108,7 +108,7 @@ A panel alsó részén láthatók a táblák, és az áttelepítés előrehalad�
 
 Az alábbi táblázat a tábla szintű részletekben látható mezőket ismerteti.
 
-| Mező neve        | Leírás       |
+| Mező neve        | Description       |
 | ------------- | ------------- |
 | **A teljes terhelés befejeződött**      | A táblák száma teljes adatterheléssel fejeződött be. |
 | **Teljes terhelés várólistán**      | A teljes betöltésre váró táblák száma.      |
@@ -129,7 +129,7 @@ Két lap jelenik meg, amelyek az áttelepítés előrehaladását mutatják be a
 
 Az alábbi táblázat a táblázat szintű áttelepítési folyamat során megjelenő mezőket ismerteti.
 
-| Mező neve        | Leírás       |
+| Mező neve        | Description       |
 | ------------- | ------------- |
 | **Állapot – szinkronizálás**      | Folyamatos szinkronizálás fut. |
 | **Insert**      | A célhelyre alkalmazott CDC-beszúrások száma.      |

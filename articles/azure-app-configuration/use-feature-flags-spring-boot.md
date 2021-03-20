@@ -15,10 +15,10 @@ ms.date: 09/26/2019
 ms.author: mametcal
 ms.custom: mvc, devx-track-java
 ms.openlocfilehash: 0dcf85add4e1c9f1d701c4ce4a122c8d6b31382a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92077830"
 ---
 # <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>Oktatóanyag: funkció-jelzők használata Spring boot-alkalmazásokban
@@ -100,7 +100,7 @@ Az egyezmény szerint a `feature-management` YML-dokumentum szakasza a szolgált
 
 ## <a name="feature-flag-checks"></a>Szolgáltatás-jelző ellenőrzése
 
-A szolgáltatások felügyeletének alapszintű mintája először ellenőrizze, hogy be van *-e állítva*a szolgáltatás jelölője. Ebben az esetben a Feature Manager ezután futtatja a funkció által tartalmazott műveleteket. Például:
+A szolgáltatások felügyeletének alapszintű mintája először ellenőrizze, hogy be van *-e állítva* a szolgáltatás jelölője. Ebben az esetben a Feature Manager ezután futtatja a funkció által tartalmazott műveleteket. Például:
 
 ```java
 private FeatureManager featureManager;
@@ -128,7 +128,7 @@ public class HomeController {
 
 ## <a name="controller-actions"></a>Vezérlő műveletei
 
-Az MVC-vezérlőkben az `@FeatureGate` attribútum segítségével szabályozhatja, hogy egy adott művelet engedélyezve van-e. A következő `Index` művelet végrehajtása szükséges a `feature-a` futtatásához: *on*
+Az MVC-vezérlőkben az `@FeatureGate` attribútum segítségével szabályozhatja, hogy egy adott művelet engedélyezve van-e. A következő `Index` művelet végrehajtása szükséges a `feature-a` futtatásához: 
 
 ```java
 @GetMapping("/")

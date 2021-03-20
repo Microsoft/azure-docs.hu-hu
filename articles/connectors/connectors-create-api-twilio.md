@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: d144960972f5a1b45e88cc3a0ea015925cae3b91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87288150"
 ---
 # <a name="manage-messages-in-twilio-with-azure-logic-apps"></a>Üzenetek kezelése a Twilio-ben Azure Logic Apps
@@ -45,17 +45,17 @@ A Azure Logic Apps és a Twilio-összekötővel olyan automatizált feladatokat 
 
 1. Válasszon egy elérési utat: 
 
-     * Az utolsó lépésben, amelyben hozzá szeretne adni egy műveletet, válassza az **új lépés**lehetőséget. 
+     * Az utolsó lépésben, amelyben hozzá szeretne adni egy műveletet, válassza az **új lépés** lehetőséget. 
 
        -vagy-
 
      * A művelethez hozzáadni kívánt lépések között vigye az egérmutatót a lépések közötti nyíl fölé. 
-     Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
+     Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása** lehetőséget.
      
        A keresőmezőbe írja be szűrőként a "twilio" kifejezést. 
        A műveletek listában válassza ki a kívánt műveletet.
 
-1. Adja meg a kapcsolathoz szükséges adatokat, majd kattintson a **Létrehozás**gombra:
+1. Adja meg a kapcsolathoz szükséges adatokat, majd kattintson a **Létrehozás** gombra:
 
    * A kapcsolódáshoz használandó név
    * Az Ön Twilio-fiókjának azonosítója 
@@ -72,6 +72,6 @@ Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai r�
 * Ha kérdése van, látogasson el a [Microsoft Q&a Azure Logic apps vonatkozó kérdés oldalára](/answers/topics/azure-logic-apps.html).
 * A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

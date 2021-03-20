@@ -4,10 +4,10 @@ description: Ismerkedjen meg a Azure Backup Server új szolgáltatásaival. Ez a
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: b077296e58e1193e454a686a392d802e905500a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91292897"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Tárterület hozzáadása az Azure Backup Serverhez
@@ -36,27 +36,27 @@ A Backup Server v2 vagy újabb verziója fogadja a tárolási köteteket. Kötet
 
 A Backup Server v2 vagy újabb verziókkal, a lemezes tárolással rendelkező kötetek használatával kezelheti a tárhely feletti irányítást. Egy kötet lehet egyetlen lemez. Ha azonban később szeretné bővíteni a tárterületet, hozzon létre egy kötetet a tárolóhelyek használatával létrehozott lemezből. Ez segíthet, ha ki szeretné bővíteni a kötetet a biztonsági mentési tárolóban. Ez a szakasz ajánlott eljárásokat tartalmaz a kötet létrehozásához ezzel a telepítővel.
 
-1. A Kiszolgálókezelőben válassza a **fájl-és tárolási szolgáltatások**  >  **kötetek**  >  **tárolási készletek**elemet. A **fizikai lemezek**területen válassza az **új tárolási készlet**lehetőséget.
+1. A Kiszolgálókezelőben válassza a **fájl-és tárolási szolgáltatások**  >  **kötetek**  >  **tárolási készletek** elemet. A **fizikai lemezek** területen válassza az **új tárolási készlet** lehetőséget.
 
     ![Új tárolási készlet létrehozása](./media/backup-mabs-add-storage/mabs-add-storage-1.png)
 
-2. A **feladatok** legördülő listában válassza az **új virtuális lemez**lehetőséget.
+2. A **feladatok** legördülő listában válassza az **új virtuális lemez** lehetőséget.
 
     ![Virtuális lemez hozzáadása](./media/backup-mabs-add-storage/mabs-add-storage-2.png)
 
-3. Válassza ki a tárolási készletet, majd válassza a **fizikai lemez hozzáadása**lehetőséget.
+3. Válassza ki a tárolási készletet, majd válassza a **fizikai lemez hozzáadása** lehetőséget.
 
     ![Fizikai lemez hozzáadása](./media/backup-mabs-add-storage/mabs-add-storage-3.png)
 
-4. Válassza ki a fizikai lemezt, majd válassza a **virtuális lemez kiterjesztése**lehetőséget.
+4. Válassza ki a fizikai lemezt, majd válassza a **virtuális lemez kiterjesztése** lehetőséget.
 
     ![A virtuális lemez kiterjesztése](./media/backup-mabs-add-storage/mabs-add-storage-4.png)
 
-5. Válassza ki a virtuális lemezt, majd válassza az **új kötet**lehetőséget.
+5. Válassza ki a virtuális lemezt, majd válassza az **új kötet** lehetőséget.
 
     ![Új kötet létrehozása](./media/backup-mabs-add-storage/mabs-add-storage-5.png)
 
-6. A **kiszolgáló és lemez kiválasztása** párbeszédpanelen válassza ki a kiszolgálót és az új lemezt. Ezután válassza a **tovább**lehetőséget.
+6. A **kiszolgáló és lemez kiválasztása** párbeszédpanelen válassza ki a kiszolgálót és az új lemezt. Ezután válassza a **tovább** lehetőséget.
 
     ![A kiszolgáló és a lemez kiválasztása](./media/backup-mabs-add-storage/mabs-add-storage-6.png)
 
@@ -67,7 +67,7 @@ A Backup Server v2 vagy újabb verziókkal, a lemezes tárolással rendelkező k
 > - Csak egy lemezt adjon hozzá a készlethez, hogy az oszlopok száma 1 legyen. Ezután szükség szerint lemezeket adhat hozzá.
 > - Ha egy ugrásban több lemezt ad hozzá a tárolóhoz, a lemezek száma az oszlopok számának megfelelően tárolódik. Ha több lemez van hozzáadva, akkor csak az oszlopok számának többszöröse lehet.
 
-Ha kötetet szeretne hozzáadni a biztonsági mentési kiszolgálóhoz, a **felügyelet** ablaktáblán Ellenőrizze újra a tárolót, majd válassza a **Hozzáadás**lehetőséget. Megjelenik a Backup Server-tárolóhoz hozzáadandó összes kötet listája. Miután hozzáadta a rendelkezésre álló köteteket a kiválasztott kötetek listájához, egy felhasználóbarát nevet adhat nekik, amely segít a kezelésben. Ha ezeket a köteteket ReFS szeretné formázni, hogy a biztonsági mentési kiszolgáló használhassa a modern biztonsági másolati tárhely előnyeit, kattintson az **OK gombra**.
+Ha kötetet szeretne hozzáadni a biztonsági mentési kiszolgálóhoz, a **felügyelet** ablaktáblán Ellenőrizze újra a tárolót, majd válassza a **Hozzáadás** lehetőséget. Megjelenik a Backup Server-tárolóhoz hozzáadandó összes kötet listája. Miután hozzáadta a rendelkezésre álló köteteket a kiválasztott kötetek listájához, egy felhasználóbarát nevet adhat nekik, amely segít a kezelésben. Ha ezeket a köteteket ReFS szeretné formázni, hogy a biztonsági mentési kiszolgáló használhassa a modern biztonsági másolati tárhely előnyeit, kattintson az **OK gombra**.
 
 ![Elérhető kötetek hozzáadása](./media/backup-mabs-add-storage/mabs-add-storage-7.png)
 
@@ -101,11 +101,11 @@ Miután frissítette vagy telepítette a Backup Server v2-t, és az operációs 
 
 A védelmi csoportokat nem kötelező átállítani a Modern Backup Storage használatára. A védelmi csoport frissítéséhez állítsa le az összes adatforrás védelmét az adat megőrzése lehetőség használatával. Ezután adja hozzá az adatforrásokat egy új védelmi csoporthoz.
 
-1. A felügyeleti konzol válassza ki a **védelmi** funkciót. A **védelmi csoport tagja** listában kattintson a jobb gombbal a tagra, majd válassza a **tag védelmének leállítása**lehetőséget.
+1. A felügyeleti konzol válassza ki a **védelmi** funkciót. A **védelmi csoport tagja** listában kattintson a jobb gombbal a tagra, majd válassza a **tag védelmének leállítása** lehetőséget.
 
    ![Tag védelmének leállítása](/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
-2. A **csoportból való eltávolítás** párbeszédpanelen tekintse át a felhasznált lemezterületet és a tárterület rendelkezésre álló szabad területét. Az alapértelmezés ilyenkor a helyreállítási pontok meghagyása a lemezen, hagyva, hogy lejárjanak a megőrzési szabályzatuk szerint. Kattintson az **OK** gombra.
+2. A **csoportból való eltávolítás** párbeszédpanelen tekintse át a felhasznált lemezterületet és a tárterület rendelkezésre álló szabad területét. Az alapértelmezés ilyenkor a helyreállítási pontok meghagyása a lemezen, hagyva, hogy lejárjanak a megőrzési szabályzatuk szerint. Válassza az **OK** lehetőséget.
 
    Ha azonnal vissza kívánja adni a felhasznált lemezterületet az ingyenes tárterületre, jelölje be a **replika törlése a lemezen** jelölőnégyzetet az ehhez a taghoz tartozó biztonsági mentési információk (és helyreállítási pontok) törléséhez.
 
@@ -119,18 +119,18 @@ Ha az örökölt tárolót a Backup Serverrel szeretné használni, lehetséges,
 
 Lemezterület növelése:
 
-1. A felügyeleti konzol válassza a **felügyeleti**  >  **Disk Storage**  >  **Hozzáadás**elemet.
+1. A felügyeleti konzol válassza a **felügyeleti**  >  **Disk Storage**  >  **Hozzáadás** elemet.
 
     ![Disk Storage hozzáadása párbeszédpanel](/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 
-2. A **Disk Storage hozzáadása** párbeszédpanelen válassza a **lemezek hozzáadása**lehetőséget.
+2. A **Disk Storage hozzáadása** párbeszédpanelen válassza a **lemezek hozzáadása** lehetőséget.
 
-3. Az elérhető lemezek listájában jelölje ki a hozzáadni kívánt lemezeket, válassza a **Hozzáadás**lehetőséget, majd kattintson **az OK gombra**.
+3. Az elérhető lemezek listájában jelölje ki a hozzáadni kívánt lemezeket, válassza a **Hozzáadás** lehetőséget, majd kattintson **az OK gombra**.
 
 ## <a name="next-steps"></a>Következő lépések
 
 A Backup Server telepítése után megtudhatja, hogyan készítheti elő a kiszolgálót, vagy megkezdheti a munkaterhelések védelmét.
 
 - [A biztonsági mentési kiszolgáló munkaterhelésének előkészítése](backup-azure-microsoft-azure-backup.md)
-- [Egy VMware-kiszolgáló biztonsági mentése a Backup Server használatával](backup-azure-backup-server-vmware.md)
-- [Biztonsági másolat készítése a Backup Server használatával SQL Server](backup-azure-sql-mabs.md)
+- [VMware-kiszolgáló biztonsági mentése a Backup Server használatával](backup-azure-backup-server-vmware.md)
+- [Az SQL Server biztonsági mentése a Backup Server használatával](backup-azure-sql-mabs.md)

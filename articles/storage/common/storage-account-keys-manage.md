@@ -10,10 +10,10 @@ ms.date: 04/24/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: e5ea94fea00771b64634d6c28a7879fabb195f09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89069659"
 ---
 # <a name="manage-storage-account-access-keys"></a>A Storage-fiók hozzáférési kulcsainak kezelése
@@ -34,7 +34,7 @@ A Storage-fiók hozzáférési kulcsainak vagy kapcsolati karakterláncának meg
 
 1. Navigáljon a Storage-fiókjához a [Azure Portal](https://portal.azure.com).
 1. A **Beállítások** területen válassza a **Hozzáférési kulcsok** elemet. Megjelennek a fiókhoz tartozó hozzáférési kulcsok, valamint az egyes kulcsokhoz tartozó kapcsolati sztringek.
-1. Keresse meg a **kulcs** értékét a **key1**alatt, és kattintson a **Másolás** gombra a fiók kulcsának másolásához.
+1. Keresse meg a **kulcs** értékét a **key1** alatt, és kattintson a **Másolás** gombra a fiók kulcsának másolásához.
 1. Másik lehetőségként átmásolhatja a teljes kapcsolatok sztringjét. Keresse meg a **Kapcsolati sztring** értéket a **key1** területen, és kattintson a **Másolás** gombra a kapcsolati sztring másolásához.
 
     :::image type="content" source="media/storage-account-keys-manage/portal-connection-string.png" alt-text="A Azure Portal elérési kulcsainak megtekintését bemutató képernyőkép":::
@@ -66,7 +66,7 @@ az storage account keys list \
 
 A két kulcs közül bármelyiket használhatja az Azure Storage eléréséhez, de általánosságban ajánlott az első kulcs használata, és a második kulcs használatának fenntartása a kulcsok elforgatásakor.
 
-A fiók hozzáférési kulcsainak megtekintéséhez vagy olvasásához a felhasználónak vagy szolgáltatás-rendszergazdának kell lennie, vagy hozzá kell rendelnie egy olyan Azure-szerepkört, amely tartalmazza a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/műveletet**. Néhány Azure-beli beépített szerepkör, amely tartalmazza ezt a műveletet, a **tulajdonos**, a **közreműködő**és a **Storage-fiók kulcs-kezelő szolgáltatásának szerepköre** . A szolgáltatás-rendszergazdai szerepkörrel kapcsolatos további információkért lásd a [klasszikus előfizetés-rendszergazdai szerepköröket, az Azure-szerepköröket és az Azure ad-szerepköröket](../../role-based-access-control/rbac-and-directory-admin-roles.md). Az Azure Storage beépített szerepköreivel kapcsolatos részletes információkért tekintse meg az Azure [RBAC beépített Azure-beli beépített szerepköreinek](../../role-based-access-control/built-in-roles.md#storage) **tárolási** szakaszát.
+A fiók hozzáférési kulcsainak megtekintéséhez vagy olvasásához a felhasználónak vagy szolgáltatás-rendszergazdának kell lennie, vagy hozzá kell rendelnie egy olyan Azure-szerepkört, amely tartalmazza a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/műveletet**. Néhány Azure-beli beépített szerepkör, amely tartalmazza ezt a műveletet, a **tulajdonos**, a **közreműködő** és a **Storage-fiók kulcs-kezelő szolgáltatásának szerepköre** . A szolgáltatás-rendszergazdai szerepkörrel kapcsolatos további információkért lásd a [klasszikus előfizetés-rendszergazdai szerepköröket, az Azure-szerepköröket és az Azure ad-szerepköröket](../../role-based-access-control/rbac-and-directory-admin-roles.md). Az Azure Storage beépített szerepköreivel kapcsolatos részletes információkért tekintse meg az Azure [RBAC beépített Azure-beli beépített szerepköreinek](../../role-based-access-control/built-in-roles.md#storage) **tárolási** szakaszát.
 
 ## <a name="use-azure-key-vault-to-manage-your-access-keys"></a>A Azure Key Vault használata a hozzáférési kulcsok kezeléséhez
 
@@ -133,7 +133,7 @@ A Storage-fiók hozzáférési kulcsainak elforgatása az Azure CLI-vel:
 > [!NOTE]
 > A Microsoft azt javasolja, hogy egyszerre csak az egyik kulcsot használja az összes alkalmazásban. Ha egyes helyeken és a 2. kulcsban az 1. kulcsot használja másokban, nem fogja tudni elforgatni a kulcsokat anélkül, hogy egy alkalmazás elveszíti a hozzáférést.
 
-A fiók hozzáférési kulcsainak elforgatásához a felhasználónak vagy szolgáltatás-rendszergazdának kell lennie, vagy hozzá kell rendelnie egy olyan Azure-szerepkört, amely tartalmazza a **Microsoft. Storage/storageAccounts/regeneratekey/műveletet**. Néhány Azure-beli beépített szerepkör, amely tartalmazza ezt a műveletet, a **tulajdonos**, a **közreműködő**és a **Storage-fiók kulcs-kezelő szolgáltatásának szerepköre** . A szolgáltatás-rendszergazdai szerepkörrel kapcsolatos további információkért lásd a [klasszikus előfizetés-rendszergazdai szerepköröket, az Azure-szerepköröket és az Azure ad-szerepköröket](../../role-based-access-control/rbac-and-directory-admin-roles.md). Az Azure Storage-hoz készült Azure beépített szerepköreivel kapcsolatos részletes információkért tekintse meg az Azure [-beli beépített Azure RBAC-szerepkörök](../../role-based-access-control/built-in-roles.md#storage) **tárolási** szakaszát.
+A fiók hozzáférési kulcsainak elforgatásához a felhasználónak vagy szolgáltatás-rendszergazdának kell lennie, vagy hozzá kell rendelnie egy olyan Azure-szerepkört, amely tartalmazza a **Microsoft. Storage/storageAccounts/regeneratekey/műveletet**. Néhány Azure-beli beépített szerepkör, amely tartalmazza ezt a műveletet, a **tulajdonos**, a **közreműködő** és a **Storage-fiók kulcs-kezelő szolgáltatásának szerepköre** . A szolgáltatás-rendszergazdai szerepkörrel kapcsolatos további információkért lásd a [klasszikus előfizetés-rendszergazdai szerepköröket, az Azure-szerepköröket és az Azure ad-szerepköröket](../../role-based-access-control/rbac-and-directory-admin-roles.md). Az Azure Storage-hoz készült Azure beépített szerepköreivel kapcsolatos részletes információkért tekintse meg az Azure [-beli beépített Azure RBAC-szerepkörök](../../role-based-access-control/built-in-roles.md#storage) **tárolási** szakaszát.
 
 ## <a name="next-steps"></a>Következő lépések
 

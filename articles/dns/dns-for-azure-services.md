@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/21/2016
 ms.author: rohink
 ms.openlocfilehash: fa2c1ced6405c967ca33562d6215b304b8507e5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76937251"
 ---
 # <a name="how-azure-dns-works-with-other-azure-services"></a>Hogyan működik a Azure DNS más Azure-szolgáltatásokkal?
@@ -31,7 +31,7 @@ Azure DNS egy üzemeltetett DNS-felügyeleti és névfeloldási szolgáltatás. 
 
 Az alábbi táblázat a különböző Azure-szolgáltatásokhoz használható támogatott bejegyzéstípusokat vázolja fel. Ahogy a táblázat mutatja, Azure DNS csak az internetre irányuló hálózati erőforrásokhoz tartozó DNS-rekordokat támogatja. Azure DNS nem használható belső, magánhálózati címek névfeloldásához.
 
-| Azure-szolgáltatás | Hálózati adapter | Leírás |
+| Azure-szolgáltatás | Hálózati adapter | Description |
 | --- | --- | --- |
 | Azure Application Gateway |[Előtér-nyilvános IP-cím](dns-custom-domain.md#public-ip-address) |Létrehozhat egy DNS-vagy CNAME-rekordot is. |
 | Azure Load Balancer |[Előtér-nyilvános IP-cím](dns-custom-domain.md#public-ip-address) |Létrehozhat egy DNS-vagy CNAME-rekordot is. A Load Balancer a dinamikusan hozzárendelt IPv6 nyilvános IP-címmel rendelkezhet. Hozzon létre egy CNAME-rekordot egy IPv6-cím számára. |

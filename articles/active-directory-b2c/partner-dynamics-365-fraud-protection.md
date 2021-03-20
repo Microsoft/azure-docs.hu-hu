@@ -12,10 +12,10 @@ ms.date: 02/10/2021
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: cf441108c9fd0ae87f265604f6f0706d92516746
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101646554"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>Oktatóanyag: a Microsoft Dynamics 365 csalások elleni védelem konfigurálása Azure Active Directory B2C
@@ -56,7 +56,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 ![A kép a Microsoft dynamics365 csalások elleni védelmi architektúra diagramját mutatja](./media/partner-dynamics365-fraud-protection/microsoft-dynamics-365-fraud-protection-diagram.png)
 
-|Lépés | Leírás |
+|Lépés | Description |
 |:-----| :-----------|
 | 1. | A felhasználó egy bejelentkezési oldalon érkezik. A felhasználók a regisztráció gombra kattintva létrehozhatnak egy új fiókot, és beírhatják az adatokat az oldalra. A Azure AD B2C felhasználói attribútumokat gyűjt.
 | 2. | Azure AD B2C meghívja a középső rétegbeli API-t, és átadja a felhasználói attribútumokat.

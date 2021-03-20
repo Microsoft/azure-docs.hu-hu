@@ -14,10 +14,10 @@ ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, n
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 8f6170de65ae5e1ca8ecb5f7cc8a78f4f194ac41
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92055290"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Miért érdemes Microsoft Identitásplatformra (a 2.0-s verzióra) frissíteni?
@@ -56,7 +56,7 @@ A szervezet nevében végrehajtott rendszergazdai jóváhagyás továbbra is az 
 
 ## <a name="scopes-not-resources"></a>Hatókörök, nem erőforrások
 
-A v 1.0-s végpontot használó alkalmazások esetében az alkalmazás **erőforrásként**vagy tokenek címzettjeiként működhet. Az erőforrások meghatározhatnak számos **hatókört** vagy **oAuth2Permissions** , amelyek megértik, lehetővé téve, hogy az ügyfélalkalmazások az adott erőforrásból származó jogkivonatokat igényeljenek egy adott hatókörhöz. Vegye figyelembe a Microsoft Graph API-t egy erőforrásra példaként:
+A v 1.0-s végpontot használó alkalmazások esetében az alkalmazás **erőforrásként** vagy tokenek címzettjeiként működhet. Az erőforrások meghatározhatnak számos **hatókört** vagy **oAuth2Permissions** , amelyek megértik, lehetővé téve, hogy az ügyfélalkalmazások az adott erőforrásból származó jogkivonatokat igényeljenek egy adott hatókörhöz. Vegye figyelembe a Microsoft Graph API-t egy erőforrásra példaként:
 
 * Erőforrás-azonosító, vagy `AppID URI` : `https://graph.microsoft.com/`
 * Hatókörök, vagy `oAuth2Permissions` : `Directory.Read` , `Directory.Write` stb.

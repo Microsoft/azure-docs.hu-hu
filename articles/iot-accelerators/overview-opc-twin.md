@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 9825e5e85c8da27b0f3fc2b9d78fcc9ca3513389
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91281694"
 ---
 # <a name="what-is-opc-twin"></a>Mi az OPC Twin?
@@ -40,7 +40,7 @@ Az OPC Twin Azure Active Directory (HRE) alapú hitelesítést és naplózást h
 ### <a name="simple-developer-experience"></a>Egyszerű fejlesztői élmény 
 Az OPC Twin a REST API-kon keresztül bármilyen programozási nyelven írt alkalmazásokkal használható. Mivel a fejlesztők egy OPC UA-ügyfelet integrálnak egy megoldásba, nem szükséges az OPC UA SDK ismerete. Az OPC Twin zökkenőmentesen integrálható állapot nélküli, kiszolgáló nélküli architektúrába. Például egy teljes stack webfejlesztő, aki egy riasztási és esemény-irányítópultot fejleszt, megírhatja a logikát, hogy válaszoljon a JavaScript vagy az írógéppel szolgáltatásbeli eseményekre a C, C# vagy a teljes OPC UA stack implementáció nélkül. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte az OPC Twin és annak felhasználási lehetőségeit, itt látható a következő lépés:
 

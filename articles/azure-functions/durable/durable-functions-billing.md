@@ -6,10 +6,10 @@ ms.topic: overview
 ms.date: 08/31/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 2ec1b080c195a47caafd0120240b5fb61ede062b
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97932282"
 ---
 # <a name="durable-functions-billing"></a>Durable Functions számlázás
@@ -50,7 +50,7 @@ Számos tényező járul hozzá a Durable Functions-alkalmazásban felmerülő t
 
 Az Azure Storage díjszabásával kapcsolatos további információkért tekintse meg az [Azure Storage díjszabási](https://azure.microsoft.com/pricing/details/storage/) dokumentációját. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ a Azure Functions díjszabásáról](https://azure.microsoft.com/pricing/details/functions/)

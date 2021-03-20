@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9d81836b47acb19f624075480aafef74c9c0934c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91306123"
 ---
 # <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect szinkronizálás: a telepítővarázsló második alkalommal történő futtatása
@@ -30,7 +30,7 @@ A Azure AD Connect telepítővarázsló első futtatásakor végigvezeti a telep
 >[!IMPORTANT]
 >Vegye figyelembe, hogy a telepítővarázsló nem futtatható, amíg a szinkronizálás folyamatban van.  A varázsló elindítása előtt ellenőrizze, hogy a szinkronizálás nem fut-e.
 
-A telepítővarázsló a **Azure ad Connect**nevű Start menüben található.
+A telepítővarázsló a **Azure ad Connect** nevű Start menüben található.
 
 ![Start menü](./media/how-to-connect-installation-wizard/startmenu.png)
 
@@ -52,7 +52,7 @@ Ez a beállítás gyors áttekintést nyújt az aktuálisan konfigurált lehető
 
 ![Az összes beállítást és azok állapotát tartalmazó oldal](./media/how-to-connect-installation-wizard/viewconfig.png)
 
-Az **előző** gombra kattintva lépjen vissza. Ha a **Kilépés**lehetőséget választja, bezárja a telepítővarázslóját.
+Az **előző** gombra kattintva lépjen vissza. Ha a **Kilépés** lehetőséget választja, bezárja a telepítővarázslóját.
 
 ## <a name="customize-synchronization-options"></a>Szinkronizálási beállítások testreszabása
 Ezzel a beállítással módosíthatja a szinkronizálási konfigurációt. Az egyéni konfiguráció telepítési útvonalán a beállítások egy részhalmaza jelenik meg. Ez a beállítás akkor is megjelenik, ha kezdetben az expressz telepítést használta.

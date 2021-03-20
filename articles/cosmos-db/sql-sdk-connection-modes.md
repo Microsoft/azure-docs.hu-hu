@@ -9,10 +9,10 @@ ms.date: 10/14/2020
 ms.author: maquaran
 ms.custom: devx-track-dotnet, contperf-fy21q2
 ms.openlocfilehash: cf985999bac0cf45eec5d8f0f5f9e921b6f4591c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97934951"
 ---
 # <a name="azure-cosmos-db-sql-sdk-connectivity-modes"></a>Azure Cosmos DB SQL SDK kapcsolódási módjai
@@ -49,7 +49,7 @@ Az alábbi táblázat a különböző API-k és az egyes API-k által használt 
 |Átjáró  |   HTTPS    |  Minden SDK    |   SQL (443), MongoDB (10250, 10255, 10256), tábla (443), Cassandra (10350), Graph (443) <br> Az 10250-es port a MongoDB-példány alapértelmezett Azure Cosmos DB API-ját képezi le a Geo-replikáció nélkül. Míg a 10255-es és a 10256-es port a Geo-replikációval rendelkező példányhoz rendelhető hozzá.   |
 |Direct    |     TCP    |  .NET SDK Java SDK    | Nyilvános/szolgáltatási végpontok használata esetén: a 10000-as port a 20000-tartományon keresztül<br>Privát végpontok használata esetén: a 0 és 65535 közötti portok |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az SDK platform adott teljesítményének optimalizálásához:
 

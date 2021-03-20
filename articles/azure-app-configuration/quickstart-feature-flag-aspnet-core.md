@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: alkemper
 ms.openlocfilehash: 8ca4a6e78ab3c6ccf492869bb68c5296ae91de21
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99806070"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Gyors útmutató: szolgáltatás-jelzők hozzáadása ASP.NET Core-alkalmazáshoz
@@ -70,7 +70,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     Ezt a titkot a .NET Core konfigurációs API használatával érheti el. A kettőspont ( `:` ) a konfigurációs névvel együtt a konfigurációs API-val működik az összes támogatott platformon. További információ: [konfigurációs kulcsok és értékek](/aspnet/core/fundamentals/configuration#configuration-keys-and-values).
 
-1. A *program.cs*-ben frissítse a metódust az `CreateWebHostBuilder` alkalmazás konfigurációjának használatára a metódus meghívásával `AddAzureAppConfiguration` .
+1. A *program. cs programban* frissítse a metódust az `CreateWebHostBuilder` alkalmazás konfigurációjának használatára a metódus meghívásával `AddAzureAppConfiguration` .
 
     > [!IMPORTANT]
     > `CreateHostBuilder``CreateWebHostBuilder`a .net Core 3. x helyére kerül. Válassza ki a megfelelő szintaxist a környezet alapján.
@@ -123,7 +123,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     Az előző módosítással az alkalmazás konfigurációjának [szolgáltatója](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration) regisztrálva van a .net Core konfigurációs API-val.
 
-1. A *Startup.cs*-ben adjon hozzá egy hivatkozást a .net Core Feature Managerhez:
+1. A *Startup. cs* fájlban adjon hozzá egy hivatkozást a .net Core Feature Managerhez:
 
     ```csharp
     using Microsoft.FeatureManagement;
@@ -163,7 +163,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     ---
 
-1. Vegyen fel egy *MyFeatureFlags.cs* -fájlt a legfelső szintű projekt könyvtárába a következő kóddal:
+1. Vegyen fel egy *MyFeatureFlags. cs* fájlt a legfelső szintű projekt könyvtárába a következő kóddal:
 
     ```csharp
     namespace TestFeatureFlags
@@ -175,7 +175,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
     }
     ```
 
-1. Vegyen fel egy *BetaController.cs* -fájlt a *vezérlők* könyvtárba a következő kóddal:
+1. Vegyen fel egy *BetaController. cs* fájlt a *vezérlők* könyvtárba a következő kóddal:
 
     ```csharp
     using Microsoft.AspNetCore.Mvc;

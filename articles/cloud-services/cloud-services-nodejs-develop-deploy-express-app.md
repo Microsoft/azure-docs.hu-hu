@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: e15af589b3a3c496738c97c0c2c6429ba708ba7e
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743338"
 ---
 # <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services-classic"></a>Node.js Webalkalmazás létrehozása és üzembe helyezése az Express használatával egy Azure Cloud Services (klasszikus)
@@ -135,7 +135,7 @@ Miután a telepítési művelet befejeződik, megnyílik a böngésző, és megj
 
 ![Egy webböngésző, amely az expressz lapot jeleníti meg. Az URL-cím azt jelzi, hogy az már az Azure-ban üzemel.](./media/cloud-services-nodejs-develop-deploy-express-app/node36.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információk: [Node.js fejlesztői központ](/azure/developer/javascript/).
 
 [Node.js Web Application]: https://www.windowsazure.com/develop/nodejs/tutorials/getting-started/

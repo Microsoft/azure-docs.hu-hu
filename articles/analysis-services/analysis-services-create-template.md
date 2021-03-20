@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 08/31/2020
 ms.custom: subject-armqs, references_regions
 ms.openlocfilehash: 3e776bf41420d38a1b208ce11a6a34e97fa92a15
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89230772"
 ---
 # <a name="quickstart-create-a-server---arm-template"></a>Gyors útmutató: kiszolgálói ARM-sablon létrehozása
@@ -49,11 +49,11 @@ A sablonban definiált egyetlen [Microsoft. AnalysisServices/Servers](/azure/tem
     Ha másként nincs megadva, használja az alapértelmezett értékeket.
 
     * **Előfizetés**: válasszon ki egy Azure-előfizetést.
-    * **Erőforráscsoport**: kattintson az **új létrehozása**elemre, majd adjon meg egy egyedi nevet az új erőforráscsoport számára.
+    * **Erőforráscsoport**: kattintson az **új létrehozása** elemre, majd adjon meg egy egyedi nevet az új erőforráscsoport számára.
     * **Hely**: válassza ki az erőforráscsoport számára létrehozott erőforrások alapértelmezett helyét.
     * **Kiszolgáló neve**: adja meg a kiszolgálói erőforrás nevét. 
     * **Hely**: a Analysis Services figyelmen kívül hagyása. A hely a kiszolgáló helyén van megadva.
-    * **Kiszolgáló helye**: adja meg a Analysis Services-kiszolgáló helyét. Ez gyakran ugyanaz a régió, mint az erőforráscsoport számára megadott alapértelmezett hely, de nem kötelező. Például az **USA északi középső**régiója. A támogatott régiók esetében lásd: [Analysis Services elérhetőség régiónként](analysis-services-overview.md#availability-by-region).
+    * **Kiszolgáló helye**: adja meg a Analysis Services-kiszolgáló helyét. Ez gyakran ugyanaz a régió, mint az erőforráscsoport számára megadott alapértelmezett hely, de nem kötelező. Például az **USA északi középső** régiója. A támogatott régiók esetében lásd: [Analysis Services elérhetőség régiónként](analysis-services-overview.md#availability-by-region).
     * **SKU neve**: adja meg a létrehozandó Analysis Services-kiszolgáló SKU-nevét. Közül választhat: B1, B2, D1, S0, S1, S2, S3, S4, S8v2, S9v2. Az SKU rendelkezésre állása a régiótól függ. A S0 vagy a D1 használata ajánlott a kiértékeléshez és teszteléshez.
     * **Kapacitás**: adja meg a lekérdezési replika kibővíthető példányainak teljes számát. Egynél több példány kiskálázása csak a régiók kiválasztása esetén támogatott.
     * **Tűzfalbeállítások**: adja meg a kiszolgálóhoz definiálni kívánt bejövő tűzfalszabályok beállításait. Ha nincs megadva, a tűzfal le van tiltva.

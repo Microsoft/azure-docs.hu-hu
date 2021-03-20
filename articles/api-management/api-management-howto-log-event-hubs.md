@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
 ms.openlocfilehash: 5066169951409fa86aa75a64e8fc6d4189947f27
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92072407"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Események naplózása az Azure Event Hubsba az Azure-ban API Management
@@ -41,12 +41,12 @@ Ha a naplózó konfigurálva van API Managementban, beállíthatja a eventhub-h�
 1. Tallózzon az APIM-példányra.
 2. Válassza az API lapot.
 3. Válassza ki azt az API-t, amelyhez hozzá szeretné adni a szabályzatot. Ebben a példában egy szabályzatot adunk hozzá az **echo API** -hoz a **korlátlan** termékben.
-4. Válassza **az összes művelet**lehetőséget.
+4. Válassza **az összes művelet** lehetőséget.
 5. A képernyő felső részén válassza a tervezés lapot.
 6. A bejövő vagy kimenő feldolgozási ablakban kattintson a háromszögre (a ceruza mellett).
 7. Válassza ki a Kódszerkesztőt. További információ: [szabályzatok beállítása vagy szerkesztése](set-edit-policies.md).
 8. Vigye a kurzort a `inbound` vagy a `outbound` házirend szakaszba.
-9. A jobb oldali ablakban válassza a **speciális szabályzatok**  >  **napló EventHub**lehetőséget. Ez beszúrja a `log-to-eventhub` házirend-utasítás sablonját.
+9. A jobb oldali ablakban válassza a **speciális szabályzatok**  >  **napló EventHub** lehetőséget. Ez beszúrja a `log-to-eventhub` házirend-utasítás sablonját.
 
 ```xml
 <log-to-eventhub logger-id="logger-id">
@@ -75,8 +75,8 @@ A frissített házirend-konfiguráció mentéséhez kattintson a **Mentés** gom
 A naplót Event Hubs [Azure stream Analytics lekérdezések](../event-hubs/process-data-azure-stream-analytics.md)használatával tekintheti meg. 
 
 1. A Azure Portal keresse meg azt az Event hub-t, amelyet a naplóz az eseményeket küld. 
-2. A **szolgáltatások**területen válassza a **folyamat adat** lapot.
-3. A **valós idejű** adatvizsgálatok engedélyezése az események kártyáról lapon válassza a **Tallózás**lehetőséget.
+2. A **szolgáltatások** területen válassza a **folyamat adat** lapot.
+3. A **valós idejű** adatvizsgálatok engedélyezése az események kártyáról lapon válassza a **Tallózás** lehetőséget.
 4. A **bemeneti előnézet** lapon megtekintheti a naplót. Ha a megjelenített adatértékek nem aktuálisak, válassza a **frissítés** lehetőséget a legújabb események megtekintéséhez.
 
 ## <a name="next-steps"></a>Következő lépések

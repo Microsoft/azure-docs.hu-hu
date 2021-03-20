@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2019
 ms.openlocfilehash: 6cbbe63d7968816de78256f5a8408517bb8da278
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75973801"
 ---
 # <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>Azure-beli virtuális géphez hozzáadott lemez replikálásának engedélyezése
@@ -37,9 +37,9 @@ Ez a cikk azt feltételezi, hogy már beállította a vész-helyreállítást ar
 
 Egy hozzáadott lemez replikálásának engedélyezéséhez tegye a következőket:
 
-1. A tárolóban > **replikált elemek**területen kattintson arra a virtuális gépre, amelyhez hozzáadta a lemezt.
-2. Kattintson a **lemezek**elemre, majd válassza ki azt az adatlemezt, amelynek engedélyezni szeretné a replikálását (ezek a lemezek **nem védett** állapottal rendelkeznek).
-3.  A **lemez részletei**területen kattintson a **replikáció engedélyezése**elemre.
+1. A tárolóban > **replikált elemek** területen kattintson arra a virtuális gépre, amelyhez hozzáadta a lemezt.
+2. Kattintson a **lemezek** elemre, majd válassza ki azt az adatlemezt, amelynek engedélyezni szeretné a replikálását (ezek a lemezek **nem védett** állapottal rendelkeznek).
+3.  A **lemez részletei** területen kattintson a **replikáció engedélyezése** elemre.
 
     ![A további lemez replikálásának engedélyezése](./media/azure-to-azure-enable-replication-added-disk/enabled-added.png)
 
@@ -47,6 +47,6 @@ A replikációs feladatok engedélyezése és a kezdeti replikálás befejezése
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További](site-recovery-test-failover-to-azure.md) információ a feladatátvételi teszt futtatásáról.

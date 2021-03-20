@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/18/2020
 ms.author: jeedes
 ms.openlocfilehash: 2405ba800e5ff64b9c0513e07d685e026cc3691c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96179027"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-crises-control"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a válságok szabályozásával

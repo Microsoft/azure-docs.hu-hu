@@ -4,10 +4,10 @@ description: Ez a cikk a rendszerkép-előállító Azure DevOps (korábban Visu
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: fa7050bae1ff8681e04b6ab38220be9eaf38a64a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85476138"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>Rendszerkép-előállító futtatása az Azure DevOpsból
@@ -41,7 +41,7 @@ Első lépésként hozzon létre egy ingyenes fiókot az Azure DevOps. Látogass
 A rendszerkép-előállítóhoz tartozó összes PowerShell, sablon és konfiguráció a [nyilvános DevTest Labs GitHub](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory)-tárházban található. A leggyorsabb módszer a kód beszerzése az új Team-projektbe egy adattár importálása. Ez lekéri a teljes DevTest Labs-tárházat (így további dokumentumokat és mintákat kap).
 
 1. Látogasson el az előző lépésben létrehozott Azure DevOps-projektre (az URL-cím a következőhöz hasonló **: https: \/ / \<accountname> . VisualStudio.com/MyFirstProject**).
-2. Válassza **az adattár importálása**lehetőséget.
+2. Válassza **az adattár importálása** lehetőséget.
 3. Adja meg a DevTest Labs **-tárház klónozási URL-címét** : `https://github.com/Azure/azure-devtestlab` .
 4. Válassza az **Importálás** lehetőséget.
 
@@ -85,8 +85,8 @@ A parancssori paraméterek egyszerűbbé tételéhez ágyazza be azokat a kulcs-
 ## <a name="connect-to-azure"></a>Csatlakozás az Azure szolgáltatáshoz
 A következő lépés az egyszerű szolgáltatásnév beállítása. Ez a Azure Active Directory identitása, amely lehetővé teszi, hogy a DevOps-Build ügynök az Azure-ban működjön a felhasználó nevében. A beállításához először adja hozzá a Azure PowerShell Build lépést.
 
-1. Válassza a **feladat hozzáadása**elemet.
-2. **Azure PowerShell**keresése.
+1. Válassza a **feladat hozzáadása** elemet.
+2. **Azure PowerShell** keresése.
 3. Ha megtalálta, a **Hozzáadás** gombra kattintva adja hozzá a feladatot a buildhez. Ha ezt teszi, a feladat megjelenik a bal oldalon a hozzáadáskor.
 
 ![PowerShell-lépés beállítása](./media/set-up-devops-lab/set-up-powershell-step.png)
@@ -94,7 +94,7 @@ A következő lépés az egyszerű szolgáltatásnév beállítása. Ez a Azure 
 Az egyszerű szolgáltatásnév beállításának leggyorsabb módja az, hogy az Azure-DevOps elvégezze számunkra.
 
 1. Válassza ki az imént hozzáadott **feladatot** .
-2. Az **Azure-kapcsolatok típusa**beállításnál válassza a **Azure Resource Manager**lehetőséget.
+2. Az **Azure-kapcsolatok típusa** beállításnál válassza a **Azure Resource Manager** lehetőséget.
 3. Válassza a **kezelés** hivatkozást az egyszerű szolgáltatásnév beállításához.
 
 További információkat [ebben a blogbejegyzésben](https://devblogs.microsoft.com/devops/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/) talál. Ha kiválasztja a **kezelés** hivatkozást, a DevOps (második képernyőkép a blogbejegyzésben) a megfelelő helyen fog megjelenni az Azure-hoz való csatlakozás beállításához. Ha ezt a beállítást választja, ügyeljen arra, hogy **Azure Resource Manager szolgáltatási végpontot** válassza.
@@ -105,7 +105,7 @@ Ha kijelöli a felépítési feladatot, a jobb oldali ablaktáblán látható ö
 1. Először nevezze el a Build feladatot: **Create Virtual Machines**.
 2. Válassza ki a létrehozott **szolgáltatásnevet** **Azure Resource Manager**
 3. Válassza ki a **szolgáltatási végpontot**.
-4. A **parancsfájl elérési útja**beállításnál válassza a **... lehetőséget. (három pont)** a jobb oldalon.
+4. A **parancsfájl elérési útja** beállításnál válassza a **... lehetőséget. (három pont)** a jobb oldalon.
 5. Navigáljon **MakeGoldenImageVMs.ps1** parancsfájlhoz.
 6. A parancsfájl paramétereinek a következőhöz hasonlóan kell kinéznie: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -DevTestLabName $(DevTestLabName) -vmSize $(VMSize) -machineUserName $(MachineUserName) -machinePassword (ConvertTo-SecureString -string '$(MachinePassword)' -AsPlainText -Force) -StandardTimeoutMinutes $(StandardTimeoutMinutes)`
 
@@ -117,5 +117,5 @@ Győződjön meg arról, hogy minden beállítás megfelelően van beállítva e
 
 ![Virtuális gépek a laborban](./media/set-up-devops-lab/vms-in-lab.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A rendszerkép-előállító Azure DevTest Labs szerinti beállításának első lépése a Befejezés. Az adatsorozat következő cikkében a virtuális gépek általánosított és egyéni lemezképekre menthetők. Ezután az összes többi laborba el van osztva. Tekintse meg az adatsorozat következő cikkét: az [Egyéni rendszerképek mentése és a több laborba való terjesztése](image-factory-save-distribute-custom-images.md).

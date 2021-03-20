@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 03/11/2020
 ms.author: sunasing
 ms.openlocfilehash: b9067e2f78c8098d4a21263ac89caf03da631274
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92677489"
 ---
 # <a name="query-ingested-telemetry-data"></a>Feldolgozott telemetria-adatok lekérdezése
@@ -24,7 +24,7 @@ Mielőtt folytatná ezt a cikket, győződjön meg róla, hogy telepítette a Fa
 
 Az érzékelő telemetria-információinak betöltéséhez látogasson el a [korábbi telemetria-adatbevitelre](ingest-historical-telemetry-data-in-azure-farmbeats.md)
 
-Mielőtt továbblépne, meg kell győződnie arról, hogy jól ismeri a FarmBeats REST API-kat, mivel az API-k használatával kérdezi le a betöltött telemetria. A FarmBeats API-kkal kapcsolatos további információkért lásd: [FARMBEATS REST API](rest-api-in-azure-farmbeats.md)-k. Győződjön meg **arról, hogy képes API-kérelmeket készíteni a FarmBeats Datahub-végpontjának** .
+Mielőtt továbblépne, meg kell győződnie arról, hogy jól ismeri a FarmBeats REST API-kat, mivel az API-k használatával kérdezi le a betöltött telemetria. A FarmBeats API-kkal kapcsolatos további információkért lásd: [FARMBEATS REST API](rest-api-in-azure-farmbeats.md)-k. Győződjön meg **arról, hogy képes API-kérelmeket készíteni a FarmBeats Datahub-végpontjának**.
 
 ## <a name="query-ingested-sensor-telemetry-data"></a>Betöltött érzékelő telemetria-beli lekérdezése
 
@@ -42,7 +42,7 @@ Kövesse a következő lépéseket a betöltött érzékelő telemetria-adatok l
 > [!NOTE]
 > Az érdekelt érzékelő objektum **azonosítója** és **sensorModelId** .
 
-2. Hozzon végre egy GET/{ID}/SensorModel API-t a **sensorModelId** az 1. lépésben feljegyzett módon. Az "érzékelő modell" az érzékelőből származó betöltött telemetria kapcsolatos összes metaadatot és részletet tartalmaz. Például az érzékelő **modell** objektumon belül az érzékelő **mértéke** az érzékelő által küldött és a milyen típusokra és egységekre vonatkozó adatokkal rendelkezik. Például:
+2. Hozzon végre egy GET/{ID}/SensorModel API-t a **sensorModelId** az 1. lépésben feljegyzett módon. Az "érzékelő modell" az érzékelőből származó betöltött telemetria kapcsolatos összes metaadatot és részletet tartalmaz. Például az érzékelő **modell** objektumon belül az érzékelő **mértéke** az érzékelő által küldött és a milyen típusokra és egységekre vonatkozó adatokkal rendelkezik. Példa:
 
   ```json
   {
@@ -116,7 +116,7 @@ A rendszer telemetria-adatkérést fogad egy EventHub, majd feldolgozza és lek�
 Kövesse az alábbi lépéseket az ÁME-beli adatmegjelenítéshez:
 
 1. Nyissa meg az **Azure Portal**  >  **FarmBeats DataHub erőforráscsoportot** > válassza a **Time Series Insights** Environment (ÁME-XXXX) > **adatelérési házirendek** lehetőséget. Felhasználó hozzáadása olvasó vagy közreműködői hozzáféréssel.
-2. Nyissa meg **Time Series Insights** környezet **Áttekintés** lapját (ÁME-XXXX), és válassza ki a **Time Series Insights Explorer URL-címét** . Most már láthatóvá teheti a betöltött telemetria.
+2. Nyissa meg **Time Series Insights** környezet **Áttekintés** lapját (ÁME-XXXX), és válassza ki a **Time Series Insights Explorer URL-címét**. Most már láthatóvá teheti a betöltött telemetria.
 
 A telemetria tárolása, lekérdezése és megjelenítése mellett az ÁME is lehetővé teszi az integrációt egy Power BI irányítópulton. További információ: [itt]( https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi)
 

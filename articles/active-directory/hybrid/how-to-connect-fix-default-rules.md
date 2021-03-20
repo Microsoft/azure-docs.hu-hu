@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a0fc1bc3158e04c9b1f677af7ef2375ac3ed2ce7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91320047"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Módosított alapértelmezett szabályok javítása Azure AD Connect
@@ -28,7 +28,7 @@ A Azure Active Directory (Azure AD) kapcsolat alapértelmezett szabályokat hasz
 > A meglévő alapértelmezett szabályok módosítása a szükséges Testreszabás eléréséhez nem támogatott. Ha így tesz, a későbbi kiadásokban megakadályozza a szabályok frissítését a legújabb verzióra. A szükséges hibajavítások és új funkciók nem lesznek elérhetők. Ez a dokumentum azt ismerteti, hogyan lehet ugyanazt az eredményt elérni a meglévő alapértelmezett szabályok módosítása nélkül. 
 
 ## <a name="how-to-identify-modified-default-rules"></a>Módosított alapértelmezett szabályok azonosítása
-Azure AD Connect verziójának 1.3.7.0 kezdve egyszerűen azonosítható a módosított alapértelmezett szabály. Nyissa **meg az alkalmazások Desktop alkalmazást**, és válassza a **szinkronizációs szabályok szerkesztő**elemet.
+Azure AD Connect verziójának 1.3.7.0 kezdve egyszerűen azonosítható a módosított alapértelmezett szabály. Nyissa **meg az alkalmazások Desktop alkalmazást**, és válassza a **szinkronizációs szabályok szerkesztő** elemet.
 
 ![Azure AD Connect, a szinkronizálási szabályok szerkesztője kiemelve](media/how-to-connect-fix-default-rules/default1.png)
 
@@ -71,19 +71,19 @@ Ha a bővítmények nem működnek, próbálkozzon a következő szakaszokban is
 
 
 #### <a name="add-an-inbound-sync-rule"></a>Bejövő szinkronizálási szabály hozzáadása
-A bejövő szinkronizálási szabály azt jelenti, hogy az attribútum forrása egy összekötő terület, és a cél a metaverse. Ha például egy új attribútumot szeretne létrehozni a helyszíni Active Directoryról Azure Active Directoryra, hozzon létre egy új bejövő szinkronizálási szabályt. Indítsa el a **szinkronizálási szabályok szerkesztőjét**, válassza a **bejövő** lehetőséget irányként, majd kattintson az **új szabály hozzáadása**lehetőségre. 
+A bejövő szinkronizálási szabály azt jelenti, hogy az attribútum forrása egy összekötő terület, és a cél a metaverse. Ha például egy új attribútumot szeretne létrehozni a helyszíni Active Directoryról Azure Active Directoryra, hozzon létre egy új bejövő szinkronizálási szabályt. Indítsa el a **szinkronizálási szabályok szerkesztőjét**, válassza a **bejövő** lehetőséget irányként, majd kattintson az **új szabály hozzáadása** lehetőségre. 
 
  ![Képernyőfelvétel: "beérkező" és "új szabály hozzáadása" beállítású "szinkronizációs szabályok szerkesztője".](media/how-to-connect-fix-default-rules/default3a.png)
 
-A szabály elnevezéséhez kövesse a saját elnevezési konvenciót. Itt a Custom (egyéni) lehetőséget használjuk az **ad-User**szolgáltatásból. Ez azt jelenti, hogy a szabály egy egyéni szabály, amely a Active Directory-összekötő területéről a metaverse felé irányuló Bejövő szabály.   
+A szabály elnevezéséhez kövesse a saját elnevezési konvenciót. Itt a Custom (egyéni) lehetőséget használjuk az **ad-User** szolgáltatásból. Ez azt jelenti, hogy a szabály egy egyéni szabály, amely a Active Directory-összekötő területéről a metaverse felé irányuló Bejövő szabály.   
 
  ![Bejövő szinkronizálási szabály létrehozása](media/how-to-connect-fix-default-rules/default3b.png)
 
 Adja meg a szabály saját leírását, hogy a szabály jövőbeli karbantartása egyszerű legyen. A Leírás lehet például a szabály célja, és miért van rá szükség.
 
-Adja meg a **csatlakoztatott rendszer**, a **csatlakoztatott rendszerobjektum típusa**és a **metaverse objektumtípus** mezők beállításait.
+Adja meg a **csatlakoztatott rendszer**, a **csatlakoztatott rendszerobjektum típusa** és a **metaverse objektumtípus** mezők beállításait.
 
-Határozza meg a 0 és 99 közötti prioritási értéket (minél kisebb a szám, annál nagyobb a prioritás). A **címke**, a **Jelszó-szinkronizálás engedélyezése**és a **letiltott** mezők beállításnál használja az alapértelmezett beállításokat.
+Határozza meg a 0 és 99 közötti prioritási értéket (minél kisebb a szám, annál nagyobb a prioritás). A **címke**, a **Jelszó-szinkronizálás engedélyezése** és a **letiltott** mezők beállításnál használja az alapértelmezett beállításokat.
 
 Hagyja üresen a **hatókör-szűrőt** . Ez azt jelenti, hogy a szabály a Active Directory csatlakoztatott rendszer és a metaverse között csatlakozó összes objektumra vonatkozik.
 
@@ -92,7 +92,7 @@ Az **illesztési szabályok** megtartása üres. Ez azt jelenti, hogy ez a szab�
 Adja hozzá a megfelelő átalakításokat az attribútumhoz. Állandó érték kiosztásával állandó értéket adhat a célként megadott attribútumnak. A forrás vagy a cél attribútum között közvetlen hozzárendelést használhat. Vagy használhat egy kifejezést is az attribútumhoz. Itt láthatja a különböző [kifejezési függvényeket](./reference-connect-sync-functions-reference.md) .
 
 #### <a name="add-an-outbound-sync-rule"></a>Kimenő szinkronizálási szabály hozzáadása
-Ahhoz, hogy az attribútumot a célként megadott könyvtárba lehessen kapcsolni, létre kell hoznia egy kimenő szabályt. Ez azt jelenti, hogy a forrás a metaverse, és a cél a csatlakoztatott rendszer. Kimenő szabály létrehozásához indítsa el a **szinkronizálási szabályok szerkesztőjét**, módosítsa az **irányt** a **kimenő**értékre, majd kattintson az **új szabály hozzáadása**lehetőségre. 
+Ahhoz, hogy az attribútumot a célként megadott könyvtárba lehessen kapcsolni, létre kell hoznia egy kimenő szabályt. Ez azt jelenti, hogy a forrás a metaverse, és a cél a csatlakoztatott rendszer. Kimenő szabály létrehozásához indítsa el a **szinkronizálási szabályok szerkesztőjét**, módosítsa az **irányt** a **kimenő** értékre, majd kattintson az **új szabály hozzáadása** lehetőségre. 
 
 ![Szinkronizációs szabályok szerkesztője](media/how-to-connect-fix-default-rules/default3c.png)
 
@@ -158,15 +158,15 @@ Kövesse a varázslót, és törölje azokat a szervezeti egységeket, amelyeket
 Használja az Azure AD Connect által konfigurált alapértelmezett illesztési feltételeket. Az alapértelmezett csatlakoztatási feltételek módosítása megnehezíti a Microsoft támogatási szolgálatának a termék testreszabásának és támogatásának megértését.
 
 ## <a name="validate-sync-rule"></a>Szinkronizálási szabály érvényesítése
-Az újonnan hozzáadott szinkronizálási szabályt a teljes szinkronizálási ciklus futtatása nélkül is érvényesítheti az előzetes verzió funkció használatával. A Azure AD Connect területen válassza a **szinkronizálási szolgáltatás**elemet.
+Az újonnan hozzáadott szinkronizálási szabályt a teljes szinkronizálási ciklus futtatása nélkül is érvényesítheti az előzetes verzió funkció használatával. A Azure AD Connect területen válassza a **szinkronizálási szolgáltatás** elemet.
 
 ![Azure AD Connect a szinkronizációs szolgáltatás kiemelten](media/how-to-connect-fix-default-rules/default10.png)
 
-Válassza a **metaverse-keresés**lehetőséget. Válassza ki a hatókör objektumot **személyként**, válassza a **Hozzáadás záradékot**, és adja meg a keresési feltételeket. Ezután válassza a **Keresés**lehetőséget, majd kattintson duplán az objektumra a keresési eredmények között. A lépés futtatása előtt győződjön meg arról, hogy a Azure AD Connectban lévő adatok naprakészek az adott objektumra vonatkozóan. Ehhez futtassa az Importálás és a szinkronizálás az erdőben parancsot.
+Válassza a **metaverse-keresés** lehetőséget. Válassza ki a hatókör objektumot **személyként**, válassza a **Hozzáadás záradékot**, és adja meg a keresési feltételeket. Ezután válassza a **Keresés** lehetőséget, majd kattintson duplán az objektumra a keresési eredmények között. A lépés futtatása előtt győződjön meg arról, hogy a Azure AD Connectban lévő adatok naprakészek az adott objektumra vonatkozóan. Ehhez futtassa az Importálás és a szinkronizálás az erdőben parancsot.
 
 ![Szinkronizálási szolgáltatáskezelő](media/how-to-connect-fix-default-rules/default11.png)
 
-A **metaverse-objektum tulajdonságainál**válassza az **Összekötők**lehetőséget, válassza ki az objektumot a megfelelő összekötőben (erdőben), és válassza a **Tulajdonságok...** lehetőséget.
+A **metaverse-objektum tulajdonságainál** válassza az **Összekötők** lehetőséget, válassza ki az objektumot a megfelelő összekötőben (erdőben), és válassza a **Tulajdonságok...** lehetőséget.
 
 ![Metaverse-objektum tulajdonságai](media/how-to-connect-fix-default-rules/default12.png)
 
@@ -184,7 +184,7 @@ Itt figyelje meg, hogy az újonnan hozzáadott szabály fut az objektumon, és a
  
 Ha a módosított szabályt az alapértelmezett szabállyal szeretné összehasonlítani, mindkét szabályt külön, szövegfájlként exportálja. Ezeket a szabályokat PowerShell-parancsfájlként exportálja a rendszer. Ezeket összehasonlíthatja bármilyen fájl-összehasonlító eszközzel (például Windiff) a módosítások megtekintéséhez. 
  
-Figyelje meg, hogy a módosított szabályban az `msExchMailboxGuid` attribútum a **kifejezés** típusára változik a **közvetlen**helyett. Az érték a **Null** és a **ExecuteOnce** beállításra is módosul. Figyelmen kívül hagyhatja az azonosított és a prioritási különbségeket. 
+Figyelje meg, hogy a módosított szabályban az `msExchMailboxGuid` attribútum a **kifejezés** típusára változik a **közvetlen** helyett. Az érték a **Null** és a **ExecuteOnce** beállításra is módosul. Figyelmen kívül hagyhatja az azonosított és a prioritási különbségeket. 
 
 ![Windiff eszköz kimenete](media/how-to-connect-fix-default-rules/default17.png)
  

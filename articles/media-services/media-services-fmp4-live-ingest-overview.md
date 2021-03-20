@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 7323ae611431e1d91fd1a8471914be388fcc4712
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92019511"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure Media Services darabolt MP4 élő betöltési specifikáció 
@@ -44,7 +44,7 @@ A jelen dokumentumban tárgyalt élő adatfolyamok átviteli formátuma az [ISO-
 ### <a name="live-ingest-format-definitions"></a>Élő betöltés formátumának definíciói
 Az alábbi lista a Azure Media Servicesba való élő betöltésre vonatkozó speciális formátum-definíciókat ismerteti:
 
-1. A **ftyp**, a **Live Server manifest Box**és a **Moov** MEZŐKET minden kérelemmel (http post) kell elküldeni. Ezeket a mezőket a stream elején kell elküldeni, és a kódolónak újra kell csatlakoznia a stream betöltésének folytatásához. További információ: 6. szakasz, [1].
+1. A **ftyp**, a **Live Server manifest Box** és a **Moov** MEZŐKET minden kérelemmel (http post) kell elküldeni. Ezeket a mezőket a stream elején kell elküldeni, és a kódolónak újra kell csatlakoznia a stream betöltésének folytatásához. További információ: 6. szakasz, [1].
 1. Az [1] 3.3.2. szakasza az élő betöltéshez egy **StreamManifestBox** nevű opcionális mezőt határoz meg. Az Azure Load Balancer útválasztási logikája miatt ez a mező elavult. A mező nem lehet jelen a Media Servicesba való betöltéskor. Ha ez a mező megtalálható, Media Services csendben hagyja figyelmen kívül.
 1. Az egyes töredékek esetében az [1] 3.2.3.2-ben definiált **TrackFragmentExtendedHeaderBox** -mezőnek jelen kell lennie.
 1. A **TrackFragmentExtendedHeaderBox** mező 2. verzióját kell használni a több adatközpontban azonos URL-címekkel rendelkező adathordozó-szegmensek létrehozásához. Az index-alapú folyamatos átviteli formátumok, például az Apple HLS és az index-alapú MPEG-kötőjel közötti adatközpont feladatátvételéhez a töredék index mező szükséges. Az adatközpontok feladatátvételének engedélyezéséhez a töredék-indexet több kódolón kell szinkronizálni, és minden egyes egymást követő adathordozó-töredék esetében 1 értékkel kell növelni, még a kódoló újraindítása vagy meghibásodása között is.
@@ -54,7 +54,7 @@ Az alábbi lista a Azure Media Servicesba való élő betöltésre vonatkozó sp
 1. Az MP4-töredékek időbélyegei és indexei (**TrackFragmentExtendedHeaderBox** `fragment_ absolute_ time` és `fragment_index` ) növekvő sorrendben érkeznek. Bár a Media Services az ismétlődő töredékek esetében is rugalmas, a töredékek átrendezése a média idővonalának megfelelően korlátozott.
 
 ## <a name="4-protocol-format--http"></a>4. protokoll formátuma – HTTP
-A Media Services ISO-alapú, MP4-alapú élő betöltési szolgáltatása szabványos, hosszú ideig futó HTTP POST-kérést használ, amely a töredezett MP4 formátumba csomagolt kódolt adathordozó-adatokat továbbítja a szolgáltatásnak. Az egyes HTTP-bejegyzések teljes töredezett MP4-Bitstream ("Stream") küldenek, kezdve a fejléctől kezdve (**ftyp**, **Live Server manifest Box**és **Moov** box), és továbbra is a töredékek sorozatából (**moof** és **mdat** mezők). A HTTP POST kérelem URL-szintaxisát lásd: 9,2. szakasz, [1]. Példa a POST URL-címre: 
+A Media Services ISO-alapú, MP4-alapú élő betöltési szolgáltatása szabványos, hosszú ideig futó HTTP POST-kérést használ, amely a töredezett MP4 formátumba csomagolt kódolt adathordozó-adatokat továbbítja a szolgáltatásnak. Az egyes HTTP-bejegyzések teljes töredezett MP4-Bitstream ("Stream") küldenek, kezdve a fejléctől kezdve (**ftyp**, **Live Server manifest Box** és **Moov** box), és továbbra is a töredékek sorozatából (**moof** és **mdat** mezők). A HTTP POST kérelem URL-szintaxisát lásd: 9,2. szakasz, [1]. Példa a POST URL-címre: 
 
 `http://customer.channel.mediaservices.windows.net/ingest.isml/streams(720p)`
 
@@ -63,7 +63,7 @@ A részletes követelmények a következők:
 
 1. A kódolónak el kell indítania a szórást egy olyan HTTP POST-kérelem küldésével, amely üres "szövegtörzs" (nulla tartalom hossza) használatával ugyanazzal a betöltési URL-lel rendelkezik. Ez segíthet a kódolónak gyorsan észlelni, hogy az élő betöltési végpont érvényes-e, és hogy van-e hitelesítés vagy egyéb szükséges feltétel. HTTP protokollon keresztül a kiszolgáló nem tud HTTP-választ küldeni, amíg a teljes kérelem nem érkezik, beleértve a POST törzset is. Az élő esemény hosszan futó természete miatt ebben a lépésben a kódoló nem képes észlelni a hibát, amíg az összes adat küldésének véget nem ér.
 1. A kódolónak az (1) miatti hibákat és hitelesítési kihívásokat kell kezelnie. Ha (1) a 200-es választal sikeres, folytassa a következővel:.
-1. A kódolónak egy új HTTP POST-kérelmet kell elindítania a töredezett MP4 streamtel. A hasznos adatnak a fejléc mezővel kell kezdődnie, amelyet töredékek követnek. Vegye figyelembe, hogy az **ftyp**, az **élő kiszolgáló jegyzékfájlja**és a **Moov** (ebben a sorrendben) mezőben szerepelnie kell minden kérelemnek, még akkor is, ha a kódolónak újra kell kapcsolódnia, mert az előző kérést a stream vége előtt megszakították. 
+1. A kódolónak egy új HTTP POST-kérelmet kell elindítania a töredezett MP4 streamtel. A hasznos adatnak a fejléc mezővel kell kezdődnie, amelyet töredékek követnek. Vegye figyelembe, hogy az **ftyp**, az **élő kiszolgáló jegyzékfájlja** és a **Moov** (ebben a sorrendben) mezőben szerepelnie kell minden kérelemnek, még akkor is, ha a kódolónak újra kell kapcsolódnia, mert az előző kérést a stream vége előtt megszakították. 
 1. A kódolónak a feltöltéshez darabolásos adatátviteli kódolást kell használnia, mivel nem lehet előre jelezni az élő esemény teljes tartalmának hosszát.
 1. Ha az esemény véget ért, az utolsó részlet elküldése után a kódolónak szabályosan le kell végződnie a darabolásos átvitel kódolási üzenetének sorozatát (a legtöbb HTTP-ügyfél automatikusan kezeli azt). A kódolónak várnia kell, hogy a szolgáltatás visszaadja a végső válasz kódját, majd megszakítsa a kapcsolódást. 
 1. A kódoló nem használhatja az 9,2-ben `Events()` leírtak szerint a következőt: [1], Media Servicesba való élő BEtöltéshez.
@@ -116,7 +116,7 @@ Ebben a szakaszban a szolgáltatás feladatátvételi forgatókönyveit tárgyal
 
     b. Az új HTTP POST URL-címnek meg kell egyeznie a kezdeti bejegyzés URL-címével.
   
-    c. Az új HTTP-POSTnak tartalmaznia kell egy stream-fejlécet (**ftyp**, **Live Server manifest Box**és **Moov** ), amelyek megegyeznek a kezdeti bejegyzésben szereplő stream-fejlécekkel.
+    c. Az új HTTP-POSTnak tartalmaznia kell egy stream-fejlécet (**ftyp**, **Live Server manifest Box** és **Moov** ), amelyek megegyeznek a kezdeti bejegyzésben szereplő stream-fejlécekkel.
   
     d. Az egyes műsorszámok utolsó két töredékét újra kell elküldeni, és a folyamatos átvitelnek folytatnia kell a folytonosságot a média idővonalán. Az MP4-töredék időbélyegének folyamatosan kell növekedni, még a HTTP POST kérelmek között is.
 1. A kódolónak le kell fejeznie a HTTP POST kérelmet, ha az adatforgalom az MP4-töredék időtartamával arányos sebességgel történik.  Egy HTTP POST-kérelem, amely nem küldi el az adatküldést, megakadályozhatja, hogy az Media Services gyorsan lekapcsolódjanak a kódolóból egy szolgáltatás frissítése esetén. Emiatt a ritka (ad-jel) sávok HTTP-BEJEGYZÉSének rövid életűnek kell lennie, és azonnal le kell zárnia a ritka töredékek elküldésekor.
@@ -159,7 +159,7 @@ A következő lépések a ritka számok betöltését szolgáló ajánlott imple
 
 1. Hozzon létre egy különálló, töredékes MP4-Bitstream, amely csak ritka számokat tartalmaz, hang-és video-zeneszámok nélkül.
 1. A (z) [1] 6. szakaszában meghatározott **Live Server manifest (élő kiszolgáló jegyzékfájlja) mezőben** adja meg a *parentTrackName* paramétert a szülő sáv nevének megadásához. További információ: szakasz 4.2.1.2.1.2 [1].
-1. Az **élő kiszolgáló jegyzékfájlja mezőben**a **manifestOutput** **true**értékre kell állítani.
+1. Az **élő kiszolgáló jegyzékfájlja mezőben** a **manifestOutput** **true** értékre kell állítani.
 1. A jelzési esemény ritka természete miatt a következőket javasoljuk:
    
     a. Az élő esemény elején a kódoló elküldi a kezdeti fejléceket a szolgáltatásnak, amely lehetővé teszi, hogy a szolgáltatás regisztrálja a ritka nyomon követést az ügyfél jegyzékfájljában.

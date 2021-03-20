@@ -10,10 +10,10 @@ ms.date: 01/19/2021
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: c1b17d8c624d4bef74278acc24ece37a736a5ca8
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98572969"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Rövid útmutató: Webes forgalom irányítása az Azure Application Gatewayjel – Azure Portal
@@ -204,7 +204,7 @@ Ebben a példában az IIS-t telepíti a virtuális gépekre annak ellenőrzésé
    > [!div class="mx-imgBorder"]
    > ![Háttérkiszolgálók hozzáadása](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)
 
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
 
 7. Várjon, amíg a telepítés befejeződik, mielőtt továbblép a következő lépésre.
 
@@ -233,7 +233,7 @@ Az erőforráscsoport törlése:
 3. Az **erőforráscsoport lapon** válassza az **erőforráscsoport törlése** elemet.
 4. Írja be a *myResourceGroupAG* **nevet az erőforráscsoport neve mezőbe** , majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Application Gateway konfigurálása TLS-megszakítással a Azure Portal használatával](create-ssl-portal.md)

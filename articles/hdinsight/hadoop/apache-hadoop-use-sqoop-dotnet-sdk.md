@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, hdiseo17may2017, devx-track-csharp
 ms.date: 01/14/2020
 ms.openlocfilehash: a06326f5b4cf34a06475c10e368c6dcbb49ca9e4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98928351"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>Apache Sqoop-feladatok futtatása a HDInsight .NET Apache Hadoop SDK használatával
@@ -44,7 +44,7 @@ A HDInsight .NET SDK .NET-ügyfélszoftvereket biztosít, így könnyebben haszn
 
 A kaptárból a SQL Serverba.  Ez a példa a struktúra táblából exportálja az adatait a `hivesampletable` `mobiledata` SQL Database lévő táblába.
 
-1. Használja a következő kódot a Program.cs fájlban. Szerkessze a kódot a és a értékének megadásához `ExistingClusterName` `ExistingClusterPassword` .
+1. Használja a következő kódot a program. cs fájljában. Szerkessze a kódot a és a értékének megadásához `ExistingClusterName` `ExistingClusterPassword` .
 
     ```csharp
     using Microsoft.Azure.Management.HDInsight.Job;

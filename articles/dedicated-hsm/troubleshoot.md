@@ -14,10 +14,10 @@ ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
 ms.openlocfilehash: 42bfa52721160a469db2aa0507dadfa85ff41389
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97508271"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Az Azure dedikált HSM szolgáltatás hibaelhárítása
@@ -150,6 +150,6 @@ Csak akkor, ha a HSM teljes mértékben elkészült, kiépíthető, majd a Micro
 
 A HSM-hez készült Azure-erőforrás csak akkor törölhető, ha a HSM "zéró" állapotban van.  Ezért az összes fontos anyagot törölni kell, mielőtt erőforrásként törölné. A zeroize leggyorsabb módja, ha a HSM-rendszergazda jelszava 3 alkalommal nem megfelelő (Megjegyzés: Ez a HSM-rendszergazda, és nem a készülék szintjének felügyeletére vonatkozik). A Luna-rendszerhéjnak van egy `hsm -factoryreset` parancsa, amely zeroizes, de csak a soros porton keresztül hajtható végre, és az ügyfeleknek nincs hozzáférésük ehhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk betekintést nyújt a HSM üzembe helyezési életciklusára, amely problémákba ütközik, vagy hibaelhárítást vagy alapos megfontolást igényelhet. Remélhetőleg ez a cikk segít elkerülni a szükségtelen késéseket és a frusztrációt, és ha releváns kiegészítésekkel vagy módosításokkal rendelkezik, a Microsofttal támogatási kérést emelhet, és tudassa velünk. 

@@ -9,10 +9,10 @@ ms.date: 09/05/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 78440b8150a0992bed2e2a3e597fdac8e7a1c7b0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75749726"
 ---
 # <a name="latency-in-blob-storage"></a>Késés a Blob Storage-ban
@@ -65,7 +65,7 @@ Ugyanilyen fontos az ügyfél és az Azure Storage közötti hálózati adapter 
 
 A késés felméréséhez először létre kell hoznia a forgatókönyv alapszintű mérőszámait. Az alapkonfiguráció metrikái a teljes körű és a kiszolgáló késését biztosítják az alkalmazási környezet környezetében, a munkaterhelés profiljától, az alkalmazás konfigurációs beállításaitól, az ügyfél erőforrásaitól, a hálózati pipe-tól és más tényezőktől függően. Az alapkonfiguráció metrikáinak használatával könnyebben azonosítható a rendellenes és a normál körülmények. Az alapkonfiguráció metrikái lehetővé teszik a módosított paraméterek (például az alkalmazás konfigurációja vagy a virtuálisgép-méretek) hatásának megfigyelését is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A blob Storage méretezhetőségi és teljesítménybeli céljai](scalability-targets.md)
 - [A blob Storage teljesítmény-és méretezhetőségi ellenőrzőlistája](storage-performance-checklist.md)

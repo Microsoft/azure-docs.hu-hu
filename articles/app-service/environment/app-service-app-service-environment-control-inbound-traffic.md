@@ -8,10 +8,10 @@ ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: fe9326ea9ebd5afe981b7ba6c34b1a5d51e084b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88962060"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>Bejövő forgalom vezérlése App Service Environment
@@ -118,7 +118,7 @@ Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Remove-AzureNetworkSecuri
 ## <a name="special-considerations-for-explicit-ip-ssl"></a>Speciális szempontok explicit IP-hez – SSL
 Ha egy alkalmazás egy explicit IP-SSL-címmel van konfigurálva ( *csak* a nyilvános VIP-mel rendelkező ASE vonatkozik), a app Service Environment alapértelmezett IP-címének használata helyett a http-és HTTPS-forgalom a 80-as és 443-es portokon kívül más portokon keresztül áramlik az alhálózatba.
 
-Az egyes IP-SSL-címek által használt egyes portok megkereséséhez nyissa meg a portált, és tekintse meg a App Service Environment részleteit az UX panelen.  Válassza **a minden beállítás**  >  **IP-címek**lehetőséget.  Az **IP-címek** panelen látható a app Service Environment számára explicit módon konfigurált IP-SSL-címek táblázata. A panelen az egyes IP-alapú SSL-címekhez társított HTTP-és HTTPS-forgalom útválasztásához használt speciális port is látható.  Ezt a portszámot használja a DestinationPortRange paraméterekhez a hálózati biztonsági csoport szabályainak konfigurálásakor.
+Az egyes IP-SSL-címek által használt egyes portok megkereséséhez nyissa meg a portált, és tekintse meg a App Service Environment részleteit az UX panelen.  Válassza **a minden beállítás**  >  **IP-címek** lehetőséget.  Az **IP-címek** panelen látható a app Service Environment számára explicit módon konfigurált IP-SSL-címek táblázata. A panelen az egyes IP-alapú SSL-címekhez társított HTTP-és HTTPS-forgalom útválasztásához használt speciális port is látható.  Ezt a portszámot használja a DestinationPortRange paraméterekhez a hálózati biztonsági csoport szabályainak konfigurálásakor.
 
 Ha egy adatszolgáltatón belüli alkalmazás IP-SSL használatára van konfigurálva, a külső ügyfelek nem látják vagy nem kell aggódniuk a speciális port párok leképezésével kapcsolatban.  Az alkalmazások felé irányuló forgalom általában a beállított IP-SSL-címen fog folyni.  A speciális portra való fordítás automatikusan történik belsőleg, az útválasztási forgalom utolsó szakasza alatt a központot tartalmazó alhálózatba. 
 

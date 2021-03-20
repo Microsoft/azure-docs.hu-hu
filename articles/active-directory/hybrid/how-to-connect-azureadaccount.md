@@ -18,10 +18,10 @@ ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: e4f31c560fe3dd91689b361ed520e466fd52da1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85360010"
 ---
 # <a name="change-the-azure-ad-connector-account-password"></a>Az Azure AD Connector-fiók jelszavának módosítása
@@ -31,7 +31,7 @@ Az Azure AD Connector-fióknak ingyenes szolgáltatásnak kellene lennie. Ha ala
 Ha az Azure AD Connector-fiók hitelesítési problémák miatt nem tud kapcsolatba lépni az Azure AD-vel, akkor a jelszó alaphelyzetbe állítható.
 
 1. Jelentkezzen be a Azure AD Connect Sync-kiszolgálóra, és indítsa el a PowerShellt.
-2. A `Add-ADSyncAADServiceAccount` parancs futtatása.
+2. Futtassa az `Add-ADSyncAADServiceAccount` parancsot.
    ![PowerShell-parancsmag addadsyncaadserviceaccount](./media/how-to-connect-azureadaccount/addadsyncaadserviceaccount.png)
 3. Adja meg az Azure AD globális rendszergazdai hitelesítő adatait.
 
@@ -46,7 +46,7 @@ Ez a szakasz azoknak a hibáknak a listáját tartalmazza, amelyeket az Azure AD
 ---
 Event 659 hiba történt a jelszóházirend-szinkronizálás konfigurációjának beolvasása közben. Microsoft. IdentityModel. clients. ActiveDirectory. AdalServiceException: AADSTS70002: hiba történt a hitelesítő adatok érvényesítése során. AADSTS50054: a rendszer a régi jelszót használja a hitelesítéshez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 **Áttekintő témakörök**
 
 * [Azure AD Connect szinkronizálás: a szinkronizálás megismerése és testreszabása](how-to-connect-sync-whatis.md)

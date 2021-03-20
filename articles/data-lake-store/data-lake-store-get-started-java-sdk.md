@@ -8,10 +8,10 @@ ms.date: 05/29/2018
 ms.custom: devx-track-java
 ms.author: twooley
 ms.openlocfilehash: a2c55a2d3277bbb6c3cf72f5ea703780d2a5e9bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87318844"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>Filesystem-műveletek Azure Data Lake Storage Gen1 a Java SDK használatával
@@ -78,7 +78,7 @@ A [GitHubon](https://azure.microsoft.com/documentation/samples/data-lake-store-j
 * Az alkalmazás szolgáltatások közötti hitelesítéséhez lásd: [szolgáltatások közötti hitelesítés a Data Lake Storage Gen1 Java használatával](data-lake-store-service-to-service-authenticate-java.md).
 
 ## <a name="create-a-data-lake-storage-gen1-client"></a>Data Lake Storage Gen1-ügyfél létrehozása
-A [ADLStoreClient](https://azure.github.io/azure-data-lake-store-java/javadoc/) objektum létrehozásához meg kell adnia a Data Lake Storage Gen1 fiók nevét és a jogkivonat-szolgáltatót, amelyet a Data Lake Storage Gen1 hitelesítése során generált (lásd: [hitelesítés](#authentication) szakasz). A Data Lake Storage Gen1 fiók nevének teljesen minősített tartománynévnek kell lennie. Például cserélje le a **Fill-in-here** parancsot a **mydatalakestoragegen1.azuredatalakestore.net**hasonló értékre.
+A [ADLStoreClient](https://azure.github.io/azure-data-lake-store-java/javadoc/) objektum létrehozásához meg kell adnia a Data Lake Storage Gen1 fiók nevét és a jogkivonat-szolgáltatót, amelyet a Data Lake Storage Gen1 hitelesítése során generált (lásd: [hitelesítés](#authentication) szakasz). A Data Lake Storage Gen1 fiók nevének teljesen minősített tartománynévnek kell lennie. Például cserélje le a **Fill-in-here** parancsot a **mydatalakestoragegen1.azuredatalakestore.net** hasonló értékre.
 
 ```java
 private static String accountFQDN = "FILL-IN-HERE";  // full account FQDN, not just the account name
@@ -231,7 +231,7 @@ promptEnterKey();
 1. Az integrált fejlesztőkörnyezetben történő futtatáshoz keresse meg a **Futtatás** gombot, és kattintson rá. A Mavenben történő futtatáshoz használja az [exec:exec](https://www.mojohaus.org/exec-maven-plugin/exec-mojo.html) beépülő modult.
 2. Parancssorból futtatható, különálló jar-fájlt az összes függőség és a [Maven Assembly Plugin](https://maven.apache.org/plugins/maven-assembly-plugin/usage.html) használatával hozhat létre. A [példában a githubon a példa forráskódjának](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml) pom.xml egy példája van.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A Java SDK JavaDoc-dokumentációjának áttekintése](https://azure.github.io/azure-data-lake-store-java/javadoc/)
 * [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)
 

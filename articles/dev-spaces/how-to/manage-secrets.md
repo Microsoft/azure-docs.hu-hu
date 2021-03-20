@@ -7,10 +7,10 @@ description: Ismerje meg, hogyan használhatja a Kubernetes titkokat futtatásko
 keywords: Docker, Kubernetes, Azure, AK, Azure Container Service, tárolók
 ms.custom: devx-track-js
 ms.openlocfilehash: 8791480f420dfd76d5291ce82e8ebf7412a41326
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91972968"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>A titkok kezelése az Azure fejlesztői területtel való munka során
@@ -143,7 +143,7 @@ configurations:
 A fenti példában a *mynugetsecret* egy meglévő titkos kulcs, és a *pattoken* egy meglévő kulcs.
 
 >[!NOTE]
-> A titkos nevek és kulcsok tartalmazhatják a `.` karaktert. `\`A Escape használata a `.` titkokat Build argumentumként való átadásakor. Ha például egy *foo. bar* nevű titkos kulcsot szeretne átadni a *jogkivonat*kulcsaként: `MYTOKEN: ${secret.foo\.bar.token}` . Emellett a titkokat előtaggal és Postfix szöveggel is kiértékelheti. Például: `MYURL: eus-${secret.foo\.bar.token}-version1`. Emellett a szülő és a nagyszülő terekben elérhető titkokat Build argumentumként lehet átadni.
+> A titkos nevek és kulcsok tartalmazhatják a `.` karaktert. `\`A Escape használata a `.` titkokat Build argumentumként való átadásakor. Ha például egy *foo.bar* nevű titkos kulcsot szeretne átadni a *token* kulcsaként: `MYTOKEN: ${secret.foo\.bar.token}` . Emellett a titkokat előtaggal és Postfix szöveggel is kiértékelheti. Például: `MYURL: eus-${secret.foo\.bar.token}-version1`. Emellett a szülő és a nagyszülő terekben elérhető titkokat Build argumentumként lehet átadni.
 
 A Docker használja az *ARG* direktívát a titkos kód felhasználásához, majd használja ugyanezt a változót később a Docker. Például:
 

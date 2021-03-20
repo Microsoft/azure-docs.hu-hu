@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: ae3ebdbc642ce8bf60a8caf35b8da0c8e16c5a87
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92453219"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flock"></a>Oktatóanyag: Azure Active Directory-integráció a Flocktal
@@ -61,13 +61,13 @@ A Flock Azure AD-be való integrálásának konfigurálásához hozzá kell adni
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Flock**kifejezést, válassza ki a **Flock** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Flock** kifejezést, válassza ki a **Flock** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![Flock az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést a **Britta Simon**nevű tesztelési felhasználó alapján konfigurálja és teszteli a Flock segítségével.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést a **Britta Simon** nevű tesztelési felhasználó alapján konfigurálja és teszteli a Flock segítségével.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Flock-beli kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés Flock használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés Flock használatával történő konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **Flock** -alkalmazás integrációja lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **Flock** -alkalmazás integrációja lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -126,7 +126,7 @@ Az Azure AD egyszeri bejelentkezés Flock használatával történő konfigurál
 
 1. Egy másik böngészőablakban jelentkezzen be a Flock vállalati webhelyre rendszergazdaként.
 
-2. Válassza a **hitelesítés** fület a bal oldali navigációs panelen, majd válassza az **SAML-hitelesítés**lehetőséget.
+2. Válassza a **hitelesítés** fület a bal oldali navigációs panelen, majd válassza az **SAML-hitelesítés** lehetőséget.
 
     ![A "hitelesítés" fület a "S A M L hitelesítés" beállítással ábrázoló képernyőkép.](./media/flock-tutorial/configure1.png)
 
@@ -146,7 +146,7 @@ Az Azure AD egyszeri bejelentkezés Flock használatával történő konfigurál
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -171,15 +171,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a Flock elérésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Flock**elemet.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **Flock** elemet.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Flock**elemet.
+2. Az alkalmazások listában válassza a **Flock** elemet.
 
     ![A Flock hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -205,11 +205,11 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a ny
 
     ![Képernyőkép, amely megjeleníti a "csapat kezelése" lehetőséget.](./media/flock-tutorial/user1.png)
 
-3. Kattintson a **tag hozzáadása** fülre, majd válassza a **csoporttagok**lehetőséget.
+3. Kattintson a **tag hozzáadása** fülre, majd válassza a **csoporttagok** lehetőséget.
 
     ![Képernyőkép, amely a "tag hozzáadása" és a "csoporttagok" lehetőséget jeleníti meg.](./media/flock-tutorial/user2.png)
 
-4. Adja meg a felhasználó e-mail-címét, például a **Brittasimon \@ contoso.com** , majd kattintson a **felhasználók hozzáadása**elemre.
+4. Adja meg a felhasználó e-mail-címét, például a **Brittasimon \@ contoso.com** , majd kattintson a **felhasználók hozzáadása** elemre.
 
     ![Alkalmazott hozzáadása](./media/flock-tutorial/user3.png)
 

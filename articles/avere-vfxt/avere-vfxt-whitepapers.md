@@ -7,10 +7,10 @@ ms.author: rohogue
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.openlocfilehash: 66df6a2018960d83c4aaa9129dad067732a8b3cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76152969"
 ---
 # <a name="azure-vfxt-for-azure-whitepapers-and-other-resources"></a>Azure vFXT az Azure-tanulmányokhoz és egyéb erőforrásokhoz
@@ -35,7 +35,7 @@ Ez a kétoldalas rövid útmutató alapvető információkat és diagramokat tar
 
 Ez a ábrán az Azure-hoz készült avere-vFXT használható összetevők és elrendezések láthatók a felhőalapú infrastruktúra meglévő rendszerhez való hozzáadásához. A avere vFXT for Azure használatával kibővítheti a számítási kapacitást a meglévő helyszíni infrastruktúrával, vagy ideiglenes vagy állandó módon helyezheti át az adatait és a számítási feladatokat a felhőbe.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha továbbra is szeretné megtervezni az Azure üzembe helyezéséhez szükséges avere-vFXT, olvassa el [a avere vFXT-rendszer](avere-vfxt-deploy-plan.md)tervezése című cikk
 * Az adott kérdésekre adott válaszokért lásd az [Azure-avere vFXT kapcsolatos gyakori](avere-vfxt-faq.md)kérdéseket.

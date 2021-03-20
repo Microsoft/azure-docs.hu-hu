@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/01/2020
 ms.openlocfilehash: c82f9cbfaf2e23ddaa5e4b05f4aac4795d3e16a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76903052"
 ---
 # <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-a"></a>A végpontok közötti munkafolyamatokat figyelő egyéni követési sémák létrehozása az Azure Logic A-ben
@@ -51,22 +51,22 @@ A Azure Logic Apps beépített nyomon követésével engedélyezheti a munkafoly
 }
 ```
 
-| Tulajdonság | Kötelező | Típus | Leírás |
+| Tulajdonság | Kötelező | Típus | Description |
 |----------|----------|------|-------------|
 | Forrás típusa | Igen | Sztring | A futtatási forrás típusa a következő megengedett értékekkel: `Microsoft.Logic/workflows` , `custom` |
-| source | Igen | Karakterlánc-vagy JToken | Ha a forrástípus `Microsoft.Logic/workflows` , a forrás adatainak követniük kell ezt a sémát. Ha a forrás típusa `custom` , a séma egy JToken. |
+| source | Yes | Karakterlánc-vagy JToken | Ha a forrástípus `Microsoft.Logic/workflows` , a forrás adatainak követniük kell ezt a sémát. Ha a forrás típusa `custom` , a séma egy JToken. |
 | systemId | Igen | Sztring | Logic app-rendszerazonosító |
 | runId | Igen | Sztring | Logikai alkalmazás futtatásának azonosítója |
 | operationName | Igen | Sztring | A művelet neve, például művelet vagy trigger |
 | repeatItemScopeName | Igen | Sztring | Elem nevének ismétlése, ha a művelet egy `foreach` vagy `until` hurokon belül van |
-| repeatItemIndex | Igen | Egész szám | Azt jelzi, hogy a művelet egy `foreach` vagy `until` hurkon belül van, és az ismétlődő elem indexe. |
+| repeatItemIndex | Yes | Egész szám | Azt jelzi, hogy a művelet egy `foreach` vagy `until` hurkon belül van, és az ismétlődő elem indexe. |
 | trackingId | Nem | Sztring | Nyomkövetési azonosító az üzenetek korrelációja érdekében |
 | correlationId | Nem | Sztring | Az üzenetek korrelációs azonosítója |
 | ügyfélkérelem | Nem | Sztring | Az ügyfél feltöltheti ezt a tulajdonságot az üzenetek korrelációja érdekében |
 | eventLevel | Igen | Sztring | Az esemény szintje |
-| eventTime | Igen | DateTime | Az esemény időpontja UTC formátumban: *éééé-hh-NNTóó: PP: mm. 00000Z* |
+| eventTime | Yes | DateTime | Az esemény időpontja UTC formátumban: *éééé-hh-NNTóó: PP: mm. 00000Z* |
 | Rekordtípus | Igen | Sztring | A nyomkövetési rekord típusa csak az alábbi megengedett értékkel: `custom` |
-| rekord | Igen | JToken | Egyéni bejegyzéstípus csak JToken formátumban |
+| rekord | Yes | JToken | Egyéni bejegyzéstípus csak JToken formátumban |
 |||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>B2B protokoll-követési sémák
@@ -76,6 +76,6 @@ További információ a B2B protokoll-követési sémákkal kapcsolatban:
 * [AS2-követési sémák](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)
 * [X12-követési sémák](logic-apps-track-integration-account-x12-tracking-schema.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [B2B-üzenetek Azure monitor naplókkal való monitorozásáról](../logic-apps/monitor-b2b-messages-log-analytics.md)

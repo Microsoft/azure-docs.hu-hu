@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan csatlakoztathatók a környezetek (például Se
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 980c6317ded70db374c2b948075f060754168b0f
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97511960"
 ---
 # <a name="connect-an-environment-to-your-labs-virtual-network-in-azure-devtest-labs"></a>Környezet összekötése a tesztkörnyezet virtuális hálózatával Azure DevTest Labs
@@ -151,5 +151,5 @@ A Azure DevTest Labs segítségével egyszerűen hozhat létre virtuális gépek
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az alábbi cikkből megtudhatja, hogyan használhatja a Azure Portal a következő műveletek elvégzéséhez: [indítsa újra a virtuális gépet](devtest-lab-restart-vm.md).

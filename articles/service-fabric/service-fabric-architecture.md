@@ -5,10 +5,10 @@ services: service-fabric
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.openlocfilehash: 972700dded1841994de9252b4aa4bbc8eaefeaf8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76024713"
 ---
 # <a name="service-fabric-architecture"></a>A Service Fabric-architektúra
@@ -36,7 +36,7 @@ Az elosztott rendszer csomópontjaira vonatkozó okok miatt a rendszernek konzis
 
 ## <a name="reliability-subsystem"></a>Megbízhatósági alrendszer
 
-A megbízhatósági alrendszer biztosítja azt a mechanizmust, amely egy Service Fabric szolgáltatás állapotát a *replikátor*, a *feladatátvételi felügyelő*és az *erőforrás-Balancer*használatával igen elérhetővé teszi.
+A megbízhatósági alrendszer biztosítja azt a mechanizmust, amely egy Service Fabric szolgáltatás állapotát a *replikátor*, a *feladatátvételi felügyelő* és az *erőforrás-Balancer* használatával igen elérhetővé teszi.
 
 * A replikátor biztosítja, hogy az elsődleges szolgáltatási replika állapotának változásai automatikusan replikálódnak a másodlagos replikára, és megtartja a szolgáltatás replikájának elsődleges és másodlagos replikái közötti konzisztenciát. A replikátor a kópiakészlet replikái közötti kvórum-felügyeletért felelős. Együttműködik a feladatátvételi egységgel a replikálni kívánt műveletek listájának beolvasásához, az újrakonfigurálási ügynök pedig a replikakészlet konfigurációját biztosítja. Ez a konfiguráció jelzi, hogy mely replikákat kell replikálni a műveletekhez. Service Fabric a Fabric replikátor nevű alapértelmezett replikátort biztosít, amelyet a programozási modell API-val használhat a szolgáltatás állapotának nagyfokú rendelkezésre állása és megbízhatósága érdekében.
 * A Feladatátvételi felügyelő biztosítja, hogy a csomópontok a fürthöz való hozzáadásakor vagy eltávolításakor a rendszer automatikusan újraosztja a terhelést az elérhető csomópontok között. Ha a fürt egyik csomópontja meghibásodik, a fürt automatikusan újrakonfigurálja a szolgáltatás replikáit a rendelkezésre állás fenntartása érdekében.

@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: 315d76715973b79a971f3ca15bcc5186d20135a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87325032"
 ---
 # <a name="support-additional-protocols-for-iot-hub"></a>További protokollok támogatása IoT Hub
@@ -36,7 +36,7 @@ A MQTT-adapter azt is mutatja be, hogy milyen programozási modellt kell létreh
 
 A rugalmasság érdekében az Azure IoT protokoll-átjárót és az MQTT-implementációt egy nyílt forráskódú szoftveres projekt biztosítja. A nyílt forráskódú projekttel különböző protokollok és protokollok támogatását is felhasználhatja, vagy testre szabhatja a forgatókönyv megvalósítását. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az Azure IoT protokoll-átjáróról, valamint arról, hogyan használhatja és telepítheti a IoT-megoldás részeként, tekintse meg a következőt:
 

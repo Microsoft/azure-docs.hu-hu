@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2020
 ms.author: allensu
 ms.openlocfilehash: 8a6be588544883b77c3ff115c9dba5e6ecd5fbd7
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92747181"
 ---
 # <a name="configure-tcp-reset-and-idle-timeout-for-azure-load-balancer"></a>A TCP alaphelyzetbe állításának és üresjárati időkorlátjának konfigurálása Azure Load Balancer
@@ -37,27 +37,27 @@ A következő szakaszok azt ismertetik, hogyan lehet módosítani a terheléselo
 
 A terheléselosztó üresjárati időkorlátjának és TCP-visszaállításának beállításához szerkessze a terheléselosztási szabályt. 
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. A bal oldali menüben válassza az **erőforráscsoportok** lehetőséget.
 
-3. Válassza ki a terheléselosztó erőforráscsoportot. Ebben a példában az erőforráscsoport neve **myResourceGroup** .
+3. Válassza ki a terheléselosztó erőforráscsoportot. Ebben a példában az erőforráscsoport neve **myResourceGroup**.
 
-4. Válassza ki a terheléselosztót. Ebben a példában a terheléselosztó neve **myLoadBalancer** .
+4. Válassza ki a terheléselosztót. Ebben a példában a terheléselosztó neve **myLoadBalancer**.
 
 5. A **Beállítások** területen válassza a **terheléselosztási szabályok** lehetőséget.
 
      :::image type="content" source="./media/load-balancer-tcp-idle-timeout/portal-lb-rules.png" alt-text="A terheléselosztó szabályainak szerkesztése." border="true":::
 
-6. Válassza ki a terheléselosztási szabályt. Ebben a példában a terheléselosztási szabály neve **myLBrule** .
+6. Válassza ki a terheléselosztási szabályt. Ebben a példában a terheléselosztási szabály neve **myLBrule**.
 
 7. A terheléselosztási szabályban helyezze át a csúszkát **Üresjárati időkorlát (perc)** fölé az időtúllépési értékre.  
 
 8. A **TCP alaphelyzetbe állítása** területen válassza az **engedélyezve** lehetőséget.
 
-   :::image type="content" source="./media/load-balancer-tcp-idle-timeout/portal-lb-rules-tcp-reset.png" alt-text="A terheléselosztó szabályainak szerkesztése." border="true":::
+   :::image type="content" source="./media/load-balancer-tcp-idle-timeout/portal-lb-rules-tcp-reset.png" alt-text="Állítsa be az Üresjárati időkorlát és a TCP-visszaállítás értékét." border="true":::
 
-9. Válassza a **Mentés** lehetőséget.
+9. Kattintson a **Mentés** gombra.
 
 # <a name="powershell"></a>[**PowerShell**](#tab/tcp-reset-idle-powershell)
 

@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan adhatja meg azokat a kötelező összetevőket,
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 0677f8bea35cb34735fdcf34e717eea349fad8bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85480303"
 ---
 # <a name="specify-mandatory-artifacts-for-your-lab-in-azure-devtest-labs"></a>A laborhoz tartozó kötelező összetevők megadása Azure DevTest Labs
@@ -20,16 +20,16 @@ Csak azok az összetevők támogatottak, amelyek nem rendelkeznek paraméterekke
 ## <a name="specify-mandatory-artifacts"></a>Kötelező összetevők megadása
 A kötelező összetevőket külön is kiválaszthatja a Windows és a Linux rendszerű gépekhez. Ezeket az összetevőket attól függően is átrendezheti, hogy milyen sorrendben kívánja alkalmazni őket. 
 
-1. A labor kezdőlapján válassza a **konfiguráció és házirendek** lehetőséget a **Beállítások**területen. 
-3. Válassza a **kötelező** összetevők lehetőséget a **külső erőforrások**területen. 
+1. A labor kezdőlapján válassza a **konfiguráció és házirendek** lehetőséget a **Beállítások** területen. 
+3. Válassza a **kötelező** összetevők lehetőséget a **külső erőforrások** területen. 
 4. Válassza a **Szerkesztés** lehetőséget a **Windows** szakaszban vagy a **Linux** szakaszban. Ez a példa a **Windows** kapcsolót használja. 
 
     ![Kötelező összetevők lap – Szerkesztés gomb](media/devtest-lab-mandatory-artifacts/mandatory-artifacts-edit-button.png)
 4. Válasszon ki egy összetevőt. Ez a példa **7 – zip** lehetőséget használ. 
-5. Az összetevő **hozzáadása** lapon válassza a **Hozzáadás**lehetőséget. 
+5. Az összetevő **hozzáadása** lapon válassza a **Hozzáadás** lehetőséget. 
 
     ![Kötelező összetevők lap – 7 – zip hozzáadása](media/devtest-lab-mandatory-artifacts/add-seven-zip.png)
-6. Egy másik összetevő hozzáadásához jelölje ki a cikket, majd válassza a **Hozzáadás**lehetőséget. Ez a példa hozzáadja a **Chrome-ot** a második kötelező összetevőként.
+6. Egy másik összetevő hozzáadásához jelölje ki a cikket, majd válassza a **Hozzáadás** lehetőséget. Ez a példa hozzáadja a **Chrome-ot** a második kötelező összetevőként.
 
     ![Kötelező összetevők lap – Chrome hozzáadása](media/devtest-lab-mandatory-artifacts/add-chrome.png)
 7. A **kötelező** összetevők lapon egy üzenet jelenik meg, amely megadja a kiválasztott összetevők számát. Ha az üzenetre kattint, megjelenik a kiválasztott összetevők. Válassza a **Mentés** lehetőséget a mentéshez. 
@@ -38,9 +38,9 @@ A kötelező összetevőket külön is kiválaszthatja a Windows és a Linux ren
 8. A Linux rendszerű virtuális gépek kötelező összetevőinek megadásához ismételje meg a lépéseket. 
     
     ![Kötelező összetevők lap – Windows-és Linux-összetevők](media/devtest-lab-mandatory-artifacts/windows-linux-artifacts.png)
-9. Ha **törölni** szeretne egy összetevőt a listáról, válassza a **... lehetőséget. (három pont)** a sor végén, és válassza a **Törlés**lehetőséget. 
+9. Ha **törölni** szeretne egy összetevőt a listáról, válassza a **... lehetőséget. (három pont)** a sor végén, és válassza a **Törlés** lehetőséget. 
 10. A listában szereplő összetevők **átrendezéséhez** vigye az egérmutatót az összetevő fölé, majd válassza a **... lehetőséget. (három pont)** Ekkor megjelenik a sor elején, és húzza az elemet az új helyre. 
-11. A kötelező összetevők a laborban való mentéséhez válassza a **Mentés**lehetőséget. 
+11. A kötelező összetevők a laborban való mentéséhez válassza a **Mentés** lehetőséget. 
 
     ![Kötelező összetevők lap – összetevők mentése a laborban](media/devtest-lab-mandatory-artifacts/save-to-lab.png)
 12. A tesztkörnyezet kezdőlapjára kattintva lépjen vissza a **konfiguráció és a házirendek** lapra (válassza az **X** lehetőséget a jobb felső sarokban).  
@@ -48,13 +48,13 @@ A kötelező összetevőket külön is kiválaszthatja a Windows és a Linux ren
 ## <a name="delete-a-mandatory-artifact"></a>Kötelező összetevő törlése
 Egy kötelező összetevő laborból való törléséhez hajtsa végre a következő műveleteket: 
 
-1. A **Beállítások**területen válassza a **konfiguráció és szabályzatok** lehetőséget. 
-2. Válassza a **kötelező** összetevők lehetőséget a **külső erőforrások**területen. 
+1. A **Beállítások** területen válassza a **konfiguráció és szabályzatok** lehetőséget. 
+2. Válassza a **kötelező** összetevők lehetőséget a **külső erőforrások** területen. 
 3. Válassza a **Szerkesztés** lehetőséget a **Windows** szakaszban vagy a **Linux** szakaszban. Ez a példa a **Windows** kapcsolót használja. 
 4. Válassza ki a felül található kötelező összetevők számát tartalmazó üzenetet. 
 
     ![Kötelező összetevők lap – válassza ki az üzenetet](media/devtest-lab-mandatory-artifacts/select-message-artifacts.png)
-5. A **kiválasztott** összetevők lapon válassza a **... lehetőséget. (három pont)** az összetevőt törölni kell, majd válassza az **Eltávolítás**lehetőséget. 
+5. A **kiválasztott** összetevők lapon válassza a **... lehetőséget. (három pont)** az összetevőt törölni kell, majd válassza az **Eltávolítás** lehetőséget. 
     
     ![Kötelező összetevők lap – összetevő eltávolítása](media/devtest-lab-mandatory-artifacts/remove-artifact.png)
 6. A **kiválasztott** összetevők oldal bezárásához kattintson **az OK gombra** . 
@@ -66,14 +66,14 @@ Egy kötelező összetevő laborból való törléséhez hajtsa végre a követk
 A labor felhasználóként most megtekintheti a kötelező összetevők listáját, miközben létrehoz egy virtuális gépet a laborban. A labor tulajdonosa nem szerkesztheti vagy törölheti a laborban beállított kötelező összetevőket.
 
 1. A labor kezdőlapján válassza az **Áttekintés** lehetőséget a menüből.
-2. Ha hozzá szeretne adni egy virtuális gépet a laborhoz, válassza a **+ Hozzáadás**lehetőséget. 
-3. Válasszon ki egy **alapképet**. Ez a példa a **Windows Server 1709-es verzióját**használja.
+2. Ha hozzá szeretne adni egy virtuális gépet a laborhoz, válassza a **+ Hozzáadás** lehetőséget. 
+3. Válasszon ki egy **alapképet**. Ez a példa a **Windows Server 1709-es verzióját** használja.
 4. Figyelje meg, hogy megjelenik egy üzenet **, amely** tartalmazza a kiválasztott kötelező összetevők számát. 
-5. Válassza **az**összetevők elemet. 
+5. Válassza **az** összetevők elemet. 
 6. Győződjön meg arról, hogy a labor konfigurációjában és házirendjeiben megadott **kötelező** összetevők láthatók. 
 
     ![Virtuális gép létrehozása – kötelező összetevők](media/devtest-lab-mandatory-artifacts/create-vm-artifacts.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Megtudhatja, hogyan [adhat hozzá egy git-](devtest-lab-add-artifact-repo.md)összetevőt a laborhoz.
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: tomfitz
 ms.openlocfilehash: 05302d92f2304be35a7b88fac6fabfc17b13c63e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75651721"
 ---
 # <a name="publish-a-service-catalog-application-through-azure-portal"></a>Service Catalog-alkalmazás közzététele Azure Portal
@@ -24,11 +24,11 @@ A felügyelt alkalmazás definícióját tartalmazó. zip-fájlnak URI-n kereszt
 
 ## <a name="create-managed-application-with-portal"></a>Felügyelt alkalmazás létrehozása a portálon
 
-1. A bal felső sarokban válassza az **+ új**lehetőséget.
+1. A bal felső sarokban válassza az **+ új** lehetőséget.
 
    ![Új szolgáltatás](./media/publish-portal/new.png)
 
-1. Keressen rá a **Service Catalog**kifejezésre.
+1. Keressen rá a **Service Catalog** kifejezésre.
 
 1. Az eredmények között görgessen addig, amíg meg nem találja a **Service Catalog felügyelt alkalmazás definícióját**. Válassza ki.
 
@@ -42,7 +42,7 @@ A felügyelt alkalmazás definícióját tartalmazó. zip-fájlnak URI-n kereszt
 
    ![Értékek megadása](./media/publish-portal/fill-application-values.png)
 
-1. A hitelesítési és a zárolási szint szakaszban válassza az **Engedélyezés hozzáadása**lehetőséget.
+1. A hitelesítési és a zárolási szint szakaszban válassza az **Engedélyezés hozzáadása** lehetőséget.
 
    ![Engedélyezés hozzáadása](./media/publish-portal/add-authorization.png)
 
@@ -50,11 +50,11 @@ A felügyelt alkalmazás definícióját tartalmazó. zip-fájlnak URI-n kereszt
 
    ![Engedélyezési csoport hozzáadása](./media/publish-portal/add-auth-group.png)
 
-1. Ha megadta az összes értéket, válassza a **Létrehozás**lehetőséget.
+1. Ha megadta az összes értéket, válassza a **Létrehozás** lehetőséget.
 
    ![Felügyelt alkalmazás létrehozása](./media/publish-portal/create-app.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A felügyelt alkalmazások bemutatásáért tekintse meg a [felügyelt alkalmazások áttekintését](overview.md).
 * A felügyelt alkalmazások példáit lásd: [Sample projects for Azure Managed Applications](sample-projects.md).

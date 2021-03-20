@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/13/2020
 ms.author: yelevin
 ms.openlocfilehash: a0056391dddec25511deb7033d37f59db3d835c8
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98567937"
 ---
 # <a name="connect-your-thycotic-secret-server-to-azure-sentinel"></a>A Thycotic titkos kiszolgálójának összekötése az Azure Sentinel használatával
@@ -74,7 +74,7 @@ CommonSecurityLog
 
 Néhány hasznos munkafüzet és lekérdezési minta esetén tekintse meg az összekötő lap **következő lépések** lapját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható a Thycotic titkos kiszolgáló az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

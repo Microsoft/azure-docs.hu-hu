@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan másolhat adatok egy felhőből vagy helyszíni
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 12/18/2020
+ms.date: 03/17/2021
 ms.author: jingwang
-ms.openlocfilehash: 3ee1b1f48d91ba1245c0173d2e00a20778932d35
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9c274bdfb5854529dbb82bd2d8b7cefdf07390b1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367084"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588902"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>Adatok másolása a HDFS-kiszolgálóról Azure Data Factory használatával
 
@@ -172,7 +172,7 @@ A következő tulajdonságok támogatottak a HDFS a `storeSettings` Format-alap�
 | modifiedDatetimeEnd      | Lásd fentebb.  
 | enablePartitionDiscovery | A particionált fájlok esetében adja meg, hogy szeretné-e elemezni a partíciókat a fájl elérési útján, majd adja hozzá őket további forrásként szolgáló oszlopként.<br/>Az engedélyezett értékek: **false** (alapértelmezett) és **true (igaz**). | No                                            |
 | partitionRootPath | Ha engedélyezve van a partíciók felderítése, akkor a particionált mappák adatoszlopként való olvasásához a gyökér elérési útját kell megadni.<br/><br/>Ha nincs megadva, a rendszer alapértelmezés szerint<br/>– Ha a fájl elérési útját használja az adatkészletben vagy a forrásban található fájlok listáján, a partíció gyökerének elérési útja az adatkészletben konfigurált útvonal.<br/>– Ha helyettesítő mappa szűrőt használ, a partíció gyökerének elérési útja az első helyettesítő karakter előtti Alútvonal.<br/><br/>Tegyük fel például, hogy az adatkészletben az elérési utat "root/Folder/Year = 2020/hónap = 08/Day = 27" értékre konfigurálja:<br/>– Ha a partíció gyökerének elérési útját "gyökér/mappa/év = 2020" értékre állítja, a másolási tevékenység két további oszlopot fog előállítani, `month` és a `day` "08" és "27" értéket is kijelöli a fájlokban lévő oszlopokon kívül.<br/>– Ha nincs megadva a partíció gyökerének elérési útja, nem jön létre további oszlop. | No                                            |
-| maxConcurrentConnections | A tárolóhoz egyidejűleg csatlakozni képes kapcsolatok száma. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolódást az adattárhoz. | No                                            |
+| maxConcurrentConnections | A tevékenység futtatása során az adattárhoz létesített egyidejű kapcsolatok felső határa. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolatokat.| No                                            |
 | ***DistCp-beállítások*** |  | |
 | distcpSettings | A HDFS DistCp használatakor használandó tulajdonságérték. | No |
 | resourceManagerEndpoint | A fonal (még egy erőforrás-egyeztető) végpontja | Igen, ha DistCp használ |
@@ -533,7 +533,7 @@ A törlési tevékenység tulajdonságaival kapcsolatos információkért lásd:
 | resourceManagerEndpoint | A FONÁL Resource Manager-végpont | Igen, ha DistCp használ |
 | tempScriptPath | Mappa elérési útja, amely a temp DistCp parancs parancsfájljának tárolására szolgál. A parancsfájlt a Data Factory hozza létre, és a másolási feladatok befejezése után el lesz távolítva. | Igen, ha DistCp használ |
 | distcpOptions | A DistCp parancs további beállításokkal is rendelkezik. | No |
-| maxConcurrentConnections | A tárolóhoz egyidejűleg csatlakozni képes kapcsolatok száma. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolódást az adattárhoz. | No |
+| maxConcurrentConnections | A tevékenység futtatása során az adattárhoz létesített egyidejű kapcsolatok felső határa. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolatokat.| No |
 
 **Példa: HDFS forrás a másolási tevékenységben a DistCp használatával**
 

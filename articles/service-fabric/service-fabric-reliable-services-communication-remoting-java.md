@@ -7,10 +7,10 @@ ms.date: 06/30/2017
 ms.custom: devx-track-java
 ms.author: pakunapa
 ms.openlocfilehash: d53d20510db70d81aab796efab48de40c880bb3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87316124"
 ---
 # <a name="service-remoting-in-java-with-reliable-services"></a>Szolgáltatás-távelérés a javában Reliable Services
@@ -28,7 +28,7 @@ Egy szolgáltatás távelérésének beállítása két egyszerű lépésben tö
 1. Hozzon létre egy felületet a szolgáltatás megvalósításához. Ez az interfész határozza meg a szolgáltatásban távoli eljárás hívásához elérhető módszereket. A metódusoknak aszinkron metódusok tevékenység-visszaküldési módszereknek kell lenniük. A csatolónak meg kell valósítania `microsoft.serviceFabric.services.remoting.Service` annak jelzésére, hogy a szolgáltatásnak van-e távelérési felülete.
 2. Használjon távelérési figyelőt a szolgáltatásban. Ez egy olyan `CommunicationListener` implementáció, amely távelérési funkciókat biztosít. `FabricTransportServiceRemotingListener` a távelérés-figyelőt az alapértelmezett távelérési átviteli protokoll használatával lehet létrehozni.
 
-A következő állapot nélküli szolgáltatás például egyetlen metódust tesz elérhetővé, amely távoli eljáráshívás esetén "„Helló világ!” alkalmazás" beolvasását teszi lehetővé.
+A következő állapot nélküli szolgáltatás például egyetlen metódust tesz elérhetővé, amely távoli eljáráshívás esetén "Hello World" beolvasását teszi lehetővé.
 
 ```java
 import java.util.ArrayList;
@@ -98,5 +98,5 @@ TransientExceptions esetén csak újra próbálkozik a hívással.
 Az alapértelmezett újrapróbálkozási paramétereket a [OperationRetrySettings](/java/api/microsoft.servicefabric.services.communication.client.operationretrysettings)biztosítanak.
 Ezeket az értékeket úgy is konfigurálhatja, hogy átadja a OperationRetrySettings objektumot a ServiceProxyFactory konstruktornak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A Reliable Services kommunikációjának biztonságossá tétele](service-fabric-reliable-services-secure-communication-java.md)

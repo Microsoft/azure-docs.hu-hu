@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.openlocfilehash: f666cc2f9d11b1e05d11ba266897e6fca3cd287e
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92057620"
 ---
 # <a name="debug-sessions-in-azure-cognitive-search"></a>Hibakeresési munkamenetek az Azure Cognitive Search
@@ -20,7 +20,7 @@ ms.locfileid: "92057620"
 A hibakeresési munkamenetek egy olyan vizualizációs szerkesztő, amely a Azure Portal meglévő készségkészlet működik. A hibakeresési munkameneten belül azonosíthatja és elháríthatja a hibákat, ellenőrizheti a módosításokat, és leküldheti a változtatásokat egy éles készségkészlet az AI-dúsítási folyamat során.
 
 > [!Important]
-> A hibakeresési munkamenetek az előzetes verziójú szolgáltatások, amelyek szolgáltatói szerződés nélkül érhetők el, és nem ajánlottak éles számítási feladatokhoz. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> A hibakeresési munkamenetek az előzetes verziójú szolgáltatások, amelyek szolgáltatói szerződés nélkül érhetők el, és nem ajánlottak éles számítási feladatokhoz. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 
 ## <a name="using-debug-sessions"></a>Hibakeresési munkamenetek használata
@@ -51,13 +51,13 @@ A **skill Graph** nézet a készségkészlet hierarchikus, vizuális ábrázolá
 
 A gráfban lévő képességek kiválasztásával kiemelheti a hozzá kapcsolódó képességeket, a bemeneteit létrehozó csomópontokat és a kimeneteit elfogadó csomópontokat. Az egyes képességek csomópontok a típusait, hibáit, figyelmeztetéseit és a végrehajtások számát jelenítik meg. A **skill Graphban** kiválaszthatja, hogy melyik képességet szeretné a hibakereséshez vagy a fejlesztéshez. Ha kiválasztja a megfelelő képzettséget, a részletek ablaktáblán megjelennek a gráftól jobbra.
 
-> :::image type="content" source="media/cognitive-search-debug/skills-graph.png" alt-text="Hibakeresési munkamenet létrehozása":::
+> :::image type="content" source="media/cognitive-search-debug/skills-graph.png" alt-text="Skill Graph":::
 
 ## <a name="skill-details"></a>Szakértelem részletei
 
 A skill Details (szakértelem részletei) ablaktáblán egy adott képességgel rendelkező terület jelenik meg, ha az adott képesség ki van emelve a **skill gráfban**. Áttekintheti és szerkesztheti a képességek beállításainak részleteit. A skill JSON-definíciója van megadva. A szaktudás végrehajtásával, valamint a hibákkal és figyelmeztetésekkel kapcsolatos részletek is megjelennek. A skill **Settings (készségfejlesztés** ) lap & **skill JSON-szerkesztője** lehetővé teszi a képességek közvetlen szerkesztését. A [`</>`](#expression-evaluator) megnyit egy ablakot a szaktudás bemenetek és kimenetek kifejezésének megtekintéséhez és szerkesztéséhez.
 
-A képességek beállítása ablakban beágyazott beviteli vezérlők használatával összetett alakzatokat hozhat létre a kivetítésekhez, a kimeneti mezők hozzárendeléséhez egy komplex típusú mezőhöz, vagy egy adott képességet. A **kifejezés-értékelő**használatával a beágyazott bemenetek egyszerű tesztelési és érvényesítési kifejezést biztosítanak.
+A képességek beállítása ablakban beágyazott beviteli vezérlők használatával összetett alakzatokat hozhat létre a kivetítésekhez, a kimeneti mezők hozzárendeléséhez egy komplex típusú mezőhöz, vagy egy adott képességet. A **kifejezés-értékelő** használatával a beágyazott bemenetek egyszerű tesztelési és érvényesítési kifejezést biztosítanak.
 
 ## <a name="skill-execution-history"></a>Szaktudás-végrehajtási előzmények
 
@@ -73,7 +73,7 @@ Egyéni szakértelem létrehozásakor vagy egy egyéni képességgel kapcsolatos
 
 A bővített **adatstruktúra** ablaktábla a dokumentum dúsítását jeleníti meg a készségkészlet keresztül, részletezve az egyes alkoholtartalom-növelés és a kezdeményező képesség kontextusát. A **kifejezés kiértékelése** az egyes dúsítások tartalmának megtekintésére is használható.
 
-> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-display.png" alt-text="Hibakeresési munkamenet létrehozása":::
+> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-display.png" alt-text="Dúsított adatstruktúra":::
 
 ## <a name="expression-evaluator"></a>Kifejezés kiértékelése
 

@@ -5,10 +5,10 @@ ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.openlocfilehash: 36b012c486c0c7d3303a81998e88f1605999c899
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87170865"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Az Azure Blockchain szolgáltatás kezelése az Azure CLI-vel
@@ -216,7 +216,7 @@ az role assignment create \
 
 **Példa**
 
-Csomópont-hozzáférés biztosítása az Azure AD-felhasználó számára a blockchain- **tag**számára:
+Csomópont-hozzáférés biztosítása az Azure AD-felhasználó számára a blockchain- **tag** számára:
 
 ```azurecli
 az role assignment create \
@@ -227,7 +227,7 @@ az role assignment create \
 
 **Példa**
 
-Csomópont-hozzáférés biztosítása az Azure AD-felhasználó számára a blockchain **tranzakciós csomópontja**számára:
+Csomópont-hozzáférés biztosítása az Azure AD-felhasználó számára a blockchain **tranzakciós csomópontja** számára:
 
 ```azurecli
 az role assignment create \
@@ -276,6 +276,6 @@ az role assignment delete \
 | **megbízott** | Azure AD-felhasználói azonosító. Például: `user@contoso.com` |
 | **hatókör** | A szerepkör-hozzárendelés hatóköre. Blockchain-tag vagy tranzakciós csomópont lehet. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [konfigurálhatja az Azure Blockchain szolgáltatás tranzakciós csomópontjait a Azure Portal](configure-transaction-nodes.md).

@@ -11,10 +11,10 @@ ms.author: junhan
 ms.custom:
 - 'Role: Cloud Development'
 ms.openlocfilehash: b9d8f0c2a573ba1749b414a389cd7181ddd5f95a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87321683"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>A Visual Studio Code-hoz készült Azure IoT Tools használata üzenetek küldéséhez és fogadásához az eszköz és a IoT Hub között
@@ -64,17 +64,17 @@ Megtudhatja, hogyan figyelheti az eszközről a felhőbe irányuló üzenetek é
 
 Az eszközről az IoT hubhoz küldött üzenetek figyeléséhez kövesse az alábbi lépéseket:
 
-1. Kattintson a jobb gombbal az eszközre, és válassza a **figyelés beépített esemény végpontjának elindítása**lehetőséget.
+1. Kattintson a jobb gombbal az eszközre, és válassza a **figyelés beépített esemény végpontjának elindítása** lehetőséget.
 
 2. A figyelt üzenetek megjelennek a **kimenet**  >  **Azure IoT hub** nézetben.
 
-3. A figyelés leállításához kattintson a jobb gombbal a **kimenet** nézetre, és válassza a **beépített esemény-végpont figyelésének leállítása**lehetőséget.
+3. A figyelés leállításához kattintson a jobb gombbal a **kimenet** nézetre, és válassza a **beépített esemény-végpont figyelésének leállítása** lehetőséget.
 
 ## <a name="send-cloud-to-device-messages"></a>Üzenetküldés a felhőből az eszközökre
 
 Az alábbi lépéseket követve küldhet üzenetet az IoT hub-ról az eszközre:
 
-1. Kattintson a jobb gombbal az eszközre, és válassza az **C2D-üzenet küldése az eszközre**lehetőséget.
+1. Kattintson a jobb gombbal az eszközre, és válassza az **C2D-üzenet küldése az eszközre** lehetőséget.
 
 2. Adja meg az üzenetet a beviteli mezőben.
 
