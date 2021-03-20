@@ -11,10 +11,10 @@ author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 97aabfa39954aa6ba937166eb54c05ac4874ea7e
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96741338"
 ---
 # <a name="tutorial-use-risk-detections-for-user-sign-ins-to-trigger-azure-ad-multi-factor-authentication-or-password-changes"></a>Oktatóanyag: kockázati észlelések használata felhasználói bejelentkezésekhez az Azure AD Multi-Factor Authentication vagy a jelszó módosításainak elindításához
@@ -127,7 +127,7 @@ Az előző lépésekben létrehozott Azure AD Identity Protection szabályzatok 
 
 Ha befejezte a tesztelést, és már nem szeretné, hogy engedélyezve legyenek a kockázatalapú házirendek, térjen vissza a letiltani kívánt szabályzatokhoz, és állítsa be a **házirend** *kikapcsolását*.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban engedélyezte a Azure AD Identity Protection kockázatalapú felhasználói házirendjeit. Megtanulta végrehajtani az alábbi műveleteket:
 

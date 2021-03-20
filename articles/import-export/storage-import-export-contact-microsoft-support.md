@@ -9,10 +9,10 @@ ms.date: 01/14/2021
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 03d953bd534595e47702642403626a05b7f67aba
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98706626"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>Támogatási jegy megnyitása importálási/exportálási feladatokhoz
@@ -28,7 +28,7 @@ Támogatási kérelem létrehozásához hajtsa végre a következő lépéseket:
 
 1. Nyissa meg az importálási/exportálási feladatot. Navigáljon a **támogatás + hibaelhárítás** szakaszhoz, majd válassza az **új támogatási kérelem** lehetőséget.
      
-    ![Alapbeállítások](./media/storage-import-export-contact-microsoft-support/import-export-support1.png)
+    ![Alapvető beállítások](./media/storage-import-export-contact-microsoft-support/import-export-support1.png)
    
 2. Az **új támogatási kérelem** területen válassza az **alapismeretek** lehetőséget. Az **alapismeretek** területen hajtsa végre a következő lépéseket:
     
@@ -85,6 +85,6 @@ A támogatási jegy létrehozása után a jegyet a teljes életciklusán kereszt
     ![A képernyőképen a kérelemhez kiválasztott új üzenet jelenik meg.](./media/storage-import-export-contact-microsoft-support/manage-support-ticket3.png) 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogy [Az Azure import/export hogyan használható az Azure Storage-ba irányuló és onnan érkező adatok átvitelére](storage-import-export-service.md).

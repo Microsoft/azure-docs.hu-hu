@@ -1,6 +1,6 @@
 ---
 title: Helyszíni Azure AD jelszavas védelem engedélyezése
-description: Ismerje meg, hogyan engedélyezhető az Azure AD jelszavas védelem helyszíni Active Directory tartományi szolgáltatások-környezethez
+description: Ismerje meg, hogyan engedélyezhető az Azure AD jelszavas védelem helyszíni Active Directory Domain Services-környezethez
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,17 +12,17 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f2e11fa1bb9f1d3a3986a19da8ed44229829ec81
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96741779"
 ---
 # <a name="enable-on-premises-azure-active-directory-password-protection"></a>Helyszíni Azure Active Directory jelszavas védelem engedélyezése
 
 A felhasználók gyakran olyan gyakori helyi szavakat (például iskolát, sport csapatot vagy híres személyt) használó jelszavakat hoznak létre. Ezek a jelszavak könnyen kiolvashatók és gyengék a szótáron alapuló támadásokkal szemben. A szervezet erős jelszavainak kényszerítéséhez Azure Active Directory (Azure AD) jelszavas védelme globális és egyéni tiltott jelszavakat tartalmaz. A jelszó-módosítási kérelem meghiúsul, ha egyezés szerepel a tiltott jelszavak listájában.
 
-A helyszíni Active Directory tartományi szolgáltatások (AD DS) környezetének védelme érdekében telepítheti és konfigurálhatja az Azure AD jelszavas védelmet a helyszíni TARTOMÁNYVEZÉRLŐvel való együttműködéshez. Ez a cikk bemutatja, hogyan engedélyezheti az Azure AD jelszavas védelmet a helyszíni környezetben.
+A helyszíni Active Directory Domain Services (AD DS) környezetének védelme érdekében telepítheti és konfigurálhatja az Azure AD jelszavas védelmet a helyszíni TARTOMÁNYVEZÉRLŐvel való együttműködéshez. Ez a cikk bemutatja, hogyan engedélyezheti az Azure AD jelszavas védelmet a helyszíni környezetben.
 
 Az Azure AD jelszavas védelem helyszíni környezetben való működésével kapcsolatos további információkért lásd: [Az Azure ad jelszavas védelem betartatása a Windows Server Active Directory](concept-password-ban-bad-on-premises.md).
 
@@ -67,7 +67,7 @@ Előfordulhat, hogy az érintett végfelhasználóknak az informatikai személyz
 > [!NOTE]
 > Az Azure AD jelszavas védelme nem szabályozza az ügyfélszámítógép által a gyenge jelszavak elutasításakor megjelenő hibaüzenetet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha testre szeretné szabni a tiltott jelszavak listáját a szervezet számára, tekintse meg [Az Azure ad jelszavas védelem egyéni tiltott jelszavak listájának konfigurálása](tutorial-configure-custom-password-protection.md)című témakört.
 

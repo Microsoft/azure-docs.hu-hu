@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
 ms.openlocfilehash: 9c7fd03c2239cea05dc79ad4dd1965fe253a2ce9
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96341597"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>A Bing News Search API nyelvi és területi támogatása
@@ -38,7 +38,7 @@ A lekérdezési paraméterben megadható ország/régió kódok listáját itt `
 
 |Ország/régió|Nyelv|Piaci kód|  
 |---------------------|--------------|-----------------|
-|Dánia|dán|da-DK|
+|Dánia|Dán|da-DK|
 |Ausztria|Német|de-AT|
 |Svájc|Német|de-CH|
 |Németország|Német|de-DE|
@@ -87,7 +87,7 @@ A lekérdezési paraméterben megadható ország/régió kódok listáját itt `
 
 |Ország/régió|Nyelv|Piaci kód|  
 |---------------------|--------------|-----------------|
-|Dánia|dán|da-DK|
+|Dánia|Dán|da-DK|
 |Németország|Német|de-DE|
 |Ausztrália|Angol|EN-AU|
 |Egyesült Királyság|Angol|en-GB|
@@ -166,5 +166,5 @@ A lekérdezési paraméterben megadható ország/régió kódok a következők: 
 |Egyesült Királyság|GB|  
 |Egyesült Államok|USA|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az Bing News Search-végpontokról: [News Search API v7-dokumentáció](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference).

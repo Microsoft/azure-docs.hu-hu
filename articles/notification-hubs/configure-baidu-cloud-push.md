@@ -12,10 +12,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/25/2019
 ms.openlocfilehash: 759e35ba353f470ea3abc5f5d4182fa2b2ea0e73
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96003582"
 ---
 # <a name="deprecated-configure-baidu-cloud-push-settings-for-a-notification-hub-in-the-azure-portal"></a>Elavult: az értesítési központ Baidu Cloud push-beállításainak konfigurálása a Azure Portal
@@ -38,5 +38,5 @@ Az alábbi eljárás egy értesítési központ Baidu Cloud push-beállításain
 
     ![A leküldéses értesítések Baidu (Android China) konfigurációját bemutató Notification Hubs képernyőképe](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Baidu által az Azure Notification Hubs és a Baidu Cloud push használatával folytatott értesítések küldésének lépésenkénti utasításait lásd: a [Notification Hubs használatának első lépései Baidu használatával](notification-hubs-baidu-china-android-notifications-get-started.md).

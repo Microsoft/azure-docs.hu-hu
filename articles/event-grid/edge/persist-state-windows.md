@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: f38e23a3af1e2c81ee012a4f3c268cbff3fc1bee
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96002817"
 ---
 # <a name="persist-state-in-windows"></a>Állapot megőrzése a Windowsban
@@ -73,7 +73,7 @@ A [Docker-kötetek](https://docs.docker.com/storage/volumes/) használatával me
     1. Kattintson a jobb gombbal, majd válassza a **Tulajdonságok** lehetőséget.
     1. Válassza a **Biztonság** elemet.
     1. A * csoport vagy felhasználó neve területen válassza a **Szerkesztés** lehetőséget.
-    1. Válassza a **Hozzáadás** lehetőséget, írja be `Users` a Névellenőrzés lehetőséget, majd kattintson **az OK gombra**. **Check Names**
+    1. Válassza a **Hozzáadás** lehetőséget, írja be `Users` a Névellenőrzés lehetőséget, majd kattintson **az OK gombra**. 
     1. A *Felhasználók engedélyei* területen válassza a **módosítás** lehetőséget, majd kattintson **az OK gombra**.
 1. **Kötések** használata a kötet csatlakoztatásához és Event Grid modul újbóli üzembe helyezéséhez Azure Portal
 

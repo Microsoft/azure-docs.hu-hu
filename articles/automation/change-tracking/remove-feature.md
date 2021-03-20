@@ -6,10 +6,10 @@ ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.openlocfilehash: 2e3e5abdfbb2bf2e9d7a12a677422adc67336775
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92209818"
 ---
 # <a name="remove-change-tracking-and-inventory-from-automation-account"></a>Change Tracking és leltár eltávolítása az Automation-fiókból
@@ -28,17 +28,17 @@ Change Tracking és leltár eltávolítása előtt először le kell állítania
 
 Az Automation-fiók munkaterületről való leválasztásához az alábbi lépéseket kell követnie a Change Tracking és a leltár teljes eltávolításához. A **változáskövetési** megoldást a munkaterületről távolíthatja el.
 
-1. A Azure Portal válassza a **minden szolgáltatás**lehetőséget. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a bemenet alapján szűri a javaslatokat. Válassza a **Log Analytics** elemet.
+1. A Azure Portal válassza a **minden szolgáltatás** lehetőséget. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a bemenet alapján szűri a javaslatokat. Válassza a **Log Analytics** elemet.
 
 2. Log Analytics munkaterületek listájában válassza ki azt a munkaterületet, amelyet a Change Tracking és a leltár engedélyezésekor választott ki.
 
-3. A bal oldalon válassza a **megoldások**elemet.  
+3. A bal oldalon válassza a **megoldások** elemet.  
 
-4. A megoldások listájában válassza a **változáskövetési (munkaterület neve)** elemet. A megoldás **Áttekintés** lapján válassza a **Törlés**lehetőséget. Amikor a rendszer felszólítja a megerősítésre, válassza az **Igen**lehetőséget.
+4. A megoldások listájában válassza a **változáskövetési (munkaterület neve)** elemet. A megoldás **Áttekintés** lapján válassza a **Törlés** lehetőséget. Amikor a rendszer felszólítja a megerősítésre, válassza az **Igen** lehetőséget.
 
 ## <a name="unlink-workspace-from-automation-account"></a>Munkaterület leválasztása Automation-fiókról
 
-1. A Azure Portal válassza az **Automation-fiókok**elemet.
+1. A Azure Portal válassza az **Automation-fiókok** elemet.
 
 2. Nyissa meg az Automation-fiókját, és a bal oldali **kapcsolódó erőforrások** területen válassza a **csatolt munkaterület** lehetőséget.
 
@@ -52,9 +52,9 @@ Azt is megteheti, hogy leválasztja az Log Analytics munkaterületet az Automati
 
 1. Az Azure Portalon válassza a **Log Analytics** lehetőséget.
 
-2. A munkaterületen válassza az **Automation-fiók** lehetőséget a **kapcsolódó erőforrások**területen.
+2. A munkaterületen válassza az **Automation-fiók** lehetőséget a **kapcsolódó erőforrások** területen.
 
-3. Az Automation-fiók lapon válassza a **fiók megszüntetése**lehetőséget.
+3. Az Automation-fiók lapon válassza a **fiók megszüntetése** lehetőséget.
 
 Miközben megpróbálja leválasztani az Automation-fiókot, a menü **értesítések** részén nyomon követheti a folyamat állapotát.
 

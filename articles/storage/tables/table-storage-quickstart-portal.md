@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 12/02/2019
 ms.subservice: tables
 ms.openlocfilehash: 93c6cb0f61185457ef0684d2a1ba691a0534aa13
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96326760"
 ---
 # <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>Rövid útmutató: Azure Storage-tábla létrehozása az Azure Portalon 
@@ -41,6 +41,6 @@ Az Azure Portal Table Service már táblák létrehozására is használható.
 
    ![A Table service táblázat hozzáadása lapján a saját tábla szerepel a tábla neve mezőben, és ki van emelve. Az OK gomb ki van választva és ki van jelölve.](media/table-storage-quickstart-portal/table-storage-quickstart-03.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Irányelvek táblatervezéshez](table-storage-design-guidelines.md)

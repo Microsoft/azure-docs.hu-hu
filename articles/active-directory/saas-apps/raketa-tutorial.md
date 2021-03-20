@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/28/2020
 ms.author: jeedes
 ms.openlocfilehash: 649a26e474c7c4d6b4f51a035b3f8f9da35b9dd1
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92511154"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-raketa"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Raketa
@@ -66,7 +66,7 @@ A Raketa Azure AD-be való integrálásának konfigurálásához hozzá kell adn
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-raketa"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Raketa
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Raketa a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Raketa-ben.
+Konfigurálja és tesztelje az Azure AD SSO-t a Raketa a **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Raketa-ben.
 
 Az Azure AD SSO és a Raketa konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 

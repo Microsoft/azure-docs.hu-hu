@@ -14,10 +14,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bd4d42e1cafa58aaf6a47188c9e86c24ac175047
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92514389"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Nemrég törölt felhasználó visszaállítása vagy eltávolítása a Azure Active Directory használatával
@@ -45,7 +45,7 @@ Megtekintheti az összes olyan felhasználót, amely 30 napnál régebben törö
 ### <a name="to-view-your-restorable-users"></a>A helyreállítható felhasználók megtekintése
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) globális rendszergazdai fiókkal a szervezet számára.
 
-2. Válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **törölt felhasználók**elemet.
+2. Válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **törölt felhasználók** elemet.
 
     Tekintse át a visszaállítani kívánt felhasználók listáját.
 
@@ -61,7 +61,7 @@ Ha töröl egy felhasználói fiókot a szervezetből, a fiók felfüggesztett �
 ### <a name="to-restore-a-user"></a>Felhasználó visszaállítása
 1. A **felhasználók által törölt felhasználók** lapon keresse meg és válassza ki az elérhető felhasználók egyikét. Például: _Mary Parker_.
 
-2. Válassza a **felhasználó visszaállítása**lehetőséget.
+2. Válassza a **felhasználó visszaállítása** lehetőséget.
 
     ![Felhasználók – törölt felhasználók lap, a felhasználó visszaállítása lehetőség kiemelve](media/active-directory-users-restore/users-deleted-users-restore-user.png)
 
@@ -75,7 +75,7 @@ Véglegesen törölheti a felhasználót a szervezetből anélkül, hogy az auto
 
 1. A **felhasználók által törölt felhasználók** lapon keresse meg és válassza ki az elérhető felhasználók egyikét. Például: _Rae Huff_.
 
-2. Válassza a **véglegesen törlés**lehetőséget.
+2. Válassza a **véglegesen törlés** lehetőséget.
 
     ![Felhasználók – törölt felhasználók lap, a felhasználó törlése lehetőség kiemelve](media/active-directory-users-restore/users-deleted-users-permanent-delete-user.png)
 

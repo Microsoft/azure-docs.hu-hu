@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: justinha
 ms.openlocfilehash: b0b48e7ad494386052e6d94c32d7215b3f4f0202
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96618824"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>Az állapot megismerése és a felfüggesztett tartományok feloldása Azure Active Directory Domain Services
@@ -118,7 +118,7 @@ Ha egy felügyelt tartomány belép a *törölt* állapotba, a következő visel
 * A felügyelt tartomány nem állítható vissza. Az Azure AD DS újrafelhasználásához létre kell hoznia egy helyettesítő felügyelt tartományt.
 * A törlése után a rendszer nem számláz a felügyelt tartományhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felügyelt tartomány Kifogástalan állapotba állításához és a felfüggesztése kockázatának csökkentéséhez Ismerje meg a [felügyelt tartományhoz tartozó riasztások feloldását][resolve-alerts].
 

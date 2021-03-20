@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: e015c6761b920ef37af2bbfd67ced5fc3218d532
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96002238"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>A csatlakoztatott gyári megoldás-gyorsító konfigurálása
@@ -341,6 +341,6 @@ A **NumberOfManufactureredProducts** csomópont értékének egyik jellemzője, 
 
 A konfigurációban lévő **műveleti kód** úgy konfigurálja a számítási logikát, hogy kiszámítsa a maximális és a minimális érték különbözetének eredményét. Ezeket az eredményeket a rendszer a legfelső szintű (globális) szintre összesíti, és az irányítópulton jelenik meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egy javasolt következő lépés a [csatlakoztatott gyári megoldás testreszabásának](iot-accelerators-connected-factory-customize.md)megismerése.

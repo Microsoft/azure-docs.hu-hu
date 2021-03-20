@@ -9,10 +9,10 @@ ms.date: 01/19/2021
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: f634ceb60ae78d4d825c73bd2e98da2fb951b374
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98706450"
 ---
 # <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a>Azure-beli importálási/exportálási feladatok állapotának áttekintése a másolási naplófájlokkal
@@ -28,7 +28,7 @@ Az alábbi URL-címek egy importálási feladatokhoz tartozó naplófájlok más
 
  Lásd: [importálási/exportálási szolgáltatás naplófájljának formátuma](/previous-versions/azure/storage/common/storage-import-export-file-format-log) a másolási naplók formátuma és az állapotkódok teljes listája.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
  * [Az Azure import/export eszköz beállítása](storage-import-export-tool-setup-v1.md)   
  * [Merevlemezek előkészítése importálási feladatokhoz](storage-import-export-data-to-blobs.md#step-1-prepare-the-drives)   

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
 ms.openlocfilehash: 77a2a32b9a6358c39a14cfe37eeb44f7cb90af0a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94841988"
 ---
 # <a name="securing-paas-deployments"></a>PaaS-környezetek védelme
@@ -94,7 +94,7 @@ Használjon kétfaktoros hitelesítést. A kétfaktoros hitelesítés a hiteles�
 Használjon szabványos hitelesítési protokollokat, például a OAuth2 és a Kerberost. Ezek a protokollok széles körben áttekintve lettek, és valószínűleg a platform könyvtárainak részeként valósulnak meg a hitelesítéshez és engedélyezéshez.
 
 ## <a name="use-threat-modeling-during-application-design"></a>Veszélyforrások modellezése az alkalmazás tervezésekor
-A Microsoft [biztonsági fejlesztési életciklusa](https://www.microsoft.com/en-us/sdl) azt határozza meg, hogy a csapatok a tervezési fázisban részt vesznek a veszélyforrások modellezése nevű folyamaton. A folyamat elősegítése érdekében a Microsoft létrehozta az [SDL Threat Modeling Tool](../develop/threat-modeling-tool.md). Az alkalmazás megtervezése és az [STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) összes bizalmi kapcsolat határainak számbavétele az összes megbízhatósági határ között a tervezési hibák korai befogása.
+A Microsoft [biztonsági fejlesztési életciklusa](https://www.microsoft.com/en-us/sdl) azt határozza meg, hogy a csapatok a tervezési fázisban részt vesznek a veszélyforrások modellezése nevű folyamaton. A folyamat elősegítése érdekében a Microsoft létrehozta az [SDL Threat Modeling Tool](../develop/threat-modeling-tool.md). Az alkalmazás megtervezése és az [](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) összes bizalmi kapcsolat határainak számbavétele az összes megbízhatósági határ között a tervezési hibák korai befogása.
 
 A következő táblázat felsorolja a Stride-fenyegetéseket, és példákat tartalmaz az Azure-szolgáltatásokat használó megoldásokra. Ezek a enyhítések nem fognak működni minden helyzetben.
 

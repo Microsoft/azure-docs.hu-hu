@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 12/03/2018
 ms.custom: seodec18
 ms.openlocfilehash: bd2d27addb6860e49ac12eb36d8b625b8bf92001
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93100405"
 ---
 # <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>Oktatóanyag: az adatáttelepítés Cassandra API fiókba Azure Cosmos DB
@@ -24,14 +24,14 @@ Fejlesztőként lehetnek olyan meglévő Cassandra-munkaterhelések, amelyek a h
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
-> * Az áttelepítés megtervezése
-> * A migrálással kapcsolatos előfeltételek
+> * Migrálási terv
+> * A migrálás előfeltételei
 > * Adatok migrálása a cqlsh COPY paranccsal
 > * Adatok migrálása a Spark használatával
 
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-## <a name="prerequisites-for-migration"></a>A migrálással kapcsolatos előfeltételek
+## <a name="prerequisites-for-migration"></a>A migrálás előfeltételei
 
 * **A teljesítményre vonatkozó igények becslése:** Mielőtt áttelepíti az adatait a Azure Cosmos DB Cassandra API-fiókjába, érdemes megbecsülni a munkaterhelés átviteli sebességét. Általában ajánlott a CRUD-műveletekhez szükséges átlagos átviteli sebességgel kezdeni, majd ezt kiegészíteni a kinyerési, átalakítási és betöltési (ETL-) vagy a csúcsidejű műveletekhez szükséges további sebességgel. A migrálás megtervezéséhez a következő adatokra lesz szükség: 
 
@@ -104,7 +104,7 @@ Az alábbi lépések végrehajtásával áttelepítheti az Cassandra API-fiókba
 
 Az adatok Spark-feladatok használatával történő áttelepítése ajánlott lehetőség, ha az Azure Virtual Machines szolgáltatásban vagy bármely más felhőben meglévő fürtben található adatokkal rendelkezik. Ez a beállítás megköveteli, hogy a Spark egy egyszeri vagy normál betöltéshez legyen beállítva. Ezt az áttelepítést felgyorsíthatja az Azure ExpressRoute-kapcsolat használatával a helyszíni és az Azure között. 
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, az Azure Cosmos-fiókot és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális géphez tartozó erőforráscsoportot, válassza a **Törlés** lehetőséget, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
 

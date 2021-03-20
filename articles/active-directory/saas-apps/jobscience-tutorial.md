@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 07/12/2017
 ms.author: jeedes
 ms.openlocfilehash: 5a104dcd6ccf500c115359a1b72c67b85359a802
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96002187"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Oktatóanyag: Azure Active Directory integráció a Jobscience
@@ -129,7 +129,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 1. Nyissa meg a **telepítőt**.
    
-   ![A képernyőfelvételen a vállalat telepítési eleme látható.](./media/jobscience-tutorial/IC784358.png "Telepítés")
+   ![A képernyőfelvételen a vállalat telepítési eleme látható.](./media/jobscience-tutorial/IC784358.png "Beállítás")
 
 1. A bal oldali navigációs ablaktábla **felügyelet** szakaszában kattintson a **tartományi felügyelet** elemre a kapcsolódó szakasz kibontásához, majd kattintson a **saját tartomány** lehetőségre a **saját tartomány** lap megnyitásához. 
    
@@ -224,7 +224,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Válassza a **jelszó megjelenítése** lehetőséget, és jegyezze fel a **jelszó** értékét.
 
-    d. Kattintson a **Létrehozás** gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
  
 ### <a name="creating-a-jobscience-test-user"></a>Jobscience-tesztelési felhasználó létrehozása
 
@@ -240,7 +240,7 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Jobscience, a Jobscien
 
 1. Nyissa meg a telepítőt.
    
-   ![Képernyőfelvétel: a telepítési elemek megjelenítése.](./media/jobscience-tutorial/ic784358.png "Telepítés")
+   ![Képernyőfelvétel: a telepítési elemek megjelenítése.](./media/jobscience-tutorial/ic784358.png "Beállítás")
 1. Nyissa meg a **felhasználók kezelése \>** lehetőséget.
    
    ![Felhasználók](./media/jobscience-tutorial/ic784369.png "Felhasználók")

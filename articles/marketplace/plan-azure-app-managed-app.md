@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.openlocfilehash: 694f501efc565ed498c1c8d8e2e38326277e8605
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96621416"
 ---
 # <a name="plan-an-azure-managed-application-for-an-azure-application-offer"></a>Azure-beli felügyelt alkalmazás megtervezése Azure-alkalmazási ajánlathoz
@@ -32,7 +32,7 @@ Azure-alkalmazás használata: felügyelt alkalmazási csomag, ha a következő 
 | ------------ | ------------- |
 | Azure-előfizetés | A felügyelt alkalmazásokat az ügyfél előfizetéséhez kell telepíteni, de egy harmadik fél is felügyelheti. |
 | Számlázás és mérés | Az erőforrások az ügyfél Azure-előfizetésében érhetők el. Az utólagos elszámolású fizetési modellt használó virtuális gépeket a Microsofton keresztül, az ügyfél Azure-előfizetésén keresztül számlázzák. <br><br> A saját licencű virtuális gépekhez a Microsoft az ügyfél-előfizetésben felmerülő összes infrastrukturális költséget számláz, de a szoftveres licencelési díjakat közvetlenül az ügyféllel együtt kell lebonyolítani. |
-| Azure-kompatibilis virtuális merevlemez (VHD) | A virtuális gépeket Windows vagy Linux rendszerre kell építeni. További információ:<br> • [Hozzon létre egy Azure-beli virtuális gép technikai eszközét](./azure-vm-create-certification-faq.md#address-a-vulnerability-or-an-exploit-in-a-vm-offer) (Windows rendszerű virtuális merevlemezekhez).<br> • Az Azure-ban  [támogatott Linux-disztribúciók](../virtual-machines/linux/endorsed-distros.md) (linuxos virtuális merevlemezek esetén). |
+| Azure-kompatibilis virtuális merevlemez (VHD) | A virtuális gépeket Windows vagy Linux rendszerre kell építeni. További információkért lásd:<br> • [Hozzon létre egy Azure-beli virtuális gép technikai eszközét](./azure-vm-create-certification-faq.md#address-a-vulnerability-or-an-exploit-in-a-vm-offer) (Windows rendszerű virtuális merevlemezekhez).<br> • Az Azure-ban  [támogatott Linux-disztribúciók](../virtual-machines/linux/endorsed-distros.md) (linuxos virtuális merevlemezek esetén). |
 | Ügyfelek általi használat nyomon követése | Az Azure-alkalmazások minden új ajánlatának tartalmaznia kell egy [Azure-partner ügyfél-használati jóváírási](azure-partner-customer-usage-attribution.md) GUID azonosítót is. További információ az ügyfél-használati feladatokról és annak engedélyezéséről: az [Azure-partneri ügyfél használati](azure-partner-customer-usage-attribution.md)feladatának megállapítása. |
 | Központi telepítési csomag | Szüksége lesz egy központi telepítési csomagra, amely lehetővé teszi az ügyfeleknek a terv üzembe helyezését. Ha több olyan csomagot hoz létre, amelyek ugyanazt a technikai konfigurációt igénylik, ugyanazt a csomagot használhatja. Részletekért tekintse meg a következő szakaszt: üzembehelyezési csomag. |
 |||
@@ -92,7 +92,7 @@ A JIT-hozzáférés lehetővé teszi, hogy a hibaelhárítás és a karbantartá
 > [!NOTE]
 > Ügyeljen rá, hogy a `createUiDefinition.json` szolgáltatás támogatásához frissítse a fájlt.
 
-## <a name="deployment-mode"></a>Üzembe helyezési mód
+## <a name="deployment-mode"></a>Üzembehelyezési mód
 
 A felügyelt alkalmazások **teljes** vagy **növekményes** telepítési mód használatára is konfigurálható. Teljes módban az ügyfél által az alkalmazás újratelepítése a felügyelt erőforráscsoport erőforrásainak eltávolítását eredményezi, ha az erőforrások nincsenek meghatározva a [mainTemplate.js](../azure-resource-manager/managed-applications/publish-service-catalog-app.md?tabs=azure-powershell#create-the-arm-template). A növekményes módban az alkalmazás újratelepítése változatlanul hagyja a meglévő erőforrásokat. További információ: [Azure Resource Manager telepítési módok](../azure-resource-manager/templates/deployment-modes.md).
 
@@ -126,15 +126,15 @@ Legfeljebb öt házirendet konfigurálhat, és az egyes szabályzatok közül cs
 
 | Házirendtípus | Szükséges házirend-paraméterek |
 | ------------ | ------------- |
-| Titkosítás Azure SQL Database | Nem |
-| Azure SQL Server naplózási beállítások | Igen |
-| Titkosítás Azure Data Lake Store | Nem |
-| Diagnosztikai beállítások naplózása | Igen |
-| Erőforrás-hely megfelelőségének naplózása | Nem |
+| Titkosítás Azure SQL Database | No |
+| Azure SQL Server naplózási beállítások | Yes |
+| Titkosítás Azure Data Lake Store | No |
+| Diagnosztikai beállítások naplózása | Yes |
+| Erőforrás-hely megfelelőségének naplózása | No |
 |||
 
 Minden hozzáadott házirend-típushoz hozzá kell rendelnie a standard vagy az ingyenes házirend-SKU-t. A naplózási házirendekhez a szabványos SKU szükséges. A szabályzatok nevei legfeljebb 50 karakterből állhatnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure-alkalmazások ajánlatának létrehozása a kereskedelmi piactéren](create-new-azure-apps-offer.md)

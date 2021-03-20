@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: af6afa2b0285fe741241183ed99712a132953a30
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98220116"
 ---
 # <a name="secure-a-linked-service-with-private-links"></a>Társított szolgáltatás biztonságossá tétele privát hivatkozásokkal
@@ -62,7 +62,7 @@ Ha a fenti kapcsolat tesztelésekor nem választotta ki a hiperhivatkozást, kö
 ## <a name="check-the-connection-works"></a>A kapcsolatok működésének ellenõrzése
 1. Lépjen a **kezelés** lapra, és válassza ki a létrehozott társított szolgáltatást.
 1. Győződjön meg arról, hogy az **interaktív szerzői műveletek** aktívak.
-1. Válassza a **kapcsolatok tesztelése** lehetőséget. Látnia kell a sikeres kapcsolatokat.
+1. Válassza a **Kapcsolat tesztelése** elemet. Látnia kell a sikeres kapcsolatokat.
 
 Ezzel létrehozott egy biztonságos és privát kapcsolatot a szinapszis és a társított szolgáltatás között.
 

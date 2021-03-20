@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 06/29/2017
 ms.author: jeedes
 ms.openlocfilehash: dfde9bbbeb7f6b349ecbdc4c2da605d39a0708da
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94357878"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-printix"></a>Oktatóanyag: Azure Active Directory integráció a Printix
@@ -123,7 +123,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 1. Jelentkezzen be rendszergazdaként a Printix-bérlőbe.
 
-1. A felső menüben kattintson a jobb felső sarokban lévő ikonra, és válassza a " **hitelesítés** " lehetőséget.
+1. A felső menüben kattintson a jobb felső sarokban lévő ikonra, és válassza a "**hitelesítés**" lehetőséget.
    
     ![A képernyőképen a menüből kiválasztott hitelesítés látható.](./media/printix-tutorial/tutorial_printix_06.png)
 
@@ -131,19 +131,19 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
    
     ![Képernyőfelvétel: a Printix.net lap, amelyen kiválaszthatja az Azure/Office 365-hitelesítés engedélyezése lehetőséget.](./media/printix-tutorial/tutorial_printix_07.png)
 
-1. Az **Azure** lapon adja meg a " **összevonás metaadatainak dokumentum** " szövegmezőbe az összevonási metaadatok URL-címét. 
+1. Az **Azure** lapon adja meg a "**összevonás metaadatainak dokumentum**" szövegmezőbe az összevonási metaadatok URL-címét. 
 
     Csatolja a metaadatokat tartalmazó XML-fájlt, amelyet az Azure AD-ből töltött le az [Printix támogatási csapatának](mailto:support@printix.net). Ezután feltöltik az XML-fájlt, és megadják az összevonási metaadatok URL-címét.
    
     ![Képernyőfelvétel: a Printix.net oldal, amelyen megadhatja az összevonási metaadatokat tartalmazó dokumentumot.](./media/printix-tutorial/tutorial_printix_08.png)
    
-1. Kattintson a " **teszt** " gombra, és kattintson az " **OK** " gombra, ha a teszt sikeres volt.
+1. Kattintson a "**teszt**" gombra, és kattintson az "**OK**" gombra, ha a teszt sikeres volt.
    
      Az Azure Active Directory oldal a **tesztelés** gombra kattintva jelenik meg. "A teszt sikeres volt": az Azure-beli tesztelési fiók hitelesítő adatainak megadása után megjelenik egy üzenet, amely "a beállítások tesztelték az OK" üzenetet. Ezután kattintson az **OK** gombra.
    
     ![A teszt eredményei a képernyőképen láthatók.](./media/printix-tutorial/tutorial_printix_09.png)
 
-1. Kattintson a **Mentés** gombra a " **hitelesítés** " lapon.
+1. Kattintson a **Mentés** gombra a "**hitelesítés**" lapon.
 
 
 > [!TIP]
@@ -179,7 +179,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Válassza a **jelszó megjelenítése** lehetőséget, és jegyezze fel a **jelszó** értékét.
 
-    d. Kattintson a **Létrehozás** gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
  
 ### <a name="creating-a-printix-test-user"></a>Printix-tesztelési felhasználó létrehozása
 
@@ -227,7 +227,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a Printix csempére kattint, a rendszer automatikusan bejelentkezett a Printix alkalmazásba.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

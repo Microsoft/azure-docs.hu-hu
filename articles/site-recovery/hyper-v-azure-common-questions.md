@@ -4,17 +4,17 @@ description: Ez a cikk a helyi Hyper-V virtuális gépeken az Azure-ba való vé
 ms.date: 11/12/2019
 ms.topic: conceptual
 ms.openlocfilehash: 649bd69f14cdf8d81fe05d3a5f5cac3389419fc3
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98879444"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Vészhelyreállítás Hyper-V-ről Azure-ba – Gyakori kérdések
 
 Ez a cikk a helyszíni Hyper-V virtuális gépek Azure-ba történő replikálása során megjelenő gyakori kérdésekre ad választ. 
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="how-is-site-recovery-priced"></a>Hogyan Site Recovery díjszabása?
 Tekintse át [Azure site Recovery díjszabásának](https://azure.microsoft.com/pricing/details/site-recovery/) részleteit.
@@ -116,7 +116,7 @@ Igen. A Site Recovery munkafolyamatainak automatizálásához a Rest API-t, a Po
 - [Hyper-V replikálása VMM nélkül a PowerShell használatával](hyper-v-azure-powershell-resource-manager.md)
 - [Hyper-V replikálása a VMM a PowerShell használatával](hyper-v-vmm-powershell-resource-manager.md)
 
-## <a name="replication"></a>Replikáció
+## <a name="replication"></a>Replikálás
 
 ### <a name="where-do-on-premises-vms-replicate-to"></a>Hol replikálódnak a helyszíni virtuális gépek?
 Az adatreplikálás az Azure Storage-ba. Feladatátvétel futtatásakor a Site Recovery automatikusan létrehozza az Azure-beli virtuális gépeket a Storage-fiókból.

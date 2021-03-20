@@ -12,17 +12,17 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: e81ac35555e6653cecb602e5af2f19aa3e2f05e9
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94840593"
 ---
 # <a name="define-an-azure-ad-mfa-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD MFA technikai profil definiálása egy Azure AD B2C egyéni házirendben
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-A Azure Active Directory B2C (Azure AD B2C) támogatást nyújt a telefonszámoknak az Azure AD Multi-Factor Authentication (MFA) használatával történő ellenőrzéséhez. Ezzel a technikai profillal kód készíthető és küldhető egy telefonszámra, majd ellenőrizheti a kódot. Az Azure AD MFA technikai profilja szintén hibaüzenetet adhat vissza.  Az érvényesítési technikai profil ellenőrzi a felhasználó által megadott, a felhasználói utazás előtt megjelenő adatmennyiséget. Az érvényesítési technikai profillal egy önérvényesített oldalon egy hibaüzenet jelenik meg.
+Az Azure Active Directory B2C (Azure AD B2C) támogatja a telefonszámok ellenőrzését az Azure AD többtényezős hitelesítésével (MFA). Használja ezt a műszaki profilt egy kód létrehozásához és egy telefonszámra való elküldéséhez, majd a kód ellenőrzéséhez. Az Azure AD MFA technikai profilja szintén hibaüzenetet adhat vissza.  Az érvényesítési technikai profil ellenőrzi a felhasználó által megadott, a felhasználói utazás előtt megjelenő adatmennyiséget. Az érvényesítési technikai profillal egy önérvényesített oldalon egy hibaüzenet jelenik meg.
 
 Ez a technikai profil:
 
@@ -59,10 +59,10 @@ A **szabályzattípushoz** elem tartalmazza az Azure ad MFA számára küldendő
 
 | ClaimReferenceId | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| userPrincipalName | Igen | A telefonszámot birtokló felhasználó azonosítója. |
-| Telefonszám | Igen | Az SMS-kód küldésére szolgáló telefonszám. |
-| companyName | Nem |A vállalat neve az SMS-ben. Ha nincs megadva, a rendszer az alkalmazás nevét használja. |
-| területi beállítás | Nem | Az SMS területi beállítása. Ha nincs megadva, a rendszer a felhasználó böngésző területi beállítását használja. |
+| userPrincipalName | Yes | A telefonszámot birtokló felhasználó azonosítója. |
+| Telefonszám | Yes | Az SMS-kód küldésére szolgáló telefonszám. |
+| companyName | No |A vállalat neve az SMS-ben. Ha nincs megadva, a rendszer az alkalmazás nevét használja. |
+| területi beállítás | No | Az SMS területi beállítása. Ha nincs megadva, a rendszer a felhasználó böngésző területi beállítását használja. |
 
 A **InputClaimsTransformations** elem olyan **InputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a bemeneti jogcímek módosítására vagy újak előállítására szolgálnak az Azure ad MFA szolgáltatásba való küldés előtt.
 
@@ -76,7 +76,7 @@ A **OutputClaimsTransformations** elem olyan **OutputClaimsTransformation** -ele
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Művelet | Igen | **OneWaySMS** kell lennie.  |
+| Művelet | Yes | **OneWaySMS** kell lennie.  |
 
 #### <a name="ui-elements"></a>Felhasználói felület elemei
 
@@ -84,10 +84,10 @@ A következő metaadatokkal konfigurálhatja az SMS-hibák küldésekor megjelen
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| UserMessageIfCouldntSendSms | Nem | Felhasználói hibaüzenet, ha a megadott telefonszám nem fogad SMS-üzenetet. |
-| UserMessageIfInvalidFormat | Nem | Felhasználói hibaüzenet, ha a megadott telefonszám nem érvényes telefonszám. |
-| UserMessageIfServerError | Nem | Felhasználói hibaüzenet, ha a kiszolgáló belső hibát észlelt. |
-| UserMessageIfThrottled| Nem | Felhasználói hibaüzenet, ha a kérelem szabályozása megtörtént.|
+| UserMessageIfCouldntSendSms | No | Felhasználói hibaüzenet, ha a megadott telefonszám nem fogad SMS-üzenetet. |
+| UserMessageIfInvalidFormat | No | Felhasználói hibaüzenet, ha a megadott telefonszám nem érvényes telefonszám. |
+| UserMessageIfServerError | No | Felhasználói hibaüzenet, ha a kiszolgáló belső hibát észlelt. |
+| UserMessageIfThrottled| No | Felhasználói hibaüzenet, ha a kérelem szabályozása megtörtént.|
 
 ### <a name="example-send-an-sms"></a>Példa: SMS küldése
 
@@ -121,8 +121,8 @@ A **szabályzattípushoz** elem tartalmazza az Azure ad MFA számára küldendő
 
 | ClaimReferenceId | Kötelező | Leírás |
 | --------- | -------- | ----------- | ----------- |
-| Telefonszám| Igen | Ugyanazt a telefonszámot használja, mint korábban a kód elküldéséhez. A rendszer a telefonos ellenőrzési munkamenetek megkeresésére is használatos. |
-| verificationCode  | Igen | A felhasználó által ellenőrizendő ellenőrző kód |
+| Telefonszám| Yes | Ugyanazt a telefonszámot használja, mint korábban a kód elküldéséhez. A rendszer a telefonos ellenőrzési munkamenetek megkeresésére is használatos. |
+| verificationCode  | Yes | A felhasználó által ellenőrizendő ellenőrző kód |
 
 A **InputClaimsTransformations** elem olyan **InputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a bemeneti jogcímek módosítására vagy újak létrehozására szolgálnak az Azure ad MFA szolgáltatás meghívása előtt.
 
@@ -136,7 +136,7 @@ A **OutputClaimsTransformations** elem olyan **OutputClaimsTransformation** -ele
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Művelet | Igen | **Ellenőrizni** kell |
+| Művelet | Yes | **Ellenőrizni** kell |
 
 #### <a name="ui-elements"></a>Felhasználói felület elemei
 
@@ -144,10 +144,10 @@ A következő metaadatokkal konfigurálhatja a kód-ellenőrzési hiba esetén m
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| UserMessageIfMaxAllowedCodeRetryReached| Nem | Felhasználói hibaüzenet, ha a felhasználó túl sokszor próbált meg ellenőrző kódot. |
-| UserMessageIfServerError | Nem | Felhasználói hibaüzenet, ha a kiszolgáló belső hibát észlelt. |
-| UserMessageIfThrottled| Nem | Felhasználói hibaüzenet, ha a kérelem szabályozása megtörtént.|
-| UserMessageIfWrongCodeEntered| Nem| Felhasználói hibaüzenet, ha az ellenőrzéshez megadott kód nem megfelelő.|
+| UserMessageIfMaxAllowedCodeRetryReached| No | Felhasználói hibaüzenet, ha a felhasználó túl sokszor próbált meg ellenőrző kódot. |
+| UserMessageIfServerError | No | Felhasználói hibaüzenet, ha a kiszolgáló belső hibát észlelt. |
+| UserMessageIfThrottled| No | Felhasználói hibaüzenet, ha a kérelem szabályozása megtörtént.|
+| UserMessageIfWrongCodeEntered| No| Felhasználói hibaüzenet, ha az ellenőrzéshez megadott kód nem megfelelő.|
 
 ### <a name="example-verify-a-code"></a>Példa: kód ellenőrzése
 

@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: 3b424ece9207328d87068160f78ebc78a3bd1a8d
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93395223"
 ---
 # <a name="configure-replication-to-azure-sql-edge"></a>Replikáció konfigurálása az Azure SQL Edge-be 
@@ -80,12 +80,12 @@ Az Azure SQL Edge-előfizetések esetében az alábbi beállítások nem támoga
 
 ## <a name="examples"></a>Példák
 
-Hozzon létre egy kiadványt és egy leküldéses előfizetést. További információ:
+Hozzon létre egy kiadványt és egy leküldéses előfizetést. További információkért lásd:
   
 - [Kiadvány létrehozása](/sql/relational-databases/replication/publish/create-a-publication)
-- [Hozzon létre egy leküldéses előfizetést](/sql/relational-databases/replication/create-a-push-subscription/) az Azure SQL Edge-kiszolgáló nevével és IP-címével előfizetőként (például **myEdgeinstance, 1433** ), valamint egy adatbázisnevet az Azure SQL Edge-példányon célként megadott adatbázisként (például **AdventureWorks** ).  
+- [Hozzon létre egy leküldéses előfizetést](/sql/relational-databases/replication/create-a-push-subscription/) az Azure SQL Edge-kiszolgáló nevével és IP-címével előfizetőként (például **myEdgeinstance, 1433**), valamint egy adatbázisnevet az Azure SQL Edge-példányon célként megadott adatbázisként (például **AdventureWorks**).  
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 - [Kiadvány létrehozása](/sql/relational-databases/replication/publish/create-a-publication)
 - [Leküldéses előfizetés létrehozása](/sql/relational-databases/replication/create-a-push-subscription/)

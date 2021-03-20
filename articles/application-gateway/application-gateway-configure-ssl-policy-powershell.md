@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: cb0f9ef64cb8032c02f2ccd4b42028103b6d3ec6
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397926"
 ---
-# <a name="configure-tls-policy-versions-and-cipher-suites-on-application-gateway"></a>A TLS-házirend verziói és a titkosítási csomagok konfigurálása Application Gateway
+# <a name="configure-tls-policy-versions-and-cipher-suites-on-application-gateway"></a>A TLS-szabályzatverziók és a titkosítócsomagok konfigurálása az Application Gatewayen
 
 Ismerje meg, hogyan konfigurálhatja a TLS/SSL-házirend verzióit és a titkosítási csomagokat Application Gatewayon. Kiválaszthatja az előre definiált szabályzatok listáját, amelyek a TLS-házirend verzióinak és az engedélyezett titkosítási csomagok különböző konfigurációit tartalmazzák. Lehetősége van arra is, hogy [Egyéni TLS-házirendet](#configure-a-custom-tls-policy) határozzon meg a követelmények alapján.
 
@@ -191,7 +191,7 @@ $appgw = New-AzApplicationGateway -Name appgwtest -ResourceGroupName $rg.Resourc
 
 ## <a name="update-an-existing-application-gateway-with-a-pre-defined-tls-policy"></a>Meglévő Application Gateway frissítése előre definiált TLS-házirenddel
 
-Egyéni TLS-házirend beállításához adja meg a következő paramétereket: **PolicyType** , **MinProtocolVersion** , **CipherSuite** és **ApplicationGateway**. Egy előre definiált TLS-házirend beállításához adja meg a következő paramétereket: **PolicyType** , **PolicyName** és **ApplicationGateway**. Ha más paramétereket próbál átadni, hibaüzenet jelenik meg a Application Gateway létrehozásakor vagy frissítésekor.
+Egyéni TLS-házirend beállításához adja meg a következő paramétereket: **PolicyType**, **MinProtocolVersion**, **CipherSuite** és **ApplicationGateway**. Egy előre definiált TLS-házirend beállításához adja meg a következő paramétereket: **PolicyType**, **PolicyName** és **ApplicationGateway**. Ha más paramétereket próbál átadni, hibaüzenet jelenik meg a Application Gateway létrehozásakor vagy frissítésekor.
 
 A következő példában az egyéni házirendhez és az előre definiált házirendhez is vannak kódok. A használni kívánt szabályzat megjegyzésének visszaírása.
 
@@ -215,6 +215,6 @@ $AppGw = get-Azapplicationgateway -Name $AppGWname -ResourceGroupName $RG
 $SetGW = Set-AzApplicationGateway -ApplicationGateway $AppGW
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A HTTP-forgalom HTTPS-végpontra való átirányításának megismeréséhez látogasson el [Application Gateway átirányítási áttekintésre](./redirect-overview.md) .

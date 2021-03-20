@@ -14,10 +14,10 @@ ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 58ef522f5b048db0ef120625d9e894c8e14c070e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98724407"
 ---
 # <a name="resilient-interfaces-with-external-processes"></a>Rugalmas felületek külső folyamatokkal
@@ -66,7 +66,7 @@ A REST API-k üzembe helyezése és a REST-es technikai profil konfigurálása s
 
 - Javasoljuk, hogy az egyes API-k többszöri meghívása és az [Azure APIM API biztonságossá tétele](../../active-directory-b2c/secure-api-management.md?tabs=app-reg-ga)helyett a megfelelő tokent kapja meg a felhasználói út elején.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Rugalmassági erőforrások Azure AD B2C-fejlesztőknek](resilience-b2c.md)
   - [Rugalmas végfelhasználói élmény](resilient-end-user-experience.md)

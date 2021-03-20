@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 090b7711ab061b989eae13113fe7048e8dd875ee
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97895189"
 ---
 # <a name="manage-your-cloudsimple-private-cloud-virtual-machines-in-azure"></a>Saját CloudSimple-Felhőbeli virtuális gépek kezelése az Azure-ban
@@ -23,9 +23,9 @@ A [CloudSimple saját felhőhöz létrehozott](azure-create-vm.md)virtuális gé
 
 A kiválasztott virtuális gép **Áttekintés** lapján a következő vezérlők érhetők el.
 
-| Vezérlés | Leírás |
+| Szabályozás | Description |
 | ------------ | ------------- |
-| Kapcsolódás | Kapcsolódjon a megadott virtuális géphez.  |
+| Csatlakozás | Kapcsolódjon a megadott virtuális géphez.  |
 | Indítás | Indítsa el a megadott virtuális gépet.  |
 | Újraindítás | Állítsa le, majd kapcsolja be a megadott virtuális gépet.  |
 | Leállítás | Állítsa le az adott virtuális gépet.  |
@@ -74,7 +74,7 @@ A virtuális gép kapacitásának módosításához nyissa meg a kiválasztott v
 
 Illesztőfelület hozzáadásához kattintson a **hálózati adapter hozzáadása** lehetőségre. Konfigurálja az alábbi beállításokat egy beágyazott lehetőség beírásával vagy kiválasztásával. Kattintson a **Mentés** gombra.
 
-   | Vezérlés | Leírás |
+   | Szabályozás | Leírás |
    | ------------ | ------------- |
    | Név | Adja meg a felületet azonosító nevet.  |
    | Network (Hálózat) | Válasszon a saját Felhőbeli vSphere konfigurált hálózatok listájából.  |

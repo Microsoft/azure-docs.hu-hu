@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/17/2020
 ms.openlocfilehash: e7ec71220b75647e789508c760e50957b3b497fa
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93090035"
 ---
 # <a name="how-to-request-quota-increase-for-azure-cosmos-db-resources"></a>Kvóta növelésének kérése Azure Cosmos DB erőforrásokhoz
@@ -38,7 +38,7 @@ A kvóta növeléséhez létre kell hoznia egy új támogatási kérést a munka
 
 1. Adja meg a következő adatokat az űrlapon:
 
-   * **Leírás** : adja meg a kérés rövid leírását, például a munkaterhelést, hogy az alapértelmezett értékek miért nem elégségesek. Annak az erőforrásnak a típusa alapján, amelynek a kvótáját emelni szeretné, kötelező megadni a **Leírás** mezőben a következő részleteket:
+   * **Leírás**: adja meg a kérés rövid leírását, például a munkaterhelést, hogy az alapértelmezett értékek miért nem elégségesek. Annak az erőforrásnak a típusa alapján, amelynek a kvótáját emelni szeretné, kötelező megadni a **Leírás** mezőben a következő részleteket:
 
      **Régiók kérelmek** Ha a kérés megfelel a régiónak az engedélyezési listához való hozzáadásának, ügyeljen arra, hogy a következő értékeket adja meg:
 
@@ -58,9 +58,9 @@ A kvóta növeléséhez létre kell hoznia egy új támogatási kérést a munka
 
    * **Fájlfeltöltés: töltse** fel a támogatási kérelemhez kapcsolódó diagnosztikai fájlokat vagy más fájlokat. Ha többet szeretne megtudni a fájlfeltöltés-útmutatóról, tekintse meg az [Azure-támogatási]( ../azure-portal/supportability/how-to-manage-azure-support-request.md#upload-files) cikket.
 
-   * **Súlyosság** : válassza ki az elérhető súlyossági szintek egyikét az üzleti hatás alapján.
+   * **Súlyosság**: válassza ki az elérhető súlyossági szintek egyikét az üzleti hatás alapján.
 
-   * **Előnyben részesített kapcsolattartási módszer** : választhat, hogy **e-mailben** vagy **telefonon** keresztül is felveszi-e a kapcsolatot.
+   * **Előnyben részesített kapcsolattartási módszer**: választhat, hogy **e-mailben** vagy **telefonon** keresztül is felveszi-e a kapcsolatot.
 
 1. Adja meg a hátralévő részleteket, például a rendelkezésre állást, a támogatási nyelvet, a kapcsolattartási adatokat, az e-maileket és a telefonszámot az űrlapon.
 

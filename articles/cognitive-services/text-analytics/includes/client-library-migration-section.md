@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 05/13/2020
 ms.author: aahi
 ms.openlocfilehash: 2cfef9626983ed0fa120e11bbfebdc2a38d91096
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97506346"
 ---
 A Text Analytics v3 ügyféloldali kódtár legújabb verziójának használatához le kell töltenie a legújabb szoftvercsomagot a `Azure.AI.TextAnalytics` névtérben. A  rövid útmutatóban szereplő beállítás [szakasza felsorolja az](../quickstarts/client-libraries-rest-api.md) előnyben részesített nyelvhez használható parancsokat, például a kódot.

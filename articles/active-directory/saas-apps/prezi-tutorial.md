@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: jeedes
 ms.openlocfilehash: 4ff8196ff4e30aa6ed036cabe00a72bfa8a5c51f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515321"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-prezi"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses integráció a Prezi
@@ -51,9 +51,9 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 A Prezi Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Prezi a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiók használatával.
-1. A bal szélső panelen válassza a **Azure Active Directory**lehetőséget.
-1. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A bal szélső panelen válassza a **Azure Active Directory** lehetőséget.
+1. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban adja meg a **Prezi** kifejezést a keresőmezőbe.
 1. Válassza az **Prezi** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
@@ -74,19 +74,19 @@ Az Azure AD SSO és a Prezi konfigurálásához és teszteléséhez hajtsa végr
 
 Az Azure AD SSO engedélyezése a Azure Portalban:
 
-1. A [Azure Portal](https://portal.azure.com/) **Prezi** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon válassza a **Szerkesztés** ikont az **alapszintű SAML-konfiguráció**beállításainak szerkesztéséhez.
+1. A [Azure Portal](https://portal.azure.com/) **Prezi** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
+1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon válassza a **Szerkesztés** ikont az **alapszintű SAML-konfiguráció** beállításainak szerkesztéséhez.
 
    ![Az alapszintű SAML-konfigurációs beállítások szerkesztése](common/edit-urls.png)
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban a felhasználónak semmilyen lépést nem kell tennie, mert az alkalmazás már előre integrálva van az Azure-ban.
 
-1. Válassza a **további URL-címek beállítása**lehetőséget, majd hajtsa végre a következő lépést, ha az alkalmazást **SP**-kezdeményezésű módban szeretné konfigurálni:
+1. Válassza a **további URL-címek beállítása** lehetőséget, majd hajtsa végre a következő lépést, ha az alkalmazást **SP**-kezdeményezésű módban szeretné konfigurálni:
 
     A **bejelentkezési URL-cím** mezőbe írja be a következő URL-címet: `https://prezi.com/login/sso/` .
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 1. A Prezi alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
@@ -111,37 +111,37 @@ Az Azure AD SSO engedélyezése a Azure Portalban:
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal szélső paneljén válassza a **Azure Active Directory**lehetőséget. Lépjen a **felhasználók**, majd a **minden felhasználó**elemre.
+1. A Azure Portal bal szélső paneljén válassza a **Azure Active Directory** lehetőséget. Lépjen a **felhasználók**, majd a **minden felhasználó** elemre.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A felhasználó tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A név mezőbe írja be a **B. Simon** **nevet** .
    1. A **Felhasználónév** mezőbe írja be például a `username@companydomain.extension` következőt: `B.Simon@contoso.com` .
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet. Jegyezze fel a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a B. Simon számára engedélyezi az Azure SSO használatát azáltal, hogy hozzáférést biztosít a Prezi.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **Prezi**lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **Prezi** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A felhasználók és csoportok hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
 1. A **felhasználók és csoportok** párbeszédpanelen válassza ki az **B. Simon** elemet a felhasználók listából, és kattintson a képernyő alján található **kiválasztás** gombra.
 1. Ha az SAML-kijelentésben bármelyik szerepkör értékét várta, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a **kiválasztás** gombra a képernyő alján.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés**lehetőséget.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés** lehetőséget.
 
 ## <a name="configure-prezi-sso"></a>Prezi SSO konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be a Prezi-be a csapat fiókjával, és nyissa meg a [felügyeleti konzolt](https://prezi.com/organizations/manage).
 
-1. A **felügyeleti konzolon**kattintson a **Beállítások** fülre.
+1. A **felügyeleti konzolon** kattintson a **Beállítások** fülre.
 
     ![Beállítások lap](./media/prezi-tutorial/settings-image.png)
 
@@ -159,7 +159,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure SSO használatát 
 
     1. Nyissa meg a letöltött **tanúsítványt (Base64)** a Azure Portal a Jegyzettömbben. Másolja a tanúsítvány tartalmát, és illessze be a tartalmat a **tanúsítványba (X. 509)** .
 
-    1. Válassza a **Mentés** lehetőséget.
+    1. Kattintson a **Mentés** gombra.
 
 ### <a name="create-a-prezi-test-user"></a>Prezi-teszt felhasználó létrehozása
 

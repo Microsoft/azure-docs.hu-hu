@@ -9,10 +9,10 @@ ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: a78aec8c18f3b89629bbf696de3a097397ac59bc
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94337916"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Elosztott nyomkövetés használata az Azure Spring Cloud használatával
@@ -37,7 +37,7 @@ A Steeltoe 3.0.0 esetében adja hozzá a következő NuGet-csomagot:
 
 * [Steeltoe. Management. TracingCore](https://www.nuget.org/packages/Steeltoe.Management.TracingCore/)
 
-## <a name="update-startupcs"></a>Startup.cs frissítése
+## <a name="update-startupcs"></a>Frissítés indítása. cs
 
 1. A Steeltoe 2.4.4 esetében hívja `AddDistributedTracing` meg `AddZipkinExporter` a metódust, és a `ConfigureServices` metódust.
 
@@ -79,7 +79,7 @@ Adja hozzá a következő beállításokat a konfigurációs forráshoz, amelyet
 
 1. A `management.tracing.alwaysSample` paramétert állítsa igaz értékre.
 
-2. Ha látni szeretné az Eureka-kiszolgáló, a konfigurációs kiszolgáló és a felhasználói alkalmazások között eljuttatott nyomkövetési felölelt, állítsa a `management.tracing.egressIgnorePattern` következőre: "/API/v2/spans |/v2/apps/. */permissions |/Eureka/.* | /oauth/.*".
+2. Ha látni szeretné az Eureka-kiszolgáló, a konfigurációs kiszolgáló és a felhasználói alkalmazások között eljuttatott nyomkövetési felölelt, állítsa a `management.tracing.egressIgnorePattern` következőre: "/API/v2/spans |/v2/apps/.*/permissions |/Eureka/.*| /oauth/.*".
 
 A *appsettings.json* például a következő tulajdonságokat fogja tartalmazni:
  
@@ -179,6 +179,6 @@ A Application Insights az Application Map és a Search függvény mellett biztos
 1. A **figyelés** lapon válassza az **elosztott nyomkövetés** lehetőséget.
 1. Application Insights letiltásához válassza a **Letiltás** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan engedélyezheti és értelmezheti az elosztott nyomkövetést az Azure Spring Cloud-ban. Az alkalmazásokhoz való kötési szolgáltatásokkal kapcsolatos további tudnivalókért lásd: [Azure Cosmos db adatbázis kötése egy Azure Spring Cloud-alkalmazáshoz](spring-cloud-tutorial-bind-cosmos.md).

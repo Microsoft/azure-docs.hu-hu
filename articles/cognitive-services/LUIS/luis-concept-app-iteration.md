@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.openlocfilehash: 753d214b520affb59722bc29dbabc50c6e5968f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91538721"
 ---
 # <a name="iterative-app-design-for-luis"></a>A LUIS-hoz készült iterációs alkalmazás kialakítása
@@ -24,7 +24,7 @@ A Language Understanding (LUIS) alkalmazás a leghatékonyabban tanul és hajt v
 * A LUIS-alkalmazás sémájának szerkesztése. Ide tartoznak az alábbiak:
     * Leképezések példa hosszúságú kimondott szöveg
     * Entitások
-    * Szolgáltatások
+    * Funkciók
 * Betanítás, tesztelés és közzététel
     * Tesztelés az aktív tanulás előrejelzési végpontján
 * Adatok összegyűjtése végponti lekérdezésekből
@@ -66,7 +66,7 @@ A LUIS-nek néhány példát kell hosszúságú kimondott szöveg az egyes **sz�
 > [!CAUTION]
 > Ne vegyen fel több példát a hosszúságú kimondott szöveg. Kezdje a 15 – 30 konkrét és változó példával.
 
-Minden esetben a kiírásnak minden szükséges adattal rendelkeznie kell az **entitásokkal**megtervezett és címkézett **adatok kinyeréséhez** .
+Minden esetben a kiírásnak minden szükséges adattal rendelkeznie kell az **entitásokkal** megtervezett és címkézett **adatok kinyeréséhez** .
 
 |Kulcs eleme|Cél|
 |--|--|
@@ -118,7 +118,7 @@ Ez a verzió lesz az aktív verzió, és a verziószámot használja az `version
 Egy verzió a LUIS portálról **exportálható** az alkalmazás szintjén vagy a verzió szintjén:
 
 * Alkalmazás szintje – válassza az alkalmazás lehetőséget **az alkalmazások** lapon, majd válassza az **Exportálás** lehetőséget.
-* Verzió szintje – alkalmazás kiválasztása hivatkozás a **saját alkalmazások** lapon válassza a **kezelés**lehetőséget, válassza a **verziók** lehetőséget.
+* Verzió szintje – alkalmazás kiválasztása hivatkozás a **saját alkalmazások** lapon válassza a **kezelés** lehetőséget, válassza a **verziók** lehetőséget.
 
 Az egyetlen különbség, hogy az alkalmazás-szint, az exportált verzió a jelenleg aktív verzió a verzió szintjén, a **[Beállítások](luis-how-to-manage-versions.md)** lapon bármelyik verziót kiválaszthatja az exportáláshoz.
 

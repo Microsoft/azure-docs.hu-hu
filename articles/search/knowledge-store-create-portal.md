@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/17/2020
 ms.openlocfilehash: 3225013f09abd326c619b67caf77918889a64859
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94741807"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Gyors útmutató: Azure Cognitive Search Knowledge Store létrehozása a Azure Portal
@@ -128,7 +128,7 @@ Ebben a varázslóban a választható teljes szöveges keresési lekérdezések 
 
 1. Az **index neve** mezőbe írja be a következőt: `hotel-reviews-idx` .
 
-1. Attribútumok esetében fogadja el az alapértelmezett beállításokat **Retrievable** : lekérdezhető és **kereshető** a folyamat által létrehozott új mezőkhöz.
+1. Attribútumok esetében fogadja el az alapértelmezett beállításokat  : lekérdezhető és **kereshető** a folyamat által létrehozott új mezőkhöz.
 
     Az indexnek az alábbi képhez hasonlóan kell kinéznie. Mivel a lista hosszú, nem minden mező látható a képen.
 

@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: alkemper
 ms.openlocfilehash: 9d378b21132e6646329c459401255ef9a3ed9426
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98724238"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Gyors útmutató: Azure Functions-alkalmazás létrehozása az Azure-alkalmazás konfigurálásával
@@ -50,7 +50,7 @@ Ez a projekt a [függőségi befecskendezést fogja használni a .net Azure Func
    - [Microsoft.Extensions.Configszülő. AzureAppConfiguration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureAppConfiguration/) -4.1.0 vagy újabb verzió
    - [Microsoft. Azure. functions. Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/) vagy újabb verzió 
 
-2. Adjon hozzá egy új fájlt, a *Startup.cs* a következő kóddal. Definiál egy nevű osztályt `Startup` , amely megvalósítja az `FunctionsStartup` absztrakt osztályt. A Azure Functions indításakor használt típus nevének megadásához egy szerelvény-attribútumot kell használni.
+2. Adjon hozzá egy új fájlt a *Startup. cs* fájlhoz a következő kóddal. Definiál egy nevű osztályt `Startup` , amely megvalósítja az `FunctionsStartup` absztrakt osztályt. A Azure Functions indításakor használt típus nevének megadásához egy szerelvény-attribútumot kell használni.
 
     A `ConfigureAppConfiguration` metódus felülbírálható, és az Azure-alkalmazás konfigurációs szolgáltatója további konfigurációs forrásként van hozzáadva a hívásával `AddAzureAppConfiguration()` . A `Configure` metódus üres marad, mert nem kell ezen a ponton semmilyen szolgáltatást regisztrálnia.
     
@@ -78,7 +78,7 @@ Ez a projekt a [függőségi befecskendezést fogja használni a .net Azure Func
     }
     ```
 
-3. Nyissa meg a *Function1.cs*, és adja hozzá a következő névteret.
+3. Nyissa meg a *Function1. cs*-t, és adja hozzá a következő névteret.
 
     ```csharp
     using Microsoft.Extensions.Configuration;
@@ -148,7 +148,7 @@ Ez a projekt a [függőségi befecskendezést fogja használni a .net Azure Func
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és azt egy Azure Functions alkalmazással használta az [alkalmazás-konfigurációs szolgáltatón](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)keresztül. Ha szeretné megtudni, hogyan frissítheti Azure Functions alkalmazást a konfiguráció dinamikus frissítéséhez, folytassa a következő oktatóanyaggal.
 

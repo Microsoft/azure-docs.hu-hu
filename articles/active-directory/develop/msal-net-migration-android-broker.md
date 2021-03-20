@@ -13,10 +13,10 @@ ms.author: aiwang
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 01af0e620ecb100839f7b1101e5ff9fcfc874eea
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92206669"
 ---
 # <a name="migrate-android-applications-that-use-a-broker-from-adalnet-to-msalnet"></a>ADAL.NET és MSAL.NET közötti közvetítőt használó Android-alkalmazások migrálása
@@ -115,13 +115,13 @@ A MSAL.NET-ben két dolgot kell beállítania az Android-tevékenységhez:
 
 **Például:**
 
-A *app.cs*-ben:
+Az *app. cs*:
 
 ```CSharp
    public static object RootViewController { get; set; }
 ```
 
-A *MainActivity.cs*-ben:
+A *MainActivity. cs*:
 
 ```CSharp
    LoadApplication(new App());

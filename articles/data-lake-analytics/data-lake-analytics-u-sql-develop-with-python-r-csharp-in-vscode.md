@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 11/22/2017
 ms.custom: devx-track-python
 ms.openlocfilehash: d6066bd6ec2a4c986ae17ad0cce3e7f6f73b21e7
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92219972"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>A U-SQL fejlesztése a Python, az R és a C# használatával Azure Data Lake Analytics a Visual Studio Code-ban
@@ -23,9 +23,9 @@ A kód az egyéni kód mögé írása előtt meg kell nyitnia egy mappát vagy e
 Regisztráljon a Python és az R Extensions szerelvényeket az ADL-fiókjához. 
 1. Nyissa meg a fiókját a portálon.
    - Válassza az **Áttekintés** lehetőséget. 
-   - Kattintson a **minta parancsfájl**elemre.
+   - Kattintson a **minta parancsfájl** elemre.
 2. Kattintson a **Továbbiak** gombra.
-3. Válassza az **U-SQL-bővítmények telepítése**lehetőséget. 
+3. Válassza az **U-SQL-bővítmények telepítése** lehetőséget. 
 4. Az U-SQL-bővítmények telepítése után megerősítő üzenet jelenik meg. 
 
    ![A környezet beállítása a Pythonhoz és az R-hez](./media/data-lake-analytics-data-lake-tools-for-vscode/setup-the-enrionment-for-python-and-r.png)
@@ -56,7 +56,7 @@ Regisztráljon a Python és az R Extensions szerelvényeket az ADL-fiókjához.
         USING Outputters.Csv();
     ```
     
-3. Kattintson a jobb gombbal egy parancsfájlra, majd válassza az **ADL: Python-kód létrehozása fájl mögött**lehetőséget. 
+3. Kattintson a jobb gombbal egy parancsfájlra, majd válassza az **ADL: Python-kód létrehozása fájl mögött** lehetőséget. 
 4. A rendszer létrehozza a **xxx.usql.py** fájlt a munkamappában. Írja be a kódot a Python-fájlba. A következő egy mintakód.
 
     ```Python
@@ -113,7 +113,7 @@ Regisztráljon a Python és az R Extensions szerelvényeket az ADL-fiókjához.
     TO @OutputFilePredictions
     USING Outputters.Tsv();
     ```
-3. Kattintson a jobb gombbal a **USQL** fájl elemre, majd válassza az **ADL: fájl mögötti R-kód előállítása**lehetőséget. 
+3. Kattintson a jobb gombbal a **USQL** fájl elemre, majd válassza az **ADL: fájl mögötti R-kód előállítása** lehetőséget. 
 4. A rendszer a munkahelyi mappában hozza létre a **xxx. usql. r** fájlt. Írja be a kódot az R-fájlba. A következő egy mintakód.
 
     ```R
@@ -123,7 +123,7 @@ Regisztráljon a Python és az R Extensions szerelvényeket az ADL-fiókjához.
 5. Kattintson a jobb gombbal a **USQL** fájlra, kattintson a **parancsfájl fordítása** vagy a **feladatok** futtatása a feladatokhoz lehetőségre.
 
 ## <a name="develop-c-file"></a>C#-fájl fejlesztése
-A kód mögötti fájl egy olyan C#-fájl, amely egyetlen U-SQL-parancsfájllal van társítva. A kód mögött található UDO, UDA, UDT és UDF dedikált parancsfájlt is meghatározhat. A UDO, a UDA, a UDT és az UDF közvetlenül a szkriptben használható, anélkül, hogy először regisztrálja a szerelvényt. A kód mögötti fájl ugyanabba a mappába kerül, mint a társ U-SQL-parancsfájl. Ha a parancsfájl neve xxx. usql, a kód mögött a xxx.usql.cs lesz elnevezve. Ha manuálisan törli a kód mögötti fájlt, a kód mögötti funkció le van tiltva a társított U-SQL-parancsfájlhoz. További információ az U-SQL-szkriptek vásárlói kódjának írásáról [: egyéni kód írása és használata az u-SQL-ben: User-Defined függvények]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/).
+A kód mögötti fájl egy olyan C#-fájl, amely egyetlen U-SQL-parancsfájllal van társítva. A kód mögött található UDO, UDA, UDT és UDF dedikált parancsfájlt is meghatározhat. A UDO, a UDA, a UDT és az UDF közvetlenül a szkriptben használható, anélkül, hogy először regisztrálja a szerelvényt. A kód mögötti fájl ugyanabba a mappába kerül, mint a társ U-SQL-parancsfájl. Ha a parancsfájl neve xxx. usql, a kód mögött található xxx. usql. cs néven. Ha manuálisan törli a kód mögötti fájlt, a kód mögötti funkció le van tiltva a társított U-SQL-parancsfájlhoz. További információ az U-SQL-szkriptek vásárlói kódjának írásáról [: egyéni kód írása és használata az u-SQL-ben: User-Defined függvények]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/).
 
 1. Kattintson az **új fájlra** a munkaterületen.
 2. Írja be a kódot az U-SQL-fájlba. A következő egy mintakód.
@@ -155,8 +155,8 @@ A kód mögötti fájl egy olyan C#-fájl, amely egyetlen U-SQL-parancsfájllal 
         TO @"/output/SearchLogtest.txt" 
         USING Outputters.Tsv();
     ```
-3. Kattintson a jobb gombbal a **USQL** fájl elemre, majd válassza az **ADL: CS-kód előállítása fájl mögött**lehetőséget. 
-4. A rendszer létrehozza a **xxx.usql.cs** fájlt a munkamappában. Írja be a kódot a CS-fájlba. A következő egy mintakód.
+3. Kattintson a jobb gombbal a **USQL** fájl elemre, majd válassza az **ADL: CS-kód előállítása fájl mögött** lehetőséget. 
+4. A rendszer a **xxx. usql. cs** fájlt hozza létre a munkamappában. Írja be a kódot a CS-fájlba. A következő egy mintakód.
 
     ```CS
     namespace USQLApplication_codebehind

@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan telepítheti át a virtuális gépeket (az egyi
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a38b112165b893d877733b967c21bb62b20ca2f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90530318"
 ---
 # <a name="redeploy-a-vm-in-a-lab-in-azure-devtest-labs"></a>Virtuális gép újbóli üzembe helyezése laborban Azure DevTest Labs
@@ -17,9 +17,9 @@ Ha nem tud csatlakozni egy virtuális géphez a laborban távoli asztali kapcsol
 Egy virtuális gép Azure DevTest Labs tesztkörnyezetben való újratelepítéséhez hajtsa végre a következő lépéseket: 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
+2. Válassza a **minden szolgáltatás** lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
 3. A Labs listából válassza ki azt a labort, amely tartalmazza az újratelepíteni kívánt virtuális gépet.  
-4. A bal oldali panelen válassza a **saját Virtual Machines**elemet. 
+4. A bal oldali panelen válassza a **saját Virtual Machines** elemet. 
 5. A virtuális gépek listájából válasszon ki egy virtuális gépet.
 6. A virtuális gép virtuálisgép-lapján válassza a bal oldali menü **műveletek** területén található **újratelepítés** lehetőséget.
 

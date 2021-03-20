@@ -8,10 +8,10 @@ ms.custom: subject-armqs, devx-track-azurecli
 ms.author: zhshang
 ms.date: 10/02/2020
 ms.openlocfilehash: 4ab029048b37a4dcb44ef405249dcb9e20de70cf
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94841615"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-signalr-service"></a>Gyors útmutató: ARM-sablon használata az Azure Signaler szolgáltatás üzembe helyezéséhez
@@ -79,7 +79,7 @@ Az **Azure signaler szolgáltatás üzembe helyezése** oldalon:
 
     :::image type="content" source="./media/signalr-quickstart-azure-signalr-service-arm-template/deploy-azure-signalr-service-arm-template-portal.png" alt-text="Képernyőkép a Azure Portal Azure Signaler szolgáltatás létrehozásához használt ARM-sablonról.":::
 
-6. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
+6. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
 7. Olvassa el a használati feltételeket, majd válassza a **Létrehozás** lehetőséget.
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
 ms.openlocfilehash: 53a3317f38cc22ffa3745f5f0e58cc01a54b825c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93096750"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>Egy-a-többhöz kapcsolódó adat migrálása Azure Cosmos DB SQL API-fiókba
@@ -49,13 +49,13 @@ FROM Orders o;
 
 A lekérdezés eredményei az alábbiak szerint jelennek meg: 
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/for-json-query-result.png" alt-text="Képernyőkép, amely megjeleníti az SQL Database Orders és OrderDetails tábláit." lightbox="./media/migrate-relational-to-cosmos-sql-api/for-json-query-result.png":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/for-json-query-result.png" alt-text="Rendelés részletei" lightbox="./media/migrate-relational-to-cosmos-sql-api/for-json-query-result.png":::
 
 Ideális esetben egyetlen Azure Data Factory (ADF) másolási tevékenységgel szeretné lekérdezni az SQL-adatokat forrásként, és közvetlenül a megfelelő JSON-objektumokként írja be a kimenetet Azure Cosmos DB fogadóba. Jelenleg nem lehet végrehajtani a szükséges JSON-transzformációt egy másolási tevékenységben. Ha a fenti lekérdezés eredményét egy Azure Cosmos DB SQL API-tárolóba próbálja átmásolni, a várt JSON-tömb helyett a OrderDetails mezőt fogjuk látni a dokumentum sztring tulajdonságában.
 
 A jelenlegi korlátozást a következő módokon lehet megkerülni:
 
-* **Azure Data Factory használata két másolási tevékenységgel** : 
+* **Azure Data Factory használata két másolási tevékenységgel**: 
   1. JSON formátumú adatok beolvasása az SQL-ből egy szövegfájlba egy közbenső blob Storage-helyen, valamint 
   2. Adatok betöltése a JSON-szövegfájlból egy Azure Cosmos DB tárolóba.
 
@@ -91,25 +91,31 @@ SELECT [value] FROM OPENJSON(
 )
 ```
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf1.png" alt-text="Képernyőkép, amely megjeleníti az SQL Database Orders és OrderDetails tábláit." karakterrel nem rendelkező karakterre.
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf1.png" alt-text="ADF-másolat":::
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf2.png" alt-text="Képernyőkép, amely megjeleníti az SQL Database Orders és OrderDetails tábláit.":::
+
+A SqlJsonToBlobText másolási tevékenység fogadója esetében a "tagolt szöveg" lehetőséget választjuk, és az Azure Blob Storage egy adott mappájára mutatunk, amely egy dinamikusan generált egyedi fájlnevet (például " @concat (folyamat ()). RunId, ". JSON").
+Mivel a szövegfájl nem igazán "tagolt", és nem akarjuk, hogy a vesszővel elválasztott oszlopok alapján elemezzük őket, és meg szeretné őrizni a kettős idézőjeleket ("), az oszlop elválasztóját" egy lapra ("\t"), vagy egy másik, az "idézőjel" karakterrel nem rendelkező karakterre.
+
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf2.png" alt-text="Képernyőkép, amely kiemeli az oszlop elválasztóját és az idézőjelek karakterének beállításait.":::
 
 ### <a name="copy-activity-2-blobjsontocosmos"></a>Másolási tevékenység #2: BlobJsonToCosmos
 
 Ezután módosítjuk az ADF-folyamatot úgy, hogy hozzáadja az Azure Blob Storageban megjelenő második másolási tevékenységet az első tevékenység által létrehozott szövegfájlhoz. Ezt "JSON"-ként dolgozza fel, hogy beillessze Cosmos DB fogadóba a szövegfájlban található JSON-sor egy dokumentumként.
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf3.png" alt-text="Képernyőkép, amely megjeleníti az SQL Database Orders és OrderDetails tábláit." tevékenységet is hozzáadhatja a folyamathoz, így az egyes futtatások előtt törli a/Orders/mappában maradó összes korábbi fájlt. Az ADF-folyamat most a következőhöz hasonlóan néz ki:
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf3.png" alt-text="Képernyőkép a JSON-forrásfájl és a fájl elérési útja mező kiemeléséhez.":::
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf4.png" alt-text="Képernyőkép, amely megjeleníti az SQL Database Orders és OrderDetails tábláit.":::
+Szükség esetén a "Törlés" tevékenységet is hozzáadhatja a folyamathoz, így az egyes futtatások előtt törli a/Orders/mappában maradó összes korábbi fájlt. Az ADF-folyamat most a következőhöz hasonlóan néz ki:
+
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf4.png" alt-text="Képernyőkép, amely kiemeli a törlési tevékenységet.":::
 
 Miután elindította a folyamatot a fenti folyamaton, megjelenik egy, a köztes Azure Blob Storageban létrehozott fájl, amely egy JSON-objektumot tartalmaz soronként:
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf5.png" alt-text="Képernyőkép, amely megjeleníti az SQL Database Orders és OrderDetails tábláit.":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf5.png" alt-text="Képernyőkép, amely megjeleníti a JSON-objektumokat tartalmazó létrehozott fájlt.":::
 
 Azt is látjuk, hogy az Orders dokumentumok megfelelően beágyazott OrderDetails vannak beillesztve a Cosmos DB gyűjteménybe:
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf6.png" alt-text="Képernyőkép, amely megjeleníti az SQL Database Orders és OrderDetails tábláit.":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf6.png" alt-text="Képernyőkép, amely az Cosmos DB dokumentum részeként jeleníti meg a rendelés részleteit":::
 
 
 ## <a name="azure-databricks"></a>Azure Databricks
@@ -122,7 +128,7 @@ A Spark in [Azure Databricksban](https://azure.microsoft.com/services/databricks
 
 Először létrehozjuk és csatoljuk a szükséges [SQL-összekötőt](https://docs.databricks.com/data/data-sources/sql-databases-azure.html) és [Azure Cosmos db összekötő](https://docs.databricks.com/data/data-sources/azure/cosmosdb-connector.html) kódtárakat a Azure Databricks-fürthöz. Indítsa újra a fürtöt, és győződjön meg arról, hogy a könyvtárak betöltődik.
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks1.png" alt-text="Képernyőkép, amely megjeleníti az SQL Database Orders és OrderDetails tábláit.":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks1.png" alt-text="Képernyőfelvétel: a szükséges SQL-összekötő és Azure Cosmos DB összekötő-kódtárak létrehozásának és csatolásának helye Azure Databricks-fürthöz.":::
 
 Ezután két mintát mutatjuk be a Scala és a Python számára. 
 
@@ -145,7 +151,7 @@ val orders = sqlContext.read.sqlDB(configSql)
 display(orders)
 ```
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks2.png" alt-text="Képernyőkép, amely megjeleníti az SQL Database Orders és OrderDetails tábláit.":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks2.png" alt-text="A DataFrame SQL-lekérdezési kimenetét bemutató képernyőkép.":::
 
 Ezután kapcsolódunk Cosmos DB adatbázishoz és gyűjteményhez:
 
@@ -202,7 +208,7 @@ display(ordersWithSchema)
 CosmosDBSpark.save(ordersWithSchema, configCosmos)
 ```
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks3.png" alt-text="Képernyőkép, amely megjeleníti az SQL Database Orders és OrderDetails tábláit.":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks3.png" alt-text="Képernyőkép, amely kiemeli a megfelelő tömböt a Cosmos DB gyűjteménybe való mentéshez.":::
 
 
 ### <a name="python"></a>Python
@@ -332,7 +338,7 @@ pool.map(writeOrder, orderids)
 ```
 A végén mindkét megközelítés esetében megfelelően mentett beágyazott OrderDetails kell beolvasni a Cosmos DB gyűjtemény minden rendelési dokumentumán belül:
 
-:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks4.png" alt-text="Képernyőkép, amely megjeleníti az SQL Database Orders és OrderDetails tábláit.":::
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks4.png" alt-text="Databricks":::
 
 ## <a name="next-steps"></a>Következő lépések
 * Tudnivalók az [adatmodellezésről Azure Cosmos db](./modeling-data.md)

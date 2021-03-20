@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/04/2019
 ms.author: jeedes
 ms.openlocfilehash: aa3c5115a5255d30decbc66691878ffbe2579a06
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92514588"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-thousandeyes"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a ThousandEyes
@@ -51,14 +51,14 @@ A ThousandEyes Azure AD-be való integrálásának konfigurálásához hozzá ke
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **ThousandEyes** kifejezést a keresőmezőbe.
 1. Válassza ki a **ThousandEyes** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-thousandeyes"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a ThousandEyes
 
-Konfigurálja és tesztelje az Azure AD SSO-t a ThousandEyes a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a ThousandEyes-ben.
+Konfigurálja és tesztelje az Azure AD SSO-t a ThousandEyes a **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a ThousandEyes-ben.
 
 Az Azure AD SSO és a ThousandEyes konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
@@ -73,8 +73,8 @@ Az Azure AD SSO és a ThousandEyes konfigurálásához és teszteléséhez hajts
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/) **ThousandEyes** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **ThousandEyes** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -97,7 +97,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
@@ -109,13 +109,13 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a ThousandEyes.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **ThousandEyes**lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **ThousandEyes** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
@@ -127,7 +127,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Egy másik böngészőablakban jelentkezzen be a **ThousandEyes** vállalati webhelyre rendszergazdaként.
 
-2. A felső menüben kattintson a **Beállítások**elemre.
+2. A felső menüben kattintson a **Beállítások** elemre.
 
     ![Képernyőfelvétel: a ThousandEyes webhely, amelyen a beállítások vannak kiválasztva.](./media/thousandeyes-tutorial/ic790066.png "Beállítások")
 
@@ -143,7 +143,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![Egyszeri bejelentkezés beállítása](./media/thousandeyes-tutorial/ic790069.png "Egyetlen Sign-On beállítása")
 
-    a. Válassza az **egyszeri bejelentkezés engedélyezése**lehetőséget.
+    a. Válassza az **egyszeri bejelentkezés engedélyezése** lehetőséget.
 
     b. A **bejelentkezési oldal URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-címet**, amelyet a Azure Portalból másolt.
 
@@ -151,7 +151,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     d. **Identitáskezelés kiállítójának** szövegmezője: illessze be az **Azure ad-azonosítót**, amelyet a Azure Portalból másolt.
 
-    e. Az **ellenőrző tanúsítvány**területen kattintson a **fájl kiválasztása**lehetőségre, majd töltse fel a Azure Portalból letöltött tanúsítványt.
+    e. Az **ellenőrző tanúsítvány** területen kattintson a **fájl kiválasztása** lehetőségre, majd töltse fel a Azure Portalból letöltött tanúsítványt.
 
     f. Kattintson a **Mentés** gombra.
 
@@ -167,7 +167,7 @@ Ennek a szakasznak a célja egy Britta Simon nevű felhasználó létrehozása a
 
     ![Képernyőfelvétel: a ThousandEyes webhely, amelyen a beállítások vannak kiválasztva.](./media/thousandeyes-tutorial/ic790066.png "Beállítások")
 
-3. Kattintson a **fiók**lehetőségre.
+3. Kattintson a **fiók** lehetőségre.
 
     ![A képernyőképen a beállítások menüből kiválasztott fiók látható.](./media/thousandeyes-tutorial/ic790067.png "Fiók")
 
@@ -179,11 +179,11 @@ Ennek a szakasznak a célja egy Britta Simon nevű felhasználó létrehozása a
 
     ![Felhasználói fiókok hozzáadása](./media/thousandeyes-tutorial/IC790074.png "Felhasználói fiókok hozzáadása")
 
-    a. A **név** szövegmezőbe írja be a (z **) B. Simon**nevű felhasználó nevét.
+    a. A **név** szövegmezőbe írja be a (z **) B. Simon** nevű felhasználó nevét.
 
     b. Az **e-mail** szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet b.simon@contoso.com .
 
-    b. Kattintson **az új felhasználó hozzáadása a fiókhoz**lehetőségre.
+    b. Kattintson **az új felhasználó hozzáadása a fiókhoz** lehetőségre.
 
     > [!NOTE]
     > A Azure Active Directory fiók tulajdonosa egy e-mailt kap, amely tartalmazza a fiók megerősítésére és aktiválására szolgáló hivatkozást is.

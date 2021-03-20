@@ -9,10 +9,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
 ms.openlocfilehash: c5c6836c2d68036bf2b9c5abe191943537349b8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91540965"
 ---
 # <a name="add-entities-to-extract-data"></a>Entitások hozzáadása az adatok kinyeréséhez
@@ -62,20 +62,20 @@ Ez a folyamat a gépi megtanult entitások, az entitások listázása és a regu
 1. Jelentkezzen be a [Luis-portálra](https://www.luis.ai), és válassza ki az **előfizetését** és a **szerzői erőforrást** , hogy megtekintse az adott szerzői erőforráshoz rendelt alkalmazásokat.
 1. Nyissa meg az alkalmazást úgy, hogy kiválasztja a nevét a **saját alkalmazások** oldalon.
 1. Válassza az **entitások** lapot.
-1. Válassza a **+ Létrehozás**lehetőséget, majd válassza ki az entitás típusát.
+1. Válassza a **+ Létrehozás** lehetőséget, majd válassza ki az entitás típusát.
 1. Folytassa az entitás konfigurálását, majd válassza a **Létrehozás** lehetőséget, ha elkészült.
 
 ## <a name="create-a-machine-learned-entity"></a>Gép megtanult entitásának létrehozása
 
 1. Jelentkezzen be a [Luis-portálra](https://www.luis.ai), és válassza ki az **előfizetését** és a **szerzői erőforrást** , hogy megtekintse az adott szerzői erőforráshoz rendelt alkalmazásokat.
 1. Nyissa meg az alkalmazást úgy, hogy kiválasztja a nevét a **saját alkalmazások** oldalon.
-1. A **build (létrehozás** ) szakaszban válassza az **entitások** lehetőséget a bal oldali panelen, majd válassza a **+ Létrehozás**elemet.
-1. Az **entitás típusának létrehozása** párbeszédpanelen adja meg az entitás nevét, és válassza a **gép megtanulta**lehetőséget, majd válassza a lehetőséget. Alentitások hozzáadásához válassza a **struktúra hozzáadása**elemet. Kattintson a **Létrehozás** gombra.
+1. A **build (létrehozás** ) szakaszban válassza az **entitások** lehetőséget a bal oldali panelen, majd válassza a **+ Létrehozás** elemet.
+1. Az **entitás típusának létrehozása** párbeszédpanelen adja meg az entitás nevét, és válassza a **gép megtanulta** lehetőséget, majd válassza a lehetőséget. Alentitások hozzáadásához válassza a **struktúra hozzáadása** elemet. Válassza a **Létrehozás** lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![Képernyőkép a gép megtanult entitásának létrehozásáról.](media/add-entities/machine-learned-entity-with-structure.png)
 
-1. Az **alentitások hozzáadása**területen vegyen fel egy alentitást a **+** szülő entitás sorára kattintva.
+1. Az **alentitások hozzáadása** területen vegyen fel egy alentitást a **+** szülő entitás sorára kattintva.
 
     > [!div class="mx-imgBorder"]
     > ![Képernyőkép az alentitások hozzáadásáról.](media/add-entities/machine-learned-entity-with-subentities.png)
@@ -98,9 +98,9 @@ Ez a folyamat a gépi megtanult entitások, az entitások listázása és a regu
 
 1. Jelentkezzen be a [Luis-portálra](https://www.luis.ai), és válassza ki az **előfizetését** és a **szerzői erőforrást** , hogy megtekintse az adott szerzői erőforráshoz rendelt alkalmazásokat.
 1. Nyissa meg az alkalmazást úgy, hogy kiválasztja a nevét a **saját alkalmazások** oldalon.
-1. A **build (létrehozás** ) szakaszban válassza az **entitások** lehetőséget a bal oldali panelen, majd válassza a **+ Létrehozás**elemet.
+1. A **build (létrehozás** ) szakaszban válassza az **entitások** lehetőséget a bal oldali panelen, majd válassza a **+ Létrehozás** elemet.
 
-1. Az **entitás típusának létrehozása** párbeszédpanelen adja meg az entitás nevét, és válassza a **regex**lehetőséget, írja be a reguláris kifejezést a **regex** mezőbe, és válassza a **Létrehozás**lehetőséget.
+1. Az **entitás típusának létrehozása** párbeszédpanelen adja meg az entitás nevét, és válassza a **regex** lehetőséget, írja be a reguláris kifejezést a **regex** mezőbe, és válassza a **Létrehozás** lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![Képernyőkép a reguláris kifejezés entitás létrehozásáról.](media/add-entities/add-regular-expression-entity.png)
@@ -123,15 +123,15 @@ A következő lista a kanonikus nevet és a szinonimákat mutatja be.
 A List entitás létrehozásához kövesse az eljárást. A lista entitás létrehozása után nem kell megadnia például a hosszúságú kimondott szöveg. A listaelemek és a szinonimák pontos szöveggel egyeznek meg.
 1. Jelentkezzen be a [Luis-portálra](https://www.luis.ai), és válassza ki az **előfizetését** és a **szerzői erőforrást** , hogy megtekintse az adott szerzői erőforráshoz rendelt alkalmazásokat.
 1. Nyissa meg az alkalmazást úgy, hogy kiválasztja a nevét a **saját alkalmazások** oldalon.
-1. A **build (létrehozás** ) szakaszban válassza az **entitások** lehetőséget a bal oldali panelen, majd válassza a **+ Létrehozás**elemet.
+1. A **build (létrehozás** ) szakaszban válassza az **entitások** lehetőséget a bal oldali panelen, majd válassza a **+ Létrehozás** elemet.
 
-1. Az **entitás típusának létrehozása** párbeszédpanelen adja meg az entitás nevét, például a `Colors` és a **lista**lehetőséget.
+1. Az **entitás típusának létrehozása** párbeszédpanelen adja meg az entitás nevét, például a `Colors` és a **lista** lehetőséget.
 1. Az **entitások listájának létrehozása** párbeszédpanel **új allista hozzáadása.**.. elemében adja meg a listaelem nevét (például) `Green` , majd adja hozzá a szinonimákat.
 
     > [!div class="mx-imgBorder"]
     > ![Hozzon létre egy listát a színek listájaként az entitás részletei lapon.](media/how-to-add-entities/create-list-entity-of-colors.png)
 
-1. Ha elkészült listaelemek és szinonimák hozzáadásával, válassza a **Létrehozás**elemet.
+1. Ha elkészült listaelemek és szinonimák hozzáadásával, válassza a **Létrehozás** elemet.
 
     Ha végzett az alkalmazás változásainak egy csoportján, ne felejtse el **betanítani** az alkalmazást. Egyetlen módosítás után ne tanítsa az alkalmazást.
 
@@ -153,7 +153,7 @@ Ebben az eljárásban hozzáadhat `origin` és `destination` szerepköröket egy
 1. Nyissa meg az alkalmazást úgy, hogy kiválasztja a nevét a **saját alkalmazások** oldalon.
 1. A **build (létrehozás** ) szakaszban válassza az **entitások** lehetőséget a bal oldali panelen.
 
-1. Válassza az **+ előre összeépített entitás hozzáadása**elemet. Válassza a **geographyV2** lehetőséget, majd válassza a **kész**lehetőséget. Ezzel egy előre elkészített entitást adhat hozzá az alkalmazáshoz.
+1. Válassza az **+ előre összeépített entitás hozzáadása** elemet. Válassza a **geographyV2** lehetőséget, majd válassza a **kész** lehetőséget. Ezzel egy előre elkészített entitást adhat hozzá az alkalmazáshoz.
 
     Ha azt tapasztalja, hogy a Pattern.any entitást tartalmazó minta nem megfelelően vonja ki az entitásokat, egy [explicit lista](reference-pattern-syntax.md#explicit-lists) megoldhatja a problémát.
 
@@ -206,7 +206,7 @@ LUIS nem teszi lehetővé az entitás típusának módosítását, mert nem tudj
 > [Előre összeállított modellek használata](howto-add-prebuilt-models.md)
 
 További információk:
-* Betanítás [train](luis-how-to-train.md)
+* Betanítás [](luis-how-to-train.md)
 * [Tesztelés](luis-interactive-test.md)
 * [Közzététel](luis-how-to-publish-app.md)
 * Minták

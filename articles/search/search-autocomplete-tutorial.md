@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 25c87971455ed3c5f59c92748794720d61e599e3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96339608"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps-using-azure-cognitive-search"></a>Automatikus kiegészítés és javaslatok hozzáadása az ügyfélalkalmazások számára az Azure Cognitive Search használatával
@@ -117,7 +117,7 @@ $(function () {
 });
 ```
 
-Az `source` azt jelzi, hogy a jQuery felhasználói felületének automatikus kiegészítési funkciója a keresőmező alatt megjelenítendő elemek listájának beolvasása. Mivel ez a projekt egy MVC-projekt, meghívja a **HomeController.cs** a **javasolt** függvényt, amely tartalmazza a lekérdezési javaslatok visszaadására vonatkozó logikát. Ez a függvény néhány paramétert is továbbít a csúcsfények, a zavaros egyezés és a kifejezés szabályozásához. Az automatikus kiegészítés JavaScript API hozzáadja a kifejezés paramétert.
+Az `source` azt jelzi, hogy a jQuery felhasználói felületének automatikus kiegészítési funkciója a keresőmező alatt megjelenítendő elemek listájának beolvasása. Mivel ez a projekt egy MVC-projekt, a **HomeController. cs** metódusban hívja meg a **suggestion függvényt** , amely tartalmazza a lekérdezési javaslatok visszaadására vonatkozó logikát. Ez a függvény néhány paramétert is továbbít a csúcsfények, a zavaros egyezés és a kifejezés szabályozásához. Az automatikus kiegészítés JavaScript API hozzáadja a kifejezés paramétert.
 
 Az `minLength: 3` biztosítja, hogy a javaslatok csak akkor jelenjenek meg, ha legalább három karakter szerepel a keresőmezőbe.
 
@@ -139,7 +139,7 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 ### <a name="suggest-function"></a>Javasolt függvény
 
-Ha C#-ot és MVC-alkalmazást használ, a **HomeController.cs** -fájl a vezérlők könyvtárban található, ahol létrehozhat egy osztályt a javasolt eredményekhez. A .NET-ben a javaslatok a [SuggestAsync módszer](/dotnet/api/azure.search.documents.searchclient.suggestasync)alapján működnek. A .NET SDK-val kapcsolatos további információkért lásd: az [Azure Cognitive Search használata .NET-alkalmazásokból](search-howto-dotnet-sdk.md).
+Ha C#-ot és MVC-alkalmazást használ, a **HomeController. cs** fájl a vezérlők könyvtárban található, ahol létrehozhat egy osztályt a javasolt eredményekhez. A .NET-ben a javaslatok a [SuggestAsync módszer](/dotnet/api/azure.search.documents.searchclient.suggestasync)alapján működnek. A .NET SDK-val kapcsolatos további információkért lásd: az [Azure Cognitive Search használata .NET-alkalmazásokból](search-howto-dotnet-sdk.md).
 
 A `InitSearch` metódus létrehoz egy hitelesített http-index ügyfelet az Azure Cognitive Search szolgáltatáshoz. A [SuggestOptions](/dotnet/api/azure.search.documents.suggestoptions) osztály tulajdonságai határozzák meg, hogy mely mezők kereshetők és visszaadásra kerülnek az eredmények között, a egyezések száma, valamint az, hogy a rendszer felhasználja-e a zavaros egyezést 
 
@@ -218,7 +218,7 @@ $(function () {
 
 ### <a name="autocomplete-function"></a>Automatikus kiegészítési függvény
 
-Az automatikus kiegészítés a [AutocompleteAsync metóduson](/dotnet/api/azure.search.documents.searchclient.autocompleteasync)alapul. Ahogy a javaslatok esetében, ez a kódrészlet a **HomeController.cs** -fájlban is elérhető.
+Az automatikus kiegészítés a [AutocompleteAsync metóduson](/dotnet/api/azure.search.documents.searchclient.autocompleteasync)alapul. Ahogy a javaslatok esetében, ez a kódrészlet a **HomeController. cs** fájlban is elérhető.
 
 ```csharp
 public async Task<ActionResult> AutoCompleteAsync(string term)
@@ -242,7 +242,7 @@ public async Task<ActionResult> AutoCompleteAsync(string term)
 
 Az automatikus kiegészítési függvény a keresési kifejezés bemenetét veszi igénybe. A metódus létrehoz egy [AutoCompleteParameters objektumot](/rest/api/searchservice/autocomplete). A rendszer az eredményt ezután JSON-kifejezéssé alakítja, hogy meg lehessen jeleníteni az ügyfélnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezeket a hivatkozásokat követve megtekintheti a keresési lehetőségekkel kapcsolatos teljes körű útmutatást és kódot. Mindkét kód például a javaslatok és az automatikus kiegészítések hibrid implementációját tartalmazza.
 

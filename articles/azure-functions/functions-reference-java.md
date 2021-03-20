@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java, devx-track-azurecli
 ms.openlocfilehash: 1ffbd760ae75605d75652b29d379420d6946aa8f
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96326454"
 ---
 # <a name="azure-functions-java-developer-guide"></a>A Java fejlesztői útmutató Azure Functions
@@ -155,7 +155,7 @@ Az alábbi táblázat a functions futtatókörnyezet minden egyes főverziójáh
 | Függvények verziója | Java-verziók (Windows) | Java-verziók (Linux) |
 | ----- | ----- | --- |
 | 3. x | 11 <br/>8 | 11 <br/>8 |
-| 2. x | 8 | n/a |
+| 2. x | 8 | n.a. |
 
 Ha nem ad meg Java-verziót az üzemelő példányhoz, a Maven archetípus alapértelmezett értéke a Java 8 az Azure-ba való üzembe helyezés során.
 
@@ -165,7 +165,7 @@ A (z) paraméter használatával szabályozhatja a Maven archetípus által megc
 
 A Maven archetípus egy pom.xml hoz létre, amely a megadott Java-verziót célozza meg. A pom.xml következő elemei a használni kívánt Java-verziót jelölik:
 
-| Elem |  Java 8 érték | Java 11 érték | Leírás |
+| Elem |  Java 8 érték | Java 11 érték | Description |
 | ---- | ---- | ---- | --- |
 | **`Java.version`** | 1.8 | 11 | A Maven-Compiler-beépülő modul által használt Java-verzió. |
 | **`JavaVersion`** | 8 | 11 | Az Azure-beli Function alkalmazás által üzemeltetett Java-verzió. |
@@ -462,7 +462,7 @@ Az előző példában a a `queryValue` `name` http-kérelem URL-címében a lek�
 > [!NOTE]
 > A jegyzetben megadott névnek egyeznie kell a metadata tulajdonsággal.
 
-## <a name="execution-context"></a>Végrehajtás környezete
+## <a name="execution-context"></a>Végrehajtási környezet
 
 `ExecutionContext`a ben definiált `azure-functions-java-library` , segítő metódusokat tartalmaz a functions futtatókörnyezettel folytatott kommunikációhoz. További információkért tekintse meg a [ExecutionContext-referenciát ismertető cikket](/java/api/com.microsoft.azure.functions.executioncontext).
 
@@ -553,7 +553,7 @@ public class Function {
 > [!NOTE]
 > A Alkalmazásbeállítás FUNCTIONS_EXTENSION_VERSION értékének a következőnek kell lennie: ~ 2 vagy ~ 3 az optimalizált, hideg indítási élményhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure Functions Java-fejlesztéssel kapcsolatos további információkért tekintse meg a következő forrásokat:
 

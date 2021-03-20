@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 50a1656fcb92d9777d4a9476ef2a4c1fd2f2efc6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96002748"
 ---
 # <a name="full-text-search-in-azure-cognitive-search"></a>Teljes szöveges keresés az Azure Cognitive Search
@@ -251,7 +251,7 @@ Gyakori, de nem kötelező, ha ugyanazokat az elemzőket használja a keresési 
 
 Ha visszatér a példánkban, a **title (cím** ) mezőben a fordított index a következőképpen néz ki:
 
-| Kifejezés | Dokumentumok listája |
+| Időszak | Dokumentumok listája |
 |------|---------------|
 | Atman | 1 |
 | Beach | 2 |
@@ -265,7 +265,7 @@ A title (cím) mezőben csak a ( *z* ) két dokumentum jelenik meg: 1, 3.
 
 A **Leírás** mezőben az index a következő:
 
-| Kifejezés | Dokumentumok listája |
+| Időszak | Dokumentumok listája |
 |------|---------------|
 | levegő | 3
 | és | 4
@@ -286,10 +286,10 @@ A **Leírás** mezőben az index a következő:
 | Shore | 2
 | tágas | 1
 | műveletnek a(z) | 1, 2
-| a következőre: | 1
+| felhasználóként a(z) | 1
 | megtekintése | 1, 2, 3
 | séta | 1
-| a | 3
+| nevű és | 3
 
 
 **Lekérdezési feltételek egyeztetése indexelt kifejezésekkel**
@@ -381,7 +381,7 @@ Technikai szempontból a teljes szöveges keresés nagyon összetett, és kifino
 
 Ez a cikk a teljes szöveges keresést ismerteti az Azure Cognitive Search kontextusában. Reméljük, hogy elegendő hátteret biztosít a gyakori lekérdezési problémák kezelésére vonatkozó lehetséges okok és megoldások felismeréséhez. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + Hozza létre a minta indexet, próbálja ki a különböző lekérdezéseket, és tekintse át az eredményeket. Útmutatásért lásd: [index létrehozása és lekérdezése a portálon](search-get-started-portal.md#query-index).
 
