@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/07/2020
 ms.author: allensu
 ms.openlocfilehash: ee264a22de5ce094e8a4c1335ace77cbbba49270
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94694993"
 ---
 # <a name="outbound-only-load-balancer-configuration"></a>Csak kifelé irányuló terheléselosztó konfigurációja
@@ -71,10 +71,10 @@ Hozzon létre egy virtuális gépet az új virtuális hálózaton.
     |------------------|-----------------------------------------------------------------|
     | **Projekt részletei**  |                                                                 |
     | Előfizetés     | Válassza ki az Azure-előfizetését                                  |
-    | Erőforráscsoport   | Válassza az **Új létrehozása** lehetőséget. </br> Adja meg a **myresourcegrouplb erőforráscsoportban**. </br> Kattintson az **OK** gombra. |
+    | Erőforráscsoport   | Válassza az **Új létrehozása** lehetőséget. </br> Adja meg a **myresourcegrouplb erőforráscsoportban**. </br> Válassza az **OK** lehetőséget. |
     | **Példány adatai** |                                                                 |
     | Name             | **MyVNet** megadása                                    |
-    | Régió           | Válassza az **USA 2. keleti** régióját |
+    | Region           | Válassza az **USA 2. keleti** régióját |
 
 3. Válassza az **IP-címek** lapot, vagy válassza a **következő: IP-címek** gombot az oldal alján.
 
@@ -93,7 +93,7 @@ Hozzon létre egy virtuális gépet az új virtuális hálózaton.
     | Alhálózat neve | **MyBackendSubnet** megadása |
     | Alhálózati címtartomány | Adja meg a **10.1.0.0/24** értéket |
 
-7. Válassza a **Mentés** lehetőséget.
+7. Kattintson a **Mentés** gombra.
 
 8. Válassza a **Biztonság** fület.
 
@@ -103,12 +103,12 @@ Hozzon létre egy virtuális gépet az új virtuális hálózaton.
     |--------------------|----------------------------|
     | Bástya neve | **MyBastionHost** megadása |
     | AzureBastionSubnet címterület | Adja meg a **10.1.1.0/24** értéket |
-    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. </br> A **név** mezőbe írja be a következőt: **myBastionIP**. </br> Kattintson az **OK** gombra. |
+    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. </br> A **név** mezőbe írja be a következőt: **myBastionIP**. </br> Válassza az **OK** lehetőséget. |
 
 
 8. Válassza a **felülvizsgálat + létrehozás** lapot, vagy kattintson a **felülvizsgálat + létrehozás** gombra.
 
-9. Kattintson a **Létrehozás** gombra.
+9. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
@@ -123,9 +123,9 @@ Hozzon létre egy virtuális gépet az új virtuális hálózaton.
     | Erőforráscsoport | **Myresourcegrouplb erőforráscsoportban** kiválasztása |
     | **Példány adatai** |  |
     | Virtuális gép neve | **MyVM** megadása |
-    | Régió | Válassza az **USA 2. keleti** régióját |
+    | Region | Válassza az **USA 2. keleti** régióját |
     | Rendelkezésre állási beállítások | Válassza az **infrastruktúra-redundancia nem szükséges** lehetőséget |
-    | Rendszerkép | **Windows Server 2019 Datacenter** kiválasztása |
+    | Kép | **Windows Server 2019 Datacenter** kiválasztása |
     | Azure Spot-példány | Válassza a **nem** lehetőséget |
     | Méret | A virtuális gép méretének kiválasztása vagy az alapértelmezett beállítás megadása |
     | **Rendszergazdai fiók** |  |
@@ -158,7 +158,7 @@ Hozzon létre egy virtuális gépet az új virtuális hálózaton.
     | **Figyelés** |  |
     | Rendszerindítási diagnosztika | Kijelölés **kikapcsolva** |
    
-7. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. 
+7. Válassza az **Áttekintés + létrehozás** lehetőséget. 
   
 8. Tekintse át a beállításokat, majd kattintson a **Létrehozás** gombra.
 
@@ -181,8 +181,8 @@ Adja hozzá a létrehozott virtuális gépet a háttérrendszer-készlethez.  Ez
     | ---                     | ---                                                |
     | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza ki az előző lépésben létrehozott **myresourcegrouplb erőforráscsoportban** .|
-    | Név                   | **MyInternalLoadBalancer** megadása                                   |
-    | Régió         | Válassza az **USA 2. keleti régiója** lehetőséget.                                        |
+    | Name                   | **MyInternalLoadBalancer** megadása                                   |
+    | Region         | Válassza az **USA 2. keleti régiója** lehetőséget.                                        |
     | Típus          | Válassza a **belső** lehetőséget.                                        |
     | Termékváltozat           | **Standard** kiválasztása |
     | Virtuális hálózat | Válassza ki az előző lépésben létrehozott **myVNet** . |
@@ -203,8 +203,8 @@ Adja hozzá a létrehozott virtuális gépet a háttérrendszer-készlethez.  Ez
     | ---                     | ---                                                |
     | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza az **új létrehozása** elemet, és írja be a **myresourcegrouplb erőforráscsoportban** szöveget a szövegmezőbe.|
-    | Név                   | **MyPublicLoadBalancer** megadása                                   |
-    | Régió         | Válassza az **USA 2. keleti régiója** lehetőséget.                                        |
+    | Name                   | **MyPublicLoadBalancer** megadása                                   |
+    | Region         | Válassza az **USA 2. keleti régiója** lehetőséget.                                        |
     | Típus          | Válassza a **Nyilvános** lehetőséget.                                        |
     | Termékváltozat           | **Standard** kiválasztása |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
@@ -281,7 +281,7 @@ A háttérbeli címkészlet **myPublicBackendPool** létrehozása:
     | A háttérkészlet | Válassza a **myPublicBackendPool** lehetőséget.| |
     | Port kiosztása – > a portok kiosztása | Válassza **a kimenő portok alapértelmezett számának használata** lehetőséget. |
 
-4. Válassza a **Hozzáadás** elemet.
+4. Válassza a **Hozzáadás** lehetőséget.
 
 ### <a name="test-connectivity-after-outbound-rule"></a>Kapcsolat tesztelése a Kimenő szabály után
 

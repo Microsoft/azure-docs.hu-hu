@@ -8,10 +8,10 @@ ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
 ms.openlocfilehash: da500087aeb4ad5e2bf516c3d0ce3cceaf8396af
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96000283"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>Az Azure Database for MySQL csatlakoztatási hibáinak elhárítása
@@ -42,7 +42,7 @@ A Azure Database for MySQLhoz való kapcsolódási problémák általában a kö
 3. Mivel a kiszolgáló megközelíti az erőforrás-korlátait, úgy tűnik, hogy a hibák átmeneti kapcsolódási problémát jelentenek. Tekintse [meg a Azure Database for MySQL korlátozásait](concepts-limits.md).
 4. Ha a kapcsolódási problémák továbbra is fennállnak, vagy ha az alkalmazás az időtartamot meghaladja a 60 másodpercnél, vagy ha egy adott nap több előfordulását látja a hibával, az Azure-támogatási kérést az [Azure](https://azure.microsoft.com/support/options) támogatási webhelyén, a **támogatás beszerzése** lehetőség választásával kérheti le.
 
-## <a name="troubleshoot-persistent-errors"></a>Állandó hibák elhárítása
+## <a name="troubleshoot-persistent-errors"></a>Állandó jellegű hibák elhárítása
 
 Ha az alkalmazás tartósan nem tud csatlakozni a Azure Database for MySQLhoz, általában a következők egyikével kapcsolatos problémát jelez:
 
@@ -57,6 +57,6 @@ Ha az alkalmazás tartósan nem tud csatlakozni a Azure Database for MySQLhoz, �
 3. Ellenőrizze a kapcsolatok karakterláncát és az egyéb kapcsolatbeállításokat. Tekintse át az [alkalmazások Azure Database for MySQLhoz való kapcsolódásának módját](howto-connection-string.md).
 4. Keresse meg a szolgáltatás állapotát az irányítópulton. Ha úgy gondolja, hogy regionális leállás van, tekintse meg az [üzletmenet folytonosságának áttekintése](concepts-business-continuity.md) című témakört, amely az új régióba való helyreállítás lépéseit Azure Database for MySQL.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Database for MySQL átmeneti kapcsolódási hibáinak kezelése](concepts-connectivity.md)

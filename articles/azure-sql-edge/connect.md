@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/25/2020
 ms.openlocfilehash: b56b65261950e9cf534a3755d214229ef7d5bb1e
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93395206"
 ---
 # <a name="connect-and-query-azure-sql-edge"></a>Az Azure SQL Edge összekötése és lekérdezése
@@ -36,8 +36,8 @@ Bármelyik általános eszközről csatlakozhat az Azure SQL Edge-példány egy 
 
 Ha egy hálózati gépről szeretne csatlakozni egy Azure SQL Edge-adatbázis-motorhoz, a következőkre lesz szüksége:
 
-- **A gazdagép IP-címe vagy hálózati neve** : ez az a gazdagép, ahol az Azure SQL Edge-tároló fut.
-- **Azure SQL Edge Container Host port leképezése** : Ez a Docker-tároló portjának hozzárendelése a gazdagép egy portjához. A tárolón belül az Azure SQL Edge mindig a 1433-es portra van leképezve. Ezt megteheti, ha szeretné. A portszám módosításához frissítse a **tároló létrehozási beállításait** a Azure IOT Edge Azure SQL Edge-modulhoz. A következő példában a tárolón lévő 1433-es port a gazdagép 1600-es portjára van leképezve.
+- **A gazdagép IP-címe vagy hálózati neve**: ez az a gazdagép, ahol az Azure SQL Edge-tároló fut.
+- **Azure SQL Edge Container Host port leképezése**: Ez a Docker-tároló portjának hozzárendelése a gazdagép egy portjához. A tárolón belül az Azure SQL Edge mindig a 1433-es portra van leképezve. Ezt megteheti, ha szeretné. A portszám módosításához frissítse a **tároló létrehozási beállításait** a Azure IOT Edge Azure SQL Edge-modulhoz. A következő példában a tárolón lévő 1433-es port a gazdagép 1600-es portjára van leképezve.
 
     ```JSON
     {
@@ -51,7 +51,7 @@ Ha egy hálózati gépről szeretne csatlakozni egy Azure SQL Edge-adatbázis-mo
     }
     ```
 
-- **Rendszergazdai jelszó az Azure SQL Edge-példányhoz** : Ez a `SA_PASSWORD` környezeti változóhoz megadott érték az Azure SQL Edge telepítése során.
+- **Rendszergazdai jelszó az Azure SQL Edge-példányhoz**: Ez a `SA_PASSWORD` környezeti változóhoz megadott érték az Azure SQL Edge telepítése során.
 
 ## <a name="connect-to-the-database-engine-from-within-the-container"></a>Kapcsolódás az adatbázis-motorhoz a tárolón belülről
 
@@ -94,7 +94,7 @@ conn = pyodbc.connect(db_connection_string, autocommit=True)
 
 ## <a name="connect-to-azure-sql-edge-from-another-network-machine"></a>Kapcsolódás az Azure SQL Edge-hez egy másik hálózati gépről
 
-Előfordulhat, hogy a hálózat egy másik számítógépéről szeretne csatlakozni az Azure SQL Edge-példányához. Ehhez használja a Docker-gazdagép IP-címét és azt a gazda portot, amelyhez az Azure SQL Edge-tároló le van képezve. Ha például a Docker-gazdagép IP-címe *xxx.xxx.xxx.xxx* , és az Azure SQL Edge-tároló a *1600* -es gazdagép-portra van leképezve, akkor az Azure SQL Edge-példány kiszolgálójának címe *xxx. xxx. xxx. xxx, 1600*. A frissített Python-szkript:
+Előfordulhat, hogy a hálózat egy másik számítógépéről szeretne csatlakozni az Azure SQL Edge-példányához. Ehhez használja a Docker-gazdagép IP-címét és azt a gazda portot, amelyhez az Azure SQL Edge-tároló le van képezve. Ha például a Docker-gazdagép IP-címe *xxx.xxx.xxx.xxx*, és az Azure SQL Edge-tároló a *1600*-es gazdagép-portra van leképezve, akkor az Azure SQL Edge-példány kiszolgálójának címe *xxx. xxx. xxx. xxx, 1600*. A frissített Python-szkript:
 
 ```python
 
@@ -114,7 +114,7 @@ Ha az Azure SQL Edge egy példányához szeretne csatlakozni a Visual Studio Cod
 
 Ha Windows, Mac vagy Linux rendszerű gépen Azure Data Studio használatával szeretne csatlakozni az Azure SQL Edge egy példányához, tekintse meg a [Azure Data Studio](/sql/azure-data-studio/quickstart-sql-server).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Csatlakozás és lekérdezés](/sql/linux/sql-server-linux-configure-docker#connect-and-query)
 

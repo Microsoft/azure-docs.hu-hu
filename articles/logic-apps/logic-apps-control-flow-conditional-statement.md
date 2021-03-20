@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
 ms.openlocfilehash: 19f42270e37c42cf56bbde04f73c01027a56ff63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89657383"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>A Azure Logic Apps munkafolyamat-műveleteinek vezérlésére szolgáló feltételes utasítások létrehozása
@@ -36,11 +36,11 @@ Tegyük fel például, hogy van egy logikai alkalmazás, amely túl sok e-mailt 
 
 1. Adjon hozzá egy feltételt a kívánt helyen. 
 
-   Ha fel szeretne venni egy feltételt a lépések között, vigye a mutatót arra a nyílra, ahová a feltételt hozzá szeretné adni. Válassza ki a megjelenő **pluszjelet** ( **+** ), majd válassza a **művelet hozzáadása**lehetőséget. Példa:
+   Ha fel szeretne venni egy feltételt a lépések között, vigye a mutatót arra a nyílra, ahová a feltételt hozzá szeretné adni. Válassza ki a megjelenő **pluszjelet** ( **+** ), majd válassza a **művelet hozzáadása** lehetőséget. Például:
 
    ![Művelet hozzáadása a lépések között](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 
-   Ha a munkafolyamat végén fel szeretne venni egy feltételt, a logikai alkalmazás alján válassza az  **új lépés** > **művelet hozzáadása**lehetőséget.
+   Ha a munkafolyamat végén fel szeretne venni egy feltételt, a logikai alkalmazás alján válassza az  **új lépés** > **művelet hozzáadása** lehetőséget.
 
 1. A keresőmezőbe írja be szűrőként a "feltétel" kifejezést. Válassza ki ezt a műveletet: **feltétel – vezérlés**
 
@@ -65,11 +65,11 @@ Tegyük fel például, hogy van egy logikai alkalmazás, amely túl sok e-mailt 
 
    ![Teljes feltétel](./media/logic-apps-control-flow-conditional-statement/edit-condition-2.png)
 
-   Ha további sort szeretne felvenni a feltétellel **, válassza a Hozzáadás**  >  **sor**hozzáadása elemet. 
-   Alfeltételekkel rendelkező csoport hozzáadásához **válassza a**Hozzáadás  >  **csoport**hozzáadása lehetőséget. 
-   A meglévő sorok csoportosításához jelölje be a sorok jelölőnégyzetét, és válassza a három pontra (...), majd a **csoport készítése**lehetőséget.
+   Ha további sort szeretne felvenni a feltétellel **, válassza a Hozzáadás**  >  **sor** hozzáadása elemet. 
+   Alfeltételekkel rendelkező csoport hozzáadásához **válassza a** Hozzáadás  >  **csoport** hozzáadása lehetőséget. 
+   A meglévő sorok csoportosításához jelölje be a sorok jelölőnégyzetét, és válassza a három pontra (...), majd a **csoport készítése** lehetőséget.
 
-1. **Ha az értéke TRUE (igaz** ), és **Ha hamis**, adja hozzá a végrehajtandó lépéseket az alapján, hogy teljesül-e a feltétel. Példa:
+1. **Ha az értéke TRUE (igaz** ), és **Ha hamis**, adja hozzá a végrehajtandó lépéseket az alapján, hogy teljesül-e a feltétel. Például:
 
    ![Feltétel "If true" és "If false" elérési utak esetén](./media/logic-apps-control-flow-conditional-statement/condition-yes-no-path.png)
 

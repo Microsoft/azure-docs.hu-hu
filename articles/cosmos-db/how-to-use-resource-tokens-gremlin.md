@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/06/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 22c048b748806404ccfa580e660552a1744f3781
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93361693"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Azure Cosmos DB erőforrás-tokenek használata a Gremlin SDK-val
@@ -101,7 +101,7 @@ Egyetlen Gremlin-fiókkal korlátlan számú tokent adhat ki. Ugyanakkor legfelj
 
 ## <a name="permission"></a>Engedély
 
-Gyakori hiba, hogy az alkalmazások az erőforrás-jogkivonatok használata közben jelentkeznek, "nincs elegendő jogosultsága az engedélyezési fejlécben a megfelelő kéréshez. Próbálkozzon újra egy másik engedélyezési fejléccel. " Ezt a hibát akkor adja vissza a rendszer, amikor egy Gremlin bejárási kísérletet tesz egy Edge vagy egy csúcspont írására, de az erőforrás-jogkivonat csak *olvasási* jogosultságot biztosít. Vizsgálja meg a bejárást, és ellenőrizze, hogy a következő lépések bármelyikét tartalmazza-e: *. addV ()* , *. addE ()* , *. drop ()* , vagy *. Property ()*.
+Gyakori hiba, hogy az alkalmazások az erőforrás-jogkivonatok használata közben jelentkeznek, "nincs elegendő jogosultsága az engedélyezési fejlécben a megfelelő kéréshez. Próbálkozzon újra egy másik engedélyezési fejléccel. " Ezt a hibát akkor adja vissza a rendszer, amikor egy Gremlin bejárási kísérletet tesz egy Edge vagy egy csúcspont írására, de az erőforrás-jogkivonat csak *olvasási* jogosultságot biztosít. Vizsgálja meg a bejárást, és ellenőrizze, hogy a következő lépések bármelyikét tartalmazza-e: *. addV ()*, *. addE ()*, *. drop ()*, vagy *. Property ()*.
 
 ## <a name="next-steps"></a>Következő lépések
 * [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](role-based-access-control.md) Azure Cosmos db

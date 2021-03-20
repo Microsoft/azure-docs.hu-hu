@@ -1,14 +1,14 @@
 ---
 ms.openlocfilehash: 0bae8946b7d81fbf45698cefe7c8b00bbc94d00c
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92168110"
 ---
 #### <a name="determine-memory-usage"></a>Memóriahasználat meghatározása 
 
-A **figyelés**területen válassza a **naplók (Analitika)** lehetőséget, majd másolja a következő telemetria-lekérdezést, és illessze be a lekérdezési ablakba, majd válassza a **Futtatás**lehetőséget. Ez a lekérdezés a teljes memóriahasználat értékét adja vissza az egyes mintavételi időpontokban.
+A **figyelés** területen válassza a **naplók (Analitika)** lehetőséget, majd másolja a következő telemetria-lekérdezést, és illessze be a lekérdezési ablakba, majd válassza a **Futtatás** lehetőséget. Ez a lekérdezés a teljes memóriahasználat értékét adja vissza az egyes mintavételi időpontokban.
 
 ```
 performanceCounters
@@ -18,7 +18,7 @@ performanceCounters
 
 Az eredmények a következő példához hasonlóan jelennek meg:
 
-| időbélyeg \[ UTC\]          | name          | value       |
+| időbélyeg \[ UTC\]          | name          | érték       |
 |----------------------------|---------------|-------------|
 | 9/12/2019, 1:05:14 \. 947 am | Saját bájtok | 209 932 288 |
 | 9/12/2019, 1:06:14 \. 994 am | Saját bájtok | 212 189 184 |

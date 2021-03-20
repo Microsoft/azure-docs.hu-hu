@@ -10,20 +10,20 @@ ms.date: 11/14/2019
 ms.author: absha
 ms.custom: mvc
 ms.openlocfilehash: 6e2d1828acefacb03cc2f42193b8cd8897578b6f
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397501"
 ---
-# <a name="configure-end-to-end-tls-by-using-application-gateway-with-the-portal"></a>Végpontok közötti TLS konfigurálása Application Gateway használatával a portálon
+# <a name="configure-end-to-end-tls-by-using-application-gateway-with-the-portal"></a>Teljes körű TLS konfigurálása az Application Gateway használatával a portálon
 
 Ez a cikk azt ismerteti, hogyan konfigurálható a Azure Portal a végpontok közötti Transport Layer Security (TLS) titkosítás, korábbi nevén SSL (SSL) titkosítás az Azure Application Gateway v1 SKU használatával.
 
 > [!NOTE]
 > Application Gateway v2 SKU-nak megbízható legfelső szintű tanúsítványokra van szüksége a végpontok közötti konfiguráció engedélyezéséhez.
 
-Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -67,7 +67,7 @@ További információ: [a TLS-megszakítás engedélyezése új Application Gate
 
    ![Főtanúsítvány](./media/end-to-end-ssl-portal/trustedrootcert.png)
 
-8. Válassza a **Mentés** lehetőséget.
+8. Kattintson a **Mentés** gombra.
 
 ## <a name="enable-end-to-end-tls-for-an-existing-application-gateway"></a>Végpontok közötti TLS engedélyezése meglévő Application gatewayhez
 
@@ -99,7 +99,7 @@ Ha az utóbbi lehetőséget választja, alkalmazza az alábbi eljárás lépése
 
 1. Válassza a **minden erőforrás** lehetőséget, majd válassza a **myAppGateway** lehetőséget.
 
-2. A bal oldali menüben válassza a **http-beállítások** lehetőséget. A tanúsítványokat egy meglévő háttérbeli HTTP-beállításban is elhelyezheti a biztonságos címzettek listáján, vagy létrehozhat egy új HTTP-beállítást. (A következő lépésben az alapértelmezett HTTP-beállításhoz ( **appGatewayBackendHttpSettings** ) tartozó tanúsítvány hozzá lesz adva a biztonságos címzettek listájához.)
+2. A bal oldali menüben válassza a **http-beállítások** lehetőséget. A tanúsítványokat egy meglévő háttérbeli HTTP-beállításban is elhelyezheti a biztonságos címzettek listáján, vagy létrehozhat egy új HTTP-beállítást. (A következő lépésben az alapértelmezett HTTP-beállításhoz ( **appGatewayBackendHttpSettings**) tartozó tanúsítvány hozzá lesz adva a biztonságos címzettek listájához.)
 
 3. Válassza a **appGatewayBackendHttpSettings** lehetőséget.
 
@@ -119,9 +119,9 @@ Ha az utóbbi lehetőséget választja, alkalmazza az alábbi eljárás lépése
 
    ![Megbízható főtanúsítvány hozzáadása](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
 
-8. Válassza a **Mentés** lehetőséget.
+8. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Webes forgalom kezelése Application Gatewayjel az Azure CLI segítségével](./tutorial-manage-web-traffic-cli.md)

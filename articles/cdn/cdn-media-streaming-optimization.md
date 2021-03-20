@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
 ms.openlocfilehash: c3ab722f182e32cf2f3aca6bb2f3d5a9598264af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88192604"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>Médiaadatfolyam-továbbítás optimalizálása Azure CDN 
@@ -67,11 +67,11 @@ Az általános adathordozó-kézbesítés vagy a videó igény szerinti átvitel
  
 A Content Delivery Network (CDN) végpontját beállíthatja úgy, hogy az a Azure Portal használatával optimalizálja a nagyméretű fájlok kézbesítését. Ehhez használhatja a REST API-kat vagy bármelyik ügyféloldali SDK-t is. A következő lépések azt mutatják be, hogyan jelennek meg a folyamat egy **Azure CDN standard Akamai-** profilból való Azure Portal használatával:
 
-1. Új végpont hozzáadásához egy Akamai **CDN-profil** oldalon válassza a **végpont**lehetőséget.
+1. Új végpont hozzáadásához egy Akamai **CDN-profil** oldalon válassza a **végpont** lehetőséget.
   
     ![Új végpont](./media/cdn-media-streaming-optimization/cdn-new-akamai-endpoint.png)
 
-2. A legördülő listában válassza a **video on demand Media Streaming** **lehetőséget az igény** szerinti video-eszközökhöz. Ha élő és igény szerinti videós közvetítés kombinációját hajtja végre, válassza az **általános médiaadatfolyam-továbbítás**lehetőséget.
+2. A legördülő listában válassza a **video on demand Media Streaming** **lehetőséget az igény** szerinti video-eszközökhöz. Ha élő és igény szerinti videós közvetítés kombinációját hajtja végre, válassza az **általános médiaadatfolyam-továbbítás** lehetőséget.
 
     ![Kijelölt adatfolyam](./media/cdn-media-streaming-optimization/02_Creating.png) 
  
@@ -86,7 +86,7 @@ A rövid negatív gyorsítótárazási idő hasznos a forrás kiszervezésében,
 | Gyorsítótárazás  | Általános webes kézbesítés | Általános médiaadatfolyam-továbbítás | Igény szerinti video-adatfolyam  
 |--- | --- | --- | ---
 | Gyorsítótárazás: pozitív <br> HTTP 200, 203, 300, <br> 301, 302 és 410 | 7 nap |365 nap | 365 nap   
-| Gyorsítótárazás: negatív <br> HTTP 204, 305, 404, <br> és 405 | Nincs | 1 másodperc | 1 másodperc
+| Gyorsítótárazás: negatív <br> HTTP 204, 305, 404, <br> és 405 | Nincsenek | 1 másodperc | 1 másodperc
  
 ### <a name="deal-with-origin-failure"></a>A származási hiba kezelése  
 

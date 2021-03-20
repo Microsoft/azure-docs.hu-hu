@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: b826c986a0af26bb79fb0823e4e8626f0165d460
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86250022"
 ---
 # <a name="azure-api-management-page-controls"></a>Az Azure API Management oldalának vezérlői
@@ -168,7 +168,7 @@ További információ a sablonok használatáról: [API Management fejlesztői p
 ### <a name="developer-portal-templates"></a>Fejlesztői portál sablonjai  
  A `sign-up` vezérlőt a következő fejlesztői portál-sablonokban lehet használni:  
   
--   [feliratkozni](api-management-page-templates.md#SignUp)  
+-   [Regisztráció](api-management-page-templates.md#SignUp)  
   
 ##  <a name="subscribe-button"></a><a name="subscribe-button"></a> előfizetés – gomb  
  A `subscribe-button` lehetővé teszi a felhasználó termékre való feliratkozásának vezérlését.  
@@ -214,5 +214,5 @@ További információ a sablonok használatáról: [API Management fejlesztői p
   
 -   [Product](api-management-product-templates.md#Product)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](api-management-developer-portal-templates.md).

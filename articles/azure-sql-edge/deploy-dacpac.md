@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
 ms.openlocfilehash: 40bd0eda16f9f96dd356eef900369ab25854e9f9
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93392248"
 ---
 # <a name="sql-database-dacpac-and-bacpac-packages-in-sql-edge"></a>DACPAC-és BACPAC-csomagok beSQL Databasea az SQL Edge-ben
@@ -69,7 +69,7 @@ Az Azure SQL Edge-tároló minden újraindításakor az SQL Edge megkísérli a 
 
 Egyes DACPAC-vagy BACPAC-telepítések során a felhasználók a parancs időtúllépésével találkozhatnak, ami a DACPAC telepítési művelet hibáját eredményezi. Ha ezzel a problémával találkozik, használja a SQLPackage.exe (vagy az SQL-ügyfél eszközeit) a DACPAC vagy a BACPAC maually alkalmazásához. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az SQL Edge üzembe helyezése Azure Portalon keresztül](deploy-portal.md).
 - [Adatfolyam-adatforrások](stream-data.md)

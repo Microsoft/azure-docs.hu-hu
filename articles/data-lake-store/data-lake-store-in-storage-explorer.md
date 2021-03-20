@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 02/05/2018
 ms.author: jejiang
 ms.openlocfilehash: 7f251e6ba2d94c0fcede3387ac12461951de40f1
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92108745"
 ---
 # <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>Azure Data Lake Storage Gen1 erőforrások kezelése Storage Explorer használatával
@@ -79,7 +79,7 @@ A következő lépések bemutatják, hogyan tekintheti meg Data Lake Storage Gen
 1. Nyissa meg a Storage Explorert.
 2. A bal oldali ablaktáblán bontsa ki azt az előfizetést, amely a megtekinteni kívánt Data Lake Storage Gen1 fiókot tartalmazza.
 3. Bontsa ki a **Data Lake Store** elemet.
-4. Kattintson a jobb gombbal a megtekinteni kívánt Data Lake Storage Gen1 fiók csomópontra, majd válassza a **Megnyitás**lehetőséget. A megnyitásához kattintson duplán a Data Lake Storage Gen1 fiókra.
+4. Kattintson a jobb gombbal a megtekinteni kívánt Data Lake Storage Gen1 fiók csomópontra, majd válassza a **Megnyitás** lehetőséget. A megnyitásához kattintson duplán a Data Lake Storage Gen1 fiókra.
 
    A fő ablaktábla megjeleníti a Data Lake Storage Gen1 fiók tartalmát.
 
@@ -192,7 +192,7 @@ Az URL-címeket egyszerűen beírhatja a Fájlkezelő vagy a böngésző címsor
 
 ![Mélyhivatkozás a Fájlkezelőben](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-deep-link.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [Storage Explorer legújabb kibocsátási megjegyzéseinek és videóinak megtekintése](https://www.storageexplorer.com).
 * Megtudhatja, hogyan [kezelheti a Azure Cosmos db a Azure Storage Explorerban](../cosmos-db/storage-explorer.md).

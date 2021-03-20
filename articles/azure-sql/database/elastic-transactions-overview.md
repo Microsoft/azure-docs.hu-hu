@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 5504b9bc87f78682ff584006255d4e75e5e69fa7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793347"
 ---
 # <a name="distributed-transactions-across-cloud-databases-preview"></a>Elosztott tranzakciók több felhőalapú adatbázisban (előzetes verzió)
@@ -24,13 +24,13 @@ ms.locfileid: "92793347"
 A Azure SQL Database és az Azure SQL felügyelt példányának rugalmas adatbázis-tranzakciói lehetővé teszik, hogy több adatbázisra kiterjedő tranzakciókat futtasson. A rugalmas adatbázis-tranzakciók a ADO.NET-t használó .NET-alkalmazások számára érhetők el, és a [System. Transaction](/dotnet/api/system.transactions) osztályok használatával integrálva vannak a megszokott programozási felülettel. A könyvtár beszerzéséhez tekintse meg a [.NET-keretrendszer 4.6.1 (web Installer)](https://www.microsoft.com/download/details.aspx?id=49981)című témakört.
 Emellett a felügyelt példányok elosztott tranzakciói a [Transact-SQL-](/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql)ben is elérhetők.
 
-A helyszínen egy ilyen forgatókönyvhöz általában a Microsoft Elosztott tranzakciók koordinátora (MSDTC) futtatására van szükség. Mivel az MSDTC nem érhető el az Azure-ban elérhető platform-szolgáltatásként, az elosztott tranzakciók koordinálásának lehetősége már közvetlenül integrálva van SQL Database vagy felügyelt példányba. Az alkalmazások bármely adatbázishoz csatlakozhatnak az elosztott tranzakciók elindításához, és az adatbázisok vagy kiszolgálók egyike transzparens módon koordinálja az elosztott tranzakciót, ahogy az az alábbi ábrán is látható.
+A helyszínen egy ilyen forgatókönyvhöz általában a Microsoft Distributed Transaction Coordinator (MSDTC) futtatására van szükség. Mivel az MSDTC nem érhető el az Azure-ban elérhető platform-szolgáltatásként, az elosztott tranzakciók koordinálásának lehetősége már közvetlenül integrálva van SQL Database vagy felügyelt példányba. Az alkalmazások bármely adatbázishoz csatlakozhatnak az elosztott tranzakciók elindításához, és az adatbázisok vagy kiszolgálók egyike transzparens módon koordinálja az elosztott tranzakciót, ahogy az az alábbi ábrán is látható.
 
 Ebben a dokumentumban az "elosztott tranzakciók" és a "rugalmas adatbázis-tranzakciók" kifejezések szinonimának számítanak, és a rendszer szinonimaként fogja használni.
 
   ![Elosztott tranzakciók Azure SQL Database rugalmas adatbázis-tranzakciók használatával ][1]
 
-## <a name="common-scenarios"></a>Gyakori helyzetek
+## <a name="common-scenarios"></a>Gyakori forgatókönyvek
 
 A rugalmas adatbázis-tranzakciók lehetővé teszik az alkalmazások számára, hogy a különböző adatbázisokban tárolt adatvédelemre vonatkozó atomi módosításokat végezzenek. Az előzetes verzió a C# és a .NET ügyféloldali fejlesztési tapasztalataira koncentrál. Egy kiszolgálóoldali felület (tárolt eljárásokban vagy kiszolgálóoldali parancsfájlokban írt kód) a [Transact-SQL](/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql) használatával csak felügyelt példányhoz érhető el.
 > [!IMPORTANT]
@@ -238,9 +238,9 @@ A rugalmas adatbázis-tranzakciók a Azure SQL Database különböző kiszolgál
 
 Az alábbi PowerShell-parancsmagok segítségével kezelheti a többkiszolgálós kommunikációs kapcsolatokat a rugalmas adatbázis-tranzakciók esetében:
 
-* **New-AzSqlServerCommunicationLink** : ezzel a parancsmaggal új kommunikációs kapcsolatot hozhat létre Azure SQL Database két kiszolgálója között. A kapcsolat szimmetrikus, ami azt jelenti, hogy mindkét kiszolgáló kezdeményezheti a tranzakciókat a másik kiszolgálóval.
-* **Get-AzSqlServerCommunicationLink** : ezzel a parancsmaggal kérheti le a meglévő kommunikációs kapcsolatokat és azok tulajdonságait.
-* **Remove-AzSqlServerCommunicationLink** : ezzel a parancsmaggal távolíthatja el a meglévő kommunikációs kapcsolatokat.
+* **New-AzSqlServerCommunicationLink**: ezzel a parancsmaggal új kommunikációs kapcsolatot hozhat létre Azure SQL Database két kiszolgálója között. A kapcsolat szimmetrikus, ami azt jelenti, hogy mindkét kiszolgáló kezdeményezheti a tranzakciókat a másik kiszolgálóval.
+* **Get-AzSqlServerCommunicationLink**: ezzel a parancsmaggal kérheti le a meglévő kommunikációs kapcsolatokat és azok tulajdonságait.
+* **Remove-AzSqlServerCommunicationLink**: ezzel a parancsmaggal távolíthatja el a meglévő kommunikációs kapcsolatokat.
 
 ## <a name="transactions-across-multiple-servers-for-azure-sql-managed-instance"></a>Több kiszolgáló közötti tranzakciók a felügyelt Azure SQL-példányokhoz
 
@@ -258,9 +258,9 @@ A dinamikus felügyeleti nézetek (DMV) segítségével figyelheti a folyamatban
 
 Ezek a DMV különösen hasznosak:
 
-* **sys.DM \_ Tran \_ aktív \_ tranzakciók** : felsorolja a jelenleg aktív tranzakciókat és azok állapotát. A UOW (munkaegység) oszlopban azonosíthatók azok a különböző alárendelt tranzakciók, amelyek ugyanahhoz az elosztott tranzakcióhoz tartoznak. Az azonos elosztott tranzakción belüli összes tranzakció ugyanazt a UOW-értéket hajtja végre. További információt a [DMV dokumentációjában](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-active-transactions-transact-sql)talál.
-* **sys.DM \_ Tran \_ adatbázis- \_ tranzakciói** : további információkat nyújt a tranzakciókkal kapcsolatban, például a tranzakció elhelyezéséről a naplóban. További információt a [DMV dokumentációjában](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-database-transactions-transact-sql)talál.
-* **sys.DM \_ Tran \_ zárolásai** : a folyamatban lévő tranzakciók által jelenleg tárolt zárolásokról nyújt információt. További információt a [DMV dokumentációjában](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql)talál.
+* **sys.DM \_ Tran \_ aktív \_ tranzakciók**: felsorolja a jelenleg aktív tranzakciókat és azok állapotát. A UOW (munkaegység) oszlopban azonosíthatók azok a különböző alárendelt tranzakciók, amelyek ugyanahhoz az elosztott tranzakcióhoz tartoznak. Az azonos elosztott tranzakción belüli összes tranzakció ugyanazt a UOW-értéket hajtja végre. További információt a [DMV dokumentációjában](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-active-transactions-transact-sql)talál.
+* **sys.DM \_ Tran \_ adatbázis- \_ tranzakciói**: további információkat nyújt a tranzakciókkal kapcsolatban, például a tranzakció elhelyezéséről a naplóban. További információt a [DMV dokumentációjában](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-database-transactions-transact-sql)talál.
+* **sys.DM \_ Tran \_ zárolásai**: a folyamatban lévő tranzakciók által jelenleg tárolt zárolásokról nyújt információt. További információt a [DMV dokumentációjában](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql)talál.
 
 ## <a name="limitations"></a>Korlátozások
 

@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.openlocfilehash: 6463f30bc79d937bd5a51a5c8c78fbdd72954b1e
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97364601"
 ---
 # <a name="best-practices-for-building-an-application-with-azure-database-for-postgresql"></a>Ajánlott eljárások alkalmazások létrehozásához Azure Database for PostgreSQL
@@ -49,7 +49,7 @@ Előfordulhat, hogy az alkalmazás átmeneti hibákat tapasztal, amikor az adatb
 A feladatátvételi forgatókönyvekhez használhatja a [felhőbe irányuló replikálás](./concepts-read-replicas.md) . Ha olvasási replikákat használ, a forrás-és a replika-kiszolgálók közötti automatikus feladatátvétel nem történik meg. A forrás és a replika közötti késés tapasztalható, mert a replikáció aszinkron módon történik. A hálózati késést számos tényező befolyásolja, például a forráskiszolgálón futó munkaterhelés mérete, valamint az adatközpontok közötti késleltetés. A legtöbb esetben a replika késése néhány másodperctől pár percig terjed.
 
 
-## <a name="database-deployment"></a>Adatbázis központi telepítése
+## <a name="database-deployment"></a>Adatbázis üzembe helyezése
 
 ### <a name="configure-cicd-deployment-pipeline"></a>A CI/CD telepítési folyamatának konfigurálása
 Alkalmanként az adatbázis módosításait kell telepítenie. Ilyen esetekben a folyamatos integráció (CI) segítségével a PostgreSQL-kiszolgáló [GitHub-műveletein](https://github.com/Azure/postgresql/blob/master/README.md) keresztül frissítheti az adatbázist úgy, hogy egyéni parancsfájlt futtat.
@@ -96,5 +96,5 @@ A Azure Database for PostgreSQL [lekérdezés-tárolási](./concepts-query-store
 ### <a name="optimize-bulk-inserts-and-use-transient-data"></a>Tömeges beszúrások optimalizálása és átmeneti adatmennyiség használata
 Ha olyan munkaterhelési műveletekkel rendelkezik, amelyek átmeneti adatokat tartalmaznak, vagy nagyméretű adatkészleteket szúrnak be ömlesztve, érdemes lehet a nem naplózott táblákat használni. A szolgáltatás alapértelmezés szerint az atomi és a tartósságot biztosítja. A sav tulajdonságait az atomenergia, a konzisztencia, az elkülönítés és a tartósság teszi elérhetővé. Lásd: [tömeges beszúrások optimalizálása](howto-optimize-bulk-inserts.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Postgres útmutató](http://postgresguide.com/)

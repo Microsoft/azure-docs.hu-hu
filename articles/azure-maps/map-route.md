@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: codepen
 ms.openlocfilehash: 9d0197a16c8074ce961c2b403724149929f566f7
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92890717"
 ---
 # <a name="show-directions-from-a-to-b"></a>Útvonal megjelenítése A-ból B-be
@@ -47,7 +47,7 @@ Az útvonal-lekérdezés, az adatforrás, a szimbólum, a vonal és a kamera hat
 
 ## <a name="query-the-route-via-fetch-api"></a>Az útvonal lekérdezése a fetch API használatával
 
-<iframe height='500' scrolling='no' title='Az A és B közötti útvonalak megjelenítése térképen' src='//codepen.io/azuremaps/embed/zRyNmP/?height=469&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a (z) Azure Maps () alapján a CodePen-on található <a href='https://codepen.io/azuremaps/pen/zRyNmP/'>, a-tól B-ig mutató utasításokat</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Az A és B közötti útvonalak megjelenítése térképen' src='//codepen.io/azuremaps/embed/zRyNmP/?height=469&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a (z) Azure Maps () alapján a CodePen-on található <a href='https://codepen.io/azuremaps/pen/zRyNmP/'>, a-tól B-ig mutató utasításokat</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'></a>.
 </iframe>
 
 A fenti kódban a kód első blokkja létrehozza a Térkép objektumot, és beállítja a hitelesítési mechanizmust a hozzáférési jogkivonat használatára. Ehhez útmutatást a [Térkép létrehozása](./map-create.md) című témakörben találhat.

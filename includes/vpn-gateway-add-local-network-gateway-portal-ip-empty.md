@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,10 +9,10 @@ ms.date: 10/22/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c538c510eeafacd1596fdeb1b4593919e6236cf0
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92487091"
 ---
 1. A [Azure Portal](https://portal.azure.com)a **keresési erőforrások, szolgáltatások és dokumentumok (G +/)** mezőbe írja be a **helyi hálózati átjárót**. Keresse meg a **helyi hálózati átjárót** a **piactér** területen a keresési eredmények között, és jelölje ki. Ekkor megnyílik a **helyi hálózati átjáró létrehozása** lap.

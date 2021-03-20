@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect a Microsoft Cloud németországi adatközpontjában
-description: Az Azure AD Connect integrálja a helyszíni címtárakat az Azure Active Directoryval. Ez lehetővé teszi az Azure AD-vel integrált Microsoft 365-, Azure-és SaaS-alkalmazások közös identitásának megadását.
+description: Az Azure AD Connect a helyszíni címtárakat integrálja az Azure Active Directoryval. Ez lehetővé teszi az Azure AD-vel integrált Microsoft 365-, Azure-és SaaS-alkalmazások közös identitásának megadását.
 keywords: Azure AD Connect bemutatása, Azure AD Connect áttekintése, mi az Azure AD Connect, active directory telepítése, Németország, Fekete-erdő
 services: active-directory
 documentationcenter: ''
@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 246f8326f7112825de98ee824cf4bab7952a7878
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90014587"
 ---
 # <a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>Azure AD Connect a Microsoft Cloud németországi adatközpontjában – nyilvános előzetes verzió

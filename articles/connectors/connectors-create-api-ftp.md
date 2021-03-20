@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 tags: connectors
 ms.openlocfilehash: f4cad2b658547d56d00efdd5e1496110f8e4a5e6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95999577"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>FTP-fájlok létrehozása, monitorozása és kezelése az Azure Logic Appsszel
@@ -46,7 +46,7 @@ Az FTP-eseményindítók az FTP fájlrendszer lekérdezésével és a legutóbbi
 | SFTP-ügyfél | Művelet |
 |-------------|--------|
 | WinSCP | Ugrás a **Beállítások**  >  **Beállítások**  >  **átvitel**  >  **szerkesztési**  >  **megőrzési időbélyegének**  >  **letiltása** |
-| Filezillát | Ugrás az **Transfer**  >  **átvitt fájlok adatmegőrzési időbélyegére –**  >  **Letiltás** |
+| Filezillát | Ugrás az   >  **átvitt fájlok adatmegőrzési időbélyegére –**  >  **Letiltás** |
 |||
 
 Ha egy trigger új fájlt talál, az trigger ellenőrzi, hogy az új fájl elkészült-e, és nem részlegesen van-e írva. Előfordulhat például, hogy egy fájl változása folyamatban van, amikor az trigger ellenőrzi a fájlkiszolgálón. Egy részlegesen megírt fájl visszaadásának elkerüléséhez az trigger megállapítja a legutóbbi módosításokat tartalmazó fájl időbélyegét, de nem adja vissza azonnal a fájlt. Az trigger csak akkor adja vissza a fájlt, ha újra kérdezi le a kiszolgálót. Előfordulhat, hogy ez a viselkedés egy késleltetést okoz, amely akár kétszer is meghaladhatja az aktiválás lekérdezési időközét.
@@ -176,7 +176,7 @@ Az összekötő részletes technikai részleteiről, például az eseményindít
 > [!NOTE]
 > Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében az összekötő ISE által címkézett verziója az [ISE-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) használja helyette.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése
 

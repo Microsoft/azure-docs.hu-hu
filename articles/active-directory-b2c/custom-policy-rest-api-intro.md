@@ -12,10 +12,10 @@ ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: bc2b72779460c2b7e3999204ace50ca57388b9a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89594186"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>REST API jogcímek cseréjének integrálása a Azure AD B2C egyéni szabályzatba
@@ -68,9 +68,9 @@ A [Rest-technikai profilban](restful-technical-profile.md)a `InputClaims` elem t
 
 Beállíthatja, hogy a bemeneti jogcímek hogyan legyenek elküldve a REST-jogcím-szolgáltatónak a SendClaimsIn attribútum használatával. Lehetséges értékek:
 
-- A **szövegtörzs**a http post kérelem törzsében JSON formátumban lett elküldve.
-- Az **űrlap**a http post kérelem törzsében, a "&" tagolt kulcs értékének formátumában lett elküldve.
-- A **fejléc**a HTTP Get kérelem fejlécében lett elküldve.
+- A **szövegtörzs** a http post kérelem törzsében JSON formátumban lett elküldve.
+- Az **űrlap** a http post kérelem törzsében, a "&" tagolt kulcs értékének formátumában lett elküldve.
+- A **fejléc** a HTTP Get kérelem fejlécében lett elküldve.
 - A HTTP GET kérelem lekérdezési karakterláncában elküldve a **querystring**.
 
 Ha a **törzs** beállítás be van állítva, a REST API technikai profil lehetővé teszi, hogy összetett JSON-adattartalmat küldjön egy végpontnak. További információ: JSON- [adattartalom küldése](restful-technical-profile.md#send-a-json-payload).

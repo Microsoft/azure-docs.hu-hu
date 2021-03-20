@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 257855b4f7b1fae56ed8d6a063acfb0588da9b6a
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92123320"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>Munkafolyamatok használata az Azure IoT Central alkalmazás integrálásához más felhőalapú szolgáltatásokkal
@@ -40,14 +40,14 @@ Mielőtt elindít egy munkafolyamatot az automatizálásban vagy Azure Logic App
 
 Az **Azure IoT Central v3 – előzetes** verziójú összekötő hozzáadása triggerként a Power automatizálásban:
 
-1. A Power automatizáló lapon válassza a **+ Létrehozás**lehetőséget, majd válassza az **Egyéni** lapot.
+1. A Power automatizáló lapon válassza a **+ Létrehozás** lehetőséget, majd válassza az **Egyéni** lapot.
 1. Keresse meg *IoT Central*, majd válassza ki az **Azure IoT Central v3-Preview** összekötőt.
 1. Az eseményindítók listájában válassza ki, hogy **Mikor indul el egy szabály (előzetes verzió)**.
 1. A **szabály indításakor** lépésnél válassza ki a IoT Central alkalmazást és a használni kívánt szabályt.
 
 Az **Azure IoT Central v3 – előzetes** verziójú összekötő hozzáadása triggerként a Azure Logic Appsban:
 
-1. **Logic apps Designerben**válassza ki az **üres logikai alkalmazás** sablonját.
+1. **Logic apps Designerben** válassza ki az **üres logikai alkalmazás** sablonját.
 1. A tervezőben válassza az **Egyéni** lapot.
 1. Keresse meg *IoT Central*, majd válassza ki az **Azure IoT Central v3-Preview** összekötőt.
 1. Az eseményindítók listájában válassza ki, hogy **Mikor indul el egy szabály (előzetes verzió)**.
@@ -70,12 +70,12 @@ Az **Azure IoT Central v3 – előzetes** verziójú összekötő hozzáadása m
 
 Az **Azure IoT Central v3 – Preview** összekötő hozzáadása műveletként a Azure Logic Appsban:
 
-1. **Logic apps Designerben**a **művelet kiválasztása** panelen válassza az **Egyéni** lapot.
+1. **Logic apps Designerben** a **művelet kiválasztása** panelen válassza az **Egyéni** lapot.
 1. Keresse meg *IoT Central*, majd válassza ki az **Azure IoT Central v3-Preview** összekötőt.
 1. A műveletek listájában válassza ki a használni kívánt IoT Central műveletet.
 1. A művelet lépésben fejezze be a kiválasztott művelet konfigurációját. Kattintson a **Mentés** gombra.
 
-:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Keresse meg az Azure IoT Central-Preview összekötőt, és válassza ki a triggert":::
+:::image type="content" source="./media/howto-configure-rules-advanced/actions.png" alt-text="Keresse meg az Azure IoT Central v3-összekötőt, és válasszon egy műveletet":::
 
 ## <a name="list-of-actions"></a>Műveletek listája
 
@@ -129,7 +129,7 @@ Ezzel a művelettel kérheti le az eszköz részleteit.
 | Alkalmazás | Válasszon a IoT Central alkalmazások listájából. |
 | Eszköz | A törlendő eszköz egyedi azonosítója. |
 
-A visszaadott adatokat a dinamikus kifejezésekben is használhatja más műveletekben. A visszaadott eszköz adatai a következők: **jóváhagyva**, **szövegtörzs**, **eszköz leírása**, **eszköznév**, **eszköz sablonja**, **kiépített**és **szimulált**.
+A visszaadott adatokat a dinamikus kifejezésekben is használhatja más műveletekben. A visszaadott eszköz adatai a következők: **jóváhagyva**, **szövegtörzs**, **eszköz leírása**, **eszköznév**, **eszköz sablonja**, **kiépített** és **szimulált**.
 
 ### <a name="get-device-cloud-properties"></a>Eszköz Felhőbeli tulajdonságainak beolvasása
 

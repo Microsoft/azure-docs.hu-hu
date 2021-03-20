@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 0b7d08d610c883240abedc66c55abba64a74c8e3
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96576315"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Service Fabric-alkalmazás hibakeresése a Visual Studióval
@@ -39,7 +39,7 @@ Időt és pénzt takaríthat meg az Azure Service Fabric-alkalmazás üzembe hel
     ![A diagnosztikai események ablak megnyitása][viewdiagnosticevents]
    
     Ha egy adott szolgáltatásra vagy alkalmazásra kívánja szűrni a nyomkövetést, engedélyezze a folyamatos átviteli nyomkövetést az adott szolgáltatáson vagy alkalmazáson.
-6. A diagnosztikai események az automatikusan generált **ServiceEventSource.cs** fájlban láthatók, és az alkalmazás kódjából lesznek meghívva.
+6. A diagnosztikai események az automatikusan generált **ServiceEventSource. cs** fájlban láthatók, és az alkalmazás kódjából lesznek meghívva.
    
     ```csharp
     ServiceEventSource.Current.ServiceMessage(this, "My ServiceMessage with a parameter {0}", result.Value.ToString());
@@ -132,7 +132,7 @@ A nyomkövetéseket közvetlenül egy távoli fürtcsomóponton is képes továb
    
     ![Távoli folyamatos átvitel nyomkövetésének letiltása][disablestreamingtraces]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Service Fabric szolgáltatás tesztelése](service-fabric-testability-overview.md).
 * [Service Fabric-alkalmazások kezelése a Visual Studióban](service-fabric-manage-application-in-visual-studio.md).
 

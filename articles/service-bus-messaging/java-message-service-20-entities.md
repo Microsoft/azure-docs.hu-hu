@@ -4,10 +4,10 @@ description: Ez a cikk áttekintést nyújt a Java Message Service API-n kereszt
 ms.topic: article
 ms.date: 07/20/2020
 ms.openlocfilehash: ee4e0124dced16b86d5292c647e129aa87645f22
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100652581"
 ---
 # <a name="java-message-service-jms-20-entities"></a>Java Message Service (JMS) 2,0 entitások

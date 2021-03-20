@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
 ms.openlocfilehash: b9b27a432776635290c7e8e796e84d8c1e0e8675
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92168341"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Microsoft. Common. DropDown felhasználói felületi elem
@@ -26,19 +26,19 @@ Ha csak egyetlen elem van engedélyezve a kijelöléshez, a vezérlő a követke
 
 Ha a leírások szerepelnek, a vezérlő a következőképpen jelenik meg:
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-2.png" alt-text="Microsoft. Common. DropDown egyetlen kijelölés":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-2.png" alt-text="Microsoft. Common. DropDown egyetlen kijelölés a leírásokkal":::
 
 Ha a többszörös kijelölés engedélyezve van, a vezérlő hozzáadja az **összes kijelölése** lehetőséget és a jelölőnégyzeteket több elem kiválasztásához:
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-3.png" alt-text="Microsoft. Common. DropDown egyetlen kijelölés":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-3.png" alt-text="Microsoft. Common. DropDown többszörös kijelölés":::
 
 A többszörös kijelölés engedélyezése esetén a leírások is szerepelhetnek.
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-4.png" alt-text="Microsoft. Common. DropDown egyetlen kijelölés":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-4.png" alt-text="Képernyőkép, amely bemutatja, hogyan szerepelhetnek a leírások a többszörös kijelölés engedélyezése esetén":::
 
 Ha a Szűrés engedélyezve van, a vezérlő tartalmaz egy szövegmezőt a szűrési érték hozzáadásához.
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-5.png" alt-text="Microsoft. Common. DropDown egyetlen kijelölés":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-5.png" alt-text="Microsoft. Common. DropDown többszörös kijelölés a leírásokkal":::
 
 ## <a name="schema"></a>Séma
 
@@ -93,7 +93,7 @@ Ha a Szűrés engedélyezve van, a vezérlő tartalmaz egy szövegmezőt a szűr
 - A `defaultDescription` tulajdonság olyan elemekhez használatos, amelyek nem rendelkeznek leírással.
 - A `placeholder` tulajdonság egy olyan súgószöveg, amely eltűnik, amikor a felhasználó megkezdi a szerkesztést. Ha a `placeholder` és `defaultValue` mindkettő is meg van adva, a `defaultValue` veszi elsőbbséget, és megjelenik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md)használatába.
 * A felhasználói felületi elemek általános tulajdonságainak leírását lásd: [CreateUiDefinition-elemek](create-uidefinition-elements.md).

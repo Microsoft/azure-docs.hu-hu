@@ -9,10 +9,10 @@ ms.date: 07/19/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 7e410218117aa0d21167b6d615a3835aeec470e7
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397110"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-azure-powershell"></a>Webes forgalom kezelése alkalmazásátjáróval az Azure PowerShell használatával
@@ -27,7 +27,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 Ha szeretné, ezt az eljárást az [Azure CLI](tutorial-manage-web-traffic-cli.md)használatával végezheti el.
 
-Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -35,7 +35,7 @@ Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingy
 
 Ha a PowerShell helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure PowerShell-modul 1.0.0-es vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy Azure-erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)használatával.  
 
@@ -255,6 +255,6 @@ Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az Applicat
 Remove-AzResourceGroup -Name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Webes forgalom korlátozása webalkalmazási tűzfallal](../web-application-firewall/ag/tutorial-restrict-web-traffic-powershell.md)

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
 ms.openlocfilehash: f230445ecdb046c2b631e89567df71e1d09c3234
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95999229"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Az Azure Site Recovery Deployment Planner-jelentés elemzése
@@ -356,5 +356,5 @@ A **Batch (óó: PP) becsült kezdeti replikálási ideje**: a kezdeti replikál
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információk a [költségbecslésről](hyper-v-deployment-planner-cost-estimation.md).

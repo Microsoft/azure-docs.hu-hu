@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 4f570f9f18f9c9d484a9bc9c1a5c64d42dbdc714
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397450"
 ---
 # <a name="annotations-for-application-gateway-ingress-controller"></a>Jegyzetek Application Gateway bejövő adatkezelőhöz 
@@ -22,7 +22,7 @@ A Kubernetes bejövő erőforrások tetszőleges kulcs/érték párokkal is szer
 
 ## <a name="list-of-supported-annotations"></a>Támogatott jegyzetek listája
 
-A AGIC által megfigyelt bejövő erőforrásokhoz a következővel **must be annotated** kell szerepelnie: `kubernetes.io/ingress.class: azure/application-gateway` . Ezt követően a AGIC a kérdéses bejövő erőforrással fog működni.
+A AGIC által megfigyelt bejövő erőforrásokhoz a következővel  kell szerepelnie: `kubernetes.io/ingress.class: azure/application-gateway` . Ezt követően a AGIC a kérdéses bejövő erőforrással fog működni.
 
 | Jegyzet kulcsa | Érték típusa | Alapértelmezett érték | Megengedett értékek
 | -- | -- | -- | -- |

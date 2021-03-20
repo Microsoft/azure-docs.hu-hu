@@ -8,10 +8,10 @@ ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref
 ms.openlocfilehash: a5272f7d580a3f8a68afda9150a1e95c1807eba6
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92103781"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Végfelhasználói hitelesítés Azure Data Lake Storage Gen1 használatával Azure Active Directory
@@ -82,7 +82,7 @@ Lásd: az alkalmazás-azonosító [beszerzése](../active-directory/develop/howt
 
 Az átirányítási URI beolvasásához hajtsa végre a következő lépéseket.
 
-1. A Azure Portal válassza a **Azure Active Directory**, majd a **Alkalmazásregisztrációk**lehetőséget, majd keresse meg és kattintson a létrehozott Azure ad natív alkalmazásra.
+1. A Azure Portal válassza a **Azure Active Directory**, majd a **Alkalmazásregisztrációk** lehetőséget, majd keresse meg és kattintson a létrehozott Azure ad natív alkalmazásra.
 
 2. Az alkalmazás **Beállítások** paneljén kattintson az **átirányítási URI**-k elemre.
 
@@ -93,17 +93,17 @@ Az átirányítási URI beolvasásához hajtsa végre a következő lépéseket.
 
 ## <a name="step-3-set-permissions"></a>3. lépés: engedélyek beállítása
 
-1. A Azure Portal válassza a **Azure Active Directory**, majd a **Alkalmazásregisztrációk**lehetőséget, majd keresse meg és kattintson a létrehozott Azure ad natív alkalmazásra.
+1. A Azure Portal válassza a **Azure Active Directory**, majd a **Alkalmazásregisztrációk** lehetőséget, majd keresse meg és kattintson a létrehozott Azure ad natív alkalmazásra.
 
-2. Az alkalmazás **Beállítások** paneljén kattintson a **szükséges engedélyek**elemre, majd a **Hozzáadás**gombra.
+2. Az alkalmazás **Beállítások** paneljén kattintson a **szükséges engedélyek** elemre, majd a **Hozzáadás** gombra.
 
     ![Képernyőkép a beállítások panelről, az átirányítási U R I kapcsolóval, valamint az átirányítási U R I panelen a tényleges U R-vel.](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
 
-3. Az **API-hozzáférés hozzáadása** panelen kattintson az **API kiválasztása**elemre, majd a **Azure Data Lake**elemre, végül a **kiválasztás**gombra.
+3. Az **API-hozzáférés hozzáadása** panelen kattintson az **API kiválasztása** elemre, majd a **Azure Data Lake** elemre, végül a **kiválasztás** gombra.
 
     ![Képernyőkép az API-hozzáférés hozzáadása panelről, az API kiválasztása lehetőség kiválasztásával és az API kiválasztása panelen a Azure Data Lake lehetőséggel és a kinevezett Select lehetőséggel.](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
 
-4.  Az **API-hozzáférés hozzáadása** panelen kattintson az **engedélyek kiválasztása**elemre, jelölje be a jelölőnégyzetet, hogy **teljes hozzáférést adjon a Data Lake Storehoz**, majd kattintson a **kiválasztás**gombra.
+4.  Az **API-hozzáférés hozzáadása** panelen kattintson az **engedélyek kiválasztása** elemre, jelölje be a jelölőnégyzetet, hogy **teljes hozzáférést adjon a Data Lake Storehoz**, majd kattintson a **kiválasztás** gombra.
 
     ![Képernyőkép az API-hozzáférés hozzáadása panelről, a kinevezett engedélyek kiválasztása lehetőséggel, a hozzáférés engedélyezése panelen pedig a teljes hozzáféréssel rendelkezik a Azure Data Lake szolgáltatás lehetőséghez, és a Select (kiválasztás) lehetőséget.](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
 
@@ -111,7 +111,7 @@ Az átirányítási URI beolvasásához hajtsa végre a következő lépéseket.
 
 5. Ismételje meg az utolsó két lépést a **Windows Azure Service Management API** engedélyeinek megadásához is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben egy natív Azure AD-alkalmazást hozott létre, és összegyűjtötte a szükséges információkat a .NET SDK, Java SDK, REST API stb. használatával létrehozott ügyfélalkalmazások számára. A következő cikkekkel megtudhatja, hogyan használhatja az Azure AD-webalkalmazást, hogy először hitelesítse Data Lake Storage Gen1, majd más műveleteket hajtson végre az áruházban.
 
 * [Végfelhasználói hitelesítés Data Lake Storage Gen1 a Java SDK-val](data-lake-store-end-user-authenticate-java-sdk.md)

@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan csomagolhat egy meglévő alkalmazást vendég 
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.openlocfilehash: 72fde75e16341164106bb952d0bb66b83be744e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86259261"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Meglévő végrehajtható fájl becsomagolása és üzembe helyezése Service Fabric
@@ -22,7 +22,7 @@ Egy meglévő végrehajtható fájl [vendégként](service-fabric-guest-executab
 
 A Visual Studio egy Service Fabric szolgáltatási sablont biztosít, amely segítséget nyújt a vendég végrehajtható fájlok Service Fabric fürtön való üzembe helyezésében.
 
-1. Válassza a **fájl**  >  **új projekt**elemet, és hozzon létre egy Service Fabric alkalmazást.
+1. Válassza a **fájl**  >  **új projekt** elemet, és hozzon létre egy Service Fabric alkalmazást.
 2. Válassza a **vendég végrehajtható fájl** lehetőséget a szolgáltatás sablonként.
 3. Kattintson a **Tallózás** gombra a végrehajtható fájl kiválasztásához, majd adja meg a többi paramétert a szolgáltatás létrehozásához.
    * A *kód csomagjainak viselkedése*. Beállítható úgy, hogy a mappa összes tartalmát a Visual Studio-projektbe másolja, ami akkor hasznos, ha a végrehajtható fájl nem változik. Ha a végrehajtható fájl módosítására vár, és szeretné, hogy az új buildek dinamikusan legyenek kiválasztva, akkor a mappára is hivatkozhat. A Visual Studióban az alkalmazás projekt létrehozásakor használhat csatolt mappákat. Ez a forrás helyéről a projekten belülre mutat, így a vendégek a forrás célhelyén frissíthetik a vendég végrehajtható fájlt. Ezek a frissítések a Build-alkalmazáscsomag részévé válnak.
@@ -33,7 +33,7 @@ A Visual Studio egy Service Fabric szolgáltatási sablont biztosít, amely seg�
      * `CodePackage` azt adja meg, hogy a munkakönyvtár az alkalmazáscsomag gyökerére lesz beállítva ( `GuestService1Pkg` az előző fájl struktúrában látható).
      * `Work` Megadja, hogy a fájlok a Work nevű alkönyvtárba kerülnek.
 4. Nevezze el a szolgáltatást, és kattintson az **OK** gombra.
-5. Ha a szolgáltatásnak szüksége van egy végpontra a kommunikációhoz, most hozzáadhatja a protokollt, a portot és a típust a ServiceManifest.xml fájlhoz. Például: `<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" UriScheme="http" PathSuffix="myapp/" Type="Input" />`.
+5. Ha a szolgáltatásnak szüksége van egy végpontra a kommunikációhoz, most hozzáadhatja a protokollt, a portot és a típust a ServiceManifest.xml fájlhoz. Példa: `<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" UriScheme="http" PathSuffix="myapp/" Type="Input" />`.
 6. Mostantól a csomagot és a közzétételi műveletet a helyi fürtön is használhatja a Visual Studióban található megoldás hibakeresésével. Ha elkészült, közzéteheti az alkalmazást egy távoli fürtön, vagy bejelölheti a megoldást a forrás vezérlőelemre.
 7. Olvassa el a [futó alkalmazás](#check-your-running-application) megtekintését, és tekintse meg, hogyan tekintheti meg Service Fabric Explorer futó vendég végrehajtható szolgáltatását.
 
@@ -311,7 +311,7 @@ Ha a Server Explorer használatával keres a címtárban, a munkakönyvtár és 
 
 ![A napló helye](./media/service-fabric-deploy-existing-app/loglocation.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan csomagolhat vendég végrehajtható fájlt, és hogyan helyezheti üzembe a Service Fabric. A kapcsolódó információkkal és feladatokkal kapcsolatban tekintse meg a következő cikkeket.
 

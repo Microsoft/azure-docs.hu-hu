@@ -5,10 +5,10 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
 ms.openlocfilehash: 95167791efe13526b0a70c28fa89771542a9d220
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98685561"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>A megfelelő integrációs és automatizálási szolgáltatások kiválasztása az Azure-ban
@@ -56,7 +56,7 @@ Ezeket a szolgáltatásokat használhatja vegyesen a vezénylések létrehozás�
 | **Fejlesztés** | Kódközpontú (imperatív) | Tervezőközpontú (deklaratív) |
 | **Kapcsolódás** | [Körülbelül egy tucat beépített kötési típus](functions-triggers-bindings.md#supported-bindings), kód írása az egyéni kötésekhez | [Az összekötők nagy gyűjteménye](../connectors/apis-list.md), [Enterprise Integration Pack B2B-forgatókönyvekhez](../logic-apps/logic-apps-enterprise-integration-overview.md), [Egyéni összekötők létrehozása](../logic-apps/custom-connector-overview.md) |
 | **Műveletek** | Minden tevékenység egy Azure-függvény; kód írásával hozhat létre tevékenységfüggvényeket |[Használatra kész műveletek széles választéka](../logic-apps/logic-apps-workflow-actions-triggers.md)|
-| **Figyelés** | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [Azure monitor naplók](../logic-apps/monitor-logic-apps.md)|
+| **Figyelés** | [Azure-Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [Azure monitor naplók](../logic-apps/monitor-logic-apps.md)|
 | **Felügyelet** | [REST API](durable/durable-functions-http-api.md), [Visual Studio](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2019) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](/rest/api/logic/), [PowerShell](/powershell/module/az.logicapp), [Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md) |
 | **Végrehajtási környezet** | [Helyileg](functions-runtime-overview.md) vagy a felhőben is futtatható | Csak felhőben futtatható|
 

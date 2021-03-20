@@ -10,17 +10,17 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 335b564225bc2b7a4c2217c1d912f952239ecf24
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92127199"
 ---
 # <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>Oktatóanyag: az adatData Box Heavy használata felügyelt lemezként az Azure-ban
 
 Ez az oktatóanyag leírja, hogyan telepítheti át a helyszíni virtuális merevlemezeket a felügyelt lemezekre az Azure-ban a Azure Data Box Heavy használatával. A helyszíni virtuális gépekről származó virtuális merevlemezeket a rendszer átmásolja Data Box Heavyba, és az Azure-ba felügyelt lemezként feltölti őket. Ezek a felügyelt lemezek ezután az Azure-beli virtuális gépekhez csatlakoztathatók.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Előfeltételek áttekintése
@@ -81,7 +81,7 @@ Ha Windows Server rendszerű gazdagépet használ, kövesse az alábbi lépések
     
     ![Megosztások hitelesítő adatainak beszerzése 2](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
-3. Ha el szeretné érni az erőforráshoz társított megosztásokat (a következő példában szereplő*mydbmdrg1* ), nyisson meg egy parancssori ablakot. A parancssorba írja be a következőt:
+3. Ha el szeretné érni az erőforráshoz társított megosztásokat (a következő példában szereplő *mydbmdrg1* ), nyisson meg egy parancssori ablakot. A parancssorba írja be a következőt:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
@@ -165,7 +165,7 @@ Az adatok integritásának biztosítása érdekében az ellenőrzőösszeg kisz�
     
 ![A szabad és a felhasznált tárhely ellenőrzése az irányítópulton](media/data-box-deploy-copy-data-from-vhds/verify-used-space-dashboard.png)
 
-A másolási feladatok befejezése után **szállításra való előkészítés**léphet.
+A másolási feladatok befejezése után **szállításra való előkészítés** léphet.
 
 
 ## <a name="next-steps"></a>További lépések

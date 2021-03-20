@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 569bc6350b1bfa01228d49d28a1d12e2ab62f6f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88142264"
 ---
 # <a name="delete-nodes-from-azure-vmware-solution-by-cloudsimple"></a>Csomópontok törlése az Azure VMware-megoldásból a CloudSimple használatával
@@ -34,11 +34,11 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 1. Válassza az **Összes szolgáltatás** elemet.
 
-2. CloudSimple- **csomópontok**keresése.
+2. CloudSimple- **csomópontok** keresése.
 
    ![CloudSimple-csomópontok keresése](media/create-cloudsimple-node-search.png)
 
-3. Válassza a **CloudSimple-csomópontok**lehetőséget.
+3. Válassza a **CloudSimple-csomópontok** lehetőséget.
 
 4. Válassza ki azokat a csomópontokat, amelyek nem tartoznak a törölni kívánt privát felhőhöz.  A **saját felhő neve** oszlop azt a saját Felhőbeli nevet jeleníti meg, amelyhez a csomópont tartozik.  Ha egy csomópontot nem használ egy privát felhő, az érték üres lesz. 
 

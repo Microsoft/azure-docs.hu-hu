@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 02/15/2021
 ms.openlocfilehash: e183d81355d4db81e677f34b02330ddb9b631957
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100651986"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rövid útmutató: Azure Cognitive Search-szolgáltatások létrehozása a portálon
@@ -87,7 +87,7 @@ Az Azure Cognitive Search a legtöbb régióban elérhető, a régiók [által e
 
 + Az [AI](cognitive-search-concept-intro.md) -bővítés megköveteli, hogy Cognitive Services ugyanabban a fizikai régióban legyen, mint az Azure Cognitive Search. Csak néhány régió nem nyújt mindkettőt. A [régiók lapon elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/?products=search) kettős rendelkezésre állást jeleznek két halmozott pipa megjelenítésével. Egy nem elérhető kombinációnál hiányzik a pipa:
 
-  :::image type="content" source="media/search-create-service-portal/region-availability.png" alt-text="Régiónkénti rendelkezésre állás" border="true":::
+  :::image type="content" source="media/search-create-service-portal/region-availability.png" alt-text="Regionális elérhetőség" border="true":::
 
 + Az üzletmenet-folytonossági és a vész-helyreállítási (BCDR) követelmények teljesítéséhez több keresési szolgáltatást kell létrehozni [regionális párokban](../best-practices-availability-paired-regions.md#azure-regional-pairs). Ha például Észak-Amerika működik, az USA keleti régiója és az USA nyugati régiója, illetve az USA északi középső régiója és a Dél-Amerikai Egyesült Államok az egyes keresési szolgáltatások esetében is megadható.
 

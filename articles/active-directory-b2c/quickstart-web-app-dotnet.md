@@ -12,10 +12,10 @@ ms.date: 09/12/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 379ea9a0c2a49e92fa1c4882ea6e783b3b91e32f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88163917"
 ---
 # <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>Gyors útmutató: bejelentkezés beállítása ASP.NET-alkalmazáshoz Azure Active Directory B2C használatával
@@ -94,7 +94,7 @@ Az Azure AD B2C felhasználói fiókkal sikeresen intézett hitelesített hívá
 
 Az Azure AD B2C-bérlőt ahhoz is használhatja, ha más Azure AD B2C gyors útmutatókat vagy oktatóanyagokat is ki szeretne próbálni. Ha már nincs szüksége rá, akkor [törölheti az Azure AD B2C-bérlőt](faq.md#how-do-i-delete-my-azure-ad-b2c-tenant).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy minta ASP.NET-alkalmazást használt a következőhöz:
 

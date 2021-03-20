@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4dd0b63e08f44167b89b6e2d491722f3708b4036
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90055435"
 ---
 # <a name="review-access-to-azure-ad-roles-in-privileged-identity-management"></a>Tekintse át az Azure AD-szerepkörökhöz való hozzáférést Privileged Identity Management
@@ -43,10 +43,10 @@ Ha nem rendelkezik az irányítópultra rögzített Privileged Identity Manageme
 Ha jóváhagyja vagy megtagadja a hozzáférést, csak azt közli a véleményezővel, hogy továbbra is használja-e ezt a szerepkört. Válassza a **jóváhagyás** lehetőséget, ha a szerepkörben szeretne maradni, **vagy ha** nem szeretné, hogy a hozzáférés többé nem szükséges. Az állapot azonnal nem változik, amíg a felülvizsgáló nem alkalmazza az eredményeket.
 Az alábbi lépéseket követve megkeresheti és elvégezheti a hozzáférési felülvizsgálatot:
 
-1. A Privileged Identity Management szolgáltatásban válassza az emelt **szintű hozzáférés áttekintése**elemet. Ha rendelkezik függőben lévő hozzáférési felülvizsgálatokkal, azok megjelennek az Azure AD **hozzáférési felülvizsgálatok** oldalán.
+1. A Privileged Identity Management szolgáltatásban válassza az emelt **szintű hozzáférés áttekintése** elemet. Ha rendelkezik függőben lévő hozzáférési felülvizsgálatokkal, azok megjelennek az Azure AD **hozzáférési felülvizsgálatok** oldalán.
 2. Válassza ki a végrehajtani kívánt felülvizsgálatot.
 3. Hacsak nem hozta létre a felülvizsgálatot, az egyetlen felhasználóként jelenik meg a felülvizsgálatban. Jelölje be a neve melletti pipa.
-4. Válassza a **jóváhagyás** vagy a **Megtagadás**lehetőséget. Előfordulhat, hogy a döntés okát is meg kell adnia az **indoklás** szövegmezőben.  
+4. Válassza a **jóváhagyás** vagy a **Megtagadás** lehetőséget. Előfordulhat, hogy a döntés okát is meg kell adnia az **indoklás** szövegmezőben.  
 5. Az **Azure ad-szerepkörök áttekintése** panel bezárásához.
 
 ## <a name="next-steps"></a>Következő lépések

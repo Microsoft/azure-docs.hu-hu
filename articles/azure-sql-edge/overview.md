@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: a74e12a5e9bdd2dfdbc6ac07b66798e517f6f426
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93395070"
 ---
 # <a name="what-is-azure-sql-edge"></a>Mi az Azure SQL Edge?
@@ -74,7 +74,7 @@ Az Azure SQL Edge egyszerűbbé és hatékonyabbá teszi az alkalmazások fejles
 - [Visual Studio Code](https://code.visualstudio.com/docs) – ingyenes, letölthető, nyílt forráskódú Kódszerkesztő Windows, MacOS és Linux rendszerekhez. Támogatja a bővítményeket, beleértve az [MSSQL bővítményt](https://aka.ms/mssql-marketplace) Microsoft SQL Server, Azure SQL Database és az Azure szinapszis Analytics lekérdezéséhez.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az SQL Edge üzembe helyezése Azure Portal](deploy-portal.md)
 - [Az SQL Edge Machine Learning és mesterséges intelligencia](onnx-overview.md)

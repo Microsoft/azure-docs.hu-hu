@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
 ms.openlocfilehash: 07334d62cee94be8b5b8dd6188c1d6354c4d584b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792599"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>A kötegelt feldolgozás használata az Azure SQL Database és az Azure SQL felügyelt példányok alkalmazásának teljesítményének növeléséhez
@@ -99,16 +99,16 @@ Az alábbi táblázat néhány alkalmi tesztelési eredményt mutat be. A teszte
 
 **A helyszínen az Azure-** ba:
 
-| Műveletek | Nincs tranzakció (MS) | Tranzakció (MS) |
+| Üzemeltetés | Nincs tranzakció (MS) | Tranzakció (MS) |
 | --- | --- | --- |
 | 1 |130 |402 |
 | 10 |1208 |1226 |
 | 100 |12662 |10395 |
 | 1000 |128852 |102917 |
 
-**Azure-ról Azure-ra (azonos adatközpont)** :
+**Azure-ról Azure-ra (azonos adatközpont)**:
 
-| Műveletek | Nincs tranzakció (MS) | Tranzakció (MS) |
+| Üzemeltetés | Nincs tranzakció (MS) | Tranzakció (MS) |
 | --- | --- | --- |
 | 1 |21 |26 |
 | 10 |220 |56 |
@@ -169,7 +169,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Az előző példában a **SqlCommand** objektum sorokat szúr be egy tábla értékű paraméterből, a **\@ TestTvp** . A korábban létrehozott **DataTable** objektum hozzá van rendelve ehhez a paraméterhez a **SqlCommand. Parameters. Add** metódussal. A beszúrások az egyik hívásban történő kötegelt feldolgozása jelentősen növeli a teljesítményt a szekvenciális lapkákon.
+Az előző példában a **SqlCommand** objektum sorokat szúr be egy tábla értékű paraméterből, a **\@ TestTvp**. A korábban létrehozott **DataTable** objektum hozzá van rendelve ehhez a paraméterhez a **SqlCommand. Parameters. Add** metódussal. A beszúrások az egyik hívásban történő kötegelt feldolgozása jelentősen növeli a teljesítményt a szekvenciális lapkákon.
 
 Az előző példa további javítása érdekében használjon egy tárolt eljárást szöveges parancs helyett. A következő Transact-SQL parancs egy tárolt eljárást hoz létre, amely a **SimpleTestTableType** tábla értékű paramétert veszi fel.
 
@@ -195,7 +195,7 @@ A legtöbb esetben a tábla értékű paraméterek egyenértékű vagy jobb telj
 
 A következő táblázat a tábla értékű paraméterek ezredmásodpercben történő használatára ad hoc tesztelési eredményeket mutat be.
 
-| Műveletek | Helyszíni – Azure (MS) | Azure-beli azonos adatközpont (MS) |
+| Üzemeltetés | Helyszíni – Azure (MS) | Azure-beli azonos adatközpont (MS) |
 | --- | --- | --- |
 | 1 |124 |32 |
 | 10 |131 |25 |
@@ -212,7 +212,7 @@ A tábla értékű paraméterekkel kapcsolatos további információkért lásd:
 
 ### <a name="sql-bulk-copy"></a>SQL tömeges másolás
 
-Az SQL tömeges másolás egy másik módszer, amellyel nagy mennyiségű adattal lehet beszúrni a céladatbázisbe. A .NET-alkalmazások használhatják a **SqlBulkCopy** osztályt a tömeges beszúrási műveletek végrehajtásához. A **SqlBulkCopy** a parancssori eszközhöz, **Bcp.exehoz** vagy a Transact-SQL-utasításhoz hasonlóan működik, **bulk INSERT** . A következő mintakód bemutatja, hogyan lehet tömegesen másolni a forrás **DataTable** , Table, a Destination (sajáttábla) táblába a sorokat.
+Az SQL tömeges másolás egy másik módszer, amellyel nagy mennyiségű adattal lehet beszúrni a céladatbázisbe. A .NET-alkalmazások használhatják a **SqlBulkCopy** osztályt a tömeges beszúrási műveletek végrehajtásához. A **SqlBulkCopy** a parancssori eszközhöz, **Bcp.exehoz** vagy a Transact-SQL-utasításhoz hasonlóan működik, **bulk INSERT**. A következő mintakód bemutatja, hogyan lehet tömegesen másolni a forrás **DataTable**, Table, a Destination (sajáttábla) táblába a sorokat.
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -233,7 +233,7 @@ Vannak olyan esetek, amikor a tömeges másolás előnyben részesített a tábl
 
 A következő ad hoc tesztelési eredmények a **SqlBulkCopy** -ben történő kötegelt feldolgozás teljesítményét mutatják be ezredmásodpercben.
 
-| Műveletek | Helyszíni – Azure (MS) | Azure-beli azonos adatközpont (MS) |
+| Üzemeltetés | Helyszíni – Azure (MS) | Azure-beli azonos adatközpont (MS) |
 | --- | --- | --- |
 | 1 |433 |57 |
 | 10 |441 |32 |
@@ -276,7 +276,7 @@ Ez a példa az alapvető koncepció megjelenítését szemlélteti. Egy reálisa
 
 A következő ad hoc teszt eredményei az ilyen típusú INSERT utasítás teljesítményét mutatják be ezredmásodpercben.
 
-| Műveletek | Tábla értékű paraméterek (MS) | Egyszeres utasítás beszúrása (MS) |
+| Üzemeltetés | Tábla értékű paraméterek (MS) | Egyszeres utasítás beszúrása (MS) |
 | --- | --- | --- |
 | 1 |32 |20 |
 | 10 |30 |25 |
@@ -321,7 +321,7 @@ A kompromisszum miatt értékelje ki a kötegelt műveletek típusát. A Batch-t
 
 A tesztek során általában nem volt előnye a nagyméretű kötegek kisebb adattömbökbe való betörésének. Valójában ez az albontás gyakran lassabb teljesítményt eredményezett, mint egyetlen nagy köteg elküldése. Vegyünk például egy olyan forgatókönyvet, amelyben 1000 sort kíván beszúrni. A következő táblázat azt mutatja be, hogy mennyi ideig tart a táblázat értékű paraméterek használata az 1000-es sorok beszúrásához kisebb kötegekre osztva.
 
-| Köteg mérete | Ismétlések | Tábla értékű paraméterek (MS) |
+| Köteg mérete | Iterációk | Tábla értékű paraméterek (MS) |
 | --- | --- | --- |
 | 1000 |1 |347 |
 | 500 |2 |355 |

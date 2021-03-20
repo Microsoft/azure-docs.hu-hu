@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: azure-synapse, seo-lt-2019, devx-track-csharp
 ms.openlocfilehash: 546c0c21762d0cfe10cf4f1b7a2e1b7d6691166e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98685259"
 ---
 # <a name="connect-to-a-sql-pool-in-azure-synapse"></a>Kapcsolódás SQL-készlethez az Azure Szinapszisban 
@@ -26,7 +26,7 @@ Csatlakozás egy SQL-készlethez az Azure Szinapszisban.
 
 A kiszolgáló neve a következő példában sqlpoolservername.database.windows.net. A teljes kiszolgálónév lekérdezése:
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+1. Nyissa meg az [Azure Portal](https://portal.azure.com).
 2. Kattintson az **Azure szinapszis Analytics** elemre.
 3. Kattintson arra az SQL-készletre, amelyhez csatlakozni szeretne.
 4. Keresse meg a teljes kiszolgálónevet.

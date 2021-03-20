@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
 ms.openlocfilehash: 4772fdae06f23430d829fa411068b7af7a85b3dd
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101668707"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Az Azure SAP LaMa összekötője
@@ -47,7 +47,7 @@ Ez az útmutató leírja, hogyan állíthatja be az Azure-összekötőt az SAP l
 > [!NOTE]
 > Az összekötő csak az SAP láma Enterprise kiadásában érhető el
 
-## <a name="resources"></a>Források
+## <a name="resources"></a>Erőforrások
 
 A következő SAP-megjegyzések az Azure-beli SAP láma témaköréhez kapcsolódnak:
 

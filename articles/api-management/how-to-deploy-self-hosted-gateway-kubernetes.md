@@ -10,10 +10,10 @@ ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
 ms.openlocfilehash: 023c2c89b90d6ddc71abc95db325dcdeb7684a2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89500130"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Saját üzemeltetésű átjáró üzembe helyezése Kubernetesben
@@ -30,12 +30,12 @@ Ez a cikk az Azure-API Management saját üzemeltetésű átjáró-összetevőj�
 
 ## <a name="deploy-to-kubernetes"></a>Üzembe helyezés a Kubernetesben
 
-1. Válassza az **átjárók** lehetőséget az **üzembe helyezés és az infrastruktúra**területen.
+1. Válassza az **átjárók** lehetőséget az **üzembe helyezés és az infrastruktúra** területen.
 2. Válassza ki azt a saját üzemeltetésű átjáró-erőforrást, amelyet központilag telepíteni szeretne.
-3. Válassza a **telepítés**lehetőséget.
+3. Válassza a **telepítés** lehetőséget.
 4. A **jogkivonat** szövegmezőben lévő hozzáférési jogkivonat automatikusan lett létrehozva az alapértelmezett **lejárati** és **titkos kulcs** értékei alapján. Ha szükséges, válasszon értékeket mindkét vezérlőelemben egy új jogkivonat létrehozásához.
-5. Válassza a **Kubernetes** lapot a **telepítési parancsfájlok**területen.
-6. Válassza a ** \<gateway-name\> . YML** fájl hivatkozást, és töltse le a YAML fájlt.
+5. Válassza a **Kubernetes** lapot a **telepítési parancsfájlok** területen.
+6. Válassza a **\<gateway-name\> . YML** fájl hivatkozást, és töltse le a YAML fájlt.
 7. Válassza a **Másolás** ikont a **telepítés** szövegmező jobb alsó sarkában, és mentse a `kubectl` parancsokat a vágólapra.
 8. Parancsok beillesztése a terminál (vagy parancs) ablakba. Az első parancs létrehoz egy titkos Kubernetes, amely a 4. lépésben létrehozott hozzáférési jogkivonatot tartalmazza. A második parancs a 6. lépésben letöltött konfigurációs fájlt alkalmazza a Kubernetes-fürtre, és elvárja, hogy a fájl az aktuális könyvtárban legyen.
 9. Futtassa a parancsokat a szükséges Kubernetes-objektumok létrehozásához az [alapértelmezett névtérben](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) , és indítsa el a saját üzemeltetésű átjáró hüvelyeit a Microsoft Container Registryból letöltött [tároló-rendszerképből](https://aka.ms/apim/sputnik/dhub) .
@@ -51,7 +51,7 @@ Ez a cikk az Azure-API Management saját üzemeltetésű átjáró-összetevőj�
     NAME             TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)                      AGE
     <gateway-name>   LoadBalancer   10.99.236.168   <pending>     80:31620/TCP,443:30456/TCP   9m1s
     ```
-12. Térjen vissza a Azure Portal, és válassza az **Áttekintés**lehetőséget.
+12. Térjen vissza a Azure Portal, és válassza az **Áttekintés** lehetőséget.
 13. Győződjön meg arról, hogy az **állapot** zöld pipa jelölést mutat, majd a YAML fájlban megadott replikák számával egyező csomópontok száma. Ez az állapot azt jelenti, hogy a telepített saját üzemeltetésű átjáró-hüvelyek sikeresen kommunikálnak a API Management szolgáltatással, és normál szívveréssel rendelkeznek.
 
     ![Átjáró állapota](media/how-to-deploy-self-hosted-gateway-kubernetes/status.png)
@@ -112,7 +112,7 @@ A `externalTrafficPolicy` [szolgáltatás](https://kubernetes.io/docs/reference/
 
 ### <a name="custom-domain-names-and-ssl-certificates"></a>Egyéni tartománynevek és SSL-tanúsítványok
 
-Ha egyéni tartományneveket használ az API Management-végpontokhoz, különösen ha egyéni tartománynevet használ a felügyeleti végponthoz, előfordulhat, hogy frissítenie kell a `config.service.endpoint` ** \<gateway-name\> . YAML** fájlban lévő értéket, hogy az alapértelmezett tartománynevet az egyéni tartománynévre cserélje. Győződjön meg arról, hogy a felügyeleti végpont a saját üzemeltetésű átjáró Kubernetes-fürtben található Pod-ból érhető el.
+Ha egyéni tartományneveket használ az API Management-végpontokhoz, különösen ha egyéni tartománynevet használ a felügyeleti végponthoz, előfordulhat, hogy frissítenie kell a `config.service.endpoint` **\<gateway-name\> . YAML** fájlban lévő értéket, hogy az alapértelmezett tartománynevet az egyéni tartománynévre cserélje. Győződjön meg arról, hogy a felügyeleti végpont a saját üzemeltetésű átjáró Kubernetes-fürtben található Pod-ból érhető el.
 
 Ebben a forgatókönyvben, ha a felügyeleti végpont által használt SSL-tanúsítványt nem egy jól ismert HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány írta alá, meg kell győződnie arról, hogy a HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt megbízhatónak tartja a saját üzemeltetésű átjáró Pod-je.
 

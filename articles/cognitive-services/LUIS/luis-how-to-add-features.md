@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
 ms.openlocfilehash: 33435d2367b92f312d41f0e32fdbb3a93d59a9fd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95999926"
 ---
 # <a name="use-features-to-boost-signal-of-word-list"></a>Szolgáltatások használata a szólisták jelzésének növeléséhez
@@ -65,6 +65,6 @@ Ha egy entitást szolgáltatásként szeretne hozzáadni egy szándékhoz, vála
 
 Ha egy entitást szolgáltatásként szeretne hozzáadni egy másik entitáshoz, hozzáadhatja a szolgáltatást a leképezés részletei lapon az [Entity paletta](label-entity-example-utterance.md#adding-entity-as-a-feature-from-the-entity-palette) használatával, vagy [hozzáadhatja a szolgáltatást](luis-how-to-add-entities.md#add-a-feature-to-a-machine-learned-entity) az entitás részletei lapon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egy szolgáltatás hozzáadása, szerkesztése, törlése vagy inaktiválása után ismét [betaníthatja és tesztelheti az alkalmazást, és](luis-interactive-test.md) ellenőrizheti, hogy javul-e a teljesítmény.

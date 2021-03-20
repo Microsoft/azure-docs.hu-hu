@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
 ms.openlocfilehash: efab0234d428a8283845946289cdd1e8a17ded26
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792055"
 ---
 # <a name="adding-a-shard-using-elastic-database-tools"></a>Szegmens hozzáadása Elastic Database eszközök használatával
@@ -79,6 +79,6 @@ upd.Shard = shard2;
 sm.MarkMappingOnline(sm.UpdateMapping(sm.GetMappingForKey(25), upd));
 ```
 
-**Fontos** : csak akkor használja ezt a technikát, ha biztos abban, hogy a frissített leképezés tartománya üres.  Az előző metódusok nem ellenőrzik az áthelyezett tartomány adatait, ezért a legjobb megoldás a kód ellenőrzésének belefoglalása.  Ha sorok találhatók az áthelyezett tartományban, a tényleges adateloszlás nem felel meg a frissített szegmenses térképnek. A művelet elvégzéséhez használja a [Split-Merge eszközt](elastic-scale-overview-split-and-merge.md) a következő esetekben.  
+**Fontos**: csak akkor használja ezt a technikát, ha biztos abban, hogy a frissített leképezés tartománya üres.  Az előző metódusok nem ellenőrzik az áthelyezett tartomány adatait, ezért a legjobb megoldás a kód ellenőrzésének belefoglalása.  Ha sorok találhatók az áthelyezett tartományban, a tényleges adateloszlás nem felel meg a frissített szegmenses térképnek. A művelet elvégzéséhez használja a [Split-Merge eszközt](elastic-scale-overview-split-and-merge.md) a következő esetekben.  
 
 [!INCLUDE [elastic-scale-include](../../../includes/elastic-scale-include.md)]

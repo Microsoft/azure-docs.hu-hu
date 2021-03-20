@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-js
 ms.openlocfilehash: c96f674b64401250d45542d0f59f13654cf37caa
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97802524"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Málna PI összekötése az Azure IoT Hub (Node.js)
@@ -54,7 +54,7 @@ Még nem rendelkezik csomaggal? Próbálja ki a [málna PI online szimulátort](
 
 * Egy málna pi 2 vagy málna PI 3 tábla.
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 * A PI-hoz csatlakozó figyelő, USB-billentyűzet és-egér.
 
@@ -257,7 +257,7 @@ Az IoT hub által az eszközről fogadott üzenetek figyelésének egyik módja 
 
 Az eszköz által elküldhető adatfeldolgozás további módjairól folytassa a következő szakasszal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egy minta alkalmazást futtatott az érzékelő adatainak összegyűjtéséhez és az IoT hubhoz való elküldéséhez.
 

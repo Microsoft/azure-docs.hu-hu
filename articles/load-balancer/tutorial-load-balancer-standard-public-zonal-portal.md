@@ -16,10 +16,10 @@ ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
 ms.openlocfilehash: f91c9c0f401a455543b12af81eed48bd1a3349bd
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94696438"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Oktatóanyag: Rendelkezésre állási zónán belüli virtuális gépek terheléselosztása standard Load Balancerrel az Azure Portal használatával
@@ -58,8 +58,8 @@ A Standard Load Balancer csak a szabványos nyilvános IP-címeket támogatja. H
     | ---                     | ---                                                |
     | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza az **új létrehozása** lehetőséget, és írja be a *MyResourceGroupZLB* szöveget a szövegmezőbe.|
-    | Név                   | *myLoadBalancer*                                   |
-    | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
+    | Name                   | *myLoadBalancer*                                   |
+    | Region         | Válassza a **Nyugat-Európa** régiót.                                        |
     | Típus          | Válassza a **Nyilvános** lehetőséget.                                        |
     | Termékváltozat           | Válassza a **standard** lehetőséget.                          |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
@@ -110,7 +110,7 @@ Ebben a szakaszban NSG-szabályokat fog létrehozni a HTTP-t és Microsoft távo
     - **100**, **prioritás**:.
     - **: myhttprule**, **név**.
     - A **http engedélyezése** a **leíráshoz**.
-4. Kattintson az **OK** gombra.
+4. Válassza az **OK** lehetőséget.
  
    ![NSG-szabályok létrehozása](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 
@@ -132,7 +132,7 @@ Ebben a szakaszban NSG-szabályokat fog létrehozni a HTTP-t és Microsoft távo
     - **myVM1**, a virtuális gép nevéhez.        
     - A rendszergazda felhasználóneve: **azureuser**.    
     - **Erőforráscsoport**: **myResourceGroupZLB**. Válassza a **Meglévő használata**, majd a **myResourceGroupZLB** lehetőséget.
-2. Kattintson az **OK** gombra.
+2. Válassza az **OK** lehetőséget.
 3. A virtuális gép méreténél válassza a **DS1_V2** lehetőséget. Válassza a **Kiválasztás** lehetőséget
 4. Adja meg az alábbi értékeket a virtuális gép beállításainál:
     - A rendelkezésre állási zóna, ahol elhelyezi a virtuális gépet: **1. zóna**.
@@ -141,7 +141,7 @@ Ebben a szakaszban NSG-szabályokat fog létrehozni a HTTP-t és Microsoft távo
     - **myBackendSubnet**. Győződjön meg róla, hogy alhálózatként ez van kiválasztva.
     - A már létező hálózati biztonsági csoport tűzfal neve: **myNetworkSecurityGroup**.
 5. A rendszerindítási diagnosztika letiltásához kattintson a **Letiltva** elemre.
-6. Kattintson az **OK** gombra. Az összegzés lapon ellenőrizze a beállításokat. Ezután válassza a **Létrehozás** elemet.
+6. Válassza az **OK** lehetőséget. Az összegzés lapon ellenőrizze a beállításokat. Ezután kattintson a **Létrehozás** elemre.
 7. Ismételje meg az 1–6. lépést egy másik, **myVM2** nevű, 1. zónás virtuális hálózat létrehozásához. A virtuális hálózat a **myVnet** legyen. A standard nyilvános IP-cím a **myVM2PIP** legyen. Az alhálózat a **myBackendSubnet** legyen. A hálózati biztonsági csoport a **myNetworkSecurityGroup** legyen.
 
     ![Virtuális gépek létrehozása](./media/tutorial-load-balancer-standard-zonal-portal/create-virtual-machine.png) 
@@ -180,7 +180,7 @@ Annak érdekében, hogy a forgalmat el lehessen osztani a virtuális gépek köz
     - Adja a következő nevet a háttérkészletnek: **myBackEndPool**.
     - Válassza a **Virtuális hálózat** legördülő menüben a **myVNet** lehetőséget. 
     - A **virtuális gép** és az **IP-cím** esetében adja hozzá a **myVM1** és a **myVM2** , valamint a hozzájuk tartozó nyilvános IP-címeket.
-4. Válassza a **Hozzáadás** elemet.
+4. Válassza a **Hozzáadás** lehetőséget.
 5. Ellenőrizze, hogy a terheléselosztó háttérkészlet beállítása mindkét virtuális gépet megjeleníti-e: **myVM1** és **myVM2**.
  
     ![Háttérkészlet létrehozása](./media/tutorial-load-balancer-standard-zonal-portal/create-backend-pool.png) 
@@ -197,7 +197,7 @@ Használja az állapotmintát ahhoz, hogy a terheléselosztó monitorozza az alk
     - **80**, a portszámhoz.
     - A mintavételi kísérletek közötti **Időköz** másodpercben megadva: **15**.
     - A **Nem kifogástalan állapot küszöbértéke**, vagyis hány egymást követő meghibásodásnak kell történnie, hogy a rendszer sérültnek minősítsen egy virtuális gépet: **2**.
-4. Kattintson az **OK** gombra.
+4. Válassza az **OK** lehetőséget.
 
    ![Állapotminta hozzáadása](./media/load-balancer-standard-public-availability-zones-portal/4-load-balancer-probes.png)
 
@@ -214,7 +214,7 @@ A terheléselosztási szabály megadja, hogy a rendszer hogyan ossza el a forgal
     - **80**, a háttér-porthoz.
     - **myBackendPool** a háttér-készlet neve.
     - **myHealthProbe** az állapot-mintavétel neve.
-4. Kattintson az **OK** gombra.
+4. Válassza az **OK** lehetőséget.
     
     ![Terheléselosztási szabály hozzáadása](./media/tutorial-load-balancer-standard-zonal-portal/load-balancing-rule.png)
 

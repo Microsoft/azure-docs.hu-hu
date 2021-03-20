@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: 29457f2f5021fed9d8785f5764c4119de4be1fa9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95999212"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Az Azure Site Recovery Deployment Planner költségbecslési jelentése 
@@ -167,7 +167,7 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 ## <a name="supported-currencies"></a>Támogatott pénznemek
 A Site Recovery Deployment Planner az alábbi pénznemek bármelyikének használatával létre tudja hozni a költségjelentést.
 
-|Pénznem|Név|Pénznem|Név|Pénznem|Név|
+|Pénznem|Name|Pénznem|Name|Pénznem|Name|
 |---|---|---|---|---|---|---|---|
 |ARS|Argentin peso ($)|AUD|Ausztrál dollár ($)|BRL|Brazil real (R$)|
 |CAD|Kanadai dollár ($)|CHF|Svájci frank (CHF)|DKK|Dán korona (kr)|
@@ -178,5 +178,5 @@ A Site Recovery Deployment Planner az alábbi pénznemek bármelyikének haszná
 |SAR|Szaúdi riál (SR)|SEK|Svéd korona (kr)|TWD|Tajvani új dollár (NT$)|
 |TRY|Török líra (TL)|USD| Amerikai dollár ($)|ZAR|Dél-afrikai rand (R)|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Többet tudhat meg az [Azure-ba replikált Hyper-V virtuális gépek védelméről a Site Recoveryvel](hyper-v-azure-tutorial.md).

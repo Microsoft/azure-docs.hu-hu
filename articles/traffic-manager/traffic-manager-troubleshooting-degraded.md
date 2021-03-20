@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: duau
 ms.openlocfilehash: b76eab5771d724e4f0ec56b7d5acd5cf5f91edc0
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98183455"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Az Azure Traffic Manager csökkentett teljesítményének hibaelhárítása
@@ -43,7 +43,7 @@ Ha a Traffic Manager állapota **inaktív** állapotot jelez, akkor előfordulha
 A mintavételi hibák hibaelhárításához olyan eszközre van szükség, amely megjeleníti a mintavételi URL-címről visszaadott HTTP-állapotkódot. Számos eszköz áll rendelkezésre, amelyek a nyers HTTP-választ mutatják be.
 
 * [Fiddler](https://www.telerik.com/fiddler)
-* [Curl](https://curl.haxx.se/)
+* [curl](https://curl.haxx.se/)
 * [wget](http://gnuwin32.sourceforge.net/packages/wget.htm)
 
 Emellett a HTTP-válaszok megtekintéséhez használhatja az F12 hibakereső eszközök hálózat lapját az Internet Explorerben.

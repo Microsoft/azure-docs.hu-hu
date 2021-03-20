@@ -9,17 +9,17 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: 6abe0ed88adbdf8263aa27d340fb2fff156d98e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90089343"
 ---
 # <a name="drawing-tool-events"></a>Rajzolási eszköz eseményei
 
 Térképeken a rajzolási eszközök használatakor hasznos lehet reagálni bizonyos eseményekre, amikor a felhasználó a térképen rajzol. Ez a táblázat felsorolja az osztály által támogatott összes eseményt `DrawingManager` .
 
-| Esemény | Leírás |
+| Esemény | Description |
 |-------|-------------|
 | `drawingchanged` | Az alakzatban lévő bármely koordináta hozzáadása vagy módosítása történt. | 
 | `drawingchanging` | Akkor aktiválódik, amikor megjelenik egy alakzat előnézeti koordinátái. Ez az esemény például többször is kigyullad, mivel a rendszer a koordinátákat húzza. | 
@@ -48,7 +48,7 @@ Ez a kód azt mutatja be, hogyan lehet figyelni a felhasználói rajzok alakzata
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="A rajzolt sokszög területének kijelölése" src="https://codepen.io/azuremaps/embed/XWJdeja?height=500&theme-id=default&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a tollat a <a href='https://codepen.io/azuremaps/pen/XWJdeja'>rajzolt sokszög területen</a> a CodePen-on lévő Azure Maps () elemnél <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+Tekintse meg a tollat a <a href='https://codepen.io/azuremaps/pen/XWJdeja'>rajzolt sokszög területen</a> a CodePen-on lévő Azure Maps () elemnél <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 <br/>

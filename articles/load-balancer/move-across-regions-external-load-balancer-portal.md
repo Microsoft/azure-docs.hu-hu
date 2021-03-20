@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
 ms.openlocfilehash: f83ff3d1d03354daef3466c1f48eaa505e378634
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94693749"
 ---
 # <a name="move-an-external-load-balancer-to-another-region-by-using-the-azure-portal"></a>Külső Load Balancer áthelyezése másik régióba a Azure Portal használatával
@@ -141,9 +141,9 @@ Az alábbi eljárások azt mutatják be, hogyan készítse elő a külső terhel
  
 13. Válassza a **Mentés** lehetőséget az online szerkesztőben.
 
-14. Válassza **BASICS** az alapszintű  >  **előfizetés** lehetőséget annak az előfizetésnek a kiválasztásához, amelyben a célként szolgáló nyilvános IP-címet telepíteni fogja.
+14. Válassza az alapszintű  >  **előfizetés** lehetőséget annak az előfizetésnek a kiválasztásához, amelyben a célként szolgáló nyilvános IP-címet telepíteni fogja.
 
-15. Válassza az alapszintű erőforráscsoport **lehetőséget azon**  >  **Resource group** erőforráscsoport kiválasztásához, ahol a célként megadott nyilvános IP-címet telepíteni fogja. Az **új létrehozása** lehetőség kiválasztásával létrehozhat egy új erőforráscsoportot a cél nyilvános IP-címhez. Győződjön meg arról, hogy a név nem ugyanaz, mint a meglévő forrás nyilvános IP-cím forrásoldali erőforráscsoport.
+15. Válassza az alapszintű erőforráscsoport **lehetőséget azon**  >   erőforráscsoport kiválasztásához, ahol a célként megadott nyilvános IP-címet telepíteni fogja. Az **új létrehozása** lehetőség kiválasztásával létrehozhat egy új erőforráscsoportot a cél nyilvános IP-címhez. Győződjön meg arról, hogy a név nem ugyanaz, mint a meglévő forrás nyilvános IP-cím forrásoldali erőforráscsoport.
 
 16. Győződjön meg arról, hogy az **alapvető beállítások**  >  **helye** arra a célhelyre van beállítva, ahol a nyilvános IP-címet telepíteni szeretné.
 
@@ -389,9 +389,9 @@ Az alábbi eljárások azt mutatják be, hogyan készítse elő a külső terhel
 
 12. Válassza a **Mentés** lehetőséget az online szerkesztőben.
 
-13. Válassza **BASICS** az alapszintű  >  **előfizetés** lehetőséget annak az előfizetésnek a kiválasztásához, ahol a cél külső terheléselosztó üzembe lesz helyezve.
+13. Válassza az alapszintű  >  **előfizetés** lehetőséget annak az előfizetésnek a kiválasztásához, ahol a cél külső terheléselosztó üzembe lesz helyezve.
 
-15. Válassza az alapszintű erőforráscsoport **lehetőséget azon**  >  **Resource group** erőforráscsoport kiválasztásához, ahol a cél terheléselosztó üzembe lesz helyezve. Az **új létrehozása** lehetőség kiválasztásával létrehozhat egy új erőforráscsoportot a célként kijelölt külső terheléselosztó számára. Vagy kiválaszthatja azt a meglévő erőforráscsoportot, amelyet korábban hozott létre a nyilvános IP-címhez. Győződjön meg arról, hogy a név nem ugyanaz, mint a meglévő forrás külső terheléselosztó forrás-erőforráscsoport.
+15. Válassza az alapszintű erőforráscsoport **lehetőséget azon**  >   erőforráscsoport kiválasztásához, ahol a cél terheléselosztó üzembe lesz helyezve. Az **új létrehozása** lehetőség kiválasztásával létrehozhat egy új erőforráscsoportot a célként kijelölt külső terheléselosztó számára. Vagy kiválaszthatja azt a meglévő erőforráscsoportot, amelyet korábban hozott létre a nyilvános IP-címhez. Győződjön meg arról, hogy a név nem ugyanaz, mint a meglévő forrás külső terheléselosztó forrás-erőforráscsoport.
 
 16. Győződjön meg arról, hogy az **alapvető beállítások**  >  **helye** arra a célhelyre van beállítva, ahol a külső terheléselosztó üzembe helyezését szeretné.
 

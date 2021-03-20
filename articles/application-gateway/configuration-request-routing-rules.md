@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: 047ce9b33836e2c23a37b1383942323d7c382485
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397535"
 ---
 # <a name="application-gateway-request-routing-rules"></a>Application Gateway kérelmek útválasztási szabályai
 
-Amikor az Azure Portal használatával hoz létre Application Gateway-t, létrehoz egy alapértelmezett szabályt ( *rule1* ). Ez a szabály az alapértelmezett háttér-készlettel ( *appGatewayBackendPool* ) és az alapértelmezett HÁTTÉRbeli http-beállításokkal ( *appGatewayBackendHttpSettings* ) köti össze az alapértelmezett figyelőt ( *appGatewayHttpListener* ). Az átjáró létrehozása után szerkesztheti az alapértelmezett szabály beállításait, vagy létrehozhat új szabályokat is.
+Amikor az Azure Portal használatával hoz létre Application Gateway-t, létrehoz egy alapértelmezett szabályt (*rule1*). Ez a szabály az alapértelmezett háttér-készlettel (*appGatewayBackendPool*) és az alapértelmezett HÁTTÉRbeli http-beállításokkal (*appGatewayBackendHttpSettings*) köti össze az alapértelmezett figyelőt (*appGatewayHttpListener*). Az átjáró létrehozása után szerkesztheti az alapértelmezett szabály beállításait, vagy létrehozhat új szabályokat is.
 
 ## <a name="rule-type"></a>Szabály típusa
 
@@ -57,7 +57,7 @@ További információ az átirányításokról: [Application Gateway átirányí
 
 ### <a name="redirection-type"></a>Átirányítás típusa
 
-Válassza ki a szükséges átirányítás típusát: *Permanent (301)* , *ideiglenes (307* ), *Found (302)* , vagy *más (303)*.
+Válassza ki a szükséges átirányítás típusát: *Permanent (301)*, *ideiglenes (307*), *Found (302)*, vagy *más (303)*.
 
 ### <a name="redirection-target"></a>Átirányítás célja
 
@@ -87,12 +87,12 @@ További információ az átirányítással kapcsolatban:
 Az Újraírási szabályok használatával a HTTP (S) kérések és válaszok fejléceit, valamint az URL-cím és a lekérdezési karakterlánc paramétereit is hozzáadhatja, eltávolíthatja vagy frissítheti, mivel a kérelmek és válaszok csomagjai az Application Gateway segítségével az ügyfél és a háttérbeli készletek között mozognak.
 
 A fejlécek és URL-paraméterek statikus értékekre vagy más fejlécekre és kiszolgálói változókra állíthatók be. Ez segíti a fontos használati eseteket, például az ügyfél IP-címeinek kinyerését, a háttér bizalmas adatainak eltávolítását, a nagyobb biztonság hozzáadását stb.
-További információ:
+További információkért lásd:
 
  - [HTTP-fejlécek és URL-címek átírása – áttekintés](rewrite-http-headers-url.md)
  - [HTTP-fejléc újraírásának konfigurálása](rewrite-http-headers-portal.md)
  - [URL-cím újraírásának konfigurálása](rewrite-url-portal.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További tudnivalók a HTTP-beállításokról](configuration-http-settings.md)

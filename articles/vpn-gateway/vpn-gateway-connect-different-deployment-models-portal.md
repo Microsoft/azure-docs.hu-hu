@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: cherylmc
 ms.openlocfilehash: 9d31bcaad01b9b762e57bd619d45c1f53ffb201e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100376802"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Virtuális hálózatok összekötése különböző üzemi modellekkel a portál használatával
@@ -28,7 +28,7 @@ A klasszikus VNet Resource Manager-VNet való csatlakoztatása hasonló ahhoz, h
 
 Ha még nem rendelkezik virtuális hálózati átjáróval, és nem szeretne létrehozni egyet, érdemes lehet inkább a virtuális hálózatok csatlakoztatni a VNet-társ használatával. A virtuális hálózatok közötti társviszony nem használ VPN-átjárót. További információ: [Társviszony létesítése virtuális hálózatok között](../virtual-network/virtual-network-peering-overview.md).
 
-### <a name="before-you-begin"></a><a name="before"></a>Előkészületek
+### <a name="before-you-begin"></a><a name="before"></a>Kezdés előtt
 
 
 

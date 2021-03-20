@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: 15f68e8cbca65e7b970944f7ca5ef1952140cc6b
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397640"
 ---
 # <a name="application-gateway-listener-configuration"></a>Application Gateway figyelő konfigurációja
@@ -20,7 +20,7 @@ ms.locfileid: "93397640"
 
 A figyelő olyan logikai entitás, amely a port, a protokoll, a gazdagép és az IP-cím használatával ellenőrzi a bejövő kapcsolati kérelmeket. A figyelő konfigurálásakor meg kell adnia azokat az értékeket, amelyek megfelelnek az átjárón bejövő kérelemben szereplő megfelelő értékeknek.
 
-Amikor az Azure Portal használatával hoz létre egy Application Gateway-t, a figyelőhöz tartozó protokoll és port választásával létrehoz egy alapértelmezett figyelőt is. Megadhatja, hogy engedélyezi-e a HTTP2 támogatását a figyelőn. Az Application Gateway létrehozása után szerkesztheti az alapértelmezett figyelő ( *appGatewayHttpListener* ) beállításait, vagy létrehozhat új figyelőket.
+Amikor az Azure Portal használatával hoz létre egy Application Gateway-t, a figyelőhöz tartozó protokoll és port választásával létrehoz egy alapértelmezett figyelőt is. Megadhatja, hogy engedélyezi-e a HTTP2 támogatását a figyelőn. Az Application Gateway létrehozása után szerkesztheti az alapértelmezett figyelő (*appGatewayHttpListener*) beállításait, vagy létrehozhat új figyelőket.
 
 ## <a name="listener-type"></a>Figyelő típusa
 
@@ -87,12 +87,12 @@ A globális egyéni hiba lap konfigurálásához lásd: [Azure PowerShell konfig
 
 ## <a name="tls-policy"></a>TLS-házirend
 
-Központosíthatja a TLS/SSL-tanúsítványok kezelését, és csökkentheti a háttér-kiszolgálófarm titkosítási és visszafejtési terhelését. A központosított TLS-kezelést is lehetővé teszi, hogy megadhat egy központi TLS-házirendet, amely megfelel a biztonsági követelményeknek. Kiválaszthatja az *alapértelmezett* , *előre definiált* vagy *Egyéni* TLS-házirendet.
+Központosíthatja a TLS/SSL-tanúsítványok kezelését, és csökkentheti a háttér-kiszolgálófarm titkosítási és visszafejtési terhelését. A központosított TLS-kezelést is lehetővé teszi, hogy megadhat egy központi TLS-házirendet, amely megfelel a biztonsági követelményeknek. Kiválaszthatja az *alapértelmezett*, *előre definiált* vagy *Egyéni* TLS-házirendet.
 
 A TLS-házirend konfigurálásával szabályozhatja a TLS protokoll verzióit. Az Application Gateway konfigurálható úgy, hogy a TLS-kézfogások minimális protokoll-verzióját használják a TLS 1.0, a TLS 1.1 és a TLS 1.2 használatával. Alapértelmezés szerint az SSL 2,0 és 3,0 le van tiltva, és nem konfigurálható. További információ: [Application Gateway TLS-házirend áttekintése](./application-gateway-ssl-policy-overview.md).
 
 A figyelő létrehozása után társítsa azt egy kérelem-útválasztási szabállyal. Ez a szabály határozza meg, hogy a figyelőre érkező kérések hogyan legyenek átirányítva a háttér felé.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További információ a kérelmek útválasztási szabályairól](configuration-request-routing-rules.md).

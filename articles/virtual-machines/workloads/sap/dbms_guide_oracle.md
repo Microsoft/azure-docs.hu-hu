@@ -16,10 +16,10 @@ ms.date: 01/18/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 29b1bcec58d6350d0f63c3fe0ce11ef99a648019
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101668978"
 ---
 # <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines Oracle adatbázis-kezelő üzembe helyezése SAP-munkaterheléshez
@@ -376,10 +376,10 @@ A minimális konfiguráció a következő:
 
 | Összetevő | Lemez | Gyorsítótárazás | Storage-készlet |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA & mirrlogB | Prémium vagy Ultra Disk | Nincs | Nem szükséges |
-| \oracle \<SID> \origlogaB & mirrlogA | Prémium vagy Ultra Disk | Nincs | Nem szükséges |
+| \oracle \<SID> \origlogaA & mirrlogB | Prémium vagy Ultra Disk | Nincsenek | Nem szükséges |
+| \oracle \<SID> \origlogaB & mirrlogA | Prémium vagy Ultra Disk | Nincsenek | Nem szükséges |
 | \oracle \<SID> \sapdata1... n | Prémium vagy Ultra Disk | Csak olvasható | Prémium szintű használatra is használható |
-| \oracle \<SID> \oraarch | Standard | Nincs | Nem szükséges |
+| \oracle \<SID> \oraarch | Standard | Nincsenek | Nem szükséges |
 | Oracle Home, `saptrace` ,... | OPERÁCIÓSRENDSZER-lemez (prémium) | | Nem szükséges |
 
 
@@ -389,13 +389,13 @@ A teljesítmény konfigurációja a következő:
 
 | Összetevő | Lemez | Gyorsítótárazás | Storage-készlet |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható  |
-| \oracle \<SID> \origlogaB | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
-| \oracle \<SID> \mirrlogAB | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
-| \oracle \<SID> \mirrlogBA | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
+| \oracle \<SID> \origlogaA | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható  |
+| \oracle \<SID> \origlogaB | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható |
+| \oracle \<SID> \mirrlogAB | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható |
+| \oracle \<SID> \mirrlogBA | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható |
 | \oracle \<SID> \sapdata1... n | Prémium vagy Ultra Disk | Csak olvasható | Prémium szintű ajánlott  |
-| \oracle\SID\sapdata (n + 1) * | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
-| \oracle \<SID> \oraarch * | Prémium vagy Ultra Disk | Nincs | Nem szükséges |
+| \oracle\SID\sapdata (n + 1) * | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható |
+| \oracle \<SID> \oraarch * | Prémium vagy Ultra Disk | Nincsenek | Nem szükséges |
 | Oracle Home, `saptrace` ,... | OPERÁCIÓSRENDSZER-lemez (prémium) | Nem szükséges |
 
 * (n + 1): üzemeltetési rendszerek, TEMP és visszavonás tablespaces. A rendszer és a visszavonási eszközök I/O-mintája eltér más, az alkalmazásadatok futtatására szolgáló tablespace-modelltől. A rendszer teljesítményének és az tablespace-EK visszavonásának legjobb lehetősége a gyorsítótárazás.
@@ -472,10 +472,10 @@ Minimális konfiguráció:
 
 | Összetevő | Lemez | Gyorsítótárazás | Csíkot |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA & mirrlogB | Prémium, ultrakönnyű lemez vagy ANF | Nincs | Nem szükséges |
-| /Oracle/ \<SID> /origlogaB & mirrlogA | Prémium, ultrakönnyű lemez vagy ANF | Nincs | Nem szükséges |
+| /Oracle/ \<SID> /origlogaA & mirrlogB | Prémium, ultrakönnyű lemez vagy ANF | Nincsenek | Nem szükséges |
+| /Oracle/ \<SID> /origlogaB & mirrlogA | Prémium, ultrakönnyű lemez vagy ANF | Nincsenek | Nem szükséges |
 | /Oracle/ \<SID> /sapdata1... n | Prémium, ultrakönnyű lemez vagy ANF | Csak olvasható | Prémium szintű használatra is használható |
-| /Oracle/ \<SID> /oraarch | Standard vagy ANF | Nincs | Nem szükséges |
+| /Oracle/ \<SID> /oraarch | Standard vagy ANF | Nincsenek | Nem szükséges |
 | Oracle Home, `saptrace` ,... | OPERÁCIÓSRENDSZER-lemez (prémium) | | Nem szükséges |
 
 * Kiszerelés: LVM Stripe vagy MDADM a RAID0 használatával
@@ -486,13 +486,13 @@ Teljesítmény konfigurációja:
 
 | Összetevő | Lemez | Gyorsítótárazás | Csíkot |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA | Prémium, ultrakönnyű lemez vagy ANF | Nincs | Prémium szintű használatra is használható  |
-| /Oracle/ \<SID> /origlogaB | Prémium, ultrakönnyű lemez vagy ANF | Nincs | Prémium szintű használatra is használható |
-| /Oracle/ \<SID> /mirrlogAB | Prémium, ultrakönnyű lemez vagy ANF | Nincs | Prémium szintű használatra is használható |
-| /Oracle/ \<SID> /mirrlogBA | Prémium, ultrakönnyű lemez vagy ANF | Nincs | Prémium szintű használatra is használható |
+| /Oracle/ \<SID> /origlogaA | Prémium, ultrakönnyű lemez vagy ANF | Nincsenek | Prémium szintű használatra is használható  |
+| /Oracle/ \<SID> /origlogaB | Prémium, ultrakönnyű lemez vagy ANF | Nincsenek | Prémium szintű használatra is használható |
+| /Oracle/ \<SID> /mirrlogAB | Prémium, ultrakönnyű lemez vagy ANF | Nincsenek | Prémium szintű használatra is használható |
+| /Oracle/ \<SID> /mirrlogBA | Prémium, ultrakönnyű lemez vagy ANF | Nincsenek | Prémium szintű használatra is használható |
 | /Oracle/ \<SID> /sapdata1... n | Prémium, ultrakönnyű lemez vagy ANF | Csak olvasható | Prémium szintű ajánlott  |
-| /Oracle/ \<SID> /sapdata (n + 1) * | Prémium, ultrakönnyű lemez vagy ANF | Nincs | Prémium szintű használatra is használható |
-| /Oracle/ \<SID> /oraarch * | Prémium, ultrakönnyű lemez vagy ANF | Nincs | Nem szükséges |
+| /Oracle/ \<SID> /sapdata (n + 1) * | Prémium, ultrakönnyű lemez vagy ANF | Nincsenek | Prémium szintű használatra is használható |
+| /Oracle/ \<SID> /oraarch * | Prémium, ultrakönnyű lemez vagy ANF | Nincsenek | Nem szükséges |
 | Oracle Home, `saptrace` ,... | OPERÁCIÓSRENDSZER-lemez (prémium) | Nem szükséges |
 
 * Kiszerelés: LVM Stripe vagy MDADM a RAID0 használatával

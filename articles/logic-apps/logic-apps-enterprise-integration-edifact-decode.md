@@ -9,10 +9,10 @@ ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: b36641677dbf36402c7f578b9b1887c52f441afd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96000011"
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Azure Logic Apps EDIFACT-üzeneteinek dekódolása a Enterprise Integration Pack
@@ -98,6 +98,6 @@ A dekódolási EDIFACT-összekötő a következő feladatokat hajtja végre:
 ## <a name="view-swagger-file"></a>Hencegő fájl megtekintése
 A EDIFACT-összekötőhöz tartozó felvágási részletek megtekintéséhez lásd: [EDIFACT](/connectors/edifact/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [További információ a Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Tudnivalók a Enterprise Integration Pack") 
 

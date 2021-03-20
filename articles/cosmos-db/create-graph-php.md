@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 01/05/2019
 ms.author: chrande
 ms.openlocfilehash: dfb7b530ce7d907407eef987b5df8af245c90950
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93360836"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>Gyors útmutató: Graph-adatbázis létrehozása Azure Cosmos DB a PHP és a Azure Portal használatával
@@ -192,7 +192,7 @@ Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azoka
 
 Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott csúcspontokat, valamint további adatpontokat is hozzáadhat.
 
-1. Kattintson az **Adatkezelőre** , bontsa ki a **sample-graph** csomópontot, és kattintson a **Gráf** , majd a **Szűrő alkalmazása** lehetőségre. 
+1. Kattintson az **Adatkezelőre**, bontsa ki a **sample-graph** csomópontot, és kattintson a **Gráf**, majd a **Szűrő alkalmazása** lehetőségre. 
 
    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-expanded.png" alt-text="Képernyőfelvétel: a P I-ből kiválasztott gráf a szűrő alkalmazására szolgáló lehetőséggel.":::
 

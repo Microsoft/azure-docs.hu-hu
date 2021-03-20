@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.custom: devx-track-javai
 ms.openlocfilehash: f67957d711958febdb01dfad0b3c44a92cb0bcfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91535236"
 ---
 # <a name="get-started-with-reliable-services-in-java"></a>Ismerkedés a Reliable Services Javával
@@ -39,7 +39,7 @@ Először hozzon létre egy Service Fabric alkalmazást. A Linux rendszerhez ké
 $ yo azuresfjava
 ```
 
-A **megbízható állapot nélküli szolgáltatás**létrehozásához kövesse az utasításokat. Ebben az oktatóanyagban nevezze el a "HelloWorldApplication" alkalmazást és a "HelloWorld" szolgáltatást. Az eredmény a és a címtárakat is tartalmazza `HelloWorldApplication` `HelloWorld` .
+A **megbízható állapot nélküli szolgáltatás** létrehozásához kövesse az utasításokat. Ebben az oktatóanyagban nevezze el a "HelloWorldApplication" alkalmazást és a "HelloWorld" szolgáltatást. Az eredmény a és a címtárakat is tartalmazza `HelloWorldApplication` `HelloWorld` .
 
 ```bash
 HelloWorldApplication/
@@ -84,7 +84,7 @@ public static void main(String[] args) throws Exception {
 
 ## <a name="implement-the-service"></a>A szolgáltatás implementálása
 
-Nyissa meg a **HelloWorldApplication/HelloWorld/src/statelessservice/HelloWorldService. Java**programot. Ez az osztály határozza meg a szolgáltatás típusát, és futtathat bármilyen kódot. A Service API két belépési pontot biztosít a kódhoz:
+Nyissa meg a **HelloWorldApplication/HelloWorld/src/statelessservice/HelloWorldService. Java** programot. Ez az osztály határozza meg a szolgáltatás típusát, és futtathat bármilyen kódot. A Service API két belépési pontot biztosít a kódhoz:
 
 * Egy nyílt végű belépési pont metódus, amelynek a neve `runAsync()` , ahol megkezdheti a munkaterhelések végrehajtását, beleértve a hosszú ideig futó számítási munkaterheléseket is.
 
@@ -193,7 +193,7 @@ A [ReliableHashMap](/java/api/microsoft.servicefabric.data.collections.reliableh
 
 A megbízható gyűjtemények bármilyen Java-típust tárolhatnak, beleértve az egyéni típusokat is, néhány figyelmeztetéssel:
 
-* A Service Fabric az állapotot a csomópontok közötti *replikálással* , a megbízható HashMap pedig a helyi lemezre tárolja az egyes replikákat. Ez azt jelenti, hogy a megbízható HashMaps tárolt összes elemnek *szerializálható*kell lennie. 
+* A Service Fabric az állapotot a csomópontok közötti *replikálással* , a megbízható HashMap pedig a helyi lemezre tárolja az egyes replikákat. Ez azt jelenti, hogy a megbízható HashMaps tárolt összes elemnek *szerializálható* kell lennie. 
 * Az objektumok a magas rendelkezésre állás érdekében replikálódnak, amikor megbízható HashMaps tranzakciókat véglegesít. A megbízható HashMaps tárolt objektumokat a szolgáltatás helyi memóriájában tárolja. Ez azt jelenti, hogy van egy helyi hivatkozása az objektumra.
   
    Fontos, hogy ne módosítsa az objektumok helyi példányait anélkül, hogy frissítési műveletet hajt végre a tranzakcióban található megbízható gyűjteményen. Ennek az az oka, hogy az objektumok helyi példányainak módosításait a rendszer nem replikálja automatikusan. Újra be kell szúrni az objektumot a szótárba, vagy a *frissítési* módszerek egyikét kell használnia a szótárban.
@@ -221,7 +221,7 @@ return map.computeAsync(tx, "counter", (k, v) -> {
 
 A megbízható HashMaps végzett műveletek aszinkronak. Ennek az az oka, hogy az írási műveletek megbízható gyűjteményekkel végeznek I/O-műveleteket a lemezre való replikáláshoz és az adatok megőrzéséhez.
 
-A megbízható HashMap műveletek *tranzakciós*adatok, így az állapot konzisztens marad több megbízható HashMaps és művelet között. Előfordulhat például, hogy egy megbízható szótárból munkaelemet kap, végrehajt egy műveletet, és egy másik megbízható HashMap menti az eredményt egy tranzakción belül. Ezt atomi műveletként kezeli a rendszer, és garantálja, hogy a teljes művelet sikeres lesz, vagy a teljes művelet visszaállítja a műveletet. Ha hiba lép fel az elem kivonása után, de az eredmény mentése előtt, a teljes tranzakció vissza lesz állítva, és az elem a várólistán marad a feldolgozáshoz.
+A megbízható HashMap műveletek *tranzakciós* adatok, így az állapot konzisztens marad több megbízható HashMaps és művelet között. Előfordulhat például, hogy egy megbízható szótárból munkaelemet kap, végrehajt egy műveletet, és egy másik megbízható HashMap menti az eredményt egy tranzakción belül. Ezt atomi műveletként kezeli a rendszer, és garantálja, hogy a teljes művelet sikeres lesz, vagy a teljes művelet visszaállítja a műveletet. Ha hiba lép fel az elem kivonása után, de az eredmény mentése előtt, a teljes tranzakció vissza lesz állítva, és az elem a várólistán marad a feldolgozáshoz.
 
 
 ## <a name="build-the-application"></a>Az alkalmazás létrehozása
