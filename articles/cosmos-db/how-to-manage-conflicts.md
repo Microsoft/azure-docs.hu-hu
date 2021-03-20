@@ -9,10 +9,10 @@ ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 8f98c2201159350f5774f4d2b05102384f31f3af
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339342"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Az ütközés-feloldási házirendek kezelése Azure Cosmos DB
@@ -136,10 +136,10 @@ Ezek a minták bemutatják, hogy az ütközések feloldásához hogyan állítha
 
 Az egyéni ütközések feloldására szolgáló tárolt eljárásokat az alább látható függvény aláírása alapján kell megvalósítani. A függvény nevének nem kell megegyeznie a tárolt eljárás tárolóval való regisztrálása során használt névvel, de egyszerűsíti a névadást. Itt látható a tárolt eljáráshoz szükséges paraméterek leírása.
 
-- **incomingItem** : az ütközéseket generáló véglegesítő vagy frissített tétel. NULL értékű a törlési műveletekhez.
-- **existingItem** : a jelenleg véglegesített tétel. Ez az érték nem null értékű a frissítésben, és null értékű INSERT vagy DELETE esetén.
-- **isTombstone** : logikai érték, amely azt jelzi, hogy a incomingItem ütközik-e egy előzőleg törölt elemmel. Igaz értéke esetén a existingItem is null értékű.
-- **conflictingItems** : a tárolóban lévő összes elem véglegesített verziójának tömbje, amely ütközik a incomingItem azonosítóval vagy bármely más egyedi index-tulajdonsággal.
+- **incomingItem**: az ütközéseket generáló véglegesítő vagy frissített tétel. NULL értékű a törlési műveletekhez.
+- **existingItem**: a jelenleg véglegesített tétel. Ez az érték nem null értékű a frissítésben, és null értékű INSERT vagy DELETE esetén.
+- **isTombstone**: logikai érték, amely azt jelzi, hogy a incomingItem ütközik-e egy előzőleg törölt elemmel. Igaz értéke esetén a existingItem is null értékű.
+- **conflictingItems**: a tárolóban lévő összes elem véglegesített verziójának tömbje, amely ütközik a incomingItem azonosítóval vagy bármely más egyedi index-tulajdonsággal.
 
 > [!IMPORTANT]
 > Akárcsak a tárolt eljárásokhoz hasonlóan, egy egyéni ütközés-feloldási eljárás ugyanazzal a partíciós kulccsal fér hozzá az adatokhoz, és bármilyen beszúrási, frissítési vagy törlési műveletet végrehajthat az ütközések feloldásához.
@@ -510,7 +510,7 @@ while conflict:
     conflict = next(conflicts_iterator, None)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg az alábbi Azure Cosmos DB fogalmakkal:
 

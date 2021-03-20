@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan hozhat létre saját nyilvános IP-címeket has
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.openlocfilehash: e822311718847e173763847d503335f71457308b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91849328"
 ---
 # <a name="create-an-azure-batch-pool-with-specified-public-ip-addresses"></a>Megadott nyilvános IP-címmel rendelkező Azure Batch-készlet létrehozása
@@ -34,12 +34,12 @@ A készletek nyilvános IP-címek nélküli létrehozásával kapcsolatos inform
 A nyilvános IP-címek létrehozásakor vegye figyelembe a következő követelményeket:
 
 - A nyilvános IP-címnek ugyanabban az előfizetésben és régióban kell lennie, mint a készlet létrehozásához használt batch-fióknak.
-- Az **IP-cím hozzárendelését** **statikusra**kell beállítani.
-- Az **SKU** -t a **standard**értékre kell beállítani.
+- Az **IP-cím hozzárendelését** **statikusra** kell beállítani.
+- Az **SKU** -t a **standard** értékre kell beállítani.
 - Meg kell adni egy DNS-nevet.
 - A nyilvános IP-címeket csak a virtuális gép konfigurációs készletei használhatják. Más erőforrásoknak nem kell használniuk ezeket az IP-címeket, vagy a készlet lefoglalási hibákhoz vezethet.
 - Nincsenek biztonsági szabályzatok vagy erőforrás-zárolások, amelyek korlátozzák a felhasználó hozzáférését a nyilvános IP-címhez.
-- A készlethez megadott nyilvános IP-címek számának elég nagynak kell lennie ahhoz, hogy megfeleljen a készlethez célként megnevezett virtuális gépek számának. Ennek legalább a készlet **targetDedicatedNodes**   és **targetLowPriorityNodes**tulajdonságainak összegének kell lennie   . Ha nincs elegendő IP-cím, a készlet részlegesen lefoglalja a számítási csomópontokat, és átméretezési hiba lép fel. A Batch jelenleg minden 100 virtuális géphez egy nyilvános IP-címet használ.
+- A készlethez megadott nyilvános IP-címek számának elég nagynak kell lennie ahhoz, hogy megfeleljen a készlethez célként megnevezett virtuális gépek számának. Ennek legalább a készlet **targetDedicatedNodes**   és **targetLowPriorityNodes** tulajdonságainak összegének kell lennie   . Ha nincs elegendő IP-cím, a készlet részlegesen lefoglalja a számítási csomópontokat, és átméretezési hiba lép fel. A Batch jelenleg minden 100 virtuális géphez egy nyilvános IP-címet használ.
 - Mindig rendelkezik a nyilvános IP-címek további pufferével. Javasoljuk, hogy adjon hozzá legalább egy további nyilvános IP-címet, vagy a készlethez hozzáadott összes nyilvános IP-cím körülbelül 10%-át, attól függően, hogy melyik a nagyobb. Ez a további puffer segítséget nyújt a Batch számára a belső optimalizálással a skálázás során, valamint lehetővé teszi a gyorsabb skálázást a nem sikeres vertikális felskálázás vagy leskálázás után.
 - A készlet létrehozása után nem lehet hozzáadni vagy módosítani a készlet által használt nyilvános IP-címek listáját. Ha módosítania kell a listát, törölnie kell a készletet, majd újra létre kell hoznia.
 

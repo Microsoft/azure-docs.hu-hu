@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 04/30/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 9222ac31e067cba6a0ffa71143c90f906ba6ff7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74454689"
 ---
 # <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>Oktatóanyag: frissített tároló-rendszerkép leküldése a földrajzi helyről replikált tároló-beállításjegyzékbe a regionális webalkalmazások üzembe helyezéséhez
@@ -115,7 +115,7 @@ Győződjön meg arról, hogy az alkalmazás mindkét üzemelő példányon fris
 
 ![Az App Service áttekintési lapja az Azure Portalon][tutorial-portal-03]
 
-A frissített alkalmazás megtekintéséhez kattintson a hivatkozásra az App Service áttekintési lapján. Az alábbi kép az *USA nyugati régiójában*futó alkalmazásra mutat példát:
+A frissített alkalmazás megtekintéséhez kattintson a hivatkozásra az App Service áttekintési lapján. Az alábbi kép az *USA nyugati régiójában* futó alkalmazásra mutat példát:
 
 ![Egy, az USA nyugati régiójában futó módosított webalkalmazás böngészőnézete][deployed-app-westus-modified]
 
@@ -125,7 +125,7 @@ Győződjön meg arról, hogy a frissített tárolórendszerkép az *USA keleti 
 
 Egyetlen `docker push`, lehetővé tette mindkét regionális Web App üzemelő példányában futó webalkalmazás automatikus frissítését. És az Azure Container Registry az egyes üzemelő példányokhoz legközelebb eső adattárakból szolgáltatta a tárolólemezképeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban frissítette és leküldte a webalkalmazás tárolójának egy új verzióját a georeplikált beállításjegyzékbe. Az Azure Container Registry webhookjai értesítették a Web Apps for Containers alkalmazást a frissítésről, amely egy helyi lekérést indított a beállításjegyzékek legközelebbi replikájából.
 

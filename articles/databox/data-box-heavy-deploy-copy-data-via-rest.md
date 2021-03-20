@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: e2fc174147b99b7b952c6d10084cfc969dacf5a6
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91949139"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Oktatóanyag: adatok másolása Azure Data Box blob Storage-ba REST API-kon keresztül  
@@ -92,7 +92,7 @@ A tanúsítvány letöltéséhez használja a Azure Portal.
 
 1. Jelentkezzen be az Azure Portalra.
 2. Lépjen a Data Box sorrendbe, és keresse meg az **általános > eszköz adatait**.
-3. Az **eszköz hitelesítő adatai**területen nyissa meg az eszköz **API-hozzáférését** . Kattintson a **Letöltés**gombra. Ez a művelet letölt egy ** \<your order name> . cer** tanúsítványfájl-fájlt. **Mentse** ezt a fájlt. Ezt a tanúsítványt azon az ügyfélen vagy gazdaszámítógépen kell telepíteni, amelyet az eszközhöz való kapcsolódáshoz használni fog.
+3. Az **eszköz hitelesítő adatai** területen nyissa meg az eszköz **API-hozzáférését** . Kattintson a **Letöltés** gombra. Ez a művelet letölt egy **\<your order name> . cer** tanúsítványfájl-fájlt. **Mentse** ezt a fájlt. Ezt a tanúsítványt azon az ügyfélen vagy gazdaszámítógépen kell telepíteni, amelyet az eszközhöz való kapcsolódáshoz használni fog.
 
     ![Tanúsítvány letöltése Azure Portal](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
  
@@ -115,12 +115,12 @@ A következő lépésekkel importálhatja a `.cer` fájlt egy Windows-vagy Linux
 
 #### <a name="use-windows-server-ui"></a>A Windows Server felhasználói felületének használata
 
-1.  Kattintson a jobb gombbal a `.cer` fájlra, majd válassza a **tanúsítvány telepítése**lehetőséget. Ez a művelet elindítja a tanúsítvány importálása varázslót.
-2.  Az **áruház helye**területen válassza a **helyi számítógép**lehetőséget, majd kattintson a **tovább**gombra.
+1.  Kattintson a jobb gombbal a `.cer` fájlra, majd válassza a **tanúsítvány telepítése** lehetőséget. Ez a művelet elindítja a tanúsítvány importálása varázslót.
+2.  Az **áruház helye** területen válassza a **helyi számítógép** lehetőséget, majd kattintson a **tovább** gombra.
 
     ![Tanúsítvány importálása a PowerShell használatával](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
 
-3.  Jelölje be **az összes tanúsítvány tárolása a következő tárolóban**jelölőnégyzetet, majd kattintson a **Tallózás**gombra. Navigáljon a távoli gazdagép legfelső szintű tárolójához, majd kattintson a **tovább**gombra.
+3.  Jelölje be **az összes tanúsítvány tárolása a következő tárolóban** jelölőnégyzetet, majd kattintson a **Tallózás** gombra. Navigáljon a távoli gazdagép legfelső szintű tárolójához, majd kattintson a **tovább** gombra.
 
     ![Tanúsítvány importálása a PowerShell 2 használatával](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
@@ -143,7 +143,7 @@ Több, például Ubuntu és Debian is használja az `update-ca-certificates` par
 A RHEL, Fedora és CentOS legújabb verziói a parancsot használják `update-ca-trust` .
 
 - Másolja a tanúsítványfájl-fájlt a `/etc/pki/ca-trust/source/anchors` könyvtárba.
-- A `update-ca-trust` parancs futtatása.
+- Futtassa az `update-ca-trust` parancsot.
 
 A részletekért olvassa el a disztribúcióra vonatkozó dokumentációt.
 
@@ -182,7 +182,7 @@ Első lépésként hozzon létre egy tárolót, mivel a Blobok mindig egy tárol
 
 1. Nyissa meg a Storage Explorert.
 2. A bal oldali ablaktáblán bontsa ki azt a Storage-fiókot, amelyen létre kívánja hozni a BLOB-tárolót.
-3. Kattintson a jobb gombbal a **blob-tárolók**elemre, majd a helyi menüben válassza a **blob-tároló létrehozása**lehetőséget.
+3. Kattintson a jobb gombbal a **blob-tárolók** elemre, majd a helyi menüben válassza a **blob-tároló létrehozása** lehetőséget.
 
    ![BLOB-tárolók létrehozása helyi menü](media/data-box-deploy-copy-data-via-rest/create-blob-container-1.png)
 
@@ -211,7 +211,7 @@ azcopy \
 AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
 ```
 
-Cserélje le a `<key>` billentyűt a fiók kulcsára. A fiók kulcsának beszerzéséhez a Azure Portal nyissa meg a Storage-fiókját. Lépjen a **beállítások > hozzáférési kulcsok**elemre, válasszon ki egy kulcsot, és illessze be a AzCopy parancsba.
+Cserélje le a `<key>` billentyűt a fiók kulcsára. A fiók kulcsának beszerzéséhez a Azure Portal nyissa meg a Storage-fiókját. Lépjen a **beállítások > hozzáférési kulcsok** elemre, válasszon ki egy kulcsot, és illessze be a AzCopy parancsba.
 
 Ha a célként megadott tároló nem létezik, az AzCopy létrehozza, majd feltölti a fájlt a tárolóba. Frissítse a forrás elérési útját az adatkönyvtárra, és cserélje le a `data-box-storage-account-name` célhely URL-címére a Data Box társított Storage-fiók nevével.
 
@@ -244,7 +244,7 @@ Ha a csatlakozás vagy a másolás művelet során hibák léptek fel, tekintse 
 
 A következő lépés az eszköz szállításra való előkészítése.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban az Azure Data Box témaköréből ismerhette meg a következőket:
 

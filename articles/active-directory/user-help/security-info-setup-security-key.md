@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 07/18/2019
 ms.author: curtand
 ms.openlocfilehash: c056e439deac71417ff14dcfc3f2c3c95db41946
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88797666"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>Biztonsági kulcs beállítása ellenőrzési módszerként
@@ -65,18 +65,18 @@ Létre kell hoznia a biztonsági kulcsot, és egyedi PIN-kódot kell megadnia ah
 
 1. Lépjen a **saját profil** lapra, https://myaccount.microsoft.com és jelentkezzen be, ha még nem tette meg.
 
-2. Válassza a **biztonsági adatok**, majd a **metódus hozzáadása**lehetőséget, majd válassza a **biztonsági kulcs** lehetőséget a **metódus hozzáadása** legördülő listából.
+2. Válassza a **biztonsági adatok**, majd a **metódus hozzáadása** lehetőséget, majd válassza a **biztonsági kulcs** lehetőséget a **metódus hozzáadása** legördülő listából.
 
     ![Hozzáadási mód mező, a biztonsági kulccsal kiválasztva](media/security-info/security-info-security-key-add-method.png)
 
-3. Válassza a **Hozzáadás**lehetőséget, majd válassza ki, hogy milyen típusú biztonsági kulcsot használ, vagy **USB-eszközt** vagy NFC- **eszközt**.
+3. Válassza a **Hozzáadás** lehetőséget, majd válassza ki, hogy milyen típusú biztonsági kulcsot használ, vagy **USB-eszközt** vagy NFC- **eszközt**.
 
     ![Válassza ki, hogy rendelkezik-e a biztonsági kulcs USB-vagy NFC-típusával](media/security-info/security-info-security-key-choose-type.png)
 
     > [!Note]
     > Ha nem tudja biztosan, hogy milyen típusú biztonsági kulcsot tartalmaz, tekintse meg a gyártói dokumentációt. Ha nem biztos a gyártónál, kérjen segítséget a szervezet ügyfélszolgálatának.
 
-4. A biztonsági kulcsot fizikailag elérhetővé kell tennie, majd a **biztonsági kulcs** mezőben válassza a **tovább**lehetőséget.
+4. A biztonsági kulcsot fizikailag elérhetővé kell tennie, majd a **biztonsági kulcs** mezőben válassza a **tovább** lehetőséget.
 
     ![Biztonsági kulcs indítási regisztrációs mezője](media/security-info/security-info-security-key-start-setup.png)
 
@@ -94,7 +94,7 @@ Létre kell hoznia a biztonsági kulcsot, és egyedi PIN-kódot kell megadnia ah
 
 7. Kattintson a **Tovább** gombra.
 
-8. Térjen vissza a **biztonsági adatok** lapra, adjon meg egy nevet, amelyet később felismer az új biztonsági kulcshoz, majd kattintson a **tovább**gombra.
+8. Térjen vissza a **biztonsági adatok** lapra, adjon meg egy nevet, amelyet később felismer az új biztonsági kulcshoz, majd kattintson a **tovább** gombra.
 
     ![Biztonsági adatok lap, a biztonsági kulcs elnevezése](media/security-info/security-info-security-key-name.png)
 
@@ -134,7 +134,7 @@ Ha törölni kívánja a fizikai biztonsági kulcsban tárolt összes fiókadato
 
 #### <a name="to-reset-your-security-key"></a>A biztonsági kulcs alaphelyzetbe állítása
 
-1. Nyissa meg a Windows beállításai alkalmazást, válassza a **fiókok**, majd a **bejelentkezési beállítások**, majd a **biztonsági kulcs**elemet, és válassza a **kezelés**lehetőséget.
+1. Nyissa meg a Windows beállításai alkalmazást, válassza a **fiókok**, majd a **bejelentkezési beállítások**, majd a **biztonsági kulcs** elemet, és válassza a **kezelés** lehetőséget.
 
 2. Helyezze be a biztonsági kulcsot az USB-portba, vagy koppintson az NFC-olvasóra a személyazonosságának ellenőrzéséhez.
 
@@ -148,7 +148,7 @@ Létrehozhat egy új biztonsági kulcsot tartalmazó PIN-kódot a biztonsági ku
 
 #### <a name="to-create-a-new-security-key-pin"></a>Új biztonsági kulcs PIN-kódjának létrehozása
 
-1. Nyissa meg a Windows beállításai alkalmazást, válassza a **fiókok**, majd a **bejelentkezési beállítások**, majd a **biztonsági kulcs**elemet, és válassza a **kezelés**lehetőséget.
+1. Nyissa meg a Windows beállításai alkalmazást, válassza a **fiókok**, majd a **bejelentkezési beállítások**, majd a **biztonsági kulcs** elemet, és válassza a **kezelés** lehetőséget.
 
 2. Helyezze be a biztonsági kulcsot az USB-portba, vagy koppintson az NFC-olvasóra a személyazonosságának ellenőrzéséhez.
 3. Válassza a **Hozzáadás** lehetőséget a **biztonsági kulcs PIN-kódjának** területén, írja be és erősítse meg az új biztonsági kulcs PIN-kódját, majd kattintson **az OK gombra**.
@@ -160,7 +160,7 @@ Létrehozhat egy új biztonsági kulcsot tartalmazó PIN-kódot a biztonsági ku
 
 Egy biztonsági kulcs regisztrálásához legalább egy további, a biztonsági ellenőrzési módszer regisztrálása szükséges. További információért tekintse meg az [Áttekintés szakaszt](./security-info-setup-auth-app.md) . 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A jelszóval nem rendelkező ellenőrzési módszerekkel kapcsolatos további információkért olvassa el a [Microsoft Azure ad nyilvános előzetes kiadását a FIDO2 biztonsági kulcsaihoz, amely engedélyezi a jelszóval nem rendelkező bejelentkezések](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) blogját, vagy olvassa el a [Mi az Microsoft Authenticator alkalmazás? és a](user-help-auth-app-overview.md) [Windows Hello áttekintő](https://www.microsoft.com/windows/windows-hello) cikkeket.
 

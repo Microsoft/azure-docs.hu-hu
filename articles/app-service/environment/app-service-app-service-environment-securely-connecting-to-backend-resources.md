@@ -8,10 +8,10 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 9f8e288f771b9d584a0fd3430115f5fa60f68e47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88961805"
 ---
 # <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>Biztonságos kapcsolódás App Service környezetből a végponti erőforrásokhoz
@@ -42,7 +42,7 @@ Egy közös SQL Server konfiguráció egy végpontot figyel a 1433-as porton:
 A végpontra irányuló forgalom korlátozásának két módja van:
 
 * [Hálózati Access Control listák][NetworkAccessControlLists] (hálózati ACL-ek)
-* [Hálózati biztonsági csoportok][NetworkSecurityGroups]
+* [Network Security Groups (Hálózati biztonsági csoportok)][NetworkSecurityGroups]
 
 ## <a name="restricting-access-with-a-network-acl"></a>Hozzáférés korlátozása hálózati ACL-sel
 A 1433-es portot hálózati hozzáférés-vezérlési lista használatával lehet biztosítani.  Az alábbi példa hozzáadja a hozzárendelési engedélyeket a virtuális hálózatról származó ügyfelek címeihez, és blokkolja az összes többi ügyfél hozzáférését.

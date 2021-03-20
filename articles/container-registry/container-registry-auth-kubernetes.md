@@ -7,10 +7,10 @@ ms.author: karolz
 ms.reviewer: danlep
 ms.date: 05/28/2020
 ms.openlocfilehash: fbf5dfd68b823b600b11cad3643e5d4004b85ff5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84309815"
 ---
 # <a name="pull-images-from-an-azure-container-registry-to-a-kubernetes-cluster"></a>Képek lekérése egy Azure Container registryből egy Kubernetes-fürtre
@@ -77,7 +77,7 @@ spec:
 Az előző példában a a `my-awesome-app:v1` rendszerkép neve, amelyet az Azure Container registryből kell lekérni, és a  `acr-secret` létrehozott lekérési titok neve a beállításjegyzék eléréséhez. A pod telepítésekor a Kubernetes automatikusan lekéri a rendszerképet a beállításjegyzékből, ha még nem szerepel a fürtön.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az egyszerű szolgáltatások és a Azure Container Registry használatáról további információt a következő témakörben talál: [Azure Container Registry hitelesítés egyszerű szolgáltatásokkal](container-registry-auth-service-principal.md)
 * További információ a képek lekérési titkairól a [Kubernetes dokumentációjában](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod)

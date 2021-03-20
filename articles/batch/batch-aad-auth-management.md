@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 04/27/2017
 ms.custom: has-adal-ref, devx-track-csharp
 ms.openlocfilehash: ff49d5e88df7c56ed4dee0685f09e45eb372aa5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88930213"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Batch-felügyeleti megoldások hitelesítése Active Directory
@@ -25,7 +25,7 @@ Ha többet szeretne megtudni a Batch Management .NET-könyvtár és a AccountMan
 
 A [Azure Active Directory Authentication Library](../active-directory/azuread-dev/active-directory-authentication-libraries.md) (ADAL) egy programozott felületet biztosít az Azure ad számára az alkalmazásokon belüli használatra. Az ADAL az alkalmazásból való meghívásához regisztrálnia kell az alkalmazást egy Azure AD-bérlőben. Az alkalmazás regisztrálásakor az Azure AD-t az alkalmazással kapcsolatos információkkal látja el, beleértve az Azure AD-bérlőn belüli nevet is. Az Azure AD ezt követően egy alkalmazás-azonosítót biztosít, amelyet az alkalmazás az Azure AD-vel való hozzárendeléséhez használ futásidőben. Az alkalmazás-AZONOSÍTÓval kapcsolatos további tudnivalókért tekintse meg az [alkalmazás-és szolgáltatásnév objektumait Azure Active Directoryban](../active-directory/develop/app-objects-and-service-principals.md).
 
-A AccountManagement-minta alkalmazás regisztrálásához kövesse az alkalmazások [hozzáadása](../active-directory/develop/quickstart-register-app.md) című szakasz lépéseit az [alkalmazások integrálása a Azure Active Directorysal](../active-directory/develop/quickstart-register-app.md)című témakörben. **Natív ügyfélalkalmazás** megadása az alkalmazás típusához. Az iparági szabványnak megfelelő OAuth 2,0 URI az **átirányítási URI** -hoz `urn:ietf:wg:oauth:2.0:oob` . Megadhat azonban bármilyen érvényes URI-t (például `http://myaccountmanagementsample` ) az **átirányítási URI**számára, mivel nem kell valódi végpontnak lennie.
+A AccountManagement-minta alkalmazás regisztrálásához kövesse az alkalmazások [hozzáadása](../active-directory/develop/quickstart-register-app.md) című szakasz lépéseit az [alkalmazások integrálása a Azure Active Directorysal](../active-directory/develop/quickstart-register-app.md)című témakörben. **Natív ügyfélalkalmazás** megadása az alkalmazás típusához. Az iparági szabványnak megfelelő OAuth 2,0 URI az **átirányítási URI** -hoz `urn:ietf:wg:oauth:2.0:oob` . Megadhat azonban bármilyen érvényes URI-t (például `http://myaccountmanagementsample` ) az **átirányítási URI** számára, mivel nem kell valódi végpontnak lennie.
 
 ![Alkalmazás hozzáadása](./media/batch-aad-auth-management/app-registration-management-plane.png)
 
@@ -39,15 +39,15 @@ Ezután delegálnia kell az alkalmazáshoz való hozzáférést a Azure Resource
 
 Hajtsa végre a következő lépéseket az Azure Portalon:
 
-1. A Azure Portal bal oldali navigációs paneljén válassza a **minden szolgáltatás**elemet, kattintson az **alkalmazás-regisztrációk**elemre, majd a **Hozzáadás**gombra.
+1. A Azure Portal bal oldali navigációs paneljén válassza a **minden szolgáltatás** elemet, kattintson az **alkalmazás-regisztrációk** elemre, majd a **Hozzáadás** gombra.
 2. Keresse meg az alkalmazás nevét az alkalmazások regisztrációinak listájában:
 
     ![Az alkalmazás nevének megkeresése](./media/batch-aad-auth-management/search-app-registration.png)
 
-3. A **Beállítások** panel megjelenítése Az **API-hozzáférés** szakaszban válassza a **szükséges engedélyek**lehetőséget.
+3. A **Beállítások** panel megjelenítése Az **API-hozzáférés** szakaszban válassza a **szükséges engedélyek** lehetőséget.
 4. Új szükséges engedély hozzáadásához kattintson a **Hozzáadás** gombra.
 5. Az 1. lépésben írja be a **Windows Azure Service Management APIt**, válassza ki az API-t az eredmények listájából, majd kattintson a **kiválasztás** gombra.
-6. A 2. lépésben jelölje be a **klasszikus Azure-beli üzembe helyezési modell a szervezeti felhasználókként való elérésének**jelölőnégyzetét, majd kattintson a **kiválasztás** gombra.
+6. A 2. lépésben jelölje be a **klasszikus Azure-beli üzembe helyezési modell a szervezeti felhasználókként való elérésének** jelölőnégyzetét, majd kattintson a **kiválasztás** gombra.
 7. Kattintson a **kész** gombra.
 
 A **szükséges engedélyek** panelen látható, hogy az alkalmazáshoz tartozó engedélyek a ADAL és a Resource Manager API-k számára is érvényesek. Alapértelmezés szerint az Azure AD-ben való regisztráláskor az engedélyek a ADAL számára lesznek elérhetők.

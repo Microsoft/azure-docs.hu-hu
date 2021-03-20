@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 10/30/2020
 ms.author: apimpm
 ms.openlocfilehash: 531e346569b85ababc382f997fd7764a92b3d05f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94542314"
 ---
 # <a name="tutorial-debug-your-apis-using-request-tracing"></a>Oktatóanyag: API-k hibakeresése kérelmek nyomkövetésének használatával
@@ -53,12 +53,12 @@ Az API-hoz használt előfizetés **nyomkövetésének engedélyezése** beáll�
   :::image type="content" source="media/api-management-howto-api-inspector/06-debug-your-apis-01-trace-call.png" alt-text="API-nyomkövetés konfigurálása":::
 
 > [!TIP]
-> Ha a **OCP-APIM-előfizetés-Key** nincs automatikusan kitöltve a http-kérelemben, lekérheti azt a portálon. Válassza az **előfizetések** lehetőséget, majd nyissa meg a suscription tartozó helyi menüt ( **..**.). Válassza a **kulcsok megjelenítése/elrejtése** lehetőséget. Szükség esetén a kulcsok újragenerálása is megadható. Ezután adjon hozzá egy kulcsot a fejléchez.
+> Ha a **OCP-APIM-előfizetés-Key** nincs automatikusan kitöltve a http-kérelemben, lekérheti azt a portálon. Válassza az **előfizetések** lehetőséget, majd nyissa meg a suscription tartozó helyi menüt (**..**.). Válassza a **kulcsok megjelenítése/elrejtése** lehetőséget. Szükség esetén a kulcsok újragenerálása is megadható. Ezután adjon hozzá egy kulcsot a fejléchez.
 
 ## <a name="review-trace-information"></a>Nyomkövetési adatok áttekintése
 
 1. A hívás befejezése után a **http-válasz** **nyomkövetés** lapján lépjen a következőre:.
-1. A következő hivatkozások bármelyikét kiválasztva a részletes nyomkövetési információkra ugorhat: **bejövő** , **háttér** , **kimenő**.
+1. A következő hivatkozások bármelyikét kiválasztva a részletes nyomkövetési információkra ugorhat: **bejövő**, **háttér**, **kimenő**.
 
      :::image type="content" source="media/api-management-howto-api-inspector/response-trace.png" alt-text="Válasz nyomkövetésének áttekintése":::
 

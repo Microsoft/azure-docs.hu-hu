@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: 8b6a7c3e05b26cbda80ebf1a3fc0d4fed8255e6b
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91950805"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR – kognitív képesség
@@ -51,13 +51,13 @@ Korábban egy "textExtractionAlgorithm" nevű paraméter szerepel annak megadás
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Bemeneti név      | Leírás                                          |
+| Bemeneti név      | Description                                          |
 |---------------|------------------------------------------------------|
 | `image`         | Összetett típus. A jelenleg csak az Azure Blob indexelő által létrehozott "/Document/normalized_images" mezővel működik, ha a értéke nem a (z ```imageAction``` ) értékre van állítva ```none``` . További információért tekintse meg a [mintát](#sample-output) .|
 
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
-| Kimenet neve     | Leírás                   |
+| Kimenet neve     | Description                   |
 |---------------|-------------------------------|
 | `text`            | A képből kinyert egyszerű szöveg.   |
 | `layoutText`    | Összetett típus, amely leírja a kinyert szöveget, valamint azt a helyet, ahol a szöveg található.|

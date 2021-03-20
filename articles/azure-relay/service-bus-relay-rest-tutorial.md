@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.custom: devx-track-csharp
 ms.date: 06/23/2020
 ms.openlocfilehash: 0620f55650d0e4da0cd7a616649df952f3017455
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88922327"
 ---
 # <a name="tutorial-azure-wcf-relay-rest-tutorial"></a>Oktatóanyag: Azure WCF Relay REST-oktatóanyag
@@ -51,24 +51,24 @@ A WCF-szerződések és a REST-stílusú szerződések közötti elsődleges kü
 
 ### <a name="to-create-a-contract-with-an-interface"></a>Szerződés létrehozása illesztőfelülettel
 
-1. Indítsa el a Microsoft Visual studiót rendszergazdaként. Ehhez kattintson a jobb gombbal a Visual Studio program ikonjára, majd válassza a **Futtatás rendszergazdaként**lehetőséget.
-1. A Visual Studióban válassza az **új projekt létrehozása**lehetőséget.
-1. A **create a New Project (új projekt létrehozása**) területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget a C# számára, és válassza a **tovább**lehetőséget
-1. Nevezze el a projekt *ImageListener*. Használja az alapértelmezett **helyet**, majd válassza a **Létrehozás**lehetőséget.
+1. Indítsa el a Microsoft Visual studiót rendszergazdaként. Ehhez kattintson a jobb gombbal a Visual Studio program ikonjára, majd válassza a **Futtatás rendszergazdaként** lehetőséget.
+1. A Visual Studióban válassza az **új projekt létrehozása** lehetőséget.
+1. A **create a New Project (új projekt létrehozása**) területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget a C# számára, és válassza a **tovább** lehetőséget
+1. Nevezze el a projekt *ImageListener*. Használja az alapértelmezett **helyet**, majd válassza a **Létrehozás** lehetőséget.
 
-   C#-projekt esetén a Visual Studio létrehoz egy *program.cs* -fájlt. Ez az osztály tartalmaz egy üres `Main()` metódust, amely szükséges a konzolalkalmazás projektek helyes létrejöttéhez.
+   C#-projekt esetén a Visual Studio létrehoz egy *program. cs* fájlt. Ez az osztály tartalmaz egy üres `Main()` metódust, amely szükséges a konzolalkalmazás projektek helyes létrejöttéhez.
 
-1. **Megoldáskezelő**kattintson a jobb gombbal a **ImageListener** projektre, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
-1. Válassza a **Tallózás**elemet, majd keresse meg és válassza a **WindowsAzure. ServiceBus**elemet. Válassza a **telepítés**lehetőséget, és fogadja el a használati feltételeket.
+1. **Megoldáskezelő** kattintson a jobb gombbal a **ImageListener** projektre, majd válassza a **NuGet-csomagok kezelése** lehetőséget.
+1. Válassza a **Tallózás** elemet, majd keresse meg és válassza a **WindowsAzure. ServiceBus** elemet. Válassza a **telepítés** lehetőséget, és fogadja el a használati feltételeket.
 
-    Ez a lépés Service Bus és *System.ServiceModel.dll*hivatkozásait adja hozzá. Ez a csomag automatikusan hozzáadja a Service Bus-könyvtárakra és a WCF-re mutató hivatkozásokat `System.ServiceModel` .
+    Ez a lépés Service Bus és *System.ServiceModel.dll* hivatkozásait adja hozzá. Ez a csomag automatikusan hozzáadja a Service Bus-könyvtárakra és a WCF-re mutató hivatkozásokat `System.ServiceModel` .
 
-1. Explicit módon adjon hozzá egy hivatkozást `System.ServiceModel.Web.dll` a projekthez. A **megoldáskezelő**kattintson a jobb gombbal a Project mappában található **referenciák** elemre, majd válassza a **hivatkozás hozzáadása**elemet.
-1. A **hivatkozás hozzáadása**lapon válassza a **keretrendszer** lehetőséget, majd írja be a *System. ServiceModel. Web* **kifejezést a keresés**mezőbe. Jelölje be a **System.ServiceModel.Web** jelölőnégyzetet, majd kattintson az **OK** lehetőségre.
+1. Explicit módon adjon hozzá egy hivatkozást `System.ServiceModel.Web.dll` a projekthez. A **megoldáskezelő** kattintson a jobb gombbal a Project mappában található **referenciák** elemre, majd válassza a **hivatkozás hozzáadása** elemet.
+1. A **hivatkozás hozzáadása** lapon válassza a **keretrendszer** lehetőséget, majd írja be a *System. ServiceModel. Web* **kifejezést a keresés** mezőbe. Jelölje be a **System.ServiceModel.Web** jelölőnégyzetet, majd kattintson az **OK** lehetőségre.
 
 Ezután végezze el a következő kód módosítását a projektben:
 
-1. Adja hozzá a következő `using` utasításokat a *program.cs* fájl elejéhez.
+1. Adja hozzá a következő `using` utasításokat a *program. cs* fájl elejéhez.
 
     ```csharp
     using System.ServiceModel;
@@ -198,13 +198,13 @@ Ahogy az előző lépések is, a REST-stílusú szerződések és a WCF Relay sz
 
 1. Adjon hozzá egy *. jpg* rendszerképet a projekthez. Ez a fájl egy olyan kép, amelyet a szolgáltatás a fogadó böngészőben megjelenít.
 
-   1. Kattintson a jobb gombbal a projektre, és válassza a **Hozzáadás**lehetőséget.
+   1. Kattintson a jobb gombbal a projektre, és válassza a **Hozzáadás** lehetőséget.
    1. Ezután válassza a **meglévő elemet**.
-   1. A **meglévő elem hozzáadása** lehetőséggel tallózással keresse meg a megfelelő. jpg-et, majd válassza a **Hozzáadás**lehetőséget. A fájl hozzáadásakor a **fájl neve**melletti legördülő listából válassza a **minden fájl** elemet.
+   1. A **meglévő elem hozzáadása** lehetőséggel tallózással keresse meg a megfelelő. jpg-et, majd válassza a **Hozzáadás** lehetőséget. A fájl hozzáadásakor a **fájl neve** melletti legördülő listából válassza a **minden fájl** elemet.
 
    Az oktatóanyag többi része azt feltételezi, hogy a rendszerkép neve *image.jpg*. Ha más fájllal rendelkezik, át kell neveznie a képet, vagy módosítania kell a kódot a kompenzálására.
 
-1. Győződjön meg arról, hogy a futó szolgáltatás megtalálja a képfájlt, **megoldáskezelő** kattintson a jobb gombbal a képfájlra, majd válassza a **Tulajdonságok parancsot**. A **Tulajdonságok**területen állítsa a **Másolás a kimeneti könyvtárba** a másolás, **Ha újabb**lehetőséget.
+1. Győződjön meg arról, hogy a futó szolgáltatás megtalálja a képfájlt, **megoldáskezelő** kattintson a jobb gombbal a képfájlra, majd válassza a **Tulajdonságok parancsot**. A **Tulajdonságok** területen állítsa a **Másolás a kimeneti könyvtárba** a másolás, **Ha újabb** lehetőséget.
 
 1. A alkalmazásban a eljárással [hozzon létre egy szerződést egy felülettel](#to-create-a-contract-with-an-interface) , amely az *System.Drawing.dll* szerelvényre mutató hivatkozást ad hozzá a projekthez.
 
@@ -248,13 +248,13 @@ Ahogy az előző lépések is, a REST-stílusú szerződések és a WCF Relay sz
     }
     ```
 
-    Ez a megvalósítás a `MemoryStream` rendszerkép lekérésére és a böngészőbe való továbbításra való előkészítésére használja. Az adatfolyam-pozíciót nulla értékre állítja, az adatfolyam tartalmát *. jpg*néven deklarálja, és továbbítja az információt.
+    Ez a megvalósítás a `MemoryStream` rendszerkép lekérésére és a böngészőbe való továbbításra való előkészítésére használja. Az adatfolyam-pozíciót nulla értékre állítja, az adatfolyam tartalmát *. jpg* néven deklarálja, és továbbítja az információt.
 
-1. Válassza a **Build**  >  **Build megoldás**lehetőséget.
+1. Válassza a **Build**  >  **Build megoldás** lehetőséget.
 
 ### <a name="to-define-the-configuration-for-running-the-web-service-on-service-bus"></a>A konfiguráció meghatározása a webszolgáltatás Service Buson való futtatásához
 
-1. A **megoldáskezelő**kattintson duplán a **App.config** lehetőségre a fájl megnyitásához a Visual Studio Editorban.
+1. A **megoldáskezelő** kattintson duplán a **App.config** lehetőségre a fájl megnyitásához a Visual Studio Editorban.
 
     A *App.config* fájl tartalmazza a szolgáltatás nevét, végpontját és kötését. A végpont az a hely, Azure Relay az ügyfelek és a gazdagépek számára lehetővé teszi az egymással való kommunikációt. A kötés a kommunikációhoz használt protokoll típusa. A fő különbség az, hogy a konfigurált szolgáltatási végpont egy [WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) kötésre hivatkozik.
 
@@ -542,7 +542,7 @@ A szolgáltatásgazda az a WCF-objektum, amely a gazdaalkalmazást példányosí
 
 ### <a name="example-of-the-service-contract-and-implementation"></a>A szolgáltatási szerződés és a megvalósítás példája
 
-Az alábbi példa tartalmazza a szolgáltatási szerződést és a megvalósítását az oktatóanyag előző lépéseiből, és egy konzolalkalmazásban működteti a szolgáltatást. Fordítsa le a következő kódot egy *ImageListener.exe*nevű végrehajtható fájlba.
+Az alábbi példa tartalmazza a szolgáltatási szerződést és a megvalósítását az oktatóanyag előző lépéseiből, és egy konzolalkalmazásban működteti a szolgáltatást. Fordítsa le a következő kódot egy *ImageListener.exe* nevű végrehajtható fájlba.
 
 ```csharp
 using System;
@@ -624,7 +624,7 @@ A megoldás létrehozása után az alábbi lépéseket követve futtathatja az a
 1. A kép megtekintéséhez másolja és illessze be a címet a parancssorból egy böngészőbe.
 1. Ha elkészült, az alkalmazás bezárásához válassza az ENTER billentyűt a Parancssor ablakban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy létrehozott egy alkalmazást, amely a Azure Relay szolgáltatást használja, további információt a következő cikkekben talál:
 

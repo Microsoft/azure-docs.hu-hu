@@ -5,10 +5,10 @@ ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.openlocfilehash: 86389ef89ced74905db0fc8bfeaabcea6140762a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91262994"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Exchange-kiszolgáló biztonsági mentése az Azure-ba Azure Backup Server
@@ -28,10 +28,10 @@ Ha a MABS védelmi ügynököt az Exchange-kiszolgálóra szeretné telepíteni,
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Védelmi csoport létrehozása az Exchange-kiszolgálóhoz
 
-1. A MABS felügyeleti konzol kattintson a **védelem**elemre, majd az **új védelmi csoport létrehozása** varázsló megnyitásához kattintson az **új** elemre az eszköz menüszalagján.
-2. A varázsló **üdvözlő** képernyőjén válassza a **tovább**lehetőséget.
+1. A MABS felügyeleti konzol kattintson a **védelem** elemre, majd az **új védelmi csoport létrehozása** varázsló megnyitásához kattintson az **új** elemre az eszköz menüszalagján.
+2. A varázsló **üdvözlő** képernyőjén válassza a **tovább** lehetőséget.
 3. A **védelmi csoport típusának kiválasztása** képernyőn válassza a **kiszolgálók** elemet, majd kattintson a **Tovább gombra**.
-4. Válassza ki a védelemmel ellátni kívánt Exchange Server-adatbázist, és kattintson a **tovább**gombra.
+4. Válassza ki a védelemmel ellátni kívánt Exchange Server-adatbázist, és kattintson a **tovább** gombra.
 
    > [!NOTE]
    > Ha az Exchange 2013-et védi, ellenőrizze az [exchange 2013 előfeltételeit](/system-center/dpm/back-up-exchange).
@@ -58,20 +58,20 @@ Ha a MABS védelmi ügynököt az Exchange-kiszolgálóra szeretné telepíteni,
    >
    >
 8. Kattintson a **Tovább** gombra.
-9. Válassza ki az adatbázist a **másolási biztonsági mentéshez**, majd kattintson a **tovább**gombra.
+9. Válassza ki az adatbázist a **másolási biztonsági mentéshez**, majd kattintson a **tovább** gombra.
 
    > [!NOTE]
    > Ha nem a "teljes biztonsági mentés" lehetőséget választja egy adatbázis legalább egy DAG-példányához, a rendszer nem csonkolja a naplókat.
    >
    >
-10. Konfigurálja a **rövid távú biztonsági mentés**céljait, majd válassza a **tovább**lehetőséget.
-11. Tekintse át a rendelkezésre álló lemezterületet, majd kattintson a **tovább**gombra.
-12. Válassza ki azt az időpontot, amikor a MABS-kiszolgáló létrehozza a kezdeti replikálást, majd kattintson a **tovább**gombra.
-13. Válassza ki a konzisztencia-ellenőrzési beállításokat, majd válassza a **tovább**lehetőséget.
-14. Válassza ki azt az adatbázist, amelyről biztonsági másolatot szeretne készíteni az Azure-ba, majd válassza a **tovább**lehetőséget. Példa:
+10. Konfigurálja a **rövid távú biztonsági mentés** céljait, majd válassza a **tovább** lehetőséget.
+11. Tekintse át a rendelkezésre álló lemezterületet, majd kattintson a **tovább** gombra.
+12. Válassza ki azt az időpontot, amikor a MABS-kiszolgáló létrehozza a kezdeti replikálást, majd kattintson a **tovább** gombra.
+13. Válassza ki a konzisztencia-ellenőrzési beállításokat, majd válassza a **tovább** lehetőséget.
+14. Válassza ki azt az adatbázist, amelyről biztonsági másolatot szeretne készíteni az Azure-ba, majd válassza a **tovább** lehetőséget. Például:
 
     ![Online védelmi adatértékek meghatározása](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
-15. Adja meg a **Azure Backup**ütemtervét, majd kattintson a **tovább**gombra. Példa:
+15. Adja meg a **Azure Backup** ütemtervét, majd kattintson a **tovább** gombra. Például:
 
     ![Online biztonsági mentési ütemterv megadása](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 
@@ -79,21 +79,21 @@ Ha a MABS védelmi ügynököt az Exchange-kiszolgálóra szeretné telepíteni,
     > Megjegyzés: az online helyreállítási pontok expressz teljes helyreállítási pontokon alapulnak. Ezért az online helyreállítási pontot az expressz teljes helyreállítási ponthoz megadott idő után kell ütemeznie.
     >
     >
-16. Konfigurálja a **Azure Backup**adatmegőrzési házirendjét, majd kattintson a **tovább**gombra.
-17. Válasszon egy online replikálási lehetőséget, majd kattintson a **tovább**gombra.
+16. Konfigurálja a **Azure Backup** adatmegőrzési házirendjét, majd kattintson a **tovább** gombra.
+17. Válasszon egy online replikálási lehetőséget, majd kattintson a **tovább** gombra.
 
     Ha nagyméretű adatbázissal rendelkezik, hosszú időt is igénybe vehet, hogy a rendszer létrehozza a kezdeti biztonsági mentést a hálózaton keresztül. A probléma elkerüléséhez létrehozhat egy offline biztonsági mentést.  
 
     ![Online adatmegőrzési szabály meghatározása](./media/backup-azure-backup-exchange-server/specify-online-retention-policy.png)
-18. Erősítse meg a beállításokat, majd kattintson a **csoport létrehozása**elemre.
-19. Válassza a **Bezárás** lehetőséget.
+18. Erősítse meg a beállításokat, majd kattintson a **csoport létrehozása** elemre.
+19. Válassza a **Bezárás** gombot.
 
 ## <a name="recover-the-exchange-database"></a>Az Exchange-adatbázis helyreállítása
 
 1. Exchange-adatbázis helyreállításához válassza a **helyreállítás** lehetőséget a MABS felügyeleti konzol.
 2. Keresse meg a helyreállítani kívánt Exchange-adatbázist.
 3. Válasszon ki egy online helyreállítási pontot a *helyreállítási idő* legördülő listából.
-4. A **helyreállítási varázsló**elindításához válassza a **helyreállítás** lehetőséget.
+4. A **helyreállítási varázsló** elindításához válassza a **helyreállítás** lehetőséget.
 
 Az online helyreállítási pontok esetében öt helyreállítási típus létezik:
 

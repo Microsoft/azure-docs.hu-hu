@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
 ms.openlocfilehash: 91873a2d6a498712773bfe721653e64c3364666f
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92674813"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Ismerkedés az Oracle Database-összekötővel
@@ -23,7 +23,7 @@ Az Oracle Database-összekötő használatával olyan szervezeti munkafolyamatok
 
 Ez az összekötő nem támogatja a következő elemeket:
 
-* Nézetek 
+* Megjelenítések 
 * Bármely, kompozit kulccsal rendelkező tábla
 * Beágyazott objektumtípusok a táblákban
 * Nem skaláris értékkel rendelkező adatbázis-függvények
@@ -52,7 +52,7 @@ Ez a cikk bemutatja, hogyan használhatja a Oracle Database-összekötőt egy lo
 ## <a name="add-the-connector"></a>Az összekötő hozzáadása
 
 > [!IMPORTANT]
-> Ez az összekötő nem rendelkezik eseményindítókkal. Csak műveletekkel rendelkezik. Tehát a logikai alkalmazás létrehozásakor adjon hozzá egy másik eseményindítót a logikai alkalmazás elindításához, például: **Schedule-ismétlődés** , vagy **kérelem/válasz válasz** . 
+> Ez az összekötő nem rendelkezik eseményindítókkal. Csak műveletekkel rendelkezik. Tehát a logikai alkalmazás létrehozásakor adjon hozzá egy másik eseményindítót a logikai alkalmazás elindításához, például: **Schedule-ismétlődés**, vagy **kérelem/válasz válasz**. 
 
 1. A [Azure Portal](https://portal.azure.com)hozzon létre egy üres logikai alkalmazást.
 
@@ -60,16 +60,16 @@ Ez a cikk bemutatja, hogyan használhatja a Oracle Database-összekötőt egy lo
 
     ![Megjelenik egy párbeszédpanel, amelyen az összes eseményindító kereshető. Egyetlen trigger is megjelenik, a "kérés/válasz-kérelem", egy kijelölési gombbal.](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
-3. Válassza a **Mentés** lehetőséget. Mentéskor a rendszer automatikusan létrehoz egy kérelem URL-címét. 
+3. Kattintson a **Mentés** gombra. Mentéskor a rendszer automatikusan létrehoz egy kérelem URL-címét. 
 
-4. Jelölje ki az **Új lépés** , majd a **Művelet hozzáadása** lehetőséget. Az elérhető műveletek megtekintéséhez írja be a következőt `oracle` : 
+4. Jelölje ki az **Új lépés**, majd a **Művelet hozzáadása** lehetőséget. Az elérhető műveletek megtekintéséhez írja be a következőt `oracle` : 
 
     ![A keresőmező "Oracle" kifejezést tartalmaz. A keresés egy "Oracle Database" címkével rendelkező találatot hoz létre. Van egy Többlapos oldal, egy lap, amely az "ESEMÉNYINDÍTÓk (0)", egy másik pedig a "műveletek (6)" mutatót jeleníti meg. Hat művelet szerepel a felsorolásban. Ezek közül az első a "sor beolvasása" előzetes verzió.](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
 
     > [!TIP]
     > Ez a leggyorsabb módja annak, hogy megtekintse az összekötők számára elérhető eseményindítókat és műveleteket. Írja be az összekötő nevének egy részét, például: `oracle` . A tervező felsorolja az összes eseményindítót és műveletet. 
 
-5. Válassza ki az egyik műveletet, például **Oracle Database-beolvasás sort** . **A helyszíni adatátjárón keresztül válassza a kapcsolat** lehetőséget. Adja meg az Oracle-kiszolgáló nevét, a hitelesítési módszert, a felhasználónevet és a jelszót, majd válassza ki az átjárót:
+5. Válassza ki az egyik műveletet, például **Oracle Database-beolvasás sort**. **A helyszíni adatátjárón keresztül válassza a kapcsolat** lehetőséget. Adja meg az Oracle-kiszolgáló nevét, a hitelesítési módszert, a felhasználónevet és a jelszót, majd válassza ki az átjárót:
 
     ![A párbeszédpanel "Oracle Database-sor beolvasása" címmel jelenik meg. A "kapcsolat helyszíni adatátjárón keresztül" feliratú jelölőnégyzet be van jelölve. Az alábbi öt másik szövegmező.](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
 
@@ -98,23 +98,23 @@ Ez a cikk bemutatja, hogyan használhatja a Oracle Database-összekötőt egy lo
 
 ## <a name="common-errors"></a>Gyakori hibák
 
-#### <a name="error-cannot-reach-the-gateway"></a>**Hiba** : az átjáró nem érhető el
+#### <a name="error-cannot-reach-the-gateway"></a>**Hiba**: az átjáró nem érhető el
 
-**OK** : a helyszíni adatátjáró nem tud csatlakozni a felhőhöz. 
+**OK**: a helyszíni adatátjáró nem tud csatlakozni a felhőhöz. 
 
-Megoldás **: Ellenőrizze** , hogy az átjáró fut-e a helyszíni gépen, amelyen telepítve van, és hogy tud-e csatlakozni az internethez.  Azt javasoljuk, hogy ne telepítse az átjárót olyan számítógépre, amely kikapcsolható vagy alvó állapotba kerülhet. Újraindíthatja a helyszíni adatátjáró szolgáltatást (PBIEgwService) is.
+Megoldás **: Ellenőrizze**, hogy az átjáró fut-e a helyszíni gépen, amelyen telepítve van, és hogy tud-e csatlakozni az internethez.  Azt javasoljuk, hogy ne telepítse az átjárót olyan számítógépre, amely kikapcsolható vagy alvó állapotba kerülhet. Újraindíthatja a helyszíni adatátjáró szolgáltatást (PBIEgwService) is.
 
-#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Hiba** : a használt szolgáltató elavult: "System. OracleClient – az Oracle-ügyfélszoftver 8.1.7 vagy újabb verziója szükséges." Lásd: [https://go.microsoft.com/fwlink/p/?LinkID=272376](/power-bi/connect-data/desktop-connect-oracle-database) a hivatalos szolgáltató telepítése.
+#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Hiba**: a használt szolgáltató elavult: "System. OracleClient – az Oracle-ügyfélszoftver 8.1.7 vagy újabb verziója szükséges." Lásd: [https://go.microsoft.com/fwlink/p/?LinkID=272376](/power-bi/connect-data/desktop-connect-oracle-database) a hivatalos szolgáltató telepítése.
 
-**OK** : az Oracle Client SDK nincs telepítve azon a gépen, amelyen a helyszíni adatátjáró fut.  
+**OK**: az Oracle Client SDK nincs telepítve azon a gépen, amelyen a helyszíni adatátjáró fut.  
 
-**Megoldás** : töltse le és telepítse az Oracle Client SDK-t ugyanarra a számítógépre, mint a helyszíni adatátjárót.
+**Megoldás**: töltse le és telepítse az Oracle Client SDK-t ugyanarra a számítógépre, mint a helyszíni adatátjárót.
 
-#### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Hiba** : a (z) "[táblanév]" tábla nem definiál kulcs oszlopokat
+#### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Hiba**: a (z) "[táblanév]" tábla nem definiál kulcs oszlopokat
 
-**OK** : a táblának nincs elsődleges kulcsa.  
+**OK**: a táblának nincs elsődleges kulcsa.  
 
-**Megoldás** : a Oracle Database összekötőhöz meg kell adni egy elsődleges kulcs oszlopot tartalmazó táblát.
+**Megoldás**: a Oracle Database összekötőhöz meg kell adni egy elsődleges kulcs oszlopot tartalmazó táblát.
  
 ## <a name="connector-specific-details"></a>Összekötő-specifikus részletek
 

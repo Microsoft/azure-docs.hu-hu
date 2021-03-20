@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/03/2021
+ms.date: 03/11/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: f7ba6363ec3a38d37ea3df0f76409289069638e8
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 80a943d235783852f57832363b5af8048f010575
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537796"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599432"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Útmutató: a Text Analytics for Health használata (előzetes verzió)
 
@@ -31,7 +31,7 @@ A Text Analytics for Health a Text Analytics API szolgáltatás egyik funkciója
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Introducing-Text-Analytics-for-Health/player]
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 Az állapot Text Analytics az elnevezett entitások felismerése, a relációk kinyerése, az entitások kivonása és az angol nyelvű szöveggel összekapcsoló entitások a strukturálatlan klinikai és bioorvosi szövegek elemzését végzik.
 
@@ -44,7 +44,7 @@ A nevesített entitások felismerése észleli a strukturálatlan szövegben eml
 
 ### <a name="relation-extraction"></a>[Kapcsolatok kibontása](#tab/relation-extraction)
 
-A kapcsolat kibontása azonosítja a szövegben említett fogalmak közötti értelmes kapcsolatokat. A "feltétel időpontja" típusú kapcsolatok például a feltétel nevének egy időponthoz társításával találhatók meg. 
+A kapcsolat kibontása azonosítja a szövegben említett fogalmak közötti értelmes kapcsolatokat. Például a "feltétel időpontjának" viszonyt úgy találja, hogy egy feltétel nevét társítja egy időponthoz, vagy egy rövidítést és a teljes leírást.  
 
 > [!div class="mx-imgBorder"]
 > ![Állapot újraindítása](../media/ta-for-health/health-relation-extraction.png)
@@ -52,19 +52,23 @@ A kapcsolat kibontása azonosítja a szövegben említett fogalmak közötti ér
 
 ### <a name="entity-linking"></a>[Entitáskapcsolás](#tab/entity-linking)
 
-Az entitások a disambiguates különböző entitásokat kapcsolnak össze úgy, hogy a szövegben megnevezett entitásokat társítanak a fogalmak előre definiált adatbázisában található fogalmakhoz. Például az egységes orvosi nyelvi rendszer (UMLS).
+A disambiguates különböző entitásokat összekapcsoló entitások a szövegben említett, elnevezett entitások társításával vannak társítva egy előre definiált adatbázisban, például az egységes orvosi nyelvi rendszeren (UMLS) található fogalmakhoz. Az orvosi fogalmakat a rendszer a normalizálás további formájaként is hozzárendeli az előnyben részesített elnevezéshez.
 
 > [!div class="mx-imgBorder"]
 > ![Állapot EL](../media/ta-for-health/health-entity-linking.png)
 
 A Text Analytics for Health támogatja az egyesített orvosi nyelvi rendszer ([UMLS](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/index.html)) Metathesaurus tudásbázisban található állapot-és orvosbiológiai szótárakhoz összekapcsolását.
 
-### <a name="negation-detection"></a>[Tagadás észlelése](#tab/negation-detection) 
+### <a name="assertion-detection"></a>[Kijelentések észlelése](#tab/assertion-detection) 
 
-Az orvosi tartalom értelmét nagy hatással van a módosítók, például a tagadás, ami kritikus következményekkel járhat, ha nem diagnosztizálják. A Text Analytics for Health támogatja a szövegben említett különböző entitások tagadásának észlelését. 
+Az orvosi tartalmak értelmét nagy hatással van a módosítók, például a negatív vagy feltételes állítások, amelyek kritikus fontosságú következményekkel járhatnak. Az állapot-Text Analytics három kategóriába sorolhatók a szövegben található entitások kiállításának észleléséhez: 
+
+* meghatározni
+* feltételes
+* összefüggés
 
 > [!div class="mx-imgBorder"]
-> ![Állapot negatív](../media/ta-for-health/health-negation.png)
+> ![Állapot negatív](../media/ta-for-health/assertions.png)
 
 ---
 
@@ -137,20 +141,20 @@ example.json
 
 Mivel ez a POST-kérelem a feladatok aszinkron művelethez való elküldésére szolgál, nincs szöveg a válasz objektumban.  A válasz fejlécében azonban szüksége lesz a művelet – hely kulcs értékére a GET kérelem végrehajtásához a feladatok és a kimenet állapotának vizsgálatához.  Alább látható egy példa a művelet – hely kulcs értékére a POST kérelem válasz fejlécében:
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/health/jobs/<jobID>`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/health/jobs/<jobID>`
 
 A feladatok állapotának megtekintéséhez tegyen egy GET kérelmet az URL-címre a POST Response művelet – hely kulcs fejlécének értékében.  A következő állapotok használhatók a feladatok állapotának megjelenítéséhez:,,,,, `NotStarted` `running` `succeeded` `failed` `rejected` `cancelling` és `cancelled` .  
 
 A `NotStarted` `running` Get kéréssel megegyező URL-cím törlésével megszakíthatja a vagy a vagy az állapotú feladatot.  A TÖRLÉSi hívással kapcsolatos további információk a [Health Hosted API-referenciájának Text Analytics](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/CancelHealthJob)érhetők el.
 
-Az alábbi példa egy GET kérelem válaszát szemlélteti.  Vegye figyelembe, hogy a kimenet lekérésre kerül, amíg a `expirationDateTime` (24 óra a feladatok létrejöttének idejétől számítva) el lett távolítva a kimenet törlését követően.
+Az alábbi példa egy GET kérelem válaszát szemlélteti.  A kimenet az `expirationDateTime` (a feladatok létrehozásának idejétől számított 24 órán belül) lekérésre elérhető, amely után a kimenet törölve lett.
 
 ```json
 {
-    "jobId": "b672c6f5-7c0d-4783-ba8c-4d0c47213454",
-    "lastUpdateDateTime": "2020-11-18T01:45:00Z",
-    "createdDateTime": "2020-11-18T01:44:55Z",
-    "expirationDateTime": "2020-11-19T01:44:55Z",
+    "jobId": "be437134-a76b-4e45-829e-9b37dcd209bf",
+    "lastUpdateDateTime": "2021-03-11T05:43:37Z",
+    "createdDateTime": "2021-03-11T05:42:32Z",
+    "expirationDateTime": "2021-03-12T05:42:32Z",
     "status": "succeeded",
     "errors": [],
     "results": {
@@ -163,8 +167,7 @@ Az alábbi példa egy GET kérelem válaszát szemlélteti.  Vegye figyelembe, h
                         "length": 5,
                         "text": "100mg",
                         "category": "Dosage",
-                        "confidenceScore": 1.0,
-                        "isNegated": false
+                        "confidenceScore": 1.0
                     },
                     {
                         "offset": 31,
@@ -172,15 +175,35 @@ Az alábbi példa egy GET kérelem válaszát szemlélteti.  Vegye figyelembe, h
                         "text": "remdesivir",
                         "category": "MedicationName",
                         "confidenceScore": 1.0,
-                        "isNegated": false,
+                        "name": "remdesivir",
                         "links": [
                             {
                                 "dataSource": "UMLS",
                                 "id": "C4726677"
                             },
                             {
+                                "dataSource": "DRUGBANK",
+                                "id": "DB14761"
+                            },
+                            {
+                                "dataSource": "GS",
+                                "id": "6192"
+                            },
+                            {
+                                "dataSource": "MEDCIN",
+                                "id": "398132"
+                            },
+                            {
+                                "dataSource": "MMSL",
+                                "id": "d09540"
+                            },
+                            {
                                 "dataSource": "MSH",
                                 "id": "C000606551"
+                            },
+                            {
+                                "dataSource": "MTHSPL",
+                                "id": "3QKI37EEHE"
                             },
                             {
                                 "dataSource": "NCI",
@@ -189,6 +212,22 @@ Az alábbi példa egy GET kérelem válaszát szemlélteti.  Vegye figyelembe, h
                             {
                                 "dataSource": "NCI_FDA",
                                 "id": "3QKI37EEHE"
+                            },
+                            {
+                                "dataSource": "NDDF",
+                                "id": "018308"
+                            },
+                            {
+                                "dataSource": "RXNORM",
+                                "id": "2284718"
+                            },
+                            {
+                                "dataSource": "SNOMEDCT_US",
+                                "id": "870592005"
+                            },
+                            {
+                                "dataSource": "VANDF",
+                                "id": "4039395"
                             }
                         ]
                     },
@@ -197,57 +236,62 @@ Az alábbi példa egy GET kérelem válaszát szemlélteti.  Vegye figyelembe, h
                         "length": 13,
                         "text": "intravenously",
                         "category": "MedicationRoute",
-                        "confidenceScore": 1.0,
-                        "isNegated": false
-                    },
-                    {
-                        "offset": 56,
-                        "length": 4,
-                        "text": "over",
-                        "category": "Time",
-                        "confidenceScore": 0.87,
-                        "isNegated": false
+                        "confidenceScore": 1.0
                     },
                     {
                         "offset": 73,
                         "length": 7,
                         "text": "120 min",
                         "category": "Time",
-                        "confidenceScore": 0.99,
-                        "isNegated": false
+                        "confidenceScore": 0.94
                     }
                 ],
                 "relations": [
                     {
                         "relationType": "DosageOfMedication",
-                        "bidirectional": false,
-                        "source": "#/results/documents/0/entities/0",
-                        "target": "#/results/documents/0/entities/1"
+                        "entities": [
+                            {
+                                "ref": "#/results/documents/0/entities/0",
+                                "role": "Dosage"
+                            },
+                            {
+                                "ref": "#/results/documents/0/entities/1",
+                                "role": "Medication"
+                            }
+                        ]
                     },
                     {
                         "relationType": "RouteOfMedication",
-                        "bidirectional": false,
-                        "source": "#/results/documents/0/entities/2",
-                        "target": "#/results/documents/0/entities/1"
+                        "entities": [
+                            {
+                                "ref": "#/results/documents/0/entities/1",
+                                "role": "Medication"
+                            },
+                            {
+                                "ref": "#/results/documents/0/entities/2",
+                                "role": "Route"
+                            }
+                        ]
                     },
                     {
                         "relationType": "TimeOfMedication",
-                        "bidirectional": false,
-                        "source": "#/results/documents/0/entities/3",
-                        "target": "#/results/documents/0/entities/1"
-                    },
-                    {
-                        "relationType": "TimeOfMedication",
-                        "bidirectional": false,
-                        "source": "#/results/documents/0/entities/4",
-                        "target": "#/results/documents/0/entities/1"
+                        "entities": [
+                            {
+                                "ref": "#/results/documents/0/entities/1",
+                                "role": "Medication"
+                            },
+                            {
+                                "ref": "#/results/documents/0/entities/3",
+                                "role": "Time"
+                            }
+                        ]
                     }
                 ],
                 "warnings": []
             }
         ],
         "errors": [],
-        "modelVersion": "2020-09-03"
+        "modelVersion": "2021-03-01"
     }
 }
 ```
@@ -294,30 +338,47 @@ A következő JSON-példa az állapot API-Response törzsének Text Analytics a 
             "id": "1",
             "entities": [
                 {
-                    "id": "0",
                     "offset": 25,
                     "length": 5,
                     "text": "100mg",
                     "category": "Dosage",
-                    "confidenceScore": 1.0,
-                    "isNegated": false
+                    "confidenceScore": 1.0
                 },
                 {
-                    "id": "1",
                     "offset": 31,
                     "length": 10,
                     "text": "remdesivir",
                     "category": "MedicationName",
                     "confidenceScore": 1.0,
-                    "isNegated": false,
+                    "name": "remdesivir",
                     "links": [
                         {
                             "dataSource": "UMLS",
                             "id": "C4726677"
                         },
                         {
+                            "dataSource": "DRUGBANK",
+                            "id": "DB14761"
+                        },
+                        {
+                            "dataSource": "GS",
+                            "id": "6192"
+                        },
+                        {
+                            "dataSource": "MEDCIN",
+                            "id": "398132"
+                        },
+                        {
+                            "dataSource": "MMSL",
+                            "id": "d09540"
+                        },
+                        {
                             "dataSource": "MSH",
                             "id": "C000606551"
+                        },
+                        {
+                            "dataSource": "MTHSPL",
+                            "id": "3QKI37EEHE"
                         },
                         {
                             "dataSource": "NCI",
@@ -326,115 +387,215 @@ A következő JSON-példa az állapot API-Response törzsének Text Analytics a 
                         {
                             "dataSource": "NCI_FDA",
                             "id": "3QKI37EEHE"
+                        },
+                        {
+                            "dataSource": "NDDF",
+                            "id": "018308"
+                        },
+                        {
+                            "dataSource": "RXNORM",
+                            "id": "2284718"
+                        },
+                        {
+                            "dataSource": "SNOMEDCT_US",
+                            "id": "870592005"
+                        },
+                        {
+                            "dataSource": "VANDF",
+                            "id": "4039395"
                         }
                     ]
                 },
                 {
-                    "id": "2",
                     "offset": 42,
                     "length": 13,
                     "text": "intravenously",
                     "category": "MedicationRoute",
-                    "confidenceScore": 1.0,
-                    "isNegated": false
+                    "confidenceScore": 1.0
                 },
                 {
-                    "id": "3",
-                    "offset": 56,
-                    "length": 4,
-                    "text": "over",
-                    "category": "Time",
-                    "confidenceScore": 0.87,
-                    "isNegated": false
-                },
-                {
-                    "id": "4",
                     "offset": 73,
                     "length": 7,
                     "text": "120 min",
                     "category": "Time",
-                    "confidenceScore": 0.99,
-                    "isNegated": false
+                    "confidenceScore": 0.94
                 }
             ],
             "relations": [
                 {
                     "relationType": "DosageOfMedication",
-                    "bidirectional": false,
-                    "source": "#/documents/0/entities/0",
-                    "target": "#/documents/0/entities/1"
+                    "entities": [
+                        {
+                            "ref": "#/documents/0/entities/0",
+                            "role": "Dosage"
+                        },
+                        {
+                            "ref": "#/documents/0/entities/1",
+                            "role": "Medication"
+                        }
+                    ]
                 },
                 {
                     "relationType": "RouteOfMedication",
-                    "bidirectional": false,
-                    "source": "#/documents/0/entities/2",
-                    "target": "#/documents/0/entities/1"
+                    "entities": [
+                        {
+                            "ref": "#/documents/0/entities/1",
+                            "role": "Medication"
+                        },
+                        {
+                            "ref": "#/documents/0/entities/2",
+                            "role": "Route"
+                        }
+                    ]
                 },
                 {
                     "relationType": "TimeOfMedication",
-                    "bidirectional": false,
-                    "source": "#/documents/0/entities/3",
-                    "target": "#/documents/0/entities/1"
-                },
-                {
-                    "relationType": "TimeOfMedication",
-                    "bidirectional": false,
-                    "source": "#/documents/0/entities/4",
-                    "target": "#/documents/0/entities/1"
+                    "entities": [
+                        {
+                            "ref": "#/documents/0/entities/1",
+                            "role": "Medication"
+                        },
+                        {
+                            "ref": "#/documents/0/entities/3",
+                            "role": "Time"
+                        }
+                    ]
                 }
-            ]
+            ],
+            "warnings": []
         }
     ],
     "errors": [],
-    "modelVersion": "2020-09-03"
+    "modelVersion": "2021-03-01"
 }
 ```
 
-### <a name="negation-detection-output"></a>Tagadási észlelés kimenete
+### <a name="assertion-output"></a>Érvényesítési kimenet
 
-A tagadás észlelésének használatakor bizonyos esetekben egyetlen tagadási időszak egyszerre több kifejezést is felhasználhat. Az elismert entitások elutasítása a JSON-kimenetben a jelző logikai értékével jelenik `isNegated` meg, például:
+A Text Analytics for Health visszaadja az állítási módosítókat, amelyek olyan orvosi fogalmakhoz rendelt tájékoztató attribútumok, amelyek részletesebben megismerik a szövegben található fogalmak kontextusát. Ezek a módosító három kategóriára oszlanak, amelyek mindegyike egy másik aspektusra koncentrál, és a kölcsönösen kizáró értékeket tartalmazza. Kategóriánként csak egy érték van hozzárendelve az egyes entitásokhoz. Az egyes kategóriák leggyakoribb értéke az alapértelmezett érték. A szolgáltatás kimeneti válasza csak az alapértelmezett értéktől eltérő állítási módosítókat tartalmaz.
+
+**Bizonyosság**  – információt nyújt a fogalom jelenlétéről (a jelen és a hiányzó helyről), valamint arról, hogy a szöveg hogyan vonatkozik a jelenlétére (a végleges és a lehetséges).
+*   **Pozitív** [alapértelmezett]: a fogalom létezik vagy történt.
+* **Negatív**: a fogalom jelenleg nem létezik, vagy soha nem történt meg.
+* **Positive_Possible**: a koncepció valószínűleg létezik, de némi bizonytalanság van.
+* **Negative_Possible**: a koncepció létezése nem valószínű, de némi bizonytalanság van.
+* **Neutral_Possible**: lehetséges, hogy a fogalom nem létezik, vagy nem áll fenn az egyik oldalon.
+
+**Feltételesség** – információt nyújt arról, hogy egy adott fogalom létezése bizonyos feltételektől függ-e. 
+*   **Nincs** [alapértelmezett]: a koncepció tény és nem hipotetikus, és nem függ bizonyos feltételektől.
+*   **Feltételezett**: a fogalom a jövőben is kialakulhat vagy bekövetkezik.
+*   **Feltételes**: a fogalom létezik, vagy csak bizonyos feltételek esetén fordul elő.
+
+**Társítás** – azt ismerteti, hogy a fogalom társítva van-e a szöveg vagy valaki más tárgyához.
+*   **Tárgy** [alapértelmezett]: a fogalom a szöveg, általában a beteg tárgyához van társítva.
+*   **Someone_Else**: a fogalom olyan személyhez van társítva, aki nem a szöveg tárgya.
+
+
+Az állítások észlelése a kimondott entitásokat negatív értékként jelöli meg a biztonsági kategóriánál, például:
 
 ```json
 {
-  "id": "2",
-  "offset": 90,
-  "length": 10,
-  "text": "chest pain",
-  "category": "SymptomOrSign",
-  "score": 0.9972,
-  "isNegated": true,
-  "links": [
-    {
-      "dataSource": "UMLS",
-      "id": "C0008031"
-    },
-    {
-      "dataSource": "CHV",
-      "id": "0000023593"
-    },
+                        "offset": 381,
+                        "length": 3,
+                        "text": "SOB",
+                        "category": "SymptomOrSign",
+                        "confidenceScore": 0.98,
+                        "assertion": {
+                            "certainty": "negative"
+                        },
+                        "name": "Dyspnea",
+                        "links": [
+                            {
+                                "dataSource": "UMLS",
+                                "id": "C0013404"
+                            },
+                            {
+                                "dataSource": "AOD",
+                                "id": "0000005442"
+                            },
     ...
 ```
 
 ### <a name="relation-extraction-output"></a>A kapcsolatok kinyerésének kimenete
 
-A kapcsolat extrakciós kimenete a kapcsolat *forrására* és *CÉLJÁra* vonatkozó URI-hivatkozásokat tartalmaz. A társított szerepkörrel rendelkező entitások `ENTITY` hozzá vannak rendelve a `target` mezőhöz. A társított szerepkörrel rendelkező entitások `ATTRIBUTE` hozzá vannak rendelve a `source` mezőhöz. A rövidítések kapcsolata kétirányú `source` és `target` mezőket tartalmaz, és a következőre lesz `bidirectional` beállítva: `true` . 
+A Text Analytics állapota felismeri a különböző fogalmak közötti kapcsolatokat, beleértve az attribútumok és az entitások közötti kapcsolatokat (például a törzs szerkezetének irányát, a gyógyszer adagolását) és az entitások közötti kapcsolatot (például a rövidítések észlelése).
+
+**RÖVIDÍTÉSE**
+
+**DIRECTION_OF_BODY_STRUCTURE**
+
+**DIRECTION_OF_CONDITION**
+
+**DIRECTION_OF_EXAMINATION**
+
+**DIRECTION_OF_TREATMENT**
+
+**DOSAGE_OF_MEDICATION**
+
+**FORM_OF_MEDICATION**
+
+**FREQUENCY_OF_MEDICATION**
+
+**FREQUENCY_OF_TREATMENT**
+
+**QUALIFIER_OF_CONDITION**
+
+**RELATION_OF_EXAMINATION**
+
+**ROUTE_OF_MEDICATION** 
+
+**TIME_OF_CONDITION**
+
+**TIME_OF_EVENT**
+
+**TIME_OF_EXAMINATION**
+
+**TIME_OF_MEDICATION**
+
+**TIME_OF_TREATMENT**
+
+**UNIT_OF_CONDITION**
+
+**UNIT_OF_EXAMINATION**
+
+**VALUE_OF_CONDITION**  
+
+**VALUE_OF_EXAMINATION**
+
+> [!NOTE]
+> * A feltételre hivatkozó kapcsolatok a diagnosztikai entitás vagy a SYMPTOM_OR_SIGN entitás típusára vonatkozhatnak.
+> * A GYÓGYSZERes KEZELÉSre hivatkozó kapcsolatok a MEDICATION_NAME vagy a MEDICATION_CLASS entitás típusára vonatkozhatnak.
+> * Az időpontra hivatkozó kapcsolatok az időentitás vagy a dátum típusú entitás típusára vonatkozhatnak.
+
+A kapcsolatok kinyerési kimenete URI-referenciákat és a kapcsolattípus entitásai által hozzárendelt szerepköröket tartalmaz. Például:
 
 ```json
-"relations": [
-                {
-                    "relationType": "DosageOfMedication",
-                    "bidirectional": false,
-                    "source": "#/documents/1/entities/0",
-                    "target": "#/documents/1/entities/1"
-                },
-                {
-                    "relationType": "FrequencyOfMedication",
-                    "bidirectional": false,
-                    "source": "#/documents/1/entities/2",
-                    "target": "#/documents/1/entities/1"
-                }
-            ]
-  },
+                "relations": [
+                    {
+                        "relationType": "DosageOfMedication",
+                        "entities": [
+                            {
+                                "ref": "#/results/documents/0/entities/0",
+                                "role": "Dosage"
+                            },
+                            {
+                                "ref": "#/results/documents/0/entities/1",
+                                "role": "Medication"
+                            }
+                        ]
+                    },
+                    {
+                        "relationType": "RouteOfMedication",
+                        "entities": [
+                            {
+                                "ref": "#/results/documents/0/entities/1",
+                                "role": "Medication"
+                            },
+                            {
+                                "ref": "#/results/documents/0/entities/2",
+                                "role": "Route"
+                            }
+                        ]
 ...
 ]
 ```

@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metang
 ms.openlocfilehash: f2f5c8193454a3b7fa6be1cea7a1236b613d6c8f
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92636527"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>Magával ragadó olvasó JavaScript SDK-referenciája (v 1.1)
@@ -115,7 +115,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 #### <a name="renderbuttons-parameters"></a>renderButtons paraméterek
 
-| Név | Típus | Leírás |
+| Név | Típus | Description |
 | ---- | ---- |------------ |
 | `options` | [renderButtons-beállítások](#renderbuttons-options) | A renderButtons függvény bizonyos viselkedésének konfigurálására szolgáló beállítások. Választható. |
 
@@ -131,7 +131,7 @@ A magával ragadó olvasó gombok megjelenítésének lehetőségei.
 
 #### <a name="renderbuttons-options-parameters"></a>renderButtons-beállítások paraméterei
 
-| Beállítás | Típus | Leírás |
+| Beállítás | Típus | Description |
 | ------- | ---- | ----------- |
 | elemek | HTMLDivElement[] | Elemek, amelyekkel a beolvasó gombokat jelenítheti meg. |
 
@@ -156,7 +156,7 @@ A hívásának válaszát tartalmazza `ImmersiveReader.launchAsync` . Vegye figy
 
 #### <a name="launchresponse-parameters"></a>LaunchResponse paraméterek
 
-| Beállítás | Típus | Leírás |
+| Beállítás | Típus | Description |
 | ------- | ---- | ----------- |
 | tároló | HTMLDivElement | HTML-elem, amely az olvasó iframe-t tartalmazza. |
 | sessionId | Sztring | A munkamenet globálisan egyedi azonosítója, amelyet a rendszer hibakereséshez használ. |
@@ -174,14 +174,14 @@ A hibával kapcsolatos információkat tartalmaz.
 
 #### <a name="error-parameters"></a>Hiba paraméterei
 
-| Beállítás | Típus | Leírás |
+| Beállítás | Típus | Description |
 | ------- | ---- | ----------- |
 | code | Sztring | A hibakódok egyike. Lásd: [hibakódok](#error-codes). |
 | message | Sztring | A hiba ember által olvasható ábrázolása. |
 
 #### <a name="error-codes"></a>Hibakódok
 
-| Kód | Leírás |
+| Code | Description |
 | ---- | ----------- |
 | BadArgument | A megadott argumentum érvénytelen: `message` a [hiba](#error)paramétere. |
 | Időtúllépés | Nem sikerült betölteni a magával ragadó olvasót a megadott időkorláton belül. |
@@ -205,7 +205,7 @@ A lebilincselő olvasóban megjelenítendő tartalmat tartalmazza.
 
 #### <a name="content-parameters"></a>Tartalmi paraméterek
 
-| Név | Típus | Leírás |
+| Név | Típus | Description |
 | ---- | ---- |------------ |
 | cím | Sztring | A lebilincselő olvasó tetején látható cím szövege (nem kötelező) |
 | adattömböket | [Adathalmaz []](#chunk) | Adathalmazok tömbje |
@@ -240,7 +240,7 @@ Egyetlen adathalmaz, amely a magára az olvasóba kerül át a tartalomba.
 
 #### <a name="chunk-parameters"></a>Adattömb paramétereinek
 
-| Név | Típus | Leírás |
+| Név | Típus | Description |
 | ---- | ---- |------------ |
 | tartalom | Sztring | Az a karakterlánc, amely a lebilincselő olvasónak eljuttatott tartalmat tartalmazza. |
 | lang | Sztring | A szöveg nyelve, az érték az IETF BCP 47 Language címke formátuma, például en, es-ES. Ha nincs megadva, a rendszer automatikusan észleli a nyelvet. Lásd: [Támogatott nyelvek](#supported-languages). |
@@ -269,7 +269,7 @@ Default value: "text/plain"
 
 #### <a name="supported-mime-types"></a>Támogatott MIME-típusok
 
-| MIME-típus | Leírás |
+| MIME-típus | Description |
 | --------- | ----------- |
 | szöveg/egyszerű | Egyszerű szöveg. |
 | szöveg/html | HTML-tartalom. [További információ](#html-support)|
@@ -305,7 +305,7 @@ Azokat a tulajdonságokat tartalmazza, amelyek a magába foglaló olvasó bizony
 
 #### <a name="options-parameters"></a>Beállítások paraméterei
 
-| Név | Típus | Leírás |
+| Név | Típus | Description |
 | ---- | ---- |------------ |
 | uiLang | Sztring | A felhasználói felület nyelve, az érték az IETF BCP 47 Language címke formátuma, például en, es-ES. Ha nincs megadva, a rendszer alapértelmezés szerint a böngésző nyelvét adja meg. |
 | timeout | Szám | Az időtartam (ezredmásodpercben), mielőtt a [launchAsync](#launchasync) időtúllépési hiba miatt meghiúsul (az alapértelmezett érték 15000 MS). Ez az időkorlát csak az olvasó oldal kezdeti indítására vonatkozik, ahol a sikeres megfigyelhető, amikor megnyílik az olvasó lap, és elindul a tárcsa. Az időkorlát módosítása nem szükséges. |
@@ -314,7 +314,7 @@ Azokat a tulajdonságokat tartalmazza, amelyek a magába foglaló olvasó bizony
 | onExit | Függvény | Végrehajtja, amikor a magától megjelenő olvasó kilép. |
 | allowFullscreen | Logikai | Teljes képernyős váltás lehetősége (az alapértelmezett érték igaz). |
 | hideExitButton | Logikai | Azt jelzi, hogy el kell-e rejteni a megölelő olvasó kilépési gombjának nyilát (az alapértelmezett érték hamis). Ez csak akkor lehet igaz, ha egy olyan alternatív mechanizmus van megadva, amely kizárja az olvasót (például a mobil eszköztár vissza nyilát). |
-| cookiePolicy | [CookiePolicy](#cookiepolicy-options) | Az olvasó cookie-felhasználásának beállítása (az alapértelmezett érték a *CookiePolicy. disable* ). A gazda alkalmazás feladata a szükséges felhasználói jóváhagyások beszerzése az EU cookie-k megfelelőségi szabályzatának megfelelően. Lásd: [cookie-házirend beállításai](#cookiepolicy-options). |
+| cookiePolicy | [CookiePolicy](#cookiepolicy-options) | Az olvasó cookie-felhasználásának beállítása (az alapértelmezett érték a *CookiePolicy. disable*). A gazda alkalmazás feladata a szükséges felhasználói jóváhagyások beszerzése az EU cookie-k megfelelőségi szabályzatának megfelelően. Lásd: [cookie-házirend beállításai](#cookiepolicy-options). |
 | disableFirstRun | Logikai | Tiltsa le az első futtatási élményt. |
 | readAloudOptions | [ReadAloudOptions](#readaloudoptions) | Beállítások a beolvasás konfigurálásához. |
 | translationOptions | [TranslationOptions](#translationoptions) | A fordítás konfigurálásának beállításai. |
@@ -390,7 +390,7 @@ type ReadAloudOptions = {
 
 #### <a name="readaloudoptions-parameters"></a>ReadAloudOptions paraméterek
 
-| Név | Típus | Leírás |
+| Név | Típus | Description |
 | ---- | ---- |------------ |
 | hang | Sztring | Hang, "női" vagy "férfi". Vegye figyelembe, hogy nem minden nyelv támogatja a nemek közötti különbségeket. |
 | sebesség | Szám | A lejátszási sebességnek 0,5 és 2,5 közöttinek kell lennie, a határokat is beleértve. |
@@ -429,7 +429,7 @@ type TranslationOptions = {
 
 #### <a name="translationoptions-parameters"></a>TranslationOptions paraméterek
 
-| Név | Típus | Leírás |
+| Név | Típus | Description |
 | ---- | ---- |------------ |
 | language | Sztring | Beállítja a fordítási nyelvet, az érték az IETF BCP 47 nyelvi címke formátumában van, például: fr-FR, es-MX, zh-Hans-CN. A Word vagy a dokumentum fordításának automatikus engedélyezéséhez szükséges. |
 | autoEnableDocumentTranslation | Logikai | A teljes dokumentum automatikus lefordítása. |
@@ -457,7 +457,7 @@ type DisplayOptions = {
 
 #### <a name="displayoptions-parameters"></a>DisplayOptions paraméterek
 
-| Név | Típus | Leírás |
+| Név | Típus | Description |
 | ---- | ---- |------------ |
 | Textsize értékének | Szám | Beállítja a kiválasztott szövegméret méretét. |
 | increaseSpacing | Logikai | Beállítja, hogy be-vagy kikapcsolja-e a szöveg térközét. |
@@ -487,11 +487,11 @@ Values available: "Calibri", "Sitka", "ComicSans"
 enum CookiePolicy { Disable, Enable }
 ```
 
-**Az alább felsorolt beállítások csak tájékoztató jellegűek** . A teljes olvasó tárolja a beállításait, vagy a felhasználói beállításokat a cookie-kon. Ez a *cookiePolicy* beállítás **letiltja** a cookie-k alapértelmezett használatát, hogy megfeleljen az EU cookie-megfelelőségi törvényeinek. Ha újra engedélyezni szeretné a cookie-kat, és vissza kívánja állítani az olvasói felhasználói beállítások alapértelmezett funkcióit, meg kell győződnie arról, hogy a webhely vagy alkalmazás beolvassa a felhasználótól a cookie-k engedélyezéséhez szükséges megfelelő engedélyt. Ezután, ha újra engedélyezni szeretné a cookie-kat a lebilincselő olvasóban, explicit módon be kell állítania a *cookiePolicy* beállítást a *cookiePolicy. Enable* értékre, amikor elindítja a lebilincselő olvasót. Az alábbi táblázat azt ismerteti, hogy milyen beállítások jelennek meg a saját cookie-ban, amikor a *cookiePolicy* beállítás engedélyezve van.
+**Az alább felsorolt beállítások csak tájékoztató jellegűek**. A teljes olvasó tárolja a beállításait, vagy a felhasználói beállításokat a cookie-kon. Ez a *cookiePolicy* beállítás **letiltja** a cookie-k alapértelmezett használatát, hogy megfeleljen az EU cookie-megfelelőségi törvényeinek. Ha újra engedélyezni szeretné a cookie-kat, és vissza kívánja állítani az olvasói felhasználói beállítások alapértelmezett funkcióit, meg kell győződnie arról, hogy a webhely vagy alkalmazás beolvassa a felhasználótól a cookie-k engedélyezéséhez szükséges megfelelő engedélyt. Ezután, ha újra engedélyezni szeretné a cookie-kat a lebilincselő olvasóban, explicit módon be kell állítania a *cookiePolicy* beállítást a *cookiePolicy. Enable* értékre, amikor elindítja a lebilincselő olvasót. Az alábbi táblázat azt ismerteti, hogy milyen beállítások jelennek meg a saját cookie-ban, amikor a *cookiePolicy* beállítás engedélyezve van.
 
 #### <a name="settings-parameters"></a>Beállítások paraméterei
 
-| Beállítás | Típus | Leírás |
+| Beállítás | Típus | Description |
 | ------- | ---- | ----------- |
 | Textsize értékének | Szám | Beállítja a kiválasztott szövegméret méretét. |
 | fontFamily | Sztring | Beállítja a kiválasztott betűkészletet ("Calibri", "ComicSans" vagy "Sitka"). |

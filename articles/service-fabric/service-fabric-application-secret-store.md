@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan használható a központi titkok t�
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.openlocfilehash: e9fd435803ad5354b0eb2d4f5de50009a8cbbfe2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88869755"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Központi titkok tárolása az Azure-ban Service Fabric 
@@ -84,7 +84,7 @@ Az alábbi lépéseket követve használhatja a titkos kulcsot a Service Fabric 
      </Section>
    ```
 
-1. Importálja **ApplicationManifest.xml**szakaszát.
+1. Importálja **ApplicationManifest.xml** szakaszát.
    ```xml
      <ServiceManifestImport>
        <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
@@ -120,7 +120,7 @@ A következő kódrészlet a módosított **ApplicationManifest.xml**.
    ```
    A Titkok a tárolón belüli csatlakoztatási pont alatt érhetők el.
 
-1. Megadhat egy titkos kulcsot egy folyamat környezeti változóhoz a következő megadásával: `Type='SecretsStoreRef` . Az alábbi kódrészlet egy példa arra, hogyan köthető a `supersecret` verzió a `ver1` környezeti változóhoz a `MySuperSecret` **ServiceManifest.xmlban **.
+1. Megadhat egy titkos kulcsot egy folyamat környezeti változóhoz a következő megadásával: `Type='SecretsStoreRef` . Az alábbi kódrészlet egy példa arra, hogyan köthető a `supersecret` verzió a `ver1` környezeti változóhoz a `MySuperSecret` **ServiceManifest.xmlban**.
 
    ```xml
    <EnvironmentVariables>

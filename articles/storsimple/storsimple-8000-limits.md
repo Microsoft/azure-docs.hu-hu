@@ -16,10 +16,10 @@ ms.date: 03/28/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 70f2d9542082ddf7ecf1d1e7361b0ecdb14c5ef8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68963375"
 ---
 # <a name="what-are-storsimple-8000-series-system-limits"></a>Mi a StorSimple 8000 Series rendszer korlátai?
@@ -60,6 +60,6 @@ Az I/O-típusok maximális átviteli sebességét 100%-os olvasási és 100%-os 
 
 Előfordulhat, hogy a 3. frissítés előtt &#42;&#42; teljesítmények száma alacsonyabb lehet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse át a [StorSimple rendszerkövetelményeit](storsimple-8000-system-requirements.md).
 

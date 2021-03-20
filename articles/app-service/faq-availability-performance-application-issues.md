@@ -10,10 +10,10 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: dfaeee6a6e2a9728d7e63fb5681c487fbbd6139e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88958999"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Az Azure-Web Apps alkalmazások teljesítményével kapcsolatos gyakori kérdések
@@ -32,11 +32,11 @@ Több tényező is hozzájárulhat a lassú alkalmazások teljesítményéhez. A
 
 ## <a name="how-do-i-troubleshoot-a-high-cpu-consumption-scenario"></a>Hogyan a nagy CPU-fogyasztási forgatókönyvet?
 
-Bizonyos nagy CPU-fogyasztási helyzetekben előfordulhat, hogy az alkalmazásnak több számítási erőforrásra van szüksége.Ebben az esetben érdemes lehet magasabb szolgáltatási szintet méretezni, hogy az alkalmazás megkapja az összes szükséges erőforrást. Más időpontokban a nagy CPU-felhasználás oka lehet rossz hurok vagy kódolási gyakorlat. Betekintést nyerhet a megnövelt CPU-fogyasztás indítására. Ez egy kétrészes folyamat. Először hozzon létre egy folyamat-memóriaképet, majd elemezze a folyamat memóriaképét. További információ: [a memóriakép rögzítése és elemzése a nagy CPU-fogyasztáshoz Web Apps](/archive/blogs/asiatech/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app).
+Bizonyos nagy CPU-fogyasztási helyzetekben előfordulhat, hogy az alkalmazásnak több számítási erőforrásra van szüksége. Ebben az esetben érdemes lehet magasabb szolgáltatási szintet méretezni, hogy az alkalmazás megkapja az összes szükséges erőforrást. Más időpontokban a nagy CPU-felhasználás oka lehet rossz hurok vagy kódolási gyakorlat. Betekintést nyerhet a megnövelt CPU-fogyasztás indítására. Ez egy kétrészes folyamat. Először hozzon létre egy folyamat-memóriaképet, majd elemezze a folyamat memóriaképét. További információ: [a memóriakép rögzítése és elemzése a nagy CPU-fogyasztáshoz Web Apps](/archive/blogs/asiatech/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app).
 
 ## <a name="how-do-i-troubleshoot-a-high-memory-consumption-scenario"></a>Hogyan a nagy memória-felhasználású forgatókönyvek hibakeresését?
 
-Néhány nagy mennyiségű memóriát használó alkalmazás esetében előfordulhat, hogy alkalmazása valóban több számítási erőforrást igényel.Ebben az esetben érdemes lehet magasabb szolgáltatási szintet méretezni, hogy az alkalmazás megkapja az összes szükséges erőforrást. Máskor a kódban szereplő hiba okozhatja a memória szivárgását. A kódolási gyakorlat A memóriahasználat növelését is növelheti.Betekintést nyerhet a nagy memória-használat aktiválására. Ez egy kétrészes folyamat. Először hozzon létre egy folyamat-memóriaképet, majd elemezze a folyamat memóriaképét. Az Azure site Extension Gallery összeomlás-diagnosztizálása hatékonyan hajthatja végre ezeket a lépéseket. További információ: a [memóriakép rögzítése és elemzése a Web Apps időszakos nagy memóriához](/archive/blogs/asiatech/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app).
+Néhány nagy mennyiségű memóriát használó alkalmazás esetében előfordulhat, hogy alkalmazása valóban több számítási erőforrást igényel. Ebben az esetben érdemes lehet magasabb szolgáltatási szintet méretezni, hogy az alkalmazás megkapja az összes szükséges erőforrást. Máskor a kódban szereplő hiba okozhatja a memória szivárgását. A kódolási gyakorlat A memóriahasználat növelését is növelheti. Betekintést nyerhet a nagy memória-használat aktiválására. Ez egy kétrészes folyamat. Először hozzon létre egy folyamat-memóriaképet, majd elemezze a folyamat memóriaképét. Az Azure site Extension Gallery összeomlás-diagnosztizálása hatékonyan hajthatja végre ezeket a lépéseket. További információ: a [memóriakép rögzítése és elemzése a Web Apps időszakos nagy memóriához](/archive/blogs/asiatech/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app).
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>Hogyan automatizálja App Service webalkalmazásokat a PowerShell használatával?
 
@@ -47,9 +47,9 @@ A PowerShell-parancsmagok használatával felügyelheti és karbantarthatja App 
 A webalkalmazás eseménynaplóinak megtekintése:
 
 1. Jelentkezzen be a **kudu webhelyére** ( `https://*yourwebsitename*.scm.azurewebsites.net` ).
-2. A menüben válassza a **Debug konzol**  >  **cmd**elemet.
+2. A menüben válassza a **Debug konzol**  >  **cmd** elemet.
 3. Válassza a **naplófájlok** mappát.
-4. Az eseménynaplók megtekintéséhez válassza a **eventlog.xml**melletti ceruza ikont.
+4. Az eseménynaplók megtekintéséhez válassza a **eventlog.xml** melletti ceruza ikont.
 5. A naplók letöltéséhez futtassa a PowerShell-parancsmagot `Save-AzureWebSiteLog -Name webappname` .
 
 ## <a name="how-do-i-capture-a-user-mode-memory-dump-of-my-web-app"></a>Hogyan a webalkalmazás felhasználói módú memóriaképének rögzítése?
@@ -59,7 +59,7 @@ A webalkalmazás felhasználói módú memóriaképének rögzítése:
 1. Jelentkezzen be a **kudu webhelyére** ( `https://*yourwebsitename*.scm.azurewebsites.net` ).
 2. Válassza a **Process Explorer** menüt.
 3. Kattintson a jobb gombbal a **w3wp.exe** folyamatra vagy a webjobs folyamatra.
-4. Válassza a memóriakép **letöltése**  >  **teljes memóriakép**lehetőséget.
+4. Válassza a memóriakép **letöltése**  >  **teljes memóriakép** lehetőséget.
 
 ## <a name="how-do-i-view-process-level-info-for-my-web-app"></a>Hogyan megtekintheti a webalkalmazás folyamat-szintű adatait?
 
@@ -71,7 +71,7 @@ A webalkalmazáshoz tartozó folyamat-szintű információk megtekintésére ké
 *   A kudu-konzolon:
     1. Jelentkezzen be a **kudu webhelyére** ( `https://*yourwebsitename*.scm.azurewebsites.net` ).
     2. Válassza a **Process Explorer** menüt.
-    3. A **w3wp.exe** folyamatnál válassza a **Tulajdonságok**lehetőséget.
+    3. A **w3wp.exe** folyamatnál válassza a **Tulajdonságok** lehetőséget.
 
 ## <a name="when-i-browse-to-my-app-i-see-error-403---this-web-app-is-stopped-how-do-i-resolve-this"></a>Amikor megkeresem az alkalmazást, "hiba 403 – ez a webalkalmazás leállt" hibaüzenet jelenik meg. Hogyan oldhatom meg ezt?
 
@@ -93,22 +93,22 @@ Alapértelmezés szerint a webalkalmazások el lesznek távolítva, ha egy megha
 
 1. A Azure Portal nyissa meg a webalkalmazást.
 2. **Konfiguráció** kiválasztása
-3. Válassza az **általános beállítások**lehetőséget.
-4. Az **Always On**beállításnál válassza **a be**lehetőséget.
+3. Válassza az **általános beállítások** lehetőséget.
+4. Az **Always On** beállításnál válassza **a be** lehetőséget.
 
 ## <a name="how-do-i-turn-on-failed-request-tracing"></a>Hogyan bekapcsolni a sikertelen kérelmek nyomkövetését?
 
 A sikertelen kérelmek nyomkövetésének bekapcsolása:
 
 1. A Azure Portal nyissa meg a webalkalmazást.
-3. Válassza **a minden beállítás**  >  **diagnosztikai naplók**lehetőséget.
-4. A **Sikertelen kérelmek nyomkövetéséhez**válassza **a be**lehetőséget.
+3. Válassza **a minden beállítás**  >  **diagnosztikai naplók** lehetőséget.
+4. A **Sikertelen kérelmek nyomkövetéséhez** válassza **a be** lehetőséget.
 5. Kattintson a **Mentés** gombra.
-6. A Web App (webalkalmazás) panelen válassza az **eszközök**lehetőséget.
-7. Válassza a **Visual Studio online**lehetőséget.
-8. Ha a beállítás nincs **bekapcsolva**, válassza **a be**lehetőséget.
-9. Válassza az **Indítás**lehetőséget.
-10. Válassza a **Web.config**lehetőséget.
+6. A Web App (webalkalmazás) panelen válassza az **eszközök** lehetőséget.
+7. Válassza a **Visual Studio online** lehetőséget.
+8. Ha a beállítás nincs **bekapcsolva**, válassza **a be** lehetőséget.
+9. Válassza az **Indítás** lehetőséget.
+10. Válassza a **Web.config** lehetőséget.
 11. A System. webserverben adja hozzá ezt a konfigurációt (egy adott URL-cím rögzítéséhez):
 
     ```xml
@@ -142,9 +142,9 @@ A sikertelen kérelmek nyomkövetésének bekapcsolása:
     </tracing>
     ```
 13. A sikertelen kérelmek nyomkövetésének letöltéséhez nyissa meg a webhelyet a [portálon](https://portal.azure.com).
-15. Válassza az **eszközök**  >  **kudu**  >  **Go**lehetőséget.
-18. A menüben válassza a **Debug konzol**  >  **cmd**elemet.
-19. Jelölje ki a **naplófájlok** mappát, majd válassza ki azt a mappát, amelynek a neve a **W3SVC**karakterlánccal kezdődik.
+15. Válassza az **eszközök**  >  **kudu**  >  **Go** lehetőséget.
+18. A menüben válassza a **Debug konzol**  >  **cmd** elemet.
+19. Jelölje ki a **naplófájlok** mappát, majd válassza ki azt a mappát, amelynek a neve a **W3SVC** karakterlánccal kezdődik.
 20. Az XML-fájl megtekintéséhez válassza a ceruza ikont.
 
 ## <a name="i-see-the-message-worker-process-requested-recycle-due-to-percent-memory-limit-how-do-i-address-this-issue"></a>"A (z)" munkavégző folyamat újrahasznosítása a "memória százalékos korlátja miatt" üzenet jelenik meg. Hogyan a probléma megoldásához?

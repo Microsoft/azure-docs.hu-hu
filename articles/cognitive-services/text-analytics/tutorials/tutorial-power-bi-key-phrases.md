@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: aahi
-ms.openlocfilehash: 8444ae08aa2c25c20723b2f8c571422af3b24bc8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 47feddb88fd7ddae1f8be54709019b4c339d177d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736678"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599170"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Oktatóanyag: Power BI integrálása a Text Analytics Cognitive Services-szolgáltatásba
 
@@ -190,7 +190,7 @@ Most pedig ezzel az oszloppal létrehozunk egy szófelhőt. Első lépésként k
 > [!NOTE]
 > Miért a kivonatolt kulcskifejezéseket használjuk a szófelhő létrehozásához a megjegyzések teljes szövege helyett? A kulcskifejezések az ügyfelek megjegyzéseiből a *fontos* és nem egyszerűen csak a *leggyakoribb* szavakat tartalmazzák. Emellett a szavak méretezését így nem torzítja az, ha valamely szó csak szűk számú megjegyzésben fordul elő nagyon gyakran.
 
-Ha a Word Cloud (Szófelhő) egyéni vizualizációt még nem telepítette, tegye meg. A munkaterület jobb oldalán lévő Vizualizációk panelen kattintson a három pontra (**...**), és válassza az **Importálás az áruházból** lehetőséget. Ezután keressen rá a „cloud” (felhő) kifejezésre, és kattintson a **Hozzáadás** gombra a Word Cloud (Szófelhő) vizualizáció mellett. A Power BI telepíti a szófelhő vizualizációt, és tájékoztatja, amint ez sikeresen megtörtént.
+Ha a Word Cloud (Szófelhő) egyéni vizualizációt még nem telepítette, tegye meg. A munkaterület jobb oldalán található vizualizációk panelen kattintson a három pontra (**...**), majd válassza az **Importálás a piacról** lehetőséget. Ha a "felhő" szó nem szerepel a listában megjelenített vizualizációs eszközök között, megkeresheti a "felhő" kifejezést, majd kattintson a **Hozzáadás** gombra a Word Cloud vizualizáció mellett. A Power BI telepíti a szófelhő vizualizációt, és tájékoztatja, amint ez sikeresen megtörtént.
 
 ![[egyéni vizualizáció hozzáadása]](../media/tutorials/power-bi/add-custom-visuals.png)<br><br>
 
@@ -200,7 +200,7 @@ Először kattintson a szófelhő ikonjára a Vizualizációk panelen.
 
 Egy új jelentés jelenik meg a munkaterületen. Húzza a `keyphrases` mezőt a Mezők panelről a Vizualizációk panel Kategória mezőjébe. A szófelhő megjelenik a jelentésben.
 
-Most váltson a Vizualizációk panel Formátum lapjára. A Stopszavak kategóriában kapcsolja be az **Alapértelmezett stopszavak** beállítást a rövid és gyakori szavak (például a névelők) kiszűréséhez a felhőből. 
+Most váltson a Vizualizációk panel Formátum lapjára. A Stopszavak kategóriában kapcsolja be az **Alapértelmezett stopszavak** beállítást a rövid és gyakori szavak (például a névelők) kiszűréséhez a felhőből. Mivel azonban a legfontosabb kifejezéseket jeleníti meg, előfordulhat, hogy nem tartalmaznak leállítási szavakat.
 
 ![[az alapértelmezett stopszavak aktiválása]](../media/tutorials/power-bi/default-stop-words.png)
 
@@ -232,8 +232,7 @@ Az alábbi hangulatelemzési függvény egy pontszámot ad vissza, amely a szöv
     headers     = [#"Ocp-Apim-Subscription-Key" = apikey],
     bytesresp   = Web.Contents(endpoint, [Headers=headers, Content=bytesbody]),
     jsonresp    = Json.Document(bytesresp),
-    sentiment   = jsonresp[documents]{0}[confidenceScores]
-in  sentiment
+    sentiment   = jsonresp[documents]{0}[detectedLanguage][confidenceScore] in  sentiment
 ```
 
 Íme két változat egy nyelvfelismerési függvényre. Az első a nyelv ISO-kódját adja vissza (például az angol esetében: `en`), a második pedig a közkeletű nevét (például: `English`). Észreveheti, hogy a két változat között csak a törzs utolsó sorában van eltérés.
@@ -249,8 +248,7 @@ in  sentiment
     headers     = [#"Ocp-Apim-Subscription-Key" = apikey],
     bytesresp   = Web.Contents(endpoint, [Headers=headers, Content=bytesbody]),
     jsonresp    = Json.Document(bytesresp),
-    language    = jsonresp[documents]{0}[detectedLanguages]{0}[iso6391Name]
-in  language
+    language    = jsonresp [documents]{0}[detectedLanguage] [iso6391Name] in language 
 ```
 ```fsharp
 // Returns the name (for example, 'English') of the language in which the text is written
@@ -263,8 +261,7 @@ in  language
     headers     = [#"Ocp-Apim-Subscription-Key" = apikey],
     bytesresp   = Web.Contents(endpoint, [Headers=headers, Content=bytesbody]),
     jsonresp    = Json.Document(bytesresp),
-    language    = jsonresp[documents]{0}[detectedLanguages]{0}[name]
-in  language
+    language    jsonresp [documents]{0}[detectedLanguage] [iso6391Name] in language 
 ```
 
 Végezetül íme a korábban bemutatott Key Phrases-függvény egy olyan változata, amely a kifejezéseket nem egyetlen, vesszővel tagolt sztringként, hanem listaobjektumként adja vissza. 

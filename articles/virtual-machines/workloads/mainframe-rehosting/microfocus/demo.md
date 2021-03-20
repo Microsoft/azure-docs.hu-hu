@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: 2d48c767b836771600b3491299e0bdb33aacb75b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98733149"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>A Micro Focus CICS BankDemo beállítása a Micro Focus Enterprise Developer 4,0 Azure-beli fejlesztéséhez
@@ -270,7 +270,7 @@ A végső teendő a 3270-munkamenet konfigurálása a rumba, a 3270 Emulator has
 
 Gratulálunk! Mostantól egy CICS alkalmazást futtat az Azure-ban a Micro Focus Enterprise Server használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Vállalati kiszolgáló futtatása Docker-tárolókban az Azure-ban](run-enterprise-server-container.md)
 - [Nagyszámítógép-áttelepítés – portál](/archive/blogs/azurecat/mainframe-migration-to-azure-portal)

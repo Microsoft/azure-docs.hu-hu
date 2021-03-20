@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 09/14/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 9904fb8c2142816196a1939a16445318bdb245d0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91262314"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-docker-cli"></a>Gyors útmutató: tároló-példány üzembe helyezése az Azure-ban a Docker CLI használatával
@@ -19,12 +19,12 @@ Ebben a rövid útmutatóban natív Docker CLI-parancsokat használ a Docker-tá
 
 :::image type="content" source="media/quickstart-docker-cli/view-application-running-in-an-azure-container-instance.png" alt-text="Az Azure Container Instances használatával üzembe helyezett alkalmazás képe a böngészőben":::
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot][azure-account], mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot][azure-account].
 
 Ebben a rövid útmutatóban a [Windows](https://desktop.docker.com/win/edge/Docker%20Desktop%20Installer.exe) vagy [MacOS](https://desktop.docker.com/mac/edge/Docker.dmg)rendszerhez elérhető Docker Desktop 2.3.0.5 vagy újabb verzióra van szükség. Vagy telepítse a [Docker ACI Integration CLI-t a Linux rendszerhez](https://docs.docker.com/engine/context/aci-integration/#install-the-docker-aci-integration-cli-on-linux). 
 
 > [!IMPORTANT]
-> A Azure Container Instances egyik funkciója sem támogatott. Küldjön visszajelzést a Docker-Azure-integrációról azáltal, hogy problémát hoz létre az [ACI-Integration-Beta GitHub-](https://github.com/docker/aci-integration-beta) tárházban.
+> A Azure Container Instances egyik funkciója sem támogatott. Küldjön visszajelzést a Docker-Azure integrációról az [ACI-Integration-Beta GitHub-](https://github.com/docker/aci-integration-beta) tárházban felmerülő probléma létrehozásával.
 
 [!INCLUDE [container-instances-create-docker-context](../../includes/container-instances-create-docker-context.md)]
 
@@ -100,7 +100,7 @@ docker rm hungry-kirch
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy Azure Container-példányt egy nyilvános rendszerképből a Docker és az Azure közötti integráció használatával. További információ az integrációs forgatókönyvekről a [Docker dokumentációjában](https://docs.docker.com/engine/context/aci-integration/). 
 

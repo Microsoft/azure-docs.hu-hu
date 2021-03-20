@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/4/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9ca8df21e0221d364f75eaeb26f0b2961d7e0b08
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: dcd58e966da7ca596a14ca1b2839cbeb6399a855
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204377"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104576458"
 ---
 # <a name="cloud-tiering-overview"></a>A felhőalapú rétegek áttekintése
 A felhő-rétegek Azure File Sync választható funkciója csökkenti a szükséges helyi tárterület mennyiségét a helyszíni fájlkiszolgáló teljesítményének megőrzése mellett.
@@ -39,7 +39,7 @@ A **Date Policy** használatával a lassú fájlok a felhőbe vannak bontva, ha 
 További példák a dátum-és adatmennyiség-házirend együttes együttműködésének módjáról: [Azure file Sync felhőalapú rétegek kiválasztására vonatkozó szabályzatok kiválasztása](storage-sync-choose-cloud-tiering-policies.md).
 
 ### <a name="windows-server-data-deduplication"></a>A Windows Server-adatmásolási szolgáltatás
-Az deduplikálás olyan köteteken támogatott, amelyeken engedélyezve van a felhőalapú rétegek használata a Windows Server 2016-es verziójától kezdve. További részletekért tekintse [meg a Azure file Sync központi telepítésének megtervezése](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#data-deduplication)című témakört.
+Az deduplikálás olyan köteteken támogatott, amelyeken engedélyezve van a felhőalapú rétegek használata a Windows Server 2016-es verziójától kezdve. További részletekért tekintse [meg a Azure file Sync központi telepítésének megtervezése](./storage-sync-files-planning.md#data-deduplication)című témakört.
 
 ### <a name="cloud-tiering-heatmap"></a>Felhőalapú rétegek hő
 Azure File Sync figyeli a fájlokhoz való hozzáférést (olvasási és írási műveleteket) az idő múlásával, és a gyakori és a legutóbbi hozzáféréstől függően minden fájlhoz hozzárendel egy hő pontszámot. Ezeket a pontszámokat használja a névtér "hő" létrehozásához az egyes kiszolgálói végpontokon. Ez a hő egy olyan helyen található összes szinkronizált fájl listája, amelyen engedélyezve van a Felhőbeli rétegek használata, és amelyeket a hő pontszáma alapján rendeznek. A legutóbb megnyitott fájlok gyakran melegnek számítanak, míg a ritkán megérintett fájlok és a nem férnek hozzá egy ideig. 
@@ -109,4 +109,3 @@ A fájlok részlegesen is elhelyezhetők (vagy részben visszahívható). Egy r�
 ## <a name="next-steps"></a>Következő lépések
 * [Válassza ki Azure File Sync a felhőre vonatkozó szintű szabályzatokat](storage-sync-choose-cloud-tiering-policies.md)
 * [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)
-

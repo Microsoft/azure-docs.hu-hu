@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 54b6ae227fc4b3b951717799660543c02874dda0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88919658"
 ---
 # <a name="odata-select-syntax-in-azure-cognitive-search"></a>OData $select szintaxis az Azure-ban Cognitive Search
@@ -57,7 +57,7 @@ A **$Select** paraméter két formában jön:
 
 A második űrlap használatakor csak lekérhető mezőket adhat meg a listában.
 
-Ha az almezők explicit módon való megadása nélkül listáz egy összetett mezőt, az összes beolvasható almező belekerül a lekérdezési eredményhalmazba. Tegyük fel például, hogy az indexnek van egy `Address` mezője a `Street` , a `City` és az `Country` Almező, amely minden lekérdezhető. Ha `Address` **$selectban**adja meg, a lekérdezés eredménye mindhárom almezőt tartalmazni fogja.
+Ha az almezők explicit módon való megadása nélkül listáz egy összetett mezőt, az összes beolvasható almező belekerül a lekérdezési eredményhalmazba. Tegyük fel például, hogy az indexnek van egy `Address` mezője a `Street` , a `City` és az `Country` Almező, amely minden lekérdezhető. Ha `Address` **$selectban** adja meg, a lekérdezés eredménye mindhárom almezőt tartalmazni fogja.
 
 ## <a name="examples"></a>Példák
 
@@ -112,7 +112,7 @@ Egy példa eredménye a következőképpen néz ki:
 }
 ```
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 - [Keresési eredmények használata az Azure-ban Cognitive Search](search-pagination-page-layout.md)
 - [Az Azure Cognitive Search OData kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)

@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/27/2021
+ms.date: 03/18/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a39230cc65db6ef12b6fa4364454aeb434efddf6
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 2ec67669edeb52af1044c97c984eb6ba36fd1a0b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918212"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579637"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>Oktatóanyag: webalkalmazás regisztrálása a Azure Active Directory B2Cban
 
@@ -80,7 +80,7 @@ Ha webalkalmazást szeretne regisztrálni a Azure AD B2C-bérlőben, használhat
 
 ## <a name="create-a-client-secret"></a>Ügyfél titkos kulcsának létrehozása
 
-Webalkalmazások esetén létre kell hoznia egy alkalmazás titkos kulcsát. Ezt a titkot fogja használni az alkalmazás egy hozzáférési jogkivonat engedélyezési kódjának cseréjére.
+Webalkalmazások esetén létre kell hoznia egy alkalmazás titkos kulcsát. Az ügyfél titkos kulcsát *alkalmazás jelszavának* is nevezik. Az alkalmazás a titkos kulcsot fogja használni egy hozzáférési jogkivonat engedélyezési kódjának cseréjéhez.
 
 #### <a name="app-registrations"></a>[Alkalmazásregisztrációk](#tab/app-reg-ga/)
 
@@ -89,7 +89,7 @@ Webalkalmazások esetén létre kell hoznia egy alkalmazás titkos kulcsát. Ezt
 1. Válassza az **Új titkos ügyfélkód** lehetőséget.
 1. Adja meg az ügyfél titkos kódjának leírását a **Leírás** mezőben. Például: *clientsecret1*.
 1. A **lejárat** szakaszban válassza ki azt az időtartamot, amelynek a titka érvényes, majd válassza a **Hozzáadás** lehetőséget.
-1. Jegyezze fel a titkos kulcs **értékét**. Ezt az értéket használja az alkalmazás kódjában található alkalmazás-titokként.
+1. Jegyezze fel a titkos kulcs **értékét** az ügyfélalkalmazás kódjában való használathoz. Ez a titkos érték soha nem jelenik meg többé, miután elhagyja ezt a lapot. Ezt az értéket használja az alkalmazás kódjában található alkalmazás-titokként.
 
 #### <a name="applications-legacy"></a>[Alkalmazások (örökölt)](#tab/applications-legacy/)
 
@@ -98,6 +98,9 @@ Webalkalmazások esetén létre kell hoznia egy alkalmazás titkos kulcsát. Ezt
 1. Kattintson a **Save (Mentés** ) gombra a kulcs megtekintéséhez. Jegyezze fel az **Alkalmazáskulcs** értékét. Ezt az értéket használja az alkalmazás kódjában található alkalmazás-titokként.
 
 * * *
+
+> [!NOTE]
+> Biztonsági okokból rendszeres időközönként, vagy vészhelyzet esetén azonnal átadhatja az alkalmazás titkos kulcsát. Az Azure AD B2C-mel integrált alkalmazások számára elő kell készíteni a titkos átváltási esemény kezelését, függetlenül attól, hogy milyen gyakran fordul elő. Megadhat két alkalmazás-titkot, így az alkalmazás a régi titkot használja egy alkalmazás titkos rotációs eseménye során. További ügyfél-titkos kód hozzáadásához ismételje meg a szakasz lépéseit. 
 
 ## <a name="enable-id-token-implicit-grant"></a>AZONOSÍTÓ jogkivonat implicit engedélyezésének engedélyezése
 

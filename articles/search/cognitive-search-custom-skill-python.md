@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 40e20ad4bab0275b44cd868521c7dc70dec52567
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88936129"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Példa: egyéni szakértelem létrehozása a Python használatával
@@ -44,12 +44,12 @@ A Visual Studio Code Azure Functions projektsablonja egy olyan projektet hoz lé
 
 1. A Visual Studio Code-ban nyomja le az F1 billentyűt a parancs paletta megnyitásához. A parancs palettáján keresse meg és válassza ki a következőt: `Azure Functions: Create new project...` .
 
-1. Válasszon egy címtárbeli helyet a projekt munkaterülethez, és válassza a **kiválasztás**lehetőséget.
+1. Válasszon egy címtárbeli helyet a projekt munkaterületéhez, és kattintson a **Kiválasztás** lehetőségre.
 
     > [!NOTE]
     > Ezeket a lépéseket úgy tervezték, hogy a munkaterületen kívül is el lehessen végezni. Ezért ne válasszon olyan projekt-mappát, amely a munkaterület részét képezi.
 
-1. Válassza ki a Function app-projekt nyelvét. Ebben az oktatóanyagban válassza a **Python**lehetőséget.
+1. Válassza ki a Function app-projekt nyelvét. Ebben az oktatóanyagban válassza a **Python** lehetőséget.
 1. Válassza ki a Python-verziót (a 3.7.5 verzióját a Azure Functions támogatja)
 1. Válassza ki a projekt első függvényének sablonját. Válassza a **http-trigger** lehetőséget egy http által aktivált függvény létrehozásához az új Function alkalmazásban.
 1. Adja meg a függvény nevét. Ebben az esetben használja az **összefűzést** 
@@ -172,7 +172,7 @@ A **transform_value** metódus egyetlen rekordon hajt végre műveletet. Az adot
 
 ### <a name="debug-your-code-locally"></a>A kód hibakeresése helyileg
 
-A Visual Studio Code megkönnyíti a kód hibakeresését. Nyomja le az F5 billentyűt, vagy lépjen a **hibakeresés** menüre, és válassza a **hibakeresés indítása**lehetőséget.
+A Visual Studio Code megkönnyíti a kód hibakeresését. Nyomja le az F5 billentyűt, vagy lépjen a **hibakeresés** menüre, és válassza a **hibakeresés indítása** lehetőséget.
 
 A kód bármely töréspontját beállíthatja úgy, hogy az "F9" elemre kattint az adott sorban.
 
@@ -264,7 +264,7 @@ Most, hogy már rendelkezik egy új egyéni képességgel, hozzáadhatja a kész
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Gratulálunk! Létrehozta az első egyéni szaktudását. Mostantól ugyanezt a mintát követheti saját egyéni funkcióinak hozzáadásával is. További információért kattintson az alábbi hivatkozásokra.
 
 + [Energiaellátási készségek: az egyéni képességek tárháza](https://github.com/Azure-Samples/azure-search-power-skills)

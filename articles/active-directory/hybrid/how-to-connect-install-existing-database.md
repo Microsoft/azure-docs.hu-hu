@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a8324b82a05d7e78772e0b0b6de3a9bfaa183411
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91265391"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Az Azure AD Connect telepítése meglévő ADSync-adatbázis használatával
@@ -67,7 +67,7 @@ Fontos megjegyzések a folytatás előtt jegyezze fel a következőt:
 ![PowerShell](./media/how-to-connect-install-existing-database/db2.png)
 1. Megjelenik az Azure AD Connect üdvözlőképernyője. A licencfeltételek és az adatvédelmi nyilatkozat elfogadása után kattintson a **Folytatás** gombra.
    ![Képernyőfelvétel: "Üdvözöljük az Azure A D-vel" oldal](./media/how-to-connect-install-existing-database/db3.png)
-1. **A szükséges összetevők telepítése** képernyőn a **Meglévő SQL Server használata** lehetőség engedélyezve van. Adja meg az ADSync-adatbázist futtató SQL Server nevét. Ha az ADSync-adatbázist futtató SQL-motorpéldány nem az alapértelmezett példány az SQL Serveren, meg kell adnia az SQL-motorpéldány nevét. Ha az SQL-böngészés nincs engedélyezve, meg kell adnia az SQL-motorpéldány portszámát is. Példa:         
+1. **A szükséges összetevők telepítése** képernyőn a **Meglévő SQL Server használata** lehetőség engedélyezve van. Adja meg az ADSync-adatbázist futtató SQL Server nevét. Ha az ADSync-adatbázist futtató SQL-motorpéldány nem az alapértelmezett példány az SQL Serveren, meg kell adnia az SQL-motorpéldány nevét. Ha az SQL-böngészés nincs engedélyezve, meg kell adnia az SQL-motorpéldány portszámát is. Például:         
    ![A "szükséges összetevők telepítése" lapot megjelenítő képernyőkép.](./media/how-to-connect-install-existing-database/db4.png)           
 
 1. A **Azure AD-hez való csatlakozásra** szolgáló képernyőn meg kell adnia az Azure AD-címtár globális rendszergazdájának hitelesítő adatait. Javasoljuk, hogy az alapértelmezett onmicrosoft.com tartományban található fiókot használjon. Ez a fiók kizárólag egy Azure AD-szolgáltatásfiók létrehozására lesz használva, és csak a varázsló befejeztéig.
@@ -82,13 +82,13 @@ Fontos megjegyzések a folytatás előtt jegyezze fel a következőt:
 1. A hitelesítő adatok megadása után a piros kereszt ikon egy zöld pipa ikonra változik. Kattintson a **Tovább** gombra.
    ![Képernyőfelvétel: "a címtárak összekapcsolása" oldal megjelenítése.](./media/how-to-connect-install-existing-database/db8.png)
  
-1. A **konfigurálásra kész** képernyőn kattintson a **telepítés**elemre.
+1. A **konfigurálásra kész** képernyőn kattintson a **telepítés** elemre.
    ![Üdvözlőképernyő](./media/how-to-connect-install-existing-database/db9.png)
  
 1. Miután a telepítés befejeződött, az Azure AD Connect-kiszolgáló automatikusan engedélyezve lesz az átmeneti módhoz. Javasoljuk, hogy az átmeneti mód letiltása előtt ellenőrizze a kiszolgáló konfigurációját és a függőben lévő exportálásokat, nehogy nem várt módosításokkal kelljen számolnia. 
 
 ## <a name="post-installation-tasks"></a>Telepítés utáni feladatok
-A 1.2.65.0 előtti Azure AD Connect-verzióval létrehozott adatbázis biztonsági másolatának visszaállításakor az átmeneti kiszolgáló automatikusan kiválasztja a **nem konfigurált**bejelentkezési módszert. Amíg a jelszó-kivonat szinkronizálása és a jelszó visszaírási beállításai visszaállnak, ezt követően módosítania kell a bejelentkezési módszert, hogy az megfeleljen az aktív szinkronizációs kiszolgálóra érvényes egyéb házirendeknek.  A lépések elvégzésének elmulasztása megakadályozhatja, hogy a felhasználók bejelentkezzenek, ha a kiszolgáló aktívvá válik.  
+A 1.2.65.0 előtti Azure AD Connect-verzióval létrehozott adatbázis biztonsági másolatának visszaállításakor az átmeneti kiszolgáló automatikusan kiválasztja a **nem konfigurált** bejelentkezési módszert. Amíg a jelszó-kivonat szinkronizálása és a jelszó visszaírási beállításai visszaállnak, ezt követően módosítania kell a bejelentkezési módszert, hogy az megfeleljen az aktív szinkronizációs kiszolgálóra érvényes egyéb házirendeknek.  A lépések elvégzésének elmulasztása megakadályozhatja, hogy a felhasználók bejelentkezzenek, ha a kiszolgáló aktívvá válik.  
 
 Az alábbi táblázat segítségével ellenőrizheti a szükséges további lépéseket.
 

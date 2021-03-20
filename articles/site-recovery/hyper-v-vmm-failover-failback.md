@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: d31355bcb0ce42874c19988738ba06138c7a0b7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74082602"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>A másodlagos helyszíni helyre replikált Hyper-V virtuális gépek feladatátvétele és feladatátvétele
@@ -66,11 +66,11 @@ A Hyper-V virtuális gépekhez rendszeres vagy tervezett feladatátvételt is fu
 Indítsa el a replikálást a másodlagos helyről az elsődlegesre, és hajtsa végre a feladat-visszavételt az elsődleges helyre. Miután a virtuális gépek újra futnak az elsődleges helyen, replikálhatja őket a másodlagos helyre.  
 
  
-1. Kattintson a virtuális gépre > kattintson a **visszirányú replikálás**elemre.
-2. Miután a feladatok befejeződik, kattintson a virtuális gép >a **feladatátvétel**elemre, ellenőrizze a feladatátvétel irányát (másodlagos VMM felhőből), majd válassza ki a forrás-és a célhelyeket. 
+1. Kattintson a virtuális gépre > kattintson a **visszirányú replikálás** elemre.
+2. Miután a feladatok befejeződik, kattintson a virtuális gép >a **feladatátvétel** elemre, ellenőrizze a feladatátvétel irányát (másodlagos VMM felhőből), majd válassza ki a forrás-és a célhelyeket. 
 4. Indítsa el a feladatátvételt. A feladatátvételi folyamatot a **Feladatok** lapon követheti nyomon.
 5. Az elsődleges VMM felhőben győződjön meg arról, hogy a virtuális gép elérhető.
-6. Ha újra meg szeretné kezdeni az elsődleges virtuális gép replikálását a másodlagos helyre, kattintson a **visszirányú replikálás**elemre.
+6. Ha újra meg szeretné kezdeni az elsődleges virtuális gép replikálását a másodlagos helyre, kattintson a **visszirányú replikálás** elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Tekintse át a](hyper-v-vmm-disaster-recovery.md) Hyper-V virtuális gépek másodlagos helyre történő replikálásának lépéseit.

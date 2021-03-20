@@ -9,10 +9,10 @@ ms.date: 09/25/2019
 ms.author: mjbrown
 ms.custom: devx-track-csharp
 ms.openlocfilehash: edb6114406922d55c439ae7426a2be933bba4aee
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93334089"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Nem particionált tárolók áttelepíthetők particionált tárolók számára
@@ -20,7 +20,7 @@ ms.locfileid: "93334089"
 
 Azure Cosmos DB támogatja a tárolók partíciós kulcs nélküli létrehozását. Jelenleg nem particionált tárolókat hozhat létre az Azure CLI és a Azure Cosmos DB SDK-k (.net, Java, NodeJs) használatával, amelyek verziója kisebb vagy egyenlő, mint 2. x. Nem particionált tárolók nem hozhatók létre a Azure Portal használatával. Azonban az ilyen nem particionált tárolók nem rugalmasak, és a rögzített tárolókapacitás 20 GB és a maximális átviteli sebesség (10K RU/s).
 
-A nem particionált tárolók örököltek, és a tárolók és az átviteli sebesség méretezéséhez át kell telepítenie a meglévő nem particionált tárolókat a particionált tárolók között. A Azure Cosmos DB rendszer által meghatározott mechanizmust biztosít a nem particionált tárolók particionált tárolóba való átadásához. Ez a dokumentum azt ismerteti, hogy a meglévő, nem particionált tárolók hogyan lesznek automatikusan áttelepítve a particionált tárolókban. Az automatikus áttelepítési funkciót csak akkor használhatja ki, ha az SDK-k v3-as verzióját használja az összes nyelven.
+A nem particionált tárolók elavultak, ezért migrálja meglévő nem particionált tárolóit particionált tárolókba a tárterület és az adatátviteli sebesség skálázása érdekében. Az Azure Cosmos DB tartalmaz egy, a rendszer által meghatározott mechanizmust, amellyel a nem particionált tárolók particionált tárolóba migrálhatók. Ez a dokumentum a meglévő, nem particionált tárolók particionált tárolókba való automatikus migrálásának menetét ismerteti. Az automatikus migrálási funkció csak akkor használható, ha az összes nyelven V3 verziójú SDK-kat használ.
 
 > [!NOTE]
 > Jelenleg nem telepíthet át Azure Cosmos DB MongoDB és Gremlin API-fiókokat a jelen dokumentumban ismertetett lépések segítségével.
@@ -129,7 +129,7 @@ Ha a v2 SDK-val beszúrt elemek esetében a v3 SDK-val kérdez le, vagy a v3 SDK
 
 Ha az új elemek a partíciós kulcs különböző értékeivel vannak beszúrva, az ilyen elemek számának lekérdezése a megfelelő kulcs beadásával `FeedOptions` nem fog problémát okozni. Miután új dokumentumokat szúrt be a partíciós kulccsal, ha csak a dokumentumok darabszámát kell lekérdezni a partíciós kulcs értéke nélkül, a lekérdezés ismét magasabb RU/s-t eredményezhet a normál particionált gyűjteményekhez hasonló módon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Particionálás az Azure Cosmos DB-ben](partitioning-overview.md)
 * [Az Azure Cosmos DB kérelemegységei](request-units.md)

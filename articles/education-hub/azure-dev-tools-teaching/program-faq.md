@@ -8,10 +8,10 @@ ms.subservice: education-hub
 ms.topic: overview
 ms.date: 06/30/2020
 ms.openlocfilehash: cb283380487310165c646c8615d10a545d1a923b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92675695"
 ---
 # <a name="frequently-asked-questions-about-the-education-hub"></a>Gyakran ismételt kérdések a Education-központ
@@ -172,7 +172,7 @@ Machine Learning Server (korábban R Server)<br>
 Hyper-V Server<br>
 Microsoft Project<br>
 A Visual studióhoz készült távoli eszközök<br>
-SharePoint Server<br>
+SharePoint-kiszolgáló<br>
 Skype Vállalati kiszolgáló<br>
    :::column-end:::
    :::column span="":::
@@ -252,8 +252,8 @@ Ha továbbra sem tud bejelentkezni, forduljon az előfizetés rendszergazdájáh
 
 ### <a name="how-do-i-find-my-subscriber-id"></a>Hogyan megkeresni az előfizetői azonosítót?
 
-- **Amikor először regisztrálja a programot** : az előfizetői azonosító a kapott előfizetés-üdvözlő e-mailben szerepel.
-- **Ha megújította az előfizetését** : az előfizetői azonosító az előfizetés-rendszergazda által fogadott megújítási e-mailben szerepel.
+- **Amikor először regisztrálja a programot**: az előfizetői azonosító a kapott előfizetés-üdvözlő e-mailben szerepel.
+- **Ha megújította az előfizetését**: az előfizetői azonosító az előfizetés-rendszergazda által fogadott megújítási e-mailben szerepel.
 
 Az előfizetői azonosító a Visual Studio Subscription portálon is elérhető. Miután bejelentkezett, tekintse meg az **előfizetést** a **fiókom oldalon.**
 

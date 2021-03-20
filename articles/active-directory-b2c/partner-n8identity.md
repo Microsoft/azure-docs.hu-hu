@@ -12,10 +12,10 @@ ms.date: 10/26/2020
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: 337275cef0f2159cb5fac40ac0435408baf3bbef
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96170922"
 ---
 # <a name="tutorial-for-configuring-theaccesshub-admin-tool-with-azure-active-directory-b2c"></a>Oktatóanyag a TheAccessHub felügyeleti eszköz konfigurálásához Azure Active Directory B2C
@@ -52,7 +52,7 @@ A TheAccessHub felügyeleti eszköz az Azure bármely más alkalmazásához haso
 
 ![N8identity architektúra diagramot ábrázoló kép](./media/partner-n8identity/n8identity-architecture-diagram.png)
 
-|Lépés | Leírás |
+|Lépés | Description |
 |:-----| :-----------|
 | 1. | A felhasználó egy bejelentkezési oldalon érkezik. A felhasználók a regisztráció gombra kattintva létrehozhatnak egy új fiókot, és beírhatják az adatokat az oldalra. A Azure AD B2C a felhasználói attribútumokat gyűjti.
 | 2. | Azure AD B2C meghívja a TheAccessHub felügyeleti eszközét, és átadja a felhasználói attribútumokat

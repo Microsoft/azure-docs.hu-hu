@@ -9,10 +9,10 @@ ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: 691cbd79e82432c8e919dcbb51642a76000296dc
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97607609"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>A tartományok és a TLS/SSL-tanúsítványok problémáinak elhárítása Azure App Service
@@ -37,7 +37,7 @@ Ha TLS-kötést ad hozzá, a következő hibaüzenet jelenik meg:
 
 Ez a probléma akkor fordulhat elő, ha több IP-alapú SSL-kötést használ ugyanahhoz az IP-címhez több alkalmazás között. Az A alkalmazás például egy olyan IP-alapú SSL-t tartalmaz, amely egy régi tanúsítvánnyal rendelkezik. A B alkalmazásnak van egy IP-alapú SSL-je, amely egy új tanúsítvánnyal rendelkezik ugyanahhoz az IP-címhez. Ha az alkalmazás TLS-kötését az új tanúsítvánnyal frissíti, akkor ez a hiba meghiúsul, mert ugyanazt az IP-címet használja egy másik alkalmazáshoz. 
 
-#### <a name="solution"></a>Megvalósítás 
+#### <a name="solution"></a>Megoldás 
 
 A probléma megoldásához használja az alábbi módszerek egyikét:
 
@@ -56,7 +56,7 @@ Amikor megpróbálja törölni a tanúsítványt, a következő hibaüzenet jele
 
 Ez a probléma akkor fordulhat elő, ha egy másik alkalmazás használja a tanúsítványt.
 
-#### <a name="solution"></a>Megvalósítás
+#### <a name="solution"></a>Megoldás
 
 Távolítsa el az adott tanúsítványhoz tartozó TLS-kötést az alkalmazásokból. Ezután próbálja meg törölni a tanúsítványt. Ha továbbra sem tudja törölni a tanúsítványt, törölje az internetböngésző gyorsítótárát, majd nyissa meg újra a Azure Portal egy új böngészőablakban. Ezután próbálja meg törölni a tanúsítványt.
 
@@ -127,7 +127,7 @@ Törölje a böngészőt. Windows-eszközök esetén futtathatja a parancsot `ip
 
 Egy altartomány hozzárendeléséhez nem adhat hozzá új állomásnevet az alkalmazáshoz.
 
-#### <a name="solution"></a>Megvalósítás
+#### <a name="solution"></a>Megoldás
 
 - Az előfizetés rendszergazdájával ellenőrizze, hogy van-e engedélye az állomásnév hozzáadására az alkalmazáshoz.
 - Ha több altartományra van szüksége, javasoljuk, hogy változtassa meg az Azure tartománynév-szolgáltatás (DNS) üzemeltetését. Azure DNS használatával 500-állomásneveket adhat hozzá az alkalmazáshoz. További információ: [altartomány hozzáadása](/archive/blogs/waws/mapping-a-custom-subdomain-to-an-azure-website).
@@ -146,7 +146,7 @@ Ez a probléma a következő okok egyike miatt fordul elő:
 - Az élettartam (TTL) időszaka nem járt le. Ellenőrizze a tartomány DNS-konfigurációját, hogy meghatározza a TTL-értéket, majd várjon, amíg lejár az időszak.
 - A DNS-konfiguráció helytelen.
 
-#### <a name="solution"></a>Megvalósítás
+#### <a name="solution"></a>Megoldás
 - Várjon 48 órát a probléma megoldásához.
 - Ha a DNS-konfigurációban módosíthatja a TTL-beállítást, módosítsa az értéket 5 percre, és ellenőrizze, hogy ez megoldja-e a problémát.
 - A [WhatsmyDNS.net](https://www.whatsmydns.net/) használatával ellenőrizze, hogy a tartomány az alkalmazás IP-címére mutat-e. Ha nem, konfigurálja az a rekordot az alkalmazás megfelelő IP-címére.
@@ -159,7 +159,7 @@ A tartomány már nem látható a Azure Portalban.
 #### <a name="cause"></a>Ok 
 Előfordulhat, hogy az előfizetés tulajdonosa véletlenül törölte a tartományt.
 
-#### <a name="solution"></a>Megvalósítás
+#### <a name="solution"></a>Megoldás
 Ha a tartományt a hét napja kevesebb, mint hét napja törölte, a tartomány még nem indította el a törlési folyamatot. Ebben az esetben ugyanezt a tartományt is megvásárolhatja a Azure Portal ugyanazon előfizetés alatt. (Ügyeljen arra, hogy a keresőmezőbe írja be a pontos tartománynevet.) Erre a tartományra vonatkozóan nem számítunk fel újra díjat. Ha a tartományt több mint hét napja törölte, forduljon az [Azure támogatási szolgálatához](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a tartomány visszaállításával kapcsolatos segítségért.
 
 ## <a name="domain-problems"></a>Tartományi problémák
@@ -170,7 +170,7 @@ Ha a tartományt a hét napja kevesebb, mint hét napja törölte, a tartomány 
 
 Nem megfelelő tartományhoz vásárolt App Service-tanúsítványt. A tanúsítvány nem frissíthető a megfelelő tartomány használatára.
 
-#### <a name="solution"></a>Megvalósítás
+#### <a name="solution"></a>Megoldás
 
 Törölje a tanúsítványt, majd vásároljon egy új tanúsítványt.
 
@@ -185,7 +185,7 @@ Az App Service-tanúsítvány megújítása megtörtént, de a App Service tanú
 #### <a name="cause"></a>Ok 
 A App Service 48 órán belül automatikusan szinkronizálja a tanúsítványt. Amikor elforgat vagy frissít egy tanúsítványt, néha az alkalmazás továbbra is beolvassa a régi tanúsítványt, nem pedig az újonnan frissített tanúsítványt. Ennek az az oka, hogy a tanúsítvány-erőforrás szinkronizálásának feladata még nem fut. Kattintson a szinkronizálás elemre. A szinkronizálási művelet automatikusan frissíti a tanúsítványhoz tartozó állomásnév-kötéseket App Service anélkül, hogy leállást okozna az alkalmazásai számára.
 
-#### <a name="solution"></a>Megvalósítás
+#### <a name="solution"></a>Megoldás
 
 A tanúsítvány szinkronizálását kényszerítheti:
 
@@ -198,11 +198,11 @@ A tanúsítvány szinkronizálását kényszerítheti:
 #### <a name="symptom"></a>Hibajelenség 
 A App Service tanúsítványhoz a tanúsítvány használatának megkezdése előtt tartományi ellenőrzés szükséges. Ha az **ellenőrzés** lehetőséget választja, a folyamat sikertelen lesz.
 
-#### <a name="solution"></a>Megvalósítás
+#### <a name="solution"></a>Megoldás
 A tartomány manuális ellenőrzése TXT-rekord hozzáadásával:
 
-1. Lépjen a tartománynév szolgáltatás (DNS) szolgáltatóhoz, amely a tartománynevet tárolja.
-1. Adjon hozzá egy TXT-rekordot a tartományhoz, amely a Azure Portal látható tartományi jogkivonat értékét használja. 
+1. Lépjen a tartománynevet biztosító tartománynév-szolgáltatóhoz (DNS).
+1. Adjon meg egy, a saját tartományára vonatkozó TXT típusú rekordot, amely az Azure Portalon megjelenített tartományi jogkivonat értékét használja. 
 
 Várjon néhány percet a DNS-propagálás futtatására, majd kattintson a **frissítés** gombra az ellenőrzés elindításához. 
 

@@ -12,17 +12,17 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 72c40b7962090492f8b4b85e555a947130c3628d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91256438"
 ---
 # <a name="azure-ad-registered-devices"></a>Azure AD-ben regisztrált eszközök
 
 Az Azure AD-ban regisztrált eszközök célja, hogy a felhasználók számára támogatást nyújtson a saját eszközök használata (BYOD) vagy a mobileszköz-forgatókönyvek számára. Ezekben a forgatókönyvekben a felhasználók személyes eszköz használatával férhetnek hozzá a szervezet Azure Active Directory felügyelt erőforrásaihoz.
 
-| Azure AD-regisztráció | Leírás |
+| Azure AD-regisztráció | Description |
 | --- | --- |
 | **Definíció** | Regisztrálva van az Azure AD-be anélkül, hogy szervezeti fiókot kellene bejelentkeznie az eszközre |
 | **Elsődleges célközönség** | Az összes felhasználóra érvényes a következő feltételekkel: |
@@ -31,8 +31,8 @@ Az Azure AD-ban regisztrált eszközök célja, hogy a felhasználók számára 
 | **Az eszközök tulajdonjoga** | Felhasználó vagy szervezet |
 | **Operációs rendszerek** | Windows 10, iOS, Android és MacOS |
 | **Telepítés** | Windows 10 – beállítások |
-|   | iOS/Android – Céges portál vagy Microsoft Authenticator alkalmazás |
-|   | MacOS – Céges portál |
+|   | iOS/Android – céges portál vagy Microsoft Authenticator alkalmazás |
+|   | MacOS – céges portál |
 | **Eszköz bejelentkezési beállításai** | Végfelhasználói helyi hitelesítő adatok |
 |   | Jelszó |
 |   | Windows Hello |

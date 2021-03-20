@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 11/23/2019
 ms.author: juliako
 ms.openlocfilehash: a1ca7c677e5f1eb55d74cca45e757676674f303c
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96030534"
 ---
 # <a name="search-for-exact-moments-in-videos-with-video-indexer"></a>Pontos pillanatok keresése a videókban Video Indexer
@@ -57,6 +57,6 @@ A **Megnyitás a szerkesztőben** lehetőségre kattintva létrehozhat egy klipe
 
 :::image type="content" source="./media/video-indexer-search/embed-download-create-projects.png" alt-text="Videó beágyazása, letöltése, projektek létrehozása":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Tartalomfeldolgozás a Video Indexer REST API-val](video-indexer-use-apis.md)

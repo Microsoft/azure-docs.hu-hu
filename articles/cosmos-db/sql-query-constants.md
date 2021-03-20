@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
 ms.openlocfilehash: b0973dca980b65b85ac66cc1b3c9ed45f0f9c779
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339202"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB SQL-lekérdezés állandói  
@@ -25,7 +25,7 @@ ms.locfileid: "93339202"
 |-|-|  
 |**Nem definiált**|Egyetlen érték: nem **definiált**|  
 |**Null**|Egyetlen érték: **Null**|  
-|**Logikai**|Értékek: **false** , **true**.|  
+|**Logikai**|Értékek: **false**, **true**.|  
 |**Szám**|Egy kétszeres pontosságú lebegőpontos szám, IEEE 754 standard.|  
 |**Sztring**|Nulla vagy több Unicode-karakterből álló sorozatot. A karakterláncokat szimpla vagy idézőjelek közé kell foglalni.|  
 |**Tömb**|Nulla vagy több elemből álló sorozatot. Minden elem bármely skaláris adattípus értéke lehet, kivéve a nem **definiált** értéket.|  
@@ -115,10 +115,10 @@ ms.locfileid: "93339202"
 |\f|űrlap-hírcsatorna|U + 000C|  
 |\n|soremelés|U + 000A|  
 |\r| kocsivissza|U + 000D|  
-|\t| tabulátor|U + 0009|  
+|\t|lapon|U + 0009|  
 |\uXXXX|4 hexadecimális számjegy által definiált Unicode-karakter.|U + XXXX|  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Dokumentumadatok modellezése](modeling-data.md)

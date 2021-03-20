@@ -10,10 +10,10 @@ ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 07/27/2020
 ms.openlocfilehash: 7a4d9fb9f803a497e84fa189d9a89c2d9097bb70
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92675058"
 ---
 # <a name="create-azure-ad-guest-users-and-set-as-an-azure-ad-admin"></a>Azure AD-vendégfelhasználók létrehozása és beállítása Azure AD-rendszergazdaként
@@ -23,7 +23,7 @@ ms.locfileid: "92675058"
 > [!NOTE]
 > Ez a cikk **nyilvános előzetes** verzióban érhető el.
 
-A Azure Active Directory (Azure AD) vendég felhasználói az aktuális Azure AD-be importált felhasználók, más Azure Active Directory-címtárból vagy azokon kívül vannak. A vendég felhasználók például tartalmazhatnak más Azure Active könyvtárakból származó felhasználókat, illetve olyan fiókokat, mint például a *\@ Outlook.com* , a *\@ hotmail.com* , a *\@ Live.com* vagy a *\@ gmail.com* . Ez a cikk bemutatja, hogyan hozhat létre egy Azure AD vendég felhasználót, és hogyan állíthatja be a felhasználót Azure AD-rendszergazdaként az Azure SQL logikai kiszolgálóhoz, anélkül, hogy a vendég felhasználó tagja legyen az Azure AD-ban található csoportnak.
+A Azure Active Directory (Azure AD) vendég felhasználói az aktuális Azure AD-be importált felhasználók, más Azure Active Directory-címtárból vagy azokon kívül vannak. A vendég felhasználók például tartalmazhatnak más Azure Active könyvtárakból származó felhasználókat, illetve olyan fiókokat, mint például a *\@ Outlook.com*, a *\@ hotmail.com*, a *\@ Live.com* vagy a *\@ gmail.com*. Ez a cikk bemutatja, hogyan hozhat létre egy Azure AD vendég felhasználót, és hogyan állíthatja be a felhasználót Azure AD-rendszergazdaként az Azure SQL logikai kiszolgálóhoz, anélkül, hogy a vendég felhasználó tagja legyen az Azure AD-ban található csoportnak.
 
 ## <a name="feature-description"></a>A szolgáltatás leírása
 
@@ -59,7 +59,7 @@ Az alábbi lépéseket követve létrehozhat egy adatbázis-felhasználót egy A
     SELECT * FROM sys.database_principals
     ```
 
-1. A SQL Server Management Studio (SSMS) használatával válassza le és jelentkezzen be az adatbázisba, `user1@gmail.com` a **Azure Active Directory-Universal hitelesítési módszerével, MFA-val** . [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) További információ: [a multi-factor Azure Active Directory hitelesítés használata](authentication-mfa-ssms-overview.md).
+1. A SQL Server Management Studio (SSMS) használatával válassza le és jelentkezzen be az adatbázisba, `user1@gmail.com` a **Azure Active Directory-Universal hitelesítési módszerével, MFA-val**. [](/sql/ssms/download-sql-server-management-studio-ssms) További információ: [a multi-factor Azure Active Directory hitelesítés használata](authentication-mfa-ssms-overview.md).
 
 ### <a name="create-guest-user-in-sql-managed-instance"></a>Vendég felhasználó létrehozása a felügyelt SQL-példányban
 
@@ -90,7 +90,7 @@ Az alábbi lépéseket követve létrehozhat egy adatbázis-felhasználót egy A
 
 1. Ekkor létre kell hoznia egy adatbázis-felhasználót a vendég felhasználó számára `user1@gmail.com` .
 
-1. A SQL Server Management Studio (SSMS) használatával válassza le és jelentkezzen be az adatbázisba, `user1@gmail.com` a **Azure Active Directory-Universal hitelesítési módszerével, MFA-val** . [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) További információ: [a multi-factor Azure Active Directory hitelesítés használata](authentication-mfa-ssms-overview.md).
+1. A SQL Server Management Studio (SSMS) használatával válassza le és jelentkezzen be az adatbázisba, `user1@gmail.com` a **Azure Active Directory-Universal hitelesítési módszerével, MFA-val**. [](/sql/ssms/download-sql-server-management-studio-ssms) További információ: [a multi-factor Azure Active Directory hitelesítés használata](authentication-mfa-ssms-overview.md).
 
 ## <a name="setting-a-guest-user-as-an-azure-ad-admin"></a>Vendég felhasználó beállítása Azure AD-rendszergazdaként
 
@@ -133,7 +133,7 @@ A következő lépésekkel állíthatja be az Azure AD vendég felhasználóját
 
 ## <a name="limitations"></a>Korlátozások
 
-A Azure Portal korlátozással rendelkezik, amely megakadályozza az Azure AD vendég felhasználóként való kiválasztását az SQL felügyelt példányához tartozó Azure AD-rendszergazdaként. Az Azure ad-n kívüli vendég fiókok, például a *\@ Outlook.com* , a *\@ hotmail.com* , a *\@ Live.com* vagy a *\@ gmail.com* esetében az ad admin választó megjeleníti ezeket a fiókokat, de szürkén jelenik meg, és nem választható ki. Az Azure AD-rendszergazda beállításához használja a fent felsorolt [PowerShell-vagy CLI-parancsokat](#setting-a-guest-user-as-an-azure-ad-admin) . Azt is megteheti, hogy a vendég felhasználót tartalmazó Azure AD-csoport az SQL felügyelt példányának Azure AD-rendszergazdájaként állítható be.
+A Azure Portal korlátozással rendelkezik, amely megakadályozza az Azure AD vendég felhasználóként való kiválasztását az SQL felügyelt példányához tartozó Azure AD-rendszergazdaként. Az Azure ad-n kívüli vendég fiókok, például a *\@ Outlook.com*, a *\@ hotmail.com*, a *\@ Live.com* vagy a *\@ gmail.com* esetében az ad admin választó megjeleníti ezeket a fiókokat, de szürkén jelenik meg, és nem választható ki. Az Azure AD-rendszergazda beállításához használja a fent felsorolt [PowerShell-vagy CLI-parancsokat](#setting-a-guest-user-as-an-azure-ad-admin) . Azt is megteheti, hogy a vendég felhasználót tartalmazó Azure AD-csoport az SQL felügyelt példányának Azure AD-rendszergazdájaként állítható be.
 
 Ez a funkció a szolgáltatás általános elérhetősége előtt lesz engedélyezve az SQL felügyelt példánya számára.
 

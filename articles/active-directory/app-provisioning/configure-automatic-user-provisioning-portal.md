@@ -1,23 +1,22 @@
 ---
-title: Felhasználók üzembe helyezésének felügyelete az Azure AD-ben vállalati alkalmazásokhoz
-description: Megtudhatja, hogyan kezelheti a vállalati alkalmazások felhasználói fiókjának kiépítési folyamatait a Azure Active Directory használatával
+title: A felhasználók üzembe helyezésének kezelése vállalati alkalmazásokhoz Azure Active Directory
+description: Megtudhatja, hogyan kezelheti a vállalati alkalmazások felhasználói fiókjának üzembe helyezését a Azure Active Directory használatával.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: how-to
 ms.workload: identity
-ms.date: 02/04/2020
+ms.date: 03/18/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 02d415bd957b0490857081b996c592f90365f031
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 5dceeb11ed9a4d6af88650a6146f58db412748d9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99555634"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579416"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>A vállalati alkalmazások felhasználói fiókkal való üzembe helyezésének kezelése a Azure Portal
 
@@ -63,9 +62,7 @@ Válassza a **kapcsolat tesztelése** lehetőséget a hitelesítő adatok teszte
 
 A **leképezések** kibontásával megtekintheti és szerkesztheti az Azure ad és a célalkalmazás közötti felhasználói attribútumokat, amikor a felhasználói fiókokat kiépítik vagy frissítik.
 
-Az Azure AD felhasználói objektumai és az egyes SaaS-alkalmazások felhasználói objektumai között előre konfigurált leképezések vannak. Egyes alkalmazások is kezelhetik a csoport objektumait. Válasszon ki egy leképezést a táblázatban a leképezési szerkesztő jobbra való megnyitásához, ahol megtekintheti és testreszabhatja azokat.
-
-![Az attribútum-leképezési képernyő megjelenítése](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
+Az Azure AD felhasználói objektumai és az egyes SaaS-alkalmazások felhasználói objektumai között előre konfigurált leképezések vannak. Egyes alkalmazások is kezelhetik a csoport objektumait. Válasszon ki egy leképezést a táblázatban a leképezési szerkesztő megnyitásához, ahol megtekintheti és testreszabhatja azokat.
 
 A támogatott testreszabások a következők:
 
@@ -79,10 +76,10 @@ A támogatott testreszabások a következők:
 
 ### <a name="settings"></a>Beállítások
 
-A **kiépítési** képernyő **Beállítások** területén elindíthatja és leállíthatja az Azure ad kiépítési szolgáltatást a kiválasztott alkalmazáshoz. Dönthet úgy is, hogy törli a kiépítési gyorsítótárat, és újraindítja a szolgáltatást.
+Bontsa ki a **Beállítások** elemet, és állítsa be az e-mail-címet az értesítések fogadására, valamint azt, hogy van-e riasztás Kiválaszthatja a szinkronizálni kívánt felhasználók hatókörét is. Dönthet úgy, hogy az összes felhasználót és csoportot szinkronizálja, vagy csak a hozzárendelt felhasználókat.
+
+### <a name="provisioning-status"></a>Kiépítési állapot 
 
 Ha az üzembe helyezést az alkalmazás első alkalommal engedélyezi, kapcsolja be a szolgáltatást úgy, hogy a **kiépítési állapotot** **a be** értékre módosítja. Ez a módosítás azt eredményezi, hogy az Azure AD-kiépítési szolgáltatás kezdeti ciklust futtat. Beolvassa a **felhasználók és csoportok** szakaszban hozzárendelt felhasználókat, lekérdezi azokat, majd futtatja az Azure ad- **leképezések** szakaszban meghatározott üzembe helyezési műveleteket. A folyamat során a kiépítési szolgáltatás tárolja a gyorsítótárazott információkat arról, hogy milyen felhasználói fiókokat kezel, ezért a nem felügyelt fiókokat a nem a hozzárendelés hatókörébe tartozó alkalmazásokon belül nem érinti a kiépítési műveletek. A kezdeti ciklust követően a kiépítési szolgáltatás 40 percenként automatikusan szinkronizálja a felhasználók és a csoportok objektumait.
 
 Állítsa a **kiépítési állapotot** **ki**  értékre a kiépítési szolgáltatás szüneteltetéséhez. Ebben az állapotban az Azure nem hoz létre, nem frissít vagy távolít el semmilyen felhasználói vagy csoportos objektumot az alkalmazásban. Állítsa vissza az állapotot **a be** értékre, és a szolgáltatás felveszi a helyét, ahol abbahagyta.
-
-**Törölje az aktuális állapotot, és indítsa újra a szinkronizálást** kezdeti ciklusban. A szolgáltatás ezután újra kiértékeli a forrásrendszer összes felhasználóját, és megállapítja, hogy a kiépítés hatókörében van-e. Ez akkor lehet hasznos, ha az alkalmazás jelenleg karanténban van, vagy módosítania kell az attribútum-hozzárendeléseket. Vegye figyelembe, hogy a kezdeti ciklus a kiértékeléshez szükséges objektumok száma miatt hosszabb időt vesz igénybe, mint a szokásos növekményes ciklus. A kezdeti és a növekményes ciklusok teljesítményéről [itt](application-provisioning-when-will-provisioning-finish-specific-user.md)olvashat bővebben.

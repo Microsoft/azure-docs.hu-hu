@@ -8,10 +8,10 @@ ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: lizross
 ms.openlocfilehash: d7219751d584eb458cded9f4e30cccb1439dfa1b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89069017"
 ---
 # <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-powershell"></a>Windows rendszerű virtuális asztali (klasszikus) felügyeleti eszköz üzembe helyezése a PowerShell-lel
@@ -139,7 +139,7 @@ Most, hogy teljesen konfigurálta a felügyeleti eszköz webalkalmazását, itt 
 Az Azure AD-alkalmazás konfigurációjának ellenőrzése és a beleegyező engedély megadása:
 
 1. Nyissa meg az Internet böngészőt, és jelentkezzen be a [Azure Portalba](https://portal.azure.com/) a rendszergazdai fiókjával.
-2. A Azure Portal tetején található keresősáv alatt keresse meg **Alkalmazásregisztrációk** , és válassza ki az elemet a **szolgáltatások**területen.
+2. A Azure Portal tetején található keresősáv alatt keresse meg **Alkalmazásregisztrációk** , és válassza ki az elemet a **szolgáltatások** területen.
 3. Válassza a **minden alkalmazás** lehetőséget, és keresse meg a PowerShell-parancsfájlhoz megadott egyedi alkalmazás-nevet a [Azure Active Directory alkalmazás regisztrációjának létrehozása](#create-an-azure-active-directory-app-registration)lapon.
 4. A böngésző bal oldali paneljén válassza a **hitelesítés** lehetőséget, és győződjön meg arról, hogy az átirányítási URI megegyezik a felügyeleti eszköz webalkalmazás URL-címével, ahogy az alábbi képen is látható.
 

@@ -8,10 +8,10 @@ ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
 ms.openlocfilehash: d58341979b0bbe0699a5ca293b20394c43cde1d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88962808"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Azure App Service diagnosztika áttekintése
@@ -24,9 +24,9 @@ App Service diagnosztika nem csak a Windows rendszeren futó alkalmazás, hanem 
 
 ## <a name="open-app-service-diagnostics"></a>App Service diagnosztika megnyitása
 
-App Service diagnosztika eléréséhez navigáljon a App Service webalkalmazáshoz vagy App Service Environment a [Azure Portal](https://portal.azure.com). A bal oldali navigációs sávon kattintson a **problémák diagnosztizálása és megoldása**elemre.
+App Service diagnosztika eléréséhez navigáljon a App Service webalkalmazáshoz vagy App Service Environment a [Azure Portal](https://portal.azure.com). A bal oldali navigációs sávon kattintson a **problémák diagnosztizálása és megoldása** elemre.
 
-Azure Functions esetében navigáljon a Function alkalmazáshoz, és a felső navigációs sávon kattintson a **platform szolgáltatásai**lehetőségre, és válassza a **diagnosztizálás és megoldás** az **erőforrás-kezelésről** szakaszban.
+Azure Functions esetében navigáljon a Function alkalmazáshoz, és a felső navigációs sávon kattintson a **platform szolgáltatásai** lehetőségre, és válassza a **diagnosztizálás és megoldás** az **erőforrás-kezelésről** szakaszban.
 
 A App Service Diagnostics kezdőlapján kiválaszthatja azt a kategóriát, amely a legjobban leírja az alkalmazással kapcsolatos problémát az egyes homepage-csempék kulcsszavai segítségével. Ezen a lapon a Windows-alkalmazások **diagnosztikai eszközei** is megtalálhatók. Lásd: [diagnosztikai eszközök (csak Windows-alkalmazáshoz)](#diagnostic-tools-only-for-windows-app).
 

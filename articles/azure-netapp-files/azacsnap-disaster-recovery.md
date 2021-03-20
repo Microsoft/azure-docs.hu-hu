@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
 ms.openlocfilehash: 70e1823b30814d7dc29fef69215fcb53a2a2ab96
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98730870"
 ---
 # <a name="disaster-recovery-using-azure-application-consistent-snapshot-tool-preview"></a>Vész-helyreállítás az Azure Application konzisztens Snapshot Tool eszközzel (előzetes verzió)
@@ -282,7 +282,7 @@ Ha a DR helyen pillanatkép-alapú biztonsági mentéseket futtat, akkor a `azac
 > [!IMPORTANT]
 > A a `azacsnap -c backup` képes tároló-Pillanatképek létrehozásához a Dr helyen, ezeket a rendszer nem replikálja automatikusan egy másik helyre.  A Microsoft műveleteivel jobban megismerheti a fájlok és adatok visszaadását az eredeti üzemi helyre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Pillanatkép részleteinek beolvasása](azacsnap-cmd-ref-details.md)
 - [Biztonsági mentés készítése](azacsnap-cmd-ref-backup.md)

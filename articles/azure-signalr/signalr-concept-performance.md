@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 68cad32be177fa20794399157fca89e87c2f8f59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74157664"
 ---
 # <a name="performance-guide-for-azure-signalr-service"></a>Teljesítménnyel kapcsolatos útmutatás az Azure SignalR Service-hez
@@ -58,7 +58,7 @@ Ez a szakasz a teljesítmény-értékelési módszereket ismerteti, majd felsoro
 
 Az *átviteli sebesség* és a *késés* a teljesítmény ellenőrzésének két jellemző aspektusa. Az Azure Signaler szolgáltatás esetében minden SKU-szinten saját átviteli sávszélesség-szabályozási házirend tartozik. A házirend határozza meg *a maximálisan engedélyezett átviteli sebességet (bejövő és kimenő sávszélesség)* , amely a maximálisan elért átviteli sebesség, ha az üzenetek 99%-ában a késés kevesebb, mint 1 másodperc.
 
-A késés azt az időkorlátot jelzi, amikor a rendszer elküldi az üzenetet, hogy fogadja a válaszüzenetet az Azure Signaler szolgáltatástól. Vegyük példaként az **echo** -t. Minden ügyfélkapcsolat egy időbélyeget hoz létre az üzenetben. Az App Server hub az eredeti üzenetet az ügyfélnek küldi vissza. Így a terjesztési késleltetés könnyen kiszámítható minden ügyfél-kapcsolatban. Az időbélyegző a **szórás**, a **csoportba való**küldés és a **Küldés a kapcsolódáshoz**üzenethez van csatolva.
+A késés azt az időkorlátot jelzi, amikor a rendszer elküldi az üzenetet, hogy fogadja a válaszüzenetet az Azure Signaler szolgáltatástól. Vegyük példaként az **echo** -t. Minden ügyfélkapcsolat egy időbélyeget hoz létre az üzenetben. Az App Server hub az eredeti üzenetet az ügyfélnek küldi vissza. Így a terjesztési késleltetés könnyen kiszámítható minden ügyfél-kapcsolatban. Az időbélyegző a **szórás**, a **csoportba való** küldés és a **Küldés a kapcsolódáshoz** üzenethez van csatolva.
 
 Több ezer egyidejű ügyfélkapcsolat szimulálása érdekében több virtuális gép jön létre az Azure-beli virtuális magánhálózaton. Az összes virtuális gép ugyanahhoz az Azure Signaler Service-példányhoz csatlakozik.
 
@@ -74,7 +74,7 @@ A WebSocket egy kétirányú és teljes kétirányú kommunikációs protokoll e
 
 Az üzenet-útválasztási díj is korlátozza a teljesítményt. Az Azure Signaler szolgáltatás üzenet-útválasztóként játszik szerepet, amely az üzeneteket az ügyfelek vagy kiszolgálók készletéről más ügyfelek vagy kiszolgálók számára irányítja. Egy másik forgatókönyvnek vagy API-nak eltérő Útválasztási házirendre van szüksége. 
 
-Az **echo**esetében az ügyfél önmagára küld egy üzenetet, az útválasztási cél pedig maga is. Ez a minta a legalacsonyabb útválasztási költségeket veszi igénybe. Az Azure Signaler szolgáltatásnak azonban a **szórás**, a **csoportba**való küldés és a csatlakozás céljából való **küldéssel**kell megkeresnie a cél kapcsolatokat a belső elosztott adatstruktúrán keresztül. Ez az extra feldolgozás több PROCESSZORt, memóriát és hálózati sávszélességet használ. Ennek eredményeképpen a teljesítmény lassabb.
+Az **echo** esetében az ügyfél önmagára küld egy üzenetet, az útválasztási cél pedig maga is. Ez a minta a legalacsonyabb útválasztási költségeket veszi igénybe. Az Azure Signaler szolgáltatásnak azonban a **szórás**, a **csoportba** való küldés és a csatlakozás céljából való **küldéssel** kell megkeresnie a cél kapcsolatokat a belső elosztott adatstruktúrán keresztül. Ez az extra feldolgozás több PROCESSZORt, memóriát és hálózati sávszélességet használ. Ennek eredményeképpen a teljesítmény lassabb.
 
 Az alapértelmezett módban az alkalmazáskiszolgáló bizonyos helyzetekben szűk keresztmetszetet jelenthet. Az Azure Signaler SDK-nak meg kell hívnia a hubot, miközben élő kapcsolatot tart fenn minden ügyféllel a Szívveréses jeleken keresztül.
 
@@ -155,7 +155,7 @@ A *bejövő sávszélesség* és a *kimenő sávszélesség* az üzenetek teljes
 
 A valós használati eset bonyolultabb. Előfordulhat, hogy 2 048 bájtnál nagyobb üzenetet küld, vagy a küldési üzenet aránya másodpercenként nem egy üzenet. Vegyük példaként a Unit100's, hogy megtudja, hogyan értékelheti ki a teljesítményét.
 
-Az alábbi táblázat a **szórás**valós használati eseteit mutatja be. Az üzenetek mérete, a kapcsolatok száma és az üzenetek küldési sebessége azonban eltér az előző szakaszban feltételezetttől. A kérdés az, hogy miként lehet következtetni bármelyik elemre (az üzenetek mérete, a kapcsolatok száma vagy az üzenetek küldési sebessége), ha tudjuk, hogy csak kettő közülük van.
+Az alábbi táblázat a **szórás** valós használati eseteit mutatja be. Az üzenetek mérete, a kapcsolatok száma és az üzenetek küldési sebessége azonban eltér az előző szakaszban feltételezetttől. A kérdés az, hogy miként lehet következtetni bármelyik elemre (az üzenetek mérete, a kapcsolatok száma vagy az üzenetek küldési sebessége), ha tudjuk, hogy csak kettő közülük van.
 
 | Adás  | Üzenet mérete | Bejövő üzenetek másodpercenként | Kapcsolatok | Küldési időközök |
 |---|---------------------|--------------------------|-------------|-------------------------|
@@ -217,7 +217,7 @@ Az **echo** működése meghatározza, hogy a bejövő sávszélesség maximáli
 | Bejövő/kimenő üzenetek másodpercenként | 1,000 | 2000 | 5000 | 10,000 | 20 000 | 50,000 | 100.000 |
 | Bejövő/kimenő sávszélesség | 2 MBps   | 4 MBps   | 10 MBps  | 20 MBps   | 40 MBps   | 100 MBps  | 200 MBps   |
 
-Ebben a használati esetben minden ügyfél meghívja az App Serverben definiált hubot. A hub csak meghívja az eredeti ügyféloldali oldalon definiált metódust. Ez a hub az **echo**legkönnyűebb központja.
+Ebben a használati esetben minden ügyfél meghívja az App Serverben definiált hubot. A hub csak meghívja az eredeti ügyféloldali oldalon definiált metódust. Ez a hub az **echo** legkönnyűebb központja.
 
 ```
         public void Echo(IDictionary<string, object> data)
@@ -235,11 +235,11 @@ Még ennél az egyszerű Központnál is, az alkalmazás-kiszolgáló forgalmi n
 | Alkalmazás-kiszolgálók száma | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
-> Az ügyfél-kapcsolódási szám, az üzenetek mérete, a küldési sebesség, az SKU-rétegek és az alkalmazás-kiszolgáló PROCESSZORa/memóriája befolyásolja az **echo**általános teljesítményét.
+> Az ügyfél-kapcsolódási szám, az üzenetek mérete, a küldési sebesség, az SKU-rétegek és az alkalmazás-kiszolgáló PROCESSZORa/memóriája befolyásolja az **echo** általános teljesítményét.
 
 #### <a name="broadcast"></a>Adás
 
-**Szórás**esetén, amikor a webalkalmazás fogadja az üzenetet, a rendszer az összes ügyfelet közvetíti. Minél több ügyfelet szeretne közvetíteni, annál több üzenet van az összes ügyfél számára. Lásd az alábbi diagramot.
+**Szórás** esetén, amikor a webalkalmazás fogadja az üzenetet, a rendszer az összes ügyfelet közvetíti. Minél több ügyfelet szeretne közvetíteni, annál több üzenet van az összes ügyfél számára. Lásd az alábbi diagramot.
 
 ![Forgalom a szórásos használati esethez](./media/signalr-concept-performance/broadcast.png)
 
@@ -265,7 +265,7 @@ Az üzeneteket követő műsorszolgáltatási ügyfelek nem több mint négynél
 > [!NOTE]
 > Növelje az alapértelmezett kiszolgáló kapcsolatait 5 és 40 között minden egyes alkalmazás-kiszolgálón, hogy elkerülje a lehetséges kiegyensúlyozatlan kiszolgálói kapcsolatokat az Azure Signaler szolgáltatással.
 >
-> Az ügyfél-kapcsolódási szám, az üzenet mérete, a küldési sebesség és az SKU-csomag hatással van a **szórás**általános teljesítményére.
+> Az ügyfél-kapcsolódási szám, az üzenet mérete, a küldési sebesség és az SKU-csomag hatással van a **szórás** általános teljesítményére.
 
 #### <a name="send-to-group"></a>Küldés csoportba
 
@@ -303,11 +303,11 @@ Számos ügyfélkapcsolat meghívja a központot, így az alkalmazáskiszolgál�
 | Alkalmazás-kiszolgálók száma | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
-> Az ügyfél-kapcsolódási szám, az üzenet mérete, a küldési sebesség, az útválasztási díj, az SKU-mennyiség, valamint az alkalmazás-kiszolgáló PROCESSZORa/memóriája hatással van a **kis csoportba küldés**teljes teljesítményére.
+> Az ügyfél-kapcsolódási szám, az üzenet mérete, a küldési sebesség, az útválasztási díj, az SKU-mennyiség, valamint az alkalmazás-kiszolgáló PROCESSZORa/memóriája hatással van a **kis csoportba küldés** teljes teljesítményére.
 
 ##### <a name="big-group"></a>Nagy csoport
 
-A **Big csoportba való küldéshez**a kimenő sávszélesség a szűk keresztmetszetet megelőzően, az útválasztási többletköltségek megkezdése előtt válik. A következő táblázat felsorolja a maximális kimenő sávszélességet, amely majdnem megegyeznek a **szórásos küldéssel**.
+A **Big csoportba való küldéshez** a kimenő sávszélesség a szűk keresztmetszetet megelőzően, az útválasztási többletköltségek megkezdése előtt válik. A következő táblázat felsorolja a maximális kimenő sávszélességet, amely majdnem megegyeznek a **szórásos küldéssel**.
 
 |    Küldés a Big Group-ba      | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
@@ -329,7 +329,7 @@ A küldési kapcsolatok száma nem haladja meg a 40-ot. Az alkalmazás-kiszolgá
 > [!NOTE]
 > Növelje az alapértelmezett kiszolgáló kapcsolatait 5 és 40 között minden egyes alkalmazás-kiszolgálón, hogy elkerülje a lehetséges kiegyensúlyozatlan kiszolgálói kapcsolatokat az Azure Signaler szolgáltatással.
 > 
-> Az ügyfél-kapcsolódási szám, az üzenet mérete, a küldési sebesség, az útválasztási díj és az SKU-rétegek hatással vannak a **Big Group küldésének**teljes teljesítményére.
+> Az ügyfél-kapcsolódási szám, az üzenet mérete, a küldési sebesség, az útválasztási díj és az SKU-rétegek hatással vannak a **Big Group küldésének** teljes teljesítményére.
 
 #### <a name="send-to-connection"></a>Küldés a kapcsolódásba
 
@@ -337,7 +337,7 @@ Ha az ügyfelek kapcsolatot létesít az Azure Signaler szolgáltatással, a **K
 
 ![A Küldés és az ügyfél közötti használati eset forgalma](./media/signalr-concept-performance/sendtoclient.png)
 
-A **küldéshez a kapcsolódáshoz** használt útválasztási díj hasonló a **kis csoportoknak küldött küldési**díjakhoz.
+A **küldéshez a kapcsolódáshoz** használt útválasztási díj hasonló a **kis csoportoknak küldött küldési** díjakhoz.
 
 Ahogy nő a kapcsolatok száma, az útválasztási díj a teljes teljesítményt korlátozza. A Unit50 elérte a korlátot. Ennek eredményeképpen a Unit100 nem tud tovább javítani.
 
@@ -357,7 +357,7 @@ Ez a használati eset nagy terhelést igényel az App Server oldalán. Tekintse 
 | Alkalmazás-kiszolgálók száma | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
-> Az ügyfél-kapcsolódási szám, az üzenet mérete, a küldési sebesség, az útválasztási díj, az SKU-mennyiség, valamint a processzor/memória az alkalmazás-kiszolgáló számára hatással van a **Küldés**teljes teljesítményére.
+> Az ügyfél-kapcsolódási szám, az üzenet mérete, a küldési sebesség, az útválasztási díj, az SKU-mennyiség, valamint a processzor/memória az alkalmazás-kiszolgáló számára hatással van a **Küldés** teljes teljesítményére.
 
 #### <a name="aspnet-signalr-echo-broadcast-and-send-to-small-group"></a>ASP.NET-jelző echo, broadcast és küldés kis csoportba
 
@@ -365,21 +365,21 @@ Az Azure Signaler szolgáltatás ugyanazt a teljesítményt biztosítja a ASP.NE
 
 A teljesítményteszt az Azure Web Appst használja az ASP.NET-jelzőhöz tartozó [standard Service-csomag S3](https://azure.microsoft.com/pricing/details/app-service/windows/) -s verziójában.
 
-A következő táblázat a ASP.NET Signaler **echo**által javasolt webalkalmazások számának megadását ismerteti.
+A következő táblázat a ASP.NET Signaler **echo** által javasolt webalkalmazások számának megadását ismerteti.
 
 |   Echo           | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
 | Kapcsolatok      | 1,000 | 2000 | 5000 | 10,000 | 20 000 | 50,000 | 100.000 |
 | Alkalmazás-kiszolgálók száma | 2     | 2     | 4     | 4      | 8      | 32      | 40       |
 
-A következő táblázat a ASP.NET Signaler- **szóráshoz**javasolt webalkalmazások számának áttekintését tartalmazza.
+A következő táblázat a ASP.NET Signaler- **szóráshoz** javasolt webalkalmazások számának áttekintését tartalmazza.
 
 |  Adás       | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
 | Kapcsolatok      | 1,000 | 2000 | 5000 | 10,000 | 20 000 | 50,000 | 100.000 |
 | Alkalmazás-kiszolgálók száma | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
-A következő táblázat a ASP.NET-szignáló számára javasolt webalkalmazások számának a **kis csoportba való küldését**ismerteti.
+A következő táblázat a ASP.NET-szignáló számára javasolt webalkalmazások számának a **kis csoportba való küldését** ismerteti.
 
 |  Küldés kis csoportba     | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
@@ -428,7 +428,7 @@ A korábban felsorolt használati esetek esetében a teljesítményteszteket egy
 
 Az Azure Signaler szolgáltatáshoz tartozó teljesítményfigyelő eszközöket a [githubon](https://github.com/Azure/azure-signalr-bench/)találja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben áttekinti az Azure Signaler szolgáltatás teljesítményét a tipikus használati esetekben.
 

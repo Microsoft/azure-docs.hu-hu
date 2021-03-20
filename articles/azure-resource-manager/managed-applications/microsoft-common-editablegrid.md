@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: tomfitz
 ms.openlocfilehash: 04f86883a75110985d1cbe050fe3fd3e0582986a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88893773"
 ---
 # <a name="microsoftcommoneditablegrid-ui-element"></a>Microsoft. Common. EditableGrid felhasználói felületi elem
@@ -134,7 +134,7 @@ Táblázatos bevitel összegyűjtésének vezérlője. A rácson belüli összes
 
 - A `label` tulajdonság nem jelenik meg a vezérlő részeként, de a végső lapon Összefoglalva jelenik meg.
 - A `ariaLabel` tulajdonság a rács kisegítő címkéje. A képernyőolvasót használó felhasználók számára hasznos szöveg megadása.
-- A `constraints.width` tulajdonság a rács teljes szélességének megadására szolgál. A lehetőségek _megteltek_, _közepes_és _kicsik_. Az alapértelmezett érték _megtelt_.
+- A `constraints.width` tulajdonság a rács teljes szélességének megadására szolgál. A lehetőségek _megteltek_, _közepes_ és _kicsik_. Az alapértelmezett érték _megtelt_.
 - Az `width` oszlopok gyermekein lévő tulajdonság határozza meg az oszlopszélességet. A szélességeket olyan tört egységekkel határozzák meg, mint a _3FR_, és az oszlopokhoz arányos teljes terület van kiválasztva. Ha nincs megadva oszlopszélesség, az alapértelmezett érték a _1fr_.
 
 ## <a name="next-steps"></a>Következő lépések

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: victorh
 ms.openlocfilehash: c840bf9e82b8dcdb1fbf9b380ea847b3d1b08dd9
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91948068"
 ---
 # <a name="what-is-a-secured-virtual-hub"></a>Mi az a biztonságos virtuális központ?
@@ -28,6 +28,6 @@ Kiválaszthatja a szükséges biztonsági szolgáltatókat a hálózati forgalom
 
 A Azure Portal a Firewall Manager használatával létrehozhat egy új biztonságos virtuális központot, vagy átalakíthat egy meglévő virtuális hubot, amelyet korábban az Azure Virtual WAN használatával hozott létre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A biztonságos virtuális központ létrehozásához és a központi és küllős hálózat biztonságossá tételéhez és használatához tekintse meg a következőt [: oktatóanyag: a felhőalapú hálózat védelme a Azure Firewall Managerrel a Azure Portal használatával](secure-cloud-network.md).

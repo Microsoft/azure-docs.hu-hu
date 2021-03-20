@@ -14,21 +14,21 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 2a471504b88791b5bfb6ce6cc7c81d60bfbe5028
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83772080"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Az Internet Explorer és a Microsoft Edge böngészők ismert problémái (MSAL.js)
 
 ## <a name="issues-due-to-security-zones"></a>Biztonsági zónák miatti problémák
-Az IE-ben és a Microsoft Edge-ben történt hitelesítéssel kapcsolatos hibákról több jelentést is készítettünk (mivel a *Microsoft Edge böngésző verziójának*frissítése a 40.15063.0.0-re). Ezeket követjük nyomon, és tájékoztatták a Microsoft Edge-csapatot. Míg a Microsoft Edge egy megoldáson dolgozik, itt látható a gyakran előforduló problémák és a megvalósítható lehetséges megkerülő megoldások leírása.
+Az IE-ben és a Microsoft Edge-ben történt hitelesítéssel kapcsolatos hibákról több jelentést is készítettünk (mivel a *Microsoft Edge böngésző verziójának* frissítése a 40.15063.0.0-re). Ezeket követjük nyomon, és tájékoztatták a Microsoft Edge-csapatot. Míg a Microsoft Edge egy megoldáson dolgozik, itt látható a gyakran előforduló problémák és a megvalósítható lehetséges megkerülő megoldások leírása.
 
 ### <a name="cause"></a>Ok
 A legtöbb probléma oka a következő: A munkamenet-tároló és a helyi tároló a Microsoft Edge böngésző biztonsági zónái között van particionálva. A Microsoft Edge ezen verziójában, amikor az alkalmazást átirányítják a zónák között, a munkamenet-tároló és a helyi tároló törlődik. A munkamenet-tárolót a böngésző normál navigációs sávjában törli, és a munkamenet és a helyi tárterület is törlődik a böngésző InPrivate módjában. MSAL.js bizonyos állapotot ment a munkamenet-tárolóban, és ennek az állapotnak a ellenőrzésére támaszkodik a hitelesítési folyamatok során. Ha a munkamenet-tároló törlődik, ez az állapot elvész, ezért a rendszer hibás élményt eredményez.
 
-### <a name="issues"></a>Hibák
+### <a name="issues"></a>Problémák
 
 - **A hitelesítés során a végtelen átirányítási hurkok és a lap újratöltődik**. Amikor a felhasználók bejelentkeznek az alkalmazásba a Microsoft Edge-ben, a rendszer visszairányítja őket a HRE bejelentkezési oldaláról, és egy végtelen átirányítási hurokba ragadnak, ami ismétlődő oldal újratöltését eredményezi. Ezt általában `invalid_state` a munkamenet-tárolóban lévő hiba kíséri.
 
@@ -65,7 +65,7 @@ Vegye figyelembe, hogy ez nem oldja meg az InPrivate-böngészés hibáját, miv
 
 Előfordulhat, hogy az előugró ablakok le vannak tiltva az IE-ben vagy a Microsoft Edge-ben, például ha egy második előugró ablak jelenik meg a [multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)során. A böngészőben megjelenik egy riasztás, amely lehetővé teszi, hogy az előugró ablak egyszer vagy bármikor elérhető legyen. Ha úgy dönt, hogy engedélyezi, a böngésző automatikusan megnyitja az előugró ablakot, és visszaadja a `null` hozzá tartozó leírót. Ennek eredményeképpen a függvénytár nem rendelkezik leíróval az ablakhoz, és nincs lehetőség az előugró ablak bezárására. Ugyanez a probléma nem fordul elő a Chrome-ban, amikor rákérdez, hogy engedélyezi-e a felugró ablakokat, mert nem nyit meg automatikusan előugró ablakot.
 
-**Megkerülő megoldásként**a fejlesztőknek engedélyeznie kell a felugró ablakokat az IE-ben és a Microsoft Edge-ben, mielőtt elkezdik használni az alkalmazást a probléma elkerüléséhez.
+**Megkerülő megoldásként** a fejlesztőknek engedélyeznie kell a felugró ablakokat az IE-ben és a Microsoft Edge-ben, mielőtt elkezdik használni az alkalmazást a probléma elkerüléséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az [MSAL.js használatáról az Internet Explorerben](msal-js-use-ie-browser.md).

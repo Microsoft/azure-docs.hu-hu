@@ -7,10 +7,10 @@ ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
 ms.openlocfilehash: 1146b5979d81b91c6c6894aa54b2e0ca50c896c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88961618"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Útmutató webalkalmazások üzembe helyezéséhez Azure Resource Manager sablonok használatával
@@ -111,7 +111,7 @@ A webalkalmazás nevének globálisan egyedinek kell lennie. Használhat olyan e
 
 Ha a sablon tartalmaz egy [Microsoft. Web/Certificates](/azure/templates/microsoft.web/certificates) erőforrást a TLS/SSL-kötéshez, és a tanúsítványt egy Key Vault tárolja, meg kell győződnie arról, hogy a app Service identitás hozzáfér a tanúsítványhoz.
 
-A globális Azure-ban a App Service egyszerű szolgáltatásnév a **ABFA0A7C-A6B6-4736-8310-5855508787CD**azonosítója. Ahhoz, hogy hozzáférést biztosítson Key Vault számára a App Service egyszerű szolgáltatásnév számára, használja a következőt:
+A globális Azure-ban a App Service egyszerű szolgáltatásnév a **ABFA0A7C-A6B6-4736-8310-5855508787CD** azonosítója. Ahhoz, hogy hozzáférést biztosítson Key Vault számára a App Service egyszerű szolgáltatásnév számára, használja a következőt:
 
 ```azurepowershell-interactive
 Set-AzKeyVaultAccessPolicy `

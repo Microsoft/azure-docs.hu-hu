@@ -4,10 +4,10 @@ description: Ebből a cikkből megtudhatja, hogyan állíthatja be a beágyazott
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 319695088e967dc3156ecab5c1b9458e77fcc186
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91251474"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services"></a>Beágyazott virtualizálás engedélyezése sablonbeli virtuális gépen Azure Lab Services
@@ -16,7 +16,7 @@ Jelenleg a Azure Lab Services lehetővé teszi egy sablonban lévő virtuális g
 
 A beágyazott virtualizálás lehetővé teszi, hogy több virtuális gépre kiterjedő környezetet hozzon létre a labor sablonjának virtuális gépén. A sablon közzétételével minden felhasználó számára elérhetővé válik a laborban egy virtuális gép, amelyben több virtuális gép van beállítva.  Ez a cikk bemutatja, hogyan állíthatja be a beágyazott virtualizálás szolgáltatást egy Azure Lab Services található sablonos gépen.
 
-## <a name="what-is-nested-virtualization"></a>Mi az a beágyazott virtualizálás?
+## <a name="what-is-nested-virtualization"></a>Mit jelent a beágyazott virtualizálás?
 
 A beágyazott virtualizálás lehetővé teszi, hogy virtuális gépeket hozzon létre egy virtuális gépen belül. A beágyazott virtualizálás a Hyper-V-n keresztül történik, és csak Windows rendszerű virtuális gépeken érhető el.
 

@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 67700ec643a27f8ae5c581fe9de8e3295a1925e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88998237"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-windows-phones-using-azure-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése adott Windows Phone-telefonokra az Azure Notification Hubs
@@ -252,7 +252,7 @@ Ezek a lépések végzik az értesítési központban való regisztrációt az i
 > [!NOTE]
 > Mivel a Microsoft Push Notification Service (MPNS) által hozzárendelt csatorna URI bármikor megváltozhat, gyakran regisztráljon az értesítésekre, hogy elkerülhesse az értesítési hibákat. Ebben a példában a rendszer az alkalmazás minden egyes indításakor regisztrál az értesítésekre. A gyakran, naponta egynél többször futtatott alkalmazások esetén a sávszélesség megőrzése érdekében akár ki is hagyhatja a regisztrációt, ha kevesebb mint egy nap telt el az előző regisztráció óta.
 
-1. Nyissa meg a App.xaml.cs fájlt, és adja hozzá a `async` módosítót a `Application_Launching` metódushoz, és cserélje le a [Notification Hubs első lépéseiben] hozzáadott Notification Hubs regisztrációs kódot a következő kóddal:
+1. Nyissa meg az app. XAML. cs fájlt, és adja hozzá a `async` módosítót a `Application_Launching` metódushoz, és cserélje le az első [lépések Notification Hubs] a következő kóddal hozzáadott Notification Hubs regisztrációs kódot:
 
     ```csharp
     private async void Application_Launching(object sender, LaunchingEventArgs e)
@@ -268,7 +268,7 @@ Ezek a lépések végzik az értesítési központban való regisztrációt az i
     ```
 
     Ez a kód biztosítja, hogy az alkalmazás minden egyes indításkor lekéri a kategóriákat a helyi tárterületből, és regisztrációt kérelmez ezekre a kategóriákra vonatkozóan.
-2. A MainPage.xaml.cs projekt fájljában adja hozzá a következő kódot, amely megvalósítja a `OnNavigatedTo` metódust:
+2. A Főoldal. XAML. cs projektfájl adja hozzá a következő kódot, amely megvalósítja a `OnNavigatedTo` metódust:
 
     ```csharp
     protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -308,7 +308,7 @@ Az alkalmazás ezzel elkészült, és képes egy kategóriakészlet tárolásár
 
     ![Értesítési üzenet][3]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban elsajátította, hogy hogyan küldhet leküldéses értesítéseket olyan adott eszközökre, amelyek a regisztrációjukhoz társított címkékkel rendelkeznek. Ha szeretné megtudni, hogy hogyan küldhet értesítéseket adott felhasználóknak, akik egyszerre akár több eszközt is használhatnak, lépjen tovább a következő oktatóanyagra: 
 

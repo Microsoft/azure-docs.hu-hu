@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: 45f4ca6349c14f21ce48a1fcf34b7fc8998dd278
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 99af0ee46e2827ac8a5749d58bb19cf85f96aa46
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733516"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577461"
 ---
 # <a name="get-started-with-custom-voice"></a>Bevezetés a Custom Voice szolgáltatásba
 
@@ -69,7 +69,9 @@ Az első projekt létrehozásához válassza a **szöveg – beszéd/egyéni han
 
 ## <a name="how-to-migrate-to-custom-neural-voice"></a>Áttelepítés egyéni neurális hangra
 
-Ha a nem neurális (vagy standard) egyéni hangvételt használja, vegye figyelembe, hogy az alábbi lépéseket követve azonnal áttelepíti az egyéni neurális hangra. Az egyéni neurális hangvételre való áttérés segít, hogy reálisabb hangokat fejlesszen még természetesebb felületi felületeknél, és lehetővé tegye, hogy az ügyfelek és a végfelhasználók a legújabb szöveg-beszéd technológia előnyeit a felelős módon hasznosítsák. 
+Az egyéni hang szabványos/nem neurális betanítási szintje (adaptív, statisztikai számszerű, concacenative) elavult. A Annoucement a 2/28/2021 előtti összes meglévő Speech-előfizetésre elküldjük. Az elavult időszak alatt (3/1/2021-2/29/2024) a meglévő standard szintű felhasználók továbbra is használhatják a létrehozott nem neurális modelleket. Minden új felhasználónak/új beszédfelismerési erőforrásnak az neurális és az egyéni neurális hangra kell lépnie. 2/29/2024 után az összes standard/nem neurális egyéni hang többé nem lesz támogatott. 
+
+Ha nem neurális/normál egyéni hangvételt használ, az alábbi lépéseket követve azonnal áttelepítheti az egyéni neurális hangra. Az egyéni neurális hangvételre való áttérés segít, hogy reálisabb hangokat fejlesszen még természetesebb felületi felületeknél, és lehetővé tegye, hogy az ügyfelek és a végfelhasználók a legújabb szöveg-beszéd technológia előnyeit a felelős módon hasznosítsák. 
 
 1. Tekintse meg [a szabályzatot a hozzáférés korlátozása](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) és [itt érvényes](https://aka.ms/customneural). Vegye figyelembe, hogy az egyéni neurális hangszolgáltatáshoz való hozzáférésre a Microsoft saját belátása szerint jogosult a jogosultsági feltételek alapján. Az ügyfelek csak az alkalmazásuk felülvizsgálatát követően férhetnek hozzá a technológiához, és elkötelezték magukat, hogy a [felelős AI-alapelvekkel](https://microsoft.com/ai/responsible-ai) és a [viselkedési szabályzattal](/legal/cognitive-services/speech-service/tts-code-of-conduct?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)összhangban használják azt. 
 2. Az alkalmazás jóváhagyása után megkapja a "neurális" betanítási funkció elérését. Ügyeljen arra, hogy az [Egyéni hangportálra](https://speech.microsoft.com/customvoice) az alkalmazásban megadott Azure-előfizetéssel jelentkezzen be. 

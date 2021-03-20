@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: victorh
 ms.openlocfilehash: 23a7682d8a64de57db4ff9ae785ada90d4a06944
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87084670"
 ---
 # <a name="azure-firewall-central-management"></a>Azure Firewall központi felügyelet
@@ -27,7 +27,7 @@ A Azure Firewall Manager egy hálózati biztonsági felügyeleti szolgáltatás,
 
 ### <a name="firewall-policy"></a>Tűzfal házirendje
 
-A tűzfalszabályok olyan Azure-erőforrások, amelyek NAT-, hálózat-és alkalmazás-szabály-gyűjteményeket, valamint veszélyforrások felderítési beállításait tartalmazzák. Ez egy globális erőforrás, amely a *biztonságos virtuális hubok* és a *hub virtuális hálózatok*több Azure Firewall példányára is használható. Új szabályzatok hozhatók létre a semmiből, vagy a meglévő szabályzatokból örökölhető. Az öröklés lehetővé teszi, hogy a DevOps helyi tűzfal-házirendeket hozzon létre a szervezethez kötött alapházirend alapján. A szabályzatok a régiók és az előfizetések között működnek.
+A tűzfalszabályok olyan Azure-erőforrások, amelyek NAT-, hálózat-és alkalmazás-szabály-gyűjteményeket, valamint veszélyforrások felderítési beállításait tartalmazzák. Ez egy globális erőforrás, amely a *biztonságos virtuális hubok* és a *hub virtuális hálózatok* több Azure Firewall példányára is használható. Új szabályzatok hozhatók létre a semmiből, vagy a meglévő szabályzatokból örökölhető. Az öröklés lehetővé teszi, hogy a DevOps helyi tűzfal-házirendeket hozzon létre a szervezethez kötött alapházirend alapján. A szabályzatok a régiók és az előfizetések között működnek.
  
 A Azure Firewall Managerrel hozhat létre tűzfal-házirendet és társításokat. A szabályzatokat azonban REST API, sablonok, Azure PowerShell és parancssori felület használatával is létrehozhatja és kezelheti. Miután létrehozta a szabályzatot, társíthatja azt egy virtuális WAN-központban található tűzfallal, így *biztonságos virtuális hubot* és/vagy tűzfalat hozhat létre egy virtuális hálózatban, amely az informatikai *központ Virtual Network*.
 
@@ -44,6 +44,6 @@ A következő vezető harmadik féltől származó megoldások támogatják a st
 - [Tufin Orka](https://www.tufin.com/products/tufin-orca)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Firewall Managerrel kapcsolatos további információkért lásd: [Mi az a Azure Firewall Manager?](../firewall-manager/overview.md)

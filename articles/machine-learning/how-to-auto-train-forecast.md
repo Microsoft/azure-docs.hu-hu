@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 14837391f7bf907acbbe1d573f3171acef4db658
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 66fa56b45e8d3cff7a8ace300a450b9c41df9bc0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503504"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588715"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Idősorozat-előrejelzési modell automatikus betanítása
 
@@ -128,7 +128,7 @@ Az automatizált gépi tanulás automatikusan különböző modelleket és algor
 >[!Tip]
 > A rendszer a hagyományos regressziós modelleket is teszteli a javaslatrendszer részeként az előrejelzési kísérletekhez. A modellek teljes listájáért tekintse meg a [támogatott modell táblázatát](how-to-configure-auto-train.md#supported-models) . 
 
-Modellek| Leírás | Előnyök
+Modellek| Description | Előnyök
 ----|----|---
 Próféta (előzetes verzió)|A próféta a legjobb idősorozattal működik, amely erős szezonális hatásokat és több időszakot is tartalmaz. A modell kihasználása érdekében telepítse helyileg a használatával `pip install fbprophet` . | Pontos & gyors, robusztus a kiugró értékek, a hiányzó adatmennyiségek és az idősorozat drámai változásai.
 Automatikus ARIMA (előzetes verzió)|Az automatikusan újradegresszív, integrált mozgóátlag (ARIMA) a legjobbat hajtja végre, ha az adatok állomáson vannak. Ez azt jelenti, hogy a statisztikai tulajdonságok, például a középérték és a variancia állandó a teljes készleten. Ha például egy érme tükrözését hajtja végre, akkor a fejek megszerzésének valószínűsége 50% lesz, függetlenül attól, hogy a mai, a holnapi vagy a következő évre fordít-e.| Kiválóan használható a univariate sorozatokhoz, mivel a korábbi értékeket a jövőbeli értékek előrejelzésére használjuk.
@@ -349,7 +349,7 @@ A `forecast_destination` függvény paraméterét is használhatja az `forecast(
 ```python
 label_query = test_labels.copy().astype(np.float)
 label_query.fill(np.nan)
-label_fcst, data_trans = fitted_pipeline.forecast(
+label_fcst, data_trans = fitted_model.forecast(
     test_data, label_query, forecast_destination=pd.Timestamp(2019, 1, 8))
 ```
 
@@ -373,7 +373,7 @@ day_datetime,store,week_of_year
 01/01/2019,A,1
 ```
 
-Ismételje meg a szükséges lépéseket a jövőbeli adatok egy dataframe való betöltéséhez, majd futtassa a parancsot `best_run.predict(test_data)` a jövőbeli értékek előrejelzéséhez.
+Ismételje meg a szükséges lépéseket a jövőbeli adatok egy dataframe való betöltéséhez, majd futtassa a parancsot `best_run.forecast(test_data)` a jövőbeli értékek előrejelzéséhez.
 
 > [!NOTE]
 > A mintavételi előrejelzések nem támogatottak az automatikus ML-vel való előrejelzéshez, ha `target_lags` és/vagy `target_rolling_window_size` engedélyezve vannak.

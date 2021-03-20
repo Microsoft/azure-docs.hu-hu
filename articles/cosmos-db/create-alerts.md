@@ -8,10 +8,10 @@ ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 07/16/2020
 ms.openlocfilehash: e29db7e31438bc7f6ac609384d0d9b92c275e813
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339546"
 ---
 # <a name="create-alerts-for-azure-cosmos-db-using-azure-monitor"></a>Riasztások létrehozása Azure Cosmos DBhoz a Azure Monitor használatával
@@ -102,7 +102,7 @@ Az alábbiakban néhány példát láthat a riasztások használatára:
 * Adatbázis vagy tároló létrehozásakor, törlésekor vagy frissítésekor.
 * Az adatbázis vagy a tároló átviteli sebessége megváltozik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [normalizált ru/s metrika figyelése](monitor-normalized-request-units.md) az Azure Cosmos-tárolóban.
 * A művelet [teljesítményének figyelése, illetve a művelet kérése](monitor-request-unit-usage.md) Azure Cosmos DBban.

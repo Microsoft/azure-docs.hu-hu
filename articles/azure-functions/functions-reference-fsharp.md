@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: syclebsc
 ms.openlocfilehash: f9b7b92fd21e12f1d86c5d5878e48c6ec6b0e748
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87088019"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F # fejlesztői segédlet
@@ -61,7 +61,7 @@ let Run(blob: string, output: byref<Item>) =
     output <- item
 ```
 
-Az F # Azure-függvény egy vagy több argumentumot fog elkészíteni. Ha Azure Functions argumentumokról beszélünk, a *bemeneti* argumentumok és a *kimeneti* argumentumok szerepelnek. A bemeneti argumentum pontosan az, ahogy hangzik: bemenet az F # Azure-függvénynek. A *kimeneti* argumentum változó adat, vagy olyan `byref<>` argumentum, amely az adatokat a függvényből visszaadja *out* .
+Az F # Azure-függvény egy vagy több argumentumot fog elkészíteni. Ha Azure Functions argumentumokról beszélünk, a *bemeneti* argumentumok és a *kimeneti* argumentumok szerepelnek. A bemeneti argumentum pontosan az, ahogy hangzik: bemenet az F # Azure-függvénynek. A *kimeneti* argumentum változó adat, vagy olyan `byref<>` argumentum, amely az adatokat a függvényből visszaadja  .
 
 A fenti példában `blob` egy bemeneti argumentum, és `output` egy kimeneti argumentum. Figyelje meg, hogy a következőhöz használtuk `byref<>` : `output` (nincs szükség a `[<Out>]` jegyzet hozzáadására). A `byref<>` típus használata lehetővé teszi, hogy a függvény megváltoztassa az argumentumra hivatkozó rekordot vagy objektumot.
 
@@ -284,7 +284,7 @@ Az elérési utak az `#load` irányelvhez képest a fájl helyéhez viszonyítva
 
 Az `#load` irányelv csak az `.fsx` (F # script) fájlokkal működik, és nem `.fs` fájlokkal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információkat találhat az alábbi forrásokban:
 
 * [F#-útmutató](/dotnet/articles/fsharp/index)

@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan futtathat egy szolgáltatást Active Directory 
 ms.topic: conceptual
 ms.date: 03/29/2018
 ms.openlocfilehash: d4a7afc2ddb0f39014a7cf0fd006d7fe23673a95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91840727"
 ---
 # <a name="run-a-service-as-an-active-directory-user-or-group"></a>Szolgáltatás futtatása Active Directory felhasználóként vagy csoportként
@@ -15,7 +15,7 @@ Egy Windows Server önálló fürtön futtathatja a szolgáltatást Active Direc
 
 Tartományi felhasználó vagy csoport használatával elérheti a tartomány (például fájlmegosztás) más erőforrásait, amelyek engedélyeket kaptak.
 
-Az alábbi példa egy *tesztfelhasználó* nevű Active Directory felhasználót mutat be a tartomány jelszavával, amelyet a *MyCert*nevű tanúsítvány használatával titkosított. A `Invoke-ServiceFabricEncryptText` titkos titkosítási szöveg létrehozásához a PowerShell-parancs használható. További részletekért lásd: [a titkok kezelése Service Fabric alkalmazásokban](service-fabric-application-secret-management.md) .
+Az alábbi példa egy *tesztfelhasználó* nevű Active Directory felhasználót mutat be a tartomány jelszavával, amelyet a *MyCert* nevű tanúsítvány használatával titkosított. A `Invoke-ServiceFabricEncryptText` titkos titkosítási szöveg létrehozásához a PowerShell-parancs használható. További részletekért lásd: [a titkok kezelése Service Fabric alkalmazásokban](service-fabric-application-secret-management.md) .
 
 A tanúsítvány titkos kulcsát központilag kell telepíteni a helyi gépre, ha sávon kívüli metódust használ (az Azure-ban, ez Azure Resource Manageron keresztül). Ezután, amikor Service Fabric telepíti a szervizcsomagot a gépre, képes visszafejteni a titkos kulcsot, és (a felhasználónévvel együtt) a hitelesítő adatokkal történő futtatáshoz Active Directory használatával.
 
@@ -35,7 +35,7 @@ A tanúsítvány titkos kulcsát központilag kell telepíteni a helyi gépre, h
 ```
 
 > [!NOTE] 
-> Ha futtató házirendet alkalmaz egy szolgáltatásra, és a szolgáltatás jegyzékfájlja deklarálja a végponti erőforrásokat a HTTP protokollal, meg kell adnia egy **SecurityAccessPolicy**is.  További információ: [biztonsági hozzáférési házirend társítása http-és HTTPS-végpontokhoz](service-fabric-assign-policy-to-endpoint.md). 
+> Ha futtató házirendet alkalmaz egy szolgáltatásra, és a szolgáltatás jegyzékfájlja deklarálja a végponti erőforrásokat a HTTP protokollal, meg kell adnia egy **SecurityAccessPolicy** is.  További információ: [biztonsági hozzáférési házirend társítása http-és HTTPS-végpontokhoz](service-fabric-assign-policy-to-endpoint.md). 
 >
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->

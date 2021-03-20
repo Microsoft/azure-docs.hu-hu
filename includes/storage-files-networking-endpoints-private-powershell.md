@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: storage
 author: roygara
 ms.service: storage
@@ -9,10 +9,10 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 1c8ccc1e1ee8c8c1b1a1e27443d27b2140a91649
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84465013"
 ---
 Ha privát végpontot szeretne létrehozni a Storage-fiókhoz, először meg kell adnia egy hivatkozást a Storage-fiókjára, valamint azt a virtuális hálózati alhálózatot, amelyhez hozzá szeretné adni a magánhálózati végpontot. Cserélje le a,, `<storage-account-resource-group-name>` ,,  `<storage-account-name>` és az `<vnet-resource-group-name>` `<vnet-name>` `<vnet-subnet-name>` alábbit:
