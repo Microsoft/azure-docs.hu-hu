@@ -8,10 +8,10 @@ ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: 64b99976a306c3c8423f5115c95a15158a3ddb51
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93043178"
 ---
 Ez a lépés összekapcsolja a Windows Server-példányon beállított összes erőforrást és mappát az előző lépések során.

@@ -8,10 +8,10 @@ ms.author: viviali
 ms.date: 10/4/2019
 ms.topic: conceptual
 ms.openlocfilehash: 191b57b08ba04844824dd5cf26875c21e494c5ef
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92123337"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Azure IoT Central-beli adatPower BI-irányítópulton tárolt adatai megjelenítése és elemzése
@@ -47,7 +47,7 @@ A megoldás beállításához a következő erőforrások szükségesek:
 
 ## <a name="install"></a>Telepítés
 
-A folyamat beállításához navigáljon az Power BI- [megoldáshoz az Azure IoT Central v3](https://appsource.microsoft.com/product/web-apps/iot-central.power-bi-solution-iot-central) oldalához a **Microsoft AppSource** helyen. Válassza a **Letöltés most**lehetőséget, és kövesse az utasításokat.
+A folyamat beállításához navigáljon az Power BI- [megoldáshoz az Azure IoT Central v3](https://appsource.microsoft.com/product/web-apps/iot-central.power-bi-solution-iot-central) oldalához a **Microsoft AppSource** helyen. Válassza a **Letöltés most** lehetőséget, és kövesse az utasításokat.
 
 A PBIX-fájl megnyitásakor ügyeljen rá, hogy olvassa el és kövesse a fedél oldalon található utasításokat. Ezek az utasítások azt írják le, hogyan csatlakoztatható a jelentés az SQL-adatbázishoz.
 
@@ -55,13 +55,13 @@ A PBIX-fájl megnyitásakor ügyeljen rá, hogy olvassa el és kövesse a fedél
 
 A PBIX-fájl tartalmazza az **eszközök és a telemetria** jelentést, amely az eszközök által elindított telemetria korábbi nézetét jeleníti meg. Lebontja a különböző típusú telemetria, és megjeleníti az eszközök által eljuttatott legutóbbi telemetria is.
 
-:::image type="content" source="media/howto-connect-powerbi/report.png" alt-text="Power BI megoldási folyamat":::
+:::image type="content" source="media/howto-connect-powerbi/report.png" alt-text="Eszközök és telemetria-jelentés Power BI":::
 
 ## <a name="pipeline-resources"></a>Folyamat erőforrásai
 
 A Azure Portal összes olyan Azure-erőforrását elérheti, amely a folyamatot a folyamaton belül hozza létre. Az összes erőforrás abban a csoportban található, amelyet a folyamat beállításakor hozott létre.
 
-:::image type="content" source="media/howto-connect-powerbi/azure-deployment.png" alt-text="Power BI megoldási folyamat":::
+:::image type="content" source="media/howto-connect-powerbi/azure-deployment.png" alt-text="Erőforráscsoport Azure Portal nézete":::
 
 A következő lista ismerteti a folyamat egyes erőforrásainak a szerepét:
 

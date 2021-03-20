@@ -10,10 +10,10 @@ services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: 833b6413cc5dfde1129075a286e5fe93a06e159f
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92890921"
 ---
 # <a name="create-a-map"></a>Térkép létrehozása
@@ -40,7 +40,7 @@ Ha a Térkép széles képernyőre van nagyítva, a világ több példánya is v
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="renderWorldCopies = false" src="//codepen.io/azuremaps/embed/eqMYpZ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a CodePen-on található <a href='https://codepen.io/azuremaps/pen/eqMYpZ/'>renderWorldCopies = false</a> () értéket a következőben: Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>).
+Tekintse meg a CodePen-on található <a href='https://codepen.io/azuremaps/pen/eqMYpZ/'>renderWorldCopies = false</a> () értéket a következőben: Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'></a>).
 </iframe>
 
 
@@ -171,7 +171,7 @@ var map = new atlas.Map('myMap', {
 
 ## <a name="try-out-the-code"></a>A kód kipróbálása
 
-Tekintse meg a kód mintáit. A JavaScript-kódot a **js lapon** szerkesztheti, és az **eredmény lapon** megtekintheti a Térkép nézet módosításait. Kattintson a Szerkesztés elemre a **CodePen** , a jobb felső sarokban, és módosítsa a kódot a CodePen.
+Tekintse meg a kód mintáit. A JavaScript-kódot a **js lapon** szerkesztheti, és az **eredmény lapon** megtekintheti a Térkép nézet módosításait. Kattintson a Szerkesztés elemre a **CodePen**, a jobb felső sarokban, és módosítsa a kódot a CodePen.
 
 <a id="relatedReference"></a>
 

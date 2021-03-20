@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: 5f455a1132a0f63e1ba3eb5d2a57a1f9bfa9a867
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895681"
 ---
 # <a name="how-to-use-image-templates"></a>Rendszerképsablonok használata
@@ -71,7 +71,7 @@ Az alábbi minta egy rózsaszín vonalat jelenít meg a térképen, és egy szim
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Beépített ikon sablonnal rendelkező vonal réteg" src="//codepen.io/azuremaps/embed/KOQvJe/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
-A CodePen-on Azure Maps () használatával megtekintheti a Pen <a href='https://codepen.io/azuremaps/pen/KOQvJe/'>line réteget a beépített ikon sablonnal</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+A CodePen-on Azure Maps () használatával megtekintheti a Pen <a href='https://codepen.io/azuremaps/pen/KOQvJe/'>line réteget a beépített ikon sablonnal</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 > [!TIP]
@@ -119,7 +119,7 @@ Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>HTML-jelö
 
 Ha az alkalmazás ugyanazt az ikont használja különböző ikonokkal, vagy ha olyan modult hoz létre, amely további képsablonokat ad hozzá, egyszerűen hozzáadhatja és lekérheti ezeket az ikonokat a Azure Maps web SDK-ból. Használja a következő statikus függvényeket a `atlas` névtérben.
 
-| Name (Név) | Visszatérési típus | Leírás | 
+| Name | Visszatérési típus | Description | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | Hozzáadja az egyéni SVG-képsablont az Atlas-névtérhez. |
 |  `getImageTemplate(templateName: string, scale?: number)`| sztring | Egy SVG-sablon beolvasása név alapján. |
@@ -127,7 +127,7 @@ Ha az alkalmazás ugyanazt az ikont használja különböző ikonokkal, vagy ha 
 
 Az SVG-képsablonok a következő helyőrző értékeket támogatják:
 
-| Helyőrző | Leírás |
+| Helyőrző | Description |
 |-|-|
 | `{color}` | Az elsődleges szín. | 
 | `{secondaryColor}` | A másodlagos szín | 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: harshacs
 ms.openlocfilehash: 4dad7f76edf34782131c7c844978763cda53acc7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90068115"
 ---
 # <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Virtuális gépek hálózati adaptereinek kezelése az Azure-ba történő helyszíni vészhelyreállításhoz
@@ -32,7 +32,7 @@ A VMware és a fizikai gépek esetében, valamint a Hyper-V (System Center Virtu
 
 2. Válassza a **számítás és hálózat** fület a replikált elem hálózati beállításainak eléréséhez.
 
-3. A **hálózati tulajdonságok**területen válasszon ki egy virtuális hálózatot az elérhető hálózati adapterek listájából.
+3. A **hálózati tulajdonságok** területen válasszon ki egy virtuális hálózatot az elérhető hálózati adapterek listájából.
 
     ![Hálózati beállítások](./media/site-recovery-manage-network-interfaces-on-premises-to-azure/compute-and-network.png)
 
@@ -48,7 +48,7 @@ A **számítás és hálózat** ablaktábla **hálózati adapterek** szakaszába
 - Az összes többi kiválasztott hálózati csatoló (ha vannak ilyenek) **másodlagos** hálózati adapterek.
 - A **nem használható** lehetőség kiválasztásával zárja ki a hálózati adaptert a létrehozásból a feladatátvétel során.
 
-Alapértelmezés szerint a replikálás engedélyezésekor Site Recovery kiválasztja az összes észlelt hálózati adaptert a helyszíni kiszolgálón. Az egyiket **elsődlegesként** , a másikat pedig **másodlagosként**jelöli meg. A helyszíni kiszolgálón hozzáadott további felületek alapértelmezés szerint **nem használhatók** . Ha további hálózati adaptereket ad hozzá, győződjön meg arról, hogy az Azure-beli virtuális gép megfelelő mérete van kiválasztva az összes szükséges hálózati adapter számára.
+Alapértelmezés szerint a replikálás engedélyezésekor Site Recovery kiválasztja az összes észlelt hálózati adaptert a helyszíni kiszolgálón. Az egyiket **elsődlegesként** , a másikat pedig **másodlagosként** jelöli meg. A helyszíni kiszolgálón hozzáadott további felületek alapértelmezés szerint **nem használhatók** . Ha további hálózati adaptereket ad hozzá, győződjön meg arról, hogy az Azure-beli virtuális gép megfelelő mérete van kiválasztva az összes szükséges hálózati adapter számára.
 
 ## <a name="modify-network-interface-settings"></a>Hálózati adapter beállításainak módosítása
 

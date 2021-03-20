@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.openlocfilehash: aadb2107cd009ac58cf8edb12853b10a5a0e3677
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94659998"
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-cli"></a>Helyi hálózati átjáró beállításainak módosítása az Azure CLI használatával
@@ -25,7 +25,7 @@ Előfordulhat, hogy a helyi hálózati átjáró címének előtagja vagy az át
 >
 >
 
-## <a name="before-you-begin"></a><a name="before"></a>Előkészületek
+## <a name="before-you-begin"></a><a name="before"></a>Kezdés előtt
 
 Telepítse a CLI-parancsok legújabb verzióját (2,0 vagy újabb). Információk a CLI-parancsok telepítéséről: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 

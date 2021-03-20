@@ -12,10 +12,10 @@ ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: c394fe2aa7639d32e5d79bcb22a01151f7666f5b
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96324618"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Az SQL Server használatának áttekintése az Azure Virtual Machines szolgáltatásban (Linux rendszeren)
@@ -71,7 +71,7 @@ SQL Server on Linux konfigurálásakor az adatbázismotor-csomagot, majd a köve
 
 * [A Microsoft Azure Storage bemutatása](../../../storage/common/storage-introduction.md)
 
-### <a name="networking"></a>Hálózat
+### <a name="networking"></a>Hálózatkezelés
 
 * [Virtual Network áttekintése](../../../virtual-network/virtual-networks-overview.md)
 * [IP-címek az Azure-ban](../../../virtual-network/public-ip-addresses.md)
@@ -82,7 +82,7 @@ SQL Server on Linux konfigurálásakor az adatbázismotor-csomagot, majd a köve
 * [SQL Server on Linux dokumentáció](/sql/linux)
 * [Az Azure SQL Database összehasonlítása](../../azure-sql-iaas-vs-paas-what-is-overview.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedés a SQL Server on Linux Virtual Machines szolgáltatással:
 

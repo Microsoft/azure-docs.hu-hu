@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
 ms.openlocfilehash: 78fddb5b4512883f8e78d6ed53f6e3dbbeba0e4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90524997"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>A forrásoldali gép előkészítése a mobilitási ügynök leküldéses telepítéséhez
@@ -31,13 +31,13 @@ Minden olyan Windows-gépen, amelyet védelemmel szeretne ellátni, tegye a köv
        REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1 /f
        ```
 
-3. A védelemmel ellátni kívánt gépen a Windows tűzfalon válassza az **alkalmazás vagy szolgáltatás engedélyezése a tűzfalon keresztül**lehetőséget. Engedélyezze a **fájl-és nyomtatómegosztás** , valamint a **Windows Management Instrumentation (WMI)** szolgáltatást. Tartományhoz tartozó számítógépek esetén Csoportházirend objektum (GPO) használatával konfigurálhatja a tűzfalbeállítások beállításait.
+3. A védelemmel ellátni kívánt gépen a Windows tűzfalon válassza az **alkalmazás vagy szolgáltatás engedélyezése a tűzfalon keresztül** lehetőséget. Engedélyezze a **fájl-és nyomtatómegosztás** , valamint a **Windows Management Instrumentation (WMI)** szolgáltatást. Tartományhoz tartozó számítógépek esetén Csoportházirend objektum (GPO) használatával konfigurálhatja a tűzfalbeállítások beállításait.
 
    ![Tűzfalbeállítások](./media/vmware-azure-install-mobility-service/mobility1.png)
 
 4. Adja hozzá a CSPSConfigtool eszközben létrehozott fiókot. Ehhez jelentkezzen be a konfigurációs kiszolgálóra.
 5. Nyissa meg a következőt: **cspsconfigtool.exe**. Parancsikonként érhető el az asztalon és a%ProgramData%\ASR\home\svsystems\bin mappában.
-6. A **fiókok kezelése** lapon válassza a **fiók hozzáadása**lehetőséget.
+6. A **fiókok kezelése** lapon válassza a **fiók hozzáadása** lehetőséget.
 7. Adja hozzá a létrehozott fiókot.
 8. Adja meg a számítógépek replikációjának engedélyezése során használt hitelesítő adatokat.
 
@@ -51,16 +51,16 @@ Minden védelemmel ellátni kívánt Linux-gépen tegye a következőket:
 4. Telepítse a legfrissebb openssh, openssh-server és openssl csomagokat a replikálni kívánt számítógépen.
 5. Ügyeljen arra, hogy a Secure Shell (SSH) engedélyezve legyen, és a 22-es porton fusson.
 4. Engedélyezze az SFTP alrendszer és a jelszó-hitelesítés használatát a sshd_config fájlban. Ehhez jelentkezzen be **root**-ként.
-5. A **/etc/ssh/sshd_config** fájlban keresse meg a sort, amely a **PasswordAuthentication**kezdődik.
-6. Állítsa vissza a sort, és módosítsa az értéket **Igen**értékre.
-7. Keresse meg az **alrendszer**kezdetű sorát, és a sor megjegyzését.
+5. A **/etc/ssh/sshd_config** fájlban keresse meg a sort, amely a **PasswordAuthentication** kezdődik.
+6. Állítsa vissza a sort, és módosítsa az értéket **Igen** értékre.
+7. Keresse meg az **alrendszer** kezdetű sorát, és a sor megjegyzését.
 
       ![Linux](./media/vmware-azure-install-mobility-service/mobility2.png)
 
 8. Indítsa újra az **sshd** szolgáltatást.
 9. Adja hozzá a CSPSConfigtool eszközben létrehozott fiókot. Ehhez jelentkezzen be a konfigurációs kiszolgálóra.
 10. Nyissa meg a következőt: **cspsconfigtool.exe**. Parancsikonként érhető el az asztalon és a%ProgramData%\home\svsystems\bin mappában.
-11. A **fiókok kezelése** lapon válassza a **fiók hozzáadása**lehetőséget.
+11. A **fiókok kezelése** lapon válassza a **fiók hozzáadása** lehetőséget.
 12. Adja hozzá a létrehozott fiókot.
 13. Adja meg a számítógépek replikációjának engedélyezése során használt hitelesítő adatokat.
 1. További lépés a SUSE Linux Enterprise Server 11 SP3 vagy RHEL 5 vagy CentOS 5 vagy Debian 7 rendszerű gépek frissítéséhez és védelméhez. [Győződjön meg arról, hogy a legújabb verzió elérhető a konfigurációs kiszolgálón](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server).

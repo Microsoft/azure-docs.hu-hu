@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: jeedes
 ms.openlocfilehash: be63ea7ebf905b825ffe73dfc2b37dcdc3bb88fd
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92507516"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-moxtra"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Moxtra
@@ -50,15 +50,15 @@ A Moxtra Azure AD-be való integrálásának konfigurálásához hozzá kell adn
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **Moxtra** kifejezést a keresőmezőbe.
 1. Válassza ki a **Moxtra** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-moxtra"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Moxtra
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Moxtra a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Moxtra-ben.
+Konfigurálja és tesztelje az Azure AD SSO-t a Moxtra a **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Moxtra-ben.
 
 Az Azure AD SSO és a Moxtra konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
@@ -73,8 +73,8 @@ Az Azure AD SSO és a Moxtra konfigurálásához és teszteléséhez hajtsa vég
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/) **Moxtra** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **Moxtra** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -104,7 +104,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     1. Hagyja üresen a **névteret** .
 
-    1. Válassza a forrás **attribútumként**lehetőséget.
+    1. Válassza a forrás **attribútumként** lehetőséget.
 
     1. A **forrás attribútum** listáról írja be az adott sorhoz megjelenő attribútum értékét.
 
@@ -124,7 +124,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
@@ -136,13 +136,13 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a Moxtra.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **Moxtra**lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **Moxtra** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
@@ -154,7 +154,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Egy másik böngészőablakban jelentkezzen be a Moxtra vállalati webhelyre rendszergazdaként.
 
-2. A bal oldali eszköztáron kattintson a **felügyeleti konzol > SAML egyszeri bejelentkezés**elemre, majd az **új**elemre.
+2. A bal oldali eszköztáron kattintson a **felügyeleti konzol > SAML egyszeri bejelentkezés** elemre, majd az **új** elemre.
    
     ![Képernyőfelvétel: az SAML egyszeri bejelentkezés lapja, amely egy új SAML egyszeri bejelentkezés létrehozását mutatja be.](./media/moxtra-tutorial/tutorial_moxtra_06.png) 
 
@@ -170,7 +170,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
  
     d. A **AuthnContextClassRef** szövegmezőbe írja be az **urn: Oasis: Names: TC: SAML: 2.0: AC: classs: Password nevet**. 
  
-    e. A **NameID formátum** szövegmezőbe írja be az **urn: Oasis: Names: TC: SAML: 1.1: NameID-Format: emailAddress**értéket. 
+    e. A **NameID formátum** szövegmezőbe írja be az **urn: Oasis: Names: TC: SAML: 1.1: NameID-Format: emailAddress** értéket. 
  
     f. Nyissa meg a Jegyzettömbben Azure Portal letöltött tanúsítványt, másolja a tartalmat, majd illessze be a **tanúsítvány** szövegmezőbe.    
  
@@ -189,7 +189,7 @@ Ennek a szakasznak a célja egy B. Simon nevű felhasználó létrehozása a Mox
 
 1. Jelentkezzen be a Moxtra vállalati webhelyre rendszergazdaként.
 
-1. A bal oldali eszköztáron kattintson a **felügyeleti konzol > felhasználói kezelés**, majd a **felhasználó hozzáadása**elemre.
+1. A bal oldali eszköztáron kattintson a **felügyeleti konzol > felhasználói kezelés**, majd a **felhasználó hozzáadása** elemre.
    
     ![Képernyőfelvétel: a felhasználó-felügyeleti oldal, amelyen a felhasználó hozzáadása lehetőség be van jelölve.](./media/moxtra-tutorial/tutorial_moxtra_10.png) 
 
@@ -201,11 +201,11 @@ Ennek a szakasznak a célja egy B. Simon nevű felhasználó létrehozása a Mox
   
     c. Az **e-mail** szövegmezőbe írja be a B. Simon e-mail-címét, mint Azure Portal.
   
-    d. A **divízió** szövegmezőbe írja be a **dev**értéket.
+    d. A **divízió** szövegmezőbe írja be a **dev** értéket.
   
-    e. A **részleg** szövegmezőbe **írja be**a következőt:.
+    e. A **részleg** szövegmezőbe **írja be** a következőt:.
   
-    f. Válassza a **rendszergazda**elemet.
+    f. Válassza a **rendszergazda** elemet.
   
     : Kattintson a **Hozzáadás** parancsra.
 

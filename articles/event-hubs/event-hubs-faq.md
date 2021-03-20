@@ -4,15 +4,15 @@ description: Ez a cikk a gyakori kérdések (GYIK) listáját tartalmazza az Azu
 ms.topic: article
 ms.date: 01/20/2021
 ms.openlocfilehash: e6fd4814e771d03827e51f1cd5ee182c9e432cc5
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98696108"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs gyakori kérdések
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="what-is-an-event-hubs-namespace"></a>Mi az Event Hubs névtér?
 A névtér az Event hub/Kafka témakörök hatóköri tárolója. Egyedi [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)-t biztosít. A névtér olyan alkalmazás-tárolóként szolgál, amely több Event hub-vagy Kafka-témakört is képes elhelyezni. 
@@ -247,7 +247,7 @@ A következő példákban megtudhatja, hogyan célozhat meg egy adott tárolási
 - Python – [szinkron](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py), [aszinkron](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)
 - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) és [írógéppel](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 

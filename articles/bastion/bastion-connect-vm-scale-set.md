@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: charwen
 ms.openlocfilehash: 001d2ff6789ec4cfcc391171f0859b67ab1ee0a5
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92077779"
 ---
 # <a name="connect-to-a-virtual-machine-scale-set-using-azure-bastion"></a>Kapcsolódás virtuálisgép-méretezési csoporthoz az Azure Bastion használatával
@@ -27,13 +27,13 @@ Győződjön meg arról, hogy beállította a virtuálisgép-méretezési csopor
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com). Navigáljon ahhoz a virtuálisgép-méretezési csoporthoz, amelyhez csatlakozni szeretne.
 
    ![navigate](./media/bastion-connect-vm-scale-set/1.png)
-2. Keresse meg a virtuálisgép-méretezési csoport azon példányát, amelyhez csatlakozni szeretne, majd válassza a **Kapcsolódás**lehetőséget. RDP-kapcsolat használata esetén a virtuálisgép-méretezési csoportnak Windows virtuálisgép-méretezési csoportnak kell lennie.
+2. Keresse meg a virtuálisgép-méretezési csoport azon példányát, amelyhez csatlakozni szeretne, majd válassza a **Kapcsolódás** lehetőséget. RDP-kapcsolat használata esetén a virtuálisgép-méretezési csoportnak Windows virtuálisgép-méretezési csoportnak kell lennie.
 
    ![Virtuálisgép-méretezési csoport](./media/bastion-connect-vm-scale-set/2.png)
-3. A **kapcsolat**kiválasztása után megjelenik egy oldalsó sáv, amely három lapot – RDP, SSH és Bastion – tartalmaz. Válassza ki az oldalsó sávban a **megerősített** lapot. Ha nem hozott létre a virtuális hálózatra vonatkozó kiépítést, a következő hivatkozásra kattintva állíthatja be a Bastion-t. A konfigurációs utasításokért lásd: a [Bastion konfigurálása](./tutorial-create-host-portal.md).
+3. A **kapcsolat** kiválasztása után megjelenik egy oldalsó sáv, amely három lapot – RDP, SSH és Bastion – tartalmaz. Válassza ki az oldalsó sávban a **megerősített** lapot. Ha nem hozott létre a virtuális hálózatra vonatkozó kiépítést, a következő hivatkozásra kattintva állíthatja be a Bastion-t. A konfigurációs utasításokért lásd: a [Bastion konfigurálása](./tutorial-create-host-portal.md).
 
    ![Megerősített lap](./media/bastion-connect-vm-scale-set/3.png)
-4. A megerősített lapon adja meg a virtuálisgép-méretezési csoport felhasználónevét és jelszavát, majd válassza a **kapcsolat**lehetőséget.
+4. A megerősített lapon adja meg a virtuálisgép-méretezési csoport felhasználónevét és jelszavát, majd válassza a **kapcsolat** lehetőséget.
 
    ![csatlakozásra](./media/bastion-connect-vm-scale-set/4.png)
 5. Az ehhez a virtuális géphez a Bastion-en keresztül létesített RDP-kapcsolat közvetlenül a Azure Portal (HTML5-n keresztül) lesz megnyitva a 443-es port és a megerősített szolgáltatás használatával.

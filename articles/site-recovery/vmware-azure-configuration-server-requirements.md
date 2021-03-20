@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/09/2019
 ms.author: raynew
 ms.openlocfilehash: 0b0942b517c8dc83c048bd1203a58d9861515dfb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95997808"
 ---
 # <a name="configuration-server-requirements-for-vmware-disaster-recovery-to-azure"></a>A VMware Azure-ba történő vészhelyreállításához használt konfigurációs kiszolgálóra vonatkozó követelmények
@@ -33,5 +33,5 @@ A VMware virtuális gépek Azure-ba való vész-helyreállításához a konfigur
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Állítsa be a [VMWare virtuális gépek](vmware-azure-tutorial.md) vész-helyreállítását az Azure-ba.

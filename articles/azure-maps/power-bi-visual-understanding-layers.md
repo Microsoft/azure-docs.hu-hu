@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: a5c7296a0e7b7f6ea33c1f4a669675efd90f9e9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86261844"
 ---
 # <a name="understanding-layers-in-the-azure-maps-power-bi-visual"></a>A Azure Maps rétegeinek ismertetése Power BI vizualizációban
@@ -41,7 +41,7 @@ A második típusú réteg összekapcsolja a külső adatforrásokat a leképez�
 
 :::row:::
     :::column span="":::
-        **Hivatkozási réteg**
+        **Referenciaréteg**
 
         Egy feltöltött GeoJSON-fájl átfedésben van a Térkép tetején.
 
@@ -63,7 +63,7 @@ A második típusú réteg összekapcsolja a külső adatforrásokat a leképez�
     :::column-end:::
 :::row-end:::
 
-Az összes adatmegjelenítési réteg, valamint a **csempe réteg**a minimális és a maximális nagyítási szintet is használhatja a nagyítási szint megadásához, ezeket a rétegeket a következő helyen kell megjeleníteni:. Ez lehetővé teszi, hogy egy megjelenítési réteg egyetlen nagyítási szinten legyen használva, és egy másik megjelenítési rétegre váltson át egy másik nagyítási szinten.
+Az összes adatmegjelenítési réteg, valamint a **csempe réteg** a minimális és a maximális nagyítási szintet is használhatja a nagyítási szint megadásához, ezeket a rétegeket a következő helyen kell megjeleníteni:. Ez lehetővé teszi, hogy egy megjelenítési réteg egyetlen nagyítási szinten legyen használva, és egy másik megjelenítési rétegre váltson át egy másik nagyítási szinten.
 
 Ezek a rétegek a Térkép más rétegeihez viszonyítva is megadhatók. Több adatmegjelenítési réteg használata esetén a térképhez hozzáadott sorrend határozza meg, hogy a rendszer milyen sorrendben adja hozzá a diagramhoz a relatív rétegbeli **pozíció** értékét.
 
@@ -79,7 +79,7 @@ A **Formátum** ablaktábla általános réteg szakasza olyan általános beáll
 | Minimális adatérték          | A bemeneti adatok minimális értéke, amelyet a méretre kell méretezni. A kiugró értékek kivágására jó.  |
 | Maximális adatérték          | A skálázáshoz használandó bemeneti adatok maximális értéke. A kiugró értékek kivágására jó.  |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megváltoztathatja, hogyan jelenjenek meg az adatai a térképen:
 

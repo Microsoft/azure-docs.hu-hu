@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 09/22/2020
 ms.author: wamota
 ms.openlocfilehash: 05f3b5b461e42c29a12f126928f69069b45007d3
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97797269"
 ---
 # <a name="what-is-azure-orbital-preview"></a>Mi az az Azure Orbital? (Előzetes verzió)
@@ -115,6 +115,6 @@ A SES globális gerinc-hálózatot használ a forgalom globális átirányítás
 
 A [Kubos](https://www.kubos.com/) -szel együttműködve a főbb Tom-t, a Cloud-Based-ellenőrzési szoftvert, az Azure Marketplace-t az Azure-beli orbitális ügyfeleknek ajánljuk.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az előzetes verzióval kapcsolatos további információkért, vagy az előzetes verzióban való részvételhez kérjük, töltse ki a kapcsolatfelvételi űrlapot [itt](https://aka.ms/iaminterested), vagy küldjön e-mailt a következő címre: [MSAzureOrbital@microsoft.com](mailto:MSAzureOrbital@microsoft.com) .

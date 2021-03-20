@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 07/10/2020
 ms.author: chrande
 ms.openlocfilehash: 20cb4cea52317022aea8a5b9e4b8280f8b88ff85
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93361511"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Rövid útmutató: Azure Cosmos DB gráfadatbázis létrehozása, lekérdezése és bejárása a Gremlin konzol használatával
@@ -53,11 +53,11 @@ Emellett a [Gremlin-konzolnak](https://tinkerpop.apache.org/downloads.html) tele
 ## <a name="connect-to-your-app-servicegraph"></a><a id="ConnectAppService"></a>Kapcsolódás az App Service-hez/gráfhoz
 
 1. A Gremlin konzol elindítása előtt hozza létre vagy módosítsa a remote-secure.yaml konfigurációs fájlt az `apache-tinkerpop-gremlin-console-3.2.5/conf` könyvtárban.
-2. Adja meg a *host* (gazdagép), *port* , *username* (felhasználónév), *password* (jelszó), *ConnectionPool* (kapcsolatkészlet), és *serializer* (szerializáló) konfigurációkat az alábbi táblázat szerint:
+2. Adja meg a *host* (gazdagép), *port*, *username* (felhasználónév), *password* (jelszó), *ConnectionPool* (kapcsolatkészlet), és *serializer* (szerializáló) konfigurációkat az alábbi táblázat szerint:
 
     Beállítás|Ajánlott érték|Leírás
     ---|---|---
-    gazdagépek|[ *fiók neve*. **Gremlin**. Cosmos.Azure.com]|Tekintse meg a következő képernyőképet. Ez a **GREMLIN URI** -érték a Azure Portal áttekintés lapján, szögletes zárójelben, a következő záróval: 443/eltávolítva. Megjegyzés: Ügyeljen arra, hogy a Gremlin értéket használja, és **ne** a [ *fióknév*. Documents.Azure.com] végződésű URI-t, amely valószínűleg a "gazdagép nem válaszolt időben" kivételt eredményezett, amikor később megpróbálta végrehajtani a Gremlin-lekérdezéseket. 
+    gazdagépek|[*fiók neve*. **Gremlin**. Cosmos.Azure.com]|Tekintse meg a következő képernyőképet. Ez a **GREMLIN URI** -érték a Azure Portal áttekintés lapján, szögletes zárójelben, a következő záróval: 443/eltávolítva. Megjegyzés: Ügyeljen arra, hogy a Gremlin értéket használja, és **ne** a [*fióknév*. Documents.Azure.com] végződésű URI-t, amely valószínűleg a "gazdagép nem válaszolt időben" kivételt eredményezett, amikor később megpróbálta végrehajtani a Gremlin-lekérdezéseket. 
     port|443|Állítsa 443 értékre.
     username|*Az Ön felhasználóneve*|A `/dbs/<db>/colls/<coll>` űrlap erőforrása, ahol a `<db>` az adatbázis neve és a `<coll>` a gyűjtemény neve.
     jelszó|*Az Ön elsődleges kulcsa*| Lásd az alábbiakban a második képernyőképet. Ez az Ön elsődleges kulcsa, amelyet az Azure Portal Kulcsok oldalának Elsődleges Kulcs mezőjéből kérdezhet le. Az érték másolásához használja a mező bal oldalán lévő Másolás gombot.
@@ -109,7 +109,7 @@ g.V().count()
 
 ## <a name="create-vertices-and-edges"></a>Csúcsok és élek létrehozása
 
-Először hozzon létre öt darab, egy-egy személyt jelölő csúcsot *Thomas* , *Mary Kay* , *Robin* , *Ben* , és *Jack* néven.
+Először hozzon létre öt darab, egy-egy személyt jelölő csúcsot *Thomas*, *Mary Kay*, *Robin*, *Ben*, és *Jack* néven.
 
 Bemenet (Thomas):
 
@@ -215,7 +215,7 @@ Kimenet:
 
 ## <a name="update-a-vertex"></a>Csúcs frissítése
 
-Most frissítsük a *Thomas* csúcspontot új életkor ( *45* ) megadásával.
+Most frissítsük a *Thomas* csúcspontot új életkor (*45*) megadásával.
 
 Bemenet:
 ```java

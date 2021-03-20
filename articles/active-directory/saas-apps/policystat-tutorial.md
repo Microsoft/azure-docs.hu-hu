@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 4d6274f3e1356a8ff8a997e830f0ebee43f50cff
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92893068"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>Oktatóanyag: Azure Active Directory integráció a PolicyStat
@@ -122,7 +122,7 @@ Az Azure AD egyszeri bejelentkezés PolicyStat való konfigurálásához hajtsa 
 
 6. A fentieken kívül a PolicyStat alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
 
-    | Name (Név) | Forrás attribútum |
+    | Name | Forrás attribútum |
     |------------------- | -------------------- |
     | UID | ExtractMailPrefix ([mail]) |
 
@@ -136,7 +136,7 @@ Az Azure AD egyszeri bejelentkezés PolicyStat való konfigurálásához hajtsa 
 
     c. Hagyja üresen a **névteret** .
 
-    d. Válassza ki a forrást **átalakításként** .
+    d. Válassza ki a forrást **átalakításként**.
 
     e. Az **átalakítás** listából írja be az adott sorhoz megjelenő attribútum értékét.
     
@@ -162,7 +162,7 @@ Az Azure AD egyszeri bejelentkezés PolicyStat való konfigurálásához hajtsa 
    
     ![Rendszergazdai menü](./media/policystat-tutorial/ic808633.png "Rendszergazdai menü")
 
-3. Kattintson a **identitásszolgáltató-metaadatokra** , majd a **identitásszolgáltató-metaadatok** szakaszban hajtsa végre a következő lépéseket:
+3. Kattintson a **identitásszolgáltató-metaadatokra**, majd a **identitásszolgáltató-metaadatok** szakaszban hajtsa végre a következő lépéseket:
    
     ![A "saját I D P metaadatok" műveletet megjelenítő képernyőkép.](./media/policystat-tutorial/ic808636.png "Egy Sign-On konfiguráció")
    
@@ -172,7 +172,7 @@ Az Azure AD egyszeri bejelentkezés PolicyStat való konfigurálásához hajtsa 
 
 4. Kattintson az **attribútumok konfigurálása** elemre, majd az **attribútumok konfigurálása** szakaszban hajtsa végre a következő lépéseket:
    
-    a. A **username attribútum** szövegmezőbe írja be a következőt: **UID** .
+    a. A **username attribútum** szövegmezőbe írja be a következőt: **UID**.
 
     b. Az **Utónév attribútum** szövegmezőbe írja be az első név attribútum-jogcím nevét az Azure-ból **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`** .
 

@@ -8,10 +8,10 @@ ms.topic: include
 ms.date: 10/28/2020
 ms.author: cherylmc
 ms.openlocfilehash: 34986ac80a309bcfd495e5782496ba560f84c5f7
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93041505"
 ---
 Minden olyan ügyfélszámítógépnek, amelyhez pont – hely kapcsolattal rendelkező VNet kapcsolódik, telepítenie kell egy ügyféltanúsítványt. A rendszer létrehozza a főtanúsítványból, és telepíti az egyes ügyfélszámítógépekre. Ha nem telepít érvényes ügyféltanúsítványt, a hitelesítés sikertelen lesz, ha az ügyfél megpróbál csatlakozni a VNet.
@@ -22,7 +22,7 @@ Az ügyféltanúsítványok a következő módszerekkel hozhatók elő:
 
 * **Vállalati tanúsítvány:**
 
-  * Ha vállalati Tanúsítványos megoldást használ, állítson elő egy ügyféltanúsítványt a köznapi név érték formátuma *\@ yourdomain.com* . Ezt a formátumot a *tartomány \ Felhasználónév* formátuma helyett használja.
+  * Ha vállalati Tanúsítványos megoldást használ, állítson elő egy ügyféltanúsítványt a köznapi név érték formátuma *\@ yourdomain.com*. Ezt a formátumot a *tartomány \ Felhasználónév* formátuma helyett használja.
 
   * Győződjön meg arról, hogy az ügyféltanúsítvány olyan felhasználói tanúsítványsablon alapján van megadva, amely a felhasználók listájának első elemeként szerepel az *ügyfél-hitelesítésben* . Ellenőrizze a tanúsítványt úgy, hogy duplán kattint rá, és megtekinti a **Kibővített kulcshasználat** lehetőséget a **részletek** lapon.
 

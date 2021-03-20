@@ -8,10 +8,10 @@ ms.date: 10/16/2020
 ms.author: spelluru
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 93375f6047fbe4eda2132e024dab0e067e83ccf1
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95999011"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-logic-apps"></a>Oktatóanyag: válaszadás a Azure Event Grid által a Azure Logic Apps használatával kapott Azure Service Bus eseményekre
@@ -28,7 +28,7 @@ Ebben a lépésben egy Azure logikai alkalmazást hoz létre, amely Service Bus 
     3. Válassza ki az Azure- **előfizetését**. 
     4. Válassza az **erőforráscsoport** **meglévő használata** lehetőséget, majd válassza ki azt az erőforráscsoportot, amelyet a korábban létrehozott más erőforrásokhoz (például az Azure-függvényhez, Service Bus névtérhez) használt. 
     5. Válassza ki a logikai alkalmazás **helyét** . 
-    6. Válassza a **felülvizsgálat + létrehozás** lehetőséget. 
+    6. Válassza a **Felülvizsgálat és létrehozás** lehetőséget. 
     1. A logikai alkalmazás létrehozásához a **felülvizsgálat + létrehozás** lapon válassza a **Létrehozás** lehetőséget. 
 1. A **Logic apps Designer** lapon válassza a **sablon** alatt az **üres logikai alkalmazás** lehetőséget. 
 1. A tervezőben hajtsa végre a következő lépéseket:
@@ -95,7 +95,7 @@ Ha a várakozás után nem látja a meghívásokat, az alábbi lépéseket kell 
 1. Azt is láthatja, hogy az események az esemény- **előfizetés** oldalon lesznek továbbítva. Ezt a lapot az **események** oldalon az esemény-előfizetés kiválasztásával érheti el. 
     
     :::image type="content" source="./media/service-bus-to-event-grid-integration-example/event-subscription-delivered-events.png" alt-text="Esemény-előfizetések lapja – kézbesítési események":::
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További tudnivalók az [Azure Event Grid](../event-grid/index.yml) szolgáltatásról.
 * További tudnivalók az [Azure Functions](../azure-functions/index.yml) szolgáltatásról.

@@ -9,10 +9,10 @@ ms.date: 01/28/2019
 ms.author: sharrai
 ms.custom: MVC
 ms.openlocfilehash: 076adbfd4cecf7dae9ffc490e911fcb7ffce48e6
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93394832"
 ---
 # <a name="move-vms-to-another-azure-region"></a>Virtuális gépek áthelyezése másik Azure-régióba
@@ -100,7 +100,7 @@ A következő lépések bemutatják, hogyan készítheti elő a virtuális gépe
 1. A **Név** mezőben adja meg a **ContosoVMVault** rövid nevet. Ha egynél több előfizetéssel rendelkezik, válassza ki ezek közül a megfelelőt.
 1. Hozza létre az erőforráscsoport **ContosoRG**.
 1. Válassza ki a kívánt Azure-régiót. A támogatott régiók kereséséhez tekintse meg a földrajzi elérhetőség [Azure site Recovery díjszabását](https://azure.microsoft.com/pricing/details/site-recovery/).
-1. **Recovery Services** -tárolókban válassza a **ContosoVMVault**  >  **replikált elemek**  >  **+ replikálás** lehetőséget.
+1. **Recovery Services**-tárolókban válassza a **ContosoVMVault**  >  **replikált elemek**  >  **+ replikálás** lehetőséget.
 1. A legördülő menüben válassza az **Azure Virtual Machines** elemet.
 1. A **Forrás helye** értékeként válassza ki azt az Azure-régiót, ahol az adott virtuális gépek éppen futnak.
 1. Válassza ki a Resource Manager-alapú üzemi modellt. Ezután válassza ki a **forrás-előfizetést** és a **forrás erőforráscsoportot**.
@@ -153,7 +153,7 @@ Ha nem tervezi a forrás-erőforrások újrafelhasználását, hajtsa végre a k
 1. Törölje az összes olyan hálózati erőforrást a forrás régióban, amelyet az [Előfeltételek](#prerequisites)között azonosított.
 1. Törölje a megfelelő Storage-fiókot a forrás régióban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy Azure-beli virtuális gépet egy másik Azure-régióba helyezett át. Most már beállíthatja a vész-helyreállítást az áthelyezett virtuális géphez.
 

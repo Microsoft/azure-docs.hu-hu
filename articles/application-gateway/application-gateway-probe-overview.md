@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/09/2020
 ms.author: victorh
 ms.openlocfilehash: f0e5a153efe26640e54f386600f07c7b3d4711d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89649070"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway állapot figyelésének áttekintése
@@ -64,9 +64,9 @@ Az alábbi táblázat az egyéni állapotú mintavétel tulajdonságaira vonatko
 
 | Mintavételi tulajdonság | Leírás |
 | --- | --- |
-| Name (Név) |A mintavétel neve. Ez a név azonosítja a mintavételt a háttérbeli HTTP-beállításokban, és hivatkozik rá. |
+| Név |A mintavétel neve. Ez a név azonosítja a mintavételt a háttérbeli HTTP-beállításokban, és hivatkozik rá. |
 | Protokoll |A mintavétel küldéséhez használt protokoll. Ennek egyeznie kell az ahhoz a háttérbeli HTTP-beállításokban definiált protokollal, amelyhez hozzá van rendelve.|
-| Gazda |Az az állomásnév, amellyel a mintavételt el lehet küldeni. A v1 SKU-ban ezt az értéket csak a mintavételi kérelem állomásneve fogja használni. A v2 SKU-ban a rendszer a gazdagép fejlécét és a SNI is használja. |
+| Gazdagép |Az az állomásnév, amellyel a mintavételt el lehet küldeni. A v1 SKU-ban ezt az értéket csak a mintavételi kérelem állomásneve fogja használni. A v2 SKU-ban a rendszer a gazdagép fejlécét és a SNI is használja. |
 | Elérési út |A mintavétel relatív elérési útja. A "/" karakterrel kezdődő érvényes elérési út |
 | Port |Ha meg van adva, a rendszer a célként megadott portot használja. Ellenkező esetben ugyanazt a portot használja, mint a hozzá társított HTTP-beállítások. Ez a tulajdonság csak a v2 SKU-ban érhető el
 | Időköz |Mintavételi időköz másodpercben. Ez az érték a két egymást követő mintavétel közötti időtartam. |
@@ -84,7 +84,7 @@ Az alábbi feltételeknek megfelelő feltételek:
 
 Az egyeztetési feltételek a parancsmag használatával adhatók meg `New-AzApplicationGatewayProbeHealthResponseMatch` .
 
-Példa:
+Például:
 
 ```azurepowershell
 $match = New-AzApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399

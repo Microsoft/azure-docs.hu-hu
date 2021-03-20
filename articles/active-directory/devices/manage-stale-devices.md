@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d12679e64d690614aaf788837a02af007448f83d
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93393676"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Útmutató: elavult eszközök kezelése az Azure AD-ben
@@ -179,6 +179,6 @@ Meghiúsul minden hitelesítés, amelynek keretében az eszköz végezné a hite
 - **Azure AD-hez csatlakoztatott eszköz** – A felhasználók nem használhatják az eszközt bejelentkezésre. 
 - **Mobileszközök** – a felhasználó nem férhet hozzá az Azure ad-erőforrásokhoz, például a Microsoft 365hoz. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információk az eszközök Azure Portalon végzett felügyeletéről: [Eszközfelügyelet az Azure Portalon](device-management-azure-portal.md).

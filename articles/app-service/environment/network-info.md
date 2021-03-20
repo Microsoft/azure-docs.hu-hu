@@ -8,10 +8,10 @@ ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 91b6134e7c809a8af75aa1cf23523e352e0a1a0e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95997341"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service-környezet hálózati megfontolásai #
@@ -109,7 +109,7 @@ Ha megváltoztatja a VNet DNS-beállítását, akkor újra kell indítania a szo
 A központilag működő működési függőségek mellett a portál felületének néhány további eleme is van. A Azure Portal egyes képességei az _SCM-helyhez_ való közvetlen hozzáféréstől függenek. Azure App Service minden alkalmazásához két URL van. Az első URL-cím az alkalmazás elérésére szolgál. A második URL-cím az SCM-hely elérésére szolgál, amely más néven a _kudu-konzol_. Az SCM-helyet használó szolgáltatások a következők:
 
 -   WebJobs
--   Függvények
+-   Functions
 -   Naplózási adatfolyam
 -   Kudu
 -   Bővítmények
@@ -180,9 +180,9 @@ A bejövő és kimenő követelmények figyelembe vételével a NSG az ebben a p
 
 ![Bejövő biztonsági szabály][4]
 
-Az alapértelmezett szabályok lehetővé teszik, hogy a VNet lévő IP-címek a beadási alhálózattal beszéljenek. Egy másik alapértelmezett szabály lehetővé teszi, hogy a terheléselosztó, más néven nyilvános virtuális IP-cím kommunikáljon a közcélú hálózattal. Az alapértelmezett szabályok megtekintéséhez válassza a **Hozzáadás** ikon melletti **alapértelmezett szabályok** elemet. Ha az alapértelmezett szabályok előtt elutasítja az összes többi szabályt, meggátolja a virtuális IP-címek és a közszolgáltatások közötti forgalmat. A VNet belülről érkező forgalom elkerüléséhez adja hozzá a saját szabályt a bejövő adatok engedélyezéséhez. Olyan forrást használjon, amely a AzureLoadBalancer egyenlő, **és a** (* *\** _) portszáma Mivel a NSG-szabály a beadási alhálózatra van alkalmazva, nem kell konkrétnak lennie a célhelyen.
+Az alapértelmezett szabályok lehetővé teszik, hogy a VNet lévő IP-címek a beadási alhálózattal beszéljenek. Egy másik alapértelmezett szabály lehetővé teszi, hogy a terheléselosztó, más néven nyilvános virtuális IP-cím kommunikáljon a közcélú hálózattal. Az alapértelmezett szabályok megtekintéséhez válassza a **Hozzáadás** ikon melletti **alapértelmezett szabályok** elemet. Ha az alapértelmezett szabályok előtt elutasítja az összes többi szabályt, meggátolja a virtuális IP-címek és a közszolgáltatások közötti forgalmat. A VNet belülről érkező forgalom elkerüléséhez adja hozzá a saját szabályt a bejövő adatok engedélyezéséhez. A AzureLoadBalancer egyenlő forrást kell használnia, amelynek a rendeltetése **a és a** portszáma **\*** . Mivel a NSG-szabály a beadási alhálózatra van alkalmazva, nem kell konkrétnak lennie a célhelyen.
 
-Ha IP-címet rendelt hozzá az alkalmazáshoz, győződjön meg róla, hogy megnyitotta a portok megtartását. A portok megtekintéséhez válassza az _ *app Service Environment** > **IP-címek** elemet.  
+Ha IP-címet rendelt hozzá az alkalmazáshoz, győződjön meg róla, hogy megnyitotta a portok megtartását. A portok megtekintéséhez válassza ki **app Service Environment**  >  **IP-címeket**.  
 
 A következő kimenő szabályokban látható összes elemre az utolsó elem kivételével szükség van. Lehetővé teszik a jelen cikk korábbi részében említett, a kiszolgált kapcsolatokhoz való hálózati hozzáférést. Ha letiltja valamelyiket, a kiegészítő szolgáltatás leáll. A lista utolsó eleme lehetővé teszi, hogy a beadás a VNet más erőforrásaival kommunikáljon.
 

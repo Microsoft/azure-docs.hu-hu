@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 11/05/2020
 ms.custom: mvc
 ms.openlocfilehash: 99263c83d25542073d63c1cba394a147bd5b2170
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93392778"
 ---
 # <a name="tutorial-fail-over-azure-vms-to-a-secondary-region"></a>Oktatóanyag: Azure-beli virtuális gépek feladatátvétele másodlagos régióba
@@ -57,10 +57,10 @@ Az oktatóanyag elindítása előtt a következőket kell tennie:
 
 3. A **feladatátvétel** területen válassza ki a helyreállítási pontot. A célként megadott régióban található Azure-beli virtuális gép ebből a helyreállítási pontból származó adatok használatával jön létre.
   
-   - **Legutóbb feldolgozott** : a site Recovery által feldolgozott legújabb helyreállítási pontot használja. Megjelenik az időbélyeg. A rendszer nem töltött le időt az adatfeldolgozás során, így alacsony helyreállítási időcélkitűzést (RTO) biztosít.
-   -  **Utolsó** : a site Recoveryba elküldett összes adat feldolgozása, hogy minden virtuális gép számára hozzon létre egy helyreállítási pontot, mielőtt a művelet feladatátvételt hajt végre. A a legalacsonyabb helyreállítási időkorlátot (RPO) biztosítja, mivel a feladatátvétel indításakor a rendszer az összes adatSite Recovery replikálja.
-   - **Legújabb alkalmazás-konzisztens** : Ez a beállítás a virtuális gépeket a legújabb, alkalmazás-konzisztens helyreállítási pontra hajtja végre. Megjelenik az időbélyeg.
-   - **Egyéni** : feladatátvétel adott helyreállítási pontra. Az egyéni szolgáltatás csak akkor érhető el, ha egyetlen virtuális gép feladatátvételét hajtja végre, és nem használ helyreállítási tervet.
+   - **Legutóbb feldolgozott**: a site Recovery által feldolgozott legújabb helyreállítási pontot használja. Megjelenik az időbélyeg. A rendszer nem töltött le időt az adatfeldolgozás során, így alacsony helyreállítási időcélkitűzést (RTO) biztosít.
+   -  **Utolsó**: a site Recoveryba elküldett összes adat feldolgozása, hogy minden virtuális gép számára hozzon létre egy helyreállítási pontot, mielőtt a művelet feladatátvételt hajt végre. A a legalacsonyabb helyreállítási időkorlátot (RPO) biztosítja, mivel a feladatátvétel indításakor a rendszer az összes adatSite Recovery replikálja.
+   - **Legújabb alkalmazás-konzisztens**: Ez a beállítás a virtuális gépeket a legújabb, alkalmazás-konzisztens helyreállítási pontra hajtja végre. Megjelenik az időbélyeg.
+   - **Egyéni**: feladatátvétel adott helyreállítási pontra. Az egyéni szolgáltatás csak akkor érhető el, ha egyetlen virtuális gép feladatátvételét hajtja végre, és nem használ helyreállítási tervet.
 
     > [!NOTE]
     > Ha a replikáció engedélyezése után hozzáadott egy lemezt a virtuális géphez, a replikációs pontok a helyreállításhoz elérhető lemezeket jelenítik meg. Egy második lemez hozzáadása előtt létrehozott replikációs pont például a következő lesz: "1/2 lemez".
@@ -108,7 +108,7 @@ A feladatátvételt követően a virtuális gépet a másodlagos régióban újr
     ![A folyamat ismételt védelemének újravédése ](./media/azure-to-azure-tutorial-failover-failback/notification-reprotect-start.png) ![ sikeres értesítés](./media/azure-to-azure-tutorial-failover-failback/notification-reprotect-finish.png)
     
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban átvette a feladatokat az elsődleges régióból a másodlagosra, és megkezdte a virtuális gépek replikálását az elsődleges régióba. Most pedig visszatérhet a másodlagos régióból az elsődlegesre.
 

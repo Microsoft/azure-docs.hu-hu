@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: a6c85ba017656bd312ddfe3d5f6d98014a3dc89a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90090346"
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs biztonságos leküldés
@@ -119,7 +119,7 @@ A cél eléréséhez meg kell írni a logikát, hogy a biztonságos tartalmat le
 
     Ez a metódus a megosztott beállításokban tárolt hitelesítő adatok használatával hívja meg az alkalmazás háttér-visszaállítását.
 
-4. Most kezelje a bejövő értesítést, és a fenti módszer használatával kérje le a megjelenítendő tartalmat. Először is engedélyezze, hogy az iOS-alkalmazás a háttérben fusson, amikor leküldéses értesítést kap. A **Xcode**válassza ki az alkalmazás projektjét a bal oldali panelen, majd kattintson a fő alkalmazás céljára a **célok** szakaszban a központi ablaktáblán.
+4. Most kezelje a bejövő értesítést, és a fenti módszer használatával kérje le a megjelenítendő tartalmat. Először is engedélyezze, hogy az iOS-alkalmazás a háttérben fusson, amikor leküldéses értesítést kap. A **Xcode** válassza ki az alkalmazás projektjét a bal oldali panelen, majd kattintson a fő alkalmazás céljára a **célok** szakaszban a központi ablaktáblán.
 5. Ezután kattintson a központi ablaktábla tetején található **képességek** fülre, és jelölje be a **távoli értesítések** jelölőnégyzetet.
 
     ![Képernyőkép a XCode-ról, a kiválasztott alkalmazás-projekt és a képességek lap megnyitásával. A távoli értesítések jelölőnégyzet be van jelölve.][IOS1]
@@ -157,6 +157,6 @@ Az alkalmazás futtatásához tegye a következőket:
 
 1. A XCode-ben futtassa az alkalmazást egy fizikai iOS-eszközön (a leküldéses értesítések nem fognak működni a szimulátorban).
 2. Az iOS-alkalmazás felhasználói felületén adja meg a felhasználónevet és a jelszót. Ezek bármilyen sztringek lehetnek, de az értékeknek is szerepelniük kell.
-3. Az iOS-alkalmazás felhasználói felületén kattintson a **Bejelentkezés**elemre. Ezután kattintson a **leküldés küldése**gombra. Az értesítési központban megjelenik a biztonságos értesítés.
+3. Az iOS-alkalmazás felhasználói felületén kattintson a **Bejelentkezés** elemre. Ezután kattintson a **leküldés küldése** gombra. Az értesítési központban megjelenik a biztonságos értesítés.
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-secure-push/secure-push-ios-1.png

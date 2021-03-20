@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 136676b46df6e32f98dca99fccba19d4aa369dbe
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92896276"
 ---
 # <a name="add-a-bar-chart-layer"></a>Oszlopdiagram-réteg hozzáadása
@@ -71,7 +71,7 @@ További környezet hozzáadása a térképhez:
 A vizualizáció testreszabása:
 
 > [!div class="nextstepaction"]
-> [Színformázási tippek és trükkök a Power BI-hoz](/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
+> [Tippek és trükkök a színformázáshoz a Power BI-ban](/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
 
 > [!div class="nextstepaction"]
 > [A vizualizáció címeinek, háttereinek és jelmagyarázatainak testreszabása](/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)

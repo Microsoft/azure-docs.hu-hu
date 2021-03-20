@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 11/20/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f0d912d5b14932c43d109f8f955d5f16381cf773
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98180098"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>Gyors útmutató: keresési index létrehozása a Azure.Search.Documents ügyféloldali kódtár használatával
@@ -74,7 +74,7 @@ A projekt létrehozása után adja hozzá az ügyféloldali kódtárat. A [Azure
 
 ### <a name="create-a-search-client"></a>Keresési ügyfél létrehozása
 
-1. A **program.cs** módosítsa a névteret, `AzureSearch.SDK.Quickstart.v11` majd adja hozzá a következő `using` irányelveket.
+1. A **program. cs programban** módosítsa a névteret, `AzureSearch.SDK.Quickstart.v11` majd adja hozzá a következő `using` irányelveket.
 
    ```csharp
    using Azure;
@@ -108,9 +108,9 @@ Ez a rövid útmutató egy olyan szállodai indexet hoz létre, amelyet a Hotel 
 
 Ebben a példában a Azure.Search.Documents könyvtár szinkron metódusait használjuk az egyszerűség és az olvashatóság érdekében. Éles környezetekben azonban aszinkron metódusokat kell használnia, hogy az alkalmazás méretezhető és rugalmas legyen. A [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex)helyett például a [CreateIndexAsync](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindexasync) -et kellene használnia.
 
-1. Adjon hozzá egy üres osztály-definíciót a projekthez: **Hotel.cs**
+1. Adjon hozzá egy üres osztály-definíciót a projekthez: **Hotel. cs**
 
-1. Másolja a következő kódot a **Hotel.cs** -be egy szállodai dokumentum struktúrájának meghatározásához. A mező attribútumai határozzák meg, hogyan használják az alkalmazásokban. Az `IsFilterable` attribútumot például minden olyan mezőhöz hozzá kell rendelni, amely támogatja a szűrési kifejezést.
+1. Másolja a következő kódot a **Hotel. cs** fájlba egy szállodai dokumentum struktúrájának definiálásához. A mező attribútumai határozzák meg, hogyan használják az alkalmazásokban. Az `IsFilterable` attribútumot például minden olyan mezőhöz hozzá kell rendelni, amely támogatja a szűrési kifejezést.
 
     ```csharp
     using System;
@@ -158,13 +158,13 @@ Ebben a példában a Azure.Search.Documents könyvtár szinkron metódusait hasz
 
    A [SearchableField](/dotnet/api/azure.search.documents.indexes.models.searchablefield) és a [SimpleField](/dotnet/api/azure.search.documents.indexes.models.simplefield) használatával egyszerűsítheti a uments a Azure.Search.Doc-ügyfél függvénytárában. Mindkettő egy [SearchField](/dotnet/api/azure.search.documents.indexes.models.searchfield) származtatása, és lehetséges, hogy leegyszerűsíti a kódot:
 
-   + `SimpleField` bármilyen adattípus lehet, mindig nem kereshető (figyelmen kívül hagyva a teljes szöveges keresési lekérdezéseknél), és lekérhető (nem rejtett). A többi attribútum alapértelmezés szerint ki van kapcsolva, de engedélyezve lehet. Használhat olyan `SimpleField` dokumentum-azonosítókat vagy mezőket, amelyek csak szűrők, dimenziók vagy pontozási profilok esetében használhatók. Ha igen, ügyeljen arra, hogy a forgatókönyvhöz szükséges attribútumokat (például `IsKey = true` egy dokumentum azonosítóját) alkalmazza. További információ: [SimpleFieldAttribute.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SimpleFieldAttribute.cs) a forráskódban.
+   + `SimpleField` bármilyen adattípus lehet, mindig nem kereshető (figyelmen kívül hagyva a teljes szöveges keresési lekérdezéseknél), és lekérhető (nem rejtett). A többi attribútum alapértelmezés szerint ki van kapcsolva, de engedélyezve lehet. Használhat olyan `SimpleField` dokumentum-azonosítókat vagy mezőket, amelyek csak szűrők, dimenziók vagy pontozási profilok esetében használhatók. Ha igen, ügyeljen arra, hogy a forgatókönyvhöz szükséges attribútumokat (például `IsKey = true` egy dokumentum azonosítóját) alkalmazza. További információ: [SimpleFieldAttribute. cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SimpleFieldAttribute.cs) a forráskódban.
 
-   + `SearchableField` karakterláncnak kell lennie, és mindig kereshető és lekérhető. A többi attribútum alapértelmezés szerint ki van kapcsolva, de engedélyezve lehet. Mivel ez a mezőtípus kereshető, támogatja a szinonimákat és az analizátor összes tulajdonságának teljes kiegészítését. További információ: [SearchableFieldAttribute.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SearchableFieldAttribute.cs) a forráskódban.
+   + `SearchableField` karakterláncnak kell lennie, és mindig kereshető és lekérhető. A többi attribútum alapértelmezés szerint ki van kapcsolva, de engedélyezve lehet. Mivel ez a mezőtípus kereshető, támogatja a szinonimákat és az analizátor összes tulajdonságának teljes kiegészítését. További információ: [SearchableFieldAttribute. cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SearchableFieldAttribute.cs) a forráskódban.
 
    Függetlenül attól, hogy az alapszintű `SearchField` API-t vagy a segítő modellek valamelyikét használja-e, explicit módon engedélyeznie kell a szűrő, a dimenzió és a rendezési attribútumot. Például a [IsFilterable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable), a [IsSortable](/dotnet/api/azure.search.documents.indexes.models.searchfield.issortable)és a [IsFacetable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfacetable) explicit módon kell szerepelnie a fenti mintában látható módon. 
 
-1. Adjon hozzá egy második üres osztály-definíciót a projekthez: **Address.cs**.  Másolja a következő kódot a osztályba.
+1. Adjon hozzá egy második üres osztály-definíciót a projekthez: **címe. cs**.  Másolja a következő kódot a osztályba.
 
    ```csharp
    using Azure.Search.Documents.Indexes;
@@ -191,9 +191,9 @@ Ebben a példában a Azure.Search.Documents könyvtár szinkron metódusait hasz
     }
    ```
 
-1. Hozzon létre két további osztályt: **Hotel.Methods.cs** és **Address.Methods.cs** for ToString () felülbírálások. Ezek az osztályok a keresési eredmények megjelenítésére szolgálnak a konzol kimenetében.  Ezen osztályok tartalma nem szerepel ebben a cikkben, de a [githubon lévő fájlokból](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v11/AzureSearchQuickstart-v11)is másolhatja a kódot.
+1. Hozzon létre két további osztályt: a **Hotel. Methods. cs** és a **címek. Methods. cs** a ToString () felülbírálások. Ezek az osztályok a keresési eredmények megjelenítésére szolgálnak a konzol kimenetében.  Ezen osztályok tartalma nem szerepel ebben a cikkben, de a [githubon lévő fájlokból](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v11/AzureSearchQuickstart-v11)is másolhatja a kódot.
 
-1. A **program.cs**-ben hozzon létre egy [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) objektumot, majd hívja meg a [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) metódust, hogy kifejezze az indexet a keresési szolgáltatásban. Az index tartalmaz egy [SearchSuggester](/dotnet/api/azure.search.documents.indexes.models.searchsuggester) is, amely lehetővé teszi az automatikus kiegészítést a megadott mezőkön.
+1. A **program. cs programban** hozzon létre egy [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) objektumot, majd hívja meg a [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) metódust, hogy kifejezze az indexet a keresési szolgáltatásban. Az index tartalmaz egy [SearchSuggester](/dotnet/api/azure.search.documents.indexes.models.searchsuggester) is, amely lehetővé teszi az automatikus kiegészítést a megadott mezőkön.
 
    ```csharp
     // Create hotels-quickstart index
@@ -221,7 +221,7 @@ Az Azure Cognitive Searchban a keresési dokumentumok olyan adatstruktúrák, am
 
 Dokumentumok feltöltésekor [IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1) objektumot kell használnia. Egy `IndexDocumentsBatch` objektum olyan [műveleteket](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1.actions)tartalmaz, amelyek mindegyike tartalmaz egy dokumentumot és egy olyan tulajdonságot, amely azt jelzi, hogy az Azure Cognitive Search milyen műveletet kell végrehajtani ([feltöltés, Egyesítés, törlés és mergeOrUpload](search-what-is-data-import.md#indexing-actions)).
 
-1. A **program.cs**-ben hozzon létre egy tömböt a dokumentumok és az indexelési műveletek közül, majd adja át a tömböt a következőre: `IndexDocumentsBatch` . Az alábbi dokumentumok megfelelnek a Hotel osztály által definiált Hotels-rövid útmutató-indexnek.
+1. A **program. cs programban** hozzon létre egy tömböt a dokumentumok és az indexelési műveletek közül, majd adja át a tömböt a következőre: `IndexDocumentsBatch` . Az alábbi dokumentumok megfelelnek a Hotel osztály által definiált Hotels-rövid útmutató-indexnek.
 
     ```csharp
     // Upload documents in a single Upload request.
@@ -357,7 +357,7 @@ Ez a szakasz két funkciót tartalmaz: a lekérdezési logikát és az eredmény
 
 A [SearchResults](/dotnet/api/azure.search.documents.models.searchresults-1) osztály az eredményeket jelöli.
 
-1. A **program.cs**-ben hozzon létre egy **WriteDocuments** metódust, amely a keresési eredményeket a konzolra nyomtatja.
+1. A **program. cs** eszközben hozzon létre egy **WriteDocuments** metódust, amely a keresési eredményeket a konzolra írja.
 
     ```csharp
     // Write search results to console

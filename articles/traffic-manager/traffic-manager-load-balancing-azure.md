@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 10/27/2016
 ms.author: duau
 ms.openlocfilehash: eaf50f3bdacaf5680bc5ecb1379faff20133b5ce
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98184373"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Terheléselosztási szolgáltatások használata az Azure-ban
@@ -41,7 +41,7 @@ Koncepcionális szinten a szolgáltatások mindegyike külön szerepet játszik 
 * A **Application Gateway** az Application Delivery Controller (ADC) szolgáltatást nyújtja, amely különböző, 7. rétegbeli terheléselosztási funkciókat kínál az alkalmazáshoz. Lehetővé teszi az ügyfelek számára a webfarmok hatékonyságának optimalizálását azáltal, hogy kiszervezik a CPU-igényes TLS-lezárást az Application Gateway felé. Az egyéb 7. rétegbeli útválasztási képességek közé tartozik a bejövő forgalom ciklikus lekéréses eloszlása, a cookie-alapú munkamenet-affinitás, az URL-alapú útválasztás, valamint az egyetlen Application Gateway mögött több webhely üzemeltetése. Application Gateway konfigurálható internetre irányuló átjáróként, csak belső átjáróként, vagy mindkettő kombinációja. A Application Gateway teljes mértékben az Azure által felügyelt, méretezhető és magasan elérhető. Diagnosztikai és naplózási képességek széles skáláját biztosítja a jobb kezelhetőség érdekében.
 * **Load Balancer** az Azure Sdn stack szerves része, amely nagy teljesítményű, kis késleltetésű 4. rétegbeli terheléselosztási szolgáltatásokat biztosít minden UDP-és TCP-protokollhoz. Felügyeli a bejövő és kimenő kapcsolatokat. Segítségével nyilvános és belső elosztott terhelésű végpontok konfigurálhatók, valamint szabályok definiálhatók, amelyek a bejövő kapcsolatokat a háttérbeli készletben található célokra irányítják TCP- és HTTP-állapotellenőrzési lehetőségek használatával, a szolgáltatás rendelkezésre állásának felügyeletéhez.
 
-## <a name="scenario"></a>Használati példa
+## <a name="scenario"></a>Eset
 
 Ebben a példában egy egyszerű webhelyet használunk, amely két típusú tartalmat kínál: a képeket és a dinamikusan megjelenített weblapokat. A webhelynek földrajzilag redundánsnak kell lennie, és a felhasználókat a legközelebbi (legalacsonyabb késésű) helyről kell kiszolgálni. Az alkalmazás fejlesztői úgy döntöttek, hogy a/images/* mintának megfelelő URL-címek a webfarm többi részétől eltérő, dedikált virtuális gépekből származnak.
 

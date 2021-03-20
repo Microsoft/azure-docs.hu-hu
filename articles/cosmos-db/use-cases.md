@@ -7,10 +7,10 @@ ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.openlocfilehash: 04de6dce6cbab4dc0716ae841707b1d61d6bc375
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93073757"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Az Azure Cosmos DB gyakori használati helyzetei
@@ -61,11 +61,11 @@ Az adatkatalógus adatfelhasználási forgatókönyvei olyan attribútumok halma
 
 Vegyünk példaként egy katalógust egy autóipari alkatrész szállítójának. Minden rész rendelkezhet saját attribútumokkal az összes rész közös attribútumain kívül. Továbbá egy adott rész attribútumai a következő évben is megváltoztathatják az új modellek kiadását. A Azure Cosmos DB támogatja a rugalmas sémákat és a hierarchikus adatok használatát, így a termékkatalógus-adatok tárolására is alkalmas.
 
-:::image type="content" source="./media/use-cases/product-catalog.png" alt-text="Azure Cosmos DB IoT-hivatkozás architektúrája" border="false":::
+:::image type="content" source="./media/use-cases/product-catalog.png" alt-text="Azure Cosmos DB a kiskereskedelmi katalógus referenciájának architektúrája" border="false":::
 
 A Azure Cosmos DB gyakran használják az események beszerzésére a Power Event vezérelt architektúrák esetében, a [módosítási hírcsatorna](change-feed.md) funkciójának használatával. A változási hírcsatorna lehetővé teszi, hogy az alárendelt szolgáltatások megbízhatóan és Növekményesen olvassák a lapkákat és a frissítéseket (például rendezési eseményeket) egy Azure Cosmos DB. Ez a funkció kihasználható úgy, hogy egy állandó eseménynaplót biztosítson az üzenetsor-kezelés állapotának megváltoztatására szolgáló események és a megrendelések feldolgozási munkafolyamata között (amely [kiszolgáló nélküli Azure Functionsként](https://azure.com/serverless)is megvalósítható).
 
-:::image type="content" source="./media/use-cases/event-sourcing.png" alt-text="Azure Cosmos DB IoT-hivatkozás architektúrája" border="false":::
+:::image type="content" source="./media/use-cases/event-sourcing.png" alt-text="Azure Cosmos DB rendelési folyamat-hivatkozási architektúra" border="false":::
 
 Emellett a Azure Cosmos DBban tárolt adatok Apache Spark feladatokon keresztül integrálhatók a big data Analytics HDInsight is. A Azure Cosmos DB Spark-összekötőről további részleteket a [Spark-feladatok futtatása Cosmos db és HDInsight](spark-connector.md)című témakörben talál.
 
@@ -80,7 +80,7 @@ A Azure Cosmos DBt olyan játékok használják, mint [a The Walking Dead: No Ma
 * A közösségi funkciók, például a játékon belüli csevegések, a Player Guild-tagságok, a kihívások, a magas pontszámú ranglisták és a közösségi diagramok könnyebben valósíthatók meg rugalmas sémával.
 * Azure Cosmos DB felügyelt platformként (Péter) a gyors iteráció és a piacra kerülési idő csökkentése érdekében minimális beállítási és felügyeleti munka szükséges.
 
-:::image type="content" source="./media/use-cases/gaming.png" alt-text="Azure Cosmos DB IoT-hivatkozás architektúrája" border="false":::
+:::image type="content" source="./media/use-cases/gaming.png" alt-text="Azure Cosmos DB játék-referenciák architektúrája" border="false":::
 
 ## <a name="web-and-mobile-applications"></a>Webes és mobilalkalmazások
 Az Azure Cosmos DB-t gyakran használják webes és mobilalkalmazásokban is, mert kiválóan alkalmas a közösségi interakciók modellezésére, a harmadik féltől származó szolgáltatások integrációjára és sokoldalú személyre szabott élmények megvalósítására. A Cosmos DB SDK-k széles körű iOS-és Android-alkalmazásokat hozhatnak létre a népszerű [Xamarin keretrendszer](mobile-apps-with-xamarin.md)használatával.  
@@ -92,14 +92,14 @@ A harmadik féltől származó közösségi hálózatokkal integrált alkalmazá
 
 Számos közösségi alkalmazás globális szinten fut, és nem kiszámítható használati mintákat mutathatnak. Az adattár méretezésének rugalmassága elengedhetetlen, mivel az alkalmazási réteg a használati igényeknek megfelelően méretezhető.  A Cosmos DB fiókban további adatpartíciók hozzáadásával felskálázást hajthat végre.  Emellett további Cosmos DB fiókokat is létrehozhat több régióban. Cosmos DB szolgáltatási régió elérhetőségét lásd: [Azure-régiók](https://azure.microsoft.com/regions/#services).
 
-:::image type="content" source="./media/use-cases/apps-with-global-reach.png" alt-text="Azure Cosmos DB IoT-hivatkozás architektúrája" border="false":::
+:::image type="content" source="./media/use-cases/apps-with-global-reach.png" alt-text="A Azure Cosmos DB webalkalmazás-hivatkozási architektúrát bemutató diagram." border="false":::
 
 ### <a name="personalization"></a>Személyre szabás
 Napjainkban a modern alkalmazások összetett nézetekkel és tapasztalatokkal rendelkeznek. Ezek jellemzően dinamikusak, a felhasználói preferenciák, a hangulatok és a márkaépítési igények kielégítésére szolgálnak. Ezért az alkalmazásoknak képesnek kell lenniük a személyre szabott beállítások hatékony beolvasására a felhasználói felületi elemek és a tapasztalatok gyors megjelenítéséhez. 
 
 A JSON, a Cosmos DB által támogatott formátum érvényes formátum a felhasználói felületi elrendezési adattároláshoz, mivel az nem csupán egyszerű, hanem a JavaScript által is könnyen értelmezhető. Cosmos DB olyan hangolt konzisztencia-szinteket biztosít, amelyek lehetővé teszik az alacsony késésű írási műveletek gyors olvasását. Ezért a felhasználói felületi elrendezési és a személyre szabott beállítások, például a Cosmos DB JSON-dokumentumok tárolásának hatékony módja, ha ezeket az adatátvitelt a hálózaton keresztül szeretné lekérni.
 
-:::image type="content" source="./media/use-cases/personalization.png" alt-text="Azure Cosmos DB IoT-hivatkozás architektúrája" border="false":::
+:::image type="content" source="./media/use-cases/personalization.png" alt-text="Azure Cosmos DB webalkalmazás-referenciák architektúrája" border="false":::
 
 ## <a name="next-steps"></a>Következő lépések
 

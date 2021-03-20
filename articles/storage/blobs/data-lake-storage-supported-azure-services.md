@@ -9,10 +9,10 @@ ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 36e1a8a288e1f9b2a8d65ab966b607b594d66f4e
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100653601"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>Az Azure Data Lake Storage Gen2t támogató Azure-szolgáltatások
@@ -40,8 +40,8 @@ Ez a táblázat felsorolja a Azure Data Lake Storage Gen2 használható Azure-sz
 |IoT Hub |Általánosan elérhető|Igen|Yes|[Eszközről a felhőbe irányuló üzenetek küldése különböző végpontokra IoT Hub üzenet-útválasztás használatával](../../iot-hub/iot-hub-devguide-messages-d2c.md)|
 |Power BI|Általánosan elérhető|Igen|Yes|[Data Lake Storage Gen2 adatai elemzése a Power BI használatával](/power-query/connectors/datalakestorage)|
 |Azure Synapse Analytics (korábban SQL Data Warehouse)|Általánosan elérhető|Igen|Yes|[A Storage-fiókban tárolt adatelemzés](../../synapse-analytics/get-started-analyze-storage.md)|
-|Az SQL Server Integration Servicest (SSIS)|Általánosan elérhető|Igen|Yes|[Azure Storage-kapcsolatkezelő](/sql/integration-services/connection-manager/azure-storage-connection-manager)|
-|Azure Data Explorer|Általánosan elérhető|Igen|Yes|[Azure Data Lake lekérdezése az Azure-Adatkezelő használatával](/azure/data-explorer/data-lake-query-data)|
+|SQL Server Integration Services (SSIS)|Általánosan elérhető|Igen|Yes|[Azure Storage-kapcsolatkezelő](/sql/integration-services/connection-manager/azure-storage-connection-manager)|
+|Azure Adatkezelő|Általánosan elérhető|Igen|Yes|[Azure Data Lake lekérdezése az Azure-Adatkezelő használatával](/azure/data-explorer/data-lake-query-data)|
 |Azure Cognitive Search|Előnézet|Igen|Yes|[Azure Data Lake Storage Gen2 dokumentumok indexelése és keresése (előzetes verzió)](../../search/search-howto-index-azure-data-lake-storage.md)|
 |Azure Content Delivery Network|Még nem támogatott|Nem alkalmazható|Nem alkalmazható|[Azure Data Lake Storage Gen2 dokumentumok indexelése és keresése (előzetes verzió)](../../cdn/cdn-overview.md)|
 |Azure SQL Database|Még nem támogatott|Nem alkalmazható|Nem alkalmazható|[Mi az Azure SQL Database?](../../azure-sql/database/sql-database-paas-overview.md)|
@@ -49,6 +49,6 @@ Ez a táblázat felsorolja a Azure Data Lake Storage Gen2 használható Azure-sz
 ## <a name="see-also"></a>Lásd még
 
 - [Ismert problémák a Azure Data Lake Storage Gen2](data-lake-storage-known-issues.md)
-- [A blob Storage funkciói a Azure Data Lake Storage Gen2ban érhetők el](data-lake-storage-supported-blob-storage-features.md)
+- [Az Azure Data Lake Storage Gen2-ben elérhető Blob Storage-funkciók](data-lake-storage-supported-blob-storage-features.md)
 - [A Azure Data Lake Storage Gen2t támogató nyílt forráskódú platformok](data-lake-storage-supported-open-source-platforms.md)
 - [Több protokollos hozzáférés Azure Data Lake Storage](data-lake-storage-multi-protocol-access.md)

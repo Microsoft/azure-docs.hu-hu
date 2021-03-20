@@ -10,10 +10,10 @@ ms.date: 08/30/2017
 ms.author: yegu
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 77a03ac7ca47e3ba40242adfbd5d57d9dbd21f30
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96184144"
 ---
 # <a name="create-an-azure-cache-for-redis"></a>Az Azure Cache for Redis létrehozása
@@ -32,7 +32,7 @@ Ebből a forgatókönyvből megtudhatja, hogyan hozhat létre Azure-gyorsítót�
 
 Ez a szkript a következő parancsokat használja egy erőforráscsoport és egy Azure-gyorsítótár létrehozásához a Redis. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [az group create](/cli/azure/group) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az Redis Create](/cli/azure/redis) | Azure cache létrehozása a Redis-példányhoz. |

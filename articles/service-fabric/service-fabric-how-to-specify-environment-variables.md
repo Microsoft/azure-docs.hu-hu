@@ -4,10 +4,10 @@ description: Bemutatja, hogyan használhatók környezeti változók a Service F
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.openlocfilehash: 610e44ac98b8b8a2ce5a91fdbcfda145ae36a94b
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96576740"
 ---
 # <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>Környezeti változók megadása a Service Fabric szolgáltatásaihoz
@@ -53,7 +53,7 @@ environment:
   - "hostname:${hostname}"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni az ebben a cikkben tárgyalt alapfogalmakról, tekintse meg az [Alkalmazások kezelése több környezethez című cikket](service-fabric-manage-multiple-environment-app-configuration.md).
 
 További információ a Visual Studióban elérhető egyéb alkalmazás-felügyeleti lehetőségekről: [Service Fabric alkalmazások kezelése a Visual Studióban](service-fabric-manage-application-in-visual-studio.md).

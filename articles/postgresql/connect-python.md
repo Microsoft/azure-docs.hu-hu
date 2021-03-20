@@ -9,10 +9,10 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/28/2020
 ms.openlocfilehash: db94a82112f2670facd4d89178f11653c5316c36
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95998940"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rövid útmutató: a Python használata az Azure Database for PostgreSQL-kiszolgálóval való kapcsolódáshoz és az adatlekérdezéshez
@@ -39,7 +39,7 @@ Ehhez a rövid útmutatóhoz a következőkre lesz szüksége:
 - [Python](https://www.python.org/downloads/) 2.7.9 + vagy 3.4 +.
 
 - Legújabb [pip](https://pip.pypa.io/en/stable/installing/) -csomag telepítője.
-- Telepítse [psycopg2](https://pypi.python.org/pypi/psycopg2/) a psycopg2 `pip install psycopg2` -t egy terminál vagy parancssori ablak használatával. További információ: [How to install `psycopg2` ](http://initd.org/psycopg/docs/install.html).
+- Telepítse [](https://pypi.python.org/pypi/psycopg2/) a psycopg2 `pip install psycopg2` -t egy terminál vagy parancssori ablak használatával. További információ: [How to install `psycopg2` ](http://initd.org/psycopg/docs/install.html).
 
 ## <a name="get-database-connection-information"></a>Adatbázis-kapcsolatok adatainak beolvasása
 Azure Database for PostgreSQL-adatbázishoz való csatlakozáshoz a teljes kiszolgálónév és a bejelentkezési hitelesítő adatok szükségesek. Ezt az információt a Azure Portalból kérheti le.
@@ -160,7 +160,7 @@ az group delete \
     --yes
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Azure Database for MySQL-kiszolgáló kezelése a portál használatával](./howto-create-manage-server-portal.md)<br/>
 

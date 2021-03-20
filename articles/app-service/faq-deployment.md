@@ -10,10 +10,10 @@ ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: 163a6940e50d1f8beacc23855fd1e6f9daad0085
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88080473"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Az Azure-beli Web Apps üzembe helyezéssel kapcsolatos gyakori kérdései
@@ -26,7 +26,7 @@ Ez a cikk a [Azure App Service Web Apps funkciójának](https://azure.microsoft.
 
 Íme néhány lehetőség a webalkalmazás kódjának közzétételéhez:
 
-*   Üzembe helyezés a Visual Studióval. Ha a Visual Studio-megoldással rendelkezik, kattintson a jobb gombbal a webalkalmazás-projektre, majd válassza a **Közzététel**lehetőséget.
+*   Üzembe helyezés a Visual Studióval. Ha a Visual Studio-megoldással rendelkezik, kattintson a jobb gombbal a webalkalmazás-projektre, majd válassza a **Közzététel** lehetőséget.
 *   Üzembe helyezés FTP-ügyfél használatával. A Azure Portal töltse le a webalkalmazás közzétételi profilját, amelyre telepíteni kívánja a kódot. Ezután töltse fel a fájlokat a \site\wwwroot-re ugyanazzal a közzétételi profil FTP-hitelesítő adataival.
 
 További információ: [az alkalmazás üzembe helyezése app Service](deploy-local-git.md).
@@ -73,7 +73,7 @@ FTP-hibák elhárítása:
 
 ## <a name="how-do-i-publish-my-code-to-app-service"></a>Hogyan közzétenni a kódot a App Service?
 
-Az Azure rövid útmutató úgy lett kialakítva, hogy segítséget nyújtson az alkalmazás üzembe helyezéséhez az üzembe helyezési verem és a választott módszer használatával. A rövid útmutató használatához a Azure Portal nyissa meg az App Service-t az **üzembe helyezés**alatt, **majd válassza a**rövid útmutató lehetőséget.
+Az Azure rövid útmutató úgy lett kialakítva, hogy segítséget nyújtson az alkalmazás üzembe helyezéséhez az üzembe helyezési verem és a választott módszer használatával. A rövid útmutató használatához a Azure Portal nyissa meg az App Service-t az **üzembe helyezés** alatt, **majd válassza a** rövid útmutató lehetőséget.
 
 ## <a name="why-does-my-app-sometimes-restart-after-deployment-to-app-service"></a>Miért indítja újra az alkalmazást az üzembe helyezés után App Service?
 

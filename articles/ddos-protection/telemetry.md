@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
 ms.openlocfilehash: 0be184921ff0bd6b98dd2975acb4e0d5c8b26ba0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101716193"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>DDoS Protection-telemetria megtekintése és konfigurálása
@@ -37,14 +37,14 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 A következő [metrikák](../azure-monitor/essentials/metrics-supported.md#microsoftnetworkpublicipaddresses) érhetők el Azure DDoS Protection standard. Ezek a metrikák a diagnosztikai beállításokon keresztül is exportálhatók (lásd: a [DDoS diagnosztikai naplózás megtekintése és konfigurálása](diagnostic-logging.md)).
 
 
-| Metric | Metrika megjelenítendő neve | Unit (Egység) | Aggregáció típusa | Leírás |
+| Metric | Metrika megjelenítendő neve | Unit (Egység) | Aggregáció típusa | Description |
 | --- | --- | --- | --- | --- |
 | BytesDroppedDDoS | Bejövő bájtok elvetve DDoS | BytesPerSecond | Maximum | Bejövő bájtok elvetve DDoS| 
 | BytesForwardedDDoS | Bejövő bájtok továbbított DDoS | BytesPerSecond | Maximum | Bejövő bájtok továbbított DDoS |
 | BytesInDDoS | Bejövő bájtok DDoS | BytesPerSecond | Maximum | Bejövő bájtok DDoS |
-| DDoSTriggerSYNPackets | Bejövő SYN-csomagok a DDoS-elhárítás elindításához | CountPerSecond | Maximum | Bejövő SYN-csomagok a DDoS-elhárítás elindításához |
-| DDoSTriggerTCPPackets | Bejövő TCP-csomagok a DDoS-mérséklés indításához | CountPerSecond | Maximum | Bejövő TCP-csomagok a DDoS-mérséklés indításához |
-| DDoSTriggerUDPPackets | Bejövő UDP-csomagok a DDoS-elhárítás elindításához | CountPerSecond | Maximum | Bejövő UDP-csomagok a DDoS-elhárítás elindításához |
+| DDoSTriggerSYNPackets | DDoS elleni védelem aktiválására szolgáló bejövő SYN-csomagok | CountPerSecond | Maximum | DDoS elleni védelem aktiválására szolgáló bejövő SYN-csomagok |
+| DDoSTriggerTCPPackets | DDoS elleni védelem aktiválására szolgáló bejövő TCP-csomagok | CountPerSecond | Maximum | DDoS elleni védelem aktiválására szolgáló bejövő TCP-csomagok |
+| DDoSTriggerUDPPackets | DDoS elleni védelem aktiválására szolgáló bejövő UDP-csomagok | CountPerSecond | Maximum | DDoS elleni védelem aktiválására szolgáló bejövő UDP-csomagok |
 | IfUnderDDoSAttack | DDoS-támadás alatt vagy nem | Darabszám | Maximum | DDoS-támadás alatt vagy nem |
 | PacketsDroppedDDoS | Bejövő csomagok eldobott DDoS | CountPerSecond | Maximum | Bejövő csomagok eldobott DDoS |
 | PacketsForwardedDDoS | Bejövő csomagok továbbított DDoS | CountPerSecond | Maximum | Bejövő csomagok továbbított DDoS |

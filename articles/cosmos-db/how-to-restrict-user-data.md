@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
 ms.openlocfilehash: 61e8ee2cbcd1252704b2d1e220fcfaaff17c2f28
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93085989"
 ---
 # <a name="restrict-user-access-to-data-operations-in-azure-cosmos-db"></a>Az adatműveletekhez való felhasználói hozzáférés korlátozása Azure Cosmos DB
@@ -37,10 +37,10 @@ A cikk következő fejezetei bemutatják, hogyan hajthatja végre ezeket a lép�
 > A következő szakaszokban szereplő parancsok végrehajtásához telepítenie kell Azure PowerShell modul 3.0.0 vagy újabb verzióját, valamint az [Azure tulajdonosi szerepkört](../role-based-access-control/built-in-roles.md#owner) a módosítani kívánt előfizetéshez.
 
 A következő szakaszban található PowerShell-parancsfájlokban cserélje le a következő helyőrzőket a környezetre jellemző értékekre:
-- `$MySubscriptionId` – Az az előfizetés-azonosító, amely tartalmazza azt az Azure Cosmos-fiókot, amelyben korlátozni szeretné az engedélyeket. Például: `e5c8766a-eeb0-40e8-af56-0eb142ebf78e`.
-- `$MyResourceGroupName` – Az Azure Cosmos-fiókot tartalmazó erőforráscsoport. Például: `myresourcegroup`.
-- `$MyAzureCosmosDBAccountName` – Az Azure Cosmos-fiók neve. Például: `mycosmosdbsaccount`.
-- `$MyUserName` – Annak a felhasználónak a felhasználóneve ( username@domain ), akivel korlátozni kívánja a hozzáférést. Például: `cosmosdbuser@contoso.com`.
+- `$MySubscriptionId` – Az az előfizetés-azonosító, amely tartalmazza azt az Azure Cosmos-fiókot, amelyben korlátozni szeretné az engedélyeket. Példa: `e5c8766a-eeb0-40e8-af56-0eb142ebf78e`.
+- `$MyResourceGroupName` – Az Azure Cosmos-fiókot tartalmazó erőforráscsoport. Példa: `myresourcegroup`.
+- `$MyAzureCosmosDBAccountName` – Az Azure Cosmos-fiók neve. Példa: `mycosmosdbsaccount`.
+- `$MyUserName` – Annak a felhasználónak a felhasználóneve ( username@domain ), akivel korlátozni kívánja a hozzáférést. Példa: `cosmosdbuser@contoso.com`.
 
 ## <a name="select-your-azure-subscription"></a>Válassza ki az Azure-előfizetését
 

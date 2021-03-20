@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: 97031abaedaa3e5595e290fa0292646feb744d47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90086691"
 ---
 # <a name="use-the-java-message-service-with-azure-service-bus-and-amqp-10"></a>A Java-Üzenetkezelő szolgáltatás használata a Azure Service Bus és a AMQP 1,0
@@ -50,7 +50,7 @@ A következő JAR-fájlokat hozzá kell adnia az Apache csontos JMS AMQP 1,0 Dis
 
 ### <a name="java-naming-and-directory-interface"></a>Java elnevezési és könyvtári felület
 
-A JMS a Java elnevezési és könyvtári felületet (JNDI) használja a logikai nevek és a fizikai nevek közötti elkülönítés létrehozásához. A JNDI: **ConnectionFactory** és a **Destination**típusú JMS objektumok két típusát oldják fel. A JNDI egy szolgáltatói modellt használ, amelyben különböző címtárszolgáltatás-szolgáltatásokat lehet csatlakoztatni a névfeloldási feladatok kezeléséhez. Az Apache csontos JMS AMQP 1,0 Library egy egyszerű, file-alapú JNDI-szolgáltatót tartalmaz, amely a következő formátumú tulajdonságok használatával van konfigurálva:
+A JMS a Java elnevezési és könyvtári felületet (JNDI) használja a logikai nevek és a fizikai nevek közötti elkülönítés létrehozásához. A JNDI: **ConnectionFactory** és a **Destination** típusú JMS objektumok két típusát oldják fel. A JNDI egy szolgáltatói modellt használ, amelyben különböző címtárszolgáltatás-szolgáltatásokat lehet csatlakoztatni a névfeloldási feladatok kezeléséhez. Az Apache csontos JMS AMQP 1,0 Library egy egyszerű, file-alapú JNDI-szolgáltatót tartalmaz, amely a következő formátumú tulajdonságok használatával van konfigurálva:
 
 ```TEXT
 # servicebus.properties - sample JNDI configuration
@@ -67,7 +67,7 @@ queue.QUEUE = queue1
 
 #### <a name="set-up-jndi-context-and-configure-the-connectionfactory-object"></a>JNDI-környezet beállítása és a ConnectionFactory objektum konfigurálása
 
-A hivatkozott kapcsolati sztring az **elsődleges kapcsolati sztringben**lévő [Azure Portal](https://portal.azure.com) megosztott hozzáférési házirendekben elérhető.
+A hivatkozott kapcsolati sztring az **elsődleges kapcsolati sztringben** lévő [Azure Portal](https://portal.azure.com) megosztott hozzáférési házirendekben elérhető.
 
 ```java
 // The connection string builder is the only part of the azure-servicebus SDK library
@@ -126,7 +126,7 @@ A JMS és a Service Bus használatával nem szükséges különleges API-k vagy 
 
 #### <a name="configure-the-jndi-initialcontext-object"></a>A JNDI InitialContext objektumának konfigurálása
 
-A JNDI környezet úgy van konfigurálva, hogy a konfigurációs adatok kivonatoló táblázatát átadja a javax.naming.InitialContext osztály konstruktorának. A kivonatoló tábla két szükséges eleme a kezdeti környezeti gyár és a szolgáltató URL-címe. A következő kód bemutatja, hogyan konfigurálhatja a JNDI környezetet úgy, hogy a csontos Properties fájl-alapú JNDI-szolgáltatót használja a **servicebus. properties**nevű tulajdonságokkal.
+A JNDI környezet úgy van konfigurálva, hogy a konfigurációs adatok kivonatoló táblázatát átadja a javax.naming.InitialContext osztály konstruktorának. A kivonatoló tábla két szükséges eleme a kezdeti környezeti gyár és a szolgáltató URL-címe. A következő kód bemutatja, hogyan konfigurálhatja a JNDI környezetet úgy, hogy a csontos Properties fájl-alapú JNDI-szolgáltatót használja a **servicebus. properties** nevű tulajdonságokkal.
 
 ```java
 // Set up JNDI context
@@ -303,7 +303,7 @@ public class JmsQueueQuickstart {
 }
 ```
 
-### <a name="run-the-application"></a>Alkalmazás futtatása
+### <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Adja át a **kapcsolati karakterláncot** a megosztott hozzáférési szabályzatokból az alkalmazás futtatásához.
 A következő kimenet az alkalmazást futtató űrlap:
@@ -386,7 +386,7 @@ Service Bus feldarabolja a vezérlő síkot az adatsíkon, így nem támogatja t
 | createTemporaryQueue        | Hozzon létre egy várólistát a felügyeleti API, az eszközök vagy a portál használatával, amely lejárati időszakra van beállítva a *AutoDeleteOnIdle* . |
 | receiveNoWait               | Használja a Service Bus SDK által biztosított Receive () metódust, és nagyon alacsony vagy nulla időtúllépést ad meg. |
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ez a cikk bemutatja, hogyan használhatja Service Bus felügyelt üzenetkezelési funkciókat, például a várólistákat és a közzétételi vagy előfizetési témákat a Java-ból a népszerű JMS API és a AMQP 1,0 használatával.
 

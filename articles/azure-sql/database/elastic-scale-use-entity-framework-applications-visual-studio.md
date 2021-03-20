@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/04/2019
 ms.openlocfilehash: 48d43cb2d3c51194d0708a2b9b739a0ee87843d0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793398"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Ügyféloldali kódtár Elastic Database Entity Framework
@@ -39,16 +39,16 @@ A minta futtatásához három üres adatbázist kell létrehoznia Azure SQL Data
 * 1. szegmens adatbázis
 * 2. szegmens adatbázis
 
-Miután létrehozta ezeket az adatbázisokat, töltse ki a **program.cs** lévő helyet a kiszolgáló nevével, az adatbázis nevével és az adatbázisokhoz való kapcsolódáshoz szükséges hitelesítő adatokkal. Hozza létre a megoldást a Visual Studióban. A Visual Studio a létrehozási folyamat részeként letölti a rugalmas adatbázis ügyféloldali kódtár, Entity Framework és átmeneti hibák kezelésére vonatkozó szükséges NuGet-csomagokat. Győződjön meg arról, hogy az NuGet-csomagok visszaállítása engedélyezve van a megoldáshoz. A beállítás engedélyezéséhez kattintson a jobb gombbal a megoldás fájlra a Visual Studio Megoldáskezelő.
+Miután létrehozta ezeket az adatbázisokat, töltse ki a **program. cs** hely tulajdonosainak a kiszolgáló nevét, az adatbázis nevét és az adatbázisokhoz való kapcsolódáshoz szükséges hitelesítő adatokat. Hozza létre a megoldást a Visual Studióban. A Visual Studio a létrehozási folyamat részeként letölti a rugalmas adatbázis ügyféloldali kódtár, Entity Framework és átmeneti hibák kezelésére vonatkozó szükséges NuGet-csomagokat. Győződjön meg arról, hogy az NuGet-csomagok visszaállítása engedélyezve van a megoldáshoz. A beállítás engedélyezéséhez kattintson a jobb gombbal a megoldás fájlra a Visual Studio Megoldáskezelő.
 
 ## <a name="entity-framework-workflows"></a>Munkafolyamatok Entity Framework
 
 Entity Framework fejlesztők az alábbi négy munkafolyamat egyikét használják az alkalmazások létrehozásához és az alkalmazás-objektumok megőrzésének biztosításához:
 
-* **Első kód (új adatbázis)** : az EF-fejlesztő létrehozza a modellt az alkalmazás kódjában, majd az EF létrehozza az adatbázist.
-* **Első kód (meglévő adatbázis)** : a fejlesztő lehetővé teszi, hogy az EF létrehozza a modellhez tartozó alkalmazás kódját egy meglévő adatbázisból.
-* **Első modell** : a fejlesztő létrehozza a MODELLT az EF Designerben, majd az EF létrehozza az adatbázist a modellből.
-* **Adatbázis először** : a fejlesztő az EF-eszközök használatával következteti ki a modellt egy meglévő adatbázisból.
+* **Első kód (új adatbázis)**: az EF-fejlesztő létrehozza a modellt az alkalmazás kódjában, majd az EF létrehozza az adatbázist.
+* **Első kód (meglévő adatbázis)**: a fejlesztő lehetővé teszi, hogy az EF létrehozza a modellhez tartozó alkalmazás kódját egy meglévő adatbázisból.
+* **Első modell**: a fejlesztő létrehozza a MODELLT az EF Designerben, majd az EF létrehozza az adatbázist a modellből.
+* **Adatbázis először**: a fejlesztő az EF-eszközök használatával következteti ki a modellt egy meglévő adatbázisból.
 
 Mindezek a módszerek a DbContext osztályra támaszkodnak, hogy transzparens módon kezeljék az adatbázis-kapcsolatokat és az adatbázis-sémát egy alkalmazáshoz. A DbContext alaposztály különböző konstruktorai lehetővé teszik a kapcsolatok létrehozásához, az adatbázis-indításhoz és a séma létrehozásához szükséges különböző szintű szabályozást. A kihívások elsősorban abból erednek, hogy az EF által biztosított adatbázis-kapcsolat kezelése a rugalmas adatbázis ügyféloldali kódtár által biztosított adatkezelési képességekkel összefügg.
 
@@ -64,16 +64,16 @@ A szegmensek közötti Térkép kezelője védi a felhasználókat abban, hogy i
 
 Ha a rugalmas adatbázis ügyféloldali függvénytárával és Entity Framework API-kkal dolgozik, a következő tulajdonságokat szeretné megőrizni:
 
-* Horizontális **felskálázás** : a többrétegű alkalmazás adatszintjéből származó adatbázisok hozzáadásához vagy eltávolításához az alkalmazás kapacitási igényei szerint. Ez azt jelenti, hogy szabályozhatja az adatbázisok létrehozását és törlését, valamint a rugalmas adatbázis-szegmens Map Manager API-kat az adatbázisok kezeléséhez és a shardletek leképezéséhez.
-* **Konzisztencia** : az alkalmazás horizontális felskálázást alkalmaz, és az ügyféloldali függvénytár adatkezelési funkcióit használja. A sérülés vagy helytelen lekérdezési eredmények elkerülése érdekében a kapcsolatok a szegmenses Térkép kezelőjén keresztül lesznek közvetítve. Ez megtartja az érvényesítést és a konzisztenciát is.
-* **Első kód** : az EF Code első paradigma kényelmének megőrzése. Először a Code-ban az alkalmazásban szereplő osztályok transzparens módon vannak leképezve az alapul szolgáló adatbázis-struktúrákra. Az alkalmazás kódja együttműködik a DbSets, amelyek az alapul szolgáló adatbázis feldolgozásának legfontosabb szempontjait fedik le.
-* **Séma** : Entity Framework kezeli a kezdeti adatbázis-séma létrehozását és az azt követő sémák alakulását az áttelepítés során. A képességek megőrzése révén az alkalmazás alkalmazkodik az adatváltozásokhoz.
+* Horizontális **felskálázás**: a többrétegű alkalmazás adatszintjéből származó adatbázisok hozzáadásához vagy eltávolításához az alkalmazás kapacitási igényei szerint. Ez azt jelenti, hogy szabályozhatja az adatbázisok létrehozását és törlését, valamint a rugalmas adatbázis-szegmens Map Manager API-kat az adatbázisok kezeléséhez és a shardletek leképezéséhez.
+* **Konzisztencia**: az alkalmazás horizontális felskálázást alkalmaz, és az ügyféloldali függvénytár adatkezelési funkcióit használja. A sérülés vagy helytelen lekérdezési eredmények elkerülése érdekében a kapcsolatok a szegmenses Térkép kezelőjén keresztül lesznek közvetítve. Ez megtartja az érvényesítést és a konzisztenciát is.
+* **Első kód**: az EF Code első paradigma kényelmének megőrzése. Először a Code-ban az alkalmazásban szereplő osztályok transzparens módon vannak leképezve az alapul szolgáló adatbázis-struktúrákra. Az alkalmazás kódja együttműködik a DbSets, amelyek az alapul szolgáló adatbázis feldolgozásának legfontosabb szempontjait fedik le.
+* **Séma**: Entity Framework kezeli a kezdeti adatbázis-séma létrehozását és az azt követő sémák alakulását az áttelepítés során. A képességek megőrzése révén az alkalmazás alkalmazkodik az adatváltozásokhoz.
 
 Az alábbi útmutatás arra utasítja, hogyan teljesítheti ezeket a követelményeket a kód első alkalmazásaihoz rugalmas adatbázis-eszközök használatával.
 
 ## <a name="data-dependent-routing-using-ef-dbcontext"></a>Adatfüggő útválasztás az EF DbContext
 
-A Entity Frameworkekkel rendelkező adatbázis-kapcsolatokat általában a **DbContext** alosztályain keresztül kezeli a rendszer. Hozza létre ezeket az alosztályokat a **DbContext** -ből származtatva. Itt határozhatja meg a **DbSets** , amely megvalósítja az alkalmazáshoz tartozó CLR-objektumok adatbázis-alapú gyűjteményeit. Az Adatfüggő útválasztás kontextusában számos olyan hasznos tulajdonságot azonosíthat, amelyek nem feltétlenül tartanak fenn más EF Code első alkalmazási forgatókönyvek esetén:
+A Entity Frameworkekkel rendelkező adatbázis-kapcsolatokat általában a **DbContext** alosztályain keresztül kezeli a rendszer. Hozza létre ezeket az alosztályokat a **DbContext**-ből származtatva. Itt határozhatja meg a **DbSets** , amely megvalósítja az alkalmazáshoz tartozó CLR-objektumok adatbázis-alapú gyűjteményeit. Az Adatfüggő útválasztás kontextusában számos olyan hasznos tulajdonságot azonosíthat, amelyek nem feltétlenül tartanak fenn más EF Code első alkalmazási forgatókönyvek esetén:
 
 * Az adatbázis már létezik, és regisztrálva van a rugalmas adatbázis-szegmenses térképen.
 * Az alkalmazás sémája már telepítve van az adatbázison (lásd alább).
@@ -159,7 +159,7 @@ using (var db = new ElasticScaleContext<int>(
 }
 ```
 
-Az új konstruktor megnyitja a kapcsolatot a szegmensben, amely a **tenantid1** értékével azonosított shardletbe vonatkozó adatmennyiséget tárolja. A **using** blokkban lévő kód változatlan marad, hogy hozzáférhessen a **DbSet** a blogok számára az EF használatával a **tenantid1** . Ez megváltoztatja a kód szemantikai feladatait a using blokkban úgy, hogy az összes adatbázis-művelet hatóköre a **tenantid1** által megőrzött egy szegmensre vonatkozik. A blogok **DbSet** tartozó LINQ-lekérdezések például csak az aktuális szegmensen tárolt, de más szegmenseken tárolt blogokat fogják visszaadni.  
+Az új konstruktor megnyitja a kapcsolatot a szegmensben, amely a **tenantid1** értékével azonosított shardletbe vonatkozó adatmennyiséget tárolja. A **using** blokkban lévő kód változatlan marad, hogy hozzáférhessen a **DbSet** a blogok számára az EF használatával a **tenantid1**. Ez megváltoztatja a kód szemantikai feladatait a using blokkban úgy, hogy az összes adatbázis-művelet hatóköre a **tenantid1** által megőrzött egy szegmensre vonatkozik. A blogok **DbSet** tartozó LINQ-lekérdezések például csak az aktuális szegmensen tárolt, de más szegmenseken tárolt blogokat fogják visszaadni.  
 
 ### <a name="transient-faults-handling"></a>Átmeneti hibák kezelésére
 
@@ -270,7 +270,7 @@ Az egyik lehetséges, hogy használta az alaposztálytól örökölt konstruktor
 
 A jelen dokumentumban ismertetett megközelítések néhány korlátozást foglalnak magukban:
 
-* Az **LocalDb** -t használó EF-alkalmazásoknak először rendszeres SQL Server adatbázisba kell áttérniük a rugalmas adatbázis-ügyféloldali kódtár használata előtt. Az alkalmazások horizontális méretezéssel történő horizontális felskálázása nem lehetséges a **LocalDb** . Vegye figyelembe, hogy a fejlesztés továbbra is használhatja a **LocalDb** -t.
+* Az **LocalDb** -t használó EF-alkalmazásoknak először rendszeres SQL Server adatbázisba kell áttérniük a rugalmas adatbázis-ügyféloldali kódtár használata előtt. Az alkalmazások horizontális méretezéssel történő horizontális felskálázása nem lehetséges a **LocalDb**. Vegye figyelembe, hogy a fejlesztés továbbra is használhatja a **LocalDb**-t.
 * Az alkalmazásnak az adatbázis-sémát érintő változásait az összes szegmensen el kell végezni az EF-Migrálás során. Ennek a dokumentumnak a mintakód nem mutatja be ennek módját. Érdemes lehet egy ConnectionString paraméterrel Update-Database használni az összes szegmensre való iterációhoz. vagy bontsa ki a T-SQL-szkriptet a függőben lévő áttelepítéshez Update-Database használatával a-script kapcsolóval, és alkalmazza a T-SQL-szkriptet a szegmensekre.  
 * A kérést a rendszer feltételezi, hogy az összes adatbázis-feldolgozás egy szegmensen belül található, amelyet a kérelem által biztosított horizontális kulcs azonosít. Ez a feltételezés azonban nem mindig igaz. Például, ha nem lehet elérhetővé tenni egy horizontális Felskálázási kulcsot. Ennek megoldásához az ügyféloldali kódtár biztosítja a **MultiShardQuery** osztályt, amely egy kapcsolati absztrakciót valósít meg több szegmensben való lekérdezéshez. A **MultiShardQuery** és az EF együttes használatának megismerése a jelen dokumentum hatókörén kívül esik
 

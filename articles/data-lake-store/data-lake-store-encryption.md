@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
 ms.openlocfilehash: f924cb7462f7f8c9939ec261b7ef200ceb8ea70b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92109153"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1ban lévő adattitkosítás
@@ -78,7 +78,7 @@ Az adattitkosítás során háromféle kulcsot használunk. A következő tábl�
 |-----------------------|--------------|-----------------|----------------------------------------------|------------|---------------------------------------------------------------------------------------------------------|
 | Titkosítási főkulcs | MEK          | Egy Data Lake Storage Gen1 fiók | Key Vault                              | Aszimmetrikus | Data Lake Storage Gen1 vagy Ön által felügyelhető.                                                              |
 | Adattitkosítási kulcs   | DEK          | Egy Data Lake Storage Gen1 fiók | A Data Lake Storage Gen1 szolgáltatás által felügyelt állandó tárterület | Szimmetrikus  | A DEK titkosítását a MEK végzi. A szolgáltatás a titkosított DEK-et tárolja az állandó adathordozón. |
-| Blokktitkosítási kulcs  | BEK          | Egy adatblokk | Nincs                                         | Szimmetrikus  | A blokktitkosítási kulcsot az adattitkosítási kulcsból és az adatblokkból származtatjuk.                                                      |
+| Blokktitkosítási kulcs  | BEK          | Egy adatblokk | Nincsenek                                         | Szimmetrikus  | A blokktitkosítási kulcsot az adattitkosítási kulcsból és az adatblokkból származtatjuk.                                                      |
 
 Az alapelveket a következő ábra mutatja be:
 
@@ -116,7 +116,7 @@ Vegye figyelembe, hogy ha az alapértelmezett titkosítási beállításokat has
 ### <a name="how-to-rotate-the-mek-in-data-lake-storage-gen1"></a>A MEK elforgatása Data Lake Storage Gen1
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Keresse meg a Data Lake Storage Gen1-fiókjához társított kulcsokat tároló Key Vault-példányt. Válassza a **kulcsok**lehetőséget.
+2. Keresse meg a Data Lake Storage Gen1-fiókjához társított kulcsokat tároló Key Vault-példányt. Válassza a **kulcsok** lehetőséget.
 
     ![Képernyőkép a Key Vaultról](./media/data-lake-store-encryption/keyvault.png)
 
@@ -124,7 +124,7 @@ Vegye figyelembe, hogy ha az alapértelmezett titkosítási beállításokat has
 
    ![Képernyőkép a Kulcsok ablakról, amelyen az Új verzió elem van kiemelve](./media/data-lake-store-encryption/keynewversion.png)
 
-4. Keresse meg a Data Lake Storage Gen1 fiókot, és válassza a **titkosítás**lehetőséget.
+4. Keresse meg a Data Lake Storage Gen1 fiókot, és válassza a **titkosítás** lehetőséget.
 
    ![Képernyőkép a Data Lake Storage Gen1 fiók ablakról, a titkosítás kiemelve](./media/data-lake-store-encryption/select-encryption.png)
 

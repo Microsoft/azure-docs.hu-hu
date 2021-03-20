@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: 95a04d763fa5982181cc1c797bce969d9857ae4b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92890632"
 ---
 # <a name="use-the-drawing-tools-module"></a>A Rajzeszközök modul használata
@@ -89,7 +89,7 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Szabad oldali rajzolás" src="//codepen.io/azuremaps/embed/ZEzKoaj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg <a href='https://codepen.io/azuremaps/pen/ZEzKoaj/'>Free-hand drawing</a> a tollat a Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) függvényt a <a href='https://codepen.io'>CodePen</a>-on.
+Tekintse meg <a href='https://codepen.io/azuremaps/pen/ZEzKoaj/'></a> a tollat a Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) függvényt a <a href='https://codepen.io'>CodePen</a>-on.
 </iframe>
 
 

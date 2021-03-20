@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "67179789"
 ---
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>A négyszögletű adatkészletek szerkezeti definíciójának megadása
@@ -18,10 +18,10 @@ Minden oszlop a következő tulajdonságokat tartalmazza:
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| name |Az oszlop neve. |Igen |
-| típus |Az oszlop adattípusa. A típussal kapcsolatos információk megadásával kapcsolatos további részletekért tekintse meg az alábbi típusú konverziók szakaszt. |Nem |
-| kulturális környezet |A típus megadásakor használandó .NET-alapú kulturális környezet, valamint a (m) típusú .net-típus datetime vagy DateTimeOffset. Az alapértelmezett érték az "en-us". |Nem |
-| formátumban |A típus megadásakor használandó formázó karakterlánc, a típusa pedig a következő: dátum/idő vagy DateTimeOffset. |Nem |
+| name |Az oszlop neve. |Yes |
+| típus |Az oszlop adattípusa. A típussal kapcsolatos információk megadásával kapcsolatos további részletekért tekintse meg az alábbi típusú konverziók szakaszt. |No |
+| kulturális környezet |A típus megadásakor használandó .NET-alapú kulturális környezet, valamint a (m) típusú .net-típus datetime vagy DateTimeOffset. Az alapértelmezett érték az "en-us". |No |
+| formátumban |A típus megadásakor használandó formázó karakterlánc, a típusa pedig a következő: dátum/idő vagy DateTimeOffset. |No |
 
 Az alábbi minta egy olyan tábla JSON-szakaszát mutatja be, amelyben három oszlop felhasználóazonosító, név és lastlogindate található.
 

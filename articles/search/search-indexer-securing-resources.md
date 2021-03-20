@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.openlocfilehash: bcb6e91bba367363385214806077146b1a24fe7b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92503487"
 ---
 # <a name="indexer-access-to-content-protected-by-azure-network-security-features-azure-cognitive-search"></a>Indexelő hozzáférés az Azure hálózati biztonsági funkciói által védett tartalmakhoz (Azure Cognitive Search)
@@ -41,8 +41,8 @@ Az ügyfelek az Azure által kínált számos hálózati elkülönítési mechan
 | Azure Cosmos DB-SQL API | Támogatott | Támogatott |
 | Azure Cosmos DB-Cassandra, Mongo és Gremlin API | Támogatott | Nem támogatott |
 | Azure SQL Database | Támogatott | Támogatott |
-| Azure-beli virtuális gépen futó SQL Server | Támogatott | N.A. |
-| SQL Managed Instance | Támogatott | N.A. |
+| Azure-beli virtuális gépen futó SQL Server | Támogatott | N/A |
+| SQL Managed Instance | Támogatott | N/A |
 | Azure Functions | Támogatott | Támogatott, csak az Azure functions egyes szintjei esetében |
 
 > [!NOTE]
@@ -123,7 +123,7 @@ Miután jóváhagyta a privát végpontot egy erőforráshoz, az indexelő úgy 
 
 A keresési szolgáltatás optimális teljesítményének és stabilitásának biztosítása érdekében a korlátozásokat (a keresési szolgáltatási szintek alapján) a következő dimenziókban kell megszabni:
 
-- *Magánjellegűként*beállítható indexelő típus.
+- *Magánjellegűként* beállítható indexelő típus.
 - A létrehozható megosztott magánhálózati kapcsolati erőforrások száma.
 - Azon különálló erőforrástípusok száma, amelyekhez megosztott magánhálózati kapcsolati erőforrások hozhatók létre.
 

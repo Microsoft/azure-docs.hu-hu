@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 11c1938c3c1ccba533f52336fad81ebeaae53b24
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895477"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Ajánlott eljárások Azure Maps Search Service
@@ -59,19 +59,19 @@ Ahhoz, hogy a felhasználó a megfelelő területen geobias az eredményeket, mi
 
 #### <a name="fuzzy-search-parameters"></a>Fuzzy keresési paraméterek
 
-Javasoljuk, hogy használja a Azure Maps [Search FUZZY API](/rest/api/maps/search/getsearchfuzzy) -t, ha nem tudja, hogy a felhasználói bemenetek egy keresési lekérdezéshez. A felhasználótól származó bevitel például lehet egy címnek vagy egy érdekes helynek (POI) a típusa, például a *Shopping Mall* . Az API egy kanonikus *egysoros kereséshez* ÖTVÖZI a POI-kereséseket és a helymeghatározáshoz: 
+Javasoljuk, hogy használja a Azure Maps [Search FUZZY API](/rest/api/maps/search/getsearchfuzzy) -t, ha nem tudja, hogy a felhasználói bemenetek egy keresési lekérdezéshez. A felhasználótól származó bevitel például lehet egy címnek vagy egy érdekes helynek (POI) a típusa, például a *Shopping Mall*. Az API egy kanonikus *egysoros kereséshez* ÖTVÖZI a POI-kereséseket és a helymeghatározáshoz: 
 
 * A `minFuzzyLevel` és `maxFuzzyLevel` paraméterek segítenek a releváns egyezések visszaadásában, még akkor is, ha a lekérdezési paraméterek nem egyeznek pontosan a felhasználó által kívánt információkkal. A teljesítmény maximalizálása és a szokatlan eredmények csökkentése érdekében a keresési lekérdezéseket a és a alapértelmezett értékeire állítsa be `minFuzzyLevel=1` `maxFuzzyLevel=2` . 
 
-    Ha például a paraméter értéke `maxFuzzyLevel` 2, a *restaurant* *restrant* kifejezés a következőhöz igazodik:. Szükség esetén felülbírálhatja az alapértelmezett fuzzy-szinteket. 
+    Ha például a paraméter értéke `maxFuzzyLevel` 2, a  *restrant* kifejezés a következőhöz igazodik:. Szükség esetén felülbírálhatja az alapértelmezett fuzzy-szinteket. 
 
 * A `idxSet` paraméterrel rangsorolhatja az eredményhalmaz pontos készletét. Az eredmények pontos halmazának rangsorolása érdekében elküldheti az indexek vesszővel tagolt listáját. A listában az elem sorrendje nem számít. A Azure Maps a következő indexeket támogatja:
 
 * `Addr` - **Címtartományok: az** utca elejéről és végéről központilag interpolált címek. Ezek a pontok címtartományokként jelennek meg.
 * `Geo` - **Földrajzi** területek: a földek adminisztratív részlege. A földrajzi hely lehet például ország/régió, állam vagy város.
-* `PAD` - **Pont címei** : az utca nevét és számát tartalmazó címek. A pontok címei a tárgymutatóban találhatók. Példa: *Soquel Dr 2501* . A pont címe a legmagasabb szintű pontosságot biztosítja a címek számára.  
-* `POI` - Érdekes **pontok** : a térképen olyan pontok láthatók, amelyek hasznosnak számítanak, vagy érdekesek lehetnek. A [keresési címek API](/rest/api/maps/search/getsearchaddress) nem ad vissza POI-ket.  
-* `Str` - **Utcák** : utcák a térképen.
+* `PAD` - **Pont címei**: az utca nevét és számát tartalmazó címek. A pontok címei a tárgymutatóban találhatók. Példa: *Soquel Dr 2501*. A pont címe a legmagasabb szintű pontosságot biztosítja a címek számára.  
+* `POI` - Érdekes **pontok**: a térképen olyan pontok láthatók, amelyek hasznosnak számítanak, vagy érdekesek lehetnek. A [keresési címek API](/rest/api/maps/search/getsearchaddress) nem ad vissza POI-ket.  
+* `Str` - **Utcák**: utcák a térképen.
 * `XStr` - **Több utca vagy** kereszteződések: olyan csomópontok vagy helyek, ahol két utca metszi egymást.
 
 
@@ -405,7 +405,7 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 ### <a name="encode-a-uri-to-handle-special-characters"></a>URI kódolása speciális karakterek kezeléséhez 
 
-A Cross Street-címek kereséséhez kódolnia kell az URI-t a címben szereplő speciális karakterek kezelésére. Vegyük például a következő példát: *1st Avenue & Union Street, Seattle* . Itt kódolja a jel karaktert ( `&` ) a kérelem elküldése előtt. 
+A Cross Street-címek kereséséhez kódolnia kell az URI-t a címben szereplő speciális karakterek kezelésére. Vegyük például a következő példát: *1st Avenue & Union Street, Seattle*. Itt kódolja a jel karaktert ( `&` ) a kérelem elküldése előtt. 
 
 Azt javasoljuk, hogy kódolja a karaktereket egy URI-ban. Az URI-ban az összes karaktert egy százalékos előjel ( `%` ) és egy kétkarakteres hexadecimális érték használatával kódolja, amely megfelel az "UTF-8-kód" karakternek.
 
@@ -763,17 +763,17 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 ### <a name="supported-types-of-results"></a>Támogatott típusú eredmények
 
-* **Pont címe** : a térképen olyan pontok jelennek meg, amelyek egy utcanév és egy számmal megadott névvel rendelkeznek. A pont címe a legmagasabb szintű pontosságot biztosítja a címeknél. 
+* **Pont címe**: a térképen olyan pontok jelennek meg, amelyek egy utcanév és egy számmal megadott névvel rendelkeznek. A pont címe a legmagasabb szintű pontosságot biztosítja a címeknél. 
 
-* **Címtartomány** : az utca elejéről és végéről központilag interpolált címtartomány.  
+* **Címtartomány**: az utca elejéről és végéről központilag interpolált címtartomány.  
 
 * **Földrajzi** hely: egy Térkép azon területei, amelyek egy adott földterület (például ország/régió, állam vagy város) felügyeleti részlegeit jelölik. 
 
-* **POI** : egy térképen olyan pontok mutatnak, amelyek hasznosak, és érdekesek lehetnek.
+* **POI**: egy térképen olyan pontok mutatnak, amelyek hasznosak, és érdekesek lehetnek.
 
-* **Utca** : utcák a térképen. A címek a címet tartalmazó utca szélességi és hosszúsági koordinátáihoz vannak feloldva. Lehet, hogy a házszám nem dolgozható fel. 
+* **Utca**: utcák a térképen. A címek a címet tartalmazó utca szélességi és hosszúsági koordinátáihoz vannak feloldva. Lehet, hogy a házszám nem dolgozható fel. 
 
-* **Cross Street** : metszetek. A Cross Streets olyan csomópontokat jelöl, ahol két utca metszi egymást.
+* **Cross Street**: metszetek. A Cross Streets olyan csomópontokat jelöl, ahol két utca metszi egymást.
 
 ### <a name="response"></a>Reagálás
 

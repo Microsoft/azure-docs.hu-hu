@@ -10,10 +10,10 @@ ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
 ms.openlocfilehash: c54300bf37f6f4526c525b1502d902e5f4336ed7
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98943503"
 ---
 # <a name="tutorial-anomaly-detection-with-cognitive-services-preview"></a>Oktatóanyag: anomáliák észlelése Cognitive Servicessal (előzetes verzió)
@@ -103,4 +103,4 @@ Mostantól az összes cellát futtathatja a anomáliák észlelésének elvégz�
 
 - [Oktatóanyag: érzelmek elemzése az Azure Cognitive Services](tutorial-cognitive-services-sentiment.md)
 - [Oktatóanyag: gépi tanulási modellek pontozása az Azure szinapszis dedikált SQL-készletekben](tutorial-sql-pool-model-scoring-wizard.md)
-- [Az Azure szinapszis Analytics Machine Learning képességei](what-is-machine-learning.md)
+- [Az Azure Synapse Analytics gépi tanulási képességei](what-is-machine-learning.md)

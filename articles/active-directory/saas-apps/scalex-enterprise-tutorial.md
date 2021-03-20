@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: jeedes
 ms.openlocfilehash: a2065286581b6e7de61e4d1a29382b98563cdbb8
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895056"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-scalex-enterprise"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a ScaleX Enterprise-nal
@@ -89,7 +89,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek beszerzéséhez lépjen kapcsolatba a [ScaleX Enterprise ügyfél-támogatási csapatával](https://info.rescale.com/contact_sales) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. A ScaleX Enterprise-alkalmazás meghatározott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol az **EmailAddress** a **User. mail** -sel van leképezve. A ScaleX Enterprise-alkalmazás az **EmailAddress** -t a **User. userPrincipalName** leképezésével rendeli hozzá, ezért az attribútum-hozzárendelést úgy kell módosítania, hogy rákattint a **Szerkesztés** ikonra, és megváltoztatja az attribútumok leképezését.
+1. A ScaleX Enterprise-alkalmazás meghatározott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol az **EmailAddress** a **User. mail**-sel van leképezve. A ScaleX Enterprise-alkalmazás az **EmailAddress** -t a **User. userPrincipalName** leképezésével rendeli hozzá, ezért az attribútum-hozzárendelést úgy kell módosítania, hogy rákattint a **Szerkesztés** ikonra, és megváltoztatja az attribútumok leképezését.
 
     ![image](common/edit-attribute.png)
 
@@ -105,13 +105,13 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -160,9 +160,9 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     a. Válassza **a minden olyan felhasználó létrehozása, aki tud hitelesíteni az SSO-t**
 
-    b. **Szolgáltató SAML** : illessze be a * *_urn: Oasis: Names: TC: SAML: 2.0: nameid-Format: perzisztens_* _ értéket.
+    b. **Szolgáltató SAML**: illessze be az **_urn: Oasis: Names: TC: SAML: 2.0: nameid-Format: perzisztens_ értéket.**
 
-    c. _ * Az identitás-szolgáltató e-mail mezőjének neve az ACS-válaszban * *: illessze be az értéket `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    c. A **személyazonosság-szolgáltató e-mail-mezőjének neve az ACS-válaszban**: illessze be az értéket`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
     d. **Identity Provider EntityDescriptor-entitás azonosítója:** Illessze be a Azure Portalból másolt **Azure ad-azonosító** értékét.
 

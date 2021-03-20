@@ -6,10 +6,10 @@ ms.tgt_pltfrm: dotnet
 ms.date: 09/01/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e8e70884838d56003694e2da09668527ce5b6c7b
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100652989"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Bevezetés a Service Bus által kezelt üzenetsorok használatába
@@ -48,7 +48,7 @@ Indítsa el a Visual studiót, és hozzon létre egy új **Console app (.net Cor
 
 ### <a name="write-code-to-send-messages-to-the-queue"></a>Kód írása az üzenetek üzenetsorba való küldéséhez
 
-1. A *program.cs*-ben adja hozzá a következő `using` utasításokat a névtér definíciójának elejéhez az osztály deklarációja előtt:
+1. A *program. cs programban* adja hozzá a következő `using` utasításokat a névtér definíciójának elejéhez, az osztály deklarációja előtt:
 
     ```csharp
     using System.Text;
@@ -114,7 +114,7 @@ Indítsa el a Visual studiót, és hozzon létre egy új **Console app (.net Cor
     }
     ```
 
-A *program.cs* -fájlnak így kell kinéznie.
+A *program. cs* fájljának így kell kinéznie.
 
 ```csharp
 namespace CoreSenderApp
@@ -194,7 +194,7 @@ Az elküldött üzenetek fogadásához hozzon létre egy másik **Console app (.
 
 ### <a name="write-code-to-receive-messages-from-the-queue"></a>Kód írása az üzenetek üzenetsorból történő fogadásához
 
-1. A *program.cs*-ben adja hozzá a következő `using` utasításokat a névtér definíciójának elejéhez az osztály deklarációja előtt:
+1. A *program. cs programban* adja hozzá a következő `using` utasításokat a névtér definíciójának elejéhez, az osztály deklarációja előtt:
 
     ```csharp
     using System;
@@ -295,7 +295,7 @@ Az elküldött üzenetek fogadásához hozzon létre egy másik **Console app (.
     }
     ```
 
-A *program.cs* -fájlnak így kell kinéznie:
+A *program. cs* fájljának így kell kinéznie:
 
 ```csharp
 namespace CoreReceiverApp

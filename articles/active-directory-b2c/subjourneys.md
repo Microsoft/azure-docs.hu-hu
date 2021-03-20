@@ -11,15 +11,15 @@ ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 8f037d4283b4b05081ef47e7223495f6e19d460e
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97386867"
 ---
 # <a name="sub-journeys"></a>Alárendelt útvonalak
 
-Az alárendelt útvonalak segítségével rendezheti és egyszerűsítheti a folyamat lépéseinek menetét a felhasználói úton. A [felhasználói utazások](userjourneys.md) olyan explicit elérési utakat határoznak meg, amelyeken keresztül a szabályzat lehetővé teszi, hogy a függő entitások egy felhasználó számára megfelelő jogcímeket szerezzenek. A felhasználó ezen elérési utakon keresztül kéri le a függő entitásnak benyújtandó jogcímeket. Más szóval a felhasználói útvonalak határozzák meg azt az üzleti logikát, amit a végfelhasználó a Azure AD B2C identitás-kezelési keretrendszere feldolgozza a kérést. A felhasználói út olyan összehangoló sorozatot jelöl, amelyet egy sikeres tranzakcióhoz kell követni. Egy előkészítési lépés [ClaimsExchange](userjourneys.md#claimsexchanges) eleme egyetlen [technikai profilhoz](technicalprofiles.md) van kötve, amely végre van hajtva.
+Az alárendelt útvonalak segítségével rendezheti és egyszerűsítheti a folyamat lépéseinek menetét a felhasználói úton. A [felhasználói interakciósorozatok](userjourneys.md) explicit elérési utakat határoznak meg, amelyen keresztül egy szabályzat lehetővé teszi a jogcímfelhasználó alkalmazásnak a kívánt jogcímek beszerzését a felhasználó számára. A felhasználó ezeken az elérési utakon keresztül kérheti le a jogcímeket, amelyeket bemutathat a függő entitásnak. Más szóval a felhasználói útvonalak határozzák meg azt az üzleti logikát, amit a végfelhasználó a Azure AD B2C identitás-kezelési keretrendszere feldolgozza a kérést. A felhasználói út olyan összehangoló sorozatot jelöl, amelyet egy sikeres tranzakcióhoz kell követni. Egy előkészítési lépés [ClaimsExchange](userjourneys.md#claimsexchanges) eleme egyetlen [technikai profilhoz](technicalprofiles.md) van kötve, amely végre van hajtva.
 
 A sub Journey olyan előkészítési lépések csoportosítása, amelyek a felhasználói úton lévő bármely ponton meghívhatók. Az alútvonalak használatával újrafelhasználható lépések hozhatók létre, illetve az üzleti logikát jobban reprezentáló elágazás valósítható meg.
 
@@ -116,7 +116,7 @@ A szabályzat által támogatott alárendelt útvonalak definiálásához adjon 
 
 A **alútvonalak** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | Alútvonal | 1: n | Egy alárendelt út, amely meghatározza a teljes felhasználói folyamathoz szükséges összes szerkezetet. |
 
@@ -124,12 +124,12 @@ A **alútvonalak** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Id | Igen | Az Alútvonal-azonosító, amelyet a felhasználó a szabályzat alútvonalára való hivatkozáshoz használhat. A [jelölt](userjourneys.md#journeylist) elem **SubJourneyReferenceId** eleme erre az attribútumra mutat. |
-| Típus | Igen | Lehetséges értékek: `Call` , vagy `Transfer` . További információ: [felhasználói utazás elágazása](#user-journey-branching)|
+| Id | Yes | Az Alútvonal-azonosító, amelyet a felhasználó a szabályzat alútvonalára való hivatkozáshoz használhat. A [jelölt](userjourneys.md#journeylist) elem **SubJourneyReferenceId** eleme erre az attribútumra mutat. |
+| Típus | Yes | Lehetséges értékek: `Call` , vagy `Transfer` . További információ: [felhasználói utazás elágazása](#user-journey-branching)|
 
 A **Alútvonal** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | OrchestrationSteps | 1: n | Egy olyan előkészítési sorozatot, amelyet követni kell egy sikeres tranzakcióhoz. Minden felhasználói út a sorrendben végrehajtott előkészítési lépések rendezett listáját tartalmazza. Ha bármelyik lépés meghiúsul, a tranzakció meghiúsul. |
 

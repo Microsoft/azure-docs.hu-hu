@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 5a646ffe1d306d7ea13da002715d5bd9b907107b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793466"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Adatok mozgatása kiterjesztett felhőalapú adatbázisok között
@@ -187,7 +187,7 @@ A felosztott egyesítés szolgáltatás felhőalapú szolgáltatásként fut a M
 
 A felosztott egyesítés szolgáltatás biztosítja a **RequestStatus** táblát a metaadat-tároló adatbázisban a befejezett és a folyamatban lévő kérések figyeléséhez. A táblázat felsorolja az egyes felosztott egyesítési kérelmek sorát, amelyeket elküldtek a felosztott egyesítési szolgáltatás ezen példánya számára. Minden kérelemhez a következő információkat adja meg:
 
-- **Timestamp**
+- **Időbélyeg**
 
   A kérelem elindításának időpontja és dátuma.
 
@@ -260,7 +260,7 @@ A szolgáltatás a szokásos műveleteinek részeként is végrehajtja az érvé
 
 Továbbá egy egyediségi tulajdonság a horizontális Felskálázási kulccsal, amely a vezető oszlopban lehetővé teszi, hogy a szolgáltatás egy optimalizált megközelítést használjon, amely az erőforrás-felhasználást korlátozza a naplózási terület és a memória tekintetében. Ez az egyediségi tulajdonság a nagyméretű adatméretek áthelyezéséhez szükséges (általában 1 GB-nál nagyobb).
 
-## <a name="how-to-upgrade"></a>A frissítés módja
+## <a name="how-to-upgrade"></a>A frissítés lépései
 
 1. Kövesse a [Split-Merge szolgáltatás üzembe helyezése](elastic-scale-configure-deploy-split-and-merge.md)című témakör lépéseit.
 2. Módosítsa a felhőalapú szolgáltatás konfigurációs fájlját a felosztott egyesítési központi telepítésre, hogy az tükrözze az új konfigurációs paramétereket. Egy új kötelező paraméter a titkosításhoz használt tanúsítványra vonatkozó információ. Ennek egyszerű módja, ha összehasonlítja az új konfigurációs sablonfájl fájlját a letöltéssel a meglévő konfiguráció alapján. Ügyeljen rá, hogy a "DataEncryptionPrimaryCertificateThumbprint" és a "DataEncryptionPrimary" beállításait is hozzáadja a webes és a feldolgozói szerepkörhöz.

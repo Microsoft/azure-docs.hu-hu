@@ -9,10 +9,10 @@ ms.service: web-application-firewall
 ms.date: 11/20/2020
 ms.author: victorh
 ms.openlocfilehash: b14bd60ab744be5a1735abc073f32f8ebc3e1ab1
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96301713"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>Webalkalmazási tűzfal v2 egyéni szabályainak létrehozása és használata Application Gateway
@@ -545,7 +545,7 @@ Megfelelő JSON:
   }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az egyéni szabályok létrehozása után megtudhatja, hogyan tekintheti meg a WAF-naplókat. További információ: [Application Gateway diagnosztika](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging).
 

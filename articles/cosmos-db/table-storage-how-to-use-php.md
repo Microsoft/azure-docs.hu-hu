@@ -9,10 +9,10 @@ ms.devlang: php
 ms.topic: sample
 ms.date: 07/23/2020
 ms.openlocfilehash: 9d059c899e4a64d4d2c1b880b2a1d0f89258f33b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93079631"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>Az Azure Table Storage szolgáltatás és az Azure Cosmos DB Table API használata a PHP segítségével
@@ -21,13 +21,13 @@ ms.locfileid: "93079631"
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre táblákat, tárolhat adatait, és hogyan végezhet szifilisz-műveleteket az adatokon. Válassza ki az Azure Table service vagy a Azure Cosmos DB Table API. A kódminták PHP nyelven íródtak, és az [Azure Storage Table PHP-hoz készült ügyféloldali kódtárát][download] használják. Az ismertetett forgatókönyvek a **táblák létrehozásával és törlésével** , valamint a **táblaentitások beszúrásával, törlésével és lekérdezésével** foglalkoznak. Az Azure Table Service szolgáltatással kapcsolatos további információkért lásd a [További lépések](#next-steps) szakaszt.
+Ebből a cikkből megtudhatja, hogyan hozhat létre táblákat, tárolhat adatait, és hogyan végezhet szifilisz-műveleteket az adatokon. Válassza ki az Azure Table service vagy a Azure Cosmos DB Table API. A kódminták PHP nyelven íródtak, és az [Azure Storage Table PHP-hoz készült ügyféloldali kódtárát][download] használják. Az ismertetett forgatókönyvek a **táblák létrehozásával és törlésével**, valamint a **táblaentitások beszúrásával, törlésével és lekérdezésével** foglalkoznak. Az Azure Table Service szolgáltatással kapcsolatos további információkért lásd a [További lépések](#next-steps) szakaszt.
 
 ## <a name="create-an-azure-service-account"></a>Azure-szolgáltatásfiók létrehozása
 
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-**Azure Storage-fiók létrehozása**
+**Azure-tárfiók létrehozása**
 
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
@@ -185,7 +185,7 @@ catch(ServiceException $e){
 
 További információt a táblatulajdonságokról és -típusokról a [Table Service adatmodelljét ismertető][table-data-model] témakörben talál.
 
-A **TableRestProxy** osztály két alternatív metódust kínál az entitások beszúrásához: az **insertOrMergeEntity** és az **insertOrReplaceEntity** metódust. A két metódus használatához hozzon létre egy új **entitást** , és továbbítsa azt valamelyik metódusnak paraméterként. Mindkét metódus beszúrja az entitást, ha az nem létezik. Ha az entitás már létezik, az **insertOrMergeEntity** frissíti a tulajdonságértékeket, ha a tulajdonságok már léteznek, és új tulajdonságokat ad hozzá, ha még nem, míg az **insertOrReplaceEntity** teljesen lecseréli a meglévő entitást. A következő példa az **insertOrMergeEntity** használatát mutatja be. Ha a „taskSeattle” `PartitionKey`-értékkel, és az „1” `RowKey`-értékkel rendelkező entitás még nem létezik, akkor beszúrja. Ha azonban azt korábban már beszúrták (ahogyan a fenti példa mutatja), akkor frissíti a `DueDate` tulajdonságot, a `Status` tulajdonságot pedig hozzáadja. A `Description` és `Location` tulajdonságok is frissülnek, de olyan értékekkel, amelyek révén lényegében nem változnak. Ha a két utóbbi érték a példától eltérő módon nem lenne hozzáadva, de létezne a célentitáson, akkor meglévő értékeik változatlanok maradtak volna.
+A **TableRestProxy** osztály két alternatív metódust kínál az entitások beszúrásához: az **insertOrMergeEntity** és az **insertOrReplaceEntity** metódust. A két metódus használatához hozzon létre egy új **entitást**, és továbbítsa azt valamelyik metódusnak paraméterként. Mindkét metódus beszúrja az entitást, ha az nem létezik. Ha az entitás már létezik, az **insertOrMergeEntity** frissíti a tulajdonságértékeket, ha a tulajdonságok már léteznek, és új tulajdonságokat ad hozzá, ha még nem, míg az **insertOrReplaceEntity** teljesen lecseréli a meglévő entitást. A következő példa az **insertOrMergeEntity** használatát mutatja be. Ha a „taskSeattle” `PartitionKey`-értékkel, és az „1” `RowKey`-értékkel rendelkező entitás még nem létezik, akkor beszúrja. Ha azonban azt korábban már beszúrták (ahogyan a fenti példa mutatja), akkor frissíti a `DueDate` tulajdonságot, a `Status` tulajdonságot pedig hozzáadja. A `Description` és `Location` tulajdonságok is frissülnek, de olyan értékekkel, amelyek révén lényegében nem változnak. Ha a két utóbbi érték a példától eltérő módon nem lenne hozzáadva, de létezne a célentitáson, akkor meglévő értékeik változatlanok maradtak volna.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -259,7 +259,7 @@ echo $entity->getPartitionKey().":".$entity->getRowKey();
 
 ## <a name="retrieve-all-entities-in-a-partition"></a>Egy partíció összes entitásának lekérése
 
-Az entitáslekérdezések szűrők használatával jönnek létre (további információt a [táblák és entitások lekérdezésével][filters] kapcsolatos témakörben olvashat). Ha egy partíció minden entitását le szeretné kérdezni, használja a "PartitionKey eq *partíció_neve* " szűrőt. Az alábbi példa bemutatja, hogyan kérheti le a `tasksSeattle` partíció minden entitását úgy, hogy egy szűrőt továbbít a **queryEntities** metódusnak.
+Az entitáslekérdezések szűrők használatával jönnek létre (további információt a [táblák és entitások lekérdezésével][filters] kapcsolatos témakörben olvashat). Ha egy partíció minden entitását le szeretné kérdezni, használja a "PartitionKey eq *partíció_neve*" szűrőt. Az alábbi példa bemutatja, hogyan kérheti le a `tasksSeattle` partíció minden entitását úgy, hogy egy szűrőt továbbít a **queryEntities** metódusnak.
 
 ```php
 require_once 'vendor/autoload.php';
