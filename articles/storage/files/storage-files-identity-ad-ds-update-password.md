@@ -1,6 +1,6 @@
 ---
 title: AD DS Storage-fiók jelszavának frissítése
-description: Megtudhatja, hogyan frissítheti a Storage-fiókját képviselő Active Directory tartományi szolgáltatások-fiók jelszavát. Ez megakadályozza, hogy a Storage-fiók törölve legyen a jelszó lejárta után, ami megakadályozza a hitelesítési hibákat.
+description: Megtudhatja, hogyan frissítheti a Storage-fiókját képviselő Active Directory Domain Services-fiók jelszavát. Ez megakadályozza, hogy a Storage-fiók törölve legyen a jelszó lejárta után, ami megakadályozza a hitelesítési hibákat.
 author: roygara
 ms.service: storage
 ms.subservice: files
@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
 ms.openlocfilehash: d16f11a85c6b370b0187975cce965bf3e1b5ba3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85510254"
 ---
 # <a name="update-the-password-of-your-storage-account-identity-in-ad-ds"></a>A Storage-fiók identitásának jelszavának frissítése AD DS
 
-Ha regisztrálta azt a Active Directory tartományi szolgáltatások (AD DS) identitást/fiókot, amely egy olyan szervezeti egységben vagy tartományban található meg, amely a jelszó lejárati idejét érvényesíti, a jelszó maximális kora előtt módosítania kell a jelszót. A szervezet olyan automatizált karbantartási parancsfájlokat futtathat, amelyek a jelszavuk lejárta után törlik a fiókokat. Ezért ha nem módosítja a jelszavát, mielőtt lejár, a fiókját törölheti, ami miatt elveszíti az Azure-fájlmegosztás elérését.
+Ha regisztrálta azt a Active Directory Domain Services (AD DS) identitást/fiókot, amely egy olyan szervezeti egységben vagy tartományban található meg, amely a jelszó lejárati idejét érvényesíti, a jelszó maximális kora előtt módosítania kell a jelszót. A szervezet olyan automatizált karbantartási parancsfájlokat futtathat, amelyek a jelszavuk lejárta után törlik a fiókokat. Ezért ha nem módosítja a jelszavát, mielőtt lejár, a fiókját törölheti, ami miatt elveszíti az Azure-fájlmegosztás elérését.
 
 A jelszó elforgatásának elindításához futtassa a `Update-AzStorageAccountADObjectPassword` parancsot a [AzFilesHybrid modulból](https://github.com/Azure-Samples/azure-files-samples/releases). Ezt a parancsot helyszíni AD DS csatlakoztatott környezetben kell futtatni egy olyan hibrid felhasználóval, aki tulajdonosi engedéllyel rendelkezik a Storage-fiókhoz, és AD DS engedélyeket a Storage-fiókot jelképező identitás jelszavának módosítására. A parancs a Storage-fiók kulcsának elforgatásához hasonló műveleteket hajt végre. Pontosabban lekéri a Storage-fiók második Kerberos-kulcsát, és felhasználja a regisztrált fiók jelszavának frissítésére AD DSban. Ezután újralétrehozza a Storage-fiók cél Kerberos-kulcsát, és frissíti a regisztrált fiók jelszavát AD DSban. Ezt a parancsot helyszíni AD DS csatlakoztatott környezetben kell futtatnia.
 

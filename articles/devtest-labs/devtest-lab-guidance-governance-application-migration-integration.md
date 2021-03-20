@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 8d86728eefc46c74b49ac610e2207ce5e7ae6a9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87289346"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Azure DevTest Labs infrastruktúra irányítása – alkalmazások áttelepítése és integrációja
@@ -123,5 +123,5 @@ Ez a forgatókönyv nem lehet hasznos, ha DevTest Labs-t használ a fejlesztői 
 
 Azt is érdemes megjegyezni, hogy a virtuális gépek száma a laborban vagy felhasználónként lehetőség csak a laborban natív módon létrehozott gépek számát korlátozza, nem pedig bármely környezet (Resource Manager-sablonok) számára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd: [környezetek használata a DevTest Labs szolgáltatásban](devtest-lab-test-env.md).

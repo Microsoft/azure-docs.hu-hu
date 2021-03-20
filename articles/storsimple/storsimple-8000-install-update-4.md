@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 08/02/2017
 ms.author: alkohli
 ms.openlocfilehash: ed6f9d58c5c54c88acf8e3a0e7fda7d2d65b8637
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85514325"
 ---
 # <a name="install-update-4-on-your-storsimple-device"></a>A 4-es frissítés telepítése a StorSimple-eszközön
@@ -74,7 +74,7 @@ A gyorsjavítási módszer a következő három lépést foglalja magában:
 
 A következő gyorsjavításokat le kell töltenie és telepítenie kell az előírt sorrendben és a javasolt mappákban:
 
-| Rendelés | KB | Leírás | Frissítéstípus | Telepítés időpontja |Telepítés mappába|
+| Sorrend | KB | Description | Frissítéstípus | Telepítés időpontja |Telepítés mappába|
 | --- | --- | --- | --- | --- | --- |
 | 1. |KB4011839 |Szoftverfrissítés |Szabályos <br></br>Nem zavaró |~ 25 perc |FirstOrderUpdate|
 | 2a. |KB4011841 <br> KB4011842 |LSI-illesztőprogram és belső vezérlőprogram frissítései <br> USM belső vezérlőprogram frissítése (3,38-es verzió) |Szabályos <br></br>Nem zavaró |~ 3 óra <br> (tartalmazza a következőt: 2A. + 2B. + 2C.)|SecondOrderUpdate|
@@ -83,7 +83,7 @@ A következő gyorsjavításokat le kell töltenie és telepítenie kell az elő
 
 Előfordulhat, hogy a lemez belső vezérlőprogram-frissítéseit is telepítenie kell az előző táblázatokban látható összes frissítésre. A parancsmag futtatásával ellenőrizheti, hogy szüksége van-e a lemez belső vezérlőprogram-frissítéseire `Get-HcsFirmwareVersion` . Ha a következő belső vezérlőprogram-verziókat futtatja:,,,,,, `XMGJ` `XGEG` `KZ50` `F6C2` `VR08` `N002` `0106` akkor nem kell telepítenie ezeket a frissítéseket.
 
-| Rendelés | KB | Leírás | Frissítéstípus | Telepítés időpontja | Telepítés mappába|
+| Sorrend | KB | Description | Frissítéstípus | Telepítés időpontja | Telepítés mappába|
 | --- | --- | --- | --- | --- | --- |
 | 3. |KB3121899 |Lemez belső vezérlőprogramja |Karbantartás <br></br>Zavaró |~ 30 perc | ThirdOrderUpdate |
 
@@ -100,6 +100,6 @@ A gyorsjavítások letöltéséhez és telepítéséhez hajtsa végre a követke
 
 [!INCLUDE [storsimple-install-troubleshooting](../../includes/storsimple-install-troubleshooting.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a [4. frissítés kiadásáról](storsimple-update4-release-notes.md).
 

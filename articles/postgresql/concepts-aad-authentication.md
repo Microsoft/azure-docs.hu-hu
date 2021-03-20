@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.openlocfilehash: 0a19bd9d1547c16937ee575c08ea15a52589ccd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87171048"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Az Azure Active Directory használata a PostgreSQL-lel történő hitelesítéshez
@@ -86,7 +86,7 @@ Vegye figyelembe, hogy a felügyeleti műveletek, például az új felhasználó
 - Ha az Azure AD-rendszergazda el lett távolítva a kiszolgálóról, a kiszolgáló már nem lesz társítva az Azure AD-bérlőhöz, ezért az összes Azure AD-bejelentkezés le lesz tiltva a kiszolgálón. Ha új Azure AD-rendszergazdát ad hozzá ugyanahhoz a bérlőhöz, az Azure AD-bejelentkezések ismét engedélyezve lesznek.
 - A Azure Database for PostgreSQL a felhasználó egyedi Azure AD-felhasználói AZONOSÍTÓjának használatával egyezteti a hozzáférési jogkivonatokat a Azure Database for PostgreSQL szerepkörhöz, a Felhasználónév használata helyett. Ez azt jelenti, hogy ha egy Azure AD-felhasználót törölnek az Azure AD-ben, és egy azonos nevű új felhasználó lett létrehozva, Azure Database for PostgreSQL úgy véli, hogy egy másik felhasználó. Ezért ha egy felhasználó törlődik az Azure AD-ből, és egy új, azonos nevű felhasználó lett hozzáadva, az új felhasználó nem fog tudni csatlakozni a meglévő szerepkörhöz. Ennek engedélyezéséhez a Azure Database for PostgreSQL Azure AD-rendszergazdának vissza kell vonnia a felhasználót, majd a "azure_ad_user" szerepkört kell megadnia a felhasználónak az Azure AD felhasználói AZONOSÍTÓjának frissítéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha szeretné megtudni, hogyan hozhat létre és tölthet fel Azure AD-t, majd hogyan konfigurálhatja az Azure AD-t a Azure Database for PostgreSQLsal, tekintse meg az Azure ad- [vel való konfigurálást és bejelentkezést Azure Database for PostgreSQL](howto-configure-sign-in-aad-authentication.md)
 - A bejelentkezések, a felhasználók és az adatbázis-szerepkörök Azure Database for PostgreSQL áttekintését lásd: [felhasználók létrehozása a Azure Database for PostgreSQL-Single Serverben](howto-create-users.md).

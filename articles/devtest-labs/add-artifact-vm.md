@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan adhat hozzá egy összetevőt egy virtuális g�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b4772755d8077f7a659c4d403961ffaeb9e1d483
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85483890"
 ---
 # <a name="add-an-artifact-to-a-vm"></a>Műtermék hozzáadása virtuális géphez
@@ -21,12 +21,12 @@ Az egyéni összetevők létrehozásával kapcsolatos további tudnivalókért t
 
 ## <a name="use-azure-portal"></a>Az Azure Portal használata 
 1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
+1. Válassza a **minden szolgáltatás** lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
 1. A laborok listájából válassza ki azt a labort, amely a használni kívánt virtuális gépet tartalmazza.  
-1. Válassza **a saját virtuális gépek**lehetőséget.
+1. Válassza **a saját virtuális gépek** lehetőséget.
 1. Válassza ki a kívánt virtuális gépet.
-1. Válassza az összetevők **kezelése**lehetőséget. 
-1. Válassza az összetevők **alkalmazása**lehetőséget.
+1. Válassza az összetevők **kezelése** lehetőséget. 
+1. Válassza az összetevők **alkalmazása** lehetőséget.
 1. Az összetevők **alkalmazása** ablaktáblán válassza ki azt az összetevőt, amelyet hozzá szeretne adni a virtuális géphez.
 1. Az összetevő **hozzáadása** panelen adja meg a szükséges paramétereket, valamint az esetlegesen szükséges paramétereket.  
 1. A **Hozzáadás** gombra kattintva vegye fel az összetevőt, és térjen vissza az összetevők **alkalmazása** ablaktáblára.
@@ -152,7 +152,7 @@ if ($virtualMachine -ne $null) {
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő cikkeket az összetevőkről:
 
 - [Kötelező összetevők megadása a laborhoz](devtest-lab-mandatory-artifacts.md)

@@ -4,10 +4,10 @@ description: A Azure Advisor első lépései.
 ms.topic: article
 ms.date: 02/01/2019
 ms.openlocfilehash: e91049077502a6c0eedf0a4f979c073690c214da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85117862"
 ---
 # <a name="get-started-with-azure-advisor"></a>Ismerkedés az Azure Advisor szolgáltatással
@@ -21,13 +21,13 @@ Ismerje meg, hogyan érheti el az Advisorot a Azure Portalon keresztül, javasla
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. A bal oldali ablaktáblán kattintson az **Advisor**elemre.  Ha nem látja az Advisort a bal oldali ablaktáblán, kattintson a **minden szolgáltatás**elemre.  Kattintson a szolgáltatás menü **felügyelet és kezelés**területén található **Advisor**elemre. Megjelenik az Advisor irányítópultja.
+1. A bal oldali ablaktáblán kattintson az **Advisor** elemre.  Ha nem látja az Advisort a bal oldali ablaktáblán, kattintson a **minden szolgáltatás** elemre.  Kattintson a szolgáltatás menü **felügyelet és kezelés** területén található **Advisor** elemre. Megjelenik az Advisor irányítópultja.
 
    ![Hozzáférés Azure Advisor a Azure Portal használatával](./media/advisor-get-started/advisor-portal-menu.png) 
 
 1. Az Advisor irányítópultja a javaslatok összefoglalását jeleníti meg az összes kiválasztott előfizetésre vonatkozóan.  Az előfizetési szűrő legördülő menüje segítségével kiválaszthatja azokat az előfizetéseket, amelyekhez javaslatokat kíván megjeleníteni.
 
-1. Egy adott kategóriához tartozó javaslatok beszerzéséhez kattintson az egyik lapra: **megbízhatóság**, **Biztonság**, **teljesítmény**vagy **Cost**. 
+1. Egy adott kategóriához tartozó javaslatok beszerzéséhez kattintson az egyik lapra: **megbízhatóság**, **Biztonság**, **teljesítmény** vagy **Cost**. 
 
    ![Azure Advisor irányítópult](./media/advisor-overview/advisor-dashboard.png)
 
@@ -63,7 +63,7 @@ A javaslatok szűrésével a legfontosabb dolgokra szűkítheti a részletezést
 
 1. Kattintson a javaslatra.
 
-1. Kattintson az **elhalasztás**gombra. 
+1. Kattintson az **elhalasztás** gombra. 
 
 1. Adja meg az elhalasztási időszakot, vagy válassza a **soha** lehetőséget a javaslat bezárásához.
 
@@ -93,7 +93,7 @@ Az Advisor 7 napig figyeli a virtuális gépek használatát, majd azonosítja a
 Ha szeretné, hogy az alacsony kihasználtságú virtuális gépek azonosítása agresszívebb legyen, az átlagos CPU-kihasználtsági szabályt előfizetési alapon állíthatja be.  A CPU-kihasználtsági szabály 5%-ra, 10%-ra, 15%-ra vagy 20%-ra állítható be.
 
 > [!NOTE]
-> Az alacsony kihasználtságú virtuális gépek azonosítására szolgáló átlagos CPU-kihasználtsági szabály módosításához előfizetés- *tulajdonosnak*kell lennie.  Ha nem rendelkezik az előfizetéshez vagy az erőforráscsoporthoz szükséges engedélyekkel, a felhasználói felületen le kell tiltania vagy kizárhatja a beállítást. 
+> Az alacsony kihasználtságú virtuális gépek azonosítására szolgáló átlagos CPU-kihasználtsági szabály módosításához előfizetés- *tulajdonosnak* kell lennie.  Ha nem rendelkezik az előfizetéshez vagy az erőforráscsoporthoz szükséges engedélyekkel, a felhasználói felületen le kell tiltania vagy kizárhatja a beállítást. 
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), majd nyissa meg az [Advisor alkalmazást](https://aka.ms/azureadvisordashboard).
 
@@ -101,9 +101,9 @@ Ha szeretné, hogy az alacsony kihasználtságú virtuális gépek azonosítása
 
 1. Kattintson a **szabályok** fülre.
 
-1. Válassza ki azokat az előfizetéseket, amelyekre módosítani szeretné az átlagos CPU-kihasználtsági szabályt, majd kattintson a **Szerkesztés**gombra.
+1. Válassza ki azokat az előfizetéseket, amelyekre módosítani szeretné az átlagos CPU-kihasználtsági szabályt, majd kattintson a **Szerkesztés** gombra.
 
-1. Válassza ki a kívánt átlagos CPU-kihasználtsági értéket, majd kattintson az **alkalmaz**gombra.
+1. Válassza ki a kívánt átlagos CPU-kihasználtsági értéket, majd kattintson az **alkalmaz** gombra.
 
 1. Az új átlagos CPU-kihasználtsági szabály használatához kattintson a **javaslatok frissítése** lehetőségre a meglévő javaslatok frissítéséhez. 
 
@@ -119,7 +119,7 @@ Az Advisor lehetővé teszi a javaslatok összefoglalásának letöltését.  Az
 
 A letöltési lehetőség tiszteletben tartja az Advisor irányítópultra alkalmazott szűrőket.  Ha a letöltés lehetőséget választja egy adott javaslat kategóriájának vagy javaslatának megtekintésekor, a letöltött összefoglalás csak az adott kategória vagy javaslat információit tartalmazza. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Advisor szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következőt:
 

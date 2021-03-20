@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
 ms.openlocfilehash: 3adbd292d42fd6fd2a0e149e103c17968a6f084b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94950754"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>StorSimple-eszköz biztonságos telepítése és üzemeltetése
@@ -30,11 +30,11 @@ Olvassa el a cikkben szereplő összes biztonsági és egészségvédelmi inform
 ## <a name="safety-icon-conventions"></a>Biztonsági ikon konvenciói
 Itt láthatja az ikonokat, amelyekkel megtekintheti a Microsoft Azure StorSimple eszköz beállításakor és futtatásakor betartandó biztonsági óvintézkedéseket.
 
-| Ikon | Leírás |
+| Ikon | Description |
 |:--- |:--- |
 | ![Veszélyforrás ikon ](./media/storsimple-safety/IC740879.png) **veszélye!** |Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – halált vagy súlyos sérülést eredményezhet. Ezt a jelet a legszélsőségesebb helyzetekre kell korlátozni. |
 | ![Figyelmeztetés ikon ](./media/storsimple-safety/IC740879.png) **Figyelmeztetés!** |Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – halált vagy súlyos sérülést eredményezhet. |
-| ![Figyelmeztető ikon ](./media/storsimple-safety/IC740879.png) **CAUTION!** figyelmeztetése |Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – kisebb vagy mérsékelt sérülést eredményezhet. |
+| ![Figyelmeztető ikon ](./media/storsimple-safety/IC740879.png)  figyelmeztetése |Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – kisebb vagy mérsékelt sérülést eredményezhet. |
 | ![Értesítés ikonjának ](./media/storsimple-safety/IC740881.png) **megjegyzése:** |A fontosnak tartott információkat jelöli, de nem kapcsolódik a veszélyforráshoz. |
 | ![Elektromos áramütés ikon áramütési ](./media/storsimple-safety/IC740882.png) **kockázat** |Magas feszültségű |
 | ![Nagy súly ikon ](./media/storsimple-safety/IC740883.png) **nagy súlya** | |

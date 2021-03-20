@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 9d8b75c48da2bb13d843258ead378d3e849da951
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85514085"
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>Vezérlő modul cseréje a StorSimple-eszközön
@@ -78,8 +78,8 @@ Ha a Microsoft Azure StorSimple-eszköz egyik vezérlője meghibásodik, hajtsa 
 
 
 #### <a name="to-remove-a-single-failed-controller-module"></a>Egyetlen sikertelen vezérlő modul eltávolítása
-1. A Azure Portal nyissa meg a StorSimple Eszközkezelő szolgáltatást, kattintson az **eszközök**elemre, majd kattintson a figyelni kívánt eszköz nevére.
-2. Válassza a **figyelés > hardver állapota**lehetőséget. A vezérlő 0 vagy a vezérlő 1 állapotának pirosnak kell lennie, ami hibát jelez.
+1. A Azure Portal nyissa meg a StorSimple Eszközkezelő szolgáltatást, kattintson az **eszközök** elemre, majd kattintson a figyelni kívánt eszköz nevére.
+2. Válassza a **figyelés > hardver állapota** lehetőséget. A vezérlő 0 vagy a vezérlő 1 állapotának pirosnak kell lennie, ami hibát jelez.
    
    > [!NOTE]
    > A meghibásodott vezérlő egyetlen vezérlőn való cseréje mindig készenléti vezérlő.
@@ -195,7 +195,7 @@ Az alábbi eljárással telepítheti a gyári vezérlő modult, miután eltávol
    > [!NOTE]
    > Akár 5 percet is igénybe vehet a vezérlő és a LED aktiválása.
   
-5. Annak ellenőrzéséhez, hogy a csere sikeres-e, a Azure Portal lépjen az eszközre, majd keresse **Monitor**meg a  >  **hardver állapotának**figyelése lehetőséget, és győződjön meg arról, hogy a vezérlő 0 és a vezérlő 1 állapota Kifogástalan (az állapot zöld).
+5. Annak ellenőrzéséhez, hogy a csere sikeres-e, a Azure Portal lépjen az eszközre, majd keresse meg a  >  **hardver állapotának** figyelése lehetőséget, és győződjön meg arról, hogy a vezérlő 0 és a vezérlő 1 állapota Kifogástalan (az állapot zöld).
 
 ## <a name="identify-the-active-controller-on-your-device"></a>Az aktív vezérlő azonosítása az eszközön
 Számos szituáció létezik, például az eszköz első vagy a vezérlő cseréje, amely megköveteli, hogy megkeresse az aktív vezérlőt egy StorSimple-eszközön. Az aktív vezérlő feldolgozza az összes lemez belső vezérlőprogram és hálózati műveletét. Az aktív vezérlő azonosításához a következő módszerek bármelyikét használhatja:
@@ -207,7 +207,7 @@ Számos szituáció létezik, például az eszköz első vagy a vezérlő cseré
 A következő eljárások mindegyikét ismertetjük.
 
 ### <a name="use-the-azure-portal-to-identify-the-active-controller"></a>A Azure Portal használata az aktív vezérlő azonosításához
-A Azure Portal navigáljon az eszközhöz, majd a **Monitor**  >  **hardver állapotának**figyeléséhez, és görgessen a **vezérlők** szakaszhoz. Itt ellenőrizheti, hogy melyik vezérlő aktív.
+A Azure Portal navigáljon az eszközhöz, majd a   >  **hardver állapotának** figyeléséhez, és görgessen a **vezérlők** szakaszhoz. Itt ellenőrizheti, hogy melyik vezérlő aktív.
 
 ![Az aktív vezérlő azonosítása Azure Portal](./media/storsimple-controller-replacement/IC752072.png)
 
@@ -231,11 +231,11 @@ Ha a LED villog, a vezérlő aktív, és a másik vezérlő készenléti állapo
 
 **8. ábra** Az elsődleges ház hátoldala adatportokkal és figyelő LED-ekkel
 
-| Címke | Leírás |
+| Címke | Description |
 |:--- |:--- |
 | 1-6 |0 – 5 hálózati port |
 | 7 |Kék LED |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a [StorSimple hardveres összetevők cseréjéről](storsimple-8000-hardware-component-replacement.md).
 

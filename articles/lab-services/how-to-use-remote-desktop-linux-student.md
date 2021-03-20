@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan használhatja a Távoli asztalt a Linux rendsze
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: d13868477ff2e3378d87d7785789a7498ed17e59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85443417"
 ---
 # <a name="connect-to-linux-virtual-machines-in-a-classroom-lab-of-azure-lab-services"></a>Kapcsolódás Linux rendszerű virtuális gépekhez a Azure Lab Services egy osztályterem laborjában
@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan csatlakozhatnak a tanulók a Linux rendszerű virtu�
    
 1. A csempén állítsa be a gombot a virtuális gép elindításához, ha leállított állapotban van. 
 
-2. Kattintson a **Csatlakozás** gombra. Két lehetőség jelenik meg a virtuális géphez való kapcsolódáshoz: **SSH** és **RDP**.
+2. Válassza a **Kapcsolódás** lehetőséget. Két lehetőség jelenik meg a virtuális géphez való kapcsolódáshoz: **SSH** és **RDP**.
 
     ![Tanulói virtuális gép – kapcsolatok beállításai](./media/how-to-enable-remote-desktop-linux/student-vm-connect-options.png)
 
@@ -44,7 +44,7 @@ Az oktató dönthet úgy, hogy úgy konfigurálja a virtuális gépeket, hogy a 
 ### <a name="connect-to-the-student-vm-using-microsoft-remote-desktop-rdp"></a>Kapcsolódás a tanuló virtuális géphez Microsoft Távoli asztal (RDP) használatával
 A tanulók a Microsoft Távoli asztal (RDP) használatával csatlakozhatnak a linuxos virtuális gépekhez, miután az oktatójuk beállítja a labort RDP-és GUI-csomagokkal egy linuxos grafikus asztali környezethez (például MATE, XFCE stb.). A kapcsolódás lépései a következők: 
 
-1. A virtuális gép csempén ellenőrizze, hogy a virtuális gép fut-e, majd kattintson a **kapcsolat**elemre. Két lehetőség jelenik meg a virtuális géphez való kapcsolódáshoz: **SSH** és **RDP**.
+1. A virtuális gép csempén ellenőrizze, hogy a virtuális gép fut-e, majd kattintson a **kapcsolat** elemre. Két lehetőség jelenik meg a virtuális géphez való kapcsolódáshoz: **SSH** és **RDP**.
 
     ![Tanulói virtuális gép – kapcsolatok beállításai](./media/how-to-enable-remote-desktop-linux/student-vm-connect-options.png)
 2. Válassza az **RDP** lehetőséget.  Ha az RDP-fájl le van töltve a gépre, mentse azt a virtuális gépre.
@@ -64,7 +64,7 @@ A tanulóknak meg kell ismerniük az oktatótól, hogy az oktatójuk milyen linu
 
 1. A virtuális gép SSH-kapcsolódási adatainak másolásához kövesse az [első szakasz](how-to-use-remote-desktop-linux-student.md#connect-to-the-student-vm-using-ssh) utasításait.  Ezekre az információkra szüksége lesz a X2Go-ügyfél használatával történő kapcsolódáshoz.
 
-1. Az SSH-kapcsolat adatainak megnyitása után nyissa meg a X2Go-ügyfelet, és válassza a **munkamenet**  >  **új munkamenet**lehetőséget.
+1. Az SSH-kapcsolat adatainak megnyitása után nyissa meg a X2Go-ügyfelet, és válassza a **munkamenet**  >  **új munkamenet** lehetőséget.
    ![Új munkamenet létrehozása a X2Go](./media/how-to-use-classroom-lab/x2go-new-session.png)
 
 1. Adja meg az értékeket a **munkamenet-beállítások** ablaktáblán az SSH-kapcsolat adatai alapján.  A kapcsolódási adatok például a következőhöz hasonlóak lesznek:
@@ -92,8 +92,8 @@ A tanulóknak meg kell ismerniük az oktatótól, hogy az oktatójuk milyen linu
     > [!NOTE] 
     > Ha a rendszer egy hasonló üzenettel kéri, válassza az **Igen** lehetőséget a jelszó megadásának folytatásához: **a (z) "[ `00000000-0000-0000-0000-000000000000.eastus2.cloudapp.eastus.cloudapp.azure.com` ]: 12345" gazdagép hitelességét nem lehet létrehozni.  A ECDSA kulcs ujjlenyomata SHA256:00000000000000000000000000000000000000000000. biztos, hogy folytatja a kapcsolódást (igen/nem)?**
 
-2. Ha a rendszer kéri, adja meg a jelszavát, majd kattintson **az OK**gombra.  Ekkor távolról csatlakozik a virtuális gép grafikus felhasználói felületének asztali környezetéhez.
+2. Ha a rendszer kéri, adja meg a jelszavát, majd kattintson **az OK** gombra.  Ekkor távolról csatlakozik a virtuális gép grafikus felhasználói felületének asztali környezetéhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Linux rendszerű virtuális gépekhez készült Távoli asztali kapcsolat funkciónak a tantermi laborban való engedélyezésével kapcsolatban lásd: a [Távoli asztal használatának engedélyezése a linuxos virtuális gépek számára](how-to-enable-remote-desktop-linux.md). 
 

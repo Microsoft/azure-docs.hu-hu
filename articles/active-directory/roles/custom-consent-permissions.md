@@ -13,10 +13,10 @@ ms.author: rolyon
 ms.reviewer: psignoret
 ms.custom: it-pro
 ms.openlocfilehash: f9c2c15bbfcf9a9271e629ef26c11ecc4cbaaa6f
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98740108"
 ---
 # <a name="app-consent-permissions-for-custom-roles-in-azure-active-directory"></a>Alkalmazás-engedélyezési engedélyek a Azure Active Directory egyéni szerepköreihez
@@ -65,7 +65,7 @@ Az [alkalmazás-engedélyezési szabályzatok](../manage-apps/manage-app-consent
 
 ## <a name="full-list-of-permissions"></a>Engedélyek teljes listája
 
-Engedély | Leírás
+Engedély | Description
 ---------- | -----------
 Microsoft. Directory/servicePrincipals/managePermissionGrantsForSelf. ID | Lehetővé teszi, hogy az alkalmazásokhoz való hozzájárulást önmaga (felhasználói hozzájárulás) nevében adja meg, az alkalmazás-engedélyezési szabályzat hatálya alá tartozik `{id}` .
 Microsoft. Directory/servicePrincipals/managePermissionGrantsForAll. ID | Engedélyt ad az alkalmazásoknak az összes (bérlői szintű rendszergazdai hozzájárulás) nevében való hozzájárulásra az alkalmazásra vonatkozó engedélyezési szabályzat hatálya alá `{id}` .
@@ -74,7 +74,7 @@ Microsoft. Directory/permissionGrantPolicies/Basic/Update | A meglévő alkalmaz
 Microsoft. Directory/permissionGrantPolicies/Create | Lehetővé teszi az alkalmazás-engedélyezési házirendek létrehozását.
 Microsoft. Directory/permissionGrantPolicies/delete | Lehetővé teszi az alkalmazás-engedélyezési házirendek törlését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni szerepkörök létrehozása a Azure Portal, az Azure AD PowerShell és a Graph API használatával](custom-create.md)
 - [Egyéni szerepkör hozzárendeléseinek megtekintése](../roles/view-assignments.md)

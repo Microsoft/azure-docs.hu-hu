@@ -11,26 +11,26 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: 8d0f9899dbb7599340b8d15ca010a0157011fb9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "67179198"
 ---
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. A bal oldali listában válassza a **minden szolgáltatás**lehetőséget.
+2. A bal oldali listában válassza a **minden szolgáltatás** lehetőséget.
 
-3. Görgessen le, és válassza az **SQL-kiszolgálók**lehetőséget.
+3. Görgessen le, és válassza az **SQL-kiszolgálók** lehetőséget.
 
     ![A Azure SQL Database-kiszolgáló megkeresése a portálon][b21-FindServerInPortal]
 5. A szűrő szövegmezőbe kezdje el beírni a kiszolgáló nevét. Ekkor megjelenik a sor.
 
 6. Válassza ki a kiszolgáló sorát. Megjelenik a kiszolgáló panelje.
 
-7. A kiszolgáló paneljén válassza a **Beállítások**lehetőséget.
+7. A kiszolgáló paneljén válassza a **Beállítások** lehetőséget.
 
-8. Válassza a **tűzfal**lehetőséget.
+8. Válassza a **tűzfal** lehetőséget.
 
     ![Beállítások kiválasztása > tűzfal][b31-SettingsFirewallNavig]
 9. Válassza az **ügyfél IP-** címének hozzáadása lehetőséget. Írja be az új szabály nevét az első szövegmezőbe.

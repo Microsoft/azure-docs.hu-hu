@@ -4,10 +4,10 @@ description: Alkalmazások és szolgáltatások modellezése és leírása az Az
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 84e6b2309fdb206771d4ea01aa03c7f355d6ff19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85963733"
 ---
 # <a name="model-an-application-in-service-fabric"></a>Alkalmazás modellezése Service Fabric
@@ -38,7 +38,7 @@ Az alábbi ábrán az alkalmazások és a szolgáltatási példányok, a partíc
 > 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Az [alkalmazások méretezhetőségének](service-fabric-concepts-scalability.md)megismerése.
 - A szolgáltatás [állapotának](service-fabric-concepts-state.md), [particionálásának](service-fabric-concepts-partitioning.md)és [rendelkezésre állásának](service-fabric-availability-services.md)megismerése.
 - További információ arról, hogyan vannak meghatározva az alkalmazások és szolgáltatások az [alkalmazás-és szolgáltatás-jegyzékfájlokban](service-fabric-application-and-service-manifests.md).

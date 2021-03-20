@@ -5,10 +5,10 @@ ms.date: 03/30/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.openlocfilehash: a151c28d31bf0bb7f21185fb161315d42f9563d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85200681"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>A Blockchain Data Manager konfigurálása az Azure Portallal
@@ -70,25 +70,25 @@ A szerződési ABI definiálja az intelligens szerződési felületeket. Leírja
 
 1. A Visual Studio Code Explorer ablaktáblán bontsa ki a szilárdtest-projekt **Build/szerződések** mappáját.
 1. Kattintson a jobb gombbal a szerződés metaadatainak JSON-fájljára. A fájl neve az intelligens szerződés neve, amelyet a **. JSON** kiterjesztés követ.
-1. Válassza a **Szerződés másolása ABI**elemet.
+1. Válassza a **Szerződés másolása ABI** elemet.
 
     ![A Visual Studio Code panel és a másolási szerződés ABI kiválasztása](./media/data-manager-portal/abi-devkit.png)
 
     A rendszer átmásolja a szerződéses ABI-t a vágólapra.
 
-1. Mentse az **ABI** TÖMBÖt JSON-fájlként. *abi.js*például:. Ezt a fájlt egy későbbi lépésben használhatja.
+1. Mentse az **ABI** TÖMBÖt JSON-fájlként. *abi.js* például:. Ezt a fájlt egy későbbi lépésben használhatja.
 
 A Blockchain Data Manager igényli az intelligens szerződés üzembe helyezett bytecode. Az üzembe helyezett bytecode eltér az intelligens szerződés bytecode. Az Azure blockchain Development Kit bővítmény használatával másolja a bytecode a vágólapra.
 
 1. A Visual Studio Code Explorer ablaktáblán bontsa ki a szilárdtest-projekt **Build/szerződések** mappáját.
 1. Kattintson a jobb gombbal a szerződés metaadatainak JSON-fájljára. A fájl neve az intelligens szerződés neve, amelyet a **. JSON** kiterjesztés követ.
-1. Válassza a **tranzakció másolása bytecode**lehetőséget.
+1. Válassza a **tranzakció másolása bytecode** lehetőséget.
 
     ![Visual Studio Code ablaktábla a másolási tranzakció bytecode kijelölésével](./media/data-manager-portal/bytecode-devkit.png)
 
     A rendszer a vágólapra másolja a bytecode.
 
-1. Mentse a **bytecode** -értéket JSON-fájlként. *bytecode.js*például:. Ezt a fájlt egy későbbi lépésben használhatja.
+1. Mentse a **bytecode** -értéket JSON-fájlként. *bytecode.js* például:. Ezt a fájlt egy későbbi lépésben használhatja.
 
 Az alábbi példa a VS Code Editorban megnyitott fájlok *abi.js* és *bytecode.jsét* mutatja be. A fájloknak hasonlóan kell kinézniük.
 
@@ -104,7 +104,7 @@ A Blockchain Data Manager megköveteli, hogy a szerződési ABI és a bytecode f
 
 #### <a name="upload-contract-files"></a>Szerződések fájljainak feltöltése
 
-1. Hozzon létre egy új tárolót a Storage-fiókhoz. Válassza a tárolók **> tároló**elemet.
+1. Hozzon létre egy új tárolót a Storage-fiókhoz. Válassza a tárolók **> tároló** elemet.
 
     ![Storage-fiók tárolójának létrehozása](./media/data-manager-portal/create-container.png)
 
@@ -114,7 +114,7 @@ A Blockchain Data Manager megköveteli, hogy a szerződési ABI és a bytecode f
     | Nyilvános hozzáférés szintje | *Privát kiválasztása (névtelen hozzáférés nélkül)* |
 
 1. A tároló létrehozásához válassza az **OK** gombot.
-1. Válassza ki a tárolót, majd válassza a **feltöltés**lehetőséget.
+1. Válassza ki a tárolót, majd válassza a **feltöltés** lehetőséget.
 1. Válassza ki a [szerződések beszerzése ABI és bytecode](#get-contract-abi-and-bytecode) szakaszban létrehozott JSON-fájlokat.
 
     ![BLOB feltöltése](./media/data-manager-portal/upload-blobs.png)
@@ -127,7 +127,7 @@ Az egyes Blobok esetében egy közös hozzáférési aláírás létrehozása.
 
 1. Válassza ki az ABI JSON-blobot.
 1. **Sas-előállítók** kiválasztása
-1. Állítsa be a kívánt hozzáférési aláírás lejáratát, majd válassza **a blob sas-token és URL-cím létrehozása**lehetőséget.
+1. Állítsa be a kívánt hozzáférési aláírás lejáratát, majd válassza **a blob sas-token és URL-cím létrehozása** lehetőséget.
 
     ![SAS-token előállítása](./media/data-manager-portal/generate-sas.png)
 
@@ -137,7 +137,7 @@ Az egyes Blobok esetében egy közös hozzáférési aláírás létrehozása.
 ### <a name="add-application-to-instance"></a>Alkalmazás hozzáadása a példányhoz
 
 1. Válassza ki a Blockchain Data Manager példányt a példány listából.
-1. Válassza a **Blockchain-alkalmazások**elemet.
+1. Válassza a **Blockchain-alkalmazások** elemet.
 1. Válassza a **Hozzáadás** lehetőséget.
 
     ![Blockchain-alkalmazás hozzáadása](./media/data-manager-portal/add-application.png)
@@ -162,11 +162,11 @@ Törölheti az Azure Storage-fiókot, vagy felhasználhatja további blockchain 
 
 Állítsa le a Blockchain Manager-példányt, ha le szeretné állítani a Blockchain-események rögzítését és az adatok küldését a kimenő kapcsolatokra. Ha a példány leáll, a Blockchain Data Managerért nem számítunk fel díjat. További információt a [díjszabás](https://azure.microsoft.com/pricing/details/blockchain-service) tartalmaz.
 
-1. Lépjen az **Áttekintés** elemre, és válassza a **Leállítás**lehetőséget.
+1. Lépjen az **Áttekintés** elemre, és válassza a **Leállítás** lehetőséget.
 
     ![Példány leállítása](./media/data-manager-portal/stop-instance.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbálja ki a következő oktatóanyagot, amely egy blockchain-tranzakciós Blockchain-kezelőt hoz létre a Data Manager és Azure Cosmos DB használatával.
 

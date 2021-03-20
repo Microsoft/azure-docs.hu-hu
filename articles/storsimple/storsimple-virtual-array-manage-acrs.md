@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: bad0d7adfd77dff53b1582e63a91f2cd87a9233d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85507619"
 ---
 # <a name="use-storsimple-device-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>StorSimple Eszközkezelő használata a StorSimple virtuális tömb hozzáférés-vezérlési rekordjainak kezeléséhez
@@ -63,13 +63,13 @@ Az ACR hozzáadásához hajtsa végre az alábbi lépéseket.
 
 #### <a name="to-add-an-acr"></a>ACR hozzáadása
 
-1. A szolgáltatás kezdőlapján válassza ki a szolgáltatást, kattintson duplán a szolgáltatás nevére, majd a **konfiguráció** szakaszban kattintson a **hozzáférés-vezérlési rekordok**elemre.
-2. A **hozzáférés-vezérlési rekordok** panelen kattintson a **Hozzáadás**gombra.
+1. A szolgáltatás kezdőlapján válassza ki a szolgáltatást, kattintson duplán a szolgáltatás nevére, majd a **konfiguráció** szakaszban kattintson a **hozzáférés-vezérlési rekordok** elemre.
+2. A **hozzáférés-vezérlési rekordok** panelen kattintson a **Hozzáadás** gombra.
 3. Az **ACR hozzáadása** panelen tegye a következőket:
    
     1. Adja meg az ACR **nevét**.
     
-    2. Az **iSCSI-kezdeményező neve**alatt adja meg a Windows-gazdagép IQN nevét. A Windows Server-gazdagép IQN beszerzéséhez tegye a következőket:
+    2. Az **iSCSI-kezdeményező neve** alatt adja meg a Windows-gazdagép IQN nevét. A Windows Server-gazdagép IQN beszerzéséhez tegye a következőket:
    
     3. Indítsa el a Microsoft iSCSI-kezdeményezőt a Windows-gazdagépen. Az iSCSI-kezdeményező tulajdonságai ablakban a **Konfiguráció** lapon jelölje ki, majd másolja a **Kezdeményező neve** mezőben lévő sztringet.
     Illessze be ezt a karakterláncot az **ACR hozzáadása** panel **IQN** mezőjébe.
@@ -91,7 +91,7 @@ Az ACR szerkesztéséhez hajtsa végre az alábbi lépéseket.
 
 #### <a name="to-edit-an-acr"></a>ACR szerkesztése
 
-1. A szolgáltatás kezdőlapján válassza ki a szolgáltatást, kattintson duplán a szolgáltatás nevére, majd a **konfiguráció** szakaszban a **hozzáférés-vezérlési rekordok**elemre.
+1. A szolgáltatás kezdőlapján válassza ki a szolgáltatást, kattintson duplán a szolgáltatás nevére, majd a **konfiguráció** szakaszban a **hozzáférés-vezérlési rekordok** elemre.
 2. A **hozzáférés-vezérlési rekordok** panelen, a hozzáférés-vezérlési rekordok táblázatos listájából kattintson duplán a módosítani kívánt ACR elemre.
 3. A **hozzáférés-vezérlési rekordok szerkesztése** panelen tegye a következőket:
    
@@ -115,11 +115,11 @@ Egy hozzáférés-vezérlési rekord törléséhez hajtsa végre a következő l
 
 #### <a name="to-delete-an-access-control-record"></a>Hozzáférés-vezérlési rekord törlése
 
-1. A szolgáltatás kezdőlapján válassza ki a szolgáltatást, kattintson duplán a szolgáltatás nevére, majd a **konfiguráció** szakaszban a **hozzáférés-vezérlési rekordok**elemre.
+1. A szolgáltatás kezdőlapján válassza ki a szolgáltatást, kattintson duplán a szolgáltatás nevére, majd a **konfiguráció** szakaszban a **hozzáférés-vezérlési rekordok** elemre.
 
 2. A **hozzáférés-vezérlési rekordok** panelen a hozzáférés-vezérlési rekordok táblázatos listájából kattintson duplán a törölni kívánt ACR elemre.
 
-3. A hozzáférés-vezérlési rekordok szerkesztése panelen kattintson a **Törlés**elemre.
+3. A hozzáférés-vezérlési rekordok szerkesztése panelen kattintson a **Törlés** elemre.
    
     ![ACR-EK törlése](./media/storsimple-virtual-array-manage-acrs/ova-del-acrs.png)
 
@@ -127,7 +127,7 @@ Egy hozzáférés-vezérlési rekord törléséhez hajtsa végre a következő l
    
    ![Figyelmeztető üzenet](./media/storsimple-virtual-array-manage-acrs/ova-del-acrs-warning.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [kötetek hozzáadásáról és a ACR-EK konfigurálásáról](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume).
 

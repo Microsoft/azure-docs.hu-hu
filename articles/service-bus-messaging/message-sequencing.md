@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan lehet megőrizni a Azure Service Bu
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: fdb18802e576ad114fd3f783d5efd7bb826a5f94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85341166"
 ---
 # <a name="message-sequencing-and-timestamps"></a>Üzenetek előkészítése és időbélyegek
@@ -32,11 +32,11 @@ Az ütemezett üzenetek a megadott sorba helyezni időpontig nem jelennek meg a 
 
 Az üzeneteket a [ScheduledEnqueueTimeUtc](/dotnet/api/microsoft.azure.servicebus.message.scheduledenqueuetimeutc) tulajdonság beállításával is elvégezheti, ha az üzenetet a normál küldési útvonalon keresztül küldi el, vagy explicit módon a [ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync#Microsoft_Azure_ServiceBus_QueueClient_ScheduleMessageAsync_Microsoft_Azure_ServiceBus_Message_System_DateTimeOffset_) API-val. Az utóbbi azonnal visszaadja az ütemezett üzenet **sorszám**, amelyet később az ütemezett üzenet megszakítására is használhat, ha szükséges. Az ütemezett üzenetek és sorozatszámuk is felderíthető az [üzenetek tallózása](message-browsing.md)során.
 
-Az ütemezett üzenet **sorszám** csak akkor érvényes, ha az üzenet ebben az állapotban van. Ahogy az üzenet aktív állapotba vált, az üzenetet a rendszer hozzáfűzi a várólistához, mintha a jelenlegi pillanatban várólistán lévő volna, ami magában foglalja az új **sorszám**hozzárendelését is.
+Az ütemezett üzenet **sorszám** csak akkor érvényes, ha az üzenet ebben az állapotban van. Ahogy az üzenet aktív állapotba vált, az üzenetet a rendszer hozzáfűzi a várólistához, mintha a jelenlegi pillanatban várólistán lévő volna, ami magában foglalja az új **sorszám** hozzárendelését is.
 
 Mivel a szolgáltatás egyedi üzenetekre van rögzítve, és az üzenetek csak egyszer várólistán lévő, Service Bus nem támogatja az üzenetek ismétlődő ütemezését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Service Bus üzenetkezeléssel kapcsolatos további tudnivalókért tekintse meg a következő témaköröket:
 

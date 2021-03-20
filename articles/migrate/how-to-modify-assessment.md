@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 07/15/2019
 ms.openlocfilehash: de90cffe8760a55aafebf079678d139c6f6f99e1
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96751104"
 ---
 # <a name="customize-an-assessment"></a>Értékelés testreszabása
@@ -96,7 +96,7 @@ A kiszolgáló értékelése során a következő, az AVS-értékelés részét 
 Értékelés létrehozásakor is szerkesztheti az értékelési tulajdonságokat.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További](concepts-assessment-calculation.md) információ az Azure-beli virtuális gépek értékelésének kiszámításáról.
 - [További](concepts-azure-vmware-solution-assessment-calculation.md) információ az AVS-értékelések kiszámításáról.

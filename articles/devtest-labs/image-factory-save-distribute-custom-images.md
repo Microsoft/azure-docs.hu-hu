@@ -4,10 +4,10 @@ description: Ebből a cikkből megtudhatja, hogyan mentheti az egyéni lemezkép
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a5278626f8cdd4299912f3c952786422436fe916
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85476240"
 ---
 # <a name="save-custom-images-and-distribute-to-multiple-labs"></a>Egyéni rendszerképek mentése és továbbítása több tesztkörnyezetbe
@@ -85,5 +85,5 @@ Ez a feladat a rendszerkép-előállítóban található összes egyéni rendsze
 ## <a name="queue-the-build"></a>A Build várólistája
 A terjesztési felépítési feladat befejezése után egy új buildet állít be, amely gondoskodik arról, hogy minden működik. A létrehozás sikeres befejezése után az új egyéni lemezképek megjelennek a cél laborban, amely be lett írva a Labs.jsa konfigurációs fájlban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az adatsorozat következő cikkében a rendszerkép-előállítót a megőrzési szabályzattal és a karbantartási lépésekkel frissítheti: az [adatmegőrzési szabályzat beállítása és a karbantartási parancsfájlok futtatása](image-factory-set-retention-policy-cleanup.md).

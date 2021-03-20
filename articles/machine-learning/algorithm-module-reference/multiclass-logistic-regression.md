@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: e2bbc28735bcbfd952c4941453956acd0568ea67
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420733"
 ---
 # <a name="multiclass-logistic-regression-module"></a>Többosztályos logisztikai regressziós modul
@@ -38,13 +38,13 @@ A többosztályos logisztikai regresszió esetében az osztályozó használatá
 
 2. Határozza meg, hogyan kívánja képezni a modellt az **oktatói mód létrehozása** lehetőség beállításával.
 
-    + **Egyetlen paraméter** : akkor használja ezt a beállítást, ha tudja, hogyan szeretné konfigurálni a modellt, és az értékek egy adott készletét argumentumként adja meg.
+    + **Egyetlen paraméter**: akkor használja ezt a beállítást, ha tudja, hogyan szeretné konfigurálni a modellt, és az értékek egy adott készletét argumentumként adja meg.
 
-    + **Paraméter tartománya** : akkor válassza ezt a lehetőséget, ha nem biztos benne, hogy a legjobb paramétereket szeretné használni, és szeretne futtatni egy paramétert. Válassza ki a megismételni kívánt értékek tartományát, és a [finomhangolási modell hiperparaméterek beállítása](tune-model-hyperparameters.md) az optimális eredményeket eredményező hiperparaméterek beállítása meghatározásához megadott beállítások összes lehetséges kombinációján.  
+    + **Paraméter tartománya**: akkor válassza ezt a lehetőséget, ha nem biztos benne, hogy a legjobb paramétereket szeretné használni, és szeretne futtatni egy paramétert. Válassza ki a megismételni kívánt értékek tartományát, és a [finomhangolási modell hiperparaméterek beállítása](tune-model-hyperparameters.md) az optimális eredményeket eredményező hiperparaméterek beállítása meghatározásához megadott beállítások összes lehetséges kombinációján.  
 
-3. **Optimalizálási tolerancia** : az optimalizáló konvergenciájának küszöbértékét határozza meg. Ha az ismétlések közötti javulás kisebb a küszöbértéknél, az algoritmus leáll, és az aktuális modellt adja vissza.
+3. **Optimalizálási tolerancia**: az optimalizáló konvergenciájának küszöbértékét határozza meg. Ha az ismétlések közötti javulás kisebb a küszöbértéknél, az algoritmus leáll, és az aktuális modellt adja vissza.
 
-4. **L1 regularizációs súlyozás** , **L2 regularizációs súlya** : adjon meg egy értéket, amelyet az L1 és az L2 regularizációs paraméterekhez kell használni. A nem nulla értékű érték mindkét esetében ajánlott.
+4. **L1 regularizációs súlyozás**, **L2 regularizációs súlya**: adjon meg egy értéket, amelyet az L1 és az L2 regularizációs paraméterekhez kell használni. A nem nulla értékű érték mindkét esetében ajánlott.
 
     A regularizációs olyan módszer, amellyel megelőzhető a rendkívül hatékony értékekkel rendelkező modellek szankcionálása. A regularizációs úgy működik, hogy a hipotézis hibája alapján együttható értékekkel társított büntetést ad hozzá. A rendkívül hatékony értékekkel rendelkező pontos modell többek között büntethető, de a kevésbé pontos, konzervatív értékekkel rendelkező modellek kevesebbet büntetik.
 
@@ -52,7 +52,7 @@ A többosztályos logisztikai regresszió esetében az osztályozó használatá
 
      Az L1 és a L2 kifejezések különböző lineáris kombinációit tervezték logisztikai regressziós modellekhez, például a [rugalmas háló regularizációs](https://wikipedia.org/wiki/Elastic_net_regularization).
 
-6. **Véletlenszerű számú mag** : adjon meg egy egész számot, amelyet az algoritmus magjaként kíván használni, ha azt szeretné, hogy az eredmények a futtatások során ismételhetők legyenek. Ellenkező esetben a rendszer egy rendszeróra-értéket használ a magokként, amely némileg eltérő eredményeket eredményezhet ugyanazon folyamat futtatásában.
+6. **Véletlenszerű számú mag**: adjon meg egy egész számot, amelyet az algoritmus magjaként kíván használni, ha azt szeretné, hogy az eredmények a futtatások során ismételhetők legyenek. Ellenkező esetben a rendszer egy rendszeróra-értéket használ a magokként, amely némileg eltérő eredményeket eredményezhet ugyanazon folyamat futtatásában.
 
 8. Egy címkézett adatkészlet csatlakoztatása és a modell betanítása:
 
@@ -72,6 +72,6 @@ A többosztályos logisztikai regresszió esetében az osztályozó használatá
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

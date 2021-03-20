@@ -11,10 +11,10 @@ ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 84053df34ffda0d4686ad80a9e5f3af00ac53d72
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94949496"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Forgatókönyv: REST API-jogcímek hozzáadása egyéni házirendekhez Azure Active Directory B2C
@@ -127,7 +127,7 @@ A fenti megjegyzések `AuthenticationType` és az `AllowInsecureAuthInProduction
 
 ## <a name="add-an-orchestration-step"></a>Előkészítési lépés hozzáadása
 
-A [felhasználói utazások](userjourneys.md) olyan explicit elérési utakat határoznak meg, amelyeken keresztül a szabályzat lehetővé teszi, hogy a függő entitások egy felhasználó számára megfelelő jogcímeket szerezzenek. A felhasználói út olyan összehangoló sorozatot jelöl, amelyet egy sikeres tranzakcióhoz kell követni. Felvehet vagy kivonja az előkészítési lépéseket. Ebben az esetben egy új előkészítési lépést fog hozzáadni, amely az alkalmazásnak a REST API hívásával történő regisztráció vagy bejelentkezés után a felhasználó által megadott információk kiegészítésére szolgál.
+A [felhasználói interakciósorozatok](userjourneys.md) explicit elérési utakat határoznak meg, amelyen keresztül egy szabályzat lehetővé teszi a jogcímfelhasználó alkalmazásnak a kívánt jogcímek beszerzését a felhasználó számára. A felhasználói út olyan összehangoló sorozatot jelöl, amelyet egy sikeres tranzakcióhoz kell követni. Felvehet vagy kivonja az előkészítési lépéseket. Ebben az esetben egy új előkészítési lépést fog hozzáadni, amely az alkalmazásnak a REST API hívásával történő regisztráció vagy bejelentkezés után a felhasználó által megadott információk kiegészítésére szolgál.
 
 1. Nyissa meg a szabályzat alapfájlját. Például: <em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em> .
 1. Keresse meg az `<UserJourneys>` elemet. Másolja a teljes elemet, majd törölje.

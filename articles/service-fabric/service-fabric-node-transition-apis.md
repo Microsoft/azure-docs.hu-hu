@@ -7,10 +7,10 @@ ms.date: 6/12/2017
 ms.author: lemai
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9c31040ec13084f9e4b08bbc9a347e4ad44975bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89021255"
 ---
 # <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>A csomópont elindítása és a csomópont API-k leállítása a Node áttérési API-val
@@ -37,12 +37,12 @@ Ezeket a problémákat az API-k egy új készletében tárgyaljuk.  Az új csom�
 Ha a csomópont-átváltási API nem kivételt jelez a meghívásakor, akkor a rendszer elfogadta az aszinkron műveletet, és végrehajtja.  A sikeres hívás nem jelenti azt, hogy a művelet még nem fejeződött be.  Ha információt szeretne kapni a művelet aktuális állapotáról, hívja meg a csomópont-áttérési folyamat API-ját (felügyelt: [GetNodeTransitionProgressAsync ()][gntp]) a csomópont-áttérési API-nak a művelethez való meghívásakor használt GUID azonosítóval.  A csomópont-áttérési folyamat API egy NodeTransitionProgress objektumot ad vissza.  Az objektum State tulajdonsága a művelet aktuális állapotát adja meg.  Ha az állapot "fut", akkor a művelet végrehajtása folyamatban van.  Ha befejeződött, a művelet hiba nélkül befejeződött.  Ha hibás, hiba történt a művelet végrehajtásakor.  Az eredmény tulajdonság kivétel tulajdonsága jelzi, hogy mi volt a probléma.  https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstateTovábbi információ az állapot tulajdonságról: példák a "minta felhasználás" szakaszra.
 
 
-**Leállított csomópont és egy lefelé mutató csomópont közötti különbségtétel** Ha egy csomópontot *leállítanak* a csomópont-áttérési API használatával, a csomópont-lekérdezés (felügyelt: [GetNodeListAsync ()][nodequery], a PowerShell: [Get-ServiceFabricNode][nodequeryps]) kimenete azt mutatja, hogy ez a csomópont igaz értékű *IsStopped* tulajdonságot tartalmaz.  Vegye figyelembe, hogy ez eltér a *NodeStatus* tulajdonság értékétől, amely a következőt fogja *lemondani*:.  Ha a *NodeStatus* tulajdonság értéke *lefelé*van, de a *IsStopped* hamis, akkor a csomópont nem állt le a csomópont-áttérési API-val, és valamilyen más ok miatt *leáll* .  Ha a *IsStopped* tulajdonság értéke TRUE (igaz), és a *NodeStatus* tulajdonság nem érhető *el, akkor a csomópont-* áttérési API használatával leállt.
+**Leállított csomópont és egy lefelé mutató csomópont közötti különbségtétel** Ha egy csomópontot *leállítanak* a csomópont-áttérési API használatával, a csomópont-lekérdezés (felügyelt: [GetNodeListAsync ()][nodequery], a PowerShell: [Get-ServiceFabricNode][nodequeryps]) kimenete azt mutatja, hogy ez a csomópont igaz értékű *IsStopped* tulajdonságot tartalmaz.  Vegye figyelembe, hogy ez eltér a *NodeStatus* tulajdonság értékétől, amely a következőt fogja *lemondani*:.  Ha a *NodeStatus* tulajdonság értéke *lefelé* van, de a *IsStopped* hamis, akkor a csomópont nem állt le a csomópont-áttérési API-val, és valamilyen más ok miatt *leáll* .  Ha a *IsStopped* tulajdonság értéke TRUE (igaz), és a *NodeStatus* tulajdonság nem érhető *el, akkor a csomópont-* áttérési API használatával leállt.
 
 Ha egy *leállított* csomópontot indít el a csomópont-áttérési API használatával, akkor a rendszer visszaküldi a fürt normális tagjaként való működésre.  A csomópont-lekérdezési API kimenete hamis értékként jeleníti meg a *IsStopped* , és *NodeStatus* a nem lefelé (például fel).
 
 
-**Korlátozott időtartam** Ha a csomópont-áttérési API-t egy csomópont leállítására használja, az egyik kötelező paraméter, a *stopNodeDurationInSeconds*pedig azt az időtartamot jelenti, ameddig a csomópontot *le kell állítani*.  Ennek az értéknek a megengedett tartományba kell esnie, amely legalább 600, és legfeljebb 14400.  Az idő lejárta után a csomópont automatikusan újraindul az állapotba.  Tekintse át az alábbi 1. mintát a használati példaként.
+**Korlátozott időtartam** Ha a csomópont-áttérési API-t egy csomópont leállítására használja, az egyik kötelező paraméter, a *stopNodeDurationInSeconds* pedig azt az időtartamot jelenti, ameddig a csomópontot *le kell állítani*.  Ennek az értéknek a megengedett tartományba kell esnie, amely legalább 600, és legfeljebb 14400.  Az idő lejárta után a csomópont automatikusan újraindul az állapotba.  Tekintse át az alábbi 1. mintát a használati példaként.
 
 > [!WARNING]
 > Ne keverje a csomópont-áttérési API-kat és a csomópont leállítása és a Node API-k elindítása.  Javasoljuk, hogy csak a csomópont-áttérési API-t használja.  >, hogy egy csomópontot már leállítottak-e a Node API leállítása szolgáltatással, először a Node API elindítása előtt kell elindítania az > Node Transition API-k használata előtt.

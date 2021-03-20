@@ -6,10 +6,10 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
 ms.openlocfilehash: ace3fe7aee6b9ffc7226448b455bcfea1f931458
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85964872"
 ---
 # <a name="rendering-applications"></a>Alkalmazások renderelése
@@ -81,6 +81,6 @@ render -renderer arnold -proj "%AZ_BATCH_JOB_PREP_WORKING_DIR%" -verb -rd "%AZ_B
 
 A készlet **és a feladatok sablonjai a Batch Explorer** katalógusában érhetők el.  A sablon forrásfájljait a [GitHub batch Explorer adattárában](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/maya)érheti el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Használja a készletet és a feladatsort a [GitHub adattárházában](https://github.com/Azure/BatchExplorer-data/tree/master/ncj) batch Explorer használatával.  Ha szükséges, hozzon létre új sablonokat, vagy módosítsa a megadott sablonok egyikét.

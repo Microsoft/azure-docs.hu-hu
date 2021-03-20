@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: 39d07751c708d5555799ecbb3b3bc66d3f44f43a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87271960"
 ---
 # <a name="retrieve-offers"></a>Ajánlatok lekérése
@@ -28,7 +28,7 @@ Az ajánlatok összefoglaló listájának beolvasása a közzétevői névtérbe
 | **Név**         |  **Leírás**                         |  **Adattípus** |
 | -------------    |  ------------------------------------    |  -----------   |
 |  publisherId     | Közzétevő azonosítója, például: `contoso` |   Sztring    |
-|  api-verzió     | Az API legújabb verziója                    |    Dátum        |
+|  api-verzió     | Az API legújabb verziója                    |    Date        |
 |  |  |
 
 ## <a name="header"></a>Fejléc

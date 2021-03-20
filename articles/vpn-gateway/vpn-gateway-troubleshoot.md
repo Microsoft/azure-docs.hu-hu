@@ -8,15 +8,15 @@ ms.topic: troubleshooting
 ms.date: 01/31/2018
 ms.author: cherylmc
 ms.openlocfilehash: 0718a1b211fe6365af30a330fe6a3742cff2ff63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84984435"
 ---
 # <a name="troubleshoot-vpn-gateway"></a>Hibakeresés VPN Gateway
 
-A VPN Gateway kapcsolatok számos okból sikertelenek lehetnek. Ez a cikk hivatkozásokat tartalmaz a hibaelhárítással kapcsolatos lépések elkezdéséhez. A teljes listát lásd a tartalomjegyzékben **található, az**oldal bal oldalán található cikkekben.
+A VPN Gateway kapcsolatok számos okból sikertelenek lehetnek. Ez a cikk hivatkozásokat tartalmaz a hibaelhárítással kapcsolatos lépések elkezdéséhez. A teljes listát lásd a tartalomjegyzékben **található, az** oldal bal oldalán található cikkekben.
 
 ## <a name="troubleshooting-scenarios-and-solutions"></a>Forgatókönyvek és megoldások hibaelhárítása
 
@@ -28,6 +28,6 @@ A VPN Gateway kapcsolatok számos okból sikertelenek lehetnek. Ez a cikk hivatk
 
 * [Helyek közötti kapcsolatok](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md)<br>Miután konfigurált egy helyek közötti VPN-kapcsolatot egy helyszíni hálózat és egy Azure-beli virtuális hálózat között, a VPN-kapcsolat hirtelen leáll, és nem lehet újracsatlakozni. Ez a cikk a probléma megoldásához szükséges hibaelhárítási lépéseket ismerteti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [VNet és a VPN-kapcsolatok ellenőrzéséhez](https://support.microsoft.com/help/4032151/configuring-and-validating-vnet-or-vpn-connections)ezeket a lépéseket is használhatja.

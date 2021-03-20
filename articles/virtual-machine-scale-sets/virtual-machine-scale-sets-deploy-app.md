@@ -10,10 +10,10 @@ ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma, devx-track-azurepowershell
 ms.openlocfilehash: e7a4ddaf74df6e04c1597b9c106cd458ddebac55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89079591"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Alkalmazások üzembe helyezése virtuálisgép-méretezési csoportokon
@@ -48,7 +48,7 @@ A PowerShell DSC bővítmény lehetővé teszi a virtuálisgép-példányok test
 - Lekéri a [Get-AzVmss](/powershell/module/az.compute/get-azvmss) rendelkező méretezési csoport adatait
 - Az [Update-AzVmss](/powershell/module/az.compute/update-azvmss) használatával alkalmazza a bővítményt a virtuálisgép-példányokra.
 
-A DSC-bővítmény a *myResourceGroup*nevű erőforráscsoport *myScaleSet* virtuálisgép-példányaira lesz alkalmazva. Adja meg a saját nevét a következőképpen:
+A DSC-bővítmény a *myResourceGroup* nevű erőforráscsoport *myScaleSet* virtuálisgép-példányaira lesz alkalmazva. Adja meg a saját nevét a következőképpen:
 
 ```powershell
 # Define the script for your Desired Configuration to download and run
@@ -92,7 +92,7 @@ A cloud-init különböző disztribúciókon is működik. Például nem kell az
 
 További információ, például *cloud-init.txt* fájl: az [Azure-beli virtuális gépek testreszabása a Cloud-init használatával](../virtual-machines/linux/using-cloud-init.md).
 
-Méretezési csoport létrehozásához és egy Cloud-init fájl használatához adja hozzá a `--custom-data` paramétert az az [vmss Create](/cli/azure/vmss) parancshoz, és adja meg a Cloud-init fájl nevét. A következő példában létrehozunk egy *myScaleSet* nevű méretezési készletet a *myResourceGroup* -ben, és egy *cloud-init.txt*nevű fájllal konfigurálja a virtuálisgép-példányokat. Adja meg a saját nevét a következőképpen:
+Méretezési csoport létrehozásához és egy Cloud-init fájl használatához adja hozzá a `--custom-data` paramétert az az [vmss Create](/cli/azure/vmss) parancshoz, és adja meg a Cloud-init fájl nevét. A következő példában létrehozunk egy *myScaleSet* nevű méretezési készletet a *myResourceGroup* -ben, és egy *cloud-init.txt* nevű fájllal konfigurálja a virtuálisgép-példányokat. Adja meg a saját nevét a következőképpen:
 
 ```azurecli
 az vmss create \

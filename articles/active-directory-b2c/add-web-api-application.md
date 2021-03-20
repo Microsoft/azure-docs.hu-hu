@@ -11,13 +11,13 @@ ms.topic: how-to
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 0eeff0c8c338b09fbe375587db2b955a143138c2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94949819"
 ---
-# <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>Webes API-alkalmazás hozzáadása a Azure Active Directory B2C-bérlőhöz
+# <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>Adjon hozzá egy webes API-alkalmazást az Azure Active Directory B2C-bérlőhöz
 
  Regisztrálja webes API-erőforrásait a bérlőben, hogy elfogadják és válaszoljanak a hozzáférési jogkivonatot futtató ügyfélalkalmazások által benyújtott kérelmekre. Ez a cikk bemutatja, hogyan regisztrálhat egy webes API-t Azure Active Directory B2C (Azure AD B2C).
 
@@ -50,7 +50,7 @@ Ha olyan alkalmazással rendelkezik, amely megvalósítja az implicit engedélye
 6. A **Web App/web API belefoglalása** és az **implicit folyamat engedélyezése** lehetőségnél válassza az **Igen** lehetőséget.
 7. A **Válasz URL-cím** mezőben adjon meg egy végpontot, amelyben Azure ad B2C vissza kell adnia az alkalmazás által kért jogkivonatokat. Az éles alkalmazásban beállíthatja a válasz URL-címét egy értékre (például `https://localhost:44332` ). Tesztelési célból állítsa be a válasz URL-címét a következőre: `https://jwt.ms` .
 8. Az **alkalmazás-azonosító URI-ja** mezőben adja meg a webes API-hoz használt azonosítót. A teljes azonosító URI-t, a tartománnyal együtt, a rendszer hozza létre. Például: `https://contosotenant.onmicrosoft.com/api`.
-9. Kattintson a **Létrehozás** gombra.
+9. Kattintson a **Létrehozás** lehetőségre.
 10. A Tulajdonságok lapon jegyezze fel az alkalmazás AZONOSÍTÓját, amelyet a webalkalmazás konfigurálásakor használni fog.
 
 * * *

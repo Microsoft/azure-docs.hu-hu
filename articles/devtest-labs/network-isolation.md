@@ -4,10 +4,10 @@ description: A Azure DevTest Labs hálózati elkülönítésének megismerése.
 ms.topic: article
 ms.date: 08/25/2020
 ms.openlocfilehash: 28bfa048a8a6666deb58a8ecfff38779c91d95b8
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96352932"
 ---
 # <a name="network-isolation-in-devtest-labs"></a>Hálózati elkülönítés a DevTest Labs szolgáltatásban
@@ -92,6 +92,6 @@ Ha nincs megadva Storage-fiók, a művelet sikertelen lesz a hálózat izolált 
 
 [További információ a tesztkörnyezet használati adatoknak a megadott Storage-fiókban való exportálásáról](personal-data-delete-export.md#azure-powershell)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Labs automatikus létrehozása vagy módosítása Azure Resource Manager-sablonokkal és a PowerShell-lel](devtest-lab-use-arm-and-powershell-for-lab-resources.md)

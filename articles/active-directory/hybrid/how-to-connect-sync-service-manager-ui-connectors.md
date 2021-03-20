@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d215c2e200308664f24daa28a0054c8f1bcfc09c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91319877"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Összekötők használata a Azure AD Connect Sync Service Manager
@@ -84,7 +84,7 @@ A probléma megoldásához frissítse a AD DS felhasználói fiókot a következ
 </br>![Service Manager szinkronizálása](./media/how-to-connect-sync-service-manager-ui-connectors/startmenu.png)
 2. Nyissa meg az **Összekötők** lapot.
 3. Válassza ki azt az AD-összekötőt, amely a AD DS fiók használatára van konfigurálva.
-4. A műveletek területen válassza a **Tulajdonságok**lehetőséget.
+4. A műveletek területen válassza a **Tulajdonságok** lehetőséget.
 5. Az előugró párbeszédpanelen válassza a kapcsolódás Active Directory erdőhöz lehetőséget:
 6. Az erdő neve jelzi a megfelelő helyszíni AD-t.
 7. A Felhasználónév jelzi a szinkronizáláshoz használt AD DS fiókot.

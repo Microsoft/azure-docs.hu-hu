@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan konfigurálhat egy meglévő virtuális hálóz
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 21fe23b6be6fdc924c5502ff97f9c03a3f3e759d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87283554"
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>Virtuális hálózat konfigurálása Azure DevTest Labsban
@@ -22,12 +22,12 @@ Ez a cikk azt ismerteti, hogyan adható hozzá meglévő virtuális hálózata e
 A következő lépések végigvezetik a meglévő virtuális hálózatok (és alhálózatok) egy laborhoz való hozzáadásának lépésein, így a virtuális gép ugyanabban a laborban való létrehozásakor használható. 
 
 1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
+1. Válassza a **minden szolgáltatás** lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
 1. A laborok listájából válassza ki a kívánt labort. 
-1. A labor fő ablaktábláján válassza a **konfiguráció és szabályzatok**lehetőséget.
+1. A labor fő ablaktábláján válassza a **konfiguráció és szabályzatok** lehetőséget.
 
     ![A labor konfigurációjának és házirendjeinek elérése](./media/devtest-lab-configure-vnet/policies-menu.png)
-1. A **külső erőforrások** szakaszban válassza a **virtuális hálózatok**elemet. Megjelenik az aktuális laborhoz konfigurált virtuális hálózatok listája, valamint a laborhoz létrehozott alapértelmezett virtuális hálózat. 
+1. A **külső erőforrások** szakaszban válassza a **virtuális hálózatok** elemet. Megjelenik az aktuális laborhoz konfigurált virtuális hálózatok listája, valamint a laborhoz létrehozott alapértelmezett virtuális hálózat. 
 1. Válassza a **+ Hozzáadás** lehetőséget.
    
     ![Meglévő virtuális hálózat hozzáadása a laborhoz](./media/devtest-lab-configure-vnet/lab-settings-vnet-add.png)
@@ -44,9 +44,9 @@ A következő lépések végigvezetik a meglévő virtuális hálózatok (és al
     ![Lab alhálózat panel](./media/devtest-lab-configure-vnet/lab-subnet.png)
      
    - Adja meg a **labor alhálózat nevét**.
-   - Ha engedélyezni szeretné az alhálózat használatát a labor virtuális gépek létrehozásában, válassza **a használat a virtuális gép létrehozásakor**lehetőséget.
-   - [Megosztott nyilvános IP-cím](devtest-lab-shared-ip.md)engedélyezéséhez válassza a **megosztott nyilvános IP-címek engedélyezése**lehetőséget.
-   - Ha engedélyezni szeretné a nyilvános IP-címeket egy alhálózatban, válassza a **nyilvános IP-címek létrehozásának engedélyezése**lehetőséget.
+   - Ha engedélyezni szeretné az alhálózat használatát a labor virtuális gépek létrehozásában, válassza **a használat a virtuális gép létrehozásakor** lehetőséget.
+   - [Megosztott nyilvános IP-cím](devtest-lab-shared-ip.md)engedélyezéséhez válassza a **megosztott nyilvános IP-címek engedélyezése** lehetőséget.
+   - Ha engedélyezni szeretné a nyilvános IP-címeket egy alhálózatban, válassza a **nyilvános IP-címek létrehozásának engedélyezése** lehetőséget.
    - A **virtuális gépek maximális száma** felhasználónként mezőben határozza meg az egyes alhálózatok felhasználónként maximális számát. Ha nem korlátozott számú virtuális gépet szeretne használni, hagyja üresen ezt a mezőt.
 1. Kattintson az **OK** gombra a labor alhálózat panel bezárásához.
 1. A virtuális hálózat ablaktábla bezárásához válassza a **Mentés** lehetőséget.
@@ -57,5 +57,5 @@ Az Azure [Virtual Network dokumentációja](../virtual-network/index.yml) továb
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Miután hozzáadta a kívánt virtuális hálózatot a laborhoz, a következő lépés [egy virtuális gép hozzáadása a laborhoz](devtest-lab-add-vm.md).

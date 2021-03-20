@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 720288aff462b0590bb9da509096a9305b9b6cc7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "67179154"
 ---
 #### <a name="to-install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>A karbantartási mód frissítéseinek telepítése Windows PowerShell StorSimple-bővítménye használatával
-1. Ha még nem tette meg, nyissa meg az eszköz soros konzolját, és válassza az 1. lehetőséget, **Jelentkezzen be a teljes hozzáférés**lehetőséggel. 
+1. Ha még nem tette meg, nyissa meg az eszköz soros konzolját, és válassza az 1. lehetőséget, **Jelentkezzen be a teljes hozzáférés** lehetőséggel. 
 2. Írja be a jelszót. Az alapértelmezett jelszó a **jelszó1**.
 3. A parancssorba írja be a következőt:
    

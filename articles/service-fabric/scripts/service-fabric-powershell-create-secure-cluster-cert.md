@@ -15,10 +15,10 @@ ms.date: 01/19/2018
 ms.author: atsenthi
 ms.custom: mvc, devx-track-azurepowershell
 ms.openlocfilehash: bae42c9ec8643da1563fb6b566d8db4af6039225
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89078948"
 ---
 # <a name="create-a-service-fabric-cluster"></a>Service Fabric-fürt létrehozása
@@ -50,7 +50,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 |---|---|
 | [Új – AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) | Létrehoz egy új Service Fabric-fürtöt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/).
 

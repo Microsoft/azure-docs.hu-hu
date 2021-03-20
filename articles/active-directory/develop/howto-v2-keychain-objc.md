@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: 06e197a6e445c7dc1179be696318905f2132ee36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85477736"
 ---
 # <a name="configure-keychain"></a>Kulcskarika konfigurálása
@@ -32,7 +32,7 @@ Ez a cikk bemutatja, hogyan konfigurálhatja az alkalmazás jogosultságait úgy
 
 Az iOS-MSAL alapértelmezés szerint a `com.microsoft.adalcache` hozzáférési csoportot használja. Ez a MSAL és az Azure AD Authentication Library (ADAL) SDK-k által használt közös hozzáférésű csoport, amely biztosítja a legjobb egyszeri bejelentkezést (SSO) az ugyanazon közzétevőtől származó több alkalmazás között.
 
-Az iOS-ben adja hozzá a `com.microsoft.adalcache` kulcstartó csoportot az alkalmazás jogosultságához a Xcode **Project settings**  >  **funkciók**  >  **kulcstartó megosztása** területén.
+Az iOS-ben adja hozzá a `com.microsoft.adalcache` kulcstartó csoportot az alkalmazás jogosultságához a Xcode   >  **funkciók**  >  **kulcstartó megosztása** területén.
 
 ### <a name="macos"></a>macOS
 
@@ -108,6 +108,6 @@ Hiba – a 34018 általában azt jelenti, hogy a kulcstartó nincs megfelelően 
 
 MacOS rendszeren az alkalmazások fejlesztői regisztráció nélkül is futtathatók. Habár a legtöbb MSAL funkciója továbbra is működni fog, az SSO-t a kulcstartó-hozzáférésen keresztül kell aláírni. Ha több kulcstartó-kérést tapasztal, győződjön meg arról, hogy az alkalmazás aláírása érvényes.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a kulcstartó-hozzáférési csoportokról az Apple [megosztási hozzáférésének megadásához az alkalmazások gyűjteménye között](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc) cikk.

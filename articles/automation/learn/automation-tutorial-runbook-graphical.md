@@ -7,10 +7,10 @@ ms.subservice: process-automation
 ms.date: 09/15/2020
 ms.topic: tutorial
 ms.openlocfilehash: 1b6c02778b0ee790d81c713283e653058c29c153
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92899806"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>Oktatóanyag: grafikus runbook létrehozása
@@ -66,7 +66,7 @@ A szerkesztő bal oldalán levő Könyvtárvezérlés segítségével kiválaszt
 
 3. A vásznon kattintson a **Write-Output** tevékenységre. Ez a művelet megnyitja a konfigurációs vezérlő lapot, amely lehetővé teszi a tevékenység konfigurálását.
 
-4. A **label (címke** ) mező alapértelmezett értéke a parancsmag neve, de megváltoztathatja valami barátságosabbra. Módosítsa a következőre: `Write Hello World to output` .
+4. A **label (címke** ) mező alapértelmezett értéke a parancsmag neve, de megváltoztathatja valami barátságosabbra. Módosítsa a következőre: `Write Hello World to output`.
 
 5. A **Paraméterek** elemre kattintva megadhatja a parancsmag paramétereinek értékét.
 
@@ -96,7 +96,7 @@ Mielőtt közzéteszi a runbook, hogy az éles környezetben elérhető legyen, 
 
 4. Ha a runbook-feladatok befejeződik, a teszt ablaktábla megjeleníti a kimenetet. Ebben az esetben a következőt látja: `Hello World` .
 
-    ![„Helló világ!” alkalmazás runbook kimenete](../media/automation-tutorial-runbook-graphical/runbook-test-results.png)
+    ![Hello World runbook kimenete](../media/automation-tutorial-runbook-graphical/runbook-test-results.png)
 
 5. A vászonra való visszatéréshez zárja be a Teszt panelt.
 
@@ -160,7 +160,7 @@ Most, hogy már rendelkezik egy változóval az előfizetés-azonosító tárol�
 
 2. Nincs szükség a `Write Hello World to output` bejegyzésre. Csak kattintson a három pontra, majd válassza a **Törlés** lehetőséget.
 
-3. A könyvtár vezérlőben bontsa ki az **eszközök** , majd a **kapcsolatok** elemet. Adja hozzá `AzureRunAsConnection` a vászonhoz a **Hozzáadás a vászonhoz** lehetőség kiválasztásával.
+3. A könyvtár vezérlőben bontsa ki az **eszközök**, majd a **kapcsolatok** elemet. Adja hozzá `AzureRunAsConnection` a vászonhoz a **Hozzáadás a vászonhoz** lehetőség kiválasztásával.
 
 4. Nevezze át a következőre: `AzureRunAsConnection` `Get Run As Connection` .
 
@@ -194,7 +194,7 @@ Most, hogy már rendelkezik egy változóval az előfizetés-azonosító tárol�
     * Adatforrás-lista – válassza az **Automation-kapcsolatok beolvasása** lehetőséget.
     * **Mező elérési útja** – típus `CertificateThumbprint` .
 
-14. Kattintson a **SERVICEPRINCIPAL** elemre, majd a paraméter értéke lapon válassza a **ConstantValue** lehetőséget az **adatforrás** mezőhöz. Kattintson a **true (igaz** ) lehetőségre, majd az **OK** gombra.
+14. Kattintson a **SERVICEPRINCIPAL** elemre, majd a paraméter értéke lapon válassza a **ConstantValue** lehetőséget az **adatforrás** mezőhöz. Kattintson a **true (igaz**) lehetőségre, majd az **OK** gombra.
 
 15. Kattintson a **TENANTID** elemre, és végezze el a következő beállításokat a paraméter értéke lapon. Ha elkészült, kattintson kétszer **az OK gombra** .
 
@@ -261,9 +261,9 @@ A runbook jelenleg a parancsmaghoz megadott erőforráscsoporthoz indítja el a 
 
     ![Forgatókönyv bemeneti paraméterei](../media/automation-tutorial-runbook-graphical/start-azurermvm-params-outputs.png)
 
-5. Válassza ki a `Start-AzVM` tevékenységet, majd kattintson a **Parameters (paraméterek** ) elemre.
+5. Válassza ki a `Start-AzVM` tevékenységet, majd kattintson a **Parameters (paraméterek**) elemre.
 
-6. Módosítsa az **adatforrás** mezőjét a **Name** **Runbook bemenetre**. Ezután válassza a **VMName** lehetőséget.
+6. Módosítsa az **adatforrás** mezőjét a  **Runbook bemenetre**. Ezután válassza a **VMName** lehetőséget.
 
 7. Módosítsa a **ResourceGroupName** **adatforrás** mezőjét a **Runbook bemenetre** , majd válassza a **ResourceGroupName** lehetőséget.
 
@@ -297,11 +297,11 @@ Mostantól módosíthatja a runbook, hogy csak akkor próbálja meg elindítani 
 
 6. Válassza ki a **GetVirtualMachineInResourceGroupNameParamSet** paraméterkészletet. A **ResourceGroupName** és a **Name** mezőhöz felkiáltójelek tartoznak, ami azt jelzi, hogy a kötelező paramétereket határozzák meg. Vegye figyelembe, hogy mindkét mező sztring értékeket vár.
 
-7. A **név** **adatforrás** területén válassza a **Runbook bemenet** , majd a **VMName** lehetőséget. Kattintson az **OK** gombra.
+7. A **név** **adatforrás** területén válassza a **Runbook bemenet**, majd a **VMName** lehetőséget. Kattintson az **OK** gombra.
 
-8. A **ResourceGroupName** **adatforrás** területén válassza a **Runbook bemenet** , majd a **ResourceGroupName** lehetőséget. Kattintson az **OK** gombra.
+8. A **ResourceGroupName** **adatforrás** területén válassza a **Runbook bemenet**, majd a **ResourceGroupName** lehetőséget. Kattintson az **OK** gombra.
 
-9. Az **állapot** elemnél az **adatforrás** területen válassza az **állandó érték** , majd az **igaz** értéket. Kattintson az **OK** gombra.
+9. Az **állapot** elemnél az **adatforrás** területen válassza az **állandó érték**, majd az **igaz** értéket. Kattintson az **OK** gombra.
 
 10. Hozzon létre egy hivatkozást a alkalmazásból `Specify Subscription Id` `Get-AzVM` .
 
@@ -341,11 +341,11 @@ Mostantól módosíthatja a runbook, hogy csak akkor próbálja meg elindítani 
 
 21. Az első `Write-Output` vezérlőelem esetében kattintson a **Parameters (paraméterek** ) elemre, és módosítsa a **címke** értékét a **virtuális gép értesítéséhez**.
 
-22. A **inputobject elemnél** módosítsa az **adatforrást** a **PowerShell-kifejezésre** , és írja be a kifejezést a kifejezésbe `$VMName successfully started.` .
+22. A **inputobject elemnél** módosítsa az **adatforrást** a **PowerShell-kifejezésre**, és írja be a kifejezést a kifejezésbe `$VMName successfully started.` .
 
 23. A második `Write-Output` vezérlőn kattintson a **Paraméterek** elemre, és módosítsa a **címke** értéket a **virtuális gép értesítésének megkezdéséhez**.
 
-24. A **inputobject elemnél** módosítsa az **adatforrást** a **PowerShell-kifejezésre** , és írja be a kifejezést a kifejezésbe `$VMName could not start` .
+24. A **inputobject elemnél** módosítsa az **adatforrást** a **PowerShell-kifejezésre**, és írja be a kifejezést a kifejezésbe `$VMName could not start` .
 
 25. Hivatkozásokat hozhat létre a `Start-AzVM` és a között `Notify VM Started` `Notify VM Start Failed` .
 

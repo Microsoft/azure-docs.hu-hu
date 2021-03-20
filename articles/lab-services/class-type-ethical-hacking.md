@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan állíthatja be a labort a Azure Lab Services h
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 97cdf13f39cc73ee7f35fb402229469195f1456c
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97616422"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Tesztkörnyezet beállítása az etikai hackelési osztály tanításához
@@ -20,7 +20,7 @@ Ez a cikk két fő szakaszt tartalmaz. Az első szakasz ismerteti, hogyan hozhat
 
 ## <a name="lab-configuration"></a>Tesztkörnyezet konfigurációja
 
-A tesztkörnyezet beállításához Azure-előfizetésre van szükség a kezdéshez. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd. Az Azure-előfizetés beszerzése után létrehozhat egy új Labor-fiókot Azure Lab Services, vagy használhat meglévő fiókot is. A következő oktatóanyagban talál egy új Labor-fiókot: [oktatóanyag a labor-fiók beállításához](tutorial-setup-lab-account.md).
+A tesztkörnyezet beállításához Azure-előfizetésre van szükség a kezdéshez. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/). Az Azure-előfizetés beszerzése után létrehozhat egy új Labor-fiókot Azure Lab Services, vagy használhat meglévő fiókot is. A következő oktatóanyagban talál egy új Labor-fiókot: [oktatóanyag a labor-fiók beállításához](tutorial-setup-lab-account.md).
 
 [Ezt az oktatóanyagot](tutorial-setup-classroom-lab.md) követve hozzon létre egy új labort, majd alkalmazza a következő beállításokat:
 
@@ -121,7 +121,7 @@ A Rapid7 Metasploitable-rendszerkép a biztonsági rések mellett konfigurált r
 
 A sablon frissítve lett, és a rendszerképek szükségesek egy etikai hackelési bevezetési tesztelési osztályhoz, amely egy olyan eszközzel rendelkezik, amely a behatolási teszteket és egy másik, biztonsági réseket felderítő képet tartalmaz. A sablon képe mostantól közzétehető az osztályban. Kattintson a **Közzététel** gombra a sablon lapon a sablonnak a laborba való közzétételéhez.
 
-## <a name="cost"></a>Költség  
+## <a name="cost"></a>Költségek  
 
 Ha a labor költségeit szeretné megbecsülni, a következő példát használhatja:
 
@@ -136,7 +136,7 @@ Egy 25 tanulós osztály esetében, amely 20 órányi ütemezett időpontot és 
 
 Ez a cikk végigvezeti a tesztkörnyezet etikai feltörési osztályhoz való létrehozásának lépésein. Ez magában foglalja a beágyazott virtualizálás beállításának lépéseit két virtuális gép létrehozásához a gazda virtuális gépen az áthatoló tesztelés érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő lépések közösek a laborok beállításához:
 

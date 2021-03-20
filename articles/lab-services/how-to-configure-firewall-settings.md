@@ -6,10 +6,10 @@ ms.author: enewman
 ms.date: 06/26/2020
 ms.topic: article
 ms.openlocfilehash: 067a2c9672b87974557f650cef07b0394e7d5a63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85445848"
 ---
 # <a name="firewall-settings-for-azure-lab-services"></a>Az Azure Lab Services tűzfalbeállításai
@@ -35,7 +35,7 @@ Az egyes laborok nyilvános IP-címei a labor Services Lab-fiók **minden Labs**
 
 Most már tudjuk, hogy a tesztkörnyezet nyilvános IP-címe.  A rendszer a nyilvános IP-cím és a 49152-65535-es porttartomány esetében is létrehozhatja a bejövő és kimenő szabályokat a szervezet tűzfala számára.  A szabályok frissítése után a tanulók hozzáférhetnek a virtuális gépekhez anélkül, hogy a hálózati tűzfal blokkolja a hozzáférést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
 - [A tesztkörnyezeti hely kiválasztásának engedélyezése a tesztkörnyezet létrehozója számára](allow-lab-creator-pick-lab-location.md)

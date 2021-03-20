@@ -4,10 +4,10 @@ description: Ismerkedjen meg a Azure DevTest Labs jogcímek/jogcímek funkcióin
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 73ed3c0b94a66f5d17b5c8e2561c65bb48579aa1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85476529"
 ---
 # <a name="use-claim-capabilities-in-azure-devtest-labs"></a>Jogcím-képességek használata Azure DevTest Labs
@@ -40,5 +40,5 @@ A jogcímek vagy az ENSZ-jogcím funkciói nem használhatók hatékonyan. Az el
 
 Vannak bizonyos kikötések a felhasználható gépek használatára, ami általában a gép elérését igényli. Ha a számítógép tartományhoz csatlakozik, akkor a gépet igénylő felhasználónak már hozzáférésre van szüksége, általában pedig hozzáférést biztosít egy olyan csoporthoz, amely magában foglalja a laborban lévő összes felhasználót a virtuális gép létrehozásakor. Ha a gép nincs tartományhoz csatlakoztatva, a **virtuális gép jelszó alaphelyzetbe állítása** lehetőséget kell futtatni a nyilvános tárházban, hogy a felhasználót rendszergazdaként adja hozzá.  Az összetevők a gép elindítása vagy azt követően is alkalmazhatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő cikket: [igényelhető virtuális gépek létrehozása és kezelése Azure DevTest Labs](devtest-lab-add-claimable-vm.md)

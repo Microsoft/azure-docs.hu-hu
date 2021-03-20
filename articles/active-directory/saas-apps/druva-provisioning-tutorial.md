@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: 2ef564ae61aab10e1d100ccaf2547248e4a6a8e8
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96352167"
 ---
 # <a name="tutorial-configure-druva-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Druva konfigurálása
@@ -56,7 +56,7 @@ Az Azure AD-vel való automatikus Druva konfigurálása előtt engedélyeznie ke
 
     ![Druva felügyeleti konzol](media/druva-provisioning-tutorial/menubar.png)
 
-2. Navigáljon **Manage** a  >  **központi telepítések**  >  **felhasználóinak** kezeléséhez.
+2. Navigáljon a  >  **központi telepítések**  >  **felhasználóinak** kezeléséhez.
 
     :::image type="content" source="media/druva-provisioning-tutorial/manage.png" alt-text="Képernyőkép a Druva felügyeleti konzolról. A kezelés ki van jelölve, és a kezelés menü látható. Ebben a menüben a központi telepítések területen a felhasználók ki vannak emelve." border="false":::
 

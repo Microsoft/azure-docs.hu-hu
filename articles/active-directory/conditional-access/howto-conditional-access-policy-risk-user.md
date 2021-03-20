@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d5423a61c8febee72f32935f3dee4e9f9e868630
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89049077"
 ---
 # <a name="conditional-access-user-risk-based-conditional-access"></a>Feltételes hozzáférés: felhasználói kockázat alapú feltételes hozzáférés
@@ -28,32 +28,32 @@ A házirendet két helyen lehet hozzárendelni. A szervezeteknek a következő l
 
 1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
 1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférését**.
-1. Válassza az **új szabályzat**lehetőséget.
+1. Válassza az **új szabályzat** lehetőséget.
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében. További információ: [a szabályzatok elnevezési szabályainak beállítása](./plan-conditional-access.md#set-naming-standards-for-your-policies).
 1. A **Hozzárendelések** alatt válassza a **Felhasználók és csoportok** lehetőséget.
-   1. A **Belefoglalás**területen válassza a **minden felhasználó**lehetőséget.
-   1. A **kizárás**területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 
-   1. Válassza a **Done** (Kész) lehetőséget.
-1. A **Cloud apps vagy a műveletek**területen válassza a  >  **Include** **minden felhőalapú alkalmazás**lehetőséget.
-1. A **Conditions**  >  **felhasználói kockázat**beállítás alatt állítsa az **Igen**értékre a **configure (Konfigurálás** ) beállítást. A **házirend érvényesítéséhez szükséges felhasználói kockázati szintek konfigurálása** területen válassza a **magas**lehetőséget, majd kattintson a **kész**gombra.
-1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés biztosítása**, a **jelszó megkövetelése**, majd a **kiválasztás**lehetőséget.
+   1. A **Belefoglalás** területen válassza a **minden felhasználó** lehetőséget.
+   1. A **kizárás** területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 
+   1. Válassza a **Kész** lehetőséget.
+1. A **Cloud apps vagy a műveletek** területen válassza a  >   **minden felhőalapú alkalmazás** lehetőséget.
+1. A   >  **felhasználói kockázat** beállítás alatt állítsa az **Igen** értékre a **configure (Konfigurálás** ) beállítást. A **házirend érvényesítéséhez szükséges felhasználói kockázati szintek konfigurálása** területen válassza a **magas** lehetőséget, majd kattintson a **kész** gombra.
+1. A **hozzáférés-vezérlés**  >  **megadása** területen válassza a **hozzáférés biztosítása**, a **jelszó megkövetelése**, majd a **kiválasztás** lehetőséget.
 1. Erősítse meg a beállításokat, és állítsa **be az** **Engedélyezés házirendet** be értékre.
 1. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
 
 ## <a name="enable-through-identity-protection"></a>Engedélyezés az Identity Protection használatával
 
 1. Jelentkezzen be az **Azure Portalra**.
-1. Válassza a **minden szolgáltatás**lehetőséget, majd keresse meg **Azure ad Identity Protection**.
-1. Válassza a **felhasználói kockázati házirend**elemet.
-1. A **hozzárendelések**alatt válassza a **felhasználók**lehetőséget.
-   1. A **Belefoglalás**területen válassza a **minden felhasználó**lehetőséget.
-   1. A **kizárás**területen válassza a **kizárt felhasználók kiválasztása**lehetőséget, válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat, és válassza a **kiválasztás**lehetőséget.
-   1. Válassza a **Done** (Kész) lehetőséget.
-1. A **feltételek**területen válassza a **felhasználói kockázat**lehetőséget, majd válassza a **magas**lehetőséget.
-   1. Válassza a **kiválasztás**, majd a **kész**lehetőséget.
-1. A **Controls**  >  **hozzáférés**-vezérlés területen válassza a **hozzáférés engedélyezése**lehetőséget, majd jelölje be a **jelszó módosításának megkövetelése**jelölőnégyzetet.
+1. Válassza a **minden szolgáltatás** lehetőséget, majd keresse meg **Azure ad Identity Protection**.
+1. Válassza a **felhasználói kockázati házirend** elemet.
+1. A **hozzárendelések** alatt válassza a **felhasználók** lehetőséget.
+   1. A **Belefoglalás** területen válassza a **minden felhasználó** lehetőséget.
+   1. A **kizárás** területen válassza a **kizárt felhasználók kiválasztása** lehetőséget, válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat, és válassza a **kiválasztás** lehetőséget.
+   1. Válassza a **Kész** lehetőséget.
+1. A **feltételek** területen válassza a **felhasználói kockázat** lehetőséget, majd válassza a **magas** lehetőséget.
+   1. Válassza a **kiválasztás**, majd a **kész** lehetőséget.
+1. A   >  **hozzáférés**-vezérlés területen válassza a **hozzáférés engedélyezése** lehetőséget, majd jelölje be a **jelszó módosításának megkövetelése** jelölőnégyzetet.
    1. Válassza a **Kiválasztás** lehetőséget.
-1. **Házirend kényszerített** értékének beállítása **a**következőre:.
+1. **Házirend kényszerített** értékének beállítása **a** következőre:.
 1. Kattintson a **Mentés** gombra.
 
 ## <a name="next-steps"></a>Következő lépések

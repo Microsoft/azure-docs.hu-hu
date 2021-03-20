@@ -5,17 +5,17 @@ ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: fd71edd12e478bcd5f14815c105c14482cf7e2bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89020031"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>Üzenetek átvitele, zárolása és elszámolása
 
 Egy Message Broker (például Service Bus) központi funkciója, hogy fogadja az üzeneteket egy várólistába vagy témakörbe, és azokat a későbbi lekérésekhez elérhetővé fogja tenni. A *Send* kifejezés azt a kifejezést használja, amelyet általában egy üzenetnek az üzenet-átvitelszervezőbe történő átviteléhez használnak. A *Receive* kifejezés általában az üzenetek lekéréses ügyfélnek történő átviteléhez használatos.
 
-Amikor egy ügyfél üzenetet küld, általában tudni szeretné, hogy az üzenet megfelelően át lett-e adva a közvetítőnek, vagy valamilyen hiba történt-e. Ez a pozitív vagy negatív nyugtázás megrendezi az ügyfelet és a közvetítőt az üzenet átviteli állapotáról, és ennek megfelelően a *rendezésnek*nevezzük.
+Amikor egy ügyfél üzenetet küld, általában tudni szeretné, hogy az üzenet megfelelően át lett-e adva a közvetítőnek, vagy valamilyen hiba történt-e. Ez a pozitív vagy negatív nyugtázás megrendezi az ügyfelet és a közvetítőt az üzenet átviteli állapotáról, és ennek megfelelően a *rendezésnek* nevezzük.
 
 Hasonlóképpen, amikor a közvetítő üzenetet továbbít egy ügyfélnek, a közvetítő és az ügyfél szeretné megállapítani, hogy az üzenet feldolgozása sikeres volt-e, ezért el lehet-e távolítani, illetve hogy az üzenet kézbesítése vagy feldolgozása sikertelen volt-e, így az üzenetet újra kell kézbesíteni.
 

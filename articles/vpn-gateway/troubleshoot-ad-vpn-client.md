@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.openlocfilehash: 56a8514fc2531ba0b18925427814e5bfef7d64bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84988099"
 ---
 # <a name="troubleshoot-an-azure-ad-authentication-vpn-client"></a>Azure AD-hitelesítéssel rendelkező VPN-ügyfél hibáinak megoldása
@@ -24,7 +24,7 @@ A hibaüzenetek állapotára vonatkozó napló megtekintése.
 
 ![naplók](./media/troubleshoot-ad-vpn-client/1.png)
 
-1. Az **állapotüzenetek**megjelenítéséhez kattintson az ügyfél ablakának jobb alsó sarkában található nyilak ikonra.
+1. Az **állapotüzenetek** megjelenítéséhez kattintson az ügyfél ablakának jobb alsó sarkában található nyilak ikonra.
 2. Keresse meg a hibát jelző hibákat a naplókban.
 3. A hibaüzenetek piros színnel jelennek meg.
 
@@ -34,7 +34,7 @@ Törölje a bejelentkezési adatokat.
 
 ![bejelentkezés](./media/troubleshoot-ad-vpn-client/2.png)
 
-1. Válassza a... a megoldani kívánt profil mellett. Válassza a **Konfigurálás – > a mentett fiók törlése**lehetőséget.
+1. Válassza a... a megoldani kívánt profil mellett. Válassza a **Konfigurálás – > a mentett fiók törlése** lehetőséget.
 2. Kattintson a **Mentés** gombra.
 3. Próbáljon meg csatlakozni.
 4. Ha a kapcsolat továbbra is sikertelen, folytassa a következő szakasszal.
@@ -45,7 +45,7 @@ Futtasson diagnosztikát a VPN-ügyfélen.
 
 ![diagnosztika](./media/troubleshoot-ad-vpn-client/3.png)
 
-1. Kattintson a **.** .. azon profil mellett, amelyen diagnosztikát kíván futtatni. Válassza a **Diagnosztizálás – > futtatási diagnosztika**lehetőséget.
+1. Kattintson a **.** .. azon profil mellett, amelyen diagnosztikát kíván futtatni. Válassza a **Diagnosztizálás – > futtatási diagnosztika** lehetőséget.
 2. Az ügyfél több tesztet fog futtatni, és megjeleníti a teszt eredményét.
 
    * Internet-hozzáférés – ellenőrzi, hogy az ügyfél rendelkezik-e internetkapcsolattal
@@ -66,6 +66,6 @@ Gyűjtse össze a VPN-ügyfél naplófájljait. A naplófájlok a támogatás/re
 
    ![fájl megtekintése](./media/troubleshoot-ad-vpn-client/5.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [Azure Active Directory-bérlő létrehozása az Azure ad-hitelesítést használó P2S nyitott VPN-kapcsolatokhoz](openvpn-azure-ad-tenant.md).

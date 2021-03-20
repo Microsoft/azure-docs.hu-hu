@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/19/2020
 ms.openlocfilehash: e5fb425afdd4b212a0b28ce91418eb0ee9e3632f
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97964429"
 ---
 # <a name="how-to-create-plans-for-a-virtual-machine-offer"></a>Csomagok létrehozása virtuálisgép-ajánlathoz
@@ -44,7 +44,7 @@ Az **új terv** párbeszédpanelen adjon meg egy egyedi díjcsomag- **azonosít�
 
 Adja meg a **csomag nevét**. Az ügyfelek akkor látják ezt a nevet, amikor döntik el, hogy melyik tervet kívánják kiválasztani az ajánlaton belül. Hozzon létre egy egyedi nevet, amely egyértelműen rámutat a csomagok közötti különbségekre. Például megadhatja a **Windows Servert** utólagos elszámolású, *BYOL*, *speciális* és *vállalati* csomagokkal.
 
-Kattintson a **Létrehozás** gombra. Ekkor megnyílik a **terv beállítása** lap.
+Válassza a **Létrehozás** lehetőséget. Ekkor megnyílik a **terv beállítása** lap.
 
 ## <a name="plan-setup"></a>Csomag beállítása
 
@@ -222,6 +222,6 @@ A használt operációs rendszertől függetlenül csak a megoldás által igén
 
 Válassza a **Piszkozat mentése** lehetőséget, majd kattintson a bal felső sarokban található **← terv áttekintése** lehetőségre az imént létrehozott terv megtekintéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Viszonteladás CSP-ken keresztül](azure-vm-create-resell-csp.md)

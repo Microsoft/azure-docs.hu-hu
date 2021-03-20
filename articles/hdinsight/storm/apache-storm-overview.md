@@ -6,10 +6,10 @@ ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: a2bca34f683df27c97b131d57c6c3278f7cb175e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98928907"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Mi az Azure HDInsight alatt futó Apache Storm?
@@ -111,7 +111,7 @@ Az Apache Storm különböző szinteken biztosít garantált üzenetfeldolgozás
 
 Egy bemeneti rekord olvasásának mintája, amely nulla vagy több rekordok, majd a végrehajtási metódus végén azonnal megerősíti a bemeneti rekordot. A Storm lehetővé teszi ennek a mintának az automatizálását az [IBasicBolt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/topology/IBasicBolt.html) felület segítségével.
 
-### <a name="joins"></a>Illesztések
+### <a name="joins"></a>Összekapcsolások
 
 Az adatstreamek alkalmazások közötti csatlakoztatásának különböző módjai. Például összekapcsolhatja az egyes rekordokat több streamből egy új adatfolyamba, vagy csak a rekordok egy adott ablakhoz csatlakozhat. Az illesztés mindkét módszer esetén a [fieldsGrouping](https://storm.apache.org/releases/current/javadocs/org/apache/storm/topology/InputDeclarer.html#fieldsGrouping-java.lang.String-org.apache.storm.tuple.Fields-) használatával történik. Ez egy mód annak definiálására, hogyan legyenek átirányítva a rekordok a boltokhoz.
 

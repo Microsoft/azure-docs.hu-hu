@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 82f228d5e6f801539c549e16faea371782ad4b59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91316443"
 ---
 # <a name="concepts-for-enabling-active-learning-by-reviewing-endpoint-utterances"></a>Az aktív tanulás engedélyezésével kapcsolatos fogalmak a végpontok hosszúságú kimondott szöveg áttekintésével
@@ -24,7 +24,7 @@ LUIS hozzáadja a hosszúságú kimondott szöveg a felülvizsgálati listához,
 ## <a name="single-pool-for-utterances-per-app"></a>Önálló készlet hosszúságú kimondott szöveg-alkalmazásokhoz
 A **felülvizsgálati végpont hosszúságú kimondott szöveg** listája nem változik a verzió alapján. A kimondott szövegek egyetlen készletét kell áttekintenie, függetlenül attól, hogy a kimondott szöveg melyik verzióját szerkeszti vagy az alkalmazás melyik verziója lett közzétéve a végponton.
 
-A [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/58b6f32139e2bb139ce823c9)a verzió nevét kötelező megadni, és az alkalmazásban léteznie kell, de az érvényesítésen kívül nem használható. A felülvizsgálati hosszúságú kimondott szöveg egy teljes alkalmazásra érvényesek. Ha egy _verzióból_távolítja el az hosszúságú kimondott szöveg-t, a rendszer minden verziót érint.
+A [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/58b6f32139e2bb139ce823c9)a verzió nevét kötelező megadni, és az alkalmazásban léteznie kell, de az érvényesítésen kívül nem használható. A felülvizsgálati hosszúságú kimondott szöveg egy teljes alkalmazásra érvényesek. Ha egy _verzióból_ távolítja el az hosszúságú kimondott szöveg-t, a rendszer minden verziót érint.
 
 ## <a name="where-are-the-utterances-from"></a>Honnan származnak a hosszúságú kimondott szöveg
 A végpontok hosszúságú kimondott szöveg az alkalmazás HTTP-végpontján lévő végfelhasználói lekérdezésekből származnak. Ha az alkalmazás nincs közzétéve vagy még nem kapott találatokat, nem kell hosszúságú kimondott szöveg. Ha egy adott szándékhoz vagy entitáshoz nem érkezik végpont, akkor nem rendelkezik olyan hosszúságú kimondott szöveg, amely tartalmazza azokat.

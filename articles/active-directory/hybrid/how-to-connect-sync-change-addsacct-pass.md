@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4077146292db1266d5dbc51cc577f952b2bff191
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85357511"
 ---
 # <a name="changing-the-ad-ds-account-password"></a>Az AD DS-fiók jelszavának módosítása
@@ -42,9 +42,9 @@ A szinkronizálási szolgáltatás frissítése az új jelszóval:
 
 3. Válassza ki azt az **ad-összekötőt** , amely ahhoz a AD DS-fiókhoz tartozik, amelynek a jelszavát módosították.
 
-4. A **műveletek**területen válassza a **Tulajdonságok**lehetőséget.
+4. A **műveletek** területen válassza a **Tulajdonságok** lehetőséget.
 
-5. Az előugró párbeszédpanelen válassza a **kapcsolódás Active Directory erdőhöz**lehetőséget:
+5. Az előugró párbeszédpanelen válassza a **kapcsolódás Active Directory erdőhöz** lehetőséget:
 
 6. Adja meg a **jelszó** szövegmezőben a AD DS fiók új jelszavát.
 
@@ -52,7 +52,7 @@ A szinkronizálási szolgáltatás frissítése az új jelszóval:
 
 8. Indítsa újra a Azure AD Connect szinkronizációs szolgáltatást a Windows szolgáltatásvezérlő kezelőjében. Ezzel biztosíthatja, hogy a rendszer eltávolítsa a régi jelszóra mutató hivatkozásokat a memória-gyorsítótárból.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 **Áttekintő témakörök**
 
 * [Azure AD Connect szinkronizálás: a szinkronizálás megismerése és testreszabása](how-to-connect-sync-whatis.md)

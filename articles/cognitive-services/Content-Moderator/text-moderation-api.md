@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: pafarley
 ms.openlocfilehash: ae49a8738ba711ac6c77f2e299852ad61f70be56
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92912905"
 ---
 # <a name="learn-text-moderation-concepts"></a>A szöveg moderálásával kapcsolatos fogalmak megismerése
@@ -47,11 +47,11 @@ Ha az API bármely [támogatott nyelven](./language-support.md)észleli a profá
 ```
 
 > [!NOTE]
-> A **Language** paraméterhez rendelje hozzá, `eng` vagy hagyja üresen, hogy megjelenjen a gép által támogatott **besorolási** válasz (előzetes verzió funkció). **Ez a funkció csak az angol nyelvet támogatja** .
+> A **Language** paraméterhez rendelje hozzá, `eng` vagy hagyja üresen, hogy megjelenjen a gép által támogatott **besorolási** válasz (előzetes verzió funkció). **Ez a funkció csak az angol nyelvet támogatja**.
 >
 > A **trágár kifejezések** észleléséhez használja a cikkben felsorolt támogatott nyelvek [ISO 639-3 kódját](http://www-01.sil.org/iso639-3/codes.asp) , vagy hagyja üresen.
 
-## <a name="classification"></a>Besorolás
+## <a name="classification"></a>Osztályozás
 
 Content Moderator géppel támogatott **szöveg besorolási funkciója** **csak az angol nyelvet** támogatja, és segít felderíteni a vélhetően nemkívánatos tartalmakat. A megjelölt tartalmat a környezettől függően nem megfelelőként lehet értékelni. Ez az egyes kategóriák valószínűségét közvetíti, és az emberi felülvizsgálatot is javasolhatja. A szolgáltatás egy betanított modellt használ a lehetséges visszaélésszerű, különbözeti vagy diszkriminatív nyelv azonosítására. Ez magában foglalja a szlenget, a rövidített szavakat, a sértőt és a szándékosan hibásan írt szavakat véleményezésre. 
 
@@ -142,7 +142,7 @@ Ha automatikus javítást kér, a válasz tartalmazza a szöveg javított verzi�
 Habár a kifejezések alapértelmezett globális listája a legtöbb esetben remekül működik, érdemes lehet az üzleti igényeknek megfelelő kifejezéseket használni. Előfordulhat például, hogy a felhasználók által létrehozott bejegyzésekből ki szeretné szűrni a versenytárs márkaneveit.
 
 > [!NOTE]
-> A maximális korlát **5 kifejezéslista** , amelyek egyenként **nem haladhatják meg a 10 000 kifejezést** .
+> A maximális korlát **5 kifejezéslista**, amelyek egyenként **nem haladhatják meg a 10 000 kifejezést**.
 >
 
 A következő példa a megfelelő lista AZONOSÍTÓját mutatja be:

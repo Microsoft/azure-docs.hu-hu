@@ -4,10 +4,10 @@ description: A Service Bus szabályozásának áttekintése – standard és pr�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 436f9a40269f7eea4e31b55b9657d38849876eb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85340952"
 ---
 # <a name="throttling-operations-on-azure-service-bus"></a>Szabályozási műveletek Azure Service Bus
@@ -117,7 +117,7 @@ Ha a kérés sikeres "ACK" (elismert) Service Bus, akkor azt jelenti, hogy Servi
 
 A kérelem szabályozása esetén azonban a szolgáltatás arra utal, hogy az erőforrás-korlátozások miatt most nem tudja elfogadni és feldolgozni a kérést. Ez semmilyen adatvesztést nem jelent, mivel Service Bus egyszerűen **nem** nézett a kérelemre. Ebben az esetben a Service Bus SDK alapértelmezett újrapróbálkozási szabályzata biztosítja, hogy a kérést a rendszer végül dolgozza fel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információt és példákat a Service Bus üzenetkezelés használatával kapcsolatban a következő speciális témakörökben talál:
 

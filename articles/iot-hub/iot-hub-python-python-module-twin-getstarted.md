@@ -10,10 +10,10 @@ ms.date: 04/03/2020
 ms.author: menchi
 ms.custom: devx-track-python
 ms.openlocfilehash: 665281adc892e6b3655c0b1d0533cb3148e62940
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92139392"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-python"></a>Ismerkedés a IoT Hub modul identitásával és moduljával (Python)
@@ -44,7 +44,7 @@ Az oktatóanyag végén három Python-alkalmazás található:
 
 ## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub-beli kapcsolatok karakterláncának beolvasása
 
-Ebben a cikkben egy olyan háttér-szolgáltatást hoz létre, amely hozzáadja az eszközt az identitás-beállításjegyzékben, majd hozzáadja a modult az eszközhöz. Ennek a szolgáltatásnak szüksége van a **beállításjegyzék írási** engedélyére (amely magában foglalja a **beállításjegyzék olvasását**is). Olyan szolgáltatást is létrehozhat, amely hozzáadja a kívánt tulajdonságokat az újonnan létrehozott modulhoz tartozó modulhoz. A szolgáltatásnak szüksége van a **szolgáltatás csatlakozási** engedélyére. Habár vannak olyan alapértelmezett megosztott hozzáférési szabályzatok, amelyek egyenként adják meg ezeket az engedélyeket, ebben a szakaszban egy egyéni megosztott elérési házirendet hoz létre, amely mindkét engedélyt tartalmazza.
+Ebben a cikkben egy olyan háttér-szolgáltatást hoz létre, amely hozzáadja az eszközt az identitás-beállításjegyzékben, majd hozzáadja a modult az eszközhöz. Ennek a szolgáltatásnak szüksége van a **beállításjegyzék írási** engedélyére (amely magában foglalja a **beállításjegyzék olvasását** is). Olyan szolgáltatást is létrehozhat, amely hozzáadja a kívánt tulajdonságokat az újonnan létrehozott modulhoz tartozó modulhoz. A szolgáltatásnak szüksége van a **szolgáltatás csatlakozási** engedélyére. Habár vannak olyan alapértelmezett megosztott hozzáférési szabályzatok, amelyek egyenként adják meg ezeket az engedélyeket, ebben a szakaszban egy egyéni megosztott elérési házirendet hoz létre, amely mindkét engedélyt tartalmazza.
 
 [!INCLUDE [iot-hub-include-find-service-regrw-connection-string](../../includes/iot-hub-include-find-service-regrw-connection-string.md)]
 
@@ -129,7 +129,7 @@ Ebben a szakaszban létrehoz egy Python szolgáltatásalkalmazás-alkalmazást, 
     python CreateModule.py
     ```
 
-Ez az alkalmazás létrehoz egy **MYFIRSTDEVICE** azonosítóval és egy **myFirstModule** azonosítójú modul-identitással az eszköz **myFirstDevice**alatt. (Ha az eszköz vagy a modul azonosítója már létezik az Identity registryben, a kód egyszerűen lekéri a meglévő eszköz-vagy modul-információkat.) Az alkalmazás megjeleníti az egyes identitások AZONOSÍTÓját és elsődleges kulcsát.
+Ez az alkalmazás létrehoz egy **MYFIRSTDEVICE** azonosítóval és egy **myFirstModule** azonosítójú modul-identitással az eszköz **myFirstDevice** alatt. (Ha az eszköz vagy a modul azonosítója már létezik az Identity registryben, a kód egyszerűen lekéri a meglévő eszköz-vagy modul-információkat.) Az alkalmazás megjeleníti az egyes identitások AZONOSÍTÓját és elsődleges kulcsát.
 
 > [!NOTE]
 > Az IoT Hub-identitásjegyzék csak az IoT Hub biztonságos elérésének biztosításához tárolja az eszköz- és modulidentitásokat. Az identitásjegyzék tárolja az eszközazonosítókat és -kulcsot, és biztonsági hitelesítő adatokként használja őket. Az identitásjegyzék minden egyes eszközhöz tárol egy engedélyezve/letiltva jelzőt is, amellyel letilthatja az eszköz hozzáférését. Ha az alkalmazásnak más eszközspecifikus metaadatokat kell tárolnia, egy alkalmazásspecifikus tárolót kell használnia. A modulidentitások esetében nincs engedélyezési/letiltási jelző. További információ: [az Identity Registry megismerése az IoT hub-ban](iot-hub-devguide-identity-registry.md).
@@ -187,7 +187,7 @@ Ebben a szakaszban egy olyan Python szolgáltatásalkalmazás-alkalmazást hoz l
 
 Ebben a szakaszban egy Python-alkalmazást hoz létre, amely a modulhoz tartozó Twin kívánt tulajdonságok frissítését kéri az eszközön.
 
-1. A modulhoz tartozó kapcsolatok karakterláncának beolvasása. A [Azure Portalban](https://portal.azure.com/)navigáljon a IoT hub, és válassza a **IoT eszközök** elemet a bal oldali ablaktáblán. Válassza ki a **myFirstDevice** az eszközök listájából, és nyissa meg. A **modul-identitások**területen válassza a **myFirstModule**lehetőséget. Másolja ki a modul kapcsolati sztringjét. Ezt a következő lépésben kell megadnia.
+1. A modulhoz tartozó kapcsolatok karakterláncának beolvasása. A [Azure Portalban](https://portal.azure.com/)navigáljon a IoT hub, és válassza a **IoT eszközök** elemet a bal oldali ablaktáblán. Válassza ki a **myFirstDevice** az eszközök listájából, és nyissa meg. A **modul-identitások** területen válassza a **myFirstModule** lehetőséget. Másolja ki a modul kapcsolati sztringjét. Ezt a következő lépésben kell megadnia.
 
    ![Az Azure Portal moduladatai](./media/iot-hub-python-python-module-twin-getstarted/module-detail.png)
 

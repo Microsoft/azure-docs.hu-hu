@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan hozhat létre fájlmegosztást a laborban, és 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b2dbbf349da4e352fe20a22db03cc9063d801990
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87282245"
 ---
 # <a name="test-your-app-in-azure"></a>Alkalmazás tesztelése az Azure-ban 
@@ -18,7 +18,7 @@ Ez a cikk az alkalmazás Azure-beli DevTest Labs használatával történő tesz
 ## <a name="prerequisites"></a>Előfeltételek 
 1. [Hozzon létre egy Azure-előfizetést](https://azure.microsoft.com/free/) , ha még nem rendelkezik ilyennel, és jelentkezzen be [Azure Portalba](https://portal.azure.com).
 2. A [cikk](devtest-lab-create-lab.md) utasításait követve hozzon létre egy labort Azure DevTest Labs használatával. Rögzítse a labort az irányítópulton, hogy legközelebb megkeresse a következő bejelentkezés alkalmával. A Azure DevTest Labs lehetővé teszi, hogy gyorsan hozzon létre erőforrásokat az Azure-ban a hulladék minimalizálása és a költségek szabályozása érdekében. További információ a DevTest Labs szolgáltatásról: [Áttekintés](devtest-lab-overview.md). 
-3. Hozzon létre egy Azure Storage-fiókot a labor erőforráscsoporthoz a [Storage-fiók létrehozása](../storage/common/storage-account-create.md) című cikk utasításait követve. A **Storage-fiók létrehozása** lapon válassza a **meglévő használata** az **erőforráscsoport**számára lehetőséget, és válassza ki a **labor erőforrás-csoportot**. 
+3. Hozzon létre egy Azure Storage-fiókot a labor erőforráscsoporthoz a [Storage-fiók létrehozása](../storage/common/storage-account-create.md) című cikk utasításait követve. A **Storage-fiók létrehozása** lapon válassza a **meglévő használata** az **erőforráscsoport** számára lehetőséget, és válassza ki a **labor erőforrás-csoportot**. 
 4. Hozzon létre egy fájlmegosztást az Azure Storage-ban a [fájlmegosztás létrehozása Azure Files](../storage/files/storage-how-to-create-file-share.md) cikkben található utasításokat követve. 
 
 ## <a name="mount-the-file-share-on-your-local-machine"></a>A fájlmegosztás csatlakoztatása a helyi gépen
@@ -37,10 +37,10 @@ Ez a cikk az alkalmazás Azure-beli DevTest Labs használatával történő tesz
 3. A labor **DevTest labor** lapján válassza a **+ Hozzáadás** lehetőséget az eszköztáron. 
 
     ![A labor hozzáadása gomb](media/test-app-in-azure/add-button-in-lab.png)
-4. A **kiinduló lap kiválasztása** lapon keressen rá a **smalldisk**kifejezésre, és válassza a **[smalldisk] Windows Server 2016 adatközpont**elemet. 
+4. A **kiinduló lap kiválasztása** lapon keressen rá a **smalldisk** kifejezésre, és válassza a **[smalldisk] Windows Server 2016 adatközpont** elemet. 
 
     ![Kis lemez Windows Server kiválasztása](media/test-app-in-azure/choose-small-disk-windows-server.png)
-5. A **virtuális gép** lapon adja meg a **virtuális gép nevét**, **a felhasználónevet**és a **jelszót**, majd válassza a **Létrehozás**lehetőséget.    
+5. A **virtuális gép** lapon adja meg a **virtuális gép nevét**, **a felhasználónevet** és a **jelszót**, majd válassza a **Létrehozás** lehetőséget.    
     
     ![Virtuális gép létrehozása lap](media/test-app-in-azure/create-virtual-machine-page.png)    
 
@@ -57,8 +57,8 @@ Ebben a szakaszban az alkalmazást a Visual studióból egy Felhőbeli teszt vir
 
 1. Hozzon létre egy asztali/webalkalmazást a Visual Studio 2019 használatával.
 2. Hozza létre az alkalmazást a Build lehetőséggel.
-3. Az alkalmazás közzétételéhez kattintson a jobb gombbal a projektre a **megoldáskezelő**, és válassza a **Közzététel**lehetőséget. 
-4. A **Közzétételi varázslóban**adja meg a fájlmegosztás számára leképezett **meghajtót** .
+3. Az alkalmazás közzétételéhez kattintson a jobb gombbal a projektre a **megoldáskezelő**, és válassza a **Közzététel** lehetőséget. 
+4. A **Közzétételi varázslóban** adja meg a fájlmegosztás számára leképezett **meghajtót** .
 
     **Asztali alkalmazás:**
 
@@ -68,14 +68,14 @@ Ebben a szakaszban az alkalmazást a Visual studióból egy Felhőbeli teszt vir
 
     ![Webalkalmazás](media/test-app-in-azure/web-app.png)
 
-1. A **tovább** gombra kattintva fejezze be a közzétételi munkafolyamatot, és válassza a **Befejezés**gombot. A varázsló lépéseinek befejezése után a Visual Studio létrehozza az alkalmazást, és közzéteszi a fájlmegosztást. 
+1. A **tovább** gombra kattintva fejezze be a közzétételi munkafolyamatot, és válassza a **Befejezés** gombot. A varázsló lépéseinek befejezése után a Visual Studio létrehozza az alkalmazást, és közzéteszi a fájlmegosztást. 
 
 
 ## <a name="test-the-app-on-your-test-vm-in-the-lab"></a>Az alkalmazás tesztelése a teszt virtuális gépen a tesztkörnyezetben
 
 1. Navigáljon a virtuális gép virtuálisgép-lapjára a laborban. 
 2. Válassza az **Indítás** lehetőséget az eszköztáron a virtuális gép elindításához, ha leállított állapotban van. A virtuális gép automatikus indítási és automatikus leállítási házirendjeit úgy állíthatja be, hogy elkerülje az egyes időpontok indítását és leállítását. 
-3. Kattintson a **Csatlakozás** gombra.
+3. Válassza a **Kapcsolódás** lehetőséget.
 
     ![Virtuális gép lapja](media/test-app-in-azure/virtual-machine-page.png)
 4. A virtuális gépen nyissa meg a **fájlkezelőt**, és válassza ki **ezt a számítógépet** a fájlmegosztás megkereséséhez.
@@ -90,7 +90,7 @@ Ebben a szakaszban az alkalmazást a Visual studióból egy Felhőbeli teszt vir
 
     Mostantól elérheti és tesztelheti az alkalmazást az Azure-ban létrehozott tesztelési virtuális gépen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkekből megtudhatja, hogyan használhatók a virtuális gépek a laborban. 
 
 - [Virtuális gép hozzáadása laborhoz](devtest-lab-add-vm.md)

@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
 ms.openlocfilehash: 2dfd8b3d919f9eeb3e183135ef543f417c878977
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420699"
 ---
 # <a name="poisson-regression"></a>Poisson-regresszió
@@ -57,13 +57,13 @@ Mivel a válasz változó Poisson-eloszlással rendelkezik, a modell eltérő fe
 
 3. A **Poisson regressziós** moduljának jobb oldali ablaktábláján határozza meg, hogyan kívánja betanítani a modellt az **oktatói mód létrehozása** lehetőség beállításával.  
   
-    - **Egyetlen paraméter** : ha tudja, hogyan szeretné konfigurálni a modellt, adjon meg egy adott értékeket argumentumként.
+    - **Egyetlen paraméter**: ha tudja, hogyan szeretné konfigurálni a modellt, adjon meg egy adott értékeket argumentumként.
   
-    - **Paraméter tartománya** : Ha nem biztos benne, hogy a legjobb paramétereket használja, hajtson végre egy paramétert a [Tune Model hiperparaméterek beállítása](tune-model-hyperparameters.md) modullal. Az oktató megismétli több megadott értéket az optimális konfiguráció megtalálásához.
+    - **Paraméter tartománya**: Ha nem biztos benne, hogy a legjobb paramétereket használja, hajtson végre egy paramétert a [Tune Model hiperparaméterek beállítása](tune-model-hyperparameters.md) modullal. Az oktató megismétli több megadott értéket az optimális konfiguráció megtalálásához.
   
-4. **Optimalizálási tolerancia** : adjon meg egy értéket, amely meghatározza a tűréshatár intervallumát az optimalizálás során. Minél kisebb az érték, annál lassabb és pontosabb a szerelvény.
+4. **Optimalizálási tolerancia**: adjon meg egy értéket, amely meghatározza a tűréshatár intervallumát az optimalizálás során. Minél kisebb az érték, annál lassabb és pontosabb a szerelvény.
 
-5. **L1 regularizációs súlyozás** és **L2 regularizációs súlyozás** : az L1 és a L2 regularizációs használandó értékek megadása. A *regularizációs* megkötéseket hoz létre a modell azon szempontjaira vonatkozóan, amelyek függetlenek a betanítási információtól. A regularizációs általában a túlilleszkedés elkerülésére használják. 
+5. **L1 regularizációs súlyozás** és **L2 regularizációs súlyozás**: az L1 és a L2 regularizációs használandó értékek megadása. A *regularizációs* megkötéseket hoz létre a modell azon szempontjaira vonatkozóan, amelyek függetlenek a betanítási információtól. A regularizációs általában a túlilleszkedés elkerülésére használják. 
 
     - Az L1 regularizációs akkor hasznos, ha a cél egy olyan modell, amely a lehető legritkább.
 
@@ -75,7 +75,7 @@ Mivel a válasz változó Poisson-eloszlással rendelkezik, a modell eltérő fe
 
     Az L1 és az L2 regularizációs jó megvitatására lásd: [L1 és L2 regularizációs Machine learning](/archive/msdn-magazine/2015/february/test-run-l1-and-l2-regularization-for-machine-learning).
 
-6. Az **L-BFGS memória mérete** : Itt adhatja meg, hogy mennyi memóriát kell lefoglalni a modell-szerelvényhez és az optimalizáláshoz.
+6. Az **L-BFGS memória mérete**: Itt adhatja meg, hogy mennyi memóriát kell lefoglalni a modell-szerelvényhez és az optimalizáláshoz.
 
      Az L-BFGS egy adott optimalizálási módszer a Broyden – Fletcher – Goldfarb – Shanno (BFGS) algoritmus alapján. A metódus korlátozott mennyiségű memóriát (L) használ a következő lépés irányának kiszámításához.
 
@@ -103,6 +103,6 @@ A betanítás befejezése után:
 
 + Ha menteni szeretné a betanított modell pillanatképét, válassza ki a betanítási modult, majd váltson a **kimenet + naplók** lapra a jobb oldali panelen. Kattintson az ikonra az **adatkészlet regisztrálása** elemre.  A mentett modellt megtalálhatja modulként a modul fájában. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) .

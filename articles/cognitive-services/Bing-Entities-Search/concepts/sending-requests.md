@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
 ms.openlocfilehash: ad6d89fec9f2c94129e19c09ee3e1e76d5bb6e44
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96353272"
 ---
 # <a name="sending-search-requests-to-the-bing-entity-search-api"></a>Keresési kérelmek küldése a Bing Entity Search APInak
@@ -137,7 +137,7 @@ BingAPIs-Market: en-US
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Entitások keresése a Bing Entity API-val](search-for-entities.md)
 * [A Bing API használatának és megjelenítési követelményei](../../bing-web-search/use-display-requirements.md)

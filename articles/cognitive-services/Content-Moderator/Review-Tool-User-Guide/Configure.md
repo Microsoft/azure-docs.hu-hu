@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
 ms.openlocfilehash: 8812fd1e6c1efb2aa44c77573bc4b8f1c099834d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92912021"
 ---
 # <a name="configure-the-review-tool"></a>A felülvizsgálati eszköz konfigurálása
@@ -66,7 +66,7 @@ Ha egynél több alcsapat tagja, válthat az alcsoportok között, hogy megvált
 
 ## <a name="tags"></a>Címkék
 
-A **címkék** lapon egyéni moderálási címkéket határozhat meg a két alapértelmezett moderálási címke &mdash; **isadult** ( **a** ) és a **isracy** ( **r** ) mellett. Ha egyéni címkét hoz létre, az az alapértelmezett címkékkel együtt elérhetővé válik az értékelésekben. A láthatósági beállítások átváltásával megváltoztathatja, hogy mely címkék jelenjenek meg az értékelésekben.
+A **címkék** lapon egyéni moderálási címkéket határozhat meg a két alapértelmezett moderálási címke &mdash; **isadult** (**a**) és a **isracy** (**r**) mellett. Ha egyéni címkét hoz létre, az az alapértelmezett címkékkel együtt elérhetővé válik az értékelésekben. A láthatósági beállítások átváltásával megváltoztathatja, hogy mely címkék jelenjenek meg az értékelésekben.
 
 ![Címkék nézet, beleértve a "látható" jelölőnégyzeteket](images/tags-4-disable.png)
 
@@ -74,9 +74,9 @@ A **címkék** lapon egyéni moderálási címkéket határozhat meg a két alap
 
 Új címke létrehozásához meg kell adnia egy rövid kódot, egy nevet és egy leírást a megfelelő mezőkben.
 
-- **Rövid kód** : adjon meg egy kétbetűs kódot a címkéhez. Példa: **CB**
-- **Név** : adjon meg egy rövid és egy leíró címkét a szóköz nélküli kisbetűs mezőben. Példa: **isbullying** .
-- **Leírás** : (nem kötelező) adja meg annak a tartalomnak a leírását, amelyet a címkét céloz meg. Példa: **a számítógépes zaklatás ábrázolásai vagy példányai** .
+- **Rövid kód**: adjon meg egy kétbetűs kódot a címkéhez. Példa: **CB**
+- **Név**: adjon meg egy rövid és egy leíró címkét a szóköz nélküli kisbetűs mezőben. Példa: **isbullying**.
+- **Leírás**: (nem kötelező) adja meg annak a tartalomnak a leírását, amelyet a címkét céloz meg. Példa: **a számítógépes zaklatás ábrázolásai vagy példányai**.
 
 Kattintson a **Hozzáadás** elemre egy címke hozzáadásához, majd kattintson a **Mentés** gombra, amikor elkészült a címkék létrehozásával.
 
