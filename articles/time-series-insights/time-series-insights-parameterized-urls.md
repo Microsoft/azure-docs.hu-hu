@@ -11,10 +11,10 @@ ms.workload: big-data
 ms.date: 10/02/2020
 ms.custom: seodec18
 ms.openlocfilehash: 9bf857a66643b1e95ea2559601761a7217babad4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91665327"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Egyéni nézet megosztása paraméteres URL-cím használatával
@@ -69,7 +69,7 @@ Az elfogadott értékek a Azure Time Series Insights Explorer **gyors idő** men
 
 A `timeSeriesDefinitions=<collection of term objects>` paraméter olyan predikátum-kifejezéseket határoz meg, amelyek egy Azure Time Series Insights nézetben fognak megjelenni:
 
-| Paraméter | URL-tétel | Leírás |
+| Paraméter | URL-tétel | Description |
 | --- | --- | --- |
 | **név** | `\<string>` | A *kifejezés* neve. |
 | **splitBy** | `\<string>` | A *felosztás* alapjául szolgáló oszlop neve. |
@@ -86,11 +86,11 @@ A `timeSeriesDefinitions=<collection of term objects>` paraméter olyan prediká
 * A `timeBucketUnit=<Unit>&timeBucketSize=<integer>` lehetővé teszi az intervallum csúszkájának módosítását, hogy a diagram részletesebb vagy simább legyen.  
 * A `timezoneOffset=<integer>` paraméter lehetővé teszi, hogy beállítsa a diagram időzónáját, amelyet az UTC szerint kell megtekinteni.
 
-| Pár (ok) | Leírás |
+| Pár (ok) | Description |
 | --- | --- |
 | `multiChartStack=false` | `true` Alapértelmezés szerint engedélyezve van, ezért adja át `false` a stack-nek. |
 | `multiChartStack=false&multiChartSameScale=true` | A rétegezést engedélyeznie kell az azonos Y tengely irányú skálázás több feltételben való használatához.  Alapértelmezés szerint ez a `false` `true` funkció lehetővé teszi ezt a funkciót. |
-| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | Egység = `days` , `hours` , `minutes` , `seconds` , `milliseconds` .  Az egység nevét mindig nagybetűvel írja. </br> Adja meg az egységek számát az **timeBucketSize**kívánt egész számának átadásával.  |
+| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | Egység = `days` , `hours` , `minutes` , `seconds` , `milliseconds` .  Az egység nevét mindig nagybetűvel írja. </br> Adja meg az egységek számát az **timeBucketSize** kívánt egész számának átadásával.  |
 | `timezoneOffset=-<integer>` | Az egész számot mindig ezredmásodpercben kell megadnia. |
 
 > [!NOTE]
@@ -110,7 +110,7 @@ Az idősorozat-definíciók használata a következőhöz:
 
 * A környezeti azonosító
 * Az utolsó 60 perc
-* A választható paramétereket tartalmazó feltételek (**F1PressureID**, **F2TempStation**és **F3VibrationPL**)
+* A választható paramétereket tartalmazó feltételek (**F1PressureID**, **F2TempStation** és **F3VibrationPL**)
 
 A nézethez a következő paraméteres URL-címet hozhatja létre:
 

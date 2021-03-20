@@ -12,10 +12,10 @@ ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d77e145cabcef2931d5fe6e76599da7931e576e8
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97669159"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>AZONOSÍTÓ jogkivonat-útmutató technikai profiljának definiálása egy Azure Active Directory B2C egyéni házirendben
@@ -185,7 +185,7 @@ A jogkivonat kiállítójának a következő végpontokat kell megadnia:
 * `/.well-known/openid-configuration` – Egy jól ismert konfigurációs végpont, amely a jogkivonattal kapcsolatos információkat, például a jogkivonat kiállítójának nevét és a JWK-végpontra mutató hivatkozást mutat be. 
 * `/.well-known/keys` – a JSON webkulcs (JWK) végpontja a kulcs aláírásához használt nyilvános kulccsal (a tanúsítvány titkos kulcsával).
 
-Tekintse meg a [TokenMetadataController.cs](https://github.com/azure-ad-b2c/id-token-builder/blob/master/source-code/B2CIdTokenBuilder/Controllers/TokenMetadataController.cs) .net MVC vezérlő mintát.
+Tekintse meg a [TokenMetadataController. cs](https://github.com/azure-ad-b2c/id-token-builder/blob/master/source-code/B2CIdTokenBuilder/Controllers/TokenMetadataController.cs) .net MVC vezérlő mintát.
 
 #### <a name="step-1-prepare-a-self-signed-certificate"></a>1. lépés Önaláírt tanúsítvány előkészítése
 

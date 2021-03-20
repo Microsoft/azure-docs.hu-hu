@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: cb9d8edd24dcc8809f2b207a4db80653b0e140e4
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98014036"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Egyéni blob kimeneti particionálás Azure Stream Analytics
@@ -78,7 +78,7 @@ Az egyéni DateTime elérésiút-minták lehetővé teszik olyan kimeneti formá
 
 A következő formátumú megadási jogkivonatok használhatók önállóan vagy kombinálva egyéni DateTime formátumok eléréséhez:
 
-|Megadási formátum   |Leírás   |Az eredmények például 2018-01-02T10:06:08|
+|Megadási formátum   |Description   |Az eredmények például 2018-01-02T10:06:08|
 |----------|-----------|------------|
 |{datetime: ÉÉÉÉ}|Az év egy négyjegyű számként|2018|
 |{datetime: PP}|Hónap, 01 és 12 között|01|
@@ -136,6 +136,6 @@ A művelet elindításakor a rendszer a blob-tárolóban létrehozza az elérés
 
 ![BLOB-kimenet Stream Analytics egyéni elérésiút-mintázattal](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-output-folder-structure.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Azure Stream Analytics kimenetének megismerése](stream-analytics-define-outputs.md)

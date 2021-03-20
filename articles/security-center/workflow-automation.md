@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/04/2021
 ms.author: memildin
 ms.openlocfilehash: 6268ff6cfb3d3e856edcd8f84af930d52f4cf9d3
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102096173"
 ---
 # <a name="automate-responses-to-security-center-triggers"></a>Security Center eseményindítóra adott válaszok automatizálása
@@ -29,7 +29,7 @@ Ez a cikk a Azure Security Center munkafolyamat-automatizálási szolgáltatás�
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|Ingyenes|
 |Szükséges szerepkörök és engedélyek:|**Biztonsági rendszergazdai szerepkör** vagy **tulajdonos** az erőforráscsoporthoz<br>A cél erőforráshoz is írási engedéllyel kell rendelkeznie<br><br>Azure Logic Apps munkafolyamatok használatához a következő Logic Apps szerepköröket/engedélyeket is meg kell adni:<br> - A [Logic app-operátor](../role-based-access-control/built-in-roles.md#logic-app-operator) engedélyei kötelezőek vagy logikai alkalmazások olvasási/aktiválási hozzáférése (ez a szerepkör nem tud logikai alkalmazásokat létrehozni vagy szerkeszteni, csak a meglévőket *futtathatja* )<br> - A logikai alkalmazás létrehozásához és módosításához a [Logic app közreműködői](../role-based-access-control/built-in-roles.md#logic-app-contributor) engedélyei szükségesek<br>Ha logikai alkalmazás-összekötőket szeretne használni, további hitelesítő adatokra lehet szüksége a saját szolgáltatásaiba való bejelentkezéshez (például az Outlook/csapatok/Slack-példányok esetében)|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 

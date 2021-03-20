@@ -11,10 +11,10 @@ author: jhirono
 ms.reviewer: larryfr
 ms.date: 09/16/2020
 ms.openlocfilehash: 7a1a63893e6e2988fc5f21e84f21c74315d856b4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93325474"
 ---
 # <a name="increase-azure-machine-learning-resiliency"></a>Növelje Azure Machine Learning rugalmasságot
@@ -32,19 +32,19 @@ Azure Machine Learning több Azure-szolgáltatástól függ, és több réteget 
 
 Az Azure-szolgáltatások a következők:
 
-* **Azure Machine learning infrastruktúra** : a Azure Machine learning munkaterület Microsoft által felügyelt környezete.
+* **Azure Machine learning infrastruktúra**: a Azure Machine learning munkaterület Microsoft által felügyelt környezete.
 
-* **Társított erőforrások** : az előfizetésben kiépített erőforrások Azure Machine learning munkaterület létrehozása során. Ezek az erőforrások például az Azure Storage, a Azure Key Vault, a Azure Container Registry és a Application Insights. Ezen erőforrások magas rendelkezésre állási beállításainak konfigurálását végzi.
+* **Társított erőforrások**: az előfizetésben kiépített erőforrások Azure Machine learning munkaterület létrehozása során. Ezek az erőforrások például az Azure Storage, a Azure Key Vault, a Azure Container Registry és a Application Insights. Ezen erőforrások magas rendelkezésre állási beállításainak konfigurálását végzi.
   * Az alapértelmezett tároló olyan adatokat tartalmaz, mint például a modell, a betanítási adat és az adatkészlet.
   * Key Vault rendelkezik az Azure Storage, a Container Registry és az adattárak hitelesítő adataival.
   * Container Registry tartalmaz egy Docker-rendszerképet a képzési és következtetési környezetekhez.
   * A Application Insights a Azure Machine Learning figyelésére szolgál.
 
-* **Számítási erőforrások** : a munkaterület telepítése után létrehozott erőforrások. Létrehozhat például egy számítási példányt vagy számítási fürtöt egy Machine Learning modell betanításához.
+* **Számítási erőforrások**: a munkaterület telepítése után létrehozott erőforrások. Létrehozhat például egy számítási példányt vagy számítási fürtöt egy Machine Learning modell betanításához.
   * Számítási példány és számítási fürt: a Microsoft által felügyelt modell-fejlesztési környezetek.
   * Egyéb erőforrások: a Microsoft számítástechnikai erőforrásai, amelyeket Azure Machine Learninghoz csatolhat, például az Azure Kubernetes Service (ak), a Azure Databricks, a Azure Container Instances és az Azure HDInsight. Ezen erőforrások magas rendelkezésre állási beállításainak konfigurálását végzi.
 
-* **További adattárak** : Azure Machine learning további adattárakat is csatlakoztathat, például az Azure Storage-t, a Azure Data Lake Storaget és a Azure SQL Database a betanítási információkhoz.  Ezek az adattárak az előfizetésen belül vannak kiépítve. A magas rendelkezésre állási beállítások konfigurálását végzi.
+* **További adattárak**: Azure Machine learning további adattárakat is csatlakoztathat, például az Azure Storage-t, a Azure Data Lake Storaget és a Azure SQL Database a betanítási információkhoz.  Ezek az adattárak az előfizetésen belül vannak kiépítve. A magas rendelkezésre állási beállítások konfigurálását végzi.
 
 Az alábbi táblázat a Microsoft által felügyelt Azure-szolgáltatásokat mutatja be, amelyeket Ön kezel, és amelyek alapértelmezés szerint nagyon elérhetők.
 
@@ -71,30 +71,30 @@ A cikk további része azokat a műveleteket ismerteti, amelyeket el kell végez
 
 Győződjön meg arról, hogy az egyes erőforrások magas rendelkezésre állási beállításait az alábbi dokumentációra hivatkozva konfigurálja:
 
-* **Azure Storage** : a magas rendelkezésre állási beállítások konfigurálásához tekintse meg az [Azure Storage redundancia](../storage/common/storage-redundancy.md)című témakört.
-* **Key Vault** : a Key Vault alapértelmezés szerint magas rendelkezésre állást biztosít, és nincs szükség felhasználói beavatkozásra.  Lásd: [Azure Key Vault rendelkezésre állás és redundancia](../key-vault/general/disaster-recovery-guidance.md).
-* **Container Registry** : válassza a prémium szintű beállításjegyzék lehetőséget a Geo-replikációhoz. Lásd: [geo-replikáció a Azure Container Registryban](../container-registry/container-registry-geo-replication.md).
-* **Application Insights** : a Application Insights nem biztosít magas rendelkezésre állási beállításokat. Az adatmegőrzési időszak és a részletek módosításához tekintse [meg a Application Insights adatgyűjtési,-megőrzési és-tárolási adatokat](../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept).
+* **Azure Storage**: a magas rendelkezésre állási beállítások konfigurálásához tekintse meg az [Azure Storage redundancia](../storage/common/storage-redundancy.md)című témakört.
+* **Key Vault**: a Key Vault alapértelmezés szerint magas rendelkezésre állást biztosít, és nincs szükség felhasználói beavatkozásra.  Lásd: [Azure Key Vault rendelkezésre állás és redundancia](../key-vault/general/disaster-recovery-guidance.md).
+* **Container Registry**: válassza a prémium szintű beállításjegyzék lehetőséget a Geo-replikációhoz. Lásd: [geo-replikáció a Azure Container Registryban](../container-registry/container-registry-geo-replication.md).
+* **Application Insights**: a Application Insights nem biztosít magas rendelkezésre állási beállításokat. Az adatmegőrzési időszak és a részletek módosításához tekintse [meg a Application Insights adatgyűjtési,-megőrzési és-tárolási adatokat](../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept).
 
 ## <a name="compute-resources"></a>Számítási erőforrások
 
 Győződjön meg arról, hogy az egyes erőforrások magas rendelkezésre állási beállításait az alábbi dokumentációra hivatkozva konfigurálja:
 
-* **Azure Kubernetes szolgáltatás** : az [Azure Kubernetes szolgáltatásban (ak) az üzletmenet folytonosságával és a vész-helyreállítással kapcsolatos ajánlott eljárások](../aks/operator-best-practices-multi-region.md) , valamint a [rendelkezésre állási zónákat használó Azure Kubernetes Service (ak)-fürt létrehozása](../aks/availability-zones.md)című témakörben talál. Ha az AK-fürt a Azure Machine Learning Studio, az SDK vagy a CLI használatával lett létrehozva, a régiók közötti magas rendelkezésre állás nem támogatott.
-* **Azure Databricks** : tekintse [meg a Azure Databricks fürtökre vonatkozó regionális vész-helyreállítást](/azure/databricks/scenarios/howto-regional-disaster-recovery).
-* **Container instances** : a Orchestrator felelős a feladatátvételért. Lásd: [Azure Container instances és Container-](../container-instances/container-instances-orchestrator-relationship.md)szervezők.
-* **HDInsight** : Tekintse meg [Az Azure HDInsight által támogatott magas rendelkezésre állású szolgáltatásokat](../hdinsight/hdinsight-high-availability-components.md).
+* **Azure Kubernetes szolgáltatás**: az [Azure Kubernetes szolgáltatásban (ak) az üzletmenet folytonosságával és a vész-helyreállítással kapcsolatos ajánlott eljárások](../aks/operator-best-practices-multi-region.md) , valamint a [rendelkezésre állási zónákat használó Azure Kubernetes Service (ak)-fürt létrehozása](../aks/availability-zones.md)című témakörben talál. Ha az AK-fürt a Azure Machine Learning Studio, az SDK vagy a CLI használatával lett létrehozva, a régiók közötti magas rendelkezésre állás nem támogatott.
+* **Azure Databricks**: tekintse [meg a Azure Databricks fürtökre vonatkozó regionális vész-helyreállítást](/azure/databricks/scenarios/howto-regional-disaster-recovery).
+* **Container instances**: a Orchestrator felelős a feladatátvételért. Lásd: [Azure Container instances és Container-](../container-instances/container-instances-orchestrator-relationship.md)szervezők.
+* **HDInsight**: Tekintse meg [Az Azure HDInsight által támogatott magas rendelkezésre állású szolgáltatásokat](../hdinsight/hdinsight-high-availability-components.md).
 
 ## <a name="additional-data-stores"></a>További adattárak
 
 Győződjön meg arról, hogy az egyes erőforrások magas rendelkezésre állási beállításait az alábbi dokumentációra hivatkozva konfigurálja:
 
-* **Azure Blob Container/Azure Files/Data Lake Storage Gen2** : ugyanaz, mint az alapértelmezett tároló.
-* **Data Lake Storage Gen1** : tekintse [meg a magas rendelkezésre állást és a vész-helyreállítási útmutatót a Data Lake Storage Gen1hoz](../data-lake-store/data-lake-store-disaster-recovery-guidance.md).
-* **SQL Database** : tekintse [meg a Azure SQL Database és az SQL felügyelt példány magas rendelkezésre állását](../azure-sql/database/high-availability-sla.md).
-* **Azure Database for PostgreSQL** : tekintse [meg a Azure Database for PostgreSQL-egyetlen kiszolgáló magas rendelkezésre állási fogalmait](../postgresql/concepts-high-availability.md).
-* **Azure Database for MySQL** : tekintse [meg az üzletmenet folytonosságának megismerése Azure Database for MySQL-ben](../mysql/concepts-business-continuity.md)című témakört.
-* **Azure Databricks fájlrendszer** : tekintse [meg a Azure Databricks fürtökre vonatkozó regionális vész-helyreállítást](/azure/databricks/scenarios/howto-regional-disaster-recovery).
+* **Azure Blob Container/Azure Files/Data Lake Storage Gen2**: ugyanaz, mint az alapértelmezett tároló.
+* **Data Lake Storage Gen1**: tekintse [meg a magas rendelkezésre állást és a vész-helyreállítási útmutatót a Data Lake Storage Gen1hoz](../data-lake-store/data-lake-store-disaster-recovery-guidance.md).
+* **SQL Database**: tekintse [meg a Azure SQL Database és az SQL felügyelt példány magas rendelkezésre állását](../azure-sql/database/high-availability-sla.md).
+* **Azure Database for PostgreSQL**: tekintse [meg a Azure Database for PostgreSQL-egyetlen kiszolgáló magas rendelkezésre állási fogalmait](../postgresql/concepts-high-availability.md).
+* **Azure Database for MySQL**: tekintse [meg az üzletmenet folytonosságának megismerése Azure Database for MySQL-ben](../mysql/concepts-business-continuity.md)című témakört.
+* **Azure Databricks fájlrendszer**: tekintse [meg a Azure Databricks fürtökre vonatkozó regionális vész-helyreállítást](/azure/databricks/scenarios/howto-regional-disaster-recovery).
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 

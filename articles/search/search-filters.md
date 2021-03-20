@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 03/02/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a5c8f835d44896a452a945614332dcbc25ca8bb8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101694427"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Szűrők az Azure Cognitive Search 
@@ -158,7 +158,7 @@ A szöveges karakterlánc megkülönbözteti a kis-és nagybetűket. A felső r�
 
 ### <a name="approaches-for-filtering-on-text"></a>A szöveg szűrésének módszerei
 
-| Módszer | Leírás | A következő esetekben használja |
+| Módszer | Description | A következő esetekben használja |
 |----------|-------------|-------------|
 | [`search.in`](search-query-odata-search-in-function.md) | Függvény, amely egy mezőnek felel meg a karakterláncok tagolt listáján. | Ajánlott [biztonsági szűrőkhöz](search-security-trimming-for-azure-search.md) és olyan szűrőkhöz, amelyekben sok nyers szöveges értéket kell összeegyeztetni egy sztring mezővel. A **Search.in** függvény sebességre lett tervezve, és sokkal gyorsabb, mint a mező explicit módon való összehasonlítása az egyes sztringekkel a és a használatával `eq` `or` . | 
 | [`search.ismatch`](search-query-odata-full-text-search-functions.md) | Függvény, amely lehetővé teszi, hogy a teljes szöveges keresési műveleteket szigorúan logikai szűrési műveletekkel keverje ugyanabban a szűrő kifejezésben. | Használja a **Search. ismatch** (vagy annak pontozási egyenértéke, **Search. ismatchscoring**) kifejezést, ha egy kérelemben több keresési kombinációt szeretne használni. Azt is megteheti, hogy egy olyan szűrőt *tartalmaz* , amely egy nagyobb sztringen belüli részleges karakterláncot szűr. |

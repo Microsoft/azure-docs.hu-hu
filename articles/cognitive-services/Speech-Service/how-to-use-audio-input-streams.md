@@ -12,10 +12,10 @@ ms.date: 07/05/2019
 ms.author: fmegen
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 87fa97dafe9de4a23f5eaadfd4083cd1ca517cde
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95026590"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>Tudnivalók a Speech SDK hangbemeneti stream API-ról
@@ -74,7 +74,7 @@ A hangbemeneti streamek használatakor a következő lépések szükségesek:
   var text = result.GetText();
   ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/cognitive-services/)
 - [Lásd: beszéd felismerése a C-ben #](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet)

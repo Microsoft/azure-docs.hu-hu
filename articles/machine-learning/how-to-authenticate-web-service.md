@@ -12,10 +12,10 @@ ms.date: 11/06/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: 5bd938fce347d439c2acb4e3fcace04d5b27d770
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94447650"
 ---
 # <a name="configure-authentication-for-models-deployed-as-web-services"></a>A webszolgáltatásként üzembe helyezett modellek hitelesítésének konfigurálása
@@ -24,8 +24,8 @@ A Azure Machine Learning segítségével webszolgáltatásként helyezheti üzem
 
 A Azure Machine Learning által létrehozott modell-telepítések a következő két hitelesítési módszer egyikének használatára konfigurálhatók:
 
-* **kulcs-alapú** : a rendszer statikus kulcsot használ a webszolgáltatáshoz való hitelesítéshez.
-* **jogkivonat-alapú** : ideiglenes jogkivonatot kell beszerezni a Azure Machine learning munkaterületről (Azure Active Directory használatával) és a webszolgáltatáshoz való hitelesítéshez. Ez a jogkivonat egy adott idő elteltével lejár, és frissíteni kell a webszolgáltatással folytatott munka folytatásához.
+* **kulcs-alapú**: a rendszer statikus kulcsot használ a webszolgáltatáshoz való hitelesítéshez.
+* **jogkivonat-alapú**: ideiglenes jogkivonatot kell beszerezni a Azure Machine learning munkaterületről (Azure Active Directory használatával) és a webszolgáltatáshoz való hitelesítéshez. Ez a jogkivonat egy adott idő elteltével lejár, és frissíteni kell a webszolgáltatással folytatott munka folytatásához.
 
     > [!NOTE]
     > A jogkivonat-alapú hitelesítés csak az Azure Kubernetes szolgáltatásban való üzembe helyezéskor érhető el.
@@ -120,6 +120,6 @@ print(token)
 >
 > Továbbá minél nagyobb a távolság a fürt régiója és a munkaterület régiója között, annál hosszabb ideig tart a token beolvasása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az üzembe helyezett modellekkel való hitelesítéssel kapcsolatos további információkért lásd: [ügyfél létrehozása webszolgáltatásként üzembe helyezett modellhez](how-to-consume-web-service.md).

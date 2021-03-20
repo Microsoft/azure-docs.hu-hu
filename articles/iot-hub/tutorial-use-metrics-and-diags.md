@@ -13,10 +13,10 @@ ms.custom:
 - devx-track-azurecli
 - devx-track-csharp
 ms.openlocfilehash: bf834a6dd648ffc8f4b1633dbb383f33cd99335f
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98625199"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>Oktatóanyag: mérőszámok és naplók beállítása és használata IoT hub használatával
@@ -333,7 +333,7 @@ Az [IoT-eszköz szimulációjára](https://github.com/Azure-Samples/azure-iot-sa
         await Task.Delay(1);
         ```
 
-    1. Mentse a módosításokat a **SimulatedDevice.cs**.
+    1. Mentse a módosításokat a **SimulatedDevice. cs** fájlba.
 
 1. A helyi terminál ablakban futtassa a következő parancsot a szükséges csomagok telepítéséhez a szimulált eszköz alkalmazáshoz:
 

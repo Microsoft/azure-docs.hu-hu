@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: aca8c75f262e472cbc770c052b86d6e760ee449a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95026471"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Azure Network Watcher NSG-forgalomnaplók vizualizációja nyílt forráskódú eszközök használatával
@@ -25,7 +25,7 @@ A hálózati biztonsági csoport folyamatábrája olyan információkat biztosí
 
 Ezek a flow-naplók nehéz kézzel elemezni és betekintést nyerni. Azonban több nyílt forráskódú eszköz is rendelkezésre áll, amelyek segítenek megjeleníteni ezeket az adatforrásokat. Ez a cikk megoldást nyújt a naplók rugalmas verem használatával történő megjelenítésére, így gyorsan indexelheti és megjelenítheti a folyamat naplóit egy Kibana-irányítópulton.
 
-## <a name="scenario"></a>Használati eset
+## <a name="scenario"></a>Eset
 
 Ebben a cikkben egy olyan megoldást hozunk létre, amely lehetővé teszi a hálózati biztonsági csoport folyamatábráinak megjelenítését a rugalmas verem használatával.  A Logstash bemeneti beépülő modulja közvetlenül a flow-naplókat tartalmazó tárolási blobból szerzi be a folyamat naplóit. Ezután a rugalmas verem használatával a rendszer indexeli a folyamat naplóit, és egy Kibana-irányítópult létrehozásához használja az információk megjelenítéséhez.
 

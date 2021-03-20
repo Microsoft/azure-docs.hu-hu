@@ -7,10 +7,10 @@ keywords: leltár, automatizálás, változás, követés
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.openlocfilehash: 2acf22ba76acdfa6152ef8966f4000aa325a9e91
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92209638"
 ---
 # <a name="manage-inventory-collection-from-vms"></a>Leltárkezelés virtuális gépekről
@@ -36,10 +36,10 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 1. Az Azure Portal bal oldali panelén válassza a **Virtuális gépek** elemet.
 2. A virtuális gépek listájában válasszon ki egy gépet.
-3. Az **erőforrás** menüben, a **műveletek**területen válassza a **leltár**elemet.
+3. Az **erőforrás** menüben, a **műveletek** területen válassza a **leltár** elemet.
 4. Válasszon ki egy Log Analytics munkaterületet az adatnaplók tárolásához.
     Ha az adott régióban nincsenek az Ön számára elérhető munkaterületek, a rendszer megkéri, hogy hozzon létre egy alapértelmezett munkaterületet és egy Automation-fiókot.
-5. A számítógép engedélyezésének megkezdéséhez válassza az **Engedélyezés**lehetőséget.
+5. A számítógép engedélyezésének megkezdéséhez válassza az **Engedélyezés** lehetőséget.
 
    ![Előkészítési lehetőségek megtekintése](./media/manage-inventory-vms/inventory-onboarding-options.png)
 
@@ -54,7 +54,7 @@ Miután az üzembe helyezés befejeződött, az állapotsáv eltűnik. A rendsze
 Alapértelmezés szerint a szoftverek, a Windows-szolgáltatások és a Linux-démonok szerepelnek a leltározás hatókörében. A Windows beállításjegyzék- és a fájlleltárának összeállításához konfigurálnia kell a leltározási beállításokat.
 
 1. A leltár lapon kattintson a lap tetején található **beállítások szerkesztése** elemre.
-2. Új gyűjteményi beállítás hozzáadásához lépjen a hozzáadni kívánt kategóriára a **Windows beállításjegyzék**, a **Windows-fájlok**vagy a **Linux-fájlok** lap kiválasztásával.
+2. Új gyűjteményi beállítás hozzáadásához lépjen a hozzáadni kívánt kategóriára a **Windows beállításjegyzék**, a **Windows-fájlok** vagy a **Linux-fájlok** lap kiválasztásával.
 3. Válassza ki a megfelelő kategóriát, majd kattintson a **Hozzáadás** gombra az oldal tetején.
 
 A következő szakaszokban információt talál a különböző kategóriákhoz konfigurálható egyes tulajdonságokról.
@@ -106,7 +106,7 @@ Ha kijelöl egy gépcsoport elemet a listából, megnyílik a számítógép-cso
 
 A számítógép csoport klónozásához kattintson a **+ klón** elemre. A csoportnak új nevet és aliast kell adnia a csoportnak. A definíció most már módosítható. A lekérdezés módosítása után kattintson a **lekérdezés ellenőrzése** lehetőségre a kijelölni kívánt gépek előnézetének megtekintéséhez. Ha elégedett a csoporttal, kattintson a **Létrehozás** gombra a számítógépcsoport létrehozásához.
 
-Ha új számítógépcsoportot szeretne létrehozni, kattintson **a + számítógépcsoport létrehozása**lehetőségre. Ezzel a gombbal megnyílik a **számítógép-csoport létrehozása** lap, ahol megadhatja az új csoportot. A csoport létrehozásához kattintson a **Létrehozás** parancsra.
+Ha új számítógépcsoportot szeretne létrehozni, kattintson **a + számítógépcsoport létrehozása** lehetőségre. Ezzel a gombbal megnyílik a **számítógép-csoport létrehozása** lap, ahol megadhatja az új csoportot. A csoport létrehozásához kattintson a **Létrehozás** parancsra.
 
 ![Új számítógépcsoport létrehozása](./media/manage-inventory-vms/create-new-group.png)
 
@@ -114,15 +114,15 @@ Ha új számítógépcsoportot szeretne létrehozni, kattintson **a + számító
 
 A virtuális gép eltávolítása a Change Tracking és a leltár-kezelésből:
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **log Analytics**lehetőséget, majd válassza ki azt a munkaterületet, amelyet a virtuális gép Change Trackinghoz és leltárhoz való engedélyezésekor használt.
+1. A Azure Portal bal oldali ablaktábláján válassza a **log Analytics** lehetőséget, majd válassza ki azt a munkaterületet, amelyet a virtuális gép Change Trackinghoz és leltárhoz való engedélyezésekor használt.
 2. A **log Analytics** lapon nyissa meg az **erőforrás** menüt.
-3. Válassza a **Virtual Machines** lehetőséget a **munkaterület-adatforrások**területen.
+3. Válassza a **Virtual Machines** lehetőséget a **munkaterület-adatforrások** területen.
 4. A listából válassza ki a leválasztani kívánt virtuális gépet. A gép a **OMS-kapcsolatok** oszlopban a **munkaterület** mellett zöld pipa jelöl.
 
    >[!NOTE]
    >Az Operations Management Suite (OMS) mostantól Azure Monitor naplók néven is ismert.
 
-5. A következő lap tetején kattintson a **Leválasztás**elemre.
+5. A következő lap tetején kattintson a **Leválasztás** elemre.
 6. A megerősítést kérő ablakban kattintson az **Igen** gombra a gép a felügyelet alól való leválasztásához.
 
 >[!NOTE]

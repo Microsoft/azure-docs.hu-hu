@@ -13,10 +13,10 @@ ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
 ms.openlocfilehash: efb3ee24add847baf8264eccdf71278be5ee9496
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91536970"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Munkahelyi eszköz csatlakoztatása a szervezet hálózatához
@@ -57,11 +57,11 @@ Ha az eszköz teljesen új, és még nincs beállítva, átléphet a Windows be�
 ## <a name="to-make-sure-youre-joined-new-device"></a>Annak ellenőrzése, hogy csatlakozik-e (új eszköz)
 Győződjön meg arról, hogy a beállításait megtekinti.
 
-1. Nyissa meg a **Beállítások**, majd a **fiókok**elemet.
+1. Nyissa meg a **Beállítások**, majd a **fiókok** elemet.
 
     ![Fiókok a beállítások képernyőn](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Válassza a **hozzáférés munkahelyi vagy iskolai**rendszerhez lehetőséget, és győződjön meg arról, hogy az ** *\<your_organization>* Azure ad-hez kapcsolódóan**hasonló szöveg jelenik meg.
+2. Válassza a **hozzáférés munkahelyi vagy iskolai** rendszerhez lehetőséget, és győződjön meg arról, hogy az ***\<your_organization>* Azure ad-hez kapcsolódóan** hasonló szöveg jelenik meg.
 
     ![Képernyőfelvétel: a "Connected to (Your Organization) Azure AD" fiókot tartalmazó "hozzáférés munkahelyi vagy iskolai" ablak.](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
@@ -69,21 +69,21 @@ Győződjön meg arról, hogy a beállításait megtekinti.
 ## <a name="to-join-an-already-configured-windows-10-device"></a>Csatlakozás egy már konfigurált Windows 10-es eszközhöz
 Ha már beállította az eszközét, és már be van állítva, akkor az alábbi lépéseket követve csatlakoztathatja az eszközt a hálózathoz.
 
-1. Nyissa meg a **Beállítások**, majd a **fiókok**elemet.
+1. Nyissa meg a **Beállítások**, majd a **fiókok** elemet.
 
-2. Válassza a **hozzáférés munkahelyi vagy iskolai**rendszerhez, majd a **Kapcsolódás**lehetőséget.
+2. Válassza a **hozzáférés munkahelyi vagy iskolai** rendszerhez, majd a **Kapcsolódás** lehetőséget.
 
     ![Munkahelyi vagy iskolai hozzáférés és hivatkozások összekapcsolása](./media/user-help-join-device-on-network/join-device-access-work-school-connect.png)
 
-3. A **munkahelyi vagy iskolai fiók beállítása** képernyőn válassza az **eszköz csatlakoztatása a Azure Active Directory**lehetőséget.
+3. A **munkahelyi vagy iskolai fiók beállítása** képernyőn válassza az **eszköz csatlakoztatása a Azure Active Directory** lehetőséget.
 
     ![Munkahelyi vagy iskolai fiók képernyőjének beállítása](./media/user-help-join-device-on-network/join-device-setup-join-aad.png)
 
-4. A **bejelentkezett** képernyőn írja be az e-mail-címét (például: alain@contoso.com ), majd kattintson a **tovább**gombra.
+4. A **bejelentkezett** képernyőn írja be az e-mail-címét (például: alain@contoso.com ), majd kattintson a **tovább** gombra.
 
     ![A bejelentkezett képernyő beolvasása](./media/user-help-join-device-on-network/join-device-setup-get-signed-in.png)
 
-5. A **jelszó megadása** képernyőn írja be a jelszót, majd válassza a **Bejelentkezés**lehetőséget.
+5. A **jelszó megadása** képernyőn írja be a jelszót, majd válassza a **Bejelentkezés** lehetőséget.
 
     ![Jelszó megadása](./media/user-help-join-device-on-network/join-device-setup-password.png)
 
@@ -91,22 +91,22 @@ Ha már beállította az eszközét, és már be van állítva, akkor az alábbi
 
     ![Mobil értesítési képernyő](./media/user-help-join-device-on-network/join-device-setup-mobile.png)
 
-7. A győződjön meg róla, hogy  **Ez a szervezet** képernyő, tekintse át az adatokat, és győződjön meg arról, hogy a megfelelő, majd válassza a **Csatlakozás**lehetőséget.
+7. A győződjön meg róla, hogy  **Ez a szervezet** képernyő, tekintse át az adatokat, és győződjön meg arról, hogy a megfelelő, majd válassza a **Csatlakozás** lehetőséget.
 
     ![Győződjön meg arról, hogy a szervezet ellenőrző képernyője](./media/user-help-join-device-on-network/join-device-setup-confirm.png)
 
-8. Az **összes beállított** képernyőn kattintson a **kész**gombra.
+8. Az **összes beállított** képernyőn kattintson a **kész** gombra.
 
     ![Az összes beállított képernyő](./media/user-help-join-device-on-network/join-device-setup-finish.png)
 
 ## <a name="to-make-sure-youre-joined"></a>Annak ellenőrzése, hogy csatlakozik-e
 Győződjön meg arról, hogy a beállításait megtekinti.
 
-1. Nyissa meg a **Beállítások**, majd a **fiókok**elemet.
+1. Nyissa meg a **Beállítások**, majd a **fiókok** elemet.
 
     ![Fiókok a beállítások képernyőn](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Válassza a **hozzáférés munkahelyi vagy iskolai**rendszerhez lehetőséget, és győződjön meg arról, hogy az ** *\<your_organization>* Azure ad-hez kapcsolódóan**hasonló szöveg jelenik meg.
+2. Válassza a **hozzáférés munkahelyi vagy iskolai** rendszerhez lehetőséget, és győződjön meg arról, hogy az ***\<your_organization>* Azure ad-hez kapcsolódóan** hasonló szöveg jelenik meg.
 
     ![Munkahelyi vagy iskolai képernyő elérése csatlakoztatott contoso-fiókkal](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 

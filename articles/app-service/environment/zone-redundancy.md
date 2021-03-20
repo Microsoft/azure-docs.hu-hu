@@ -8,10 +8,10 @@ ms.date: 07/15/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 383b5bb5c7295fe54efda883e47b9b2338286de5
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98624725"
 ---
 # <a name="availability-zone-support-for-app-service-environments"></a>A rendelkezésre állási zónák támogatása App Service környezetekben
@@ -49,9 +49,9 @@ A régión belüli ILB-előállítók által üzembe helyezett alkalmazások tov
 
 A ILB ASE kell létrehozni az ARM-sablonok használatával. Miután egy zóna-sablonnal létrehozta a zónákhoz tartozó ILB, a Azure Portal és a CLI használatával megtekintheti és kezelheti.  Egy ARM-sablonra csak a zóna ILB bevezető létrehozásakor van szükség.
 
-Az ARM-sablonban csak az új ***Zones** _ tulajdonságot kell megadnia, hogy megadják a zónákhoz tartozó ILB. A _*_zónák_*_ tulajdonságot "1", "2" vagy "3" értékre kell állítani attól függően, hogy milyen logikai rendelkezésre állási zónában kell RÖGZÍTENI a ILB-előállítók által használt értéket.
+Az ARM-sablonban csak az új ***Zones** _ tulajdonságot kell megadnia, hogy megadják a zónákhoz tartozó ILB. A _ *_Zones_** tulajdonság értékét "1", "2" vagy "3" értékre kell állítani attól függően, hogy milyen logikai rendelkezésre állási zónában kell rögzítenie a ILB-előállítók által rögzített értéket.
 
-Az alábbi példa ARM-sablon az új _*_zónák_*_ tulajdonságot mutatja be, amely azt határozza meg, hogy a ILB beadása a 2. zónára legyen rögzítve.
+Az alábbi példa ARM-sablon az új ***zónák*** tulajdonságot mutatja be, amely azt határozza meg, hogy a ILB beadása a 2. zónára legyen rögzítve.
 
 ```
    "resources": [
@@ -89,6 +89,6 @@ Az egyrégiós adattárolást az ügyfelek az "App Service Environment üzembe h
 
 Az alábbi lépések végrehajtásával ellenőrizheti, hogy az App Service Environment megfelelően van-e konfigurálva egyetlen régióban tárolt adattároláshoz: 
 
-1. A [erőforrás-kezelő](https://resources.azure.com)használatával navigáljon a app Service Environment ARM-erőforráshoz.  A ASE a _providers/Microsoft.Web/hostingEnvironments * alatt vannak felsorolva.
+1. A [erőforrás-kezelő](https://resources.azure.com)használatával navigáljon a app Service Environment ARM-erőforráshoz.  A ASE a *szolgáltatók/Microsoft. Web/hostingEnvironments* területen találhatók.
 2. Ha egy *Zones* tulajdonság létezik az ARM JSON-szintaxis nézetében, és egyetlen értékű JSON-tömböt tartalmaz, amelynek értéke "1", "2" vagy "3", akkor a zonally üzembe helyezése és az ügyféladatok ugyanabban a régióban maradnak.
 2. Ha a *Zones tulajdonság nem* létezik, vagy a tulajdonság nem rendelkezik a korábban megadott értékkel, akkor a zonally nincs telepítve, és az ügyféladatok nem kizárólag ugyanabban a régióban tárolódnak.

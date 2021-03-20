@@ -4,10 +4,10 @@ description: 'Oktatóanyag: az adatrendellenességek megjelenítése a Microsoft
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.openlocfilehash: bd08d611761e125fdd03173ce6027c60e82baed6
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98623459"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Oktatóanyag – Az Azure Event Hubsba küldött valós idejű események adatanomáliáinak vizualizációja
@@ -16,7 +16,7 @@ Az Azure Event Hubsban az Azure Stream Analytics használatával ellenőrizheti 
 
 Ebben az oktatóanyagban ezt a példát szimulálja. Futtatni fog egy alkalmazást, amely hitelkártya-tranzakciókat hoz létre, és elküldi őket egy eseményközpontba. Ezután olvassa el az adatstreamet valós időben a Azure Stream Analytics használatával, amely elválasztja az érvénytelen tranzakcióktól származó érvényes tranzakciókat, majd a Power BI segítségével vizuálisan azonosítja az érvénytelenként megjelölt tranzakciókat.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Event Hubs-névtér létrehozása
 > * Eseményközpont létrehozása

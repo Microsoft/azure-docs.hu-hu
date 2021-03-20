@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
 ms.openlocfilehash: 62f147104cf9e0e1605b02a420cb6d20190361b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89657460"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Munkafolyamat-műveleteket futtató kapcsolói utasítások létrehozása a Azure Logic Apps adott értékei alapján
@@ -34,15 +34,15 @@ Tegyük fel például, hogy egy olyan logikai alkalmazást szeretne, amely kül�
      ![Válassza a "jóváhagyó e-mail küldése" lehetőséget.](./media/logic-apps-control-flow-switch-statement/send-approval-email-action.png)
 
   1. Adja meg a kötelező mezőket, például a jóváhagyási e-mailt küldő személy e-mail-címét. 
-  A **felhasználói beállítások**alatt adja meg a "jóváhagyás, elutasítás" lehetőséget.
+  A **felhasználói beállítások** alatt adja meg a "jóváhagyás, elutasítás" lehetőséget.
 
      ![Adja meg az e-mail adatait](./media/logic-apps-control-flow-switch-statement/send-approval-email-details.png)
 
 ## <a name="add-switch-statement"></a>Switch-utasítás hozzáadása
 
-1. Ebben a példában adjon hozzá egy switch utasítást a minta munkafolyamatának végén. Az utolsó lépés után válassza az **új lépés**lehetőséget.
+1. Ebben a példában adjon hozzá egy switch utasítást a minta munkafolyamatának végén. Az utolsó lépés után válassza az **új lépés** lehetőséget.
 
-   Ha a lépések között egy switch utasítást szeretne hozzáadni, vigye a mutatót arra a nyílra, ahová a Switch utasítást hozzá szeretné adni. Válassza ki a megjelenő **pluszjelet** ( **+** ), majd válassza a **művelet hozzáadása**lehetőséget.
+   Ha a lépések között egy switch utasítást szeretne hozzáadni, vigye a mutatót arra a nyílra, ahová a Switch utasítást hozzá szeretné adni. Válassza ki a megjelenő **pluszjelet** ( **+** ), majd válassza a **művelet hozzáadása** lehetőséget.
 
 1. A keresőmezőbe írja be szűrőként a "Switch" kifejezést. Válassza ki ezt a műveletet: **switch-Control**
 
@@ -57,7 +57,7 @@ Tegyük fel például, hogy egy olyan logikai alkalmazást szeretne, amely kül�
 
    ![Válassza a "SelectedOption" lehetőséget](./media/logic-apps-control-flow-switch-statement/select-selected-option.png)
 
-1. Az esetek, amikor a jóváhagyó kiválasztja `Approve` vagy `Reject` , adjon hozzá egy másik esetet az **eset** és az **alapértelmezett érték**között. 
+1. Az esetek, amikor a jóváhagyó kiválasztja `Approve` vagy `Reject` , adjon hozzá egy másik esetet az **eset** és az **alapértelmezett érték** között. 
 
    ![Újabb eset hozzáadása](./media/logic-apps-control-flow-switch-statement/switch-plus.png)
 
@@ -65,9 +65,9 @@ Tegyük fel például, hogy egy olyan logikai alkalmazást szeretne, amely kül�
 
    | Esetben # | **SelectedOption** | Művelet |
    |--------|--------------------|--------|
-   | 1. eset | **Jóváhagyás** | Adja hozzá az Outlook **E-mail küldése** műveletet, amely csak akkor küldi el az RSS-elem részleteit, ha a jóváhagyó a **jóváhagyást**választotta. |
+   | 1. eset | **Jóváhagyás** | Adja hozzá az Outlook **E-mail küldése** műveletet, amely csak akkor küldi el az RSS-elem részleteit, ha a jóváhagyó a **jóváhagyást** választotta. |
    | 2. eset | **Elutasítás** | Adja hozzá az Outlook **E-mail küldése** műveletet az RSS-elem elutasításához szükséges más jóváhagyók értesítéséhez. |
-   | Alapértelmezett | Nincs | Nincs szükség beavatkozásra. Ebben a példában az **alapértelmezett** eset üres, mert a **SelectedOption** csak két lehetőséggel rendelkezik. |
+   | Alapértelmezett | Nincsenek | Nincs szükség beavatkozásra. Ebben a példában az **alapértelmezett** eset üres, mert a **SelectedOption** csak két lehetőséggel rendelkezik. |
    |||
 
    ![Befejezett switch utasítás](./media/logic-apps-control-flow-switch-statement/finished-switch.png)
@@ -110,7 +110,7 @@ Most, hogy egy switch utasítás használatával létrehozott egy logikai alkalm
 }
 ```
 
-| Címke | Leírás |
+| Címke | Description |
 |-------|-------------|
 | `"Switch"`         | A Switch utasítás neve, amelyet átnevezni lehet az olvashatóság érdekében |
 | `"type": "Switch"` | Megadja, hogy a művelet egy switch utasítás |

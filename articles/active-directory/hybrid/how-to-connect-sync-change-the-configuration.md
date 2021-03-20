@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2044653673da10de59d5ff125da44ac1f89e22f9
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861850"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect szinkronizálás: az alapértelmezett konfiguráció módosítása
@@ -84,7 +84,7 @@ Nyissa meg a **szinkronizálási szolgáltatást** a **Start** menüből. Az ebb
 
 **Teljes szinkronizálás minden objektumon**  
 
-   1. Válassza a felső **Összekötők** lehetőséget. Azonosítsa az előző szakaszban módosított összekötőt (ebben az esetben Active Directory tartományi szolgáltatások), majd jelölje ki. 
+   1. Válassza a felső **Összekötők** lehetőséget. Azonosítsa az előző szakaszban módosított összekötőt (ebben az esetben Active Directory Domain Services), majd jelölje ki. 
    2. A **műveletek** területen válassza a **Futtatás** lehetőséget.
    3. Válassza a **teljes szinkronizálás** lehetőséget, majd kattintson **az OK gombra**.
    ![Teljes szinkronizálás](./media/how-to-connect-sync-change-the-configuration/fullsync.png)  
@@ -92,7 +92,7 @@ Nyissa meg a **szinkronizálási szolgáltatást** a **Start** menüből. Az ebb
 
 **Előzetes verzió és teljes szinkronizálás egyetlen objektumon**  
 
-   1. Válassza a felső **Összekötők** lehetőséget. Azonosítsa az előző szakaszban módosított összekötőt (ebben az esetben Active Directory tartományi szolgáltatások), majd jelölje ki.
+   1. Válassza a felső **Összekötők** lehetőséget. Azonosítsa az előző szakaszban módosított összekötőt (ebben az esetben Active Directory Domain Services), majd jelölje ki.
    2. Válassza a **Keresés összekötő terület** lehetőséget. 
    3. A **hatókör** használatával megkeresheti a módosítás teszteléséhez használni kívánt objektumot. Jelölje ki az objektumot, majd kattintson az **előnézet** gombra. 
    4. Az új képernyőn válassza a **véglegesítés várható eredménye** lehetőséget.  
@@ -230,7 +230,7 @@ Ha nem szeretné, hogy az Azure AD nem kívánt módosításait ne exportálja, 
 
  1. Indítsa el a PowerShell-munkamenetet a Azure AD Connect-kiszolgálón.
  2. A parancsmag futtatásával tiltsa le az ütemezett szinkronizálást `Set-ADSyncScheduler -SyncCycleEnabled $false` .
- 3. A **Start**  >  **szinkronizálási szolgáltatás** elindításához nyissa meg a synchronization Service Manager.
+ 3. A   >  **szinkronizálási szolgáltatás** elindításához nyissa meg a synchronization Service Manager.
  4. Lépjen az **Operations (műveletek** ) lapra, és ellenőrizze, hogy nincs *-e folyamatban* állapotú művelet.
 
 ### <a name="step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema"></a>2. lépés: a forrás attribútum hozzáadása a helyszíni AD Connector sémához
@@ -264,8 +264,8 @@ A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútumért�
 
     | Attribútum | Érték | Részletek |
     | --- | --- | --- |
-    | Név | *Adjon meg egy nevet* | Például az *ad – User UserType* |
-    | Leírás | *Adja meg a leírást* |  |
+    | Name | *Adjon meg egy nevet* | Például az *ad – User UserType* |
+    | Description | *Adja meg a leírást* |  |
     | Csatlakoztatott rendszerek | *A helyszíni AD-összekötő kiválasztása* |  |
     | Csatlakoztatott rendszerobjektum típusa | **Felhasználó** |  |
     | Metaverse objektum típusa | **Személy** |  |
@@ -276,7 +276,7 @@ A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútumért�
 
     | Attribútum | Operátor | Érték |
     | --- | --- | --- |
-    | adminDescription | NOTSTARTWITH | Felhasználó\_ |
+    | adminDescription | NOTSTARTWITH | Felhasználói\_ |
 
     A hatóköri szűrő határozza meg, hogy mely helyszíni AD-objektumokra vonatkozik ez a bejövő szinkronizálási szabály. Ebben a példában ugyanazt a hatókör-szűrőt használjuk, amelyet a *in ad – User Common* out-of-box szinkronizációs szabály használ, amely megakadályozza, hogy a szinkronizálási szabály az Azure ad felhasználói visszaírási szolgáltatáson keresztül létrehozott felhasználói objektumokra legyen alkalmazva. Előfordulhat, hogy a Azure AD Connect központi telepítésének megfelelően kell megcsípése a hatókör-szűrőt.
 
@@ -306,8 +306,8 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
 
     | Attribútum | Érték | Részletek |
     | ----- | ------ | --- |
-    | Név | *Adjon meg egy nevet* | Például *a HRE – User UserType* |
-    | Leírás | *Adja meg a leírást* ||
+    | Name | *Adjon meg egy nevet* | Például *a HRE – User UserType* |
+    | Description | *Adja meg a leírást* ||
     | Csatlakoztatott rendszerek | *Válassza ki a HRE-összekötőt* ||
     | Csatlakoztatott rendszerobjektum típusa | **Felhasználó** ||
     | Metaverse objektum típusa | **Személy** ||
@@ -318,7 +318,7 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
 
     | Attribútum | Operátor | Érték |
     | --- | --- | --- |
-    | sourceObjectType | EGYENLŐ | Felhasználó |
+    | sourceObjectType | EGYENLŐ | User |
     | cloudMastered | NOTEQUAL | Igaz |
 
     A hatóköri szűrő határozza meg, hogy mely Azure AD-objektumokra vonatkozik ez a kimenő szinkronizálási szabály. Ebben a példában ugyanezt a hatókör-szűrőt használjuk a *kimenetből az ad-user identity* out-of-box szinkronizációs szabály alapján. Megakadályozza, hogy a szinkronizálási szabály olyan felhasználói objektumokra legyen alkalmazva, amelyek nincsenek szinkronizálva a helyszíni Active Directory. Előfordulhat, hogy a Azure AD Connect központi telepítésének megfelelően kell megcsípése a hatókör-szűrőt.

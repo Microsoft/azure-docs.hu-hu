@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, vanto
 ms.date: 11/09/2018
 ms.openlocfilehash: 3106ec1a45b307207624e5cd077a222acccc83d1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101692827"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Alkalmazás csatlakoztatása felügyelt Azure SQL-példányhoz
@@ -139,7 +139,7 @@ A kapcsolódási problémák elhárításához tekintse át a következőket:
 
 - Ha virtuális hálózati társítást használ egy Azure App Service üzemeltetett alkalmazáshoz való kapcsolódáshoz, és az SQL felügyelt példány virtuális hálózata nyilvános IP-címtartományt tartalmaz, akkor győződjön meg arról, hogy az üzemeltetett alkalmazás beállításai lehetővé teszik a kimenő forgalom átirányítását a nyilvános IP-hálózatokra. Kövesse a [regionális virtuális hálózatok integrációjának](../../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)utasításait.
 
-## <a name="required-versions-of-drivers-and-tools"></a>Az illesztőprogramok és az eszközök szükséges verziói
+## <a name="required-versions-of-drivers-and-tools"></a>Az illesztőprogramok és eszközök szükséges verziói
 
 Az eszközök és illesztőprogramok következő minimális verziói ajánlottak, ha csatlakozni szeretne az SQL felügyelt példányához:
 

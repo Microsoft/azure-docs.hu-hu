@@ -8,10 +8,10 @@ ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
 ms.openlocfilehash: 7260683ab42a64381f80af834ee2b3945b0c1e4c
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94490916"
 ---
 # <a name="azure-for-students"></a>Azure for Students
@@ -25,7 +25,7 @@ A rendelkezésre álló kreditek kimerítése vagy a 12 hónapos időszak lejár
 Az Azure diákoknak szóló részletes használati feltételeinek megtekintéséhez tekintse meg az [ajánlat feltételeit](https://azure.microsoft.com/offers/ms-azr-0170p/).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Segítség kérése bejelentkezési hibákhoz](troubleshoot-login.md)
 - [Szoftver letöltése (Azure diákoknak)](download-software.md)
 - [Azure diákoknak kezdőknek – áttekintés](azure-students-starter-program.md)

@@ -10,21 +10,21 @@ ms.topic: conceptual
 ms.subservice: spark
 ms.date: 03/31/2020
 ms.openlocfilehash: f34bcfa8b743fbee6ee3b78fc1a042d1df0abfde
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93313639"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>Az Azure szinapszis Analytics Apache Spark-készletek automatikus méretezése
 
-Az Azure szinapszis Analytics-készlet automatikus méretezési funkciójának Apache Spark automatikusan méretezi a fürtben lévő csomópontok számát. Az Azure szinapszis Analytics-készlethez készült új Apache Spark létrehozása során a csomópontok minimális és maximális száma beállítható az autoscale kiválasztásakor. Az automatikus skálázás ezután figyeli a terhelés erőforrás-követelményeit, és a csomópontok számát felfelé vagy lefelé méretezi. Ehhez a szolgáltatáshoz nem számítunk fel további díjat.
+Az Azure Synapse Analyticshez készült Apache Spark-készlet automatikus skálázási funkciója automatikusan fel- és leskálázza a fürtpéldányban lévő csomópontok számát. Egy új Azure Synapse Analyticshez készült Apache Spark-készlet létrehozásakor megadhatja a csomópontok minimális és maximális számát, ha az automatikus skálázás ki lett választva. Az automatikus skálázás ezután monitorozza a terhelés erőforrás-követelményeit, és fel- vagy leskálázza a csomópontok számát. Ez a funkció felár nélkül használható.
 
 ## <a name="metrics-monitoring"></a>Metrikák figyelése
 
 Az autoscale folyamatosan figyeli a Spark-példányt, és a következő metrikákat gyűjti:
 
-|Metrika|Leírás|
+|Metric|Leírás|
 |---|---|
 |Függőben lévő CPU összesen|Az összes függőben lévő csomópont végrehajtásának megkezdéséhez szükséges magok teljes száma.|
 |Függőben lévő memória összesen|Az összes függőben lévő csomópont végrehajtásának megkezdéséhez szükséges teljes memória (MB).|

@@ -12,10 +12,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/25/2019
 ms.openlocfilehash: 62d73a23fff3bd15d873a579d451b2f91509b7fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87758730"
 ---
 # <a name="configure-windows-push-notification-service-settings-in-the-azure-portal"></a>A Windows leküldéses értesítési szolgáltatás beállításainak konfigurálása a Azure Portal
@@ -31,7 +31,7 @@ Ha még nem hozott létre egy értesítési központot, hozzon létre egyet most
 Az alábbi eljárás ismerteti az értesítési központ Windows leküldéses értesítési szolgáltatásának (WNS) beállításainak konfigurálásához szükséges lépéseket:
 
 1. A Azure Portal az **értesítési központ** lapon válassza a **Windows (WNS)** lehetőséget a bal oldali menüben.
-2. Adja meg a **csomag biztonsági azonosítójának** és **biztonsági kulcsának**értékeit.
+2. Adja meg a **csomag biztonsági azonosítójának** és **biztonsági kulcsának** értékeit.
 3. Kattintson a **Mentés** gombra.
 
    ![Képernyőfelvétel a csomag biztonsági AZONOSÍTÓjának és biztonsági kulcsának mezőiről](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)

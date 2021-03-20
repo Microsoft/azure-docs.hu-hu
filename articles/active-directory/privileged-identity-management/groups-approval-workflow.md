@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0a3b6dad33ce678478a201dc8b7b612f4b8507c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91536987"
 ---
 # <a name="approve-activation-requests-for-privileged-access-group-members-and-owners-preview"></a>Aktiválási kérelmek jóváhagyása az emelt szintű hozzáférési csoport tagjai és tulajdonosainak számára (előzetes verzió)
@@ -36,7 +36,7 @@ Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha az Azure-er�
 
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 
-1. Válassza a **kérelmek jóváhagyása**lehetőséget.
+1. Válassza a **kérelmek jóváhagyása** lehetőséget.
 
     ![Kérések jóváhagyása – Azure-erőforrások lap, amely a felülvizsgálati kérelmet tartalmazza](./media/groups-approval-workflow/groups-select-request.png)
 
@@ -44,7 +44,7 @@ Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha az Azure-er�
 
 ## <a name="approve-requests"></a>Kérések jóváhagyása
 
-1. Keresse meg és válassza ki a jóváhagyni kívánt kérést, és válassza a **jóváhagyás**lehetőséget.
+1. Keresse meg és válassza ki a jóváhagyni kívánt kérést, és válassza a **jóváhagyás** lehetőséget.
 
     ![Képernyőkép, amely a "jóváhagyás" és a "jóváhagyás" gombokat jeleníti meg a kiemelve.](./media/groups-approval-workflow/groups-confirm-approval.png)
 
@@ -54,7 +54,7 @@ Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha az Azure-er�
 
 ## <a name="deny-requests"></a>Kérelmek megtagadása
 
-1. Keresse meg és válassza ki a megtagadni kívánt kérelmet, és válassza a **Megtagadás**lehetőséget.
+1. Keresse meg és válassza ki a megtagadni kívánt kérelmet, és válassza a **Megtagadás** lehetőséget.
 
     ![Kérelmek jóváhagyása – jóváhagyás vagy megtagadás ablaktábla részletekkel és indoklással](./media/groups-approval-workflow/groups-confirm-denial.png)
 

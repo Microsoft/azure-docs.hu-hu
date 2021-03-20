@@ -7,10 +7,10 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: 7d10c6c1ce440b2ffe964dc78379ef3ab108e78e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92217524"
 ---
 # <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>Oktatóanyag: háttérbeli tároló hozzáadása és a virtuális névtér konfigurálása
@@ -56,7 +56,7 @@ Az alapszintű Filer hozzáadása után frissítheti a beállításait az alapsz
 
 ## <a name="add-a-core-filer"></a>Alapvető Filer hozzáadása
 
-Definiáljon egy alapvető Filer-t **Create** az alapszintű **Filer**  >  **Manage Core filers** beállítások lap létrehozás gombjára kattintva.
+Definiáljon egy alapvető Filer-t  az alapszintű **Filer**  >  **Manage Core filers** beállítások lap létrehozás gombjára kattintva.
 
 ![Kattintson a Create (létrehozás) gombra az alapszintű filers lista felett a Core filers kezelése lapon.](media/fxt-cluster-config/create-core-filer-button.png)
 
@@ -130,7 +130,7 @@ Szüksége van legalább egy VServer a fürthöz.
 
 * Ha a hálózata VLAN-okat tartalmaz, melyik VLAN-t használja ehhez a VServer
 
-**VServer**  >  Hozzon létre egy új VServer a VServer**kezelése VServers** beállítások lapján. Részletekért olvassa el a [VServer létrehozásával](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver) kapcsolatos témakört a fürt konfigurációs útmutatójában.
+  >  Hozzon létre egy új VServer a VServer **kezelése VServers** beállítások lapján. Részletekért olvassa el a [VServer létrehozásával](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver) kapcsolatos témakört a fürt konfigurációs útmutatójában.
 
 ![új VServer létrehozásának előugró ablaka](media/fxt-cluster-config/new-vserver.png)
 
@@ -142,7 +142,7 @@ Ezzel a rendszerrel leegyszerűsítheti az ügyfél csatlakoztatási pontjaiban 
 
 ![Új csatlakozási pont hozzáadása varázsló lapja a kitöltött beállításokkal](media/fxt-cluster-config/add-junction-full.png)
 
-A névtér-összekapcsolás létrehozásával kapcsolatos részletes információkért tekintse meg a [ **VServer**  >  **névteret** ](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html) a fürtkonfiguráció útmutatójában.
+A névtér-összekapcsolás létrehozásával kapcsolatos részletes információkért tekintse meg a [ **VServer**  >  **névteret**](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html) a fürtkonfiguráció útmutatójában.
 
 ![A VServer > névtér beállításai oldal, amely egy elágazás részleteit jeleníti meg](media/fxt-cluster-config/namespace-populated.png)
 
@@ -150,7 +150,7 @@ A névtér-összekapcsolás létrehozásával kapcsolatos részletes informáci�
 
 A VServer és a Core Filer együttes használata után testre kell szabnia az exportálási szabályokat és az exportálási házirendeket, amelyek azt szabályozzák, hogy az ügyfelek hogyan férhetnek hozzá a fájlokhoz az alapvető Filer-exportálásokban.
 
-Először a VServer- **VServer**  >  **exportálási szabályok** lapon új szabályokat adhat hozzá, módosíthatja az alapértelmezett házirendet, vagy létrehozhatja a saját egyéni exportálási szabályzatát.
+Először a VServer-   >  **exportálási szabályok** lapon új szabályokat adhat hozzá, módosíthatja az alapértelmezett házirendet, vagy létrehozhatja a saját egyéni exportálási szabályzatát.
 
 Másodszor, a **VServer**  >  -**exportálási házirendek** lapon alkalmazza a testreszabott szabályzatot az alapvető Filer exportálására, amikor a VServer keresztül éri el.
 

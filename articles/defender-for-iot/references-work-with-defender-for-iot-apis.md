@@ -7,11 +7,11 @@ ms.author: shhazam
 ms.date: 12/14/2020
 ms.topic: reference
 ms.service: azure
-ms.openlocfilehash: ae7965dd319f2ff885f4329262ae4772452afd62
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 73c5d1f31d9e0651ee710593aa4e1b68fe972560
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100523243"
 ---
 # <a name="defender-for-iot-sensor-and-management-console-apis"></a>Defender a IoT-érzékelő és a felügyeleti konzol API-jai számára
@@ -621,7 +621,7 @@ A riasztásokat jelölő JSON-objektumok tömbje.
 | **ID (Azonosító)** | Numerikus | No | - |
 | **idő** | Numerikus | No | EPOCH (UTC) |
 | **cím** | Sztring | No | - |
-| **üzenetet** | Sztring | No | - |
+| **message** | Sztring | No | - |
 | **Súlyosság** | Sztring | No | Figyelmeztetés, másodlagos, fő vagy kritikus |
 | **motor** | Sztring | No | Protokoll megsértése, szabályzat megsértése, kártevő, rendellenesség vagy működési |
 | **sourceDevice** | Numerikus | Yes | Eszközazonosító |
@@ -2051,7 +2051,7 @@ Ezzel az API-val lekérheti az összes vagy szűrt riasztást egy helyszíni fel
 | **ID (Azonosító)** | Numerikus | No | - |
 | **idő** | Numerikus | No | EPOCH (UTC) |
 | **cím** | Sztring | No | - |
-| **üzenetet** | Sztring | No | - |
+| **message** | Sztring | No | - |
 | **Súlyosság** | Sztring | No | Figyelmeztetés, másodlagos, fő vagy kritikus |
 | **motor** | Sztring | No | Protokoll megsértése, szabályzat megsértése, kártevő, rendellenesség vagy működési |
 | **sourceDevice** | Numerikus | Yes | Eszközazonosító |
@@ -2654,6 +2654,6 @@ response:
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Egy eszközkészlet érzékelői általi észlelések vizsgálata](how-to-investigate-sensor-detections-in-a-device-inventory.md)
+- [Egy eszközkészlet érzékelői általi észlelések vizsgálata](how-to-investigate-sensor-detections-in-a-device-inventory.md)
 
-[Egy eszközkészlet összes vállalati érzékelője általi észlelések vizsgálata](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)
+- [Egy eszközkészlet összes vállalati érzékelője általi észlelések vizsgálata](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/20/2021
 ms.author: jeedes
 ms.openlocfilehash: d99a19efcef0cae518d8d21d3371adaf37d32ff7
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98625481"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Oktatóanyag: az Azure AD egyszeri bejelentkezés (SSO) integrálása a NetSuite-nal
@@ -214,7 +214,7 @@ Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure e
 
     ![Képernyőfelvétel: a telepítéskezelő, ahol megadhatja a szerepkör nevét.](./media/NetSuite-tutorial/ns-new-role.png)
 
-    e. Válassza a **Mentés** lehetőséget.
+    e. Kattintson a **Mentés** gombra.
 
     f. A felső navigációs sávon válassza az **engedélyek** lehetőséget. Ezután válassza a **telepítés** lehetőséget.
 
@@ -222,7 +222,7 @@ Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure e
 
     : Válassza az **SAML egyszeri bejelentkezés** lehetőséget, majd válassza a **Hozzáadás** lehetőséget.
 
-    h. Válassza a **Mentés** lehetőséget.
+    h. Kattintson a **Mentés** gombra.
 
     i. A felső navigációs sávon válassza a **beállítás**, majd a **telepítéskezelő** lehetőséget.
 
@@ -240,7 +240,7 @@ Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure e
 
     ![A képernyőképen az alkalmazottak közül kiválasztott rendszergazda látható.](./media/NetSuite-tutorial/ns-add-role.png)
 
-    m. Válassza a **Mentés** lehetőséget.
+    m. Kattintson a **Mentés** gombra.
 
 ### <a name="create-the-netsuite-test-user"></a>A NetSuite test felhasználó létrehozása
 

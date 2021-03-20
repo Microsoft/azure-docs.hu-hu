@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 8a00cf11edfea2e732a18a392d465525b38ea45f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520847"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>Oktatóanyag: Azure Active Directory integráció a Picturepark
@@ -61,13 +61,13 @@ A Picturepark Azure AD-be való integrálásának konfigurálásához hozzá kel
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Picturepark**kifejezést, válassza a **Picturepark** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Picturepark** kifejezést, válassza a **Picturepark** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![Picturepark az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Picturepark-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Picturepark-mel konfigurálja és teszteli a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Picturepark kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés Picturepark való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés Picturepark való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **Picturepark** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **Picturepark** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -122,7 +122,7 @@ Az Azure AD egyszeri bejelentkezés Picturepark való konfigurálásához hajtsa
 
     ![Ujjlenyomat értékének másolása](common/copy-thumbprint.png)
 
-7. A **Picturepark beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint. A **bejelentkezési URL-cím**mezőben használja a következő mintát: `https://login.microsoftonline.com/_my_directory_id_/wsfed`
+7. A **Picturepark beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint. A **bejelentkezési URL-cím** mezőben használja a következő mintát: `https://login.microsoftonline.com/_my_directory_id_/wsfed`
 
     > [!Note]
     > _my_directory_id_ az Azure ad-előfizetés bérlői azonosítója.
@@ -137,11 +137,11 @@ Az Azure AD egyszeri bejelentkezés Picturepark való konfigurálásához hajtsa
 
 1. Egy másik böngészőablakban jelentkezzen be a Picturepark vállalati webhelyre rendszergazdaként.
 
-2. A felső eszköztáron kattintson a **felügyeleti eszközök**, majd a **felügyeleti konzol**elemre.
+2. A felső eszköztáron kattintson a **felügyeleti eszközök**, majd a **felügyeleti konzol** elemre.
    
     ![Felügyeleti konzol](./media/picturepark-tutorial/ic795062.png "Felügyeleti konzol")
 
-3. Kattintson a **hitelesítés**, majd az **identitás-szolgáltatók**elemre.
+3. Kattintson a **hitelesítés**, majd az **identitás-szolgáltatók** elemre.
    
     ![Hitelesítés](./media/picturepark-tutorial/ic795063.png "Hitelesítés")
 
@@ -153,15 +153,15 @@ Az Azure AD egyszeri bejelentkezés Picturepark való konfigurálásához hajtsa
   
     b. Adja meg a konfiguráció nevét.
    
-    c. Válassza **a beállítás alapértelmezettként**lehetőséget.
+    c. Válassza **a beállítás alapértelmezettként** lehetőséget.
    
     d. A **kiállító URI** szövegmezőben illessze be azt a **bejelentkezési URL-címet** , amelyet a Azure Portalból másolt.
    
     e. A **megbízható kiállítói hüvelykujj nyomtatása** szövegmezőbe illessze be a **SAML-aláíró tanúsítvány** szakaszból másolt **ujjlenyomat** értékét. 
 
-5. Kattintson a **JoinDefaultUsersGroup**elemre.
+5. Kattintson a **JoinDefaultUsersGroup** elemre.
 
-6. Ha a **jogcím** szövegmezőben az **EmailAddress** attribútumot szeretné beállítani, írja be a következőt:, `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` majd kattintson a **Mentés**gombra.
+6. Ha a **jogcím** szövegmezőben az **EmailAddress** attribútumot szeretné beállítani, írja be a következőt:, `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` majd kattintson a **Mentés** gombra.
 
       ![Konfigurálás](./media/picturepark-tutorial/ic795065.png "Konfiguráció")
 
@@ -169,7 +169,7 @@ Az Azure AD egyszeri bejelentkezés Picturepark való konfigurálásához hajtsa
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -193,15 +193,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a Picturepark hozzáférésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Picturepark**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **Picturepark** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Picturepark**lehetőséget.
+2. Az alkalmazások listában válassza a **Picturepark** lehetőséget.
 
     ![Az Picturepark hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -223,11 +223,11 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Picturepark, a Picture
 
 1. Jelentkezzen be a **Picturepark** -bérlőbe.
 
-1. A felső eszköztáron kattintson a **felügyeleti eszközök**elemre, majd kattintson a **felhasználók**elemre.
+1. A felső eszköztáron kattintson a **felügyeleti eszközök** elemre, majd kattintson a **felhasználók** elemre.
    
     ![Felhasználók](./media/picturepark-tutorial/ic795067.png "Felhasználók")
 
-1. A **felhasználók áttekintése** lapon kattintson az **új**elemre.
+1. A **felhasználók áttekintése** lapon kattintson az **új** elemre.
    
     ![Felhasználókezelés](./media/picturepark-tutorial/ic795068.png "Felhasználókezelés")
 
@@ -241,7 +241,7 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Picturepark, a Picture
    
     c. A **Utónév** szövegmezőbe írja be a felhasználó **Britta** **utónevét** . 
    
-    d. A **vezetéknév** szövegmezőbe írja be a Simon **nevű felhasználó vezetéknevét** . **Simon**
+    d. A **vezetéknév** szövegmezőbe írja be a Simon **nevű felhasználó vezetéknevét** . 
    
     e. A **vállalati** szövegmezőbe írja be a felhasználó **vállalatának nevét** . 
    

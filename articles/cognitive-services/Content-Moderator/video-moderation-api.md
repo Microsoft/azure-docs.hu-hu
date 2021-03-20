@@ -12,10 +12,10 @@ ms.date: 05/18/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4f98eac4305333ec7225c90da2777b7e02f050a0
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96853532"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>Videotartalom elemzése a kifogásolt anyagokhoz C-ben #
@@ -84,7 +84,7 @@ using System.Collections.Generic;
 
 ### <a name="set-up-resource-references"></a>Erőforrás-hivatkozások beállítása
 
-Adja hozzá a következő statikus mezőket a **program** osztályhoz a _program.cs_-ben. Ezek a mezők az AMS-előfizetéshez való csatlakozáshoz szükséges információkat rendelkeznek. Töltse ki azokat a következő lépésekben kapott értékekkel. Vegye figyelembe `CLIENT_ID` , hogy az Azure ad-alkalmazás **azonosító** értéke, és az `CLIENT_SECRET` adott alkalmazáshoz létrehozott "VideoModKey" értéke.
+Adja hozzá a következő statikus mezőket a **program osztályhoz a** _program. cs_. Ezek a mezők az AMS-előfizetéshez való csatlakozáshoz szükséges információkat rendelkeznek. Töltse ki azokat a következő lépésekben kapott értékekkel. Vegye figyelembe `CLIENT_ID` , hogy az Azure ad-alkalmazás **azonosító** értéke, és az `CLIENT_SECRET` adott alkalmazáshoz létrehozott "VideoModKey" értéke.
 
 ```csharp
 // declare constants and globals
@@ -366,7 +366,7 @@ A Content moderációs feladatok befejezése után elemezze a JSON-választ. Eze
 
 - Videó információinak összegzése
 - **Felvételek** "**töredékek**"
-- **Key frames** "**Események**" **reviewRecommended "(= TRUE vagy FALSE)"** jelzővel a **felnőtt** és a **zamatos** pontszámok alapján
+-  "**Események**" **reviewRecommended "(= TRUE vagy FALSE)"** jelzővel a **felnőtt** és a **zamatos** pontszámok alapján
 - a **Start**, az **időtartam**, a **totalDuration** és az **időbélyeg** "ketyeg". Osztás az **időskála** alapján a szám másodpercben való lekéréséhez.
  
 > [!NOTE]

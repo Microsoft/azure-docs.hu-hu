@@ -7,11 +7,11 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 53c342005d2c33e2ee18057fe0e667ebdec5166c
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 333ffbf4107dfd005ba7e7fae6a079a618e0c645
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100522240"
 ---
 # <a name="import-device-information-to-a-sensor"></a>Eszköz adatainak importálása az érzékelőbe
@@ -188,7 +188,7 @@ Az engedélyezési állapot importálása:
 
 Az adatok importálásakor a rendszer riasztást küld az összes olyan eszközről, amely nem szerepel ezen a listán.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="see-also"></a>Lásd még
 
 [A monitorozandó forgalom szabályozása](how-to-control-what-traffic-is-monitored.md)
 

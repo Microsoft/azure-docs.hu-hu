@@ -9,10 +9,10 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.openlocfilehash: acf7198477ce0c55f9321fd3f8e57294a60c0961
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89652018"
 ---
 # <a name="create-an-app-service-app-and-deploy-a-private-endpoint-by-using-an-azure-resource-manager-template"></a>App Service-alkalmazás létrehozása és privát végpont üzembe helyezése Azure Resource Manager-sablon használatával
@@ -40,7 +40,7 @@ A Azure Resource Manager-sablon üzembe helyezése az Azure-ban:
 1. Az Azure-ba való bejelentkezéshez és a sablon megnyitásához válassza a következő hivatkozást:  [üzembe helyezés az Azure](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-webapp%2Fazuredeploy.json)-ban. A sablon létrehozza a virtuális hálózatot, a webalkalmazást, a magánhálózati végpontot és a magánhálózati DNS-zónát.
 2. Válassza ki vagy hozza létre az erőforráscsoportot.
 3. Adja meg a webalkalmazás nevét, a Azure App Service-csomagot és a magánhálózati végpontot.
-5. Olvassa el a feltételekről és kikötésekről szóló nyilatkozatot. Ha elfogadja, jelölje be az Elfogadom a vásárláskor **megjelenő feltételeket és kikötéseket**  >  **Purchase**. Az üzembe helyezés több percet is igénybe vehet.
+5. Olvassa el a feltételekről és kikötésekről szóló nyilatkozatot. Ha elfogadja, jelölje be az Elfogadom a vásárláskor **megjelenő feltételeket és kikötéseket**  >  . Az üzembe helyezés több percet is igénybe vehet.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -52,6 +52,6 @@ Az erőforráscsoport törléséhez hívja meg a következő `Remove-AzResourceG
 Remove-AzResourceGroup -Name <your resource group name>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az [ARM-sablonokban](../samples-resource-manager-templates.md)további Azure Resource Manager sablonokat találhat Azure app Service Web Apps számára.

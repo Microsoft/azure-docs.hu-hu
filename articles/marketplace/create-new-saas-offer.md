@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.openlocfilehash: f689993ce56a1125a1d1de8f65ce05d01f776ea9
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93130068"
 ---
 # <a name="how-to-create-a-saas-offer-in-the-commercial-marketplace"></a>SaaS-ajánlat létrehozása a kereskedelmi piactéren
@@ -21,7 +21,7 @@ Kereskedelmi Piactéri közzétevőként létrehozhat egy szolgáltatott szoftve
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ha még nem tette meg, olvassa el [a következőt: Saas-ajánlat megtervezése a kereskedelmi piactéren](plan-saas-offer.md). Ismerteti a SaaS-alkalmazás technikai követelményeit, valamint az ajánlat létrehozásakor szükséges információkat és eszközöket. Hacsak nem tervezi egy egyszerű lista közzétételét ( **Kapcsolatfelvétel** a listában) a kereskedelmi piactéren, az SaaS-alkalmazásnak meg kell felelnie a hitelesítés technikai követelményeinek.
+Ha még nem tette meg, olvassa el [a következőt: Saas-ajánlat megtervezése a kereskedelmi piactéren](plan-saas-offer.md). Ismerteti a SaaS-alkalmazás technikai követelményeit, valamint az ajánlat létrehozásakor szükséges információkat és eszközöket. Hacsak nem tervezi egy egyszerű lista közzétételét (**Kapcsolatfelvétel** a listában) a kereskedelmi piactéren, az SaaS-alkalmazásnak meg kell felelnie a hitelesítés technikai követelményeinek.
 
 ## <a name="create-a-new-saas-offer"></a>Új SaaS-ajánlat létrehozása
 
@@ -31,12 +31,12 @@ Ha még nem tette meg, olvassa el [a következőt: Saas-ajánlat megtervezése a
 
    :::image type="content" source="media/new-offer-saas.png" alt-text="A bal oldali navigációs menü és az új ajánlatok listájának ábrázolása.":::
 
-1. Az **új ajánlat** párbeszédpanelen adja meg az **ajánlat azonosítóját** . Ez az azonosító a kereskedelmi piactér-lista és a Azure Resource Manager-sablonok URL-címében látható, ha van ilyen. Ha például beírja a **test-Offer-1** értéket ebben a mezőben, az ajánlat webes címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
+1. Az **új ajánlat** párbeszédpanelen adja meg az **ajánlat azonosítóját**. Ez az azonosító a kereskedelmi piactér-lista és a Azure Resource Manager-sablonok URL-címében látható, ha van ilyen. Ha például beírja a **test-Offer-1** értéket ebben a mezőben, az ajánlat webes címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
    + A fiók minden ajánlatának egyedi ajánlat-AZONOSÍTÓval kell rendelkeznie.
    + Csak kisbetűket és számokat használjon. Tartalmazhat kötőjeleket és aláhúzásokat, de nem tartalmazhat szóközt, és legfeljebb 50 karakter hosszú lehet.
    + Az ajánlat azonosítója a **Létrehozás** gombra kattintva nem módosítható.
 
-1. Adjon meg egy **ajánlat-aliast** . Ez a partner Centerben az ajánlathoz használt név.
+1. Adjon meg egy **ajánlat-aliast**. Ez a partner Centerben az ajánlathoz használt név.
 
    + Ez a név nem látható a kereskedelmi piactéren, és nem egyezik meg az ajánlat nevével és más, az ügyfelek számára megjelenített értékekkel.
    + Az ajánlat aliasa nem módosítható a **Létrehozás** gombra kattintva.
@@ -44,7 +44,7 @@ Ha még nem tette meg, olvassa el [a következőt: Saas-ajánlat megtervezése a
 
 ## <a name="configure-your-saas-offer-setup-details"></a>SaaS-ajánlat telepítési részleteinek konfigurálása
 
-Az **ajánlat beállítása** lap **telepítés részletei** területén kiválaszthatja, hogy az ajánlatot a Microsofton keresztül szeretné-e eladni, vagy egymástól függetlenül kezelheti a tranzakciókat. A Microsoft által eladott ajánlatokat a rendszer felkínálja, mint a _visszagörgethető ajánlatok_ , ami azt jelenti, hogy a Microsoft a kiadó nevében lehetővé teszi a szoftveres licencek cseréjét. További információ ezekről a lehetőségekről: [listázási beállítások](plan-saas-offer.md#listing-options) és [a közzétételi lehetőség meghatározása](determine-your-listing-type.md).
+Az **ajánlat beállítása** lap **telepítés részletei** területén kiválaszthatja, hogy az ajánlatot a Microsofton keresztül szeretné-e eladni, vagy egymástól függetlenül kezelheti a tranzakciókat. A Microsoft által eladott ajánlatokat a rendszer felkínálja, mint a _visszagörgethető ajánlatok_, ami azt jelenti, hogy a Microsoft a kiadó nevében lehetővé teszi a szoftveres licencek cseréjét. További információ ezekről a lehetőségekről: [listázási beállítások](plan-saas-offer.md#listing-options) és [a közzétételi lehetőség meghatározása](determine-your-listing-type.md).
 
 1. A Microsofton keresztüli értékesítéshez és a tranzakciók megkönnyítése érdekében válassza az **Igen** lehetőséget. Folytassa a [tesztelési meghajtó engedélyezésével](#enable-a-test-drive-optional).
 
@@ -84,7 +84,7 @@ Az Ügyfélkapcsolat-kezelési (CRM) rendszer a kereskedelmi piactérsel való �
    - [Az ajánlat beállítása, hogy érdeklődőket küldjön a Salesforce](./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md#configure-your-offer-to-send-leads-to-salesforce)
 
 1. A megadott konfiguráció ellenőrzéséhez válassza az **Érvényesítés** hivatkozást.
-1. A párbeszédpanel bezárásához kattintson **az OK gombra** .
+1. A párbeszédpanel bezárásához kattintson **az OK gombra**.
 
 ## <a name="next-steps"></a>Következő lépések
 

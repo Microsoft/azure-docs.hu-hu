@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
 ms.openlocfilehash: 0dadf523c5d17ffb91f4fefa71b52d1d1855c978
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91570246"
 ---
 # <a name="how-to-scale-your-azure-time-series-insights-gen1-environment"></a>A Azure Time Series Insights Gen1-környezet skálázása
@@ -37,11 +37,11 @@ Azonban a díjszabási csomag módosítása nem engedélyezett. Egy S1 árképz�
 
 1. A Azure Portalban keresse meg és válassza ki Azure Time Series Insights-környezetét.
 
-1. A Azure Time Series Insights-környezet menüjében válassza a **tárolási konfiguráció**elemet.
+1. A Azure Time Series Insights-környezet menüjében válassza a **tárolási konfiguráció** elemet.
 
    [![A Azure Time Series Insights kapacitásának konfigurálása](media/scale-your-environment/scale-your-environment-configure.png)](media/scale-your-environment/scale-your-environment-configure.png#lightbox)
 
-1. Állítsa be a **kapacitás** csúszkát, és válassza ki azt a kapacitást, amely megfelel a bejövő és a tárolási kapacitás követelményeinek. Figyelje meg, hogy a **Bejövő forgalom sebessége**, a **tárolókapacitás**és a **becsült költségek** dinamikusan frissülnek a változás hatásának megjelenítéséhez.
+1. Állítsa be a **kapacitás** csúszkát, és válassza ki azt a kapacitást, amely megfelel a bejövő és a tárolási kapacitás követelményeinek. Figyelje meg, hogy a **Bejövő forgalom sebessége**, a **tárolókapacitás** és a **becsült költségek** dinamikusan frissülnek a változás hatásának megjelenítéséhez.
 
    [![A környezet konfigurálása a kapacitás csúszka használatával](media/scale-your-environment/scale-your-environment-slider.png)](media/scale-your-environment/scale-your-environment-slider.png#lightbox)
 

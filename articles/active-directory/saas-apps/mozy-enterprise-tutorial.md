@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.openlocfilehash: 97294bdd088f50a46786c3568f4230706f750c4c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520948"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>Oktatóanyag: Azure Active Directory-integráció a Mozy Enterprise-nal
@@ -61,13 +61,13 @@ A Mozy Enterprise Azure AD-be való integrálásának konfigurálásához hozzá
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Mozy Enterprise**kifejezést, válassza a **Mozy Enterprise** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Mozy Enterprise** kifejezést, válassza a **Mozy Enterprise** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![A Mozy Enterprise az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést a Mozy Enterprise szolgáltatással konfigurálja és teszteli a **Britta Simon**nevű teszt felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést a Mozy Enterprise szolgáltatással konfigurálja és teszteli a **Britta Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Mozy Enterprise-beli kapcsolódó felhasználó közötti kapcsolati kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés a Mozy Enterprise használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés a Mozy Enterprise-vel való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **Mozy Enterprise** Application Integration oldalon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **Mozy Enterprise** Application Integration oldalon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -124,7 +124,7 @@ Az Azure AD egyszeri bejelentkezés a Mozy Enterprise-vel való konfigurálásá
 
 1. Egy másik böngészőablakban jelentkezzen be a Mozy Enterprise vállalati webhelyre rendszergazdaként.
 
-2. A **konfiguráció** szakaszban kattintson a **hitelesítési házirend**elemre.
+2. A **konfiguráció** szakaszban kattintson a **hitelesítési házirend** elemre.
    
     ![A képernyőképen a konfiguráció alapján kiválasztott hitelesítési házirend látható.](./media/mozy-enterprise-tutorial/ic777314.png "Hitelesítési házirend")
 
@@ -132,9 +132,9 @@ Az Azure AD egyszeri bejelentkezés a Mozy Enterprise-vel való konfigurálásá
    
     ![Képernyőfelvétel: a hitelesítési házirend szakasza, ahol megadhatja a leírt értékeket.](./media/mozy-enterprise-tutorial/ic777315.png "Hitelesítési házirend")
    
-    a. Válassza a **Címtárszolgáltatások** **szolgáltatóként**lehetőséget.
+    a. Válassza a **Címtárszolgáltatások** **szolgáltatóként** lehetőséget.
    
-    b. Válassza **az LDAP-leküldés használata**lehetőséget.
+    b. Válassza **az LDAP-leküldés használata** lehetőséget.
    
     c. Kattintson az **SAML-hitelesítés** fülre.
    
@@ -144,7 +144,7 @@ Az Azure AD egyszeri bejelentkezés a Mozy Enterprise-vel való konfigurálásá
    
     f. Nyissa meg a letöltött Base-64 kódolású tanúsítványt a Jegyzettömbben, másolja a vágólapra a tartalmat, majd illessze be a teljes tanúsítványt az **SAML-tanúsítvány** szövegmezőbe.
    
-    : Jelölje be az **egyszeri bejelentkezés engedélyezése rendszergazdák számára a hálózati hitelesítő adatokkal való bejelentkezéshez**jelölőnégyzetet.
+    : Jelölje be az **egyszeri bejelentkezés engedélyezése rendszergazdák számára a hálózati hitelesítő adatokkal való bejelentkezéshez** jelölőnégyzetet.
    
     h. Kattintson a **Save Changes** (Módosítások mentése) gombra.
 
@@ -152,7 +152,7 @@ Az Azure AD egyszeri bejelentkezés a Mozy Enterprise-vel való konfigurálásá
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -177,15 +177,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a Mozy Enterprise-hoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Mozy Enterprise**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **Mozy Enterprise** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Mozy Enterprise**elemet.
+2. Az alkalmazások listában válassza a **Mozy Enterprise** elemet.
 
     ![A Mozy Enterprise hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -210,7 +210,7 @@ Annak érdekében, hogy az Azure AD-felhasználók bejelentkezzenek a Mozy Enter
 
 1. Jelentkezzen be a **Mozy Enterprise** -bérlőbe.
 
-2. Kattintson a **felhasználók**, majd az **új felhasználó hozzáadása**lehetőségre.
+2. Kattintson a **felhasználók**, majd az **új felhasználó hozzáadása** lehetőségre.
    
     ![Felhasználók](./media/mozy-enterprise-tutorial/ic777317.png "Felhasználók")
    
@@ -231,7 +231,7 @@ Annak érdekében, hogy az Azure AD-felhasználók bejelentkezzenek a Mozy Enter
    
     e. Válassza a **felhasználói utasítás küldése e-mailt**.
    
-    f. Kattintson a **felhasználó (k) hozzáadása**lehetőségre.
+    f. Kattintson a **felhasználó (k) hozzáadása** lehetőségre.
 
      >[!NOTE]
      > A felhasználó létrehozása után a rendszer elküld egy e-mailt az Azure AD-felhasználónak, amely hivatkozást tartalmaz a fiók megerősítéséhez, mielőtt az aktívvá válna.

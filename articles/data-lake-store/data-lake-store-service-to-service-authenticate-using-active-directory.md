@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 9dc195f98310e63cbde06885effe86ea3c239249
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91576098"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Szolgáltatások közötti hitelesítés Azure Data Lake Storage Gen1 használatával Azure Active Directory
@@ -51,24 +51,24 @@ Ha programozott módon jelentkezik be, szüksége lesz az alkalmazás AZONOSÍT�
 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Nyissa meg azt a Data Lake Storage Gen1 fiókot, amelyet a korábban létrehozott Azure Active Directory alkalmazáshoz szeretne rendelni.
-2. A Data Lake Storage Gen1-fiók paneljén kattintson az **adatkezelő**elemre.
+2. A Data Lake Storage Gen1-fiók paneljén kattintson az **adatkezelő** elemre.
    
     ![Könyvtárak létrehozása Data Lake Storage Gen1 fiókban](./media/data-lake-store-authenticate-using-active-directory/adl.start.data.explorer.png "Könyvtárak létrehozása Data Lake fiókban")
-3. A **adatkezelő** panelen kattintson arra a fájlra vagy mappára, amelyhez hozzáférést szeretne biztosítani az Azure ad-alkalmazáshoz, majd kattintson a **hozzáférés**elemre. Egy fájlhoz való hozzáférés konfigurálásához a **fájl előnézetének** paneljéről kell kattintania a **hozzáférés** lehetőségre.
+3. A **adatkezelő** panelen kattintson arra a fájlra vagy mappára, amelyhez hozzáférést szeretne biztosítani az Azure ad-alkalmazáshoz, majd kattintson a **hozzáférés** elemre. Egy fájlhoz való hozzáférés konfigurálásához a **fájl előnézetének** paneljéről kell kattintania a **hozzáférés** lehetőségre.
    
     ![ACL-ek beállítása Data Lake fájlrendszerben](./media/data-lake-store-authenticate-using-active-directory/adl.acl.1.png "ACL-ek beállítása Data Lake fájlrendszerben")
 4. A **hozzáférés** panel felsorolja a gyökérhez már hozzárendelt normál hozzáférést és egyéni hozzáférést. Az egyéni szintű ACL-ek hozzáadásához kattintson a **Hozzáadás** ikonra.
    
     ![Szabványos és egyéni hozzáférés listázása](./media/data-lake-store-authenticate-using-active-directory/adl.acl.2.png "Szabványos és egyéni hozzáférés listázása")
-5. Kattintson a **Hozzáadás** ikonra az **Egyéni hozzáférés hozzáadása** panel megnyitásához. Ezen a panelen kattintson a **felhasználó vagy csoport kiválasztása**elemre, majd a **felhasználó vagy csoport kiválasztása** panelen keresse meg a korábban létrehozott Azure Active Directory alkalmazást. Ha sok csoporttal szeretne keresni, használja a felső szövegmezőt a csoport nevének szűréséhez. Kattintson a hozzáadni kívánt csoportra, majd a **kiválasztás**elemre.
+5. Kattintson a **Hozzáadás** ikonra az **Egyéni hozzáférés hozzáadása** panel megnyitásához. Ezen a panelen kattintson a **felhasználó vagy csoport kiválasztása** elemre, majd a **felhasználó vagy csoport kiválasztása** panelen keresse meg a korábban létrehozott Azure Active Directory alkalmazást. Ha sok csoporttal szeretne keresni, használja a felső szövegmezőt a csoport nevének szűréséhez. Kattintson a hozzáadni kívánt csoportra, majd a **kiválasztás** elemre.
    
     ![Csoport hozzáadása](./media/data-lake-store-authenticate-using-active-directory/adl.acl.3.png "Csoport hozzáadása")
-6. Kattintson az **engedélyek kiválasztása**elemre, jelölje ki az engedélyeket, valamint azt, hogy az engedélyeket alapértelmezett ACL-ként, hozzáférési ACL-ként vagy mindkettőként kívánja-e hozzárendelni. Kattintson az **OK** gombra.
+6. Kattintson az **engedélyek kiválasztása** elemre, jelölje ki az engedélyeket, valamint azt, hogy az engedélyeket alapértelmezett ACL-ként, hozzáférési ACL-ként vagy mindkettőként kívánja-e hozzárendelni. Kattintson az **OK** gombra.
    
     ![Képernyőkép az egyéni hozzáférés hozzáadása panelről, ahol az engedélyek kiválasztása lehetőség ki van választva, a Select permissions (engedélyek kiválasztása) panelen pedig az OK lehetőség.](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "Engedélyek kiosztása a csoportnak")
    
     A Data Lake Storage Gen1 engedélyeivel és az alapértelmezett/hozzáférési ACL-ekkel kapcsolatos további információkért lásd: [Access Control Data Lake Storage Gen1](data-lake-store-access-control.md).
-7. Az **Egyéni hozzáférés hozzáadása** panelen kattintson az **OK**gombra. A társított engedélyekkel rendelkező újonnan hozzáadott csoportok a **hozzáférés** panelen jelennek meg.
+7. Az **Egyéni hozzáférés hozzáadása** panelen kattintson az **OK** gombra. A társított engedélyekkel rendelkező újonnan hozzáadott csoportok a **hozzáférés** panelen jelennek meg.
    
     ![Képernyőfelvétel a hozzáférés panelről az újonnan hozzáadott csoporttal az egyéni hozzáférés szakaszban.](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "Engedélyek kiosztása a csoportnak")
 
@@ -84,9 +84,9 @@ Ha programozott módon jelentkezik be, szüksége lesz az alkalmazás AZONOSÍT�
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és kattintson a bal oldali ablaktábla Active Directory elemére.
 
-2. A bal oldali ablaktáblán kattintson a **Alkalmazásregisztrációk**elemre.
+2. A bal oldali ablaktáblán kattintson a **Alkalmazásregisztrációk** elemre.
 
-3. A Alkalmazásregisztrációk panel felső részén kattintson a **végpontok**elemre.
+3. A Alkalmazásregisztrációk panel felső részén kattintson a **végpontok** elemre.
 
     ![Képernyőkép a Active Directoryről a Alkalmazásregisztrációk kapcsolóval és a végpontok lehetőséggel.](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint.png "OAuth jogkivonat-végpont")
 

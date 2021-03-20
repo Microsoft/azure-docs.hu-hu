@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 64536024af7e939de2bd8f98a9ce14bb4df3303f
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98614576"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>Egy meglévő erdő és egy új erdő integrálása egyetlen Azure AD-bérlővel
@@ -80,7 +80,7 @@ Az ügynök ellenőrzése a Azure Portal és az ügynököt futtató helyi kiszo
 ### <a name="azure-portal-agent-verification"></a>Azure Portal ügynök ellenőrzése
 Az alábbi lépéseket követve ellenőrizheti, hogy az ügynök látja-e az Azure-t:
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 2. A bal oldalon válassza a **Azure Active Directory**, majd a **Azure ad Connect** és a központban válassza a **Felhőbeli szinkronizálás kezelése** lehetőséget.</br>
 ![Azure Portal](media/how-to-install/install-6.png)</br>
 

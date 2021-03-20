@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan engedélyezheti vagy tilthatja le a virtuális 
 ms.topic: article
 ms.date: 10/01/2020
 ms.openlocfilehash: 8f9080f3b7b762d3b9fa448a903a4167cd2cec4a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96433945"
 ---
 # <a name="configure-automatic-shutdown-of-vms-for-a-lab"></a>Virtuális gépek automatikus leállításának beállítása laborhoz
@@ -38,6 +38,6 @@ Az automatikus leállítási beállítást a [Azure Lab Servicesban](https://lab
 
 > [!WARNING]
 > Ha a Linux vagy a Windows operációs rendszert (OS) leállítja egy virtuális gépen, mielőtt leválasztja az RDP-munkamenetet a virtuális géphez, az automatikus leállítási funkció nem fog megfelelően működni.  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Labs-irányítópult](use-dashboard.md)

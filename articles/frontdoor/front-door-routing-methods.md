@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
 ms.openlocfilehash: 2bc056620ff964747dfd83e7525cb5bfd2eb8e52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91449149"
 ---
 # <a name="front-door-routing-methods"></a>A bejárati ajtó útválasztási módszerei
@@ -24,10 +24,10 @@ Az Azure bevezető ajtaja különböző típusú forgalom-útválasztási módsz
 
 A bejárati ajtón négy forgalom-útválasztási módszer érhető el:
 
-* ** [Késés](#latency):** A késleltetés-alapú útválasztás biztosítja, hogy a rendszer a kérelmeket az érzékenységi tartományon belül elfogadható legalacsonyabb késési szintekre küldje. Alapvetően a felhasználói kéréseket a rendszer a hálózat késése szempontjából a "legközelebbi" háttérrendszer-készletre továbbítja.
-* ** [Prioritás](#priority):** Ha az összes forgalom kiszolgálásához elsődleges hátteret szeretne konfigurálni, akkor prioritásokat rendelhet a háttérekhez. A másodlagos háttérrendszer biztonsági mentése lehet, ha az elsődleges háttér elérhetetlenné válik.
-* ** [Súlyozott](#weighted):** A munkakörnyezetekhez súlyok is hozzárendelhetők, ha a forgalmat különböző háttérrendszer-készleteken szeretné terjeszteni. Akár egyenletesen, akár a súlyozási együtthatók alapján kívánja terjeszteni.
-* ** [Munkamenet-affinitás](#affinity):** Megadhatja a munkamenet-affinitást a előtér-gazdagépekhez vagy-tartományokhoz, így biztosítva, hogy az azonos végfelhasználótól érkező kérések ugyanarra a háttérre legyenek küldve.
+* **[Késés](#latency):** A késleltetés-alapú útválasztás biztosítja, hogy a rendszer a kérelmeket az érzékenységi tartományon belül elfogadható legalacsonyabb késési szintekre küldje. Alapvetően a felhasználói kéréseket a rendszer a hálózat késése szempontjából a "legközelebbi" háttérrendszer-készletre továbbítja.
+* **[Prioritás](#priority):** Ha az összes forgalom kiszolgálásához elsődleges hátteret szeretne konfigurálni, akkor prioritásokat rendelhet a háttérekhez. A másodlagos háttérrendszer biztonsági mentése lehet, ha az elsődleges háttér elérhetetlenné válik.
+* **[Súlyozott](#weighted):** A munkakörnyezetekhez súlyok is hozzárendelhetők, ha a forgalmat különböző háttérrendszer-készleteken szeretné terjeszteni. Akár egyenletesen, akár a súlyozási együtthatók alapján kívánja terjeszteni.
+* **[Munkamenet-affinitás](#affinity):** Megadhatja a munkamenet-affinitást a előtér-gazdagépekhez vagy-tartományokhoz, így biztosítva, hogy az azonos végfelhasználótól érkező kérések ugyanarra a háttérre legyenek küldve.
 
 A Front Door összes konfigurációja tartalmazza a háttérrendszer állapotának monitorozását és az automatizált azonnali globális feladatátvételt. További információ: az [első ajtó háttér-figyelése](front-door-health-probes.md). A bejárati ajtó csak egyetlen útválasztási módszer alapján működhet. Az alkalmazás igényeitől függően azonban több útválasztási módszer is használható az optimális útválasztási topológia létrehozásához.
 

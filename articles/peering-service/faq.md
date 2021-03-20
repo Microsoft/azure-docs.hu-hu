@@ -11,10 +11,10 @@ ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
 ms.openlocfilehash: 95ce90dbbf47ffe527fe6f25704d9cd28b834ea9
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95026695"
 ---
 # <a name="peering-service-faq"></a>Peering Service – gyakori kérdések
@@ -48,7 +48,7 @@ A. A Microsoft-partneri szolgáltatással regisztrált partnereink a Microsoftta
 
 A. Az Azure ExpressRoute egy privát, dedikált, egy vagy több ügyfél-helyről származó szolgáltatás. Míg a társ-szolgáltatás optimalizált nyilvános kapcsolattal rendelkezik, és nem támogatja a magánhálózati kapcsolatokat, a helyi internetes kitörésekhez optimalizált kapcsolódást is biztosít.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A társ-kezelés szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [peering Service áttekintése](about.md)című témakört.
 - A szolgáltató megtalálásához tekintse meg a következő témakört: [társ-szolgáltatási partnerek és helyszínek](location-partners.md).

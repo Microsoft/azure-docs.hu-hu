@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/10/2020
 ms.openlocfilehash: 58978f120578afeca129b0d8928713835def8418
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94496744"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql---flexible-server"></a>Kiszolgálói paraméterek Azure Database for MySQL – rugalmas kiszolgáló
@@ -41,7 +41,7 @@ Az alábbi részekben tájékozódhat a számos gyakran frissített kiszolgáló
 
 Azure Database for MySQL rugalmas kiszolgálón a bináris naplók mindig engedélyezve vannak (azaz `log_bin` be van állítva). Ha triggereket szeretne használni, akkor ehhez hasonló hibaüzenetet kap, *Ha nem rendelkezik a felügyelői jogosultsággal, és engedélyezve van a bináris naplózás (a kevésbé biztonságos `log_bin_trust_function_creators` változót érdemes használni)*. 
 
-A bináris naplózási formátum mindig **sor** , és a kiszolgálóval létesített összes kapcsolat **mindig** sor alapú bináris naplózást használ. A sor-alapú bináris naplózással nem léteznek biztonsági problémák, és a bináris naplózás nem törhető le, így a biztonságos beállítás értéke [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) **true (igaz** ) lehet.
+A bináris naplózási formátum mindig **sor** , és a kiszolgálóval létesített összes kapcsolat **mindig** sor alapú bináris naplózást használ. A sor-alapú bináris naplózással nem léteznek biztonsági problémák, és a bináris naplózás nem törhető le, így a biztonságos beállítás értéke [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) **true (igaz**) lehet.
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
@@ -71,7 +71,7 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dok
 
 A MySQL a tábla létrehozása során megadott konfiguráció alapján különböző tablespaces-ban tárolja a InnoDB táblát. A [System tablespace](https://dev.mysql.com/doc/refman/5.7/en/innodb-system-tablespace.html) a InnoDB adatszótárának tárolóhelye. A [file-by-Table tablespace](https://dev.mysql.com/doc/refman/5.7/en/innodb-file-per-table-tablespaces.html) egyetlen InnoDB-táblához tartalmaz adatmennyiséget és indexeket, és a fájlrendszerben tárolja a saját adatfájljában. Ezt a viselkedést a `innodb_file_per_table` Server paraméter vezérli. A `innodb_file_per_table` beállítás `OFF` hatására a InnoDB táblákat hozhat létre a System tablespaceben. Ellenkező esetben a InnoDB táblákat hoz létre a fájl-/táblázatos tablespaces-ben.
 
-Azure Database for MySQL rugalmas kiszolgáló a legnagyobb, **4 TB** -os, egyetlen adatfájlban támogatott. Ha az adatbázis mérete meghaladja a 4 TB-ot, hozzon létre egy táblázatot [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) tablespace-ban. Ha 4 TB-nál nagyobb méretű tábla van, használja a partíciós táblát.
+Azure Database for MySQL rugalmas kiszolgáló a legnagyobb, **4 TB**-os, egyetlen adatfájlban támogatott. Ha az adatbázis mérete meghaladja a 4 TB-ot, hozzon létre egy táblázatot [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) tablespace-ban. Ha 4 TB-nál nagyobb méretű tábla van, használja a partíciós táblát.
 
 ### <a name="max_connections"></a>max_connections
 
@@ -125,7 +125,7 @@ A kezdeti üzembe helyezést követően az Azure for MySQL rugalmas kiszolgáló
 
 A Azure Portal Server paraméter panel a módosítható és nem módosítható kiszolgálói paramétereket is megjeleníti. A nem módosítható kiszolgálói paraméterek szürkén jelennek meg. Ha nem módosítható kiszolgálói paramétert szeretne konfigurálni a munkamenet szintjén, tekintse meg a [Azure Portal](./how-to-configure-server-parameters-portal.md#setting-non-modifiable-server-parameters) vagy az [Azure CLI](./how-to-configure-server-parameters-cli.md#setting-non-modifiable-server-parameters) -cikket a paraméter a kapcsolati szinten való beállításához a használatával `init_connect` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Kiszolgáló paramétereinek konfigurálása Azure Portal](./how-to-configure-server-parameters-portal.md)
 - A [kiszolgálói paraméterek konfigurálása az Azure CLI-ben](./how-to-configure-server-parameters-cli.md)

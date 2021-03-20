@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
 ms.openlocfilehash: f324ef44d002f50bf27c08072e904c1d92b5512f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95026233"
 ---
 # <a name="functions-in-the-hyperscale-citus-sql-api"></a>Függvények a nagy kapacitású (Citus) SQL API-ban
@@ -46,7 +46,7 @@ Ha egy új elosztott tábla nem kapcsolódik más táblákhoz, érdemes megadnia
 
 #### <a name="return-value"></a>Visszatérési érték
 
-N.A.
+N/A
 
 #### <a name="example"></a>Példa
 
@@ -70,7 +70,7 @@ A Create \_ Reference \_ Table () függvény egy kis hivatkozás vagy dimenzió 
 
 #### <a name="return-value"></a>Visszatérési érték
 
-N.A.
+N/A
 
 #### <a name="example"></a>Példa
 
@@ -90,7 +90,7 @@ A frissítés \_ a \_ hivatkozási \_ táblára () függvény egy meglévő, a s
 
 #### <a name="return-value"></a>Visszatérési érték
 
-N.A.
+N/A
 
 #### <a name="example"></a>Példa
 
@@ -126,7 +126,7 @@ DETAIL:  Distribution column types don't match for apples and oranges.
 
 #### <a name="return-value"></a>Visszatérési érték
 
-N.A.
+N/A
 
 #### <a name="example"></a>Példa
 
@@ -152,7 +152,7 @@ A postgres keresési útvonala nincs propagálva a koordinátortól a feldolgoz�
 
 #### <a name="return-value"></a>Visszatérési érték
 
-N.A.
+N/A
 
 #### <a name="example"></a>Példa
 
@@ -359,11 +359,11 @@ Ez a függvény a alkalmazástól függetlenül működik `pg_stat_statements_re
 
 #### <a name="arguments"></a>Argumentumok
 
-N.A.
+N/A
 
 #### <a name="return-value"></a>Visszatérési érték
 
-Nincs
+Nincsenek
 
 ## <a name="server-group-management-and-repair"></a>Kiszolgálócsoport-kezelés és-javítás
 
@@ -387,7 +387,7 @@ A szegmensek kijavításához a függvény először eldobja a nem kifogástalan
 
 #### <a name="return-value"></a>Visszatérési érték
 
-N.A.
+N/A
 
 #### <a name="example"></a>Példa
 
@@ -427,7 +427,7 @@ Sikeres áthelyezési művelet után a rendszer a forrás csomópont szegmenseit
 
 #### <a name="return-value"></a>Visszatérési érték
 
-N.A.
+N/A
 
 #### <a name="example"></a>Példa
 
@@ -450,7 +450,7 @@ Az alapértelmezett stratégia a következő esetekben megfelelő:
 
 Ha a feltételezések bármelyike nem tart fenn, akkor az alapértelmezett kiegyensúlyozás rossz tervet eredményezhet. Ebben az esetben a (z) paraméter használatával testreszabhatja a stratégiát `rebalance_strategy` .
 
-A [get_rebalance_table_shards_plan](#get_rebalance_table_shards_plan) \_ \_ végrehajtandó műveletek megtekintéséhez és ellenőrzéséhez ajánlott a get_rebalance_table_shards_plan hívása a tábla újraelosztása előtt.
+A [](#get_rebalance_table_shards_plan) \_ \_ végrehajtandó műveletek megtekintéséhez és ellenőrzéséhez ajánlott a get_rebalance_table_shards_plan hívása a tábla újraelosztása előtt.
 
 #### <a name="arguments"></a>Argumentumok
 
@@ -477,7 +477,7 @@ Ha ez az argumentum nincs megadva, a függvény kiválasztja az alapértelmezett
 
 #### <a name="return-value"></a>Visszatérési érték
 
-N.A.
+N/A
 
 #### <a name="example"></a>Példa
 
@@ -520,7 +520,7 @@ A szegmensek újraegyensúlyának megkezdése után a `get_rebalance_progress()`
 
 #### <a name="arguments"></a>Argumentumok
 
-N.A.
+N/A
 
 #### <a name="return-value"></a>Visszatérési érték
 
@@ -575,7 +575,7 @@ Az argumentumokkal kapcsolatos további tudnivalókért tekintse meg a megfelel�
 
 #### <a name="return-value"></a>Visszatérési érték
 
-N.A.
+N/A
 
 ### <a name="citus_set_default_rebalance_strategy"></a>citus \_ \_ alapértelmezett \_ egyensúlyi \_ stratégia beállítása
 
@@ -587,7 +587,7 @@ Frissítse a [pg_dist_rebalance_strategy](reference-hyperscale-metadata.md#rebal
 
 #### <a name="return-value"></a>Visszatérési érték
 
-N.A.
+N/A
 
 #### <a name="example"></a>Példa
 
@@ -601,7 +601,7 @@ A citus \_ Remote \_ Connection \_ stats () függvény az egyes távoli csomópo
 
 #### <a name="arguments"></a>Argumentumok
 
-N.A.
+N/A
 
 #### <a name="example"></a>Példa
 
@@ -637,7 +637,7 @@ Ha ez az argumentum nincs megadva, a függvény kiválasztja az alapértelmezett
 
 #### <a name="return-value"></a>Visszatérési érték
 
-N.A.
+N/A
 
 #### <a name="example"></a>Példa
 
@@ -687,7 +687,7 @@ szegmensek **maximális \_ \_ példányszáma:** (nem kötelező) a másolandó 
 
 #### <a name="return-value"></a>Visszatérési érték
 
-N.A.
+N/A
 
 #### <a name="examples"></a>Példák
 

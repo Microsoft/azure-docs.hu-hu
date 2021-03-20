@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 4/28/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 43ce39a1fc05c8ffedd1ae8404cc20c1a498a73f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94539022"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mysql-server-using-powershell"></a>Azure Database for MySQL-kiszolgáló biztonsági mentése és visszaállítása a PowerShell használatával
@@ -41,7 +41,7 @@ A kiszolgáló létrehozásakor választhat, hogy a kiszolgálót helyileg redun
 > [!NOTE]
 > A kiszolgáló létrehozása után a redundancia nem módosítható, földrajzilag redundáns, a helyileg redundáns.
 
-A kiszolgáló parancson keresztüli létrehozása közben `New-AzMySqlServer` a **GeoRedundantBackup** paraméter határozza meg a biztonsági mentési redundancia beállítást. Ha **engedélyezve** van, a rendszer redundáns biztonsági mentéseket végez. Ha **le van tiltva** , a rendszer helyileg redundáns biztonsági mentéseket végez.
+A kiszolgáló parancson keresztüli létrehozása közben `New-AzMySqlServer` a **GeoRedundantBackup** paraméter határozza meg a biztonsági mentési redundancia beállítást. Ha **engedélyezve** van, a rendszer redundáns biztonsági mentéseket végez. Ha **le van tiltva**, a rendszer helyileg redundáns biztonsági mentéseket végez.
 
 A biztonsági mentés megőrzési időtartamát a **BackupRetentionDay** paraméter állítja be.
 
@@ -78,7 +78,7 @@ A parancsmag **PointInTimeRestore** paraméterének `Restore-AzMySqlServer` a k�
 | Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  Az erőforráscsoport, amelyben a forráskiszolgáló található.  |
-| Név | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
+| Name | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
 | RestorePointInTime | 2020 – 03-13T13:59:00Z | Válasszon ki egy időpontot a visszaállításhoz. Ennek a dátumnak és időnek a forráskiszolgáló biztonsági mentésének megőrzési időszakán belül kell lennie. Használja a ISO8601 dátum és idő formátumát. Használhatja például a saját helyi időzónáját, például **2020-03-13T05:59:00-08:00**. Használhatja az UTC Zulu formátumot is, például **2018-03-13T13:59:00Z**. |
 | UsePointInTimeRestore | `<SwitchParameter>` | A visszaállításhoz használja az időponthoz tartozó módot. |
 
@@ -120,7 +120,7 @@ A parancsmag **GeoRestore** paraméterének `Restore-AzMySqlServer` a következ�
 | Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
 |ResourceGroupName | myResourceGroup | Azon erőforráscsoport neve, amelyhez az új kiszolgáló tartozik.|
-|Név | mydemoserver – georestored | Az új kiszolgáló neve. |
+|Name | mydemoserver – georestored | Az új kiszolgáló neve. |
 |Hely | eastus | Az új kiszolgáló helye. |
 |UseGeoRestore | `<SwitchParameter>` | A visszaállításhoz használja a Geo üzemmódot. |
 

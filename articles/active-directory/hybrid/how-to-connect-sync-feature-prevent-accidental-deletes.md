@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 16d48cda87b8226ebc3bbab179c1034abf0a486f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90084609"
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Az Azure AD Connect szinkronizálása: véletlen törlések megakadályozása
@@ -51,10 +51,10 @@ Az állapotot az `stopped-deletion-threshold-exceeded` exportálási profil **sy
 Ha ez nem várt, akkor vizsgálja meg, és végezze el a megfelelő műveleteket. Ha szeretné megtekinteni, hogy mely objektumokat szeretné törölni, tegye a következőket:
 
 1. Indítsa el a **szinkronizálási szolgáltatást** a Start menüből.
-2. Válassza az **Összekötők**lehetőséget.
-3. Válassza ki a **Azure Active Directory**típusú összekötőt.
-4. A jobb oldali **műveletek** területen válassza a **Keresés összekötő terület**lehetőséget.
-5. A **hatókör**alatt lévő előugró ablakban válassza a **leválasztva** lehetőséget, és válasszon egy korábbi időpontot. Kattintson a **Keresés** gombra. Ezen a lapon látható a törölni kívánt összes objektum áttekintése. Az egyes elemekre kattintva további információkat érhet el az objektumról. Az **oszlop beállítása** lehetőségre kattintva további attribútumokat is hozzáadhat a rácshoz.
+2. Válassza az **Összekötők** lehetőséget.
+3. Válassza ki a **Azure Active Directory** típusú összekötőt.
+4. A jobb oldali **műveletek** területen válassza a **Keresés összekötő terület** lehetőséget.
+5. A **hatókör** alatt lévő előugró ablakban válassza a **leválasztva** lehetőséget, és válasszon egy korábbi időpontot. Kattintson a **Keresés** gombra. Ezen a lapon látható a törölni kívánt összes objektum áttekintése. Az egyes elemekre kattintva további információkat érhet el az objektumról. Az **oszlop beállítása** lehetőségre kattintva további attribútumokat is hozzáadhat a rácshoz.
 
 ![Keresési összekötő területe](./media/how-to-connect-sync-feature-prevent-accidental-deletes/searchcs.png)
 
@@ -66,7 +66,7 @@ Ha az összes törlés szükséges, tegye a következőket:
 1. A jelenlegi törlési küszöbérték lekéréséhez futtassa a PowerShell-parancsmagot `Get-ADSyncExportDeletionThreshold` . Adja meg az Azure AD globális rendszergazdai fiókját és jelszavát. Az alapértelmezett érték: 500.
 2. Ha átmenetileg le szeretné tiltani ezt a védelmet, és engedélyezi a törlést, futtassa a következő PowerShell-parancsmagot: `Disable-ADSyncExportDeletionThreshold` . Adja meg az Azure AD globális rendszergazdai fiókját és jelszavát.
    ![Képernyőfelvétel: az Azure AD globális rendszergazdai felhasználónevének és jelszavának beírására szolgáló párbeszédpanel.](./media/how-to-connect-sync-feature-prevent-accidental-deletes/credentials.png)
-3. Ha a Azure Active Directory-összekötő továbbra is ki van választva, válassza ki **a műveletet,** és válassza az **Exportálás**lehetőséget.
+3. Ha a Azure Active Directory-összekötő továbbra is ki van választva, válassza ki **a műveletet,** és válassza az **Exportálás** lehetőséget.
 4. A védelem újbóli engedélyezéséhez futtassa a következő PowerShell-parancsmagot: `Enable-ADSyncExportDeletionThreshold -DeletionThreshold 500` . Cserélje le a 500 értéket az aktuális törlési küszöb beolvasásakor észlelt értékre. Adja meg az Azure AD globális rendszergazdai fiókját és jelszavát.
 
 ## <a name="next-steps"></a>Következő lépések

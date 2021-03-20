@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan állíthatja be és állíthatja alaphelyzetbe 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 6ae577ee4c0c7e31760e0fb12afeaeac1ef8b7e2
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96434226"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>Virtuális gépek készleteinek létrehozása és kezelése 
@@ -99,7 +99,7 @@ Ha a következő feltételek teljesülnek, a tesztkörnyezet létrehozója (peda
 
     ![Virtuális gépek listájának exportálása](./media/how-to-export-users-virtual-machines-csv/virtual-machines-export-csv.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha szeretne többet megtudni a tanulók által beállítható egyéb használati lehetőségekről, tekintse meg a következő cikket: a [tanulói használat konfigurálása](how-to-configure-student-usage.md).
 
 A virtuális gépek jelszavának alaphelyzetbe állításával kapcsolatos további információkért lásd: a [Virtual Machines szolgáltatáshoz tartozó jelszó beállítása vagy alaphelyzetbe állítása a laborban (diákok)](how-to-set-virtual-machine-passwords-student.md).

@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.openlocfilehash: 7e68e9f8caad7d7e4bc44bc4e1e55150a78b4a98
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95026403"
 ---
 # <a name="pick-initial-size-for-hyperscale-citus-server-group"></a>Nagy kapacitású-(Citus-) kiszolgálócsoport kezdeti méretének kiválasztása
@@ -29,9 +29,9 @@ A koordinátori csomópont nem igényel annyi RAM-t, mint a feldolgozók, de nin
 
 Teljes virtuális mag: Ha a munkamennyiség a RAM-ban található, akkor a nagy kapacitású (Citus) lineáris teljesítményének növelése várható a munkavégző magok számával arányosan. Az igényeinek megfelelő számú virtuális mag meghatározásához vegye figyelembe az egycsomópontos adatbázisban lévő lekérdezések aktuális késését, valamint a nagy kapacitású (Citus) szükséges késését. Ossza el az aktuális kését a kívánt késéssel, majd kerekítse az eredményt.
 
-Feldolgozó RAM: a legjobb eset elegendő memória biztosítása lenne, amelyben a munkakészlet többsége elfér. Az alkalmazás által használt lekérdezések típusa befolyásolja a memória követelményeit. Az ELEMZÉSek MAGYARÁZATának futtatásával határozhatja meg, hogy mennyi memóriát igényel. Ne feledje, hogy a virtuális mag és a RAM méretezése a [nagy kapacitású (Citus) konfigurációs beállításai](concepts-hyperscale-configuration-options.md) című cikkben leírtak szerint történik.
+Feldolgozó RAM: a legjobb eset elegendő memória biztosítása lenne, amelyben a munkakészlet többsége elfér. Az alkalmazás által használt lekérdezések típusa befolyásolja a memóriakövetelményeket. Az ELEMZÉSek MAGYARÁZATának futtatásával határozhatja meg, hogy mennyi memóriát igényel. Ne feledje, hogy a virtuális mag és a RAM méretezése a [nagy kapacitású (Citus) konfigurációs beállításai](concepts-hyperscale-configuration-options.md) című cikkben leírtak szerint történik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Kiszolgálócsoport skálázása](howto-hyperscale-scale-grow.md)
 - További információ a kiszolgálói csoportok [teljesítményének lehetőségeiről](concepts-hyperscale-configuration-options.md).

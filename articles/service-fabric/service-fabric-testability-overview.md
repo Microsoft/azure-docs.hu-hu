@@ -4,16 +4,16 @@ description: Ez a cikk a hiba-elemzési szolgáltatást ismerteti Service Fabric
 ms.topic: conceptual
 ms.date: 06/15/2017
 ms.openlocfilehash: 4e879b0b39d58f115b4661d47cf2ae564ba14e5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91531377"
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>A hiba-elemzési szolgáltatás bemutatása
 A hiba-elemzési szolgáltatás a Microsoft Azure Service Fabricra épülő szolgáltatások tesztelésére szolgál. A hiba-elemzési szolgáltatással értelmes hibákat válthat ki, és teljes körű tesztelési forgatókönyveket futtathat az alkalmazásain. Ezek a hibák és forgatókönyvek a számos államot, valamint a szolgáltatás teljes élettartama során felmerülő, ellenőrzött, biztonságos és konzisztens módon működtetett állapotokat gyakorolják és érvényesítik.
 
-A műveletek a szolgáltatás tesztelésére szolgáló egyéni hibák. A szolgáltatás-fejlesztő ezeket a építőelemeket összetett forgatókönyvek írásához használhatja. Példa:
+A műveletek a szolgáltatás tesztelésére szolgáló egyéni hibák. A szolgáltatás-fejlesztő ezeket a építőelemeket összetett forgatókönyvek írásához használhatja. Például:
 
 * Indítsa újra a csomópontot, hogy tetszőleges számú helyzetet Szimuláljon, ha a gép vagy a virtuális gép újraindul.
 * Helyezzen át egy replikát az állapot-nyilvántartó szolgáltatásból a terheléselosztás, a feladatátvétel vagy az alkalmazás frissítésének szimulálása érdekében.

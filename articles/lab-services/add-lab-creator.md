@@ -4,10 +4,10 @@ description: Ez a cikk bemutatja, hogyan adhat hozzá felhasználót a labor lé
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a6c89483744f943926f126701d28988358627a27
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96435960"
 ---
 # <a name="add-lab-creators-to-a-lab-account-in-azure-lab-services"></a>Tesztkörnyezet-készítők hozzáadása labor-fiókhoz Azure Lab Services
@@ -60,7 +60,7 @@ A **bejelentkezési beállítások** lapon válassza a **Bejelentkezés a github
 Végül a rendszer kéri, hogy hozzon létre egy Microsoft-fiók, amely a GitHub-fiókjához van csatolva. Automatikusan megtörténik, amikor az oktató kiválasztja a **Next (tovább**) gombot.  Ezután az oktató azonnal bejelentkezik, és csatlakozik az osztályterem laborhoz.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
 - [Labor tulajdonosaként Labs létrehozása és kezelése](how-to-manage-classroom-labs.md)

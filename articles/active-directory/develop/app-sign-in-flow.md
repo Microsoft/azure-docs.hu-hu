@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.openlocfilehash: 1f9f330ab140fa66b5a66a112c47ca2a68ba56bf
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98755703"
 ---
 # <a name="app-sign-in-flow-with-the-microsoft-identity-platform"></a>Alkalmazás-bejelentkezési folyamat a Microsoft Identity platformmal
@@ -71,7 +71,7 @@ Mivel az Azure AD ugyanazt az identitás-cookie-t menti a böngészőben, mint a
 
 Alapértelmezés szerint a MSAL a rendszerböngészőt használja. A kivétel a .NET-keretrendszer asztali alkalmazásai, amelyekben egy beágyazott vezérlőt használunk az integráltabb felhasználói élmény biztosításához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A hitelesítési és engedélyezési alapismeretekkel kapcsolatos egyéb témakörökhöz:
 

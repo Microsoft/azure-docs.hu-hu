@@ -7,11 +7,11 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 528ea5a6b05dea59cb397bf32297f05b6cdc9be2
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 0b71f7ca3f812de1514612f8b0dd5915f3f81bc4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100522733"
 ---
 # <a name="forward-alert-information"></a>Riasztási információk továbbítása
@@ -203,6 +203,6 @@ Lehet, hogy a rendszergazda definiálta a riasztások kizárási szabályait. Ez
 
 Ez azt jelenti, hogy az Ön által definiált továbbítási szabályok figyelmen kívül hagyhatók a rendszergazda által létrehozott kizárási szabályok alapján. A kizárási szabályok a helyszíni felügyeleti konzolon vannak meghatározva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="see-also"></a>Lásd még
 
 [Riasztási munkafolyamatok felgyorsítása](how-to-accelerate-alert-incident-response.md)

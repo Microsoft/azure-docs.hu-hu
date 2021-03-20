@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.openlocfilehash: a6a7bf24571660d8e728c1acba29af2504539a18
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99219960"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft Identity platform – ajánlott eljárások és javaslatok
@@ -30,7 +30,7 @@ Az alábbi ellenőrzőlista használatával biztosíthatja, hogy az alkalmazás 
 > [!TIP]
 > A Azure Portal *integrációs asszisztense* segíthet az ajánlott eljárások és javaslatok alkalmazásában. Válassza ki a Azure Portal valamelyik [alkalmazás-regisztrációját](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) , majd válassza az **integrációs asszisztens** menüpontot a Segéd megkezdéséhez.
 
-## <a name="basics"></a>Alapbeállítások
+## <a name="basics"></a>Alapvető beállítások
 
 ![jelölőnégyzet ](./media/active-directory-integration-checklist/checkbox-two.svg) beolvasása és a [Microsoft-Platform házirendjeinek](/legal/microsoft-identity-platform/terms-of-use)megismerése. Győződjön meg arról, hogy az alkalmazás megfelel a felhasználók és a platform elleni védelemhez tervezett feltételeknek.
 

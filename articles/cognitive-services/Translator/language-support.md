@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 06/10/2020
 ms.author: lajanuar
 ms.openlocfilehash: b114c4f3e6646f68e7a1068be8dd52778a26fb58
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101738140"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Nyelvi és területi támogatás szöveg-és beszédfelismerési fordításhoz
@@ -51,7 +51,7 @@ A fordító a következő nyelveket támogatja szöveg szöveggé fordításáho
 | kínai (egyszerűsített) | `zh-Hans` |
 | kínai (hagyományos) | `zh-Hant` |
 | Horvát | `hr` |
-| cseh | `cs` |
+| Cseh | `cs` |
 | Dari | `prs` |
 | Dán | `da` |
 | Holland | `nl` |

@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: e66bd0a4e56f63185d8361355d6cf8e0e29bc30b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93305937"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>A csoportos adatelemzési folyamat működés közben – egy Azure HDInsight Hadoop-fürt használata 1 TB-os adatkészleten
@@ -50,11 +50,11 @@ Az adatkészlet numerikus és kategorikus oszlopaiban hiányoznak értékek. A h
 ## <a name="examples-of-prediction-tasks"></a><a name="mltasks"></a>Példák az előrejelzési feladatokra
 Ebben az útmutatóban két példa előrejelzési problémát ismertetünk:
 
-1. **Bináris besorolás** : azt jelzi, hogy a felhasználó egy hozzáadásra kattintott-e:
+1. **Bináris besorolás**: azt jelzi, hogy a felhasználó egy hozzáadásra kattintott-e:
 
    * 0. osztály: nincs kattintás
    * 1. osztály: kattintson a
-2. **Regresszió** : előre jelezheti, hogy az ad-ra való kattintás valószínűsége a felhasználói funkciókból származik.
+2. **Regresszió**: előre jelezheti, hogy az ad-ra való kattintás valószínűsége a felhasználói funkciókból származik.
 
 ## <a name="set-up-an-hdinsight-hadoop-cluster-for-data-science"></a><a name="setup"></a>HDInsight Hadoop-fürt beállítása adatelemzéshez
 > [!NOTE]
@@ -99,7 +99,7 @@ A bal oldalon a "Hadoop Command line" (az adatfeltárási igásló). Figyelje me
 Most már be van állítva, és készen áll a bemutató első részének megkezdésére: az adatelemzés a kaptár használatával, és az adatAzure Machine Learningra való felkészülés.
 
 ## <a name="create-hive-database-and-tables"></a><a name="hive-db-tables"></a> Struktúra-adatbázis és-táblák létrehozása
-A Criteo adatkészlet struktúrájának létrehozásához nyissa meg a * *_Hadoop Command Line _ parancsot_* a fő csomópont asztalán, és írja be a kaptár könyvtárat a parancs beírásával.
+A Criteo adatkészlethez tartozó kaptár-táblázatok létrehozásához nyissa meg a ***Hadoop parancssort*** a fő csomópont asztalán, és írja be a kaptár könyvtárat a parancs beírásával.
 
 ```console
 cd %hive_home%\bin
@@ -118,7 +118,7 @@ Miután a struktúra REPL megjelenik egy "kaptár >" jellel, egyszerűen kivágj
 
 A következő kód létrehozza a "criteo" adatbázist, majd négy táblát hoz létre:
 
-_ a 00 – 20. nap napjaira épülő *darabszámok létrehozási táblázata* \_ \_
+* egy *táblázat a* \_ 00 – 20. napon \_ , a
 * a 21. napra épülő, *a vonat adatkészletként használandó táblázat* \_
 * két tábla, amely a 22. és a 23. napon alapuló *tesztelési adatkészletekhez használható* \_ \_ .
 
@@ -161,7 +161,7 @@ Az összes táblázat külső, így az Azure Blob Storage (wasb) helyeire mutath
 
 **A kaptár-lekérdezések két módon hajthatók végre:**
 
-* **A kaptár repl parancssor használata** : az első a "kaptár" parancs kiadása, és a lekérdezés másolása és beillesztése a kaptár repl parancssorba:
+* **A kaptár repl parancssor használata**: az első a "kaptár" parancs kiadása, és a lekérdezés másolása és beillesztése a kaptár repl parancssorba:
 
   ```console
   cd %hive_home%\bin
@@ -169,7 +169,7 @@ Az összes táblázat külső, így az Azure Blob Storage (wasb) helyeire mutath
   ```
 
      Most a REPL parancssorában a lekérdezés kivágása és beillesztése végrehajtja azt.
-* **Lekérdezések mentése fájlba és a parancs végrehajtása** : a második az, hogy mentse a lekérdezéseket egy ". HQL" fájlba ( [minta&#95;struktúra&#95;hozzon létre&#95;criteo&#95;database&#95;és&#95;Tables. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)), majd adja ki a következő parancsot a lekérdezés végrehajtásához:
+* **Lekérdezések mentése fájlba és a parancs végrehajtása**: a második az, hogy mentse a lekérdezéseket egy ". HQL" fájlba ([minta&#95;struktúra&#95;hozzon létre&#95;criteo&#95;database&#95;és&#95;Tables. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)), majd adja ki a következő parancsot a lekérdezés végrehajtásához:
 
   ```console
   hive -f C:\temp\sample_hive_create_criteo_database_and_tables.hql
@@ -502,13 +502,13 @@ Az **adatimportálási** modul esetében a grafikában megadott paraméterek ér
 
 1. Az **adatforrás** "kaptár-lekérdezés" választása
 2. A **struktúra adatbázisának lekérdezése** mezőben egy egyszerű kijelölés * az \_ adatbázis neve <\_ . a \_ tábla \_ neve> – elég.
-3. **Hcatalog-kiszolgáló URI-ja** : Ha a fürt "ABC", akkor ez egyszerűen: https: \/ /ABC.azurehdinsight.net
-4. **Hadoop felhasználói fiók neve** : a fürt üzembe helyezésének időpontjában kiválasztott Felhasználónév. (Nem a távelérés felhasználóneve!)
-5. **Hadoop felhasználói fiók jelszava** : a fürt üzembe helyezésének időpontjában kiválasztott Felhasználónév jelszava. (Nem a távelérés jelszava!)
-6. **Kimeneti adatokat tároló hely** : válassza az "Azure" lehetőséget.
-7. **Azure Storage-fiók neve** : a fürthöz társított Storage-fiók
-8. **Azure Storage-fiók kulcsa** : a fürthöz társított Storage-fiók kulcsa.
-9. **Azure-tároló neve** : Ha a fürt neve "ABC", akkor ez egyszerűen "ABC", általában.
+3. **Hcatalog-kiszolgáló URI-ja**: Ha a fürt "ABC", akkor ez egyszerűen: https: \/ /ABC.azurehdinsight.net
+4. **Hadoop felhasználói fiók neve**: a fürt üzembe helyezésének időpontjában kiválasztott Felhasználónév. (Nem a távelérés felhasználóneve!)
+5. **Hadoop felhasználói fiók jelszava**: a fürt üzembe helyezésének időpontjában kiválasztott Felhasználónév jelszava. (Nem a távelérés jelszava!)
+6. **Kimeneti adatokat tároló hely**: válassza az "Azure" lehetőséget.
+7. **Azure Storage-fiók neve**: a fürthöz társított Storage-fiók
+8. **Azure Storage-fiók kulcsa**: a fürthöz társított Storage-fiók kulcsa.
+9. **Azure-tároló neve**: Ha a fürt neve "ABC", akkor ez egyszerűen "ABC", általában.
 
 Miután az **importálási adat** beolvassa az adatokat (a modul zöld pipa jelenik meg), mentse az adatokat adatkészletként (az Ön által választott névvel). Ez a következőképpen néz ki:
 

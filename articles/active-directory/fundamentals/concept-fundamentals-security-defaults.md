@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 9c912b7122a40ae39bcbb703e1387af25fff2bc8
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: efaf6060c0b09e071546038d9e30f2c8065059e7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029906"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "98600140"
 ---
 # <a name="what-are-security-defaults"></a>Mik azok a biztonsági alapértékek?
 
@@ -76,7 +76,7 @@ Az Azure AD Multi-Factor Authentication való regisztrációt követően a köve
 
 Miután ezek a támadók hozzáférnek, az eredeti fiók tulajdonosának nevében kérhetnek hozzáférést az emelt szintű információhoz. Akár le is tölthetik a teljes könyvtárat, hogy elvégezzenek egy adathalászat elleni támadást a teljes szervezetben. 
 
-Az egyik gyakori módszer az, hogy javítsa az összes felhasználó védelmét, hogy mindenki számára a fiókok ellenőrzésének erősebb formáját kell megkövetelni, például Multi-Factor Authentication. Miután a felhasználók beMulti-Factor Authenticationák a regisztrációt, a rendszer szükség esetén további hitelesítésre kéri. Ez a funkció védi az Azure AD-ben regisztrált összes alkalmazást, beleértve az SaaS-alkalmazásokat is.
+Az egyik gyakori módszer az, hogy javítsa az összes felhasználó védelmét, hogy mindenki számára a fiókok ellenőrzésének erősebb formáját kell megkövetelni, például Multi-Factor Authentication. Miután a felhasználók beMulti-Factor Authenticationák a regisztrációt, a rendszer szükség esetén további hitelesítésre kéri. A felhasználókat a rendszer először az új eszköz vagy alkalmazás használatával történő hitelesítéskor, illetve kritikus szerepkörök és feladatok végrehajtásakor fogja kérni. Ez a funkció védi az Azure AD-ben regisztrált összes alkalmazást, beleértve az SaaS-alkalmazásokat is.
 
 ### <a name="blocking-legacy-authentication"></a>Örökölt hitelesítés blokkolása
 
@@ -128,14 +128,14 @@ Ezek az ingyenes biztonsági beállítások lehetővé teszik az Azure AD-Multi-
 | Ellenőrző kód a Mobile App vagy a Hardware tokenből | X * * | X |
 | SMS-üzenet a telefonra |   | X |
 | Telefonos hívás |   | X |
-| Alkalmazásjelszavak. |   | X * * _ |
+| Alkalmazásjelszavak. |   | X * * * |
 
-- _ * A felhasználók a Microsoft Authenticator alkalmazásból is használhatnak ellenőrző kódokat, de csak az értesítési lehetőséggel regisztrálhatnak.
-- * * _ Az alkalmazás jelszavai csak akkor érhetők el felhasználónkénti MFA-ban, ha az örökölt hitelesítési forgatókönyvek csak a rendszergazdák által engedélyezettek.
+- * * A felhasználók a Microsoft Authenticator alkalmazásból is használhatnak ellenőrző kódokat, de csak az értesítési lehetőséggel regisztrálhatnak.
+- Az alkalmazás jelszavai csak akkor érhetők el felhasználónkénti MFA-ban, ha az örökölt hitelesítési forgatókönyvek csak a rendszergazdák által engedélyezettek.
 
 ### <a name="disabled-mfa-status"></a>Letiltott MFA-állapot
 
-Ha a szervezete a felhasználónkénti Azure AD-Multi-Factor Authentication korábbi felhasználója, ne felébressze, hogy a felhasználók nem látják a nem *engedélyezett* vagy **kényszerített** állapotot, ha megtekinti a multi-Factor Auth állapota lapot. A **Letiltva** érték a biztonsági alapértékeket vagy a feltételes hozzáférésű Azure AD-multi-Factor Authentication használó felhasználók számára megfelelő állapot.
+Ha a szervezete a felhasználónkénti Azure AD-Multi-Factor Authentication korábbi felhasználója, ne felébressze, hogy az **engedélyezett** vagy **kényszerített** állapotú felhasználók ne lássák a multi-Factor Auth állapota lapot. A **Letiltva** érték a biztonsági alapértékeket vagy a feltételes hozzáférésű Azure AD-multi-Factor Authentication használó felhasználók számára megfelelő állapot.
 
 ### <a name="conditional-access"></a>Feltételes hozzáférés
 
