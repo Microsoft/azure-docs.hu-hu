@@ -11,10 +11,10 @@ ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 0fd693573858df095b62a7a7917563141ac19c5b
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94579334"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>A Storage-fiók típusának és az SKU nevének beolvasása a .NET-tel
@@ -23,9 +23,9 @@ Ez a cikk bemutatja, hogyan kérhető le az Azure Storage-fiók típusa és SKU-
 
 ## <a name="about-account-type-and-sku-name"></a>A fiók típusa és az SKU neve
 
-**Fióktípus** : az érvényes fióktípus például a,,, `BlobStorage` `BlockBlobStorage` `FileStorage` `Storage` és `StorageV2` . Az [Azure Storage-fiók áttekintése](storage-account-overview.md) több információt tartalmaz, többek között a különböző Storage-fiókok leírását.
+**Fióktípus**: az érvényes fióktípus például a,,, `BlobStorage` `BlockBlobStorage` `FileStorage` `Storage` és `StorageV2` . Az [Azure Storage-fiók áttekintése](storage-account-overview.md) több információt tartalmaz, többek között a különböző Storage-fiókok leírását.
 
-**SKU neve** : érvényes SKU-nevek a következők:,,,,,, `Premium_LRS` `Premium_ZRS` `Standard_GRS` `Standard_GZRS` `Standard_LRS` `Standard_RAGRS` `Standard_RAGZRS` és `Standard_ZRS` . Az SKU-nevek megkülönböztetik a kis-és nagybetűket, és a [SkuName osztály](/dotnet/api/microsoft.azure.management.storage.models.skuname)sztring mezői.
+**SKU neve**: érvényes SKU-nevek a következők:,,,,,, `Premium_LRS` `Premium_ZRS` `Standard_GRS` `Standard_GZRS` `Standard_LRS` `Standard_RAGRS` `Standard_RAGZRS` és `Standard_ZRS` . Az SKU-nevek megkülönböztetik a kis-és nagybetűket, és a [SkuName osztály](/dotnet/api/microsoft.azure.management.storage.models.skuname)sztring mezői.
 
 ## <a name="retrieve-account-information"></a>Fiókadatok beolvasása
 

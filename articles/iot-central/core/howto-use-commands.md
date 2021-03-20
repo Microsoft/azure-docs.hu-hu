@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: e53bf377a7ef8f2293debd288ba25ef8f04ff4fc
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98610998"
 ---
 # <a name="how-to-use-commands-in-an-azure-iot-central-solution"></a>Parancsok használata Azure IoT Central-megoldásokban
@@ -43,7 +43,7 @@ A következő táblázat a parancs funkciójának konfigurációs beállításai
 | Name            | A parancs neve. IoT Central a megjelenített név alapján létrehoz egy értéket a mezőhöz, de szükség esetén kiválaszthatja a saját értékét is. A mezőnek alfanumerikusnak kell lennie. Az eszköz kódja ezt a **nevet** használja.|
 | Képesség típusa | Parancs.|
 | Üzenetsor offline | Azt határozza meg, hogy a parancs elérhető-e *Offline* parancsként. |
-| Leírás     | A parancs funkciójának leírása.|
+| Description     | A parancs funkciójának leírása.|
 | Megjegyzés     | A parancs képességével kapcsolatos megjegyzések.|
 | Kérés     | Az eszköz parancsának adattartalma.|
 | Reagálás     | Az eszköz parancsra adott válasz hasznos adatai.|

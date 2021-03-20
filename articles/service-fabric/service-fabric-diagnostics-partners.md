@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: srrengar
 ms.openlocfilehash: fd24d65ebdf4e458870819286024d1ea2e13d83e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75645718"
 ---
 # <a name="azure-service-fabric-monitoring-partners"></a>Azure Service Fabric-figyelési partnerek
@@ -40,7 +40,7 @@ A ELK stack nyílt forráskódú technológiák gyűjteménye: Elasticsearch, Lo
 
 A Humio egy olyan naplózási szolgáltatás, amely a felhőben vagy a helyszínen valós időben Service Fabric a naplókat az alkalmazásokból és az eseményekről. Az élő megfigyelésen kívül a Humio legkorszerűbb elemzési és vizualizációs funkciókat kínál a diagnosztika adatainak megtekintésére és gyűjtésére. A Humio költséghatékony díjszabási terveket tartalmaz, és a méretezési folyamat megtartása mellett a gyors gyorsaságot is megőrzi. Közvetlenül integrálható Service Fabric platform eseményeivel és az alkalmazás telemetria. A Humio és a Service Fabric integrációról [itt](https://github.com/humio/service-fabric-humio)olvashat bővebben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [monitorozás és a diagnosztika áttekintése](service-fabric-diagnostics-overview.md) Service Fabric
 * Ismerje meg, hogyan [diagnosztizálhatja a gyakori forgatókönyveket](service-fabric-diagnostics-common-scenarios.md) az első féltől származó eszközökkel

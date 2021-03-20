@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: jobreen
 ms.openlocfilehash: 1846b036f12fe7e691021ec0248782cad946d9b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75650408"
 ---
 # <a name="azure-custom-providers-resource-onboarding-overview"></a>Az Azure egyéni szolgáltatók erőforrás-előkészítésének áttekintése
@@ -23,7 +23,7 @@ Az Azure Custom Providers erőforrás-előkészítés az Azure-erőforrástípus
 > [!IMPORTANT]
 > Az egyéni szolgáltatók jelenleg nyilvános előzetes verzióban érhetők el.
 > Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem ajánlott éles környezetben üzemelő számítási feladatokhoz. Előfordulhat, hogy bizonyos funkciók nem támogatottak, vagy korlátozva vannak a képességei.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="what-can-resource-onboarding-do"></a>Mit tehet az erőforrás-előkészítés?
 
@@ -54,16 +54,16 @@ A Microsoft. CustomProviders/resourceProviders és a Microsoft. CustomProviders/
 }
 ```
 
-Tulajdonság | Kötelező? | Leírás
+Tulajdonság | Kötelező? | Description
 ---|---|---
-name | Igen | A végpont definíciójának neve. Az erőforrások bevezetéséhez a névnek "társítás" típusúnak kell lennie.
-routingType | Igen | Meghatározza a végponthoz tartozó szerződés típusát. Az erőforrások bevezetéséhez az érvényes **routingTypes** a következők: "proxy, cache, Extension" és "webhook, gyorsítótár, bővítmény".
-endpoint | Igen | A végpont, amelybe a kérelmeket át kell irányítani. Ezzel a megoldással kezelheti a kérés válaszát és mellékhatásait.
+name | Yes | A végpont definíciójának neve. Az erőforrások bevezetéséhez a névnek "társítás" típusúnak kell lennie.
+routingType | Yes | Meghatározza a végponthoz tartozó szerződés típusát. Az erőforrások bevezetéséhez az érvényes **routingTypes** a következők: "proxy, cache, Extension" és "webhook, gyorsítótár, bővítmény".
+endpoint | Yes | A végpont, amelybe a kérelmeket át kell irányítani. Ezzel a megoldással kezelheti a kérés válaszát és mellékhatásait.
 
-Miután létrehozta az egyéni szolgáltatót a társítások erőforrástípus alapján, célként a Microsoft. CustomProviders/Associations szolgáltatást használhatja. A Microsoft. CustomProviders/Associations egy kiterjesztési erőforrás, amely bármely más Azure-erőforrást kiterjesztheti. A Microsoft. CustomProviders/Associations-példányok létrehozásakor a rendszer a **targetresourceid azonosítója**tulajdonságot használja, amelynek érvényes Microsoft. CustomProviders/ResourceProviders vagy Microsoft. Solutions/Applications erőforrás-azonosítónak kell lennie. Ezekben az esetekben a kérést a rendszer a létrehozott Microsoft. CustomProviders/resourceProviders példányának társítási erőforrástípus számára továbbítja.
+Miután létrehozta az egyéni szolgáltatót a társítások erőforrástípus alapján, célként a Microsoft. CustomProviders/Associations szolgáltatást használhatja. A Microsoft. CustomProviders/Associations egy kiterjesztési erőforrás, amely bármely más Azure-erőforrást kiterjesztheti. A Microsoft. CustomProviders/Associations-példányok létrehozásakor a rendszer a **targetresourceid azonosítója** tulajdonságot használja, amelynek érvényes Microsoft. CustomProviders/ResourceProviders vagy Microsoft. Solutions/Applications erőforrás-azonosítónak kell lennie. Ezekben az esetekben a kérést a rendszer a létrehozott Microsoft. CustomProviders/resourceProviders példányának társítási erőforrástípus számára továbbítja.
 
 > [!NOTE]
-> Ha a Microsoft. Solutions/Applications erőforrás-azonosító a **targetresourceid azonosítója**van megadva, akkor a felügyelt erőforráscsoporthoz a "Public" névvel telepített Microsoft. CustomProviders/resourceProviders kell lennie.
+> Ha a Microsoft. Solutions/Applications erőforrás-azonosító a **targetresourceid azonosítója** van megadva, akkor a felügyelt erőforráscsoporthoz a "Public" névvel telepített Microsoft. CustomProviders/resourceProviders kell lennie.
 
 Azure-beli egyéni szolgáltatók társításának mintája:
 
@@ -76,9 +76,9 @@ Azure-beli egyéni szolgáltatók társításának mintája:
 }
 ```
 
-Tulajdonság | Kötelező? | Leírás
+Tulajdonság | Kötelező? | Description
 ---|---|---
-Targetresourceid azonosítója | Igen | A Microsoft. CustomProviders/resourceProviders vagy a Microsoft. Solutions/alkalmazások erőforrás-azonosítója.
+Targetresourceid azonosítója | Yes | A Microsoft. CustomProviders/resourceProviders vagy a Microsoft. Solutions/alkalmazások erőforrás-azonosítója.
 
 ## <a name="how-to-use-resource-onboarding"></a>Az erőforrás-előkészítés használata
 
@@ -152,7 +152,7 @@ A végpontnak egy alkalmazás/JSON `Content-Type` és egy érvényes JSON-válas
 
 Ha kérdése van az Azure-beli egyéni erőforrás-szolgáltatók fejlesztésével kapcsolatban, próbálja meg megkérdezni őket [stack Overflowon](https://stackoverflow.com/questions/tagged/azure-custom-providers). Egy hasonló kérdés megválaszolása már megtörtént, ezért először A feladás előtt érdemes megnéznie. A címke hozzáadásával ```azure-custom-providers``` gyors választ kaphat!
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta az egyéni szolgáltatókat. További információt a következő cikkekben talál:
 

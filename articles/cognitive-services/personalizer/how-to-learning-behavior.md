@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 05/01/2020
 ms.openlocfilehash: 57a03b107678f83200b11f408784f6455cbceffd
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94579291"
 ---
 # <a name="configure-the-personalizer-learning-behavior"></a>A személyre szabott tanulási viselkedés konfigurálása
@@ -53,9 +53,9 @@ A Azure Portal a személyre szabott erőforrás **értékelés** lapján tekints
 > ![Képernyőkép a tanulói mód tanulási viselkedésének értékeléséről Azure Portal](media/settings/evaluate-apprentice-mode.png)
 
 A gyakornoki mód a következő **értékelési mérőszámokat** biztosítja:
-* **Alapterv – átlagos jutalom** : az alkalmazás alapértelmezett alapértéke (alapterv).
-* **Személyre szabás – átlagos jutalom** : a teljes jutalom személyre szabásának átlaga valószínűleg elérte ezt.
-* **Jutalmazza a legutóbbi 1000-események megtérülési arányát** : az alapkonfiguráció és a személyre szabott jutalom aránya – a legutóbbi 1000-események esetében normalizálva.
+* **Alapterv – átlagos jutalom**: az alkalmazás alapértelmezett alapértéke (alapterv).
+* **Személyre szabás – átlagos jutalom**: a teljes jutalom személyre szabásának átlaga valószínűleg elérte ezt.
+* **Jutalmazza a legutóbbi 1000-események megtérülési arányát**: az alapkonfiguráció és a személyre szabott jutalom aránya – a legutóbbi 1000-események esetében normalizálva.
 
 ## <a name="switch-behavior-to-online-mode"></a>Viselkedés váltás online módra
 

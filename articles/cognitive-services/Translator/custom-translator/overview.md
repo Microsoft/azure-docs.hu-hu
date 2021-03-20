@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: lajanuar
 ms.topic: overview
-ms.openlocfilehash: 37d31d753812924607c4d31df6d4f4d5e7b32d69
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 89ab25f45cd35a86d2ff4416ceb851ae6cd5e115
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98890713"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657161"
 ---
 # <a name="what-is-custom-translator"></a>Mi a Custom Translator?
 
@@ -24,13 +24,20 @@ Az [Egyéni fordítóval](https://portal.customtranslator.azure.ai) létrehozott
 
 Az egyéni Translator több mint három tucat nyelvet támogat, és közvetlenül a NMT elérhető nyelvekhez nyújt térképeket. A teljes listát lásd:  [Microsoft Translator languages](../language-support.md#customization).
 
+Ez a dokumentáció a következő cikk-típusokat tartalmazza:
+
+* [**A gyors**](quickstart-build-deploy-custom-model.md) üzembe helyezési útmutató végigvezeti Önt a szolgáltatásra irányuló kérések lépésein.  
+* A [**útmutatók**](how-to-create-project.md) útmutatásai a szolgáltatás részletesebb vagy testreszabott módokon történő használatára vonatkozó utasításokat tartalmaznak.  
+* A [**fogalmak**](workspace-and-project.md) részletesen ismertetik a szolgáltatás funkcióit.  
+
+
 ## <a name="features"></a>Funkciók
 
-Az egyéni Translator különböző funkciókat biztosít az egyéni fordítási rendszerek létrehozásához, majd ezt követően azt is elérheti.
+Az egyéni Translator különböző funkciókat kínál az egyéni fordítási rendszerek létrehozásához és a későbbi hozzáféréshez.
 
 |Szolgáltatás  |Leírás  |
 |---------|---------|
-|[A neurális gépi fordítási technológia kihasználása](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  Fejlessze a fordítást az egyéni fordító által biztosított neurális gépi fordítással (NMT).       |
+|[Neurális gépi fordítási technológia alkalmazása](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  Az egyéni fordító által biztosított neurális gépi fordítás (NMT) alkalmazásával javíthatja a fordítást.       |
 |[Az üzleti terminológiát ismerő rendszerek létrehozása](what-are-parallel-documents.md)     |  A párhuzamos dokumentumok segítségével testre szabhatja és felépítheti a fordítási rendszereket, és megismerheti a saját üzleti és iparági terminológiáját.       |
 |[Modellek készítése szótár használatával](what-is-dictionary.md)     |   Ha nem rendelkezik betanítási adatkészlettel, a modelleket csak a szótárakból álló adattal lehet betanítani.       |
 |[Együttműködés másokkal](how-to-manage-settings.md#share-your-workspace)     |   Együttműködik a csapatával, és megoszthatja a munkáját a különböző személyekkel.     |
@@ -52,7 +59,7 @@ Az [Egyéni fordítók](https://portal.customtranslator.azure.ai), az egyéni re
 
 A biztonságos [Egyéni Translator](https://portal.customtranslator.azure.ai) portál használatával a felhasználók az intuitív felhasználói felületen keresztül tölthetik fel a betanítási adatok, a rendszerek és a rendszerek tesztelésére szolgáló rendszereket, és üzembe helyezhetik őket éles környezetben. A rendszer ezután néhány órán belül elérhetővé válik a skálán (a tényleges idő a betanítási adatok méretétől függ).
 
-Az [Egyéni fordító](https://portal.customtranslator.azure.ai) programozott módon is elérhető egy dedikált API-n keresztül (jelenleg előzetes [verzióban](https://custom-api.cognitive.microsofttranslator.com/swagger/) érhető el). Az API lehetővé teszi, hogy a felhasználók a saját alkalmazáson vagy webszolgáltatáson keresztül rendszeresen kezeljék a képzések létrehozását vagy frissítését.
+Az [Egyéni fordító](https://portal.customtranslator.azure.ai) programozott módon is elérhető egy dedikált API-n keresztül (jelenleg előzetes [verzióban](https://custom-api.cognitive.microsofttranslator.com/swagger/) érhető el). Az API lehetővé teszi a felhasználók számára, hogy saját alkalmazáson vagy webszolgáltatáson keresztül kezelhetik a képzések létrehozását vagy frissítését.
 
 A tartalmak fordítására szolgáló egyéni modell használatának díja a felhasználó Translator Text API díjszabási szintjétől függ. A díjszabási csomag részleteiért tekintse meg a Cognitive Services [Translator Text API díjszabási lapját](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/) .
 

@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan állíthat be egy labort a rendszerhéj-parancs
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ba14f2fb5263367014b57741c78d6e509df044b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85444964"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Tesztkörnyezet beállítása a rendszerhéj-parancsfájlok Linuxon való tanításához
@@ -16,7 +16,7 @@ Ez a cikk bemutatja, hogyan állíthat be egy labort a rendszerhéj-parancsfájl
 Az ilyen programozási osztályokat tartalmazó tanulók Linux rendszerű virtuális gépeket szereznek be a Linux alapjaihoz, és megismerhetik a bash rendszerhéj parancsfájljait is. A linuxos virtuális gépen engedélyezve van a távoli asztali hozzáférés, és telepítve van a [gedit](https://help.gnome.org/users/gedit/stable/) és a [Visual Studio Code](https://code.visualstudio.com/) szövegszerkesztő.
 
 ## <a name="lab-configuration"></a>Tesztkörnyezet konfigurációja
-A tesztkörnyezet beállításához Azure-előfizetésre van szükség a kezdéshez. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd. Ha már rendelkezik Azure-előfizetéssel, létrehozhat egy új Labor-fiókot Azure Lab Services vagy használhat egy meglévő Lab-fiókot is. A következő oktatóanyagban talál egy új Labor-fiókot: [oktatóanyag a labor-fiók beállításához](tutorial-setup-lab-account.md).
+A tesztkörnyezet beállításához Azure-előfizetésre van szükség a kezdéshez. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/). Ha már rendelkezik Azure-előfizetéssel, létrehozhat egy új Labor-fiókot Azure Lab Services vagy használhat egy meglévő Lab-fiókot is. A következő oktatóanyagban talál egy új Labor-fiókot: [oktatóanyag a labor-fiók beállításához](tutorial-setup-lab-account.md).
 
 A labor-fiók létrehozása után engedélyezze a következő beállításokat a labor-fiókban: 
 
@@ -69,7 +69,7 @@ Ez a szakasz bemutatja, hogyan telepíthet néhány szövegszerkesztőt. A gedit
 
     A sablon frissítve lett, és a tesztkörnyezet végrehajtásához szükséges programozási nyelv és fejlesztői eszközök is elérhetők. A sablon képe mostantól közzétehető a laborban. Kattintson a **Közzététel** gombra a sablon lapon a sablonnak a laborba való közzétételéhez.  
 
-## <a name="cost"></a>Költség 
+## <a name="cost"></a>Költségek 
 Ha a labor költségeit szeretné megbecsülni, a következő példát használhatja:
  
 Egy 25 tanulós osztály esetében, amely 20 órányi ütemezett időpontot és 10 órányi munkafeladatot vagy hozzárendelést használ, a labor ára a következő lesz: 
@@ -81,7 +81,7 @@ A díjszabással kapcsolatos további információkért tekintse meg a következ
 ## <a name="conclusion"></a>Összegzés
 Ez a cikk végigvezeti a labornak a parancsfájlkezelési osztályokhoz való létrehozásának lépésein. Ez a cikk a Ruby Scripting Tools Linux rendszerű gépen való beállítására összpontosított. a telepítő más parancsfájl-osztályokhoz is használható, mint például a Python Linux rendszeren.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő lépések közösek a laborok beállításához:
 
 - [Felhasználók hozzáadása](tutorial-setup-classroom-lab.md#add-users-to-the-lab)

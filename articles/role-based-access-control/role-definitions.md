@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: f6ae9ff27e773c36626812387b1284d660cbf39d
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98602460"
 ---
 # <a name="understand-azure-role-definitions"></a>Az Azure szerepkör-definíciók ismertetése
@@ -80,7 +80,7 @@ A műveletek a következő formátumú karakterláncokkal vannak megadva:
 
 A `{action}` műveleti karakterláncok része az erőforrástípus által elvégezhető műveletek típusát határozza meg. Például a következő alsztringek jelennek meg a ben `{action}` :
 
-| Művelet alkarakterlánca    | Leírás         |
+| Művelet alkarakterlánca    | Description         |
 | ------------------- | ------------------- |
 | `*` | A helyettesítő karakter a sztringnek megfelelő összes művelethez hozzáférést biztosít. |
 | `read` | Olvasási műveletek (GET) engedélyezése. |
@@ -281,7 +281,7 @@ Az REST APIban lévő adatműveletek megtekintéséhez és használatához az **
 Az `Actions` engedély meghatározza azokat a felügyeleti műveleteket, amelyeket a szerepkör engedélyez. Ez a műveleti karakterláncok gyűjteménye, amelyek az Azure-erőforrás-szolgáltatók biztonságos műveleteit azonosítják. Íme néhány példa a szolgáltatásban használható felügyeleti műveletekre `Actions` .
 
 > [!div class="mx-tableFixed"]
-> | Műveleti sztring    | Leírás         |
+> | Műveleti sztring    | Description         |
 > | ------------------- | ------------------- |
 > | `*/read` | Olvasási műveletekhez való hozzáférést biztosít az összes Azure-erőforrás-szolgáltató összes erőforrás-típusához.|
 > | `Microsoft.Compute/*` | Hozzáférést biztosít minden művelethez a Microsoft. számítási erőforrás-szolgáltató összes erőforrás-típusához.|
@@ -318,7 +318,7 @@ A hozzárendelések megtagadása esetén a felhasználók akkor is elvégezhetne
 Az `DataActions` engedély meghatározza azokat az adatműveleteket, amelyeket a szerepkör engedélyez az adott objektumon belüli adatokon való végrehajtáshoz. Ha például egy felhasználó beolvasta a blob-adathozzáférést egy Storage-fiókhoz, akkor az adott Storage-fiókban található blobokat is elolvashatja. Íme néhány példa a szolgáltatásban használható adatműveletekre `DataActions` .
 
 > [!div class="mx-tableFixed"]
-> | Műveleti sztring    | Leírás         |
+> | Műveleti sztring    | Description         |
 > | ------------------- | ------------------- |
 > | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` | Blobot vagy Blobok listáját adja vissza. |
 > | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write` | Egy blob írásának eredményét adja vissza. |
@@ -361,7 +361,7 @@ A beépített szerepkörök `AssignableScopes` a gyökérszintű hatókörre () 
 
 További információ az `AssignableScopes` Egyéni szerepkörökről: [Egyéni Azure-szerepkörök](custom-roles.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Beépített Azure-szerepkörök](built-in-roles.md)
 * [Egyéni Azure-szerepkörök](custom-roles.md)

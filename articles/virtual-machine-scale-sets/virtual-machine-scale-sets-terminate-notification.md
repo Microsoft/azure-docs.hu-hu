@@ -10,10 +10,10 @@ ms.date: 02/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
 ms.openlocfilehash: c4d6de1b3406e6d82bdac5ff9b5c72a2286da988
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92747753"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Azure-beli virtuális gépek méretezésicsoport-példányainak megszüntetési értesítése
@@ -28,7 +28,7 @@ Több módon is engedélyezheti a leállítási értesítéseket a méretezési 
 
 A következő lépések lehetővé teszik az új méretezési csoport létrehozásakor az értesítés megszüntetését. 
 
-1. Nyissa meg a **virtuálisgép-méretezési csoportokat** .
+1. Nyissa meg a **virtuálisgép-méretezési csoportokat**.
 1. Válassza a **+ Hozzáadás** lehetőséget egy új méretezési csoport létrehozásához.
 1. Nyissa meg a **felügyelet** lapot. 
 1. Keresse meg a **példány lezárása** szakaszt.
@@ -65,7 +65,7 @@ PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provi
 
 A fenti blokk a méretezési csoport összes példányán a leállítási művelethez 5 perces időkorlát-késleltetést határoz meg (a *PT5M* jelzi). A *notBeforeTimeout* mező értéke 5 – 15 percet vesz igénybe ISO 8601 formátumban. A leállítási művelet alapértelmezett időtúllépését a fent leírt *TerminateNotificationProfile* *notBeforeTimeout* tulajdonságának módosításával módosíthatja.
 
-Miután engedélyezte a *scheduledEventsProfile* a méretezési csoport modelljén, és beállítja a *notBeforeTimeout* , frissítse az egyes példányokat a [legújabb modellre](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) , hogy tükrözze a módosításokat.
+Miután engedélyezte a *scheduledEventsProfile* a méretezési csoport modelljén, és beállítja a *notBeforeTimeout*, frissítse az egyes példányokat a [legújabb modellre](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) , hogy tükrözze a módosításokat.
 
 > [!NOTE]
 >A méretezési csoport példányain lévő értesítések megszakítása csak a 2019-03-01-es vagy újabb API-verzióval engedélyezhető
@@ -197,7 +197,7 @@ Ha nem kap **megszakítási** eseményt a Scheduled Eventson keresztül, akkor e
 >'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01'
 
 ### <a name="getting-terminate-event-with-incorrect-notbefore-time"></a>Az esemény megszakítása helytelen NotBefore idővel  
-Miután engedélyezte a *scheduledEventsProfile* a méretezési csoport modelljén, és beállítja a *notBeforeTimeout* , frissítse az egyes példányokat a [legújabb modellre](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) , hogy tükrözze a módosításokat.
+Miután engedélyezte a *scheduledEventsProfile* a méretezési csoport modelljén, és beállítja a *notBeforeTimeout*, frissítse az egyes példányokat a [legújabb modellre](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) , hogy tükrözze a módosításokat.
 
 ## <a name="next-steps"></a>Következő lépések
 Megtudhatja, hogyan [helyezheti üzembe az alkalmazást](virtual-machine-scale-sets-deploy-app.md) a virtuálisgép-méretezési csoportokban.

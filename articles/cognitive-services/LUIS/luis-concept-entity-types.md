@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.openlocfilehash: 398d18642052726af4d4920443bad515ec0b5bef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91316562"
 ---
 # <a name="extract-data-with-entities"></a>Adatok kinyerése entitásokkal
@@ -32,7 +32,7 @@ Az entitásokat következetesen kell megcímkézni a modell minden egyes szánd�
 
  Megadhatja saját entitásait, vagy az előre elkészített entitások használatával időt takaríthat meg a gyakori fogalmak, például a [datetimeV2](luis-reference-prebuilt-datetimev2.md), a [sorszám](luis-reference-prebuilt-ordinal.md), az [e-mail](luis-reference-prebuilt-email.md)és a [telefonszámok](luis-reference-prebuilt-phonenumber.md)számára.
 
-|Kimondott szöveg|Entitás|Adatok|
+|Beszédelem|Entitás|Adatok|
 |--|--|--|
 |3 jegy vásárlása a New Yorkba|Előre elkészített szám<br>Cél|3<br>New York|
 
@@ -47,11 +47,11 @@ Az alkalmazás fejlődése és az új adatkezelési igények azonosítása érde
 
 ## <a name="entity-represents-data-extraction"></a>Az entitás kibontást jelöl
 
-Az entitás egy adatkoncepciót képvisel _a teljes_kifejezésen belül. A cél a _teljes Kimondás_.
+Az entitás egy adatkoncepciót képvisel _a teljes_ kifejezésen belül. A cél a _teljes Kimondás_.
 
 Vegye figyelembe a következő négy hosszúságú kimondott szöveg:
 
-|Kimondott szöveg|Előre jelzett szándék|Kinyert entitások|Magyarázat|
+|Beszédelem|Előre jelzett szándék|Kinyert entitások|Magyarázat|
 |--|--|--|--|
 |Súgó|segítség|-|Nincs kibontva.|
 |Küldés valami|sendSomething|-|Nincs kibontva. A modell nem rendelkezik a kinyeréséhez szükséges funkcióval `something` , és nincs megadva címzett.|
@@ -102,7 +102,7 @@ Válassza ki az entitást az Adatkivonatok és a kinyerés utáni megjelenítés
 |Entitástípus|Cél|
 |--|--|
 |[**Gépi megtanult**](tutorial-machine-learned-entity.md)|Beágyazott, összetett adatok kinyerése a címkével ellátott példákból. |
-|[**Listáját**](reference-entity-list.md)|A **pontos szöveges egyezéssel**kinyert elemek és szinonimáik listája.|
+|[**Lista**](reference-entity-list.md)|A **pontos szöveges egyezéssel** kinyert elemek és szinonimáik listája.|
 |[**Minta. any**](#patternany-entity)|Nehéz megállapítani, hogy az entitás véget ért-e, mert az entitás szabad formátumú. Csak [mintákban](luis-concept-patterns.md)érhető el.|
 |[**Prebuilt**](luis-reference-prebuilt-entities.md)|Már betanítva bizonyos típusú adatok, például URL-cím vagy e-mailek kinyerésére. Ezen előre összeépített entitások némelyike a nyílt forráskódú [felismerők – Text](https://github.com/Microsoft/Recognizers-Text) projektben van meghatározva. Ha az adott kulturális környezet vagy entitás jelenleg nem támogatott, akkor hozzájárul a projekthez.|
 |[**Reguláris kifejezés**](reference-entity-regular-expression.md)|Reguláris kifejezést használ a **pontos szöveges egyeztetéshez**.|
@@ -140,7 +140,7 @@ A minta. any csak egy [mintában](luis-concept-patterns.md)érhető el.
 <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>
 ## <a name="exceeding-app-limits-for-entities"></a>Az entitásokra vonatkozó alkalmazások korlátainak túllépése
 
-Ha a [korlátnál](luis-limits.md#model-limits)nagyobbra van szüksége, forduljon az ügyfélszolgálathoz. Ehhez gyűjtsön részletes információkat a rendszeréről, lépjen a [Luis](luis-reference-regions.md#luis-website) webhelyére, és válassza a **támogatás**lehetőséget. Ha az Azure-előfizetése támogatási szolgáltatásokat tartalmaz, forduljon az [Azure technikai támogatási](https://azure.microsoft.com/support/options/)szolgálatához.
+Ha a [korlátnál](luis-limits.md#model-limits)nagyobbra van szüksége, forduljon az ügyfélszolgálathoz. Ehhez gyűjtsön részletes információkat a rendszeréről, lépjen a [Luis](luis-reference-regions.md#luis-website) webhelyére, és válassza a **támogatás** lehetőséget. Ha az Azure-előfizetése támogatási szolgáltatásokat tartalmaz, forduljon az [Azure technikai támogatási](https://azure.microsoft.com/support/options/)szolgálatához.
 
 ## <a name="entity-prediction-status-and-errors"></a>Entitás-előrejelzési állapot és hibák
 

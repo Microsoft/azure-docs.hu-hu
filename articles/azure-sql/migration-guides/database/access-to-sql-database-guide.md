@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 9b64dc95c6ee00a834c2741b30026df7350780c0
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: e323b1c15d78da4e8c1a82ae8848df7f59b0dd87
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103565091"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657273"
 ---
 # <a name="migration-guide-access-to-azure-sql-database"></a>Áttelepítési útmutató: hozzáférés a Azure SQL Databasehoz
 
@@ -42,17 +42,58 @@ Az értékelés létrehozásához kövesse az alábbi lépéseket:
 
 1. Nyissa meg SQL Server Migration Assistant a hozzáféréshez. 
 1. Válassza a **fájl** , majd az **új projekt** lehetőséget. Adja meg az áttelepítési projekt nevét. 
-1. Válassza az **adatbázisok hozzáadása** lehetőséget, és válassza ki az új projekthez hozzáadni kívánt adatbázisokat.
+
+   ![Új projekt kiválasztása](./media/access-to-sql-database-guide/new-project.png)
+
+1. Válassza az **adatbázisok hozzáadása** lehetőséget, és válassza ki az új projekthez hozzáadni kívánt adatbázisokat. 
+
+   ![Válassza az adatbázisok hozzáadása lehetőséget](./media/access-to-sql-database-guide/add-databases.png)
+
 1. Az **Access metadata Explorerben** kattintson a jobb gombbal az adatbázisra, majd válassza a **jelentés létrehozása** parancsot. 
+
+   ![Kattintson a jobb gombbal az adatbázisra, és válassza a jelentés létrehozása lehetőséget.](./media/access-to-sql-database-guide/create-report.png)
+
 1. Tekintse át a mintavétel értékelését. Például: 
+
+   ![A minta jelentés értékelésének áttekintése](./media/access-to-sql-database-guide/sample-assessment.png)
+
+### <a name="validate-data-types"></a>Adattípusok ellenőrzése
+
+Érvényesítse az alapértelmezett adattípus-leképezéseket, és szükség esetén módosítsa azokat a követelmények alapján. Ehhez kövesse az alábbi lépéseket:
+
+1. Válassza az **eszközök** lehetőséget a menüből. 
+1. Válassza a **projekt beállításai** lehetőséget. 
+1. Válassza a **típus-hozzárendelések** lapot. 
+
+   ![Típus-hozzárendelések](./media/access-to-sql-database-guide/type-mappings.png)
+
+1. Az egyes táblák típus-hozzárendelését az **Access metadata Explorerben** található táblázat kiválasztásával módosíthatja.
+
 
 ### <a name="convert-schema"></a>Séma konvertálása
 
 Az adatbázis-objektumok átalakításához kövesse az alábbi lépéseket: 
 
 1. Válassza **a kapcsolódás Azure SQL Database** lehetőséget, és adja meg a kapcsolat részleteit.
-1. Kattintson a jobb gombbal az adatbázisra az **Access metadata Explorerben** , és válassza a **séma konvertálása** lehetőséget.  
-1. Választható Egy adott objektum konvertálásához kattintson a jobb gombbal az objektumra, és válassza a **séma konvertálása** parancsot. Az átalakított objektumok félkövérrel jelennek meg az **Access metadata Explorerben**: 
+
+   ![Kapcsolódás az Azure SQL Database-hez](./media/access-to-sql-database-guide/connect-to-sqldb.png)
+
+1. Kattintson a jobb gombbal az adatbázisra az **Access metadata Explorerben** , és válassza a **séma konvertálása** lehetőséget. Azt is megteheti, hogy a felső navigációs sávon a **séma konvertálása** lehetőséget választja az adatbázis kiválasztása után.
+
+   ![Kattintson a jobb gombbal az adatbázisra, és válassza a séma konvertálása parancsot.](./media/access-to-sql-database-guide/convert-schema.png)
+
+   Konvertált lekérdezések összehasonlítása az eredeti lekérdezésekkel: 
+
+   ![A konvertált lekérdezések összehasonlíthatók a forráskód használatával](./media/access-to-sql-database-guide/query-comparison.png)
+
+   Konvertált objektumok összehasonlítása az eredeti objektumokkal: 
+
+   ![A konvertált objektumokat a forrással lehet összehasonlítani](./media/access-to-sql-database-guide/table-comparison.png)
+
+1. Választható Egy adott objektum konvertálásához kattintson a jobb gombbal az objektumra, és válassza a **séma konvertálása** parancsot. A konvertált objektumok félkövérrel jelennek meg a **hozzáférési metaadatok Explorerben**: 
+
+   ![A metaadat-kezelőben lévő félkövér objektumok konvertálása megtörtént](./media/access-to-sql-database-guide/converted-items.png)
+ 
 1. Válassza az **eredmények áttekintése** lehetőséget a kimenet ablaktáblán, és tekintse át a hibákat a hibák **listája** ablaktáblán. 
 
 
@@ -64,9 +105,28 @@ Az alábbi lépéseket követve áttelepítheti az SSMA for Access használatáv
 
 1. Ha még nem tette meg, kattintson **a kapcsolódás Azure SQL Database** elemre, és adja meg a kapcsolat részleteit. 
 1. Kattintson a jobb gombbal az adatbázisra a **Azure SQL Database metadata Explorerben** , majd válassza az **adatbázissal való szinkronizálás** lehetőséget. Ez a művelet közzéteszi a MySQL-sémát a Azure SQL Database.
+
+   ![Szinkronizálás adatbázissal](./media/access-to-sql-database-guide/synchronize-with-database.png)
+
+   Tekintse át a forrás projekt és a cél közötti leképezést:
+
+   ![Az adatbázissal való szinkronizálás áttekintése](./media/access-to-sql-database-guide/synchronize-with-database-review.png)
+
 1. Az **Access metadata Explorer** használatával tekintse meg az áttelepíteni kívánt elemek melletti jelölőnégyzeteket. Ha a teljes adatbázist át szeretné telepíteni, jelölje be az adatbázis melletti jelölőnégyzetet. 
 1. Kattintson a jobb gombbal az áttelepíteni kívánt adatbázisra vagy objektumra, majd válassza az **adatáttelepítés** lehetőséget. 
    Ha egy teljes adatbázisra szeretné áttelepíteni az adatátvitelt, jelölje be az adatbázis neve melletti jelölőnégyzetet. Ha az adatok áttelepíthetők az egyes táblákból, bontsa ki az adatbázist, majd a táblák csomópontot, és jelölje be a tábla melletti jelölőnégyzetet. Ha az adatok kihagyása az egyes táblákból, törölje a jelölőnégyzet jelölését.
+
+    ![Az adatáttelepítés](./media/access-to-sql-database-guide/migrate-data.png)
+
+    Tekintse át az áttelepített adatfájlokat: 
+
+    ![Áttelepíteni az adatellenőrzést](./media/access-to-sql-database-guide/migrate-data-review.png)
+
+1. Kapcsolódjon a Azure SQL Databasehoz a [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) használatával, és ellenőrizze az áttelepítést az adatelemzés és a séma áttekintésével.
+
+   ![Érvényesítés a SSMA](./media/access-to-sql-database-guide/validate-data.png)
+
+
 
 ## <a name="post-migration"></a>A migrálás után 
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.custom: mvc
 ms.openlocfilehash: 1ac418d855696138341115412dc7e2601d4cf3a1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91961408"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>Azure Database for PostgreSQL rugalmas kiszolgáló kezelése a Azure Portal használatával
@@ -27,12 +27,12 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Nyissa meg a ruga
 
 ## <a name="scale-compute-and-storage"></a>Számítási és tárolási méretezés
 
-A kiszolgáló létrehozása után a különböző [díjszabási szintek](https://azure.microsoft.com/pricing/details/postgresql/) között méretezheti a változó igényeket. A számítási és a memóriát a virtuális mag növelésével vagy csökkentésével is csökkentheti.
+A kiszolgáló létrehozása után a különböző [díjszabási szintek](https://azure.microsoft.com/pricing/details/postgresql/) között méretezheti a változó igényeket. A számítási és memóriateljesítmény emellett a virtuális magok számának növelésével vagy csökkentésével módosítható.
 
 > [!NOTE]
 > A tárterület nem méretezhető le alacsonyabb értékre.
 
-1. Válassza ki a kiszolgálót a Azure Portal. Válassza a **számítás és tárolás**elemet, amely a **Beállítások** szakaszban található.
+1. Válassza ki a kiszolgálót a Azure Portal. Válassza a **számítás és tárolás** elemet, amely a **Beállítások** szakaszban található.
 2. Megváltoztathatja a **számítási szintet** , a **virtuális mag**, a **tárterületet** a kiszolgáló vertikális felskálázásához magasabb számítási szinten, vagy akár ugyanazon a szinten, azáltal, hogy növeli a tárhelyet vagy a virtuális mag a kívánt értékre.
 
 > [!div class="mx-imgBorder"]
@@ -48,11 +48,11 @@ A kiszolgáló létrehozása után a különböző [díjszabási szintek](https:
 
 A rendszergazdai szerepkör jelszava a Azure Portal használatával módosítható.
 
-1. Válassza ki a kiszolgálót a Azure Portal. Az **Áttekintés** ablakban válassza a **jelszó alaphelyzetbe állítása**lehetőséget.
+1. Válassza ki a kiszolgálót a Azure Portal. Az **Áttekintés** ablakban válassza a **jelszó alaphelyzetbe állítása** lehetőséget.
 2. Adjon meg egy új jelszót, és erősítse meg a jelszót. A szövegmező a jelszó bonyolultságára vonatkozó követelményeket fogja kérni.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="a Storage rugalmas kiszolgáló méretezése":::
+> :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="jelszó alaphelyzetbe állítása rugalmas kiszolgálóhoz":::
 
 3. Az új jelszó mentéséhez kattintson a **Mentés** gombra.
 
@@ -60,10 +60,10 @@ A rendszergazdai szerepkör jelszava a Azure Portal használatával módosíthat
 
 Ha már nincs szüksége rá, törölheti a kiszolgálót.
 
-1. Válassza ki a kiszolgálót a Azure Portal. Az **Áttekintés** ablakban válassza a **Törlés**lehetőséget.
+1. Válassza ki a kiszolgálót a Azure Portal. Az **Áttekintés** ablakban válassza a **Törlés** lehetőséget.
 2. Írja be a kiszolgáló nevét a beviteli mezőbe annak megerősítéséhez, hogy törölni kívánja a kiszolgálót.
 
-   :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="a Storage rugalmas kiszolgáló méretezése":::
+   :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="a rugalmas kiszolgáló törlése":::
 
    > [!IMPORTANT]
    > A kiszolgáló törlése visszafordíthatatlan.

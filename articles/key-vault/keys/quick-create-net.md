@@ -9,10 +9,10 @@ ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.openlocfilehash: cecf8330b7060a4cbc4691f64571a3c7865c575c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97935257"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-net-sdk-v4"></a>Rövid útmutató: a .NET-hez készült ügyféloldali kódtár (SDK v4) Azure Key Vault
@@ -36,7 +36,7 @@ A Key Vault és a kulcsokkal kapcsolatos további információkért lásd:
 
 Ez a rövid útmutató az `dotnet` Azure CLI-t használja
 
-## <a name="setup"></a>Telepítés
+## <a name="setup"></a>Beállítás
 
 Ez a rövid útmutató az Azure Identity Library és az Azure CLI használatával hitelesíti a felhasználókat az Azure-szolgáltatásokban. A fejlesztők a Visual studiót vagy a Visual Studio Code-ot is használhatják a hívások hitelesítéséhez. További információ: [az ügyfél hitelesítése az Azure Identity Client Library](/dotnet/api/overview/azure/identity-readme?#authenticate-the-client&preserve-view=true)használatával.
 
@@ -124,7 +124,7 @@ A .NET-hez készült Azure Key Vault Key ügyféloldali kódtára lehetővé tes
 
 ### <a name="add-directives"></a>Irányelvek hozzáadása
 
-Adja hozzá a következő irányelveket a *program.cs* tetejéhez:
+Adja hozzá a következő irányelveket a program elejéhez *. cs*:
 
 ```csharp
 using System;
@@ -182,7 +182,7 @@ await client.PurgeDeletedKeyAsync("myKey");
 
 Módosítsa a .NET Core Console alkalmazást úgy, hogy az a következő lépések végrehajtásával működjön együtt a Key Vault:
 
-- Cserélje le a *program.cs* található kódot a következő kódra:
+- Cserélje a *program. cs* kódot a következő kódra:
 
     ```csharp
     using System;
@@ -249,7 +249,7 @@ Módosítsa a .NET Core Console alkalmazást úgy, hogy az a következő lépés
     Purging your key from <your-unique-keyvault-name> ... done.   
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy Key vaultot, tárolt egy kulcsot, és lekérte a kulcsot. 
 

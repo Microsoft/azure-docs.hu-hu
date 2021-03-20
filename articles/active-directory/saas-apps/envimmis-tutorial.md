@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 6ccf755a73cafa4b855f602aa18246d710e5e1ff
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454011"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>Oktatóanyag: Azure Active Directory integráció a ENVI MMIS
@@ -67,7 +67,7 @@ A ENVI-MMIS Azure AD-be való integrálásának konfigurálásához hozzá kell 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az ENVI MMIS-mel konfigurálja és teszteli a **Britta Simon**nevű teszt felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az ENVI MMIS-mel konfigurálja és teszteli a **Britta Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a ENVI MMIS kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés ENVI-MMIS való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés ENVI-MMIS való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **ENVI MMIS** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **ENVI MMIS** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -144,7 +144,7 @@ Az Azure AD egyszeri bejelentkezés ENVI-MMIS való konfigurálásához hajtsa v
 
     ![A "Remote Authentication" (távoli hitelesítés használata) és a "H T t P-átirányítás" beállítású "Részletek" lapot megjelenítő képernyőkép.](./media/envimmis-tutorial/configure3.png)
 
-5. Válassza az **erőforrások** fület, majd kattintson a **metaadatok feltöltése**elemre.
+5. Válassza az **erőforrások** fület, majd kattintson a **metaadatok feltöltése** elemre.
 
     ![Képernyőkép, amely az "erőforrások" fület jeleníti meg a "metaadatok feltöltése" művelet kiválasztásával.](./media/envimmis-tutorial/configure4.png)
 
@@ -154,11 +154,11 @@ Az Azure AD egyszeri bejelentkezés ENVI-MMIS való konfigurálásához hajtsa v
 
     a. Válassza a **fájl** lehetőséget a **feltöltésből** a legördülő listából.
 
-    b. Töltse fel a letöltött metaadat-fájlt Azure Portal a **fájl kiválasztása ikonra**kattintva.
+    b. Töltse fel a letöltött metaadat-fájlt Azure Portal a **fájl kiválasztása ikonra** kattintva.
 
     c. Kattintson az **OK** gombra.
 
-7. A letöltött metaadat-fájl feltöltése után a mezők automatikusan feltöltve lesznek. Kattintson a **frissítés** gombra
+7. A letöltött metaadat-fájl feltöltése után a mezők automatikusan feltöltve lesznek. Kattintson a **Frissítés** parancsra
 
     ![Egyetlen Sign-On mentés gomb konfigurálása](./media/envimmis-tutorial/configure6.png)
 
@@ -166,7 +166,7 @@ Az Azure AD egyszeri bejelentkezés ENVI-MMIS való konfigurálásához hajtsa v
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -191,15 +191,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a ENVI-MMIS.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **ENVI MMIS**elemet.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **ENVI MMIS** elemet.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **ENVI MMIS**elemet.
+2. Az alkalmazások listában válassza a **ENVI MMIS** elemet.
 
     ![Az ENVI MMIS hivatkozása az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -241,9 +241,9 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a EN
 
     d. Adja meg a felhasználó címét a szövegmező **címében** .
     
-    e. Az **E-mail cím** szövegmezőbe írja be a Britta Simon-fiók, például a **brittasimon \@ contoso.com**e-mail címét.
+    e. Az **E-mail cím** szövegmezőbe írja be a Britta Simon-fiók, például a **brittasimon \@ contoso.com** e-mail címét.
 
-    f. Az **SSO-Felhasználónév** szövegmezőbe írja be a Britta Simon-fiókjának felhasználónevét, például a **brittasimon \@ contoso.com**nevet.
+    f. Az **SSO-Felhasználónév** szövegmezőbe írja be a Britta Simon-fiókjának felhasználónevét, például a **brittasimon \@ contoso.com** nevet.
 
     : Kattintson a **Mentés** gombra.
 

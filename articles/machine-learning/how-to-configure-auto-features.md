@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: how-to,automl,contperf-fy21q2
 ms.date: 12/18/2020
 ms.openlocfilehash: c90ef9fe49a87c18c7f4f55175bafaebfd31d722
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98610301"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>Az automatizált gépi tanulásban tárolt featurization
@@ -48,7 +48,7 @@ A Python SDK-val konfigurált kísérletek esetében engedélyezheti vagy letilt
 
 A következő táblázat a `featurization` [AutoMLConfig osztály](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)elfogadott beállításait mutatja be:
 
-|Featurization-konfiguráció | Leírás|
+|Featurization-konfiguráció | Description|
 ------------- | ------------- |
 |`"featurization": 'auto'`| Azt határozza meg, hogy az előfeldolgozás részeként a rendszer automatikusan végrehajtja az [guardrails](#data-guardrails) és a [featurization lépéseket](#featurization) . Ez az alapértelmezett beállítás.|
 |`"featurization": 'off'`| Meghatározza, hogy a featurization lépések ne legyenek automatikusan elvégezve.|
@@ -63,13 +63,13 @@ Az alábbi táblázat összefoglalja az adataira automatikusan alkalmazott techn
 > [!NOTE]
 > Ha úgy tervezi, hogy a AutoML által létrehozott modelleket egy [ONNX-modellbe](concept-onnx.md)exportálja, csak a csillaggal ("*") jelölt featurization-beállítások támogatottak a ONNX formátumban. További információ a [modellek ONNX való átalakításáról](how-to-use-automl-onnx-model-dotnet.md).
 
-|Featurization &nbsp; lépések| Leírás |
+|Featurization &nbsp; lépések| Description |
 | ------------- | ------------- |
-|**Drop magas fokú vagy nem variancia funkciók** _ |Ezeket a funkciókat a betanítási és az ellenőrzési készletekből dobja el. Az összes hiányzó értékkel rendelkező szolgáltatásokra vonatkozik, amelyek az összes sorban azonos értékkel rendelkeznek, vagy magas fokú (például kivonatok, azonosítók vagy GUID azonosítók).|
-|_*Hiányzó értékek imputált értéke**_ |Numerikus funkciók esetében az érték az oszlopban szereplő értékek átlagát tartalmazza.<br/><br/>A kategorikus funkciók esetében a leggyakoribb értékkel kell eltulajdonítani a bevonást.|
-|_*További funkciók előállítása**_ |A DateTime funkciók esetében: év, hónap, nap, hét napja, év napja, negyedév, év hete, óra, perc, másodperc.<br><br> _For előrejelzési feladatok, * ezek a további DateTime-funkciók a következők: ISO év, félév, naptári hónap karakterláncként, hét, hét napja karakterláncként, a negyedév napja, az év napja, AM/PM (0, ha az óra délig van (12 PM), 1 egyéb), AM/PM as sztring, óra nap (12 – HR)<br/><br/>A szöveges funkciókhoz: unigrams, bigrams és Trigrams alapuló kifejezés gyakorisága. További információ arról, [hogy ez hogyan történik a bertban.](#bert-integration)|
-|**Átalakítás és kódolás** _|A több egyedi értékkel rendelkező numerikus funkciók átalakítása kategorikus funkciókba.<br/><br/>A kis-és nagymértékű kategorikus funkciók esetében egy gyors kódolást használunk. A rendszer egy-egy gyors kivonatoló kódolást használ a magas fokú, kategorikus funkciókhoz.|
-|_ *Word-beágyazások**|A szöveges Képtulajdonság egy előre betanított modell használatával alakítja át a szöveges tokenek vektorait a mondatokra. Az egyes Word-dokumentumok beágyazási vektora a többivel együtt a dokumentum-szolgáltatás vektorának előállítására szolgál.|
+|**A nagyfokú és a variancia nélküli funkciók eldobása*** |Ezeket a funkciókat a betanítási és az ellenőrzési készletekből dobja el. Az összes hiányzó értékkel rendelkező szolgáltatásokra vonatkozik, amelyek az összes sorban azonos értékkel rendelkeznek, vagy magas fokú (például kivonatok, azonosítók vagy GUID azonosítók).|
+|**Hiányzó értékek imputált értéke*** |Numerikus funkciók esetében az érték az oszlopban szereplő értékek átlagát tartalmazza.<br/><br/>A kategorikus funkciók esetében a leggyakoribb értékkel kell eltulajdonítani a bevonást.|
+|**További funkciók**– _ |A DateTime funkciók esetében: év, hónap, nap, hét napja, év napja, negyedév, év hete, óra, perc, másodperc.<br><br> _For előrejelzési feladatok, * ezek a további DateTime-funkciók a következők: ISO év, félév, naptári hónap karakterláncként, hét, hét napja karakterláncként, a negyedév napja, az év napja, AM/PM (0, ha az óra délig van (12 PM), 1 egyéb), AM/PM as sztring, óra nap (12 – HR)<br/><br/>A szöveges funkciókhoz: unigrams, bigrams és Trigrams alapuló kifejezés gyakorisága. További információ arról, [hogy ez hogyan történik a bertban.](#bert-integration)|
+|**Átalakítás és kódolás***|A több egyedi értékkel rendelkező numerikus funkciók átalakítása kategorikus funkciókba.<br/><br/>A kis-és nagymértékű kategorikus funkciók esetében egy gyors kódolást használunk. A rendszer egy-egy gyors kivonatoló kódolást használ a magas fokú, kategorikus funkciókhoz.|
+|**Word-beágyazások**|A szöveges Képtulajdonság egy előre betanított modell használatával alakítja át a szöveges tokenek vektorait a mondatokra. Az egyes Word-dokumentumok beágyazási vektora a többivel együtt a dokumentum-szolgáltatás vektorának előállítására szolgál.|
 |**Fürt távolsága**|A k – a csoportosítási modellt jelenti az összes numerikus oszlopban. *K* új szolgáltatásokat (egy új numerikus funkciót) hoz létre, amely az egyes minták távolságát tartalmazza az egyes fürtök középpontját.|
 
 ## <a name="data-guardrails"></a>Az adatguardrails

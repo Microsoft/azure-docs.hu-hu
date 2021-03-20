@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d9f59906c566d80344891c0796a85b0a4972e68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91313093"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>Oktatóanyag: a PHS beállítása biztonsági másolatként a AD FShoz Azure AD Connect
@@ -42,14 +42,14 @@ Tegye a következőket:
 
 1.  Kattintson duplán az asztalon létrehozott Azure AD Connect ikonra.
 2.  Kattintson a **Configure** (Konfigurálás) elemre.
-3.  A további feladatok lapon válassza a **szinkronizálási beállítások testreszabása lehetőséget** , majd kattintson a **tovább**gombra.
+3.  A további feladatok lapon válassza a **szinkronizálási beállítások testreszabása lehetőséget** , majd kattintson a **tovább** gombra.
 4.  Adja meg a globális rendszergazda felhasználónevét és jelszavát.  Ez a fiók az előző oktatóanyagban [lett létrehozva](tutorial-federation.md#create-a-global-administrator-in-azure-ad) .
-5.  A **címtárak összekapcsolása** képernyőn kattintson a **tovább**gombra.
-6.  A **tartomány és szervezeti egység szűrése** képernyőn kattintson a **tovább**gombra.
-7.  A **választható szolgáltatások** képernyőn jelölje be a **jelszó-kivonatolás szinkronizálása** jelölőnégyzetet, majd kattintson a **tovább**gombra.
+5.  A **címtárak összekapcsolása** képernyőn kattintson a **tovább** gombra.
+6.  A **tartomány és szervezeti egység szűrése** képernyőn kattintson a **tovább** gombra.
+7.  A **választható szolgáltatások** képernyőn jelölje be a **jelszó-kivonatolás szinkronizálása** jelölőnégyzetet, majd kattintson a **tovább** gombra.
 ![Kiválasztás](media/tutorial-phs-backup/backup1.png)</br>
-8.  A **konfigurálásra kész** képernyőn kattintson a **Konfigurálás**elemre.
-9.  A konfiguráció befejeződése után kattintson a **Kilépés**gombra.
+8.  A **konfigurálásra kész** képernyőn kattintson a **Konfigurálás** elemre.
+9.  A konfiguráció befejeződése után kattintson a **Kilépés** gombra.
 10. Ennyi az egész!  Készen áll.  A jelszó-kivonat szinkronizálása most bekövetkezik, és biztonsági másolatként használható, ha AD FS elérhetetlenné válik.
 
 ## <a name="switch-to-password-hash-synchronization"></a>Váltás jelszó-kivonatolási szinkronizálásra
@@ -60,14 +60,14 @@ Most bemutatjuk, hogyan válthat át a jelszó-kivonat szinkronizálására. Mie
 
 1. Kattintson duplán az asztalon létrehozott Azure AD Connect ikonra.
 2.  Kattintson a **Configure** (Konfigurálás) elemre.
-3.  Válassza **a felhasználói bejelentkezés módosítása** lehetőséget, majd kattintson a **tovább**gombra.
+3.  Válassza **a felhasználói bejelentkezés módosítása** lehetőséget, majd kattintson a **tovább** gombra.
 ![Módosítása](media/tutorial-phs-backup/backup2.png)</br>
 4.  Adja meg a globális rendszergazda felhasználónevét és jelszavát.  Ez a fiók az előző oktatóanyagban [lett létrehozva](tutorial-federation.md#create-a-global-administrator-in-azure-ad) .
 5.  A **felhasználó bejelentkezési** képernyőjén válassza a jelszó- **kivonat szinkronizálása** lehetőséget, és jelölje be a **ne alakítsa át a felhasználói fiókok** számára jelölőnégyzetet.  
-6.  Hagyja bejelölve az **egyszeri bejelentkezés alapértelmezett engedélyezése** beállítást, és kattintson a **tovább**gombra.
-7.  Az **egyszeri bejelentkezés engedélyezése** képernyőn kattintson a **tovább**gombra.
-8.  A **konfigurálásra kész** képernyőn kattintson a **Konfigurálás**elemre.
-9.  A konfiguráció befejezése után kattintson a **Kilépés**gombra.
+6.  Hagyja bejelölve az **egyszeri bejelentkezés alapértelmezett engedélyezése** beállítást, és kattintson a **tovább** gombra.
+7.  Az **egyszeri bejelentkezés engedélyezése** képernyőn kattintson a **tovább** gombra.
+8.  A **konfigurálásra kész** képernyőn kattintson a **Konfigurálás** elemre.
+9.  A konfiguráció befejezése után kattintson a **Kilépés** gombra.
 10. A felhasználók mostantól használhatják a jelszavukat, hogy bejelentkezzenek az Azure-ba és az Azure-szolgáltatásokba.
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Bejelentkezés az egyik felhasználóval
@@ -81,30 +81,30 @@ Most bemutatjuk, hogyan válthat vissza az összevonásra.  Ehhez tegye a követ
 
 1.  Kattintson duplán az asztalon létrehozott Azure AD Connect ikonra.
 2.  Kattintson a **Configure** (Konfigurálás) elemre.
-3.  Válassza **a felhasználói bejelentkezés módosítása** lehetőséget, majd kattintson a **tovább**gombra.
+3.  Válassza **a felhasználói bejelentkezés módosítása** lehetőséget, majd kattintson a **tovább** gombra.
 4.  Adja meg a globális rendszergazda felhasználónevét és jelszavát.  Ez az előző oktatóanyagban [itt](tutorial-federation.md#create-a-global-administrator-in-azure-ad) létrehozott fiók.
-5.  A **felhasználó bejelentkezési** képernyőjén válassza az **összevonás AD FS** lehetőséget, majd kattintson a **tovább**gombra.  
+5.  A **felhasználó bejelentkezési** képernyőjén válassza az **összevonás AD FS** lehetőséget, majd kattintson a **tovább** gombra.  
 6. A tartományi rendszergazda hitelesítő adatai lapon adja meg a Contoso\rendszergazda felhasználónevét és jelszavát, majd kattintson a **Tovább gombra.**
-7. A AD FS Farm képernyőn kattintson a **tovább**gombra.
-8. Az **Azure ad-tartomány** képernyőn válassza ki a tartományt a legördülő listából, és kattintson a **tovább**gombra.
-9. A **konfigurálásra kész** képernyőn kattintson a **Konfigurálás**elemre.
-10. A konfiguráció befejezése után kattintson a **tovább**gombra.
+7. A AD FS Farm képernyőn kattintson a **tovább** gombra.
+8. Az **Azure ad-tartomány** képernyőn válassza ki a tartományt a legördülő listából, és kattintson a **tovább** gombra.
+9. A **konfigurálásra kész** képernyőn kattintson a **Konfigurálás** elemre.
+10. A konfiguráció befejezése után kattintson a **tovább** gombra.
 ![Konfigurálás](media/tutorial-phs-backup/backup4.png)</br>
-11. Az **összevonási kapcsolat ellenőrzése** képernyőn kattintson az **ellenőrzés**gombra.  Előfordulhat, hogy a sikeres végrehajtáshoz konfigurálnia kell a DNS-rekordokat (adjon hozzá egy és AAAA rekordot).
+11. Az **összevonási kapcsolat ellenőrzése** képernyőn kattintson az **ellenőrzés** gombra.  Előfordulhat, hogy a sikeres végrehajtáshoz konfigurálnia kell a DNS-rekordokat (adjon hozzá egy és AAAA rekordot).
 ![Képernyőkép, amely az összevonási kapcsolat ellenőrzése képernyőt és az ellenőrzés gombot mutatja.](media/tutorial-phs-backup/backup5.png)</br>
-12. Kattintson a **Kilépés**gombra.
+12. Kattintson a **Kilépés** gombra.
 
 ## <a name="reset-the-ad-fs-and-azure-trust"></a>A AD FS és az Azure-beli megbízhatóság alaphelyzetbe állítása
 Most vissza kell állítania a AD FS és az Azure közötti megbízhatóságot.
 
 1.  Kattintson duplán az asztalon létrehozott Azure AD Connect ikonra.
 2.  Kattintson a **Configure** (Konfigurálás) elemre.
-3.  Válassza az **összevonás kezelése** lehetőséget, és kattintson a **tovább**gombra.
-4.  Válassza az **Azure ad-megbízhatóság visszaállítása** lehetőséget, és kattintson a **tovább**gombra.
-![Alaphelyzetbe állítás](media/tutorial-phs-backup/backup6.png)</br>
+3.  Válassza az **összevonás kezelése** lehetőséget, és kattintson a **tovább** gombra.
+4.  Válassza az **Azure ad-megbízhatóság visszaállítása** lehetőséget, és kattintson a **tovább** gombra.
+![Alaphelyzetbe állítása](media/tutorial-phs-backup/backup6.png)</br>
 5.  A **Kapcsolódás az Azure ad-** hez képernyőn adja meg a globális rendszergazda felhasználónevét és jelszavát.
 6.  A **kapcsolódás AD FS** képernyőn adja meg a Contoso\Rendszergazda felhasználónevét és jelszavát, majd kattintson a **Tovább gombra.**
-7.  A **tanúsítványok** képernyőn kattintson a **tovább**gombra.
+7.  A **tanúsítványok** képernyőn kattintson a **tovább** gombra.
 
 ## <a name="test-signing-in-with-a-user"></a>Felhasználóval való bejelentkezés tesztelése
 
@@ -114,9 +114,9 @@ Most vissza kell állítania a AD FS és az Azure közötti megbízhatóságot.
 
 Ezzel sikeresen beállított egy hibrid identitási környezetet, amellyel tesztelheti és megismerheti az Azure által kínált lehetőségeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
 - [Hardver és előfeltételek](how-to-connect-install-prerequisites.md) 
 - [Gyorsbeállítások](how-to-connect-install-express.md)
-- [Jelszókivonat szinkronizálása](how-to-connect-password-hash-synchronization.md)
+- [Jelszó-kivonat szinkronizálása](how-to-connect-password-hash-synchronization.md)

@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan futtathat Service Fabric alkalmazást a rendsze
 ms.topic: conceptual
 ms.date: 03/29/2018
 ms.openlocfilehash: 53212f8636602705899834b6db1d3f0d80b5fe4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75610121"
 ---
 # <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>Szolgáltatás futtatása helyi felhasználói fiókként vagy helyi rendszerfiókként
-Az Azure Service Fabric használatával a fürtben futó alkalmazások különböző felhasználói fiókokban is biztonságossá tehetők. Alapértelmezés szerint Service Fabric alkalmazások azon a fiókon futnak, amelyen a Fabric.exe folyamat fut. A Service Fabric lehetővé teszi az alkalmazások helyi felhasználói vagy rendszerfiókkal történő futtatását is. A helyi rendszerfiókok támogatott típusai a következők: **LocalUser**, **NetworkService**, **LocalService**és **LocalSystem**.  Ha a Service Fabrict egy önálló Windows-fürtön futtatja, akkor a [Active Directory tartományi fiókok](service-fabric-run-service-as-ad-user-or-group.md) vagy [csoportosan felügyelt](service-fabric-run-service-as-gmsa.md)szolgáltatásfiókok területen futtathatja a szolgáltatást.
+Az Azure Service Fabric használatával a fürtben futó alkalmazások különböző felhasználói fiókokban is biztonságossá tehetők. Alapértelmezés szerint Service Fabric alkalmazások azon a fiókon futnak, amelyen a Fabric.exe folyamat fut. A Service Fabric lehetővé teszi az alkalmazások helyi felhasználói vagy rendszerfiókkal történő futtatását is. A helyi rendszerfiókok támogatott típusai a következők: **LocalUser**, **NetworkService**, **LocalService** és **LocalSystem**.  Ha a Service Fabrict egy önálló Windows-fürtön futtatja, akkor a [Active Directory tartományi fiókok](service-fabric-run-service-as-ad-user-or-group.md) vagy [csoportosan felügyelt](service-fabric-run-service-as-gmsa.md)szolgáltatásfiókok területen futtathatja a szolgáltatást.
 
 Az alkalmazás jegyzékfájljában meghatározhatja a szolgáltatások futtatásához szükséges felhasználói fiókokat, illetve az erőforrások biztonságos elérését a **résztvevők** szakaszban. Létrehozhat és létrehozhat felhasználói csoportokat is, hogy egy vagy több felhasználó egyszerre kezelhető legyen. Ez akkor hasznos, ha több felhasználó van a különböző szolgáltatási belépési pontokhoz, és a csoport szintjén elérhető általános jogosultságokra van szükségük.  A felhasználók ezután egy futtató házirendben lesznek hivatkozva, amely egy adott szolgáltatásra vagy az alkalmazás összes szolgáltatására vonatkozik. 
 
@@ -24,7 +24,7 @@ Alapértelmezés szerint a rendszer a fő belépési pontra alkalmazza a RunAs-h
 ## <a name="run-a-service-as-a-local-user"></a>Szolgáltatás futtatása helyi felhasználóként
 Létrehozhat egy helyi felhasználót, amely segítségével biztonságossá teheti a szolgáltatást az alkalmazáson belül. Ha a **LocalUser** -fiók típusa meg van adva az alkalmazás jegyzékfájljának rendszerbiztonsági tagjai szakaszban, Service Fabric helyi felhasználói fiókokat hoz létre azon gépeken, amelyeken az alkalmazás telepítve van. Alapértelmezés szerint ezek a fiókok nem egyeznek meg az alkalmazás jegyzékfájljában megadott névvel (például *Customer3* a következő alkalmazás jegyzékfájljában). Ehelyett dinamikusan jönnek létre, és véletlenszerű jelszavakkal rendelkeznek.
 
-A ServiceManifestImport **RunAsPolicy** szakaszában adja meg **ServiceManifestImport**a felhasználói fiókot a **rendszerbiztonsági tag** szakaszban a szolgáltatás kódjának futtatásához.  Az alábbi példa bemutatja, hogyan hozhat létre helyi felhasználót, és hogyan alkalmazhat egy futtató házirendet a fő belépési pontra:
+A ServiceManifestImport **RunAsPolicy** szakaszában adja meg a felhasználói fiókot a **rendszerbiztonsági tag** szakaszban a szolgáltatás kódjának futtatásához.  Az alábbi példa bemutatja, hogyan hozhat létre helyi felhasználót, és hogyan alkalmazhat egy futtató házirendet a fő belépési pontra:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -55,7 +55,7 @@ A ServiceManifestImport **RunAsPolicy** szakaszában adja meg **ServiceManifestI
 ```
 
 ## <a name="create-a-local-user-group"></a>Helyi felhasználói csoport létrehozása
-Létrehozhat felhasználói csoportokat, és hozzáadhat egy vagy több felhasználót a csoporthoz. Ez akkor hasznos, ha több felhasználó van a különböző szolgáltatási belépési pontokhoz, és szükségük van bizonyos, a csoport szintjén elérhető általános jogosultságokra. A következő Application manifest-példa egy *LocalAdminGroup* nevű helyi csoportot mutat be, amely rendszergazdai jogosultságokkal rendelkezik. Két felhasználó, a *Customer1* és a *Customer2*ennek a helyi csoportnak a tagjai. A **ServiceManifestImport** szakaszban egy futtató házirend lesz alkalmazva a *Stateful1Pkg* -kód *Customer2*való futtatásához.  Egy másik futtató házirendet alkalmaz a *Web1Pkg* -kód *Customer1*való futtatására.
+Létrehozhat felhasználói csoportokat, és hozzáadhat egy vagy több felhasználót a csoporthoz. Ez akkor hasznos, ha több felhasználó van a különböző szolgáltatási belépési pontokhoz, és szükségük van bizonyos, a csoport szintjén elérhető általános jogosultságokra. A következő Application manifest-példa egy *LocalAdminGroup* nevű helyi csoportot mutat be, amely rendszergazdai jogosultságokkal rendelkezik. Két felhasználó, a *Customer1* és a *Customer2* ennek a helyi csoportnak a tagjai. A **ServiceManifestImport** szakaszban egy futtató házirend lesz alkalmazva a *Stateful1Pkg* -kód *Customer2* való futtatásához.  Egy másik futtató házirendet alkalmaz a *Web1Pkg* -kód *Customer1* való futtatására.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -172,7 +172,7 @@ A következő szolgáltatási jegyzékfájl szemlélteti a konzol átirányítá
 ```
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Az alkalmazás modelljének megismerése](service-fabric-application-model.md)
 * [Erőforrások meghatározása a szolgáltatás jegyzékfájljában](service-fabric-service-manifest-resources.md)
 * [Alkalmazás üzembe helyezése](service-fabric-deploy-remove-applications.md)

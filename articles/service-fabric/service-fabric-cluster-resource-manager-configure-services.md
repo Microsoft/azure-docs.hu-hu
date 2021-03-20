@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: d4dcd319000edb204ba188ed14b4c797dba5cd38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75610097"
 ---
 # <a name="configuring-cluster-resource-manager-settings-for-service-fabric-services"></a>A fürterőforrás-kezelő beállításainak konfigurálása Service Fabric szolgáltatásokhoz
@@ -32,7 +32,7 @@ Léteznek más típusú elhelyezési szabályok, amelyek kevésbé gyakori helyz
 
 Az egyéb elhelyezési szabályok korrelációk vagy szabályzatok használatával konfigurálhatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - A metrikák azt jelentik, hogyan kezeli a Service Fabric fürterőforrás-kezelő a fürtben a felhasználást és a kapacitást. A metrikákkal és azok konfigurálásával kapcsolatos további tudnivalókért tekintse meg [ezt a cikket](service-fabric-cluster-resource-manager-metrics.md)
 - Az affinitás egy olyan mód, amelyet konfigurálhat a szolgáltatásaihoz. Nem gyakori, de ha szüksége van rá, [itt](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md) megismerheti
 - Számos különböző elhelyezési szabály állítható be a szolgáltatásban további forgatókönyvek kezeléséhez. Ezekről a különböző elhelyezési házirendekről [itt](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) talál további információt

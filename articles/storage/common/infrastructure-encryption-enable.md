@@ -12,10 +12,10 @@ ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 612ba18ba71a22ad6c346b26008e688195c1d1e4
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92746578"
 ---
 # <a name="create-a-storage-account-with-infrastructure-encryption-enabled-for-double-encryption-of-data"></a>Olyan Storage-fiók létrehozása, amely lehetővé teszi az infrastruktúra-titkosítást az adatmennyiség kettős titkosításához
@@ -181,7 +181,7 @@ Az alábbi lépéseket követve ellenőrizheti, hogy engedélyezve van-e az infr
 1. Az Azure Portalon nyissa meg a tárfiókot.
 1. A **Beállítások** területen válassza a **titkosítás** lehetőséget.
 
-    :::image type="content" source="media/infrastructure-encryption-enable/verify-infrastructure-encryption-portal.png" alt-text="A fiók létrehozásakor az infrastruktúra titkosításának engedélyezését bemutató képernyőkép":::
+    :::image type="content" source="media/infrastructure-encryption-enable/verify-infrastructure-encryption-portal.png" alt-text="Képernyőkép arról, hogyan ellenőrizheti, hogy az infrastruktúra-titkosítás engedélyezve van-e a fiókhoz":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

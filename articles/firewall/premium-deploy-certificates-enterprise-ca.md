@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 03/09/2021
+ms.date: 03/18/2021
 ms.author: victorh
-ms.openlocfilehash: fba95214a6bbb0482166eab8f77f30911986fbb7
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 38d83186c06eac0fc3a49834172c2a4b8542caff
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102525483"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590466"
 ---
 # <a name="deploy-and-configure-enterprise-ca-certificates-for-azure-firewall-preview"></a>Vállalati HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok központi telepítése és konfigurálása Azure Firewall előzetes verzióhoz
 
@@ -42,7 +42,7 @@ Ha vállalati HITELESÍTÉSSZOLGÁLTATÓT szeretne használni a Azure Firewall P
 1. Nyissa meg a webes igénylés webhelyét a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓN, `https://<servername>/certsrv` és válassza a **tanúsítvány kérése** lehetőséget.
 1. Válassza a **Speciális tanúsítványkérelem** lehetőséget.
 1. Válassza a **Létrehozás lehetőséget, és küldje el a kérelmet a hitelesítésszolgáltatónak**.
-1. Töltse ki az űrlapot az alárendelt hitelesítésszolgáltató sablonnal az alábbi ábrán látható módon:
+1. Töltse ki az űrlapot az alárendelt hitelesítésszolgáltató sablon használatával.
 1. Küldje el a kérést, és telepítse a tanúsítványt.
 1. Ha ezt a kérést egy, az Internet Explorer alkalmazást használó Windows-kiszolgálóról kezdeményezték, nyissa meg az **Internetbeállítások** párbeszédpanelt.
 1. Navigáljon a **Content (tartalom** ) lapra, és válassza a **tanúsítványok** lehetőséget.

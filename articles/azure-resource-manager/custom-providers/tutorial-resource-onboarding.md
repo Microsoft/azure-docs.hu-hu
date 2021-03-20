@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 09/17/2019
 ms.openlocfilehash: 22d1dcd997a4ddb94aba184c5dace4c00509054d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75649938"
 ---
 # <a name="tutorial-resource-onboarding-with-azure-custom-providers"></a>Oktatóanyag: erőforrás-előkészítés az Azure egyéni szolgáltatókkal
@@ -209,7 +209,7 @@ A sablon első része az egyéni szolgáltatói infrastruktúrát telepíti. Ez 
 
 Üzembe helyezzük az egyéni szolgáltatói infrastruktúrát. Másolja, mentse és telepítse az előző sablont, vagy kövesse az infrastruktúra következő lépéseit, és telepítse az infrastruktúrát a Azure Portal használatával.
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+1. Nyissa meg az [Azure Portal](https://portal.azure.com).
 
 2. A **sablonok** keresése az **összes szolgáltatásban** vagy a fő keresőmező használatával:
 
@@ -217,9 +217,9 @@ A sablon első része az egyéni szolgáltatói infrastruktúrát telepíti. Ez 
 
 3. Válassza a **Hozzáadás** lehetőséget a **sablonok** ablaktáblán:
 
-   ![Hozzáadás kiválasztása](media/tutorial-resource-onboarding/templatesadd.png)
+   ![Válassza a Hozzáadás lehetőséget](media/tutorial-resource-onboarding/templatesadd.png)
 
-4. Az **általános**területen adja meg az új sablon **nevét** és **leírását** :
+4. Az **általános** területen adja meg az új sablon **nevét** és **leírását** :
 
    ![Sablon neve és leírása](media/tutorial-resource-onboarding/templatesdescription.png)
 
@@ -227,21 +227,21 @@ A sablon első része az egyéni szolgáltatói infrastruktúrát telepíti. Ez 
 
    ![Resource Manager-sablon létrehozása](media/tutorial-resource-onboarding/templatesarmtemplate.png)
 
-6. A sablon létrehozásához válassza a **Hozzáadás** lehetőséget. Ha az új sablon nem jelenik meg, válassza a **frissítés**lehetőséget.
+6. A sablon létrehozásához válassza a **Hozzáadás** lehetőséget. Ha az új sablon nem jelenik meg, válassza a **frissítés** lehetőséget.
 
-7. Válassza ki az újonnan létrehozott sablont, majd válassza a **telepítés**lehetőséget:
+7. Válassza ki az újonnan létrehozott sablont, majd válassza a **telepítés** lehetőséget:
 
    ![Válassza ki az új sablont, majd válassza a telepítés lehetőséget.](media/tutorial-resource-onboarding/templateselectspecific.png)
 
 8. Adja meg a kötelező mezők beállításait, majd válassza ki az előfizetést és az erőforráscsoportot. Az **egyéni erőforrás-szolgáltató azonosítója** mezőt üresen hagyhatja.
 
-   | Beállítás neve | Kötelező? | Leírás |
+   | Beállítás neve | Kötelező? | Description |
    | ------------ | -------- | ----------- |
    | Hely | Igen | A sablon erőforrásainak helye. |
-   | Logikai alkalmazás neve | Nem | A logikai alkalmazás neve. |
-   | Egyéni erőforrás-szolgáltató neve | Nem | Az egyéni erőforrás-szolgáltató neve. |
-   | Egyéni erőforrás-szolgáltató azonosítója | Nem | Egy meglévő egyéni erőforrás-szolgáltató, amely támogatja a társítási erőforrást. Ha itt értéket ad meg, a rendszer kihagyja a logikai alkalmazást és az egyéni szolgáltató üzembe helyezését. |
-   | Társítás neve | Nem | A társítási erőforrás neve. |
+   | Logikai alkalmazás neve | No | A logikai alkalmazás neve. |
+   | Egyéni erőforrás-szolgáltató neve | No | Az egyéni erőforrás-szolgáltató neve. |
+   | Egyéni erőforrás-szolgáltató azonosítója | No | Egy meglévő egyéni erőforrás-szolgáltató, amely támogatja a társítási erőforrást. Ha itt értéket ad meg, a rendszer kihagyja a logikai alkalmazást és az egyéni szolgáltató üzembe helyezését. |
+   | Társítás neve | No | A társítási erőforrás neve. |
 
    Minta paramétereinek:
 
@@ -273,7 +273,7 @@ Miután beállította az egyéni szolgáltatói infrastruktúrát, egyszerűen �
 
    ![Sablonok keresése](media/tutorial-resource-onboarding/templates.png)
 
-4. Válassza ki a korábban létrehozott sablont, majd válassza a **telepítés**lehetőséget:
+4. Válassza ki a korábban létrehozott sablont, majd válassza a **telepítés** lehetőséget:
 
    ![Válassza ki a korábban létrehozott sablont, majd válassza a telepítés lehetőséget.](media/tutorial-resource-onboarding/templateselectspecific.png)
 

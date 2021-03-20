@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 10/11/2017
 ms.author: allensu
 ms.openlocfilehash: cff355aeb74efc9dec2780840ae57fea4c5764cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84888708"
 ---
 # <a name="custom-reports-from-verizon"></a>Egyéni jelentések a Verizontól
@@ -34,7 +34,7 @@ A Verizon egyéni jelentéseinek használata a Verizon-profilok kezelése portá
     ![CDN-profil kezelése gomb](./media/cdn-reports/cdn-manage-btn.png)
    
     Megnyílik a CDN felügyeleti portál.
-2. Vigye az egérmutatót az **elemzés** lapra, majd vigye az egérmutatót az **egyéni jelentések** menü fölé. Kattintson a **PEREMHÁLÓZATI CNAME**elemre.
+2. Vigye az egérmutatót az **elemzés** lapra, majd vigye az egérmutatót az **egyéni jelentések** menü fölé. Kattintson a **PEREMHÁLÓZATI CNAME** elemre.
    
     ![CDN felügyeleti portál – egyéni jelentések menü](./media/cdn-reports/cdn-custom-reports.png)
 
@@ -58,7 +58,7 @@ Hozzon létrehoz egy egyéni jelentést a következő jelentési lehetőségek m
    - Gyorsítótár állapota: a statisztikákat a gyorsítótár állapota alapján rendezi.
 
 
-A jelentés időtartományának beállításához válasszon ki egy előre meghatározott dátumtartományt, például a **mai** vagy **az ezen a héten**a legördülő listából, vagy válassza az **Egyéni** lehetőséget, és manuálisan adja meg a dátumtartományt a naptár ikonjaira kattintva. 
+A jelentés időtartományának beállításához válasszon ki egy előre meghatározott dátumtartományt, például a **mai** vagy **az ezen a héten** a legördülő listából, vagy válassza az **Egyéni** lehetőséget, és manuálisan adja meg a dátumtartományt a naptár ikonjaira kattintva. 
 
 Miután kiválasztotta a dátumtartományt, kattintson az **Ugrás** gombra a jelentés létrehozásához.
 
@@ -77,7 +77,7 @@ Az Excel-formátumú adatexportáláshoz kattintson az **Ugrás** gomb jobb olda
 | Gyorsítótár találati aránya (%)               | A gyorsítótárból a kérelmezőnek kiszolgált gyorsítótárazható kérelmek százalékos arányát jelzi. |
 | Gyorsítótár-találatok                | A gyorsítótárban találatot eredményező (például TCP_EXPIRED_HIT, TCP_HIT vagy TCP_PARTIAL_HIT) találatok vagy továbbított adatmennyiség (MB) teljes számát jelzi. A gyorsítótár találata akkor fordul elő, ha a kért tartalom gyorsítótárazott verziója található. |
 | Továbbított adatátvitel (MB)     | Az átvitt adatok (MB) teljes mennyiségét jelzi a peremhálózati kiszolgálókról a peremhálózati CNAME-hez tartozó HTTP-ügyfelek (böngészők) számára. Az átvitt adatmennyiség kiszámítása úgy történik, hogy hozzáadja a HTTP-válasz fejléceit a válasz törzséhez. Ennek eredményeképpen az egyes eszközök számára továbbított adatok mennyisége nagyobb, mint a tényleges fájlméret. |
-| Leírás               | A peremhálózati CNAME azonosító azonosítása az állomásnév alapján |
+| Description               | A peremhálózati CNAME azonosító azonosítása az állomásnév alapján |
 | Találatok                      | A peremhálózati CNAME-re irányuló kérelmek teljes számát jelzi. |
 | Hiányzik                    | Azt a kérések vagy adatátviteli (MB) értéket adja meg a peremhálózati CNAME rekordhoz, amely a gyorsítótár-kihagyás következtében (például TCP_CLIENT_REFRESH_MISS, TCP_EXPIRED_MISS vagy TCP_MISS). A gyorsítótárból való kihagyás akkor következik be, amikor a kért tartalom nem lett gyorsítótárazva a kérést tiszteletben lévő peremhálózati kiszolgálón. | 
 | Nincs gyorsítótár                  | A CONFIG_NOCACHE gyorsítótár-állapotkódot eredményező, a peremhálózati CNAME azonosítóhoz tartozó kérelmek vagy továbbított adatátvitel (MB) teljes számát jelzi.  |

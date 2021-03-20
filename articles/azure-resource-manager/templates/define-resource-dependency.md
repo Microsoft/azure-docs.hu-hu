@@ -4,13 +4,13 @@ description: Ismerteti, hogyan lehet egy Azure-erőforrást egy másik erőforr�
 ms.topic: conceptual
 ms.date: 12/21/2020
 ms.openlocfilehash: f6b63b066da06a17c3a2e51ab0f3ab9bf521a144
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97934747"
 ---
-# <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>Erőforrások üzembe helyezési sorrendjének meghatározása ARM-sablonokban
+# <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>Erőforrások üzembe helyezési sorrendjének definiálása ARM-sablonokban
 
 Erőforrások üzembe helyezése esetén előfordulhat, hogy a többi erőforrás előtt meg kell győződnie arról, hogy bizonyos erőforrások léteznek. Egy adatbázis üzembe helyezése előtt például logikai SQL Serverre van szükség. Ezt a kapcsolatot úgy hozza létre, hogy egy erőforrást a másik erőforrástól függőként jelöl meg. `dependsOn`Explicit függőség definiálásához használja az elemet. Egy implicit függőség meghatározásához használja a **hivatkozás** vagy a **lista** függvényt.
 
@@ -211,7 +211,7 @@ A Resource Manager körkörös függőségeket azonosít a sablon érvényesít�
 
 További információ a telepítési sorrend kiértékeléséről és a függőségi hibák megoldásáról: [gyakori Azure-telepítési hibák elhárítása Azure Resource Managerokkal](common-deployment-errors.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az oktatóanyag lépéseinek megismeréséhez lásd [: oktatóanyag: ARM-sablonok létrehozása függő erőforrásokkal](template-tutorial-create-templates-with-dependent-resources.md).
 * Az erőforrás-függőségeket lefedi Microsoft Learn modul esetében lásd: [összetett Felhőbeli központi telepítések kezelése speciális ARM-sablonok használatával](/learn/modules/manage-deployments-advanced-arm-template-features/).

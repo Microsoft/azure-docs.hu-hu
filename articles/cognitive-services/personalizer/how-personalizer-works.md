@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: cfbe5cf8c19bfafb38f6149391e09350785ebf9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91303607"
 ---
 # <a name="how-personalizer-works"></a>A Personalizer működése
@@ -26,7 +26,7 @@ A Range API- _val funkciókkal_ és _környezeti funkciókkal_ is elküldheti a 
 Határozza meg a jutalom pontszámát, és küldje el a pontszámot a jutalmazási API-nak. A **jutalmazási** API:
 
 * Összegyűjti az adatokat a modell betanításához az egyes rangsorolási hívások funkcióinak és jutalmazási pontjainak rögzítésével.
-* Ezeket az adattípusokat használja a modell frissítéséhez a _tanulási szabályzatban_megadott konfiguráció alapján.
+* Ezeket az adattípusokat használja a modell frissítéséhez a _tanulási szabályzatban_ megadott konfiguráció alapján.
 
 ## <a name="your-system-calling-personalizer"></a>A rendszerhívás személyre szabása
 
@@ -38,7 +38,7 @@ Az alábbi képen a rang és a jutalmazási hívások meghívásának építész
 
     * Személyre szabhatja, hogy kihasználja-e az aktuális modellt, vagy a modell új választási lehetőségeit tárja fel.
     * A rangsor eredményét a rendszer elküldi a EventHub.
-1. A legmagasabb rangot _jutalom műveleti azonosítóként_adja vissza a rendszernek.
+1. A legmagasabb rangot _jutalom műveleti azonosítóként_ adja vissza a rendszernek.
     A rendszer ezt a tartalmat mutatja be, és a saját üzleti szabályai alapján határozza meg a jutalom pontszámát.
 1. A rendszere visszaadja a jutalmazási pontszámot a tanulási ciklusnak.
     * Ha a személy megkapja a jutalmat, a jutalmat a EventHub kapja meg.

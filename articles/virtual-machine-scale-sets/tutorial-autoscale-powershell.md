@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.reviewer: avverma
 ms.custom: avverma, devx-track-azurepowershell
 ms.openlocfilehash: 8ee124f866a5241620671ff84c24f3713f62efe1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89078469"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Oktatóanyag: virtuálisgép-méretezési csoportok automatikus skálázása az Azure PowerShell-lel
@@ -28,7 +28,7 @@ Méretezési csoport létrehozásakor meghatározza a futtatni kívánt virtuál
 > * Virtuálisgép-példányok és automatikus skálázás-aktiválási szabályok terhelési tesztje
 > * Visszaméretezés, ha az igény csökken
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Létezik egy ismert hiba, amely az Azure PowerShell-modul 6.8.1-es vagy újabb verzióját érinti, beleértve az Azure Cloud Shell aktuális verzióját is. Ez az oktatóanyag csak az Azure PowerShell-modul 6.0.0–6.8.0 közötti verziójával futtatható. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
@@ -118,7 +118,7 @@ $myRuleScaleIn = New-AzureRmAutoscaleRule `
 
 
 ## <a name="define-an-autoscale-profile"></a>Automatikus skálázási profil meghatározása
-Profilok létrehozásával társíthatja az automatikus skálázási szabályokat a méretezési csoportokhoz. Az automatikus skálázási profil határozza meg a méretezési csoport alapértelmezett, minimális és maximális kapacitását, és társítja az automatikus skálázási szabályokat. Automatikus skálázási profilt a [New-AzureRmAutoscaleProfile](/powershell/module/AzureRM.Insights/New-AzureRmAutoscaleProfile) paranccsal hozhat létre. Az alábbi példa az alapértelmezett és a minimális kapacitást, a *2* virtuálisgép-példányok számát és a maximum *10*értéket állítja be. Ezután csatolja az előző lépésekben létrehozott horizontális fel- és leskálázási szabályokat:
+Profilok létrehozásával társíthatja az automatikus skálázási szabályokat a méretezési csoportokhoz. Az automatikus skálázási profil határozza meg a méretezési csoport alapértelmezett, minimális és maximális kapacitását, és társítja az automatikus skálázási szabályokat. Automatikus skálázási profilt a [New-AzureRmAutoscaleProfile](/powershell/module/AzureRM.Insights/New-AzureRmAutoscaleProfile) paranccsal hozhat létre. Az alábbi példa az alapértelmezett és a minimális kapacitást, a *2* virtuálisgép-példányok számát és a maximum *10* értéket állítja be. Ezután csatolja az előző lépésekben létrehozott horizontális fel- és leskálázási szabályokat:
 
 ```azurepowershell-interactive
 $myScaleProfile = New-AzureRmAutoscaleProfile `
@@ -247,7 +247,7 @@ Remove-AzureRmResourceGroup -Name "myResourceGroup" -Force -AsJob
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez az oktatóanyag bemutatta, hogyan lehet automatikusan horizontálisan le- illetve felskálázni egy méretezési csoportot az Azure PowerShell használatával:
 
 > [!div class="checklist"]

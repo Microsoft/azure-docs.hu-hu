@@ -7,10 +7,10 @@ ms.date: 10/12/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 2c57ac10fbd318dd4bbb2dc86457e186dd824834
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91951655"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>A Windows Virtual Desktop terheléselosztási módjának beállítása
@@ -83,7 +83,7 @@ Terheléselosztás konfigurálása:
 
 1. Jelentkezzen be Azure Portal a következő címen: https://portal.azure.com .
 2. Keresse meg és válassza ki a **Windows rendszerű virtuális asztali** szolgáltatások elemet.
-3. A Windows rendszerű virtuális asztal lapon válassza a **gazdagép készletek**elemet.
+3. A Windows rendszerű virtuális asztal lapon válassza a **gazdagép készletek** elemet.
 4. Válassza ki a szerkeszteni kívánt gazdagép-készlet nevét.
 5. Válassza ki a **Tulajdonságok** elemet.
 6. Adja meg a **maximális munkamenet-korlátot** a mezőbe, és válassza ki a használni kívánt **terheléselosztási algoritmust** a legördülő menüben.

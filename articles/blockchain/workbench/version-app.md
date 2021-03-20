@@ -5,10 +5,10 @@ ms.date: 11/20/2019
 ms.topic: how-to
 ms.reviewer: brendal
 ms.openlocfilehash: 2a70112fd0ab6e2f664ca48265c121936b01e58b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85209878"
 ---
 # <a name="azure-blockchain-workbench-preview-application-versioning"></a>Az Azure Blockchain Workbench előzetes verziójának alkalmazása
@@ -29,7 +29,7 @@ Létrehozhat és használhat egy Azure Blockchain Workbench előzetes verziójú
 1. Egy böngészőben nyissa meg a Blockchain Workbench webcímet. Ha például `https://{workbench URL}.azurewebsites.net/` meg szeretné tudni, hogyan keresheti meg a Blockchain Workbench webcímet, tekintse meg a [Blockchain Workbench webes URL-](deploy.md#blockchain-workbench-web-url) címét.
 2. Jelentkezzen be [Blockchain Workbench-rendszergazdaként](manage-users.md#manage-blockchain-workbench-administrators).
 3. Válassza ki a frissíteni kívánt blockchain alkalmazást egy másik verzióval.
-4. Válassza a **verzió hozzáadása**lehetőséget. Megjelenik a **verzió hozzáadása** panel.
+4. Válassza a **verzió hozzáadása** lehetőséget. Megjelenik a **verzió hozzáadása** panel.
 5. Válassza ki az új verzióra vonatkozó szerződés konfigurációját és a feltöltendő szerződési kód fájljait. A konfigurációs fájl automatikusan érvényesítve lesz. Az alkalmazás központi telepítése előtt javítsa ki az érvényesítési hibákat.
 6. Válassza a **verzió hozzáadása** lehetőséget az új blockchain-alkalmazás verziójának hozzáadásához.
 
@@ -54,6 +54,6 @@ Alapértelmezés szerint az alkalmazás legújabb engedélyezett verziója a Blo
 
     Létrehozhat új szerződéseket, vagy műveleteket hajthat végre a korábbi verziójú szerződések esetében. Az alkalmazás verziója megjelenik az alkalmazás neve után, és egy figyelmeztetés jelenik meg a régebbi verzióról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Blockchain Workbench – hibaelhárítás](troubleshooting.md)

@@ -9,10 +9,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: e27f9c0af62c4cbdd550fd9907a0dd88d72bba6e
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96549208"
 ---
 # <a name="array-functions-azure-cosmos-db"></a>Array functions (Azure Cosmos DB)
@@ -20,7 +20,7 @@ ms.locfileid: "96549208"
 
 A Array függvények lehetővé teszik a Azure Cosmos DB tömbökön végzett műveletek végrehajtását.
 
-## <a name="functions"></a>Függvények
+## <a name="functions"></a>Functions
 
 A következő skaláris függvények a tömb bemeneti értékén hajtanak végre műveletet, és numerikus, logikai vagy Array értéket adnak vissza:
 

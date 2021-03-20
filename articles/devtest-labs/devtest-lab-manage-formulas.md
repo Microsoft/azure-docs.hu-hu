@@ -4,10 +4,10 @@ description: Ez a cikk bemutatja, hogyan hozhat létre képletet egy Alapból (e
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: f012a8c59a8e938334c3e1abc4c7b3ccd0e48d3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91308894"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Azure DevTest Labs képletek kezelése
@@ -29,17 +29,17 @@ A következő lépések végigvezetik a képletek egyéni rendszerképből, Piac
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
+2. Válassza a **minden szolgáltatás** lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
 
 3. A laborok listájából válassza ki a kívánt labort.  
 
 4. A labor lapon válassza a bal oldali menüben a **képletek (újrafelhasználható alapok)** elemet.
-5. A **képletek** lapon válassza a **+ Hozzáadás**lehetőséget.
+5. A **képletek** lapon válassza a **+ Hozzáadás** lehetőséget.
    
     ![Képlet hozzáadása](./media/devtest-lab-create-formulas/add-formula.png)
 6. Az **alap kiválasztása** lapon válassza ki azt az alapot (egyéni rendszerkép, Piactéri rendszerkép vagy megosztott képgyűjteményi rendszerkép), amelyből létre szeretné hozni a képletet.
 
-    :::image type="content" source="./media/devtest-lab-create-formulas/select-base.png" alt-text="A kiinduló rendszerkép kiválasztása&quot;:::
+    :::image type="content" source="./media/devtest-lab-create-formulas/select-base.png" alt-text="A kiinduló rendszerkép kiválasztása":::
 1. A **képlet létrehozása** lap **alapbeállítások** lapján adja meg a következő értékeket:
    
     * **Képlet neve** – adja meg a képlet nevét. Ez az érték jelenik meg az alapképek listájában, amikor létrehoz egy virtuális gépet. A nevet a beírásakor érvényesíti a rendszer, és ha nem érvényes, egy üzenet jelzi az érvényes névre vonatkozó követelményeket.
@@ -54,13 +54,13 @@ A következő lépések végigvezetik a képletek egyéni rendszerképből, Piac
 
         ![Alapszintű beállítások lap](./media/devtest-lab-create-formulas/basic-settings.png)
 8. Váltson a **Speciális beállítások** lapra, és határozza meg a következő értékeket:
-    - **Virtuális hálózat** – a virtuális hálózat módosításához válassza a **vnet módosítása**lehetőséget. 
-    - **Alhálózat** – az alhálózat módosításához válassza az **alhálózat módosítása**lehetőséget. 
+    - **Virtuális hálózat** – a virtuális hálózat módosításához válassza a **vnet módosítása** lehetőséget. 
+    - **Alhálózat** – az alhálózat módosításához válassza az **alhálózat módosítása** lehetőséget. 
     - **IP-cím konfigurálása** – Itt adhatja meg, hogy a nyilvános, a magánhálózati vagy a megosztott IP-címeket kívánja-e használni. További információ a megosztott IP-címekről: [a Azure DevTest Labs megosztott IP-címeinek megismerése](./devtest-lab-shared-ip.md).
     - **Lejárati dátum és idő** – ez a mező nem szerkeszthető. 
-    - A **gép igényelhetővé tétele** – a gép &quot;igényelhető&quot; azt jelenti, hogy a létrehozáskor nem lesz hozzárendelve tulajdonos. Ehelyett a labor felhasználói jogosultak lesznek a gép tulajdonosára (&quot;jogcím&quot;) a labor oldalára.  
+    - A **gép igényelhetővé tétele** – a gép "igényelhető" azt jelenti, hogy a létrehozáskor nem lesz hozzárendelve tulajdonos. Ehelyett a labor felhasználói jogosultak lesznek a gép tulajdonosára ("jogcím") a labor oldalára.  
 
-        ![A &quot;Create Formula (újrafelhasználható alap)" oldal speciális beállításait bemutató képernyőkép.](./media/devtest-lab-create-formulas/advanced-settings.png)
+        ![A "Create Formula (újrafelhasználható alap)" oldal speciális beállításait bemutató képernyőkép.](./media/devtest-lab-create-formulas/advanced-settings.png)
     - Ha az alapszintű megosztott képkatalógus-rendszerképet választotta, akkor a **rendszerkép verziója** mezőt is megtekintheti, amely lehetővé teszi, hogy kiválassza a rendszerkép azon verzióját, amelyet a gyűjtemény alapjául használni kíván. 
 
         ![Speciális beállítások lap](./media/devtest-lab-create-formulas/advanced-settings-shared-image-gallery.png)
@@ -77,7 +77,7 @@ A következő lépések végigvezetik a képletek egy meglévő virtuális gépe
 > 
 
 1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-2. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
+2. Válassza a **minden szolgáltatás** lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
 3. A laborok listájából válassza ki a kívánt labort.  
 4. A labor **Áttekintés** lapján válassza ki azt a virtuális gépet, amelyről létre kívánja hozni a képletet.
    
@@ -94,27 +94,27 @@ A következő lépések végigvezetik a képletek egy meglévő virtuális gépe
 A képletek módosításához kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-2. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
+2. Válassza a **minden szolgáltatás** lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
 3. A laborok listájából válassza ki a kívánt labort.  
 4. A labor lapon válassza a **képletek (újrafelhasználható alapok)** lehetőséget.
    
     ![Képernyőkép, amely a labor oldalát jeleníti meg a "képletek (újrafelhasználható alapértékek)" beállítás kiválasztásával.](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
 5. A **labor-képletek** lapon válassza ki a módosítani kívánt képletet.
-6. A **képlet frissítése** lapon végezze el a kívánt módosításokat, majd kattintson a **frissítés**elemre.
+6. A **képlet frissítése** lapon végezze el a kívánt módosításokat, majd kattintson a **frissítés** elemre.
 
 ## <a name="delete-a-formula"></a>Képlet törlése
 A képletek törléséhez kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-2. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
+2. Válassza a **minden szolgáltatás** lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
 3. A laborok listájából válassza ki a kívánt labort.  
-4. A labor **beállításai** lapon válassza a **képletek**lehetőséget.
+4. A labor **beállításai** lapon válassza a **képletek** lehetőséget.
    
     ![Képlet menü](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
 5. A **labor-képletek** lapon válassza ki a törölni kívánt képlet jobb oldalán lévő három pontot.
    
     ![Képernyőfelvétel: a "Lab-képletek" oldal, a Kiemelt képleti beállításokhoz tartozó három ponttal.](./media/devtest-lab-manage-formulas/lab-formulas-blade.png)
-6. A képlet helyi menüjében válassza a **Törlés**lehetőséget.
+6. A képlet helyi menüjében válassza a **Törlés** lehetőséget.
    
     ![Képlet helyi menüje](./media/devtest-lab-manage-formulas/formula-delete-context-menu.png)
 7. Válassza az **Igen** lehetőséget a törlés megerősítését kérő párbeszédablakban.

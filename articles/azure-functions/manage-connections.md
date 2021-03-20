@@ -1,17 +1,17 @@
 ---
-title: Kapcsolatok kezelése Azure Functionsban
+title: Kapcsolatok kezelése az Azure Functionsben
 description: Megtudhatja, hogyan kerülheti el a teljesítménnyel kapcsolatos problémákat a Azure Functions a statikus kapcsolódási ügyfelek használatával.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 02/25/2018
 ms.openlocfilehash: ec16ce3e7f9793be2a012a029bcca31c9a7ea4cf
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97936702"
 ---
-# <a name="manage-connections-in-azure-functions"></a>Kapcsolatok kezelése Azure Functionsban
+# <a name="manage-connections-in-azure-functions"></a>Kapcsolatok kezelése az Azure Functionsben
 
 Functions-alkalmazásokban lévő függvények erőforrásainak megosztása. A megosztott erőforrások közé tartoznak a kapcsolatok: HTTP-kapcsolatok, adatbázis-kapcsolatok, valamint olyan szolgáltatásokhoz való kapcsolódások, mint például az Azure Storage. Ha egyszerre több függvény fut, lehetséges, hogy elfogynak az elérhető kapcsolatok. Ez a cikk ismerteti a függvények kódolását, hogy elkerülje a szükségesnél több kapcsolat használatát.
 
@@ -148,7 +148,7 @@ A függvény kódja a .NET-keretrendszer adatszolgáltatóját használhatja SQL
 > [!TIP]
 > Egyes adatkeretrendszerek (például a Entity Framework) általában a konfigurációs fájl **ConnectionStrings** szakaszából kapják meg a kapcsolatok karakterláncait. Ebben az esetben explicit módon fel kell vennie az SQL Database-kapcsolódási karakterláncokat a Function app-beállítások és a helyi projektben lévő [local.settings.jsfájljának](functions-run-local.md#local-settings-file) a **kapcsolódási karakterláncok** gyűjteményéből. Ha a [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection) egy példányát hozza létre, a kapcsolati sztring értékét a többi kapcsolattal együtt kell tárolnia az **Alkalmazásbeállítások** között.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogy a statikus ügyfelek miért javasoltak: [helytelen példány-létrehozási minta](/azure/architecture/antipatterns/improper-instantiation/).
 

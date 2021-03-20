@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 9/22/2020
 ms.openlocfilehash: 2ea07e2bc12e6fc0d62abd462b8537c6a93689f9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97935801"
 ---
 # <a name="manage-an-azure-database-for-postgresql-single-server-using-the-azure-cli"></a>Azure Database for PostgreSQL egyetlen kiszolgáló kezelése az Azure CLI használatával
@@ -62,7 +62,7 @@ storage-size | 6144 | A kiszolgáló tárkapacitása (megabájtban megadva). A 5
 ## <a name="manage-postgresql-databases-on-a-server"></a>A PostgreSQL-adatbázisok kezelése egy kiszolgálón.
 Ezen parancsok bármelyikével létrehozhat, törölhet, listázhat és megtekinthet adatbázis-tulajdonságokat a kiszolgálón
 
-| Parancsmag | Használat| Leírás |
+| Parancsmag | Használat| Description |
 | --- | ---| --- |
 |[az postgres db Create](/cli/azure/sql/db#az-mysql-db-create)|```az postgres db create -g myresourcegroup -s mydemoserver -n mydatabasename``` |Létrehoz egy adatbázist|
 |[az postgres db delete](/cli/azure/sql/db#az-mysql-db-delete)|```az postgres db delete -g myresourcegroup -s mydemoserver -n mydatabasename```|Törölje az adatbázist a kiszolgálóról. Ez a parancs nem törli a kiszolgálót. |
@@ -86,7 +86,7 @@ Ha csak a PostgreSQL-kiszolgálót szeretné törölni, futtathatja az [az postg
 az postgres server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Kiszolgáló újraindítása](howto-restart-server-cli.md)
 - [A kiszolgáló visszaállítása rossz állapotban](howto-restore-server-cli.md)
 - [A kiszolgáló monitorozása és hangolása](concepts-monitoring.md)

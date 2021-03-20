@@ -5,10 +5,10 @@ tags: top-support-issue
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 00e0c51244d5c191d4c9f05f689b90ece81ec5a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91284618"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Az üzembe helyezési előzmények megtekintése Azure Resource Manager
@@ -27,7 +27,7 @@ A központi telepítés részleteit a Azure Portal, a PowerShell, az Azure CLI v
 
 1. Válassza ki azt az erőforráscsoportot, amelyet meg szeretne vizsgálni.
 
-1. Válassza ki az üzemelő **példányok**alatt lévő hivatkozást.
+1. Válassza ki az üzemelő **példányok** alatt lévő hivatkozást.
 
    ![Telepítési előzmények kiválasztása](./media/deployment-history/select-deployment-history.png)
 
@@ -117,7 +117,7 @@ Az egyes központi telepítések több műveletet is tartalmazhatnak. A központ
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. A központi telepítés összegzése lapon válassza a **művelet részletei**lehetőséget.
+1. A központi telepítés összegzése lapon válassza a **művelet részletei** lehetőséget.
 
     ![Művelet részleteinek kiválasztása](./media/deployment-history/get-operation-details.png)
 

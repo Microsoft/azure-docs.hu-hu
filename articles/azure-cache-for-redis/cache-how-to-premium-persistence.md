@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 58148e3a20ba41ae9707543be290f2d632cb1185
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9d11d17f90dcd6335fcaf6bd48a44037777a087e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375289"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601385"
 ---
 # <a name="configure-data-persistence-for-a-premium-azure-cache-for-redis-instance"></a>Az adatmegőrzés konfigurálása prémium szintű Azure cache esetén a Redis-példányhoz
 
@@ -19,7 +19,7 @@ A Redis megőrzése lehetővé teszi a Redis-ben tárolt [adatmegőrzést](https
 
 A Redis-hez készült Azure cache a következő modellek használatával nyújt Redis-megőrzést:
 
-* **RDB-megőrzés** – ha a RDB (Redis-adatbázis) megőrzése konfigurálva van, az Azure cache a Redis számára megőrzi az Azure cache-t a Redis bináris formátumból a lemezre egy konfigurálható biztonsági mentési gyakoriság alapján. Ha végzetes esemény következik be, amely letiltja az elsődleges és a replika gyorsítótárat is, a rendszer a legutóbbi pillanatkép használatával újraépíti a gyorsítótárat. További információ az RDB megőrzésének [előnyeiről](https://redis.io/topics/persistence#rdb-advantages) és [hátrányairól](https://redis.io/topics/persistence#rdb-disadvantages) .
+* **RDB-megőrzés** – ha a RDB (Redis-adatbázis) adatmegőrzés konfigurálva van, az Azure cache a Redis számára megőrzi a Redis tartozó Azure cache-t egy Redis bináris formátumban a lemezre (Azure Storage-fiókban) a konfigurálható biztonsági mentési gyakoriság alapján. Ha végzetes esemény következik be, amely letiltja az elsődleges és a replika gyorsítótárat is, a rendszer a legutóbbi pillanatkép használatával újraépíti a gyorsítótárat. További információ az RDB megőrzésének [előnyeiről](https://redis.io/topics/persistence#rdb-advantages) és [hátrányairól](https://redis.io/topics/persistence#rdb-disadvantages) .
 * **AOF-megőrzés** – ha a AOF (csak Hozzáfűzés) adatmegőrzés konfigurálva van, az Azure cache for Redis minden írási műveletet egy olyan naplóba ment, amely másodpercenként legalább egyszer ment egy Azure Storage-fiókba. Ha olyan katasztrofális esemény következik be, amely letiltja az elsődleges és a replika gyorsítótárat is, a gyorsítótárat a tárolt írási műveletek használatával rekonstruáljuk. További információ az AOF megőrzésének [előnyeiről](https://redis.io/topics/persistence#aof-advantages) és [hátrányairól](https://redis.io/topics/persistence#aof-disadvantages) .
 
 Az adatmegőrzés a saját és felügyelt Azure Storage-fiókba írja a Redis-adatot. A gyorsítótár létrehozásakor és a meglévő prémium gyorsítótárak **erőforrás menüjében** konfigurálhatja az **új Azure cache for Redis** panelt.

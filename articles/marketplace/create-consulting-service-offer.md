@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.openlocfilehash: e9a0b2fe883fa46010fda74c58908128d05919e6
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92754454"
 ---
 # <a name="how-to-create-a-consulting-service-offer-in-the-commercial-marketplace"></a>Tanácsadási szolgáltatás ajánlatának létrehozása a kereskedelmi piactéren
@@ -27,17 +27,17 @@ A tanácsadási szolgáltatás ajánlatának közzétételéhez meg kell felelni
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
 2.  A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés** lehetőséget.
-3.  Az Áttekintés lapon válassza az **+ új ajánlat** -  >  **tanácsadási szolgáltatás** elemet.
+3.  Az Áttekintés lapon válassza az **+ új ajánlat**-  >  **tanácsadási szolgáltatás** elemet.
 
     ![A bal oldali navigációs menü ábrázolása.](./media/new-offer-consulting-service.png)
 
-4. Az **új ajánlat** párbeszédpanelen adja meg az **ajánlat azonosítóját** . Ez az azonosító a kereskedelmi Piactéri lista URL-címében látható. Ha például beírja a test-Offer-1 értéket ebben a mezőben, az ajánlat webes címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
+4. Az **új ajánlat** párbeszédpanelen adja meg az **ajánlat azonosítóját**. Ez az azonosító a kereskedelmi Piactéri lista URL-címében látható. Ha például beírja a test-Offer-1 értéket ebben a mezőben, az ajánlat webes címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 
     * A fiók minden ajánlatának egyedi ajánlat-AZONOSÍTÓval kell rendelkeznie.
     * Csak kisbetűket és számokat használjon. Az ajánlat-azonosító tartalmazhat kötőjeleket és aláhúzást, de nem tartalmazhat szóközt, és legfeljebb 50 karakter hosszú lehet.
     * Az ajánlat azonosítója a **Létrehozás** gombra kattintva nem módosítható.
 
-5. Adjon meg egy **ajánlat-aliast** . Ez a partner Centerben az ajánlathoz használt név. Nem látható az online áruházakban, és eltér az ügyfelek által megjelenített ajánlat nevétől.
+5. Adjon meg egy **ajánlat-aliast**. Ez a partner Centerben az ajánlathoz használt név. Nem látható az online áruházakban, és eltér az ügyfelek által megjelenített ajánlat nevétől.
 6. Az ajánlat létrehozásához és a folytatáshoz válassza a **Létrehozás** lehetőséget.
 
 ## <a name="configure-lead-management"></a>Érdeklődők kezelésének konfigurálása
@@ -57,7 +57,7 @@ Az érdeklődői felügyelet konfigurálása a partner Centerben:
     * [Az ajánlat beállítása, hogy érdeklődőket küldjön a Marketo](./partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md#configure-your-offer-to-send-leads-to-marketo)
     * [Az ajánlat beállítása, hogy érdeklődőket küldjön a Salesforce](./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md#configure-your-offer-to-send-leads-to-salesforce)
 
-5.  A megadott konfiguráció ellenőrzéséhez válassza az **Érvényesítés hivatkozást** .
+5.  A megadott konfiguráció ellenőrzéséhez válassza az **Érvényesítés hivatkozást**.
 6.  Ha konfigurálta a kapcsolat részleteit, válassza a **Csatlakozás** lehetőséget.
 7.  Válassza a **Piszkozat mentése** lehetőséget.
 

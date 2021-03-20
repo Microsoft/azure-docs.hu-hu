@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: aprameyr
 ms.openlocfilehash: cf21af43de553a2802289e44eaece12952d077d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84710745"
 ---
 # <a name="replicas-and-instances"></a>Replikák és példányok 
 Ez a cikk áttekintést nyújt az állapot-nyilvántartó szolgáltatások replikáinak életciklusáról és az állapot nélküli szolgáltatások példányairól.
 
 ## <a name="instances-of-stateless-services"></a>Állapot nélküli szolgáltatások példányai
-Az állapot nélküli szolgáltatás egy példánya a fürt egyik csomópontján futó szolgáltatás-logika másolata. A partíción belüli példányokat a **InstanceId**egyedileg azonosítja. Egy példány életciklusa a következő ábrán látható:
+Az állapot nélküli szolgáltatás egy példánya a fürt egyik csomópontján futó szolgáltatás-logika másolata. A partíción belüli példányokat a **InstanceId** egyedileg azonosítja. Egy példány életciklusa a következő ábrán látható:
 
 ![Példány életciklusa](./media/service-fabric-concepts-replica-lifecycle/instance.png)
 
@@ -132,7 +132,7 @@ A következő ábra szemlélteti a replika szerepkör átváltását, és néhá
 > A magasabb szintű programozási modellek, mint például a [Reliable Actors](service-fabric-reliable-actors-introduction.md) és a [Reliable Services](service-fabric-reliable-services-introduction.md), elrejtik a replikációs szerepkörök fogalmát a fejlesztőtől. A szereplők esetében a szerepkör fogalma szükségtelen. A szolgáltatások részben egyszerűbb a legtöbb forgatókönyv esetében.
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Service Fabric fogalmakkal kapcsolatos további információkért tekintse meg a következő cikket:
 
 [A Reliable Services életciklusa – C#](service-fabric-reliable-services-lifecycle.md)

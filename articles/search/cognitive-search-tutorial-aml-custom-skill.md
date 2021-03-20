@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.openlocfilehash: 98d8395236bf955eed88f36c03c96981fa0e4b6b
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98745634"
 ---
 # <a name="example-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Példa: egyéni képesség létrehozása és üzembe helyezése Azure Machine Learning 
@@ -41,7 +41,7 @@ Két adatkészlet van megadva. Ha saját maga szeretné betanítani a modellt, a
 * [Azure Storage-fiók](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [Azure Machine Learning-munkaterület](../machine-learning/how-to-manage-workspace.md)
 
-## <a name="setup"></a>Telepítés
+## <a name="setup"></a>Beállítás
 
 * A [minta tárház](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/AzureML-Custom-Skill)tartalmának klónozása vagy letöltése.
 * Tartalom kinyerése, ha a letöltés zip-fájl. Győződjön meg arról, hogy a fájlok írhatók és írhatók.
@@ -104,7 +104,7 @@ A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscso
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Az egyéni ügyességi webes API áttekintése](./cognitive-search-custom-skill-web-api.md) 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mbullwin
 ms.openlocfilehash: bcedef4a1339dacaff3fe841e97f985c42320819
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92043153"
 ---
 # <a name="how-to-build-a-metrics-graph-to-analyze-related-metrics"></a>Útmutató: mérőszámok gráfjának létrehozása a kapcsolódó metrikák elemzéséhez
@@ -33,9 +33,9 @@ Kattintson a **mérőszámok gráf** fülére a navigációs sávon. A mérősz�
 
 Ezután hozzá kell adnia egy másik csomópontot, és meg kell adnia egy kapcsolatot egy meglévő csomópont (ok) hoz. Válasszon ki egy meglévő csomópontot, és kattintson rá a jobb gombbal. A helyi menü több lehetőséggel is megjelenhet. 
 
-Kattintson a **kapcsolat hozzáadása**lehetőségre, és választhat egy másik metrikát, és megadhatja a két csomópont közötti kapcsolat típusát. Adott dimenzió-szűrőket is alkalmazhat. 
+Kattintson a **kapcsolat hozzáadása** lehetőségre, és választhat egy másik metrikát, és megadhatja a két csomópont közötti kapcsolat típusát. Adott dimenzió-szűrőket is alkalmazhat. 
 
-:::image type="content" source="../media/graph/metrics-graph-node-action.png" alt-text="Metrika kiválasztása":::
+:::image type="content" source="../media/graph/metrics-graph-node-action.png" alt-text="Csomópont és rokon hozzáadása":::
 
 A fenti lépések megismétlése után az összes kapcsolódó metrika közötti kapcsolatokat leíró metrikai diagramot fog tartalmazni.
 **Tipp a csomópontok színeit**
@@ -48,9 +48,9 @@ A fenti lépések megismétlése után az összes kapcsolódó metrika közötti
 
 A metrikák gráfjának létrehozásakor a diagramon belüli mérőszámokon észlelt rendellenességek észlelése esetén megtekintheti a kapcsolódó anomáliák állapotát, és magas szintű nézetet kaphat az incidensről. 
 
-Kattintson egy incidensre a gráfon belül, majd görgessen le a **több mérőszám elemzése**alá a diagnosztikai adatok alatt.
+Kattintson egy incidensre a gráfon belül, majd görgessen le a **több mérőszám elemzése** alá a diagnosztikai adatok alatt.
 
-:::image type="content" source="../media/graph/metrics-graph-cross-metrics-analysis.png" alt-text="Metrika kiválasztása":::
+:::image type="content" source="../media/graph/metrics-graph-cross-metrics-analysis.png" alt-text="Kapcsolódó mérőszámok és rendellenességek megtekintése":::
 
 ## <a name="next-steps"></a>Következő lépések
 
