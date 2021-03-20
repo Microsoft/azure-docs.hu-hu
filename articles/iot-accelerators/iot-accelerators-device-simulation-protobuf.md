@@ -10,10 +10,10 @@ ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
 ms.openlocfilehash: 77a795b8f704084b612a2dcbd364b8d5be0a3333
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96852150"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Telemetria szerializálása protokoll-pufferek használatával
@@ -180,7 +180,7 @@ Ha egy **proto** -fájllal rendelkezik, a következő lépés az üzenetek olvas
     protoc -I c:\temp\device-simulation-dotnet-master\Services\Models\Protobuf\proto --csharp_out=C:\temp\device-simulation-dotnet-master\Services\Models\Protobuf assettracker.proto
     ```
 
-    Ez a parancs létrehoz egy **Assettracker.cs** -fájlt a **Services\Models\Protobuf** mappában.
+    Ez a parancs létrehoz egy **Assettracker. cs** fájlt a **Services\Models\Protobuf** mappában.
 
 ## <a name="test-protobuf-locally"></a>Protopuf helyi tesztelése
 

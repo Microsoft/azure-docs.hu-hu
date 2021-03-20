@@ -12,10 +12,10 @@ ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
 ms.openlocfilehash: 72b1d4fe864c23c0ac065e47d96ab0c78866defa
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96435841"
 ---
 # <a name="tutorial-access-azure-storage-from-a-web-app"></a>Oktatóanyag: az Azure Storage elérése egy webalkalmazásból
@@ -88,7 +88,7 @@ Az alábbi lépéseket követve hozzon létre egy általános célú v2-es Stora
 
 1. A tárfiók beállításainak áttekintéséhez és a fiók létrehozásához válassza a **Felülvizsgálat + létrehozás** elemet.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 Ha Blob Storage tárolót szeretne létrehozni az Azure Storage-ban, kövesse az alábbi lépéseket.
 

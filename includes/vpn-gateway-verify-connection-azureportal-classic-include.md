@@ -9,10 +9,10 @@ ms.date: 10/19/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: a0694003e2eb5005186f5c7ad450533437955d82
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92217952"
 ---
 Az Azure Portalon a kapcsolatra lépve tekintheti meg a klasszikus virtuális hálózat VPN-átjárójának kapcsolati állapotát. Az alábbi lépések a kapcsolat megkeresését és ellenőrzését mutatják be.
@@ -21,7 +21,7 @@ Az Azure Portalon a kapcsolatra lépve tekintheti meg a klasszikus virtuális h�
 1. A virtuális hálózat lapon válassza ki a megtekinteni kívánt kapcsolódási típust. Például **helyek közötti kapcsolatok**.
 
    :::image type="content" source="./media/vpn-gateway-verify-connection-azureportal-classic/site-to-site.png" alt-text="Helyi webhely" lightbox="./media/vpn-gateway-verify-connection-azureportal-classic/site-to-site.png":::
-1. A **helyek közötti kapcsolatok** oldalon, a **név**területen válassza ki a megtekinteni kívánt hely kapcsolatát.
+1. A **helyek közötti kapcsolatok** oldalon, a **név** területen válassza ki a megtekinteni kívánt hely kapcsolatát.
 
-   :::image type="content" source="./media/vpn-gateway-verify-connection-azureportal-classic/name.png" alt-text="Helyi webhely":::
+   :::image type="content" source="./media/vpn-gateway-verify-connection-azureportal-classic/name.png" alt-text="Helyi hely neve":::
 1. A **Tulajdonságok** lapon tekintse meg a kapcsolatban található adatokat.

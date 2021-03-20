@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: chrande
 ms.openlocfilehash: de39aee73a6f4b422af4524d3302f8858f8b060b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101692232"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>Az Azure Cosmos DB API-MongoDB kapcsolatos gyakori problémák elhárítása
@@ -27,14 +27,14 @@ A következő cikk a MongoDB-hez készült Azure Cosmos DB API-val történő ü
 | Code       | Hiba                | Leírás  | Megoldás  |
 |------------|----------------------|--------------|-----------|
 | 2 | BadValue | Ennek az egyik gyakori oka, hogy megadott rendezési elemnek megfelelő index elérési útja ki van zárva, illetve a rendezett lekérdezés nem rendelkezik a végrehajtásához szükséges megfelelő összetett indexszel. A lekérdezés nem indexelt mezőre kér rendezést. | Hozzon létre egy egyeztetési indexet (vagy összetett indexet) a futtatni próbált rendezett lekérdezéshez. |
-| 2 | A tranzakció nem aktív | A többdokumentumos tranzakció túllépte a rögzített 5 másodperces korlátot. | Próbálja megismételni a többdokumentumos tranzakciót, vagy korlátozza a műveletek hatókörét a többdokumentumos tranzakción belül, hogy az 5 másodperces korláton belül befejeződjön. |
+| 2 | A tranzakció nem aktív | A többdokumentumos tranzakció átlépte a rögzített 5 másodperces időkorlátot. | Próbálkozzon újra a többdokumentumos tranzakcióval, vagy korlátozza a többdokumentumos tranzakció során végrehajtott műveletek hatókörét annak érdekében, hogy a tranzakció befejeződjön az 5 másodperces időkorláton belül. |
 | 13 | Nem engedélyezett | A kérelem nem rendelkezik a végrehajtáshoz szükséges engedélyekkel. | Ellenőrizze, hogy a megfelelő kulcsokat használja-e.  |
 | 26 | NamespaceNotFound | A lekérdezésben hivatkozott adatbázis vagy gyűjtemény nem található. | Győződjön meg arról, hogy az adatbázis vagy a gyűjtemény neve pontosan megegyezik a lekérdezésben szereplő névvel.|
 | 50 | ExceededTimeLimit | A kérés túllépte a 60 másodperces végrehajtási időkorlátot. |  Ennek a hibának számos oka lehet. Ennek egyik oka az lehet, hogy az aktuális lefoglalt kérelemegységek kapacitása nem elegendő a kérelem teljesítéséhez. Erre az adott gyűjtemény vagy adatbázis kérelemegységeinek növelése nyújthat megoldást. Egyéb esetekben ez a hiba a nagy méretű kérelmek kisebbekre bontásával kerülhető meg. Az ezt a hibát kiváltó írási művelet újrapróbálása ismételt írást eredményezhet. <br><br>Ha nagy mennyiségű adatot szeretne törölni anélkül, hogy az hatással lenne a kérelemegységek számára: <br>– Fontolja meg az (időbélyeg-alapú) TTL használatát: [Adatok lejárttá tétele a MongoDB-hez készült Azure Cosmos DB API-val](mongodb-time-to-live.md) <br>– A törléshez használja a kurzor-/kötegméret beállítását. Egyesével hívhatja le a dokumentumokat, és egy-egy ciklusban törölheti azokat. Ez segít az adatok lassú törlésének végrehajtásában, az éles alkalmazás befolyásolása nélkül.|
 | 61 | ShardKeyNotFound | A kérelemben szereplő dokumentum nem tartalmazza a gyűjtemény szegmenskulcsát (az Azure Cosmos DB-partíciókulcsot). | Gondoskodjon arról, hogy a gyűjtemény szegmenskulcsa szerepeljen a kérelemben.|
 | 66 | ImmutableField | A kérelem egy nem módosítható mezőt próbál meg módosítani | a "_id" mezők nem változtathatók meg. Győződjön meg arról, hogy a kérelem nem próbálja meg módosítani ezeket a mezőket vagy a szegmenskulcs mezőjét. |
 | 67 | CannotCreateIndex | Az index létrehozására irányuló kérelmet nem lehet végrehajtani. | Legfeljebb 500 egymezős index hozható létre egy tárolóban. Egy összetett indexben legfeljebb nyolc mező szerepelhet (az összetett indexek támogatása a 3.6-os verziótól kezdve érhető el). |
-| 112 | WriteConflict | A többdokumentumos tranzakció nem sikerült egy ütköző többdokumentumos tranzakció miatt | Ismételje meg a többdokumentumos tranzakciót egészen addig, amíg a művelet be nem fejeződik. |
+| 112 | WriteConflict | A többdokumentumos tranzakció meghiúsult egy vele ütköző többdokumentumos tranzakció miatt | Próbálkozzon újra a többdokumentumos tranzakcióval, amíg sikerrel nem jár. |
 | 115 | CommandNotSupported | A megkísérelt kérelem nem támogatott. | A hibaüzenet további részleteket tartalmaz. Ha ez a funkció fontos az üzemelő példányok számára, hozzon létre egy támogatási jegyet a [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , és a Azure Cosmos db csapata visszakerül Önnek. |
 | 11000 | DuplicateKey | A beszúrt dokumentum szegmenskulcsa (Azure Cosmos DB-partíciókulcsa) már megtalálható a gyűjteményben, vagy meg lett sértve egy indexmezőre vonatkozó egyéni korlátozás. | A meglévő dokumentumokat az update() függvénnyel frissítheti. Ha az indexmezőre vonatkozó egyéni korlátozás meg lett sértve, szúrjon be a dokumentumba egy olyan mezőértéket, vagy frissítse egy olyan mezőértékkel, amely még nem található meg a szegmensben/partícióban. Másik lehetőségként használhat olyan mezőt, amely az azonosító és a szegmenskulcs mező kombinációját tartalmazza. |
 | 16500 | TooManyRequests  | A felhasznált kérelemegységek teljes száma nagyobb, mint a gyűjteményhez kiosztott kérelemegységek száma, ezért szabályozva lett. | Érdemes lehet skálázni az adott tárolóhoz vagy tárolókészlethez megadott átviteli sebességet az Azure portálon, vagy újból elvégezni a műveletet. Ha engedélyezi a SSR-t (kiszolgálóoldali újrapróbálkozást), az Azure Cosmos DB automatikusan újrapróbálkozik a hiba miatt meghiúsult kérelmek végrehajtásával. |

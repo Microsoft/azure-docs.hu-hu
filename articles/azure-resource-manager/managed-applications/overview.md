@@ -6,10 +6,10 @@ ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
 ms.openlocfilehash: 65b8c21251f092311150a50480f5abecb1ad7c17
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96434566"
 ---
 # <a name="azure-managed-applications-overview"></a>Az Azure Managed Applications áttekintése
@@ -45,7 +45,7 @@ A szolgáltatáskatalógus egy belső katalógus azokról a megoldásokról, ame
 
 A szolgáltatáskatalógusban elérhető felügyelt alkalmazások közzétételével kapcsolatban lásd a [szolgáltatáskatalógusban elérhető alkalmazások létrehozását](publish-service-catalog-app.md) ismertető témakört.
 
-### <a name="marketplace"></a>Marketplace
+### <a name="marketplace"></a>Piactér
 
 A szolgáltatásaikat értékesíteni kívánó szállítók a felügyelt alkalmazásokat elérhetővé tehetik az Azure Marketplace-en. Miután a szállító közzétesz egy alkalmazást, az elérhetővé válik a vállalaton kívüli felhasználók számára. Ezzel a módszerrel a felügyelt szolgáltatások szolgáltatói (MSP-k), a független szoftverszállítók (ISV-k) és a rendszerintegrátorok (SI-k) minden Azure-ügyfél számára felkínálhatják a megoldásaikat.
 
@@ -79,7 +79,7 @@ Ha az ügyfél törli a felügyelt alkalmazást, az erőforráscsoport is törl�
 
 A felügyelt alkalmazások naplózásához [Azure Policy](../../governance/policy/overview.md) is alkalmazhat. A szabályzat-definíciók alkalmazásával gondoskodhat arról, hogy a felügyelt alkalmazás telepített példányai megfeleljenek az adat-és biztonsági követelményeknek. Ha az alkalmazás bizalmas adatokkal lép interakcióba, mindenképpen értékelje ki, hogyan kell védeni az adatokat. Ha például az alkalmazás a Microsoft 365ból származó adatokkal kommunikál, alkalmazza a házirend-definíciót, hogy az adatok titkosítása engedélyezve legyen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megismerkedett a felügyelt alkalmazások használatának előnyeivel. A következő cikkben egy felügyelt alkalmazás definícióját hozza létre.
 

@@ -14,10 +14,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/28/2020
 ms.openlocfilehash: 60977b9388af3a93d0ebbbc6aad50628b79e0e44
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91598269"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Gyors útmutató: Azure SQL Database vagy Azure SQL felügyelt példányhoz való kapcsolódás és lekérdezés a SSMS használatával
@@ -89,7 +89,7 @@ A SSMS-ben kapcsolódjon a kiszolgálóhoz.
 > [!NOTE]
 > Ez az oktatóanyag SQL Server hitelesítést használ.
 
-3. A **Kapcsolódás a kiszolgálóhoz** párbeszédpanelen válassza a **Beállítások lehetőséget** . A **Kapcsolódás az adatbázishoz** legördülő menüben válassza a **mySampleDatabase**lehetőséget. Az [Előfeltételek szakaszban](#prerequisites) a rövid útmutató elvégzésével létrehoz egy MySampleDatabase nevű AdventureWorksLT-adatbázist. Ha a AdventureWorks-adatbázis munkapéldánya eltérő névvel rendelkezik, mint a mySampleDatabase, válassza ki helyette.
+3. A **Kapcsolódás a kiszolgálóhoz** párbeszédpanelen válassza a **Beállítások lehetőséget** . A **Kapcsolódás az adatbázishoz** legördülő menüben válassza a **mySampleDatabase** lehetőséget. Az [Előfeltételek szakaszban](#prerequisites) a rövid útmutató elvégzésével létrehoz egy MySampleDatabase nevű AdventureWorksLT-adatbázist. Ha a AdventureWorks-adatbázis munkapéldánya eltérő névvel rendelkezik, mint a mySampleDatabase, válassza ki helyette.
 
    ![csatlakozás kiszolgálón található adatbázishoz](./media/connect-query-ssms/options-connect-to-db.png)  
 
@@ -103,7 +103,7 @@ A SSMS-ben kapcsolódjon a kiszolgálóhoz.
 
 Futtassa ezt a [Select](/sql/t-sql/queries/select-transact-sql/) Transact-SQL-kódot az első 20 termék kategóriánkénti lekérdezéséhez.
 
-1. A Object Explorer kattintson a jobb gombbal a **mySampleDatabase** elemre, és válassza az **Új lekérdezés**elemet. Megnyílik az adatbázishoz csatlakoztatott új lekérdezési ablak.
+1. A Object Explorer kattintson a jobb gombbal a **mySampleDatabase** elemre, és válassza az **Új lekérdezés** elemet. Megnyílik az adatbázishoz csatlakoztatott új lekérdezési ablak.
 
 2. A lekérdezési ablakban illessze be a következő SQL-lekérdezést:
 
@@ -185,7 +185,7 @@ Futtassa ezt a [delete](/sql/t-sql/statements/delete-transact-sql/) Transact-SQL
 
 2. Válassza a **végrehajtás** lehetőséget a tábla megadott sorának törléséhez `Product` . Megjelenik az **üzenetek** ablaktábla **(1 sor érintett)**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a SSMS: [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms/).
 - A Azure Portal használatával történő kapcsolódáshoz és lekérdezéshez lásd: [Kapcsolódás és lekérdezés a Azure Portal SQL-lekérdezés szerkesztőjével](connect-query-portal.md).

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: 9184bf7baa85420e067edb4c0aafccb7e6711225
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86512180"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Az Azure Firewall szabályfeldolgozási logikája
@@ -30,8 +30,8 @@ A bejövő kapcsolat engedélyezhető a célként megadott hálózati címfordí
 
 A szülő házirendből örökölt hálózati szabályok gyűjteményeit mindig rangsorolja a rendszer az új szabályzat részeként definiált hálózati szabályok gyűjteményei felett. Ugyanez a logika vonatkozik az alkalmazási szabályok gyűjteményére is. A hálózati szabályok gyűjteményeit azonban a rendszer mindig feldolgozza az alkalmazási szabályok gyűjtése előtt, az örökléstől függetlenül.
 
-Alapértelmezés szerint a házirend örökli a szülő házirend fenyegetésének intelligencia üzemmódját. Ezt felülbírálhatja úgy, hogy a fenyegetési intelligencia módot egy másik értékre állítja be a házirend-beállítások lapon. Csak szigorúbb értékkel lehet felülbírálni. Ha például a szülői házirend *csak riasztásra*van beállítva, a helyi házirendet beállíthatja *riasztásra és megtagadásre*, de nem kapcsolhatja ki.
+Alapértelmezés szerint a házirend örökli a szülő házirend fenyegetésének intelligencia üzemmódját. Ezt felülbírálhatja úgy, hogy a fenyegetési intelligencia módot egy másik értékre állítja be a házirend-beállítások lapon. Csak szigorúbb értékkel lehet felülbírálni. Ha például a szülői házirend *csak riasztásra* van beállítva, a helyi házirendet beállíthatja *riasztásra és megtagadásre*, de nem kapcsolhatja ki.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További információ a Azure Firewall Managerről](overview.md)

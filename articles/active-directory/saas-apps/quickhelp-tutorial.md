@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 2f74314f28e4f2f7c8c084169356c8fa7992519d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515236"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>Oktatóanyag: Azure Active Directory integráció a QuickHelp
@@ -63,13 +63,13 @@ A QuickHelp Azure AD-be való integrálásának konfigurálásához hozzá kell 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **QuickHelp**kifejezést, válassza a **QuickHelp** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **QuickHelp** kifejezést, válassza a **QuickHelp** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![QuickHelp az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az QuickHelp-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az QuickHelp-mel konfigurálja és teszteli a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a QuickHelp kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés QuickHelp való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -87,7 +87,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés QuickHelp való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **QuickHelp** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **QuickHelp** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -128,23 +128,23 @@ Az Azure AD egyszeri bejelentkezés QuickHelp való konfigurálásához hajtsa v
 
 1. Jelentkezzen be a QuickHelp vállalati webhelyre rendszergazdaként.
 
-2. A felső menüben kattintson a **rendszergazda**elemre.
+2. A felső menüben kattintson a **rendszergazda** elemre.
    
     ![A képernyőképen az ötletgyűjtéshez használható felügyeleti menüelem látható.][21]
 
-3. A **QuickHelp-rendszergazda** menüben kattintson a **Beállítások**elemre.
+3. A **QuickHelp-rendszergazda** menüben kattintson a **Beállítások** elemre.
    
     ![A képernyőképen a QuickHelp felügyeleti menüjében kiválasztott beállítások láthatók.][22]
 
-4. Kattintson a **hitelesítési beállítások**elemre.
+4. Kattintson a **hitelesítési beállítások** elemre.
 
 5. A **hitelesítési beállítások** lapon végezze el a következő lépéseket
    
     ![Képernyőfelvétel: a hitelesítési beállítások oldal, ahol megadhatja a leírt értékeket.][23]
    
-    a. **SSO-típusként**válassza a **WSFederation**lehetőséget.
+    a. **SSO-típusként** válassza a **WSFederation** lehetőséget.
    
-    b. A letöltött Azure metadata-fájl feltöltéséhez kattintson a **Tallózás**gombra, navigáljon a fájlhoz, majd kattintson a **metaadatok feltöltése**elemre.
+    b. A letöltött Azure metadata-fájl feltöltéséhez kattintson a **Tallózás** gombra, navigáljon a fájlhoz, majd kattintson a **metaadatok feltöltése** elemre.
    
     c. Az **e-mail** szövegmezőbe írja be a következőt: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
    
@@ -152,13 +152,13 @@ Az Azure AD egyszeri bejelentkezés QuickHelp való konfigurálásához hajtsa v
    
     e. Az **utolsó név** szövegmezőben `type http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` .
    
-    f. A **műveleti sávon**kattintson a **Mentés**gombra.
+    f. A **műveleti sávon** kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -182,15 +182,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a QuickHelp hozzáférésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **QuickHelp**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **QuickHelp** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **QuickHelp**lehetőséget.
+2. Az alkalmazások listában válassza a **QuickHelp** lehetőséget.
 
     ![Az QuickHelp hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 

@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q2
 ms.openlocfilehash: 7ec309f016e73642262399bd75e7b5146bc5e497
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98752784"
 ---
 # <a name="application-types-for-the-microsoft-identity-platform"></a>A Microsoft Identity platform alkalmazási típusai
@@ -130,6 +130,6 @@ Ebben a folyamatban az alkalmazás közvetlenül a `/token` végpontot használj
 
 Daemon-alkalmazás létrehozásához tekintse meg az [ügyfél hitelesítő adatait tartalmazó dokumentációt](v2-oauth2-client-creds-grant-flow.md), vagy próbálkozzon egy [.net-minta alkalmazással](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már ismeri a Microsoft Identity platform által támogatott típusú alkalmazásokat, ismerkedjen meg a [OAuth 2,0 és az OpenID Connecttel](active-directory-v2-protocols.md) , hogy megértse a különböző forgatókönyvekben használt protokoll-összetevőket.

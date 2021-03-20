@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 11/10/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 58e7c024d6494aee745884997e42b527c51ab237
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94489539"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>Kiszolgáló paramétereinek konfigurálása Azure Database for MySQL rugalmas kiszolgálón az Azure CLI használatával
@@ -51,7 +51,7 @@ az mysql flexible-server parameter show --name slow_query_log --resource-group m
 ## <a name="modify-a-server-parameter-value"></a>Kiszolgáló paraméter értékének módosítása
 Egy bizonyos kiszolgálói paraméter értékét is módosíthatja, amely frissíti a MySQL-kiszolgáló motorjának alapjául szolgáló konfigurációs értéket. A Server paraméter frissítéséhez használja az az [MySQL flexibilis-Server paraméter set](/cli/azure/mysql/flexible-server/parameter) parancsot. 
 
-A kiszolgáló mydemoserver.mysql.database.azure.com **lassú \_ lekérdezési \_ napló** kiszolgáló paraméterének **mydemoserver.mysql.database.azure.com** frissítése a myresourcegroup erőforráscsoport alatt **.**
+A kiszolgáló mydemoserver.mysql.database.azure.com **lassú \_ lekérdezési \_ napló** kiszolgáló paraméterének  frissítése a myresourcegroup erőforráscsoport alatt **.**
 ```azurecli-interactive
 az mysql flexible-server parameter set --name slow_query_log --resource-group myresourcegroup --server-name mydemoserver --value ON
 ```
@@ -115,6 +115,6 @@ SET time_zone = 'US/Pacific';
 Tekintse meg a MySQL dokumentációját a [dátum-és Időfüggvényekhez](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Kiszolgáló paramétereinek konfigurálása Azure Portal](./how-to-configure-server-parameters-portal.md)

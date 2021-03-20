@@ -15,17 +15,17 @@ ms.date: 10/09/2017
 ms.author: apimpm
 ms.custom: mvc
 ms.openlocfilehash: 531c42b763f234baaf6a93924979b8c7dca57423
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87905805"
 ---
 # <a name="azure-powershell-samples-for-api-management"></a>Azure PowerShell-minták az API Managementhez
 
 A következő táblázat olyan példaszkripteket tartalmaz, amelyekkel használhatja az API Management szolgáltatást a PowerShellből.
 
-| Kiépítés és kezelés | Leírás |
+| Kiépítés és kezelés | Description |
 | -------------------- | ----------- |
 |[Felhasználó hozzáadása](./scripts/powershell-add-user-and-get-subscription-key.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy felhasználót az API Managementben, és lekér egy előfizetői azonosítót.|
 |[APIM-szolgáltatás létrehozása](./scripts/powershell-create-apim-service.md?toc=%2fpowershell%2fmodule%2ftoc.json)|Létrehozza egy API Management-szolgáltatás fejlesztői termékváltozatát.|

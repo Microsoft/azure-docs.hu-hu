@@ -9,10 +9,10 @@ ms.date: 01/07/2021
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: cfcc515787cee2bc90a2100e84337a3c96219d8a
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98017272"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>IPsec-átviteli mód konfigurálása a ExpressRoute privát társításához
@@ -312,7 +312,7 @@ A következő hálózati rögzítés megjeleníti a helyszíni host1 és a megje
 
 Ha a helyszíni PowerShell-szkriptet (HTTP-ügyfelet) futtatja, az Azure-beli virtuális gépen lévő hálózati rögzítés hasonló nyomkövetést mutat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A ExpressRoute kapcsolatos további információkért tekintse meg a [ExpressRoute gyakori kérdések](expressroute-faqs.md)című témakört.
 

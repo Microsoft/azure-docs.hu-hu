@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: storage
 author: roygara
 ms.service: storage
@@ -9,10 +9,10 @@ ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: b7c097306ba46d4f0024aecc55994508e2d8a090
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96011720"
 ---
 Az Azure-fájlmegosztás adatainak adatvesztéssel vagy sérüléssel szembeni védelme érdekében az összes Azure-fájlmegosztás több példányt is tárol az egyes fájlokról az írásuk során. A számítási feladatok követelményeitől függően kiválaszthatja a redundancia további mértékeit is. A Azure Files jelenleg a következő adatredundancia-beállításokat támogatja:

@@ -16,10 +16,10 @@ ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 33626b7aee615d07ef88dd9fbca46e6512e2cafc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90090363"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs Rich push
@@ -45,8 +45,8 @@ Magas szinten:
 
 1. A Visual Studióban nyissa meg a [felhasználók értesítése](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) oktatóanyagban létrehozott **AppBackend** projektet.
 2. Szerezze be azt a rendszerképet, amelyet a felhasználók értesítésére szeretne küldeni, majd a projekt könyvtára egy **IMG** mappájába helyezi.
-3. Kattintson a Megoldáskezelő **összes fájl megjelenítése** elemre, majd kattintson a jobb gombbal a **projektbe felvenni**kívánt mappára.
-4. Ha a rendszerkép be van jelölve, a **Tulajdonságok** ablakban módosítsa a **kiépítési műveletet** a **beágyazott erőforrás**elemre.
+3. Kattintson a Megoldáskezelő **összes fájl megjelenítése** elemre, majd kattintson a jobb gombbal a **projektbe felvenni** kívánt mappára.
+4. Ha a rendszerkép be van jelölve, a **Tulajdonságok** ablakban módosítsa a **kiépítési műveletet** a **beágyazott erőforrás** elemre.
 
     ![Képernyőkép a Megoldáskezelőról. A képfájl ki van választva, és a tulajdonságok ablaktáblájában a beágyazott erőforrás a Build műveletként jelenik meg.][IOS2]
 5. A alkalmazásban `Notifications.cs` adja hozzá a következő `using` utasítást:
@@ -135,14 +135,14 @@ Magas szinten:
     ```
 
 8. Most telepítse újra az alkalmazást egy Azure-webhelyre, hogy az minden eszközről elérhető legyen. Kattintson jobb gombbal az **AppBackend** projektre, és válassza a **Publish** (Közzététel) lehetőséget.
-9. A közzétételi célként válassza az **Azure-webhely** lehetőséget. Jelentkezzen be az Azure-fiókjával, és válasszon ki egy meglévő vagy új webhelyet, és jegyezze fel a **cél URL** -tulajdonságot a **kapcsolatok** lapon. Ebben az oktatóanyagban a *háttérbeli végpontként* erre az URL-címre fogunk hivatkozni. Kattintson a **Publish** (Közzététel) elemre.
+9. A közzétételi célként válassza az **Azure-webhely** lehetőséget. Jelentkezzen be az Azure-fiókjával, és válasszon ki egy meglévő vagy új webhelyet, és jegyezze fel a **cél URL** -tulajdonságot a **kapcsolatok** lapon. Ebben az oktatóanyagban a *háttérbeli végpontként* erre az URL-címre fogunk hivatkozni. Válassza a **Közzététel** lehetőséget.
 
 ## <a name="modify-the-ios-project"></a>Az iOS-projekt módosítása
 
 Most, hogy módosította az alkalmazás-hátteret, hogy csak az értesítés *azonosítóját* küldje el, módosítsa az iOS-alkalmazást az azonosító kezelésére, és olvassa be a részletes üzenetet a háttérből:
 
 1. Nyissa meg az iOS-projektet, és engedélyezze a távoli értesítéseket a **célok** szakaszának fő alkalmazási céljával.
-2. Válassza a **képességek**, a **háttér mód**engedélyezése lehetőséget, és jelölje be a **távoli értesítések** jelölőnégyzetet.
+2. Válassza a **képességek**, a **háttér mód** engedélyezése lehetőséget, és jelölje be a **távoli értesítések** jelölőnégyzetet.
 
     ![Képernyőfelvétel a képességek képernyőt bemutató iOS-projektről. A háttérben lévő üzemmód be van kapcsolva, és a távoli értesítések jelölőnégyzet be van jelölve.][IOS3]
 3. Nyissa meg `Main.storyboard` , és ellenőrizze, hogy rendelkezik-e a [felhasználó értesítése](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) című oktatóanyagban, és győződjön meg róla, hogy rendelkezik-e a megtekintés vezérlővel (ez az oktatóanyag a Kezdőlap nézet
@@ -378,8 +378,8 @@ Most, hogy módosította az alkalmazás-hátteret, hogy csak az értesítés *az
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 1. A XCode-ben futtassa az alkalmazást egy fizikai iOS-eszközön (a leküldéses értesítések nem fognak működni a szimulátorban).
-2. Az iOS-alkalmazás felhasználói felületén adja meg a hitelesítéshez tartozó felhasználónevet és jelszót, majd kattintson a **Bejelentkezés**elemre.
-3. Kattintson a **leküldéses küldés** lehetőségre, és megjelenik az alkalmazáson belüli riasztás. Ha a **további**gombra kattint, a rendszer az alkalmazás-háttérbe felvenni kívánt képet fogja elhelyezni.
+2. Az iOS-alkalmazás felhasználói felületén adja meg a hitelesítéshez tartozó felhasználónevet és jelszót, majd kattintson a **Bejelentkezés** elemre.
+3. Kattintson a **leküldéses küldés** lehetőségre, és megjelenik az alkalmazáson belüli riasztás. Ha a **további** gombra kattint, a rendszer az alkalmazás-háttérbe felvenni kívánt képet fogja elhelyezni.
 4. Kattintson a **leküldés küldése** gombra, és azonnal nyomja meg az eszköz Home (Kezdőlap) gombját. Néhány pillanat múlva leküldéses értesítést fog kapni. Ha rákoppint, vagy kattintson a továbbiak lehetőségre, a rendszer az alkalmazást és a gazdag képtartalmat fogja megtekinteni.
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-1.png

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: nipavlo
 ms.openlocfilehash: 7f571a851e4da147240c524b742bcd652bc54181
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82183116"
 ---
 # <a name="balancing-of-subclustered-metrics"></a>Alfürtözött mérőszámok kiegyensúlyozása
@@ -132,7 +132,7 @@ ClusterManifest.xml:
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ha szeretné megtudni, hogy a fürterőforrás-kezelő hogyan kezeli és kiegyenlíti a fürt terhelését, tekintse meg a [terhelés kiegyensúlyozásáról](service-fabric-cluster-resource-manager-balancing.md) szóló cikket.
 * Ha szeretné megtudni, hogyan korlátozhatja a szolgáltatásait, hogy csak bizonyos csomópontokon legyenek elhelyezve, lásd: [csomópont-tulajdonságok és elhelyezési megkötések](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)
 

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
 ms.openlocfilehash: d7c4f1853ff8dcb9249ab6ec4f536e1f8cfa10e5
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98018224"
 ---
 # <a name="sample-queries-with-new-fields-in-the-traffic-analytics-schema-august-2019-schema-update"></a>A Traffic Analytics sémában új mezőket tartalmazó lekérdezések (a séma frissítése augusztus 2019)
@@ -120,7 +120,7 @@ A következő feltételek szemléltetése:
 
 A feltételektől függően tudjuk, hogy a négy mező egyike lesz kitöltve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha választ szeretne kapni a gyakori kérdésekre, tekintse meg a [Traffic Analytics gyakori](traffic-analytics-faq.md)kérdések című témakört.
 - A funkciók részletes ismertetését itt találja: [Traffic Analytics dokumentáció](traffic-analytics.md).

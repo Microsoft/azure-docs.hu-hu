@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
 ms.openlocfilehash: 2b7ddf6423db4c471ee2065635f4e3e89f7eb7b2
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98745733"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Az MPIO konfigurálása a CentOS-t futtató StorSimple-gazdagépen
@@ -443,7 +443,7 @@ További információ: [Hibaelhárítás a többutas eléréshez](https://access
 | &nbsp; |`mpathconf --enable` |Hozzon létre egy minta mulitpath. conf fájlt a `/etc/mulitpath.conf` |
 |  | | |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az MPIO Linux-gazdagépen való konfigurálásakor előfordulhat, hogy a következő CentoS 6,6-dokumentumokra is szüksége lesz:
 
 * [Az MPIO beállítása a CentOS-ben](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/index)

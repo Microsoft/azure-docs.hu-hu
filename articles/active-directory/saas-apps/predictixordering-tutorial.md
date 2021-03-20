@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: f48f7cf9507afae31e3c36aef517aab7b7d77ccf
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515372"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-ordering"></a>Oktatóanyag: Azure Active Directory integráció a Predictix-rendezéssel
@@ -60,7 +60,7 @@ A Predictix az Azure AD-be való beépítésének beállításához hozzá kell 
 
     ![Új alkalmazás kiválasztása](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Predictix rendezése**kifejezést. A keresési eredmények között válassza a **Predictix rendezése** lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
+4. A keresőmezőbe írja be a **Predictix rendezése** kifejezést. A keresési eredmények között válassza a **Predictix rendezése** lehetőséget, majd válassza a **Hozzáadás** lehetőséget.
 
      ![Keresési eredmények](common/search-new-app.png)
 
@@ -84,7 +84,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést fogja engedélyezni a Az
 
 Az Azure AD egyszeri bejelentkezés Predictix rendeléssel való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **Predictix megrendelése** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget:
+1. A [Azure Portal](https://portal.azure.com/)a **Predictix megrendelése** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés** lehetőséget:
 
     ![Egyszeri bejelentkezés kiválasztása](common/select-sso.png)
 
@@ -136,7 +136,7 @@ Ha az egyszeri bejelentkezést a Predictix rendezési oldalon szeretné konfigur
 
 Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azure Portal.
 
-1. A Azure Portal a bal oldali ablaktáblán válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**lehetőséget, majd válassza a **minden felhasználó**lehetőséget:
+1. A Azure Portal a bal oldali ablaktáblán válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** lehetőséget, majd válassza a **minden felhasználó** lehetőséget:
 
     ![Válassza a Minden felhasználó lehetőséget](common/users.png)
 
@@ -150,29 +150,29 @@ Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azur
 
     1. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    1. A **Felhasználónév** mezőbe írja be a **BrittaSimon@ \<yourcompanydomain> . \<extension> **. (Például: BrittaSimon@contoso.com .)
+    1. A **Felhasználónév** mezőbe írja be a **BrittaSimon@ \<yourcompanydomain> . \<extension>**. (Például: BrittaSimon@contoso.com .)
 
-    1. Válassza a **jelszó megjelenítése**lehetőséget, majd írja le a **jelszó** mezőben található értéket.
+    1. Válassza a **jelszó megjelenítése** lehetőséget, majd írja le a **jelszó** mezőben található értéket.
 
-    1. Kattintson a **Létrehozás** gombra.
+    1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure AD egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a Predictix rendezéséhez.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Predictix rendezése**lehetőséget:
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **Predictix rendezése** lehetőséget:
 
     ![Vállalati alkalmazások](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában válassza a **Predictix rendezése**elemet.
+2. Az alkalmazások listájában válassza a **Predictix rendezése** elemet.
 
     ![Alkalmazások listája](common/all-applications.png)
 
-3. A bal oldali ablaktáblán válassza a **felhasználók és csoportok**lehetőséget:
+3. A bal oldali ablaktáblán válassza a **felhasználók és csoportok** lehetőséget:
 
     ![Felhasználók és csoportok kiválasztása](common/users-groups-blade.png)
 
-4. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+4. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![Felhasználó hozzáadása kiválasztása](common/add-assign-user.png)
 
@@ -180,7 +180,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure AD eg
 
 6. Ha az SAML-állításban a szerepkör értéke várható, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából. Kattintson a képernyő alján található **kiválasztás** gombra.
 
-7. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés**lehetőséget.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés** lehetőséget.
 
 ### <a name="create-a-predictix-ordering-test-user"></a>Predictix megrendelés tesztelési felhasználó létrehozása
 

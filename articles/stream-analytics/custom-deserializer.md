@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/17/2020
 ms.openlocfilehash: 6db65d85b5d5d72e7b4764949abcffed004cae85
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98018207"
 ---
 # <a name="tutorial-custom-net-deserializers-for-azure-stream-analytics"></a>Oktatóanyag: egyéni .NET-deszerializálók a Azure Stream Analytics
@@ -85,7 +85,7 @@ Az Ön által létrehozott tároló a Stream Analytics feladathoz kapcsolódó e
    |Erőforrás|Betöltés az ASA-projekt referenciájának vagy CodeBehind|
    |CSharp szerelvény neve|ProtobufDeserializer.dll|
    |Osztály neve|MessageBodyProto.MessageBodyDeserializer|
-   |Esemény tömörítési típusa|Nincs|
+   |Esemény tömörítési típusa|Nincsenek|
 
 3. Adja hozzá a következő lekérdezést a **script. asaql** fájlhoz.
 
@@ -97,7 +97,7 @@ Az Ön által létrehozott tároló a Stream Analytics feladathoz kapcsolódó e
 
    |Beállítás|Ajánlott érték|
    |-------|---------------|
-   |Input Alias (Bemeneti alias)|Input (Bemenet)|
+   |Input Alias (Bemeneti alias)|Bevitel|
    |Source Type (Forrás típusa)|Data Stream (Adatstream)|
    |Esemény szerializálási formátuma|Egyéb (Protopuf, XML, tulajdonosi...)|
    |CSharp szerelvény neve|ProtobufDeserializer.dll|
@@ -130,7 +130,7 @@ Ha már nincs szükség rá, törölheti az erőforráscsoportot, a folyamatos �
 
 2. Az erőforráscsoport lapján válassza a **Törlés** elemet, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan implementálhat egy egyéni .net deszerializáló a protokoll pufferének bemeneti szerializálásához. Ha többet szeretne megtudni az egyéni deszerializálók létrehozásáról, folytassa a következő cikkel:
 

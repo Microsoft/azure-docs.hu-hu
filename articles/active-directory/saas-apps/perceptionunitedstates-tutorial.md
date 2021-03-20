@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 3fc16a869c176074467a0b21880937d7753602b2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515525"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Oktatóanyag: Azure Active Directory integráció az észlelési Egyesült Államok (nem UltiPro)
@@ -67,7 +67,7 @@ Az észlelési Egyesült Államok (nem UltiPro) Azure AD-ba való integrálásá
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést úgy konfigurálja és teszteli, hogy az észlelési Egyesült Államok (nem UltiPro) egy **Britta Simon**nevű teszt felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést úgy konfigurálja és teszteli, hogy az észlelési Egyesült Államok (nem UltiPro) egy **Britta Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és az észlelési Egyesült Államok (nem UltiPro) közötti kapcsolati kapcsolat létrehozása szükséges.
 
 Az Azure AD egyszeri bejelentkezés és az észlelési Egyesült Államok (nem UltiPro) konfigurálásához és teszteléséhez a következő építőelemeket kell elvégeznie:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés és az észlelési Egyesült Államok (nem UltiPro) konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az [Azure Portal](https://portal.azure.com/)az **észlelési Egyesült Államok (nem UltiPro)** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az [Azure Portal](https://portal.azure.com/)az **észlelési Egyesült Államok (nem UltiPro)** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -131,7 +131,7 @@ Az Azure AD egyszeri bejelentkezés és az észlelési Egyesült Államok (nem U
 
 1. Egy másik böngészőablakban jelentkezzen be az észlelési Egyesült Államok (nem UltiPro) vállalati webhelyre rendszergazdaként.
 
-2. A fő eszköztáron kattintson a **Fiókbeállítások**lehetőségre.
+2. A fő eszköztáron kattintson a **Fiókbeállítások** lehetőségre.
 
     ![A fő eszköztáron kiválasztott "Fiókbeállítások" megjelenítő képernyőkép.](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_user.png)
 
@@ -139,9 +139,9 @@ Az Azure AD egyszeri bejelentkezés és az észlelési Egyesült Államok (nem U
 
     ![Észlelési Egyesült Államok (nem UltiPro) felhasználó](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_account.png)
 
-    a. A **Vállalat neve** szövegmezőbe írja be a **vállalat**nevét.
+    a. A **Vállalat neve** szövegmezőbe írja be a **vállalat** nevét.
     
-    b. A **fiók neve** szövegmezőbe írja be a **fiók**nevét.
+    b. A **fiók neve** szövegmezőbe írja be a **fiók** nevét.
 
     c. Az **alapértelmezett Reply-To e-mail** szövegmezőbe írja be az érvényes **e-mailt**.
 
@@ -153,11 +153,11 @@ Az Azure AD egyszeri bejelentkezés és az észlelési Egyesült Államok (nem U
 
     a. Válassza ki az **SAML-NameID típust** **e-mailben**.
 
-    b. Az **SSO-konfiguráció neve** szövegmezőbe írja be a **konfiguráció**nevét.
+    b. Az **SSO-konfiguráció neve** szövegmezőbe írja be a **konfiguráció** nevét.
     
-    c. Az **identitás-szolgáltató neve** szövegmezőbe illessze be az **Azure ad-azonosító**értékét, amelyet a Azure Portalból másolt. 
+    c. Az **identitás-szolgáltató neve** szövegmezőbe illessze be az **Azure ad-azonosító** értékét, amelyet a Azure Portalból másolt. 
 
-    d. Az **SAML-tartomány szövegmezőbe**írja be a tartományt, például: @contoso.com .
+    d. Az **SAML-tartomány szövegmezőbe** írja be a tartományt, például: @contoso.com .
 
     e. Kattintson a **feltöltés** gombra a **metaadatok XML-** fájljának feltöltéséhez.
 
@@ -167,7 +167,7 @@ Az Azure AD egyszeri bejelentkezés és az észlelési Egyesült Államok (nem U
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -191,7 +191,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban az Azure-beli egyszeri bejelentkezést az észlelési Egyesült Államokhoz (nem UltiPro) való hozzáférés biztosításával engedélyezi a Britta Simon számára.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza az **észlelési Egyesült Államok (nem UltiPro)** lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza az **észlelési Egyesült Államok (nem UltiPro)** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -199,7 +199,7 @@ Ebben a szakaszban az Azure-beli egyszeri bejelentkezést az észlelési Egyesü
 
     ![Az észlelési Egyesült Államok (nem UltiPro) hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 

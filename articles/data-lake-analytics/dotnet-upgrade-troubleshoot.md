@@ -6,10 +6,10 @@ ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.date: 10/11/2019
 ms.openlocfilehash: ab03ea8a88187289f5dce55f8a396a9d51346a3f
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92217677"
 ---
 # <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>A Azure Data Lake Analytics a .NET-keretrendszer v 4.7.2 frissít
@@ -61,7 +61,7 @@ A leggyakoribb visszamenőleges inkompatibilitás, amelyet az ellenőrzés való
   - Javasolt művelet: Ellenőrizze, hogy a TaskFactory. FromAsync igaz értéket ad-e vissza.
 
 - A DataObject. GetData mostantól UTF-8-ként kérdezi le az adatfájlokat
-  - A .NET-keretrendszer 4-es verzióját vagy a .NET-keretrendszer 4.5.1-es vagy korábbi verzióit célzó alkalmazások esetében a DataObject. GetData egy ASCII-karakterláncként kéri le a HTML formátumú adatformátumot. Ennek eredményeképpen a nem ASCII karakterek (amelyek ASCII-kódjai nagyobbak, mint 0x7F) két véletlenszerű karakterből állhatnak. #N # #N # a .NET-keretrendszert 4,5-as vagy újabb verzióra irányuló, illetve a .NET-keretrendszer 4.5.2-es verziójával rendelkező alkalmazások esetében az `DataObject.GetData` UTF-8 értékkel rendelkező HTML formátumú adat lekérdezése, amely nagyobb, mint a 0x7F karakter.
+  - A .NET-keretrendszer 4-es verzióját vagy a .NET-keretrendszer 4.5.1-es vagy korábbi verzióit célzó alkalmazások esetében a DataObject. GetData egy ASCII-karakterláncként kéri le a HTML formátumú adatformátumot. Ennek eredményeképpen a nem ASCII karakterek (amelyek ASCII-kódjai nagyobbak, mint 0x7F) két véletlenszerű karakterből állnak. #N # #N#For a .NET-keretrendszer 4,5-es vagy újabb verzióját célzó alkalmazások, valamint a .NET-keretrendszer 4.5.2-es verziójának `DataObject.GetData` lekérése UTF-8 formátumban, amely a 0x7F nagyobb karaktereket jelöl.
   - Érintett kódtárak: Glo
   - Javasolt művelet: a beolvasott adatformátumot a kívánt formátumban kell megadni
 

@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: storage
 author: codemillmatt
 ms.service: storage
@@ -9,10 +9,10 @@ ms.date: 11/23/2019
 ms.author: masoucou
 ms.custom: include file
 ms.openlocfilehash: 02586d38903c60ba8982753ca0bd3e15192d5deb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83006236"
 ---
 ### <a name="copy-your-credentials-from-the-azure-portal"></a>A hitelesítési adatok másolása az Azure Portalról
@@ -28,7 +28,7 @@ Ha a minta alkalmazás az Azure Storage-ba irányuló kérést tesz elérhetőv�
 
 ### <a name="configure-your-storage-connection-string"></a>A tárolási kapcsolati sztring konfigurálása
 
-A kapcsolódási karakterlánc másolását követően állítsa azt a *MainPage.XAML.cs* -fájlban lévő Class Level változóra. Nyissa meg a *MainPaage.XAML.cs* , és keresse meg a `storageConnectionString` változót. Cserélje le a- `<yourconnectionstring>` t a tényleges kapcsolatok karakterláncára.
+A kapcsolódási karakterlánc másolása után állítsa azt egy Class Level változóra a *Főoldal. XAML. cs* fájlban. Nyissa meg a *MainPaage. XAML. cs* programot, és keresse meg a `storageConnectionString` változót. Cserélje le a- `<yourconnectionstring>` t a tényleges kapcsolatok karakterláncára.
 
 A kód a következő:
 

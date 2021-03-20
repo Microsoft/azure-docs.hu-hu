@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: tspring
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdef3e1f1a60c9eb0c751855837e9cbe77e015e9
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98572289"
 ---
 # <a name="what-is-the-sign-in-diagnostic-in-azure-ad"></a>Mi a bejelentkezési diagnosztika az Azure AD-ben?
@@ -171,7 +171,7 @@ Ebben a forgatókönyvben a bejelentkezési eseményeket a feltételes hozzáfé
 
 Ez a diagnosztikai forgatókönyv a feltételes hozzáférési házirendek vagy a többtényezős hitelesítés miatt várhatóan megszakított felhasználói bejelentkezési események részleteit tartalmazza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Mik azok az Azure Active Directory-jelentések?](overview-reports.md)
 - [Mi az Azure Active Directory-figyelés?](overview-monitoring.md)

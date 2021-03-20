@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: fd635d4c0563c35979f8d85c33dfbde35f05f9e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91400990"
 ---
 A rendelkezésre állási csoport figyelője az SQL Server rendelkezésre állási csoport által figyelt IP-cím és hálózati név. A rendelkezésre állási csoport figyelő létrehozásához tegye a következőket:
@@ -26,18 +26,18 @@ A rendelkezésre állási csoport figyelője az SQL Server rendelkezésre állá
 1. <a name="addcap"></a>Adja hozzá az ügyfél-hozzáférési pontot.  
     Az ügyfél-hozzáférési pont annak a hálózatnak a neve, amelyet az alkalmazások a rendelkezésre állási csoportban lévő adatbázisokhoz való kapcsolódáshoz használnak. Hozza létre az ügyfél-hozzáférési pontot Feladatátvevőfürt-kezelőban.
 
-    a. Bontsa ki a fürt nevét, majd kattintson a **szerepkörök**elemre.
+    a. Bontsa ki a fürt nevét, majd kattintson a **szerepkörök** elemre.
 
-    b. A **szerepkörök** ablaktáblán kattintson a jobb gombbal a rendelkezésre állási csoport nevére, majd válassza az **erőforrás**-  >  **ügyfél-hozzáférési pont**hozzáadása lehetőséget.
+    b. A **szerepkörök** ablaktáblán kattintson a jobb gombbal a rendelkezésre állási csoport nevére, majd válassza az **erőforrás**-  >  **ügyfél-hozzáférési pont** hozzáadása lehetőséget.
 
    ![Az ügyfél-hozzáférési pont menüt megjelenítő képernyőkép.](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
 
     c. A **név** mezőben hozzon létre egy nevet ehhez az új figyelőhöz. 
    Az új figyelő neve annak a hálózatnak a neve, amelyet az alkalmazások a SQL Server rendelkezésre állási csoportban lévő adatbázisokhoz való kapcsolódáshoz használnak.
 
-    d. A figyelő létrehozásának befejezéséhez kattintson kétszer a **tovább** gombra, majd kattintson a **Befejezés**gombra. Ezen a ponton ne helyezze online állapotba a figyelőt vagy az erőforrást.
+    d. A figyelő létrehozásának befejezéséhez kattintson kétszer a **tovább** gombra, majd kattintson a **Befejezés** gombra. Ezen a ponton ne helyezze online állapotba a figyelőt vagy az erőforrást.
 
-1. Állítsa offline állapotba a rendelkezésre állási csoport fürt szerepkörét. **Feladatátvevőfürt-kezelő** a **szerepkörök**területen kattintson a jobb gombbal a szerepkörre, majd válassza a **szerepkör leállítása**lehetőséget.
+1. Állítsa offline állapotba a rendelkezésre állási csoport fürt szerepkörét. **Feladatátvevőfürt-kezelő** a **szerepkörök** területen kattintson a jobb gombbal a szerepkörre, majd válassza a **szerepkör leállítása** lehetőséget.
 
 1. <a name="congroup"></a>Konfigurálja az IP-erőforrást a rendelkezésre állási csoport számára.
 
@@ -48,7 +48,7 @@ A rendelkezésre állási csoport figyelője az SQL Server rendelkezésre állá
 
     b. Kattintson a jobb gombbal az IP-erőforrásra, majd kattintson a Tulajdonságok elemre. Jegyezze fel az IP-cím nevét, és használja azt a `$IPResourceName` PowerShell-parancsfájlban található változóban.
 
-    c. Az **IP-cím**területen kattintson a **statikus IP-cím**elemre. Állítsa be az IP-címet ugyanazzal a címmel, amelyet a terheléselosztó címének a Azure Portal való beállításakor használt.
+    c. Az **IP-cím** területen kattintson a **statikus IP-cím** elemre. Állítsa be az IP-címet ugyanazzal a címmel, amelyet a terheléselosztó címének a Azure Portal való beállításakor használt.
 
    ![Képernyőkép, amely megjeleníti az IP-cím beállításának helyét.](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
 
@@ -58,9 +58,9 @@ A rendelkezésre állási csoport figyelője az SQL Server rendelkezésre állá
 
 1. <a name = "dependencyGroup"></a>Az SQL Server rendelkezésre állási csoport erőforrásának kihasználása az ügyfél-hozzáférési ponttól függ.
 
-    a. A Feladatátvevőfürt-kezelő területen kattintson a **szerepkörök**elemre, majd kattintson a rendelkezésre állási csoportra.
+    a. A Feladatátvevőfürt-kezelő területen kattintson a **szerepkörök** elemre, majd kattintson a rendelkezésre állási csoportra.
 
-    b. Az **erőforrások** lap **egyéb erőforrások**területén kattintson a jobb gombbal a rendelkezésre állási erőforráscsoport elemre, majd kattintson a **Tulajdonságok**elemre. 
+    b. Az **erőforrások** lap **egyéb erőforrások** területén kattintson a jobb gombbal a rendelkezésre állási erőforráscsoport elemre, majd kattintson a **Tulajdonságok** elemre. 
 
     c. A függőségek lapon adja meg az ügyfél-hozzáférési pont (a figyelő) erőforrásának nevét.
 
@@ -70,9 +70,9 @@ A rendelkezésre állási csoport figyelője az SQL Server rendelkezésre állá
 
 1. <a name="listname"></a>Az ügyfél-hozzáférési pont erőforrásának kihasználása az IP-címről függ.
 
-    a. A Feladatátvevőfürt-kezelő területen kattintson a **szerepkörök**elemre, majd kattintson a rendelkezésre állási csoportra. 
+    a. A Feladatátvevőfürt-kezelő területen kattintson a **szerepkörök** elemre, majd kattintson a rendelkezésre állási csoportra. 
 
-    b. Az **erőforrások** lapon kattintson a jobb gombbal az ügyfél-hozzáférési pont erőforrásra a **kiszolgáló neve**területen, majd kattintson a **Tulajdonságok**elemre. 
+    b. Az **erőforrások** lapon kattintson a jobb gombbal az ügyfél-hozzáférési pont erőforrásra a **kiszolgáló neve** területen, majd kattintson a **Tulajdonságok** elemre. 
 
    ![A kiszolgáló nevéhez tartozó Tulajdonságok menüpontot megjelenítő képernyőkép.](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
 
@@ -81,7 +81,7 @@ A rendelkezésre állási csoport figyelője az SQL Server rendelkezésre állá
    ![IP-erőforrás](./media/virtual-machines-ag-listener-configure/98-propertiesdependencies.png) 
 
     >[!TIP]
-    >Ellenőrizheti, hogy a függőségek megfelelően vannak-e konfigurálva. A Feladatátvevőfürt-kezelő területen lépjen a szerepkörök pontra, kattintson a jobb gombbal a rendelkezésre állási csoportra, kattintson a **További műveletek**parancsra, majd a  **függőségi jelentés megjelenítése**elemre. Ha a függőségek megfelelően vannak konfigurálva, a rendelkezésre állási csoport a hálózat nevétől függ, a hálózat neve pedig az IP-címről függ. 
+    >Ellenőrizheti, hogy a függőségek megfelelően vannak-e konfigurálva. A Feladatátvevőfürt-kezelő területen lépjen a szerepkörök pontra, kattintson a jobb gombbal a rendelkezésre állási csoportra, kattintson a **További műveletek** parancsra, majd a  **függőségi jelentés megjelenítése** elemre. Ha a függőségek megfelelően vannak konfigurálva, a rendelkezésre állási csoport a hálózat nevétől függ, a hálózat neve pedig az IP-címről függ. 
 
 
 1. <a name="setparam"></a>A fürt paramétereinek beállítása a PowerShellben.
@@ -108,13 +108,13 @@ A rendelkezésre állási csoport figyelője az SQL Server rendelkezésre állá
    > [!NOTE]
    > Ha a SQL Server példányai különálló régiókban találhatók, akkor kétszer kell futtatnia a PowerShell-szkriptet. Az első alkalommal használja a `$ListenerILBIP` és az `$ListenerProbePort` első régiót. A második alkalommal használja a `$ListenerILBIP` és a `$ListenerProbePort` elemet a második régióból. A fürt hálózati neve és a fürt IP-erőforrásának neve is eltérő az egyes régiókban.
 
-1. A rendelkezésre állási csoport fürt szerepkörének online állapotba hozása. **Feladatátvevőfürt-kezelő** a **szerepkörök**területen kattintson a jobb gombbal a szerepkörre, majd válassza a **szerepkör indítása**lehetőséget.
+1. A rendelkezésre állási csoport fürt szerepkörének online állapotba hozása. **Feladatátvevőfürt-kezelő** a **szerepkörök** területen kattintson a jobb gombbal a szerepkörre, majd válassza a **szerepkör indítása** lehetőséget.
 
 Ha szükséges, ismételje meg a fenti lépéseket a WSFC-fürt IP-címéhez tartozó fürt paramétereinek megadásához.
 
-1. Szerezze be a WSFC-fürt IP-címének IP-címét. **Feladatátvevőfürt-kezelő** a **fürt alapvető erőforrásai**területen keresse meg a **kiszolgáló nevét**.
+1. Szerezze be a WSFC-fürt IP-címének IP-címét. **Feladatátvevőfürt-kezelő** a **fürt alapvető erőforrásai** területen keresse meg a **kiszolgáló nevét**.
 
-1. Kattintson a jobb gombbal az **IP-cím**elemre, majd válassza a **Tulajdonságok**lehetőséget.
+1. Kattintson a jobb gombbal az **IP-cím** elemre, majd válassza a **Tulajdonságok** lehetőséget.
 
 1. Másolja ki az IP-cím **nevét** . Lehetséges, hogy `Cluster IP Address` . 
 

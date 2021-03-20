@@ -13,10 +13,10 @@ ms.date: 01/25/2021
 ms.author: marsma
 ms.reviewer: saeeda
 ms.openlocfilehash: 78932e5852453fe996e26a278f8a1859a8ecf546
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98755011"
 ---
 # <a name="authentication-flows"></a>Hitelesítési folyamatok
@@ -227,7 +227,7 @@ A IWA folyamat engedélyezve van a .NET Desktop, a .NET Core és a Windows Unive
 
 További információ a beleegyező adatokról: [v 2.0 engedélyek és beleegyezik](v2-permissions-and-consent.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette a Microsoft Authentication Library (MSAL) által támogatott hitelesítési folyamatokat, megismerheti az ezekben a folyamatokban használt jogkivonatok beszerzését és gyorsítótárazását:
 

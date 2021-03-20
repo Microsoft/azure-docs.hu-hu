@@ -4,10 +4,10 @@ description: Ebben a rövid útmutatóban az erőforrás-gráf csomagjának enge
 ms.date: 01/27/2021
 ms.topic: quickstart
 ms.openlocfilehash: 4949801b3dc97904680d09e685fd225812a0e14d
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98920062"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-go"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása a go használatával

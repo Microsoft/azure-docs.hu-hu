@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7d6689b4b67b8462e983ae9b111e0fbc60c422b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89657110"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>További lépések és a Azure AD Connect kezelése
@@ -38,7 +38,7 @@ Most, hogy a felhasználók már szinkronizálva lettek a felhővel, hozzá kell
 2. A bal oldalon válassza az **Active Directory** elemet.
 3. A **Active Directory** lapon kattintson duplán arra a könyvtárra, amelyen be szeretné állítani a felhasználókat.
 4. A könyvtárlap tetején válassza a **Licencek** elemet.
-5. A **licencek** lapon válassza a **Active Directory Premium** vagy a **nagyvállalati mobilitási csomag**lehetőséget, majd kattintson a **hozzárendelés**elemre.
+5. A **licencek** lapon válassza a **Active Directory Premium** vagy a **nagyvállalati mobilitási csomag** lehetőséget, majd kattintson a **hozzárendelés** elemre.
 6. A párbeszédpanelen válassza ki azokat a felhasználókat, akikhez licenceket szeretne rendelni, majd kattintson a pipa ikonra a módosítások mentéséhez.
 
 ## <a name="verify-the-scheduled-synchronization-task"></a>Az ütemezett szinkronizálási feladat ellenőrzése
@@ -72,7 +72,7 @@ Az alábbi táblázat a feladatok összegzését és az egyes feladatok rövid l
 
 ![További feladatok listája](./media/how-to-connect-post-installation/addtasks2.png)
 
-| További feladat | Leírás |
+| További feladat | Description |
 | --- | --- |
 |**Adatvédelmi beállítások**|Megtekintheti, hogy milyen telemetria-adatmegosztások vannak a Microsofttal.|
 |**Aktuális konfiguráció megtekintése**|Tekintse meg az aktuális Azure AD Connect megoldást.  Ide tartozik az általános beállítások, a szinkronizált könyvtárak és a szinkronizálási beállítások. |

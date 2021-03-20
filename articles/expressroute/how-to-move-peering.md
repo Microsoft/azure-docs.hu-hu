@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: duau
 ms.openlocfilehash: 608d6c87442821e904fde16c6b75841fe792e3f0
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92206288"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Váltáson nyilvános társviszony-létesítésről Microsoft-társviszony-létesítésre
@@ -22,7 +22,7 @@ Az Azure nyilvános társítása 1 NAT IP-címmel rendelkezik, amely az egyes BG
 
 Ha a nyilvános társítás engedélyezve van, csatlakozhat az összes Azure-szolgáltatáshoz. Nem engedélyezzük szelektíven olyan szolgáltatások kivételezését, amelyekhez útvonalakat hirdetünk. Míg a Microsoft-társítás egy kétirányú kapcsolat, ahol a Microsoft Azure szolgáltatással és a WAN-kapcsolattal is kezdeményezhető a kapcsolódás. További információ az útválasztási tartományokról és a társításról: [ExpressRoute-áramkörök és útválasztási tartományok](expressroute-circuit-peerings.md).
 
-## <a name="before-you-begin"></a><a name="before"></a>Előkészületek
+## <a name="before-you-begin"></a><a name="before"></a>Kezdés előtt
 
 A Microsoft-partneri kapcsolathoz való kapcsolódáshoz be kell állítania és kezelnie kell a NAT-ot. A kapcsolati szolgáltató felügyelt szolgáltatásként állíthatja be és felügyelheti a NAT-t. Ha azt tervezi, hogy hozzáfér az Azure-beli és az Azure SaaS-szolgáltatásokhoz a Microsoft-partneri kapcsolaton, akkor fontos, hogy megfelelően méretezze a NAT IP-készletet. További információ a ExpressRoute NAT-ról: a [Microsoft-partnerek NAT-követelményei](expressroute-nat.md#nat-requirements-for-microsoft-peering). Ha az Azure ExpressRoute (Microsoft-társ) keresztül csatlakozik a Microsofthoz, a Microsofthoz több hivatkozása is van. Az egyik kapcsolat a meglévő internetkapcsolat, a másik pedig az ExpressRoute-on keresztüli kapcsolat. Előfordulhat, hogy a forgalom egy része az interneten keresztül jut el a Microsofthoz, de az ExpressRoute-on át tér vissza, vagy fordítva.
 

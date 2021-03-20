@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 13f8f1067ce7c9fe55160400d20ec0b20788c17b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515287"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Oktatóanyag: Azure Active Directory integráció a beépített SSO-val
@@ -67,7 +67,7 @@ A beépített egyszeri bejelentkezés Azure AD-be való integrálásának konfig
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálhatja és tesztelheti a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálhatja és tesztelheti a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolat létesítése szükséges.
 
 Az Azure AD egyszeri bejelentkezés a következő építőelemeket kell végrehajtania és tesztelni:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezéses egyszeri bejelentkezéssel való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **ALAPszintű SSO** -alkalmazás integrációja lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **ALAPszintű SSO** -alkalmazás integrációja lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -131,7 +131,7 @@ Az Azure AD egyszeri bejelentkezéses egyszeri bejelentkezéssel való konfigur�
 
     b. Az **SAML-bejelentkezési cél URL-címe** mezőbe illessze be a **bejelentkezési URL-cím** értékét, amelyet a Azure Portal másolt.
 
-    c. Most nyissa meg az **összevonási metaadatok fent letöltött fájlját** a Azure Portalból, és másolja a tanúsítványt a **x509**nevű címkébe. Illessze be a másolt értéket az **egyszeri bejelentkezési x509-tanúsítvány** mezőbe.
+    c. Most nyissa meg az **összevonási metaadatok fent letöltött fájlját** a Azure Portalból, és másolja a tanúsítványt a **x509** nevű címkébe. Illessze be a másolt értéket az **egyszeri bejelentkezési x509-tanúsítvány** mezőbe.
 
 4. Kattintson a **Save Changes** gombra.
 
@@ -141,7 +141,7 @@ Az Azure AD egyszeri bejelentkezéses egyszeri bejelentkezéssel való konfigur�
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -165,15 +165,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a alapszintű egyszeri bejelentkezéshez.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **alapszintű egyszeri bejelentkezés**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **alapszintű egyszeri bejelentkezés** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **alapszintű egyszeri bejelentkezés**lehetőséget.
+2. Az alkalmazások listában válassza a **alapszintű egyszeri bejelentkezés** lehetőséget.
 
     ![Az alkalmazások listájában található alapszintű egyszeri bejelentkezés hivatkozása](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -203,7 +203,7 @@ Az alábbi lépések végrehajtásával hozzon létre egy alapszintű, egyszeri 
 
     a. Az **Utónév** szövegmezőbe írja be a felhasználó vezetéknevét (például **Britta**).
 
-    b. A **vezetéknév** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon**nevet.
+    b. A **vezetéknév** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon** nevet.
 
     c. Az **E-mail cím** szövegmezőbe írja be a felhasználó e-mail címét, például: BrittaSimon@contoso.com .
 

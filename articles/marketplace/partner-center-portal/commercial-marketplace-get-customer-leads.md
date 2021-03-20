@@ -8,13 +8,13 @@ author: trkeya
 ms.author: trkeya
 ms.date: 10/01/2020
 ms.openlocfilehash: 1d5f2248d94796d5e3ee76301642a95abddebfe4
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94489335"
 ---
-# <a name="customer-leads-from-your-commercial-marketplace-offer"></a>A kereskedelmi piactér ajánlatának ügyfelei
+# <a name="customer-leads-from-your-commercial-marketplace-offer"></a>Érdeklődők a kereskedelmi piactéri ajánlattól
 
 Az érdeklődők az ajánlatok [Microsoft AppSource](https://appsource.microsoft.com) és az [Azure Marketplace](https://azuremarketplace.microsoft.com)-en való üzembe helyezésére és telepítésére is kíváncsiak. A vásárlói érdeklődőket az ajánlat közzétételét követően a kereskedelmi piactéren kaphatja meg. Ez a cikk a következő vezető felügyeleti fogalmakat ismerteti:
 
@@ -50,19 +50,19 @@ Az alábbi helyeken jönnek létre az érdeklődők:
 
 Az ügyfél beszerzési folyamata során kapott összes érdeklődő meghatározott mezőkben lévő adattal rendelkezik. Az első kikeresni kívánt mező az a `LeadSource` mező, amely a következő formátumot követi: **forrás-művelet**  |  **ajánlat**.
 
-**Források** : a mező értékét a rendszer az érdeklődőt létrehozó piactér alapján tölti fel. A lehetséges értékek:, `"AzureMarketplace"` `"AzurePortal"` és `"AppSource (SPZA)"` .
+**Források**: a mező értékét a rendszer az érdeklődőt létrehozó piactér alapján tölti fel. A lehetséges értékek:, `"AzureMarketplace"` `"AzurePortal"` és `"AppSource (SPZA)"` .
 
-**Műveletek** : a mező értéke az ügyfél által az érdeklődőt létrehozó piactéren végrehajtott művelet alapján van feltöltve.
+**Műveletek**: a mező értéke az ügyfél által az érdeklődőt létrehozó piactéren végrehajtott művelet alapján van feltöltve.
 
 Lehetséges értékek:
 
-- **"Ins"** : a *telepítésre* áll. Ez a művelet az Azure Marketplace-en vagy a AppSource van, amikor egy ügyfél beszerzi a terméket.
-- **"PLT"** : a *partner által vezetett próbaverzióra* áll. Ez a művelet a AppSource, ha az ügyfél kiválasztja a **Kapcsolatfelvétel** lehetőséget.
-- **"DNC –"** : a (z) nem *kapcsolatra* vonatkozó. Ez a művelet abban az esetben AppSource, ha az alkalmazás oldalán felsorolt partnereket kérik a kapcsolatfelvételre. Megosztunk egy értesítést arról, hogy az ügyfél szerepel az alkalmazáson, de nem kell kapcsolatba lépnie.
-- **"Létrehozás"** : Ez a művelet csak a Azure Portal belül történik, és akkor jön létre, amikor egy ügyfél megvásárolja az ajánlatot a fiókjába.
-- **"StartTestDrive"** : Ez a művelet csak a **tesztvezetés** beállítás esetében jön létre, amikor egy ügyfél elindítja a tesztelési meghajtót.
+- **"Ins"**: a *telepítésre* áll. Ez a művelet az Azure Marketplace-en vagy a AppSource van, amikor egy ügyfél beszerzi a terméket.
+- **"PLT"**: a *partner által vezetett próbaverzióra* áll. Ez a művelet a AppSource, ha az ügyfél kiválasztja a **Kapcsolatfelvétel** lehetőséget.
+- **"DNC –"**: a (z) nem *kapcsolatra* vonatkozó. Ez a művelet abban az esetben AppSource, ha az alkalmazás oldalán felsorolt partnereket kérik a kapcsolatfelvételre. Megosztunk egy értesítést arról, hogy az ügyfél szerepel az alkalmazáson, de nem kell kapcsolatba lépnie.
+- **"Létrehozás"**: Ez a művelet csak a Azure Portal belül történik, és akkor jön létre, amikor egy ügyfél megvásárolja az ajánlatot a fiókjába.
+- **"StartTestDrive"**: Ez a művelet csak a **tesztvezetés** beállítás esetében jön létre, amikor egy ügyfél elindítja a tesztelési meghajtót.
 
-**Ajánlatok** : több ajánlat is lehet a kereskedelmi piactéren. A mező értékét a rendszer az érdeklődőt létrehozó ajánlat alapján tölti fel. A közzétevő AZONOSÍTÓját és az ajánlat AZONOSÍTÓját is elküldjük ebben a mezőben, és azokat az értékeket, amelyeket az ajánlatnak a piactéren való közzétételekor adott meg.
+**Ajánlatok**: több ajánlat is lehet a kereskedelmi piactéren. A mező értékét a rendszer az érdeklődőt létrehozó ajánlat alapján tölti fel. A közzétevő AZONOSÍTÓját és az ajánlat AZONOSÍTÓját is elküldjük ebben a mezőben, és azokat az értékeket, amelyeket az ajánlatnak a piactéren való közzétételekor adott meg.
 
 Az alábbi példák a várt formátumú értékeket mutatják `publisherid.offerid` : 
 
@@ -89,13 +89,13 @@ Az ügyfél adatait több mezőn keresztül küldik el. Az alábbi példa egy é
 
 Íme néhány javaslat az értékesítési cikluson keresztüli vezetéshez:
 
-- **Folyamat** : adjon meg egy egyértelmű értékesítési folyamatot, a mérföldköveket, az elemzést és a csoport törlését.
-- **Minősítés** : az előfeltételek meghatározása, amely azt jelzi, hogy egy érdeklődő teljesen minősített-e. Győződjön meg arról, hogy az értékesítési vagy a marketing képviselői körültekintően vezetnek be, mielőtt a teljes értékesítési folyamaton átveszik őket.
-- **Utólagos követés** : ne feledkezzen meg 24 órán belül. Közvetlenül az ügyfél üzembe helyezése után azonnal elérhetővé válik a CRM-ben. e-mailben elküldheti őket, miközben még mindig melegek. Kérje a telefonhívás ütemezését, hogy jobban megértse, ha a termék jó megoldás a problémára. A tipikus tranzakció várhatóan számos követő hívást igényel.
-- **Ápolás** : táplálja az érdeklődőket, hogy minél magasabb haszonkulcsot kapjon. Jelentkezzen be, de ne bombázza őket. Javasoljuk, hogy legalább néhány alkalommal küldje el az e-maileket, mielőtt bezárná őket; Ne adja meg az első kísérlet után. Ne feledje, hogy ezek az ügyfelek közvetlenül a termékkel foglalkoznak, és időt vesznek igénybe az ingyenes próbaverzióban; nagyszerű kilátások.
+- **Folyamat**: adjon meg egy egyértelmű értékesítési folyamatot, a mérföldköveket, az elemzést és a csoport törlését.
+- **Minősítés**: az előfeltételek meghatározása, amely azt jelzi, hogy egy érdeklődő teljesen minősített-e. Győződjön meg arról, hogy az értékesítési vagy a marketing képviselői körültekintően vezetnek be, mielőtt a teljes értékesítési folyamaton átveszik őket.
+- **Utólagos követés**: ne feledkezzen meg 24 órán belül. Közvetlenül az ügyfél üzembe helyezése után azonnal elérhetővé válik a CRM-ben. e-mailben elküldheti őket, miközben még mindig melegek. Kérje a telefonhívás ütemezését, hogy jobban megértse, ha a termék jó megoldás a problémára. A tipikus tranzakció várhatóan számos követő hívást igényel.
+- **Ápolás**: táplálja az érdeklődőket, hogy minél magasabb haszonkulcsot kapjon. Jelentkezzen be, de ne bombázza őket. Javasoljuk, hogy legalább néhány alkalommal küldje el az e-maileket, mielőtt bezárná őket; Ne adja meg az első kísérlet után. Ne feledje, hogy ezek az ügyfelek közvetlenül a termékkel foglalkoznak, és időt vesznek igénybe az ingyenes próbaverzióban; nagyszerű kilátások.
 
 A technikai beállítás bevezetését követően az aktuális értékesítési és marketing stratégia és működési folyamatok részeként építse be ezeket az érdeklődőket. Fontos, hogy jobban megértse a teljes értékesítési folyamatot, és szeretne szorosan együttműködni Önnel, hogy kiváló minőségű érdeklődőket és elegendő adatmennyiséget biztosítson a siker érdekében. Örömmel vesszük visszajelzését arról, hogy miként optimalizálható és növelhető az érdeklődők számára elérhető további információk, amelyek segítenek az ügyfelek sikerességében. Tudassa velünk, ha szeretne [visszajelzést](mailto:AzureMarketOnboard@microsoft.com) küldeni, és javaslatokat tesz arra, hogy az értékesítési csapat sikeresebb legyen a kereskedelmi piactéren.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az érdeklődők felügyeletével kapcsolatos gyakori kérdések és hibaelhárítás](../lead-management-faq.md)

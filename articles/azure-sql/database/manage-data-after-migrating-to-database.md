@@ -13,10 +13,10 @@ ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
 ms.openlocfilehash: b34ac24cb26bf5db4a49a5ad5b531deb252f4695
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96446117"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Új DBA a felhőben – Azure SQL Database kezelése az áttelepítés után
@@ -127,7 +127,7 @@ Az Ön rendelkezésére áll több olyan módszer is, amelyekkel optimális kapc
 - VNet-szolgáltatásvégpontok
 - Fenntartott IP-címek
 
-#### <a name="firewall"></a>Tűzfal
+#### <a name="firewall"></a>Firewall
 
 A tűzfal nem engedélyezi a hozzáférést a kiszolgálóhoz egy külső entitásból azáltal, hogy csak bizonyos entitások férhetnek hozzá a kiszolgálóhoz. Alapértelmezés szerint a kiszolgálón belüli adatbázisokhoz való összes kapcsolat nem engedélyezett, a többi Azure-szolgáltatástól érkező kapcsolatok kivételével (optionally7). Tűzfalszabály esetén a számítógép IP-címének a tűzfalon keresztüli engedélyezésével megnyithatja a kiszolgálóhoz való hozzáférést csak olyan entitások (például egy fejlesztői számítógép) számára, amelyeknek jóvá kell hagynia. Azt is lehetővé teszi, hogy olyan IP-címtartományt határozzon meg, amelyet engedélyezni szeretne a kiszolgálóhoz való hozzáféréshez. A szervezet fejlesztői számítógépének IP-címei például a tűzfal beállításai lapon egy tartomány megadásával adhatók hozzá.
 
@@ -169,10 +169,10 @@ A titkosítás erős mechanizmust biztosít a behatolókkal szembeni bizalmas ad
 A SQL Database alapértelmezés szerint az adatok és naplófájlok a tárolási alrendszerben tárolt adatai teljesen és mindig titkosítva vannak a [transzparens adattitkosítás [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)használatával. A biztonsági másolatok is titkosítva vannak. A TDE esetében nem szükséges módosítani az alkalmazás oldalán az adatokhoz való hozzáférést. A titkosítás és a visszafejtés transzparens módon történik; Ezért a név.
 A bizalmas adatok repülés közbeni és nyugalmi állapotban való védelme érdekében SQL Database a [Always encrypted (AE)](/sql/relational-databases/security/encryption/always-encrypted-database-engine)nevű szolgáltatást nyújt. Az AE az ügyféloldali titkosítás egy formája, amely titkosítja a bizalmas oszlopokat az adatbázisban (így rejtjelezett az adatbázis-rendszergazdák és a jogosulatlan felhasználók számára). A kiszolgáló fogadja a titkosított adatvesztést. A Always Encrypted kulcsát az ügyfél oldalán is tárolja a rendszer, így csak a hitelesítő ügyfelek tudják visszafejteni a bizalmas oszlopokat. A kiszolgáló és az adatok rendszergazdái nem láthatják a bizalmas adatokat, mivel a titkosítási kulcsok tárolása az ügyfélen történik. Az AE a bizalmas oszlopokat a tábla végétől végéig titkosítja, a jogosulatlan ügyfelektől a fizikai lemezig. Az AE támogatja a mai egyenlőség-összehasonlításokat, így a Adattervezők továbbra is lekérdezheti a titkosított oszlopokat az SQL-parancsaik részeként. Always Encrypted számos kulcstároló-lehetőséggel használható, például a [Azure Key Vault](always-encrypted-azure-key-vault-configure.md), a Windows tanúsítványtároló és a helyi hardveres biztonsági modulok használatával.
 
-|**Jellemzők**|**Always Encrypted**|**transzparens adattitkosítás**|
+|**Jellemzők**|**Always Encrypted**|**Transzparens adattitkosítás**|
 |---|---|---|
 |**Titkosítási tartomány**|Végpontok közötti|Rest-adatok|
-|**A kiszolgáló bizalmas adatokat tud elérni**|Nem|Igen, mivel az inaktív adatok titkosítása|
+|**A kiszolgáló bizalmas adatokat tud elérni**|No|Igen, mivel az inaktív adatok titkosítása|
 |**Engedélyezett T-SQL-műveletek**|Egyenlőség összehasonlítása|Az összes T-SQL Surface terület elérhető|
 |**A funkció használatához szükséges módosítások**|Minimális|Nagyon minimális|
 |**Titkosítási részletesség**|Oszlop szintje|az adatbázis-szintű megadás helyett|
@@ -190,7 +190,7 @@ A [sorok szintjének biztonsága](/sql/relational-databases/security/row-level-s
 
 A Always Encrypted (ügyféloldali titkosítás) és a transzparens adattitkosítás (inaktív titkosítás) kulcsfontosságú felügyeleti lehetőségei vannak. Javasoljuk, hogy rendszeresen forgassa el a titkosítási kulcsokat. A rotációs gyakoriságnak igazodnia kell a belső szervezeti szabályozáshoz és a megfelelőségi követelményekhez.
 
-#### <a name="transparent-data-encryption-tde"></a>Transzparens adattitkosítás (TDE)
+#### <a name="transparent-data-encryption-tde"></a>Transparent Data Encryption (TDE)
 
 Létezik egy kétkulcsos hierarchia a TDE-ben – az egyes felhasználói adatbázisokban lévő adatok titkosítása szimmetrikus AES-256 adatbázis-egyedi adatbázis-titkosítási kulcs (ADATTITKOSÍTÁSI kulcsot) használatával történik, amely viszont egy kiszolgáló-egyedi aszimmetrikus RSA 2048-főkulcs titkosítása. A főkulcs kezelése a következőkkel végezhető el:
 
@@ -305,7 +305,7 @@ A SQL Database különböző szolgáltatási szinteket kínál alapszintű, stan
 |---|---|
 |**Basic**|Egy maroknyi felhasználóval és egy olyan adatbázissal, amely nem rendelkezik magas párhuzamosságtal, méretezéssel és teljesítménnyel kapcsolatos követelményekkel. |
 |**Standard**|A jelentős párhuzamosságtal, méretezéssel és teljesítménnyel kapcsolatos követelményekkel rendelkező alkalmazások alacsony – közepes i/o-igényekkel párosulnak. |
-|**Prémium szintű**|Számos egyidejű felhasználóval, magas CPU/memóriával és magas i/o-igényű alkalmazásokkal. A magas Egyidejűség, a nagy átviteli sebesség és a késésre érzékeny alkalmazások kihasználhatják a prémium szintet. |
+|**Prémium**|Számos egyidejű felhasználóval, magas CPU/memóriával és magas i/o-igényű alkalmazásokkal. A magas Egyidejűség, a nagy átviteli sebesség és a késésre érzékeny alkalmazások kihasználhatják a prémium szintet. |
 |||
 
 A megfelelő számítási méret biztosításához a "Hogyan a SQL Database teljesítményének és erőforrás-kihasználtságának figyelése" című részében felsorolt módszerek egyikén keresztül figyelheti a lekérdezési és az adatbázis-erőforrás-felhasználást. Ha úgy találja, hogy a lekérdezések/adatbázisok folyamatosan futnak a PROCESSZORon vagy a memórián, stb., érdemes lehet nagyobb számítási méretre méretezni. Hasonlóképpen, ha úgy gondolja, hogy a csúcsidőben még nem használja az erőforrásokat, érdemes megfontolni a méretezést az aktuális számítási mérettől.
@@ -335,6 +335,6 @@ Ezt többféleképpen is elérheti:
 - **[Adatszinkronizálás](sql-data-sync-data-sql-server-sql-database.md)** – ez a funkció segítséget nyújt a kétirányú adatszinkronizáláshoz több SQL Server adatbázis és SQL Database között. SQL Server adatbázisokkal való szinkronizáláshoz telepítenie és konfigurálnia kell a szinkronizálási ügynököt egy helyi számítógépen vagy virtuális gépen, és meg kell nyitnia a 1433-es kimenő TCP-portot.
 - **[Tranzakciós](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** replikáció – a tranzakciós replikációval szinkronizálhatja az adatokat egy SQL Server adatbázisból, hogy Azure SQL Database a közzétevő és az előfizető Azure SQL Database SQL Server példányával. Egyelőre csak ez a beállítás támogatott. Az adatok SQL Server adatbázisból az Azure SQL-be minimális állásidővel való áttelepítésével kapcsolatos további információkért lásd: a [tranzakciós replikáció használata](migrate-to-database-from-sql-server.md#method-2-use-transactional-replication)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [SQL Database](sql-database-paas-overview.md)megismerése.

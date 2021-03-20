@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan állíthatja be a laborokat a projekt vezetés�
 ms.topic: article
 ms.date: 10/28/2020
 ms.openlocfilehash: ca4fdae2372895c17c4a98dd3959935108846744
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95024619"
 ---
 # <a name="set-up-labs-for-project-lead-the-way-classes"></a>A laborok beállítása a projecthez a következőképpen: osztályok
@@ -130,7 +130,7 @@ A tanulók a Windows rendszerű számítógépekről, Mac gépekről és Chromeb
 - [Mac-kapcsolat](./connect-virtual-machine-mac-remote-desktop.md)
 - [Kapcsolat a Chromebook](./connect-virtual-machine-chromebook-remote-desktop.md)
 
-## <a name="cost"></a>Költség
+## <a name="cost"></a>Költségek
 Vegyük például a PLTW osztályok becsült költségeit  Ez a becslés nem tartalmazza a licenckiszolgáló futtatásának költségeit vagy megosztott képkatalógus használatát. Tegyük fel, hogy van egy 25 tanulós osztálya, amelynek mindegyike 20 órányi ütemezett időponttal rendelkezik.  Az egyes tanulók további 10 kvótát is igénybe vehetik az ütemezett osztályokon kívüli munkahelyi vagy hozzárendelési feladatokhoz.  A becsült költségek:
 
 - **Nagyméretű virtuális gép**

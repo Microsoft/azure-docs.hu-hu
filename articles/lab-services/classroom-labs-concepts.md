@@ -4,13 +4,13 @@ description: Megismerheti a labor Services alapfogalmait, és azt, hogy miként 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: fa3a8dad195b4b3cbf0786c8923c8b330d148898
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96435518"
 ---
-# <a name="labs-concepts"></a>Labs-fogalmak
+# <a name="labs-concepts"></a>Tesztkörnyezetekhez kapcsolódó fogalmak
 
 A következő lista a Key Lab Services alapfogalmait és definícióit tartalmazza:
 
@@ -63,7 +63,7 @@ A hallgató az alábbi feladatokat hajtja végre:
 - Regisztrál a tesztkörnyezetben a tesztkörnyezet létrehozójától kapott regisztrációs hivatkozással.
 - Csatlakozik a tesztkörnyezetben lévő virtuális géphez, és osztálytermi munkához, feladatokhoz és projektekhez használja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépésként az Azure Lab Services használatával hozzon létre egy tesztkörnyezetfiókot, amely az osztálytermi tesztkörnyezetek létrehozásához szükséges:
 

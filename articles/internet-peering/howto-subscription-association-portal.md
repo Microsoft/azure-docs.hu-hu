@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 5/18/2020
 ms.author: derekol
 ms.openlocfilehash: 22cb179925f95fd0762371cc904fcbd02675339a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91540268"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>Társ ASN társítása Azure-előfizetéshez a portál használatával
@@ -39,17 +39,17 @@ Regisztráljon az előfizetésben az alábbi lépésekkel: Ha nem hajtja végre 
     > [!div class="mx-imgBorder"]
     > ![Előfizetés elindítása](./media/rp-subscriptions-launch.png)
 
-1. Az előfizetés megnyitása után kattintson a bal oldalon az erőforrás- **szolgáltatók**elemre. A jobb oldali ablaktáblában *Keresse meg a keresés a keresési* ablakban, vagy a görgetősáv használatával keresse meg a **Microsoft. peering** kifejezést, és tekintse meg az **állapotot**. Ha az állapot ***regisztrálva***van, ugorja át az alábbi lépéseket, és folytassa a **PeerAsn létrehozása**című szakasszal. Ha az állapot ***NotRegistered***, válassza a **Microsoft. peering** lehetőséget, majd kattintson a **regisztráció**gombra.
+1. Az előfizetés megnyitása után kattintson a bal oldalon az erőforrás- **szolgáltatók** elemre. A jobb oldali ablaktáblában *Keresse meg a keresés a keresési* ablakban, vagy a görgetősáv használatával keresse meg a **Microsoft. peering** kifejezést, és tekintse meg az **állapotot**. Ha az állapot **_regisztrálva_ van *, ugorja át az alábbi lépéseket, és folytassa a _ PeerAsn létrehozása című szakasszal***. Ha az állapot **_NotRegistered_*_, válassza a _* Microsoft. peering lehetőséget,** majd kattintson a **regisztráció** elemre.
 
     > [!div class="mx-imgBorder"]
     > ![Regisztráció kezdete](./media/rp-register-start.png)
 
-1. Figyelje meg, hogy az állapot ***regisztrálása***megtörtént.
+1. Figyelje meg, hogy az állapot ***regisztrálása*** megtörtént.
 
     > [!div class="mx-imgBorder"]
     > ![Regisztráció folyamatban](./media/rp-register-progress.png)
 
-1. Várjon egy percig, amíg be nem fejeződik a regisztráció. Ezután kattintson a **frissítés** elemre, és ellenőrizze, hogy az állapot ***regisztrálva***van-e.
+1. Várjon egy percig, amíg be nem fejeződik a regisztráció. Ezután kattintson a **frissítés** elemre, és ellenőrizze, hogy az állapot **_regisztrálva_** van-e.
 
     > [!div class="mx-imgBorder"]
     > ![A regisztráció befejeződött](./media/rp-register-completed.png)
@@ -72,7 +72,7 @@ Internetszolgáltatóként vagy internetes Exchange-szolgáltatóként létrehoz
     > [!div class="mx-imgBorder"]
     > ![A képernyőképen a társ A S N alapjai lap jelenik meg.](./media/peerasn-review-tab-validation.png)
 
-1. Miután a menüszalagon lévő üzenet bekapcsolta az *érvényesítést*, ellenőrizze az adatokat, és küldje el a kérést a **Létrehozás**gombra kattintva. Ha az ellenőrzés nem megy át, kattintson az **előző** gombra, és ismételje meg a fenti lépéseket a kérelem módosításához, és győződjön meg arról, hogy a megadott értékek nincsenek hibák.
+1. Miután a menüszalagon lévő üzenet bekapcsolta az *érvényesítést*, ellenőrizze az adatokat, és küldje el a kérést a **Létrehozás** gombra kattintva. Ha az ellenőrzés nem megy át, kattintson az **előző** gombra, és ismételje meg a fenti lépéseket a kérelem módosításához, és győződjön meg arról, hogy a megadott értékek nincsenek hibák.
 
     > [!div class="mx-imgBorder"]
     > ![A képernyőképen a társ-A S N alapismeretek lap és az érvényesítés átadása látható.](./media/peerasn-review-tab.png)

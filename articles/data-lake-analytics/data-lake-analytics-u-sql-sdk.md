@@ -7,10 +7,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/01/2017
 ms.openlocfilehash: 8fb60e62a63bfc4562f19d483dc84c99c37676b0
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92215535"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>A U-SQL futtatása és tesztelése Azure Data Lake U-SQL SDK-val
@@ -63,7 +63,7 @@ A U-SQL-parancsfájlokban relatív elérési utat és helyi abszolút elérési 
 
 Ha a U-SQL-parancsfájlt helyileg futtatja, a rendszer létrehoz egy munkakönyvtárat a fordítás során a jelenlegi futó könyvtár alatt. A fordítási kimeneteken kívül a helyi végrehajtáshoz szükséges futtatókörnyezeti fájlok árnyékolva lesznek a munkakönyvtárba. A munkakönyvtár gyökérkönyvtárának neve "ScopeWorkDir", és a munkakönyvtárban található fájlok a következők:
 
-|Könyvtár/fájl|Könyvtár/fájl|Könyvtár/fájl|Definíció|Leírás|
+|Könyvtár/fájl|Könyvtár/fájl|Könyvtár/fájl|Definíció|Description|
 |--------------|--------------|--------------|----------|-----------|
 |C6A101DDCB470506| | |Futtatókörnyezet-verzió kivonatoló karakterlánca|A helyi végrehajtáshoz szükséges futtatókörnyezeti fájlok árnyékmásolata|
 | |Script_66AE4909AA0ED06C| |Parancsfájl neve + szkript elérési útjának kivonat-karakterlánca|Fordítási kimenetek és végrehajtási lépés naplózása|
@@ -132,15 +132,15 @@ A U-SQL helyi futtatásához meg kell adni egy megadott adatgyökerét helyi tá
 
 #### <a name="compile-and-run"></a>Fordítás és Futtatás
 
-A **Run** parancs a parancsfájl fordítására, majd lefordított eredményeinek végrehajtására szolgál. A parancssori argumentumok kombinációja a **fordítás** és a **végrehajtás**során.
+A **Run** parancs a parancsfájl fordítására, majd lefordított eredményeinek végrehajtására szolgál. A parancssori argumentumok kombinációja a **fordítás** és a **végrehajtás** során.
 
 ```console
 LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
 ```
 
-A **Futtatás**nem kötelező argumentumai a következők:
+A **Futtatás** nem kötelező argumentumai a következők:
 
-|Argumentum|Alapértelmezett érték|Leírás|
+|Argumentum|Alapértelmezett érték|Description|
 |--------|-------------|-----------|
 |– CodeBehind|Hamis|A szkript a. CS kód mögött található.|
 |-CppSDK| |CppSDK könyvtár|
@@ -156,11 +156,11 @@ A **Futtatás**nem kötelező argumentumai a következők:
 |-ScopeCEPTempPath|temp|Az adatfolyam-továbbításhoz használandó ideiglenes útvonal|
 |-OptFlags| |Az optimalizáló jelzők vesszővel tagolt listája|
 
-Íme egy példa:
+Bemutatunk egy példát:
 
 `LocalRunHelper run -Script d:\test\test1.usql -WorkDir d:\test\bin -CodeBehind -References "d:\asm\ref1.dll;d:\asm\ref2.dll" -UseDatabase testDB –Parallel 5 -Verbose`
 
-A **fordítás** és a **végrehajtás**kombinációja mellett külön is lefordíthatja és végrehajthatja a lefordított végrehajtható fájlokat.
+A **fordítás** és a **végrehajtás** kombinációja mellett külön is lefordíthatja és végrehajthatja a lefordított végrehajtható fájlokat.
 
 #### <a name="compile-a-u-sql-script"></a>U-SQL-szkript fordítása
 
@@ -170,9 +170,9 @@ A **fordítási** paranccsal egy U-SQL-szkriptet állíthat össze a végrehajth
 LocalRunHelper compile -Script path_to_usql_script.usql [optional_arguments]
 ```
 
-A **fordítás**nem kötelező argumentumai a következők:
+A **fordítás** nem kötelező argumentumai a következők:
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 |--------|-----------|
 | -CodeBehind [alapértelmezett érték: "false"]|A szkript a. CS kód mögött található.|
 | -CppSDK [alapértelmezett érték: ""]|CppSDK könyvtár|
@@ -215,9 +215,9 @@ A **végrehajtás** parancs a lefordított eredmények végrehajtásához haszn�
 LocalRunHelper execute -Algebra path_to_compiled_algebra_file [optional_arguments]
 ```
 
-A **végrehajtás**nem kötelező argumentumai a következők:
+A **végrehajtás** nem kötelező argumentumai a következők:
 
-|Argumentum|Alapértelmezett érték|Leírás|
+|Argumentum|Alapértelmezett érték|Description|
 |--------|-------------|-----------|
 |– DataRoot | '' |A metaadatok végrehajtásához szükséges adatok gyökerét. Alapértelmezés szerint a **LOCALRUN_DATAROOT** környezeti változót.|
 |-MessageOut | '' |Üzenetek kiírása a konzolon egy fájlba.|
@@ -330,13 +330,13 @@ A LocalRunHelper.exe az U-SQL helyi fordításához, futtatásához stb. program
 
 nyilvános LocalRunHelper ([System. IO. TextWriter messageOutput = null])
 
-|Paraméter|Típus|Leírás|
+|Paraméter|Típus|Description|
 |---------|----|-----------|
 |messageOutput|System. IO. TextWriter|a kimeneti üzenetek esetében állítsa a null értéket a konzol használatához|
 
 ### <a name="properties"></a>Tulajdonságok
 
-|Tulajdonság|Típus|Leírás|
+|Tulajdonság|Típus|Description|
 |--------|----|-----------|
 |AlgebraPath|sztring|Az algebra-fájl elérési útja (az algebra-fájl az egyik fordítási eredmény)|
 |CodeBehindReferences|sztring|Ha a parancsfájl további kódokat tartalmaz a hivatkozások mögött, adja meg a ";" karakterrel elválasztott elérési utakat.|
@@ -361,7 +361,7 @@ nyilvános LocalRunHelper ([System. IO. TextWriter messageOutput = null])
 
 ### <a name="method"></a>Metódus
 
-|Metódus|Leírás|Visszatérési|Paraméterek|
+|Metódus|Leírás|Visszatérési|Paraméter|
 |------|-----------|------|---------|
 |nyilvános Boole DoCompile ()|Az U-SQL-szkript fordítása|Igaz siker esetén| |
 |nyilvános Boole DoExec ()|A lefordított eredmény végrehajtása|Igaz siker esetén| |
@@ -374,7 +374,7 @@ nyilvános LocalRunHelper ([System. IO. TextWriter messageOutput = null])
 
 E_CSC_SYSTEM_INTERNAL: belső hiba! Nem tölthető be a (z) "ScopeEngineManaged.dll" fájl vagy szerelvény vagy annak valamelyik függősége. A megadott modul nem található.
 
-Ellenőrizze a következőket:
+Ellenőrizze a következőt:
 
 - Győződjön meg arról, hogy rendelkezik x64-környezettel. A Build cél platformnak és a tesztkörnyezetben x64-nek kell lennie, az **1. lépés: C# egység tesztelési projekt és a fenti konfiguráció létrehozása című témakörben** talál.
 - Győződjön meg arról, hogy az összes függőségi fájlt átmásolta a NugetPackage\build\runtime\ a Project Working könyvtárba.

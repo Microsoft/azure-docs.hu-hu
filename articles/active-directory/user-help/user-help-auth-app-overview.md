@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
 ms.openlocfilehash: 7f4c09a32794e13b0e0041ee916401b714d8509e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90055231"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Mi a Microsoft Authenticator alkalmazás?
@@ -49,7 +49,7 @@ A Microsoft Authenticator alkalmazást többféleképpen is használhatja, több
 
 A két tényező ellenőrzése a Microsoft Authenticator alkalmazással működik a következő módokon:
 
-- **Értesítési.** Írja be a felhasználónevét és jelszavát a munkahelyi vagy iskolai fiókjába vagy a személyes Microsoft-fiókba bejelentkezett eszközre, majd a Microsoft Authenticator alkalmazás értesítést küld, amely arra kéri, hogy **hagyja jóvá a bejelentkezést**. Ha felismeri a bejelentkezési kísérletet, válassza a **jóváhagyás** lehetőséget. Ellenkező esetben válassza a **Megtagadás**lehetőséget. Ha a **Megtagadás**lehetőséget választja, akkor a kérést csalárdként is megjelölheti.
+- **Értesítési.** Írja be a felhasználónevét és jelszavát a munkahelyi vagy iskolai fiókjába vagy a személyes Microsoft-fiókba bejelentkezett eszközre, majd a Microsoft Authenticator alkalmazás értesítést küld, amely arra kéri, hogy **hagyja jóvá a bejelentkezést**. Ha felismeri a bejelentkezési kísérletet, válassza a **jóváhagyás** lehetőséget. Ellenkező esetben válassza a **Megtagadás** lehetőséget. Ha a **Megtagadás** lehetőséget választja, akkor a kérést csalárdként is megjelölheti.
 
 - **Ellenőrző kód.** Írja be a felhasználónevét és jelszavát a munkahelyi vagy iskolai fiókjába vagy a személyes Microsoft-fiókba bejelentkezett eszközre, majd másolja a társított ellenőrző kódot a Microsoft Authenticator alkalmazás **fiókok** képernyőjéről. Az ellenőrző kód egyszeri jelszavas (OTP) hitelesítésként is ismert.
 
@@ -71,7 +71,7 @@ A fiók típusától függően a szervezet dönthet úgy, hogy kétfaktoros elle
 
 ## <a name="in-this-section"></a>A szakasz tartalma
 
-| Cikk | Leírás |
+| Cikk | Description |
 | ------ | ------------ |
 | [Az alkalmazás letöltése és telepítése](user-help-auth-app-download-install.md) | Leírja, hogy hol és hogyan lehet beolvasni és telepíteni a Microsoft Authenticator alkalmazást az Android és az iOS rendszerű eszközökön. |
 | [Munkahelyi vagy iskolai fiókjainak hozzáadása](user-help-auth-app-add-work-school-account.md) | Ismerteti, hogyan adhat hozzá különböző munkahelyi vagy iskolai és személyes fiókokat a Microsoft Authenticator alkalmazáshoz. |

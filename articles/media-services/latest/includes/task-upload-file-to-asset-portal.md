@@ -6,16 +6,16 @@ ms.date: 08/17/2020
 ms.author: inhenkel
 ms.custom: CLI
 ms.openlocfilehash: f62ff333cb662e353c8d2381a12c8817f514e537
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88658417"
 ---
 <!-- ### Upload files with the Azure portal -->
 
 1. Az [Azure-portálon](https://portal.azure.com/) válassza ki Azure Media Services-fiókját.
-1. Válassza a **Beállítások**  >  **eszközök**elemet.
+1. Válassza a **Beállítások**  >  **eszközök** elemet.
 1. Kattintson a **Feltöltés** gombra. Megjelenik az **Upload a video asset** (Videóobjektum feltöltése) ablak.
 
    > [!NOTE]

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: trbye
 ms.openlocfilehash: c27493748381a3aced92aab41745f352f228c50e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95024993"
 ---
 # <a name="what-is-conversation-transcription-in-meetings-preview"></a>Mi a beszélgetési átirat az értekezletekben (előzetes verzió)?
@@ -34,7 +34,7 @@ A beszélgetés átirata egy [beszéd-szöveg](speech-to-text.md) típusú megol
 > [!NOTE]
 > Bár a beszélgetés átirata nem korlátozza a beszélők számát a helyiségben, a 2-10 Beszélők száma munkamenetre van optimalizálva.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 A kezdéshez tekintse [meg a](how-to-use-conversation-transcription.md) valós idejű beszélgetés átiratának rövid útmutatóját.
 
@@ -81,7 +81,7 @@ A rendszer a hangadatokat élő módon dolgozza fel az előadói azonosító és
 
 A társalgási átirat jelenleg a következő régiókban támogatja az [összes beszéd és szöveg nyelvét](language-support.md#speech-to-text) :,,  `centralus` `eastasia` `eastus` , `westeurope` . Ha további területi támogatásra van szüksége, lépjen kapcsolatba a [beszélgetés átirata szolgáltatás legénységével](mailto:CTSFeatureCrew@microsoft.com).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Beszélgetések valós idejű átírása](how-to-use-conversation-transcription.md)

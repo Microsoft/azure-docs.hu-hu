@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 11/24/2020
 ms.author: apimpm
 ms.openlocfilehash: ca7bd70bbf99a6d0079717a7a02328b11528d2e0
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96841437"
 ---
 # <a name="get-api-analytics-in-azure-api-management"></a>API Analytics beszerzése az Azure API Management
@@ -50,7 +50,7 @@ A API Management példány elemzési adatainak lekéréséhez és szűréséhez 
 
 Az elérhető műveletek a jelentés rekordjait az API, a földrajz, az API-műveletek, a termék, a kérelem, az előfizetés, az idő vagy a felhasználó szerint adják vissza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A API Management Azure Monitor funkcióinak bevezetését lásd [: oktatóanyag: közzétett API-k figyelése](api-management-howto-use-azure-monitor.md)
 * Részletes HTTP-naplózás és-figyelés: [az API-k monitorozása az Azure API Management, a Event Hubs és a Moesif segítségével](api-management-log-to-eventhub-sample.md).

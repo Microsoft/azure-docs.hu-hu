@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 869d60d4ccb3bae58924fe4221f83b1b0125ae04
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98613534"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Kifejezések írása a Azure Active Directory attribútum-hozzárendelésekhez
@@ -47,7 +47,7 @@ Az attribútum-hozzárendelések kifejezések szintaxisa Visual Basic for Applic
 |[ConvertFromBase64](#convertfrombase64)|A ConvertFromBase64 függvény a megadott Base64 kódolású értéket egy normál karakterlánccá alakítja át.|
 |[ConvertToBase64](#converttobase64)|A ConvertToBase64 függvény egy karakterláncot Unicode Base64 karakterlánccá alakít át. |
 |[ConvertToUTF8Hex](#converttoutf8hex)|A ConvertToUTF8Hex függvény egy karakterláncot UTF8 hexadecimális kódolású értékre alakít át.|
-|[Darabszám](#count)|A Count függvény egy többértékű attribútum elemeinek számát adja vissza.|
+|[Száma](#count)|A Count függvény egy többértékű attribútum elemeinek számát adja vissza.|
 |[CStr](#cstr)|A CStr függvény karakterlánc típusú adattípusra konvertál.|
 |[DateFromNum](#datefromnum)|A DateFromNum függvény egy értéket AD meg az AD dátumformátum dátum és idő típusára.|
 |[DNComponent](#dncomponent)|A DNComponent függvény a megadott DN-összetevő értékét adja vissza balról.|

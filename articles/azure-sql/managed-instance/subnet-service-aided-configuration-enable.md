@@ -11,10 +11,10 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.date: 03/12/2020
 ms.openlocfilehash: 67b398194d9094cd99fccaa85ed0df3be362ce2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91618012"
 ---
 # <a name="enabling-service-aided-subnet-configuration-for-azure-sql-managed-instance"></a>A szolgáltatással segített alhálózat konfigurációjának engedélyezése a felügyelt Azure SQL-példányhoz
@@ -22,7 +22,7 @@ ms.locfileid: "91618012"
 
 A szolgáltatással segített alhálózat-konfiguráció automatizált hálózati konfiguráció-felügyeletet biztosít a felügyelt példányokat üzemeltető alhálózatok számára. A szolgáltatással segített alhálózat-konfigurációval rendelkező felhasználó teljes mértékben felügyeli az adatokhoz való hozzáférést (TDS-adatforgalom), míg a felügyelt példányok feladata, hogy a felügyeleti forgalom zavartalan áramlását biztosítsa, hogy az SLA-t teljesítse.
 
-Az automatikusan konfigurált hálózati biztonsági csoportok és útválasztási szabályok az ügyfél számára láthatók, és a _Microsoft. SQL-managedInstances_UseOnly__ előtaggal vannak ellátva.
+Az automatikusan konfigurált hálózati biztonsági csoportok és útválasztási szabályok az ügyfél számára láthatók, és a _Microsoft. SQL-managedInstances_UseOnly_ _ előtaggal vannak ellátva.
 
 A szolgáltatással segített konfiguráció automatikusan engedélyezve van, ha bekapcsolja az [alhálózat delegálását](../../virtual-network/subnet-delegation-overview.md) az `Microsoft.Sql/managedInstances` erőforrás-szolgáltatónál.
 
