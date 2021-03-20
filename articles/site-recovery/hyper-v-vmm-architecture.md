@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 703a6afdc12c8a9863ff0f480ec7a577ec31ef77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87495998"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>Architektúra – Hyper-V replikáció másodlagos helyre
@@ -56,7 +56,7 @@ A következő táblázat és ábra a Hyper-V-replikáció másodlagos helyre tö
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
 [Ezt az oktatóanyagot](hyper-v-vmm-disaster-recovery.md) követve engedélyezheti a Hyper-V replikálását a VMM-felhők között.

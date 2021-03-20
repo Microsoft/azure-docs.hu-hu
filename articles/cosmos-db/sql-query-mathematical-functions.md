@@ -9,10 +9,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 63d349c8cfff52932d51ce7143aba33521c43890
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96549189"
 ---
 # <a name="mathematical-functions-azure-cosmos-db"></a>Matematikai függvények (Azure Cosmos DB)  
@@ -32,7 +32,7 @@ Az eredmény a következőket eredményezi:
     [4]
 ```
 
-## <a name="functions"></a>Függvények
+## <a name="functions"></a>Functions
 
 A következő támogatott beépített matematikai függvények számításokat hajtanak végre, általában bemeneti argumentumok alapján, és numerikus kifejezést adnak vissza:
  

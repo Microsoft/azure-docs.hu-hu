@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/20/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 1adb9b009a250942bab7e9b0e3b4b3e52840341c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85481595"
 ---
 # <a name="popular-scenarios-for-using-azure-devtest-labs"></a>Népszerű forgatókönyvek Azure DevTest Labs használatára
@@ -72,7 +72,7 @@ A **méretezett üzembe helyezés** hetek/hónapok közötti áttekintést és t
 
 A **koncepciók** üzembe helyezésének igazolása arra összpontosít, hogy egyetlen csapatnak a szervezeti értéket kell létrehoznia. Habár úgy tűnik, hogy egy méretezett központi telepítésre gondol, a megközelítés gyakrabban fog működni, mint a koncepció igazolása. Ezért javasoljuk, hogy kezdjen el kisméretű, Tanuljon az első csapattól, és ismételje meg ugyanezt a megközelítést két-három további csapattal, majd tervezze meg a kibővített telepítést a szerzett ismeretek alapján. A koncepció sikeres igazolása érdekében javasoljuk, hogy válasszon ki egy vagy két csapatot, és azonosítsa a forgatókönyveit (fejlesztői környezet és tesztelési környezetek), dokumentálja az aktuális használati eseteket, és telepítse a DevTest Labs szolgáltatást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Olvassa el a következő cikkeket:
 
 - [DevTest Labs-fogalmak](devtest-lab-concepts.md)

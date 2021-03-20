@@ -15,10 +15,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: b719e866852d2e865c16c62fddd8c549ae505b7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85551548"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>Hozzáférés engedélyezése webalkalmazásoknak OpenID Connect és az Azure Active Directory használatával
@@ -37,20 +37,20 @@ Először regisztrálja az alkalmazást a Azure Active Directory (Azure AD) Bér
 1. Válassza ki az Azure AD-bérlőt a lap jobb felső sarkában lévő fiók kiválasztásával, majd kattintson a **Váltás a címtár** -navigációra lehetőségre, majd válassza ki a megfelelő bérlőt. 
    - Hagyja ki ezt a lépést, ha csak egy Azure AD-bérlője van a fiókjában, vagy ha már kiválasztotta a megfelelő Azure AD-bérlőt.
    
-1. A Azure Portal keresse meg és válassza a **Azure Active Directory**lehetőséget.
+1. A Azure Portal keresse meg és válassza a **Azure Active Directory** lehetőséget.
    
-1. A **Azure Active Directory** bal oldali menüben válassza az **alkalmazás-regisztrációk**lehetőséget, majd válassza az **új regisztráció**lehetőséget.
+1. A **Azure Active Directory** bal oldali menüben válassza az **alkalmazás-regisztrációk** lehetőséget, majd válassza az **új regisztráció** lehetőséget.
    
 1. Kövesse az utasításokat az új alkalmazás létrehozásához. Nem számít, hogy ez egy webalkalmazás vagy egy nyilvános ügyfél (mobil & asztali) alkalmazás ebben az oktatóanyagban, de ha konkrét példákat szeretne a webalkalmazások vagy a nyilvános ügyfélalkalmazások számára [, tekintse](v1-overview.md)meg a gyors útmutatókat.
    
    - A **név** az alkalmazás neve, amely a végfelhasználók számára ad leírást az alkalmazásról.
-   - A **támogatott fiókok típusai**területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
+   - A **támogatott fiókok típusai** területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
    - Adja meg az **átirányítási URI**-t. Webalkalmazások esetében ez az alkalmazás alap URL-címe, ahol a felhasználók bejelentkezhetnek.  Például: `http://localhost:12345`. A nyilvános ügyfél (Mobile & Desktop) esetében az Azure AD a jogkivonat-válaszok visszaküldésére használja. Adja meg az alkalmazáshoz tartozó értéket.  Például: `http://MyFirstAADApp`.
    <!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->  
    
 1. A regisztráció befejezését követően az Azure AD egyedi ügyfél-azonosítót (az **alkalmazás azonosítóját**) rendeli hozzá az alkalmazáshoz. Ezt az értéket a következő részekben kell megadnia, ezért másolja azt az alkalmazás oldaláról.
    
-1. Ha szeretné megkeresni az alkalmazást a Azure Portalban, válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza az **összes alkalmazás megtekintése**lehetőséget.
+1. Ha szeretné megkeresni az alkalmazást a Azure Portalban, válassza a **Alkalmazásregisztrációk** lehetőséget, majd válassza az **összes alkalmazás megtekintése** lehetőséget.
 
 ## <a name="authentication-flow-using-openid-connect"></a>Hitelesítési folyamat OpenID Connect használatával
 
@@ -108,15 +108,15 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &nonce=7362CAEA-9CA5-4B43-9BA3-34D7C303EBA7
 ```
 
-| Paraméter | Típus | Leírás |
+| Paraméter | Típus | Description |
 | --- | --- | --- |
 | Bérlő |kötelező |A `{tenant}` kérelem elérési útjának értéke használható annak szabályozására, hogy ki jelentkezhet be az alkalmazásba. Az engedélyezett értékek a bérlői azonosítók, például `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` vagy a `contoso.onmicrosoft.com` `common` bérlői független tokenek esetében. |
-| client_id |kötelező |Az alkalmazáshoz hozzárendelt, az Azure AD-vel regisztrált alkalmazás azonosítója. Ezt a Azure Portalban találja. Kattintson a **Azure Active Directory**, majd az alkalmazás **regisztrálása**elemre, válassza ki az alkalmazást, és keresse meg az alkalmazás azonosítóját az alkalmazás lapon. |
+| client_id |kötelező |Az alkalmazáshoz hozzárendelt, az Azure AD-vel regisztrált alkalmazás azonosítója. Ezt a Azure Portalban találja. Kattintson a **Azure Active Directory**, majd az alkalmazás **regisztrálása** elemre, válassza ki az alkalmazást, és keresse meg az alkalmazás azonosítóját az alkalmazás lapon. |
 | response_type |kötelező |Tartalmaznia kell `id_token` az OpenID Connect bejelentkezést. Más response_types is tartalmazhatnak, például: `code` vagy `token` . |
 | scope | ajánlott | Az OpenID Connect specifikációja megköveteli a hatókört `openid` , amely a beleegyezési felhasználói felületen a "Bejelentkezés" engedéllyel van lefordítva. Ezt és a többi OIDC-hatókört a rendszer figyelmen kívül hagyja a 1.0-s végponton, de továbbra is ajánlott eljárás a szabványoknak megfelelő ügyfelek számára. |
 | egyszeri |kötelező |A kérelemben szereplő, az alkalmazás által generált érték, amely az eredményül kapott `id_token` jogcímként szerepel. Az alkalmazás ezután ellenőrizheti ezt az értéket a jogkivonat-Visszajátszási támadások enyhítése érdekében. Az érték általában egy véletlenszerű, egyedi karakterlánc vagy GUID, amely a kérelem forrásának azonosítására szolgál. |
 | redirect_uri | ajánlott |Az alkalmazás redirect_uri, ahol az alkalmazás elküldhet és fogadhat hitelesítési válaszokat. Pontosan meg kell egyeznie a portálon regisztrált redirect_urisével, kivéve, ha az URL-címet kódolni kell. Ha hiányzik, a rendszer visszaküldi a felhasználói ügynököt az alkalmazáshoz regisztrált átirányítási URI-k egyikére, véletlenszerűen. A maximális hossz 255 bájt |
-| response_mode |választható |Meghatározza azt a módszert, amelyet az eredményül kapott authorization_codenek az alkalmazásba való visszaküldéséhez kell használni. A támogatott értékek `form_post` a *http-űrlapok utáni* és `fragment` az *URL-töredékek*esetében használhatók. A webalkalmazások esetében javasoljuk, `response_mode=form_post` hogy a használatával biztosítsa a tokenek legbiztonságosabb átvitelét az alkalmazásba. Az alapértelmezett érték minden folyamathoz, beleértve az id_token is `fragment` .|
+| response_mode |választható |Meghatározza azt a módszert, amelyet az eredményül kapott authorization_codenek az alkalmazásba való visszaküldéséhez kell használni. A támogatott értékek `form_post` a *http-űrlapok utáni* és `fragment` az *URL-töredékek* esetében használhatók. A webalkalmazások esetében javasoljuk, `response_mode=form_post` hogy a használatával biztosítsa a tokenek legbiztonságosabb átvitelét az alkalmazásba. Az alapértelmezett érték minden folyamathoz, beleértve az id_token is `fragment` .|
 | állapot |ajánlott |A jogkivonat-válaszban visszaadott kérelemben szereplő érték. Bármely kívánt tartalom sztringje lehet. A véletlenszerűen generált egyedi érték általában a [helyek közötti kérelmek hamisításának megelőzésére](https://tools.ietf.org/html/rfc6749#section-10.12)szolgál. Az állapot az alkalmazásban a felhasználó állapotára vonatkozó információk kódolására is használatos, mielőtt a hitelesítési kérelem bekövetkezett volna, például az oldal vagy a megtekintés. |
 | gyors |választható |Megadja a szükséges felhasználói beavatkozás típusát. Jelenleg az egyetlen érvényes érték a következők egyike: "bejelentkezhessen," None "és" beleegyezett ". `prompt=login` kényszeríti a felhasználót, hogy adja meg a kérelem hitelesítő adatait, és zárja be az egyszeri bejelentkezést. `prompt=none` Ez ellentétes – biztosítja, hogy a felhasználó semmilyen interaktív kérés nélkül nem jelenik meg. Ha a kérést nem lehet csendes úton végrehajtani az egyszeri bejelentkezésen keresztül, a végpont hibát ad vissza. `prompt=consent` a felhasználó bejelentkezése után elindítja a OAuth jóváhagyása párbeszédpanelt, amely arra kéri a felhasználót, hogy adjon engedélyt az alkalmazásnak. |
 | login_hint |választható |A használatával előre kitöltheti a felhasználó bejelentkezési oldalának username/e-mail címe mezőjét, ha már ismeri a felhasználónevét. Az alkalmazások gyakran használják ezt a paramétert az újrahitelesítés során, miután már kibontotta a felhasználónevet egy korábbi bejelentkezésből a `preferred_username` jogcím használatával. |
@@ -161,7 +161,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 Az alábbi táblázat azokat a hibakódokat ismerteti, amelyeket a rendszer a `error` hiba válaszának paraméterében adhat vissza.
 
-| Hibakód | Leírás | Ügyfél művelete |
+| Hibakód | Description | Ügyfél művelete |
 | --- | --- | --- |
 | invalid_request |Protokollhiba, például hiányzó kötelező paraméter. |Javítsa ki és küldje el újra a kérelmet. Ez egy fejlesztési hiba, és általában a kezdeti tesztelés során történik. |
 | unauthorized_client |Az ügyfélalkalmazás nem jogosult engedélyezési kód igénylésére. |Ez általában akkor fordul elő, ha az ügyfélalkalmazás nincs regisztrálva az Azure AD-ben, vagy nem kerül be a felhasználó Azure AD-bérlőbe. Az alkalmazás arra kéri a felhasználót, hogy telepítse az alkalmazást, és hozzáadja azt az Azure AD-hez. |
@@ -197,7 +197,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 ```
 
-| Paraméter | Típus | Leírás |
+| Paraméter | Típus | Description |
 | --- | --- | --- |
 | post_logout_redirect_uri |ajánlott |Az URL-cím, amelyet a felhasználónak át kell irányítani a sikeres kijelentkezés után.  Ennek az URL-címnek meg kell egyeznie az alkalmazás regisztrációs portálján az alkalmazáshoz regisztrált átirányítási URI-k egyikével.  Ha *post_logout_redirect_urit* nem tartalmaz, a felhasználó általános üzenetet jelenít meg. |
 
@@ -207,7 +207,7 @@ Amikor átirányítja a felhasználót a szolgáltatásba `end_session_endpoint`
 
 1. Navigáljon a [Azure Portal](https://portal.azure.com).
 2. A lap jobb felső sarkában található fiókra kattintva válassza ki a Active Directory.
-3. A bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget, majd válassza a **Alkalmazásregisztrációk** lehetőséget, majd válassza ki az alkalmazást.
+3. A bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget, majd válassza a **Alkalmazásregisztrációk** lehetőséget, majd válassza ki az alkalmazást.
 4. Kattintson a **Beállítások**, majd a **Tulajdonságok** elemre, és keresse meg a **kijelentkezési URL-cím** szövegmezőt. 
 
 ## <a name="token-acquisition"></a>Jogkivonat-beszerzés
@@ -271,7 +271,7 @@ A lehetséges hibakódok és a javasolt ügyfél-művelet leírását lásd: [hi
 
 Miután megkapta az engedélyt `code` és a `id_token` -t, aláírhatja a felhasználót a nevében, és [elérheti a hozzáférési jogkivonatokat](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) is. A felhasználó a alkalmazásban való aláírásához a `id_token` fentiekben leírtak szerint pontosan kell érvényesíteni a következőt:. A hozzáférési jogkivonatok beszerzéséhez kövesse az [OAuth Code flow dokumentációjának](v1-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token)"az engedélyezési kód használata hozzáférési token kérése" című szakaszának lépéseit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [hozzáférési tokenekről](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
 * További információ a [ `id_token` és a jogcímekről](../develop/id-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).

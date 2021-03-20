@@ -9,10 +9,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: c9bc614aa044ace0224086c7f18b54783757711a
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96549140"
 ---
 # <a name="spatial-functions-azure-cosmos-db"></a>Térbeli függvények (Azure Cosmos DB)
@@ -20,7 +20,7 @@ ms.locfileid: "96549140"
 
 A Cosmos DB a következő Nyílt térinformatikai konzorcium (OGC) beépített függvényeket támogatja a térinformatikai lekérdezésekhez. 
 
-## <a name="functions"></a>Függvények
+## <a name="functions"></a>Functions
 
 A következő skaláris függvények végrehajtanak egy műveletet egy térbeli objektum bemeneti értékén, és egy numerikus vagy logikai értéket adnak vissza.  
 

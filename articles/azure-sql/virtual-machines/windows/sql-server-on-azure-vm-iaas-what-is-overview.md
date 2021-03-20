@@ -14,10 +14,10 @@ ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: b4b1234b88eafedbd03b78241baaa40231a6cbd6
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97356803"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Mi az Azure Virtual Machines SQL Server (Windows)
@@ -141,10 +141,10 @@ A Felhasználói élmény fokozása program (CEIP) alapértelmezés szerint enge
 ### <a name="windows-virtual-machines"></a>Windows rendszerű virtuális gépek
 * [Az Azure Virtual Machines áttekintése](../../../virtual-machines/windows/overview.md)
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Tárolás
 * [A Microsoft Azure Storage bemutatása](../../../storage/common/storage-introduction.md)
 
-### <a name="networking"></a>Hálózat
+### <a name="networking"></a>Hálózatkezelés
 * [Virtual Network áttekintése](../../../virtual-network/virtual-networks-overview.md)
 * [IP-címek az Azure-ban](../../../virtual-network/public-ip-addresses.md)
 * [Teljes tartománynév létrehozása az Azure Portalon](../../../virtual-machines/create-fqdn.md)

@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 10/22/2020
 ms.openlocfilehash: 58563629b30e7be764732a9810162e1a0b1931e6
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98725836"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Felügyelt Azure SQL-példány kapcsolati architektúrája
@@ -319,7 +319,7 @@ A következő virtuális hálózati szolgáltatások jelenleg *nem támogatottak
 - **NAT-átjáró**: az [Azure Virtual Network NAT](../../virtual-network/nat-overview.md) használata az adott nyilvános IP-címmel rendelkező kimenő kapcsolatok vezérléséhez az SQL felügyelt példánya nem érhető el. A felügyelt SQL-példány szolgáltatás jelenleg olyan alapszintű terheléselosztó használatára korlátozódik, amely nem biztosítja a bejövő és kimenő folyamatok egyidejű használatát Virtual Network NAT-ban.
 - **IPv6 for Azure Virtual Network**: az SQL felügyelt példányának telepítése [kettős verem IPv4-/IPv6-alapú virtuális hálózatokra](../../virtual-network/ipv6-overview.md) várhatóan sikertelen lesz. Olyan hálózati biztonsági csoport (NSG) vagy útválasztási tábla (UDR) társítása, amely IPv6-címeket tartalmaz az SQL felügyelt példány alhálózatához, vagy IPv6-cím előtagokat ad hozzá a felügyelt példány alhálózatához már társított NSG-vagy UDR, az SQL felügyelt példánya nem érhető el. Az SQL felügyelt példányainak központi telepítése olyan NSG-és UDR rendelkező alhálózatra, amelyeken már van IPv6-előtag.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az áttekintést lásd: [Mi az az Azure SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).
 - Ismerje meg, hogyan [állíthat be egy új Azure-beli virtuális hálózatot](virtual-network-subnet-create-arm-template.md) vagy egy [meglévő Azure-beli virtuális hálózatot](vnet-existing-add-subnet.md) , ahol telepítheti az SQL felügyelt példányát.

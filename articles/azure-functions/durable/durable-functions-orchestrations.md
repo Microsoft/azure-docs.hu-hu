@@ -6,10 +6,10 @@ ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
 ms.openlocfilehash: ba314963058389e171601407ff00411049eecd45
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/01/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97845421"
 ---
 # <a name="durable-orchestrations"></a>Tartós összeszerelések
@@ -124,7 +124,7 @@ Az ellenőrzőpont befejezését követően a Orchestrator függvény szabadon e
 
 Befejezésekor a korábban bemutatott függvény előzményei a következő táblázathoz hasonlóan jelennek meg az Azure Table Storage (illusztrációs célokra rövidítve):
 
-| PartitionKey (InstanceId)                     | EventType             | Időbélyeg               | Bevitel | Név             | Eredmény                                                    | Állapot |
+| PartitionKey (InstanceId)                     | EventType             | Időbélyeg               | Bevitel | Name             | Eredmény                                                    | Állapot |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
 | eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852 Z | null  | E1_HelloSequence |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362 Z |       |                  |                                                           |                     |
@@ -141,7 +141,7 @@ Befejezésekor a korábban bemutatott függvény előzményei a következő táb
 | eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919 Z |       |                  | "" "Helló Londonban!" "                                       |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032 Z |       |                  |                                                           |                     |
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:35.044 Z |       |                  |                                                           |                     |
-| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044 Z |       |                  | "[" "Hello Tokyo!" "," "Helló Seattle!" "," "Hello London!" "]" | Befejezve           |
+| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044 Z |       |                  | "[" "Hello Tokyo!" "," "Helló Seattle!" "," "Hello London!" "]" | Befejeződött           |
 
 Néhány megjegyzés az oszlop értékeihez:
 
@@ -390,7 +390,7 @@ def main(location: Location) -> str:
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Vezénylői kódkorlátozások](durable-functions-code-constraints.md)

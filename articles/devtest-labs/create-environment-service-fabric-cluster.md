@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
 ms.openlocfilehash: 530cf3b20820e34913612419d0ffa731a70f6a58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85484009"
 ---
 # <a name="create-an-environment-with-self-contained-service-fabric-cluster-in-azure-devtest-labs"></a>Környezet létrehozása önálló Service Fabric-fürttel Azure DevTest Labs
@@ -25,7 +25,7 @@ Service Fabric-fürtök a DevTest Labs környezetei segítségével hozhatók l�
 2. Az alábbi lépéseket követve ellenőrizze, hogy a Service Fabric szolgáltató regisztrálva van-e az előfizetéséhez:
     1. Válassza az **előfizetések** lehetőséget a bal oldali navigációs menüben, és válassza ki az **előfizetését**
     2. Az **előfizetés** lapon válassza az **erőforrás-szolgáltatók** lehetőséget a bal oldali menü **Beállítások** szakaszában. 
-    3. Ha a **Microsoft. ServiecFabric** nincs regisztrálva, válassza a **regisztráció**lehetőséget. 
+    3. Ha a **Microsoft. ServiecFabric** nincs regisztrálva, válassza a **regisztráció** lehetőséget. 
 3. A labor **DevTest labor** lapján válassza a **+ Hozzáadás** lehetőséget az eszköztáron. 
     
     ![Hozzáadás gomb az eszköztáron](./media/create-environment-service-fabric-cluster/add-button.png)
@@ -37,7 +37,7 @@ Service Fabric-fürtök a DevTest Labs környezetei segítségével hozhatók l�
     2. Válassza ki a fürt virtuális gépei **operációs rendszerét (os)** . Az alapértelmezett érték: **Windows**.
     3. Adja meg a fürt **rendszergazdájának** nevét. 
     4. **Jelszó** megadása a rendszergazdának. 
-    5. A **tanúsítványnál**adja meg a tanúsítvány adatait Base64 kódolású karakterláncként. Tanúsítvány létrehozásához hajtsa végre a következő lépéseket:
+    5. A **tanúsítványnál** adja meg a tanúsítvány adatait Base64 kódolású karakterláncként. Tanúsítvány létrehozásához hajtsa végre a következő lépéseket:
         1. Töltse le a **Create-ClusterCertificate.ps1** fájlt a [git-tárházból](https://github.com/Azure/azure-devtestlab/tree/master/Environments/ServiceFabric-LabCluster). Azt is megteheti, hogy a tárházat a gépen is klónozott. 
         2. Indítsa el a **PowerShellt**. 
         3. Futtassa a **ps1** -fájlt a parancs használatával `.\Create-ClusterCertificate.ps1` . Megjelenik egy, a Jegyzettömbben megnyitott szövegfájl, amely az oldalon található tanúsítványokkal kapcsolatos mezők kitöltéséhez szükséges információkat tartalmazza. . 
@@ -95,8 +95,8 @@ Az indítási ütemterv bekapcsolásához hajtsa végre a következő lépéseke
 A Leállítás beállításainak módosításához hajtsa végre a következő lépéseket:
 
 1. Válassza az **automatikus leállítás** lehetőséget a bal oldali menüben. 
-2. Ezen az oldalon **engedélyezheti**az automatikus leállítást, **Ha az engedélyezve lehetőséget választja** . 
-3. Ha **engedélyezve**van **a** beállítás, kövesse az alábbi lépéseket:
+2. Ezen az oldalon **engedélyezheti** az automatikus leállítást, **Ha az engedélyezve lehetőséget választja** . 
+3. Ha **engedélyezve** van **a** beállítás, kövesse az alábbi lépéseket:
     1. A Leállítás **időpontjának** megadása.
     2. Itt adhatja meg az **időzónát** . 
     3. Itt adhatja meg, hogy szeretné-e, ha a DevTest Labs **értesítést** küldjön az automatikus leállítás előtt. 
@@ -118,7 +118,7 @@ A korábbi lépésekben látott Service Fabric-fürt lapja a DevTest Labs oldal�
 
     ![Service Fabric fürt kezdőlapja](./media/create-environment-service-fabric-cluster/service-fabric-cluster-page.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A környezetekkel kapcsolatos részletekért tekintse meg a következő cikkeket: 
 
 - [Több virtuális gépes környezet és PaaS-erőforrás létrehozása Azure Resource Manager-sablonokkal](devtest-lab-create-environment-from-arm.md)

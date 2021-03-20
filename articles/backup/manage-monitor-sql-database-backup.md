@@ -4,10 +4,10 @@ description: Ez a cikk az Azure-beli virtuális gépeken futó SQL Server adatb�
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: e37e6fc211b34b7e427b66db374a705faafd25f9
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97858736"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Biztonsági másolattal rendelkező SQL Server-adatbázisok kezelése és monitorozása
@@ -160,6 +160,6 @@ Időnként előfordulhat, hogy a virtuális gépen a munkaterhelés-bővítmény
 
 Ezt a beállítást körültekintően használhatja. Ha egy már kifogástalan állapotú virtuális gépen aktiválódik, ez a művelet a bővítmény újraindítását eredményezi. Ennek hatására előfordulhat, hogy az összes folyamatban lévő feladat meghiúsul. Az újbóli regisztrálási művelet elindítása előtt keressen egy vagy több [tünetet](backup-sql-server-azure-troubleshoot.md#re-registration-failures) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: SQL Server- [adatbázis biztonsági másolatainak hibáinak megoldása](backup-sql-server-azure-troubleshoot.md).

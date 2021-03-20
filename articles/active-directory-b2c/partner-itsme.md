@@ -12,10 +12,10 @@ ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ba7875caa6a1db7638bfeafcfea1efa7b2462152
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87489515"
 ---
 # <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>Az itsme OpenID Connect (OIDC) konfigurálása Azure Active Directory B2C
@@ -61,7 +61,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 2. Aktiválja a itsme-fiókját e-mailben a címre onboarding@itsme.be . Ekkor megjelenik a B2C-beállításhoz szükséges **partneri kód** és **szolgáltatási kód** .
 
-3. A itsme-fiók aktiválása után egy e-mailt fog kapni, amely egy egyszeri, az **ügyfél titkos kulcsára**mutató hivatkozást kap.
+3. A itsme-fiók aktiválása után egy e-mailt fog kapni, amely egy egyszeri, az **ügyfél titkos kulcsára** mutató hivatkozást kap.
 
 4. A konfigurálás befejezéséhez kövesse a [itsme](https://business.itsme.be/en) címen található utasításokat.
 
@@ -74,15 +74,15 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 1. Győződjön meg arról, hogy a Azure AD B2C bérlőt tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 
-2. Az **Azure-szolgáltatások**területen válassza a **Azure ad B2C** lehetőséget (vagy válassza a **További szolgáltatások** lehetőséget, és a **minden szolgáltatás** keresőmező használatával keresse meg a *Azure ad B2C*).
+2. Az **Azure-szolgáltatások** területen válassza a **Azure ad B2C** lehetőséget (vagy válassza a **További szolgáltatások** lehetőséget, és a **minden szolgáltatás** keresőmező használatával keresse meg a *Azure ad B2C*).
 
-3. Válassza az **identitás-szolgáltatók**, majd az **új OpenID Connect Provider**lehetőséget.
+3. Válassza az **identitás-szolgáltatók**, majd az **új OpenID Connect Provider** lehetőséget.
 
 4. Töltse ki az űrlapot a következő információkkal:
 
    |Tulajdonság | Érték |
    |------------ |------- |
-   | Name (Név) | itsme |
+   | Név | itsme |
    | Metaadatok URL-címe | `https://oidc.<environment>.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration` <br>hol `<environment>` van `e2e` vagy (tesztkörnyezet) vagy `prd` (éles környezet)  |
    | Ügyfélazonosító     | Az **ügyfél-azonosító**, más néven **partneri kód**  |
    | Titkos ügyfélkulcs | Az **client_secret** |
@@ -100,28 +100,28 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 ### <a name="configure-a-user-flow"></a>Felhasználói folyamat konfigurálása
 
-1. A Azure AD B2C-bérlő **házirend**területén válassza a **felhasználói folyamatok**elemet.
+1. A Azure AD B2C-bérlő **házirend** területén válassza a **felhasználói folyamatok** elemet.
 
-2. Válassza az **új felhasználói folyamat**elemet.
+2. Válassza az **új felhasználói folyamat** elemet.
 
-3. Válassza a **regisztráció és bejelentkezés**lehetőséget, válassza ki a kívánt verziót, majd kattintson a **Létrehozás**gombra.
+3. Válassza a **regisztráció és bejelentkezés** lehetőséget, válassza ki a kívánt verziót, majd kattintson a **Létrehozás** gombra.
 
 4. Adjon meg egy **nevet**.
 
-5. Az **Identity Providers** szakaszban válassza a **itsme**lehetőséget.
+5. Az **Identity Providers** szakaszban válassza a **itsme** lehetőséget.
 
-6. Kattintson a **Létrehozás** gombra.
+6. Válassza a **Létrehozás** lehetőséget.
 
 7. Nyissa meg az újonnan létrehozott felhasználói folyamatot a felhasználói folyamat nevének kiválasztásával.
 
 8. Válassza a **Tulajdonságok** lehetőséget, és módosítsa a következő értékeket:
 
-   * A **hozzáférés & azonosító jogkivonat élettartama (perc)** és **5**közötti értékre vált.
+   * A **hozzáférés & azonosító jogkivonat élettartama (perc)** és **5** közötti értékre vált.
    * Módosítsa a **frissítési jogkivonat csúszó ablakának élettartamát** **lejárat nélkül**.
 
 ### <a name="register-an-application"></a>Egy alkalmazás regisztrálása
 
-1. A B2C-bérlő **kezelés**területén válassza **Alkalmazásregisztrációk**  >  **új regisztráció**lehetőséget.
+1. A B2C-bérlő **kezelés** területén válassza **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.
 
 2. Adja meg az alkalmazás **nevét** , és adja meg az **átirányítási URI**-t. Tesztelési célból adja meg a következőt: `https://jwt.ms` .
 
@@ -129,17 +129,17 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 4. Válassza a **Regisztráció** lehetőséget.
 
-   a. Tesztelési célból válassza a **hitelesítés**lehetőséget, majd az **implicit engedélyezés**területen jelölje be a **hozzáférési jogkivonatok** és **azonosító tokenek** jelölőnégyzetet.  
+   a. Tesztelési célból válassza a **hitelesítés** lehetőséget, majd az **implicit engedélyezés** területen jelölje be a **hozzáférési jogkivonatok** és **azonosító tokenek** jelölőnégyzetet.  
 
    b. Kattintson a **Mentés** gombra.
 
 ## <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
-1. A B2C-bérlő **házirend** területén válassza a **felhasználói folyamatok**lehetőséget.
+1. A B2C-bérlő **házirend** területén válassza a **felhasználói folyamatok** lehetőséget.
 
 2. Válassza ki a korábban létrehozott felhasználói folyamatot.
 
-3. Válassza a **felhasználói folyamat futtatása**lehetőséget.
+3. Válassza a **felhasználói folyamat futtatása** lehetőséget.
 
    a. **Alkalmazás**: *válassza ki a regisztrált alkalmazást*
 
@@ -147,11 +147,11 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 4. Megjelenik a itsme- **azonosító** oldal.  
 
-5. Adja meg a mobiltelefon számát, és válassza a **Küldés**lehetőséget.
+5. Adja meg a mobiltelefon számát, és válassza a **Küldés** lehetőséget.
 
 6. Erősítse meg a műveletet a itsme alkalmazásban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért tekintse át a következő cikkeket:
 

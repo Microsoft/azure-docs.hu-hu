@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8bc8846d546faec194617ccb753cdbd105e16bf9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85513624"
 ---
 # <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>A StorSimple virtuális tömb eszköz rendszergazdai jelszavának módosítása a StorSimple-n keresztül Eszközkezelő
@@ -38,11 +38,11 @@ A következő lépések végrehajtásával módosíthatja az eszköz rendszergaz
 
 #### <a name="to-change-the-device-administrator-password-via-the-azure-portal"></a>Az eszköz rendszergazdai jelszavának módosítása a Azure Portal használatával
 
-1. A szolgáltatás kezdőlapján válassza ki a szolgáltatást, kattintson duplán a szolgáltatás nevére, majd a **felügyelet** szakaszban kattintson az **eszközök**elemre. Ekkor megnyílik az **eszközök** panel, amely felsorolja az összes StorSimple virtuális tömb eszközét.
+1. A szolgáltatás kezdőlapján válassza ki a szolgáltatást, kattintson duplán a szolgáltatás nevére, majd a **felügyelet** szakaszban kattintson az **eszközök** elemre. Ekkor megnyílik az **eszközök** panel, amely felsorolja az összes StorSimple virtuális tömb eszközét.
 
 2. Az **eszközök** panelen kattintson duplán arra az eszközre, amelyre a jelszó módosítása szükséges.
 
-3. Az eszköz **Beállítások** paneljén kattintson a **Biztonság**elemre.
+3. Az eszköz **Beállítások** paneljén kattintson a **Biztonság** elemre.
 
 4. A **biztonsági beállítások** panelen tegye a következőket:
    
@@ -70,13 +70,13 @@ Hajtsa végre az alábbi lépéseket az eszköz rendszergazdai jelszavának a he
 4. Írja be ismét a jelszót a megerősítéséhez.
    
     ![password2 módosítása](./media/storsimple-virtual-array-change-device-admin-password/image41.png)
-5. Az oldal alján kattintson az **alkalmaz**gombra. Az új jelszó már alkalmazva van. Ha a jelszó módosítása nem sikerült, a következő hibaüzenet jelenik meg:
+5. Az oldal alján kattintson az **alkalmaz** gombra. Az új jelszó már alkalmazva van. Ha a jelszó módosítása nem sikerült, a következő hibaüzenet jelenik meg:
    
     ![jelszavas hiba](./media/storsimple-virtual-array-change-device-admin-password/image42.png)
    
     A jelszó sikeres frissítése után értesítést kap. Ezután ezt a módosított jelszót használhatja az eszköz helyi eléréséhez.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ismerje meg, hogyan [kezelheti a StorSimple virtuális tömböt](storsimple-ova-web-ui-admin.md).
 

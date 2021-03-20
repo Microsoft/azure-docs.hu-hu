@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/13/2020
 ms.custom: devx-track-java, devx-track-azurecli
 ms.openlocfilehash: 2fbdd46b872c4c70999355d457045f4aac8aa34c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92742799"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>A rendszerhez rendelt felügyelt identitás engedélyezése az Azure Spring Cloud Application szolgáltatáshoz
@@ -35,7 +35,7 @@ A [Azure Portal](https://portal.azure.com/)felügyelt identitásának beállít�
 1. A szokásos módon hozzon létre egy alkalmazást a portálon. Navigáljon a portálon.
 2. Görgessen le a **Beállítások** csoportba a bal oldali navigációs ablaktáblán.
 3. Válassza az **identitás** lehetőséget.
-4. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva *értékre* . Kattintson a **Mentés** gombra.
+4. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva *értékre*. Kattintson a **Mentés** gombra.
 
  ![Felügyelt identitás a portálon](./media/spring-cloud-managed-identity/identity-1.png)
 

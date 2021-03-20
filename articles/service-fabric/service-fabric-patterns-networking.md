@@ -4,10 +4,10 @@ description: Ismerteti a Service Fabric általános hálózati mintáit, valamin
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.openlocfilehash: 20bd5e931307725016c3e2ad69dae91214b2caab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87421467"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric hálózati minták
@@ -602,7 +602,7 @@ Az üzembe helyezést követően két terheléselosztó látható az erőforrás
 
 A fenti GitHub-sablonok úgy vannak kialakítva, hogy működjenek az alapértelmezett SKU-val az Azure standard Load Balancer (SLB) és az alapszintű SKU használatával. Ez a SLB nem rendelkezik SLA-val, ezért az éles számítási feladatokhoz a szabványos SKU-t kell használni. Erről további információt az [Azure standard Load Balancer áttekintése](../load-balancer/load-balancer-overview.md)című témakörben talál. A SLB standard SKU-t használó összes Service Fabric fürtnek biztosítania kell, hogy minden csomópont-típushoz olyan szabály legyen, amely engedélyezi a kimenő forgalmat az 443-as porton. Ez a fürt beállításának befejezéséhez szükséges, és az ilyen szabályok nélküli központi telepítések sikertelenek lesznek. A "belső only" terheléselosztó fenti példájában egy további külső terheléselosztó hozzáadása szükséges a sablonhoz egy olyan szabállyal, amely engedélyezi a kimenő forgalmat a 443-es porton.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Fürt létrehozása](service-fabric-cluster-creation-via-arm.md)
 
 Az üzembe helyezést követően két terheléselosztó látható az erőforráscsoporthoz. Ha megkeresi a terheléselosztó szolgáltatásait, megtekintheti a nyilvános IP-címhez hozzárendelt nyilvános IP-címet és felügyeleti végpontokat (19000-es és 19080-as portok). A belső terheléselosztó számára hozzárendelt statikus belső IP-címet és alkalmazás-végpontot (80-as portot) is láthatja. Mindkét terheléselosztó ugyanazt a virtuálisgép-méretezési készletet használja.

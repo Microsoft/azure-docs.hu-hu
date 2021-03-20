@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan adhat hozzá virtuális gépet (VM) a csatolt m
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 9421a1e21be9446b0e59328bd9a3730b57655274
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85483856"
 ---
 # <a name="add-a-vm-using-an-image-from-the-attached-shared-image-gallery"></a>Virtuális gép hozzáadása rendszerkép használatával a csatolt megosztott rendszerkép-gyűjteményből
@@ -53,5 +53,5 @@ A Resource Manager-sablonok teljes példáját lásd: [virtuális gép létrehoz
     ```
 2. Hívja meg a PUT metódust a virtuális gépeken úgy, hogy átadja az előző hívásból a felé kapott megosztott rendszerkép AZONOSÍTÓját `properties.SharedImageId` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha szeretné megtudni, hogyan csatolhat egy megosztott képtárat egy laborhoz, és hogyan konfigurálhatja azt, tekintse meg a [megosztott képtárat](configure-shared-image-gallery.md).

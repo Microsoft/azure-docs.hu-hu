@@ -11,10 +11,10 @@ ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 45712632ebfb2da4b713038503965ce908c1dfc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87498888"
 ---
 # <a name="calculate-the-size-of-a-blob-storage-container"></a>Blob Storage-tároló méretének kiszámítása
@@ -50,7 +50,7 @@ Ez a szkript a következő parancsokat használja a Blob Storage-tároló méret
 | [az storage blob upload](/cli/azure/storage/account) | Helyi fájlokat tölt fel egy Azure Blob Storage-tárolóba. |
 | [az storage blob list](/cli/azure/storage/account/keys) | Felsorolja az Azure Blob Storage-tárolóban található blobokat. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

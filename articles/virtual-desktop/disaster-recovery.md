@@ -9,10 +9,10 @@ ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 968f82a143872fd282222539ab71a70db488a20d
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91935704"
 ---
 # <a name="set-up-a-business-continuity-and-disaster-recovery-plan"></a>Üzletmenet-folytonossági és vész-helyreállítási terv beállítása
@@ -110,7 +110,7 @@ A beállításjegyzék bejegyzéseinek konfigurálása:
      > [!div class="mx-imgBorder"]
      > ![A Rendszerleíróadatbázis-szerkesztő profilok ablakának képernyőképe. A VHDLocation ki van választva.](media/regedit-profiles.png)
 
-3. Kattintson a jobb gombbal a **VHDLocations** elemre, és válassza a **többszörös karakterlánc szerkesztése**lehetőséget.
+3. Kattintson a jobb gombbal a **VHDLocations** elemre, és válassza a **többszörös karakterlánc szerkesztése** lehetőséget.
 
      > [!div class="mx-imgBorder"]
      > ![A többszörös karakterlánc szerkesztése ablak képernyőképe. Az érték mező az USA és az USA keleti régiójának Centrual sorolja fel.](media/multi-string-edit.png)

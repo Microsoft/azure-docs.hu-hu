@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: duau
 ms.openlocfilehash: 85e088dda767a6f6c80ac0a9f6eed84e8802e5ee
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95994927"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Többértékű útválasztási módszer konfigurálása Traffic Manager
@@ -28,7 +28,7 @@ Ez a cikk azt ismerteti, hogyan konfigurálható a többtényezős forgalom – 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba 
 
 Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 Hozzon létre egy erőforráscsoportot a Traffic Manager profilhoz.
 1. A Azure Portal bal oldali ablaktábláján válassza az **erőforráscsoportok** lehetőséget.
 2. Az **erőforráscsoportok** lapon a lap tetején válassza a **Hozzáadás** lehetőséget.
@@ -62,7 +62,7 @@ Vegyen fel két IP-címet külső végpontként az előző lépésben létrehozo
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
     | Típus                    | Külső végpont                                   |
-    | Név           | myEndpoint1                                        |
+    | Name           | myEndpoint1                                        |
     | Teljes tartománynév (FQDN) vagy IP-cím           | Írja be annak a végpontnak a nyilvános IP-címét, amelyet hozzá szeretne adni a Traffic Manager profilhoz                         |
     |        |           |
 
@@ -71,7 +71,7 @@ Vegyen fel két IP-címet külső végpontként az előző lépésben létrehozo
 
    ![Traffic Manager-végpont hozzáadása](./media/traffic-manager-multivalue-routing-method/add-endpoint.png)
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [súlyozott forgalom útválasztási metódusról](traffic-manager-configure-weighted-routing-method.md).
 - További információ az [elsődleges útválasztási metódusról](traffic-manager-configure-priority-routing-method.md).

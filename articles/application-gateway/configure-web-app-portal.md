@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 01/02/2021
 ms.author: victorh
 ms.openlocfilehash: aadd4904ff218613c0dd24daff784ad5b8b90fbb
-ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97854910"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>App Service konfigurálása Application Gateway
@@ -46,7 +46,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
    
    > [!NOTE]
    > A legördülő lista csak azokat az alkalmazás-szolgáltatásokat tölti fel, amelyek ugyanabban az előfizetésben vannak, mint a Application Gateway. Ha olyan app Service-t szeretne használni, amely egy másik előfizetésben található, mint a Application Gateway, **app Services** akkor a **célok** legördülő menüben válassza az **IP-cím vagy állomásnév** lehetőséget, és adja meg a hostname (példa. azurewebsites.net) az App Service-ben.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="edit-http-settings-for-app-service"></a>App Service HTTP-beállításainak szerkesztése
 
@@ -54,7 +54,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 2. A **felülbírálás új állomásnévvel** területen válassza az **Igen** lehetőséget.
 3. Az **állomásnév felülbírálása** területen válassza **az állomásnév kiválasztása a háttérbeli célként** lehetőséget.
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
    :::image type="content" source="./media/configure-web-app-portal/http-settings.png" alt-text="Állomásnév kiválasztása a háttérbeli http-beállításokból":::
 
@@ -70,6 +70,6 @@ A példákban telepített webalkalmazások nyilvános IP-címeket használnak, a
 
 A webalkalmazásokhoz való hozzáférés korlátozásának egyik módja a [Azure app Service statikus IP-korlátozások](../app-service/app-service-ip-restrictions.md)használata. Például korlátozhatja a webalkalmazást úgy, hogy az csak az Application gatewaytől kapjon forgalmat. Az App Service IP-korlátozási funkciója segítségével az Application Gateway VIP-t csak az elérési címmel listázhatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az App Service-ről és az Application Gateway további több-bérlős támogatásáról, tekintse meg a [több-bérlős szolgáltatás támogatása az Application gatewayrel](./application-gateway-web-app-overview.md)című témakört.

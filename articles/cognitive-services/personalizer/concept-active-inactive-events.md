@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: 7d1044d02ceba1f3d0996b1fe1c8a9a44b31049b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91253649"
 ---
 # <a name="active-and-inactive-events"></a>Aktív és inaktív események
@@ -33,7 +33,7 @@ Ezek a forgatókönyvek jellemzően a következő esetekben történnek:
 * Olyan felhasználói felületet jelenít meg, amelyet a felhasználó esetleg nem lát.
 * Az alkalmazása prediktív megszemélyesítést végez, amelyben a rangsorolási hívások kis valós idejű kontextusban történnek, és előfordulhat, hogy az alkalmazás nem használja a kimenetet.
 
-Ezekben az esetekben a személyre szabással hívhatja meg a rangot, és az esemény _inaktívvá_tételét kéri. A személyre szabott szolgáltatás nem vár jutalmat erre az eseményre, és nem alkalmaz alapértelmezett jutalmat.
+Ezekben az esetekben a személyre szabással hívhatja meg a rangot, és az esemény _inaktívvá_ tételét kéri. A személyre szabott szolgáltatás nem vár jutalmat erre az eseményre, és nem alkalmaz alapértelmezett jutalmat.
 
 Az üzleti logikában később, ha az alkalmazás a rangsor hívásában található információkat használja, csak _aktiválja_ az eseményt. Amint az esemény aktív, a személyre szabási esemény jutalmat vár. Ha a jutalmazási API-ra nem készül explicit hívás, a személyre szabott alapértelmezett jutalom érvényes.
 

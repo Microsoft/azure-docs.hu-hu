@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: 88048c3328114f17b30859efb41bb9f059b71439
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91296365"
 ---
 # <a name="feature-list"></a>Funkciólista #
@@ -31,7 +31,7 @@ Itt láthatók a tesztelt funkciók és a nem támogatott funkciók listája:
 | Flash-tartalék (vaku)                | X      |                  |          |             | Nem minden szolgáltatás érhető el ebben a technológiában.                                                                         |
 | Silverlight tartalék Silverlight      | X      |                  |          |             | Nem minden szolgáltatás érhető el ebben a technológiában.                                                                         |
 | Natív HLS átmenő (Html5)         |        | X                |          |             | A platform korlátozásai miatt nem minden szolgáltatás érhető el ebben a technológiában.                                            |
-| **Szolgáltatások**                                |        |                  |          |             |                                                                                                                      |
+| **Funkciók**                                |        |                  |          |             |                                                                                                                      |
 | API-támogatás                             | X      |                  |          |             | Lásd: ismert problémák listája                                                                                                |
 | Alapszintű felhasználói felület                                | X      |                  |          |                                                                                                                                    |
 | Inicializálás JavaScript használatával       | X      |                  |          |             |                                                                                                                      |

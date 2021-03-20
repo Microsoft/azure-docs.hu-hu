@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: amishu
 ms.openlocfilehash: 6a73c238cde7fbddfb7aa4c7153b5de5b442e9b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87284215"
 ---
 ## <a name="upload-the-audio"></a>A hang feltöltése
@@ -125,11 +125,11 @@ A **távoli beszélgetések** beszerzéséhez szerkessze a pom.xml fájlt az al�
    </dependencies>
    ```
 
-3. A módosítások mentése
+3. Mentse a módosításokat.
 
 ### <a name="sample-transcription-code"></a>Példa transzkripciós kód
 
-Miután létrehozta a `conversationId` -t, hozzon létre egy távoli beszélgetési **RemoteConversationTranscriptionClient** az ügyfélalkalmazás számára az aszinkron átírás állapotának lekérdezéséhez. [PollerFlux](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/PollerFlux.java) -objektum beszerzéséhez használja a **RemoteConversationTranscriptionClient** **getTranscriptionOperation** metódusát. A PollerFlux objektum információkkal fog rendelkezni a távoli műveleti állapot **RemoteConversationTranscriptionOperation** és a végső eredmény **RemoteConversationTranscriptionResult**. A művelet befejezését követően a GetFinalResult **RemoteConversationTranscriptionResult** hívja meg **getFinalResult** a [SyncPoller](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/SyncPoller.java). Ebben a kódban egyszerűen kinyomtatjuk az eredmény tartalmát a rendszer kimenetére.
+Miután létrehozta a `conversationId` -t, hozzon létre egy távoli beszélgetési **RemoteConversationTranscriptionClient** az ügyfélalkalmazás számára az aszinkron átírás állapotának lekérdezéséhez. [PollerFlux](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/PollerFlux.java) -objektum beszerzéséhez használja a **RemoteConversationTranscriptionClient** **getTranscriptionOperation** metódusát. A PollerFlux objektum információkkal fog rendelkezni a távoli műveleti állapot **RemoteConversationTranscriptionOperation** és a végső eredmény **RemoteConversationTranscriptionResult**. A művelet befejezését követően a GetFinalResult **RemoteConversationTranscriptionResult** hívja meg  a [SyncPoller](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/SyncPoller.java). Ebben a kódban egyszerűen kinyomtatjuk az eredmény tartalmát a rendszer kimenetére.
 
 ```java
 // Create the speech config object

@@ -15,13 +15,13 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4de9f5a21f38f741dcf65d285446d9482716d4f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85608126"
 ---
-# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Útmutató: bejelentkezéssel kapcsolatos hibák elhárítása Azure Active Directory-jelentések használatával
+# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Útmutató: Bejelentkezési hibák elhárítása az Azure Active Directory jelentéseivel
 
 A Azure Active Directory (Azure AD) [bejelentkezési jelentései](concept-sign-ins.md) lehetővé teszik a szervezet alkalmazásaihoz való hozzáférés kezelésével kapcsolatos kérdésekre adott válaszok megkeresését, beleértve a következőket:
 
@@ -37,7 +37,7 @@ A bejelentkezési jelentés továbbá segítséget nyújt a cégen belüli felha
 A következők szükségesek:
 
 * Egy prémium szintű (P1/P2) licenccel rendelkező Azure AD-bérlő. A Azure Active Directory kiadásának frissítéséhez tekintse meg a [prémium szintű Azure Active Directory első lépéseivel foglalkozó](../fundamentals/active-directory-get-started-premium.md) témakört.
-* Egy felhasználó, aki a **globális rendszergazda**, a **biztonsági rendszergazda**, a **biztonsági olvasó**vagy a **jelentéskészítő olvasó** szerepkörben található a bérlőhöz. Emellett a felhasználók hozzáférhetnek a saját bejelentkezésekhez is. 
+* Egy felhasználó, aki a **globális rendszergazda**, a **biztonsági rendszergazda**, a **biztonsági olvasó** vagy a **jelentéskészítő olvasó** szerepkörben található a bérlőhöz. Emellett a felhasználók hozzáférhetnek a saját bejelentkezésekhez is. 
 
 ## <a name="troubleshoot-sign-in-errors-using-the-sign-ins-report"></a>Bejelentkezési hibák elhárítása a bejelentkezési jelentés használatával
 
@@ -61,7 +61,7 @@ A következők szükségesek:
 
 8. Ha az összes kötél meghibásodik, vagy ha a probléma továbbra is fennáll, az ajánlott művelet végrehajtása előtt [Nyisson meg egy támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) a **Hibaelhárítás és támogatás** lapon leírt lépések követésével. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Bejelentkezések hibakód-referenciája](reference-sign-ins-error-codes.md)
 * [A bejelentkezések jelentésének áttekintése](concept-sign-ins.md)

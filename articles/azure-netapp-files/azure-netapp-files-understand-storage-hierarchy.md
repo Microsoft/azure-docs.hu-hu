@@ -15,10 +15,10 @@ ms.topic: overview
 ms.date: 09/22/2020
 ms.author: b-juche
 ms.openlocfilehash: 435d74e771a9d887c87c9d10e6b525ac77cf97e8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91278328"
 ---
 # <a name="storage-hierarchy-of-azure-netapp-files"></a>Az Azure NetApp Files tárhely-hierarchiája
@@ -86,7 +86,7 @@ Az alábbi példák az Azure-előfizetés, a NetApp-fiókok, a kapacitáskészle
 
 ![Tárhely-hierarchia fogalmi diagramja](../media/azure-netapp-files/azure-netapp-files-storage-hierarchy.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure NetApp Files erőforráskorlátai](azure-netapp-files-resource-limits.md)
 - [Regisztrálás az Azure NetApp Filesra](azure-netapp-files-register.md)

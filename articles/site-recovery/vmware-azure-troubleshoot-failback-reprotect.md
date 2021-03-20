@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sharrai
 ms.openlocfilehash: ed4e52470264441a99c5ccf0a736bb00233510c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87423116"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Azure-ból helyszíni rendszerbe történő feladat-visszavétel hibaelhárítása
@@ -53,7 +53,7 @@ Ez a hiba a következő esetekben fordul elő:
 A probléma megoldása:
 
 * Győződjön meg arról, hogy az Azure VM-hálózat lehetővé teszi, hogy az Azure-beli virtuális gép kommunikáljon a helyszíni konfigurációs kiszolgálóval. Létrehozhat egy helyek közötti VPN-t a helyszíni adatközponthoz, vagy konfigurálhat egy Azure-beli ExpressRoute-kapcsolatot az Azure-beli virtuális gép virtuális hálózatán található privát kapcsolattal.
-* Ha a virtuális gép tud kommunikálni a helyszíni konfigurációs kiszolgálóval, jelentkezzen be a virtuális gépre. Ezután jelölje be az inmage Scout Application szolgáltatást. Ha úgy látja, hogy nem fut, indítsa el manuálisan a szolgáltatást. Győződjön meg arról, hogy a szolgáltatás indítási típusa **automatikus**értékre van beállítva.
+* Ha a virtuális gép tud kommunikálni a helyszíni konfigurációs kiszolgálóval, jelentkezzen be a virtuális gépre. Ezután jelölje be az inmage Scout Application szolgáltatást. Ha úgy látja, hogy nem fut, indítsa el manuálisan a szolgáltatást. Győződjön meg arról, hogy a szolgáltatás indítási típusa **automatikus** értékre van beállítva.
 
 ### <a name="error-code-78052"></a>78052-es hibakód
 

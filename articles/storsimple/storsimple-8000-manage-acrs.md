@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: alkohli
 ms.openlocfilehash: 15c35fb314af27b1ced129a12f752d0a2794e0f8
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91949904"
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>A hozzáférés-vezérlési rekordok kezelése a StorSimple Manager szolgáltatással
@@ -50,8 +50,8 @@ Az ACR hozzáadásához hajtsa végre az alábbi lépéseket.
 
 #### <a name="to-add-an-acr"></a>ACR hozzáadása
 
-1. Lépjen a StorSimple Eszközkezelő szolgáltatásra, és kattintson duplán a szolgáltatás nevére, majd a **konfiguráció** szakaszban található hozzáférés- **vezérlési rekordok**elemre.
-2. A **hozzáférés-vezérlési rekordok** panelen kattintson az **+ ACR hozzáadása**lehetőségre.
+1. Lépjen a StorSimple Eszközkezelő szolgáltatásra, és kattintson duplán a szolgáltatás nevére, majd a **konfiguráció** szakaszban található hozzáférés- **vezérlési rekordok** elemre.
+2. A **hozzáférés-vezérlési rekordok** panelen kattintson az **+ ACR hozzáadása** lehetőségre.
 
     ![Kattintson az ACR hozzáadása elemre.](./media/storsimple-8000-manage-acrs/createacr1.png)
 
@@ -79,7 +79,7 @@ A ACR-EK szerkesztéséhez használja a StorSimple Eszközkezelő szolgáltatás
 Az ACR szerkesztéséhez hajtsa végre az alábbi lépéseket.
 
 #### <a name="to-edit-an-access-control-record"></a>Hozzáférés-vezérlési rekord szerkesztése
-1.  Lépjen a StorSimple Eszközkezelő szolgáltatásra, és kattintson duplán a szolgáltatás nevére, majd a **konfiguráció** szakaszban található hozzáférés- **vezérlési rekordok**elemre.
+1.  Lépjen a StorSimple Eszközkezelő szolgáltatásra, és kattintson duplán a szolgáltatás nevére, majd a **konfiguráció** szakaszban található hozzáférés- **vezérlési rekordok** elemre.
 
     ![Hozzáférés-vezérlési rekordok keresése](./media/storsimple-8000-manage-acrs/createacr1.png)
 
@@ -107,7 +107,7 @@ A ACR-EK törléséhez használja a StorSimple Eszközkezelő szolgáltatás pan
 Egy hozzáférés-vezérlési rekord törléséhez hajtsa végre a következő lépéseket.
 
 #### <a name="to-delete-an-access-control-record"></a>Hozzáférés-vezérlési rekord törlése
-1.  Lépjen a StorSimple Eszközkezelő szolgáltatásra, és kattintson duplán a szolgáltatás nevére, majd a **konfiguráció** szakaszban található hozzáférés- **vezérlési rekordok**elemre.
+1.  Lépjen a StorSimple Eszközkezelő szolgáltatásra, és kattintson duplán a szolgáltatás nevére, majd a **konfiguráció** szakaszban található hozzáférés- **vezérlési rekordok** elemre.
 
     ![Ugrás az 1b hozzáférés-vezérlési rekordokra](./media/storsimple-8000-manage-acrs/createacr1.png)
 
@@ -115,11 +115,11 @@ Egy hozzáférés-vezérlési rekord törléséhez hajtsa végre a következő l
 
     ![Ugrás a hozzáférés-vezérlési rekordokra 2](./media/storsimple-8000-manage-acrs/deleteacr1.png)
 
-3. Kattintson a jobb gombbal a helyi menü meghívásához, majd válassza a **Törlés**lehetőséget.
+3. Kattintson a jobb gombbal a helyi menü meghívásához, majd válassza a **Törlés** lehetőséget.
 
     ![Ugrás a hozzáférés-vezérlési rekordokra 3](./media/storsimple-8000-manage-acrs/deleteacr2.png)
 
-4. Ha a rendszer megerősítést kér, tekintse át az adatokat, majd kattintson a **Törlés**gombra.
+4. Ha a rendszer megerősítést kér, tekintse át az adatokat, majd kattintson a **Törlés** gombra.
 
     ![Ugrás a hozzáférés-vezérlési rekordokra 4](./media/storsimple-8000-manage-acrs/deleteacr3.png)
 
@@ -127,7 +127,7 @@ Egy hozzáférés-vezérlési rekord törléséhez hajtsa végre a következő l
 
     ![Ugrás a hozzáférés-vezérlési rekordokra 5](./media/storsimple-8000-manage-acrs/deleteacr5.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [StorSimple-kötetek kezeléséről](storsimple-8000-manage-volumes-u2.md).
 * További információ [a StorSimple Manager szolgáltatás a StorSimple-eszköz felügyeletéhez való használatáról](storsimple-8000-manager-service-administration.md).
 

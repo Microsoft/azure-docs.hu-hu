@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
 ms.openlocfilehash: 5202145af6f60f34bdce57aa94f4fec92a8b227f
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92677270"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database--sql-managed-instance"></a>Azure SQL Database & SQL felügyelt példányának Azure Resource Manager sablonjai
@@ -27,7 +27,7 @@ Az Azure Resource Manager-sablonok lehetővé teszik az infrastruktúra kódkén
 
 Az alábbi táblázat a Azure SQL Database Azure Resource Manager sablonjaira mutató hivatkozásokat tartalmaz.
 
-|Hivatkozás |Leírás|
+|Hivatkozás |Description|
 |---|---|
 | [SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create) | Ez a Azure Resource Manager sablon egyetlen adatbázist hoz létre a Azure SQL Databaseban, és konfigurálja a kiszolgálói szintű IP-tűzfalszabályok beállításait. |
 | [Kiszolgáló](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server) | Ez a Azure Resource Manager-sablon létrehoz egy kiszolgálót a Azure SQL Databasehoz. |
@@ -46,7 +46,7 @@ Az alábbi táblázat a Azure SQL Database Azure Resource Manager sablonjaira mu
 
 A következő táblázat hivatkozásokat tartalmaz az Azure SQL felügyelt példányának Azure Resource Manager sablonjaira.
 
-|Hivatkozás|Leírás|
+|Hivatkozás|Description|
 |---|---|
 | [SQL felügyelt példány egy új VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet) | Ez a Azure Resource Manager sablon létrehoz egy új, konfigurált Azure-beli virtuális hálózatot és felügyelt példányt a virtuális hálózaton. |
 | [Az SQL felügyelt példányának hálózati környezete](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) | Ez a központi telepítés létrehoz egy konfigurált Azure-beli virtuális hálózatot két alhálózattal, amelyek közül az egyik a felügyelt példányokhoz lesz hozzárendelve, és egy másik, ahol más erőforrásokat (például virtuális gépeket, App Service környezeteket stb.) helyezhet el. Ez a sablon egy megfelelően konfigurált hálózati környezetet hoz létre, ahol felügyelt példányokat helyezhet üzembe. |

@@ -12,10 +12,10 @@ ms.reviewer: ozge
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f569fdac19c4f765828d24f4d6615fdd7bafef8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89010902"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>REST API műveletek meghívása megosztott kulcsos hitelesítéssel
@@ -28,7 +28,7 @@ A minta alkalmazás a Storage-fiók blob-tárolóit sorolja fel. A cikkben szere
 
 - Telepítse a [Visual Studio 2019](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) -et az **Azure-fejlesztési** számítási feladattal.
 
-- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+- Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 - Általános célú Storage-fiók. Ha még nem rendelkezik Storage-fiókkal, tekintse meg [a Storage-fiók létrehozása](storage-account-create.md)című témakört.
 
@@ -48,7 +48,7 @@ Ez a parancs a helyi git mappába klónozza az adattárat. A Visual Studio-megol
 
 ## <a name="about-rest"></a>Tudnivalók a REST-ról
 
-A REST a *reprezentációs állapot átvitelére*áll. Egy adott definíció esetében tekintse meg a [Wikipédiát](https://en.wikipedia.org/wiki/Representational_state_transfer).
+A REST a *reprezentációs állapot átvitelére* áll. Egy adott definíció esetében tekintse meg a [Wikipédiát](https://en.wikipedia.org/wiki/Representational_state_transfer).
 
 A REST egy olyan architektúra, amely lehetővé teszi a szolgáltatással való interakciót egy internetes protokollon (például HTTP/HTTPS) keresztül. A REST a kiszolgálón vagy az ügyfélen futó szoftvertől független. A REST API bármely olyan platformon meghívható, amely támogatja a HTTP/HTTPS protokollt. Olyan alkalmazást írhat, amely Mac, Windows, Linux, Android rendszerű telefonon vagy táblaszámítógépen, iPhone-on, iPod-on vagy webhelyen fut, és ugyanazokat a REST API használhatja az összes platformon.
 
@@ -66,7 +66,7 @@ Tekintse át a [ListContainers](/rest/api/storageservices/List-Containers2) műv
 
 **Kérelem metódusa**: Get. Ez a művelet a kérési objektum tulajdonságként megadott HTTP-metódus. A művelethez tartozó egyéb értékek a meghívott API-tól függően a HEAD, a PUT és a DELETE függvényt is tartalmazzák.
 
-**Kérelem URI-ja**: `https://myaccount.blob.core.windows.net/?comp=list` .A kérelem URI-ja a blob Storage-fiók végpontján `https://myaccount.blob.core.windows.net` és az erőforrás-karakterláncon jön létre `/?comp=list` .
+**Kérelem URI-ja**: `https://myaccount.blob.core.windows.net/?comp=list` .  A kérelem URI-ja a blob Storage-fiók végpontján `https://myaccount.blob.core.windows.net` és az erőforrás-karakterláncon jön létre `/?comp=list` .
 
 [URI-paraméterek](/rest/api/storageservices/List-Containers2#uri-parameters): további lekérdezési paraméterek is használhatók a ListContainers meghívásakor. Ezen paraméterek közül néhány *időtúllépést* okoz a híváshoz (másodpercben) és az *előtaghoz*, amely a szűréshez használatos.
 
@@ -94,7 +94,7 @@ Ha éles környezetben fut, akkor a HTTP helyett mindig a HTTPS protokollt haszn
 
 A mintául szolgáló projektben az engedélyezési fejléc létrehozására szolgáló kód külön osztályban található. Az elképzelés az, hogy a teljes osztályt felveheti a saját megoldásba, és használhatja azt "ahogy van". Az engedélyezési fejléc kódja az Azure Storage-hoz leginkább REST API hívásokhoz használható.
 
-A kérelem kiépítéséhez, amely egy HttpRequestMessage objektum, nyissa meg a ListContainersAsyncREST a Program.cs-ben. A kérelem összeállításának lépései a következők:
+A kérelem kiépítéséhez, amely egy HttpRequestMessage objektum, nyissa meg a ListContainersAsyncREST programot. cs. A kérelem összeállításának lépései a következők:
 
 - Hozza létre a szolgáltatás meghívásához használandó URI-t.
 - Hozza létre a HttpRequestMessage objektumot, és állítsa be a hasznos adatokat. A hasznos adatok a ListContainersAsyncREST esetében null értékűek, mert nem adunk semmit a következőben:.
@@ -286,19 +286,19 @@ Ez a kódrészlet a megosztott kulcs aláírási karakterláncának formátumát
 
 ```csharp  
 StringToSign = VERB + "\n" +  
-               Content-Encoding + "\n" +  
-               Content-Language + "\n" +  
-               Content-Length + "\n" +  
-               Content-MD5 + "\n" +  
-               Content-Type + "\n" +  
-               Date + "\n" +  
-               If-Modified-Since + "\n" +  
-               If-Match + "\n" +  
-               If-None-Match + "\n" +  
-               If-Unmodified-Since + "\n" +  
-               Range + "\n" +  
-               CanonicalizedHeaders +  
-               CanonicalizedResource;  
+               Content-Encoding + "\n" +  
+               Content-Language + "\n" +  
+               Content-Length + "\n" +  
+               Content-MD5 + "\n" +  
+               Content-Type + "\n" +  
+               Date + "\n" +  
+               If-Modified-Since + "\n" +  
+               If-Match + "\n" +  
+               If-None-Match + "\n" +  
+               If-Unmodified-Since + "\n" +  
+               Range + "\n" +  
+               CanonicalizedHeaders +  
+               CanonicalizedResource;  
 ```
 
 A mezők többsége ritkán használatos. BLOB Storage esetén a művelet, az MD5, a tartalom hossza, a kanonikus fejlécek és a kanonikus erőforrások megadása szükséges. A többi mezőt üresen hagyhatja (de azt is megteheti, hogy `\n` üresek).
@@ -564,7 +564,7 @@ Content-Length: 1135
 </EnumerationResults>
 ```
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ebből a cikkből megtudhatta, hogyan lehet kérelmet készíteni a blob Storage-REST API. A kérelem segítségével lekérheti a tárolók listáját vagy a Blobok listáját. Megtanulta, hogyan hozhatja létre az engedélyezési aláírást a REST API híváshoz, és hogyan használhatja azt a REST-kérelemben. Végezetül megtanulta, hogyan vizsgálhatja meg a választ.
 

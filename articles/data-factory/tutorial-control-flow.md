@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
 ms.openlocfilehash: 111fff6e35bed9c2af9c638549362039f25def12
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100386016"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Elágaztatási és láncolási tevékenységek a Data Factory-folyamatokban
@@ -87,7 +87,7 @@ C# .NET-konzol alkalmazás létrehozása:
 
 ### <a name="create-a-data-factory-client"></a>Adat-előállító ügyfél létrehozása
 
-1. Nyissa meg a *program.cs* , és adja hozzá a következő utasításokat:
+1. Nyissa meg a *program. cs programot* , és adja hozzá a következő utasításokat:
 
    ```csharp
    using System;
@@ -145,7 +145,7 @@ C# .NET-konzol alkalmazás létrehozása:
 
 ### <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
-1. Adjon hozzá egy `CreateOrUpdateDataFactory` metódust a *program.cs* -fájlhoz:
+1. Adjon hozzá egy `CreateOrUpdateDataFactory` metódust a *program. cs* fájlhoz:
 
    ```csharp
    static Factory CreateOrUpdateDataFactory(DataFactoryManagementClient client)
@@ -178,7 +178,7 @@ C# .NET-konzol alkalmazás létrehozása:
 
 ## <a name="create-an-azure-storage-linked-service"></a>Azure Storage-beli társított szolgáltatás létrehozása
 
-1. Adjon hozzá egy `StorageLinkedServiceDefinition` metódust a *program.cs* -fájlhoz:
+1. Adjon hozzá egy `StorageLinkedServiceDefinition` metódust a *program. cs* fájlhoz:
 
    ```csharp
    static LinkedServiceResource StorageLinkedServiceDefinition(DataFactoryManagementClient client)
@@ -210,7 +210,7 @@ Ebben a szakaszban két adatkészletet hoz létre, egyet a forráshoz és egyet 
 
 Adjon hozzá egy olyan metódust, amely létrehoz egy *Azure Blob-adatkészletet*. További információ a támogatott tulajdonságokról és részletekről: [Azure Blob-adatkészlet tulajdonságai](connector-azure-blob-storage.md#dataset-properties).
 
-Adjon hozzá egy `SourceBlobDatasetDefinition` metódust a *program.cs* -fájlhoz:
+Adjon hozzá egy `SourceBlobDatasetDefinition` metódust a *program. cs* fájlhoz:
 
 ```csharp
 static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient client)
@@ -237,7 +237,7 @@ Figyelje meg a *FolderPath* paramétereinek használatát. `sourceBlobContainer`
 
 ### <a name="create-a-dataset-for-a-sink-azure-blob"></a>Adatkészlet létrehozása egy fogadó Azure-Blobhoz
 
-1. Adjon hozzá egy `SourceBlobDatasetDefinition` metódust a *program.cs* -fájlhoz:
+1. Adjon hozzá egy `SourceBlobDatasetDefinition` metódust a *program. cs* fájlhoz:
 
    ```csharp
    static DatasetResource SinkBlobDatasetDefinition(DataFactoryManagementClient client)

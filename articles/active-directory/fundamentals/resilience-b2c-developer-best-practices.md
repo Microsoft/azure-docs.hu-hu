@@ -14,10 +14,10 @@ ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ff7505e7c47b93f32efd9de60463873026247329
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98724925"
 ---
 # <a name="resilience-through-developer-best-practices"></a>Rugalmasság a fejlesztőknek ajánlott eljárások révén
@@ -132,7 +132,7 @@ A rugalmasság kontextusában a REST API-k tesztelésének tartalmaznia kell a �
 
 Javasoljuk, hogy a tesztelési terv [átfogó API-teszteket](../../active-directory-b2c/best-practices.md#testing)tartalmazzon. Ha az előléptetés vagy az üdülési forgalom miatt várhatóan nagy lendületet szeretne, a terheléses tesztelést az új becslésekkel kell módosítania. Az API-k és Content Delivery Network (CDN) terheléses tesztelését végezheti el fejlesztői környezetben, nem pedig éles környezetben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Rugalmassági erőforrások Azure AD B2C-fejlesztőknek](resilience-b2c.md)
   - [Rugalmas végfelhasználói élmény](resilient-end-user-experience.md)

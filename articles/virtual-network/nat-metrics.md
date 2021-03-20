@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
 ms.openlocfilehash: e3c47a60a6cda074eba7b5c3292577c29f50c2ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87424051"
 ---
 # <a name="azure-virtual-network-nat-metrics"></a>Azure Virtual Network NAT-metrikák
@@ -36,7 +36,7 @@ Az Azure Virtual Network NAT-átjáró erőforrásai több dimenziós mérőszá
 
 A NAT-átjáró erőforrásai a következő többdimenziós mérőszámokat biztosítják a Azure Monitorban:
 
-| Metrika | Leírás | Ajánlott összesítés | Dimenziók |
+| Metric | Leírás | Ajánlott összesítés | Dimenziók |
 |---|---|---|---|
 | Bájt | Bejövő és kimenő bájtok feldolgozott száma | Sum | Irány (a; Kimenő), protokoll (6 TCP; 17 UDP) |
 | Csomagok | A bejövő és kimenő csomagok feldolgozása folyamatban | Sum | Irány (a; Kimenő), protokoll (6 TCP; 17 UDP) |
@@ -53,7 +53,7 @@ A metrikákkal kapcsolatos riasztások az összes korábbi [metrika](#metrics)es
 
 A Resource Health nem támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók a [Virtual Network NAT](nat-overview.md) -ról
 * Tudnivalók a [NAT-átjáró erőforrásáról](nat-gateway-resource.md)

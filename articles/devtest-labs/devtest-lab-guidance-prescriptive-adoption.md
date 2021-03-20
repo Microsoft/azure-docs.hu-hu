@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 81767c36b2a5b46eb41be1e516a14fb3ebe3fb7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85476988"
 ---
 # <a name="devtest-labs-in-the-enterprise"></a>Vállalati DevTest Labs
@@ -29,7 +29,7 @@ Ez a dokumentáció olyan vállalati informatikai tervezők, építészek és ve
 
 ## <a name="enterprise-customers"></a>Vállalati ügyfelek
 
-A DevTest Labs számos nagyvállalati ügyfele sikeresen felhasználta a DevTest Labs szolgáltatást a fejlesztéshez és a munkaterhelések teszteléséhez a szervezetében. [További információk](https://azure.microsoft.com/case-studies/?term=DevTest+labs).
+A DevTest Labs számos nagyvállalati ügyfele sikeresen felhasználta a DevTest Labs szolgáltatást a fejlesztéshez és a munkaterhelések teszteléséhez a szervezetében. [További információ](https://azure.microsoft.com/case-studies/?term=DevTest+labs).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Vállalati hivatkozási architektúra](devtest-lab-reference-architecture.md)

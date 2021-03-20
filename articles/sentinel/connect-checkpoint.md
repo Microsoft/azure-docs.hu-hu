@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 32cbdabef4d89c7fabb47a52ebf0589690b7ab33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85566059"
 ---
 # <a name="connect-check-point-to-azure-sentinel"></a>Ellenőrzési pont kapcsolódása az Azure Sentinelhez
@@ -35,12 +35,12 @@ Konfigurálja a ellenőrzési pont készülékét, hogy a syslog-ügynökön ker
 1. Görgessen le az **alapszintű üzembe helyezéshez** , és kövesse az utasításokat a kapcsolódás beállításához az alábbi irányelvek alapján:
    - Állítsa a **syslog portot** **514** -re vagy az ügynökön beállított portra.
      - Cserélje le a **név** és a **cél-kiszolgáló IP-címet** a parancssori felületre a syslog-ügynök nevével és IP-címével.
-     - Állítsa a formátumot **CEF**értékre.
+     - Állítsa a formátumot **CEF** értékre.
 1. Ha R 77.30 vagy R 80.10 verziót használ, görgessen a **telepítésekhez** , és kövesse az utasításokat, és telepítsen egy log exportőrt a verzióra.
 1. Folytassa a [3. lépéssel: a kapcsolat ellenőrzése](connect-cef-verify.md).
  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztathatók a ellenőrzési pontok berendezései az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - A [kapcsolat ellenőrzése](connect-cef-verify.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: 1e3c05e4cc3ccf34573b55d3729aded16e26d66e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76960840"
 ---
 # <a name="403006-devicemaximumactivefileuploadlimitexceeded"></a>403006 DeviceMaximumActiveFileUploadLimitExceeded
@@ -33,6 +33,6 @@ Ha az eszköz nem értesíti IoT Hub a fájlfeltöltés befejezésekor, könnyed
 
 Győződjön meg arról, hogy az eszköz azonnal [értesíti IoT hub fájlfeltöltés befejezéséről](./iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload). Ezután próbálja meg [csökkenteni az SAS-JOGKIVONAT TTL-fájl feltöltési konfigurációját](iot-hub-configure-file-upload.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a fájlok feltöltéséről, tekintse meg a [fájlok feltöltése a IoT hub](./iot-hub-devguide-file-upload.md) [használatával és IoT hub fájlfeltöltés konfigurálása a Azure Portal segítségével](./iot-hub-configure-file-upload.md)című témakört.

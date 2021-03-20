@@ -11,10 +11,10 @@ ms.date: 08/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
 ms.openlocfilehash: 5760c574e64a3b3b4a1df12092cff44374790a90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89018399"
 ---
 # <a name="get-started-with-device-management-net"></a>Ismerkedés az eszközkezelés (.NET) szolgáltatással
@@ -43,7 +43,7 @@ Az oktatóanyag végén két .NET-konzolalkalmazással fog rendelkezni:
 
 * Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. A cikkben szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
+## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -61,17 +61,17 @@ Az oktatóanyag végén két .NET-konzolalkalmazással fog rendelkezni:
 
 Ebben a szakaszban egy .NET-konzol alkalmazást hoz létre a C# használatával, amely egy távoli újraindítást kezdeményez egy eszközön egy közvetlen metódus használatával. Az alkalmazás az eszköz kettős lekérdezéseit használva észleli az adott eszköz utolsó újraindításának idejét.
 
-1. A Visual Studióban válassza az **új projekt létrehozása**lehetőséget.
+1. A Visual Studióban válassza az **új projekt létrehozása** lehetőséget.
 
-1. A **create a New Project (új projekt létrehozása**) területen keresse meg és válassza ki a **Console app (.NET-keretrendszer)** projekt sablonját, majd válassza a **tovább**lehetőséget.
+1. A **create a New Project (új projekt létrehozása**) területen keresse meg és válassza ki a **Console app (.NET-keretrendszer)** projekt sablonját, majd válassza a **tovább** lehetőséget.
 
-1. Az **új projekt konfigurálása**lapon nevezze el a projekt *TriggerReboot*, majd válassza a .NET-keretrendszer 4.5.1-es vagy újabb verzióját. Kattintson a **Létrehozás** gombra.
+1. Az **új projekt konfigurálása** lapon nevezze el a projekt *TriggerReboot*, majd válassza a .NET-keretrendszer 4.5.1-es vagy újabb verzióját. Válassza a **Létrehozás** lehetőséget.
 
     ![Új Visual C# Windows klasszikus asztalialkalmazás-projekt](./media/iot-hub-csharp-csharp-device-management-get-started/create-trigger-reboot-configure.png)
 
-1. **Megoldáskezelő**kattintson a jobb gombbal a **TriggerReboot** projektre, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
+1. **Megoldáskezelő** kattintson a jobb gombbal a **TriggerReboot** projektre, majd válassza a **NuGet-csomagok kezelése** lehetőséget.
 
-1. Válassza a **Tallózás**lehetőséget, majd keresse meg és válassza ki a **Microsoft. Azure. Devices**elemet. A **Microsoft. Azure. Devices** csomag telepítéséhez válassza a **telepítés** lehetőséget.
+1. Válassza a **Tallózás** lehetőséget, majd keresse meg és válassza ki a **Microsoft. Azure. Devices** elemet. A **Microsoft. Azure. Devices** csomag telepítéséhez válassza a **telepítés** lehetőséget.
 
     ![NuGet Package Manager (NuGet-csomagkezelő) ablak](./media/iot-hub-csharp-csharp-device-management-get-started/create-trigger-reboot-nuget-devices.png)
 
@@ -129,7 +129,7 @@ Ebben a szakaszban egy .NET-konzol alkalmazást hoz létre a C# használatával,
    Console.ReadLine();
    ```
 
-1. Válassza a **Build**  >  **Build megoldás**lehetőséget.
+1. Válassza a **Build**  >  **Build megoldás** lehetőséget.
 
 > [!NOTE]
 > Ez az oktatóanyag csak egyetlen lekérdezést hajt végre az eszköz jelentett tulajdonságaihoz. Az éles kódban javasolt a lekérdezés a jelentett tulajdonságok változásainak észlelésére.
@@ -146,15 +146,15 @@ Ebben a szakaszban:
 
 A szimulált eszköz alkalmazás létrehozásához kövesse az alábbi lépéseket:
 
-1. A Visual Studióban, a már létrehozott TriggerReboot-megoldásban válassza a **fájl**  >  **új**  >  **projekt**lehetőséget. A **create a New Project (új projekt létrehozása**) területen keresse meg és válassza ki a **Console app (.NET-keretrendszer)** projekt sablonját, majd válassza a **tovább**lehetőséget.
+1. A Visual Studióban, a már létrehozott TriggerReboot-megoldásban válassza a **fájl**  >  **új**  >  **projekt** lehetőséget. A **create a New Project (új projekt létrehozása**) területen keresse meg és válassza ki a **Console app (.NET-keretrendszer)** projekt sablonját, majd válassza a **tovább** lehetőséget.
 
-1. Az **új projekt konfigurálása**lapon nevezze el a projekt *SimulateManagedDevice*, és a **megoldáshoz**válassza a **Hozzáadás a megoldáshoz**lehetőséget. Kattintson a **Létrehozás** gombra.
+1. Az **új projekt konfigurálása** lapon nevezze el a projekt *SimulateManagedDevice*, és a **megoldáshoz** válassza a **Hozzáadás a megoldáshoz** lehetőséget. Válassza a **Létrehozás** lehetőséget.
 
     ![A projekt neve és hozzáadása a megoldáshoz](./media/iot-hub-csharp-csharp-device-management-get-started/configure-device-app.png)
 
-1. Megoldáskezelőban kattintson a jobb gombbal az új **SimulateManagedDevice** -projektre, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
+1. Megoldáskezelőban kattintson a jobb gombbal az új **SimulateManagedDevice** -projektre, majd válassza a **NuGet-csomagok kezelése** lehetőséget.
 
-1. Válassza a **Tallózás**elemet, majd keresse meg és válassza ki a **Microsoft. Azure. Devices. Client**elemet. Válassza a **Telepítés** gombot.
+1. Válassza a **Tallózás** elemet, majd keresse meg és válassza ki a **Microsoft. Azure. Devices. Client** elemet. Válassza a **Telepítés** gombot.
 
     ![NuGet csomagkezelő ablak ügyfélalkalmazás](./media/iot-hub-csharp-csharp-device-management-get-started/create-device-nuget-devices-client.png)
 
@@ -235,11 +235,11 @@ A szimulált eszköz alkalmazás létrehozásához kövesse az alábbi lépések
    }
    ```
 
-1. A Megoldáskezelő kattintson a jobb gombbal a megoldásra, majd válassza az **indítási projektek beállítása**lehetőséget.
+1. A Megoldáskezelő kattintson a jobb gombbal a megoldásra, majd válassza az **indítási projektek beállítása** lehetőséget.
 
-1. A **gyakori tulajdonságok**  >  **indítási projekt**esetében válassza az **egyetlen indítási projekt**lehetőséget, majd válassza ki a **SimulateManagedDevice** projektet. A módosítások mentéséhez kattintson az **OK** gombra.
+1. A **gyakori tulajdonságok**  >  **indítási projekt** esetében válassza az **egyetlen indítási projekt** lehetőséget, majd válassza ki a **SimulateManagedDevice** projektet. A módosítások mentéséhez kattintson az **OK** gombra.
 
-1. Válassza a **Build**  >  **Build megoldás**lehetőséget.
+1. Válassza a **Build**  >  **Build megoldás** lehetőséget.
 
 > [!NOTE]
 > Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. A termelési kódban az [átmeneti hibák kezelésére](/azure/architecture/best-practices/transient-faults)szolgáló újrapróbálkozási házirendeket (például exponenciális leállítási) kell végrehajtania.
@@ -248,9 +248,9 @@ A szimulált eszköz alkalmazás létrehozásához kövesse az alábbi lépések
 
 Most már készen áll az alkalmazások futtatására.
 
-1. A .NET-eszköz alkalmazás **SimulateManagedDevice**futtatásához megoldáskezelő kattintson a jobb gombbal a **SimulateManagedDevice** projektre, válassza a **hibakeresés**lehetőséget, majd válassza az **új példány indítása**lehetőséget. Az alkalmazásnak meg kell kezdenie az IoT hub metódus-hívásainak figyelését.
+1. A .NET-eszköz alkalmazás **SimulateManagedDevice** futtatásához megoldáskezelő kattintson a jobb gombbal a **SimulateManagedDevice** projektre, válassza a **hibakeresés** lehetőséget, majd válassza az **új példány indítása** lehetőséget. Az alkalmazásnak meg kell kezdenie az IoT hub metódus-hívásainak figyelését.
 
-1. Miután az eszköz csatlakoztatva van, és várakozik a metódus meghívására, kattintson a jobb gombbal a **TriggerReboot** projektre, válassza a **hibakeresés**lehetőséget, majd válassza az **új példány indítása**lehetőséget.
+1. Miután az eszköz csatlakoztatva van, és várakozik a metódus meghívására, kattintson a jobb gombbal a **TriggerReboot** projektre, válassza a **hibakeresés** lehetőséget, majd válassza az **új példány indítása** lehetőséget.
 
    A "újraindítás!" üzenetnek kell megjelennie. a **SimulatedManagedDevice** -konzolban és az eszköz jelentett tulajdonságaiban szerepel, amely tartalmazza a **TriggerReboot** -konzolon írt utolsó újraindítási időt.
 

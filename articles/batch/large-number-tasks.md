@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 12/30/2020
 ms.custom: devx-track-python, devx-track-csharp
 ms.openlocfilehash: 08cf92507a4556afbf56c9cb7e2c9c1b3a6c9479
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97831516"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>Nagy számú feladat elküldése egy batch-feladatba
@@ -213,7 +213,7 @@ except Exception as e:
     raise e
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az Azure Batch CLI-bővítmény [Batch CLI-sablonokkal](batch-cli-templates.md)történő használatáról.
 - További információ a [Batch PYTHON SDK bővítményről](https://pypi.org/project/azure-batch-extensions/).

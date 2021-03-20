@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan hozhat létre egyéni rendszerképeket Azure De
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: cac812a9c38fc1dedfd31659a626b122f9527e63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87289400"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>Egyéni rendszerkép létrehozása VHD-fájlból
@@ -24,15 +24,15 @@ A következő lépések végigvezetik egy egyéni rendszerkép létrehozásán e
 
 1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
+1. Válassza a **minden szolgáltatás** lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
 
 1. A laborok listájából válassza ki a kívánt labort.  
 
-1. A labor fő ablaktábláján válassza a **konfiguráció és szabályzatok**lehetőséget. 
+1. A labor fő ablaktábláján válassza a **konfiguráció és szabályzatok** lehetőséget. 
 
-1. A **konfiguráció és házirendek** panelen válassza az **Egyéni lemezképek**lehetőséget.
+1. A **konfiguráció és házirendek** panelen válassza az **Egyéni lemezképek** lehetőséget.
 
-1. Az **Egyéni lemezképek** panelen válassza a **+ Hozzáadás**lehetőséget.
+1. Az **Egyéni lemezképek** panelen válassza a **+ Hozzáadás** lehetőséget.
 
     ![Egyéni rendszerkép hozzáadása](./media/devtest-lab-create-template/add-custom-image.png)
 
@@ -40,10 +40,10 @@ A következő lépések végigvezetik egy egyéni rendszerkép létrehozásán e
 
 1. Adja meg az egyéni rendszerkép leírását. Ez a leírás az alaplemezképek listájában jelenik meg a virtuális gép létrehozásakor.
 
-1. Az **operációs rendszer típusa**beállításnál válassza a **Windows** vagy a **Linux**lehetőséget.
+1. Az **operációs rendszer típusa** beállításnál válassza a **Windows** vagy a **Linux** lehetőséget.
 
-    - Ha a **Windows**lehetőséget választja, adja meg azt a jelölőnégyzetet, hogy a *Sysprep* a számítógépen fut-e. 
-    - Ha a **Linux**lehetőséget választja, adja meg azt a jelölőnégyzetet, hogy a *kiépítés* le lett-e futtatva a gépen. 
+    - Ha a **Windows** lehetőséget választja, adja meg azt a jelölőnégyzetet, hogy a *Sysprep* a számítógépen fut-e. 
+    - Ha a **Linux** lehetőséget választja, adja meg azt a jelölőnégyzetet, hogy a *kiépítés* le lett-e futtatva a gépen. 
 
 1. Válassza ki a **virtuális merevlemezt** a legördülő menüből. Ez az új egyéni rendszerkép létrehozásához használt VHD. Ha szükséges, válassza a **virtuális merevlemez feltöltését a PowerShell használatával**.
 
@@ -72,6 +72,6 @@ Néhány perc elteltével létrejön az egyéni rendszerkép, amely a labor Stor
 - [Egyéni lemezképek vagy képletek?](./devtest-lab-faq.md#blog-post)
 - [Egyéni rendszerképek másolása Azure DevTest Labs között](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Virtuális gép hozzáadása a laborhoz](./devtest-lab-add-vm.md)

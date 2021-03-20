@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 245db436fc3216fe5c8c8f51c50c0ac03190f9eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85564565"
 ---
 # <a name="connect-palo-alto-networks-to-azure-sentinel"></a>A Palo Alto-hálózatok összekapcsolhatók az Azure Sentinel-vel
@@ -36,7 +36,7 @@ A Palo Alto-hálózatok konfigurálása a syslog-üzenetek CEF formátumban val�
 
 1.  Lépjen a [syslog-figyelés konfigurálása](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/configure-syslog-monitoring) elemre, és kövesse a 2. és a 3. lépést a Palo Alto Networks-készülékről az Azure sentinelre történő CEF-továbbítás konfigurálásához.
 
-    1. Győződjön meg arról, hogy a **syslog-kiszolgáló formátumát** a **BSD**értékre állítja be.
+    1. Győződjön meg arról, hogy a **syslog-kiszolgáló formátumát** a **BSD** értékre állítja be.
 
        > [!NOTE]
        > Előfordulhat, hogy a PDF-fájl másolási/beillesztési műveletei megváltoztatják a szöveget, és véletlenszerű karaktereket szúrnak be. Ennek elkerüléséhez másolja a szöveget egy Szerkesztőbe, és távolítson el minden olyan karaktert, amely megtöri a napló formátumát a beillesztés előtt, ahogy az ebben a példában látható.
@@ -50,7 +50,7 @@ A Palo Alto-hálózatok konfigurálása a syslog-üzenetek CEF formátumban val�
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható a Palo Alto hálózati berendezések az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

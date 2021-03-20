@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogy a tesztkörnyezet felhasználói vagy
 ms.date: 06/26/2020
 ms.topic: how-to
 ms.openlocfilehash: 8d0c8a3ad8ba92e606f19480bdb36483f377fa04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85443502"
 ---
 # <a name="view-support-information-lab-user-in-azure-lab-services"></a>Támogatási információk megtekintése (tesztkörnyezet felhasználójának Azure Lab Services)
@@ -24,7 +24,7 @@ Ezekkel az információkkal segítséget kaphat, ha bármilyen technikai problé
 ## <a name="view-support-information"></a>Támogatási információk megtekintése
 1. Jelentkezzen be [Azure Lab Services portálra](https://labs.azure.com).
 2. Válassza ki azt a **labort vagy virtuális gépet** , amelyhez segítségre van szüksége, és válassza a **?** az oldal jobb felső sarkában. 
-3. Győződjön meg arról, hogy a **Megtekintés támogatási webhelyre**, **e-mail-támogatásra**és a **telefonos támogatásra**mutató hivatkozásokat lát.
+3. Győződjön meg arról, hogy a **Megtekintés támogatási webhelyre**, **e-mail-támogatásra** és a **telefonos támogatásra** mutató hivatkozásokat lát.
 
     ![Támogatási információk megtekintése](./media/lab-user-support-information/support-information.png)
 4. Egy másik labor támogatási kapcsolattartási adatait úgy tekintheti meg, hogy az adott laborra vált a legördülő listában. 
@@ -34,7 +34,7 @@ Ezekkel az információkkal segítséget kaphat, ha bármilyen technikai problé
 
     ![Egyéb labor támogatási információi](./media/lab-user-support-information/second-lab-support-information.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkből megtudhatja, hogyan tekintheti meg a tesztkörnyezet felhasználói a támogatási kapcsolattartási adatokat:
 
 - [Hogyan állíthatja be a labor-fiók tulajdonosa a támogatási kapcsolattartási adatokat](lab-account-owner-support-information.md)

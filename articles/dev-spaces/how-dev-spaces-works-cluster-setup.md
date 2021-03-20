@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Útmutató Azure Kubernetes Service-fürt beállításához az Azure dev Spaces működéséhez
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
 ms.openlocfilehash: 841e67b96e95aa251fa5bf1ef469b68de30f54d9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91972679"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Fürt beállítása az Azure dev Spaces működéséhez
@@ -38,7 +38,7 @@ A vezérlő a következő műveleteket hajtja végre:
 A vezérlő egy különálló Azure-erőforrás a fürtön kívül, és a fürt erőforrásaihoz a következő:
 
 * Létrehoz vagy kijelöl egy Kubernetes-névteret, amelyet fejlesztői területként kíván használni.
-* Eltávolítja a *azds*nevű Kubernetes-névteret, ha létezik, és létrehoz egy újat.
+* Eltávolítja a *azds* nevű Kubernetes-névteret, ha létezik, és létrehoz egy újat.
 * Üzembe helyez egy Kubernetes webhook-konfigurációt.
 * Üzembe helyez egy webhook-beléptetési kiszolgálót.
 

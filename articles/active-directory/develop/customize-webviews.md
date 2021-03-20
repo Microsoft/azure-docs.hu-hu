@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: a8486ec87b5198231a33b1dab382ba457c8c8066
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85478127"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Útmutató: böngészők és webnézetek testreszabása iOS/macOS rendszerhez
@@ -74,11 +74,11 @@ A használt böngésző a cookie-k megosztása miatt hatással van az egyszeri b
 
 | Technológia    | Böngésző típusa  | iOS-elérhetőség | macOS-elérhetőség | Cookie-k és egyéb adatforgalom megosztása  | MSAL rendelkezésre állása | SSO |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|-------------:|
-| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | Rendszer | iOS12 és fel | macOS 10,15 és fel | Igen | iOS és macOS 10.15 + | w/Safari-példányok
-| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | Rendszer | iOS11 és fel | N/A | Igen | csak iOS esetén |  w/Safari-példányok
-| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | Rendszer | iOS11 és fel | N/A | Nem | csak iOS esetén | Nem * *
-| **SFSafariViewController** | Rendszer | iOS10 | N/A | Igen | csak iOS esetén |  w/Safari-példányok
-| **WKWebView**  | Alkalmazáson belüli | iOS8 és fel | macOS 10,10 és fel | Nem | iOS és macOS | Nem * *
+| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | Rendszer | iOS12 és fel | macOS 10,15 és fel | Yes | iOS és macOS 10.15 + | w/Safari-példányok
+| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | Rendszer | iOS11 és fel | N.A. | Igen | csak iOS esetén |  w/Safari-példányok
+| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | Rendszer | iOS11 és fel | N/A | No | csak iOS esetén | Nem * *
+| **SFSafariViewController** | Rendszer | iOS10 | N.A. | Igen | csak iOS esetén |  w/Safari-példányok
+| **WKWebView**  | Alkalmazáson belüli | iOS8 és fel | macOS 10,10 és fel | No | iOS és macOS | Nem * *
 
 * * Az egyszeri bejelentkezés működéséhez a tokeneket meg kell osztani az alkalmazások között. Ehhez jogkivonat-gyorsítótár vagy közvetítő alkalmazás szükséges, például Microsoft Authenticator iOS rendszerhez.
 
@@ -140,7 +140,7 @@ extern NSString *MSALWebAuthDidCompleteNotification;
 extern NSString *MSALWebAuthWillSwitchToBrokerApp;
 ```
 
-### <a name="options"></a>Lehetőségek
+### <a name="options"></a>Beállítások
 
 Az összes támogatott MSAL-típus deklarálva van a [MSALWebviewType enumerálásban](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALDefinitions.h#L47)
 
@@ -171,6 +171,6 @@ typedef NS_ENUM(NSInteger, MSALWebviewType)
 };
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [hitelesítési folyamatokról és az alkalmazási forgatókönyvekről](authentication-flows-app-scenarios.md)

@@ -15,10 +15,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 5f987ab15201e4c4dabf147ac468184881e9ed17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85551638"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Hozzáférés engedélyezése Azure Active Directory webes alkalmazásokhoz az OAuth 2.0 kódengedélyezési folyamat használatával
@@ -41,20 +41,20 @@ Először regisztrálja az alkalmazást a Azure Active Directory (Azure AD) Bér
 1. Válassza ki az Azure AD-bérlőt a lap jobb felső sarkában lévő fiók kiválasztásával, majd kattintson a **Váltás a címtár** -navigációra lehetőségre, majd válassza ki a megfelelő bérlőt. 
    - Hagyja ki ezt a lépést, ha csak egy Azure AD-bérlője van a fiókjában, vagy ha már kiválasztotta a megfelelő Azure AD-bérlőt.
    
-1. A Azure Portal keresse meg és válassza a **Azure Active Directory**lehetőséget.
+1. A Azure Portal keresse meg és válassza a **Azure Active Directory** lehetőséget.
    
-1. A **Azure Active Directory** bal oldali menüben válassza az **alkalmazás-regisztrációk**lehetőséget, majd válassza az **új regisztráció**lehetőséget.
+1. A **Azure Active Directory** bal oldali menüben válassza az **alkalmazás-regisztrációk** lehetőséget, majd válassza az **új regisztráció** lehetőséget.
    
 1. Kövesse az utasításokat az új alkalmazás létrehozásához. Nem számít, hogy ez egy webalkalmazás vagy egy nyilvános ügyfél (mobil & asztali) alkalmazás ebben az oktatóanyagban, de ha konkrét példákat szeretne a webalkalmazások vagy a nyilvános ügyfélalkalmazások számára [, tekintse](v1-overview.md)meg a gyors útmutatókat.
    
    - A **név** az alkalmazás neve, amely a végfelhasználók számára ad leírást az alkalmazásról.
-   - A **támogatott fiókok típusai**területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
+   - A **támogatott fiókok típusai** területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
    - Adja meg az **átirányítási URI**-t. Webalkalmazások esetében ez az alkalmazás alap URL-címe, ahol a felhasználók bejelentkezhetnek.  Például: `http://localhost:12345`. A nyilvános ügyfél (Mobile & Desktop) esetében az Azure AD a jogkivonat-válaszok visszaküldésére használja. Adja meg az alkalmazáshoz tartozó értéket.  Például: `http://MyFirstAADApp`.
    <!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->  
    
 1. A regisztráció befejezését követően az Azure AD egyedi ügyfél-azonosítót (az **alkalmazás azonosítóját**) rendeli hozzá az alkalmazáshoz. Ezt az értéket a következő részekben kell megadnia, ezért másolja azt az alkalmazás oldaláról.
    
-1. Ha szeretné megkeresni az alkalmazást a Azure Portalban, válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza az **összes alkalmazás megtekintése**lehetőséget.
+1. Ha szeretné megkeresni az alkalmazást a Azure Portalban, válassza a **Alkalmazásregisztrációk** lehetőséget, majd válassza az **összes alkalmazás megtekintése** lehetőséget.
 
 ## <a name="oauth-20-authorization-flow"></a>OAuth 2,0 engedélyezési folyamat
 
@@ -78,16 +78,16 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &state=12345
 ```
 
-| Paraméter | Típus | Leírás |
+| Paraméter | Típus | Description |
 | --- | --- | --- |
 | Bérlő |kötelező |A `{tenant}` kérelem elérési útjának értéke használható annak szabályozására, hogy ki jelentkezhet be az alkalmazásba. Az engedélyezett értékek a bérlői azonosítók, például `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` vagy a `contoso.onmicrosoft.com` `common` bérlői független tokenek esetében. |
-| client_id |kötelező |Az alkalmazáshoz hozzárendelt, az Azure AD-vel regisztrált alkalmazás azonosítója. Ez az Azure Portalon található. Kattintson **Azure Active Directory** a szolgáltatások oldalsávban, majd a **Alkalmazásregisztrációk**elemre, és válassza ki az alkalmazást. |
+| client_id |kötelező |Az alkalmazáshoz hozzárendelt, az Azure AD-vel regisztrált alkalmazás azonosítója. Ez az Azure Portalon található. Kattintson **Azure Active Directory** a szolgáltatások oldalsávban, majd a **Alkalmazásregisztrációk** elemre, és válassza ki az alkalmazást. |
 | response_type |kötelező |Tartalmaznia kell `code` az engedélyezési kód folyamatát. |
 | redirect_uri |ajánlott |Az alkalmazás redirect_uri, ahol az alkalmazás elküldhet és fogadhat hitelesítési válaszokat. Pontosan meg kell egyeznie a portálon regisztrált redirect_urisével, kivéve, ha az URL-címet kódolni kell. A natív & Mobile apps esetében az alapértelmezett értéket kell használnia `https://login.microsoftonline.com/common/oauth2/nativeclient` . |
 | response_mode |választható |Meghatározza azt a módszert, amelyet az eredményül kapott jogkivonat az alkalmazásba való visszaküldéséhez kell használni. Lehet `query` , `fragment` , vagy `form_post` . `query` a kódot lekérdezési karakterlánc paraméterként adja meg az átirányítási URI-n. Ha az implicit folyamat használatával kér azonosító jogkivonatot, az `query` [OpenID specifikációban](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)megadott módon nem használható. Ha csak a kódot kéri, használhatja a, vagy a-t is `query` `fragment` `form_post` . `form_post` végrehajt egy BEJEGYZÉST, amely tartalmazza a kódot az átirányítási URI-nak. Az alapértelmezett érték `query` egy programkód folyamata.  |
 | állapot |ajánlott |A kérelemben szereplő, a jogkivonat-válaszban visszaadott érték. A véletlenszerűen generált egyedi érték általában a [helyek közötti kérelmek hamisításának megelőzésére](https://tools.ietf.org/html/rfc6749#section-10.12)szolgál. Az állapot az alkalmazásban a felhasználó állapotára vonatkozó információk kódolására is használatos, mielőtt a hitelesítési kérelem bekövetkezett volna, például az oldal vagy a megtekintés. |
-| erőforrás | ajánlott |A célként szolgáló webes API (biztonságos erőforrás) alkalmazás-azonosító URI-ja. Az alkalmazás-azonosító URI azonosítójának megkereséséhez az Azure Portalon kattintson a **Azure Active Directory**elemre, majd az **alkalmazás regisztrációja**elemre, nyissa meg az alkalmazás **beállításait** tartalmazó lapot, majd kattintson a **Tulajdonságok**elemre. Egy külső erőforrás is lehet, például: `https://graph.microsoft.com` . Erre az engedélyezési vagy a jogkivonat-kérelmek egyikében van szükség. Annak biztosítása érdekében, hogy kevesebb hitelesítési kérdés kerüljön az engedélyezési kérelembe annak biztosításához, hogy a felhasználó elfogadja a jóváhagyást. |
-| scope | **figyelmen kívül hagyja** | A v1 Azure AD-alkalmazások esetében a hatóköröket statikusan kell konfigurálni az Azure Portalon az alkalmazások **beállításai**, a **szükséges engedélyek**területen. |
+| erőforrás | ajánlott |A célként szolgáló webes API (biztonságos erőforrás) alkalmazás-azonosító URI-ja. Az alkalmazás-azonosító URI azonosítójának megkereséséhez az Azure Portalon kattintson a **Azure Active Directory** elemre, majd az **alkalmazás regisztrációja** elemre, nyissa meg az alkalmazás **beállításait** tartalmazó lapot, majd kattintson a **Tulajdonságok** elemre. Egy külső erőforrás is lehet, például: `https://graph.microsoft.com` . Erre az engedélyezési vagy a jogkivonat-kérelmek egyikében van szükség. Annak biztosítása érdekében, hogy kevesebb hitelesítési kérdés kerüljön az engedélyezési kérelembe annak biztosításához, hogy a felhasználó elfogadja a jóváhagyást. |
+| scope | **figyelmen kívül hagyja** | A v1 Azure AD-alkalmazások esetében a hatóköröket statikusan kell konfigurálni az Azure Portalon az alkalmazások **beállításai**, a **szükséges engedélyek** területen. |
 | gyors |választható |Adja meg a szükséges felhasználói interakció típusát.<p> Az érvényes értékek a következők: <p> *Bejelentkezés*: a rendszer kérni fogja a felhasználótól az ismételt hitelesítést. <p> *select_account*: a rendszer megkéri a felhasználót, hogy válasszon egy fiókot, és szakítsa meg az egyszeri bejelentkezést. A felhasználó kiválaszthat egy meglévő bejelentkezett fiókot, megadhatja a megjegyzett fiók hitelesítő adatait, vagy választhat, hogy egy másik fiókot is használ-e. <p> *beleegyezik*: a felhasználói beleegyezett, de frissíteni kell. A felhasználónak meg kell adnia a hozzájárulásukat. <p> *admin_consent*: a rendszergazdának a szervezet összes felhasználója nevében kell megadnia a hozzájárulásukat |
 | login_hint |választható |A használatával előre kitöltheti a felhasználó bejelentkezési oldalának username/e-mail címe mezőjét, ha már ismeri a felhasználónevét. Az alkalmazások gyakran használják ezt a paramétert az újrahitelesítés során, miután már kibontotta a felhasználónevet egy korábbi bejelentkezésből a `preferred_username` jogcím használatával. |
 | domain_hint |választható |A felhasználó által a bejelentkezéshez használt bérlőről vagy tartományról nyújt be egy tippet. A domain_hint értéke a bérlő regisztrált tartománya. Ha a bérlőt egy helyszíni címtárba összevonták, a HRE átirányítja a megadott bérlői összevonási kiszolgálóra. |
@@ -134,7 +134,7 @@ error=access_denied
 #### <a name="error-codes-for-authorization-endpoint-errors"></a>Az engedélyezési végpont hibáinak kódjai
 Az alábbi táblázat azokat a hibakódokat ismerteti, amelyeket a rendszer a `error` hiba válaszának paraméterében adhat vissza.
 
-| Hibakód | Leírás | Ügyfél művelete |
+| Hibakód | Description | Ügyfél művelete |
 | --- | --- | --- |
 | invalid_request |Protokollhiba, például hiányzó kötelező paraméter. |Javítsa ki és küldje el újra a kérelmet. Ez egy fejlesztési hiba, és általában a kezdeti tesztelés során történik. |
 | unauthorized_client |Az ügyfélalkalmazás nem jogosult engedélyezési kód igénylésére. |Ez általában akkor fordul elő, ha az ügyfélalkalmazás nincs regisztrálva az Azure AD-ben, vagy nem kerül be a felhasználó Azure AD-bérlőbe. Az alkalmazás arra kéri a felhasználót, hogy telepítse az alkalmazást, és hozzáadja azt az Azure AD-hez. |
@@ -163,18 +163,18 @@ grant_type=authorization_code
 //NOTE: client_secret only required for web apps
 ```
 
-| Paraméter | Típus | Leírás |
+| Paraméter | Típus | Description |
 | --- | --- | --- |
 | Bérlő |kötelező |A `{tenant}` kérelem elérési útjának értéke használható annak szabályozására, hogy ki jelentkezhet be az alkalmazásba. Az engedélyezett értékek a bérlői azonosítók, például `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` vagy a `contoso.onmicrosoft.com` `common` bérlői független tokenek esetében. |
 | client_id |kötelező |Az alkalmazáshoz hozzárendelt, az Azure AD-vel regisztrált alkalmazás azonosítója. Ezt a Azure Portalban találja. Az alkalmazás-azonosító az alkalmazás regisztrációjának beállításaiban jelenik meg. |
 | grant_type |kötelező |`authorization_code`Az engedélyezési kód folyamatábrájának kell lennie. |
 | code |kötelező |Az `authorization_code` előző szakaszban beszerzett |
 | redirect_uri |kötelező | `redirect_uri`Az ügyfélalkalmazás regisztrálva van. |
-| client_secret |a webalkalmazásokhoz szükséges, a nyilvános ügyfelek számára nem engedélyezett |A **kulcsok**területen az alkalmazáshoz az Azure Portalon létrehozott alkalmazás titka. Nem használható natív alkalmazásban (nyilvános ügyfél), mert client_secrets nem lehet megbízhatóan tárolni az eszközökön. A webalkalmazások és webes API-k (az összes bizalmas ügyfél) számára szükséges, amelyekkel biztonságosan tárolhatók a `client_secret` kiszolgáló oldalán. A küldés előtt a client_secret URL-kódolású kell lennie. |
-| erőforrás | ajánlott |A célként szolgáló webes API (biztonságos erőforrás) alkalmazás-azonosító URI-ja. Az alkalmazás-azonosító URI azonosítójának megkereséséhez az Azure Portalon kattintson a **Azure Active Directory**elemre, majd az **alkalmazás regisztrációja**elemre, nyissa meg az alkalmazás **beállításait** tartalmazó lapot, majd kattintson a **Tulajdonságok**elemre. Egy külső erőforrás is lehet, például: `https://graph.microsoft.com` . Erre az engedélyezési vagy a jogkivonat-kérelmek egyikében van szükség. Annak biztosítása érdekében, hogy kevesebb hitelesítési kérdés kerüljön az engedélyezési kérelembe annak biztosításához, hogy a felhasználó elfogadja a jóváhagyást. Ha az engedélyezési kérelemben és a jogkivonat-kérelemben is szerepel, akkor az erőforrás paramétereinek egyezniük kell. | 
+| client_secret |a webalkalmazásokhoz szükséges, a nyilvános ügyfelek számára nem engedélyezett |A **kulcsok** területen az alkalmazáshoz az Azure Portalon létrehozott alkalmazás titka. Nem használható natív alkalmazásban (nyilvános ügyfél), mert client_secrets nem lehet megbízhatóan tárolni az eszközökön. A webalkalmazások és webes API-k (az összes bizalmas ügyfél) számára szükséges, amelyekkel biztonságosan tárolhatók a `client_secret` kiszolgáló oldalán. A küldés előtt a client_secret URL-kódolású kell lennie. |
+| erőforrás | ajánlott |A célként szolgáló webes API (biztonságos erőforrás) alkalmazás-azonosító URI-ja. Az alkalmazás-azonosító URI azonosítójának megkereséséhez az Azure Portalon kattintson a **Azure Active Directory** elemre, majd az **alkalmazás regisztrációja** elemre, nyissa meg az alkalmazás **beállításait** tartalmazó lapot, majd kattintson a **Tulajdonságok** elemre. Egy külső erőforrás is lehet, például: `https://graph.microsoft.com` . Erre az engedélyezési vagy a jogkivonat-kérelmek egyikében van szükség. Annak biztosítása érdekében, hogy kevesebb hitelesítési kérdés kerüljön az engedélyezési kérelembe annak biztosításához, hogy a felhasználó elfogadja a jóváhagyást. Ha az engedélyezési kérelemben és a jogkivonat-kérelemben is szerepel, akkor az erőforrás paramétereinek egyezniük kell. | 
 | code_verifier | választható | Ugyanaz a code_verifier, amelyet a authorization_code beszerzéséhez használt. Kötelező, ha a PKCE az engedélyezési kód Grant kérelmében használták. További információ: [PKCE RFC](https://tools.ietf.org/html/rfc7636)   |
 
-Az alkalmazás-azonosító URI azonosítójának megkereséséhez az Azure Portalon kattintson a **Azure Active Directory**elemre, majd az **alkalmazás regisztrációja**elemre, nyissa meg az alkalmazás **beállításait** tartalmazó lapot, majd kattintson a **Tulajdonságok**elemre.
+Az alkalmazás-azonosító URI azonosítójának megkereséséhez az Azure Portalon kattintson a **Azure Active Directory** elemre, majd az **alkalmazás regisztrációja** elemre, nyissa meg az alkalmazás **beállításait** tartalmazó lapot, majd kattintson a **Tulajdonságok** elemre.
 
 ### <a name="successful-response"></a>Sikeres válasz
 Az Azure AD egy [hozzáférési jogkivonatot](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) ad vissza sikeres válasz esetén. Az ügyfélalkalmazás és a hozzájuk kapcsolódó késések hálózati hívásának minimalizálásához az ügyfélalkalmazás a OAuth 2,0 válaszban megadott jogkivonat-élettartamhoz tartozó hozzáférési jogkivonatokat gyorsítótárazza. A jogkivonat élettartamának meghatározásához használja a `expires_in` vagy a `expires_on` paraméter értékét.
@@ -240,7 +240,7 @@ A példaként kapott hiba a következőhöz hasonló:
 #### <a name="http-status-codes"></a>HTTP-állapotkódok
 A következő táblázat felsorolja azokat a HTTP-állapotkódok listáját, amelyeket a jogkivonat-kiállítási végpont visszaad. Bizonyos esetekben a hibakód elegendő a válasz leírásához, de ha hibákat észlel, elemezni kell a csatolt JSON-dokumentumot, és meg kell vizsgálnia a hibakódját.
 
-| HTTP-kód | Leírás |
+| HTTP-kód | Description |
 | --- | --- |
 | 400 |Alapértelmezett HTTP-kód. A legtöbb esetben használatos, és általában egy helytelenül formázott kérelem okozza. Javítsa ki és küldje el újra a kérelmet. |
 | 401 |A hitelesítés sikertelen. Például a kérelemből hiányzik a client_secret paraméter. |
@@ -248,7 +248,7 @@ A következő táblázat felsorolja azokat a HTTP-állapotkódok listáját, ame
 | 500 |Belső hiba történt a szolgáltatásban. Próbálja megismételni a kérelmet. |
 
 #### <a name="error-codes-for-token-endpoint-errors"></a>Hibakódok jogkivonat-végponti hibákhoz
-| Hibakód | Leírás | Ügyfél művelete |
+| Hibakód | Description | Ügyfél művelete |
 | --- | --- | --- |
 | invalid_request |Protokollhiba, például hiányzó kötelező paraméter. |A kérelem javítása és újraküldése |
 | invalid_grant |Az engedélyezési kód érvénytelen vagy lejárt. |Új kérelem kipróbálása a `/authorize` végpontra |
@@ -290,7 +290,7 @@ WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/co
 #### <a name="bearer-scheme-error-codes"></a>Tulajdonosi séma hibakódai
 Az RFC 6750 specifikációja a következő hibákat definiálja a válaszban a WWW-Authenticate fejlécet és a tulajdonosi sémát használó erőforrásokhoz.
 
-| HTTP-állapotkód | Hibakód | Leírás | Ügyfél művelete |
+| HTTP-állapotkód | Hibakód | Description | Ügyfél művelete |
 | --- | --- | --- | --- |
 | 400 |invalid_request |A kérés nem megfelelően formázott. Előfordulhat például, hogy hiányzik egy paraméter, vagy kétszer ugyanazt a paramétert használja. |Javítsa ki a hibát, majd próbálja megismételni a kérelmet. Ezt a típusú hibát csak a fejlesztés során, a kezdeti tesztelés során kell észlelni. |
 | 401 |invalid_token |A hozzáférési jogkivonat hiányzik, érvénytelen vagy vissza lett vonva. A error_description paraméter értéke további részleteket tartalmaz. |Igényeljen új jogkivonatot az engedélyezési kiszolgálóról. Ha az új jogkivonat meghiúsul, váratlan hiba történt. Küldjön egy hibaüzenetet a felhasználónak, és próbálkozzon újra a véletlenszerű késések után. |
@@ -371,5 +371,5 @@ A példaként kapott hiba a következőhöz hasonló:
 
 A hibakódok és az ajánlott ügyfél-művelet leírását a jogkivonat- [végponti hibák hibakódja](#error-codes-for-token-endpoint-errors)című témakörben tekintheti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az Azure AD 1.0 végpontról, valamint a webes alkalmazások és webes API-k hitelesítésének és engedélyezésének módjáról: [példák az alkalmazásokra](sample-v1-code.md).

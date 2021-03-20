@@ -14,10 +14,10 @@ ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 487efce1fe57413dda740c42a7fd3d5ea91cfa49
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98724959"
 ---
 # <a name="build-resilience-in-external-user-authentication"></a>Rugalmasság létrehozása külső felhasználói hitelesítéssel
@@ -56,7 +56,7 @@ Az [API-összekötők](../external-identities/api-connectors-overview.md) haszn�
 
 * **API-összekötő válasza**: Tervezze meg az API-összekötőket a regisztrációs folyamaton, ha az API nem érhető el. Tekintse meg és adja meg az API-fejlesztőknek az [API-válaszokat](../external-identities/self-service-sign-up-add-api-connector.md) , valamint a [hibaelhárításhoz ajánlott eljárásokat](../external-identities/self-service-sign-up-add-api-connector.md). Működjön együtt az API fejlesztői csapatával az összes lehetséges reagálási forgatókönyv teszteléséhez, beleértve a folytatást, az érvényesítési hibát és a blokkoló válaszokat. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Rugalmassági erőforrások rendszergazdák és építészek számára
  
 * [Rugalmasság létrehozása a hitelesítőadat-kezeléssel](resilience-in-credentials.md)

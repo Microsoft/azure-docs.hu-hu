@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan adhat hozzá egy GitHub-vagy Azure DevOps Servi
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 225aae5e0a017b711f29a47829b06f8bb7a6a8ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85483142"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>Git-tárház hozzáadása egyéni összetevők és Resource Manager-sablonok tárolásához
@@ -33,10 +33,10 @@ Ahhoz, hogy egy tárházat vegyen fel a laborba, először szerezze be a legfont
 1. Nyissa meg a GitHub-tárház kezdőlapját, amely tartalmazza az összetevő vagy a Resource Manager-sablon definícióit.
 2. Válassza a **Clone or download** (Klónozás vagy letöltés) lehetőséget.
 3. Az URL-cím vágólapra másolásához válassza a **https-klón URL-címe** gombot. Mentse az URL-címet későbbi használatra.
-4. A GitHub jobb felső sarkában válassza ki a profil rendszerképét, majd válassza a **Beállítások**lehetőséget.
-5. A bal oldali **személyes beállítások** menüben válassza a **személyes hozzáférési tokenek**lehetőséget.
-6. Válassza az **új jogkivonat előállítása**lehetőséget.
-7. Az **új személyes hozzáférési jogkivonat** lapon a **jogkivonat leírása**területen adjon meg egy leírást. Fogadja el az alapértelmezett elemeket a **hatókörök kiválasztása**területen, majd válassza a **jogkivonat előállítása**lehetőséget.
+4. A GitHub jobb felső sarkában válassza ki a profil rendszerképét, majd válassza a **Beállítások** lehetőséget.
+5. A bal oldali **személyes beállítások** menüben válassza a **személyes hozzáférési tokenek** lehetőséget.
+6. Válassza az **új jogkivonat előállítása** lehetőséget.
+7. Az **új személyes hozzáférési jogkivonat** lapon a **jogkivonat leírása** területen adjon meg egy leírást. Fogadja el az alapértelmezett elemeket a **hatókörök kiválasztása** területen, majd válassza a **jogkivonat előállítása** lehetőséget.
 8. Mentse a generált tokent. Később a tokent használja.
 9. A GitHub bezárásához.   
 10. Folytassa a [labor összekapcsolásával a tárház](#connect-your-lab-to-the-repository) szakaszával.
@@ -44,26 +44,26 @@ Ahhoz, hogy egy tárházat vegyen fel a laborba, először szerezze be a legfont
 ### <a name="get-the-azure-repos-clone-url-and-personal-access-token"></a>Az Azure Repos Clone URL-cím és a személyes hozzáférési jogkivonat beszerzése
 
 1. Nyissa meg a csapat gyűjteményének kezdőlapját (például: `https://contoso-web-team.visualstudio.com` ), majd válassza ki a projektet.
-2. A projekt kezdőlapján válassza a **kód**lehetőséget.
-3. A klónozott URL-cím megtekintéséhez a projekt **kódja** lapon válassza a **klónozás**lehetőséget.
+2. A projekt kezdőlapján válassza a **kód** lehetőséget.
+3. A klónozott URL-cím megtekintéséhez a projekt **kódja** lapon válassza a **klónozás** lehetőséget.
 4. Mentse az URL-címet. Később az URL-címet használja.
-5. Személyes hozzáférési jogkivonat létrehozásához a felhasználói fiók legördülő menüjében válassza a **saját profil**lehetőséget.
-6. A profil adatai lapon válassza a **Biztonság**elemet.
-7. A **Biztonság** lapon válassza a **Hozzáadás**lehetőséget.
+5. Személyes hozzáférési jogkivonat létrehozásához a felhasználói fiók legördülő menüjében válassza a **saját profil** lehetőséget.
+6. A profil adatai lapon válassza a **Biztonság** elemet.
+7. A **Biztonság** lapon válassza a **Hozzáadás** lehetőséget.
 8. A **személyes hozzáférési jogkivonat létrehozása** oldalon:
    1. Adja meg a jogkivonat **leírását** .
-   2. A **lejárat** listán válassza a **180 nap**lehetőséget.
-   3. A **fiókok** listában válassza az **összes elérhető fiók**lehetőséget.
+   2. A **lejárat** listán válassza a **180 nap** lehetőséget.
+   3. A **fiókok** listában válassza az **összes elérhető fiók** lehetőséget.
    4. Válassza az **írásvédett** lehetőséget.
-   5. Válassza a **Jogkivonat létrehozása**lehetőséget.
-9. Az új jogkivonat megjelenik a **személyes hozzáférési tokenek** listájában. Válassza a **token másolása**lehetőséget, majd mentse a jogkivonat értékét későbbi használatra.
+   5. Válassza a **Jogkivonat létrehozása** lehetőséget.
+9. Az új jogkivonat megjelenik a **személyes hozzáférési tokenek** listájában. Válassza a **token másolása** lehetőséget, majd mentse a jogkivonat értékét későbbi használatra.
 10. Folytassa a [labor összekapcsolásával a tárház](#connect-your-lab-to-the-repository) szakaszával.
 
 ## <a name="connect-your-lab-to-the-repository"></a>A labor összekötése az adattárral
 1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-2. Válassza a **További szolgáltatások**lehetőséget, majd válassza a **DevTest Labs** lehetőséget a szolgáltatások listájából.
+2. Válassza a **További szolgáltatások** lehetőséget, majd válassza a **DevTest Labs** lehetőséget a szolgáltatások listájából.
 3. A Labs listából válassza ki a labort. 
-4. Válassza **a konfiguráció és szabályzatok**  >  **Tárházak**  >  **+ Hozzáadás**lehetőséget.
+4. Válassza **a konfiguráció és szabályzatok**  >  **Tárházak**  >  **+ Hozzáadás** lehetőséget.
 
     ![Az adattár hozzáadása gomb](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
 5. A második **adattárak** lapon a következő információkat kell megadnia:
@@ -82,7 +82,7 @@ Ahhoz, hogy egy tárházat vegyen fel a laborba, először szerezze be a legfont
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Miután létrehozta a privát git-tárházat, igény szerint az alábbiak közül választhat:
 * Tárolja az [Egyéni](devtest-lab-artifact-author.md)összetevőket. Az új virtuális gépek létrehozásához később is felhasználhatja őket.
 * [Több virtuális gépre kiterjedő környezetek és a Pásti-erőforrások létrehozása Resource Manager-sablonok használatával](devtest-lab-create-environment-from-arm.md). Ezután a sablonokat a privát tárházban tárolhatja.

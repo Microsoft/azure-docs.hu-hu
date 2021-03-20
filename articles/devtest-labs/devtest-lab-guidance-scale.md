@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 50bf08678a12a1a0499abd08c52a264d03f4a401
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85478790"
 ---
 # <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>A Azure DevTest Labs-infrastruktúra vertikális felskálázása
@@ -45,7 +45,7 @@ Az egyik előfizetés megközelítése gyakran nem kezelhető nagy vállalatokba
 Felhasználónként egy külön előfizetés biztosítja az alternatív spektrumot. A számos előfizetés előnyei többek között a következők:
 
 - Az **Azure skálázási kvóták** nem akadályozzák az örökbefogadást. Az Azure írásakor például az 200 Storage-fiókok előfizetését teszik lehetővé. Az Azure legtöbb szolgáltatásának működési kvótái vannak (számos személyre szabható, de nem). A felhasználónkénti előfizetés ezen modelljében nagyon valószínűtlen, hogy a legtöbb kvótát elérte. Az aktuális Azure skálázási kvótákkal kapcsolatos további információkért lásd az [Azure-előfizetések és-szolgáltatások korlátozásait, kvótáit és megkötéseit](../azure-resource-manager/management/azure-subscription-service-limits.md)ismertető témakört.
-- **Chargebacks** A csoportokba vagy az egyéni fejlesztőkbe való jóváírások sokkal egyszerűbbé válnak, így a szervezetek a jelenlegi modelljük alapján tudják felvenni a költségeket.
+-  A csoportokba vagy az egyéni fejlesztőkbe való jóváírások sokkal egyszerűbbé válnak, így a szervezetek a jelenlegi modelljük alapján tudják felvenni a költségeket.
 - A DevTest Labs-környezetek **tulajdonosi & engedélyei** egyszerűek. Az előfizetési szintű hozzáférést a fejlesztőknek kell megadnia, és ezekért a 100% felelős, beleértve a hálózati konfigurációt, a labor-házirendeket és a virtuális gépek kezelését.
 
 Előfordulhat, hogy a vállalaton belül a spektrum szélsőségesen megtalálhatók a korlátok. Ezért előfordulhat, hogy az előfizetéseket úgy kell beállítania, hogy a szélsőségesek közepébe essen. Az ajánlott eljárás a szervezet célja, hogy a lehető legkevesebb előfizetést használja az előfizetések teljes számának növelésére. Az előfizetési topológia kritikus fontosságú a DevTest Labs vállalati telepítéséhez, de nem késleltetheti a koncepció igazolását. További részleteket az [irányításról](devtest-lab-guidance-governance-policy-compliance.md) szóló cikkben talál, amely bemutatja, hogyan döntheti el az előfizetést és a labor részletességét a szervezeten belül.
@@ -57,5 +57,5 @@ A DevTest Labs-igazolási koncepció három elsődleges szerepkört tartalmaz: a
 - **DevTest Labs-tulajdonos** – a DevTest Labs-tulajdonos teljes körű rendszergazdai hozzáféréssel rendelkezik a laborhoz. Ez a személy felelős a felhasználók hozzáadásával/eltávolításával, a költségadatok kezelésével, az általános labor-beállításokkal és az egyéb virtuális gépekkel/összetevőkkel kapcsolatos feladatokkal. A labor tulajdonosa is rendelkezik egy DevTest Labs-felhasználó minden jogosultságával.
 - **DevTest Labs-felhasználó** – a DevTest Labs-felhasználó létrehozhat és felhasználhatja a virtuális gépeket a laborban. Ezek a személyek bizonyos minimális felügyeleti képességekkel rendelkeznek az általuk létrehozott virtuális gépeken (a virtuális gépek indítása/leállítása/törlése/konfigurálása). A felhasználók nem kezelhetik más felhasználók virtuális gépeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a sorozat következő cikkét: [a Azure DevTest Labs megvalósításának](devtest-lab-guidance-orchestrate-implementation.md) összehangolása

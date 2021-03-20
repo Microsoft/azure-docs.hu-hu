@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 92041be4d3d5ef4d980c17fa0a5870b740c1784a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95995009"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>A StorSimple Eszközkezelő szolgáltatás üzembe helyezése a StorSimple virtuális tömbben
@@ -122,6 +122,6 @@ A szolgáltatás regisztrációs kulcsának újralétrehozásához hajtsa végre
    
    Másolja ezt a kulcsot, és mentse a szolgáltatáshoz tartozó új eszközök regisztrálásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Megtudhatja, hogyan [kezdheti](storsimple-virtual-array-deploy1-portal-prep.md) meg a StorSimple virtuális tömböket.
 * Ismerje meg [a StorSimple-eszköz felügyeletét](storsimple-ova-web-ui-admin.md).

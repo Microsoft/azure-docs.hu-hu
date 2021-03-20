@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 045cec85174a88d1d608a4adc679461008852768
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85514595"
 ---
 # <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>Az energiaellátási és hűtési rendszer cseréje a StorSimple-eszközön
@@ -50,7 +50,7 @@ Kövesse ezeket az utasításokat, ha készen áll egy energiagazdálkodási és
 > A PCM eltávolítása előtt ellenőrizze, hogy megfelelő-e a pótlás (764 W az elsődleges bekerítéshez, vagy 580 W a EBOD ház esetében).
 
 #### <a name="to-remove-a-pcm"></a>A PCM eltávolítása
-1. A klasszikus Azure portálon kattintson a **beállítások > Monitor > hardver állapota**elemre. A **megosztott összetevők** alatt lévő PCM-összetevők állapotának megadásával azonosíthatja, hogy melyik PCM sikertelen:
+1. A klasszikus Azure portálon kattintson a **beállítások > Monitor > hardver állapota** elemre. A **megosztott összetevők** alatt lévő PCM-összetevők állapotának megadásával azonosíthatja, hogy melyik PCM sikertelen:
    
    * Ha a PCM 0 áramellátása nem sikerült, akkor a **PCM 0-** as tápegység állapota piros lesz.
    * Ha a PCM 1 áramellátása meghiúsult, akkor a **PCM 1-es** számú tápegység állapota piros lesz.
@@ -134,11 +134,11 @@ Az alábbi útmutatást követve telepítheti a PCM-t a StorSimple-eszközön. G
 5. Csatlakoztatja a tápkábeleket az áramforráshoz és a PCM-hez.
 6. Gondoskodjon a törzs tehermentesítési bála védelméről.
 7. Kapcsolja be a PCM-t.
-8. Ellenőrizze, hogy a helyettesítés sikeres volt-e: a StorSimple Eszközkezelő szolgáltatás Azure Portaljában navigáljon az eszközhöz, majd a **beállítások > figyelje > hardver állapota lehetőséget**. A **megosztott összetevők**alatt a PCM állapotának zöldnek kell lennie.
+8. Ellenőrizze, hogy a helyettesítés sikeres volt-e: a StorSimple Eszközkezelő szolgáltatás Azure Portaljában navigáljon az eszközhöz, majd a **beállítások > figyelje > hardver állapota lehetőséget**. A **megosztott összetevők** alatt a PCM állapotának zöldnek kell lennie.
    
    > [!NOTE]
    > Eltarthat néhány percig, amíg a helyettesítő PCM teljesen inicializálható.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a [StorSimple hardveres összetevők cseréjéről](storsimple-8000-hardware-component-replacement.md).
 

@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c653f3e8583ef3aadff26cb2b7a3266555d313a2
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96547814"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Felhasználók tömeges létrehozása Azure Active Directory
@@ -42,7 +42,7 @@ Töltse le és töltse ki a CSV-fájl tömeges feltöltése sablont, amely segí
 A letöltött CSV-sablon sorai a következők:
 
 - **Verziószám**: a verziószámot tartalmazó első sornak szerepelnie kell a CSV-fájl feltöltésekor.
-- **Oszlopfejlécek**: az oszlopfejlécek formátuma a (z &lt; *Item name* &gt; ) [PropertyName] elemnév &lt; *kötelező vagy üres* &gt; . Például: `Name [displayName] Required`. Előfordulhat, hogy a sablon néhány régebbi verziója némileg eltérő változatot tartalmaz.
+- **Oszlopfejlécek**: az oszlopfejlécek formátuma a (z &lt;  &gt; ) [PropertyName] elemnév &lt; *kötelező vagy üres* &gt; . Például: `Name [displayName] Required`. Előfordulhat, hogy a sablon néhány régebbi verziója némileg eltérő változatot tartalmaz.
 - **Példák sora**: a sablonban szerepel egy sor, amely tartalmazza az egyes oszlopok elfogadható értékeit. El kell távolítania a példákat tartalmazó sort, és le kell cserélnie a saját bejegyzéseire.
 
 ### <a name="additional-guidance"></a>További útmutatás
@@ -56,7 +56,7 @@ A letöltött CSV-sablon sorai a következők:
 ## <a name="to-create-users-in-bulk"></a>Felhasználók tömeges létrehozása
 
 1. [Jelentkezzen be az Azure ad-szervezetbe](https://aad.portal.azure.com) egy olyan fiókkal, amely a szervezet felhasználói rendszergazdája.
-1. Az Azure ad-ben **Users** válassza a  >  **tömegesen létrehozott** felhasználók elemet.
+1. Az Azure ad-ben válassza a  >  **tömegesen létrehozott** felhasználók elemet.
 1. A felhasználó **tömeges létrehozása** lapon válassza a **Letöltés** lehetőséget a felhasználói tulajdonságok érvényes, VESSZŐVEL tagolt (CSV) fájljának megjelenítéséhez, majd adja hozzá a létrehozni kívánt felhasználókat.
 
    ![Válassza ki azt a helyi CSV-fájlt, amelyben fel szeretné sorolni a hozzáadni kívánt felhasználókat](./media/users-bulk-add/upload-button.png)
@@ -70,7 +70,7 @@ A letöltött CSV-sablon sorai a következők:
 1. Amikor a fájl átadja az ellenőrzést, válassza a **Submit (Küldés** ) lehetőséget, hogy elindítsa az új felhasználókat importáló Azure bulk műveletet.
 1. Amikor az importálási művelet befejeződik, megjelenik egy értesítés a tömeges művelet állapotáról.
 
-Ha hibák léptek fel, letöltheti és megtekintheti az eredményeket tartalmazó fájlt a **tömeges művelet eredményei** lapon. A fájl az egyes hibák okát tartalmazza. A fájl küldésének meg kell egyeznie a megadott sablonnal, és tartalmaznia kell a pontos oszlopnevek nevét.
+Ha hibák léptek fel, letöltheti és megtekintheti az eredményeket tartalmazó fájlt a **tömeges művelet eredményei** lapon. A fájl az egyes hibák okát is tartalmazza. A fájl küldésének meg kell egyeznie a megadott sablonnal, és tartalmaznia kell a pontos oszlopnevek nevét.
 
 ## <a name="check-status"></a>Állapot ellenőrzése
 

@@ -9,10 +9,10 @@ ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c8f4269235c494ff9dd8d1bf8e0ef940562f8927
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85515272"
 ---
 # <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>A StorSimple 8000 Series eszköz bekapcsolása vagy kikapcsolása
@@ -146,7 +146,7 @@ Az eszköz leállításához a Azure Portalon vagy a Windows PowerShell StorSimp
 > [!IMPORTANT]
 > Ne állítson le egy futó eszközt az eszköz hátoldalán található főkapcsoló gomb használatával.
 > 
-> Az eszköz leállítása előtt győződjön meg róla, hogy az eszköz összes összetevője kifogástalan állapotú. A Azure Portal navigáljon az **eszközök**  >  **figyelése**  >  **hardver**állapota elemre, és ellenőrizze, hogy az összes összetevő állapota zöld. Ez csak kifogástalan állapotú rendszer esetén igaz. Ha a rendszer leállítása hibás összetevő helyett történik, akkor a **hardver állapotában**a megfelelő összetevő hibás (piros) vagy csökkentett (sárga) állapotát fogja látni.
+> Az eszköz leállítása előtt győződjön meg róla, hogy az eszköz összes összetevője kifogástalan állapotú. A Azure Portal navigáljon az **eszközök**  >  **figyelése**  >  **hardver** állapota elemre, és ellenőrizze, hogy az összes összetevő állapota zöld. Ez csak kifogástalan állapotú rendszer esetén igaz. Ha a rendszer leállítása hibás összetevő helyett történik, akkor a **hardver állapotában** a megfelelő összetevő hibás (piros) vagy csökkentett (sárga) állapotát fogja látni.
 > 
 > 
 
@@ -154,7 +154,7 @@ Miután elvégezte a Windows PowerShell StorSimple-bővítménye vagy a Azure Po
 
 ### <a name="device-with-ebod-enclosure"></a>EBOD bekerítéssel rendelkező eszköz <a name="8600a"></a>
 > [!IMPORTANT]
-> Az elsődleges bekerítés és a EBOD bekerítésének leállítása előtt győződjön meg arról, hogy az eszköz összes összetevője kifogástalan állapotú. A Azure Portal navigáljon az **eszközök**  >  **figyelése**  >  **hardver állapota**elemre, és ellenőrizze, hogy az összes összetevő kifogástalan állapotú-e.
+> Az elsődleges bekerítés és a EBOD bekerítésének leállítása előtt győződjön meg arról, hogy az eszköz összes összetevője kifogástalan állapotú. A Azure Portal navigáljon az **eszközök**  >  **figyelése**  >  **hardver állapota** elemre, és ellenőrizze, hogy az összes összetevő kifogástalan állapotú-e.
 
 
 #### <a name="to-shut-down-a-running-device-with-ebod-enclosure"></a>Futó eszköz leállítása EBOD bekerítéssel
@@ -165,6 +165,6 @@ Miután elvégezte a Windows PowerShell StorSimple-bővítménye vagy a Azure Po
 > [!NOTE]
 > A EBOD-ház az elsődleges házba való csatlakoztatásához használt SAS-kábelek nem távolíthatók el a rendszer leállítása után.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha a StorSimple-eszköz bekapcsolása vagy leállítása során problémák merülnek [fel, forduljon a Microsoft ügyfélszolgálatahoz](storsimple-8000-contact-microsoft-support.md) .
 

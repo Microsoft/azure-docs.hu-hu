@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 3e36de62b79788e2efdc3e9abf711924c4fba0c4
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93341807"
 ---
 # <a name="how-to-author-an-attestation-policy"></a>Igazolási szabályzat készítése
@@ -36,7 +36,7 @@ issuancerules
  
 A házirend-fájl három szegmensből áll, ahogy az a fentiekben látható:
 
-- **verzió** : a verziószám a követett nyelvtan verziószáma. 
+- **verzió**: a verziószám a követett nyelvtan verziószáma. 
 
     ```
     version=MajorVersion.MinorVersion   
@@ -44,9 +44,9 @@ A házirend-fájl három szegmensből áll, ahogy az a fentiekben látható:
 
     Jelenleg az egyetlen támogatott verzió a 1,0-es verzió.
 
-- **engedélyezési szabályok** : az első ellenőrizendő jogcím-szabályok gyűjteménye annak megállapítására, hogy az Azure-igazolásnak folytatódnia kell-e a **issuancerules**. A jogcím szabályai a definiált sorrendben lesznek érvényesek.
+- **engedélyezési szabályok**: az első ellenőrizendő jogcím-szabályok gyűjteménye annak megállapítására, hogy az Azure-igazolásnak folytatódnia kell-e a **issuancerules**. A jogcím szabályai a definiált sorrendben lesznek érvényesek.
 
-- **issuancerules** : olyan jogcím-szabályok gyűjteménye, amelyeket a rendszer kiértékel, hogy további információkat adjon hozzá az igazolási eredményhez a Szabályzatban meghatározottak szerint. A jogcím szabályai a definiált sorrendben érvényesek, és szintén nem kötelezőek.
+- **issuancerules**: olyan jogcím-szabályok gyűjteménye, amelyeket a rendszer kiértékel, hogy további információkat adjon hozzá az igazolási eredményhez a Szabályzatban meghatározottak szerint. A jogcím szabályai a definiált sorrendben érvényesek, és szintén nem kötelezőek.
 
 További információért lásd a [jogcím és a jogcím szabályait](claim-rule-grammar.md) .
    
@@ -128,13 +128,13 @@ Miután létrehozott egy házirendet a szabályzat JWS formátumban való feltö
      ```
 
 2. Választható Írja alá a szabályzatot. Az Azure-igazolás a következő algoritmusokat támogatja:
-     - **Nincs** : ne írja alá a szabályzat hasznos adatait.
-     - **RS256** : a szabályzat hasznos adatainak aláírására szolgáló támogatott algoritmus
+     - **Nincs**: ne írja alá a szabályzat hasznos adatait.
+     - **RS256**: a szabályzat hasznos adatainak aláírására szolgáló támogatott algoritmus
 
 3. Töltse fel a JWS, és ellenőrizze a szabályzatot.
      - Ha a házirend-fájl szintaktikai hibáktól mentes, a szolgáltatás elfogadja a házirend-fájlt.
      - Ha a házirend-fájl szintaktikai hibákat tartalmaz, a szolgáltatás visszautasítja a házirend-fájlt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Az Azure-igazolás beállítása a PowerShell használatával](quickstart-powershell.md)
 - [SGX ENKLÁVÉHOZ enklávé igazolása kód-minták használatával](/samples/browse/?expanded=azure&terms=attestation)

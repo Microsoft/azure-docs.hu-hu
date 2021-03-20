@@ -11,10 +11,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/21/2019
 ms.openlocfilehash: d2b45f5b51f4656294632aa46f679a7a09c06ed3
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94593926"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Oktatóanyag: tranzakciós replikáció konfigurálása az Azure SQL felügyelt példánya és SQL Server között
@@ -24,7 +24,7 @@ A tranzakciós replikáció lehetővé teszi az adatok replikálását az egyik 
 
 A tranzakciós replikáció jelenleg nyilvános előzetes verzióban érhető el a felügyelt SQL-példányhoz. 
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -146,7 +146,7 @@ A privát DNS-zónák lehetővé teszik a DNS-útválasztást a felügyelt péld
 
 ### <a name="create-a-private-dns-zone"></a>Privát DNS-zóna létrehozása
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Az új Azure-erőforrás létrehozásához válassza **az erőforrás létrehozása** lehetőséget.
 1. Keressen rá az `private dns zone` Azure Marketplace-en.
 1. Válassza ki a Microsoft által közzétett **saját DNS zóna** erőforrást, majd válassza a **Létrehozás** lehetőséget a DNS-zóna létrehozásához.
@@ -155,7 +155,7 @@ A privát DNS-zónák lehetővé teszik a DNS-útválasztást a felügyelt péld
 
    ![Privát DNS-zóna létrehozása](./media/replication-two-instances-and-sql-server-configure-tutorial/create-private-dns-zone.png)
 
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. Tekintse át a saját DNS-zóna paramétereit, majd válassza a **Létrehozás** lehetőséget az erőforrás létrehozásához.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. Tekintse át a saját DNS-zóna paramétereit, majd válassza a **Létrehozás** lehetőséget az erőforrás létrehozásához.
 
 ### <a name="create-an-a-record"></a>Rekord létrehozása
 
@@ -285,12 +285,12 @@ A terjesztés konfigurálása után már létrehozhatja a kiadványt. Ehhez köv
 1. Kapcsolódjon a `sql-mi-publisher` felügyelt példányhoz.
 1. A **Object Explorer** bontsa ki a **replikálás** csomópontot, majd kattintson a jobb gombbal a **helyi közzétételi** mappára. **Új kiadvány** kiválasztása...
 1. Kattintson a **tovább** gombra, ha az üdvözlőlapot át szeretné helyezni.
-1. A **kiadvány-adatbázis** lapon válassza ki a `ReplTutorial` korábban létrehozott adatbázist. Válassza a **Tovább** gombot.
-1. A **kiadvány típusa** lapon válassza a **tranzakciós kiadvány** lehetőséget. Válassza a **Tovább** gombot.
-1. A **cikkek** lapon jelölje be a **táblák** melletti jelölőnégyzetet. Válassza a **Tovább** gombot.
+1. A **kiadvány-adatbázis** lapon válassza ki a `ReplTutorial` korábban létrehozott adatbázist. Kattintson a **Tovább** gombra.
+1. A **kiadvány típusa** lapon válassza a **tranzakciós kiadvány** lehetőséget. Kattintson a **Tovább** gombra.
+1. A **cikkek** lapon jelölje be a **táblák** melletti jelölőnégyzetet. Kattintson a **Tovább** gombra.
 1. A **tábla sorainak szűrése** lapon a szűrők hozzáadása nélkül válassza a **Next (tovább** ) lehetőséget.
-1. A **Pillanatkép-ügynök** lapon jelölje be a pillanatkép azonnali létrehozása elem melletti jelölőnégyzetet, **és az előfizetések inicializálásához tartsa elérhetővé a pillanatképet**. Válassza a **Tovább** gombot.
-1. Az **ügynök biztonsága** lapon válassza a **biztonsági beállítások...** lehetőséget. Adja meg SQL Server bejelentkezési hitelesítő adatait a pillanatkép-ügynökhöz, és kapcsolódjon a közzétevőhöz. Kattintson az **OK** gombra a **Pillanatkép-ügynök biztonsági** oldalának bezárásához. Válassza a **Tovább** gombot.
+1. A **Pillanatkép-ügynök** lapon jelölje be a pillanatkép azonnali létrehozása elem melletti jelölőnégyzetet, **és az előfizetések inicializálásához tartsa elérhetővé a pillanatképet**. Kattintson a **Tovább** gombra.
+1. Az **ügynök biztonsága** lapon válassza a **biztonsági beállítások...** lehetőséget. Adja meg SQL Server bejelentkezési hitelesítő adatait a pillanatkép-ügynökhöz, és kapcsolódjon a közzétevőhöz. Kattintson az **OK** gombra a **Pillanatkép-ügynök biztonsági** oldalának bezárásához. Kattintson a **Tovább** gombra.
 
    ![A Snapshot Agent biztonságának konfigurálása](./media/replication-two-instances-and-sql-server-configure-tutorial/snapshot-agent-security.png)
 

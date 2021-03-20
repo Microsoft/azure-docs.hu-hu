@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: tugup
 ms.openlocfilehash: d8585d0b39e4a4ef9cf77f40ea878ddb47bcb0de
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97831822"
 ---
 # <a name="azure-service-fabric-hosting-life-cycle"></a>Azure Service Fabric üzemeltetési életciklus
@@ -179,7 +179,7 @@ Ez a szakasz felsorolja azokat a konfigurációkat, amelyek az aktiválást és 
 - **DeactivationGraceInterval**: Default: 60 másodperc. Egy *megosztott* négyszínes modellben a szervizcsomaghoz adott idő, amely egy újabb replikát futtat, miután már üzemeltetett replikát.
 - **ExclusiveModeDeactivationGraceInterval**: alapértelmezett: 1 másodperc. Egy *kizárólagos* folyamatmodell esetében a szervizcsomaghoz adott idő egy újabb replika futtatására szolgál, miután már futtatta a replikát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Alkalmazás becsomagolása][a3] és üzembe helyezése készen áll a telepítésre.
 - [Alkalmazások telepítése és eltávolítása][a4] a PowerShellben.

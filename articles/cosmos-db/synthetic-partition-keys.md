@@ -8,10 +8,10 @@ ms.date: 12/03/2019
 author: markjbrown
 ms.author: mjbrown
 ms.openlocfilehash: 6b8bc44f1ba5624c37620205aaa574e618ef395f
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93340651"
 ---
 # <a name="create-a-synthetic-partition-key"></a>Szintetikus partíciókulcs létrehozása
@@ -56,7 +56,7 @@ Vegye figyelembe az előző példát, ahol a tároló egy dátumot használ a pa
 
 Ezzel a stratégiával az írások egyenletesen oszlanak el a partíciós kulcs értékein és a partíciók között. Egy adott elem és dátum könnyen olvasható, mert kiszámíthatja egy adott értékhez tartozó partíciós kulcs értékét `Vehicle-Identification-Number` . Ennek a módszernek az előnye, hogy el kell kerülnie egy egyszerű, például egy olyan partíciós kulcs létrehozását, amely az összes munkaterhelést elvégzi. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A particionálási koncepcióról további információt a következő cikkekben talál:
 

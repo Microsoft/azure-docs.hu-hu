@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: ac8bdc37bc2572b580deebc35931e324ed107d87
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92446532"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>Oktatóanyag: Azure Active Directory integráció a HackerOne
@@ -62,13 +62,13 @@ A HackerOne Azure AD-be való integrálásának konfigurálásához hozzá kell 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **HackerOne**kifejezést, válassza a **HackerOne** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **HackerOne** kifejezést, válassza a **HackerOne** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![HackerOne az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az HackerOne-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az HackerOne-mel konfigurálja és teszteli a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a HackerOne kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés HackerOne való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -86,7 +86,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés HackerOne való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **HackerOne** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **HackerOne** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -124,11 +124,11 @@ Az Azure AD egyszeri bejelentkezés HackerOne való konfigurálásához hajtsa v
 
 1. Jelentkezzen be a HackerOne-bérlőre rendszergazdaként.
 
-2. A felső menüben kattintson a **Beállítások**elemre.
+2. A felső menüben kattintson a **Beállítások** elemre.
 
     ![Képernyőfelvétel: a menüben kiválasztott beállítások.](./media/hackerone-tutorial/tutorial_hackerone_001.png)
 
-3. Navigáljon a **hitelesítéshez** , és kattintson az **SAML-beállítások hozzáadása**lehetőségre.
+3. Navigáljon a **hitelesítéshez** , és kattintson az **SAML-beállítások hozzáadása** lehetőségre.
 
     ![A "hitelesítési beállítások" oldalt megjelenítő képernyőkép, amely a "S A M. L-beállítások hozzáadása" gombot jeleníti meg.](./media/hackerone-tutorial/tutorial_hackerone_003.png)
 
@@ -148,7 +148,7 @@ Az Azure AD egyszeri bejelentkezés HackerOne való konfigurálásához hajtsa v
 
     ![A "hitelesítési beállítások" párbeszédpanelt a "futtatási teszt" gomb kiválasztásával ábrázoló képernyőkép.](./media/hackerone-tutorial/tutorial_hackerone_005.png)
 
-    a. Kattintson a **teszt futtatása**gombra.
+    a. Kattintson a **teszt futtatása** gombra.
 
 6. Ha a teszt sikeresen befejeződik, és az **állapot** mező az **utolsó teszt állapotot mutatja: sikeres**, válassza a **kérelem ellenőrzése** gombot, hogy elküldje a HackerOne jóváhagyásra.
 
@@ -162,7 +162,7 @@ Az Azure AD egyszeri bejelentkezés HackerOne való konfigurálásához hajtsa v
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -187,15 +187,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a HackerOne hozzáférésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **HackerOne**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **HackerOne** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **HackerOne**lehetőséget.
+2. Az alkalmazások listában válassza a **HackerOne** lehetőséget.
 
     ![Az HackerOne hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 

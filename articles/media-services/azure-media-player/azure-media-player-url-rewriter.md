@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 04/20/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: b037eec13fda0b5ec16a4f2f53ad2a64fb5f8da1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91275557"
 ---
 # <a name="url-rewriter"></a>URL-átíró #
@@ -63,6 +63,6 @@ A fenti kettő kombinálható egymással az adott eszközön alapuló több kör
 > [!NOTE]
 > A Widevine-védelmi információk csak a kötőjel protokollon maradnak meg.
 
-## <a name="next-steps"></a>További lépések ##
+## <a name="next-steps"></a>Következő lépések ##
 
 - [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

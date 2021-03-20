@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 81eb0e60befc544a6c3bee8f04e901b6a5e472bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85560822"
 ---
 # <a name="shaper-cognitive-skill"></a>Formázó kognitív képesség
@@ -109,7 +109,7 @@ Egy bejövő JSON-dokumentum, amely felhasználható bemenetet biztosít ehhez a
 
 ### <a name="skill-output"></a>Szaktudás kimenete
 
-A **formáló** képesség egy új, *analyzedText* nevű elemet hoz létre, amely a *szöveg* és a *hangulat*együttes elemeit tartalmazza. Ez a kimenet megfelel az index sémájának. A rendszer egy Azure Cognitive Search indexbe importálja és indexeli.
+A **formáló** képesség egy új, *analyzedText* nevű elemet hoz létre, amely a *szöveg* és a *hangulat* együttes elemeit tartalmazza. Ez a kimenet megfelel az index sémájának. A rendszer egy Azure Cognitive Search indexbe importálja és indexeli.
 
 ```json
 {
